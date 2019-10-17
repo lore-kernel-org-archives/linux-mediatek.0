@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 44FCAFA372A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2019 08:27:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 71F10FA3731
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2019 08:28:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1533D20820
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2019 08:27:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 438A320820
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2019 08:28:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FpH7eB0p"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1533D20820
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LXZiuEQx"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 438A320820
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,48 +25,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zkJttDY7gNbFypvZxsRWiiEN7+Kvc37Qo2voDjzkamQ=; b=FpH7eB0pTED+mj
-	iDBQHXv6hBPYAq+uOIorzhRGgL52daCmSBs0U0NT9AnAfUn6aJPLBFTxIm2/v02gxWVqtW9tnsXKp
-	ca9nUqhAPZLy/TaOAeEpGoSioExrTtG1qnObsvCw5OfMz58moucEkRMyLBRUD21LCP5uLnTkd9+Cf
-	ZoANC3OmRPm0YRyo6CQE1YJ+gijsaeQ4osx27iEFH6iVyTrAbXMvaM10lc2lLLJ3h1IW0UM1aQqG6
-	4hDohnKA7VfLwRgEA0laOJzFl4BlFoWi5V41/GA4cwacfJ8AIb7HNv1i0IMPIdH5IUT42GTIiJjXO
-	nHXzhjIO5aKrWGrry1aA==;
+	List-Owner; bh=l0eIvJWn6HoCZ5/5uOGUMUFm/2fj1hpIyT1u8N+K1RI=; b=LXZiuEQxXJhZ5r
+	4vmm4NMuVCf8/dKTnSgR3V2JfKfuJJflFcC2kpSuEYp5rIbuvC7cy+u+wiLco/JrYjrDm9AZnKRQ2
+	f9pepkNCSh/igOaZSpKLXqPkstYIUWdHM0yV1OtGhWuep6kt8DSVa/espXeM+BLzPjFwMdCNCQ3n6
+	T6OHmkRqk+aWqe8hzs2p8WXQzhDw99Z8N/65kI6jVYpff3B1WyX5Eo9xcTDIQO6OIbdDmsZ7Yczlz
+	x0xGmIZaWKAN5YYMmsepk5Daylr1SFhByJV4jibNFYMas9A+GpSszTae8uoA27IfJ2jVRP/D15Ct2
+	gnlL3EEBivrWnrY1jtIQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iL181-0001uP-Rq; Thu, 17 Oct 2019 08:27:25 +0000
+	id 1iL18b-0002Re-3a; Thu, 17 Oct 2019 08:28:01 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iL171-00010J-9v; Thu, 17 Oct 2019 08:26:24 +0000
-X-UUID: 0862b45ea57148b4bd7394c102c41da9-20191017
-X-UUID: 0862b45ea57148b4bd7394c102c41da9-20191017
+ id 1iL178-00016T-Ig; Thu, 17 Oct 2019 08:26:32 +0000
+X-UUID: cdaf371cbcc64d448f07ab6d36b341cc-20191017
+X-UUID: cdaf371cbcc64d448f07ab6d36b341cc-20191017
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <min.guo@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1080391445; Thu, 17 Oct 2019 00:26:07 -0800
+ with ESMTP id 404520457; Thu, 17 Oct 2019 00:26:16 -0800
 Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 17 Oct 2019 01:26:13 -0700
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 17 Oct 2019 01:26:22 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 17 Oct 2019 16:26:10 +0800
+ 15.0.1395.4; Thu, 17 Oct 2019 16:26:19 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Thu, 17 Oct 2019 16:26:10 +0800
+ Transport; Thu, 17 Oct 2019 16:26:19 +0800
 From: <min.guo@mediatek.com>
 To: Bin Liu <b-liu@ti.com>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH RESEND v7 1/6] dt-bindings: usb: musb: Add support for
- MediaTek musb controller
-Date: Thu, 17 Oct 2019 16:25:49 +0800
-Message-ID: <20191017082554.27953-2-min.guo@mediatek.com>
+Subject: [PATCH RESEND v7 4/6] usb: musb: Add noirq type of dma create
+ interface
+Date: Thu, 17 Oct 2019 16:25:52 +0800
+Message-ID: <20191017082554.27953-5-min.guo@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20191017082554.27953-1-min.guo@mediatek.com>
 References: <20191017082554.27953-1-min.guo@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 4ED10C889B902A1A82AC1FD48C18778CAA1FE575CE1BD26985FC9F20878486BE2000:8
+X-TM-SNTS-SMTP: E80B03EA88119ABE9E9C7ECCC5E0FEDF6CB6A42358AAED9D6AFC42BF9A81E0D22000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191017_012623_387231_0B40AA65 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20191017_012630_661438_740EA73F 
+X-CRM114-Status: GOOD (  12.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,111 +92,153 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Min Guo <min.guo@mediatek.com>
 
-This adds support for MediaTek musb controller in
-host, peripheral and otg mode.
+Add noirq type of dma create interface for platform which do not
+have dedicated DMA interrupt line, move musbhsdma macro definition
+to musb_dma.h
 
 Signed-off-by: Min Guo <min.guo@mediatek.com>
 ---
 changes in v7:
-1. Modify compatible as
-- compatible : should be one of:
-               "mediatek,mt2701-musb"
-               ...
-               followed by "mediatek,mtk-musb"
-2. Change usb connector child node compatible as "gpio-usb-b-connector" 
-
-changes in v6:
-1. Modify usb connector child node
-
-changes in v5:
-suggested by Rob:
-1. Modify compatible as 
-- compatible : should be one of:
-               "mediatek,mt-2701"
-               ...
-               followed by "mediatek,mtk-musb"
-2. Add usb connector child node
-
-changes in v4:
-suggested by Sergei:
-1. String alignment
-
-changes in v3:
 1. no changes
 
-changes in v2:
-suggested by Bin:
-1. Modify DRC to DRD
-suggested by Rob:
-2. Drop the "<soc-model>-musb" in compatible
-3. Remove phy-names
-4. Add space after comma in clock-names
----
- .../devicetree/bindings/usb/mediatek,musb.txt      | 55 ++++++++++++++++++++++
- 1 file changed, 55 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/usb/mediatek,musb.txt
+changes in v6:
+1. no changes
 
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,musb.txt b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
-new file mode 100644
-index 0000000..e53c482
---- /dev/null
-+++ b/Documentation/devicetree/bindings/usb/mediatek,musb.txt
-@@ -0,0 +1,55 @@
-+MediaTek musb DRD/OTG controller
-+-------------------------------------------
+changes in v5:
+1. no changes
+
+new patch based on v4:
+---
+ drivers/usb/musb/musb_dma.h  |  9 ++++++++
+ drivers/usb/musb/musbhsdma.c | 54 ++++++++++++++++++++++++++++++--------------
+ 2 files changed, 46 insertions(+), 17 deletions(-)
+
+diff --git a/drivers/usb/musb/musb_dma.h b/drivers/usb/musb/musb_dma.h
+index 8f60271..05103ea3 100644
+--- a/drivers/usb/musb/musb_dma.h
++++ b/drivers/usb/musb/musb_dma.h
+@@ -35,6 +35,12 @@
+  *    whether shared with the Inventra core or separate.
+  */
+ 
++#define MUSB_HSDMA_BASE		0x200
++#define MUSB_HSDMA_INTR		(MUSB_HSDMA_BASE + 0)
++#define MUSB_HSDMA_CONTROL		0x4
++#define MUSB_HSDMA_ADDRESS		0x8
++#define MUSB_HSDMA_COUNT		0xc
 +
-+Required properties:
-+ - compatible      : should be one of:
-+                     "mediatek,mt2701-musb"
-+                     ...
-+                     followed by "mediatek,mtk-musb"
-+ - reg             : specifies physical base address and size of
-+                     the registers
-+ - interrupts      : interrupt used by musb controller
-+ - interrupt-names : must be "mc"
-+ - phys            : PHY specifier for the OTG phy
-+ - dr_mode         : should be one of "host", "peripheral" or "otg",
-+                     refer to usb/generic.txt
-+ - clocks          : a list of phandle + clock-specifier pairs, one for
-+                     each entry in clock-names
-+ - clock-names     : must contain "main", "mcu", "univpll"
-+                     for clocks of controller
+ #define	DMA_ADDR_INVALID	(~(dma_addr_t)0)
+ 
+ #ifdef CONFIG_MUSB_PIO_ONLY
+@@ -191,6 +197,9 @@ static inline void musb_dma_controller_destroy(struct dma_controller *d) { }
+ extern struct dma_controller *
+ musbhs_dma_controller_create(struct musb *musb, void __iomem *base);
+ extern void musbhs_dma_controller_destroy(struct dma_controller *c);
++extern struct dma_controller *
++musbhs_dma_controller_create_noirq(struct musb *musb, void __iomem *base);
++extern irqreturn_t dma_controller_irq(int irq, void *private_data);
+ 
+ extern struct dma_controller *
+ tusb_dma_controller_create(struct musb *musb, void __iomem *base);
+diff --git a/drivers/usb/musb/musbhsdma.c b/drivers/usb/musb/musbhsdma.c
+index 5fc6825..d549c0b 100644
+--- a/drivers/usb/musb/musbhsdma.c
++++ b/drivers/usb/musb/musbhsdma.c
+@@ -10,12 +10,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/slab.h>
+ #include "musb_core.h"
+-
+-#define MUSB_HSDMA_BASE		0x200
+-#define MUSB_HSDMA_INTR		(MUSB_HSDMA_BASE + 0)
+-#define MUSB_HSDMA_CONTROL		0x4
+-#define MUSB_HSDMA_ADDRESS		0x8
+-#define MUSB_HSDMA_COUNT		0xc
++#include "musb_dma.h"
+ 
+ #define MUSB_HSDMA_CHANNEL_OFFSET(_bchannel, _offset)		\
+ 		(MUSB_HSDMA_BASE + (_bchannel << 4) + _offset)
+@@ -268,7 +263,7 @@ static int dma_channel_abort(struct dma_channel *channel)
+ 	return 0;
+ }
+ 
+-static irqreturn_t dma_controller_irq(int irq, void *private_data)
++irqreturn_t dma_controller_irq(int irq, void *private_data)
+ {
+ 	struct musb_dma_controller *controller = private_data;
+ 	struct musb *musb = controller->private_data;
+@@ -383,6 +378,7 @@ static irqreturn_t dma_controller_irq(int irq, void *private_data)
+ 	spin_unlock_irqrestore(&musb->lock, flags);
+ 	return retval;
+ }
++EXPORT_SYMBOL_GPL(dma_controller_irq);
+ 
+ void musbhs_dma_controller_destroy(struct dma_controller *c)
+ {
+@@ -398,18 +394,10 @@ void musbhs_dma_controller_destroy(struct dma_controller *c)
+ }
+ EXPORT_SYMBOL_GPL(musbhs_dma_controller_destroy);
+ 
+-struct dma_controller *musbhs_dma_controller_create(struct musb *musb,
+-						    void __iomem *base)
++static struct musb_dma_controller *
++dma_controller_alloc(struct musb *musb, void __iomem *base)
+ {
+ 	struct musb_dma_controller *controller;
+-	struct device *dev = musb->controller;
+-	struct platform_device *pdev = to_platform_device(dev);
+-	int irq = platform_get_irq_byname(pdev, "dma");
+-
+-	if (irq <= 0) {
+-		dev_err(dev, "No DMA interrupt line!\n");
+-		return NULL;
+-	}
+ 
+ 	controller = kzalloc(sizeof(*controller), GFP_KERNEL);
+ 	if (!controller)
+@@ -423,6 +411,25 @@ struct dma_controller *musbhs_dma_controller_create(struct musb *musb,
+ 	controller->controller.channel_release = dma_channel_release;
+ 	controller->controller.channel_program = dma_channel_program;
+ 	controller->controller.channel_abort = dma_channel_abort;
++	return controller;
++}
 +
-+Optional properties:
-+ - power-domains   : a phandle to USB power domain node to control USB's
-+                     MTCMOS
++struct dma_controller *
++musbhs_dma_controller_create(struct musb *musb, void __iomem *base)
++{
++	struct musb_dma_controller *controller;
++	struct device *dev = musb->controller;
++	struct platform_device *pdev = to_platform_device(dev);
++	int irq = platform_get_irq_byname(pdev, "dma");
 +
-+Required child nodes:
-+ usb connector node as defined in bindings/connector/usb-connector.txt
-+Optional properties:
-+ - id-gpios        : input GPIO for USB ID pin.
-+ - vbus-gpios      : input GPIO for USB VBUS pin.
-+ - vbus-supply     : reference to the VBUS regulator, needed when supports
-+                     dual-role mode
++	if (irq <= 0) {
++		dev_err(dev, "No DMA interrupt line!\n");
++		return NULL;
++	}
 +
-+Example:
++	controller = dma_controller_alloc(musb, base);
++	if (!controller)
++		return NULL;
+ 
+ 	if (request_irq(irq, dma_controller_irq, 0,
+ 			dev_name(musb->controller), &controller->controller)) {
+@@ -437,3 +444,16 @@ struct dma_controller *musbhs_dma_controller_create(struct musb *musb,
+ 	return &controller->controller;
+ }
+ EXPORT_SYMBOL_GPL(musbhs_dma_controller_create);
 +
-+usb2: usb@11200000 {
-+	compatible = "mediatek,mt2701-musb",
-+		     "mediatek,mtk-musb";
-+	reg = <0 0x11200000 0 0x1000>;
-+	interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_LOW>;
-+	interrupt-names = "mc";
-+	phys = <&u2port2 PHY_TYPE_USB2>;
-+	dr_mode = "otg";
-+	clocks = <&pericfg CLK_PERI_USB0>,
-+		 <&pericfg CLK_PERI_USB0_MCU>,
-+		 <&pericfg CLK_PERI_USB_SLV>;
-+	clock-names = "main","mcu","univpll";
-+	power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
-+	connector{
-+		compatible = "gpio-usb-b-connector";
-+		label = "micro-USB";
-+		type = "micro";
-+		id-gpios = <&pio 44 GPIO_ACTIVE_HIGH>;
-+		vbus-supply = <&usb_vbus>;
-+	};
-+};
++struct dma_controller *
++musbhs_dma_controller_create_noirq(struct musb *musb, void __iomem *base)
++{
++	struct musb_dma_controller *controller;
++
++	controller = dma_controller_alloc(musb, base);
++	if (!controller)
++		return NULL;
++
++	return &controller->controller;
++}
++EXPORT_SYMBOL_GPL(musbhs_dma_controller_create_noirq);
 -- 
 1.9.1
 
