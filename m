@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 96E52ECE58E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2019 09:43:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 90CF8FA3732
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2019 09:43:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4D22320663
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2019 09:43:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 66CDB21848
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Oct 2019 09:43:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PxCmhsGj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4D22320663
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UBl/oABS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 66CDB21848
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,47 +25,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gRCaso5wRO07Hf15tPTP7JuSNuQYK+rmkVwYKCOBXxs=; b=PxCmhsGj4MQfbv
-	shyj2pSI3BqZJxMz91c7Uxo0VVJPT6Je0F8FU/dANQSMPNkGWSr0tBbcB9UqQvntH2RZN2MGXDq/m
-	FUGWRyPQOg+1EsyO3AW6nfaH37J1253MJuWBmoK6rrHNcXlwomFskW+u5jDXVZGvOiPo52ee3A7yX
-	i9q7Pqr0GZpwLT5X7qyIV05C6Xt46FQiylh2cnPxxllnYBZbo+NlayaJ8DMofFezCpBr5spMgtxpb
-	SjMxRToqMffHrOIZILvUOc7EffpCt58fZLLa/9ocGXq6Zo0w6rj5KCGNlXD6waAn2U5j8vJ7G4brt
-	hIDuzBkJgExRtkJfWgqA==;
+	List-Owner; bh=zYOJb8gc96LETbfiAm3evRzC/p2WP0aus8myAqiGk68=; b=UBl/oABS4q3l9Y
+	wjoSikYj94Mgxr0b+FR2+1Yz1kj3QryS5C8+WQtiq4afTAXH+r/z4KPo4q4AghvwESD6Rz+1WXpeE
+	WWIeoly0bQzKS/HXAmmD1Y9AaYtEkly7zEsvOpybhZIzVXI64zSAJCnqL5gH+RGG1jaM5OtkgDKuM
+	gwMC/AyjxMq9lTeaxp6+nwz4x61Wkt4XQ/awSBLIXWAWXCkm8PwQ9H5FetG4pnuMYiV+yhOKSMbN2
+	OgRuHYd3benlRbXagjs3tEqhGduYGs8RgeO82sLIkeXxbaULZuahsvnfR/NV94WvUH5KHd/AjrtI7
+	b6FUojCK8atZaMoEZCAA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iL2Jf-0002JF-Tc; Thu, 17 Oct 2019 09:43:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1iL2Jx-0002e8-Vd; Thu, 17 Oct 2019 09:43:49 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iL2IA-0000vW-BM; Thu, 17 Oct 2019 09:42:03 +0000
-X-UUID: a6412b35b8bc4f5aa182cb63600e0b3b-20191017
-X-UUID: a6412b35b8bc4f5aa182cb63600e0b3b-20191017
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ id 1iL2II-00013E-CP; Thu, 17 Oct 2019 09:42:08 +0000
+X-UUID: 9b320659919142aab3f2fc8ad952d8ad-20191017
+X-UUID: 9b320659919142aab3f2fc8ad952d8ad-20191017
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <min.guo@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1628234369; Thu, 17 Oct 2019 01:41:44 -0800
+ with ESMTP id 926429378; Thu, 17 Oct 2019 01:41:51 -0800
 Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 17 Oct 2019 02:41:32 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 17 Oct 2019 02:41:37 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 17 Oct 2019 17:41:30 +0800
+ 15.0.1395.4; Thu, 17 Oct 2019 17:41:34 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Thu, 17 Oct 2019 17:41:30 +0800
+ Transport; Thu, 17 Oct 2019 17:41:34 +0800
 From: <min.guo@mediatek.com>
 To: Bin Liu <b-liu@ti.com>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v8 2/6] arm: dts: mt2701: Add usb2 device nodes
-Date: Thu, 17 Oct 2019 17:41:22 +0800
-Message-ID: <20191017094126.29045-3-min.guo@mediatek.com>
+Subject: [PATCH v8 5/6] usb: musb: Add musb_clearb/w() interface
+Date: Thu, 17 Oct 2019 17:41:25 +0800
+Message-ID: <20191017094126.29045-6-min.guo@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20191017094126.29045-1-min.guo@mediatek.com>
 References: <20191017094126.29045-1-min.guo@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: AC0ECE5DA97E3D7B2711F6AA638BE0FCF4B6E8AB698D22284E4193D6F3AE33F62000:8
+X-TM-SNTS-SMTP: 9462EFC857918244F6EDD5C4E9935202BF7CD4D074F6B683BD1C26D76FC949862000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191017_024158_452604_09ED35F7 
-X-CRM114-Status: GOOD (  10.00  )
+X-CRM114-CacheID: sfid-20191017_024206_522450_8CB8D613 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,7 +91,9 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Min Guo <min.guo@mediatek.com>
 
-Add musb nodes and usb2 phy nodes for MT2701
+Delete the const attribute of addr parameter in readb/w/l hooks, these
+changes are for implementing clearing W1C registers.
+Replace musb_readb/w with musb_clearb/w to clear the interrupt status.
 
 Signed-off-by: Min Guo <min.guo@mediatek.com>
 ---
@@ -99,114 +101,215 @@ changes in v8:
 1. no changes
 
 changes in v7:
-1. Change usb connector child node compatible as "gpio-usb-b-connector" 
+1. no changes
 
 changes in v6:
-1. Modify usb connector child node
+1. no changes
 
 changes in v5:
-1. Add usb connector child node
+1. Replace musb_readb() with musb_clearb() to clear dma pending interrupts
 
-changes in v4:
-1. no changes
-
-changes in v3:
-1. no changes
-
-changes in v2:
-1. Remove phy-names
+new patch based on v4:
 ---
- arch/arm/boot/dts/mt2701-evb.dts | 21 +++++++++++++++++++++
- arch/arm/boot/dts/mt2701.dtsi    | 33 +++++++++++++++++++++++++++++++++
- 2 files changed, 54 insertions(+)
+ drivers/usb/musb/musb_core.c | 32 +++++++++++++++++++++++---------
+ drivers/usb/musb/musb_core.h |  8 ++++++--
+ drivers/usb/musb/musb_io.h   |  8 +++++---
+ drivers/usb/musb/musbhsdma.c |  2 +-
+ drivers/usb/musb/sunxi.c     |  4 ++--
+ drivers/usb/musb/tusb6010.c  |  2 +-
+ 6 files changed, 38 insertions(+), 18 deletions(-)
 
-diff --git a/arch/arm/boot/dts/mt2701-evb.dts b/arch/arm/boot/dts/mt2701-evb.dts
-index 88f8fd2..05ba43c 100644
---- a/arch/arm/boot/dts/mt2701-evb.dts
-+++ b/arch/arm/boot/dts/mt2701-evb.dts
-@@ -6,6 +6,7 @@
+diff --git a/drivers/usb/musb/musb_core.c b/drivers/usb/musb/musb_core.c
+index 690b8da..9d4399d 100644
+--- a/drivers/usb/musb/musb_core.c
++++ b/drivers/usb/musb/musb_core.c
+@@ -246,7 +246,7 @@ static u32 musb_default_busctl_offset(u8 epnum, u16 offset)
+ 	return 0x80 + (0x08 * epnum) + offset;
+ }
+ 
+-static u8 musb_default_readb(const void __iomem *addr, unsigned offset)
++static u8 musb_default_readb(void __iomem *addr, unsigned offset)
+ {
+ 	u8 data =  __raw_readb(addr + offset);
+ 
+@@ -260,7 +260,7 @@ static void musb_default_writeb(void __iomem *addr, unsigned offset, u8 data)
+ 	__raw_writeb(data, addr + offset);
+ }
+ 
+-static u16 musb_default_readw(const void __iomem *addr, unsigned offset)
++static u16 musb_default_readw(void __iomem *addr, unsigned offset)
+ {
+ 	u16 data = __raw_readw(addr + offset);
+ 
+@@ -396,19 +396,25 @@ static void musb_default_read_fifo(struct musb_hw_ep *hw_ep, u16 len, u8 *dst)
+ /*
+  * Old style IO functions
   */
+-u8 (*musb_readb)(const void __iomem *addr, unsigned offset);
++u8 (*musb_readb)(void __iomem *addr, unsigned offset);
+ EXPORT_SYMBOL_GPL(musb_readb);
  
- /dts-v1/;
-+#include <dt-bindings/gpio/gpio.h>
- #include "mt2701.dtsi"
+ void (*musb_writeb)(void __iomem *addr, unsigned offset, u8 data);
+ EXPORT_SYMBOL_GPL(musb_writeb);
  
- / {
-@@ -61,6 +62,15 @@
- 		>;
- 		default-brightness-level = <9>;
- 	};
+-u16 (*musb_readw)(const void __iomem *addr, unsigned offset);
++u8 (*musb_clearb)(void __iomem *addr, unsigned int offset);
++EXPORT_SYMBOL_GPL(musb_clearb);
 +
-+	usb_vbus: regulator@0 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "usb_vbus";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		gpio = <&pio 45 GPIO_ACTIVE_HIGH>;
-+		enable-active-high;
-+	};
++u16 (*musb_readw)(void __iomem *addr, unsigned offset);
+ EXPORT_SYMBOL_GPL(musb_readw);
+ 
+ void (*musb_writew)(void __iomem *addr, unsigned offset, u16 data);
+ EXPORT_SYMBOL_GPL(musb_writew);
+ 
+-u32 musb_readl(const void __iomem *addr, unsigned offset)
++u16 (*musb_clearw)(void __iomem *addr, unsigned int offset);
++EXPORT_SYMBOL_GPL(musb_clearw);
++
++u32 musb_readl(void __iomem *addr, unsigned offset)
+ {
+ 	u32 data = __raw_readl(addr + offset);
+ 
+@@ -1047,7 +1053,6 @@ static irqreturn_t musb_stage0_irq(struct musb *musb, u8 int_usb,
+ static void musb_disable_interrupts(struct musb *musb)
+ {
+ 	void __iomem	*mbase = musb->mregs;
+-	u16	temp;
+ 
+ 	/* disable interrupts */
+ 	musb_writeb(mbase, MUSB_INTRUSBE, 0);
+@@ -1057,9 +1062,9 @@ static void musb_disable_interrupts(struct musb *musb)
+ 	musb_writew(mbase, MUSB_INTRRXE, 0);
+ 
+ 	/*  flush pending interrupts */
+-	temp = musb_readb(mbase, MUSB_INTRUSB);
+-	temp = musb_readw(mbase, MUSB_INTRTX);
+-	temp = musb_readw(mbase, MUSB_INTRRX);
++	musb_clearb(mbase, MUSB_INTRUSB);
++	musb_clearw(mbase, MUSB_INTRTX);
++	musb_clearw(mbase, MUSB_INTRRX);
+ }
+ 
+ static void musb_enable_interrupts(struct musb *musb)
+@@ -2278,10 +2283,19 @@ static void musb_deassert_reset(struct work_struct *work)
+ 		musb_readb = musb->ops->readb;
+ 	if (musb->ops->writeb)
+ 		musb_writeb = musb->ops->writeb;
++	if (musb->ops->clearb)
++		musb_clearb = musb->ops->clearb;
++	else
++		musb_clearb = musb_readb;
++
+ 	if (musb->ops->readw)
+ 		musb_readw = musb->ops->readw;
+ 	if (musb->ops->writew)
+ 		musb_writew = musb->ops->writew;
++	if (musb->ops->clearw)
++		musb_clearw = musb->ops->clearw;
++	else
++		musb_clearw = musb_readw;
+ 
+ #ifndef CONFIG_MUSB_PIO_ONLY
+ 	if (!musb->ops->dma_init || !musb->ops->dma_exit) {
+diff --git a/drivers/usb/musb/musb_core.h b/drivers/usb/musb/musb_core.h
+index 9f5a69c..0d9a35f 100644
+--- a/drivers/usb/musb/musb_core.h
++++ b/drivers/usb/musb/musb_core.h
+@@ -120,8 +120,10 @@ enum musb_g_ep0_state {
+  * @fifo_offset: returns the fifo offset
+  * @readb:	read 8 bits
+  * @writeb:	write 8 bits
++ * @clearb:	could be clear-on-readb or W1C
+  * @readw:	read 16 bits
+  * @writew:	write 16 bits
++ * @clearw:	could be clear-on-readw or W1C
+  * @read_fifo:	reads the fifo
+  * @write_fifo:	writes to fifo
+  * @get_toggle:	platform specific get toggle function
+@@ -164,10 +166,12 @@ struct musb_platform_ops {
+ 	u16	fifo_mode;
+ 	u32	(*fifo_offset)(u8 epnum);
+ 	u32	(*busctl_offset)(u8 epnum, u16 offset);
+-	u8	(*readb)(const void __iomem *addr, unsigned offset);
++	u8	(*readb)(void __iomem *addr, unsigned offset);
+ 	void	(*writeb)(void __iomem *addr, unsigned offset, u8 data);
+-	u16	(*readw)(const void __iomem *addr, unsigned offset);
++	u8	(*clearb)(void __iomem *addr, unsigned int offset);
++	u16	(*readw)(void __iomem *addr, unsigned offset);
+ 	void	(*writew)(void __iomem *addr, unsigned offset, u16 data);
++	u16	(*clearw)(void __iomem *addr, unsigned int offset);
+ 	void	(*read_fifo)(struct musb_hw_ep *hw_ep, u16 len, u8 *buf);
+ 	void	(*write_fifo)(struct musb_hw_ep *hw_ep, u16 len, const u8 *buf);
+ 	u16	(*get_toggle)(struct musb_qh *qh, int is_out);
+diff --git a/drivers/usb/musb/musb_io.h b/drivers/usb/musb/musb_io.h
+index 8179334..7200596 100644
+--- a/drivers/usb/musb/musb_io.h
++++ b/drivers/usb/musb/musb_io.h
+@@ -37,11 +37,13 @@ struct musb_io {
  };
  
- &auxadc {
-@@ -230,3 +240,14 @@
- &uart0 {
- 	status = "okay";
- };
-+
-+&usb2 {
-+	status = "okay";
-+	connector{
-+		compatible = "gpio-usb-b-connector";
-+		label = "micro-USB";
-+		type = "micro";
-+		id-gpios = <&pio 44 GPIO_ACTIVE_HIGH>;
-+		vbus-supply = <&usb_vbus>;
-+	};
-+};
-diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-index 51e1305..80a3b55 100644
---- a/arch/arm/boot/dts/mt2701.dtsi
-+++ b/arch/arm/boot/dts/mt2701.dtsi
-@@ -671,6 +671,39 @@
- 		};
- 	};
+ /* Do not add new entries here, add them the struct musb_io instead */
+-extern u8 (*musb_readb)(const void __iomem *addr, unsigned offset);
++extern u8 (*musb_readb)(void __iomem *addr, unsigned offset);
+ extern void (*musb_writeb)(void __iomem *addr, unsigned offset, u8 data);
+-extern u16 (*musb_readw)(const void __iomem *addr, unsigned offset);
++extern u8 (*musb_clearb)(void __iomem *addr, unsigned int offset);
++extern u16 (*musb_readw)(void __iomem *addr, unsigned offset);
+ extern void (*musb_writew)(void __iomem *addr, unsigned offset, u16 data);
+-extern u32 musb_readl(const void __iomem *addr, unsigned offset);
++extern u16 (*musb_clearw)(void __iomem *addr, unsigned int offset);
++extern u32 musb_readl(void __iomem *addr, unsigned offset);
+ extern void musb_writel(void __iomem *addr, unsigned offset, u32 data);
  
-+	usb2: usb@11200000 {
-+		compatible = "mediatek,mt2701-musb",
-+			     "mediatek,mtk-musb";
-+		reg = <0 0x11200000 0 0x1000>;
-+		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_LOW>;
-+		interrupt-names = "mc";
-+		phys = <&u2port2 PHY_TYPE_USB2>;
-+		dr_mode = "otg";
-+		clocks = <&pericfg CLK_PERI_USB0>,
-+			 <&pericfg CLK_PERI_USB0_MCU>,
-+			 <&pericfg CLK_PERI_USB_SLV>;
-+		clock-names = "main","mcu","univpll";
-+		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
-+		status = "disabled";
-+	};
-+
-+	u2phy0: usb-phy@11210000 {
-+		compatible = "mediatek,generic-tphy-v1";
-+		reg = <0 0x11210000 0 0x0800>;
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		status = "okay";
-+
-+		u2port2: usb-phy@1a1c4800 {
-+			reg = <0 0x11210800 0 0x0100>;
-+			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
-+			clock-names = "ref";
-+			#phy-cells = <1>;
-+			status = "okay";
-+		};
-+	};
-+
- 	ethsys: syscon@1b000000 {
- 		compatible = "mediatek,mt2701-ethsys", "syscon";
- 		reg = <0 0x1b000000 0 0x1000>;
+ #endif
+diff --git a/drivers/usb/musb/musbhsdma.c b/drivers/usb/musb/musbhsdma.c
+index d549c0b..975c61e 100644
+--- a/drivers/usb/musb/musbhsdma.c
++++ b/drivers/usb/musb/musbhsdma.c
+@@ -284,7 +284,7 @@ irqreturn_t dma_controller_irq(int irq, void *private_data)
+ 
+ 	spin_lock_irqsave(&musb->lock, flags);
+ 
+-	int_hsdma = musb_readb(mbase, MUSB_HSDMA_INTR);
++	int_hsdma = musb_clearb(mbase, MUSB_HSDMA_INTR);
+ 
+ 	if (!int_hsdma) {
+ 		musb_dbg(musb, "spurious DMA irq");
+diff --git a/drivers/usb/musb/sunxi.c b/drivers/usb/musb/sunxi.c
+index 832a41f..2c1bbaa 100644
+--- a/drivers/usb/musb/sunxi.c
++++ b/drivers/usb/musb/sunxi.c
+@@ -407,7 +407,7 @@ static u32 sunxi_musb_busctl_offset(u8 epnum, u16 offset)
+ 	return SUNXI_MUSB_TXFUNCADDR + offset;
+ }
+ 
+-static u8 sunxi_musb_readb(const void __iomem *addr, unsigned offset)
++static u8 sunxi_musb_readb(void __iomem *addr, unsigned offset)
+ {
+ 	struct sunxi_glue *glue;
+ 
+@@ -520,7 +520,7 @@ static void sunxi_musb_writeb(void __iomem *addr, unsigned offset, u8 data)
+ 		(int)(addr - sunxi_musb->mregs));
+ }
+ 
+-static u16 sunxi_musb_readw(const void __iomem *addr, unsigned offset)
++static u16 sunxi_musb_readw(void __iomem *addr, unsigned offset)
+ {
+ 	if (addr == sunxi_musb->mregs) {
+ 		/* generic control or fifo control reg access */
+diff --git a/drivers/usb/musb/tusb6010.c b/drivers/usb/musb/tusb6010.c
+index 3945328..cfb94f9 100644
+--- a/drivers/usb/musb/tusb6010.c
++++ b/drivers/usb/musb/tusb6010.c
+@@ -142,7 +142,7 @@ static void tusb_ep_select(void __iomem *mbase, u8 epnum)
+ /*
+  * TUSB6010 doesn't allow 8-bit access; 16-bit access is the minimum.
+  */
+-static u8 tusb_readb(const void __iomem *addr, unsigned offset)
++static u8 tusb_readb(void __iomem *addr, unsigned offset)
+ {
+ 	u16 tmp;
+ 	u8 val;
 -- 
 1.9.1
 
