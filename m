@@ -2,72 +2,93 @@ Return-Path: <SRS0=Gkfw=YL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
-	autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C7866CA9EA0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2019 09:11:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 98B03CA9EA0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2019 09:53:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9C30E222BD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2019 09:11:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 60C6A222C3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2019 09:53:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JWT8udwT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9C30E222BD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZQecuvCX";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="n28OxGit"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 60C6A222C3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I8Y/DT3hSAUxGNf35Zqdgq7kewg8bC7YtTJRuwufEGc=; b=JWT8udwTGZXxvp
-	MQA711XcrLufZ4jfL3niHDKTEQN5zP3nldKMwBZYMpiH5ZWtoMe5dr/6Yx1Op9BLjGdNvQ38l3eSi
-	aDpO6TpWwtDOGgKCXprIB57eCVUkTNBlwCxSRiSgpAKkbUP7kzzWFpGa6O/JbZymtacONtZRqSwvJ
-	j3RI6BvRpqVp1DoEBTUAnJdU5qL7YHHTRBFLXoDusGcaALPVdgcuMPsF0kbk2LbV4gBaCqfi3hmhn
-	Is5lhnrhjjCbX12iQ708pDXBC4HLJjkFxXttrNC6fhat7WXaPuNFc+67hBtjW2KKLXaJNsyofgKVN
-	vxa3NNCns3NU/wgMZOWg==;
+	List-Owner; bh=LHtXCJEUKoliwJAf27pM/EEMobpE3eRN2nDyk3ekwzk=; b=ZQecuvCXWRDKk4
+	bNymb94bTuKR4ym/HllXg8k+iCPBdu8tWlF4BRPQPvNqLJNH2vbGTyybx10589raOsMuRPz+63k72
+	0w22fE3mzHMzECBxRNu7VOV8KFGBLM7EvlReFtlYtc1cBoydghgnxZS6fjNOwFJWhroYyD19VfAnQ
+	J/1SCU/q8CH+3e9hBl0L/Buyx16ywCVL587tRUWJpJL8f9ynmEdFIiIvY+xvVcGlBNXeQ+0D3xC1x
+	bxyStQ8iXpmh/DDiDL8DZ+ZL9NhHPUI6LVVftk+UWvgMk57VXBY6YrxNYF6xiqe8tppkidpHeFh79
+	/e1pzy5vC2kt13dIJj+Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iLOHv-0008J8-7P; Fri, 18 Oct 2019 09:11:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1iLOwU-0000bA-L3; Fri, 18 Oct 2019 09:53:06 +0000
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iLOHs-0008I8-0d; Fri, 18 Oct 2019 09:11:09 +0000
-X-UUID: 85dd635cae1d4460bdbb6f0179ef34af-20191018
-X-UUID: 85dd635cae1d4460bdbb6f0179ef34af-20191018
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <min.guo@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1153757082; Fri, 18 Oct 2019 01:10:23 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 18 Oct 2019 02:10:59 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Fri, 18 Oct 2019 17:10:56 +0800
-Received: from [10.17.3.153] (172.27.4.253) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Fri, 18 Oct 2019 17:10:55 +0800
-Message-ID: <1571389858.28949.13.camel@mhfsdcap03>
-Subject: Re: [PATCH v8 6/6] usb: musb: Add support for MediaTek musb controller
-From: Min Guo <min.guo@mediatek.com>
-To: Tony Lindgren <tony@atomide.com>
-Date: Fri, 18 Oct 2019 17:10:58 +0800
-In-Reply-To: <20191017163433.GN5610@atomide.com>
-References: <20191017094126.29045-1-min.guo@mediatek.com>
- <20191017094126.29045-7-min.guo@mediatek.com>
- <20191017163433.GN5610@atomide.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1iLOwS-0000aH-87
+ for linux-mediatek@lists.infradead.org; Fri, 18 Oct 2019 09:53:05 +0000
+Received: by mail-pg1-x543.google.com with SMTP id i32so3065912pgl.10
+ for <linux-mediatek@lists.infradead.org>; Fri, 18 Oct 2019 02:53:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=PGk9J+4Cve7nPzhB48lXZkSk8jD7RUn6XtFGq2ZdcE4=;
+ b=n28OxGityoZDMnTZJXc8oRsZQcZHor+VKmgC6rBmcaS7on08zd2eWAFv06U/ZiSHk6
+ 9Lw8fUIWzMB6DMmUXmMNoKxdNKX0NF4jQCmhVVthlNpOhD2eKdor/MF6yaXkFzninruu
+ cmzLJ2wHqbw1r9bS+WsEPgxmkgSt/E1yg7CKLON6iqE6joGCQR9KMjskL+l2KsIqdXmR
+ F/VtfVlR4O0W1D9MWmMnF8DFcSRaOM+ZZvYUoJZsat8VUP/QR7rz1p4SE1GJkwYpTN+a
+ X4hbuvWfGb1KTL73kiiUTCAn605J1ZE4Mz5ly7rR37WtyirV/Qs97aNCLdY3VnhQsu34
+ NNlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=PGk9J+4Cve7nPzhB48lXZkSk8jD7RUn6XtFGq2ZdcE4=;
+ b=ir9k67JdKxhjsiA4tA5vw+AdGAFIElcckudYxRYo84E6uQ/bSrDX4d9axM1/4mxE0G
+ B1CwFiZAtDhl/Yz5uICpcAvSIEzgKlFR9S3LuPORgssG4wYA2bykN3b089RGPhwE+jyH
+ 1xtSLM3BIaQKUqyJJ7LcDZxCAOvUk8UjwySgT2EYXyj+bCC4465rrIvttlHHgCtzRPoy
+ TUh+H57p242HQ8rh6ZD3MdCofeYFmtGX+QWLwmZCeufTo/0V4FnUhFTXC+nNxtw7zWXf
+ +DXeeOHqrNXdWw+OR2Pxy7aLO6PCVZdQTEh5ZKf5+uSsmyaVry70O3sVxpGgy22AlNqs
+ tjYw==
+X-Gm-Message-State: APjAAAUvt4mT7LTL/RkRZjPBILDOS7wGKdtyun94QCHUlD5EgUmAJNDh
+ 09ekBhPwovKVRAnTRrlwqWdNOg==
+X-Google-Smtp-Source: APXvYqxlPmABURKMNZR4TlIqRnlfd/HOkYCVCXPKQWozAwch1z3PnRODRY9cczTpXXYxPHhWt0UqUQ==
+X-Received: by 2002:a63:ec4f:: with SMTP id r15mr9050130pgj.17.1571392383198; 
+ Fri, 18 Oct 2019 02:53:03 -0700 (PDT)
+Received: from localhost ([122.172.151.112])
+ by smtp.gmail.com with ESMTPSA id l62sm6471028pfl.167.2019.10.18.02.53.01
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 18 Oct 2019 02:53:02 -0700 (PDT)
+Date: Fri, 18 Oct 2019 15:23:00 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: "andrew-sh.cheng" <andrew-sh.cheng@mediatek.com>
+Subject: Re: [v4, 7/8] cpufreq: mediatek: add opp notification for SVS support
+Message-ID: <20191018095300.mtygp2ej7rnz6uzn@vireshk-i7>
+References: <1565703113-31479-1-git-send-email-andrew-sh.cheng@mediatek.com>
+ <1565703113-31479-8-git-send-email-andrew-sh.cheng@mediatek.com>
+ <20190820033927.72muldasu4xd6wb7@vireshk-i7>
+ <1571193828.22071.5.camel@mtksdaap41>
+ <20191017063102.4jirlphdxdydl2bm@vireshk-i7>
+ <1571389431.27207.4.camel@mtksdaap41>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 13098244CDB25E873947D08018311C68E73616178ECC778BC1294947B6B966362000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1571389431.27207.4.camel@mtksdaap41>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191018_021108_055537_C6B80877 
-X-CRM114-Status: GOOD (  19.29  )
+X-CRM114-CacheID: sfid-20191018_025304_294774_B30ABD1D 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,126 +100,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Yonglong Wu <yonglong.wu@mediatek.com>, hdegoede@redhat.com, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, chunfeng.yun@mediatek.com,
- Rob Herring <robh+dt@kernel.org>, Alan
- Stern <stern@rowland.harvard.edu>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, Bin Liu <b-liu@ti.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Chanwoo Choi <cw00.choi@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Fan Chen =?utf-8?B?KOmZs+WHoSk=?= <fan.chen@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-On Thu, 2019-10-17 at 09:34 -0700, Tony Lindgren wrote:
-> Hi,
+On 18-10-19, 17:03, andrew-sh.cheng wrote:
+> On Thu, 2019-10-17 at 12:01 +0530, Viresh Kumar wrote:
+> > On 16-10-19, 10:43, andrew-sh.cheng wrote:
+> > > This is due to SVS feature need to fix Vproc for calibration.
+> > > When SVS calibration, it want to disable all opp items, except one with
+> > > voltae 1.0V. (SVS will change the voltage field of that opp item, if the
+> > > corresponding voltage is not 1.0V)
+> > > In this way, SVS can make sure there is no other module, include
+> > > thermal, will change Vproc by DVFS driver.
+> > > After SVS calibration done, SVS will enable those disabled opp items
+> > > back.
+> > 
+> > But why is this required to be done this way ? Why can't we just update the
+> > voltages without doing this disable/enable dance ?
+> > 
+> This is because some opp items need voltage larger than 1.0V.
+> We cannot update the voltage to 1.0V.
 > 
-> Just few comments for future changes that might help below.
-> 
-> * min.guo@mediatek.com <min.guo@mediatek.com> [191017 09:42]:
-> > --- /dev/null
-> > +++ b/drivers/usb/musb/mediatek.c
-> > +static int musb_usb_role_sx_set(struct device *dev, enum usb_role role)
-> > +{
-> > +	struct mtk_glue *glue = dev_get_drvdata(dev);
-> > +	struct musb *musb = glue->musb;
-> > +	u8 devctl = readb(musb->mregs + MUSB_DEVCTL);
-> > +	enum usb_role new_role;
-> > +
-> > +	if (role == glue->role)
-> > +		return 0;
-> > +
-> > +	switch (role) {
-> > +	case USB_ROLE_HOST:
-> > +		musb->xceiv->otg->state = OTG_STATE_A_WAIT_VRISE;
-> > +		glue->phy_mode = PHY_MODE_USB_HOST;
-> > +		new_role = USB_ROLE_HOST;
-> > +		if (glue->role == USB_ROLE_NONE)
-> > +			phy_power_on(glue->phy);
-> > +
-> > +		devctl |= MUSB_DEVCTL_SESSION;
-> > +		musb_writeb(musb->mregs, MUSB_DEVCTL, devctl);
-> > +		MUSB_HST_MODE(musb);
-> > +		break;
-> > +	case USB_ROLE_DEVICE:
-> > +		musb->xceiv->otg->state = OTG_STATE_B_IDLE;
-> > +		glue->phy_mode = PHY_MODE_USB_DEVICE;
-> > +		new_role = USB_ROLE_DEVICE;
-> > +		devctl &= ~MUSB_DEVCTL_SESSION;
-> > +		musb_writeb(musb->mregs, MUSB_DEVCTL, devctl);
-> > +		if (glue->role == USB_ROLE_NONE)
-> > +			phy_power_on(glue->phy);
-> > +
-> > +		MUSB_DEV_MODE(musb);
-> > +		break;
-> > +	case USB_ROLE_NONE:
-> > +		glue->phy_mode = PHY_MODE_USB_OTG;
-> > +		new_role = USB_ROLE_NONE;
-> > +		devctl &= ~MUSB_DEVCTL_SESSION;
-> > +		musb_writeb(musb->mregs, MUSB_DEVCTL, devctl);
-> > +		if (glue->role != USB_ROLE_NONE)
-> > +			phy_power_off(glue->phy);
-> > +
-> > +		break;
-> > +	default:
-> > +		dev_err(glue->dev, "Invalid State\n");
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	glue->role = new_role;
-> > +	phy_set_mode(glue->phy, glue->phy_mode);
-> > +
-> > +	return 0;
-> > +}
-> 
-> For the role change, I recently posted a patch "[PATCH 4/7] usb: musb:
-> Add musb_set_host and peripheral and use them for omap2430". That
-> should work for you looking at the code above, so later on you might
-> want to change to use that. Probably best done as a follow-up patch
-> to avoid adding extra dependencies to your series.
-OK, thanks. I will try this patch.
+> If we don't disable these opp items, and DVFS policy want to set these
+> high frequencies, dvfs driver will set higher voltage to Vproc and SVS
+> calibration will be fail.
 
-> Please also note that musb core attempts to do things automagically
-> on it's own. So trying to force mode in general does not work reliably.
-> This is because VBUS may not yet have risen for example.
-VBUS control is through a GPIO on MediaTek musb controller. The host/device switching method is to use the driver of gpio-usb-b-connector, it sets the debounce of GPIO, the link of patch is as follows:
-	Usb: roles: add USB Type-B GPIO connector driver
-	Https://patchwork.kernel.org/patch/10966361/
+Okay.
 
-> The role change is best done based on the USB PHY as then usually
-> musb has already switched to the right mode automatically :)
-Considering the use of type-c connector later, the foce phy method is used.
-
-> > +static const struct musb_platform_ops mtk_musb_ops = {
-> > +	.quirks = MUSB_DMA_INVENTRA,
-> > +	.init = mtk_musb_init,
-> > +	.get_toggle = mtk_musb_get_toggle,
-> > +	.set_toggle = mtk_musb_set_toggle,
-> > +	.exit = mtk_musb_exit,
-> > +#ifdef CONFIG_USB_INVENTRA_DMA
-> > +	.dma_init = musbhs_dma_controller_create_noirq,
-> > +	.dma_exit = musbhs_dma_controller_destroy,
-> > +#endif
-> > +	.clearb = mtk_musb_clearb,
-> > +	.clearw = mtk_musb_clearw,
-> > +	.busctl_offset = mtk_musb_busctl_offset,
-> > +	.set_mode = mtk_musb_set_mode,
-> > +};
-> 
-> So you may want to consider getting rid of .set_mode completely
-> and rely on USB PHY calls instead.
-> 
-> In some cases you need to use struct phy_companion for set_vbus
-> depending how things are wired.
-> 
-> Regards,
-> 
-> Tony
-
-
+-- 
+viresh
 
 _______________________________________________
 Linux-mediatek mailing list
