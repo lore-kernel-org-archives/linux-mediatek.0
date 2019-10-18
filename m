@@ -2,62 +2,89 @@ Return-Path: <SRS0=Gkfw=YL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F0D0CA9EA0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2019 15:59:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 79728CA9EA9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2019 17:32:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4D1952082C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2019 15:59:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4889A222BD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Oct 2019 17:32:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qJHjOD9Z"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4D1952082C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IZ/j0qpw";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="F7bCnS3u"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4889A222BD
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LU5aWocAojkIsMPX1I76/ZIsF1jN5sMQNsXoXPkrm/E=; b=qJHjOD9ZjlPLLu
-	HlFgyHfhg/0VJqb/zy4bM+wUfS1zvz8Syfw4giUXBTbII/YC6IimF2iaD5jmj//qfIZJoA8tIm0o9
-	L36fFcsAKcDpYs7WGmWZ1YKznh0WVg0kMTsuiVxobEXu81H/m/YHJT+HtTbQnEmU/hgXyZWnCHUMh
-	p5eUOoX8tnUy3Fen9+Z3C77LApfStp9r730o432jTidMVhVgZD46J/w901BvlcAG6Aq2y/YftIF3N
-	t1LOWwiOy5t3p9OkVI/LcOsRssefFxliBG7mCqyMxlnCRjA/ULMRmqjmHtrK3hDFG/NMxpndI/N/5
-	/Jb3dw/KfORQ3jlDWcmA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=cn32LLnudlmar7H3AoESGlR1q7M3AGNtjUfmb5V1HqA=; b=IZ/j0qpwrJopIJ
+	BxM5X8+5wEMqpyElCI0NqLl9zo1kemB/mC9N+tc4p/rk3NvnQsT3A1nhTsOQIhXdeb3ccTDmGL5M2
+	aUEc9t4kUiQTc3yKbEGN73cOi+jDVUZoNnfH0jNztADm1ZUrhLSnpiswnURTGAh79FkQsqI2pm5JY
+	Mg3adNQ8/C8D8drlzXTraSxCArk606453TEeFfNQQ7AAN7VG0/ZDei5fhR4XBi1X/Up3ouuf8qCBU
+	udKnXEdAFfDoQnjIJ7TGap8CbPyaPq2qqwD2azg3VcoW26W3XERv+yWUyy8oILttKwpZk2RKyogb0
+	hjYT2fvJ6dQObHh3dOGg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iLUfC-0001Jw-OG; Fri, 18 Oct 2019 15:59:38 +0000
-Received: from [217.140.110.172] (helo=foss.arm.com)
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iLUXt-0001uZ-Fx; Fri, 18 Oct 2019 15:52:08 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 5ED99C8F;
- Fri, 18 Oct 2019 08:51:54 -0700 (PDT)
-Received: from localhost (unknown [10.37.6.20])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B437C3F718;
- Fri, 18 Oct 2019 08:51:53 -0700 (PDT)
-Date: Fri, 18 Oct 2019 16:51:52 +0100
-From: Andrew Murray <andrew.murray@arm.com>
-To: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 10/25] PCI: rockchip: Use
- pci_parse_request_of_pci_ranges()
-Message-ID: <20191018155152.GK47056@e119886-lin.cambridge.arm.com>
-References: <20191016200647.32050-1-robh@kernel.org>
- <20191016200647.32050-11-robh@kernel.org>
+	id 1iLW6v-0001UX-Sg; Fri, 18 Oct 2019 17:32:21 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iLW6t-0001Tg-0M
+ for linux-mediatek@lists.infradead.org; Fri, 18 Oct 2019 17:32:20 +0000
+Received: by mail-wm1-x344.google.com with SMTP id 3so6867828wmi.3
+ for <linux-mediatek@lists.infradead.org>; Fri, 18 Oct 2019 10:32:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=1Sw0jFW5jGSGbXDR6kjw3sQ7x0eXAWOU04hu+4Lun0I=;
+ b=F7bCnS3unseU4Pe5IzC5zUpmWlYMdj2YoPBCoyigGCpOa5U4q61E23KUKl7/OO8nS6
+ WUdzxbAus6HqI12ynE+nZwyeZbScvBHaNZ/MS3f0KnUNnx/EplI1jIZL/5iH71+0mdDz
+ dcRy9M6gwI3bMmfZsccnxZpqW7Rd51W1NywMy4/Mp4wT89DnDgdkLVO9fv5sh0RYkPyS
+ Ehf0VdWN6+9r6al9EuDyaJi+pPQ0TMXNqxP6f179NCcs0/5FVY+iBLYjGQ5xJXBeU71O
+ Q8mJc2Fg+yP3dNOPle+Zb1QIZzX2WsgUBZelWPvl8lmHh9R83fIiczy6BM3vNpewfQqr
+ /wPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=1Sw0jFW5jGSGbXDR6kjw3sQ7x0eXAWOU04hu+4Lun0I=;
+ b=F5UwPAwzeJUzIk/Tk/EauuiOx+e/OwtkMGGApv3FTqGer2Vb+yo7r3RAVDKtS5r7OP
+ HFiW/gV1L//FXGoyM8cLoqDWpaEi7tAzKaIUQ10h8bbVHEG39A2sICCRSZ2jHvtPkFl+
+ tJrPoDaIWbuEK+pK1iEAAwS55716A74Me6y51vp4Qn9EK3NkkdAr06RrQsUPKMUkEJaj
+ rRMRPGN5e2yn+JAnMXsIulf5ymgRIiPsbMd8N189rbjdz3zKSuyaCK4ORUeOhEYybLy0
+ xOjqhno/7mqlq84rCMwEMyOu4jZxlQw1b1smBNucWnz2sFk974mqvx/hSEUVGuFi/XJJ
+ WXeQ==
+X-Gm-Message-State: APjAAAUl5vxQrf9tw7dJMXqln+7SwGbxxw/EBl3FNzDDjfU9KFsH/q/H
+ /4G3CYo/CS3Xk878fBW4vav8Jw==
+X-Google-Smtp-Source: APXvYqwLL/J/QMgyordUs7NtcgM+iCDETbDA3BzJsTD+EyqWB7RmlJjXBDAvzNb7XcPW3p+O8v6QGw==
+X-Received: by 2002:a05:600c:2201:: with SMTP id
+ z1mr8798906wml.169.1571419936945; 
+ Fri, 18 Oct 2019 10:32:16 -0700 (PDT)
+Received: from localhost.localdomain ([2a01:e0a:32c:e530:1f62:944f:4c42:96a0])
+ by smtp.gmail.com with ESMTPSA id
+ z4sm5911967wrh.93.2019.10.18.10.32.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 18 Oct 2019 10:32:16 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-i2c@vger.kernel.org
+Subject: [PATCH RESEND v2] i2c: i2c-mt65xx: fix NULL ptr dereference
+Date: Fri, 18 Oct 2019 19:32:13 +0200
+Message-Id: <20191018173213.13282-1-fparent@baylibre.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191016200647.32050-11-robh@kernel.org>
-User-Agent: Mutt/1.10.1+81 (426a6c1) (2018-08-26)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191018_085205_660910_C084726D 
-X-CRM114-Status: GOOD (  19.82  )
+X-CRM114-CacheID: sfid-20191018_103219_073945_284EA6F4 
+X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,172 +96,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>,
- Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org,
- Shawn Lin <shawn.lin@rock-chips.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Michal Simek <michal.simek@xilinx.com>, linux-rockchip@lists.infradead.org,
- bcm-kernel-feedback-list@broadcom.com,
- Linus Walleij <linus.walleij@linaro.org>, Ray Jui <rjui@broadcom.com>,
- Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Ryder Lee <ryder.lee@mediatek.com>,
- linux-mediatek@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>,
- linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>,
- Jingoo Han <jingoohan1@gmail.com>, rfi@lists.rocketboards.org,
- linux-renesas-soc@vger.kernel.org, Tom Joseph <tjoseph@cadence.com>,
- Simon Horman <horms@verge.net.au>,
- Srinath Mannam <srinath.mannam@broadcom.com>,
- Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
- Ley Foon Tan <lftan@altera.com>
+Cc: Ulrich Hecht <uli@fpond.eu>, drinkcat@chromium.org, wsa@the-dreams.de,
+ Fabien Parent <fparent@baylibre.com>, hsinyi@chromium.org,
+ matthias.bgg@gmail.com, Cengiz Can <cengiz@kernel.wtf>, tglx@linutronix.de,
+ qii.wang@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 16, 2019 at 03:06:32PM -0500, Rob Herring wrote:
-> Convert the Rockchip host bridge to use the common
-> pci_parse_request_of_pci_ranges().
-> 
-> There's no need to assign the resources to a temporary list first. Just
-> use bridge->windows directly and remove all the temporary list handling.
-> 
-> Cc: Shawn Lin <shawn.lin@rock-chips.com>
-> Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-> Cc: Andrew Murray <andrew.murray@arm.com>
-> Cc: Bjorn Helgaas <bhelgaas@google.com>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: linux-rockchip@lists.infradead.org
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
-> v2:
-> - New patch
-> 
->  drivers/pci/controller/pcie-rockchip-host.c | 36 ++++-----------------
->  1 file changed, 7 insertions(+), 29 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-> index ef8e677ce9d1..8d2e6f2e141e 100644
-> --- a/drivers/pci/controller/pcie-rockchip-host.c
-> +++ b/drivers/pci/controller/pcie-rockchip-host.c
-> @@ -950,14 +950,10 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  	struct device *dev = &pdev->dev;
->  	struct pci_bus *bus, *child;
->  	struct pci_host_bridge *bridge;
-> +	struct resource *bus_res;
->  	struct resource_entry *win;
-> -	resource_size_t io_base;
-> -	struct resource	*mem;
-> -	struct resource	*io;
->  	int err;
-> 
-> -	LIST_HEAD(res);
-> -
->  	if (!dev->of_node)
->  		return -ENODEV;
-> 
-> @@ -995,29 +991,20 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  	if (err < 0)
->  		goto err_deinit_port;
-> 
-> -	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
-> -						    &res, &io_base);
-> +	err = pci_parse_request_of_pci_ranges(dev, &bridge->windows, &bus_res);
->  	if (err)
->  		goto err_remove_irq_domain;
-> 
-> -	err = devm_request_pci_bus_resources(dev, &res);
-> -	if (err)
-> -		goto err_free_res;
-> +	rockchip->root_bus_nr = bus_res->start;
-> 
->  	/* Get the I/O and memory ranges from DT */
-> -	resource_list_for_each_entry(win, &res) {
-> +	resource_list_for_each_entry(win, &bridge->windows) {
->  		switch (resource_type(win->res)) {
->  		case IORESOURCE_IO:
->  			io = win->res;
->  			io->name = "I/O";
+Since commit abf4923e97c3 ("i2c: mediatek: disable zero-length transfers
+for mt8183"), there is a NULL pointer dereference for all the SoCs
+that don't have any quirk. mtk_i2c_functionality is not checking that
+the quirks pointer is not NULL before starting to use it.
 
-In some patches of this series we drop the custom naming of memory resources,
-yet in others, like this one, we preserve the custom naming.
+This commit add a call to i2c_check_quirks which will check whether
+the quirks pointer is set, and if so will check if the IP has the
+NO_ZERO_LEN quirk.
 
-Should we be consistent in preserving the existing naming?
+Fixes: abf4923e97c3 ("i2c: mediatek: disable zero-length transfers for mt8183")
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+Reviewed-by: Cengiz Can <cengiz@kernel.wtf>
+Reviewed-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Tested-by: Ulrich Hecht <uli@fpond.eu>
 
-Thanks,
+---
 
-Andrew Murray
+v2:
+	* use i2c_check_quirks to check the quirks
 
->  			rockchip->io_size = resource_size(io);
->  			rockchip->io_bus_addr = io->start - win->offset;
-> -			err = pci_remap_iospace(io, io_base);
-> -			if (err) {
-> -				dev_warn(dev, "error %d: failed to map resource %pR\n",
-> -					 err, io);
-> -				continue;
-> -			}
->  			rockchip->io = io;
->  			break;
->  		case IORESOURCE_MEM:
-> @@ -1026,9 +1013,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  			rockchip->mem_size = resource_size(mem);
->  			rockchip->mem_bus_addr = mem->start - win->offset;
->  			break;
-> -		case IORESOURCE_BUS:
-> -			rockchip->root_bus_nr = win->res->start;
-> -			break;
->  		default:
->  			continue;
->  		}
-> @@ -1036,15 +1020,14 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
-> 
->  	err = rockchip_pcie_cfg_atu(rockchip);
->  	if (err)
-> -		goto err_unmap_iospace;
-> +		goto err_remove_irq_domain;
-> 
->  	rockchip->msg_region = devm_ioremap(dev, rockchip->msg_bus_addr, SZ_1M);
->  	if (!rockchip->msg_region) {
->  		err = -ENOMEM;
-> -		goto err_unmap_iospace;
-> +		goto err_remove_irq_domain;
->  	}
-> 
-> -	list_splice_init(&res, &bridge->windows);
->  	bridge->dev.parent = dev;
->  	bridge->sysdata = rockchip;
->  	bridge->busnr = 0;
-> @@ -1054,7 +1037,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
-> 
->  	err = pci_scan_root_bus_bridge(bridge);
->  	if (err < 0)
-> -		goto err_unmap_iospace;
-> +		goto err_remove_irq_domain;
-> 
->  	bus = bridge->bus;
-> 
-> @@ -1068,10 +1051,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  	pci_bus_add_devices(bus);
->  	return 0;
-> 
-> -err_unmap_iospace:
-> -	pci_unmap_iospace(rockchip->io);
-> -err_free_res:
-> -	pci_free_resource_list(&res);
->  err_remove_irq_domain:
->  	irq_domain_remove(rockchip->irq_domain);
->  err_deinit_port:
-> @@ -1097,7 +1076,6 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
-> 
->  	pci_stop_root_bus(rockchip->root_bus);
->  	pci_remove_root_bus(rockchip->root_bus);
-> -	pci_unmap_iospace(rockchip->io);
->  	irq_domain_remove(rockchip->irq_domain);
-> 
->  	rockchip_pcie_deinit_phys(rockchip);
-> --
-> 2.20.1
+---
+ drivers/i2c/busses/i2c-mt65xx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index 29eae1bf4f86..2152ec5f535c 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -875,7 +875,7 @@ static irqreturn_t mtk_i2c_irq(int irqno, void *dev_id)
+ 
+ static u32 mtk_i2c_functionality(struct i2c_adapter *adap)
+ {
+-	if (adap->quirks->flags & I2C_AQ_NO_ZERO_LEN)
++	if (i2c_check_quirks(adap, I2C_AQ_NO_ZERO_LEN))
+ 		return I2C_FUNC_I2C |
+ 			(I2C_FUNC_SMBUS_EMUL & ~I2C_FUNC_SMBUS_QUICK);
+ 	else
+-- 
+2.23.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
