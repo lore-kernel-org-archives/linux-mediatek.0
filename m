@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 946EDCA9EAE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 00:38:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A52BCA9EAE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 00:39:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 69F30207FC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 00:38:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2C649207FC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 00:39:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KCBN1tFo";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="p21Noq3C"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 69F30207FC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cqU7RfjH";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="bKfda/5l"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C649207FC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,59 +26,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jbzPVcr16qj30EeUO3fuqX8KTahQbyrDbw7Z2jIQDKY=; b=KCBN1tFoPx5p7A
-	coDxZtedZ+IF+hCecrNSBfOW+L2t3PbgRMK5FLFNLoQMXSxI1rkJviICH0ypYPJiFt50S18TWdMa0
-	eNMMUrdErLvQCIixiN+XU5cxqytgtCqKrxUO/gKvBY0mKjZjhzAzqJysnTr2f3QSslwS7yaZIQ3hO
-	Fa+gqxWrMmzW8cDbMz57PtHohZMwngMVd4+2kEP5q6qlIQQpkMJAeG+5L3fIFoHWKR1C5eX785hqZ
-	S7od/lktFBhzl+5u2uY74mgnyd8seS2yLzqz2d+91rGLrEQt/eT4ganZEe/8+W6YCW4Yw/I8zPizp
-	+phPxNNRRuCTlZPsXZAw==;
+	List-Owner; bh=4dRsF+C8Xhtn9hW+j41SL8apqt4bOtnvxipchxOh3dw=; b=cqU7RfjHEyEUJB
+	ebWL5oWE5JW0BmCCE4h6ObHy8oMdCJqB0u8UP2iiDfhRtT6Fc1PgVDtrSfs73gvHbmT8IzlHSc9jo
+	igfBl/iDtOGGkbIVkcirbLUiDAP8/czhjVRP9uLkSXaVdiecAo/dFiR05fvKRN51c8hHY9qPxqSec
+	g71xvyXMcn8qK3L0dX8BRrUw6YIWwgVPeDqSo2p5eX/0cEIul2g5W+ETcVwUJoyscbLki/YceyLCA
+	dI7W6V6ShGWRdVBsM3GyG847hmmKCeofEIwVaK8tVN+n9gVqCDzNMSwWSERFsfbd2hURH3wmDK5xw
+	jvdNKsie8p7GT9oN/jDA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMLiY-0000o2-Ii; Mon, 21 Oct 2019 00:38:38 +0000
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244])
+	id 1iMLjU-0001Ml-1M; Mon, 21 Oct 2019 00:39:36 +0000
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMLiV-0000mm-Ky
- for linux-mediatek@lists.infradead.org; Mon, 21 Oct 2019 00:38:37 +0000
-Received: by mail-lj1-x244.google.com with SMTP id m7so11407561lji.2
- for <linux-mediatek@lists.infradead.org>; Sun, 20 Oct 2019 17:38:34 -0700 (PDT)
+ id 1iMLjH-00017B-Dn
+ for linux-mediatek@lists.infradead.org; Mon, 21 Oct 2019 00:39:25 +0000
+Received: by mail-lj1-x243.google.com with SMTP id v24so11401505ljj.3
+ for <linux-mediatek@lists.infradead.org>; Sun, 20 Oct 2019 17:39:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=cUqtT92AZ9lrnd20Di/UpzfjLJC1pbg37G7/c5IKKgY=;
- b=p21Noq3CV55U0A8VkoqX9m278rUiKa/xxLlh7wdB854lwoLBsD/p2++t0xmNEycGIK
- ANYQQ14P9emosdRn1GHlGds1elZqSmc61JQxwsOk+HFpvm/lrsd1yD/4YJTzbmMzt+Q5
- KTMY/zdvQSJLiuV3K6AQ1QGcIBpkc4R37ftWyRLh9IAm8FQQEHlxsp1q6SfVBobY10Xw
- 7AExxFLYrCcP18tEtj8tAyDAm0jUCs4v0IoD/0RrJvvr1mMcc/9hWRivKyNDU07OfqMx
- gzbCsW2jvKPzSCUdmmeSrghFYS3dB0zTeJxQvDHXdK684lBmD+LdrJJQqxko/+eHauF9
- /HVg==
+ :cc; bh=9FExjd8Mw+5S7YMEqY/A4+by9kWereoTqCBatm9VlSY=;
+ b=bKfda/5lV6mWSWAiZpVxxNgMPBVwZY2DPWmhX6/nmnzg2UVxlImBP+/CfiJfb0DiYB
+ w9AfDMSY2xb7TJKWzJ0+yMgQCi8J1xBfKrV90PGs/IEDPvEiqamNKpZqVWxgVnPWKGYm
+ VN/CkYJn3XGCMykhmOivjJ0NuoUfJFVlSmhq7Xl76tAXV8UZroBJtxN4TpJwd1ySaSUC
+ AaUBJg36OCzkyyf51aFEd1O4z9D+UjGo/4Y2R/zIT6yqBY2hyQ2lWAyh03UyWv4Mk6X2
+ lSmCEqBEonc5NP58z1JO+HSpRadEiRVD11I6IW2n1nbWguPbe6WtLVRLwW/8m44zqXMN
+ cG7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=cUqtT92AZ9lrnd20Di/UpzfjLJC1pbg37G7/c5IKKgY=;
- b=M/2FDBXbWfnrwLUphuM7PmncHpWIxBocDoY4081NKFtv04X+oxUL6IddkJ3qqgSdPx
- Uef3wpYco9A53xxV7FZYeTmUAGsPMxf9pKMYgYK45va8Y7NAYQCRr3dWJo9npqAj809R
- qfj1qvxIgWyNLj5qxEvxAcs30Uj9rlwluFvkYIgBBRlCcblVsi4gFaHOGc+giieknbLy
- Mt7zD0MZJlnp09232piqWjzUVrQMnpHsGJa83l0EcQtDhAE4lGlYA8+2b+giXLNdXaSf
- Z+77Hr8nJFBABPLtyNf6G/rmGZhzAQ2vbVZ90odwM6y4701Sx/WAd3zi//xUeVlSt9U+
- 4Mxg==
-X-Gm-Message-State: APjAAAWEEW470JvtR0m55QVl7JrkxlzxUHTSd1C4RzdqjlaMeCcScX5P
- Mi2fZKqmeGfjB0Uz8zBObGdOSJVzN7q699RDOXZh6w==
-X-Google-Smtp-Source: APXvYqx+Sv2qws2AyWYB+jVZthwdqV3ztSd28/13A632cZQGo2Czb2JB4I8085joST3g83E93e5BoQ6uVRT+sDP11QY=
-X-Received: by 2002:a2e:9f4d:: with SMTP id v13mr12883755ljk.183.1571618313283; 
- Sun, 20 Oct 2019 17:38:33 -0700 (PDT)
+ bh=9FExjd8Mw+5S7YMEqY/A4+by9kWereoTqCBatm9VlSY=;
+ b=ZwuLQG/n6UGtX/c5qaGT3cgov58HGxe5XXinUkdBoK4a40LypAGUyNGJZbCGyB1FOl
+ 49LF3bHpu52ZN7Pg5VMKxNjkzFZm7GvadbQ427jgxqosFcmiN0HrdoeR51Z6xj7ngFXH
+ T1gANTUHYyGqARJBGp7Rho9FMNtVFdmqnPnKjJ07XCaFC0hhsiuN5U4k5eojYFH1YAsF
+ LKvCciotie7XUadtdFSls+R2LX35rRL34mnq4/rzv/Np53jd46lteFX58Hmj4fTEVgKg
+ MGEegHk1sRbnMHGcQu5iJMTpdBYjlWvOvAI7Mdp7we/loz3n4CUV42eKLtG4GRLuRcn+
+ RtgA==
+X-Gm-Message-State: APjAAAW8GzUSmreshuApsLhNdPtPqIJQy6oFg4CDUD3RVtU+zkVNowat
+ 4kcNvK/hCQMxOu/DbItCuzqZM7pFGUqJoP7gwkglbg==
+X-Google-Smtp-Source: APXvYqzWOeDq45DqnffOCq2/ChHGoqMhScnvErLh5JbufOO4hYwyRCMdCCsjftBVaXnakQZF8XtaUFolXzMPZX14iKU=
+X-Received: by 2002:a05:651c:1202:: with SMTP id
+ i2mr6489156lja.218.1571618361501; 
+ Sun, 20 Oct 2019 17:39:21 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191016200647.32050-1-robh@kernel.org>
- <20191016200647.32050-13-robh@kernel.org>
-In-Reply-To: <20191016200647.32050-13-robh@kernel.org>
+ <20191016200647.32050-17-robh@kernel.org>
+In-Reply-To: <20191016200647.32050-17-robh@kernel.org>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 21 Oct 2019 02:38:20 +0200
-Message-ID: <CACRpkdaxm-mdULkgm3NwncizELJ14SgLAnGLVy6UE+dUXN2ynQ@mail.gmail.com>
-Subject: Re: [PATCH v2 12/25] PCI: v3-semi: Use
+Date: Mon, 21 Oct 2019 02:39:07 +0200
+Message-ID: <CACRpkdYjY0JZCCfb9r9A2GKmO03hHXNCqGmy6qqBkLfOdZZdEQ@mail.gmail.com>
+Subject: Re: [PATCH v2 16/25] PCI: versatile: Use
  pci_parse_request_of_pci_ranges()
 To: Rob Herring <robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191020_173835_695916_AF733AE3 
-X-CRM114-Status: UNSURE (   8.92  )
+X-CRM114-CacheID: sfid-20191020_173923_462083_B2D82003 
+X-CRM114-Status: UNSURE (   9.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -119,17 +120,19 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On Wed, Oct 16, 2019 at 10:07 PM Rob Herring <robh@kernel.org> wrote:
 
-> Convert V3 host bridge to use the common
+> Convert ARM Versatile host bridge to use the common
 > pci_parse_request_of_pci_ranges().
 >
-> Cc: Linus Walleij <linus.walleij@linaro.org>
+> There's no need to assign the resources to a temporary list first. Just
+> use bridge->windows directly and remove all the temporary list handling.
+>
 > Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-> Cc: Andrew Murray <andrew.murray@arm.com>
 > Cc: Bjorn Helgaas <bhelgaas@google.com>
 > Signed-off-by: Rob Herring <robh@kernel.org>
 > ---
 > v2:
-> - New patch
+> - Fix 'mem' initial value to 1
+> - Remove temporary resource list
 
 Acked-by: Linus Walleij <linus.walleij@linaro.org>
 
