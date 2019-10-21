@@ -2,76 +2,73 @@ Return-Path: <SRS0=JbG7=YO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C9DB9CA9EAF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 16:03:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 752BACA9EAF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 21:46:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 941C0214AE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 16:03:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 46C112089C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 21:46:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="h8B6AV65";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="YnuG4tgp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 941C0214AE
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aCUbdgo2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 46C112089C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=vqDygOQJpxqk35iC/1J4rEeSHExvrF6idovEr2G4QyI=; b=h8B6AV65JI60VqpWZebJJW86+V
-	bWeSOXFA3UpbcBD48jPIAzh2ci1I5DKmrkAzW35tA6RCrcTHTb0XQt/GahmacesPbEpdp3V4JBdnv
-	QtpahJlSVyqOki3QKOHZn9Ev6KsDAcdVAKTVOM8GU7IjsXMpd7rH0HJlPnFJvubEm+e5+uT4H3V05
-	2jt/eFDf/LqaP1bv56Zz9T+i1sZaZT+7JmwBWHzTNzp0Dsx3Dke89+N39i9MwaORXoGOAFHslIAFz
-	afJlU+JzYL24kPTeewvIKZnmDTFKTEhzpJUkhUDJVrKcX5ucUPBpiLOukQZ1mKJJvORJD62lTzZU+
-	EurmWy9Q==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0t3NfCHjk7LBnbTUcbRR8kiuv8/prEzha1WRMYFTGnE=; b=aCUbdgo2rmbuD5
+	RtjlOLL2QQT5ixH5CFJizcgPhBJHpAmcW8ST6qiN/erTBCK4PbLmX2Fe1AQqbcpO5VlJtEHhDdxLw
+	jM5KyFFpWSUpO47ylSd4KfcUjNT/l2DPragAo07zSRq8qwZZHxY28XWIgy+AQ7taOq4HvLHYsPuSg
+	A1XN1QLsNCmdbtnBzgE2iojMqSQm6V5FfTUcv3Lx+VfVP/a6hxY/EET/WZyEOdjpHqbJXP1WXvB9O
+	1o/DalnU0bLlYqTkKoqwOnwzWDpY13lBSmuwhP4puZ+TKbDFHW4H2pmyRyYXnATF6C2CC3sJx07+Z
+	9apDczEz2lKibwnTsWXw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMa9E-0004NP-Ho; Mon, 21 Oct 2019 16:03:08 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1iMfVC-0000Ow-5Q; Mon, 21 Oct 2019 21:46:10 +0000
+Received: from mail-ot1-f67.google.com ([209.85.210.67])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMa8V-0003NI-OZ; Mon, 21 Oct 2019 16:02:25 +0000
-Received: from localhost.localdomain (unknown [194.230.155.217])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 2C85F20B7C;
- Mon, 21 Oct 2019 16:02:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1571673743;
- bh=9vUKs8pCzKFuQ7qoUJr6IKkD/Ix0T+CpovzK7sscdoY=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=YnuG4tgpME3kPNjXMpUARMsvb9tqSSpIBym0ehdPKylfYMgiqTnXeo27b5jdwh9dq
- qlPWNYYo7/4HpfxKy1fzneHlbFxhhI5aYIHBVsgbpVpZ8Yz2PkRaBWPAY7U+tvf0qO
- wKup6EQVUm2LRfxMmfeWS9uEP6d4M11xqW+icQ0U=
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-pwm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
- bcm-kernel-feedback-list@broadcom.com,
- linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
-Subject: [PATCH v4 2/2] dt-bindings: pwm: Convert Samsung PWM bindings to
- json-schema
-Date: Mon, 21 Oct 2019 18:02:07 +0200
-Message-Id: <20191021160207.18026-2-krzk@kernel.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20191021160207.18026-1-krzk@kernel.org>
-References: <20191021160207.18026-1-krzk@kernel.org>
+ id 1iMfUw-0000C7-GQ; Mon, 21 Oct 2019 21:45:56 +0000
+Received: by mail-ot1-f67.google.com with SMTP id 21so12345581otj.11;
+ Mon, 21 Oct 2019 14:45:53 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=nqe5QILtIpNsEaGhkK4nGkXs8zLkefJgCA+oa+2s7ok=;
+ b=db9KTeYkpaYOOjZMgE35pgtZ2xKfjPyYyi819zk+e31lUGvdoPYUABDmCcMg9ZCdQv
+ oMw3u1ARKoFYi/t13JCiUu++uBUMQ1RZcYoSfcX4HuvWJm3wNk/bUK3n083UNoGzYUY5
+ +DcsHUqnQYaMKcZtqIrX6+G40IvrJ5p54a+olZL9ZwOENy5U10VU4pzP+RSYrjnTQFSv
+ 4aMdXl2snQ2zcPM3ZoSA/MZEofZOluh19/j//hAfQbrrtuaFZvBazgrAatl9X4y2XwLU
+ mAA9C3tIK56HmV6ZlBDcvnpWTXxXrvB7/zXdmWLRfRg38Q+p6Mja1ybJs4jcoFtQHjG7
+ XH+Q==
+X-Gm-Message-State: APjAAAWin4AyFyvNmQGDPktfeokkjWclpuZ9GcGJ2lZ7jHZsH1PAnTvW
+ liJr8DM5vqnQU0iCjZYt3w==
+X-Google-Smtp-Source: APXvYqxCs8yabMuTaUbUxDWWtS2Wplp/U09Sf75zVuQx5s+Q4uVctXMoxLgtzYEKbav8DT5Bobt0qg==
+X-Received: by 2002:a9d:3df7:: with SMTP id l110mr40031otc.245.1571694353132; 
+ Mon, 21 Oct 2019 14:45:53 -0700 (PDT)
+Received: from xps15.herring.priv (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.googlemail.com with ESMTPSA id u130sm4122676oib.56.2019.10.21.14.45.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 21 Oct 2019 14:45:52 -0700 (PDT)
+From: Rob Herring <robh@kernel.org>
+To: dri-devel@lists.freedesktop.org
+Subject: [PATCH 0/6] drm: Support CMA per allocation kernel mappings
+Date: Mon, 21 Oct 2019 16:45:44 -0500
+Message-Id: <20191021214550.1461-1-robh@kernel.org>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191021_090223_850606_7096C76E 
-X-CRM114-Status: GOOD (  14.85  )
+X-CRM114-CacheID: sfid-20191021_144554_544317_B8C090D6 
+X-CRM114-Status: GOOD (  14.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,213 +80,101 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>
-MIME-Version: 1.0
+Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+ Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
+ Liviu Dudau <liviu.dudau@arm.com>, Sandy Huang <hjc@rock-chips.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Benjamin Gaignard <benjamin.gaignard@linaro.org>,
+ Yannick Fertre <yannick.fertre@st.com>, Kevin Hilman <khilman@baylibre.com>,
+ Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+ Xinliang Liu <z.liuxinliang@hisilicon.com>, linux-rockchip@lists.infradead.org,
+ Chen-Yu Tsai <wens@csie.org>,
+ =?UTF-8?q?Noralf=20Tr=C3=B8nnes?= <noralf@tronnes.org>,
+ "James \(Qian\) Wang" <james.qian.wang@arm.com>, CK Hu <ck.hu@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Alexandre Torgue <alexandre.torgue@st.com>,
+ Chen Feng <puck.chen@hisilicon.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org,
+ Philippe Cornu <philippe.cornu@st.com>, Vincent Abriou <vincent.abriou@st.com>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Rongrong Zou <zourongrong@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert Samsung PWM (S3C, S5P and Exynos SoCs) bindings to DT schema
-format using json-schema.
+This series adds support for CMA/DMA users to skip kernel mappings for
+GEM allocations. The DMA API only guarantees a kernel mapping at
+allocation time. Creating mappings with vmap() after allocation may or
+may not work as not all allocations have a struct page. As virtual
+memory space is limited on 32-bit systems some drivers will skip kernel
+mappings when possible. This prevents those drivers from using CMA
+helpers and the generic fbdev emulation which results in a lot of
+duplicated code.
 
-Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-Reviewed-by: Rob Herring <robh@kernel.org>
+In order to distinguish between kernel and userspace allocations,
+a new flag, DRM_MODE_DUMB_KERNEL_MAP, for drm_mode_create_dumb() is
+introduced. This allows drivers to override the default behavior for
+CMA helpers of always creating a kernel mapping.
 
----
+Mediatek is converted to CMA helpers and Rockchip is converted to generic
+fbdev support. I also have patches to convert Rockchip to CMA and shmem
+helpers, but they need a bit more work. Exynos can also probably be
+converted to use CMA helpers.
 
-Changes since v3:
-1. Add reviewed-by.
+Compile tested only. I did test fbdev on Rockchip, but the h/w I have
+has an IOMMU, so the CMA code path doesn't get tested.
 
-Changes since v2:
-1. Add additionalProperties: false.
+Rob
 
-Changes since v1:
-1. Indent example with four spaces (more readable),
-2. Fix samsung,pwm-outputs after review,
-3. Remove double-quotes from clock names.
----
- .../devicetree/bindings/pwm/pwm-samsung.txt   |  51 --------
- .../devicetree/bindings/pwm/pwm-samsung.yaml  | 109 ++++++++++++++++++
- 2 files changed, 109 insertions(+), 51 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/pwm/pwm-samsung.txt
- create mode 100644 Documentation/devicetree/bindings/pwm/pwm-samsung.yaml
+Rob Herring (6):
+  drm/kirin: Use DRM_GEM_CMA_VMAP_DRIVER_OPS
+  drm: Introduce DRM_MODE_DUMB_KERNEL_MAP flag
+  drm/cma-helper: Use the dma_*_attr API variant
+  drm/cma-helper: Support DRM_MODE_DUMB_KERNEL_MAP flag
+  drm/mediatek: Convert to use CMA helpers
+  drm/rockchip: Convert to use generic fbdev emulation
 
-diff --git a/Documentation/devicetree/bindings/pwm/pwm-samsung.txt b/Documentation/devicetree/bindings/pwm/pwm-samsung.txt
-deleted file mode 100644
-index 5538de9c2007..000000000000
---- a/Documentation/devicetree/bindings/pwm/pwm-samsung.txt
-+++ /dev/null
-@@ -1,51 +0,0 @@
--* Samsung PWM timers
--
--Samsung SoCs contain PWM timer blocks which can be used for system clock source
--and clock event timers, as well as to drive SoC outputs with PWM signal. Each
--PWM timer block provides 5 PWM channels (not all of them can drive physical
--outputs - see SoC and board manual).
--
--Be aware that the clocksource driver supports only uniprocessor systems.
--
--Required properties:
--- compatible : should be one of following:
--    samsung,s3c2410-pwm - for 16-bit timers present on S3C24xx SoCs
--    samsung,s3c6400-pwm - for 32-bit timers present on S3C64xx SoCs
--    samsung,s5p6440-pwm - for 32-bit timers present on S5P64x0 SoCs
--    samsung,s5pc100-pwm - for 32-bit timers present on S5PC100, S5PV210,
--			  Exynos4210 rev0 SoCs
--    samsung,exynos4210-pwm - for 32-bit timers present on Exynos4210,
--                          Exynos4x12, Exynos5250 and Exynos5420 SoCs
--- reg: base address and size of register area
--- interrupts: list of timer interrupts (one interrupt per timer, starting at
--  timer 0)
--- clock-names: should contain all following required clock names:
--    - "timers" - PWM base clock used to generate PWM signals,
--  and any subset of following optional clock names:
--    - "pwm-tclk0" - first external PWM clock source,
--    - "pwm-tclk1" - second external PWM clock source.
--  Note that not all IP variants allow using all external clock sources.
--  Refer to SoC documentation to learn which clock source configurations
--  are available.
--- clocks: should contain clock specifiers of all clocks, which input names
--  have been specified in clock-names property, in same order.
--- #pwm-cells: should be 3. See pwm.txt in this directory for a description of
--  the cells format. The only third cell flag supported by this binding is
--  PWM_POLARITY_INVERTED.
--
--Optional properties:
--- samsung,pwm-outputs: list of PWM channels used as PWM outputs on particular
--    platform - an array of up to 5 elements being indices of PWM channels
--    (from 0 to 4), the order does not matter.
--
--Example:
--	pwm@7f006000 {
--		compatible = "samsung,s3c6400-pwm";
--		reg = <0x7f006000 0x1000>;
--		interrupt-parent = <&vic0>;
--		interrupts = <23>, <24>, <25>, <27>, <28>;
--		clocks = <&clock 67>;
--		clock-names = "timers";
--		samsung,pwm-outputs = <0>, <1>;
--		#pwm-cells = <3>;
--	}
-diff --git a/Documentation/devicetree/bindings/pwm/pwm-samsung.yaml b/Documentation/devicetree/bindings/pwm/pwm-samsung.yaml
-new file mode 100644
-index 000000000000..ea7f32905172
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pwm/pwm-samsung.yaml
-@@ -0,0 +1,109 @@
-+# SPDX-License-Identifier: GPL-2.0
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/pwm/pwm-samsung.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Samsung SoC PWM timers
-+
-+maintainers:
-+  - Thierry Reding <thierry.reding@gmail.com>
-+  - Krzysztof Kozlowski <krzk@kernel.org>
-+
-+description: |+
-+  Samsung SoCs contain PWM timer blocks which can be used for system clock source
-+  and clock event timers, as well as to drive SoC outputs with PWM signal. Each
-+  PWM timer block provides 5 PWM channels (not all of them can drive physical
-+  outputs - see SoC and board manual).
-+
-+  Be aware that the clocksource driver supports only uniprocessor systems.
-+
-+allOf:
-+  - $ref: pwm.yaml#
-+
-+properties:
-+  compatible:
-+    enum:
-+      - samsung,s3c2410-pwm             # 16-bit, S3C24xx
-+      - samsung,s3c6400-pwm             # 32-bit, S3C64xx
-+      - samsung,s5p6440-pwm             # 32-bit, S5P64x0
-+      - samsung,s5pc100-pwm             # 32-bit, S5PC100, S5PV210, Exynos4210 rev0 SoCs
-+      - samsung,exynos4210-pwm          # 32-bit, Exynos
-+
-+  reg:
-+    maxItems: 1
-+
-+  clocks:
-+    minItems: 1
-+    maxItems: 3
-+
-+  clock-names:
-+    description: |
-+      Should contain all following required clock names:
-+      - "timers" - PWM base clock used to generate PWM signals,
-+      and any subset of following optional clock names:
-+      - "pwm-tclk0" - first external PWM clock source,
-+      - "pwm-tclk1" - second external PWM clock source.
-+      Note that not all IP variants allow using all external clock sources.
-+      Refer to SoC documentation to learn which clock source configurations
-+      are available.
-+    oneOf:
-+      - items:
-+        - const: timers
-+      - items:
-+        - const: timers
-+        - const: pwm-tclk0
-+      - items:
-+        - const: timers
-+        - const: pwm-tclk1
-+      - items:
-+        - const: timers
-+        - const: pwm-tclk0
-+        - const: pwm-tclk1
-+
-+  interrupts:
-+    description:
-+      One interrupt per timer, starting at timer 0.
-+    minItems: 1
-+    maxItems: 5
-+
-+  "#pwm-cells":
-+    description:
-+      The only third cell flag supported by this binding
-+      is PWM_POLARITY_INVERTED.
-+    const: 3
-+
-+  samsung,pwm-outputs:
-+    description:
-+      A list of PWM channels used as PWM outputs on particular platform.
-+      It is an array of up to 5 elements being indices of PWM channels
-+      (from 0 to 4), the order does not matter.
-+    allOf:
-+      - $ref: /schemas/types.yaml#/definitions/uint32-array
-+      - uniqueItems: true
-+      - items:
-+          minimum: 0
-+          maximum: 4
-+
-+required:
-+  - clocks
-+  - clock-names
-+  - compatible
-+  - interrupts
-+  - "#pwm-cells"
-+  - reg
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    pwm@7f006000 {
-+        compatible = "samsung,s3c6400-pwm";
-+        reg = <0x7f006000 0x1000>;
-+        interrupt-parent = <&vic0>;
-+        interrupts = <23>, <24>, <25>, <27>, <28>;
-+        clocks = <&clock 67>;
-+        clock-names = "timers";
-+        samsung,pwm-outputs = <0>, <1>;
-+        #pwm-cells = <3>;
-+    };
--- 
-2.17.1
+ .../gpu/drm/arm/display/komeda/komeda_kms.c   |   1 +
+ drivers/gpu/drm/arm/malidp_drv.c              |   1 +
+ drivers/gpu/drm/drm_client.c                  |   1 +
+ drivers/gpu/drm/drm_dumb_buffers.c            |   5 +-
+ drivers/gpu/drm/drm_gem_cma_helper.c          |  68 +++--
+ .../gpu/drm/hisilicon/kirin/kirin_drm_ade.c   |  11 +-
+ drivers/gpu/drm/mediatek/Makefile             |   1 -
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c       |   2 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  28 +-
+ drivers/gpu/drm/mediatek/mtk_drm_fb.c         |   1 -
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c        | 289 ------------------
+ drivers/gpu/drm/mediatek/mtk_drm_gem.h        |  51 ----
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c      |   7 +-
+ drivers/gpu/drm/meson/meson_drv.c             |   1 +
+ drivers/gpu/drm/rcar-du/rcar_du_kms.c         |   1 +
+ drivers/gpu/drm/rockchip/Makefile             |   1 -
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |  10 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |   2 -
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c    |  14 -
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.h    |   6 -
+ drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c | 170 -----------
+ drivers/gpu/drm/rockchip/rockchip_drm_fbdev.h |  24 --
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c   |   6 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.h   |   4 -
+ drivers/gpu/drm/stm/drv.c                     |   1 +
+ drivers/gpu/drm/sun4i/sun4i_drv.c             |   1 +
+ include/drm/drm_gem_cma_helper.h              |   1 +
+ include/uapi/drm/drm_mode.h                   |   2 +
+ 28 files changed, 78 insertions(+), 632 deletions(-)
+ delete mode 100644 drivers/gpu/drm/mediatek/mtk_drm_gem.c
+ delete mode 100644 drivers/gpu/drm/mediatek/mtk_drm_gem.h
+ delete mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
+ delete mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_fbdev.h
 
+--
+2.20.1
 
 _______________________________________________
 Linux-mediatek mailing list
