@@ -4,19 +4,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0BCB8CA9EAF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 21:46:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 082E9CA9EAF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 21:47:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C320E20659
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 21:46:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9D69A20659
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 21:47:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kyi/PjOE"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C320E20659
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XPjHdLhE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9D69A20659
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,53 +25,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KhEaf+hNmDRzNjz/QN+w3WNk5iVrS1hjh93ZfpG/vRI=; b=kyi/PjOEpyjjPJ
-	7IXqdyTmNqDTGCcLbSZOx17lUlJ7Y9wC0htkDDffqE+gx5cby5htroy3UfxKaKdIjINvT5QKjitiG
-	fsuoF3UDTh9njmawBKUDoX/+PGdCAPNW1KiyGUwVeEgRqN3oweoqWhk4XnAPwz1DSfOfdAsTotw9x
-	th5SSMNpDj0QA5iCBYlIHVq9GLEl2iDnjrtd5RtkctZJ44GZd4NLIGLqBsWNzZ0eGncvuJIafFVrr
-	DOs8tef2iHUP8WWCpi+51KP8H/esrlGts/WNMn4t9S1m2oGUW4rsFdLhf1diqy2/i5AZq/pXtoILg
-	Rvr1ieyuvSoZdnU13RNA==;
+	List-Owner; bh=1EwWrS/aessvb7bZz9AlRn/bd0TnDeBXPo9gqPSKQzY=; b=XPjHdLhEuXbDs0
+	b1RJwnQQOGk4QNcF2pgv4wJuY4+Pn79HLm837sSlkS22CeOwmLAjIP/Wkn24B+lC/Imtbc0B5DE8w
+	JA3jyJGFEbLAmvmemFQzgV1cumA2ar4edBFuDsrhFHshVQih8YefBh4bTW3xvzrug1BySRm9e1fRS
+	Yy2UAjOW14jbrENWWv1UkT89n3RKKPqUQlM5HdHIFuvrc8AOyoBYKUTFm8V1OOcXTpAGXLMJfYb6M
+	VrUgRQYsIU869mX4eNESL35rIDroPPEkCGmt1YAJ/r6pe12RH26ZHtq+NVXBVw9k/ovayCeHk5nPe
+	LIQLB5W4w9gQdokXzIOQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMfVY-0000lA-1N; Mon, 21 Oct 2019 21:46:32 +0000
-Received: from mail-oi1-f196.google.com ([209.85.167.196])
+	id 1iMfVr-00012s-5b; Mon, 21 Oct 2019 21:46:51 +0000
+Received: from mail-oi1-f195.google.com ([209.85.167.195])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMfUy-0000CL-Bq; Mon, 21 Oct 2019 21:45:57 +0000
-Received: by mail-oi1-f196.google.com with SMTP id k20so12416870oih.3;
- Mon, 21 Oct 2019 14:45:56 -0700 (PDT)
+ id 1iMfV0-0000D0-6m; Mon, 21 Oct 2019 21:46:00 +0000
+Received: by mail-oi1-f195.google.com with SMTP id b25so793033oib.7;
+ Mon, 21 Oct 2019 14:45:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=nG1jrqiVrLvARMweYNsyPG+j+EFZbDQxRJlgrVpfL4I=;
- b=VtycW8IzP8a16ec088v9Wa5wOzPnIqXpPHvZq1QwM6EuCXm10+KxTth0leun8lQPM8
- KLWjGN3HqMoUJAJh+toSfEx6XwQ0hXN92YJplM4PCJke62yFBUEOkNKAEIdORImon/+/
- QMcq1AXsIRJrorpQIBWza0/E3mv8RqgP+bV/Pjl2C/PWNcwrNK0TTgd1w0hgTcaFZFD8
- M4nhXTPGNgbwc0P9iPpldP4+Ipm5TBjOSky2F95PIZ+FbmpqeVWtSOyS5jZXB7A38Chk
- rxV82myZFOEjVnJgrqn0+Z4uZOytABHE9zZChpIHp9JF8YQuyRWAZQTCsVpGssAyOS5V
- LHOw==
-X-Gm-Message-State: APjAAAW/rpJR5O7X7moJ4nzpzPrD40lDAObYtZFvS/sX/qndJsKttOO0
- IGrF3Si9IoemnQyQgpli8A==
-X-Google-Smtp-Source: APXvYqz194LkjFFcxBO2leMnWf7q2qSETO24ZDGsm0zsCS7yjuJ9BThF7g7KveiT7DMyfLh8WcF/xA==
-X-Received: by 2002:aca:40b:: with SMTP id 11mr191900oie.59.1571694355381;
- Mon, 21 Oct 2019 14:45:55 -0700 (PDT)
+ bh=TsrtW/3IwxExUlY3NAEem6qIu9cq5ThxwAPMPnLEB1M=;
+ b=j6uwDb0aBUOnKVp3/h323Eze5VhQ5ZFno80BjVTxkX0TCLvTVGXb1f9NUjkK0RZPZO
+ J2eYPblsRxIWVJXk6kP99Sw0hojiYXdJGxsvo2WtoDK33evkIOWo/WZE0ku6rvzuKNpc
+ 1K9ZbAWz+cmxEqSDFWOHgl4mqVHattFq4vqtlvdZZ9yRlGAcCt1PPrdLzjJSTFiVJ5qU
+ snMsImW5ipHDOQ13xY6seBNj9KoJMs2EPZZc1xmIyNj0dGb+5+qijXg6lqGu/t6A82q5
+ F/vHuc7p2TcEJ6HgxD2CsbZDyCKNhUVheNDtms+Da+vql7D9rO7OV3GLXo6Fg3apSskI
+ vUKA==
+X-Gm-Message-State: APjAAAUE+NMtPb7/r7bfrwjJZTw1Xmi5T2IomSjP1Oef19mcb057t1C1
+ Pd8mfyVuoqb4WnHXhXE9yw==
+X-Google-Smtp-Source: APXvYqzlUvmVTKM2zNkWI5ewyGDS0Ga/AUXcXwnS+qOaifG3c/ZJADZnnQIk2JtuB+GHcDhGYasXJg==
+X-Received: by 2002:a54:4182:: with SMTP id 2mr188880oiy.148.1571694357143;
+ Mon, 21 Oct 2019 14:45:57 -0700 (PDT)
 Received: from xps15.herring.priv (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.googlemail.com with ESMTPSA id u130sm4122676oib.56.2019.10.21.14.45.53
+ by smtp.googlemail.com with ESMTPSA id u130sm4122676oib.56.2019.10.21.14.45.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Oct 2019 14:45:54 -0700 (PDT)
+ Mon, 21 Oct 2019 14:45:56 -0700 (PDT)
 From: Rob Herring <robh@kernel.org>
 To: dri-devel@lists.freedesktop.org
-Subject: [PATCH 1/6] drm/kirin: Use DRM_GEM_CMA_VMAP_DRIVER_OPS
-Date: Mon, 21 Oct 2019 16:45:45 -0500
-Message-Id: <20191021214550.1461-2-robh@kernel.org>
+Subject: [PATCH 2/6] drm: Introduce DRM_MODE_DUMB_KERNEL_MAP flag
+Date: Mon, 21 Oct 2019 16:45:46 -0500
+Message-Id: <20191021214550.1461-3-robh@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191021214550.1461-1-robh@kernel.org>
 References: <20191021214550.1461-1-robh@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191021_144556_401901_241DAF68 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20191021_144558_271114_4817FE14 
+X-CRM114-Status: GOOD (  14.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,44 +110,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-drm_gem_cma_dumb_create_internal() is not supposed to be used for
-.dumb_create directly. drm_gem_cma_dumb_create() should be used instead.
-If we do that, we might as well convert over to using
-DRM_GEM_CMA_VMAP_DRIVER_OPS instead.
+Introduce a new flag, DRM_MODE_DUMB_KERNEL_MAP, for struct
+drm_mode_create_dumb. This flag is for internal kernel use to indicate
+if dumb buffer allocation needs a kernel mapping. This is needed only for
+CMA where creating a kernel mapping or not has to be decided at allocation
+time because creating a mapping on demand (with vmap()) is not guaranteed
+to work. Several drivers are using CMA, but not the CMA helpers because
+they distinguish between kernel and userspace allocations to create a
+kernel mapping or not.
 
-Cc: Xinliang Liu <z.liuxinliang@hisilicon.com>
-Cc: Rongrong Zou <zourongrong@gmail.com>
-Cc: Xinwei Kong <kong.kongxinwei@hisilicon.com>
-Cc: Chen Feng <puck.chen@hisilicon.com>
+Update the callers of drm_mode_dumb_create() to set
+drm_mode_dumb_create.flags to appropriate defaults. Currently, flags can
+be set to anything by userspace, but is unused within the kernel. Let's
+force flags to zero (no kernel mapping) for userspace callers by default.
+For in kernel clients, set DRM_MODE_DUMB_KERNEL_MAP by default. Drivers
+can override this as needed.
+
 Cc: David Airlie <airlied@linux.ie>
 Cc: Daniel Vetter <daniel@ffwll.ch>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Cc: Maxime Ripard <mripard@kernel.org>
+Cc: Sean Paul <sean@poorly.run>
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/gpu/drm/hisilicon/kirin/kirin_drm_ade.c | 11 +----------
- 1 file changed, 1 insertion(+), 10 deletions(-)
+ drivers/gpu/drm/drm_client.c       | 1 +
+ drivers/gpu/drm/drm_dumb_buffers.c | 5 ++++-
+ include/uapi/drm/drm_mode.h        | 2 ++
+ 3 files changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/hisilicon/kirin/kirin_drm_ade.c b/drivers/gpu/drm/hisilicon/kirin/kirin_drm_ade.c
-index 73cd28a6ea07..490537a1d035 100644
---- a/drivers/gpu/drm/hisilicon/kirin/kirin_drm_ade.c
-+++ b/drivers/gpu/drm/hisilicon/kirin/kirin_drm_ade.c
-@@ -941,16 +941,7 @@ DEFINE_DRM_GEM_CMA_FOPS(ade_fops);
- static struct drm_driver ade_driver = {
- 	.driver_features = DRIVER_GEM | DRIVER_MODESET | DRIVER_ATOMIC,
- 	.fops = &ade_fops,
--	.gem_free_object_unlocked = drm_gem_cma_free_object,
--	.gem_vm_ops = &drm_gem_cma_vm_ops,
--	.dumb_create = drm_gem_cma_dumb_create_internal,
--	.prime_handle_to_fd	= drm_gem_prime_handle_to_fd,
--	.prime_fd_to_handle	= drm_gem_prime_fd_to_handle,
--	.gem_prime_get_sg_table = drm_gem_cma_prime_get_sg_table,
--	.gem_prime_import_sg_table = drm_gem_cma_prime_import_sg_table,
--	.gem_prime_vmap = drm_gem_cma_prime_vmap,
--	.gem_prime_vunmap = drm_gem_cma_prime_vunmap,
--	.gem_prime_mmap = drm_gem_cma_prime_mmap,
-+	DRM_GEM_CMA_VMAP_DRIVER_OPS,
+diff --git a/drivers/gpu/drm/drm_client.c b/drivers/gpu/drm/drm_client.c
+index d9a2e3695525..dbfc8061b392 100644
+--- a/drivers/gpu/drm/drm_client.c
++++ b/drivers/gpu/drm/drm_client.c
+@@ -264,6 +264,7 @@ drm_client_buffer_create(struct drm_client_dev *client, u32 width, u32 height, u
+ 	dumb_args.width = width;
+ 	dumb_args.height = height;
+ 	dumb_args.bpp = info->cpp[0] * 8;
++	dumb_args.flags = DRM_MODE_DUMB_KERNEL_MAP;
+ 	ret = drm_mode_create_dumb(dev, &dumb_args, client->file);
+ 	if (ret)
+ 		goto err_delete;
+diff --git a/drivers/gpu/drm/drm_dumb_buffers.c b/drivers/gpu/drm/drm_dumb_buffers.c
+index d18a740fe0f1..74a13f14c173 100644
+--- a/drivers/gpu/drm/drm_dumb_buffers.c
++++ b/drivers/gpu/drm/drm_dumb_buffers.c
+@@ -97,7 +97,10 @@ int drm_mode_create_dumb(struct drm_device *dev,
+ int drm_mode_create_dumb_ioctl(struct drm_device *dev,
+ 			       void *data, struct drm_file *file_priv)
+ {
+-	return drm_mode_create_dumb(dev, data, file_priv);
++	struct drm_mode_create_dumb *args = data;
++
++	args->flags = 0;
++	return drm_mode_create_dumb(dev, args, file_priv);
+ }
  
- 	.name = "kirin",
- 	.desc = "Hisilicon Kirin620 SoC DRM Driver",
+ /**
+diff --git a/include/uapi/drm/drm_mode.h b/include/uapi/drm/drm_mode.h
+index 735c8cfdaaa1..02712f46b94c 100644
+--- a/include/uapi/drm/drm_mode.h
++++ b/include/uapi/drm/drm_mode.h
+@@ -796,6 +796,8 @@ struct drm_mode_crtc_page_flip_target {
+ 	__u64 user_data;
+ };
+ 
++#define DRM_MODE_DUMB_KERNEL_MAP	(1<<0)	/* For internal kernel use */
++
+ /* create a dumb scanout buffer */
+ struct drm_mode_create_dumb {
+ 	__u32 height;
 -- 
 2.20.1
 
