@@ -2,73 +2,76 @@ Return-Path: <SRS0=JbG7=YO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 752BACA9EAF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 21:46:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0BCB8CA9EAF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 21:46:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 46C112089C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 21:46:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C320E20659
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 21:46:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aCUbdgo2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 46C112089C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kyi/PjOE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C320E20659
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0t3NfCHjk7LBnbTUcbRR8kiuv8/prEzha1WRMYFTGnE=; b=aCUbdgo2rmbuD5
-	RtjlOLL2QQT5ixH5CFJizcgPhBJHpAmcW8ST6qiN/erTBCK4PbLmX2Fe1AQqbcpO5VlJtEHhDdxLw
-	jM5KyFFpWSUpO47ylSd4KfcUjNT/l2DPragAo07zSRq8qwZZHxY28XWIgy+AQ7taOq4HvLHYsPuSg
-	A1XN1QLsNCmdbtnBzgE2iojMqSQm6V5FfTUcv3Lx+VfVP/a6hxY/EET/WZyEOdjpHqbJXP1WXvB9O
-	1o/DalnU0bLlYqTkKoqwOnwzWDpY13lBSmuwhP4puZ+TKbDFHW4H2pmyRyYXnATF6C2CC3sJx07+Z
-	9apDczEz2lKibwnTsWXw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KhEaf+hNmDRzNjz/QN+w3WNk5iVrS1hjh93ZfpG/vRI=; b=kyi/PjOEpyjjPJ
+	7IXqdyTmNqDTGCcLbSZOx17lUlJ7Y9wC0htkDDffqE+gx5cby5htroy3UfxKaKdIjINvT5QKjitiG
+	fsuoF3UDTh9njmawBKUDoX/+PGdCAPNW1KiyGUwVeEgRqN3oweoqWhk4XnAPwz1DSfOfdAsTotw9x
+	th5SSMNpDj0QA5iCBYlIHVq9GLEl2iDnjrtd5RtkctZJ44GZd4NLIGLqBsWNzZ0eGncvuJIafFVrr
+	DOs8tef2iHUP8WWCpi+51KP8H/esrlGts/WNMn4t9S1m2oGUW4rsFdLhf1diqy2/i5AZq/pXtoILg
+	Rvr1ieyuvSoZdnU13RNA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMfVC-0000Ow-5Q; Mon, 21 Oct 2019 21:46:10 +0000
-Received: from mail-ot1-f67.google.com ([209.85.210.67])
+	id 1iMfVY-0000lA-1N; Mon, 21 Oct 2019 21:46:32 +0000
+Received: from mail-oi1-f196.google.com ([209.85.167.196])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMfUw-0000C7-GQ; Mon, 21 Oct 2019 21:45:56 +0000
-Received: by mail-ot1-f67.google.com with SMTP id 21so12345581otj.11;
- Mon, 21 Oct 2019 14:45:53 -0700 (PDT)
+ id 1iMfUy-0000CL-Bq; Mon, 21 Oct 2019 21:45:57 +0000
+Received: by mail-oi1-f196.google.com with SMTP id k20so12416870oih.3;
+ Mon, 21 Oct 2019 14:45:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=nqe5QILtIpNsEaGhkK4nGkXs8zLkefJgCA+oa+2s7ok=;
- b=db9KTeYkpaYOOjZMgE35pgtZ2xKfjPyYyi819zk+e31lUGvdoPYUABDmCcMg9ZCdQv
- oMw3u1ARKoFYi/t13JCiUu++uBUMQ1RZcYoSfcX4HuvWJm3wNk/bUK3n083UNoGzYUY5
- +DcsHUqnQYaMKcZtqIrX6+G40IvrJ5p54a+olZL9ZwOENy5U10VU4pzP+RSYrjnTQFSv
- 4aMdXl2snQ2zcPM3ZoSA/MZEofZOluh19/j//hAfQbrrtuaFZvBazgrAatl9X4y2XwLU
- mAA9C3tIK56HmV6ZlBDcvnpWTXxXrvB7/zXdmWLRfRg38Q+p6Mja1ybJs4jcoFtQHjG7
- XH+Q==
-X-Gm-Message-State: APjAAAWin4AyFyvNmQGDPktfeokkjWclpuZ9GcGJ2lZ7jHZsH1PAnTvW
- liJr8DM5vqnQU0iCjZYt3w==
-X-Google-Smtp-Source: APXvYqxCs8yabMuTaUbUxDWWtS2Wplp/U09Sf75zVuQx5s+Q4uVctXMoxLgtzYEKbav8DT5Bobt0qg==
-X-Received: by 2002:a9d:3df7:: with SMTP id l110mr40031otc.245.1571694353132; 
- Mon, 21 Oct 2019 14:45:53 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=nG1jrqiVrLvARMweYNsyPG+j+EFZbDQxRJlgrVpfL4I=;
+ b=VtycW8IzP8a16ec088v9Wa5wOzPnIqXpPHvZq1QwM6EuCXm10+KxTth0leun8lQPM8
+ KLWjGN3HqMoUJAJh+toSfEx6XwQ0hXN92YJplM4PCJke62yFBUEOkNKAEIdORImon/+/
+ QMcq1AXsIRJrorpQIBWza0/E3mv8RqgP+bV/Pjl2C/PWNcwrNK0TTgd1w0hgTcaFZFD8
+ M4nhXTPGNgbwc0P9iPpldP4+Ipm5TBjOSky2F95PIZ+FbmpqeVWtSOyS5jZXB7A38Chk
+ rxV82myZFOEjVnJgrqn0+Z4uZOytABHE9zZChpIHp9JF8YQuyRWAZQTCsVpGssAyOS5V
+ LHOw==
+X-Gm-Message-State: APjAAAW/rpJR5O7X7moJ4nzpzPrD40lDAObYtZFvS/sX/qndJsKttOO0
+ IGrF3Si9IoemnQyQgpli8A==
+X-Google-Smtp-Source: APXvYqz194LkjFFcxBO2leMnWf7q2qSETO24ZDGsm0zsCS7yjuJ9BThF7g7KveiT7DMyfLh8WcF/xA==
+X-Received: by 2002:aca:40b:: with SMTP id 11mr191900oie.59.1571694355381;
+ Mon, 21 Oct 2019 14:45:55 -0700 (PDT)
 Received: from xps15.herring.priv (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.googlemail.com with ESMTPSA id u130sm4122676oib.56.2019.10.21.14.45.51
+ by smtp.googlemail.com with ESMTPSA id u130sm4122676oib.56.2019.10.21.14.45.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Oct 2019 14:45:52 -0700 (PDT)
+ Mon, 21 Oct 2019 14:45:54 -0700 (PDT)
 From: Rob Herring <robh@kernel.org>
 To: dri-devel@lists.freedesktop.org
-Subject: [PATCH 0/6] drm: Support CMA per allocation kernel mappings
-Date: Mon, 21 Oct 2019 16:45:44 -0500
-Message-Id: <20191021214550.1461-1-robh@kernel.org>
+Subject: [PATCH 1/6] drm/kirin: Use DRM_GEM_CMA_VMAP_DRIVER_OPS
+Date: Mon, 21 Oct 2019 16:45:45 -0500
+Message-Id: <20191021214550.1461-2-robh@kernel.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20191021214550.1461-1-robh@kernel.org>
+References: <20191021214550.1461-1-robh@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191021_144554_544317_B8C090D6 
-X-CRM114-Status: GOOD (  14.65  )
+X-CRM114-CacheID: sfid-20191021_144556_401901_241DAF68 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,74 +110,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series adds support for CMA/DMA users to skip kernel mappings for
-GEM allocations. The DMA API only guarantees a kernel mapping at
-allocation time. Creating mappings with vmap() after allocation may or
-may not work as not all allocations have a struct page. As virtual
-memory space is limited on 32-bit systems some drivers will skip kernel
-mappings when possible. This prevents those drivers from using CMA
-helpers and the generic fbdev emulation which results in a lot of
-duplicated code.
+drm_gem_cma_dumb_create_internal() is not supposed to be used for
+.dumb_create directly. drm_gem_cma_dumb_create() should be used instead.
+If we do that, we might as well convert over to using
+DRM_GEM_CMA_VMAP_DRIVER_OPS instead.
 
-In order to distinguish between kernel and userspace allocations,
-a new flag, DRM_MODE_DUMB_KERNEL_MAP, for drm_mode_create_dumb() is
-introduced. This allows drivers to override the default behavior for
-CMA helpers of always creating a kernel mapping.
+Cc: Xinliang Liu <z.liuxinliang@hisilicon.com>
+Cc: Rongrong Zou <zourongrong@gmail.com>
+Cc: Xinwei Kong <kong.kongxinwei@hisilicon.com>
+Cc: Chen Feng <puck.chen@hisilicon.com>
+Cc: David Airlie <airlied@linux.ie>
+Cc: Daniel Vetter <daniel@ffwll.ch>
+Signed-off-by: Rob Herring <robh@kernel.org>
+---
+ drivers/gpu/drm/hisilicon/kirin/kirin_drm_ade.c | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
 
-Mediatek is converted to CMA helpers and Rockchip is converted to generic
-fbdev support. I also have patches to convert Rockchip to CMA and shmem
-helpers, but they need a bit more work. Exynos can also probably be
-converted to use CMA helpers.
-
-Compile tested only. I did test fbdev on Rockchip, but the h/w I have
-has an IOMMU, so the CMA code path doesn't get tested.
-
-Rob
-
-Rob Herring (6):
-  drm/kirin: Use DRM_GEM_CMA_VMAP_DRIVER_OPS
-  drm: Introduce DRM_MODE_DUMB_KERNEL_MAP flag
-  drm/cma-helper: Use the dma_*_attr API variant
-  drm/cma-helper: Support DRM_MODE_DUMB_KERNEL_MAP flag
-  drm/mediatek: Convert to use CMA helpers
-  drm/rockchip: Convert to use generic fbdev emulation
-
- .../gpu/drm/arm/display/komeda/komeda_kms.c   |   1 +
- drivers/gpu/drm/arm/malidp_drv.c              |   1 +
- drivers/gpu/drm/drm_client.c                  |   1 +
- drivers/gpu/drm/drm_dumb_buffers.c            |   5 +-
- drivers/gpu/drm/drm_gem_cma_helper.c          |  68 +++--
- .../gpu/drm/hisilicon/kirin/kirin_drm_ade.c   |  11 +-
- drivers/gpu/drm/mediatek/Makefile             |   1 -
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c       |   2 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  28 +-
- drivers/gpu/drm/mediatek/mtk_drm_fb.c         |   1 -
- drivers/gpu/drm/mediatek/mtk_drm_gem.c        | 289 ------------------
- drivers/gpu/drm/mediatek/mtk_drm_gem.h        |  51 ----
- drivers/gpu/drm/mediatek/mtk_drm_plane.c      |   7 +-
- drivers/gpu/drm/meson/meson_drv.c             |   1 +
- drivers/gpu/drm/rcar-du/rcar_du_kms.c         |   1 +
- drivers/gpu/drm/rockchip/Makefile             |   1 -
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |  10 +-
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |   2 -
- drivers/gpu/drm/rockchip/rockchip_drm_fb.c    |  14 -
- drivers/gpu/drm/rockchip/rockchip_drm_fb.h    |   6 -
- drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c | 170 -----------
- drivers/gpu/drm/rockchip/rockchip_drm_fbdev.h |  24 --
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c   |   6 +-
- drivers/gpu/drm/rockchip/rockchip_drm_gem.h   |   4 -
- drivers/gpu/drm/stm/drv.c                     |   1 +
- drivers/gpu/drm/sun4i/sun4i_drv.c             |   1 +
- include/drm/drm_gem_cma_helper.h              |   1 +
- include/uapi/drm/drm_mode.h                   |   2 +
- 28 files changed, 78 insertions(+), 632 deletions(-)
- delete mode 100644 drivers/gpu/drm/mediatek/mtk_drm_gem.c
- delete mode 100644 drivers/gpu/drm/mediatek/mtk_drm_gem.h
- delete mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
- delete mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_fbdev.h
-
---
+diff --git a/drivers/gpu/drm/hisilicon/kirin/kirin_drm_ade.c b/drivers/gpu/drm/hisilicon/kirin/kirin_drm_ade.c
+index 73cd28a6ea07..490537a1d035 100644
+--- a/drivers/gpu/drm/hisilicon/kirin/kirin_drm_ade.c
++++ b/drivers/gpu/drm/hisilicon/kirin/kirin_drm_ade.c
+@@ -941,16 +941,7 @@ DEFINE_DRM_GEM_CMA_FOPS(ade_fops);
+ static struct drm_driver ade_driver = {
+ 	.driver_features = DRIVER_GEM | DRIVER_MODESET | DRIVER_ATOMIC,
+ 	.fops = &ade_fops,
+-	.gem_free_object_unlocked = drm_gem_cma_free_object,
+-	.gem_vm_ops = &drm_gem_cma_vm_ops,
+-	.dumb_create = drm_gem_cma_dumb_create_internal,
+-	.prime_handle_to_fd	= drm_gem_prime_handle_to_fd,
+-	.prime_fd_to_handle	= drm_gem_prime_fd_to_handle,
+-	.gem_prime_get_sg_table = drm_gem_cma_prime_get_sg_table,
+-	.gem_prime_import_sg_table = drm_gem_cma_prime_import_sg_table,
+-	.gem_prime_vmap = drm_gem_cma_prime_vmap,
+-	.gem_prime_vunmap = drm_gem_cma_prime_vunmap,
+-	.gem_prime_mmap = drm_gem_cma_prime_mmap,
++	DRM_GEM_CMA_VMAP_DRIVER_OPS,
+ 
+ 	.name = "kirin",
+ 	.desc = "Hisilicon Kirin620 SoC DRM Driver",
+-- 
 2.20.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
