@@ -2,83 +2,56 @@ Return-Path: <SRS0=JbG7=YO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
+X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D918CA9EAF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 11:44:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D5311CA9EAF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 12:12:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 30F8020656
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 11:44:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AABFA20873
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 12:12:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cS0SK7aW";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="PsyBUKS7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 30F8020656
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BnLf3vET"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AABFA20873
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=the-dreams.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=02Nl6KjcDaBkarepA6FcLF0t5PIKXwFbCCejNeP5sGM=; b=cS0SK7aWFXCroE
-	ehqFjXmQm7WVbsm0WxQmeSz0BgrldV7ZtB9pXJih1/AeRc70xBlWqaDCmco/OcjdaeU+ck834Jdcp
-	ULKLS/SRB4auxxkHjNMk/2WWo4tFVE67J/5iekYhB77J931eWOfHeKfHD7hhy/XzlnUDKw7vz+0K8
-	kj96B6wTLVE7EcVKSm2eWMKXHd6XpSGyN+5ZPGxaXqn3IBgbyTxO12NZxV6zq9nZv8E92I+xU3a41
-	E7BAKoHzDZqv5yN43pbMvRHNxqomv/PO8ymghYanX3J2j6O5Ujk8x27QeBsfwYTIiaezEugpEc7Z8
-	BJP2T30SWQC/nXhvtLXg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=2fuNQzfl9rfFjHqcSp+lq7/TD0/X+yrOPosimQRFTOs=; b=BnLf3vETTT0h1ewbJoVyc0riY
+	1MLvldN1VgFEUlElNizOz4cvUxcZJtotGT9uz85qzDo0yrx1pjXJ2rP4yEKLOmz8I4iOMFwTgwW9y
+	uQY4St4t9IL73E0T/T2b7QuoEzRL+jL2y9ekPmvHd9zrecvByMNzl2fc9tPl2Fl3C6k1VI6/vt9r1
+	6MPHp8H9YyAA3NFBojB4hUBFYdNIeH6/W99/P1jkh/uXvxcxSXBpY+d9hOjaGNl476HIvKUVN+o5v
+	tOLGXgCoHji/dllXtavWeipycGEXVSHpaiysNzTwW8Kj/54Nlvt9sP/QrecGiQZ8uNlXec/lSRqNS
+	S1/9oAoGw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMW7J-0008Gv-Lt; Mon, 21 Oct 2019 11:44:53 +0000
-Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMW72-00082y-Ob
- for linux-mediatek@lists.infradead.org; Mon, 21 Oct 2019 11:44:38 +0000
-Received: by mail-ua1-x944.google.com with SMTP id u31so3698807uah.0
- for <linux-mediatek@lists.infradead.org>; Mon, 21 Oct 2019 04:44:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=KSg26SWjQFt8SFFEyx8QZDcv+KIUSNzw/5kl16s+Vj0=;
- b=PsyBUKS7aYmTFIsiINdVGdDnLFZMUIHW7hGfjzj6h8j52Dpdn10FVdqf+LuVW60OKY
- ckvqCloEO+aA8MIejDEZkw29Xs2loC2DtjP6Un4ZOZ5cK4ONnTCdGUhavne9NG6v8sBH
- DzgTIZsHluqz2GJJqiQlSQOJVzA8PGfTWWcM1A9swf78nuHux62KdVruzexhMAAozU71
- XnIMeJz/vEuFImP/kVlrz4bW8GK80X6VeOJWMShrL2KZRwo7prJbEEojxUFzjGLkmmiv
- svP41lv7/wlnMvQ/8YCVxQoXblrHSujTXQOzOPg7hcG/9lpf78piC1R0pKpTQ0P/nEIK
- kVXg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=KSg26SWjQFt8SFFEyx8QZDcv+KIUSNzw/5kl16s+Vj0=;
- b=bd3BTIOyHWtkgebydysO/pQ8qJMewnTPdQz9gcWTH0i8JSLLRgc9MjQlqPkIQ+4Isa
- ky59lXdM2u0qNdtjKo/znzUTItiPIKkZ+MIU4PJI8S0T+vxQaVR8SzcEEiIf1IN4fAJi
- 76z8SMD+ILGu8Pfyh5+X6WChN/IBaH1nIIe5fQ04uPfBw/qp4hppBYpvTFACzruz5YA4
- iaBTUJjO8IdaYADtK2i5Txy4/l2wDK2VK/9q/qTWzc1qgLqSbyMur4cV+DUBspHEyGAV
- 4X/pPfHeMH/DHAMW1R3jfUlq/XAvv/HoVvARNvPg+S+w9oMTL+xjee+h55nXZ00WMOun
- aY/A==
-X-Gm-Message-State: APjAAAUseRVDvrdJvSWh2er16ECQ336W+hdvnekp+7nxv+RKizeR116Y
- lCYXLpq1Ue73wC9gAABy/Ejv8bHj6HHMvyq/t+izRw==
-X-Google-Smtp-Source: APXvYqx+TBsQJDgF01IGB4FH9mUGStVZN4fWPZ1N/cuN6TP1mpjsFqTYHKcfyhRphAaArZxZTabYiicePr18BMtcdBg=
-X-Received: by 2002:ab0:348c:: with SMTP id c12mr8377699uar.100.1571658275446; 
- Mon, 21 Oct 2019 04:44:35 -0700 (PDT)
+	id 1iMWYM-0003f8-UI; Mon, 21 Oct 2019 12:12:50 +0000
+Received: from sauhun.de ([88.99.104.3] helo=pokefinder.org)
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iMWYB-0003VT-Hh; Mon, 21 Oct 2019 12:12:40 +0000
+Received: from localhost (p54B33572.dip0.t-ipconnect.de [84.179.53.114])
+ by pokefinder.org (Postfix) with ESMTPSA id C6FD72C0076;
+ Mon, 21 Oct 2019 14:12:38 +0200 (CEST)
+Date: Mon, 21 Oct 2019 14:12:38 +0200
+From: Wolfram Sang <wsa@the-dreams.de>
+To: Fabien Parent <fparent@baylibre.com>
+Subject: Re: [PATCH RESEND v2] i2c: i2c-mt65xx: fix NULL ptr dereference
+Message-ID: <20191021121238.GD1145@ninjato>
+References: <20191018173213.13282-1-fparent@baylibre.com>
 MIME-Version: 1.0
-References: <20190905075318.15554-1-chaotian.jing@mediatek.com>
- <20190905075318.15554-3-chaotian.jing@mediatek.com>
-In-Reply-To: <20190905075318.15554-3-chaotian.jing@mediatek.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 21 Oct 2019 13:43:59 +0200
-Message-ID: <CAPDyKFp7cmWpD_9TUR2bPArGevo9M82MTff0RQ-Ly-+L7t5pHA@mail.gmail.com>
-Subject: Re: [PATCH v2 2/2] mmc: block: add CMD13 polling for ioctl() cmd with
- R1B response
-To: Chaotian Jing <chaotian.jing@mediatek.com>
+In-Reply-To: <20191018173213.13282-1-fparent@baylibre.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191021_044436_809812_4BBD0369 
-X-CRM114-Status: GOOD (  21.92  )
+X-CRM114-CacheID: sfid-20191021_051239_727883_AA54C2C5 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,231 +63,81 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, Chris Boot <bootc@bootc.net>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- Avri Altman <avri.altman@wdc.com>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- Zachary Hays <zhays@lexmark.com>, YueHaibing <yuehaibing@huawei.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Ming Lei <ming.lei@redhat.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- linux-mediatek@lists.infradead.org, Hannes Reinecke <hare@suse.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Ulrich Hecht <uli@fpond.eu>, drinkcat@chromium.org, qii.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-i2c@vger.kernel.org, hsinyi@chromium.org, matthias.bgg@gmail.com,
+ Cengiz Can <cengiz@kernel.wtf>, tglx@linutronix.de,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============2558333800911148766=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 5 Sep 2019 at 09:53, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
->
-> currently there is no CMD13 polling and other code to wait card
-> change to transfer state after R1B command completed. and this
-> polling operation cannot do in user space, because other request
-> may coming before the CMD13 from user space.
->
-> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
 
-Both patch 1 and patch2, looks like material for stable, so unless
-someone objects I am adding a tag for that.
-
-Moreover, I updated the changelogs, also according to suggestions from
-Avri and then applied both patches for next, thanks!
-
-Kind regards
-Uffe
+--===============2558333800911148766==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Ycz6tD7Th1CMF4v7"
+Content-Disposition: inline
 
 
-> ---
->  drivers/mmc/core/block.c | 146 +++++++++++++++------------------------
->  1 file changed, 55 insertions(+), 91 deletions(-)
->
-> diff --git a/drivers/mmc/core/block.c b/drivers/mmc/core/block.c
-> index aa7c19f7e298..ee1fd7df4ec8 100644
-> --- a/drivers/mmc/core/block.c
-> +++ b/drivers/mmc/core/block.c
-> @@ -408,38 +408,6 @@ static int mmc_blk_ioctl_copy_to_user(struct mmc_ioc_cmd __user *ic_ptr,
->         return 0;
->  }
->
-> -static int ioctl_rpmb_card_status_poll(struct mmc_card *card, u32 *status,
-> -                                      u32 retries_max)
-> -{
-> -       int err;
-> -       u32 retry_count = 0;
-> -
-> -       if (!status || !retries_max)
-> -               return -EINVAL;
-> -
-> -       do {
-> -               err = __mmc_send_status(card, status, 5);
-> -               if (err)
-> -                       break;
-> -
-> -               if (!R1_STATUS(*status) &&
-> -                               (R1_CURRENT_STATE(*status) != R1_STATE_PRG))
-> -                       break; /* RPMB programming operation complete */
-> -
-> -               /*
-> -                * Rechedule to give the MMC device a chance to continue
-> -                * processing the previous command without being polled too
-> -                * frequently.
-> -                */
-> -               usleep_range(1000, 5000);
-> -       } while (++retry_count < retries_max);
-> -
-> -       if (retry_count == retries_max)
-> -               err = -EPERM;
-> -
-> -       return err;
-> -}
-> -
->  static int ioctl_do_sanitize(struct mmc_card *card)
->  {
->         int err;
-> @@ -468,6 +436,58 @@ static int ioctl_do_sanitize(struct mmc_card *card)
->         return err;
->  }
->
-> +static inline bool mmc_blk_in_tran_state(u32 status)
-> +{
-> +       /*
-> +        * Some cards mishandle the status bits, so make sure to check both the
-> +        * busy indication and the card state.
-> +        */
-> +       return status & R1_READY_FOR_DATA &&
-> +              (R1_CURRENT_STATE(status) == R1_STATE_TRAN);
-> +}
-> +
-> +static int card_busy_detect(struct mmc_card *card, unsigned int timeout_ms,
-> +                           u32 *resp_errs)
-> +{
-> +       unsigned long timeout = jiffies + msecs_to_jiffies(timeout_ms);
-> +       int err = 0;
-> +       u32 status;
-> +
-> +       do {
-> +               bool done = time_after(jiffies, timeout);
-> +
-> +               err = __mmc_send_status(card, &status, 5);
-> +               if (err) {
-> +                       dev_err(mmc_dev(card->host),
-> +                               "error %d requesting status\n", err);
-> +                       return err;
-> +               }
-> +
-> +               /* Accumulate any response error bits seen */
-> +               if (resp_errs)
-> +                       *resp_errs |= status;
-> +
-> +               /*
-> +                * Timeout if the device never becomes ready for data and never
-> +                * leaves the program state.
-> +                */
-> +               if (done) {
-> +                       dev_err(mmc_dev(card->host),
-> +                               "Card stuck in wrong state! %s status: %#x\n",
-> +                                __func__, status);
-> +                       return -ETIMEDOUT;
-> +               }
-> +
-> +               /*
-> +                * Some cards mishandle the status bits,
-> +                * so make sure to check both the busy
-> +                * indication and the card state.
-> +                */
-> +       } while (!mmc_blk_in_tran_state(status));
-> +
-> +       return err;
-> +}
-> +
->  static int __mmc_blk_ioctl_cmd(struct mmc_card *card, struct mmc_blk_data *md,
->                                struct mmc_blk_ioc_data *idata)
->  {
-> @@ -611,16 +631,12 @@ static int __mmc_blk_ioctl_cmd(struct mmc_card *card, struct mmc_blk_data *md,
->
->         memcpy(&(idata->ic.response), cmd.resp, sizeof(cmd.resp));
->
-> -       if (idata->rpmb) {
-> +       if (idata->rpmb || (cmd.flags & MMC_RSP_R1B)) {
->                 /*
-> -                * Ensure RPMB command has completed by polling CMD13
-> +                * Ensure RPMB/R1B command has completed by polling CMD13
->                  * "Send Status".
->                  */
-> -               err = ioctl_rpmb_card_status_poll(card, &status, 5);
-> -               if (err)
-> -                       dev_err(mmc_dev(card->host),
-> -                                       "%s: Card Status=0x%08X, error %d\n",
-> -                                       __func__, status, err);
-> +               err = card_busy_detect(card, MMC_BLK_TIMEOUT_MS, NULL);
->         }
->
->         return err;
-> @@ -970,58 +986,6 @@ static unsigned int mmc_blk_data_timeout_ms(struct mmc_host *host,
->         return ms;
->  }
->
-> -static inline bool mmc_blk_in_tran_state(u32 status)
-> -{
-> -       /*
-> -        * Some cards mishandle the status bits, so make sure to check both the
-> -        * busy indication and the card state.
-> -        */
-> -       return status & R1_READY_FOR_DATA &&
-> -              (R1_CURRENT_STATE(status) == R1_STATE_TRAN);
-> -}
-> -
-> -static int card_busy_detect(struct mmc_card *card, unsigned int timeout_ms,
-> -                           u32 *resp_errs)
-> -{
-> -       unsigned long timeout = jiffies + msecs_to_jiffies(timeout_ms);
-> -       int err = 0;
-> -       u32 status;
-> -
-> -       do {
-> -               bool done = time_after(jiffies, timeout);
-> -
-> -               err = __mmc_send_status(card, &status, 5);
-> -               if (err) {
-> -                       dev_err(mmc_dev(card->host),
-> -                               "error %d requesting status\n", err);
-> -                       return err;
-> -               }
-> -
-> -               /* Accumulate any response error bits seen */
-> -               if (resp_errs)
-> -                       *resp_errs |= status;
-> -
-> -               /*
-> -                * Timeout if the device never becomes ready for data and never
-> -                * leaves the program state.
-> -                */
-> -               if (done) {
-> -                       dev_err(mmc_dev(card->host),
-> -                               "Card stuck in wrong state! %s status: %#x\n",
-> -                                __func__, status);
-> -                       return -ETIMEDOUT;
-> -               }
-> -
-> -               /*
-> -                * Some cards mishandle the status bits,
-> -                * so make sure to check both the busy
-> -                * indication and the card state.
-> -                */
-> -       } while (!mmc_blk_in_tran_state(status));
-> -
-> -       return err;
-> -}
-> -
->  static int mmc_blk_reset(struct mmc_blk_data *md, struct mmc_host *host,
->                          int type)
->  {
-> --
-> 2.18.0
->
+--Ycz6tD7Th1CMF4v7
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Oct 18, 2019 at 07:32:13PM +0200, Fabien Parent wrote:
+> Since commit abf4923e97c3 ("i2c: mediatek: disable zero-length transfers
+> for mt8183"), there is a NULL pointer dereference for all the SoCs
+> that don't have any quirk. mtk_i2c_functionality is not checking that
+> the quirks pointer is not NULL before starting to use it.
+>=20
+> This commit add a call to i2c_check_quirks which will check whether
+> the quirks pointer is set, and if so will check if the IP has the
+> NO_ZERO_LEN quirk.
+>=20
+> Fixes: abf4923e97c3 ("i2c: mediatek: disable zero-length transfers for mt=
+8183")
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> Reviewed-by: Cengiz Can <cengiz@kernel.wtf>
+> Reviewed-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> Tested-by: Ulrich Hecht <uli@fpond.eu>
+>=20
+
+Applied to for-current, thanks!
+
+
+--Ycz6tD7Th1CMF4v7
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl2toLYACgkQFA3kzBSg
+KbZHYhAAl8PJLRm3n1nm+VexzkwL5Vr5flPI4eZvMIG+4oHfei8QC90cd7qAMaid
+FLmD34xBk+wvW4QUp4VH/UoKm058/2xXE8xPEvVAZdxSVfhpU9tqkOsL4exxvv9A
+ERB4uZvYNbirHWOEv4XgxMSKucnFU+HwcDKqR0JjVWcYfl7jRKoq8lWgiQ0lPSc2
+y87dyYhM6Kp5XU3lGd8WqJbArlxT0h+4IzshXhg7Jh/nbqPIeu+R5jX1ilt1bj/A
+Sk7UCssar8LQ9Xj8kYXWhm7YJZ4mD3DaQ5yvl086mI2QOuAd65MYsU8IiW1/Bq1f
+JzBNSL0nms9CSZwnGL84qa4BC/3PT+MWMTDQYlsKAJAmhz4zkw8JMp2F4uI3KaZd
+p4uX+T5ecjdljvDga5HEsJ9zumJl/U+Hy3jxY+rxLDF+3ZiTVrQa68Hft8S97OI/
+83Q2LikqYYsbUJBXl/6asEdcpitFQwP545w/sSa5wa1kXBwCeCoAbFCxC+s4Sp7H
+aXZQDALTnUeYSLi12K2LYzZ3JZcjr9rPBg5EDNssm3U+SZBC+YESlNIEhGM6HMzX
+ZqHdhYmKM4FRI8F5fQ5ck7NQjq6GKckVIdUQM9q9eb/HdTw2ChgvetaVFO4JcdD+
+WhaIBzgT2gL6ESoLO5gvFya2cV8faV+zrg+SzykofwM99hR4DtU=
+=hHgJ
+-----END PGP SIGNATURE-----
+
+--Ycz6tD7Th1CMF4v7--
+
+
+--===============2558333800911148766==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============2558333800911148766==--
+
