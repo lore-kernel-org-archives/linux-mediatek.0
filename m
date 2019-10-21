@@ -2,68 +2,83 @@ Return-Path: <SRS0=JbG7=YO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D1ABFCA9EB5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 09:23:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D918CA9EAF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 11:44:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9267D20684
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 09:23:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 30F8020656
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Oct 2019 11:44:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oX5OHiPL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9267D20684
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cS0SK7aW";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="PsyBUKS7"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 30F8020656
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EpqXIqpyL/Kv1U8q9dov5smPRHc/NWuMDZVqCGEm/nE=; b=oX5OHiPLPNT5fY
-	+BWhrNmh6hgl5Yo2xX3pHbmwmvxgcbZhbjXqkftwOHt0qEdm3mGfmsht90HDXRCGp1S9u/wDQyWp1
-	hDafNowOQbE5aVp56XoKu7JCiw0jIw3gM6E+8VF8jWPjJtioObcWYUbfbuBnwvQpN7v434nmF7myw
-	hihk+oxG+Lkbc8XkUL7FqyQJJIojXrulsZvbaU9cvexv4ol+11wI9u2lnBFLv1cdWz1A/1Ht4jNtA
-	Koqdh1G/httG4DFHReFFYhkoGI2RVBJ78Ug8TvkkeioenT6KbfiH/8/gztkFSFgBZYypDj/Uql3ij
-	RCHpqS/eGLUnjqGUyMVQ==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=02Nl6KjcDaBkarepA6FcLF0t5PIKXwFbCCejNeP5sGM=; b=cS0SK7aWFXCroE
+	ehqFjXmQm7WVbsm0WxQmeSz0BgrldV7ZtB9pXJih1/AeRc70xBlWqaDCmco/OcjdaeU+ck834Jdcp
+	ULKLS/SRB4auxxkHjNMk/2WWo4tFVE67J/5iekYhB77J931eWOfHeKfHD7hhy/XzlnUDKw7vz+0K8
+	kj96B6wTLVE7EcVKSm2eWMKXHd6XpSGyN+5ZPGxaXqn3IBgbyTxO12NZxV6zq9nZv8E92I+xU3a41
+	E7BAKoHzDZqv5yN43pbMvRHNxqomv/PO8ymghYanX3J2j6O5Ujk8x27QeBsfwYTIiaezEugpEc7Z8
+	BJP2T30SWQC/nXhvtLXg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMTuY-0000Oy-At; Mon, 21 Oct 2019 09:23:34 +0000
-Received: from lb3-smtp-cloud7.xs4all.net ([194.109.24.31])
+	id 1iMW7J-0008Gv-Lt; Mon, 21 Oct 2019 11:44:53 +0000
+Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMTuJ-0000Dc-H7; Mon, 21 Oct 2019 09:23:22 +0000
-Received: from [192.168.2.10] ([46.9.232.237])
- by smtp-cloud7.xs4all.net with ESMTPA
- id MTu4iTW0no1ZhMTu7iLJFS; Mon, 21 Oct 2019 11:23:12 +0200
-Subject: Re: [PATCH v4 5/5] media: platform: Add jpeg dec/enc feature
-To: Xia Jiang <xia.jiang@mediatek.com>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Rick Chang <rick.chang@mediatek.com>
-References: <20191017084033.28299-1-xia.jiang@mediatek.com>
- <20191017084033.28299-6-xia.jiang@mediatek.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Message-ID: <a2e66e05-3248-de84-85d5-b0c7e5a080f1@xs4all.nl>
-Date: Mon, 21 Oct 2019 11:23:04 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ id 1iMW72-00082y-Ob
+ for linux-mediatek@lists.infradead.org; Mon, 21 Oct 2019 11:44:38 +0000
+Received: by mail-ua1-x944.google.com with SMTP id u31so3698807uah.0
+ for <linux-mediatek@lists.infradead.org>; Mon, 21 Oct 2019 04:44:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KSg26SWjQFt8SFFEyx8QZDcv+KIUSNzw/5kl16s+Vj0=;
+ b=PsyBUKS7aYmTFIsiINdVGdDnLFZMUIHW7hGfjzj6h8j52Dpdn10FVdqf+LuVW60OKY
+ ckvqCloEO+aA8MIejDEZkw29Xs2loC2DtjP6Un4ZOZ5cK4ONnTCdGUhavne9NG6v8sBH
+ DzgTIZsHluqz2GJJqiQlSQOJVzA8PGfTWWcM1A9swf78nuHux62KdVruzexhMAAozU71
+ XnIMeJz/vEuFImP/kVlrz4bW8GK80X6VeOJWMShrL2KZRwo7prJbEEojxUFzjGLkmmiv
+ svP41lv7/wlnMvQ/8YCVxQoXblrHSujTXQOzOPg7hcG/9lpf78piC1R0pKpTQ0P/nEIK
+ kVXg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=KSg26SWjQFt8SFFEyx8QZDcv+KIUSNzw/5kl16s+Vj0=;
+ b=bd3BTIOyHWtkgebydysO/pQ8qJMewnTPdQz9gcWTH0i8JSLLRgc9MjQlqPkIQ+4Isa
+ ky59lXdM2u0qNdtjKo/znzUTItiPIKkZ+MIU4PJI8S0T+vxQaVR8SzcEEiIf1IN4fAJi
+ 76z8SMD+ILGu8Pfyh5+X6WChN/IBaH1nIIe5fQ04uPfBw/qp4hppBYpvTFACzruz5YA4
+ iaBTUJjO8IdaYADtK2i5Txy4/l2wDK2VK/9q/qTWzc1qgLqSbyMur4cV+DUBspHEyGAV
+ 4X/pPfHeMH/DHAMW1R3jfUlq/XAvv/HoVvARNvPg+S+w9oMTL+xjee+h55nXZ00WMOun
+ aY/A==
+X-Gm-Message-State: APjAAAUseRVDvrdJvSWh2er16ECQ336W+hdvnekp+7nxv+RKizeR116Y
+ lCYXLpq1Ue73wC9gAABy/Ejv8bHj6HHMvyq/t+izRw==
+X-Google-Smtp-Source: APXvYqx+TBsQJDgF01IGB4FH9mUGStVZN4fWPZ1N/cuN6TP1mpjsFqTYHKcfyhRphAaArZxZTabYiicePr18BMtcdBg=
+X-Received: by 2002:ab0:348c:: with SMTP id c12mr8377699uar.100.1571658275446; 
+ Mon, 21 Oct 2019 04:44:35 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20191017084033.28299-6-xia.jiang@mediatek.com>
-Content-Language: en-US
-X-CMAE-Envelope: MS4wfBX4zeKC12ZrwQYD4Gu8nAfraoHeArJMkY6+EytbDESkYZwL6hzOhZZRpN2YyL28a5MldlJJB6nzlYnXGUNRb7ceJWpA4Bk5MBEjoV8Cs0hst2h/Odk1
- 8Fs5shOYHZeh9crSahooaj6fyj5giPN1NR0ua8fsM4j2SJwGbq+Z04izzsDSeA9G75THtWPR9wZ9xuodA8Y2K4GP4qxRLA+d8KK2hgpq3aA5vlcL5dFFcnOT
- 5RhOUJVG8LVKln4G80UITRtvYlVx7SpFsUlTYiJKhM19UwVwyPF34gQJrolTJ6eOA14NxOfnbyLF/xUI3437ir1cBaWCO+vp953B2MAGjD3hIjLd4289ABGQ
- e9T0QwmXqzaHf0SF/TvGAoipbEIARzMmlgXJ0r6y7hMuhb6P+Hcl/KN00Il/jKpSQIJG0sQ5zwwQ+qsWEuwf9MORMov7slZNwpxy67OpF1ULkJA+Z1rSroKH
- vuq5UPBjFs4R/60nTOtD7vGNdLbvxZAoiYePq5WrR4REefK/dV+1OGtFMN/Dw76g19gVwBucg7QJatLmhPQbzxGcvj7gMZIXiioAr4k63NMzQA2W22x1W108
- N0G/gIO4wEFQa3Mwgl8SjAifKowzwWwY7Cud+zqZshZM5NxoBhK/2pMjOMN5Cq7k7I4=
+References: <20190905075318.15554-1-chaotian.jing@mediatek.com>
+ <20190905075318.15554-3-chaotian.jing@mediatek.com>
+In-Reply-To: <20190905075318.15554-3-chaotian.jing@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Mon, 21 Oct 2019 13:43:59 +0200
+Message-ID: <CAPDyKFp7cmWpD_9TUR2bPArGevo9M82MTff0RQ-Ly-+L7t5pHA@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] mmc: block: add CMD13 polling for ioctl() cmd with
+ R1B response
+To: Chaotian Jing <chaotian.jing@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191021_022319_721368_5C0FBBEB 
-X-CRM114-Status: GOOD (  20.80  )
+X-CRM114-CacheID: sfid-20191021_044436_809812_4BBD0369 
+X-CRM114-Status: GOOD (  21.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,129 +90,229 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
- linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: Jens Axboe <axboe@kernel.dk>, Chris Boot <bootc@bootc.net>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ Avri Altman <avri.altman@wdc.com>,
+ "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+ Zachary Hays <zhays@lexmark.com>, YueHaibing <yuehaibing@huawei.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Ming Lei <ming.lei@redhat.com>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>,
+ linux-mediatek@lists.infradead.org, Hannes Reinecke <hare@suse.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Xia,
+On Thu, 5 Sep 2019 at 09:53, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
+>
+> currently there is no CMD13 polling and other code to wait card
+> change to transfer state after R1B command completed. and this
+> polling operation cannot do in user space, because other request
+> may coming before the CMD13 from user space.
+>
+> Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
 
-Some comments about the selection code:
+Both patch 1 and patch2, looks like material for stable, so unless
+someone objects I am adding a tag for that.
 
-On 10/17/19 10:40 AM, Xia Jiang wrote:
-> Add mtk jpeg encode v4l2 driver based on jpeg decode, because that jpeg
-> decode and encode have great similarities with function operation.
-> 
-> Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
+Moreover, I updated the changelogs, also according to suggestions from
+Avri and then applied both patches for next, thanks!
+
+Kind regards
+Uffe
+
+
 > ---
-> v4: split mtk_jpeg_try_fmt_mplane() to two functions, one for encoder,
->     one for decoder.
->     split mtk_jpeg_set_default_params() to two functions, one for
->     encoder, one for decoder.
->     add cropping support for encoder in g/s_selection ioctls.
->     change exif mode support by using V4L2_JPEG_ACTIVE_MARKER_APP1.
->     change MTK_JPEG_MAX_WIDTH/MTK_JPEG_MAX_HEIGH from 8192 to 65535 by
->     specification.
->     move width shifting operation behind aligning operation in
->     mtk_jpeg_try_enc_fmt_mplane() for bug fix.
->     fix user abuseing data_offset issue for DMABUF in
->     mtk_jpeg_set_enc_src().
->     fix kbuild warings: change MTK_JPEG_MIN_HEIGHT/MTK_JPEG_MAX_HEIGHT
->                         and MTK_JPEG_MIN_WIDTH/MTK_JPEG_MAX_WIDTH from
->                         'int' type to 'unsigned int' type.
->                         fix msleadingly indented of 'else'.
-> 
-> v3: delete Change-Id.
->     only test once handler->error after the last v4l2_ctrl_new_std().
->     seperate changes of v4l2-ctrls.c and v4l2-controls.h to new patch.
-> 
-> v2: fix compliance test fail, check created buffer size in driver.
-> ---
->  drivers/media/platform/mtk-jpeg/Makefile      |   5 +-
->  .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 731 +++++++++++++++---
->  .../media/platform/mtk-jpeg/mtk_jpeg_core.h   | 123 ++-
->  .../media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h |   7 +-
->  .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c | 175 +++++
->  .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h |  60 ++
->  .../platform/mtk-jpeg/mtk_jpeg_enc_reg.h      |  49 ++
->  7 files changed, 1004 insertions(+), 146 deletions(-)
->  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
->  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h
->  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_reg.h
-> 
-
-<snip>
-
-> @@ -455,11 +679,19 @@ static int mtk_jpeg_g_selection(struct file *file, void *priv,
->  				struct v4l2_selection *s)
->  {
->  	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
-> +	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
->  
-> -	if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
-> +	if (jpeg->mode == MTK_JPEG_ENC && s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
-> +		return -EINVAL;
-> +
-> +	if (jpeg->mode == MTK_JPEG_DEC &&
-> +	    s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
->  		return -EINVAL;
->  
->  	switch (s->target) {
-> +	case V4L2_SEL_TGT_CROP:
-> +	case V4L2_SEL_TGT_CROP_BOUNDS:
-> +	case V4L2_SEL_TGT_CROP_DEFAULT:
-
-This is wrong...
-
->  	case V4L2_SEL_TGT_COMPOSE:
->  	case V4L2_SEL_TGT_COMPOSE_DEFAULT:
->  		s->r.width = ctx->out_q.w;
-> @@ -484,11 +716,17 @@ static int mtk_jpeg_s_selection(struct file *file, void *priv,
->  				struct v4l2_selection *s)
->  {
->  	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
-> +	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
->  
-> -	if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
-> +	if (jpeg->mode == MTK_JPEG_ENC && s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
-> +		return -EINVAL;
-> +
-> +	if (jpeg->mode == MTK_JPEG_DEC &&
-> +	    s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
->  		return -EINVAL;
->  
->  	switch (s->target) {
-> +	case V4L2_SEL_TGT_CROP:
-
-...and so is this.
-
-The decoder only supports COMPOSE, the encoder only supports CROP.
-
-This signals support for both cropping and composition for both encoder and
-decoder, and that's wrong. You can see this in the compliance output as well:
-it says that both cropping and composition are 'OK', meaning that both features
-are implemented.
-
-It also claims that the decoder supports scaling. Is that correct? Is there a
-scaler in the JPEG decoder? Usually codecs do not have a scaler.
-
-Regards,
-
-	Hans
-
->  	case V4L2_SEL_TGT_COMPOSE:
->  		s->r.left = 0;
->  		s->r.top = 0;
-> @@ -658,10 +896,92 @@ static void mtk_jpeg_set_queue_data(struct mtk_jpeg_ctx *ctx,
->  		 param->dec_w, param->dec_h);
+>  drivers/mmc/core/block.c | 146 +++++++++++++++------------------------
+>  1 file changed, 55 insertions(+), 91 deletions(-)
+>
+> diff --git a/drivers/mmc/core/block.c b/drivers/mmc/core/block.c
+> index aa7c19f7e298..ee1fd7df4ec8 100644
+> --- a/drivers/mmc/core/block.c
+> +++ b/drivers/mmc/core/block.c
+> @@ -408,38 +408,6 @@ static int mmc_blk_ioctl_copy_to_user(struct mmc_ioc_cmd __user *ic_ptr,
+>         return 0;
 >  }
-
-
+>
+> -static int ioctl_rpmb_card_status_poll(struct mmc_card *card, u32 *status,
+> -                                      u32 retries_max)
+> -{
+> -       int err;
+> -       u32 retry_count = 0;
+> -
+> -       if (!status || !retries_max)
+> -               return -EINVAL;
+> -
+> -       do {
+> -               err = __mmc_send_status(card, status, 5);
+> -               if (err)
+> -                       break;
+> -
+> -               if (!R1_STATUS(*status) &&
+> -                               (R1_CURRENT_STATE(*status) != R1_STATE_PRG))
+> -                       break; /* RPMB programming operation complete */
+> -
+> -               /*
+> -                * Rechedule to give the MMC device a chance to continue
+> -                * processing the previous command without being polled too
+> -                * frequently.
+> -                */
+> -               usleep_range(1000, 5000);
+> -       } while (++retry_count < retries_max);
+> -
+> -       if (retry_count == retries_max)
+> -               err = -EPERM;
+> -
+> -       return err;
+> -}
+> -
+>  static int ioctl_do_sanitize(struct mmc_card *card)
+>  {
+>         int err;
+> @@ -468,6 +436,58 @@ static int ioctl_do_sanitize(struct mmc_card *card)
+>         return err;
+>  }
+>
+> +static inline bool mmc_blk_in_tran_state(u32 status)
+> +{
+> +       /*
+> +        * Some cards mishandle the status bits, so make sure to check both the
+> +        * busy indication and the card state.
+> +        */
+> +       return status & R1_READY_FOR_DATA &&
+> +              (R1_CURRENT_STATE(status) == R1_STATE_TRAN);
+> +}
+> +
+> +static int card_busy_detect(struct mmc_card *card, unsigned int timeout_ms,
+> +                           u32 *resp_errs)
+> +{
+> +       unsigned long timeout = jiffies + msecs_to_jiffies(timeout_ms);
+> +       int err = 0;
+> +       u32 status;
+> +
+> +       do {
+> +               bool done = time_after(jiffies, timeout);
+> +
+> +               err = __mmc_send_status(card, &status, 5);
+> +               if (err) {
+> +                       dev_err(mmc_dev(card->host),
+> +                               "error %d requesting status\n", err);
+> +                       return err;
+> +               }
+> +
+> +               /* Accumulate any response error bits seen */
+> +               if (resp_errs)
+> +                       *resp_errs |= status;
+> +
+> +               /*
+> +                * Timeout if the device never becomes ready for data and never
+> +                * leaves the program state.
+> +                */
+> +               if (done) {
+> +                       dev_err(mmc_dev(card->host),
+> +                               "Card stuck in wrong state! %s status: %#x\n",
+> +                                __func__, status);
+> +                       return -ETIMEDOUT;
+> +               }
+> +
+> +               /*
+> +                * Some cards mishandle the status bits,
+> +                * so make sure to check both the busy
+> +                * indication and the card state.
+> +                */
+> +       } while (!mmc_blk_in_tran_state(status));
+> +
+> +       return err;
+> +}
+> +
+>  static int __mmc_blk_ioctl_cmd(struct mmc_card *card, struct mmc_blk_data *md,
+>                                struct mmc_blk_ioc_data *idata)
+>  {
+> @@ -611,16 +631,12 @@ static int __mmc_blk_ioctl_cmd(struct mmc_card *card, struct mmc_blk_data *md,
+>
+>         memcpy(&(idata->ic.response), cmd.resp, sizeof(cmd.resp));
+>
+> -       if (idata->rpmb) {
+> +       if (idata->rpmb || (cmd.flags & MMC_RSP_R1B)) {
+>                 /*
+> -                * Ensure RPMB command has completed by polling CMD13
+> +                * Ensure RPMB/R1B command has completed by polling CMD13
+>                  * "Send Status".
+>                  */
+> -               err = ioctl_rpmb_card_status_poll(card, &status, 5);
+> -               if (err)
+> -                       dev_err(mmc_dev(card->host),
+> -                                       "%s: Card Status=0x%08X, error %d\n",
+> -                                       __func__, status, err);
+> +               err = card_busy_detect(card, MMC_BLK_TIMEOUT_MS, NULL);
+>         }
+>
+>         return err;
+> @@ -970,58 +986,6 @@ static unsigned int mmc_blk_data_timeout_ms(struct mmc_host *host,
+>         return ms;
+>  }
+>
+> -static inline bool mmc_blk_in_tran_state(u32 status)
+> -{
+> -       /*
+> -        * Some cards mishandle the status bits, so make sure to check both the
+> -        * busy indication and the card state.
+> -        */
+> -       return status & R1_READY_FOR_DATA &&
+> -              (R1_CURRENT_STATE(status) == R1_STATE_TRAN);
+> -}
+> -
+> -static int card_busy_detect(struct mmc_card *card, unsigned int timeout_ms,
+> -                           u32 *resp_errs)
+> -{
+> -       unsigned long timeout = jiffies + msecs_to_jiffies(timeout_ms);
+> -       int err = 0;
+> -       u32 status;
+> -
+> -       do {
+> -               bool done = time_after(jiffies, timeout);
+> -
+> -               err = __mmc_send_status(card, &status, 5);
+> -               if (err) {
+> -                       dev_err(mmc_dev(card->host),
+> -                               "error %d requesting status\n", err);
+> -                       return err;
+> -               }
+> -
+> -               /* Accumulate any response error bits seen */
+> -               if (resp_errs)
+> -                       *resp_errs |= status;
+> -
+> -               /*
+> -                * Timeout if the device never becomes ready for data and never
+> -                * leaves the program state.
+> -                */
+> -               if (done) {
+> -                       dev_err(mmc_dev(card->host),
+> -                               "Card stuck in wrong state! %s status: %#x\n",
+> -                                __func__, status);
+> -                       return -ETIMEDOUT;
+> -               }
+> -
+> -               /*
+> -                * Some cards mishandle the status bits,
+> -                * so make sure to check both the busy
+> -                * indication and the card state.
+> -                */
+> -       } while (!mmc_blk_in_tran_state(status));
+> -
+> -       return err;
+> -}
+> -
+>  static int mmc_blk_reset(struct mmc_blk_data *md, struct mmc_host *host,
+>                          int type)
+>  {
+> --
+> 2.18.0
+>
 
 _______________________________________________
 Linux-mediatek mailing list
