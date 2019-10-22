@@ -5,174 +5,143 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 74FBACA9EA0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2019 06:13:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E2207CA9EA0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2019 07:50:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3E2A921783
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2019 06:13:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AF1F92184C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2019 07:50:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SOXFvz5b";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=armh.onmicrosoft.com header.i=@armh.onmicrosoft.com header.b="48Dk3Gdu";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=armh.onmicrosoft.com header.i=@armh.onmicrosoft.com header.b="48Dk3Gdu"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3E2A921783
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ML1zOUUS";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="a9255GgW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF1F92184C
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0yTSQ+ETCTFwZUoAryCj2IeKw8AWjHZT4k2Jz38Z66o=; b=SOXFvz5bqmNsOJ
-	5DgSi9DevhWbp0TqvcHrlny0AlXJIrroQfGVmUrg2tN1wUkB+TXp4hyXEzHPxYIbTkj58AAA47/bi
-	P5flhKQJ0o3eiITlrtSeUs8eWIr4BOAAvpeZI8vMVZ5hDKUW8iyoxfVOX5rtIhXJ1W2am010SgIiU
-	Bjqj3Uuh+NnPXdQy85eYDL3+TJirMouNbAqnSTM2PH7GXEmMB/pr49InZZ7QZNWwmUD8awErMSoif
-	8/2gvXLWY2+FDxFHTee7jVNEXJ1ii9ybHqNe4FRPIalOrgslNy3aRzY0Vih7YEcz/aXgPqkdUtFfv
-	CsNsD6ZPYDYzpKJPokLQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=EJFM7VD/I4XXtxVJ3/YTI+NwSGMMLJNoHKi3pXfbQZM=; b=ML1zOUUSR+bSCc
+	CGgt4pc/RX9CDG25L4EmX6ei/CEBqR0cL7bZXNJbZrNcW3ReLhTBdz9VAHmP4XmFybKu5JDeB01u0
+	/XjH+S28YOfQmp8SCPOpaWVK63qp/Es0qU7JwlYaC8vFOIoNDzslELayyYEDvLu6+1Kqhyq1N69Uq
+	RRmds4pf9xicCWLVsGHdPScQBcUbPdF85QynjuSNJJgUeLa0e/tjqD48RIZI1q2unwWBQW48y0K3I
+	QywJoAyi1Lshje5AYKJlux74PMDQ+2IROwmct2Fkxny6o64qJjiofebYYca7Xvg8otokaTEdv/3oD
+	rRic2WaVeq4A3m2785Wg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMnQC-0000I8-Uw; Tue, 22 Oct 2019 06:13:32 +0000
-Received: from mail-eopbgr10083.outbound.protection.outlook.com ([40.107.1.83]
- helo=EUR02-HE1-obe.outbound.protection.outlook.com)
+	id 1iMow5-0005sp-OV; Tue, 22 Oct 2019 07:50:33 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMnQ8-0000HM-7V; Tue, 22 Oct 2019 06:13:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=armh.onmicrosoft.com; 
- s=selector2-armh-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5GbJKUkPG3RcJEBjCMB+rANR/HZaXB5b+Cr7X95LjEE=;
- b=48Dk3GduP5rAStkaH/Cpl3hBEo1VmF6KfJq9HHMzqZeECb72lp+VF7M6PHkLkZTQIUK06q1rxEsP1l0w4eV7MBPq3b8C+zCocVs8p6uwht+PS6WqXGo/6Mc+7cnR+mHDzNojhoCBAswUPgBimeV/aBVfvQ0N5+iwC/zoVPQSQpY=
-Received: from VI1PR08CA0233.eurprd08.prod.outlook.com (2603:10a6:802:15::42)
- by VI1PR08MB2639.eurprd08.prod.outlook.com (2603:10a6:802:25::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2367.24; Tue, 22 Oct
- 2019 06:13:18 +0000
-Received: from VE1EUR03FT021.eop-EUR03.prod.protection.outlook.com
- (2a01:111:f400:7e09::202) by VI1PR08CA0233.outlook.office365.com
- (2603:10a6:802:15::42) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2367.21 via Frontend
- Transport; Tue, 22 Oct 2019 06:13:18 +0000
-Authentication-Results: spf=temperror (sender IP is 63.35.35.123)
- smtp.mailfrom=arm.com; lists.infradead.org; dkim=pass (signature was
- verified) header.d=armh.onmicrosoft.com;lists.infradead.org; dmarc=none
- action=none header.from=arm.com;
-Received-SPF: TempError (protection.outlook.com: error in processing during
- lookup of arm.com: DNS Timeout)
-Received: from 64aa7808-outbound-1.mta.getcheckrecipient.com (63.35.35.123) by
- VE1EUR03FT021.mail.protection.outlook.com (10.152.18.117) with
- Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2367.23 via Frontend Transport; Tue, 22 Oct 2019 06:13:16 +0000
-Received: ("Tessian outbound 6481c7fa5a3c:v33");
- Tue, 22 Oct 2019 06:13:14 +0000
-X-CheckRecipientChecked: true
-X-CR-MTA-CID: d10b8234bfbb20e1
-X-CR-MTA-TID: 64aa7808
-Received: from 085b599e7582.1 (ip-172-16-0-2.eu-west-1.compute.internal
- [104.47.4.55]) by 64aa7808-outbound-1.mta.getcheckrecipient.com id
- 89BA12D9-596E-4F6A-BB45-80FAB1D18CB5.1; 
- Tue, 22 Oct 2019 06:13:09 +0000
-Received: from EUR02-AM5-obe.outbound.protection.outlook.com
- (mail-am5eur02lp2055.outbound.protection.outlook.com [104.47.4.55])
- by 64aa7808-outbound-1.mta.getcheckrecipient.com with ESMTPS id 085b599e7582.1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384);
- Tue, 22 Oct 2019 06:13:09 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=UTx+VYAtivY24J/22E1o2PHl7uExK1u91IUGKElszT/1PK537hUTYdqu5OusznsTaD3RHbgPoNcIb5yNQGYPelcKTSr3QpIx30p8dQyPdJqrwCca5rhJ79JDnRwDM1rgZ9LIW0c63W+gfObhdwJZs6OxrjbPOe1LvQGk1QhAhb1p8DZjlAbBQeh73hq/rjR0V7+KhnWBBz3vA8k2OM9Dx8qSS0vjZ4l9AWgPDwow9asH3jzP55IaBT8tfdmuGi9k54M88fAjfJxcRQ6Bdi2XkACxqX/loybZUtp3IUwlJ7lO6k8U1fpnxPlqufsZAQL+1XlFGxW89u1i4C53BXEuXw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5GbJKUkPG3RcJEBjCMB+rANR/HZaXB5b+Cr7X95LjEE=;
- b=XMHavPQyETiT2E/l9Xa0gXr+MAjVZGLzGFDcy0kBOJ0WhKNZVr7fluKKOlR5upeu0xryCZZ7gGKwLAH1Tv37vHMheheqOHZfEcWiYV6AklOYfB2puC0CN3j5yRw1YXCKeelveOx+ltR8mWCsfLV94bUDAQ/vRRvBKe6j/DeNuOryIWqtleJTjqBgZsKpzuPRrRiFG7GKnks0PQU0DWcCvyh2uiT8+WDQJ24UeDAi/AlFD0yMIWp9excUMfkslGqzQmAHg/1uRKeVAPA8ttFrKRbzv7VyDe5J4qIifgJ7nN6E6zZiytrQt8nfbP0KhrQAk73MONjqyrfIouFrWPwRzg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=arm.com; dmarc=pass action=none header.from=arm.com; dkim=pass
- header.d=arm.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=armh.onmicrosoft.com; 
- s=selector2-armh-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5GbJKUkPG3RcJEBjCMB+rANR/HZaXB5b+Cr7X95LjEE=;
- b=48Dk3GduP5rAStkaH/Cpl3hBEo1VmF6KfJq9HHMzqZeECb72lp+VF7M6PHkLkZTQIUK06q1rxEsP1l0w4eV7MBPq3b8C+zCocVs8p6uwht+PS6WqXGo/6Mc+7cnR+mHDzNojhoCBAswUPgBimeV/aBVfvQ0N5+iwC/zoVPQSQpY=
-Received: from VE1PR08MB5006.eurprd08.prod.outlook.com (10.255.159.31) by
- VE1PR08MB5215.eurprd08.prod.outlook.com (20.179.30.225) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2367.24; Tue, 22 Oct 2019 06:13:05 +0000
-Received: from VE1PR08MB5006.eurprd08.prod.outlook.com
- ([fe80::40ed:7ed3:90cf:ece5]) by VE1PR08MB5006.eurprd08.prod.outlook.com
- ([fe80::40ed:7ed3:90cf:ece5%3]) with mapi id 15.20.2367.022; Tue, 22 Oct 2019
- 06:13:05 +0000
-From: "james qian wang (Arm Technology China)" <james.qian.wang@arm.com>
-To: Rob Herring <robh@kernel.org>
+ id 1iMovp-0005af-Gt
+ for linux-mediatek@lists.infradead.org; Tue, 22 Oct 2019 07:50:20 +0000
+Received: by mail-wr1-x442.google.com with SMTP id w18so16287537wrt.3
+ for <linux-mediatek@lists.infradead.org>; Tue, 22 Oct 2019 00:50:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:cc:references:from:openpgp:autocrypt:organization
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=aGTgDJARvoP4kHQqngiG3qKhTgw4nOnbdZFyRj0gwxY=;
+ b=a9255GgWNRcDwq8BNQhwwSHn6mA2ru5gSF0YJxo+5tkhM3FHcFU/yt9zfKzyZ4ZYAZ
+ jw0NDPELuE4cNUaH777pJFKlPBKpHarVK3U2nC4yeiLaMq4V8ByVSIWW8KkSb5tZmS3r
+ cktjjjx+02vqWRIwc1ymYYWlli/h1XI+te0XLzmeMCWs8PtbkbTfNv6dmH12uQ0tCMiE
+ nbHDWPVA+Md05CAfhsi59QOvxEC2QynilaUQz0niJCIbR0dP4l5budbJsIn/7JSjN7nK
+ VoQOcSDpD+j0TP1r5cjiSAfzQ+CMciGLuhZDCGepp6yp/80Cvev2Ytzz99138KCbwpb9
+ ghoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:autocrypt
+ :organization:message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=aGTgDJARvoP4kHQqngiG3qKhTgw4nOnbdZFyRj0gwxY=;
+ b=o4k7/11jDLKytE6U9pYKQbJpJ67Mg1EFvFhALGGIYSMQGzJFzF/Qd97rbaXD1nb3tC
+ pr333CzuJ8vy5zZTHe4t578POqFrRVtgs9TkjmJVWTDn4qCR+i5v5J/TwGghL/+7jCKd
+ lEmKdTUV9R7WncFdKl/3S0BF6AXnoj4U5n5XoD9UIHTC9MJqrO4ZA/gT2ld9EjIzrBsy
+ xeoEx9yZA2NrDnVUUEQ3ziVbRLWcX2NT2zBkUvVZleYZOakrSEmVg0YfR/qnxHPZKUrr
+ U8JgTYjy8hoqLBvoLUAJKv1zmc2pAadHFhFrV4L+EMPt1u1aEo7W0GxaiQ4LgW8v6NYt
+ JizQ==
+X-Gm-Message-State: APjAAAWNfxqTo93UxRoeIGqa9rZFHLpi0ZWRZywGypwF1BgiyOlfv16h
+ vh6lcNwPxH6XTgBu/4zajnDr0g==
+X-Google-Smtp-Source: APXvYqzMUVSAWfDykfbGD1LdQbZJXPIuXVKfbeu8ExT4HIcx6vsuzjmMkwUzNonqAvo1KRiKYRVFjA==
+X-Received: by 2002:a05:6000:1c9:: with SMTP id
+ t9mr2251871wrx.171.1571730611336; 
+ Tue, 22 Oct 2019 00:50:11 -0700 (PDT)
+Received: from [10.1.3.173] (lmontsouris-657-1-212-31.w90-63.abo.wanadoo.fr.
+ [90.63.244.31])
+ by smtp.gmail.com with ESMTPSA id z142sm17714116wmc.24.2019.10.22.00.50.09
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 22 Oct 2019 00:50:10 -0700 (PDT)
 Subject: Re: [PATCH 4/6] drm/cma-helper: Support DRM_MODE_DUMB_KERNEL_MAP flag
-Thread-Topic: [PATCH 4/6] drm/cma-helper: Support DRM_MODE_DUMB_KERNEL_MAP flag
-Thread-Index: AQHViFjvrI6TSZ8K9kmI2e7gEmpbY6dmLsqA
-Date: Tue, 22 Oct 2019 06:13:05 +0000
-Message-ID: <20191022061255.GA7512@jamwan02-TSP300>
+To: Rob Herring <robh@kernel.org>, dri-devel@lists.freedesktop.org
 References: <20191021214550.1461-1-robh@kernel.org>
  <20191021214550.1461-5-robh@kernel.org>
-In-Reply-To: <20191021214550.1461-5-robh@kernel.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Mutt/1.10.1 (2018-07-13)
-x-originating-ip: [113.29.88.7]
-x-clientproxiedby: HK2PR0401CA0004.apcprd04.prod.outlook.com
- (2603:1096:202:2::14) To VE1PR08MB5006.eurprd08.prod.outlook.com
- (2603:10a6:803:113::31)
-Authentication-Results-Original: spf=none (sender IP is )
- smtp.mailfrom=james.qian.wang@arm.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-ms-publictraffictype: Email
-X-MS-Office365-Filtering-HT: Tenant
-X-MS-Office365-Filtering-Correlation-Id: 20533afa-c2be-4063-1d58-08d756b6edaa
-X-MS-TrafficTypeDiagnostic: VE1PR08MB5215:|VE1PR08MB5215:|VI1PR08MB2639:
-x-ms-exchange-transport-forked: True
-X-Microsoft-Antispam-PRVS: <VI1PR08MB26397F7A8D2292C82F730C0DB3680@VI1PR08MB2639.eurprd08.prod.outlook.com>
-x-checkrecipientrouted: true
-x-ms-oob-tlc-oobclassifiers: OLM:52;OLM:52;
-x-forefront-prvs: 01986AE76B
-X-Forefront-Antispam-Report-Untrusted: SFV:NSPM;
- SFS:(10009020)(4636009)(7916004)(366004)(396003)(136003)(376002)(346002)(39860400002)(199004)(189003)(256004)(14444005)(186003)(26005)(446003)(66066001)(102836004)(55236004)(11346002)(6506007)(76176011)(386003)(486006)(476003)(1076003)(52116002)(66574012)(5660300002)(316002)(58126008)(54906003)(478600001)(14454004)(71190400001)(71200400001)(25786009)(305945005)(7416002)(7406005)(6486002)(81166006)(33716001)(8936002)(8676002)(86362001)(7736002)(81156014)(229853002)(4326008)(6246003)(99286004)(2906002)(9686003)(6512007)(6116002)(66446008)(6916009)(66946007)(66476007)(66556008)(6436002)(64756008)(3846002)(33656002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:VE1PR08MB5215;
- H:VE1PR08MB5006.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: arm.com does not designate
- permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam-Untrusted: BCL:0;
-X-Microsoft-Antispam-Message-Info-Original: 2lTtwbyEp136krTq0bT+VLjZ5ll/UXigxmmO5NbJPHW47JzbTiw5U5doGSu2k2uSCG5klXdwjQXppOzX15qpSIbx2ewfpTlhB0YCy6Byq8fbm2tKUFDdRKCJex6Qlxj+enc9VYZ/S2BQwecA4zjKjl1Iqv8jhonr8aIYsE07iFm5yutsOIoqiN8IY8rN/VLmYG+kN8ocbSqChvGoXDln/Wq7BGZ2qzVuqfMcpX6DEoUctzrY06N3uuVsegLXi2shqTRa51ZMRw5+WDtIo8ma8QI8CWEkMFN8B1+2PVSr+XdtA4b9bDGll7lP+W7T/sImmMa6U02L4AJXnhKA/OnrPGb0yk4q7vYdZUVhTKWib4PTspsjE4JJaMmtItoKkErpvDBN1l2vfz7DPFK49kD6MLR2aIEoyEdFhfA+Ggw2X5rK9m74x/hYGL3hx9SU03w+
-Content-ID: <68B64C555405DD408B961B43E6BC14EA@eurprd08.prod.outlook.com>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=narmstrong@baylibre.com; prefer-encrypt=mutual; keydata=
+ mQENBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
+ GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
+ BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
+ qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
+ 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
+ AAG0KE5laWwgQXJtc3Ryb25nIDxuYXJtc3Ryb25nQGJheWxpYnJlLmNvbT6JATsEEwEKACUC
+ GyMGCwkIBwMCBhUIAgkKCwQWAgMBAh4BAheABQJXDO2CAhkBAAoJEBaat7Gkz/iubGIH/iyk
+ RqvgB62oKOFlgOTYCMkYpm2aAOZZLf6VKHKc7DoVwuUkjHfIRXdslbrxi4pk5VKU6ZP9AKsN
+ NtMZntB8WrBTtkAZfZbTF7850uwd3eU5cN/7N1Q6g0JQihE7w4GlIkEpQ8vwSg5W7hkx3yQ6
+ 2YzrUZh/b7QThXbNZ7xOeSEms014QXazx8+txR7jrGF3dYxBsCkotO/8DNtZ1R+aUvRfpKg5
+ ZgABTC0LmAQnuUUf2PHcKFAHZo5KrdO+tyfL+LgTUXIXkK+tenkLsAJ0cagz1EZ5gntuheLD
+ YJuzS4zN+1Asmb9kVKxhjSQOcIh6g2tw7vaYJgL/OzJtZi6JlIW5AQ0ETVkGzwEIALyKDN/O
+ GURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYpQTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXM
+ coJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hi
+ SvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY4yG6xI99NIPEVE9lNBXBKIlewIyVlkOa
+ YvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoMMtsyw18YoX9BqMFInxqYQQ3j/HpVgTSv
+ mo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUXoUk33HEAEQEAAYkBHwQYAQIACQUCTVkG
+ zwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfnM7IbRuiSZS1unlySUVYu3SD6YBYnNi3G
+ 5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa33eDIHu/zr1HMKErm+2SD6PO9umRef8V8
+ 2o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCSKmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+
+ RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJ
+ C3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTTQbM0WUIBIcGmq38+OgUsMYu4NzLu7uZF
+ Acmp6h8guQINBFYnf6QBEADQ+wBYa+X2n/xIQz/RUoGHf84Jm+yTqRT43t7sO48/cBW9vAn9
+ GNwnJ3HRJWKATW0ZXrCr40ES/JqM1fUTfiFDB3VMdWpEfwOAT1zXS+0rX8yljgsWR1UvqyEP
+ 3xN0M/40Zk+rdmZKaZS8VQaXbveaiWMEmY7sBV3QvgOzB7UF2It1HwoCon5Y+PvyE3CguhBd
+ 9iq5iEampkMIkbA3FFCpQFI5Ai3BywkLzbA3ZtnMXR8Qt9gFZtyXvFQrB+/6hDzEPnBGZOOx
+ zkd/iIX59SxBuS38LMlhPPycbFNmtauOC0DNpXCv9ACgC9tFw3exER/xQgSpDVc4vrL2Cacr
+ wmQp1k9E0W+9pk/l8S1jcHx03hgCxPtQLOIyEu9iIJb27TjcXNjiInd7Uea195NldIrndD+x
+ 58/yU3X70qVY+eWbqzpdlwF1KRm6uV0ZOQhEhbi0FfKKgsYFgBIBchGqSOBsCbL35f9hK/JC
+ 6LnGDtSHeJs+jd9/qJj4WqF3x8i0sncQ/gszSajdhnWrxraG3b7/9ldMLpKo/OoihfLaCxtv
+ xYmtw8TGhlMaiOxjDrohmY1z7f3rf6njskoIXUO0nabun1nPAiV1dpjleg60s3OmVQeEpr3a
+ K7gR1ljkemJzM9NUoRROPaT7nMlNYQL+IwuthJd6XQqwzp1jRTGG26J97wARAQABiQM+BBgB
+ AgAJBQJWJ3+kAhsCAikJEBaat7Gkz/iuwV0gBBkBAgAGBQJWJ3+kAAoJEHfc29rIyEnRk6MQ
+ AJDo0nxsadLpYB26FALZsWlN74rnFXth5dQVQ7SkipmyFWZhFL8fQ9OiIoxWhM6rSg9+C1w+
+ n45eByMg2b8H3mmQmyWztdI95OxSREKwbaXVapCcZnv52JRjlc3DoiiHqTZML5x1Z7lQ1T3F
+ 8o9sKrbFO1WQw1+Nc91+MU0MGN0jtfZ0Tvn/ouEZrSXCE4K3oDGtj3AdC764yZVq6CPigCgs
+ 6Ex80k6QlzCdVP3RKsnPO2xQXXPgyJPJlpD8bHHHW7OLfoR9DaBNympfcbQJeekQrTvyoASw
+ EOTPKE6CVWrcQIztUp0WFTdRGgMK0cZB3Xfe6sOp24PQTHAKGtjTHNP/THomkH24Fum9K3iM
+ /4Wh4V2eqGEgpdeSp5K+LdaNyNgaqzMOtt4HYk86LYLSHfFXywdlbGrY9+TqiJ+ZVW4trmui
+ NIJCOku8SYansq34QzYM0x3UFRwff+45zNBEVzctSnremg1mVgrzOfXU8rt+4N1b2MxorPF8
+ 619aCwVP7U16qNSBaqiAJr4e5SNEnoAq18+1Gp8QsFG0ARY8xp+qaKBByWES7lRi3QbqAKZf
+ yOHS6gmYo9gBmuAhc65/VtHMJtxwjpUeN4Bcs9HUpDMDVHdfeRa73wM+wY5potfQ5zkSp0Jp
+ bxnv/cRBH6+c43stTffprd//4Hgz+nJcCgZKtCYIAPkUxABC85ID2CidzbraErVACmRoizhT
+ KR2OiqSLW2x4xdmSiFNcIWkWJB6Qdri0Fzs2dHe8etD1HYaht1ZhZ810s7QOL7JwypO8dscN
+ KTEkyoTGn6cWj0CX+PeP4xp8AR8ot4d0BhtUY34UPzjE1/xyrQFAdnLd0PP4wXxdIUuRs0+n
+ WLY9Aou/vC1LAdlaGsoTVzJ2gX4fkKQIWhX0WVk41BSFeDKQ3RQ2pnuzwedLO94Bf6X0G48O
+ VsbXrP9BZ6snXyHfebPnno/te5XRqZTL9aJOytB/1iUna+1MAwBxGFPvqeEUUyT+gx1l3Acl
+ ZaTUOEkgIor5losDrePdPgE=
+Organization: Baylibre
+Message-ID: <906c3ecc-89ed-43a9-f011-68b012bba81d@baylibre.com>
+Date: Tue, 22 Oct 2019 09:50:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VE1PR08MB5215
-Original-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=james.qian.wang@arm.com; 
-X-EOPAttributedMessage: 0
-X-MS-Exchange-Transport-CrossTenantHeadersStripped: VE1EUR03FT021.eop-EUR03.prod.protection.outlook.com
-X-Forefront-Antispam-Report: CIP:63.35.35.123; IPV:CAL; SCL:-1; CTRY:IE;
- EFV:NLI; SFV:NSPM;
- SFS:(10009020)(7916004)(4636009)(136003)(39860400002)(396003)(376002)(346002)(199004)(189003)(126002)(446003)(476003)(11346002)(486006)(186003)(58126008)(3846002)(6116002)(54906003)(36906005)(63350400001)(316002)(26005)(336012)(1076003)(66574012)(33656002)(2906002)(22756006)(66066001)(33716001)(5660300002)(47776003)(6512007)(9686003)(76130400001)(6486002)(86362001)(6862004)(356004)(50466002)(4326008)(6246003)(81166006)(81156014)(305945005)(8676002)(7736002)(8936002)(8746002)(70206006)(70586007)(229853002)(450100002)(6506007)(386003)(26826003)(23756003)(25786009)(478600001)(102836004)(14454004)(14444005)(99286004)(76176011);
- DIR:OUT; SFP:1101; SCL:1; SRVR:VI1PR08MB2639;
- H:64aa7808-outbound-1.mta.getcheckrecipient.com; FPR:; SPF:TempError; LANG:en;
- PTR:ec2-63-35-35-123.eu-west-1.compute.amazonaws.com; A:1; MX:1; 
-X-MS-Office365-Filtering-Correlation-Id-Prvs: a71d29fd-6417-46b7-a849-08d756b6e6b7
-NoDisclaimer: True
-X-Forefront-PRVS: 01986AE76B
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: pDO+lSimonUUmsaCGoO9H7ZyjVU9l/YJ6a8M4jrHSjBZ9Rkn/1LC/gHmYGagNlkmYIusNpNnq1rwtPSGIiNpJ/4XeArVhsmyBqM2gg/OW24xD9+ZeiIDgXXVwxHx/BoVVBADXuzqsxG7zHA+ON6sDSTy42KHr2aV1Fz9MXjDmCzT4V0Jh2en9EiDy+99TbRreZu3WDbHfdz0OI0xbhKgo27jTB3hh+Dp4G/tDpod+YlunDLoQGgQyOgF2JVbbG5wUmoWbypGiVMIOVgi41G56Nbx+cbK7eISz+4YvfLggqb/PpxhHwXY3yX5ouBdT49vEH54lAsLnNzMZvt12I2zQBFFlnQYneeqJOxhgj2ciKZOVis1ugV6WPxSOromfMFSdxKCpk2Og06KotYh0YovXm9MU9/zFN4IiaDw2sxMdIj5+SlnRyrRrNcwNyshsOyo
-X-OriginatorOrg: arm.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Oct 2019 06:13:16.5067 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 20533afa-c2be-4063-1d58-08d756b6edaa
-X-MS-Exchange-CrossTenant-Id: f34e5979-57d9-4aaa-ad4d-b122a662184d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=f34e5979-57d9-4aaa-ad4d-b122a662184d; Ip=[63.35.35.123];
- Helo=[64aa7808-outbound-1.mta.getcheckrecipient.com]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR08MB2639
+In-Reply-To: <20191021214550.1461-5-robh@kernel.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191021_231328_754794_9826FC5B 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20191022_005017_586082_D7EC8CFE 
+X-CRM114-Status: GOOD (  22.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -184,335 +153,208 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: =?iso-8859-1?Q?Heiko_St=FCbner?= <heiko@sntech.de>,
- Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
- Liviu Dudau <Liviu.Dudau@arm.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
+ David Airlie <airlied@linux.ie>, Liviu Dudau <liviu.dudau@arm.com>,
  Sandy Huang <hjc@rock-chips.com>,
  Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
  Benjamin Gaignard <benjamin.gaignard@linaro.org>,
- "linux-amlogic@lists.infradead.org" <linux-amlogic@lists.infradead.org>,
- "linux-stm32@st-md-mailman.stormreply.com"
- <linux-stm32@st-md-mailman.stormreply.com>,
+ linux-amlogic@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
  Yannick Fertre <yannick.fertre@st.com>, Kevin Hilman <khilman@baylibre.com>,
  Xinwei Kong <kong.kongxinwei@hisilicon.com>,
- Xinliang Liu <z.liuxinliang@hisilicon.com>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ Xinliang Liu <z.liuxinliang@hisilicon.com>, linux-rockchip@lists.infradead.org,
  Chen-Yu Tsai <wens@csie.org>,
- =?iso-8859-1?Q?Noralf_Tr=F8nnes?= <noralf@tronnes.org>,
- CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ =?UTF-8?Q?Noralf_Tr=c3=b8nnes?= <noralf@tronnes.org>,
+ "James \(Qian\) Wang" <james.qian.wang@arm.com>, CK Hu <ck.hu@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
  Alexandre Torgue <alexandre.torgue@st.com>,
  Chen Feng <puck.chen@hisilicon.com>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- "linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>,
- Maxime Ripard <mripard@kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- nd <nd@arm.com>, Sean Paul <sean@poorly.run>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- Philippe Cornu <philippe.cornu@st.com>, Vincent Abriou <vincent.abriou@st.com>,
+ linux-renesas-soc@vger.kernel.org, Maxime Ripard <mripard@kernel.org>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Sean Paul <sean@poorly.run>,
+ linux-arm-kernel@lists.infradead.org, Philippe Cornu <philippe.cornu@st.com>,
+ Vincent Abriou <vincent.abriou@st.com>,
  Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Rongrong Zou <zourongrong@gmail.com>, Brian Starkey <Brian.Starkey@arm.com>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ Rongrong Zou <zourongrong@gmail.com>, Brian Starkey <brian.starkey@arm.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 21, 2019 at 04:45:48PM -0500, Rob Herring wrote:
-> Add support in CMA helpers to handle callers specifying
-> DRM_MODE_DUMB_KERNEL_MAP flag. Existing behavior is maintained with this
-> change. drm_gem_cma_dumb_create() always creates a kernel mapping as
-> before. drm_gem_cma_dumb_create_internal() lets the caller set the flags
-> as desired. Therefore, update all the existing callers of
-> drm_gem_cma_dumb_create_internal() to also set the
-> DRM_MODE_DUMB_KERNEL_MAP flag.
-> =
-
-> Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-> Cc: Maxime Ripard <mripard@kernel.org>
-> Cc: Sean Paul <sean@poorly.run>
-> Cc: David Airlie <airlied@linux.ie>
-> Cc: Daniel Vetter <daniel@ffwll.ch>
-> Cc: "James (Qian) Wang" <james.qian.wang@arm.com>
-> Cc: Liviu Dudau <liviu.dudau@arm.com>
-> Cc: Brian Starkey <brian.starkey@arm.com>
-> Cc: Neil Armstrong <narmstrong@baylibre.com>
-> Cc: Kevin Hilman <khilman@baylibre.com>
-> Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Cc: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
-> Cc: Sandy Huang <hjc@rock-chips.com>
-> Cc: "Heiko St=FCbner" <heiko@sntech.de>
-> Cc: Yannick Fertre <yannick.fertre@st.com>
-> Cc: Philippe Cornu <philippe.cornu@st.com>
-> Cc: Benjamin Gaignard <benjamin.gaignard@linaro.org>
-> Cc: Vincent Abriou <vincent.abriou@st.com>
-> Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>
-> Cc: Alexandre Torgue <alexandre.torgue@st.com>
-> Cc: Chen-Yu Tsai <wens@csie.org>
-> Cc: linux-amlogic@lists.infradead.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-renesas-soc@vger.kernel.org
-> Cc: linux-rockchip@lists.infradead.org
-> Cc: linux-stm32@st-md-mailman.stormreply.com
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->  .../gpu/drm/arm/display/komeda/komeda_kms.c   |  1 +
->  drivers/gpu/drm/arm/malidp_drv.c              |  1 +
->  drivers/gpu/drm/drm_gem_cma_helper.c          | 48 +++++++++++--------
->  drivers/gpu/drm/meson/meson_drv.c             |  1 +
->  drivers/gpu/drm/rcar-du/rcar_du_kms.c         |  1 +
->  drivers/gpu/drm/rockchip/rockchip_drm_gem.c   |  1 +
->  drivers/gpu/drm/stm/drv.c                     |  1 +
->  drivers/gpu/drm/sun4i/sun4i_drv.c             |  1 +
->  8 files changed, 36 insertions(+), 19 deletions(-)
-> =
-
-> diff --git a/drivers/gpu/drm/arm/display/komeda/komeda_kms.c b/drivers/gp=
-u/drm/arm/display/komeda/komeda_kms.c
-> index d49772de93e0..7cf0dc4cbfc1 100644
-> --- a/drivers/gpu/drm/arm/display/komeda/komeda_kms.c
-> +++ b/drivers/gpu/drm/arm/display/komeda/komeda_kms.c
-> @@ -31,6 +31,7 @@ static int komeda_gem_cma_dumb_create(struct drm_file *=
-file,
->  	u32 pitch =3D DIV_ROUND_UP(args->width * args->bpp, 8);
->  =
-
->  	args->pitch =3D ALIGN(pitch, mdev->chip.bus_width);
-> +	args->flags =3D DRM_MODE_DUMB_KERNEL_MAP;
->
-
-Hi Rob:
-
-komeda doesn't need the kernel map either, so you can del this line for kom=
-eda.
-and with this.
-
-Reviewed-by: James Qian Wang (Arm Technology China) <james.qian.wang@arm.co=
-m>
-
-
->  	return drm_gem_cma_dumb_create_internal(file, dev, args);
->  }
-> diff --git a/drivers/gpu/drm/arm/malidp_drv.c b/drivers/gpu/drm/arm/malid=
-p_drv.c
-> index 8a76315aaa0f..aeb1a779ecc1 100644
-> --- a/drivers/gpu/drm/arm/malidp_drv.c
-> +++ b/drivers/gpu/drm/arm/malidp_drv.c
-> @@ -465,6 +465,7 @@ static int malidp_dumb_create(struct drm_file *file_p=
-riv,
->  	u8 alignment =3D malidp_hw_get_pitch_align(malidp->dev, 1);
->  =
-
->  	args->pitch =3D ALIGN(DIV_ROUND_UP(args->width * args->bpp, 8), alignme=
-nt);
-> +	args->flags =3D DRM_MODE_DUMB_KERNEL_MAP;
->  =
-
->  	return drm_gem_cma_dumb_create_internal(file_priv, drm, args);
->  }
-> diff --git a/drivers/gpu/drm/drm_gem_cma_helper.c b/drivers/gpu/drm/drm_g=
-em_cma_helper.c
-> index 4cebfe01e6ea..f91e9e8adeaf 100644
-> --- a/drivers/gpu/drm/drm_gem_cma_helper.c
-> +++ b/drivers/gpu/drm/drm_gem_cma_helper.c
-> @@ -78,21 +78,8 @@ __drm_gem_cma_create(struct drm_device *drm, size_t si=
-ze)
->  	return ERR_PTR(ret);
->  }
->  =
-
-> -/**
-> - * drm_gem_cma_create - allocate an object with the given size
-> - * @drm: DRM device
-> - * @size: size of the object to allocate
-> - *
-> - * This function creates a CMA GEM object and allocates a contiguous chu=
-nk of
-> - * memory as backing store. The backing memory has the writecombine attr=
-ibute
-> - * set.
-> - *
-> - * Returns:
-> - * A struct drm_gem_cma_object * on success or an ERR_PTR()-encoded nega=
-tive
-> - * error code on failure.
-> - */
-> -struct drm_gem_cma_object *drm_gem_cma_create(struct drm_device *drm,
-> -					      size_t size)
-> +static struct drm_gem_cma_object *
-> +drm_gem_cma_create_flags(struct drm_device *drm, size_t size, u32 flags)
->  {
->  	struct drm_gem_cma_object *cma_obj;
->  	int ret;
-> @@ -103,6 +90,9 @@ struct drm_gem_cma_object *drm_gem_cma_create(struct d=
-rm_device *drm,
->  	if (IS_ERR(cma_obj))
->  		return cma_obj;
->  =
-
-> +	if (!(flags & DRM_MODE_DUMB_KERNEL_MAP))
-> +		cma_obj->dma_attrs |=3D DMA_ATTR_NO_KERNEL_MAPPING;
-> +
->  	cma_obj->vaddr =3D dma_alloc_attrs(drm->dev, size, &cma_obj->paddr,
->  					 GFP_KERNEL | __GFP_NOWARN,
->  					 cma_obj->dma_attrs);
-> @@ -119,6 +109,25 @@ struct drm_gem_cma_object *drm_gem_cma_create(struct=
- drm_device *drm,
->  	drm_gem_object_put_unlocked(&cma_obj->base);
->  	return ERR_PTR(ret);
->  }
-> +
-> +/**
-> + * drm_gem_cma_create - allocate an object with the given size
-> + * @drm: DRM device
-> + * @size: size of the object to allocate
-> + *
-> + * This function creates a CMA GEM object and allocates a contiguous chu=
-nk of
-> + * memory as backing store. The backing memory has the writecombine attr=
-ibute
-> + * set.
-> + *
-> + * Returns:
-> + * A struct drm_gem_cma_object * on success or an ERR_PTR()-encoded nega=
-tive
-> + * error code on failure.
-> + */
-> +struct drm_gem_cma_object *drm_gem_cma_create(struct drm_device *drm,
-> +					      size_t size)
-> +{
-> +	return drm_gem_cma_create_flags(drm, size, DRM_MODE_DUMB_KERNEL_MAP);
-> +}
->  EXPORT_SYMBOL_GPL(drm_gem_cma_create);
->  =
-
->  /**
-> @@ -139,14 +148,14 @@ EXPORT_SYMBOL_GPL(drm_gem_cma_create);
->   */
->  static struct drm_gem_cma_object *
->  drm_gem_cma_create_with_handle(struct drm_file *file_priv,
-> -			       struct drm_device *drm, size_t size,
-> +			       struct drm_device *drm, size_t size, u32 flags,
->  			       uint32_t *handle)
->  {
->  	struct drm_gem_cma_object *cma_obj;
->  	struct drm_gem_object *gem_obj;
->  	int ret;
->  =
-
-> -	cma_obj =3D drm_gem_cma_create(drm, size);
-> +	cma_obj =3D drm_gem_cma_create_flags(drm, size, flags);
->  	if (IS_ERR(cma_obj))
->  		return cma_obj;
->  =
-
-> @@ -225,7 +234,7 @@ int drm_gem_cma_dumb_create_internal(struct drm_file =
-*file_priv,
->  		args->size =3D args->pitch * args->height;
->  =
-
->  	cma_obj =3D drm_gem_cma_create_with_handle(file_priv, drm, args->size,
-> -						 &args->handle);
-> +						 args->flags, &args->handle);
->  	return PTR_ERR_OR_ZERO(cma_obj);
->  }
->  EXPORT_SYMBOL_GPL(drm_gem_cma_dumb_create_internal);
-> @@ -256,9 +265,10 @@ int drm_gem_cma_dumb_create(struct drm_file *file_pr=
-iv,
->  =
-
->  	args->pitch =3D DIV_ROUND_UP(args->width * args->bpp, 8);
->  	args->size =3D args->pitch * args->height;
-> +	args->flags =3D DRM_MODE_DUMB_KERNEL_MAP;
->  =
-
->  	cma_obj =3D drm_gem_cma_create_with_handle(file_priv, drm, args->size,
-> -						 &args->handle);
-> +						 args->flags, &args->handle);
->  	return PTR_ERR_OR_ZERO(cma_obj);
->  }
->  EXPORT_SYMBOL_GPL(drm_gem_cma_dumb_create);
-> diff --git a/drivers/gpu/drm/meson/meson_drv.c b/drivers/gpu/drm/meson/me=
-son_drv.c
-> index 397c33182f4f..1593518dcbe4 100644
-> --- a/drivers/gpu/drm/meson/meson_drv.c
-> +++ b/drivers/gpu/drm/meson/meson_drv.c
-> @@ -81,6 +81,7 @@ static int meson_dumb_create(struct drm_file *file, str=
-uct drm_device *dev,
->  	 */
->  	args->pitch =3D ALIGN(DIV_ROUND_UP(args->width * args->bpp, 8), SZ_64);
->  	args->size =3D PAGE_ALIGN(args->pitch * args->height);
-> +	args->flags =3D DRM_MODE_DUMB_KERNEL_MAP;
->  =
-
->  	return drm_gem_cma_dumb_create_internal(file, dev, args);
->  }
-> diff --git a/drivers/gpu/drm/rcar-du/rcar_du_kms.c b/drivers/gpu/drm/rcar=
--du/rcar_du_kms.c
-> index 2dc9caee8767..c9b1f298ce7e 100644
-> --- a/drivers/gpu/drm/rcar-du/rcar_du_kms.c
-> +++ b/drivers/gpu/drm/rcar-du/rcar_du_kms.c
-> @@ -299,6 +299,7 @@ int rcar_du_dumb_create(struct drm_file *file, struct=
- drm_device *dev,
->  		align =3D 16 * args->bpp / 8;
->  =
-
->  	args->pitch =3D roundup(min_pitch, align);
-> +	args->flags =3D DRM_MODE_DUMB_KERNEL_MAP;
->  =
-
->  	return drm_gem_cma_dumb_create_internal(file, dev, args);
->  }
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/dr=
-m/rockchip/rockchip_drm_gem.c
-> index 7582d0e6a60a..f09b9a035376 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> @@ -419,6 +419,7 @@ int rockchip_gem_dumb_create(struct drm_file *file_pr=
-iv,
->  	 * align to 64 bytes since Mali requires it.
->  	 */
->  	args->pitch =3D ALIGN(min_pitch, 64);
-> +	args->flags =3D DRM_MODE_DUMB_KERNEL_MAP;
->  	args->size =3D args->pitch * args->height;
->  =
-
->  	rk_obj =3D rockchip_gem_create_with_handle(file_priv, dev, args->size,
-> diff --git a/drivers/gpu/drm/stm/drv.c b/drivers/gpu/drm/stm/drv.c
-> index 5a9f9aca8bc2..0f76a4ac95b3 100644
-> --- a/drivers/gpu/drm/stm/drv.c
-> +++ b/drivers/gpu/drm/stm/drv.c
-> @@ -47,6 +47,7 @@ static int stm_gem_cma_dumb_create(struct drm_file *fil=
-e,
->  	 */
->  	args->pitch =3D roundup(min_pitch, 128);
->  	args->height =3D roundup(args->height, 4);
-> +	args->flags =3D DRM_MODE_DUMB_KERNEL_MAP;
->  =
-
->  	return drm_gem_cma_dumb_create_internal(file, dev, args);
->  }
-> diff --git a/drivers/gpu/drm/sun4i/sun4i_drv.c b/drivers/gpu/drm/sun4i/su=
-n4i_drv.c
-> index a5757b11b730..f653a5d1e2d6 100644
-> --- a/drivers/gpu/drm/sun4i/sun4i_drv.c
-> +++ b/drivers/gpu/drm/sun4i/sun4i_drv.c
-> @@ -34,6 +34,7 @@ static int drm_sun4i_gem_dumb_create(struct drm_file *f=
-ile_priv,
->  {
->  	/* The hardware only allows even pitches for YUV buffers. */
->  	args->pitch =3D ALIGN(DIV_ROUND_UP(args->width * args->bpp, 8), 2);
-> +	args->flags =3D DRM_MODE_DUMB_KERNEL_MAP;
->  =
-
->  	return drm_gem_cma_dumb_create_internal(file_priv, drm, args);
->  }
-> -- =
-
-> 2.20.1
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gMjEvMTAvMjAxOSAyMzo0NSwgUm9iIEhlcnJpbmcgd3JvdGU6Cj4gQWRkIHN1cHBvcnQgaW4g
+Q01BIGhlbHBlcnMgdG8gaGFuZGxlIGNhbGxlcnMgc3BlY2lmeWluZwo+IERSTV9NT0RFX0RVTUJf
+S0VSTkVMX01BUCBmbGFnLiBFeGlzdGluZyBiZWhhdmlvciBpcyBtYWludGFpbmVkIHdpdGggdGhp
+cwo+IGNoYW5nZS4gZHJtX2dlbV9jbWFfZHVtYl9jcmVhdGUoKSBhbHdheXMgY3JlYXRlcyBhIGtl
+cm5lbCBtYXBwaW5nIGFzCj4gYmVmb3JlLiBkcm1fZ2VtX2NtYV9kdW1iX2NyZWF0ZV9pbnRlcm5h
+bCgpIGxldHMgdGhlIGNhbGxlciBzZXQgdGhlIGZsYWdzCj4gYXMgZGVzaXJlZC4gVGhlcmVmb3Jl
+LCB1cGRhdGUgYWxsIHRoZSBleGlzdGluZyBjYWxsZXJzIG9mCj4gZHJtX2dlbV9jbWFfZHVtYl9j
+cmVhdGVfaW50ZXJuYWwoKSB0byBhbHNvIHNldCB0aGUKPiBEUk1fTU9ERV9EVU1CX0tFUk5FTF9N
+QVAgZmxhZy4KPiAKPiBDYzogTWFhcnRlbiBMYW5raG9yc3QgPG1hYXJ0ZW4ubGFua2hvcnN0QGxp
+bnV4LmludGVsLmNvbT4KPiBDYzogTWF4aW1lIFJpcGFyZCA8bXJpcGFyZEBrZXJuZWwub3JnPgo+
+IENjOiBTZWFuIFBhdWwgPHNlYW5AcG9vcmx5LnJ1bj4KPiBDYzogRGF2aWQgQWlybGllIDxhaXJs
+aWVkQGxpbnV4LmllPgo+IENjOiBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3bGwuY2g+Cj4gQ2M6
+ICJKYW1lcyAoUWlhbikgV2FuZyIgPGphbWVzLnFpYW4ud2FuZ0Bhcm0uY29tPgo+IENjOiBMaXZp
+dSBEdWRhdSA8bGl2aXUuZHVkYXVAYXJtLmNvbT4KPiBDYzogQnJpYW4gU3RhcmtleSA8YnJpYW4u
+c3RhcmtleUBhcm0uY29tPgo+IENjOiBOZWlsIEFybXN0cm9uZyA8bmFybXN0cm9uZ0BiYXlsaWJy
+ZS5jb20+Cj4gQ2M6IEtldmluIEhpbG1hbiA8a2hpbG1hbkBiYXlsaWJyZS5jb20+Cj4gQ2M6IExh
+dXJlbnQgUGluY2hhcnQgPGxhdXJlbnQucGluY2hhcnRAaWRlYXNvbmJvYXJkLmNvbT4KPiBDYzog
+S2llcmFuIEJpbmdoYW0gPGtpZXJhbi5iaW5naGFtK3JlbmVzYXNAaWRlYXNvbmJvYXJkLmNvbT4K
+PiBDYzogU2FuZHkgSHVhbmcgPGhqY0Byb2NrLWNoaXBzLmNvbT4KPiBDYzogIkhlaWtvIFN0w7xi
+bmVyIiA8aGVpa29Ac250ZWNoLmRlPgo+IENjOiBZYW5uaWNrIEZlcnRyZSA8eWFubmljay5mZXJ0
+cmVAc3QuY29tPgo+IENjOiBQaGlsaXBwZSBDb3JudSA8cGhpbGlwcGUuY29ybnVAc3QuY29tPgo+
+IENjOiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRAbGluYXJvLm9yZz4KPiBD
+YzogVmluY2VudCBBYnJpb3UgPHZpbmNlbnQuYWJyaW91QHN0LmNvbT4KPiBDYzogTWF4aW1lIENv
+cXVlbGluIDxtY29xdWVsaW4uc3RtMzJAZ21haWwuY29tPgo+IENjOiBBbGV4YW5kcmUgVG9yZ3Vl
+IDxhbGV4YW5kcmUudG9yZ3VlQHN0LmNvbT4KPiBDYzogQ2hlbi1ZdSBUc2FpIDx3ZW5zQGNzaWUu
+b3JnPgo+IENjOiBsaW51eC1hbWxvZ2ljQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBDYzogbGludXgt
+YXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gQ2M6IGxpbnV4LXJlbmVzYXMtc29jQHZn
+ZXIua2VybmVsLm9yZwo+IENjOiBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4g
+Q2M6IGxpbnV4LXN0bTMyQHN0LW1kLW1haWxtYW4uc3Rvcm1yZXBseS5jb20KPiBTaWduZWQtb2Zm
+LWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgo+IC0tLQo+ICAuLi4vZ3B1L2RybS9h
+cm0vZGlzcGxheS9rb21lZGEva29tZWRhX2ttcy5jICAgfCAgMSArCj4gIGRyaXZlcnMvZ3B1L2Ry
+bS9hcm0vbWFsaWRwX2Rydi5jICAgICAgICAgICAgICB8ICAxICsKPiAgZHJpdmVycy9ncHUvZHJt
+L2RybV9nZW1fY21hX2hlbHBlci5jICAgICAgICAgIHwgNDggKysrKysrKysrKystLS0tLS0tLQo+
+ICBkcml2ZXJzL2dwdS9kcm0vbWVzb24vbWVzb25fZHJ2LmMgICAgICAgICAgICAgfCAgMSArCj4g
+IGRyaXZlcnMvZ3B1L2RybS9yY2FyLWR1L3JjYXJfZHVfa21zLmMgICAgICAgICB8ICAxICsKPiAg
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYyAgIHwgIDEgKwo+ICBk
+cml2ZXJzL2dwdS9kcm0vc3RtL2Rydi5jICAgICAgICAgICAgICAgICAgICAgfCAgMSArCj4gIGRy
+aXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV9kcnYuYyAgICAgICAgICAgICB8ICAxICsKPiAgOCBm
+aWxlcyBjaGFuZ2VkLCAzNiBpbnNlcnRpb25zKCspLCAxOSBkZWxldGlvbnMoLSkKPiAKPiBkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFfa21zLmMg
+Yi9kcml2ZXJzL2dwdS9kcm0vYXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9rbXMuYwo+IGluZGV4
+IGQ0OTc3MmRlOTNlMC4uN2NmMGRjNGNiZmMxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
+bS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRhX2ttcy5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJt
+L2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFfa21zLmMKPiBAQCAtMzEsNiArMzEsNyBAQCBzdGF0
+aWMgaW50IGtvbWVkYV9nZW1fY21hX2R1bWJfY3JlYXRlKHN0cnVjdCBkcm1fZmlsZSAqZmlsZSwK
+PiAgCXUzMiBwaXRjaCA9IERJVl9ST1VORF9VUChhcmdzLT53aWR0aCAqIGFyZ3MtPmJwcCwgOCk7
+Cj4gIAo+ICAJYXJncy0+cGl0Y2ggPSBBTElHTihwaXRjaCwgbWRldi0+Y2hpcC5idXNfd2lkdGgp
+Owo+ICsJYXJncy0+ZmxhZ3MgPSBEUk1fTU9ERV9EVU1CX0tFUk5FTF9NQVA7Cj4gIAo+ICAJcmV0
+dXJuIGRybV9nZW1fY21hX2R1bWJfY3JlYXRlX2ludGVybmFsKGZpbGUsIGRldiwgYXJncyk7Cj4g
+IH0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2FybS9tYWxpZHBfZHJ2LmMgYi9kcml2
+ZXJzL2dwdS9kcm0vYXJtL21hbGlkcF9kcnYuYwo+IGluZGV4IDhhNzYzMTVhYWEwZi4uYWViMWE3
+NzllY2MxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9hcm0vbWFsaWRwX2Rydi5jCj4g
+KysrIGIvZHJpdmVycy9ncHUvZHJtL2FybS9tYWxpZHBfZHJ2LmMKPiBAQCAtNDY1LDYgKzQ2NSw3
+IEBAIHN0YXRpYyBpbnQgbWFsaWRwX2R1bWJfY3JlYXRlKHN0cnVjdCBkcm1fZmlsZSAqZmlsZV9w
+cml2LAo+ICAJdTggYWxpZ25tZW50ID0gbWFsaWRwX2h3X2dldF9waXRjaF9hbGlnbihtYWxpZHAt
+PmRldiwgMSk7Cj4gIAo+ICAJYXJncy0+cGl0Y2ggPSBBTElHTihESVZfUk9VTkRfVVAoYXJncy0+
+d2lkdGggKiBhcmdzLT5icHAsIDgpLCBhbGlnbm1lbnQpOwo+ICsJYXJncy0+ZmxhZ3MgPSBEUk1f
+TU9ERV9EVU1CX0tFUk5FTF9NQVA7Cj4gIAo+ICAJcmV0dXJuIGRybV9nZW1fY21hX2R1bWJfY3Jl
+YXRlX2ludGVybmFsKGZpbGVfcHJpdiwgZHJtLCBhcmdzKTsKPiAgfQo+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL2dwdS9kcm0vZHJtX2dlbV9jbWFfaGVscGVyLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJt
+X2dlbV9jbWFfaGVscGVyLmMKPiBpbmRleCA0Y2ViZmUwMWU2ZWEuLmY5MWU5ZThhZGVhZiAxMDA2
+NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2dlbV9jbWFfaGVscGVyLmMKPiArKysgYi9k
+cml2ZXJzL2dwdS9kcm0vZHJtX2dlbV9jbWFfaGVscGVyLmMKPiBAQCAtNzgsMjEgKzc4LDggQEAg
+X19kcm1fZ2VtX2NtYV9jcmVhdGUoc3RydWN0IGRybV9kZXZpY2UgKmRybSwgc2l6ZV90IHNpemUp
+Cj4gIAlyZXR1cm4gRVJSX1BUUihyZXQpOwo+ICB9Cj4gIAo+IC0vKioKPiAtICogZHJtX2dlbV9j
+bWFfY3JlYXRlIC0gYWxsb2NhdGUgYW4gb2JqZWN0IHdpdGggdGhlIGdpdmVuIHNpemUKPiAtICog
+QGRybTogRFJNIGRldmljZQo+IC0gKiBAc2l6ZTogc2l6ZSBvZiB0aGUgb2JqZWN0IHRvIGFsbG9j
+YXRlCj4gLSAqCj4gLSAqIFRoaXMgZnVuY3Rpb24gY3JlYXRlcyBhIENNQSBHRU0gb2JqZWN0IGFu
+ZCBhbGxvY2F0ZXMgYSBjb250aWd1b3VzIGNodW5rIG9mCj4gLSAqIG1lbW9yeSBhcyBiYWNraW5n
+IHN0b3JlLiBUaGUgYmFja2luZyBtZW1vcnkgaGFzIHRoZSB3cml0ZWNvbWJpbmUgYXR0cmlidXRl
+Cj4gLSAqIHNldC4KPiAtICoKPiAtICogUmV0dXJuczoKPiAtICogQSBzdHJ1Y3QgZHJtX2dlbV9j
+bWFfb2JqZWN0ICogb24gc3VjY2VzcyBvciBhbiBFUlJfUFRSKCktZW5jb2RlZCBuZWdhdGl2ZQo+
+IC0gKiBlcnJvciBjb2RlIG9uIGZhaWx1cmUuCj4gLSAqLwo+IC1zdHJ1Y3QgZHJtX2dlbV9jbWFf
+b2JqZWN0ICpkcm1fZ2VtX2NtYV9jcmVhdGUoc3RydWN0IGRybV9kZXZpY2UgKmRybSwKPiAtCQkJ
+CQkgICAgICBzaXplX3Qgc2l6ZSkKPiArc3RhdGljIHN0cnVjdCBkcm1fZ2VtX2NtYV9vYmplY3Qg
+Kgo+ICtkcm1fZ2VtX2NtYV9jcmVhdGVfZmxhZ3Moc3RydWN0IGRybV9kZXZpY2UgKmRybSwgc2l6
+ZV90IHNpemUsIHUzMiBmbGFncykKPiAgewo+ICAJc3RydWN0IGRybV9nZW1fY21hX29iamVjdCAq
+Y21hX29iajsKPiAgCWludCByZXQ7Cj4gQEAgLTEwMyw2ICs5MCw5IEBAIHN0cnVjdCBkcm1fZ2Vt
+X2NtYV9vYmplY3QgKmRybV9nZW1fY21hX2NyZWF0ZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLAo+
+ICAJaWYgKElTX0VSUihjbWFfb2JqKSkKPiAgCQlyZXR1cm4gY21hX29iajsKPiAgCj4gKwlpZiAo
+IShmbGFncyAmIERSTV9NT0RFX0RVTUJfS0VSTkVMX01BUCkpCj4gKwkJY21hX29iai0+ZG1hX2F0
+dHJzIHw9IERNQV9BVFRSX05PX0tFUk5FTF9NQVBQSU5HOwo+ICsKPiAgCWNtYV9vYmotPnZhZGRy
+ID0gZG1hX2FsbG9jX2F0dHJzKGRybS0+ZGV2LCBzaXplLCAmY21hX29iai0+cGFkZHIsCj4gIAkJ
+CQkJIEdGUF9LRVJORUwgfCBfX0dGUF9OT1dBUk4sCj4gIAkJCQkJIGNtYV9vYmotPmRtYV9hdHRy
+cyk7Cj4gQEAgLTExOSw2ICsxMDksMjUgQEAgc3RydWN0IGRybV9nZW1fY21hX29iamVjdCAqZHJt
+X2dlbV9jbWFfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sCj4gIAlkcm1fZ2VtX29iamVj
+dF9wdXRfdW5sb2NrZWQoJmNtYV9vYmotPmJhc2UpOwo+ICAJcmV0dXJuIEVSUl9QVFIocmV0KTsK
+PiAgfQo+ICsKPiArLyoqCj4gKyAqIGRybV9nZW1fY21hX2NyZWF0ZSAtIGFsbG9jYXRlIGFuIG9i
+amVjdCB3aXRoIHRoZSBnaXZlbiBzaXplCj4gKyAqIEBkcm06IERSTSBkZXZpY2UKPiArICogQHNp
+emU6IHNpemUgb2YgdGhlIG9iamVjdCB0byBhbGxvY2F0ZQo+ICsgKgo+ICsgKiBUaGlzIGZ1bmN0
+aW9uIGNyZWF0ZXMgYSBDTUEgR0VNIG9iamVjdCBhbmQgYWxsb2NhdGVzIGEgY29udGlndW91cyBj
+aHVuayBvZgo+ICsgKiBtZW1vcnkgYXMgYmFja2luZyBzdG9yZS4gVGhlIGJhY2tpbmcgbWVtb3J5
+IGhhcyB0aGUgd3JpdGVjb21iaW5lIGF0dHJpYnV0ZQo+ICsgKiBzZXQuCj4gKyAqCj4gKyAqIFJl
+dHVybnM6Cj4gKyAqIEEgc3RydWN0IGRybV9nZW1fY21hX29iamVjdCAqIG9uIHN1Y2Nlc3Mgb3Ig
+YW4gRVJSX1BUUigpLWVuY29kZWQgbmVnYXRpdmUKPiArICogZXJyb3IgY29kZSBvbiBmYWlsdXJl
+Lgo+ICsgKi8KPiArc3RydWN0IGRybV9nZW1fY21hX29iamVjdCAqZHJtX2dlbV9jbWFfY3JlYXRl
+KHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sCj4gKwkJCQkJICAgICAgc2l6ZV90IHNpemUpCj4gK3sK
+PiArCXJldHVybiBkcm1fZ2VtX2NtYV9jcmVhdGVfZmxhZ3MoZHJtLCBzaXplLCBEUk1fTU9ERV9E
+VU1CX0tFUk5FTF9NQVApOwo+ICt9Cj4gIEVYUE9SVF9TWU1CT0xfR1BMKGRybV9nZW1fY21hX2Ny
+ZWF0ZSk7Cj4gIAo+ICAvKioKPiBAQCAtMTM5LDE0ICsxNDgsMTQgQEAgRVhQT1JUX1NZTUJPTF9H
+UEwoZHJtX2dlbV9jbWFfY3JlYXRlKTsKPiAgICovCj4gIHN0YXRpYyBzdHJ1Y3QgZHJtX2dlbV9j
+bWFfb2JqZWN0ICoKPiAgZHJtX2dlbV9jbWFfY3JlYXRlX3dpdGhfaGFuZGxlKHN0cnVjdCBkcm1f
+ZmlsZSAqZmlsZV9wcml2LAo+IC0JCQkgICAgICAgc3RydWN0IGRybV9kZXZpY2UgKmRybSwgc2l6
+ZV90IHNpemUsCj4gKwkJCSAgICAgICBzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCBzaXplX3Qgc2l6
+ZSwgdTMyIGZsYWdzLAo+ICAJCQkgICAgICAgdWludDMyX3QgKmhhbmRsZSkKPiAgewo+ICAJc3Ry
+dWN0IGRybV9nZW1fY21hX29iamVjdCAqY21hX29iajsKPiAgCXN0cnVjdCBkcm1fZ2VtX29iamVj
+dCAqZ2VtX29iajsKPiAgCWludCByZXQ7Cj4gIAo+IC0JY21hX29iaiA9IGRybV9nZW1fY21hX2Ny
+ZWF0ZShkcm0sIHNpemUpOwo+ICsJY21hX29iaiA9IGRybV9nZW1fY21hX2NyZWF0ZV9mbGFncyhk
+cm0sIHNpemUsIGZsYWdzKTsKPiAgCWlmIChJU19FUlIoY21hX29iaikpCj4gIAkJcmV0dXJuIGNt
+YV9vYmo7Cj4gIAo+IEBAIC0yMjUsNyArMjM0LDcgQEAgaW50IGRybV9nZW1fY21hX2R1bWJfY3Jl
+YXRlX2ludGVybmFsKHN0cnVjdCBkcm1fZmlsZSAqZmlsZV9wcml2LAo+ICAJCWFyZ3MtPnNpemUg
+PSBhcmdzLT5waXRjaCAqIGFyZ3MtPmhlaWdodDsKPiAgCj4gIAljbWFfb2JqID0gZHJtX2dlbV9j
+bWFfY3JlYXRlX3dpdGhfaGFuZGxlKGZpbGVfcHJpdiwgZHJtLCBhcmdzLT5zaXplLAo+IC0JCQkJ
+CQkgJmFyZ3MtPmhhbmRsZSk7Cj4gKwkJCQkJCSBhcmdzLT5mbGFncywgJmFyZ3MtPmhhbmRsZSk7
+Cj4gIAlyZXR1cm4gUFRSX0VSUl9PUl9aRVJPKGNtYV9vYmopOwo+ICB9Cj4gIEVYUE9SVF9TWU1C
+T0xfR1BMKGRybV9nZW1fY21hX2R1bWJfY3JlYXRlX2ludGVybmFsKTsKPiBAQCAtMjU2LDkgKzI2
+NSwxMCBAQCBpbnQgZHJtX2dlbV9jbWFfZHVtYl9jcmVhdGUoc3RydWN0IGRybV9maWxlICpmaWxl
+X3ByaXYsCj4gIAo+ICAJYXJncy0+cGl0Y2ggPSBESVZfUk9VTkRfVVAoYXJncy0+d2lkdGggKiBh
+cmdzLT5icHAsIDgpOwo+ICAJYXJncy0+c2l6ZSA9IGFyZ3MtPnBpdGNoICogYXJncy0+aGVpZ2h0
+Owo+ICsJYXJncy0+ZmxhZ3MgPSBEUk1fTU9ERV9EVU1CX0tFUk5FTF9NQVA7Cj4gIAo+ICAJY21h
+X29iaiA9IGRybV9nZW1fY21hX2NyZWF0ZV93aXRoX2hhbmRsZShmaWxlX3ByaXYsIGRybSwgYXJn
+cy0+c2l6ZSwKPiAtCQkJCQkJICZhcmdzLT5oYW5kbGUpOwo+ICsJCQkJCQkgYXJncy0+ZmxhZ3Ms
+ICZhcmdzLT5oYW5kbGUpOwo+ICAJcmV0dXJuIFBUUl9FUlJfT1JfWkVSTyhjbWFfb2JqKTsKPiAg
+fQo+ICBFWFBPUlRfU1lNQk9MX0dQTChkcm1fZ2VtX2NtYV9kdW1iX2NyZWF0ZSk7Cj4gZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZXNvbi9tZXNvbl9kcnYuYyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9tZXNvbi9tZXNvbl9kcnYuYwo+IGluZGV4IDM5N2MzMzE4MmY0Zi4uMTU5MzUxOGRjYmU0IDEw
+MDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZXNvbi9tZXNvbl9kcnYuYwo+ICsrKyBiL2Ry
+aXZlcnMvZ3B1L2RybS9tZXNvbi9tZXNvbl9kcnYuYwo+IEBAIC04MSw2ICs4MSw3IEBAIHN0YXRp
+YyBpbnQgbWVzb25fZHVtYl9jcmVhdGUoc3RydWN0IGRybV9maWxlICpmaWxlLCBzdHJ1Y3QgZHJt
+X2RldmljZSAqZGV2LAo+ICAJICovCj4gIAlhcmdzLT5waXRjaCA9IEFMSUdOKERJVl9ST1VORF9V
+UChhcmdzLT53aWR0aCAqIGFyZ3MtPmJwcCwgOCksIFNaXzY0KTsKPiAgCWFyZ3MtPnNpemUgPSBQ
+QUdFX0FMSUdOKGFyZ3MtPnBpdGNoICogYXJncy0+aGVpZ2h0KTsKPiArCWFyZ3MtPmZsYWdzID0g
+RFJNX01PREVfRFVNQl9LRVJORUxfTUFQOwo+ICAKPiAgCXJldHVybiBkcm1fZ2VtX2NtYV9kdW1i
+X2NyZWF0ZV9pbnRlcm5hbChmaWxlLCBkZXYsIGFyZ3MpOwo+ICB9Cj4gZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvZ3B1L2RybS9yY2FyLWR1L3JjYXJfZHVfa21zLmMgYi9kcml2ZXJzL2dwdS9kcm0vcmNh
+ci1kdS9yY2FyX2R1X2ttcy5jCj4gaW5kZXggMmRjOWNhZWU4NzY3Li5jOWIxZjI5OGNlN2UgMTAw
+NjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JjYXItZHUvcmNhcl9kdV9rbXMuYwo+ICsrKyBi
+L2RyaXZlcnMvZ3B1L2RybS9yY2FyLWR1L3JjYXJfZHVfa21zLmMKPiBAQCAtMjk5LDYgKzI5OSw3
+IEBAIGludCByY2FyX2R1X2R1bWJfY3JlYXRlKHN0cnVjdCBkcm1fZmlsZSAqZmlsZSwgc3RydWN0
+IGRybV9kZXZpY2UgKmRldiwKPiAgCQlhbGlnbiA9IDE2ICogYXJncy0+YnBwIC8gODsKPiAgCj4g
+IAlhcmdzLT5waXRjaCA9IHJvdW5kdXAobWluX3BpdGNoLCBhbGlnbik7Cj4gKwlhcmdzLT5mbGFn
+cyA9IERSTV9NT0RFX0RVTUJfS0VSTkVMX01BUDsKPiAgCj4gIAlyZXR1cm4gZHJtX2dlbV9jbWFf
+ZHVtYl9jcmVhdGVfaW50ZXJuYWwoZmlsZSwgZGV2LCBhcmdzKTsKPiAgfQo+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jIGIvZHJpdmVycy9n
+cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9nZW0uYwo+IGluZGV4IDc1ODJkMGU2YTYwYS4u
+ZjA5YjlhMDM1Mzc2IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
+Y2hpcF9kcm1fZ2VtLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX2dlbS5jCj4gQEAgLTQxOSw2ICs0MTksNyBAQCBpbnQgcm9ja2NoaXBfZ2VtX2R1bWJfY3Jl
+YXRlKHN0cnVjdCBkcm1fZmlsZSAqZmlsZV9wcml2LAo+ICAJICogYWxpZ24gdG8gNjQgYnl0ZXMg
+c2luY2UgTWFsaSByZXF1aXJlcyBpdC4KPiAgCSAqLwo+ICAJYXJncy0+cGl0Y2ggPSBBTElHTiht
+aW5fcGl0Y2gsIDY0KTsKPiArCWFyZ3MtPmZsYWdzID0gRFJNX01PREVfRFVNQl9LRVJORUxfTUFQ
+Owo+ICAJYXJncy0+c2l6ZSA9IGFyZ3MtPnBpdGNoICogYXJncy0+aGVpZ2h0Owo+ICAKPiAgCXJr
+X29iaiA9IHJvY2tjaGlwX2dlbV9jcmVhdGVfd2l0aF9oYW5kbGUoZmlsZV9wcml2LCBkZXYsIGFy
+Z3MtPnNpemUsCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9zdG0vZHJ2LmMgYi9kcml2
+ZXJzL2dwdS9kcm0vc3RtL2Rydi5jCj4gaW5kZXggNWE5ZjlhY2E4YmMyLi4wZjc2YTRhYzk1YjMg
+MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3N0bS9kcnYuYwo+ICsrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9zdG0vZHJ2LmMKPiBAQCAtNDcsNiArNDcsNyBAQCBzdGF0aWMgaW50IHN0bV9nZW1f
+Y21hX2R1bWJfY3JlYXRlKHN0cnVjdCBkcm1fZmlsZSAqZmlsZSwKPiAgCSAqLwo+ICAJYXJncy0+
+cGl0Y2ggPSByb3VuZHVwKG1pbl9waXRjaCwgMTI4KTsKPiAgCWFyZ3MtPmhlaWdodCA9IHJvdW5k
+dXAoYXJncy0+aGVpZ2h0LCA0KTsKPiArCWFyZ3MtPmZsYWdzID0gRFJNX01PREVfRFVNQl9LRVJO
+RUxfTUFQOwo+ICAKPiAgCXJldHVybiBkcm1fZ2VtX2NtYV9kdW1iX2NyZWF0ZV9pbnRlcm5hbChm
+aWxlLCBkZXYsIGFyZ3MpOwo+ICB9Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9zdW40
+aS9zdW40aV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV9kcnYuYwo+IGluZGV4
+IGE1NzU3YjExYjczMC4uZjY1M2E1ZDFlMmQ2IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
+bS9zdW40aS9zdW40aV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9zdW40aS9zdW40aV9k
+cnYuYwo+IEBAIC0zNCw2ICszNCw3IEBAIHN0YXRpYyBpbnQgZHJtX3N1bjRpX2dlbV9kdW1iX2Ny
+ZWF0ZShzdHJ1Y3QgZHJtX2ZpbGUgKmZpbGVfcHJpdiwKPiAgewo+ICAJLyogVGhlIGhhcmR3YXJl
+IG9ubHkgYWxsb3dzIGV2ZW4gcGl0Y2hlcyBmb3IgWVVWIGJ1ZmZlcnMuICovCj4gIAlhcmdzLT5w
+aXRjaCA9IEFMSUdOKERJVl9ST1VORF9VUChhcmdzLT53aWR0aCAqIGFyZ3MtPmJwcCwgOCksIDIp
+Owo+ICsJYXJncy0+ZmxhZ3MgPSBEUk1fTU9ERV9EVU1CX0tFUk5FTF9NQVA7Cj4gIAo+ICAJcmV0
+dXJuIGRybV9nZW1fY21hX2R1bWJfY3JlYXRlX2ludGVybmFsKGZpbGVfcHJpdiwgZHJtLCBhcmdz
+KTsKPiAgfQo+IAoKUmV2aWV3ZWQtYnk6IE5laWwgQXJtc3Ryb25nIDxuYXJtc3Ryb25nQGJheWxp
+YnJlLmNvbT4gIyBmb3IgZHJtX2dlbV9jbWFfaGVscGVyIGFuZCBtZXNvbiBkcm0gZHJpdmVyCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRp
+YXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
