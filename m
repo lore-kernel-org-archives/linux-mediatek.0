@@ -2,92 +2,67 @@ Return-Path: <SRS0=62P0=YP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CEA63CA9EA0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2019 09:55:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F61CCA9EB7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2019 11:15:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9F5FA20B7C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2019 09:55:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 47AF0218AE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2019 11:15:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oKFssklJ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="aRtC60mY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F5FA20B7C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CLmoW3ff";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.b="at9VuQVu"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 47AF0218AE
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:From:To:Subject:
-	MIME-Version:References:In-Reply-To:Date:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XwBLiASTdJLw/W2t1jHarw+Imfirbc0er4IMmoHrOPU=; b=oKFssklJAjqsXi
-	DykfuHRjygl9Scfuod0NOh/mp+Ze6wNzNafVcPVnIdLMYCqvPQd6OGqChOglVJWYWEmXp89MT30BD
-	A9wmRmOkgnf0rRxqB1eM34saBcv4pE8f66KtNJzMnGbTY3wzroaBi0+LZQsphEkzfZx3Rk5oc5GSB
-	eRbxmjl2nrq9Uw9peCsS7T72TgOb9QRzCai0/qLvnO+AfYLO8A5Bkrj++DvvglOQblZei6lwidzOi
-	+NkfebJ+GAE0gre8dObt6kRpNN94oGkZueBZMoEKhfZ2rQRoQXy4HTsvn5iS/UCLXInOiVni/Xhsg
-	2zwR4Oj4s791nMs0AhvA==;
+	List-Owner; bh=a7rQKIfkuIJ7sbKUigFYE+gh3L1Mwcyr1MGZePxlDBw=; b=CLmoW3ffYsko7A
+	+19v/khPYs9UaeEVvKuBv8XKnyKZh2pCOZWhFioS66voRdcg7cLDXQiLWJALXXrD6X4uhKTguF0d1
+	bKijpZ+TEvL9gSshSdSi+wBdGd+De2oT9E/FQvjeX97BMWSOB1IrbkGCxMeNN5b4xXFZqb0gBxxcB
+	fkgFmgHCp1tyUpuem8uOfJhLEakC75KvLD/raEcydBrqCx0SPAPyDQX9SCZ6HQNVRRGgedO9e2Woi
+	mIRBQmdege/ibeRhzAO1s7ioQczRvVsKPyd4MgzKOuRo2pZ3AqLNrYO/39hwKgWF4PnZFX5sxQAS0
+	tfwJvPhjtBXEZxWWkcxw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMqtE-0003R5-Bq; Tue, 22 Oct 2019 09:55:44 +0000
-Received: from mout.gmx.net ([212.227.15.18])
+	id 1iMs89-0008LV-Ve; Tue, 22 Oct 2019 11:15:13 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMqtA-0003QW-VC; Tue, 22 Oct 2019 09:55:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1571738131;
- bh=OE/0MVT0jwdzZZXVDP3ALcBpFIqz2P+d6POGuGMFRDY=;
- h=X-UI-Sender-Class:Date:In-Reply-To:References:Subject:Reply-to:To:
- CC:From;
- b=aRtC60mY0lF/daRGYPMDz9SS8yBVagkcU/cXgiUMJWEdLyyR0Q5mDvrch+SMJWz1j
- CyZt4YZPZiTYNq6rpHrdnD4bUH8m4NWiQOLoGUHzLF4b1xDwyCt8Fgzw6gxt+kDMqF
- 7MAcVJ8i+/Gfx4mGjEtXf+GhRrKt78/e4H+x4cUs=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from frank-bq ([185.75.73.113]) by mail.gmx.com (mrgmx005
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1N2mFi-1hszdC0mD6-01335A; Tue, 22
- Oct 2019 11:49:50 +0200
-Date: Tue, 22 Oct 2019 11:49:47 +0200
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20190910070446.639-3-frank-w@public-files.de>
-References: <20190910070446.639-1-frank-w@public-files.de>
- <20190910070446.639-3-frank-w@public-files.de>
+ id 1iMs7r-0006vS-JW; Tue, 22 Oct 2019 11:14:57 +0000
+Received: from pendragon.ideasonboard.com (143.121.2.93.rev.sfr.net
+ [93.2.121.143])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id CDD2E2BA;
+ Tue, 22 Oct 2019 13:14:48 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1571742888;
+ bh=Dj3Cz/n7yM2z3c1Y1pZ8ZtwXXwJMfegZmbgkXpatmh0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=at9VuQVua6bJSsjxoq999Oh4fFDdbfhUDULTceOmzi44ViGtr3RQM5KOuUJYi6nsS
+ qq51ZKr48Q1VGZ/hiT4PTS47om8/Ep8WkHxwBZsTWwU2Pn+RjAoxPzS4M1V+uHB+Ic
+ Yva6JLUo6CpypxRc4qteWjt1ao8qq4ENIBbmUrto=
+Date: Tue, 22 Oct 2019 14:14:43 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 2/6] drm: Introduce DRM_MODE_DUMB_KERNEL_MAP flag
+Message-ID: <20191022111443.GE4756@pendragon.ideasonboard.com>
+References: <20191021214550.1461-1-robh@kernel.org>
+ <20191021214550.1461-3-robh@kernel.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH v7 2/7] rtc: mt6397: move some common definitions into
- rtc.h
-To: linux-mediatek@lists.infradead.org
-From: Frank Wunderlich <frank-w@public-files.de>
-Message-ID: <D5C0F601-D71C-40DC-BF89-5C167DB004A1@public-files.de>
-X-Provags-ID: V03:K1:IDQ6Jwwc7LHNhDz0snpL9KvZ48Wwi3GQfUWLY3C+qRfc+xCLK16
- VIpVqXjm0vosezYP0lKD6q1a3Ykm8DY1U1sI7Bzgslu6NVi/00Gc8ftSzoSI3DohyGHzk6K
- YLisBIsWGAhnS+1mr95nVB3M2m7Z/RaHwT6BEaaQjhKAM67qKcylpx6isItv2H5Nnw93gLf
- TwUjRIpjNUSgdx9+zniTA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:tsgyInglKb8=:C6GXrQHnDy/ofu7FQw8kKN
- 8Swr4q6PLtHCSXsu3h+YpHIT7x7blL5ToVDCSMkmq7jtForyrVls5+FmUFPArkubkCGXgxvxR
- LihjGyn1SRvI2r75YhIFpEvNAAV6zV43WDwUqJ9Kta/PQZ/TE4Na8NT/nSoZduQP6A9s6D4SM
- +FKS2yeMGhZVm5ykEPDL+zz7HYg2O4OGxFP1A4mxgjz5GYmxjQ3t2YfmEmOtur45bK+ttHErZ
- vByXz+NGhVc6qtJFU+NZqr1I9kH1vWg2gonPHdZiBRHylLKfvclAhx0R3W29tZJlWtlh/BEOn
- rp91OERrT0m1sR9pjWMDMp/naGq3sr3uxZwunuWe6NUVWZ0/hn532NaSSwwaii0cq7jpPA4Kf
- DZfdOIO+KT/hroj/BMDYFLs9TyJHCNpv7nM0Zo66JsvyLGVkIde95TDmnau0Iu+8vrLoBMy1L
- 9/qF8VqhvBU7LWYnZMm7RJ6pVLKfjBE7w5ycgzP/sKwRuce5ucOVTQCimwrqYUsHyMdl60f6C
- 331sE6qy3jStc+C4Q/zWiPTS/KqX4uNqA7JULV80IJe4MAy7D4LF43H0rW24SfYofdjT0CML4
- v9lMyN1bDWvsfyRWBfT9+wG1mgc5+DT06EhVUAIuI/ox4ImEf+8ykGe81eavFtfd0LYPPiklG
- r3fJejl/fzEZ6fPAH3pT3Kib7K6MOM25454sROoDLd/uWjhYDCeJFjRysfDsZeC7nKFRcz/9g
- TufnTbtyB0OE30N9+mtliuV61boyWZjlCoD1REy4RL5oaiEqkCwS5EHtpuGmHZQIMSKPoDr0n
- m7Fjih0gPZ+sQpjUsjyM2vbN2WZ0c3pLuaq0CHY8YbX7JVH1mECAI2MFfxWSOxLLVveCTMFu8
- rAODhbjwwk9X4rhqjm/CfyRgjl6VUT/oGQ9xMR97iTPGL4k4XBkGkRkhYE3akvh6LqCPfOWaH
- BLhxqcFGlYO3bj7aKX5gNuegAmP2ZRivcZc6/jZ6GT+8CACg1dtYEjAOA5O8ZFnCmig4RNIo2
- um0nUFQwO5cb/DArn3kUqD2oCqIWM4zuOtBEpuoZESvvIcSy7nlHueM75LJCTdsqI+XF3UqiG
- as5VV1T+Iar1dEgoltLyP9ondDUga4PPeAQQpCo42kzVHOfKfOhrzwxElfsyexU+3p/Wcn7kh
- vI1ssCsLOVEDisFHBUfV6uhgfDT6bLcSzYoxKzrwkzZPXp1lDSSFRq6yJt4U2vyoHwWxBirKe
- L/nxqc44PWnM+1zlEnSpMLraiYs0lqkfOBZYkTZviI5uQV/tUOQehJ6f7Lw4=
+Content-Disposition: inline
+In-Reply-To: <20191021214550.1461-3-robh@kernel.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191022_025541_299477_D9A8101E 
-X-CRM114-Status: UNSURE (   7.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191022_041455_948194_8AD8EF3E 
+X-CRM114-Status: GOOD (  21.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,190 +74,121 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
-Cc: linux-rtc@vger.kernel.org, devicetree@vger.kernel.org,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Alessandro Zummo <a.zummo@towertech.it>, linux-pm@vger.kernel.org,
- Sean Wang <sean.wang@mediatek.com>, Josef Friedl <josef.friedl@speed.at>,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Eddie Huang <eddie.huang@mediatek.com>, Sebastian Reichel <sre@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>,
- Tianping Fang <tianping.fang@mediatek.com>, Lee Jones <lee.jones@linaro.org>,
- linux-arm-kernel@lists.infradead.org
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
+ Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
+ Liviu Dudau <liviu.dudau@arm.com>, dri-devel@lists.freedesktop.org,
+ Sandy Huang <hjc@rock-chips.com>,
+ Benjamin Gaignard <benjamin.gaignard@linaro.org>,
+ Yannick Fertre <yannick.fertre@st.com>, Kevin Hilman <khilman@baylibre.com>,
+ Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+ Xinliang Liu <z.liuxinliang@hisilicon.com>, linux-rockchip@lists.infradead.org,
+ Chen-Yu Tsai <wens@csie.org>,
+ Noralf =?utf-8?Q?Tr=C3=B8nnes?= <noralf@tronnes.org>,
+ "James \(Qian\) Wang" <james.qian.wang@arm.com>, CK Hu <ck.hu@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Alexandre Torgue <alexandre.torgue@st.com>,
+ Chen Feng <puck.chen@hisilicon.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org,
+ Philippe Cornu <philippe.cornu@st.com>, Vincent Abriou <vincent.abriou@st.com>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Rongrong Zou <zourongrong@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Is it ok now? It seems not yet merged to next. Other code is based on this.
+Hi Rob,
 
-Am 10. September 2019 09:04:41 MESZ schrieb Frank Wunderlich <frank-w@public-files.de>:
->From: Josef Friedl <josef.friedl@speed.at>
->
->move code to separate header-file to reuse definitions later
->in poweroff-driver (drivers/power/reset/mt6323-poweroff.c)
->
->Suggested-by: Frank Wunderlich <frank-w@public-files.de>
->Signed-off-by: Josef Friedl <josef.friedl@speed.at>
->Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
->Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
->Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
->---
->changes since v6: updated copyright
->changes since v5: none
->changes since v4: none
->changes since v3: none
->changes since v2: add missing commit-message
->---
-> drivers/rtc/rtc-mt6397.c       | 55 +-------------------------
-> include/linux/mfd/mt6397/rtc.h | 71 ++++++++++++++++++++++++++++++++++
-> 2 files changed, 72 insertions(+), 54 deletions(-)
-> create mode 100644 include/linux/mfd/mt6397/rtc.h
->
->diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
->index b46ed4dc7015..c08ee5edf865 100644
->--- a/drivers/rtc/rtc-mt6397.c
->+++ b/drivers/rtc/rtc-mt6397.c
->@@ -9,60 +9,7 @@
-> #include <linux/module.h>
-> #include <linux/regmap.h>
-> #include <linux/rtc.h>
->-#include <linux/irqdomain.h>
->-#include <linux/platform_device.h>
->-#include <linux/of_address.h>
->-#include <linux/of_irq.h>
->-#include <linux/io.h>
->-#include <linux/mfd/mt6397/core.h>
->-
->-#define RTC_BBPU		0x0000
->-#define RTC_BBPU_CBUSY		BIT(6)
->-
->-#define RTC_WRTGR		0x003c
->-
->-#define RTC_IRQ_STA		0x0002
->-#define RTC_IRQ_STA_AL		BIT(0)
->-#define RTC_IRQ_STA_LP		BIT(3)
->-
->-#define RTC_IRQ_EN		0x0004
->-#define RTC_IRQ_EN_AL		BIT(0)
->-#define RTC_IRQ_EN_ONESHOT	BIT(2)
->-#define RTC_IRQ_EN_LP		BIT(3)
->-#define RTC_IRQ_EN_ONESHOT_AL	(RTC_IRQ_EN_ONESHOT | RTC_IRQ_EN_AL)
->-
->-#define RTC_AL_MASK		0x0008
->-#define RTC_AL_MASK_DOW		BIT(4)
->-
->-#define RTC_TC_SEC		0x000a
->-/* Min, Hour, Dom... register offset to RTC_TC_SEC */
->-#define RTC_OFFSET_SEC		0
->-#define RTC_OFFSET_MIN		1
->-#define RTC_OFFSET_HOUR		2
->-#define RTC_OFFSET_DOM		3
->-#define RTC_OFFSET_DOW		4
->-#define RTC_OFFSET_MTH		5
->-#define RTC_OFFSET_YEAR		6
->-#define RTC_OFFSET_COUNT	7
->-
->-#define RTC_AL_SEC		0x0018
->-
->-#define RTC_PDN2		0x002e
->-#define RTC_PDN2_PWRON_ALARM	BIT(4)
->-
->-#define RTC_MIN_YEAR		1968
->-#define RTC_BASE_YEAR		1900
->-#define RTC_NUM_YEARS		128
->-#define RTC_MIN_YEAR_OFFSET	(RTC_MIN_YEAR - RTC_BASE_YEAR)
->-
->-struct mt6397_rtc {
->-	struct device		*dev;
->-	struct rtc_device	*rtc_dev;
->-	struct mutex		lock;
->-	struct regmap		*regmap;
->-	int			irq;
->-	u32			addr_base;
->-};
->+#include <linux/mfd/mt6397/rtc.h>
+Thank you for the patch.
+
+On Mon, Oct 21, 2019 at 04:45:46PM -0500, Rob Herring wrote:
+> Introduce a new flag, DRM_MODE_DUMB_KERNEL_MAP, for struct
+> drm_mode_create_dumb. This flag is for internal kernel use to indicate
+> if dumb buffer allocation needs a kernel mapping. This is needed only for
+> CMA where creating a kernel mapping or not has to be decided at allocation
+> time because creating a mapping on demand (with vmap()) is not guaranteed
+> to work. Several drivers are using CMA, but not the CMA helpers because
+> they distinguish between kernel and userspace allocations to create a
+> kernel mapping or not.
 > 
-> static int mtk_rtc_write_trigger(struct mt6397_rtc *rtc)
-> {
->diff --git a/include/linux/mfd/mt6397/rtc.h
->b/include/linux/mfd/mt6397/rtc.h
->new file mode 100644
->index 000000000000..f84b9163c0ee
->--- /dev/null
->+++ b/include/linux/mfd/mt6397/rtc.h
->@@ -0,0 +1,71 @@
->+/* SPDX-License-Identifier: GPL-2.0 */
->+/*
->+ * Copyright (C) 2014-2019 MediaTek Inc.
->+ *
->+ * Author: Tianping.Fang <tianping.fang@mediatek.com>
->+ *        Sean Wang <sean.wang@mediatek.com>
->+ */
->+
->+#ifndef _LINUX_MFD_MT6397_RTC_H_
->+#define _LINUX_MFD_MT6397_RTC_H_
->+
->+#include <linux/jiffies.h>
->+#include <linux/mutex.h>
->+#include <linux/regmap.h>
->+#include <linux/rtc.h>
->+
->+#define RTC_BBPU               0x0000
->+#define RTC_BBPU_CBUSY         BIT(6)
->+#define RTC_BBPU_KEY            (0x43 << 8)
->+
->+#define RTC_WRTGR              0x003c
->+
->+#define RTC_IRQ_STA            0x0002
->+#define RTC_IRQ_STA_AL         BIT(0)
->+#define RTC_IRQ_STA_LP         BIT(3)
->+
->+#define RTC_IRQ_EN             0x0004
->+#define RTC_IRQ_EN_AL          BIT(0)
->+#define RTC_IRQ_EN_ONESHOT     BIT(2)
->+#define RTC_IRQ_EN_LP          BIT(3)
->+#define RTC_IRQ_EN_ONESHOT_AL  (RTC_IRQ_EN_ONESHOT | RTC_IRQ_EN_AL)
->+
->+#define RTC_AL_MASK            0x0008
->+#define RTC_AL_MASK_DOW                BIT(4)
->+
->+#define RTC_TC_SEC             0x000a
->+/* Min, Hour, Dom... register offset to RTC_TC_SEC */
->+#define RTC_OFFSET_SEC         0
->+#define RTC_OFFSET_MIN         1
->+#define RTC_OFFSET_HOUR                2
->+#define RTC_OFFSET_DOM         3
->+#define RTC_OFFSET_DOW         4
->+#define RTC_OFFSET_MTH         5
->+#define RTC_OFFSET_YEAR                6
->+#define RTC_OFFSET_COUNT       7
->+
->+#define RTC_AL_SEC             0x0018
->+
->+#define RTC_PDN2               0x002e
->+#define RTC_PDN2_PWRON_ALARM   BIT(4)
->+
->+#define RTC_MIN_YEAR           1968
->+#define RTC_BASE_YEAR          1900
->+#define RTC_NUM_YEARS          128
->+#define RTC_MIN_YEAR_OFFSET    (RTC_MIN_YEAR - RTC_BASE_YEAR)
->+
->+#define MTK_RTC_POLL_DELAY_US  10
->+#define MTK_RTC_POLL_TIMEOUT   (jiffies_to_usecs(HZ))
->+
->+struct mt6397_rtc {
->+	struct device           *dev;
->+	struct rtc_device       *rtc_dev;
->+
->+	/* Protect register access from multiple tasks */
->+	struct mutex            lock;
->+	struct regmap           *regmap;
->+	int                     irq;
->+	u32                     addr_base;
->+};
->+
->+#endif /* _LINUX_MFD_MT6397_RTC_H_ */
+> Update the callers of drm_mode_dumb_create() to set
+> drm_mode_dumb_create.flags to appropriate defaults. Currently, flags can
+> be set to anything by userspace, but is unused within the kernel. Let's
+> force flags to zero (no kernel mapping) for userspace callers by default.
+> For in kernel clients, set DRM_MODE_DUMB_KERNEL_MAP by default. Drivers
+> can override this as needed.
+> 
+> Cc: David Airlie <airlied@linux.ie>
+> Cc: Daniel Vetter <daniel@ffwll.ch>
+> Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+> Cc: Maxime Ripard <mripard@kernel.org>
+> Cc: Sean Paul <sean@poorly.run>
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  drivers/gpu/drm/drm_client.c       | 1 +
+>  drivers/gpu/drm/drm_dumb_buffers.c | 5 ++++-
+>  include/uapi/drm/drm_mode.h        | 2 ++
+>  3 files changed, 7 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/drm_client.c b/drivers/gpu/drm/drm_client.c
+> index d9a2e3695525..dbfc8061b392 100644
+> --- a/drivers/gpu/drm/drm_client.c
+> +++ b/drivers/gpu/drm/drm_client.c
+> @@ -264,6 +264,7 @@ drm_client_buffer_create(struct drm_client_dev *client, u32 width, u32 height, u
+>  	dumb_args.width = width;
+>  	dumb_args.height = height;
+>  	dumb_args.bpp = info->cpp[0] * 8;
+> +	dumb_args.flags = DRM_MODE_DUMB_KERNEL_MAP;
+>  	ret = drm_mode_create_dumb(dev, &dumb_args, client->file);
+>  	if (ret)
+>  		goto err_delete;
+> diff --git a/drivers/gpu/drm/drm_dumb_buffers.c b/drivers/gpu/drm/drm_dumb_buffers.c
+> index d18a740fe0f1..74a13f14c173 100644
+> --- a/drivers/gpu/drm/drm_dumb_buffers.c
+> +++ b/drivers/gpu/drm/drm_dumb_buffers.c
+> @@ -97,7 +97,10 @@ int drm_mode_create_dumb(struct drm_device *dev,
+>  int drm_mode_create_dumb_ioctl(struct drm_device *dev,
+>  			       void *data, struct drm_file *file_priv)
+>  {
+> -	return drm_mode_create_dumb(dev, data, file_priv);
+> +	struct drm_mode_create_dumb *args = data;
+> +
+> +	args->flags = 0;
+
+I would prefer returning an error if flags is set to a non-zero value,
+to catch userspace errors early, but I'm also worried it would break
+existing userspace by uncovering existing bugs. Still, if we later add
+flags that userspace can set, those existing bugs will be triggered, so
+we'll have to deal with them anyway, and we could already give it a try.
+
+The patch otherwise looks good to me.
+
+> +	return drm_mode_create_dumb(dev, args, file_priv);
+>  }
+>  
+>  /**
+> diff --git a/include/uapi/drm/drm_mode.h b/include/uapi/drm/drm_mode.h
+> index 735c8cfdaaa1..02712f46b94c 100644
+> --- a/include/uapi/drm/drm_mode.h
+> +++ b/include/uapi/drm/drm_mode.h
+> @@ -796,6 +796,8 @@ struct drm_mode_crtc_page_flip_target {
+>  	__u64 user_data;
+>  };
+>  
+> +#define DRM_MODE_DUMB_KERNEL_MAP	(1<<0)	/* For internal kernel use */
+> +
+>  /* create a dumb scanout buffer */
+>  struct drm_mode_create_dumb {
+>  	__u32 height;
+
+-- 
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-mediatek mailing list
