@@ -2,21 +2,22 @@ Return-Path: <SRS0=62P0=YP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3F366CA9EA0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2019 11:40:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B3960CA9EA0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2019 12:42:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0C9A3207FC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2019 11:40:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7EA2B21783
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2019 12:42:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="q7kTJZa7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0C9A3207FC
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux-m68k.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aPxuMFEZ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="w/zX1/Tg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7EA2B21783
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -24,49 +25,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l7H7cv233taBBA2X4v88y718w+JSH4+gv4qj6hzOIqw=; b=q7kTJZa717etdv
-	1Mxmzxx87FTiwH6DJ8QPEtf60Iax8b+2NhCinYjiYm+uLSfB5Mr6crLqfdKD1/xg/p6KJ2KLJ2ECv
-	5l7bPfsZTjbtrDh2ZaqcMIFDqmn+tlX1WLZcnpmKynNc3DksbxdJ+JmaFa6FhvBBkRHfrDM0Pddvd
-	teYRavi+NN/xB0j09jUOZZbt5uMS4bh7FtOAQbsy1QlV1nmrrLk2iG94ahTsrDakbNA9zDCSlNDtr
-	oOAK8bZKHyA+kKnmxfSq49aSlYOpPKO81u1YQr7ZWj/EzyV5d15OacWGRws/ZQ867d9ZpgnP6jXNF
-	+oyzTWqCnNnhwvp7LGgA==;
+	List-Owner; bh=sSvxVJFpMNt39x3b1nU00i68rAlfoguJroNdzs7m9e0=; b=aPxuMFEZJ35jlo
+	eeRUccASoDUQm+L9fO//9xEY7f9W1L2s8sDLaMZUeAxK4iJGzZKLJmU8xiA4nVG0xxx5iMuu0ltZX
+	KZvQPGZKMyLKjpJ/ffkkUD3LDhgxjy98CNFJ3X+wEtndNvX9Za4Y7kIkyli9Cu1h2MVYHyYdxiHf2
+	V1w8t8IW1G3igvM/Kmg+d+l9u999e2HOMbavN2M5Xp2XfaLXqjH4RAlNORfAk5azsGlh4e74yMAFo
+	VWgD2HSaZwmdmZNwZ1gfLvR4scvZqbncOujJ7vbH6LVSc/z6izR2rUq3nXEJPOCZp1wYBqwuM94+d
+	xswe0o1kp70ZRB0UOhhw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMsX0-0001t5-Cs; Tue, 22 Oct 2019 11:40:54 +0000
-Received: from mail-oi1-f195.google.com ([209.85.167.195])
+	id 1iMtUc-0000M3-Tr; Tue, 22 Oct 2019 12:42:30 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMsWv-0001pj-1Q; Tue, 22 Oct 2019 11:40:50 +0000
-Received: by mail-oi1-f195.google.com with SMTP id a15so13893945oic.0;
- Tue, 22 Oct 2019 04:40:48 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=MTkUrxhJaaygKpYFG6XKyORLB/6UsrnNnAcZ2HEl3vA=;
- b=j7e/zRyXU5L0j2HfQBbiPRz1FpuWUq8OpkY1fEgg+b6eFMpCFxxa0wxK5igcfbKDzn
- 0fjgfODFh85mRztti513M90VKEGQDozP6DZEl25T3X3Iy4djigU6eXU/ITq6h8aeyL7V
- LAqP5IUgr5LTF7qI4BZQslJBkP2eW6WxQGGtostoG6/DVsy3P5h9xgSsDzlmJEyhYhVT
- R3DD4GkxWGbDM8rVnTS3BTBcBpJaZrIy+uDLc1jivmv9cfCgMeyQZXYsVYHGxG1ICltD
- rGbvZyqQ4osi2/pZHZ/7Rnqd4CaUHgH/V8RoEwOMrreJvEqnOtXcypGTFGWJtrcb/lU0
- S17w==
-X-Gm-Message-State: APjAAAVeDIySB0nVGznHacrGOS95zpZ36M8Atl9htX5+7bGtkEjdRRjl
- eqn5OtYlv0a53ZuWqk0xefPqx+DbDNEiRGMbTxA=
-X-Google-Smtp-Source: APXvYqzhQ8cZ06PtyQQYS8VBvz7ZAfya04dDgTKpedBCyvYLKvYUP4z21wflkhBwZ+Lx/Betkfre5JCQCLddcCfBX8w=
-X-Received: by 2002:aca:882:: with SMTP id 124mr2542881oii.54.1571744447771;
- Tue, 22 Oct 2019 04:40:47 -0700 (PDT)
+ id 1iMtUS-0000CJ-4H; Tue, 22 Oct 2019 12:42:21 +0000
+Received: from mail-qt1-f170.google.com (mail-qt1-f170.google.com
+ [209.85.160.170])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 596D7222C2;
+ Tue, 22 Oct 2019 12:42:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1571748139;
+ bh=EM5Hd+W+Xbp28U+Qeo5Lp8facOPIzhF6X+VJbmFVCFE=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=w/zX1/Tg4kUp8ZsraDAtrm6nTJHzeZRRAQyBnvhIoxWOH+70wbRChvFYoclQzrAyx
+ t3pce/y+Pd+Gz2n8TXgw3ysqSr9+h3cV75SfJ1htirf+jlAvk1lKLvT4TRTokOffrM
+ DrmpGkHFokoIFCfb2flUsdsxd6OuxQnF7je6KEvA=
+Received: by mail-qt1-f170.google.com with SMTP id o49so18655106qta.7;
+ Tue, 22 Oct 2019 05:42:19 -0700 (PDT)
+X-Gm-Message-State: APjAAAXHJacavpAp9SIAG7tv6EmSny2pQNrtzJTiJeG1G1XhMv9UbbCO
+ z8EmvUdyjHELetUkpsPxm/NIYp3t3QaJUGNmWA==
+X-Google-Smtp-Source: APXvYqxf6MiuQdiT7Kz6alYW3lLAiryxko/xUIhWeHE6cCzheQDLOsAyk0cPSV/+Iz0r0zq3dgDPP+/dTRg57i4n7U8=
+X-Received: by 2002:a0c:add6:: with SMTP id x22mr781981qvc.79.1571748138355;
+ Tue, 22 Oct 2019 05:42:18 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191021214550.1461-1-robh@kernel.org>
- <20191021214550.1461-5-robh@kernel.org>
- <20191022113001.GG4756@pendragon.ideasonboard.com>
-In-Reply-To: <20191022113001.GG4756@pendragon.ideasonboard.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Tue, 22 Oct 2019 13:40:36 +0200
-Message-ID: <CAMuHMdXCq9urRDCSmLueVpsv9-FxJ6pxQf-9Ua=vT-TrRs++fQ@mail.gmail.com>
-Subject: Re: [PATCH 4/6] drm/cma-helper: Support DRM_MODE_DUMB_KERNEL_MAP flag
+ <20191021214550.1461-3-robh@kernel.org>
+ <20191022111443.GE4756@pendragon.ideasonboard.com>
+In-Reply-To: <20191022111443.GE4756@pendragon.ideasonboard.com>
+From: Rob Herring <robh@kernel.org>
+Date: Tue, 22 Oct 2019 07:42:06 -0500
+X-Gmail-Original-Message-ID: <CAL_Jsq+kyLZ8LAVN-5UDJUy9nMLiAjN452HWg5WYAfLS7QD=Yw@mail.gmail.com>
+Message-ID: <CAL_Jsq+kyLZ8LAVN-5UDJUy9nMLiAjN452HWg5WYAfLS7QD=Yw@mail.gmail.com>
+Subject: Re: [PATCH 2/6] drm: Introduce DRM_MODE_DUMB_KERNEL_MAP flag
 To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191022_044049_083408_F929B8F4 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20191022_054220_205288_035841CC 
+X-CRM114-Status: GOOD (  26.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,70 +82,117 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Vetter <daniel@ffwll.ch>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
  Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
- Liviu Dudau <liviu.dudau@arm.com>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Philippe Cornu <philippe.cornu@st.com>,
+ Liviu Dudau <liviu.dudau@arm.com>, dri-devel <dri-devel@lists.freedesktop.org>,
+ Sandy Huang <hjc@rock-chips.com>,
  Benjamin Gaignard <benjamin.gaignard@linaro.org>,
- linux-stm32@st-md-mailman.stormreply.com, Rob Herring <robh@kernel.org>,
- Kevin Hilman <khilman@baylibre.com>, Chen-Yu Tsai <wens@csie.org>,
+ Yannick Fertre <yannick.fertre@st.com>, Kevin Hilman <khilman@baylibre.com>,
+ Xinwei Kong <kong.kongxinwei@hisilicon.com>,
  Xinliang Liu <z.liuxinliang@hisilicon.com>,
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Xinwei Kong <kong.kongxinwei@hisilicon.com>,
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Chen-Yu Tsai <wens@csie.org>,
+ =?UTF-8?Q?Noralf_Tr=C3=B8nnes?= <noralf@tronnes.org>,
  "James \(Qian\) Wang" <james.qian.wang@arm.com>, CK Hu <ck.hu@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
  Alexandre Torgue <alexandre.torgue@st.com>,
  Chen Feng <puck.chen@hisilicon.com>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- Maxime Ripard <mripard@kernel.org>, linux-mediatek@lists.infradead.org,
+ Maxime Ripard <mripard@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Sean Paul <sean@poorly.run>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, Philippe Cornu <philippe.cornu@st.com>,
  Vincent Abriou <vincent.abriou@st.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>,
- Sean Paul <sean@poorly.run>, Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, Sandy Huang <hjc@rock-chips.com>,
- Yannick Fertre <yannick.fertre@st.com>,
- =?UTF-8?Q?Noralf_Tr=C3=B8nnes?= <noralf@tronnes.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Rongrong Zou <zourongrong@gmail.com>,
- Brian Starkey <brian.starkey@arm.com>
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Rongrong Zou <zourongrong@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent,
-
-On Tue, Oct 22, 2019 at 1:30 PM Laurent Pinchart
+On Tue, Oct 22, 2019 at 6:14 AM Laurent Pinchart
 <laurent.pinchart@ideasonboard.com> wrote:
-> On Mon, Oct 21, 2019 at 04:45:48PM -0500, Rob Herring wrote:
-
-> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> > @@ -419,6 +419,7 @@ int rockchip_gem_dumb_create(struct drm_file *file_priv,
-> >        * align to 64 bytes since Mali requires it.
-> >        */
-> >       args->pitch = ALIGN(min_pitch, 64);
-> > +     args->flags = DRM_MODE_DUMB_KERNEL_MAP;
-> >       args->size = args->pitch * args->height;
 >
-> My OCD gets triggered by flags appearing in the middle here while it is
-> at the end in other drivers :-)
+> Hi Rob,
+>
+> Thank you for the patch.
+>
+> On Mon, Oct 21, 2019 at 04:45:46PM -0500, Rob Herring wrote:
+> > Introduce a new flag, DRM_MODE_DUMB_KERNEL_MAP, for struct
+> > drm_mode_create_dumb. This flag is for internal kernel use to indicate
+> > if dumb buffer allocation needs a kernel mapping. This is needed only for
+> > CMA where creating a kernel mapping or not has to be decided at allocation
+> > time because creating a mapping on demand (with vmap()) is not guaranteed
+> > to work. Several drivers are using CMA, but not the CMA helpers because
+> > they distinguish between kernel and userspace allocations to create a
+> > kernel mapping or not.
+> >
+> > Update the callers of drm_mode_dumb_create() to set
+> > drm_mode_dumb_create.flags to appropriate defaults. Currently, flags can
+> > be set to anything by userspace, but is unused within the kernel. Let's
+> > force flags to zero (no kernel mapping) for userspace callers by default.
+> > For in kernel clients, set DRM_MODE_DUMB_KERNEL_MAP by default. Drivers
+> > can override this as needed.
+> >
+> > Cc: David Airlie <airlied@linux.ie>
+> > Cc: Daniel Vetter <daniel@ffwll.ch>
+> > Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+> > Cc: Maxime Ripard <mripard@kernel.org>
+> > Cc: Sean Paul <sean@poorly.run>
+> > Signed-off-by: Rob Herring <robh@kernel.org>
+> > ---
+> >  drivers/gpu/drm/drm_client.c       | 1 +
+> >  drivers/gpu/drm/drm_dumb_buffers.c | 5 ++++-
+> >  include/uapi/drm/drm_mode.h        | 2 ++
+> >  3 files changed, 7 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/gpu/drm/drm_client.c b/drivers/gpu/drm/drm_client.c
+> > index d9a2e3695525..dbfc8061b392 100644
+> > --- a/drivers/gpu/drm/drm_client.c
+> > +++ b/drivers/gpu/drm/drm_client.c
+> > @@ -264,6 +264,7 @@ drm_client_buffer_create(struct drm_client_dev *client, u32 width, u32 height, u
+> >       dumb_args.width = width;
+> >       dumb_args.height = height;
+> >       dumb_args.bpp = info->cpp[0] * 8;
+> > +     dumb_args.flags = DRM_MODE_DUMB_KERNEL_MAP;
+> >       ret = drm_mode_create_dumb(dev, &dumb_args, client->file);
+> >       if (ret)
+> >               goto err_delete;
+> > diff --git a/drivers/gpu/drm/drm_dumb_buffers.c b/drivers/gpu/drm/drm_dumb_buffers.c
+> > index d18a740fe0f1..74a13f14c173 100644
+> > --- a/drivers/gpu/drm/drm_dumb_buffers.c
+> > +++ b/drivers/gpu/drm/drm_dumb_buffers.c
+> > @@ -97,7 +97,10 @@ int drm_mode_create_dumb(struct drm_device *dev,
+> >  int drm_mode_create_dumb_ioctl(struct drm_device *dev,
+> >                              void *data, struct drm_file *file_priv)
+> >  {
+> > -     return drm_mode_create_dumb(dev, data, file_priv);
+> > +     struct drm_mode_create_dumb *args = data;
+> > +
+> > +     args->flags = 0;
+>
+> I would prefer returning an error if flags is set to a non-zero value,
+> to catch userspace errors early, but I'm also worried it would break
+> existing userspace by uncovering existing bugs. Still, if we later add
+> flags that userspace can set, those existing bugs will be triggered, so
+> we'll have to deal with them anyway, and we could already give it a try.
 
-... while "flags" appears before "pitch" and "size" in the actual struct
-definition... Aaarghl ;-)
+I would like that too, but the comment just above this code tells me
+that's likely to break things:
 
-Gr{oetje,eeting}s,
+        /*
+         * handle, pitch and size are output parameters. Zero them out to
+         * prevent drivers from accidentally using uninitialized data. Since
+         * not all existing userspace is clearing these fields properly we
+         * cannot reject IOCTL with garbage in them.
+         */
 
-                        Geert
+Maybe userspace does correctly zero out input params.
 
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
