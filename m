@@ -2,22 +2,22 @@ Return-Path: <SRS0=62P0=YP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E0013CA9EA0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2019 09:46:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CEA63CA9EA0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2019 09:55:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B1B9A2089E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2019 09:46:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9F5FA20B7C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Oct 2019 09:55:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UGhlE0dL";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="FvfPvGDC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B1B9A2089E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oKFssklJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="aRtC60mY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F5FA20B7C
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,66 +26,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:From:To:Subject:
 	MIME-Version:References:In-Reply-To:Date:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YfTQjBARkYDJZuDFkxkWLCZ0xKk3vd4p+pq24FujBns=; b=UGhlE0dLj8SiYQ
-	072v4JdIK4pri5y0lcmHuU+nODiRU2qeTdCglhEKtQNjOo05qfr2Pi/OYoLzs4e7EgRSVBPpZWxCO
-	J4xfkWdcuy1JbqPaSUq7UUDljwB9hx5/4oFNlSaSSDo1Z4U+VP0dubfzoeECGS8wsSodX+bvg1V39
-	S/1sopoyu3Yl9+q1zjxdpYNIVntdFG/MRXCNX/sq62FMhyrboXAfc62FkQfJxIp7qX24BQu48bfCa
-	2K0aMpSwwISxKuQh6yFjeDx29YME51WI7B8C0Z9q7zpubZIXOXZRIZXBx+QIAGH5J1GxRYHgiJngy
-	1b0h+sdcbBkdAIwKvoDw==;
+	List-Owner; bh=XwBLiASTdJLw/W2t1jHarw+Imfirbc0er4IMmoHrOPU=; b=oKFssklJAjqsXi
+	DykfuHRjygl9Scfuod0NOh/mp+Ze6wNzNafVcPVnIdLMYCqvPQd6OGqChOglVJWYWEmXp89MT30BD
+	A9wmRmOkgnf0rRxqB1eM34saBcv4pE8f66KtNJzMnGbTY3wzroaBi0+LZQsphEkzfZx3Rk5oc5GSB
+	eRbxmjl2nrq9Uw9peCsS7T72TgOb9QRzCai0/qLvnO+AfYLO8A5Bkrj++DvvglOQblZei6lwidzOi
+	+NkfebJ+GAE0gre8dObt6kRpNN94oGkZueBZMoEKhfZ2rQRoQXy4HTsvn5iS/UCLXInOiVni/Xhsg
+	2zwR4Oj4s791nMs0AhvA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iMqkN-0006Hs-NN; Tue, 22 Oct 2019 09:46:35 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1iMqtE-0003R5-Bq; Tue, 22 Oct 2019 09:55:44 +0000
+Received: from mout.gmx.net ([212.227.15.18])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iMqkD-00069d-8M; Tue, 22 Oct 2019 09:46:28 +0000
+ id 1iMqtA-0003QW-VC; Tue, 22 Oct 2019 09:55:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1571737572;
- bh=YQnIZApIf+d3RC8+gJ4XAh8mf3pKoDtSYtaWU4JHfWw=;
+ s=badeba3b8450; t=1571738131;
+ bh=OE/0MVT0jwdzZZXVDP3ALcBpFIqz2P+d6POGuGMFRDY=;
  h=X-UI-Sender-Class:Date:In-Reply-To:References:Subject:Reply-to:To:
  CC:From;
- b=FvfPvGDCY4u86PA4B0Ipju/7zhuRh/KbOUl5ahk+B8S0V5DJhQ91TTLTBhS8GC9Bn
- DJtMayQxDgY/MLSoUCFg8mPrjMLzAnwC+tNTKZx7sTyLNSovZTaOE2tk+Jwz0L8Feb
- Wco1dM3nL3L3P0XbHdlSPYfO/pCyLDxGOY/u/yoQ=
+ b=aRtC60mY0lF/daRGYPMDz9SS8yBVagkcU/cXgiUMJWEdLyyR0Q5mDvrch+SMJWz1j
+ CyZt4YZPZiTYNq6rpHrdnD4bUH8m4NWiQOLoGUHzLF4b1xDwyCt8Fgzw6gxt+kDMqF
+ 7MAcVJ8i+/Gfx4mGjEtXf+GhRrKt78/e4H+x4cUs=
 X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
 Received: from frank-bq ([185.75.73.113]) by mail.gmx.com (mrgmx005
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MnJlW-1hde1H3qaq-00jIuP; Tue, 22
- Oct 2019 11:46:11 +0200
-Date: Tue, 22 Oct 2019 11:46:07 +0200
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1N2mFi-1hszdC0mD6-01335A; Tue, 22
+ Oct 2019 11:49:50 +0200
+Date: Tue, 22 Oct 2019 11:49:47 +0200
 User-Agent: K-9 Mail for Android
-In-Reply-To: <20191016095338.GD4365@dell>
-References: <20191003185323.24646-1-frank-w@public-files.de>
- <20191016095338.GD4365@dell>
+In-Reply-To: <20190910070446.639-3-frank-w@public-files.de>
+References: <20190910070446.639-1-frank-w@public-files.de>
+ <20190910070446.639-3-frank-w@public-files.de>
 MIME-Version: 1.0
-Subject: Re: [PATCH] mfd: mt6397: fix probe after changing mt6397-core
-To: linux-mediatek@lists.infradead.org,Lee Jones <lee.jones@linaro.org>
+Subject: Re: [PATCH v7 2/7] rtc: mt6397: move some common definitions into
+ rtc.h
+To: linux-mediatek@lists.infradead.org
 From: Frank Wunderlich <frank-w@public-files.de>
-Message-ID: <24600EAE-5379-475F-B83D-880E767F2CDA@public-files.de>
-X-Provags-ID: V03:K1:zn6CtqLXymxCEpB4Z1h5hKRQMZxDbjptqj8SY/i72+7a//VKmAP
- BMNrdloz0JRUo1gU6KmNykIc8C8HFn3Pii1+bLj6e/ImqSrzmpweE3MaZ5Aj/aMixWHLZG6
- prqBNzb0IwKz5sG/i0+XGoz/yrzoPfxZlarxjCXLDWO8Hk3FM4Ltc1iIM1K4raT73q/WbEE
- seoTp7xTu4+1YjDCsJmgw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:6lpq+4CB3fo=:bdh66YT68Xl01DxxnCV72W
- tkREJoNo2ZCTsxa88mHMktJqBf1EO8hFqRlsKHnO+Cwuj9XJVxVSh08UynS/W0FLAV20PGE4i
- UsRNdKTXLeW37rn1hIoQ6vCTGpCjMToooBMHG65Q2f0FZfBmgNZp9f0gpbZyWLOQyeo6qvh2D
- KnsCAFab+pD+rpWqVEVePkaZs7O1bm7imhBMawElc8OYyDzYUBepRDNb2FwLbv/PFq1luTHaZ
- 2+4NVZadMCnPWmdGayPDQBJq09BkyhNKHM47eAXBulHPVEn367CtLUyKtwfyBwpDAH3tHhttl
- sNnsgZxWwsMrl6MsqZ+ro9kbIdST7bk2vubsMSRHig941wAMyxar/Ov+NqLdHRonDdQ6f8fOK
- nqQX++BJwXOkZXfo/cGA4bHzw0mQacAyKm59YAAYN9gaiTScHgYJzPdgusd2V7dB4OOhjbX+d
- PipQm3iMkX6GMxebEK0nAGHpLoUZVSozXJztNAc8Zisq/USjBN7aJdWZIENbluGRJS6Qc+MXA
- 2uYdpeDiJi/XEtGMWYbpLXIKTsd6AGhg7Jx0CZD7ydBqf+PftY8qjuuGkBsG2scJW932xXF05
- IYDVi3/gmsTpQoeWwbm+hAgk2RS2OAIy83Ejt/x1wLWFilZNPD4Y9KqGEiggfQ3Toh06v3CG7
- Th9Jnnf3btS+i8YxehHaA2fBsyCZilDqBsoAMdUsFRdST+6m1l8GwKZcCx7AKsRq+9ckJfB7N
- SlyMhWCEXkEHDSxU3xWqrlzdNOEODQyn5D0G8Pc6W2dfjI5rlxS7e9OYqSxdqNgEEnB+2+Z4o
- +X4EGQ/jzJ9It4CLyCsx+iwF6MI93Oztqd4dqsypTRL6nhUSLguJaYEPnNXRvm2RUWRNdK54F
- 4OiW2xBO1xDj4vJB1ESZz5tthVbnO/ucXqX4KgsEVf6FrkKpfzEq0pLi7BAdAARDHHyMsfKrP
- d12LXL4tl/lTIyqbYdo1qf413Gtzj/UTEude5ACLpSAsaT+Q+hgoL5xLzfzv+ZWWTsVTm4EPg
- R6etENs1oUbPzecg3pY1Bfc1Tvykx3BT/vq/o0l2am2lx9pIr3QzoU7bVNQigmaNiYJzvuNuY
- KnYcVgnLZ27MmNKRBy57xzQboh/+aO5L146IS6pOw6b20NG3CCuZe1kzoEYWuEDp8Jz3icr55
- nG15H5wdExV4SrV9bBv6KXMmCJPL4oxE7PAT/YWjRr+cT2UYXdYKvONBXQ6abYk7+7lgR+UOd
- ErAGjaARVot8535/owLHha0eP1W8NczLfv3NQEFiYwLM5sJLig5ByhAlI/E0=
+Message-ID: <D5C0F601-D71C-40DC-BF89-5C167DB004A1@public-files.de>
+X-Provags-ID: V03:K1:IDQ6Jwwc7LHNhDz0snpL9KvZ48Wwi3GQfUWLY3C+qRfc+xCLK16
+ VIpVqXjm0vosezYP0lKD6q1a3Ykm8DY1U1sI7Bzgslu6NVi/00Gc8ftSzoSI3DohyGHzk6K
+ YLisBIsWGAhnS+1mr95nVB3M2m7Z/RaHwT6BEaaQjhKAM67qKcylpx6isItv2H5Nnw93gLf
+ TwUjRIpjNUSgdx9+zniTA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:tsgyInglKb8=:C6GXrQHnDy/ofu7FQw8kKN
+ 8Swr4q6PLtHCSXsu3h+YpHIT7x7blL5ToVDCSMkmq7jtForyrVls5+FmUFPArkubkCGXgxvxR
+ LihjGyn1SRvI2r75YhIFpEvNAAV6zV43WDwUqJ9Kta/PQZ/TE4Na8NT/nSoZduQP6A9s6D4SM
+ +FKS2yeMGhZVm5ykEPDL+zz7HYg2O4OGxFP1A4mxgjz5GYmxjQ3t2YfmEmOtur45bK+ttHErZ
+ vByXz+NGhVc6qtJFU+NZqr1I9kH1vWg2gonPHdZiBRHylLKfvclAhx0R3W29tZJlWtlh/BEOn
+ rp91OERrT0m1sR9pjWMDMp/naGq3sr3uxZwunuWe6NUVWZ0/hn532NaSSwwaii0cq7jpPA4Kf
+ DZfdOIO+KT/hroj/BMDYFLs9TyJHCNpv7nM0Zo66JsvyLGVkIde95TDmnau0Iu+8vrLoBMy1L
+ 9/qF8VqhvBU7LWYnZMm7RJ6pVLKfjBE7w5ycgzP/sKwRuce5ucOVTQCimwrqYUsHyMdl60f6C
+ 331sE6qy3jStc+C4Q/zWiPTS/KqX4uNqA7JULV80IJe4MAy7D4LF43H0rW24SfYofdjT0CML4
+ v9lMyN1bDWvsfyRWBfT9+wG1mgc5+DT06EhVUAIuI/ox4ImEf+8ykGe81eavFtfd0LYPPiklG
+ r3fJejl/fzEZ6fPAH3pT3Kib7K6MOM25454sROoDLd/uWjhYDCeJFjRysfDsZeC7nKFRcz/9g
+ TufnTbtyB0OE30N9+mtliuV61boyWZjlCoD1REy4RL5oaiEqkCwS5EHtpuGmHZQIMSKPoDr0n
+ m7Fjih0gPZ+sQpjUsjyM2vbN2WZ0c3pLuaq0CHY8YbX7JVH1mECAI2MFfxWSOxLLVveCTMFu8
+ rAODhbjwwk9X4rhqjm/CfyRgjl6VUT/oGQ9xMR97iTPGL4k4XBkGkRkhYE3akvh6LqCPfOWaH
+ BLhxqcFGlYO3bj7aKX5gNuegAmP2ZRivcZc6/jZ6GT+8CACg1dtYEjAOA5O8ZFnCmig4RNIo2
+ um0nUFQwO5cb/DArn3kUqD2oCqIWM4zuOtBEpuoZESvvIcSy7nlHueM75LJCTdsqI+XF3UqiG
+ as5VV1T+Iar1dEgoltLyP9ondDUga4PPeAQQpCo42kzVHOfKfOhrzwxElfsyexU+3p/Wcn7kh
+ vI1ssCsLOVEDisFHBUfV6uhgfDT6bLcSzYoxKzrwkzZPXp1lDSSFRq6yJt4U2vyoHwWxBirKe
+ L/nxqc44PWnM+1zlEnSpMLraiYs0lqkfOBZYkTZviI5uQV/tUOQehJ6f7Lw4=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191022_024625_595435_E4B75EEE 
-X-CRM114-Status: UNSURE (   7.27  )
+X-CRM114-CacheID: sfid-20191022_025541_299477_D9A8101E 
+X-CRM114-Status: UNSURE (   7.65  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -99,39 +100,191 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Reply-To: frank-w@public-files.de
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+Cc: linux-rtc@vger.kernel.org, devicetree@vger.kernel.org,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Alessandro Zummo <a.zummo@towertech.it>, linux-pm@vger.kernel.org,
+ Sean Wang <sean.wang@mediatek.com>, Josef Friedl <josef.friedl@speed.at>,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Eddie Huang <eddie.huang@mediatek.com>, Sebastian Reichel <sre@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Mark Rutland <mark.rutland@arm.com>,
+ Tianping Fang <tianping.fang@mediatek.com>, Lee Jones <lee.jones@linaro.org>,
  linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-V2lsbCBpdCBiZSBtZXJnZWQgb24gcmMtY3ljbGU/CgpJIGFzayBiZWNhdXNlIGkgc2VlIGl0IG9u
-bHkgaW4gbWZkLW5leHQgYnV0IG5vdCBpbiBmaXhlcy90b3J2YWxkcy1tYXN0ZXIKClJlZ2FyZHMg
-RnJhbmsKCkFtIDE2LiBPa3RvYmVyIDIwMTkgMTE6NTM6MzggTUVTWiBzY2hyaWViIExlZSBKb25l
-cyA8bGVlLmpvbmVzQGxpbmFyby5vcmc+Ogo+T24gVGh1LCAwMyBPY3QgMjAxOSwgRnJhbmsgV3Vu
-ZGVybGljaCB3cm90ZToKPgo+PiBQYXJ0IDMgZnJvbSB0aGlzIHNlcmllcyBbMV0gd2FzIG5vdCBt
-ZXJnZWQgZHVlIHRvIHdyb25nIHNwbGl0dGluZwo+PiBhbmQgYnJlYWtzIG10NjMyMyBwbWljIG9u
-IGJhbmFuYXBpLXIyCj4+IAo+PiBkbWVzZyBwcmludHMgdGhpcyBsaW5lIGFuZCBhdCBsZWFzdCBz
-d2l0Y2ggaXMgbm90IGluaXRpYWxpemVkIG9uCj5iYW5hbmFwaS1yMgo+PiAKPj4gbXQ2Mzk3IDEw
-MDBkMDAwLnB3cmFwOm10NjMyMzogdW5zdXBwb3J0ZWQgY2hpcDogMHgwCj4+IAo+PiB0aGlzIHBh
-dGNoIGNvbnRhaW5zIG9ubHkgdGhlIHByb2JlLWNoYW5nZXMgYW5kIGNoaXBfZGF0YSBzdHJ1Y3Rz
-Cj4+IGZyb20gb3JpZ2luYWwgcGFydCAzIGJ5IEhzaW4tSHNpdW5nIFdhbmcKPj4gCj4+IEZpeGVz
-OiBhNDg3MmU4MGNlN2QyYTE4NDQzMjgxNzZkYmYyNzlkMGEyYjg5YmRiIG1mZDogbXQ2Mzk3OiBF
-eHRyYWN0Cj5JUlEgcmVsYXRlZCBjb2RlIGZyb20gY29yZSBkcml2ZXIKPgo+SSd2ZSBmaXhlZCB0
-aGlzIGxpbmUgdG8gdXNlIHRoZSBzdGFuZGFyZCBmb3JtYXR0aW5nLgo+Cj4+IFsxXQo+aHR0cHM6
-Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4LW1lZGlhdGVrL2xpc3QvP3Nlcmll
-cz0xNjQxNTUKPj4gCj4+IFNpZ25lZC1vZmYtYnk6IEZyYW5rIFd1bmRlcmxpY2ggPGZyYW5rLXdA
-cHVibGljLWZpbGVzLmRlPgo+PiAtLS0KPj4gIGRyaXZlcnMvbWZkL210NjM5Ny1jb3JlLmMgfCA2
-NAo+KysrKysrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tLS0tCj4+ICAxIGZpbGUgY2hh
-bmdlZCwgNDAgaW5zZXJ0aW9ucygrKSwgMjQgZGVsZXRpb25zKC0pCj4KPkFwcGxpZWQsIHRoYW5r
-cy4KPgo+LS0gCj5MZWUgSm9uZXMgW+adjueQvOaWr10KPkxpbmFybyBTZXJ2aWNlcyBUZWNobmlj
-YWwgTGVhZAo+TGluYXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdhcmUgZm9yIEFSTSBTb0Nz
-Cj5Gb2xsb3cgTGluYXJvOiBGYWNlYm9vayB8IFR3aXR0ZXIgfCBCbG9nCj4KPl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj5MaW51eC1tZWRpYXRlayBtYWls
-aW5nIGxpc3QKPkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKPmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1h
-aWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+Is it ok now? It seems not yet merged to next. Other code is based on this.
+
+Am 10. September 2019 09:04:41 MESZ schrieb Frank Wunderlich <frank-w@public-files.de>:
+>From: Josef Friedl <josef.friedl@speed.at>
+>
+>move code to separate header-file to reuse definitions later
+>in poweroff-driver (drivers/power/reset/mt6323-poweroff.c)
+>
+>Suggested-by: Frank Wunderlich <frank-w@public-files.de>
+>Signed-off-by: Josef Friedl <josef.friedl@speed.at>
+>Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
+>Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
+>---
+>changes since v6: updated copyright
+>changes since v5: none
+>changes since v4: none
+>changes since v3: none
+>changes since v2: add missing commit-message
+>---
+> drivers/rtc/rtc-mt6397.c       | 55 +-------------------------
+> include/linux/mfd/mt6397/rtc.h | 71 ++++++++++++++++++++++++++++++++++
+> 2 files changed, 72 insertions(+), 54 deletions(-)
+> create mode 100644 include/linux/mfd/mt6397/rtc.h
+>
+>diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+>index b46ed4dc7015..c08ee5edf865 100644
+>--- a/drivers/rtc/rtc-mt6397.c
+>+++ b/drivers/rtc/rtc-mt6397.c
+>@@ -9,60 +9,7 @@
+> #include <linux/module.h>
+> #include <linux/regmap.h>
+> #include <linux/rtc.h>
+>-#include <linux/irqdomain.h>
+>-#include <linux/platform_device.h>
+>-#include <linux/of_address.h>
+>-#include <linux/of_irq.h>
+>-#include <linux/io.h>
+>-#include <linux/mfd/mt6397/core.h>
+>-
+>-#define RTC_BBPU		0x0000
+>-#define RTC_BBPU_CBUSY		BIT(6)
+>-
+>-#define RTC_WRTGR		0x003c
+>-
+>-#define RTC_IRQ_STA		0x0002
+>-#define RTC_IRQ_STA_AL		BIT(0)
+>-#define RTC_IRQ_STA_LP		BIT(3)
+>-
+>-#define RTC_IRQ_EN		0x0004
+>-#define RTC_IRQ_EN_AL		BIT(0)
+>-#define RTC_IRQ_EN_ONESHOT	BIT(2)
+>-#define RTC_IRQ_EN_LP		BIT(3)
+>-#define RTC_IRQ_EN_ONESHOT_AL	(RTC_IRQ_EN_ONESHOT | RTC_IRQ_EN_AL)
+>-
+>-#define RTC_AL_MASK		0x0008
+>-#define RTC_AL_MASK_DOW		BIT(4)
+>-
+>-#define RTC_TC_SEC		0x000a
+>-/* Min, Hour, Dom... register offset to RTC_TC_SEC */
+>-#define RTC_OFFSET_SEC		0
+>-#define RTC_OFFSET_MIN		1
+>-#define RTC_OFFSET_HOUR		2
+>-#define RTC_OFFSET_DOM		3
+>-#define RTC_OFFSET_DOW		4
+>-#define RTC_OFFSET_MTH		5
+>-#define RTC_OFFSET_YEAR		6
+>-#define RTC_OFFSET_COUNT	7
+>-
+>-#define RTC_AL_SEC		0x0018
+>-
+>-#define RTC_PDN2		0x002e
+>-#define RTC_PDN2_PWRON_ALARM	BIT(4)
+>-
+>-#define RTC_MIN_YEAR		1968
+>-#define RTC_BASE_YEAR		1900
+>-#define RTC_NUM_YEARS		128
+>-#define RTC_MIN_YEAR_OFFSET	(RTC_MIN_YEAR - RTC_BASE_YEAR)
+>-
+>-struct mt6397_rtc {
+>-	struct device		*dev;
+>-	struct rtc_device	*rtc_dev;
+>-	struct mutex		lock;
+>-	struct regmap		*regmap;
+>-	int			irq;
+>-	u32			addr_base;
+>-};
+>+#include <linux/mfd/mt6397/rtc.h>
+> 
+> static int mtk_rtc_write_trigger(struct mt6397_rtc *rtc)
+> {
+>diff --git a/include/linux/mfd/mt6397/rtc.h
+>b/include/linux/mfd/mt6397/rtc.h
+>new file mode 100644
+>index 000000000000..f84b9163c0ee
+>--- /dev/null
+>+++ b/include/linux/mfd/mt6397/rtc.h
+>@@ -0,0 +1,71 @@
+>+/* SPDX-License-Identifier: GPL-2.0 */
+>+/*
+>+ * Copyright (C) 2014-2019 MediaTek Inc.
+>+ *
+>+ * Author: Tianping.Fang <tianping.fang@mediatek.com>
+>+ *        Sean Wang <sean.wang@mediatek.com>
+>+ */
+>+
+>+#ifndef _LINUX_MFD_MT6397_RTC_H_
+>+#define _LINUX_MFD_MT6397_RTC_H_
+>+
+>+#include <linux/jiffies.h>
+>+#include <linux/mutex.h>
+>+#include <linux/regmap.h>
+>+#include <linux/rtc.h>
+>+
+>+#define RTC_BBPU               0x0000
+>+#define RTC_BBPU_CBUSY         BIT(6)
+>+#define RTC_BBPU_KEY            (0x43 << 8)
+>+
+>+#define RTC_WRTGR              0x003c
+>+
+>+#define RTC_IRQ_STA            0x0002
+>+#define RTC_IRQ_STA_AL         BIT(0)
+>+#define RTC_IRQ_STA_LP         BIT(3)
+>+
+>+#define RTC_IRQ_EN             0x0004
+>+#define RTC_IRQ_EN_AL          BIT(0)
+>+#define RTC_IRQ_EN_ONESHOT     BIT(2)
+>+#define RTC_IRQ_EN_LP          BIT(3)
+>+#define RTC_IRQ_EN_ONESHOT_AL  (RTC_IRQ_EN_ONESHOT | RTC_IRQ_EN_AL)
+>+
+>+#define RTC_AL_MASK            0x0008
+>+#define RTC_AL_MASK_DOW                BIT(4)
+>+
+>+#define RTC_TC_SEC             0x000a
+>+/* Min, Hour, Dom... register offset to RTC_TC_SEC */
+>+#define RTC_OFFSET_SEC         0
+>+#define RTC_OFFSET_MIN         1
+>+#define RTC_OFFSET_HOUR                2
+>+#define RTC_OFFSET_DOM         3
+>+#define RTC_OFFSET_DOW         4
+>+#define RTC_OFFSET_MTH         5
+>+#define RTC_OFFSET_YEAR                6
+>+#define RTC_OFFSET_COUNT       7
+>+
+>+#define RTC_AL_SEC             0x0018
+>+
+>+#define RTC_PDN2               0x002e
+>+#define RTC_PDN2_PWRON_ALARM   BIT(4)
+>+
+>+#define RTC_MIN_YEAR           1968
+>+#define RTC_BASE_YEAR          1900
+>+#define RTC_NUM_YEARS          128
+>+#define RTC_MIN_YEAR_OFFSET    (RTC_MIN_YEAR - RTC_BASE_YEAR)
+>+
+>+#define MTK_RTC_POLL_DELAY_US  10
+>+#define MTK_RTC_POLL_TIMEOUT   (jiffies_to_usecs(HZ))
+>+
+>+struct mt6397_rtc {
+>+	struct device           *dev;
+>+	struct rtc_device       *rtc_dev;
+>+
+>+	/* Protect register access from multiple tasks */
+>+	struct mutex            lock;
+>+	struct regmap           *regmap;
+>+	int                     irq;
+>+	u32                     addr_base;
+>+};
+>+
+>+#endif /* _LINUX_MFD_MT6397_RTC_H_ */
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
