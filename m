@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 58E20CA9EB6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2019 14:27:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7CDDECA9EB6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2019 14:29:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 26D0421906
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2019 14:27:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 397B621872
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2019 14:29:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="H1E8CA3t";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.b="HfNC5+1M"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 26D0421906
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CsuqNCr8";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.b="Rq44FFoU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 397B621872
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,45 +26,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nG2cCHtlCU9I+rDzSi2Jsr5dR6Noqe5tqF5cVuB/uyk=; b=H1E8CA3t+CZadO
-	cZOekqXWZD3m/dgzGH+fbcOPtIJgQTBQHJd7LqyWgqJj8+G0vgWRk+i3uOBXPXTojBjKajQ2vZ+2D
-	bEAIVxPn7mp3zBWgDp7JkAEiZjxTBSCuTATfV0YCQ/KtKIjJdKNh2SJVDp2zCjIKVpL/STEOaPxqL
-	rI3OnGYC1GtZeyQZF1MTAmuu9/NNrqCcR/DCnX3R7Zmu/Hz3rHYPHgWa0uUqgf58Vbutq8K461GD0
-	tPNUyeczuZwBWbl7cd4ciH7IJtlASli/rlbcB86eGEHbhNMfNqQptBSvu/jZgOD/PlKPKgUsqcc+P
-	3Pq6Rj3uVSf/7SGu/N4A==;
+	List-Owner; bh=+D29sMOlb1zyTjHwHPLXGZPwxS3b/2w9i36yOy5LXZ8=; b=CsuqNCr8Gw69rW
+	S0IcfWkjfXEwBYqu+GYHfqKB1iV1895g6ysF0mNpoMMTBRl4R8C+vVQdSuSpb1fSoWKoGkyQow7mn
+	dibRwv7D3BGjOTDwn8Q7s5n2GAtHVVjc2GKDJCM02xKaFmtlxR6BPfaqQAO6ww9pVjlfgKZH9y/Bw
+	iwLvCQWeWaYWUdta1nuplvSjWIWyzlHIzO27lL7jaiZsB61HjOQaGzc73K8AfmQYpN3u5JPfiU0WR
+	e+8e4nijTd2uj63DMHslwtqnbC9KwHL5+K/Cf2QXldvRK9bxt7S+PTjipduHJi3a4UBwfG08mX/dC
+	f67yydWVkKctjNLWYUvg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iNHby-0006UH-Ng; Wed, 23 Oct 2019 14:27:42 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1iNHdI-0006wa-Db; Wed, 23 Oct 2019 14:29:04 +0000
+Received: from perceval.ideasonboard.com
+ ([2001:4b98:dc2:55:216:3eff:fef7:d647])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iNHbl-0006Jg-0F; Wed, 23 Oct 2019 14:27:31 +0000
+ id 1iNHd7-0006nc-JI; Wed, 23 Oct 2019 14:28:55 +0000
 Received: from pendragon.ideasonboard.com (143.121.2.93.rev.sfr.net
  [93.2.121.143])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 731022BA;
- Wed, 23 Oct 2019 16:27:16 +0200 (CEST)
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id D86D02BA;
+ Wed, 23 Oct 2019 16:28:50 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1571840836;
- bh=JXqWjdiLubVy5sWaPNoZEJWjeRj39puPI4yetjR1u3s=;
+ s=mail; t=1571840931;
+ bh=t3Htp1XR/thYXTkpQ0rJ6aq37qeHWyJ+ms7lSKkK260=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=HfNC5+1MHn6TRNR/YN4P3LSQWxmv4uJMWJfnz3zLtGa9GRuZYMbfPcxvaKa+bb9NU
- wP52IcWvP/OGLU8sYfrkecNBWS8mZXpK2+j1kNIqKu4qY0NrrFttxCF2qbOmql2fRV
- MDKrV52IHE9CnQrlhyeFyAv29V4Y+zLzh06EHEp4=
-Date: Wed, 23 Oct 2019 17:27:11 +0300
+ b=Rq44FFoUvSBNKU3dRccrJ+nNMAAqWTv+qKPcu7cFedWct514zocGwqunpV/T85zmY
+ Y8M8cSDrAK1N8xXDzcdys8702EHJETXKYvCfgtGrMqAm2LEggVvi6fGSC0NzvGJQJv
+ iExRoNQX3b60Bv2LNJUaza8GOGLwflH83hiLkKiI=
+Date: Wed, 23 Oct 2019 17:28:44 +0300
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 4/6] drm/cma-helper: Support DRM_MODE_DUMB_KERNEL_MAP flag
-Message-ID: <20191023142711.GB1904@pendragon.ideasonboard.com>
+Subject: Re: [PATCH 2/6] drm: Introduce DRM_MODE_DUMB_KERNEL_MAP flag
+Message-ID: <20191023142844.GC1904@pendragon.ideasonboard.com>
 References: <20191021214550.1461-1-robh@kernel.org>
- <20191021214550.1461-5-robh@kernel.org>
- <20191022113001.GG4756@pendragon.ideasonboard.com>
- <CAL_JsqJk4xeFCHPqpXUSW4XJ=eQ+EYPUpjX_4UL9Pw_OAcqLdA@mail.gmail.com>
+ <20191021214550.1461-3-robh@kernel.org>
+ <20191022111443.GE4756@pendragon.ideasonboard.com>
+ <CAL_Jsq+kyLZ8LAVN-5UDJUy9nMLiAjN452HWg5WYAfLS7QD=Yw@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAL_JsqJk4xeFCHPqpXUSW4XJ=eQ+EYPUpjX_4UL9Pw_OAcqLdA@mail.gmail.com>
+In-Reply-To: <CAL_Jsq+kyLZ8LAVN-5UDJUy9nMLiAjN452HWg5WYAfLS7QD=Yw@mail.gmail.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191023_072729_351157_1AAC8B31 
-X-CRM114-Status: GOOD (  21.02  )
+X-CRM114-CacheID: sfid-20191023_072853_925603_445790D1 
+X-CRM114-Status: GOOD (  26.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,7 +82,6 @@ Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
  Liviu Dudau <liviu.dudau@arm.com>, dri-devel <dri-devel@lists.freedesktop.org>,
  Sandy Huang <hjc@rock-chips.com>,
  Benjamin Gaignard <benjamin.gaignard@linaro.org>,
- linux-amlogic@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
  Yannick Fertre <yannick.fertre@st.com>, Kevin Hilman <khilman@baylibre.com>,
  Xinwei Kong <kong.kongxinwei@hisilicon.com>,
  Xinliang Liu <z.liuxinliang@hisilicon.com>,
@@ -93,8 +93,7 @@ Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
  Alexandre Torgue <alexandre.torgue@st.com>,
  Chen Feng <puck.chen@hisilicon.com>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- "open list:MEDIA DRIVERS FOR RENESAS - FCP"
- <linux-renesas-soc@vger.kernel.org>, Maxime Ripard <mripard@kernel.org>,
+ Maxime Ripard <mripard@kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
  Sean Paul <sean@poorly.run>,
@@ -103,140 +102,99 @@ Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
  Vincent Abriou <vincent.abriou@st.com>,
  Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Rongrong Zou <zourongrong@gmail.com>, Brian Starkey <brian.starkey@arm.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ Rongrong Zou <zourongrong@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgUm9iLAoKT24gVHVlLCBPY3QgMjIsIDIwMTkgYXQgMDM6MDI6MDZQTSAtMDUwMCwgUm9iIEhl
-cnJpbmcgd3JvdGU6Cj4gT24gVHVlLCBPY3QgMjIsIDIwMTkgYXQgNjozMCBBTSBMYXVyZW50IFBp
-bmNoYXJ0IHdyb3RlOgo+ID4gT24gTW9uLCBPY3QgMjEsIDIwMTkgYXQgMDQ6NDU6NDhQTSAtMDUw
-MCwgUm9iIEhlcnJpbmcgd3JvdGU6Cj4gPj4gQWRkIHN1cHBvcnQgaW4gQ01BIGhlbHBlcnMgdG8g
-aGFuZGxlIGNhbGxlcnMgc3BlY2lmeWluZwo+ID4+IERSTV9NT0RFX0RVTUJfS0VSTkVMX01BUCBm
-bGFnLiBFeGlzdGluZyBiZWhhdmlvciBpcyBtYWludGFpbmVkIHdpdGggdGhpcwo+ID4+IGNoYW5n
-ZS4gZHJtX2dlbV9jbWFfZHVtYl9jcmVhdGUoKSBhbHdheXMgY3JlYXRlcyBhIGtlcm5lbCBtYXBw
-aW5nIGFzCj4gPj4gYmVmb3JlLiBkcm1fZ2VtX2NtYV9kdW1iX2NyZWF0ZV9pbnRlcm5hbCgpIGxl
-dHMgdGhlIGNhbGxlciBzZXQgdGhlIGZsYWdzCj4gPj4gYXMgZGVzaXJlZC4gVGhlcmVmb3JlLCB1
-cGRhdGUgYWxsIHRoZSBleGlzdGluZyBjYWxsZXJzIG9mCj4gPj4gZHJtX2dlbV9jbWFfZHVtYl9j
-cmVhdGVfaW50ZXJuYWwoKSB0byBhbHNvIHNldCB0aGUKPiA+PiBEUk1fTU9ERV9EVU1CX0tFUk5F
-TF9NQVAgZmxhZy4KPiA+Pgo+ID4+IENjOiBNYWFydGVuIExhbmtob3JzdCA8bWFhcnRlbi5sYW5r
-aG9yc3RAbGludXguaW50ZWwuY29tPgo+ID4+IENjOiBNYXhpbWUgUmlwYXJkIDxtcmlwYXJkQGtl
-cm5lbC5vcmc+Cj4gPj4gQ2M6IFNlYW4gUGF1bCA8c2VhbkBwb29ybHkucnVuPgo+ID4+IENjOiBE
-YXZpZCBBaXJsaWUgPGFpcmxpZWRAbGludXguaWU+Cj4gPj4gQ2M6IERhbmllbCBWZXR0ZXIgPGRh
-bmllbEBmZndsbC5jaD4KPiA+PiBDYzogIkphbWVzIChRaWFuKSBXYW5nIiA8amFtZXMucWlhbi53
-YW5nQGFybS5jb20+Cj4gPj4gQ2M6IExpdml1IER1ZGF1IDxsaXZpdS5kdWRhdUBhcm0uY29tPgo+
-ID4+IENjOiBCcmlhbiBTdGFya2V5IDxicmlhbi5zdGFya2V5QGFybS5jb20+Cj4gPj4gQ2M6IE5l
-aWwgQXJtc3Ryb25nIDxuYXJtc3Ryb25nQGJheWxpYnJlLmNvbT4KPiA+PiBDYzogS2V2aW4gSGls
-bWFuIDxraGlsbWFuQGJheWxpYnJlLmNvbT4KPiA+PiBDYzogTGF1cmVudCBQaW5jaGFydCA8bGF1
-cmVudC5waW5jaGFydEBpZGVhc29uYm9hcmQuY29tPgo+ID4+IENjOiBLaWVyYW4gQmluZ2hhbSA8
-a2llcmFuLmJpbmdoYW0rcmVuZXNhc0BpZGVhc29uYm9hcmQuY29tPgo+ID4+IENjOiBTYW5keSBI
-dWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgo+ID4+IENjOiAiSGVpa28gU3TDvGJuZXIiIDxoZWlr
-b0BzbnRlY2guZGU+Cj4gPj4gQ2M6IFlhbm5pY2sgRmVydHJlIDx5YW5uaWNrLmZlcnRyZUBzdC5j
-b20+Cj4gPj4gQ2M6IFBoaWxpcHBlIENvcm51IDxwaGlsaXBwZS5jb3JudUBzdC5jb20+Cj4gPj4g
-Q2M6IEJlbmphbWluIEdhaWduYXJkIDxiZW5qYW1pbi5nYWlnbmFyZEBsaW5hcm8ub3JnPgo+ID4+
-IENjOiBWaW5jZW50IEFicmlvdSA8dmluY2VudC5hYnJpb3VAc3QuY29tPgo+ID4+IENjOiBNYXhp
-bWUgQ29xdWVsaW4gPG1jb3F1ZWxpbi5zdG0zMkBnbWFpbC5jb20+Cj4gPj4gQ2M6IEFsZXhhbmRy
-ZSBUb3JndWUgPGFsZXhhbmRyZS50b3JndWVAc3QuY29tPgo+ID4+IENjOiBDaGVuLVl1IFRzYWkg
-PHdlbnNAY3NpZS5vcmc+Cj4gPj4gQ2M6IGxpbnV4LWFtbG9naWNAbGlzdHMuaW5mcmFkZWFkLm9y
-Zwo+ID4+IENjOiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPiA+PiBDYzog
-bGludXgtcmVuZXNhcy1zb2NAdmdlci5rZXJuZWwub3JnCj4gPj4gQ2M6IGxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKPiA+PiBDYzogbGludXgtc3RtMzJAc3QtbWQtbWFpbG1hbi5z
-dG9ybXJlcGx5LmNvbQo+ID4+IFNpZ25lZC1vZmYtYnk6IFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5l
-bC5vcmc+Cj4gPj4gLS0tCj4gPj4gIC4uLi9ncHUvZHJtL2FybS9kaXNwbGF5L2tvbWVkYS9rb21l
-ZGFfa21zLmMgICB8ICAxICsKPiA+PiAgZHJpdmVycy9ncHUvZHJtL2FybS9tYWxpZHBfZHJ2LmMg
-ICAgICAgICAgICAgIHwgIDEgKwo+ID4+ICBkcml2ZXJzL2dwdS9kcm0vZHJtX2dlbV9jbWFfaGVs
-cGVyLmMgICAgICAgICAgfCA0OCArKysrKysrKysrKy0tLS0tLS0tCj4gPj4gIGRyaXZlcnMvZ3B1
-L2RybS9tZXNvbi9tZXNvbl9kcnYuYyAgICAgICAgICAgICB8ICAxICsKPiA+PiAgZHJpdmVycy9n
-cHUvZHJtL3JjYXItZHUvcmNhcl9kdV9rbXMuYyAgICAgICAgIHwgIDEgKwo+ID4+ICBkcml2ZXJz
-L2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2dlbS5jICAgfCAgMSArCj4gPj4gIGRyaXZl
-cnMvZ3B1L2RybS9zdG0vZHJ2LmMgICAgICAgICAgICAgICAgICAgICB8ICAxICsKPiA+PiAgZHJp
-dmVycy9ncHUvZHJtL3N1bjRpL3N1bjRpX2Rydi5jICAgICAgICAgICAgIHwgIDEgKwo+ID4+ICA4
-IGZpbGVzIGNoYW5nZWQsIDM2IGluc2VydGlvbnMoKyksIDE5IGRlbGV0aW9ucygtKQo+ID4+Cj4g
-Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRh
-X2ttcy5jIGIvZHJpdmVycy9ncHUvZHJtL2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFfa21zLmMK
-PiA+PiBpbmRleCBkNDk3NzJkZTkzZTAuLjdjZjBkYzRjYmZjMSAxMDA2NDQKPiA+PiAtLS0gYS9k
-cml2ZXJzL2dwdS9kcm0vYXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9rbXMuYwo+ID4+ICsrKyBi
-L2RyaXZlcnMvZ3B1L2RybS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRhX2ttcy5jCj4gPj4gQEAg
-LTMxLDYgKzMxLDcgQEAgc3RhdGljIGludCBrb21lZGFfZ2VtX2NtYV9kdW1iX2NyZWF0ZShzdHJ1
-Y3QgZHJtX2ZpbGUgKmZpbGUsCj4gPj4gICAgICAgdTMyIHBpdGNoID0gRElWX1JPVU5EX1VQKGFy
-Z3MtPndpZHRoICogYXJncy0+YnBwLCA4KTsKPiA+Pgo+ID4+ICAgICAgIGFyZ3MtPnBpdGNoID0g
-QUxJR04ocGl0Y2gsIG1kZXYtPmNoaXAuYnVzX3dpZHRoKTsKPiA+PiArICAgICBhcmdzLT5mbGFn
-cyA9IERSTV9NT0RFX0RVTUJfS0VSTkVMX01BUDsKPiA+Pgo+ID4+ICAgICAgIHJldHVybiBkcm1f
-Z2VtX2NtYV9kdW1iX2NyZWF0ZV9pbnRlcm5hbChmaWxlLCBkZXYsIGFyZ3MpOwo+ID4+ICB9Cj4g
-Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9hcm0vbWFsaWRwX2Rydi5jIGIvZHJpdmVy
-cy9ncHUvZHJtL2FybS9tYWxpZHBfZHJ2LmMKPiA+PiBpbmRleCA4YTc2MzE1YWFhMGYuLmFlYjFh
-Nzc5ZWNjMSAxMDA2NDQKPiA+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYXJtL21hbGlkcF9kcnYu
-Ywo+ID4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9hcm0vbWFsaWRwX2Rydi5jCj4gPj4gQEAgLTQ2
-NSw2ICs0NjUsNyBAQCBzdGF0aWMgaW50IG1hbGlkcF9kdW1iX2NyZWF0ZShzdHJ1Y3QgZHJtX2Zp
-bGUgKmZpbGVfcHJpdiwKPiA+PiAgICAgICB1OCBhbGlnbm1lbnQgPSBtYWxpZHBfaHdfZ2V0X3Bp
-dGNoX2FsaWduKG1hbGlkcC0+ZGV2LCAxKTsKPiA+Pgo+ID4+ICAgICAgIGFyZ3MtPnBpdGNoID0g
-QUxJR04oRElWX1JPVU5EX1VQKGFyZ3MtPndpZHRoICogYXJncy0+YnBwLCA4KSwgYWxpZ25tZW50
-KTsKPiA+PiArICAgICBhcmdzLT5mbGFncyA9IERSTV9NT0RFX0RVTUJfS0VSTkVMX01BUDsKPiA+
-Pgo+ID4+ICAgICAgIHJldHVybiBkcm1fZ2VtX2NtYV9kdW1iX2NyZWF0ZV9pbnRlcm5hbChmaWxl
-X3ByaXYsIGRybSwgYXJncyk7Cj4gPj4gIH0KPiA+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
-ZHJtL2RybV9nZW1fY21hX2hlbHBlci5jIGIvZHJpdmVycy9ncHUvZHJtL2RybV9nZW1fY21hX2hl
-bHBlci5jCj4gPj4gaW5kZXggNGNlYmZlMDFlNmVhLi5mOTFlOWU4YWRlYWYgMTAwNjQ0Cj4gPj4g
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9nZW1fY21hX2hlbHBlci5jCj4gPj4gKysrIGIvZHJp
-dmVycy9ncHUvZHJtL2RybV9nZW1fY21hX2hlbHBlci5jCj4gPj4gQEAgLTc4LDIxICs3OCw4IEBA
-IF9fZHJtX2dlbV9jbWFfY3JlYXRlKHN0cnVjdCBkcm1fZGV2aWNlICpkcm0sIHNpemVfdCBzaXpl
-KQo+ID4+ICAgICAgIHJldHVybiBFUlJfUFRSKHJldCk7Cj4gPj4gIH0KPiA+Pgo+ID4+IC0vKioK
-PiA+PiAtICogZHJtX2dlbV9jbWFfY3JlYXRlIC0gYWxsb2NhdGUgYW4gb2JqZWN0IHdpdGggdGhl
-IGdpdmVuIHNpemUKPiA+PiAtICogQGRybTogRFJNIGRldmljZQo+ID4+IC0gKiBAc2l6ZTogc2l6
-ZSBvZiB0aGUgb2JqZWN0IHRvIGFsbG9jYXRlCj4gPj4gLSAqCj4gPj4gLSAqIFRoaXMgZnVuY3Rp
-b24gY3JlYXRlcyBhIENNQSBHRU0gb2JqZWN0IGFuZCBhbGxvY2F0ZXMgYSBjb250aWd1b3VzIGNo
-dW5rIG9mCj4gPj4gLSAqIG1lbW9yeSBhcyBiYWNraW5nIHN0b3JlLiBUaGUgYmFja2luZyBtZW1v
-cnkgaGFzIHRoZSB3cml0ZWNvbWJpbmUgYXR0cmlidXRlCj4gPj4gLSAqIHNldC4KPiA+PiAtICoK
-PiA+PiAtICogUmV0dXJuczoKPiA+PiAtICogQSBzdHJ1Y3QgZHJtX2dlbV9jbWFfb2JqZWN0ICog
-b24gc3VjY2VzcyBvciBhbiBFUlJfUFRSKCktZW5jb2RlZCBuZWdhdGl2ZQo+ID4+IC0gKiBlcnJv
-ciBjb2RlIG9uIGZhaWx1cmUuCj4gPj4gLSAqLwo+ID4+IC1zdHJ1Y3QgZHJtX2dlbV9jbWFfb2Jq
-ZWN0ICpkcm1fZ2VtX2NtYV9jcmVhdGUoc3RydWN0IGRybV9kZXZpY2UgKmRybSwKPiA+PiAtICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNpemVfdCBzaXplKQo+ID4+
-ICtzdGF0aWMgc3RydWN0IGRybV9nZW1fY21hX29iamVjdCAqCj4gPj4gK2RybV9nZW1fY21hX2Ny
-ZWF0ZV9mbGFncyhzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCBzaXplX3Qgc2l6ZSwgdTMyIGZsYWdz
-KQo+ID4+ICB7Cj4gPj4gICAgICAgc3RydWN0IGRybV9nZW1fY21hX29iamVjdCAqY21hX29iajsK
-PiA+PiAgICAgICBpbnQgcmV0Owo+ID4+IEBAIC0xMDMsNiArOTAsOSBAQCBzdHJ1Y3QgZHJtX2dl
-bV9jbWFfb2JqZWN0ICpkcm1fZ2VtX2NtYV9jcmVhdGUoc3RydWN0IGRybV9kZXZpY2UgKmRybSwK
-PiA+PiAgICAgICBpZiAoSVNfRVJSKGNtYV9vYmopKQo+ID4+ICAgICAgICAgICAgICAgcmV0dXJu
-IGNtYV9vYmo7Cj4gPj4KPiA+PiArICAgICBpZiAoIShmbGFncyAmIERSTV9NT0RFX0RVTUJfS0VS
-TkVMX01BUCkpCj4gPj4gKyAgICAgICAgICAgICBjbWFfb2JqLT5kbWFfYXR0cnMgfD0gRE1BX0FU
-VFJfTk9fS0VSTkVMX01BUFBJTkc7Cj4gPj4gKwo+ID4+ICAgICAgIGNtYV9vYmotPnZhZGRyID0g
-ZG1hX2FsbG9jX2F0dHJzKGRybS0+ZGV2LCBzaXplLCAmY21hX29iai0+cGFkZHIsCj4gPj4gICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgR0ZQX0tFUk5FTCB8IF9fR0ZQX05P
-V0FSTiwKPiA+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjbWFfb2Jq
-LT5kbWFfYXR0cnMpOwo+ID4+IEBAIC0xMTksNiArMTA5LDI1IEBAIHN0cnVjdCBkcm1fZ2VtX2Nt
-YV9vYmplY3QgKmRybV9nZW1fY21hX2NyZWF0ZShzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLAo+ID4+
-ICAgICAgIGRybV9nZW1fb2JqZWN0X3B1dF91bmxvY2tlZCgmY21hX29iai0+YmFzZSk7Cj4gPj4g
-ICAgICAgcmV0dXJuIEVSUl9QVFIocmV0KTsKPiA+PiAgfQo+ID4+ICsKPiA+PiArLyoqCj4gPj4g
-KyAqIGRybV9nZW1fY21hX2NyZWF0ZSAtIGFsbG9jYXRlIGFuIG9iamVjdCB3aXRoIHRoZSBnaXZl
-biBzaXplCj4gPj4gKyAqIEBkcm06IERSTSBkZXZpY2UKPiA+PiArICogQHNpemU6IHNpemUgb2Yg
-dGhlIG9iamVjdCB0byBhbGxvY2F0ZQo+ID4+ICsgKgo+ID4+ICsgKiBUaGlzIGZ1bmN0aW9uIGNy
-ZWF0ZXMgYSBDTUEgR0VNIG9iamVjdCBhbmQgYWxsb2NhdGVzIGEgY29udGlndW91cyBjaHVuayBv
-Zgo+ID4+ICsgKiBtZW1vcnkgYXMgYmFja2luZyBzdG9yZS4gVGhlIGJhY2tpbmcgbWVtb3J5IGhh
-cyB0aGUgd3JpdGVjb21iaW5lIGF0dHJpYnV0ZQo+ID4+ICsgKiBzZXQuCj4gPj4gKyAqCj4gPgo+
-ID4gU2hvdWxkbid0IHlvdSBtZW50aW9uIGhlcmUgdGhhdCB0aGUgZnVuY3Rpb24gYWx3YXlzIGNy
-ZWF0ZXMgYSBrZXJuZWwKPiA+IG1hcHBpbmcsIGFuZCB0aGF0IGNhbGxlcnMgdGhhdCBkb24ndCBu
-ZWVkIHRoZSBtYXBwaW5nIHNob3VsZCB1c2UKPiA+IGRybV9nZW1fY21hX2R1bWJfY3JlYXRlX2lu
-dGVybmFsKCkgaW5zdGVhZCA/Cj4gCj4gQXJlIHlvdSBjb25mdXNpbmcgZHJtX2dlbV9jbWFfY3Jl
-YXRlIHdpdGggZHJtX2dlbV9jbWFfZHVtYl9jcmVhdGU/Cj4gZHJtX2dlbV9jbWFfZHVtYl9jcmVh
-dGUoKSB1c2VzIGRlZmF1bHRzIGFuZAo+IGRybV9nZW1fY21hX2R1bWJfY3JlYXRlX2ludGVybmFs
-KCkgYWxsb3dzIHRoZSBjYWxsZXIgdG8gdHdlYWsKPiBwYXJhbWV0ZXJzLiBOb3RoaW5nIG5ldyB0
-aGVyZSBvdGhlciB0aGFuIGFuIGFkZGl0aW9uYWwgcGFyYW0gdG8gdHdlYWsuCj4gCj4gPiBkcm1f
-Z2VtX2NtYV9kdW1iX2NyZWF0ZV9pbnRlcm5hbCgpIG9wZXJhdGVzIGF0IGEgZGlmZmVyZW50IGxl
-dmVsIHRob3VnaCwKPiA+IGFuZCBkcm1fZ2VtX2NtYV9jcmVhdGUoKSBpcyBvbmx5IGV4cG9ydGVk
-IGZvciBhIHNpbmdsZSBkcml2ZXIuIFRoZXJlJ3MKPiA+IG5vIGVxdWl2YWxlbnQgdG8gZHJtX2dl
-bV9jbWFfY3JlYXRlKCkgdGhhdCBjYW4gc2tpcCB0aGUga2VybmVsIG1hcHBpbmcuCj4gCj4gQmVj
-YXVzZSB3ZSBkb24ndCB5ZXQgbmVlZCBvbmUuIGRybV9nZW1fY21hX2NyZWF0ZV9mbGFncygpIGNh
-biBiZSBtYWRlCj4gcHVibGljIHdoZW4gd2UgZG8uIEkgY291bGQgZG8gdGhhdCBub3cgSSBndWVz
-cyBhbmQgbWFrZQo+IGRybV9nZW1fY21hX2NyZWF0ZSBhbiBpbmxpbmUgd3JhcHBlci4KCkkgZG9u
-J3QgbWluZCBub3QgaGF2aW5nIGRybV9nZW1fY21hX2NyZWF0ZV9mbGFncygpIG1hZGUgcHVibGlj
-IChidXQgeW91CmNhbiBkbyBzbyBhbHJlYWR5IGlmIHlvdSBwcmVmZXIpIGlmIHRoZXJlJ3Mgbm8g
-dXNlci4gTXkgcG9pbnQgaXMgdGhhdCB3ZQpub3cgaGF2ZSBhIG1lY2hhbmlzbSB0byBza2lwIGNy
-ZWF0aW9uIG9mIGtlcm5lbCBtYXBwaW5ncywgYW5kIHRoYXQKZHJtX2dlbV9jbWFfY3JlYXRlKCkg
-d2lsbCBhbHdheXMgcmVzdWx0IGluIHRoZSBjcmVhdGlvbiBvZiBhIGtlcm5lbAptYXBwaW5nLiBJ
-IHRob3VnaHQgaXQgd2FzIHdvcnRoIG1lbnRpb25pbmcgaXQsIGJ1dCBpZiB5b3UgdGhpbmsgdGhh
-dCdzCm5vdCBuZWVkZWQsIGZlZWwgZnJlZSB0byBpZ25vcmUgdGhlIGNvbW1lbnQuCgotLSAKUmVn
-YXJkcywKCkxhdXJlbnQgUGluY2hhcnQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRl
-a0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+Hi Rob,
+
+On Tue, Oct 22, 2019 at 07:42:06AM -0500, Rob Herring wrote:
+> On Tue, Oct 22, 2019 at 6:14 AM Laurent Pinchart wrote:
+> > On Mon, Oct 21, 2019 at 04:45:46PM -0500, Rob Herring wrote:
+> > > Introduce a new flag, DRM_MODE_DUMB_KERNEL_MAP, for struct
+> > > drm_mode_create_dumb. This flag is for internal kernel use to indicate
+> > > if dumb buffer allocation needs a kernel mapping. This is needed only for
+> > > CMA where creating a kernel mapping or not has to be decided at allocation
+> > > time because creating a mapping on demand (with vmap()) is not guaranteed
+> > > to work. Several drivers are using CMA, but not the CMA helpers because
+> > > they distinguish between kernel and userspace allocations to create a
+> > > kernel mapping or not.
+> > >
+> > > Update the callers of drm_mode_dumb_create() to set
+> > > drm_mode_dumb_create.flags to appropriate defaults. Currently, flags can
+> > > be set to anything by userspace, but is unused within the kernel. Let's
+> > > force flags to zero (no kernel mapping) for userspace callers by default.
+> > > For in kernel clients, set DRM_MODE_DUMB_KERNEL_MAP by default. Drivers
+> > > can override this as needed.
+> > >
+> > > Cc: David Airlie <airlied@linux.ie>
+> > > Cc: Daniel Vetter <daniel@ffwll.ch>
+> > > Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+> > > Cc: Maxime Ripard <mripard@kernel.org>
+> > > Cc: Sean Paul <sean@poorly.run>
+> > > Signed-off-by: Rob Herring <robh@kernel.org>
+> > > ---
+> > >  drivers/gpu/drm/drm_client.c       | 1 +
+> > >  drivers/gpu/drm/drm_dumb_buffers.c | 5 ++++-
+> > >  include/uapi/drm/drm_mode.h        | 2 ++
+> > >  3 files changed, 7 insertions(+), 1 deletion(-)
+> > >
+> > > diff --git a/drivers/gpu/drm/drm_client.c b/drivers/gpu/drm/drm_client.c
+> > > index d9a2e3695525..dbfc8061b392 100644
+> > > --- a/drivers/gpu/drm/drm_client.c
+> > > +++ b/drivers/gpu/drm/drm_client.c
+> > > @@ -264,6 +264,7 @@ drm_client_buffer_create(struct drm_client_dev *client, u32 width, u32 height, u
+> > >       dumb_args.width = width;
+> > >       dumb_args.height = height;
+> > >       dumb_args.bpp = info->cpp[0] * 8;
+> > > +     dumb_args.flags = DRM_MODE_DUMB_KERNEL_MAP;
+> > >       ret = drm_mode_create_dumb(dev, &dumb_args, client->file);
+> > >       if (ret)
+> > >               goto err_delete;
+> > > diff --git a/drivers/gpu/drm/drm_dumb_buffers.c b/drivers/gpu/drm/drm_dumb_buffers.c
+> > > index d18a740fe0f1..74a13f14c173 100644
+> > > --- a/drivers/gpu/drm/drm_dumb_buffers.c
+> > > +++ b/drivers/gpu/drm/drm_dumb_buffers.c
+> > > @@ -97,7 +97,10 @@ int drm_mode_create_dumb(struct drm_device *dev,
+> > >  int drm_mode_create_dumb_ioctl(struct drm_device *dev,
+> > >                              void *data, struct drm_file *file_priv)
+> > >  {
+> > > -     return drm_mode_create_dumb(dev, data, file_priv);
+> > > +     struct drm_mode_create_dumb *args = data;
+> > > +
+> > > +     args->flags = 0;
+> >
+> > I would prefer returning an error if flags is set to a non-zero value,
+> > to catch userspace errors early, but I'm also worried it would break
+> > existing userspace by uncovering existing bugs. Still, if we later add
+> > flags that userspace can set, those existing bugs will be triggered, so
+> > we'll have to deal with them anyway, and we could already give it a try.
+> 
+> I would like that too, but the comment just above this code tells me
+> that's likely to break things:
+> 
+>         /*
+>          * handle, pitch and size are output parameters. Zero them out to
+>          * prevent drivers from accidentally using uninitialized data. Since
+>          * not all existing userspace is clearing these fields properly we
+>          * cannot reject IOCTL with garbage in them.
+>          */
+> 
+> Maybe userspace does correctly zero out input params.
+
+But if that holds true, it means that we will never be able to add
+userspace flags, as doing so could break applications for the same
+reason. The flag field should thus be marked as deprecated for userspace
+usage. I wonder how big the risk is.
+
+-- 
+Regards,
+
+Laurent Pinchart
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
