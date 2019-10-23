@@ -2,73 +2,159 @@ Return-Path: <SRS0=HtVu=YQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A0950CA9EB9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2019 21:06:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C8C89CA9EB9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2019 21:24:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 70E762064A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2019 21:06:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 915002084C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2019 21:24:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HwnKOtoK"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 70E762064A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YA7Fkanq";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=microchiptechnology.onmicrosoft.com header.i=@microchiptechnology.onmicrosoft.com header.b="ewS+aft2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 915002084C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=microchip.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3Nr6S4waQ+JY9qKAntbhXdQuQt+r/owjVhW7/WSSoeY=; b=HwnKOtoKtDsQc6
-	rusNVwhU1Fk/3dzH+7OaGFfhTaur4lLnQDaDxqaw4Luv1KIXBOGVNmbaQHhwG8g69IPEpN9/GiL0l
-	oExrViheH7K65uvm/vhy+ZgMsqXlN2pvwvXMfUOppEs977+vQzvIJmkYrcJpQXzsR6e2HJDMGaHVu
-	e712oz2f0JjC4802b9bjUwmXxQJIyTAQizAZUQvmpdp9DAaegpCJkPCwbfNFmIHb9EujkG0fC3BO3
-	aUzkiuCCbgraHon7IpD2L0D3GEnWUK+Rh0GE1xsruTf68PvS3DflZpp7CjrlM9ArXWB69JFUvvOut
-	VcpMrR/92DlyJlXXIQ9w==;
+	List-Owner; bh=C9wKNyGi8uR2mOAhlyR+4f+yNFvWpipB4WTWc1CF2SM=; b=YA7FkanqhfWJHT
+	Mo5UBeOngiy3EeFy1C6QSbVlocfrfB1RL5afRaEyDPN/QVqDAEP35OtfS8+5qW9gmtHDZJb08rjUX
+	nIm5xoae8PDSVjVjE4b4IfJKI3cH+Bhf3lAUZ85fm2RmDcjKk0T+mQ3Lo8K/tGYAfTox7Tz439c6R
+	XG7KYpuA3R98ITZqYqUC9wgBg8rBFuFgx6vo/0E+Q1UMfJDmt3/6DLHvekBa+JqQzx4ABkS8AIrHE
+	ygleO/8pWZjmWxMIwOL9Va2E6Xzn1hM3eZh6xocyEv6gzDO5v6kxdfWq4GOZTA9/Zs313ePpoHKXb
+	caBJjhu9kEiGIsDC4tHQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iNNq7-0001lw-F0; Wed, 23 Oct 2019 21:06:43 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1iNO7G-0000pW-5A; Wed, 23 Oct 2019 21:24:26 +0000
+Received: from esa1.microchip.iphmx.com ([68.232.147.91])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iNNq4-0001ke-0Z; Wed, 23 Oct 2019 21:06:41 +0000
-X-UUID: ae29dd25e3374e02892ee7938699e740-20191023
-X-UUID: ae29dd25e3374e02892ee7938699e740-20191023
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1647297005; Wed, 23 Oct 2019 13:06:31 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 23 Oct 2019 14:06:31 -0700
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 24 Oct 2019 05:06:29 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Thu, 24 Oct 2019 05:06:21 +0800
-Message-ID: <1571864784.19128.8.camel@mtksdaap41>
-Subject: Re: [PATCH 5/6] drm/mediatek: Convert to use CMA helpers
-From: CK Hu <ck.hu@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-Date: Thu, 24 Oct 2019 05:06:24 +0800
-In-Reply-To: <CAL_JsqL6G=F45G+-QXF6T1269f9YquXfYtjoUkCpAoNartxM=Q@mail.gmail.com>
-References: <20191021214550.1461-1-robh@kernel.org>
- <20191021214550.1461-6-robh@kernel.org>
- <1cbca96c-19dd-1d15-949c-7fbcc15369b4@gmail.com>
- <CAL_JsqL6G=F45G+-QXF6T1269f9YquXfYtjoUkCpAoNartxM=Q@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1iNO7D-0000og-HU; Wed, 23 Oct 2019 21:24:24 +0000
+Received-SPF: Pass (esa1.microchip.iphmx.com: domain of
+ Tudor.Ambarus@microchip.com designates 198.175.253.82 as
+ permitted sender) identity=mailfrom;
+ client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
+ envelope-from="Tudor.Ambarus@microchip.com";
+ x-sender="Tudor.Ambarus@microchip.com";
+ x-conformance=spf_only; x-record-type="v=spf1";
+ x-record-text="v=spf1 mx a:ushub1.microchip.com
+ a:smtpout.microchip.com a:mx1.microchip.iphmx.com
+ a:mx2.microchip.iphmx.com include:servers.mcsv.net
+ include:mktomail.com include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa1.microchip.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@email.microchip.com) identity=helo;
+ client-ip=198.175.253.82; receiver=esa1.microchip.iphmx.com;
+ envelope-from="Tudor.Ambarus@microchip.com";
+ x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
+Authentication-Results: esa1.microchip.iphmx.com;
+ spf=Pass smtp.mailfrom=Tudor.Ambarus@microchip.com;
+ spf=None smtp.helo=postmaster@email.microchip.com;
+ dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
+ dmarc=pass (p=none dis=none) d=microchip.com
+IronPort-SDR: j/AhzFTE0SQ+JXZ+/6ePgBIjWwvlV/5pu7q20IU+ANCww2CWfsD4owePI3M18Uo1rnux7V7hpE
+ AbnZnpEb03K4lssGxHI+yWMcZP7kZ8GR4hRCrlOyTYJ76FtF9QsZqBQ+MH6nu6YaTKSUo+Ewp5
+ rjOlc9je3L6acLCVKEa/64FoKcikfdl3sAACXm2FH6ytS+fnIlH+6BC6d3xFL2BkEdNTl6apco
+ GCsfMOtSeRLMFXSAAuCHPVgEHpJcigGeL2xftcNdvlakRJsmOm0f4q7y7xYCEseKyZCmTsDxMM
+ yrA=
+X-IronPort-AV: E=Sophos;i="5.68,222,1569308400"; d="scan'208";a="55426318"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa1.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 23 Oct 2019 14:24:22 -0700
+Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
+ chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Wed, 23 Oct 2019 14:24:22 -0700
+Received: from NAM03-CO1-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.1713.5
+ via Frontend Transport; Wed, 23 Oct 2019 14:24:21 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=RaFVxuqH08NmchCIp+w40Q+xgbAKf4qC794149nAg3j7bqWuBDJTX283F1MipmMfddTFIMTLxUIfSodqdqcmrDYt4WGUkFWxJKjYz6OyRCOpcVk0xSkjbPbJH3O9zRlxyEPncXdhdgFTcUhvEbwL3PWQEgebtkBP+tqOzk99sGWEs/1+ROR2gdvL9eV89UdNJRWc6WPKvJprVAorHwzL0v2wa95mBRVmW5Fj4l3ZIbrv7Ko1W/LMDpsX/jxWaCnMiCDiYAdxWoFk9cEwORhddrdKldhWZ5wfAenx5QpQ9Iv7DseGKOt3fs1JHkMvAiwjgCl6iDt4zJ1P2wAzkbDN1A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3knNZvqL1SmhbRlJUc/cv+yQePIKH3AEGD4WupMLLmw=;
+ b=mTIVc351EoE1GVpwGFViZj455/nACDoUh/WFeN8bhmB7GuoW1ih9B4O2mQV5t/sgBk2bWK9nriK0/hl2gpG19rAiLsn2zIdzR1TztlBGMxS3M7z2/9FYiUi505PLYZ44vKCH1XBJpJrAAGD2JsrQFqNdT1oGdoEmgWDhrH79qO67U0PRD/PVKqmnROjCIxD3ldwZS5iur6GbZs7ShGUYk64tM0dOYaTFAHvlSZARXSpnQ/TNdxh9k0KBkFfiOzJrvNLe3t++3xQJ7pzwu9ab1JElygNAC9EpIQu72tLiSZb9ZYpziOpv04q3DvyTE/Wvt8WeDr4+dN2SYm22OVmA8A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microchip.com; dmarc=pass action=none
+ header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector2-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3knNZvqL1SmhbRlJUc/cv+yQePIKH3AEGD4WupMLLmw=;
+ b=ewS+aft2/zjog+CM7lncP/zgvoNVkyFe+CEBqEgWBq/kFn94MgQovLJSfI/T+r3MqASWTXtNHmWDlMtRO5ALwRBrR/Hip0MmgJFgvR1yxbIGha2nAEVEMVfAq9cJs4vEtanfKjOWXOcFnUIX4bvK/TqTlzvLkfnhSXPXPDt38ZQ=
+Received: from MN2PR11MB4448.namprd11.prod.outlook.com (52.135.39.157) by
+ MN2PR11MB3549.namprd11.prod.outlook.com (20.178.250.87) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2347.18; Wed, 23 Oct 2019 21:24:20 +0000
+Received: from MN2PR11MB4448.namprd11.prod.outlook.com
+ ([fe80::c09c:36c8:3301:4457]) by MN2PR11MB4448.namprd11.prod.outlook.com
+ ([fe80::c09c:36c8:3301:4457%5]) with mapi id 15.20.2347.029; Wed, 23 Oct 2019
+ 21:24:20 +0000
+From: <Tudor.Ambarus@microchip.com>
+To: <vigneshr@ti.com>, <boris.brezillon@collabora.com>,
+ <marek.vasut@gmail.com>, <linux-mtd@lists.infradead.org>,
+ <geert+renesas@glider.be>, <jonas@norrbonn.se>
+Subject: Re: [PATCH v2 01/22] mtd: spi-nor: hisi-sfc: Drop nor->erase NULL
+ assignment
+Thread-Topic: [PATCH v2 01/22] mtd: spi-nor: hisi-sfc: Drop nor->erase NULL
+ assignment
+Thread-Index: AQHVcqwVF5z/4vjY/Uups9rQY4HRbado6xAA
+Date: Wed, 23 Oct 2019 21:24:20 +0000
+Message-ID: <74f62a70-13ef-6faf-c73d-790166240557@microchip.com>
+References: <20190924074533.6618-1-tudor.ambarus@microchip.com>
+ <20190924074533.6618-2-tudor.ambarus@microchip.com>
+In-Reply-To: <20190924074533.6618-2-tudor.ambarus@microchip.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: VI1PR06CA0088.eurprd06.prod.outlook.com
+ (2603:10a6:803:8c::17) To MN2PR11MB4448.namprd11.prod.outlook.com
+ (2603:10b6:208:193::29)
+x-ms-exchange-messagesentrepresentingtype: 1
+x-originating-ip: [86.120.239.29]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 396e353a-1002-41e1-f447-08d757ff5dfc
+x-ms-traffictypediagnostic: MN2PR11MB3549:
+x-microsoft-antispam-prvs: <MN2PR11MB3549474A738B77B70641ADBAF06B0@MN2PR11MB3549.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:1443;
+x-forefront-prvs: 019919A9E4
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(39860400002)(136003)(346002)(376002)(396003)(366004)(199004)(189003)(6436002)(25786009)(2906002)(5660300002)(102836004)(26005)(64756008)(446003)(66556008)(8936002)(86362001)(2201001)(386003)(6506007)(66476007)(229853002)(66946007)(53546011)(558084003)(36756003)(31696002)(81166006)(6116002)(81156014)(2501003)(8676002)(256004)(14444005)(3846002)(14454004)(71200400001)(71190400001)(7416002)(110136005)(66066001)(52116002)(316002)(99286004)(6486002)(54906003)(76176011)(6512007)(31686004)(478600001)(11346002)(66446008)(6246003)(186003)(4326008)(305945005)(2616005)(486006)(476003)(7736002);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR11MB3549;
+ H:MN2PR11MB4448.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: microchip.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 8Q9GuCXN8MalUchu7BOVTnC2UdrcTgih8DzG249rSx41ZATPIJd3CAiwjnRDM8qEAvWAHEeGGZobYTtYxYeaLciqoi90MN9Dsnr5aUMSeAJlLJb/5w6TLh32OpLUFDlzaS9Z5j2WZpJvqqOChy5XDRbhk/cj5+IuLlKejQyztEY2VCWptgRMVcTdkk5pFKZ7Bv2JYt/ESYuPLWjdK6QE/TOHLzSP2ncPWpsSRVNDyea9slboEBnxm7JKV5GY97ZA/9SqjqQ1Ouixs24Z/cBedlZEZF+FVm7aow2bk8DPezxaj8peqlyRgjtRfbf5i5L4epA3AghZXjAhpvyyaLo+K4APJvWR4qlCCQOEkGxNN0IZlGOTeKYPKPzALHBEKjrYSkRG8Gb4iFNEulB0TrbO058EWSjd5N/8GGT0vNx0F6Sq/V+E9kHXNEC/0g2EVWbV
+x-ms-exchange-transport-forked: True
+Content-ID: <F9416E0E644E724EA63A11A4BD8BB44F@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-X-MTK: N
+X-MS-Exchange-CrossTenant-Network-Message-Id: 396e353a-1002-41e1-f447-08d757ff5dfc
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Oct 2019 21:24:20.3768 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 9dF6UDg7bJKMhhiF9inN+lCZFyhZM7R6Oce5t/2hsuzGHA6D3Lk7071kKLHnukRoGJ/6MzuI/ksIKTj+QLX3/KSe01vkB1hWvJ30CVrYwac=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB3549
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191023_140640_059012_7D797A62 
-X-CRM114-Status: GOOD (  20.98  )
+X-CRM114-CacheID: sfid-20191023_142423_594199_B53742F9 
+X-CRM114-Status: UNSURE (   8.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,92 +166,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
- Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
- Liviu Dudau <liviu.dudau@arm.com>, Sandy Huang <hjc@rock-chips.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Benjamin Gaignard <benjamin.gaignard@linaro.org>,
- Yannick Fertre <yannick.fertre@st.com>,
- Nicolas Boichat <drinkcat@chromium.org>, Kevin Hilman <khilman@baylibre.com>,
- Xinwei Kong <kong.kongxinwei@hisilicon.com>,
- Xinliang Liu <z.liuxinliang@hisilicon.com>, "open list:ARM/Rockchip
- SoC..." <linux-rockchip@lists.infradead.org>, Chen-Yu Tsai <wens@csie.org>,
- Noralf =?ISO-8859-1?Q?Tr=F8nnes?= <noralf@tronnes.org>,
- "James \(Qian\) Wang" <james.qian.wang@arm.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Ulrich Hecht <uli@fpond.eu>,
- Alexandre Torgue <alexandre.torgue@st.com>,
- Chen Feng <puck.chen@hisilicon.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Daniel
- Vetter <daniel@ffwll.ch>, Sean Paul <sean@poorly.run>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, Philippe Cornu <philippe.cornu@st.com>,
- Vincent Abriou <vincent.abriou@st.com>, Kieran
- Bingham <kieran.bingham+renesas@ideasonboard.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Rongrong Zou <zourongrong@gmail.com>
+Cc: linux-aspeed@lists.ozlabs.org, andrew@aj.id.au, richard@nod.at,
+ linux-kernel@vger.kernel.org, vz@mleia.com, linux-mediatek@lists.infradead.org,
+ joel@jms.id.au, miquel.raynal@bootlin.com, matthias.bgg@gmail.com,
+ computersforpeace@gmail.com, dwmw2@infradead.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Rob:
 
-On Wed, 2019-10-23 at 12:42 -0500, Rob Herring wrote:
-> On Tue, Oct 22, 2019 at 12:07 PM Matthias Brugger
-> <matthias.bgg@gmail.com> wrote:
-> >
-> > Hi Rob,
-> >
-> > On 21/10/2019 23:45, Rob Herring wrote:
-> > > The only reason the Mediatek driver doesn't use the CMA helpers is it
-> > > sets DMA_ATTR_NO_KERNEL_MAPPING and does a vmap() on demand. Using
-> > > vmap() is not even guaranteed to work as DMA buffers may not have a
-> > > struct page. Now that the CMA helpers support setting
-> > > DMA_ATTR_NO_KERNEL_MAPPING as needed or not, convert Mediatek driver to
-> > > use CMA helpers.
-> > >
-> > > Cc: CK Hu <ck.hu@mediatek.com>
-> > > Cc: Philipp Zabel <p.zabel@pengutronix.de>
-> > > Cc: David Airlie <airlied@linux.ie>
-> > > Cc: Daniel Vetter <daniel@ffwll.ch>
-> > > Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> > > Cc: linux-arm-kernel@lists.infradead.org
-> > > Cc: linux-mediatek@lists.infradead.org
-> > > Signed-off-by: Rob Herring <robh@kernel.org>
-> > > ---
-> >
-> > I tested this on my Chromebook with some patches on top of v5.4-rc1 [1], which
-> > work. If I add your patches on top of that, the system does not boot up.
-> > Unfortunately I don't have a serial console, so I wasn't able to see if there is
-> > any error message.
+
+On 09/24/2019 10:45 AM, Tudor Ambarus - M18064 wrote:
+> From: Tudor Ambarus <tudor.ambarus@microchip.com>
 > 
-> Thanks for testing. I'm based on drm-misc-next, but don't see anything
-> obvious there that would matter. There are some mmap changes, but I
-> think they shouldn't matter.
+> The pointer to 'struct spi_nor' is kzalloc'ed above in the code.
 > 
-> Did you have fbcon enabled? That may give more clues about where the problem is.
-
-There are priv->dma_dev for dma device, but it is not drm device. In
-mt8173.dtsi [1], there are mmsys device and ovl device, mmsys device is
-drm device and ovl device is mmsys's sub device which provide dma
-function, so ovl is the priv->dma_dev. I think your patch directly use
-drm device for dma operation and this would cause dma function fail.
-Please use priv->dma_dev for dma operation.
-
-Regards,
-CK
-
-[1]
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/mediatek/mt8173.dtsi?h=v5.4-rc4
+> Signed-off-by: Tudor Ambarus <tudor.ambarus@microchip.com>
+> ---
+>  drivers/mtd/spi-nor/hisi-sfc.c | 1 -
+>  1 file changed, 1 deletion(-)
 > 
-> Rob
 
-
-
+Applied to spi-nor/next.
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
