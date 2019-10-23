@@ -2,79 +2,67 @@ Return-Path: <SRS0=HtVu=YQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=0.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_ADSP_ALL,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 71364CA9EB6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2019 16:26:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 33328CA9EB6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2019 16:53:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3FC1B2086D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2019 16:26:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0180721906
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2019 16:53:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="H0mXdlgu";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=natalenko.name header.i=@natalenko.name header.b="jnyA/zUO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3FC1B2086D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=natalenko.name
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="L2db8e8g";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="vM3wriHv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0180721906
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JBoTvxRh4R5Cwa/HDEXr7PSyBg14o1mRd5lu72b5Thg=; b=H0mXdlguZthA5h9lrP3w6KDsy
-	nhw51+FNLd58W5ZcVGtUWlRepyFoIPb0abTbxSDIjl2ycHZsPSKJeUf/oV1/ylmqpbdKHCNN1anEP
-	19544n7ym1k37v1z049PX+Jq4Fjy9t+Ktf29UXOHmlAtLrlIgE96529OoSuJEyRPaQJ81NC6L5DBg
-	aGliFBO2UYRSFCSzrPn9ks2jid1uwjkkV112dGpQSS4IemqDN4Sg3lJC8c8azuRwmo2s/piu5FDcX
-	e06Nu/2q28YJ6g5BromVSzC3DKb8P8ntOSeuCyD5NXZWOrpUyJyCmVNlCo1PhIIcxyC4jJ4MRn2YQ
-	GoUg/bHtA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/rAQwFbyfMh8NrO75IIB0ETOp/X6S4ss/Xyw4PtUwCk=; b=L2db8e8gGJ5QMw
+	exvc7Np/eb+pCpuL29XxVrx6+N2c0mKo5E4t5GAM0huA8c6LEhqmG6UGWgmX1uz2BCrrQZWkpKrsA
+	2Otcwe9h3a5sPZ0o52VeV92yZnmtYLH+TvKZ3GrL4rDlOZgWGZtCKK3O2X85Q7Kg3b0ku313auzcO
+	CEUpLPX2qlNBUg9Uz/BBqiRi/k2x4KdbiSmntPP2/VXIWIlC5eZCP1X7F4IOtthZ6rk0FSy65uLFY
+	tm99mS0QyUJeit21AWfXf2tJ3qN3JbrSslMd9rHWjShu6xPfMwaBcdqwGYegL6s4L9POJkXRaFlJm
+	HwEbTvcSDlXc2zQxpRTA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iNJSR-00035W-M2; Wed, 23 Oct 2019 16:25:59 +0000
-Received: from vulcan.natalenko.name ([2001:19f0:6c00:8846:5400:ff:fe0c:dfa0])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat
- Linux)) id 1iNJSA-0002rp-V3; Wed, 23 Oct 2019 16:25:45 +0000
-Received: from mail.natalenko.name (vulcan.natalenko.name
- [IPv6:fe80::5400:ff:fe0c:dfa0])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by vulcan.natalenko.name (Postfix) with ESMTPSA id CFB2060CD4E;
- Wed, 23 Oct 2019 18:25:35 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=natalenko.name;
- s=dkim-20170712; t=1571847935;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=T8zzS7fQ1+h8Dch7o2XgPzxblvYJzj9a0o53CwTbiaY=;
- b=jnyA/zUOIOvhANewA4/U/XLZ/Yg3a6p75ZDGpruHbTgVE0VI+z43o04fM9QZWleV0efy7t
- wakILwZ4dlR90ml71qd+e8CMJa1hltGwsfHZiM/TRJN9xDLrbq+Q5/4hHoIwQmYQewf3mI
- tqSHWB4vLQInidp3POEexp11AoVST2E=
+	id 1iNJsy-0007vW-Ez; Wed, 23 Oct 2019 16:53:24 +0000
+Received: from mail.kernel.org ([198.145.29.99])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iNJsa-0007iL-6L; Wed, 23 Oct 2019 16:53:01 +0000
+Received: from willie-the-truck (236.31.169.217.in-addr.arpa [217.169.31.236])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8F2EF21906;
+ Wed, 23 Oct 2019 16:52:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1571849579;
+ bh=F5Izp3I8AX+Ri+LTIkBe2psZof2nJUu/2jw8CqPmo+4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=vM3wriHv2BCfsl4QWE/Yo0Tr9tEwuSOYD/+jXqoi+TwKpYLw+r7KqC/INuDeE6paR
+ 8kN95fF7O/278RKBRp+COHuOA0qlcJLdeS3sShi0ETrCZk8FOTwW3RTHbduQUIfc83
+ EcxQlpdh+2SDSt3EWDK/G1983yOPo7V7MQo9/1sY=
+Date: Wed, 23 Oct 2019 17:52:53 +0100
+From: Will Deacon <will@kernel.org>
+To: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH v4 2/7] iommu/mediatek: Add a new tlb_lock for tlb_flush
+Message-ID: <20191023165252.GA27471@willie-the-truck>
+References: <1571196792-12382-1-git-send-email-yong.wu@mediatek.com>
+ <1571196792-12382-3-git-send-email-yong.wu@mediatek.com>
 MIME-Version: 1.0
-Date: Wed, 23 Oct 2019 18:25:35 +0200
-From: Oleksandr Natalenko <oleksandr@natalenko.name>
-To: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-Subject: Re: mt76x2e hardware restart
-In-Reply-To: <20191023085039.GB2461@localhost.localdomain>
-References: <deaafa7a3e9ea2111ebb5106430849c6@natalenko.name>
- <c6d621759c190f7810d898765115f3b4@natalenko.name>
- <9d581001e2e6cece418329842b2b0959@natalenko.name>
- <20191012165028.GA8739@lore-desk-wlan.lan>
- <f7695bc79d40bbc96744a639b1243027@natalenko.name>
- <96f43a2103a9f2be152c53f867f5805c@natalenko.name>
- <20191016163842.GA18799@localhost.localdomain>
- <20191023085039.GB2461@localhost.localdomain>
-Message-ID: <a2f0be152fc9ed53ea10b8e260c23faf@natalenko.name>
-X-Sender: oleksandr@natalenko.name
-User-Agent: Roundcube Webmail/1.3.10
+Content-Disposition: inline
+In-Reply-To: <1571196792-12382-3-git-send-email-yong.wu@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191023_092543_148804_BD6ADEFA 
-X-CRM114-Status: UNSURE (   6.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191023_095300_269209_AAC252F0 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,33 +74,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Stanislaw Gruszka <sgruszka@redhat.com>,
- netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Roy Luo <royluo@google.com>, Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>,
- Kalle Valo <kvalo@codeaurora.org>, Felix Fietkau <nbd@nbd.name>
+Cc: youlin.pei@mediatek.com, anan.sun@mediatek.com,
+ Nicolas Boichat <drinkcat@chromium.org>, cui.zhang@mediatek.com,
+ srv_heupstream@mediatek.com, chao.hao@mediatek.com,
+ Joerg Roedel <joro@8bytes.org>, edison.hsieh@mediatek.com,
+ Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org,
+ Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>,
+ iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi.
+On Wed, Oct 16, 2019 at 11:33:07AM +0800, Yong Wu wrote:
+> The commit 4d689b619445 ("iommu/io-pgtable-arm-v7s: Convert to IOMMU API
+> TLB sync") help move the tlb_sync of unmap from v7s into the iommu
+> framework. It helps add a new function "mtk_iommu_iotlb_sync", But it
+> lacked the lock, then it will cause the variable "tlb_flush_active"
+> may be changed unexpectedly, we could see this warning log randomly:
+> 
+> mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to
+> full flush
+> 
+> The HW requires tlb_flush/tlb_sync in pairs strictly, this patch adds
+> a new tlb_lock for tlb operations to fix this issue.
+> 
+> Fixes: 4d689b619445 ("iommu/io-pgtable-arm-v7s: Convert to IOMMU API TLB
+> sync")
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>  drivers/iommu/mtk_iommu.c | 23 ++++++++++++++++++++++-
+>  drivers/iommu/mtk_iommu.h |  1 +
+>  2 files changed, 23 insertions(+), 1 deletion(-)
 
-On 23.10.2019 10:50, Lorenzo Bianconi wrote:
-> I think I spotted the SG issue on mt76x2e. Could you please:
-> - keep pcie_aspm patch I sent
-> - remove the debug patch where I disabled TX Scatter-Gather on mt76x2e
-> - apply the following patch
+[...]
 
-Thanks for the patch. So far so good, I was able to start AP, connect to 
-it and conduct a couple of simple speed tests.
+>  static void mtk_iommu_tlb_flush_page_nosync(struct iommu_iotlb_gather *gather,
+>  					    unsigned long iova, size_t granule,
+>  					    void *cookie)
+>  {
+> +	struct mtk_iommu_data *data = cookie;
+> +	unsigned long flags;
+> +
+> +	spin_lock_irqsave(&data->tlb_lock, flags);
+>  	mtk_iommu_tlb_add_flush_nosync(iova, granule, granule, true, cookie);
+> +	spin_unlock_irqrestore(&data->tlb_lock, flags);
 
-I'll use it more today and will let you know in case something breaks.
+Given that you release the lock here, what prevents another nosync()
+operation being issued before you've managed to do the sync()?
 
--- 
-   Oleksandr Natalenko (post-factum)
+Will
 
 _______________________________________________
 Linux-mediatek mailing list
