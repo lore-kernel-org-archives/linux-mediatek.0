@@ -2,87 +2,73 @@ Return-Path: <SRS0=HtVu=YQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 15402CA9EB9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2019 19:51:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A0950CA9EB9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2019 21:06:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DA1AB2086D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2019 19:51:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 70E762064A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Oct 2019 21:06:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KTQBadyB";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=poorly.run header.i=@poorly.run header.b="akx8r6jT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DA1AB2086D
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=poorly.run
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HwnKOtoK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 70E762064A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Uowfg51jfnhrFFeNHFtlLtC/L62IFsS/6Xcp2g3XbNQ=; b=KTQBadyB5eK3B1
-	aj8Zr9v8C5WZeS8z4d9KSRb6DEvTT8dehlPd//IjN8z+oC/0Lz5lrvQHy5DQrZrrKRFuW96tYP1qa
-	ODI00xgAV6FN7WUilUT1So2Xs3Tx+RYXNGVepq1NIXNijugXVClxlkEA5PC5yhKK0PgpQt1VpTqfQ
-	TXgLJEUYl3CQQ9Cg0d7UlEe6bp1eLdM7jPqpFBxyfX8onnIn4MsW9dd6zJf5y1M1yh5JfwdoYYnZ4
-	XNXvtCmt/R0WhUUh9Czpa4MWg+gqzsSR85cE0ZQj9C1TDoDIEWnwuxMxiIwxPNmy5maXyp+7einNI
-	LhXcg+C1iZJDoG5K2cIg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3Nr6S4waQ+JY9qKAntbhXdQuQt+r/owjVhW7/WSSoeY=; b=HwnKOtoKtDsQc6
+	rusNVwhU1Fk/3dzH+7OaGFfhTaur4lLnQDaDxqaw4Luv1KIXBOGVNmbaQHhwG8g69IPEpN9/GiL0l
+	oExrViheH7K65uvm/vhy+ZgMsqXlN2pvwvXMfUOppEs977+vQzvIJmkYrcJpQXzsR6e2HJDMGaHVu
+	e712oz2f0JjC4802b9bjUwmXxQJIyTAQizAZUQvmpdp9DAaegpCJkPCwbfNFmIHb9EujkG0fC3BO3
+	aUzkiuCCbgraHon7IpD2L0D3GEnWUK+Rh0GE1xsruTf68PvS3DflZpp7CjrlM9ArXWB69JFUvvOut
+	VcpMrR/92DlyJlXXIQ9w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iNMfW-0003LX-4C; Wed, 23 Oct 2019 19:51:42 +0000
-Received: from mail-yw1-xc44.google.com ([2607:f8b0:4864:20::c44])
+	id 1iNNq7-0001lw-F0; Wed, 23 Oct 2019 21:06:43 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iNMfM-0003Dn-VX
- for linux-mediatek@lists.infradead.org; Wed, 23 Oct 2019 19:51:34 +0000
-Received: by mail-yw1-xc44.google.com with SMTP id o195so3033340ywd.8
- for <linux-mediatek@lists.infradead.org>; Wed, 23 Oct 2019 12:51:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=poorly.run; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=JKxzTkPUnLBEMDTwoJW4PDaivqT9rS13Dxxf3jk+VxQ=;
- b=akx8r6jT3I/V5VK3DFavJjpWCKXwwJ54pN/CwmMI0RlJyZXFn/JghN8q9eMkILt3Bj
- oti1pmNbQckNpl/EOB+0rvU43Jkp64k2lwFauXbNzIFglRxrjixYWv+/9vFbz4FSx7xt
- aCMFM4zSJU68ra8kLEV0pq7q1NvvpRqI6rsXzt5dWB2ohv+oXhO9pJPUPI1oF1oem2Sw
- rq6JfMoGgw5JXRYPA0jreainYMEzVFOeuSrMGwoUZa7igdExt3DSBSdtEL+p6xVDcD5S
- WXwlEWUgilxeHrI8+MHumVZ3Yo5yQmHsNzu+kRSyX06v+n31hCwfQH3eiyoGwvdDwwGE
- cHtg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=JKxzTkPUnLBEMDTwoJW4PDaivqT9rS13Dxxf3jk+VxQ=;
- b=owxLCgdnDUb4roQSNJqjzp0/bqqOoZ4nXSVepaNNtxmPFPfEW2Z8w2+W8UwY/cYhTn
- M3kXlIyHhkD6ewFq6tqD6Lu9mlWBNWAEX+xjMfcPAKxC1HaW28jYpGE0y+N4H4hWUCuU
- FGnovJndsUoNmE1IgGGSHDvUOSHPPoD7Rp1u8CMTndTZJc+ZILzR2F2+gJjlMC1AntSm
- 9NxJ3sI15xVof8T2eAnIE+qYSI+RXt/vDNtsJ+q8al1Nfu6mZHTE/GPeiV9hN2nOSWqi
- Ei9DoVdLRXsmqbsRf+fKgLT5be3Ng9PvJb0GG1bcXfhbUvmx8bNFohiEk4zyaozk9jCv
- cMrg==
-X-Gm-Message-State: APjAAAV+nrIJtKivaxJ5D9Eisx/3KUcg5Nd/+mPNcz54l6gG1a6FTr3V
- bUqseiw0VOjLVBYs7Teuj4vTJQ==
-X-Google-Smtp-Source: APXvYqxMQsj3ijgyrWt7i52xtn9PuwOHnFfUuiHehIa12RuB5Pietb4A88Y+G276WQTvDzHNA0Sbfg==
-X-Received: by 2002:a81:a042:: with SMTP id x63mr4309899ywg.301.1571860290828; 
- Wed, 23 Oct 2019 12:51:30 -0700 (PDT)
-Received: from rosewood.cam.corp.google.com
- ([2620:0:1013:11:89c6:2139:5435:371d])
- by smtp.gmail.com with ESMTPSA id i190sm3863706ywg.1.2019.10.23.12.51.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Oct 2019 12:51:30 -0700 (PDT)
-From: Sean Paul <sean@poorly.run>
-To: dri-devel@lists.freedesktop.org
-Subject: [PATCH] drm/mediatek: Add RGB[A] variants to published plane formats
-Date: Wed, 23 Oct 2019 15:51:17 -0400
-Message-Id: <20191023195129.165775-1-sean@poorly.run>
-X-Mailer: git-send-email 2.23.0.866.gb869b98d4c-goog
+ id 1iNNq4-0001ke-0Z; Wed, 23 Oct 2019 21:06:41 +0000
+X-UUID: ae29dd25e3374e02892ee7938699e740-20191023
+X-UUID: ae29dd25e3374e02892ee7938699e740-20191023
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1647297005; Wed, 23 Oct 2019 13:06:31 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 23 Oct 2019 14:06:31 -0700
+Received: from mtkcas09.mediatek.inc (172.21.101.178) by
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 24 Oct 2019 05:06:29 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Thu, 24 Oct 2019 05:06:21 +0800
+Message-ID: <1571864784.19128.8.camel@mtksdaap41>
+Subject: Re: [PATCH 5/6] drm/mediatek: Convert to use CMA helpers
+From: CK Hu <ck.hu@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+Date: Thu, 24 Oct 2019 05:06:24 +0800
+In-Reply-To: <CAL_JsqL6G=F45G+-QXF6T1269f9YquXfYtjoUkCpAoNartxM=Q@mail.gmail.com>
+References: <20191021214550.1461-1-robh@kernel.org>
+ <20191021214550.1461-6-robh@kernel.org>
+ <1cbca96c-19dd-1d15-949c-7fbcc15369b4@gmail.com>
+ <CAL_JsqL6G=F45G+-QXF6T1269f9YquXfYtjoUkCpAoNartxM=Q@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191023_125133_012593_B491894E 
-X-CRM114-Status: UNSURE (   7.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191023_140640_059012_7D797A62 
+X-CRM114-Status: GOOD (  20.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,51 +80,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nicolas Boichat <drinkcat@chromium.org>,
- Daniele Castagna <dcastagna@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, Matthias Brugger <matthias.bgg@gmail.com>,
- Miguel Casas <mcasas@chromium.org>, Sean Paul <seanpaul@chromium.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
+ Liviu Dudau <liviu.dudau@arm.com>, Sandy Huang <hjc@rock-chips.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Benjamin Gaignard <benjamin.gaignard@linaro.org>,
+ Yannick Fertre <yannick.fertre@st.com>,
+ Nicolas Boichat <drinkcat@chromium.org>, Kevin Hilman <khilman@baylibre.com>,
+ Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+ Xinliang Liu <z.liuxinliang@hisilicon.com>, "open list:ARM/Rockchip
+ SoC..." <linux-rockchip@lists.infradead.org>, Chen-Yu Tsai <wens@csie.org>,
+ Noralf =?ISO-8859-1?Q?Tr=F8nnes?= <noralf@tronnes.org>,
+ "James \(Qian\) Wang" <james.qian.wang@arm.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Ulrich Hecht <uli@fpond.eu>,
+ Alexandre Torgue <alexandre.torgue@st.com>,
+ Chen Feng <puck.chen@hisilicon.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Daniel
+ Vetter <daniel@ffwll.ch>, Sean Paul <sean@poorly.run>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, Philippe Cornu <philippe.cornu@st.com>,
+ Vincent Abriou <vincent.abriou@st.com>, Kieran
+ Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Rongrong Zou <zourongrong@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Paul <seanpaul@chromium.org>
+Hi, Rob:
 
-These formats are handled in the rdma code, but for some reason they're
-not published as supported formats for the planes. So add them to the
-list.
+On Wed, 2019-10-23 at 12:42 -0500, Rob Herring wrote:
+> On Tue, Oct 22, 2019 at 12:07 PM Matthias Brugger
+> <matthias.bgg@gmail.com> wrote:
+> >
+> > Hi Rob,
+> >
+> > On 21/10/2019 23:45, Rob Herring wrote:
+> > > The only reason the Mediatek driver doesn't use the CMA helpers is it
+> > > sets DMA_ATTR_NO_KERNEL_MAPPING and does a vmap() on demand. Using
+> > > vmap() is not even guaranteed to work as DMA buffers may not have a
+> > > struct page. Now that the CMA helpers support setting
+> > > DMA_ATTR_NO_KERNEL_MAPPING as needed or not, convert Mediatek driver to
+> > > use CMA helpers.
+> > >
+> > > Cc: CK Hu <ck.hu@mediatek.com>
+> > > Cc: Philipp Zabel <p.zabel@pengutronix.de>
+> > > Cc: David Airlie <airlied@linux.ie>
+> > > Cc: Daniel Vetter <daniel@ffwll.ch>
+> > > Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> > > Cc: linux-arm-kernel@lists.infradead.org
+> > > Cc: linux-mediatek@lists.infradead.org
+> > > Signed-off-by: Rob Herring <robh@kernel.org>
+> > > ---
+> >
+> > I tested this on my Chromebook with some patches on top of v5.4-rc1 [1], which
+> > work. If I add your patches on top of that, the system does not boot up.
+> > Unfortunately I don't have a serial console, so I wasn't able to see if there is
+> > any error message.
+> 
+> Thanks for testing. I'm based on drm-misc-next, but don't see anything
+> obvious there that would matter. There are some mmap changes, but I
+> think they shouldn't matter.
+> 
+> Did you have fbcon enabled? That may give more clues about where the problem is.
 
-Cc: Nicolas Boichat <drinkcat@chromium.org>
-Cc: Daniele Castagna <dcastagna@chromium.org>
-Cc: Miguel Casas <mcasas@chromium.org>
-Tested-by: Miguel Casas <mcasas@chromium.org>
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
----
- drivers/gpu/drm/mediatek/mtk_drm_plane.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+There are priv->dma_dev for dma device, but it is not drm device. In
+mt8173.dtsi [1], there are mmsys device and ovl device, mmsys device is
+drm device and ovl device is mmsys's sub device which provide dma
+function, so ovl is the priv->dma_dev. I think your patch directly use
+drm device for dma operation and this would cause dma function fail.
+Please use priv->dma_dev for dma operation.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-index 584a9ecadce6..49d59470cc11 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-@@ -20,6 +20,12 @@
- static const u32 formats[] = {
- 	DRM_FORMAT_XRGB8888,
- 	DRM_FORMAT_ARGB8888,
-+	DRM_FORMAT_BGRX8888,
-+	DRM_FORMAT_BGRA8888,
-+	DRM_FORMAT_ABGR8888,
-+	DRM_FORMAT_XBGR8888,
-+	DRM_FORMAT_RGB888,
-+	DRM_FORMAT_BGR888,
- 	DRM_FORMAT_RGB565,
- 	DRM_FORMAT_UYVY,
- 	DRM_FORMAT_YUYV,
--- 
-Sean Paul, Software Engineer, Google / Chromium OS
+Regards,
+CK
+
+[1]
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/mediatek/mt8173.dtsi?h=v5.4-rc4
+> 
+> Rob
+
 
 
 _______________________________________________
