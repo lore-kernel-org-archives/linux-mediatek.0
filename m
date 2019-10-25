@@ -2,87 +2,69 @@ Return-Path: <SRS0=37+5=YS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B8E58CA9EA0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2019 03:52:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 69771CA9EA0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2019 05:39:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8A56920867
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2019 03:52:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2CF3821D7F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Oct 2019 05:39:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sFHQE3Rf";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Ce+0HrND"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8A56920867
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F6nNLPeQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2CF3821D7F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XGZ8RvpVCiEEfT4UMJbuoV5AG86C0IPgNoGtXSI7Gg0=; b=sFHQE3RfCTUVnP
-	pH5joBjT4BzXIKXcdBLHiT4mitbuKRRX/aP8jDKa1wNo97vYrIqb2dtUhEbFJVZhAIPddHhIyETJG
-	5r1ygt4FaMeYSNSbPownm0t7RoUvXSHQuaRTdo4pY0gc/leTEWFW94pY0jOyXC8a36eH06gw8BkO7
-	n3jbX4I4TgZkoktF5uLOEPEhRmXFQR440EBvdDp+U+az3p+Ka90QvVwEWFXtWFjOPcfNqzYSg4pGH
-	HmePtWxLBNRKmTI8BxI7T5LFiW8wQv9XMnuT9UrzhfnsoyRUeRqq0O43rM9e6hmkm/MgWpKjLR2pV
-	1r+oav7CSzkI94gGJTJQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=SIDDUNYapBOOk7YQjlzgj9RCezlekDKygtNSVGem+lQ=; b=F6nNLPeQKrWPiq
+	C4vtQNRJVttewHQcl1v3meXSCmG5H1gSe/zumfWvdNJ84AKWPV8u8h6vkB/pgp/XSGNzD4/HzJoEH
+	Xsmd3ha1lMhxgW1vvGBrFZ9pJi6hZdfeDod7ht2DN4D6CsWmGZgJDH1ruWkRt74AaQf50KIKMsz0A
+	irMqqFhFsNLQ6IPRPH7dja7toGUsDOQt7gSPArB/OnbjbYAp/QfrYk2Psc3ZQVf6jMHZB+KHp8OxF
+	G5kY4aJhTjV2tRMt0nISJAF76b3rbiqJxEyo+ZsBbp0t2llrS2ULvud4gASOgnQ8hgGPX/ey5jvEZ
+	1siI8HOZh4FcDe9fJ4hQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iNqeX-0005as-Uf; Fri, 25 Oct 2019 03:52:41 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1iNsJl-0001FP-UL; Fri, 25 Oct 2019 05:39:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iNqeL-0005QU-M5
- for linux-mediatek@lists.infradead.org; Fri, 25 Oct 2019 03:52:31 +0000
-Received: by mail-pf1-x444.google.com with SMTP id 21so625516pfj.9
- for <linux-mediatek@lists.infradead.org>; Thu, 24 Oct 2019 20:52:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=VuqGlHCmiP7nazFalCZDat6IlaETXhzlf7ym/08sQW8=;
- b=Ce+0HrNDmFSivub2oBEJVlA0HHWdPOu5+6DmZIJe7npEriRRFg631g4lekMZY0vAiE
- X3w8JaBKz/xk8MUr8g0dIKO02+oQdsng0Yd15tGlAmwd6MIRY+eKa82ZieljWuM1/TXA
- lWrkonKegWaVKApjLAbjNz8voQ4f1oncASGEE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=VuqGlHCmiP7nazFalCZDat6IlaETXhzlf7ym/08sQW8=;
- b=ro8PkARg2ndn8vDMrfpldCCrpu0stRp0iFz7kWMisZ2eos/QO+Xxm6csVVf+fGbhDU
- JUfUeWisMrhrrKkLlLo1k7ho1IWswCaoaSNecPxesLjAbEKY+NOMnrmHqIgs/mYpPLcF
- ireE8UMw8VfCc8lk5ABYIluQ4KfBqzjzrZ5BJgCDLTLr13Cv0WJS13lzP/9Paw6G1Byt
- gXc0cPx+JyPD7XMVy+3GJBJnMk0ZJaaNzOsOHM3P8Ussz2RW85I8WImv28HiPxiKA81k
- u4IIkBrr8iGAeD2jawln7AydhKT+HUH7qQFhXBVTur2SSEwj5qomaYm16YYvA4EU/6r6
- rrqw==
-X-Gm-Message-State: APjAAAXEOIZcKHbuHyYnSfvMLiJ2DPt9NUQVAIPFdqpuj7tcpn6S/FAh
- KOD01JgPLIhX1MWaiR0e16Akxg==
-X-Google-Smtp-Source: APXvYqwkwetVcs47sPZxLr5ISxVfMjs558/KCCIrpnAsnIMnYSTi2p/HmtYweJj67U8UZ7Y8mq9qFw==
-X-Received: by 2002:a63:4c1c:: with SMTP id z28mr1507674pga.167.1571975545045; 
- Thu, 24 Oct 2019 20:52:25 -0700 (PDT)
-Received: from chromium.org ([2401:fa00:8f:203:f5fe:2a5e:f953:c0ed])
- by smtp.gmail.com with ESMTPSA id c16sm571818pja.2.2019.10.24.20.52.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Oct 2019 20:52:17 -0700 (PDT)
-Date: Fri, 25 Oct 2019 12:52:11 +0900
-From: Tomasz Figa <tfiga@chromium.org>
-To: Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>
-Subject: Re: [RFC PATCH V3 3/3] platform: mtk-isp: Add Mediatek FD driver
-Message-ID: <20191025035211.GA67000@chromium.org>
-References: <20190906101125.3784-1-Jerry-Ch.chen@mediatek.com>
- <20190906101125.3784-4-Jerry-Ch.chen@mediatek.com>
- <1571109375.3706.40.camel@mtksdccf07>
+ id 1iNsJJ-0000nv-Sp; Fri, 25 Oct 2019 05:38:55 +0000
+X-UUID: 1caa4a68121a4a5580afeeadb0893b78-20191024
+X-UUID: 1caa4a68121a4a5580afeeadb0893b78-20191024
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <bibby.hsieh@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 457546342; Thu, 24 Oct 2019 21:38:47 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 24 Oct 2019 22:38:43 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 25 Oct 2019 13:38:42 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Fri, 25 Oct 2019 13:38:43 +0800
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+To: David Airlie <airlied@linux.ie>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>,
+ <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] drm/mediatek: covert to helper nonblocking atomic commit
+Date: Fri, 25 Oct 2019 13:38:41 +0800
+Message-ID: <20191025053843.16808-1-bibby.hsieh@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1571109375.3706.40.camel@mtksdccf07>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191024_205229_742472_D040BCA4 
-X-CRM114-Status: GOOD (  31.33  )
+X-CRM114-CacheID: sfid-20191024_223853_942442_EF3A92E7 
+X-CRM114-Status: GOOD (  13.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,236 +76,202 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Sean Cheng =?utf-8?B?KOmEreaYh+W8mCk=?= <Sean.Cheng@mediatek.com>,
- "laurent.pinchart+renesas@ideasonboard.com"
- <laurent.pinchart+renesas@ideasonboard.com>,
- Rynn Wu =?utf-8?B?KOWQs+iCsuaBqSk=?= <Rynn.Wu@mediatek.com>,
- Christie Yu =?utf-8?B?KOa4uOmbheaDoCk=?= <christie.yu@mediatek.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- Jungo Lin =?utf-8?B?KOael+aYjuS/iik=?= <jungo.lin@mediatek.com>,
- Po-Yang Huang =?utf-8?B?KOm7g+afj+mZvSk=?= <po-yang.huang@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- CK Hu =?utf-8?B?KOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- Sj Huang =?utf-8?B?KOm7g+S/oeeSiyk=?= <sj.huang@mediatek.com>,
- "yuzhao@chromium.org" <yuzhao@chromium.org>, "lkml@metux.net" <lkml@metux.net>,
- "zwisler@chromium.org" <zwisler@chromium.org>,
- Frederic Chen =?utf-8?B?KOmZs+S/iuWFgyk=?= <Frederic.Chen@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, hans.verkuil@cisco.com,
- "mchehab@kernel.org" <mchehab@kernel.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
+Cc: drinkcat@chromium.org, Bibby Hsieh <bibby.hsieh@mediatek.com>,
+ srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, tfiga@chromium.org,
+ CK Hu <ck.hu@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 15, 2019 at 11:16:15AM +0800, Jerry-ch Chen wrote:
-> Hi Tomasz,
-> 
-> On Fri, 2019-09-06 at 18:11 +0800, Jerry-ch Chen wrote:
-> > From: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
-> > 
-> > This patch adds the driver of Face Detection (FD) unit in
-> > Mediatek camera system, providing face detection function.
-> > 
-> > The mtk-isp directory will contain drivers for multiple IP
-> > blocks found in Mediatek ISP system. It will include ISP Pass 1
-> > driver (CAM), sensor interface driver, DIP driver and face
-> > detection driver.
-> > 
-> > Signed-off-by: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
-> > ---
-> >  drivers/media/platform/Kconfig                |    2 +
-> >  drivers/media/platform/Makefile               |    2 +
-> >  drivers/media/platform/mtk-isp/fd/Kconfig     |   19 +
-> >  drivers/media/platform/mtk-isp/fd/Makefile    |    5 +
-> >  drivers/media/platform/mtk-isp/fd/mtk_fd.h    |  148 ++
-> >  drivers/media/platform/mtk-isp/fd/mtk_fd_40.c | 1219 +++++++++++++++++
-> >  include/uapi/linux/mtk-fd-v4l2-controls.h     |   69 +
-> >  include/uapi/linux/v4l2-controls.h            |    4 +
-> >  8 files changed, 1468 insertions(+)
-> >  create mode 100644 drivers/media/platform/mtk-isp/fd/Kconfig
-> >  create mode 100644 drivers/media/platform/mtk-isp/fd/Makefile
-> >  create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd.h
-> >  create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd_40.c
-> >  create mode 100644 include/uapi/linux/mtk-fd-v4l2-controls.h
-> > 
+In order to commit state asynchronously, we change
+.atomic_commit to drm_atomic_helper_commit().
 
-[snip]
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 11 ++++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c  | 86 ++-----------------------
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h  |  7 --
+ 3 files changed, 16 insertions(+), 88 deletions(-)
 
-> > +static int mtk_fd_job_abort(struct mtk_fd_dev *fd)
-> > +{
-> > +	u32 ret;
-> > +
-> > +	ret = wait_for_completion_timeout(&fd->fd_irq_done,
-> > +					  msecs_to_jiffies(MTK_FD_HW_TIMEOUT));
-> > +	/* Reset FD HW */
-> > +	if (!ret) {
-> > +		struct ipi_message fd_ipi_msg;
-> > +
-> > +		fd_ipi_msg.cmd_id = MTK_FD_IPI_CMD_RESET;
-> > +		if (scp_ipi_send(fd->scp_pdev, SCP_IPI_FD_CMD, &fd_ipi_msg,
-> > +				 sizeof(fd_ipi_msg), MTK_FD_IPI_SEND_TIMEOUT))
-> > +			dev_err(fd->dev, "FD Reset HW error\n");
-> > +		return -ETIMEDOUT;
-> > +	}
-> > +	return 0;
-> > +}
-> > +
-> 
-> Continue the discussion about job abort in RFC v2,
-> 
-> I think the job_abort callback in v4l2_m2m_ops() might be useful.
-> 
-> ref:
-> https://elixir.bootlin.com/linux/v5.4-rc2/source/drivers/media/v4l2-core/v4l2-mem2mem.c#L398
-> https://elixir.bootlin.com/linux/v5.4-rc2/source/include/media/v4l2-mem2mem.h#L43
-> 
-> in drivers/media/v4l2-core/v4l2-mem2mem.c #398 v4l2_m2m_cancel_job()
-> ...
-> if (m2m_ctx->job_flags & TRANS_RUNNING) {
-> 	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> 	if (m2m_dev->m2m_ops->job_abort)
-> 		m2m_dev->m2m_ops->job_abort(m2m_ctx->priv);
-> 	dprintk("m2m_ctx %p running, will wait to complete\n", m2m_ctx);
-> 	wait_event(m2m_ctx->finished,
-> 			!(m2m_ctx->job_flags & TRANS_RUNNING));
-> } ...
-> 
-> If this operation is set, we might use the v4l2_m2m_cancel_job() when
-> suspend, and it will do mtk_fd_job_abort() here.
->
-
-The expectation for .job_abort() is that signals the hardware to
-instantly abandon the current job. Do we have a way to tell the
-firmware/hardware to do so?
-
-Also, suspend must not abort the current job. Anything that was already
-running is expected to complete successfuly and further jobs should
-continue executing once the system resumes.
-
-[snip]
-
-> > +
-> > +static int mtk_fd_suspend(struct device *dev)
-> > +{
-> > +	struct mtk_fd_dev *fd = dev_get_drvdata(dev);
-> > +
-> > +	if (pm_runtime_suspended(dev))
-> > +		return 0;
-> > +
-> > +	if (fd->fd_stream_count)
-> > +		if (mtk_fd_job_abort(fd))
-> > +			mtk_fd_hw_job_finish(fd, VB2_BUF_STATE_ERROR);
-> > +
-> 
-> To avoid mtk_fd_hw_job_finish() trigger the next job,
-> I suppose that we could use v4l2_m2m_cancel_job instead of job_abort and
-> job_finish here.
-> 
-> /**
->  * v4l2_m2m_cancel_job() - cancel pending jobs for the context
->  * @m2m_ctx: m2m context with jobs to be canceled
->  *
->  * In case of streamoff or release called on any context,
->  * 1] If the context is currently running, then abort job will be called
->  * 2] If the context is queued, then the context will be removed from
->  *    the job_queue
->  */
-> 
-> or another way,
-> we may add a flag and implement mtk_fd_job_ready() that reads the flag
-> if we suspend, we set the flag and do job_abort and job_finish, even if
-> it try enqueue, it will still not really queue the job, until we reset
-> the flag in mtk_fd_resume().
-> 
-> how do you think?
->
-
-As per my comment above, suspend must just pause the execution of the
-jobs. It must not cause any jobs to be skipped.
-
-After analyzing the m2m framework and existing m2m drivers I realized
-that they currently provide no way to correctly handle suspend/resume.
-Pi-Hsun has been looking into fixing this in crrev.com/c/1878112 and
-we'll send it upstream as soon as we get something that should handle
-all the cases correctly.
-
-> > +	/* suspend FD HW */
-> > +	writel(0x0, fd->fd_base + MTK_FD_REG_OFFSET_INT_EN);
-> > +	writel(0x0, fd->fd_base + MTK_FD_REG_OFFSET_HW_ENABLE);
-> > +	clk_disable_unprepare(fd->fd_clk);
-> > +	dev_dbg(dev, "%s:disable clock\n", __func__);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int mtk_fd_resume(struct device *dev)
-> > +{
-> > +	struct mtk_fd_dev *fd = dev_get_drvdata(dev);
-> > +	int ret;
-> > +
-> > +	if (pm_runtime_suspended(dev))
-> > +		return 0;
-> > +
-> > +	ret = clk_prepare_enable(fd->fd_clk);
-> > +	if (ret < 0) {
-> > +		dev_dbg(dev, "Failed to open fd clk:%d\n", ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	/* resume FD HW */
-> > +	writel(MTK_FD_SET_HW_ENABLE, fd->fd_base + MTK_FD_REG_OFFSET_HW_ENABLE);
-> > +	writel(0x1, fd->fd_base + MTK_FD_REG_OFFSET_INT_EN);
-> > +	dev_dbg(dev, "%s:enable clock\n", __func__);
-
-By the way, we need to kick the m2m framework here to schedule further
-jobs. Pi-Hsun's patch will also take care of this.
-
-[snip]
-
-> > +/* Set the face angle and directions to be detected */
-> > +#define V4L2_CID_MTK_FD_DETECT_POSE		(V4L2_CID_USER_MTK_FD_BASE + 1)
-> > +
-> > +/* Set image widths for an input image to be scaled down for face detection */
-> > +#define V4L2_CID_MTK_FD_SCALE_DOWN_IMG_WIDTH	(V4L2_CID_USER_MTK_FD_BASE + 2)
-> > +
-> > +/* Set image heights for an input image to be scaled down for face detection */
-> > +#define V4L2_CID_MTK_FD_SCALE_DOWN_IMG_HEIGHT	(V4L2_CID_USER_MTK_FD_BASE + 3)
-> > +
-> > +/* Set the length of scale down size array */
-> > +#define V4L2_CID_MTK_FD_SCALE_IMG_NUM		(V4L2_CID_USER_MTK_FD_BASE + 4)
-> > +
-> > +/* Set the detection speed, usually reducing accuracy. */
-> > +#define V4L2_CID_MTK_FD_DETECT_SPEED		(V4L2_CID_USER_MTK_FD_BASE + 5)
-> > +
-> > +/* Select the detection model or algorithm to be used. */
-> > +#define V4L2_CID_MTK_FD_DETECTION_MODEL		(V4L2_CID_USER_MTK_FD_BASE + 6)
-> > +
-> > +/* We reserve 16 controls for this driver. */
-> > +#define V4L2_CID_MTK_FD_MAX			16
-> > +
-> 
-> For these control IDs, I think the following should be remained as chip
-> specific controls.
-> V4L2_CID_MTK_FD_SCALE_DOWN_IMG_WIDTH,
-> V4L2_CID_MTK_FD_SCALE_DOWN_IMG_HEIGHT and V4L2_CID_MTK_FD_SCALE_IMG_NUM 
-> 
-> Hope there would be standardizing face detection api that cover the rest
-> controls: V4L2_CID_MTK_FD_DETECT_POSE, V4L2_CID_MTK_FD_DETECT_SPEED and
-> V4L2_CID_MTK_FD_DETECTION_MODEL
-> 
-> Would you have any suggestions on how to propose the standard face
-> detection apis?
-> 
-
-Given no follow up feedback from the community, I think we can keep them
-as driver-specific, but should make sure that they have some reasonable
-default values in case an application doesn't recognize them.
-
-Best regards,
-Tomasz
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index b97eb5f58483..b07dc9b59ca3 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -317,6 +317,7 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
+ static void mtk_crtc_ddp_hw_fini(struct mtk_drm_crtc *mtk_crtc)
+ {
+ 	struct drm_device *drm = mtk_crtc->base.dev;
++	struct drm_crtc *crtc = &mtk_crtc->base;
+ 	int i;
+ 
+ 	DRM_DEBUG_DRIVER("%s\n", __func__);
+@@ -340,6 +341,13 @@ static void mtk_crtc_ddp_hw_fini(struct mtk_drm_crtc *mtk_crtc)
+ 	mtk_disp_mutex_unprepare(mtk_crtc->mutex);
+ 
+ 	pm_runtime_put(drm->dev);
++
++	if (crtc->state->event && !crtc->state->active) {
++		spin_lock_irq(&crtc->dev->event_lock);
++		drm_crtc_send_vblank_event(crtc, crtc->state->event);
++		crtc->state->event = NULL;
++		spin_unlock_irq(&crtc->dev->event_lock);
++	}
+ }
+ 
+ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+@@ -456,12 +464,15 @@ static void mtk_drm_crtc_atomic_begin(struct drm_crtc *crtc,
+ 	if (mtk_crtc->event && state->base.event)
+ 		DRM_ERROR("new event while there is still a pending event\n");
+ 
++	spin_lock_irq(&crtc->dev->event_lock);
+ 	if (state->base.event) {
+ 		state->base.event->pipe = drm_crtc_index(crtc);
+ 		WARN_ON(drm_crtc_vblank_get(crtc) != 0);
++		WARN_ON(mtk_crtc->event);
+ 		mtk_crtc->event = state->base.event;
+ 		state->base.event = NULL;
+ 	}
++	spin_unlock_irq(&crtc->dev->event_lock);
+ }
+ 
+ static void mtk_drm_crtc_atomic_flush(struct drm_crtc *crtc,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 6588dc6dd5e3..16e5771d182e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -36,89 +36,14 @@
+ #define DRIVER_MAJOR 1
+ #define DRIVER_MINOR 0
+ 
+-static void mtk_atomic_schedule(struct mtk_drm_private *private,
+-				struct drm_atomic_state *state)
+-{
+-	private->commit.state = state;
+-	schedule_work(&private->commit.work);
+-}
+-
+-static void mtk_atomic_complete(struct mtk_drm_private *private,
+-				struct drm_atomic_state *state)
+-{
+-	struct drm_device *drm = private->drm;
+-
+-	drm_atomic_helper_wait_for_fences(drm, state, false);
+-
+-	/*
+-	 * Mediatek drm supports runtime PM, so plane registers cannot be
+-	 * written when their crtc is disabled.
+-	 *
+-	 * The comment for drm_atomic_helper_commit states:
+-	 *     For drivers supporting runtime PM the recommended sequence is
+-	 *
+-	 *     drm_atomic_helper_commit_modeset_disables(dev, state);
+-	 *     drm_atomic_helper_commit_modeset_enables(dev, state);
+-	 *     drm_atomic_helper_commit_planes(dev, state,
+-	 *                                     DRM_PLANE_COMMIT_ACTIVE_ONLY);
+-	 *
+-	 * See the kerneldoc entries for these three functions for more details.
+-	 */
+-	drm_atomic_helper_commit_modeset_disables(drm, state);
+-	drm_atomic_helper_commit_modeset_enables(drm, state);
+-	drm_atomic_helper_commit_planes(drm, state,
+-					DRM_PLANE_COMMIT_ACTIVE_ONLY);
+-
+-	drm_atomic_helper_wait_for_vblanks(drm, state);
+-
+-	drm_atomic_helper_cleanup_planes(drm, state);
+-	drm_atomic_state_put(state);
+-}
+-
+-static void mtk_atomic_work(struct work_struct *work)
+-{
+-	struct mtk_drm_private *private = container_of(work,
+-			struct mtk_drm_private, commit.work);
+-
+-	mtk_atomic_complete(private, private->commit.state);
+-}
+-
+-static int mtk_atomic_commit(struct drm_device *drm,
+-			     struct drm_atomic_state *state,
+-			     bool async)
+-{
+-	struct mtk_drm_private *private = drm->dev_private;
+-	int ret;
+-
+-	ret = drm_atomic_helper_prepare_planes(drm, state);
+-	if (ret)
+-		return ret;
+-
+-	mutex_lock(&private->commit.lock);
+-	flush_work(&private->commit.work);
+-
+-	ret = drm_atomic_helper_swap_state(state, true);
+-	if (ret) {
+-		mutex_unlock(&private->commit.lock);
+-		drm_atomic_helper_cleanup_planes(drm, state);
+-		return ret;
+-	}
+-
+-	drm_atomic_state_get(state);
+-	if (async)
+-		mtk_atomic_schedule(private, state);
+-	else
+-		mtk_atomic_complete(private, state);
+-
+-	mutex_unlock(&private->commit.lock);
+-
+-	return 0;
+-}
++static const struct drm_mode_config_helper_funcs mtk_drm_mode_config_helpers = {
++	.atomic_commit_tail = drm_atomic_helper_commit_tail_rpm,
++};
+ 
+ static const struct drm_mode_config_funcs mtk_drm_mode_config_funcs = {
+ 	.fb_create = mtk_drm_mode_fb_create,
+ 	.atomic_check = drm_atomic_helper_check,
+-	.atomic_commit = mtk_atomic_commit,
++	.atomic_commit = drm_atomic_helper_commit,
+ };
+ 
+ static const enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
+@@ -265,6 +190,7 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+ 	drm->mode_config.max_width = 4096;
+ 	drm->mode_config.max_height = 4096;
+ 	drm->mode_config.funcs = &mtk_drm_mode_config_funcs;
++	drm->mode_config.helper_private = &mtk_drm_mode_config_helpers;
+ 
+ 	ret = component_bind_all(drm->dev, drm);
+ 	if (ret)
+@@ -540,8 +466,6 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 	if (!private)
+ 		return -ENOMEM;
+ 
+-	mutex_init(&private->commit.lock);
+-	INIT_WORK(&private->commit.work, mtk_atomic_work);
+ 	private->data = of_device_get_match_data(dev);
+ 
+ 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+index b6a82728d563..9f4ce60174f6 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+@@ -46,13 +46,6 @@ struct mtk_drm_private {
+ 	struct device_node *comp_node[DDP_COMPONENT_ID_MAX];
+ 	struct mtk_ddp_comp *ddp_comp[DDP_COMPONENT_ID_MAX];
+ 	const struct mtk_mmsys_driver_data *data;
+-
+-	struct {
+-		struct drm_atomic_state *state;
+-		struct work_struct work;
+-		struct mutex lock;
+-	} commit;
+-
+ 	struct drm_atomic_state *suspend_state;
+ 
+ 	bool dma_parms_allocated;
+-- 
+2.18.0
 
 
 _______________________________________________
