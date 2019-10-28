@@ -5,18 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C2334CA9EAF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 02:52:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8C81CA9EAF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 02:53:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 772C1208C0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 02:52:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A7D9C208C0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 02:53:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YbiJwoih"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 772C1208C0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bKK6/PnK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A7D9C208C0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,47 +25,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b04J4a7fMjAGoX4bh7jQmF7VSS8SmDbLAkAwxKKgJ3I=; b=YbiJwoih4xgpwp
-	7Q/Iq88Piev86bu0fZclwDp88pK3RNrlvl5rehsAfrvHpX/gIGGGoYTO5nN60vLLZQG4u6Y5HNTAD
-	WKGgvAEItyLkCU5skwdiTw+qRbESnQBgAaf4jCaexc+UJ/rUZ9ujw1DkAzo5ku9kDDNoBcuD8lIyK
-	FOThHgnwahaIssQDizaEVt15429GTChvB1d5vutgBEZwksZwXfEWNZXnIgSOExVL+MJrTcsbkTBmg
-	bZDx4RPvE4PKiw4e7o6nuopxI3t9xMZkbyNdaQJ2r1wxDsY4aWeTvjf7gIp5ygbMZWIPatq98Q5Fq
-	/dWbpQveabyBYShx4xLg==;
+	List-Owner; bh=Kk+wf6ZUsZgHCjpeTLd0+nl4S1oBDXgek8RACTREvN4=; b=bKK6/PnKDpDqlg
+	3P7Mwl63J5lYtibvKEZp1gk5u08oegmPmkRyaMulc4pOlLy53lsGzgR0pULxvC6QrwBbWGTAHXk4f
+	1r8owYq2IbOYZmCt8hlXfX/KG45SGESc8zG2A5oGS38fY7+TK0O7zqGQ/ADAfy/M5yV0948Jl3WsX
+	JimD4RHwmNvN3O1oZOaxiRyhYfiUPzi88we+VhTe88vE+oNXEyTTehqii/MDk3u+7MjOGudfko40M
+	2dHt8SyUfjGjRPSKzHA6JNucpUkFe2uGySTx0uNIstveoyd2e+8wm1wDwD0i0qOr1VkLG3hOIjWE+
+	z9HHD2sOiRnELMQGEA7g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iOv9D-0005Lb-5u; Mon, 28 Oct 2019 02:52:47 +0000
+	id 1iOv9T-0005bv-JG; Mon, 28 Oct 2019 02:53:03 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iOv5R-0000yI-VE; Mon, 28 Oct 2019 02:48:55 +0000
-X-UUID: c57b1a1271cd404d8470cd179318437e-20191027
-X-UUID: c57b1a1271cd404d8470cd179318437e-20191027
+ id 1iOv5P-0000yI-Tc; Mon, 28 Oct 2019 02:48:53 +0000
+X-UUID: 6098ce8db3e342d8bae3d00bb0ef11dd-20191027
+X-UUID: 6098ce8db3e342d8bae3d00bb0ef11dd-20191027
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1516180265; Sun, 27 Oct 2019 18:49:01 -0800
+ with ESMTP id 2010929191; Sun, 27 Oct 2019 18:49:01 -0800
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 27 Oct 2019 19:48:26 -0700
+ 15.0.1395.4; Sun, 27 Oct 2019 19:48:25 -0700
 Received: from mtkcas09.mediatek.inc (172.21.101.178) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 28 Oct 2019 10:48:26 +0800
+ 15.0.1395.4; Mon, 28 Oct 2019 10:48:25 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Mon, 28 Oct 2019 10:48:26 +0800
+ Frontend Transport; Mon, 28 Oct 2019 10:48:25 +0800
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>
-Subject: [PATCH v8 07/14] soc: mediatek: Refactor bus protection control
-Date: Mon, 28 Oct 2019 10:48:11 +0800
-Message-ID: <1572230898-7860-8-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v8 01/14] dt-bindings: mediatek: Add property to mt8183
+ smi-common
+Date: Mon, 28 Oct 2019 10:48:05 +0800
+Message-ID: <1572230898-7860-2-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1572230898-7860-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1572230898-7860-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191027_194854_132939_31A2F242 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20191027_194852_254346_C8CD7D15 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,82 +88,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Put bus protection enable and disable control in separate functions.
+For scpsys driver using regmap based syscon driver API.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-scpsys.c | 44 ++++++++++++++++++++++++++-------------
- 1 file changed, 30 insertions(+), 14 deletions(-)
+ .../devicetree/bindings/memory-controllers/mediatek,smi-common.txt      | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index ad0f619..fb2b027 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -274,6 +274,30 @@ static int scpsys_sram_disable(struct scp_domain *scpd, void __iomem *ctl_addr)
- 			MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
- }
- 
-+static int scpsys_bus_protect_enable(struct scp_domain *scpd)
-+{
-+	struct scp *scp = scpd->scp;
-+
-+	if (!scpd->data->bus_prot_mask)
-+		return 0;
-+
-+	return mtk_infracfg_set_bus_protection(scp->infracfg,
-+			scpd->data->bus_prot_mask,
-+			scp->bus_prot_reg_update);
-+}
-+
-+static int scpsys_bus_protect_disable(struct scp_domain *scpd)
-+{
-+	struct scp *scp = scpd->scp;
-+
-+	if (!scpd->data->bus_prot_mask)
-+		return 0;
-+
-+	return mtk_infracfg_clear_bus_protection(scp->infracfg,
-+			scpd->data->bus_prot_mask,
-+			scp->bus_prot_reg_update);
-+}
-+
- static int scpsys_power_on(struct generic_pm_domain *genpd)
- {
- 	struct scp_domain *scpd = container_of(genpd, struct scp_domain, genpd);
-@@ -316,13 +340,9 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	if (ret < 0)
- 		goto err_pwr_ack;
- 
--	if (scpd->data->bus_prot_mask) {
--		ret = mtk_infracfg_clear_bus_protection(scp->infracfg,
--				scpd->data->bus_prot_mask,
--				scp->bus_prot_reg_update);
--		if (ret)
--			goto err_pwr_ack;
--	}
-+	ret = scpsys_bus_protect_disable(scpd);
-+	if (ret < 0)
-+		goto err_pwr_ack;
- 
- 	return 0;
- 
-@@ -344,13 +364,9 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	u32 val;
- 	int ret, tmp;
- 
--	if (scpd->data->bus_prot_mask) {
--		ret = mtk_infracfg_set_bus_protection(scp->infracfg,
--				scpd->data->bus_prot_mask,
--				scp->bus_prot_reg_update);
--		if (ret)
--			goto out;
--	}
-+	ret = scpsys_bus_protect_enable(scpd);
-+	if (ret < 0)
-+		goto out;
- 
- 	ret = scpsys_sram_disable(scpd, ctl_addr);
- 	if (ret < 0)
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+index b478ade..01744ec 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
+@@ -20,7 +20,7 @@ Required properties:
+ 	"mediatek,mt2712-smi-common"
+ 	"mediatek,mt7623-smi-common", "mediatek,mt2701-smi-common"
+ 	"mediatek,mt8173-smi-common"
+-	"mediatek,mt8183-smi-common"
++	"mediatek,mt8183-smi-common", "syscon"
+ - reg : the register and size of the SMI block.
+ - power-domains : a phandle to the power domain of this local arbiter.
+ - clocks : Must contain an entry for each entry in clock-names.
 -- 
 1.8.1.1.dirty
 
