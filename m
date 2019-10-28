@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 70831CA9EC0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:35:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 70756CA9EC0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:37:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4399520717
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:35:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 323AF21744
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:37:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eFLF6dS2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4399520717
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="K0UUTmSg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 323AF21744
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,54 +25,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pDOFxukI8z5f0idHlg0lHAAbXZ2NNtza35mWqXohJAs=; b=eFLF6dS2298yPv
-	YJnE34QDOl8aSYzaEvVttrHV24/k2Nsz3NbpQZskYHeRn6KcAzVyWEB39PQwgSY+hWAbltshWqj2Y
-	OOCEfgMAEPGWlGPTbpuUN8nBkbxlnX3t5oHwvjwv8pWeis/OZjdUpRs4RiXOp+KsHJLxoUCsmhjj1
-	6cs0L9UaxdQvifk9rUuHBX4o0VhnwAa5McUuiGb4D6NzzdFJiL0gCJST3CFwLn90daCo3+/vDKmbC
-	EViKSftXfzrg/nXcCyRhFbNm5ODNauUBVkrka92WkF1pMTwEHhrHnfHLCuWBlgZjU8zfZAD+M8IGj
-	xheE0Emg2pP551gCJu5A==;
+	List-Owner; bh=Mnws/Qpo1VtbDHPLuTFZTLyKcYiZyuipiiwlYQU9PuY=; b=K0UUTmSgGrfn5w
+	kkBOrnAM5d3svbfp5SM3tUGVLx9nYRtXjq1bMJp/sewf700Eu6nXyrjogjXBNqw5rVipFEEKEzwvU
+	3waY33BSNvqVBA2FqQh+zVR3Utga3LerAdMyxOUrYHfLdUjKmhWS8vINAvZZTwnF9RI39fsMGYaOJ
+	4v+WizQY7EWu35Sm+wHL6lYM0b7qWz1imCYSFfR9+dPestWrRJCl48pyQKK90K/z+PkvYRCox2C1x
+	A9n9u5xOl9wGlnd/eDPQzSbxBtYO+IhK8VPAdOjJZaReI5PR5/C1RRfGu4dyt8RB7BV8tvLyL17ZY
+	GTDly5YPVoW5exykYCJQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iP7zd-0001lu-2Q; Mon, 28 Oct 2019 16:35:45 +0000
+	id 1iP810-0002gY-Qi; Mon, 28 Oct 2019 16:37:10 +0000
 Received: from mail-oi1-f196.google.com ([209.85.167.196])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iP7x6-0006lF-VP; Mon, 28 Oct 2019 16:33:10 +0000
-Received: by mail-oi1-f196.google.com with SMTP id s71so6390097oih.11;
- Mon, 28 Oct 2019 09:33:08 -0700 (PDT)
+ id 1iP7xF-0006sw-5d; Mon, 28 Oct 2019 16:33:19 +0000
+Received: by mail-oi1-f196.google.com with SMTP id s5so6384616oie.10;
+ Mon, 28 Oct 2019 09:33:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=k2xpUbChHFjHyLZeTvcqjOOLjHW6EiB7rU1pguJS2Eg=;
- b=IxFfAyPKAByOSO1HWmgyIFDsoMP9fRv3EGanzjAjXn+W8dEvHcveyESBIQKhvVspjI
- Xebbk6EMUFzzLqK1nzvi47DyT3OEiNUxVXTwdegcyt/vcB20ETkPan7QiXG6puhYBa1l
- vWZr/3lsl9LOy1ZVNxCbOVHElfFPNJHfjF36NioqLofIKrCAijwje3LRZezb5eeZjFFG
- UOIM8L/kCAsvDog1To2OzU0UGlFCTHD4aYOWCs5/sJz43qe+5YbAlSGgFS0ZfhOpTY28
- 9iqWQ+Z52Q789tJfXIG6WmSialR+aOp6+EGgfkEpkwbEKzqMXmw9cFKYdnggopHBmFUn
- V0aQ==
-X-Gm-Message-State: APjAAAW5AiFp5GS6B7HAcN6j9HP5NVUACPd3ojBWwWV9KDUyV+D1y7i7
- F5fKdX73O21vGZd+z/aWag==
-X-Google-Smtp-Source: APXvYqxZ8ey0YEh8bAOZGGeVRLpA2ZABAh6GC8RKam9rkxWgH4qFebetMS5T/qIzXrvDlJgloyLHhA==
-X-Received: by 2002:a05:6808:1c7:: with SMTP id x7mr122892oic.67.1572280387584; 
- Mon, 28 Oct 2019 09:33:07 -0700 (PDT)
+ bh=YIfpHXHDoS6BpoLM/5OtgGD1veZ0kiS1z+l67O5mhv0=;
+ b=t/Qp0W7b1TTtfMzOY+WvcW1gRMhSZyqfYWHNCIiJJa+qTt3rvA2zQQ4dCJ+R0fjba6
+ Dy+GKY22mi9JyGL96/CHLvnfdt2wVmAyWHYdiInXPMmutcbVmFDsqIv4QflszjG3yqcR
+ qW9UxzMKe/gwz43SdWO/+LL8gTxVZ5p3H5Q8JK6cYDj6pNpZTK07w5830O0/Kk+v47kk
+ 4vlmzBEtalK+KCNFC4GzPhQZTqqNfIeMzz9vLav0J8H9DsQmMI15Gai1qCEcAJgioyed
+ 8k9QNAsB3lhl8QniD6QSTfVYtPs9iCVaHKUNkAh07r8VPpsl1l1r4LhAQyhfM3+QOOxE
+ WVcw==
+X-Gm-Message-State: APjAAAVkIS+HrT0gFB/jpZXI8FEzXbfHlPq1SsdrytTog4ldF8ggTk3h
+ Jga9rQZx46GBmdflhN2g3A==
+X-Google-Smtp-Source: APXvYqwiII4tT6mUV/WZPdOOYCJP3razv09fHNkFp9JLAVkZPyu7pCRKafjRWtkftQVgR7SzFninKQ==
+X-Received: by 2002:aca:494e:: with SMTP id w75mr95048oia.159.1572280394774;
+ Mon, 28 Oct 2019 09:33:14 -0700 (PDT)
 Received: from xps15.herring.priv (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.googlemail.com with ESMTPSA id e186sm354991oia.47.2019.10.28.09.33.05
+ by smtp.googlemail.com with ESMTPSA id e186sm354991oia.47.2019.10.28.09.33.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Oct 2019 09:33:06 -0700 (PDT)
+ Mon, 28 Oct 2019 09:33:14 -0700 (PDT)
 From: Rob Herring <robh@kernel.org>
 To: Andrew Murray <andrew.murray@arm.com>, Bjorn Helgaas <bhelgaas@google.com>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: [PATCH v3 04/25] PCI: altera: Use pci_parse_request_of_pci_ranges()
-Date: Mon, 28 Oct 2019 11:32:35 -0500
-Message-Id: <20191028163256.8004-5-robh@kernel.org>
+Subject: [PATCH v3 07/25] PCI: iproc: Use pci_parse_request_of_pci_ranges()
+Date: Mon, 28 Oct 2019 11:32:38 -0500
+Message-Id: <20191028163256.8004-8-robh@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191028163256.8004-1-robh@kernel.org>
 References: <20191028163256.8004-1-robh@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191028_093309_035563_CF2A33F6 
-X-CRM114-Status: GOOD (  14.94  )
+X-CRM114-CacheID: sfid-20191028_093317_346395_0E356AC8 
+X-CRM114-Status: GOOD (  13.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,108 +106,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert altera host bridge to use the common
+Convert the iProc host bridge to use the common
 pci_parse_request_of_pci_ranges().
 
-There's no need to assign the resources to a temporary list first. Just
-use bridge->windows directly and remove all the temporary list handling.
+There's no need to assign the resources to a temporary list, so just use
+bridge->windows directly.
 
-If an I/O range is present, then it will now be mapped. It's expected
-that h/w which doesn't support I/O range will not define one.
-
-Cc: Ley Foon Tan <lftan@altera.com>
 Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>
-Cc: rfi@lists.rocketboards.org
+Cc: Ray Jui <rjui@broadcom.com>
+Cc: Scott Branden <sbranden@broadcom.com>
+Cc: bcm-kernel-feedback-list@broadcom.com
 Reviewed-by: Andrew Murray <andrew.murray@arm.com>
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
-v2:
-- Remove temporary resource list
----
- drivers/pci/controller/pcie-altera.c | 41 ++--------------------------
- 1 file changed, 2 insertions(+), 39 deletions(-)
+ drivers/pci/controller/pcie-iproc-platform.c | 8 ++------
+ drivers/pci/controller/pcie-iproc.c          | 5 -----
+ 2 files changed, 2 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-altera.c b/drivers/pci/controller/pcie-altera.c
-index d2497ca43828..ba025efeae28 100644
---- a/drivers/pci/controller/pcie-altera.c
-+++ b/drivers/pci/controller/pcie-altera.c
-@@ -92,7 +92,6 @@ struct altera_pcie {
- 	u8			root_bus_nr;
- 	struct irq_domain	*irq_domain;
- 	struct resource		bus_range;
--	struct list_head	resources;
- 	const struct altera_pcie_data	*pcie_data;
- };
+diff --git a/drivers/pci/controller/pcie-iproc-platform.c b/drivers/pci/controller/pcie-iproc-platform.c
+index 9ee6200a66f4..375d815f7301 100644
+--- a/drivers/pci/controller/pcie-iproc-platform.c
++++ b/drivers/pci/controller/pcie-iproc-platform.c
+@@ -43,8 +43,6 @@ static int iproc_pcie_pltfm_probe(struct platform_device *pdev)
+ 	struct iproc_pcie *pcie;
+ 	struct device_node *np = dev->of_node;
+ 	struct resource reg;
+-	resource_size_t iobase = 0;
+-	LIST_HEAD(resources);
+ 	struct pci_host_bridge *bridge;
+ 	int ret;
  
-@@ -670,39 +669,6 @@ static void altera_pcie_isr(struct irq_desc *desc)
- 	chained_irq_exit(chip, desc);
- }
+@@ -97,8 +95,7 @@ static int iproc_pcie_pltfm_probe(struct platform_device *pdev)
+ 	if (IS_ERR(pcie->phy))
+ 		return PTR_ERR(pcie->phy);
  
--static int altera_pcie_parse_request_of_pci_ranges(struct altera_pcie *pcie)
--{
--	int err, res_valid = 0;
--	struct device *dev = &pcie->pdev->dev;
--	struct resource_entry *win;
--
--	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
--						    &pcie->resources, NULL);
--	if (err)
--		return err;
--
--	err = devm_request_pci_bus_resources(dev, &pcie->resources);
--	if (err)
--		goto out_release_res;
--
--	resource_list_for_each_entry(win, &pcie->resources) {
--		struct resource *res = win->res;
--
--		if (resource_type(res) == IORESOURCE_MEM)
--			res_valid |= !(res->flags & IORESOURCE_PREFETCH);
--	}
--
--	if (res_valid)
--		return 0;
--
--	dev_err(dev, "non-prefetchable memory resource required\n");
--	err = -EINVAL;
--
--out_release_res:
--	pci_free_resource_list(&pcie->resources);
--	return err;
--}
--
- static int altera_pcie_init_irq_domain(struct altera_pcie *pcie)
- {
- 	struct device *dev = &pcie->pdev->dev;
-@@ -833,9 +799,8 @@ static int altera_pcie_probe(struct platform_device *pdev)
+-	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &resources,
+-						    &iobase);
++	ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows, NULL);
+ 	if (ret) {
+ 		dev_err(dev, "unable to get PCI host bridge resources\n");
+ 		return ret;
+@@ -113,10 +110,9 @@ static int iproc_pcie_pltfm_probe(struct platform_device *pdev)
+ 		pcie->map_irq = of_irq_parse_and_map_pci;
+ 	}
+ 
+-	ret = iproc_pcie_setup(pcie, &resources);
++	ret = iproc_pcie_setup(pcie, &bridge->windows);
+ 	if (ret) {
+ 		dev_err(dev, "PCIe controller setup failed\n");
+-		pci_free_resource_list(&resources);
  		return ret;
  	}
  
--	INIT_LIST_HEAD(&pcie->resources);
--
--	ret = altera_pcie_parse_request_of_pci_ranges(pcie);
-+	ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows,
-+					      NULL);
- 	if (ret) {
- 		dev_err(dev, "Failed add resources\n");
+diff --git a/drivers/pci/controller/pcie-iproc.c b/drivers/pci/controller/pcie-iproc.c
+index 2d457bfdaf66..223335ee791a 100644
+--- a/drivers/pci/controller/pcie-iproc.c
++++ b/drivers/pci/controller/pcie-iproc.c
+@@ -1498,10 +1498,6 @@ int iproc_pcie_setup(struct iproc_pcie *pcie, struct list_head *res)
  		return ret;
-@@ -853,7 +818,6 @@ static int altera_pcie_probe(struct platform_device *pdev)
- 	cra_writel(pcie, P2A_INT_ENA_ALL, P2A_INT_ENABLE);
- 	altera_pcie_host_init(pcie);
+ 	}
  
--	list_splice_init(&pcie->resources, &bridge->windows);
- 	bridge->dev.parent = dev;
- 	bridge->sysdata = pcie;
- 	bridge->busnr = pcie->root_bus_nr;
-@@ -884,7 +848,6 @@ static int altera_pcie_remove(struct platform_device *pdev)
+-	ret = devm_request_pci_bus_resources(dev, res);
+-	if (ret)
+-		return ret;
+-
+ 	ret = phy_init(pcie->phy);
+ 	if (ret) {
+ 		dev_err(dev, "unable to initialize PCIe PHY\n");
+@@ -1543,7 +1539,6 @@ int iproc_pcie_setup(struct iproc_pcie *pcie, struct list_head *res)
+ 		if (iproc_pcie_msi_enable(pcie))
+ 			dev_info(dev, "not using iProc MSI\n");
  
- 	pci_stop_root_bus(bridge->bus);
- 	pci_remove_root_bus(bridge->bus);
--	pci_free_resource_list(&pcie->resources);
- 	altera_pcie_irq_teardown(pcie);
- 
- 	return 0;
+-	list_splice_init(res, &host->windows);
+ 	host->busnr = 0;
+ 	host->dev.parent = dev;
+ 	host->ops = &iproc_pcie_ops;
 -- 
 2.20.1
 
