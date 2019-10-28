@@ -2,21 +2,21 @@ Return-Path: <SRS0=ArXH=YV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F920CA9EAF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 02:50:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 317CECA9EAF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 02:51:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DFED4208C0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 02:50:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 008E8208C0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 02:51:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="g1xUfdGT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DFED4208C0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="svNjMZTu"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 008E8208C0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,47 +25,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ds2of1R7AHZhyFg4NXEFjIH1iPo7aaq3NtBCrfxa6gE=; b=g1xUfdGTJWfwNK
-	y8iDXrXVdeJvIFgXq6PB7sSlaszsEFDyystGm617BHFB9e+uArpfowmP9ORZnolDI3hNZ6dno3+9t
-	WBCytpAwotncsTp9rirzKYem4g0bfKaKwlF/b7G47QyQDbewS0vG9MUNO65/PeAwIc52VpPNiU8qa
-	+rs3ShV0w2zNs1RdMouH9xFJuLdT4uVI3B7NnyW88CIHvF9FuZej5B71yNx2pUslPrCnL1qe6MkIj
-	ETBh7Gr8R9Cg0W8qunPdI6cGlL02zupDUfHKeJYqA9Gwe9FNXDQpGl3x2IzCBzmINF4sbgSah5TcB
-	f6ktoUU3MHhYLLLcC5Qg==;
+	List-Owner; bh=aXEEXeWvfoK7skgb/zee9otewWBVGYKzGGb3ha2m60M=; b=svNjMZTu3NGSMg
+	uRHBJS9WI+4yDgNhx8PHdJpFQN1PdfD8nspQjHmlrvFlcYaYV3FOlLLuUpcvZxRPWMEebljxLEi3x
+	8EYBtgP5Q4w1PtdICpiSTqiQkPzNLR9TT7L6SV5ZBwHuWl0p61niOuopm15/GHCpBsZTbSrvhpKzr
+	6nAkXbpY30b45KhTb4bzToX95Fp2yjP0l7pZT06zQfs2QdP8ml/gPO2Wr0wTZSDGlX2iqaaTyxYuC
+	CfKCWlA88ksh6ihrhBBPX685pLG9wUszzLWbroSLMHqo8JRVRrXQ1GvL5AeEQBN4s3RA77eg6dxCz
+	atjGIe0/Nu/DAvcbVNFA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iOv7P-0003gp-62; Mon, 28 Oct 2019 02:50:55 +0000
+	id 1iOv7Y-0003ot-8K; Mon, 28 Oct 2019 02:51:04 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iOv58-0000h1-Pq; Mon, 28 Oct 2019 02:48:36 +0000
-X-UUID: 90bb288c4ca443068f9dbbc5995a26c9-20191027
-X-UUID: 90bb288c4ca443068f9dbbc5995a26c9-20191027
+ id 1iOv58-0000hH-Pq; Mon, 28 Oct 2019 02:48:37 +0000
+X-UUID: 8244e01ccd4e4b779b399a4ef6a8782d-20191027
+X-UUID: 8244e01ccd4e4b779b399a4ef6a8782d-20191027
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2098624734; Sun, 27 Oct 2019 18:48:42 -0800
+ with ESMTP id 1063968137; Sun, 27 Oct 2019 18:48:42 -0800
 Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 27 Oct 2019 19:48:27 -0700
+ 15.0.1395.4; Sun, 27 Oct 2019 19:48:28 -0700
 Received: from mtkcas09.mediatek.inc (172.21.101.178) by
  mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 28 Oct 2019 10:48:26 +0800
+ 15.0.1395.4; Mon, 28 Oct 2019 10:48:27 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Mon, 28 Oct 2019 10:48:26 +0800
+ Frontend Transport; Mon, 28 Oct 2019 10:48:27 +0800
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>
-Subject: [PATCH v8 08/14] soc: mediatek: Add basic_clk_id to scp_power_data
-Date: Mon, 28 Oct 2019 10:48:12 +0800
-Message-ID: <1572230898-7860-9-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v8 12/14] soc: mediatek: Add MT8183 scpsys support
+Date: Mon, 28 Oct 2019 10:48:16 +0800
+Message-ID: <1572230898-7860-13-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1572230898-7860-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1572230898-7860-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191027_194834_858970_022F9BFF 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20191027_194834_864454_2BEC21AB 
+X-CRM114-Status: GOOD (  10.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,71 +86,271 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Try to stop extending the clk_id or clk_names if there are
-more and more new BASIC clocks. To get its own clocks by the
-basic_clk_id of each power domain.
+Add scpsys driver for MT8183
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-scpsys.c | 29 +++++++++++++++++++++--------
- 1 file changed, 21 insertions(+), 8 deletions(-)
+ drivers/soc/mediatek/mtk-scpsys.c | 226 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 226 insertions(+)
 
 diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index fb2b027..d31e1a4 100644
+index 992e5b3..eb828d9 100644
 --- a/drivers/soc/mediatek/mtk-scpsys.c
 +++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -117,6 +117,8 @@ enum clk_id {
-  * @sram_pdn_ack_bits: The mask for sram power control acked bits.
-  * @bus_prot_mask: The mask for single step bus protection.
-  * @clk_id: The basic clocks required by this power domain.
-+ * @basic_clk_id: provide the same purpose with field "clk_id"
-+ *                by declaring basic clock prefix name rather than clk_id.
-  * @caps: The flag for active wake-up action.
-  */
- struct scp_domain_data {
-@@ -127,6 +129,7 @@ struct scp_domain_data {
- 	u32 sram_pdn_ack_bits;
- 	u32 bus_prot_mask;
- 	enum clk_id clk_id[MAX_CLKS];
-+	const char *basic_clk_id[MAX_CLKS];
- 	u8 caps;
+@@ -20,6 +20,7 @@
+ #include <dt-bindings/power/mt7622-power.h>
+ #include <dt-bindings/power/mt7623a-power.h>
+ #include <dt-bindings/power/mt8173-power.h>
++#include <dt-bindings/power/mt8183-power.h>
+ 
+ #define MTK_POLL_DELAY_US   10
+ #define MTK_POLL_TIMEOUT    USEC_PER_SEC
+@@ -1129,6 +1130,217 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 	{MT8173_POWER_DOMAIN_MFG_2D, MT8173_POWER_DOMAIN_MFG},
  };
  
-@@ -490,16 +493,26 @@ static struct scp *init_scp(struct platform_device *pdev,
- 
- 		scpd->data = data;
- 
--		for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
--			struct clk *c = clk[data->clk_id[j]];
-+		if (data->clk_id[0]) {
-+			WARN_ON(data->basic_clk_id[0]);
- 
--			if (IS_ERR(c)) {
--				dev_err(&pdev->dev, "%s: clk unavailable\n",
--					data->name);
--				return ERR_CAST(c);
--			}
-+			for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
-+				struct clk *c = clk[data->clk_id[j]];
++/*
++ * MT8183 power domain support
++ */
 +
-+				if (IS_ERR(c)) {
-+					dev_err(&pdev->dev,
-+						"%s: clk unavailable\n",
-+						data->name);
-+					return ERR_CAST(c);
-+				}
++static const struct scp_domain_data scp_domain_data_mt8183[] = {
++	[MT8183_POWER_DOMAIN_AUDIO] = {
++		.name = "audio",
++		.sta_mask = PWR_STATUS_AUDIO,
++		.ctl_offs = 0x0314,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.sram_pdn_ack_bits = GENMASK(15, 12),
++		.basic_clk_id = {"audio", "audio1", "audio2"},
++	},
++	[MT8183_POWER_DOMAIN_CONN] = {
++		.name = "conn",
++		.sta_mask = PWR_STATUS_CONN,
++		.ctl_offs = 0x032c,
++		.sram_pdn_bits = 0,
++		.sram_pdn_ack_bits = 0,
++		.bp_table = {
++			BUS_PROT(IFR_TYPE, 0x2a0, 0x2a4, 0, 0x228,
++				BIT(13) | BIT(14), BIT(13) | BIT(14)),
++		},
++	},
++	[MT8183_POWER_DOMAIN_MFG_ASYNC] = {
++		.name = "mfg_async",
++		.sta_mask = PWR_STATUS_MFG_ASYNC,
++		.ctl_offs = 0x0334,
++		.sram_pdn_bits = 0,
++		.sram_pdn_ack_bits = 0,
++		.basic_clk_id = {"mfg"},
++	},
++	[MT8183_POWER_DOMAIN_MFG] = {
++		.name = "mfg",
++		.sta_mask = PWR_STATUS_MFG,
++		.ctl_offs = 0x0338,
++		.sram_pdn_bits = GENMASK(8, 8),
++		.sram_pdn_ack_bits = GENMASK(12, 12),
++	},
++	[MT8183_POWER_DOMAIN_MFG_CORE0] = {
++		.name = "mfg_core0",
++		.sta_mask = BIT(7),
++		.ctl_offs = 0x034c,
++		.sram_pdn_bits = GENMASK(8, 8),
++		.sram_pdn_ack_bits = GENMASK(12, 12),
++	},
++	[MT8183_POWER_DOMAIN_MFG_CORE1] = {
++		.name = "mfg_core1",
++		.sta_mask = BIT(20),
++		.ctl_offs = 0x0310,
++		.sram_pdn_bits = GENMASK(8, 8),
++		.sram_pdn_ack_bits = GENMASK(12, 12),
++	},
++	[MT8183_POWER_DOMAIN_MFG_2D] = {
++		.name = "mfg_2d",
++		.sta_mask = PWR_STATUS_MFG_2D,
++		.ctl_offs = 0x0348,
++		.sram_pdn_bits = GENMASK(8, 8),
++		.sram_pdn_ack_bits = GENMASK(12, 12),
++		.bp_table = {
++			BUS_PROT(IFR_TYPE, 0x2a8, 0x2ac, 0, 0x258,
++				BIT(19) | BIT(20) | BIT(21),
++				BIT(19) | BIT(20) | BIT(21)),
++			BUS_PROT(IFR_TYPE, 0x2a0, 0x2a4, 0, 0x228,
++				BIT(21) | BIT(22), BIT(21) | BIT(22)),
++		},
++	},
++	[MT8183_POWER_DOMAIN_DISP] = {
++		.name = "disp",
++		.sta_mask = PWR_STATUS_DISP,
++		.ctl_offs = 0x030c,
++		.sram_pdn_bits = GENMASK(8, 8),
++		.sram_pdn_ack_bits = GENMASK(12, 12),
++		.basic_clk_id = {"mm"},
++		.subsys_clk_prefix = "mm",
++		.bp_table = {
++			BUS_PROT(IFR_TYPE, 0x2a8, 0x2ac, 0, 0x258,
++				BIT(16) | BIT(17), BIT(16) | BIT(17)),
++			BUS_PROT(IFR_TYPE, 0x2a0, 0x2a4, 0, 0x228,
++				BIT(10) | BIT(11), BIT(10) | BIT(11)),
++			BUS_PROT(SMI_TYPE, 0x3c4, 0x3c8, 0, 0x3c0,
++				GENMASK(7, 0), GENMASK(7, 0)),
++		},
++	},
++	[MT8183_POWER_DOMAIN_CAM] = {
++		.name = "cam",
++		.sta_mask = BIT(25),
++		.ctl_offs = 0x0344,
++		.sram_pdn_bits = GENMASK(9, 8),
++		.sram_pdn_ack_bits = GENMASK(13, 12),
++		.basic_clk_id = {"cam"},
++		.subsys_clk_prefix = "cam",
++		.bp_table = {
++			BUS_PROT(IFR_TYPE, 0x2d4, 0x2d8, 0, 0x2ec,
++				BIT(4) | BIT(5) | BIT(9) | BIT(13),
++				BIT(4) | BIT(5) | BIT(9) | BIT(13)),
++			BUS_PROT(IFR_TYPE, 0x2a0, 0x2a4, 0, 0x228,
++				BIT(28), BIT(28)),
++			BUS_PROT(IFR_TYPE, 0x2d4, 0x2d8, 0, 0x2ec,
++				BIT(11), 0),
++			BUS_PROT(SMI_TYPE, 0x3c4, 0x3c8, 0, 0x3c0,
++				BIT(3) | BIT(4), BIT(3) | BIT(4)),
++		},
++	},
++	[MT8183_POWER_DOMAIN_ISP] = {
++		.name = "isp",
++		.sta_mask = PWR_STATUS_ISP,
++		.ctl_offs = 0x0308,
++		.sram_pdn_bits = GENMASK(9, 8),
++		.sram_pdn_ack_bits = GENMASK(13, 12),
++		.basic_clk_id = {"isp"},
++		.subsys_clk_prefix = "isp",
++		.bp_table = {
++			BUS_PROT(IFR_TYPE, 0x2d4, 0x2d8, 0, 0x2ec,
++				BIT(3) | BIT(8), BIT(3) | BIT(8)),
++			BUS_PROT(IFR_TYPE, 0x2d4, 0x2d8, 0, 0x2ec,
++				BIT(10), 0),
++			BUS_PROT(SMI_TYPE, 0x3c4, 0x3c8, 0, 0x3c0,
++				BIT(2), BIT(2)),
++		},
++	},
++	[MT8183_POWER_DOMAIN_VDEC] = {
++		.name = "vdec",
++		.sta_mask = BIT(31),
++		.ctl_offs = 0x0300,
++		.sram_pdn_bits = GENMASK(8, 8),
++		.sram_pdn_ack_bits = GENMASK(12, 12),
++		.bp_table = {
++			BUS_PROT(SMI_TYPE, 0x3c4, 0x3c8, 0, 0x3c0,
++				BIT(7), BIT(7)),
++		},
++	},
++	[MT8183_POWER_DOMAIN_VENC] = {
++		.name = "venc",
++		.sta_mask = PWR_STATUS_VENC,
++		.ctl_offs = 0x0304,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.sram_pdn_ack_bits = GENMASK(15, 12),
++		.bp_table = {
++			BUS_PROT(SMI_TYPE, 0x3c4, 0x3c8, 0, 0x3c0,
++				BIT(1), BIT(1)),
++		},
++	},
++	[MT8183_POWER_DOMAIN_VPU_TOP] = {
++		.name = "vpu_top",
++		.sta_mask = BIT(26),
++		.ctl_offs = 0x0324,
++		.sram_pdn_bits = GENMASK(8, 8),
++		.sram_pdn_ack_bits = GENMASK(12, 12),
++		.basic_clk_id = {"vpu", "vpu1"},
++		.subsys_clk_prefix = "vpu",
++		.bp_table = {
++			BUS_PROT(IFR_TYPE, 0x2d4, 0x2d8, 0, 0x2ec,
++				GENMASK(9, 6) | BIT(12),
++				GENMASK(9, 6) | BIT(12)),
++			BUS_PROT(IFR_TYPE, 0x2a0, 0x2a4, 0, 0x228,
++				BIT(27), BIT(27)),
++			BUS_PROT(IFR_TYPE, 0x2d4, 0x2d8, 0, 0x2ec,
++				BIT(10) | BIT(11), BIT(10) | BIT(11)),
++			BUS_PROT(SMI_TYPE, 0x3c4, 0x3c8, 0, 0x3c0,
++				BIT(5) | BIT(6), BIT(5) | BIT(6)),
++		},
++	},
++	[MT8183_POWER_DOMAIN_VPU_CORE0] = {
++		.name = "vpu_core0",
++		.sta_mask = BIT(27),
++		.ctl_offs = 0x33c,
++		.sram_iso_ctrl = true,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.sram_pdn_ack_bits = GENMASK(13, 12),
++		.basic_clk_id = {"vpu2"},
++		.bp_table = {
++			BUS_PROT(IFR_TYPE, 0x2c4, 0x2c8, 0, 0x2e4,
++				BIT(6), BIT(6)),
++			BUS_PROT(IFR_TYPE, 0x2c4, 0x2c8, 0, 0x2e4,
++				BIT(0) | BIT(2) | BIT(4),
++				BIT(0) | BIT(2) | BIT(4)),
++		},
++	},
++	[MT8183_POWER_DOMAIN_VPU_CORE1] = {
++		.name = "vpu_core1",
++		.sta_mask = BIT(28),
++		.ctl_offs = 0x0340,
++		.sram_iso_ctrl = true,
++		.sram_pdn_bits = GENMASK(11, 8),
++		.sram_pdn_ack_bits = GENMASK(13, 12),
++		.basic_clk_id = {"vpu3"},
++		.bp_table = {
++			BUS_PROT(IFR_TYPE, 0x2c4, 0x2c8, 0, 0x2e4,
++				BIT(7), BIT(7)),
++			BUS_PROT(IFR_TYPE, 0x2c4, 0x2c8, 0, 0x2e4,
++				BIT(1) | BIT(3) | BIT(5),
++				BIT(1) | BIT(3) | BIT(5)),
++		},
++	},
++};
++
++static const struct scp_subdomain scp_subdomain_mt8183[] = {
++	{MT8183_POWER_DOMAIN_MFG_ASYNC, MT8183_POWER_DOMAIN_MFG},
++	{MT8183_POWER_DOMAIN_MFG, MT8183_POWER_DOMAIN_MFG_2D},
++	{MT8183_POWER_DOMAIN_MFG, MT8183_POWER_DOMAIN_MFG_CORE0},
++	{MT8183_POWER_DOMAIN_MFG, MT8183_POWER_DOMAIN_MFG_CORE1},
++	{MT8183_POWER_DOMAIN_DISP, MT8183_POWER_DOMAIN_CAM},
++	{MT8183_POWER_DOMAIN_DISP, MT8183_POWER_DOMAIN_ISP},
++	{MT8183_POWER_DOMAIN_DISP, MT8183_POWER_DOMAIN_VDEC},
++	{MT8183_POWER_DOMAIN_DISP, MT8183_POWER_DOMAIN_VENC},
++	{MT8183_POWER_DOMAIN_DISP, MT8183_POWER_DOMAIN_VPU_TOP},
++	{MT8183_POWER_DOMAIN_VPU_TOP, MT8183_POWER_DOMAIN_VPU_CORE0},
++	{MT8183_POWER_DOMAIN_VPU_TOP, MT8183_POWER_DOMAIN_VPU_CORE1},
++};
++
+ static const struct scp_soc_data mt2701_data = {
+ 	.domains = scp_domain_data_mt2701,
+ 	.num_domains = ARRAY_SIZE(scp_domain_data_mt2701),
+@@ -1195,6 +1407,17 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 	.bus_prot_reg_update = true,
+ };
  
--			scpd->clk[j] = c;
-+				scpd->clk[j] = c;
-+			}
-+		} else if (data->basic_clk_id[0]) {
-+			for (j = 0; j < MAX_CLKS &&
-+					data->basic_clk_id[j]; j++)
-+				scpd->clk[j] = devm_clk_get(&pdev->dev,
-+						data->basic_clk_id[j]);
- 		}
- 
- 		genpd->name = data->name;
++static const struct scp_soc_data mt8183_data = {
++	.domains = scp_domain_data_mt8183,
++	.num_domains = ARRAY_SIZE(scp_domain_data_mt8183),
++	.subdomains = scp_subdomain_mt8183,
++	.num_subdomains = ARRAY_SIZE(scp_subdomain_mt8183),
++	.regs = {
++		.pwr_sta_offs = 0x0180,
++		.pwr_sta2nd_offs = 0x0184
++	}
++};
++
+ /*
+  * scpsys driver init
+  */
+@@ -1219,6 +1442,9 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+ 		.compatible = "mediatek,mt8173-scpsys",
+ 		.data = &mt8173_data,
+ 	}, {
++		.compatible = "mediatek,mt8183-scpsys",
++		.data = &mt8183_data,
++	}, {
+ 		/* sentinel */
+ 	}
+ };
 -- 
 1.8.1.1.dirty
 
