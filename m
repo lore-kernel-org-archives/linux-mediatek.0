@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 084D2CA9EC0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:37:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8AEC8CA9EC0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:37:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CDAD9214E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:37:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4A3DC20717
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:37:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Wseq9FVy"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CDAD9214E0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rcWlYUNt"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4A3DC20717
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,54 +25,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y2wNBUsBO3GoapdyUSfw/sb4aumteuVT7obD4CWZTgQ=; b=Wseq9FVyc56zzO
-	TzojBmdtfKlx2xDK+7PRY86vIEaQBGKmOnVryrEegx0l6lF6/zjR87bKU6Zorjyabhfi1yfKfyLkd
-	JuVpfYrGeux/1P6p8GJL0Lu86n0tOgH1MJFVb4EboXklqcgOcDh7l+K7Kd060Mlmedec+WMIUrpdU
-	W/PjZghn8Ecec7wIfG0Z//1yOPJx6w5Fo/9OnmqweBoVOweBSyFVubwKhXlQrcdLYagPKEdddZZse
-	p/w+HWknfRb/7FyF865dbFersZJTA1EaczIQKIniQVF4fKan8z05nGZC4FHP95UkDMyLOMujF/92S
-	dwqAfLG+KZPg14pNOjoQ==;
+	List-Owner; bh=liCYS4Yzp9nNDR9XCNQ6HWNG7XG/afJRpKM8MTeb90c=; b=rcWlYUNtbrulxv
+	fhlnjwdTcoV0BInFkzGVs/BRbpUDoqiInHHlYvkjH6sVCh0nx/OaAApK+X6GRaxzl9b1vEQMKGtgk
+	dAvYoCHXaWpKkxrYHclr4yYCBJg8AnZ8DGh41Z1z8lzBh8G96Tg5XoMVbaiRtTkUhiAvwluu/7G4u
+	ORNnRg651sXdynv7cC4miwo826Y8YwIiJtwyo+2XwzheBrXBcaJaBXYjDiU8hc8S15/SYZzmz0Bhi
+	apFfpwPJsM+0pTs9jdUN3qvbwcej2pYXwjPDbFzNwPVWzTRy7Uw8nVW3Ahnjt++HtCDAsyynHziwW
+	sI2gvt9TzNYPU5R3ytEQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iP816-0002jr-3D; Mon, 28 Oct 2019 16:37:16 +0000
-Received: from mail-ot1-f67.google.com ([209.85.210.67])
+	id 1iP81e-0003Cn-A9; Mon, 28 Oct 2019 16:37:50 +0000
+Received: from mail-ot1-f68.google.com ([209.85.210.68])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iP7xC-0006rJ-Bw; Mon, 28 Oct 2019 16:33:16 +0000
-Received: by mail-ot1-f67.google.com with SMTP id m19so7200317otp.1;
- Mon, 28 Oct 2019 09:33:13 -0700 (PDT)
+ id 1iP7xM-0006yG-AY; Mon, 28 Oct 2019 16:33:26 +0000
+Received: by mail-ot1-f68.google.com with SMTP id 41so7143516oti.12;
+ Mon, 28 Oct 2019 09:33:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=t7u4vSL0DP54jAwq/M7JASt/IhO5e5uqSLWCi0kiWfU=;
- b=gZGhaahvPeC1AnC1yZoGDMWZqn5MkgKQRl8eFPEqVY/sJH+P+EAeQU/h8zpU/L1090
- ubMdaNAA9ZiRE3ml0I1lf5WNzGs0OyxOvDOcq1vOdJi+PZDRSWeoHxEfA8zonhBilCCd
- YHmI+KSuXMu+lE8Ewi66zMeGi2N6E/ojXOtFG8F2m5P1mZShyM4R8xjV/pUtOpaqLjPD
- tLnu0kLd2w8y0L+NX/twI9suO/l0AbeCFM+MxWJ6sI4xQqQZOLGypAAlEuQhqxVDV4WE
- BFB9lI9aOB6LbkKKDaO8dWDhQdazrzkzwdP4klY62saPzQwuZOw+VVkRYjxx02YoLZ74
- ynHQ==
-X-Gm-Message-State: APjAAAWL0MsBYi54b5ljlZoYQBDnTeNkJwG24XK4wSpWGZdt/sfGNt1g
- TsrqQRFcZAnc+UgMd44nMQ==
-X-Google-Smtp-Source: APXvYqySAp0eSGQqHJLCI+ocWp45cw+8XpbJ73Hq5r/2RLRIlfj8dRzgqT5GxLaG1O+5Nr5aFn7huw==
-X-Received: by 2002:a9d:12f0:: with SMTP id g103mr8868885otg.219.1572280392987; 
- Mon, 28 Oct 2019 09:33:12 -0700 (PDT)
+ bh=jpXNezTP5UvZxbHA0+iXw/Wyg2v2rsj1FOMQAqAf0GA=;
+ b=ndIHcSK7uGib6Y9zdHrNxYJ0BuDvmoJ6fRUlUOL4Rv6RVoRUR9a0MJ0e3qOevn0hwN
+ Jk/qw4Ht5YKZ1MPHD4+9d3fBLKhDSBXIkic/guHO6zPFrTFQo150XM6HJEpa3QZ+6AsZ
+ PIbwSGm8sxkUqQjmISGo6Ee1YsSOHgeZCUNftlEwo8P3TMai83w70fW7aYkbpK3KpVDT
+ jxSny5IOSTz+jmeRj4FsSxx+q1v80Ol0XHc3RDEgQIo724ZtTLGwUGvNbOG+HBX3Cma1
+ XabrKU63Yi9v2KPK+UiID0SKqUSw78SSbiYV9xZrK2RCXDkmLeEMN2wIKnO+vse0MG/t
+ hJdw==
+X-Gm-Message-State: APjAAAVF87JlDLhlxhaSxnbg1BWd3A1FKBaMeSuyI3oTSbN1/rzMGDYO
+ 3Xin3dwVzWv7BGwlTZsThw==
+X-Google-Smtp-Source: APXvYqyZIopRAOsgl1zOiXPaW3NtAzvxCuMWMSKxbNh5hFsWDE5ZO6FPWFVruCMbxopnZvC3XLssnA==
+X-Received: by 2002:a9d:66e:: with SMTP id 101mr14345496otn.51.1572280403122; 
+ Mon, 28 Oct 2019 09:33:23 -0700 (PDT)
 Received: from xps15.herring.priv (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.googlemail.com with ESMTPSA id e186sm354991oia.47.2019.10.28.09.33.10
+ by smtp.googlemail.com with ESMTPSA id e186sm354991oia.47.2019.10.28.09.33.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Oct 2019 09:33:12 -0700 (PDT)
+ Mon, 28 Oct 2019 09:33:18 -0700 (PDT)
 From: Rob Herring <robh@kernel.org>
 To: Andrew Murray <andrew.murray@arm.com>, Bjorn Helgaas <bhelgaas@google.com>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: [PATCH v3 06/25] PCI: faraday: Use pci_parse_request_of_pci_ranges()
-Date: Mon, 28 Oct 2019 11:32:37 -0500
-Message-Id: <20191028163256.8004-7-robh@kernel.org>
+Subject: [PATCH v3 09/25] PCI: mobiveil: Use pci_parse_request_of_pci_ranges()
+Date: Mon, 28 Oct 2019 11:32:40 -0500
+Message-Id: <20191028163256.8004-10-robh@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191028163256.8004-1-robh@kernel.org>
 References: <20191028163256.8004-1-robh@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191028_093314_423117_B96D0AE6 
-X-CRM114-Status: GOOD (  15.71  )
+X-CRM114-CacheID: sfid-20191028_093324_392204_A6ACB898 
+X-CRM114-Status: GOOD (  17.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,118 +106,125 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert the Faraday host bridge to use the common
+Convert the Mobiveil host bridge to use the common
 pci_parse_request_of_pci_ranges().
 
 There's no need to assign the resources to a temporary list first. Just
 use bridge->windows directly and remove all the temporary list handling.
 
+Cc: Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>
+Cc: Hou Zhiqiang <Zhiqiang.Hou@nxp.com>
 Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>
 Reviewed-by: Andrew Murray <andrew.murray@arm.com>
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
-v2:
- - Remove temporary resource list
----
- drivers/pci/controller/pci-ftpci100.c | 51 ++++++---------------------
- 1 file changed, 11 insertions(+), 40 deletions(-)
+ drivers/pci/controller/pcie-mobiveil.c | 26 +++++++-------------------
+ 1 file changed, 7 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/pci/controller/pci-ftpci100.c b/drivers/pci/controller/pci-ftpci100.c
-index bf5ece5d9291..75603348b88a 100644
---- a/drivers/pci/controller/pci-ftpci100.c
-+++ b/drivers/pci/controller/pci-ftpci100.c
-@@ -430,10 +430,8 @@ static int faraday_pci_probe(struct platform_device *pdev)
- 	const struct faraday_pci_variant *variant =
- 		of_device_get_match_data(dev);
- 	struct resource *regs;
--	resource_size_t io_base;
+diff --git a/drivers/pci/controller/pcie-mobiveil.c b/drivers/pci/controller/pcie-mobiveil.c
+index a45a6447b01d..4eab8624ce4d 100644
+--- a/drivers/pci/controller/pcie-mobiveil.c
++++ b/drivers/pci/controller/pcie-mobiveil.c
+@@ -140,7 +140,6 @@ struct mobiveil_msi {			/* MSI information */
+ 
+ struct mobiveil_pcie {
+ 	struct platform_device *pdev;
+-	struct list_head resources;
+ 	void __iomem *config_axi_slave_base;	/* endpoint config base */
+ 	void __iomem *csr_axi_slave_base;	/* root port config base */
+ 	void __iomem *apb_csr_base;	/* MSI register base */
+@@ -575,6 +574,7 @@ static void mobiveil_pcie_enable_msi(struct mobiveil_pcie *pcie)
+ 
+ static int mobiveil_host_init(struct mobiveil_pcie *pcie)
+ {
++	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(pcie);
+ 	u32 value, pab_ctrl, type;
  	struct resource_entry *win;
- 	struct faraday_pci *p;
--	struct resource *mem;
- 	struct resource *io;
- 	struct pci_host_bridge *host;
- 	struct clk *clk;
-@@ -441,7 +439,6 @@ static int faraday_pci_probe(struct platform_device *pdev)
- 	unsigned char cur_bus_speed = PCI_SPEED_33MHz;
+ 
+@@ -631,7 +631,7 @@ static int mobiveil_host_init(struct mobiveil_pcie *pcie)
+ 	program_ib_windows(pcie, WIN_NUM_0, 0, 0, MEM_WINDOW_TYPE, IB_WIN_SIZE);
+ 
+ 	/* Get the I/O and memory ranges from DT */
+-	resource_list_for_each_entry(win, &pcie->resources) {
++	resource_list_for_each_entry(win, &bridge->windows) {
+ 		if (resource_type(win->res) == IORESOURCE_MEM)
+ 			type = MEM_WINDOW_TYPE;
+ 		else if (resource_type(win->res) == IORESOURCE_IO)
+@@ -857,7 +857,6 @@ static int mobiveil_pcie_probe(struct platform_device *pdev)
+ 	struct pci_bus *child;
+ 	struct pci_host_bridge *bridge;
+ 	struct device *dev = &pdev->dev;
+-	resource_size_t iobase;
  	int ret;
- 	u32 val;
--	LIST_HEAD(res);
  
- 	host = devm_pci_alloc_host_bridge(dev, sizeof(*p));
- 	if (!host)
-@@ -480,44 +477,20 @@ static int faraday_pci_probe(struct platform_device *pdev)
- 	if (IS_ERR(p->base))
- 		return PTR_ERR(p->base);
- 
--	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
--						    &res, &io_base);
-+	ret = pci_parse_request_of_pci_ranges(dev, &host->windows, NULL);
- 	if (ret)
+ 	/* allocate the PCIe port */
+@@ -875,11 +874,8 @@ static int mobiveil_pcie_probe(struct platform_device *pdev)
  		return ret;
- 
--	ret = devm_request_pci_bus_resources(dev, &res);
--	if (ret)
--		return ret;
--
--	/* Get the I/O and memory ranges from DT */
--	resource_list_for_each_entry(win, &res) {
--		switch (resource_type(win->res)) {
--		case IORESOURCE_IO:
--			io = win->res;
--			io->name = "Gemini PCI I/O";
--			if (!faraday_res_to_memcfg(io->start - win->offset,
--						   resource_size(io), &val)) {
--				/* setup I/O space size */
--				writel(val, p->base + PCI_IOSIZE);
--			} else {
--				dev_err(dev, "illegal IO mem size\n");
--				return -EINVAL;
--			}
--			ret = devm_pci_remap_iospace(dev, io, io_base);
--			if (ret) {
--				dev_warn(dev, "error %d: failed to map resource %pR\n",
--					 ret, io);
--				continue;
--			}
--			break;
--		case IORESOURCE_MEM:
--			mem = win->res;
--			mem->name = "Gemini PCI MEM";
--			break;
--		case IORESOURCE_BUS:
--			break;
--		default:
--			break;
-+	win = resource_list_first_type(&host->windows, IORESOURCE_IO);
-+	if (win) {
-+		io = win->res;
-+		if (!faraday_res_to_memcfg(io->start - win->offset,
-+					   resource_size(io), &val)) {
-+			/* setup I/O space size */
-+			writel(val, p->base + PCI_IOSIZE);
-+		} else {
-+			dev_err(dev, "illegal IO mem size\n");
-+			return -EINVAL;
- 		}
  	}
  
-@@ -569,7 +542,6 @@ static int faraday_pci_probe(struct platform_device *pdev)
- 	if (ret)
- 		return ret;
- 
--	list_splice_init(&res, &host->windows);
- 	ret = pci_scan_root_bus_bridge(host);
+-	INIT_LIST_HEAD(&pcie->resources);
+-
+ 	/* parse the host bridge base addresses from the device tree file */
+-	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
+-						    &pcie->resources, &iobase);
++	ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows, NULL);
  	if (ret) {
- 		dev_err(dev, "failed to scan host: %d\n", ret);
-@@ -581,7 +553,6 @@ static int faraday_pci_probe(struct platform_device *pdev)
+ 		dev_err(dev, "Getting bridge resources failed\n");
+ 		return ret;
+@@ -892,24 +888,19 @@ static int mobiveil_pcie_probe(struct platform_device *pdev)
+ 	ret = mobiveil_host_init(pcie);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to initialize host\n");
+-		goto error;
++		return ret;
+ 	}
  
- 	pci_bus_assign_resources(p->bus);
- 	pci_bus_add_devices(p->bus);
--	pci_free_resource_list(&res);
+ 	/* initialize the IRQ domains */
+ 	ret = mobiveil_pcie_init_irq_domain(pcie);
+ 	if (ret) {
+ 		dev_err(dev, "Failed creating IRQ Domain\n");
+-		goto error;
++		return ret;
+ 	}
+ 
+ 	irq_set_chained_handler_and_data(pcie->irq, mobiveil_pcie_isr, pcie);
+ 
+-	ret = devm_request_pci_bus_resources(dev, &pcie->resources);
+-	if (ret)
+-		goto error;
+-
+ 	/* Initialize bridge */
+-	list_splice_init(&pcie->resources, &bridge->windows);
+ 	bridge->dev.parent = dev;
+ 	bridge->sysdata = pcie;
+ 	bridge->busnr = pcie->root_bus_nr;
+@@ -920,13 +911,13 @@ static int mobiveil_pcie_probe(struct platform_device *pdev)
+ 	ret = mobiveil_bringup_link(pcie);
+ 	if (ret) {
+ 		dev_info(dev, "link bring-up failed\n");
+-		goto error;
++		return ret;
+ 	}
+ 
+ 	/* setup the kernel resources for the newly added PCIe root bus */
+ 	ret = pci_scan_root_bus_bridge(bridge);
+ 	if (ret)
+-		goto error;
++		return ret;
+ 
+ 	bus = bridge->bus;
+ 
+@@ -936,9 +927,6 @@ static int mobiveil_pcie_probe(struct platform_device *pdev)
+ 	pci_bus_add_devices(bus);
  
  	return 0;
+-error:
+-	pci_free_resource_list(&pcie->resources);
+-	return ret;
  }
+ 
+ static const struct of_device_id mobiveil_pcie_of_match[] = {
 -- 
 2.20.1
 
