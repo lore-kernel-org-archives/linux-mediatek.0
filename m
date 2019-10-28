@@ -4,19 +4,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 828FDCA9EC0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:41:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BC71CA9EC0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:41:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 548E020717
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:41:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 62F7D20717
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:41:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fsgsx39k"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 548E020717
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="etE2RlRg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 62F7D20717
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,54 +25,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yXL+2RJR7ybUoSbeeqFpYAiAJPGfr9aDiFq0EB9ayxE=; b=fsgsx39kc+ZLbF
-	m2owjFzhfXKlpgAeeraVcLhvOHmFwvFH/XTr4XMwhh+VRmKgVrQjBqtjAlgDiPQwJA/Z7vU5VhSnL
-	tYOJKjK+oBOExyzYfzYZHNuT1JBD5QZlJ8rkQJcG+kuPc6Zs7f6Z8UyRpArPyPXgHDhSmMBEf2UMR
-	qsu+8qZXyEkfAcgSuUlRYfHVNf2hMmCfpqyi9nykLo0s0QOsBON8e+5JBMQgV+ZMvUMa1xylO/Rfc
-	egaEbaDks7YAmGRZT2QtW4jdpXCUtUTdP5D5AfVZCX6p6RiXhODjH/Zgjcxi33vDmhjcY9oT+6WHh
-	6WXgMXMw05mMVkHD8oDw==;
+	List-Owner; bh=v9ZOZ0ZazMs0rl7FAxguQfVmHkaxBNQzetLOYZ9ytlc=; b=etE2RlRgrR8LoG
+	itsKcexkO336qNQ6oFLGb2W3KTHNqKNcssVl8iINePr2BuoMNSOV7CgZd+vje/iCKfuVLeK00k5t3
+	c7u0/KNej86UjL5Hs2lZIRLTRQ8A4SR2HLLb32hgU8RoF8ETLx2k/Gb77HYozHJpH7p2fgQZoQbhu
+	GAxgolkqfDtYQzzjK3BGSgHmB7Ib+Va0lZICNbWshvv4Y6zNjUFt3Pkd+Lh4+2Mn/aQ+UYEFtckuw
+	juGk6Y/gTUeyXzFR8EPeKe+ZkWAto+iBUS9PukCq9gLjK1noNX0p6xcsPRiHIyUoPz+BXz65BgiaU
+	hN3gij7+dchRpcJbcPSw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iP84q-0007em-5U; Mon, 28 Oct 2019 16:41:08 +0000
+	id 1iP85K-0008A3-O2; Mon, 28 Oct 2019 16:41:38 +0000
 Received: from mail-ot1-f65.google.com ([209.85.210.65])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iP7xj-0007Nw-5t; Mon, 28 Oct 2019 16:33:49 +0000
-Received: by mail-ot1-f65.google.com with SMTP id z6so7189366otb.2;
- Mon, 28 Oct 2019 09:33:46 -0700 (PDT)
+ id 1iP7xn-0007RV-DC; Mon, 28 Oct 2019 16:33:53 +0000
+Received: by mail-ot1-f65.google.com with SMTP id 53so7176957otv.4;
+ Mon, 28 Oct 2019 09:33:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=2sCm5472cF93KvMaJ0/jgH3kNxAHKfGtxH8J6nHodQ0=;
- b=Gumm26kWGLCtCgrZ6cMxs9SHQP46XzjtJNv68oK8VMawsNFdamPOM4ctk+3nHBjUtq
- IU3HYOrjZSmb/b/qLRo/5BNfbhvJHzlYRoC3qLMY2giWFDg8k8VS01Sgnxq8fSwoXlFV
- zTM+4ciaFxTmV5JoyJZxv/NFpVTJ8SlhVAy/AimvJECtdrxgEmsiu6yIHQRiK8Dv+kwu
- AaqjPC5f5op3pJeBNGPX0hMmUzNNrSXmbwQADf0VgprEqCIQ80iHioezWCVtxL/DvlzB
- VwPP1l7PiU3G/WK1RYfgRayqRW3L5Pg52+MxFBcgOoiGxy+8NTEbs422AtU6ZSFNi5Ev
- fPPg==
-X-Gm-Message-State: APjAAAXA+wk2vlaUcTsbtl4m2uhGAR2qFEnh0mMrtps9JEP8jw9Lh51E
- 4qpS045JvpsjFsuIl+I5UQ==
-X-Google-Smtp-Source: APXvYqy/Xq0iUAE5skdxW7RQgS/cS0GZT0jx1F5IzTA54s6xqljQwh3to6yMnbySIthX+LfaHcMHpQ==
-X-Received: by 2002:a9d:ef0:: with SMTP id 103mr14011546otj.2.1572280425906;
- Mon, 28 Oct 2019 09:33:45 -0700 (PDT)
+ bh=QU/9wyXAj8Hn9lmmawqTA3HdfmHqtIC+dVHktjAk5bo=;
+ b=TZLmjKEMoEcfhBt/Ye1htL3pJJNapUwPcNTH31x1SGb8CrDeqVjKy/3IdGtJwrTLFB
+ vTzLRtMQ8iIBwDOlD5wuCogX7pUqHpEKVAGuIvAFn9a9pNq3fGBwVimbbbpiefz3jtoK
+ bI2tduzZ8lSpNWogHzMwWQ0Gh42PIEINGRgHmUqyGh5JBDUGV+Aqu2Ci8U46FejLQZ8S
+ jamM1dFoGtUpC1VWGVoF+o3MA0uKefrI6LCpVwrRPO8Sxv4OvHCZxMI9u+FM1XYk6+Ve
+ /1l789Jujyiz5cKc0VUQLMpIoockFqwQxfIrtkczJ8uJxc5EnXzGcFQnh9WIW6ix4lOM
+ SzfA==
+X-Gm-Message-State: APjAAAWsgjSxgPEPJXpjtV0foRDhk8a5ozEfw+rxYVt7j/q07NT+Y8Y8
+ 6B3jU3wWFvEPiiXqkF7+DQ==
+X-Google-Smtp-Source: APXvYqzX2Hu9uOY3jcrsLEYHaEbafPvhljS7PBlsyooLht3SWyOGTn98jF9BU/3i/RKiepgEwvPcpw==
+X-Received: by 2002:a9d:334:: with SMTP id 49mr13870685otv.15.1572280429878;
+ Mon, 28 Oct 2019 09:33:49 -0700 (PDT)
 Received: from xps15.herring.priv (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.googlemail.com with ESMTPSA id e186sm354991oia.47.2019.10.28.09.33.41
+ by smtp.googlemail.com with ESMTPSA id e186sm354991oia.47.2019.10.28.09.33.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Oct 2019 09:33:44 -0700 (PDT)
+ Mon, 28 Oct 2019 09:33:49 -0700 (PDT)
 From: Rob Herring <robh@kernel.org>
 To: Andrew Murray <andrew.murray@arm.com>, Bjorn Helgaas <bhelgaas@google.com>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: [PATCH v3 18/25] PCI: versatile: Enable COMPILE_TEST
-Date: Mon, 28 Oct 2019 11:32:49 -0500
-Message-Id: <20191028163256.8004-19-robh@kernel.org>
+Subject: [PATCH v3 20/25] PCI: ftpci100: Use inbound resources for setup
+Date: Mon, 28 Oct 2019 11:32:51 -0500
+Message-Id: <20191028163256.8004-21-robh@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191028163256.8004-1-robh@kernel.org>
 References: <20191028163256.8004-1-robh@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191028_093347_364139_1BBEB543 
-X-CRM114-Status: GOOD (  12.79  )
+X-CRM114-CacheID: sfid-20191028_093351_494407_62A1B245 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,32 +106,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since commit a574795bc383 ("PCI: generic,versatile: Remove unused
-pci_sys_data structures") the build dependency on ARM is gone, so let's
-enable COMPILE_TEST for versatile.
+Now that the helpers provide the inbound resources in the host bridge
+'dma_ranges' resource list, convert Faraday ftpci100 host bridge to use
+the resource list to setup the inbound addresses.
 
-Reviewed-by: Andrew Murray <andrew.murray@arm.com>
-Acked-by: Linus Walleij <linus.walleij@linaro.org>
 Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>
+Reviewed-by: Andrew Murray <andrew.murray@arm.com>
+Acked-by: Linus Walleij <linus.walleij@linaro.org>
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/pci/controller/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/pci/controller/pci-ftpci100.c | 27 ++++++++++-----------------
+ 1 file changed, 10 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
-index 70e078238899..f5de9119e8d3 100644
---- a/drivers/pci/controller/Kconfig
-+++ b/drivers/pci/controller/Kconfig
-@@ -135,7 +135,7 @@ config PCI_V3_SEMI
+diff --git a/drivers/pci/controller/pci-ftpci100.c b/drivers/pci/controller/pci-ftpci100.c
+index 66288b94e92d..1b67564de7af 100644
+--- a/drivers/pci/controller/pci-ftpci100.c
++++ b/drivers/pci/controller/pci-ftpci100.c
+@@ -375,12 +375,11 @@ static int faraday_pci_setup_cascaded_irq(struct faraday_pci *p)
+ 	return 0;
+ }
  
- config PCI_VERSATILE
- 	bool "ARM Versatile PB PCI controller"
--	depends on ARCH_VERSATILE
-+	depends on ARCH_VERSATILE || COMPILE_TEST
+-static int faraday_pci_parse_map_dma_ranges(struct faraday_pci *p,
+-					    struct device_node *np)
++static int faraday_pci_parse_map_dma_ranges(struct faraday_pci *p)
+ {
+-	struct of_pci_range range;
+-	struct of_pci_range_parser parser;
+ 	struct device *dev = p->dev;
++	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(p);
++	struct resource_entry *entry;
+ 	u32 confreg[3] = {
+ 		FARADAY_PCI_MEM1_BASE_SIZE,
+ 		FARADAY_PCI_MEM2_BASE_SIZE,
+@@ -389,19 +388,13 @@ static int faraday_pci_parse_map_dma_ranges(struct faraday_pci *p,
+ 	int i = 0;
+ 	u32 val;
  
- config PCIE_IPROC
- 	tristate
+-	if (of_pci_dma_range_parser_init(&parser, np)) {
+-		dev_err(dev, "missing dma-ranges property\n");
+-		return -EINVAL;
+-	}
+-
+-	/*
+-	 * Get the dma-ranges from the device tree
+-	 */
+-	for_each_of_pci_range(&parser, &range) {
+-		u64 end = range.pci_addr + range.size - 1;
++	resource_list_for_each_entry(entry, &bridge->dma_ranges) {
++		u64 pci_addr = entry->res->start - entry->offset;
++		u64 end = entry->res->end - entry->offset;
+ 		int ret;
+ 
+-		ret = faraday_res_to_memcfg(range.pci_addr, range.size, &val);
++		ret = faraday_res_to_memcfg(pci_addr,
++					    resource_size(entry->res), &val);
+ 		if (ret) {
+ 			dev_err(dev,
+ 				"DMA range %d: illegal MEM resource size\n", i);
+@@ -409,7 +402,7 @@ static int faraday_pci_parse_map_dma_ranges(struct faraday_pci *p,
+ 		}
+ 
+ 		dev_info(dev, "DMA MEM%d BASE: 0x%016llx -> 0x%016llx config %08x\n",
+-			 i + 1, range.pci_addr, end, val);
++			 i + 1, pci_addr, end, val);
+ 		if (i <= 2) {
+ 			faraday_raw_pci_write_config(p, 0, 0, confreg[i],
+ 						     4, val);
+@@ -539,7 +532,7 @@ static int faraday_pci_probe(struct platform_device *pdev)
+ 			cur_bus_speed = PCI_SPEED_66MHz;
+ 	}
+ 
+-	ret = faraday_pci_parse_map_dma_ranges(p, dev->of_node);
++	ret = faraday_pci_parse_map_dma_ranges(p);
+ 	if (ret)
+ 		return ret;
+ 
 -- 
 2.20.1
 
