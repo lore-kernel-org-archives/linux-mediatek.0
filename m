@@ -2,21 +2,21 @@ Return-Path: <SRS0=ArXH=YV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 71402CA9EA0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 06:11:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 56191CA9EA0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 07:29:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 42D2E20873
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 06:11:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2301E20862
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 07:29:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GZ/l6cOk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 42D2E20873
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ceeuvEO3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2301E20862
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,48 +25,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n5ZHoS9exkkhQQFbVZKITt5RVPiKtTL3KLAAKPfQrqQ=; b=GZ/l6cOkIL9oLH
-	L6BFx2qjMvDhCDQ9RpccCLIMoEoKNoMcfpP8lw3ZmD/BDduoCMRADPnjAYZ0hE8TQHKa/pjUFGmzb
-	SwZzP0J6Z2ap9EOGI88qh/55j64vF5g5ds3fedHVB33tnFwO/oe4bFF908qY6/YP3AuZwq4E8Rvwn
-	yl5oQCsNTX0vURS64Hya/tEUNeBcLTO5EcLR51ZqqbO2xVmFBlfn3m/VL17JSPoUEmmpnbaa00MFr
-	DQcCzsfuUSzwEjR9ZoZ7LXkmqykLUTgiZsEJ9jSG1X1/F2DAJe1QDO5n2iENyOX4h091VMThaxi9/
-	MMspYdm0EIRFEwYHr6oQ==;
+	List-Owner; bh=4gdbP1xbI+cHPzVjhPB8wjbT5D8OkcgfIksO3oIaigM=; b=ceeuvEO3l6veiv
+	o3whHcEDNDER0qgFaraYedBEr60Gb1yYA53txENeQvIQsuHD/YcJq6Bi0Qbg6nIVxEKihbNFk2Cj6
+	yUiKpa4OCJHoKAVZQh5tf/QDk/w3YAX+uCJxkVB52Wd6E3KUPO6/e7owweB32DvO50j3xocJBIMkd
+	BWirGAX2WiInY/AnTryjq+oe/rV4R59R7T0xTRWgGZDhbUuxw1iGJo/R9+V+HfErqQmDQ0ameTvtx
+	UDU8LeAelB2KfaGQJWi+ufR/WzTkDxYrKiL8pakQN7ZAiMjPMPeBrTKWnC3VffQ13MIPbdhQWLAXk
+	bvIDFMCkYvBYqg48KoSg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iOyFf-0007tv-Vn; Mon, 28 Oct 2019 06:11:39 +0000
+	id 1iOzTC-000229-JL; Mon, 28 Oct 2019 07:29:42 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iOyF1-0007Nz-GK; Mon, 28 Oct 2019 06:11:05 +0000
-X-UUID: 09c42ca4b82b4ee1a87226502ca8fe2f-20191027
-X-UUID: 09c42ca4b82b4ee1a87226502ca8fe2f-20191027
+ id 1iOzTA-00021N-80
+ for linux-mediatek@lists.infradead.org; Mon, 28 Oct 2019 07:29:41 +0000
+X-UUID: dd5a58ff896c49219bb04bdfe8b14dac-20191027
+X-UUID: dd5a58ff896c49219bb04bdfe8b14dac-20191027
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <dehui.sun@mediatek.com>)
+ (envelope-from <eason.yen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1834098918; Sun, 27 Oct 2019 22:10:39 -0800
+ with ESMTP id 1819353524; Sun, 27 Oct 2019 23:29:11 -0800
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 27 Oct 2019 23:10:29 -0700
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 28 Oct 2019 00:29:14 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 28 Oct 2019 14:10:29 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Mon, 28 Oct 2019 14:10:28 +0800
-From: Dehui Sun <dehui.sun@mediatek.com>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner
- <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland
- <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v2 2/2] arm64: dts: mt8183: add systimer0 device node
-Date: Mon, 28 Oct 2019 14:09:44 +0800
-Message-ID: <1572242984-30460-3-git-send-email-dehui.sun@mediatek.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1572242984-30460-1-git-send-email-dehui.sun@mediatek.com>
-References: <1572242984-30460-1-git-send-email-dehui.sun@mediatek.com>
+ 15.0.1395.4; Mon, 28 Oct 2019 15:29:13 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Mon, 28 Oct 2019 15:29:14 +0800
+From: Eason Yen <eason.yen@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v1 1/1] soc: mediatek: add SMC fid table for SIP interface
+Date: Mon, 28 Oct 2019 15:29:09 +0800
+Message-ID: <1572247749-4276-2-git-send-email-eason.yen@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1572247749-4276-1-git-send-email-eason.yen@mediatek.com>
+References: <1572247749-4276-1-git-send-email-eason.yen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191027_231103_174050_D824F398 
-X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-CacheID: sfid-20191028_002940_289105_43CC92D4 
+X-CRM114-Status: UNSURE (   8.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -79,44 +78,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: dehui.sun@mediatek.com, devicetree@vger.kernel.org, weiyi.lu@mediatek.com,
- srv_heupstream@mediatek.com, erin.lo@mediatek.com,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com,
+ Eason Yen <eason.yen@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add systimer0 device node for MT8183.
+1. Add a header file to provide SIP interface to ATF
+2. Add AUDIO SMC fid
 
-Signed-off-by: Dehui Sun <dehui.sun@mediatek.com>
+Change-Id: I218e9f571cea079268a5414725a81e9b35702e33
+Signed-off-by: Eason Yen <eason.yen@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ include/linux/soc/mediatek/mtk_sip_svc.h |   28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+ create mode 100644 include/linux/soc/mediatek/mtk_sip_svc.h
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 7e23179..40145dc 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -326,6 +326,15 @@
- 			clock-names = "spi", "wrap";
- 		};
- 
-+		systimer: timer@10017000 {
-+			compatible = "mediatek,mt8183-timer",
-+				     "mediatek,mt6765-timer";
-+			reg = <0 0x10017000 0 0x1000>;
-+			interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&topckgen CLK_TOP_CLK13M>;
-+			clock-names = "clk13m";
-+		};
+diff --git a/include/linux/soc/mediatek/mtk_sip_svc.h b/include/linux/soc/mediatek/mtk_sip_svc.h
+new file mode 100644
+index 0000000..00ee0f4
+--- /dev/null
++++ b/include/linux/soc/mediatek/mtk_sip_svc.h
+@@ -0,0 +1,28 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2019 MediaTek Inc.
++ */
 +
- 		auxadc: auxadc@11001000 {
- 			compatible = "mediatek,mt8183-auxadc",
- 				     "mediatek,mt8173-auxadc";
++#ifndef __MTK_SIP_SVC_H__
++#define __MTK_SIP_SVC_H__
++
++#include <linux/kernel.h>
++
++/* Error Code */
++#define SIP_SVC_E_SUCCESS               0
++#define SIP_SVC_E_NOT_SUPPORTED         -1
++#define SIP_SVC_E_INVALID_PARAMS        -2
++#define SIP_SVC_E_INVALID_Range         -3
++#define SIP_SVC_E_PERMISSION_DENY       -4
++
++#ifdef CONFIG_ARM64
++#define MTK_SIP_SMC_AARCH_BIT			0x40000000
++#else
++#define MTK_SIP_SMC_AARCH_BIT			0x00000000
++#endif
++
++/* AUDIO related SMC call */
++#define MTK_SIP_AUDIO_CONTROL \
++	(0x82000517 | MTK_SIP_SMC_AARCH_BIT)
++#endif
++/* __MTK_SIP_SVC_H__ */
 -- 
-1.9.1
+1.7.9.5
 
 
 _______________________________________________
