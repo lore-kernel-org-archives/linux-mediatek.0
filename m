@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8297DCA9EC1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:43:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 04DD5CA9EC0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:43:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 593F5214E0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:43:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B720920717
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:43:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AktDNmwT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 593F5214E0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gi3PrU3j"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B720920717
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,54 +25,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8Und5rW520u4bmoC3T6rHinY3/CaRe/cJIBBXIF+GUs=; b=AktDNmwTuxp0hH
-	ANX/8Crp5WRvyc5kIEa5EX+qYvH6iB52hNBbuq3cdDE2cMMqrcrQe4i7kiRppW4nOz1exyT5LvNbp
-	nhB9qQXo6boVDS427YGQjk0CNTyImnVrBcYwLYn0FIDIV/kPQBemUzqanOHGFEysr5AptY55JxueY
-	NC/UoxGgdRxRezaYiKzHAOLOiqc9E7E+OU6tRAqgyiI3kpSzTLnGzAmINAIwi/wMLlyLHbHIrmF7D
-	MyoGAaqRbDnLxnLTkse14AdTspQSvWwCkw5GDuJegIm/qmCh2WAeuZnob8zpApbWT+BQWnru9KmLg
-	a+SAVimBHBQwYeuSBG2w==;
+	List-Owner; bh=n0uqdvDY+3Ef/er2kMeZWL6lJ4ZWBxpMjTx029mOnvQ=; b=gi3PrU3jpGHGOg
+	XbJDhIibskhFskXnOXcXMlQaMqjAXWjfyZ1tMAayiE2mtLE948wAYoWWk5hRm+7PYZT8WjGkEAHXZ
+	qN6Y80XVK9BCfMCE0SeJArLCpkf+dnWz2rVAAm3cxPYc9iUqlkm8DRXYPojBpArIpUsYRa2UWeBRs
+	9VS7u4Hfp0kLoMiysMjhb3yo3TbPUKHdyMmgmg0ASFyZyXPy6MIKpnqxbJlVmbsbZYsia0AnPLnM+
+	yhrE5H5KRy3vmN0Q6beVZFqRY0ztXTLrgnQPCaPv5KxFo/Cj3E6aobFphdCB2yqYu6mSW3pEfzwIK
+	P+PCNuJM4tojtIdgR5PQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iP86j-0000wO-MS; Mon, 28 Oct 2019 16:43:05 +0000
-Received: from mail-oi1-f195.google.com ([209.85.167.195])
+	id 1iP86h-0000ta-9q; Mon, 28 Oct 2019 16:43:03 +0000
+Received: from mail-oi1-f193.google.com ([209.85.167.193])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iP7xo-0007TC-QN; Mon, 28 Oct 2019 16:33:57 +0000
-Received: by mail-oi1-f195.google.com with SMTP id s71so6392323oih.11;
- Mon, 28 Oct 2019 09:33:52 -0700 (PDT)
+ id 1iP7xr-0007UD-5w; Mon, 28 Oct 2019 16:33:57 +0000
+Received: by mail-oi1-f193.google.com with SMTP id v138so6411486oif.6;
+ Mon, 28 Oct 2019 09:33:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=9dn1tmxzjQTI9PAUk6uuXXt7CY5FAAIGihQa/Sw5ORA=;
- b=MhK2r8tOXhSxW4hN0oVJiE1FTt7NG2Fti/S8vlOplv2O64FgrS1htmk9Q+nsU50n0F
- rzuERABP6jePgR9p2YomRp6VofLbNETMHTk7bvsVXY2QleYCaYG4u1u9TnTyFeQIYBTu
- 10A6c02C6RFGPG1gcvqDwp66aH/SPrrSiwHu2L1NYC/XzgOkeuH0F6njO3/ztjYEeSXH
- +tKRiB7Asm53kpu/oNfPbcFxdytggBWifz3VTCRrktrC5rVUMUHzoBcZr0bl98msiFT0
- WjjvdmM87lIZYOrecMEqKaTrJEpm7o0QaCd/pMkdGjWogl/RVJUtmf85jicv1y/XztXB
- lLAw==
-X-Gm-Message-State: APjAAAUEwl+W/fKdvtaHpTR93lFEoVHv5FDGoqGtKLof2TQFKryIwmGS
- j8iugRrFXpEYwcofB7BI9g==
-X-Google-Smtp-Source: APXvYqy2aOv/BWjh/fOFyROYXfZgl0g1EuXwphc9ldC9o3rRodxdVklAkX2S/p8TYhXvkJEGpP50Kg==
-X-Received: by 2002:aca:fdc3:: with SMTP id b186mr156065oii.92.1572280431823; 
- Mon, 28 Oct 2019 09:33:51 -0700 (PDT)
+ bh=AVklfYJFhVbHAQ7UDqJCp1P9Q1jvjrg559mLmYhBVeg=;
+ b=mRHphJbs0XkyGnOhn6EsHFtaxgloIPi1DKDtcpD3fRgxbJdR1KU/d5FwJi5EtvJgKT
+ CVGt3VW9PeV8Dw/iM5ayluopZUgiE9M8e8J4Xi29GFT0mSGsyyBERwu+AMPEwV9x6f1d
+ LOjwNB9GYIPPEWwTDwB6QptqtOLff1/I7UFscWpEZf6skpyAKTfL/FxVJCB2e8xBNVaP
+ 9QysE9D7sC5NlSEA3aUsamrMP1exbDS8o0AZxzEQcUN5J3WPXmufVoy/cS7mA52RYjMW
+ DcGam9/TR+M/0M2O9Wq3cEVcp6xMp5X51wXR7dCiCZNT7VKaVsIbI6G1N6zQOAmWQGU2
+ PuNg==
+X-Gm-Message-State: APjAAAWvkP6DizWjPModbeihP50MLqpPGCaS5hE04me5bMMgtcL6ORAO
+ 9re/vxtWvnHeJx9PfNgZtg==
+X-Google-Smtp-Source: APXvYqw/e5snXZYmJHxjv4VSvv1baWUuaK0hcKO+zQhrXL+bKUV/GjVUCsr2B283wl/nYJwT0Z3kkA==
+X-Received: by 2002:a05:6808:87:: with SMTP id s7mr130407oic.47.1572280434085; 
+ Mon, 28 Oct 2019 09:33:54 -0700 (PDT)
 Received: from xps15.herring.priv (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.googlemail.com with ESMTPSA id e186sm354991oia.47.2019.10.28.09.33.49
+ by smtp.googlemail.com with ESMTPSA id e186sm354991oia.47.2019.10.28.09.33.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Oct 2019 09:33:51 -0700 (PDT)
+ Mon, 28 Oct 2019 09:33:53 -0700 (PDT)
 From: Rob Herring <robh@kernel.org>
 To: Andrew Murray <andrew.murray@arm.com>, Bjorn Helgaas <bhelgaas@google.com>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: [PATCH v3 21/25] PCI: v3-semi: Use inbound resources for setup
-Date: Mon, 28 Oct 2019 11:32:52 -0500
-Message-Id: <20191028163256.8004-22-robh@kernel.org>
+Subject: [PATCH v3 22/25] PCI: xgene: Use inbound resources for setup
+Date: Mon, 28 Oct 2019 11:32:53 -0500
+Message-Id: <20191028163256.8004-23-robh@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191028163256.8004-1-robh@kernel.org>
 References: <20191028163256.8004-1-robh@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191028_093354_641090_24D705F6 
-X-CRM114-Status: GOOD (  15.38  )
+X-CRM114-CacheID: sfid-20191028_093355_366629_D1B88BC8 
+X-CRM114-Status: GOOD (  15.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,100 +107,86 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Now that the helpers provide the inbound resources in the host bridge
-'dma_ranges' resource list, convert the v3-semi host bridge to use
-the resource list to setup the inbound addresses.
+'dma_ranges' resource list, convert the Xgene host bridge to use the
+resource list to setup the inbound addresses.
 
+Cc: Toan Le <toan@os.amperecomputing.com>
 Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>
 Reviewed-by: Andrew Murray <andrew.murray@arm.com>
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/pci/controller/pci-v3-semi.c | 38 ++++++++++++----------------
- 1 file changed, 16 insertions(+), 22 deletions(-)
+ drivers/pci/controller/pci-xgene.c | 33 ++++++++++--------------------
+ 1 file changed, 11 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/pci/controller/pci-v3-semi.c b/drivers/pci/controller/pci-v3-semi.c
-index 2209c7671115..bd05221f5a22 100644
---- a/drivers/pci/controller/pci-v3-semi.c
-+++ b/drivers/pci/controller/pci-v3-semi.c
-@@ -598,28 +598,30 @@ static int v3_pci_setup_resource(struct v3_pci *v3,
+diff --git a/drivers/pci/controller/pci-xgene.c b/drivers/pci/controller/pci-xgene.c
+index 9408269d943d..de195fd430dc 100644
+--- a/drivers/pci/controller/pci-xgene.c
++++ b/drivers/pci/controller/pci-xgene.c
+@@ -481,27 +481,28 @@ static int xgene_pcie_select_ib_reg(u8 *ib_reg_mask, u64 size)
  }
  
- static int v3_get_dma_range_config(struct v3_pci *v3,
--				   struct of_pci_range *range,
-+				   struct resource_entry *entry,
- 				   u32 *pci_base, u32 *pci_map)
+ static void xgene_pcie_setup_ib_reg(struct xgene_pcie_port *port,
+-				    struct of_pci_range *range, u8 *ib_reg_mask)
++				    struct resource_entry *entry,
++				    u8 *ib_reg_mask)
  {
- 	struct device *dev = v3->dev;
--	u64 cpu_end = range->cpu_addr + range->size - 1;
--	u64 pci_end = range->pci_addr + range->size - 1;
+ 	void __iomem *cfg_base = port->cfg_base;
+ 	struct device *dev = port->dev;
+ 	void *bar_addr;
+ 	u32 pim_reg;
+-	u64 cpu_addr = range->cpu_addr;
+-	u64 pci_addr = range->pci_addr;
+-	u64 size = range->size;
 +	u64 cpu_addr = entry->res->start;
-+	u64 cpu_end = entry->res->end;
-+	u64 pci_end = cpu_end - entry->offset;
-+	u64 pci_addr = entry->res->start - entry->offset;
- 	u32 val;
++	u64 pci_addr = cpu_addr - entry->offset;
++	u64 size = resource_size(entry->res);
+ 	u64 mask = ~(size - 1) | EN_REG;
+ 	u32 flags = PCI_BASE_ADDRESS_MEM_TYPE_64;
+ 	u32 bar_low;
+ 	int region;
  
--	if (range->pci_addr & ~V3_PCI_BASE_M_ADR_BASE) {
-+	if (pci_addr & ~V3_PCI_BASE_M_ADR_BASE) {
- 		dev_err(dev, "illegal range, only PCI bits 31..20 allowed\n");
- 		return -EINVAL;
+-	region = xgene_pcie_select_ib_reg(ib_reg_mask, range->size);
++	region = xgene_pcie_select_ib_reg(ib_reg_mask, size);
+ 	if (region < 0) {
+ 		dev_warn(dev, "invalid pcie dma-range config\n");
+ 		return;
  	}
--	val = ((u32)range->pci_addr) & V3_PCI_BASE_M_ADR_BASE;
-+	val = ((u32)pci_addr) & V3_PCI_BASE_M_ADR_BASE;
- 	*pci_base = val;
  
--	if (range->cpu_addr & ~V3_PCI_MAP_M_MAP_ADR) {
-+	if (cpu_addr & ~V3_PCI_MAP_M_MAP_ADR) {
- 		dev_err(dev, "illegal range, only CPU bits 31..20 allowed\n");
- 		return -EINVAL;
- 	}
--	val = ((u32)range->cpu_addr) & V3_PCI_MAP_M_MAP_ADR;
-+	val = ((u32)cpu_addr) & V3_PCI_MAP_M_MAP_ADR;
+-	if (range->flags & IORESOURCE_PREFETCH)
++	if (entry->res->flags & IORESOURCE_PREFETCH)
+ 		flags |= PCI_BASE_ADDRESS_MEM_PREFETCH;
  
--	switch (range->size) {
-+	switch (resource_size(entry->res)) {
- 	case SZ_1M:
- 		val |= V3_LB_BASE_ADR_SIZE_1MB;
- 		break;
-@@ -667,8 +669,8 @@ static int v3_get_dma_range_config(struct v3_pci *v3,
- 	dev_dbg(dev,
- 		"DMA MEM CPU: 0x%016llx -> 0x%016llx => "
- 		"PCI: 0x%016llx -> 0x%016llx base %08x map %08x\n",
--		range->cpu_addr, cpu_end,
--		range->pci_addr, pci_end,
-+		cpu_addr, cpu_end,
-+		pci_addr, pci_end,
- 		*pci_base, *pci_map);
+ 	bar_low = pcie_bar_low_val((u32)cpu_addr, flags);
+@@ -532,25 +533,13 @@ static void xgene_pcie_setup_ib_reg(struct xgene_pcie_port *port,
  
- 	return 0;
-@@ -677,24 +679,16 @@ static int v3_get_dma_range_config(struct v3_pci *v3,
- static int v3_pci_parse_map_dma_ranges(struct v3_pci *v3,
- 				       struct device_node *np)
+ static int xgene_pcie_parse_map_dma_ranges(struct xgene_pcie_port *port)
  {
+-	struct device_node *np = port->node;
 -	struct of_pci_range range;
 -	struct of_pci_range_parser parser;
-+	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(v3);
- 	struct device *dev = v3->dev;
+-	struct device *dev = port->dev;
++	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(port);
 +	struct resource_entry *entry;
- 	int i = 0;
+ 	u8 ib_reg_mask = 0;
  
 -	if (of_pci_dma_range_parser_init(&parser, np)) {
 -		dev_err(dev, "missing dma-ranges property\n");
 -		return -EINVAL;
 -	}
 -
--	/*
--	 * Get the dma-ranges from the device tree
--	 */
+-	/* Get the dma-ranges from DT */
 -	for_each_of_pci_range(&parser, &range) {
-+	resource_list_for_each_entry(entry, &bridge->dma_ranges) {
- 		int ret;
- 		u32 pci_base, pci_map;
+-		u64 end = range.cpu_addr + range.size - 1;
++	resource_list_for_each_entry(entry, &bridge->dma_ranges)
++		xgene_pcie_setup_ib_reg(port, entry, &ib_reg_mask);
  
--		ret = v3_get_dma_range_config(v3, &range, &pci_base, &pci_map);
-+		ret = v3_get_dma_range_config(v3, entry, &pci_base, &pci_map);
- 		if (ret)
- 			return ret;
+-		dev_dbg(dev, "0x%08x 0x%016llx..0x%016llx -> 0x%016llx\n",
+-			range.flags, range.cpu_addr, end, range.pci_addr);
+-		xgene_pcie_setup_ib_reg(port, &range, &ib_reg_mask);
+-	}
+ 	return 0;
+ }
  
 -- 
 2.20.1
