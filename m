@@ -2,72 +2,71 @@ Return-Path: <SRS0=ArXH=YV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 06A63CA9EAF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 02:26:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 697F0CA9EAF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 02:48:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CAA6E20717
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 02:26:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EF3C820B7C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 02:48:48 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gwICUkUy"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CAA6E20717
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="E8Cj3oPW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF3C820B7C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2qh3CZoVSJEIeyjJ5BFnmvOFVXgEX8sLZxq4fJLS2do=; b=gwICUkUyR2tCit
-	RqiLE3qpyIiH4oNyhwfqKq/JtXCeT0Ls+nQW5WDyILVewwz40JGmNzryE6rAj7UiQsZz1ssxXMb9I
-	6yZmxxUhtSykOeNdL6lEflQYDtMTEn0326JFmH5p7+UZOCwG4CJkoZSjiZArh+/xK/UPmYd2Y3ToV
-	cufvTamfc5+j+vcvmA9mq1B8C2avBRw+Nd1CdCYvAyUbuM4/Ruu6dsidRis94uX+T/4+UqnLwV5Yc
-	rqHnm9C/ljWfcS5KQqdLX8mZIM07cx3PT+zxQBj5u8x7aMo4STkn0kYqpqyxIZtRGcGMaabGdXFq/
-	QlsssGwOn6685Y1+7xVQ==;
+	List-Owner; bh=vmQkCRX++4Gsr6Ayf3/vwaq93bn75hc+KoxrK+J2yk4=; b=E8Cj3oPWH5STzm
+	mNnInkEwnS8IYvglvg9Qemxenwa8s3YLI07j6y1OdaMNV1cAeXXsnT4eC7UrOcWmKY590oHrdkVFl
+	ed5xrPEJflnjUoRSGkSxzBxsVo9H3x4dhAhVCNGdy6rSYYlOLCiRJEMqzXVNpH2tWmgIyRI6Bt0mr
+	LUIaSWvE4lqtIxYL3GCUZB+Al/4SL1fIzzqjxX+KFpyZAkLEoInvS8avY4tAPVM6HA3YAgIFUyph/
+	9SPT43WItkHCdpL8Y3MEGU7jSw8Q4rrqSeLFxPzb6CiGHoA5FpXV35gMpN6vb9NT5u4pliD4Y5/Jx
+	DGj+Y0+2RQHQXcJgEbhA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iOujq-00025u-4t; Mon, 28 Oct 2019 02:26:34 +0000
+	id 1iOv5L-0000uy-RK; Mon, 28 Oct 2019 02:48:47 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iOujl-00025I-Vw; Mon, 28 Oct 2019 02:26:32 +0000
-X-UUID: f1e6cf369ae649a4aeb1076f2074b1f6-20191027
-X-UUID: f1e6cf369ae649a4aeb1076f2074b1f6-20191027
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <xia.jiang@mediatek.com>)
+ id 1iOv55-0000g8-My; Mon, 28 Oct 2019 02:48:32 +0000
+X-UUID: dfc32c500b0c401296fb34eb1579b2bf-20191027
+X-UUID: dfc32c500b0c401296fb34eb1579b2bf-20191027
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 281674628; Sun, 27 Oct 2019 18:26:35 -0800
+ with ESMTP id 586520476; Sun, 27 Oct 2019 18:48:40 -0800
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 27 Oct 2019 19:25:59 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sun, 27 Oct 2019 19:48:26 -0700
+Received: from mtkcas09.mediatek.inc (172.21.101.178) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 28 Oct 2019 10:25:58 +0800
-Received: from [10.17.3.153] (10.17.3.153) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Mon, 28 Oct 2019 10:25:58 +0800
-Message-ID: <1572229558.27439.6.camel@mhfsdcap03>
-Subject: Re: [PATCH v4 5/5] media: platform: Add jpeg dec/enc feature
-From: Xia Jiang <xia.jiang@mediatek.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Date: Mon, 28 Oct 2019 10:25:58 +0800
-In-Reply-To: <CAAFQd5DUF90daBAe96Vu46z9HD43AYG+9rK-_r_aWYey8GxpmQ@mail.gmail.com>
-References: <20191017084033.28299-1-xia.jiang@mediatek.com>
- <20191017084033.28299-6-xia.jiang@mediatek.com>
- <20191023103945.GA41089@chromium.org> <1571906317.6254.64.camel@mhfsdcap03>
- <CAAFQd5DUF90daBAe96Vu46z9HD43AYG+9rK-_r_aWYey8GxpmQ@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ 15.0.1395.4; Mon, 28 Oct 2019 10:48:26 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas09.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Mon, 28 Oct 2019 10:48:27 +0800
+From: Weiyi Lu <weiyi.lu@mediatek.com>
+To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>
+Subject: [PATCH v8 14/14] arm64: dts: Add power-domains properity to mfgcfg
+Date: Mon, 28 Oct 2019 10:48:18 +0800
+Message-ID: <1572230898-7860-15-git-send-email-weiyi.lu@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1572230898-7860-1-git-send-email-weiyi.lu@mediatek.com>
+References: <1572230898-7860-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191027_192630_034391_B99550F8 
-X-CRM114-Status: GOOD (  30.02  )
+X-CRM114-CacheID: sfid-20191027_194831_752663_3596D042 
+X-CRM114-Status: UNSURE (   8.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,134 +78,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-devicetree <devicetree@vger.kernel.org>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- Rick Chang <rick.chang@mediatek.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>, "list@263.net:IOMMU DRIVERS
- <iommu@lists.linux-foundation.org>, Joerg  Roedel <joro@8bytes.org>,
- " <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: James Liao <jamesjj.liao@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>,
+ srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
+ Fan Chen <fan.chen@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Yong Wu <yong.wu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2019-10-24 at 18:23 +0900, Tomasz Figa wrote:
-> On Thu, Oct 24, 2019 at 5:38 PM Xia Jiang <xia.jiang@mediatek.com> wrote:
-> >
-> > On Wed, 2019-10-23 at 19:39 +0900, Tomasz Figa wrote:
-> > > Hi Xia,
-> > >
-> > > On Thu, Oct 17, 2019 at 04:40:38PM +0800, Xia Jiang wrote:
-> > > > Add mtk jpeg encode v4l2 driver based on jpeg decode, because that jpeg
-> > > > decode and encode have great similarities with function operation.
-> > > >
-> > > > Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
-> > > > ---
-> > > > v4: split mtk_jpeg_try_fmt_mplane() to two functions, one for encoder,
-> > > >     one for decoder.
-> > > >     split mtk_jpeg_set_default_params() to two functions, one for
-> > > >     encoder, one for decoder.
-> > > >     add cropping support for encoder in g/s_selection ioctls.
-> > > >     change exif mode support by using V4L2_JPEG_ACTIVE_MARKER_APP1.
-> > > >     change MTK_JPEG_MAX_WIDTH/MTK_JPEG_MAX_HEIGH from 8192 to 65535 by
-> > > >     specification.
-> > > >     move width shifting operation behind aligning operation in
-> > > >     mtk_jpeg_try_enc_fmt_mplane() for bug fix.
-> > > >     fix user abuseing data_offset issue for DMABUF in
-> > > >     mtk_jpeg_set_enc_src().
-> > > >     fix kbuild warings: change MTK_JPEG_MIN_HEIGHT/MTK_JPEG_MAX_HEIGHT
-> > > >                         and MTK_JPEG_MIN_WIDTH/MTK_JPEG_MAX_WIDTH from
-> > > >                         'int' type to 'unsigned int' type.
-> > > >                         fix msleadingly indented of 'else'.
-> > > >
-> > > > v3: delete Change-Id.
-> > > >     only test once handler->error after the last v4l2_ctrl_new_std().
-> > > >     seperate changes of v4l2-ctrls.c and v4l2-controls.h to new patch.
-> > > >
-> > > > v2: fix compliance test fail, check created buffer size in driver.
-> > > > ---
-> > > >  drivers/media/platform/mtk-jpeg/Makefile      |   5 +-
-> > > >  .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 731 +++++++++++++++---
-> > > >  .../media/platform/mtk-jpeg/mtk_jpeg_core.h   | 123 ++-
-> > > >  .../media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h |   7 +-
-> > > >  .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c | 175 +++++
-> > > >  .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h |  60 ++
-> > > >  .../platform/mtk-jpeg/mtk_jpeg_enc_reg.h      |  49 ++
-> > > >  7 files changed, 1004 insertions(+), 146 deletions(-)
-> > > >  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-> > > >  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h
-> > > >  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_reg.h
-> > > >
-> > >
-> > > First of all, thanks for the patch!
-> > >
-> > > Please check my comments below.
-> > >
-> > > My general feeling about this code is that the encoder hardware block is
-> > > completely orthogonal from the decoder block and there is very little code
-> > > reuse from the original decoder driver.
-> > >
-> > > Moreover, a lot of existing code now needs if (decoder) { ... } else {... }
-> > > segments, which complicates the code.
-> > >
-> > > Would it perhaps make sense to instead create a separate mtk-jpeg-enc
-> > > driver?
-> > >
-> > Dear Tomasz,
-> >
-> > Thanks for your comments.
-> >
-> > My reasons about the architecture of jpeg enc driver are as follows:
-> >
-> > The first internal design and realization of jpeg enc driver was a
-> > separate driver, but found that mtk_jpeg_core.c and mtk_jpeg_enc_core.c
-> > have lots of reuse.Because that  the core.c mainly contains realization
-> > of v4L2 ioctl functions and some logic which are high similarity between
-> > encoder and decoder.
-> >
-> > The jpeg encoder and decoder are two independent hardwares exactly, so
-> > the code about hardware specification(register setting) are
-> > separated(mtk_jpeg_enc_hw.c and mtk_jpeg_dec_hw.c).
-> >
-> > As for 17 existing code segments contain if(decoder){} else {}, they are
-> > not complicated IMHO.The complicated(multilayer nested) functions are
-> > separated in V4 version as Hans recommendation.
-> >
-> > By the way,the upstreamed module s5p-jpeg
-> > (https://elixir.bootlin.com/linux/latest/source/drivers/media/platform/s5p-jpeg/jpeg-core.c#L1998) also use encoder and decoder mode in the common core.c, but their encoder and decoder are the same hardware.Maybe our jpeg enc and dec are designed into one hardware in the future.In that case the current architecture is more compatible.
-> >
-> > So I prefer the current design.
-> >
-> 
-> Would you be able to give some numbers to show the code reuse to
-> justify using the same driver? From my observation, a new driver would
-> result in a significantly cleaner code. If there is a further hardware
-> architecture change, that would likely require another driver, because
-> it wouldn't be compatible with existing programming model anyway.
-> 
-> Regardless of that, if we end up with reusing the same driver, I'd
-> like you to fix the issues existing in the current base before adding
-> the encoder functionality.
-Dear Tomasz,
-I've counted about 1000 lines of code that can be reused.The reused code
-is 75 percent of the original code.
+mfgcfg clock is under MFG_ASYNC power domain
 
-If you agree to reuse the same driver,I will fix the issues existing in
-the current driver.
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-Best Regards,
-Xia Jiang
-> 
-> Best regards,
-> Tomasz
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 6cbbd77..7e23179 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -634,6 +634,7 @@
+ 			compatible = "mediatek,mt8183-mfgcfg", "syscon";
+ 			reg = <0 0x13000000 0 0x1000>;
+ 			#clock-cells = <1>;
++			power-domains = <&scpsys MT8183_POWER_DOMAIN_MFG_ASYNC>;
+ 		};
+ 
+ 		mmsys: syscon@14000000 {
+-- 
+1.8.1.1.dirty
 
 
 _______________________________________________
