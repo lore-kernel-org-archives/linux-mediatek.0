@@ -4,19 +4,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 556D3CA9EC0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:40:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 828FDCA9EC0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:41:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 14A8220717
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:40:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 548E020717
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:41:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AuchOwy5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 14A8220717
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fsgsx39k"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 548E020717
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,54 +25,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9LTIBDOaZ2VQW/hSpQsi4sNBBj96fnuyfqakj1q6Jfk=; b=AuchOwy5IQxOwc
-	7qs0mUJZqPK+6UMDORAA6FwV0eBUI2D22gs7YwQWdp+EMbyP4BP6HHmcW2EjYVNSl1Z9cKIcgFntY
-	zFUGsWMynxFPncbXM87EsOWMNlshPSN9YauUVKZxbjPtN/bFTOkF7vz/9IbiM4TiTZsu0qG3kp3dL
-	JDuaIp7PgrynTQtVqylBlpIaQ0p5odKa6lAdgu5WDD0JTLkhMt+LBLPI5kd3tiwD+jZ9k6QnkVsvt
-	teroQ62HK15h3ac5FlLwA7HF8UVoAB7UNnSE+pO/iOOr8CpOkDUUifN51krBWel0utTdeEZsX92ia
-	wMAB0QVnfzQuUKbJvsVw==;
+	List-Owner; bh=yXL+2RJR7ybUoSbeeqFpYAiAJPGfr9aDiFq0EB9ayxE=; b=fsgsx39kc+ZLbF
+	m2owjFzhfXKlpgAeeraVcLhvOHmFwvFH/XTr4XMwhh+VRmKgVrQjBqtjAlgDiPQwJA/Z7vU5VhSnL
+	tYOJKjK+oBOExyzYfzYZHNuT1JBD5QZlJ8rkQJcG+kuPc6Zs7f6Z8UyRpArPyPXgHDhSmMBEf2UMR
+	qsu+8qZXyEkfAcgSuUlRYfHVNf2hMmCfpqyi9nykLo0s0QOsBON8e+5JBMQgV+ZMvUMa1xylO/Rfc
+	egaEbaDks7YAmGRZT2QtW4jdpXCUtUTdP5D5AfVZCX6p6RiXhODjH/Zgjcxi33vDmhjcY9oT+6WHh
+	6WXgMXMw05mMVkHD8oDw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iP84T-0007G7-1W; Mon, 28 Oct 2019 16:40:45 +0000
-Received: from mail-oi1-f196.google.com ([209.85.167.196])
+	id 1iP84q-0007em-5U; Mon, 28 Oct 2019 16:41:08 +0000
+Received: from mail-ot1-f65.google.com ([209.85.210.65])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iP7xe-0007Gu-NZ; Mon, 28 Oct 2019 16:33:44 +0000
-Received: by mail-oi1-f196.google.com with SMTP id 83so6433667oii.1;
- Mon, 28 Oct 2019 09:33:42 -0700 (PDT)
+ id 1iP7xj-0007Nw-5t; Mon, 28 Oct 2019 16:33:49 +0000
+Received: by mail-ot1-f65.google.com with SMTP id z6so7189366otb.2;
+ Mon, 28 Oct 2019 09:33:46 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=gXFj97mkbGwNy9HcITgsXlHzoihDJWyxuLbZMG3bMrk=;
- b=tyLxVYk7Yuq6JyIAgTkUanULlaK+HkCVhUJ/ARb1P+syN3jnPBsblb0g300QEIyrec
- XAENfm/lmbVP/f6OV4Uq1zxy4UBOTptZ+M2RYJZGiAhZgTMSo/+39aHPAJjzDpoWKWHr
- jUKqpQRZU4tyfsAEZMs696P858DphmCDUy5iXTpSHYtQGSEXuEz3Vtz1Giys3p0b5+RK
- a76QTnhUnCmKmZhKUK2rLFS5SfMNj45m4ty8MTegW/5TYGAXDl27pLDHUE6RJvRvdB/z
- prjMzroF8y5oRNPFspszOqfeJetQhhAEkAfK068P656xReS3brQ5q/czJepaK+5IwzCz
- 4lOA==
-X-Gm-Message-State: APjAAAXGFok//uhE1bZFTUQlEjs3OpmQdDHpGB0WIl+hBaWsBA72F4Kj
- RbS/DnF1GjNQ5Mdz+awIcA==
-X-Google-Smtp-Source: APXvYqyAyPrUKbfPJy6jun7gPAIEO0JEPIYDjbds2nS284G2YkNImID/wTHAeVHyFp19AQ13lX76hg==
-X-Received: by 2002:aca:1a0b:: with SMTP id a11mr149284oia.138.1572280421584; 
- Mon, 28 Oct 2019 09:33:41 -0700 (PDT)
+ bh=2sCm5472cF93KvMaJ0/jgH3kNxAHKfGtxH8J6nHodQ0=;
+ b=Gumm26kWGLCtCgrZ6cMxs9SHQP46XzjtJNv68oK8VMawsNFdamPOM4ctk+3nHBjUtq
+ IU3HYOrjZSmb/b/qLRo/5BNfbhvJHzlYRoC3qLMY2giWFDg8k8VS01Sgnxq8fSwoXlFV
+ zTM+4ciaFxTmV5JoyJZxv/NFpVTJ8SlhVAy/AimvJECtdrxgEmsiu6yIHQRiK8Dv+kwu
+ AaqjPC5f5op3pJeBNGPX0hMmUzNNrSXmbwQADf0VgprEqCIQ80iHioezWCVtxL/DvlzB
+ VwPP1l7PiU3G/WK1RYfgRayqRW3L5Pg52+MxFBcgOoiGxy+8NTEbs422AtU6ZSFNi5Ev
+ fPPg==
+X-Gm-Message-State: APjAAAXA+wk2vlaUcTsbtl4m2uhGAR2qFEnh0mMrtps9JEP8jw9Lh51E
+ 4qpS045JvpsjFsuIl+I5UQ==
+X-Google-Smtp-Source: APXvYqy/Xq0iUAE5skdxW7RQgS/cS0GZT0jx1F5IzTA54s6xqljQwh3to6yMnbySIthX+LfaHcMHpQ==
+X-Received: by 2002:a9d:ef0:: with SMTP id 103mr14011546otj.2.1572280425906;
+ Mon, 28 Oct 2019 09:33:45 -0700 (PDT)
 Received: from xps15.herring.priv (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.googlemail.com with ESMTPSA id e186sm354991oia.47.2019.10.28.09.33.39
+ by smtp.googlemail.com with ESMTPSA id e186sm354991oia.47.2019.10.28.09.33.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Oct 2019 09:33:40 -0700 (PDT)
+ Mon, 28 Oct 2019 09:33:44 -0700 (PDT)
 From: Rob Herring <robh@kernel.org>
 To: Andrew Murray <andrew.murray@arm.com>, Bjorn Helgaas <bhelgaas@google.com>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: [PATCH v3 17/25] PCI: versatile: Remove usage of PHYS_OFFSET
-Date: Mon, 28 Oct 2019 11:32:48 -0500
-Message-Id: <20191028163256.8004-18-robh@kernel.org>
+Subject: [PATCH v3 18/25] PCI: versatile: Enable COMPILE_TEST
+Date: Mon, 28 Oct 2019 11:32:49 -0500
+Message-Id: <20191028163256.8004-19-robh@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191028163256.8004-1-robh@kernel.org>
 References: <20191028163256.8004-1-robh@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191028_093343_338359_9E279C17 
-X-CRM114-Status: GOOD (  14.25  )
+X-CRM114-CacheID: sfid-20191028_093347_364139_1BBEB543 
+X-CRM114-Status: GOOD (  12.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,49 +106,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-PHYS_OFFSET is not universally defined on all arches and using it prevents
-enabling COMPILE_TEST. PAGE_OFFSET and __pa() are always available, so use
-them to get the physical start of memory address.
+Since commit a574795bc383 ("PCI: generic,versatile: Remove unused
+pci_sys_data structures") the build dependency on ARM is gone, so let's
+enable COMPILE_TEST for versatile.
 
-This should have probably used 'dma-ranges' to get the address, but we
-don't want to force a DT update to do that. At least in QEMU, the SMAP
-registers have no effect (or perhaps the only value that is handled is 0).
-
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Andrew Murray <andrew.murray@arm.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>
+Reviewed-by: Andrew Murray <andrew.murray@arm.com>
 Acked-by: Linus Walleij <linus.walleij@linaro.org>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/pci/controller/pci-versatile.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/pci/controller/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/pci/controller/pci-versatile.c b/drivers/pci/controller/pci-versatile.c
-index 18697f2ea345..eae1b859990b 100644
---- a/drivers/pci/controller/pci-versatile.c
-+++ b/drivers/pci/controller/pci-versatile.c
-@@ -99,7 +99,7 @@ static int versatile_pci_probe(struct platform_device *pdev)
- 	resource_list_for_each_entry(entry, &bridge->windows) {
- 		if (resource_type(entry->res) == IORESOURCE_MEM) {
- 			writel(entry->res->start >> 28, PCI_IMAP(mem));
--			writel(PHYS_OFFSET >> 28, PCI_SMAP(mem));
-+			writel(__pa(PAGE_OFFSET) >> 28, PCI_SMAP(mem));
- 			mem++;
- 		}
- 	}
-@@ -136,9 +136,9 @@ static int versatile_pci_probe(struct platform_device *pdev)
- 	/*
- 	 * Configure the PCI inbound memory windows to be 1:1 mapped to SDRAM
- 	 */
--	writel(PHYS_OFFSET, local_pci_cfg_base + PCI_BASE_ADDRESS_0);
--	writel(PHYS_OFFSET, local_pci_cfg_base + PCI_BASE_ADDRESS_1);
--	writel(PHYS_OFFSET, local_pci_cfg_base + PCI_BASE_ADDRESS_2);
-+	writel(__pa(PAGE_OFFSET), local_pci_cfg_base + PCI_BASE_ADDRESS_0);
-+	writel(__pa(PAGE_OFFSET), local_pci_cfg_base + PCI_BASE_ADDRESS_1);
-+	writel(__pa(PAGE_OFFSET), local_pci_cfg_base + PCI_BASE_ADDRESS_2);
+diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
+index 70e078238899..f5de9119e8d3 100644
+--- a/drivers/pci/controller/Kconfig
++++ b/drivers/pci/controller/Kconfig
+@@ -135,7 +135,7 @@ config PCI_V3_SEMI
  
- 	/*
- 	 * For many years the kernel and QEMU were symbiotically buggy
+ config PCI_VERSATILE
+ 	bool "ARM Versatile PB PCI controller"
+-	depends on ARCH_VERSATILE
++	depends on ARCH_VERSATILE || COMPILE_TEST
+ 
+ config PCIE_IPROC
+ 	tristate
 -- 
 2.20.1
 
