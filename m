@@ -1,87 +1,73 @@
-Return-Path: <SRS0=2U4T=YU=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=ArXH=YV=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EAE73CA9EAF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Oct 2019 06:32:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 06A63CA9EAF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 02:26:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A4916205C9
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Oct 2019 06:32:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CAA6E20717
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 02:26:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="C9I0mqnS";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="XglZzy/W"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A4916205C9
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gwICUkUy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CAA6E20717
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:
-	From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5QEdmLm4aKYPhZYkzKL/+KCcii0dR5S2xaLSRxVvutM=; b=C9I0mqnSMbXF5P
-	cnsoZH1VXtTpilz6hg5GX49tydE3E+350IWBLTmu2FJfbe3y3GU/aLKVGzf8ONWjTAUcO35kZHS5K
-	UGJfJXbm967ICmEkVUdFsYD4ZHB/KnliRW9yIdm8NJY0V/4tcrCnAsY3QGF/49CyL1gD2AeCK4WF8
-	hQG1Fi5YPsn74MnLo5rvofv1+QSZwuR48n2nFoEz6Cnsgp+fidx3s/tVHS0VNhWv7QrRmD37zN9nP
-	Gjconv5+aApEjFvYAO613RPk/ibVVjGIuuX2WgNzd2kzZBtqG8BCKhPrrVwwee0+6Jk5JXXjK74vB
-	OYYBaGv1+vENxNIlwruQ==;
+	List-Owner; bh=2qh3CZoVSJEIeyjJ5BFnmvOFVXgEX8sLZxq4fJLS2do=; b=gwICUkUyR2tCit
+	RqiLE3qpyIiH4oNyhwfqKq/JtXCeT0Ls+nQW5WDyILVewwz40JGmNzryE6rAj7UiQsZz1ssxXMb9I
+	6yZmxxUhtSykOeNdL6lEflQYDtMTEn0326JFmH5p7+UZOCwG4CJkoZSjiZArh+/xK/UPmYd2Y3ToV
+	cufvTamfc5+j+vcvmA9mq1B8C2avBRw+Nd1CdCYvAyUbuM4/Ruu6dsidRis94uX+T/4+UqnLwV5Yc
+	rqHnm9C/ljWfcS5KQqdLX8mZIM07cx3PT+zxQBj5u8x7aMo4STkn0kYqpqyxIZtRGcGMaabGdXFq/
+	QlsssGwOn6685Y1+7xVQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iOc6U-0006Pw-0X; Sun, 27 Oct 2019 06:32:42 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1iOujq-00025u-4t; Mon, 28 Oct 2019 02:26:34 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iOc6R-0006PN-NG; Sun, 27 Oct 2019 06:32:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1572157953;
- bh=URb4ktMfUpL1dbYIat3/0f/YdBmBlVy9KjAM/7UpLI0=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=XglZzy/WMm59HtyMddVqjE6ZR2+RaxPmfwEmYCXzobfiJeL01Z4U7Obw90woqrfgb
- U4GeXgWqrDWPrbBr+eMNLB+IHQEsYMZrhgincWFuJy401uyX7T8HutSvALTIyFQ8dK
- tKIlCC23G/wAFx9sUPnqKvPQGmWMEAp2MU3Pddww=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [217.61.153.185] ([217.61.153.185]) by web-mail.gmx.net
- (3c-app-gmx-bap44.server.lan [172.19.172.114]) (via HTTP); Sun, 27 Oct 2019
- 07:32:32 +0100
+ id 1iOujl-00025I-Vw; Mon, 28 Oct 2019 02:26:32 +0000
+X-UUID: f1e6cf369ae649a4aeb1076f2074b1f6-20191027
+X-UUID: f1e6cf369ae649a4aeb1076f2074b1f6-20191027
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <xia.jiang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 281674628; Sun, 27 Oct 2019 18:26:35 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sun, 27 Oct 2019 19:25:59 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 28 Oct 2019 10:25:58 +0800
+Received: from [10.17.3.153] (10.17.3.153) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Mon, 28 Oct 2019 10:25:58 +0800
+Message-ID: <1572229558.27439.6.camel@mhfsdcap03>
+Subject: Re: [PATCH v4 5/5] media: platform: Add jpeg dec/enc feature
+From: Xia Jiang <xia.jiang@mediatek.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Date: Mon, 28 Oct 2019 10:25:58 +0800
+In-Reply-To: <CAAFQd5DUF90daBAe96Vu46z9HD43AYG+9rK-_r_aWYey8GxpmQ@mail.gmail.com>
+References: <20191017084033.28299-1-xia.jiang@mediatek.com>
+ <20191017084033.28299-6-xia.jiang@mediatek.com>
+ <20191023103945.GA41089@chromium.org> <1571906317.6254.64.camel@mhfsdcap03>
+ <CAAFQd5DUF90daBAe96Vu46z9HD43AYG+9rK-_r_aWYey8GxpmQ@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Message-ID: <trinity-c8e754a2-3369-4915-91dd-4e328c8d8a54-1572157952924@3c-app-gmx-bap44>
-From: "Frank Wunderlich" <frank-w@public-files.de>
-To: "Fabio Estevam" <festevam@gmail.com>
-Subject: Aw: Re: [PATCH, RESEND] serial: 8250-mtk: Ask for IRQ-count before
- request one
-Date: Sun, 27 Oct 2019 07:32:32 +0100
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <CAOMZO5Bb=1CUpw__xxS2N0w+ZP0+LnBBW9+JLVr03x6TC2Z7=g@mail.gmail.com>
-References: <20191026194522.28293-1-frank-w@public-files.de>
- <CAOMZO5Bb=1CUpw__xxS2N0w+ZP0+LnBBW9+JLVr03x6TC2Z7=g@mail.gmail.com>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:ZwFWc4VD9dcVeZ8c7PaQyxCHzgAqT53gsWj2AJnSZjBgsFAC2j82vL5w/gSwf6To88DKA
- 0JVhXeQGn6v1xg0j6H+pFB8vA8+G3TYvM7Slk1tW8sLbSXnjKM8T+P7wBcDqXssvwR9ws1e+sTQe
- aJqoVJNc+XDlrH9pnB4HQeTnFTiiEP+UoM5ROLtw/5h8kkLPEbD+UxQrLCp8YTZ97jRaW5MJh0ZW
- bM4K1Wgk1DmIF2UCcsSQP8MQP3/WRsna/nRScowwiffo8+6oaCX4zehW3QPQlNUqjonbdPOZJk+w
- N0=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:AFsynnJYb5U=:KBDbqLyPbYU5CLeqGZx3Vo
- Sfnot+l7NRHzME8agB4fxaK7Rf01wkVSaeg1QGQ+dzmIKGc0efJ/YlsvMg9TZZRiQfx4ej1V9
- Zo/2BChttYcdZZsI2tZheHb2tu0Izlf6WvHdTE6Dwi97qWNg7bPaHtgHuHwfFmpBNtJnHrpCG
- fr2tpnbNC2TOjr+Exx02YsaHbmmIRMPAWSuPDMuwjQXRvR4ffqa+BECFzZUhmYjzhbit36Qyt
- ZakEpDe9Kh9YUXJW9aXAJztfq+66NJJuZMzEYicOR9bGB2R+lhea04uxcnNhWKq6CB4q3zwq+
- GRX3mr+KdMgOKLhrahiMZ+8eugpCP3Ldrl0RY0hjPrXEKX6+De4W0n2saAfp9H45+uQTXPCzg
- BI1tfs7KMJG6kSsuKLInuWV5O2/b7pcM2pLXYbJNPDCUHc8kDFixkYrHBq10obM3MCW+w4/1K
- 11XyCKqW9iDB4HsGO2W/MsweDQ82iA+eRMe7XdX1xmJQmRfLLZaKHb6VEc69Mk4BPOMf/O1HP
- gstDfHykbv+cMcfOaTz4XFsMpb6T+KNeA2yPd2PTXAYyoadOusBMiPCRQhJvYSULYTLHu9J5w
- w/WboqFnJlp0Xvk2Ekh7KvzjsD0KhKJ37v6cpAlBsJr1E4efWL+3XcE/awA+s1KhFAB6LPo1W
- OFE9pK3qpw72iSLZJDdFmKl5quWbLc5xGULgM5MET6guvM5N/poP7PhPszZcKQaDM+3c=
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191026_233240_094056_5D2E2952 
-X-CRM114-Status: UNSURE (   5.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191027_192630_034391_B99550F8 
+X-CRM114-Status: GOOD (  30.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,32 +79,134 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>
+Cc: linux-devicetree <devicetree@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ Rick Chang <rick.chang@mediatek.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>, "list@263.net:IOMMU DRIVERS
+ <iommu@lists.linux-foundation.org>, Joerg  Roedel <joro@8bytes.org>,
+ " <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Thu, 2019-10-24 at 18:23 +0900, Tomasz Figa wrote:
+> On Thu, Oct 24, 2019 at 5:38 PM Xia Jiang <xia.jiang@mediatek.com> wrote:
+> >
+> > On Wed, 2019-10-23 at 19:39 +0900, Tomasz Figa wrote:
+> > > Hi Xia,
+> > >
+> > > On Thu, Oct 17, 2019 at 04:40:38PM +0800, Xia Jiang wrote:
+> > > > Add mtk jpeg encode v4l2 driver based on jpeg decode, because that jpeg
+> > > > decode and encode have great similarities with function operation.
+> > > >
+> > > > Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
+> > > > ---
+> > > > v4: split mtk_jpeg_try_fmt_mplane() to two functions, one for encoder,
+> > > >     one for decoder.
+> > > >     split mtk_jpeg_set_default_params() to two functions, one for
+> > > >     encoder, one for decoder.
+> > > >     add cropping support for encoder in g/s_selection ioctls.
+> > > >     change exif mode support by using V4L2_JPEG_ACTIVE_MARKER_APP1.
+> > > >     change MTK_JPEG_MAX_WIDTH/MTK_JPEG_MAX_HEIGH from 8192 to 65535 by
+> > > >     specification.
+> > > >     move width shifting operation behind aligning operation in
+> > > >     mtk_jpeg_try_enc_fmt_mplane() for bug fix.
+> > > >     fix user abuseing data_offset issue for DMABUF in
+> > > >     mtk_jpeg_set_enc_src().
+> > > >     fix kbuild warings: change MTK_JPEG_MIN_HEIGHT/MTK_JPEG_MAX_HEIGHT
+> > > >                         and MTK_JPEG_MIN_WIDTH/MTK_JPEG_MAX_WIDTH from
+> > > >                         'int' type to 'unsigned int' type.
+> > > >                         fix msleadingly indented of 'else'.
+> > > >
+> > > > v3: delete Change-Id.
+> > > >     only test once handler->error after the last v4l2_ctrl_new_std().
+> > > >     seperate changes of v4l2-ctrls.c and v4l2-controls.h to new patch.
+> > > >
+> > > > v2: fix compliance test fail, check created buffer size in driver.
+> > > > ---
+> > > >  drivers/media/platform/mtk-jpeg/Makefile      |   5 +-
+> > > >  .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 731 +++++++++++++++---
+> > > >  .../media/platform/mtk-jpeg/mtk_jpeg_core.h   | 123 ++-
+> > > >  .../media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h |   7 +-
+> > > >  .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c | 175 +++++
+> > > >  .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h |  60 ++
+> > > >  .../platform/mtk-jpeg/mtk_jpeg_enc_reg.h      |  49 ++
+> > > >  7 files changed, 1004 insertions(+), 146 deletions(-)
+> > > >  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+> > > >  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h
+> > > >  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_reg.h
+> > > >
+> > >
+> > > First of all, thanks for the patch!
+> > >
+> > > Please check my comments below.
+> > >
+> > > My general feeling about this code is that the encoder hardware block is
+> > > completely orthogonal from the decoder block and there is very little code
+> > > reuse from the original decoder driver.
+> > >
+> > > Moreover, a lot of existing code now needs if (decoder) { ... } else {... }
+> > > segments, which complicates the code.
+> > >
+> > > Would it perhaps make sense to instead create a separate mtk-jpeg-enc
+> > > driver?
+> > >
+> > Dear Tomasz,
+> >
+> > Thanks for your comments.
+> >
+> > My reasons about the architecture of jpeg enc driver are as follows:
+> >
+> > The first internal design and realization of jpeg enc driver was a
+> > separate driver, but found that mtk_jpeg_core.c and mtk_jpeg_enc_core.c
+> > have lots of reuse.Because that  the core.c mainly contains realization
+> > of v4L2 ioctl functions and some logic which are high similarity between
+> > encoder and decoder.
+> >
+> > The jpeg encoder and decoder are two independent hardwares exactly, so
+> > the code about hardware specification(register setting) are
+> > separated(mtk_jpeg_enc_hw.c and mtk_jpeg_dec_hw.c).
+> >
+> > As for 17 existing code segments contain if(decoder){} else {}, they are
+> > not complicated IMHO.The complicated(multilayer nested) functions are
+> > separated in V4 version as Hans recommendation.
+> >
+> > By the way,the upstreamed module s5p-jpeg
+> > (https://elixir.bootlin.com/linux/latest/source/drivers/media/platform/s5p-jpeg/jpeg-core.c#L1998) also use encoder and decoder mode in the common core.c, but their encoder and decoder are the same hardware.Maybe our jpeg enc and dec are designed into one hardware in the future.In that case the current architecture is more compatible.
+> >
+> > So I prefer the current design.
+> >
+> 
+> Would you be able to give some numbers to show the code reuse to
+> justify using the same driver? From my observation, a new driver would
+> result in a significantly cleaner code. If there is a further hardware
+> architecture change, that would likely require another driver, because
+> it wouldn't be compatible with existing programming model anyway.
+> 
+> Regardless of that, if we end up with reusing the same driver, I'd
+> like you to fix the issues existing in the current base before adding
+> the encoder functionality.
+Dear Tomasz,
+I've counted about 1000 lines of code that can be reused.The reused code
+is 75 percent of the original code.
 
-thank you, seems to work too
+If you agree to reuse the same driver,I will fix the issues existing in
+the current driver.
 
-have posted v2 here: https://patchwork.kernel.org/patch/11213957/
+Best Regards,
+Xia Jiang
+> 
+> Best regards,
+> Tomasz
 
-regards Frank
-
-> Gesendet: Samstag, 26. Oktober 2019 um 21:31 Uhr
-> Von: "Fabio Estevam" <festevam@gmail.com>
-
-> The solution that was accepted for this case was to use
-> platform_get_irq_optional() instead.
->
-> You could try using platform_get_irq_optional() here as well.
 
 
 _______________________________________________
