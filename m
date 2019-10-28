@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B8D8CA9EC0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:43:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CD062CA9EC0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:43:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1C38320717
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:43:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9F81920717
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:43:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JpZAw29/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1C38320717
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oaPmpEDl"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F81920717
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,55 +25,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T+aIx68vALMNb6fE97UtpJLdMfwrGOIX95jpfHmqcXk=; b=JpZAw29/kX2Djb
-	qXuLgl1iMZPsXGmyUp6TDVR83+zlYI4DLPRFbVtj6DQ/JsypdAs2FmoLhvINrOD3nDTxb86cs2d+H
-	GAd+NupSPNQr71Z+5BvFnz9Q1krIoj/MSfTm0QlUMF3+mF8Tpdq0Dar5O/S/BLp2l2ps0uIwdaUhS
-	L1yVu2OfRoAobPdq0RK+jsc3un87Qi99CT4ictTGtmr/q56EtOuGWGA0ySPFxNMMPiKqwKuu53p6e
-	DrlPT8XnLHmT9LnLMdKlZY5wuoxtWM41ja6Y5HFZSNbCh17lXlkri3LrnbKfNSLIFRMCBcxGjkOBE
-	PANKADM1ZqXaO8Rgy3gg==;
+	List-Owner; bh=iNIiSUDPsTd+pAXxLxpB86vVOboJbsUJRR6h5rjs+Mw=; b=oaPmpEDlITUBIV
+	nuvEZxLUjojmkDTpD24r+0xq8rFN/gqP2QJrWSkdAmtZ+I7O5xMymaDo3QcbBAJ6pfXNnk/QWwDTS
+	m4m6rKkrP0NwsKVmtgXwSms08PYgRroWpouWQv7kbjGwWDr04cnhmR4Fso64E6a5sdzmqduQKITzZ
+	/HLXTdG5dAdUdsp8vYJVnxS3wxQE5ogy+OfyZbNTT2iDb2fPKwHrL2ZUglct1+Xs8pzGd5W+JxIoe
+	4I7d5EWlcLXna2TnLoM7KcZordk5/sFgUIxj7Tqh3V/H3pQzmFIAMEvfdUlPlJX4iyGW7Ge84DBmV
+	IgQWd+f0BcCH1HkzmExA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iP87M-0001cW-8Y; Mon, 28 Oct 2019 16:43:44 +0000
-Received: from mail-ot1-f66.google.com ([209.85.210.66])
+	id 1iP87H-0001WN-Eb; Mon, 28 Oct 2019 16:43:39 +0000
+Received: from mail-oi1-f195.google.com ([209.85.167.195])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iP7xx-0007Zi-2B; Mon, 28 Oct 2019 16:34:02 +0000
-Received: by mail-ot1-f66.google.com with SMTP id b19so4820317otq.10;
- Mon, 28 Oct 2019 09:34:00 -0700 (PDT)
+ id 1iP7xv-0007Y9-96; Mon, 28 Oct 2019 16:34:01 +0000
+Received: by mail-oi1-f195.google.com with SMTP id c2so6376921oic.13;
+ Mon, 28 Oct 2019 09:33:58 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=5gD14iI8UpOKj376Bq/txSzTZsSs0VToSMrptEdmjdQ=;
- b=aIfRqPh3/FSG4OKFcJU4rrihPuhQelf0JRNLdEHPBoFOoQZtfmIn1j2NHxTWPqUDzY
- cEXULGf+RXwyP5BCGgsmq6tjEjZQ11WxA1FY3oMny5OMkzaHc89MVfn1Ih5IBBlIE/l3
- HIHzyE+26zU7i9g/kSHMI8l6i7VunjgjYFGa3HzEAAjEr/j72chZkt3N+8BxEaE3OIoQ
- qqDj2kESZYe45gVyScs8fi1NJn2+IJTxVUYiBzw0+7wqecl2qn/umYkH7jUWVsSjb6RC
- zREZDl/3NQU96TCIupLpXeCt5PskNukxcpCdnPLqku9ZVtBHZapY7cniT8wEyCpNATKh
- jvAQ==
-X-Gm-Message-State: APjAAAU+tDxeP1leKH2exw/TfVQ1CZIOLdF0PxcAhNwkYnAsL6dlXkt9
- dbp1q2vtVDxkgpHhl0tajQ==
-X-Google-Smtp-Source: APXvYqxwQvVW18ni2MGlR3yza3cM3F7fWkGTz5dS8pb+bIhSeEI2GqTMRaA5bo4tECabCiP8MTGJZA==
-X-Received: by 2002:a9d:4616:: with SMTP id y22mr13801201ote.319.1572280439895; 
- Mon, 28 Oct 2019 09:33:59 -0700 (PDT)
+ bh=KRER0q+mlfhxTDAY0c1+VI59pLZZnQ9VLJY13cVFl4Y=;
+ b=CYPLr4KFQdVnHACVHInVnYEXwRNWdVcfbEw8zIwYevcNVal0Gb3HPiUXWsqOuC26Yh
+ G/h9tgd5TK/g4RXJJfl5l7gPurn0etXaOwz4/78h/QSsYLkvoBwx3jqSTSJylIPg+QSl
+ ByYKlng2wmEuGEFTPfVi0rsiNUP1rsNyZSKR572BQDIf1127gdrlZktECFidx9P1HlVY
+ yrCw2OiPflgpUDDWOs4v5tJAQ/WNg6k+osbo7R38vdA/Gyv8XU0Xba0YMwtuMBG+bjCl
+ aqzusuq6KVE8o4y8cTeoO5CfxaW/krdMM0TBBZ5+7Zs0Bne7NN63VUCOT+D500yA587X
+ Au/g==
+X-Gm-Message-State: APjAAAWhlvnPXidI+EI/wY0REtsTjeC7gbbVJBvCusr2XvJolB6fccln
+ 4J3/4JQNjQP+yJEmA56pKw==
+X-Google-Smtp-Source: APXvYqzT0VPnOPdPwF3Vz9tQT4AF71pvOJiHKIpOHt2Q3w8psOl69/xNpsNI3ONaaYbY/akHURqGlg==
+X-Received: by 2002:a05:6808:5cf:: with SMTP id
+ d15mr132310oij.144.1572280437917; 
+ Mon, 28 Oct 2019 09:33:57 -0700 (PDT)
 Received: from xps15.herring.priv (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.googlemail.com with ESMTPSA id e186sm354991oia.47.2019.10.28.09.33.58
+ by smtp.googlemail.com with ESMTPSA id e186sm354991oia.47.2019.10.28.09.33.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Oct 2019 09:33:59 -0700 (PDT)
+ Mon, 28 Oct 2019 09:33:57 -0700 (PDT)
 From: Rob Herring <robh@kernel.org>
 To: Andrew Murray <andrew.murray@arm.com>, Bjorn Helgaas <bhelgaas@google.com>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: [PATCH v3 25/25] PCI: Make devm_of_pci_get_host_bridge_resources()
- static
-Date: Mon, 28 Oct 2019 11:32:56 -0500
-Message-Id: <20191028163256.8004-26-robh@kernel.org>
+Subject: [PATCH v3 24/25] PCI: rcar: Use inbound resources for setup
+Date: Mon, 28 Oct 2019 11:32:55 -0500
+Message-Id: <20191028163256.8004-25-robh@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191028163256.8004-1-robh@kernel.org>
 References: <20191028163256.8004-1-robh@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191028_093401_185142_75D9990C 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20191028_093359_447963_553AEA75 
+X-CRM114-Status: GOOD (  16.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,74 +107,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Now that all the PCI host drivers are using pci_parse_request_of_pci_ranges(),
-make devm_of_pci_get_host_bridge_resources() static.
+Now that the helpers provide the inbound resources in the host bridge
+'dma_ranges' resource list, convert Renesas R-Car PCIe host bridge to
+use the resource list to setup the inbound addresses.
 
+Cc: Simon Horman <horms@verge.net.au>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>
 Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/pci/of.c  |  5 +----
- drivers/pci/pci.h | 17 -----------------
- 2 files changed, 1 insertion(+), 21 deletions(-)
+ drivers/pci/controller/pcie-rcar.c | 45 +++++++++++-------------------
+ 1 file changed, 16 insertions(+), 29 deletions(-)
 
-diff --git a/drivers/pci/of.c b/drivers/pci/of.c
-index 0b1e4623dfcf..00e4b9fcb41d 100644
---- a/drivers/pci/of.c
-+++ b/drivers/pci/of.c
-@@ -236,7 +236,6 @@ void of_pci_check_probe_only(void)
+diff --git a/drivers/pci/controller/pcie-rcar.c b/drivers/pci/controller/pcie-rcar.c
+index b8d6e86a5539..453c931aaf77 100644
+--- a/drivers/pci/controller/pcie-rcar.c
++++ b/drivers/pci/controller/pcie-rcar.c
+@@ -1014,16 +1014,16 @@ static int rcar_pcie_get_resources(struct rcar_pcie *pcie)
  }
- EXPORT_SYMBOL_GPL(of_pci_check_probe_only);
  
--#if defined(CONFIG_OF_ADDRESS)
- /**
-  * devm_of_pci_get_host_bridge_resources() - Resource-managed parsing of PCI
-  *                                           host bridge resources from DT
-@@ -255,7 +254,7 @@ EXPORT_SYMBOL_GPL(of_pci_check_probe_only);
-  * It returns zero if the range parsing has been successful or a standard error
-  * value if it failed.
-  */
--int devm_of_pci_get_host_bridge_resources(struct device *dev,
-+static int devm_of_pci_get_host_bridge_resources(struct device *dev,
- 			unsigned char busno, unsigned char bus_max,
- 			struct list_head *resources,
- 			struct list_head *ib_resources,
-@@ -384,8 +383,6 @@ int devm_of_pci_get_host_bridge_resources(struct device *dev,
- 	pci_free_resource_list(resources);
- 	return err;
+ static int rcar_pcie_inbound_ranges(struct rcar_pcie *pcie,
+-				    struct of_pci_range *range,
++				    struct resource_entry *entry,
+ 				    int *index)
+ {
+-	u64 restype = range->flags;
+-	u64 cpu_addr = range->cpu_addr;
+-	u64 cpu_end = range->cpu_addr + range->size;
+-	u64 pci_addr = range->pci_addr;
++	u64 restype = entry->res->flags;
++	u64 cpu_addr = entry->res->start;
++	u64 cpu_end = entry->res->end;
++	u64 pci_addr = entry->res->start - entry->offset;
+ 	u32 flags = LAM_64BIT | LAR_ENABLE;
+ 	u64 mask;
+-	u64 size;
++	u64 size = resource_size(entry->res);
+ 	int idx = *index;
+ 
+ 	if (restype & IORESOURCE_PREFETCH)
+@@ -1037,9 +1037,7 @@ static int rcar_pcie_inbound_ranges(struct rcar_pcie *pcie,
+ 		unsigned long nr_zeros = __ffs64(cpu_addr);
+ 		u64 alignment = 1ULL << nr_zeros;
+ 
+-		size = min(range->size, alignment);
+-	} else {
+-		size = range->size;
++		size = min(size, alignment);
+ 	}
+ 	/* Hardware supports max 4GiB inbound region */
+ 	size = min(size, 1ULL << 32);
+@@ -1078,30 +1076,19 @@ static int rcar_pcie_inbound_ranges(struct rcar_pcie *pcie,
+ 	return 0;
  }
--EXPORT_SYMBOL_GPL(devm_of_pci_get_host_bridge_resources);
--#endif /* CONFIG_OF_ADDRESS */
  
- #if IS_ENABLED(CONFIG_OF_IRQ)
- /**
-diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
-index 6692c4fe4290..118a4974537b 100644
---- a/drivers/pci/pci.h
-+++ b/drivers/pci/pci.h
-@@ -630,23 +630,6 @@ static inline void pci_set_bus_of_node(struct pci_bus *bus) { }
- static inline void pci_release_bus_of_node(struct pci_bus *bus) { }
- #endif /* CONFIG_OF */
- 
--#if defined(CONFIG_OF_ADDRESS)
--int devm_of_pci_get_host_bridge_resources(struct device *dev,
--			unsigned char busno, unsigned char bus_max,
--			struct list_head *resources,
--			struct list_head *ib_resources,
--			resource_size_t *io_base);
--#else
--static inline int devm_of_pci_get_host_bridge_resources(struct device *dev,
--			unsigned char busno, unsigned char bus_max,
--			struct list_head *resources,
--			struct list_head *ib_resources,
--			resource_size_t *io_base)
--{
--	return -EINVAL;
--}
--#endif
+-static int rcar_pcie_parse_map_dma_ranges(struct rcar_pcie *pcie,
+-					  struct device_node *np)
++static int rcar_pcie_parse_map_dma_ranges(struct rcar_pcie *pcie)
+ {
+-	struct of_pci_range range;
+-	struct of_pci_range_parser parser;
+-	int index = 0;
+-	int err;
 -
- #ifdef CONFIG_PCIEAER
- void pci_no_aer(void);
- void pci_aer_init(struct pci_dev *dev);
+-	if (of_pci_dma_range_parser_init(&parser, np))
+-		return -EINVAL;
+-
+-	/* Get the dma-ranges from DT */
+-	for_each_of_pci_range(&parser, &range) {
+-		u64 end = range.cpu_addr + range.size - 1;
+-
+-		dev_dbg(pcie->dev, "0x%08x 0x%016llx..0x%016llx -> 0x%016llx\n",
+-			range.flags, range.cpu_addr, end, range.pci_addr);
++	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(pcie);
++	struct resource_entry *entry;
++	int index = 0, err = 0;
+ 
+-		err = rcar_pcie_inbound_ranges(pcie, &range, &index);
++	resource_list_for_each_entry(entry, &bridge->dma_ranges) {
++		err = rcar_pcie_inbound_ranges(pcie, entry, &index);
+ 		if (err)
+-			return err;
++			break;
+ 	}
+ 
+-	return 0;
++	return err;
+ }
+ 
+ static const struct of_device_id rcar_pcie_of_match[] = {
+@@ -1162,7 +1149,7 @@ static int rcar_pcie_probe(struct platform_device *pdev)
+ 		goto err_unmap_msi_irqs;
+ 	}
+ 
+-	err = rcar_pcie_parse_map_dma_ranges(pcie, dev->of_node);
++	err = rcar_pcie_parse_map_dma_ranges(pcie);
+ 	if (err)
+ 		goto err_clk_disable;
+ 
 -- 
 2.20.1
 
