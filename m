@@ -2,78 +2,90 @@ Return-Path: <SRS0=ArXH=YV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CD062CA9EC0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:43:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 00366CA9EC0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 20:36:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9F81920717
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 16:43:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CA0732053B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Oct 2019 20:36:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oaPmpEDl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F81920717
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aRvMiwy+";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="b//ClzcU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA0732053B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iNIiSUDPsTd+pAXxLxpB86vVOboJbsUJRR6h5rjs+Mw=; b=oaPmpEDlITUBIV
-	nuvEZxLUjojmkDTpD24r+0xq8rFN/gqP2QJrWSkdAmtZ+I7O5xMymaDo3QcbBAJ6pfXNnk/QWwDTS
-	m4m6rKkrP0NwsKVmtgXwSms08PYgRroWpouWQv7kbjGwWDr04cnhmR4Fso64E6a5sdzmqduQKITzZ
-	/HLXTdG5dAdUdsp8vYJVnxS3wxQE5ogy+OfyZbNTT2iDb2fPKwHrL2ZUglct1+Xs8pzGd5W+JxIoe
-	4I7d5EWlcLXna2TnLoM7KcZordk5/sFgUIxj7Tqh3V/H3pQzmFIAMEvfdUlPlJX4iyGW7Ge84DBmV
-	IgQWd+f0BcCH1HkzmExA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fVONTpzJsvgKwVMTzIUk0q7Q73ur7cPTtRV0vig4dWk=; b=aRvMiwy+sY2Yrv
+	11rS8vrOmqOKKFK0mXLr6TY3YJkb6dX9qZecElhrIaN+MlDnKVLZFkJzsOv2U0jprKxMgHIEpO1D6
+	p9b4RO4x2j2U4lxB9Es/AWbP7pQ+h54QhMAEM1FFnX0BbrWi1k3mf8vW2WD6H/jgCflk/FNkW8BvO
+	mpBtZccwCHTEyztGsmEuwBKJeqPRLG5okpWuDmNh6zmhjuIYjaqRMSLKThQup6r4hc8V5A+3P21Ok
+	TNCBkgM85wtLdyitXpq5dwI0dikr9hTh3sop+xQ0lxMTGBf1B1nZN/oyG/5V6l/EmDReaeVg+3y2B
+	O3GmbFNtOX74k8dTHktw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iP87H-0001WN-Eb; Mon, 28 Oct 2019 16:43:39 +0000
-Received: from mail-oi1-f195.google.com ([209.85.167.195])
+	id 1iPBkf-00043K-30; Mon, 28 Oct 2019 20:36:33 +0000
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iP7xv-0007Y9-96; Mon, 28 Oct 2019 16:34:01 +0000
-Received: by mail-oi1-f195.google.com with SMTP id c2so6376921oic.13;
- Mon, 28 Oct 2019 09:33:58 -0700 (PDT)
+ id 1iPBkQ-0003tK-UM; Mon, 28 Oct 2019 20:36:23 +0000
+Received: by mail-pf1-x441.google.com with SMTP id c13so7714459pfp.5;
+ Mon, 28 Oct 2019 13:36:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=2eVkQtIn/kKnma8y9cwV6ClxG9uop+VztYkAE7P1mO8=;
+ b=b//ClzcUZP5lNIguYzGrNsqlLmWAsiXCNmR6XVmRGQyO9IpHdPNJNM3zwzsH6xbL7l
+ r6aAJHRua/sLXQEKp5pe+yZxE/Y4WHHYlRMls9e7L9PHXOxFd52kwC++T07yRbwY4OJ0
+ o60C7ky1UJWOR6dS/uOHP+ukjEh/qQP8cxiSuTRCuweAoQ0tQAWMycdUMUh5PX4HeyE8
+ txTZcIw4mE3lTbFYmd9Mtm4hz1V6iyNHh0+JKKLdBF8+EeCK9ueRBZ/iKSXUepxpC8g7
+ e3lmsLfto5jfL9qiHSDhGAJYsaEeFV2EuqE9Pfr57eTtPTaNVWM8Ir5qkc4Y2lXjvpbR
+ DgwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=KRER0q+mlfhxTDAY0c1+VI59pLZZnQ9VLJY13cVFl4Y=;
- b=CYPLr4KFQdVnHACVHInVnYEXwRNWdVcfbEw8zIwYevcNVal0Gb3HPiUXWsqOuC26Yh
- G/h9tgd5TK/g4RXJJfl5l7gPurn0etXaOwz4/78h/QSsYLkvoBwx3jqSTSJylIPg+QSl
- ByYKlng2wmEuGEFTPfVi0rsiNUP1rsNyZSKR572BQDIf1127gdrlZktECFidx9P1HlVY
- yrCw2OiPflgpUDDWOs4v5tJAQ/WNg6k+osbo7R38vdA/Gyv8XU0Xba0YMwtuMBG+bjCl
- aqzusuq6KVE8o4y8cTeoO5CfxaW/krdMM0TBBZ5+7Zs0Bne7NN63VUCOT+D500yA587X
- Au/g==
-X-Gm-Message-State: APjAAAWhlvnPXidI+EI/wY0REtsTjeC7gbbVJBvCusr2XvJolB6fccln
- 4J3/4JQNjQP+yJEmA56pKw==
-X-Google-Smtp-Source: APXvYqzT0VPnOPdPwF3Vz9tQT4AF71pvOJiHKIpOHt2Q3w8psOl69/xNpsNI3ONaaYbY/akHURqGlg==
-X-Received: by 2002:a05:6808:5cf:: with SMTP id
- d15mr132310oij.144.1572280437917; 
- Mon, 28 Oct 2019 09:33:57 -0700 (PDT)
-Received: from xps15.herring.priv (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.googlemail.com with ESMTPSA id e186sm354991oia.47.2019.10.28.09.33.56
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=2eVkQtIn/kKnma8y9cwV6ClxG9uop+VztYkAE7P1mO8=;
+ b=MoiUQ+94+SIBi2jzRmhAmCIzGiosXrpK3WPw8z+YsTc+HDa4CdeDomW6HjM0rdYgWV
+ 5uRp89SiEsYS71MFykE/e2AX3gC1+Ob14Dw8zE3swZRC+K8QbMAjDvvyTm/hoWMlsZu1
+ nIpLejQe2urc/iOFB9mNdbO6TzEyVVd4EAAoW4C/DxsRRY96gMHkqE8kB+3F+z4JK1fR
+ kCCBabWXe/apelqIbgJ0o5iskt5JYqGvV0D2aM4tcSpN3DRvERPxF6EAFdSBEUReKReC
+ joYnwc65h2iGdfDSnfJU6uNQr+iVazPjVcruyG3vE+/aMRbVwE172EmUNyEhguL4tdk7
+ QJ2w==
+X-Gm-Message-State: APjAAAWb6p1kKLgA/cQh/uh8CpwsTaob2EJ01B+pEq2aAbPSC6WhSn7x
+ zZUGJvatXdrn1MMJNB58PN8=
+X-Google-Smtp-Source: APXvYqxn4r3LTRA9B5aBfCDAvI4pAQSPotWe8JAzIrgIs7Z+04gKfRBPz3DLEc0RryrCUMBZKIaILw==
+X-Received: by 2002:a63:2225:: with SMTP id i37mr13535290pgi.62.1572294977814; 
+ Mon, 28 Oct 2019 13:36:17 -0700 (PDT)
+Received: from saurav ([27.62.167.137])
+ by smtp.gmail.com with ESMTPSA id e17sm11126717pgg.5.2019.10.28.13.36.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Oct 2019 09:33:57 -0700 (PDT)
-From: Rob Herring <robh@kernel.org>
-To: Andrew Murray <andrew.murray@arm.com>, Bjorn Helgaas <bhelgaas@google.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Subject: [PATCH v3 24/25] PCI: rcar: Use inbound resources for setup
-Date: Mon, 28 Oct 2019 11:32:55 -0500
-Message-Id: <20191028163256.8004-25-robh@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191028163256.8004-1-robh@kernel.org>
-References: <20191028163256.8004-1-robh@kernel.org>
+ Mon, 28 Oct 2019 13:36:17 -0700 (PDT)
+Date: Tue, 29 Oct 2019 02:06:09 +0530
+From: Saurav Girepunje <saurav.girepunje@gmail.com>
+To: nbd@openwrt.org, john@phrozen.org, sean.wang@mediatek.com,
+ nelson.chang@mediatek.com, davem@davemloft.net,
+ matthias.bgg@gmail.com, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] mediatek: mtk_eth_path.c: Remove unneeded semicolon
+Message-ID: <20191028203609.GA29373@saurav>
 MIME-Version: 1.0
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191028_093359_447963_553AEA75 
-X-CRM114-Status: GOOD (  16.61  )
+X-CRM114-CacheID: sfid-20191028_133621_720692_5A3394BC 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,126 +97,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>,
- Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org,
- Shawn Lin <shawn.lin@rock-chips.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Michal Simek <michal.simek@xilinx.com>,
- Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org,
- bcm-kernel-feedback-list@broadcom.com,
- Linus Walleij <linus.walleij@linaro.org>, Ray Jui <rjui@broadcom.com>,
- Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>,
- Jingoo Han <jingoohan1@gmail.com>, rfi@lists.rocketboards.org,
- linux-renesas-soc@vger.kernel.org, Tom Joseph <tjoseph@cadence.com>,
- Srinath Mannam <srinath.mannam@broadcom.com>,
- Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
- Ley Foon Tan <lftan@altera.com>
+Cc: saurav.girepunje@hotmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Now that the helpers provide the inbound resources in the host bridge
-'dma_ranges' resource list, convert Renesas R-Car PCIe host bridge to
-use the resource list to setup the inbound addresses.
+Remove unneeded semicolon in mtk_eth_path.c
 
-Cc: Simon Horman <horms@verge.net.au>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>
-Signed-off-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Saurav Girepunje <saurav.girepunje@gmail.com>
 ---
- drivers/pci/controller/pcie-rcar.c | 45 +++++++++++-------------------
- 1 file changed, 16 insertions(+), 29 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_path.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-rcar.c b/drivers/pci/controller/pcie-rcar.c
-index b8d6e86a5539..453c931aaf77 100644
---- a/drivers/pci/controller/pcie-rcar.c
-+++ b/drivers/pci/controller/pcie-rcar.c
-@@ -1014,16 +1014,16 @@ static int rcar_pcie_get_resources(struct rcar_pcie *pcie)
- }
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_path.c b/drivers/net/ethernet/mediatek/mtk_eth_path.c
+index ef11cf3d1ccc..0fe97155dd8f 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_path.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_path.c
+@@ -57,7 +57,7 @@ static int set_mux_gdm1_to_gmac1_esw(struct mtk_eth *eth, int path)
+ 	default:
+ 		updated = false;
+ 		break;
+-	};
++	}
  
- static int rcar_pcie_inbound_ranges(struct rcar_pcie *pcie,
--				    struct of_pci_range *range,
-+				    struct resource_entry *entry,
- 				    int *index)
- {
--	u64 restype = range->flags;
--	u64 cpu_addr = range->cpu_addr;
--	u64 cpu_end = range->cpu_addr + range->size;
--	u64 pci_addr = range->pci_addr;
-+	u64 restype = entry->res->flags;
-+	u64 cpu_addr = entry->res->start;
-+	u64 cpu_end = entry->res->end;
-+	u64 pci_addr = entry->res->start - entry->offset;
- 	u32 flags = LAM_64BIT | LAR_ENABLE;
- 	u64 mask;
--	u64 size;
-+	u64 size = resource_size(entry->res);
- 	int idx = *index;
+ 	if (updated) {
+ 		val = mtk_r32(eth, MTK_MAC_MISC);
+@@ -143,7 +143,7 @@ static int set_mux_gmac1_gmac2_to_sgmii_rgmii(struct mtk_eth *eth, int path)
+ 	default:
+ 		updated = false;
+ 		break;
+-	};
++	}
  
- 	if (restype & IORESOURCE_PREFETCH)
-@@ -1037,9 +1037,7 @@ static int rcar_pcie_inbound_ranges(struct rcar_pcie *pcie,
- 		unsigned long nr_zeros = __ffs64(cpu_addr);
- 		u64 alignment = 1ULL << nr_zeros;
+ 	if (updated)
+ 		regmap_update_bits(eth->ethsys, ETHSYS_SYSCFG0,
+@@ -174,7 +174,7 @@ static int set_mux_gmac12_to_gephy_sgmii(struct mtk_eth *eth, int path)
+ 		break;
+ 	default:
+ 		updated = false;
+-	};
++	}
  
--		size = min(range->size, alignment);
--	} else {
--		size = range->size;
-+		size = min(size, alignment);
- 	}
- 	/* Hardware supports max 4GiB inbound region */
- 	size = min(size, 1ULL << 32);
-@@ -1078,30 +1076,19 @@ static int rcar_pcie_inbound_ranges(struct rcar_pcie *pcie,
- 	return 0;
- }
- 
--static int rcar_pcie_parse_map_dma_ranges(struct rcar_pcie *pcie,
--					  struct device_node *np)
-+static int rcar_pcie_parse_map_dma_ranges(struct rcar_pcie *pcie)
- {
--	struct of_pci_range range;
--	struct of_pci_range_parser parser;
--	int index = 0;
--	int err;
--
--	if (of_pci_dma_range_parser_init(&parser, np))
--		return -EINVAL;
--
--	/* Get the dma-ranges from DT */
--	for_each_of_pci_range(&parser, &range) {
--		u64 end = range.cpu_addr + range.size - 1;
--
--		dev_dbg(pcie->dev, "0x%08x 0x%016llx..0x%016llx -> 0x%016llx\n",
--			range.flags, range.cpu_addr, end, range.pci_addr);
-+	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(pcie);
-+	struct resource_entry *entry;
-+	int index = 0, err = 0;
- 
--		err = rcar_pcie_inbound_ranges(pcie, &range, &index);
-+	resource_list_for_each_entry(entry, &bridge->dma_ranges) {
-+		err = rcar_pcie_inbound_ranges(pcie, entry, &index);
- 		if (err)
--			return err;
-+			break;
- 	}
- 
--	return 0;
-+	return err;
- }
- 
- static const struct of_device_id rcar_pcie_of_match[] = {
-@@ -1162,7 +1149,7 @@ static int rcar_pcie_probe(struct platform_device *pdev)
- 		goto err_unmap_msi_irqs;
- 	}
- 
--	err = rcar_pcie_parse_map_dma_ranges(pcie, dev->of_node);
-+	err = rcar_pcie_parse_map_dma_ranges(pcie);
- 	if (err)
- 		goto err_clk_disable;
- 
+ 	if (updated)
+ 		regmap_update_bits(eth->ethsys, ETHSYS_SYSCFG0,
 -- 
 2.20.1
 
