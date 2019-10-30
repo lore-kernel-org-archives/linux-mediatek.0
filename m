@@ -2,68 +2,70 @@ Return-Path: <SRS0=ckAq=YX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2EBB6CA9EAF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2019 09:04:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9328DCA9EAF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2019 09:09:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EBFEB2083E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2019 09:04:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6248A2083E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2019 09:09:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hNnbRjqs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EBFEB2083E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lfK0oRy+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6248A2083E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=e8FfXw5YWUUVRf81SZcqmQXMNQUzzT0Dr9OgBs8tTiw=; b=hNnbRjqsAZOZnl
-	q4GfJoXQOjZjsEPxX69YI14Z2CTd3iA2fMEO/piTbXgVkpjGCZ9BxdoDB5BhDMFduwbVSWEXGUc4S
-	hS26Tk+9Jybz7mSdMgr1jUaKbYsVwsQNabIuPnvqeTrQaSi5t6bt3ThqZ6ObwI3odDFXYexfwclfB
-	0i6fPWWulS0Yo1uhxmtGClLeEDSjvLMS4iIcTZQ4aeXo9y3GXuINm2efsk+nR7LGaBw3pHdPQ3ovM
-	OmWRCPWWGfftXhNrhZhAsqrwZuY/ipx2SIaxrIFMIrpDw68la/Ka6N43F1ham7+T0aBlBDxSXGoKK
-	xM6FXip0OHeihHIS5tkQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2mq6n+Riht3Yfz75gQzxp/CucWow4DPvs4J0VDO2pQY=; b=lfK0oRy+erjQO9
+	qSzV+KAzgm1AijNMNekwYSkIxv2Zr97LbwC4Sxjd9qm8RBW9qMo7CNVgyPHNAYp4O0h1YGkB9lb6J
+	kJHLPU1b3/hlCQgQn0yNFyrN9Zd+0yHQ+gm7+WuKhO2dkThV3bxmeQid9YOJLz0uruZbpgZWBMN2G
+	a5HQce8N+TBaJ5yYufzgmK3ee7B8/83TGPgozwoGiKih0eaLh3QbFz+2p/Q9WazpxhulTsluPgupz
+	83Ll6DZx6bd2DXIMpyXhYGxkWAb48qcy4MfvMJhp3oaLqOZCiq3/VsJTB8QCa/3sUHemAhYLAdXnI
+	oGmkHrC9zSE0fgMF1yDw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iPjtx-0005i4-8q; Wed, 30 Oct 2019 09:04:25 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1iPjyU-0007rd-12; Wed, 30 Oct 2019 09:09:06 +0000
+Received: from mga14.intel.com ([192.55.52.115])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iPjtW-0005Ki-Ve; Wed, 30 Oct 2019 09:04:00 +0000
-X-UUID: f858ac9b8e734a1392a2b7aad1f8a0e2-20191030
-X-UUID: f858ac9b8e734a1392a2b7aad1f8a0e2-20191030
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <luhua.xu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1943393116; Wed, 30 Oct 2019 01:04:12 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 30 Oct 2019 02:03:49 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 30 Oct 2019 17:03:47 +0800
-Received: from localhost.localdomain (10.15.20.246) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 30 Oct 2019 17:03:47 +0800
-From: Luhua Xu <luhua.xu@mediatek.com>
-To: Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH V2] spi: add power control when set_cs
-Date: Wed, 30 Oct 2019 17:03:54 +0800
-Message-ID: <1572426234-30019-1-git-send-email-luhua.xu@mediatek.com>
-X-Mailer: git-send-email 2.6.4
+ id 1iPjyE-0007cU-2d; Wed, 30 Oct 2019 09:08:51 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 30 Oct 2019 02:08:49 -0700
+X-IronPort-AV: E=Sophos;i="5.68,246,1569308400"; d="scan'208";a="401441344"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+ by fmsmga006-auth.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 30 Oct 2019 02:08:45 -0700
+Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
+ id 97D7A208A0; Wed, 30 Oct 2019 11:08:43 +0200 (EET)
+Date: Wed, 30 Oct 2019 11:08:43 +0200
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Dongchun Zhu <dongchun.zhu@mediatek.com>
+Subject: Re: [V2, 1/2] media: dt-bindings: media: i2c: Add bindings for ov8856
+Message-ID: <20191030090843.GG10211@paasikivi.fi.intel.com>
+References: <20190910130446.26413-1-dongchun.zhu@mediatek.com>
+ <20190910130446.26413-2-dongchun.zhu@mediatek.com>
+ <20190910173743.GI2680@smile.fi.intel.com>
+ <20190917120205.GO5781@paasikivi.fi.intel.com>
+ <20190917144412.GA23952@bogus>
+ <1572426023.21623.257.camel@mhfsdcap03>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1572426023.21623.257.camel@mhfsdcap03>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191030_020359_030916_1DA7B890 
-X-CRM114-Status: UNSURE (   9.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191030_020850_131396_F7695402 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,59 +77,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
- linux-spi@vger.kernel.org, Luhua Xu <luhua.xu@mediatek.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: mark.rutland@arm.com, Rob Herring <robh@kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
+ shengnan.wang@mediatek.com, tfiga@chromium.org, louis.kuo@mediatek.com,
+ sj.huang@mediatek.com, drinkcat@chromium.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Luhua Xu" <luhua.xu@mediatek.com>
+Hi Dongchun,
 
-As to set_cs takes effect immediately, power spi
-is needed when setup spi.
+On Wed, Oct 30, 2019 at 05:00:23PM +0800, Dongchun Zhu wrote:
+> Hi Rob,
+> 
+> On Tue, 2019-09-17 at 09:44 -0500, Rob Herring wrote:
+> > On Tue, Sep 17, 2019 at 03:02:06PM +0300, Sakari Ailus wrote:
+> > > On Tue, Sep 10, 2019 at 08:37:43PM +0300, Andy Shevchenko wrote:
+> > > > On Tue, Sep 10, 2019 at 09:04:45PM +0800, dongchun.zhu@mediatek.com wrote:
+> > > > > From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > > > > 
+> > > > > This patch adds device tree bindings documentation for the ov8856 CMOS
+> > > > > image sensor.
+> > > > 
+> > > > New bindings in YAML, please.
+> > > 
+> > > My understanding is text documents are still fine.
+> > 
+> > Schema are preferred, but still up to the subsystem for now.
+> >  
+> 
+> It seems that there are no bindings in YAML under the path:
+> Documentation/devicetree/bindings/media/i2c.
+> So we would keep the text documents for OV8856.
 
-Cc: Mark Brown <broonie@kernel.org>
-Signed-off-by: Luhua Xu <luhua.xu@mediatek.com>
----
-V2:
-- move set_cs PM control from .set_cs callback in
-  vendor driver to spi_setup in spi framework.
+That is going to change very soon with the addition of IMX296 bindings:
 
+<URL:https://lore.kernel.org/linux-media/20191029220928.GA17996@bogus/T/#mdd27731659215b1e35049892ef82bb6b62e80b61>
 
- drivers/spi/spi.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-index f9502db..19007e0 100644
---- a/drivers/spi/spi.c
-+++ b/drivers/spi/spi.c
-@@ -3091,7 +3091,20 @@ int spi_setup(struct spi_device *spi)
- 	if (spi->controller->setup)
- 		status = spi->controller->setup(spi);
- 
--	spi_set_cs(spi, false);
-+	if (spi->controller->auto_runtime_pm && spi->controller->set_cs) {
-+		status = pm_runtime_get_sync(spi->controller->dev.parent);
-+		if (status < 0) {
-+			pm_runtime_put_noidle(spi->controller->dev.parent);
-+			dev_err(&spi->controller->dev, "Failed to power device: %d\n",
-+				status);
-+			return status;
-+		}
-+		spi_set_cs(spi, false);
-+		pm_runtime_mark_last_busy(spi->controller->dev.parent);
-+		pm_runtime_put_autosuspend(spi->controller->dev.parent);
-+	} else {
-+		spi_set_cs(spi, false);
-+	}
- 
- 	if (spi->rt && !spi->controller->rt) {
- 		spi->controller->rt = true;
 -- 
-2.6.4
-
+Sakari Ailus
 
 _______________________________________________
 Linux-mediatek mailing list
