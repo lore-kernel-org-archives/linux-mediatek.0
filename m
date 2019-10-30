@@ -2,68 +2,73 @@ Return-Path: <SRS0=ckAq=YX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 08E44CA9EC5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2019 12:50:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F66DCA9EC7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2019 13:02:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CEA4F2080F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2019 12:50:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 42D412087E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2019 13:02:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="N1YSNSpp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CEA4F2080F
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="t65qxUnR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 42D412087E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Q5M/Tg08Eeuiuhp9H8ENRNpTMU8Z6JsfVSu2w6wgF8k=; b=N1YSNSppZXblzppYMq/9t8vad
-	63MImFvbJGk2nSk+uYkC7++T3ibMZD5rn0bVdMqjveRvljjPjqAGTQwqozHHQ1aJzpSS5VtbvwRZZ
-	bBScyCbNbkbqB3pDDkQfbqmNUsI6ABWsNPFpUzqjNMpo+W7oqKppLiY1u/uECzlz4uXACgpk7O36q
-	x3MICT3d5v/MpHm75OJaEjCuskPSAEkJwMIX4/YAg0HYtJFo+69kxyg0gkXqHKS0GEPMwvYOmzzU3
-	lOyigwSt8TXdaWcsSW99r2ME7AvgsdoLH/vWWA4kGsjJnrLdBy2yrT52obJklraehl1kIQJtG3UJm
-	1pT3q/MHw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3rMubQu5GpYenTsMcfZC5S8kZPjvsPee/tQfVbfjcjc=; b=t65qxUnRNGjihG
+	X3cKJ9e/mG+zBktSPs7l2dxAU5BcXNtAVgyBG6dlA1HsP7y5yew7eltbgSylRY/yhxDjbhjx6QdDy
+	1n/Xzu9a+u3cmjQRM1A9ieqJwQCGcuo7umoDnDSvzYutXG9rYx33sZoBIk3ip0h4rzqnvWkub9xNd
+	XCyjDPVypW369ggHaKAV+N6gq/ZfTbGG+qFRhyaHwLnP1OsZmUrmlvp0t31aNxdfIETMz1g5auVwS
+	mAWlffUt31C2+vB3wGVl3UM4BoM++zxGYvaCYOZne4vUoEU9a9HcMRseIL051LT4hRgV7C9SnyA4Z
+	zd/omh7I2KvgaWo7JrTg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iPnQZ-0001ef-Jt; Wed, 30 Oct 2019 12:50:19 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iPnQM-0000gH-K8; Wed, 30 Oct 2019 12:50:10 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 1F3CB1FB;
- Wed, 30 Oct 2019 05:50:04 -0700 (PDT)
-Received: from [10.1.197.57] (e110467-lin.cambridge.arm.com [10.1.197.57])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 67B933F71F;
- Wed, 30 Oct 2019 05:50:00 -0700 (PDT)
-Subject: Re: [PATCH v3 19/25] PCI: of: Add inbound resource parsing to helpers
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Srinath Mannam <srinath.mannam@broadcom.com>
-References: <20191028163256.8004-1-robh@kernel.org>
- <20191028163256.8004-20-robh@kernel.org>
- <20191029110751.GB27171@e121166-lin.cambridge.arm.com>
- <CABe79T7LPi-XvzARVh-_oVnv1Dr=Uzztps-W2vTr_7gSeiPFQg@mail.gmail.com>
- <20191029173406.GA25104@e121166-lin.cambridge.arm.com>
- <CABe79T5Cd30jFfTr1RRsMZ85sohwk64ZW1qb_LGHvns90WBpGw@mail.gmail.com>
- <20191030114839.GA16067@e121166-lin.cambridge.arm.com>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <e5d2af18-0263-df56-7586-b0d31143a7e4@arm.com>
-Date: Wed, 30 Oct 2019 12:49:59 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+	id 1iPncF-0006Ib-Q3; Wed, 30 Oct 2019 13:02:23 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iPncB-0006Hu-W0; Wed, 30 Oct 2019 13:02:22 +0000
+X-UUID: b4226e7f3dbc4cb88edaef67ab425323-20191030
+X-UUID: b4226e7f3dbc4cb88edaef67ab425323-20191030
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <dongchun.zhu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 652305589; Wed, 30 Oct 2019 05:02:08 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 30 Oct 2019 06:02:09 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Wed, 30 Oct 2019 21:02:06 +0800
+Received: from [10.17.3.153] (172.27.4.253) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Wed, 30 Oct 2019 21:02:05 +0800
+Message-ID: <1572440528.21623.270.camel@mhfsdcap03>
+Subject: Re: [V2, 2/2] media: i2c: Add more sensor modes for ov8856 camera
+ sensor
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Date: Wed, 30 Oct 2019 21:02:08 +0800
+In-Reply-To: <20190913075528.GL5781@paasikivi.fi.intel.com>
+References: <20190910130446.26413-1-dongchun.zhu@mediatek.com>
+ <20190910130446.26413-3-dongchun.zhu@mediatek.com>
+ <20190913075528.GL5781@paasikivi.fi.intel.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <20191030114839.GA16067@e121166-lin.cambridge.arm.com>
-Content-Language: en-GB
+X-TM-SNTS-SMTP: 032716CD351CC9CE8EF599FD8613DF9279C71D394481607ADDEEAD9D79A176412000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191030_055006_803079_0813E797 
-X-CRM114-Status: GOOD (  25.70  )
+X-CRM114-CacheID: sfid-20191030_060220_050397_7940DDEC 
+X-CRM114-Status: GOOD (  20.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,534 +80,1014 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>,
- Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>,
- Rob Herring <robh@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Michal Simek <michal.simek@xilinx.com>, Christoph Hellwig <hch@infradead.org>,
- linux-rockchip@lists.infradead.org,
- BCM Kernel Feedback <bcm-kernel-feedback-list@broadcom.com>,
- Shawn Lin <shawn.lin@rock-chips.com>, Ray Jui <rjui@broadcom.com>,
- Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>,
- linux-mediatek@lists.infradead.org, Andrew Murray <andrew.murray@arm.com>,
- Bjorn Helgaas <bhelgaas@google.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Scott Branden <sbranden@broadcom.com>, Jingoo Han <jingoohan1@gmail.com>,
- rfi@lists.rocketboards.org, linux-renesas-soc@vger.kernel.org,
- Tom Joseph <tjoseph@cadence.com>,
- Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
- Ley Foon Tan <lftan@altera.com>
+Cc: mark.rutland@arm.com, drinkcat@chromium.org,
+ andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
+ devicetree@vger.kernel.org, shengnan.wang@mediatek.com, tfiga@chromium.org,
+ louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30/10/2019 11:48, Lorenzo Pieralisi wrote:
-> [+Cc Robin]
-> 
-> On Wed, Oct 30, 2019 at 12:14:54PM +0530, Srinath Mannam wrote:
->> Hi Lorenzo,
->>
->> Thanks for the details.
->> Based on Robin's comment in the old patch, I thought dma_ranges list
->> will be in sorted order.
->> https://lore.kernel.org/lkml/741a4210-251c-9c00-d4a7-bc7ebf8cd57b@arm.com/
->>
->> Now, another patch is required to sort the list before reserving in
->> iova_reserve_pci_windows() function.
->>
->> Regards,
->> Srinath.
-> 
-> Don't top-post please.
-> 
-> https://en.wikipedia.org/wiki/Posting_style#Top-posting
-> 
-> Yes, the dma_ranges list must be sorted somehow I reckon
-> iova_reserve_pci_windows() is where it should be done (since that's
-> where the requirement is) or it can be done in
-> devm_of_pci_get_host_bridge_resources().
-> 
-> Thoughts ?
+Hi Sakari,
 
-Right, strictly it's only iova_reserve_pci_windows() that needs the list 
-sorted, it just worked out that maintaining the list in sorted order by 
-construction took a fair bit less code than explicitly sorting it. In 
-terms of preserving that behaviour in a slightly more generalised 
-fashion I suppose we could add something like:
+On Fri, 2019-09-13 at 10:55 +0300, Sakari Ailus wrote:
+> Hi Dongchun,
+> 
+> On Tue, Sep 10, 2019 at 09:04:46PM +0800, dongchun.zhu@mediatek.com wrote:
+> > From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > 
+> > This patch mainly adds two more sensor modes for OV8856 CMOS image sensor.
+> > That is, the resolution of 1632*1224 and 3264*2448, corresponding to the bayer order of BGGR.
+> > The sensor revision also differs in some OTP register.
+> > 
+> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > ---
+> >  drivers/media/i2c/ov8856.c | 654 +++++++++++++++++++++++++++++++++++++++++++--
+> >  1 file changed, 639 insertions(+), 15 deletions(-)
+> > 
+> > diff --git a/drivers/media/i2c/ov8856.c b/drivers/media/i2c/ov8856.c
+> > index cd347d6..9ad0b73 100644
+> > --- a/drivers/media/i2c/ov8856.c
+> > +++ b/drivers/media/i2c/ov8856.c
+> > @@ -1,12 +1,15 @@
+> >  // SPDX-License-Identifier: GPL-2.0
+> >  // Copyright (c) 2019 Intel Corporation.
+> >  
+> > +#include <linux/clk.h>
+> >  #include <asm/unaligned.h>
+> >  #include <linux/acpi.h>
+> >  #include <linux/delay.h>
+> > +#include <linux/gpio/consumer.h>
+> >  #include <linux/i2c.h>
+> >  #include <linux/module.h>
+> >  #include <linux/pm_runtime.h>
+> > +#include <linux/regulator/consumer.h>
+> >  #include <media/v4l2-ctrls.h>
+> >  #include <media/v4l2-device.h>
+> >  #include <media/v4l2-fwnode.h>
+> > @@ -18,10 +21,15 @@
+> >  #define OV8856_LINK_FREQ_360MHZ		360000000ULL
+> >  #define OV8856_LINK_FREQ_180MHZ		180000000ULL
+> >  #define OV8856_SCLK			144000000ULL
+> > -#define OV8856_MCLK			19200000
+> > +#define OV8856_XVCLK			19200000
+> > +#define OV8856_XVCLK_TYP		24000000
+> 
+> How about calling these e.g. OV8856_XCLK_19_2 and OV8856_CLK_24? Or just
+> use the plain numbers; there's nothing really special about them.
+> 
+> Ideally you'd have both in a single location in the driver --- an array of
+> modes supported on each of them as they're different.
+> 
 
-void pci_add_resource_offset_sorted(struct list_head *resources,
-				struct resource *res,
-				resource_size_t offset)
-{
-	struct resource_entry *entry;
+Fixed in next release.
 
-	resource_list_for_each_entry(entry, resources)
-		if (entry->res.start > res.start)
-			break;
-	
-	pci_add_resource_offset(&entry->node, res, offset);
-}
+> >  #define OV8856_DATA_LANES		4
+> >  #define OV8856_RGB_DEPTH		10
+> >  
+> > +#define REG_X_ADDR_START		0x3808
+> > +#define X_OUTPUT_FULL_SIZE		0x0cc0
+> > +#define X_OUTPUT_BINNING_SIZE		0x0660
+> > +
+> >  #define OV8856_REG_CHIP_ID		0x300a
+> >  #define OV8856_CHIP_ID			0x00885a
+> >  
+> > @@ -29,6 +37,22 @@
+> >  #define OV8856_MODE_STANDBY		0x00
+> >  #define OV8856_MODE_STREAMING		0x01
+> >  
+> > +/* define 1B module revision */
+> > +#define OV8856_1B_MODULE		0x02
+> > +
+> > +/* the OTP read-out buffer is at 0x7000 and 0xf is the offset
+> > + * of the byte in the OTP that means the module revision
+> > + */
+> > +#define OV8856_MODULE_REVISION		0x700f
+> > +#define OV8856_OTP_MODE_CTRL		0x3d84
+> > +#define OV8856_OTP_LOAD_CTRL		0x3d81
+> > +#define OV8856_OTP_MODE_AUTO		0x00
+> > +#define OV8856_OTP_LOAD_CTRL_ENABLE	BIT(0)
+> > +
+> > +/* Analog control register that decided by module revision */
+> > +#define OV8856_ANAL_MODE_CTRL		0x3614
+> > +#define OV8856_ANAL_1B_VAL		0x20
+> > +
+> >  /* vertical-timings from sensor */
+> >  #define OV8856_REG_VTS			0x380e
+> >  #define OV8856_VTS_MAX			0x7fff
+> > @@ -64,6 +88,14 @@
+> >  
+> >  #define to_ov8856(_sd)			container_of(_sd, struct ov8856, sd)
+> >  
+> > +static const char * const ov8856_supply_names[] = {
+> > +	"dovdd",	/* Digital I/O power */
+> > +	"avdd",		/* Analog power */
+> > +	"dvdd",		/* Digital core power */
+> > +};
+> > +
+> > +#define OV8856_NUM_SUPPLIES ARRAY_SIZE(ov8856_supply_names)
+> > +
+> >  enum {
+> >  	OV8856_LINK_FREQ_720MBPS,
+> >  	OV8856_LINK_FREQ_360MBPS,
+> > @@ -195,11 +227,11 @@ static const struct ov8856_reg mode_3280x2464_regs[] = {
+> >  	{0x3800, 0x00},
+> >  	{0x3801, 0x00},
+> >  	{0x3802, 0x00},
+> > -	{0x3803, 0x06},
+> > +	{0x3803, 0x07},
+> >  	{0x3804, 0x0c},
+> >  	{0x3805, 0xdf},
+> >  	{0x3806, 0x09},
+> > -	{0x3807, 0xa7},
+> > +	{0x3807, 0xa6},
+> 
+> This is changing an existing sensor mode. What are the effects of the
+> change?
+> 
+> Given that this register is not documented in the driver in any way, I'd
+> expect the commit message to carry some reasoning behind the change, also
+> suggesting it belongs to a separate patch. The same applies to changes to
+> the other existing modes.
+> 
 
-but if you'd rather add a specific resource_list_sort() or even just 
-open-code it in iommu-dma, I don't have any real preference. The "least 
-code necessary" approach definitely made sense when individual drivers 
-were expected to build their own lists, but once it gets generalised 
-then having a sensible and robust API becomes a more important 
-consideration.
+Removed in next release.
 
-Robin.
+> >  	{0x3808, 0x0c},
+> >  	{0x3809, 0xd0},
+> >  	{0x380a, 0x09},
+> > @@ -211,7 +243,7 @@ static const struct ov8856_reg mode_3280x2464_regs[] = {
+> >  	{0x3810, 0x00},
+> >  	{0x3811, 0x00},
+> >  	{0x3812, 0x00},
+> > -	{0x3813, 0x01},
+> > +	{0x3813, 0x00},
+> >  	{0x3814, 0x01},
+> >  	{0x3815, 0x01},
+> >  	{0x3816, 0x00},
+> > @@ -316,6 +348,209 @@ static const struct ov8856_reg mode_3280x2464_regs[] = {
+> >  	{0x5e00, 0x00}
+> >  };
+> >  
+> > +static const struct ov8856_reg mode_3264x2448_regs[] = {
+> > +	{0x0103, 0x01},
+> > +	{0x0302, 0x3c},
+> > +	{0x0303, 0x01},
+> > +	{0x031e, 0x0c},
+> > +	{0x3000, 0x20},
+> > +	{0x3003, 0x08},
+> > +	{0x300e, 0x20},
+> > +	{0x3010, 0x00},
+> > +	{0x3015, 0x84},
+> > +	{0x3018, 0x72},
+> > +	{0x3021, 0x23},
+> > +	{0x3033, 0x24},
+> > +	{0x3500, 0x00},
+> > +	{0x3501, 0x9a},
+> > +	{0x3502, 0x20},
+> > +	{0x3503, 0x08},
+> > +	{0x3505, 0x83},
+> > +	{0x3508, 0x01},
+> > +	{0x3509, 0x80},
+> > +	{0x350c, 0x00},
+> > +	{0x350d, 0x80},
+> > +	{0x350e, 0x04},
+> > +	{0x350f, 0x00},
+> > +	{0x3510, 0x00},
+> > +	{0x3511, 0x02},
+> > +	{0x3512, 0x00},
+> > +	{0x3600, 0x72},
+> > +	{0x3601, 0x40},
+> > +	{0x3602, 0x30},
+> > +	{0x3610, 0xc5},
+> > +	{0x3611, 0x58},
+> > +	{0x3612, 0x5c},
+> > +	{0x3613, 0xca},
+> > +	{0x3614, 0x60},
+> > +	{0x3628, 0xff},
+> > +	{0x3629, 0xff},
+> > +	{0x362a, 0xff},
+> > +	{0x3633, 0x10},
+> > +	{0x3634, 0x10},
+> > +	{0x3635, 0x10},
+> > +	{0x3636, 0x10},
+> > +	{0x3663, 0x08},
+> > +	{0x3669, 0x34},
+> > +	{0x366d, 0x00},
+> > +	{0x366e, 0x10},
+> > +	{0x3706, 0x86},
+> > +	{0x370b, 0x7e},
+> > +	{0x3714, 0x23},
+> > +	{0x3730, 0x12},
+> > +	{0x3733, 0x10},
+> > +	{0x3764, 0x00},
+> > +	{0x3765, 0x00},
+> > +	{0x3769, 0x62},
+> > +	{0x376a, 0x2a},
+> > +	{0x376b, 0x30},
+> > +	{0x3780, 0x00},
+> > +	{0x3781, 0x24},
+> > +	{0x3782, 0x00},
+> > +	{0x3783, 0x23},
+> > +	{0x3798, 0x2f},
+> > +	{0x37a1, 0x60},
+> > +	{0x37a8, 0x6a},
+> > +	{0x37ab, 0x3f},
+> > +	{0x37c2, 0x04},
+> > +	{0x37c3, 0xf1},
+> > +	{0x37c9, 0x80},
+> > +	{0x37cb, 0x16},
+> > +	{0x37cc, 0x16},
+> > +	{0x37cd, 0x16},
+> > +	{0x37ce, 0x16},
+> > +	{0x3800, 0x00},
+> > +	{0x3801, 0x00},
+> > +	{0x3802, 0x00},
+> > +	{0x3803, 0x0c},
+> > +	{0x3804, 0x0c},
+> > +	{0x3805, 0xdf},
+> > +	{0x3806, 0x09},
+> > +	{0x3807, 0xa3},
+> > +	{0x3808, 0x0c},
+> > +	{0x3809, 0xc0},
+> > +	{0x380a, 0x09},
+> > +	{0x380b, 0x90},
+> > +	{0x380c, 0x07},
+> > +	{0x380d, 0x8c},
+> > +	{0x380e, 0x09},
+> > +	{0x380f, 0xb2},
+> > +	{0x3810, 0x00},
+> > +	{0x3811, 0x04},
+> > +	{0x3812, 0x00},
+> > +	{0x3813, 0x02},
+> > +	{0x3814, 0x01},
+> > +	{0x3815, 0x01},
+> > +	{0x3816, 0x00},
+> > +	{0x3817, 0x00},
+> > +	{0x3818, 0x00},
+> > +	{0x3819, 0x00},
+> > +	{0x3820, 0x80},
+> > +	{0x3821, 0x46},
+> > +	{0x382a, 0x01},
+> > +	{0x382b, 0x01},
+> > +	{0x3830, 0x06},
+> > +	{0x3836, 0x02},
+> > +	{0x3862, 0x04},
+> > +	{0x3863, 0x08},
+> > +	{0x3cc0, 0x33},
+> > +	{0x3d85, 0x17},
+> > +	{0x3d8c, 0x73},
+> > +	{0x3d8d, 0xde},
+> > +	{0x4001, 0xe0},
+> > +	{0x4003, 0x40},
+> > +	{0x4008, 0x00},
+> > +	{0x4009, 0x0b},
+> > +	{0x400a, 0x00},
+> > +	{0x400b, 0x84},
+> > +	{0x400f, 0x80},
+> > +	{0x4010, 0xf0},
+> > +	{0x4011, 0xff},
+> > +	{0x4012, 0x02},
+> > +	{0x4013, 0x01},
+> > +	{0x4014, 0x01},
+> > +	{0x4015, 0x01},
+> > +	{0x4042, 0x00},
+> > +	{0x4043, 0x80},
+> > +	{0x4044, 0x00},
+> > +	{0x4045, 0x80},
+> > +	{0x4046, 0x00},
+> > +	{0x4047, 0x80},
+> > +	{0x4048, 0x00},
+> > +	{0x4049, 0x80},
+> > +	{0x4041, 0x03},
+> > +	{0x404c, 0x20},
+> > +	{0x404d, 0x00},
+> > +	{0x404e, 0x20},
+> > +	{0x4203, 0x80},
+> > +	{0x4307, 0x30},
+> > +	{0x4317, 0x00},
+> > +	{0x4502, 0x50},
+> > +	{0x4503, 0x08},
+> > +	{0x4601, 0x80},
+> > +	{0x4800, 0x44},
+> > +	{0x4816, 0x53},
+> > +	{0x481b, 0x50},
+> > +	{0x481f, 0x27},
+> > +	{0x4823, 0x3c},
+> > +	{0x482b, 0x00},
+> > +	{0x4831, 0x66},
+> > +	{0x4837, 0x16},
+> > +	{0x483c, 0x0f},
+> > +	{0x484b, 0x05},
+> > +	{0x5000, 0x77},
+> > +	{0x5001, 0x0a},
+> > +	{0x5003, 0xc8},
+> > +	{0x5004, 0x04},
+> > +	{0x5006, 0x00},
+> > +	{0x5007, 0x00},
+> > +	{0x502e, 0x03},
+> > +	{0x5030, 0x41},
+> > +	{0x5780, 0x14},
+> > +	{0x5781, 0x0f},
+> > +	{0x5782, 0x44},
+> > +	{0x5783, 0x02},
+> > +	{0x5784, 0x01},
+> > +	{0x5785, 0x01},
+> > +	{0x5786, 0x00},
+> > +	{0x5787, 0x04},
+> > +	{0x5788, 0x02},
+> > +	{0x5789, 0x0f},
+> > +	{0x578a, 0xfd},
+> > +	{0x578b, 0xf5},
+> > +	{0x578c, 0xf5},
+> > +	{0x578d, 0x03},
+> > +	{0x578e, 0x08},
+> > +	{0x578f, 0x0c},
+> > +	{0x5790, 0x08},
+> > +	{0x5791, 0x04},
+> > +	{0x5792, 0x00},
+> > +	{0x5793, 0x52},
+> > +	{0x5794, 0xa3},
+> > +	{0x5795, 0x02},
+> > +	{0x5796, 0x20},
+> > +	{0x5797, 0x20},
+> > +	{0x5798, 0xd5},
+> > +	{0x5799, 0xd5},
+> > +	{0x579a, 0x00},
+> > +	{0x579b, 0x50},
+> > +	{0x579c, 0x00},
+> > +	{0x579d, 0x2c},
+> > +	{0x579e, 0x0c},
+> > +	{0x579f, 0x40},
+> > +	{0x57a0, 0x09},
+> > +	{0x57a1, 0x40},
+> > +	{0x59f8, 0x3d},
+> > +	{0x5a08, 0x02},
+> > +	{0x5b00, 0x02},
+> > +	{0x5b01, 0x10},
+> > +	{0x5b02, 0x03},
+> > +	{0x5b03, 0xcf},
+> > +	{0x5b05, 0x6c},
+> > +	{0x5e00, 0x00},
+> > +	{0x5e10, 0xfc}
+> > +};
+> > +
+> >  static const struct ov8856_reg mode_1640x1232_regs[] = {
+> >  	{0x3000, 0x20},
+> >  	{0x3003, 0x08},
+> > @@ -385,11 +620,11 @@ static const struct ov8856_reg mode_1640x1232_regs[] = {
+> >  	{0x3800, 0x00},
+> >  	{0x3801, 0x00},
+> >  	{0x3802, 0x00},
+> > -	{0x3803, 0x06},
+> > +	{0x3803, 0x07},
+> >  	{0x3804, 0x0c},
+> >  	{0x3805, 0xdf},
+> >  	{0x3806, 0x09},
+> > -	{0x3807, 0xa7},
+> > +	{0x3807, 0xa6},
+> >  	{0x3808, 0x06},
+> >  	{0x3809, 0x68},
+> >  	{0x380a, 0x04},
+> > @@ -401,7 +636,7 @@ static const struct ov8856_reg mode_1640x1232_regs[] = {
+> >  	{0x3810, 0x00},
+> >  	{0x3811, 0x00},
+> >  	{0x3812, 0x00},
+> > -	{0x3813, 0x01},
+> > +	{0x3813, 0x00},
+> >  	{0x3814, 0x03},
+> >  	{0x3815, 0x01},
+> >  	{0x3816, 0x00},
+> > @@ -506,6 +741,209 @@ static const struct ov8856_reg mode_1640x1232_regs[] = {
+> >  	{0x5e00, 0x00}
+> >  };
+> >  
+> > +static const struct ov8856_reg mode_1632x1224_regs[] = {
+> > +	{0x0103, 0x01},
+> > +	{0x0302, 0x3c},
+> > +	{0x0303, 0x01},
+> > +	{0x031e, 0x0c},
+> > +	{0x3000, 0x20},
+> > +	{0x3003, 0x08},
+> > +	{0x300e, 0x20},
+> > +	{0x3010, 0x00},
+> > +	{0x3015, 0x84},
+> > +	{0x3018, 0x72},
+> > +	{0x3021, 0x23},
+> > +	{0x3033, 0x24},
+> > +	{0x3500, 0x00},
+> > +	{0x3501, 0x4c},
+> > +	{0x3502, 0xe0},
+> > +	{0x3503, 0x08},
+> > +	{0x3505, 0x83},
+> > +	{0x3508, 0x01},
+> > +	{0x3509, 0x80},
+> > +	{0x350c, 0x00},
+> > +	{0x350d, 0x80},
+> > +	{0x350e, 0x04},
+> > +	{0x350f, 0x00},
+> > +	{0x3510, 0x00},
+> > +	{0x3511, 0x02},
+> > +	{0x3512, 0x00},
+> > +	{0x3600, 0x72},
+> > +	{0x3601, 0x40},
+> > +	{0x3602, 0x30},
+> > +	{0x3610, 0xc5},
+> > +	{0x3611, 0x58},
+> > +	{0x3612, 0x5c},
+> > +	{0x3613, 0xca},
+> > +	{0x3614, 0x60},
+> > +	{0x3628, 0xff},
+> > +	{0x3629, 0xff},
+> > +	{0x362a, 0xff},
+> > +	{0x3633, 0x10},
+> > +	{0x3634, 0x10},
+> > +	{0x3635, 0x10},
+> > +	{0x3636, 0x10},
+> > +	{0x3663, 0x08},
+> > +	{0x3669, 0x34},
+> > +	{0x366d, 0x00},
+> > +	{0x366e, 0x08},
+> > +	{0x3706, 0x86},
+> > +	{0x370b, 0x7e},
+> > +	{0x3714, 0x27},
+> > +	{0x3730, 0x12},
+> > +	{0x3733, 0x10},
+> > +	{0x3764, 0x00},
+> > +	{0x3765, 0x00},
+> > +	{0x3769, 0x62},
+> > +	{0x376a, 0x2a},
+> > +	{0x376b, 0x30},
+> > +	{0x3780, 0x00},
+> > +	{0x3781, 0x24},
+> > +	{0x3782, 0x00},
+> > +	{0x3783, 0x23},
+> > +	{0x3798, 0x2f},
+> > +	{0x37a1, 0x60},
+> > +	{0x37a8, 0x6a},
+> > +	{0x37ab, 0x3f},
+> > +	{0x37c2, 0x14},
+> > +	{0x37c3, 0xf1},
+> > +	{0x37c9, 0x80},
+> > +	{0x37cb, 0x16},
+> > +	{0x37cc, 0x16},
+> > +	{0x37cd, 0x16},
+> > +	{0x37ce, 0x16},
+> > +	{0x3800, 0x00},
+> > +	{0x3801, 0x00},
+> > +	{0x3802, 0x00},
+> > +	{0x3803, 0x0c},
+> > +	{0x3804, 0x0c},
+> > +	{0x3805, 0xdf},
+> > +	{0x3806, 0x09},
+> > +	{0x3807, 0xa3},
+> > +	{0x3808, 0x06},
+> > +	{0x3809, 0x60},
+> > +	{0x380a, 0x04},
+> > +	{0x380b, 0xc8},
+> > +	{0x380c, 0x07},
+> > +	{0x380d, 0x8c},
+> > +	{0x380e, 0x09},
+> > +	{0x380f, 0xb2},
+> > +	{0x3810, 0x00},
+> > +	{0x3811, 0x02},
+> > +	{0x3812, 0x00},
+> > +	{0x3813, 0x02},
+> > +	{0x3814, 0x03},
+> > +	{0x3815, 0x01},
+> > +	{0x3816, 0x00},
+> > +	{0x3817, 0x00},
+> > +	{0x3818, 0x00},
+> > +	{0x3819, 0x00},
+> > +	{0x3820, 0x80},
+> > +	{0x3821, 0x47},
+> > +	{0x382a, 0x03},
+> > +	{0x382b, 0x01},
+> > +	{0x3830, 0x06},
+> > +	{0x3836, 0x02},
+> > +	{0x3862, 0x04},
+> > +	{0x3863, 0x08},
+> > +	{0x3cc0, 0x33},
+> > +	{0x3d85, 0x17},
+> > +	{0x3d8c, 0x73},
+> > +	{0x3d8d, 0xde},
+> > +	{0x4001, 0xe0},
+> > +	{0x4003, 0x40},
+> > +	{0x4008, 0x00},
+> > +	{0x4009, 0x05},
+> > +	{0x400a, 0x00},
+> > +	{0x400b, 0x84},
+> > +	{0x400f, 0x80},
+> > +	{0x4010, 0xf0},
+> > +	{0x4011, 0xff},
+> > +	{0x4012, 0x02},
+> > +	{0x4013, 0x01},
+> > +	{0x4014, 0x01},
+> > +	{0x4015, 0x01},
+> > +	{0x4042, 0x00},
+> > +	{0x4043, 0x80},
+> > +	{0x4044, 0x00},
+> > +	{0x4045, 0x80},
+> > +	{0x4046, 0x00},
+> > +	{0x4047, 0x80},
+> > +	{0x4048, 0x00},
+> > +	{0x4049, 0x80},
+> > +	{0x4041, 0x03},
+> > +	{0x404c, 0x20},
+> > +	{0x404d, 0x00},
+> > +	{0x404e, 0x20},
+> > +	{0x4203, 0x80},
+> > +	{0x4307, 0x30},
+> > +	{0x4317, 0x00},
+> > +	{0x4502, 0x50},
+> > +	{0x4503, 0x08},
+> > +	{0x4601, 0x80},
+> > +	{0x4800, 0x44},
+> > +	{0x4816, 0x53},
+> > +	{0x481b, 0x50},
+> > +	{0x481f, 0x27},
+> > +	{0x4823, 0x3c},
+> > +	{0x482b, 0x00},
+> > +	{0x4831, 0x66},
+> > +	{0x4837, 0x16},
+> > +	{0x483c, 0x0f},
+> > +	{0x484b, 0x05},
+> > +	{0x5000, 0x77},
+> > +	{0x5001, 0x0a},
+> > +	{0x5003, 0xc8},
+> > +	{0x5004, 0x04},
+> > +	{0x5006, 0x00},
+> > +	{0x5007, 0x00},
+> > +	{0x502e, 0x03},
+> > +	{0x5030, 0x41},
+> > +	{0x5795, 0x00},
+> > +	{0x5796, 0x10},
+> > +	{0x5797, 0x10},
+> > +	{0x5798, 0x73},
+> > +	{0x5799, 0x73},
+> > +	{0x579a, 0x00},
+> > +	{0x579b, 0x28},
+> > +	{0x579c, 0x00},
+> > +	{0x579d, 0x16},
+> > +	{0x579e, 0x06},
+> > +	{0x579f, 0x20},
+> > +	{0x57a0, 0x04},
+> > +	{0x57a1, 0xa0},
+> > +	{0x5780, 0x14},
+> > +	{0x5781, 0x0f},
+> > +	{0x5782, 0x44},
+> > +	{0x5783, 0x02},
+> > +	{0x5784, 0x01},
+> > +	{0x5785, 0x01},
+> > +	{0x5786, 0x00},
+> > +	{0x5787, 0x04},
+> > +	{0x5788, 0x02},
+> > +	{0x5789, 0x0f},
+> > +	{0x578a, 0xfd},
+> > +	{0x578b, 0xf5},
+> > +	{0x578c, 0xf5},
+> > +	{0x578d, 0x03},
+> > +	{0x578e, 0x08},
+> > +	{0x578f, 0x0c},
+> > +	{0x5790, 0x08},
+> > +	{0x5791, 0x04},
+> > +	{0x5792, 0x00},
+> > +	{0x5793, 0x52},
+> > +	{0x5794, 0xa3},
+> > +	{0x59f8, 0x3d},
+> > +	{0x5a08, 0x02},
+> > +	{0x5b00, 0x02},
+> > +	{0x5b01, 0x10},
+> > +	{0x5b02, 0x03},
+> > +	{0x5b03, 0xcf},
+> > +	{0x5b05, 0x6c},
+> > +	{0x5e00, 0x00},
+> > +	{0x5e10, 0xfc}
+> > +};
+> > +
+> >  static const char * const ov8856_test_pattern_menu[] = {
+> >  	"Disabled",
+> >  	"Standard Color Bar",
+> > @@ -548,6 +986,18 @@ static const struct ov8856_mode supported_modes[] = {
+> >  		.link_freq_index = OV8856_LINK_FREQ_720MBPS,
+> >  	},
+> >  	{
+> > +		.width    = 3264,
+> > +		.height   = 2448,
+> > +		.hts      = 1932,
+> > +		.vts_def  = 2482,
+> > +		.vts_min  = 2482,
+> > +		.reg_list = {
+> > +			.num_of_regs = ARRAY_SIZE(mode_3264x2448_regs),
+> > +			.regs = mode_3264x2448_regs,
+> > +		},
+> > +		.link_freq_index = OV8856_LINK_FREQ_720MBPS,
+> > +	},
+> 
+> How do you guarantee that the modes are only used on the xvclk frequency
+> they're intended for?
+> 
+> I think it'd be best if you added the new modes in a separete patch.
+> 
+
+In a separate patch?
+
+> > +	{
+> >  		.width = 1640,
+> >  		.height = 1232,
+> >  		.hts = 3820,
+> > @@ -558,6 +1008,18 @@ static const struct ov8856_mode supported_modes[] = {
+> >  			.regs = mode_1640x1232_regs,
+> >  		},
+> >  		.link_freq_index = OV8856_LINK_FREQ_360MBPS,
+> > +	},
+> > +	{
+> > +		.width    = 1632,
+> > +		.height   = 1224,
+> > +		.hts      = 1932,
+> > +		.vts_def  = 2482,
+> > +		.vts_min  = 2482,
+> > +		.reg_list = {
+> > +			.num_of_regs = ARRAY_SIZE(mode_1632x1224_regs),
+> > +			.regs = mode_1632x1224_regs,
+> > +		},
+> > +		.link_freq_index = OV8856_LINK_FREQ_360MBPS,
+> >  	}
+> >  };
+> >  
+> > @@ -566,16 +1028,28 @@ struct ov8856 {
+> >  	struct media_pad pad;
+> >  	struct v4l2_ctrl_handler ctrl_handler;
+> >  
+> > +	struct clk		*xvclk;
+> > +	struct gpio_desc	*n_shutdn_gpio;
+> > +	struct regulator_bulk_data supplies[OV8856_NUM_SUPPLIES];
+> > +
+> >  	/* V4L2 Controls */
+> >  	struct v4l2_ctrl *link_freq;
+> >  	struct v4l2_ctrl *pixel_rate;
+> >  	struct v4l2_ctrl *vblank;
+> >  	struct v4l2_ctrl *hblank;
+> >  	struct v4l2_ctrl *exposure;
+> > +	struct v4l2_mbus_framefmt	fmt;
+> >  
+> >  	/* Current mode */
+> >  	const struct ov8856_mode *cur_mode;
+> >  
+> > +	/* module hardware version that can be read out from register 0x700f
+> > +	 * the register value corresponds to different hardware version
+> > +	 * 01: 2A module revision
+> > +	 * 02: 1B module revision
+> > +	 */
+> > +	bool is_1B_revision;
+> > +
+> >  	/* To serialize asynchronus callbacks */
+> >  	struct mutex mutex;
+> >  
+> > @@ -696,6 +1170,25 @@ static int ov8856_test_pattern(struct ov8856 *ov8856, u32 pattern)
+> >  				OV8856_REG_VALUE_08BIT, pattern);
+> >  }
+> >  
+> > +static int ov8856_check_revision(struct ov8856 *ov8856)
+> > +{
+> > +	int ret;
+> > +
+> > +	ret = ov8856_write_reg(ov8856, OV8856_REG_MODE_SELECT,
+> > +			       OV8856_REG_VALUE_08BIT, OV8856_MODE_STREAMING);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = ov8856_write_reg(ov8856, OV8856_OTP_MODE_CTRL,
+> > +			       OV8856_REG_VALUE_08BIT, OV8856_OTP_MODE_AUTO);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	return ov8856_write_reg(ov8856, OV8856_OTP_LOAD_CTRL,
+> > +				OV8856_REG_VALUE_08BIT,
+> > +				OV8856_OTP_LOAD_CTRL_ENABLE);
+> 
+> Is it not necessary to disable streaming after reading EEPROM?
+> 
+
+These registers are provided by OV vendor.
+They need to be initialized before reading sensor revision.
+
+> > +}
+> > +
+> >  static int ov8856_set_ctrl(struct v4l2_ctrl *ctrl)
+> >  {
+> >  	struct ov8856 *ov8856 = container_of(ctrl->handler,
+> > @@ -825,7 +1318,6 @@ static void ov8856_update_pad_format(const struct ov8856_mode *mode,
+> >  {
+> >  	fmt->width = mode->width;
+> >  	fmt->height = mode->height;
+> > -	fmt->code = MEDIA_BUS_FMT_SGRBG10_1X10;
+> >  	fmt->field = V4L2_FIELD_NONE;
+> >  }
+> >  
+> > @@ -834,6 +1326,7 @@ static int ov8856_start_streaming(struct ov8856 *ov8856)
+> >  	struct i2c_client *client = v4l2_get_subdevdata(&ov8856->sd);
+> >  	const struct ov8856_reg_list *reg_list;
+> >  	int link_freq_index, ret;
+> > +	u32 h_size;
+> >  
+> >  	link_freq_index = ov8856->cur_mode->link_freq_index;
+> >  	reg_list = &link_freq_configs[link_freq_index].reg_list;
+> > @@ -850,6 +1343,29 @@ static int ov8856_start_streaming(struct ov8856 *ov8856)
+> >  		return ret;
+> >  	}
+> >  
+> > +	/* Update R3614 if the revision is 1B module */
+> > +	if (ov8856->is_1B_revision) {
+> > +		ret = ov8856_write_reg(ov8856, OV8856_ANAL_MODE_CTRL,
+> > +				       OV8856_REG_VALUE_08BIT,
+> > +				       OV8856_ANAL_1B_VAL);
+> > +		if (ret) {
+> > +			dev_err(&client->dev, "failed to set R3614");
+> > +			return ret;
+> > +		}
+> > +	}
+> > +
+> > +	ret = ov8856_read_reg(ov8856, REG_X_ADDR_START,
+> > +			      OV8856_REG_VALUE_16BIT, &h_size);
+> > +	if (ret) {
+> > +		dev_err(&client->dev, "failed to read out R3614");
+> > +		return ret;
+> > +	}
+> > +
+> > +	if (h_size == X_OUTPUT_FULL_SIZE || h_size == X_OUTPUT_BINNING_SIZE)
+> > +		ov8856->fmt.code = MEDIA_BUS_FMT_SBGGR10_1X10;
+> 
+> I wonder if this condition is right. The pixel order (and thus the media
+> bus code) is determined by cropping (and flipping and mirroring, but
+> they're not supported right now). See e.g. the smiapp driver for an
+> example.
+> 
+> The correct media bus code needs to be available to the user through the
+> regular API at all times, not only after streaming is started.
+> 
+> I'd suggest adding support for other pixel orders in a separate patch.
+> 
+
+This may need time to think out.
+Is there any recommended regular API?  
+
+> > +
+> >  	ret = __v4l2_ctrl_handler_setup(ov8856->sd.ctrl_handler);
+> >  	if (ret)
+> >  		return ret;
+> > @@ -878,6 +1394,7 @@ static int ov8856_set_stream(struct v4l2_subdev *sd, int enable)
+> >  	struct ov8856 *ov8856 = to_ov8856(sd);
+> >  	struct i2c_client *client = v4l2_get_subdevdata(sd);
+> >  	int ret = 0;
+> > +	u32 val;
+> >  
+> >  	if (ov8856->streaming == enable)
+> >  		return 0;
+> > @@ -908,6 +1425,44 @@ static int ov8856_set_stream(struct v4l2_subdev *sd, int enable)
+> >  	return ret;
+> >  }
+> >  
+> > +static int __ov8856_power_on(struct ov8856 *ov8856)
+> > +{
+> > +	struct i2c_client *client = v4l2_get_subdevdata(&ov8856->sd);
+> > +	int ret;
+> > +
+> > +	ret = clk_prepare_enable(ov8856->xvclk);
+> > +	if (ret < 0) {
+> > +		dev_err(&client->dev, "failed to enable xvclk\n");
+> > +		return ret;
+> > +	}
+> > +
+> > +	gpiod_set_value_cansleep(ov8856->n_shutdn_gpio, GPIOD_OUT_LOW);
+> > +
+> > +	ret = regulator_bulk_enable(OV8856_NUM_SUPPLIES, ov8856->supplies);
+> > +	if (ret < 0) {
+> > +		dev_err(&client->dev, "failed to enable regulators\n");
+> > +		goto disable_clk;
+> > +	}
+> > +
+> > +	gpiod_set_value_cansleep(ov8856->n_shutdn_gpio, GPIOD_OUT_HIGH);
+> 
+> ..., 1);
+> 
+> > +
+> > +	usleep_range(1400, 1500);
+> > +
+> > +	return 0;
+> > +
+> > +disable_clk:
+> > +	clk_disable_unprepare(ov8856->xvclk);
+> 
+> How about the n_shutdn GPIO?
+> 
+
+This is power up sequence function.
+When enabling regulators failed, it is required to disable the enabled
+power previously.
+Thus here we need to disable xvclk.
+But for n_shutdn GPIO, it was low state at that time.
+So we don't need to do anything for it.
+
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static void __ov8856_power_off(struct ov8856 *ov8856)
+> > +{
+> > +	gpiod_set_value_cansleep(ov8856->n_shutdn_gpio, 1);
+> 
+> Why to inactivate xshutdn here (it already was)?
+> 
+> > +	regulator_bulk_disable(OV8856_NUM_SUPPLIES, ov8856->supplies);
+> > +	clk_disable_unprepare(ov8856->xvclk);
+> > +}
+> > +
+> >  static int __maybe_unused ov8856_suspend(struct device *dev)
+> >  {
+> >  	struct i2c_client *client = to_i2c_client(dev);
+> > @@ -951,6 +1506,7 @@ static int ov8856_set_format(struct v4l2_subdev *sd,
+> >  			     struct v4l2_subdev_format *fmt)
+> >  {
+> >  	struct ov8856 *ov8856 = to_ov8856(sd);
+> > +	struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
+> >  	const struct ov8856_mode *mode;
+> >  	s32 vblank_def, h_blank;
+> >  
+> > @@ -960,7 +1516,9 @@ static int ov8856_set_format(struct v4l2_subdev *sd,
+> >  				      fmt->format.height);
+> >  
+> >  	mutex_lock(&ov8856->mutex);
+> > -	ov8856_update_pad_format(mode, &fmt->format);
+> > +	mbus_fmt->code = ov8856->fmt.code;
+> > +	ov8856_update_pad_format(mode, mbus_fmt);
+> > +	ov8856->fmt = fmt->format;
+> >  	if (fmt->which == V4L2_SUBDEV_FORMAT_TRY) {
+> >  		*v4l2_subdev_get_try_format(sd, cfg, fmt->pad) = fmt->format;
+> >  	} else {
+> > @@ -992,13 +1550,17 @@ static int ov8856_get_format(struct v4l2_subdev *sd,
+> >  			     struct v4l2_subdev_format *fmt)
+> >  {
+> >  	struct ov8856 *ov8856 = to_ov8856(sd);
+> > +	struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
+> >  
+> >  	mutex_lock(&ov8856->mutex);
+> > -	if (fmt->which == V4L2_SUBDEV_FORMAT_TRY)
+> > +	if (fmt->which == V4L2_SUBDEV_FORMAT_TRY) {
+> >  		fmt->format = *v4l2_subdev_get_try_format(&ov8856->sd, cfg,
+> >  							  fmt->pad);
+> > -	else
+> > -		ov8856_update_pad_format(ov8856->cur_mode, &fmt->format);
+> > +	} else {
+> > +		fmt->format = ov8856->fmt;
+> > +		ov8856_update_pad_format(ov8856->cur_mode, mbus_fmt);
+> > +		mbus_fmt->code = ov8856->fmt.code;
+> > +	}
+> >  
+> >  	mutex_unlock(&ov8856->mutex);
+> >  
+> > @@ -1009,11 +1571,12 @@ static int ov8856_enum_mbus_code(struct v4l2_subdev *sd,
+> >  				 struct v4l2_subdev_pad_config *cfg,
+> >  				 struct v4l2_subdev_mbus_code_enum *code)
+> >  {
+> > -	/* Only one bayer order GRBG is supported */
+> > +	struct ov8856 *ov8856 = to_ov8856(sd);
+> > +
+> >  	if (code->index > 0)
+> >  		return -EINVAL;
+> >  
+> > -	code->code = MEDIA_BUS_FMT_SGRBG10_1X10;
+> > +	code->code = ov8856->fmt.code;
+> >  
+> >  	return 0;
+> >  }
+> > @@ -1089,6 +1652,20 @@ static int ov8856_identify_module(struct ov8856 *ov8856)
+> >  		return -ENXIO;
+> >  	}
+> >  
+> > +	/* check sensor hardware revision */
+> > +	ret = ov8856_check_revision(ov8856);
+> > +	if (ret) {
+> > +		dev_err(&client->dev, "failed to check sensor revision");
+> > +		return ret;
+> > +	}
+> > +
+> > +	ret = ov8856_read_reg(ov8856, OV8856_MODULE_REVISION,
+> > +			      OV8856_REG_VALUE_08BIT, &val);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ov8856->is_1B_revision = (val == OV8856_1B_MODULE) ? 1 : 0;
+> > +
+> >  	return 0;
+> >  }
+> >  
+> > @@ -1107,7 +1684,7 @@ static int ov8856_check_hwcfg(struct device *dev)
+> >  		return -ENXIO;
+> >  
+> >  	fwnode_property_read_u32(fwnode, "clock-frequency", &mclk);
+> > -	if (mclk != OV8856_MCLK) {
+> > +	if (mclk != OV8856_XVCLK) {
+> >  		dev_err(dev, "external clock %d is not supported", mclk);
+> >  		return -EINVAL;
+> >  	}
+> > @@ -1164,6 +1741,9 @@ static int ov8856_remove(struct i2c_client *client)
+> >  	media_entity_cleanup(&sd->entity);
+> >  	v4l2_ctrl_handler_free(sd->ctrl_handler);
+> >  	pm_runtime_disable(&client->dev);
+> > +	if (!pm_runtime_status_suspended(&client->dev))
+> > +		__ov8856_power_off(ov8856);
+> > +	pm_runtime_set_suspended(&client->dev);
+> >  	mutex_destroy(&ov8856->mutex);
+> >  
+> >  	return 0;
+> > @@ -1172,6 +1752,7 @@ static int ov8856_remove(struct i2c_client *client)
+> >  static int ov8856_probe(struct i2c_client *client)
+> >  {
+> >  	struct ov8856 *ov8856;
+> > +	unsigned int i;
+> >  	int ret;
+> >  
+> >  	ret = ov8856_check_hwcfg(&client->dev);
+> > @@ -1186,6 +1767,42 @@ static int ov8856_probe(struct i2c_client *client)
+> >  		return -ENOMEM;
+> >  
+> >  	v4l2_i2c_subdev_init(&ov8856->sd, client, &ov8856_subdev_ops);
+> > +	ov8856->fmt.code = MEDIA_BUS_FMT_SGRBG10_1X10;
+> > +
+> > +	ov8856->xvclk = devm_clk_get(&client->dev, "xvclk");
+> 
+> Does this work on ACPI?
+> 
+> See e.g. the smiapp driver for an example. The same applies to the rest of
+> the chunk.
+
+For ACPI, this probe should not be executed,
+as DT setting may not have compatible property.
 
 > 
-> Lorenzo
+> > +	if (IS_ERR(ov8856->xvclk)) {
+> > +		dev_err(&client->dev, "failed to get xvclk\n");
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	ret = clk_set_rate(ov8856->xvclk, OV8856_XVCLK_TYP);
+> > +	if (ret < 0) {
+> > +		dev_err(&client->dev, "failed to set xvclk rate (24MHz)\n");
+> > +		return ret;
+> > +	}
+> > +	if (clk_get_rate(ov8856->xvclk) != OV8856_XVCLK_TYP)
+> > +		dev_warn(&client->dev,
+> > +			 "xvclk mismatched, modes are based on 24MHz\n");
+> > +
+> > +	ov8856->n_shutdn_gpio = devm_gpiod_get(&client->dev, "reset",
+> > +					       GPIOD_OUT_LOW);
+> > +	if (IS_ERR(ov8856->n_shutdn_gpio)) {
+> > +		dev_err(&client->dev, "failed to get reset-gpios\n");
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	for (i = 0; i < OV8856_NUM_SUPPLIES; i++)
+> > +		ov8856->supplies[i].supply = ov8856_supply_names[i];
+> > +
+> > +	ret = devm_regulator_bulk_get(&client->dev, OV8856_NUM_SUPPLIES,
+> > +				      ov8856->supplies);
+> > +	if (ret)
+> > +		dev_warn(&client->dev, "failed to get regulators\n");
+> > +
+> > +	ret = __ov8856_power_on(ov8856);
+> > +	if (ret)
+> > +		dev_warn(&client->dev, "failed to power on\n");
+> > +
+> >  	ret = ov8856_identify_module(ov8856);
+> >  	if (ret) {
+> >  		dev_err(&client->dev, "failed to find sensor: %d", ret);
+> > @@ -1251,11 +1868,18 @@ static const struct acpi_device_id ov8856_acpi_ids[] = {
+> >  MODULE_DEVICE_TABLE(acpi, ov8856_acpi_ids);
+> >  #endif
+> >  
+> > +static const struct of_device_id ov8856_of_match[] = {
+> > +	{ .compatible = "ovti,ov8856" },
+> > +	{},
+> > +};
+> > +MODULE_DEVICE_TABLE(of, ov8856_of_match);
+> > +
+> >  static struct i2c_driver ov8856_i2c_driver = {
+> >  	.driver = {
+> >  		.name = "ov8856",
+> >  		.pm = &ov8856_pm_ops,
+> >  		.acpi_match_table = ACPI_PTR(ov8856_acpi_ids),
+> > +		.of_match_table = ov8856_of_match,
+> >  	},
+> >  	.probe_new = ov8856_probe,
+> >  	.remove = ov8856_remove,
 > 
->> On Tue, Oct 29, 2019 at 11:04 PM Lorenzo Pieralisi
->> <lorenzo.pieralisi@arm.com> wrote:
->>>
->>> On Tue, Oct 29, 2019 at 09:26:51PM +0530, Srinath Mannam wrote:
->>>> Hi Lorenzo,
->>>>
->>>> All changes are looks good to me.
->>>> I have one doubt regarding, resources added in the
->>>> "bridge->dma_ranges" list are expected to be in sorted order which are
->>>> used in "iova_reserve_pci_windows". Please correct me if I missed any
->>>> patch specific to this.
->>>
->>> No I don't think so, it is just that we need to decide which piece of
->>> code should sort that list, whether in this patchset or by patching the
->>> kernel in iova_reserve_pci_windows().
->>>
->>> I tend to think the sorting should be done in iova_reserve_pci_windows()
->>> because that's where the requirement is.
->>>
->>> Lorenzo
->>>
->>>> Regards,
->>>> Srinath.
->>>>
->>>> On Tue, Oct 29, 2019 at 4:37 PM Lorenzo Pieralisi
->>>> <lorenzo.pieralisi@arm.com> wrote:
->>>>>
->>>>> On Mon, Oct 28, 2019 at 11:32:50AM -0500, Rob Herring wrote:
->>>>>> Extend devm_of_pci_get_host_bridge_resources() and
->>>>>> pci_parse_request_of_pci_ranges() helpers to also parse the inbound
->>>>>> addresses from DT 'dma-ranges' and populate a resource list with the
->>>>>> translated addresses. This will help ensure 'dma-ranges' is always
->>>>>> parsed in a consistent way.
->>>>>>
->>>>>> Cc: Jingoo Han <jingoohan1@gmail.com>
->>>>>> Cc: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
->>>>>> Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
->>>>>> Cc: Bjorn Helgaas <bhelgaas@google.com>
->>>>>> Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
->>>>>> Cc: Will Deacon <will@kernel.org>
->>>>>> Cc: Linus Walleij <linus.walleij@linaro.org>
->>>>>> Cc: Toan Le <toan@os.amperecomputing.com>
->>>>>> Cc: Ley Foon Tan <lftan@altera.com>
->>>>>> Cc: Tom Joseph <tjoseph@cadence.com>
->>>>>> Cc: Ray Jui <rjui@broadcom.com>
->>>>>> Cc: Scott Branden <sbranden@broadcom.com>
->>>>>> Cc: bcm-kernel-feedback-list@broadcom.com
->>>>>> Cc: Ryder Lee <ryder.lee@mediatek.com>
->>>>>> Cc: Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>
->>>>>> Cc: Hou Zhiqiang <Zhiqiang.Hou@nxp.com>
->>>>>> Cc: Simon Horman <horms@verge.net.au>
->>>>>> Cc: Shawn Lin <shawn.lin@rock-chips.com>
->>>>>> Cc: Heiko Stuebner <heiko@sntech.de>
->>>>>> Cc: Michal Simek <michal.simek@xilinx.com>
->>>>>> Cc: rfi@lists.rocketboards.org
->>>>>> Cc: linux-mediatek@lists.infradead.org
->>>>>> Cc: linux-renesas-soc@vger.kernel.org
->>>>>> Cc: linux-rockchip@lists.infradead.org
->>>>>> Tested-by: Thomas Petazzoni <thomas.petazzoni@bootlin.com> # for AArdvark
->>>>>> Reviewed-by: Andrew Murray <andrew.murray@arm.com>
->>>>>> Acked-by: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
->>>>>> Signed-off-by: Rob Herring <robh@kernel.org>
->>>>>> ---
->>>>>> v2:
->>>>>>   - Fix crash in INIT_LIST_HEAD when ib_resources is NULL
->>>>>> ---
->>>>>>   .../pci/controller/dwc/pcie-designware-host.c |  3 +-
->>>>>>   drivers/pci/controller/pci-aardvark.c         |  2 +-
->>>>>>   drivers/pci/controller/pci-ftpci100.c         |  3 +-
->>>>>>   drivers/pci/controller/pci-host-common.c      |  2 +-
->>>>>>   drivers/pci/controller/pci-v3-semi.c          |  3 +-
->>>>>>   drivers/pci/controller/pci-versatile.c        |  3 +-
->>>>>>   drivers/pci/controller/pci-xgene.c            |  3 +-
->>>>>>   drivers/pci/controller/pcie-altera.c          |  2 +-
->>>>>>   drivers/pci/controller/pcie-cadence-host.c    |  2 +-
->>>>>>   drivers/pci/controller/pcie-iproc-platform.c  |  3 +-
->>>>>>   drivers/pci/controller/pcie-mediatek.c        |  2 +-
->>>>>>   drivers/pci/controller/pcie-mobiveil.c        |  3 +-
->>>>>>   drivers/pci/controller/pcie-rcar.c            |  3 +-
->>>>>>   drivers/pci/controller/pcie-rockchip-host.c   |  3 +-
->>>>>>   drivers/pci/controller/pcie-xilinx-nwl.c      |  3 +-
->>>>>>   drivers/pci/controller/pcie-xilinx.c          |  3 +-
->>>>>>   drivers/pci/of.c                              | 45 ++++++++++++++++++-
->>>>>>   drivers/pci/pci.h                             |  8 +++-
->>>>>>   include/linux/pci.h                           |  9 ++--
->>>>>>   19 files changed, 82 insertions(+), 23 deletions(-)
->>>>>
->>>>> Hi Bjorn,
->>>>>
->>>>> please let me know if you are OK with this patch, the series is
->>>>> ready to go upstream IMO.
->>>>>
->>>>> Thanks,
->>>>> Lorenzo
->>>>>
->>>>>> diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
->>>>>> index aeec8b65eb97..f7b1d80c4a0a 100644
->>>>>> --- a/drivers/pci/controller/dwc/pcie-designware-host.c
->>>>>> +++ b/drivers/pci/controller/dwc/pcie-designware-host.c
->>>>>> @@ -342,7 +342,8 @@ int dw_pcie_host_init(struct pcie_port *pp)
->>>>>>        if (!bridge)
->>>>>>                return -ENOMEM;
->>>>>>
->>>>>> -     ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows, NULL);
->>>>>> +     ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows,
->>>>>> +                                           &bridge->dma_ranges, NULL);
->>>>>>        if (ret)
->>>>>>                return ret;
->>>>>>
->>>>>> diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
->>>>>> index 9cbeba507f0c..b34eaa2cd762 100644
->>>>>> --- a/drivers/pci/controller/pci-aardvark.c
->>>>>> +++ b/drivers/pci/controller/pci-aardvark.c
->>>>>> @@ -939,7 +939,7 @@ static int advk_pcie_probe(struct platform_device *pdev)
->>>>>>        }
->>>>>>
->>>>>>        ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows,
->>>>>> -                                           &bus);
->>>>>> +                                           &bridge->dma_ranges, &bus);
->>>>>>        if (ret) {
->>>>>>                dev_err(dev, "Failed to parse resources\n");
->>>>>>                return ret;
->>>>>> diff --git a/drivers/pci/controller/pci-ftpci100.c b/drivers/pci/controller/pci-ftpci100.c
->>>>>> index 75603348b88a..66288b94e92d 100644
->>>>>> --- a/drivers/pci/controller/pci-ftpci100.c
->>>>>> +++ b/drivers/pci/controller/pci-ftpci100.c
->>>>>> @@ -477,7 +477,8 @@ static int faraday_pci_probe(struct platform_device *pdev)
->>>>>>        if (IS_ERR(p->base))
->>>>>>                return PTR_ERR(p->base);
->>>>>>
->>>>>> -     ret = pci_parse_request_of_pci_ranges(dev, &host->windows, NULL);
->>>>>> +     ret = pci_parse_request_of_pci_ranges(dev, &host->windows,
->>>>>> +                                           &host->dma_ranges, NULL);
->>>>>>        if (ret)
->>>>>>                return ret;
->>>>>>
->>>>>> diff --git a/drivers/pci/controller/pci-host-common.c b/drivers/pci/controller/pci-host-common.c
->>>>>> index c8cb9c5188a4..250a3fc80ec6 100644
->>>>>> --- a/drivers/pci/controller/pci-host-common.c
->>>>>> +++ b/drivers/pci/controller/pci-host-common.c
->>>>>> @@ -27,7 +27,7 @@ static struct pci_config_window *gen_pci_init(struct device *dev,
->>>>>>        struct pci_config_window *cfg;
->>>>>>
->>>>>>        /* Parse our PCI ranges and request their resources */
->>>>>> -     err = pci_parse_request_of_pci_ranges(dev, resources, &bus_range);
->>>>>> +     err = pci_parse_request_of_pci_ranges(dev, resources, NULL, &bus_range);
->>>>>>        if (err)
->>>>>>                return ERR_PTR(err);
->>>>>>
->>>>>> diff --git a/drivers/pci/controller/pci-v3-semi.c b/drivers/pci/controller/pci-v3-semi.c
->>>>>> index 96677520f6c1..2209c7671115 100644
->>>>>> --- a/drivers/pci/controller/pci-v3-semi.c
->>>>>> +++ b/drivers/pci/controller/pci-v3-semi.c
->>>>>> @@ -776,7 +776,8 @@ static int v3_pci_probe(struct platform_device *pdev)
->>>>>>        if (IS_ERR(v3->config_base))
->>>>>>                return PTR_ERR(v3->config_base);
->>>>>>
->>>>>> -     ret = pci_parse_request_of_pci_ranges(dev, &host->windows, NULL);
->>>>>> +     ret = pci_parse_request_of_pci_ranges(dev, &host->windows,
->>>>>> +                                           &host->dma_ranges, NULL);
->>>>>>        if (ret)
->>>>>>                return ret;
->>>>>>
->>>>>> diff --git a/drivers/pci/controller/pci-versatile.c b/drivers/pci/controller/pci-versatile.c
->>>>>> index eae1b859990b..b911359b6d81 100644
->>>>>> --- a/drivers/pci/controller/pci-versatile.c
->>>>>> +++ b/drivers/pci/controller/pci-versatile.c
->>>>>> @@ -92,7 +92,8 @@ static int versatile_pci_probe(struct platform_device *pdev)
->>>>>>        if (IS_ERR(versatile_cfg_base[1]))
->>>>>>                return PTR_ERR(versatile_cfg_base[1]);
->>>>>>
->>>>>> -     ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows, NULL);
->>>>>> +     ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows,
->>>>>> +                                           NULL, NULL);
->>>>>>        if (ret)
->>>>>>                return ret;
->>>>>>
->>>>>> diff --git a/drivers/pci/controller/pci-xgene.c b/drivers/pci/controller/pci-xgene.c
->>>>>> index 7d0f0395a479..9408269d943d 100644
->>>>>> --- a/drivers/pci/controller/pci-xgene.c
->>>>>> +++ b/drivers/pci/controller/pci-xgene.c
->>>>>> @@ -627,7 +627,8 @@ static int xgene_pcie_probe(struct platform_device *pdev)
->>>>>>        if (ret)
->>>>>>                return ret;
->>>>>>
->>>>>> -     ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows, NULL);
->>>>>> +     ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows,
->>>>>> +                                           &bridge->dma_ranges, NULL);
->>>>>>        if (ret)
->>>>>>                return ret;
->>>>>>
->>>>>> diff --git a/drivers/pci/controller/pcie-altera.c b/drivers/pci/controller/pcie-altera.c
->>>>>> index ba025efeae28..b447c3e4abad 100644
->>>>>> --- a/drivers/pci/controller/pcie-altera.c
->>>>>> +++ b/drivers/pci/controller/pcie-altera.c
->>>>>> @@ -800,7 +800,7 @@ static int altera_pcie_probe(struct platform_device *pdev)
->>>>>>        }
->>>>>>
->>>>>>        ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows,
->>>>>> -                                           NULL);
->>>>>> +                                           &bridge->dma_ranges, NULL);
->>>>>>        if (ret) {
->>>>>>                dev_err(dev, "Failed add resources\n");
->>>>>>                return ret;
->>>>>> diff --git a/drivers/pci/controller/pcie-cadence-host.c b/drivers/pci/controller/pcie-cadence-host.c
->>>>>> index 97e251090b4f..a8f7a6284c3e 100644
->>>>>> --- a/drivers/pci/controller/pcie-cadence-host.c
->>>>>> +++ b/drivers/pci/controller/pcie-cadence-host.c
->>>>>> @@ -211,7 +211,7 @@ static int cdns_pcie_host_init(struct device *dev,
->>>>>>        int err;
->>>>>>
->>>>>>        /* Parse our PCI ranges and request their resources */
->>>>>> -     err = pci_parse_request_of_pci_ranges(dev, resources, &bus_range);
->>>>>> +     err = pci_parse_request_of_pci_ranges(dev, resources, NULL, &bus_range);
->>>>>>        if (err)
->>>>>>                return err;
->>>>>>
->>>>>> diff --git a/drivers/pci/controller/pcie-iproc-platform.c b/drivers/pci/controller/pcie-iproc-platform.c
->>>>>> index 375d815f7301..ff0a81a632a1 100644
->>>>>> --- a/drivers/pci/controller/pcie-iproc-platform.c
->>>>>> +++ b/drivers/pci/controller/pcie-iproc-platform.c
->>>>>> @@ -95,7 +95,8 @@ static int iproc_pcie_pltfm_probe(struct platform_device *pdev)
->>>>>>        if (IS_ERR(pcie->phy))
->>>>>>                return PTR_ERR(pcie->phy);
->>>>>>
->>>>>> -     ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows, NULL);
->>>>>> +     ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows,
->>>>>> +                                           &bridge->dma_ranges, NULL);
->>>>>>        if (ret) {
->>>>>>                dev_err(dev, "unable to get PCI host bridge resources\n");
->>>>>>                return ret;
->>>>>> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
->>>>>> index d9206a3cd56b..cb982891b22b 100644
->>>>>> --- a/drivers/pci/controller/pcie-mediatek.c
->>>>>> +++ b/drivers/pci/controller/pcie-mediatek.c
->>>>>> @@ -1034,7 +1034,7 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
->>>>>>        int err;
->>>>>>
->>>>>>        err = pci_parse_request_of_pci_ranges(dev, windows,
->>>>>> -                                           &bus);
->>>>>> +                                           &host->dma_ranges, &bus);
->>>>>>        if (err)
->>>>>>                return err;
->>>>>>
->>>>>> diff --git a/drivers/pci/controller/pcie-mobiveil.c b/drivers/pci/controller/pcie-mobiveil.c
->>>>>> index 4eab8624ce4d..257ba49c177c 100644
->>>>>> --- a/drivers/pci/controller/pcie-mobiveil.c
->>>>>> +++ b/drivers/pci/controller/pcie-mobiveil.c
->>>>>> @@ -875,7 +875,8 @@ static int mobiveil_pcie_probe(struct platform_device *pdev)
->>>>>>        }
->>>>>>
->>>>>>        /* parse the host bridge base addresses from the device tree file */
->>>>>> -     ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows, NULL);
->>>>>> +     ret = pci_parse_request_of_pci_ranges(dev, &bridge->windows,
->>>>>> +                                           &bridge->dma_ranges, NULL);
->>>>>>        if (ret) {
->>>>>>                dev_err(dev, "Getting bridge resources failed\n");
->>>>>>                return ret;
->>>>>> diff --git a/drivers/pci/controller/pcie-rcar.c b/drivers/pci/controller/pcie-rcar.c
->>>>>> index f6a669a9af41..b8d6e86a5539 100644
->>>>>> --- a/drivers/pci/controller/pcie-rcar.c
->>>>>> +++ b/drivers/pci/controller/pcie-rcar.c
->>>>>> @@ -1138,7 +1138,8 @@ static int rcar_pcie_probe(struct platform_device *pdev)
->>>>>>        pcie->dev = dev;
->>>>>>        platform_set_drvdata(pdev, pcie);
->>>>>>
->>>>>> -     err = pci_parse_request_of_pci_ranges(dev, &pcie->resources, NULL);
->>>>>> +     err = pci_parse_request_of_pci_ranges(dev, &pcie->resources,
->>>>>> +                                           &bridge->dma_ranges, NULL);
->>>>>>        if (err)
->>>>>>                goto err_free_bridge;
->>>>>>
->>>>>> diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
->>>>>> index f375e55ea02e..ee83f8494ee9 100644
->>>>>> --- a/drivers/pci/controller/pcie-rockchip-host.c
->>>>>> +++ b/drivers/pci/controller/pcie-rockchip-host.c
->>>>>> @@ -1004,7 +1004,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->>>>>>        if (err < 0)
->>>>>>                goto err_deinit_port;
->>>>>>
->>>>>> -     err = pci_parse_request_of_pci_ranges(dev, &bridge->windows, &bus_res);
->>>>>> +     err = pci_parse_request_of_pci_ranges(dev, &bridge->windows,
->>>>>> +                                           &bridge->dma_ranges, &bus_res);
->>>>>>        if (err)
->>>>>>                goto err_remove_irq_domain;
->>>>>>
->>>>>> diff --git a/drivers/pci/controller/pcie-xilinx-nwl.c b/drivers/pci/controller/pcie-xilinx-nwl.c
->>>>>> index e135a4b60489..9bd1427f2fd6 100644
->>>>>> --- a/drivers/pci/controller/pcie-xilinx-nwl.c
->>>>>> +++ b/drivers/pci/controller/pcie-xilinx-nwl.c
->>>>>> @@ -843,7 +843,8 @@ static int nwl_pcie_probe(struct platform_device *pdev)
->>>>>>                return err;
->>>>>>        }
->>>>>>
->>>>>> -     err = pci_parse_request_of_pci_ranges(dev, &bridge->windows, NULL);
->>>>>> +     err = pci_parse_request_of_pci_ranges(dev, &bridge->windows,
->>>>>> +                                           &bridge->dma_ranges, NULL);
->>>>>>        if (err) {
->>>>>>                dev_err(dev, "Getting bridge resources failed\n");
->>>>>>                return err;
->>>>>> diff --git a/drivers/pci/controller/pcie-xilinx.c b/drivers/pci/controller/pcie-xilinx.c
->>>>>> index 257702288787..98e55297815b 100644
->>>>>> --- a/drivers/pci/controller/pcie-xilinx.c
->>>>>> +++ b/drivers/pci/controller/pcie-xilinx.c
->>>>>> @@ -645,7 +645,8 @@ static int xilinx_pcie_probe(struct platform_device *pdev)
->>>>>>                return err;
->>>>>>        }
->>>>>>
->>>>>> -     err = pci_parse_request_of_pci_ranges(dev, &bridge->windows, NULL);
->>>>>> +     err = pci_parse_request_of_pci_ranges(dev, &bridge->windows,
->>>>>> +                                           &bridge->dma_ranges, NULL);
->>>>>>        if (err) {
->>>>>>                dev_err(dev, "Getting bridge resources failed\n");
->>>>>>                return err;
->>>>>> diff --git a/drivers/pci/of.c b/drivers/pci/of.c
->>>>>> index f3da49a31db4..0b1e4623dfcf 100644
->>>>>> --- a/drivers/pci/of.c
->>>>>> +++ b/drivers/pci/of.c
->>>>>> @@ -257,7 +257,9 @@ EXPORT_SYMBOL_GPL(of_pci_check_probe_only);
->>>>>>    */
->>>>>>   int devm_of_pci_get_host_bridge_resources(struct device *dev,
->>>>>>                        unsigned char busno, unsigned char bus_max,
->>>>>> -                     struct list_head *resources, resource_size_t *io_base)
->>>>>> +                     struct list_head *resources,
->>>>>> +                     struct list_head *ib_resources,
->>>>>> +                     resource_size_t *io_base)
->>>>>>   {
->>>>>>        struct device_node *dev_node = dev->of_node;
->>>>>>        struct resource *res, tmp_res;
->>>>>> @@ -340,6 +342,42 @@ int devm_of_pci_get_host_bridge_resources(struct device *dev,
->>>>>>                pci_add_resource_offset(resources, res, res->start - range.pci_addr);
->>>>>>        }
->>>>>>
->>>>>> +     /* Check for dma-ranges property */
->>>>>> +     if (!ib_resources)
->>>>>> +             return 0;
->>>>>> +     err = of_pci_dma_range_parser_init(&parser, dev_node);
->>>>>> +     if (err)
->>>>>> +             return 0;
->>>>>> +
->>>>>> +     dev_dbg(dev, "Parsing dma-ranges property...\n");
->>>>>> +     for_each_of_pci_range(&parser, &range) {
->>>>>> +             /*
->>>>>> +              * If we failed translation or got a zero-sized region
->>>>>> +              * then skip this range
->>>>>> +              */
->>>>>> +             if (((range.flags & IORESOURCE_TYPE_BITS) != IORESOURCE_MEM) ||
->>>>>> +                 range.cpu_addr == OF_BAD_ADDR || range.size == 0)
->>>>>> +                     continue;
->>>>>> +
->>>>>> +             dev_info(dev, "IB MEM %#010llx..%#010llx -> %#010llx\n",
->>>>>> +                      range.cpu_addr,
->>>>>> +                      range.cpu_addr + range.size - 1, range.pci_addr);
->>>>>> +
->>>>>> +
->>>>>> +             err = of_pci_range_to_resource(&range, dev_node, &tmp_res);
->>>>>> +             if (err)
->>>>>> +                     continue;
->>>>>> +
->>>>>> +             res = devm_kmemdup(dev, &tmp_res, sizeof(tmp_res), GFP_KERNEL);
->>>>>> +             if (!res) {
->>>>>> +                     err = -ENOMEM;
->>>>>> +                     goto failed;
->>>>>> +             }
->>>>>> +
->>>>>> +             pci_add_resource_offset(ib_resources, res,
->>>>>> +                                     res->start - range.pci_addr);
->>>>>> +     }
->>>>>> +
->>>>>>        return 0;
->>>>>>
->>>>>>   failed:
->>>>>> @@ -482,6 +520,7 @@ EXPORT_SYMBOL_GPL(of_irq_parse_and_map_pci);
->>>>>>
->>>>>>   int pci_parse_request_of_pci_ranges(struct device *dev,
->>>>>>                                    struct list_head *resources,
->>>>>> +                                 struct list_head *ib_resources,
->>>>>>                                    struct resource **bus_range)
->>>>>>   {
->>>>>>        int err, res_valid = 0;
->>>>>> @@ -489,8 +528,10 @@ int pci_parse_request_of_pci_ranges(struct device *dev,
->>>>>>        struct resource_entry *win, *tmp;
->>>>>>
->>>>>>        INIT_LIST_HEAD(resources);
->>>>>> +     if (ib_resources)
->>>>>> +             INIT_LIST_HEAD(ib_resources);
->>>>>>        err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, resources,
->>>>>> -                                                 &iobase);
->>>>>> +                                                 ib_resources, &iobase);
->>>>>>        if (err)
->>>>>>                return err;
->>>>>>
->>>>>> diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
->>>>>> index 3f6947ee3324..6692c4fe4290 100644
->>>>>> --- a/drivers/pci/pci.h
->>>>>> +++ b/drivers/pci/pci.h
->>>>>> @@ -633,11 +633,15 @@ static inline void pci_release_bus_of_node(struct pci_bus *bus) { }
->>>>>>   #if defined(CONFIG_OF_ADDRESS)
->>>>>>   int devm_of_pci_get_host_bridge_resources(struct device *dev,
->>>>>>                        unsigned char busno, unsigned char bus_max,
->>>>>> -                     struct list_head *resources, resource_size_t *io_base);
->>>>>> +                     struct list_head *resources,
->>>>>> +                     struct list_head *ib_resources,
->>>>>> +                     resource_size_t *io_base);
->>>>>>   #else
->>>>>>   static inline int devm_of_pci_get_host_bridge_resources(struct device *dev,
->>>>>>                        unsigned char busno, unsigned char bus_max,
->>>>>> -                     struct list_head *resources, resource_size_t *io_base)
->>>>>> +                     struct list_head *resources,
->>>>>> +                     struct list_head *ib_resources,
->>>>>> +                     resource_size_t *io_base)
->>>>>>   {
->>>>>>        return -EINVAL;
->>>>>>   }
->>>>>> diff --git a/include/linux/pci.h b/include/linux/pci.h
->>>>>> index f9088c89a534..5cb94916eaa1 100644
->>>>>> --- a/include/linux/pci.h
->>>>>> +++ b/include/linux/pci.h
->>>>>> @@ -2278,6 +2278,7 @@ struct irq_domain;
->>>>>>   struct irq_domain *pci_host_bridge_of_msi_domain(struct pci_bus *bus);
->>>>>>   int pci_parse_request_of_pci_ranges(struct device *dev,
->>>>>>                                    struct list_head *resources,
->>>>>> +                                 struct list_head *ib_resources,
->>>>>>                                    struct resource **bus_range);
->>>>>>
->>>>>>   /* Arch may override this (weak) */
->>>>>> @@ -2286,9 +2287,11 @@ struct device_node *pcibios_get_phb_of_node(struct pci_bus *bus);
->>>>>>   #else        /* CONFIG_OF */
->>>>>>   static inline struct irq_domain *
->>>>>>   pci_host_bridge_of_msi_domain(struct pci_bus *bus) { return NULL; }
->>>>>> -static inline int pci_parse_request_of_pci_ranges(struct device *dev,
->>>>>> -                                               struct list_head *resources,
->>>>>> -                                               struct resource **bus_range)
->>>>>> +static inline int
->>>>>> +pci_parse_request_of_pci_ranges(struct device *dev,
->>>>>> +                             struct list_head *resources,
->>>>>> +                             struct list_head *ib_resources,
->>>>>> +                             struct resource **bus_range)
->>>>>>   {
->>>>>>        return -EINVAL;
->>>>>>   }
->>>>>> --
->>>>>> 2.20.1
->>>>>>
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
