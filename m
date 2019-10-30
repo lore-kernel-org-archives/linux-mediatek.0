@@ -1,4 +1,4 @@
-Return-Path: <SRS0=h+tY=YW=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=ckAq=YX=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-7.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A2D9CA9EAE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2019 23:20:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0052CCA9EC4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2019 01:37:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AB6282083E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Oct 2019 23:19:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BAD0821479
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Oct 2019 01:37:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oJvLKShP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AB6282083E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fTGKUCn6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BAD0821479
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,48 +25,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=AYeYVHvSIVlnmAGIHX6fr+6NH2ORUunvUILmiITjwQ0=; b=oJvLKShPimL/vegL7M9mGKwSX
-	TmGFtVF/jLyXobvuWYVQodUMI/OXqjunQ6qmx9pj/WyImd0gAkGohF5Yp21RTE1abR4I0U7CwMCnf
-	6mxXzTeMJeils6aOkv5+9MDCJPUriSNsfDvM8VP2kRC+cKye9ys7huIuU3ztWffOBswxbV71Z5o2R
-	PgDCIbSGWb3xbORWO54WBkySuuP3VNk4kdoXIE94v2OKG0m+Jv6Gh/GbFjWHR/mthbS/5fBe8hi3I
-	Ipo/sR85dvddKuB9WgSGd+P5I5R20SDdlrRd+z6C3FTkWBtVljoJluCpkMM9VpY7fcda5olTqi5Pb
-	PSU7nGeLw==;
+	 bh=5L3oJvIDElt/6eDefSYZ6bKWA2ENsYHVyjIniDkGCGM=; b=fTGKUCn68IEqcu7X2ZO1nKvv0
+	qIp4kM4qHrhZwcLjOpAAEMlaWmMsAyt8hAFE/f7YAjPevYXdHeSB5CspSqlFcYS2sckCYygG8Iu+b
+	9/iby5HewPv8KiokZscu/1JbB5DS7B/NuFMlghOnYF7k7XsZwpnKUmtl3PPTKMA+6d67NdHLb1q11
+	3LMPs7D1mT7qTK5m/r3uJrUtVv+WrMcNXo+YQV7rDtnPdl10NRLfyEKJwq/M8/fmp+YvlewXO1/XG
+	YZGdN4HrCNfPjXFzxdaPxgpmD+Bj49uNJyx0UqMXlt735Xd28yU61d3Qm4f9xWXPoA2wmDT/PA8s4
+	XZYgcKWNw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iPamM-0007OD-NM; Tue, 29 Oct 2019 23:19:58 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1iPcvS-0006yZ-Ky; Wed, 30 Oct 2019 01:37:30 +0000
+Received: from mga18.intel.com ([134.134.136.126])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iPam9-0007Ar-Ec; Tue, 29 Oct 2019 23:19:47 +0000
+ id 1iPcvH-0006nt-DP; Wed, 30 Oct 2019 01:37:21 +0000
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga102.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 29 Oct 2019 16:19:42 -0700
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 29 Oct 2019 18:37:14 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.68,245,1569308400"; 
- d="gz'50?scan'50,208,50";a="225143441"
+ d="gz'50?scan'50,208,50";a="283414025"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by fmsmga004.fm.intel.com with ESMTP; 29 Oct 2019 16:19:39 -0700
+ by orsmga001.jf.intel.com with ESMTP; 29 Oct 2019 18:37:11 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1iPam2-0008G9-W6; Wed, 30 Oct 2019 07:19:38 +0800
-Date: Wed, 30 Oct 2019 07:19:13 +0800
+ id 1iPcv9-000BA6-0a; Wed, 30 Oct 2019 09:37:11 +0800
+Date: Wed, 30 Oct 2019 09:36:20 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Weiyi Lu <weiyi.lu@mediatek.com>
 Subject: Re: [PATCH v8 09/14] soc: mediatek: Add multiple step bus protection
  control
-Message-ID: <201910300739.XPqsX21Y%lkp@intel.com>
+Message-ID: <201910300906.kpQSjRPu%lkp@intel.com>
 References: <1572230898-7860-10-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="f7dzc55grdgcqhmd"
+Content-Type: multipart/mixed; boundary="zotjm7zge4ri7uja"
 Content-Disposition: inline
 In-Reply-To: <1572230898-7860-10-git-send-email-weiyi.lu@mediatek.com>
 X-Patchwork-Hint: ignore
 User-Agent: NeoMutt/20170113 (1.7.2)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191029_161945_556131_74376741 
-X-CRM114-Status: GOOD (  21.85  )
+X-CRM114-CacheID: sfid-20191029_183719_564403_385D9F7B 
+X-CRM114-Status: UNSURE (   5.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,16 +90,16 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---f7dzc55grdgcqhmd
+--zotjm7zge4ri7uja
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 Hi Weiyi,
 
-Thank you for the patch! Perhaps something to improve:
+Thank you for the patch! Yet something to improve:
 
-[auto build test WARNING on linus/master]
-[also build test WARNING on v5.4-rc5 next-20191029]
+[auto build test ERROR on linus/master]
+[also build test ERROR on v5.4-rc5 next-20191029]
 [if your patch is applied to the wrong git tree, please drop us a note to help
 improve the system. BTW, we also suggest to use '--base' option to specify the
 base tree in git format-patch, please see https://stackoverflow.com/a/37406982]
@@ -116,138 +117,63 @@ reproduce:
 If you fix the issue, kindly add following tag
 Reported-by: kbuild test robot <lkp@intel.com>
 
-Note: it may well be a FALSE warning. FWIW you are at least aware of it now.
-http://gcc.gnu.org/wiki/Better_Uninitialized_Warnings
+All error/warnings (new ones prefixed by >>):
 
-All warnings (new ones prefixed by >>):
+   In file included from <command-line>:0:0:
+>> include/linux/soc/mediatek/scpsys-ext.h:26:2: error: unknown type name 'u32'
+     u32 set_ofs;
+     ^~~
+   include/linux/soc/mediatek/scpsys-ext.h:27:2: error: unknown type name 'u32'
+     u32 clr_ofs;
+     ^~~
+   include/linux/soc/mediatek/scpsys-ext.h:28:2: error: unknown type name 'u32'
+     u32 en_ofs;
+     ^~~
+   include/linux/soc/mediatek/scpsys-ext.h:29:2: error: unknown type name 'u32'
+     u32 sta_ofs;
+     ^~~
+   include/linux/soc/mediatek/scpsys-ext.h:30:2: error: unknown type name 'u32'
+     u32 mask;
+     ^~~
+   include/linux/soc/mediatek/scpsys-ext.h:31:2: error: unknown type name 'u32'
+     u32 clr_ack_mask;
+     ^~~
+>> include/linux/soc/mediatek/scpsys-ext.h:35:9: warning: 'struct regmap' declared inside parameter list will not be visible outside of this definition or declaration
+     struct regmap *infracfg, struct regmap *smi_common);
+            ^~~~~~
+   include/linux/soc/mediatek/scpsys-ext.h:37:9: warning: 'struct regmap' declared inside parameter list will not be visible outside of this definition or declaration
+     struct regmap *infracfg, struct regmap *smi_common);
+            ^~~~~~
 
-   In file included from drivers/soc/mediatek/mtk-scpsys-ext.c:9:0:
-   drivers/soc/mediatek/mtk-scpsys-ext.c: In function 'mtk_scpsys_ext_set_bus_protection':
->> include/linux/regmap.h:131:9: warning: 'map' may be used uninitialized in this function [-Wmaybe-uninitialized]
-      __ret = regmap_read((map), (addr), &(val)); \
-            ^
-   drivers/soc/mediatek/mtk-scpsys-ext.c:51:18: note: 'map' was declared here
-      struct regmap *map;
-                     ^~~
-   In file included from drivers/soc/mediatek/mtk-scpsys-ext.c:9:0:
-   drivers/soc/mediatek/mtk-scpsys-ext.c: In function 'mtk_scpsys_ext_clear_bus_protection':
->> include/linux/regmap.h:131:9: warning: 'map' may be used uninitialized in this function [-Wmaybe-uninitialized]
-      __ret = regmap_read((map), (addr), &(val)); \
-            ^
-   drivers/soc/mediatek/mtk-scpsys-ext.c:79:18: note: 'map' was declared here
-      struct regmap *map;
-                     ^~~
---
-   In file included from drivers/soc//mediatek/mtk-scpsys-ext.c:9:0:
-   drivers/soc//mediatek/mtk-scpsys-ext.c: In function 'mtk_scpsys_ext_set_bus_protection':
->> include/linux/regmap.h:131:9: warning: 'map' may be used uninitialized in this function [-Wmaybe-uninitialized]
-      __ret = regmap_read((map), (addr), &(val)); \
-            ^
-   drivers/soc//mediatek/mtk-scpsys-ext.c:51:18: note: 'map' was declared here
-      struct regmap *map;
-                     ^~~
-   In file included from drivers/soc//mediatek/mtk-scpsys-ext.c:9:0:
-   drivers/soc//mediatek/mtk-scpsys-ext.c: In function 'mtk_scpsys_ext_clear_bus_protection':
->> include/linux/regmap.h:131:9: warning: 'map' may be used uninitialized in this function [-Wmaybe-uninitialized]
-      __ret = regmap_read((map), (addr), &(val)); \
-            ^
-   drivers/soc//mediatek/mtk-scpsys-ext.c:79:18: note: 'map' was declared here
-      struct regmap *map;
-                     ^~~
+vim +/u32 +26 include/linux/soc/mediatek/scpsys-ext.h
 
-vim +/map +131 include/linux/regmap.h
-
-8019ff6cfc0440 Nariman Poushin         2015-07-16   73  
-ca7a94464b5457 Kuninori Morimoto       2016-02-15   74  #define	regmap_update_bits(map, reg, mask, val) \
-ca7a94464b5457 Kuninori Morimoto       2016-02-15   75  	regmap_update_bits_base(map, reg, mask, val, NULL, false, false)
-30ed9cb7a49b49 Kuninori Morimoto       2016-02-15   76  #define	regmap_update_bits_async(map, reg, mask, val)\
-30ed9cb7a49b49 Kuninori Morimoto       2016-02-15   77  	regmap_update_bits_base(map, reg, mask, val, NULL, true, false)
-98c2dc48694a47 Kuninori Morimoto       2016-02-15   78  #define	regmap_update_bits_check(map, reg, mask, val, change)\
-98c2dc48694a47 Kuninori Morimoto       2016-02-15   79  	regmap_update_bits_base(map, reg, mask, val, change, false, false)
-89d8d4b833b0b2 Kuninori Morimoto       2016-02-15   80  #define	regmap_update_bits_check_async(map, reg, mask, val, change)\
-89d8d4b833b0b2 Kuninori Morimoto       2016-02-15   81  	regmap_update_bits_base(map, reg, mask, val, change, true, false)
-ca7a94464b5457 Kuninori Morimoto       2016-02-15   82  
-b821957a5ae769 Kuninori Morimoto       2016-03-03   83  #define	regmap_write_bits(map, reg, mask, val) \
-b821957a5ae769 Kuninori Morimoto       2016-03-03   84  	regmap_update_bits_base(map, reg, mask, val, NULL, false, true)
-b821957a5ae769 Kuninori Morimoto       2016-03-03   85  
-3674124b358946 Kuninori Morimoto       2016-02-15   86  #define	regmap_field_write(field, val) \
-3674124b358946 Kuninori Morimoto       2016-02-15   87  	regmap_field_update_bits_base(field, ~0, val, NULL, false, false)
-489061bba6c655 Kuninori Morimoto       2016-02-15   88  #define	regmap_field_force_write(field, val) \
-489061bba6c655 Kuninori Morimoto       2016-02-15   89  	regmap_field_update_bits_base(field, ~0, val, NULL, false, true)
-721ed64dda3774 Kuninori Morimoto       2016-02-15   90  #define	regmap_field_update_bits(field, mask, val)\
-721ed64dda3774 Kuninori Morimoto       2016-02-15   91  	regmap_field_update_bits_base(field, mask, val, NULL, false, false)
-489061bba6c655 Kuninori Morimoto       2016-02-15   92  #define	regmap_field_force_update_bits(field, mask, val) \
-489061bba6c655 Kuninori Morimoto       2016-02-15   93  	regmap_field_update_bits_base(field, mask, val, NULL, false, true)
-3674124b358946 Kuninori Morimoto       2016-02-15   94  
-bbf2c46f46e23a Kuninori Morimoto       2016-02-15   95  #define	regmap_fields_write(field, id, val) \
-bbf2c46f46e23a Kuninori Morimoto       2016-02-15   96  	regmap_fields_update_bits_base(field, id, ~0, val, NULL, false, false)
-e6ef243fa4660f Kuninori Morimoto       2016-02-15   97  #define	regmap_fields_force_write(field, id, val) \
-e6ef243fa4660f Kuninori Morimoto       2016-02-15   98  	regmap_fields_update_bits_base(field, id, ~0, val, NULL, false, true)
-48138609135fc9 Kuninori Morimoto       2016-02-15   99  #define	regmap_fields_update_bits(field, id, mask, val)\
-48138609135fc9 Kuninori Morimoto       2016-02-15  100  	regmap_fields_update_bits_base(field, id, mask, val, NULL, false, false)
-e6ef243fa4660f Kuninori Morimoto       2016-02-15  101  #define	regmap_fields_force_update_bits(field, id, mask, val) \
-e6ef243fa4660f Kuninori Morimoto       2016-02-15  102  	regmap_fields_update_bits_base(field, id, mask, val, NULL, false, true)
-bbf2c46f46e23a Kuninori Morimoto       2016-02-15  103  
-08188ba8822163 Philipp Zabel           2016-07-06  104  /**
-08188ba8822163 Philipp Zabel           2016-07-06  105   * regmap_read_poll_timeout - Poll until a condition is met or a timeout occurs
-2cf8e2dfdf8836 Charles Keepax          2017-01-12  106   *
-08188ba8822163 Philipp Zabel           2016-07-06  107   * @map: Regmap to read from
-08188ba8822163 Philipp Zabel           2016-07-06  108   * @addr: Address to poll
-08188ba8822163 Philipp Zabel           2016-07-06  109   * @val: Unsigned integer variable to read the value into
-08188ba8822163 Philipp Zabel           2016-07-06  110   * @cond: Break condition (usually involving @val)
-08188ba8822163 Philipp Zabel           2016-07-06  111   * @sleep_us: Maximum time to sleep between reads in us (0
-08188ba8822163 Philipp Zabel           2016-07-06  112   *            tight-loops).  Should be less than ~20ms since usleep_range
-458f69ef36656d Mauro Carvalho Chehab   2019-06-12  113   *            is used (see Documentation/timers/timers-howto.rst).
-08188ba8822163 Philipp Zabel           2016-07-06  114   * @timeout_us: Timeout in us, 0 means never timeout
-08188ba8822163 Philipp Zabel           2016-07-06  115   *
-08188ba8822163 Philipp Zabel           2016-07-06  116   * Returns 0 on success and -ETIMEDOUT upon a timeout or the regmap_read
-08188ba8822163 Philipp Zabel           2016-07-06  117   * error return value in case of a error read. In the two former cases,
-08188ba8822163 Philipp Zabel           2016-07-06  118   * the last read value at @addr is stored in @val. Must not be called
-08188ba8822163 Philipp Zabel           2016-07-06  119   * from atomic context if sleep_us or timeout_us are used.
-08188ba8822163 Philipp Zabel           2016-07-06  120   *
-08188ba8822163 Philipp Zabel           2016-07-06  121   * This is modelled after the readx_poll_timeout macros in linux/iopoll.h.
-08188ba8822163 Philipp Zabel           2016-07-06  122   */
-08188ba8822163 Philipp Zabel           2016-07-06  123  #define regmap_read_poll_timeout(map, addr, val, cond, sleep_us, timeout_us) \
-08188ba8822163 Philipp Zabel           2016-07-06  124  ({ \
-1b0c22e45508ff Arnd Bergmann           2017-10-13  125  	u64 __timeout_us = (timeout_us); \
-1b0c22e45508ff Arnd Bergmann           2017-10-13  126  	unsigned long __sleep_us = (sleep_us); \
-1b0c22e45508ff Arnd Bergmann           2017-10-13  127  	ktime_t __timeout = ktime_add_us(ktime_get(), __timeout_us); \
-780b1350d316fd Ramesh Shanmugasundaram 2017-07-03  128  	int __ret; \
-1b0c22e45508ff Arnd Bergmann           2017-10-13  129  	might_sleep_if(__sleep_us); \
-08188ba8822163 Philipp Zabel           2016-07-06  130  	for (;;) { \
-780b1350d316fd Ramesh Shanmugasundaram 2017-07-03 @131  		__ret = regmap_read((map), (addr), &(val)); \
-780b1350d316fd Ramesh Shanmugasundaram 2017-07-03  132  		if (__ret) \
-08188ba8822163 Philipp Zabel           2016-07-06  133  			break; \
-08188ba8822163 Philipp Zabel           2016-07-06  134  		if (cond) \
-08188ba8822163 Philipp Zabel           2016-07-06  135  			break; \
-1b0c22e45508ff Arnd Bergmann           2017-10-13  136  		if ((__timeout_us) && \
-780b1350d316fd Ramesh Shanmugasundaram 2017-07-03  137  		    ktime_compare(ktime_get(), __timeout) > 0) { \
-780b1350d316fd Ramesh Shanmugasundaram 2017-07-03  138  			__ret = regmap_read((map), (addr), &(val)); \
-08188ba8822163 Philipp Zabel           2016-07-06  139  			break; \
-08188ba8822163 Philipp Zabel           2016-07-06  140  		} \
-1b0c22e45508ff Arnd Bergmann           2017-10-13  141  		if (__sleep_us) \
-1b0c22e45508ff Arnd Bergmann           2017-10-13  142  			usleep_range((__sleep_us >> 2) + 1, __sleep_us); \
-08188ba8822163 Philipp Zabel           2016-07-06  143  	} \
-780b1350d316fd Ramesh Shanmugasundaram 2017-07-03  144  	__ret ?: ((cond) ? 0 : -ETIMEDOUT); \
-08188ba8822163 Philipp Zabel           2016-07-06  145  })
-08188ba8822163 Philipp Zabel           2016-07-06  146  
-
-:::::: The code at line 131 was first introduced by commit
-:::::: 780b1350d316fda28d85fcae17854c778d89cbbe regmap: Avoid namespace collision within macro & tidy up
-
-:::::: TO: Ramesh Shanmugasundaram <ramesh.shanmugasundaram@bp.renesas.com>
-:::::: CC: Mark Brown <broonie@kernel.org>
+    23	
+    24	struct bus_prot {
+    25		enum regmap_type type;
+  > 26		u32 set_ofs;
+    27		u32 clr_ofs;
+    28		u32 en_ofs;
+  > 29		u32 sta_ofs;
+    30		u32 mask;
+    31		u32 clr_ack_mask;
+    32	};
+    33	
+    34	int mtk_scpsys_ext_set_bus_protection(const struct bus_prot *bp_table,
+  > 35		struct regmap *infracfg, struct regmap *smi_common);
+    36	int mtk_scpsys_ext_clear_bus_protection(const struct bus_prot *bp_table,
+    37		struct regmap *infracfg, struct regmap *smi_common);
+    38	
 
 ---
 0-DAY kernel test infrastructure                Open Source Technology Center
 https://lists.01.org/pipermail/kbuild-all                   Intel Corporation
 
---f7dzc55grdgcqhmd
+--zotjm7zge4ri7uja
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICBrCuF0AAy5jb25maWcAjDzZcty2su/5iin74SZ14kSbZefe0gMIghxkSIICwFn0glLk
+H4sICDneuF0AAy5jb25maWcAjDzZcty2su/5iin74SZ14kSbZefe0gMIghxkSIICwFn0glLk
 saOKJblG8kn897cb3AAQHCd16sjsbjS2Rm9ozOsfXi/I15enh9uX+7vbz5+/LT7tH/eH25f9
 h8XH+8/7/1ukYlEJvWAp178AcXH/+PWfXx/uvzwv3v5y8cvJm8Pd28Vqf3jcf17Qp8eP95++
 Quv7p8cfXv8A/3sNwIcvwOjwvwts9OYztn/z6e5u8WNO6U+Ld8gECKmoMp4bSg1XBjBX33oQ
@@ -1398,7 +1324,7 @@ giV/52zCe811k2/+nDUEv+zJD4fCGuMLIhhBMPUvurq3OPRvyQeEr44vZ8WHymPeFfQmzF7E
 92yrd53Q4aHgMI1fq8d5YNSx6r864Ns19uX56dJPuzevX9+pkUMwOgTukuCpbip0kYVpqPKq
 IHko6JUMzEUc8qWzCtMfnaIBxPrkAwA=
 
---f7dzc55grdgcqhmd
+--zotjm7zge4ri7uja
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1409,5 +1335,5 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---f7dzc55grdgcqhmd--
+--zotjm7zge4ri7uja--
 
