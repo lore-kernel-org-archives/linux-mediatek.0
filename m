@@ -7,65 +7,70 @@ X-Spam-Status: No, score=-12.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 770EBCA9ECB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2019 13:23:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9DBD6CA9ECB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2019 16:39:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 499E520873
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2019 13:23:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6FC342087F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2019 16:39:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MDuvz9te";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sirena.org.uk header.i=@sirena.org.uk header.b="w1GXU7OL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 499E520873
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NoEHD9Jd";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="y3rDPmS4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6FC342087F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:
-	In-Reply-To:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	References:List-Owner; bh=mi1GNeW4UrCqXJBHYW03GWcsQij6Zf6DXUB+5soMSRU=; b=MDu
-	vz9telkjCNP8AZiDV+aTFzuDCrNKnEBhsbS2nyUFF9+8usXH7eVYP1omGWyRa37RmK3PgOIgwwNGL
-	BOfk+icsVlkR89IeQaFUTKxPXkwbnmWzgZvIg1Rd/LhblYhFRk4WsNT509xfmEzG+ByJw6a9aU41t
-	N2O/e1Fh1bfcwpnZBBLc1xGhGSG2poY71Lz6Y2XhN+MyPLJAPxkHuvG0wFN7lTwYSdGN9CLkrdllo
-	jl97u3M2wHXSaEyRfu4z48Km6PopqRy5PRa9Sjy3P0PNLPIiN+IxHh9YqNtMsXzuAjj76g7InrEeu
-	rqX+gSvG4Pdx2Sii4b3+d8BGqvVR3cA==;
+	List-Owner; bh=QR6kg+9YCC0nKw6ly0wWsaWzqjTx6k4yrXM12zDqrCI=; b=NoEHD9JdL8bSNS
+	a11eChOOPnVgIwa06/tEvZtlUedVp6kdBbwqJJeHHo4cFPGStfPXl91hzLTBBG8x9kdLz95D3Q4X6
+	8zY/xFs4c59ihXFAujeFbcmuvAzGGy3939bG52COM7tg8Aief7ZRI1s9dUdvBOw9oCWkEpjizRvPO
+	+ohokWl4RW3FUqUMP9MutFlFxX4r4R+RF6kqEi1+qo+YTlw4V2SfNxOxnV+iFDasF2CweCzUu1dKe
+	yvVgmV319lfsKlNhmMov43NkyTYuG0F6lGyusGTGI0UpAnRIGJTI2WqzvU7KMr+lNm0nqnS8TMRn1
+	aUGRxmbv3ZJSEMreGMLA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iQAQf-0005V9-Uz; Thu, 31 Oct 2019 13:23:57 +0000
-Received: from heliosphere.sirena.org.uk ([172.104.155.198])
+	id 1iQDTN-0003Hb-OB; Thu, 31 Oct 2019 16:38:57 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iQAQS-0005Kl-H6; Thu, 31 Oct 2019 13:23:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sirena.org.uk; s=20170815-heliosphere; h=Date:Message-Id:In-Reply-To:
- Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
- List-Id:List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:
- List-Archive; bh=cX2GQwx79KGhyI+8o2ddFRP7SU55uxLjju8Bx0zNqbU=; b=w1GXU7OLZ6V9
- NOlCeGWK+uVSClvkjcRzuo/o3l28fh9fTqmntUC3CxAMXZbyyEhVLz8thrd9JSq8WC+IZJcgUheOy
- AswowT/c5ZDEURBcNqn1LcApNg7ae2XT2Rahmf+6bGkCr7jeSdXSFfIcLmWo8tdC2FrqIB2gHcbzX
- fViD0=;
-Received: from [91.217.168.176] (helo=fitzroy.sirena.org.uk)
- by heliosphere.sirena.org.uk with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <broonie@sirena.org.uk>)
- id 1iQAQQ-0007p7-C8; Thu, 31 Oct 2019 13:23:42 +0000
-Received: by fitzroy.sirena.org.uk (Postfix, from userid 1000)
- id 100F1D020AA; Thu, 31 Oct 2019 13:23:42 +0000 (GMT)
-From: Mark Brown <broonie@kernel.org>
-To: Luhua Xu <luhua.xu@mediatek.com>
-Subject: Applied "spi: add power control when set_cs" to the spi tree
-In-Reply-To: <1572426234-30019-1-git-send-email-luhua.xu@mediatek.com>
-X-Patchwork-Hint: ignore
-Message-Id: <20191031132342.100F1D020AA@fitzroy.sirena.org.uk>
-Date: Thu, 31 Oct 2019 13:23:42 +0000 (GMT)
-X-Bad-Reply: In-Reply-To but no 'Re:' in Subject.
+ id 1iQDTC-00039L-1y; Thu, 31 Oct 2019 16:38:48 +0000
+Received: from mail-qk1-f179.google.com (mail-qk1-f179.google.com
+ [209.85.222.179])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 406EF217D9;
+ Thu, 31 Oct 2019 16:38:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1572539925;
+ bh=YU229KBhy8a1ftHimn6c/jCBFwGzLDMNIxYvFPF7Tt4=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=y3rDPmS4VFm6m+S7Oifp3EFP4nTyHcnOpbws+84bnlDwMLGLe5ujstn2B81em3uj9
+ al5gcwP0L8/AMmGwwl8wFz/drnsqZq4OfW8v+iSPiyYYu9FlWmGNl9CwvpMKIQgQJ/
+ x94S7hi0Ll5yPpyppWUsC7jhZONDuLXG1nO6FzyE=
+Received: by mail-qk1-f179.google.com with SMTP id h6so7679420qkf.2;
+ Thu, 31 Oct 2019 09:38:45 -0700 (PDT)
+X-Gm-Message-State: APjAAAWk9dpTuCeRuxnHxD7F5NEa24kP5NQ89SrN/ny97Pu6RcMPaivp
+ 7AfCGPrukmw7VY+fqnqZSIVHSTz8frb2qu5RKw==
+X-Google-Smtp-Source: APXvYqzdMO6CZSHTsOVDftdeHphCx6evujWZ5b8s9DgkPeYuOFhNdlZfZF3YHNGIendCmjmLB2S9WjfyLMItB6rd2ZU=
+X-Received: by 2002:a37:f703:: with SMTP id q3mr6227212qkj.254.1572539924243; 
+ Thu, 31 Oct 2019 09:38:44 -0700 (PDT)
+MIME-Version: 1.0
+References: <20191031090213.27727-1-dongchun.zhu@mediatek.com>
+ <20191031090213.27727-2-dongchun.zhu@mediatek.com>
+In-Reply-To: <20191031090213.27727-2-dongchun.zhu@mediatek.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Thu, 31 Oct 2019 11:38:32 -0500
+X-Gmail-Original-Message-ID: <CAL_Jsq+4epXNTNYnC4WZ8LoeYegjOifrjezhDDhfa3o3Y2pWNg@mail.gmail.com>
+Message-ID: <CAL_Jsq+4epXNTNYnC4WZ8LoeYegjOifrjezhDDhfa3o3Y2pWNg@mail.gmail.com>
+Subject: Re: [V3, 1/2] media: dt-bindings: ov8856: Document YAML bindings
+To: Dongchun Zhu <dongchun.zhu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191031_062344_569204_D8AD4890 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20191031_093846_142857_3B866FF4 
+X-CRM114-Status: GOOD (  22.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,88 +82,206 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
- linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, shengnan.wang@mediatek.com,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Tomasz Figa <tfiga@chromium.org>, Louis Kuo <louis.kuo@mediatek.com>,
+ Sj Huang <sj.huang@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, bingbu.cao@intel.com,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The patch
+On Thu, Oct 31, 2019 at 4:02 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
+>
+> This patch adds documentation of device tree in YAML schema for the
+> OV8856 CMOS image sensor.
+>
+> Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> ---
+>  .../devicetree/bindings/media/i2c/ov8856.yaml      | 126 +++++++++++++++++++++
+>  MAINTAINERS                                        |   1 +
+>  2 files changed, 127 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/i2c/ov8856.yaml
 
-   spi: add power control when set_cs
+Need to test this with 'make dt-binding-check':
 
-has been applied to the spi tree at
+warning: no schema found in file:
+Documentation/devicetree/bindings/media/i2c/ov8856.yaml
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/media/i2c/ov8856.yaml:
+ignoring, error parsing file
+Documentation/devicetree/bindings/media/i2c/ov8856.yaml:  while
+scanning a simple key
+  in "<unicode string>", line 81, column 5
+could not find expected ':'
+  in "<unicode string>", line 84, column 1
+Documentation/devicetree/bindings/Makefile:12: recipe for target
+'Documentation/devicetree/bindings/media/i2c/ov8856.example.dts'
+failed
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-5.5
+>
+> diff --git a/Documentation/devicetree/bindings/media/i2c/ov8856.yaml b/Documentation/devicetree/bindings/media/i2c/ov8856.yaml
+> new file mode 100644
+> index 0000000..a161812
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/i2c/ov8856.yaml
+> @@ -0,0 +1,126 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +# Copyright (c) 2019 MediaTek Inc.
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/i2c/ov8856.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Omnivision OV8856 CMOS Sensor Device Tree Bindings
+> +
+> +maintainers:
+> +  - Ben Kao <ben.kao@intel.com>
+> +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
+> +
+> +description: |-
+> +  The Omnivision OV8856 is a high performance, 1/4-inch, 8 megapixel, CMOS
+> +  image sensor that delivers 3264x2448 at 30fps. It provides full-frame,
+> +  sub-sampled, and windowed 10-bit MIPI images in various formats via the
+> +  Serial Camera Control Bus (SCCB) interface. This chip is programmable
+> +  through I2C and two-wire SCCB. The sensor output is available via CSI-2
+> +  serial data output (up to 4-lane).
+> +
+> +properties:
+> +  compatible:
+> +    const: ovti,ov8856
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +  clock-names:
+> +    description:
+> +      Input clock for the sensor.
+> +    items:
+> +      - const: xvclk
+> +
+> +  clock-frequency:
+> +    description:
+> +      Frequency of the xvclk clock in Hertz.
+> +
+> +  dovdd-supply:
+> +    description:
+> +      Definition of the regulator used as interface power supply.
+> +    maxItems: 1
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
+Drop maxItems, it's always a single phandle.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+> +
+> +  avdd-supply:
+> +    description:
+> +      Definition of the regulator used as analog power supply.
+> +    maxItems: 1
+> +
+> +  dvdd-supply:
+> +    description:
+> +      Definition of the regulator used as digital power supply.
+> +    maxItems: 1
+> +
+> +  reset-gpios:
+> +    description:
+> +      The phandle and specifier for the GPIO that controls sensor reset.
+> +    maxItems: 1
+> +
+> +  # See ../video-interfaces.txt for details
+> +  port:
+> +    type: object
+> +    additionalProperties: false
+> +
+> +    properties:
+> +      endpoint:
+> +      type: object
+> +
+> +      properties:
+> +        remote-endpoint: true
+> +        data-lanes: true
+> +        link-frequencies: true
+> +
+> +      required:
+> +        - remote-endpoint
+> +        - data-lanes
+> +        - link-frequencies
+> +
+> +    required
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+Missing ':' is the cause of the error above.
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From d948e6ca189985495a21cd622c31e30e72b6b688 Mon Sep 17 00:00:00 2001
-From: Luhua Xu <luhua.xu@mediatek.com>
-Date: Wed, 30 Oct 2019 17:03:54 +0800
-Subject: [PATCH] spi: add power control when set_cs
-
-As to set_cs takes effect immediately, power spi
-is needed when setup spi.
-
-Cc: Mark Brown <broonie@kernel.org>
-Signed-off-by: Luhua Xu <luhua.xu@mediatek.com>
-Link: https://lore.kernel.org/r/1572426234-30019-1-git-send-email-luhua.xu@mediatek.com
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- drivers/spi/spi.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-index 5ba19ef809c2..294d0038eea6 100644
---- a/drivers/spi/spi.c
-+++ b/drivers/spi/spi.c
-@@ -3261,7 +3261,20 @@ int spi_setup(struct spi_device *spi)
- 	if (spi->controller->setup)
- 		status = spi->controller->setup(spi);
- 
--	spi_set_cs(spi, false);
-+	if (spi->controller->auto_runtime_pm && spi->controller->set_cs) {
-+		status = pm_runtime_get_sync(spi->controller->dev.parent);
-+		if (status < 0) {
-+			pm_runtime_put_noidle(spi->controller->dev.parent);
-+			dev_err(&spi->controller->dev, "Failed to power device: %d\n",
-+				status);
-+			return status;
-+		}
-+		spi_set_cs(spi, false);
-+		pm_runtime_mark_last_busy(spi->controller->dev.parent);
-+		pm_runtime_put_autosuspend(spi->controller->dev.parent);
-+	} else {
-+		spi_set_cs(spi, false);
-+	}
- 
- 	if (spi->rt && !spi->controller->rt) {
- 		spi->controller->rt = true;
--- 
-2.20.1
-
+> +      - endpoint
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +  - clock-names
+> +  - clock-frequency
+> +  - dovdd-supply
+> +  - avdd-supply
+> +  - dvdd-supply
+> +  - reset-gpios
+> +  - port
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/gpio/gpio.h>
+> +
+> +    ov8856: camera-sensor@10 {
+> +        compatible = "ovti,ov8856";
+> +        reg = <0x10>;
+> +        reset-gpios = <&pio 111 GPIO_ACTIVE_HIGH>;
+> +        pinctrl-names = "default";
+> +        pinctrl-0 = <&clk_24m_cam>;
+> +
+> +        clocks = <&cru SCLK_TESTCLKOUT1>;
+> +        clock-names = "xvclk";
+> +        clock-frequency = <19200000>;
+> +
+> +        avdd-supply = <&mt6358_vcama2_reg>;
+> +        dvdd-supply = <&mt6358_vcamd_reg>;
+> +        dovdd-supply = <&mt6358_vcamio_reg>;
+> +
+> +        port {
+> +            wcam_out: endpoint {
+> +                remote-endpoint = <&mipi_in_wcam>;
+> +                data-lanes = <1 2 3 4>;
+> +                link-frequencies = /bits/ 64 <360000000 180000000>;
+> +            };
+> +        };
+> +    };
+> +
+> +...
+> \ No newline at end of file
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 296de2b..4cbae26 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -12037,6 +12037,7 @@ L:      linux-media@vger.kernel.org
+>  T:     git git://linuxtv.org/media_tree.git
+>  S:     Maintained
+>  F:     drivers/media/i2c/ov8856.c
+> +F:     Documentation/devicetree/bindings/media/i2c/ov8856.yaml
+>
+>  OMNIVISION OV9650 SENSOR DRIVER
+>  M:     Sakari Ailus <sakari.ailus@linux.intel.com>
+> --
+> 2.9.2
+>
 
 _______________________________________________
 Linux-mediatek mailing list
