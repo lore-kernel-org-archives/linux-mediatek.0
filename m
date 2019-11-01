@@ -1,68 +1,75 @@
-Return-Path: <SRS0=DTTl=YY=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=vEIf=YZ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D0BBCA9ECB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2019 17:04:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 66E85CA9ECB
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Nov 2019 01:21:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DE894208C0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 31 Oct 2019 17:04:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 39318208C0
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Nov 2019 01:21:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lYdUiYJo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DE894208C0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iCChXlDC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39318208C0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZSA17eZ7PcHIFQLttnkx1pHs5TWLTnXR+ZDDT70JqNs=; b=lYdUiYJo4E3u/P
-	sBX0j+utq0S92HnwDV/MUJCOPoK7VjrHggXZhnhf2vnj/wT8M1vVoGCyPlcV+eO97AzNpJXFxkmIv
-	MOFYsEEjTNjgj29xou0A+S0+IabMwQw9UFUiw3K/L/fwqjRZm7e7wW29RWLyBNE7xuTqBQRZ61OM3
-	CapBUPzmvcKwyUIZpFhJGWhzCfvXEPycCcUqf8hUlG0LRWmJo8PeQXplUPy7erRR/63+KTu0Fmfnx
-	e5grEhFi8LRRJ1z5HnqtrLvPbD3bCbmYj1xWDT0XX4ZCFiiwGCfQvKu0AVB1IYktI8a5ucHQzG7Fb
-	WgwOrQo/lVHYRNsQKVqg==;
+	List-Owner; bh=JzESfD4sMXA1MlEQEtpeS6x+55/FmBOREOW9lsbvbN8=; b=iCChXlDCX8al6V
+	KDWncNxieZAF7s4Z85QJ/k7HqB/9KeCBEx3M2sxzJm8Cgz8cQQDJiP5T2S4t20w4VHKU+CaEwM/af
+	KbQhO9M3/lIaNqV0ThlN6rkK38rPdHowOth57iRoebb2cg34wnBl1RfGK9lvKAcnjt9IOaY7oCPmq
+	Sqn4BlNUNlX9c4THpTkxYEt/LLjR6x/Y5ZCKNUQSe+909PaVz1F6OIsDSqrtTSdijs72w5QckDSpE
+	9X/lz4UDnR7qK9FoRS/ZHLirWNFVbbzvqYdYt+oHLnu1/D437XRWe3zT/zq+j/pBmfQzM67d7w+HK
+	q/pRfrSRuQWZmNgQEesg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iQDsE-0002Q9-JO; Thu, 31 Oct 2019 17:04:38 +0000
-Received: from mga12.intel.com ([192.55.52.136])
+	id 1iQLd5-0002U2-UA; Fri, 01 Nov 2019 01:21:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iQDs3-0002I5-BP; Thu, 31 Oct 2019 17:04:29 +0000
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 31 Oct 2019 10:04:24 -0700
-X-IronPort-AV: E=Sophos;i="5.68,252,1569308400"; d="scan'208";a="194380451"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 31 Oct 2019 10:04:18 -0700
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id C85EB2075A; Thu, 31 Oct 2019 19:04:15 +0200 (EET)
-Date: Thu, 31 Oct 2019 19:04:15 +0200
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: Re: [V3, 2/2] media: i2c: ov8856: Add support for more sensor modes
-Message-ID: <20191031170415.GN10211@paasikivi.fi.intel.com>
-References: <20191031090213.27727-1-dongchun.zhu@mediatek.com>
- <20191031090213.27727-3-dongchun.zhu@mediatek.com>
+ id 1iQLd3-0002Tb-Vf; Fri, 01 Nov 2019 01:21:31 +0000
+X-UUID: 092f96ee36f7453ead418216a13965f7-20191031
+X-UUID: 092f96ee36f7453ead418216a13965f7-20191031
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 2051904151; Thu, 31 Oct 2019 17:20:52 -0800
+Received: from MTKMBS32N2.mediatek.inc (172.27.4.72) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 31 Oct 2019 18:21:18 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32N2.mediatek.inc
+ (172.27.4.72) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Fri, 1 Nov 2019 09:21:15 +0800
+Received: from [10.17.3.153] (172.27.4.253) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Fri, 1 Nov 2019 09:21:15 +0800
+Message-ID: <1572571279.18464.39.camel@mhfsdcap03>
+Subject: Re: [PATCH v2 04/11] dt-bindings: phy-mtk-tphy: add a new reference
+ clock
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh@kernel.org>
+Date: Fri, 1 Nov 2019 09:21:19 +0800
+In-Reply-To: <32bc288e-dbbb-8930-4750-826e9e17d58c@ti.com>
+References: <1567149298-29366-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1567149298-29366-4-git-send-email-chunfeng.yun@mediatek.com>
+ <20190917202805.GA13405@bogus>
+ <32bc288e-dbbb-8930-4750-826e9e17d58c@ti.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191031090213.27727-3-dongchun.zhu@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-TM-SNTS-SMTP: B5B93674122E8E6B22D53ED9A4AF45EE5591A27E1563D74407986ECF551E27B62000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191031_100427_458215_97F11389 
-X-CRM114-Status: GOOD (  18.68  )
+X-CRM114-CacheID: sfid-20191031_182130_027011_C9CDFAC5 
+X-CRM114-Status: GOOD (  16.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,935 +81,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, drinkcat@chromium.org,
- andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org, shengnan.wang@mediatek.com, tfiga@chromium.org,
- louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dongchun,
 
-On Thu, Oct 31, 2019 at 05:02:13PM +0800, Dongchun Zhu wrote:
-> This adds two more sensor modes for Omnivision ov8856 image sensor,
-> including the resolution of 1632*1224 and 3264*2448, both with the
-> Bayer Order of BGGR.
+Hi Rob,
+
+On Wed, 2019-10-23 at 11:10 +0530, Kishon Vijay Abraham I wrote:
+> Hi Rob,
 > 
-> Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> ---
->  drivers/media/i2c/ov8856.c | 661 ++++++++++++++++++++++++++++++++++++++++++++-
->  1 file changed, 652 insertions(+), 9 deletions(-)
+> On 18/09/19 1:58 AM, Rob Herring wrote:
+> > On Fri, 30 Aug 2019 15:14:51 +0800, Chunfeng Yun wrote:
+> >> Usually the digital and analog phys use the same reference clock,
+> >> but on some platforms, they are separated, so add another optional
+> >> clock to support it.
+> >> In order to keep the clock names consistent with PHY IP's, use
+> >> the da_ref for analog phy and ref clock for digital phy.
+> >>
+> >> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> >> ---
+> >> v2: fix typo of analog and needed
+> >> ---
+> >>  Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt | 7 +++++--
+> >>  1 file changed, 5 insertions(+), 2 deletions(-)
+> >>
+> > 
+> > Acked-by: Rob Herring <robh@kernel.org>
 > 
-> diff --git a/drivers/media/i2c/ov8856.c b/drivers/media/i2c/ov8856.c
-> index 8655842..4815c26 100644
-> --- a/drivers/media/i2c/ov8856.c
-> +++ b/drivers/media/i2c/ov8856.c
-> @@ -3,10 +3,13 @@
->  
->  #include <asm/unaligned.h>
->  #include <linux/acpi.h>
-> +#include <linux/clk.h>
->  #include <linux/delay.h>
-> +#include <linux/gpio/consumer.h>
->  #include <linux/i2c.h>
->  #include <linux/module.h>
->  #include <linux/pm_runtime.h>
-> +#include <linux/regulator/consumer.h>
->  #include <media/v4l2-ctrls.h>
->  #include <media/v4l2-device.h>
->  #include <media/v4l2-fwnode.h>
-> @@ -18,10 +21,15 @@
->  #define OV8856_LINK_FREQ_360MHZ		360000000ULL
->  #define OV8856_LINK_FREQ_180MHZ		180000000ULL
->  #define OV8856_SCLK			144000000ULL
-> -#define OV8856_MCLK			19200000
-> +#define OV8856_XVCLK_19_2		19200000
-> +#define OV8856_XVCLK_24			24000000
->  #define OV8856_DATA_LANES		4
->  #define OV8856_RGB_DEPTH		10
->  
-> +#define REG_X_ADDR_START		0x3808
-> +#define X_OUTPUT_FULL_SIZE		0x0cc0
-> +#define X_OUTPUT_BINNING_SIZE		0x0660
-> +
->  #define OV8856_REG_CHIP_ID		0x300a
->  #define OV8856_CHIP_ID			0x00885a
->  
-> @@ -29,6 +37,22 @@
->  #define OV8856_MODE_STANDBY		0x00
->  #define OV8856_MODE_STREAMING		0x01
->  
-> +/* define 1B module revision */
-> +#define OV8856_1B_MODULE		0x02
-> +
-> +/* the OTP read-out buffer is at 0x7000 and 0xf is the offset
-> + * of the byte in the OTP that means the module revision
-> + */
-> +#define OV8856_MODULE_REVISION		0x700f
-> +#define OV8856_OTP_MODE_CTRL		0x3d84
-> +#define OV8856_OTP_LOAD_CTRL		0x3d81
-> +#define OV8856_OTP_MODE_AUTO		0x00
-> +#define OV8856_OTP_LOAD_CTRL_ENABLE	BIT(0)
-> +
-> +/* Analog control register that decided by module revision */
-> +#define OV8856_ANAL_MODE_CTRL		0x3614
-> +#define OV8856_ANAL_1B_VAL		0x20
-> +
->  /* vertical-timings from sensor */
->  #define OV8856_REG_VTS			0x380e
->  #define OV8856_VTS_MAX			0x7fff
-> @@ -64,6 +88,14 @@
->  
->  #define to_ov8856(_sd)			container_of(_sd, struct ov8856, sd)
->  
-> +static const char * const ov8856_supply_names[] = {
-> +	"dovdd",	/* Digital I/O power */
-> +	"avdd",		/* Analog power */
-> +	"dvdd",		/* Digital core power */
-> +};
-> +
-> +#define OV8856_NUM_SUPPLIES ARRAY_SIZE(ov8856_supply_names)
-> +
->  enum {
->  	OV8856_LINK_FREQ_720MBPS,
->  	OV8856_LINK_FREQ_360MBPS,
-> @@ -316,6 +348,209 @@ static const struct ov8856_reg mode_3280x2464_regs[] = {
->  	{0x5e00, 0x00}
->  };
->  
-> +static const struct ov8856_reg mode_3264x2448_regs[] = {
+> I see you've acked a couple of patches in the series. However the other
+> dt-binding patch neither has an Ack or NAK. Is there a specific reason or can I
+> merge the series?
 
-The new modes are presumably for either 19,2 or 24 MHz frequency (but which
-one?) whereas the old modes were for 19,2 MHz.
+Ping?
 
-This needs to be addressed, preferrably in a separate patch. The modes
-should be added in another patch.
+> 
+> Thanks
+> Kishon
 
-> +	{0x0103, 0x01},
-> +	{0x0302, 0x3c},
-> +	{0x0303, 0x01},
-> +	{0x031e, 0x0c},
-> +	{0x3000, 0x20},
-> +	{0x3003, 0x08},
-> +	{0x300e, 0x20},
-> +	{0x3010, 0x00},
-> +	{0x3015, 0x84},
-> +	{0x3018, 0x72},
-> +	{0x3021, 0x23},
-> +	{0x3033, 0x24},
-> +	{0x3500, 0x00},
-> +	{0x3501, 0x9a},
-> +	{0x3502, 0x20},
-> +	{0x3503, 0x08},
-> +	{0x3505, 0x83},
-> +	{0x3508, 0x01},
-> +	{0x3509, 0x80},
-> +	{0x350c, 0x00},
-> +	{0x350d, 0x80},
-> +	{0x350e, 0x04},
-> +	{0x350f, 0x00},
-> +	{0x3510, 0x00},
-> +	{0x3511, 0x02},
-> +	{0x3512, 0x00},
-> +	{0x3600, 0x72},
-> +	{0x3601, 0x40},
-> +	{0x3602, 0x30},
-> +	{0x3610, 0xc5},
-> +	{0x3611, 0x58},
-> +	{0x3612, 0x5c},
-> +	{0x3613, 0xca},
-> +	{0x3614, 0x60},
-> +	{0x3628, 0xff},
-> +	{0x3629, 0xff},
-> +	{0x362a, 0xff},
-> +	{0x3633, 0x10},
-> +	{0x3634, 0x10},
-> +	{0x3635, 0x10},
-> +	{0x3636, 0x10},
-> +	{0x3663, 0x08},
-> +	{0x3669, 0x34},
-> +	{0x366d, 0x00},
-> +	{0x366e, 0x10},
-> +	{0x3706, 0x86},
-> +	{0x370b, 0x7e},
-> +	{0x3714, 0x23},
-> +	{0x3730, 0x12},
-> +	{0x3733, 0x10},
-> +	{0x3764, 0x00},
-> +	{0x3765, 0x00},
-> +	{0x3769, 0x62},
-> +	{0x376a, 0x2a},
-> +	{0x376b, 0x30},
-> +	{0x3780, 0x00},
-> +	{0x3781, 0x24},
-> +	{0x3782, 0x00},
-> +	{0x3783, 0x23},
-> +	{0x3798, 0x2f},
-> +	{0x37a1, 0x60},
-> +	{0x37a8, 0x6a},
-> +	{0x37ab, 0x3f},
-> +	{0x37c2, 0x04},
-> +	{0x37c3, 0xf1},
-> +	{0x37c9, 0x80},
-> +	{0x37cb, 0x16},
-> +	{0x37cc, 0x16},
-> +	{0x37cd, 0x16},
-> +	{0x37ce, 0x16},
-> +	{0x3800, 0x00},
-> +	{0x3801, 0x00},
-> +	{0x3802, 0x00},
-> +	{0x3803, 0x0c},
-> +	{0x3804, 0x0c},
-> +	{0x3805, 0xdf},
-> +	{0x3806, 0x09},
-> +	{0x3807, 0xa3},
-> +	{0x3808, 0x0c},
-> +	{0x3809, 0xc0},
-> +	{0x380a, 0x09},
-> +	{0x380b, 0x90},
-> +	{0x380c, 0x07},
-> +	{0x380d, 0x8c},
-> +	{0x380e, 0x09},
-> +	{0x380f, 0xb2},
-> +	{0x3810, 0x00},
-> +	{0x3811, 0x04},
-> +	{0x3812, 0x00},
-> +	{0x3813, 0x02},
-> +	{0x3814, 0x01},
-> +	{0x3815, 0x01},
-> +	{0x3816, 0x00},
-> +	{0x3817, 0x00},
-> +	{0x3818, 0x00},
-> +	{0x3819, 0x10},
-> +	{0x3820, 0x80},
-> +	{0x3821, 0x46},
-> +	{0x382a, 0x01},
-> +	{0x382b, 0x01},
-> +	{0x3830, 0x06},
-> +	{0x3836, 0x02},
-> +	{0x3862, 0x04},
-> +	{0x3863, 0x08},
-> +	{0x3cc0, 0x33},
-> +	{0x3d85, 0x17},
-> +	{0x3d8c, 0x73},
-> +	{0x3d8d, 0xde},
-> +	{0x4001, 0xe0},
-> +	{0x4003, 0x40},
-> +	{0x4008, 0x00},
-> +	{0x4009, 0x0b},
-> +	{0x400a, 0x00},
-> +	{0x400b, 0x84},
-> +	{0x400f, 0x80},
-> +	{0x4010, 0xf0},
-> +	{0x4011, 0xff},
-> +	{0x4012, 0x02},
-> +	{0x4013, 0x01},
-> +	{0x4014, 0x01},
-> +	{0x4015, 0x01},
-> +	{0x4042, 0x00},
-> +	{0x4043, 0x80},
-> +	{0x4044, 0x00},
-> +	{0x4045, 0x80},
-> +	{0x4046, 0x00},
-> +	{0x4047, 0x80},
-> +	{0x4048, 0x00},
-> +	{0x4049, 0x80},
-> +	{0x4041, 0x03},
-> +	{0x404c, 0x20},
-> +	{0x404d, 0x00},
-> +	{0x404e, 0x20},
-> +	{0x4203, 0x80},
-> +	{0x4307, 0x30},
-> +	{0x4317, 0x00},
-> +	{0x4502, 0x50},
-> +	{0x4503, 0x08},
-> +	{0x4601, 0x80},
-> +	{0x4800, 0x44},
-> +	{0x4816, 0x53},
-> +	{0x481b, 0x50},
-> +	{0x481f, 0x27},
-> +	{0x4823, 0x3c},
-> +	{0x482b, 0x00},
-> +	{0x4831, 0x66},
-> +	{0x4837, 0x16},
-> +	{0x483c, 0x0f},
-> +	{0x484b, 0x05},
-> +	{0x5000, 0x77},
-> +	{0x5001, 0x0a},
-> +	{0x5003, 0xc8},
-> +	{0x5004, 0x04},
-> +	{0x5006, 0x00},
-> +	{0x5007, 0x00},
-> +	{0x502e, 0x03},
-> +	{0x5030, 0x41},
-> +	{0x5780, 0x14},
-> +	{0x5781, 0x0f},
-> +	{0x5782, 0x44},
-> +	{0x5783, 0x02},
-> +	{0x5784, 0x01},
-> +	{0x5785, 0x01},
-> +	{0x5786, 0x00},
-> +	{0x5787, 0x04},
-> +	{0x5788, 0x02},
-> +	{0x5789, 0x0f},
-> +	{0x578a, 0xfd},
-> +	{0x578b, 0xf5},
-> +	{0x578c, 0xf5},
-> +	{0x578d, 0x03},
-> +	{0x578e, 0x08},
-> +	{0x578f, 0x0c},
-> +	{0x5790, 0x08},
-> +	{0x5791, 0x04},
-> +	{0x5792, 0x00},
-> +	{0x5793, 0x52},
-> +	{0x5794, 0xa3},
-> +	{0x5795, 0x02},
-> +	{0x5796, 0x20},
-> +	{0x5797, 0x20},
-> +	{0x5798, 0xd5},
-> +	{0x5799, 0xd5},
-> +	{0x579a, 0x00},
-> +	{0x579b, 0x50},
-> +	{0x579c, 0x00},
-> +	{0x579d, 0x2c},
-> +	{0x579e, 0x0c},
-> +	{0x579f, 0x40},
-> +	{0x57a0, 0x09},
-> +	{0x57a1, 0x40},
-> +	{0x59f8, 0x3d},
-> +	{0x5a08, 0x02},
-> +	{0x5b00, 0x02},
-> +	{0x5b01, 0x10},
-> +	{0x5b02, 0x03},
-> +	{0x5b03, 0xcf},
-> +	{0x5b05, 0x6c},
-> +	{0x5e00, 0x00},
-> +	{0x5e10, 0xfc}
-> +};
-> +
->  static const struct ov8856_reg mode_1640x1232_regs[] = {
->  	{0x3000, 0x20},
->  	{0x3003, 0x08},
-> @@ -506,6 +741,209 @@ static const struct ov8856_reg mode_1640x1232_regs[] = {
->  	{0x5e00, 0x00}
->  };
->  
-> +static const struct ov8856_reg mode_1632x1224_regs[] = {
-> +	{0x0103, 0x01},
-> +	{0x0302, 0x3c},
-> +	{0x0303, 0x01},
-> +	{0x031e, 0x0c},
-> +	{0x3000, 0x20},
-> +	{0x3003, 0x08},
-> +	{0x300e, 0x20},
-> +	{0x3010, 0x00},
-> +	{0x3015, 0x84},
-> +	{0x3018, 0x72},
-> +	{0x3021, 0x23},
-> +	{0x3033, 0x24},
-> +	{0x3500, 0x00},
-> +	{0x3501, 0x4c},
-> +	{0x3502, 0xe0},
-> +	{0x3503, 0x08},
-> +	{0x3505, 0x83},
-> +	{0x3508, 0x01},
-> +	{0x3509, 0x80},
-> +	{0x350c, 0x00},
-> +	{0x350d, 0x80},
-> +	{0x350e, 0x04},
-> +	{0x350f, 0x00},
-> +	{0x3510, 0x00},
-> +	{0x3511, 0x02},
-> +	{0x3512, 0x00},
-> +	{0x3600, 0x72},
-> +	{0x3601, 0x40},
-> +	{0x3602, 0x30},
-> +	{0x3610, 0xc5},
-> +	{0x3611, 0x58},
-> +	{0x3612, 0x5c},
-> +	{0x3613, 0xca},
-> +	{0x3614, 0x60},
-> +	{0x3628, 0xff},
-> +	{0x3629, 0xff},
-> +	{0x362a, 0xff},
-> +	{0x3633, 0x10},
-> +	{0x3634, 0x10},
-> +	{0x3635, 0x10},
-> +	{0x3636, 0x10},
-> +	{0x3663, 0x08},
-> +	{0x3669, 0x34},
-> +	{0x366d, 0x00},
-> +	{0x366e, 0x08},
-> +	{0x3706, 0x86},
-> +	{0x370b, 0x7e},
-> +	{0x3714, 0x27},
-> +	{0x3730, 0x12},
-> +	{0x3733, 0x10},
-> +	{0x3764, 0x00},
-> +	{0x3765, 0x00},
-> +	{0x3769, 0x62},
-> +	{0x376a, 0x2a},
-> +	{0x376b, 0x30},
-> +	{0x3780, 0x00},
-> +	{0x3781, 0x24},
-> +	{0x3782, 0x00},
-> +	{0x3783, 0x23},
-> +	{0x3798, 0x2f},
-> +	{0x37a1, 0x60},
-> +	{0x37a8, 0x6a},
-> +	{0x37ab, 0x3f},
-> +	{0x37c2, 0x14},
-> +	{0x37c3, 0xf1},
-> +	{0x37c9, 0x80},
-> +	{0x37cb, 0x16},
-> +	{0x37cc, 0x16},
-> +	{0x37cd, 0x16},
-> +	{0x37ce, 0x16},
-> +	{0x3800, 0x00},
-> +	{0x3801, 0x00},
-> +	{0x3802, 0x00},
-> +	{0x3803, 0x0c},
-> +	{0x3804, 0x0c},
-> +	{0x3805, 0xdf},
-> +	{0x3806, 0x09},
-> +	{0x3807, 0xa3},
-> +	{0x3808, 0x06},
-> +	{0x3809, 0x60},
-> +	{0x380a, 0x04},
-> +	{0x380b, 0xc8},
-> +	{0x380c, 0x07},
-> +	{0x380d, 0x8c},
-> +	{0x380e, 0x09},
-> +	{0x380f, 0xb2},
-> +	{0x3810, 0x00},
-> +	{0x3811, 0x02},
-> +	{0x3812, 0x00},
-> +	{0x3813, 0x02},
-> +	{0x3814, 0x03},
-> +	{0x3815, 0x01},
-> +	{0x3816, 0x00},
-> +	{0x3817, 0x00},
-> +	{0x3818, 0x00},
-> +	{0x3819, 0x10},
-> +	{0x3820, 0x80},
-> +	{0x3821, 0x47},
-> +	{0x382a, 0x03},
-> +	{0x382b, 0x01},
-> +	{0x3830, 0x06},
-> +	{0x3836, 0x02},
-> +	{0x3862, 0x04},
-> +	{0x3863, 0x08},
-> +	{0x3cc0, 0x33},
-> +	{0x3d85, 0x17},
-> +	{0x3d8c, 0x73},
-> +	{0x3d8d, 0xde},
-> +	{0x4001, 0xe0},
-> +	{0x4003, 0x40},
-> +	{0x4008, 0x00},
-> +	{0x4009, 0x05},
-> +	{0x400a, 0x00},
-> +	{0x400b, 0x84},
-> +	{0x400f, 0x80},
-> +	{0x4010, 0xf0},
-> +	{0x4011, 0xff},
-> +	{0x4012, 0x02},
-> +	{0x4013, 0x01},
-> +	{0x4014, 0x01},
-> +	{0x4015, 0x01},
-> +	{0x4042, 0x00},
-> +	{0x4043, 0x80},
-> +	{0x4044, 0x00},
-> +	{0x4045, 0x80},
-> +	{0x4046, 0x00},
-> +	{0x4047, 0x80},
-> +	{0x4048, 0x00},
-> +	{0x4049, 0x80},
-> +	{0x4041, 0x03},
-> +	{0x404c, 0x20},
-> +	{0x404d, 0x00},
-> +	{0x404e, 0x20},
-> +	{0x4203, 0x80},
-> +	{0x4307, 0x30},
-> +	{0x4317, 0x00},
-> +	{0x4502, 0x50},
-> +	{0x4503, 0x08},
-> +	{0x4601, 0x80},
-> +	{0x4800, 0x44},
-> +	{0x4816, 0x53},
-> +	{0x481b, 0x50},
-> +	{0x481f, 0x27},
-> +	{0x4823, 0x3c},
-> +	{0x482b, 0x00},
-> +	{0x4831, 0x66},
-> +	{0x4837, 0x16},
-> +	{0x483c, 0x0f},
-> +	{0x484b, 0x05},
-> +	{0x5000, 0x77},
-> +	{0x5001, 0x0a},
-> +	{0x5003, 0xc8},
-> +	{0x5004, 0x04},
-> +	{0x5006, 0x00},
-> +	{0x5007, 0x00},
-> +	{0x502e, 0x03},
-> +	{0x5030, 0x41},
-> +	{0x5795, 0x00},
-> +	{0x5796, 0x10},
-> +	{0x5797, 0x10},
-> +	{0x5798, 0x73},
-> +	{0x5799, 0x73},
-> +	{0x579a, 0x00},
-> +	{0x579b, 0x28},
-> +	{0x579c, 0x00},
-> +	{0x579d, 0x16},
-> +	{0x579e, 0x06},
-> +	{0x579f, 0x20},
-> +	{0x57a0, 0x04},
-> +	{0x57a1, 0xa0},
-> +	{0x5780, 0x14},
-> +	{0x5781, 0x0f},
-> +	{0x5782, 0x44},
-> +	{0x5783, 0x02},
-> +	{0x5784, 0x01},
-> +	{0x5785, 0x01},
-> +	{0x5786, 0x00},
-> +	{0x5787, 0x04},
-> +	{0x5788, 0x02},
-> +	{0x5789, 0x0f},
-> +	{0x578a, 0xfd},
-> +	{0x578b, 0xf5},
-> +	{0x578c, 0xf5},
-> +	{0x578d, 0x03},
-> +	{0x578e, 0x08},
-> +	{0x578f, 0x0c},
-> +	{0x5790, 0x08},
-> +	{0x5791, 0x04},
-> +	{0x5792, 0x00},
-> +	{0x5793, 0x52},
-> +	{0x5794, 0xa3},
-> +	{0x59f8, 0x3d},
-> +	{0x5a08, 0x02},
-> +	{0x5b00, 0x02},
-> +	{0x5b01, 0x10},
-> +	{0x5b02, 0x03},
-> +	{0x5b03, 0xcf},
-> +	{0x5b05, 0x6c},
-> +	{0x5e00, 0x00},
-> +	{0x5e10, 0xfc}
-> +};
-> +
->  static const char * const ov8856_test_pattern_menu[] = {
->  	"Disabled",
->  	"Standard Color Bar",
-> @@ -548,6 +986,18 @@ static const struct ov8856_mode supported_modes[] = {
->  		.link_freq_index = OV8856_LINK_FREQ_720MBPS,
->  	},
->  	{
-> +		.width    = 3264,
-> +		.height   = 2448,
-> +		.hts      = 1932,
-> +		.vts_def  = 2482,
-> +		.vts_min  = 2482,
-> +		.reg_list = {
-> +			.num_of_regs = ARRAY_SIZE(mode_3264x2448_regs),
-> +			.regs = mode_3264x2448_regs,
-> +		},
-> +		.link_freq_index = OV8856_LINK_FREQ_720MBPS,
-> +	},
-> +	{
->  		.width = 1640,
->  		.height = 1232,
->  		.hts = 3820,
-> @@ -558,6 +1008,18 @@ static const struct ov8856_mode supported_modes[] = {
->  			.regs = mode_1640x1232_regs,
->  		},
->  		.link_freq_index = OV8856_LINK_FREQ_360MBPS,
-> +	},
-> +	{
-> +		.width    = 1632,
-> +		.height   = 1224,
-> +		.hts      = 1932,
-> +		.vts_def  = 2482,
-> +		.vts_min  = 2482,
-> +		.reg_list = {
-> +			.num_of_regs = ARRAY_SIZE(mode_1632x1224_regs),
-> +			.regs = mode_1632x1224_regs,
-> +		},
-> +		.link_freq_index = OV8856_LINK_FREQ_360MBPS,
->  	}
->  };
->  
-> @@ -566,16 +1028,28 @@ struct ov8856 {
->  	struct media_pad pad;
->  	struct v4l2_ctrl_handler ctrl_handler;
->  
-> +	struct clk		*xvclk;
-> +	struct gpio_desc	*n_shutdn_gpio;
-> +	struct regulator_bulk_data supplies[OV8856_NUM_SUPPLIES];
-> +
->  	/* V4L2 Controls */
->  	struct v4l2_ctrl *link_freq;
->  	struct v4l2_ctrl *pixel_rate;
->  	struct v4l2_ctrl *vblank;
->  	struct v4l2_ctrl *hblank;
->  	struct v4l2_ctrl *exposure;
-> +	struct v4l2_mbus_framefmt	fmt;
->  
->  	/* Current mode */
->  	const struct ov8856_mode *cur_mode;
->  
-> +	/* module hardware version that can be read out from register 0x700f
-> +	 * the register value corresponds to different hardware version
-> +	 * 01: 2A module revision
-> +	 * 02: 1B module revision
-> +	 */
-> +	bool is_1B_revision;
-> +
->  	/* To serialize asynchronus callbacks */
->  	struct mutex mutex;
->  
-> @@ -696,6 +1170,25 @@ static int ov8856_test_pattern(struct ov8856 *ov8856, u32 pattern)
->  				OV8856_REG_VALUE_08BIT, pattern);
->  }
->  
-> +static int ov8856_check_revision(struct ov8856 *ov8856)
-> +{
-> +	int ret;
-> +
-> +	ret = ov8856_write_reg(ov8856, OV8856_REG_MODE_SELECT,
-> +			       OV8856_REG_VALUE_08BIT, OV8856_MODE_STREAMING);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = ov8856_write_reg(ov8856, OV8856_OTP_MODE_CTRL,
-> +			       OV8856_REG_VALUE_08BIT, OV8856_OTP_MODE_AUTO);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return ov8856_write_reg(ov8856, OV8856_OTP_LOAD_CTRL,
-> +				OV8856_REG_VALUE_08BIT,
-> +				OV8856_OTP_LOAD_CTRL_ENABLE);
-> +}
-> +
->  static int ov8856_set_ctrl(struct v4l2_ctrl *ctrl)
->  {
->  	struct ov8856 *ov8856 = container_of(ctrl->handler,
-> @@ -825,7 +1318,6 @@ static void ov8856_update_pad_format(const struct ov8856_mode *mode,
->  {
->  	fmt->width = mode->width;
->  	fmt->height = mode->height;
-> -	fmt->code = MEDIA_BUS_FMT_SGRBG10_1X10;
->  	fmt->field = V4L2_FIELD_NONE;
->  }
->  
-> @@ -834,6 +1326,7 @@ static int ov8856_start_streaming(struct ov8856 *ov8856)
->  	struct i2c_client *client = v4l2_get_subdevdata(&ov8856->sd);
->  	const struct ov8856_reg_list *reg_list;
->  	int link_freq_index, ret;
-> +	u32 cur_h_size;
->  
->  	link_freq_index = ov8856->cur_mode->link_freq_index;
->  	reg_list = &link_freq_configs[link_freq_index].reg_list;
-> @@ -850,6 +1343,28 @@ static int ov8856_start_streaming(struct ov8856 *ov8856)
->  		return ret;
->  	}
->  
-> +	/* Update R3614 if the revision is 1B module */
-> +	if (ov8856->is_1B_revision) {
-> +		ret = ov8856_write_reg(ov8856, OV8856_ANAL_MODE_CTRL,
-> +				       OV8856_REG_VALUE_08BIT,
-> +				       OV8856_ANAL_1B_VAL);
-> +		if (ret) {
-> +			dev_err(&client->dev, "failed to set R3614");
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	ret = ov8856_read_reg(ov8856, REG_X_ADDR_START,
-> +			      OV8856_REG_VALUE_16BIT, &cur_h_size);
-> +	if (ret) {
-> +		dev_err(&client->dev, "failed to read out R3614");
-> +		return ret;
-> +	}
-> +
-> +	if (cur_h_size == X_OUTPUT_FULL_SIZE ||
-> +	    cur_h_size == X_OUTPUT_BINNING_SIZE)
-> +		ov8856->fmt.code = MEDIA_BUS_FMT_SBGGR10_1X10;
-> +
->  	ret = __v4l2_ctrl_handler_setup(ov8856->sd.ctrl_handler);
->  	if (ret)
->  		return ret;
-> @@ -908,6 +1423,44 @@ static int ov8856_set_stream(struct v4l2_subdev *sd, int enable)
->  	return ret;
->  }
->  
-> +static int __ov8856_power_on(struct ov8856 *ov8856)
-> +{
-> +	struct i2c_client *client = v4l2_get_subdevdata(&ov8856->sd);
-> +	int ret;
-> +
-> +	ret = clk_prepare_enable(ov8856->xvclk);
-> +	if (ret < 0) {
-> +		dev_err(&client->dev, "failed to enable xvclk\n");
-> +		return ret;
-> +	}
-> +
-> +	gpiod_set_value_cansleep(ov8856->n_shutdn_gpio, GPIOD_OUT_LOW);
-> +
-> +	ret = regulator_bulk_enable(OV8856_NUM_SUPPLIES, ov8856->supplies);
-> +	if (ret < 0) {
-> +		dev_err(&client->dev, "failed to enable regulators\n");
-> +		goto disable_clk;
-> +	}
-> +
-> +	gpiod_set_value_cansleep(ov8856->n_shutdn_gpio, GPIOD_OUT_HIGH);
-> +
-> +	usleep_range(1500, 1800);
 
-You only need this if ov8856->n_shutdn_gpio is non-NULL.
 
-> +
-> +	return 0;
-> +
-> +disable_clk:
-> +	clk_disable_unprepare(ov8856->xvclk);
-> +
-> +	return ret;
-> +}
-> +
-> +static void __ov8856_power_off(struct ov8856 *ov8856)
-> +{
-> +	gpiod_set_value_cansleep(ov8856->n_shutdn_gpio, GPIOD_OUT_LOW);
-> +	regulator_bulk_disable(OV8856_NUM_SUPPLIES, ov8856->supplies);
-> +	clk_disable_unprepare(ov8856->xvclk);
-> +}
-> +
->  static int __maybe_unused ov8856_suspend(struct device *dev)
->  {
->  	struct i2c_client *client = to_i2c_client(dev);
-> @@ -951,6 +1504,7 @@ static int ov8856_set_format(struct v4l2_subdev *sd,
->  			     struct v4l2_subdev_format *fmt)
->  {
->  	struct ov8856 *ov8856 = to_ov8856(sd);
-> +	struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
->  	const struct ov8856_mode *mode;
->  	s32 vblank_def, h_blank;
->  
-> @@ -960,7 +1514,9 @@ static int ov8856_set_format(struct v4l2_subdev *sd,
->  				      fmt->format.height);
->  
->  	mutex_lock(&ov8856->mutex);
-> -	ov8856_update_pad_format(mode, &fmt->format);
-> +	mbus_fmt->code = ov8856->fmt.code;
-
-Also do add a separate patch for supporting other mbus codes if you need
-them.
-
-> +	ov8856_update_pad_format(mode, mbus_fmt);
-> +	ov8856->fmt = fmt->format;
->  	if (fmt->which == V4L2_SUBDEV_FORMAT_TRY) {
->  		*v4l2_subdev_get_try_format(sd, cfg, fmt->pad) = fmt->format;
->  	} else {
-> @@ -992,13 +1548,17 @@ static int ov8856_get_format(struct v4l2_subdev *sd,
->  			     struct v4l2_subdev_format *fmt)
->  {
->  	struct ov8856 *ov8856 = to_ov8856(sd);
-> +	struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
->  
->  	mutex_lock(&ov8856->mutex);
-> -	if (fmt->which == V4L2_SUBDEV_FORMAT_TRY)
-> +	if (fmt->which == V4L2_SUBDEV_FORMAT_TRY) {
->  		fmt->format = *v4l2_subdev_get_try_format(&ov8856->sd, cfg,
->  							  fmt->pad);
-> -	else
-> -		ov8856_update_pad_format(ov8856->cur_mode, &fmt->format);
-> +	} else {
-> +		fmt->format = ov8856->fmt;
-> +		ov8856_update_pad_format(ov8856->cur_mode, mbus_fmt);
-> +		mbus_fmt->code = ov8856->fmt.code;
-> +	}
->  
->  	mutex_unlock(&ov8856->mutex);
->  
-> @@ -1009,11 +1569,12 @@ static int ov8856_enum_mbus_code(struct v4l2_subdev *sd,
->  				 struct v4l2_subdev_pad_config *cfg,
->  				 struct v4l2_subdev_mbus_code_enum *code)
->  {
-> -	/* Only one bayer order GRBG is supported */
-> +	struct ov8856 *ov8856 = to_ov8856(sd);
-> +
->  	if (code->index > 0)
->  		return -EINVAL;
->  
-> -	code->code = MEDIA_BUS_FMT_SGRBG10_1X10;
-> +	code->code = ov8856->fmt.code;
->  
->  	return 0;
->  }
-> @@ -1089,6 +1650,20 @@ static int ov8856_identify_module(struct ov8856 *ov8856)
->  		return -ENXIO;
->  	}
->  
-> +	/* check sensor hardware revision */
-> +	ret = ov8856_check_revision(ov8856);
-
-The function is rather enabling reading OTP memory. Also disable streaming
-when you're done. This would be ideally a separate patch.
-
-> +	if (ret) {
-> +		dev_err(&client->dev, "failed to check sensor revision");
-> +		return ret;
-> +	}
-> +
-> +	ret = ov8856_read_reg(ov8856, OV8856_MODULE_REVISION,
-> +			      OV8856_REG_VALUE_08BIT, &val);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ov8856->is_1B_revision = val == OV8856_1B_MODULE;
-> +
->  	return 0;
->  }
->  
-> @@ -1110,7 +1685,7 @@ static int ov8856_check_hwcfg(struct device *dev)
->  	if (ret)
->  		return ret;
->  
-> -	if (mclk != OV8856_MCLK) {
-> +	if (mclk != OV8856_XVCLK_19_2) {
-
-The mclk is the external clock frequency. Both 19,2 and 24 MHz need to work
-if you claim to support 24 MHz.
-
->  		dev_err(dev, "external clock %d is not supported", mclk);
->  		return -EINVAL;
->  	}
-> @@ -1167,6 +1742,9 @@ static int ov8856_remove(struct i2c_client *client)
->  	media_entity_cleanup(&sd->entity);
->  	v4l2_ctrl_handler_free(sd->ctrl_handler);
->  	pm_runtime_disable(&client->dev);
-> +	if (!pm_runtime_status_suspended(&client->dev))
-> +		__ov8856_power_off(ov8856);
-> +	pm_runtime_set_suspended(&client->dev);
->  	mutex_destroy(&ov8856->mutex);
->  
->  	return 0;
-> @@ -1175,6 +1753,7 @@ static int ov8856_remove(struct i2c_client *client)
->  static int ov8856_probe(struct i2c_client *client)
->  {
->  	struct ov8856 *ov8856;
-> +	unsigned int i;
->  	int ret;
->  
->  	ret = ov8856_check_hwcfg(&client->dev);
-> @@ -1189,6 +1768,42 @@ static int ov8856_probe(struct i2c_client *client)
->  		return -ENOMEM;
->  
->  	v4l2_i2c_subdev_init(&ov8856->sd, client, &ov8856_subdev_ops);
-> +	ov8856->fmt.code = MEDIA_BUS_FMT_SGRBG10_1X10;
-> +
-> +	ov8856->xvclk = devm_clk_get(&client->dev, "xvclk");
-> +	if (IS_ERR(ov8856->xvclk)) {
-> +		dev_err(&client->dev, "failed to get xvclk\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	ret = clk_set_rate(ov8856->xvclk, OV8856_XVCLK_24);
-
-Use the specified clock frequency, not 24 MHz.
-
-> +	if (ret < 0) {
-> +		dev_err(&client->dev, "failed to set xvclk rate (24MHz)\n");
-> +		return ret;
-> +	}
-> +	if (clk_get_rate(ov8856->xvclk) != OV8856_XVCLK_24)
-> +		dev_warn(&client->dev,
-> +			 "xvclk mismatched, modes are based on 24MHz\n");
-> +
-> +	ov8856->n_shutdn_gpio = devm_gpiod_get(&client->dev, "reset",
-> +					       GPIOD_OUT_LOW);
-> +	if (IS_ERR(ov8856->n_shutdn_gpio)) {
-> +		dev_err(&client->dev, "failed to get reset-gpios\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	for (i = 0; i < OV8856_NUM_SUPPLIES; i++)
-> +		ov8856->supplies[i].supply = ov8856_supply_names[i];
-> +
-> +	ret = devm_regulator_bulk_get(&client->dev, OV8856_NUM_SUPPLIES,
-> +				      ov8856->supplies);
-> +	if (ret)
-> +		dev_warn(&client->dev, "failed to get regulators\n");
-> +
-> +	ret = __ov8856_power_on(ov8856);
-> +	if (ret)
-> +		dev_warn(&client->dev, "failed to power on\n");
-> +
->  	ret = ov8856_identify_module(ov8856);
->  	if (ret) {
->  		dev_err(&client->dev, "failed to find sensor: %d", ret);
-> @@ -1241,8 +1856,29 @@ static int ov8856_probe(struct i2c_client *client)
->  	return ret;
->  }
->  
-> +static int __maybe_unused ov8856_runtime_resume(struct device *dev)
-> +{
-> +	struct i2c_client *client = to_i2c_client(dev);
-> +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
-> +	struct ov8856 *ov8856 = to_ov8856(sd);
-> +
-> +	return __ov8856_power_on(ov8856);
-> +}
-> +
-> +static int __maybe_unused ov8856_runtime_suspend(struct device *dev)
-> +{
-> +	struct i2c_client *client = to_i2c_client(dev);
-> +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
-> +	struct ov8856 *ov8856 = to_ov8856(sd);
-> +
-> +	__ov8856_power_off(ov8856);
-
-Please merge this function with the caller. The same for
-ov8856_runtime_resume().
-
-> +
-> +	return 0;
-> +}
-> +
->  static const struct dev_pm_ops ov8856_pm_ops = {
->  	SET_SYSTEM_SLEEP_PM_OPS(ov8856_suspend, ov8856_resume)
-> +	SET_RUNTIME_PM_OPS(ov8856_runtime_suspend, ov8856_runtime_resume, NULL)
->  };
->  
->  #ifdef CONFIG_ACPI
-> @@ -1254,11 +1890,18 @@ static const struct acpi_device_id ov8856_acpi_ids[] = {
->  MODULE_DEVICE_TABLE(acpi, ov8856_acpi_ids);
->  #endif
->  
-> +static const struct of_device_id ov8856_of_match[] = {
-> +	{ .compatible = "ovti,ov8856" },
-> +	{}
-> +};
-> +MODULE_DEVICE_TABLE(of, ov8856_of_match);
-> +
->  static struct i2c_driver ov8856_i2c_driver = {
->  	.driver = {
->  		.name = "ov8856",
->  		.pm = &ov8856_pm_ops,
->  		.acpi_match_table = ACPI_PTR(ov8856_acpi_ids),
-> +		.of_match_table = ov8856_of_match,
->  	},
->  	.probe_new = ov8856_probe,
->  	.remove = ov8856_remove,
-
--- 
-Regards,
-
-Sakari Ailus
 
 _______________________________________________
 Linux-mediatek mailing list
