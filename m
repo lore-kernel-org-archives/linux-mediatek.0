@@ -2,21 +2,21 @@ Return-Path: <SRS0=vEIf=YZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D30DCA9EC9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Nov 2019 03:26:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 20E09CA9ECE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Nov 2019 03:33:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1EF05208C0
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Nov 2019 03:26:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EC1A52086D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Nov 2019 03:33:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EqguaQA8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1EF05208C0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="E+EZkNOf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EC1A52086D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,38 +25,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TnBNtZixNmT3c/LuCARyzcoSuNwy4qMln/hnvy+6zyk=; b=EqguaQA853lZhR
-	t5uUSUPC4cQ5DoaRyipoIKu+RGtvHj/52Mg8SKhO72PGu2tRvYoJap3pSuFJgdhQyyZIRL0I6aoCA
-	D7ZHujpBQkbez/ghOIpsFkWWtCyObc4ppj9RV2mctYt3iQW4Z1ReGSYgVVVRAzr9SSXGXdsfeqUJc
-	6Ncbwf4+V9kB63pYGjJSP1Ftkf7kvNhqJwHiwHFcVwj3R8b8iueyoQF8kWpU3ZEoRwLPohA8sAEoj
-	el9FVq1gZlamAeV02cS4yLVx7cpgALWbYq4LflKKVdnRVyzLW01NAgk6UYY8nbarvFMuHJ3LnDad8
-	PUSUPNa2hHP6YaGAAbhQ==;
+	List-Owner; bh=eZ/Qx3ZaL9w7zRnk5STV+0qGDvXrnjcLmZfkDCZKo1g=; b=E+EZkNOfYNogU6
+	2/mjJIMhKzdka7IOFtqp5gfuGIXUhZgVPtoVZydL9N4u32ZTXyjJxRfzmoXOUnyQmNA+97Hh3b5HJ
+	RVJ1BSzNSNWSYK77IGAkyn4QkkArO3nNysAtx7jCVuCtnXX3zZ1KbcSKTJ3RBSM8IKJ952nQUnfpa
+	X/2TIG/AaEb56Gl9vpEcftI+BsWTVSbwfLKYgNo+EXcGjgC5sMY+oNpbaPi62F/q01GhHu08TLM1P
+	FxqAwIv1nTdf5KF9EjAc4UJywILx4PKA7lWDh7cFBf7+MLoPyeS2q0LdMHOec/2dfwCCei+s0q2VX
+	skttyScciFkv4SGwvf5w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iQNaT-0004Wi-9O; Fri, 01 Nov 2019 03:26:57 +0000
+	id 1iQNhA-0007Xl-DF; Fri, 01 Nov 2019 03:33:52 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iQNaJ-0004Ob-Ib; Fri, 01 Nov 2019 03:26:49 +0000
-X-UUID: 4ae60e5820ac479d8e17bdc2ee0be868-20191031
-X-UUID: 4ae60e5820ac479d8e17bdc2ee0be868-20191031
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ id 1iQNgv-0007Pc-HN; Fri, 01 Nov 2019 03:33:41 +0000
+X-UUID: 9cba81f970364f6b90095b4c119c4c6d-20191031
+X-UUID: 9cba81f970364f6b90095b4c119c4c6d-20191031
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1825651021; Thu, 31 Oct 2019 19:25:52 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 31 Oct 2019 20:16:35 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 1 Nov 2019 11:16:34 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
+ with ESMTP id 1240065181; Thu, 31 Oct 2019 19:32:39 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 31 Oct 2019 20:33:23 -0700
+Received: from mtkcas09.mediatek.inc (172.21.101.178) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 1 Nov 2019 11:33:22 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Fri, 1 Nov 2019 11:16:34 +0800
-Message-ID: <1572578198.10339.15.camel@mtksdaap41>
+ Transport; Fri, 1 Nov 2019 11:33:22 +0800
+Message-ID: <1572579206.1728.2.camel@mtksdaap41>
 Subject: Re: [PATCH] drm/mediatek: update cursors by using async atomic update
 From: CK Hu <ck.hu@mediatek.com>
 To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Date: Fri, 1 Nov 2019 11:16:38 +0800
+Date: Fri, 1 Nov 2019 11:33:26 +0800
 In-Reply-To: <20191025053843.16808-2-bibby.hsieh@mediatek.com>
 References: <20191025053843.16808-1-bibby.hsieh@mediatek.com>
  <20191025053843.16808-2-bibby.hsieh@mediatek.com>
@@ -64,8 +64,8 @@ X-Mailer: Evolution 3.10.4-0ubuntu2
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191031_202647_619741_664A2688 
-X-CRM114-Status: GOOD (  17.14  )
+X-CRM114-CacheID: sfid-20191031_203337_585836_08D05C17 
+X-CRM114-Status: GOOD (  14.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,9 +123,6 @@ On Fri, 2019-10-25 at 13:38 +0800, Bibby Hsieh wrote:
 > +		return;
 > +
 > +	plane_helper_funcs->atomic_update(plane, new_state);
-
-Why do you not call mtk_plane_atomic_update() directly?
-
 > +
 > +	for (i = 0; i < mtk_crtc->layer_nr; i++) {
 > +		struct drm_plane *plane = &mtk_crtc->planes[i];
@@ -135,6 +132,13 @@ Why do you not call mtk_plane_atomic_update() directly?
 > +		if (plane_state->pending.dirty) {
 > +			plane_state->pending.config = true;
 > +			plane_state->pending.dirty = false;
+
+You do this for all plane but I think you should only do this for this
+plane. Other plane should do this only when atomic_flush.
+
+Regards,
+CK
+
 > +		}
 > +	}
 > +	mtk_crtc->pending_planes = true;
@@ -143,13 +147,6 @@ Why do you not call mtk_plane_atomic_update() directly?
 > +		mtk_crtc_ddp_config(crtc);
 > +		mtk_disp_mutex_release(mtk_crtc->mutex);
 > +	}
-
-This part is the same as the part in mtk_drm_crtc_atomic_flush. Separate
-the common part to an independent function.
-
-Regards,
-CK
-
 > +}
 > +
 >  static void mtk_drm_crtc_atomic_enable(struct drm_crtc *crtc,
