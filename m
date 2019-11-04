@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5CF94CA9ED3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2019 07:02:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 20D3CCA9ED2
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2019 07:02:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3324520848
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2019 07:02:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EC1AF2245D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2019 07:02:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OfjeiONY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3324520848
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e8djC98L"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EC1AF2245D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,47 +25,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q10eO6TVgMXBW3IbvFEhASwG1sPZxj/AkiqwtNfgraU=; b=OfjeiONYKeu8sA
-	hMYwO8bPhsKr5ihDB5UnxjiQcQXjImxzTqMM0Z9xFPSfSuHodZAFCoYo6MvZqlw9YWU0zcyvqtjgX
-	Ccz5zw8TIpPFZI0Ge6LSihpx1eWtKJ4MchxjoQ0ntwbDcNT6Ina8nzxOtQtewczqoNUE5k39EMAan
-	m2iKfrZFtloAQAsoA32d7yoQrfx7rcSvIAeGjjrkXhcs8SC9Uq4sL1yJzVTrzuJ7MhDiqlFnOIvvQ
-	0CeYcBo0Ou1VypUXU5oLWmBbWD8/3B77jzFJ+cVMRJILptemGBrRkcJQCyITs8mj5hGb1TnZrjhqw
-	sazLL7tVYQO1iOIyIIZQ==;
+	List-Owner; bh=FFj4RkdnXbJJMI1P5w09nf9AJpni0OfRJLVuaGDYGws=; b=e8djC98LpV0mKd
+	F8+jybWAxBJqfYiW7seUUB8pf63SLQZ8RaP6nq2HKXA2geECKjD/wLx5mYsh8Kk28BPrwLmDG3e6G
+	0ADS3O4AWDXerZnTC0COzzekTgqA6PQsUMJSi/kwqm5hFWMTZsQuoRtNKkLu4ejlCV7RgysYIRITv
+	fbgaiCSQv+Gr5udaH4SiCRJHLCAwdjxzuUQg++AIuz07SB4mW9XV7zHukNFDDlYSV7UFTxdst1E+q
+	PY9gnM5XZxczVS6alqP5yJPxx7YJvsBU4kZRscb+7sVY7WD2x0Rqwk+ObTafQoyIhPpWKZLIl7MdH
+	ubZsQxrjBDlQlW6MNRYQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iRWNI-00034r-RF; Mon, 04 Nov 2019 07:02:04 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1iRWNa-0003On-Ir; Mon, 04 Nov 2019 07:02:22 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iRWNF-00031E-9C; Mon, 04 Nov 2019 07:02:02 +0000
-X-UUID: 917dce42b97d4fe79d60f1dc7c89c561-20191103
-X-UUID: 917dce42b97d4fe79d60f1dc7c89c561-20191103
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ id 1iRWNY-0003NK-4c; Mon, 04 Nov 2019 07:02:21 +0000
+X-UUID: c7d3f200cd3147a5932e2c86bb5f1d3a-20191103
+X-UUID: c7d3f200cd3147a5932e2c86bb5f1d3a-20191103
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 295291606; Sun, 03 Nov 2019 23:01:53 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 802523797; Sun, 03 Nov 2019 23:02:11 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 3 Nov 2019 23:01:56 -0800
+ 15.0.1395.4; Sun, 3 Nov 2019 23:02:14 -0800
 Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 4 Nov 2019 15:01:54 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 4 Nov 2019 15:02:12 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Mon, 4 Nov 2019 15:01:54 +0800
+ Transport; Mon, 4 Nov 2019 15:02:11 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, 
  Will Deacon <will.deacon@arm.com>
-Subject: [PATCH v5 4/7] iommu/mediatek: Delete the leaf in the tlb_flush
-Date: Mon, 4 Nov 2019 15:01:05 +0800
-Message-ID: <1572850868-22315-5-git-send-email-yong.wu@mediatek.com>
+Subject: [PATCH v5 6/7] iommu/mediatek: Get rid of the pgtlock
+Date: Mon, 4 Nov 2019 15:01:07 +0800
+Message-ID: <1572850868-22315-7-git-send-email-yong.wu@mediatek.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1572850868-22315-1-git-send-email-yong.wu@mediatek.com>
 References: <1572850868-22315-1-git-send-email-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191103_230201_357604_B817B524 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20191103_230220_206017_C7FC8F23 
+X-CRM114-Status: GOOD (  12.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,71 +89,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In our tlb range flush, we don't care the "leaf". Remove it to simplify
-the code. no functional change.
-
-"granule" also is unnecessary for us, Keep it satisfy the format of
-tlb_flush_walk.
+Now we have tlb_lock for the HW tlb flush, then pgtable code hasn't
+needed the external "pgtlock" for a while. this patch remove the
+"pgtlock".
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
 ---
- drivers/iommu/mtk_iommu.c | 21 ++++-----------------
- 1 file changed, 4 insertions(+), 17 deletions(-)
+ drivers/iommu/mtk_iommu.c | 25 +++----------------------
+ 1 file changed, 3 insertions(+), 22 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 81ac95f..1d7254c 100644
+index 0e5f41f..c2b7ed5 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -174,8 +174,7 @@ static void mtk_iommu_tlb_flush_all(void *cookie)
- }
+@@ -101,8 +101,6 @@
+ #define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
  
- static void mtk_iommu_tlb_add_flush_nosync(unsigned long iova, size_t size,
--					   size_t granule, bool leaf,
--					   void *cookie)
-+					   size_t granule, void *cookie)
+ struct mtk_iommu_domain {
+-	spinlock_t			pgtlock; /* lock for page table */
+-
+ 	struct io_pgtable_cfg		cfg;
+ 	struct io_pgtable_ops		*iop;
+ 
+@@ -295,8 +293,6 @@ static int mtk_iommu_domain_finalise(struct mtk_iommu_domain *dom)
  {
- 	struct mtk_iommu_data *data = cookie;
+ 	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
  
-@@ -223,19 +222,7 @@ static void mtk_iommu_tlb_flush_walk(unsigned long iova, size_t size,
- 	unsigned long flags;
- 
- 	spin_lock_irqsave(&data->tlb_lock, flags);
--	mtk_iommu_tlb_add_flush_nosync(iova, size, granule, false, cookie);
--	mtk_iommu_tlb_sync(cookie);
--	spin_unlock_irqrestore(&data->tlb_lock, flags);
--}
+-	spin_lock_init(&dom->pgtlock);
 -
--static void mtk_iommu_tlb_flush_leaf(unsigned long iova, size_t size,
--				     size_t granule, void *cookie)
--{
--	struct mtk_iommu_data *data = cookie;
+ 	dom->cfg = (struct io_pgtable_cfg) {
+ 		.quirks = IO_PGTABLE_QUIRK_ARM_NS |
+ 			IO_PGTABLE_QUIRK_NO_PERMS |
+@@ -395,18 +391,13 @@ static int mtk_iommu_map(struct iommu_domain *domain, unsigned long iova,
+ {
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+ 	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
 -	unsigned long flags;
+-	int ret;
+ 
+ 	/* The "4GB mode" M4U physically can not use the lower remap of Dram. */
+ 	if (data->enable_4GB)
+ 		paddr |= BIT_ULL(32);
+ 
+-	spin_lock_irqsave(&dom->pgtlock, flags);
+-	ret = dom->iop->map(dom->iop, iova, paddr, size, prot);
+-	spin_unlock_irqrestore(&dom->pgtlock, flags);
 -
--	spin_lock_irqsave(&data->tlb_lock, flags);
--	mtk_iommu_tlb_add_flush_nosync(iova, size, granule, true, cookie);
-+	mtk_iommu_tlb_add_flush_nosync(iova, size, granule, cookie);
- 	mtk_iommu_tlb_sync(cookie);
- 	spin_unlock_irqrestore(&data->tlb_lock, flags);
+-	return ret;
++	/* Synchronize with the tlb_lock */
++	return dom->iop->map(dom->iop, iova, paddr, size, prot);
  }
-@@ -253,7 +240,7 @@ static void mtk_iommu_tlb_flush_page_nosync(struct iommu_iotlb_gather *gather,
- static const struct iommu_flush_ops mtk_iommu_flush_ops = {
- 	.tlb_flush_all = mtk_iommu_tlb_flush_all,
- 	.tlb_flush_walk = mtk_iommu_tlb_flush_walk,
--	.tlb_flush_leaf = mtk_iommu_tlb_flush_leaf,
-+	.tlb_flush_leaf = mtk_iommu_tlb_flush_walk,
- 	.tlb_add_page = mtk_iommu_tlb_flush_page_nosync,
- };
  
-@@ -475,7 +462,7 @@ static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
+ static size_t mtk_iommu_unmap(struct iommu_domain *domain,
+@@ -414,14 +405,8 @@ static size_t mtk_iommu_unmap(struct iommu_domain *domain,
+ 			      struct iommu_iotlb_gather *gather)
+ {
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+-	unsigned long flags;
+-	size_t unmapsz;
+-
+-	spin_lock_irqsave(&dom->pgtlock, flags);
+-	unmapsz = dom->iop->unmap(dom->iop, iova, size, gather);
+-	spin_unlock_irqrestore(&dom->pgtlock, flags);
  
- 	spin_lock_irqsave(&data->tlb_lock, flags);
- 	mtk_iommu_tlb_add_flush_nosync(gather->start, length, gather->pgsize,
--				       false, data);
-+				       data);
- 	mtk_iommu_tlb_sync(data);
- 	spin_unlock_irqrestore(&data->tlb_lock, flags);
+-	return unmapsz;
++	return dom->iop->unmap(dom->iop, iova, size, gather);
  }
+ 
+ static void mtk_iommu_flush_iotlb_all(struct iommu_domain *domain)
+@@ -447,13 +432,9 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
+ {
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+ 	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
+-	unsigned long flags;
+ 	phys_addr_t pa;
+ 
+-	spin_lock_irqsave(&dom->pgtlock, flags);
+ 	pa = dom->iop->iova_to_phys(dom->iop, iova);
+-	spin_unlock_irqrestore(&dom->pgtlock, flags);
+-
+ 	if (data->enable_4GB && pa >= MTK_IOMMU_4GB_MODE_REMAP_BASE)
+ 		pa &= ~BIT_ULL(32);
+ 
 -- 
 1.9.1
 
