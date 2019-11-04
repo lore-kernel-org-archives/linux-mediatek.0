@@ -2,70 +2,69 @@ Return-Path: <SRS0=WUpV=Y4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D9BFCA9EA0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2019 12:04:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AE5F6CA9EA0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2019 12:26:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 39871217F4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2019 12:04:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7914D222C2
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2019 12:26:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rfgiY9bI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39871217F4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TYhow6Fz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7914D222C2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JJ/x6uxSpj08Y7eG2thBvFq7/cgiF97ivNDMqhP+wlU=; b=rfgiY9bIHDhk7H
-	FTebWofuf7VRE1ddQqd9cjrNb3Yb+Ek7nM2dTp3MJzU5D1a0QM/Xs5kcGUwx8pz9/si3pVyBpL9/t
-	PqJqKnMaKNhRYo3rkXVgtK1y93q19di/t6D+0c8atjkfB+7uxMwp98b7/d1QX8QYQ58arRfFAOHWf
-	Td053qT+mCYjxogrmqe9lqJp+Osum2Ta1nltct724iv5Jop/xL+b9FrWdj6iKZ9XbBtsac3f2Kbx4
-	0jFy3KShZclSMJ/tUbqxWpsgOHlzlJgXplHvJhzNKt/4CPa98d43KhepJVaX5/hNhI6XGLwTvdrHm
-	LRwJVrzFNZs1eLvnlDVQ==;
+	List-Owner; bh=6AiiauRxcVZtzDy40kJlxNY0ItCvs9sZkdUL2vCtvbw=; b=TYhow6Fz4ZboXc
+	/2k2mrva2auZq2/mqz2O1uPhabAPzsEufBcShvqNuA8Xt3iCbaQH518Dy3cEphddpvCKbJWMfiIJ0
+	MbX1RPQVn8ZJ5HrteLgBP6oh5VNZ6Olq4ja6coZyXHDv8RYyNLcokW0Sld6u8/8tAYIYAGqtq7D7l
+	nRT0Avvap84Baycfd+HYFUVGWR+fpTREeZbfhrX+5uHl3jnUhv/tVVtfCZfF0N7mxZKCSXDW70O1i
+	Lwsc53Vr3UadXPUgHIVkpNBAYcYuPRn4KEHlmjJRUk56urEhnQJdkaG2XTYSgYi+5/idwHo4CahF0
+	NWSDeHiTxwUxEagCVx6A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iRb6E-0008Au-Oq; Mon, 04 Nov 2019 12:04:46 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1iRbR9-0001ks-C8; Mon, 04 Nov 2019 12:26:23 +0000
+Received: from mga04.intel.com ([192.55.52.120])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iRb4Z-0006Li-4r; Mon, 04 Nov 2019 12:03:05 +0000
-X-UUID: 129d968aeb5c4634bd407d64775a6af5-20191104
-X-UUID: 129d968aeb5c4634bd407d64775a6af5-20191104
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chao.hao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1952705030; Mon, 04 Nov 2019 04:03:07 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 4 Nov 2019 03:53:11 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 4 Nov 2019 19:53:12 +0800
-Received: from localhost.localdomain (10.15.20.246) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Mon, 4 Nov 2019 19:53:08 +0800
-From: Chao Hao <chao.hao@mediatek.com>
-To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
- "Matthias Brugger" <matthias.bgg@gmail.com>
-Subject: [RESEND,PATCH 11/13] iommu/mediatek: Add iova reserved function
-Date: Mon, 4 Nov 2019 19:52:36 +0800
-Message-ID: <20191104115238.2394-12-chao.hao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20191104115238.2394-1-chao.hao@mediatek.com>
-References: <20191104115238.2394-1-chao.hao@mediatek.com>
+ id 1iRbR1-0001eV-Fy; Mon, 04 Nov 2019 12:26:17 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 04 Nov 2019 04:26:14 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.68,267,1569308400"; d="scan'208";a="212305217"
+Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
+ by fmsmga001.fm.intel.com with ESMTP; 04 Nov 2019 04:26:10 -0800
+Received: from andy by smile with local (Exim 4.92.2)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1iRbQv-0002El-IO; Mon, 04 Nov 2019 14:26:09 +0200
+Date: Mon, 4 Nov 2019 14:26:09 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Dongchun Zhu <dongchun.zhu@mediatek.com>
+Subject: Re: [V5, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
+Message-ID: <20191104122609.GI32742@smile.fi.intel.com>
+References: <20191104105713.24311-1-dongchun.zhu@mediatek.com>
+ <20191104105713.24311-3-dongchun.zhu@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20191104105713.24311-3-dongchun.zhu@mediatek.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191104_040303_240507_54FFC122 
-X-CRM114-Status: GOOD (  12.01  )
+X-CRM114-CacheID: sfid-20191104_042615_545838_EC7AF074 
+X-CRM114-Status: GOOD (  18.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,127 +76,388 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Anan Sun <anan.sun@mediatek.com>, devicetree@vger.kernel.org,
- Cui Zhang <cui.zhang@mediatek.com>, Jun Yan <jun.yan@mediatek.com>,
- wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
- Chao Hao <chao.hao@mediatek.com>, iommu@lists.linux-foundation.org,
- linux-mediatek@lists.infradead.org, Yong Wu <yong.wu@mediatek.com>,
- Miles Chen <miles.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org,
- Guangming Cao <guangming.cao@mediatek.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org,
+ srv_heupstream@mediatek.com, shengnan.wang@mediatek.com, tfiga@chromium.org,
+ louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, sakari.ailus@linux.intel.com,
+ matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For multiple iommu_domains, we need to reserve some iova
-regions, so we will add mtk_iommu_resv_iova_region structure.
-It includes the start address and size of iova and iommu_resv_type.
-Based on the function, we will realize multiple mtk_iommu_domains
+On Mon, Nov 04, 2019 at 06:57:13PM +0800, Dongchun Zhu wrote:
+> Add a V4L2 sub-device driver for OV02A10 image sensor.
+> The OV02A10 is a 1/5" CMOS sensor from Omnivision, supporting
+> output format: 10-bit RAW.
+> 
+> This chip has a single MIPI lane interface and use the I2C bus
+> for control and the CSI-2 bus for data.
 
-Signed-off-by: Anan Sun <anan.sun@mediatek.com>
-Signed-off-by: Chao Hao <chao.hao@mediatek.com>
----
- drivers/iommu/mtk_iommu.c | 47 +++++++++++++++++++++++++++++++++++++++
- drivers/iommu/mtk_iommu.h | 12 ++++++++++
- 2 files changed, 59 insertions(+)
+> +/* Bit[7] clock HS mode enable
+> + * 0: Clock continue
+> + * 1: Clock HS
+> + * Bit[6:2] HS VOD adjust
+> + * Bit[1:0] P VHI adjust
+> + */
+> +#define REG_HS_MODE_BLC					0x9d
+> +
+> +#define CLOCK_HS_MODE_ENABLE				BIT(7)
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 8c06d2a793a7..c0cd7da71c2c 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -697,6 +697,51 @@ static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
- 	return iommu_fwspec_add_ids(dev, args->args, 1);
- }
- 
-+/* reserve/dir-map iova region */
-+static void mtk_iommu_get_resv_regions(struct device *dev,
-+				       struct list_head *head)
-+{
-+	struct mtk_iommu_data *data = dev_iommu_fwspec_get(dev)->iommu_priv;
-+	unsigned int i, total_cnt = data->plat_data->resv_cnt;
-+	const struct mtk_iommu_resv_iova_region *resv_data;
-+	struct iommu_resv_region *region;
-+	unsigned long base = 0;
-+	size_t size = 0;
-+	int prot = IOMMU_WRITE | IOMMU_READ;
-+
-+	resv_data = data->plat_data->resv_region;
-+
-+	for (i = 0; i < total_cnt; i++) {
-+		size = 0;
-+		if (resv_data[i].iova_size) {
-+			base = (unsigned long)resv_data[i].iova_base;
-+			size = resv_data[i].iova_size;
-+		}
-+		if (!size)
-+			continue;
-+
-+		region = iommu_alloc_resv_region(base, size, prot,
-+						 resv_data[i].type);
-+		if (!region)
-+			return;
-+
-+		list_add_tail(&region->list, head);
-+
-+		dev_dbg(data->dev, "%s iova 0x%x ~ 0x%x\n",
-+			(resv_data[i].type == IOMMU_RESV_DIRECT) ? "dm" : "rsv",
-+			(unsigned int)base, (unsigned int)(base + size - 1));
-+	}
-+}
-+
-+static void mtk_iommu_put_resv_regions(struct device *dev,
-+				       struct list_head *head)
-+{
-+	struct iommu_resv_region *entry, *next;
-+
-+	list_for_each_entry_safe(entry, next, head, list)
-+		kfree(entry);
-+}
-+
- static const struct iommu_ops mtk_iommu_ops = {
- 	.domain_alloc	= mtk_iommu_domain_alloc,
- 	.domain_free	= mtk_iommu_domain_free,
-@@ -711,6 +756,8 @@ static const struct iommu_ops mtk_iommu_ops = {
- 	.remove_device	= mtk_iommu_remove_device,
- 	.device_group	= mtk_iommu_device_group,
- 	.of_xlate	= mtk_iommu_of_xlate,
-+	.get_resv_regions = mtk_iommu_get_resv_regions,
-+	.put_resv_regions = mtk_iommu_put_resv_regions,
- 	.pgsize_bitmap	= SZ_4K | SZ_64K | SZ_1M | SZ_16M,
- };
- 
-diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
-index d8aef0d57b1a..10476b23adee 100644
---- a/drivers/iommu/mtk_iommu.h
-+++ b/drivers/iommu/mtk_iommu.h
-@@ -36,6 +36,12 @@ enum mtk_iommu_plat {
- 	M4U_MT8183,
- };
- 
-+struct mtk_iommu_resv_iova_region {
-+	dma_addr_t		iova_base;
-+	size_t			iova_size;
-+	enum iommu_resv_type	type;
-+};
-+
- /*
-  * reserved IOVA Domain for IOMMU users of HW limitation.
-  */
-@@ -68,6 +74,12 @@ struct mtk_iommu_plat_data {
- 	u32		    dom_cnt;
- 	unsigned char       larbid_remap[2][MTK_LARB_NR_MAX];
- 	const struct mtk_domain_data	*dom_data;
-+	/*
-+	 * reserve/dir-mapping iova region data
-+	 * todo: for different reserve needs on multiple iommu domains
-+	 */
-+	const unsigned int  resv_cnt;
-+	const struct mtk_iommu_resv_iova_region *resv_region;
- };
- 
- struct mtk_iommu_domain;
+> +#define CLOCK_HS_VOD_ADJUST	(BIT(6) | BIT(5) | BIT(4) | BIT(3) | BIT(2))
+
+GENMASK()
+
+> +#define OV02A10_MASK_8_BITS				0xff
+
+GENMASK()
+
+> +#define OV02A10_LINK_FREQ_390MHZ			390000000ULL
+
+Can't we publish HZ_PER_MHZ for wider use (currently in phy-stm32-usbphyc.c and
+hid-sensor-attributes.c) and use here something like (390 * HZ_PER_MHZ)?
+
+> +#define OV02A10_ECLK_FREQ				24000000
+
+Ditto.
+
+> +static const s64 link_freq_menu_items[] = {
+
+> +	OV02A10_LINK_FREQ_390MHZ
+
+Better to keep comma here.
+
+> +};
+
+> +{
+> +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> +	int ret;
+> +
+> +	ret = i2c_smbus_read_byte_data(client, reg);
+> +	if (ret >= 0) {
+> +		*val = (unsigned char)ret;
+> +		ret = 0;
+> +	}
+
+Why not to use classical pattern
+
+	if (ret < 0)
+		return ret;
+	...
+	return 0;
+
+?
+
+> +
+> +	return ret;
+> +}
+
+> +static int ov02a10_mod_reg(struct ov02a10 *ov02a10, u8 reg, u8 mask, u8 val)
+> +{
+> +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> +	u8 readval;
+> +	int ret;
+> +
+> +	ret = ov02a10_read_smbus(ov02a10, reg, &readval);
+> +	if (ret)
+> +		return ret;
+> +
+
+> +	readval &= ~mask;
+> +	val &= mask;
+> +	val |= readval;
+
+Why not to use classical pattern
+	val = (readval & ~mask) | (val & mask);
+?
+
+> +
+> +	return i2c_smbus_write_byte_data(client, reg, val);
+> +}
+
+> +{
+> +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> +	u16 id;
+
+> +	u8 pid = 0;
+> +	u8 ver = 0;
+
+Useless assignments.
+
+> +	int ret;
+> +
+> +	/* Check sensor revision */
+> +	ret = ov02a10_read_smbus(ov02a10, OV02A10_REG_CHIP_ID_H, &pid);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = ov02a10_read_smbus(ov02a10, OV02A10_REG_CHIP_ID_L, &ver);
+> +	if (ret)
+> +		return ret;
+> +
+> +	id = OV02A10_ID(pid, ver);
+> +	if (id != CHIP_ID) {
+> +		dev_err(&client->dev, "Unexpected sensor id(%04x)\n", id);
+> +		return -EINVAL;
+> +	}
+> +
+> +	dev_dbg(&client->dev, "Detected OV%04X sensor\n", id);
+> +
+> +	return 0;
+> +}
+
+> +	int ret = 0;
+
+Useless assignment...
+
+> +
+> +	dev_dbg(&client->dev, "ov02a10 s_stream (%d)\n", on);
+> +	mutex_lock(&ov02a10->mutex);
+> +
+> +	if (ov02a10->streaming == on)
+> +		goto unlock_and_return;
+> +
+> +	if (on) {
+> +		ret = pm_runtime_get_sync(&client->dev);
+> +		if (ret < 0) {
+> +			pm_runtime_put_noidle(&client->dev);
+> +			goto unlock_and_return;
+> +		}
+> +
+> +		ret = __ov02a10_start_stream(ov02a10);
+> +		if (ret) {
+> +			__ov02a10_stop_stream(ov02a10);
+> +			ov02a10->streaming = !on;
+> +			goto err_rpm_put;
+> +		}
+> +	} else {
+> +		__ov02a10_stop_stream(ov02a10);
+> +		pm_runtime_put(&client->dev);
+> +	}
+> +
+> +	ov02a10->streaming = on;
+> +	mutex_unlock(&ov02a10->mutex);
+> +
+
+> +	return ret;
+
+...simple use
+	return 0;
+here.
+
+> +
+> +err_rpm_put:
+> +	pm_runtime_put(&client->dev);
+> +unlock_and_return:
+> +	mutex_unlock(&ov02a10->mutex);
+> +
+> +	return ret;
+> +}
+
+> +static int ov02a10_set_ctrl(struct v4l2_ctrl *ctrl)
+> +{
+> +	struct ov02a10 *ov02a10 = container_of(ctrl->handler,
+> +					       struct ov02a10, ctrl_handler);
+> +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> +	s64 max_expo;
+
+> +	int ret = 0;
+
+Wouldn't be better to have this under `default` case below?
+
+> +
+> +	/* Propagate change of current control to all related controls */
+> +	if (ctrl->id == V4L2_CID_VBLANK) {
+> +		/* Update max exposure while meeting expected vblanking */
+> +		max_expo = ov02a10->cur_mode->height + ctrl->val -
+> +			   OV02A10_EXPOSURE_MAX_MARGIN;
+> +		__v4l2_ctrl_modify_range(ov02a10->exposure,
+> +					 ov02a10->exposure->minimum, max_expo,
+> +					 ov02a10->exposure->step,
+> +					 ov02a10->exposure->default_value);
+> +	}
+> +
+> +	/* V4L2 controls values will be applied only when power is already up */
+> +	if (!pm_runtime_get_if_in_use(&client->dev))
+> +		return 0;
+> +
+> +	switch (ctrl->id) {
+> +	case V4L2_CID_EXPOSURE:
+> +		ret = ov02a10_set_exposure(ov02a10, ctrl->val);
+> +		break;
+> +	case V4L2_CID_ANALOGUE_GAIN:
+> +		ret = ov02a10_set_gain(ov02a10, ctrl->val);
+> +		break;
+> +	case V4L2_CID_VBLANK:
+> +		ret = ov02a10_set_vblank(ov02a10, ctrl->val);
+> +		break;
+> +	case V4L2_CID_TEST_PATTERN:
+> +		ret = ov02a10_set_test_pattern(ov02a10, ctrl->val);
+> +		break;
+> +	};
+> +
+> +	pm_runtime_put(&client->dev);
+> +
+> +	return ret;
+> +}
+
+> +{
+> +	struct fwnode_handle *ep;
+> +	struct fwnode_handle *fwnode = dev_fwnode(dev);
+> +	struct v4l2_fwnode_endpoint bus_cfg = {
+> +		.bus_type = V4L2_MBUS_CSI2_DPHY
+> +	};
+> +	unsigned int i, j;
+> +	int ret;
+> +
+
+I would rather expect fwnode assignment here to understand immediately from
+where it has been derived. Though it's up to maintainers.
+
+> +	if (!fwnode)
+> +		return -ENXIO;
+> +
+> +	ep = fwnode_graph_get_next_endpoint(fwnode, NULL);
+> +	if (!ep)
+> +		return -ENXIO;
+> +
+> +	ret = v4l2_fwnode_endpoint_alloc_parse(ep, &bus_cfg);
+> +	fwnode_handle_put(ep);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* Optional indication of mipi clock lane mode */
+> +	if (bus_cfg.bus.mipi_csi2.flags & V4L2_MBUS_CSI2_NONCONTINUOUS_CLOCK)
+> +		ov02a10->mipi_clock_hs_mode_enable = true;
+> +
+
+> +	if (!bus_cfg.nr_of_link_frequencies) {
+> +		dev_err(dev, "no link frequencies defined");
+> +		ret = -EINVAL;
+> +		goto check_hwcfg_error;
+> +	}
+
+This is redundant check. You have done the similar below when comparing j to
+nr_of_link_frequencies.
+
+> +
+> +	for (i = 0; i < ARRAY_SIZE(link_freq_menu_items); i++) {
+> +		for (j = 0; j < bus_cfg.nr_of_link_frequencies; j++) {
+> +			if (link_freq_menu_items[i] ==
+> +				bus_cfg.link_frequencies[j])
+> +				break;
+> +		}
+> +
+> +		if (j == bus_cfg.nr_of_link_frequencies) {
+> +			dev_err(dev, "no link frequency %lld supported",
+> +				link_freq_menu_items[i]);
+> +			ret = -EINVAL;
+> +			goto check_hwcfg_error;
+> +		}
+> +	}
+> +
+> +check_hwcfg_error:
+> +	v4l2_fwnode_endpoint_free(&bus_cfg);
+> +
+> +	return ret;
+> +}
+
+> +static int ov02a10_probe(struct i2c_client *client)
+> +{
+
+
+> +	/* Optional indication of physical rotation of sensor */
+> +	ret = fwnode_property_read_u32(dev_fwnode(dev), "rotation",
+> +				       &rotation);
+
+It's perfectly one line.
+
+> +	if (!ret) {
+
+I would rather do two things here:
+1/ use the similar pattern as below with messaging
+	if (!ret) {
+		...
+	} else {
+		dev_dbg(...);
+	}
+2/ Actually use positive conditionals
+	if (ret) {
+		...
+	} else {
+		...
+	}
+
+> +		switch (rotation) {
+> +		case 180:
+> +			ov02a10->upside_down = true;
+> +			ov02a10->fmt.code = MEDIA_BUS_FMT_SRGGB10_1X10;
+> +			break;
+> +		case 0:
+> +			break;
+> +		default:
+> +			dev_warn(dev, "%u degrees rotation is not supported, ignoring...\n",
+> +				 rotation);
+> +		}
+> +	}
+> +
+> +	/* Optional indication of HS VOD adjust */
+> +	ret = fwnode_property_read_u32(dev_fwnode(dev),
+> +				       "ovti,hs-vod-adjust",
+> +				       &hs_vod_adjust_cnt);
+> +	if (!ret)
+> +		ov02a10->mipi_clock_hs_vod_adjust_cnt = hs_vod_adjust_cnt;
+> +	else
+> +		dev_warn(dev, "failed to get hs vod adjust, using default\n");
+> +
+> +	/* Optional indication of mipi tx speed */
+> +	ret = fwnode_property_read_u32(dev_fwnode(dev),
+> +				       "ovti,mipi-tx-speed",
+> +				       &clock_lane_tx_speed);
+> +
+> +	if (!ret)
+> +		ov02a10->mipi_clock_tx_speed = clock_lane_tx_speed;
+> +	else
+> +		dev_warn(dev, "failed to get mipi tx speed, using default\n");
+
+> +	/* Get system clock (eclk) */
+> +	ov02a10->eclk = devm_clk_get(dev, "eclk");
+> +	if (IS_ERR(ov02a10->eclk)) {
+> +		dev_err(dev, "failed to get eclk\n");
+
+> +		return -EINVAL;
+
+Why shadow error code?
+
+> +	}
+
+> +	ov02a10->pd_gpio = devm_gpiod_get(dev, "powerdown", GPIOD_OUT_HIGH);
+> +	if (IS_ERR(ov02a10->pd_gpio)) {
+> +		dev_err(dev, "failed to get powerdown-gpios\n");
+
+> +		return -EINVAL;
+
+Ditto.
+
+> +	}
+
+> +	ov02a10->n_rst_gpio = devm_gpiod_get(dev, "reset", GPIOD_OUT_LOW);
+> +	if (IS_ERR(ov02a10->n_rst_gpio)) {
+> +		dev_err(dev, "failed to get reset-gpios\n");
+
+> +		return -EINVAL;
+
+Ditto.
+
+> +	}
+
+> +}
+
 -- 
-2.18.0
+With Best Regards,
+Andy Shevchenko
+
 
 
 _______________________________________________
