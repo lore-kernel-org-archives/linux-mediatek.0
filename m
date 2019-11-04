@@ -2,21 +2,22 @@ Return-Path: <SRS0=WUpV=Y4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 50D5FCA9EA0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2019 11:58:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E5ACCA9EA0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2019 11:58:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2860521D7F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2019 11:58:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7019D21D7F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Nov 2019 11:58:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="M4tuD56O"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2860521D7F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dRzKikj8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7019D21D7F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,49 +26,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8X6SW0mbMh4S7tn3wSGeFWvC01Ty7pbzjrwTGxraxc0=; b=M4tuD56OwqpgPh
-	Q2gda/g0GAYVMK/7qjXH5anFeqoLW4CWnz2wCIcrFEcSpT9YsEYBNQtjejeJzmNVdi0EimetdW6Ks
-	JYqohnkUJh5thfY0kEEVtLME3Yjas3oly7/daSG8PXfv/XHL+C7Li1kRLTXOSUuBLQJQN4sqvr0EQ
-	CUx7cCe9k61ffQeAWJK5d3U1O+nPOi5YSKyaTlPAlMInyReYjoHPmMKNS0bzoRbpCxIx4MIhDlbRp
-	XBAMQB5rb0XeuoJlG/O8hhTjzBhcxjiDjAeAeSYb/kBBgpNLafnFNDTw3QbHRmZ4sGXbCUI7M7jlk
-	WhlSvQHN8/OPAOv42zhQ==;
+	List-Owner; bh=eWjEB2qIDDgl8SDYxN1EBFuSZL7HbPeqmoaKs2dRLmc=; b=dRzKikj8LdJslV
+	EGRS8dl6j6BmVNYwSI/0Yq3czhdpDRhGnqVTBIr83ky1ao+qzWRhL3Vo4NbyTFtY5cjHM68nbs9PE
+	afOHcjlly8WRaCBCeGV7gxYice2bnIfhGEP6cagJrQlDMj1jYUC7t8nN6Bc1qgB0Jxxs1n9BugNUX
+	UjoKjSP87sxYZ2zwbWjEzB8KJJyaG0UTryz506k6ucNKuTCW7145COLWM2hTXzImTo8G6oWiCfiPQ
+	NfmSaBBxrM+9gHDtnIE1jOyF7wLbqc6UUW0K8g7vZE+cwnV/AgzW3d1vzLk74SrI45stl8kHNdWps
+	rmr5WQbZIRAKjEPvk1bg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iRazy-0003VL-8T; Mon, 04 Nov 2019 11:58:18 +0000
+	id 1iRb0T-0003xa-V4; Mon, 04 Nov 2019 11:58:49 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iRawC-0007LR-PA; Mon, 04 Nov 2019 11:54:26 +0000
-X-UUID: f7f2f62218e04655876ffa067c64bd77-20191104
-X-UUID: f7f2f62218e04655876ffa067c64bd77-20191104
+ id 1iRawE-0007K3-Qo; Mon, 04 Nov 2019 11:54:31 +0000
+X-UUID: c254774de8b94b9ebd9b5eb7d8260577-20191104
+X-UUID: c254774de8b94b9ebd9b5eb7d8260577-20191104
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chao.hao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1187970554; Mon, 04 Nov 2019 03:54:27 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ with ESMTP id 1602251177; Mon, 04 Nov 2019 03:54:27 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 4 Nov 2019 03:52:51 -0800
+ 15.0.1395.4; Mon, 4 Nov 2019 03:52:41 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 4 Nov 2019 19:52:52 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 4 Nov 2019 19:52:39 +0800
 Received: from localhost.localdomain (10.15.20.246) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Mon, 4 Nov 2019 19:52:48 +0800
+ Transport; Mon, 4 Nov 2019 19:52:38 +0800
 From: Chao Hao <chao.hao@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
  "Matthias Brugger" <matthias.bgg@gmail.com>
-Subject: [RESEND,
- PATCH 05/13] iommu/mediatek: Remove pgtable info in mtk_iommu_domain
-Date: Mon, 4 Nov 2019 19:52:30 +0800
-Message-ID: <20191104115238.2394-6-chao.hao@mediatek.com>
+Subject: [RESEND,PATCH 02/13] iommu/mediatek: Add mt6779 IOMMU basic support
+Date: Mon, 4 Nov 2019 19:52:27 +0800
+Message-ID: <20191104115238.2394-3-chao.hao@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20191104115238.2394-1-chao.hao@mediatek.com>
 References: <20191104115238.2394-1-chao.hao@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 4F9ED66731A35343C8300A3A7FFACDAA6F5CFFF43922DCCCA9CA71AF5322E28B2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191104_035424_834180_8AA28E66 
-X-CRM114-Status: GOOD (  13.89  )
+X-CRM114-CacheID: sfid-20191104_035426_918514_7AC5E7D8 
+X-CRM114-Status: GOOD (  15.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,141 +90,278 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch will use mtk_iommu_pgtable to replace the part
-of pgtable in mtk_iommu_domain, so we can remove the information
-of pgtable in mtk_iommu_domain.
+1. Add mt6779 registers define for iommu.
+2. Add mt6779_data define to support mt6779 iommu HW init.
+3. There are two iommus, one is mm_iommu, the other is vpu_iommu.
+MM_IOMMU is connected smi_larb to support multimedia engine to
+access DRAM, and VPU_IOMMU is connected to APU_bus to support
+VPU,MDLA,EDMA to access DRAM. MM_IOMMU and VPU_IOMMU use the same
+page table to simplify design by "mtk_iommu_get_m4u_data".
+4. For smi_larb6, it doesn't use mm_iommu, so we can distinguish
+vpu_iommu by it when excutes iommu_probe.
+5. For mt6779 APU_IOMMU fault id is irregular, so it was treated
+specially.
 
 Signed-off-by: Chao Hao <chao.hao@mediatek.com>
 ---
- drivers/iommu/mtk_iommu.c | 37 +++++++++++++++++--------------------
- 1 file changed, 17 insertions(+), 20 deletions(-)
+ drivers/iommu/mtk_iommu.c | 91 +++++++++++++++++++++++++++++++++------
+ drivers/iommu/mtk_iommu.h | 10 ++++-
+ 2 files changed, 87 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 3fa09b12e9f9..f264fa8c16a0 100644
+index 8ca2e99964fe..f2847e661137 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -117,9 +117,6 @@
- #define MTK_M4U_TO_PORT(id)		((id) & 0x1f)
+@@ -38,12 +38,24 @@
+ #define REG_MMU_INVLD_END_A			0x028
  
- struct mtk_iommu_domain {
--	struct io_pgtable_cfg		cfg;
--	struct io_pgtable_ops		*iop;
--
- 	struct iommu_domain		domain;
+ #define REG_MMU_INV_SEL				0x038
++#define REG_MMU_INV_SEL_MT6779			0x02c
+ #define F_INVLD_EN0				BIT(0)
+ #define F_INVLD_EN1				BIT(1)
+ 
+ #define REG_MMU_STANDARD_AXI_MODE		0x048
++
++#define REG_MMU_MISC_CRTL_MT6779		0x048
++#define REG_MMU_STANDARD_AXI_MODE_MT6779	(BIT(3) | BIT(19))
++#define REG_MMU_COHERENCE_EN			(BIT(0) | BIT(16))
++#define REG_MMU_IN_ORDER_WR_EN			(BIT(1) | BIT(17))
++#define F_MMU_HALF_ENTRY_MODE_L			(BIT(5) | BIT(21))
++#define F_MMU_BLOCKING_MODE_L			(BIT(4) | BIT(20))
++
+ #define REG_MMU_DCM_DIS				0x050
+ 
++#define REG_MMU_WR_LEN				0x054
++#define F_MMU_WR_THROT_DIS			(BIT(5) |  BIT(21))
++
+ #define REG_MMU_CTRL_REG			0x110
+ #define F_MMU_TF_PROT_TO_PROGRAM_ADDR		(2 << 4)
+ #define F_MMU_PREFETCH_RT_REPLACE_MOD		BIT(4)
+@@ -88,10 +100,14 @@
+ #define REG_MMU1_INVLD_PA			0x148
+ #define REG_MMU0_INT_ID				0x150
+ #define REG_MMU1_INT_ID				0x154
++#define F_MMU_INT_ID_COMM_ID(a)			(((a) >> 9) & 0x7)
++#define F_MMU_INT_ID_SUB_COMM_ID(a)		(((a) >> 7) & 0x3)
+ #define F_MMU_INT_ID_LARB_ID(a)			(((a) >> 7) & 0x7)
+ #define F_MMU_INT_ID_PORT_ID(a)			(((a) >> 2) & 0x1f)
++#define F_MMU_INT_ID_COMM_APU_ID(a)		((a) & 0x3)
++#define F_MMU_INT_ID_SUB_APU_ID(a)		(((a) >> 2) & 0x3)
+ 
+-#define MTK_PROTECT_PA_ALIGN			128
++#define MTK_PROTECT_PA_ALIGN			256
+ 
+ /*
+  * Get the local arbiter ID and the portid within the larb arbiter
+@@ -165,7 +181,7 @@ static void mtk_iommu_tlb_flush_all(void *cookie)
+ 
+ 	for_each_m4u(data) {
+ 		writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+-			       data->base + REG_MMU_INV_SEL);
++			       data->base + data->plat_data->inv_sel_reg);
+ 		writel_relaxed(F_ALL_INVLD, data->base + REG_MMU_INVALIDATE);
+ 		wmb(); /* Make sure the tlb flush all done */
+ 	}
+@@ -182,7 +198,7 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+ 	for_each_m4u(data) {
+ 		spin_lock_irqsave(&data->tlb_lock, flags);
+ 		writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+-			       data->base + REG_MMU_INV_SEL);
++			       data->base + data->plat_data->inv_sel_reg);
+ 
+ 		writel_relaxed(iova, data->base + REG_MMU_INVLD_START_A);
+ 		writel_relaxed(iova + size - 1,
+@@ -226,7 +242,7 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
+ 	struct mtk_iommu_data *data = dev_id;
+ 	struct mtk_iommu_domain *dom = data->m4u_dom;
+ 	u32 int_state, regval, fault_iova, fault_pa;
+-	unsigned int fault_larb, fault_port;
++	unsigned int fault_larb, fault_port, sub_comm = 0;
+ 	bool layer, write;
+ 
+ 	/* Read error info from registers */
+@@ -242,17 +258,30 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
+ 	}
+ 	layer = fault_iova & F_MMU_FAULT_VA_LAYER_BIT;
+ 	write = fault_iova & F_MMU_FAULT_VA_WRITE_BIT;
+-	fault_larb = F_MMU_INT_ID_LARB_ID(regval);
+ 	fault_port = F_MMU_INT_ID_PORT_ID(regval);
++	if (data->plat_data->has_sub_comm[data->m4u_id]) {
++		/* m4u1 is VPU in mt6779.*/
++		if (data->m4u_id && data->plat_data->m4u_plat == M4U_MT6779) {
++			fault_larb = F_MMU_INT_ID_COMM_APU_ID(regval);
++			sub_comm = F_MMU_INT_ID_SUB_APU_ID(regval);
++			fault_port = 0; /* for mt6779 APU ID is irregular */
++		} else {
++			fault_larb = F_MMU_INT_ID_COMM_ID(regval);
++			sub_comm = F_MMU_INT_ID_SUB_COMM_ID(regval);
++		}
++	} else {
++		fault_larb = F_MMU_INT_ID_LARB_ID(regval);
++	}
+ 
+-	fault_larb = data->plat_data->larbid_remap[fault_larb];
++	fault_larb = data->plat_data->larbid_remap[data->m4u_id][fault_larb];
+ 
+ 	if (report_iommu_fault(&dom->domain, data->dev, fault_iova,
+ 			       write ? IOMMU_FAULT_WRITE : IOMMU_FAULT_READ)) {
+ 		dev_err_ratelimited(
+ 			data->dev,
+-			"fault type=0x%x iova=0x%x pa=0x%x larb=%d port=%d layer=%d %s\n",
+-			int_state, fault_iova, fault_pa, fault_larb, fault_port,
++			"fault type=0x%x iova=0x%x pa=0x%x larb=%d sub_comm=%d port=%d regval=0x%x layer=%d %s\n",
++			int_state, fault_iova, fault_pa, fault_larb,
++			sub_comm, fault_port, regval,
+ 			layer, write ? "write" : "read");
+ 	}
+ 
+@@ -545,11 +574,12 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+ 		return ret;
+ 	}
+ 
++	regval = readl_relaxed(data->base + REG_MMU_CTRL_REG);
+ 	if (data->plat_data->m4u_plat == M4U_MT8173)
+-		regval = F_MMU_PREFETCH_RT_REPLACE_MOD |
++		regval |= F_MMU_PREFETCH_RT_REPLACE_MOD |
+ 			 F_MMU_TF_PROT_TO_PROGRAM_ADDR_MT8173;
+ 	else
+-		regval = F_MMU_TF_PROT_TO_PROGRAM_ADDR;
++		regval |= F_MMU_TF_PROT_TO_PROGRAM_ADDR;
+ 	writel_relaxed(regval, data->base + REG_MMU_CTRL_REG);
+ 
+ 	regval = F_L2_MULIT_HIT_EN |
+@@ -589,6 +619,20 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+ 	if (data->plat_data->reset_axi)
+ 		writel_relaxed(0, data->base + REG_MMU_STANDARD_AXI_MODE);
+ 
++	if (data->plat_data->has_wr_len) {
++		/* write command throttling mode */
++		regval = readl_relaxed(data->base + REG_MMU_WR_LEN);
++		regval &= ~F_MMU_WR_THROT_DIS;
++		writel_relaxed(regval, data->base + REG_MMU_WR_LEN);
++	}
++	/* special settings for mmu0 (multimedia iommu) */
++	if (data->plat_data->has_misc_ctrl[data->m4u_id]) {
++		regval = readl_relaxed(data->base + REG_MMU_MISC_CRTL_MT6779);
++		/* non-standard AXI mode */
++		regval &= ~REG_MMU_STANDARD_AXI_MODE_MT6779;
++		writel_relaxed(regval, data->base + REG_MMU_MISC_CRTL_MT6779);
++	}
++
+ 	if (devm_request_irq(data->dev, data->irq, mtk_iommu_isr, 0,
+ 			     dev_name(data->dev), (void *)data)) {
+ 		writel_relaxed(0, data->base + REG_MMU_PT_BASE_ADDR);
+@@ -678,6 +722,9 @@ static int mtk_iommu_probe(struct platform_device *pdev)
+ 		}
+ 		data->larb_imu[id].dev = &plarbdev->dev;
+ 
++		if (data->plat_data->m4u1_mask == (1 << id))
++			data->m4u_id = 1;
++
+ 		component_match_add_release(dev, &match, release_of,
+ 					    compare_of, larbnode);
+ 	}
+@@ -731,6 +778,7 @@ static int __maybe_unused mtk_iommu_suspend(struct device *dev)
+ 	struct mtk_iommu_suspend_reg *reg = &data->reg;
+ 	void __iomem *base = data->base;
+ 
++	reg->wr_len = readl_relaxed(base + REG_MMU_WR_LEN);
+ 	reg->standard_axi_mode = readl_relaxed(base +
+ 					       REG_MMU_STANDARD_AXI_MODE);
+ 	reg->dcm_dis = readl_relaxed(base + REG_MMU_DCM_DIS);
+@@ -756,6 +804,7 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
+ 		dev_err(data->dev, "Failed to enable clk(%d) in resume\n", ret);
+ 		return ret;
+ 	}
++	writel_relaxed(reg->wr_len, base + REG_MMU_WR_LEN);
+ 	writel_relaxed(reg->standard_axi_mode,
+ 		       base + REG_MMU_STANDARD_AXI_MODE);
+ 	writel_relaxed(reg->dcm_dis, base + REG_MMU_DCM_DIS);
+@@ -779,7 +828,20 @@ static const struct mtk_iommu_plat_data mt2712_data = {
+ 	.has_4gb_mode = true,
+ 	.has_bclk     = true,
+ 	.has_vld_pa_rng   = true,
+-	.larbid_remap = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
++	.larbid_remap[0] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
++	.inv_sel_reg = REG_MMU_INV_SEL,
++};
++
++static const struct mtk_iommu_plat_data mt6779_data = {
++	.m4u_plat = M4U_MT6779,
++	.larbid_remap[0] = {0, 1, 2, 3, 5, 7, 10, 9},
++	/* vp6a, vp6b, mdla/core2, mdla/edmc*/
++	.larbid_remap[1] = {2, 0, 3, 1},
++	.has_sub_comm = {true, true},
++	.has_wr_len = true,
++	.has_misc_ctrl = {true, false},
++	.inv_sel_reg = REG_MMU_INV_SEL_MT6779,
++	.m4u1_mask =  BIT(6),
  };
  
-@@ -379,6 +376,10 @@ static int mtk_iommu_attach_pgtable(struct mtk_iommu_data *data,
- 	/* binding to pgtable */
- 	data->pgtable = pgtable;
+ static const struct mtk_iommu_plat_data mt8173_data = {
+@@ -787,17 +849,20 @@ static const struct mtk_iommu_plat_data mt8173_data = {
+ 	.has_4gb_mode = true,
+ 	.has_bclk     = true,
+ 	.reset_axi    = true,
+-	.larbid_remap = {0, 1, 2, 3, 4, 5}, /* Linear mapping. */
++	.larbid_remap[0] = {0, 1, 2, 3, 4, 5}, /* Linear mapping. */
++	.inv_sel_reg = REG_MMU_INV_SEL,
+ };
  
-+	/* update HW settings */
-+	writel(pgtable->cfg.arm_v7s_cfg.ttbr[0] & MMU_PT_ADDR_MASK,
-+	       data->base + REG_MMU_PT_BASE_ADDR);
-+
- 	dev_info(data->dev, "m4u%d attach_pgtable done!\n", data->m4u_id);
+ static const struct mtk_iommu_plat_data mt8183_data = {
+ 	.m4u_plat     = M4U_MT8183,
+ 	.reset_axi    = true,
+-	.larbid_remap = {0, 4, 5, 6, 7, 2, 3, 1},
++	.larbid_remap[0] = {0, 4, 5, 6, 7, 2, 3, 1},
++	.inv_sel_reg = REG_MMU_INV_SEL,
+ };
  
- 	return 0;
-@@ -404,8 +405,6 @@ static struct iommu_domain *mtk_iommu_domain_alloc(unsigned type)
- 	if (iommu_get_dma_cookie(&dom->domain))
- 		goto  free_dom;
+ static const struct of_device_id mtk_iommu_of_ids[] = {
+ 	{ .compatible = "mediatek,mt2712-m4u", .data = &mt2712_data},
++	{ .compatible = "mediatek,mt6779-m4u", .data = &mt6779_data},
+ 	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
+ 	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
+ 	{}
+diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+index ea949a324e33..132dc765a40b 100644
+--- a/drivers/iommu/mtk_iommu.h
++++ b/drivers/iommu/mtk_iommu.h
+@@ -25,11 +25,13 @@ struct mtk_iommu_suspend_reg {
+ 	u32				int_main_control;
+ 	u32				ivrp_paddr;
+ 	u32				vld_pa_rng;
++	u32				wr_len;
+ };
  
--	dom->cfg = pgtable->cfg;
--	dom->iop = pgtable->iop;
- 	/* Update our support page sizes bitmap */
- 	dom->domain.pgsize_bitmap = pgtable->cfg.pgsize_bitmap;
+ enum mtk_iommu_plat {
+ 	M4U_MT2701,
+ 	M4U_MT2712,
++	M4U_MT6779,
+ 	M4U_MT8173,
+ 	M4U_MT8183,
+ };
+@@ -42,7 +44,12 @@ struct mtk_iommu_plat_data {
+ 	bool                has_bclk;
+ 	bool                has_vld_pa_rng;
+ 	bool                reset_axi;
+-	unsigned char       larbid_remap[MTK_LARB_NR_MAX];
++	bool                has_sub_comm[2];
++	bool                has_wr_len;
++	bool                has_misc_ctrl[2];
++	u32                 inv_sel_reg;
++	u32                 m4u1_mask;
++	unsigned char       larbid_remap[2][MTK_LARB_NR_MAX];
+ };
  
-@@ -422,11 +421,12 @@ static struct iommu_domain *mtk_iommu_domain_alloc(unsigned type)
+ struct mtk_iommu_domain;
+@@ -59,6 +66,7 @@ struct mtk_iommu_data {
+ 	bool                            enable_4GB;
+ 	spinlock_t			tlb_lock; /* lock for tlb range flush */
  
- static void mtk_iommu_domain_free(struct iommu_domain *domain)
- {
--	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-+	struct mtk_iommu_pgtable *pgtable = mtk_iommu_get_pgtable();
++	u32				m4u_id;
+ 	struct iommu_device		iommu;
+ 	const struct mtk_iommu_plat_data *plat_data;
  
--	free_io_pgtable_ops(dom->iop);
- 	iommu_put_dma_cookie(domain);
- 	kfree(to_mtk_domain(domain));
-+	free_io_pgtable_ops(pgtable->iop);
-+	kfree(pgtable);
- }
- 
- static int mtk_iommu_attach_device(struct iommu_domain *domain,
-@@ -439,11 +439,8 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- 		return -ENODEV;
- 
- 	/* Update the pgtable base address register of the M4U HW */
--	if (!data->m4u_dom) {
-+	if (!data->m4u_dom)
- 		data->m4u_dom = dom;
--		writel(dom->cfg.arm_v7s_cfg.ttbr[0] & MMU_PT_ADDR_MASK,
--		       data->base + REG_MMU_PT_BASE_ADDR);
--	}
- 
- 	mtk_iommu_config(data, dev, true);
- 	return 0;
-@@ -463,7 +460,7 @@ static void mtk_iommu_detach_device(struct iommu_domain *domain,
- static int mtk_iommu_map(struct iommu_domain *domain, unsigned long iova,
- 			 phys_addr_t paddr, size_t size, int prot)
- {
--	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-+	struct mtk_iommu_pgtable *pgtable = mtk_iommu_get_pgtable();
- 	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
- 
- 	/* The "4GB mode" M4U physically can not use the lower remap of Dram. */
-@@ -471,16 +468,16 @@ static int mtk_iommu_map(struct iommu_domain *domain, unsigned long iova,
- 		paddr |= BIT_ULL(32);
- 
- 	/* Synchronize with the tlb_lock */
--	return dom->iop->map(dom->iop, iova, paddr, size, prot);
-+	return pgtable->iop->map(pgtable->iop, iova, paddr, size, prot);
- }
- 
- static size_t mtk_iommu_unmap(struct iommu_domain *domain,
- 			      unsigned long iova, size_t size,
- 			      struct iommu_iotlb_gather *gather)
- {
--	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-+	struct mtk_iommu_pgtable *pgtable = mtk_iommu_get_pgtable();
- 
--	return dom->iop->unmap(dom->iop, iova, size, gather);
-+	return pgtable->iop->unmap(pgtable->iop, iova, size, gather);
- }
- 
- static void mtk_iommu_flush_iotlb_all(struct iommu_domain *domain)
-@@ -504,11 +501,11 @@ static void mtk_iommu_iotlb_sync(struct iommu_domain *domain,
- static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
- 					  dma_addr_t iova)
- {
--	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
-+	struct mtk_iommu_pgtable *pgtable = mtk_iommu_get_pgtable();
- 	struct mtk_iommu_data *data = mtk_iommu_get_m4u_data();
- 	phys_addr_t pa;
- 
--	pa = dom->iop->iova_to_phys(dom->iop, iova);
-+	pa = pgtable->iop->iova_to_phys(pgtable->iop, iova);
- 	if (data->enable_4GB && pa >= MTK_IOMMU_4GB_MODE_REMAP_BASE)
- 		pa &= ~BIT_ULL(32);
- 
-@@ -850,8 +847,8 @@ static int __maybe_unused mtk_iommu_suspend(struct device *dev)
- static int __maybe_unused mtk_iommu_resume(struct device *dev)
- {
- 	struct mtk_iommu_data *data = dev_get_drvdata(dev);
-+	struct mtk_iommu_pgtable *pgtable = data->pgtable;
- 	struct mtk_iommu_suspend_reg *reg = &data->reg;
--	struct mtk_iommu_domain *m4u_dom = data->m4u_dom;
- 	void __iomem *base = data->base;
- 	int ret;
- 
-@@ -869,8 +866,8 @@ static int __maybe_unused mtk_iommu_resume(struct device *dev)
- 	writel_relaxed(reg->int_main_control, base + REG_MMU_INT_MAIN_CONTROL);
- 	writel_relaxed(reg->ivrp_paddr, base + REG_MMU_IVRP_PADDR);
- 	writel_relaxed(reg->vld_pa_rng, base + REG_MMU_VLD_PA_RNG);
--	if (m4u_dom)
--		writel(m4u_dom->cfg.arm_v7s_cfg.ttbr[0] & MMU_PT_ADDR_MASK,
-+	if (pgtable)
-+		writel(pgtable->cfg.arm_v7s_cfg.ttbr[0] & MMU_PT_ADDR_MASK,
- 		       base + REG_MMU_PT_BASE_ADDR);
- 	return 0;
- }
 -- 
 2.18.0
 
