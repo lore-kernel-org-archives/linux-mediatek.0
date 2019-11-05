@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 90DCFC5DF60
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2019 21:14:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BD0D6C5DF60
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2019 21:14:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5266B2087E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2019 21:14:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7B3652087E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2019 21:14:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l/GArad3";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=poorly.run header.i=@poorly.run header.b="G7Z/3RjJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5266B2087E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JV10546x";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=poorly.run header.i=@poorly.run header.b="XA/fs7qg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B3652087E
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=poorly.run
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,65 +26,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KMPZA/QGTba6wOtrRS29kvYds1+pE3gCrhwxjlX6R8g=; b=l/GArad3w8sI/F
-	yM6MIUD/8xeUCLFdf9mUyNEiaM8P3zuq79VO0VnaOt+YW18RShjqGQd6XMo66K8TvlYWrqAcIrLE3
-	wKYWlutma3JU7sMDd2NsErh2cmU3zN5NINTCJf+Y1dprtiOK0crfu9RTrZwQ3V8wBb7agn3TdZ1U2
-	WqbRlW/QHp/dzowtJAYCFNCdr5JwUewT5K5/4vA2B6IoE2CVlJQw/VDA8/hI3TWOhZqTwqyHvqRd/
-	ItS2VAWTkF2+WTkja3DcPBFbFw+aroFKd3qAhEIOjRSgoSvNeUPnlpmW15qEK3Ll/3l5lgllC4G63
-	wjXHe2JMg/nlvRdluJOw==;
+	List-Owner; bh=mDSkvLx14maCaO9G6oiSeQFRPiMo297B4gvE65fF8zQ=; b=JV10546xhNQk/L
+	M7h5lLY9yb7CIdg7UenWztnoPFLf+3QNpWJxr5oQDVEDypDnRST7wmCwJgOQR00QusOmKXgFC1Nvn
+	A2Um016uq2n89ci+FsAvQXmWIsMjzAy+7r7gFegnI2a0pS+VLls3y7xzaNnlR5bmevHaP23NGR6jY
+	S20EyfuSnrITtBtYufYXdlMO/NGMNQjQIS5vsu+J05Om3QlX3B3fRmAXMaRJSOdVsqok3BHWm/KmY
+	FwFE05T2nsa8tn8D4+A/wBg79/Oh/N6zh7rL6evjWX5b8dzC78Qx/xEabjJ6/nKZSuQjPmtdqhAU6
+	BhfJjQfwSnD7z9x2FkzA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iS69k-0006y9-Us; Tue, 05 Nov 2019 21:14:28 +0000
-Received: from mail-yb1-xb42.google.com ([2607:f8b0:4864:20::b42])
+	id 1iS6A6-0007Sg-Rg; Tue, 05 Nov 2019 21:14:50 +0000
+Received: from mail-yb1-xb41.google.com ([2607:f8b0:4864:20::b41])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iS66F-0002sk-HV
- for linux-mediatek@lists.infradead.org; Tue, 05 Nov 2019 21:10:53 +0000
-Received: by mail-yb1-xb42.google.com with SMTP id r201so1676672ybc.10
- for <linux-mediatek@lists.infradead.org>; Tue, 05 Nov 2019 13:10:51 -0800 (PST)
+ id 1iS66H-0002uV-Me
+ for linux-mediatek@lists.infradead.org; Tue, 05 Nov 2019 21:10:55 +0000
+Received: by mail-yb1-xb41.google.com with SMTP id r201so1676711ybc.10
+ for <linux-mediatek@lists.infradead.org>; Tue, 05 Nov 2019 13:10:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=poorly.run; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=wV4eozP5loNQwYGwTBZjo7fjHegUFd2KeaLBGEk3hXA=;
- b=G7Z/3RjJH8MhJ9aRUpU58OK1kicWtOfm3WtQLcKX1elIQ+JQ/825WwFnfTx4QpN0R5
- /qz307oDAZfzYxFCewWZ6HZAx5GKfnNPQPZJw852kLB84ojf24fkweH7Mql1ilO/efva
- 16no+9TaJtrLwAejmjAg168sSggFqN5IP5HAJLd1LDvbs7ICGLkHKbAEbx9Q+m/Hjbge
- wgDh+5WQN2fFFuG9iTJfXU2Oe8fE9gFFXyr7zSyuv8loygbB+7NHsZL1cKNzuKhhDaSE
- Yyj2G5EB6Ivy6uimax0FkY71FYWlYKILN1Mia76WZgswL4pnibiWzvwRC9K/gJRbn9kN
- zqVg==
+ bh=Ta1Xwfa+QeAgFSaukNPJQ5uJyx0Z9KTcb0vCHsmGyFQ=;
+ b=XA/fs7qgEdfJZML+yaAQj0RuclIsRF7Ra54ebOTOISjSJsvFenImCTBE6H+Tya5FKp
+ YlAwTnFfG8ezZMDaqA0HJZikqdEHYac7VFwjzlzBpKZ4sG3lqdDZqtpWWJiMkD/T6x3X
+ EFSD8vOEyexf+Odjr1tXCZa9CX35E54Jm5ooFUlPNOVyFOSa9IljuapxUFX2L2ySKvlw
+ 8AZp/urnvC+xMC+E0XaBzF2do4tcNa1YV+RS2fyLicN1Biz6DJQ019Cj8AHzPAnMGFeS
+ PGwJf4Rmu/viUbcl2eIoqpebK0yG/Xg5GgEryWs7INnvw46teyCbUNsZuZj8S1dKmTSD
+ MCsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=wV4eozP5loNQwYGwTBZjo7fjHegUFd2KeaLBGEk3hXA=;
- b=fJKqZMC/UVxrsmngYc6qtvspLZyZ3Jpa640W28qFbnRDHA8HW5QNfOzSkRnUoUaMjg
- TO8sDbfO+2lIlJE1Obil87GFe6aj7SdB6biSztuWnd1avTg5FuW6VPbVfuj/Nu5Qq2SE
- BTwXWwoOea5ZRXM3i9S4THNmrgUXo6XyCgEUvKbjcm/pgUUNuoM3UsjC91WndQi01pW7
- rCgevB4ZYyrhe3ckplUzUsDIROWpFXEgtPeTwEDp6ypPfheiU8o4XnajYv5rPrZ0SRRQ
- WyvIXpTVgR2+xC9OaMoV9S7p33w3cj+18t2wUaTuf7KnO6bgQEkGGJFL4x8WzgSDH7bP
- 391w==
-X-Gm-Message-State: APjAAAXwwbvLVD2qnnnVTcB+IBhsQwQZ5w94EjvxNsVn2r2rY3TUsqvL
- k8mxMxgQsIznReLfSCyWWFeutg==
-X-Google-Smtp-Source: APXvYqzU0qqs+85NekuoYN3av0T/6sjs3A+/t1dcUDPS/GuqvBVMdxP+0PxcpfW0TVgNQIEIHKU3cw==
-X-Received: by 2002:a25:c281:: with SMTP id s123mr29226020ybf.92.1572988250491; 
- Tue, 05 Nov 2019 13:10:50 -0800 (PST)
+ bh=Ta1Xwfa+QeAgFSaukNPJQ5uJyx0Z9KTcb0vCHsmGyFQ=;
+ b=MANlMjv+QWQfT8NO995Sorq4o2qgpHXnV1e4cU1IuuKWMjxjibo+8kPIdn8COXS9CI
+ 9isT1nI+x+9pf0RHMzsnF9Fy2mXGUD9oDotxBGbhmmeM6L708Ll0M8kpZq3Z9efD/jwj
+ LqVJwomEo7/vTFQvJx/t34jVGepct4Cry1oHVJn414oKM1gslPt2r0JnVoeVdKa/A9Et
+ B6ZNBHDJlMcKLExh5d0ARdb7PYGs65wfvIbmY+DXafxMLwUNoaZejMldPURP/fHrr4iA
+ 0THKi/0Vv72MSEFRMu4ba9l2aUeSKl/xKpbQNjyufnXIsIZulqwODHXmIfkbzK8JVhx+
+ +B7w==
+X-Gm-Message-State: APjAAAUHFHbZFDeAeamoOj84PCcd/6UcTXnuz2RxKAMCctbwgFCT0htu
+ tcXR4p98VIyWKgpAxJQsqe139A==
+X-Google-Smtp-Source: APXvYqylGH6ZNkY6K1tLbHFtvCxKxcHMgw9PDG6CbQLvQSvJUEARUn/PSgkolxKP8MpBrxfh0FKWzw==
+X-Received: by 2002:a25:cc84:: with SMTP id
+ l126mr28076860ybf.249.1572988252193; 
+ Tue, 05 Nov 2019 13:10:52 -0800 (PST)
 Received: from rosewood.cam.corp.google.com
  ([2620:0:1013:11:89c6:2139:5435:371d])
- by smtp.gmail.com with ESMTPSA id j66sm1815216ywb.101.2019.11.05.13.10.49
+ by smtp.gmail.com with ESMTPSA id j66sm1815216ywb.101.2019.11.05.13.10.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Nov 2019 13:10:50 -0800 (PST)
+ Tue, 05 Nov 2019 13:10:51 -0800 (PST)
 From: Sean Paul <sean@poorly.run>
 To: dri-devel@lists.freedesktop.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 1/7] drm/mediatek: Refactor plane init
-Date: Tue,  5 Nov 2019 16:10:18 -0500
-Message-Id: <20191105211034.123937-2-sean@poorly.run>
+Subject: [PATCH v2 2/7] drm/mediatek: Add helper to get component for a plane
+Date: Tue,  5 Nov 2019 16:10:19 -0500
+Message-Id: <20191105211034.123937-3-sean@poorly.run>
 X-Mailer: git-send-email 2.24.0.rc1.363.gb1bccd3e3d-goog
 In-Reply-To: <20191105211034.123937-1-sean@poorly.run>
 References: <20191105211034.123937-1-sean@poorly.run>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191105_131051_600236_8B22294E 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20191105_131053_762060_6476BD37 
+X-CRM114-Status: GOOD (  11.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,118 +108,105 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Paul <seanpaul@chromium.org>
 
-Add a couple of functions which enumerate the number of planes for a
-component and initialize the planes for a component.
-
-No functional changes in this patch, but it will allow us to selectively
-support rotation if the component supports it.
+Instead of hard-coding which components have planes, add a helper
+function to walk the components and map a plane index to a component
+layer.
 
 Signed-off-by: Sean Paul <seanpaul@chromium.org>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 77 +++++++++++++++++++------
- 1 file changed, 59 insertions(+), 18 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 56 +++++++++++++++----------
+ 1 file changed, 34 insertions(+), 22 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index b841d3706d8b..7d0f50da8e40 100644
+index 7d0f50da8e40..ccf395f17a99 100644
 --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
 +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -543,14 +543,63 @@ void mtk_crtc_ddp_irq(struct drm_crtc *crtc, struct mtk_ddp_comp *comp)
- 	mtk_drm_finish_page_flip(mtk_crtc);
+@@ -207,6 +207,28 @@ static void mtk_crtc_ddp_clk_disable(struct mtk_drm_crtc *mtk_crtc)
+ 		clk_disable_unprepare(mtk_crtc->ddp_comp[i]->clk);
  }
  
-+static int mtk_drm_crtc_num_comp_planes(struct mtk_drm_crtc *mtk_crtc,
-+					int comp_idx)
++static
++struct mtk_ddp_comp *mtk_drm_ddp_comp_for_plane(struct drm_crtc *crtc,
++						struct drm_plane *plane,
++						unsigned int *local_layer)
 +{
++	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
 +	struct mtk_ddp_comp *comp;
++	int i, count = 0;
 +
-+	if (comp_idx > 1)
-+		return 0;
-+
-+	comp = mtk_crtc->ddp_comp[comp_idx];
-+	if (!comp->funcs)
-+		return 0;
-+
-+	if (comp_idx == 1 && !comp->funcs->bgclr_in_on)
-+		return 0;
-+
-+	return mtk_ddp_comp_layer_nr(comp);
-+}
-+
-+static inline
-+enum drm_plane_type mtk_drm_crtc_plane_type(unsigned int plane_idx)
-+{
-+	if (plane_idx == 0)
-+		return DRM_PLANE_TYPE_PRIMARY;
-+	else if (plane_idx == 1)
-+		return DRM_PLANE_TYPE_CURSOR;
-+	else
-+		return DRM_PLANE_TYPE_OVERLAY;
-+
-+}
-+
-+static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
-+					 struct mtk_drm_crtc *mtk_crtc,
-+					 int comp_idx, int pipe)
-+{
-+	int num_planes = mtk_drm_crtc_num_comp_planes(mtk_crtc, comp_idx);
-+	int i, ret;
-+
-+	for (i = 0; i < num_planes; i++) {
-+		ret = mtk_plane_init(drm_dev,
-+				&mtk_crtc->planes[mtk_crtc->layer_nr],
-+				BIT(pipe),
-+				mtk_drm_crtc_plane_type(mtk_crtc->layer_nr));
-+		if (ret)
-+			return ret;
-+
-+		mtk_crtc->layer_nr++;
++	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
++		comp = mtk_crtc->ddp_comp[i];
++		if (plane->index < (count + mtk_ddp_comp_layer_nr(comp))) {
++			*local_layer = plane->index - count;
++			return comp;
++		}
++		count += mtk_ddp_comp_layer_nr(comp);
 +	}
-+	return 0;
++
++	WARN(1, "Failed to find component for plane %d\n", plane->index);
++	return NULL;
 +}
 +
- int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 			const enum mtk_ddp_comp_id *path, unsigned int path_len)
+ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
  {
- 	struct mtk_drm_private *priv = drm_dev->dev_private;
- 	struct device *dev = drm_dev->dev;
- 	struct mtk_drm_crtc *mtk_crtc;
--	enum drm_plane_type type;
--	unsigned int zpos;
-+	unsigned int num_comp_planes = 0;
- 	int pipe = priv->num_pipes;
- 	int ret;
- 	int i;
-@@ -606,23 +655,15 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 		mtk_crtc->ddp_comp[i] = comp;
+ 	struct drm_crtc *crtc = &mtk_crtc->base;
+@@ -283,19 +305,12 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
+ 	for (i = 0; i < mtk_crtc->layer_nr; i++) {
+ 		struct drm_plane *plane = &mtk_crtc->planes[i];
+ 		struct mtk_plane_state *plane_state;
+-		struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
+-		unsigned int comp_layer_nr = mtk_ddp_comp_layer_nr(comp);
++		struct mtk_ddp_comp *comp;
+ 		unsigned int local_layer;
+ 
+ 		plane_state = to_mtk_plane_state(plane->state);
+-
+-		if (i >= comp_layer_nr) {
+-			comp = mtk_crtc->ddp_comp[1];
+-			local_layer = i - comp_layer_nr;
+-		} else
+-			local_layer = i;
+-		mtk_ddp_comp_layer_config(comp, local_layer,
+-					  plane_state);
++		comp = mtk_drm_ddp_comp_for_plane(crtc, plane, &local_layer);
++		mtk_ddp_comp_layer_config(comp, local_layer, plane_state);
  	}
  
--	mtk_crtc->layer_nr = mtk_ddp_comp_layer_nr(mtk_crtc->ddp_comp[0]);
--	if (mtk_crtc->ddp_comp_nr > 1) {
--		struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[1];
-+	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++)
-+		num_comp_planes += mtk_drm_crtc_num_comp_planes(mtk_crtc, i);
-+
-+	mtk_crtc->planes = devm_kcalloc(dev, num_comp_planes,
-+					sizeof(struct drm_plane), GFP_KERNEL);
+ 	return 0;
+@@ -343,7 +358,6 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+ 	struct mtk_crtc_state *state = to_mtk_crtc_state(mtk_crtc->base.state);
+ 	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
+ 	unsigned int i;
+-	unsigned int comp_layer_nr = mtk_ddp_comp_layer_nr(comp);
+ 	unsigned int local_layer;
  
--		if (comp->funcs->bgclr_in_on)
--			mtk_crtc->layer_nr += mtk_ddp_comp_layer_nr(comp);
--	}
--	mtk_crtc->planes = devm_kcalloc(dev, mtk_crtc->layer_nr,
--					sizeof(struct drm_plane),
--					GFP_KERNEL);
+ 	/*
+@@ -366,17 +380,15 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+ 
+ 			plane_state = to_mtk_plane_state(plane->state);
+ 
+-			if (plane_state->pending.config) {
+-				if (i >= comp_layer_nr) {
+-					comp = mtk_crtc->ddp_comp[1];
+-					local_layer = i - comp_layer_nr;
+-				} else
+-					local_layer = i;
 -
--	for (zpos = 0; zpos < mtk_crtc->layer_nr; zpos++) {
--		type = (zpos == 0) ? DRM_PLANE_TYPE_PRIMARY :
--				(zpos == 1) ? DRM_PLANE_TYPE_CURSOR :
--						DRM_PLANE_TYPE_OVERLAY;
--		ret = mtk_plane_init(drm_dev, &mtk_crtc->planes[zpos],
--				     BIT(pipe), type);
-+	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
-+		ret = mtk_drm_crtc_init_comp_planes(drm_dev, mtk_crtc, i,
-+						    pipe);
- 		if (ret)
- 			return ret;
+-				mtk_ddp_comp_layer_config(comp, local_layer,
+-							  plane_state);
+-				plane_state->pending.config = false;
+-			}
++			if (!plane_state->pending.config)
++				continue;
++
++			comp = mtk_drm_ddp_comp_for_plane(crtc, plane,
++							  &local_layer);
++
++			mtk_ddp_comp_layer_config(comp, local_layer,
++						  plane_state);
++			plane_state->pending.config = false;
+ 		}
+ 		mtk_crtc->pending_planes = false;
  	}
 -- 
 Sean Paul, Software Engineer, Google / Chromium OS
