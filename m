@@ -2,21 +2,21 @@ Return-Path: <SRS0=3chi=Y5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B65BCA9ED3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2019 01:34:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 83348CA9ED5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2019 02:41:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7139E20717
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2019 01:34:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5412E21882
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Nov 2019 02:41:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YjhQqtzZ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7139E20717
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OnccxjhD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5412E21882
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,46 +25,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2pueoZFQN6yItp5gxcOUliz8FgvedPGWo1aARhmkT8g=; b=YjhQqtzZ05aiYJ
-	dc09zUHQDTVmrB8gtHRrSILazuKP6/YZqt4VFLAfYL7r6LKswDhqFTex+BXftOaQhAl6QOpEQJK9D
-	cijWkDbLAphenziKhSdUOp9/kWQV6yobRGMyi3DQcfstNCT4cLNxPMhln2zZP2vOX8VzXf7N/43ez
-	e49uNYsh7anZJ1Z0fvQJ3ZCQPvi0MIDr36DLWD9143dxDuN4xZKybCX8KZpA85z5z6T4B4zpbCHXG
-	vCMN7knXWloTUW6Gl4SrzpsURc2pECCl4wlXNVsZn47DvZfsV7Klfa6MIBgDKqQUcqoRYKCAz5frs
-	kNw7jfNIRuUl5Ut7boog==;
+	List-Owner; bh=zgRTEg20eMa2q7MV71sq5cAeHKGbye1VRITExWza7UE=; b=OnccxjhDo1KSx6
+	F88pddJvVKOTdLEgZ5HhJ97bD6owxiCb359n0uNS1RbfcwwZdSj0kkvjzxqfWU/Uy32z6OKiEMZym
+	R11PUL3xAIDnxXB4iOzlhND0wRHkSzaqQaNZIUNJDFOsFACvsvEymbAOxZzwebOsIL0WvbqaHik/l
+	yK8lfEj94/9jo/oP2oiMkiWqUVFwhOBFeoSPpsobZIEy63EISqnzHtoe6ouudIWPzUJ9nMIl35jdB
+	W6r/nFKAUoPJR8pa8j6FDZZes/mRiFTHR/ah2/tNh/ML4PlKbae3cAZvy1aZTCjJjGH4tMB3HsNHZ
+	J7TZ/aSufXri2xpv5QgQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iRnkI-00083X-5D; Tue, 05 Nov 2019 01:34:58 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1iRomr-0001Ud-SQ; Tue, 05 Nov 2019 02:41:41 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iRnkF-000836-Sd; Tue, 05 Nov 2019 01:34:57 +0000
-X-UUID: 563dd96782244e36b8b08035feb81000-20191104
-X-UUID: 563dd96782244e36b8b08035feb81000-20191104
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ id 1iRomk-0001MZ-BI; Tue, 05 Nov 2019 02:41:35 +0000
+X-UUID: f7ec5a75eaa7424baedb5fc46dd5a539-20191104
+X-UUID: f7ec5a75eaa7424baedb5fc46dd5a539-20191104
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 46241332; Mon, 04 Nov 2019 17:34:41 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1611493704; Mon, 04 Nov 2019 18:41:16 -0800
+Received: from MTKMBS32DR.mediatek.inc (172.27.6.104) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 4 Nov 2019 17:34:45 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 5 Nov 2019 09:34:44 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 5 Nov 2019 09:34:44 +0800
-Message-ID: <1572917685.20346.10.camel@mtksdaap41>
-Subject: Re: [PATCH] drm/mediatek: Support reflect-y plane rotation
-From: CK Hu <ck.hu@mediatek.com>
-To: Sean Paul <sean@poorly.run>
-Date: Tue, 5 Nov 2019 09:34:45 +0800
-In-Reply-To: <20191101132647.189033-1-sean@poorly.run>
-References: <20191101132647.189033-1-sean@poorly.run>
+ 15.0.1395.4; Mon, 4 Nov 2019 18:31:22 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32DR.mediatek.inc
+ (172.27.6.104) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Tue, 5 Nov 2019 10:31:16 +0800
+Received: from [10.17.3.153] (172.27.4.253) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Tue, 5 Nov 2019 10:31:16 +0800
+Message-ID: <1572921077.18464.55.camel@mhfsdcap03>
+Subject: Re: [RFC PATCH] usb: common: change usb_debug_root as static variable
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Date: Tue, 5 Nov 2019 10:31:17 +0800
+In-Reply-To: <20191101090221.GC2671695@kroah.com>
+References: <1572575349-5596-1-git-send-email-chunfeng.yun@mediatek.com>
+ <20191101090221.GC2671695@kroah.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 2BCAD82B0D71AB466DCD90ED35262FF773AEF73C748AB309528833C8BCB79ED62000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191104_173455_932442_53A947FA 
-X-CRM114-Status: GOOD (  20.24  )
+X-CRM114-CacheID: sfid-20191104_184134_390330_A49C8A46 
+X-CRM114-Status: GOOD (  19.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,127 +78,86 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Daniele Castagna <dcastagna@chromium.org>, dri-devel@lists.freedesktop.org,
- Matthias
- Brugger <matthias.bgg@gmail.com>, Miguel Casas <mcasas@chromium.org>,
- Sean Paul <seanpaul@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- Fritz Koenig <frkoenig@chromium.org>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Mark Yacoub <markyacoub@google.com>
+Cc: Fabrizio Castro <fabrizio.castro@bp.renesas.com>,
+ Felipe Balbi <felipe.balbi@linux.intel.com>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Sean:
+On Fri, 2019-11-01 at 10:02 +0100, Greg Kroah-Hartman wrote:
+> On Fri, Nov 01, 2019 at 10:29:09AM +0800, Chunfeng Yun wrote:
+> > Try to avoid using extern global variable, and provide two
+> > functions for the usage cases
+> 
+> That is 3 different things all in one patch, not generally considered a
+> good thing at all.
 
-On Fri, 2019-11-01 at 09:26 -0400, Sean Paul wrote:
-> From: Sean Paul <seanpaul@chromium.org>
 > 
-> Expose the rotation property and handle REFLECT_Y rotations.
-> 
-> Cc: Fritz Koenig <frkoenig@chromium.org>
-> Cc: Daniele Castagna <dcastagna@chromium.org>
-> Cc: Miguel Casas <mcasas@chromium.org>
-> Cc: Mark Yacoub <markyacoub@google.com>
-> Signed-off-by: Sean Paul <seanpaul@chromium.org>
-> ---
-> 
-> The hardware also supports REFLECT_X, but I just could not figure out
-> how to get it working. If someone is interested in getting this going,
-> I'm happy to share notes and my WIP patch. For now, though, I actually
-> only need y-flip so I'm giving up on x-flip.
-> 
-> 
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c  |  6 ++++++
->  drivers/gpu/drm/mediatek/mtk_drm_plane.c | 11 ++++++++++-
->  drivers/gpu/drm/mediatek/mtk_drm_plane.h |  1 +
->  3 files changed, 17 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> index 14878ebf59d7..6505479ee506 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -50,6 +50,7 @@
->  					OVL_CON_CLRFMT_RGB : 0)
->  #define	OVL_CON_AEN		BIT(8)
->  #define	OVL_CON_ALPHA		0xff
-> +#define	OVL_CON_VIRT_FLIP	BIT(9)
->  
->  struct mtk_disp_ovl_data {
->  	unsigned int addr;
-> @@ -229,6 +230,11 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
->  	if (idx != 0)
->  		con |= OVL_CON_AEN | OVL_CON_ALPHA;
->  
-> +	if (pending->rotation & DRM_MODE_REFLECT_Y) {
-> +		con |= OVL_CON_VIRT_FLIP;
-> +		addr += (pending->height - 1) * pending->pitch;
-> +	}
-> +
->  	writel_relaxed(con, comp->regs + DISP_REG_OVL_CON(idx));
->  	writel_relaxed(pitch, comp->regs + DISP_REG_OVL_PITCH(idx));
->  	writel_relaxed(src_size, comp->regs + DISP_REG_OVL_SRC_SIZE(idx));
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> index 584a9ecadce6..4d8f2b55334b 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> @@ -88,6 +88,9 @@ static int mtk_plane_atomic_check(struct drm_plane *plane,
->  	if (!fb)
->  		return 0;
->  
-> +	if (fb->format->is_yuv && (state->rotation & ~DRM_MODE_ROTATE_0) != 0)
-> +		return -EINVAL;
-> +
+> Also, who is going to use these new functions?  Why are they needed?
+After remove global variable usb_debug_root, the drivers using
+usb_debug_root to create directory or files will use these new APIs
+instead.
 
-For some crtc, its DMA component (first component in crtc pipe line
-which read data from DRAM) may be RDMA [1]. It does not support RDMA
-reflect function in this patch, so need to do something to protect this
-case. Maybe we should check this plane is bind to a crtc whose DMA
-component support reflect or not.
+> 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> > NOTE:
+> >     Prepared but not send out patches for drivers using usb_debug_root,
+> > because I'm not sure whether this patch is needed, and many drivers
+> > will be modified.
+> > ---
+> >  drivers/usb/common/common.c | 16 ++++++++++++++--
+> >  include/linux/usb.h         |  5 ++++-
+> >  2 files changed, 18 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/drivers/usb/common/common.c b/drivers/usb/common/common.c
+> > index 1433260d99b4..639ee6d243a2 100644
+> > --- a/drivers/usb/common/common.c
+> > +++ b/drivers/usb/common/common.c
+> > @@ -293,8 +293,20 @@ struct device *usb_of_get_companion_dev(struct device *dev)
+> >  EXPORT_SYMBOL_GPL(usb_of_get_companion_dev);
+> >  #endif
+> >  
+> > -struct dentry *usb_debug_root;
+> > -EXPORT_SYMBOL_GPL(usb_debug_root);
+> > +static struct dentry *usb_debug_root;
+> 
+> Doesn't this break things as-is? 
+Yes, it will, I didn't send out other patches for the drivers using
+usb_debug_root.
 
-[1]
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/gpu/drm/mediatek/mtk_drm_drv.c?h=v5.4-rc6#n133
+>  You can't do that in a single patch
+> either :(
+When I make usb_debug_root as static variable, two APIs need be added
+due to other driver use it to create directory or file.
 
-Regards,
-CK
+> 
+> > +
+> > +struct dentry *usb_debugfs_create_dir(const char *name)
+> > +{
+> > +	return debugfs_create_dir(name, usb_debug_root);
+> > +}
+> > +EXPORT_SYMBOL_GPL(usb_debugfs_create_dir);
+> > +
+> > +struct dentry *usb_debugfs_create_file(const char *name, umode_t mode,
+> > +			void *data, const struct file_operations *fops)
+> > +{
+> > +	return debugfs_create_file(name, mode, usb_debug_root, data, fops);
+> 
+> I doubt many people want to create a file in the usb "root" debugfs
+> directory, right?  They _should_ be just creating a new subdirectory in
+> there instead.
+Currently only three .c files creates a file under usb 'root' debugfs
+directory.
 
->  	if (!state->crtc)
->  		return 0;
->  
-> @@ -132,6 +135,7 @@ static void mtk_plane_atomic_update(struct drm_plane *plane,
->  	state->pending.y = plane->state->dst.y1;
->  	state->pending.width = drm_rect_width(&plane->state->dst);
->  	state->pending.height = drm_rect_height(&plane->state->dst);
-> +	state->pending.rotation = plane->state->rotation;
->  	wmb(); /* Make sure the above parameters are set before update */
->  	state->pending.dirty = true;
->  }
-> @@ -166,7 +170,12 @@ int mtk_plane_init(struct drm_device *dev, struct drm_plane *plane,
->  		return err;
->  	}
->  
-> -	drm_plane_helper_add(plane, &mtk_plane_helper_funcs);
-> +	err = drm_plane_create_rotation_property(plane, 0,
-> +						 DRM_MODE_ROTATE_0 |
-> +						 DRM_MODE_REFLECT_Y);
-> +	if (err)
-> +		DRM_INFO("Create rotation property failed, continuing...\n");
->  
-> +	drm_plane_helper_add(plane, &mtk_plane_helper_funcs);
->  	return 0;
->  }
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.h b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-> index 6f842df722c7..83b634a997cc 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-> @@ -20,6 +20,7 @@ struct mtk_plane_pending_state {
->  	unsigned int			y;
->  	unsigned int			width;
->  	unsigned int			height;
-> +	unsigned int			rotation;
->  	bool				dirty;
->  };
->  
+> 
+> thanks,
+> 
+> greg k-h
 
 
 
