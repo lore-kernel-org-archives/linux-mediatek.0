@@ -2,83 +2,79 @@ Return-Path: <SRS0=ljL/=Y6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B16DC5DF64
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 15:59:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ABC99FC6195
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 23:40:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 30FC32178F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 15:59:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7C432207FA
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 23:40:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oWqdwkeX";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=poorly.run header.i=@poorly.run header.b="ccpy+gS6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 30FC32178F
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=poorly.run
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tOflw5gX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7C432207FA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dkJSAto4X4h3/fW38/QXiVpAXbS6sewqE3/JFWP0jI4=; b=oWqdwkeXcldIH/
-	G0y1QOAAoaJ4tnhfl0c4aN/cyCs1pDMrlZC0oc7HURO9NgnwoLZ5f9SWg6WfOciaZkKurIG45Vpet
-	5AwPplzYcZ0s2bNzHQdLSuftRkt21/d86HBJGcxgHIkmrnfLXpIpkb2Fbq3y+N5zymmu+7JTGHIVn
-	Sz7wdLi8/JmQx7MlL4sfnTbc+8gfvSxb2QjLkjQNH59/yLcQBDYkeYI9/LI/QftA6mOPjMJIGzOuW
-	olnMPwe522Up0EdmLhly8u17HwAA8EJuZNoeKCq67Gjk7qjZ9UnGTUHls0191h71X37rc2F7dwWKR
-	B6jrxwkscoBQ8vLqikcg==;
+	List-Owner; bh=8VFAtNlj5LHuaqQcSzDEAiY59pSXM9aKvjv3mqPjmlM=; b=tOflw5gXeLeN8F
+	OqGDUgHsYGRaCZ2HhMp80gUWTI73UsGdlwXzM7irqS2+/Nf0aE8WMmOyaEeO7gCtMdjUIPK0zOzI+
+	arfgml6ctHe5igoFHk6A7JZSVu/77y8sgblPS6mVbq88N2JPdu+Z6tJN0Y5bDiZk3pWxkyCPexf3a
+	OobId9HsZ1tXbarzOYw513zHNlPL+5XEliFnWQqIb/Gn05mE0ikK14mMNZTNt0VHnod53rlqeLXIK
+	qhEtogxjncD0lzwce7dNCPigEZZAxpxdjM7BYaC4TxE8o0+rxQfWjSP/7ZSX5DaqT3PsYx3dvwEx1
+	R8JoV973ng7ckFjHUEcA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iSNi6-0007TB-SR; Wed, 06 Nov 2019 15:59:06 +0000
-Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142])
+	id 1iSUuj-0000OS-QE; Wed, 06 Nov 2019 23:40:37 +0000
+Received: from mail-oi1-f196.google.com ([209.85.167.196])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iSNi4-0007Rh-0R
- for linux-mediatek@lists.infradead.org; Wed, 06 Nov 2019 15:59:05 +0000
-Received: by mail-il1-x142.google.com with SMTP id r9so5579237ilq.10
- for <linux-mediatek@lists.infradead.org>; Wed, 06 Nov 2019 07:59:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=poorly.run; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=eTmvNusWN2c5MG6/BAIqeUf6hIHOhMcF2KJYDtbtvt8=;
- b=ccpy+gS6IGTTaTTSYtiJSpGEcbiv5wNleb628bgUAiGfYG8qovcbis91IrjxFSiyph
- 3HfZZ8GEZqfFDt+kARDudOi3bo/7aW5DX4U8dH7bmhH4S/eOuaKOUrpahD82A4roSaH4
- 4Pun2YIuRJIp54fpdSGnX2nYGvSWTZEm3inBN/1Y6y0NIlKCePzb4aQJX28WK/S6qIWG
- BRP0UWMYmC09tCUEXIt5L+5zb7GH36OBmpYYHGpmQl7imB48wFOElu0AlSBGt7dZxZM2
- V8oXCdqUbqkoa4VEY33b9E3erwZvhwW5kdZkadudfGVr4QJqNqKkA1333pCAgqQR6nT3
- /I6Q==
+ id 1iSUub-0000Fg-9s; Wed, 06 Nov 2019 23:40:30 +0000
+Received: by mail-oi1-f196.google.com with SMTP id k2so280076oij.12;
+ Wed, 06 Nov 2019 15:40:28 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=eTmvNusWN2c5MG6/BAIqeUf6hIHOhMcF2KJYDtbtvt8=;
- b=pYgN0pe6Flpcexe7lxu/x7cWwCR4WxU/HNPVitDN7su/drZZdzrG8K7+5KVzsvLDZt
- Ylhgk4UFRnV1PRuq1ASNB632LVbc/0Itoj0fU5eHdYUc17+1utxlmsxLcGaQRMJe2kSl
- N2hc9YctNoPu+VVHqhrbMPCUCK9jnUV2KCfv4a5sdaNDoDNHGmnUjX8oF1RybxcE28Mg
- +NzBvGVEHR7qm5P2WrbLgADYRBB8zCmTKIn0y0jmMukjIu0l1lguhM1B2px6Zb2s2D8X
- lXIO4ZlaXXK6/YOnDzH5Dmeq48MbudOhtZGVhhkye/B56Mi1G4jVKmBIWEfbw/EgF0Al
- Njpg==
-X-Gm-Message-State: APjAAAVR6KXHRwTSqs0cIyTb/SiPPMjXTaefvX1S6nCHFveoX3+cEwQw
- SdStTEoM8XLIeceqsqZaUSp/qt+bIFLQ2ZwJ4lOdwQ==
-X-Google-Smtp-Source: APXvYqyHPDXVunridE8njdx3JYwMYmzHl/72SZR5GTwewyAfNZD7ZXTP+VI3OOz5z37EYlrRoJTSjm4/xhly3AA6geo=
-X-Received: by 2002:a92:4596:: with SMTP id z22mr3427340ilj.75.1573055942733; 
- Wed, 06 Nov 2019 07:59:02 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=F9+XxF3bme0TDxNV87CvWxfYp74g7+cBn1OYi++I3PY=;
+ b=PsGBEOiHhwYSTAH3VkRKVU+NcXEpbRH6grnMYuRuvaZGOIA8sg8iJbuEneDj54S8NS
+ wuXdB9AwL/JUsRrQcIRWOzZ6mBgqiTmve1nuo7yw+f1vB8GlHiXHx7btCwRek+9fuajD
+ R58KQKfeqshYUaWS2Gr6lM5E5TMpKKzapjsUZB1HauF081nScsgLB0KP0BPK5mtmgONI
+ zLbsU0r7sjXDZSZ2XVPHlzGuYGSTnuGJys+j6Ps9/tfNrLV/6qU3HdZWQn1DCD+AdUq+
+ PlXNFeBm4c6wuohtoziYqlpnIO2TpwvOQ04V0KmNCaERNJ36rzzijAVCburSnHlKjssg
+ erIA==
+X-Gm-Message-State: APjAAAXlhRcuBdI7iZP+5hHNeMr0U8HOec5pHFMzTmEnZZ3895oiu2C0
+ FeupZvXG9JBphVBW5eWJ+g==
+X-Google-Smtp-Source: APXvYqySo4f8qKaS3Uh1xjvS4bwqGL+HLtxodI5d2sqmKN62Uk9p/GW8ZMzcEf/idpRcKBR9Z7JIMA==
+X-Received: by 2002:a05:6808:3b1:: with SMTP id
+ n17mr565821oie.50.1573083627798; 
+ Wed, 06 Nov 2019 15:40:27 -0800 (PST)
+Received: from localhost (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id u4sm140222otb.35.2019.11.06.15.40.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 06 Nov 2019 15:40:26 -0800 (PST)
+Date: Wed, 6 Nov 2019 17:40:20 -0600
+From: Rob Herring <robh@kernel.org>
+To: Chao Hao <chao.hao@mediatek.com>
+Subject: Re: [RESEND,PATCH 01/13] dt-bindings: mediatek: Add bindings for
+ MT6779
+Message-ID: <20191106234020.GA19463@bogus>
+References: <20191104115238.2394-1-chao.hao@mediatek.com>
+ <20191104115238.2394-2-chao.hao@mediatek.com>
 MIME-Version: 1.0
-References: <cover.1566845537.git.andrzej.p@collabora.com>
- <1e343b02195757bfbf60ca8999cadeb376db204e.1566845537.git.andrzej.p@collabora.com>
-In-Reply-To: <1e343b02195757bfbf60ca8999cadeb376db204e.1566845537.git.andrzej.p@collabora.com>
-From: Sean Paul <sean@poorly.run>
-Date: Wed, 6 Nov 2019 10:58:26 -0500
-Message-ID: <CAMavQKJhC==nDFFqCXK-J-VLdDkZHUCoSLe6KgALLSYR7kFDfw@mail.gmail.com>
-Subject: Re: [PATCH RESEND 07/14] drm/msm/hdmi: Provide ddc symlink in hdmi
- connector sysfs directory
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20191104115238.2394-2-chao.hao@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191106_075904_106056_B1872921 
-X-CRM114-Status: GOOD (  14.19  )
+X-CRM114-CacheID: sfid-20191106_154029_343511_E8604CE0 
+X-CRM114-Status: GOOD (  13.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,90 +86,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Sam Ravnborg <sam@ravnborg.org>, Neil Armstrong <narmstrong@baylibre.com>,
- David Airlie <airlied@linux.ie>, Ramalingam C <ramalingam.c@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Chris Wilson <chris@chris-wilson.co.uk>, Andrzej Hajda <a.hajda@samsung.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, kernel@collabora.com,
- Anthony Koo <Anthony.Koo@amd.com>,
- =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>,
- "David \(ChunMing\) Zhou" <David1.Zhou@amd.com>,
- Mario Kleiner <mario.kleiner.de@gmail.com>, linux-samsung-soc@vger.kernel.org,
- Joonyoung Shim <jy0922.shim@samsung.com>,
- Tomi Valkeinen <tomi.valkeinen@ti.com>, David Francis <David.Francis@amd.com>,
- Rob Clark <robdclark@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Kukjin Kim <kgene@kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>, CK Hu <ck.hu@mediatek.com>,
- Harry Wentland <harry.wentland@amd.com>, Uma Shankar <uma.shankar@intel.com>,
- Shashank Sharma <shashank.sharma@intel.com>,
- freedreno <freedreno@lists.freedesktop.org>, linux-tegra@vger.kernel.org,
- Philipp Zabel <p.zabel@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>,
- Leo Li <sunpeng.li@amd.com>, LKML <linux-kernel@vger.kernel.org>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>, Inki Dae <inki.dae@samsung.com>,
- Alexios Zavras <alexios.zavras@intel.com>,
- Mamta Shukla <mamtashukla555@gmail.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Jyri Sarha <jsarha@ti.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+Cc: Anan Sun <anan.sun@mediatek.com>, devicetree@vger.kernel.org,
+ Cui Zhang <cui.zhang@mediatek.com>, Jun Yan <jun.yan@mediatek.com>,
+ wsd_upstream@mediatek.com, Joerg Roedel <joro@8bytes.org>,
+ linux-kernel@vger.kernel.org, Chao Hao <chao.hao@mediatek.com>,
+ iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ Yong Wu <yong.wu@mediatek.com>, Miles Chen <miles.chen@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- Bhawanpreet Lakha <Bhawanpreet.Lakha@amd.com>,
- Allison Randal <allison@lohutok.net>, Jernej Skrabec <jernej.skrabec@siol.net>,
- amd-gfx list <amd-gfx@lists.freedesktop.org>, Eric Anholt <eric@anholt.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Seung-Woo Kim <sw0312.kim@samsung.com>, Sandy Huang <hjc@rock-chips.com>,
- Nicholas Kazlauskas <nicholas.kazlauskas@amd.com>,
- Todor Tomov <todor.tomov@linaro.org>,
- Kyungmin Park <kyungmin.park@samsung.com>, Daniel Vetter <daniel@ffwll.ch>,
- Alex Deucher <alexander.deucher@amd.com>, Shawn Guo <shawnguo@kernel.org>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
+ linux-arm-kernel@lists.infradead.org,
+ Guangming Cao <guangming.cao@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 26, 2019 at 3:27 PM Andrzej Pietrasiewicz
-<andrzej.p@collabora.com> wrote:
->
-> Use the ddc pointer provided by the generic connector.
->
-> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-> Acked-by: Sam Ravnborg <sam@ravnborg.org>
-> Reviewed-by: Emil Velikov <emil.velikov@collabora.com>
-
-Acked-by: Sean Paul <sean@poorly.run>
-
+On Mon, 4 Nov 2019 19:52:26 +0800, Chao Hao wrote:
+> This patch adds description for MT6779 IOMMU.
+> 
+> MT6779 has two iommus, they are MM_IOMMU and APU_IOMMU which
+> use ARM Short-Descriptor translation format.
+> 
+> The MT6779 IOMMU hardware diagram is as below, it is only a brief
+> diagram about iommu, it don't focus on the part of smi_larb, so
+> I don't describe the smi_larb detailedly.
+> 
+> 			     EMI
+> 			      |
+> 	   --------------------------------------
+> 	   |					|
+>         MM_IOMMU                            APU_IOMMU
+> 	   |					|
+>        SMI_COMMOM-----------		     APU_BUS
+>           |		   |			|
+>     SMI_LARB(0~11)  SMI_LARB12(FAKE)	    SMI_LARB13(FAKE)
+> 	  |		   |			|
+> 	  |		   |		   --------------
+> 	  |		   |		   |	 |	|
+>    Multimedia engine	  CCU		  VPU   MDLA   EMDA
+> 
+> All the connections are hardware fixed, software can not adjust it.
+> 
+> >From the diagram above, MM_IOMMU provides mapping for multimedia engine,
+> but CCU is connected with smi_common directly, we can take them as larb12.
+> APU_IOMMU provides mapping for APU engine, we can take them larb13.
+> Larb12 and Larb13 are fake larbs.
+> 
+> Signed-off-by: Chao Hao <chao.hao@mediatek.com>
 > ---
->  drivers/gpu/drm/msm/hdmi/hdmi_connector.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/gpu/drm/msm/hdmi/hdmi_connector.c b/drivers/gpu/drm/msm/hdmi/hdmi_connector.c
-> index 07b4cb877d82..1f03262b8a52 100644
-> --- a/drivers/gpu/drm/msm/hdmi/hdmi_connector.c
-> +++ b/drivers/gpu/drm/msm/hdmi/hdmi_connector.c
-> @@ -450,8 +450,10 @@ struct drm_connector *msm_hdmi_connector_init(struct hdmi *hdmi)
->
->         connector = &hdmi_connector->base;
->
-> -       drm_connector_init(hdmi->dev, connector, &hdmi_connector_funcs,
-> -                       DRM_MODE_CONNECTOR_HDMIA);
-> +       drm_connector_init_with_ddc(hdmi->dev, connector,
-> +                                   &hdmi_connector_funcs,
-> +                                   DRM_MODE_CONNECTOR_HDMIA,
-> +                                   hdmi->i2c);
->         drm_connector_helper_add(connector, &msm_hdmi_connector_helper_funcs);
->
->         connector->polled = DRM_CONNECTOR_POLL_CONNECT |
-> --
-> 2.17.1
->
+>  .../bindings/iommu/mediatek,iommu.txt         |   2 +
+>  include/dt-bindings/memory/mt6779-larb-port.h | 217 ++++++++++++++++++
+>  2 files changed, 219 insertions(+)
+>  create mode 100644 include/dt-bindings/memory/mt6779-larb-port.h
+> 
+
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
