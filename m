@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BC3DBC5DF62
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 09:55:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 58623C5DF62
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 10:00:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 82A8C217F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 09:55:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1452F2173B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 10:00:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="O2IEAMD0";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Tg0SL1FF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 82A8C217F5
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linuxfoundation.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KkrAVYSK";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ffwll.ch header.i=@ffwll.ch header.b="C+n82oQN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1452F2173B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -26,46 +26,75 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=btH9pph/R5tUyEhUYTiBDeuu4j4F4NTE76i0sI0yQ5U=; b=O2IEAMD01s+zzA
-	qaPRCFPugRdDy3GbALdbjHOGy7GUIc/2eHqHbhwHEIwVlU9TnluqdvtxKu9Rm4lFyLFq+zxV2ak2G
-	Zy1b0MiNn3gBhwp6FlgJraJ1+3HtxT93hAI1D3zlnPpEs1PE0HTg9kDObk/9uDDjeq8ciQBvb0aGu
-	cSTG+uA+qxCk5c61imOoowecQSU5aja+8yIHCbo+S1MWPGXGCCzw6iOehIH1mP160Hn+6275VsCmW
-	6T6I/KaY/77jQF5Pl0vXZLPr9KbOh2dw33W1hWfgyCz6759XH4bNVJ2bFkB3unCHFUEM6FbO1eQAe
-	rkFoGpH+6UY+dSPijssg==;
+	List-Owner; bh=NxiTEWA2G4KQOlaKSG0vMqwEbqq3xlMilq4Z0h9AhKQ=; b=KkrAVYSKxgiz7K
+	NDBFEjUukeK2YUPWz6/YFwc4GTX/ep+fO2mgoJtCt024TtRjdACxAEhWKVAtdFFc3Wq+nqBgP4zIr
+	NTJbmDsri59Yb6I7kT1JkAxdJ+5A3kUkcxFxNF0CvBW7SroPzvFeUV7ciLAVFhXCpPaveczdN/sO1
+	CfpyKKX8SUf3QEqamUdlhWf+UUPI5+Fdgdg0ZwVj8ckHzGgIKReDZ+ChVY4JJ20kJXuIr+N1g7pCK
+	Ry8nGjiQopoKEnXLiASnWt7gd+G4pxvq07sk0Rxy88PLe5hGnpxIhTKMV0CnT/0Jkz1HkFDYIQlxv
+	5gfqvMF/DhesF8KUKRpQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iSI2Z-0003Ta-0H; Wed, 06 Nov 2019 09:55:51 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1iSI7Q-00061I-QS; Wed, 06 Nov 2019 10:00:52 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iSI2V-0003TB-82; Wed, 06 Nov 2019 09:55:49 +0000
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 10014217F4;
- Wed,  6 Nov 2019 09:55:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1573034146;
- bh=xaZbHzfePiMvb/Ln+JmUUomfMT4M42nuBHK8lgpd5dI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Tg0SL1FF/Q/PJnmaDT0jGepMu2xlLaRBGFe+R79eyHM+uL335tGZKwi7AetWokqxO
- iEfj1qWrv7o8+64JMgI50wm5hd2axIt3wGqfYQDhtoZkIA4gGpb2Vau6tEvPz0xVU4
- Dcn7uS8XyVlkqEQKxOi25yl/M9wsRsSCUGkEF2Dw=
-Date: Wed, 6 Nov 2019 10:55:42 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH 16/28] media: siano: use usb_debugfs_create_dir() to
- create directory
-Message-ID: <20191106095542.GA2975502@kroah.com>
-References: <8cb137d5376b4e317dc22dcb9e81a1125b781f8f.1573008519.git.chunfeng.yun@mediatek.com>
- <591c5ca23fc0399ebd8a4bc2520bdabf07d9538c.1573008520.git.chunfeng.yun@mediatek.com>
+ id 1iSI6k-0004qc-6K
+ for linux-mediatek@lists.infradead.org; Wed, 06 Nov 2019 10:00:12 +0000
+Received: by mail-wm1-x344.google.com with SMTP id t26so2576913wmi.4
+ for <linux-mediatek@lists.infradead.org>; Wed, 06 Nov 2019 02:00:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
+ h=sender:date:from:to:cc:subject:message-id:mail-followup-to
+ :references:mime-version:content-disposition:in-reply-to:user-agent;
+ bh=zy+pSn3ZcoonGSv1GO7C8DvEXQpMaLJfKmRCgcy5jsg=;
+ b=C+n82oQNJFjenuv/DNJAgBzVrh8fyteQYuLVy1XYG0jKDYAL0O8OiwweQ2NLFw5+5Z
+ ZdIrd+/HVctvnEXkFTMOx5+k//af4trZVXXZxnubH7Vim5naTIuY8nLC3gKoBR3quozj
+ 8X7xb90cwVKttEgAQgiN9Nv/y8jr4IvUoqNeQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :mail-followup-to:references:mime-version:content-disposition
+ :in-reply-to:user-agent;
+ bh=zy+pSn3ZcoonGSv1GO7C8DvEXQpMaLJfKmRCgcy5jsg=;
+ b=Itl8290tbwiTFqmxmszJXNGdVuNPRRdTsmgBmJmIO6BMqzSd/mNh2tzy+IvrXk/F4Q
+ MLu8ST2kVEGTdenQ423sO0OlVt67uPm25h+1q20BgVVtFCVXK9weSB1pXRmBZ1ctu4gv
+ TAnt5jxz42Rivw0/LcHW5uRXN4sEnKqeRIGcccZ0nfxUVFFrbP2Smy8JyARaV8fI5E8Z
+ MVxGthHUzvosEeGL/8a0tQscT4FhglKWU/P9qAQPHkHhGW5ZWegZoIesqqfVeB2mfg2O
+ gzrqMPzrPqa07TQWg1bicQ8fxS6KGE8/bRXTPLrIuvjfuhebL3LlAHft8qwhemmzbqVc
+ i+sw==
+X-Gm-Message-State: APjAAAXLSfYny104NPjBOefZvCiChHVq3W0ByQDZ1edgPtFcvrhIODYG
+ HUI3lw03hQ1N+nrRLPwwOMMwsQ==
+X-Google-Smtp-Source: APXvYqyQxNqhhawsrrSWps1N79qhazCv6pc1zOL9i3tUA/WFWiss6Xh9eJvnifMvzvFih9IDJzCAvg==
+X-Received: by 2002:a7b:c305:: with SMTP id k5mr1740732wmj.90.1573034407343;
+ Wed, 06 Nov 2019 02:00:07 -0800 (PST)
+Received: from phenom.ffwll.local (212-51-149-96.fiber7.init7.net.
+ [212.51.149.96])
+ by smtp.gmail.com with ESMTPSA id c144sm2310805wmd.1.2019.11.06.02.00.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 06 Nov 2019 02:00:06 -0800 (PST)
+Date: Wed, 6 Nov 2019 11:00:04 +0100
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Subject: Re: [PATCH 1/1] drm/panel: boe-tv101wum-n16 seperate the panel power
+ control
+Message-ID: <20191106100004.GC23790@phenom.ffwll.local>
+Mail-Followup-To: Jitao Shi <jitao.shi@mediatek.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
+ yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
+ cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com,
+ ck.hu@mediatek.com, stonea168@163.com
+References: <20191106081752.12944-1-jitao.shi@mediatek.com>
+ <20191106081752.12944-2-jitao.shi@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <591c5ca23fc0399ebd8a4bc2520bdabf07d9538c.1573008520.git.chunfeng.yun@mediatek.com>
+In-Reply-To: <20191106081752.12944-2-jitao.shi@mediatek.com>
+X-Operating-System: Linux phenom 5.2.0-3-amd64 
 User-Agent: Mutt/1.12.2 (2019-09-21)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191106_015547_332246_A42F0F2C 
-X-CRM114-Status: GOOD (  17.64  )
+X-CRM114-CacheID: sfid-20191106_020010_295762_20553602 
+X-CRM114-Status: GOOD (  16.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,71 +106,179 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Peter Chen <Peter.Chen@nxp.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- Wolfram Sang <wsa@the-dreams.de>, Yangtao Li <tiny.windzz@gmail.com>,
- Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Mans Rullgard <mans@mansr.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Fabio Estevam <festevam@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Robert Jarzmik <robert.jarzmik@free.fr>, Kevin Cernekee <cernekee@gmail.com>,
- "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Alan Stern <stern@rowland.harvard.edu>, NXP Linux Team <linux-imx@nxp.com>,
- bcm-kernel-feedback-list@broadcom.com,
- David Kershner <david.kershner@unisys.com>,
- Hans Ulli Kroll <ulli.kroll@googlemail.com>,
- Cristian Birsan <cristian.birsan@microchip.com>, linux-media@vger.kernel.org,
- Fabrizio Castro <fabrizio.castro@bp.renesas.com>,
- Mathias Payer <mathias.payer@nebelwelt.net>,
- Mathias Nyman <mathias.nyman@intel.com>,
- Suzuki K Poulose <suzuki.poulose@arm.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Haojian Zhuang <haojian.zhuang@gmail.com>, Stephen Boyd <swboyd@chromium.org>,
- linux-mediatek@lists.infradead.org, Minas Harutyunyan <hminas@synopsys.com>,
- Simon Horman <horms+renesas@verge.net.au>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Bin Liu <b-liu@ti.com>,
- linux-arm-kernel@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>,
- Felipe Balbi <balbi@kernel.org>, Laurentiu Tudor <laurentiu.tudor@nxp.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- linux-usb@vger.kernel.org, Nicolas Ferre <nicolas.ferre@microchip.com>,
- Dmitry Torokhov <dtor@chromium.org>, Guenter Roeck <linux@roeck-us.net>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Colin Ian King <colin.king@canonical.com>, Shawn Guo <shawnguo@kernel.org>,
- Daniel Mack <daniel@zonque.org>
+Cc: bibby.hsieh@mediatek.com, srv_heupstream@mediatek.com,
+ David Airlie <airlied@linux.ie>, stonea168@163.com,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ cawa.cheng@mediatek.com, Thierry Reding <thierry.reding@gmail.com>,
+ linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ ck.hu@mediatek.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
+ Sam Ravnborg <sam@ravnborg.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 06, 2019 at 11:15:17AM +0800, Chunfeng Yun wrote:
-> The usb_debug_root is now a file-scope static variable, use
-> usb_debugfs_create_dir() to create directory under usb root
+On Wed, Nov 06, 2019 at 04:17:52PM +0800, Jitao Shi wrote:
+> Seperate the panel power control from prepare/unprepare.
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+
+Your patch series is all kinds of split up. Can you pls resend, with the
+entire thing all in one go?
+
+Thanks, Daniel
+
 > ---
->  drivers/media/common/siano/smsdvb-debugfs.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  .../gpu/drm/panel/panel-boe-tv101wum-nl6.c    | 69 +++++++++++++------
+>  1 file changed, 49 insertions(+), 20 deletions(-)
 > 
-> diff --git a/drivers/media/common/siano/smsdvb-debugfs.c b/drivers/media/common/siano/smsdvb-debugfs.c
-> index c95d4583498e..28c025e39a00 100644
-> --- a/drivers/media/common/siano/smsdvb-debugfs.c
-> +++ b/drivers/media/common/siano/smsdvb-debugfs.c
-> @@ -514,7 +514,7 @@ void smsdvb_debugfs_register(void)
->  	 * node for sdio-based boards, but this may need some logic at sdio
->  	 * subsystem.
->  	 */
-> -	d = debugfs_create_dir("smsdvb", usb_debug_root);
-> +	d = usb_debugfs_create_dir("smsdvb");
+> diff --git a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
+> index e2496a334ab6..5b1b285a2194 100644
+> --- a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
+> +++ b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
+> @@ -50,6 +50,7 @@ struct boe_panel {
+>  	struct regulator *avdd;
+>  	struct gpio_desc *enable_gpio;
+>  
+> +	bool prepared_power;
+>  	bool prepared;
+>  	bool enabled;
+>  
+> @@ -501,12 +502,11 @@ static int boe_panel_disable(struct drm_panel *panel)
+>  	return 0;
+>  }
+>  
+> -static int boe_panel_unprepare(struct drm_panel *panel)
+> +static int boe_panel_unprepare_power(struct drm_panel *panel)
+>  {
+>  	struct boe_panel *boe = to_boe_panel(panel);
+> -	int ret;
+>  
+> -	if (!boe->prepared)
+> +	if (!boe->prepared_power)
+>  		return 0;
+>  
+>  	if (boe->desc->discharge_on_disable) {
+> @@ -518,12 +518,6 @@ static int boe_panel_unprepare(struct drm_panel *panel)
+>  		usleep_range(5000, 7000);
+>  		regulator_disable(boe->pp1800);
+>  	} else {
+> -		ret = boe_panel_off(boe);
+> -		if (ret < 0) {
+> -			dev_err(panel->dev, "failed to set panel off: %d\n",
+> -				ret);
+> -			return ret;
+> -		}
+>  		msleep(150);
+>  		gpiod_set_value(boe->enable_gpio, 0);
+>  		usleep_range(500, 1000);
+> @@ -533,17 +527,39 @@ static int boe_panel_unprepare(struct drm_panel *panel)
+>  		regulator_disable(boe->pp1800);
+>  	}
+>  
+> +	boe->prepared_power = false;
+> +
+> +	return 0;
+> +}
+> +
+> +static int boe_panel_unprepare(struct drm_panel *panel)
+> +{
+> +	struct boe_panel *boe = to_boe_panel(panel);
+> +	int ret;
+> +
+> +	if (!boe->prepared)
+> +		return 0;
+> +
+> +	if (!boe->desc->discharge_on_disable) {
+> +		ret = boe_panel_off(boe);
+> +		if (ret < 0) {
+> +			dev_err(panel->dev, "failed to set panel off: %d\n",
+> +				ret);
+> +			return ret;
+> +		}
+> +	}
+> +
+>  	boe->prepared = false;
+>  
+>  	return 0;
+>  }
+>  
+> -static int boe_panel_prepare(struct drm_panel *panel)
+> +static int boe_panel_prepare_power(struct drm_panel *panel)
+>  {
+>  	struct boe_panel *boe = to_boe_panel(panel);
+>  	int ret;
+>  
+> -	if (boe->prepared)
+> +	if (boe->prepared_power)
+>  		return 0;
+>  
+>  	gpiod_set_value(boe->enable_gpio, 0);
+> @@ -571,18 +587,10 @@ static int boe_panel_prepare(struct drm_panel *panel)
+>  	gpiod_set_value(boe->enable_gpio, 1);
+>  	usleep_range(6000, 10000);
+>  
+> -	ret = boe_panel_init(boe);
+> -	if (ret < 0) {
+> -		dev_err(panel->dev, "failed to init panel: %d\n", ret);
+> -		goto poweroff;
+> -	}
+> -
+> -	boe->prepared = true;
+> +	boe->prepared_power = true;
+>  
+>  	return 0;
+>  
+> -poweroff:
+> -	regulator_disable(boe->avee);
+>  poweroffavdd:
+>  	regulator_disable(boe->avdd);
+>  poweroff1v8:
+> @@ -593,6 +601,25 @@ static int boe_panel_prepare(struct drm_panel *panel)
+>  	return ret;
+>  }
+>  
+> +static int boe_panel_prepare(struct drm_panel *panel)
+> +{
+> +	struct boe_panel *boe = to_boe_panel(panel);
+> +	int ret;
+> +
+> +	if (boe->prepared)
+> +		return 0;
+> +
+> +	ret = boe_panel_init(boe);
+> +	if (ret < 0) {
+> +		dev_err(panel->dev, "failed to init panel: %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	boe->prepared = true;
+> +
+> +	return 0;
+> +}
+> +
+>  static int boe_panel_enable(struct drm_panel *panel)
+>  {
+>  	struct boe_panel *boe = to_boe_panel(panel);
+> @@ -754,7 +781,9 @@ static int boe_panel_get_modes(struct drm_panel *panel)
+>  static const struct drm_panel_funcs boe_panel_funcs = {
+>  	.disable = boe_panel_disable,
+>  	.unprepare = boe_panel_unprepare,
+> +	.unprepare_power = boe_panel_unprepare_power,
+>  	.prepare = boe_panel_prepare,
+> +	.prepare_power = boe_panel_prepare_power,
+>  	.enable = boe_panel_enable,
+>  	.get_modes = boe_panel_get_modes,
+>  };
+> -- 
+> 2.21.0
+> 
 
-It is odd that a media driver is using the usb debugfs directory.
-Anyone know why that is?
-
-thanks,
-
-greg k-h
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
 _______________________________________________
 Linux-mediatek mailing list
