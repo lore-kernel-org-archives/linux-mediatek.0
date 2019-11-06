@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 805A6C5DF64
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 03:17:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5BDB7C5DF62
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 03:17:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 417222053B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 03:17:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1E2BF20717
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 03:17:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="m4oPSMlh"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 417222053B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RH08mS40"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1E2BF20717
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,48 +25,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KkOXhj4ECHmSGqjeoObcbGawLHzyWVWE4dskbALw7Zs=; b=m4oPSMlh91jWE6
-	hyIixcQc8wPTebQPOJxWU15bz34Np3OAKfihKoO9ZItZHfqrNtqrm2Z66vv064j4zzPRplyuNM2Oe
-	CrDsX6zxDTrkj9E1RcH7B8T5GOyyZRpGuoWHWii5U2vyycxzSyVOvseejd0z3/fWiHJ2g3oM0Fo+n
-	qMZImtjwhxN6ZCVS2q8nJWcCfgPwJbjs5pjSUbVnPia4ciH4UzePS2GZcnJGMqc1B4ZP40/Wx1G7E
-	tQrEKDSS0mhhN/3wk8v38bpsHn7Feo90ySYV0PvjlEj4qyc0q9yF7fw9HhEDO+8Cb3BFRNpPtRYLh
-	SYx9GHGZgmbk5+Qcnusg==;
+	List-Owner; bh=9ZGNay/1aDD8X3mWsUKG7+Ql8WhDppQeGQiqZ2SgwJA=; b=RH08mS40jlLgUS
+	1KsfHzo2knq/syo/f60L5jM51/qQhGZKYgZRMEdoaFWQQh2lVh9aIBmwL0d3Riho0RZXF3M4PuZQu
+	pJFd4zl3QNU693qvwl09gA1JD/+2lvtfNMi6epd2TU/cfZ9d0ndTBaZUUcfgn5Cg0cy++vc1GptaN
+	XmRlPT9GPK9txTJ3SpVqQhYlBUmiVHnKAEmw8UBTt1q1oJJPA2BH45AHHXN1owo42vlztb0B9jgyF
+	w0o7Krhsi2lnOIm+GLGNpKPQEnRu4xDkDhtdZ7523HzxF8fEMKJEp51sF+qFWB6Rht2sHIqJz44EK
+	l8h0pF8B08Z7wlqLmmig==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iSBoy-0000xI-Sj; Wed, 06 Nov 2019 03:17:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1iSBp0-00010L-P3; Wed, 06 Nov 2019 03:17:26 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iSBoq-0000ig-8r; Wed, 06 Nov 2019 03:17:19 +0000
-X-UUID: 1fec5e138ff5438a87403ea2df9f5a05-20191105
-X-UUID: 1fec5e138ff5438a87403ea2df9f5a05-20191105
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ id 1iSBov-0000r8-8E; Wed, 06 Nov 2019 03:17:22 +0000
+X-UUID: edea5763c44d459ead41fd3671ed6f5f-20191105
+X-UUID: edea5763c44d459ead41fd3671ed6f5f-20191105
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1330095547; Tue, 05 Nov 2019 19:17:09 -0800
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 5 Nov 2019 19:17:11 -0800
+ with ESMTP id 329552691; Tue, 05 Nov 2019 19:17:12 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 5 Nov 2019 19:17:13 -0800
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkexhb01.mediatek.inc (172.21.101.102) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 6 Nov 2019 11:17:09 +0800
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 6 Nov 2019 11:17:12 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 6 Nov 2019 11:17:06 +0800
+ Transport; Wed, 6 Nov 2019 11:17:09 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi
  <balbi@kernel.org>
-Subject: [PATCH 24/28] usb: gadget: atmel: create debugfs directory under usb
- root
-Date: Wed, 6 Nov 2019 11:15:25 +0800
-Message-ID: <c4d842db5bf92ff92933dd87e88d736ceeae07af.1573008520.git.chunfeng.yun@mediatek.com>
+Subject: [PATCH 25/28] usb: gadget: udc: renesas_usb3: create debugfs
+ directory under usb root
+Date: Wed, 6 Nov 2019 11:15:26 +0800
+Message-ID: <2451010e59a9f09fd9e12be5a195ebe1a7a9d630.1573008520.git.chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <8cb137d5376b4e317dc22dcb9e81a1125b781f8f.1573008519.git.chunfeng.yun@mediatek.com>
 References: <8cb137d5376b4e317dc22dcb9e81a1125b781f8f.1573008519.git.chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191105_191716_317883_801A9862 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20191105_191721_312200_6C052E4D 
+X-CRM114-Status: GOOD (  14.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -124,22 +124,22 @@ the root of usb
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/gadget/udc/atmel_usba_udc.c | 2 +-
+ drivers/usb/gadget/udc/renesas_usb3.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/usb/gadget/udc/atmel_usba_udc.c b/drivers/usb/gadget/udc/atmel_usba_udc.c
-index 86ffc8307864..43618833e0f6 100644
---- a/drivers/usb/gadget/udc/atmel_usba_udc.c
-+++ b/drivers/usb/gadget/udc/atmel_usba_udc.c
-@@ -226,7 +226,7 @@ static void usba_init_debugfs(struct usba_udc *udc)
- 	struct dentry *root;
- 	struct resource *regs_resource;
+diff --git a/drivers/usb/gadget/udc/renesas_usb3.c b/drivers/usb/gadget/udc/renesas_usb3.c
+index e098f16c01cb..b1e113923f4b 100644
+--- a/drivers/usb/gadget/udc/renesas_usb3.c
++++ b/drivers/usb/gadget/udc/renesas_usb3.c
+@@ -2535,7 +2535,7 @@ static const struct file_operations renesas_usb3_b_device_fops = {
+ static void renesas_usb3_debugfs_init(struct renesas_usb3 *usb3,
+ 				      struct device *dev)
+ {
+-	usb3->dentry = debugfs_create_dir(dev_name(dev), NULL);
++	usb3->dentry = usb_debugfs_create_dir(dev_name(dev));
  
--	root = debugfs_create_dir(udc->gadget.name, NULL);
-+	root = debugfs_create_dir(udc->gadget.name);
- 	udc->debugfs_root = root;
- 
- 	regs_resource = platform_get_resource(udc->pdev, IORESOURCE_MEM,
+ 	debugfs_create_file("b_device", 0644, usb3->dentry, usb3,
+ 			    &renesas_usb3_b_device_fops);
 -- 
 2.23.0
 
