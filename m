@@ -2,100 +2,93 @@ Return-Path: <SRS0=ljL/=Y6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E2A7C5DF62
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 13:29:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 467E8C5DF63
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 14:00:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 67DD621929
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 13:29:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0CA3C2178F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 14:00:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="O2KwkzhD";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="GmREb2gA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 67DD621929
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="i1korlVh";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="qZvh2RbZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0CA3C2178F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=QeOOrBIfLVRXL3M9eC1Av1MAmymRtlXYNkqAxQG6gWA=; b=O2KwkzhDLHIIwcahqUO2QFmC4P
-	tA6swmP6NDeZRJQH4eSmK4e41lmKNxjpl/hrfWA2tFQt/OFdbVdSaalcbUw8fWh/ZSEmUw0TDv7yP
-	VHHGjSzBW+/XoKGJZUIHkC70A7PnMWxKn+1igRiMUWXYDUwXJIyRpp+o5dgWqU4o0tYW1VZOowK8J
-	XB7CsRAdzQsn9Y6cvLOAUIjtTwrKwPYICQFHJWs+/CNv6hZpoVND2cuBcq4AtLnqM/abaA3drrGW/
-	mR7i3ZJrbyjVkdae5n0pdO56YbXMYMiOV8Xpcn9jqNsHj8vWtmcKPgYSzqKx6rafpXJSH8Zoe8lMq
-	gFGkzvog==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=mjBdaXlpk/hy9i9mEoqqJCxzWlraSoPEw/Bk2oAxfeM=; b=i1korlVh4kg02acD9C6Z0FrSE
+	Rk6CKWEbUA8ZwttSpqPnD4P4jXhNX1J0z2QmNxMJnBMHkikU7A4jDqeKhVRqb4DC+enZt5GgI3OtV
+	zqS/2FOZmIgy9Mwvcp7OOQ4NPQYBj1bYgS+CCRXsXeDi36+/Ra3hGzvBwLLckX/Wl63WgruyHIUlU
+	C/RpaABbyHQaW8+W189KjPYpOd3DYSJBAMWh0KH6fKWFjG6wXVuPzyvfLmY0LXhMX/3/ukDY2BJ2w
+	l9/ft9J8fSXB0oHGWDaRupUr8CxV/3Alec7+HjiQmt75QWQnSy1nBMWFaPbzdAWU7dNmirBc0o9pF
+	eIjIFf5uw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iSLNB-0003vH-IO; Wed, 06 Nov 2019 13:29:21 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1iSLrB-00025P-FU; Wed, 06 Nov 2019 14:00:21 +0000
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iSLMq-0003Zw-Ig
- for linux-mediatek@lists.infradead.org; Wed, 06 Nov 2019 13:29:02 +0000
-Received: by mail-pg1-x541.google.com with SMTP id 15so17145337pgt.7
- for <linux-mediatek@lists.infradead.org>; Wed, 06 Nov 2019 05:29:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :in-reply-to:references;
- bh=2JC2BSAON2aTYfWnY286zBqdcBgF1dUkhFpgqH52P8A=;
- b=GmREb2gAFzVBw1JzE2epBfRKDBD9/8BHb4WsdWVr5lOtzpidmIw5GF3ZoJMBmiR2Lc
- hkiJAEHW0blLAPRX292U+12+AsV/FjNwUbuecXH9XavsxZR5ZGdmfy8qUOiga8JBaCHQ
- rCdQcLyLGFupMzXBlQpqtMxOpCb8qylIQELk0s8wrkVmGkfF79umn2K6WDk4xLVOpiLI
- 5RJyH9RUJzoadMkubpIwpy0T4PfwtaRawxNZF/W2TAMXRAOFzifYXQJu6tRRIoAW2IM2
- ZhYtAHd6FSX09lWSsG6PADFFgZ4VKpmYAIPfmwW7hzVEJ1wgNQYi8uk7j2YsIzi3VNI/
- dNYw==
+ id 1iSLr8-00024j-4K; Wed, 06 Nov 2019 14:00:20 +0000
+Received: by mail-pg1-x543.google.com with SMTP id k13so5883451pgh.3;
+ Wed, 06 Nov 2019 06:00:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=UvEQPlgNntu5xDhWWjdGG8aF5fTT2jE/Ghs/m5Amugo=;
+ b=qZvh2RbZGAn0/40waTQ4dfxuNE2rYbIBbRHIL4Uc7IJeUiEewlhsPV7+h2dIwb1bZD
+ qXSudTfgp9hGjKnAhe0AneetDCIOAEUXEX+fIRk9YF1cyshj++yfPzJ2qW0+qkZGSluG
+ xX27scD1R7gSNT5EWQsaN3BzAg0bKfaUG9lA/qewlnGVNcwclfiiD5yNuSJeJSNFch37
+ zF9FHFKaccF8hnxR2+IOKOEB3CB5439KHZGRMknhqcARYQQrRSiJ9K4fnEa0MrI4NBXB
+ r4h5RLJyaggEvue7EnsvKPvjh/ApmQIUC6ncc49KcrLwLyQJ36BoC9oGspY1qD9TKgho
+ V9NQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:in-reply-to:references;
- bh=2JC2BSAON2aTYfWnY286zBqdcBgF1dUkhFpgqH52P8A=;
- b=OJNUqwBpHw36N7KEf/TyHpHqjcRceJQWzxlRdiXbQb1krVaY+mqfsCY/u17mVjtv3O
- MHbTId+QV/gB77qRiBhXdyfrh5NL3ReXQPKIZMRlYzDEPg2YCgCcdsjCxo4y3ZaHyGhf
- 5xdxpPEgTBMM3XiStq3f7uOgWIOb/HerqEzk+qRMIZdKXgX05GoSK14n6WynatmWI+Ld
- TN4JqRjIYVChlhgIIy9RI/OgACwofF8ACltUQGiZu9Q9qIjK4rvI+Ml83TL6jI2W/ges
- V4YzaMbTKFDPi+8yxRFRWbR68Vyjig9G9iFd7SJ/g2LD4w4sImEMoGsg0xwPBAR7rt7g
- F9XA==
-X-Gm-Message-State: APjAAAU8b32GfJF/otil2DCw6YfgzwL4qmRQ/4CaWXp24yPV8hNdirCL
- /qiggj7xWn+Gx0hDCpJASG1YHQ==
-X-Google-Smtp-Source: APXvYqzT7yY171Uj3lkOCncUrwz2j9jISfZ79+XTPrykw/o8bUa0kJNh8nso8pz12NOQBzd7gSDYaw==
-X-Received: by 2002:aa7:9192:: with SMTP id x18mr3340660pfa.229.1573046939554; 
- Wed, 06 Nov 2019 05:28:59 -0800 (PST)
-Received: from localhost ([49.248.202.230])
- by smtp.gmail.com with ESMTPSA id q8sm20785909pgg.15.2019.11.06.05.28.58
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 06 Nov 2019 05:28:59 -0800 (PST)
-From: Amit Kucheria <amit.kucheria@linaro.org>
-To: linux-kernel@vger.kernel.org, edubezval@gmail.com,
- Amit Daniel Kachhap <amit.kachhap@gmail.com>,
- Amit Kucheria <amit.kucheria@verdurent.com>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Guillaume La Roque <glaroque@baylibre.com>,
- Heiko Stuebner <heiko@sntech.de>, Javi Merino <javi.merino@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>, Jun Nie <jun.nie@linaro.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Viresh Kumar <viresh.kumar@linaro.org>, Zhang Rui <rui.zhang@intel.com>
-Subject: [PATCH 06/11] thermal: mediatek: Appease the kernel-doc deity
-Date: Wed,  6 Nov 2019 18:58:22 +0530
-Message-Id: <2961e4ac4b32ea7db8b5f6916751a5c02ee85960.1573046440.git.amit.kucheria@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <cover.1573046440.git.amit.kucheria@linaro.org>
-References: <cover.1573046440.git.amit.kucheria@linaro.org>
-In-Reply-To: <cover.1573046440.git.amit.kucheria@linaro.org>
-References: <cover.1573046440.git.amit.kucheria@linaro.org>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=UvEQPlgNntu5xDhWWjdGG8aF5fTT2jE/Ghs/m5Amugo=;
+ b=BkjbcMYajIasa11xrzZifsWForE7YIdlG3c7ji3eYFyhwji/rajp0UXRWZNdhlS4yu
+ 50W9aSYnT183c0LGx1svuIYe8qRpmZAQrYMPGmNiLC86skjm0cWJidy43ycbBfBeVTO9
+ OtdKjtSejmrZEC2NeIMM5l+gmjTlsQwb3pm+CERpZ93JfvMsYo/u33Y5NEQXSJkul+hf
+ 2hUIgwVqOkWMdigMX3pcJZz5JNbupBGb9UDvPuskYyaxA2tUUcNHS3f5VwhuUDHhusoX
+ ogMZXEWzweZGZppl91EPNkuZFzjhWpLWFs6vrfGW7DBT4W+BaiN/kghDzcPyOjh3C8yP
+ YoHw==
+X-Gm-Message-State: APjAAAXnJraOAqjRWbwINuzR9SANLQ29vUZbdabCcSK9CB87/aYBqVPI
+ RHfXpdKXNl7tng2sSsgIowkaD1eHoS8=
+X-Google-Smtp-Source: APXvYqwCinmIq97PqdsCPhkzjdzmlKDIdyL7ey1C1o7R7J3ia74aVuhihRKyUAYx7O1NUr1GDI0WCg==
+X-Received: by 2002:a62:1514:: with SMTP id 20mr3482112pfv.217.1573048817095; 
+ Wed, 06 Nov 2019 06:00:17 -0800 (PST)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ w11sm18360031pgp.28.2019.11.06.06.00.13
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 06 Nov 2019 06:00:16 -0800 (PST)
+Subject: Re: [PATCH 01/28] usb: common: change usb_debug_root as static
+ variable
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+References: <8cb137d5376b4e317dc22dcb9e81a1125b781f8f.1573008519.git.chunfeng.yun@mediatek.com>
+ <79fd2ebd-b8c6-ee00-c71e-782475a20de6@roeck-us.net>
+ <1573031491.18464.70.camel@mhfsdcap03>
+From: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <2e793636-04a6-8589-b4a5-259f79a5ea02@roeck-us.net>
+Date: Wed, 6 Nov 2019 06:00:11 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
+MIME-Version: 1.0
+In-Reply-To: <1573031491.18464.70.camel@mhfsdcap03>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191106_052900_656016_5ABFE61E 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20191106_060018_172565_672D3932 
+X-CRM114-Status: GOOD (  21.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,101 +100,92 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-pm@vger.kernel.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Cc: Peter Chen <Peter.Chen@nxp.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ Wolfram Sang <wsa@the-dreams.de>, Yangtao Li <tiny.windzz@gmail.com>,
+ Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Mans Rullgard <mans@mansr.com>,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Fabio Estevam <festevam@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ Robert Jarzmik <robert.jarzmik@free.fr>, Kevin Cernekee <cernekee@gmail.com>,
+ "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Alan Stern <stern@rowland.harvard.edu>, NXP Linux Team <linux-imx@nxp.com>,
+ bcm-kernel-feedback-list@broadcom.com,
+ David Kershner <david.kershner@unisys.com>,
+ Hans Ulli Kroll <ulli.kroll@googlemail.com>,
+ Cristian Birsan <cristian.birsan@microchip.com>, linux-media@vger.kernel.org,
+ Fabrizio Castro <fabrizio.castro@bp.renesas.com>,
+ Mathias Payer <mathias.payer@nebelwelt.net>,
+ Mathias Nyman <mathias.nyman@intel.com>,
+ Suzuki K Poulose <suzuki.poulose@arm.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Haojian Zhuang <haojian.zhuang@gmail.com>, Stephen Boyd <swboyd@chromium.org>,
+ linux-mediatek@lists.infradead.org, Minas Harutyunyan <hminas@synopsys.com>,
+ Simon Horman <horms+renesas@verge.net.au>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Bin Liu <b-liu@ti.com>,
+ linux-arm-kernel@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>,
+ Felipe Balbi <balbi@kernel.org>, Laurentiu Tudor <laurentiu.tudor@nxp.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ linux-usb@vger.kernel.org, Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Dmitry Torokhov <dtor@chromium.org>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Colin Ian King <colin.king@canonical.com>, Shawn Guo <shawnguo@kernel.org>,
+ Daniel Mack <daniel@zonque.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace a comment starting with /** by simply /* to avoid having it
-interpreted as a kernel-doc comment. Describe missing function
-parameters where needed.
+On 11/6/19 1:11 AM, Chunfeng Yun wrote:
+> On Tue, 2019-11-05 at 20:03 -0800, Guenter Roeck wrote:
+>> On 11/5/19 7:15 PM, Chunfeng Yun wrote:
+>>> Try to avoid using extern global variable, and provide two
+>>> functions for the usage cases
+>>>
+>>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+>>> ---
+>>>    drivers/usb/common/common.c | 16 ++++++++++++++--
+>>>    include/linux/usb.h         |  5 ++++-
+>>>    2 files changed, 18 insertions(+), 3 deletions(-)
+>>>
+>>> diff --git a/drivers/usb/common/common.c b/drivers/usb/common/common.c
+>>> index 1433260d99b4..639ee6d243a2 100644
+>>> --- a/drivers/usb/common/common.c
+>>> +++ b/drivers/usb/common/common.c
+>>> @@ -293,8 +293,20 @@ struct device *usb_of_get_companion_dev(struct device *dev)
+>>>    EXPORT_SYMBOL_GPL(usb_of_get_companion_dev);
+>>>    #endif
+>>>    
+>>> -struct dentry *usb_debug_root;
+>>> -EXPORT_SYMBOL_GPL(usb_debug_root);
+>>> +static struct dentry *usb_debug_root;
+>>> +
+>>
+>> I don't think it is a good idea to declare this variable static
+>> before all its uses are removed. This patch will leave the system
+>> in a non-compileable state until all patches of the series have
+>> been applied.
+> Yes, you are right, I'll fix it, may be split into two patch
+> 
+>>
+>> I am curious. What is the rationale for this change ?
+>> Did exported variables run out of favor ?
+> Personally, I think it's good practice to avoid global varibale,
+> it may not a good reason.
 
-Fixes up the following warnings when compiled with make W=1:
+Personally I don't think it is a good reason at all. When you are done,
+someone else may come in and declare the opposite, re-introduce the global
+variable, and drop the new functions as unnecessary.
 
-linux.git/drivers/thermal/mtk_thermal.c:374: warning: cannot understand
-function prototype: 'const struct mtk_thermal_data mt8173_thermal_data =
-'
-linux.git/drivers/thermal/mtk_thermal.c:413: warning: cannot understand
-function prototype: 'const struct mtk_thermal_data mt2701_thermal_data =
-'
-linux.git/drivers/thermal/mtk_thermal.c:443: warning: cannot understand
-function prototype: 'const struct mtk_thermal_data mt2712_thermal_data =
-'
-linux.git/drivers/thermal/mtk_thermal.c:499: warning: cannot understand
-function prototype: 'const struct mtk_thermal_data mt8183_thermal_data =
-'
-linux.git/drivers/thermal/mtk_thermal.c:529: warning: Function parameter
-or member 'sensno' not described in 'raw_to_mcelsius'
+This is ok for new code, but I think we should leave existing code alone
+unless it is broken and needs to get fixed. This is not the case here.
 
-Signed-off-by: Amit Kucheria <amit.kucheria@linaro.org>
----
- drivers/thermal/mtk_thermal.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-index acf4854cbb8b8..76e30603d4d58 100644
---- a/drivers/thermal/mtk_thermal.c
-+++ b/drivers/thermal/mtk_thermal.c
-@@ -358,7 +358,7 @@ static const int mt7622_mux_values[MT7622_NUM_SENSORS] = { 0, };
- static const int mt7622_vts_index[MT7622_NUM_SENSORS] = { VTS1 };
- static const int mt7622_tc_offset[MT7622_NUM_CONTROLLER] = { 0x0, };
- 
--/**
-+/*
-  * The MT8173 thermal controller has four banks. Each bank can read up to
-  * four temperature sensors simultaneously. The MT8173 has a total of 5
-  * temperature sensors. We use each bank to measure a certain area of the
-@@ -400,7 +400,7 @@ static const struct mtk_thermal_data mt8173_thermal_data = {
- 	.sensor_mux_values = mt8173_mux_values,
- };
- 
--/**
-+/*
-  * The MT2701 thermal controller has one bank, which can read up to
-  * three temperature sensors simultaneously. The MT2701 has a total of 3
-  * temperature sensors.
-@@ -430,7 +430,7 @@ static const struct mtk_thermal_data mt2701_thermal_data = {
- 	.sensor_mux_values = mt2701_mux_values,
- };
- 
--/**
-+/*
-  * The MT2712 thermal controller has one bank, which can read up to
-  * four temperature sensors simultaneously. The MT2712 has a total of 4
-  * temperature sensors.
-@@ -484,7 +484,7 @@ static const struct mtk_thermal_data mt7622_thermal_data = {
- 	.sensor_mux_values = mt7622_mux_values,
- };
- 
--/**
-+/*
-  * The MT8183 thermal controller has one bank for the current SW framework.
-  * The MT8183 has a total of 6 temperature sensors.
-  * There are two thermal controller to control the six sensor.
-@@ -495,7 +495,6 @@ static const struct mtk_thermal_data mt7622_thermal_data = {
-  * data, and this indeed needs the temperatures of the individual banks
-  * for making better decisions.
-  */
--
- static const struct mtk_thermal_data mt8183_thermal_data = {
- 	.auxadc_channel = MT8183_TEMP_AUXADC_CHANNEL,
- 	.num_banks = MT8183_NUM_SENSORS_PER_ZONE,
-@@ -519,7 +518,8 @@ static const struct mtk_thermal_data mt8183_thermal_data = {
- 
- /**
-  * raw_to_mcelsius - convert a raw ADC value to mcelsius
-- * @mt:		The thermal controller
-+ * @mt:	The thermal controller
-+ * @sensno:	sensor number
-  * @raw:	raw ADC value
-  *
-  * This converts the raw ADC value to mcelsius using the SoC specific
--- 
-2.17.1
-
+Thanks,
+Guenter
 
 _______________________________________________
 Linux-mediatek mailing list
