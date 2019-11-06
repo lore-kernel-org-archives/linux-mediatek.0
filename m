@@ -2,71 +2,83 @@ Return-Path: <SRS0=ljL/=Y6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A50CEC5DF63
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 14:25:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C5CDBC5DF63
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 14:43:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6F5F42173E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 14:25:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 90A8C217F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 Nov 2019 14:43:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bXUxzuSq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6F5F42173E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lA4sp6br";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=poorly.run header.i=@poorly.run header.b="DJ7GRoQw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 90A8C217F5
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=poorly.run
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZZ+iRvoSlI+M0BiNaEJrAFYUoUUXW7nv1rs9bCaMMk8=; b=bXUxzuSq8b2nMk
-	YG9tBESFaqdkHV6D0H0M1pZeIazVpeIU2G23LR6YeYVl7ebI5GVy1OpRngXMyMzFe5KkfiWjjHMeK
-	nnPGrNuC5XlC3+dcOLL+MAK+FcGYvrgxs2GkY8hmr+G0WOIBfMVWDZU27ZvnGKWkstFE6H6M19KZ0
-	uX1+5vcuPyF5NfNdWk/7E91zHTkHCzSm72gU411xjSqGhLlYEGcBNOvDyQrPTyYCKF/N8KTAnDqqb
-	aeNzAjx9IcjdrvkqxiVO6rpdeFjGKeAYEMR50AS5Fgsq4SesiqiY3GeJrdCjfvfzBDB6uokBAOjVF
-	Vx42TqXBChA0VTemsJRQ==;
+	List-Owner; bh=WsszsK/Ql6wJ/dNGzfGe8zQlhtFpwAAWDHZvfwlifgM=; b=lA4sp6brD1ECZX
+	72Q1mFPjhHGQM5F2lqTTR3tDWURqwKs8WmAvv7Y+beHtUD8kKaTlQV+4ESnPFKRtptcYZW1mT2huz
+	wGjSWwjDa4TjiHP/AiLXeF6Rnb4x2+W4gCwJVc8y+tSRY91jWGC9b0CO4wRtFGfYgjDBudr8DNbRz
+	2y2zyGWHnDw5VB9ICwrtnCWgs6hNNm4Lr1f2uCYdRxRHxoyOuFG0opkrYE1DzAxnXnl3mP+Ea8GAn
+	7/tBYsJB4rVKvkjbwfAOPh3OM+jOKaEqJ3nLJspoVmD8joTJtBtS1ybzm/d+RnduJijw/K2BayukR
+	T/f1Dp71Sz2sIjOeDu7w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iSMFt-00011q-E0; Wed, 06 Nov 2019 14:25:53 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1iSMWc-0007Sj-19; Wed, 06 Nov 2019 14:43:10 +0000
+Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iSMFb-0000hZ-5w; Wed, 06 Nov 2019 14:25:38 +0000
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 06 Nov 2019 06:25:33 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.68,275,1569308400"; d="scan'208";a="227499194"
-Received: from grand-mobl.ger.corp.intel.com (HELO kekkonen.fi.intel.com)
- ([10.249.41.248])
- by fmsmga004.fm.intel.com with ESMTP; 06 Nov 2019 06:25:29 -0800
-Received: by kekkonen.fi.intel.com (Postfix, from userid 1000)
- id 1007721E7B; Wed,  6 Nov 2019 16:22:03 +0200 (EET)
-Date: Wed, 6 Nov 2019 16:22:02 +0200
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: Re: [V2, 2/2] media: i2c: Add more sensor modes for ov8856 camera
- sensor
-Message-ID: <20191106142202.GC16056@kekkonen.localdomain>
-References: <20190910130446.26413-1-dongchun.zhu@mediatek.com>
- <20190910130446.26413-3-dongchun.zhu@mediatek.com>
- <20190913075528.GL5781@paasikivi.fi.intel.com>
- <1572440528.21623.270.camel@mhfsdcap03>
+ id 1iSMWZ-0007Rq-Ls
+ for linux-mediatek@lists.infradead.org; Wed, 06 Nov 2019 14:43:09 +0000
+Received: by mail-il1-x141.google.com with SMTP id z12so10025749ilp.2
+ for <linux-mediatek@lists.infradead.org>; Wed, 06 Nov 2019 06:43:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=poorly.run; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=UgbtTe5dfKDfjSAPPMs/EABl+5bwJ2fJ35WEQgISza0=;
+ b=DJ7GRoQwtoJVvxh25wjbOVxrGXKnOfZUfCfrccd998QNYDbeEbmI9jR+5Yf1CUA4MI
+ U91L4xMXytJAtCx+r6/SK7Wc7mC5bpryeamAr+BD28yJ/ss41ilPO0FBhsBdc8NNwHTO
+ pI6ajBoiiX1590yszT2CLjXcxRFL1BcAEK09Wr/xHZphiCaetD8mNRraZB0dInanLbeJ
+ 7EzcAgk3/SvyIkRdH+o0e93JbZzUC0KgRFYNXsQmNZUC3dr85fE5jSgX+rrKafPlo2qG
+ beuQ/XbnZb8Rmo2s3OpSGsIBVGMvdCnCJgt7toEGxv518Hqq+sC7Avs9oZ3aZpaRDC/I
+ rzEw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=UgbtTe5dfKDfjSAPPMs/EABl+5bwJ2fJ35WEQgISza0=;
+ b=W/+Hdt5odi9oCr4Ju2Yu9kygws/SHjxIAy7GdNwCLYxnptOh/Y+2i64XfRHf2ZTOuj
+ MWaXU75rIt4e9hMilFEqjPyArEZFyr1YSQQd2B328cjh4UzQJy7KlswclWQIfJZWogt0
+ COvOtI4IsjkwB1SYNR60TSSsDnHWZYNm3VEobudXWyBnahK7E5vYbY7hcnCa1HjKElg/
+ NX5GIT8gkB5izp1T9Ei4E9W4pNw3RMvxDbtdQmqea4YrtYdRHTUFVNuA0h+3045S+E6Q
+ 3MbSM7bzTBvuodPyMV2fPw2FBCsYmf3LZ9RiPIEihSXxxz25vJDWV/f99KaObqU/LFXl
+ zz2g==
+X-Gm-Message-State: APjAAAXZfkEQFut3MsFXhbBBR1TVf7jplxLz0NBMTgZtGxU9zafsAjzA
+ hxB7WwVjiPQDArKOr8yfOJG7Pvsu4ZbH89JBHwulmA==
+X-Google-Smtp-Source: APXvYqxrvorcUxqto/zT7qnrJ74yhghH4wbgzwgyazlJSpgoqiDGrdIhp+fcXb3osgPdsezRxHND7qjelFPlg9cKvkY=
+X-Received: by 2002:a92:c152:: with SMTP id b18mr3052785ilh.71.1573051386198; 
+ Wed, 06 Nov 2019 06:43:06 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1572440528.21623.270.camel@mhfsdcap03>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20191105211034.123937-1-sean@poorly.run>
+ <20191105211034.123937-8-sean@poorly.run>
+ <1573031243.15410.2.camel@mtksdaap41>
+In-Reply-To: <1573031243.15410.2.camel@mtksdaap41>
+From: Sean Paul <sean@poorly.run>
+Date: Wed, 6 Nov 2019 09:42:30 -0500
+Message-ID: <CAMavQKJ+_+fytidjp4WvMwSrytJO_aU+57a54h1ACAqPHp3e7A@mail.gmail.com>
+Subject: Re: [PATCH v2 7/7] drm/mediatek: Support 180 degree rotation
+To: CK Hu <ck.hu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191106_062535_277519_C43CE161 
-X-CRM114-Status: GOOD (  30.82  )
+X-CRM114-CacheID: sfid-20191106_064307_779302_CBD753CC 
+X-CRM114-Status: GOOD (  18.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,358 +90,77 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, drinkcat@chromium.org,
- andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org, shengnan.wang@mediatek.com, tfiga@chromium.org,
- louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: Daniele Castagna <dcastagna@chromium.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Miguel Casas <mcasas@chromium.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <seanpaul@chromium.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ Mark Yacoub <markyacoub@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dongchun,
+On Wed, Nov 6, 2019 at 4:07 AM CK Hu <ck.hu@mediatek.com> wrote:
+>
+> Hi, Sean:
+>
+> On Tue, 2019-11-05 at 16:10 -0500, Sean Paul wrote:
+> > From: Sean Paul <seanpaul@chromium.org>
+> >
+> > Now that we support both reflections, we can expose 180 degree rotation
+> > and rely on the simplify routine to convert that into REFLECT_X |
+> > REFLECT_Y
+> >
+>
+> Patch 1 ~ 6 of this series looks good to me.
+> For this one, I think the rotation check in mtk_ovl_layer_check() should
+> be modified.
+>
 
-On Wed, Oct 30, 2019 at 09:02:08PM +0800, Dongchun Zhu wrote:
+Thanks for the quick reviews, CK!
 
-...
+In what way would you like the check to be modified? I'm guessing
+you're asking that I add it to the bitmask passed to the
+simplify_rotation function?
 
-> > > @@ -548,6 +986,18 @@ static const struct ov8856_mode supported_modes[] = {
-> > >  		.link_freq_index = OV8856_LINK_FREQ_720MBPS,
-> > >  	},
-> > >  	{
-> > > +		.width    = 3264,
-> > > +		.height   = 2448,
-> > > +		.hts      = 1932,
-> > > +		.vts_def  = 2482,
-> > > +		.vts_min  = 2482,
-> > > +		.reg_list = {
-> > > +			.num_of_regs = ARRAY_SIZE(mode_3264x2448_regs),
-> > > +			.regs = mode_3264x2448_regs,
-> > > +		},
-> > > +		.link_freq_index = OV8856_LINK_FREQ_720MBPS,
-> > > +	},
-> > 
-> > How do you guarantee that the modes are only used on the xvclk frequency
-> > they're intended for?
-> > 
-> > I think it'd be best if you added the new modes in a separete patch.
-> > 
-> 
-> In a separate patch?
+If that's the case, we don't actually want to modify the
+simplify_rotation bitmask since that bitmask is supposed to be only
+the rotations that the hardware can achieve. So if you pass ROTATE_180
+into simplify_rotation, it will return REFLECT_X | REFLECT_Y, which is
+what we want. Does that make sense, or am I missing something?
 
-Yes, please create a new patch that only adds these modes.
+Thanks,
 
-...
+Sean
 
-> > > @@ -696,6 +1170,25 @@ static int ov8856_test_pattern(struct ov8856 *ov8856, u32 pattern)
-> > >  				OV8856_REG_VALUE_08BIT, pattern);
-> > >  }
-> > >  
-> > > +static int ov8856_check_revision(struct ov8856 *ov8856)
-> > > +{
-> > > +	int ret;
-> > > +
-> > > +	ret = ov8856_write_reg(ov8856, OV8856_REG_MODE_SELECT,
-> > > +			       OV8856_REG_VALUE_08BIT, OV8856_MODE_STREAMING);
-> > > +	if (ret)
-> > > +		return ret;
-> > > +
-> > > +	ret = ov8856_write_reg(ov8856, OV8856_OTP_MODE_CTRL,
-> > > +			       OV8856_REG_VALUE_08BIT, OV8856_OTP_MODE_AUTO);
-> > > +	if (ret)
-> > > +		return ret;
-> > > +
-> > > +	return ov8856_write_reg(ov8856, OV8856_OTP_LOAD_CTRL,
-> > > +				OV8856_REG_VALUE_08BIT,
-> > > +				OV8856_OTP_LOAD_CTRL_ENABLE);
-> > 
-> > Is it not necessary to disable streaming after reading EEPROM?
-> > 
-> 
-> These registers are provided by OV vendor.
-> They need to be initialized before reading sensor revision.
-
-I'd still expect streaming to be stopped once it's started. Most probably
-the sensor will still be powered off before streaming is started the next
-time, but that may not be the case.
-
-> 
-> > > +}
-> > > +
-> > >  static int ov8856_set_ctrl(struct v4l2_ctrl *ctrl)
-> > >  {
-> > >  	struct ov8856 *ov8856 = container_of(ctrl->handler,
-> > > @@ -825,7 +1318,6 @@ static void ov8856_update_pad_format(const struct ov8856_mode *mode,
-> > >  {
-> > >  	fmt->width = mode->width;
-> > >  	fmt->height = mode->height;
-> > > -	fmt->code = MEDIA_BUS_FMT_SGRBG10_1X10;
-> > >  	fmt->field = V4L2_FIELD_NONE;
-> > >  }
-> > >  
-> > > @@ -834,6 +1326,7 @@ static int ov8856_start_streaming(struct ov8856 *ov8856)
-> > >  	struct i2c_client *client = v4l2_get_subdevdata(&ov8856->sd);
-> > >  	const struct ov8856_reg_list *reg_list;
-> > >  	int link_freq_index, ret;
-> > > +	u32 h_size;
-> > >  
-> > >  	link_freq_index = ov8856->cur_mode->link_freq_index;
-> > >  	reg_list = &link_freq_configs[link_freq_index].reg_list;
-> > > @@ -850,6 +1343,29 @@ static int ov8856_start_streaming(struct ov8856 *ov8856)
-> > >  		return ret;
-> > >  	}
-> > >  
-> > > +	/* Update R3614 if the revision is 1B module */
-> > > +	if (ov8856->is_1B_revision) {
-> > > +		ret = ov8856_write_reg(ov8856, OV8856_ANAL_MODE_CTRL,
-> > > +				       OV8856_REG_VALUE_08BIT,
-> > > +				       OV8856_ANAL_1B_VAL);
-> > > +		if (ret) {
-> > > +			dev_err(&client->dev, "failed to set R3614");
-> > > +			return ret;
-> > > +		}
-> > > +	}
-> > > +
-> > > +	ret = ov8856_read_reg(ov8856, REG_X_ADDR_START,
-> > > +			      OV8856_REG_VALUE_16BIT, &h_size);
-> > > +	if (ret) {
-> > > +		dev_err(&client->dev, "failed to read out R3614");
-> > > +		return ret;
-> > > +	}
-> > > +
-> > > +	if (h_size == X_OUTPUT_FULL_SIZE || h_size == X_OUTPUT_BINNING_SIZE)
-> > > +		ov8856->fmt.code = MEDIA_BUS_FMT_SBGGR10_1X10;
-> > 
-> > I wonder if this condition is right. The pixel order (and thus the media
-> > bus code) is determined by cropping (and flipping and mirroring, but
-> > they're not supported right now). See e.g. the smiapp driver for an
-> > example.
-> > 
-> > The correct media bus code needs to be available to the user through the
-> > regular API at all times, not only after streaming is started.
-> > 
-> > I'd suggest adding support for other pixel orders in a separate patch.
-> > 
-> 
-> This may need time to think out.
-> Is there any recommended regular API?  
-
-Yes. Please see:
-
-<URL:https://hverkuil.home.xs4all.nl/spec/uapi/v4l/dev-subdev.html>
-
-Although that is more or less incompatible with the current driver
-behaviour which is simply relying on SUBDEV_S_FMT.
-
-> 
-> > > +
-> > >  	ret = __v4l2_ctrl_handler_setup(ov8856->sd.ctrl_handler);
-> > >  	if (ret)
-> > >  		return ret;
-> > > @@ -878,6 +1394,7 @@ static int ov8856_set_stream(struct v4l2_subdev *sd, int enable)
-> > >  	struct ov8856 *ov8856 = to_ov8856(sd);
-> > >  	struct i2c_client *client = v4l2_get_subdevdata(sd);
-> > >  	int ret = 0;
-> > > +	u32 val;
-> > >  
-> > >  	if (ov8856->streaming == enable)
-> > >  		return 0;
-> > > @@ -908,6 +1425,44 @@ static int ov8856_set_stream(struct v4l2_subdev *sd, int enable)
-> > >  	return ret;
-> > >  }
-> > >  
-> > > +static int __ov8856_power_on(struct ov8856 *ov8856)
-> > > +{
-> > > +	struct i2c_client *client = v4l2_get_subdevdata(&ov8856->sd);
-> > > +	int ret;
-> > > +
-> > > +	ret = clk_prepare_enable(ov8856->xvclk);
-> > > +	if (ret < 0) {
-> > > +		dev_err(&client->dev, "failed to enable xvclk\n");
-> > > +		return ret;
-> > > +	}
-> > > +
-> > > +	gpiod_set_value_cansleep(ov8856->n_shutdn_gpio, GPIOD_OUT_LOW);
-> > > +
-> > > +	ret = regulator_bulk_enable(OV8856_NUM_SUPPLIES, ov8856->supplies);
-> > > +	if (ret < 0) {
-> > > +		dev_err(&client->dev, "failed to enable regulators\n");
-> > > +		goto disable_clk;
-> > > +	}
-> > > +
-> > > +	gpiod_set_value_cansleep(ov8856->n_shutdn_gpio, GPIOD_OUT_HIGH);
-> > 
-> > ..., 1);
-> > 
-> > > +
-> > > +	usleep_range(1400, 1500);
-> > > +
-> > > +	return 0;
-> > > +
-> > > +disable_clk:
-> > > +	clk_disable_unprepare(ov8856->xvclk);
-> > 
-> > How about the n_shutdn GPIO?
-> > 
-> 
-> This is power up sequence function.
-> When enabling regulators failed, it is required to disable the enabled
-> power previously.
-> Thus here we need to disable xvclk.
-> But for n_shutdn GPIO, it was low state at that time.
-> So we don't need to do anything for it.
-
-Ah, right. Please ignore the comment.
-
-> 
-> > > +
-> > > +	return ret;
-> > > +}
-> > > +
-> > > +static void __ov8856_power_off(struct ov8856 *ov8856)
-> > > +{
-> > > +	gpiod_set_value_cansleep(ov8856->n_shutdn_gpio, 1);
-> > 
-> > Why to inactivate xshutdn here (it already was)?
-
-^
-
-> > 
-> > > +	regulator_bulk_disable(OV8856_NUM_SUPPLIES, ov8856->supplies);
-> > > +	clk_disable_unprepare(ov8856->xvclk);
-> > > +}
-> > > +
-> > >  static int __maybe_unused ov8856_suspend(struct device *dev)
-> > >  {
-> > >  	struct i2c_client *client = to_i2c_client(dev);
-> > > @@ -951,6 +1506,7 @@ static int ov8856_set_format(struct v4l2_subdev *sd,
-> > >  			     struct v4l2_subdev_format *fmt)
-> > >  {
-> > >  	struct ov8856 *ov8856 = to_ov8856(sd);
-> > > +	struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
-> > >  	const struct ov8856_mode *mode;
-> > >  	s32 vblank_def, h_blank;
-> > >  
-> > > @@ -960,7 +1516,9 @@ static int ov8856_set_format(struct v4l2_subdev *sd,
-> > >  				      fmt->format.height);
-> > >  
-> > >  	mutex_lock(&ov8856->mutex);
-> > > -	ov8856_update_pad_format(mode, &fmt->format);
-> > > +	mbus_fmt->code = ov8856->fmt.code;
-> > > +	ov8856_update_pad_format(mode, mbus_fmt);
-> > > +	ov8856->fmt = fmt->format;
-> > >  	if (fmt->which == V4L2_SUBDEV_FORMAT_TRY) {
-> > >  		*v4l2_subdev_get_try_format(sd, cfg, fmt->pad) = fmt->format;
-> > >  	} else {
-> > > @@ -992,13 +1550,17 @@ static int ov8856_get_format(struct v4l2_subdev *sd,
-> > >  			     struct v4l2_subdev_format *fmt)
-> > >  {
-> > >  	struct ov8856 *ov8856 = to_ov8856(sd);
-> > > +	struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
-> > >  
-> > >  	mutex_lock(&ov8856->mutex);
-> > > -	if (fmt->which == V4L2_SUBDEV_FORMAT_TRY)
-> > > +	if (fmt->which == V4L2_SUBDEV_FORMAT_TRY) {
-> > >  		fmt->format = *v4l2_subdev_get_try_format(&ov8856->sd, cfg,
-> > >  							  fmt->pad);
-> > > -	else
-> > > -		ov8856_update_pad_format(ov8856->cur_mode, &fmt->format);
-> > > +	} else {
-> > > +		fmt->format = ov8856->fmt;
-> > > +		ov8856_update_pad_format(ov8856->cur_mode, mbus_fmt);
-> > > +		mbus_fmt->code = ov8856->fmt.code;
-> > > +	}
-> > >  
-> > >  	mutex_unlock(&ov8856->mutex);
-> > >  
-> > > @@ -1009,11 +1571,12 @@ static int ov8856_enum_mbus_code(struct v4l2_subdev *sd,
-> > >  				 struct v4l2_subdev_pad_config *cfg,
-> > >  				 struct v4l2_subdev_mbus_code_enum *code)
-> > >  {
-> > > -	/* Only one bayer order GRBG is supported */
-> > > +	struct ov8856 *ov8856 = to_ov8856(sd);
-> > > +
-> > >  	if (code->index > 0)
-> > >  		return -EINVAL;
-> > >  
-> > > -	code->code = MEDIA_BUS_FMT_SGRBG10_1X10;
-> > > +	code->code = ov8856->fmt.code;
-> > >  
-> > >  	return 0;
-> > >  }
-> > > @@ -1089,6 +1652,20 @@ static int ov8856_identify_module(struct ov8856 *ov8856)
-> > >  		return -ENXIO;
-> > >  	}
-> > >  
-> > > +	/* check sensor hardware revision */
-> > > +	ret = ov8856_check_revision(ov8856);
-> > > +	if (ret) {
-> > > +		dev_err(&client->dev, "failed to check sensor revision");
-> > > +		return ret;
-> > > +	}
-> > > +
-> > > +	ret = ov8856_read_reg(ov8856, OV8856_MODULE_REVISION,
-> > > +			      OV8856_REG_VALUE_08BIT, &val);
-> > > +	if (ret)
-> > > +		return ret;
-> > > +
-> > > +	ov8856->is_1B_revision = (val == OV8856_1B_MODULE) ? 1 : 0;
-> > > +
-> > >  	return 0;
-> > >  }
-> > >  
-> > > @@ -1107,7 +1684,7 @@ static int ov8856_check_hwcfg(struct device *dev)
-> > >  		return -ENXIO;
-> > >  
-> > >  	fwnode_property_read_u32(fwnode, "clock-frequency", &mclk);
-> > > -	if (mclk != OV8856_MCLK) {
-> > > +	if (mclk != OV8856_XVCLK) {
-> > >  		dev_err(dev, "external clock %d is not supported", mclk);
-> > >  		return -EINVAL;
-> > >  	}
-> > > @@ -1164,6 +1741,9 @@ static int ov8856_remove(struct i2c_client *client)
-> > >  	media_entity_cleanup(&sd->entity);
-> > >  	v4l2_ctrl_handler_free(sd->ctrl_handler);
-> > >  	pm_runtime_disable(&client->dev);
-> > > +	if (!pm_runtime_status_suspended(&client->dev))
-> > > +		__ov8856_power_off(ov8856);
-> > > +	pm_runtime_set_suspended(&client->dev);
-> > >  	mutex_destroy(&ov8856->mutex);
-> > >  
-> > >  	return 0;
-> > > @@ -1172,6 +1752,7 @@ static int ov8856_remove(struct i2c_client *client)
-> > >  static int ov8856_probe(struct i2c_client *client)
-> > >  {
-> > >  	struct ov8856 *ov8856;
-> > > +	unsigned int i;
-> > >  	int ret;
-> > >  
-> > >  	ret = ov8856_check_hwcfg(&client->dev);
-> > > @@ -1186,6 +1767,42 @@ static int ov8856_probe(struct i2c_client *client)
-> > >  		return -ENOMEM;
-> > >  
-> > >  	v4l2_i2c_subdev_init(&ov8856->sd, client, &ov8856_subdev_ops);
-> > > +	ov8856->fmt.code = MEDIA_BUS_FMT_SGRBG10_1X10;
-> > > +
-> > > +	ov8856->xvclk = devm_clk_get(&client->dev, "xvclk");
-> > 
-> > Does this work on ACPI?
-> > 
-> > See e.g. the smiapp driver for an example. The same applies to the rest of
-> > the chunk.
-> 
-> For ACPI, this probe should not be executed,
-> as DT setting may not have compatible property.
-
-This probe function will be executed on ACPI as well.
-
--- 
-Regards,
-
-Sakari Ailus
+> Regards,
+> CK
+>
+> > Signed-off-by: Sean Paul <seanpaul@chromium.org>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> > index f4c4d3fedc5f..4a55bb6e2213 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> > @@ -143,8 +143,8 @@ static unsigned int mtk_ovl_layer_nr(struct mtk_ddp_comp *comp)
+> >
+> >  static unsigned int mtk_ovl_supported_rotations(struct mtk_ddp_comp *comp)
+> >  {
+> > -     return DRM_MODE_ROTATE_0 | DRM_MODE_REFLECT_Y |
+> > -            DRM_MODE_REFLECT_X;
+> > +     return DRM_MODE_ROTATE_0 | DRM_MODE_ROTATE_180 |
+> > +            DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y;
+> >  }
+> >
+> >  static int mtk_ovl_layer_check(struct mtk_ddp_comp *comp, unsigned int idx,
+>
+>
 
 _______________________________________________
 Linux-mediatek mailing list
