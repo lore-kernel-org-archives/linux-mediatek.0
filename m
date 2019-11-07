@@ -2,83 +2,60 @@ Return-Path: <SRS0=4tSC=Y7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.6 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A1F8C43331
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 15:36:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5BF31C43331
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 20:11:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2B0022178F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 15:36:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2DF072166E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 20:11:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="T6nki2W/";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ijCUyc5i"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2B0022178F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RwUxmi1Z"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2DF072166E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lwn.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Htn5EWG3scqLXv+5QH6yyQVGMB/DhXDTuIm49Kk7Uvk=; b=T6nki2W/640rd5
-	RQYlPb4Bmp/1qpnhcXT6DBKXt42Xe8awRSSiJ61PhHXGEjJtJwhiFsyCBP3+jWuKAEtxBJDZr0jud
-	VL3JnMVv1UGTPvO8Oh4RWulBLasvyFG3PnB1OT1JUNUkLPodprcUHmltugPsFhaBJB6qdOE1obYI/
-	ARUqOj6rhfZXiAlDj+GeDDlbo/YiraT/ae77wsli/OkmDzeviH8xQXQsJLgyB85XLR3EeA21++H6l
-	pgf+KuvuEsuqR6AaCjSsmnk8AOuKMkIxQ+BUXpjEWXP1Z6aFM53hcIIjIiqEj/pgTOOtd6ATfwyQc
-	8siB9kBZvstgD4FNR1qQ==;
+	List-Owner; bh=TgMkz1p4gIbTNhzK7fqgBz677vBvaoqj8kfE+E2txsA=; b=RwUxmi1ZSmueq6
+	gL21Lv2uUNmOyNoNL7lotGnkcedhy+T9kJ2kMgtAFcGO7s194gDzZ15GTLIMHZ3knuABERdVGCGYu
+	SAMwbMgIWQ1RC+pv+j24mLjQ+LDEayJFmaKgyVPMwTKSZKIibRjThMiNIKCktO8NYzXLTsUZEWmt6
+	P75psnpeJDzjQrhAMQLYFAD2DPHsaVseoebQogv4/c6l9tEtuEo5Vjh0wr+83guHAn9AxL01477Tq
+	h/soIQrNzvCWYgh4n1+1QIPVI26HM4TCyb4ljmw95v33ZRhq0SecZKNZjdbyeMgbbWe1B1VJfB8LT
+	PPRTUXV6uioCotwYyUFg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iSjpb-0003qA-2U; Thu, 07 Nov 2019 15:36:19 +0000
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341])
+	id 1iSo7L-0003t3-7a; Thu, 07 Nov 2019 20:10:55 +0000
+Received: from ms.lwn.net ([45.79.88.28])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iSjoP-0001aT-Jv; Thu, 07 Nov 2019 15:35:07 +0000
-Received: by mail-ot1-x341.google.com with SMTP id d5so2378820otp.4;
- Thu, 07 Nov 2019 07:35:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=w4Awp6aOhgxlUbwSvEpd03sWLJcXbVuHqaesNRPrPJo=;
- b=ijCUyc5iys61fP5qEnvqB8BCmoBcDMao3mCulvGbWvgt55dkkYzlQq0oJND3XvRnBi
- YX/rX62aJZPdsgNa5wqocPqqKdiY4uUUBqLXVdkOVPvGzrCzQWan6hlUDPEy6m+8yrx/
- ryzXIA6mflIgSgR//YvsyL1BcQ/3ElJPQwUxHHpuzOgUDRau5Aho3VfkvjiXUhq/UMSo
- L2QLyWG0HdNqsrpkzuBewcFBc4q3C6WsFKch57Su8Q3AFKl/WCGb1LZSgIPs7q2NFUaJ
- COtnVEMPQS6kzIgp3u/4H2p1rCrdZu6XeNJqzALe+E896Lw+1OuBmqf8O38BJwTTKygZ
- XYIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=w4Awp6aOhgxlUbwSvEpd03sWLJcXbVuHqaesNRPrPJo=;
- b=TRgB0CWnUjnKwUqcpFhrGRs/MhA92eMe5szad1yAb+hxxI5qdTVpdpgpGFFFFTrue5
- Cas21OE9Y3utZXMOZv4BWAnVCV6vITkW1NmWG5njddreDwT09he7AScFNKwzkNH5CXI1
- lh6rRXCXn6kWmfEmelcE2G9vuDyv6cwniyAFGxDpa00i5KXhVFsPLmX/ukxpF1APELxk
- 3wjf2bWLj817eEUsTzT0EIQmLs5xFNqR2snS2KJe6XsafqYB4uOLayZZP5zd9d+SEMvw
- Yg6Uy7hJQ5DELsjuCS8QAv77DBtSlvF1/FA442EdiW269k6MZw+Jln8JYN4N8B+pZ8IF
- 98lw==
-X-Gm-Message-State: APjAAAVi7nItYiO7xXi72CHVKrVRb5NT1ZNbyTDQprjiQDf3ovfoesHa
- VspW+CpUx1m+9cUcNaF+6GlvLNDWO2xe9pGTLrg=
-X-Google-Smtp-Source: APXvYqztU5GX0wlrnLPTMRH3pBVlSCTlwNpEd98regvGSDq6dRbCARkLpuzO2q7834lI/wC55JMJf9/Mpu2uMwyeWNY=
-X-Received: by 2002:a9d:1b0d:: with SMTP id l13mr1540580otl.84.1573140903023; 
- Thu, 07 Nov 2019 07:35:03 -0800 (PST)
+ id 1iSo7J-0003sW-6X
+ for linux-mediatek@lists.infradead.org; Thu, 07 Nov 2019 20:10:54 +0000
+Received: from lwn.net (localhost [127.0.0.1])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ms.lwn.net (Postfix) with ESMTPSA id D35BD2C1;
+ Thu,  7 Nov 2019 20:10:52 +0000 (UTC)
+Date: Thu, 7 Nov 2019 13:10:51 -0700
+From: Jonathan Corbet <corbet@lwn.net>
+To: Miles Chen <miles.chen@mediatek.com>
+Subject: Re: [PATCH] docs: printk-formats: add ptrdiff_t type to printk-formats
+Message-ID: <20191107131051.61308a05@lwn.net>
+In-Reply-To: <20191001100449.19481-1-miles.chen@mediatek.com>
+References: <20191001100449.19481-1-miles.chen@mediatek.com>
+Organization: LWN.net
 MIME-Version: 1.0
-References: <20191106140748.13100-1-gch981213@gmail.com>
- <20191106140748.13100-2-gch981213@gmail.com>
- <1573132996.8833.3.camel@mtksdaap41>
-In-Reply-To: <1573132996.8833.3.camel@mtksdaap41>
-From: Chuanhong Guo <gch981213@gmail.com>
-Date: Thu, 7 Nov 2019 23:34:49 +0800
-Message-ID: <CAJsYDV+UJFHsZWMOrvQFRm5BeG-6-YW8KSatSTxA=_gPuHJ6sw@mail.gmail.com>
-Subject: Re: [PATCH 1/2] mtd: mtk-quadspi: add support for memory-mapped flash
- reading
-To: Yingjoe Chen <yingjoe.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191107_073505_705432_9DBCF243 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20191107_121053_243717_072D30F5 
+X-CRM114-Status: UNSURE (   7.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,43 +67,27 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Vignesh Raghavendra <vigneshr@ti.com>,
- Tudor Ambarus <tudor.ambarus@microchip.com>,
- Richard Weinberger <richard@nod.at>, open list <linux-kernel@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>, linux-mtd@lists.infradead.org,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- Brian Norris <computersforpeace@gmail.com>,
- David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ wsd_upstream@mediatek.com, linux-doc@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi!
+On Tue, 1 Oct 2019 18:04:49 +0800
+Miles Chen <miles.chen@mediatek.com> wrote:
 
-On Thu, Nov 7, 2019 at 9:23 PM Yingjoe Chen <yingjoe.chen@mediatek.com> wrote:
->
-> On Wed, 2019-11-06 at 22:07 +0800, Chuanhong Guo wrote:
-> > PIO reading mode on this controller is ridiculously inefficient
-> > (one cmd+addr+dummy sequence reads only one byte)
-> > This patch adds support for reading from memory-mapped flash area
-> > which increases reading speed from 1MB/s to 5.6MB/s
->
-> This may not be true for all MTK SoC. Which one are you testing?
->
+> When print the difference between two pointers, we should use
+> the ptrdiff_t modifier %t.
+> 
+> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> ---
+>  Documentation/core-api/printk-formats.rst | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
 
-I tested it on MT7629.
-There should be a 5x reading speed increment under DMA or direct read
-mode than PIO mode because PIO mode needs 30 or 36 clocks for every
-single byte of data while DMA or direct read only needs 24 or 30
-clocks for initial command/address/dummy and every byte of data after
-that only need 8 clocks.
+Applied, thanks.
 
-Regards,
-Chuanhong Guo
+jon
 
 _______________________________________________
 Linux-mediatek mailing list
