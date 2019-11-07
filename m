@@ -2,73 +2,81 @@ Return-Path: <SRS0=4tSC=Y7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B08CC5DF60
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 09:16:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1618DC5DF61
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 09:21:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CFDED218AE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 09:16:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DA5F72166E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 09:21:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fZ5nOarx";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="CHrZk6ee"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CFDED218AE
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linuxfoundation.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="U7SzZtnl";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=vdorst.com header.i=@vdorst.com header.b="DErSWDeC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DA5F72166E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=vdorst.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hXb1Cd2p4e33tT24uOQYNaD1nRaohJSn2skf/qpmUzM=; b=fZ5nOarxuVQxP2
-	2R435n8dbtVT11S+seYsl2nCAN3lkauU/koIXITYJq81gpok2zig5t+9nkXIPX3Z/YVqNfXSXhf2v
-	I79XNK0KY6aWmeu1eSwMfb9xxX2Rc9cOG3I4hYsVr/kRHQslptfa0uJrRZ1mRlV4ONLLH6Z4GOnrf
-	w3Kh2FPb2BLWKZsOzvTxVmKoctKYN8W8emweoeJHolULMXvmFsTHp1/zrH3JtMc/0GKFrt6hX8bj4
-	KoQgBY8gPkR3rfi33JQgIZ6kpDozpQS8VkyROQqZuxVcRD1vWKwufCj80XVzi7i+verkawxhRDvBn
-	8A3OmCF1Orf8FAI1k3rw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Subject:To:From:Message-ID:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=RQt5tdanQrUKLpC7iyGYdqEPfY9GvggsctXX6Xh47o4=; b=U7SzZtnlSwZxvmoKIaOdAocxv
+	pV2SXe1mwvDsscQIk8CTJ1Aahkj/81GuHgjttnU/6AUus2GMtUtP0H5ZXjfGtR+GTXdk6zqOIxUEO
+	BunAguZpo+aBZl2KhNAct7sZfAzIiIrdvcR2/iFylFaWV7SuE2TX5ZmaX1usbQyyq7wVpIGT7EF6U
+	Rzw6ScNGZvGDODp7MEAWiYnQzRk3eIDTWzkZowP6/pFFC8rn4dA/HEgyOnfuz3FrbFkr565RXkt7H
+	yHXq6xF/06NlkOuVGl73jyhjq39JW9wdqlwEXv16+GdTAjo4Rilr6R2nk2xBLONejzItjHSCXnQUE
+	9qq5fx1xA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iSdu2-00026O-Rp; Thu, 07 Nov 2019 09:16:30 +0000
-Received: from mail.kernel.org ([198.145.29.99])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iSdtz-00025m-IS; Thu, 07 Nov 2019 09:16:28 +0000
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
+	id 1iSdyP-0003ue-Rx; Thu, 07 Nov 2019 09:21:01 +0000
+Received: from mx.0dd.nl ([2a04:52c0:101:921::25])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iSdyM-0003qV-TX; Thu, 07 Nov 2019 09:21:01 +0000
+Received: from mail.vdorst.com (mail.vdorst.com [IPv6:fd01::250])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 689F32166E;
- Thu,  7 Nov 2019 09:16:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1573118187;
- bh=TM7UP3cWbiGJEghjGH72vosIqE/f6U3eHuTpEBJUzB0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=CHrZk6eeNGL4z9nRRQYjNVJWuVYJi9msnRuyWAcY62tsE4SsEefl2qKhZ6gEVdo0h
- Ec2Pg37dZUXAFmkabt9kYbD9qxDrqXdcGGVshQPFlhI+VdGzIc3JFQB2VIbSaKdcc7
- oaKYp/keyy+cIJBTWXQp5zI/dEBY6G/kGzcdh6cM=
-Date: Thu, 7 Nov 2019 10:16:24 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH 01/28] usb: common: change usb_debug_root as static
- variable
-Message-ID: <20191107091624.GB1328892@kroah.com>
-References: <8cb137d5376b4e317dc22dcb9e81a1125b781f8f.1573008519.git.chunfeng.yun@mediatek.com>
- <79fd2ebd-b8c6-ee00-c71e-782475a20de6@roeck-us.net>
- <1573031491.18464.70.camel@mhfsdcap03>
- <2e793636-04a6-8589-b4a5-259f79a5ea02@roeck-us.net>
- <1573117594.18464.87.camel@mhfsdcap03>
+ by mx.0dd.nl (Postfix) with ESMTPS id BDAB85FBCA;
+ Thu,  7 Nov 2019 10:20:53 +0100 (CET)
+Authentication-Results: mx.0dd.nl; dkim=pass (2048-bit key;
+ secure) header.d=vdorst.com header.i=@vdorst.com header.b="DErSWDeC"; 
+ dkim-atps=neutral
+Received: from www (www.vdorst.com [192.168.2.222])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.vdorst.com (Postfix) with ESMTPSA id 70F7860E15;
+ Thu,  7 Nov 2019 10:20:53 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.vdorst.com 70F7860E15
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vdorst.com;
+ s=default; t=1573118453;
+ bh=VNI6ueMuAqg9JykHs42KWFyCu+oSfzrckVrJN6RHl1U=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=DErSWDeCJGOpQRn/9IeUDgudR8wiBsZK/52Ly5Hj8qYOKx+kIISU/EDojjPAFMf7V
+ 1zeb2cvB6HtA/xtvbomGdctF0jRFYQU9IVwzqbYFiFmsReIXrlLMrRiIAELkhFFLyG
+ B91UMdHXknKgc//LIaMXx/GqSwcHFeVPcU2PZskl7dRY6plX7q/TAqtdoMCZFb+4EI
+ /uh6oQw209TxyItkPHW48wPRevFclqyUKUc3CdwgDDmpUCHxo62eij9bBO7dWk2QAg
+ JyN/nBxqYW+29pPCkLLDnZITfxNPB1XGKWRR/lGloR7jFyWsntIS8dzndVjlaWdHjA
+ aJN4eY5F4PpEw==
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1]) by
+ www.vdorst.com (Horde Framework) with HTTPS; Thu, 07 Nov 2019 09:20:53 +0000
+Date: Thu, 07 Nov 2019 09:20:53 +0000
+Message-ID: <20191107092053.Horde.i3MVcW9RqZDOQBMADZX9fuc@www.vdorst.com>
+From: =?utf-8?b?UmVuw6k=?= van Dorst <opensource@vdorst.com>
+To: gerg@kernel.org
+Subject: Re: [PATCH] mtd: rawnand: driver for Mediatek MT7621 SoC NAND flash
+ controller
+In-Reply-To: <20191107073521.11413-1-gerg@kernel.org>
+User-Agent: Horde Application Framework 5
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1573117594.18464.87.camel@mhfsdcap03>
-User-Agent: Mutt/1.12.2 (2019-09-21)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191107_011627_651225_92D97AB4 
-X-CRM114-Status: GOOD (  26.07  )
+X-CRM114-CacheID: sfid-20191107_012059_240630_008768FD 
+X-CRM114-Status: GOOD (  19.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,109 +88,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Peter Chen <Peter.Chen@nxp.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- Wolfram Sang <wsa@the-dreams.de>, Yangtao Li <tiny.windzz@gmail.com>,
- Linus Walleij <linus.walleij@linaro.org>, linux-kernel@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Mans Rullgard <mans@mansr.com>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Fabio Estevam <festevam@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Robert Jarzmik <robert.jarzmik@free.fr>, Kevin Cernekee <cernekee@gmail.com>,
- "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Alan Stern <stern@rowland.harvard.edu>, NXP Linux Team <linux-imx@nxp.com>,
- bcm-kernel-feedback-list@broadcom.com,
- David Kershner <david.kershner@unisys.com>,
- Hans Ulli Kroll <ulli.kroll@googlemail.com>,
- Cristian Birsan <cristian.birsan@microchip.com>, linux-media@vger.kernel.org,
- Fabrizio Castro <fabrizio.castro@bp.renesas.com>,
- Mathias Payer <mathias.payer@nebelwelt.net>,
- Mathias Nyman <mathias.nyman@intel.com>,
- Suzuki K Poulose <suzuki.poulose@arm.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Haojian Zhuang <haojian.zhuang@gmail.com>, Stephen Boyd <swboyd@chromium.org>,
- linux-mediatek@lists.infradead.org, Minas Harutyunyan <hminas@synopsys.com>,
- Simon Horman <horms+renesas@verge.net.au>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Bin Liu <b-liu@ti.com>,
- linux-arm-kernel@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>,
- Felipe Balbi <balbi@kernel.org>, Laurentiu Tudor <laurentiu.tudor@nxp.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- linux-usb@vger.kernel.org, Nicolas Ferre <nicolas.ferre@microchip.com>,
- Dmitry Torokhov <dtor@chromium.org>, Guenter Roeck <linux@roeck-us.net>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Colin Ian King <colin.king@canonical.com>, Shawn Guo <shawnguo@kernel.org>,
- Daniel Mack <daniel@zonque.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, Weijie Gao <hackpascal@gmail.com>,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ DENG Qingfang <dengqf6@mail2.sysu.edu.cn>, linux-mediatek@lists.infradead.org,
+ neil@brown.name, linux-mtd@lists.infradead.org,
+ Chuanhong Guo <gch981213@gmail.com>, blogic@openwrt.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"; DelSp="Yes"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 07, 2019 at 05:06:34PM +0800, Chunfeng Yun wrote:
-> Hi Greg,
-> 
-> On Wed, 2019-11-06 at 06:00 -0800, Guenter Roeck wrote:
-> > On 11/6/19 1:11 AM, Chunfeng Yun wrote:
-> > > On Tue, 2019-11-05 at 20:03 -0800, Guenter Roeck wrote:
-> > >> On 11/5/19 7:15 PM, Chunfeng Yun wrote:
-> > >>> Try to avoid using extern global variable, and provide two
-> > >>> functions for the usage cases
-> > >>>
-> > >>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > >>> ---
-> > >>>    drivers/usb/common/common.c | 16 ++++++++++++++--
-> > >>>    include/linux/usb.h         |  5 ++++-
-> > >>>    2 files changed, 18 insertions(+), 3 deletions(-)
-> > >>>
-> > >>> diff --git a/drivers/usb/common/common.c b/drivers/usb/common/common.c
-> > >>> index 1433260d99b4..639ee6d243a2 100644
-> > >>> --- a/drivers/usb/common/common.c
-> > >>> +++ b/drivers/usb/common/common.c
-> > >>> @@ -293,8 +293,20 @@ struct device *usb_of_get_companion_dev(struct device *dev)
-> > >>>    EXPORT_SYMBOL_GPL(usb_of_get_companion_dev);
-> > >>>    #endif
-> > >>>    
-> > >>> -struct dentry *usb_debug_root;
-> > >>> -EXPORT_SYMBOL_GPL(usb_debug_root);
-> > >>> +static struct dentry *usb_debug_root;
-> > >>> +
-> > >>
-> > >> I don't think it is a good idea to declare this variable static
-> > >> before all its uses are removed. This patch will leave the system
-> > >> in a non-compileable state until all patches of the series have
-> > >> been applied.
-> > > Yes, you are right, I'll fix it, may be split into two patch
-> > > 
-> > >>
-> > >> I am curious. What is the rationale for this change ?
-> > >> Did exported variables run out of favor ?
-> > > Personally, I think it's good practice to avoid global varibale,
-> > > it may not a good reason.
-> > 
-> > Personally I don't think it is a good reason at all. When you are done,
-> > someone else may come in and declare the opposite, re-introduce the global
-> > variable, and drop the new functions as unnecessary.
-> > 
-> > This is ok for new code, but I think we should leave existing code alone
-> > unless it is broken and needs to get fixed. This is not the case here.
-> What do you think about this, if you also agree with Guenter's opinion,
-
-I do.
-
-> I'll abandon this patch.
-
-Please do.
-
-> BTW, how about moving udc's debug directory into usb root?
-
-Sure, feel free to send a patch for that.
-
-thanks,
-
-greg k-h
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+UXVvdGluZyBnZXJnQGtlcm5lbC5vcmc6Cgo+IEZyb206IEdyZWcgVW5nZXJlciA8Z2VyZ0BrZXJu
+ZWwub3JnPgo+Cj4gQWRkIGEgZHJpdmVyIHRvIHN1cHBvcnQgdGhlIE5BTkQgZmxhc2ggY29udHJv
+bGxlciBvZiB0aGUgTWVkaWFUZWsgTVQ3NjIxCj4gU3lzdGVtLW9uLUNoaXAgZGV2aWNlLiAoVGhp
+cyBvbmUgaXMgdGhlIE1JUFMgYmFzZWQgcGFydHMgZnJvbSBNZWRpYXRlaykuCj4KPiBUaGlzIGNv
+ZGUgaXMgYSByZS13b3JraW5nIG9mIHRoZSBlYXJsaWVyIHBhdGNoZXMgZm9yIHRoaXMgaGFyZHdh
+cmUgdGhhdAo+IGhhdmUgYmVlbiBmbG9hdGluZyBhcm91bmQgdGhlIGludGVybmV0IGZvciB5ZWFy
+czoKPgo+IGh0dHBzOi8vZ2l0aHViLmNvbS9SZWNsYWltWW91clByaXZhY3kvY2xvYWsvYmxvYi9t
+YXN0ZXIvdGFyZ2V0L2xpbnV4L3JhbWlwcy9wYXRjaGVzLTMuMTgvMDA0NS1tdGQtYWRkLW10NzYy
+MS1uYW5kLXN1cHBvcnQucGF0Y2gKPgo+IFRoaXMgaXMgYSBtdWNoIGNsZWFuZWQgdXAgdmVyc2lv
+biwgcHV0IGluIHN0YWdpbmcgdG8gc3RhcnQgd2l0aC4KPiBJdCBkb2VzIHN0aWxsIGhhdmUgc29t
+ZSBwcm9ibGVtcywgbWFpbmx5IHRoYXQgaXQgc3RpbGwgdXNlcyBhIGxvdCBvZiB0aGUKPiBtdGQg
+cmF3IG5hbmQgbGVnYWN5IHN1cHBvcnQuCj4KPiBUaGUgZHJpdmVyIG5vdCBvbmx5IGNvbXBpbGVz
+LCBidXQgaXQgd29ya3Mgd2VsbCBvbiB0aGUgc21hbGwgcmFuZ2Ugb2YKPiBoYXJkd2FyZSBwbGF0
+Zm9ybXMgdGhhdCBpdCBoYXMgYmVlbiB1c2VkIG9uIHNvIGZhci4gSSBoYXZlIGJlZW4gdXNpbmcK
+PiBmb3IgcXVpdGUgYSB3aGlsZSBub3csIGNsZWFuaW5nIHVwIGFzIEkgZ2V0IHRpbWUuCj4KPiBT
+by4uLiBJIGFtIGxvb2tpbmcgZm9yIGNvbW1lbnRzIG9uIHRoZSBiZXN0IGFwcHJvYWNoIGZvcndh
+cmQgd2l0aCB0aGlzLgo+IEF0IGxlYXN0IGluIHN0YWdpbmcgaXQgY2FuIGdldCBzb21lIG1vcmUg
+ZXllYmFsbHMgZ29pbmcgb3ZlciBpdC4KPgo+IFRoZXJlIGlzIGEgbWVkaWF0ZWsgbmFuZCBkcml2
+ZXIgYWxyZWFkeSwgbXRrX25hbmQuYywgZm9yIHRoZWlyIEFSTSBiYXNlZAo+IFN5c3RlbS1vbi1D
+aGlwIGRldmljZXMuIFRoYXQgaGFyZHdhcmUgbW9kdWxlIGxvb2tzIHRvIGhhdmUgc29tZSBoYXJk
+d2FyZQo+IHNpbWlsYXJpdGllcyB3aXRoIHRoaXMgb25lLiBBdCB0aGlzIHBvaW50IEkgZG9uJ3Qg
+a25vdyBpZiB0aGF0IGNhbiBiZQo+IHVzZWQgb24gdGhlIDc2MjEgYmFzZWQgZGV2aWNlcy4gKEkg
+dHJpZWQgYSBxdWljayBhbmQgZGlydHkgc2V0dXAgYW5kIGhhZAo+IG5vIHN1Y2Nlc3MgdXNpbmcg
+aXQgb24gdGhlIDc2MjEpLgo+Cj4gVGhvdWdodHM/CgorQ0MgREVORyBRaW5nZmFuZywgQ2h1YW5o
+b25nIEd1bywgV2VpamllIEdhbyB0byB0aGUgbGlzdC4KCkhpIEdyZWcsCgpUaGFua3MgZm9yIHBv
+c3RpbmcgdGhpcyBkcml2ZXIuCgpCdXQgSSB3b3VsZCBsaWtlIHRvIG1lbnRpb24gdGhhdCB0aGUg
+b3BlbndydCBjb21tdW5pdHkgaXMgY3VycmVudGx5ICAKd29ya2luZyBvbiBhCm5ldyB2ZXJzaW9u
+IHdoaWNoIGlzIGJhc2VkIGEgbmV3ZXIgdmVyc2lvbiBvZiB0aGUgTWVkaWFUZWsgdmVuZG9yIGRy
+aXZlci4KVGhhdCB2ZXJzaW9uIGlzIGN1cnJlbnRseSB0YXJnZXRlZCBmb3IgdGhlIG9wZW53cnQg
+NC4xOSBrZXJuZWwuClNlZSBmdWxsIHB1bGwgcmVxdWVzdCBbMV0gYW5kIE5BTkQgZHJpdmVyIHBh
+dGNoIFsyXQoKSXQgd291bGQgYmUgYSBzaGFtZSBpZiBkdXBsaWNhdGUgd29yayBoYXMgYmVlbiBk
+b25lLgoKR3JlYXRzLAoKUmVuw6kKClsxXTogaHR0cHM6Ly9naXRodWIuY29tL29wZW53cnQvb3Bl
+bndydC9wdWxsLzIzODUKWzJdOiAgCmh0dHBzOi8vZ2l0aHViLmNvbS9vcGVud3J0L29wZW53cnQv
+cHVsbC8yMzg1L2NvbW1pdHMvYjI1NjljMGE1OTQzZmU4Zjk0YmEwN2M5NTQwZWNkMTQwMDZkNzI5
+YQoKPHNuaXA+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1tZWRpYXRlawo=
