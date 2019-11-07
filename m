@@ -2,91 +2,91 @@ Return-Path: <SRS0=4tSC=Y7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B27F3FA372C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 03:39:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A519C5DF60
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 03:58:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8658B218AE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 03:39:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5954820869
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 03:58:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sXYvbQpn";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Bz3+znqk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8658B218AE
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iiG94VSt";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="nkEHapD/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5954820869
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nScdfCm0FWktnptcx5zuBcwsmiZ0A42daT4LSo4O+PI=; b=sXYvbQpnqpKtVX
-	cS46gpk0OiTWmONa6A6dAC+doe6vvdDkvnYTf58izrjcKwZucJntjasP5HDhswwe/WNu/DHUb/fbJ
-	1a1T1NCDgpcfPaDmQBmenQv+03KAjFy6SwBY5hBIocjAAjBSJvRpHR6Hux/sCmSvj+8PJ7cHS5sDT
-	Uuz1177D+5Y3cwqyBlRnHn0GWqFWwdn7H0s2WzGK/vBn7KfidjtJjh6ZeOS1VBE8+bRGCkaFdRI8r
-	Dt0J0Ldy12Sqwi3ioSr71CbN+xk85OIscRJKZtug56j4g5k0eYN0SnA3cHpOR01rm5tMtRN5MQNlZ
-	LPLN1+ZDAtIiTs6uMUfw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=149x1cp935+2klQZzsZS6JAG13icJnUEgcC6AcCO3YA=; b=iiG94VStfwVm4gUeR47W15Sm1
+	IVY3dyzwG3N8ndOmglkXIrID5P9DYcAC8Eot+qJUaPiTwdfOWIS+VvbkGBAqHkZ6mf4G8i4ALDCU/
+	w2DkEUCtqoPu+OTbJNhFPas3f2WPUQ5NGf1WDwPg+vdS2PLZHMUNHtWYOMG82OVKLzTVL9IbRkvgW
+	cCL2g596VFZ8iHXc+U94hIEEg1VQfc+9rooVlt5guIURG29vMBvjUb2FKDKfRPr755F2UKxsyRhIg
+	vXzB1e7vvQVpeDGyGeuh/b8gh3P7/V75b8L2GWlgs7bCHrtdD83+yC3gAe/67GRmXHYdbkX4kymXh
+	R6WcJ958w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iSYdt-0002Qp-8u; Thu, 07 Nov 2019 03:39:29 +0000
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542])
+	id 1iSYwM-0008Qu-Oe; Thu, 07 Nov 2019 03:58:34 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iSYdq-0002Pj-OP
- for linux-mediatek@lists.infradead.org; Thu, 07 Nov 2019 03:39:28 +0000
-Received: by mail-ed1-x542.google.com with SMTP id b5so651449eds.12
- for <linux-mediatek@lists.infradead.org>; Wed, 06 Nov 2019 19:39:26 -0800 (PST)
+ id 1iSYwE-0008JA-Pg
+ for linux-mediatek@lists.infradead.org; Thu, 07 Nov 2019 03:58:28 +0000
+Received: by mail-pl1-x641.google.com with SMTP id d29so495689plj.8
+ for <linux-mediatek@lists.infradead.org>; Wed, 06 Nov 2019 19:58:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4QNlRTLGQr37mhizIFRLl8TgY9SBjAFUyhyF2JeZyVA=;
- b=Bz3+znqk7TnIZHoZzBYIEZeHa1gUhSjnWdchWVDNXV5CRRegeHogkTvHi39lad8Gde
- +AMSXXKWIiBiFwAEAJKqT1UDffdQSrskvm9w+5o8hjOGVEeFLYyCKwhNOZyaJyOHlMmF
- 97U6Blkq786w6QCPKD5KWleQKeLEKx/N//Po8=
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=9GmxJGdDL35hIWtTVdTygW9Ztn4rOAQPxM5+Tu63S6Q=;
+ b=nkEHapD/g+Sgly2+Nt3aVAcHLo7ZieZHz02HhFipDyBmEJ17TuJOPvaBpKVLt8hmZ4
+ WaXcKQDM0QAn0L/5ATm0doZ65pxruMJuaROP4D3TWTEiRejEYUrKKN+YNHnMdVqyYLn9
+ V9g3Vt+QEB/bERM7/kf5BRWm8WlWO+UwULvxE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4QNlRTLGQr37mhizIFRLl8TgY9SBjAFUyhyF2JeZyVA=;
- b=bE9ABbiSuqFdNgZy5jqMXyJHrh2U5RJRe9UIaBBOyFWS3bVdCvSd0vLnA0P13zz8vQ
- jeT7WkTV8g6JRQP2AjPPfS3ur47y3cEbi/1bbApO9eVm6PvfkfE3iQTmWcBt5qkBS90d
- lCIY1jr7nQye54DlGiNIDH2R3D6GmkzdaTBAQitWJ/g8qr2r3Wz6KnNSmzEIQKwvKeBN
- koDgUq33gRxv4QvMMbN3j+jLKkuH0+Kcv3BvTDRhIZNDFe9jMmB1XxUWhvtejc9q7IPc
- nWY9s9FdHkeRL/Lv4pzGCOkzoQhjpoWWzWpDdkKoaa9Z4oLD8oN5Zjp7iYQ26bqM/nXr
- Oukw==
-X-Gm-Message-State: APjAAAUOMyPdedg/i16Xtq1QbfGQ+swbPooxKVgNMc+WOod/lNrOdKfk
- G0h9hscpTQbpriVNHpfaRwE+VBttlssVmQ==
-X-Google-Smtp-Source: APXvYqxJgBRX+Zy5jPNCKtLW6L/J/cXywn70LsCH0LNrE4QmUgA1H1rrZ5pg+uQTrlCdjDSL3l3mFQ==
-X-Received: by 2002:a17:906:6d8a:: with SMTP id
- h10mr1014029ejt.224.1573097964851; 
- Wed, 06 Nov 2019 19:39:24 -0800 (PST)
-Received: from mail-wm1-f50.google.com (mail-wm1-f50.google.com.
- [209.85.128.50])
- by smtp.gmail.com with ESMTPSA id v3sm20747edq.62.2019.11.06.19.39.24
- for <linux-mediatek@lists.infradead.org>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=9GmxJGdDL35hIWtTVdTygW9Ztn4rOAQPxM5+Tu63S6Q=;
+ b=WrvPkCDhrwJkismddnzElVQUCKFgWn9saEzhmYeszsPH6ftdc+WeU9IOOnoDd4u8wZ
+ MkFDanOkJkHd31f0d/YiscFuBlrsLQCIXvXKGywky//Li1kf2+DHwupGK10IrI5Nu/iz
+ /rne95PLxn5S4mNkm0dRpcExdS0+gc+3zoJaTl4fuqMwAt8osiTyPyoT01f7cTwwyXa/
+ SK1CmFBfIorsKww2ULhQsgUilJcnUABSCgP5HjBE7xqiP/MPJ7hLLjYjiIiQudGN7zWQ
+ f91yj9xxLM97LBsfYkydxmmrX/XxtUzGpY++dVZ4j86y7bTenniROpGeZGgxUa1O091x
+ eczg==
+X-Gm-Message-State: APjAAAUXTZ+N7IClW6AJgOKHgsoaAtinlzBMFEoNYY0aWUy5jd0kD5eY
+ +oYeq9K7ynot8ctDrbGX3BSoBw==
+X-Google-Smtp-Source: APXvYqy/J5ZM4ai8ToCaJwrShEkVZmE2/puOUgublwvWGb1Tk2GhISYMwfGTAFZM0gyzkCjxsMgzwQ==
+X-Received: by 2002:a17:902:6acb:: with SMTP id
+ i11mr1428339plt.214.1573099102708; 
+ Wed, 06 Nov 2019 19:58:22 -0800 (PST)
+Received: from pihsun-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:7889:7a43:f899:134c])
+ by smtp.gmail.com with ESMTPSA id r8sm592525pgr.59.2019.11.06.19.58.18
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 06 Nov 2019 19:39:24 -0800 (PST)
-Received: by mail-wm1-f50.google.com with SMTP id t26so743315wmi.4
- for <linux-mediatek@lists.infradead.org>; Wed, 06 Nov 2019 19:39:24 -0800 (PST)
-X-Received: by 2002:a7b:cbd9:: with SMTP id n25mr816484wmi.64.1573097963552;
- Wed, 06 Nov 2019 19:39:23 -0800 (PST)
+ Wed, 06 Nov 2019 19:58:22 -0800 (PST)
+Subject: Re: [RFC, v3, 4/4] media: platform: mtk-mdp3: Add Mediatek MDP3 driver
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>, hans.verkuil@cisco.com,
+ laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org,
+ matthias.bgg@gmail.com, mchehab@kernel.org
+References: <20190911094013.5892-1-bibby.hsieh@mediatek.com>
+From: Pi-Hsun Shih <pihsun@chromium.org>
+Message-ID: <d5e5a1e2-3422-8ef6-f58a-981fc5bc2449@chromium.org>
+Date: Thu, 7 Nov 2019 11:58:10 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-References: <20191107033057.238603-1-hiroh@chromium.org>
-In-Reply-To: <20191107033057.238603-1-hiroh@chromium.org>
-From: Tomasz Figa <tfiga@chromium.org>
-Date: Thu, 7 Nov 2019 12:39:12 +0900
-X-Gmail-Original-Message-ID: <CAAFQd5Buphd-1Z7+AjQ8fpdvMYY7QWPJBAYRTFF-46KM1LZ4GQ@mail.gmail.com>
-Message-ID: <CAAFQd5Buphd-1Z7+AjQ8fpdvMYY7QWPJBAYRTFF-46KM1LZ4GQ@mail.gmail.com>
-Subject: Re: [PATCH] media: mtk-vcodec: Remove extra area allocation in an
- input buffer on encoding
-To: Hirokazu Honda <hiroh@chromium.org>
+In-Reply-To: <20190911094013.5892-1-bibby.hsieh@mediatek.com>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191106_193926_818962_2B181A09 
-X-CRM114-Status: GOOD (  14.62  )
+X-CRM114-CacheID: sfid-20191106_195826_856561_03D56BF9 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,72 +98,140 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: =?UTF-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: devicetree@vger.kernel.org, Sean.Cheng@mediatek.com, Rynn.Wu@mediatek.com,
+ srv_heupstream@mediatek.com, Daoyuan.Huang@mediatek.com,
+ holmes.chiou@mediatek.com, Jerry-ch.Chen@mediatek.com, jungo.lin@mediatek.com,
+ sj.huang@mediatek.com, yuzhao@chromium.org, linux-mediatek@lists.infradead.org,
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, zwisler@chromium.org,
+ christie.yu@mediatek.com, frederic.chen@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 7, 2019 at 12:31 PM Hirokazu Honda <hiroh@chromium.org> wrote:
->
-> MediaTek encoder allocates non pixel data area for an input buffer every
-> plane. As the input buffer should be read-only, the driver should not write
-> anything in the buffer. Therefore, the extra data should be unnecessary.
->
-> Signed-off-by: Hirokazu Honda <hiroh@chromium.org>
+Hi,
+
+On 9/11/19 5:40 PM, Bibby Hsieh wrote:
+> From: daoyuan huang <daoyuan.huang@mediatek.com>
+> 
+> This patch adds driver for Media Data Path 3 (MDP3).
+> Each modules' related operation control is sited in mtk-mdp3-comp.c
+> Each modules' register table is defined in file with "mdp_reg_"
+> and "mmsys_" prefix
+> GCE related API, operation control  sited in mtk-mdp3-cmdq.c
+> V4L2 m2m device functions are implemented in mtk-mdp3-m2m.c
+> Probe, power, suspend/resume, system level functions are defined in
+> mtk-mdp3-core.c
+> 
+> Signed-off-by: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
+> Signed-off-by: daoyuan huang <daoyuan.huang@mediatek.com>
 > ---
->  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c | 9 +++------
->  1 file changed, 3 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> index fd8de027e83e..6aad53d97d74 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> @@ -332,14 +332,12 @@ static int vidioc_try_fmt(struct v4l2_format *f,
->
->                 pix_fmt_mp->num_planes = fmt->num_planes;
->                 pix_fmt_mp->plane_fmt[0].sizeimage =
-> -                               pix_fmt_mp->width * pix_fmt_mp->height +
-> -                               ((ALIGN(pix_fmt_mp->width, 16) * 2) * 16);
-> +                       pix_fmt_mp->width * pix_fmt_mp->height;
->                 pix_fmt_mp->plane_fmt[0].bytesperline = pix_fmt_mp->width;
->
->                 if (pix_fmt_mp->num_planes == 2) {
->                         pix_fmt_mp->plane_fmt[1].sizeimage =
-> -                               (pix_fmt_mp->width * pix_fmt_mp->height) / 2 +
-> -                               (ALIGN(pix_fmt_mp->width, 16) * 16);
-> +                               (pix_fmt_mp->width * pix_fmt_mp->height) / 2;
->                         pix_fmt_mp->plane_fmt[2].sizeimage = 0;
->                         pix_fmt_mp->plane_fmt[1].bytesperline =
->                                                         pix_fmt_mp->width;
-> @@ -347,8 +345,7 @@ static int vidioc_try_fmt(struct v4l2_format *f,
->                 } else if (pix_fmt_mp->num_planes == 3) {
->                         pix_fmt_mp->plane_fmt[1].sizeimage =
->                         pix_fmt_mp->plane_fmt[2].sizeimage =
-> -                               (pix_fmt_mp->width * pix_fmt_mp->height) / 4 +
-> -                               ((ALIGN(pix_fmt_mp->width, 16) / 2) * 16);
-> +                               (pix_fmt_mp->width * pix_fmt_mp->height) / 4;
->                         pix_fmt_mp->plane_fmt[1].bytesperline =
->                                 pix_fmt_mp->plane_fmt[2].bytesperline =
->                                 pix_fmt_mp->width / 2;
-> --
-> 2.24.0.rc1.363.gb1bccd3e3d-goog
->
+> ...
+> diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
+> new file mode 100644
+> ... > +static int mdp_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct mdp_dev *mdp;
+> +	phandle rproc_phandle;
+> +	int ret;
+> +
+> +	mdp = devm_kzalloc(dev, sizeof(*mdp), GFP_KERNEL);
+> +	if (!mdp)
+> +		return -ENOMEM;
+> +
+> +	mdp->pdev = pdev;
+> +	ret = mdp_component_init(mdp);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to initialize mdp components\n");
+> +		goto err_return;
+> +	}
+> +
+> +	mdp->job_wq = alloc_workqueue(MDP_MODULE_NAME, WQ_FREEZABLE, 0);
+> +	if (!mdp->job_wq) {
+> +		dev_err(dev, "Unable to create job workqueue\n");
+> +		ret = -ENOMEM;
+> +		goto err_destroy_job_wq;
+> +	}
+> +
+> +	mdp->clock_wq = alloc_workqueue(MDP_MODULE_NAME "-clock", WQ_FREEZABLE,
+> +					0);
+> +	if (!mdp->clock_wq) {
+> +		dev_err(dev, "Unable to create clock workqueue\n");
+> +		ret = -ENOMEM;
+> +		goto err_destroy_clock_wq;
+> +	}
+> +
+> +	mdp->vpu_dev = scp_get_pdev(pdev);
+> +
+> +	ret = of_property_read_u32(pdev->dev.of_node, "mediatek,scp",
+> +				   &rproc_phandle);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Could not get scp device\n");
+> +		goto err_destroy_clock_wq;
+> +	}
+> +
+> +	mdp->rproc_handle = rproc_get_by_phandle(rproc_phandle);
+> +
+> +	dev_info(&pdev->dev, "MDP rproc_handle: %llx",
+> +		 (unsigned long long)mdp->rproc_handle);
+> +
+> +	if (!mdp->rproc_handle) {
+> +		dev_err(&pdev->dev, "Could not get MDP's rproc_handle\n");
 
-Thanks for the patch!
+"ret" is not set in this error path, ret = -ENODEV?
 
-Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+> +		goto err_destroy_clock_wq;
+> +	}
+> +
+> +	mutex_init(&mdp->vpu_lock);
+> +	mutex_init(&mdp->m2m_lock);
+> +
+> +	mdp->cmdq_clt = cmdq_mbox_create(dev, 0, 1200);
+> +	if (IS_ERR(mdp->cmdq_clt))
 
-Now I'd also appreciate if there is anyone who could help testing this
-further, especially on a platform that is not a Chromebook.
+Same here, ret = PTR_ERR(mdp->cmdq_clt)?
 
-Best regards,
-Tomasz
+> +		goto err_destroy_clock_wq;
+> +
+> +	init_waitqueue_head(&mdp->callback_wq);
+> +	ida_init(&mdp->mdp_ida);
+> +	platform_set_drvdata(pdev, mdp);
+> +
+> +	vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
+> +	pm_runtime_enable(dev);
+> +
+> +	ret = v4l2_device_register(dev, &mdp->v4l2_dev);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to register v4l2 device\n");
+> +		ret = -EINVAL;
+> +		goto err_mbox_destroy;
+> +	}
+> +
+> +	ret = mdp_m2m_device_register(mdp);
+> +	if (ret) {
+> +		v4l2_err(&mdp->v4l2_dev, "Failed to register m2m device\n");
+> +		goto err_unregister_device;
+> +	}
+> +
+> +	dev_dbg(dev, "mdp-%d registered successfully\n", pdev->id);
+> +	return 0;
+> +
+> +err_unregister_device:
+> +	v4l2_device_unregister(&mdp->v4l2_dev);
+> +err_mbox_destroy:
+> +	cmdq_mbox_destroy(mdp->cmdq_clt);
+> +err_destroy_clock_wq:
+> +	destroy_workqueue(mdp->clock_wq);
+> +err_destroy_job_wq:
+> +	destroy_workqueue(mdp->job_wq);
+> +err_return:
+> +	dev_dbg(dev, "Errno %d\n", ret);
+> +	return ret;
+> +}
+> ...
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
