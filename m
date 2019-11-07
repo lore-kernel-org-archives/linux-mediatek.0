@@ -2,86 +2,72 @@ Return-Path: <SRS0=4tSC=Y7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A6AB9C5DF61
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 12:26:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B99CEC5DF61
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 13:23:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 75A9D214D8
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 12:26:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 80F862187F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 13:23:53 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RjqjrxG5";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="UW+6NMZI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 75A9D214D8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QI51MPIx"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 80F862187F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rYl3mj5VbuUTWyrmB2n5SFzmFfzJ4sASrfw8qf4WZ3Y=; b=RjqjrxG5/RBWXc
-	aaSCN5uPQjytqmT7aD1YQPZz/kyhxzgtRnRMOpSaknm6nJiCl+0+TLC6uZE0Vbu8VgsYlTII14OVn
-	VAbFFxqRWPVAeePcpZhFqMwUMPgtGK7+4Gh1ihmSBUVbWWxMocLf1YAZTygI5F3GuXgft10zEPfwy
-	nPBG4IzDXhTlZpOy5N5RVIzYL/N49r5+Xav6hpAzHpASbT5Wq3hOnEsBGIbcxAVsLnQrs1noSvQ09
-	TCRcB7rWd21znTU2GD9GkPCHZYKFZGwobf8iZJbCG829K/o9pg868szaJXugH2f5R3ZpU6fSJK1F9
-	T43Xn5ce1XtcLNfVZT5A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=q5sH0SeLGAIZPTXml48XbT8fx0XD1UO8buh4YySCvYg=; b=QI51MPIxlZ8zss
+	Dfv/h1enHIbAmpD4OKeZ6u3+wKL/OXxwmFpE0ihv162rttu1kcace0DT7PbgSe53tDFOM5yX9rmWa
+	2KZEUn6tvKEU+ksLO2cbErWsUjeT8/l1L0ikUgo6OlqHsafC3NhCaQ9u+emJUck28wtAg9vjGu9zP
+	oQSAPfBvjxl5I9AMaJiLaU1WwS9POJlylQw4r5VyceM24RX/CQUerYUS6mQSvu62bvVXbBGKtpkb7
+	pU91tvfDdzH+PVAWyGwBenurTx3s0vgdY2foH0GGGRnYrGKnftY80W52DzBuhcT8FcPwQMt6CtSal
+	8QhGnrKP85vd3s9sCQaQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iSgrH-0005oK-MZ; Thu, 07 Nov 2019 12:25:51 +0000
-Received: from fllv0016.ext.ti.com ([198.47.19.142])
+	id 1iShlE-0002Fu-AS; Thu, 07 Nov 2019 13:23:40 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iSgqq-0005Or-W1; Thu, 07 Nov 2019 12:25:26 +0000
-Received: from lelv0266.itg.ti.com ([10.180.67.225])
- by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id xA7CPAai081212;
- Thu, 7 Nov 2019 06:25:10 -0600
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1573129510;
- bh=E4MS55kwaW5g/5KMrdjN4z1SWbBuXuTiMq2j/PcjEiY=;
- h=Subject:To:CC:References:From:Date:In-Reply-To;
- b=UW+6NMZI2DNcg8/Yc8M2AkH9YUhIjG0ug6zMpSF8759STfMnQIXvG15KKYOZAgo98
- va4Aooa7y2zRrtfb1gpbKTaiyzGKmaUyAAewm0RR+d6N0Q1IJ5hL9uzN+uqqMCbNdy
- RhjwN1TNyhG3OWeWQSVS9D3FIK/DfoxqTx5ovUFo=
-Received: from DFLE100.ent.ti.com (dfle100.ent.ti.com [10.64.6.21])
- by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id xA7CPAqU108742
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
- Thu, 7 Nov 2019 06:25:10 -0600
-Received: from DFLE112.ent.ti.com (10.64.6.33) by DFLE100.ent.ti.com
- (10.64.6.21) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1847.3; Thu, 7 Nov
- 2019 06:24:55 -0600
-Received: from fllv0039.itg.ti.com (10.64.41.19) by DFLE112.ent.ti.com
- (10.64.6.33) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1847.3 via
- Frontend Transport; Thu, 7 Nov 2019 06:24:55 -0600
-Received: from [172.24.145.136] (ileax41-snat.itg.ti.com [10.172.224.153])
- by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id xA7CP57p097478;
- Thu, 7 Nov 2019 06:25:06 -0600
-Subject: Re: [PATCH 1/2] mtd: mtk-quadspi: add support for memory-mapped flash
- reading
+ id 1iShl6-00027B-8R; Thu, 07 Nov 2019 13:23:33 +0000
+X-UUID: e8c020057f31483a981adc71185ddfbe-20191107
+X-UUID: e8c020057f31483a981adc71185ddfbe-20191107
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <yingjoe.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1487721755; Thu, 07 Nov 2019 05:23:25 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 7 Nov 2019 05:23:24 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 7 Nov 2019 21:23:23 +0800
+Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Thu, 7 Nov 2019 21:23:16 +0800
+Message-ID: <1573132996.8833.3.camel@mtksdaap41>
+Subject: Re: [PATCH 1/2] mtd: mtk-quadspi: add support for memory-mapped
+ flash reading
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
 To: Chuanhong Guo <gch981213@gmail.com>
+Date: Thu, 7 Nov 2019 21:23:16 +0800
+In-Reply-To: <20191106140748.13100-2-gch981213@gmail.com>
 References: <20191106140748.13100-1-gch981213@gmail.com>
  <20191106140748.13100-2-gch981213@gmail.com>
- <bc917a56-e688-d701-2279-87df460d6055@ti.com>
- <CAJsYDVJgUNxLhcO9iLKwRZHPQ9FT8XuKQq8ru_djD2nryT5o9A@mail.gmail.com>
-From: Vignesh Raghavendra <vigneshr@ti.com>
-Message-ID: <efd471a6-daad-a191-5528-62313dd4e4a4@ti.com>
-Date: Thu, 7 Nov 2019 17:55:40 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <CAJsYDVJgUNxLhcO9iLKwRZHPQ9FT8XuKQq8ru_djD2nryT5o9A@mail.gmail.com>
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191107_042525_139533_797AA71C 
-X-CRM114-Status: GOOD (  17.43  )
+X-CRM114-CacheID: sfid-20191107_052332_301996_0C622CD2 
+X-CRM114-Status: UNSURE (   7.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,12 +79,11 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, "open
- list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Tudor Ambarus <tudor.ambarus@microchip.com>,
- Richard Weinberger <richard@nod.at>, open list <linux-kernel@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>, linux-mtd@lists.infradead.org,
- Miquel Raynal <miquel.raynal@bootlin.com>,
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Vignesh Raghavendra <vigneshr@ti.com>, Tudor
+ Ambarus <tudor.ambarus@microchip.com>, Richard Weinberger <richard@nod.at>,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mtd@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
  Brian Norris <computersforpeace@gmail.com>,
  David Woodhouse <dwmw2@infradead.org>, linux-arm-kernel@lists.infradead.org
@@ -107,57 +92,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, 2019-11-06 at 22:07 +0800, Chuanhong Guo wrote:
+> PIO reading mode on this controller is ridiculously inefficient
+> (one cmd+addr+dummy sequence reads only one byte)
+> This patch adds support for reading from memory-mapped flash area
+> which increases reading speed from 1MB/s to 5.6MB/s
+
+This may not be true for all MTK SoC. Which one are you testing?
+
+Joe.C
 
 
-On 07/11/19 3:01 PM, Chuanhong Guo wrote:
-> Hi!
-> 
-> On Thu, Nov 7, 2019 at 2:05 PM Vignesh Raghavendra <vigneshr@ti.com> wrote:
->>> @@ -272,6 +273,11 @@ static ssize_t mtk_nor_read(struct spi_nor *nor, loff_t from, size_t length,
->>>       mtk_nor_set_read_mode(mtk_nor);
->>>       mtk_nor_set_addr(mtk_nor, addr);
->>>
->>> +     if (mtk_nor->flash_base) {
->>> +             memcpy_fromio(buffer, mtk_nor->flash_base + from, length);
->>> +             return length;
->>> +     }
->>> +
->>
->> Don't you need to check if access is still within valid memory mapped
->> window?
-> 
-> The mapped area is 256MB and I don't quite believe there will be such
-> a big NOR flash.
-> I'll add a check here in the next version.
->
 
 
-There are 256MB (2GiB) NORs out there in market already. So, pretty
-soon, 256MB window won't be big enough :)
-
->>
->>>       for (i = 0; i < length; i++) {
->>>               ret = mtk_nor_execute_cmd(mtk_nor, MTK_NOR_PIO_READ_CMD);
->>>               if (ret < 0)
->>> @@ -475,6 +481,11 @@ static int mtk_nor_drv_probe(struct platform_device *pdev)
->>>       if (IS_ERR(mtk_nor->base))
->>>               return PTR_ERR(mtk_nor->base);
->>>
->>> +     res = platform_get_resource(pdev, IORESOURCE_MEM, 1);
->>> +     mtk_nor->flash_base = devm_ioremap_resource(&pdev->dev, res);
->>
->> There is a single API now: devm_platform_ioremap_resource().
-> 
-> Cool. I'll change it.
-> Should I add another patch to change the same mapping operation right
-> above this piece of code?
-> 
-
-That would be nice to do too, please send a separate patch.
-
--- 
-Regards
-Vignesh
 
 _______________________________________________
 Linux-mediatek mailing list
