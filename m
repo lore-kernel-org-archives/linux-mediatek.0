@@ -2,66 +2,92 @@ Return-Path: <SRS0=4tSC=Y7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+X-Spam-Status: No, score=-11.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ECF8BC5DF61
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 07:36:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A9DCFC5DF61
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 07:58:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AE1CB21882
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 07:36:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 70D0A21D6C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Nov 2019 07:58:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CatiVkeN";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="G894dG/K"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AE1CB21882
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="elS4SzKa";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="YItkdOgR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 70D0A21D6C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=HP8AwgWgGX8ae2ppQpY7fRH+2ijLdbmR40CTE7yuzp4=; b=Cat
-	iVkeNSJaYpnl0+QeTMDz8B2lKbxax+XBDUBI8ppOuyY/ZUXjTJEc9KIh1WFlYNnakLvM3AQA3VrOS
-	YwXb7j91vqOFkTEY+ibA34cnBWqMWr0XY0EsTGR6Sme4zSp1m5yhTJvBLd75/HRtPV4tDSiIbjSAv
-	YVB+/bbOL72GQ/5ej40RWqnEeDEyP6nOxWCYkicpjQZpSwIFn94VduOThq6NCk2bCWr8I51KyxAEn
-	QOrH/jrlJUpceMTfd4ydRfT/06dlFG8QiQxJOxfxykxRgr2+D36bqJSsbTUIXCJGXArzMD9i/OrsD
-	DaRhkF+FnGpSb2QmiURr+0iwFXNjNrw==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=y/iF6DzzEGPjhl3o/sJhfChR4sbY6AfawJ2CGjCCyns=; b=elS4SzKaN7fmrI
+	HByZTp8pm6vWQPtLhmyG4n4OmtSxj54pyyuhS0SFuw/9ZMOIVettINmFMH1Z+y53nX6lADsidm/t1
+	xRHuq+5XFEfJWVuXa4sfpa+Yn0B2L3x+7nHsscnf7FtKtI8hIN3NJWUZt3f4kWTlL0g9osJ45Y3Vs
+	3QcGYBC58+YDO2+742EQaVMcbgDvhxxqSK+dFu7jcTrdp8eEMrmJR6jAU3TpZNs8rrESowkToSZlq
+	d1zFi4/FT8a6lugMiB5GZLmGkZXzlUkBvJTdYn4t64FKk89uzYioVEN+7JP+F/FDuxxZHGIiFR5ll
+	GeaSIF50XzsHkfLI7iwQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iScKd-0006sY-2G; Thu, 07 Nov 2019 07:35:51 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1iScgj-0006yW-J4; Thu, 07 Nov 2019 07:58:41 +0000
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iScKX-0006rw-5p; Thu, 07 Nov 2019 07:35:49 +0000
-Received: from goober.digi.com (unknown [103.48.210.53])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 51F4621882;
- Thu,  7 Nov 2019 07:35:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1573112143;
- bh=YRlxCylowVsIWOOaMG+2KiJn9+BMuCfGlNfOenBsPjM=;
- h=From:To:Cc:Subject:Date:From;
- b=G894dG/KeASSCm7dlkJ5Ce/utT6d1PD2sccmd5glWtabZ6ahfgNkDHtw7QcgZuI/o
- WTgV4ZxG1eypeFlN7w8rEgmTGeaOQwEmzPAlkg0k8jdthGa0fCScAQGRqZKkt0zhb7
- ySaxZExCo7PcyYabJgnJZa8etf1CrT4hXuDErJd8=
-From: gerg@kernel.org
-To: gregkh@linuxfoundation.org, devel@driverdev.osuosl.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mtd@lists.infradead.org
-Subject: [PATCH] mtd: rawnand: driver for Mediatek MT7621 SoC NAND flash
- controller
-Date: Thu,  7 Nov 2019 17:35:21 +1000
-Message-Id: <20191107073521.11413-1-gerg@kernel.org>
-X-Mailer: git-send-email 2.17.1
+ id 1iScgW-0006mY-8a
+ for linux-mediatek@lists.infradead.org; Thu, 07 Nov 2019 07:58:31 +0000
+Received: by mail-ed1-x542.google.com with SMTP id p59so1108296edp.7
+ for <linux-mediatek@lists.infradead.org>; Wed, 06 Nov 2019 23:58:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=WcQNd8sy4k7wiLkP8fSRGON00HHdzWdHQ71BBUO3z+s=;
+ b=YItkdOgRSurgUUZDAWkZlgFXjUmptjWPmjlWHgFQigogedtjMoJvrLPxJfzsHHxdL8
+ fBaSmhZzA0GwAiiFOeVp2/1BgZLuVk+vhnygJU/xBxFT5f8wJXCJPs8XmdjCVUuAJ6dM
+ uGkdbLIvolXDAnDMttsh9C2quDjJu090ITgJE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=WcQNd8sy4k7wiLkP8fSRGON00HHdzWdHQ71BBUO3z+s=;
+ b=K2frz3PpGQWGe7mTr/qJrP+wXVXRFfu6C/FUB2qZFbC7kDqIf25YWHus8kp3/RwIF3
+ 2owKJa5la3pDe3nriaiDae2ojpT6t7vloU1RzDFi0RSqbI65EZwlCIIx8kiuLXK4S3dD
+ YSk8f3lHVQo1RCNWIaDeCR5cOokNLJx6IfJgQ20k3WcbfdhNu5ITV6f1Mj2mbcUa39LD
+ LF80N2Qn0vvkXn/Cr06ANF/yuHQjaXbHRh0gIuXGFBWoqaYMGymYDtV/A1QI8Gl52ig8
+ WCvyoCWbipK5n7wbrZfcRUQhIzC3aCnobhqmzBnc/IWT/Qg2NB7dZBNqV0k/Qex+lpNW
+ 2CQw==
+X-Gm-Message-State: APjAAAUOT+qrAj8ltwJ5s/oLX8mnVA44JvgjHXICRxxladGKzV2G4cHj
+ bzIRdPdKf1zE5uixre35X144uN7buyz9hg==
+X-Google-Smtp-Source: APXvYqyaq4P/r0mAgb6rEBcuWlRXmrhBsXITf1a5LurwyeC+icBeAWj4ACUsKzbat1uZOLu3mV6EaA==
+X-Received: by 2002:a05:6402:886:: with SMTP id
+ e6mr2114407edy.46.1573113505438; 
+ Wed, 06 Nov 2019 23:58:25 -0800 (PST)
+Received: from mail-wm1-f42.google.com (mail-wm1-f42.google.com.
+ [209.85.128.42])
+ by smtp.gmail.com with ESMTPSA id p88sm34723edd.22.2019.11.06.23.58.23
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 06 Nov 2019 23:58:24 -0800 (PST)
+Received: by mail-wm1-f42.google.com with SMTP id c17so1360962wmk.2
+ for <linux-mediatek@lists.infradead.org>; Wed, 06 Nov 2019 23:58:23 -0800 (PST)
+X-Received: by 2002:a7b:ce11:: with SMTP id m17mr1610939wmc.113.1573113502854; 
+ Wed, 06 Nov 2019 23:58:22 -0800 (PST)
+MIME-Version: 1.0
+References: <20191104105713.24311-1-dongchun.zhu@mediatek.com>
+ <20191104105713.24311-3-dongchun.zhu@mediatek.com>
+ <20191105211229.GB15049@kekkonen.localdomain>
+In-Reply-To: <20191105211229.GB15049@kekkonen.localdomain>
+From: Tomasz Figa <tfiga@chromium.org>
+Date: Thu, 7 Nov 2019 16:58:09 +0900
+X-Gmail-Original-Message-ID: <CAAFQd5C-QeLjNRxfoVmm8fu1_EzEXM4d+ut4b4O+TcyO-d+pAQ@mail.gmail.com>
+Message-ID: <CAAFQd5C-QeLjNRxfoVmm8fu1_EzEXM4d+ut4b4O+TcyO-d+pAQ@mail.gmail.com>
+Subject: Re: [V5, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191106_233545_299242_4237B46C 
-X-CRM114-Status: GOOD (  24.69  )
+X-CRM114-CacheID: sfid-20191106_235828_380408_6A573095 
+X-CRM114-Status: GOOD (  20.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,2243 +99,1245 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: neil@brown.name, opensource@vdorst.com, Greg Ungerer <gerg@kernel.org>,
- blogic@openwrt.org
-MIME-Version: 1.0
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Nicolas Boichat <drinkcat@chromium.org>, andriy.shevchenko@linux.intel.com,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ linux-devicetree <devicetree@vger.kernel.org>, shengnan.wang@mediatek.com,
+ Louis Kuo <louis.kuo@mediatek.com>, Sj Huang <sj.huang@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Dongchun Zhu <dongchun.zhu@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
+ Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Greg Ungerer <gerg@kernel.org>
+On Wed, Nov 6, 2019 at 6:16 AM Sakari Ailus
+<sakari.ailus@linux.intel.com> wrote:
+>
+> Hi Dongchun,
+>
+> On Mon, Nov 04, 2019 at 06:57:13PM +0800, Dongchun Zhu wrote:
+> > Add a V4L2 sub-device driver for OV02A10 image sensor.
+> > The OV02A10 is a 1/5" CMOS sensor from Omnivision, supporting
+> > output format: 10-bit RAW.
+> >
+> > This chip has a single MIPI lane interface and use the I2C bus
+> > for control and the CSI-2 bus for data.
+> >
+> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > ---
+> >  MAINTAINERS                 |    1 +
+> >  drivers/media/i2c/Kconfig   |   12 +
+> >  drivers/media/i2c/Makefile  |    1 +
+> >  drivers/media/i2c/ov02a10.c | 1113 +++++++++++++++++++++++++++++++++++++++++++
+> >  4 files changed, 1127 insertions(+)
+> >  create mode 100644 drivers/media/i2c/ov02a10.c
+> >
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index ca503fc..0ce4af9 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -11954,6 +11954,7 @@ M:    Dongchun Zhu <dongchun.zhu@mediatek.com>
+> >  L:   linux-media@vger.kernel.org
+> >  T:   git git://linuxtv.org/media_tree.git
+> >  S:   Maintained
+> > +F:   drivers/media/i2c/ov02a10.c
+> >  F:   Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> >
+> >  OMNIVISION OV2680 SENSOR DRIVER
+> > diff --git a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig
+> > index 7eee181..3be8c0e 100644
+> > --- a/drivers/media/i2c/Kconfig
+> > +++ b/drivers/media/i2c/Kconfig
+> > @@ -620,6 +620,18 @@ config VIDEO_IMX355
+> >         To compile this driver as a module, choose M here: the
+> >         module will be called imx355.
+> >
+> > +config VIDEO_OV02A10
+> > +     tristate "OmniVision OV02A10 sensor support"
+> > +     depends on I2C && VIDEO_V4L2 && VIDEO_V4L2_SUBDEV_API
+> > +     depends on MEDIA_CAMERA_SUPPORT
+> > +     select V4L2_FWNODE
+> > +     help
+> > +       This is a Video4Linux2 sensor driver for the OmniVision
+> > +       OV02A10 camera sensor.
+> > +
+> > +       To compile this driver as a module, choose M here: the
+> > +       module will be called ov02a10.
+> > +
+> >  config VIDEO_OV2640
+> >       tristate "OmniVision OV2640 sensor support"
+> >       depends on VIDEO_V4L2 && I2C
+> > diff --git a/drivers/media/i2c/Makefile b/drivers/media/i2c/Makefile
+> > index beb170b..c0774d4 100644
+> > --- a/drivers/media/i2c/Makefile
+> > +++ b/drivers/media/i2c/Makefile
+> > @@ -63,6 +63,7 @@ obj-$(CONFIG_VIDEO_VP27SMPX) += vp27smpx.o
+> >  obj-$(CONFIG_VIDEO_SONY_BTF_MPX) += sony-btf-mpx.o
+> >  obj-$(CONFIG_VIDEO_UPD64031A) += upd64031a.o
+> >  obj-$(CONFIG_VIDEO_UPD64083) += upd64083.o
+> > +obj-$(CONFIG_VIDEO_OV02A10) += ov02a10.o
+> >  obj-$(CONFIG_VIDEO_OV2640) += ov2640.o
+> >  obj-$(CONFIG_VIDEO_OV2680) += ov2680.o
+> >  obj-$(CONFIG_VIDEO_OV2685) += ov2685.o
+> > diff --git a/drivers/media/i2c/ov02a10.c b/drivers/media/i2c/ov02a10.c
+> > new file mode 100644
+> > index 0000000..f1ed4eb
+> > --- /dev/null
+> > +++ b/drivers/media/i2c/ov02a10.c
+> > @@ -0,0 +1,1113 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +// Copyright (c) 2019 MediaTek Inc.
+> > +
+> > +#include <linux/clk.h>
+> > +#include <linux/delay.h>
+> > +#include <linux/device.h>
+> > +#include <linux/gpio/consumer.h>
+> > +#include <linux/i2c.h>
+> > +#include <linux/module.h>
+> > +#include <linux/pm_runtime.h>
+> > +#include <linux/regulator/consumer.h>
+> > +#include <media/media-entity.h>
+> > +#include <media/v4l2-async.h>
+> > +#include <media/v4l2-ctrls.h>
+> > +#include <media/v4l2-subdev.h>
+> > +#include <media/v4l2-fwnode.h>
+> > +
+> > +#define CHIP_ID                                              0x2509
+> > +#define OV02A10_REG_CHIP_ID_H                                0x02
+> > +#define OV02A10_REG_CHIP_ID_L                                0x03
+> > +#define OV02A10_ID(_msb, _lsb)                               ((_msb) << 8 | (_lsb))
+> > +
+> > +/* Bit[1] vertical upside down */
+> > +/* Bit[0] horizontal mirror */
+> > +#define REG_MIRROR_FLIP_CONTROL                              0x3f
+> > +
+> > +/* Orientation */
+> > +#define REG_MIRROR_FLIP_ENABLE                               0x03
+> > +
+> > +/* Bit[7] clock HS mode enable
+> > + * 0: Clock continue
+> > + * 1: Clock HS
+> > + * Bit[6:2] HS VOD adjust
+> > + * Bit[1:0] P VHI adjust
+> > + */
+> > +#define REG_HS_MODE_BLC                                      0x9d
+> > +
+> > +#define CLOCK_HS_MODE_ENABLE                         BIT(7)
+> > +#define CLOCK_HS_VOD_ADJUST  (BIT(6) | BIT(5) | BIT(4) | BIT(3) | BIT(2))
+> > +
+> > +/* Bit[2:0] MIPI transmission speed select */
+> > +#define TX_SPEED_AREA_SEL                            0xa1
+> > +
+> > +#define REG_PAGE_SWITCH                                      0xfd
+> > +#define REG_GLOBAL_EFFECTIVE                         0x01
+> > +#define REG_ENABLE                                   BIT(0)
+> > +#define OV02A10_MASK_8_BITS                          0xff
+> > +
+> > +#define REG_SC_CTRL_MODE                             0xac
+> > +#define SC_CTRL_MODE_STANDBY                         0x00
+> > +#define SC_CTRL_MODE_STREAMING                               0x01
+> > +
+> > +#define OV02A10_EXP_SHIFT                            8
+> > +#define OV02A10_REG_EXPOSURE_H                               0x03
+> > +#define OV02A10_REG_EXPOSURE_L                               0x04
+> > +#define      OV02A10_EXPOSURE_MIN                            4
+> > +#define OV02A10_EXPOSURE_MAX_MARGIN                  4
+> > +#define      OV02A10_EXPOSURE_STEP                           1
+> > +
+> > +#define OV02A10_VTS_SHIFT                            8
+> > +#define OV02A10_REG_VTS_H                            0x05
+> > +#define OV02A10_REG_VTS_L                            0x06
+> > +#define OV02A10_VTS_MAX                                      0x209f
+> > +#define OV02A10_VTS_MIN                                      0x04cf
+> > +#define OV02A10_BASIC_LINE                           1224
+> > +
+> > +#define OV02A10_REG_GAIN                             0x24
+> > +#define OV02A10_GAIN_MIN                             0x10
+> > +#define OV02A10_GAIN_MAX                             0xf8
+> > +#define OV02A10_GAIN_STEP                            0x01
+> > +#define OV02A10_GAIN_DEFAULT                         0x40
+> > +
+> > +/* Test pattern control */
+> > +#define OV02A10_REG_TEST_PATTERN                     0xb6
+> > +#define OV02A10_TEST_PATTERN_ENABLE                  BIT(0)
+> > +
+> > +#define OV02A10_LINK_FREQ_390MHZ                     390000000ULL
+> > +#define OV02A10_ECLK_FREQ                            24000000
+> > +#define OV02A10_DATA_LANES                           1
+> > +#define OV02A10_BITS_PER_SAMPLE                              10
+> > +
+> > +static const char * const ov02a10_supply_names[] = {
+> > +     "dovdd",        /* Digital I/O power */
+> > +     "avdd",         /* Analog power */
+> > +     "dvdd",         /* Digital core power */
+> > +};
+> > +
+> > +#define OV02A10_NUM_SUPPLIES ARRAY_SIZE(ov02a10_supply_names)
+> > +
+> > +struct ov02a10_reg {
+> > +     u8 addr;
+> > +     u8 val;
+> > +};
+> > +
+> > +struct ov02a10_reg_list {
+> > +     u32 num_of_regs;
+> > +     const struct ov02a10_reg *regs;
+> > +};
+> > +
+> > +struct ov02a10_mode {
+> > +     u32 width;
+> > +     u32 height;
+> > +     u32 exp_def;
+> > +     u32 hts_def;
+> > +     u32 vts_def;
+> > +     const struct ov02a10_reg_list reg_list;
+> > +};
+> > +
+> > +struct ov02a10 {
+> > +     u32                     eclk_freq;
+> > +     u32                     mipi_clock_tx_speed;
+> > +     u32                     mipi_clock_hs_vod_adjust_cnt;
+> > +
+> > +     struct clk              *eclk;
+> > +     struct gpio_desc        *pd_gpio;
+> > +     struct gpio_desc        *n_rst_gpio;
+> > +     struct regulator_bulk_data supplies[OV02A10_NUM_SUPPLIES];
+> > +
+> > +     bool                    streaming;
+> > +     bool                    upside_down;
+> > +     bool                    mipi_clock_hs_mode_enable;
+> > +
+> > +     /*
+> > +      * Serialize control access, get/set format, get selection
+> > +      * and start streaming.
+> > +      */
+> > +     struct mutex            mutex;
+> > +     struct v4l2_subdev      subdev;
+> > +     struct media_pad        pad;
+> > +     struct v4l2_ctrl        *anal_gain;
+> > +     struct v4l2_ctrl        *exposure;
+> > +     struct v4l2_ctrl        *hblank;
+> > +     struct v4l2_ctrl        *vblank;
+> > +     struct v4l2_ctrl        *test_pattern;
+> > +     struct v4l2_mbus_framefmt       fmt;
+> > +     struct v4l2_ctrl_handler ctrl_handler;
+> > +
+> > +     const struct ov02a10_mode *cur_mode;
+> > +};
+> > +
+> > +static inline struct ov02a10 *to_ov02a10(struct v4l2_subdev *sd)
+> > +{
+> > +     return container_of(sd, struct ov02a10, subdev);
+> > +}
+> > +
+> > +/*
+> > + * eclk 24Mhz
+> > + * pclk 39Mhz
+> > + * linelength 934(0x3a6)
+> > + * framelength 1390(0x56E)
+> > + * grabwindow_width 1600
+> > + * grabwindow_height 1200
+> > + * max_framerate 30fps
+> > + * mipi_datarate per lane 780Mbps
+> > + */
+> > +static const struct ov02a10_reg ov02a10_1600x1200_regs[] = {
+> > +     {0xfd, 0x01},
+> > +     {0xac, 0x00},
+> > +     {0xfd, 0x00},
+> > +     {0x2f, 0x29},
+> > +     {0x34, 0x00},
+> > +     {0x35, 0x21},
+> > +     {0x30, 0x15},
+> > +     {0x33, 0x01},
+> > +     {0xfd, 0x01},
+> > +     {0x44, 0x00},
+> > +     {0x2a, 0x4c},
+> > +     {0x2b, 0x1e},
+> > +     {0x2c, 0x60},
+> > +     {0x25, 0x11},
+> > +     {0x03, 0x01},
+> > +     {0x04, 0xae},
+> > +     {0x09, 0x00},
+> > +     {0x0a, 0x02},
+> > +     {0x06, 0xa6},
+> > +     {0x31, 0x00},
+> > +     {0x24, 0x40},
+> > +     {0x01, 0x01},
+> > +     {0xfb, 0x73},
+> > +     {0xfd, 0x01},
+> > +     {0x16, 0x04},
+> > +     {0x1c, 0x09},
+> > +     {0x21, 0x42},
+> > +     {0x12, 0x04},
+> > +     {0x13, 0x10},
+> > +     {0x11, 0x40},
+> > +     {0x33, 0x81},
+> > +     {0xd0, 0x00},
+> > +     {0xd1, 0x01},
+> > +     {0xd2, 0x00},
+> > +     {0x50, 0x10},
+> > +     {0x51, 0x23},
+> > +     {0x52, 0x20},
+> > +     {0x53, 0x10},
+> > +     {0x54, 0x02},
+> > +     {0x55, 0x20},
+> > +     {0x56, 0x02},
+> > +     {0x58, 0x48},
+> > +     {0x5d, 0x15},
+> > +     {0x5e, 0x05},
+> > +     {0x66, 0x66},
+> > +     {0x68, 0x68},
+> > +     {0x6b, 0x00},
+> > +     {0x6c, 0x00},
+> > +     {0x6f, 0x40},
+> > +     {0x70, 0x40},
+> > +     {0x71, 0x0a},
+> > +     {0x72, 0xf0},
+> > +     {0x73, 0x10},
+> > +     {0x75, 0x80},
+> > +     {0x76, 0x10},
+> > +     {0x84, 0x00},
+> > +     {0x85, 0x10},
+> > +     {0x86, 0x10},
+> > +     {0x87, 0x00},
+> > +     {0x8a, 0x22},
+> > +     {0x8b, 0x22},
+> > +     {0x19, 0xf1},
+> > +     {0x29, 0x01},
+> > +     {0xfd, 0x01},
+> > +     {0x9d, 0xd6},
+> > +     {0xa0, 0x29},
+> > +     {0xa1, 0x03},
+> > +     {0xad, 0x62},
+> > +     {0xae, 0x00},
+> > +     {0xaf, 0x85},
+> > +     {0xb1, 0x01},
+> > +     {0x8e, 0x06},
+> > +     {0x8f, 0x40},
+> > +     {0x90, 0x04},
+> > +     {0x91, 0xb0},
+> > +     {0x45, 0x01},
+> > +     {0x46, 0x00},
+> > +     {0x47, 0x6c},
+> > +     {0x48, 0x03},
+> > +     {0x49, 0x8b},
+> > +     {0x4a, 0x00},
+> > +     {0x4b, 0x07},
+> > +     {0x4c, 0x04},
+> > +     {0x4d, 0xb7},
+> > +     {0xf0, 0x40},
+> > +     {0xf1, 0x40},
+> > +     {0xf2, 0x40},
+> > +     {0xf3, 0x40},
+> > +     {0x3f, 0x00},
+> > +     {0xfd, 0x01},
+> > +     {0x05, 0x00},
+> > +     {0x06, 0xa6},
+> > +     {0xfd, 0x01},
+> > +};
+> > +
+> > +static const char * const ov02a10_test_pattern_menu[] = {
+> > +     "Disabled",
+> > +     "Color Bar",
+> > +};
+> > +
+> > +static const s64 link_freq_menu_items[] = {
+> > +     OV02A10_LINK_FREQ_390MHZ
+> > +};
+> > +
+> > +static u64 to_pixel_rate(u32 f_index)
+> > +{
+> > +     u64 pixel_rate = link_freq_menu_items[f_index] * 2 * OV02A10_DATA_LANES;
+> > +
+> > +     do_div(pixel_rate, OV02A10_BITS_PER_SAMPLE);
+> > +
+> > +     return pixel_rate;
+> > +}
+> > +
+> > +static const struct ov02a10_mode supported_modes[] = {
+> > +     {
+> > +             .width = 1600,
+> > +             .height = 1200,
+> > +             .exp_def = 0x01ae,
+> > +             .hts_def = 0x03a6,
+> > +             .vts_def = 0x056e,
+> > +             .reg_list = {
+> > +                     .num_of_regs = ARRAY_SIZE(ov02a10_1600x1200_regs),
+> > +                     .regs = ov02a10_1600x1200_regs,
+> > +             },
+> > +     },
+> > +};
+> > +
+> > +static int ov02a10_write_array(struct ov02a10 *ov02a10,
+> > +                            const struct ov02a10_reg_list *r_list)
+> > +{
+> > +     struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +     unsigned int i;
+> > +     int ret;
+> > +
+> > +     for (i = 0; i < r_list->num_of_regs; i++) {
+> > +             ret = i2c_smbus_write_byte_data(client,
+> > +                                             r_list->regs[i].addr,
+> > +                                             r_list->regs[i].val);
+> > +             if (ret < 0)
+> > +                     return ret;
+> > +     }
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int ov02a10_read_smbus(struct ov02a10 *ov02a10, unsigned char reg,
+> > +                           unsigned char *val)
+> > +{
+> > +     struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +     int ret;
+> > +
+> > +     ret = i2c_smbus_read_byte_data(client, reg);
+> > +     if (ret >= 0) {
+> > +             *val = (unsigned char)ret;
+> > +             ret = 0;
+> > +     }
+> > +
+> > +     return ret;
+> > +}
+> > +
+> > +static int ov02a10_mod_reg(struct ov02a10 *ov02a10, u8 reg, u8 mask, u8 val)
+> > +{
+> > +     struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +     u8 readval;
+> > +     int ret;
+> > +
+> > +     ret = ov02a10_read_smbus(ov02a10, reg, &readval);
+> > +     if (ret)
+> > +             return ret;
+> > +
+> > +     readval &= ~mask;
+> > +     val &= mask;
+> > +     val |= readval;
+> > +
+> > +     return i2c_smbus_write_byte_data(client, reg, val);
+> > +}
+> > +
+> > +static void ov02a10_fill_fmt(const struct ov02a10_mode *mode,
+> > +                          struct v4l2_mbus_framefmt *fmt)
+> > +{
+> > +     fmt->width = mode->width;
+> > +     fmt->height = mode->height;
+> > +     fmt->field = V4L2_FIELD_NONE;
+> > +}
+> > +
+> > +static int ov02a10_set_fmt(struct v4l2_subdev *sd,
+> > +                        struct v4l2_subdev_pad_config *cfg,
+> > +                        struct v4l2_subdev_format *fmt)
+> > +{
+> > +     struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > +     struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
+> > +
+> > +     mutex_lock(&ov02a10->mutex);
+> > +
+> > +     if (ov02a10->streaming) {
+> > +             mutex_unlock(&ov02a10->mutex);
+> > +             return -EBUSY;
+> > +     }
+> > +
+> > +     /* Only one sensor mode supported */
+> > +     mbus_fmt->code = ov02a10->fmt.code;
+> > +     ov02a10_fill_fmt(ov02a10->cur_mode, mbus_fmt);
+> > +     ov02a10->fmt = fmt->format;
+> > +
+> > +     mutex_unlock(&ov02a10->mutex);
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int ov02a10_get_fmt(struct v4l2_subdev *sd,
+> > +                        struct v4l2_subdev_pad_config *cfg,
+> > +                        struct v4l2_subdev_format *fmt)
+> > +{
+> > +     struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > +     struct v4l2_mbus_framefmt *mbus_fmt = &fmt->format;
+> > +
+> > +     mutex_lock(&ov02a10->mutex);
+> > +
+> > +     fmt->format = ov02a10->fmt;
+> > +     mbus_fmt->code = ov02a10->fmt.code;
+> > +     ov02a10_fill_fmt(ov02a10->cur_mode, mbus_fmt);
+> > +
+> > +     mutex_unlock(&ov02a10->mutex);
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int ov02a10_enum_mbus_code(struct v4l2_subdev *sd,
+> > +                               struct v4l2_subdev_pad_config *cfg,
+> > +                               struct v4l2_subdev_mbus_code_enum *code)
+> > +{
+> > +     struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > +
+> > +     if (code->index >= ARRAY_SIZE(supported_modes))
+> > +             return -EINVAL;
+> > +
+> > +     code->code = ov02a10->fmt.code;
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int ov02a10_enum_frame_sizes(struct v4l2_subdev *sd,
+> > +                                 struct v4l2_subdev_pad_config *cfg,
+> > +                                 struct v4l2_subdev_frame_size_enum *fse)
+> > +{
+> > +     if (fse->index >= ARRAY_SIZE(supported_modes))
+> > +             return -EINVAL;
+> > +
+> > +     fse->min_width  = supported_modes[fse->index].width;
+> > +     fse->max_width  = supported_modes[fse->index].width;
+> > +     fse->max_height = supported_modes[fse->index].height;
+> > +     fse->min_height = supported_modes[fse->index].height;
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int ov02a10_check_sensor_id(struct ov02a10 *ov02a10)
+> > +{
+> > +     struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +     u16 id;
+> > +     u8 pid = 0;
+> > +     u8 ver = 0;
+> > +     int ret;
+> > +
+> > +     /* Check sensor revision */
+> > +     ret = ov02a10_read_smbus(ov02a10, OV02A10_REG_CHIP_ID_H, &pid);
+> > +     if (ret)
+> > +             return ret;
+> > +
+> > +     ret = ov02a10_read_smbus(ov02a10, OV02A10_REG_CHIP_ID_L, &ver);
+> > +     if (ret)
+> > +             return ret;
+> > +
+> > +     id = OV02A10_ID(pid, ver);
+> > +     if (id != CHIP_ID) {
+> > +             dev_err(&client->dev, "Unexpected sensor id(%04x)\n", id);
+> > +             return -EINVAL;
+> > +     }
+> > +
+> > +     dev_dbg(&client->dev, "Detected OV%04X sensor\n", id);
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int __maybe_unused ov02a10_power_on(struct device *dev)
+> > +{
+> > +     struct i2c_client *client = to_i2c_client(dev);
+> > +     struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> > +     struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > +     int ret;
+> > +
+> > +     gpiod_set_value_cansleep(ov02a10->n_rst_gpio, GPIOD_OUT_LOW);
+> > +     gpiod_set_value_cansleep(ov02a10->pd_gpio, GPIOD_OUT_HIGH);
+> > +
+> > +     ret = clk_prepare_enable(ov02a10->eclk);
+> > +     if (ret < 0) {
+> > +             dev_err(dev, "failed to enable eclk\n");
+> > +             return ret;
+> > +     }
+> > +
+> > +     ret = regulator_bulk_enable(OV02A10_NUM_SUPPLIES, ov02a10->supplies);
+> > +     if (ret < 0) {
+> > +             dev_err(dev, "failed to enable regulators\n");
+> > +             goto disable_clk;
+> > +     }
+> > +     usleep_range(5000, 6000);
+> > +
+> > +     gpiod_set_value_cansleep(ov02a10->pd_gpio, GPIOD_OUT_LOW);
+> > +     usleep_range(5000, 6000);
+> > +
+> > +     gpiod_set_value_cansleep(ov02a10->n_rst_gpio, GPIOD_OUT_HIGH);
+> > +     usleep_range(5000, 6000);
+> > +
+> > +     ret = ov02a10_check_sensor_id(ov02a10);
+> > +     if (ret)
+> > +             goto disable_regulator;
+> > +
+> > +     return 0;
+> > +
+> > +disable_regulator:
+> > +     regulator_bulk_disable(OV02A10_NUM_SUPPLIES, ov02a10->supplies);
+> > +disable_clk:
+> > +     clk_disable_unprepare(ov02a10->eclk);
+> > +
+> > +     return ret;
+> > +}
+> > +
+> > +static int __maybe_unused ov02a10_power_off(struct device *dev)
+> > +{
+> > +     struct i2c_client *client = to_i2c_client(dev);
+> > +     struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> > +     struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > +
+> > +     gpiod_set_value_cansleep(ov02a10->n_rst_gpio, GPIOD_OUT_LOW);
+> > +     clk_disable_unprepare(ov02a10->eclk);
+> > +     gpiod_set_value_cansleep(ov02a10->pd_gpio, GPIOD_OUT_HIGH);
+> > +     regulator_bulk_disable(OV02A10_NUM_SUPPLIES, ov02a10->supplies);
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int __ov02a10_start_stream(struct ov02a10 *ov02a10)
+> > +{
+> > +     struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +     const struct ov02a10_reg_list *reg_list;
+> > +     int ret;
+> > +
+> > +     /* Apply default values of current mode */
+> > +     reg_list = &ov02a10->cur_mode->reg_list;
+> > +     ret = ov02a10_write_array(ov02a10, reg_list);
+> > +     if (ret)
+> > +             return ret;
+> > +
+> > +     /* Apply customized values from user */
+> > +     ret = __v4l2_ctrl_handler_setup(ov02a10->subdev.ctrl_handler);
+> > +     if (ret)
+> > +             return ret;
+> > +
+> > +     /* Set orientation to 180 degree */
+> > +     if (ov02a10->upside_down) {
+> > +             ret = i2c_smbus_write_byte_data(client, REG_MIRROR_FLIP_CONTROL,
+> > +                                             REG_MIRROR_FLIP_ENABLE);
+> > +             if (ret) {
+> > +                     dev_err(&client->dev, "failed to set orientation\n");
+> > +                     return ret;
+> > +             }
+> > +             ret = i2c_smbus_write_byte_data(client, REG_GLOBAL_EFFECTIVE,
+> > +                                             REG_ENABLE);
+> > +             if (ret < 0)
+> > +                     return ret;
+> > +     }
+> > +
+> > +     /* Set clock lane transmission mode according to DT property */
+> > +     ret = ov02a10_mod_reg(ov02a10, REG_HS_MODE_BLC, CLOCK_HS_MODE_ENABLE,
+> > +                           ov02a10->mipi_clock_hs_mode_enable ?
+> > +                           CLOCK_HS_MODE_ENABLE : 0);
+> > +     if (ret < 0)
+> > +             return ret;
+> > +
+> > +     /* Set clock lane hs vod adjust to DT property */
+> > +     ret = ov02a10_mod_reg(ov02a10, REG_HS_MODE_BLC, CLOCK_HS_VOD_ADJUST,
+> > +                           ov02a10->mipi_clock_hs_vod_adjust_cnt << 2);
+> > +     if (ret < 0)
+> > +             return ret;
+> > +
+> > +     /* Set mipi tx speed according to DT property */
+> > +     ret = i2c_smbus_write_byte_data(client, TX_SPEED_AREA_SEL,
+> > +                                     ov02a10->mipi_clock_tx_speed);
+> > +     if (ret < 0)
+> > +             return ret;
+> > +
+> > +     /* Set stream on register */
+> > +     return i2c_smbus_write_byte_data(client,
+> > +                                      REG_SC_CTRL_MODE,
+> > +                                      SC_CTRL_MODE_STREAMING);
+> > +}
+> > +
+> > +static int __ov02a10_stop_stream(struct ov02a10 *ov02a10)
+> > +{
+> > +     struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +
+> > +     return i2c_smbus_write_byte_data(client,
+> > +                              REG_SC_CTRL_MODE, SC_CTRL_MODE_STANDBY);
+>
+> Alignment. Please run checkpatch.pl on this.
+>
+> > +}
+> > +
+> > +static int ov02a10_entity_init_cfg(struct v4l2_subdev *sd,
+> > +                                struct v4l2_subdev_pad_config *cfg)
+> > +{
+> > +     struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > +     struct v4l2_subdev_format fmt = { 0 };
+> > +
+> > +     fmt.which = cfg ? V4L2_SUBDEV_FORMAT_TRY : V4L2_SUBDEV_FORMAT_ACTIVE;
+> > +     fmt.format.width = ov02a10->cur_mode->width;
+> > +     fmt.format.height = ov02a10->cur_mode->width;
+>
+> Please use the default mode, not the current one.
+>
+> > +
+> > +     ov02a10_set_fmt(sd, cfg, &fmt);
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static int ov02a10_s_stream(struct v4l2_subdev *sd, int on)
+> > +{
+> > +     struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > +     struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +     int ret = 0;
+> > +
+> > +     dev_dbg(&client->dev, "ov02a10 s_stream (%d)\n", on);
+> > +     mutex_lock(&ov02a10->mutex);
+> > +
+> > +     if (ov02a10->streaming == on)
+> > +             goto unlock_and_return;
+> > +
+> > +     if (on) {
+> > +             ret = pm_runtime_get_sync(&client->dev);
+> > +             if (ret < 0) {
+> > +                     pm_runtime_put_noidle(&client->dev);
+> > +                     goto unlock_and_return;
+> > +             }
+> > +
+> > +             ret = __ov02a10_start_stream(ov02a10);
+> > +             if (ret) {
+> > +                     __ov02a10_stop_stream(ov02a10);
+> > +                     ov02a10->streaming = !on;
+> > +                     goto err_rpm_put;
+> > +             }
+> > +     } else {
+> > +             __ov02a10_stop_stream(ov02a10);
+> > +             pm_runtime_put(&client->dev);
+> > +     }
+> > +
+> > +     ov02a10->streaming = on;
+> > +     mutex_unlock(&ov02a10->mutex);
+> > +
+> > +     return ret;
+> > +
+> > +err_rpm_put:
+> > +     pm_runtime_put(&client->dev);
+> > +unlock_and_return:
+> > +     mutex_unlock(&ov02a10->mutex);
+> > +
+> > +     return ret;
+> > +}
+> > +
+> > +static const struct dev_pm_ops ov02a10_pm_ops = {
+> > +     SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
+> > +                             pm_runtime_force_resume)
+> > +     SET_RUNTIME_PM_OPS(ov02a10_power_off, ov02a10_power_on, NULL)
+> > +};
+> > +
+> > +/*
+> > + * ov02a10_set_exposure - Function called when setting exposure time
+> > + * @priv: Pointer to device structure
+> > + * @val: Variable for exposure time, in the unit of micro-second
+> > + *
+> > + * Set exposure time based on input value.
+> > + *
+> > + * Return: 0 on success
+> > + */
+> > +static int ov02a10_set_exposure(struct ov02a10 *ov02a10, int val)
+> > +{
+> > +     struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +     int ret;
+> > +
+> > +     ret = i2c_smbus_write_byte_data(client, REG_PAGE_SWITCH, REG_ENABLE);
+> > +     if (ret < 0)
+> > +             return ret;
+> > +
+> > +     ret = i2c_smbus_write_byte_data(client, OV02A10_REG_EXPOSURE_H,
+> > +                                     ((val >> OV02A10_EXP_SHIFT) &
+> > +                                     OV02A10_MASK_8_BITS));
+> > +     if (ret < 0)
+> > +             return ret;
+> > +
+> > +     ret = i2c_smbus_write_byte_data(client, OV02A10_REG_EXPOSURE_L,
+> > +                                     (val & OV02A10_MASK_8_BITS));
+> > +     if (ret < 0)
+> > +             return ret;
+> > +
+> > +     return i2c_smbus_write_byte_data(client, REG_GLOBAL_EFFECTIVE,
+> > +                                      REG_ENABLE);
+> > +}
+> > +
+> > +static int ov02a10_set_gain(struct ov02a10 *ov02a10, int val)
+> > +{
+> > +     struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +     int ret;
+> > +
+> > +     ret = i2c_smbus_write_byte_data(client, REG_PAGE_SWITCH, REG_ENABLE);
+> > +     if (ret < 0)
+> > +             return ret;
+> > +
+> > +     ret = i2c_smbus_write_byte_data(client, OV02A10_REG_GAIN,
+> > +                                     (val & OV02A10_MASK_8_BITS));
+> > +     if (ret < 0)
+> > +             return ret;
+> > +
+> > +     return i2c_smbus_write_byte_data(client, REG_GLOBAL_EFFECTIVE,
+> > +                                      REG_ENABLE);
+> > +}
+> > +
+> > +static int ov02a10_set_vblank(struct ov02a10 *ov02a10, int val)
+> > +{
+> > +     struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +     int ret;
+> > +
+> > +     ret = i2c_smbus_write_byte_data(client, REG_PAGE_SWITCH, REG_ENABLE);
+> > +     if (ret < 0)
+> > +             return ret;
+> > +
+> > +     ret = i2c_smbus_write_byte_data(client, OV02A10_REG_VTS_H,
+> > +                                     (((val + ov02a10->cur_mode->height -
+> > +                                     OV02A10_BASIC_LINE) >>
+> > +                                     OV02A10_VTS_SHIFT) &
+> > +                                     OV02A10_MASK_8_BITS));
+> > +     if (ret < 0)
+> > +             return ret;
+> > +
+> > +     ret = i2c_smbus_write_byte_data(client, OV02A10_REG_VTS_L,
+> > +                                     ((val + ov02a10->cur_mode->height -
+> > +                                     OV02A10_BASIC_LINE) &
+> > +                                     OV02A10_MASK_8_BITS));
+> > +     if (ret < 0)
+> > +             return ret;
+> > +
+> > +     return i2c_smbus_write_byte_data(client, REG_GLOBAL_EFFECTIVE,
+> > +                                      REG_ENABLE);
+> > +}
+> > +
+> > +static int ov02a10_set_test_pattern(struct ov02a10 *ov02a10, int pattern)
+> > +{
+> > +     struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +     int ret;
+> > +
+> > +     if (pattern)
+> > +             pattern = OV02A10_TEST_PATTERN_ENABLE;
+> > +
+> > +     ret = i2c_smbus_write_byte_data(client, REG_PAGE_SWITCH, REG_ENABLE);
+> > +     if (ret < 0)
+> > +             return ret;
+> > +
+> > +     ret = i2c_smbus_write_byte_data(client, OV02A10_REG_TEST_PATTERN,
+> > +                                     pattern);
+> > +     if (ret < 0)
+> > +             return ret;
+> > +
+> > +     ret = i2c_smbus_write_byte_data(client, REG_GLOBAL_EFFECTIVE,
+> > +                                     REG_ENABLE);
+> > +     if (ret < 0)
+> > +             return ret;
+> > +
+> > +     return i2c_smbus_write_byte_data(client, REG_SC_CTRL_MODE,
+> > +                                      SC_CTRL_MODE_STREAMING);
+> > +}
+> > +
+> > +static int ov02a10_set_ctrl(struct v4l2_ctrl *ctrl)
+> > +{
+> > +     struct ov02a10 *ov02a10 = container_of(ctrl->handler,
+> > +                                            struct ov02a10, ctrl_handler);
+> > +     struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +     s64 max_expo;
+> > +     int ret = 0;
+> > +
+> > +     /* Propagate change of current control to all related controls */
+> > +     if (ctrl->id == V4L2_CID_VBLANK) {
+> > +             /* Update max exposure while meeting expected vblanking */
+> > +             max_expo = ov02a10->cur_mode->height + ctrl->val -
+> > +                        OV02A10_EXPOSURE_MAX_MARGIN;
+> > +             __v4l2_ctrl_modify_range(ov02a10->exposure,
+> > +                                      ov02a10->exposure->minimum, max_expo,
+> > +                                      ov02a10->exposure->step,
+> > +                                      ov02a10->exposure->default_value);
+> > +     }
+> > +
+> > +     /* V4L2 controls values will be applied only when power is already up */
+> > +     if (!pm_runtime_get_if_in_use(&client->dev))
+> > +             return 0;
+> > +
+> > +     switch (ctrl->id) {
+> > +     case V4L2_CID_EXPOSURE:
+> > +             ret = ov02a10_set_exposure(ov02a10, ctrl->val);
+> > +             break;
+> > +     case V4L2_CID_ANALOGUE_GAIN:
+> > +             ret = ov02a10_set_gain(ov02a10, ctrl->val);
+> > +             break;
+> > +     case V4L2_CID_VBLANK:
+> > +             ret = ov02a10_set_vblank(ov02a10, ctrl->val);
+> > +             break;
+> > +     case V4L2_CID_TEST_PATTERN:
+> > +             ret = ov02a10_set_test_pattern(ov02a10, ctrl->val);
+> > +             break;
+> > +     };
+> > +
+> > +     pm_runtime_put(&client->dev);
+> > +
+> > +     return ret;
+> > +}
+> > +
+> > +static const struct v4l2_subdev_video_ops ov02a10_video_ops = {
+> > +     .s_stream = ov02a10_s_stream,
+> > +};
+> > +
+> > +static const struct v4l2_subdev_pad_ops ov02a10_pad_ops = {
+> > +     .init_cfg = ov02a10_entity_init_cfg,
+> > +     .enum_mbus_code = ov02a10_enum_mbus_code,
+> > +     .enum_frame_size = ov02a10_enum_frame_sizes,
+> > +     .get_fmt = ov02a10_get_fmt,
+> > +     .set_fmt = ov02a10_set_fmt,
+> > +};
+> > +
+> > +static const struct v4l2_subdev_ops ov02a10_subdev_ops = {
+> > +     .video  = &ov02a10_video_ops,
+> > +     .pad    = &ov02a10_pad_ops,
+> > +};
+> > +
+> > +static const struct media_entity_operations ov02a10_subdev_entity_ops = {
+> > +     .link_validate = v4l2_subdev_link_validate,
+> > +};
+> > +
+> > +static const struct v4l2_ctrl_ops ov02a10_ctrl_ops = {
+> > +     .s_ctrl = ov02a10_set_ctrl,
+> > +};
+> > +
+> > +static int ov02a10_initialize_controls(struct ov02a10 *ov02a10)
+> > +{
+> > +     struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +     const struct ov02a10_mode *mode;
+> > +     struct v4l2_ctrl_handler *handler;
+> > +     struct v4l2_ctrl *ctrl;
+> > +     u64 exposure_max;
+> > +     u32 pixel_rate, h_blank;
+> > +     int ret;
+> > +
+> > +     handler = &ov02a10->ctrl_handler;
+> > +     mode = ov02a10->cur_mode;
+> > +     ret = v4l2_ctrl_handler_init(handler, 7);
+> > +     if (ret)
+> > +             return ret;
+> > +
+> > +     handler->lock = &ov02a10->mutex;
+> > +
+> > +     ctrl = v4l2_ctrl_new_int_menu(handler, NULL, V4L2_CID_LINK_FREQ,
+> > +                                   0, 0, link_freq_menu_items);
+> > +     if (ctrl)
+> > +             ctrl->flags |= V4L2_CTRL_FLAG_READ_ONLY;
+> > +
+> > +     pixel_rate = to_pixel_rate(0);
+> > +     v4l2_ctrl_new_std(handler, NULL, V4L2_CID_PIXEL_RATE,
+> > +                       0, pixel_rate, 1, pixel_rate);
+> > +
+> > +     h_blank = mode->hts_def - mode->width;
+> > +     ov02a10->hblank = v4l2_ctrl_new_std(handler, NULL, V4L2_CID_HBLANK,
+> > +                                         h_blank, h_blank, 1, h_blank);
+> > +     if (ov02a10->hblank)
+> > +             ov02a10->hblank->flags |= V4L2_CTRL_FLAG_READ_ONLY;
+> > +
+> > +     ov02a10->vblank = v4l2_ctrl_new_std(handler, &ov02a10_ctrl_ops,
+> > +                                         V4L2_CID_VBLANK, mode->vts_def -
+> > +                                         mode->height,
+> > +                                         OV02A10_VTS_MAX - mode->height, 1,
+> > +                                         mode->vts_def - mode->height);
+> > +
+> > +     exposure_max = mode->vts_def - 4;
+> > +     ov02a10->exposure = v4l2_ctrl_new_std(handler, &ov02a10_ctrl_ops,
+> > +                                           V4L2_CID_EXPOSURE,
+> > +                                           OV02A10_EXPOSURE_MIN,
+> > +                                           exposure_max,
+> > +                                           OV02A10_EXPOSURE_STEP,
+> > +                                           mode->exp_def);
+> > +
+> > +     ov02a10->anal_gain = v4l2_ctrl_new_std(handler, &ov02a10_ctrl_ops,
+> > +                                            V4L2_CID_ANALOGUE_GAIN,
+> > +                                            OV02A10_GAIN_MIN,
+> > +                                            OV02A10_GAIN_MAX,
+> > +                                            OV02A10_GAIN_STEP,
+> > +                                            OV02A10_GAIN_DEFAULT);
+> > +
+> > +     ov02a10->test_pattern =
+> > +             v4l2_ctrl_new_std_menu_items(handler,
+> > +                                          &ov02a10_ctrl_ops,
+> > +                                          V4L2_CID_TEST_PATTERN,
+> > +                                          ARRAY_SIZE(ov02a10_test_pattern_menu) -
+> > +                                          1, 0, 0,
+> > +                                          ov02a10_test_pattern_menu);
+> > +
+> > +     if (handler->error) {
+> > +             ret = handler->error;
+> > +             dev_err(&client->dev, "failed to init controls(%d)\n", ret);
+> > +             goto err_free_handler;
+> > +     }
+> > +
+> > +     ov02a10->subdev.ctrl_handler = handler;
+> > +
+> > +     return 0;
+> > +
+> > +err_free_handler:
+> > +     v4l2_ctrl_handler_free(handler);
+> > +
+> > +     return ret;
+> > +}
+> > +
+> > +static int ov02a10_check_hwcfg(struct device *dev, struct ov02a10 *ov02a10)
+> > +{
+> > +     struct fwnode_handle *ep;
+> > +     struct fwnode_handle *fwnode = dev_fwnode(dev);
+> > +     struct v4l2_fwnode_endpoint bus_cfg = {
+> > +             .bus_type = V4L2_MBUS_CSI2_DPHY
+> > +     };
+> > +     unsigned int i, j;
+> > +     int ret;
+> > +
+> > +     if (!fwnode)
+> > +             return -ENXIO;
+> > +
+> > +     ep = fwnode_graph_get_next_endpoint(fwnode, NULL);
+> > +     if (!ep)
+> > +             return -ENXIO;
+> > +
+> > +     ret = v4l2_fwnode_endpoint_alloc_parse(ep, &bus_cfg);
+> > +     fwnode_handle_put(ep);
+> > +     if (ret)
+> > +             return ret;
+> > +
+> > +     /* Optional indication of mipi clock lane mode */
+> > +     if (bus_cfg.bus.mipi_csi2.flags & V4L2_MBUS_CSI2_NONCONTINUOUS_CLOCK)
+> > +             ov02a10->mipi_clock_hs_mode_enable = true;
+> > +
+> > +     if (!bus_cfg.nr_of_link_frequencies) {
+> > +             dev_err(dev, "no link frequencies defined");
+> > +             ret = -EINVAL;
+> > +             goto check_hwcfg_error;
+> > +     }
+> > +
+> > +     for (i = 0; i < ARRAY_SIZE(link_freq_menu_items); i++) {
+> > +             for (j = 0; j < bus_cfg.nr_of_link_frequencies; j++) {
+> > +                     if (link_freq_menu_items[i] ==
+> > +                             bus_cfg.link_frequencies[j])
+> > +                             break;
+> > +             }
+> > +
+> > +             if (j == bus_cfg.nr_of_link_frequencies) {
+> > +                     dev_err(dev, "no link frequency %lld supported",
+> > +                             link_freq_menu_items[i]);
+> > +                     ret = -EINVAL;
+> > +                     goto check_hwcfg_error;
+> > +             }
+> > +     }
+> > +
+> > +check_hwcfg_error:
+> > +     v4l2_fwnode_endpoint_free(&bus_cfg);
+> > +
+> > +     return ret;
+> > +}
+> > +
+> > +static int ov02a10_probe(struct i2c_client *client)
+> > +{
+> > +     struct device *dev = &client->dev;
+> > +     struct ov02a10 *ov02a10;
+> > +     unsigned int rotation;
+> > +     unsigned int clock_lane_tx_speed;
+> > +     unsigned int hs_vod_adjust_cnt;
+> > +     unsigned int i;
+> > +     int ret;
+> > +
+> > +     ov02a10 = devm_kzalloc(dev, sizeof(*ov02a10), GFP_KERNEL);
+> > +     if (!ov02a10)
+> > +             return -ENOMEM;
+> > +
+> > +     ret = ov02a10_check_hwcfg(dev, ov02a10);
+> > +     if (ret) {
+> > +             dev_err(dev, "failed to check HW configuration: %d", ret);
+> > +             return ret;
+> > +     }
+> > +
+> > +     v4l2_i2c_subdev_init(&ov02a10->subdev, client, &ov02a10_subdev_ops);
+> > +     ov02a10->fmt.code = MEDIA_BUS_FMT_SBGGR10_1X10;
+> > +
+> > +     /* Optional indication of physical rotation of sensor */
+> > +     ret = fwnode_property_read_u32(dev_fwnode(dev), "rotation",
+> > +                                    &rotation);
+> > +     if (!ret) {
+> > +             switch (rotation) {
+> > +             case 180:
+> > +                     ov02a10->upside_down = true;
+> > +                     ov02a10->fmt.code = MEDIA_BUS_FMT_SRGGB10_1X10;
+> > +                     break;
+> > +             case 0:
+> > +                     break;
+> > +             default:
+> > +                     dev_warn(dev, "%u degrees rotation is not supported, ignoring...\n",
+> > +                              rotation);
+> > +             }
+> > +     }
+> > +
+> > +     /* Optional indication of HS VOD adjust */
+> > +     ret = fwnode_property_read_u32(dev_fwnode(dev),
+> > +                                    "ovti,hs-vod-adjust",
+>
+> Fits on previous line.
+>
+> > +                                    &hs_vod_adjust_cnt);
+> > +     if (!ret)
+> > +             ov02a10->mipi_clock_hs_vod_adjust_cnt = hs_vod_adjust_cnt;
+> > +     else
+> > +             dev_warn(dev, "failed to get hs vod adjust, using default\n");
+> > +
+> > +     /* Optional indication of mipi tx speed */
+> > +     ret = fwnode_property_read_u32(dev_fwnode(dev),
+> > +                                    "ovti,mipi-tx-speed",
+>
+> I guess this does, too.
+>
+> Neither property is documented in bindings. What are they for?
+>
+> > +                                    &clock_lane_tx_speed);
+> > +
+> > +     if (!ret)
+> > +             ov02a10->mipi_clock_tx_speed = clock_lane_tx_speed;
+> > +     else
+> > +             dev_warn(dev, "failed to get mipi tx speed, using default\n");
+> > +
+> > +     /* Get system clock (eclk) */
+> > +     ov02a10->eclk = devm_clk_get(dev, "eclk");
+> > +     if (IS_ERR(ov02a10->eclk)) {
+> > +             dev_err(dev, "failed to get eclk\n");
+> > +             return -EINVAL;
+> > +     }
+> > +
+> > +     ret = fwnode_property_read_u32(dev_fwnode(dev), "clock-frequency",
+> > +                                    &ov02a10->eclk_freq);
+> > +     if (ret) {
+> > +             dev_err(dev, "failed to get eclk frequency\n");
+> > +             return ret;
+> > +     }
+> > +
+> > +     ret = clk_set_rate(ov02a10->eclk, ov02a10->eclk_freq);
+> > +     if (ret) {
+> > +             dev_err(dev, "failed to set eclk frequency (24MHz)\n");
+> > +             return ret;
+> > +     }
+> > +
+> > +     if (clk_get_rate(ov02a10->eclk) != OV02A10_ECLK_FREQ) {
+> > +             dev_warn(dev, "wrong eclk frequency %d Hz, expected: %d Hz\n",
+> > +                      ov02a10->eclk_freq, OV02A10_ECLK_FREQ);
+> > +             return -EINVAL;
+> > +     }
+> > +
+> > +     ov02a10->pd_gpio = devm_gpiod_get(dev, "powerdown", GPIOD_OUT_HIGH);
+> > +     if (IS_ERR(ov02a10->pd_gpio)) {
+> > +             dev_err(dev, "failed to get powerdown-gpios\n");
+> > +             return -EINVAL;
+> > +     }
+> > +
+> > +     ov02a10->n_rst_gpio = devm_gpiod_get(dev, "reset", GPIOD_OUT_LOW);
+> > +     if (IS_ERR(ov02a10->n_rst_gpio)) {
+> > +             dev_err(dev, "failed to get reset-gpios\n");
+> > +             return -EINVAL;
+> > +     }
+> > +
+> > +     for (i = 0; i < OV02A10_NUM_SUPPLIES; i++)
+> > +             ov02a10->supplies[i].supply = ov02a10_supply_names[i];
+> > +
+> > +     ret = devm_regulator_bulk_get(dev, OV02A10_NUM_SUPPLIES,
+> > +                                   ov02a10->supplies);
+> > +     if (ret) {
+> > +             dev_err(dev, "failed to get regulators\n");
+> > +             return ret;
+> > +     }
+> > +
+> > +     mutex_init(&ov02a10->mutex);
+> > +     ov02a10->cur_mode = &supported_modes[0];
+> > +     ret = ov02a10_initialize_controls(ov02a10);
+> > +     if (ret) {
+> > +             dev_err(dev, "failed to initialize controls\n");
+> > +             goto err_destroy_mutex;
+> > +     }
+> > +
+> > +     ov02a10->subdev.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
+> > +     ov02a10->subdev.entity.ops = &ov02a10_subdev_entity_ops;
+> > +     ov02a10->subdev.entity.function = MEDIA_ENT_F_CAM_SENSOR;
+> > +     ov02a10->pad.flags = MEDIA_PAD_FL_SOURCE;
+> > +     ret = media_entity_pads_init(&ov02a10->subdev.entity, 1, &ov02a10->pad);
+> > +     if (ret < 0) {
+> > +             dev_err(dev, "failed to init entity pads: %d", ret);
+> > +             goto err_free_handler;
+> > +     }
+> > +
+> > +     ret = v4l2_async_register_subdev(&ov02a10->subdev);
+> > +     if (ret) {
+> > +             dev_err(dev, "failed to register V4L2 subdev: %d", ret);
+> > +             goto err_clean_entity;
+> > +     }
+> > +
+> > +     pm_runtime_enable(dev);
+>
+> You also need pm_runtime_set_active() before pm_runtime_enable(), and to
+> power the device down, pm_runtime_idle() after it.
+>
+> Where did you power up the sensor?
+>
 
-Add a driver to support the NAND flash controller of the MediaTek MT7621
-System-on-Chip device. (This one is the MIPS based parts from Mediatek).
+Why do we need to power it up? I think probe is expected to leave it
+powered off.
 
-This code is a re-working of the earlier patches for this hardware that
-have been floating around the internet for years:
+Best regards,
+Tomasz
 
-https://github.com/ReclaimYourPrivacy/cloak/blob/master/target/linux/ramips/patches-3.18/0045-mtd-add-mt7621-nand-support.patch
-
-This is a much cleaned up version, put in staging to start with.
-It does still have some problems, mainly that it still uses a lot of the
-mtd raw nand legacy support.
-
-The driver not only compiles, but it works well on the small range of
-hardware platforms that it has been used on so far. I have been using
-for quite a while now, cleaning up as I get time.
-
-So... I am looking for comments on the best approach forward with this.
-At least in staging it can get some more eyeballs going over it.
-
-There is a mediatek nand driver already, mtk_nand.c, for their ARM based
-System-on-Chip devices. That hardware module looks to have some hardware
-similarities with this one. At this point I don't know if that can be
-used on the 7621 based devices. (I tried a quick and dirty setup and had
-no success using it on the 7621).
-
-Thoughts?
-
-Signed-off-by: Greg Ungerer <gerg@kernel.org>
----
- drivers/staging/Kconfig                       |    2 +
- drivers/staging/Makefile                      |    1 +
- drivers/staging/mt7621-nand/Kconfig           |    7 +
- drivers/staging/mt7621-nand/Makefile          |    1 +
- drivers/staging/mt7621-nand/TODO              |    6 +
- drivers/staging/mt7621-nand/mt7621_nand.c     | 1713 +++++++++++++++++
- drivers/staging/mt7621-nand/mt7621_nand.h     |  362 ++++
- .../staging/mt7621-nand/mtk,mt7621-nand.txt   |   29 +
- 8 files changed, 2121 insertions(+)
- create mode 100644 drivers/staging/mt7621-nand/Kconfig
- create mode 100644 drivers/staging/mt7621-nand/Makefile
- create mode 100644 drivers/staging/mt7621-nand/TODO
- create mode 100644 drivers/staging/mt7621-nand/mt7621_nand.c
- create mode 100644 drivers/staging/mt7621-nand/mt7621_nand.h
- create mode 100644 drivers/staging/mt7621-nand/mtk,mt7621-nand.txt
-
-diff --git a/drivers/staging/Kconfig b/drivers/staging/Kconfig
-index 6f1fa4c849a1..03167062b623 100644
---- a/drivers/staging/Kconfig
-+++ b/drivers/staging/Kconfig
-@@ -108,6 +108,8 @@ source "drivers/staging/ralink-gdma/Kconfig"
- 
- source "drivers/staging/mt7621-dts/Kconfig"
- 
-+source "drivers/staging/mt7621-nand/Kconfig"
-+
- source "drivers/staging/gasket/Kconfig"
- 
- source "drivers/staging/axis-fifo/Kconfig"
-diff --git a/drivers/staging/Makefile b/drivers/staging/Makefile
-index a90f9b308c8d..8cb3bf2503ba 100644
---- a/drivers/staging/Makefile
-+++ b/drivers/staging/Makefile
-@@ -44,6 +44,7 @@ obj-$(CONFIG_PINCTRL_RT2880)	+= mt7621-pinctrl/
- obj-$(CONFIG_SOC_MT7621)	+= mt7621-dma/
- obj-$(CONFIG_DMA_RALINK)	+= ralink-gdma/
- obj-$(CONFIG_SOC_MT7621)	+= mt7621-dts/
-+obj-$(CONFIG_SOC_MT7621)	+= mt7621-nand/
- obj-$(CONFIG_STAGING_GASKET_FRAMEWORK)	+= gasket/
- obj-$(CONFIG_XIL_AXIS_FIFO)	+= axis-fifo/
- obj-$(CONFIG_FIELDBUS_DEV)     += fieldbus/
-diff --git a/drivers/staging/mt7621-nand/Kconfig b/drivers/staging/mt7621-nand/Kconfig
-new file mode 100644
-index 000000000000..be46db601119
---- /dev/null
-+++ b/drivers/staging/mt7621-nand/Kconfig
-@@ -0,0 +1,7 @@
-+config MTD_NAND_MT7621
-+	tristate "Support for Mediatek MT7621 SoC NAND controller"
-+	depends on SOC_MT7621
-+	help
-+	  Enable support for the NAND controller on the Mediatek MT7621
-+	  SoC platforms.
-+
-diff --git a/drivers/staging/mt7621-nand/Makefile b/drivers/staging/mt7621-nand/Makefile
-new file mode 100644
-index 000000000000..04d6fabecf2b
---- /dev/null
-+++ b/drivers/staging/mt7621-nand/Makefile
-@@ -0,0 +1 @@
-+obj-$(CONFIG_MTD_NAND_MT7621) += mt7621_nand.o
-diff --git a/drivers/staging/mt7621-nand/TODO b/drivers/staging/mt7621-nand/TODO
-new file mode 100644
-index 000000000000..adca75274ee8
---- /dev/null
-+++ b/drivers/staging/mt7621-nand/TODO
-@@ -0,0 +1,6 @@
-+mt7621-nand TODO
-+
-+- convert from legacy raw nand interface
-+- general code cleanup and review
-+
-+Cc: gerg@kernel.org
-diff --git a/drivers/staging/mt7621-nand/mt7621_nand.c b/drivers/staging/mt7621-nand/mt7621_nand.c
-new file mode 100644
-index 000000000000..706b7d7588de
---- /dev/null
-+++ b/drivers/staging/mt7621-nand/mt7621_nand.c
-@@ -0,0 +1,1713 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * mt7621_nand.c - Mediatek MT7621 NAND Flash Controller device driver
-+ *
-+ * Copyright 2009-2012 MediaTek Co.,Ltd.
-+ * Copyright 2018-2019 Greg Ungerer <gerg@kernel.org>
-+ */
-+
-+#include <linux/init.h>
-+#include <linux/module.h>
-+#include <linux/errno.h>
-+#include <linux/types.h>
-+#include <linux/slab.h>
-+#include <linux/mtd/mtd.h>
-+#include <linux/mtd/rawnand.h>
-+#include <linux/mtd/partitions.h>
-+#include <linux/mtd/nand_ecc.h>
-+#include <linux/platform_device.h>
-+#include <linux/io.h>
-+#include "mt7621_nand.h"
-+
-+static const char * const probe_types[] = {
-+	"cmdlinepart",
-+	"ofpart",
-+	NULL
-+};
-+
-+struct host {
-+	struct nand_chip nand_chip;
-+	struct mtd_info *mtd;
-+	void __iomem *regs;
-+	void __iomem *ecc;
-+	u32 addr_cycles;
-+	u32 access_timing;
-+	u32 column;
-+	u32 row;
-+	u32 OOBrow;
-+	u8 OOB[288];
-+	u8 *data_buf;
-+	bool cmdstatus;
-+	bool legacybbt;
-+	u32 legacybbt_block_num;
-+	u32 last_failed;
-+};
-+
-+static struct host *host;
-+
-+/*
-+ * This constant was taken from linux/nand/nand.h v 3.14
-+ * in later versions it seems it was removed in order to save a bit of space
-+ */
-+#define NAND_MAX_OOBSIZE 774
-+static u8 local_oob_buf[NAND_MAX_OOBSIZE];
-+
-+struct nand_ecclayout {
-+	u32 eccbytes;
-+	u32 oobavail;
-+	u32 eccpos[MTD_MAX_ECCPOS_ENTRIES_LARGE];
-+	struct nand_oobfree oobfree[MTD_MAX_OOBFREE_ENTRIES_LARGE];
-+};
-+
-+static struct nand_ecclayout *layout;
-+
-+static struct nand_ecclayout nand_oob_16 = {
-+	.eccbytes = 8,
-+	.eccpos = { 8, 9, 10, 11, 12, 13, 14, 15 },
-+	.oobfree = { {1, 6}, {0, 0} }
-+};
-+
-+static struct nand_ecclayout nand_oob_64 = {
-+	.eccbytes = 32,
-+	.eccpos = {
-+		32, 33, 34, 35, 36, 37, 38, 39,
-+		40, 41, 42, 43, 44, 45, 46, 47,
-+		48, 49, 50, 51, 52, 53, 54, 55,
-+		56, 57, 58, 59, 60, 61, 62, 63
-+	},
-+	.oobfree = { {1, 7}, {9, 7}, {17, 7}, {25, 6}, {0, 0} }
-+};
-+
-+static struct nand_ecclayout nand_oob_128 = {
-+	.eccbytes = 64,
-+	.eccpos = {
-+		64, 65, 66, 67, 68, 69, 70, 71,
-+		72, 73, 74, 75, 76, 77, 78, 79,
-+		80, 81, 82, 83, 84, 85, 86, 86,
-+		88, 89, 90, 91, 92, 93, 94, 95,
-+		96, 97, 98, 99, 100, 101, 102, 103,
-+		104, 105, 106, 107, 108, 109, 110, 111,
-+		112, 113, 114, 115, 116, 117, 118, 119,
-+		120, 121, 122, 123, 124, 125, 126, 127
-+	},
-+	.oobfree = {
-+		{1, 7}, {9, 7}, {17, 7}, {25, 7},
-+		{33, 7}, {41, 7}, {49, 7}, {57, 6}
-+	}
-+};
-+
-+/*
-+ * Local read/write/set/clear register operations.
-+ */
-+static inline u8 regread8(u32 addr)
-+{
-+	return readb(host->regs + addr);
-+}
-+
-+static inline u16 regread16(u32 addr)
-+{
-+	return readw(host->regs + addr);
-+}
-+
-+static inline void regwrite16(u32 addr, u16 data)
-+{
-+	writew(data, host->regs + addr);
-+}
-+
-+static inline u32 regread32(u32 addr)
-+{
-+	return readl(host->regs + addr);
-+}
-+
-+static inline void regwrite32(u32 addr, u32 data)
-+{
-+	writel(data, host->regs + addr);
-+}
-+
-+static inline void regset32(u32 addr, u32 data)
-+{
-+	u32 value;
-+
-+	value = regread32(addr) | data;
-+	regwrite32(addr, value);
-+}
-+
-+static inline void regset16(u32 addr, u16 data)
-+{
-+	u16 value;
-+
-+	value = regread16(addr) | data;
-+	regwrite16(addr, value);
-+}
-+
-+static inline void regclr16(u32 addr, u16 data)
-+{
-+	u16 value;
-+
-+	value = regread16(addr) & (~data);
-+	regwrite16(addr, value);
-+}
-+
-+/*
-+ * Local ECC register read/write operations. These are implemented as a
-+ * separate set of methods because the ECC register bank is a physically
-+ * separate window within the address space.
-+ */
-+static inline u16 ecc_read16(u32 addr)
-+{
-+	return readw(host->ecc + addr);
-+}
-+
-+static inline void ecc_write16(u32 addr, u16 data)
-+{
-+	writew(data, host->ecc + addr);
-+}
-+
-+static inline u32 ecc_read32(u32 addr)
-+{
-+	return readl(host->ecc + addr);
-+}
-+
-+static inline void ecc_write32(u32 addr, u32 data)
-+{
-+	writel(data, host->ecc + addr);
-+}
-+
-+static void ecc_config(u32 ecc_bit)
-+{
-+	u32 ecc_bit_cfg = ECC_CNFG_ECC4;
-+	u32 ENCODESize;
-+	u32 DECODESize;
-+	u32 val;
-+
-+	switch (ecc_bit) {
-+	case 4:
-+		ecc_bit_cfg = ECC_CNFG_ECC4;
-+		break;
-+	case 8:
-+		ecc_bit_cfg = ECC_CNFG_ECC8;
-+		break;
-+	case 10:
-+		ecc_bit_cfg = ECC_CNFG_ECC10;
-+		break;
-+	case 12:
-+		ecc_bit_cfg = ECC_CNFG_ECC12;
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	ecc_write16(ECC_DECCON_REG16, DEC_DE);
-+	while (!ecc_read16(ECC_DECIDLE_REG16))
-+		;
-+
-+	ecc_write16(ECC_ENCCON_REG16, ENC_DE);
-+	while (!ecc_read32(ECC_ENCIDLE_REG32))
-+		;
-+
-+	/* setup FDM register base */
-+	ecc_write32(ECC_FDMADDR_REG32, (u32)NFI_FDM0L_REG32);
-+
-+	/* Sector + FDM */
-+	ENCODESize = (NAND_SECTOR_SIZE + 8) << 3;
-+	/* Sector + FDM + YAFFS2 meta data bits */
-+	DECODESize = ((NAND_SECTOR_SIZE + 8) << 3) + ecc_bit * 13;
-+
-+	/* configure ECC decoder && encoder */
-+	ecc_write32(ECC_DECCNFG_REG32,
-+		    ecc_bit_cfg | DEC_CNFG_NFI | DEC_CNFG_EMPTY_EN |
-+		    (DECODESize << DEC_CNFG_CODE_SHIFT));
-+
-+	ecc_write32(ECC_ENCCNFG_REG32,
-+		    ecc_bit_cfg | ENC_CNFG_NFI |
-+		    (ENCODESize << ENC_CNFG_MSG_SHIFT));
-+
-+	val = ecc_read32(ECC_DECCNFG_REG32) | DEC_CNFG_EL;
-+	ecc_write32(ECC_DECCNFG_REG32, val);
-+}
-+
-+static void ecc_decode_start(void)
-+{
-+	while (!(ecc_read16(ECC_DECIDLE_REG16) & DEC_IDLE))
-+		;
-+	ecc_write16(ECC_DECCON_REG16, DEC_EN);
-+}
-+
-+static void ecc_decode_end(void)
-+{
-+	while (!(ecc_read16(ECC_DECIDLE_REG16) & DEC_IDLE))
-+		;
-+	ecc_write16(ECC_DECCON_REG16, DEC_DE);
-+}
-+
-+static void ecc_encode_start(void)
-+{
-+	while (!(ecc_read32(ECC_ENCIDLE_REG32) & ENC_IDLE))
-+		;
-+	ecc_write16(ECC_ENCCON_REG16, ENC_EN);
-+}
-+
-+static void ecc_encode_end(void)
-+{
-+	/* wait for device returning idle */
-+	while (!(ecc_read32(ECC_ENCIDLE_REG32) & ENC_IDLE))
-+		;
-+	ecc_write16(ECC_ENCCON_REG16, ENC_DE);
-+}
-+
-+static int check_bch_error(struct mtd_info *mtd, u8 *buf, u32 sector, u32 page)
-+{
-+	struct nand_chip *chip = mtd_to_nand(mtd);
-+	struct host *host = nand_get_controller_data(chip);
-+	u16 sectormask = 1 << sector;
-+	u32 errdebug, i, errnum;
-+	u32 timeout = 0xffff;
-+	u32 byte, bitoffset, bit1, bit2;
-+	u32 bit[6];
-+	int corrected = 0;
-+
-+	/* Wait for Decode Done */
-+	while ((sectormask & ecc_read16(ECC_DECDONE_REG16)) == 0) {
-+		timeout--;
-+		if (timeout == 0)
-+			return -EIO;
-+	}
-+
-+	/*
-+	 * We will manually correct the error bits in the last sector,
-+	 * not all the sectors of the page!
-+	 */
-+	memset(bit, 0, sizeof(bit));
-+	errdebug = ecc_read32(ECC_DECENUM_REG32);
-+	errnum = ecc_read32(ECC_DECENUM_REG32) >> (sector << 2);
-+	errnum &= 0xf;
-+
-+	if (errnum == 0)
-+		return 0;
-+
-+	if (errnum == 0xf) {
-+		/*
-+		 * Increment the last read's failed counter only. The
-+		 * caller supposed to check if it is a blank page with
-+		 * bit-flips, or a real ECC error. If the latter, it
-+		 * should increment the failed counter with this last
-+		 * read's failed counter
-+		 */
-+		host->last_failed++;
-+		corrected = -EBADMSG;
-+	} else {
-+		corrected = errnum;
-+
-+		for (i = 0; i < ((errnum + 1) >> 1); ++i) {
-+			bit[i] = ecc_read32(ECC_DECEL0_REG32 + i);
-+			bit1 = bit[i] & 0x1FFF;
-+			/*
-+			 * Check if bitflip is in data block (< 0x1000)
-+			 * or OOB. Fix it only in data block.
-+			 */
-+			if (bit1 < 0x1000) {
-+				byte = bit1 / 8;
-+				bitoffset = bit1 % 8;
-+				buf[byte] = buf[byte] ^ (1 << bitoffset);
-+			}
-+
-+			mtd->ecc_stats.corrected++;
-+
-+			bit2 = (bit[i] >> 16) & 0x1FFF;
-+			if (bit2 != 0) {
-+				/*
-+				 * Check if bitflip is in data block
-+				 * (< 0x1000) or OOB. Fix it only in
-+				 * data block.
-+				 */
-+				if (bit2 < 0x1000) {
-+					byte = bit2 / 8;
-+					bitoffset = bit2 % 8;
-+					buf[byte] = buf[byte] ^
-+						    (1 << bitoffset);
-+				}
-+
-+				mtd->ecc_stats.corrected++;
-+			}
-+		}
-+	}
-+	if ((ecc_read16(ECC_DECFER_REG16) & (1 << sector)) == 0)
-+		corrected = -EIO;
-+
-+	return corrected;
-+}
-+
-+static bool RFIFOValidSize(u16 size)
-+{
-+	u32 timeout = 0xffff;
-+
-+	while (FIFO_RD_REMAIN(regread16(NFI_FIFOSTA_REG16)) < size) {
-+		timeout--;
-+		if (timeout == 0)
-+			return false;
-+	}
-+	return true;
-+}
-+
-+static bool WFIFOValidSize(u16 size)
-+{
-+	u32 timeout = 0xffff;
-+
-+	while (FIFO_WR_REMAIN(regread16(NFI_FIFOSTA_REG16)) > size) {
-+		timeout--;
-+		if (timeout == 0)
-+			return false;
-+	}
-+	return true;
-+}
-+
-+static bool status_ready(u32 status)
-+{
-+	u32 timeout = 0xffff;
-+
-+	while ((regread32(NFI_STA_REG32) & status) != 0) {
-+		timeout--;
-+		if (timeout == 0)
-+			return false;
-+	}
-+	return true;
-+}
-+
-+static bool reset(void)
-+{
-+	int timeout = 0xffff;
-+
-+	if (regread16(NFI_MASTERSTA_REG16)) {
-+		regwrite16(NFI_CON_REG16, CON_FIFO_FLUSH | CON_NFI_RST);
-+		while (regread16(NFI_MASTERSTA_REG16)) {
-+			timeout--;
-+			if (!timeout)
-+				pr_err("mt7621-nand: %s timeout\n", __func__);
-+		}
-+	}
-+
-+	/* issue reset operation */
-+	regwrite16(NFI_CON_REG16, CON_FIFO_FLUSH | CON_NFI_RST);
-+
-+	return status_ready(STA_NFI_FSM_MASK | STA_NAND_BUSY) &&
-+			    RFIFOValidSize(0) &&
-+			    WFIFOValidSize(0);
-+}
-+
-+static void set_mode(u16 mode)
-+{
-+	u16 v = regread16(NFI_CNFG_REG16);
-+
-+	v &= ~CNFG_OP_MODE_MASK;
-+	v |= mode;
-+	regwrite16(NFI_CNFG_REG16, v);
-+}
-+
-+static void set_autoformat(bool enable)
-+{
-+	if (enable)
-+		regset16(NFI_CNFG_REG16, CNFG_AUTO_FMT_EN);
-+	else
-+		regclr16(NFI_CNFG_REG16, CNFG_AUTO_FMT_EN);
-+}
-+
-+static void configure_fdm(u16 size)
-+{
-+	regclr16(NFI_PAGEFMT_REG16, PAGEFMT_FDM_MASK | PAGEFMT_FDM_ECC_MASK);
-+	regset16(NFI_PAGEFMT_REG16, size << PAGEFMT_FDM_SHIFT);
-+	regset16(NFI_PAGEFMT_REG16, size << PAGEFMT_FDM_ECC_SHIFT);
-+}
-+
-+static void configure_lock(void)
-+{
-+	const u32 write_col = 2;
-+	const u32 write_row = 3;
-+	const u32 erase_col = 0;
-+	const u32 erase_row = 3;
-+
-+	regwrite16(NFI_LOCKANOB_REG16,
-+		   (write_col << PROG_CADD_NOB_SHIFT) |
-+		   (write_row << PROG_RADD_NOB_SHIFT) |
-+		   (erase_col << ERASE_CADD_NOB_SHIFT) |
-+		   (erase_row << ERASE_RADD_NOB_SHIFT));
-+}
-+
-+static bool pio_ready(void)
-+{
-+	int count = 0;
-+
-+	while (!(regread16(NFI_PIO_DIRDY_REG16) & 1)) {
-+		count++;
-+		if (count > 0xffff) {
-+			pr_err("mt7621-nand: %s timeout\n", __func__);
-+			return false;
-+		}
-+	}
-+	return true;
-+}
-+
-+static bool set_command(u16 command)
-+{
-+	regwrite16(NFI_CMD_REG16, command);
-+	return status_ready(STA_CMD_STATE);
-+}
-+
-+static bool set_address(u32 column, u32 row, u16 colnob, u16 rownob)
-+{
-+	regwrite32(NFI_COLADDR_REG32, column);
-+	regwrite32(NFI_ROWADDR_REG32, row);
-+	regwrite16(NFI_ADDRNOB_REG16, colnob | (rownob << ADDR_ROW_NOB_SHIFT));
-+	return status_ready(STA_ADDR_STATE);
-+}
-+
-+static void mt7621_cmd_ctrl(struct nand_chip *chip, int dat, unsigned int ctrl)
-+{
-+	if (ctrl & NAND_ALE) {
-+		set_address(dat, 0, 1, 0);
-+	} else if (ctrl & NAND_CLE) {
-+		reset();
-+		set_mode(0x6000);
-+		set_command(dat);
-+	}
-+}
-+
-+static bool check_RW_count(u16 writesize)
-+{
-+	u32 timeout = 0xffff;
-+	u16 sec = writesize >> 9;
-+
-+	while (ADDRCNTR_CNTR(regread16(NFI_ADDRCNTR_REG16)) < sec) {
-+		timeout--;
-+		if (timeout == 0) {
-+			pr_warn("mt7621-nand: %s timeout\n", __func__);
-+			return false;
-+		}
-+	}
-+	return true;
-+}
-+
-+/*
-+ * Reset NFI HW internal state machine and flush NFI in/out FIFO
-+ */
-+static bool ready_for_read(struct nand_chip *chip, u32 row,
-+			   u32 column, bool full, u8 *buf)
-+{
-+	u16 sec = 1 << (chip->page_shift - 9);
-+	u32 colnob = 2, rownob = host->addr_cycles - 2;
-+	bool ret = false;
-+
-+	if (chip->options & NAND_BUSWIDTH_16)
-+		column /= 2;
-+
-+	if (!reset())
-+		goto cleanup;
-+
-+	regset16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
-+	set_mode(CNFG_OP_READ);
-+	regset16(NFI_CNFG_REG16, CNFG_READ_EN);
-+	regwrite16(NFI_CON_REG16, sec << CON_NFI_SEC_SHIFT);
-+
-+	if (full) {
-+		regclr16(NFI_CNFG_REG16, CNFG_AHB);
-+		regset16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
-+	} else {
-+		regclr16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
-+		regclr16(NFI_CNFG_REG16, CNFG_AHB);
-+	}
-+
-+	set_autoformat(full);
-+	if (full)
-+		ecc_decode_start();
-+	if (!set_command(NAND_CMD_READ0))
-+		goto cleanup;
-+	if (!set_address(column, row, colnob, rownob))
-+		goto cleanup;
-+	if (!set_command(NAND_CMD_READSTART))
-+		goto cleanup;
-+	if (!status_ready(STA_NAND_BUSY))
-+		goto cleanup;
-+
-+	ret = true;
-+
-+cleanup:
-+	return ret;
-+}
-+
-+static bool ready_for_write(struct nand_chip *chip, u32 row,
-+			    u32 column, bool full, u8 *buf)
-+{
-+	u32 sec = 1 << (chip->page_shift - 9);
-+	u32 colnob = 2, rownob = host->addr_cycles - 2;
-+	bool ret = false;
-+
-+	if (chip->options & NAND_BUSWIDTH_16)
-+		column /= 2;
-+
-+	/* Reset NFI HW internal state machine and flush NFI in/out FIFO */
-+	if (!reset())
-+		return false;
-+
-+	set_mode(CNFG_OP_PRGM);
-+
-+	regclr16(NFI_CNFG_REG16, CNFG_READ_EN);
-+
-+	regwrite16(NFI_CON_REG16, sec << CON_NFI_SEC_SHIFT);
-+
-+	if (full) {
-+		regclr16(NFI_CNFG_REG16, CNFG_AHB);
-+		regset16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
-+	} else {
-+		regclr16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
-+		regclr16(NFI_CNFG_REG16, CNFG_AHB);
-+	}
-+
-+	set_autoformat(full);
-+
-+	if (full)
-+		ecc_encode_start();
-+
-+	if (!set_command(NAND_CMD_SEQIN))
-+		goto cleanup;
-+	/* FIX ME: For Any Kind of AddrCycle */
-+	if (!set_address(column, row, colnob, rownob))
-+		goto cleanup;
-+
-+	if (!status_ready(STA_NAND_BUSY))
-+		goto cleanup;
-+
-+	ret = true;
-+
-+cleanup:
-+	return ret;
-+}
-+
-+static bool check_dececc_done(u32 sec)
-+{
-+	u32 timeout, dec_mask;
-+
-+	timeout = 0xffff;
-+	dec_mask = (1 << sec) - 1;
-+	while ((dec_mask != ecc_read16(ECC_DECDONE_REG16)) && timeout > 0)
-+		timeout--;
-+	if (timeout == 0) {
-+		pr_err("mt7621-nand: ECC_DECDONE: timeout\n");
-+		return false;
-+	}
-+	return true;
-+}
-+
-+static bool mcu_read_data(u8 *buf, u32 length)
-+{
-+	int timeout = 0xffff;
-+	u32 *buf32 = (u32 *)buf;
-+	u32 i;
-+
-+	if ((u32)buf % 4 || length % 4)
-+		regset16(NFI_CNFG_REG16, CNFG_BYTE_RW);
-+	else
-+		regclr16(NFI_CNFG_REG16, CNFG_BYTE_RW);
-+
-+	/* regwrite32(NFI_STRADDR_REG32, 0); */
-+	regset16(NFI_CON_REG16, CON_NFI_BRD);
-+
-+	if ((u32)buf % 4 || length % 4) {
-+		for (i = 0; (i < (length)) && (timeout > 0);) {
-+			if (regread16(NFI_PIO_DIRDY_REG16) & 1) {
-+				*buf++ = (u8)regread32(NFI_DATAR_REG32);
-+				i++;
-+			} else {
-+				timeout--;
-+			}
-+			if (timeout == 0) {
-+				pr_warn("mt7621-nand: %s timeout\n", __func__);
-+				return false;
-+			}
-+		}
-+	} else {
-+		for (i = 0; (i < (length >> 2)) && (timeout > 0);) {
-+			if (regread16(NFI_PIO_DIRDY_REG16) & 1) {
-+				*buf32++ = regread32(NFI_DATAR_REG32);
-+				i++;
-+			} else {
-+				timeout--;
-+			}
-+			if (timeout == 0) {
-+				pr_warn("mt7621-nand: %s timeout\n", __func__);
-+				return false;
-+			}
-+		}
-+	}
-+
-+	return true;
-+}
-+
-+static bool mcu_write_data(struct mtd_info *mtd, const u8 *buf, u32 length)
-+{
-+	u32 timeout = 0xffff;
-+	u32 *buf32;
-+	u32 i;
-+
-+	regclr16(NFI_CNFG_REG16, CNFG_BYTE_RW);
-+	regset16(NFI_CON_REG16, CON_NFI_BWR);
-+	buf32 = (u32 *)buf;
-+
-+	if ((u32)buf % 4 || length % 4)
-+		regset16(NFI_CNFG_REG16, CNFG_BYTE_RW);
-+	else
-+		regclr16(NFI_CNFG_REG16, CNFG_BYTE_RW);
-+
-+	if ((u32)buf % 4 || length % 4) {
-+		for (i = 0; (i < (length)) && (timeout > 0);) {
-+			if (regread16(NFI_PIO_DIRDY_REG16) & 1) {
-+				regwrite32(NFI_DATAW_REG32, *buf++);
-+				i++;
-+			} else {
-+				timeout--;
-+			}
-+			if (timeout == 0) {
-+				pr_warn("mt7621-nand: %s timeout\n", __func__);
-+				return false;
-+			}
-+		}
-+	} else {
-+		for (i = 0; (i < (length >> 2)) && (timeout > 0);) {
-+			if (regread16(NFI_PIO_DIRDY_REG16) & 1) {
-+				regwrite32(NFI_DATAW_REG32, *buf32++);
-+				i++;
-+			} else {
-+				timeout--;
-+			}
-+			if (timeout == 0) {
-+				pr_warn("mt7621-nand: %s timeout\n", __func__);
-+				return false;
-+			}
-+		}
-+	}
-+
-+	return true;
-+}
-+
-+static void read_fdm_data(u8 *buf, u32 sec)
-+{
-+	u32 *buf32 = (u32 *)buf;
-+	u32 i;
-+
-+	if (buf32) {
-+		for (i = 0; i < sec; ++i) {
-+			*buf32++ = regread32(NFI_FDM0L_REG32 + (i << 3));
-+			*buf32++ = regread32(NFI_FDM0M_REG32 + (i << 3));
-+		}
-+	}
-+}
-+
-+static u8 fdm_buf[64];
-+
-+static void write_fdm_data(struct nand_chip *chip, u8 *buf, u32 sec)
-+{
-+	struct nand_oobfree *free_entry;
-+	bool empty = true;
-+	u8 checksum = 0;
-+	u32 *buf32;
-+	u32 i, j;
-+
-+	memcpy(fdm_buf, buf, sec * 8);
-+
-+	free_entry = layout->oobfree;
-+	for (i = 0; i < MTD_MAX_OOBFREE_ENTRIES && free_entry[i].length; i++) {
-+		for (j = 0; j < free_entry[i].length; j++) {
-+			if (buf[free_entry[i].offset + j] != 0xff)
-+				empty = false;
-+			checksum ^= buf[free_entry[i].offset + j];
-+		}
-+	}
-+
-+	if (!empty)
-+		fdm_buf[free_entry[i - 1].offset + free_entry[i - 1].length] =
-+			checksum;
-+
-+	buf32 = (u32 *)fdm_buf;
-+	for (i = 0; i < sec; ++i) {
-+		regwrite32(NFI_FDM0L_REG32 + (i << 3), *buf32++);
-+		regwrite32(NFI_FDM0M_REG32 + (i << 3), *buf32++);
-+	}
-+}
-+
-+static void stop_read(void)
-+{
-+	regclr16(NFI_CON_REG16, CON_NFI_BRD);
-+	reset();
-+	ecc_decode_end();
-+	regwrite16(NFI_INTR_EN_REG16, 0);
-+}
-+
-+static void stop_write(void)
-+{
-+	regclr16(NFI_CON_REG16, CON_NFI_BWR);
-+	ecc_encode_end();
-+	regwrite16(NFI_INTR_EN_REG16, 0);
-+}
-+
-+/*
-+ * This is a copy of the nand_check_erased_buf() function from nand_base.c, to
-+ * keep the nand_base.c clean
-+ */
-+static int check_erased_buf(void *buf, int len, int bitflips_threshold)
-+{
-+	const unsigned char *bitmap = buf;
-+	int bitflips = 0;
-+	int weight;
-+
-+	for (; len && ((uintptr_t)bitmap) % sizeof(long);
-+	     len--, bitmap++) {
-+		weight = hweight8(*bitmap);
-+		bitflips += BITS_PER_BYTE - weight;
-+		if (unlikely(bitflips > bitflips_threshold))
-+			return -EBADMSG;
-+	}
-+
-+	for (; len >= sizeof(long);
-+	     len -= sizeof(long), bitmap += sizeof(long)) {
-+		unsigned long d = *((unsigned long *)bitmap);
-+
-+		if (d == ~0UL)
-+			continue;
-+		weight = hweight_long(d);
-+		bitflips += BITS_PER_LONG - weight;
-+		if (unlikely(bitflips > bitflips_threshold))
-+			return -EBADMSG;
-+	}
-+
-+	for (; len > 0; len--, bitmap++) {
-+		weight = hweight8(*bitmap);
-+		bitflips += BITS_PER_BYTE - weight;
-+		if (unlikely(bitflips > bitflips_threshold))
-+			return -EBADMSG;
-+	}
-+
-+	return bitflips;
-+}
-+
-+/*
-+ * This is the modified version of the nand_check_erased_ecc_chunk() in
-+ * nand_base.c. This driver cannot use the generic function, as the ECC layout
-+ * is slightly different (the 2k(data)+64(OOB) page is split up in to 4
-+ * (512-byte data + 16-byte OOB) pages. Each of these sectors have 4-bit ECC,
-+ * so we check them separately, and allow 4 bitflips / sector.
-+ * We'll fix up the page to all-0xff only if all sectors in the page appears to
-+ * be blank
-+ */
-+static int check_erased_ecc_chunk(void *data, int datalen, void *oob,
-+				  int ooblen, int bitflips_threshold)
-+{
-+	int data_bitflips = 0, oob_bitflips = 0;
-+
-+	data_bitflips = check_erased_buf(data, datalen, bitflips_threshold);
-+	if (data_bitflips < 0)
-+		return data_bitflips;
-+
-+	bitflips_threshold -= data_bitflips;
-+
-+	oob_bitflips = check_erased_buf(oob, ooblen, bitflips_threshold);
-+	if (oob_bitflips < 0)
-+		return oob_bitflips;
-+
-+	bitflips_threshold -= oob_bitflips;
-+	return data_bitflips + oob_bitflips;
-+}
-+
-+static int read_oob_raw(struct mtd_info *mtd, u8 *buf, int page, int len)
-+{
-+	struct nand_chip *chip = mtd_to_nand(mtd);
-+	int sec_num = 1 << (chip->page_shift - 9);
-+	int spare_per_sector = mtd->oobsize / sec_num;
-+	u32 column = 0;
-+	u32 sector = 0;
-+	int res = 0;
-+	int read_len = 0;
-+
-+	if (len > NAND_MAX_OOBSIZE || len % OOB_AVAI_PER_SECTOR || !buf) {
-+		pr_warn("mt7621-nand: invalid parameter, len: %d, buf: %p\n",
-+			len, buf);
-+		return -EINVAL;
-+	}
-+
-+	while (len > 0) {
-+		read_len = min(len, spare_per_sector);
-+		column = NAND_SECTOR_SIZE +
-+			 sector * (NAND_SECTOR_SIZE + spare_per_sector);
-+		if (!ready_for_read(chip, page, column, false, NULL)) {
-+			pr_warn("mt7621-nand: ready_for_read() failed\n");
-+			res = -EIO;
-+			goto error;
-+		}
-+		if (!mcu_read_data(buf + spare_per_sector * sector, read_len)) {
-+			pr_warn("mt7621-nand: mcu_read_data() failed\n");
-+			res = -EIO;
-+			goto error;
-+		}
-+		check_RW_count(read_len);
-+		stop_read();
-+		sector++;
-+		len -= read_len;
-+	}
-+
-+error:
-+	regclr16(NFI_CON_REG16, CON_NFI_BRD);
-+	return res;
-+}
-+
-+static int write_oob_raw(struct mtd_info *mtd, const u8 *buf, int page, int len)
-+{
-+	struct nand_chip *chip = mtd_to_nand(mtd);
-+	int sec_num = 1 << (chip->page_shift - 9);
-+	int spare_per_sector = mtd->oobsize / sec_num;
-+	u32 column = 0;
-+	u32 sector = 0;
-+	int write_len = 0;
-+	int status;
-+
-+	if (len > NAND_MAX_OOBSIZE || len % OOB_AVAI_PER_SECTOR || !buf) {
-+		pr_warn("mt7621-nand: invalid parameter, len: %d, buf: %p\n",
-+			len, buf);
-+		return -EINVAL;
-+	}
-+
-+	while (len > 0) {
-+		write_len = min(len, spare_per_sector);
-+		column = sector * (NAND_SECTOR_SIZE + spare_per_sector) +
-+			 NAND_SECTOR_SIZE;
-+		if (!ready_for_write(chip, page, column, false, NULL))
-+			return -EIO;
-+		if (!mcu_write_data(mtd, buf + sector * spare_per_sector,
-+				    write_len))
-+			return -EIO;
-+		check_RW_count(write_len);
-+		regclr16(NFI_CON_REG16, CON_NFI_BWR);
-+		set_command(NAND_CMD_PAGEPROG);
-+		while (regread32(NFI_STA_REG32) & STA_NAND_BUSY)
-+			;
-+		status = chip->legacy.waitfunc(chip);
-+		if (status & NAND_STATUS_FAIL) {
-+			pr_warn("mt7621-nand: failed status: %d\n", status);
-+			return -EIO;
-+		}
-+		len -= write_len;
-+		sector++;
-+	}
-+
-+	return 0;
-+}
-+
-+static int exec_read_page(struct mtd_info *mtd, u32 row, u32 page_size,
-+			  u8 *buf, u8 *fdmbuf)
-+{
-+	struct nand_chip *chip = mtd_to_nand(mtd);
-+	struct host *host = nand_get_controller_data(chip);
-+	u32 sec = page_size >> 9;
-+	int corrected = 0;
-+
-+	host->last_failed = 0;
-+
-+	if (ready_for_read(chip, row, 0, true, buf)) {
-+		int j;
-+
-+		for (j = 0; j < sec; j++) {
-+			int ret;
-+
-+			if (!mcu_read_data(buf + j * 512, 512)) {
-+				corrected = -EIO;
-+				break;
-+			}
-+			if (!check_dececc_done(j + 1)) {
-+				corrected = -EIO;
-+				break;
-+			}
-+			ret = check_bch_error(mtd, buf + j * 512, j, row);
-+			if (ret < 0) {
-+				corrected = ret;
-+				if (ret != -EBADMSG)
-+					break;
-+			} else if (corrected >= 0) {
-+				corrected = max_t(int, corrected, ret);
-+			}
-+		}
-+		if (!status_ready(STA_NAND_BUSY))
-+			corrected = -EIO;
-+
-+		read_fdm_data(fdmbuf, sec);
-+		stop_read();
-+	} else {
-+		corrected = -EIO;
-+	}
-+
-+	if (corrected == -EBADMSG) {
-+		u32 local_oob_aligned[NAND_MAX_OOBSIZE / sizeof(u32)];
-+		u8 *local_oob = (u8 *)local_oob_aligned;
-+		int ret;
-+
-+		/*
-+		 * If there was an uncorrectable ECC error, check if it is a
-+		 * blank page with bit-flips. For this, we check the number of
-+		 * 0s in each sector (including the OOB), which should not
-+		 * exceed the ECC strength. Until the number of 0s is lower or
-+		 * equal, we consider it as a blank page
-+		 */
-+		ret = read_oob_raw(mtd, local_oob, row, mtd->oobsize);
-+		if (ret == 0) {
-+			int spare_per_sector = mtd->oobsize / sec;
-+			int sector_size = page_size / sec;
-+			int max_bitflips = 0;
-+			u32 corrected = 0;
-+			int i;
-+
-+			for (i = 0; i < sec; i++) {
-+				ret = check_erased_ecc_chunk(
-+					&buf[i * sector_size], sector_size,
-+					&local_oob[i * spare_per_sector],
-+					spare_per_sector, chip->ecc.strength);
-+				if (ret < 0)
-+					break;
-+
-+				max_bitflips = max_t(int, max_bitflips, ret);
-+				corrected += ret;
-+			}
-+
-+			if (ret >= 0) {
-+				mtd->ecc_stats.corrected += corrected;
-+
-+				memset(buf, 0xff, page_size);
-+				memset(fdmbuf, 0xff, sizeof(u32) * 2 * sec);
-+
-+				corrected = max_bitflips;
-+			} else {
-+				mtd->ecc_stats.failed += host->last_failed;
-+				pr_err("mt7621-nand: uncorrectable ECC errors at page=%d\n",
-+				       row);
-+			}
-+		} else {
-+			mtd->ecc_stats.failed += host->last_failed;
-+			pr_warn("mt7621-nand: %s failed to read oob after ECC error\n",
-+				__func__);
-+			/* Keep return value as -EBADMSG */
-+		}
-+	}
-+
-+	return corrected;
-+}
-+
-+static int exec_write_page(struct mtd_info *mtd, u32 row,
-+			   u32 page_size, u8 *buf, u8 *fdmbuf)
-+{
-+	struct nand_chip *chip = mtd_to_nand(mtd);
-+	u32 sec = page_size >> 9;
-+	u8 status;
-+
-+	if (ready_for_write(chip, row, 0, true, buf)) {
-+		write_fdm_data(chip, fdmbuf, sec);
-+		mcu_write_data(mtd, buf, page_size);
-+		check_RW_count(page_size);
-+		stop_write();
-+		set_command(NAND_CMD_PAGEPROG);
-+		while (regread32(NFI_STA_REG32) & STA_NAND_BUSY)
-+			;
-+	}
-+
-+	status = chip->legacy.waitfunc(chip);
-+	if (status & NAND_STATUS_FAIL)
-+		return -EIO;
-+	return 0;
-+}
-+
-+static void command_bp(struct nand_chip *chip, unsigned int command,
-+		       int column, int page)
-+{
-+	struct mtd_info *mtd = nand_to_mtd(chip);
-+
-+	switch (command) {
-+	case NAND_CMD_SEQIN:
-+		memset(host->OOB, 0xff, sizeof(host->OOB));
-+		host->data_buf = NULL;
-+		host->row = page;
-+		host->column = column;
-+		break;
-+
-+	case NAND_CMD_PAGEPROG:
-+		if (host->data_buf || (host->OOB[0] != 0xff)) {
-+			u8 *buf = host->data_buf ? host->data_buf
-+						 : chip->data_buf;
-+
-+			exec_write_page(mtd, host->row, mtd->writesize,
-+					buf, host->OOB);
-+			host->row = (u32)-1;
-+			host->OOBrow = (u32)-1;
-+		}
-+		break;
-+
-+	case NAND_CMD_READOOB:
-+		host->row = page;
-+		host->column = column + mtd->writesize;
-+		break;
-+
-+	case NAND_CMD_READ0:
-+		host->row = page;
-+		host->column = column;
-+		break;
-+
-+	case NAND_CMD_ERASE1:
-+		reset();
-+		set_mode(CNFG_OP_ERASE);
-+		set_command(NAND_CMD_ERASE1);
-+		set_address(0, page, 0, host->addr_cycles - 2);
-+		break;
-+
-+	case NAND_CMD_ERASE2:
-+		set_command(NAND_CMD_ERASE2);
-+		while (regread32(NFI_STA_REG32) & STA_NAND_BUSY)
-+			;
-+		break;
-+
-+	case NAND_CMD_STATUS:
-+		reset();
-+		regclr16(NFI_CNFG_REG16, CNFG_BYTE_RW);
-+		set_mode(CNFG_OP_SRD);
-+		set_mode(CNFG_READ_EN);
-+		regclr16(NFI_CNFG_REG16, CNFG_AHB);
-+		regclr16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
-+		set_command(NAND_CMD_STATUS);
-+		regclr16(NFI_CON_REG16, CON_NFI_NOB_MASK);
-+		regwrite16(NFI_CON_REG16,
-+			   CON_NFI_SRD | (1 << CON_NFI_NOB_SHIFT));
-+		host->cmdstatus = true;
-+		break;
-+
-+	case NAND_CMD_RESET:
-+		reset();
-+		regwrite16(NFI_INTR_EN_REG16, INTR_RST_DONE_EN);
-+		set_command(NAND_CMD_RESET);
-+		regwrite16(NFI_CNRNB_REG16, 0xf1);
-+		while (!(regread16(NFI_INTR_REG16) & INTR_RST_DONE_EN))
-+			;
-+		break;
-+
-+	case NAND_CMD_READID:
-+		reset();
-+		/* Disable HW ECC */
-+		regclr16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
-+		regclr16(NFI_CNFG_REG16, CNFG_AHB);
-+		regset16(NFI_CNFG_REG16, CNFG_READ_EN | CNFG_BYTE_RW);
-+		reset();
-+		set_mode(CNFG_OP_SRD);
-+		set_command(NAND_CMD_READID);
-+		set_address(0, 0, 1, 0);
-+		regwrite16(NFI_CON_REG16, CON_NFI_SRD);
-+		while (regread32(NFI_STA_REG32) & STA_DATAR_STATE)
-+			;
-+		break;
-+
-+	default:
-+		pr_err("mt7621-nand: unknown NAND command, 0x%x\n", command);
-+		break;
-+	}
-+}
-+
-+static void set_ecc_mode(struct mtd_info *mtd)
-+{
-+	struct nand_chip *chip = mtd_to_nand(mtd);
-+	u32 spare_per_sector = mtd->oobsize / (mtd->writesize / 512);
-+	u32 spare_bit = PAGEFMT_SPARE_16;
-+	u32 ecc_bit = 4;
-+
-+	if (spare_per_sector >= 28) {
-+		spare_bit = PAGEFMT_SPARE_28;
-+		ecc_bit = 12;
-+		spare_per_sector = 28;
-+	} else if (spare_per_sector >= 27) {
-+		spare_bit = PAGEFMT_SPARE_27;
-+		ecc_bit = 8;
-+		spare_per_sector = 27;
-+	} else if (spare_per_sector >= 26) {
-+		spare_bit = PAGEFMT_SPARE_26;
-+		ecc_bit = 8;
-+		spare_per_sector = 26;
-+	} else if (spare_per_sector >= 16) {
-+		spare_bit = PAGEFMT_SPARE_16;
-+		ecc_bit = 4;
-+		spare_per_sector = 16;
-+	} else {
-+		pr_warn("mt7621-nand: NFI not support oobsize: %x\n",
-+			spare_per_sector);
-+	}
-+	chip->ecc.strength = ecc_bit;
-+	mtd->oobsize = spare_per_sector * (mtd->writesize / 512);
-+	pr_info("mt7621-nand: ecc bit: %d, spare_per_sector: %d\n",
-+		ecc_bit, spare_per_sector);
-+
-+	/* Setup PageFormat */
-+	if (mtd->writesize == 4096) {
-+		regset16(NFI_PAGEFMT_REG16,
-+			 (spare_bit << PAGEFMT_SPARE_SHIFT) | PAGEFMT_4K);
-+		chip->legacy.cmdfunc = command_bp;
-+	} else if (mtd->writesize == 2048) {
-+		regset16(NFI_PAGEFMT_REG16,
-+			 (spare_bit << PAGEFMT_SPARE_SHIFT) | PAGEFMT_2K);
-+		chip->legacy.cmdfunc = command_bp;
-+	}
-+	ecc_config(ecc_bit);
-+}
-+
-+static void select_chip(struct nand_chip *chip, int nr)
-+{
-+	switch (nr) {
-+	case -1:
-+		break;
-+	case 0:
-+	case 1:
-+		/* Jun Shen, 2011.04.13 */
-+		/* Note: MT6577 EVB NAND is mounted on CS0, but FPGA is CS1 */
-+		regwrite16(NFI_CSEL_REG16, nr);
-+		/* Jun Shen, 2011.04.13 */
-+		break;
-+	}
-+}
-+
-+static u8 read_byte(struct nand_chip *chip)
-+{
-+	u8 retval = 0;
-+
-+	if (!pio_ready()) {
-+		pr_err("mt7621-nand: pio ready timeout\n");
-+		retval = false;
-+	}
-+
-+	if (host->cmdstatus) {
-+		retval = regread8(NFI_DATAR_REG32);
-+		regclr16(NFI_CON_REG16, CON_NFI_NOB_MASK);
-+		reset();
-+		regset16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
-+		host->cmdstatus = false;
-+	} else {
-+		retval = regread8(NFI_DATAR_REG32);
-+	}
-+
-+	return retval;
-+}
-+
-+static void read_buf(struct nand_chip *chip, u8 *buf, int len)
-+{
-+	struct mtd_info *mtd = nand_to_mtd(chip);
-+	u32 page_size = mtd->writesize;
-+	u32 column = host->column;
-+
-+	if (column < page_size) {
-+		if ((column == 0) && (len >= page_size)) {
-+			exec_read_page(mtd, host->row, page_size, buf,
-+				       host->OOB);
-+			if (len > page_size) {
-+				u32 size;
-+
-+				size = min(len - page_size, sizeof(host->OOB));
-+				memcpy(buf + page_size, host->OOB, size);
-+			}
-+		} else {
-+			exec_read_page(mtd, host->row, page_size,
-+				       chip->data_buf, host->OOB);
-+			memcpy(buf, chip->data_buf + column, len);
-+		}
-+		host->OOBrow = host->row;
-+	} else {
-+		u32 offset = column - page_size;
-+		u32 size = min(len - offset, sizeof(host->OOB));
-+
-+		if (host->OOBrow != host->row) {
-+			exec_read_page(mtd, host->row, page_size,
-+				       chip->data_buf, host->OOB);
-+			host->OOBrow = host->row;
-+		}
-+		memcpy(buf, host->OOB + offset, size);
-+	}
-+	host->column += len;
-+}
-+
-+static void write_buf(struct nand_chip *chip, const u8 *buf, int len)
-+{
-+	struct mtd_info *mtd = nand_to_mtd(chip);
-+	u32 page_size = mtd->writesize;
-+	u32 column = host->column;
-+	int size, i;
-+
-+	if (column >= page_size) {
-+		u32 offset = column - page_size;
-+		u8 *OOB = host->OOB + offset;
-+
-+		size = min(len, (int)(sizeof(host->OOB) - offset));
-+		for (i = 0; i < size; i++)
-+			OOB[i] &= buf[i];
-+	} else {
-+		host->data_buf = (u8 *)buf;
-+	}
-+
-+	host->column += len;
-+}
-+
-+static int write_page_hwecc(struct nand_chip *chip, const u8 *buf,
-+			    int oob_required, int page)
-+{
-+	struct mtd_info *mtd = nand_to_mtd(chip);
-+
-+	nand_prog_page_begin_op(chip, page, 0, buf, mtd->writesize);
-+	write_buf(chip, chip->oob_poi, mtd->oobsize);
-+	return nand_prog_page_end_op(chip);
-+}
-+
-+static int read_page_hwecc(struct nand_chip *chip, u8 *buf,
-+			   int oob_required, int page)
-+{
-+	struct mtd_info *mtd = nand_to_mtd(chip);
-+	int corrected;
-+
-+	corrected = exec_read_page(mtd, page, mtd->writesize,
-+				   buf, chip->oob_poi);
-+
-+	return (corrected == -EBADMSG) ? 0 : corrected;
-+}
-+
-+static int write_oob_hw(struct nand_chip *chip, int page)
-+{
-+	struct mtd_info *mtd = nand_to_mtd(chip);
-+	int sec_num = 1 << (chip->page_shift - 9);
-+	int spare_per_sector = mtd->oobsize / sec_num;
-+	int i, iter;
-+
-+	memcpy(local_oob_buf, chip->oob_poi, mtd->oobsize);
-+
-+	/* copy ecc data */
-+	for (i = 0; i < layout->eccbytes; i++) {
-+		iter = (i / (spare_per_sector - OOB_AVAI_PER_SECTOR)) *
-+		       spare_per_sector +
-+		       OOB_AVAI_PER_SECTOR +
-+		       i % (spare_per_sector - OOB_AVAI_PER_SECTOR);
-+		local_oob_buf[iter] = chip->oob_poi[layout->eccpos[i]];
-+	}
-+
-+	/* copy FDM data */
-+	for (i = 0; i < sec_num; i++)
-+		memcpy(&local_oob_buf[i * spare_per_sector],
-+		       &chip->oob_poi[i * OOB_AVAI_PER_SECTOR],
-+		       OOB_AVAI_PER_SECTOR);
-+
-+	return write_oob_raw(mtd, local_oob_buf, page, mtd->oobsize);
-+}
-+
-+static int write_oob(struct nand_chip *chip, int page)
-+{
-+	int page_per_block = 1 << (chip->phys_erase_shift - chip->page_shift);
-+	int block = page / page_per_block;
-+	int page_in_block = page % page_per_block;
-+
-+	if (write_oob_hw(chip, page_in_block + block * page_per_block)) {
-+		pr_warn("mt7621-nand: write oob fail at block: 0x%x, page: 0x%x\n",
-+			block, page_in_block);
-+		return NAND_STATUS_FAIL;
-+	}
-+
-+	return 0;
-+}
-+
-+static int read_oob_hw(struct nand_chip *chip, int page)
-+{
-+	struct mtd_info *mtd = nand_to_mtd(chip);
-+	int sec_num = 1 << (chip->page_shift - 9);
-+	int spare_per_sector = mtd->oobsize / sec_num;
-+	int i;
-+	u8 iter = 0;
-+
-+	if (read_oob_raw(mtd, chip->oob_poi, page, mtd->oobsize)) {
-+		pr_err("mt7621-nand: read_oob_raw() return failed\n");
-+		return -EIO;
-+	}
-+
-+	/* adjust to ecc physical layout to memory layout */
-+	/*********************************************************/
-+	/* FDM0 | ECC0 | FDM1 | ECC1 | FDM2 | ECC2 | FDM3 | ECC3 */
-+	/*  8B  |  8B  |  8B  |  8B  |  8B  |  8B  |  8B  |  8B  */
-+	/*********************************************************/
-+
-+	memcpy(local_oob_buf, chip->oob_poi, mtd->oobsize);
-+
-+	/* copy ecc data */
-+	for (i = 0; i < layout->eccbytes; i++) {
-+		iter = (i / (spare_per_sector - OOB_AVAI_PER_SECTOR)) *
-+		       spare_per_sector +
-+		       OOB_AVAI_PER_SECTOR +
-+		       i % (spare_per_sector - OOB_AVAI_PER_SECTOR);
-+		chip->oob_poi[layout->eccpos[i]] = local_oob_buf[iter];
-+	}
-+
-+	/* copy FDM data */
-+	for (i = 0; i < sec_num; i++)
-+		memcpy(&chip->oob_poi[i * OOB_AVAI_PER_SECTOR],
-+		       &local_oob_buf[i * spare_per_sector],
-+		       OOB_AVAI_PER_SECTOR);
-+
-+	return 0;
-+}
-+
-+static int read_oob(struct nand_chip *chip, int page)
-+{
-+	int page_per_block = 1 << (chip->phys_erase_shift - chip->page_shift);
-+	int block = page / page_per_block;
-+	int page_in_block = page % page_per_block;
-+
-+	if (read_oob_hw(chip, page_in_block + block * page_per_block) != 0)
-+		return -1;
-+	return 0;
-+}
-+
-+static int block_bad_hw(struct nand_chip *chip, loff_t ofs)
-+{
-+	struct mtd_info *mtd = nand_to_mtd(chip);
-+	int page = (int)(ofs >> chip->page_shift);
-+	unsigned int page_per_block;
-+	u8 oob_buf[8];
-+
-+	page_per_block = 1 << (chip->phys_erase_shift - chip->page_shift);
-+	page &= ~(page_per_block - 1);
-+	if (read_oob_raw(mtd, oob_buf, page, sizeof(oob_buf))) {
-+		pr_warn("mt7621-nand: read_oob_raw() failed\n");
-+		return 1;
-+	}
-+
-+	if (oob_buf[0] != 0xff) {
-+		pr_warn("mt7621-nand: bad block detected at page=%d\n", page);
-+		return 1;
-+	}
-+
-+	return 0;
-+}
-+
-+static int block_bad(struct nand_chip *chip, loff_t ofs)
-+{
-+	int block = (int)ofs >> chip->phys_erase_shift;
-+
-+	return block_bad_hw(chip, block << chip->phys_erase_shift);
-+}
-+
-+static void init_hw(struct host *host)
-+{
-+	host->OOBrow = (u32)-1;
-+
-+	/* Set default NFI access timing control */
-+	regwrite32(NFI_ACCCON_REG32, host->access_timing);
-+	regwrite16(NFI_CNFG_REG16, 0);
-+	regwrite16(NFI_PAGEFMT_REG16, 0);
-+
-+	/* Reset the state machine and data FIFO, because flushing FIFO */
-+	reset();
-+
-+	/* Set the ECC engine */
-+	if (host->nand_chip.ecc.mode == NAND_ECC_HW) {
-+		regset16(NFI_CNFG_REG16, CNFG_HW_ECC_EN);
-+		ecc_config(4);
-+		configure_fdm(8);
-+		configure_lock();
-+	}
-+
-+	regset16(NFI_IOCON_REG16, 0x47);
-+}
-+
-+static int dev_ready(struct nand_chip *chip)
-+{
-+	return !(regread32(NFI_STA_REG32) & STA_NAND_BUSY);
-+}
-+
-+static int oob_mt7621_ooblayout_ecc(struct mtd_info *mtd, int section,
-+				    struct mtd_oob_region *oobregion)
-+{
-+	oobregion->length = 8;
-+	oobregion->offset = layout->eccpos[section * 8];
-+	return 0;
-+}
-+
-+static int oob_mt7621_ooblayout_free(struct mtd_info *mtd, int section,
-+				     struct mtd_oob_region *oobregion)
-+{
-+	if (section >= (layout->eccbytes / 8))
-+		return -ERANGE;
-+	oobregion->offset = layout->oobfree[section].offset;
-+	oobregion->length = layout->oobfree[section].length;
-+	return 0;
-+}
-+
-+/*
-+ * Code to support the legacy mediatek nand flash bad block table.
-+ * The default for this driver is to use the standard Linux bad block
-+ * table format. However you need a new boot loader that supports that.
-+ * The old (and most often used) medaitek boot loaders use their own
-+ * BBT format, and this code implements that. There is a devicetree
-+ * binding that enables use of this.
-+ */
-+#define BBT_BLOCK_NUM_DEFAULT	32
-+#define BBT_OOB_SIGNATURE	1
-+#define BBT_SIGNATURE_LEN	7
-+
-+static const u8 oob_signature[] = "mtknand";
-+static u32 bbt_size;
-+
-+static int read_legacy_bbt_page(struct mtd_info *mtd, unsigned int page)
-+{
-+	struct nand_chip *chip = mtd_to_nand(mtd);
-+
-+	if (read_oob_hw(chip, page) == 0) {
-+		int corrected;
-+
-+		if (chip->oob_poi[0] != 0xff) {
-+			pr_info("mt7621-nand: Bad Block on page=%d\n", page);
-+			return -ENODEV;
-+		}
-+		if (memcmp(&chip->oob_poi[BBT_OOB_SIGNATURE], oob_signature,
-+			   BBT_SIGNATURE_LEN) != 0) {
-+			pr_info("mt7621-nand: no BBT signature, page=%d\n",
-+				page);
-+			return -EINVAL;
-+		}
-+		corrected = exec_read_page(mtd, page, mtd->writesize,
-+					   chip->data_buf, chip->oob_poi);
-+		if (corrected >= 0) {
-+			int bbt_bytes = (bbt_size <= mtd->writesize)
-+					? bbt_size
-+					: mtd->writesize;
-+
-+			pr_info("mt7621-nand: BBT signature match, page=%d\n",
-+				page);
-+			memcpy(chip->bbt, chip->data_buf, bbt_bytes);
-+			return 0;
-+		}
-+	}
-+
-+	pr_err("mt7621-nand: legacy BBT read failed at page %d\n", page);
-+	return -EIO;
-+}
-+
-+static int load_legacy_bbt(struct mtd_info *mtd)
-+{
-+	struct nand_chip *chip = mtd_to_nand(mtd);
-+	struct host *host = nand_get_controller_data(chip);
-+	u32 blocks;
-+	int i;
-+
-+	blocks = 0x1 << (chip->chip_shift - chip->phys_erase_shift);
-+	bbt_size = blocks >> 2;
-+
-+	if (!chip->bbt) {
-+		chip->bbt = kzalloc(bbt_size, GFP_KERNEL);
-+		if (!chip->bbt)
-+			return -ENOMEM;
-+	}
-+
-+	for (i = blocks - 1; i >= (blocks - host->legacybbt_block_num); i--) {
-+		int page = i << (chip->phys_erase_shift - chip->page_shift);
-+
-+		if (read_legacy_bbt_page(mtd, page) == 0) {
-+			pr_info("mt7621-nand: loading BBT success (%d)\n",
-+				page);
-+			return 0;
-+		}
-+	}
-+
-+	pr_err("mt7621-nand: loading Bad Block Table failed\n");
-+	return -ENODEV;
-+}
-+
-+static int mt7621_nand_attach(struct nand_chip *chip)
-+{
-+	struct mtd_info *mtd = nand_to_mtd(chip);
-+	int i;
-+
-+	set_ecc_mode(mtd);
-+
-+	if (nanddev_target_size(&chip->base) < (256 * 1024 * 1024))
-+		host->addr_cycles = 4;
-+
-+	/* allocate buffers or call select_chip here or a bit earlier*/
-+	chip->data_buf = kzalloc(mtd->writesize + mtd->oobsize, GFP_KERNEL);
-+	chip->ecc.calc_buf = kzalloc(mtd->oobsize, GFP_KERNEL);
-+	chip->ecc.code_buf = kzalloc(mtd->oobsize, GFP_KERNEL);
-+	if (!chip->data_buf || !chip->ecc.calc_buf || !chip->ecc.code_buf)
-+		return -ENOMEM;
-+
-+	chip->oob_poi = chip->data_buf + mtd->writesize;
-+	chip->badblockpos = 0;
-+	chip->ecc.size = mtd->writesize;
-+	chip->ecc.bytes = (mtd->writesize / NAND_SECTOR_SIZE) * 8;
-+
-+	if (mtd->writesize == 4096)
-+		layout = &nand_oob_128;
-+	else if (mtd->writesize == 2048)
-+		layout = &nand_oob_64;
-+	else if (mtd->writesize == 512)
-+		layout = &nand_oob_16;
-+
-+	layout->eccbytes = mtd->oobsize - OOB_AVAI_PER_SECTOR *
-+			   (mtd->writesize / NAND_SECTOR_SIZE);
-+	for (i = 0; i < layout->eccbytes; i++)
-+		layout->eccpos[i] = OOB_AVAI_PER_SECTOR *
-+				    (mtd->writesize / NAND_SECTOR_SIZE) + i;
-+
-+	regwrite32(NFI_ACCCON_REG32, host->access_timing);
-+
-+	if (chip->options & NAND_BUSWIDTH_16)
-+		regset16(NFI_PAGEFMT_REG16, PAGEFMT_DBYTE_EN);
-+
-+	chip->legacy.select_chip(chip, 0);
-+
-+	return 0;
-+}
-+
-+static const struct mtd_ooblayout_ops oob_mt7621_ops = {
-+	.ecc = oob_mt7621_ooblayout_ecc,
-+	.free = oob_mt7621_ooblayout_free,
-+};
-+
-+static const struct nand_controller_ops mt7621_controller_ops = {
-+	.attach_chip = mt7621_nand_attach,
-+};
-+
-+static int mt7621_nand_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct mtd_part_parser_data ppdata;
-+	struct nand_chip *chip;
-+	struct mtd_info *mtd;
-+	struct resource *r;
-+	int err = 0;
-+
-+	/* Allocate memory for the device structure (and zero it) */
-+	host = devm_kzalloc(dev, sizeof(struct host), GFP_KERNEL);
-+	if (!host)
-+		return -ENOMEM;
-+
-+	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	host->regs = devm_ioremap_resource(dev, r);
-+	pr_info("mt7621-nand: NAND register bank at 0x%x\n", (int)host->regs);
-+	if (IS_ERR(host->regs))
-+		return PTR_ERR(host->regs);
-+
-+	r = platform_get_resource(pdev, IORESOURCE_MEM, 1);
-+	host->ecc = devm_ioremap_resource(dev, r);
-+	pr_info("mt7621-nand: ECC register bank at 0x%x\n", (int)host->ecc);
-+	if (IS_ERR(host->ecc))
-+		return PTR_ERR(host->ecc);
-+
-+	host->access_timing = NFI_DEFAULT_ACCESS_TIMING;
-+	host->addr_cycles = 5;
-+
-+	if (of_property_read_bool(dev->of_node, "mediatek,nand-bbt-compat")) {
-+		pr_info("mt7621-nand: using legacy BBT format\n");
-+		host->legacybbt = true;
-+	}
-+	if (host->legacybbt) {
-+		err = of_property_read_u32(dev->of_node,
-+					   "mediatek,nand-bbt-block-num",
-+					   &host->legacybbt_block_num);
-+		if (err)
-+			host->legacybbt_block_num = BBT_BLOCK_NUM_DEFAULT;
-+	}
-+
-+	/* init mtd data structure */
-+	chip = &host->nand_chip;
-+	chip->priv = host;
-+
-+	mtd = nand_to_mtd(chip);
-+	mtd->priv = chip;
-+	mtd->owner = THIS_MODULE;
-+	mtd->name = "MT7621-NAND";
-+	mtd->dev.parent = &pdev->dev;
-+	host->mtd = mtd;
-+
-+	nand_set_flash_node(chip, pdev->dev.of_node);
-+
-+	chip->legacy.select_chip = select_chip;
-+	chip->legacy.chip_delay = 20; /* 20us command delay time */
-+	chip->legacy.read_byte = read_byte;
-+	chip->legacy.read_buf = read_buf;
-+	chip->legacy.write_buf = write_buf;
-+	chip->legacy.dev_ready = dev_ready;
-+	chip->legacy.cmdfunc = command_bp;
-+	chip->legacy.block_bad = block_bad;
-+	chip->legacy.cmd_ctrl = mt7621_cmd_ctrl;
-+	chip->legacy.dummy_controller.ops = &mt7621_controller_ops;
-+
-+	chip->ecc.mode = NAND_ECC_HW;
-+	chip->ecc.strength = 1;
-+	chip->ecc.read_page = read_page_hwecc;
-+	chip->ecc.write_page = write_page_hwecc;
-+	chip->ecc.write_oob = write_oob;
-+	chip->ecc.read_oob = read_oob;
-+
-+	chip->options |= NAND_USE_BOUNCE_BUFFER;
-+	chip->bbt_options |= NAND_BBT_USE_FLASH;
-+	chip->buf_align = 16;
-+
-+	if (host->legacybbt)
-+		chip->options |= NAND_SKIP_BBTSCAN;
-+
-+	mtd_set_ooblayout(mtd, &oob_mt7621_ops);
-+
-+	init_hw(host);
-+
-+	err = nand_scan(chip, 1);
-+	if (err) {
-+		pr_err("mt7621-nand: failed to identify NAND device\n");
-+		goto out;
-+	}
-+
-+	platform_set_drvdata(pdev, host);
-+
-+	err = mtd_device_parse_register(mtd, probe_types, &ppdata, NULL, 0);
-+	if (err)
-+		goto out;
-+
-+	if (host->legacybbt) {
-+		err = load_legacy_bbt(mtd);
-+		if (err)
-+			goto out;
-+	}
-+
-+	return 0;
-+
-+out:
-+	pr_err("mt7621-nand: probe failed, err=%d\n", err);
-+	nand_release(chip);
-+	platform_set_drvdata(pdev, NULL);
-+
-+	return err;
-+}
-+
-+static int mt7621_nand_remove(struct platform_device *pdev)
-+{
-+	struct host *host = platform_get_drvdata(pdev);
-+	struct nand_chip *chip = &host->nand_chip;
-+
-+	nand_release(chip);
-+	return 0;
-+}
-+
-+static const struct of_device_id match[] = {
-+	{ .compatible = "mtk,mt7621-nand" },
-+	{},
-+};
-+MODULE_DEVICE_TABLE(of, match);
-+
-+static struct platform_driver mt7621_nand_driver = {
-+	.probe = mt7621_nand_probe,
-+	.remove = mt7621_nand_remove,
-+	.driver = {
-+		.name = "MT7621-NAND",
-+		.owner = THIS_MODULE,
-+		.of_match_table = match,
-+	},
-+};
-+module_platform_driver(mt7621_nand_driver);
-+
-+MODULE_LICENSE("GPL");
-+MODULE_DESCRIPTION("MediaTek MT7621 NAND controller driver");
-diff --git a/drivers/staging/mt7621-nand/mt7621_nand.h b/drivers/staging/mt7621-nand/mt7621_nand.h
-new file mode 100644
-index 000000000000..fc9145435d5b
---- /dev/null
-+++ b/drivers/staging/mt7621-nand/mt7621_nand.h
-@@ -0,0 +1,362 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * mt7621_nand.h - Mediatek MT7621 NAND Flash Controller device driver
-+ *
-+ * Copyright 2009-2012 MediaTek Co.,Ltd.
-+ * Copyright 2018-2019 Greg Ungerer <gerg@kernel.org>
-+ */
-+
-+#ifndef MT7621_NAND_H
-+#define MT7621_NAND_H
-+
-+#define NFI_DEFAULT_ACCESS_TIMING	0x30C77fff
-+
-+#define NAND_SECTOR_SIZE	512
-+#define OOB_PER_SECTOR		16
-+#define OOB_AVAI_PER_SECTOR	8
-+
-+/****************************************************************************
-+ * NFI Register Definition
-+ ****************************************************************************/
-+
-+#define NFI_CNFG_REG16		0x0000
-+#define NFI_PAGEFMT_REG16	0x0004
-+#define NFI_CON_REG16		0x0008
-+#define NFI_ACCCON_REG32	0x000C
-+#define NFI_INTR_EN_REG16	0x0010
-+#define NFI_INTR_REG16		0x0014
-+
-+#define NFI_CMD_REG16		0x0020
-+
-+#define NFI_ADDRNOB_REG16	0x0030
-+#define NFI_COLADDR_REG32	0x0034
-+#define NFI_ROWADDR_REG32	0x0038
-+
-+#define NFI_STRDATA_REG16	0x0040
-+#define NFI_CNRNB_REG16		0x0044
-+
-+#define NFI_DATAW_REG32		0x0050
-+#define NFI_DATAR_REG32		0x0054
-+#define NFI_PIO_DIRDY_REG16	0x0058
-+
-+#define NFI_STA_REG32		0x0060
-+#define NFI_FIFOSTA_REG16	0x0064
-+#define NFI_LOCKSTA_REG16	0x0068
-+
-+#define NFI_ADDRCNTR_REG16	0x0070
-+
-+#define NFI_STRADDR_REG32	0x0080
-+#define NFI_BYTELEN_REG16	0x0084
-+
-+#define NFI_CSEL_REG16		0x0090
-+#define NFI_IOCON_REG16		0x0094
-+
-+#define NFI_FDM0L_REG32		0x00A0
-+#define NFI_FDM0M_REG32		0x00A4
-+
-+#define NFI_LOCK_REG16		0x0100
-+#define NFI_LOCKCON_REG32	0x0104
-+#define NFI_LOCKANOB_REG16	0x0108
-+#define NFI_LOCK00ADD_REG32	0x0110
-+#define NFI_LOCK00FMT_REG32	0x0114
-+#define NFI_LOCK01ADD_REG32	0x0118
-+#define NFI_LOCK01FMT_REG32	0x011C
-+#define NFI_LOCK02ADD_REG32	0x0120
-+#define NFI_LOCK02FMT_REG32	0x0124
-+#define NFI_LOCK03ADD_REG32	0x0128
-+#define NFI_LOCK03FMT_REG32	0x012C
-+#define NFI_LOCK04ADD_REG32	0x0130
-+#define NFI_LOCK04FMT_REG32	0x0134
-+#define NFI_LOCK05ADD_REG32	0x0138
-+#define NFI_LOCK05FMT_REG32	0x013C
-+#define NFI_LOCK06ADD_REG32	0x0140
-+#define NFI_LOCK06FMT_REG32	0x0144
-+#define NFI_LOCK07ADD_REG32	0x0148
-+#define NFI_LOCK07FMT_REG32	0x014C
-+#define NFI_LOCK08ADD_REG32	0x0150
-+#define NFI_LOCK08FMT_REG32	0x0154
-+#define NFI_LOCK09ADD_REG32	0x0158
-+#define NFI_LOCK09FMT_REG32	0x015C
-+#define NFI_LOCK10ADD_REG32	0x0160
-+#define NFI_LOCK10FMT_REG32	0x0164
-+#define NFI_LOCK11ADD_REG32	0x0168
-+#define NFI_LOCK11FMT_REG32	0x016C
-+#define NFI_LOCK12ADD_REG32	0x0170
-+#define NFI_LOCK12FMT_REG32	0x0174
-+#define NFI_LOCK13ADD_REG32	0x0178
-+#define NFI_LOCK13FMT_REG32	0x017C
-+#define NFI_LOCK14ADD_REG32	0x0180
-+#define NFI_LOCK14FMT_REG32	0x0184
-+#define NFI_LOCK15ADD_REG32	0x0188
-+#define NFI_LOCK15FMT_REG32	0x018C
-+
-+#define NFI_FIFODATA0_REG32	0x0190
-+#define NFI_FIFODATA1_REG32	0x0194
-+#define NFI_FIFODATA2_REG32	0x0198
-+#define NFI_FIFODATA3_REG32	0x019C
-+#define NFI_MASTERSTA_REG16	0x0210
-+
-+/*****************************************************************************
-+ * NFI Register Field Definition
-+ *****************************************************************************/
-+
-+/* NFI_CNFG */
-+#define CNFG_AHB		0x0001
-+#define CNFG_READ_EN		0x0002
-+#define CNFG_DMA_BURST_EN	0x0004
-+#define CNFG_BYTE_RW		0x0040
-+#define CNFG_HW_ECC_EN		0x0100
-+#define CNFG_AUTO_FMT_EN	0x0200
-+#define CNFG_OP_IDLE		0x0000
-+#define CNFG_OP_READ		0x1000
-+#define CNFG_OP_SRD		0x2000
-+#define CNFG_OP_PRGM		0x3000
-+#define CNFG_OP_ERASE		0x4000
-+#define CNFG_OP_RESET		0x5000
-+#define CNFG_OP_CUST		0x6000
-+#define CNFG_OP_MODE_MASK	0x7000
-+#define CNFG_OP_MODE_SHIFT	12
-+
-+/* NFI_PAGEFMT */
-+#define PAGEFMT_512		0x0000
-+#define PAGEFMT_2K		0x0001
-+#define PAGEFMT_4K		0x0002
-+
-+#define PAGEFMT_PAGE_MASK	0x0003
-+
-+#define PAGEFMT_DBYTE_EN	0x0008
-+
-+#define PAGEFMT_SPARE_16	0x0000
-+#define PAGEFMT_SPARE_26	0x0001
-+#define PAGEFMT_SPARE_27	0x0002
-+#define PAGEFMT_SPARE_28	0x0003
-+#define PAGEFMT_SPARE_MASK	0x0030
-+#define PAGEFMT_SPARE_SHIFT	4
-+
-+#define PAGEFMT_FDM_MASK	0x0F00
-+#define PAGEFMT_FDM_SHIFT	8
-+
-+#define PAGEFMT_FDM_ECC_MASK	0xF000
-+#define PAGEFMT_FDM_ECC_SHIFT	12
-+
-+/* NFI_CON */
-+#define CON_FIFO_FLUSH		0x0001
-+#define CON_NFI_RST		0x0002
-+#define CON_NFI_SRD		0x0010
-+
-+#define CON_NFI_NOB_MASK	0x0060
-+#define CON_NFI_NOB_SHIFT	5
-+
-+#define CON_NFI_BRD		0x0100
-+#define CON_NFI_BWR		0x0200
-+
-+#define CON_NFI_SEC_MASK	0xF000
-+#define CON_NFI_SEC_SHIFT	12
-+
-+/* NFI_ACCCON */
-+#define ACCCON_SETTING		()
-+
-+/* NFI_INTR_EN */
-+#define INTR_RD_DONE_EN		0x0001
-+#define INTR_WR_DONE_EN		0x0002
-+#define INTR_RST_DONE_EN	0x0004
-+#define INTR_ERASE_DONE_EN	0x0008
-+#define INTR_BSY_RTN_EN		0x0010
-+#define INTR_ACC_LOCK_EN	0x0020
-+#define INTR_AHB_DONE_EN	0x0040
-+#define INTR_ALL_INTR_DE	0x0000
-+#define INTR_ALL_INTR_EN	0x007F
-+
-+/* NFI_INTR */
-+#define INTR_RD_DONE		0x0001
-+#define INTR_WR_DONE		0x0002
-+#define INTR_RST_DONE		0x0004
-+#define INTR_ERASE_DONE		0x0008
-+#define INTR_BSY_RTN		0x0010
-+#define INTR_ACC_LOCK		0x0020
-+#define INTR_AHB_DONE		0x0040
-+
-+/* NFI_ADDRNOB */
-+#define ADDR_COL_NOB_MASK	0x0003
-+#define ADDR_COL_NOB_SHIFT	0
-+#define ADDR_ROW_NOB_MASK	0x0030
-+#define ADDR_ROW_NOB_SHIFT	4
-+
-+/* NFI_STA */
-+#define STA_READ_EMPTY		0x00001000
-+#define STA_ACC_LOCK		0x00000010
-+#define STA_CMD_STATE		0x00000001
-+#define STA_ADDR_STATE		0x00000002
-+#define STA_DATAR_STATE		0x00000004
-+#define STA_DATAW_STATE		0x00000008
-+
-+#define STA_NAND_FSM_MASK	0x1F000000
-+#define STA_NAND_BUSY		0x00000100
-+#define STA_NAND_BUSY_RETURN	0x00000200
-+#define STA_NFI_FSM_MASK	0x000F0000
-+#define STA_NFI_OP_MASK		0x0000000F
-+
-+/* NFI_FIFOSTA */
-+#define FIFO_RD_EMPTY		0x0040
-+#define FIFO_RD_FULL		0x0080
-+#define FIFO_WR_FULL		0x8000
-+#define FIFO_WR_EMPTY		0x4000
-+#define FIFO_RD_REMAIN(x)	(0x1F & (x))
-+#define FIFO_WR_REMAIN(x)	((0x1F00 & (x)) >> 8)
-+
-+/* NFI_ADDRCNTR */
-+#define ADDRCNTR_CNTR(x)	((0xF000 & (x)) >> 12)
-+#define ADDRCNTR_OFFSET(x)	(0x03FF & (x))
-+
-+/* NFI_LOCK */
-+#define NFI_LOCK_ON		0x0001
-+
-+/* NFI_LOCKANOB */
-+#define PROG_RADD_NOB_MASK	0x7000
-+#define PROG_RADD_NOB_SHIFT	12
-+#define PROG_CADD_NOB_MASK	0x0300
-+#define PROG_CADD_NOB_SHIFT	8
-+#define ERASE_RADD_NOB_MASK	0x0070
-+#define ERASE_RADD_NOB_SHIFT	4
-+#define ERASE_CADD_NOB_MASK	0x0007
-+#define ERASE_CADD_NOB_SHIFT	0
-+
-+/*****************************************************************************
-+ * ECC Register Definition
-+ *****************************************************************************/
-+
-+#define ECC_ENCCON_REG16	0x0000
-+#define ECC_ENCCNFG_REG32	0x0004
-+#define ECC_ENCDIADDR_REG32	0x0008
-+#define ECC_ENCIDLE_REG32	0x000C
-+#define ECC_ENCPAR0_REG32	0x0010
-+#define ECC_ENCPAR1_REG32	0x0014
-+#define ECC_ENCPAR2_REG32	0x0018
-+#define ECC_ENCPAR3_REG32	0x001C
-+#define ECC_ENCPAR4_REG32	0x0020
-+#define ECC_ENCSTA_REG32	0x0024
-+#define ECC_ENCIRQEN_REG16	0x0028
-+#define ECC_ENCIRQSTA_REG16	0x002C
-+
-+#define ECC_DECCON_REG16	0x0100
-+#define ECC_DECCNFG_REG32	0x0104
-+#define ECC_DECDIADDR_REG32	0x0108
-+#define ECC_DECIDLE_REG16	0x010C
-+#define ECC_DECFER_REG16	0x0110
-+#define ECC_DECENUM_REG32	0x0114
-+#define ECC_DECDONE_REG16	0x0118
-+#define ECC_DECEL0_REG32	0x011C
-+#define ECC_DECEL1_REG32	0x0120
-+#define ECC_DECEL2_REG32	0x0124
-+#define ECC_DECEL3_REG32	0x0128
-+#define ECC_DECEL4_REG32	0x012C
-+#define ECC_DECEL5_REG32	0x0130
-+#define ECC_DECIRQEN_REG16	0x0134
-+#define ECC_DECIRQSTA_REG16	0x0138
-+#define ECC_FDMADDR_REG32	0x013C
-+#define ECC_DECFSM_REG32	0x0140
-+#define ECC_SYNSTA_REG32	0x0144
-+#define ECC_DECNFIDI_REG32	0x0148
-+#define ECC_SYN0_REG32		0x014C
-+
-+/*****************************************************************************
-+ * ECC register definition
-+ *****************************************************************************/
-+
-+/* ECC_ENCON */
-+#define ENC_EN			0x0001
-+#define ENC_DE			0x0000
-+
-+/* ECC_ENCCNFG */
-+#define ECC_CNFG_ECC4		0x0000
-+#define ECC_CNFG_ECC6		0x0001
-+#define ECC_CNFG_ECC8		0x0002
-+#define ECC_CNFG_ECC10		0x0003
-+#define ECC_CNFG_ECC12		0x0004
-+#define ECC_CNFG_ECC_MASK	0x00000007
-+
-+#define ENC_CNFG_NFI		0x0010
-+#define ENC_CNFG_MODE_MASK	0x0010
-+
-+#define ENC_CNFG_META6		0x10300000
-+#define ENC_CNFG_META8		0x10400000
-+
-+#define ENC_CNFG_MSG_MASK	0x1FFF0000
-+#define ENC_CNFG_MSG_SHIFT	0x10
-+
-+/* ECC_ENCIDLE */
-+#define ENC_IDLE		0x0001
-+
-+/* ECC_ENCSTA */
-+#define STA_FSM			0x001F
-+#define STA_COUNT_PS		0xFF10
-+#define STA_COUNT_MS		0x3FFF0000
-+
-+/* ECC_ENCIRQEN */
-+#define ENC_IRQEN		0x0001
-+
-+/* ECC_ENCIRQSTA */
-+#define ENC_IRQSTA		0x0001
-+
-+/* ECC_DECCON */
-+#define DEC_EN			0x0001
-+#define DEC_DE			0x0000
-+
-+/* ECC_ENCCNFG */
-+#define DEC_CNFG_ECC4		0x0000
-+//#define DEC_CNFG_ECC6		0x0001
-+//#define DEC_CNFG_ECC12	0x0002
-+#define DEC_CNFG_NFI		0x0010
-+//#define DEC_CNFG_META6	0x10300000
-+//#define DEC_CNFG_META8	0x10400000
-+
-+#define DEC_CNFG_FER		0x01000
-+#define DEC_CNFG_EL		0x02000
-+#define DEC_CNFG_CORRECT	0x03000
-+#define DEC_CNFG_TYPE_MASK	0x03000
-+
-+#define DEC_CNFG_EMPTY_EN	0x80000000
-+
-+#define DEC_CNFG_CODE_MASK	0x1FFF0000
-+#define DEC_CNFG_CODE_SHIFT	0x10
-+
-+/* ECC_DECIDLE */
-+#define DEC_IDLE		0x0001
-+
-+/* ECC_DECFER */
-+#define DEC_FER0		0x0001
-+#define DEC_FER1		0x0002
-+#define DEC_FER2		0x0004
-+#define DEC_FER3		0x0008
-+#define DEC_FER4		0x0010
-+#define DEC_FER5		0x0020
-+#define DEC_FER6		0x0040
-+#define DEC_FER7		0x0080
-+
-+/* ECC_DECENUM */
-+#define ERR_NUM0		0x0000000F
-+#define ERR_NUM1		0x000000F0
-+#define ERR_NUM2		0x00000F00
-+#define ERR_NUM3		0x0000F000
-+#define ERR_NUM4		0x000F0000
-+#define ERR_NUM5		0x00F00000
-+#define ERR_NUM6		0x0F000000
-+#define ERR_NUM7		0xF0000000
-+
-+/* ECC_DECDONE */
-+#define DEC_DONE0		0x0001
-+#define DEC_DONE1		0x0002
-+#define DEC_DONE2		0x0004
-+#define DEC_DONE3		0x0008
-+#define DEC_DONE4		0x0010
-+#define DEC_DONE5		0x0020
-+#define DEC_DONE6		0x0040
-+#define DEC_DONE7		0x0080
-+
-+/* ECC_DECIRQEN */
-+#define DEC_IRQEN		0x0001
-+
-+/* ECC_DECIRQSTA */
-+#define DEC_IRQSTA		0x0001
-+
-+#endif /* MT7621_NAND_H */
-diff --git a/drivers/staging/mt7621-nand/mtk,mt7621-nand.txt b/drivers/staging/mt7621-nand/mtk,mt7621-nand.txt
-new file mode 100644
-index 000000000000..8f2b48377d86
---- /dev/null
-+++ b/drivers/staging/mt7621-nand/mtk,mt7621-nand.txt
-@@ -0,0 +1,29 @@
-+MediaTek MT7621 NAND controller
-+
-+Required properties:
-+- compatible "mtk,mt7621-nand"
-+- reg: base address and length of controller and ECC register banks
-+- #address-cells: must be 1
-+- #size-cells: must be 1
-+- status: either "disabled" or "okay"
-+
-+Example:
-+
-+        nand: nand@1e003000 {
-+                status = "okay";
-+
-+                compatible = "mtk,mt7621-nand";
-+                reg = <0x1e003000 0x800
-+                        0x1e003800 0x800>;
-+                #address-cells = <1>;
-+                #size-cells = <1>;
-+        };
-+
-+Optional:
-+- mediatek,nand-bbt-compat: expect on-flash legacy Mediatek bad block table
-+- mediatek,nand-bbt-block-num: possible number of legacy bad blocks
-+
-+If using the legacy u-boot provided by MediaTek you will want to use the
-+"mediatek,nand-bbt-compat" binding. The driver default is to expect a
-+standard Linux bad block table in flash.
-+
--- 
-2.17.1
-
+> > +
+> > +     return 0;
+> > +
+> > +err_clean_entity:
+> > +     media_entity_cleanup(&ov02a10->subdev.entity);
+> > +err_free_handler:
+> > +     v4l2_ctrl_handler_free(ov02a10->subdev.ctrl_handler);
+> > +err_destroy_mutex:
+> > +     mutex_destroy(&ov02a10->mutex);
+> > +
+> > +     return ret;
+> > +}
+> > +
+> > +static int ov02a10_remove(struct i2c_client *client)
+> > +{
+> > +     struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> > +     struct ov02a10 *ov02a10 = to_ov02a10(sd);
+> > +
+> > +     v4l2_async_unregister_subdev(sd);
+> > +     media_entity_cleanup(&sd->entity);
+> > +     v4l2_ctrl_handler_free(sd->ctrl_handler);
+> > +     pm_runtime_disable(&client->dev);
+> > +     if (!pm_runtime_status_suspended(&client->dev))
+> > +             ov02a10_power_off(&client->dev);
+> > +     pm_runtime_set_suspended(&client->dev);
+> > +     mutex_destroy(&ov02a10->mutex);
+> > +
+> > +     return 0;
+> > +}
+> > +
+> > +static const struct of_device_id ov02a10_of_match[] = {
+> > +     { .compatible = "ovti,ov02a10" },
+> > +     {}
+> > +};
+> > +MODULE_DEVICE_TABLE(of, ov02a10_of_match);
+> > +
+> > +static struct i2c_driver ov02a10_i2c_driver = {
+> > +     .driver = {
+> > +             .name = "ov02a10",
+> > +             .pm = &ov02a10_pm_ops,
+> > +             .of_match_table = ov02a10_of_match,
+> > +     },
+> > +     .probe_new      = &ov02a10_probe,
+> > +     .remove         = &ov02a10_remove,
+> > +};
+> > +
+> > +module_i2c_driver(ov02a10_i2c_driver);
+> > +
+> > +MODULE_AUTHOR("Dongchun Zhu <dongchun.zhu@mediatek.com>");
+> > +MODULE_DESCRIPTION("OmniVision OV02A10 sensor driver");
+> > +MODULE_LICENSE("GPL v2");
+> > +
+>
+> --
+> Regards,
+>
+> Sakari Ailus
+> sakari.ailus@linux.intel.com
 
 _______________________________________________
 Linux-mediatek mailing list
