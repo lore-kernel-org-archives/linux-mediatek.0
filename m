@@ -2,24 +2,22 @@ Return-Path: <SRS0=ko7i=ZB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.6 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E494FC43331
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Nov 2019 11:37:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 861A0C43331
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Nov 2019 17:17:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B5EE9206BB
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Nov 2019 11:37:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5559C2075C
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 Nov 2019 17:17:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eOYnmJpa";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="fA9LXUTy"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B5EE9206BB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KyyqhIaa";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="LLFrKZRB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5559C2075C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -28,62 +26,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=UVGwPBGWi3cNRMcSm8jQlhtHdQHY1bnocz5Lom31e+k=; b=eOYnmJpaOxi080aNzLHRPNCnit
-	fmXwivNItVWfWHjFSpX//m/tj8Nci9Gmh0vbJfhuAt8L1FKlNL0DiSZ2nEeiUfc0UxN82qpc2v6JN
-	7AWoGpYDT17JmLQgUhUcWVLG6M+bd2iUY7Pqhm0mktLhF9IwY/9Yd3Uwp4uWTTLN+R7v4SY3YKXN2
-	vNsWGBRYsq8aOaatKpL3wWq6QPR/RbchHMXe2QbJajq9lD+AV/0TjrSFdVH6RZv5ZScfMQmAYpemd
-	nlBpg26H5PXlMUWr5UT86Iako50+3P1bhZQ/yHsyjjRTzrYsD6DCRL0bQVi7I17boYIvdqKOv95ag
-	v8ynWliQ==;
+	bh=iBPLyfesHxPPlVeczXFDuauf7YH6y7csCo4+5E/iUJg=; b=KyyqhIaa+G3FhK/vKv1HT1A7R/
+	7yDywRQtULZqTJRc9AAE8oxiwirLbJ6b1P8TpPjrxR9I9GDOA+QF0yM4BqFE4fMU212bHrpsaFfJq
+	mmKI8qKe91qcf0ncFiVVxqfcv4iHvF/J98B0LFx017H2b0kFiE1gvsILuVHxMRQp2g6PeCzRgXIBO
+	RSNfVmfQH7VFTcCU8SbBGcphtEV0D17a0IBW8vjy0cQ9hPux0n7uZhjelt+A4YKM8VaTKkxSF48VH
+	BpAZOA7vvUJC84rL7M8AJnEfNVRYUCsXS7Z4XOrh4p/Te2TYbmxVyoxlpu/Ibmo5yMyl3UXQ2nxEw
+	VzLCvlQQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iTP2A-00005N-PL; Sat, 09 Nov 2019 11:36:02 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1iTUMY-0002RK-Oe; Sat, 09 Nov 2019 17:17:26 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iTP23-0008QE-M0; Sat, 09 Nov 2019 11:35:56 +0000
-Received: by mail-pl1-x644.google.com with SMTP id d7so3590414pls.3;
- Sat, 09 Nov 2019 03:35:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=RPkvyrfedBbWeyTZwzNlXB9DkGbGD3+8P8FOhsdkoDw=;
- b=fA9LXUTy+uzBaE6ACg3sMciWy/pmk8bafM5PrJlxx+/61IoyBypuhoZDWhxguCQnzZ
- QIZ0rNbf0hHAtHzx2qkbaM+RGfY7lmNfNNfhWRrXvlW0tXIgSBlV+QFPhHux2JYxcjC4
- tbhF5VYQ/4ZBVisASZmfOqMwvCuOZeJiZ84fu98M//x1ppDOx2iLkfVpdRDueEwNv8pT
- ryA/6FtYt8U70JlR8won7D8N+SzDgUf98jjOUxXow0UTBpHQMub1r5DDaQmPVxw2Jcmk
- gI7EKyGdV4ya4aplh5FnQzsnWJi1KtiQDeCaY+olpoVnIj/04Vp/uKV3y9Z0GggREPHk
- HcHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=RPkvyrfedBbWeyTZwzNlXB9DkGbGD3+8P8FOhsdkoDw=;
- b=t7PAKjOVtJgO6HHWUQ5PU/M2InZ2Gw1tdfsX5ZTB5kHOKi8hfYKKnjNCoVuNWmvs80
- 33EWcalrbFJD6yneaAcW13TjMvL4G+/4x2FIJjQQG3N8PTmF3uzI0lE7uA6fUZ1M293D
- 6VmnL5vHP5/QOYvVGOievIJ/6OGUv9FcJn51n8RvBsCj6AM/d8ZfEFfkUGoz22sFctml
- cyDk9vkaBaR1iyzO6bAGJ56GMeojZ4ihnbinXo+QlXnuzGHg2prv+/pE99fTFqdDNPMG
- JYt93OHZD/p4veHqH/h39h4j3q4Dqct4FezHQalFK9TS1GnlJdOVP5hmblZvT1M3uMMW
- ICqw==
-X-Gm-Message-State: APjAAAUM5geSGTFByPJYz1Q4dz3wWgYAkleXnVq+TLUFEplabb1HAClS
- xk7E/2J6xNV4TB0oVLgav0U=
-X-Google-Smtp-Source: APXvYqzwtXIY+k0OyvUU4Bkg5AOcucS9hxURQZLsvnV9PlC6QBWMaauMMsyzwgYYWy1wRwhboZNu/w==
-X-Received: by 2002:a17:902:9681:: with SMTP id
- n1mr16143620plp.87.1573299354291; 
- Sat, 09 Nov 2019 03:35:54 -0800 (PST)
-Received: from localhost.localdomain ([103.82.150.242])
- by smtp.gmail.com with ESMTPSA id x29sm10518172pfj.131.2019.11.09.03.35.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 09 Nov 2019 03:35:53 -0800 (PST)
-From: Satendra Singh Thakur <sst2005@gmail.com>
-To: 
-Subject: [PATCH v1] dmaengine: mediatek: hsdma_probe: fixed a memory leak when
- devm_request_irq fails
-Date: Sat,  9 Nov 2019 17:05:23 +0530
-Message-Id: <20191109113523.6067-1-sst2005@gmail.com>
+ id 1iTUGd-0004rq-9c; Sat, 09 Nov 2019 17:11:26 +0000
+Received: from e123331-lin.home (lfbn-mar-1-643-104.w90-118.abo.wanadoo.fr
+ [90.118.215.104])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 5E0D220869;
+ Sat,  9 Nov 2019 17:11:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1573319478;
+ bh=crkRRNjgUroQuUAT9SIhvhGNKIPn9tduh+HI/Y7jzao=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=LLFrKZRBUO2nVbmiGoKS3wlhVZ1LNh5ygHmKST1qBiGZJaGdazh2ruLFHESRUssxu
+ I1YZjZcodTsrnuNqOEZXUVhzSqKtUptRh0lSxhbhmZ0qi71M9mItmAUWB8/FxSxeHF
+ og5d7HQLQ9OX9Dw5exTrhZjghkY6cXYEoItsJ2Uk=
+From: Ard Biesheuvel <ardb@kernel.org>
+To: linux-crypto@vger.kernel.org
+Subject: [PATCH v4 17/29] crypto: mediatek - switch to skcipher API
+Date: Sat,  9 Nov 2019 18:09:42 +0100
+Message-Id: <20191109170954.756-18-ardb@kernel.org>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20191105165914.GD952516@vkoul-mobl>
-References: <20191105165914.GD952516@vkoul-mobl>
+In-Reply-To: <20191109170954.756-1-ardb@kernel.org>
+References: <20191109170954.756-1-ardb@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191109_033555_720888_0EDB7654 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20191109_091120_086957_7E192C55 
+X-CRM114-Status: GOOD (  15.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,52 +73,463 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
- dmaengine@vger.kernel.org, Vinod Koul <vkoul@kernel.org>,
+Cc: Herbert Xu <herbert@gondor.apana.org.au>,
+ Eric Biggers <ebiggers@google.com>, Ard Biesheuvel <ardb@kernel.org>,
  linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Dan Williams <dan.j.williams@intel.com>,
- Satendra Singh Thakur <sst2005@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+ "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When devm_request_irq fails, currently, the function
-dma_async_device_unregister gets called. This doesn't free
-the resources allocated by of_dma_controller_register.
-Therefore, we have called of_dma_controller_free for this purpose.
+Commit 7a7ffe65c8c5 ("crypto: skcipher - Add top-level skcipher interface")
+dated 20 august 2015 introduced the new skcipher API which is supposed to
+replace both blkcipher and ablkcipher. While all consumers of the API have
+been converted long ago, some producers of the ablkcipher remain, forcing
+us to keep the ablkcipher support routines alive, along with the matching
+code to expose [a]blkciphers via the skcipher API.
 
-Signed-off-by: Satendra Singh Thakur <sst2005@gmail.com>
+So switch this driver to the skcipher API, allowing us to finally drop the
+ablkcipher code in the near future.
+
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mediatek@lists.infradead.org
+Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
 ---
- v1: modified the subject line with new tags
+ drivers/crypto/mediatek/mtk-aes.c | 248 +++++++++-----------
+ 1 file changed, 116 insertions(+), 132 deletions(-)
 
- drivers/dma/mediatek/mtk-hsdma.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/dma/mediatek/mtk-hsdma.c b/drivers/dma/mediatek/mtk-hsdma.c
-index 1a2028e1c29e..4c58da742143 100644
---- a/drivers/dma/mediatek/mtk-hsdma.c
-+++ b/drivers/dma/mediatek/mtk-hsdma.c
-@@ -997,7 +997,7 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
- 	if (err) {
- 		dev_err(&pdev->dev,
- 			"request_irq failed with err %d\n", err);
--		goto err_unregister;
-+		goto err_free;
+diff --git a/drivers/crypto/mediatek/mtk-aes.c b/drivers/crypto/mediatek/mtk-aes.c
+index d43410259113..90880a81c534 100644
+--- a/drivers/crypto/mediatek/mtk-aes.c
++++ b/drivers/crypto/mediatek/mtk-aes.c
+@@ -11,6 +11,7 @@
+ 
+ #include <crypto/aes.h>
+ #include <crypto/gcm.h>
++#include <crypto/internal/skcipher.h>
+ #include "mtk-platform.h"
+ 
+ #define AES_QUEUE_SIZE		512
+@@ -414,7 +415,7 @@ static int mtk_aes_map(struct mtk_cryp *cryp, struct mtk_aes_rec *aes)
+ static void mtk_aes_info_init(struct mtk_cryp *cryp, struct mtk_aes_rec *aes,
+ 			      size_t len)
+ {
+-	struct ablkcipher_request *req = ablkcipher_request_cast(aes->areq);
++	struct skcipher_request *req = skcipher_request_cast(aes->areq);
+ 	struct mtk_aes_base_ctx *ctx = aes->ctx;
+ 	struct mtk_aes_info *info = &ctx->info;
+ 	u32 cnt = 0;
+@@ -450,7 +451,7 @@ static void mtk_aes_info_init(struct mtk_cryp *cryp, struct mtk_aes_rec *aes,
+ 		return;
  	}
  
- 	platform_set_drvdata(pdev, hsdma);
-@@ -1006,6 +1006,8 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
+-	mtk_aes_write_state_le(info->state + ctx->keylen, req->info,
++	mtk_aes_write_state_le(info->state + ctx->keylen, (void *)req->iv,
+ 			       AES_BLOCK_SIZE);
+ ctr:
+ 	info->tfm[0] += AES_TFM_SIZE(SIZE_IN_WORDS(AES_BLOCK_SIZE));
+@@ -552,13 +553,13 @@ static int mtk_aes_transfer_complete(struct mtk_cryp *cryp,
  
+ static int mtk_aes_start(struct mtk_cryp *cryp, struct mtk_aes_rec *aes)
+ {
+-	struct ablkcipher_request *req = ablkcipher_request_cast(aes->areq);
+-	struct mtk_aes_reqctx *rctx = ablkcipher_request_ctx(req);
++	struct skcipher_request *req = skcipher_request_cast(aes->areq);
++	struct mtk_aes_reqctx *rctx = skcipher_request_ctx(req);
+ 
+ 	mtk_aes_set_mode(aes, rctx);
+ 	aes->resume = mtk_aes_transfer_complete;
+ 
+-	return mtk_aes_dma(cryp, aes, req->src, req->dst, req->nbytes);
++	return mtk_aes_dma(cryp, aes, req->src, req->dst, req->cryptlen);
+ }
+ 
+ static inline struct mtk_aes_ctr_ctx *
+@@ -571,7 +572,7 @@ static int mtk_aes_ctr_transfer(struct mtk_cryp *cryp, struct mtk_aes_rec *aes)
+ {
+ 	struct mtk_aes_base_ctx *ctx = aes->ctx;
+ 	struct mtk_aes_ctr_ctx *cctx = mtk_aes_ctr_ctx_cast(ctx);
+-	struct ablkcipher_request *req = ablkcipher_request_cast(aes->areq);
++	struct skcipher_request *req = skcipher_request_cast(aes->areq);
+ 	struct scatterlist *src, *dst;
+ 	u32 start, end, ctr, blocks;
+ 	size_t datalen;
+@@ -579,11 +580,11 @@ static int mtk_aes_ctr_transfer(struct mtk_cryp *cryp, struct mtk_aes_rec *aes)
+ 
+ 	/* Check for transfer completion. */
+ 	cctx->offset += aes->total;
+-	if (cctx->offset >= req->nbytes)
++	if (cctx->offset >= req->cryptlen)
+ 		return mtk_aes_transfer_complete(cryp, aes);
+ 
+ 	/* Compute data length. */
+-	datalen = req->nbytes - cctx->offset;
++	datalen = req->cryptlen - cctx->offset;
+ 	blocks = DIV_ROUND_UP(datalen, AES_BLOCK_SIZE);
+ 	ctr = be32_to_cpu(cctx->iv[3]);
+ 
+@@ -620,12 +621,12 @@ static int mtk_aes_ctr_transfer(struct mtk_cryp *cryp, struct mtk_aes_rec *aes)
+ static int mtk_aes_ctr_start(struct mtk_cryp *cryp, struct mtk_aes_rec *aes)
+ {
+ 	struct mtk_aes_ctr_ctx *cctx = mtk_aes_ctr_ctx_cast(aes->ctx);
+-	struct ablkcipher_request *req = ablkcipher_request_cast(aes->areq);
+-	struct mtk_aes_reqctx *rctx = ablkcipher_request_ctx(req);
++	struct skcipher_request *req = skcipher_request_cast(aes->areq);
++	struct mtk_aes_reqctx *rctx = skcipher_request_ctx(req);
+ 
+ 	mtk_aes_set_mode(aes, rctx);
+ 
+-	memcpy(cctx->iv, req->info, AES_BLOCK_SIZE);
++	memcpy(cctx->iv, req->iv, AES_BLOCK_SIZE);
+ 	cctx->offset = 0;
+ 	aes->total = 0;
+ 	aes->resume = mtk_aes_ctr_transfer;
+@@ -634,10 +635,10 @@ static int mtk_aes_ctr_start(struct mtk_cryp *cryp, struct mtk_aes_rec *aes)
+ }
+ 
+ /* Check and set the AES key to transform state buffer */
+-static int mtk_aes_setkey(struct crypto_ablkcipher *tfm,
++static int mtk_aes_setkey(struct crypto_skcipher *tfm,
+ 			  const u8 *key, u32 keylen)
+ {
+-	struct mtk_aes_base_ctx *ctx = crypto_ablkcipher_ctx(tfm);
++	struct mtk_aes_base_ctx *ctx = crypto_skcipher_ctx(tfm);
+ 
+ 	switch (keylen) {
+ 	case AES_KEYSIZE_128:
+@@ -651,7 +652,7 @@ static int mtk_aes_setkey(struct crypto_ablkcipher *tfm,
+ 		break;
+ 
+ 	default:
+-		crypto_ablkcipher_set_flags(tfm, CRYPTO_TFM_RES_BAD_KEY_LEN);
++		crypto_skcipher_set_flags(tfm, CRYPTO_TFM_RES_BAD_KEY_LEN);
+ 		return -EINVAL;
+ 	}
+ 
+@@ -661,10 +662,10 @@ static int mtk_aes_setkey(struct crypto_ablkcipher *tfm,
  	return 0;
+ }
  
-+err_free:
-+	of_dma_controller_free(pdev->dev.of_node);
- err_unregister:
- 	dma_async_device_unregister(dd);
+-static int mtk_aes_crypt(struct ablkcipher_request *req, u64 mode)
++static int mtk_aes_crypt(struct skcipher_request *req, u64 mode)
+ {
+-	struct crypto_ablkcipher *ablkcipher = crypto_ablkcipher_reqtfm(req);
+-	struct mtk_aes_base_ctx *ctx = crypto_ablkcipher_ctx(ablkcipher);
++	struct crypto_skcipher *skcipher = crypto_skcipher_reqtfm(req);
++	struct mtk_aes_base_ctx *ctx = crypto_skcipher_ctx(skcipher);
+ 	struct mtk_aes_reqctx *rctx;
+ 	struct mtk_cryp *cryp;
  
+@@ -672,185 +673,168 @@ static int mtk_aes_crypt(struct ablkcipher_request *req, u64 mode)
+ 	if (!cryp)
+ 		return -ENODEV;
+ 
+-	rctx = ablkcipher_request_ctx(req);
++	rctx = skcipher_request_ctx(req);
+ 	rctx->mode = mode;
+ 
+ 	return mtk_aes_handle_queue(cryp, !(mode & AES_FLAGS_ENCRYPT),
+ 				    &req->base);
+ }
+ 
+-static int mtk_aes_ecb_encrypt(struct ablkcipher_request *req)
++static int mtk_aes_ecb_encrypt(struct skcipher_request *req)
+ {
+ 	return mtk_aes_crypt(req, AES_FLAGS_ENCRYPT | AES_FLAGS_ECB);
+ }
+ 
+-static int mtk_aes_ecb_decrypt(struct ablkcipher_request *req)
++static int mtk_aes_ecb_decrypt(struct skcipher_request *req)
+ {
+ 	return mtk_aes_crypt(req, AES_FLAGS_ECB);
+ }
+ 
+-static int mtk_aes_cbc_encrypt(struct ablkcipher_request *req)
++static int mtk_aes_cbc_encrypt(struct skcipher_request *req)
+ {
+ 	return mtk_aes_crypt(req, AES_FLAGS_ENCRYPT | AES_FLAGS_CBC);
+ }
+ 
+-static int mtk_aes_cbc_decrypt(struct ablkcipher_request *req)
++static int mtk_aes_cbc_decrypt(struct skcipher_request *req)
+ {
+ 	return mtk_aes_crypt(req, AES_FLAGS_CBC);
+ }
+ 
+-static int mtk_aes_ctr_encrypt(struct ablkcipher_request *req)
++static int mtk_aes_ctr_encrypt(struct skcipher_request *req)
+ {
+ 	return mtk_aes_crypt(req, AES_FLAGS_ENCRYPT | AES_FLAGS_CTR);
+ }
+ 
+-static int mtk_aes_ctr_decrypt(struct ablkcipher_request *req)
++static int mtk_aes_ctr_decrypt(struct skcipher_request *req)
+ {
+ 	return mtk_aes_crypt(req, AES_FLAGS_CTR);
+ }
+ 
+-static int mtk_aes_ofb_encrypt(struct ablkcipher_request *req)
++static int mtk_aes_ofb_encrypt(struct skcipher_request *req)
+ {
+ 	return mtk_aes_crypt(req, AES_FLAGS_ENCRYPT | AES_FLAGS_OFB);
+ }
+ 
+-static int mtk_aes_ofb_decrypt(struct ablkcipher_request *req)
++static int mtk_aes_ofb_decrypt(struct skcipher_request *req)
+ {
+ 	return mtk_aes_crypt(req, AES_FLAGS_OFB);
+ }
+ 
+-static int mtk_aes_cfb_encrypt(struct ablkcipher_request *req)
++static int mtk_aes_cfb_encrypt(struct skcipher_request *req)
+ {
+ 	return mtk_aes_crypt(req, AES_FLAGS_ENCRYPT | AES_FLAGS_CFB128);
+ }
+ 
+-static int mtk_aes_cfb_decrypt(struct ablkcipher_request *req)
++static int mtk_aes_cfb_decrypt(struct skcipher_request *req)
+ {
+ 	return mtk_aes_crypt(req, AES_FLAGS_CFB128);
+ }
+ 
+-static int mtk_aes_cra_init(struct crypto_tfm *tfm)
++static int mtk_aes_init_tfm(struct crypto_skcipher *tfm)
+ {
+-	struct mtk_aes_ctx *ctx = crypto_tfm_ctx(tfm);
++	struct mtk_aes_ctx *ctx = crypto_skcipher_ctx(tfm);
+ 
+-	tfm->crt_ablkcipher.reqsize = sizeof(struct mtk_aes_reqctx);
++	crypto_skcipher_set_reqsize(tfm, sizeof(struct mtk_aes_reqctx));
+ 	ctx->base.start = mtk_aes_start;
+ 	return 0;
+ }
+ 
+-static int mtk_aes_ctr_cra_init(struct crypto_tfm *tfm)
++static int mtk_aes_ctr_init_tfm(struct crypto_skcipher *tfm)
+ {
+-	struct mtk_aes_ctx *ctx = crypto_tfm_ctx(tfm);
++	struct mtk_aes_ctx *ctx = crypto_skcipher_ctx(tfm);
+ 
+-	tfm->crt_ablkcipher.reqsize = sizeof(struct mtk_aes_reqctx);
++	crypto_skcipher_set_reqsize(tfm, sizeof(struct mtk_aes_reqctx));
+ 	ctx->base.start = mtk_aes_ctr_start;
+ 	return 0;
+ }
+ 
+-static struct crypto_alg aes_algs[] = {
++static struct skcipher_alg aes_algs[] = {
+ {
+-	.cra_name		= "cbc(aes)",
+-	.cra_driver_name	= "cbc-aes-mtk",
+-	.cra_priority		= 400,
+-	.cra_flags		= CRYPTO_ALG_TYPE_ABLKCIPHER |
+-				  CRYPTO_ALG_ASYNC,
+-	.cra_init		= mtk_aes_cra_init,
+-	.cra_blocksize		= AES_BLOCK_SIZE,
+-	.cra_ctxsize		= sizeof(struct mtk_aes_ctx),
+-	.cra_alignmask		= 0xf,
+-	.cra_type		= &crypto_ablkcipher_type,
+-	.cra_module		= THIS_MODULE,
+-	.cra_u.ablkcipher = {
+-		.min_keysize	= AES_MIN_KEY_SIZE,
+-		.max_keysize	= AES_MAX_KEY_SIZE,
+-		.setkey		= mtk_aes_setkey,
+-		.encrypt	= mtk_aes_cbc_encrypt,
+-		.decrypt	= mtk_aes_cbc_decrypt,
+-		.ivsize		= AES_BLOCK_SIZE,
+-	}
++	.base.cra_name		= "cbc(aes)",
++	.base.cra_driver_name	= "cbc-aes-mtk",
++	.base.cra_priority	= 400,
++	.base.cra_flags		= CRYPTO_ALG_ASYNC,
++	.base.cra_blocksize	= AES_BLOCK_SIZE,
++	.base.cra_ctxsize	= sizeof(struct mtk_aes_ctx),
++	.base.cra_alignmask	= 0xf,
++	.base.cra_module	= THIS_MODULE,
++
++	.min_keysize		= AES_MIN_KEY_SIZE,
++	.max_keysize		= AES_MAX_KEY_SIZE,
++	.setkey			= mtk_aes_setkey,
++	.encrypt		= mtk_aes_cbc_encrypt,
++	.decrypt		= mtk_aes_cbc_decrypt,
++	.ivsize			= AES_BLOCK_SIZE,
++	.init			= mtk_aes_init_tfm,
+ },
+ {
+-	.cra_name		= "ecb(aes)",
+-	.cra_driver_name	= "ecb-aes-mtk",
+-	.cra_priority		= 400,
+-	.cra_flags		= CRYPTO_ALG_TYPE_ABLKCIPHER |
+-				  CRYPTO_ALG_ASYNC,
+-	.cra_init		= mtk_aes_cra_init,
+-	.cra_blocksize		= AES_BLOCK_SIZE,
+-	.cra_ctxsize		= sizeof(struct mtk_aes_ctx),
+-	.cra_alignmask		= 0xf,
+-	.cra_type		= &crypto_ablkcipher_type,
+-	.cra_module		= THIS_MODULE,
+-	.cra_u.ablkcipher = {
+-		.min_keysize	= AES_MIN_KEY_SIZE,
+-		.max_keysize	= AES_MAX_KEY_SIZE,
+-		.setkey		= mtk_aes_setkey,
+-		.encrypt	= mtk_aes_ecb_encrypt,
+-		.decrypt	= mtk_aes_ecb_decrypt,
+-	}
++	.base.cra_name		= "ecb(aes)",
++	.base.cra_driver_name	= "ecb-aes-mtk",
++	.base.cra_priority	= 400,
++	.base.cra_flags		= CRYPTO_ALG_ASYNC,
++	.base.cra_blocksize	= AES_BLOCK_SIZE,
++	.base.cra_ctxsize	= sizeof(struct mtk_aes_ctx),
++	.base.cra_alignmask	= 0xf,
++	.base.cra_module	= THIS_MODULE,
++
++	.min_keysize		= AES_MIN_KEY_SIZE,
++	.max_keysize		= AES_MAX_KEY_SIZE,
++	.setkey			= mtk_aes_setkey,
++	.encrypt		= mtk_aes_ecb_encrypt,
++	.decrypt		= mtk_aes_ecb_decrypt,
++	.init			= mtk_aes_init_tfm,
+ },
+ {
+-	.cra_name		= "ctr(aes)",
+-	.cra_driver_name	= "ctr-aes-mtk",
+-	.cra_priority		= 400,
+-	.cra_flags		= CRYPTO_ALG_TYPE_ABLKCIPHER |
+-				  CRYPTO_ALG_ASYNC,
+-	.cra_init		= mtk_aes_ctr_cra_init,
+-	.cra_blocksize		= 1,
+-	.cra_ctxsize		= sizeof(struct mtk_aes_ctr_ctx),
+-	.cra_alignmask		= 0xf,
+-	.cra_type		= &crypto_ablkcipher_type,
+-	.cra_module		= THIS_MODULE,
+-	.cra_u.ablkcipher = {
+-		.min_keysize	= AES_MIN_KEY_SIZE,
+-		.max_keysize	= AES_MAX_KEY_SIZE,
+-		.ivsize		= AES_BLOCK_SIZE,
+-		.setkey		= mtk_aes_setkey,
+-		.encrypt	= mtk_aes_ctr_encrypt,
+-		.decrypt	= mtk_aes_ctr_decrypt,
+-	}
++	.base.cra_name		= "ctr(aes)",
++	.base.cra_driver_name	= "ctr-aes-mtk",
++	.base.cra_priority	= 400,
++	.base.cra_flags		= CRYPTO_ALG_ASYNC,
++	.base.cra_blocksize	= 1,
++	.base.cra_ctxsize	= sizeof(struct mtk_aes_ctx),
++	.base.cra_alignmask	= 0xf,
++	.base.cra_module	= THIS_MODULE,
++
++	.min_keysize		= AES_MIN_KEY_SIZE,
++	.max_keysize		= AES_MAX_KEY_SIZE,
++	.ivsize			= AES_BLOCK_SIZE,
++	.setkey			= mtk_aes_setkey,
++	.encrypt		= mtk_aes_ctr_encrypt,
++	.decrypt		= mtk_aes_ctr_decrypt,
++	.init			= mtk_aes_ctr_init_tfm,
+ },
+ {
+-	.cra_name		= "ofb(aes)",
+-	.cra_driver_name	= "ofb-aes-mtk",
+-	.cra_priority		= 400,
+-	.cra_flags		= CRYPTO_ALG_TYPE_ABLKCIPHER |
+-				  CRYPTO_ALG_ASYNC,
+-	.cra_init		= mtk_aes_cra_init,
+-	.cra_blocksize		= 1,
+-	.cra_ctxsize		= sizeof(struct mtk_aes_ctx),
+-	.cra_alignmask		= 0xf,
+-	.cra_type		= &crypto_ablkcipher_type,
+-	.cra_module		= THIS_MODULE,
+-	.cra_u.ablkcipher = {
+-		.min_keysize	= AES_MIN_KEY_SIZE,
+-		.max_keysize	= AES_MAX_KEY_SIZE,
+-		.ivsize		= AES_BLOCK_SIZE,
+-		.setkey		= mtk_aes_setkey,
+-		.encrypt	= mtk_aes_ofb_encrypt,
+-		.decrypt	= mtk_aes_ofb_decrypt,
+-	}
++	.base.cra_name		= "ofb(aes)",
++	.base.cra_driver_name	= "ofb-aes-mtk",
++	.base.cra_priority	= 400,
++	.base.cra_flags		= CRYPTO_ALG_ASYNC,
++	.base.cra_blocksize	= AES_BLOCK_SIZE,
++	.base.cra_ctxsize	= sizeof(struct mtk_aes_ctx),
++	.base.cra_alignmask	= 0xf,
++	.base.cra_module	= THIS_MODULE,
++
++	.min_keysize		= AES_MIN_KEY_SIZE,
++	.max_keysize		= AES_MAX_KEY_SIZE,
++	.ivsize			= AES_BLOCK_SIZE,
++	.setkey			= mtk_aes_setkey,
++	.encrypt		= mtk_aes_ofb_encrypt,
++	.decrypt		= mtk_aes_ofb_decrypt,
+ },
+ {
+-	.cra_name		= "cfb(aes)",
+-	.cra_driver_name	= "cfb-aes-mtk",
+-	.cra_priority		= 400,
+-	.cra_flags		= CRYPTO_ALG_TYPE_ABLKCIPHER |
+-				  CRYPTO_ALG_ASYNC,
+-	.cra_init		= mtk_aes_cra_init,
+-	.cra_blocksize		= 1,
+-	.cra_ctxsize		= sizeof(struct mtk_aes_ctx),
+-	.cra_alignmask		= 0xf,
+-	.cra_type		= &crypto_ablkcipher_type,
+-	.cra_module		= THIS_MODULE,
+-	.cra_u.ablkcipher = {
+-		.min_keysize	= AES_MIN_KEY_SIZE,
+-		.max_keysize	= AES_MAX_KEY_SIZE,
+-		.ivsize		= AES_BLOCK_SIZE,
+-		.setkey		= mtk_aes_setkey,
+-		.encrypt	= mtk_aes_cfb_encrypt,
+-		.decrypt	= mtk_aes_cfb_decrypt,
+-	}
++	.base.cra_name		= "cfb(aes)",
++	.base.cra_driver_name	= "cfb-aes-mtk",
++	.base.cra_priority	= 400,
++	.base.cra_flags		= CRYPTO_ALG_ASYNC,
++	.base.cra_blocksize	= 1,
++	.base.cra_ctxsize	= sizeof(struct mtk_aes_ctx),
++	.base.cra_alignmask	= 0xf,
++	.base.cra_module	= THIS_MODULE,
++
++	.min_keysize		= AES_MIN_KEY_SIZE,
++	.max_keysize		= AES_MAX_KEY_SIZE,
++	.ivsize			= AES_BLOCK_SIZE,
++	.setkey			= mtk_aes_setkey,
++	.encrypt		= mtk_aes_cfb_encrypt,
++	.decrypt		= mtk_aes_cfb_decrypt,
+ },
+ };
+ 
+@@ -1259,7 +1243,7 @@ static void mtk_aes_unregister_algs(void)
+ 	crypto_unregister_aead(&aes_gcm_alg);
+ 
+ 	for (i = 0; i < ARRAY_SIZE(aes_algs); i++)
+-		crypto_unregister_alg(&aes_algs[i]);
++		crypto_unregister_skcipher(&aes_algs[i]);
+ }
+ 
+ static int mtk_aes_register_algs(void)
+@@ -1267,7 +1251,7 @@ static int mtk_aes_register_algs(void)
+ 	int err, i;
+ 
+ 	for (i = 0; i < ARRAY_SIZE(aes_algs); i++) {
+-		err = crypto_register_alg(&aes_algs[i]);
++		err = crypto_register_skcipher(&aes_algs[i]);
+ 		if (err)
+ 			goto err_aes_algs;
+ 	}
+@@ -1280,7 +1264,7 @@ static int mtk_aes_register_algs(void)
+ 
+ err_aes_algs:
+ 	for (; i--; )
+-		crypto_unregister_alg(&aes_algs[i]);
++		crypto_unregister_skcipher(&aes_algs[i]);
+ 
+ 	return err;
+ }
 -- 
 2.17.1
 
