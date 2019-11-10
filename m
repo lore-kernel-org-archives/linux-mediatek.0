@@ -2,23 +2,23 @@ Return-Path: <SRS0=CruQ=ZC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-5.4 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D4629C43331
-	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Nov 2019 20:15:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3B77FC17442
+	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Nov 2019 20:18:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A63102075C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Nov 2019 20:15:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0F574206C3
+	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Nov 2019 20:18:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ImjtiJgl";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WKQpSFu5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A63102075C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fmW8tDL+";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="G0Qji0b0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F574206C3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,58 +27,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6/X1dHhpi5KA0UEtFniIHdDfCl6Q1iwHEw/7RtoZirA=; b=ImjtiJglaU+iNp
-	VzbKTOFz0H4rI7ryAxAGHv37x+wFyUKK+qNyk3zug0nKlSW1cV60DkFFkKsSv+J8zgtkIJ1qugeTH
-	p6FDEwSAJVxf2kbtS/tm+a8GFc+FKOMVrGRgYdsodTC02Vo8HkHbSiDAxW4A58pEDLdBf6B6Lsu18
-	SmY8aq2tVpbI1x/M/XROuM/E4M9bq2EI5ySyUl+JxAcW1O9LxWDtjw796UqAAIuv32rVwK8f3iwpH
-	9TdfM1rncdfq14qs02Tfs056d4E9DUH8zqf1Qpb6Lwfn3m2COnJsPd7kvU481EFAC2c5QRrDzr18L
-	85+uop2GrGlXKUTf/weA==;
+	List-Owner; bh=yAXUc1VoBaPf/cy8VXDSZ0pRlYvOamWHl4iO60F+EcY=; b=fmW8tDL+4D7hLA
+	EfLz2sx6liOP7yVJ2fLAX3EUmGg5fj74ZFY+bBSqTKINPnM/busr3NRlI53KZ0hpYE/qdQLkGm9Dh
+	azQEJFYo0t/jYDZRsKBS8i6U1ZATfckz9ydT+BSzfPjcI5WN5qZYzB8dUaRPB6z5YvERzBGrqxfPD
+	F2BXywTHBBam172ZwhpX6v9jcTXfam2lG4naMJmUuwP7KrmC2bLl8CRzGyhgcnHpZo+8xlRndwzjP
+	aK//U1CZbzpjMHpJjlDFq9PKfJcgknoA/QAkp6ulNDTVEexKxLBKIV4wkLJrNqSFnFMsfccsjwVDn
+	Ptu7NQf002wKxUU4R3lg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iTtcN-0005zA-NJ; Sun, 10 Nov 2019 20:15:27 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1iTtfY-0006SQ-Oz; Sun, 10 Nov 2019 20:18:44 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iTtcK-0005xa-SY; Sun, 10 Nov 2019 20:15:26 +0000
-Received: by mail-wr1-x442.google.com with SMTP id p4so12397267wrm.8;
- Sun, 10 Nov 2019 12:15:24 -0800 (PST)
+ id 1iTtfW-0006Ry-0P
+ for linux-mediatek@lists.infradead.org; Sun, 10 Nov 2019 20:18:43 +0000
+Received: by mail-wm1-x343.google.com with SMTP id c17so11208789wmk.2
+ for <linux-mediatek@lists.infradead.org>; Sun, 10 Nov 2019 12:18:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=hnA+DGRSH+UJ48bHZH8NzolNWEJgQsv7XrV6s0qnF/M=;
- b=WKQpSFu5bTmtvP4e2tCMap23TVwRZZzxnziApAFk1JaLkwMWETka988iSGf7B6iY8p
- W4vozok0bIUDzPPW9PaOW0lpv3JFQ6sN3gZvhXt9Vo7mWFaKBUbQWCKY8r8KT1JS0rX4
- mqcwMQ/GtsZsraRYSpG/O97TKehxT6iDpFJzW9+ITl/teseEfOXhPR//3z5J4GgiaZI0
- 53SsAGNuz2rB6+L1ZgCtOm7iovf0Y7WUxRfWw6KQFVtckMTTPvPj59h0TTPo7xzzhAkz
- p5n2z5vDpDBBKFDq+/xVPCz/f8DpkRlmd87kB9l1+c39JQUFWW1XF1th8Prx5mCEg7jl
- S05Q==
+ bh=nCBsmwqdT3AvPL78TXyccFIFOh8t+1Pa2nkMeu4O5qI=;
+ b=G0Qji0b0N/VKYe8A+J0i3I8XN5VJ+yrxPZxXDqskMqI1kws9QhJBhX6wnQmr5gBrKM
+ mvIo6Q47+xTk64paK4yZenPZS64Vtxefv3GaE62iQ2pVLjfiT/2iJL/iOZDePqT6/E1S
+ DIWAdwH05AmFQ8XuZeC2tsXt+XJ7HZnL7sPCE+SlG5x+JySxE/QbhhWVGvR4ZDomJj3b
+ ffkJ6vGmTAumoJ/cg6WMTLIf4G5Qbim9lQT8UuBCnJ4sOkCJOk6nGsh26LkkKjYkBCkg
+ 5ie0EbL/MuGqiJTJ5/U4Lgh9C8K61v02aV9IRCHt7QoXooEgCwFH9+HVwUSZFFSWDXSz
+ bJuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=hnA+DGRSH+UJ48bHZH8NzolNWEJgQsv7XrV6s0qnF/M=;
- b=PhYbMrStxDRDbeRTHrey84jmVLS1vbuuAe+fur6yZbg2jKnAKBOj6L0JW5wg4qT/Gx
- OXXi1I1MmIHRYs+Ue3OqgqCbJxLNCqiVQ+zGA8i24WTOpfvUwBVM6rp2y/mGbdqOJqbZ
- kcOomDEB3vGx2j3/3B7V1zsZYxD6wbsUrYWYjcVHxqoVcke2oBcdrIpH5rz1POMmrmy8
- COxjEFkek3O7ppHUtNGOp9A9DVAkXb3CXwjUa4CHrM10MoHFk7eBj+lUkOesI2djkbU5
- s1UYqOPS8lf7e25VO5QqV2TvFn3A+obIhYKBUjQfAkZbp1OtgCWPbrxCUcC66ylQgHPm
- VvhQ==
-X-Gm-Message-State: APjAAAVNP7ABiQcPY9PeAOz/4qynH1wMpDmQxs48GQsQmfMmgev8TbLw
- AlS9nVVVtPRIOJvZMEmqWp0=
-X-Google-Smtp-Source: APXvYqwwdBnAls0tUi6VQ5lXIPAsQMsuAKpE/eOrUpd+D4s1gXdKbzJp//o6c6Jq1rWfJm36322gig==
-X-Received: by 2002:adf:f743:: with SMTP id z3mr17107172wrp.200.1573416923118; 
- Sun, 10 Nov 2019 12:15:23 -0800 (PST)
+ bh=nCBsmwqdT3AvPL78TXyccFIFOh8t+1Pa2nkMeu4O5qI=;
+ b=d4fY8s4iar0gjtrJg8fketnYg6FZPXQGiODHDkBqGJ3BHoA5DFduP53DYLms2irbqf
+ XlsRiQKLD1Cb5sNvhh1w2exJFLjurgGETTBniXXTzaaZJ1lRgqx4EBDcoy2xHFJZC15g
+ V5d4Ab6gUu5NMahm9m38yiQrqY6OkrLVywdXb5bBrJhsCmzcGYRDo7b/YZB41GN+CjKo
+ 4NeTTK4+d7JJPCC5NSFLnJXkr2jhIHrKn0lge8dRghu9vs9EdhX/spcYeJJTGv9+V0yD
+ /f45cTUyMbBA8VjkkB7jhcziNOQEEnw49RGmDIDL/Ms0DYeUYua7atUzNp3XVV7Izq6K
+ uCKw==
+X-Gm-Message-State: APjAAAXVJtGAA2VNMKzBhn32W0le70C3dkGeVAl5uXDjiYukPp7s5Hvt
+ 2IFwQ5lE0ehVGQVfEp4qOCHVbWmWJ3s=
+X-Google-Smtp-Source: APXvYqxpNBe51NsHPQE8Ab0o4C4xhws5Z9NH/wLWqTZuZIRBKBwOPMWcr+CQLTdRqQz/rxCk4On9zg==
+X-Received: by 2002:a05:600c:2312:: with SMTP id 18mr62245wmo.51.1573417120401; 
+ Sun, 10 Nov 2019 12:18:40 -0800 (PST)
 Received: from ziggy.stardust ([95.169.226.39])
- by smtp.gmail.com with ESMTPSA id j22sm22467428wrd.41.2019.11.10.12.15.21
+ by smtp.gmail.com with ESMTPSA id t1sm18182533wrn.81.2019.11.10.12.18.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 10 Nov 2019 12:15:22 -0800 (PST)
-Subject: Re: [PATCH v2 2/2] arm64: dts: mt8183: add systimer0 device node
-To: Dehui Sun <dehui.sun@mediatek.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh+dt@kernel.org>,
- Mark Rutland <mark.rutland@arm.com>
-References: <1572242984-30460-1-git-send-email-dehui.sun@mediatek.com>
- <1572242984-30460-3-git-send-email-dehui.sun@mediatek.com>
+ Sun, 10 Nov 2019 12:18:39 -0800 (PST)
+Subject: Re: [PATCH v1 1/1] soc: mediatek: add SMC fid table for SIP interface
+To: Eason Yen <eason.yen@mediatek.com>
+References: <1572247749-4276-1-git-send-email-eason.yen@mediatek.com>
+ <1572247749-4276-2-git-send-email-eason.yen@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -153,16 +151,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  Y1aFdU79pac005PuhxCWkKTJz3gCmznnoat4GCnL5gy/m0Qk45l4PFqwWXVLo9AQg2Kp3mlI
  FZ6fsEKIAN5hxlbNvNb9V2Zo5bFZjPWPFTxOteM0omUAS+QopwU0yPLLGJVf2iCmItHcUXI+
  r2JwH1CJjrHWeQEI2ucSKsNa8FllDmG/fQ==
-Message-ID: <18a0f55b-9371-f741-52a3-cff4eced55f9@gmail.com>
-Date: Sun, 10 Nov 2019 21:15:20 +0100
+Message-ID: <44bddcd1-457d-bde6-791f-def248f787b3@gmail.com>
+Date: Sun, 10 Nov 2019 21:18:38 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <1572242984-30460-3-git-send-email-dehui.sun@mediatek.com>
+In-Reply-To: <1572247749-4276-2-git-send-email-eason.yen@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191110_121524_930102_BD4102A9 
-X-CRM114-Status: GOOD (  15.87  )
+X-CRM114-CacheID: sfid-20191110_121842_054226_456B4FA5 
+X-CRM114-Status: GOOD (  16.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -174,10 +172,8 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, weiyi.lu@mediatek.com,
- srv_heupstream@mediatek.com, erin.lo@mediatek.com,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -185,39 +181,61 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 28/10/2019 07:09, Dehui Sun wrote:
-> Add systimer0 device node for MT8183.
-
-I renamed systemer0 to systimer.
-
-Applied, thanks!
-
+On 28/10/2019 08:29, Eason Yen wrote:
+> 1. Add a header file to provide SIP interface to ATF
+> 2. Add AUDIO SMC fid
 > 
-> Signed-off-by: Dehui Sun <dehui.sun@mediatek.com>
+> Change-Id: I218e9f571cea079268a5414725a81e9b35702e33
+
+Please delete Change-Id entry.
+Apart from that, I don't really get the reason for this patch. Which driver is
+supposed to use this header file?
+
+Please provide more background information.
+
+Regards,
+Matthias
+
+> Signed-off-by: Eason Yen <eason.yen@mediatek.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 9 +++++++++
->  1 file changed, 9 insertions(+)
+>  include/linux/soc/mediatek/mtk_sip_svc.h |   28 ++++++++++++++++++++++++++++
+>  1 file changed, 28 insertions(+)
+>  create mode 100644 include/linux/soc/mediatek/mtk_sip_svc.h
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 7e23179..40145dc 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -326,6 +326,15 @@
->  			clock-names = "spi", "wrap";
->  		};
->  
-> +		systimer: timer@10017000 {
-> +			compatible = "mediatek,mt8183-timer",
-> +				     "mediatek,mt6765-timer";
-> +			reg = <0 0x10017000 0 0x1000>;
-> +			interrupts = <GIC_SPI 200 IRQ_TYPE_LEVEL_HIGH>;
-> +			clocks = <&topckgen CLK_TOP_CLK13M>;
-> +			clock-names = "clk13m";
-> +		};
+> diff --git a/include/linux/soc/mediatek/mtk_sip_svc.h b/include/linux/soc/mediatek/mtk_sip_svc.h
+> new file mode 100644
+> index 0000000..00ee0f4
+> --- /dev/null
+> +++ b/include/linux/soc/mediatek/mtk_sip_svc.h
+> @@ -0,0 +1,28 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2019 MediaTek Inc.
+> + */
 > +
->  		auxadc: auxadc@11001000 {
->  			compatible = "mediatek,mt8183-auxadc",
->  				     "mediatek,mt8173-auxadc";
+> +#ifndef __MTK_SIP_SVC_H__
+> +#define __MTK_SIP_SVC_H__
+> +
+> +#include <linux/kernel.h>
+> +
+> +/* Error Code */
+> +#define SIP_SVC_E_SUCCESS               0
+> +#define SIP_SVC_E_NOT_SUPPORTED         -1
+> +#define SIP_SVC_E_INVALID_PARAMS        -2
+> +#define SIP_SVC_E_INVALID_Range         -3
+> +#define SIP_SVC_E_PERMISSION_DENY       -4
+> +
+> +#ifdef CONFIG_ARM64
+> +#define MTK_SIP_SMC_AARCH_BIT			0x40000000
+> +#else
+> +#define MTK_SIP_SMC_AARCH_BIT			0x00000000
+> +#endif
+> +
+> +/* AUDIO related SMC call */
+> +#define MTK_SIP_AUDIO_CONTROL \
+> +	(0x82000517 | MTK_SIP_SMC_AARCH_BIT)
+> +#endif
+> +/* __MTK_SIP_SVC_H__ */
 > 
 
 _______________________________________________
