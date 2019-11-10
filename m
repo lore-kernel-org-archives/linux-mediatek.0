@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C9B6C43331
-	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Nov 2019 20:23:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F0E3DC43331
+	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Nov 2019 20:40:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0253F206C3
-	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Nov 2019 20:23:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C1BB7207FA
+	for <linux-mediatek@archiver.kernel.org>; Sun, 10 Nov 2019 20:40:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kOW1JQNI";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="TbXE0jNK"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0253F206C3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LjDeL6L5";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="lh1EVpJR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C1BB7207FA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,57 +27,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rKEvtWbrllyek8FgJvLzrBVPW/p/M0nd9m2eKCoU6a4=; b=kOW1JQNIF/DRA5
-	efjFjVM0+u4GR6ss2PHgzZ5lkI12VU6aykzYg4yfB+52WT4Sx5yB/lrSMjjhoOWGhhPsDT2v1kTuc
-	u3PCuZR+EqmNNMU7zq47R05giqnbfj7d4KL7f2lUU7POeOGiPRzDH/gGJndXKBA3VF+3gain6+sps
-	sAHTy1HYEEcs+cNN6ew6jjjeDLOQrc4IEg8D+eO6kVFxS4l4a49icjsIhSQ2KlYNt5EvqyALX4nu6
-	RUQDJkqa6DFIrRZjqS+ggQJgIUbRpx6oTmZ885spo9ids6Pe6PlV17rWuf8MY7cutEs96Ruxb5+al
-	lJwEnuK8GcN//1WuqJag==;
+	List-Owner; bh=yyv2Fqa9JxckzKJXflLbupgnGkRyZfrJDVJUi6LXsac=; b=LjDeL6L55ofzzv
+	vyOrZblQ5yMPVnmSABNXzEC8tXrGeOuBf7+7YO/B388TIIAzqi8uXMcAn200iYAPCQx17hO9Ish6S
+	Dr82tllmUuOI+rBMaD52KuSOdOlcoi82tvCSk9JFpiy7B6zPzavOGk5ggm4dPl9O4D5UOJ8lDGVRe
+	rTcSwtxQXPTcTrir3QdKZQY18WwnwyrGpTc0RQe6ONnd+Xt/wsewygW4TCMhqK5d01pP0srNe7tRA
+	5x76ZsrXXulQj3Hv6FlH+bOgGundm0VcDnJfFFTsGKymhgWmkW11XgA/Gq99X+kLPPJkGuiGGgX+O
+	wjG5118tzteZJOi5HzFw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iTtkJ-0007yX-B5; Sun, 10 Nov 2019 20:23:39 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1iTu0Q-0007er-86; Sun, 10 Nov 2019 20:40:18 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iTtk7-0007pA-Sg; Sun, 10 Nov 2019 20:23:29 +0000
-Received: by mail-wm1-x341.google.com with SMTP id c17so11215022wmk.2;
- Sun, 10 Nov 2019 12:23:27 -0800 (PST)
+ id 1iTu0E-0006s7-5C; Sun, 10 Nov 2019 20:40:07 +0000
+Received: by mail-wm1-x342.google.com with SMTP id 8so11240322wmo.0;
+ Sun, 10 Nov 2019 12:40:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Jg0ky2iRvbPWB2jD5swuaQZV83rOO1qppabnhyJNYlE=;
- b=TbXE0jNKdTIxtedDxj3crBUpdRvfpWoAceDICQyUGLe3Y2Fy1eQaUH9kxIjsnzFeU8
- 34mEv0wn4XbUm3vbmAKzvUDJw+YVpWsWHxtaUjtQeW8iodCSXo1PtJY8dRfBosrz1mfB
- M1831IJe1yregFzFOBkEyqyGdNojM03upWxiePZNoLOh6rSHKrNKViu5lmDvAzJafVgi
- E/b5ukDe4h/M9leKjNfa78BqJox5Nr+Bt35NQ1wy5FY39d5ldK2rOjpWO/2wGkjGaV8b
- FSjSxZ0FGIUvgTAaxtEU+wpEdnHDqO/My2lcNxItuYGRQHpGl9Jh0bMwcxMMNJsv6Ijv
- S9Fg==
+ bh=XMGjzy2jF9shV8Yzd4U9oGsfbDGpjYHmAOfvcyTPLCo=;
+ b=lh1EVpJRe1SuK4iFM2jNT3ZtAVZVYZ0QxRLSOPoeHdagsOZrNdPvCR9aJUVF3DNmP4
+ mkv2ykZwziySq+exrqhyYhxKdxPgExP16qSap1qerEoxVOR26WjGwdM4lB49aFwPD1sR
+ PjVIgEJKAVhil0ASu1CBRWBiGemTtGkF38ISUTS5077Zn5btGsU24tq0NAiUjPjptOAt
+ 4HNhPAWDzixS6X/qiHuZ0tqX32KBMkQ3D5rHYXW5lzSwqKHC62YwgHo7RS6RxdrLLRBS
+ fYfiqF4aYFtou4577vMCmZw0C2LRuZHZ2XCn8j/iAzL8NCSHZwsSJQmpRMLtwPm6XSs0
+ ffSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=Jg0ky2iRvbPWB2jD5swuaQZV83rOO1qppabnhyJNYlE=;
- b=YFh6I1J7vhUtgJvMuFyqgvkJp7hT7Azhz+VW3myuO9mVq2X5cKCQrqjpXkh/4xw0L5
- vUDaJcWr06ORAMQecTAenG/fqmgDt1Ov5SgZLdcpMeK2QyQ0/7SAHDKKhlaiUoIB7ofr
- wf8n5/nhsSJ9FUcBK8t1n7z/I/XWmn7TBoLSB4Ra1PAMjFxU9+VrtCbRq6vGORX/X0yZ
- Mf4Xylx0NjvjYXROCk45/WId/BZayfY05eyQ+HJ8vNxVBUrIHJvKOUhnsBwMahR25U7s
- OOB5qwDogO6xlDVFzbIzL5YqPMef7TUXSORrXuL1XMJuFfa8EDpHTxHKeldxCTy67k21
- Rf3A==
-X-Gm-Message-State: APjAAAU4VCm1CWFKI4Fuoi1/VvuDu2vEl0Yq20FVSuEWNa9NSchvXlxH
- rMNeKelAj5T/gOHjYo2ZkWw=
-X-Google-Smtp-Source: APXvYqzvkjHHfCLkUjjjlgz0kTlag/5+HX/xD3PwmsHrgprRFjmkPkOWw/+wyqWZyTtXcJbAHJ588Q==
-X-Received: by 2002:a1c:5fc4:: with SMTP id
- t187mr18437872wmb.142.1573417406188; 
- Sun, 10 Nov 2019 12:23:26 -0800 (PST)
+ bh=XMGjzy2jF9shV8Yzd4U9oGsfbDGpjYHmAOfvcyTPLCo=;
+ b=rlgWZhrg50y4dinzwQVusXi9nkl4O7j+24MTSvCTQOnAdd1ap/m17L+cLC+UqcI9LP
+ MuQR0MeeAGmrZ+r9E45a7lnA7EljEhHHthIFrndh4HZlVavTD9AYi8sdXg+yFLNSgP1/
+ 2voikxSu/idn1pvEfsjhgKh9onEbhm1psTisiACC+EmIZnePOtzUP1AUvRlKI0R5Wg2c
+ rIzfuO6dGrEiUMqeu9kMqoyYRntl8F1syp0RGmf1/9nyprYtO0XByZR6fvQEVRFMbGWU
+ fUfbDuWd7UycTpekjd3Iiqh7JnS/dERikgZs5wiutFx1r7njVxzM3Tby8Y4M3yGOJQ5C
+ 83OQ==
+X-Gm-Message-State: APjAAAUX+/fH5DE1zkqq92ehHyYX1MivL/upoq+SGV5bkAHYZncHIjXE
+ CHVHrHJz3MhYATtZdtG1H4M=
+X-Google-Smtp-Source: APXvYqw0s8mnjDQpwIMBVZOnKPrZx1Meodk4QGORIt8NlSefy9oFaHDi5v7mWebwPJsLIIvCZ1ioJQ==
+X-Received: by 2002:a1c:5459:: with SMTP id p25mr16624077wmi.109.1573418404390; 
+ Sun, 10 Nov 2019 12:40:04 -0800 (PST)
 Received: from ziggy.stardust ([95.169.226.39])
- by smtp.gmail.com with ESMTPSA id f13sm12738958wrq.96.2019.11.10.12.23.24
+ by smtp.gmail.com with ESMTPSA id b66sm16440605wmh.39.2019.11.10.12.40.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 10 Nov 2019 12:23:25 -0800 (PST)
-Subject: Re: [PATCH] serial: 8250-mtk: Use platform_get_irq_optional() for
- optional irq
+ Sun, 10 Nov 2019 12:40:03 -0800 (PST)
+Subject: Re: [PATCH v7 7/7] arm: dts: mt6323: add keys, power-controller, rtc
+ and codec
 To: Frank Wunderlich <frank-w@public-files.de>,
  linux-mediatek@lists.infradead.org
-References: <20191027062117.20389-1-frank-w@public-files.de>
+References: <20190910070446.639-1-frank-w@public-files.de>
+ <20190910070446.639-8-frank-w@public-files.de>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -152,16 +152,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  Y1aFdU79pac005PuhxCWkKTJz3gCmznnoat4GCnL5gy/m0Qk45l4PFqwWXVLo9AQg2Kp3mlI
  FZ6fsEKIAN5hxlbNvNb9V2Zo5bFZjPWPFTxOteM0omUAS+QopwU0yPLLGJVf2iCmItHcUXI+
  r2JwH1CJjrHWeQEI2ucSKsNa8FllDmG/fQ==
-Message-ID: <1e18621e-fa29-eae8-8720-45d6f75caf7c@gmail.com>
-Date: Sun, 10 Nov 2019 21:23:24 +0100
+Message-ID: <4ae8d72c-3c28-0bec-bf6f-4bb26dcda578@gmail.com>
+Date: Sun, 10 Nov 2019 21:40:01 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.1
 MIME-Version: 1.0
-In-Reply-To: <20191027062117.20389-1-frank-w@public-files.de>
+In-Reply-To: <20190910070446.639-8-frank-w@public-files.de>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191110_122327_929961_A7597E1F 
-X-CRM114-Status: GOOD (  20.04  )
+X-CRM114-CacheID: sfid-20191110_124006_244803_7DD69151 
+X-CRM114-Status: GOOD (  16.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -173,9 +173,14 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-arm-kernel@lists.infradead.org, linux-serial@vger.kernel.org,
- linux-kernel@vger.kernel.org
+Cc: linux-rtc@vger.kernel.org, devicetree@vger.kernel.org,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Sean Wang <sean.wang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>,
+ linux-pm@vger.kernel.org, Josef Friedl <josef.friedl@speed.at>,
+ linux-kernel@vger.kernel.org, Tianping Fang <tianping.fang@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, Sebastian Reichel <sre@kernel.org>,
+ Mark Rutland <mark.rutland@arm.com>, Eddie Huang <eddie.huang@mediatek.com>,
+ Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -183,49 +188,64 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 27/10/2019 07:21, Frank Wunderlich wrote:
-> As platform_get_irq() now prints an error when the interrupt does not
-> exist, this warnings are printed on bananapi-r2:
+On 10/09/2019 09:04, Frank Wunderlich wrote:
+> From: Josef Friedl <josef.friedl@speed.at>
 > 
-> [    4.935780] mt6577-uart 11004000.serial: IRQ index 1 not found
-> [    4.962589] 11002000.serial: ttyS1 at MMIO 0x11002000 (irq = 202, base_baud = 1625000) is a ST16650V2
-> [    4.972127] mt6577-uart 11002000.serial: IRQ index 1 not found
-> [    4.998927] 11003000.serial: ttyS2 at MMIO 0x11003000 (irq = 203, base_baud = 1625000) is a ST16650V2
-> [    5.008474] mt6577-uart 11003000.serial: IRQ index 1 not found
+> support poweroff and power-related keys on bpi-r2
 > 
-> Fix this by calling platform_get_irq_optional() instead.
-> 
-> now it looks like this:
-> 
-> [    4.872751] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
-> 
-> Fixes: 7723f4c5ecdb8d83 ("driver core: platform: Add an error message to platform_get_irq*()")
-> 
+> Suggested-by: Frank Wunderlich <frank-w@public-files.de>
+> Signed-off-by: Josef Friedl <josef.friedl@speed.at>
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Applied thanks!
 
 > ---
-> changes since v1:
-> 	https://patchwork.kernel.org/patch/11213813/
-> 	change from platform_irq_count to platform_get_irq_optional
+> changes since v6: none
+> changes since v5: none
+> changes since v4: none
+> changes since v3: none
+> changes since v2: none (=v2 part 7)
 > ---
->  drivers/tty/serial/8250/8250_mtk.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  arch/arm/boot/dts/mt6323.dtsi | 27 +++++++++++++++++++++++++++
+>  1 file changed, 27 insertions(+)
 > 
-> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-> index b411ba4eb5e9..4d067f515f74 100644
-> --- a/drivers/tty/serial/8250/8250_mtk.c
-> +++ b/drivers/tty/serial/8250/8250_mtk.c
-> @@ -544,7 +544,7 @@ static int mtk8250_probe(struct platform_device *pdev)
->  	pm_runtime_set_active(&pdev->dev);
->  	pm_runtime_enable(&pdev->dev);
->  
-> -	data->rx_wakeup_irq = platform_get_irq(pdev, 1);
-> +	data->rx_wakeup_irq = platform_get_irq_optional(pdev, 1);
->  
->  	return 0;
->  }
+> diff --git a/arch/arm/boot/dts/mt6323.dtsi b/arch/arm/boot/dts/mt6323.dtsi
+> index ba397407c1dd..7fda40ab5fe8 100644
+> --- a/arch/arm/boot/dts/mt6323.dtsi
+> +++ b/arch/arm/boot/dts/mt6323.dtsi
+> @@ -238,5 +238,32 @@
+>  				regulator-enable-ramp-delay = <216>;
+>  			};
+>  		};
+> +
+> +		mt6323keys: mt6323keys {
+> +			compatible = "mediatek,mt6323-keys";
+> +			mediatek,long-press-mode = <1>;
+> +			power-off-time-sec = <0>;
+> +
+> +			power {
+> +				linux,keycodes = <116>;
+> +				wakeup-source;
+> +			};
+> +
+> +			home {
+> +				linux,keycodes = <114>;
+> +			};
+> +		};
+> +
+> +		codec: mt6397codec {
+> +			compatible = "mediatek,mt6397-codec";
+> +		};
+> +
+> +		power-controller {
+> +			compatible = "mediatek,mt6323-pwrc";
+> +		};
+> +
+> +		rtc {
+> +			compatible = "mediatek,mt6323-rtc";
+> +		};
+>  	};
+>  };
 > 
 
 _______________________________________________
