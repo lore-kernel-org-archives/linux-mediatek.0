@@ -2,160 +2,81 @@ Return-Path: <SRS0=Eirx=ZD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.1 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2995CC43331
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2019 12:23:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D4D44C43331
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2019 13:05:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EDE8D2190F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2019 12:23:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A77DE2190F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2019 13:05:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RuB/+opA";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="YQW736wo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EDE8D2190F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="r3OIATIS";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="Mr3jgn8X"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A77DE2190F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:Subject:
-	From:To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=G0xCZvDurddkzit1brPf8977E001+KDWkjEM8eiSiEs=; b=RuB/+opApkr0Fb
-	Q0zZpl3dMI3UDCLrTDJq9oKSFmDYwJHhve3HUYFoZSXnaTcRdTFe3ENo6e8ZXATTPkFMEsV5WaZgx
-	y3VFZepVNR+K5NN4VH6vaviSwiH8M0MDgQEVRaFXDVINDqeCyHPikW9IUl83UxspAt0Qpq761iu5P
-	GHBjcpAMti8ir7UxYf7J6du1Ipo5zPEQHBtbNhnDogIn877QAU3RjlooFLNoS3vOANol6NMAvYq2w
-	tsCLYad94jVjGPbBBDe9cSeBnZ1IJBn11JS1V4JN5V5aXixe37fL9BhVK3EE7RVNCOCWx1wL+1hYv
-	Yj8opV1vs72ZOZJIdjVg==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zulndWtxG9DgNDsSOXOXPZ0DOUWahz3h+HXk791ftbk=; b=r3OIATISK1AHYj
+	EsYsiuHfMApECuX92pExrhj8M+pMhxkg/JaeK8Ukw7TdjWli89wKLZy8avDsQEURpZhLuSd7a/udN
+	G7rNT3siH9bje+HfdwZ50QEWKMHsOLsyM7FjvOFgID6CC16IjAIynr/gOw5PNJwYxCtOH90mbgLkr
+	fUVIphIaHcYkIj4xtQ7Qwux6uRjLDRAk0AtUUlhRPn485+SgFkQwqWXUjRVkjTX1DlP1hIShyYOuk
+	k27sRuBbI+d4ckjj4VCnqgqTyhNAWFTUccrG9yLCEjA2Fxzqv1/EdNC+ev9h6d6ROOmeYzsHfWqEm
+	uUTJYKlX3rHTXz+RS/Rg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iU8je-0000Go-Ke; Mon, 11 Nov 2019 12:23:58 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1iU9Nm-0007pj-Dj; Mon, 11 Nov 2019 13:05:26 +0000
+Received: from mail-vs1-xe44.google.com ([2607:f8b0:4864:20::e44])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iU8jb-0000Dv-Pw; Mon, 11 Nov 2019 12:23:57 +0000
-Received: by mail-wm1-x344.google.com with SMTP id 8so13017590wmo.0;
- Mon, 11 Nov 2019 04:23:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:cc:from:subject:autocrypt:message-id:date:user-agent
- :mime-version:content-language:content-transfer-encoding;
- bh=gWR2Q0iRX4tL8YpKyEd9/McJr976/bArBAm2SjDmBeo=;
- b=YQW736wo3yoEgM0dVSUCs07e93pBP3U6tJmTCmiYIjwiqpOfBenOql7Vmh86RDVygb
- 2F2/R8Vu0AtKqfGmnOPoJBh8kfWZBzjoYd1SOa8fguFmpsM8DRo8WGDVpJSOKvPHApm4
- n6i63nUZcEGb/5v1omirN/VbBM0Vl+OhUvrWxuXpkhATh7N7oMVUps8kbo+cFtYG9D+g
- pOgmvkHGrHMm8LZkh5LbndhwbAcEVbFjtwlMz/myAqZ8S/aqkOIreYi7av00wEVeQIiz
- /1B8aEztfmGKxctiv3zVcFF6v69LK1MKIz3KAt2f19wLUnPBmGqQ5x+pSxjhWbdWYJDy
- 0vkA==
+ id 1iU9Nj-0007oY-8e
+ for linux-mediatek@lists.infradead.org; Mon, 11 Nov 2019 13:05:24 +0000
+Received: by mail-vs1-xe44.google.com with SMTP id n9so3618869vsa.12
+ for <linux-mediatek@lists.infradead.org>; Mon, 11 Nov 2019 05:05:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=t8vYvx18GD5TBNd1q0mA7jDSSmkQRIuSLUp/v+fUMPA=;
+ b=Mr3jgn8X85TRmMABlrppdjqKXTw3KoQ0tkejNY2UUpSNRBX4S1su6qu9/bD/8aiibf
+ vL7rp++v1RVTiZIvvNVJG1X/INTj3uzIglB6Lyo55sqFpH6itTcsrScfFVE1T58FOimr
+ ZDpg3mH6j2crHZMGuJxEGRFJFiTE4Yn/uC750/u4TFUbXzj7VdPV4YyqpdGkK1wT4RIw
+ HW+GpYCl/MWI9UYpf/EyAJaVnNN5MtuI0IR1iSyP3EXmAE8jtWaOlh35qGKFwLNIJOig
+ jTo0hoeXucWpQ678zzjlmCLNoBYMP+40Mv0yOB3CVGTFgwkYSpRAzw9qOvdR88GOxXtZ
+ 2r+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:from:subject:autocrypt:message-id:date
- :user-agent:mime-version:content-language:content-transfer-encoding;
- bh=gWR2Q0iRX4tL8YpKyEd9/McJr976/bArBAm2SjDmBeo=;
- b=VajuP7rRQcDDWRgPmR6S2cTiJnvdJEDmNfgsDHeTzMzHC1zs2nIXm18ucaaloVpHLm
- PjVrLTU7k0W0LpuktUO1BuQ+k12i2NkvzZQOghcLbDISIY8c+z+pFq1ugRZdsRwErnE4
- ABhm7CKkvwPg+Znp3ybMp6+4mTox+YyZnDDXMjC/8Q2Zw52gJAibr8LqMTWR8hTGdinv
- 6St8h+zmZNEcEoKa0MKPbrbUlM2tkryJEC/J6XAawf2Hlk8fyF+BuqezP3JwioSN01PV
- llKiXSHDKrAHjDStWzVuXdm1CczhatQo+BV68AJ8yhPR6huXC+FVcltjzokr6WW9fyKm
- KlGQ==
-X-Gm-Message-State: APjAAAUWZv1115JaOiClNw2zPgzy2QlCz/yyGQjpGwakLHwlP4w+yd8b
- hgPhfk8zM39YO0RFnS3Qli0=
-X-Google-Smtp-Source: APXvYqxHBM+vS3u0FymnD/VhQSR9++V5gF19m1r7dzusbIx17u/1HqA+IxRjXsDdkzgCdH95YfUMXQ==
-X-Received: by 2002:a05:600c:a:: with SMTP id g10mr5737824wmc.69.1573475034037; 
- Mon, 11 Nov 2019 04:23:54 -0800 (PST)
-Received: from ziggy.stardust ([95.169.226.39])
- by smtp.gmail.com with ESMTPSA id u203sm20031421wme.34.2019.11.11.04.23.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 11 Nov 2019 04:23:53 -0800 (PST)
-To: soc@kernel.org
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] soc: updates for v5.5
-Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
- 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
- r2JwH1CJjrHWeQEI2ucSKsNa8FllDmG/fQ==
-Message-ID: <294422a4-37b2-def5-5d32-8988f27c3a5b@gmail.com>
-Date: Mon, 11 Nov 2019 13:23:51 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=t8vYvx18GD5TBNd1q0mA7jDSSmkQRIuSLUp/v+fUMPA=;
+ b=caQ22yL9wZVFawzHpg6JV3+6pJbisrdW2Q3zMU8OYWOz3/MjF/ozH10mv0WKSlgVJ5
+ Jyz+4cmN0Dn6z2xK5hCxwKj/NlT15Q5jUVoPSBiidEld0Xff/DApnBwLCHkrpj2FuWWS
+ MFXQkgccWj+kR4vBwuEM2aGH45bnCU4yUSN1rJawbqTq8DMFubUWilDIGyH+oniSI8YN
+ 1U8c+blsuuYkW5zm/tkp1WnaLXZOxtAwtaqjAEKqwg6ZsMuZP2Fa7+neeMQM93tAB8vu
+ oktARR8LJPAatw8Uo97mVWOePlF6X20N+VtVIx738BSt/IL5mVgJuy0qrMDVDIvQX008
+ eDlg==
+X-Gm-Message-State: APjAAAUTzdCVq3wJiDkh31JtaPsILCNHD8rTRM6SkRFNBoTquxQ96njT
+ wZjPK7GLNRMNAs1IJ1LEFpiAFoGLjWWGL28+JHr86w==
+X-Google-Smtp-Source: APXvYqxGAuQCp/8AvEDPLKZli/PbYKhYU1pS5j8TWO3nkfvlnOb8NUdy0lHofs5UupjfdckHmocertmwl5UWj2f467A=
+X-Received: by 2002:a67:2e0f:: with SMTP id u15mr19259795vsu.89.1573477521399; 
+ Mon, 11 Nov 2019 05:05:21 -0800 (PST)
 MIME-Version: 1.0
-Content-Language: en-US
+References: <1572590582-11056-1-git-send-email-chun-hung.wu@mediatek.com>
+In-Reply-To: <1572590582-11056-1-git-send-email-chun-hung.wu@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Mon, 11 Nov 2019 14:04:45 +0100
+Message-ID: <CAPDyKFropF-au2OTgyRL8-sO0MKXs3GtZGMqYpWpsKHtfdtpyw@mail.gmail.com>
+Subject: Re: [PATCH 1/3] [1/3] mmc: core: expose MMC_CAP2_CQE* to dt
+To: Chun-Hung Wu <chun-hung.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191111_042355_862484_5B6C55CF 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20191111_050523_339583_8D7A7C49 
+X-CRM114-Status: GOOD (  14.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -167,49 +88,70 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, Weiyi Lu <weiyi.lu@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Kate Stewart <kstewart@linuxfoundation.org>, wsd_upstream@mediatek.com,
+ DTML <devicetree@vger.kernel.org>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Kuohong Wang <kuohong.wang@mediatek.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, Pavel Machek <pavel@ucw.cz>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+ Thomas Gleixner <tglx@linutronix.de>, Stanley Chu <stanley.chu@mediatek.com>,
+ Pan Bian <bianpan2016@163.com>, Chaotian Jing <chaotian.jing@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Olof and Arnd,
+On Fri, 1 Nov 2019 at 07:43, Chun-Hung Wu <chun-hung.wu@mediatek.com> wrote:
+>
+> Expose MMC_CAP2_CQE and MMC_CAP2_CQE_DCMD
+> to host->caps2 if
+> 1. "supports-cqe" is defined in dt and
+> 2. "disable-cqe-dcmd" is not defined in dt.
+>
+> Change-Id: I3d172e6bcfac34520c3932a6f8df2e20f2c0d05b
+> CR-Id:
+> Feature:
 
-Please have a look on the following updates of drivers/soc for v5.5
+Remove these tags please.
 
-Thanks a lot,
-Matthias
+> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+> ---
+>  drivers/mmc/core/host.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+>
+> diff --git a/drivers/mmc/core/host.c b/drivers/mmc/core/host.c
+> index 105b7a7..efb0dbe 100644
+> --- a/drivers/mmc/core/host.c
+> +++ b/drivers/mmc/core/host.c
+> @@ -319,6 +319,14 @@ int mmc_of_parse(struct mmc_host *host)
+>                 host->caps2 |= MMC_CAP2_NO_SD;
+>         if (device_property_read_bool(dev, "no-mmc"))
+>                 host->caps2 |= MMC_CAP2_NO_MMC;
+> +       if (device_property_read_bool(dev, "supports-cqe"))
+> +               host->caps2 |= MMC_CAP2_CQE;
+> +
+> +       /* Must be after "supports-cqe" check */
+> +       if (!device_property_read_bool(dev, "disable-cqe-dcmd")) {
+> +               if (host->caps2 & MMC_CAP2_CQE)
+> +                       host->caps2 |= MMC_CAP2_CQE_DCMD;
+> +       }
+>
+>         /* Must be after "non-removable" check */
+>         if (device_property_read_u32(dev, "fixed-emmc-driver-type", &drv_type) == 0) {
+> --
+> 1.9.1
+>
 
----
+Otherwise, this looks good to me.
 
-The following changes since commit 54ecb8f7028c5eb3d740bb82b0f1d90f2df63c5c:
-
-  Linux 5.4-rc1 (2019-09-30 10:35:40 -0700)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-tags/v5.4-next-soc
-
-for you to fetch changes up to 662c9d55c5ccb37f3920ecab9720f2ebf2a6ca18:
-
-  soc: mediatek: Refactor bus protection control (2019-11-07 10:11:04 +0100)
-
-----------------------------------------------------------------
-refactor code of mtk-scpsys
-
-----------------------------------------------------------------
-Weiyi Lu (5):
-      soc: mediatek: Refactor polling timeout and documentation
-      soc: mediatek: Refactor regulator control
-      soc: mediatek: Refactor clock control
-      soc: mediatek: Refactor sram control
-      soc: mediatek: Refactor bus protection control
-
- drivers/soc/mediatek/mtk-scpsys.c | 214 ++++++++++++++++++++++++++------------
- 1 file changed, 146 insertions(+), 68 deletions(-)
+Kind regards
+Uffe
 
 _______________________________________________
 Linux-mediatek mailing list
