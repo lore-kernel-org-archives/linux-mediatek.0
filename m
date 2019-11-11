@@ -2,74 +2,62 @@ Return-Path: <SRS0=Eirx=ZD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 01F50C43331
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2019 17:14:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D2B76C43331
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2019 19:55:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CB08B21655
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2019 17:14:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A3A212067B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2019 19:55:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IYTI6afa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CB08B21655
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linutronix.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uPcfMDqt"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A3A212067B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=atomide.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:
-	References:In-Reply-To:Subject:To:From:Date:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4g8E9RqNCwAjQnYug+JBhrSJPY4WeCKTznIJ5uLO8Xk=; b=IYTI6afad+3stB
-	zcQwd53MaKnsTjQT1XWdq/2CC1HrTYmj8uqWHvHJNowxSRgNCkQfhFcBA5cV+zA6qQpeQdwaGlK9f
-	0Q2lljUJaWLlaWqNzI6lmMtyjfE7BWmNLhnm04IP8QtFl4Ys6SAm6wNhnj7/tva1UEJGvUrELf6AQ
-	YnZQMnmR+bYtdr7bJcNufI7+FlfPIjJwvyU3w5z804XsX8WXjU0+LkRHkD8E4IZuKK7XXW9/4T2sU
-	eTES2pePwj/mKguu9d+RXeKCeNgBKdZ6Ox+Dd8GEE/92zluE5yj57vfEuLXZjiE3Hypgn/F2NVwaT
-	PsR+3fK6vLV9QYhTWboA==;
+	List-Owner; bh=IJVeXoQBd+5OTzz8ZAin/2hANitSjxK+GfKzXt1jibY=; b=uPcfMDqtJ/jbdD
+	IZ8RY9Q13XzR6UU07Fz+RlSM58xv2tuS15w3Dy2HtHwseTrZ476icUSBZO4pAtYY0xx1JNIlABE3j
+	m05VhypCkM49X0v/KL+87AuD5/ZtKkDDXbUGX9BQ0OVtCRtkxm9OIimUU0wGv7wKeRsDBLRc8XHQj
+	Arul7lalRNPXnzzRJHF7SKRP86z/W/40vtQ7c2OMyMK4sbKqr6JlN6nYnfTx9LOFAYPnpMpmWnSjF
+	aqYQl7P2+PZRHHp0lJ2wDOUyqQJ6J6CGOu34/Pu1LuaZKicFb80IS97Yzip5/BjPHVIDboLkiqbEj
+	VjrYl43NOofNcD0tEwuA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iUDGE-0002FN-9h; Mon, 11 Nov 2019 17:13:54 +0000
-Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
- by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
- id 1i8uI1-0005ZJ-MU
- for linux-mediatek@lists.infradead.org; Fri, 13 Sep 2019 22:43:44 +0000
-Received: from [5.158.153.53] (helo=tip-bot2.lab.linutronix.de)
- by Galois.linutronix.de with esmtpsa (TLS1.2:DHE_RSA_AES_256_CBC_SHA256:256)
- (Exim 4.80) (envelope-from <tip-bot2@linutronix.de>)
- id 1i8uHm-0005iJ-Hf; Sat, 14 Sep 2019 00:43:27 +0200
-Received: from [127.0.1.1] (localhost [IPv6:::1])
- by tip-bot2.lab.linutronix.de (Postfix) with ESMTP id A23011C04F3;
- Sat, 14 Sep 2019 00:43:25 +0200 (CEST)
-Date: Fri, 13 Sep 2019 22:43:25 -0000
-From: "tip-bot2 for Miles Chen" <tip-bot2@linutronix.de>
-To: linux-tip-commits@vger.kernel.org
-Subject: [tip: sched/core] sched/psi: Correct overly pessimistic size
- calculation
-In-Reply-To: <20190912103452.13281-1-miles.chen@mediatek.com>
-References: <20190912103452.13281-1-miles.chen@mediatek.com>
+	id 1iUFm4-0004D4-CN; Mon, 11 Nov 2019 19:54:56 +0000
+Received: from muru.com ([72.249.23.125])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iUFlr-00042a-6Z; Mon, 11 Nov 2019 19:54:44 +0000
+Received: from atomide.com (localhost [127.0.0.1])
+ by muru.com (Postfix) with ESMTPS id D77878119;
+ Mon, 11 Nov 2019 19:55:14 +0000 (UTC)
+Date: Mon, 11 Nov 2019 11:54:35 -0800
+From: Tony Lindgren <tony@atomide.com>
+To: Mark Brown <broonie@kernel.org>
+Subject: Re: Applied "spi: add power control when set_cs" to the spi tree
+Message-ID: <20191111195435.GW5610@atomide.com>
+References: <1572426234-30019-1-git-send-email-luhua.xu@mediatek.com>
+ <20191031132342.100F1D020AA@fitzroy.sirena.org.uk>
 MIME-Version: 1.0
-Message-ID: <156841460535.24167.6273030361884540421.tip-bot2@tip-bot2>
-X-Mailer: tip-git-log-daemon
-Robot-ID: <tip-bot2.linutronix.de>
-Robot-Unsubscribe: Contact <mailto:tglx@linutronix.de> to get blacklisted from
- these emails
-Precedence: bulk
-X-Linutronix-Spam-Score: -1.0
-X-Linutronix-Spam-Level: -
-X-Linutronix-Spam-Status: No , -1.0 points, 5.0 required, ALL_TRUSTED=-1,
- SHORTCIRCUIT=-0.0001
-X-Bad-Reply: References and In-Reply-To but no 'Re:' in Subject.
+Content-Disposition: inline
+In-Reply-To: <20191031132342.100F1D020AA@fitzroy.sirena.org.uk>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20190913_154341_877221_B8E67F98 
-X-CRM114-Status: GOOD (  11.03  )
-X-Mailman-Approved-At: Mon, 11 Nov 2019 09:13:53 -0800
+X-CRM114-CacheID: sfid-20191111_115443_277674_ED829835 
+X-CRM114-Status: UNSURE (   6.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
+Precedence: list
 List-Id: <linux-mediatek.lists.infradead.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=unsubscribe>
@@ -78,102 +66,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: linux-kernel@vger.kernel.org
-Cc: wsd_upstream@mediatek.com, Peter Zijlstra <peterz@infradead.org>,
- linux-kernel@vger.kernel.org, Miles Chen <miles.chen@mediatek.com>,
- linux-mediatek@lists.infradead.org, Borislav Petkov <bp@alien8.de>,
- Thomas Gleixner <tglx@linutronix.de>,
- Linus Torvalds <torvalds@linux-foundation.org>, Ingo Molnar <mingo@kernel.org>
+Cc: wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
+ linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Luhua Xu <luhua.xu@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
-Message-ID: <20190913224325.vL1XMerchWUCfNSB5KYD-JLzDk1CspwrNp4NE5ndvQs@z>
 
-The following commit has been merged into the sched/core branch of tip:
+Hi,
 
-Commit-ID:     4adcdcea717cb2d8436bef00dd689aa5bc76f11b
-Gitweb:        https://git.kernel.org/tip/4adcdcea717cb2d8436bef00dd689aa5bc76f11b
-Author:        Miles Chen <miles.chen@mediatek.com>
-AuthorDate:    Thu, 12 Sep 2019 18:34:52 +08:00
-Committer:     Ingo Molnar <mingo@kernel.org>
-CommitterDate: Fri, 13 Sep 2019 07:49:28 +02:00
+* Mark Brown <broonie@kernel.org> [191031 13:24]:
+> The patch
+> 
+>    spi: add power control when set_cs
+> 
+> has been applied to the spi tree at
+> 
+>    https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-5.5
 
-sched/psi: Correct overly pessimistic size calculation
+This patch causes a regression for many SPI devices as they
+assume spi_setup() return 0 on success and not a positive value.
 
-When passing a equal or more then 32 bytes long string to psi_write(),
-psi_write() copies 31 bytes to its buf and overwrites buf[30]
-with '\0'. Which makes the input string 1 byte shorter than
-it should be.
+I've sent a fix for this as:
 
-Fix it by copying sizeof(buf) bytes when nbytes >= sizeof(buf).
+spi: Fix regression to return zero on success instead of positive value
 
-This does not cause problems in normal use case like:
-"some 500000 10000000" or "full 500000 10000000" because they
-are less than 32 bytes in length.
+Regards,
 
-	/* assuming nbytes == 35 */
-	char buf[32];
-
-	buf_size = min(nbytes, (sizeof(buf) - 1)); /* buf_size = 31 */
-	if (copy_from_user(buf, user_buf, buf_size))
-		return -EFAULT;
-
-	buf[buf_size - 1] = '\0'; /* buf[30] = '\0' */
-
-Before:
-
- %cd /proc/pressure/
- %echo "123456789|123456789|123456789|1234" > memory
- [   22.473497] nbytes=35,buf_size=31
- [   22.473775] 123456789|123456789|123456789| (print 30 chars)
- %sh: write error: Invalid argument
-
- %echo "123456789|123456789|123456789|1" > memory
- [   64.916162] nbytes=32,buf_size=31
- [   64.916331] 123456789|123456789|123456789| (print 30 chars)
- %sh: write error: Invalid argument
-
-After:
-
- %cd /proc/pressure/
- %echo "123456789|123456789|123456789|1234" > memory
- [  254.837863] nbytes=35,buf_size=32
- [  254.838541] 123456789|123456789|123456789|1 (print 31 chars)
- %sh: write error: Invalid argument
-
- %echo "123456789|123456789|123456789|1" > memory
- [ 9965.714935] nbytes=32,buf_size=32
- [ 9965.715096] 123456789|123456789|123456789|1 (print 31 chars)
- %sh: write error: Invalid argument
-
-Also remove the superfluous parentheses.
-
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-Cc: <linux-mediatek@lists.infradead.org>
-Cc: <wsd_upstream@mediatek.com>
-Cc: Linus Torvalds <torvalds@linux-foundation.org>
-Cc: Peter Zijlstra <peterz@infradead.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>
-Link: https://lkml.kernel.org/r/20190912103452.13281-1-miles.chen@mediatek.com
-Signed-off-by: Ingo Molnar <mingo@kernel.org>
----
- kernel/sched/psi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/kernel/sched/psi.c b/kernel/sched/psi.c
-index 7acc632..4b14a32 100644
---- a/kernel/sched/psi.c
-+++ b/kernel/sched/psi.c
-@@ -1190,7 +1190,7 @@ static ssize_t psi_write(struct file *file, const char __user *user_buf,
- 	if (static_branch_likely(&psi_disabled))
- 		return -EOPNOTSUPP;
- 
--	buf_size = min(nbytes, (sizeof(buf) - 1));
-+	buf_size = min(nbytes, sizeof(buf));
- 	if (copy_from_user(buf, user_buf, buf_size))
- 		return -EFAULT;
- 
+Tony
 
 _______________________________________________
 Linux-mediatek mailing list
