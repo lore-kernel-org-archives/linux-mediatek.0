@@ -2,82 +2,56 @@ Return-Path: <SRS0=Eirx=ZD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C243FC17445
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2019 13:38:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6451FC43331
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2019 14:03:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 84B9621872
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2019 13:38:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3411821783
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Nov 2019 14:03:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sWQPWTD0";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="MXvmIvvk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 84B9621872
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aTZTmbPZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3411821783
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=prJ2y0nsT/xPk4BCHG7sqhHIwakKHpqT6pCZfJew9LY=; b=sWQPWTD0HCxHEs
-	K4RQDN5mYiawoYaQZk/hraLIQb1U83W4kX19KtAmk8Gp+Qf77n2GWpEahraCGvIz5IVJR8huYwTcK
-	xbthRpzJo7CZJEV1yMecuop87K2x71UNlvj2xAV0VaGXAHzkSiHNycY1Vv/GhfhAbwJgb3PWaspv7
-	moxMCu902DzFasaUkwQChKTRpGke5djHAvWlq2ZQ6WL1RDN7HRtlVjogAkZw2KmBQaM144m6crH/L
-	6DHMMMXmZp8ygKxZXAT3BGpolm7Z+YC/MG98l+r7QMQSlUCzeU3+rBuobBfQQc0OqmuUVodwIfKy5
-	afpJ3Jewc79FmE38r1lQ==;
+	List-Owner; bh=vNddqpYsw8IMTcuUGdRP/BfdZc7D6Cl9vfu0Xi3ccSg=; b=aTZTmbPZNWNA5K
+	0O83BUGYJoMoO8JhdHNekLYj0xUMvzUUO4sCLPOVbG3t0mmhK2G/i6cDoGD9UXod2ROf57WomIduX
+	L1D9V8iz4z266iI6MQX7nUZnmbZ0eGlwABwQYycdLuMoU7VXC/hsEAhojILwozr6doIquoGfkdhJ0
+	kjHd5963Du9MLDyHkg5U0RwiWzUguAp6ISALvg5NRqvWda7QIogNEXt1pZjteYTLBFX1bFO4Kvb7x
+	WpcYtPHppVwgg+QwCfrFQmHPwj72H/n7bjFwGN6zehhVCPKRTjXysA0+QCvCRxc9hGhLmgpRahGc3
+	GwiEouWoU5fhrX21ZdZQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iU9tx-0002e1-51; Mon, 11 Nov 2019 13:38:41 +0000
-Received: from mail-vk1-xa41.google.com ([2607:f8b0:4864:20::a41])
+	id 1iUAHh-0008WC-V8; Mon, 11 Nov 2019 14:03:13 +0000
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iU9tn-0002Vv-LS
- for linux-mediatek@lists.infradead.org; Mon, 11 Nov 2019 13:38:34 +0000
-Received: by mail-vk1-xa41.google.com with SMTP id b13so3181577vkk.12
- for <linux-mediatek@lists.infradead.org>; Mon, 11 Nov 2019 05:38:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=TseRgVO5KMxUPu8yg6AH/nb9GpfwCcnFGSRrzoJ8Pw0=;
- b=MXvmIvvkLnHT3nGUTSGEBIRXDjdazqjSQW0G5EPHVze8R3G9fZhwqK7Nk5ivgS3iRR
- 4gVpUMcXb3yVVjCOWISEUpq/g4urGg3MjRbqZ+Vu4ICLtoEk2WGvK87YhBFRnitxX5+U
- Z/DFQgXkqUpBV8+JTDF6esWrl4/KmthCGo46L7cj9/WC0GWeG5SON9ZzmVL/WQSbbwba
- Dm8Z3f+PWGiybizOrNAqKBGNH5pebrBF5BVic4hW12rrJCr9CF34KucWNXbV3qTFSqB8
- SmVvorR23HEj1kdlHR0FTdn23dKc/VHHTlto3OywPfg/b2WmuDuJY7MDzrauO0OyMS8e
- 5vlA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=TseRgVO5KMxUPu8yg6AH/nb9GpfwCcnFGSRrzoJ8Pw0=;
- b=RYvkEdlh4j2edfTe6YYWxAmcH56gulH+UK5pjwUR1d7g/Bu24PoYCsdCrTyHXLKjrC
- 7fjBExeMub+deqHw2UUgYgbAtswBdNYozWJDehI2pB5gd/bAVcv0+nmjv0dFN9bN6EcS
- pY5EeoxBWvoabtI/AOA6WO7XWG6leJFI8BlPV98eJ1DV/E2POyADa8abbmfrKNsPeC2X
- yvAckty9MWEI6TX7eCIEKRG5NLBL7eSraU7CN5pluPR/Ac0oSmz4oqb3yBdD7GmoA6sG
- E2Yu/6B8yg7VYnomaimwptzJRizqOk3PFJ4nKeNZ6kJFuQbUZ1B+VnyBWU0h1TW82LgV
- KT9Q==
-X-Gm-Message-State: APjAAAW76Hlfp1NAo63J3q9dvQBBHpXGpty9kMVPaApj6jrCYBRJQzw3
- 4b0Dse0ImPanUyfrkPFPXbNanF5uFqwwKi6WrRy2TA==
-X-Google-Smtp-Source: APXvYqxnr5ZW7MuTR56E3PWgQp6UVn+dMM0TlslXroVCAveGqOdArQ6NsC5UPVVmIVLceQRld5c1oKyu05yFIeYQPt8=
-X-Received: by 2002:a1f:7381:: with SMTP id o123mr13357405vkc.53.1573479509614; 
- Mon, 11 Nov 2019 05:38:29 -0800 (PST)
+ id 1iUAHY-0008OM-4q; Mon, 11 Nov 2019 14:03:05 +0000
+Received: by theia.8bytes.org (Postfix, from userid 1000)
+ id 77629120; Mon, 11 Nov 2019 15:02:53 +0100 (CET)
+Date: Mon, 11 Nov 2019 15:02:52 +0100
+From: Joerg Roedel <joro@8bytes.org>
+To: Yong Wu <yong.wu@mediatek.com>
+Subject: Re: [PATCH v5 0/7] Improve tlb range flush
+Message-ID: <20191111140251.GA18333@8bytes.org>
+References: <1572850868-22315-1-git-send-email-yong.wu@mediatek.com>
 MIME-Version: 1.0
-References: <1572590582-11056-1-git-send-email-chun-hung.wu@mediatek.com>
- <1572590582-11056-2-git-send-email-chun-hung.wu@mediatek.com>
-In-Reply-To: <1572590582-11056-2-git-send-email-chun-hung.wu@mediatek.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 11 Nov 2019 14:37:53 +0100
-Message-ID: <CAPDyKFqJEhTsPOsBJPCx6acDNKsiJ+kZX_NRwy901xEVCbiR4Q@mail.gmail.com>
-Subject: Re: [PATCH 2/3] [2/3] mmc: mediatek: command queue support
-To: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1572850868-22315-1-git-send-email-yong.wu@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191111_053831_709401_024D9672 
-X-CRM114-Status: GOOD (  22.16  )
+X-CRM114-CacheID: sfid-20191111_060304_337670_AC9DA3D9 
+X-CRM114-Status: UNSURE (   6.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,340 +63,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream@mediatek.com,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- Pan Bian <bianpan2016@163.com>, Kuohong Wang <kuohong.wang@mediatek.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-mediatek@lists.infradead.org,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Stanley Chu <stanley.chu@mediatek.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: youlin.pei@mediatek.com, anan.sun@mediatek.com,
+ Nicolas Boichat <drinkcat@chromium.org>, cui.zhang@mediatek.com,
+ srv_heupstream@mediatek.com, chao.hao@mediatek.com, edison.hsieh@mediatek.com,
+ Will Deacon <will.deacon@arm.com>, linux-kernel@vger.kernel.org,
+ Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>,
+ iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-+ Trimmed cc list (please do that as well for your next submission).
+On Mon, Nov 04, 2019 at 03:01:01PM +0800, Yong Wu wrote:
+> Yong Wu (7):
+>   iommu/mediatek: Correct the flush_iotlb_all callback
+>   iommu/mediatek: Add a new tlb_lock for tlb_flush
+>   iommu/mediatek: Use gather to achieve the tlb range flush
+>   iommu/mediatek: Delete the leaf in the tlb_flush
+>   iommu/mediatek: Move the tlb_sync into tlb_flush
+>   iommu/mediatek: Get rid of the pgtlock
+>   iommu/mediatek: Reduce the tlb flush timeout value
 
-On Fri, 1 Nov 2019 at 07:43, Chun-Hung Wu <chun-hung.wu@mediatek.com> wrote:
->
-> Support command queue for mt6779 platform.
-
-A lot of changes summarized on only one line. I would appreciate some
-more information here, please.
-
->
-> Change-Id: I56b866fa4097a3c0bee77f53486c470e4f1944b9
-> Feature:
-
-Drop these please.
-
-> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
-
-For the next submission, please add the maintainers for the cqhci
-driver. They may have some valuable feedback for you.
-
-Below follows a few review comments, which are more from a patch
-formatting point of view, than technical.
-
-> ---
->  drivers/mmc/host/mtk-sd.c | 151 +++++++++++++++++++++++++++++++++++++++++++---
->  1 file changed, 141 insertions(+), 10 deletions(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 189e426..b132397 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -31,6 +31,8 @@
->  #include <linux/mmc/sdio.h>
->  #include <linux/mmc/slot-gpio.h>
->
-> +#include "cqhci.h"
-> +
->  #define MAX_BD_NUM          1024
->
->  /*--------------------------------------------------------------------------*/
-> @@ -151,6 +153,7 @@
->  #define MSDC_INT_DMA_BDCSERR    (0x1 << 17)    /* W1C */
->  #define MSDC_INT_DMA_GPDCSERR   (0x1 << 18)    /* W1C */
->  #define MSDC_INT_DMA_PROTECT    (0x1 << 19)    /* W1C */
-> +#define MSDC_INT_CMDQ           (0x1 << 28)    /* W1C */
->
->  /* MSDC_INTEN mask */
->  #define MSDC_INTEN_MMCIRQ       (0x1 << 0)     /* RW */
-> @@ -181,6 +184,7 @@
->  /* SDC_CFG mask */
->  #define SDC_CFG_SDIOINTWKUP     (0x1 << 0)     /* RW */
->  #define SDC_CFG_INSWKUP         (0x1 << 1)     /* RW */
-> +#define SDC_CFG_WRDTOC          (0x1fff  << 2)  /* RW */
->  #define SDC_CFG_BUSWIDTH        (0x3 << 16)    /* RW */
->  #define SDC_CFG_SDIO            (0x1 << 19)    /* RW */
->  #define SDC_CFG_SDIOIDE         (0x1 << 20)    /* RW */
-> @@ -228,6 +232,7 @@
->  #define MSDC_PATCH_BIT_SPCPUSH    (0x1 << 29)  /* RW */
->  #define MSDC_PATCH_BIT_DECRCTMO   (0x1 << 30)  /* RW */
->
-> +#define MSDC_PB1_BUSY_CHECK_SEL   (0x1 << 7)    /* RW */
->  #define MSDC_PATCH_BIT1_STOP_DLY  (0xf << 8)    /* RW */
->
->  #define MSDC_PATCH_BIT2_CFGRESP   (0x1 << 15)   /* RW */
-> @@ -431,6 +436,7 @@ struct msdc_host {
->         struct msdc_save_para save_para; /* used when gate HCLK */
->         struct msdc_tune_para def_tune_para; /* default tune setting */
->         struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
-> +       struct cqhci_host *cq_host;
->  };
->
->  static const struct mtk_mmc_compatible mt8135_compat = {
-> @@ -527,6 +533,18 @@ struct msdc_host {
->         .use_internal_cd = true,
->  };
->
-> +static const struct mtk_mmc_compatible mt6779_compat = {
-> +       .clk_div_bits = 12,
-> +       .hs400_tune = false,
-> +       .pad_tune_reg = MSDC_PAD_TUNE0,
-> +       .async_fifo = true,
-> +       .data_tune = true,
-> +       .busy_check = true,
-> +       .stop_clk_fix = true,
-> +       .enhance_rx = true,
-> +       .support_64g = true,
-> +};
-> +
->  static const struct of_device_id msdc_of_ids[] = {
->         { .compatible = "mediatek,mt8135-mmc", .data = &mt8135_compat},
->         { .compatible = "mediatek,mt8173-mmc", .data = &mt8173_compat},
-> @@ -536,6 +554,7 @@ struct msdc_host {
->         { .compatible = "mediatek,mt7622-mmc", .data = &mt7622_compat},
->         { .compatible = "mediatek,mt8516-mmc", .data = &mt8516_compat},
->         { .compatible = "mediatek,mt7620-mmc", .data = &mt7620_compat},
-> +       { .compatible = "mediatek,mt6779-mmc", .data = &mt6779_compat},
->         {}
->  };
->  MODULE_DEVICE_TABLE(of, msdc_of_ids);
-> @@ -698,21 +717,21 @@ static void msdc_unprepare_data(struct msdc_host *host, struct mmc_request *mrq)
->         }
->  }
->
-> -/* clock control primitives */
-> -static void msdc_set_timeout(struct msdc_host *host, u32 ns, u32 clks)
-> +static u64 msdc_timeout_cal(struct msdc_host *host, u64 ns, u64 clks)
->  {
-> -       u32 timeout, clk_ns;
-> +       u64 timeout, clk_ns;
->         u32 mode = 0;
->
-> -       host->timeout_ns = ns;
-> -       host->timeout_clks = clks;
->         if (host->mmc->actual_clock == 0) {
->                 timeout = 0;
->         } else {
-> -               clk_ns  = 1000000000UL / host->mmc->actual_clock;
-> -               timeout = (ns + clk_ns - 1) / clk_ns + clks;
-> +               clk_ns  = 1000000000ULL;
-> +               do_div(clk_ns, host->mmc->actual_clock);
-> +               timeout = ns + clk_ns - 1;
-> +               do_div(timeout, clk_ns);
-> +               timeout += clks;
->                 /* in 1048576 sclk cycle unit */
-> -               timeout = (timeout + (0x1 << 20) - 1) >> 20;
-> +               timeout = DIV_ROUND_UP(timeout, (0x1 << 20));
->                 if (host->dev_comp->clk_div_bits == 8)
->                         sdr_get_field(host->base + MSDC_CFG,
->                                       MSDC_CFG_CKMOD, &mode);
-> @@ -722,9 +741,30 @@ static void msdc_set_timeout(struct msdc_host *host, u32 ns, u32 clks)
->                 /*DDR mode will double the clk cycles for data timeout */
->                 timeout = mode >= 2 ? timeout * 2 : timeout;
->                 timeout = timeout > 1 ? timeout - 1 : 0;
-> -               timeout = timeout > 255 ? 255 : timeout;
->         }
-> -       sdr_set_field(host->base + SDC_CFG, SDC_CFG_DTOC, timeout);
-> +       return timeout;
-> +}
-> +
-> +/* clock control primitives */
-> +static void msdc_set_timeout(struct msdc_host *host, u64 ns, u64 clks)
-> +{
-> +       u64 timeout;
-> +
-> +       host->timeout_ns = ns;
-> +       host->timeout_clks = clks;
-> +
-> +       timeout = msdc_timeout_cal(host, ns, clks);
-> +       sdr_set_field(host->base + SDC_CFG, SDC_CFG_DTOC,
-> +                     (u32)(timeout > 255 ? 255 : timeout));
-> +}
-
-Does the above changes make sense to split out in a separate patch?
-
-It looks to me, that these are generic clock updates to the driver
-that really doesn't have to be included in $subject patch.
-
-> +
-> +static void msdc_set_busy_timeout(struct msdc_host *host, u64 ns, u64 clks)
-> +{
-> +       u64 timeout;
-> +
-> +       timeout = msdc_timeout_cal(host, ns, clks);
-> +       sdr_set_field(host->base + SDC_CFG, SDC_CFG_WRDTOC,
-> +                     (u32)(timeout > 8191 ? 8191 : timeout));
->  }
->
->  static void msdc_gate_clock(struct msdc_host *host)
-> @@ -1413,6 +1453,36 @@ static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
->                 pm_runtime_put_noidle(host->dev);
->  }
->
-> +#if IS_ENABLED(CONFIG_MMC_CQHCI)
-
-Other drivers Kconfig option, uses "select MMC_CQHCI". Would that make
-this more simple and allowing to remove the "if IS_ENABLED" thingy?
-
-> +static irqreturn_t msdc_cmdq_irq(struct msdc_host *host, u32 intsts)
-> +{
-> +       int cmd_err = 0, dat_err = 0;
-> +
-> +       if (intsts & MSDC_INT_RSPCRCERR) {
-> +               cmd_err = (unsigned int)-EILSEQ;
-> +               dev_err(host->dev, "%s: CMD CRC ERR", __func__);
-> +       } else if (intsts & MSDC_INT_CMDTMO) {
-> +               cmd_err = (unsigned int)-ETIMEDOUT;
-> +               dev_err(host->dev, "%s: CMD TIMEOUT ERR", __func__);
-> +       }
-> +
-> +       if (intsts & MSDC_INT_DATCRCERR) {
-> +               dat_err = (unsigned int)-EILSEQ;
-> +               dev_err(host->dev, "%s: DATA CRC ERR", __func__);
-> +       } else if (intsts & MSDC_INT_DATTMO) {
-> +               dat_err = (unsigned int)-ETIMEDOUT;
-> +               dev_err(host->dev, "%s: DATA TIMEOUT ERR", __func__);
-> +       }
-> +
-> +       if (cmd_err || dat_err) {
-> +               dev_err(host->dev, "cmd_err = %d, dat_err =%d, intsts = 0x%x",
-> +                       cmd_err, dat_err, intsts);
-> +       }
-> +
-> +       return cqhci_irq(host->mmc, 0, cmd_err, dat_err);
-> +}
-> +#endif
-> +
->  static irqreturn_t msdc_irq(int irq, void *dev_id)
->  {
->         struct msdc_host *host = (struct msdc_host *) dev_id;
-> @@ -1449,6 +1519,16 @@ static irqreturn_t msdc_irq(int irq, void *dev_id)
->                 if (!(events & (event_mask & ~MSDC_INT_SDIOIRQ)))
->                         break;
->
-> +#if IS_ENABLED(CONFIG_MMC_CQHCI)
-
-Again, please to avoid these "IS_ENABLED".
-
-> +               if ((host->mmc->caps2 & MMC_CAP2_CQE) &&
-> +                   (events & MSDC_INT_CMDQ)) {
-> +                       msdc_cmdq_irq(host, events);
-> +                       /* clear interrupts */
-> +                       writel(events, host->base + MSDC_INT);
-> +                       return IRQ_HANDLED;
-> +               }
-> +#endif
-> +
->                 if (!mrq) {
->                         dev_err(host->dev,
->                                 "%s: MRQ=NULL; events=%08X; event_mask=%08X\n",
-> @@ -2132,6 +2212,36 @@ static int msdc_get_cd(struct mmc_host *mmc)
->                 return !val;
->  }
->
-> +static void msdc_cqe_enable(struct mmc_host *mmc)
-> +{
-> +       struct msdc_host *host = mmc_priv(mmc);
-> +
-> +       /* enable cmdq irq */
-> +       writel(MSDC_INT_CMDQ, host->base + MSDC_INTEN);
-> +       /* enable busy check */
-> +       sdr_set_bits(host->base + MSDC_PATCH_BIT1, MSDC_PB1_BUSY_CHECK_SEL);
-> +       /* default write data / busy timeout 20s */
-> +       msdc_set_busy_timeout(host, 20 * 1000000000ULL, 0);
-> +       /* default read data timeout 1s */
-> +       msdc_set_timeout(host, 1000000000ULL, 0);
-
-Some magic timeout values here. Can you elaborate why these values?
-
-> +}
-> +
-> +void msdc_cqe_disable(struct mmc_host *mmc, bool recovery)
-> +{
-> +       struct msdc_host *host = mmc_priv(mmc);
-> +
-> +       /* disable cmdq irq */
-> +       sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INT_CMDQ);
-> +       /* disable busy check */
-> +       sdr_clr_bits(host->base + MSDC_PATCH_BIT1, MSDC_PB1_BUSY_CHECK_SEL);
-> +
-> +       if (recovery) {
-> +               sdr_set_field(host->base + MSDC_DMA_CTRL,
-> +                             MSDC_DMA_CTRL_STOP, 1);
-> +               msdc_reset_hw(host);
-> +       }
-> +}
-> +
->  static const struct mmc_host_ops mt_msdc_ops = {
->         .post_req = msdc_post_req,
->         .pre_req = msdc_pre_req,
-> @@ -2148,6 +2258,11 @@ static int msdc_get_cd(struct mmc_host *mmc)
->         .hw_reset = msdc_hw_reset,
-
-The hw_reset callback is really for resetting the card, but it seems
-like you are using it to reset the controller. No?
-
-I notice there are some other drivers abusing the callback as well,
-but I am wondering whether it's time to really look into what's going
-on here.
-
-Can you elaborate on why you need this?
-
->  };
->
-> +static const struct cqhci_host_ops msdc_cmdq_ops = {
-> +       .enable         = msdc_cqe_enable,
-> +       .disable        = msdc_cqe_disable,
-> +};
-> +
->  static void msdc_of_property_parse(struct platform_device *pdev,
->                                    struct msdc_host *host)
->  {
-> @@ -2299,6 +2414,22 @@ static int msdc_drv_probe(struct platform_device *pdev)
->                 host->dma_mask = DMA_BIT_MASK(32);
->         mmc_dev(mmc)->dma_mask = &host->dma_mask;
->
-> +#if IS_ENABLED(CONFIG_MMC_CQHCI)
-> +       if (mmc->caps2 & MMC_CAP2_CQE) {
-> +               host->cq_host = devm_kzalloc(host->mmc->parent,
-> +                                            sizeof(*host->cq_host),
-> +                                            GFP_KERNEL);
-> +               host->cq_host->caps |= CQHCI_TASK_DESC_SZ_128;
-> +               host->cq_host->mmio = host->base + 0x800;
-> +               host->cq_host->ops = &msdc_cmdq_ops;
-> +               cqhci_init(host->cq_host, mmc, true);
-> +               mmc->max_segs = 128;
-> +               /* cqhci 16bit length */
-> +               /* 0 size, means 65536 so we don't have to -1 here */
-> +               mmc->max_seg_size = 64 * 1024;
-> +       }
-> +#endif
-> +
->         host->timeout_clks = 3 * 1048576;
->         host->dma.gpd = dma_alloc_coherent(&pdev->dev,
->                                 2 * sizeof(struct mt_gpdma_desc),
-> --
-> 1.9.1
->
-
-Kind regards
-Uffe
+Applied, thanks.
 
 _______________________________________________
 Linux-mediatek mailing list
