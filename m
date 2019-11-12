@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D9DA2C43331
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2019 08:39:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F9A2C43331
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2019 08:39:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 878AC21783
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2019 08:39:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E5CFC21783
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2019 08:39:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VWL4EhxV";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="SMnP5LMq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 878AC21783
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nZeo8Gip";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="fIcrJIcR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E5CFC21783
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z7nTY8LF8hARQBRBBM4KflQuKrEGwmwPK5bbAPd5phc=; b=VWL4EhxVpza/K2
-	70dO+mrn+Ak0rU10pvd4CQLfKH5N3iszjX3l/rkwG2hpt3104XV4BfJNJ9o56MITzc6CGN51PzkPA
-	bPvBQRd9cN/UpKXUHIBNhQE2r0LD0JUoJhIm+JyTEUyRA5L4AGgzTJS/HJZdSIvDadqe48pVh8/Zw
-	WfLQUSyXagFeuZl0JKsC9IFgTP1dW77R57uC4ly44Y/hM2tCySjW8RJloPggOe/YE595+k7/3om15
-	3+OTKK6UIul96rZmHsRfnrGuBO5jP37PaFO9FvKr97AV1uNIlATTMAIO/y6ILfxdVIcjv209Em8Xx
-	W6aFcfvpb7OMJoj6McYQ==;
+	List-Owner; bh=RShCA04NAAY28e8gCVLUjiYR62pI9y3VJS+UllsJoq0=; b=nZeo8GipTmE5YM
+	btehFtaDH1j4vvbMdCYnvTHJLFR92Z6My3HXFdCLkMlCTfU6FboGeHanleGpZdxUejwOCicW5ejxd
+	tZEhvfHL6ta8VTjRnsSpyzuwlIhT/q+egd+OK9qU+uwCgXJm0Sh47X7Zv79mPdc2ym3c+5lG8stbs
+	j74o57sgHKujUHN7HcWKFOdRA0zHCIcjOHg+YeLW4eulLlcKP2KD6AX2eNnsG/A6lCdny7au/jk8R
+	0w2bdsirDHLeNGzPRNhFcRsQXsEBT1p5K4fEGtrJSe7o4m9R/i8fDDhwRukAukWTXUZRqGKCBxlGJ
+	UHu1VKUqIyV/yqiwbeOA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iURiI-000672-S0; Tue, 12 Nov 2019 08:39:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1iURiC-0005yV-C4; Tue, 12 Nov 2019 08:39:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iURfp-0003VT-Q3; Tue, 12 Nov 2019 08:37:20 +0000
-X-UUID: e45acc4e96324060af1020e14c22bf2b-20191112
+ id 1iURfj-0003Qp-Mf; Tue, 12 Nov 2019 08:37:14 +0000
+X-UUID: a7d915d504a74a0bafb11f6b33db8483-20191112
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=beLpL3mpnn5wbqtgoKjpnX95i7uSocOadxQQZLFb2fQ=; 
- b=SMnP5LMq92azja5SI8BX/VOBCsI2609WvRDnMm3mTaPrhTqyAamPZZJdVE7lKMdbR0gFbwkwHjr6c2LqU/HC89lQCPhxshC9TIzcuuQIjt77hRgT7VRWCkB4qZp4J4T+q1PjcrtW9BhQ4TOGPUDw0bx4b/htCPEVttgZ5MQO6XI=;
-X-UUID: e45acc4e96324060af1020e14c22bf2b-20191112
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=qy9ivUWj/ElKl+3goTjgwfuF3GW/F0SKTM6aPsZ/8T8=; 
+ b=fIcrJIcR7vSx051jQEd8ddAx+woWi4HI11eyAzk4W9RoSB8cYZVOvHcwBdY133lFzOirgO3sd8/KrJCmbYiF5ZGVn1xBi9Ghi3tjnjAk9M85xYxkxq9+cxmimPz8L0nfmqfZ7ZAGaFYaMFrQ+I3hFEE7Cp6zAbAvlnHp8iaY5OQ=;
+X-UUID: a7d915d504a74a0bafb11f6b33db8483-20191112
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1059589784; Tue, 12 Nov 2019 00:37:30 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 12 Nov 2019 00:36:50 -0800
+ with ESMTP id 472632620; Tue, 12 Nov 2019 00:37:23 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 12 Nov 2019 00:37:04 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 12 Nov 2019 16:36:47 +0800
+ MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 12 Nov 2019 16:37:01 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 12 Nov 2019 16:36:40 +0800
+ Transport; Tue, 12 Nov 2019 16:37:00 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v4 03/11] dt-bindings: phy-mtk-tphy: remove unused u3phya_ref
- clock
-Date: Tue, 12 Nov 2019 16:36:28 +0800
-Message-ID: <1573547796-29566-3-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH v4 09/11] phy: phy-mtk-tphy: remove unused u3phya_ref clock
+Date: Tue, 12 Nov 2019 16:36:34 +0800
+Message-ID: <1573547796-29566-9-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1573547796-29566-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1573547796-29566-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: AD1E88C89C68627FCAB015EBC72658406F95028591E1CD6A36E98C07CEEFF36F2000:8
+X-TM-SNTS-SMTP: D22098D56DE57EC675AFDE6068FBF972EE78801099749E93CC00EBC1C200C10D2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191112_003718_025054_09C6CCA6 
-X-CRM114-Status: GOOD (  10.32  )
+X-CRM114-CacheID: sfid-20191112_003711_794915_9F8AFE6F 
+X-CRM114-Status: GOOD (  12.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,34 +93,73 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 The u3phya_ref clock is already moved into sub-node, and
-renamed as ref clock, no used anymore now, so remove it
-to avoid confusion
+renamed as ref clock, no used anymore now, so remove it,
+this can avoid confusion when support new platforms
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
 ---
-v3~v4: no changes
-
-v2: add Reviewed-by Rob
+v2~v4: no changes
 ---
- Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt | 4 ----
- 1 file changed, 4 deletions(-)
+ drivers/phy/mediatek/phy-mtk-tphy.c | 18 ------------------
+ 1 file changed, 18 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-index 1f4a36dd80e0..48bc1a2e9299 100644
---- a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-+++ b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-@@ -13,10 +13,6 @@ Required properties (controller (parent) node):
- 		  "mediatek,mt8173-u3phy";
- 		  make use of "mediatek,generic-tphy-v1" on mt2701 instead and
- 		  "mediatek,generic-tphy-v2" on mt2712 instead.
-- - clocks	: (deprecated, use port's clocks instead) a list of phandle +
--		  clock-specifier pairs, one for each entry in clock-names
-- - clock-names	: (deprecated, use port's one instead) must contain
--		  "u3phya_ref": for reference clock of usb3.0 analog phy.
+diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+index 96c62e3a3300..c6424fd2a06d 100644
+--- a/drivers/phy/mediatek/phy-mtk-tphy.c
++++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+@@ -312,8 +312,6 @@ struct mtk_phy_instance {
+ struct mtk_tphy {
+ 	struct device *dev;
+ 	void __iomem *sif_base;	/* only shared sif */
+-	/* deprecated, use @ref_clk instead in phy instance */
+-	struct clk *u3phya_ref;	/* reference clock of usb3 anolog phy */
+ 	const struct mtk_phy_pdata *pdata;
+ 	struct mtk_phy_instance **phys;
+ 	int nphys;
+@@ -921,12 +919,6 @@ static int mtk_phy_init(struct phy *phy)
+ 	struct mtk_tphy *tphy = dev_get_drvdata(phy->dev.parent);
+ 	int ret;
  
- Required nodes	: a sub-node is required for each port the controller
- 		  provides. Address range information including the usual
+-	ret = clk_prepare_enable(tphy->u3phya_ref);
+-	if (ret) {
+-		dev_err(tphy->dev, "failed to enable u3phya_ref\n");
+-		return ret;
+-	}
+-
+ 	ret = clk_prepare_enable(instance->ref_clk);
+ 	if (ret) {
+ 		dev_err(tphy->dev, "failed to enable ref_clk\n");
+@@ -992,7 +984,6 @@ static int mtk_phy_exit(struct phy *phy)
+ 		u2_phy_instance_exit(tphy, instance);
+ 
+ 	clk_disable_unprepare(instance->ref_clk);
+-	clk_disable_unprepare(tphy->u3phya_ref);
+ 	return 0;
+ }
+ 
+@@ -1127,11 +1118,6 @@ static int mtk_tphy_probe(struct platform_device *pdev)
+ 		}
+ 	}
+ 
+-	/* it's deprecated, make it optional for backward compatibility */
+-	tphy->u3phya_ref = devm_clk_get_optional(dev, "u3phya_ref");
+-	if (IS_ERR(tphy->u3phya_ref))
+-		return PTR_ERR(tphy->u3phya_ref);
+-
+ 	tphy->src_ref_clk = U3P_REF_CLK;
+ 	tphy->src_coef = U3P_SLEW_RATE_COEF;
+ 	/* update parameters of slew rate calibrate if exist */
+@@ -1178,10 +1164,6 @@ static int mtk_tphy_probe(struct platform_device *pdev)
+ 		phy_set_drvdata(phy, instance);
+ 		port++;
+ 
+-		/* if deprecated clock is provided, ignore instance's one */
+-		if (tphy->u3phya_ref)
+-			continue;
+-
+ 		instance->ref_clk = devm_clk_get_optional(&phy->dev, "ref");
+ 		if (IS_ERR(instance->ref_clk)) {
+ 			dev_err(dev, "failed to get ref_clk(id-%d)\n", port);
 -- 
 2.23.0
 _______________________________________________
