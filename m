@@ -7,71 +7,70 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4F72FC43331
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2019 06:53:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 959B8C43331
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2019 06:53:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1C753206A3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2019 06:53:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 576AB206A5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2019 06:53:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mM93rsKk";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="n7bSWw+j"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1C753206A3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cgsHJlzC";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="tVTqjYY0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 576AB206A5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7cRVKuHwYDFOTz3jsJttrxKsjptBkUAYY4YgQ5NnpEc=; b=mM93rsKkjSbWDH
-	7uBdZA5B7KrjtaY2i6V9HfhWNK5TfftmsIfUEP/nBg1bNcXR+GDB68STqxVdCwPPdXihunMieb6xL
-	ZoQS5cHcvTQfXJ1cGNgMWH8wtQb8bCEUu1KNz912fE2Np7Yh4a3oYxibKBpImopSHPrqJwkaQWm96
-	Jmhe9/H+b3dOvxoDF6yA/UYbRzCENMXk6A+stH3nGDLRl6OZ3evCuRQKvk1lo60Y1s/3FgTgKlOUY
-	PcRvTWnTj2RDUlEIVslP0AVMorwgV4jtSxaPo2aJBk9xHkIppuhQQ/z1thDLbtbSsw95s4LXpEyaO
-	LmBOdLIV/TTkoH8Rb5kA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=HSsBz1n4M4HicW3XRo82Ih7NcuuUotMhOMf372BNedQ=; b=cgsHJlzCqhFUsA
+	2ik4VF6/nNOpWEiH0K9RdiDSC6T6djOh7zRu5FljElAjwMdJJta3YRpg+8A+PsQjk3Lo4n7WzNVN6
+	CmLlpyaGPxdGHLdfuk0aQVFe76ks5blIjLxahvTbvSdc7iYvIHkBNccRErKoQ/0nRL2O5n8AznqXj
+	OwUl6GfNufs8Tp3s+4lVZuGwd9lCAZVdX4JFqMR/u0+QFoTXgBC1oJb+iBs3dMy0pK278gIBiZefu
+	z6tCUJ8BfdOtotQVkYdtREl5Sb16L9wF/bFgEE0OPa/6fqwtFTsMBuRp+FoPtwfQNx2KACD6XqZ9h
+	pzAtbW0Dt0/IVv5QQPrg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iUQ3c-00048W-E6; Tue, 12 Nov 2019 06:53:44 +0000
+	id 1iUQ3e-0004BC-TI; Tue, 12 Nov 2019 06:53:46 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iUQ2O-0002vs-4W; Tue, 12 Nov 2019 06:52:29 +0000
-X-UUID: 9c904544581e434cb19300dbcf158773-20191111
+ id 1iUQ2P-0002xH-2w; Tue, 12 Nov 2019 06:52:30 +0000
+X-UUID: c1a194e6fbee4f33b11990e42cdc0aae-20191111
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=gnxxOKKUGp0YnJWpzjgGAuOTcjep8ECSmMlGP4oymes=; 
- b=n7bSWw+jEzrJMkWMZuSylCQmb47OJZLL9da/BtT9FZ764ejIgrchIND+cscrD7sXbNVxtilg/W/iDWCZIZgqE8Mqg0eKqeMwZ7WBz1UnFRNnsJGScZrJNQ6YwwQLmZYTuzVUco69Igo52ivKm18TCWY49TV8xLx35GjYKfj9z58=;
-X-UUID: 9c904544581e434cb19300dbcf158773-20191111
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=d8BFCFk1jWo76KszBymxQCa+dx51d98IKSWXcuFIpgA=; 
+ b=tVTqjYY0oyDh+277mNVItkS0IaGKvK/um7WCvmTZWwwYkLZTgfp2dlxk/J4DOOtcSRCuTtTCp13zAUn+DwlaQNuQHUBLZ5nZX6krk8cWUlQ3lhS8qVSx3uynmgXlJ3a2oofHWov7xfaR+ndbWMt/eRNzhZXodRKhKwnl1w/m/xc=;
+X-UUID: c1a194e6fbee4f33b11990e42cdc0aae-20191111
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1373024956; Mon, 11 Nov 2019 22:52:26 -0800
-Received: from mtkmbs05dr.mediatek.inc (172.21.101.97) by
+ with ESMTP id 2147101652; Mon, 11 Nov 2019 22:52:26 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 11 Nov 2019 22:52:12 -0800
+ 15.0.1395.4; Mon, 11 Nov 2019 22:52:04 -0800
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs05dr.mediatek.inc (172.21.101.97) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 12 Nov 2019 14:52:10 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 12 Nov 2019 14:52:02 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 12 Nov 2019 14:52:09 +0800
+ Transport; Tue, 12 Nov 2019 14:52:00 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi
  <balbi@kernel.org>
-Subject: [PATCH v2 05/13] usb: musb: create debugfs directory under usb root
-Date: Tue, 12 Nov 2019 14:51:51 +0800
-Message-ID: <1573541519-28488-5-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH v2 01/13] media: uvcvideo: drop error check of
+ debugfs_create_dir()
+Date: Tue, 12 Nov 2019 14:51:47 +0800
+Message-ID: <1573541519-28488-1-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1573541519-28488-1-git-send-email-chunfeng.yun@mediatek.com>
-References: <1573541519-28488-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191111_225228_211014_2C3B4963 
-X-CRM114-Status: GOOD (  12.91  )
+X-CRM114-CacheID: sfid-20191111_225229_147633_87475DFE 
+X-CRM114-Status: GOOD (  12.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,31 +111,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Now the USB gadget subsystem can use the USB debugfs root directory,
-so move musb's directory from the root of the debugfs filesystem into
-the root of usb
+No need check the return value of debugfs_create_dir()
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
 v2:
-  1. abandon new API usb_debugfs_create_dir(), and use usb_debug_root
+  1. abandon new API usb_debugfs_create_dir(), and drop error check
 ---
- drivers/usb/musb/musb_debugfs.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/usb/uvc/uvc_debugfs.c | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
 
-diff --git a/drivers/usb/musb/musb_debugfs.c b/drivers/usb/musb/musb_debugfs.c
-index f42858e2b54c..7b6281ab62ed 100644
---- a/drivers/usb/musb/musb_debugfs.c
-+++ b/drivers/usb/musb/musb_debugfs.c
-@@ -325,7 +325,7 @@ void musb_init_debugfs(struct musb *musb)
+diff --git a/drivers/media/usb/uvc/uvc_debugfs.c b/drivers/media/usb/uvc/uvc_debugfs.c
+index d2b109959d82..2b8af4b54117 100644
+--- a/drivers/media/usb/uvc/uvc_debugfs.c
++++ b/drivers/media/usb/uvc/uvc_debugfs.c
+@@ -108,15 +108,7 @@ void uvc_debugfs_cleanup_stream(struct uvc_streaming *stream)
+ 
+ void uvc_debugfs_init(void)
  {
- 	struct dentry *root;
+-	struct dentry *dir;
+-
+-	dir = debugfs_create_dir("uvcvideo", usb_debug_root);
+-	if (IS_ERR_OR_NULL(dir)) {
+-		uvc_printk(KERN_INFO, "Unable to create debugfs directory\n");
+-		return;
+-	}
+-
+-	uvc_debugfs_root_dir = dir;
++	uvc_debugfs_root_dir = debugfs_create_dir("uvcvideo", usb_debug_root);
+ }
  
--	root = debugfs_create_dir(dev_name(musb->controller), NULL);
-+	root = debugfs_create_dir(dev_name(musb->controller), usb_debug_root);
- 	musb->debugfs_root = root;
- 
- 	debugfs_create_file("regdump", S_IRUGO, root, musb, &musb_regdump_fops);
+ void uvc_debugfs_cleanup(void)
 -- 
 2.23.0
 _______________________________________________
