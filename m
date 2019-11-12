@@ -2,85 +2,73 @@ Return-Path: <SRS0=+xT1=ZE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 26397C43331
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2019 11:06:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 42D6DC43331
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2019 11:57:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E9BFA2084E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2019 11:06:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 146C920818
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2019 11:57:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ct0BIFHe";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Q88zUNqM"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9BFA2084E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Av1pnCDP";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sirena.org.uk header.i=@sirena.org.uk header.b="rH9jGAi/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 146C920818
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BZcqB6C5vuY9cKIrqjUgNzYAh4gRDBi8RP//U6sAhuw=; b=Ct0BIFHeYJZDVl
-	U1+G2QbW/Cf4Clr2g3D+sA0uEl7zyQIo8kw3b+EJyyapWww7z2ykIWQdgZAgSkI+dtF/HyRmGEUxu
-	Wq3re88KN8CexlK8TmxM2yb8oA4Z1QSaxQsoren1SAQkJR4dEjszsJJ4ikjiKWzOhK+8oXBC2JoEo
-	rWriHH55RcTTsuXaaPFP4Hjs4m1qfbTuNS7Q1+VojXxyhN0/z4MBLgEyrwiZl2yEv9j6pWGgFwdQS
-	Exg5mRQw0hHBk+6MgYs58MzPzyv3jl3/J5BqxJoPaogJUKopanieJVaJbciDa+N2E1rCzt9Xb+DYe
-	x3jgPTK/pFYOB4ScWZGg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Ea4OPDyvLWhLFAtbHZ/2CzfuPmAK0EV+hMLdrikP8ck=; b=Av1pnCDPY4W/8Ms/68I7ufIoT
+	o8nMaFjqcX5OhwoqY68ClX0mCXWQHKj/wFuD/wEd6t/xl4y8qX8wVO+rNQkxOZZu5EhyPIWrKO4hg
+	ro+wqgogvIaaYygDVDZL8LX33cePRPhpSYJnlPrqEL89SFO6AVV5CmqalFAWnICIT8eK6gNwfRxZg
+	O2lKer+YK/LIPkaIzDvPUOxRrqy4/bTZXVQx0P5C8JFBTSyP48WyutSNwnvCJDynb8tKxsUyY1a6+
+	N+AgslVMNDmPV61WNQ7eq8DpE+LS4xgZk5ZEMCkWJQPCI1haam0CfYc2FpJ3/EPIssF/W2St5HJBb
+	v08EaKDVg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iUTzc-00081w-PW; Tue, 12 Nov 2019 11:05:52 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1iUUn7-00022s-Oh; Tue, 12 Nov 2019 11:57:01 +0000
+Received: from heliosphere.sirena.org.uk ([172.104.155.198])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iUTyR-0005mK-Kf
- for linux-mediatek@lists.infradead.org; Tue, 12 Nov 2019 11:04:42 +0000
-Received: by mail-pg1-x543.google.com with SMTP id l24so11598797pgh.10
- for <linux-mediatek@lists.infradead.org>; Tue, 12 Nov 2019 03:04:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=gpsL+1OsfAr2EbSe7/d6AgWIawat7sBvrVvMWd1mlyI=;
- b=Q88zUNqMQUpbDmlFg31NtvbjEfiLkeIvDZ0qmbtAoJcLECe9708wdE4XVjMIpiIlJm
- uUxdBDo0ZlZ/1XDgsGTZGAVA/VckiGDwD7eTp5FGI09QmDiaYB10riXEcVUYxupTWFcY
- F2v/jEvdXbnBP/iXmrdqM/XMkkX7al8P20mC8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=gpsL+1OsfAr2EbSe7/d6AgWIawat7sBvrVvMWd1mlyI=;
- b=IP7oNHIvajhPv5hfckK1FVP72/AywSus+5iy68oAEZcWvQwcWIpLXjrsjwmhB0kYqI
- qraWkNNfvI7AfcaoWcYM1aWhH/a5GA++qhDzXEtJih1Db6zdSR6TC86SQYqWzJC1ftEL
- e1GJWmnJKDopKxBQaKlJBmOYc2mnpcoC2YAX+Du2ArOlz5BUC6NikmTdeYw1CtpCh8h+
- OLdcqxG4usaMCV0yCObYQes6b3PQiCMtakgcGP3J5+v5OYHWmketiEguLdCzWuDR1D9w
- HmerBKd8VRKRGaamqSZ9NEQCAeFuQxJNq6UGTS2bt297Lcs0qcCRJqtheI0GWDodoZ7U
- UO9w==
-X-Gm-Message-State: APjAAAX9fmpAi+YZTAm/xhe02g8v6TpKMIfOzWMV3YV9teMA+sqZ0wqN
- 9tOYZxfP9DY/kVX2a9oszhZ/kQ==
-X-Google-Smtp-Source: APXvYqxMiABHPJiamwCTFkQ4ycRR49FAHvMVRQSIWpI9Zma4/9WH24j4MvYSest6clRhSEMMoSwrAw==
-X-Received: by 2002:a62:ac06:: with SMTP id v6mr35247435pfe.210.1573556677548; 
- Tue, 12 Nov 2019 03:04:37 -0800 (PST)
-Received: from pihsun-z840.tpe.corp.google.com
- ([2401:fa00:1:10:7889:7a43:f899:134c])
- by smtp.googlemail.com with ESMTPSA id 6sm21528389pfy.43.2019.11.12.03.04.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Nov 2019 03:04:36 -0800 (PST)
-From: Pi-Hsun Shih <pihsun@chromium.org>
-To: 
-Subject: [PATCH v21 4/4] arm64: dts: mt8183: add scp node
-Date: Tue, 12 Nov 2019 19:03:27 +0800
-Message-Id: <20191112110330.179649-5-pihsun@chromium.org>
-X-Mailer: git-send-email 2.24.0.rc1.363.gb1bccd3e3d-goog
-In-Reply-To: <20191112110330.179649-1-pihsun@chromium.org>
-References: <20191112110330.179649-1-pihsun@chromium.org>
+ id 1iUUn5-000221-FX
+ for linux-mediatek@lists.infradead.org; Tue, 12 Nov 2019 11:57:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=sirena.org.uk; s=20170815-heliosphere; h=In-Reply-To:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=EcwNjLo8wOnJMMWVhETgrc4fOww9YZh1iHScHUx1/S0=; b=rH9jGAi/k+o/q6ui+psOjJImW
+ Q2XADkVSO7oH+WMMZhZuDAASA6ExvKF6NZkiyIkFAOc2LMiH9nEGl4JK/Vgl2KaB2Ou0Us3quvZEm
+ 86kw5ZxQ96XqBT6AWzti0MnP35KPh1wWzQyb4BzxZZSkUv9ZolLQQh8r4a/lG4P+K4AUM=;
+Received: from cpc102320-sgyl38-2-0-cust46.18-2.cable.virginm.net
+ ([82.37.168.47] helo=ypsilon.sirena.org.uk)
+ by heliosphere.sirena.org.uk with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <broonie@sirena.co.uk>)
+ id 1iUUn3-0007mZ-6i; Tue, 12 Nov 2019 11:56:57 +0000
+Received: by ypsilon.sirena.org.uk (Postfix, from userid 1000)
+ id D3FAC274299F; Tue, 12 Nov 2019 11:56:55 +0000 (GMT)
+Date: Tue, 12 Nov 2019 11:56:55 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Eason Yen <eason.yen@mediatek.com>
+Subject: Re: [PATCH v1] ASoC: mediatek: common: refine mtk_afe_fe_hw_params
+Message-ID: <20191112115655.GA5195@sirena.co.uk>
+References: <1573532538-30602-1-git-send-email-eason.yen@mediatek.com>
 MIME-Version: 1.0
+In-Reply-To: <1573532538-30602-1-git-send-email-eason.yen@mediatek.com>
+X-Cookie: As famous as the unknown soldier.
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191112_030439_853239_1F8288D2 
-X-CRM114-Status: GOOD (  10.96  )
+X-CRM114-CacheID: sfid-20191112_035659_545424_D33A4490 
+X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,97 +80,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Erin Lo <erin.lo@mediatek.com>,
- open list <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Pi-Hsun Shih <pihsun@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Eddie Huang <eddie.huang@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: matthias.bgg@gmail.com, alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org, jiaxin.yu@mediatek.com,
+ chipeng.chang@mediatek.com
+Content-Type: multipart/mixed; boundary="===============5601211278188030937=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Eddie Huang <eddie.huang@mediatek.com>
 
-Add scp node to mt8183 and mt8183-evb
+--===============5601211278188030937==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="4Ckj6UjgE2iN1+kY"
+Content-Disposition: inline
 
-Signed-off-by: Erin Lo <erin.lo@mediatek.com>
-Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
-Signed-off-by: Eddie Huang <eddie.huang@mediatek.com>
----
-Changes from v20 ... v14:
- - No change.
 
-Changes from v13:
- - Change the size of the cfg register region.
+--4Ckj6UjgE2iN1+kY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Changes from v12 ... v10:
- - No change.
+On Tue, Nov 12, 2019 at 12:22:17PM +0800, Eason Yen wrote:
+> This patch is to refine mtk_afe_fe_hw_params by the following
+> export functions:
+> - mtk_memif_set_enable
+> - mtk_memif_set_disable
 
-Changes from v9:
- - Remove extra reserve-memory-vpu_share node.
+Please don't send cover letters for single patches, if there is anything
+that needs saying put it in the changelog of the patch or after the ---
+if it's administrative stuff.  This reduces mail volume and ensures that=20
+any important information is recorded in the changelog rather than being
+lost.=20
 
-Changes from v8:
- - New patch.
----
- arch/arm64/boot/dts/mediatek/mt8183-evb.dts | 11 +++++++++++
- arch/arm64/boot/dts/mediatek/mt8183.dtsi    | 12 ++++++++++++
- 2 files changed, 23 insertions(+)
+--4Ckj6UjgE2iN1+kY
+Content-Type: application/pgp-signature; name="signature.asc"
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-index 1fb195c683c3..ddb7a7ac9655 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
-@@ -24,6 +24,17 @@ memory@40000000 {
- 	chosen {
- 		stdout-path = "serial0:921600n8";
- 	};
-+
-+	reserved-memory {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		scp_mem_reserved: scp_mem_region {
-+			compatible = "shared-dma-pool";
-+			reg = <0 0x50000000 0 0x2900000>;
-+			no-map;
-+		};
-+	};
- };
- 
- &auxadc {
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 10b32471bc7b..e582f5e6691d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -269,6 +269,18 @@ pwrap: pwrap@1000d000 {
- 			clock-names = "spi", "wrap";
- 		};
- 
-+		scp: scp@10500000 {
-+			compatible = "mediatek,mt8183-scp";
-+			reg = <0 0x10500000 0 0x80000>,
-+			      <0 0x105c0000 0 0x19080>;
-+			reg-names = "sram", "cfg";
-+			interrupts = <GIC_SPI 174 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&infracfg CLK_INFRA_SCPSYS>;
-+			clock-names = "main";
-+			memory-region = <&scp_mem_reserved>;
-+			status = "disabled";
-+		};
-+
- 		systimer: timer@10017000 {
- 			compatible = "mediatek,mt8183-timer",
- 				     "mediatek,mt6765-timer";
--- 
-2.24.0.rc1.363.gb1bccd3e3d-goog
+-----BEGIN PGP SIGNATURE-----
 
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl3KngQACgkQJNaLcl1U
+h9Ds0gf+Jf7PnO4A7M+R3v1MzM3+quMhDl2WoVBFnODb7W1GxbQglVWntQckfuJz
+i9KW1BERNtbmPkRmmhiODCwRjlG7eW25VRxAbkolCf+iclcy3AUR5qcjXcx2ixx6
+66YGRHDwp6cRSnx5yQYvqiOWORq8Og+1Hz6PeURbDjAEPwdwUmXQDw1gGzfb7vN/
+6krFkmtBfZpXQ/IbUteu4IN6dhbNTQkaxXnf3asAeKv7Wgf3f1RbWp7wldUAvBpa
+SnTasgnRZMPQHbxqS5DP5Rnla2AtsgJUDx4mFFKzloK/jt7dMjXadopaxAQn2Krm
+/UN2h4kGa+hKcDX4pKFgWZfkhLgOmA==
+=vQlg
+-----END PGP SIGNATURE-----
+
+--4Ckj6UjgE2iN1+kY--
+
+
+--===============5601211278188030937==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============5601211278188030937==--
+
