@@ -2,81 +2,77 @@ Return-Path: <SRS0=+xT1=ZE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 749FDC43331
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2019 06:43:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 24E93C43331
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2019 06:52:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 46E3C214E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2019 06:43:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id ED30921D7F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Nov 2019 06:52:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Rknatyvg";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="LDDUyvLA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 46E3C214E0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="U17diXuj";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="FRKP57sy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ED30921D7F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FJrPHfajJGaFpj2ZgUUcAAdcMdf1GhPr9fxhfvYLQZw=; b=RknatyvgMunez5
-	ae4S41rNLo4O6X54O24Muafr2hc6vh8/8Jp2iPL66GpGBBJc7KqYCg4k8yrEdZDWhEIZzWGEGaFWG
-	RFiKpWWdL+C5e08ta9UZOjqSHNai9/R799FvJ/LTuyNvumdwwfLD4pmnm90+O/lN5wVZ0GoMMrneQ
-	jvsEK52Z0yJwOSatCU598f9tp8UxCfgqSMIXN28eUecGKgvocyQkLEFXN5cR9Xxbq/D0uCXH3BZOT
-	Q8YFW+Oz+xY4enffsUOpW+eLsrrji2YZsY8y6AnMTRA3zzPKIPlg+hVixxpsWTAjQYpB01Z2Yc/7z
-	hmuS0m8qfltjJJlf7I6g==;
+	List-Owner; bh=nqXLeFmTn24jx6i1j5uAinNIY1qcHu6c+7pTaJ+TmSg=; b=U17diXuj8ezhNs
+	h1CDmQKS8UNkg1B7pDzLbB/K/wUWHHV6tuzAC62HZpxJbg5NAEm/IXCfsMSf43yofPi8pgmXZq5AH
+	wU/Oflo/3k+2owVg3XK57gE+mptw2CmCMwSgZKhV7vJvd1fmyQczMwsSFQzYD4427HXo2YR4egNxy
+	p90KvSGcsVtu1uOx/3kRZQTqNV8qVLqRPejzTTGl2yzPJPzZeSGER1MHjKSFPTv1IFgZcdmMU592F
+	CMwir2DrKQOy5gO2RxY3fzcu9U9YQI8mHLNPnoeLpFFBVb92LUxLqFnajsOEBZp2gy0qS5+sFVxYm
+	o/JuKYXUK/mE4f5BasbQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iUPtm-0007xg-6b; Tue, 12 Nov 2019 06:43:34 +0000
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542])
+	id 1iUQ2D-0002iz-8h; Tue, 12 Nov 2019 06:52:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iUPte-0007pJ-3B
- for linux-mediatek@lists.infradead.org; Tue, 12 Nov 2019 06:43:27 +0000
-Received: by mail-ed1-x542.google.com with SMTP id a24so10336074edt.0
- for <linux-mediatek@lists.infradead.org>; Mon, 11 Nov 2019 22:43:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6gu94hk6ViXZU/1pF57c89Mz0JcKl1j3IzzPZmTPjtQ=;
- b=LDDUyvLAAr/FgJFV0ODv1fscc3tceNs7i1JvEsFi9SbeCOxeMyJWafdRgYIlNqWV49
- ro79eCq++su+3IaTvSt6MwgL4SEwWPUZp7cEzIY5lMEh0+Vi4K+fFmiFNMR56+eI/hDL
- YUlIauWUKVBysNq/DieSbYjanJaQapqZXiAkA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=6gu94hk6ViXZU/1pF57c89Mz0JcKl1j3IzzPZmTPjtQ=;
- b=ZosyFDiFfXLftVZAIhs7Rw4G0MNJLYlrnrg2L8pVF1ieu38AZpx5NgTokiYBXrl31S
- jdTgYjnImu5DRGgJ0FamOCcuwBauHqTCXY2Uz7ihWhNzfcXS0S7YGnRw7BJsNRWveIt7
- RusMptrdVJFQBeYu6qvMbF7pHtLvveFYxMxh8BrrNb2PW8JDpvk0JDYvf2SlBldBD5k2
- 9gIvzYT6HtzIWudsV0Bmd6rcXOTYrHzjNrIOBzDsKjFvk3KOIMCxfDycCr23djjNYqZ3
- jqLLv5NxIHA/TnoOKkBJx1NP/n0GRBPaY66tzBWQworRHX3gVyjErOjfjQ5aOK6Pyx3Z
- ITmQ==
-X-Gm-Message-State: APjAAAVXx5MOPKtOekPCtjLCxq78nd4dGU9Oo0b/r0oKdEXRY2MqN7nT
- G+mHaUXyx2bff1RKSwJoTminYz30eaAPR76KCy0eSA==
-X-Google-Smtp-Source: APXvYqyMbA5YJasNK6lBrgNGRtM92Nacpnn0WpqptPvJ7NjQkzN/92o6yJP/Cb/7QkIhQbV5cTyTR309VkTgVeCpFuI=
-X-Received: by 2002:a17:906:1d19:: with SMTP id
- n25mr25947734ejh.151.1573541003705; 
- Mon, 11 Nov 2019 22:43:23 -0800 (PST)
+ id 1iUQ2A-0002ge-Lb; Tue, 12 Nov 2019 06:52:15 +0000
+X-UUID: 5686422c614d4eb2a19356b325eda7bf-20191111
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=bcfzYmRx9os6HtHTVejsAOTqOvBkgsxwa1TyCFdMLf8=; 
+ b=FRKP57syZsCK31bgak1WRe63v0oZsgOUv+lTPeAnyPSTme/G86AO6cCCk3adf1dXY6ORultpoO+UoDMvd1q4+YDnhSt7ZoIu6BQIcH4KtJwFuXx0UmJdxaDUBM4BnJ9cJrqYMLB2WZVXnJ+TytdmOQJMdq7tjzAHCAqqHJsK4xg=;
+X-UUID: 5686422c614d4eb2a19356b325eda7bf-20191111
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 178060219; Mon, 11 Nov 2019 22:52:07 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 11 Nov 2019 22:52:05 -0800
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 12 Nov 2019 14:52:04 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Tue, 12 Nov 2019 14:52:02 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi
+ <balbi@kernel.org>
+Subject: [PATCH v2 02/13] usb: chipidea: debug: create debugfs directory under
+ usb root
+Date: Tue, 12 Nov 2019 14:51:48 +0800
+Message-ID: <1573541519-28488-2-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1573541519-28488-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1573541519-28488-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-References: <20191014075812.181942-1-pihsun@chromium.org>
- <20191014075812.181942-4-pihsun@chromium.org>
- <20191111231023.GD3108315@builder>
-In-Reply-To: <20191111231023.GD3108315@builder>
-From: Pi-Hsun Shih <pihsun@chromium.org>
-Date: Tue, 12 Nov 2019 14:42:47 +0800
-Message-ID: <CANdKZ0frU9+dRYeMaJjjKm6emxj41c_jBk_RX3G7bXn_oXKp4g@mail.gmail.com>
-Subject: Re: [PATCH v20 3/4] rpmsg: add rpmsg support for mt8183 SCP.
-To: Bjorn Andersson <bjorn.andersson@linaro.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191111_224326_161833_10D16EF0 
-X-CRM114-Status: GOOD (  15.07  )
+X-CRM114-CacheID: sfid-20191111_225214_710622_65B6025D 
+X-CRM114-Status: GOOD (  12.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,77 +84,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ohad Ben-Cohen <ohad@wizery.com>,
- "open list:REMOTE PROCESSOR \(REMOTEPROC\) SUBSYSTEM"
- <linux-remoteproc@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>
+Cc: Peter Chen <Peter.Chen@nxp.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
+ Yangtao Li <tiny.windzz@gmail.com>, linux-kernel@vger.kernel.org, Minas
+ Harutyunyan <hminas@synopsys.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Fabio Estevam <festevam@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ Robert Jarzmik <robert.jarzmik@free.fr>, Kevin Cernekee <cernekee@gmail.com>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ bcm-kernel-feedback-list@broadcom.com, NXP Linux Team <linux-imx@nxp.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Cristian Birsan <cristian.birsan@microchip.com>, linux-media@vger.kernel.org,
+ Fabrizio
+ Castro <fabrizio.castro@bp.renesas.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Haojian Zhuang <haojian.zhuang@gmail.com>, Stephen Boyd <swboyd@chromium.org>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Bin
+ Liu <b-liu@ti.com>, linux-arm-kernel@lists.infradead.org,
+ Biju Das <biju.das@bp.renesas.com>, Yoshihiro
+ Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-usb@vger.kernel.org,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Colin Ian King <colin.king@canonical.com>, Shawn Guo <shawnguo@kernel.org>,
+ Daniel Mack <daniel@zonque.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-Thanks for the review, I'll address them in the next version. Some
-inline comment below.
+Move it's directory from the root of the debugfs filesystem into
+the root of usb
 
-On Tue, Nov 12, 2019 at 7:10 AM Bjorn Andersson
-<bjorn.andersson@linaro.org> wrote:
->
-> On Mon 14 Oct 00:58 PDT 2019, Pi-Hsun Shih wrote:
->
-> > Add a simple rpmsg support for mt8183 SCP, that use IPI / IPC directly.
-> >
->
-> Hi Pi-Hsun,
->
-> Sorry for not reviewing this in a timely manner! This looks good, just
-> some very minor comments below.
->
-> > Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
-> [..]
-> > diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> > index f2e5e70a58f2..7896cefb2dc0 100644
-> > --- a/drivers/remoteproc/mtk_scp.c
-> > +++ b/drivers/remoteproc/mtk_scp.c
-> > @@ -15,6 +15,7 @@
-> >  #include <linux/platform_device.h>
-> >  #include <linux/remoteproc.h>
-> >  #include <linux/remoteproc/mtk_scp.h>
-> > +#include <linux/rpmsg/mtk_rpmsg.h>
-> >
-> >  #include "mtk_common.h"
-> >  #include "remoteproc_internal.h"
-> > @@ -407,6 +408,31 @@ static void scp_unmap_memory_region(struct mtk_scp *scp)
-> >       of_reserved_mem_device_release(scp->dev);
-> >  }
-> >
-> > +static struct mtk_rpmsg_info mtk_scp_rpmsg_info = {
-> > +     .send_ipi = scp_ipi_send,
-> > +     .register_ipi = scp_ipi_register,
-> > +     .unregister_ipi = scp_ipi_unregister,
->
-> These are exported symbols, so unless you see a need to support
-> alternative implementations in the near future just skip the function
-> pointers and call them directly.
->
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+v2:
+  1. abandon new API usb_debugfs_create_dir(), and use usb_debug_root
+---
+ drivers/usb/chipidea/debug.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Yes there is request from MTK that they do want to reuse the mtk_rpmsg
-driver for things other than mtk_scp, so there's a need to support
-alternative implementations for this.
-
-> > +                struct rpmsg_device *rpdev, rpmsg_rx_cb_t cb, void *priv,
-> > +                u32 id)
-> > +{
->
-> Regards,
-> Bjorn
-
-Regards,
-Pi-Hsun
-
+diff --git a/drivers/usb/chipidea/debug.c b/drivers/usb/chipidea/debug.c
+index fcc91a338875..e0376ee646ad 100644
+--- a/drivers/usb/chipidea/debug.c
++++ b/drivers/usb/chipidea/debug.c
+@@ -342,7 +342,7 @@ DEFINE_SHOW_ATTRIBUTE(ci_registers);
+  */
+ void dbg_create_files(struct ci_hdrc *ci)
+ {
+-	ci->debugfs = debugfs_create_dir(dev_name(ci->dev), NULL);
++	ci->debugfs = debugfs_create_dir(dev_name(ci->dev), usb_debug_root);
+ 
+ 	debugfs_create_file("device", S_IRUGO, ci->debugfs, ci,
+ 			    &ci_device_fops);
+-- 
+2.23.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
