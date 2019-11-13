@@ -2,76 +2,79 @@ Return-Path: <SRS0=w4bH=ZF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EF752C43331
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Nov 2019 02:40:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D9CEEC43331
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Nov 2019 03:18:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C333E2084E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Nov 2019 02:40:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AB430222BD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Nov 2019 03:18:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="U5q/X1HX";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EDn7Q97S"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C333E2084E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="M84FJIXV";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="tBIcmgqJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AB430222BD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=RYdY6Aj5GHEkH0VVQa8tmrRhb3jssv+LCGiPevrmAzQ=; b=U5q/X1HXkFjjEK
-	Q8m55M2EdVNtt2fudQo3lQPBpT03Zz9jMWoccG7/jzxhfmKiIWV5vLVUm5QP9N25Ua4S2+L+Bg+JU
-	wDmFYF+VEA528UgX52CHe4zmmyF+bkHQmu1uDKVaqSJD0z9ReeJpJo6T0NeYwHltyLcJ5F3uw96sQ
-	u5okk/OjisxuxwRCM/3AmPY/PIyBTq1B1p3iUMlaZkLEguuPvDS4XXIoVSu4VAecjO64SoBV4avLz
-	cweEJocH9yR4i0o3KAbxDBl5xJ56mC5dJRXxBRm1p+B1jhB9OaPFtAgtbbnYavmOqIorB3Mu807sE
-	4YqZllNkJ2u0Wx5+j4MA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Xsk2feMz5aJrG8ueZRrhjJsTbGtDxKhwc2jc/tIqfhg=; b=M84FJIXV5BdrAo
+	5dnnWL34RzIgyoaw/ly4tn9T7jKqREBPGhf2FSUIW9zNdPZrRW3B81OJubJkAWftJ1BOdaOHIUYJN
+	iAtxp+P9d+ZcOD5R6MmkXjDIntZANAo0stwaHpOhnqM+S+qWFflJ446O/kCO+ZDGu1FyyefW1SPjh
+	t4HM/natp2MKbXu1Umr87Hgd0ikLiRjy+0pA+l9D0+yIZeTa72o2Bbc8TRn/mNzY4CfL3DBlxYkHR
+	y6s2lzjhSxrt8UAVQKflKrmxI/gyS7ua5qqWxiBgsjBHSkJrjOnSu+cQB7/No72nSF8qCCXn1suf0
+	Ypvd9Fr3sAspxQHZHwwg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iUiZv-0005hm-Ro; Wed, 13 Nov 2019 02:40:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1iUjAw-0003M8-Ab; Wed, 13 Nov 2019 03:18:34 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iUiYt-0003Og-LH; Wed, 13 Nov 2019 02:39:17 +0000
-X-UUID: acadfcb72ac14fe8b27e92ac0ce2599f-20191112
+ id 1iUjAs-0003Li-QJ; Wed, 13 Nov 2019 03:18:32 +0000
+X-UUID: e6c6cea4ddbd4e33b6951a39a34f3eb3-20191112
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=1NPMi5s0B7PLycleggl/Ct6ul55hyyE2HzaKv33AkXA=; 
- b=EDn7Q97SYGe/ISn7VL40J628+hoVivlbsz1L2h9kC6FgazP0cjWcyDbn3c1pvtq//nSzxCMNLrl6IQGXa7Eptlkt8wNqTZiBcSTY2G9xKgZELPaS5XmFEJqoXE2EqYxdxZ5v1GvUH2PWo3MQAwltPWQ3YjPa95xHB4adVhkbaAc=;
-X-UUID: acadfcb72ac14fe8b27e92ac0ce2599f-20191112
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <mark-mc.lee@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=1PTVv09MJjB2RKE9rgKvj5d7tEfBX8IFX331P3cJgFc=; 
+ b=tBIcmgqJaEc0Gy26g3KLy0gQtohKXEKRom3/g+Edm/Ie2VO3BLK2COJ9RlKUSFsqweK4K62avpFgM65cOd0OcfpKib4KHzGpCJFiRIySqssgyfIsxz62ZfmtmrjWWqA1mI4+CW4C+EBQsfqDt45Lz7FDtXggpJ5pBMlUC9dUA8Q=;
+X-UUID: e6c6cea4ddbd4e33b6951a39a34f3eb3-20191112
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1737915054; Tue, 12 Nov 2019 18:39:05 -0800
-Received: from mtkmbs05dr.mediatek.inc (172.21.101.97) by
+ with ESMTP id 1532790040; Tue, 12 Nov 2019 19:18:24 -0800
+Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 12 Nov 2019 18:38:45 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05dr.mediatek.inc (172.21.101.97) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 13 Nov 2019 10:38:43 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Wed, 13 Nov 2019 10:38:43 +0800
-From: MarkLee <Mark-MC.Lee@mediatek.com>
-To: "David S. Miller" <davem@davemloft.net>, Sean Wang
- <sean.wang@mediatek.com>, John Crispin <john@phrozen.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Andrew Lunn <andrew@lunn.ch>
-Subject: [PATCH net,v3 0/3]  Rework mt762x GDM setup flow
-Date: Wed, 13 Nov 2019 10:38:41 +0800
-Message-ID: <20191113023844.17800-1-Mark-MC.Lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ 15.0.1395.4; Tue, 12 Nov 2019 19:18:24 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N2.mediatek.inc
+ (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Wed, 13 Nov 2019 11:18:21 +0800
+Received: from [10.17.3.153] (172.27.4.253) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Wed, 13 Nov 2019 11:18:21 +0800
+Message-ID: <1573615102.7173.9.camel@mhfsdcap03>
+Subject: Re: [PATCH v4 11/11] arm64: dts: mt2712: use non-empty ranges for
+ usb-phy
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Date: Wed, 13 Nov 2019 11:18:22 +0800
+In-Reply-To: <c23531cd-432d-1857-1e99-48d87956338e@gmail.com>
+References: <1573547796-29566-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1573547796-29566-11-git-send-email-chunfeng.yun@mediatek.com>
+ <c23531cd-432d-1857-1e99-48d87956338e@gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 4A04EC74D93A3F15A39E1C1ED84053571B8EBB86F8A73CC07646E046490CADBC2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191112_183915_719639_A69B07AB 
-X-CRM114-Status: UNSURE (   7.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191112_191830_859181_EEBA29D7 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,42 +86,140 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Jakub
- Kicinski <jakub.kicinski@netronome.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Rene van Dorst <opensource@vdorst.com>,
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
  Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- MarkLee <Mark-MC.Lee@mediatek.com>, linux-arm-kernel@lists.infradead.org
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mt762x GDM block is mainly used to setup the HW internal
-rx path from GMAC to RX DMA engine(PDMA) and the packet
-switching engine(PSE) is responsed to do the data forward
-following the GDM configuration.
+On Tue, 2019-11-12 at 14:12 +0100, Matthias Brugger wrote:
+> 
+> On 12/11/2019 09:36, Chunfeng Yun wrote:
+> > Use non-empty ranges for usb-phy to make the layout of
+> > its registers clearer;
+> > Replace deprecated compatible by generic
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> > v3~v4: no changes
+> > 
+> > v2: use generic compatible
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 42 ++++++++++++-----------
+> >  1 file changed, 22 insertions(+), 20 deletions(-)
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> > index 43307bad3f0d..e24f2f2f6004 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> > @@ -697,30 +697,31 @@
+> >  	};
+> >  
+> >  	u3phy0: usb-phy@11290000 {
+> > -		compatible = "mediatek,mt2712-u3phy";
+> > -		#address-cells = <2>;
+> > -		#size-cells = <2>;
+> > -		ranges;
+> > +		compatible = "mediatek,mt2712-tphy",
+> > +			     "mediatek,generic-tphy-v2";
+> > +		#address-cells = <1>;
+> > +		#size-cells = <1>;
+> 
+> At a first glance I don't understand why you change address and size cells.
+> Commit message doesn't explain it and AFAIS it's not part of the binding changes.
+When Ryder sent DTS patch for mt7629, Rob suggested to use 1 cell,
+non-empty ranges and provide the offset for v2 tphy which hasn't shared
+registers between sub-phys, it'll make layout more clear.
 
-This patch set have three goals :
+See: https://patchwork.kernel.org/patch/10850925/
 
-1. Integrate GDM/PSE setup operations into single function "mtk_gdm_config"
 
-2. Refine the timing of GDM/PSE setup, move it from mtk_hw_init 
-   to mtk_open
+> 
+> Can you explain why we need that, and update the commit message accordingly?
 
-3. Enable GDM GDMA_DROP_ALL mode to drop all packet during the 
-   stop operation
+Just want to take it as an example when support other platforms.
 
-MarkLee (3):
-  net: ethernet: mediatek: Integrate GDM/PSE setup operations
-  net: ethernet: mediatek: Refine the timing of GDM/PSE setup
-  net: ethernet: mediatek: Enable GDM GDMA_DROP_ALL mode
+> 
+> Regrads,
+> Matthias
+> 
+> > +		ranges = <0 0 0x11290000 0x9000>;
+> >  		status = "okay";
+> >  
+> > -		u2port0: usb-phy@11290000 {
+> > -			reg = <0 0x11290000 0 0x700>;
+> > +		u2port0: usb-phy@0 {
+> > +			reg = <0x0 0x700>;
+> >  			clocks = <&clk26m>;
+> >  			clock-names = "ref";
+> >  			#phy-cells = <1>;
+> >  			status = "okay";
+> >  		};
+> >  
+> > -		u2port1: usb-phy@11298000 {
+> > -			reg = <0 0x11298000 0 0x700>;
+> > +		u2port1: usb-phy@8000 {
+> > +			reg = <0x8000 0x700>;
+> >  			clocks = <&clk26m>;
+> >  			clock-names = "ref";
+> >  			#phy-cells = <1>;
+> >  			status = "okay";
+> >  		};
+> >  
+> > -		u3port0: usb-phy@11298700 {
+> > -			reg = <0 0x11298700 0 0x900>;
+> > +		u3port0: usb-phy@8700 {
+> > +			reg = <0x8700 0x900>;
+> >  			clocks = <&clk26m>;
+> >  			clock-names = "ref";
+> >  			#phy-cells = <1>;
+> > @@ -760,30 +761,31 @@
+> >  	};
+> >  
+> >  	u3phy1: usb-phy@112e0000 {
+> > -		compatible = "mediatek,mt2712-u3phy";
+> > -		#address-cells = <2>;
+> > -		#size-cells = <2>;
+> > -		ranges;
+> > +		compatible = "mediatek,mt2712-tphy",
+> > +			     "mediatek,generic-tphy-v2";
+> > +		#address-cells = <1>;
+> > +		#size-cells = <1>;
+> > +		ranges = <0 0 0x112e0000 0x9000>;
+> >  		status = "okay";
+> >  
+> > -		u2port2: usb-phy@112e0000 {
+> > -			reg = <0 0x112e0000 0 0x700>;
+> > +		u2port2: usb-phy@0 {
+> > +			reg = <0x0 0x700>;
+> >  			clocks = <&clk26m>;
+> >  			clock-names = "ref";
+> >  			#phy-cells = <1>;
+> >  			status = "okay";
+> >  		};
+> >  
+> > -		u2port3: usb-phy@112e8000 {
+> > -			reg = <0 0x112e8000 0 0x700>;
+> > +		u2port3: usb-phy@8000 {
+> > +			reg = <0x8000 0x700>;
+> >  			clocks = <&clk26m>;
+> >  			clock-names = "ref";
+> >  			#phy-cells = <1>;
+> >  			status = "okay";
+> >  		};
+> >  
+> > -		u3port1: usb-phy@112e8700 {
+> > -			reg = <0 0x112e8700 0 0x900>;
+> > +		u3port1: usb-phy@8700 {
+> > +			reg = <0x8700 0x900>;
+> >  			clocks = <&clk26m>;
+> >  			clock-names = "ref";
+> >  			#phy-cells = <1>;
+> > 
 
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 44 ++++++++++++++-------
- drivers/net/ethernet/mediatek/mtk_eth_soc.h |  2 +
- 2 files changed, 31 insertions(+), 15 deletions(-)
-
--- 
-2.17.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
