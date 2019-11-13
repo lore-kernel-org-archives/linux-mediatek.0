@@ -7,71 +7,68 @@ X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 37DD2C43331
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Nov 2019 03:26:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 415B7C43331
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Nov 2019 03:39:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F1B00222CD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Nov 2019 03:26:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F2722222CD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Nov 2019 03:39:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WVW8OzOJ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="KpdFd4ld"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F1B00222CD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ed/lsR00";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="HBILv9he"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F2722222CD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d4MLkxKgLsQoO2X09wlPWrRVgdPjJAfqEEl+75uY2NE=; b=WVW8OzOJCEzzBv
-	gsEbcaLyR8B+X47MwLnkQbo45/c8XZAQMi5fPHDLgU1z3P5ziSdNUrxdFM6W4nCvBAtD1XzBxWf6h
-	YxIsjTDZ5YnFS4Vqz+eHlB8JOS+gWzOHeriuzE77QTSmJk1OiI9+tSM9Tk9cRPKZlp5omURwGrrGY
-	RwuLb8rR7iXiV3ErnmfO5QFNGr5mq5in3A6tCip71h8rXq8YIFVhjvuuuMXp/zuTNC0nRp60SuK6T
-	9AEK9oUjZy5xYn82Os8/0rtP+IJ6w1Bo4XzdM6lHZxQwYboQ0OcgKihkRueSmo7tsoNdNDZ/3PNUe
-	oG7toE0dXgAKpJhPdGyQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ty+1BGRyFEBhGXwHzCz+OVktxUpP5OFgTiu0BISu4A0=; b=ed/lsR00aWmkkm
+	XytqGdz2NriEppxtVatSb6GxdRrswEniwjNPJ6ULwY1e/bBlyEPX0dNeihSDggm6rfhMo4FtTSzSZ
+	209DIXXINCUxYWFrGVixqckV9OB0OZbRSBRlHlwKzNa/8dbZyB49eu0VXtbz75SJItsvJ4GqTGmOi
+	ddLCHg0nqXWEwCAZ7ZoONssuFPqvpbzQlFmwXIY183rp+qYBxjcDLJF3XOlyQ9QFdBenLuxKeGI5+
+	GZU0KnTlo2dknKnVAapIN8sh69e6sgQH0/dg99mswKzEEfdPUEbRy3VuTN+/hQsJgRbnhJAo4HQ63
+	DOnn0X/tvSHz3qFswakQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iUjIH-0007l1-Bm; Wed, 13 Nov 2019 03:26:09 +0000
+	id 1iUjVN-0003YX-Qk; Wed, 13 Nov 2019 03:39:41 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iUjI9-0007dS-Th; Wed, 13 Nov 2019 03:26:03 +0000
-X-UUID: e7bf8c223cd34dd7924606d6a0acd979-20191112
+ id 1iUjVH-0003Pw-PA; Wed, 13 Nov 2019 03:39:37 +0000
+X-UUID: 7b2ebe2c2b3f4657a6d97822806a95a5-20191112
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=rDIAE49LJSoVbQpJ0kmEv+2G5B5G2a/scFj/B11Af9I=; 
- b=KpdFd4lddrLeL7jARmsvUFFGiti8KhxBSFYDlmlt0tNxW5P4ELFzhsAQiHvfMd3DScmr2VHTpX7Z1694IFW7iw0P6wAEAXs7SN7u4sMxIpaiB/Sb57zBNGnt6msRwwT6J/wntWa/0RGnL6yQu2a5mh25RkuCDDOjaPPSDMdBsco=;
-X-UUID: e7bf8c223cd34dd7924606d6a0acd979-20191112
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=l+3HLJlr9FU1jj0l+q4WqZWs0HC9AL455Rau+3GvDuw=; 
+ b=HBILv9heeeUS1LBs8Dcev111DYoy0ti8qll/+M5WgD9H6M+JuxwlbRJjLJ2PWLoTvz79SeEWoAW5e7SP+BedGj+nqADpQ7WNvddgmHCkypXnAzwe3gTUtiqQwvspclspVxRQ24Qo9mf9dRCIJw0Bz1Jlo7zPHD/y9tFQ7mkmIK0=;
+X-UUID: 7b2ebe2c2b3f4657a6d97822806a95a5-20191112
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <mark-pk.tsai@mediatek.com>)
+ (envelope-from <ming-fan.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1724042337; Tue, 12 Nov 2019 19:25:55 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 12 Nov 2019 19:25:54 -0800
+ with ESMTP id 614352770; Tue, 12 Nov 2019 19:39:25 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 12 Nov 2019 19:39:25 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 13 Nov 2019 11:25:54 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 13 Nov 2019 11:39:24 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Wed, 13 Nov 2019 11:25:52 +0800
-From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-To: <lvqiang.huang@unisoc.com>
-Subject: Re: [PATCH] ARM: fix race in for_each_frame
-Date: Wed, 13 Nov 2019 11:25:54 +0800
-Message-ID: <20191113032554.21034-1-mark-pk.tsai@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <64C83867-31FA-4243-A0EB-018AE9A83ACB@unisoc.com>
-References: <64C83867-31FA-4243-A0EB-018AE9A83ACB@unisoc.com>
+ Frontend Transport; Wed, 13 Nov 2019 11:39:23 +0800
+From: Ming-Fan Chen <ming-fan.chen@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v1] memory: mtk-smi: Add bandwidth initial setting for MT6779
+Date: Wed, 13 Nov 2019 11:39:20 +0800
+Message-ID: <1573616362-2557-1-git-send-email-ming-fan.chen@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 95B92524CD3366A2A5D654B2ED134B3B8F2C48BBE4E6AB8A5500FE4528A957B02000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191112_192601_966610_15158DF2 
-X-CRM114-Status: UNSURE (   9.60  )
+X-CRM114-CacheID: sfid-20191112_193935_821019_E8E1605F 
+X-CRM114-Status: UNSURE (   5.88  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -84,36 +81,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kstewart@linuxfoundation.org, mike-sl.lin@mediatek.com,
- alix.wu@mediatek.com, tglx@linutronix.de, eddy.lin@mediatek.com,
- gregkh@linuxfoundation.org, yj.chiang@mediatek.com, phil.chang@mediatek.com,
- linux-kernel@vger.kernel.org, linux@armlinux.org.uk,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- matthias.bgg@gmail.com, mark-pk.tsai@mediatek.com, info@metux.net,
- enlai.chu@unisoc.com, allison@lohutok.net
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devicetree@vger.kernel.org, Joerg Roedel <jroedel@suse.de>,
+ wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
+ Evan Green <evgreen@chromium.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-PiBEZWFyIE1hcmssDQo+IFRoYW5rcyBhIGxvdCBmb3IgdGhlIHJlcGx5LiANCj4gDQo+IEFzIHNh
-aWQgaW4gbGFzdCByZXBseSwgc3ZfcGMgY2FuIGJlIGEgbW9kdWxlIHRleHQsIHRoZW4gbW9yZSBj
-aGVjayBuZWVkZWQuDQoNCklmIHN2X3BjIGlzIGluIG1vZHVsZSB0ZXh0IGFyZWEsIGtlcm5lbF90
-ZXh0X2FkZHJlc3MoKSByZXR1cm5zIHRydWUuDQoNCj4gDQo+IEFuZCBiZXNpZGUgY3Jhc2ggYXQg
-MTAwMywgd2UgbWF5IGFsc28gZ2V0IGNyYXNoIGF0IDEwMDEsIHRoZSBmcmFtZSBpcyBpbnZhbGlk
-LiAoVGhlIGxhc3Qgc3ZfcHYgaXMgdmFsaWQgYW5kIHN2X2ZyYW1lIGlzIGludmFsaWQpLCB0aGVu
-IG1vcmUgY2hlY2sgbmVlZGVkLiANCg0KVGhlcmUncyBhIGJhc2ljIGNoZWNrIGZvciBzdl9mcCBh
-dCB0aGUgZW5kIG9mIDEwMDQuDQpCdXQgSSdtIG5vdCBzdXJlIGlzIGl0IGVub3VnaCB0byBwcmV2
-ZW50IHRoZSAxMDAxIGNyYXNoIHlvdSBtZW50aW9uZWQuDQpTaG91bGQgd2UgYWRkIGEgdmVyaWZ5
-X3N0YWNrIGZvciBzdl9mcD8NCg0KPiANCj4gQW5kIHdlIG9mdGVuIHNob3dfZGF0YSBhcm91bmQg
-dGhlIGdlbmVyYWwgcHJvcG9zYWwgcmVnaXN0ZXJzIHdoZW4ga2VybmVsIGNyYXNoLiBXaGVuIHRo
-ZXkgY29udGFpbiBhbiBhZGRyZXNzIG1hcHBpbmcgZm9yIGEgaHcgcmVnaXN0ZXIgYnV0IGNhbsKS
-dCBhY2Nlc3MgYmVjYXVzZSBjbG9jayBnYXRlZCwgaXQgd2lsbCBjcmFzaCBhZ2FpbiBiZWNhdXNl
-IGRvX2JhZCgpIGlzIGludm9sdmVkLiAoY29udGludW91cyBjcmFzaCBpbiBhcm0gYW5kIGhhbmcg
-YXQgZGllX2xvY2sgaW4gYXJtNjQpDQo+IA0KPiBTbywgd2h5IG5vdCBjaGVjayB0aGUgX19leF90
-YWJsZSBpbiBkb19iYWQoKSA/DQo+IA0KDQpPbiBvdXIgYXJtIHBsYXRmb3JtLCBrZXJuZWwganVz
-dCBkaWUgYmVjdWFzZSB0aGUgVW5oYW5kbGVkIGZhdWx0IGluIGZvcl9lYWNoX2ZyYW1lLg0KU28g
-SSdkIHJhdGhlciB0byBmaXggaXQgYmVmb3JlIHRoZSBjb250aW51b3VzIGNyYXNoIGhhcHBlbi4N
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1l
-ZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+This patch add description and bandwidth initial golden setting for MT6779 SMI.
+The setting make better performance of memory control for multimedia modules.
+
+
+Ming-Fan Chen (2):
+  dt-bindings: mediatek: Add binding for MT6779 SMI
+  memory: mtk-smi: Add bandwidth initial golden setting for MT6779
+
+ .../memory-controllers/mediatek,smi-common.txt     |    3 +-
+ .../memory-controllers/mediatek,smi-larb.txt       |    3 +-
+ drivers/memory/mtk-smi.c                           |  141 +++++++++++++++++++-
+ 3 files changed, 143 insertions(+), 4 deletions(-)
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
