@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EB61AC17447
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Nov 2019 09:54:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 94E91C43331
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Nov 2019 10:06:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C07A120818
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Nov 2019 09:54:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 693102245A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Nov 2019 10:06:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rGIchx3x"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C07A120818
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="B2V+R0qO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 693102245A
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fi.rohmeurope.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,33 +24,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
 	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nwC7j82t+2Nb4XhYQIkBG2G6u0lHTlVz6xRPsp6Rbv0=; b=rGIchx3xHx8MOz
-	QC6iCkCduNOYZYdN07LPT+r/kJxWQuUZUs2g0rQeGQG9r2rN2D8uIpiZd0HmC6tbamWOseMCCr5h9
-	AoRtOptS2+MhFN8Pp5foBFenG5zzmF92o4uMhBmRUFIHviiILuSmcI3ImgheMvTkBAMQLZvVARcZg
-	MurI9CDAJZxMMn1pcqOtjow1ku6JHk+EvCl6sbJmbVCWhxGsS+g5aCceLLhDYGxo1a90szVf/b0MY
-	UO5sKhuXYe7yvLeqvU39V13iufIhrxFuoMUJQixh5iHhK99R6FoYBC5Gun/yoANGlkipeC3F0iOJ8
-	YQDpH3HjzTGfeU9a6W3A==;
+	List-Owner; bh=3FpUeEPbX5o9rJ6OEdJHea4dRrduqV3Cyg6NG+ROZDo=; b=B2V+R0qOnFQK5y
+	WnRqnSaEiKm9jyyBzCeYYFZRgIfgVfzA8DH4/xdKT2QBF75eb/1l6nSV8C66/GnNVrWhIHOgzoXiM
+	ntGBulJZ6XdKbx2gmhCpy/x89qxZzFcaKunGGqAYtNW6Kwt+R5Lz8BXql2+OcQ99jmarixoqiDVJK
+	bb5XYAdmdYXI/mRdw8RlMtbRUxp9L8STl/je7yYyV353oHnKTs2XfdThvSiLG7KrCplmjGmmvliy6
+	eCY9FhcsyGkx8VANEOk2jnXg7ZxBJBSz04lZwDC9N9XPiGCI40IPzHzdjV1gD11RYVWu8E00ilK88
+	WaLgHzpY03gMHzaAtmiQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iUpLT-0005qO-0M; Wed, 13 Nov 2019 09:53:51 +0000
+	id 1iUpXt-00049Z-US; Wed, 13 Nov 2019 10:06:41 +0000
 Received: from mailgate1.rohmeurope.com ([178.15.145.194])
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iUpLI-0005jF-7H; Wed, 13 Nov 2019 09:53:41 +0000
-X-AuditID: c0a8fbf4-199ff70000001fa6-4f-5dcbd29e1ef3
-Received: from smtp.reu.rohmeu.com (will-cas002.reu.rohmeu.com
- [192.168.251.178])
+ id 1iUpXr-00048u-8f; Wed, 13 Nov 2019 10:06:40 +0000
+X-AuditID: c0a8fbf4-183ff70000001fa6-35-5dcbd5aad21d
+Received: from smtp.reu.rohmeu.com (will-cas001.reu.rohmeu.com
+ [192.168.251.177])
  by mailgate1.rohmeurope.com (Symantec Messaging Gateway) with SMTP id
- AB.1A.08102.E92DBCD5; Wed, 13 Nov 2019 10:53:35 +0100 (CET)
+ 09.3A.08102.AA5DBCD5; Wed, 13 Nov 2019 11:06:34 +0100 (CET)
 Received: from WILL-MAIL002.REu.RohmEu.com ([fe80::e0c3:e88c:5f22:d174]) by
- WILL-CAS002.REu.RohmEu.com ([fe80::fc24:4cbc:e287:8659%12]) with mapi id
- 14.03.0439.000; Wed, 13 Nov 2019 10:53:30 +0100
+ WILL-CAS001.REu.RohmEu.com ([fe80::d57e:33d0:7a5d:f0a6%16]) with mapi id
+ 14.03.0439.000; Wed, 13 Nov 2019 11:06:30 +0100
 From: "Vaittinen, Matti" <Matti.Vaittinen@fi.rohmeurope.com>
 To: "linus.walleij@linaro.org" <linus.walleij@linaro.org>
 Subject: Re: [PATCH 2/2] pinctrl: Use new GPIO_LINE_DIRECTION
 Thread-Topic: [PATCH 2/2] pinctrl: Use new GPIO_LINE_DIRECTION
-Thread-Index: AQHVmWQOgs5cHlsmlU+Vdtkf5ZbC06eIlAaAgAAGWoCAAC7LgIAAA7CA
-Date: Wed, 13 Nov 2019 09:53:29 +0000
-Message-ID: <dbe9aee7fba2b1745cb09c8aa998c875f38b0f36.camel@fi.rohmeurope.com>
+Thread-Index: AQHVmWQOgs5cHlsmlU+Vdtkf5ZbC06eIlAaAgAAGWoCAAC7LgIAAB1AA
+Date: Wed, 13 Nov 2019 10:06:29 +0000
+Message-ID: <b67faf875fd0060ad36db04b29c109f01e58ab1a.camel@fi.rohmeurope.com>
 References: <20191112141819.GA22076@localhost.localdomain>
  <201911131438.KT6pnFZ7%lkp@intel.com>
  <ac16492e11899ef4ec981f7f2e84714c7d61d2a7.camel@fi.rohmeurope.com>
@@ -61,30 +61,30 @@ Content-Language: de-DE
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-originating-ip: [213.255.186.46]
-Content-ID: <8D9C4E9DDE4F5A4F822964BEFBCFD58A@de.rohmeurope.com>
+Content-ID: <754252B81D9D734D9DE00A1EDD014380@de.rohmeurope.com>
 MIME-Version: 1.0
-X-Brightmail-Tracker: H4sIAAAAAAAAA01Tf0wbVRzPu7tejx9HjlLggc7EJjrdwubijG/JtkD8dTNmGS7GOK14kxsl
- 9gdpiykaYxmbpCVuA4mGrgxdgZF16NYyYQQHtMjqaq1rpYiUbAU2KWYlMyqpQ/BuZYO/3ue9
- z6/vH99H4bJr0kKqUmvk9VpOrSDTiaGuu66itpBf+VTITaCfZu4SqD7RKUUXZv0ABac8OOr+
- 9HsC+QcTBBqqDQP0b2JEilpPNgFk76pBK9N/SFBte5hAgYYIQM1LZzDkmolIUONgQIrcbUsA
- hfvtJArXXQPIn3Ti6GI8gaE/b6zgqHHyvBRZI7MSNF83TaK57nEJOnzkaWTv8BHo1H/dEuQ5
- 9ibqdX+FI7tvDKDjjhCBbra4SZRwzgL02dd70EKyBF3xWXCU9ASx4o3s4YVRkl349aiUPXXu
- Q9Z2PUCyzlA9yZ6fdkrYxkARe8k2JWUdrkGSbbMsYqxjII6xrrMWkjUPBQk2Ghkg2YaTywTr
- bv94X96BjJ0HOeP7+ysrtFt3v5OhCnsvkFXRXFP41gJuBs25VpBGQWY7XL4RwKwgnZIxYwC6
- I52rFx+ArZ1uYAUURTI7oXVCKhrkzA7o9dkJEeNMUzac9z4h4hxmF5z8JESKcjmzG7p7MlLy
- F2FzkwUTMcE8BtvPJO7F0Mxe2OYYlaSq7gA4PncTiEQaUwq/tZvv5QNmA7SYE1iqKx+6bi1K
- UkMzsH0giKdwLozPLK++K+B3yRghzoAzT8Jv+remYDH83AFTKY/C5obY6gjZ8IeWWeIEyLOt
- K7CtmW1rZts6s22d+UsgOQughqtUV3BGftsWPV+9Ra9TaYTjXZ3GBVIr+lcfWPHs8QCMAh5Q
- QGGKXLq3zq+UZR3UldeoOIOqTF+t5g0eAClcIaf7TD6ljC7naj7g9br71EMUocinN8YalTJG
- 7HqP56t4/X32YYpSQPqFESE0W89X8KZDlWrjGo1RaWJ4eqHcwGvLeT1XbVSVictRZhC2Q6Qy
- hd6JnwU7bajiNMJrynoVbKZOxFtP49RIa8dpXEZodVq+MJ8uFaWMKFVVax8UzYN8Cihy6O6g
- wGYK//RBzrxQgQkVR7xXxQojt0YVmkHWI75XN/32z2uFw8+WevYnc+Z+p3+JXZ45Gl0aL4km
- zT9qPzKNqt/qTy8nlDvennzl+ERM/1LDF8NO9+X+kucUB5r6ZNc3345SFwfleduvPNPz8uPF
- BWneiZzhor1jmcOu1y/1ZD0/ZDr0RkHvbY1uV0d9X+056bE7yrhnQ9dUy9+L9UkFYVBx2zbh
- egP3P0by8N9kBAAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA02Tb0wbZRzHfe6ud0dZx1EYfUR9YaNjc7K5OJPHiMs0uhxvpovyRkPYMW4U
+ By25lgku0Y6yLS06KRAjpbCNP9uyDoFWNsYwxYJa12BdG0ACRAtlG9WVYJbMbox6t7LBq+f3
+ PN/v9/f5vfg9NK4MUJl0idbAC1quVE3KiaELD3qzHWO+/FfmD6Pf5h4Q6GT0HIV6wz6A/DMe
+ HHV99ROBfO4ogYaOBQG6Hx2hUEtzPUD2C1UoPvu3DB3rCBJotHYcoMbl8xhyzo3LkNU9SiHX
+ 6WWAggN2EgVNNwDyxRw46luIYujfv+I4sk71UMgyHpahiGmWRLe7JmSouuZVZO/0Eqj1YZcM
+ eU59jK64zuLI7h0D6Ov2AIHmm1wkijrCADV8l4sWY2+hX7xmHMU8fmxPFlu9+DPJLv5xnGJb
+ Lx1lbX+OkqwjcJJke2YdMtY6ms1etc1QbLvTTbKnzfcwtn1wAWOdF80kaxzyE+z0+CDJ1jav
+ EKyr44v3Mz5KzinkDEc+KCnW7th9IFnTerMOlE/LK6dq2jAj6JdbQBINmV1wxVwHLEBOK5kx
+ AEPnXXji4gUwuLwiXmiaZHKgZZKSAunM63DYayekGmfqU2FkeItUpzFvwqkTAVKypzO7oev7
+ 5IR9L7QPXHpkJ5gXoXFkDJdqBbMPOtp9q6glACduzwNJSGL2w8t246MAYJ6DZmMUS7BU0Hnz
+ niwxNAM7Bv14ot4EF+ZWVt/V8IdYiJBmwJmtsHtgRyK6B070nltt8zxsrA1RiRlS4a9NYaIO
+ ZNjWEWxradu6tG1d2rYufQbILgJYxpWUFnMGfud2ga/YLug0ZeJxUFfmBIkdvdsP4p5cD8Bo
+ 4AFP05h6k+KKyZev3FioK6rScHpNgVBRyus9ANK4Ol3RX+nNVyqKuKrPeEH3WHqGJtQqRVbI
+ mq9kJNZhni/nhcfqszSthop3R8SmqQJfzFceKik1rMkYnSQ1l2em63ltES9wFQZNgbQeBXpx
+ PyRpg8id/F2MK/TlXJn4moheB9vouoWWNpweaelsw5WEVqflM1WK/ZKVkayaCu0TUASoaKBO
+ U3T5RXWD+FGf9ImICExE1AxflxAGbk3KNIIvp0/NvEyH4ku3Ck3/dBT2ma66c+OpB7NTfjy6
+ Me+hMLv0uc2w+eydyTx397W0N0IpkeMZmhdU751omG+g+preob79sNpx40j4WiPrfeqTCbx2
+ 73Bng1WV1bprc/PdKU/4P139Hbvy7X15t1LOLFlyAlvsNQdiPZ92Fye9Vn2/vu2bbjWh13A7
+ X8IFPfc/bnCeumUEAAA=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191113_015340_415003_897A1C8A 
-X-CRM114-Status: GOOD (  15.84  )
+X-CRM114-CacheID: sfid-20191113_020639_457851_F8690253 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -139,41 +139,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Linus,
 
 On Wed, 2019-11-13 at 10:40 +0100, Linus Walleij wrote:
 > On Wed, Nov 13, 2019 at 7:52 AM Vaittinen, Matti
 > <Matti.Vaittinen@fi.rohmeurope.com> wrote:
 > > On Wed, 2019-11-13 at 14:30 +0800, kbuild test robot wrote:
-> > > Hi Matti,
-> > > 
-> > > Thank you for the patch! Perhaps something to improve:
-> > > 
-> > > [auto build test WARNING on
-> > > 70d97e099bb426ecb3ad4bf31e88dbf2ef4b2e4c]
-> > > 
-> > >    480        static int wmt_gpio_get_direction(struct gpio_chip
-> > > *chip, unsigned offset)
-> > >    481        {
-> > >    482                struct wmt_pinctrl_data *data =
-> > > gpiochip_get_data(chip);
-> > >    483                u32 bank = WMT_BANK_FROM_PIN(offset);
-> > >    484                u32 bit = WMT_BIT_FROM_PIN(offset);
-> > >    485                u32 reg_dir = data->banks[bank].reg_dir;
-> > >    486                u32 val;
-> > >    487
-> > >    488                val = readl_relaxed(data->base + reg_dir);
-> > >    489                if (val & BIT(bit))
-> > >  > 490                        GPIO_LINE_DIRECTION_OUT;
-> > 
 > > Right. Return is missing. I think I already fixed this - I guess I
 > > sent
 > > wrong version... Sorry guys. I'll do v3 with only this return added
-
-It appears I didn't send wrong patch. The whole wmt was left uncompiled
-as the folder was excluded from my build by arch and I didn't spot
-that. So I'll humbly raise my arm as a sign of an error ;)
-
 > > -
 > > and I'll send it to limited amount of recipients as I think most of
 > > you
@@ -185,13 +158,14 @@ that. So I'll humbly raise my arm as a sign of an error ;)
 > I think I already merged it, just send a new patch on top fixing the
 > problem.
 
-Hmmm. I don't think I received notification about the patch being
-applied... But in that case, please ignore v2 I sent some time ago -
-I'll do a fix patch on top of the already applied one then. I'll send
-it out soon(ish).
+Hmm. Are you sure you did merge the pincontrol part already? I don't
+see it in your GPIO tree, devel or for-next branches. Can you please
+point me the branch - I already destroyed my original pincontrol commit
+which had the bug when I created the v2.
 
 Br,
-	Matti
+	Matti Vaittinen
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
