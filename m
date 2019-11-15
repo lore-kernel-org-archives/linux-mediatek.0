@@ -2,76 +2,77 @@ Return-Path: <SRS0=MjbJ=ZH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DFA00C432C3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Nov 2019 10:49:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 72D94C43215
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Nov 2019 10:49:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B2F4520748
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Nov 2019 10:49:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4880A2075E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Nov 2019 10:49:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ulBHwMnF";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="FGu/d3oc"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B2F4520748
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qd6uem10";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="D3v5i7uK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4880A2075E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=EEMchpfexUDqVX0yx/ZwGemdBVxfGGeLyzZH/KG62LE=; b=ulBHwMnF0bIrv4
-	Bqt+1JYqs9NAnqCSUGgR0ZO3gvKdJNMLdOYthujkgfh+hsQ1VIpllCCZuajW8RXADLv6p+1LvJcFS
-	6poVwd//PF4Ap44wmtiAKq8NWQdyxynzb1ZW5343H5JzMya14rGRC5mhVaVI7ot29RAFGYAIJs4Ht
-	jYuvHVMdN69+ikOtntauZKwwkMPeo9rjoIIO5Zqk3zPznnjSrBDuk1Tk2fljV5Wqn82Fs8guBt3NT
-	CL4B6OnmRyhBonAM2P8F68i648kpIb8MvpvwJWHyDmyZ29qbAb3h+P+5KD44fg7j0kMyW1P4UccxL
-	AQ3ZhCEkHQjFEWaeeSEA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VErRwYpIHOXSp5/mkm45Wd+JQQTv4ZIBtmON4WWCv8g=; b=qd6uem10UiU86F
+	WijAwIL6JUVpiEOP7FRSbch1yk6jvPmh1+bq04UM1xrZ9EY3pszOvRqXlaOtxDDTfy9phZBgxCqnL
+	MFRAcjTTuD/5yny/+o9zfbjIIVodmCrcUyvVKhS6c3XeIakNUybynpHlOrL7da+PYs0nZRMHTCKjh
+	1ftFgPSKGw46qitsPcc/+pYqZqrUssXQhRCnk6hSY50G3ODJwsI4gpvV8Qji8YJigr0ZbX/39/xUr
+	3Xmj09YmhNb26JO6kUVR0UDBt8mBiCnZwpBJDGS9GmZxSytp5djNqrsrq4U4DYC11lFMN3ZSXxkdp
+	rf0Dn0fIloCYaBDsY1OA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iVZAD-00051l-CT; Fri, 15 Nov 2019 10:49:17 +0000
+	id 1iVZAE-000532-UX; Fri, 15 Nov 2019 10:49:18 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iVZAB-00050o-1z
- for linux-mediatek@lists.infradead.org; Fri, 15 Nov 2019 10:49:16 +0000
-X-UUID: a17a98beccb8479f9adc6e9a7b5d6ac4-20191115
+ id 1iVZAB-000519-TL
+ for linux-mediatek@lists.infradead.org; Fri, 15 Nov 2019 10:49:17 +0000
+X-UUID: 25d576396fbb4a0daf6fceb0f3f5ce1e-20191115
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=r1J2x+cf0MV14ViUNbOr8DSPYB8uoQZWrAw4hIFdll0=; 
- b=FGu/d3oc0P3aWyR4msvXTXddUk9qsbwZ9S2TXw5RVCRosbXPlIG7gJJoQB3e6WM5fQKDrTwdSTkej0Vga7tI528IvM+6kVSPaJXaBZwMemkSMUbf5Ui2XFFJlAQx216/J/uNkS80QkhXZnEkcvlN4ZB1wqJxt7aYYQOjqQmEkwQ=;
-X-UUID: a17a98beccb8479f9adc6e9a7b5d6ac4-20191115
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=UJC0QT8V45t3bRkaTdx+IHCjbne0esSFJzaWyNrJbow=; 
+ b=D3v5i7uK17DFLuBbUuN0yaIofOsGVafJ3vIbZGcCiZyrp1B6kkiNWvyeFvuvfBx0KQvC3XH47kJgi5Idug74JUapv4BeNE5UENkDEvDpKIqYbBnk+DWFUPNJ0pw0Q9bqrb/Tvs+fJgz+jn2v54yzofzPiywr6mLkd5hDx8jBKlo=;
+X-UUID: 25d576396fbb4a0daf6fceb0f3f5ce1e-20191115
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <eason.yen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 631126513; Fri, 15 Nov 2019 02:49:12 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ with ESMTP id 590683712; Fri, 15 Nov 2019 02:49:12 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 15 Nov 2019 02:48:47 -0800
+ 15.0.1395.4; Fri, 15 Nov 2019 02:48:50 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 15 Nov 2019 18:48:45 +0800
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 15 Nov 2019 18:48:48 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Fri, 15 Nov 2019 18:48:46 +0800
+ Frontend Transport; Fri, 15 Nov 2019 18:48:48 +0800
 From: Eason Yen <eason.yen@mediatek.com>
 To: <broonie@kernel.org>
-Subject: [PATCH v2 0/2] ASoC: mediatek: common: refine mtk_afe_fe_hw_params
-Date: Fri, 15 Nov 2019 18:48:44 +0800
-Message-ID: <1573814926-15805-1-git-send-email-eason.yen@mediatek.com>
+Subject: [PATCH v2 2/2] ASoC: mediatek: common: refine hw_params and hw_prepare
+Date: Fri, 15 Nov 2019 18:48:46 +0800
+Message-ID: <1573814926-15805-3-git-send-email-eason.yen@mediatek.com>
 X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1573814926-15805-1-git-send-email-eason.yen@mediatek.com>
+References: <1573814926-15805-1-git-send-email-eason.yen@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: BDCDFFBC8F493320CCF91C8464AD5E89F9EC6E5E6F5288D24BE2BDCDAB9EC9052000:8
+X-TM-SNTS-SMTP: 8796FA556844960016BAC474548597455083BAB0D0358D651D838604EE6AF08C2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191115_024915_106846_2E8F42B4 
-X-CRM114-Status: UNSURE (   4.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191115_024915_953058_1D2BAD47 
+X-CRM114-Status: GOOD (  11.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,25 +92,245 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch is to add more helpers to control mtk_memif dma_address/format/pbuf_size
-And refine hw_params and hw_prepare by these helpers.
+Refine mtk_afe_fe_hw_params and mtk_afe_fe_prepare by
+these helpers.
+- mtk_memif_set_enable
+- mtk_memif_set_disable
+- mtk_memif_set_addr
+- mtk_memif_set_channel
+- mtk_memif_set_rate
+- mtk_memif_set_rate_substream
+- mtk_memif_set_format
+- mtk_memif_set_pbuf_size
 
-v2 changes:
-  split patch v1 to two seprated patches for different purpose.
+Signed-off-by: Eason Yen <eason.yen@mediatek.com>
+---
+ sound/soc/mediatek/common/mtk-afe-fe-dai.c | 143 ++++++++++++++++-------------
+ 1 file changed, 77 insertions(+), 66 deletions(-)
 
-v1 changes:
-  1. patchwork list:
-     https://mailman.alsa-project.org/pipermail/alsa-devel/2019-November/158394.html
-
-Eason Yen (2):
-  ASoC: mediatek: common: add some helpers to control mtk_memif
-  ASoC: mediatek: common: refine hw_params and hw_prepare
-
- sound/soc/mediatek/common/mtk-afe-fe-dai.c | 359 +++++++++++++++++++++++------
- sound/soc/mediatek/common/mtk-afe-fe-dai.h |  16 ++
- sound/soc/mediatek/common/mtk-base-afe.h   |  28 ++-
- 3 files changed, 336 insertions(+), 67 deletions(-)
-
+diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.c b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
+index 309dc1e..e761cb6 100644
+--- a/sound/soc/mediatek/common/mtk-afe-fe-dai.c
++++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
+@@ -6,11 +6,13 @@
+  * Author: Garlic Tseng <garlic.tseng@mediatek.com>
+  */
+ 
++#include <linux/io.h>
+ #include <linux/module.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/regmap.h>
+ #include <sound/soc.h>
+ #include "mtk-afe-platform-driver.h"
++#include <sound/pcm_params.h>
+ #include "mtk-afe-fe-dai.h"
+ #include "mtk-base-afe.h"
+ 
+@@ -120,50 +122,64 @@ int mtk_afe_fe_hw_params(struct snd_pcm_substream *substream,
+ {
+ 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+ 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+-	struct mtk_base_afe_memif *memif = &afe->memif[rtd->cpu_dai->id];
+-	int msb_at_bit33 = 0;
+-	int ret, fs = 0;
++	int id = rtd->cpu_dai->id;
++	struct mtk_base_afe_memif *memif = &afe->memif[id];
++	int ret;
++	unsigned int channels = params_channels(params);
++	unsigned int rate = params_rate(params);
++	snd_pcm_format_t format = params_format(params);
+ 
+ 	ret = snd_pcm_lib_malloc_pages(substream, params_buffer_bytes(params));
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	msb_at_bit33 = upper_32_bits(substream->runtime->dma_addr) ? 1 : 0;
+-	memif->phys_buf_addr = lower_32_bits(substream->runtime->dma_addr);
+-	memif->buffer_size = substream->runtime->dma_bytes;
+-
+-	/* start */
+-	mtk_regmap_write(afe->regmap, memif->data->reg_ofs_base,
+-			 memif->phys_buf_addr);
+-	/* end */
+-	mtk_regmap_write(afe->regmap,
+-			 memif->data->reg_ofs_base + AFE_BASE_END_OFFSET,
+-			 memif->phys_buf_addr + memif->buffer_size - 1);
+-
+-	/* set MSB to 33-bit */
+-	mtk_regmap_update_bits(afe->regmap, memif->data->msb_reg,
+-			       1, msb_at_bit33, memif->data->msb_shift);
++	if (afe->request_dram_resource)
++		afe->request_dram_resource(afe->dev);
++
++	dev_dbg(afe->dev, "%s(), %s, ch %d, rate %d, fmt %d, dma_addr %pad, dma_area %p, dma_bytes 0x%zx\n",
++		__func__, memif->data->name,
++		channels, rate, format,
++		&substream->runtime->dma_addr,
++		substream->runtime->dma_area,
++		substream->runtime->dma_bytes);
++
++	memset_io(substream->runtime->dma_area, 0,
++		  substream->runtime->dma_bytes);
++
++	/* set addr */
++	ret = mtk_memif_set_addr(afe, id,
++				 substream->runtime->dma_area,
++				 substream->runtime->dma_addr,
++				 substream->runtime->dma_bytes);
++	if (ret) {
++		dev_err(afe->dev, "%s(), error, id %d, set addr, ret %d\n",
++			__func__, id, ret);
++		return ret;
++	}
+ 
+ 	/* set channel */
+-	if (memif->data->mono_shift >= 0) {
+-		unsigned int mono = (params_channels(params) == 1) ? 1 : 0;
+-
+-		mtk_regmap_update_bits(afe->regmap, memif->data->mono_reg,
+-				       1, mono, memif->data->mono_shift);
++	ret = mtk_memif_set_channel(afe, id, channels);
++	if (ret) {
++		dev_err(afe->dev, "%s(), error, id %d, set channel %d, ret %d\n",
++			__func__, id, channels, ret);
++		return ret;
+ 	}
+ 
+ 	/* set rate */
+-	if (memif->data->fs_shift < 0)
+-		return 0;
+-
+-	fs = afe->memif_fs(substream, params_rate(params));
+-
+-	if (fs < 0)
+-		return -EINVAL;
++	ret = mtk_memif_set_rate_substream(substream, id, rate);
++	if (ret) {
++		dev_err(afe->dev, "%s(), error, id %d, set rate %d, ret %d\n",
++			__func__, id, rate, ret);
++		return ret;
++	}
+ 
+-	mtk_regmap_update_bits(afe->regmap, memif->data->fs_reg,
+-			       memif->data->fs_maskbit, fs,
+-			       memif->data->fs_shift);
++	/* set format */
++	ret = mtk_memif_set_format(afe, id, format);
++	if (ret) {
++		dev_err(afe->dev, "%s(), error, id %d, set format %d, ret %d\n",
++			__func__, id, format, ret);
++		return ret;
++	}
+ 
+ 	return 0;
+ }
+@@ -172,6 +188,11 @@ int mtk_afe_fe_hw_params(struct snd_pcm_substream *substream,
+ int mtk_afe_fe_hw_free(struct snd_pcm_substream *substream,
+ 		       struct snd_soc_dai *dai)
+ {
++	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++
++	if (afe->release_dram_resource)
++		afe->release_dram_resource(afe->dev);
++
+ 	return snd_pcm_lib_free_pages(substream);
+ }
+ EXPORT_SYMBOL_GPL(mtk_afe_fe_hw_free);
+@@ -182,20 +203,25 @@ int mtk_afe_fe_trigger(struct snd_pcm_substream *substream, int cmd,
+ 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+ 	struct snd_pcm_runtime * const runtime = substream->runtime;
+ 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+-	struct mtk_base_afe_memif *memif = &afe->memif[rtd->cpu_dai->id];
++	int id = rtd->cpu_dai->id;
++	struct mtk_base_afe_memif *memif = &afe->memif[id];
+ 	struct mtk_base_afe_irq *irqs = &afe->irqs[memif->irq_usage];
+ 	const struct mtk_base_irq_data *irq_data = irqs->irq_data;
+ 	unsigned int counter = runtime->period_size;
+ 	int fs;
++	int ret;
+ 
+ 	dev_dbg(afe->dev, "%s %s cmd=%d\n", __func__, memif->data->name, cmd);
+ 
+ 	switch (cmd) {
+ 	case SNDRV_PCM_TRIGGER_START:
+ 	case SNDRV_PCM_TRIGGER_RESUME:
+-		mtk_regmap_update_bits(afe->regmap,
+-				       memif->data->enable_reg,
+-				       1, 1, memif->data->enable_shift);
++		ret = mtk_memif_set_enable(afe, id);
++		if (ret) {
++			dev_err(afe->dev, "%s(), error, id %d, memif enable, ret %d\n",
++				__func__, id, ret);
++			return ret;
++		}
+ 
+ 		/* set irq counter */
+ 		mtk_regmap_update_bits(afe->regmap, irq_data->irq_cnt_reg,
+@@ -219,15 +245,19 @@ int mtk_afe_fe_trigger(struct snd_pcm_substream *substream, int cmd,
+ 		return 0;
+ 	case SNDRV_PCM_TRIGGER_STOP:
+ 	case SNDRV_PCM_TRIGGER_SUSPEND:
+-		mtk_regmap_update_bits(afe->regmap, memif->data->enable_reg,
+-				       1, 0, memif->data->enable_shift);
++		ret = mtk_memif_set_disable(afe, id);
++		if (ret) {
++			dev_err(afe->dev, "%s(), error, id %d, memif enable, ret %d\n",
++				__func__, id, ret);
++		}
++
+ 		/* disable interrupt */
+ 		mtk_regmap_update_bits(afe->regmap, irq_data->irq_en_reg,
+ 				       1, 0, irq_data->irq_en_shift);
+ 		/* and clear pending IRQ */
+ 		mtk_regmap_write(afe->regmap, irq_data->irq_clr_reg,
+ 				 1 << irq_data->irq_clr_shift);
+-		return 0;
++		return ret;
+ 	default:
+ 		return -EINVAL;
+ 	}
+@@ -239,34 +269,15 @@ int mtk_afe_fe_prepare(struct snd_pcm_substream *substream,
+ {
+ 	struct snd_soc_pcm_runtime *rtd  = substream->private_data;
+ 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+-	struct mtk_base_afe_memif *memif = &afe->memif[rtd->cpu_dai->id];
+-	int hd_audio = 0;
+-	int hd_align = 0;
++	int id = rtd->cpu_dai->id;
++	int pbuf_size;
+ 
+-	/* set hd mode */
+-	switch (substream->runtime->format) {
+-	case SNDRV_PCM_FORMAT_S16_LE:
+-		hd_audio = 0;
+-		break;
+-	case SNDRV_PCM_FORMAT_S32_LE:
+-		hd_audio = 1;
+-		hd_align = 1;
+-		break;
+-	case SNDRV_PCM_FORMAT_S24_LE:
+-		hd_audio = 1;
+-		break;
+-	default:
+-		dev_err(afe->dev, "%s() error: unsupported format %d\n",
+-			__func__, substream->runtime->format);
+-		break;
++	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
++		if (afe->get_memif_pbuf_size) {
++			pbuf_size = afe->get_memif_pbuf_size(substream);
++			mtk_memif_set_pbuf_size(afe, id, pbuf_size);
++		}
+ 	}
+-
+-	mtk_regmap_update_bits(afe->regmap, memif->data->hd_reg,
+-			       1, hd_audio, memif->data->hd_shift);
+-
+-	mtk_regmap_update_bits(afe->regmap, memif->data->hd_align_reg,
+-			       1, hd_align, memif->data->hd_align_mshift);
+-
+ 	return 0;
+ }
+ EXPORT_SYMBOL_GPL(mtk_afe_fe_prepare);
 -- 
 1.9.1
 _______________________________________________
