@@ -2,77 +2,121 @@ Return-Path: <SRS0=MjbJ=ZH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2BC28C432C3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Nov 2019 10:49:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 535BAC432C3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Nov 2019 13:43:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EA9DD207DD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Nov 2019 10:49:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 26ECA20715
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Nov 2019 13:43:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tdsiNrsN";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="oUsHjCwD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA9DD207DD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YwA7/tjv";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="fXpOKUav"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 26ECA20715
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QYDWuHS4Latu+UitIvQucGY2ucD+16gwjOHzHwkj6cc=; b=tdsiNrsNAwLxYv
-	MOTi85aOerr879Bxj7vDh+/DgdSRgzPJsWKjcrIY3iA85mN1+l2AszUK5w1WzQOpqU1uKM3YbaRIA
-	x2qYlzfw9F9F1FKQ/xlY/mQRMl71XQv8TVqCiH+N/CtDapyw1K/B20c5GQZprzZisABoAcl+RH0W7
-	c0QPe5MeBp8GP8VrtwBkELQ2sTtgfip0zCwiwYUS21EAo2GjuT2NUfJCsGTJ9siZI2bq4C7CcLk8H
-	jWUNJdNDlnuTbbmWgOFFB32JygLj82/BSwrM9v7rPgR1K6JLGHZ9iMHBCV29an+B1/dWvzl++5PvF
-	+MjPOyG8Cp6QLbSJxioA==;
+	List-Owner; bh=7Rum0L5FqlNGN82HZWgnyCq56tCnw1PSXhXRXOVGdWY=; b=YwA7/tjvFHqXs5
+	2XaAjaSRjLKVO0jqY0qnxW9hmkwHFkjM0jvnY3L8FfeKC/tp4gPoX0VAcrsJGBXErzafIVsnaZChO
+	Yj/5lKG0sfHyjneQ3aGeSJrjKWsVX/QUBR4PPRtlki1GUJEzkrhUyedIEnO7ukR5TipdabUhHxjBG
+	vdvj83M8fs5O/DbWEaUHqeN05Y/5fy1F3zsgl0uzDvPJ2Vcm11H3LakuZJGEcDt26kpx8JTZuWb5a
+	YBiVjNStGQ+PH5k63uDcN+0xWFnOMrZzeLcoJxRduSZ6rBXrJcaCr3XaqQjuSrzONmPfhwrpjwkZd
+	rATMSvCNRBqyDagwAX5A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iVZAG-00054a-Lm; Fri, 15 Nov 2019 10:49:20 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1iVbt4-0000nI-EZ; Fri, 15 Nov 2019 13:43:46 +0000
+Received: from fllv0015.ext.ti.com ([198.47.19.141])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iVZAC-00050o-E0
- for linux-mediatek@lists.infradead.org; Fri, 15 Nov 2019 10:49:18 +0000
-X-UUID: f3151142fd454594961d9a2128766809-20191115
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=fO8zwr7/pfaI7sruuHEycEGQ3hMXMR21z1zQRKzuxSI=; 
- b=oUsHjCwDyZR57es7gYEN71jpK4kZoKsXXQvCPMogcmNKWrq7hEqQLChZ6VsuY2Vjd4x6hZ18+TWtpNeWMjibprlvRpF3bDpau5OLioGbBLbXSgsSTJw0TM7KN6w0LNmOFFUHoLOj/xWnJLdv0H0cxwWkutWrn04DCFMzE2U6Itg=;
-X-UUID: f3151142fd454594961d9a2128766809-20191115
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <eason.yen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 607726998; Fri, 15 Nov 2019 02:49:12 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 15 Nov 2019 02:48:54 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 15 Nov 2019 18:48:47 +0800
-Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Fri, 15 Nov 2019 18:48:47 +0800
-From: Eason Yen <eason.yen@mediatek.com>
-To: <broonie@kernel.org>
-Subject: [PATCH v2 1/2] ASoC: mediatek: common: add some helpers to control
- mtk_memif
-Date: Fri, 15 Nov 2019 18:48:45 +0800
-Message-ID: <1573814926-15805-2-git-send-email-eason.yen@mediatek.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1573814926-15805-1-git-send-email-eason.yen@mediatek.com>
-References: <1573814926-15805-1-git-send-email-eason.yen@mediatek.com>
+ id 1iVbt1-0000mm-Mu; Fri, 15 Nov 2019 13:43:45 +0000
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+ by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id xAFDhENw021665;
+ Fri, 15 Nov 2019 07:43:14 -0600
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1573825394;
+ bh=0GMF8waTlZ/mMmEu9OdTiNMpJgRZ1U+24RV0VdCAq3s=;
+ h=Date:From:To:CC:Subject:References:In-Reply-To;
+ b=fXpOKUavZPJUxNL9lEFn7zZNVLFYuhGojcJgORZ0h/BB4qyRFo6mrlCOsH4ERQeHs
+ h9leKq2A0Fj6bzJ4IDPmzVMYiipwgHWHf4mYsJ2/6ss1dHgt4T7A8cxc/hktAUYZHd
+ PabnC59jQNgb5DLLinNwWV5dTN5f0x+2iBMNsWMU=
+Received: from DFLE104.ent.ti.com (dfle104.ent.ti.com [10.64.6.25])
+ by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id xAFDhELd079797
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Fri, 15 Nov 2019 07:43:14 -0600
+Received: from DFLE114.ent.ti.com (10.64.6.35) by DFLE104.ent.ti.com
+ (10.64.6.25) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1847.3; Fri, 15
+ Nov 2019 07:43:14 -0600
+Received: from lelv0326.itg.ti.com (10.180.67.84) by DFLE114.ent.ti.com
+ (10.64.6.35) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1847.3 via
+ Frontend Transport; Fri, 15 Nov 2019 07:43:14 -0600
+Received: from localhost (ileax41-snat.itg.ti.com [10.172.224.153])
+ by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id xAFDhEow098885;
+ Fri, 15 Nov 2019 07:43:14 -0600
+Date: Fri, 15 Nov 2019 07:45:30 -0600
+From: Bin Liu <b-liu@ti.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v2 05/13] usb: musb: create debugfs directory under usb
+ root
+Message-ID: <20191115134530.GB12511@uda0271908>
+Mail-Followup-To: Bin Liu <b-liu@ti.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Felipe Balbi <balbi@kernel.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Peter Chen <Peter.Chen@nxp.com>,
+ Minas Harutyunyan <hminas@synopsys.com>,
+ Cristian Birsan <cristian.birsan@microchip.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Kevin Cernekee <cernekee@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ bcm-kernel-feedback-list@broadcom.com,
+ Daniel Mack <daniel@zonque.org>,
+ Haojian Zhuang <haojian.zhuang@gmail.com>,
+ Robert Jarzmik <robert.jarzmik@free.fr>,
+ Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>,
+ NXP Linux Team <linux-imx@nxp.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Stephen Boyd <swboyd@chromium.org>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Colin Ian King <colin.king@canonical.com>,
+ Biju Das <biju.das@bp.renesas.com>,
+ Fabrizio Castro <fabrizio.castro@bp.renesas.com>,
+ "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
+ Yangtao Li <tiny.windzz@gmail.com>, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <1573541519-28488-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1573541519-28488-5-git-send-email-chunfeng.yun@mediatek.com>
+ <20191112152857.GA5853@uda0271908>
+ <20191114032018.GA122287@kroah.com>
+ <20191114140234.GB5853@uda0271908>
+ <20191115032153.GC793701@kroah.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20191115032153.GC793701@kroah.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191115_024916_492308_9712E265 
-X-CRM114-Status: GOOD (  13.33  )
+X-CRM114-CacheID: sfid-20191115_054343_850519_67AF501F 
+X-CRM114-Status: GOOD (  25.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,355 +128,102 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, chipeng.chang@mediatek.com,
- jiaxin.yu@mediatek.com, linux-mediatek@lists.infradead.org,
- eason.yen@mediatek.com, matthias.bgg@gmail.com
+Cc: Peter Chen <Peter.Chen@nxp.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
+ Yangtao Li <tiny.windzz@gmail.com>, linux-kernel@vger.kernel.org,
+ Minas Harutyunyan <hminas@synopsys.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Fabio Estevam <festevam@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ Robert Jarzmik <robert.jarzmik@free.fr>, Kevin Cernekee <cernekee@gmail.com>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ bcm-kernel-feedback-list@broadcom.com, NXP Linux Team <linux-imx@nxp.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Cristian Birsan <cristian.birsan@microchip.com>, linux-media@vger.kernel.org,
+ Fabrizio Castro <fabrizio.castro@bp.renesas.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Haojian Zhuang <haojian.zhuang@gmail.com>, Stephen Boyd <swboyd@chromium.org>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, Biju Das <biju.das@bp.renesas.com>,
+ Felipe Balbi <balbi@kernel.org>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ linux-usb@vger.kernel.org, Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Colin Ian King <colin.king@canonical.com>, Shawn Guo <shawnguo@kernel.org>,
+ Daniel Mack <daniel@zonque.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. Add the following helper in mtk-afe-fe-dai to control
-to control mtk_memif
-- mtk_memif_set_enable
-- mtk_memif_set_disable
-- mtk_memif_set_addr
-- mtk_memif_set_channel
-- mtk_memif_set_rate
-- mtk_memif_set_rate_substream
-- mtk_memif_set_format
-- mtk_memif_set_pbuf_size
+On Fri, Nov 15, 2019 at 11:21:53AM +0800, Greg Kroah-Hartman wrote:
+> On Thu, Nov 14, 2019 at 08:02:34AM -0600, Bin Liu wrote:
+> > On Thu, Nov 14, 2019 at 11:20:18AM +0800, Greg Kroah-Hartman wrote:
+> > > On Tue, Nov 12, 2019 at 09:28:57AM -0600, Bin Liu wrote:
+> > > > Hi,
+> > > > 
+> > > > On Tue, Nov 12, 2019 at 02:51:51PM +0800, Chunfeng Yun wrote:
+> > > > > Now the USB gadget subsystem can use the USB debugfs root directory,
+> > > > > so move musb's directory from the root of the debugfs filesystem into
+> > > > > the root of usb
+> > > > 
+> > > > My opinion is this move is unnecessary. I breaks existing debug tools or
+> > > > documentation which is already published on Internet. 
+> > > 
+> > > Having a "root" directory for a single random driver seems like you are
+> > > making your driver a "very important" thing in the overall scheme of the
+> > > kernel, right?  What's wrong with using the usb subdirectory like all
+> > 
+> > Agree, it wasn't the right thing to do at the first place. But now
+> > changing it adds support burden, because people very often refer to the
+> > old information on the internet which no longer matches to the new
+> > location. Basically, it is a cost of ABI change.
+> 
+> What information says that /sys/kernel/debug/mdev/ is the location for
+> this?  Is it in-kernel?
 
-2.extend mtk_base_memif_data struct for new platform
+No, they are not in-kernel, but many places mainly on https://e2e.ti.com
+and http://processors.wiki.ti.com. It basically says to get musb
+regdump, cat /sys/kernel/debug/musb-hdrc.{0,1}/regdump, or to enter test
+mode, do echo _testmode_ > /sys/kernel/debug/musb-hdrc.{0,1}/testmode...
 
-Signed-off-by: Eason Yen <eason.yen@mediatek.com>
----
- sound/soc/mediatek/common/mtk-afe-fe-dai.c | 216 +++++++++++++++++++++++++++++
- sound/soc/mediatek/common/mtk-afe-fe-dai.h |  16 +++
- sound/soc/mediatek/common/mtk-base-afe.h   |  28 +++-
- 3 files changed, 259 insertions(+), 1 deletion(-)
+> > > other USB drivers use (after this patch series is merged)?  That feels
+> > > like a much more "sane" way to handle the wide-open debugfs namespace.
+> > 
+> > Though I commented on this musb patch, my opinion is for this whole
+> > series, either drop the whole series or apply the whole series.
+> 
+> I've applied all but this one and 2 others that did not build properly.
 
-diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.c b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-index 10ea4fd..309dc1e 100644
---- a/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-+++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-@@ -361,6 +361,222 @@ int mtk_afe_dai_resume(struct snd_soc_dai *dai)
- }
- EXPORT_SYMBOL_GPL(mtk_afe_dai_resume);
- 
-+int mtk_memif_set_enable(struct mtk_base_afe *afe, int id)
-+{
-+	struct mtk_base_afe_memif *memif = &afe->memif[id];
-+
-+	if (memif->data->enable_shift < 0) {
-+		dev_warn(afe->dev, "%s(), error, id %d, enable_shift < 0\n",
-+			 __func__, id);
-+		return 0;
-+	}
-+	return mtk_regmap_update_bits(afe->regmap, memif->data->enable_reg,
-+				      1, 1, memif->data->enable_shift);
-+}
-+EXPORT_SYMBOL_GPL(mtk_memif_set_enable);
-+
-+int mtk_memif_set_disable(struct mtk_base_afe *afe, int id)
-+{
-+	struct mtk_base_afe_memif *memif = &afe->memif[id];
-+
-+	if (memif->data->enable_shift < 0) {
-+		dev_warn(afe->dev, "%s(), error, id %d, enable_shift < 0\n",
-+			 __func__, id);
-+		return 0;
-+	}
-+	return mtk_regmap_update_bits(afe->regmap, memif->data->enable_reg,
-+				      1, 0, memif->data->enable_shift);
-+}
-+EXPORT_SYMBOL_GPL(mtk_memif_set_disable);
-+
-+int mtk_memif_set_addr(struct mtk_base_afe *afe, int id,
-+		       unsigned char *dma_area,
-+		       dma_addr_t dma_addr,
-+		       size_t dma_bytes)
-+{
-+	struct mtk_base_afe_memif *memif = &afe->memif[id];
-+	int msb_at_bit33 = upper_32_bits(dma_addr) ? 1 : 0;
-+	unsigned int phys_buf_addr = lower_32_bits(dma_addr);
-+	unsigned int phys_buf_addr_upper_32 = upper_32_bits(dma_addr);
-+
-+	memif->dma_area = dma_area;
-+	memif->dma_addr = dma_addr;
-+	memif->dma_bytes = dma_bytes;
-+
-+	/* start */
-+	mtk_regmap_write(afe->regmap, memif->data->reg_ofs_base,
-+			 phys_buf_addr);
-+	/* end */
-+	if (memif->data->reg_ofs_end)
-+		mtk_regmap_write(afe->regmap,
-+				 memif->data->reg_ofs_end,
-+				 phys_buf_addr + dma_bytes - 1);
-+	else
-+		mtk_regmap_write(afe->regmap,
-+				 memif->data->reg_ofs_base +
-+				 AFE_BASE_END_OFFSET,
-+				 phys_buf_addr + dma_bytes - 1);
-+
-+	/* set start, end, upper 32 bits */
-+	if (memif->data->reg_ofs_base_msb) {
-+		mtk_regmap_write(afe->regmap, memif->data->reg_ofs_base_msb,
-+				 phys_buf_addr_upper_32);
-+		mtk_regmap_write(afe->regmap,
-+				 memif->data->reg_ofs_end_msb,
-+				 phys_buf_addr_upper_32);
-+	}
-+
-+	/* set MSB to 33-bit */
-+	if (memif->data->msb_reg >= 0)
-+		mtk_regmap_update_bits(afe->regmap, memif->data->msb_reg,
-+				       1, msb_at_bit33, memif->data->msb_shift);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mtk_memif_set_addr);
-+
-+int mtk_memif_set_channel(struct mtk_base_afe *afe,
-+			  int id, unsigned int channel)
-+{
-+	struct mtk_base_afe_memif *memif = &afe->memif[id];
-+	unsigned int mono;
-+
-+	if (memif->data->mono_shift < 0)
-+		return 0;
-+
-+	if (memif->data->quad_ch_mask) {
-+		unsigned int quad_ch = (channel == 4) ? 1 : 0;
-+
-+		mtk_regmap_update_bits(afe->regmap, memif->data->quad_ch_reg,
-+				       memif->data->quad_ch_mask,
-+				       quad_ch, memif->data->quad_ch_shift);
-+	}
-+
-+	if (memif->data->mono_invert)
-+		mono = (channel == 1) ? 0 : 1;
-+	else
-+		mono = (channel == 1) ? 1 : 0;
-+
-+	return mtk_regmap_update_bits(afe->regmap, memif->data->mono_reg,
-+				      1, mono, memif->data->mono_shift);
-+}
-+EXPORT_SYMBOL_GPL(mtk_memif_set_channel);
-+
-+static int mtk_memif_set_rate_fs(struct mtk_base_afe *afe,
-+				 int id, int fs)
-+{
-+	struct mtk_base_afe_memif *memif = &afe->memif[id];
-+
-+	if (memif->data->fs_shift >= 0)
-+		mtk_regmap_update_bits(afe->regmap, memif->data->fs_reg,
-+				       memif->data->fs_maskbit,
-+				       fs, memif->data->fs_shift);
-+
-+	return 0;
-+}
-+
-+int mtk_memif_set_rate(struct mtk_base_afe *afe,
-+		       int id, unsigned int rate)
-+{
-+	int fs = 0;
-+
-+	if (!afe->get_dai_fs) {
-+		dev_err(afe->dev, "%s(), error, afe->get_dai_fs == NULL\n",
-+			__func__);
-+		return -EINVAL;
-+	}
-+
-+	fs = afe->get_dai_fs(afe, id, rate);
-+
-+	if (fs < 0)
-+		return -EINVAL;
-+
-+	return mtk_memif_set_rate_fs(afe, id, fs);
-+}
-+EXPORT_SYMBOL_GPL(mtk_memif_set_rate);
-+
-+int mtk_memif_set_rate_substream(struct snd_pcm_substream *substream,
-+				 int id, unsigned int rate)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	struct snd_soc_component *component =
-+		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
-+
-+	int fs = 0;
-+
-+	if (!afe->memif_fs) {
-+		dev_err(afe->dev, "%s(), error, afe->memif_fs == NULL\n",
-+			__func__);
-+		return -EINVAL;
-+	}
-+
-+	fs = afe->memif_fs(substream, rate);
-+
-+	if (fs < 0)
-+		return -EINVAL;
-+
-+	return mtk_memif_set_rate_fs(afe, id, fs);
-+}
-+EXPORT_SYMBOL_GPL(mtk_memif_set_rate_substream);
-+
-+int mtk_memif_set_format(struct mtk_base_afe *afe,
-+			 int id, snd_pcm_format_t format)
-+{
-+	struct mtk_base_afe_memif *memif = &afe->memif[id];
-+	int hd_audio = 0;
-+	int hd_align = 0;
-+
-+	/* set hd mode */
-+	switch (format) {
-+	case SNDRV_PCM_FORMAT_S16_LE:
-+	case SNDRV_PCM_FORMAT_U16_LE:
-+		hd_audio = 0;
-+		break;
-+	case SNDRV_PCM_FORMAT_S32_LE:
-+	case SNDRV_PCM_FORMAT_U32_LE:
-+		hd_audio = 1;
-+		hd_align = 1;
-+		break;
-+	case SNDRV_PCM_FORMAT_S24_LE:
-+	case SNDRV_PCM_FORMAT_U24_LE:
-+		hd_audio = 1;
-+		break;
-+	default:
-+		dev_err(afe->dev, "%s() error: unsupported format %d\n",
-+			__func__, format);
-+		break;
-+	}
-+
-+	mtk_regmap_update_bits(afe->regmap, memif->data->hd_reg,
-+			       1, hd_audio, memif->data->hd_shift);
-+
-+	mtk_regmap_update_bits(afe->regmap, memif->data->hd_align_reg,
-+			       1, hd_align, memif->data->hd_align_mshift);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mtk_memif_set_format);
-+
-+int mtk_memif_set_pbuf_size(struct mtk_base_afe *afe,
-+			    int id, int pbuf_size)
-+{
-+	const struct mtk_base_memif_data *memif_data = afe->memif[id].data;
-+
-+	if (memif_data->pbuf_mask == 0 || memif_data->minlen_mask == 0)
-+		return 0;
-+
-+	mtk_regmap_update_bits(afe->regmap, memif_data->pbuf_reg,
-+			       memif_data->pbuf_mask,
-+			       pbuf_size, memif_data->pbuf_shift);
-+
-+	mtk_regmap_update_bits(afe->regmap, memif_data->minlen_reg,
-+			       memif_data->minlen_mask,
-+			       pbuf_size, memif_data->minlen_shift);
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mtk_memif_set_pbuf_size);
-+
- MODULE_DESCRIPTION("Mediatek simple fe dai operator");
- MODULE_AUTHOR("Garlic Tseng <garlic.tseng@mediatek.com>");
- MODULE_LICENSE("GPL v2");
-diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.h b/sound/soc/mediatek/common/mtk-afe-fe-dai.h
-index 55074fb..507e3e7 100644
---- a/sound/soc/mediatek/common/mtk-afe-fe-dai.h
-+++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.h
-@@ -34,4 +34,20 @@ int mtk_afe_fe_trigger(struct snd_pcm_substream *substream, int cmd,
- int mtk_afe_dai_suspend(struct snd_soc_dai *dai);
- int mtk_afe_dai_resume(struct snd_soc_dai *dai);
- 
-+int mtk_memif_set_enable(struct mtk_base_afe *afe, int id);
-+int mtk_memif_set_disable(struct mtk_base_afe *afe, int id);
-+int mtk_memif_set_addr(struct mtk_base_afe *afe, int id,
-+		       unsigned char *dma_area,
-+		       dma_addr_t dma_addr,
-+		       size_t dma_bytes);
-+int mtk_memif_set_channel(struct mtk_base_afe *afe,
-+			  int id, unsigned int channel);
-+int mtk_memif_set_rate(struct mtk_base_afe *afe,
-+		       int id, unsigned int rate);
-+int mtk_memif_set_rate_substream(struct snd_pcm_substream *substream,
-+				 int id, unsigned int rate);
-+int mtk_memif_set_format(struct mtk_base_afe *afe,
-+			 int id, snd_pcm_format_t format);
-+int mtk_memif_set_pbuf_size(struct mtk_base_afe *afe,
-+			    int id, int pbuf_size);
- #endif
-diff --git a/sound/soc/mediatek/common/mtk-base-afe.h b/sound/soc/mediatek/common/mtk-base-afe.h
-index 60cb609..a8cf44d 100644
---- a/sound/soc/mediatek/common/mtk-base-afe.h
-+++ b/sound/soc/mediatek/common/mtk-base-afe.h
-@@ -16,21 +16,38 @@ struct mtk_base_memif_data {
- 	const char *name;
- 	int reg_ofs_base;
- 	int reg_ofs_cur;
-+	int reg_ofs_end;
-+	int reg_ofs_base_msb;
-+	int reg_ofs_cur_msb;
-+	int reg_ofs_end_msb;
- 	int fs_reg;
- 	int fs_shift;
- 	int fs_maskbit;
- 	int mono_reg;
- 	int mono_shift;
-+	int mono_invert;
-+	int quad_ch_reg;
-+	int quad_ch_mask;
-+	int quad_ch_shift;
- 	int enable_reg;
- 	int enable_shift;
- 	int hd_reg;
--	int hd_align_reg;
- 	int hd_shift;
-+	int hd_align_reg;
- 	int hd_align_mshift;
- 	int msb_reg;
- 	int msb_shift;
-+	int msb2_reg;
-+	int msb2_shift;
- 	int agent_disable_reg;
- 	int agent_disable_shift;
-+	/* playback memif only */
-+	int pbuf_reg;
-+	int pbuf_mask;
-+	int pbuf_shift;
-+	int minlen_reg;
-+	int minlen_mask;
-+	int minlen_shift;
- };
- 
- struct mtk_base_irq_data {
-@@ -84,6 +101,12 @@ struct mtk_base_afe {
- 			unsigned int rate);
- 	int (*irq_fs)(struct snd_pcm_substream *substream,
- 		      unsigned int rate);
-+	int (*get_dai_fs)(struct mtk_base_afe *afe,
-+			  int dai_id, unsigned int rate);
-+	int (*get_memif_pbuf_size)(struct snd_pcm_substream *substream);
-+
-+	int (*request_dram_resource)(struct device *dev);
-+	int (*release_dram_resource)(struct device *dev);
- 
- 	void *platform_priv;
- };
-@@ -95,6 +118,9 @@ struct mtk_base_afe_memif {
- 	const struct mtk_base_memif_data *data;
- 	int irq_usage;
- 	int const_irq;
-+	unsigned char *dma_area;
-+	dma_addr_t dma_addr;
-+	size_t dma_bytes;
- };
- 
- struct mtk_base_afe_irq {
--- 
-1.9.1
+Okay.
+
+> > > Yes, there are no rules when it comes to debugfs file names and
+> > > locations, but let's try to be sane please.
+> > 
+> > Fine with me. I can still support questions such as "can't open
+> > /sys/kernel/debug/musb-hdrc.0/testmode: No such file or directory".
+> 
+> What tool looks for that?
+
+I wrote a usb diagnosis tool called chkusb.sh, which basically checks
+usb related information in
+  - /proc/config.gz
+  - /lib/modules/`uname -r`/kernel/drivers/
+  - /proc/device-tree/
+  - /sys/device/
+  - /sys/kernel/debug/
+
+So whenever I got a report on e2e.ti.com saying that usb doesn't work, I
+just post this script and get a log which would give a clue if there was
+any fundamental mistake in kernel configuration or deployment.
+
+But not a big issue here for this tool regarding this patch set, I can
+update the script to check both locations - /sys/kernel/debug/ and
+/sys/kernel/debug/usb/.
+
+-Bin.
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
