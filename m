@@ -2,22 +2,22 @@ Return-Path: <SRS0=+oxs=ZK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 10FDCC432C3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Nov 2019 03:13:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ADB6EC432C0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Nov 2019 04:58:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D3FA2206D5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Nov 2019 03:13:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7E5502071C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Nov 2019 04:58:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ARHtcAmL";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Yq6vle8q"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D3FA2206D5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="t0cffGru";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="BCEWmgVG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7E5502071C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,51 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=5BtL7cCgHg6rQ3SAchZ8ptDP+L2i+JURrNljXJgeLNc=; b=ARHtcAmLSPmjUF
-	AHOCIJBuYFLff8OA2/sZgZf7mDs4Zm6BOrPR7/qFSKjAjtRhfdoVahtK//mhqL3+nYum+6Psnlpd3
-	Cq8omY9+wzNrbyShRQVscxowt4hHM/hM2aCb7+N+/Ys3Ah1nzWF6LMQN2jtvuT5QwB8+yOLrnf0Iw
-	YSbEAw00zsf8sjTPBaV/X22xYlm0qF5YWPYlS7YS2XwzNnyfhmshIWYJO1WPjywTaDZ0g1ifppomo
-	ulJlUVOCISvohWqp44dn2qJcLHx7NalGmy3Do7K4avB9v0rE7Il1XV2WNmFLfK6ZCSvP4dvcC1/6C
-	uan3mr05UvX0NSrTaoHg==;
+	List-Owner; bh=X2uHNMXI6uXpcXja6hQ3e1LXtGaFc9BfzgN0hysnfFY=; b=t0cffGruzeSQyC
+	TnbjweiIRZq0Uk/TaBuRfPuUV1NJek45LSzC4RPrfVGgmeRln6rAX2y+Ueb3sy2yANNd3aaBwRJeB
+	jtJFIaubVgipMrXwqMYiBnY/6fuLkNuvXV9GZ4T9T6pMeuevDD+PkGAZCRA//HTpaAIFg8c+EIRyK
+	2i0DOGql6pqH4PsKpaCJF8Z/4hLKEfM6LBOGL4wkkuCP8s3HXaOM9T9vjL5IIvATkzFXqwjD4Jyt/
+	Tw0EPLd7uEx29sMAz3v7JSvq2djOS67WZ1nzGyVaG2RblBv9+IAHv39l4LuBBbmUACWG+2ekdpa6S
+	uLDk1fHxPq23mavCrWFQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iWXTp-0001Ol-7e; Mon, 18 Nov 2019 03:13:33 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1iWZ6v-00083v-Hf; Mon, 18 Nov 2019 04:58:01 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iWXTg-0001IJ-GG; Mon, 18 Nov 2019 03:13:26 +0000
-X-UUID: 9eccd6eaee234408ade24095524cee0d-20191117
+ id 1iWZ6r-00082c-Qv; Mon, 18 Nov 2019 04:58:00 +0000
+X-UUID: a9dae990cd1a4e49a3d67ba2fd68244d-20191117
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=xPbbzxVQarZrPbulvz4tUDmgJr12lp3+nMlI2Khoddw=; 
- b=Yq6vle8q/+9H5cgR54v/9VVvjBqHabEOCE8K0NoXANuBxENlC5w4gkZVNLaVaz2M3lbaKY7/UlA4k/UDNpqmNg2AsKlE1lju3lSJgnkd1QDGuu2ADjqJfHPxcsaDsBwfJT7WMaRd48Mlaidppt9WieUOOooTOHWliFHxX+ep3Iw=;
-X-UUID: 9eccd6eaee234408ade24095524cee0d-20191117
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yun.hsiang@mediatek.com>)
+ bh=PwooS7+c3Hefvuj7Qg4f+8puNQ2YZcWGbv3SCO5cba8=; 
+ b=BCEWmgVGkmmsZ5eLD/YOmK5qd10Pnbqlm0R6/EiTBLP29iJgztOY7ZU9jDZZDl6VhYjsWhxXOxBQHXp6B+xfMbhOJZVdsTyN9Kdej03qhSk+BrkJ9RBmUQkeGiyLTo+4zn/9Uivu4DqXls/J6baF3utSxwkMEnLj+z0edSzmL+s=;
+X-UUID: a9dae990cd1a4e49a3d67ba2fd68244d-20191117
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <luhua.xu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 460387082; Sun, 17 Nov 2019 19:13:18 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 17 Nov 2019 19:12:56 -0800
+ with ESMTP id 1414334680; Sun, 17 Nov 2019 20:57:47 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sun, 17 Nov 2019 20:57:58 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 18 Nov 2019 11:12:54 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Mon, 18 Nov 2019 11:12:39 +0800
-From: Yun Hsiang <yun.hsiang@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Peter Zijlstra
- <peterz@infradead.org>
-Subject: [PATCH 1/1] psi: fix underflow in psi_write
-Date: Mon, 18 Nov 2019 11:12:42 +0800
-Message-ID: <1574046762-26418-1-git-send-email-yun.hsiang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 18 Nov 2019 12:57:48 +0800
+Received: from localhost.localdomain (10.15.20.246) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Mon, 18 Nov 2019 12:57:32 +0800
+From: Luhua Xu <luhua.xu@mediatek.com>
+To: Mark Brown <broonie@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Allison Randal <allison@lohutok.net>, "Enrico
+ Weigelt" <info@metux.net>, Kate Stewart <kstewart@linuxfoundation.org>,
+ "Leilk Liu" <leilk.liu@mediatek.com>, Thomas Gleixner <tglx@linutronix.de>
+Subject: [PATCH 0/2] spi CS customization support 
+Date: Mon, 18 Nov 2019 12:57:15 +0800
+Message-ID: <1574053037-26721-1-git-send-email-luhua.xu@mediatek.com>
+X-Mailer: git-send-email 2.6.4
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 5F6A65CA0647CF7851E850331F5E5E7D8864E85FA5032B496021299311914FFB2000:8
+X-TM-SNTS-SMTP: 4574C02A88C4CD2230000881FE3CDDB52C40828BB2C0D6FEC0BC95FEF95C37BA2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191117_191324_543533_A6FB0B51 
-X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-CacheID: sfid-20191117_205757_885662_5167982A 
+X-CRM114-Status: UNSURE (   5.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -83,59 +85,25 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Yun Hsiang <yun.hsiang@mediatek.com>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, wsd_upstream@mediatek.com
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There is a stack-out-of-bounds write when running syzkaller test.
+These patch series add SPI CS polarity and CS setup/hold/idle
+time customization support.
 
-psi_write will perform a underflow write if nbytes received 0.
-Fix this behavior by return -EINVAL when nbytes == 0.
+Luhua Xu (2):
+  spi: mediatek: add SPI_CS_HIGH support
+  spi: mediatek: add cs timing configuration support
 
-Here is the KASAN log.
-==================================================================
-BUG: KASAN: stack-out-of-bounds in psi_write.part.9+0x128/0x270
-Write of size 1 at addr ffffffc0e601fb7f by task syz-executor4/25565
+ drivers/spi/spi-mt65xx.c                 | 53 +++++++++++++++++++++++++-------
+ include/linux/platform_data/spi-mt65xx.h |  6 +++-
+ 2 files changed, 47 insertions(+), 12 deletions(-)
 
-CPU: 7 PID: 25565 Comm: syz-executor4 Tainted: G S      W  O    4.14.141+ #1
-Call trace:
-[<ffffff90080969e0>] dump_backtrace+0x0/0x828
-[<ffffff9008097228>] show_stack+0x20/0x30
-[<ffffff9009c5a040>] dump_stack+0xd0/0x120
-[<ffffff9008411818>] print_address_description+0x68/0x4d0
-[<ffffff9008411fa0>] kasan_report+0x1a0/0x3e8
-[<ffffff900840fd14>] __asan_store1+0x4c/0x58
-[<ffffff90081b44b0>] psi_write.part.9+0x128/0x270
-[<ffffff90081b4660>] psi_memory_write+0x30/0x38
-[<ffffff900852a220>] proc_reg_write+0xb8/0x108
-[<ffffff900843e78c>] __vfs_write+0xdc/0x2d8
-[<ffffff900843ec50>] vfs_write+0xe8/0x278
-[<ffffff900843f150>] SyS_write+0xd0/0x1a8
 
-Signed-off-by: Yun Hsiang <yun.hsiang@mediatek.com>
----
- kernel/sched/psi.c |    3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/kernel/sched/psi.c b/kernel/sched/psi.c
-index 6e52b67..ce89894 100644
---- a/kernel/sched/psi.c
-+++ b/kernel/sched/psi.c
-@@ -1199,6 +1199,9 @@ static ssize_t psi_write(struct file *file, const char __user *user_buf,
- 		return -EOPNOTSUPP;
- 
- 	buf_size = min(nbytes, (sizeof(buf) - 1));
-+	if (buf_size == 0)
-+		return -EINVAL;
-+
- 	if (copy_from_user(buf, user_buf, buf_size))
- 		return -EFAULT;
- 
--- 
-1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
