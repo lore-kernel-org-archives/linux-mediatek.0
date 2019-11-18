@@ -1,72 +1,77 @@
-Return-Path: <SRS0=cYos=ZI=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=+oxs=ZK=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BE820C432C3
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Nov 2019 15:42:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 10FDCC432C3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Nov 2019 03:13:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5AC632073B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Nov 2019 15:42:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D3FA2206D5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Nov 2019 03:13:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UaotzfKG";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="JK/k2yuM"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5AC632073B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ARHtcAmL";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Yq6vle8q"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D3FA2206D5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MI+qxtPVR9YHn8EgfrrKU/6v9hiBqmXVgddPFmJgjXk=; b=UaotzfKGa2l759
-	Y//83pfrvCMiBCEF+v6EqJVTsTPOdtr9pEKNl1kPe5Tvw3hA+TPvnF16tzZNiZfFkAkgRDEBGCJFH
-	rZcUh8ruEKnSFTsv+MNKG6WLqbKTAoyq8kRF8bnRtBg7QZuqP18YMmK6+9+jgH2H9mpwT9MqvMePt
-	PFwnM5o/DfE8wF9+DtF/sG30yYvBFEi1dqYNyTW/P6mxD9zg110xeTGv5VIcXEJ7I60k+sjm6fWOJ
-	isRW2mT3zNQ1xwQrCiI9DJpINz//mz9nbpKM7nTq/ozHmenw+RtO3sZssDYBzP7qndSpVeKnKDcXj
-	q9zJA4TLk5K0mqSg4CSg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5BtL7cCgHg6rQ3SAchZ8ptDP+L2i+JURrNljXJgeLNc=; b=ARHtcAmLSPmjUF
+	AHOCIJBuYFLff8OA2/sZgZf7mDs4Zm6BOrPR7/qFSKjAjtRhfdoVahtK//mhqL3+nYum+6Psnlpd3
+	Cq8omY9+wzNrbyShRQVscxowt4hHM/hM2aCb7+N+/Ys3Ah1nzWF6LMQN2jtvuT5QwB8+yOLrnf0Iw
+	YSbEAw00zsf8sjTPBaV/X22xYlm0qF5YWPYlS7YS2XwzNnyfhmshIWYJO1WPjywTaDZ0g1ifppomo
+	ulJlUVOCISvohWqp44dn2qJcLHx7NalGmy3Do7K4avB9v0rE7Il1XV2WNmFLfK6ZCSvP4dvcC1/6C
+	uan3mr05UvX0NSrTaoHg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iW0Df-0007ys-N5; Sat, 16 Nov 2019 15:42:39 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1iWXTp-0001Ol-7e; Mon, 18 Nov 2019 03:13:33 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iW0DE-0007VW-3M
- for linux-mediatek@lists.infradead.org; Sat, 16 Nov 2019 15:42:14 +0000
-Received: from sasha-vm.mshome.net (unknown [50.234.116.4])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 70B902075B;
- Sat, 16 Nov 2019 15:42:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1573918931;
- bh=T4Ylin2Dg0jyI71p9QB/r4oozPPJletu7pxesr1Jgvk=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=JK/k2yuMOVhwxsjJCdm81tsK5rwMtJHLKpXij77Yv4nB/Ci42zyi3ORAOojMsfEKG
- E6kPVlDhRAIzM/lhVm0HUnHAZ7fyAalHvia2KOT6UKfIMDSdq06c2kxqdE0EifaQvc
- ezrXYwecxjpTLo6jB/WrgjpbjONicbstlhoM63FQ=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 059/237] PCI: mediatek: Fixup MSI enablement
- logic by enabling MSI before clocks
-Date: Sat, 16 Nov 2019 10:38:14 -0500
-Message-Id: <20191116154113.7417-59-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191116154113.7417-1-sashal@kernel.org>
-References: <20191116154113.7417-1-sashal@kernel.org>
+ id 1iWXTg-0001IJ-GG; Mon, 18 Nov 2019 03:13:26 +0000
+X-UUID: 9eccd6eaee234408ade24095524cee0d-20191117
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=xPbbzxVQarZrPbulvz4tUDmgJr12lp3+nMlI2Khoddw=; 
+ b=Yq6vle8q/+9H5cgR54v/9VVvjBqHabEOCE8K0NoXANuBxENlC5w4gkZVNLaVaz2M3lbaKY7/UlA4k/UDNpqmNg2AsKlE1lju3lSJgnkd1QDGuu2ADjqJfHPxcsaDsBwfJT7WMaRd48Mlaidppt9WieUOOooTOHWliFHxX+ep3Iw=;
+X-UUID: 9eccd6eaee234408ade24095524cee0d-20191117
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yun.hsiang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 460387082; Sun, 17 Nov 2019 19:13:18 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sun, 17 Nov 2019 19:12:56 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 18 Nov 2019 11:12:54 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Mon, 18 Nov 2019 11:12:39 +0800
+From: Yun Hsiang <yun.hsiang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Peter Zijlstra
+ <peterz@infradead.org>
+Subject: [PATCH 1/1] psi: fix underflow in psi_write
+Date: Mon, 18 Nov 2019 11:12:42 +0800
+Message-ID: <1574046762-26418-1-git-send-email-yun.hsiang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+X-TM-SNTS-SMTP: 5F6A65CA0647CF7851E850331F5E5E7D8864E85FA5032B496021299311914FFB2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191116_074212_189336_1E62B78E 
-X-CRM114-Status: GOOD (  16.32  )
+X-CRM114-CacheID: sfid-20191117_191324_543533_A6FB0B51 
+X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,211 +83,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, linux-pci@vger.kernel.org,
- Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org,
- Honghui Zhang <honghui.zhang@mediatek.com>
+Cc: Yun Hsiang <yun.hsiang@mediatek.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, wsd_upstream@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Honghui Zhang <honghui.zhang@mediatek.com>
+There is a stack-out-of-bounds write when running syzkaller test.
 
-[ Upstream commit 3828d60fd2ef99f97a677c1f95af2ab3e65e2576 ]
+psi_write will perform a underflow write if nbytes received 0.
+Fix this behavior by return -EINVAL when nbytes == 0.
 
-Commit 43e6409db64d ("PCI: mediatek: Add MSI support for MT2712 and
-MT7622") added MSI support but enabled MSI in the wrong place, at a step
-in the probe sequence where clocks were not still enabled.
+Here is the KASAN log.
+==================================================================
+BUG: KASAN: stack-out-of-bounds in psi_write.part.9+0x128/0x270
+Write of size 1 at addr ffffffc0e601fb7f by task syz-executor4/25565
 
-Fix this issue by calling mtk_pcie_enable_msi() in mtk_pcie_startup_port_v2()
-since clocks are enabled when mtk_pcie_startup_port_v2() is called.
+CPU: 7 PID: 25565 Comm: syz-executor4 Tainted: G S      W  O    4.14.141+ #1
+Call trace:
+[<ffffff90080969e0>] dump_backtrace+0x0/0x828
+[<ffffff9008097228>] show_stack+0x20/0x30
+[<ffffff9009c5a040>] dump_stack+0xd0/0x120
+[<ffffff9008411818>] print_address_description+0x68/0x4d0
+[<ffffff9008411fa0>] kasan_report+0x1a0/0x3e8
+[<ffffff900840fd14>] __asan_store1+0x4c/0x58
+[<ffffff90081b44b0>] psi_write.part.9+0x128/0x270
+[<ffffff90081b4660>] psi_memory_write+0x30/0x38
+[<ffffff900852a220>] proc_reg_write+0xb8/0x108
+[<ffffff900843e78c>] __vfs_write+0xdc/0x2d8
+[<ffffff900843ec50>] vfs_write+0xe8/0x278
+[<ffffff900843f150>] SyS_write+0xd0/0x1a8
 
-To avoid forward declaration of mtk_pcie_enable_msi(), move the
-mtk_pcie_startup_port_v2() function definition in the file.
-
-Fixes: 43e6409db64d ("PCI: mediatek: Add MSI support for MT2712 and MT7622")
-Signed-off-by: Honghui Zhang <honghui.zhang@mediatek.com>
-[lorenzo.pieralisi@arm.com: squashed commit and adapted log]
-Signed-off-by: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Acked-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Signed-off-by: Yun Hsiang <yun.hsiang@mediatek.com>
 ---
- drivers/pci/controller/pcie-mediatek.c | 143 +++++++++++++------------
- 1 file changed, 72 insertions(+), 71 deletions(-)
+ kernel/sched/psi.c |    3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index abedf8ec11bba..dd49033e488d8 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -394,75 +394,6 @@ static struct pci_ops mtk_pcie_ops_v2 = {
- 	.write = mtk_pcie_config_write,
- };
+diff --git a/kernel/sched/psi.c b/kernel/sched/psi.c
+index 6e52b67..ce89894 100644
+--- a/kernel/sched/psi.c
++++ b/kernel/sched/psi.c
+@@ -1199,6 +1199,9 @@ static ssize_t psi_write(struct file *file, const char __user *user_buf,
+ 		return -EOPNOTSUPP;
  
--static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
--{
--	struct mtk_pcie *pcie = port->pcie;
--	struct resource *mem = &pcie->mem;
--	const struct mtk_pcie_soc *soc = port->pcie->soc;
--	u32 val;
--	size_t size;
--	int err;
--
--	/* MT7622 platforms need to enable LTSSM and ASPM from PCIe subsys */
--	if (pcie->base) {
--		val = readl(pcie->base + PCIE_SYS_CFG_V2);
--		val |= PCIE_CSR_LTSSM_EN(port->slot) |
--		       PCIE_CSR_ASPM_L1_EN(port->slot);
--		writel(val, pcie->base + PCIE_SYS_CFG_V2);
--	}
--
--	/* Assert all reset signals */
--	writel(0, port->base + PCIE_RST_CTRL);
--
--	/*
--	 * Enable PCIe link down reset, if link status changed from link up to
--	 * link down, this will reset MAC control registers and configuration
--	 * space.
--	 */
--	writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
--
--	/* De-assert PHY, PE, PIPE, MAC and configuration reset	*/
--	val = readl(port->base + PCIE_RST_CTRL);
--	val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
--	       PCIE_MAC_SRSTB | PCIE_CRSTB;
--	writel(val, port->base + PCIE_RST_CTRL);
--
--	/* Set up vendor ID and class code */
--	if (soc->need_fix_class_id) {
--		val = PCI_VENDOR_ID_MEDIATEK;
--		writew(val, port->base + PCIE_CONF_VEND_ID);
--
--		val = PCI_CLASS_BRIDGE_PCI;
--		writew(val, port->base + PCIE_CONF_CLASS_ID);
--	}
--
--	/* 100ms timeout value should be enough for Gen1/2 training */
--	err = readl_poll_timeout(port->base + PCIE_LINK_STATUS_V2, val,
--				 !!(val & PCIE_PORT_LINKUP_V2), 20,
--				 100 * USEC_PER_MSEC);
--	if (err)
--		return -ETIMEDOUT;
--
--	/* Set INTx mask */
--	val = readl(port->base + PCIE_INT_MASK);
--	val &= ~INTX_MASK;
--	writel(val, port->base + PCIE_INT_MASK);
--
--	/* Set AHB to PCIe translation windows */
--	size = mem->end - mem->start;
--	val = lower_32_bits(mem->start) | AHB2PCIE_SIZE(fls(size));
--	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
--
--	val = upper_32_bits(mem->start);
--	writel(val, port->base + PCIE_AHB_TRANS_BASE0_H);
--
--	/* Set PCIe to AXI translation memory space.*/
--	val = fls(0xffffffff) | WIN_ENABLE;
--	writel(val, port->base + PCIE_AXI_WINDOW0);
--
--	return 0;
--}
--
- static void mtk_compose_msi_msg(struct irq_data *data, struct msi_msg *msg)
- {
- 	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
-@@ -639,8 +570,6 @@ static int mtk_pcie_init_irq_domain(struct mtk_pcie_port *port,
- 		ret = mtk_pcie_allocate_msi_domains(port);
- 		if (ret)
- 			return ret;
--
--		mtk_pcie_enable_msi(port);
- 	}
+ 	buf_size = min(nbytes, (sizeof(buf) - 1));
++	if (buf_size == 0)
++		return -EINVAL;
++
+ 	if (copy_from_user(buf, user_buf, buf_size))
+ 		return -EFAULT;
  
- 	return 0;
-@@ -707,6 +636,78 @@ static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
- 	return 0;
- }
- 
-+static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
-+{
-+	struct mtk_pcie *pcie = port->pcie;
-+	struct resource *mem = &pcie->mem;
-+	const struct mtk_pcie_soc *soc = port->pcie->soc;
-+	u32 val;
-+	size_t size;
-+	int err;
-+
-+	/* MT7622 platforms need to enable LTSSM and ASPM from PCIe subsys */
-+	if (pcie->base) {
-+		val = readl(pcie->base + PCIE_SYS_CFG_V2);
-+		val |= PCIE_CSR_LTSSM_EN(port->slot) |
-+		       PCIE_CSR_ASPM_L1_EN(port->slot);
-+		writel(val, pcie->base + PCIE_SYS_CFG_V2);
-+	}
-+
-+	/* Assert all reset signals */
-+	writel(0, port->base + PCIE_RST_CTRL);
-+
-+	/*
-+	 * Enable PCIe link down reset, if link status changed from link up to
-+	 * link down, this will reset MAC control registers and configuration
-+	 * space.
-+	 */
-+	writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
-+
-+	/* De-assert PHY, PE, PIPE, MAC and configuration reset	*/
-+	val = readl(port->base + PCIE_RST_CTRL);
-+	val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
-+	       PCIE_MAC_SRSTB | PCIE_CRSTB;
-+	writel(val, port->base + PCIE_RST_CTRL);
-+
-+	/* Set up vendor ID and class code */
-+	if (soc->need_fix_class_id) {
-+		val = PCI_VENDOR_ID_MEDIATEK;
-+		writew(val, port->base + PCIE_CONF_VEND_ID);
-+
-+		val = PCI_CLASS_BRIDGE_PCI;
-+		writew(val, port->base + PCIE_CONF_CLASS_ID);
-+	}
-+
-+	/* 100ms timeout value should be enough for Gen1/2 training */
-+	err = readl_poll_timeout(port->base + PCIE_LINK_STATUS_V2, val,
-+				 !!(val & PCIE_PORT_LINKUP_V2), 20,
-+				 100 * USEC_PER_MSEC);
-+	if (err)
-+		return -ETIMEDOUT;
-+
-+	/* Set INTx mask */
-+	val = readl(port->base + PCIE_INT_MASK);
-+	val &= ~INTX_MASK;
-+	writel(val, port->base + PCIE_INT_MASK);
-+
-+	if (IS_ENABLED(CONFIG_PCI_MSI))
-+		mtk_pcie_enable_msi(port);
-+
-+	/* Set AHB to PCIe translation windows */
-+	size = mem->end - mem->start;
-+	val = lower_32_bits(mem->start) | AHB2PCIE_SIZE(fls(size));
-+	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
-+
-+	val = upper_32_bits(mem->start);
-+	writel(val, port->base + PCIE_AHB_TRANS_BASE0_H);
-+
-+	/* Set PCIe to AXI translation memory space.*/
-+	val = fls(0xffffffff) | WIN_ENABLE;
-+	writel(val, port->base + PCIE_AXI_WINDOW0);
-+
-+	return 0;
-+}
-+
- static void __iomem *mtk_pcie_map_bus(struct pci_bus *bus,
- 				      unsigned int devfn, int where)
- {
 -- 
-2.20.1
-
-
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
