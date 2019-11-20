@@ -2,22 +2,22 @@ Return-Path: <SRS0=Qt5b=ZM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D5545C432C0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Nov 2019 08:21:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 509D8C43215
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Nov 2019 08:35:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8C4172231D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Nov 2019 08:21:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 21D2D223CA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Nov 2019 08:35:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UmRL7ZuQ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dBCv593J"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C4172231D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fCNIc6Td";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="tIc0hGv8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 21D2D223CA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8/zaPqlNPF3W0Xbyt2oy9NY+/tMGRmtd8PaMiLQkYVo=; b=UmRL7ZuQDBlCax
-	3sNCPuvE7y1pYqdMG+O6t4SragFKFc79obidkQnytpZN2lm9PfrQW6es77EmIv31WVfqByVhtYrHP
-	xTtFsiqTjSoIPqqJng3EFWhSnAhRGB+KXokyiqMYUrV1Xm6Z69aI7L8GOC75QBbh2PB1EjOty+Hl8
-	Tv3LcaTIG68sNIra8RjiotIzweIlnZhrFL8JgHmUevSnO7Id3AkdOtupP5fe/qg47dfGakrRkTamT
-	aF2aN+CUtkR0J7zYvEuKzapqQ1UfvNWoZuODA9n3oifWsEiF/2EBS01IVpoFHrRhHl4aVx4SLhAiS
-	dXu2Q/ULoZDKCsVsluLw==;
+	List-Owner; bh=yrPJHXcx+V9f9aSYmui96Wi689e0CHSELCmjGlpXNtM=; b=fCNIc6TdlcmpB4
+	rHSusqaW1tciBXcCN+CRTzi5IGncoH48CbahcuglQJ6ENsygzTyny8rRKENT/CwEb+SACnxpb8by5
+	R8GKb2R16MvvpKZMKZZYU5+NmP/dhA46Z08raFt9X86K7rcop85Ab3uX58NoeoTFbh3gjCO4pB5Ea
+	Cckd+9oaleENwzt4TFeZ16VRGcgcLrL09HWiC0ftUlSE7NOKpX4wcGLo/J/7F/LwwOXlesRwx4I4p
+	6o8Sy+I8CFZEmcFfjLShTWQrGlezeV7u7oZuM0H1L6QO8yItyUtpIag4JzOHw1M0ynqvNabROCrIG
+	dRJXDyFj1EEDu6RA4kvg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iXLEh-0008HN-Mi; Wed, 20 Nov 2019 08:21:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1iXLS6-000555-Kj; Wed, 20 Nov 2019 08:35:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iXLEW-00089h-Gn; Wed, 20 Nov 2019 08:21:06 +0000
-X-UUID: a0a99c6b69b84e028239cfce7db7ddf1-20191120
+ id 1iXLRp-0004tB-2T; Wed, 20 Nov 2019 08:34:51 +0000
+X-UUID: 3d17690246bd4262b86813d41cb0af1e-20191120
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Vm5saM+GW0YUbJUNwRCvnRKSP+TQW5BbAxj4dw2J4dY=; 
- b=dBCv593JHT5q6x8wGg9cEEFnlPEW6vdoHgV08dotVzQ4nd+dGQhbKXq+bh8LRvcCUmRmT1iRwwumlbL6OWAGyjks5pxOdQlLuqvUzTyi4NmFlxelzYE7pKulu7SfnxtJdI7H1H86ze4OY/C5IANY+796kSPemvTdflQ7lVW0nX4=;
-X-UUID: a0a99c6b69b84e028239cfce7db7ddf1-20191120
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jerry-ch.chen@mediatek.com>)
+ bh=M2UT7PsbBttLm3d7KtnkpApkgoUAHdiQRcC9lfgSQY4=; 
+ b=tIc0hGv85d75/m3EVc4EHLT28WAsA0Eog+cs2ueT1CAJTs8wD7TkAgFIFQSqwrJe9Zix2dxzDEjzqFDkB45mfr9ITFApSCeQ5S58uTx7PHSPwgG7wHw8Tr9UAOHA1Q7c1Q6yYUtGfSVxLehaJkBqoW4/MYcQNdvB+kija5AIHGY=;
+X-UUID: 3d17690246bd4262b86813d41cb0af1e-20191120
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <walter-zh.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1633443104; Wed, 20 Nov 2019 00:21:01 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 20 Nov 2019 00:11:15 -0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 20 Nov 2019 16:10:34 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkcas08.mediatek.inc
+ with ESMTP id 1329380053; Wed, 20 Nov 2019 00:34:47 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 20 Nov 2019 00:34:48 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 20 Nov 2019 16:34:37 +0800
+Received: from [172.21.84.99] (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 20 Nov 2019 16:10:49 +0800
-Message-ID: <1574237450.20087.17.camel@mtksdccf07>
-Subject: Re: [RFC PATCH V3 3/3] platform: mtk-isp: Add Mediatek FD driver
-From: Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Date: Wed, 20 Nov 2019 16:10:50 +0800
-In-Reply-To: <20191025035211.GA67000@chromium.org>
-References: <20190906101125.3784-1-Jerry-Ch.chen@mediatek.com>
- <20190906101125.3784-4-Jerry-Ch.chen@mediatek.com>
- <1571109375.3706.40.camel@mtksdccf07> <20191025035211.GA67000@chromium.org>
+ Transport; Wed, 20 Nov 2019 16:34:48 +0800
+Message-ID: <1574238882.20045.2.camel@mtksdccf07>
+Subject: Re: [PATCH v4 1/2] kasan: detect negative size in memory operation
+ function
+From: Walter Wu <walter-zh.wu@mediatek.com>
+To: Andrey Ryabinin <aryabinin@virtuozzo.com>
+Date: Wed, 20 Nov 2019 16:34:42 +0800
+In-Reply-To: <20191112065302.7015-1-walter-zh.wu@mediatek.com>
+References: <20191112065302.7015-1-walter-zh.wu@mediatek.com>
 X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191120_002104_574123_876462CE 
-X-CRM114-Status: GOOD (  36.38  )
+X-CRM114-CacheID: sfid-20191120_003449_131527_3404B973 
+X-CRM114-Status: GOOD (  21.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,266 +83,285 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Sean Cheng =?UTF-8?Q?=28=E9=84=AD=E6=98=87=E5=BC=98=29?=
- <Sean.Cheng@mediatek.com>,
- Frederic Chen =?UTF-8?Q?=28=E9=99=B3=E4=BF=8A=E5=85=83=29?=
- <Frederic.Chen@mediatek.com>,
- Rynn Wu =?UTF-8?Q?=28=E5=90=B3=E8=82=B2=E6=81=A9=29?= <Rynn.Wu@mediatek.com>,
- Christie Yu =?UTF-8?Q?=28=E6=B8=B8=E9=9B=85=E6=83=A0=29?=
- <christie.yu@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>,
- Jungo Lin =?UTF-8?Q?=28=E6=9E=97=E6=98=8E=E4=BF=8A=29?=
- <jungo.lin@mediatek.com>,
- Po-Yang Huang =?UTF-8?Q?=28=E9=BB=83=E6=9F=8F=E9=99=BD=29?=
- <po-yang.huang@mediatek.com>,
- CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>, Sj
- Huang =?UTF-8?Q?=28=E9=BB=83=E4=BF=A1=E7=92=8B=29?= <sj.huang@mediatek.com>,
- "yuzhao@chromium.org" <yuzhao@chromium.org>, "lkml@metux.net" <lkml@metux.net>,
- "zwisler@chromium.org" <zwisler@chromium.org>,
- "hans.verkuil@cisco.com" <hans.verkuil@cisco.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "mchehab@kernel.org" <mchehab@kernel.org>,
- "laurent.pinchart+renesas@ideasonboard.com"
- <laurent.pinchart+renesas@ideasonboard.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
+Cc: wsd_upstream <wsd_upstream@mediatek.com>, linux-kernel@vger.kernel.org,
+ kasan-dev@googlegroups.com, linux-mm@kvack.org,
+ Alexander Potapenko <glider@google.com>, linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ Dmitry Vyukov <dvyukov@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Tomasz,
+On Tue, 2019-11-12 at 14:53 +0800, Walter Wu wrote:
+> KASAN missed detecting size is a negative number in memset(), memcpy(),
+> and memmove(), it will cause out-of-bounds bug. So needs to be detected
+> by KASAN.
+> 
+> If size is a negative number, then it has a reason to be defined as
+> out-of-bounds bug type.
+> Casting negative numbers to size_t would indeed turn up as
+> a large size_t and its value will be larger than ULONG_MAX/2,
+> so that this can qualify as out-of-bounds.
+> 
+> KASAN report is shown below:
+> 
+>  BUG: KASAN: out-of-bounds in kmalloc_memmove_invalid_size+0x70/0xa0
+>  Read of size 18446744073709551608 at addr ffffff8069660904 by task cat/72
+> 
+>  CPU: 2 PID: 72 Comm: cat Not tainted 5.4.0-rc1-next-20191004ajb-00001-gdb8af2f372b2-dirty #1
+>  Hardware name: linux,dummy-virt (DT)
+>  Call trace:
+>   dump_backtrace+0x0/0x288
+>   show_stack+0x14/0x20
+>   dump_stack+0x10c/0x164
+>   print_address_description.isra.9+0x68/0x378
+>   __kasan_report+0x164/0x1a0
+>   kasan_report+0xc/0x18
+>   check_memory_region+0x174/0x1d0
+>   memmove+0x34/0x88
+>   kmalloc_memmove_invalid_size+0x70/0xa0
+> 
+> [1] https://bugzilla.kernel.org/show_bug.cgi?id=199341
+> 
+> Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> Reported-by: Dmitry Vyukov <dvyukov@google.com>
+> Suggested-by: Dmitry Vyukov <dvyukov@google.com>
+> Reviewed-by: Dmitry Vyukov <dvyukov@google.com>
+> Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
+> Cc: Alexander Potapenko <glider@google.com>
+> Reported-by: kernel test robot <lkp@intel.com>
+> ---
+>  include/linux/kasan.h     |  2 +-
+>  mm/kasan/common.c         | 25 ++++++++++++++++++-------
+>  mm/kasan/generic.c        |  9 +++++----
+>  mm/kasan/generic_report.c | 11 +++++++++++
+>  mm/kasan/kasan.h          |  2 +-
+>  mm/kasan/report.c         |  5 +----
+>  mm/kasan/tags.c           |  9 +++++----
+>  mm/kasan/tags_report.c    | 11 +++++++++++
+>  8 files changed, 53 insertions(+), 21 deletions(-)
+> 
+> diff --git a/include/linux/kasan.h b/include/linux/kasan.h
+> index cc8a03cc9674..2ef6b8fc63ef 100644
+> --- a/include/linux/kasan.h
+> +++ b/include/linux/kasan.h
+> @@ -180,7 +180,7 @@ void kasan_init_tags(void);
+>  
+>  void *kasan_reset_tag(const void *addr);
+>  
+> -void kasan_report(unsigned long addr, size_t size,
+> +bool kasan_report(unsigned long addr, size_t size,
+>  		bool is_write, unsigned long ip);
+>  
+>  #else /* CONFIG_KASAN_SW_TAGS */
+> diff --git a/mm/kasan/common.c b/mm/kasan/common.c
+> index 6814d6d6a023..4bfce0af881f 100644
+> --- a/mm/kasan/common.c
+> +++ b/mm/kasan/common.c
+> @@ -102,7 +102,8 @@ EXPORT_SYMBOL(__kasan_check_write);
+>  #undef memset
+>  void *memset(void *addr, int c, size_t len)
+>  {
+> -	check_memory_region((unsigned long)addr, len, true, _RET_IP_);
+> +	if (!check_memory_region((unsigned long)addr, len, true, _RET_IP_))
+> +		return NULL;
+>  
+>  	return __memset(addr, c, len);
+>  }
+> @@ -110,8 +111,9 @@ void *memset(void *addr, int c, size_t len)
+>  #undef memmove
+>  void *memmove(void *dest, const void *src, size_t len)
+>  {
+> -	check_memory_region((unsigned long)src, len, false, _RET_IP_);
+> -	check_memory_region((unsigned long)dest, len, true, _RET_IP_);
+> +	if (!check_memory_region((unsigned long)src, len, false, _RET_IP_) ||
+> +	    !check_memory_region((unsigned long)dest, len, true, _RET_IP_))
+> +		return NULL;
+>  
+>  	return __memmove(dest, src, len);
+>  }
+> @@ -119,8 +121,9 @@ void *memmove(void *dest, const void *src, size_t len)
+>  #undef memcpy
+>  void *memcpy(void *dest, const void *src, size_t len)
+>  {
+> -	check_memory_region((unsigned long)src, len, false, _RET_IP_);
+> -	check_memory_region((unsigned long)dest, len, true, _RET_IP_);
+> +	if (!check_memory_region((unsigned long)src, len, false, _RET_IP_) ||
+> +	    !check_memory_region((unsigned long)dest, len, true, _RET_IP_))
+> +		return NULL;
+>  
+>  	return __memcpy(dest, src, len);
+>  }
+> @@ -627,12 +630,20 @@ void kasan_free_shadow(const struct vm_struct *vm)
+>  }
+>  
+>  extern void __kasan_report(unsigned long addr, size_t size, bool is_write, unsigned long ip);
+> +extern bool report_enabled(void);
+>  
+> -void kasan_report(unsigned long addr, size_t size, bool is_write, unsigned long ip)
+> +bool kasan_report(unsigned long addr, size_t size, bool is_write, unsigned long ip)
+>  {
+> -	unsigned long flags = user_access_save();
+> +	unsigned long flags;
+> +
+> +	if (likely(!report_enabled()))
+> +		return false;
+> +
+> +	flags = user_access_save();
+>  	__kasan_report(addr, size, is_write, ip);
+>  	user_access_restore(flags);
+> +
+> +	return true;
+>  }
+>  
+>  #ifdef CONFIG_MEMORY_HOTPLUG
+> diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
+> index 616f9dd82d12..56ff8885fe2e 100644
+> --- a/mm/kasan/generic.c
+> +++ b/mm/kasan/generic.c
+> @@ -173,17 +173,18 @@ static __always_inline bool check_memory_region_inline(unsigned long addr,
+>  	if (unlikely(size == 0))
+>  		return true;
+>  
+> +	if (unlikely(addr + size < addr))
+> +		return !kasan_report(addr, size, write, ret_ip);
+> +
+>  	if (unlikely((void *)addr <
+>  		kasan_shadow_to_mem((void *)KASAN_SHADOW_START))) {
+> -		kasan_report(addr, size, write, ret_ip);
+> -		return false;
+> +		return !kasan_report(addr, size, write, ret_ip);
+>  	}
+>  
+>  	if (likely(!memory_is_poisoned(addr, size)))
+>  		return true;
+>  
+> -	kasan_report(addr, size, write, ret_ip);
+> -	return false;
+> +	return !kasan_report(addr, size, write, ret_ip);
+>  }
+>  
+>  bool check_memory_region(unsigned long addr, size_t size, bool write,
+> diff --git a/mm/kasan/generic_report.c b/mm/kasan/generic_report.c
+> index 36c645939bc9..c82bc3f52c9a 100644
+> --- a/mm/kasan/generic_report.c
+> +++ b/mm/kasan/generic_report.c
+> @@ -107,6 +107,17 @@ static const char *get_wild_bug_type(struct kasan_access_info *info)
+>  
+>  const char *get_bug_type(struct kasan_access_info *info)
+>  {
+> +	/*
+> +	 * If access_size is a negative number, then it has reason to be
+> +	 * defined as out-of-bounds bug type.
+> +	 *
+> +	 * Casting negative numbers to size_t would indeed turn up as
+> +	 * a large size_t and its value will be larger than ULONG_MAX/2,
+> +	 * so that this can qualify as out-of-bounds.
+> +	 */
+> +	if (info->access_addr + info->access_size < info->access_addr)
+> +		return "out-of-bounds";
+> +
+>  	if (addr_has_shadow(info->access_addr))
+>  		return get_shadow_bug_type(info);
+>  	return get_wild_bug_type(info);
+> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
+> index 35cff6bbb716..afada2ce14bf 100644
+> --- a/mm/kasan/kasan.h
+> +++ b/mm/kasan/kasan.h
+> @@ -152,7 +152,7 @@ bool check_memory_region(unsigned long addr, size_t size, bool write,
+>  void *find_first_bad_addr(void *addr, size_t size);
+>  const char *get_bug_type(struct kasan_access_info *info);
+>  
+> -void kasan_report(unsigned long addr, size_t size,
+> +bool kasan_report(unsigned long addr, size_t size,
+>  		bool is_write, unsigned long ip);
+>  void kasan_report_invalid_free(void *object, unsigned long ip);
+>  
+> diff --git a/mm/kasan/report.c b/mm/kasan/report.c
+> index 621782100eaa..c94f8e9c78d4 100644
+> --- a/mm/kasan/report.c
+> +++ b/mm/kasan/report.c
+> @@ -446,7 +446,7 @@ static void print_shadow_for_address(const void *addr)
+>  	}
+>  }
+>  
+> -static bool report_enabled(void)
+> +bool report_enabled(void)
+>  {
+>  	if (current->kasan_depth)
+>  		return false;
+> @@ -478,9 +478,6 @@ void __kasan_report(unsigned long addr, size_t size, bool is_write, unsigned lon
+>  	void *untagged_addr;
+>  	unsigned long flags;
+>  
+> -	if (likely(!report_enabled()))
+> -		return;
+> -
+>  	disable_trace_on_warning();
+>  
+>  	tagged_addr = (void *)addr;
+> diff --git a/mm/kasan/tags.c b/mm/kasan/tags.c
+> index 0e987c9ca052..25b7734e7013 100644
+> --- a/mm/kasan/tags.c
+> +++ b/mm/kasan/tags.c
+> @@ -86,6 +86,9 @@ bool check_memory_region(unsigned long addr, size_t size, bool write,
+>  	if (unlikely(size == 0))
+>  		return true;
+>  
+> +	if (unlikely(addr + size < addr))
+> +		return !kasan_report(addr, size, write, ret_ip);
+> +
+>  	tag = get_tag((const void *)addr);
+>  
+>  	/*
+> @@ -111,15 +114,13 @@ bool check_memory_region(unsigned long addr, size_t size, bool write,
+>  	untagged_addr = reset_tag((const void *)addr);
+>  	if (unlikely(untagged_addr <
+>  			kasan_shadow_to_mem((void *)KASAN_SHADOW_START))) {
+> -		kasan_report(addr, size, write, ret_ip);
+> -		return false;
+> +		return !kasan_report(addr, size, write, ret_ip);
+>  	}
+>  	shadow_first = kasan_mem_to_shadow(untagged_addr);
+>  	shadow_last = kasan_mem_to_shadow(untagged_addr + size - 1);
+>  	for (shadow = shadow_first; shadow <= shadow_last; shadow++) {
+>  		if (*shadow != tag) {
+> -			kasan_report(addr, size, write, ret_ip);
+> -			return false;
+> +			return !kasan_report(addr, size, write, ret_ip);
+>  		}
+>  	}
+>  
+> diff --git a/mm/kasan/tags_report.c b/mm/kasan/tags_report.c
+> index 969ae08f59d7..1d412760551a 100644
+> --- a/mm/kasan/tags_report.c
+> +++ b/mm/kasan/tags_report.c
+> @@ -36,6 +36,17 @@
+>  
+>  const char *get_bug_type(struct kasan_access_info *info)
+>  {
+> +	/*
+> +	 * If access_size is a negative number, then it has reason to be
+> +	 * defined as out-of-bounds bug type.
+> +	 *
+> +	 * Casting negative numbers to size_t would indeed turn up as
+> +	 * a large size_t and its value will be larger than ULONG_MAX/2,
+> +	 * so that this can qualify as out-of-bounds.
+> +	 */
+> +	if (info->access_addr + info->access_size < info->access_addr)
+> +		return "out-of-bounds";
+> +
+>  #ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+>  	struct kasan_alloc_meta *alloc_meta;
+>  	struct kmem_cache *cache;
 
-On Fri, 2019-10-25 at 11:52 +0800, Tomasz Figa wrote:
-> On Tue, Oct 15, 2019 at 11:16:15AM +0800, Jerry-ch Chen wrote:
-> > Hi Tomasz,
-> > 
-> > On Fri, 2019-09-06 at 18:11 +0800, Jerry-ch Chen wrote:
-> > > From: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
-> > > 
-> > > This patch adds the driver of Face Detection (FD) unit in
-> > > Mediatek camera system, providing face detection function.
-> > > 
-> > > The mtk-isp directory will contain drivers for multiple IP
-> > > blocks found in Mediatek ISP system. It will include ISP Pass 1
-> > > driver (CAM), sensor interface driver, DIP driver and face
-> > > detection driver.
-> > > 
-> > > Signed-off-by: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
-> > > ---
-> > >  drivers/media/platform/Kconfig                |    2 +
-> > >  drivers/media/platform/Makefile               |    2 +
-> > >  drivers/media/platform/mtk-isp/fd/Kconfig     |   19 +
-> > >  drivers/media/platform/mtk-isp/fd/Makefile    |    5 +
-> > >  drivers/media/platform/mtk-isp/fd/mtk_fd.h    |  148 ++
-> > >  drivers/media/platform/mtk-isp/fd/mtk_fd_40.c | 1219 +++++++++++++++++
-> > >  include/uapi/linux/mtk-fd-v4l2-controls.h     |   69 +
-> > >  include/uapi/linux/v4l2-controls.h            |    4 +
-> > >  8 files changed, 1468 insertions(+)
-> > >  create mode 100644 drivers/media/platform/mtk-isp/fd/Kconfig
-> > >  create mode 100644 drivers/media/platform/mtk-isp/fd/Makefile
-> > >  create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd.h
-> > >  create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd_40.c
-> > >  create mode 100644 include/uapi/linux/mtk-fd-v4l2-controls.h
-> > > 
-> 
-> [snip]
-> 
-> > > +static int mtk_fd_job_abort(struct mtk_fd_dev *fd)
-> > > +{
-> > > +	u32 ret;
-> > > +
-> > > +	ret = wait_for_completion_timeout(&fd->fd_irq_done,
-> > > +					  msecs_to_jiffies(MTK_FD_HW_TIMEOUT));
-> > > +	/* Reset FD HW */
-> > > +	if (!ret) {
-> > > +		struct ipi_message fd_ipi_msg;
-> > > +
-> > > +		fd_ipi_msg.cmd_id = MTK_FD_IPI_CMD_RESET;
-> > > +		if (scp_ipi_send(fd->scp_pdev, SCP_IPI_FD_CMD, &fd_ipi_msg,
-> > > +				 sizeof(fd_ipi_msg), MTK_FD_IPI_SEND_TIMEOUT))
-> > > +			dev_err(fd->dev, "FD Reset HW error\n");
-> > > +		return -ETIMEDOUT;
-> > > +	}
-> > > +	return 0;
-> > > +}
-> > > +
-> > 
-> > Continue the discussion about job abort in RFC v2,
-> > 
-> > I think the job_abort callback in v4l2_m2m_ops() might be useful.
-> > 
-> > ref:
-> > https://elixir.bootlin.com/linux/v5.4-rc2/source/drivers/media/v4l2-core/v4l2-mem2mem.c#L398
-> > https://elixir.bootlin.com/linux/v5.4-rc2/source/include/media/v4l2-mem2mem.h#L43
-> > 
-> > in drivers/media/v4l2-core/v4l2-mem2mem.c #398 v4l2_m2m_cancel_job()
-> > ...
-> > if (m2m_ctx->job_flags & TRANS_RUNNING) {
-> > 	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
-> > 	if (m2m_dev->m2m_ops->job_abort)
-> > 		m2m_dev->m2m_ops->job_abort(m2m_ctx->priv);
-> > 	dprintk("m2m_ctx %p running, will wait to complete\n", m2m_ctx);
-> > 	wait_event(m2m_ctx->finished,
-> > 			!(m2m_ctx->job_flags & TRANS_RUNNING));
-> > } ...
-> > 
-> > If this operation is set, we might use the v4l2_m2m_cancel_job() when
-> > suspend, and it will do mtk_fd_job_abort() here.
-> >
-> 
-> The expectation for .job_abort() is that signals the hardware to
-> instantly abandon the current job. Do we have a way to tell the
-> firmware/hardware to do so?
-> 
-> Also, suspend must not abort the current job. Anything that was already
-> running is expected to complete successfuly and further jobs should
-> continue executing once the system resumes.
-> 
-I appreciate your comments and Pi-Hsun's patch,
+Hi Andrey,
 
-Ok, I see.
-For FD40, we can't tell the firmware/hardware to instantly abandon the
-current job.
-Therefore, for suspend, we stop sending further jobs to hardware and
-wait for the completion of the running job.
-For resume, we continue sending jobs to hardware.
+Would you have any concerns?
+Thanks.
 
-> [snip]
-> 
-> > > +
-> > > +static int mtk_fd_suspend(struct device *dev)
-> > > +{
-> > > +	struct mtk_fd_dev *fd = dev_get_drvdata(dev);
-> > > +
-> > > +	if (pm_runtime_suspended(dev))
-> > > +		return 0;
-> > > +
-> > > +	if (fd->fd_stream_count)
-> > > +		if (mtk_fd_job_abort(fd))
-> > > +			mtk_fd_hw_job_finish(fd, VB2_BUF_STATE_ERROR);
-> > > +
-> > 
-> > To avoid mtk_fd_hw_job_finish() trigger the next job,
-> > I suppose that we could use v4l2_m2m_cancel_job instead of job_abort and
-> > job_finish here.
-> > 
-> > /**
-> >  * v4l2_m2m_cancel_job() - cancel pending jobs for the context
-> >  * @m2m_ctx: m2m context with jobs to be canceled
-> >  *
-> >  * In case of streamoff or release called on any context,
-> >  * 1] If the context is currently running, then abort job will be called
-> >  * 2] If the context is queued, then the context will be removed from
-> >  *    the job_queue
-> >  */
-> > 
-> > or another way,
-> > we may add a flag and implement mtk_fd_job_ready() that reads the flag
-> > if we suspend, we set the flag and do job_abort and job_finish, even if
-> > it try enqueue, it will still not really queue the job, until we reset
-> > the flag in mtk_fd_resume().
-> > 
-> > how do you think?
-> >
-> 
-> As per my comment above, suspend must just pause the execution of the
-> jobs. It must not cause any jobs to be skipped.
-> 
-> After analyzing the m2m framework and existing m2m drivers I realized
-> that they currently provide no way to correctly handle suspend/resume.
-> Pi-Hsun has been looking into fixing this in crrev.com/c/1878112 and
-> we'll send it upstream as soon as we get something that should handle
-> all the cases correctly.
-> 
-Ok, thanks for the patches.
-
-> > > +	/* suspend FD HW */
-> > > +	writel(0x0, fd->fd_base + MTK_FD_REG_OFFSET_INT_EN);
-> > > +	writel(0x0, fd->fd_base + MTK_FD_REG_OFFSET_HW_ENABLE);
-> > > +	clk_disable_unprepare(fd->fd_clk);
-> > > +	dev_dbg(dev, "%s:disable clock\n", __func__);
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +
-> > > +static int mtk_fd_resume(struct device *dev)
-> > > +{
-> > > +	struct mtk_fd_dev *fd = dev_get_drvdata(dev);
-> > > +	int ret;
-> > > +
-> > > +	if (pm_runtime_suspended(dev))
-> > > +		return 0;
-> > > +
-> > > +	ret = clk_prepare_enable(fd->fd_clk);
-> > > +	if (ret < 0) {
-> > > +		dev_dbg(dev, "Failed to open fd clk:%d\n", ret);
-> > > +		return ret;
-> > > +	}
-> > > +
-> > > +	/* resume FD HW */
-> > > +	writel(MTK_FD_SET_HW_ENABLE, fd->fd_base + MTK_FD_REG_OFFSET_HW_ENABLE);
-> > > +	writel(0x1, fd->fd_base + MTK_FD_REG_OFFSET_INT_EN);
-> > > +	dev_dbg(dev, "%s:enable clock\n", __func__);
-> 
-> By the way, we need to kick the m2m framework here to schedule further
-> jobs. Pi-Hsun's patch will also take care of this.
-> 
-Ok, I see.
-I would like to use Pi-Hsun's patch, otherwise I would need to call
-v4l2_m2m_try_run() here.
-
-> [snip]
-> 
-> > > +/* Set the face angle and directions to be detected */
-> > > +#define V4L2_CID_MTK_FD_DETECT_POSE		(V4L2_CID_USER_MTK_FD_BASE + 1)
-> > > +
-> > > +/* Set image widths for an input image to be scaled down for face detection */
-> > > +#define V4L2_CID_MTK_FD_SCALE_DOWN_IMG_WIDTH	(V4L2_CID_USER_MTK_FD_BASE + 2)
-> > > +
-> > > +/* Set image heights for an input image to be scaled down for face detection */
-> > > +#define V4L2_CID_MTK_FD_SCALE_DOWN_IMG_HEIGHT	(V4L2_CID_USER_MTK_FD_BASE + 3)
-> > > +
-> > > +/* Set the length of scale down size array */
-> > > +#define V4L2_CID_MTK_FD_SCALE_IMG_NUM		(V4L2_CID_USER_MTK_FD_BASE + 4)
-> > > +
-> > > +/* Set the detection speed, usually reducing accuracy. */
-> > > +#define V4L2_CID_MTK_FD_DETECT_SPEED		(V4L2_CID_USER_MTK_FD_BASE + 5)
-> > > +
-> > > +/* Select the detection model or algorithm to be used. */
-> > > +#define V4L2_CID_MTK_FD_DETECTION_MODEL		(V4L2_CID_USER_MTK_FD_BASE + 6)
-> > > +
-> > > +/* We reserve 16 controls for this driver. */
-> > > +#define V4L2_CID_MTK_FD_MAX			16
-> > > +
-> > 
-> > For these control IDs, I think the following should be remained as chip
-> > specific controls.
-> > V4L2_CID_MTK_FD_SCALE_DOWN_IMG_WIDTH,
-> > V4L2_CID_MTK_FD_SCALE_DOWN_IMG_HEIGHT and V4L2_CID_MTK_FD_SCALE_IMG_NUM 
-> > 
-> > Hope there would be standardizing face detection api that cover the rest
-> > controls: V4L2_CID_MTK_FD_DETECT_POSE, V4L2_CID_MTK_FD_DETECT_SPEED and
-> > V4L2_CID_MTK_FD_DETECTION_MODEL
-> > 
-> > Would you have any suggestions on how to propose the standard face
-> > detection apis?
-> > 
-> 
-> Given no follow up feedback from the community, I think we can keep them
-> as driver-specific, but should make sure that they have some reasonable
-> default values in case an application doesn't recognize them.
-> 
-> Best regards,
-> Tomasz
-> 
-Should I keep the file "mtk-fd-v4l2-controls.h" which defines the
-control ids under the folder "/include/uapi/linux"?
-
-
-Thanks and Best regards,
-Jerry
+Walter
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
