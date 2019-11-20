@@ -2,78 +2,77 @@ Return-Path: <SRS0=Qt5b=ZM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5FC8C432C0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Nov 2019 06:45:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D5545C432C0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Nov 2019 08:21:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 886BA206D8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Nov 2019 06:45:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8C4172231D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Nov 2019 08:21:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="krLKLTSL";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="CW/Z+rLH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 886BA206D8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UmRL7ZuQ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dBCv593J"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C4172231D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=14I11DUsTPcwRpUTX8fEPFk64EaDKtHzgEQhklxkdkI=; b=krLKLTSLpLyiGs
-	0oSEwHzOSy8r/srVNpN3wxptccIh9hIKMdzZ5NGcIVgurAJjkmktt6HEKJxXQ5mcUAGlL5E4LGxBg
-	x60TcZLkNnaKPiIQxkULuNMh0d8O7yUt8XFUMZscalvz7DYFi3ydjqBSJq1J+EajoAdCO1Doqomek
-	/VMTiBjOqjbzGDVA4wn9/LAJmvwksjUQ5iaH7udNeFcOMjFtkNJ19LBN2LPvU/+3Ma0H7YTMt6Kq/
-	ywjJUy+8VXQKP0a6rJeOuS9ywRQgM30I4zAZEpzlMoszfTgd0uO4TD44DY3Te/52McelLS8JWgf3r
-	ltVKmZMGFO/gR7gClUpQ==;
+	List-Owner; bh=8/zaPqlNPF3W0Xbyt2oy9NY+/tMGRmtd8PaMiLQkYVo=; b=UmRL7ZuQDBlCax
+	3sNCPuvE7y1pYqdMG+O6t4SragFKFc79obidkQnytpZN2lm9PfrQW6es77EmIv31WVfqByVhtYrHP
+	xTtFsiqTjSoIPqqJng3EFWhSnAhRGB+KXokyiqMYUrV1Xm6Z69aI7L8GOC75QBbh2PB1EjOty+Hl8
+	Tv3LcaTIG68sNIra8RjiotIzweIlnZhrFL8JgHmUevSnO7Id3AkdOtupP5fe/qg47dfGakrRkTamT
+	aF2aN+CUtkR0J7zYvEuKzapqQ1UfvNWoZuODA9n3oifWsEiF/2EBS01IVpoFHrRhHl4aVx4SLhAiS
+	dXu2Q/ULoZDKCsVsluLw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iXJkJ-0005r0-Ru; Wed, 20 Nov 2019 06:45:47 +0000
+	id 1iXLEh-0008HN-Mi; Wed, 20 Nov 2019 08:21:15 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iXJjr-0005KA-P5; Wed, 20 Nov 2019 06:45:21 +0000
-X-UUID: fcd013f8f5324450948e941c868e937a-20191119
+ id 1iXLEW-00089h-Gn; Wed, 20 Nov 2019 08:21:06 +0000
+X-UUID: a0a99c6b69b84e028239cfce7db7ddf1-20191120
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Bf0H4NjN87Eyxjtkpl/ipYmRPL+ArIku0qP3VxKPEJk=; 
- b=CW/Z+rLH7yh0KtlkqNa8gXmqCBJm2VfPuoEHk7LWs2Q49rtSS1Tyyny6qiU0Bz1ofy9O2xhnw2NgccaT8pbrga68Ni/FFWh4Q02wH2ba0ULMbAp4uyMaXA4tqsFcWQ41+U4cVI+6VFy53hOrAXVGEFkqJ0Kk2tLW6DOtT7Yv7fU=;
-X-UUID: fcd013f8f5324450948e941c868e937a-20191119
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Vm5saM+GW0YUbJUNwRCvnRKSP+TQW5BbAxj4dw2J4dY=; 
+ b=dBCv593JHT5q6x8wGg9cEEFnlPEW6vdoHgV08dotVzQ4nd+dGQhbKXq+bh8LRvcCUmRmT1iRwwumlbL6OWAGyjks5pxOdQlLuqvUzTyi4NmFlxelzYE7pKulu7SfnxtJdI7H1H86ze4OY/C5IANY+796kSPemvTdflQ7lVW0nX4=;
+X-UUID: a0a99c6b69b84e028239cfce7db7ddf1-20191120
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
+ (envelope-from <jerry-ch.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1307336309; Tue, 19 Nov 2019 22:45:16 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ with ESMTP id 1633443104; Wed, 20 Nov 2019 00:21:01 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 19 Nov 2019 22:43:41 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 20 Nov 2019 14:42:31 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
+ 15.0.1395.4; Wed, 20 Nov 2019 00:11:15 -0800
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 20 Nov 2019 16:10:34 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 20 Nov 2019 14:43:00 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Felipe Balbi <balbi@kernel.org>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>
-Subject: [RESEND PATCH v3 3/3] usb: gadget: udc: gr_udc: create debugfs
- directory under usb root
-Date: Wed, 20 Nov 2019 14:43:03 +0800
-Message-ID: <1574232183-5760-3-git-send-email-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1574232183-5760-1-git-send-email-chunfeng.yun@mediatek.com>
-References: <1574232183-5760-1-git-send-email-chunfeng.yun@mediatek.com>
+ Transport; Wed, 20 Nov 2019 16:10:49 +0800
+Message-ID: <1574237450.20087.17.camel@mtksdccf07>
+Subject: Re: [RFC PATCH V3 3/3] platform: mtk-isp: Add Mediatek FD driver
+From: Jerry-ch Chen <Jerry-ch.Chen@mediatek.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Date: Wed, 20 Nov 2019 16:10:50 +0800
+In-Reply-To: <20191025035211.GA67000@chromium.org>
+References: <20190906101125.3784-1-Jerry-Ch.chen@mediatek.com>
+ <20190906101125.3784-4-Jerry-Ch.chen@mediatek.com>
+ <1571109375.3706.40.camel@mtksdccf07> <20191025035211.GA67000@chromium.org>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 13A396944ECAEF168D722F1FF46B51809385C180D0D671363AF7CA160F0B07A82000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191119_224519_820936_F939A1DD 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20191120_002104_574123_876462CE 
+X-CRM114-Status: GOOD (  36.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,57 +84,266 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
- linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Stephen Boyd <swboyd@chromium.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Bin Liu <b-liu@ti.com>,
- Cristian Birsan <cristian.birsan@microchip.com>
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ Sean Cheng =?UTF-8?Q?=28=E9=84=AD=E6=98=87=E5=BC=98=29?=
+ <Sean.Cheng@mediatek.com>,
+ Frederic Chen =?UTF-8?Q?=28=E9=99=B3=E4=BF=8A=E5=85=83=29?=
+ <Frederic.Chen@mediatek.com>,
+ Rynn Wu =?UTF-8?Q?=28=E5=90=B3=E8=82=B2=E6=81=A9=29?= <Rynn.Wu@mediatek.com>,
+ Christie Yu =?UTF-8?Q?=28=E6=B8=B8=E9=9B=85=E6=83=A0=29?=
+ <christie.yu@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>,
+ Jungo Lin =?UTF-8?Q?=28=E6=9E=97=E6=98=8E=E4=BF=8A=29?=
+ <jungo.lin@mediatek.com>,
+ Po-Yang Huang =?UTF-8?Q?=28=E9=BB=83=E6=9F=8F=E9=99=BD=29?=
+ <po-yang.huang@mediatek.com>,
+ CK Hu =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>, Sj
+ Huang =?UTF-8?Q?=28=E9=BB=83=E4=BF=A1=E7=92=8B=29?= <sj.huang@mediatek.com>,
+ "yuzhao@chromium.org" <yuzhao@chromium.org>, "lkml@metux.net" <lkml@metux.net>,
+ "zwisler@chromium.org" <zwisler@chromium.org>,
+ "hans.verkuil@cisco.com" <hans.verkuil@cisco.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "mchehab@kernel.org" <mchehab@kernel.org>,
+ "laurent.pinchart+renesas@ideasonboard.com"
+ <laurent.pinchart+renesas@ideasonboard.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Now the USB gadget subsystem can use the USB debugfs root directory,
-so move it's directory from the root of the debugfs filesystem into
-the root of usb
+Hi Tomasz,
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v3:
-  1. fix up build error of undefined usb_debug_root
+On Fri, 2019-10-25 at 11:52 +0800, Tomasz Figa wrote:
+> On Tue, Oct 15, 2019 at 11:16:15AM +0800, Jerry-ch Chen wrote:
+> > Hi Tomasz,
+> > 
+> > On Fri, 2019-09-06 at 18:11 +0800, Jerry-ch Chen wrote:
+> > > From: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
+> > > 
+> > > This patch adds the driver of Face Detection (FD) unit in
+> > > Mediatek camera system, providing face detection function.
+> > > 
+> > > The mtk-isp directory will contain drivers for multiple IP
+> > > blocks found in Mediatek ISP system. It will include ISP Pass 1
+> > > driver (CAM), sensor interface driver, DIP driver and face
+> > > detection driver.
+> > > 
+> > > Signed-off-by: Jerry-ch Chen <jerry-ch.chen@mediatek.com>
+> > > ---
+> > >  drivers/media/platform/Kconfig                |    2 +
+> > >  drivers/media/platform/Makefile               |    2 +
+> > >  drivers/media/platform/mtk-isp/fd/Kconfig     |   19 +
+> > >  drivers/media/platform/mtk-isp/fd/Makefile    |    5 +
+> > >  drivers/media/platform/mtk-isp/fd/mtk_fd.h    |  148 ++
+> > >  drivers/media/platform/mtk-isp/fd/mtk_fd_40.c | 1219 +++++++++++++++++
+> > >  include/uapi/linux/mtk-fd-v4l2-controls.h     |   69 +
+> > >  include/uapi/linux/v4l2-controls.h            |    4 +
+> > >  8 files changed, 1468 insertions(+)
+> > >  create mode 100644 drivers/media/platform/mtk-isp/fd/Kconfig
+> > >  create mode 100644 drivers/media/platform/mtk-isp/fd/Makefile
+> > >  create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd.h
+> > >  create mode 100644 drivers/media/platform/mtk-isp/fd/mtk_fd_40.c
+> > >  create mode 100644 include/uapi/linux/mtk-fd-v4l2-controls.h
+> > > 
+> 
+> [snip]
+> 
+> > > +static int mtk_fd_job_abort(struct mtk_fd_dev *fd)
+> > > +{
+> > > +	u32 ret;
+> > > +
+> > > +	ret = wait_for_completion_timeout(&fd->fd_irq_done,
+> > > +					  msecs_to_jiffies(MTK_FD_HW_TIMEOUT));
+> > > +	/* Reset FD HW */
+> > > +	if (!ret) {
+> > > +		struct ipi_message fd_ipi_msg;
+> > > +
+> > > +		fd_ipi_msg.cmd_id = MTK_FD_IPI_CMD_RESET;
+> > > +		if (scp_ipi_send(fd->scp_pdev, SCP_IPI_FD_CMD, &fd_ipi_msg,
+> > > +				 sizeof(fd_ipi_msg), MTK_FD_IPI_SEND_TIMEOUT))
+> > > +			dev_err(fd->dev, "FD Reset HW error\n");
+> > > +		return -ETIMEDOUT;
+> > > +	}
+> > > +	return 0;
+> > > +}
+> > > +
+> > 
+> > Continue the discussion about job abort in RFC v2,
+> > 
+> > I think the job_abort callback in v4l2_m2m_ops() might be useful.
+> > 
+> > ref:
+> > https://elixir.bootlin.com/linux/v5.4-rc2/source/drivers/media/v4l2-core/v4l2-mem2mem.c#L398
+> > https://elixir.bootlin.com/linux/v5.4-rc2/source/include/media/v4l2-mem2mem.h#L43
+> > 
+> > in drivers/media/v4l2-core/v4l2-mem2mem.c #398 v4l2_m2m_cancel_job()
+> > ...
+> > if (m2m_ctx->job_flags & TRANS_RUNNING) {
+> > 	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
+> > 	if (m2m_dev->m2m_ops->job_abort)
+> > 		m2m_dev->m2m_ops->job_abort(m2m_ctx->priv);
+> > 	dprintk("m2m_ctx %p running, will wait to complete\n", m2m_ctx);
+> > 	wait_event(m2m_ctx->finished,
+> > 			!(m2m_ctx->job_flags & TRANS_RUNNING));
+> > } ...
+> > 
+> > If this operation is set, we might use the v4l2_m2m_cancel_job() when
+> > suspend, and it will do mtk_fd_job_abort() here.
+> >
+> 
+> The expectation for .job_abort() is that signals the hardware to
+> instantly abandon the current job. Do we have a way to tell the
+> firmware/hardware to do so?
+> 
+> Also, suspend must not abort the current job. Anything that was already
+> running is expected to complete successfuly and further jobs should
+> continue executing once the system resumes.
+> 
+I appreciate your comments and Pi-Hsun's patch,
 
-v2:
-  1. abandon new API usb_debugfs_create_dir(), and use usb_debug_root
----
- drivers/usb/gadget/udc/gr_udc.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Ok, I see.
+For FD40, we can't tell the firmware/hardware to instantly abandon the
+current job.
+Therefore, for suspend, we stop sending further jobs to hardware and
+wait for the completion of the running job.
+For resume, we continue sending jobs to hardware.
 
-diff --git a/drivers/usb/gadget/udc/gr_udc.c b/drivers/usb/gadget/udc/gr_udc.c
-index 7a0e9a58c2d8..5d5a0bc79757 100644
---- a/drivers/usb/gadget/udc/gr_udc.c
-+++ b/drivers/usb/gadget/udc/gr_udc.c
-@@ -29,6 +29,7 @@
- #include <linux/list.h>
- #include <linux/interrupt.h>
- #include <linux/device.h>
-+#include <linux/usb.h>
- #include <linux/usb/ch9.h>
- #include <linux/usb/gadget.h>
- #include <linux/dma-mapping.h>
-@@ -208,7 +209,7 @@ static void gr_dfs_create(struct gr_udc *dev)
- {
- 	const char *name = "gr_udc_state";
- 
--	dev->dfs_root = debugfs_create_dir(dev_name(dev->dev), NULL);
-+	dev->dfs_root = debugfs_create_dir(dev_name(dev->dev), usb_debug_root);
- 	debugfs_create_file(name, 0444, dev->dfs_root, dev, &gr_dfs_fops);
- }
- 
--- 
-2.23.0
+> [snip]
+> 
+> > > +
+> > > +static int mtk_fd_suspend(struct device *dev)
+> > > +{
+> > > +	struct mtk_fd_dev *fd = dev_get_drvdata(dev);
+> > > +
+> > > +	if (pm_runtime_suspended(dev))
+> > > +		return 0;
+> > > +
+> > > +	if (fd->fd_stream_count)
+> > > +		if (mtk_fd_job_abort(fd))
+> > > +			mtk_fd_hw_job_finish(fd, VB2_BUF_STATE_ERROR);
+> > > +
+> > 
+> > To avoid mtk_fd_hw_job_finish() trigger the next job,
+> > I suppose that we could use v4l2_m2m_cancel_job instead of job_abort and
+> > job_finish here.
+> > 
+> > /**
+> >  * v4l2_m2m_cancel_job() - cancel pending jobs for the context
+> >  * @m2m_ctx: m2m context with jobs to be canceled
+> >  *
+> >  * In case of streamoff or release called on any context,
+> >  * 1] If the context is currently running, then abort job will be called
+> >  * 2] If the context is queued, then the context will be removed from
+> >  *    the job_queue
+> >  */
+> > 
+> > or another way,
+> > we may add a flag and implement mtk_fd_job_ready() that reads the flag
+> > if we suspend, we set the flag and do job_abort and job_finish, even if
+> > it try enqueue, it will still not really queue the job, until we reset
+> > the flag in mtk_fd_resume().
+> > 
+> > how do you think?
+> >
+> 
+> As per my comment above, suspend must just pause the execution of the
+> jobs. It must not cause any jobs to be skipped.
+> 
+> After analyzing the m2m framework and existing m2m drivers I realized
+> that they currently provide no way to correctly handle suspend/resume.
+> Pi-Hsun has been looking into fixing this in crrev.com/c/1878112 and
+> we'll send it upstream as soon as we get something that should handle
+> all the cases correctly.
+> 
+Ok, thanks for the patches.
+
+> > > +	/* suspend FD HW */
+> > > +	writel(0x0, fd->fd_base + MTK_FD_REG_OFFSET_INT_EN);
+> > > +	writel(0x0, fd->fd_base + MTK_FD_REG_OFFSET_HW_ENABLE);
+> > > +	clk_disable_unprepare(fd->fd_clk);
+> > > +	dev_dbg(dev, "%s:disable clock\n", __func__);
+> > > +
+> > > +	return 0;
+> > > +}
+> > > +
+> > > +static int mtk_fd_resume(struct device *dev)
+> > > +{
+> > > +	struct mtk_fd_dev *fd = dev_get_drvdata(dev);
+> > > +	int ret;
+> > > +
+> > > +	if (pm_runtime_suspended(dev))
+> > > +		return 0;
+> > > +
+> > > +	ret = clk_prepare_enable(fd->fd_clk);
+> > > +	if (ret < 0) {
+> > > +		dev_dbg(dev, "Failed to open fd clk:%d\n", ret);
+> > > +		return ret;
+> > > +	}
+> > > +
+> > > +	/* resume FD HW */
+> > > +	writel(MTK_FD_SET_HW_ENABLE, fd->fd_base + MTK_FD_REG_OFFSET_HW_ENABLE);
+> > > +	writel(0x1, fd->fd_base + MTK_FD_REG_OFFSET_INT_EN);
+> > > +	dev_dbg(dev, "%s:enable clock\n", __func__);
+> 
+> By the way, we need to kick the m2m framework here to schedule further
+> jobs. Pi-Hsun's patch will also take care of this.
+> 
+Ok, I see.
+I would like to use Pi-Hsun's patch, otherwise I would need to call
+v4l2_m2m_try_run() here.
+
+> [snip]
+> 
+> > > +/* Set the face angle and directions to be detected */
+> > > +#define V4L2_CID_MTK_FD_DETECT_POSE		(V4L2_CID_USER_MTK_FD_BASE + 1)
+> > > +
+> > > +/* Set image widths for an input image to be scaled down for face detection */
+> > > +#define V4L2_CID_MTK_FD_SCALE_DOWN_IMG_WIDTH	(V4L2_CID_USER_MTK_FD_BASE + 2)
+> > > +
+> > > +/* Set image heights for an input image to be scaled down for face detection */
+> > > +#define V4L2_CID_MTK_FD_SCALE_DOWN_IMG_HEIGHT	(V4L2_CID_USER_MTK_FD_BASE + 3)
+> > > +
+> > > +/* Set the length of scale down size array */
+> > > +#define V4L2_CID_MTK_FD_SCALE_IMG_NUM		(V4L2_CID_USER_MTK_FD_BASE + 4)
+> > > +
+> > > +/* Set the detection speed, usually reducing accuracy. */
+> > > +#define V4L2_CID_MTK_FD_DETECT_SPEED		(V4L2_CID_USER_MTK_FD_BASE + 5)
+> > > +
+> > > +/* Select the detection model or algorithm to be used. */
+> > > +#define V4L2_CID_MTK_FD_DETECTION_MODEL		(V4L2_CID_USER_MTK_FD_BASE + 6)
+> > > +
+> > > +/* We reserve 16 controls for this driver. */
+> > > +#define V4L2_CID_MTK_FD_MAX			16
+> > > +
+> > 
+> > For these control IDs, I think the following should be remained as chip
+> > specific controls.
+> > V4L2_CID_MTK_FD_SCALE_DOWN_IMG_WIDTH,
+> > V4L2_CID_MTK_FD_SCALE_DOWN_IMG_HEIGHT and V4L2_CID_MTK_FD_SCALE_IMG_NUM 
+> > 
+> > Hope there would be standardizing face detection api that cover the rest
+> > controls: V4L2_CID_MTK_FD_DETECT_POSE, V4L2_CID_MTK_FD_DETECT_SPEED and
+> > V4L2_CID_MTK_FD_DETECTION_MODEL
+> > 
+> > Would you have any suggestions on how to propose the standard face
+> > detection apis?
+> > 
+> 
+> Given no follow up feedback from the community, I think we can keep them
+> as driver-specific, but should make sure that they have some reasonable
+> default values in case an application doesn't recognize them.
+> 
+> Best regards,
+> Tomasz
+> 
+Should I keep the file "mtk-fd-v4l2-controls.h" which defines the
+control ids under the folder "/include/uapi/linux"?
+
+
+Thanks and Best regards,
+Jerry
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
