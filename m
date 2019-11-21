@@ -2,61 +2,62 @@ Return-Path: <SRS0=pCB/=ZN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E76F8C432C0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Nov 2019 12:38:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AACA4C432C3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Nov 2019 13:03:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B87D82089D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Nov 2019 12:38:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7E48D2089D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Nov 2019 13:03:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NNgR0Nm4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B87D82089D
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=infradead.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lE7J00aB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7E48D2089D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=virtuozzo.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o6KSdpvUw/mcuCSTLFhYZV9P//eZTZtJifSis94O728=; b=NNgR0Nm4qLCJYZ
-	4rOqv82UR5Y+0CSCZuZ1DOLeWM8YAfC6rYdYsWoG2Jexf2rJMKHRGCkOtaAvfcOhsI6lpDvtYKE7S
-	ox22YNstZWyiYsWw68nZXwCNt8hmaByHP1vUaCu7DizB22lPLFh+lrUGmoUh4xSI+7INeGPWHMygg
-	OqIcN3kbTXDQLeiqA+/dnhcOGTFAhy4V8Ib0W8w3hZL7zhn7I8x7NjgFJ3XiUyArWHqsBe9wTw3xR
-	m1h/gFMM/cpRi9CREA8RTkKHGzOtnZ3VNRqPaB3Ot2o5BotPo8bvj3lU3YgiMWPBD/nffAkGrKJeP
-	DThKFEmxuSqrJl6rptUw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cxVZ6EzhuHoeoWP38iduuLarkfP76aC8wlFPI130HRY=; b=lE7J00aB4AC7y+
+	+K9PQw46/GH0gJDj83wIDFtPXf5QL6ytLwqb8Yo27Bf15h1bVEOuTqvrUCsBUZ7Srt5auvAX019f5
+	5Y7AFkMW7dR9ATJ5nWt3MCMQz7jfx46ad9685JxJc0bCu8nwdqNgLvBGRXWiX9E4l3MpSJWgaH5Wi
+	BhUI9NoPbYdApQo3YsNjqiX5MnflcVVXqoQWlK46KXX2B38NN+wI4i6qOkjpl3/YO3SV2BqUgOoAx
+	gjvMJX9lcCcRVxtwctmid9VZZ7/a0OvQkUKMvqZSGf96aNg43JWwFLLk1xhM7Q33y1xKyRiSBQap0
+	SgIOtOu5qeeUdBUYdBVA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iXliw-0005yZ-B8; Thu, 21 Nov 2019 12:38:14 +0000
-Received: from j217100.upc-j.chello.nl ([24.132.217.100]
- helo=noisy.programming.kicks-ass.net)
- by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iXlin-0005qq-Qq; Thu, 21 Nov 2019 12:38:05 +0000
-Received: from hirez.programming.kicks-ass.net
- (hirez.programming.kicks-ass.net [192.168.1.225])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (Client did not present a certificate)
- by noisy.programming.kicks-ass.net (Postfix) with ESMTPS id 55B7E300565;
- Thu, 21 Nov 2019 13:36:53 +0100 (CET)
-Received: by hirez.programming.kicks-ass.net (Postfix, from userid 1000)
- id 33847201DD6AF; Thu, 21 Nov 2019 13:38:04 +0100 (CET)
-Date: Thu, 21 Nov 2019 13:38:04 +0100
-From: Peter Zijlstra <peterz@infradead.org>
-To: YT Chang <yt.chang@mediatek.com>
-Subject: Re: [PATCH 1/1] sched: cfs_rq h_load might not update due to irq
- disable
-Message-ID: <20191121123804.GR4097@hirez.programming.kicks-ass.net>
-References: <1574325009-10846-1-git-send-email-yt.chang@mediatek.com>
+	id 1iXm7p-00069D-SZ; Thu, 21 Nov 2019 13:03:57 +0000
+Received: from relay.sw.ru ([185.231.240.75])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iXm7n-00068b-Ov; Thu, 21 Nov 2019 13:03:57 +0000
+Received: from dhcp-172-16-25-5.sw.ru ([172.16.25.5])
+ by relay.sw.ru with esmtp (Exim 4.92.3)
+ (envelope-from <aryabinin@virtuozzo.com>)
+ id 1iXm7i-0002DQ-S4; Thu, 21 Nov 2019 16:03:50 +0300
+Subject: Re: [PATCH v4 1/2] kasan: detect negative size in memory operation
+ function
+To: Walter Wu <walter-zh.wu@mediatek.com>
+References: <20191112065302.7015-1-walter-zh.wu@mediatek.com>
+ <040479c3-6f96-91c6-1b1a-9f3e947dac06@virtuozzo.com>
+ <1574341376.8338.4.camel@mtksdccf07>
+From: Andrey Ryabinin <aryabinin@virtuozzo.com>
+Message-ID: <217bd537-e6b7-3acc-b6bb-ac9c5d94da89@virtuozzo.com>
+Date: Thu, 21 Nov 2019 16:03:38 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1574325009-10846-1-git-send-email-yt.chang@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <1574341376.8338.4.camel@mtksdccf07>
+Content-Language: en-US
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20191121_050355_807642_59309202 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,101 +69,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Vincent Guittot <vincent.guittot@linaro.org>, wsd_upstream@mediatek.com,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: wsd_upstream <wsd_upstream@mediatek.com>, linux-kernel@vger.kernel.org,
+ kasan-dev@googlegroups.com, linux-mm@kvack.org,
+ Alexander Potapenko <glider@google.com>, linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ Dmitry Vyukov <dvyukov@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 21, 2019 at 04:30:09PM +0800, YT Chang wrote:
-> Syndrome:
-> 
-> Two CPUs might do idle balance in the same time.
-> One CPU does idle balance and pulls some tasks.
-> However before pick next task, ALL task are pulled back to other CPU.
-> That results in infinite loop in both CPUs.
 
-Can you easily reproduce this?
 
-> =========================================
-> code flow:
+On 11/21/19 4:02 PM, Walter Wu wrote:
+> On Thu, 2019-11-21 at 15:26 +0300, Andrey Ryabinin wrote:
+>>
+>> On 11/12/19 9:53 AM, Walter Wu wrote:
+>>
+>>> diff --git a/mm/kasan/common.c b/mm/kasan/common.c
+>>> index 6814d6d6a023..4bfce0af881f 100644
+>>> --- a/mm/kasan/common.c
+>>> +++ b/mm/kasan/common.c
+>>> @@ -102,7 +102,8 @@ EXPORT_SYMBOL(__kasan_check_write);
+>>>  #undef memset
+>>>  void *memset(void *addr, int c, size_t len)
+>>>  {
+>>> -	check_memory_region((unsigned long)addr, len, true, _RET_IP_);
+>>> +	if (!check_memory_region((unsigned long)addr, len, true, _RET_IP_))
+>>> +		return NULL;
+>>>  
+>>>  	return __memset(addr, c, len);
+>>>  }
+>>> @@ -110,8 +111,9 @@ void *memset(void *addr, int c, size_t len)
+>>>  #undef memmove
+>>>  void *memmove(void *dest, const void *src, size_t len)
+>>>  {
+>>> -	check_memory_region((unsigned long)src, len, false, _RET_IP_);
+>>> -	check_memory_region((unsigned long)dest, len, true, _RET_IP_);
+>>> +	if (!check_memory_region((unsigned long)src, len, false, _RET_IP_) ||
+>>> +	    !check_memory_region((unsigned long)dest, len, true, _RET_IP_))
+>>> +		return NULL;
+>>>  
+>>>  	return __memmove(dest, src, len);
+>>>  }
+>>> @@ -119,8 +121,9 @@ void *memmove(void *dest, const void *src, size_t len)
+>>>  #undef memcpy
+>>>  void *memcpy(void *dest, const void *src, size_t len)
+>>>  {
+>>> -	check_memory_region((unsigned long)src, len, false, _RET_IP_);
+>>> -	check_memory_region((unsigned long)dest, len, true, _RET_IP_);
+>>> +	if (!check_memory_region((unsigned long)src, len, false, _RET_IP_) ||
+>>> +	    !check_memory_region((unsigned long)dest, len, true, _RET_IP_))
+>>> +		return NULL;
+>>>  
+>>
+>> I realized that we are going a wrong direction here. Entirely skipping mem*() operation on any
+>> poisoned shadow value might only make things worse. Some bugs just don't have any serious consequences,
+>> but skipping the mem*() ops entirely might introduce such consequences, which wouldn't happen otherwise.
+>>
+>> So let's keep this code as this, no need to check the result of check_memory_region().
+>>
+>>
+> Ok, we just need to determine whether size is negative number. If yes
+> then KASAN produce report and continue to execute mem*(). right?
 > 
-> in pick_next_task_fair()
-> 
-> again:
-> 
-> if nr_running == 0
-> 	goto idle
-> pick next task
-> 	return
-> 
-> idle:
-> 	idle_balance
->        /* pull some tasks from other CPU,
->         * However other CPU are also do idle balance,
-> 	* and pull back these task */
-> 
-> 	go to again
-> 
-> =========================================
-> The result to pull ALL tasks back when the task_h_load
-> is incorrect and too low.
 
-Clearly you're not running a PREEMPT kernel, otherwise the break in
-detach_tasks() would've saved you, right?
-
-> static unsigned long task_h_load(struct task_struct *p)
-> {
->         struct cfs_rq *cfs_rq = task_cfs_rq(p);
-> 
-> 	update_cfs_rq_h_load(cfs_rq);
-> 	return div64_ul(p->se.avg.load_avg_contrib * cfs_rq->h_load,
-> 			cfs_rq->runnable_load_avg + 1);
-> }
-> 
-> The cfs_rq->h_load is incorrect and might too small.
-> The original idea of cfs_rq::last_h_load_update will not
-> update cfs_rq::h_load more than once a jiffies.
-> When the Two CPUs pull each other in the pick_next_task_fair,
-> the irq disabled and result in jiffie not update.
-> (Other CPUs wait for runqueue lock locked by the two CPUs.
-> So, ALL CPUs are irq disabled.)
-
-This cannot be true; because the loop drops rq->lock, so other CPUs
-should have an opportunity to acquire the lock and make progress.
-
-> Solution:
-> cfs_rq h_load might not update due to irq disable
-> use sched_clock instead jiffies
-> 
-> Signed-off-by: YT Chang <yt.chang@mediatek.com>
-> ---
->  kernel/sched/fair.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
-> index 83ab35e..231c53f 100644
-> --- a/kernel/sched/fair.c
-> +++ b/kernel/sched/fair.c
-> @@ -7578,9 +7578,11 @@ static void update_cfs_rq_h_load(struct cfs_rq *cfs_rq)
->  {
->  	struct rq *rq = rq_of(cfs_rq);
->  	struct sched_entity *se = cfs_rq->tg->se[cpu_of(rq)];
-> -	unsigned long now = jiffies;
-> +	u64 now = sched_clock_cpu(cpu_of(rq));
->  	unsigned long load;
->  
-> +	now = now * HZ >> 30;
-> +
->  	if (cfs_rq->last_h_load_update == now)
->  		return;
->  
-
-This is disguisting and wrong. That is not the correct relation between
-sched_clock() and jiffies.
+Yes.
 
 _______________________________________________
 Linux-mediatek mailing list
