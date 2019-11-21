@@ -2,145 +2,79 @@ Return-Path: <SRS0=pCB/=ZN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 96748C432C3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Nov 2019 03:52:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B47B0C432C0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Nov 2019 07:01:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6CF86208A1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Nov 2019 03:52:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 88B592088F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Nov 2019 07:01:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gQmS0Yhx";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="T86OQc0d"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CF86208A1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="d8WjjHXr";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="SLYBtyri"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 88B592088F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0O7xBBzlGtU+H8bZxs7v7Gjt/CApHugCBYOM1x3cujw=; b=gQmS0YhxgP+Y23
-	bnzeQcw4X3TZMsdEgXS9+zM3Xs2oJUthDU0rV731jf+lgHQizzDUfWv0c1tJa0PD20KFKQZjSltGb
-	XlNnrJHyVLUyikpbrK/bU0Acoi4Oa8GvnVJFWfTQC/HM/desMtB23vwrC65C3A4lysNSh/AVWc1s8
-	InKSGzmyAAo5snNmcSeBQyoblBbBY5+7CzFN1KYrkE3ebW8YCYcX0ygVTlk/B6APNfdz4VjvxzFiL
-	7QfHylxTst+AgAir4K0VmmHPACb43JB+VVTHV6DtPZU4qB5QikpHcOxh/0t/JEfyYxJI9cb5lvyL1
-	72hQILNLiscLzkrjH+ig==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=k9BK+8VWEdwNJ16NLOIbVoXKyPaiCPAkwcMyIr8jCy8=; b=d8WjjHXrPoSqL8
+	dtVx+Oo6pyJ8ioaRSnab70AaYeh7nbxola3bAkp5SlHFoQa8GsyXjmZ14l2YUnnp29qOFc/d9kVYi
+	G4E1vnRk/1wxd2wDC+0Yqqqceapl30woMWVHImE36glQDlXh124zn+bcOhUjosEApdNPATZ+0+m7M
+	LBcuR9+mKctvLNRxE+E9shjLzNru64hIwt3cbvHQyZGpiW/nNHZloJTKwWsm9Y43DhPw1JT+JZBWF
+	fO9R3u+RbBsoBZQrs6VF5m1XDP706G5CnfT0CA00ok2maT/QqZWyas3ty//X6my2AF/5y59tw97sn
+	rYDNPLfrq/PXO2c/fY7g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iXdWH-0006su-Od; Thu, 21 Nov 2019 03:52:37 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1iXgSf-0005pF-4V; Thu, 21 Nov 2019 07:01:05 +0000
+Received: from mail-il1-x12b.google.com ([2607:f8b0:4864:20::12b])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iXdWE-0006sR-Gm; Thu, 21 Nov 2019 03:52:35 +0000
-Received: by mail-wr1-x441.google.com with SMTP id s5so2611874wrw.2;
- Wed, 20 Nov 2019 19:52:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=CBJEC54lfW7nGNvoS8z3f1NL1oBbm+5yulPmVtSm9Fc=;
- b=T86OQc0dYHfGxCim2gA+9692kiFKz2t2M7AYUc7YK4dqesj0UHulrrMonDoF7LTS+6
- +Rr/rROGw8OB+mSwKuQw73GnGd7DDNJDiv0DhOQq5JeBvQs+uAq/EBQAeXhZBDxDr46j
- q2EUQ0KR03hHdd3yYAHZWXAD1D+x9qOQNdcj8KcnOgJOWKLJTmwhcGm5hMqrNQFrpV2d
- 2nd2HKbKtqOQmQQUDgBqXqldMI/TnqRwGC7eNzgzjFaTjUJWS62U25fXMTio81dYlA4k
- qANUg/dxwAnKzyKKJmarOBFbbVzH5Q90GF+aSwuqQv2ffaan5H4d2+RSu0EwqTf0vr11
- baIg==
+ id 1iXgSb-0005no-Q2
+ for linux-mediatek@lists.infradead.org; Thu, 21 Nov 2019 07:01:03 +0000
+Received: by mail-il1-x12b.google.com with SMTP id s75so2268240ilc.3
+ for <linux-mediatek@lists.infradead.org>; Wed, 20 Nov 2019 23:00:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=70XhVJoIf0CSjHrTRztFdyaZcM5N+1vNz44dhwcRPXw=;
+ b=SLYBtyriQY7seuHEQlL2JSt3ilAFTLCs46gN0dKVPB6PjkBZRqNh7NltQlrIcE52WM
+ NS1NEPu5eptOkKJvpE2HSpv/lFbdetda9B7b5w8JK7jknek+pKEqkv06FYxZ3lzN0R6J
+ Cwg+Cbs8vlomam8/SjUZutICyodcTjUUrT+50=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=CBJEC54lfW7nGNvoS8z3f1NL1oBbm+5yulPmVtSm9Fc=;
- b=fP5XMxEVAmOnWJjJXOhsjeKEah6B2jIEUKCrLP2U5lUIRWRXF0HDYpOJyXQoBRAze0
- LjJrkz7FMqwk7acxNvSuwAd6UpGQ1CUZ6hqhPMGVZuaMFZZRlNhSKTx3gyN87qnw8N7R
- 9nZf+M5dODji42aSltcbocoXoxCDX7fZ19vqJ/lPmw5g2HKfdh7uuVNJRp2Efs76Sjx1
- /VLyzhX2klin+Em3cRe2wIxHHpbJeoa3kgMw+KX8rYWHySC/8vdRoSBlxZ/+t/XpMYfM
- dzeqkQt92S54+q9YV00e0sjFjkUVFovzo93wGnLDBGE+ztNyutJY5YVfF4w/3yP1prMD
- xUCg==
-X-Gm-Message-State: APjAAAXLqMfmHEPLLBDiQNpN+HDTnT61tgHgWLF/63vFmkP2HjXoJ1AS
- KI21/t4qxHLgGtXOQNdeEN0=
-X-Google-Smtp-Source: APXvYqyH0YTyEjd/BvsuLLZyEj1q87fGKgJ3TI+zD++haNDB6wQ74A3/KSEtM3bu+mbUuO8JjxLD/A==
-X-Received: by 2002:adf:f344:: with SMTP id e4mr7886781wrp.365.1574308352677; 
- Wed, 20 Nov 2019 19:52:32 -0800 (PST)
-Received: from [10.230.29.119] ([192.19.223.252])
- by smtp.gmail.com with ESMTPSA id r2sm1720739wrp.64.2019.11.20.19.52.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 20 Nov 2019 19:52:31 -0800 (PST)
-Subject: Re: [RFC PATCH net-next] net: phylink: rename mac_link_state() op to
- mac_pcs_get_state()
-To: Andrew Lunn <andrew@lunn.ch>, Russell King <rmk+kernel@armlinux.org.uk>
-References: <E1iX2jg-0005Us-6U@rmk-PC.armlinux.org.uk>
- <20191121021740.GE18325@lunn.ch>
-From: Florian Fainelli <f.fainelli@gmail.com>
-Autocrypt: addr=f.fainelli@gmail.com; keydata=
- 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
- a9BQwACgnzGuH1BVeT2J0Ra+ZYgkx7DaPR0=
-Message-ID: <08304ec7-09f7-c116-e942-6d384ee67f47@gmail.com>
-Date: Wed, 20 Nov 2019 19:52:25 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=70XhVJoIf0CSjHrTRztFdyaZcM5N+1vNz44dhwcRPXw=;
+ b=aPauQKfvbsWFpBqpmxBey0TvwX2eVW/KqAgVDir3BJOA25CyEU1+JPKjdWxqF5Cb2p
+ PJLiNh7Tl3pM5v9c/6hayBZxodM5t2wYaAkYZKHHxuvfBUffSvGS5StBVwhG6NFcDT67
+ BBeBoKeNtKaJMUIgEC84EJcq2ShHJJmM54PGeYh8cowWUFRcuNgby3cx71m2ZOq5xm0+
+ cHWlvLRkVspwfDcjO4KUaliUqhOEORoos4k75lXSI2pwE5nTY56oUAZRkLJHRQECDo1S
+ ppoQCS0I/kcGPKHTOa5Geca2t0Y1+R6H8Zf4kUDj0sNtCPE1kyqdXAMwR5je9OWI9baM
+ 6Y7Q==
+X-Gm-Message-State: APjAAAV5Ke+FabvyCs0dbfO+ikJGHxLeqCTB5LWOxTdPdCP7W5H7fLkm
+ icrR1ettu0/qTrzC2HlzZ/0XBXXEoqbIikHx8N8iZg==
+X-Google-Smtp-Source: APXvYqz3PHqe/dC8SrMLZ7oJb4SyckZc5EJzgX4VS4wAMnE4d3D2dWe3D5r10a6CIdA4f7qoQvzM2VsFlosI14iwemI=
+X-Received: by 2002:a92:5d08:: with SMTP id r8mr8154845ilb.283.1574319657713; 
+ Wed, 20 Nov 2019 23:00:57 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191121021740.GE18325@lunn.ch>
-Content-Language: en-US
+References: <1557494826-6044-1-git-send-email-michael.kao@mediatek.com>
+ <1557494826-6044-8-git-send-email-michael.kao@mediatek.com>
+In-Reply-To: <1557494826-6044-8-git-send-email-michael.kao@mediatek.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Thu, 21 Nov 2019 15:00:31 +0800
+Message-ID: <CAJMQK-ivho3T1hnD9axV2EMKT3Srs_5zAXLqwts8nojY15fBGg@mail.gmail.com>
+Subject: Re: [PATCH v2 7/8] thermal: mediatek: add another get_temp ops for
+ thermal sensors
+To: "michael.kao" <michael.kao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191120_195234_585596_5511C9C5 
-X-CRM114-Status: GOOD (  14.00  )
+X-CRM114-CacheID: sfid-20191120_230101_874987_362D8631 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -152,50 +86,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Felix Fietkau <nbd@openwrt.org>,
- Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
- Michal Simek <michal.simek@xilinx.com>,
- Alexandre Torgue <alexandre.torgue@st.com>, netdev@vger.kernel.org,
- Sean Wang <sean.wang@mediatek.com>, linux-stm32@st-md-mailman.stormreply.com,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Vivien Didelot <vivien.didelot@gmail.com>, Jose Abreu <joabreu@synopsys.com>,
- linux-mediatek@lists.infradead.org, Mark Lee <Mark-MC.Lee@mediatek.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org,
- Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Devicetree List <devicetree@vger.kernel.org>, linux-pm@vger.kernel.org,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ lkml <linux-kernel@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel.com>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, May 10, 2019 at 9:27 PM michael.kao <michael.kao@mediatek.com> wrote:
 
+> -       tzdev = devm_thermal_zone_of_sensor_register(&pdev->dev, 0, mt,
+> -                                                    &mtk_thermal_ops);
+> -       if (IS_ERR(tzdev)) {
+> -               ret = PTR_ERR(tzdev);
+> -               goto err_disable_clk_peri_therm;
+> +       for (i = 0; i < mt->conf->num_sensors + 1; i++) {
+> +               tz = kmalloc(sizeof(*tz), GFP_KERNEL);
+> +               if (!tz)
+> +                       return -ENOMEM;
+> +
+> +               tz->mt = mt;
+> +               tz->id = i;
+> +
+> +               tzdev = devm_thermal_zone_of_sensor_register(&pdev->dev, i,
+> +                               tz, (i == 0) ?
+> +                               &mtk_thermal_ops : &mtk_thermal_sensor_ops);
+> +
+> +               if (IS_ERR(tzdev)) {
+> +                       if (IS_ERR(tzdev) != -EACCES) {
+                                PTR_ERR(tzdev)
 
-On 11/20/2019 6:17 PM, Andrew Lunn wrote:
->> This is something I'd like to do to make it clearer what phylink expects
->> of this function, and that it shouldn't just read-back how the MAC was
->> configured.  However, it will require some testing and review as it
->> changes quite a lot, and there's some things, particularly in DSA, that
->> don't seem quite right from a phylink point of view, such as messing
->> with state->interface in this function.
-> 
-> Hi Russell
-> 
-> Could you have more detail about DSA issues? Do you means the 6250
-> setting interface to PHY_INTERFACE_MODE_NA?
-> 
-> I think you and i have pretty similar marvell hardware. So i don't
-> think i can do much additional testing. Ideally we want Florian to do
-> some testing on b53.
+> +                               ret = PTR_ERR(tzdev);
+> +                               goto err_disable_clk_peri_therm;
+> +                       }
+> +               }
 
-I will try to test that across the hardware I have at hand, can take a
-few days to get all platforms working with net-next. At first glance,
-this is just a simple rename and change of return type, I would not
-expect problems to arise from that.
--- 
-Florian
+This for loop adding thermal zone sensors will not work for mt8173. It
+assumes that thermal-zones in dts have subnodes (eg. cpu_thermal,
+tzts..) amount equal to num_sensors+1. Otherwise tzdev would be
+-ENODEV and thermal failed to be probed.
+In mt8183 this is fine, since each thermal zone only has one sensor,
+but in mt8173, some sensor appears in multiple thermal zones.
+
+In order to let the change also works for 8173, I think if the error
+is -ENODEV, and the id is not 0 (0 is cpu_thermal), prompt a warning
+instead of failing. Eg.
+
+                if (IS_ERR(tzdev)) {
++                       if (i > 0 && PTR_ERR(tzdev) == -ENODEV) {
++                               dev_warn(&pdev->dev, "can't find
+thermal sensor %d\n", i);
++                               continue;
++                       }
+                        if (PTR_ERR(tzdev) != -EACCES) {
 
 _______________________________________________
 Linux-mediatek mailing list
