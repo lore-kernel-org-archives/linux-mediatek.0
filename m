@@ -1,101 +1,77 @@
-Return-Path: <SRS0=Qt5b=ZM=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=pCB/=ZN=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CD9B1C432C0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Nov 2019 15:45:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BB42EC432C3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Nov 2019 00:39:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9E1E02088F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Nov 2019 15:45:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8E64120885
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Nov 2019 00:39:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="szd/pm4F";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="E3AnSLk8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9E1E02088F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ArS1nkr1";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=armlinux.org.uk header.i=@armlinux.org.uk header.b="dBNkGK2u"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E64120885
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=armlinux.org.uk
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=Ud6ar2RBsPO3hTQ1GIuPqewep+rna9ZboVLqbNTicdk=; b=szd/pm4FDOdA7UQvN3HD0Df2EO
-	RPFXgJps7OqpDcJQOk0eoTlnExpgD5ggLtfZfGk6VHrbxQaeTsRDEv2oLqN3buO7pD3vuN02Bf9IG
-	eN4viqH6W9m8J+sfaCxOv/ASAVoazd3VJLxhzo4FCeN8RoFWNRJWZkzsAjh6NMzU156fsRhoJfp7/
-	IX+AD+kLmgv50T9lnwhvgod0YhEGsNwV4uJYbHszhoKKcoJmetNShTg5O2n+ReiPCfV9ULjx5lMqs
-	dnjVqO+dQHC+xNUMYG9ABNzJuIGNil3V/IiDNVspVgSRq308woAaLxvl0eQbD8wzjvQ64kRm9JboO
-	zqGhsO1g==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=xICAsAEfV0ZkOAzjwqt5IEjpK6gIhI+yEdnKKv7DzJg=; b=ArS1nkr16a90KJ
+	h0+AgVYVtHisEhJzzBVsCB/UGDDhkvQtFXuu4cWsrriOSRGvjNr5O0cwk6T1QHMhJkCepdz49nrfA
+	NmgmETd+1qbp33swqLHICai83Wgb9dOVMS8S7zsfo50gPbdUyjk6FSUyhtivzat7UzZ9YiUnpaKUW
+	CKHuoYgRWsVVdp7uXK4Bk6gBdrDaReF9J/BU6CdqNxEjgr5E5zuk13OQACkKzr39VnECFb9tl1xGw
+	Dzn5ZyAIzNcErKWgtcO79To4U8CeNpiIAmamHybQyt0XyEkFr+RD8uDHV9UXEPyVtalwJkn5dI5fh
+	IPVK/RXulrbFoGamqwUg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iXSB4-0003EM-7G; Wed, 20 Nov 2019 15:45:58 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1iXaVB-0000Ga-6h; Thu, 21 Nov 2019 00:39:17 +0000
+Received: from pandora.armlinux.org.uk
+ ([2001:4d48:ad52:3201:214:fdff:fe10:1be6])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iXSAx-00039c-Pc
- for linux-mediatek@lists.infradead.org; Wed, 20 Nov 2019 15:45:56 +0000
-Received: by mail-pf1-x443.google.com with SMTP id b19so14413381pfd.3
- for <linux-mediatek@lists.infradead.org>; Wed, 20 Nov 2019 07:45:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :in-reply-to:references;
- bh=e/+C0/U/7T8ETxCupoulTe1zya9/ISeKYAztNAzb164=;
- b=E3AnSLk8a93bsgWxr4fcB/GPFvJ4Rxo5soxyRn5bqg6l49xuRK6YcbzlIUUW+u31d/
- JA22kRY/pMbbK6pIyxFgfeLHI+IcM3+2nwmI0qvXJDZabbmDuqUiVLRhLr/SlgQh51oV
- UsRDODil4tFnA/SKcLzQnQ+fH8TLmKtJQuaXjNyammLFz8sJfJUN/4NBihEftSt/l1LP
- x+sqw0txJaK5+awwGSe60/jM8OFzrCCRY2WBzh7ui94S3wFWodQ+jtN2oCBeDML5mYft
- gGYXdwx2NpSBdm09KeHKgUEzj1qYlvdnhYlD26aXvxQF6VchwF5Zd1bpM9qETPcn/vAF
- N3Bw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:in-reply-to:references;
- bh=e/+C0/U/7T8ETxCupoulTe1zya9/ISeKYAztNAzb164=;
- b=rcAxbHiyJ9wTWpIzotTrv5pLuit9iJmm2gh3SBzzJJqR1569OND1eThtVgTUXRfSsl
- kbdruGWRyJRMHjL6ikS7/TGOCQLPhBbcXmWN3qdDarHAI4PtfQtHHY1KB9II+TAs+bPy
- u8+G8LlUmJnnjTBA8EsVanER9UigqbgdR6q0SeC0MOgHbqIIRm8C03exTAVKIw/tgZ22
- 07flKCVNz0Z6eRW5SUO+kfLE0hPC/IVq2lEXBCwEFsPhPWTQJrMTXABxkGJYjuXcdbdn
- xlqajOaxqDwbugNz6c6X8tHVOtXfFEzYoru3jvpMZcYXPfpzfXNyZnQKseiZGvjPCtps
- YHRg==
-X-Gm-Message-State: APjAAAVAvmyKGDqIu0kvf0+nChYigEyWCP0yAAZUN0/IAzcRBuhkDuJ7
- D+P3SqbLoJkqq5btUjTzVeSNbw==
-X-Google-Smtp-Source: APXvYqzj7lopeOEFvFadHOn4FAisXgAAfQF8EcvPp5oAfbvhy/8a9sOXfobTdg947a+fRpG3+UQUCw==
-X-Received: by 2002:a63:d20f:: with SMTP id a15mr4164989pgg.268.1574264750264; 
- Wed, 20 Nov 2019 07:45:50 -0800 (PST)
-Received: from localhost ([14.96.110.98])
- by smtp.gmail.com with ESMTPSA id u20sm30558372pgo.50.2019.11.20.07.45.49
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Wed, 20 Nov 2019 07:45:49 -0800 (PST)
-From: Amit Kucheria <amit.kucheria@linaro.org>
-To: linux-kernel@vger.kernel.org, edubezval@gmail.com,
- Amit Daniel Kachhap <amit.kachhap@gmail.com>,
- Amit Kucheria <amit.kucheria@verdurent.com>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Guillaume La Roque <glaroque@baylibre.com>,
- Heiko Stuebner <heiko@sntech.de>, Javi Merino <javi.merino@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>, Jun Nie <jun.nie@linaro.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Viresh Kumar <viresh.kumar@linaro.org>, Zhang Rui <rui.zhang@intel.com>
-Subject: [PATCH v2 06/11] thermal: mediatek: Appease the kernel-doc deity
-Date: Wed, 20 Nov 2019 21:15:15 +0530
-Message-Id: <ba10b886705879fd1b7d529fec50503d6696df20.1574242756.git.amit.kucheria@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <cover.1574242756.git.amit.kucheria@linaro.org>
-References: <cover.1574242756.git.amit.kucheria@linaro.org>
-In-Reply-To: <cover.1574242756.git.amit.kucheria@linaro.org>
-References: <cover.1574242756.git.amit.kucheria@linaro.org>
+ id 1iXaV2-0008Dq-5x; Thu, 21 Nov 2019 00:39:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
+ Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:Reply-To:Content-ID
+ :Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:
+ Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=MqrgQd4gZiQA1QOypKq4fdlLToRQmCYhgKQfQwMt0Bo=; b=dBNkGK2u7drdKb8KPEBPJzSUzj
+ xvfulMhw7oZDOiP9lsY1sPHFK8VJOWpHoudcu3Tt+XvzGvFY4JfeQHY8R9Arc8D/Ukfn5aSGf8o5g
+ HcORfnH/s6nOsnJ6ndBi2p9TTKy2FqCwm7RSl96zvHUaiGaNLdOWcK/0r5qsHAy7Ca638sIrP40Ds
+ 0jRKRv6577XTjrQN+ijC5cr+Pbq4E7uhMOUl561QGt9fsCJwd7PcIqY14Ak4lb6IKRtFJ5ICpEd6C
+ 8qbgr/Wy59KG9j1D+6SM6/KJUvGFfexkzkhr0pnyJYv3n7PYldHs7hvo05JoIMbabEIKktb9+Tp8i
+ cN5ILoVA==;
+Received: from e0022681537dd.dyn.armlinux.org.uk
+ ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:51956 helo=rmk-PC.armlinux.org.uk)
+ by pandora.armlinux.org.uk with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ (envelope-from <rmk@armlinux.org.uk>)
+ id 1iXaSN-0003Aa-21; Thu, 21 Nov 2019 00:36:23 +0000
+Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.92)
+ (envelope-from <rmk@armlinux.org.uk>)
+ id 1iXaSM-0004t1-9L; Thu, 21 Nov 2019 00:36:22 +0000
+From: Russell King <rmk+kernel@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>
+Subject: [CFT PATCH net-next v2] net: phylink: rename mac_link_state() op to
+ mac_pcs_get_state()
+MIME-Version: 1.0
+Content-Disposition: inline
+Message-Id: <E1iXaSM-0004t1-9L@rmk-PC.armlinux.org.uk>
+Date: Thu, 21 Nov 2019 00:36:22 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191120_074551_851287_57BA30D4 
-X-CRM114-Status: GOOD (  12.31  )
+X-CRM114-CacheID: sfid-20191120_163908_680458_B860166B 
+X-CRM114-Status: GOOD (  17.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,99 +83,448 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-pm@vger.kernel.org
-MIME-Version: 1.0
+Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Felix Fietkau <nbd@openwrt.org>,
+ Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
+ Michal Simek <michal.simek@xilinx.com>,
+ Alexandre Torgue <alexandre.torgue@st.com>, netdev@vger.kernel.org,
+ Sean Wang <sean.wang@mediatek.com>, linux-stm32@st-md-mailman.stormreply.com,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Jose Abreu <joabreu@synopsys.com>, linux-mediatek@lists.infradead.org,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace a comment starting with /** by simply /* to avoid having it
-interpreted as a kernel-doc comment. Describe missing function
-parameters where needed.
+Rename the mac_link_state() method to mac_pcs_get_state() to make it
+clear that it should be returning the MACs PCS current state, which
+is used for inband negotiation rather than just reading back what the
+MAC has been configured for. Update the documentation to explicitly
+mention that this is for inband.
 
-Fixes up the following warnings when compiled with make W=1:
+We drop the return value as well; most of phylink doesn't check the
+return value and it is not clear what it should do on error - instead
+arrange for state->link to be false.
 
-linux.git/drivers/thermal/mtk_thermal.c:374: warning: cannot understand
-function prototype: 'const struct mtk_thermal_data mt8173_thermal_data =
-'
-linux.git/drivers/thermal/mtk_thermal.c:413: warning: cannot understand
-function prototype: 'const struct mtk_thermal_data mt2701_thermal_data =
-'
-linux.git/drivers/thermal/mtk_thermal.c:443: warning: cannot understand
-function prototype: 'const struct mtk_thermal_data mt2712_thermal_data =
-'
-linux.git/drivers/thermal/mtk_thermal.c:499: warning: cannot understand
-function prototype: 'const struct mtk_thermal_data mt8183_thermal_data =
-'
-linux.git/drivers/thermal/mtk_thermal.c:529: warning: Function parameter
-or member 'sensno' not described in 'raw_to_mcelsius'
-
-Signed-off-by: Amit Kucheria <amit.kucheria@linaro.org>
-Reviewed-by: Viresh Kumar <viresh.kumar@linaro.org>
+Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
 ---
- drivers/thermal/mtk_thermal.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+This is something I'd like to do to make it clearer what phylink
+expects of this function, and that it shouldn't just read-back how
+the MAC was configured.
 
-diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-index acf4854cbb8b..76e30603d4d5 100644
---- a/drivers/thermal/mtk_thermal.c
-+++ b/drivers/thermal/mtk_thermal.c
-@@ -358,7 +358,7 @@ static const int mt7622_mux_values[MT7622_NUM_SENSORS] = { 0, };
- static const int mt7622_vts_index[MT7622_NUM_SENSORS] = { VTS1 };
- static const int mt7622_tc_offset[MT7622_NUM_CONTROLLER] = { 0x0, };
+This version drops the deeper changes, concentrating just on the
+phylink API rather than delving deeper into drivers, as I haven't
+received any feedback on that patch.
+
+It would be nice to see all these drivers tested with this change.
+
+ drivers/net/ethernet/cadence/macb_main.c      |  8 +++---
+ drivers/net/ethernet/marvell/mvneta.c         |  8 +++---
+ .../net/ethernet/marvell/mvpp2/mvpp2_main.c   | 21 ++++++++--------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   |  8 +++---
+ .../net/ethernet/stmicro/stmmac/stmmac_main.c |  8 +++---
+ .../net/ethernet/xilinx/xilinx_axienet_main.c |  8 +++---
+ drivers/net/phy/phylink.c                     | 15 +++++------
+ include/linux/phylink.h                       | 25 ++++++++++---------
+ net/dsa/dsa_priv.h                            |  4 +--
+ net/dsa/port.c                                | 19 ++++++++------
+ 10 files changed, 59 insertions(+), 65 deletions(-)
+
+diff --git a/drivers/net/ethernet/cadence/macb_main.c b/drivers/net/ethernet/cadence/macb_main.c
+index 8fc2e21f0bb1..d5ae2e1e0b0e 100644
+--- a/drivers/net/ethernet/cadence/macb_main.c
++++ b/drivers/net/ethernet/cadence/macb_main.c
+@@ -505,10 +505,10 @@ static void macb_validate(struct phylink_config *config,
+ 		   __ETHTOOL_LINK_MODE_MASK_NBITS);
+ }
  
--/**
-+/*
-  * The MT8173 thermal controller has four banks. Each bank can read up to
-  * four temperature sensors simultaneously. The MT8173 has a total of 5
-  * temperature sensors. We use each bank to measure a certain area of the
-@@ -400,7 +400,7 @@ static const struct mtk_thermal_data mt8173_thermal_data = {
- 	.sensor_mux_values = mt8173_mux_values,
- };
+-static int macb_mac_link_state(struct phylink_config *config,
+-			       struct phylink_link_state *state)
++static void macb_mac_pcs_get_state(struct phylink_config *config,
++				   struct phylink_link_state *state)
+ {
+-	return -EOPNOTSUPP;
++	state->link = 0;
+ }
  
--/**
-+/*
-  * The MT2701 thermal controller has one bank, which can read up to
-  * three temperature sensors simultaneously. The MT2701 has a total of 3
-  * temperature sensors.
-@@ -430,7 +430,7 @@ static const struct mtk_thermal_data mt2701_thermal_data = {
- 	.sensor_mux_values = mt2701_mux_values,
- };
+ static void macb_mac_an_restart(struct phylink_config *config)
+@@ -604,7 +604,7 @@ static void macb_mac_link_up(struct phylink_config *config, unsigned int mode,
  
--/**
-+/*
-  * The MT2712 thermal controller has one bank, which can read up to
-  * four temperature sensors simultaneously. The MT2712 has a total of 4
-  * temperature sensors.
-@@ -484,7 +484,7 @@ static const struct mtk_thermal_data mt7622_thermal_data = {
- 	.sensor_mux_values = mt7622_mux_values,
- };
+ static const struct phylink_mac_ops macb_phylink_ops = {
+ 	.validate = macb_validate,
+-	.mac_link_state = macb_mac_link_state,
++	.mac_pcs_get_state = macb_mac_pcs_get_state,
+ 	.mac_an_restart = macb_mac_an_restart,
+ 	.mac_config = macb_mac_config,
+ 	.mac_link_down = macb_mac_link_down,
+diff --git a/drivers/net/ethernet/marvell/mvneta.c b/drivers/net/ethernet/marvell/mvneta.c
+index 12e03b15f0ab..6ea65cd30da6 100644
+--- a/drivers/net/ethernet/marvell/mvneta.c
++++ b/drivers/net/ethernet/marvell/mvneta.c
+@@ -3688,8 +3688,8 @@ static void mvneta_validate(struct phylink_config *config,
+ 	phylink_helper_basex_speed(state);
+ }
  
--/**
-+/*
-  * The MT8183 thermal controller has one bank for the current SW framework.
-  * The MT8183 has a total of 6 temperature sensors.
-  * There are two thermal controller to control the six sensor.
-@@ -495,7 +495,6 @@ static const struct mtk_thermal_data mt7622_thermal_data = {
-  * data, and this indeed needs the temperatures of the individual banks
-  * for making better decisions.
-  */
+-static int mvneta_mac_link_state(struct phylink_config *config,
+-				 struct phylink_link_state *state)
++static void mvneta_mac_pcs_get_state(struct phylink_config *config,
++				     struct phylink_link_state *state)
+ {
+ 	struct net_device *ndev = to_net_dev(config->dev);
+ 	struct mvneta_port *pp = netdev_priv(ndev);
+@@ -3715,8 +3715,6 @@ static int mvneta_mac_link_state(struct phylink_config *config,
+ 		state->pause |= MLO_PAUSE_RX;
+ 	if (gmac_stat & MVNETA_GMAC_TX_FLOW_CTRL_ENABLE)
+ 		state->pause |= MLO_PAUSE_TX;
 -
- static const struct mtk_thermal_data mt8183_thermal_data = {
- 	.auxadc_channel = MT8183_TEMP_AUXADC_CHANNEL,
- 	.num_banks = MT8183_NUM_SENSORS_PER_ZONE,
-@@ -519,7 +518,8 @@ static const struct mtk_thermal_data mt8183_thermal_data = {
+-	return 1;
+ }
+ 
+ static void mvneta_mac_an_restart(struct phylink_config *config)
+@@ -3909,7 +3907,7 @@ static void mvneta_mac_link_up(struct phylink_config *config, unsigned int mode,
+ 
+ static const struct phylink_mac_ops mvneta_phylink_ops = {
+ 	.validate = mvneta_validate,
+-	.mac_link_state = mvneta_mac_link_state,
++	.mac_pcs_get_state = mvneta_mac_pcs_get_state,
+ 	.mac_an_restart = mvneta_mac_an_restart,
+ 	.mac_config = mvneta_mac_config,
+ 	.mac_link_down = mvneta_mac_link_down,
+diff --git a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+index 17e24c1e1c2b..62dc2f362a16 100644
+--- a/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
++++ b/drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c
+@@ -4823,8 +4823,8 @@ static void mvpp2_phylink_validate(struct phylink_config *config,
+ 	bitmap_zero(supported, __ETHTOOL_LINK_MODE_MASK_NBITS);
+ }
+ 
+-static void mvpp22_xlg_link_state(struct mvpp2_port *port,
+-				  struct phylink_link_state *state)
++static void mvpp22_xlg_pcs_get_state(struct mvpp2_port *port,
++				     struct phylink_link_state *state)
+ {
+ 	u32 val;
+ 
+@@ -4843,8 +4843,8 @@ static void mvpp22_xlg_link_state(struct mvpp2_port *port,
+ 		state->pause |= MLO_PAUSE_RX;
+ }
+ 
+-static void mvpp2_gmac_link_state(struct mvpp2_port *port,
+-				  struct phylink_link_state *state)
++static void mvpp2_gmac_pcs_get_state(struct mvpp2_port *port,
++				     struct phylink_link_state *state)
+ {
+ 	u32 val;
+ 
+@@ -4877,8 +4877,8 @@ static void mvpp2_gmac_link_state(struct mvpp2_port *port,
+ 		state->pause |= MLO_PAUSE_TX;
+ }
+ 
+-static int mvpp2_phylink_mac_link_state(struct phylink_config *config,
+-					struct phylink_link_state *state)
++static void mvpp2_phylink_mac_pcs_get_state(struct phylink_config *config,
++					    struct phylink_link_state *state)
+ {
+ 	struct mvpp2_port *port = container_of(config, struct mvpp2_port,
+ 					       phylink_config);
+@@ -4888,13 +4888,12 @@ static int mvpp2_phylink_mac_link_state(struct phylink_config *config,
+ 		mode &= MVPP22_XLG_CTRL3_MACMODESELECT_MASK;
+ 
+ 		if (mode == MVPP22_XLG_CTRL3_MACMODESELECT_10G) {
+-			mvpp22_xlg_link_state(port, state);
+-			return 1;
++			mvpp22_xlg_pcs_get_state(port, state);
++			return;
+ 		}
+ 	}
+ 
+-	mvpp2_gmac_link_state(port, state);
+-	return 1;
++	mvpp2_gmac_pcs_get_state(port, state);
+ }
+ 
+ static void mvpp2_mac_an_restart(struct phylink_config *config)
+@@ -5186,7 +5185,7 @@ static void mvpp2_mac_link_down(struct phylink_config *config,
+ 
+ static const struct phylink_mac_ops mvpp2_phylink_ops = {
+ 	.validate = mvpp2_phylink_validate,
+-	.mac_link_state = mvpp2_phylink_mac_link_state,
++	.mac_pcs_get_state = mvpp2_phylink_mac_pcs_get_state,
+ 	.mac_an_restart = mvpp2_mac_an_restart,
+ 	.mac_config = mvpp2_mac_config,
+ 	.mac_link_up = mvpp2_mac_link_up,
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 1923ba76a1ec..527ad2aadcca 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -361,8 +361,8 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
+ 		mac->id, phy_modes(state->interface), err);
+ }
+ 
+-static int mtk_mac_link_state(struct phylink_config *config,
+-			      struct phylink_link_state *state)
++static void mtk_mac_pcs_get_state(struct phylink_config *config,
++				  struct phylink_link_state *state)
+ {
+ 	struct mtk_mac *mac = container_of(config, struct mtk_mac,
+ 					   phylink_config);
+@@ -391,8 +391,6 @@ static int mtk_mac_link_state(struct phylink_config *config,
+ 		state->pause |= MLO_PAUSE_RX;
+ 	if (pmsr & MAC_MSR_TX_FC)
+ 		state->pause |= MLO_PAUSE_TX;
+-
+-	return 1;
+ }
+ 
+ static void mtk_mac_an_restart(struct phylink_config *config)
+@@ -514,7 +512,7 @@ static void mtk_validate(struct phylink_config *config,
+ 
+ static const struct phylink_mac_ops mtk_phylink_ops = {
+ 	.validate = mtk_validate,
+-	.mac_link_state = mtk_mac_link_state,
++	.mac_pcs_get_state = mtk_mac_pcs_get_state,
+ 	.mac_an_restart = mtk_mac_an_restart,
+ 	.mac_config = mtk_mac_config,
+ 	.mac_link_down = mtk_mac_link_down,
+diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+index 8cc4cd0cc515..644cb5d1fd4f 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
++++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+@@ -868,10 +868,10 @@ static void stmmac_validate(struct phylink_config *config,
+ 		      __ETHTOOL_LINK_MODE_MASK_NBITS);
+ }
+ 
+-static int stmmac_mac_link_state(struct phylink_config *config,
+-				 struct phylink_link_state *state)
++static void stmmac_mac_pcs_get_state(struct phylink_config *config,
++				     struct phylink_link_state *state)
+ {
+-	return -EOPNOTSUPP;
++	state->link = 0;
+ }
+ 
+ static void stmmac_mac_config(struct phylink_config *config, unsigned int mode,
+@@ -965,7 +965,7 @@ static void stmmac_mac_link_up(struct phylink_config *config,
+ 
+ static const struct phylink_mac_ops stmmac_phylink_mac_ops = {
+ 	.validate = stmmac_validate,
+-	.mac_link_state = stmmac_mac_link_state,
++	.mac_pcs_get_state = stmmac_mac_pcs_get_state,
+ 	.mac_config = stmmac_mac_config,
+ 	.mac_an_restart = stmmac_mac_an_restart,
+ 	.mac_link_down = stmmac_mac_link_down,
+diff --git a/drivers/net/ethernet/xilinx/xilinx_axienet_main.c b/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
+index 8f32db6d2c45..20746b801959 100644
+--- a/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
++++ b/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
+@@ -1405,8 +1405,8 @@ static void axienet_validate(struct phylink_config *config,
+ 		   __ETHTOOL_LINK_MODE_MASK_NBITS);
+ }
+ 
+-static int axienet_mac_link_state(struct phylink_config *config,
+-				  struct phylink_link_state *state)
++static void axienet_mac_pcs_get_state(struct phylink_config *config,
++				      struct phylink_link_state *state)
+ {
+ 	struct net_device *ndev = to_net_dev(config->dev);
+ 	struct axienet_local *lp = netdev_priv(ndev);
+@@ -1431,8 +1431,6 @@ static int axienet_mac_link_state(struct phylink_config *config,
+ 
+ 	state->an_complete = 0;
+ 	state->duplex = 1;
+-
+-	return 1;
+ }
+ 
+ static void axienet_mac_an_restart(struct phylink_config *config)
+@@ -1497,7 +1495,7 @@ static void axienet_mac_link_up(struct phylink_config *config,
+ 
+ static const struct phylink_mac_ops axienet_phylink_ops = {
+ 	.validate = axienet_validate,
+-	.mac_link_state = axienet_mac_link_state,
++	.mac_pcs_get_state = axienet_mac_pcs_get_state,
+ 	.mac_an_restart = axienet_mac_an_restart,
+ 	.mac_config = axienet_mac_config,
+ 	.mac_link_down = axienet_mac_link_down,
+diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
+index 6ce2e6c63e75..3a886d106069 100644
+--- a/drivers/net/phy/phylink.c
++++ b/drivers/net/phy/phylink.c
+@@ -357,9 +357,9 @@ static void phylink_mac_an_restart(struct phylink *pl)
+ 		pl->ops->mac_an_restart(pl->config);
+ }
+ 
+-static int phylink_get_mac_state(struct phylink *pl, struct phylink_link_state *state)
++static void phylink_mac_pcs_get_state(struct phylink *pl,
++				      struct phylink_link_state *state)
+ {
+-
+ 	linkmode_copy(state->advertising, pl->link_config.advertising);
+ 	linkmode_zero(state->lp_advertising);
+ 	state->interface = pl->link_config.interface;
+@@ -370,7 +370,7 @@ static int phylink_get_mac_state(struct phylink *pl, struct phylink_link_state *
+ 	state->an_complete = 0;
+ 	state->link = 1;
+ 
+-	return pl->ops->mac_link_state(pl->config, state);
++	pl->ops->mac_pcs_get_state(pl->config, state);
+ }
+ 
+ /* The fixed state is... fixed except for the link state,
+@@ -493,7 +493,7 @@ static void phylink_resolve(struct work_struct *w)
+ 			break;
+ 
+ 		case MLO_AN_INBAND:
+-			phylink_get_mac_state(pl, &link_state);
++			phylink_mac_pcs_get_state(pl, &link_state);
+ 
+ 			/* If we have a phy, the "up" state is the union of
+ 			 * both the PHY and the MAC */
+@@ -1138,7 +1138,7 @@ int phylink_ethtool_ksettings_get(struct phylink *pl,
+ 		if (pl->phydev)
+ 			break;
+ 
+-		phylink_get_mac_state(pl, &link_state);
++		phylink_mac_pcs_get_state(pl, &link_state);
+ 
+ 		/* The MAC is reporting the link results from its own PCS
+ 		 * layer via in-band status. Report these as the current
+@@ -1550,10 +1550,7 @@ static int phylink_mii_read(struct phylink *pl, unsigned int phy_id,
+ 
+ 	case MLO_AN_INBAND:
+ 		if (phy_id == 0) {
+-			val = phylink_get_mac_state(pl, &state);
+-			if (val < 0)
+-				return val;
+-
++			phylink_mac_pcs_get_state(pl, &state);
+ 			val = phylink_mii_emul_read(reg, &state);
+ 		}
+ 		break;
+diff --git a/include/linux/phylink.h b/include/linux/phylink.h
+index 300ecdb6790a..fed5488e3c75 100644
+--- a/include/linux/phylink.h
++++ b/include/linux/phylink.h
+@@ -72,7 +72,7 @@ struct phylink_config {
+ /**
+  * struct phylink_mac_ops - MAC operations structure.
+  * @validate: Validate and update the link configuration.
+- * @mac_link_state: Read the current link state from the hardware.
++ * @mac_pcs_get_state: Read the current link state from the hardware.
+  * @mac_config: configure the MAC for the selected mode and state.
+  * @mac_an_restart: restart 802.3z BaseX autonegotiation.
+  * @mac_link_down: take the link down.
+@@ -84,8 +84,8 @@ struct phylink_mac_ops {
+ 	void (*validate)(struct phylink_config *config,
+ 			 unsigned long *supported,
+ 			 struct phylink_link_state *state);
+-	int (*mac_link_state)(struct phylink_config *config,
+-			      struct phylink_link_state *state);
++	void (*mac_pcs_get_state)(struct phylink_config *config,
++				  struct phylink_link_state *state);
+ 	void (*mac_config)(struct phylink_config *config, unsigned int mode,
+ 			   const struct phylink_link_state *state);
+ 	void (*mac_an_restart)(struct phylink_config *config);
+@@ -127,18 +127,19 @@ void validate(struct phylink_config *config, unsigned long *supported,
+ 	      struct phylink_link_state *state);
  
  /**
-  * raw_to_mcelsius - convert a raw ADC value to mcelsius
-- * @mt:		The thermal controller
-+ * @mt:	The thermal controller
-+ * @sensno:	sensor number
-  * @raw:	raw ADC value
+- * mac_link_state() - Read the current link state from the hardware
++ * mac_pcs_get_state() - Read the current inband link state from the hardware
+  * @config: a pointer to a &struct phylink_config.
+  * @state: a pointer to a &struct phylink_link_state.
   *
-  * This converts the raw ADC value to mcelsius using the SoC specific
+- * Read the current link state from the MAC, reporting the current
+- * speed in @state->speed, duplex mode in @state->duplex, pause mode
+- * in @state->pause using the %MLO_PAUSE_RX and %MLO_PAUSE_TX bits,
+- * negotiation completion state in @state->an_complete, and link
+- * up state in @state->link.
++ * Read the current inband link state from the MAC PCS, reporting the
++ * current speed in @state->speed, duplex mode in @state->duplex, pause
++ * mode in @state->pause using the %MLO_PAUSE_RX and %MLO_PAUSE_TX bits,
++ * negotiation completion state in @state->an_complete, and link up state
++ * in @state->link. If possible, @state->lp_advertising should also be
++ * populated.
+  */
+-int mac_link_state(struct phylink_config *config,
+-		   struct phylink_link_state *state);
++void mac_pcs_get_state(struct phylink_config *config,
++		       struct phylink_link_state *state);
+ 
+ /**
+  * mac_config() - configure the MAC for the selected mode and state
+@@ -166,7 +167,7 @@ int mac_link_state(struct phylink_config *config,
+  *   1000base-X or Cisco SGMII mode depending on the @state->interface
+  *   mode). In both cases, link state management (whether the link
+  *   is up or not) is performed by the MAC, and reported via the
+- *   mac_link_state() callback. Changes in link state must be made
++ *   mac_pcs_get_state() callback. Changes in link state must be made
+  *   by calling phylink_mac_change().
+  *
+  *   If in 802.3z mode, the link speed is fixed, dependent on the
+diff --git a/net/dsa/dsa_priv.h b/net/dsa/dsa_priv.h
+index 53e7577896b6..2dd86d9bcda9 100644
+--- a/net/dsa/dsa_priv.h
++++ b/net/dsa/dsa_priv.h
+@@ -153,8 +153,8 @@ void dsa_port_link_unregister_of(struct dsa_port *dp);
+ void dsa_port_phylink_validate(struct phylink_config *config,
+ 			       unsigned long *supported,
+ 			       struct phylink_link_state *state);
+-int dsa_port_phylink_mac_link_state(struct phylink_config *config,
+-				    struct phylink_link_state *state);
++void dsa_port_phylink_mac_pcs_get_state(struct phylink_config *config,
++					struct phylink_link_state *state);
+ void dsa_port_phylink_mac_config(struct phylink_config *config,
+ 				 unsigned int mode,
+ 				 const struct phylink_link_state *state);
+diff --git a/net/dsa/port.c b/net/dsa/port.c
+index 6e93c36bf0c0..46ac9ba21987 100644
+--- a/net/dsa/port.c
++++ b/net/dsa/port.c
+@@ -429,19 +429,22 @@ void dsa_port_phylink_validate(struct phylink_config *config,
+ }
+ EXPORT_SYMBOL_GPL(dsa_port_phylink_validate);
+ 
+-int dsa_port_phylink_mac_link_state(struct phylink_config *config,
+-				    struct phylink_link_state *state)
++void dsa_port_phylink_mac_pcs_get_state(struct phylink_config *config,
++					struct phylink_link_state *state)
+ {
+ 	struct dsa_port *dp = container_of(config, struct dsa_port, pl_config);
+ 	struct dsa_switch *ds = dp->ds;
+ 
+-	/* Only called for SGMII and 802.3z */
+-	if (!ds->ops->phylink_mac_link_state)
+-		return -EOPNOTSUPP;
++	/* Only called for inband modes */
++	if (!ds->ops->phylink_mac_link_state) {
++		state->link = 0;
++		return;
++	}
+ 
+-	return ds->ops->phylink_mac_link_state(ds, dp->index, state);
++	if (ds->ops->phylink_mac_link_state(ds, dp->index, state) < 0)
++		state->link = 0;
+ }
+-EXPORT_SYMBOL_GPL(dsa_port_phylink_mac_link_state);
++EXPORT_SYMBOL_GPL(dsa_port_phylink_mac_pcs_get_state);
+ 
+ void dsa_port_phylink_mac_config(struct phylink_config *config,
+ 				 unsigned int mode,
+@@ -510,7 +513,7 @@ EXPORT_SYMBOL_GPL(dsa_port_phylink_mac_link_up);
+ 
+ const struct phylink_mac_ops dsa_port_phylink_mac_ops = {
+ 	.validate = dsa_port_phylink_validate,
+-	.mac_link_state = dsa_port_phylink_mac_link_state,
++	.mac_pcs_get_state = dsa_port_phylink_mac_pcs_get_state,
+ 	.mac_config = dsa_port_phylink_mac_config,
+ 	.mac_an_restart = dsa_port_phylink_mac_an_restart,
+ 	.mac_link_down = dsa_port_phylink_mac_link_down,
 -- 
 2.20.1
 
