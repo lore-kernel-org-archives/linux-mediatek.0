@@ -2,63 +2,145 @@ Return-Path: <SRS0=pCB/=ZN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CA300C432C3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Nov 2019 03:19:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 96748C432C3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Nov 2019 03:52:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A0CEA2089D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Nov 2019 03:19:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6CF86208A1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Nov 2019 03:52:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LnhPaOxU";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="dhjxDrCG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A0CEA2089D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gQmS0Yhx";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="T86OQc0d"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CF86208A1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=i3bdzHecW4IehCCgx1d2CCaZ1DlMDGQ5wO/miqt7tRg=; b=Lnh
-	PaOxUZ1I9sKsnQOIA2YpFyMcREInT5Jr5llvmpQmC8MjOY9yGApge/fA6ztTjMXWw18Q6KdvKsqm5
-	PZaA6OPQkFcgIKXfiQDJmQqjH2vtxX/6ntfV52SjVSbIwsE+Zrd1YAD5BlvMzMYAMQEZBIoLVzIHJ
-	PLmcRVHrCO5Uvix7XtbKM87XHnAXLT7y/MNbLKVL0DFaK6tmJvBixqJmBlEUvQdPryqns0poYL4Uu
-	rqnJYzlTwXl4OL9KpWQgcmA+LB9K+DWktzSqTmXmPCdScPYIx3JaANfi5bN38n0y7S6Dl4FM5s0I5
-	XCgnyDsxU8HC2aaIhOe43uBAQgFBpow==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0O7xBBzlGtU+H8bZxs7v7Gjt/CApHugCBYOM1x3cujw=; b=gQmS0YhxgP+Y23
+	bnzeQcw4X3TZMsdEgXS9+zM3Xs2oJUthDU0rV731jf+lgHQizzDUfWv0c1tJa0PD20KFKQZjSltGb
+	XlNnrJHyVLUyikpbrK/bU0Acoi4Oa8GvnVJFWfTQC/HM/desMtB23vwrC65C3A4lysNSh/AVWc1s8
+	InKSGzmyAAo5snNmcSeBQyoblBbBY5+7CzFN1KYrkE3ebW8YCYcX0ygVTlk/B6APNfdz4VjvxzFiL
+	7QfHylxTst+AgAir4K0VmmHPACb43JB+VVTHV6DtPZU4qB5QikpHcOxh/0t/JEfyYxJI9cb5lvyL1
+	72hQILNLiscLzkrjH+ig==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iXczu-0002Y3-J7; Thu, 21 Nov 2019 03:19:10 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1iXdWH-0006su-Od; Thu, 21 Nov 2019 03:52:37 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iXczk-0002QA-NI; Thu, 21 Nov 2019 03:19:02 +0000
-Received: from PC-kkoz.proceq.com (unknown [213.160.61.66])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B2A6820898;
- Thu, 21 Nov 2019 03:18:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1574306340;
- bh=9Ksqhhd1L7R8tO8N1qP062uhuD/S93g4xX+3n7nrjuk=;
- h=From:To:Cc:Subject:Date:From;
- b=dhjxDrCGeRc2byEQxgwNLsSWWxA7ebiuc5DOawNk7mBXmN8SBRIeMGPYM1L+rtUsk
- jw5AuZek5sXPBBufjND8mFIc8AMxc1Xv0+fQ4GjTQqcegDJyr8JlxRHhMzoDZbTaWx
- V8psmrv+ovo0Q7Mfd7RsK//vg6HkD+Uq/hzXOUYc=
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH v2] clk: Fix Kconfig indentation
-Date: Thu, 21 Nov 2019 04:18:55 +0100
-Message-Id: <1574306335-29026-1-git-send-email-krzk@kernel.org>
-X-Mailer: git-send-email 2.7.4
+ id 1iXdWE-0006sR-Gm; Thu, 21 Nov 2019 03:52:35 +0000
+Received: by mail-wr1-x441.google.com with SMTP id s5so2611874wrw.2;
+ Wed, 20 Nov 2019 19:52:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=CBJEC54lfW7nGNvoS8z3f1NL1oBbm+5yulPmVtSm9Fc=;
+ b=T86OQc0dYHfGxCim2gA+9692kiFKz2t2M7AYUc7YK4dqesj0UHulrrMonDoF7LTS+6
+ +Rr/rROGw8OB+mSwKuQw73GnGd7DDNJDiv0DhOQq5JeBvQs+uAq/EBQAeXhZBDxDr46j
+ q2EUQ0KR03hHdd3yYAHZWXAD1D+x9qOQNdcj8KcnOgJOWKLJTmwhcGm5hMqrNQFrpV2d
+ 2nd2HKbKtqOQmQQUDgBqXqldMI/TnqRwGC7eNzgzjFaTjUJWS62U25fXMTio81dYlA4k
+ qANUg/dxwAnKzyKKJmarOBFbbVzH5Q90GF+aSwuqQv2ffaan5H4d2+RSu0EwqTf0vr11
+ baIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=CBJEC54lfW7nGNvoS8z3f1NL1oBbm+5yulPmVtSm9Fc=;
+ b=fP5XMxEVAmOnWJjJXOhsjeKEah6B2jIEUKCrLP2U5lUIRWRXF0HDYpOJyXQoBRAze0
+ LjJrkz7FMqwk7acxNvSuwAd6UpGQ1CUZ6hqhPMGVZuaMFZZRlNhSKTx3gyN87qnw8N7R
+ 9nZf+M5dODji42aSltcbocoXoxCDX7fZ19vqJ/lPmw5g2HKfdh7uuVNJRp2Efs76Sjx1
+ /VLyzhX2klin+Em3cRe2wIxHHpbJeoa3kgMw+KX8rYWHySC/8vdRoSBlxZ/+t/XpMYfM
+ dzeqkQt92S54+q9YV00e0sjFjkUVFovzo93wGnLDBGE+ztNyutJY5YVfF4w/3yP1prMD
+ xUCg==
+X-Gm-Message-State: APjAAAXLqMfmHEPLLBDiQNpN+HDTnT61tgHgWLF/63vFmkP2HjXoJ1AS
+ KI21/t4qxHLgGtXOQNdeEN0=
+X-Google-Smtp-Source: APXvYqyH0YTyEjd/BvsuLLZyEj1q87fGKgJ3TI+zD++haNDB6wQ74A3/KSEtM3bu+mbUuO8JjxLD/A==
+X-Received: by 2002:adf:f344:: with SMTP id e4mr7886781wrp.365.1574308352677; 
+ Wed, 20 Nov 2019 19:52:32 -0800 (PST)
+Received: from [10.230.29.119] ([192.19.223.252])
+ by smtp.gmail.com with ESMTPSA id r2sm1720739wrp.64.2019.11.20.19.52.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 20 Nov 2019 19:52:31 -0800 (PST)
+Subject: Re: [RFC PATCH net-next] net: phylink: rename mac_link_state() op to
+ mac_pcs_get_state()
+To: Andrew Lunn <andrew@lunn.ch>, Russell King <rmk+kernel@armlinux.org.uk>
+References: <E1iX2jg-0005Us-6U@rmk-PC.armlinux.org.uk>
+ <20191121021740.GE18325@lunn.ch>
+From: Florian Fainelli <f.fainelli@gmail.com>
+Autocrypt: addr=f.fainelli@gmail.com; keydata=
+ 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
+ a9BQwACgnzGuH1BVeT2J0Ra+ZYgkx7DaPR0=
+Message-ID: <08304ec7-09f7-c116-e942-6d384ee67f47@gmail.com>
+Date: Wed, 20 Nov 2019 19:52:25 -0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
+MIME-Version: 1.0
+In-Reply-To: <20191121021740.GE18325@lunn.ch>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191120_191900_802567_D2F5743D 
-X-CRM114-Status: GOOD (  11.09  )
+X-CRM114-CacheID: sfid-20191120_195234_585596_5511C9C5 
+X-CRM114-Status: GOOD (  14.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,155 +152,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Stephen Boyd <sboyd@kernel.org>, linux-arm-msm@vger.kernel.org,
- Michael Turquette <mturquette@baylibre.com>, linux-clk@vger.kernel.org,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, Andy Gross <agross@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Linus Walleij <linus.walleij@linaro.org>, linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
+Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Felix Fietkau <nbd@openwrt.org>,
+ Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
+ Michal Simek <michal.simek@xilinx.com>,
+ Alexandre Torgue <alexandre.torgue@st.com>, netdev@vger.kernel.org,
+ Sean Wang <sean.wang@mediatek.com>, linux-stm32@st-md-mailman.stormreply.com,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>, Jose Abreu <joabreu@synopsys.com>,
+ linux-mediatek@lists.infradead.org, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org,
+ Heiner Kallweit <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adjust indentation from spaces to tab (+optional two spaces) as in
-coding style with command like:
-	$ sed -e 's/^        /\t/' -i */Kconfig
 
-Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 
----
+On 11/20/2019 6:17 PM, Andrew Lunn wrote:
+>> This is something I'd like to do to make it clearer what phylink expects
+>> of this function, and that it shouldn't just read-back how the MAC was
+>> configured.  However, it will require some testing and review as it
+>> changes quite a lot, and there's some things, particularly in DSA, that
+>> don't seem quite right from a phylink point of view, such as messing
+>> with state->interface in this function.
+> 
+> Hi Russell
+> 
+> Could you have more detail about DSA issues? Do you means the 6250
+> setting interface to PHY_INTERFACE_MODE_NA?
+> 
+> I think you and i have pretty similar marvell hardware. So i don't
+> think i can do much additional testing. Ideally we want Florian to do
+> some testing on b53.
 
-Changes since v1:
-1. Fix also 7-space and tab+1 space indentation issues.
----
- drivers/clk/Kconfig           |  2 +-
- drivers/clk/mediatek/Kconfig  | 44 +++++++++++++++++++++----------------------
- drivers/clk/mvebu/Kconfig     |  2 +-
- drivers/clk/qcom/Kconfig      |  4 ++--
- drivers/clk/versatile/Kconfig |  2 +-
- 5 files changed, 27 insertions(+), 27 deletions(-)
-
-diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
-index 0530bebfc25a..b8ebf7b93d63 100644
---- a/drivers/clk/Kconfig
-+++ b/drivers/clk/Kconfig
-@@ -27,7 +27,7 @@ config COMMON_CLK_WM831X
- 	tristate "Clock driver for WM831x/2x PMICs"
- 	depends on MFD_WM831X
- 	---help---
--          Supports the clocking subsystem of the WM831x/2x series of
-+	  Supports the clocking subsystem of the WM831x/2x series of
- 	  PMICs from Wolfson Microelectronics.
- 
- source "drivers/clk/versatile/Kconfig"
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 7efc3617bbd5..e4c7cb518cda 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -174,36 +174,36 @@ config COMMON_CLK_MT6779_AUDSYS
- 	  This driver supports Mediatek MT6779 audsys clocks.
- 
- config COMMON_CLK_MT6797
--       bool "Clock driver for MediaTek MT6797"
--       depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
--       select COMMON_CLK_MEDIATEK
--       default ARCH_MEDIATEK && ARM64
--       ---help---
--         This driver supports MediaTek MT6797 basic clocks.
-+	bool "Clock driver for MediaTek MT6797"
-+	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
-+	select COMMON_CLK_MEDIATEK
-+	default ARCH_MEDIATEK && ARM64
-+	---help---
-+	 This driver supports MediaTek MT6797 basic clocks.
- 
- config COMMON_CLK_MT6797_MMSYS
--       bool "Clock driver for MediaTek MT6797 mmsys"
--       depends on COMMON_CLK_MT6797
--       ---help---
--         This driver supports MediaTek MT6797 mmsys clocks.
-+	bool "Clock driver for MediaTek MT6797 mmsys"
-+	depends on COMMON_CLK_MT6797
-+	---help---
-+	 This driver supports MediaTek MT6797 mmsys clocks.
- 
- config COMMON_CLK_MT6797_IMGSYS
--       bool "Clock driver for MediaTek MT6797 imgsys"
--       depends on COMMON_CLK_MT6797
--       ---help---
--         This driver supports MediaTek MT6797 imgsys clocks.
-+	bool "Clock driver for MediaTek MT6797 imgsys"
-+	depends on COMMON_CLK_MT6797
-+	---help---
-+	 This driver supports MediaTek MT6797 imgsys clocks.
- 
- config COMMON_CLK_MT6797_VDECSYS
--       bool "Clock driver for MediaTek MT6797 vdecsys"
--       depends on COMMON_CLK_MT6797
--       ---help---
--         This driver supports MediaTek MT6797 vdecsys clocks.
-+	bool "Clock driver for MediaTek MT6797 vdecsys"
-+	depends on COMMON_CLK_MT6797
-+	---help---
-+	 This driver supports MediaTek MT6797 vdecsys clocks.
- 
- config COMMON_CLK_MT6797_VENCSYS
--       bool "Clock driver for MediaTek MT6797 vencsys"
--       depends on COMMON_CLK_MT6797
--       ---help---
--         This driver supports MediaTek MT6797 vencsys clocks.
-+	bool "Clock driver for MediaTek MT6797 vencsys"
-+	depends on COMMON_CLK_MT6797
-+	---help---
-+	 This driver supports MediaTek MT6797 vencsys clocks.
- 
- config COMMON_CLK_MT7622
- 	bool "Clock driver for MediaTek MT7622"
-diff --git a/drivers/clk/mvebu/Kconfig b/drivers/clk/mvebu/Kconfig
-index 415e6906a113..ded07b0bd0d5 100644
---- a/drivers/clk/mvebu/Kconfig
-+++ b/drivers/clk/mvebu/Kconfig
-@@ -29,7 +29,7 @@ config ARMADA_39X_CLK
- 	select MVEBU_CLK_COMMON
- 
- config ARMADA_37XX_CLK
--       bool
-+	bool
- 
- config ARMADA_XP_CLK
- 	bool
-diff --git a/drivers/clk/qcom/Kconfig b/drivers/clk/qcom/Kconfig
-index 3b33ef129274..f37f3cd615f2 100644
---- a/drivers/clk/qcom/Kconfig
-+++ b/drivers/clk/qcom/Kconfig
-@@ -1,7 +1,7 @@
- # SPDX-License-Identifier: GPL-2.0-only
- config KRAIT_CLOCKS
--       bool
--       select KRAIT_L2_ACCESSORS
-+	bool
-+	select KRAIT_L2_ACCESSORS
- 
- config QCOM_GDSC
- 	bool
-diff --git a/drivers/clk/versatile/Kconfig b/drivers/clk/versatile/Kconfig
-index ac766855ba16..c2618f1477a2 100644
---- a/drivers/clk/versatile/Kconfig
-+++ b/drivers/clk/versatile/Kconfig
-@@ -9,7 +9,7 @@ config COMMON_CLK_VERSATILE
- 		COMPILE_TEST
- 	select REGMAP_MMIO
- 	---help---
--          Supports clocking on ARM Reference designs:
-+	  Supports clocking on ARM Reference designs:
- 	  - Integrator/AP and Integrator/CP
- 	  - RealView PB1176, EB, PB11MP and PBX
- 	  - Versatile Express
+I will try to test that across the hardware I have at hand, can take a
+few days to get all platforms working with net-next. At first glance,
+this is just a simple rename and change of return type, I would not
+expect problems to arise from that.
 -- 
-2.7.4
-
+Florian
 
 _______________________________________________
 Linux-mediatek mailing list
