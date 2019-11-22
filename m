@@ -2,23 +2,22 @@ Return-Path: <SRS0=vzOr=ZO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DA5ACC432C3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Nov 2019 17:09:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2018AC432C0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Nov 2019 23:57:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A075920714
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Nov 2019 17:09:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E77832064B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Nov 2019 23:57:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Wl09CDLN";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ffwll.ch header.i=@ffwll.ch header.b="eIBsIiSX"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A075920714
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="N9zdRg+c"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E77832064B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -26,65 +25,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s4yqforITvZFMBsfSCpSs56vbYnMAwpBFvvicqqJWG8=; b=Wl09CDLN3Mwj8D
-	XioV/V5F7SwdzAAzkB38JaNbJfFnMXujQOBVuNuSPNb0U021iJDV8eGqfsaN6fWN9QP2ACvRPeL20
-	tQha3WCC3hp/h1HEkHS++gbiK5QuM+wpVef1XmGNazXu/4YriIHaadPXWaelrkJGDhjmGCrNQPUgN
-	6WJFsgZj7rIslsYUWz5J/aTc6Ib2tpjps8xYZGcROUSqzT1OrCFVRhfqurke5nytzztMdMeCowJ1b
-	LwG2KUqPzxaWRYARFFFCi6dZx/ycDRd15xhMZT7vi8eoOdFt8ipxI+u2hNzeSqiWOsDcAEML5RBdR
-	SLVLO8hD0oS35ew4D6jQ==;
+	List-Owner; bh=ZUX35/mPRC+iitCQ21getlTNGNp0mpOZ4x5/JvOTnmQ=; b=N9zdRg+cM0LaoK
+	Eak7tubLiQQqLRZE8RqMpBqtuu8fwbe+7FgJMzW1XY1ephH5XV5RLAfX99RL1vRfowzXfDs4AO03r
+	4cgD65ZOKhFmeZ0mHm63BcGtd78F84+XOqzAf2mWX6KV9F+fYc9OJ6H/1Z9Mh1vWwj6T+cpkbjL7a
+	A9maiO+r2Io1F2RHQot8ZRyoHAQgyhzIpDoNpXFr+Y4qnaxAVpZklXLfkbOqP2tqths1/ogmtXrXF
+	DZUKqXY0ZYyXcBv5ana2t5FFj3JthtpRhqwQCESsFP3188r42VgYtQuGfWFYEXdx6am9JMV9r0I9w
+	bWUKNFV0wWQvqQqeZPXg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iYCRS-0005sJ-R9; Fri, 22 Nov 2019 17:09:58 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1iYIo9-00075B-JS; Fri, 22 Nov 2019 23:57:49 +0000
+Received: from mail-ot1-f66.google.com ([209.85.210.66])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iYCRP-0005r0-M7
- for linux-mediatek@lists.infradead.org; Fri, 22 Nov 2019 17:09:57 +0000
-Received: by mail-wr1-x441.google.com with SMTP id s5so9507762wrw.2
- for <linux-mediatek@lists.infradead.org>; Fri, 22 Nov 2019 09:09:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=GveeeDV1nQsr0bSwcCCx8Vsl+3Babn6Mlzv1ByhFH+Y=;
- b=eIBsIiSXvp5sCJ0yKABqoG/j1h+d84G9Zl0HXR0dSvxVhfIscq6daBNS4i0L3j3Fbf
- duO+xDNv0XJY09AcoqHPk0Ix3qIgPTsZ0UDjULIVZXqDQWkXjSytqrRayjTNAz81gVce
- goTINcX86DPQxJjU2D2wGD4TGIw4AIpqF/sgU=
+ id 1iYIo7-00074K-3B; Fri, 22 Nov 2019 23:57:48 +0000
+Received: by mail-ot1-f66.google.com with SMTP id w24so7731784otk.6;
+ Fri, 22 Nov 2019 15:57:46 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=GveeeDV1nQsr0bSwcCCx8Vsl+3Babn6Mlzv1ByhFH+Y=;
- b=qCkRlu7BZZ1UOBebbRAtBYZe37NKubIgzIu+BgzLiilhNwdpbcHhxLGMeLWIq/8569
- y1BV7vHj1+QHNb66NIkql6HhJYOH6SDW/DXVCF4ygk+nG9L/0plknPBs8KFS9x4CcNIc
- 77X7GEDyEGzMi5SS4nA4F2Rgi8YPV6DAxVpnyiAuOqru+s6/XAcLKwivUxO0SisZJb74
- DP13GrkYFAl5TDr169ndPbJzfUpH1Q/yklJ+KPpg6bT1N1fkV4GQ8+BEPDQNadJCxSJb
- X1pYYD5UagnlA7Ws0ogMXJL4Fket1cOai+xSVkx9nNEkpMNTFqYUCZ5IrKYArUB8e/+r
- +jLA==
-X-Gm-Message-State: APjAAAUFB7x3wJJeHs26ufyL3/XhFC2/9SuwKWaxXiTrjEGWsXA357T5
- 8tPc+J/IXxPT3dC8E7y/Ft2xyw==
-X-Google-Smtp-Source: APXvYqw21AitnDiR+uQCAQr38tNh94j5CW1Rt6qcwqHjdlzEy/qK8QLOZBeeWzbGVlFlIo1UR84bxw==
-X-Received: by 2002:a5d:570f:: with SMTP id a15mr18390167wrv.316.1574442592095; 
- Fri, 22 Nov 2019 09:09:52 -0800 (PST)
-Received: from phenom.ffwll.local (212-51-149-96.fiber7.init7.net.
- [212.51.149.96])
- by smtp.gmail.com with ESMTPSA id y11sm6590631wrq.12.2019.11.22.09.09.50
+ bh=frUbXg9HVcTRfaaxELwHERf+lloS19EI1WW6S+yHA38=;
+ b=dMVmnzioXZqGqMXwJ+TmEGPDMwx0xmFv8AfKrnlXKsre0z/3UMVI2ac+he2Y6e/C0R
+ 8NbSmQv8WYmmo5f1eG7pdrcGlPDYMha53d1gLEV0z8qHkTRChhWtl6sdf+EzXvcOi+cx
+ OO7XPd8xerwWAlTuPgZDrhoKljVg+NcXDtQ8CbyT8+MEOMonc9u3IQ2MY0AxF/HBU/s0
+ S8+AkIzoksiQIu2R9eahQBy2XJ5oQtk2c2mDWVulKRNywbMzYNKMKJ/CUE3NtK0uZnaI
+ 1wGmJIDOTtTSVMLBzCczveYQEJyAaO9rKPNfKHUeaw8V30iuM9j9EHvlG3RGgSS1H5AW
+ J9Xg==
+X-Gm-Message-State: APjAAAXHiUMo3c/uRrbX/9roM8B3/CIvOKi7NY7+Bn0EmfMe5kLDRc2L
+ FCQe/V30BTQdsvC2SZdKpA==
+X-Google-Smtp-Source: APXvYqwHRHTMvmyvayb6oZ7vqTCt5okUxjvzyr/SweEAZ3HXsEH7Y8guZbnlyFulghfXVoQpjJozjw==
+X-Received: by 2002:a9d:12d2:: with SMTP id g76mr13180792otg.232.1574467066059; 
+ Fri, 22 Nov 2019 15:57:46 -0800 (PST)
+Received: from localhost ([2607:fb90:bd7:3743:c9ec:246b:67b7:9768])
+ by smtp.gmail.com with ESMTPSA id b135sm2608451oii.1.2019.11.22.15.57.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 Nov 2019 09:09:51 -0800 (PST)
-Date: Fri, 22 Nov 2019 18:09:49 +0100
-From: Daniel Vetter <daniel@ffwll.ch>
-To: CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH 3/8] drm/mediatek: don't open-code drm_gem_fb_create
-Message-ID: <20191122170949.GH6236@phenom.ffwll.local>
-References: <20191115092120.4445-1-daniel.vetter@ffwll.ch>
- <20191115092120.4445-4-daniel.vetter@ffwll.ch>
- <1574408559.21408.2.camel@mtksdaap41>
+ Fri, 22 Nov 2019 15:57:45 -0800 (PST)
+Date: Fri, 22 Nov 2019 17:57:31 -0600
+From: Rob Herring <robh@kernel.org>
+To: allen <allen.chen@ite.com.tw>
+Subject: Re: [PATCH v4 3/4] dt-bindings: Add binding for IT6505.
+Message-ID: <20191122235731.GB7738@bogus>
+References: <1573811564-320-1-git-send-email-allen.chen@ite.com.tw>
+ <1573811564-320-4-git-send-email-allen.chen@ite.com.tw>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1574408559.21408.2.camel@mtksdaap41>
-X-Operating-System: Linux phenom 5.3.0-1-amd64 
-User-Agent: Mutt/1.12.2 (2019-09-21)
+In-Reply-To: <1573811564-320-4-git-send-email-allen.chen@ite.com.tw>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191122_090955_792901_163B9138 
-X-CRM114-Status: GOOD (  22.08  )
+X-CRM114-CacheID: sfid-20191122_155747_138817_F8DB690A 
+X-CRM114-Status: GOOD (  14.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,233 +84,82 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Vetter <daniel.vetter@ffwll.ch>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Jau-Chih Tseng <Jau-Chih.Tseng@ite.com.tw>, David Airlie <airlied@linux.ie>,
+ open list <linux-kernel@vger.kernel.org>,
+ "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Pi-Hsun Shih <pihsun@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 22, 2019 at 03:42:39PM +0800, CK Hu wrote:
-> Hi, Daniel:
+On Fri, Nov 15, 2019 at 05:52:19PM +0800, allen wrote:
+> From: Allen Chen <allen.chen@ite.com.tw>
 > 
-> On Fri, 2019-11-15 at 10:21 +0100, Daniel Vetter wrote:
-> > Aside: There's a few other fb_create implementations which
-> > simply check for valid buffer format (or an approximation thereof),
-> > and then call drm_gem_fb_create. For atomic drivers at least we could
-> > walk all planes and make sure the format/modifier combo is valid,
-> > and remove even more code.
-> > 
-> > For non-atomic drivers that's not possible, since the format list for
-> > the primary buffer might be garbage (and most likely it is).
-> > 
-> > Also delete mtk_drm_fb.[hc] since it would now only contain one
-> > function.
+> Add a DT binding documentation for IT6505.
 > 
-> Acked-by: CK Hu <ck.hu@mediatek.com>
+> Signed-off-by: Allen Chen <allen.chen@ite.com.tw>
+> Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
+> ---
+>  .../bindings/display/bridge/ite,it6505.txt         | 28 ++++++++++++++++++++++
+>  1 file changed, 28 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/bridge/ite,it6505.txt
 
-Pushed to drm-misc-next, thanks for taking a look.
--Daniel
+Please make this a DT schema. See 
+Documentation/devicetree/writing-schema.rst.
+ 
+> diff --git a/Documentation/devicetree/bindings/display/bridge/ite,it6505.txt b/Documentation/devicetree/bindings/display/bridge/ite,it6505.txt
+> new file mode 100644
+> index 00000000..72da0c4
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/bridge/ite,it6505.txt
+> @@ -0,0 +1,28 @@
+> +iTE it6505 DP bridge bindings
+> +
+> +Required properties:
+> +        - compatible: "ite,it6505"
+> +        - reg: i2c address of the bridge
+> +        - ovdd-supply: I/O voltage
+> +        - pwr18-supply: Core voltage
+> +        - interrupts: interrupt specifier of INT pin
+> +        - reset-gpios: gpio specifier of RESET pin
+> +	- hpd-gpios:
+> +		Hotplug detect GPIO.
+> +		Indicates which GPIO should be used for hotplug detection
 
-> 
-> > 
-> > Signed-off-by: Daniel Vetter <daniel.vetter@ffwll.ch>
-> > Cc: CK Hu <ck.hu@mediatek.com>
-> > Cc: Philipp Zabel <p.zabel@pengutronix.de>
-> > Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> > Cc: linux-arm-kernel@lists.infradead.org
-> > Cc: linux-mediatek@lists.infradead.org
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c   | 16 ++++-
-> >  drivers/gpu/drm/mediatek/mtk_drm_fb.c    | 92 ------------------------
-> >  drivers/gpu/drm/mediatek/mtk_drm_fb.h    | 13 ----
-> >  drivers/gpu/drm/mediatek/mtk_drm_plane.c |  1 -
-> >  4 files changed, 15 insertions(+), 107 deletions(-)
-> >  delete mode 100644 drivers/gpu/drm/mediatek/mtk_drm_fb.c
-> >  delete mode 100644 drivers/gpu/drm/mediatek/mtk_drm_fb.h
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > index 84d14213d992..2b1c122066ea 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> > @@ -16,8 +16,10 @@
-> >  #include <drm/drm_atomic_helper.h>
-> >  #include <drm/drm_drv.h>
-> >  #include <drm/drm_fb_helper.h>
-> > +#include <drm/drm_fourcc.h>
-> >  #include <drm/drm_gem.h>
-> >  #include <drm/drm_gem_cma_helper.h>
-> > +#include <drm/drm_gem_framebuffer_helper.h>
-> >  #include <drm/drm_of.h>
-> >  #include <drm/drm_probe_helper.h>
-> >  #include <drm/drm_vblank.h>
-> > @@ -27,7 +29,6 @@
-> >  #include "mtk_drm_ddp.h"
-> >  #include "mtk_drm_ddp_comp.h"
-> >  #include "mtk_drm_drv.h"
-> > -#include "mtk_drm_fb.h"
-> >  #include "mtk_drm_gem.h"
-> >  
-> >  #define DRIVER_NAME "mediatek"
-> > @@ -115,6 +116,19 @@ static int mtk_atomic_commit(struct drm_device *drm,
-> >  	return 0;
-> >  }
-> >  
-> > +static struct drm_framebuffer *
-> > +mtk_drm_mode_fb_create(struct drm_device *dev,
-> > +		       struct drm_file *file,
-> > +		       const struct drm_mode_fb_cmd2 *cmd)
-> > +{
-> > +	const struct drm_format_info *info = drm_get_format_info(dev, cmd);
-> > +
-> > +	if (info->num_planes != 1)
-> > +		return ERR_PTR(-EINVAL);
-> > +
-> > +	return drm_gem_fb_create(dev, file, cmd);
-> > +}
-> > +
-> >  static const struct drm_mode_config_funcs mtk_drm_mode_config_funcs = {
-> >  	.fb_create = mtk_drm_mode_fb_create,
-> >  	.atomic_check = drm_atomic_helper_check,
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_fb.c b/drivers/gpu/drm/mediatek/mtk_drm_fb.c
-> > deleted file mode 100644
-> > index 3f230a28a2dc..000000000000
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_fb.c
-> > +++ /dev/null
-> > @@ -1,92 +0,0 @@
-> > -// SPDX-License-Identifier: GPL-2.0-only
-> > -/*
-> > - * Copyright (c) 2015 MediaTek Inc.
-> > - */
-> > -
-> > -#include <linux/dma-buf.h>
-> > -#include <linux/dma-resv.h>
-> > -
-> > -#include <drm/drm_modeset_helper.h>
-> > -#include <drm/drm_fb_helper.h>
-> > -#include <drm/drm_fourcc.h>
-> > -#include <drm/drm_gem.h>
-> > -#include <drm/drm_gem_framebuffer_helper.h>
-> > -
-> > -#include "mtk_drm_drv.h"
-> > -#include "mtk_drm_fb.h"
-> > -#include "mtk_drm_gem.h"
-> > -
-> > -static const struct drm_framebuffer_funcs mtk_drm_fb_funcs = {
-> > -	.create_handle = drm_gem_fb_create_handle,
-> > -	.destroy = drm_gem_fb_destroy,
-> > -};
-> > -
-> > -static struct drm_framebuffer *mtk_drm_framebuffer_init(struct drm_device *dev,
-> > -					const struct drm_mode_fb_cmd2 *mode,
-> > -					struct drm_gem_object *obj)
-> > -{
-> > -	const struct drm_format_info *info = drm_get_format_info(dev, mode);
-> > -	struct drm_framebuffer *fb;
-> > -	int ret;
-> > -
-> > -	if (info->num_planes != 1)
-> > -		return ERR_PTR(-EINVAL);
-> > -
-> > -	fb = kzalloc(sizeof(*fb), GFP_KERNEL);
-> > -	if (!fb)
-> > -		return ERR_PTR(-ENOMEM);
-> > -
-> > -	drm_helper_mode_fill_fb_struct(dev, fb, mode);
-> > -
-> > -	fb->obj[0] = obj;
-> > -
-> > -	ret = drm_framebuffer_init(dev, fb, &mtk_drm_fb_funcs);
-> > -	if (ret) {
-> > -		DRM_ERROR("failed to initialize framebuffer\n");
-> > -		kfree(fb);
-> > -		return ERR_PTR(ret);
-> > -	}
-> > -
-> > -	return fb;
-> > -}
-> > -
-> > -struct drm_framebuffer *mtk_drm_mode_fb_create(struct drm_device *dev,
-> > -					       struct drm_file *file,
-> > -					       const struct drm_mode_fb_cmd2 *cmd)
-> > -{
-> > -	const struct drm_format_info *info = drm_get_format_info(dev, cmd);
-> > -	struct drm_framebuffer *fb;
-> > -	struct drm_gem_object *gem;
-> > -	unsigned int width = cmd->width;
-> > -	unsigned int height = cmd->height;
-> > -	unsigned int size, bpp;
-> > -	int ret;
-> > -
-> > -	if (info->num_planes != 1)
-> > -		return ERR_PTR(-EINVAL);
-> > -
-> > -	gem = drm_gem_object_lookup(file, cmd->handles[0]);
-> > -	if (!gem)
-> > -		return ERR_PTR(-ENOENT);
-> > -
-> > -	bpp = info->cpp[0];
-> > -	size = (height - 1) * cmd->pitches[0] + width * bpp;
-> > -	size += cmd->offsets[0];
-> > -
-> > -	if (gem->size < size) {
-> > -		ret = -EINVAL;
-> > -		goto unreference;
-> > -	}
-> > -
-> > -	fb = mtk_drm_framebuffer_init(dev, cmd, gem);
-> > -	if (IS_ERR(fb)) {
-> > -		ret = PTR_ERR(fb);
-> > -		goto unreference;
-> > -	}
-> > -
-> > -	return fb;
-> > -
-> > -unreference:
-> > -	drm_gem_object_put_unlocked(gem);
-> > -	return ERR_PTR(ret);
-> > -}
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_fb.h b/drivers/gpu/drm/mediatek/mtk_drm_fb.h
-> > deleted file mode 100644
-> > index eb64d26001c6..000000000000
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_fb.h
-> > +++ /dev/null
-> > @@ -1,13 +0,0 @@
-> > -/* SPDX-License-Identifier: GPL-2.0-only */
-> > -/*
-> > - * Copyright (c) 2015 MediaTek Inc.
-> > - */
-> > -
-> > -#ifndef MTK_DRM_FB_H
-> > -#define MTK_DRM_FB_H
-> > -
-> > -struct drm_framebuffer *mtk_drm_mode_fb_create(struct drm_device *dev,
-> > -					       struct drm_file *file,
-> > -					       const struct drm_mode_fb_cmd2 *cmd);
-> > -
-> > -#endif /* MTK_DRM_FB_H */
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> > index 3b0cc91c7023..540ef2faa40a 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> > @@ -13,7 +13,6 @@
-> >  #include "mtk_drm_crtc.h"
-> >  #include "mtk_drm_ddp_comp.h"
-> >  #include "mtk_drm_drv.h"
-> > -#include "mtk_drm_fb.h"
-> >  #include "mtk_drm_gem.h"
-> >  #include "mtk_drm_plane.h"
-> >  
-> 
+Indentation is not consistent.
 
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+> +	- port@[x]: SoC specific port nodes with endpoint definitions as defined
+> +		in Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
+
+You need to define what each port is. With the schema, that will be 
+'port@0' and 'port@1' properties.
+
+> +
+> +Example:
+> +	dp-bridge@5c {
+> +                compatible = "ite,it6505";
+> +                interrupts = <152 IRQ_TYPE_EDGE_RISING 152 0>;
+> +                reg = <0x5c>;
+> +                pinctrl-names = "default";
+> +                pinctrl-0 = <&it6505_pins>;
+> +                ovdd-supply = <&mt6358_vsim1_reg>;
+> +                pwr18-supply = <&it6505_pp18_reg>;
+> +                reset-gpios = <&pio 179 1>;
+> +                hpd-gpios = <&pio 9 0>;
+> +                extcon = <&usbc_extcon>;
+
+Not documented plus it's deprecated.
+
+You're missing ports here and they are required.
+
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
