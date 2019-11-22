@@ -2,63 +2,146 @@ Return-Path: <SRS0=vzOr=ZO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-5.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 62AAEC432C0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Nov 2019 03:14:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 06ED5C432C0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Nov 2019 03:36:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3452020679
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Nov 2019 03:14:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D10B9206B6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Nov 2019 03:36:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GP7Jxqux"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3452020679
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=davemloft.net
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Kil30dcI";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="gMO5d8EA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D10B9206B6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
-	From:Subject:To:Message-Id:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NpOsX8gWtPUduRwOPIc9PGGYLTd/SR1mFH+BX9Imo1Q=; b=GP7Jxquxn6qe7M
-	ca1k7fO6mrwr79cMHIw2SPVXrOORUCm/8sKPKmCr5Oe/fQL+5Xp1qzD4Y7mauXKRdBVnk778eFJKs
-	D+VMEIxpkXU3ZqawFuLJvuiXSevZB/h+vWKtvT5uwbYO3A0JpRJ14qfJI6Y15jSGr68hBSEBhRNRW
-	0GxxfR1VyoY8zIIEToBXf6B68HEWhKso4G6nrNROGjEYCA6LdhDUpoRjVoa0Vc6IHzt6WtC7bVz7x
-	Nr+F5hMU2rNC9TXszzWoOeyW11YmpTSQlts4CjbqxjpYYBpmuHQ3QzHAbKfFMfTTsmOShfL/mVjvl
-	RZkA/VCBRhSrxD+UXRNw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Lg0oR4da9ftCRoNrNegbF9lKWSF2faefUAtiOCZQ2Zo=; b=Kil30dcIU4mICR
+	tXi+2BKvorGfdkDBN1S3pePs/uRp8diNi8TlBx+qQfORu4Xs6PQBmTdbNbwv6AI0BLcXUR4hJQloT
+	ARrWKgCCNdYeJrgltku3UhAnSB5niybB++g31OUgCzkcjdYFBjr3Q8AosoJWDPpGaJkfSBw/yVIjj
+	fmAmxoawY3bHsoW+9O8Ycng4e7/M8Op+KMh3Sk2bGoD1sFKKwKmcwLUlrqPB1AJRPoqArymb4ChD6
+	ieXUnHTG2urLHp8hQCyRQWwlHQMkgQfqgUmucxtlQvmsecA1UDC+plHSvbWXB6tmYHNqIHGiGnHO6
+	B6ETOV1cM85RAfop8AEg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iXzP6-0005Js-VC; Fri, 22 Nov 2019 03:14:41 +0000
-Received: from shards.monkeyblade.net ([2620:137:e000::1:9])
+	id 1iXzkc-0004p6-47; Fri, 22 Nov 2019 03:36:54 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iXzOs-000520-JD; Fri, 22 Nov 2019 03:14:27 +0000
-Received: from localhost (c-73-35-209-67.hsd1.wa.comcast.net [73.35.209.67])
- (using TLSv1 with cipher AES256-SHA (256/256 bits))
- (Client did not present a certificate)
- (Authenticated sender: davem-davemloft)
- by shards.monkeyblade.net (Postfix) with ESMTPSA id 4376C15102FA7;
- Thu, 21 Nov 2019 19:14:19 -0800 (PST)
-Date: Thu, 21 Nov 2019 19:14:17 -0800 (PST)
-Message-Id: <20191121.191417.1339124115325210078.davem@davemloft.net>
-To: rmk+kernel@armlinux.org.uk
-Subject: Re: [CFT PATCH net-next v2] net: phylink: rename mac_link_state()
- op to mac_pcs_get_state()
-From: David Miller <davem@davemloft.net>
-In-Reply-To: <E1iXaSM-0004t1-9L@rmk-PC.armlinux.org.uk>
+ id 1iXzka-0004oi-0p; Fri, 22 Nov 2019 03:36:53 +0000
+Received: by mail-wr1-x443.google.com with SMTP id i12so6869256wrn.11;
+ Thu, 21 Nov 2019 19:36:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=K/kNmRQpAY6NDDX+4H119fem6mrNO0k6YvPUtE1nMXI=;
+ b=gMO5d8EANHog7uOqBcUYbcK3sR4Rcun23ZcQUwhC4nbchx8NcZw+gYtlXJiorCVDPA
+ NGQZX3DpJ/jDaVs9Qcagny1I/XkSDs5BhRXKRpoAVTijK4LQf3oR9WiVYQ7h5VlJhj3X
+ GbjmDIbRe0F8qygoOc5ZFviADoRryejeF2nYRX57fxcqLrMBYjG+REddVb7+6J/jDZZI
+ EJ7hAaIUGErLScGcE98UWng5kYdr2IJMOnyUa1tdSEQoEIk0dnGDiPnYt9k08N9m2vqW
+ mw20H2TJ5sItbeCKjPPOsk8ws6ZoCn0dQVP0vFnikXp7LBlNBkft/dWNsNWhucY/Ikg+
+ UNtA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=K/kNmRQpAY6NDDX+4H119fem6mrNO0k6YvPUtE1nMXI=;
+ b=NlCZr0Je6jwMLZ14osfwPCVEc6mucX4Cx/kNxQ2KEHNX5ZSq0qIErNxRjGaOFa03d/
+ YIsXNVBPNMkbPq8L4LUew3DVgH2ALhRKZ01HdoJ37o3zVQzosRVb5px4zRkqWccPtlEd
+ zdVM2C+CzO9jq0D44/PxQGD9bqZLgrQmVVVF6GfN8NdOkfQOoIQNdlVkHGCTmvJO0Are
+ FJtTI1PvvZhVLLH1FkoNSdWOnSCquOjVFSgZ/Xt8SBiL7RUp3TuMX9ChTqGWo4Omet3M
+ eziubJOCGASmgsUcFB+JdkXgNap2M/a5R3XpjC8jYo8i3teUmiQgPf1bJiRBSESnqBSZ
+ C7MA==
+X-Gm-Message-State: APjAAAXSQ24wGZauf+QOlOrMVzUWsOJObQyuwVcYpjh+iwi9omTutoAq
+ PjJHE38MMoYe8zz47Mmr4c0=
+X-Google-Smtp-Source: APXvYqyVr1GDOV0+efqL0RM7uap0OvWzeRm4hUvx0xyaE/NUzW0rGRCf2a/PH26QWw/2EaYUw1TEfQ==
+X-Received: by 2002:adf:8426:: with SMTP id 35mr13417228wrf.262.1574393809796; 
+ Thu, 21 Nov 2019 19:36:49 -0800 (PST)
+Received: from [10.230.29.119] ([192.19.223.252])
+ by smtp.gmail.com with ESMTPSA id w7sm5795282wru.62.2019.11.21.19.36.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 21 Nov 2019 19:36:49 -0800 (PST)
+Subject: Re: [CFT PATCH net-next v2] net: phylink: rename mac_link_state() op
+ to mac_pcs_get_state()
+To: David Miller <davem@davemloft.net>, rmk+kernel@armlinux.org.uk
 References: <E1iXaSM-0004t1-9L@rmk-PC.armlinux.org.uk>
-X-Mailer: Mew version 6.8 on Emacs 26.2
-Mime-Version: 1.0
-X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.5.12
- (shards.monkeyblade.net [149.20.54.216]);
- Thu, 21 Nov 2019 19:14:20 -0800 (PST)
+ <20191121.191417.1339124115325210078.davem@davemloft.net>
+From: Florian Fainelli <f.fainelli@gmail.com>
+Autocrypt: addr=f.fainelli@gmail.com; keydata=
+ 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
+ a9BQwACgnzGuH1BVeT2J0Ra+ZYgkx7DaPR0=
+Message-ID: <0a9e016b-4ee3-1f1c-0222-74180f130e6c@gmail.com>
+Date: Thu, 21 Nov 2019 19:36:44 -0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
+MIME-Version: 1.0
+In-Reply-To: <20191121.191417.1339124115325210078.davem@davemloft.net>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191121_191426_633050_F256829C 
-X-CRM114-Status: GOOD (  14.11  )
+X-CRM114-CacheID: sfid-20191121_193652_083831_D2840BBF 
+X-CRM114-Status: GOOD (  14.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,45 +153,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: andrew@lunn.ch, nbd@openwrt.org, f.fainelli@gmail.com,
+Cc: andrew@lunn.ch, nbd@openwrt.org, radhey.shyam.pandey@xilinx.com,
  alexandre.torgue@st.com, netdev@vger.kernel.org, sean.wang@mediatek.com,
  linux-stm32@st-md-mailman.stormreply.com, nicolas.ferre@microchip.com,
  vivien.didelot@gmail.com, michal.simek@xilinx.com, joabreu@synopsys.com,
  linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  thomas.petazzoni@bootlin.com, john@phrozen.org, matthias.bgg@gmail.com,
- peppe.cavallaro@st.com, radhey.shyam.pandey@xilinx.com,
- Mark-MC.Lee@mediatek.com, mcoquelin.stm32@gmail.com, hkallweit1@gmail.com
+ peppe.cavallaro@st.com, Mark-MC.Lee@mediatek.com, mcoquelin.stm32@gmail.com,
+ hkallweit1@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Russell King <rmk+kernel@armlinux.org.uk>
-Date: Thu, 21 Nov 2019 00:36:22 +0000
 
-> Rename the mac_link_state() method to mac_pcs_get_state() to make it
-> clear that it should be returning the MACs PCS current state, which
-> is used for inband negotiation rather than just reading back what the
-> MAC has been configured for. Update the documentation to explicitly
-> mention that this is for inband.
-> 
-> We drop the return value as well; most of phylink doesn't check the
-> return value and it is not clear what it should do on error - instead
-> arrange for state->link to be false.
-> 
-> Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
-> ---
-> This is something I'd like to do to make it clearer what phylink
-> expects of this function, and that it shouldn't just read-back how
-> the MAC was configured.
-> 
-> This version drops the deeper changes, concentrating just on the
-> phylink API rather than delving deeper into drivers, as I haven't
-> received any feedback on that patch.
-> 
-> It would be nice to see all these drivers tested with this change.
 
-I'm tempted to just apply this, any objections?
+On 11/21/2019 7:14 PM, David Miller wrote:
+> From: Russell King <rmk+kernel@armlinux.org.uk>
+> Date: Thu, 21 Nov 2019 00:36:22 +0000
+> 
+>> Rename the mac_link_state() method to mac_pcs_get_state() to make it
+>> clear that it should be returning the MACs PCS current state, which
+>> is used for inband negotiation rather than just reading back what the
+>> MAC has been configured for. Update the documentation to explicitly
+>> mention that this is for inband.
+>>
+>> We drop the return value as well; most of phylink doesn't check the
+>> return value and it is not clear what it should do on error - instead
+>> arrange for state->link to be false.
+>>
+>> Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
+>> ---
+>> This is something I'd like to do to make it clearer what phylink
+>> expects of this function, and that it shouldn't just read-back how
+>> the MAC was configured.
+>>
+>> This version drops the deeper changes, concentrating just on the
+>> phylink API rather than delving deeper into drivers, as I haven't
+>> received any feedback on that patch.
+>>
+>> It would be nice to see all these drivers tested with this change.
+> 
+> I'm tempted to just apply this, any objections?
+> 
+
+Russell, which of this patch or: http://patchwork.ozlabs.org/patch/1197425/
+
+would you consider worthy of merging?
+-- 
+Florian
 
 _______________________________________________
 Linux-mediatek mailing list
