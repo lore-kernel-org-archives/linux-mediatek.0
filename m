@@ -1,78 +1,95 @@
-Return-Path: <SRS0=vzOr=ZO=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=r4xg=ZP=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2018AC432C0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Nov 2019 23:57:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 23C8BC432C0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Nov 2019 18:38:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E77832064B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Nov 2019 23:57:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E29582067D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Nov 2019 18:38:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="N9zdRg+c"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E77832064B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KoN3okHe";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=netronome-com.20150623.gappssmtp.com header.i=@netronome-com.20150623.gappssmtp.com header.b="uEsVTv/I"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E29582067D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=netronome.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZUX35/mPRC+iitCQ21getlTNGNp0mpOZ4x5/JvOTnmQ=; b=N9zdRg+cM0LaoK
-	Eak7tubLiQQqLRZE8RqMpBqtuu8fwbe+7FgJMzW1XY1ephH5XV5RLAfX99RL1vRfowzXfDs4AO03r
-	4cgD65ZOKhFmeZ0mHm63BcGtd78F84+XOqzAf2mWX6KV9F+fYc9OJ6H/1Z9Mh1vWwj6T+cpkbjL7a
-	A9maiO+r2Io1F2RHQot8ZRyoHAQgyhzIpDoNpXFr+Y4qnaxAVpZklXLfkbOqP2tqths1/ogmtXrXF
-	DZUKqXY0ZYyXcBv5ana2t5FFj3JthtpRhqwQCESsFP3188r42VgYtQuGfWFYEXdx6am9JMV9r0I9w
-	bWUKNFV0wWQvqQqeZPXg==;
+	List-Owner; bh=wSBNpi1HheOT07xf6VZFkzy1y4kJ5ER8M42Av1mUtUc=; b=KoN3okHePOWvfs
+	DQig65ns2FYnnYd7tH24vD+l7u5Vr9lzaRohrixmfZqgp9Hwo0otVIxSX+0MSF6+Mf4BYF8Pw2KpG
+	vzDpexAC9JT+zZi9Tsa3K7fORXzbBRbQq5Wut7at5MNlnq44MN3ONCoROfTuluTcRtYiJGvJ9boCi
+	XqlXpO35RY11NE7QF50cNA6lGuysmJuw+me+Mn9uftkgZQ7p2Ye2Rtn7eifKgBUZzmN2PZPR9SADE
+	oHfrq477kwxYdLA0xW2MZs2KYk76fWllsptrrTBAQtu56W25jk9brO+Xa/ubXzFRSU/1i9GKcyPDd
+	1pP8qgPC2o2cfx2OyACQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iYIo9-00075B-JS; Fri, 22 Nov 2019 23:57:49 +0000
-Received: from mail-ot1-f66.google.com ([209.85.210.66])
+	id 1iYaJ0-0000rs-Gu; Sat, 23 Nov 2019 18:38:50 +0000
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iYIo7-00074K-3B; Fri, 22 Nov 2019 23:57:48 +0000
-Received: by mail-ot1-f66.google.com with SMTP id w24so7731784otk.6;
- Fri, 22 Nov 2019 15:57:46 -0800 (PST)
+ id 1iYaIx-0000r7-IO
+ for linux-mediatek@lists.infradead.org; Sat, 23 Nov 2019 18:38:49 +0000
+Received: by mail-pg1-x543.google.com with SMTP id 6so520102pgk.0
+ for <linux-mediatek@lists.infradead.org>; Sat, 23 Nov 2019 10:38:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=netronome-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:in-reply-to:references
+ :organization:mime-version:content-transfer-encoding;
+ bh=nDRorgsBSVXUioZFMrZk0EkNmQVKU+AZrP50cmXnyC4=;
+ b=uEsVTv/IY5hG62Wu9vwmfYFRVZtJMQEmvbpSxd8EASyANasSlZHDLbnv19sgBybHPZ
+ sLaFJZ4ptRzpx2pp8bzaDde5oUsHabEPhJbnYrt8i/cBsmVfH40RjfsGk4MNOWiUF9e0
+ p8b0FNKNG2LJhSAXzZGlcy2QGKRkFwep6PbcXeYJxDW2ICh5V5aFtBne8QHoXwSBmeTb
+ VOWx7vsReEMXwyuVr4A7IBBksaZ2w0+u512zQ3uiZgWpiuk+uwyT4RU+vS1D9XA58mGM
+ j527Jxpoegjg53FzKsvTEvOfUlUWr1ykfKHB1GNaYEGCPObTDePqloRawIEjCkgB6ibX
+ NWcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=frUbXg9HVcTRfaaxELwHERf+lloS19EI1WW6S+yHA38=;
- b=dMVmnzioXZqGqMXwJ+TmEGPDMwx0xmFv8AfKrnlXKsre0z/3UMVI2ac+he2Y6e/C0R
- 8NbSmQv8WYmmo5f1eG7pdrcGlPDYMha53d1gLEV0z8qHkTRChhWtl6sdf+EzXvcOi+cx
- OO7XPd8xerwWAlTuPgZDrhoKljVg+NcXDtQ8CbyT8+MEOMonc9u3IQ2MY0AxF/HBU/s0
- S8+AkIzoksiQIu2R9eahQBy2XJ5oQtk2c2mDWVulKRNywbMzYNKMKJ/CUE3NtK0uZnaI
- 1wGmJIDOTtTSVMLBzCczveYQEJyAaO9rKPNfKHUeaw8V30iuM9j9EHvlG3RGgSS1H5AW
- J9Xg==
-X-Gm-Message-State: APjAAAXHiUMo3c/uRrbX/9roM8B3/CIvOKi7NY7+Bn0EmfMe5kLDRc2L
- FCQe/V30BTQdsvC2SZdKpA==
-X-Google-Smtp-Source: APXvYqwHRHTMvmyvayb6oZ7vqTCt5okUxjvzyr/SweEAZ3HXsEH7Y8guZbnlyFulghfXVoQpjJozjw==
-X-Received: by 2002:a9d:12d2:: with SMTP id g76mr13180792otg.232.1574467066059; 
- Fri, 22 Nov 2019 15:57:46 -0800 (PST)
-Received: from localhost ([2607:fb90:bd7:3743:c9ec:246b:67b7:9768])
- by smtp.gmail.com with ESMTPSA id b135sm2608451oii.1.2019.11.22.15.57.36
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
+ :references:organization:mime-version:content-transfer-encoding;
+ bh=nDRorgsBSVXUioZFMrZk0EkNmQVKU+AZrP50cmXnyC4=;
+ b=V9HyVMCXwE/HdH7DwyZBBfZFeXi3c5MtEzvSoyvauCHfDQ4HVuJ0S/oXFn6d8xYZRQ
+ JKKfoK/qB00Pnl/E74t9OR9x5YeV0XgLyaCpZY6h8HgHc00VUYKk9yR1reLDYRh0zX4s
+ 4VNHMiSi3BSBhgFqnU+ysyxU9yDgwh8DHsH/imuvKaeC7siYL7yV10ip0xqdkmtUn6w6
+ cPQHAF9qM8PvP/sTE7TjEk6lQdoohK23ENYPlt+ZvuimgQjd24tO6IdQL3IYL7Sdm2uN
+ o90EZlaZs9qKW/Bqa1oJYQNkLvIpZ0e6lbe1MhPpDBE9Zalxb30zQV62cgREYKuWXkzi
+ 9Bjw==
+X-Gm-Message-State: APjAAAVZeypGzn4Y1A3Bb38oBxxf6AB3SYhKvkTDAr4wl1BCldcH2nHt
+ 7GxapXyClHUGq3i+/UA43Q0reA==
+X-Google-Smtp-Source: APXvYqz1czMH9OjFLmttmObRqksQ19SQZuwNAxgR+QJ3jRnmZqw4PC8qOzxHsQAhx9c2AwtLrQZJyw==
+X-Received: by 2002:a62:6404:: with SMTP id y4mr24169935pfb.170.1574534326304; 
+ Sat, 23 Nov 2019 10:38:46 -0800 (PST)
+Received: from cakuba.netronome.com (c-73-202-202-92.hsd1.ca.comcast.net.
+ [73.202.202.92])
+ by smtp.gmail.com with ESMTPSA id v3sm2350025pfn.129.2019.11.23.10.38.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 Nov 2019 15:57:45 -0800 (PST)
-Date: Fri, 22 Nov 2019 17:57:31 -0600
-From: Rob Herring <robh@kernel.org>
-To: allen <allen.chen@ite.com.tw>
-Subject: Re: [PATCH v4 3/4] dt-bindings: Add binding for IT6505.
-Message-ID: <20191122235731.GB7738@bogus>
-References: <1573811564-320-1-git-send-email-allen.chen@ite.com.tw>
- <1573811564-320-4-git-send-email-allen.chen@ite.com.tw>
+ Sat, 23 Nov 2019 10:38:45 -0800 (PST)
+Date: Sat, 23 Nov 2019 10:38:40 -0800
+From: Jakub Kicinski <jakub.kicinski@netronome.com>
+To: Russell King - ARM Linux admin <linux@armlinux.org.uk>, Florian Fainelli
+ <f.fainelli@gmail.com>
+Subject: Re: [CFT PATCH net-next v2] net: phylink: rename mac_link_state()
+ op to mac_pcs_get_state()
+Message-ID: <20191123103840.76c5d63f@cakuba.netronome.com>
+In-Reply-To: <20191122092136.GJ25745@shell.armlinux.org.uk>
+References: <E1iXaSM-0004t1-9L@rmk-PC.armlinux.org.uk>
+ <20191121.191417.1339124115325210078.davem@davemloft.net>
+ <0a9e016b-4ee3-1f1c-0222-74180f130e6c@gmail.com>
+ <20191122092136.GJ25745@shell.armlinux.org.uk>
+Organization: Netronome Systems, Ltd.
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1573811564-320-4-git-send-email-allen.chen@ite.com.tw>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191122_155747_138817_F8DB690A 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20191123_103847_611937_0132D672 
+X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,82 +101,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
- Jau-Chih Tseng <Jau-Chih.Tseng@ite.com.tw>, David Airlie <airlied@linux.ie>,
- open list <linux-kernel@vger.kernel.org>,
- "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Pi-Hsun Shih <pihsun@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>
+Cc: andrew@lunn.ch, nbd@openwrt.org, sean.wang@mediatek.com,
+ alexandre.torgue@st.com, netdev@vger.kernel.org, peppe.cavallaro@st.com,
+ radhey.shyam.pandey@xilinx.com, michal.simek@xilinx.com,
+ mcoquelin.stm32@gmail.com, linux-stm32@st-md-mailman.stormreply.com,
+ joabreu@synopsys.com, linux-mediatek@lists.infradead.org,
+ thomas.petazzoni@bootlin.com, john@phrozen.org, matthias.bgg@gmail.com,
+ vivien.didelot@gmail.com, hkallweit1@gmail.com,
+ David Miller <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org,
+ Mark-MC.Lee@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 15, 2019 at 05:52:19PM +0800, allen wrote:
-> From: Allen Chen <allen.chen@ite.com.tw>
+On Fri, 22 Nov 2019 09:21:37 +0000, Russell King - ARM Linux admin
+wrote:
+> On Thu, Nov 21, 2019 at 07:36:44PM -0800, Florian Fainelli wrote:
+> > Russell, which of this patch or: http://patchwork.ozlabs.org/patch/1197425/
+> > 
+> > would you consider worthy of merging?  
 > 
-> Add a DT binding documentation for IT6505.
-> 
-> Signed-off-by: Allen Chen <allen.chen@ite.com.tw>
-> Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
-> ---
->  .../bindings/display/bridge/ite,it6505.txt         | 28 ++++++++++++++++++++++
->  1 file changed, 28 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/bridge/ite,it6505.txt
+> Let's go with v2 for now - it gets the rename done with less risk that
+> there'll be a problem.  I can always do the remainder in a separate
+> patch after the merge window as a separate patch.
 
-Please make this a DT schema. See 
-Documentation/devicetree/writing-schema.rst.
- 
-> diff --git a/Documentation/devicetree/bindings/display/bridge/ite,it6505.txt b/Documentation/devicetree/bindings/display/bridge/ite,it6505.txt
-> new file mode 100644
-> index 00000000..72da0c4
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/bridge/ite,it6505.txt
-> @@ -0,0 +1,28 @@
-> +iTE it6505 DP bridge bindings
-> +
-> +Required properties:
-> +        - compatible: "ite,it6505"
-> +        - reg: i2c address of the bridge
-> +        - ovdd-supply: I/O voltage
-> +        - pwr18-supply: Core voltage
-> +        - interrupts: interrupt specifier of INT pin
-> +        - reset-gpios: gpio specifier of RESET pin
-> +	- hpd-gpios:
-> +		Hotplug detect GPIO.
-> +		Indicates which GPIO should be used for hotplug detection
-
-Indentation is not consistent.
-
-> +	- port@[x]: SoC specific port nodes with endpoint definitions as defined
-> +		in Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
-
-You need to define what each port is. With the schema, that will be 
-'port@0' and 'port@1' properties.
-
-> +
-> +Example:
-> +	dp-bridge@5c {
-> +                compatible = "ite,it6505";
-> +                interrupts = <152 IRQ_TYPE_EDGE_RISING 152 0>;
-> +                reg = <0x5c>;
-> +                pinctrl-names = "default";
-> +                pinctrl-0 = <&it6505_pins>;
-> +                ovdd-supply = <&mt6358_vsim1_reg>;
-> +                pwr18-supply = <&it6505_pp18_reg>;
-> +                reset-gpios = <&pio 179 1>;
-> +                hpd-gpios = <&pio 9 0>;
-> +                extcon = <&usbc_extcon>;
-
-Not documented plus it's deprecated.
-
-You're missing ports here and they are required.
-
-Rob
+Florian, I assume you asked because you wanted to do some testing?
+Please let me know if you need more time, otherwise I'll apply this
+later today.
 
 _______________________________________________
 Linux-mediatek mailing list
