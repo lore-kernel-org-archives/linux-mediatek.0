@@ -2,77 +2,80 @@ Return-Path: <SRS0=x9ei=ZR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1CA72C432C0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Nov 2019 07:51:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3A270C432C0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Nov 2019 09:34:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C7A5220748
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Nov 2019 07:51:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0DBC62071E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Nov 2019 09:34:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="E/TN3RI4";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="CTn4oY6M"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C7A5220748
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="M14HeTQq";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="n0qMAxe/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0DBC62071E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vnra8OMzUsgdvnR/R0Wfif+rbWZijKR6Z6ky5ZewYEU=; b=E/TN3RI4hLWMp1
-	NtnuJY34f66iLBERHiE4cUJ6Y66kKmWhIysEkD5fVXcvEpJeO0bTD6wPJvSQ0eGzY7THnHxA6YFji
-	IhMATeBKyr0gAgTxhM3pBjNwZlpZAVou9oAL7b2APv9lJb4WsNDKg8cICUfO7FbhOoRJVdd1Siib/
-	Zlzs4u5p8kJ2w28xCHj+CyBLz/J/U7diInvtDPxfe9GCqxKaYhFUlYbR6FEF8dKc4K6gsKiYpjKBY
-	NWpX2Kpv53BR7i/dG/C4qhSPz4Klr2IJoRHP3No1B3YV/3j4YzG+fKGAtMmugatP+22HRDn7sRIaS
-	yDQ68iXY/1WnAL0C54Cw==;
+	List-Owner; bh=q3gwV9mq+OMD6eNz98eQBi3ixTxk3soBUOc6O/flw8c=; b=M14HeTQqlK9Pcu
+	OYtln6QjdkCHcOAEg32+szwvhNq5PU9MjzKseQ9CtbInWeuSnsN+eTocI1pHXwxYPMf/y5S31VZ26
+	RI/RxFMiAljQl+sCtwkMibAbQUJ7mnqDRE6DlK6r2QKWmVtXnw7Yx2Anbf7f0I8qeo9IcQ+xHVDsy
+	8KU2/fdQ3ylHtnMGfg8UwlYx+TCxGGQagm5tV+SfTCPUc1PQ5cjQzLbWJR+uNmsYaIe9qBrBxCAXd
+	BaWpz+jfxJMEfIavw84Nkb+aHy4C+uMylUwME8vvOnsKuHjzejbEHJvpk75YrZIXCH41fh9uU0lAU
+	WoB1IYpOi04/ffy+KfEQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iZ99X-0008Ch-Ce; Mon, 25 Nov 2019 07:51:23 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1iZAl2-00030v-B8; Mon, 25 Nov 2019 09:34:12 +0000
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iZ99M-00083T-8N; Mon, 25 Nov 2019 07:51:14 +0000
-X-UUID: f5b9ab6cc71f43939f847d27592a9fac-20191124
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=dKoy+Dj949qquDmvkLLiMXT3sCo/sHKTe8EGHTNJRjE=; 
- b=CTn4oY6MT2wOJ0kzFZvDENY4K7Ieq0x2H3cedeFvd6/tmlhLWeQ/8KEnjgwBeGruL41WtJD6WbYSrb+AhaR4nOSXhmwZcF6xVZuHTP6CLwRC6Yv26KBwnI7lLZK8Ff6+BQk8HrjqmnfhsNsC2+qsyvBjesuFfowGcoTXdz4vLDM=;
-X-UUID: f5b9ab6cc71f43939f847d27592a9fac-20191124
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <dennis-yc.hsieh@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 463010977; Sun, 24 Nov 2019 23:51:09 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 24 Nov 2019 23:41:15 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 25 Nov 2019 15:40:54 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Mon, 25 Nov 2019 15:40:24 +0800
-Message-ID: <1574667666.9851.5.camel@mtkswgap22>
-Subject: Re: [PATCH v1 06/12] soc: mediatek: cmdq: add assign function
-From: Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>
-Date: Mon, 25 Nov 2019 15:41:06 +0800
-In-Reply-To: <1574660121.26500.1.camel@mtksdaap41>
-References: <1574327552-11806-1-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1574327552-11806-7-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1574660121.26500.1.camel@mtksdaap41>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1iZAkw-000309-W8
+ for linux-mediatek@lists.infradead.org; Mon, 25 Nov 2019 09:34:10 +0000
+Received: by mail-ed1-x543.google.com with SMTP id p59so12045981edp.7
+ for <linux-mediatek@lists.infradead.org>; Mon, 25 Nov 2019 01:34:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=5hxAPhYLgkjAC0glPWrMWh5sNJUjuPwkk/Zd+BYl4dA=;
+ b=n0qMAxe/w0ZeKERleFOBgcA9JrLOVHkheN7cFtom/PmRGQrdhoib8QphXajnbHidBh
+ D3TTGA10ICGPuYSWRn+Nx6shOwHUJo4Xsr4kKkihn9TRCO6mk4UKTDY61uMzh8rBHaB1
+ ZAU1sCWOo6enIe29Pcnf4VAkh4QO7aAQBoaHI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=5hxAPhYLgkjAC0glPWrMWh5sNJUjuPwkk/Zd+BYl4dA=;
+ b=E0cAdtVn3LarO4sEqE6FBPC+etwA8avrSr4rUBSggRri5NHYuhPVOkpJ5sZRqzdl4W
+ FOde/BFplAjokAQvf88HnZ76aWHasSYiO6oXnmYFJ0n9wnMU1nSqNPkqXhguZUvqOkkO
+ dJ/Geg2rwnkzv3muBWpzLNCFOoI0ipPjcgl4tV9cwBBnVFWcRbp6KENcT/OXPFXduiTz
+ 9gC3sTIZCNihc+dr4RU4xndk+qlUtZ0cEKgoL8V1vcc9xhbxg1M+ph9htg3ihO1djaVj
+ +8vbL9KnCu5BCERVZLpNS6N0WneOeTVKYd6gN0l7sEUESjfq2wWV8IsXxsE8kmPPDB/g
+ o3ig==
+X-Gm-Message-State: APjAAAU4eFpthsQMM9lw4BNuDD5unrvkLYcWz1Tp7Fs4ze7TkusrnsFi
+ wH1NcyP+4WE0mkWSFlLThcuCvIigQP8wz0hUG56eGA==
+X-Google-Smtp-Source: APXvYqydDtp531AXtenv6mp5/TxUBdNXj0kZcXkFGGkNCV1naYHb2inz8WFVHVtUMbwv+kaqLxCZMeg6SBUFhIxhDSU=
+X-Received: by 2002:a17:906:b856:: with SMTP id
+ ga22mr17027902ejb.199.1574674444048; 
+ Mon, 25 Nov 2019 01:34:04 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20191031090213.27727-1-dongchun.zhu@mediatek.com>
+ <20191031090213.27727-3-dongchun.zhu@mediatek.com>
+In-Reply-To: <20191031090213.27727-3-dongchun.zhu@mediatek.com>
+From: Pi-Hsun Shih <pihsun@chromium.org>
+Date: Mon, 25 Nov 2019 17:33:28 +0800
+Message-ID: <CANdKZ0cMCWKmFcF44M0LBgwa6a3rvD0JdqFgkcjHqVHwMUS6yg@mail.gmail.com>
+Subject: Re: [V3, 2/2] media: i2c: ov8856: Add support for more sensor modes
+To: Dongchun Zhu <dongchun.zhu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191124_235112_299318_37C9E68E 
-X-CRM114-Status: GOOD (  19.16  )
+X-CRM114-CacheID: sfid-20191125_013409_202214_4D63557B 
+X-CRM114-Status: GOOD (  16.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,136 +87,96 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
- Jassi Brar <jassisinghbrar@gmail.com>, linux-kernel@vger.kernel.org,
- Houlong Wei <houlong.wei@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Bibby Hsieh <bibby.hsieh@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Nicolas Boichat <drinkcat@chromium.org>, andriy.shevchenko@linux.intel.com,
+ srv_heupstream@mediatek.com,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, shengnan.wang@mediatek.com,
+ Tomasz Figa <tfiga@chromium.org>, louis.kuo@mediatek.com,
+ =?UTF-8?B?U2ogSHVhbmcgKOm7g+S/oeeSiyk=?= <sj.huang@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ sakari.ailus@linux.intel.com, Matthias Brugger <matthias.bgg@gmail.com>,
+ bingbu.cao@intel.com, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:MEDIA INPUT INFRASTRUCTURE \(V4L/DVB\)"
+ <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi CK,
+Hi Dongchun,
 
-On Mon, 2019-11-25 at 13:35 +0800, CK Hu wrote:
-> Hi, Dennis:
-> 
-> On Thu, 2019-11-21 at 17:12 +0800, Dennis YC Hsieh wrote:
-> > Add assign function in cmdq helper which assign constant value into
-> > internal register by index.
-> > 
-> > Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
-> > ---
-> >  drivers/soc/mediatek/mtk-cmdq-helper.c   |   24 +++++++++++++++++++++++-
-> >  include/linux/mailbox/mtk-cmdq-mailbox.h |    1 +
-> >  include/linux/soc/mediatek/mtk-cmdq.h    |   14 ++++++++++++++
-> >  3 files changed, 38 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> > index 274f6f3..d419e99 100644
-> > --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-> > +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> > @@ -14,6 +14,7 @@
-> >  #define CMDQ_EOC_IRQ_EN		BIT(0)
-> >  #define CMDQ_EOC_CMD		((u64)((CMDQ_CODE_EOC << CMDQ_OP_CODE_SHIFT)) \
-> >  				<< 32 | CMDQ_EOC_IRQ_EN)
-> > +#define CMDQ_REG_TYPE		1
-> >  
-> >  struct cmdq_instruction {
-> >  	union {
-> > @@ -23,8 +24,17 @@ struct cmdq_instruction {
-> >  	union {
-> >  		u16 offset;
-> >  		u16 event;
-> > +		u16 reg_dst;
-> > +	};
-> > +	union {
-> > +		u8 subsys;
-> > +		struct {
-> > +			u8 sop:5;
-> > +			u8 arg_c_t:1;
-> > +			u8 arg_b_t:1;
-> > +			u8 arg_a_t:1;
-> > +		};
-> >  	};
-> > -	u8 subsys;
-> >  	u8 op;
-> >  };
-> >  
-> > @@ -279,6 +289,18 @@ int cmdq_pkt_poll_mask(struct cmdq_pkt *pkt, u8 subsys,
-> >  }
-> >  EXPORT_SYMBOL(cmdq_pkt_poll_mask);
-> >  
-> > +int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value)
-> > +{
-> > +	struct cmdq_instruction inst = { {0} };
-> > +
-> > +	inst.op = CMDQ_CODE_LOGIC;
-> > +	inst.arg_a_t = CMDQ_REG_TYPE;
-> 
-> It looks like that arg_a_t could have a meaningful name.
-> 
-> Regards,
-> CK
-> 
+On Thu, Oct 31, 2019 at 5:12 PM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
+>
+> This adds two more sensor modes for Omnivision ov8856 image sensor,
+> including the resolution of 1632*1224 and 3264*2448, both with the
+> Bayer Order of BGGR.
+>
+> Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> ---
+>  drivers/media/i2c/ov8856.c | 661 ++++++++++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 652 insertions(+), 9 deletions(-)
+>
+> diff --git a/drivers/media/i2c/ov8856.c b/drivers/media/i2c/ov8856.c
+> index 8655842..4815c26 100644
+> --- a/drivers/media/i2c/ov8856.c
+> +++ b/drivers/media/i2c/ov8856.c
+> @@ -3,10 +3,13 @@
+> [...]
+> @@ -1189,6 +1768,42 @@ static int ov8856_probe(struct i2c_client *client)
+>                 return -ENOMEM;
+>
+>         v4l2_i2c_subdev_init(&ov8856->sd, client, &ov8856_subdev_ops);
+> +       ov8856->fmt.code = MEDIA_BUS_FMT_SGRBG10_1X10;
+> +
+> +       ov8856->xvclk = devm_clk_get(&client->dev, "xvclk");
+> +       if (IS_ERR(ov8856->xvclk)) {
+> +               dev_err(&client->dev, "failed to get xvclk\n");
+> +               return -EINVAL;
+> +       }
+> +
+> +       ret = clk_set_rate(ov8856->xvclk, OV8856_XVCLK_24);
+> +       if (ret < 0) {
+> +               dev_err(&client->dev, "failed to set xvclk rate (24MHz)\n");
+> +               return ret;
+> +       }
+> +       if (clk_get_rate(ov8856->xvclk) != OV8856_XVCLK_24)
+> +               dev_warn(&client->dev,
+> +                        "xvclk mismatched, modes are based on 24MHz\n");
+> +
+> +       ov8856->n_shutdn_gpio = devm_gpiod_get(&client->dev, "reset",
+> +                                              GPIOD_OUT_LOW);
+> +       if (IS_ERR(ov8856->n_shutdn_gpio)) {
+> +               dev_err(&client->dev, "failed to get reset-gpios\n");
+> +               return -EINVAL;
+> +       }
+> +
+> +       for (i = 0; i < OV8856_NUM_SUPPLIES; i++)
+> +               ov8856->supplies[i].supply = ov8856_supply_names[i];
+> +
+> +       ret = devm_regulator_bulk_get(&client->dev, OV8856_NUM_SUPPLIES,
+> +                                     ov8856->supplies);
+> +       if (ret)
+> +               dev_warn(&client->dev, "failed to get regulators\n");
+> +
+> +       ret = __ov8856_power_on(ov8856);
+> +       if (ret)
+> +               dev_warn(&client->dev, "failed to power on\n");
+> +
 
-Ok, I'll rename it.
-Thanks for your comment.
+__ov8856_power_off is missing on the error path after the __ov8856_power_on.
 
-
-Regards,
-Dennis
-
-> > +	inst.reg_dst = reg_idx;
-> > +	inst.value = value;
-> > +	return cmdq_pkt_append_command(pkt, inst);
-> > +}
-> > +EXPORT_SYMBOL(cmdq_pkt_assign);
-> > +
-> >  static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
-> >  {
-> >  	struct cmdq_client *cl = pkt->cl;
-> > diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> > index dfe5b2e..121c3bb 100644
-> > --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
-> > +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> > @@ -59,6 +59,7 @@ enum cmdq_code {
-> >  	CMDQ_CODE_JUMP = 0x10,
-> >  	CMDQ_CODE_WFE = 0x20,
-> >  	CMDQ_CODE_EOC = 0x40,
-> > +	CMDQ_CODE_LOGIC = 0xa0,
-> >  };
-> >  
-> >  enum cmdq_cb_status {
-> > diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-> > index a74c1d5..8334021 100644
-> > --- a/include/linux/soc/mediatek/mtk-cmdq.h
-> > +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-> > @@ -152,6 +152,20 @@ int cmdq_pkt_poll(struct cmdq_pkt *pkt, u8 subsys,
-> >   */
-> >  int cmdq_pkt_poll_mask(struct cmdq_pkt *pkt, u8 subsys,
-> >  		       u16 offset, u32 value, u32 mask);
-> > +
-> > +/**
-> > + * cmdq_pkt_assign() - Append logic assign command to the CMDQ packet, ask GCE
-> > + *		       to execute an instruction that set a constant value into
-> > + *		       internal register and use as value, mask or address in
-> > + *		       read/write instruction.
-> > + * @pkt:	the CMDQ packet
-> > + * @reg_idx:	the CMDQ internal register ID
-> > + * @value:	the specified value
-> > + *
-> > + * Return: 0 for success; else the error code is returned
-> > + */
-> > +int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value);
-> > +
-> >  /**
-> >   * cmdq_pkt_flush_async() - trigger CMDQ to asynchronously execute the CMDQ
-> >   *                          packet and call back at the end of done packet
-> 
-> 
+>         ret = ov8856_identify_module(ov8856);
+>         if (ret) {
+>                 dev_err(&client->dev, "failed to find sensor: %d", ret);
+> @@ -1241,8 +1856,29 @@ static int ov8856_probe(struct i2c_client *client)
+>         return ret;
+>  }
+>
+> [...]
 
 _______________________________________________
 Linux-mediatek mailing list
