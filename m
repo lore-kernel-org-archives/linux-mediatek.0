@@ -1,4 +1,4 @@
-Return-Path: <SRS0=aqSI=ZQ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=x9ei=ZR=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
@@ -7,85 +7,108 @@ X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E688C432C3
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Nov 2019 00:15:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 59138C432C0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Nov 2019 00:03:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6317B20706
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Nov 2019 00:15:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 22DBD207FD
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Nov 2019 00:03:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mmkSEzPo";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=netronome-com.20150623.gappssmtp.com header.i=@netronome-com.20150623.gappssmtp.com header.b="ez1B5uRp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6317B20706
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=netronome.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e64u0YBl";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=aj.id.au header.i=@aj.id.au header.b="CpsQQPIh";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=messagingengine.com header.i=@messagingengine.com header.b="LGOno1P+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 22DBD207FD
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=aj.id.au
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XfrlJsjJCMmjusGPnLiuexH/WEONfhdY2lpfvHXldOA=; b=mmkSEzPotwKgUa
-	fb/3zORWnq7V5UyX8hdUiw0YUN+APf1GrjLjytIcQTWIFl7++SsaJTMPgCpI4yLfcXVQjtBSS1QBf
-	c/4hb61b2lxW9r1GMXmeA+dvn1UWrddh7xaVxmh2TinsSmGyHBXeXERDli7tHZRHMOrfi0EZcJ8nK
-	7B+TYhOHEMzhxCh/sZeuHlVf5nCCDEa1T31kn6STo25VBHFSrJE3bjYRxyPL8Pnpz6GMEG9NstUJW
-	HnEUzgmYtw5m2g8AREImByKh7j3OkZeEgqKKwlJ1okQ03rAFQs4c4pL+HZ0BZJ2ckj02TXu6tUDMN
-	yFy9ONphZIPQ2Qnpl2RA==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:To:From:Date:References:
+	In-Reply-To:Message-Id:Mime-Version:Reply-To:Cc:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=UeHthz7yy9BXH6t7c+3hATqnGryYqbSsE2qBkZTMfW8=; b=e64u0YBlWJ5jbxyT09brbjAWTO
+	AgWlj+/CJNMQISO7E8IrW8oSNVWzHfFBY3h64uJ6M3loOZZGumGtps9aV1LfvoG5luYl2awO/kHOC
+	3+TMcMlGUwMNRqZ2AI3RUNbq8R6nP4NHS946/I11Yn/aHHUzm9/dCxBfZeNTLqmj2hgVDhSqA9MD5
+	fOfTiJ3JAetcBkTbasjIdz+LQOYqnlaz+/C7gQaBMG+VKRFE2P6O4pGwBYzH58MRSg6PQrKSd8u9L
+	07nzNxodLlEDDQGg7FLkMPRWXkSF4weMJYO56OhcOaGDLv4NW/Ds4y3FMBbvWy65b5HTcNQYXwhU3
+	/DD7pr3w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iYfZ6-0005to-Hu; Sun, 24 Nov 2019 00:15:48 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+	id 1iZ1qR-0007AB-8w; Mon, 25 Nov 2019 00:03:11 +0000
+Received: from new1-smtp.messagingengine.com ([66.111.4.221])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iYfZ3-0005tC-IQ
- for linux-mediatek@lists.infradead.org; Sun, 24 Nov 2019 00:15:47 +0000
-Received: by mail-pf1-x442.google.com with SMTP id s5so5447679pfh.9
- for <linux-mediatek@lists.infradead.org>; Sat, 23 Nov 2019 16:15:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=netronome-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:in-reply-to:references
- :organization:mime-version:content-transfer-encoding;
- bh=MlWS2/07rbosC/qFv8QznfdONMvmj2+tW0igi1RVjQw=;
- b=ez1B5uRp4nlPeh7zDZUaqIVVmrQ4cZEVBD5bsp25+yTSzwX0wZswNSbOeXN8t70oOV
- FhG3p9KcCqjRhUWAOhf9cIb4WzBxbNKgGGFTdVHV7T7k9O0I4DmQNzsXLxBV/RYAfKAX
- gK/yPAbsjh2G5dH8n+2uSvTFKA62eoxD3IDcRAAqRD2Jyv6oss8RUpg1qf4z7CulEAma
- kOse1mK1qWQWI+p75R/WmpEQPeJAapr7LevBTLdqssAYGzqAkEZr18I/1jO1vXtTw9yR
- 7DZisviaEICwTsNIeLinkfoWU6qMGJi4KwhUeUuXlvVe2D9lF0JNatKeHjQQjdS/U0kC
- tHgA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:organization:mime-version:content-transfer-encoding;
- bh=MlWS2/07rbosC/qFv8QznfdONMvmj2+tW0igi1RVjQw=;
- b=ubwBNZDoFmmA3vS/brMQhA9eS1//2zZag7LSeK4OR7kmB/LM+y2+QqTwjvViwp4/pE
- +yor5gnsHVcb39y1rJaZBJrGAJcah8W9MsBViCp3LsxyESpxHNZ8PVUVE1OrBvpEti1i
- SZ6yzucTAbHhBSt3myVvJqM/7mSUJ8Hbd9NQ/KgzANC5M1wweeyzay3FqVWk5+eeZv16
- 4Az4YIK1LSuIveqp1XlgQkpphf6+Q0kam6J43HGzFQVrSMlhfm2aV87ehf0q03hK42j9
- i+SnlfcxntOM/GcNVQKwB+bd3qQj2Va+ChFFWFI02BYnPlb5D5s7ZXav+SDlNDezTfXX
- bWaA==
-X-Gm-Message-State: APjAAAVGRS0yGYd9EZMdgkA6nxV42wfvzRNRAWtdJ468Smgm3cUOzZ89
- vX6tiJrWy8YToM2aMpRvxK99cg==
-X-Google-Smtp-Source: APXvYqw7Fx4pGQM8XweJFPGKswwjFyRrs7WCWKH+T4ZIjjDmS8RS/eqxt3iliLVPz19POH3ZRMTHyA==
-X-Received: by 2002:aa7:954a:: with SMTP id w10mr3614854pfq.187.1574554544026; 
- Sat, 23 Nov 2019 16:15:44 -0800 (PST)
-Received: from cakuba.netronome.com (c-73-202-202-92.hsd1.ca.comcast.net.
- [73.202.202.92])
- by smtp.gmail.com with ESMTPSA id i13sm2782483pfo.39.2019.11.23.16.15.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 23 Nov 2019 16:15:43 -0800 (PST)
-Date: Sat, 23 Nov 2019 16:15:38 -0800
-From: Jakub Kicinski <jakub.kicinski@netronome.com>
-To: Russell King <rmk+kernel@armlinux.org.uk>
-Subject: Re: [CFT PATCH net-next v2] net: phylink: rename mac_link_state()
- op to mac_pcs_get_state()
-Message-ID: <20191123161538.482313ef@cakuba.netronome.com>
-In-Reply-To: <E1iXaSM-0004t1-9L@rmk-PC.armlinux.org.uk>
-References: <E1iXaSM-0004t1-9L@rmk-PC.armlinux.org.uk>
-Organization: Netronome Systems, Ltd.
-MIME-Version: 1.0
+ id 1iZ1qG-0006rA-62; Mon, 25 Nov 2019 00:03:02 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 7CFB15C3D;
+ Sun, 24 Nov 2019 19:02:54 -0500 (EST)
+Received: from imap2 ([10.202.2.52])
+ by compute4.internal (MEProxy); Sun, 24 Nov 2019 19:02:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
+ mime-version:message-id:in-reply-to:references:date:from:to
+ :subject:content-type; s=fm1; bh=yAnKxPZbRoo2OEW2NIbW2/4bJIIdzho
+ 1/YK4gE1VRSI=; b=CpsQQPIhPJ/jYdZjfnThBWlUg781MVJEU4QU+iJ6hrboGoH
+ BQsmQIfd8fPnBwmdp36oTQWfl4ne2rOqyYGXRZaxw6DBTW+RxHrpQ4TeqnR7Da04
+ lYHKG8nETc29H3Sqbg2tcjWiKXGA6jDKGSEXWYjV+YmwxjXox7FMo0d0K8XFy6/c
+ +Tfot/aRG3tRp6M+luzjlzvTyxDTNot77hdK0Idw1dT5yHkLatejQxgeFx44waTX
+ 2KD2uGu1bpHNyt/0F/BproROs/moImh4jCuyJkC6s2ZqHa+N9VA54Hlv1bOQNcBv
+ k5Qzt2H9cRVrCdapq4hTAWkyFOzpjhGSJZXmcpg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=yAnKxP
+ ZbRoo2OEW2NIbW2/4bJIIdzho1/YK4gE1VRSI=; b=LGOno1P+W3b/rePYylNzoK
+ bBxLTrKmyFUTwlm86ughlr1HMuV62A2DQuSVMLFgLMY2SYdzXBepH/jbrB6d+azZ
+ 9/F7fBp1ZzRQ9uIt1FYUViwoSYRy2ZSsckdengfnTNJWOIDwqesJGXjRgZIRqioU
+ +jhN5tHyiFhurj2b2HhHQOiUrR1TNF6Uf3CVXadfrDsMSzz2lVSnA2W/rWiipQmh
+ LyLJPjIu9e3sdGFJuMZjIvkJMQnZHooYsJmvt6pG2gCRGZNzi62iD+08Q2m6YOSd
+ I/N8c4nSwHGDeJFvbVPeWNJ0/O2nbW+5mM0uWiHys3Alxv8yMyVV0hSlrWVsiEVw
+ ==
+X-ME-Sender: <xms:LRrbXWUvwxkLfpXcaYQh4THV3cG8v3qN88Yz_EoLsJIK87BcFDVPOg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrudehledgudejucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepofgfggfkjghffffhvffutgesthdtredtreerjeenucfhrhhomhepfdetnhgu
+ rhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecurfgrrh
+ grmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhiugdrrghunecuvehluhhsthgv
+ rhfuihiivgeptd
+X-ME-Proxy: <xmx:LRrbXRRKtLxr4ZWaqqIOYvR1Day3I9pQjOgnBMXSL21zCHwcghRwOA>
+ <xmx:LRrbXdtkdba12QZVYsGYAO-y3uHHrs5UV3A-z1MfsQoQd34ej5nMRA>
+ <xmx:LRrbXaMaSzHburtqGZ2qO0hvR3WyKvrgLNBX-y1tssUWxrmtQ9mJIg>
+ <xmx:LhrbXaxeNjVY1OcNxmMWetzIFofI1MOqPtBc_xvODKv-MQJ2oZGIUA>
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id 59B21E00A3; Sun, 24 Nov 2019 19:02:53 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.1.7-578-g826f590-fmstable-20191119v1
+Mime-Version: 1.0
+Message-Id: <ef65b741-baec-484d-a5f4-984452e9d4e5@www.fastmail.com>
+In-Reply-To: <20191031014040.12898-1-rentao.bupt@gmail.com>
+References: <20191031014040.12898-1-rentao.bupt@gmail.com>
+Date: Mon, 25 Nov 2019 10:34:22 +1030
+From: "Andrew Jeffery" <andrew@aj.id.au>
+To: "Tao Ren" <rentao.bupt@gmail.com>, "Russell King" <linux@armlinux.org.uk>, 
+ "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "Arnd Bergmann" <arnd@arndb.de>, 
+ "Linus Walleij" <linus.walleij@linaro.org>,
+ "Paul Burton" <paulburton@kernel.org>,
+ "Andrew Morton" <akpm@linux-foundation.org>,
+ "Mauro Carvalho Chehab" <mchehab+samsung@kernel.org>,
+ "Bartosz Golaszewski" <bgolaszewski@baylibre.com>,
+ "Mike Rapoport" <rppt@linux.ibm.com>,
+ "Doug Anderson" <armlinux@m.disordat.com>,
+ "Ard Biesheuvel" <ard.biesheuvel@linaro.org>,
+ "Benjamin Gaignard" <benjamin.gaignard@linaro.org>,
+ "Joel Stanley" <joel@jms.id.au>, arm@kernel.org, soc@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
+ "Tao Ren" <taoren@fb.com>
+Subject: =?UTF-8?Q?Re:_[PATCH_v2]_ARM:_ASPEED:_update_default_ARCH=5FNR=5FGPIO_fo?=
+ =?UTF-8?Q?r_ARCH=5FASPEED?=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191123_161545_637083_28CFBB79 
-X-CRM114-Status: GOOD (  11.83  )
+X-CRM114-CacheID: sfid-20191124_160300_373487_83D5AFF0 
+X-CRM114-Status: UNSURE (   4.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,42 +120,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- linux-stm32@st-md-mailman.stormreply.com, Felix Fietkau <nbd@openwrt.org>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Michal Simek <michal.simek@xilinx.com>, Jose Abreu <joabreu@synopsys.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
- Alexandre Torgue <alexandre.torgue@st.com>, Sean Wang <sean.wang@mediatek.com>,
- linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- "David S. Miller" <davem@davemloft.net>,
- Heiner Kallweit <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 21 Nov 2019 00:36:22 +0000, Russell King wrote:
-> Rename the mac_link_state() method to mac_pcs_get_state() to make it
-> clear that it should be returning the MACs PCS current state, which
-> is used for inband negotiation rather than just reading back what the
-> MAC has been configured for. Update the documentation to explicitly
-> mention that this is for inband.
-> 
-> We drop the return value as well; most of phylink doesn't check the
-> return value and it is not clear what it should do on error - instead
-> arrange for state->link to be false.
-> 
-> Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
 
-Applied to net-next now, thank you!
+
+On Thu, 31 Oct 2019, at 12:10, rentao.bupt@gmail.com wrote:
+> From: Tao Ren <rentao.bupt@gmail.com>
+> 
+> Increase the max number of GPIOs from default 512 to 1024 for ASPEED
+> platforms, because Facebook Yamp (AST2500) BMC platform has total 594
+> GPIO pins (232 provided by ASPEED SoC, and 362 by I/O Expanders).
+> 
+> Signed-off-by: Tao Ren <rentao.bupt@gmail.com>
+> Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+
+Hopefully userspace is not making assumptions about sysfs gpiochip numbers.
+
+Acked-by: Andrew Jeffery <andrew@aj.id.au>
 
 _______________________________________________
 Linux-mediatek mailing list
