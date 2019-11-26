@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1804DC432C0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2019 11:52:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6948CC432C0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2019 12:01:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DD0012073F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2019 11:52:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0B0102073F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2019 12:01:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jFVTJ+KE";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="b+R8CCNk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD0012073F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Eob7tOc5";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="A3f8Aq9U"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0B0102073F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,38 +26,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9/lm0o1AR2F7xFBnlkzJS2GVkcFBSsj8LzyFyFH+Qdw=; b=jFVTJ+KEIyJFBO
-	w6VePhKjVkROK8aqEMup38RBoKtjP+NXI/E5V7OYwJPhsecU4obnH2EhBVt2REItBHZjg1lD88cjk
-	sPOiRinFbvcXO0C4xT6dMsGBi2rqDUdZ9TuFT+MyvCHYL9cfz7RRukGfd7O8U9PBKYukS2Zhs5w6c
-	B0YtJ+ZtfsV3PiNG0Eve7/To9cIm0lOfqBipCFeTKwRsdd/P1FuecR0y0cs6Jz3c1YBURRMo0Cg2q
-	7JdQQB7Hud8HlTkKi1TeiOKnQtATYkFy0Wx1qS2mJTXGl2VVMJaThg2Bn/U2IWC3+okGjiappmsZv
-	/lj7aBnMOw58OV8Qc3Sw==;
+	List-Owner; bh=85W9ZrbVsIE708jeW10gFTjfWWvgqBwqCxVhq9i7qG4=; b=Eob7tOc5tdatW2
+	J+tZyyJHPyxOt7kBQ32u9AOyyy+g+7NBIrpHv4q0nyqdrLsbqZ/upgiYudYGNaQ7EPygSaH7wx9Ge
+	GvlCBtoku9W86juxoOpDLP2KBuPaqpZgbXL59KHnfkVdES1Vfc2hwyUBUkaBLqN1oB6ym9kK12z5W
+	ju2uN0yL1oRhp6SAson/r3GBo613fD7UUkaCGhYM/a/fCA8L9wqKPLgvUhtSQMRtK7BwUGEfglQ9b
+	dulKRjMlZpLt4ldxUW6JDVFKinjpvNYwPwSI7ddlsyjFwzV1zKlML5b57WMNES70MmEHjYVHv0HdB
+	Z8URPvKS2QYKm2FgrxaA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iZZO0-000214-4D; Tue, 26 Nov 2019 11:52:04 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1iZZX7-0004y8-E4; Tue, 26 Nov 2019 12:01:29 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iZZNQ-0000ES-8m; Tue, 26 Nov 2019 11:51:30 +0000
-X-UUID: 09a81b6c8155441b833a190187e6b1e1-20191126
+ id 1iZZX3-0004dF-QC; Tue, 26 Nov 2019 12:01:28 +0000
+X-UUID: 9d4c069b4dee4057ad6c9486373d6639-20191126
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=iWqfk6oDuIoe2ZVIibV22tBLL9F80zZam9b/+b4ckHU=; 
- b=b+R8CCNkuPGQ2VS750yWCJnEKXaGABEv5vVSHdLu+i0lLJ4qIuRZ9hh8id4qNVJRBpn5uYvFZopcVokniYktHlAqgTLgtHmFFLRZIuUv2cjpgBXr4/fWb//tMt/qzVPTxsneZMf0N1AnmM1hyG7Tyd33NEwXlSUwuK9h+umv4XE=;
-X-UUID: 09a81b6c8155441b833a190187e6b1e1-20191126
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=l0eT5JUNY43dn/lpok9fOypKOqfCP1urJmkFIHbTp5o=; 
+ b=A3f8Aq9UWftB94LjEXqNb6mdxL1kJlfrGHia2gBLc5VsCzJ2/7qiY7K5MdurQWtMLns91TC3c6tMVmnKmyIDzWuSVm+SZEg+494SlTawt62rAy7EL9tLX7LlIS2NJV+3m7SPnEG2VLV9vMGC78s8z+hy1sVKoE0RHmP9gK35bKk=;
+X-UUID: 9d4c069b4dee4057ad6c9486373d6639-20191126
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <andrew-sh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1198560919; Tue, 26 Nov 2019 03:51:21 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 26 Nov 2019 03:51:29 -0800
+ with ESMTP id 1553763220; Tue, 26 Nov 2019 04:01:20 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 26 Nov 2019 03:51:55 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 26 Nov 2019 19:51:12 +0800
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 26 Nov 2019 19:51:15 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Tue, 26 Nov 2019 19:51:17 +0800
+ Frontend Transport; Tue, 26 Nov 2019 19:51:18 +0800
 From: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park
  <kyungmin.park@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, "Rob
@@ -66,17 +66,18 @@ To: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park
  Viresh Kumar <viresh.kumar@linaro.org>, Nishanth Menon <nm@ti.com>, "Stephen
  Boyd" <sboyd@kernel.org>
 Subject: [v5,
- PATCH 4/5] cpufreq: mediatek: add opp notification for SVS support
-Date: Tue, 26 Nov 2019 19:50:45 +0800
-Message-ID: <1574769046-28449-5-git-send-email-andrew-sh.cheng@mediatek.com>
+ PATCH 5/5] devfreq: mediatek: cci devfreq register opp notification
+ for SVS support
+Date: Tue, 26 Nov 2019 19:50:46 +0800
+Message-ID: <1574769046-28449-6-git-send-email-andrew-sh.cheng@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1574769046-28449-1-git-send-email-andrew-sh.cheng@mediatek.com>
 References: <1574769046-28449-1-git-send-email-andrew-sh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191126_035128_404947_B16321F5 
-X-CRM114-Status: GOOD (  13.53  )
+X-CRM114-CacheID: sfid-20191126_040125_898212_43B25E3C 
+X-CRM114-Status: GOOD (  13.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,168 +100,143 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
 
-cpufreq should listen opp notification and do proper actions
-when receiving disable and voltage adjustment events,
-which are triggered when SVS is enabled.
+SVS will change the voltage of opp item.
+CCI devfreq need to react to change frequency.
 
 Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 ---
- drivers/cpufreq/mediatek-cpufreq.c | 79 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 79 insertions(+)
+ drivers/devfreq/mt8183-cci-devfreq.c | 61 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 61 insertions(+)
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index 4b0cc50dd93b..7c37ab31230a 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -42,6 +42,10 @@ struct mtk_cpu_dvfs_info {
- 	struct list_head list_head;
- 	int intermediate_voltage;
- 	bool need_voltage_tracking;
-+	struct mutex lock; /* avoid notify and policy race condition */
+diff --git a/drivers/devfreq/mt8183-cci-devfreq.c b/drivers/devfreq/mt8183-cci-devfreq.c
+index 818a167c442f..afc274d73c2f 100644
+--- a/drivers/devfreq/mt8183-cci-devfreq.c
++++ b/drivers/devfreq/mt8183-cci-devfreq.c
+@@ -19,7 +19,10 @@ struct cci_devfreq {
+ 	struct regulator *proc_reg;
+ 	unsigned long proc_reg_uV;
+ 	struct clk *cci_clk;
++	unsigned long freq;
+ 	struct notifier_block nb;
 +	struct notifier_block opp_nb;
-+	int opp_cpu;
-+	unsigned long opp_freq;
++	int cci_min_freq;
  };
  
- static LIST_HEAD(dvfs_info_list);
-@@ -231,6 +235,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 	vproc = dev_pm_opp_get_voltage(opp);
- 	dev_pm_opp_put(opp);
+ static int cci_devfreq_regulator_notifier(struct notifier_block *nb,
+@@ -65,17 +68,60 @@ static int cci_devfreq_regulator_notifier(struct notifier_block *nb,
+ 	return 0;
+ }
  
-+	mutex_lock(&info->lock);
- 	/*
- 	 * If the new voltage or the intermediate voltage is higher than the
- 	 * current voltage, scale up voltage first.
-@@ -242,6 +247,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 			pr_err("cpu%d: failed to scale up voltage!\n",
- 			       policy->cpu);
- 			mtk_cpufreq_set_voltage(info, old_vproc);
-+			mutex_unlock(&info->lock);
- 			return ret;
- 		}
- 	}
-@@ -253,6 +259,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 		       policy->cpu);
- 		mtk_cpufreq_set_voltage(info, old_vproc);
- 		WARN_ON(1);
-+		mutex_unlock(&info->lock);
++static int ccidevfreq_opp_notifier(struct notifier_block *nb,
++				   unsigned long event, void *data)
++{
++	int ret;
++	struct dev_pm_opp *opp = data;
++	struct cci_devfreq *cci_df = container_of(nb, struct cci_devfreq,
++						  opp_nb);
++	unsigned long	freq, volt, cur_volt;
++
++	if (event == OPP_EVENT_ADJUST_VOLTAGE) {
++		freq = dev_pm_opp_get_freq(opp);
++		/* current opp item is changed */
++		if (freq == cci_df->freq) {
++			volt = dev_pm_opp_get_voltage(opp);
++			cur_volt = regulator_get_voltage(cci_df->proc_reg);
++
++			if (volt > cur_volt) {
++				/* need reduce freq */
++				mutex_lock(&cci_df->devfreq->lock);
++				ret = update_devfreq(cci_df->devfreq);
++				if (ret)
++					pr_err("Fail to reduce cci frequency by opp notification: %d\n",
++					       ret);
++				mutex_unlock(&cci_df->devfreq->lock);
++			}
++		}
++
++		if (freq == cci_df->cci_min_freq) {
++			volt = dev_pm_opp_get_voltage(opp);
++			regulator_set_voltage(cci_df->proc_reg, volt, INT_MAX);
++		}
++	}
++
++	return 0;
++}
++
+ static int mtk_cci_governor_get_target(struct devfreq *devfreq,
+ 				       unsigned long *freq)
+ {
+ 	struct cci_devfreq *cci_df;
+ 	struct dev_pm_opp *opp;
++	int ret;
+ 
+ 	cci_df = dev_get_drvdata(devfreq->dev.parent);
+ 
+ 	/* find available frequency */
+ 	opp = dev_pm_opp_find_freq_ceil_by_volt(devfreq->dev.parent,
+ 						cci_df->proc_reg_uV);
++	ret = PTR_ERR_OR_ZERO(opp);
++	if (ret) {
++		pr_err("%s[%d], cannot find opp with voltage=%d: %d\n",
++		       __func__, __LINE__, cci_df->proc_reg_uV, ret);
++		return ret;
++	}
+ 	*freq = dev_pm_opp_get_freq(opp);
+ 
+ 	return 0;
+@@ -87,9 +133,11 @@ static int mtk_cci_governor_event_handler(struct devfreq *devfreq,
+ 	int ret;
+ 	struct cci_devfreq *cci_df;
+ 	struct notifier_block *nb;
++	struct notifier_block *opp_nb;
+ 
+ 	cci_df = dev_get_drvdata(devfreq->dev.parent);
+ 	nb = &cci_df->nb;
++	opp_nb = &cci_df->opp_nb;
+ 
+ 	switch (event) {
+ 	case DEVFREQ_GOV_START:
+@@ -100,6 +148,8 @@ static int mtk_cci_governor_event_handler(struct devfreq *devfreq,
+ 		if (ret)
+ 			pr_err("%s: failed to add governor: %d\n", __func__,
+ 			       ret);
++		opp_nb->notifier_call = ccidevfreq_opp_notifier;
++		dev_pm_opp_register_notifier(devfreq->dev.parent, opp_nb);
+ 		break;
+ 
+ 	case DEVFREQ_GOV_STOP:
+@@ -141,6 +191,8 @@ static int mtk_cci_devfreq_target(struct device *dev, unsigned long *freq,
  		return ret;
  	}
  
-@@ -263,6 +270,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 		       policy->cpu);
- 		clk_set_parent(cpu_clk, armpll);
- 		mtk_cpufreq_set_voltage(info, old_vproc);
-+		mutex_unlock(&info->lock);
- 		return ret;
- 	}
- 
-@@ -273,6 +281,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 		       policy->cpu);
- 		mtk_cpufreq_set_voltage(info, inter_vproc);
- 		WARN_ON(1);
-+		mutex_unlock(&info->lock);
- 		return ret;
- 	}
- 
-@@ -288,15 +297,75 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
- 			clk_set_parent(cpu_clk, info->inter_clk);
- 			clk_set_rate(armpll, old_freq_hz);
- 			clk_set_parent(cpu_clk, armpll);
-+			mutex_unlock(&info->lock);
- 			return ret;
- 		}
- 	}
- 
-+	info->opp_freq = freq_hz;
-+	mutex_unlock(&info->lock);
++	cci_df->freq = *freq;
 +
  	return 0;
  }
  
- #define DYNAMIC_POWER "dynamic-power-coefficient"
- 
-+static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
-+				    unsigned long event, void *data)
-+{
-+	struct dev_pm_opp *opp = data;
-+	struct dev_pm_opp *opp_item;
-+	struct mtk_cpu_dvfs_info *info =
-+		container_of(nb, struct mtk_cpu_dvfs_info, opp_nb);
-+	unsigned long freq, volt;
-+	struct cpufreq_policy *policy;
-+	int ret = 0;
-+
-+	if (event == OPP_EVENT_ADJUST_VOLTAGE) {
-+		freq = dev_pm_opp_get_freq(opp);
-+
-+		mutex_lock(&info->lock);
-+		if (info->opp_freq == freq) {
-+			volt = dev_pm_opp_get_voltage(opp);
-+			ret = mtk_cpufreq_set_voltage(info, volt);
-+			if (ret)
-+				dev_err(info->cpu_dev, "failed to scale voltage: %d\n",
-+					ret);
-+		}
-+		mutex_unlock(&info->lock);
-+	} else if (event == OPP_EVENT_DISABLE) {
-+		freq = info->opp_freq;
-+		opp_item = dev_pm_opp_find_freq_ceil(info->cpu_dev, &freq);
-+		if (!IS_ERR(opp_item))
-+			dev_pm_opp_put(opp_item);
-+		else
-+			freq = 0;
-+
-+		/* case of current opp is disabled */
-+		if (freq == 0 || freq != info->opp_freq) {
-+			// find an enable opp item
-+			freq = 1;
-+			opp_item = dev_pm_opp_find_freq_ceil(info->cpu_dev,
-+							     &freq);
-+			if (!IS_ERR(opp_item)) {
-+				dev_pm_opp_put(opp_item);
-+				policy = cpufreq_cpu_get(info->opp_cpu);
-+				if (policy) {
-+					cpufreq_driver_target(policy,
-+						freq / 1000,
-+						CPUFREQ_RELATION_L);
-+					cpufreq_cpu_put(policy);
-+				}
-+			} else {
-+				pr_err("%s: all opp items are disabled\n",
-+				       __func__);
-+			}
-+		}
-+	}
-+
-+	return notifier_from_errno(ret);
-+}
-+
- static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+@@ -152,6 +204,8 @@ static int mtk_cci_devfreq_probe(struct platform_device *pdev)
  {
- 	struct device *cpu_dev;
-@@ -383,11 +452,21 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
- 	info->intermediate_voltage = dev_pm_opp_get_voltage(opp);
- 	dev_pm_opp_put(opp);
+ 	struct device *cci_dev = &pdev->dev;
+ 	struct cci_devfreq *cci_df;
++	unsigned long freq, volt;
++	struct dev_pm_opp *opp;
+ 	int ret;
  
-+	info->opp_cpu = cpu;
-+	info->opp_nb.notifier_call = mtk_cpufreq_opp_notifier;
-+	ret = dev_pm_opp_register_notifier(cpu_dev, &info->opp_nb);
-+	if (ret) {
-+		pr_warn("cannot register opp notification\n");
-+		goto out_free_opp_table;
-+	}
+ 	cci_df = devm_kzalloc(cci_dev, sizeof(*cci_df), GFP_KERNEL);
+@@ -181,6 +235,13 @@ static int mtk_cci_devfreq_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+ 
++	/* set voltage lower bound */
++	freq = 1;
++	opp = dev_pm_opp_find_freq_ceil(cci_dev, &freq);
++	cci_df->cci_min_freq = dev_pm_opp_get_freq(opp);
++	volt = dev_pm_opp_get_voltage(opp);
++	dev_pm_opp_put(opp);
 +
-+	mutex_init(&info->lock);
- 	info->cpu_dev = cpu_dev;
- 	info->proc_reg = proc_reg;
- 	info->sram_reg = IS_ERR(sram_reg) ? NULL : sram_reg;
- 	info->cpu_clk = cpu_clk;
- 	info->inter_clk = inter_clk;
-+	info->opp_freq = clk_get_rate(cpu_clk);
+ 	platform_set_drvdata(pdev, cci_df);
  
- 	/*
- 	 * If SRAM regulator is present, software "voltage tracking" is needed
+ 	cci_df->devfreq = devm_devfreq_add_device(cci_dev,
 -- 
 2.12.5
 _______________________________________________
