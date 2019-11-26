@@ -4,75 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7610BC432C0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2019 03:01:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F2FAC432C3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2019 04:52:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 488432075C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2019 03:01:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E127120678
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Nov 2019 04:52:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="U16mdQUD";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="SUFHjTwt"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 488432075C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jDhGCXCC";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="KXvWCB5e"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E127120678
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hR57NtExmj5RGFhBn1s/IrCisesNu+ZHzo1UJg+aWWk=; b=U16mdQUDWgridF
-	8gN4c4MJk+ter94/GKkW1ehWKJd8DYXdZSHuPjtqXNPTQXTap8jAw89Cjaqg9KpaXw9ZnWlkVw0c4
-	tSyEMVmTdXrry2ZAQPAg6dAkzGndsITIx6+S+KVtTfdyMF0D10i8eci1B0oztnDerl/4okEMHiEId
-	JA4jPqFJ4xgtDalpE1REuxWHCCCqTc6/C6/EaiK0EP1b2CPG/BcgigvURoh0rkiJK+avCoGMDygMC
-	LL+eqmB21MZb0b1J4xWYIFm7Fjbx1WvUlJwQdzJDTkxEfHBsFTOPgFV3yJ+WmmT4WnGvDOR/Z+I8G
-	tue0OGpWuEMh9DW1mLQg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=AAMKvRe7ujHx9/I9jNjEFG4Yxazk3d2Ywhg+J5EwEu4=; b=jDhGCXCCDEypBW
+	fnE6PaAHEd/kwgT7IK0Og+yggNqE7L5uUTdxqZ0pAhq90OezwUmabD/L90bdeJ49OBdGpPcEaFWhv
+	/nXHUws8zU+Jgca+WeDmbbt1OS1lt+RhFjK72F7ZamQQywG4qdOAinA9E5K84ZM0Y6o2c5RqCG0Z4
+	zOhqWobfymW0Nwfo/xjxQogo7gPSNBp0uod+enaWbuP2ijO16GULoKFl4t0Yr+Qxk/2DTN04jj5KH
+	oChEBc9ZNbT1+2NZqVQ6ae5N70NzXUNJeW/TePXBj/w96kHX2Rc7V9KMUFBfZ4A/YsZ0kWX/+hN1l
+	DAGjauxFr41x5aQfo6LA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iZR68-0001uC-R9; Tue, 26 Nov 2019 03:01:04 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1iZSpp-0004gr-7s; Tue, 26 Nov 2019 04:52:21 +0000
+Received: from userp2130.oracle.com ([156.151.31.86])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iZR66-0001tO-BR; Tue, 26 Nov 2019 03:01:04 +0000
-X-UUID: d3d077e5ea944e5489368d65f7fb03fd-20191125
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=U4VK8y3TGwrQrTTLGoGY/Sz/+8bSigII6WIe7UI7Fsg=; 
- b=SUFHjTwtnhBzGLG9YOyIDp1I1RtMyUDYWZE/RbN2B03qM432PH1Xdb7GDVgvXDDXd7PviVe4A1oEA3P6E8CMnzjwZgwsE0I1itVnLLLMkyHQrdj0YfXJRvupQWWgVi28Rh0DWlZXlrdvOHG6FWMVJKkbrxkjHGS5B9uPbuiot90=;
-X-UUID: d3d077e5ea944e5489368d65f7fb03fd-20191125
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yt.chang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1816778796; Mon, 25 Nov 2019 19:00:51 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 25 Nov 2019 19:01:21 -0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 26 Nov 2019 11:00:43 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 26 Nov 2019 11:00:33 +0800
-Message-ID: <1574737251.12247.11.camel@mtksdccf07>
-Subject: Re: [PATCH 1/1] sched: cfs_rq h_load might not update due to irq
- disable
-From: Kathleen Chang <yt.chang@mediatek.com>
-To: Peter Zijlstra <peterz@infradead.org>
-Date: Tue, 26 Nov 2019 11:00:51 +0800
-In-Reply-To: <20191121123804.GR4097@hirez.programming.kicks-ass.net>
-References: <1574325009-10846-1-git-send-email-yt.chang@mediatek.com>
- <20191121123804.GR4097@hirez.programming.kicks-ass.net>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1iZSpm-0004g2-U5
+ for linux-mediatek@lists.infradead.org; Tue, 26 Nov 2019 04:52:20 +0000
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xAQ4n5en136542;
+ Tue, 26 Nov 2019 04:52:14 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : mime-version : content-type; s=corp-2019-08-05;
+ bh=px4UVOHmBMQFSbsmmo+gAq1ZrSLk2MVlqZaq1ybrBa4=;
+ b=KXvWCB5eytJ+Lf/dFLDRjZrNAzrt1wt39nIxAJbB3rLLIbrsgdnxcYpx6T+oqV4XKS4m
+ fAgoDDcc4Pl71r1v3vDovWlqKVE8jam6AJe0rGO0J6dDqLcxa2uZ2FC3hGhoosnI5wUc
+ fu79M+KkUBD+gS6bisbLELX7VjzqN90Ov5S6kjsykQ5cmHIgHuA+vgY6cSiYkIVfvOxL
+ RTaz1zW1vas0K+11SVyR3nJgX1fNbhQrY+l2RuvWyke7Vdq5oCMgggT4Zox4Hj59kQGR
+ cEBkg8egH7rY1N1ix/cl646ZlBt4KCwtPjlurmSNtYm6vaolqWq19t5NBvokV4uFfNfC wQ== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2130.oracle.com with ESMTP id 2wev6u43xd-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 26 Nov 2019 04:52:14 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id xAQ4n1Jt137817;
+ Tue, 26 Nov 2019 04:50:14 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3030.oracle.com with ESMTP id 2wgvh99tmh-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 26 Nov 2019 04:50:14 +0000
+Received: from abhmp0004.oracle.com (abhmp0004.oracle.com [141.146.116.10])
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id xAQ4o94a016699;
+ Tue, 26 Nov 2019 04:50:10 GMT
+Received: from kili.mountain (/129.205.23.165)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 25 Nov 2019 20:50:09 -0800
+Date: Tue, 26 Nov 2019 07:49:56 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Felix Fietkau <nbd@nbd.name>
+Subject: [PATCH] mt76: Off by one in mt76_calc_rx_airtime()
+Message-ID: <20191121213935.2cbgh3qmd4hv4v5a@kili.mountain>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9452
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=756
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1911140001 definitions=main-1911260039
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9452
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=817 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
+ definitions=main-1911260039
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191125_190102_403688_E09B00EA 
-X-CRM114-Status: GOOD (  23.07  )
+X-CRM114-CacheID: sfid-20191125_205219_061749_1519A33D 
+X-CRM114-Status: GOOD (  15.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,111 +106,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Vincent Guittot <vincent.guittot@linaro.org>, wsd_upstream@mediatek.com,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Ryder Lee <ryder.lee@mediatek.com>, kernel-janitors@vger.kernel.org,
+ linux-wireless@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org, Roy Luo <royluo@google.com>,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Kalle Valo <kvalo@codeaurora.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2019-11-21 at 13:38 +0100, Peter Zijlstra wrote:
-> On Thu, Nov 21, 2019 at 04:30:09PM +0800, YT Chang wrote:
-> > Syndrome:
-> > 
-> > Two CPUs might do idle balance in the same time.
-> > One CPU does idle balance and pulls some tasks.
-> > However before pick next task, ALL task are pulled back to other CPU.
-> > That results in infinite loop in both CPUs.
-> 
-> Can you easily reproduce this?
+The sband->bitrates[] array has "sband->n_bitrates" elements so this
+check needs to be >= instead of > or we could read beyond the end of the
+array.
 
-No, I can't easily reproduce this. 
-> 
-> > =========================================
-> > code flow:
-> > 
-> > in pick_next_task_fair()
-> > 
-> > again:
-> > 
-> > if nr_running == 0
-> > 	goto idle
-> > pick next task
-> > 	return
-> > 
-> > idle:
-> > 	idle_balance
-> >        /* pull some tasks from other CPU,
-> >         * However other CPU are also do idle balance,
-> > 	* and pull back these task */
-> > 
-> > 	go to again
-> > 
-> > =========================================
-> > The result to pull ALL tasks back when the task_h_load
-> > is incorrect and too low.
-> 
-> Clearly you're not running a PREEMPT kernel, otherwise the break in
-> detach_tasks() would've saved you, right?
-> 
-> > static unsigned long task_h_load(struct task_struct *p)
-> > {
-> >         struct cfs_rq *cfs_rq = task_cfs_rq(p);
-> > 
-> > 	update_cfs_rq_h_load(cfs_rq);
-> > 	return div64_ul(p->se.avg.load_avg_contrib * cfs_rq->h_load,
-> > 			cfs_rq->runnable_load_avg + 1);
-> > }
-> > 
-> > The cfs_rq->h_load is incorrect and might too small.
-> > The original idea of cfs_rq::last_h_load_update will not
-> > update cfs_rq::h_load more than once a jiffies.
-> > When the Two CPUs pull each other in the pick_next_task_fair,
-> > the irq disabled and result in jiffie not update.
-> > (Other CPUs wait for runqueue lock locked by the two CPUs.
-> > So, ALL CPUs are irq disabled.)
-> 
-> This cannot be true; because the loop drops rq->lock, so other CPUs
-> should have an opportunity to acquire the lock and make progress.
+These values come from when we call mt76_register_device():
 
-I recheck other CPUs situation. 
-Other CPUs are irq disabled due to wait for lock (Not runqueue lock).
+	ret = mt76_register_device(&dev->mt76, true, mt7603_rates,
+				   ARRAY_SIZE(mt7603_rates));
 
-The root cause should be why other CPUs are waiting for the lock 
-rather than replacing jiffies with sched_clock().
+Here sband->bitrates[] is mt7603_rates[] and ->n_bitrates is the
+ARRAY_SIZE()
 
-> 
-> > Solution:
-> > cfs_rq h_load might not update due to irq disable
-> > use sched_clock instead jiffies
-> > 
-> > Signed-off-by: YT Chang <yt.chang@mediatek.com>
-> > ---
-> >  kernel/sched/fair.c | 4 +++-
-> >  1 file changed, 3 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
-> > index 83ab35e..231c53f 100644
-> > --- a/kernel/sched/fair.c
-> > +++ b/kernel/sched/fair.c
-> > @@ -7578,9 +7578,11 @@ static void update_cfs_rq_h_load(struct cfs_rq *cfs_rq)
-> >  {
-> >  	struct rq *rq = rq_of(cfs_rq);
-> >  	struct sched_entity *se = cfs_rq->tg->se[cpu_of(rq)];
-> > -	unsigned long now = jiffies;
-> > +	u64 now = sched_clock_cpu(cpu_of(rq));
-> >  	unsigned long load;
-> >  
-> > +	now = now * HZ >> 30;
-> > +
-> >  	if (cfs_rq->last_h_load_update == now)
-> >  		return;
-> >  
-> 
-> This is disguisting and wrong. That is not the correct relation between
-> sched_clock() and jiffies.
+Fixes: 5ce09c1a7907 ("mt76: track rx airtime for airtime fairness and survey")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+---
+ drivers/net/wireless/mediatek/mt76/airtime.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/airtime.c b/drivers/net/wireless/mediatek/mt76/airtime.c
+index 55116f395f9a..a4a785467748 100644
+--- a/drivers/net/wireless/mediatek/mt76/airtime.c
++++ b/drivers/net/wireless/mediatek/mt76/airtime.c
+@@ -242,7 +242,7 @@ u32 mt76_calc_rx_airtime(struct mt76_dev *dev, struct mt76_rx_status *status,
+ 			return 0;
+ 
+ 		sband = dev->hw->wiphy->bands[status->band];
+-		if (!sband || status->rate_idx > sband->n_bitrates)
++		if (!sband || status->rate_idx >= sband->n_bitrates)
+ 			return 0;
+ 
+ 		rate = &sband->bitrates[status->rate_idx];
+-- 
+2.11.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
