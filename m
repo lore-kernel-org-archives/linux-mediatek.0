@@ -2,75 +2,77 @@ Return-Path: <SRS0=L+xn=ZT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 475FDC432C3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2019 01:28:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 84821C432C0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2019 01:32:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0F1D5207DD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2019 01:28:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 54E132071E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2019 01:32:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BOdAK8R0";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="AWczb0RY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F1D5207DD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NhTIOJRm";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="pzX6Gd1/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 54E132071E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=kzunISyitBQmof1+6hvC3fbh+dIMzPv3ndfHVDm/GaA=; b=BOdAK8R0SSLW7n
-	L0g6EU/2oITJnalOfTwpwwDA2CjL4h93hqWqfH+k8uJaOkzfUoN1eTS1G3udz/79FYq1Hu6d+AJhm
-	WWrSNEviZPc1pMLo3het/vONnXGIUYTs142XfXMaVg7+RVmuc0dWfU9wQPWeVk5AyOc4oWfxhE1Kf
-	LUdQzNUS3Ufnf8exDiQEpthslN0wYqbWFKjeOSVWNLR5mspXMPTPBkg4T//iXoFH3xzqnaiIsT9nN
-	60OKGMZ59qyiZDMEEg8XYNA9NHsXb7fX7Q4DKY/U7ayQApwgNaGYhPYaygaHfZ9bP83xBgXmXl600
-	9k9f9Ewb86OFuv+JwpBw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5n0NrltbREojch4OZni1D0XPgb0RsiJJbH/qzn08CYI=; b=NhTIOJRm+/xWXh
+	ohmWv+7t65JM7w1jdQra7fFM2JS39YvtwYmiHsnKsrr4TTmIxufQCAjh8xuWRPZpFwUPeULQHp05H
+	A8jUQXzYCvwQFpVVlbssLNB6H+vg4do3SU/dcYlY1EcmUYtVt9MozJKVf4Cbhrt4ymzbUHe3z+R+o
+	I8AgBV+I8kGcvfId76/wmbLvYUUYr2m2YbTLmn8fg9SNkLddIdT7bqxdpU6OKAOZe48+i2F/QZmqm
+	29ZvahOY/+F2t5Cv08i7oeayOyI1qgpv01vboYWnZ7ssIXk7ehcwAF0+lfpjnHy4Z+OEAmncHaMxF
+	4x4VnoClhH8CRB3AqpCA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iZm7j-0001mh-GW; Wed, 27 Nov 2019 01:28:07 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1iZmBa-0003zc-E8; Wed, 27 Nov 2019 01:32:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iZm7g-0001lm-Jk; Wed, 27 Nov 2019 01:28:06 +0000
-X-UUID: 2de695ce036d41dba26a69c04e0ef12a-20191126
+ id 1iZmBP-0003or-Bo; Wed, 27 Nov 2019 01:31:56 +0000
+X-UUID: 2dc72293d63e41979bad1e93aa46b5a3-20191126
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=0KnhnC91YWzoMubvDqpW4dGN3q1TdTr1bqtKF7j6sHs=; 
- b=AWczb0RYe5OQHfnSQbwiqlF479m6VhXu4NH0K77dk3NIvaBknXDs99HdOggUeU9zNlhjwkFP7k/M8/snf5tFYrXF0xNYx8V3Jeon8YTRDKZLPv+ubYr/WuFy+EKgbzCgOzwO4mZQS8zsvLiwMuDj8H51RhsYWTicC+DO1+0Mv88=;
-X-UUID: 2de695ce036d41dba26a69c04e0ef12a-20191126
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yongqiang.niu@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=FfLWy7hYVqt6twZ6RqO6oRqpE+bo5f378iJWtJ09HPs=; 
+ b=pzX6Gd1/S3ZFzHELtyJqaXA82W9WaSXjecV9rS4JWtTrpAhaxPrXakJcN6NyBqoxLpwDIQgSx8vpq3kB1LzCrBafZp7WzSixhOeCkPFqJIhipRT5wEcNDDpuE0RNRoeIPcfK0t0UvEyrS0vSz1aWTf8QBHMwhCkSxFvCxMIH0Fs=;
+X-UUID: 2dc72293d63e41979bad1e93aa46b5a3-20191126
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1499076403; Tue, 26 Nov 2019 17:28:03 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 26 Nov 2019 17:18:35 -0800
+ with ESMTP id 1838101639; Tue, 26 Nov 2019 17:31:49 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 26 Nov 2019 17:31:55 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 27 Nov 2019 09:17:51 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 27 Nov 2019 09:31:44 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 27 Nov 2019 09:17:09 +0800
-From: <yongqiang.niu@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Rob
- Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v1, 0/2] drm/mediatek: Fix external display issue 
-Date: Wed, 27 Nov 2019 09:17:53 +0800
-Message-ID: <1574817475-22378-1-git-send-email-yongqiang.niu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
+ Transport; Wed, 27 Nov 2019 09:30:52 +0800
+Message-ID: <1574818303.15691.10.camel@mtksdaap41>
+Subject: Re: [PATCH v1] drm/mediatek: fix up 1440x900 dp display black
+ screen issue
+From: CK Hu <ck.hu@mediatek.com>
+To: <yongqiang.niu@mediatek.com>
+Date: Wed, 27 Nov 2019 09:31:43 +0800
+In-Reply-To: <1574750869-12611-1-git-send-email-yongqiang.niu@mediatek.com>
+References: <1574750869-12611-1-git-send-email-yongqiang.niu@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: B6B9FEC13DEDCAA3FED78A3946FCFD3C5E46997A32C15BEB208086C51E86B01A2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191126_172804_663762_A79E03D6 
-X-CRM114-Status: UNSURE (   6.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191126_173155_410962_18FAC317 
+X-CRM114-Status: GOOD (  14.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,30 +85,56 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
  linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Hi, Yongqiang:
 
-Fix external display issue
+On Tue, 2019-11-26 at 14:47 +0800, yongqiang.niu@mediatek.com wrote:
+> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> 
+> This patch fix up 1440x900 dp display black screen issue
+> the computed result will overflow rdma1 fifo max size
+> when external display pixel clock bigger than 74MHZ
+> 
+> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> index c1abde3..41143f5 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+> @@ -152,6 +152,10 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
+>  	 * account for blanking, and with a pixel depth of 4 bytes:
+>  	 */
+>  	threshold = width * height * vrefresh * 4 * 7 / 1000000;
+> +
+> +	if (threshold > rdma_fifo_size)
+> +		threshold = rdma_fifo_size;
+> +
 
-Yongqiang Niu (2):
-  drm/mediatek: Fixup external display black screen issue
-  drm/mediatek: Fix external display vblank timeout issue
+This looks like that threshold is over spec. I think this FIFO is used
+to cover the latency of reading data from DRAM. When data is read from
+OVL not RDMA, OVL already has a FIFO, so RDMA FIFO is useless. So I
+think you should set threshold to a special value when RDMA is in direct
+link mode.
 
- drivers/gpu/drm/mediatek/mtk_dpi.c          | 14 +++++----
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 45 ++++++++++++++++++++---------
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 14 +++++++++
- 3 files changed, 54 insertions(+), 19 deletions(-)
+Regards,
+CK
 
--- 
-1.8.1.1.dirty
+>  	reg = RDMA_FIFO_UNDERFLOW_EN |
+>  	      RDMA_FIFO_PSEUDO_SIZE(rdma_fifo_size) |
+>  	      RDMA_OUTPUT_VALID_FIFO_THRESHOLD(threshold);
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
