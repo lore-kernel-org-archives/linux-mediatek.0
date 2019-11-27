@@ -2,23 +2,23 @@ Return-Path: <SRS0=L+xn=ZT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A227C33C9B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2019 08:36:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7CC85C432C0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2019 09:57:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2873620684
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2019 08:36:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 43E232070A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2019 09:57:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LjJTtvGG";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="yHpRnVxI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2873620684
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="n/MyPWEs";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ffwll.ch header.i=@ffwll.ch header.b="R31Z7VoP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43E232070A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -26,66 +26,77 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mFWp86VtDfTterqsTkOY6jmKd8JxJg1DFadsSJR7EYI=; b=LjJTtvGGErl5+F
-	iZsbt0pbl07KuQ18f7EQGZ83D8juFkLJ9WXaCPqzYINW1hSOUQvwnP2DgoLZSL2Kc1M1u7RtY5p0L
-	eDCDqlkpu6Bk+jBEZamPIpYtbKQK+M/xHPrMY5JMCOxqdEC3f7L7Si10FVdifD7nTNjq+UbTs/9PU
-	7hpjlh6kWhRHiOJtK8pygf0uuDoudgAbD4opkqhpRmaJ7zHA+DgZ4A9ZpL6g1jyyVMWRueoAy3gs5
-	+YtAD0bJkwQJDU41vtcb5t68VMeqD5HUOURhmq8WIcPKroL3iWqWrBRbzlRDXhSMlwYQ5bBPyYpLm
-	ho7QCb668rmyRz0Yj/BQ==;
+	List-Owner; bh=C5XTV2DioIHxaZdosJJs1FaDeriOxXKTVUm7tCdcJhM=; b=n/MyPWEsX/8H/G
+	Ia+lWSOOUHuHkJ8qHRrzHIWW61tf6PAIfMk7XQnyxFv5PJZLubVwH/zRcbFpERRrKnCVpaIHWmyax
+	7626xxmWjj7rhgwVwsX+ZUmbBym8DhH7pGaestPL7oEzN42MmDgNIm5BpX+s+soqihYykoG6fqOCN
+	/RgecSCb/42ZZ/BT9fsszh1o5neaUlGVhAi91G75TXSBNa2Td7W20Zaq5IEmmDPLiZ5ziRA6qcHuL
+	FfayLuZ0Gt3WdwNtOXuCwIG9ctSr/QEdUC7i0GPXbB5k0eKUalQqnYV8/BxrMHWx9lVMycisJFsCP
+	LCS7vid0fmEeCVunphTw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iZsoE-0000jE-Mp; Wed, 27 Nov 2019 08:36:26 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1iZu4N-0001V6-M2; Wed, 27 Nov 2019 09:57:11 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iZsoC-0000i9-FI
- for linux-mediatek@lists.infradead.org; Wed, 27 Nov 2019 08:36:26 +0000
-Received: by mail-pf1-x443.google.com with SMTP id d199so5979265pfd.11
- for <linux-mediatek@lists.infradead.org>; Wed, 27 Nov 2019 00:36:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=kEWlTxImZpdkwXhGS8325FceSNRBs8VLhunG13s9KAM=;
- b=yHpRnVxIjSPnmIdbMbeu/tYzFBYDtKTTB287cO1KR1bARwSmREn/eQP74Bl7Af9/y8
- a82ewmL2RBQDxl2XmBxTNBAL+KaxJmKAwlKSRl+2cOkk7//wvP6vjlBiIup/h7v2jo8V
- hD3ZtLbo9ZCwivNiTAZq2pUpGLBvhYf0Fvj3PTlMiN0akT2u3kqKvVPIDeYgrbSC2Cb9
- ERUMql/9D07dmErr5NA8VCMA753S+WHPa1jovOmvlhsanFxOuurKFWr5XnitU2n4yk0s
- 6g95m1QCflgnf2y6N/vMnCzgc3LucbF8wwRMWAlX49Y/dCTaJfA0G0K6Ehqx6Ay7WAr2
- baJg==
+ id 1iZu4B-0001I0-J3
+ for linux-mediatek@lists.infradead.org; Wed, 27 Nov 2019 09:57:02 +0000
+Received: by mail-wm1-x343.google.com with SMTP id l1so6364668wme.2
+ for <linux-mediatek@lists.infradead.org>; Wed, 27 Nov 2019 01:56:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
+ h=date:from:to:cc:subject:message-id:mail-followup-to:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=4nxqM2ljOyvMminYRatpYDJ6G2Cnc/jXl/ctoZJW83M=;
+ b=R31Z7VoPUUJY6KT2xAjALKnYyIBrSVGoK4lXJrfZzGxM5XA/hZOGXro0Of9plFQSeN
+ WAnkm8YrwCywO7U+fBLgFEwAhQlj2e25gtjrqSEBGbdTfLVotmmOVVm5jXv27LwBv3oN
+ ArxE4LOsaKPaNQRRUSlm/gvS1jOuzp8FxmOzM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=kEWlTxImZpdkwXhGS8325FceSNRBs8VLhunG13s9KAM=;
- b=PsMiYuxiLATnXPLQdcabXmQWn+4DvXqNS9bXjPBvedszC/yn4jkrwp6WYMrEaMF4/k
- DoA68J5Sl6aLYzOjUd/tXbsZOjH04itwV77Rpon6HyAEXhCd6KSSQiO4xZIc+z+FcJhd
- yS4EoTc8zYnuEIeZmfypBFNQDB2Rl8xt42utAH8VFhsr+rC8Sc+Je7Zu2eJ96N9Ugznj
- vvlZaKwscKK8HIDpGsYra2PjKCFS4pLmJp8HzqQa/Qn+1MFPdADCvfXkO7/df8Sjn3hm
- K5S7swiKlakgA0Xua1ZDbeBqnnq+2SldfsdpdRtcyTr/iE77PwTrZVL1+Q7iIrRBJKXK
- BgYg==
-X-Gm-Message-State: APjAAAW8fjj06hBxi878TKrs3MUlpRkl6NqPtrSSOW45IgEQfLDjZInC
- LuQpBcIn4mSNofyEFLxLyzjNqQ==
-X-Google-Smtp-Source: APXvYqz6ciA/bE2sIdxV8IrR+vllOp4Mb3eFxMKadK3NK074FLo5rfjIe4sBJET8JrQj229M/EAXpQ==
-X-Received: by 2002:a63:1b1f:: with SMTP id b31mr3451053pgb.177.1574843782900; 
- Wed, 27 Nov 2019 00:36:22 -0800 (PST)
-Received: from localhost ([122.171.112.123])
- by smtp.gmail.com with ESMTPSA id k24sm15884442pfk.63.2019.11.27.00.36.21
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 27 Nov 2019 00:36:21 -0800 (PST)
-Date: Wed, 27 Nov 2019 14:06:19 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
-Subject: Re: [v5, PATCH 4/5] cpufreq: mediatek: add opp notification for SVS
- support
-Message-ID: <20191127083619.etocnhpyyut3hzwq@vireshk-i7>
-References: <1574769046-28449-1-git-send-email-andrew-sh.cheng@mediatek.com>
- <1574769046-28449-5-git-send-email-andrew-sh.cheng@mediatek.com>
+ h=x-gm-message-state:date:from:to:cc:subject:message-id
+ :mail-followup-to:references:mime-version:content-disposition
+ :in-reply-to:user-agent;
+ bh=4nxqM2ljOyvMminYRatpYDJ6G2Cnc/jXl/ctoZJW83M=;
+ b=mt8SOth4K+0OMYU59vwbe1TNXXH0h3w7L9tsKJKu1RzZ1G1JEFJTCrd6EI2muMtRFB
+ Lwl5ZcqbZzSpHHCE2B18OuMGtqnpeYmQO5pvEor8Ufrz/DgQK9jloatX0ECrj7Vg+Run
+ 0bYUX5V9mJINBNZNR9WGtTby2BE8eNrgHgFFm//QUM8S5P2lI/rSjVyeGidO4LowfNNN
+ 1qoI1SnuqZfV9Bimmqipbu+LDqusOToQ7caul4qaAHcmt4r5WBQTZP/bd4+8tsdo8T3q
+ 5IYlO52IIiGd8UUbZizaDhPA5c5Nw9fzvDpSu5i4gdWYfVxtxCj3wx3/9AAuvuj6afT7
+ 5bjg==
+X-Gm-Message-State: APjAAAWGVrY381I5xbd1oe0x7nveJMaViTbpzh0DIbxdkiPMgy619HqI
+ CGMXAWOHXqNssubC+bkD6Xz0hg==
+X-Google-Smtp-Source: APXvYqybChoKvzBJe0qZmOguygfwtRjhAkDRwH2KLyFJgBjBSdPYOnvgrE4Flw1lqlNZpOfU4z3F/g==
+X-Received: by 2002:a1c:610b:: with SMTP id v11mr3401069wmb.156.1574848617309; 
+ Wed, 27 Nov 2019 01:56:57 -0800 (PST)
+Received: from phenom.ffwll.local (212-51-149-96.fiber7.init7.net.
+ [212.51.149.96])
+ by smtp.gmail.com with ESMTPSA id f6sm18766987wrr.15.2019.11.27.01.56.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 27 Nov 2019 01:56:56 -0800 (PST)
+Date: Wed, 27 Nov 2019 10:56:54 +0100
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Subject: Re: [PATCH 1/7] drm/mediatek: fix atomic_state reference counting
+Message-ID: <20191127095654.GD29965@phenom.ffwll.local>
+Mail-Followup-To: Bibby Hsieh <bibby.hsieh@mediatek.com>,
+ David Airlie <airlied@linux.ie>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ YT Shen <yt.shen@mediatek.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ CK Hu <ck.hu@mediatek.com>, linux-arm-kernel@lists.infradead.org,
+ tfiga@chromium.org, drinkcat@chromium.org,
+ linux-kernel@vger.kernel.org, srv_heupstream@mediatek.com
+References: <20191126062932.19773-1-bibby.hsieh@mediatek.com>
+ <20191126062932.19773-2-bibby.hsieh@mediatek.com>
+ <20191126084951.GQ29965@phenom.ffwll.local>
+ <1574818912.27852.2.camel@mtksdaap41>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1574769046-28449-5-git-send-email-andrew-sh.cheng@mediatek.com>
-User-Agent: NeoMutt/20180716-391-311a52
+In-Reply-To: <1574818912.27852.2.camel@mtksdaap41>
+X-Operating-System: Linux phenom 5.3.0-2-amd64 
+User-Agent: Mutt/1.12.2 (2019-09-21)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191127_003624_540902_DFEA5416 
-X-CRM114-Status: GOOD (  18.94  )
+X-CRM114-CacheID: sfid-20191127_015659_687968_43560418 
+X-CRM114-Status: GOOD (  31.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,200 +108,265 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
- srv_heupstream@mediatek.com, linux-pm@vger.kernel.org,
- Stephen Boyd <sboyd@kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Chanwoo Choi <cw00.choi@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, fan.chen@mediatek.com,
- devicetree@vger.kernel.org
+Cc: drinkcat@chromium.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel.vetter@ffwll.ch>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, tfiga@chromium.org,
+ CK Hu <ck.hu@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>,
+ linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26-11-19, 19:50, Andrew-sh.Cheng wrote:
-> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-> index 4b0cc50dd93b..7c37ab31230a 100644
-> --- a/drivers/cpufreq/mediatek-cpufreq.c
-> +++ b/drivers/cpufreq/mediatek-cpufreq.c
-> @@ -42,6 +42,10 @@ struct mtk_cpu_dvfs_info {
->  	struct list_head list_head;
->  	int intermediate_voltage;
->  	bool need_voltage_tracking;
-> +	struct mutex lock; /* avoid notify and policy race condition */
+On Wed, Nov 27, 2019 at 09:41:52AM +0800, Bibby Hsieh wrote:
+> On Tue, 2019-11-26 at 09:49 +0100, Daniel Vetter wrote:
+> > On Tue, Nov 26, 2019 at 02:29:26PM +0800, Bibby Hsieh wrote:
+> > > The DRM core takes care of all atomic state refcounting.
+> > > However, mediatek drm defers some work that accesses planes
+> > > and plane_states in drm_atomic_state, and must therefore
+> > > keep its own atomic state references until this work complete.
+> > > 
+> > > We take the atomic_state reference in atomic_fulsh() and ensure all the
+> > > information in atomic_state already was updated in hardware for
+> > > showing on screen and then schedules unreference_work to drop references
+> > > on atomic_state.
+> > > 
+> > > Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
+> > > 
+> > > Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+> > 
+> > This looks strange. For one you implement your own reference counting - if
+> > drivers have a need for drm_atomic_state_put_irq then I
+> > think we should implement this in the core code.
+> > 
+> > The other bit is that atomic commits are meant to simply wait for
+> > everything to finish - commit_tail doesn't hold locks, it's only ordered
+> > through drm_crtc_commit events (at least with the async implementation in
+> > the helpers), so you can just block there until your interrupt handler is
+> > done processing the commit. Depending how you want to do this you might
+> > want to wait before or after drm_atomic_helper_commit_hw_done().
+> 
+> OK, I will try to add a simple wait/completion before
+> drm_atomic_helper_commit_hw_done() until the commit was processed.
 
-Will a read-write lock be better suited here for performance reasons ?
+Note that waiting before hw_done stalls the next commit. You only want to
+do that for e.g. irq handler that programs registers at vblank. If you
+have some cleanup work that runs after the new frame is already showing,
+you should wait for that _after_ hw_done, to avoid stalling the next flip.
 
-> +	struct notifier_block opp_nb;
-> +	int opp_cpu;
-> +	unsigned long opp_freq;
->  };
->  
->  static LIST_HEAD(dvfs_info_list);
-> @@ -231,6 +235,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
->  	vproc = dev_pm_opp_get_voltage(opp);
->  	dev_pm_opp_put(opp);
->  
-> +	mutex_lock(&info->lock);
->  	/*
->  	 * If the new voltage or the intermediate voltage is higher than the
->  	 * current voltage, scale up voltage first.
-> @@ -242,6 +247,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
->  			pr_err("cpu%d: failed to scale up voltage!\n",
->  			       policy->cpu);
->  			mtk_cpufreq_set_voltage(info, old_vproc);
-> +			mutex_unlock(&info->lock);
->  			return ret;
->  		}
->  	}
-> @@ -253,6 +259,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
->  		       policy->cpu);
->  		mtk_cpufreq_set_voltage(info, old_vproc);
->  		WARN_ON(1);
-> +		mutex_unlock(&info->lock);
->  		return ret;
->  	}
->  
-> @@ -263,6 +270,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
->  		       policy->cpu);
->  		clk_set_parent(cpu_clk, armpll);
->  		mtk_cpufreq_set_voltage(info, old_vproc);
-> +		mutex_unlock(&info->lock);
->  		return ret;
->  	}
->  
-> @@ -273,6 +281,7 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
->  		       policy->cpu);
->  		mtk_cpufreq_set_voltage(info, inter_vproc);
->  		WARN_ON(1);
-> +		mutex_unlock(&info->lock);
->  		return ret;
->  	}
->  
-> @@ -288,15 +297,75 @@ static int mtk_cpufreq_set_target(struct cpufreq_policy *policy,
->  			clk_set_parent(cpu_clk, info->inter_clk);
->  			clk_set_rate(armpll, old_freq_hz);
->  			clk_set_parent(cpu_clk, armpll);
-> +			mutex_unlock(&info->lock);
->  			return ret;
->  		}
->  	}
->  
-> +	info->opp_freq = freq_hz;
-> +	mutex_unlock(&info->lock);
-> +
->  	return 0;
->  }
->  
->  #define DYNAMIC_POWER "dynamic-power-coefficient"
->  
-> +static int mtk_cpufreq_opp_notifier(struct notifier_block *nb,
-> +				    unsigned long event, void *data)
-> +{
-> +	struct dev_pm_opp *opp = data;
-> +	struct dev_pm_opp *opp_item;
-> +	struct mtk_cpu_dvfs_info *info =
-> +		container_of(nb, struct mtk_cpu_dvfs_info, opp_nb);
+Also if you stall after hw_done, you need to make either make sure you
+handle concurrency between multiple commits for that part yourself (since
+anything after hw_done isn't ordered anymore by the default helper stuff).
+-Daniel
 
-Do the assignment after all definitions, instead of awkwardly breaking
-the line here.
-
-> +	unsigned long freq, volt;
-> +	struct cpufreq_policy *policy;
-> +	int ret = 0;
-> +
-> +	if (event == OPP_EVENT_ADJUST_VOLTAGE) {
-> +		freq = dev_pm_opp_get_freq(opp);
-> +
-> +		mutex_lock(&info->lock);
-> +		if (info->opp_freq == freq) {
-> +			volt = dev_pm_opp_get_voltage(opp);
-> +			ret = mtk_cpufreq_set_voltage(info, volt);
-> +			if (ret)
-> +				dev_err(info->cpu_dev, "failed to scale voltage: %d\n",
-> +					ret);
-> +		}
-> +		mutex_unlock(&info->lock);
-> +	} else if (event == OPP_EVENT_DISABLE) {
-> +		freq = info->opp_freq;
-> +		opp_item = dev_pm_opp_find_freq_ceil(info->cpu_dev, &freq);
-
-name it new_opp instead of opp_item.
-
-> +		if (!IS_ERR(opp_item))
-> +			dev_pm_opp_put(opp_item);
-> +		else
-> +			freq = 0;
-> +
-
-What is the purpose of the above code ?
-
-> +		/* case of current opp is disabled */
-> +		if (freq == 0 || freq != info->opp_freq) {
-> +			// find an enable opp item
-
-Use proper commenting style please.
-
-> +			freq = 1;
-> +			opp_item = dev_pm_opp_find_freq_ceil(info->cpu_dev,
-> +							     &freq);
-> +			if (!IS_ERR(opp_item)) {
-> +				dev_pm_opp_put(opp_item);
-> +				policy = cpufreq_cpu_get(info->opp_cpu);
-> +				if (policy) {
-> +					cpufreq_driver_target(policy,
-> +						freq / 1000,
-> +						CPUFREQ_RELATION_L);
-
-Why don't you simply call this instead of all the code in the else
-block ?
-
-> +					cpufreq_cpu_put(policy);
-> +				}
-> +			} else {
-> +				pr_err("%s: all opp items are disabled\n",
-> +				       __func__);
-> +			}
-> +		}
-> +	}
-> +
-> +	return notifier_from_errno(ret);
-> +}
-> +
->  static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->  {
->  	struct device *cpu_dev;
-> @@ -383,11 +452,21 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->  	info->intermediate_voltage = dev_pm_opp_get_voltage(opp);
->  	dev_pm_opp_put(opp);
->  
-> +	info->opp_cpu = cpu;
-> +	info->opp_nb.notifier_call = mtk_cpufreq_opp_notifier;
-> +	ret = dev_pm_opp_register_notifier(cpu_dev, &info->opp_nb);
-> +	if (ret) {
-> +		pr_warn("cannot register opp notification\n");
-> +		goto out_free_opp_table;
-> +	}
-> +
-> +	mutex_init(&info->lock);
->  	info->cpu_dev = cpu_dev;
->  	info->proc_reg = proc_reg;
->  	info->sram_reg = IS_ERR(sram_reg) ? NULL : sram_reg;
->  	info->cpu_clk = cpu_clk;
->  	info->inter_clk = inter_clk;
-> +	info->opp_freq = clk_get_rate(cpu_clk);
->  
->  	/*
->  	 * If SRAM regulator is present, software "voltage tracking" is needed
-> -- 
-> 2.12.5
+> 
+> Thanks.
+> 
+> Bibby
+> > -Daniel
+> > 
+> > > ---
+> > >  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 11 +++-
+> > >  drivers/gpu/drm/mediatek/mtk_drm_drv.c  | 79 +++++++++++++++++++++++++
+> > >  drivers/gpu/drm/mediatek/mtk_drm_drv.h  |  9 +++
+> > >  3 files changed, 97 insertions(+), 2 deletions(-)
+> > > 
+> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > > index 29d0582e90e9..68b92adc96bb 100644
+> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > > @@ -7,7 +7,7 @@
+> > >  #include <linux/pm_runtime.h>
+> > >  
+> > >  #include <asm/barrier.h>
+> > > -
+> > > +#include <drm/drm_atomic.h>
+> > >  #include <drm/drm_atomic_helper.h>
+> > >  #include <drm/drm_plane_helper.h>
+> > >  #include <drm/drm_probe_helper.h>
+> > > @@ -47,6 +47,7 @@ struct mtk_drm_crtc {
+> > >  	struct mtk_disp_mutex		*mutex;
+> > >  	unsigned int			ddp_comp_nr;
+> > >  	struct mtk_ddp_comp		**ddp_comp;
+> > > +	struct drm_crtc_state		*old_crtc_state;
+> > >  };
+> > >  
+> > >  struct mtk_crtc_state {
+> > > @@ -362,6 +363,7 @@ static void mtk_crtc_ddp_hw_fini(struct mtk_drm_crtc *mtk_crtc)
+> > >  static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+> > >  {
+> > >  	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+> > > +	struct drm_atomic_state *atomic_state = mtk_crtc->old_crtc_state->state;
+> > >  	struct mtk_crtc_state *state = to_mtk_crtc_state(mtk_crtc->base.state);
+> > >  	struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
+> > >  	unsigned int i;
+> > > @@ -399,6 +401,7 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+> > >  			plane_state->pending.config = false;
+> > >  		}
+> > >  		mtk_crtc->pending_planes = false;
+> > > +		mtk_atomic_state_put_queue(atomic_state);
+> > >  	}
+> > >  }
+> > >  
+> > > @@ -494,6 +497,7 @@ static void mtk_drm_crtc_atomic_begin(struct drm_crtc *crtc,
+> > >  static void mtk_drm_crtc_atomic_flush(struct drm_crtc *crtc,
+> > >  				      struct drm_crtc_state *old_crtc_state)
+> > >  {
+> > > +	struct drm_atomic_state *old_atomic_state = old_crtc_state->state;
+> > >  	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+> > >  	struct mtk_drm_private *priv = crtc->dev->dev_private;
+> > >  	unsigned int pending_planes = 0;
+> > > @@ -512,8 +516,11 @@ static void mtk_drm_crtc_atomic_flush(struct drm_crtc *crtc,
+> > >  			pending_planes |= BIT(i);
+> > >  		}
+> > >  	}
+> > > -	if (pending_planes)
+> > > +	if (pending_planes) {
+> > >  		mtk_crtc->pending_planes = true;
+> > > +		drm_atomic_state_get(old_atomic_state);
+> > > +		mtk_crtc->old_crtc_state = old_crtc_state;
+> > > +	}
+> > >  	if (crtc->state->color_mgmt_changed)
+> > >  		for (i = 0; i < mtk_crtc->ddp_comp_nr; i++)
+> > >  			mtk_ddp_gamma_set(mtk_crtc->ddp_comp[i], crtc->state);
+> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> > > index 6588dc6dd5e3..6c68283b6124 100644
+> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> > > @@ -115,10 +115,85 @@ static int mtk_atomic_commit(struct drm_device *drm,
+> > >  	return 0;
+> > >  }
+> > >  
+> > > +struct mtk_atomic_state {
+> > > +	struct drm_atomic_state base;
+> > > +	struct list_head list;
+> > > +};
+> > > +
+> > > +static inline struct mtk_atomic_state *to_mtk_state(struct drm_atomic_state *s)
+> > > +{
+> > > +	return container_of(s, struct mtk_atomic_state, base);
+> > > +}
+> > > +
+> > > +void mtk_atomic_state_put_queue(struct drm_atomic_state *state)
+> > > +{
+> > > +	struct drm_device *drm = state->dev;
+> > > +	struct mtk_drm_private *mtk_drm = drm->dev_private;
+> > > +	struct mtk_atomic_state *mtk_state = to_mtk_state(state);
+> > > +	unsigned long flags;
+> > > +
+> > > +	spin_lock_irqsave(&mtk_drm->unreference.lock, flags);
+> > > +	list_add_tail(&mtk_state->list, &mtk_drm->unreference.list);
+> > > +	spin_unlock_irqrestore(&mtk_drm->unreference.lock, flags);
+> > > +
+> > > +	schedule_work(&mtk_drm->unreference.work);
+> > > +}
+> > > +
+> > > +static void mtk_unreference_work(struct work_struct *work)
+> > > +{
+> > > +	struct mtk_drm_private *mtk_drm = container_of(work,
+> > > +			struct mtk_drm_private, unreference.work);
+> > > +	unsigned long flags;
+> > > +	struct mtk_atomic_state *state, *tmp;
+> > > +
+> > > +	/*
+> > > +	 * framebuffers cannot be unreferenced in atomic context.
+> > > +	 * Therefore, only hold the spinlock when iterating unreference_list,
+> > > +	 * and drop it when doing the unreference.
+> > > +	 */
+> > > +	spin_lock_irqsave(&mtk_drm->unreference.lock, flags);
+> > > +	list_for_each_entry_safe(state, tmp, &mtk_drm->unreference.list, list) {
+> > > +		list_del(&state->list);
+> > > +		spin_unlock_irqrestore(&mtk_drm->unreference.lock, flags);
+> > > +		drm_atomic_state_put(&state->base);
+> > > +		spin_lock_irqsave(&mtk_drm->unreference.lock, flags);
+> > > +	}
+> > > +	spin_unlock_irqrestore(&mtk_drm->unreference.lock, flags);
+> > > +}
+> > > +
+> > > +static struct drm_atomic_state *
+> > > +		mtk_drm_atomic_state_alloc(struct drm_device *dev)
+> > > +{
+> > > +	struct mtk_atomic_state *mtk_state;
+> > > +
+> > > +	mtk_state = kzalloc(sizeof(*mtk_state), GFP_KERNEL);
+> > > +	if (!mtk_state)
+> > > +		return NULL;
+> > > +
+> > > +	if (drm_atomic_state_init(dev, &mtk_state->base) < 0) {
+> > > +		kfree(mtk_state);
+> > > +		return NULL;
+> > > +	}
+> > > +
+> > > +	INIT_LIST_HEAD(&mtk_state->list);
+> > > +
+> > > +	return &mtk_state->base;
+> > > +}
+> > > +
+> > > +static void mtk_drm_atomic_state_free(struct drm_atomic_state *state)
+> > > +{
+> > > +	struct mtk_atomic_state *mtk_state = to_mtk_state(state);
+> > > +
+> > > +	drm_atomic_state_default_release(state);
+> > > +	kfree(mtk_state);
+> > > +}
+> > > +
+> > >  static const struct drm_mode_config_funcs mtk_drm_mode_config_funcs = {
+> > >  	.fb_create = mtk_drm_mode_fb_create,
+> > >  	.atomic_check = drm_atomic_helper_check,
+> > >  	.atomic_commit = mtk_atomic_commit,
+> > > +	.atomic_state_alloc = mtk_drm_atomic_state_alloc,
+> > > +	.atomic_state_free = mtk_drm_atomic_state_free
+> > >  };
+> > >  
+> > >  static const enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
+> > > @@ -337,6 +412,10 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+> > >  	drm_kms_helper_poll_init(drm);
+> > >  	drm_mode_config_reset(drm);
+> > >  
+> > > +	INIT_WORK(&private->unreference.work, mtk_unreference_work);
+> > > +	INIT_LIST_HEAD(&private->unreference.list);
+> > > +	spin_lock_init(&private->unreference.lock);
+> > > +
+> > >  	return 0;
+> > >  
+> > >  err_unset_dma_parms:
+> > > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+> > > index b6a82728d563..c37d835cf949 100644
+> > > --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+> > > +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+> > > @@ -55,6 +55,13 @@ struct mtk_drm_private {
+> > >  
+> > >  	struct drm_atomic_state *suspend_state;
+> > >  
+> > > +	struct {
+> > > +		struct work_struct	work;
+> > > +		struct list_head	list;
+> > > +		/* lock for unreference list */
+> > > +		spinlock_t		lock;
+> > > +	} unreference;
+> > > +
+> > >  	bool dma_parms_allocated;
+> > >  };
+> > >  
+> > > @@ -66,4 +73,6 @@ extern struct platform_driver mtk_dpi_driver;
+> > >  extern struct platform_driver mtk_dsi_driver;
+> > >  extern struct platform_driver mtk_mipi_tx_driver;
+> > >  
+> > > +void mtk_atomic_state_put_queue(struct drm_atomic_state *state);
+> > > +
+> > >  #endif /* MTK_DRM_DRV_H */
+> > > -- 
+> > > 2.18.0
+> > 
+> 
 
 -- 
-viresh
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
 _______________________________________________
 Linux-mediatek mailing list
