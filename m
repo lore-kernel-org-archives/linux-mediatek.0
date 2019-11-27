@@ -4,83 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 389F3C432C0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2019 10:04:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B75EEC432C3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2019 14:23:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 092862070A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2019 10:04:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 88050207DD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Nov 2019 14:23:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ULPUviJ1";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="RwOyeu/b"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 092862070A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LAQYWzIc";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EzTjMomL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 88050207DD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pR0Rtp93JLVxpaakucEruulswGajOCxERLqxXVVOU7A=; b=ULPUviJ1QQ+YS0
-	YnOHLBQV6VWZhljGrSbUTmmvi8zNVnih8QYa1AJ7116csBsnLDVX4eJmobZpMspSoZczh4RKNIZSZ
-	zcjSrWZS6/nNMDotxbpJ2KaJtgQhBgiGBHAv+lE1tqrvV8cSRLGGEeXRX4jnkBxxGNJDWooB0H3Cj
-	vzn6AfDBi0+rXmt44BaJWFYLo567EnnKXiG9nFOHCcGE3e/9z5nP4JoKnENNJZQIeuMH4WQer6DIw
-	nzNh88DzzjV0oOrdCVMOqxuQL6u+Kg35O6zESQJzQV6ZKxGLBQkrxAA350i8GuUUgyZa+jmp9+64X
-	QxUt17HW40QoW4caysPg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MdabKswj7fCbrU7rJE6pGiCYZP84nlql2zPEVfHdbTg=; b=LAQYWzIc9Tf7cJ
+	D/Zyl95157iV2IXmo8QijSJcEvMZ3+C8Bygsw0nsdPAaXkG/zHqIViac++CuuMYvbLiTCDxVrJvrg
+	9M6aplEtET7EZTeGL+l6KrC4SxPhOQOX9AyBB+9Yf2GxIOworWaUAlpFiANszKrZi2F86LQ1btRmv
+	8xOwzdDqPsDEQX1i0rtrMiKjRZ/nDoBCXFTrKU5K0b6jzs0wdFb17aGOV2p2klPSsE9LI/ixGo4qn
+	YhENHQNJm6ipw7Obe5of7bXNrc9TDMzvVkC1RFFVsfRtbeZIZ3zTP1VmQfUN4YlxeckQkeueTxOdR
+	z5PezcBp42otTKAUDYTg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iZuBf-0003qH-B8; Wed, 27 Nov 2019 10:04:43 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1iZyDw-0007GE-1x; Wed, 27 Nov 2019 14:23:20 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iZuBQ-0003gB-Oh
- for linux-mediatek@lists.infradead.org; Wed, 27 Nov 2019 10:04:30 +0000
-Received: by mail-pg1-x544.google.com with SMTP id 6so6023965pgk.0
- for <linux-mediatek@lists.infradead.org>; Wed, 27 Nov 2019 02:04:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Fla0mLE3kPARMpuw52rBb145CpRIcrUfv5y6FZzfYow=;
- b=RwOyeu/bPVGltW59qJ4ylCblmR5cOGkzUq9UNiaKHpWvfQPMChAxhON+4bSUJovU8n
- zUPQsv3tpq+x4Lwhx4KaW+DIEzK+DzY9Kc7Cg5Lh4sj0Tgu9zIi8ibZ8YPn58QTJuUO+
- G4lekg7BfIooWsOH7uQR0q7Y9LKF4gHyFwK9A=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Fla0mLE3kPARMpuw52rBb145CpRIcrUfv5y6FZzfYow=;
- b=YCFcVRTOczn53PN5kvyuYM4Ml+lMJJceukLq1mnPI3IZzI2NsfjTZOgYotUNHMD8fx
- D0HBPMm2pBEqK+qSl3s9419thrkeQS/BrBhmtnrA7PS8624Kpx4p6z15SBUzVN8oVpcR
- 9wpvmFHK3p4bfyjWoh2DfmyQsnPlH47eAsGn/R0BSn7cwYQ7NnDqPzPI1LJ5aEsTSadL
- Txx3WCXGX1NDtyF/IWAHccNpya/0LKZ2nqoUO3EEcj3cmLHeoJ8KYVUpY77kUIh6fXoj
- f+a6RA07N+UXZBPctlDZdfdBsxjITaJRShSeuD0/q21f34Zrlug1VzREi8DVEDTPv3KD
- y7OA==
-X-Gm-Message-State: APjAAAUdUshRx6U7peubIQN6AwiOi9aPBhRUDuE0dLG7AbBpwogkxUys
- iesSEaMeyaLGpj+a8chkEmSOEg==
-X-Google-Smtp-Source: APXvYqzXspCMDcVbYgH/6lgSpThq/u782otjCOXgjkwhYm6xw8BQ13uACOi72z9Q3T6FJKzNAto7hg==
-X-Received: by 2002:a65:4809:: with SMTP id h9mr3814513pgs.265.1574849067339; 
- Wed, 27 Nov 2019 02:04:27 -0800 (PST)
-Received: from pihsun-z840.tpe.corp.google.com
- ([2401:fa00:1:10:7889:7a43:f899:134c])
- by smtp.googlemail.com with ESMTPSA id
- n18sm16063907pff.152.2019.11.27.02.04.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 Nov 2019 02:04:26 -0800 (PST)
-From: Pi-Hsun Shih <pihsun@chromium.org>
-To: 
-Subject: [PATCH] drm/mediatek: Fix can't get component for external display
- plane.
-Date: Wed, 27 Nov 2019 18:04:19 +0800
-Message-Id: <20191127100419.130300-1-pihsun@chromium.org>
-X-Mailer: git-send-email 2.24.0.393.g34dc348eaf-goog
+ id 1iZyDt-0007Dq-1d; Wed, 27 Nov 2019 14:23:18 +0000
+X-UUID: 14d9b956bde04d6e930d29a106e99107-20191127
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=XT/G2yriU9FAqiGTOGeP2soGRJGALmOSQNcBdYat3Dk=; 
+ b=EzTjMomLjrDJ5/9WWmqbjZgmsu+NzkWxfFfvjs6w62V67LKwajdEgB9WkwIS5/dlc4zOCec2xbrE9DkdI+HNls0WsOFG0TsaQLpUtmyIYESRXmQZQd1b80F5bxvNRam/cPVO/Dgg/XpKIKibT3C5HSoqmxKK0jGnc/JUM2gH8K4=;
+X-UUID: 14d9b956bde04d6e930d29a106e99107-20191127
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <neal.liu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1952688488; Wed, 27 Nov 2019 06:23:07 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 27 Nov 2019 06:23:41 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 27 Nov 2019 22:23:05 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Wed, 27 Nov 2019 22:23:03 +0800
+From: Neal Liu <neal.liu@mediatek.com>
+To: Matt Mackall <mpm@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>, 
+ Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>
+Subject: [PATCH v5 1/3] soc: mediatek: add SMC fid table for SIP interface
+Date: Wed, 27 Nov 2019 22:22:56 +0800
+Message-ID: <1574864578-467-2-git-send-email-neal.liu@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1574864578-467-1-git-send-email-neal.liu@mediatek.com>
+References: <1574864578-467-1-git-send-email-neal.liu@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191127_020428_832236_4D8C7E62 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20191127_062317_096116_DCF66083 
+X-CRM114-Status: GOOD (  11.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,65 +84,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, open list <linux-kernel@vger.kernel.org>,
- "open list:DRM DRIVERS FOR MEDIATEK" <dri-devel@lists.freedesktop.org>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Pi-Hsun Shih <pihsun@chromium.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
- Sean Paul <seanpaul@chromium.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ linux-kernel@vger.kernel.org, Crystal Guo <Crystal.Guo@mediatek.com>,
+ linux-crypto@vger.kernel.org, Neal Liu <neal.liu@mediatek.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+1. Add a header file to provide SIP interface to ATF
+2. Add hwrng SMC fid
 
-The original logic is ok for primary display, but will not find out
-component for external display.
-
-For example, plane->index is 6 for external display, but there are only
-2 layer nr in external display, and this condition will never happen:
-if (plane->index < (count + mtk_ddp_comp_layer_nr(comp)))
-
-Fix this by using the offset of the plane to mtk_crtc->planes as index,
-instead of plane->index.
-
-Fixes: d6b53f68356f ("drm/mediatek: Add helper to get component for a plane")
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
+Signed-off-by: Neal Liu <neal.liu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ include/linux/soc/mediatek/mtk_sip_svc.h |   33 ++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
+ create mode 100644 include/linux/soc/mediatek/mtk_sip_svc.h
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index f80a8ba75977..b34e7d70702a 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -215,11 +215,12 @@ struct mtk_ddp_comp *mtk_drm_ddp_comp_for_plane(struct drm_crtc *crtc,
- 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
- 	struct mtk_ddp_comp *comp;
- 	int i, count = 0;
-+	unsigned int local_index = plane - mtk_crtc->planes;
- 
- 	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
- 		comp = mtk_crtc->ddp_comp[i];
--		if (plane->index < (count + mtk_ddp_comp_layer_nr(comp))) {
--			*local_layer = plane->index - count;
-+		if (local_index < (count + mtk_ddp_comp_layer_nr(comp))) {
-+			*local_layer = local_index - count;
- 			return comp;
- 		}
- 		count += mtk_ddp_comp_layer_nr(comp);
-
-base-commit: 1875ff320f14afe21731a6e4c7b46dd33e45dfaa
+diff --git a/include/linux/soc/mediatek/mtk_sip_svc.h b/include/linux/soc/mediatek/mtk_sip_svc.h
+new file mode 100644
+index 0000000..8cc8b5c
+--- /dev/null
++++ b/include/linux/soc/mediatek/mtk_sip_svc.h
+@@ -0,0 +1,33 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2019 MediaTek Inc.
++ */
++
++#ifndef _MTK_SECURE_API_H_
++#define _MTK_SECURE_API_H_
++
++#include <linux/kernel.h>
++
++/* Error Code */
++#define SIP_SVC_E_SUCCESS		0
++#define SIP_SVC_E_NOT_SUPPORTED		-1
++#define SIP_SVC_E_INVALID_PARAMS	-2
++#define SIP_SVC_E_INVALID_RANGE		-3
++#define SIP_SVC_E_PERMISSION_DENY	-4
++
++#ifdef CONFIG_ARM64
++#define MTK_SIP_SMC_AARCH_BIT		BIT(30)
++#else
++#define MTK_SIP_SMC_AARCH_BIT		0
++#endif
++
++/*******************************************************************************
++ * Defines for Mediatek runtime services func ids
++ ******************************************************************************/
++
++/* Security related SMC call */
++/* HWRNG */
++#define MTK_SIP_KERNEL_GET_RND \
++	(0x8200026A | MTK_SIP_SMC_AARCH_BIT)
++
++#endif /* _MTK_SECURE_API_H_ */
 -- 
-2.24.0.393.g34dc348eaf-goog
-
-
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
