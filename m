@@ -2,22 +2,22 @@ Return-Path: <SRS0=TWTI=ZV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 37CF1C432C0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Nov 2019 10:49:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 75177C432C0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Nov 2019 11:41:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0A0602084D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Nov 2019 10:49:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 392D0208E4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Nov 2019 11:41:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WvDCFYxJ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="S9fljcIm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0A0602084D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Unq+Zbs6";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="B0kGmm32"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 392D0208E4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,52 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HRB12H5AEEabFyc/kY4Tii/DRM24reaPiStxZ3k4sNU=; b=WvDCFYxJu6+Sx4
-	dnkoUi478pQB1Q49Ysmt2JdsC6MBXCe/63Yf7gNB14kkvFQMwmTo5Si3oJSxmqluCUPksxnoHQND+
-	yyvAP6LP9AjfUk1z6AZP0TpE7d/4+8j1bAA1wnico5EQOKLhJ/VOBCMUcH/yI1xXvilnvklhB7+Ua
-	Ax+iA28FHf6ncYebSw45UU5ypQ2d3m6dMu66pDgJZGGkZ5+RycD7aA4uYd0tuGcocdnAAD0Y2up3W
-	Y/GbWsalDQKPyY1fkbfXu8JBRg7aBNReOQCfZYRtlRsxC9TDvD6xrD7rimKZCvdomGgc0BQQSHm9d
-	iRB2UEwS5aFoB/uP1c3A==;
+	List-Owner; bh=FzuDgg3qBYz5BdYM3HSaJxbZFkCyRmmPorIhadHzt8w=; b=Unq+Zbs6vu+J7c
+	UgnCHm+67hx8Twr7qSauC9n8khJcpN0oHDBwaMRHYL0iQoeVPeL0ZlDVy38VRAMdKmZCSKcfTLmWH
+	m1czECtflEhAYEExtJECGyStRg3ZK6HBoraDaU3LPwplMY76BuHf7emCpMERLznhi5Dm+OBVMnP4q
+	2vSP3M6dc3x58lC1rVbVBdzZMcm+uJMxRV6DPSU2MOGV7qzmaKiNsKvTecPocU29nXmz/JmcO+NjP
+	ltcKlIFuNfgeSjJ/MAQmLHk8tAlxto0X0E5134dNmBiUlcSWcfzQLjAEW/abLPgxw3rPRo6yYE/eO
+	WLsEsOsmSQhPBGzpkA7Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iadqP-0004sk-MC; Fri, 29 Nov 2019 10:49:49 +0000
+	id 1iaeeG-0007fw-Fs; Fri, 29 Nov 2019 11:41:20 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iadqD-0004kE-4w; Fri, 29 Nov 2019 10:49:38 +0000
-X-UUID: d124cd6cfc2e4b10bd4d7473424200cd-20191129
+ id 1iaedo-0007BF-8N; Fri, 29 Nov 2019 11:40:54 +0000
+X-UUID: 6999b7ab37e54ae19732fba1dc52b383-20191129
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=6cf6mmfNAO4UYSLfUL+2gAahPm940KNzW92/hNa0blE=; 
- b=S9fljcImchsBWS8XTYWwDM0oFmmOPEXhkL6FxMhwnRJsuAPjTQAXxIP1JEAWBTOAIQajifG+8yNUCeTlJIKr0KlPuJfQDh2A7KOu0zAhfjpIfQ9P8L8+FakE5H/EQZgLxV/OIF3e9X2nKvBFmR+TELH20WoYPq9Y13sXdIGxamo=;
-X-UUID: d124cd6cfc2e4b10bd4d7473424200cd-20191129
+ bh=PwCHJ/ylLxsFTolp1LFDT4a1s0102DjGPATz1zjtxA0=; 
+ b=B0kGmm32hS6rMrCce03DSS9/I49LmnvX9Of9xHT/lE4Yysz5JkdCowVMOt2ZRII8RGPauflXRDTpVRv0T0+7II32lMHsf/zwEReNp4o9aO9ByBej+e2FzRcMbHI3TUv3pbabwCw7WTWibWCP3OwLzmF3DzwlF5paVrx67Xv1ZMU=;
+X-UUID: 6999b7ab37e54ae19732fba1dc52b383-20191129
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yong.liang@mediatek.com>)
+ (envelope-from <neal.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2076448025; Fri, 29 Nov 2019 02:49:20 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ with ESMTP id 405862687; Fri, 29 Nov 2019 03:40:45 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 29 Nov 2019 02:40:04 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31DR.mediatek.inc
- (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Fri, 29 Nov 2019 18:39:24 +0800
-Received: from [10.17.3.153] (172.27.4.253) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Fri, 29 Nov 2019 18:39:36 +0800
-Message-ID: <1575023965.7013.11.camel@mhfsdcap03>
-Subject: Re: [PATCH v5 2/2] watchdog: mtk_wdt: mt8183: Add reset controller
-From: Yong Liang <yong.liang@mediatek.com>
-To: Guenter Roeck <linux@roeck-us.net>
-Date: Fri, 29 Nov 2019 18:39:25 +0800
-In-Reply-To: <20191125061627.GA7313@roeck-us.net>
-References: <20191125061627.GA7313@roeck-us.net>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ 15.0.1395.4; Fri, 29 Nov 2019 03:31:23 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 29 Nov 2019 19:30:42 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Fri, 29 Nov 2019 19:30:44 +0800
+Message-ID: <1575027046.24848.4.camel@mtkswgap22>
+Subject: Re: [PATCH v5 3/3] hwrng: add mtk-sec-rng driver
+From: Neal Liu <neal.liu@mediatek.com>
+To: Lars Persson <lists@bofh.nu>
+Date: Fri, 29 Nov 2019 19:30:46 +0800
+In-Reply-To: <CADnJP=uhD=J2NrpSwiX8oCTd-u_q05=HhsAV-ErCsXNDwVS0rA@mail.gmail.com>
+References: <1574864578-467-1-git-send-email-neal.liu@mediatek.com>
+ <1574864578-467-4-git-send-email-neal.liu@mediatek.com>
+ <CADnJP=uhD=J2NrpSwiX8oCTd-u_q05=HhsAV-ErCsXNDwVS0rA@mail.gmail.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 5BAB322DC3378F90D8037FD05A9217D7F4FF5E31E670244183F6515D6B79EC0D2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191129_024937_207229_A1AAE3EC 
-X-CRM114-Status: GOOD (  24.67  )
+X-CRM114-CacheID: sfid-20191129_034052_358308_3A6CEAC4 
+X-CRM114-Status: GOOD (  14.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,244 +84,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
- "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
- "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>, "perex@perex.cz" <perex@perex.cz>,
- "tzungbi@google.com" <tzungbi@google.com>,
- "broonie@kernel.org" <broonie@kernel.org>,
+Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>,
+ Herbert Xu <herbert@gondor.apana.org.au>,
+ wsd_upstream <wsd_upstream@mediatek.com>, Sean Wang <sean.wang@kernel.org>,
+ Linux Kernel
+ Mailing List <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Crystal Guo =?UTF-8?Q?=28=E9=83=AD=E6=99=B6=29?= <Crystal.Guo@mediatek.com>,
+ "linux-crypto@vger.kernel.org" <linux-crypto@vger.kernel.org>,
+ Matt Mackall <mpm@selenic.com>, Matthias Brugger <matthias.bgg@gmail.com>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Jiaxin Yu =?UTF-8?Q?=28=E4=BF=9E=E5=AE=B6=E9=91=AB=29?=
- <Jiaxin.Yu@mediatek.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- Eason Yen =?UTF-8?Q?=28=E9=A1=8F=E5=BB=B7=E4=BB=BB=29?=
- <Eason.Yen@mediatek.com>,
- Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?=
- <Yingjoe.Chen@mediatek.com>, "wim@linux-watchdog.org" <wim@linux-watchdog.org>,
  "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2019-11-25 at 14:16 +0800, Guenter Roeck wrote:
-> On Mon, Nov 25, 2019 at 11:03:50AM +0800, Jiaxin Yu wrote:
-> > From: "yong.liang" <yong.liang@mediatek.com>
-> > 
-> > Add reset controller API in watchdog driver.
-> > Besides watchdog, MTK toprgu module also provide sub-system (eg, audio,
-> > camera, codec and connectivity) software reset functionality.
-> > 
-> > Signed-off-by: yong.liang <yong.liang@mediatek.com>
-> > Signed-off-by: jiaxin.yu <jiaxin.yu@mediatek.com>
-> > Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
-> > ---
-> >  drivers/watchdog/Kconfig   |   1 +
-> >  drivers/watchdog/mtk_wdt.c | 111 ++++++++++++++++++++++++++++++++++++-
-> >  2 files changed, 111 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/watchdog/Kconfig b/drivers/watchdog/Kconfig
-> > index 2e07caab9db2..629249fe5305 100644
-> > --- a/drivers/watchdog/Kconfig
-> > +++ b/drivers/watchdog/Kconfig
-> > @@ -717,6 +717,7 @@ config MEDIATEK_WATCHDOG
-> >  	tristate "Mediatek SoCs watchdog support"
-> >  	depends on ARCH_MEDIATEK || COMPILE_TEST
-> >  	select WATCHDOG_CORE
-> > +	select RESET_CONTROLLER
-> >  	help
-> >  	  Say Y here to include support for the watchdog timer
-> >  	  in Mediatek SoCs.
-> > diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-> > index 9c3d0033260d..d29484c7940a 100644
-> > --- a/drivers/watchdog/mtk_wdt.c
-> > +++ b/drivers/watchdog/mtk_wdt.c
-> > @@ -9,6 +9,9 @@
-> >   * Based on sunxi_wdt.c
-> >   */
-> >  
-> > +#include <dt-bindings/reset-controller/mt2712-resets.h>
-> > +#include <dt-bindings/reset-controller/mt8183-resets.h>
-> > +#include <linux/delay.h>
-> >  #include <linux/err.h>
-> >  #include <linux/init.h>
-> >  #include <linux/io.h>
-> > @@ -16,10 +19,12 @@
-> >  #include <linux/module.h>
-> >  #include <linux/moduleparam.h>
-> >  #include <linux/of.h>
-> > +#include <linux/of_device.h>
-> >  #include <linux/platform_device.h>
-> > +#include <linux/reset-controller.h>
-> > +#include <linux/slab.h>
-> >  #include <linux/types.h>
-> >  #include <linux/watchdog.h>
-> > -#include <linux/delay.h>
-> >  
-> >  #define WDT_MAX_TIMEOUT		31
-> >  #define WDT_MIN_TIMEOUT		1
-> > @@ -44,6 +49,9 @@
-> >  #define WDT_SWRST		0x14
-> >  #define WDT_SWRST_KEY		0x1209
-> >  
-> > +#define WDT_SWSYSRST		0x18U
-> > +#define WDT_SWSYS_RST_KEY	0x88000000
-> > +
-> >  #define DRV_NAME		"mtk-wdt"
-> >  #define DRV_VERSION		"1.0"
-> >  
-> > @@ -53,8 +61,99 @@ static unsigned int timeout;
-> >  struct mtk_wdt_dev {
-> >  	struct watchdog_device wdt_dev;
-> >  	void __iomem *wdt_base;
-> > +	spinlock_t lock; /* protects WDT_SWSYSRST reg */
-> > +	struct reset_controller_dev rcdev;
-> > +};
-> > +
-> > +struct mtk_wdt_data {
-> > +	int sw_rst_num;
-> >  };
-> >  
-> > +static const struct mtk_wdt_data mt2712_data = {
-> > +	.sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
-> > +};
-> > +
-> > +static const struct mtk_wdt_data mt8183_data = {
-> > +	.sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
-> > +};
+On Fri, 2019-11-29 at 18:02 +0800, Lars Persson wrote:
+> Hi Neal,
 > 
-> The number of resets can be set in .data directly; there is no need
-> for the structures.
+> On Wed, Nov 27, 2019 at 3:23 PM Neal Liu <neal.liu@mediatek.com> wrote:
+> >
+> > For MediaTek SoCs on ARMv8 with TrustZone enabled, peripherals like
+> > entropy sources is not accessible from normal world (linux) and
+> > rather accessible from secure world (ATF/TEE) only. This driver aims
+> > to provide a generic interface to ATF rng service.
+> >
 > 
-> > +
-> > +static int toprgu_reset_assert(struct reset_controller_dev *rcdev,
-> > +			       unsigned long id)
-> > +{
-> > +	unsigned int tmp;
-> > +	unsigned long flags;
-> > +	struct mtk_wdt_dev *data =
-> > +		 container_of(rcdev, struct mtk_wdt_dev, rcdev);
-> > +
-> > +	spin_lock_irqsave(&data->lock, flags);
-> > +
-> > +	tmp = __raw_readl(data->wdt_base + WDT_SWSYSRST);
-> > +	tmp |= BIT(id);
-> > +	tmp |= WDT_SWSYS_RST_KEY;
-> > +	writel(tmp, data->wdt_base + WDT_SWSYSRST);
-> > +
-> > +	spin_unlock_irqrestore(&data->lock, flags);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int toprgu_reset_deassert(struct reset_controller_dev *rcdev,
-> > +				 unsigned long id)
-> > +{
-> > +	unsigned int tmp;
-> > +	unsigned long flags;
-> > +	struct mtk_wdt_dev *data =
-> > +		 container_of(rcdev, struct mtk_wdt_dev, rcdev);
-> > +
-> > +	spin_lock_irqsave(&data->lock, flags);
-> > +
-> > +	tmp = __raw_readl(data->wdt_base + WDT_SWSYSRST);
-> > +	tmp &= ~BIT(id);
-> > +	tmp |= WDT_SWSYS_RST_KEY;
-> > +	writel(tmp, data->wdt_base + WDT_SWSYSRST);
-> > +
-> > +	spin_unlock_irqrestore(&data->lock, flags);
-> > +
-> > +	return 0;
-> > +}
+> I am working on several SoCs that also will need this kind of driver
+> to get entropy from Arm trusted firmware.
+> If you intend to make this a generic interface, please clean up the
+> references to MediaTek and give it a more generic name. For example
+> "Arm Trusted Firmware random number driver".
 > 
-> There is a lot of duplication in those functions. Only one line
-> is different. I think this is a good example where a helper function
-> with an additional argument indicating set or reset would be helpful.
+> It will also be helpful if the SMC call number is configurable.
 > 
-> > +
-> > +static int toprgu_reset(struct reset_controller_dev *rcdev,
-> > +			unsigned long id)
-> > +{
-> > +	int ret;
-> > +
-> > +	ret = toprgu_reset_assert(rcdev, id);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	return toprgu_reset_deassert(rcdev, id);
-> > +}
-> > +
-> > +static const struct reset_control_ops toprgu_reset_ops = {
-> > +	.assert = toprgu_reset_assert,
-> > +	.deassert = toprgu_reset_deassert,
-> > +	.reset = toprgu_reset,
-> > +};
-> > +
-> > +static int toprgu_register_reset_controller(struct platform_device *pdev,
-> > +					    int rst_num)
-> > +{
-> > +	int ret;
-> > +	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
-> > +
-> > +	spin_lock_init(&mtk_wdt->lock);
-> > +
-> > +	mtk_wdt->rcdev.owner = THIS_MODULE;
-> > +	mtk_wdt->rcdev.nr_resets = rst_num;
-> > +	mtk_wdt->rcdev.ops = &toprgu_reset_ops;
-> > +	mtk_wdt->rcdev.of_node = pdev->dev.of_node;
-> > +	ret = reset_controller_register(&mtk_wdt->rcdev);
-> > +	if (ret != 0)
-> > +		dev_err(&pdev->dev,
-> > +			"couldn't register wdt reset controller: %d\n", ret);
-> > +	return ret;
-> > +}
-> > +
-> >  static int mtk_wdt_restart(struct watchdog_device *wdt_dev,
-> >  			   unsigned long action, void *data)
-> >  {
-> > @@ -155,6 +254,7 @@ static int mtk_wdt_probe(struct platform_device *pdev)
-> >  {
-> >  	struct device *dev = &pdev->dev;
-> >  	struct mtk_wdt_dev *mtk_wdt;
-> > +	struct mtk_wdt_data *wdt_data;
-> >  	int err;
-> >  
-> >  	mtk_wdt = devm_kzalloc(dev, sizeof(*mtk_wdt), GFP_KERNEL);
-> > @@ -190,6 +290,13 @@ static int mtk_wdt_probe(struct platform_device *pdev)
-> >  	dev_info(dev, "Watchdog enabled (timeout=%d sec, nowayout=%d)\n",
-> >  		 mtk_wdt->wdt_dev.timeout, nowayout);
-> >  
-> > +	wdt_data = (struct mtk_wdt_data *)of_device_get_match_data(dev);
-> > +	if (wdt_data) {
-> > +		err = toprgu_register_reset_controller(pdev,
-> > +						       wdt_data->sw_rst_num);
-> > +		if (err)
-> > +			return err;
-> 
-> If this happens, the user will wonder why there was a message "Watchdog
-> enabled", but there is no watchdog. It would be better to call this
-> function before the dev_info() above.
-> 
-> Guenter
+> - Lars
 
-  It will return err just if .compatible has no .data value, just like
-"mediatek,mt6589-wdt". Bus watchdog is still enable.
+Yes, I'm trying to make this to a generic interface. I'll try to make
+HW/platform related dependency to be configurable and let it more
+generic.
+Thanks for your suggestion.
+
 > 
-> > +	}
-> >  	return 0;
-> >  }
-> >  
-> > @@ -218,7 +325,9 @@ static int mtk_wdt_resume(struct device *dev)
-> >  #endif
-> >  
-> >  static const struct of_device_id mtk_wdt_dt_ids[] = {
-> > +	{ .compatible = "mediatek,mt2712-wdt", .data = &mt2712_data },
-> >  	{ .compatible = "mediatek,mt6589-wdt" },
-> > +	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
-> >  	{ /* sentinel */ }
-> >  };
-> >  MODULE_DEVICE_TABLE(of, mtk_wdt_dt_ids);
-> > -- 
-> > 2.18.0
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
