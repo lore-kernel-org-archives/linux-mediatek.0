@@ -7,74 +7,73 @@ X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 045B0C432C0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Nov 2019 06:44:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EA725C432C0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Nov 2019 06:46:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C81B32086A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Nov 2019 06:44:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B8FB82086A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Nov 2019 06:46:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iSf/EOwD";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qfnE/gvH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C81B32086A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DFiOkmN6";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="uu+M2xx7"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B8FB82086A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:References:
-	In-Reply-To:To:From:Subject:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=AUZFX/1xge5X3CYZnKu3/AF3y/luiXuS6nRfBW8JuWM=; b=iSf/EOwDPbhhUsaon2SYAGv5mT
-	QFLW1mxXEo2lGoCcx4EpmixbsEVZ4pUNSBPrpZ1aMEVE0YllrvQajCY6Hx0XEdFiQxXYDwp/5xnwe
-	QgjlGalnESdtlNH9otDv8YdZiROU9rLNPuS9Qiozzhs/5sGxf1OyKe8mbEqqi+xS56AVRJd6Oa4cJ
-	sW0eUml9SNSiAx/ePYVoL20sdt7aUrhmvT4yBpdh0RFU7GEotTVOimFNy54a1ax7q7JnVGlyxjRxr
-	KDChaHkcKhaA2lLp6QsuFPPcLBR21qadEFvzcCkisnMXjJosUQj0Q4BxBTh7kj/AIItQ2zEz7SOVW
-	K4/Ss8jQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ua3TShLulHCSPDY97m71m0mTUG7b651QUqJxbSvp7y4=; b=DFiOkmN6XRhxDO
+	Lws9BoUW4vUAnjADzv9dWrRCjuGmaHln58oJIR2ngQpaEqHqwl9JhtO7qUGMinzNEAT+tB6xhiDv1
+	oG2PWa4odo7rmS8RmYktUjb2Vr4yF21iAqWXlQFDLXlz4947hMBHKwmoAY8m2enS2WDM3DzNzUIoh
+	XzGUwkPZBXkWjWUhicoGzw/Q0nPBhBEmYympVxC4fYtn3mNoGTX9fleouiBXIgwCbCLY82SbXVpEo
+	sSJzXeH2nu+tnhUL1XQSU8yCg/LgxiO0AodSguFSkQ1CukZ0P3iyh4CxNPo8IzS9DeeJTIgpRMhKw
+	7J1ZyVYxRkjuW1zVPSug==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iaa0i-0000fz-A4; Fri, 29 Nov 2019 06:44:12 +0000
+	id 1iaa2v-0002Ip-1b; Fri, 29 Nov 2019 06:46:29 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iaa0a-0000YV-8D; Fri, 29 Nov 2019 06:44:05 +0000
-X-UUID: 8206b91f85214a9d987943e9880c011e-20191128
+ id 1iaa2g-00026F-32; Fri, 29 Nov 2019 06:46:15 +0000
+X-UUID: d45a77c806644348bd431ef40993b1f9-20191128
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Date:Content-Type:References:In-Reply-To:CC:To:From:Subject:Message-ID;
- bh=oi4tPDzs8ZbqKpkDr986mLKVJSE8Ydo7EgiDBxABqc8=; 
- b=qfnE/gvHM0lLKuMXq76D7iOBs8W4yf36PnHxz7I7N5qOGu5Etqyn0daooLulozQyzdibxq8+4HT5vgvV1Td/5wEeglrI61C8luxJt2IJtGfarwCCbiIQJojIiJbgJDWo/KqclZzo3VFpgOxbpkP/9QyFihEuYN4yiKDgPZs/BkQ=;
-X-UUID: 8206b91f85214a9d987943e9880c011e-20191128
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=8lX9vCY1Mdos86S6vjMAmKgXT0YEpzezR8Mrp8YXb4A=; 
+ b=uu+M2xx7V/lnAFcToE8OA7newH3agzVK1H7cBaQqjYX5rBBxUM/5j9V+09tMg04Tir6Nr+ebBmU8/FZpEtnzS64rYozHAYGrmkZJjhbsB9+aqebgCHZzsP3EQFPTOxjawrFscxkuwF0GwwI4Jqiu6M4Ip3lQz2tQiaNA1+ih8sQ=;
+X-UUID: d45a77c806644348bd431ef40993b1f9-20191128
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.liang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 807644758; Thu, 28 Nov 2019 22:44:01 -0800
+ with ESMTP id 1777826257; Thu, 28 Nov 2019 22:46:09 -0800
 Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 28 Nov 2019 22:44:10 -0800
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 28 Nov 2019 22:36:47 -0800
 Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
  (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Fri, 29 Nov 2019 14:43:53 +0800
+ Fri, 29 Nov 2019 14:36:03 +0800
 Received: from [10.17.3.153] (172.27.4.253) by MTKCAS36.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Fri, 29 Nov 2019 14:43:49 +0800
-Message-ID: <1575009205.6367.4.camel@mhfsdcap03>
+ Transport; Fri, 29 Nov 2019 14:36:16 +0800
+Message-ID: <1575009364.6367.5.camel@mhfsdcap03>
 Subject: Re: [PATCH v5 1/2] dt-bindings: mediatek: mt8183: Add #reset-cells
 From: Yong Liang <yong.liang@mediatek.com>
 To: Philipp Zabel <p.zabel@pengutronix.de>
+Date: Fri, 29 Nov 2019 14:36:04 +0800
 In-Reply-To: <49c94039ba327a1295fdfd5d74dca0b9805269b0.camel@pengutronix.de>
 References: <1574651030-29519-1-git-send-email-jiaxin.yu@mediatek.com>
  <1574651030-29519-2-git-send-email-jiaxin.yu@mediatek.com>
  <49c94039ba327a1295fdfd5d74dca0b9805269b0.camel@pengutronix.de>
-Date: Fri, 29 Nov 2019 14:33:25 +0800
-MIME-Version: 1.0
 X-Mailer: Evolution 3.10.4-0ubuntu2 
-X-TM-SNTS-SMTP: FF3A6F2BD736D72B4F26A39DECBD324E971B973519332DC24613CED2AD969F4E2000:8
+MIME-Version: 1.0
+X-TM-SNTS-SMTP: 3F41035B15E86B2915F7C7EA21024C6D3762066A9BDAF3A95558A4C43D6A960A2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191128_224404_291677_2263E1E9 
-X-CRM114-Status: GOOD (  16.56  )
+X-CRM114-CacheID: sfid-20191128_224614_140331_E5DAD678 
+X-CRM114-Status: GOOD (  17.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,6 +104,7 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+
 
 On Mon, 2019-11-25 at 18:07 +0800, Philipp Zabel wrote:
 > On Mon, 2019-11-25 at 11:03 +0800, Jiaxin Yu wrote:
@@ -220,6 +220,7 @@ On Mon, 2019-11-25 at 18:07 +0800, Philipp Zabel wrote:
 > Linux-mediatek mailing list
 > Linux-mediatek@lists.infradead.org
 > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
 
 _______________________________________________
 Linux-mediatek mailing list
