@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E2F12C432C0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2019 19:44:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D092C432C0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2019 19:44:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B406F20661
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2019 19:44:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0E94920661
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2019 19:44:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="r6e1WpQJ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="sQ5sz84a"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B406F20661
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UtBnxnFQ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="pt4eRo+r"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E94920661
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,65 +26,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LODP2AVJuZ9LZHjCIi+N8UlJbxqWeCRqIqP2ZUOTW9k=; b=r6e1WpQJx7kk6m
-	6ykgo1P0+1SvwVoyhLeZP3MkGv0q5aUx/M0Z5JZmcElEKN2pnZ/7qtMS8qzKSzrFyw8Z5KywfA/CJ
-	JvpGuLTSEwrY1+26/ebItL4mw87nh2ayJ/oWsLVCzihC6VTZt+ihOLol6fk9kQIV6F2PGl3D9iY59
-	kT9TH7MC7Za7/2Leyc+9nrPpDe4IBzgoUM0DfCSjpjXs6WXn1LyNbZ6oH68hvgz5IZjP54T/FiAzv
-	/kdSs93Rzh/bV9u9++WVODQXmtbNsYzy51z684YRq9j66/X2mcNxODCZQ3Ri/iEoknGvBNnSVRdIA
-	ZujsxjNXveWBTE/yPyyg==;
+	List-Owner; bh=u53C9G9BDBfCMrQ4C+2WfXyNTb2FY9lG4S+6TptsNPk=; b=UtBnxnFQLKbV7/
+	4xxhSQd3HaAIfBLmIz8/STUmFgaMTm/vHduH29GnHCAlxvsuH1nClhlozu4nVzHgyl+ghPEt4v2Tl
+	hlq40YOIy0i+ejN9v/KNoDGC9c5OF55aq/Ln20xNI++GrmIQySgdUxJkeAWlAOai9rkTt7S2agjXv
+	ueSoWJNPBgqzOqfAn6dLTYRd/pyUSeCLnDZxy014ZFC/8oxiLPC/t7ERr8bF0Mm+kbol1guoEu4eK
+	x0t5+B73mvJeVrEMoMmrrELXiE8qzVtnz0/g7Uq/PK19haxI4Eruy6RzU8E2nJAd/Aluhur5R6Gtf
+	aaA5P8VyTcd3mBkid3wg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ibrcc-0003k4-Ve; Mon, 02 Dec 2019 19:44:38 +0000
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141])
+	id 1ibrcf-0003ma-M1; Mon, 02 Dec 2019 19:44:41 +0000
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ibrSE-000810-O2; Mon, 02 Dec 2019 19:34:00 +0000
-Received: by mail-lf1-x141.google.com with SMTP id l18so808119lfc.1;
- Mon, 02 Dec 2019 11:33:54 -0800 (PST)
+ id 1ibrSC-0007z4-P9; Mon, 02 Dec 2019 19:34:00 +0000
+Received: by mail-lf1-x142.google.com with SMTP id l18so808050lfc.1;
+ Mon, 02 Dec 2019 11:33:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=CU1uoHEr1EClqVOFtZU3zB21PkkAQa6gthbvOIOjhXw=;
- b=sQ5sz84ahngu04detfdJb7WzDQ0QcopqKxnDfHTl6wWuDWFdmsW99YWf0HBWKVWdCP
- RtINs73RJ+Sk7G71eUzuQ9dzzWizDYLIb9hlwzETpJLExqI+mi5bryV4yuHDhM1bk64b
- vEQDA0fYt2NVXGAInm08lTk2qc9z8Zuy/bBxOD7ZeK96/nmYABuBHoroyzZmnlYo/3hL
- e6lBlbFUTJ/vQgNEhqRXR+CF6RtFCvzDPOJRsXl7kAidChgKhYB4T34t/JadF6qMZ/54
- Ia1/574eLMCCnimEAcJi1a8cMBlCfwJLuzWlre+3Lh7dtm0Umq9xTA63WTRQ+KYk8fR2
- Esxg==
+ bh=sQFlzyFny1i3dHVwTEws0fP7Z8KCjLT5c7TINBzn22A=;
+ b=pt4eRo+rlUMtO4GzjerqssqjlO0TO1vFSYLwXnfqMSsS6I6x4kY1DKOw6u9G9vdsgW
+ VAXzxTR5zDmXqrnHapjbB2IRlTBgXXfxGeEzL71oJVndvo7oGsIzdM4JNNW+vJ9wI25g
+ Qpon0HiFbTQdsFgeRb9y24Z617Q2A4fAEvuGRRje5A0OM5b/IzFlUNEFnzszoF9xFYKW
+ CFKHrlknb1/H6PzMT5qxX68gQRn6wKxNlsb26QKyV9LEm0W4VdQaXIu/ffS0UbmwteSa
+ ESNzQZVCq6Z1dS+LBlZ71mm/mZiCmeduZsUF8YAG5RFC59oKdaCyFJU+oIb5eWrZqitl
+ CEAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=CU1uoHEr1EClqVOFtZU3zB21PkkAQa6gthbvOIOjhXw=;
- b=s7YL1GoNvSr/sz+DVjnamiYPTfr0sAAcQWLAZzaseSfUzpBHwW16eNkC+domi6WIcK
- FZNHyoAxU0BwuKuwbqcvJtiqq2P5HCs8EFyrkbS7kyLBCKek1ghS9qUL421B/KxL067N
- tDnmB5UgRuZxhf8hFQjPhE4ZY02BvjcZnPiz1O9BOz/9bTiK3R6i4V38vViMt0fy4iEw
- J7Cus3hOWfFiotfsIevNiJ8FuYvalwA90rPeWykPgx96wIrx88XVAhRdk9sH+hiH1fqJ
- EUM/8UQhag+Om3MzN3JLxq0hWj/L1H+H/6h0UHpkg8nmkg2hfkj57oDgDUEm/505Fyn5
- qZTw==
-X-Gm-Message-State: APjAAAX3qZUhja+qBzkJFuF1nGD1DvJveuNwfpOQ++Gzp8da6eYAK+bS
- 8eaqGr7xWU06uzqjH6a1scU=
-X-Google-Smtp-Source: APXvYqy6JtwNRfjOhSCiLRMY0PnjwO80lGs4bEHgQWo2w/EjSnAnF5rp0zEQoTYkYl1Ki13jCNJp3w==
-X-Received: by 2002:ac2:5388:: with SMTP id g8mr412443lfh.43.1575315232849;
- Mon, 02 Dec 2019 11:33:52 -0800 (PST)
+ bh=sQFlzyFny1i3dHVwTEws0fP7Z8KCjLT5c7TINBzn22A=;
+ b=e+2FI6g3h+DGP+qWaH2eGtKSjXwjphA8uMglF/N6XM2Qbv63f8ppJDs6h5TxK5b74K
+ bXmFAVZZycZO5PWEPH3ud9YTXAXs6ycDOfAysWe5S1DKCKVJ6qMF8tyZGgpYpb4ZJ9d4
+ Lv7iVT4HQLnEbSKn1WBm867ScBz3/+lkIg2JsOOYTWO2aRzTA8qq1VHkabW8dLGso6iB
+ Wqnz74FVAzK+T6IHqlrxOtSDYVii3/1k6ChxR/x93/ZaPkT1nocL6PVUqNLRNjGuO8P4
+ 5Tk6rJZ2A2UoJS6eUAbJ5unVolz29C4ws38f+Xk0blL+08FsQ3wFqWPJFKc24ASJ55Gt
+ BHig==
+X-Gm-Message-State: APjAAAWkYf3BirFUtvFUYFAjRuWremeo+rH7KM0lJvZVpuhNgX9tDkfH
+ mR+m73MX7MoRmItlsYD9qIo=
+X-Google-Smtp-Source: APXvYqw+I2ccfhtX+jZIDSZ8cLTRrK19+BfFlN/G+FBcKPfk4B/UKRsY/a6pLRlAL5tf08+wnj+Qzg==
+X-Received: by 2002:ac2:4a89:: with SMTP id l9mr397464lfp.121.1575315231117;
+ Mon, 02 Dec 2019 11:33:51 -0800 (PST)
 Received: from saturn.lan (18.158-248-194.customer.lyse.net. [158.248.194.18])
  by smtp.gmail.com with ESMTPSA id
- g13sm79482lfb.74.2019.12.02.11.33.51
+ g13sm79482lfb.74.2019.12.02.11.33.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Dec 2019 11:33:52 -0800 (PST)
+ Mon, 02 Dec 2019 11:33:50 -0800 (PST)
 From: Sam Ravnborg <sam@ravnborg.org>
 To: dri-devel@lists.freedesktop.org, Thierry Reding <thierry.reding@gmail.com>,
  Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: [PATCH v1 26/26] drm/panel: tpo-tpg110: use drm_panel backlight
+Subject: [PATCH v1 25/26] drm/panel: tpo-td028ttec1: use drm_panel backlight
  support
-Date: Mon,  2 Dec 2019 20:32:30 +0100
-Message-Id: <20191202193230.21310-27-sam@ravnborg.org>
+Date: Mon,  2 Dec 2019 20:32:29 +0100
+Message-Id: <20191202193230.21310-26-sam@ravnborg.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191202193230.21310-1-sam@ravnborg.org>
 References: <20191202193230.21310-1-sam@ravnborg.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191202_113355_001359_AC2F43A9 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20191202_113352_836682_2FC8FC9C 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,85 +120,72 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Use the backlight support in drm_panel to simplify the driver
 
 Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>
 Cc: Thierry Reding <thierry.reding@gmail.com>
 Cc: Sam Ravnborg <sam@ravnborg.org>
 ---
- drivers/gpu/drm/panel/panel-tpo-tpg110.c | 20 ++++++--------------
- 1 file changed, 6 insertions(+), 14 deletions(-)
+ drivers/gpu/drm/panel/panel-tpo-td028ttec1.c | 14 ++++----------
+ 1 file changed, 4 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/gpu/drm/panel/panel-tpo-tpg110.c b/drivers/gpu/drm/panel/panel-tpo-tpg110.c
-index bee213ea1a42..8472d018c16f 100644
---- a/drivers/gpu/drm/panel/panel-tpo-tpg110.c
-+++ b/drivers/gpu/drm/panel/panel-tpo-tpg110.c
-@@ -14,13 +14,13 @@
- #include <drm/drm_panel.h>
- #include <drm/drm_print.h>
+diff --git a/drivers/gpu/drm/panel/panel-tpo-td028ttec1.c b/drivers/gpu/drm/panel/panel-tpo-td028ttec1.c
+index 37252590b541..cf29405a2dbe 100644
+--- a/drivers/gpu/drm/panel/panel-tpo-td028ttec1.c
++++ b/drivers/gpu/drm/panel/panel-tpo-td028ttec1.c
+@@ -17,7 +17,6 @@
+  * H. Nikolaus Schaller <hns@goldelico.com>
+  */
  
 -#include <linux/backlight.h>
- #include <linux/bitops.h>
  #include <linux/delay.h>
- #include <linux/gpio/consumer.h>
- #include <linux/init.h>
- #include <linux/kernel.h>
  #include <linux/module.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
  #include <linux/spi/spi.h>
- 
-@@ -76,10 +76,6 @@ struct tpg110 {
- 	 * @panel: the DRM panel instance for this device
- 	 */
+@@ -83,7 +82,6 @@ struct td028ttec1_panel {
  	struct drm_panel panel;
--	/**
--	 * @backlight: backlight for this panel
--	 */
--	struct backlight_device *backlight;
- 	/**
- 	 * @panel_type: the panel mode as detected
- 	 */
-@@ -356,8 +352,6 @@ static int tpg110_disable(struct drm_panel *panel)
- 	val &= ~TPG110_CTRL2_PM;
- 	tpg110_write_reg(tpg, TPG110_CTRL2_PM, val);
  
--	backlight_disable(tpg->backlight);
+ 	struct spi_device *spi;
+-	struct backlight_device *backlight;
+ };
+ 
+ #define to_td028ttec1_device(p) container_of(p, struct td028ttec1_panel, panel)
+@@ -243,8 +241,6 @@ static int td028ttec1_enable(struct drm_panel *panel)
+ 	if (ret)
+ 		return ret;
+ 
+-	backlight_enable(lcd->backlight);
 -
  	return 0;
  }
  
-@@ -366,8 +360,6 @@ static int tpg110_enable(struct drm_panel *panel)
- 	struct tpg110 *tpg = to_tpg110(panel);
- 	u8 val;
+@@ -252,8 +248,6 @@ static int td028ttec1_disable(struct drm_panel *panel)
+ {
+ 	struct td028ttec1_panel *lcd = to_td028ttec1_device(panel);
  
--	backlight_enable(tpg->backlight);
+-	backlight_disable(lcd->backlight);
 -
- 	/* Take chip out of standby */
- 	val = tpg110_read_reg(tpg, TPG110_CTRL2_PM);
- 	val |= TPG110_CTRL2_PM;
-@@ -432,11 +424,6 @@ static int tpg110_probe(struct spi_device *spi)
- 	if (ret)
- 		DRM_DEV_ERROR(dev, "no panel height specified\n");
+ 	jbt_ret_write_0(lcd, JBT_REG_DISPLAY_OFF, NULL);
  
--	/* Look for some optional backlight */
--	tpg->backlight = devm_of_find_backlight(dev);
--	if (IS_ERR(tpg->backlight))
--		return PTR_ERR(tpg->backlight);
+ 	return 0;
+@@ -334,10 +328,6 @@ static int td028ttec1_probe(struct spi_device *spi)
+ 	spi_set_drvdata(spi, lcd);
+ 	lcd->spi = spi;
+ 
+-	lcd->backlight = devm_of_find_backlight(&spi->dev);
+-	if (IS_ERR(lcd->backlight))
+-		return PTR_ERR(lcd->backlight);
 -
- 	/* This asserts the GRESTB signal, putting the display into reset */
- 	tpg->grestb = devm_gpiod_get(dev, "grestb", GPIOD_OUT_HIGH);
- 	if (IS_ERR(tpg->grestb)) {
-@@ -459,6 +446,11 @@ static int tpg110_probe(struct spi_device *spi)
+ 	spi->mode = SPI_MODE_3;
+ 	spi->bits_per_word = 9;
  
- 	drm_panel_init(&tpg->panel, dev, &tpg110_drm_funcs,
+@@ -350,6 +340,10 @@ static int td028ttec1_probe(struct spi_device *spi)
+ 	drm_panel_init(&lcd->panel, &lcd->spi->dev, &td028ttec1_funcs,
  		       DRM_MODE_CONNECTOR_DPI);
-+
-+	ret = drm_panel_of_backlight(&tpg->panel);
+ 
++	ret = drm_panel_of_backlight(&lcd->panel);
 +	if (ret)
 +		return ret;
 +
- 	spi_set_drvdata(spi, tpg);
+ 	return drm_panel_add(&lcd->panel);
+ }
  
- 	return drm_panel_add(&tpg->panel);
 -- 
 2.20.1
 
