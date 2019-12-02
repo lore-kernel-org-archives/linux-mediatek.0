@@ -2,74 +2,93 @@ Return-Path: <SRS0=7Wwy=ZY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 09811C432C0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2019 09:10:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D553EC43215
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2019 09:18:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CA54120675
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2019 09:10:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9EEBE215E5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2019 09:18:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QyT6AMRk";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="reYIgDcm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA54120675
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pVD8hgZz";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=cogentembedded-com.20150623.gappssmtp.com header.i=@cogentembedded-com.20150623.gappssmtp.com header.b="uTPBkofE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9EEBE215E5
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=cogentembedded.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LUjovsLq1ohTtBE8VHZifg5IGJFgEHiQJs4H23oD3jc=; b=QyT6AMRkG0PGEB
-	uN0EBC7VWk2TplzmP68GX1iJv/6QhWWCiM8mGeYtiY/h7KcVCXKsEB6RlnL6vsiWxRMLD07VBA8Oe
-	A4ZuSdu1Y4R0Wfj4c0mkU5nIcfmvlM8rA9eOVFSaxx9+RS2spdQXiPWsgN/hOiY3U+th2s6y6utEK
-	BAxlykcwVYXQGPwbkOKRh2mRFaoYTaYhbQsbpkbALH6buWqA86HHSpAxxcu5eR3KTXJdYhIo96xZA
-	ReO2JuH1leEP5h6yWikhz4pN9oDxgCs/+kfh+uROAT6315RO1wgD+r4Dc+UlxOE3bxj7YTlNbfoAJ
-	Ofvov6VJBR3Ioqo/mJVw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=0GEBiKOStb3ZmIXjxyagSdK2+XWx0NOQXEIsmoqL2Uw=; b=pVD8hgZzjuUpcd0c3TFDrUspC
+	YXHufpMuG2rgTEFHbH7C/pZ3HU9lWVKFgauMZglHefn/Ry8Hez/awD50cyWKZAUV7ps7g7nsEstIN
+	jQibgj2Tm8XULg+/w4xB9x4EZPA+vEzHmrqvmxP7eUWj5X1Olf2Oe1zmm/M7aanv+A6qRvYO1hGa6
+	tuQaTv8D5nMA2YcswVVkCwhyeo5yxaT7XiZ249cf3axLsAUc1mdEAh5OpFo3oKNVl0BniBs1ci7dQ
+	IMKDRdi3+uUFFHTK8IIKwpjHlGuZkbb4BuCSDW6BsiycITUSqWdxGb5gOm4YcZ9gbwpLQfNcuz0mz
+	ZTuiyFUUQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ibhjN-0001bB-4a; Mon, 02 Dec 2019 09:10:57 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ibhqv-0004B1-7R; Mon, 02 Dec 2019 09:18:45 +0000
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ibhjK-0001aD-8k; Mon, 02 Dec 2019 09:10:56 +0000
-X-UUID: d07467977ea74e70991e563dcf257e01-20191202
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=77BHlXRq8SWcz9OZW4vRLcX/STRmZd2DJc8sv5irofo=; 
- b=reYIgDcmJ9SPOE7bIVGGdiC4W7DCRt2Ts+05CW3TMnVmCsRaEAHpXDEGpkfRGMyGpVH+UUveXZguN81eRLF1N3Zbpn0mV+a8e5tiFJ/oMqtXpVIKDE8JCrpxAFA+FiF7nf14nOKQixRdVCc5ugajb+tHJErYGSafyWS5w9Tk6FQ=;
-X-UUID: d07467977ea74e70991e563dcf257e01-20191202
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yongqiang.niu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1373447161; Mon, 02 Dec 2019 01:10:50 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 2 Dec 2019 01:04:38 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 2 Dec 2019 17:03:36 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Mon, 2 Dec 2019 17:03:34 +0800
-From: <yongqiang.niu@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Rob
- Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v2] drm/mediatek: add ctm property support
-Date: Mon, 2 Dec 2019 17:03:43 +0800
-Message-ID: <1575277423-31182-1-git-send-email-yongqiang.niu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
+ id 1ibhqs-00049m-5r
+ for linux-mediatek@lists.infradead.org; Mon, 02 Dec 2019 09:18:43 +0000
+Received: by mail-lj1-x242.google.com with SMTP id u17so11793932lja.4
+ for <linux-mediatek@lists.infradead.org>; Mon, 02 Dec 2019 01:18:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=cogentembedded-com.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=6ja9ch4L0w7bAa4bcbmZySUMxjC9CzLUpvj1cQSMwa8=;
+ b=uTPBkofEFIQC1nYNeb3vu7LG+NQ2nRnifiuCq4czf9Xq9Sw6sSQloZymgl2qZ1CDFs
+ RPDy6rBjA9PIdmwDXFJtzsW4jQKHkCQCw8J8uQP3w3y54R7jgHpgAwV9hviCtrCphXxn
+ 40MeEzGl4xX05vlCMNrLZ/Jzt6j6ZsX1PSPi2EOppkBQaGROJ8VzTtlWoikjZt8O1mms
+ UJ4BilLQ2Q01XGvwaRCLI3qZoEbSuUKzxZQPz/+7rggWsCiOJ+d8c4q2z7TY4GdL3iF1
+ pPagjRHFNmYnFeot7JpNyLGTEo280oearTe34ZzyVXuKchY2o7cICtf51vtpzqPqa2rA
+ M6cA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=6ja9ch4L0w7bAa4bcbmZySUMxjC9CzLUpvj1cQSMwa8=;
+ b=aZQzqxLqP4QPNJVAiyQfuZm70886nfdwyq9SYiJwCGA8F5zaJ4QEafz9AWGdHeDmVU
+ NcFiaZr2DdwgL4wZv5314amcUp0aj4UgtdQW8av2oQFH/9AY/DWtGPVF4nM7rg9XUdj4
+ KTA42Dzw0tyycRRYAF5JgXdFdYelJdqzYNtrMaoBsb3wC3f+ZrFq/uQCiYeAkCGadx94
+ Yn3GAJvMelFb2Sq8Ms5H/FH9dhr2f2IjuXfJZuHhOL0EUMEI6c1FLV5miqSLG8w41yxP
+ cgKZXA6WZMppHhYnfTLHK8GSHyPTaLzG6Lhy/Qlfy+rd7DJXTJO7/2kKTR5nN6AFVvQ7
+ zGMg==
+X-Gm-Message-State: APjAAAWJEs88Jv3d9pwZu9q5KDudBYkwYgOHmL1ET1Ksh14tsBmi2W+s
+ 1EqyY44asJYjtz7xQtQXBcUoxw==
+X-Google-Smtp-Source: APXvYqxwpAVRrTt+ohqj3sU9ZfRrVqX02o1vwts4WBMtf4EDXl5MbSuF6EQGuhRhWwZFug6WCJYv4Q==
+X-Received: by 2002:a2e:b5ae:: with SMTP id f14mr13855009ljn.31.1575278314710; 
+ Mon, 02 Dec 2019 01:18:34 -0800 (PST)
+Received: from ?IPv6:2a00:1fa0:61d:753e:cc38:6b74:7e0d:a1da?
+ ([2a00:1fa0:61d:753e:cc38:6b74:7e0d:a1da])
+ by smtp.gmail.com with ESMTPSA id l8sm14769303ljj.96.2019.12.02.01.18.33
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 02 Dec 2019 01:18:34 -0800 (PST)
+Subject: Re: [PATCH v1] mt76: mt7615: Fix build with older compilers
+To: Pablo Greco <pgreco@centosproject.org>
+References: <20191201181716.61892-1-pgreco@centosproject.org>
+From: Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>
+Message-ID: <e18d798d-cdf3-da05-c139-403dfc80e8a3@cogentembedded.com>
+Date: Mon, 2 Dec 2019 12:18:28 +0300
+User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.1
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20191201181716.61892-1-pgreco@centosproject.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191202_011054_322148_D6578336 
-X-CRM114-Status: GOOD (  14.40  )
+X-CRM114-CacheID: sfid-20191202_011842_221388_60380242 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,203 +100,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: Ryder Lee <ryder.lee@mediatek.com>, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Roy Luo <royluo@google.com>,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>,
+ Felix Fietkau <nbd@nbd.name>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Hello!
 
-add ctm property support
+On 01.12.2019 21:17, Pablo Greco wrote:
 
-Change-Id: I8111da7b309b1809c6302e7748dd9fd06dc97bde
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 15 ++++++-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 61 ++++++++++++++++++++++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h | 11 ++++++
- 3 files changed, 84 insertions(+), 3 deletions(-)
+> Some compilers (tested with 4.8.5 from CentOS 7) fail properly process
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 4fb346c..12dc684 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -666,10 +666,13 @@ static void mtk_drm_crtc_atomic_flush(struct drm_crtc *crtc,
- 	int i;
- 
- 	if (crtc->state->color_mgmt_changed)
--		for (i = 0; i < mtk_crtc->ddp_comp_nr; i++)
-+		for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
- 			mtk_ddp_gamma_set(mtk_crtc->ddp_comp[i],
- 					  crtc->state,
- 					  mtk_crtc_state->cmdq_handle);
-+			mtk_ddp_ctm_set(mtk_crtc->ddp_comp[i], crtc->state);
-+		}
-+
- #ifdef CONFIG_MTK_CMDQ
- 	if (mtk_crtc->cmdq_client) {
- 		drm_atomic_state_get(old_atomic_state);
-@@ -819,6 +822,8 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 	int pipe = priv->num_pipes;
- 	int ret;
- 	int i;
-+	bool has_ctm = false;
-+	uint gamma_lut_size = 0;
- 
- 	if (!path)
- 		return 0;
-@@ -870,6 +875,12 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 		}
- 
- 		mtk_crtc->ddp_comp[i] = comp;
-+
-+		if (comp_id == DDP_COMPONENT_CCORR)
-+			has_ctm = true;
-+
-+		if (comp_id == DDP_COMPONENT_GAMMA)
-+			gamma_lut_size = MTK_LUT_SIZE;
- 	}
- 
- 	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++)
-@@ -891,7 +902,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 	if (ret < 0)
- 		return ret;
- 	drm_mode_crtc_set_gamma_size(&mtk_crtc->base, MTK_LUT_SIZE);
--	drm_crtc_enable_color_mgmt(&mtk_crtc->base, 0, false, MTK_LUT_SIZE);
-+	drm_crtc_enable_color_mgmt(&mtk_crtc->base, 0, has_ctm, gamma_lut_size);
- 	priv->num_pipes++;
- #ifdef CONFIG_MTK_CMDQ
- 	mtk_crtc->cmdq_client =
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index 9cc12af..2fd52ba 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -38,7 +38,15 @@
- #define CCORR_EN				BIT(0)
- #define DISP_CCORR_CFG				0x0020
- #define CCORR_RELAY_MODE			BIT(0)
-+#define CCORR_ENGINE_EN				BIT(1)
-+#define CCORR_GAMMA_OFF				BIT(2)
-+#define CCORR_WGAMUT_SRC_CLIP			BIT(3)
- #define DISP_CCORR_SIZE				0x0030
-+#define DISP_CCORR_COEF_0			0x0080
-+#define DISP_CCORR_COEF_1			0x0084
-+#define DISP_CCORR_COEF_2			0x0088
-+#define DISP_CCORR_COEF_3			0x008C
-+#define DISP_CCORR_COEF_4			0x0090
- 
- #define DISP_DITHER_EN				0x0000
- #define DITHER_EN				BIT(0)
-@@ -187,7 +195,7 @@ static void mtk_ccorr_config(struct mtk_ddp_comp *comp, unsigned int w,
- 			     unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
- {
- 	mtk_ddp_write(cmdq_pkt, h << 16 | w, comp, DISP_CCORR_SIZE);
--	mtk_ddp_write(cmdq_pkt, CCORR_RELAY_MODE, comp, DISP_CCORR_CFG);
-+	mtk_ddp_write(cmdq_pkt, CCORR_ENGINE_EN, comp, DISP_CCORR_CFG);
- }
- 
- static void mtk_ccorr_start(struct mtk_ddp_comp *comp)
-@@ -200,6 +208,56 @@ static void mtk_ccorr_stop(struct mtk_ddp_comp *comp)
- 	writel_relaxed(0x0, comp->regs + DISP_CCORR_EN);
- }
- 
-+/* Converts a DRM S31.32 value to the HW S0.11 format. */
-+static u16 mtk_ctm_s31_32_to_s0_11(u64 in)
-+{
-+	u16 r;
-+
-+	/* Sign bit. */
-+	r = in & BIT_ULL(63) ? BIT(11) : 0;
-+
-+	if ((in & GENMASK_ULL(62, 33)) > 0) {
-+		/* We have zero integer bits so we can only saturate here. */
-+		r |= GENMASK(10, 0);
-+	} else {
-+		/* Otherwise take the 9 most important fractional bits. */
-+		r |= (in >> 22) & GENMASK(10, 0);
-+	}
-+
-+	return r;
-+}
-+
-+static void mtk_ccorr_ctm_set(struct mtk_ddp_comp *comp,
-+			      struct drm_crtc_state *state
-+			      struct cmdq_pkt *cmdq_pkt)
-+{
-+	struct drm_property_blob *blob = state->ctm;
-+	struct drm_color_ctm *ctm;
-+	const u64 *input;
-+	uint16_t coeffs[9] = { 0 };
-+	int i;
-+
-+	if (!blob)
-+		return;
-+
-+	ctm = (struct drm_color_ctm *)blob->data;
-+	input = ctm->matrix;
-+
-+	for (i = 0; i < ARRAY_SIZE(coeffs); i++)
-+		coeffs[i] = mtk_ctm_s31_32_to_s0_11(input[i]);
-+
-+	mtk_ddp_write(cmdq_pkt, coeffs[0] << 16 | coeffs[1],
-+		      comp, DISP_CCORR_COEF_0);
-+	mtk_ddp_write(cmdq_pkt, coeffs[2] << 16 | coeffs[3],
-+		      comp, DISP_CCORR_COEF_1);
-+	mtk_ddp_write(cmdq_pkt, coeffs[4] << 16 | coeffs[5],
-+		      comp, DISP_CCORR_COEF_2);
-+	mtk_ddp_write(cmdq_pkt, coeffs[6] << 16 | coeffs[7],
-+		      comp, DISP_CCORR_COEF_3);
-+	mtk_ddp_write(cmdq_pkt, coeffs[8] << 16,
-+		      comp, DISP_CCORR_COEF_4);
-+}
-+
- static void mtk_dither_config(struct mtk_ddp_comp *comp, unsigned int w,
- 			      unsigned int h, unsigned int vrefresh,
- 			      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-@@ -269,6 +327,7 @@ static void mtk_gamma_set(struct mtk_ddp_comp *comp,
- 	.config = mtk_ccorr_config,
- 	.start = mtk_ccorr_start,
- 	.stop = mtk_ccorr_stop,
-+	.ctm_set = mtk_ccorr_ctm_set,
- };
- 
- static const struct mtk_ddp_comp_funcs ddp_dither = {
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index 5b0a3d4..4e3e5aa 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -95,6 +95,9 @@ struct mtk_ddp_comp_funcs {
- 			  struct cmdq_pkt *cmdq_pkt);
- 	void (*bgclr_in_on)(struct mtk_ddp_comp *comp);
- 	void (*bgclr_in_off)(struct mtk_ddp_comp *comp);
-+	void (*ctm_set)(struct mtk_ddp_comp *comp,
-+			struct drm_crtc_state *state
-+			struct cmdq_pkt *cmdq_pkt);
- };
- 
- struct mtk_ddp_comp {
-@@ -213,6 +216,14 @@ static inline void mtk_ddp_comp_bgclr_in_off(struct mtk_ddp_comp *comp)
- 		comp->funcs->bgclr_in_off(comp);
- }
- 
-+static inline void mtk_ddp_ctm_set(struct mtk_ddp_comp *comp,
-+				   struct drm_crtc_state *state
-+				   struct cmdq_pkt *cmdq_pkt)
-+{
-+	if (comp->funcs && comp->funcs->ctm_set)
-+		comp->funcs->ctm_set(comp, state);
-+}
-+
- int mtk_ddp_comp_get_id(struct device_node *node,
- 			enum mtk_ddp_comp_type comp_type);
- int mtk_ddp_comp_init(struct device *dev, struct device_node *comp_node,
--- 
-1.8.1.1.dirty
+    Fail to?
+
+> FIELD_GET inside an inline function, which ends up in a BUILD_BUG_ON.
+> Convert inline function to a macro.
+> 
+> Fixes commit bf92e7685100 ("mt76: mt7615: add support for per-chain
+> signal strength reporting")
+
+    Should be:
+
+Fixes: bf92e7685100 ("mt76: mt7615: add support for per-chain signal strength 
+reporting")
+
+    Do not ever break up the Fixes: line and don't insert empty lines between 
+it and other tags.
+
+> Reported in https://lkml.org/lkml/2019/9/21/146
+> 
+> Reported-by: kbuild test robot <lkp@intel.com>
+> Signed-off-by: Pablo Greco <pgreco@centosproject.org>
+[...]
+
+MBR, Sergei
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
