@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ABC24C432C0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2019 05:27:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 80F4AC43215
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2019 06:17:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8152B20881
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2019 05:27:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5597220833
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Dec 2019 06:17:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="COh8aAz8";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="eXjKCPqa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8152B20881
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pYotT1Nu";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ooyr+wvN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5597220833
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KM3+T+3oXsymBo0hQX45cGA2UVCN3E7gtGrLlNQyA+Y=; b=COh8aAz8aXuR8V
-	l7MYcN+IocG0HDbg7/WR6+QTt2po4L+8q6K237sQ2l/UMnKmmV+JW3tFG/2pqPHmZ1+rDtbYJBTLk
-	ZwO5RKxkXYMx271mjqHhwntair9nqxN08xexwAxW6+b2wGQ68lZZnCCONm6+NdGAcoNdtZt6GuTR/
-	21WngvKReeMnXgN7wsUnQFtHITjSGfE3KuLxhVEOcADMW2bXWDDk1zg5QIiSfCAMLkNEGZU177zIp
-	7hovEdl6whUwiYnY6HtzhEtdDTbnxyqUajrWV2orVEbKfmRYG9V12ZEha41cpa9C5RDlzMmBaVhBi
-	upS36SiNGt3qNUZEJQ/w==;
+	List-Owner; bh=9tGwYsiW0pQBMes/j2yhhuwMMpeJdMg5+yiV0dyjmIQ=; b=pYotT1NuLGpHdX
+	qfOyvaSkSWAiaxSe4uD4AZFL5TE2j4+goLKgOkNIr0+9mdoyCVulsClFwAK4h8YZrbSJ5j2NXr22R
+	LCCvDFjdXcMiwY2tnZlwqmer2q/cegaSnAiJjCK3zB/E58HVDG8mOIhWB0quwA1XqYXCQ+vYuwWXw
+	DL9ceWZZwZs0pmwdbcYU4yKRajiLcfJMhoT+NKT8Mqpck+prVTDa3I4GnLfX6eP0TZWKo8unMMeCq
+	4NPJ96Z+K2M1KwPRb8az4We0Uw/xxC8iMGuAf9LwjmCvO/qIzNkWWtyrEPN9MkZP9gNy9tp+bAA9A
+	2AF8ru1xxtbXLd9PT2fg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ibeFY-0004VB-3W; Mon, 02 Dec 2019 05:27:56 +0000
+	id 1ibf1Y-0007Ex-Tb; Mon, 02 Dec 2019 06:17:32 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ibeFS-0004Qs-Cu; Mon, 02 Dec 2019 05:27:52 +0000
-X-UUID: 7e76a57359354015a90fc1c4d5e4c45c-20191201
+ id 1ibf1R-00077d-Ec; Mon, 02 Dec 2019 06:17:26 +0000
+X-UUID: eeacded1eedf4a4dbefe19808dbcf50a-20191201
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=nHyM0wlDNnnCgrZ3XeFFZizqAnSwx9cK7hjQY20Jc9Q=; 
- b=eXjKCPqaIe1pirlqnlQVTpvo1S6AgRapAviK2OyFlcb1Bx5MBaPcfXsEVGH8FWRfWeo52oSSRXy5widrOcSuA7S/jpivUYHrmrREICaonpbHZ19mAAluQlnPR7uTW1tlrfo6sfK4m+UU4kQayEXAsa8qPC8ZH7xwu9ZSlXBGYp4=;
-X-UUID: 7e76a57359354015a90fc1c4d5e4c45c-20191201
+ bh=1hVDXQnEXhl488d24pN92x7M9sMocqCpXtujHufwujQ=; 
+ b=ooyr+wvN/CzaisrsNJylXVzjAIEBxbERIjGlZFXs3PQSGD6omi/ffFnUUpG5neWtC+6adlVo584rAScqbQPgjzXshoUDXIDiYJ0OJDDSwiScpJfiZnFr6IASIO6eV6E5pRw01Lh32bWmSkvM/lDgEuBy6h4XDlQwvGP/8b1u+/I=;
+X-UUID: eeacded1eedf4a4dbefe19808dbcf50a-20191201
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1204004876; Sun, 01 Dec 2019 21:27:30 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 1 Dec 2019 21:24:44 -0800
+ with ESMTP id 202567880; Sun, 01 Dec 2019 22:16:59 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sun, 1 Dec 2019 22:08:01 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 2 Dec 2019 13:24:13 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 2 Dec 2019 14:07:07 +0800
 Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Mon, 2 Dec 2019 13:24:14 +0800
-Message-ID: <1575264270.16063.0.camel@mtksdaap41>
-Subject: Re: [PATCH] drm/mediatek: Fix can't get component for external
- display plane.
+ Transport; Mon, 2 Dec 2019 14:07:03 +0800
+Message-ID: <1575266838.26513.0.camel@mtksdaap41>
+Subject: Re: [PATCH v1 2/6] drm/mediatek: use DRM core's atomic commit helper
 From: CK Hu <ck.hu@mediatek.com>
-To: Pi-Hsun Shih <pihsun@chromium.org>
-Date: Mon, 2 Dec 2019 13:24:30 +0800
-In-Reply-To: <20191127100419.130300-1-pihsun@chromium.org>
-References: <20191127100419.130300-1-pihsun@chromium.org>
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Date: Mon, 2 Dec 2019 14:07:18 +0800
+In-Reply-To: <20191128024238.9399-3-bibby.hsieh@mediatek.com>
+References: <20191128024238.9399-1-bibby.hsieh@mediatek.com>
+ <20191128024238.9399-3-bibby.hsieh@mediatek.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 55615A5A8EC94A2605C689A4D635FDA520FEA8224007C4A9FD05769092DFE3A42000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191201_212750_439460_5E79AFBC 
-X-CRM114-Status: GOOD (  15.99  )
+X-CRM114-CacheID: sfid-20191201_221725_501348_9E8C9476 
+X-CRM114-Status: GOOD (  14.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,35 +83,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sean Paul <seanpaul@chromium.org>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>,
- open list <linux-kernel@vger.kernel.org>,
- "open list:DRM DRIVERS FOR MEDIATEK" <dri-devel@lists.freedesktop.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>
+Cc: drinkcat@chromium.org, srv_heupstream@mediatek.com,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ tfiga@chromium.org, Thierry Reding <thierry.reding@gmail.com>,
+ linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Pi-Hsun:
+Hi, Bibby:
 
-
-On Wed, 2019-11-27 at 18:04 +0800, Pi-Hsun Shih wrote:
-> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> 
-> The original logic is ok for primary display, but will not find out
-> component for external display.
-> 
-> For example, plane->index is 6 for external display, but there are only
-> 2 layer nr in external display, and this condition will never happen:
-> if (plane->index < (count + mtk_ddp_comp_layer_nr(comp)))
-> 
-> Fix this by using the offset of the plane to mtk_crtc->planes as index,
-> instead of plane->index.
+On Thu, 2019-11-28 at 10:42 +0800, Bibby Hsieh wrote:
+> The DRM core atomic helper now supports asynchronous commits natively.
+> The custom drm implementation isn't needed anymore, remove it.
 
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 
@@ -120,34 +107,145 @@ Regards,
 CK
 
 > 
-> Fixes: d6b53f68356f ("drm/mediatek: Add helper to get component for a plane")
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
+> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 86 ++------------------------
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.h |  7 ---
+>  2 files changed, 5 insertions(+), 88 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> index f80a8ba75977..b34e7d70702a 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -215,11 +215,12 @@ struct mtk_ddp_comp *mtk_drm_ddp_comp_for_plane(struct drm_crtc *crtc,
->  	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
->  	struct mtk_ddp_comp *comp;
->  	int i, count = 0;
-> +	unsigned int local_index = plane - mtk_crtc->planes;
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> index 6588dc6dd5e3..16e5771d182e 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -36,89 +36,14 @@
+>  #define DRIVER_MAJOR 1
+>  #define DRIVER_MINOR 0
 >  
->  	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
->  		comp = mtk_crtc->ddp_comp[i];
-> -		if (plane->index < (count + mtk_ddp_comp_layer_nr(comp))) {
-> -			*local_layer = plane->index - count;
-> +		if (local_index < (count + mtk_ddp_comp_layer_nr(comp))) {
-> +			*local_layer = local_index - count;
->  			return comp;
->  		}
->  		count += mtk_ddp_comp_layer_nr(comp);
-> 
-> base-commit: 1875ff320f14afe21731a6e4c7b46dd33e45dfaa
+> -static void mtk_atomic_schedule(struct mtk_drm_private *private,
+> -				struct drm_atomic_state *state)
+> -{
+> -	private->commit.state = state;
+> -	schedule_work(&private->commit.work);
+> -}
+> -
+> -static void mtk_atomic_complete(struct mtk_drm_private *private,
+> -				struct drm_atomic_state *state)
+> -{
+> -	struct drm_device *drm = private->drm;
+> -
+> -	drm_atomic_helper_wait_for_fences(drm, state, false);
+> -
+> -	/*
+> -	 * Mediatek drm supports runtime PM, so plane registers cannot be
+> -	 * written when their crtc is disabled.
+> -	 *
+> -	 * The comment for drm_atomic_helper_commit states:
+> -	 *     For drivers supporting runtime PM the recommended sequence is
+> -	 *
+> -	 *     drm_atomic_helper_commit_modeset_disables(dev, state);
+> -	 *     drm_atomic_helper_commit_modeset_enables(dev, state);
+> -	 *     drm_atomic_helper_commit_planes(dev, state,
+> -	 *                                     DRM_PLANE_COMMIT_ACTIVE_ONLY);
+> -	 *
+> -	 * See the kerneldoc entries for these three functions for more details.
+> -	 */
+> -	drm_atomic_helper_commit_modeset_disables(drm, state);
+> -	drm_atomic_helper_commit_modeset_enables(drm, state);
+> -	drm_atomic_helper_commit_planes(drm, state,
+> -					DRM_PLANE_COMMIT_ACTIVE_ONLY);
+> -
+> -	drm_atomic_helper_wait_for_vblanks(drm, state);
+> -
+> -	drm_atomic_helper_cleanup_planes(drm, state);
+> -	drm_atomic_state_put(state);
+> -}
+> -
+> -static void mtk_atomic_work(struct work_struct *work)
+> -{
+> -	struct mtk_drm_private *private = container_of(work,
+> -			struct mtk_drm_private, commit.work);
+> -
+> -	mtk_atomic_complete(private, private->commit.state);
+> -}
+> -
+> -static int mtk_atomic_commit(struct drm_device *drm,
+> -			     struct drm_atomic_state *state,
+> -			     bool async)
+> -{
+> -	struct mtk_drm_private *private = drm->dev_private;
+> -	int ret;
+> -
+> -	ret = drm_atomic_helper_prepare_planes(drm, state);
+> -	if (ret)
+> -		return ret;
+> -
+> -	mutex_lock(&private->commit.lock);
+> -	flush_work(&private->commit.work);
+> -
+> -	ret = drm_atomic_helper_swap_state(state, true);
+> -	if (ret) {
+> -		mutex_unlock(&private->commit.lock);
+> -		drm_atomic_helper_cleanup_planes(drm, state);
+> -		return ret;
+> -	}
+> -
+> -	drm_atomic_state_get(state);
+> -	if (async)
+> -		mtk_atomic_schedule(private, state);
+> -	else
+> -		mtk_atomic_complete(private, state);
+> -
+> -	mutex_unlock(&private->commit.lock);
+> -
+> -	return 0;
+> -}
+> +static const struct drm_mode_config_helper_funcs mtk_drm_mode_config_helpers = {
+> +	.atomic_commit_tail = drm_atomic_helper_commit_tail_rpm,
+> +};
+>  
+>  static const struct drm_mode_config_funcs mtk_drm_mode_config_funcs = {
+>  	.fb_create = mtk_drm_mode_fb_create,
+>  	.atomic_check = drm_atomic_helper_check,
+> -	.atomic_commit = mtk_atomic_commit,
+> +	.atomic_commit = drm_atomic_helper_commit,
+>  };
+>  
+>  static const enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
+> @@ -265,6 +190,7 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+>  	drm->mode_config.max_width = 4096;
+>  	drm->mode_config.max_height = 4096;
+>  	drm->mode_config.funcs = &mtk_drm_mode_config_funcs;
+> +	drm->mode_config.helper_private = &mtk_drm_mode_config_helpers;
+>  
+>  	ret = component_bind_all(drm->dev, drm);
+>  	if (ret)
+> @@ -540,8 +466,6 @@ static int mtk_drm_probe(struct platform_device *pdev)
+>  	if (!private)
+>  		return -ENOMEM;
+>  
+> -	mutex_init(&private->commit.lock);
+> -	INIT_WORK(&private->commit.work, mtk_atomic_work);
+>  	private->data = of_device_get_match_data(dev);
+>  
+>  	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+> index b6a82728d563..9f4ce60174f6 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+> @@ -46,13 +46,6 @@ struct mtk_drm_private {
+>  	struct device_node *comp_node[DDP_COMPONENT_ID_MAX];
+>  	struct mtk_ddp_comp *ddp_comp[DDP_COMPONENT_ID_MAX];
+>  	const struct mtk_mmsys_driver_data *data;
+> -
+> -	struct {
+> -		struct drm_atomic_state *state;
+> -		struct work_struct work;
+> -		struct mutex lock;
+> -	} commit;
+> -
+>  	struct drm_atomic_state *suspend_state;
+>  
+>  	bool dma_parms_allocated;
 
 _______________________________________________
 Linux-mediatek mailing list
