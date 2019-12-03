@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5387EC432C0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 05:58:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4CC3FC432C0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 06:01:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 25D3920684
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 05:58:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1A7F420684
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 06:01:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BNMKG0EG";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ROpVu9I2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 25D3920684
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nHMjgBu6";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="eurCXLVg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1A7F420684
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JvOT/q4eaEl97Tk4hBFHMaO9eFiQW7zj56CgXH2j6tk=; b=BNMKG0EGl1b57A
-	LF+/s0xcO/gK8/Qvr9ONo1f2F6ZvsDQ3SLfhT6BlTm4ZG601m6+dA5GuHVJWeuRDWTxBfavJTsQxt
-	8U9PAO5rTrqK6BPC02ORkZep85ldCU+knVgNgLaJGOmZG5a5dwDdTWnvhhgRtYCi//PXNoUBhhzSS
-	hXmgJUhhf6yTwLZ0FuCaRLG8gonV6ovL4HjVkE/lYS9kciCjmjb1cGWLcUd71MYzmHtfcYA9e2+o7
-	b1oK/EhQmyb3sp0w5u2ORoaja+kLKAVdarteEFPNVlrkRoFDHc8iWEocjk0bPYKXV6/CAVLDB+9S0
-	fuqIKzLyMOHysOnNDj5Q==;
+	List-Owner; bh=5CB3gfJAyRIr+tJQNyPD1oxtiN3s098zAgB0mNzZOHo=; b=nHMjgBu6QA3Aqc
+	ROwOPFklzyzqlAIgG1PkIy8SNgRyNjpPap7Y21VBiptXOuU3Gcu5qfMFNOgVWxQo12pgmlV94kX5X
+	/nBEwaA9LkD4zOj7oXI3pA3LGbTFqyOGzhJoI1bUlSslMwu80sTeimqEyFs8ZOiwFiczhO0Y21bL1
+	Vmf3ts7bJkt6tupdl0eAgiAhwgKjTsbpM33kNvI6qqrC87diY6nVtw5oWVOq7ISWQOCnh4liBbT2I
+	v9yFsRmKx/NCpLDsP7TicuBZD4z1rOFh3hmuHuyKJbL7Gvk9FreP3fWVSOLl2+bF8cuQaAG3tI9tZ
+	qFslGG0lTzffIPFdUSXA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ic1Cq-0001cz-GQ; Tue, 03 Dec 2019 05:58:40 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ic1Fs-0003Ms-IR; Tue, 03 Dec 2019 06:01:48 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ic1Ci-0001WO-L8; Tue, 03 Dec 2019 05:58:34 +0000
-X-UUID: 750e5e3c9ee04dd39d783db2caf9dee5-20191202
+ id 1ic1Fk-0003EN-AW; Tue, 03 Dec 2019 06:01:42 +0000
+X-UUID: b015fd2b24884f4b8fef2d9e1f66fb36-20191202
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=6DCb7uPyQXGO0SVO2IKAV+0ziUuW5YDj4cnCAfRju/o=; 
- b=ROpVu9I2o7AZPVfuYhpFtl3ULo0inmoHsX8VIuQ7EcHGS7+73Zu4xzFaQNTGgAL8t9zv+eUMeo4g0dbnNHftvods37lvQx6Jt1HiJBXgR62Io0RgXDAZ5Zua81PTzSg+9mgnNBIROyqEPFwzHtedGvJXaOs0imrnsw8G1zTrr6s=;
-X-UUID: 750e5e3c9ee04dd39d783db2caf9dee5-20191202
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ bh=gQqcAbItPJZOgRGUKH/mNqtTCzALL4Ct7jtKjeo6Ew4=; 
+ b=eurCXLVgNGTKryG2SGv9PhGB4FUTd9MSny58gtDcVqNECiaPlkrVHgUkgu6v4jYaD1B5SpSRIVNeF2XoiC7iMFognjX3eC8Va/G/XWi66s1zifog8i0hCCM1ykVxSEXR0CnW4BEboAzRa+iQoXLgl2zdLavyGv35OXJpQFq3tZ8=;
+X-UUID: b015fd2b24884f4b8fef2d9e1f66fb36-20191202
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <bibby.hsieh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1764200700; Mon, 02 Dec 2019 21:58:27 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 2 Dec 2019 21:49:07 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 3 Dec 2019 13:47:58 +0800
-Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
+ with ESMTP id 1144230028; Mon, 02 Dec 2019 22:01:36 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 2 Dec 2019 21:59:00 -0800
+Received: from mtkcas09.mediatek.inc (172.21.101.178) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 3 Dec 2019 13:58:00 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 3 Dec 2019 13:48:03 +0800
-Message-ID: <1575352101.2457.8.camel@mtksdaap41>
-Subject: Re: [PATCH v1, 1/2] drm/mediatek: Fixup external display black
- screen issue
-From: CK Hu <ck.hu@mediatek.com>
-To: <yongqiang.niu@mediatek.com>
-Date: Tue, 3 Dec 2019 13:48:21 +0800
-In-Reply-To: <1574817475-22378-2-git-send-email-yongqiang.niu@mediatek.com>
-References: <1574817475-22378-1-git-send-email-yongqiang.niu@mediatek.com>
- <1574817475-22378-2-git-send-email-yongqiang.niu@mediatek.com>
+ Transport; Tue, 3 Dec 2019 13:58:53 +0800
+Message-ID: <1575352691.3410.2.camel@mtksdaap41>
+Subject: Re: [PATCH v1 6/6] drm/mediatek: apply CMDQ control flow
+From: Bibby Hsieh <bibby.hsieh@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>
+Date: Tue, 3 Dec 2019 13:58:11 +0800
+In-Reply-To: <1575337114.1155.4.camel@mtksdaap41>
+References: <20191128024238.9399-1-bibby.hsieh@mediatek.com>
+ <20191128024238.9399-7-bibby.hsieh@mediatek.com>
+ <1575337114.1155.4.camel@mtksdaap41>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: ECDA7C700F230F49CC04960EDF378BA1B224B8EBA5C76FADE77E7DC3A6A045032000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191202_215832_699529_D30EB466 
-X-CRM114-Status: GOOD (  17.60  )
+X-CRM114-CacheID: sfid-20191202_220140_375181_FCC365A2 
+X-CRM114-Status: GOOD (  23.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,114 +84,278 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+Cc: drinkcat@chromium.org, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel.vetter@ffwll.ch>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, tfiga@chromium.org,
+ Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Yongqiang:
-
-On Wed, 2019-11-27 at 09:17 +0800, yongqiang.niu@mediatek.com wrote:
-> From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+On Tue, 2019-12-03 at 09:38 +0800, CK Hu wrote:
+> Hi, Bibby:
 > 
-> Problem:
-> overlay hangup when external display hotplut test
+> On Thu, 2019-11-28 at 10:42 +0800, Bibby Hsieh wrote:
+> > Unlike other SoCs, MT8183 does not have "shadow"
+> > registers for performaing an atomic video mode
+> > set or page flip at vblank/vsync.
+> > 
+> > The CMDQ (Commend Queue) in MT8183 is used to help
+> > update all relevant display controller registers
+> > with critical time limation.
+> > 
+> > Signed-off-by: YT Shen <yt.shen@mediatek.com>
+> > Signed-off-by: CK Hu <ck.hu@mediatek.com>
+> > Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
+> > Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+> > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 86 ++++++++++++++++++++-
+> >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 31 ++++++++
+> >  2 files changed, 113 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > index fcf4e755e0bd..1b4e537ac3c1 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > @@ -12,6 +12,8 @@
+> >  #include <drm/drm_plane_helper.h>
+> >  #include <drm/drm_probe_helper.h>
+> >  #include <drm/drm_vblank.h>
+> > +#include <linux/of_address.h>
+> > +#include <linux/soc/mediatek/mtk-cmdq.h>
+> >  
+> >  #include "mtk_drm_drv.h"
+> >  #include "mtk_drm_crtc.h"
+> > @@ -42,6 +44,9 @@ struct mtk_drm_crtc {
+> >  	unsigned int			layer_nr;
+> >  	bool				pending_planes;
+> >  
+> > +	struct cmdq_client		*cmdq_client;
+> > +	u32				cmdq_event;
+> > +
+> >  	void __iomem			*config_regs;
+> >  	const struct mtk_mmsys_reg_data *mmsys_reg_data;
+> >  	struct mtk_disp_mutex		*mutex;
+> > @@ -56,6 +61,11 @@ struct mtk_crtc_state {
+> >  	unsigned int			pending_width;
+> >  	unsigned int			pending_height;
+> >  	unsigned int			pending_vrefresh;
+> > +	struct cmdq_pkt			*cmdq_handle;
+> > +};
+> > +
+> > +struct mtk_cmdq_cb_data {
+> > +	struct cmdq_pkt			*cmdq_handle;
+> >  };
+> >  
+> >  static inline struct mtk_drm_crtc *to_mtk_crtc(struct drm_crtc *c)
+> > @@ -229,6 +239,46 @@ struct mtk_ddp_comp *mtk_drm_ddp_comp_for_plane(struct drm_crtc *crtc,
+> >  	return NULL;
+> >  }
+> >  
+> > +#ifdef CONFIG_MTK_CMDQ
+> > +static void ddp_cmdq_cb(struct cmdq_cb_data data)
+> > +{
+> > +	struct mtk_cmdq_cb_data *cb_data = data.data;
+> > +
+> > +	cmdq_pkt_destroy(cb_data->cmdq_handle);
+> > +	kfree(cb_data);
+> > +}
+> > +
+> > +static void mtk_cmdq_acquire(struct drm_crtc *crtc)
+> > +{
+> > +	struct mtk_crtc_state *mtk_crtc_state =
+> > +			to_mtk_crtc_state(crtc->state);
+> > +	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+> > +
+> > +	mtk_crtc_state->cmdq_handle =
+> > +			cmdq_pkt_create(mtk_crtc->cmdq_client,
+> > +					PAGE_SIZE);
 > 
-> Fix:
-> disable overlay when crtc disable
-
-I think you do two things in this patch. The first is to config layer
-before component start, and the second is disable layer when crtc
-disable. So separate to two patches.
-
+> I would like to remove atomic feature in cmdq driver and drm driver
+> could reuse the pkt. Please refer to [1] for detail.
 > 
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 39 +++++++++++++++++++++------------
->  1 file changed, 25 insertions(+), 14 deletions(-)
+> [1]
+> http://lists.infradead.org/pipermail/linux-mediatek/2019-January/016866.html
+Hi, CK,
+
+Thanks for all the comments.
+I will change them in my next version.
+
+About the atomic feature removing, I think we already made note at here.
+Let's fix them after the atomic feature removed really.
+
+Bibby
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> index 4fb346c..7eca02f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -369,6 +369,20 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
->  	mtk_disp_mutex_add_comp(mtk_crtc->mutex, mtk_crtc->ddp_comp[i]->id);
->  	mtk_disp_mutex_enable(mtk_crtc->mutex);
->  
-> +	/* Initially configure all planes */
-> +	for (i = 0; i < mtk_crtc->layer_nr; i++) {
-> +		struct drm_plane *plane = &mtk_crtc->planes[i];
-> +		struct mtk_plane_state *plane_state;
-> +		struct mtk_ddp_comp *comp;
-> +		unsigned int local_layer;
-> +
-> +		plane_state = to_mtk_plane_state(plane->state);
-> +		comp = mtk_drm_ddp_comp_for_plane(crtc, plane, &local_layer);
-> +		if (comp)
-> +			mtk_ddp_comp_layer_config(comp, local_layer,
-> +						  plane_state, NULL);
-> +	}
-> +
->  	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
->  		struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[i];
->  		enum mtk_ddp_comp_id prev;
-> @@ -385,20 +399,6 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
->  		mtk_ddp_comp_start(comp);
->  	}
->  
-> -	/* Initially configure all planes */
-> -	for (i = 0; i < mtk_crtc->layer_nr; i++) {
-> -		struct drm_plane *plane = &mtk_crtc->planes[i];
-> -		struct mtk_plane_state *plane_state;
-> -		struct mtk_ddp_comp *comp;
-> -		unsigned int local_layer;
-> -
-> -		plane_state = to_mtk_plane_state(plane->state);
-> -		comp = mtk_drm_ddp_comp_for_plane(crtc, plane, &local_layer);
-> -		if (comp)
-> -			mtk_ddp_comp_layer_config(comp, local_layer,
-> -						  plane_state, NULL);
-> -	}
-> -
->  	return 0;
->  
->  err_mutex_unprepare:
-> @@ -607,10 +607,21 @@ static void mtk_drm_crtc_atomic_disable(struct drm_crtc *crtc,
->  	for (i = 0; i < mtk_crtc->layer_nr; i++) {
->  		struct drm_plane *plane = &mtk_crtc->planes[i];
->  		struct mtk_plane_state *plane_state;
-> +		struct mtk_ddp_comp *comp = mtk_crtc->ddp_comp[0];
-> +		unsigned int comp_layer_nr = mtk_ddp_comp_layer_nr(comp);
-> +		unsigned int local_layer;
->  
->  		plane_state = to_mtk_plane_state(plane->state);
->  		plane_state->pending.enable = false;
->  		plane_state->pending.config = true;
-> +
-> +		if (i >= comp_layer_nr) {
-> +			comp = mtk_crtc->ddp_comp[1];
-> +			local_layer = i - comp_layer_nr;
-> +		} else
-> +			local_layer = i;
-> +		mtk_ddp_comp_layer_config(comp, local_layer,
-> +					  plane_state, NULL);
-
-I'm confused with this part. The design of this loop is to set
-plane_state->pending.enable = false and wait for irq handler to write
-register. Why do you directly write register?
-
-Regards,
-CK
-
->  	}
->  	mtk_crtc->pending_planes = true;
->  
+> > +	cmdq_pkt_clear_event(mtk_crtc_state->cmdq_handle,
+> > +			     mtk_crtc->cmdq_event);
+> > +	cmdq_pkt_wfe(mtk_crtc_state->cmdq_handle, mtk_crtc->cmdq_event);
+> > +}
+> > +
+> > +static void mtk_cmdq_release(struct drm_crtc *crtc)
+> > +{
+> > +	struct mtk_crtc_state *mtk_crtc_state =
+> > +			to_mtk_crtc_state(crtc->state);
+> > +	struct mtk_cmdq_cb_data *cb_data;
+> > +
+> > +	cb_data = kmalloc(sizeof(*cb_data), GFP_KERNEL);
+> > +	if (!cb_data) {
+> > +		DRM_DEV_ERROR(crtc->dev->dev, "Failed to alloc cb_data\n");
+> > +		return;
+> > +	}
+> > +
+> > +	cb_data->cmdq_handle = mtk_crtc_state->cmdq_handle;
+> > +	cmdq_pkt_flush_async(mtk_crtc_state->cmdq_handle,
+> > +			     ddp_cmdq_cb, cb_data);
+> > +}
+> > +#endif
+> >  static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
+> >  {
+> >  	struct drm_crtc *crtc = &mtk_crtc->base;
+> > @@ -383,7 +433,8 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+> >  	if (state->pending_config) {
+> >  		mtk_ddp_comp_config(comp, state->pending_width,
+> >  				    state->pending_height,
+> > -				    state->pending_vrefresh, 0, NULL);
+> > +				    state->pending_vrefresh, 0,
+> > +				    state->cmdq_handle);
+> >  
+> >  		state->pending_config = false;
+> >  	}
+> > @@ -403,7 +454,8 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+> >  
+> >  			if (comp)
+> >  				mtk_ddp_comp_layer_config(comp, local_layer,
+> > -							  plane_state, NULL);
+> > +							  plane_state,
+> > +							  state->cmdq_handle);
+> >  			plane_state->pending.config = false;
+> >  		}
+> >  		mtk_crtc->pending_planes = false;
+> > @@ -454,6 +506,13 @@ void mtk_drm_crtc_cursor_update(struct drm_crtc *crtc, struct drm_plane *plane,
+> >  		mtk_crtc_ddp_config(crtc);
+> >  		mtk_disp_mutex_release(mtk_crtc->mutex);
+> >  	}
+> > +#ifdef CONFIG_MTK_CMDQ
+> > +	if (mtk_crtc->cmdq_client) {
+> > +		mtk_cmdq_acquire(crtc);
+> > +		mtk_crtc_ddp_config(crtc);
+> > +		mtk_cmdq_release(crtc);
+> > +	}
+> > +#endif
+> >  	mutex_unlock(&priv->hw_lock);
+> >  }
+> >  
+> > @@ -570,6 +629,13 @@ static void mtk_drm_crtc_atomic_flush(struct drm_crtc *crtc,
+> >  		mtk_crtc_ddp_config(crtc);
+> >  		mtk_disp_mutex_release(mtk_crtc->mutex);
+> >  	}
+> > +#ifdef CONFIG_MTK_CMDQ
+> > +	if (mtk_crtc->cmdq_client) {
+> > +		mtk_cmdq_acquire(crtc);
+> > +		mtk_crtc_ddp_config(crtc);
+> > +		mtk_cmdq_release(crtc);
+> > +	}
+> > +#endif
+> 
+> This part is almost the same as the one in mtk_drm_crtc_cursor_update(),
+> try to merge them.
+> 
+> >  }
+> >  
+> >  static const struct drm_crtc_funcs mtk_crtc_funcs = {
+> > @@ -619,7 +685,7 @@ void mtk_crtc_ddp_irq(struct drm_crtc *crtc, struct mtk_ddp_comp *comp)
+> >  	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+> >  	struct mtk_drm_private *priv = crtc->dev->dev_private;
+> >  
+> > -	if (!priv->data->shadow_register)
+> > +	if (!priv->data->shadow_register && !mtk_crtc->cmdq_client)
+> >  		mtk_crtc_ddp_config(crtc);
+> >  
+> >  	mtk_drm_finish_page_flip(mtk_crtc);
+> > @@ -761,6 +827,18 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+> >  	drm_mode_crtc_set_gamma_size(&mtk_crtc->base, MTK_LUT_SIZE);
+> >  	drm_crtc_enable_color_mgmt(&mtk_crtc->base, 0, false, MTK_LUT_SIZE);
+> >  	priv->num_pipes++;
+> > -
+> > +#ifdef CONFIG_MTK_CMDQ
+> > +	mtk_crtc->cmdq_client =
+> > +			cmdq_mbox_create(dev, drm_crtc_index(&mtk_crtc->base),
+> > +					 2000);
+> > +	of_property_read_u32_index(dev->of_node, "mediatek,gce-events",
+> > +				   drm_crtc_index(&mtk_crtc->base),
+> > +				   &mtk_crtc->cmdq_event);
+> > +	if (IS_ERR(mtk_crtc->cmdq_client)) {
+> > +		dev_dbg(dev, "mtk_crtc %d failed to create mailbox client, writing register by CPU now\n",
+> > +			drm_crtc_index(&mtk_crtc->base));
+> > +		mtk_crtc->cmdq_client = NULL;
+> > +	}
+> > +#endif
+> >  	return 0;
+> >  }
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> > index 6d0f349ddf82..9cc12af2bc06 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+> > @@ -370,6 +370,9 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
+> >  		      const struct mtk_ddp_comp_funcs *funcs)
+> >  {
+> >  	struct platform_device *comp_pdev;
+> > +	struct resource res;
+> > +	struct cmdq_client_reg *cmdq_reg;
+> > +	int ret = 0;
+> >  
+> >  	if (comp_id < 0 || comp_id >= DDP_COMPONENT_ID_MAX)
+> >  		return -EINVAL;
+> > @@ -404,6 +407,34 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
+> >  	}
+> >  	comp->dev = &comp_pdev->dev;
+> >  
+> > +#ifdef CONFIG_MTK_CMDQ
+> > +	if (of_address_to_resource(node, 0, &res) != 0) {
+> > +		dev_err(dev, "Missing reg in %s node\n",
+> > +			node->full_name);
+> > +		return -EINVAL;
+> > +	}
+> > +	comp->regs_pa = res.start;
+> > +
+> > +	comp_pdev = of_find_device_by_node(node);
+> > +	if (!comp_pdev) {
+> > +		dev_warn(dev, "Waiting for component device %s\n",
+> > +			 node->full_name);
+> > +		return -EPROBE_DEFER;
+> > +	}
+> > +
+> > +	cmdq_reg = kzalloc(sizeof(*cmdq_reg), GFP_KERNEL);
+> > +	if (!cmdq_reg)
+> > +		return -EINVAL;
+> > +
+> > +	ret = cmdq_dev_get_client_reg(&comp_pdev->dev, cmdq_reg, 0);
+> > +	if (ret != 0)
+> > +		dev_dbg(&comp_pdev->dev,
+> > +			"get mediatek,gce-client-reg fail!\n");
+> > +	else
+> > +		comp->subsys = cmdq_reg->subsys;
+> > +
+> > +	kfree(cmdq_reg);
+> > +#endif
+> 
+> I would like to move this part to the patch "drm/mediatek: support CMDQ
+> interface in ddp component".
+> 
+> Regards,
+> CK
+> 
+> >  	return 0;
+> >  }
+> >  
+> 
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
