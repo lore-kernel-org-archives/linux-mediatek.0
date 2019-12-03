@@ -2,150 +2,95 @@ Return-Path: <SRS0=/i6S=ZZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5BD4C432C3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 04:16:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CBD99C432C0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 05:05:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8DD2B206E0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 04:16:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A0C5C206E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 05:05:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="COv77F/A";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="i/H1/eK+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8DD2B206E0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fst+mvb8";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="P72HkHNE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A0C5C206E0
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=67QKSEEigwmT1VjtBp5c2EBy6/O4R0VJ1y/CAM5Fm8k=; b=COv77F/At2TIk5
-	1/tVj+OwvCdSWp+JejMfGQKAtuIY/2s21bhBdc/SWorn4q6EuxwkzYIvaISMHozAk26TlV70nKSTz
-	cjLmMTui8IdsR67xDbsmprS63FIT/ZWF7cRC/Lg9miW20mqy4hNkEHb0aY15PuSjfu423TRdAhQse
-	MkfQ4MeSNiPI05BxyGM3rM1ZnKTkNYhLuZU+xKqOcyRBYQdeVtZp16/8SZ1ferW4XC8ph+y1ES2N6
-	xOEzEg5rNgT/jzaLTKEfUfVPz55Fv0VwsMi7CY1uGVOu3i2Kg8Yf+VnyDEt8zqXCFWrQaETyRsHif
-	RFvcwBHqEpP2sbmLmDhA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=yaHgmy0woqNLIC2Hw8ZPKrz77kY0Al08SSWhbmSJz9Y=; b=fst+mvb824VdqYUz5ISBdjUEm
+	wx7392Hv/W970MUGKX/Dz2GP51euMeTVqPOrPl/x9lVH4U2O7QeFNamY56oHuaP+IRqUlmIpumASe
+	+y1M1tZin/oUETsyT43vUP44flskMYTEnGqynTRbrp6GZN66+8WWugEDcJF4dGYxJ0HGMu0vYAe6m
+	Zg0Z47ShOKhSwjd+z10+hZqFfN6IuJscGvh+J0TlUUwuliGEp8hX98Ad+929SIXDjJgDTpndbMdUm
+	zHBrea7pnCxJNLh4cG6UL3ZeUbQDpkJK9WK9FR9+iK8uPemJYTwMzDIFaawvNAwAv3v2nb7uGRyHO
+	KqRBpdbrw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ibzcK-0004Tc-4w; Tue, 03 Dec 2019 04:16:52 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1ic0Ni-00058S-23; Tue, 03 Dec 2019 05:05:50 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ibzc9-0004Lt-7E; Tue, 03 Dec 2019 04:16:43 +0000
-Received: by mail-pf1-x444.google.com with SMTP id x185so1164223pfc.5;
- Mon, 02 Dec 2019 20:16:39 -0800 (PST)
+ id 1ic0Na-000517-Dv; Tue, 03 Dec 2019 05:05:44 +0000
+Received: by mail-pg1-x542.google.com with SMTP id k1so1078473pgg.12;
+ Mon, 02 Dec 2019 21:05:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=fCbtMYLx1KYdikRtxKgukEL6DtHlmvKxFnXs8JP3/i0=;
- b=i/H1/eK+i6gKjCg2kehVmkTBMYbr1gZxc3C3cuZ4M+VFpoDZ4y0hnSUUWuC1ZhOQpp
- 11JcZ/qwVm3nhnyaWccHx+qieAvuwpgMawlnN6vzvpFcmU2MYgzDdOYguN/ZDX429PzU
- 9QM3tfyoWN/baDl8RjAThE7ER9paI3kFzYgL2TGO4fYNXvyqiOeGFLCn/y87/1tOPkxJ
- 9nQTv8GL0ulovTb+lWaiAcvXpSTkIJ0V8lJY0dZ6EDf62Gbkjdcn9mdC1dt53Ig/0qW/
- GshV1O+HHGyuX0e4T3SC740qLF0FZHDL8ZPuvINW5v9GTFNbgDqrOwag2WQgu5geScQP
- 1kKA==
+ bh=eyhijRr/YQI/e+nakiYV1XQUenXP3bUm+J4bO1NawYU=;
+ b=P72HkHNEdTVxL582N76mLhFt/aJgUyPBDfr8x48oFP/rsd60PaSZ8xPVUthbIexaYw
+ QkzBOCoaHvWZ2etMK9YFs9IBqHECv4Q/nmZ8TbvBMJBM1Aog4STvGOCmrk0bOQ9JhrpP
+ wFiH0gaIEFuEPb2jbaNv3ZqWxkQxw8Aa1c1YoUAWLt6fq5+REO1l0xdvDRoSo5g+JYVm
+ lYFA6F0tk2eq5YFuwNFN3HqGBSELuPKxrxjMnoqPo5kTl0moJ3A1X0K5SIpZHCcjzl1t
+ ebIK9zXhKVT9vQ+moUbJQdZAIurf6MqdVb8Td6Ie8/TXrUE5RCbG/RmvvNgZ5W/uv2tM
+ heoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=fCbtMYLx1KYdikRtxKgukEL6DtHlmvKxFnXs8JP3/i0=;
- b=kxhAALmweZ4V/RMQ+0VumjBHJNJ2KYmEopK5mU6YbU+ugT3x/7J0wHKP9f5YjAeg9G
- mQCfbRPLrawi1Z5C9BcUGIdLJXxoULwLQpLshlIqbtsG/juF3+DBIJgs367lN9LWoOjQ
- CNOTXev18F15/bUYYL7hoiBtzWk6boNoxFSi8+bqEY9iVKZ81H7pOCplVvsUxVTg1aBJ
- DDlzZPMS3xBWbfIkwbZ17/AprbCeIUbvtza1Y7xLvreEK9qR2l51Sk1yLxlEw5+FiYaN
- 6HdtXK5qfJRBqmjoJCEyRAPIyE1vhEHF/QRxAMDh5lIpmkg7GbgSz/qv7b7N+mtlEIX+
- jiwQ==
-X-Gm-Message-State: APjAAAX1aV9zFCuuj6y7+MS5siUIt4fR1JhXZ7yn7vxIqL0NaTgrt6Ee
- xIl6BlYhxftlcvCJZs0yf3rzFvuW
-X-Google-Smtp-Source: APXvYqxLdZYWn6OJqGKjg2TESmazJ38Ycli+maIFavCbUEaRofyqYccYuh9qVb+CWwjVmMApZ559Qw==
-X-Received: by 2002:a63:5a64:: with SMTP id k36mr3258280pgm.323.1575346598514; 
- Mon, 02 Dec 2019 20:16:38 -0800 (PST)
-Received: from [192.168.1.3] (ip68-111-84-250.oc.oc.cox.net. [68.111.84.250])
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=eyhijRr/YQI/e+nakiYV1XQUenXP3bUm+J4bO1NawYU=;
+ b=kkP+VWInCAPz64ozTlJuUPPNseu6IuZZ+984Qc+yk+Y2jVDt5TmralHmNm6HxzZ0Pg
+ Rdb6Hi5pd9dDA25crxVTLkOwNFFh5uBT5WcrwV8bb1wKl+evY22s38T3c6/CySGO643u
+ 2mE++UKmVNkvfIWODrcjLJMzQzCO32xoKXQMNuluZtPYAgSTg+GAJYfY7iVUkopfHZBM
+ Uac5xTtRRIPfJV0K+4trXxPvRGz3d/ZxpRzoz0baYf/b5IxooyPhx6VgmVoZ4mDRZnLJ
+ OdTHP6wJU/lSOop362vpgRxQPelW28dO4z0c00zuIbgDGxuPwtDuInhT+sdy1McWG6jU
+ hXMA==
+X-Gm-Message-State: APjAAAUftSdcfqoNberpaoatuT+QX16/ECrPoFdv6UNKmW+nt/F69Gmi
+ Ivnl5RJeaUOkCL2Kfwx3Xwo=
+X-Google-Smtp-Source: APXvYqyfI2axwjuybif7oNpVQ4sCIgYVs/mOpWhuPqRWpM/uK3ySjzI3swZw55nmmNBtgQmn63CC7g==
+X-Received: by 2002:aa7:9510:: with SMTP id b16mr2812758pfp.65.1575349540517; 
+ Mon, 02 Dec 2019 21:05:40 -0800 (PST)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- i14sm1159641pfd.4.2019.12.02.20.16.36
+ 67sm1393499pfw.82.2019.12.02.21.05.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 02 Dec 2019 20:16:37 -0800 (PST)
-Subject: Re: [PATCH v5 3/3] hwrng: add mtk-sec-rng driver
-To: Marc Zyngier <maz@kernel.org>, Ard Biesheuvel
- <ard.biesheuvel@linaro.org>, pawel.moll@arm.com
-References: <1574864578-467-1-git-send-email-neal.liu@mediatek.com>
- <1574864578-467-4-git-send-email-neal.liu@mediatek.com>
- <CADnJP=uhD=J2NrpSwiX8oCTd-u_q05=HhsAV-ErCsXNDwVS0rA@mail.gmail.com>
- <1575027046.24848.4.camel@mtkswgap22>
- <CAKv+Gu_um7eRYXbieW7ogDX5mmZaxP7JQBJM9CajK+6CsO5RgQ@mail.gmail.com>
- <20191202191146.79e6368c@why>
-From: Florian Fainelli <f.fainelli@gmail.com>
-Autocrypt: addr=f.fainelli@gmail.com; keydata=
- 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
- a9BQwACgnzGuH1BVeT2J0Ra+ZYgkx7DaPR0=
-Message-ID: <299029b0-0689-c2c4-4656-36ced31ed513@gmail.com>
-Date: Mon, 2 Dec 2019 20:16:37 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ Mon, 02 Dec 2019 21:05:38 -0800 (PST)
+Subject: Re: [PATCH v5 2/2] watchdog: mtk_wdt: mt8183: Add reset controller
+To: Yong Liang <yong.liang@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+References: <20191125061627.GA7313@roeck-us.net>
+ <e138b69efad563822da1db8e160d43458c21eae1.camel@pengutronix.de>
+ <1575016588.7013.8.camel@mhfsdcap03>
+ <88994e7445df8b2d98f3548e2043eb29bf5fa95f.camel@pengutronix.de>
+ <1575342124.7013.13.camel@mhfsdcap03>
+From: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <f9628c90-4c9b-ff4b-b3dd-887dbc987d46@roeck-us.net>
+Date: Mon, 2 Dec 2019 21:05:36 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.1
 MIME-Version: 1.0
-In-Reply-To: <20191202191146.79e6368c@why>
+In-Reply-To: <1575342124.7013.13.camel@mhfsdcap03>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191202_201641_289097_9E61E152 
-X-CRM114-Status: GOOD (  15.85  )
+X-CRM114-CacheID: sfid-20191202_210542_495047_D144B39E 
+X-CRM114-Status: GOOD (  21.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -157,79 +102,173 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>,
- Herbert Xu <herbert@gondor.apana.org.au>,
- wsd_upstream <wsd_upstream@mediatek.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Sean Wang <sean.wang@kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?Q3J5c3RhbCBHdW8gKOmDreaZtik=?= <Crystal.Guo@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>,
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
+ "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+ =?UTF-8?B?SmlheGluIFl1ICjkv57lrrbpkasp?= <Jiaxin.Yu@mediatek.com>,
+ "perex@perex.cz" <perex@perex.cz>, "tzungbi@google.com" <tzungbi@google.com>,
+ "broonie@kernel.org" <broonie@kernel.org>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-crypto@vger.kernel.org" <linux-crypto@vger.kernel.org>,
- Matt Mackall <mpm@selenic.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Neal Liu <neal.liu@mediatek.com>, Will Deacon <will@kernel.org>,
- Lars Persson <lists@bofh.nu>,
+ =?UTF-8?B?RWFzb24gWWVuICjpoY/lu7fku7sp?= <Eason.Yen@mediatek.com>,
+ =?UTF-8?B?WWluZ2pvZSBDaGVuICjpmbPoi7HmtLIp?= <Yingjoe.Chen@mediatek.com>,
+ "wim@linux-watchdog.org" <wim@linux-watchdog.org>,
  "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 12/2/2019 11:11 AM, Marc Zyngier wrote:
-> On Mon, 2 Dec 2019 16:12:09 +0000
-> Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
-> 
->> (adding some more arm64 folks)
->>
->> On Fri, 29 Nov 2019 at 11:30, Neal Liu <neal.liu@mediatek.com> wrote:
->>>
->>> On Fri, 2019-11-29 at 18:02 +0800, Lars Persson wrote:  
->>>> Hi Neal,
->>>>
->>>> On Wed, Nov 27, 2019 at 3:23 PM Neal Liu <neal.liu@mediatek.com> wrote:  
+On 12/2/19 7:02 PM, Yong Liang wrote:
+> On Mon, 2019-12-02 at 21:02 +0800, Philipp Zabel wrote:
+>> On Fri, 2019-11-29 at 16:36 +0800, Yong Liang wrote:
+>>> On Mon, 2019-11-25 at 17:51 +0800, Philipp Zabel wrote:
+>>>> On Sun, 2019-11-24 at 22:16 -0800, Guenter Roeck wrote:
+>>>>> On Mon, Nov 25, 2019 at 11:03:50AM +0800, Jiaxin Yu wrote:
+>>>>>> From: "yong.liang" <yong.liang@mediatek.com>
+>>>>>>
+>>>>>> Add reset controller API in watchdog driver.
+>>>>>> Besides watchdog, MTK toprgu module also provide sub-system (eg, audio,
+>>>>>> camera, codec and connectivity) software reset functionality.
+>>>>>>
+>>>>>> Signed-off-by: yong.liang <yong.liang@mediatek.com>
+>>>>>> Signed-off-by: jiaxin.yu <jiaxin.yu@mediatek.com>
+>>>>>> Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+>>>>>> ---
+>>>>>>   drivers/watchdog/Kconfig   |   1 +
+>>>>>>   drivers/watchdog/mtk_wdt.c | 111 ++++++++++++++++++++++++++++++++++++-
+>>>>>>   2 files changed, 111 insertions(+), 1 deletion(-)
+>>>>>>
+>>>>>> diff --git a/drivers/watchdog/Kconfig b/drivers/watchdog/Kconfig
+>>>>>> index 2e07caab9db2..629249fe5305 100644
+>>>>>> --- a/drivers/watchdog/Kconfig
+>>>>>> +++ b/drivers/watchdog/Kconfig
+>>>>>> @@ -717,6 +717,7 @@ config MEDIATEK_WATCHDOG
+>>>>>>   	tristate "Mediatek SoCs watchdog support"
+>>>>>>   	depends on ARCH_MEDIATEK || COMPILE_TEST
+>>>>>>   	select WATCHDOG_CORE
+>>>>>> +	select RESET_CONTROLLER
+>>>>>>   	help
+>>>>>>   	  Say Y here to include support for the watchdog timer
+>>>>>>   	  in Mediatek SoCs.
+>>>>>> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+>>>>>> index 9c3d0033260d..d29484c7940a 100644
+>>>>>> --- a/drivers/watchdog/mtk_wdt.c
+>>>>>> +++ b/drivers/watchdog/mtk_wdt.c
+>>>>>> @@ -9,6 +9,9 @@
+>>>>>>    * Based on sunxi_wdt.c
+>>>>>>    */
+>>>>>>   
+>>>>>> +#include <dt-bindings/reset-controller/mt2712-resets.h>
+>>>>>> +#include <dt-bindings/reset-controller/mt8183-resets.h>
+>>>>>> +#include <linux/delay.h>
+>>>>>>   #include <linux/err.h>
+>>>>>>   #include <linux/init.h>
+>>>>>>   #include <linux/io.h>
+>>>>>> @@ -16,10 +19,12 @@
+>>>>>>   #include <linux/module.h>
+>>>>>>   #include <linux/moduleparam.h>
+>>>>>>   #include <linux/of.h>
+>>>>>> +#include <linux/of_device.h>
+>>>>>>   #include <linux/platform_device.h>
+>>>>>> +#include <linux/reset-controller.h>
+>>>>>> +#include <linux/slab.h>
+>>>>>>   #include <linux/types.h>
+>>>>>>   #include <linux/watchdog.h>
+>>>>>> -#include <linux/delay.h>
+>>>>>>   
+>>>>>>   #define WDT_MAX_TIMEOUT		31
+>>>>>>   #define WDT_MIN_TIMEOUT		1
+>>>>>> @@ -44,6 +49,9 @@
+>>>>>>   #define WDT_SWRST		0x14
+>>>>>>   #define WDT_SWRST_KEY		0x1209
+>>>>>>   
+>>>>>> +#define WDT_SWSYSRST		0x18U
+>>>>>> +#define WDT_SWSYS_RST_KEY	0x88000000
+>>>>>> +
+>>>>>>   #define DRV_NAME		"mtk-wdt"
+>>>>>>   #define DRV_VERSION		"1.0"
+>>>>>>   
+>>>>>> @@ -53,8 +61,99 @@ static unsigned int timeout;
+>>>>>>   struct mtk_wdt_dev {
+>>>>>>   	struct watchdog_device wdt_dev;
+>>>>>>   	void __iomem *wdt_base;
+>>>>>> +	spinlock_t lock; /* protects WDT_SWSYSRST reg */
+>>>>>> +	struct reset_controller_dev rcdev;
+>>>>>> +};
+>>>>>> +
+>>>>>> +struct mtk_wdt_data {
+>>>>>> +	int sw_rst_num;
+>>>>>>   };
+>>>>>>   
+>>>>>> +static const struct mtk_wdt_data mt2712_data = {
+>>>>>> +	.sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
+>>>>>> +};
+>>>>>> +
+>>>>>> +static const struct mtk_wdt_data mt8183_data = {
+>>>>>> +	.sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
+>>>>>> +};
 >>>>>
->>>>> For MediaTek SoCs on ARMv8 with TrustZone enabled, peripherals like
->>>>> entropy sources is not accessible from normal world (linux) and
->>>>> rather accessible from secure world (ATF/TEE) only. This driver aims
->>>>> to provide a generic interface to ATF rng service.
->>>>>  
->>>>
->>>> I am working on several SoCs that also will need this kind of driver
->>>> to get entropy from Arm trusted firmware.
->>>> If you intend to make this a generic interface, please clean up the
->>>> references to MediaTek and give it a more generic name. For example
->>>> "Arm Trusted Firmware random number driver".
->>>>
->>>> It will also be helpful if the SMC call number is configurable.
->>>>
->>>> - Lars  
+>>>>> The number of resets can be set in .data directly; there is no need
+>>>>> for the structures.
 >>>
->>> Yes, I'm trying to make this to a generic interface. I'll try to make
->>> HW/platform related dependency to be configurable and let it more
->>> generic.
->>> Thanks for your suggestion.
->>>  
+>>>      We want to put all properities in mtxxxx-resets.h and it easy to
+>>> manager. If there are new properity in the feture, we can put it in
+>>> mtk_wdt_data mtxxxx_data
 >>
->> I don't think it makes sense for each arm64 platform to expose an
->> entropy source via SMC calls in a slightly different way, and model it
->> as a h/w driver. Instead, we should try to standardize this, and
->> perhaps expose it via the architectural helpers that already exist
->> (get_random_seed_long() and friends), so they get plugged into the
->> kernel random pool driver directly.
+>> Do you expect there will be more properties in the future?
 > 
-> Absolutely. I'd love to see a standard, ARM-specified, virtualizable
-> RNG that is abstracted from the HW.
+>    Yes, We may put some infra reset bit and max number in mtxxxx-resets.h
 
-Do you think we could use virtio-rng on top of a modified virtio-mmio
-which instead of being backed by a hardware mailbox, could use hvc/smc
-calls to signal writes to shared memory and get notifications via an
-interrupt? This would also open up the doors to other virtio uses cases
-beyond just RNG (e.g.: console, block devices?). If this is completely
-stupid, then please disregard this comment.
--- 
-Florian
+Please either do that now or introduce the complexity when needed.
+
+Thanks,
+Guenter
+
+>>
+>>>>>> +static int toprgu_reset_deassert(struct reset_controller_dev *rcdev,
+>>>>>> +				 unsigned long id)
+>>>>>> +{
+>>>>>> +	unsigned int tmp;
+>>>>>> +	unsigned long flags;
+>>>>>> +	struct mtk_wdt_dev *data =
+>>>>>> +		 container_of(rcdev, struct mtk_wdt_dev, rcdev);
+>>>>>> +
+>>>>>> +	spin_lock_irqsave(&data->lock, flags);
+>>>>>> +
+>>>>>> +	tmp = __raw_readl(data->wdt_base + WDT_SWSYSRST);
+>>>>>> +	tmp &= ~BIT(id);
+>>>>>> +	tmp |= WDT_SWSYS_RST_KEY;
+>>>>>> +	writel(tmp, data->wdt_base + WDT_SWSYSRST);
+>>>>>> +
+>>>>>> +	spin_unlock_irqrestore(&data->lock, flags);
+>>>>>> +
+>>>>>> +	return 0;
+>>>>>> +}
+>>>>>
+>>>>> There is a lot of duplication in those functions. Only one line
+>>>>> is different. I think this is a good example where a helper function
+>>>>> with an additional argument indicating set or reset would be helpful.
+>>>>>
+>>>      .assert and .dessert are two numbers of struct reset_control_ops.
+>>>       I think it's better to define both of them.
+>>
+>> The suggestion was to have two very short _assert and _deassert
+>> functions that only contain a single call to a common helper function.
+>> See the reset-a10sr.c driver for an example.
+> 
+>    OK. I will modify it as reset-a10sr.c do.
+>>
+>> regards
+>> Philipp
+>>
+>>
+>> _______________________________________________
+>> Linux-mediatek mailing list
+>> Linux-mediatek@lists.infradead.org
+>> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> 
+
 
 _______________________________________________
 Linux-mediatek mailing list
