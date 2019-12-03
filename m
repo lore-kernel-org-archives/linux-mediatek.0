@@ -2,20 +2,21 @@ Return-Path: <SRS0=/i6S=ZZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B720BC432C3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 08:34:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 18A6CC432C0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 08:39:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8D0E92068E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 08:34:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B47AE20640
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 08:39:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mhKNpXQ/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8D0E92068E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jlhThof4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B47AE20640
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,42 +25,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/CQxcGt5EriFHll+5XDYGDa7zxs5BEDWiLOlDYlgjiM=; b=mhKNpXQ/MboOfA
-	b9OKht3/B12F6QNQ1oteMmMB6Xy1Wl6rm1dMb1s82wzhUR8jVYj8nmlPB1N48nL4aJUxvIKecVzXt
-	z9bZHZKEqAzmKZs1mUz58mvXHZuDvzU47auUhP+tnqC/LOsscpttgSd8yK2NcJNDwwVZb26MRHTlV
-	qw69iO/ej2dWAdgShPmoJ00gN//lZj9UXPwmReLkd+iE/WOKsnk/amUMuMR+1TJPDx6l6EHJZ7geP
-	HZGK6bbMB5Ptv+zse6JRHaafSX6LP+8yjNL2WvJgBgaN1QJHd/eEILjtVYudx7NdgTVjVe1UB3MXy
-	eswcG1ocNJkGzCi5hh2Q==;
+	List-Owner; bh=o2jWrljMG52dP4rlkJYBT7x61VTlSCFvBV6+ZfWmztw=; b=jlhThof4STMdfV
+	kXnOXMrxtGls1jjgH+zssPFMU3qyVkYd6xA7O9rbsQkuigvce2NpXN4W8n3/WQyfAKm6EKYFQHOWx
+	Tjg++Agd0WQdc02dhrGhhZxoMxRcI0pAXNYZHsmpOb5h9+GR1usiXIfZwbM07/UZ1UqSO0ky1FlPr
+	ca77aL5QIBbSo31qilyqcrW3kD5R+RHdXOrQcprkeXokk5ctadII13IfPGgLE9iqxb2roDnHA0f8S
+	aDC28Fg/b7ihazl4SDCSsMqOWSOMIc5GPJaYq7p5YsiwD95zZ4zEJRH6vIPiQyaHE23nLj/1OtQh2
+	bQmbN2LmsUfk8U6kFp1Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ic3dL-0001Yg-J5; Tue, 03 Dec 2019 08:34:11 +0000
+	id 1ic3ip-0003ZE-Np; Tue, 03 Dec 2019 08:39:51 +0000
 Received: from asavdk4.altibox.net ([109.247.116.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ic3dB-0001Pd-P2; Tue, 03 Dec 2019 08:34:03 +0000
+ id 1ic3ie-0003SH-QM; Tue, 03 Dec 2019 08:39:45 +0000
 Received: from ravnborg.org (unknown [158.248.194.18])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by asavdk4.altibox.net (Postfix) with ESMTPS id 33C3D80478;
- Tue,  3 Dec 2019 09:33:53 +0100 (CET)
-Date: Tue, 3 Dec 2019 09:33:51 +0100
+ by asavdk4.altibox.net (Postfix) with ESMTPS id 5E20E80477;
+ Tue,  3 Dec 2019 09:39:37 +0100 (CET)
+Date: Tue, 3 Dec 2019 09:39:36 +0100
 From: Sam Ravnborg <sam@ravnborg.org>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH v1 0/26] drm/panel infrastructure + backlight update
-Message-ID: <20191203083351.GA30687@ravnborg.org>
+To: Maxime Ripard <mripard@kernel.org>
+Subject: Re: [PATCH v1 07/26] drm/panel: remove get_timings
+Message-ID: <20191203083935.GB30687@ravnborg.org>
 References: <20191202193230.21310-1-sam@ravnborg.org>
- <20191203072443.GK4730@pendragon.ideasonboard.com>
+ <20191202193230.21310-8-sam@ravnborg.org>
+ <20191203074659.ilsyv4yx7pzw5vax@gilmour.lan>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191203072443.GK4730@pendragon.ideasonboard.com>
+In-Reply-To: <20191203074659.ilsyv4yx7pzw5vax@gilmour.lan>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CMAE-Score: 0
 X-CMAE-Analysis: v=2.3 cv=VcLZwmh9 c=1 sm=1 tr=0
  a=UWs3HLbX/2nnQ3s7vZ42gw==:117 a=UWs3HLbX/2nnQ3s7vZ42gw==:17
- a=jpOVt7BSZ2e4Z31A5e1TngXxSK0=:19 a=kj9zAlcOel0A:10
- a=9hfdOVt4OdhUXmoMrC4A:9 a=CjuIK1q_8ugA:10
+ a=jpOVt7BSZ2e4Z31A5e1TngXxSK0=:19 a=kj9zAlcOel0A:10 a=7gkXJVJtAAAA:8
+ a=pGLkceISAAAA:8 a=P1BnusSwAAAA:8 a=QyXUC8HyAAAA:8 a=VwQbUJbxAAAA:8
+ a=-nbbn2pJxVWvY7Vi8LwA:9 a=Vfx8YJUf9hFrv8O-:21 a=HM9-6MrTAUSx7c7w:21
+ a=CjuIK1q_8ugA:10 a=E9Po1WZjFZOl8hwRPBS3:22 a=D0XLA9XvdZm18NrgonBM:22
+ a=AjGcO6oz07-iQ99wixmX:22
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191203_003402_002076_FBC1B70D 
-X-CRM114-Status: GOOD (  22.99  )
+X-CRM114-CacheID: sfid-20191203_003941_216206_895D252C 
+X-CRM114-Status: GOOD (  29.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,71 +79,119 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
  Linus Walleij <linus.walleij@linaro.org>, dri-devel@lists.freedesktop.org,
  Andrzej Hajda <a.hajda@samsung.com>, Thierry Reding <thierry.reding@gmail.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
  Benjamin Gaignard <benjamin.gaignard@linaro.org>,
- Stefan Agner <stefan@agner.ch>, linux-samsung-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Tomi Valkeinen <tomi.valkeinen@ti.com>,
- NXP Linux Team <linux-imx@nxp.com>, Jagan Teki <jagan@amarulasolutions.com>,
- Jitao Shi <jitao.shi@mediatek.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
+ linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Tomi Valkeinen <tomi.valkeinen@ti.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Jagan Teki <jagan@amarulasolutions.com>, Jitao Shi <jitao.shi@mediatek.com>,
+ Daniel Vetter <daniel@ffwll.ch>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, linux-mediatek@lists.infradead.org,
- Abhinav Kumar <abhinavk@codeaurora.org>, linux-tegra@vger.kernel.org,
+ Abhinav Kumar <abhinavk@codeaurora.org>, linux-mediatek@lists.infradead.org,
+ Stefan Agner <stefan@agner.ch>, linux-tegra@vger.kernel.org,
  Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org,
  Purism Kernel Team <kernel@puri.sm>, linux-renesas-soc@vger.kernel.org,
  Boris Brezillon <boris.brezillon@collabora.com>,
- Daniel Vetter <daniel@ffwll.ch>
+ Pengutronix Kernel Team <kernel@pengutronix.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent.
+Hi Maxime.
 
-> > This patchset include a couple of different
-> > things - all related to panels.
-> > 
-> > - The panel callbacks are optional - so drop error if
-> >   callback is not present.
-> >  
-> > - Add support for backlight in drm_panel.
-> >   This allows us to make much simpler backlight
-> >   support to most panels.
-> >   The patchset include conversion of most of the
-> >   trivial cases.
-> > 
-> > - Drop drm_connector from drm_panel.
-> >   This change required many changes to most
-> >   panels and many bridges and display drivers.
-> >   This is by far the most invasive change in this patchset.
-> > 
-> > - Drop the unused get_timings() callback.
-> >   No users, so no need to keep it around.
-> > 
-> > With this patchset drm_panel_(attach|detach) are nop's
-> > but they are kept for now.
-> > 
-> > A few of these patches has been sent out before - but versioning
-> > started again from v1 - as the most patches are new.
-> > 
-> > I have tested the panel-simple changes, and thus some
-> > of the infrastructure changes.
-> > The testing was done on an earlier iteration - and I ended
-> > up submitting this as Laurent and others started to depend on it.
-> > Jitao has a patch to add more callbacks, and I wanted the
-> > simplification of the callbacks before we add more callbacks.
+On Tue, Dec 03, 2019 at 08:46:59AM +0100, Maxime Ripard wrote:
+> Hi,
 > 
-> Great series !!! Thanks for working on this.
-And likewise - thanks for the detailed reviews!
+> On Mon, Dec 02, 2019 at 08:32:11PM +0100, Sam Ravnborg wrote:
+> > There was no users - so remove it.
+> > The callback was implemented in two drivers - deleted.
+> >
+> > Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
+> > Cc: Thierry Reding <thierry.reding@gmail.com>
+> > Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+> > Cc: Sam Ravnborg <sam@ravnborg.org>
+> > Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+> > Cc: Maxime Ripard <mripard@kernel.org>
+> > Cc: David Airlie <airlied@linux.ie>
+> > Cc: Daniel Vetter <daniel@ffwll.ch>
+> > ---
+> >  drivers/gpu/drm/panel/panel-seiko-43wvf1g.c | 18 ------------------
+> >  drivers/gpu/drm/panel/panel-simple.c        | 18 ------------------
+> >  include/drm/drm_panel.h                     |  9 ---------
+> >  3 files changed, 45 deletions(-)
+> >
+> > diff --git a/drivers/gpu/drm/panel/panel-seiko-43wvf1g.c b/drivers/gpu/drm/panel/panel-seiko-43wvf1g.c
+> > index b878930b17e4..3bcba64235c4 100644
+> > --- a/drivers/gpu/drm/panel/panel-seiko-43wvf1g.c
+> > +++ b/drivers/gpu/drm/panel/panel-seiko-43wvf1g.c
+> > @@ -217,30 +217,12 @@ static int seiko_panel_get_modes(struct drm_panel *panel,
+> >  	return seiko_panel_get_fixed_modes(p, connector);
+> >  }
+> >
+> > -static int seiko_panel_get_timings(struct drm_panel *panel,
+> > -				    unsigned int num_timings,
+> > -				    struct display_timing *timings)
+> > -{
+> > -	struct seiko_panel *p = to_seiko_panel(panel);
+> > -	unsigned int i;
+> > -
+> > -	if (p->desc->num_timings < num_timings)
+> > -		num_timings = p->desc->num_timings;
+> > -
+> > -	if (timings)
+> > -		for (i = 0; i < num_timings; i++)
+> > -			timings[i] = p->desc->timings[i];
+> > -
+> > -	return p->desc->num_timings;
+> > -}
+> > -
+> >  static const struct drm_panel_funcs seiko_panel_funcs = {
+> >  	.disable = seiko_panel_disable,
+> >  	.unprepare = seiko_panel_unprepare,
+> >  	.prepare = seiko_panel_prepare,
+> >  	.enable = seiko_panel_enable,
+> >  	.get_modes = seiko_panel_get_modes,
+> > -	.get_timings = seiko_panel_get_timings,
+> >  };
+> 
+> If anything, I think we should grow the usage of timings and / or make
+> it usable by everyone.
+> 
+> Using only the mode as we do currently has a bunch of shortcomings as
+> almost no encoder will be able to provide the typical pixel clock, and
+> that situation leads to multiple things:
+> 
+>   - If someone working on one encoder wants to upstream a panel they
+>     have tested, chances are this will not be the typical pixel clock
+>     / timings being used but rather the one that will match what that
+>     SoC is capable of. Trouble comes when a second user comes in with
+>     a different encoder and different capabilities, and then we have a
+>     maintainance fight over which timing is the true timing (with a
+>     significant chance that none of them are).
+> 
+>   - If we can't match the pixel clock, we currently have no easy way
+>     to make the usual measures of reducing / growing the porches and
+>     blankings areas to match the pixel clock we can provide, since we
+>     don't have an easy way to get the tolerance on those timings for a
+>     given panel. There's some ad hoc solutions on some drivers (I
+>     think vc4 has that?) to ignore the panel and just play around with
+>     the timings, but I think this should be generalised.
+> 
+> Timings solves the first case since we have the operating range now
+> and not a single set of timings, and it solves the second since we can
+> use that range to take those measures instead of taking a shot in the
+> dark.
+> 
+> I appreciate that it's pretty far from where we are today, but
+> removing the get_timings means that all the timings already defined in
+> the panel drivers are becoming useless too, and that eventually it
+> will get removed.
 
-I have a patch to remove drm_panel_(attach|detach),
-but they was not included because there is also a patchset floating
-that add more functionality to these.
+Thanks for this nice explanation. I will drop the patch,
+and add an entry to my TODO list to look closer at this later.
+There are things to improve in this area.
 
-I will address the feedback, it looked all straighforward, and post
-an updated series.
-
-> drm/panel: remove get_timings
-I will drop this patch as we may need this later.
+So the conclusion is more work rather than removing code :-)
 
 	Sam
 
