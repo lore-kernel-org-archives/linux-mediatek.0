@@ -2,65 +2,61 @@ Return-Path: <SRS0=/i6S=ZZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+	SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B0B9C432C0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 07:25:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DBCB0C432C3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 07:36:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F166020684
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 07:25:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6221D2068E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 07:36:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Sqf/7I3L";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.b="YD9x8SmL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F166020684
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="H76MnjUW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6221D2068E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=realtek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U95vkK0As1tkDf4T/PwZmXpOHHWXmXMT1M/Yv8GdjbQ=; b=Sqf/7I3L6/NBix
-	jm9yVL/qcG82Hzxo24urXHlumZiUoBHHnjNT+Sjlg23WSf31844gfzYChNb6K/J/GWKXtMAXy4+wZ
-	C4JLS37y1eEg1eneW/AvdT+ZHuThO3KjFM9i7ZAKG3bojFz4ULmlXOJ+UN0MTeisw9HPL/V6Yex20
-	28Pgwq0p5U3oak1a6aBmbrFWYKIZDRknBj4Er0oLOZDjEYVzxld6P4ZhLjWvWo7XY9bgNhJc6+PjZ
-	VKlHZgBVslq/obVx0WO8j1plAaX+VPHdiABdqaIy8glyxFpOO/r4HZLQc4ZFvc5M5m08blUn6PuV3
-	oNQ+84+Tm01qfaVh0+Mg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0KHdoALk/M/0fdS4pJlF6ZDIRt5gsaWnKbEwismH1bU=; b=H76MnjUWwCiyep
+	YfVbeSHKtNjRymHfK1Doe+yEhfjbz+bB94Ji+UHsJzlslgT5JZH4vk9Rptd0yBXh0TLvclFIa25Nr
+	MkSSWLBT46CKZwVY++0I4c+VY8wwH7AnZf0glWG8vw6t0fYKrGzgy2RhU4b5X/O+b/wAq/LM4ntVo
+	hsRtszc8g9uwD311zaMoDI1WvI3psf2oIdjGKaHw7hhdn1KNk9Wkc2gsKiyC7EHQ2f7IWq7DZXCx2
+	hwJZC4mwiZr66NhkH8nFvTtD6FKqNYf5+V03Vr7hgeZNHF2IXJDhGHcC+4IH0uVhrKkCNNE0GJYrA
+	BOtHn4fAIm0U2mRDFS2A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ic2YY-0003lI-6k; Tue, 03 Dec 2019 07:25:10 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ic2YG-00031F-Ug; Tue, 03 Dec 2019 07:24:54 +0000
-Received: from pendragon.ideasonboard.com (81-175-216-236.bb.dnainternet.fi
- [81.175.216.236])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id D0E87309;
- Tue,  3 Dec 2019 08:24:50 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1575357891;
- bh=sAQFNNZ440Vab1+8Na2Bxa9TGm6vttJhJrontuPgDZA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=YD9x8SmLLYHikneU71eOyZ8x2fR/msfR6zJzJz8pqI9yULDm3Gmv01HVjW8BqAEU/
- TLO3y1j77KJFRcRvihUH6UIEo9145O7D9VROBibD3cpUSdelgQQzNQhWX9rzGc8OaV
- hQhTcoJxvfBQ7AjDlKEU0/lyx+8KH10mW6epkakg=
-Date: Tue, 3 Dec 2019 09:24:43 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [PATCH v1 0/26] drm/panel infrastructure + backlight update
-Message-ID: <20191203072443.GK4730@pendragon.ideasonboard.com>
-References: <20191202193230.21310-1-sam@ravnborg.org>
+	id 1ic2jG-0000Qi-LH; Tue, 03 Dec 2019 07:36:14 +0000
+Received: from rtits2.realtek.com ([211.75.126.72] helo=rtits2.realtek.com.tw)
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat
+ Linux)) id 1ic2iu-00007O-Oc; Tue, 03 Dec 2019 07:35:54 +0000
+Authenticated-By: 
+X-SpamFilter-By: BOX Solutions SpamTrap 5.62 with qID xB37ZkLc014023,
+ This message is accepted by code: ctloc85258
+Received: from mail.realtek.com (RTITCASV01.realtek.com.tw[172.21.6.18])
+ by rtits2.realtek.com.tw (8.15.2/2.57/5.78) with ESMTPS id xB37ZkLc014023
+ (version=TLSv1 cipher=DHE-RSA-AES256-SHA bits=256 verify=NOT);
+ Tue, 3 Dec 2019 15:35:46 +0800
+Received: from james-BS01.localdomain (172.21.190.33) by
+ RTITCASV01.realtek.com.tw (172.21.6.18) with Microsoft SMTP Server id
+ 14.3.468.0; Tue, 3 Dec 2019 15:35:45 +0800
+From: James Tai <james.tai@realtek.com>
+To: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
+Subject: [PATCH 0/6] arm64: Realtek RTD1619 clock and reset controllers
+Date: Tue, 3 Dec 2019 15:35:34 +0800
+Message-ID: <20191203073540.9321-1-james.tai@realtek.com>
+X-Mailer: git-send-email 2.24.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191202193230.21310-1-sam@ravnborg.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191202_232453_285945_D8903DB5 
-X-CRM114-Status: GOOD (  21.35  )
+X-CRM114-CacheID: sfid-20191202_233552_950348_7E17984E 
+X-CRM114-Status: UNSURE (   7.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,174 +68,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
- Linus Walleij <linus.walleij@linaro.org>, dri-devel@lists.freedesktop.org,
- Andrzej Hajda <a.hajda@samsung.com>, Thierry Reding <thierry.reding@gmail.com>,
- Benjamin Gaignard <benjamin.gaignard@linaro.org>,
- Stefan Agner <stefan@agner.ch>, linux-samsung-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Tomi Valkeinen <tomi.valkeinen@ti.com>,
- NXP Linux Team <linux-imx@nxp.com>, Jagan Teki <jagan@amarulasolutions.com>,
- Jitao Shi <jitao.shi@mediatek.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, linux-mediatek@lists.infradead.org,
- Abhinav Kumar <abhinavk@codeaurora.org>, linux-tegra@vger.kernel.org,
- Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org,
- Purism Kernel Team <kernel@puri.sm>, linux-renesas-soc@vger.kernel.org,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Daniel Vetter <daniel@ffwll.ch>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devicetree@vger.kernel.org, Cheng-Yu Lee <cylee12@realtek.com>,
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Paul Walmsley <paul.walmsley@sifive.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-riscv@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sam,
-
-On Mon, Dec 02, 2019 at 08:32:04PM +0100, Sam Ravnborg wrote:
-> This patchset include a couple of different
-> things - all related to panels.
-> 
-> - The panel callbacks are optional - so drop error if
->   callback is not present.
->  
-> - Add support for backlight in drm_panel.
->   This allows us to make much simpler backlight
->   support to most panels.
->   The patchset include conversion of most of the
->   trivial cases.
-> 
-> - Drop drm_connector from drm_panel.
->   This change required many changes to most
->   panels and many bridges and display drivers.
->   This is by far the most invasive change in this patchset.
-> 
-> - Drop the unused get_timings() callback.
->   No users, so no need to keep it around.
-> 
-> With this patchset drm_panel_(attach|detach) are nop's
-> but they are kept for now.
-> 
-> A few of these patches has been sent out before - but versioning
-> started again from v1 - as the most patches are new.
-> 
-> I have tested the panel-simple changes, and thus some
-> of the infrastructure changes.
-> The testing was done on an earlier iteration - and I ended
-> up submitting this as Laurent and others started to depend on it.
-> Jitao has a patch to add more callbacks, and I wanted the
-> simplification of the callbacks before we add more callbacks.
-
-Great series !!! Thanks for working on this.
-
-> Sam Ravnborg (26):
->       drm/drm_panel: no error when no callback
->       drm/panel: add backlight support
->       drm/panel: simple: use drm_panel backlight support
->       drm: get drm_bridge_panel connector via helper
->       drm/panel: add drm_connector argument to get_modes()
->       drm/panel: decouple connector from drm_panel
->       drm/panel: remove get_timings
->       drm/panel: drop drm_device from drm_panel
->       drm/panel: feiyang-fy07024di26a30d: use drm_panel backlight support
->       drm/panel: ilitek-ili9881c: use drm_panel backlight support
->       drm/panel: innolux-p079zca: use drm_panel backlight support
->       drm/panel: kingdisplay-kd097d04: use drm_panel backlight support
->       drm/panel: lvds: use drm_panel backlight support
->       drm/panel: olimex-lcd-olinuxino: use drm_panel backlight support
->       drm/panel: osd-osd101t2587-53ts: use drm_panel backlight support
->       drm/panel: panasonic-vvx10f034n00: use drm_panel backlight support
->       drm/panel: raydium-rm68200: use drm_panel backlight support
->       drm/panel: rocktech-jh057n00900: use drm_panel backlight support
->       drm/panel: ronbo-rb070d30: use drm_panel backlight support
->       drm/panel: seiko-43wvf1g: use drm_panel backlight support
->       drm/panel: sharp-lq101r1sx01: use drm_panel backlight support
->       drm/panel: sharp-ls043t1le01: use drm_panel backlight support
->       drm/panel: sitronix-st7701: use drm_panel backlight support
->       drm/panel: sitronix-st7789v: use drm_panel backlight support
->       drm/panel: tpo-td028ttec1: use drm_panel backlight support
->       drm/panel: tpo-tpg110: use drm_panel backlight support
-
-For patches 09/26 to 26/26,
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-
-> 
->  drivers/gpu/drm/bridge/analogix/analogix-anx6345.c |   2 +-
->  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |   2 +-
->  drivers/gpu/drm/bridge/panel.c                     |  18 +++-
->  drivers/gpu/drm/bridge/parade-ps8622.c             |   2 +-
->  drivers/gpu/drm/bridge/tc358764.c                  |   2 +-
->  drivers/gpu/drm/bridge/tc358767.c                  |   2 +-
->  drivers/gpu/drm/bridge/ti-sn65dsi86.c              |   2 +-
->  drivers/gpu/drm/drm_panel.c                        |  96 ++++++++++++++----
->  drivers/gpu/drm/exynos/exynos_drm_dpi.c            |   2 +-
->  drivers/gpu/drm/exynos/exynos_drm_dsi.c            |   2 +-
->  drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_rgb.c          |   2 +-
->  drivers/gpu/drm/imx/imx-ldb.c                      |   2 +-
->  drivers/gpu/drm/imx/parallel-display.c             |   2 +-
->  drivers/gpu/drm/mediatek/mtk_dsi.c                 |   2 +-
->  .../gpu/drm/msm/disp/mdp4/mdp4_lvds_connector.c    |   2 +-
->  drivers/gpu/drm/msm/dsi/dsi_manager.c              |   2 +-
->  drivers/gpu/drm/mxsfb/mxsfb_out.c                  |   2 +-
->  drivers/gpu/drm/omapdrm/omap_connector.c           |   3 +-
->  drivers/gpu/drm/panel/panel-arm-versatile.c        |   6 +-
->  .../gpu/drm/panel/panel-feiyang-fy07024di26a30d.c  |  16 ++-
->  drivers/gpu/drm/panel/panel-ilitek-ili9322.c       |  20 ++--
->  drivers/gpu/drm/panel/panel-ilitek-ili9881c.c      |  29 ++----
->  drivers/gpu/drm/panel/panel-innolux-p079zca.c      |  45 +++------
->  drivers/gpu/drm/panel/panel-jdi-lt070me05000.c     |  11 ++-
->  drivers/gpu/drm/panel/panel-kingdisplay-kd097d04.c |  43 +++-----
->  drivers/gpu/drm/panel/panel-lg-lb035q02.c          |   6 +-
->  drivers/gpu/drm/panel/panel-lg-lg4573.c            |  12 +--
->  drivers/gpu/drm/panel/panel-lvds.c                 |  46 ++-------
->  drivers/gpu/drm/panel/panel-nec-nl8048hl11.c       |   6 +-
->  drivers/gpu/drm/panel/panel-novatek-nt39016.c      |   6 +-
->  drivers/gpu/drm/panel/panel-olimex-lcd-olinuxino.c |  27 ++---
->  drivers/gpu/drm/panel/panel-orisetech-otm8009a.c   |  11 ++-
->  drivers/gpu/drm/panel/panel-osd-osd101t2587-53ts.c |  37 +++----
->  .../gpu/drm/panel/panel-panasonic-vvx10f034n00.c   |  58 +++--------
->  .../gpu/drm/panel/panel-raspberrypi-touchscreen.c  |   9 +-
->  drivers/gpu/drm/panel/panel-raydium-rm67191.c      |   8 +-
->  drivers/gpu/drm/panel/panel-raydium-rm68200.c      |  26 +++--
->  drivers/gpu/drm/panel/panel-rocktech-jh057n00900.c |  35 +++----
->  drivers/gpu/drm/panel/panel-ronbo-rb070d30.c       |  31 ++----
->  drivers/gpu/drm/panel/panel-samsung-ld9040.c       |   4 +-
->  drivers/gpu/drm/panel/panel-samsung-s6d16d0.c      |   6 +-
->  drivers/gpu/drm/panel/panel-samsung-s6e3ha2.c      |   6 +-
->  drivers/gpu/drm/panel/panel-samsung-s6e63j0x03.c   |   6 +-
->  drivers/gpu/drm/panel/panel-samsung-s6e63m0.c      |   6 +-
->  drivers/gpu/drm/panel/panel-samsung-s6e8aa0.c      |   4 +-
->  drivers/gpu/drm/panel/panel-seiko-43wvf1g.c        |  72 +++-----------
->  drivers/gpu/drm/panel/panel-sharp-lq101r1sx01.c    |  34 +++----
->  drivers/gpu/drm/panel/panel-sharp-ls037v7dw01.c    |   6 +-
->  drivers/gpu/drm/panel/panel-sharp-ls043t1le01.c    |  33 +++----
->  drivers/gpu/drm/panel/panel-simple.c               | 110 ++++++---------------
->  drivers/gpu/drm/panel/panel-sitronix-st7701.c      |  23 ++---
->  drivers/gpu/drm/panel/panel-sitronix-st7789v.c     |  49 ++-------
->  drivers/gpu/drm/panel/panel-sony-acx565akm.c       |   6 +-
->  drivers/gpu/drm/panel/panel-tpo-td028ttec1.c       |  20 ++--
->  drivers/gpu/drm/panel/panel-tpo-td043mtea1.c       |   6 +-
->  drivers/gpu/drm/panel/panel-tpo-tpg110.c           |  26 ++---
->  drivers/gpu/drm/panel/panel-truly-nt35597.c        |   4 +-
->  drivers/gpu/drm/pl111/pl111_drv.c                  |   2 +-
->  drivers/gpu/drm/rcar-du/rcar_lvds.c                |   2 +-
->  drivers/gpu/drm/rockchip/rockchip_lvds.c           |   2 +-
->  drivers/gpu/drm/sti/sti_dvo.c                      |   2 +-
->  drivers/gpu/drm/sun4i/sun4i_lvds.c                 |   2 +-
->  drivers/gpu/drm/sun4i/sun4i_rgb.c                  |   2 +-
->  drivers/gpu/drm/sun4i/sun6i_mipi_dsi.c             |   2 +-
->  drivers/gpu/drm/tegra/output.c                     |   2 +-
->  drivers/gpu/drm/tve200/tve200_drv.c                |   2 +-
->  include/drm/drm_bridge.h                           |   1 +
->  include/drm/drm_panel.h                            |  49 ++++-----
->  68 files changed, 460 insertions(+), 664 deletions(-)
-
--- 
-Regards,
-
-Laurent Pinchart
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgQW5kcmVhcywKClRoaXMgc2VyaWVzIGFkZHMgY2xvY2sgYW5kIHJlc2V0IGNvbnRyb2xsZXJz
+IGZvciB0aGUgUmVhbHRlayBSVEQxNjE5IFNvQy4KCkNjOiBBbmRyZWFzIEbDpHJiZXIgPGFmYWVy
+YmVyQHN1c2UuZGU+CkNjOiBDaGVuZy1ZdSBMZWUgPGN5bGVlMTJAcmVhbHRlay5jb20+CkNjOiBk
+ZXZpY2V0cmVlQHZnZXIua2VybmVsLm9yZwoKY3lsZWUxMiAoNik6CiAgZHQtYmluZGluZ3M6IGNs
+b2NrOiBhZGQgYmluZGluZ3MgZm9yIFJURDE2MTkgY2xvY2tzCiAgZHQtYmluZGluZ3M6IHJlc2V0
+OiBhZGQgYmluZGluZ3MgZm9yIHJ0ZDE2MTkgcmVzZXQgY29udHJvbHMKICBjbGs6IHJlYWx0ZWs6
+IGFkZCBjb21tb24gY2xvY2sgc3VwcG9ydCBmb3IgUmVhbHRlayBTb0NzCiAgY2xrOiByZWFsdGVr
+OiBhZGQgcmVzZXQgY29udHJvbGxlciBzdXBwb3J0IGZvciBSZWFsdGVrIFNvQ3MKICBjbGs6IHJl
+YWx0ZWs6IGFkZCBydGQxNjE5IGNvbnRyb2xsZXJzCiAgZHQtYmluZGluZ3M6IGNsazogcmVhbHRl
+azogYWRkIHJ0ZDE2MTkgY2xvY2sgY29udHJvbGxlciBiaW5kaW5ncwoKIC4uLi9iaW5kaW5ncy9j
+bG9jay9yZWFsdGVrLGNsb2Nrcy50eHQgICAgICAgICB8ICAzOCArKwogZHJpdmVycy9jbGsvS2Nv
+bmZpZyAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAxICsKIGRyaXZlcnMvY2xrL01ha2Vm
+aWxlICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgMSArCiBkcml2ZXJzL2Nsay9yZWFsdGVr
+L0tjb25maWcgICAgICAgICAgICAgICAgICAgfCAgMjEgKwogZHJpdmVycy9jbGsvcmVhbHRlay9N
+YWtlZmlsZSAgICAgICAgICAgICAgICAgIHwgIDEyICsKIGRyaXZlcnMvY2xrL3JlYWx0ZWsvY2xr
+LXBsbC1kaWYuYyAgICAgICAgICAgICB8ICA4MSArKysKIGRyaXZlcnMvY2xrL3JlYWx0ZWsvY2xr
+LXBsbC1wc2F1ZC5jICAgICAgICAgICB8IDEyMCArKysrCiBkcml2ZXJzL2Nsay9yZWFsdGVrL2Ns
+ay1wbGwuYyAgICAgICAgICAgICAgICAgfCA0MDAgKysrKysrKysrKysrKwogZHJpdmVycy9jbGsv
+cmVhbHRlay9jbGstcGxsLmggICAgICAgICAgICAgICAgIHwgMTUxICsrKysrCiBkcml2ZXJzL2Ns
+ay9yZWFsdGVrL2Nsay1yZWdtYXAtZ2F0ZS5jICAgICAgICAgfCAgODkgKysrCiBkcml2ZXJzL2Ns
+ay9yZWFsdGVrL2Nsay1yZWdtYXAtZ2F0ZS5oICAgICAgICAgfCAgMjYgKwogZHJpdmVycy9jbGsv
+cmVhbHRlay9jbGstcmVnbWFwLW11eC5jICAgICAgICAgIHwgIDYzICsrCiBkcml2ZXJzL2Nsay9y
+ZWFsdGVrL2Nsay1yZWdtYXAtbXV4LmggICAgICAgICAgfCAgMjYgKwogZHJpdmVycy9jbGsvcmVh
+bHRlay9jbGstcnRkMTYxOS1jYy5jICAgICAgICAgIHwgNTUzICsrKysrKysrKysrKysrKysrKwog
+ZHJpdmVycy9jbGsvcmVhbHRlay9jbGstcnRkMTYxOS1pYy5jICAgICAgICAgIHwgMTEyICsrKysK
+IGRyaXZlcnMvY2xrL3JlYWx0ZWsvY29tbW9uLmMgICAgICAgICAgICAgICAgICB8IDMyMCArKysr
+KysrKysrCiBkcml2ZXJzL2Nsay9yZWFsdGVrL2NvbW1vbi5oICAgICAgICAgICAgICAgICAgfCAx
+MjMgKysrKwogZHJpdmVycy9jbGsvcmVhbHRlay9yZXNldC5jICAgICAgICAgICAgICAgICAgIHwg
+MTA3ICsrKysKIGRyaXZlcnMvY2xrL3JlYWx0ZWsvcmVzZXQuaCAgICAgICAgICAgICAgICAgICB8
+ICAzNyArKwogaW5jbHVkZS9kdC1iaW5kaW5ncy9jbG9jay9ydGssY2xvY2stcnRkMTYxOS5oIHwg
+IDg4ICsrKwogaW5jbHVkZS9kdC1iaW5kaW5ncy9yZXNldC9ydGsscmVzZXQtcnRkMTYxOS5oIHwg
+MTI0ICsrKysKIDIxIGZpbGVzIGNoYW5nZWQsIDI0OTMgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1v
+ZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yZWFsdGVr
+LGNsb2Nrcy50eHQKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2Nsay9yZWFsdGVrL0tjb25m
+aWcKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2Nsay9yZWFsdGVrL01ha2VmaWxlCiBjcmVh
+dGUgbW9kZSAxMDA2NDQgZHJpdmVycy9jbGsvcmVhbHRlay9jbGstcGxsLWRpZi5jCiBjcmVhdGUg
+bW9kZSAxMDA2NDQgZHJpdmVycy9jbGsvcmVhbHRlay9jbGstcGxsLXBzYXVkLmMKIGNyZWF0ZSBt
+b2RlIDEwMDY0NCBkcml2ZXJzL2Nsay9yZWFsdGVrL2Nsay1wbGwuYwogY3JlYXRlIG1vZGUgMTAw
+NjQ0IGRyaXZlcnMvY2xrL3JlYWx0ZWsvY2xrLXBsbC5oCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJp
+dmVycy9jbGsvcmVhbHRlay9jbGstcmVnbWFwLWdhdGUuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
+aXZlcnMvY2xrL3JlYWx0ZWsvY2xrLXJlZ21hcC1nYXRlLmgKIGNyZWF0ZSBtb2RlIDEwMDY0NCBk
+cml2ZXJzL2Nsay9yZWFsdGVrL2Nsay1yZWdtYXAtbXV4LmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBk
+cml2ZXJzL2Nsay9yZWFsdGVrL2Nsay1yZWdtYXAtbXV4LmgKIGNyZWF0ZSBtb2RlIDEwMDY0NCBk
+cml2ZXJzL2Nsay9yZWFsdGVrL2Nsay1ydGQxNjE5LWNjLmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBk
+cml2ZXJzL2Nsay9yZWFsdGVrL2Nsay1ydGQxNjE5LWljLmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBk
+cml2ZXJzL2Nsay9yZWFsdGVrL2NvbW1vbi5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9j
+bGsvcmVhbHRlay9jb21tb24uaAogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvY2xrL3JlYWx0
+ZWsvcmVzZXQuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvY2xrL3JlYWx0ZWsvcmVzZXQu
+aAogY3JlYXRlIG1vZGUgMTAwNjQ0IGluY2x1ZGUvZHQtYmluZGluZ3MvY2xvY2svcnRrLGNsb2Nr
+LXJ0ZDE2MTkuaAogY3JlYXRlIG1vZGUgMTAwNjQ0IGluY2x1ZGUvZHQtYmluZGluZ3MvcmVzZXQv
+cnRrLHJlc2V0LXJ0ZDE2MTkuaAoKLS0gCjIuMjQuMAoKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51
+eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
