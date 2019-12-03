@@ -4,19 +4,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 04A6FC432C3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 07:45:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 204CAC43141
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 07:45:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AFDB420661
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 07:45:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D53CA2068E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 07:45:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IQZ96pdj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AFDB420661
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="D63V/dWy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D53CA2068E
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=realtek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,40 +25,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5uEmVCm4XwEOvlqob470bOAoR1mCv/px3S4GedJqqwU=; b=IQZ96pdj3/LJOV
-	lhzmXmwCwefSGPINYlTNk93HfywQNMsAl9gZOGoJZUq+VSq4OqD9njpgua42mBIIYhOt3PFYYgcpi
-	V5FiuhWg5doEhqyVlcldhAhlmwpHZ4i0DM+SMw5q+7bmvUicwVwHpAUcKvGLD99O7mwqo5L8XvlAL
-	ZoXmCDYIPU7kwPltj6DMLhbTBRUwH2+DuW90xxpi4/MBj/Dhtq+q86q2n4uAOsRLBy3AwwdJ9qH3X
-	SL+VuxM5AmxH7rQlFM2fm5yUmuDuGg8QG3XhvcfYwR8AfRK+hghWFzriv3DbigEc4pp1mUGGJ74wO
-	DX+7Suy5N6SXY3Z9HWEQ==;
+	List-Owner; bh=5BZmgukp/nmORFRCYx7MyUrz8g2MGiVZvWpvUdGYGRo=; b=D63V/dWyW3nn4X
+	jWc3bBmGJLxqRFcJCwGktlznWeMxVdt74FUveOAAzHtyeGJXXjrZHkxRGVzLy+qxZTKHxTtcKwOvg
+	Xl1sNzoDc0PBuLEpCDXvmtD5HnLyERLPkOgmXz5dztXNIRtxn5UwK7aVNeckH6JwMrUpA+drD18Pf
+	LDhLqT1ikLnRhWWLY0j94uAISlGjfg95h9McfWPZl0p7M0uCU6NKU5mXYWm4zGFXKGqniw2nI4oFp
+	lB4omtQ1sst6gd/NGO4gLL8aRnK3Yym53Pmal+aDG+MmFqoOEIDpnp0KGUsYu29AiD/4Ou+IqIS68
+	zKVu/NdmGp5v+Mpnbe2g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ic2sW-0007t4-RQ; Tue, 03 Dec 2019 07:45:48 +0000
+	id 1ic2sZ-0007v9-7T; Tue, 03 Dec 2019 07:45:51 +0000
 Received: from rtits2.realtek.com ([211.75.126.72] helo=rtits2.realtek.com.tw)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat
- Linux)) id 1ic2sG-0007bx-VJ; Tue, 03 Dec 2019 07:45:38 +0000
+ Linux)) id 1ic2sF-0007a1-LY; Tue, 03 Dec 2019 07:45:33 +0000
 Authenticated-By: 
-X-SpamFilter-By: BOX Solutions SpamTrap 5.62 with qID xB37jObJ016023,
+X-SpamFilter-By: BOX Solutions SpamTrap 5.62 with qID xB37jKtg016012,
  This message is accepted by code: ctloc85258
 Received: from mail.realtek.com (RTITCASV01.realtek.com.tw[172.21.6.18])
- by rtits2.realtek.com.tw (8.15.2/2.57/5.78) with ESMTPS id xB37jObJ016023
+ by rtits2.realtek.com.tw (8.15.2/2.57/5.78) with ESMTPS id xB37jKtg016012
  (version=TLSv1 cipher=DHE-RSA-AES256-SHA bits=256 verify=NOT);
- Tue, 3 Dec 2019 15:45:24 +0800
+ Tue, 3 Dec 2019 15:45:21 +0800
 Received: from james-BS01.localdomain (172.21.190.33) by
  RTITCASV01.realtek.com.tw (172.21.6.18) with Microsoft SMTP Server id
- 14.3.468.0; Tue, 3 Dec 2019 15:45:23 +0800
+ 14.3.468.0; Tue, 3 Dec 2019 15:45:19 +0800
 From: James Tai <james.tai@realtek.com>
 To: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>
-Subject: [PATCH 3/6] clk: realtek: add common clock support for Realtek SoCs
-Date: Tue, 3 Dec 2019 15:45:10 +0800
-Message-ID: <20191203074513.9416-4-james.tai@realtek.com>
+Subject: [PATCH 1/6] dt-bindings: clock: add bindings for RTD1619 clocks
+Date: Tue, 3 Dec 2019 15:45:08 +0800
+Message-ID: <20191203074513.9416-2-james.tai@realtek.com>
 X-Mailer: git-send-email 2.24.0
 In-Reply-To: <20191203074513.9416-1-james.tai@realtek.com>
 References: <20191203074513.9416-1-james.tai@realtek.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191202_234533_470870_6F4B5E7E 
-X-CRM114-Status: GOOD (  15.73  )
+X-CRM114-CacheID: sfid-20191202_234531_895397_79CEB749 
+X-CRM114-Status: UNSURE (   8.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,12 +71,13 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: cylee12 <cylee12@realtek.com>, linux-realtek-soc@lists.infradead.org,
- Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>,
- Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Paul Walmsley <paul.walmsley@sifive.com>,
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ cylee12 <cylee12@realtek.com>, linux-realtek-soc@lists.infradead.org,
+ Palmer Dabbelt <palmer@sifive.com>, linux-kernel@vger.kernel.org, Rob
+ Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Paul Walmsley <paul.walmsley@sifive.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, linux-riscv@lists.infradead.org,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -83,1553 +85,108 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: cylee12 <cylee12@realtek.com>
 
-This patch adds common clock support for Realtek SoCs, including PLLs,
-Mux clocks and Gate clocks.
+Add devicetree binding for Realtek RTD1619 clocks.
 
 Signed-off-by: Cheng-Yu Lee <cylee12@realtek.com>
 Signed-off-by: James Tai <james.tai@realtek.com>
 ---
- drivers/clk/Kconfig                   |   1 +
- drivers/clk/Makefile                  |   1 +
- drivers/clk/realtek/Kconfig           |  10 +
- drivers/clk/realtek/Makefile          |   9 +
- drivers/clk/realtek/clk-pll-dif.c     |  81 ++++++
- drivers/clk/realtek/clk-pll-psaud.c   | 120 ++++++++
- drivers/clk/realtek/clk-pll.c         | 400 ++++++++++++++++++++++++++
- drivers/clk/realtek/clk-pll.h         | 151 ++++++++++
- drivers/clk/realtek/clk-regmap-gate.c |  89 ++++++
- drivers/clk/realtek/clk-regmap-gate.h |  26 ++
- drivers/clk/realtek/clk-regmap-mux.c  |  63 ++++
- drivers/clk/realtek/clk-regmap-mux.h  |  26 ++
- drivers/clk/realtek/common.c          | 320 +++++++++++++++++++++
- drivers/clk/realtek/common.h          | 123 ++++++++
- 14 files changed, 1420 insertions(+)
- create mode 100644 drivers/clk/realtek/Kconfig
- create mode 100644 drivers/clk/realtek/Makefile
- create mode 100644 drivers/clk/realtek/clk-pll-dif.c
- create mode 100644 drivers/clk/realtek/clk-pll-psaud.c
- create mode 100644 drivers/clk/realtek/clk-pll.c
- create mode 100644 drivers/clk/realtek/clk-pll.h
- create mode 100644 drivers/clk/realtek/clk-regmap-gate.c
- create mode 100644 drivers/clk/realtek/clk-regmap-gate.h
- create mode 100644 drivers/clk/realtek/clk-regmap-mux.c
- create mode 100644 drivers/clk/realtek/clk-regmap-mux.h
- create mode 100644 drivers/clk/realtek/common.c
- create mode 100644 drivers/clk/realtek/common.h
+ include/dt-bindings/clock/rtk,clock-rtd1619.h | 88 +++++++++++++++++++
+ 1 file changed, 88 insertions(+)
+ create mode 100644 include/dt-bindings/clock/rtk,clock-rtd1619.h
 
-diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
-index c44247d0b83e..8e06487440ce 100644
---- a/drivers/clk/Kconfig
-+++ b/drivers/clk/Kconfig
-@@ -317,6 +317,7 @@ source "drivers/clk/mediatek/Kconfig"
- source "drivers/clk/meson/Kconfig"
- source "drivers/clk/mvebu/Kconfig"
- source "drivers/clk/qcom/Kconfig"
-+source "drivers/clk/realtek/Kconfig"
- source "drivers/clk/renesas/Kconfig"
- source "drivers/clk/samsung/Kconfig"
- source "drivers/clk/sifive/Kconfig"
-diff --git a/drivers/clk/Makefile b/drivers/clk/Makefile
-index 0138fb14e6f8..71ea17f97f7d 100644
---- a/drivers/clk/Makefile
-+++ b/drivers/clk/Makefile
-@@ -95,6 +95,7 @@ obj-$(CONFIG_COMMON_CLK_NXP)		+= nxp/
- obj-$(CONFIG_MACH_PISTACHIO)		+= pistachio/
- obj-$(CONFIG_COMMON_CLK_PXA)		+= pxa/
- obj-$(CONFIG_COMMON_CLK_QCOM)		+= qcom/
-+obj-$(CONFIG_COMMON_CLK_REALTEK)	+= realtek/
- obj-y					+= renesas/
- obj-$(CONFIG_ARCH_ROCKCHIP)		+= rockchip/
- obj-$(CONFIG_COMMON_CLK_SAMSUNG)	+= samsung/
-diff --git a/drivers/clk/realtek/Kconfig b/drivers/clk/realtek/Kconfig
+diff --git a/include/dt-bindings/clock/rtk,clock-rtd1619.h b/include/dt-bindings/clock/rtk,clock-rtd1619.h
 new file mode 100644
-index 000000000000..5bca757dddfa
+index 000000000000..497f9b914857
 --- /dev/null
-+++ b/drivers/clk/realtek/Kconfig
-@@ -0,0 +1,10 @@
-+# SPDX-License-Identifier: GPL-2.0-only
-+config COMMON_CLK_REALTEK
-+	bool "Clock driver for realtek"
-+	select MFD_SYSCON
-+
-+config CLK_PLL_PSAUD
-+	bool
-+
-+config CLK_PLL_DIF
-+	bool
-diff --git a/drivers/clk/realtek/Makefile b/drivers/clk/realtek/Makefile
-new file mode 100644
-index 000000000000..050d450db067
---- /dev/null
-+++ b/drivers/clk/realtek/Makefile
-@@ -0,0 +1,9 @@
-+# SPDX-License-Identifier: GPL-2.0-only
-+obj-$(CONFIG_COMMON_CLK_REALTEK) += clk-rtk.o
-+
-+clk-rtk-y += common.o
-+clk-rtk-y += clk-regmap-mux.o
-+clk-rtk-y += clk-regmap-gate.o
-+clk-rtk-y += clk-pll.o
-+clk-rtk-$(CONFIG_CLK_PLL_PSAUD) += clk-pll-psaud.o
-+clk-rtk-$(CONFIG_CLK_PLL_DIF) += clk-pll-dif.o
-diff --git a/drivers/clk/realtek/clk-pll-dif.c b/drivers/clk/realtek/clk-pll-dif.c
-new file mode 100644
-index 000000000000..d19efef2626e
---- /dev/null
-+++ b/drivers/clk/realtek/clk-pll-dif.c
-@@ -0,0 +1,81 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (c) 2019 Realtek Semiconductor Corporation
-+ * Author: Cheng-Yu Lee <cylee12@realtek.com>
-+ */
-+
-+#include <linux/clk-provider.h>
-+#include <linux/clk.h>
-+#include <linux/spinlock.h>
-+#include <linux/delay.h>
-+#include "common.h"
-+#include "clk-pll.h"
-+
-+static int clk_pll_dif_enable(struct clk_hw *hw)
-+{
-+	struct clk_pll_dif *pll = to_clk_pll_dif(hw);
-+
-+	pr_debug("%pC: %s\n", hw->clk, __func__);
-+
-+	clk_regmap_write(&pll->clkr, pll->pll_ofs + 0x0C, 0x00000048);
-+	clk_regmap_write(&pll->clkr, pll->pll_ofs + 0x08, 0x00020c00);
-+	clk_regmap_write(&pll->clkr, pll->pll_ofs + 0x04, 0x204004ca);
-+	clk_regmap_write(&pll->clkr, pll->pll_ofs + 0x00, 0x8000a000);
-+	udelay(100);
-+
-+	clk_regmap_write(&pll->clkr, pll->pll_ofs + 0x08, 0x00420c00);
-+	udelay(50);
-+
-+	clk_regmap_write(&pll->clkr, pll->pll_ofs + 0x08, 0x00420c03);
-+	udelay(200);
-+
-+	clk_regmap_write(&pll->clkr, pll->pll_ofs + 0x0C, 0x00000078);
-+	udelay(100);
-+
-+	clk_regmap_write(&pll->clkr, pll->pll_ofs + 0x04, 0x204084ca);
-+
-+	/* ssc control */
-+	clk_regmap_write(&pll->clkr, pll->ssc_ofs + 0x00, 0x00000004);
-+	clk_regmap_write(&pll->clkr, pll->ssc_ofs + 0x04, 0x00006800);
-+	clk_regmap_write(&pll->clkr, pll->ssc_ofs + 0x0C, 0x00000000);
-+	clk_regmap_write(&pll->clkr, pll->ssc_ofs + 0x10, 0x00000000);
-+	clk_regmap_write(&pll->clkr, pll->ssc_ofs + 0x08, 0x001e1f98);
-+	clk_regmap_write(&pll->clkr, pll->ssc_ofs + 0x00, 0x00000005);
-+	pll->status = 1;
-+
-+	return 0;
-+}
-+
-+static void clk_pll_dif_disable(struct clk_hw *hw)
-+{
-+	struct clk_pll_dif *pll = to_clk_pll_dif(hw);
-+
-+	pr_debug("%pC: %s\n", hw->clk, __func__);
-+	clk_regmap_update(&pll->clkr, pll->pll_ofs + 0x04, 0x00080000, 0x0);
-+	clk_regmap_update(&pll->clkr, pll->pll_ofs + 0x08, 0x00400C03, 0x0);
-+	clk_regmap_update(&pll->clkr, pll->pll_ofs + 0x0C, 0x00000038, 0x0);
-+
-+	clk_regmap_write(&pll->clkr, pll->ssc_ofs + 0x00, 0x00000004);
-+	pll->status = 0;
-+}
-+
-+static int clk_pll_dif_is_enabled(struct clk_hw *hw)
-+{
-+	struct clk_pll_dif *pll = to_clk_pll_dif(hw);
-+
-+	return pll->status;
-+}
-+
-+static void clk_pll_dif_disable_unused(struct clk_hw *hw)
-+{
-+	pr_info("%pC: %s\n", hw->clk, __func__);
-+	clk_pll_dif_disable(hw);
-+}
-+
-+const struct clk_ops clk_pll_dif_ops = {
-+	.enable           = clk_pll_dif_enable,
-+	.disable          = clk_pll_dif_disable,
-+	.disable_unused   = clk_pll_dif_disable_unused,
-+	.is_enabled       = clk_pll_dif_is_enabled,
-+};
-+
-diff --git a/drivers/clk/realtek/clk-pll-psaud.c b/drivers/clk/realtek/clk-pll-psaud.c
-new file mode 100644
-index 000000000000..757a3320ebb7
---- /dev/null
-+++ b/drivers/clk/realtek/clk-pll-psaud.c
-@@ -0,0 +1,120 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * clk-pll-psaud.c - PLL_PSAUDXA
-+ *
-+ * Copyright (c) 2019 Realtek Semiconductor Corporation
-+ * Author: Cheng-Yu Lee <cylee12@realtek.com>
-+ */
-+
-+#include <linux/clk-provider.h>
-+#include "common.h"
-+#include "clk-pll.h"
-+
-+static int clk_pll_psaud_enable(struct clk_hw *hw)
-+{
-+	struct clk_pll_psaud *pll = to_clk_pll_psaud(hw);
-+	u32 mask = 0, val = 0;
-+
-+	if (pll->id == CLK_PLL_PSAUD1A) {
-+		mask = 0x3;
-+		val = 0x1;
-+	} else {
-+		mask = 0xc;
-+		val = 0x4;
-+	}
-+	clk_regmap_update(&pll->clkr, pll->reg + 4, mask, val);
-+	return 0;
-+}
-+
-+static void clk_pll_psaud_disable(struct clk_hw *hw)
-+{
-+	struct clk_pll_psaud *pll = to_clk_pll_psaud(hw);
-+	u32 mask = 0, val = 0;
-+
-+	if (pll->id == CLK_PLL_PSAUD1A) {
-+		mask = 0x3;
-+		val = 0x3;
-+	} else {
-+		mask = 0xc;
-+		val = 0xc;
-+	}
-+	clk_regmap_update(&pll->clkr, pll->reg + 4, mask, val);
-+}
-+
-+static void clk_pll_psaud_disable_unused(struct clk_hw *hw)
-+{
-+	pr_info("%pC: %s\n", hw->clk, __func__);
-+	clk_pll_psaud_disable(hw);
-+}
-+
-+static int clk_pll_psaud_is_enabled(struct clk_hw *hw)
-+{
-+	struct clk_pll_psaud *pll = to_clk_pll_psaud(hw);
-+	u32 val;
-+
-+	val = clk_regmap_read(&pll->clkr, pll->reg + 4);
-+	if (pll->id == CLK_PLL_PSAUD1A)
-+		val &= 0x3;
-+	else
-+		val >>= 2;
-+	return val == 0x1;
-+}
-+
-+static long clk_pll_psaud_round_rate(struct clk_hw *hw,
-+				     unsigned long rate,
-+				     unsigned long *parent_rate)
-+{
-+	return 49192000;
-+}
-+
-+static int clk_pll_psaud_set_rate(struct clk_hw *hw,
-+				  unsigned long rate,
-+				  unsigned long parent_rate)
-+{
-+	struct clk_pll_psaud *pll = to_clk_pll_psaud(hw);
-+	u32 rsel = 0;
-+	u32 mask = 0, val = 0;
-+
-+	if (WARN_ON_ONCE(rate != 45158400 && rate != 49192000))
-+		return -EINVAL;
-+
-+	if (rate == 45158400)
-+		rsel = 1;
-+	if (pll->id == CLK_PLL_PSAUD1A) {
-+		val  = 0x6a0 | (rsel << 8);
-+		mask = 0x7e0;
-+	} else {
-+		val  = 0x19 | (rsel << 2);
-+		mask = 0x1f;
-+	}
-+	clk_regmap_update(&pll->clkr, pll->reg, mask, val);
-+	return 0;
-+}
-+
-+static unsigned long clk_pll_psaud_recalc_rate(struct clk_hw *hw,
-+					       unsigned long parent_rate)
-+{
-+	struct clk_pll_psaud *pll = to_clk_pll_psaud(hw);
-+	u32 val;
-+	u32 rsel = 0;
-+
-+	val = clk_regmap_read(&pll->clkr, pll->reg);
-+
-+	if (pll->id == CLK_PLL_PSAUD1A)
-+		rsel = !!(val & BIT(8));
-+	else
-+		rsel = !!(val & BIT(2));
-+
-+	return rsel ? 45158400 : 49192000;
-+}
-+
-+const struct clk_ops clk_pll_psaud_ops = {
-+	.enable         = clk_pll_psaud_enable,
-+	.disable        = clk_pll_psaud_disable,
-+	.disable_unused = clk_pll_psaud_disable_unused,
-+	.is_enabled     = clk_pll_psaud_is_enabled,
-+	.set_rate       = clk_pll_psaud_set_rate,
-+	.round_rate     = clk_pll_psaud_round_rate,
-+	.recalc_rate    = clk_pll_psaud_recalc_rate,
-+};
-+
-diff --git a/drivers/clk/realtek/clk-pll.c b/drivers/clk/realtek/clk-pll.c
-new file mode 100644
-index 000000000000..dd90bfc011ec
---- /dev/null
-+++ b/drivers/clk/realtek/clk-pll.c
-@@ -0,0 +1,400 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (C) 2017-2018 Realtek Semiconductor Corporation
-+ * Author: Cheng-Yu Lee <cylee12@realtek.com>
-+ */
-+
-+#include <linux/io.h>
-+#include <linux/slab.h>
-+#include <linux/clk-provider.h>
-+#include <linux/clk.h>
-+#include <linux/spinlock.h>
-+#include <linux/delay.h>
-+#include <linux/debugfs.h>
-+#include "common.h"
-+#include "clk-pll.h"
-+
-+static int clk_pll_debug_rate_u64_set(void *data, u64 val)
-+{
-+	struct clk_hw *hw = data;
-+
-+	clk_set_rate(hw->clk, (unsigned long)(val));
-+	return 0;
-+}
-+
-+static int clk_pll_debug_rate_u64_get(void *data, u64 *val)
-+{
-+	struct clk_hw *hw = data;
-+
-+	*val = (u64)clk_get_rate(hw->clk);
-+	return 0;
-+}
-+
-+DEFINE_SIMPLE_ATTRIBUTE(clk_pll_debut_rate_op, clk_pll_debug_rate_u64_get,
-+			clk_pll_debug_rate_u64_set, "%llu\n");
-+
-+static void clk_pll_debug_init(struct clk_hw *hw, struct dentry *d)
-+{
-+	debugfs_create_file("debug_rate", 0644, d, hw, &clk_pll_debut_rate_op);
-+}
-+
-+static const struct freq_table *ftbl_find_by_rate(const struct freq_table *ftbl,
-+						  unsigned long rate)
-+{
-+	unsigned long best_rate = 0;
-+	const struct freq_table *best = NULL;
-+
-+	for ( ; !IS_FREQ_TABLE_END(ftbl); ftbl++) {
-+		if (ftbl->rate == rate)
-+			return ftbl;
-+
-+		if (ftbl->rate > rate)
-+			continue;
-+
-+		if ((rate - best_rate) > (rate - ftbl->rate)) {
-+			best_rate = ftbl->rate;
-+			best = ftbl;
-+		}
-+	}
-+
-+	return best;
-+}
-+
-+static const struct freq_table *ftbl_find_by_val(const struct freq_table *ftbl,
-+						 uint32_t value)
-+{
-+	while (!IS_FREQ_TABLE_END(ftbl)) {
-+		if (ftbl->val == (value))
-+			return ftbl;
-+		ftbl++;
-+	}
-+	return NULL;
-+};
-+
-+static const struct div_table *dtbl_find_by_rate(const struct div_table *dtbl,
-+						 unsigned long rate)
-+{
-+	while (!IS_DIV_TABLE_END(dtbl)) {
-+		if (rate >= dtbl->rate)
-+			return dtbl;
-+		dtbl++;
-+	}
-+	return NULL;
-+}
-+
-+static const struct div_table *dtbl_find_by_val(const struct div_table *dtbl,
-+						uint32_t val)
-+{
-+	while (!IS_DIV_TABLE_END(dtbl)) {
-+		if (val == dtbl->val)
-+			return dtbl;
-+		dtbl++;
-+	}
-+	return NULL;
-+}
-+
-+static void __clk_pll_set_pow_reg(struct clk_pll *clkp, int on)
-+{
-+	uint32_t pow = (clkp->pow_loc == CLK_PLL_CONF_POW_LOC_CTL3) ? 0x8 : 0x4;
-+
-+	if (on) {
-+		clk_regmap_update(&clkp->clkr, clkp->pll_ofs + pow, 0x7, 0x3);
-+		if (clkp->freq_loc == CLK_PLL_CONF_FREQ_LOC_SSC1) {
-+			uint32_t val;
-+
-+			val = clk_regmap_read(&clkp->clkr, clkp->ssc_ofs + 0x0);
-+
-+			/*
-+			 * For those PLL with SCC used only the default
-+			 * freq, the oc_en would nerver to be set.
-+			 * Help to set it here.
-+			 */
-+			if ((val & 0x7) != 0x5)
-+				clk_regmap_update(&clkp->clkr,
-+					clkp->ssc_ofs + 0x0, 0x7, 0x5);
-+		}
-+		udelay(200);
-+	} else {
-+		clk_regmap_update(&clkp->clkr, clkp->pll_ofs + pow, 0x7, 0x4);
-+	}
-+}
-+
-+static int clk_pll_enable(struct clk_hw *hw)
-+{
-+	struct clk_pll *clkp = to_clk_pll(hw);
-+
-+	if (clk_pll_has_pow(clkp))
-+		__clk_pll_set_pow_reg(clkp, 1);
-+	return 0;
-+}
-+
-+static void clk_pll_disable(struct clk_hw *hw)
-+{
-+	struct clk_pll *clkp = to_clk_pll(hw);
-+
-+	if (clk_pll_has_pow(clkp))
-+		__clk_pll_set_pow_reg(clkp, 0);
-+}
-+
-+static void clk_pll_disable_unused(struct clk_hw *hw)
-+{
-+	pr_info("%pC: %s\n", hw->clk, __func__);
-+	clk_pll_disable(hw);
-+}
-+
-+static int clk_pll_is_enabled(struct clk_hw *hw)
-+{
-+	struct clk_pll *clkp = to_clk_pll(hw);
-+	uint32_t pow;
-+	uint32_t val;
-+
-+	if (!clk_pll_has_pow(clkp))
-+		return -EINVAL;
-+
-+	pow = (clkp->pow_loc == CLK_PLL_CONF_POW_LOC_CTL3) ? 0x8 : 0x4;
-+	val = clk_regmap_read(&clkp->clkr, clkp->pll_ofs + pow);
-+	return !!(val & 0x1);
-+}
-+
-+static long clk_pll_round_rate(struct clk_hw *hw, unsigned long rate,
-+			       unsigned long *parent_rate)
-+{
-+	struct clk_pll *clkp = to_clk_pll(hw);
-+	const struct freq_table *ftblv = NULL;
-+
-+	ftblv = ftbl_find_by_rate(clkp->freq_tbl, rate);
-+	return ftblv ? ftblv->rate : 0;
-+}
-+
-+static uint32_t __clk_pll_freq_get(struct clk_pll *clkp)
-+{
-+	uint32_t val = 0;
-+
-+	switch (clkp->freq_loc) {
-+	case CLK_PLL_CONF_FREQ_LOC_CTL1:
-+		val = clk_regmap_read(&clkp->clkr, clkp->pll_ofs + 0x0);
-+		break;
-+
-+	case CLK_PLL_CONF_FREQ_LOC_CTL2:
-+		val = clk_regmap_read(&clkp->clkr, clkp->pll_ofs + 0x4);
-+		break;
-+
-+	case CLK_PLL_CONF_FREQ_LOC_SSC1:
-+		val = clk_regmap_read(&clkp->clkr, clkp->ssc_ofs + 0x4);
-+		break;
-+
-+	default:
-+		break;
-+	}
-+	return val & clkp->freq_mask;
-+}
-+
-+static unsigned long clk_pll_recalc_rate(struct clk_hw *hw,
-+					 unsigned long parent_rate)
-+{
-+	struct clk_pll *clkp = to_clk_pll(hw);
-+	unsigned long flags = 0;
-+	const struct freq_table *fv;
-+	uint32_t val;
-+
-+	flags = clk_pll_lock(clkp);
-+	val = __clk_pll_freq_get(clkp);
-+	clk_pll_unlock(clkp, flags);
-+
-+	fv = ftbl_find_by_val(clkp->freq_tbl, val);
-+	return fv ? fv->rate : 0;
-+}
-+
-+static inline int __clk_pll_freq_set(struct clk_pll *clkp, uint32_t val)
-+{
-+	struct clk_hw *hw = &clkp->clkr.hw;
-+	int ret = 0;
-+	uint32_t mask = clkp->freq_mask;
-+	uint32_t pollval;
-+
-+	switch (clkp->freq_loc) {
-+	case CLK_PLL_CONF_FREQ_LOC_CTL1:
-+		clk_regmap_update(&clkp->clkr, clkp->pll_ofs, mask, val);
-+		break;
-+
-+	case CLK_PLL_CONF_FREQ_LOC_CTL2:
-+		clk_regmap_update(&clkp->clkr, clkp->pll_ofs + 0x4, mask, val);
-+		clk_regmap_update(&clkp->clkr, clkp->pll_ofs + 0x8, 0x1, 0x0);
-+		clk_regmap_update(&clkp->clkr, clkp->pll_ofs + 0x8, 0x1, 0x1);
-+		break;
-+
-+	case CLK_PLL_CONF_FREQ_LOC_SSC1:
-+		clk_regmap_update(&clkp->clkr, clkp->ssc_ofs + 0x0, 0x7, 0x4);
-+		clk_regmap_update(&clkp->clkr, clkp->ssc_ofs + 0x4, mask, val);
-+		clk_regmap_update(&clkp->clkr, clkp->ssc_ofs + 0x0, 0x7, 0x5);
-+
-+		if (clk_pll_has_pow(clkp) && !clk_pll_is_enabled(hw))
-+			return 0;
-+
-+		ret = regmap_read_poll_timeout(clkp->clkr.regmap,
-+					       clkp->ssc_ofs + 0x1c,
-+					       pollval, pollval & BIT(20),
-+					       0, 2000);
-+		break;
-+
-+	default:
-+		ret = -EINVAL;
-+		break;
-+	}
-+	return ret;
-+}
-+
-+static int clk_pll_set_rate(struct clk_hw *hw, unsigned long rate,
-+			    unsigned long parent_rate)
-+{
-+	struct clk_pll *clkp = to_clk_pll(hw);
-+	unsigned long flags = 0;
-+	const struct freq_table *fv;
-+	int ret = 0;
-+
-+	fv = ftbl_find_by_rate(clkp->freq_tbl, rate);
-+	if (!fv)
-+		return -EINVAL;
-+
-+	pr_debug("%pC: %s: rate=%ld, val=0x%08x\n", hw->clk, __func__,
-+		 fv->rate, fv->val);
-+
-+	flags = clk_pll_lock(clkp);
-+	ret = __clk_pll_freq_set(clkp, fv->val);
-+	clk_pll_unlock(clkp, flags);
-+	if (ret)
-+		pr_warn("%pC %s: failed to set freq: %d\n", hw->clk, __func__,
-+			ret);
-+	return ret;
-+}
-+
-+static void __clk_pll_div_set(struct clk_pll_div *clkpd, uint32_t val)
-+{
-+	uint32_t m = (BIT(clkpd->div_width) - 1) << clkpd->div_shift;
-+	uint32_t s = clkpd->div_shift;
-+
-+	clk_regmap_update(&clkpd->clkp.clkr, clkpd->div_ofs, m, val << s);
-+}
-+
-+static uint32_t __clk_pll_div_get(struct clk_pll_div *clkpd)
-+{
-+	uint32_t m = (BIT(clkpd->div_width) - 1) << clkpd->div_shift;
-+	uint32_t s = clkpd->div_shift;
-+
-+	return (clk_regmap_read(&clkpd->clkp.clkr, clkpd->div_ofs) & m) >> s;
-+}
-+
-+static long clk_pll_div_round_rate(struct clk_hw *hw, unsigned long rate,
-+				   unsigned long *parent_rate)
-+{
-+	struct clk_pll_div *clkpd = to_clk_pll_div(hw);
-+	const struct div_table *dv;
-+
-+	/* lookup div in dtbl */
-+	dv = dtbl_find_by_rate(clkpd->div_tbl, rate);
-+	if (!dv)
-+		return 0;
-+
-+	rate *= dv->div;
-+	rate = clk_pll_round_rate(hw, rate, parent_rate);
-+	return rate / dv->div;
-+}
-+
-+static unsigned long clk_pll_div_recalc_rate(struct clk_hw *hw,
-+					     unsigned long parent_rate)
-+{
-+	struct clk_pll_div *clkpd = to_clk_pll_div(hw);
-+	unsigned long rate;
-+	const struct div_table *dv;
-+	uint32_t val;
-+
-+	rate = clk_pll_recalc_rate(hw, parent_rate);
-+
-+	val = __clk_pll_div_get(clkpd);
-+	dv = dtbl_find_by_val(clkpd->div_tbl, val);
-+	if (!dv)
-+		return 0;
-+
-+	rate /= dv->div;
-+	pr_debug("%pC: %s: current rate=%lu, div=%d, reg_val=0x%x\n",
-+		 hw->clk, __func__, rate, dv->div, val);
-+
-+	return rate;
-+}
-+
-+static int clk_pll_div_set_rate(struct clk_hw *hw, unsigned long rate,
-+				unsigned long parent_rate)
-+{
-+	struct clk *clk = hw->clk;
-+	struct clk_pll_div *clkpd = to_clk_pll_div(hw);
-+	unsigned long flags;
-+	const struct div_table *ndv, *cdv;
-+	unsigned long target;
-+	uint32_t cur_d;
-+	int ret;
-+
-+	/* find next in the dtbl */
-+	ndv = dtbl_find_by_rate(clkpd->div_tbl, rate);
-+	if (!ndv)
-+		return -EINVAL;
-+
-+	target = rate * ndv->div;
-+
-+	/* find current in the dtbl */
-+	cur_d = __clk_pll_div_get(clkpd);
-+	cdv = dtbl_find_by_val(clkpd->div_tbl, cur_d);
-+	if (!cdv)
-+		return -EINVAL;
-+
-+	pr_debug("%pC: rate=%lu, cdv={%d,0x%x}, ndv={%d,0x%x}\n",
-+		 clk, rate, cdv->div, cdv->val, ndv->div, ndv->val);
-+
-+	flags = clk_pll_div_lock(clkpd);
-+
-+	/* workaround to prevent glitch */
-+#ifdef CONFIG_COMMON_CLK_RTD129X
-+	if ((&clkpd->clkp.flags & CLK_PLL_DIV_WORKAROUND) &&
-+		ndv->val != cdv->val && (ndv->val == 1 || cdv->val == 1)) {
-+
-+		pr_debug("%pC: apply rate=%u\n", clk, 1000000000);
-+		clk_pll_set_rate(hw, 1000000000, parent_rate);
-+
-+		pr_debug("%pC: apply dv={%d, 0x%x}\n", clk, ndv->div, ndv->val);
-+		__clk_pll_div_set(clkpd, ndv->val);
-+		cdv = ndv;
-+	}
-+#endif
-+
-+	if (ndv->div > cdv->div)
-+		__clk_pll_div_set(clkpd, ndv->val);
-+	ret = clk_pll_set_rate(hw, target, parent_rate);
-+	if (ndv->div < cdv->div)
-+		__clk_pll_div_set(clkpd, ndv->val);
-+
-+	clk_pll_div_unlock(clkpd, flags);
-+
-+	return ret;
-+}
-+
-+const struct clk_ops clk_pll_ops = {
-+	.debug_init       = clk_pll_debug_init,
-+	.round_rate       = clk_pll_round_rate,
-+	.recalc_rate      = clk_pll_recalc_rate,
-+	.set_rate         = clk_pll_set_rate,
-+	.enable           = clk_pll_enable,
-+	.disable          = clk_pll_disable,
-+	.disable_unused   = clk_pll_disable_unused,
-+	.is_enabled       = clk_pll_is_enabled,
-+};
-+
-+const struct clk_ops clk_pll_div_ops = {
-+	.debug_init       = clk_pll_debug_init,
-+	.round_rate       = clk_pll_div_round_rate,
-+	.recalc_rate      = clk_pll_div_recalc_rate,
-+	.set_rate         = clk_pll_div_set_rate,
-+	.enable           = clk_pll_enable,
-+	.disable          = clk_pll_disable,
-+	.disable_unused   = clk_pll_disable_unused,
-+	.is_enabled       = clk_pll_is_enabled,
-+};
-+
-diff --git a/drivers/clk/realtek/clk-pll.h b/drivers/clk/realtek/clk-pll.h
-new file mode 100644
-index 000000000000..03b4d0391c31
---- /dev/null
-+++ b/drivers/clk/realtek/clk-pll.h
-@@ -0,0 +1,151 @@
++++ b/include/dt-bindings/clock/rtk,clock-rtd1619.h
+@@ -0,0 +1,88 @@
 +/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (C) 2017-2019 Realtek Semiconductor Corporation
-+ * Author: Cheng-Yu Lee <cylee12@realtek.com>
-+ */
-+
-+#ifndef __CLK_REALTEK_CLK_PLL_H
-+#define __CLK_REALTEK_CLK_PLL_H
-+
-+#include "common.h"
-+
-+struct freq_table {
-+	uint32_t val;
-+	unsigned long rate;
-+};
-+
-+#define FREQ_TABLE_END                  { .rate = 0 }
-+#define IS_FREQ_TABLE_END(_f)           ((_f)->rate == 0)
-+
-+struct div_table {
-+	unsigned long rate;
-+	uint32_t div;
-+	uint32_t val;
-+};
-+
-+#define DIV_TABLE_END                   { .rate = 0 }
-+#define IS_DIV_TABLE_END(_d)            ((_d)->rate == 0)
-+
-+struct clk_pll {
-+	struct clk_regmap clkr;
-+
-+
-+	int pll_ofs;
-+	int ssc_ofs;
-+
-+	const struct freq_table *freq_tbl;
-+	uint32_t freq_mask;
-+	uint32_t freq_loc;
-+#define CLK_PLL_CONF_FREQ_LOC_CTL1      1
-+#define CLK_PLL_CONF_FREQ_LOC_CTL2      2
-+#define CLK_PLL_CONF_FREQ_LOC_SSC1      3
-+
-+	uint32_t pow_loc;
-+#define CLK_PLL_CONF_NO_POW             0
-+#define CLK_PLL_CONF_POW_LOC_CTL2       1
-+#define CLK_PLL_CONF_POW_LOC_CTL3       2
-+
-+	spinlock_t *lock;
-+
-+	uint32_t flags;
-+};
-+
-+#define to_clk_pll(_hw) container_of(to_clk_regmap(_hw), struct clk_pll, clkr)
-+#define __clk_pll_hw(_ptr)  __clk_regmap_hw(&(_ptr)->clkr)
-+
-+/* clk_pll flags */
-+#define CLK_PLL_DIV_WORKAROUND          BIT(2)
-+
-+
-+static inline bool clk_pll_has_pow(struct clk_pll *pll)
-+{
-+	if (pll->pow_loc != CLK_PLL_CONF_NO_POW)
-+		return true;
-+	return false;
-+}
-+
-+static inline unsigned long clk_pll_lock(struct clk_pll *pll)
-+{
-+	unsigned long flags = 0;
-+
-+	if (pll->lock)
-+		spin_lock_irqsave(pll->lock, flags);
-+	return flags;
-+}
-+
-+static inline void clk_pll_unlock(struct clk_pll *pll, unsigned long flags)
-+{
-+	if (pll->lock)
-+		spin_unlock_irqrestore(pll->lock, flags);
-+}
-+
-+struct clk_pll_div {
-+	struct clk_pll clkp;
-+	int div_ofs;
-+	int div_shift;
-+	int div_width;
-+	const struct div_table *div_tbl;
-+	spinlock_t *lock;
-+};
-+
-+#define to_clk_pll_div(_hw) \
-+	container_of(to_clk_pll(_hw), struct clk_pll_div, clkp)
-+#define __clk_pll_div_hw(_ptr) __clk_pll_hw(&(_ptr)->clkp)
-+
-+/* clk_pll_div helper functions */
-+static inline unsigned long clk_pll_div_lock(struct clk_pll_div *plld)
-+{
-+	unsigned long flags = 0;
-+
-+	if (plld->lock)
-+		spin_lock_irqsave(plld->lock, flags);
-+	return flags;
-+}
-+
-+static inline void clk_pll_div_unlock(struct clk_pll_div *plld,
-+	unsigned long flags)
-+{
-+	if (plld->lock)
-+		spin_unlock_irqrestore(plld->lock, flags);
-+}
-+
-+extern const struct clk_ops clk_pll_ops;
-+extern const struct clk_ops clk_pll_div_ops;
-+
-+#ifdef CONFIG_CLK_PLL_PSAUD
-+
-+struct clk_pll_psaud {
-+	struct clk_regmap clkr;
-+	int id;
-+	int reg;
-+	spinlock_t *lock;
-+};
-+
-+#define to_clk_pll_psaud(_hw) \
-+	container_of(to_clk_regmap(_hw), struct clk_pll_psaud, clkr)
-+#define __clk_pll_psaud_hw(_ptr)  __clk_regmap_hw(&(_ptr)->clkr)
-+extern const struct clk_ops clk_pll_psaud_ops;
-+
-+#define CLK_PLL_PSAUD1A       (0x1)
-+#define CLK_PLL_PSAUD2A       (0x2)
-+
-+#endif /* CONFIG_CLK_PLL_PSAUD */
-+
-+#ifdef CONFIG_CLK_PLL_DIF
-+
-+struct clk_pll_dif {
-+	struct clk_regmap clkr;
-+	int pll_ofs;
-+	int ssc_ofs;
-+	uint32_t status;
-+	spinlock_t *lock;
-+};
-+#define to_clk_pll_dif(_hw) \
-+	container_of(to_clk_regmap(_hw), struct clk_pll_dif, clkr)
-+#define __clk_pll_dif_hw(_ptr)  __clk_regmap_hw(&(_ptr)->clkr)
-+
-+extern const struct clk_ops clk_pll_dif_ops;
-+#endif /* CONFIG_CLK_PLL_DIF */
-+
-+
-+#endif /* __CLK_REALTEK_CLK_PLL_H */
-diff --git a/drivers/clk/realtek/clk-regmap-gate.c b/drivers/clk/realtek/clk-regmap-gate.c
-new file mode 100644
-index 000000000000..5f4a6a98da94
---- /dev/null
-+++ b/drivers/clk/realtek/clk-regmap-gate.c
-@@ -0,0 +1,89 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (C) 2017 Realtek Semiconductor Corporation
-+ * Author: Cheng-Yu Lee <cylee12@realtek.com>
-+ */
-+
-+#include <linux/slab.h>
-+#include <linux/clk-provider.h>
-+#include "clk-regmap-gate.h"
-+
-+static int clk_regmap_gate_enable(struct clk_hw *hw)
-+{
-+	struct clk_regmap_gate *clkg = to_clk_regmap_gate(hw);
-+	unsigned long flags = 0;
-+	unsigned int mask;
-+	unsigned int val;
-+
-+	if (clkg->lock)
-+		spin_lock_irqsave(clkg->lock, flags);
-+
-+	mask = BIT(clkg->bit_idx);
-+	val  = BIT(clkg->bit_idx);
-+
-+	if (clkg->write_en) {
-+		mask |= BIT(clkg->bit_idx + 1);
-+		val  |= BIT(clkg->bit_idx + 1);
-+	}
-+
-+	clk_regmap_update(&clkg->clkr, clkg->gate_ofs, mask, val);
-+
-+	if (clkg->lock)
-+		spin_unlock_irqrestore(clkg->lock, flags);
-+
-+	return 0;
-+}
-+
-+static void clk_regmap_gate_disable(struct clk_hw *hw)
-+{
-+	struct clk_regmap_gate *clkg = to_clk_regmap_gate(hw);
-+	unsigned long flags = 0;
-+	unsigned int mask;
-+	unsigned int val;
-+
-+	if (clkg->lock)
-+		spin_lock_irqsave(clkg->lock, flags);
-+
-+	mask = BIT(clkg->bit_idx);
-+	val  = 0;
-+
-+	if (clkg->write_en) {
-+		mask |= BIT(clkg->bit_idx + 1);
-+		val  |= BIT(clkg->bit_idx + 1);
-+	}
-+
-+	clk_regmap_update(&clkg->clkr, clkg->gate_ofs, mask, val);
-+
-+	if (clkg->lock)
-+		spin_unlock_irqrestore(clkg->lock, flags);
-+}
-+
-+static void clk_regmap_gate_disable_unused(struct clk_hw *hw)
-+{
-+	pr_info("%pC: %s\n", hw->clk, __func__);
-+	clk_regmap_gate_disable(hw);
-+}
-+
-+static int clk_regmap_gate_is_enabled(struct clk_hw *hw)
-+{
-+	struct clk_regmap_gate *clkg = to_clk_regmap_gate(hw);
-+	int ret;
-+	unsigned long flags = 0;
-+
-+	if (clkg->lock)
-+		spin_lock_irqsave(clkg->lock, flags);
-+
-+	ret = clk_regmap_read(&clkg->clkr, clkg->gate_ofs) & BIT(clkg->bit_idx);
-+
-+	if (clkg->lock)
-+		spin_unlock_irqrestore(clkg->lock, flags);
-+
-+	return !!ret;
-+}
-+
-+const struct clk_ops clk_regmap_gate_ops = {
-+	.enable = clk_regmap_gate_enable,
-+	.disable = clk_regmap_gate_disable,
-+	.disable_unused = clk_regmap_gate_disable_unused,
-+	.is_enabled = clk_regmap_gate_is_enabled,
-+};
-diff --git a/drivers/clk/realtek/clk-regmap-gate.h b/drivers/clk/realtek/clk-regmap-gate.h
-new file mode 100644
-index 000000000000..7643e0193177
---- /dev/null
-+++ b/drivers/clk/realtek/clk-regmap-gate.h
-@@ -0,0 +1,26 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (C) 2017 Realtek Semiconductor Corporation
-+ * Author: Cheng-Yu Lee <cylee12@realtek.com>
-+ */
-+
-+#ifndef __CLK_REALTEK_CLK_MMIO_GATE_H
-+#define __CLK_REALTEK_CLK_MMIO_GATE_H
-+
-+#include "common.h"
-+
-+struct clk_regmap_gate {
-+	struct clk_regmap clkr;
-+	int gate_ofs;
-+	uint8_t bit_idx;
-+	spinlock_t *lock;
-+	int write_en:1;
-+};
-+
-+#define to_clk_regmap_gate(_hw) \
-+	container_of(to_clk_regmap(_hw), struct clk_regmap_gate, clkr)
-+#define __clk_regmap_gate_hw(_p) __clk_regmap_hw(&(_p)->clkr)
-+
-+extern const struct clk_ops clk_regmap_gate_ops;
-+
-+#endif
-diff --git a/drivers/clk/realtek/clk-regmap-mux.c b/drivers/clk/realtek/clk-regmap-mux.c
-new file mode 100644
-index 000000000000..bd7eb706e12a
---- /dev/null
-+++ b/drivers/clk/realtek/clk-regmap-mux.c
-@@ -0,0 +1,63 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (C) 2017 Realtek Semiconductor Corporation
-+ * Author: Cheng-Yu Lee <cylee12@realtek.com>
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/clk-provider.h>
-+#include <linux/module.h>
-+#include <linux/slab.h>
-+#include <linux/io.h>
-+#include <linux/err.h>
-+#include "clk-regmap-mux.h"
-+
-+static u8 clk_regmap_mux_get_parent(struct clk_hw *hw)
-+{
-+	struct clk_regmap_mux *clkm = to_clk_regmap_mux(hw);
-+	int num_parents = clk_hw_get_num_parents(hw);
-+	u32 val;
-+	unsigned long flags = 0;
-+
-+	if (clkm->lock)
-+		spin_lock_irqsave(clkm->lock, flags);
-+
-+	val = clk_regmap_read(&clkm->clkr, clkm->mux_ofs) >> clkm->shift;
-+	if (clkm->lock)
-+		spin_unlock_irqrestore(clkm->lock, flags);
-+
-+	val &= clkm->mask;
-+	if (val >= num_parents)
-+		return -EINVAL;
-+
-+	return val;
-+}
-+
-+static int clk_regmap_mux_set_parent(struct clk_hw *hw, u8 index)
-+{
-+	struct clk_regmap_mux *clkm = to_clk_regmap_mux(hw);
-+	unsigned long flags = 0;
-+
-+	if (clkm->lock)
-+		spin_lock_irqsave(clkm->lock, flags);
-+
-+	clk_regmap_update(&clkm->clkr, clkm->mux_ofs, clkm->mask << clkm->shift,
-+		index << clkm->shift);
-+
-+	if (clkm->lock)
-+		spin_unlock_irqrestore(clkm->lock, flags);
-+	return 0;
-+}
-+
-+const struct clk_ops clk_regmap_mux_ops = {
-+	.get_parent = clk_regmap_mux_get_parent,
-+	.set_parent = clk_regmap_mux_set_parent,
-+	.determine_rate = __clk_mux_determine_rate,
-+};
-+EXPORT_SYMBOL_GPL(clk_regmap_mux_ops);
-+
-+const struct clk_ops clk_regmap_mux_ro_ops = {
-+	.get_parent = clk_regmap_mux_get_parent,
-+};
-+EXPORT_SYMBOL_GPL(clk_regmap_mux_ro_ops);
-+
-diff --git a/drivers/clk/realtek/clk-regmap-mux.h b/drivers/clk/realtek/clk-regmap-mux.h
-new file mode 100644
-index 000000000000..36895f03c0f4
---- /dev/null
-+++ b/drivers/clk/realtek/clk-regmap-mux.h
-@@ -0,0 +1,26 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (C) 2017 Realtek Semiconductor Corporation
-+ * Author: Cheng-Yu Lee <cylee12@realtek.com>
-+ */
-+
-+#ifndef __CLK_REALTEK_CLK_MMIO_MUX_H
-+#define __CLK_REALTEK_CLK_MMIO_MUX_H
-+
-+#include "common.h"
-+
-+struct clk_regmap_mux {
-+	struct clk_regmap clkr;
-+	int mux_ofs;
-+	unsigned int mask;
-+	unsigned int shift;
-+	spinlock_t *lock;
-+};
-+
-+#define to_clk_regmap_mux(_hw) \
-+	container_of(to_clk_regmap(_hw), struct clk_regmap_mux, clkr)
-+#define __clk_regmap_mux_hw(_p) __clk_regmap_hw(&(_p)->clkr)
-+
-+extern const struct clk_ops clk_regmap_mux_ops;
-+
-+#endif
-diff --git a/drivers/clk/realtek/common.c b/drivers/clk/realtek/common.c
-new file mode 100644
-index 000000000000..0c5dc5ce4682
---- /dev/null
-+++ b/drivers/clk/realtek/common.c
-@@ -0,0 +1,320 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Copyright (C) 2019 Realtek Semiconductor Corporation
-+ * Author: Cheng-Yu Lee <cylee12@realtek.com>
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/clkdev.h>
-+#include <linux/clk-provider.h>
-+#include <linux/device.h>
-+#include <linux/init.h>
-+#include <linux/slab.h>
-+#include <linux/pm.h>
-+#include "common.h"
-+#include "clk-pll.h"
-+#include "clk-regmap-gate.h"
-+#include "clk-regmap-mux.h"
-+
-+static int rtk_clk_suspend(struct device *dev)
-+{
-+	struct rtk_clk_data *data = dev_get_drvdata(dev);
-+	int i;
-+
-+	for (i = 0; i < data->pm_data_num; i++) {
-+		struct clk_pm_data *pm_data = &data->pm_data[i];
-+
-+		regmap_read(data->regmap, pm_data->ofs, &pm_data->val);
-+	}
-+	return 0;
-+}
-+
-+static int rtk_clk_resume(struct device *dev)
-+{
-+	struct rtk_clk_data *data = dev_get_drvdata(dev);
-+	int i;
-+
-+	for (i = data->pm_data_num - 1; i >= 0; i--) {
-+		struct clk_pm_data *pm_data = &data->pm_data[i];
-+		uint32_t val = pm_data->val;
-+		uint32_t mask = ~0x0;
-+
-+		if (pm_data->write_en_bits)
-+			val |= pm_data->write_en_bits;
-+		if (pm_data->ignore_bits)
-+			mask &= ~pm_data->ignore_bits;
-+		dev_info(dev, "resuming: ofs=%03x, vs=%08x vr=%08x m=%08x\n",
-+			pm_data->ofs, pm_data->val, val, mask);
-+		regmap_update_bits(data->regmap, pm_data->ofs, mask, val);
-+	}
-+	return 0;
-+}
-+
-+const struct dev_pm_ops rtk_clk_pm_ops = {
-+	.suspend = rtk_clk_suspend,
-+	.resume  = rtk_clk_resume,
-+};
-+
-+struct rtk_clk_data *alloc_rtk_clk_data(int clk_num)
-+{
-+	struct rtk_clk_data *data;
-+
-+	data = kzalloc(sizeof(*data), GFP_KERNEL);
-+	if (!data)
-+		return NULL;
-+
-+	data->clk_num = clk_num;
-+	data->clk_data.clk_num = clk_num;
-+	data->clk_data.clks = kcalloc(clk_num, sizeof(*data->clk_data.clks),
-+				      GFP_KERNEL);
-+	if (!data->clk_data.clks)
-+		goto free_data;
-+	return data;
-+
-+free_data:
-+	kfree(data->clk_data.clks);
-+	kfree(data);
-+	return NULL;
-+}
-+
-+void free_rtk_clk_data(struct rtk_clk_data *data)
-+{
-+	kfree(data->clk_data.clks);
-+	kfree(data);
-+}
-+
-+static inline
-+int __cell_clk_add(struct clk_onecell_data *clk_data, int i, struct clk *clk)
-+{
-+	if (clk_data->clks[i]) {
-+		pr_err("%s: failed to add %pC, cell%d is used by %pC\n",
-+			__func__, clk, i, clk_data->clks[i]);
-+		return -EINVAL;
-+	}
-+	clk_data->clks[i] = clk;
-+	return 0;
-+}
-+
-+#define CLK_TYPE_DEFAULT                (0x0)
-+#define CLK_TYPE_REGMAP                 (0x8)
-+#define CLK_TYPE_REGMAP_PLL             (0x1 | CLK_TYPE_REGMAP)
-+#define CLK_TYPE_REGMAP_MUX             (0x2 | CLK_TYPE_REGMAP)
-+#define CLK_TYPE_REGMAP_GATE            (0x3 | CLK_TYPE_REGMAP)
-+
-+static inline int __hw_to_type(struct clk_hw *hw)
-+{
-+	const struct clk_ops *ops = hw->init->ops;
-+
-+	if (ops == &clk_pll_ops || ops == &clk_pll_div_ops)
-+		return CLK_TYPE_REGMAP_PLL;
-+	if (ops == &clk_regmap_mux_ops)
-+		return CLK_TYPE_REGMAP_MUX;
-+	if (ops == &clk_regmap_gate_ops)
-+		return CLK_TYPE_REGMAP_GATE;
-+#ifdef CONFIG_CLK_PLL_DIF
-+	/*
-+	 * clk_pll_dif is not based struct clk_pll, so
-+	 * return as CLK_TYPE_REGMAP to setup internal
-+	 * clk_reg
-+	 */
-+	if (ops == &clk_pll_dif_ops)
-+		return CLK_TYPE_REGMAP;
-+#endif
-+#ifdef CONFIG_CLK_PLL_PSAUD
-+	/*
-+	 * clk_pll_psaud is not based struct clk_pll, so
-+	 * return as CLK_TYPE_REGMAP to setup internal
-+	 * clk_reg
-+	 */
-+	if (ops == &clk_pll_psaud_ops)
-+		return CLK_TYPE_REGMAP;
-+#endif
-+
-+	return CLK_TYPE_DEFAULT;
-+}
-+
-+static
-+struct clk *rtk_clk_register_hw(struct device *dev, struct regmap *regmap,
-+				struct clk_hw *hw)
-+{
-+	int type;
-+
-+	type = __hw_to_type(hw);
-+	if (type & CLK_TYPE_REGMAP) {
-+		struct clk_regmap *clkr = to_clk_regmap(hw);
-+
-+		clkr->regmap = regmap;
-+	}
-+
-+	return clk_register(dev, hw);
-+}
-+
-+int rtk_clk_add_hws(struct device *dev, struct rtk_clk_data *data,
-+		    struct clk_hw **hws, int num)
-+{
-+	struct clk_onecell_data *clk_data = &data->clk_data;
-+	struct regmap *regmap = data->regmap;
-+	int i;
-+
-+	for (i = 0; i < num; i++) {
-+		struct clk_hw *hw = hws[i];
-+		const char *name;
-+		struct clk *clk;
-+
-+		if (IS_ERR(hw))
-+			__cell_clk_add(clk_data, i, ERR_CAST(hw));
-+		if (IS_ERR_OR_NULL(hw))
-+			continue;
-+
-+		name = hw->init->name;
-+		clk = rtk_clk_register_hw(dev, regmap, hw);
-+		if (IS_ERR(clk)) {
-+			pr_err("%s: failed to add hw%d(%s): %ld\n", __func__,
-+				i, name, PTR_ERR(clk));
-+			continue;
-+		}
-+
-+		clk_register_clkdev(clk, name, NULL);
-+		__cell_clk_add(clk_data, i, clk);
-+	}
-+	return 0;
-+}
-+
-+static
-+struct clk *rtk_clk_register_composite(struct device *dev,
-+				       struct regmap *regmap,
-+				       struct clk_composite_data *comp)
-+{
-+	struct clk_regmap_mux *clkm = NULL;
-+	const struct clk_ops *mux_op = NULL;
-+	struct clk_hw *mux_hw = NULL;
-+	struct clk_regmap_gate *clkg = NULL;
-+	const struct clk_ops *gate_op = NULL;
-+	struct clk_hw *gate_hw = NULL;
-+	struct clk *clk;
-+
-+	if (comp->mux_ofs != CLK_OFS_INVALID) {
-+		clkm = kzalloc(sizeof(*clkm), GFP_KERNEL);
-+		if (!clkm) {
-+			clk = ERR_PTR(-ENOMEM);
-+			goto check_err;
-+		}
-+
-+		clkm->mux_ofs     = comp->mux_ofs;
-+		clkm->mask        = BIT(comp->mux_width) - 1;
-+		clkm->shift       = comp->mux_shift;
-+		clkm->clkr.regmap = regmap;
-+
-+		mux_op = &clk_regmap_mux_ops;
-+		mux_hw = &__clk_regmap_mux_hw(clkm);
-+	}
-+
-+	if (comp->gate_ofs != CLK_OFS_INVALID) {
-+		clkg = kzalloc(sizeof(*clkg), GFP_KERNEL);
-+		if (!clkg) {
-+			clk = ERR_PTR(-ENOMEM);
-+			goto check_err;
-+		}
-+
-+		clkg->gate_ofs    = comp->gate_ofs;
-+		clkg->bit_idx     = comp->gate_shift;
-+		clkg->write_en    = comp->gate_write_en;
-+		clkg->clkr.regmap = regmap;
-+
-+		gate_op = &clk_regmap_gate_ops;
-+		gate_hw = &__clk_regmap_gate_hw(clkg);
-+	}
-+
-+	clk = clk_register_composite(NULL, comp->name, comp->parent_names,
-+				     comp->num_parents, mux_hw, mux_op,
-+				     NULL, NULL, gate_hw, gate_op, comp->flags);
-+check_err:
-+	if (IS_ERR(clk)) {
-+		kfree(clkm);
-+		kfree(clkg);
-+	}
-+	return clk;
-+}
-+
-+int rtk_clk_add_composites(struct device *dev, struct rtk_clk_data *data,
-+			   struct clk_composite_data *comps, int num)
-+{
-+	struct clk_onecell_data *clk_data = &data->clk_data;
-+	struct regmap *regmap = data->regmap;
-+	int i;
-+
-+	for (i = 0; i < num; i++) {
-+		struct clk_composite_data *comp = &comps[i];
-+		const char *name = comp->name;
-+		struct clk *clk;
-+
-+		clk = rtk_clk_register_composite(dev, regmap, comp);
-+		if (IS_ERR(clk)) {
-+			pr_err("%s: failed to add composite%d(%s): %ld\n",
-+				__func__, i, name, PTR_ERR(clk));
-+			continue;
-+		}
-+
-+		clk_register_clkdev(clk, name, NULL);
-+		__cell_clk_add(clk_data, comp->id, clk);
-+	}
-+
-+	return 0;
-+}
-+
-+static
-+struct clk *rtk_clk_register_gate(struct device *dev, struct regmap *regmap,
-+				  struct clk_gate_data *gate)
-+{
-+	struct clk_regmap_gate *clkg;
-+	struct clk_init_data init = { 0 };
-+	struct clk_hw *hw;
-+
-+	clkg = kzalloc(sizeof(*clkg), GFP_KERNEL);
-+	if (!clkg)
-+		return ERR_PTR(-ENOMEM);
-+
-+	clkg->gate_ofs    = gate->gate_ofs;
-+	clkg->bit_idx     = gate->gate_shift;
-+	clkg->write_en    = gate->gate_write_en;
-+	clkg->clkr.regmap = regmap;
-+
-+	init.name         = gate->name;
-+	init.ops          = &clk_regmap_gate_ops;
-+	init.flags         = gate->flags;
-+	if (gate->parent) {
-+		init.parent_names = &gate->parent;
-+		init.num_parents  = 1;
-+	}
-+
-+	hw = &__clk_regmap_gate_hw(clkg);
-+	hw->init = &init;
-+	return clk_register(dev, hw);
-+}
-+
-+int rtk_clk_add_gates(struct device *dev, struct rtk_clk_data *data,
-+		      struct clk_gate_data *gates, int num)
-+{
-+	struct clk_onecell_data *clk_data = &data->clk_data;
-+	struct regmap *regmap = data->regmap;
-+	int i;
-+
-+	for (i = 0; i < num; i++) {
-+		struct clk_gate_data *gate = &gates[i];
-+		const char *name = gate->name;
-+		struct clk *clk;
-+
-+		clk = rtk_clk_register_gate(dev, regmap, gate);
-+		if (IS_ERR(clk)) {
-+			pr_err("%s: failed to add gate%d(%s): %ld\n", __func__,
-+				i, name, PTR_ERR(clk));
-+			continue;
-+		}
-+
-+		clk_register_clkdev(clk, name, NULL);
-+		__cell_clk_add(clk_data, gate->id, clk);
-+	}
-+
-+	return 0;
-+}
-+
-diff --git a/drivers/clk/realtek/common.h b/drivers/clk/realtek/common.h
-new file mode 100644
-index 000000000000..c736b254852f
---- /dev/null
-+++ b/drivers/clk/realtek/common.h
-@@ -0,0 +1,123 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (C) 2016-2019 Realtek Semiconductor Corporation
-+ * Author: Cheng-Yu Lee <cylee12@realtek.com>
-+ */
-+
-+#ifndef __CLK_REALTEK_COMMON_H
-+#define __CLK_REALTEK_COMMON_H
-+
-+#include <linux/bitops.h>
-+#include <linux/clk-provider.h>
-+#include <linux/device.h>
-+#include <linux/io.h>
-+#include <linux/of.h>
-+#include <linux/regmap.h>
-+
-+struct device;
-+struct platform_device;
-+
-+struct clk_regmap {
-+	struct clk_hw hw;
-+	struct regmap *regmap;
-+};
-+
-+#define to_clk_regmap(_hw) container_of(_hw, struct clk_regmap, hw)
-+#define __clk_regmap_hw(_p) ((_p)->hw)
-+
-+static inline
-+void clk_regmap_write(struct clk_regmap *clkr, uint32_t ofs, uint32_t val)
-+{
-+	pr_debug("%s: ofs=%03x, val=%08x\n", __func__, ofs, val);
-+	regmap_write(clkr->regmap, ofs, val);
-+}
-+
-+static inline
-+uint32_t clk_regmap_read(struct clk_regmap *clkr, uint32_t ofs)
-+{
-+	uint32_t val = 0;
-+
-+	regmap_read(clkr->regmap, ofs, &val);
-+	pr_debug("%s: ofs=%03x, val=%08x\n", __func__, ofs, val);
-+	return val;
-+}
-+
-+static inline void clk_regmap_update(struct clk_regmap *clkr, uint32_t ofs,
-+				     uint32_t mask, uint32_t val)
-+{
-+	pr_debug("%s: ofs=%03x, mask=%08x, val=%08x\n", __func__, ofs,
-+		 mask, val);
-+	regmap_update_bits(clkr->regmap, ofs, mask, val);
-+}
-+
-+/* ofs check */
-+#define CLK_OFS_INVALID                 (-1)
-+#define CLK_OFS_IS_VALID(_ofs)          ((_ofs) != CLK_OFS_INVALID)
-+
-+struct clk_composite_data {
-+	int id;
-+	const char *name;
-+	unsigned long flags;
-+	struct clk *clk;
-+
-+	int gate_ofs;
-+	int gate_shift;
-+	int gate_write_en;
-+
-+	int mux_ofs;
-+	int mux_width;
-+	int mux_shift;
-+	const char * const *parent_names;
-+	int num_parents;
-+};
-+
-+struct clk_gate_data {
-+	int id;
-+	const char *name;
-+	const char *parent;
-+	unsigned long flags;
-+	struct clk *clk;
-+
-+	int gate_ofs;
-+	int gate_shift;
-+	int gate_write_en;
-+};
-+
-+#define CLK_GATE_DATA(_id, _name, _parent, _flags, _ofs, _shift, _write_en) \
-+{ \
-+	.id = _id, \
-+	.name = _name, \
-+	.parent = _parent, \
-+	.flags = _flags, \
-+	.gate_ofs = _ofs, \
-+	.gate_shift = _shift, \
-+	.gate_write_en = _write_en, \
-+}
-+
-+struct clk_pm_data {
-+	int ofs;
-+	uint32_t ignore_bits;
-+	uint32_t write_en_bits;
-+	uint32_t val;
-+};
-+
-+struct rtk_clk_data {
-+	int clk_num;
-+	struct regmap *regmap;
-+	struct clk_onecell_data clk_data;
-+	struct clk_pm_data *pm_data;
-+	int pm_data_num;
-+};
-+
-+struct rtk_clk_data *alloc_rtk_clk_data(int clk_num);
-+void free_rtk_clk_data(struct rtk_clk_data *data);
-+int rtk_clk_add_hws(struct device *dev, struct rtk_clk_data *data,
-+		    struct clk_hw **hws, int num);
-+int rtk_clk_add_composites(struct device *dev, struct rtk_clk_data *data,
-+			   struct clk_composite_data *comps, int num);
-+int rtk_clk_add_gates(struct device *dev, struct rtk_clk_data *data,
-+		      struct clk_gate_data *gates, int num);
-+extern const struct dev_pm_ops rtk_clk_pm_ops;
-+
-+#endif /* __CLK_REALTEK_COMMON_H */
++#ifndef __DT_BINDINGS_RTK_CLOCK_RTD1619_H
++#define __DT_BINDINGS_RTK_CLOCK_RTD1619_H
++
++#define CC_PLL_SCPU 0
++#define CC_PLL_BUS 2
++#define CC_CLK_SYS 3
++#define CC_CLK_SYS_SB2 4
++#define CC_PLL_DCSB 5
++#define CC_CLK_SYSH 6
++#define CC_PLL_DDSA 7
++#define CC_PLL_DDSB 8
++#define CC_PLL_GPU 9
++#define CC_CLK_GPU 10
++#define CC_PLL_VE1 11
++#define CC_PLL_VE2 12
++#define CC_CLK_VE1 13
++#define CC_CLK_VE2 14
++#define CC_CLK_VE3 15
++#define CC_CLK_VE2_BPU 16
++#define CC_PLL_DIF 17
++#define CC_PLL_PSAUD1A 18
++#define CC_PLL_PSAUD2A 19
++
++#define CC_CKE_MISC 33
++#define CC_CKE_PCIE0 34
++#define CC_CKE_GSPI 35
++#define CC_CKE_SDS 36
++#define CC_CKE_HDMI 37
++#define CC_CKE_LSADC 38
++#define CC_CKE_SE 39
++#define CC_CKE_CP 40
++#define CC_CKE_MD 41
++#define CC_CKE_TP 42
++#define CC_CKE_RSA 43
++#define CC_CKE_NF 44
++#define CC_CKE_EMMC 45
++#define CC_CKE_SD 46
++#define CC_CKE_SDIO_IP 47
++#define CC_CKE_MIPI 48
++#define CC_CKE_EMMC_IP 49
++#define CC_CKE_SDIO 50
++#define CC_CKE_SD_IP 51
++#define CC_CKE_CABLERX 52
++#define CC_CKE_TPB 53
++#define CC_CKE_SC1 54
++#define CC_CKE_I2C3 55
++#define CC_CKE_JPEG 56
++#define CC_CKE_SC0 57
++#define CC_CKE_HDMIRX 58
++#define CC_CKE_HSE 59
++#define CC_CKE_UR2 60
++#define CC_CKE_UR1 61
++#define CC_CKE_FAN 62
++#define CC_CKE_SATA_WRAP_SYS 63
++#define CC_CKE_SATA_WRAP_SYSH 64
++#define CC_CKE_SATA_MAC_SYSH 65
++#define CC_CKE_R2RDSC 66
++#define CC_CKE_PCIE1 67
++#define CC_CKE_I2C4 68
++#define CC_CKE_I2C5 69
++#define CC_CKE_EDP 70
++#define CC_CKE_TSIO_TRX 71
++#define CC_CKE_TVE 72
++#define CC_CKE_VO 73
++
++#define CC_CLK_MAX 74
++
++
++#define IC_CKE_CEC0 2
++#define IC_CKE_CBUSRX_SYS 3
++#define IC_CKE_CBUSTX_SYS 4
++#define IC_CKE_CBUS_SYS 5
++#define IC_CKE_CBUS_OSC 6
++#define IC_CKE_IR 7
++#define IC_CKE_UR0 8
++#define IC_CKE_I2C0 9
++#define IC_CKE_I2C1 10
++#define IC_CKE_ETN_250M 11
++#define IC_CKE_ETN_SYS 12
++#define IC_CKE_USB_DRD 13
++#define IC_CKE_USB_HOST 14
++#define IC_CKE_USB_U3_HOST 15
++#define IC_CKE_USB 16
++#define IC_CLK_MAX 17
++
++#endif /* __DT_BINDINGS_RTK_CLOCK_RTD1619_H */
 +
 -- 
 2.24.0
