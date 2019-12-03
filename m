@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6DF0DC432C0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 03:06:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 436E5C43215
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 03:06:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2E53B2068E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 03:06:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E35642068E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 03:06:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tX/PQN0s";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="lctfpE71"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2E53B2068E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BUIgeXVU";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="M9RMVVU3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E35642068E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xmNJ863iJIekbSO8e57NNN7CMgVGbtAE2mAkSTFBZz8=; b=tX/PQN0s/9tmcu
-	+oJjd+HZ9bhNY0cHteXABBtHhl3L1j4hxM8WONs1QDoATNBXu/+rOVC+fRAOkXGoavjCJxqId9i3+
-	OQzcWrfj/GqX5nK1Ofdu5ld0Nr1wI1dP7G9Nx5bZw1Eq1PqjXP+L82CCKz6tSZsei4Sh0+CHr42Wh
-	yeP8ejaiPEd17b+jkAjL351m4FU0/jnE/+oTAuHt9pGGElnc+DkU8UPa/tRhz3Z/9N0cSLDahGdTp
-	FyGAi9rqzWM6ACVURO4i0EfFT6s/Yo3dChzdtYPQusnp5Q9hl22FINHFUCCPdcEnFQQjW4p0r5ZpS
-	SItl1aPRNSj+wdX5axzA==;
+	List-Owner; bh=2t12gBYrna5giVoOc+00jXXSgMeGZ492Mi003RjvFO0=; b=BUIgeXVUymbCAo
+	w6Cc1hcmikmhprDtPqAckRkWFZhFe0f6+aPNU8vcvzFBYouC0KSxe/+J00pzBtM2iWjb5Xz9xl38C
+	kHrapaSmrbXeL+wZ9eF0/TSfLZHdaHyG5LdKMln+45tOtucw/H+gC2/eF3go/T/TKR+PRVZeWUi/L
+	K/WkvWOQ3Co1y80cerinqyBreTfMUH8QliCB9d/4lmBMpFGqXC4lxSa5ZD28g7coiDwFWRuCDsbLz
+	Flsaxazj8IRgDqshkrg2UFTsOpnFvSvEyHrE/dyGPbaqXp36iaAcT2Y/r3tykNXEx0srKNWWPymWe
+	Y5cPC2Ud4vGJkeld8N4A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ibyWA-0006SK-7z; Tue, 03 Dec 2019 03:06:26 +0000
+	id 1ibyWC-0006VE-8y; Tue, 03 Dec 2019 03:06:28 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ibyW1-0006Kj-Uv; Tue, 03 Dec 2019 03:06:20 +0000
-X-UUID: 5807c51f2ef742dd9e46b507ba9e60ec-20191202
+ id 1ibyW3-0006KU-CZ; Tue, 03 Dec 2019 03:06:21 +0000
+X-UUID: c1a1ba0c802b4db28d45884c4f41f8f2-20191202
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=WbuStjV9RqL/lNhT3KcEaQtDIheHeoMGleNxkBNRQcM=; 
- b=lctfpE716ICBMPR8jpEJhYGdRquH1G2XiWCWDahu1a41ReYeYORvnmlVn2dMAdJYpo+m6y/9eRKDfw6+n2I//1EZQe2CNcjrCNOxhfB+XYfehUyy6KloKaVF8Lr4InKYMyvQFZjQKsJ8cf3UTmcU8msaFvq5M+ZchyDonCQGaQM=;
-X-UUID: 5807c51f2ef742dd9e46b507ba9e60ec-20191202
+ bh=pmVMm5SOfCFhpHw4vOj3FTnsiDgBoQKAvwJKCKcst2Q=; 
+ b=M9RMVVU3ClZgl7kr+w58TYfLI85oC+ADmSf2PhCOeLhnpnaMqU8do2YuHeNhK49abHcPrIa3AHGKqOjPRnJqNzpLTYiu7jkwRAejXqsLCmz7Db+aQdphG/QjNj29q1Rw8s86iMmLQ+pARe6nxQHVTz8RxYmFV9Q5z3tsMGBhRuo=;
+X-UUID: c1a1ba0c802b4db28d45884c4f41f8f2-20191202
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ (envelope-from <yong.liang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 608711536; Mon, 02 Dec 2019 19:06:13 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ with ESMTP id 1032841279; Mon, 02 Dec 2019 19:06:13 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 2 Dec 2019 18:56:53 -0800
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 3 Dec 2019 10:55:24 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 3 Dec 2019 10:56:45 +0800
-Message-ID: <1575341763.19788.3.camel@mtksdaap41>
-Subject: Re: [PATCH v1 5/6] drm/mediatek: support CMDQ interface in ddp
- component
-From: CK Hu <ck.hu@mediatek.com>
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Date: Tue, 3 Dec 2019 10:56:03 +0800
-In-Reply-To: <20191128024238.9399-6-bibby.hsieh@mediatek.com>
-References: <20191128024238.9399-1-bibby.hsieh@mediatek.com>
- <20191128024238.9399-6-bibby.hsieh@mediatek.com>
+ 15.0.1395.4; Mon, 2 Dec 2019 19:02:52 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Tue, 3 Dec 2019 11:02:01 +0800
+Received: from [10.17.3.153] (172.27.4.253) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Tue, 3 Dec 2019 11:01:56 +0800
+Message-ID: <1575342124.7013.13.camel@mhfsdcap03>
+Subject: Re: [PATCH v5 2/2] watchdog: mtk_wdt: mt8183: Add reset controller
+From: Yong Liang <yong.liang@mediatek.com>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Date: Tue, 3 Dec 2019 11:02:04 +0800
+In-Reply-To: <88994e7445df8b2d98f3548e2043eb29bf5fa95f.camel@pengutronix.de>
+References: <20191125061627.GA7313@roeck-us.net>
+ <e138b69efad563822da1db8e160d43458c21eae1.camel@pengutronix.de>
+ <1575016588.7013.8.camel@mhfsdcap03>
+ <88994e7445df8b2d98f3548e2043eb29bf5fa95f.camel@pengutronix.de>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: F4B85E6EDEF300A7A86BFC992C143BAD71BEFFB95CAEA01CD399E2B279F860CF2000:8
+X-TM-SNTS-SMTP: 82EBD1AB543FDABB01B85E3B0278C45DF1646569865AE3A902AE5107D2AF64112000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191202_190618_017802_65CDA48A 
-X-CRM114-Status: GOOD (  19.07  )
+X-CRM114-CacheID: sfid-20191202_190619_428519_8D7BEA60 
+X-CRM114-Status: GOOD (  27.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,430 +86,167 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: drinkcat@chromium.org, Yongqiang Niu <yongqiang.niu@mediatek.com>,
- srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel.vetter@ffwll.ch>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, tfiga@chromium.org,
- Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
+ "alsa-devel@alsa-project.org" <alsa-devel@alsa-project.org>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+ Jiaxin Yu =?UTF-8?Q?=28=E4=BF=9E=E5=AE=B6=E9=91=AB=29?=
+ <Jiaxin.Yu@mediatek.com>, "perex@perex.cz" <perex@perex.cz>,
+ "tzungbi@google.com" <tzungbi@google.com>,
+ "broonie@kernel.org" <broonie@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Guenter Roeck <linux@roeck-us.net>,
+ Eason Yen =?UTF-8?Q?=28=E9=A1=8F=E5=BB=B7=E4=BB=BB=29?=
+ <Eason.Yen@mediatek.com>,
+ Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?=
+ <Yingjoe.Chen@mediatek.com>, "wim@linux-watchdog.org" <wim@linux-watchdog.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Bibby:
-
-On Thu, 2019-11-28 at 10:42 +0800, Bibby Hsieh wrote:
-> The CMDQ (Command Queue) in MT8183 is used to help
-> update all relevant display controller registers
-> with critical time limation.
-> This patch add cmdq interface in ddp_comp interface,
-> let all ddp_comp interface can support cpu/cmdq function
-> at the same time.
+On Mon, 2019-12-02 at 21:02 +0800, Philipp Zabel wrote:
+> On Fri, 2019-11-29 at 16:36 +0800, Yong Liang wrote:
+> > On Mon, 2019-11-25 at 17:51 +0800, Philipp Zabel wrote:
+> > > On Sun, 2019-11-24 at 22:16 -0800, Guenter Roeck wrote:
+> > > > On Mon, Nov 25, 2019 at 11:03:50AM +0800, Jiaxin Yu wrote:
+> > > > > From: "yong.liang" <yong.liang@mediatek.com>
+> > > > > 
+> > > > > Add reset controller API in watchdog driver.
+> > > > > Besides watchdog, MTK toprgu module also provide sub-system (eg, audio,
+> > > > > camera, codec and connectivity) software reset functionality.
+> > > > > 
+> > > > > Signed-off-by: yong.liang <yong.liang@mediatek.com>
+> > > > > Signed-off-by: jiaxin.yu <jiaxin.yu@mediatek.com>
+> > > > > Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+> > > > > ---
+> > > > >  drivers/watchdog/Kconfig   |   1 +
+> > > > >  drivers/watchdog/mtk_wdt.c | 111 ++++++++++++++++++++++++++++++++++++-
+> > > > >  2 files changed, 111 insertions(+), 1 deletion(-)
+> > > > > 
+> > > > > diff --git a/drivers/watchdog/Kconfig b/drivers/watchdog/Kconfig
+> > > > > index 2e07caab9db2..629249fe5305 100644
+> > > > > --- a/drivers/watchdog/Kconfig
+> > > > > +++ b/drivers/watchdog/Kconfig
+> > > > > @@ -717,6 +717,7 @@ config MEDIATEK_WATCHDOG
+> > > > >  	tristate "Mediatek SoCs watchdog support"
+> > > > >  	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > > > >  	select WATCHDOG_CORE
+> > > > > +	select RESET_CONTROLLER
+> > > > >  	help
+> > > > >  	  Say Y here to include support for the watchdog timer
+> > > > >  	  in Mediatek SoCs.
+> > > > > diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+> > > > > index 9c3d0033260d..d29484c7940a 100644
+> > > > > --- a/drivers/watchdog/mtk_wdt.c
+> > > > > +++ b/drivers/watchdog/mtk_wdt.c
+> > > > > @@ -9,6 +9,9 @@
+> > > > >   * Based on sunxi_wdt.c
+> > > > >   */
+> > > > >  
+> > > > > +#include <dt-bindings/reset-controller/mt2712-resets.h>
+> > > > > +#include <dt-bindings/reset-controller/mt8183-resets.h>
+> > > > > +#include <linux/delay.h>
+> > > > >  #include <linux/err.h>
+> > > > >  #include <linux/init.h>
+> > > > >  #include <linux/io.h>
+> > > > > @@ -16,10 +19,12 @@
+> > > > >  #include <linux/module.h>
+> > > > >  #include <linux/moduleparam.h>
+> > > > >  #include <linux/of.h>
+> > > > > +#include <linux/of_device.h>
+> > > > >  #include <linux/platform_device.h>
+> > > > > +#include <linux/reset-controller.h>
+> > > > > +#include <linux/slab.h>
+> > > > >  #include <linux/types.h>
+> > > > >  #include <linux/watchdog.h>
+> > > > > -#include <linux/delay.h>
+> > > > >  
+> > > > >  #define WDT_MAX_TIMEOUT		31
+> > > > >  #define WDT_MIN_TIMEOUT		1
+> > > > > @@ -44,6 +49,9 @@
+> > > > >  #define WDT_SWRST		0x14
+> > > > >  #define WDT_SWRST_KEY		0x1209
+> > > > >  
+> > > > > +#define WDT_SWSYSRST		0x18U
+> > > > > +#define WDT_SWSYS_RST_KEY	0x88000000
+> > > > > +
+> > > > >  #define DRV_NAME		"mtk-wdt"
+> > > > >  #define DRV_VERSION		"1.0"
+> > > > >  
+> > > > > @@ -53,8 +61,99 @@ static unsigned int timeout;
+> > > > >  struct mtk_wdt_dev {
+> > > > >  	struct watchdog_device wdt_dev;
+> > > > >  	void __iomem *wdt_base;
+> > > > > +	spinlock_t lock; /* protects WDT_SWSYSRST reg */
+> > > > > +	struct reset_controller_dev rcdev;
+> > > > > +};
+> > > > > +
+> > > > > +struct mtk_wdt_data {
+> > > > > +	int sw_rst_num;
+> > > > >  };
+> > > > >  
+> > > > > +static const struct mtk_wdt_data mt2712_data = {
+> > > > > +	.sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
+> > > > > +};
+> > > > > +
+> > > > > +static const struct mtk_wdt_data mt8183_data = {
+> > > > > +	.sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
+> > > > > +};
+> > > > 
+> > > > The number of resets can be set in .data directly; there is no need
+> > > > for the structures.
+> > 
+> >     We want to put all properities in mtxxxx-resets.h and it easy to
+> > manager. If there are new properity in the feture, we can put it in
+> > mtk_wdt_data mtxxxx_data
 > 
-> Signed-off-by: YT Shen <yt.shen@mediatek.com>
-> Signed-off-by: CK Hu <ck.hu@mediatek.com>
-> Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_color.c   |   7 +-
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |  65 ++++++-----
->  drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |  43 ++++---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  11 +-
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 120 ++++++++++++++------
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  55 ++++++---
->  6 files changed, 190 insertions(+), 111 deletions(-)
+> Do you expect there will be more properties in the future?
+
+  Yes, We may put some infra reset bit and max number in mtxxxx-resets.h
 > 
+> > > > > +static int toprgu_reset_deassert(struct reset_controller_dev *rcdev,
+> > > > > +				 unsigned long id)
+> > > > > +{
+> > > > > +	unsigned int tmp;
+> > > > > +	unsigned long flags;
+> > > > > +	struct mtk_wdt_dev *data =
+> > > > > +		 container_of(rcdev, struct mtk_wdt_dev, rcdev);
+> > > > > +
+> > > > > +	spin_lock_irqsave(&data->lock, flags);
+> > > > > +
+> > > > > +	tmp = __raw_readl(data->wdt_base + WDT_SWSYSRST);
+> > > > > +	tmp &= ~BIT(id);
+> > > > > +	tmp |= WDT_SWSYS_RST_KEY;
+> > > > > +	writel(tmp, data->wdt_base + WDT_SWSYSRST);
+> > > > > +
+> > > > > +	spin_unlock_irqrestore(&data->lock, flags);
+> > > > > +
+> > > > > +	return 0;
+> > > > > +}
+> > > > 
+> > > > There is a lot of duplication in those functions. Only one line
+> > > > is different. I think this is a good example where a helper function
+> > > > with an additional argument indicating set or reset would be helpful.
+> > > > 
+> >     .assert and .dessert are two numbers of struct reset_control_ops.
+> >      I think it's better to define both of them.
+> 
+> The suggestion was to have two very short _assert and _deassert
+> functions that only contain a single call to a common helper function.
+> See the reset-a10sr.c driver for an example.
 
-[snip]
-
->  
->  static const struct mtk_ddp_comp_funcs mtk_disp_rdma_funcs = {
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> index b26b7a98587b..fcf4e755e0bd 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -304,7 +304,7 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
->  		if (prev == DDP_COMPONENT_OVL0)
->  			mtk_ddp_comp_bgclr_in_on(comp);
->  
-> -		mtk_ddp_comp_config(comp, width, height, vrefresh, bpc);
-> +		mtk_ddp_comp_config(comp, width, height, vrefresh, bpc, NULL);
->  		mtk_ddp_comp_start(comp);
->  	}
->  
-> @@ -319,7 +319,7 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
->  		comp = mtk_drm_ddp_comp_for_plane(crtc, plane, &local_layer);
->  		if (comp)
->  			mtk_ddp_comp_layer_config(comp, local_layer,
-> -						  plane_state);
-> +						  plane_state, NULL);
->  	}
->  
->  	return 0;
-> @@ -383,7 +383,7 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
->  	if (state->pending_config) {
->  		mtk_ddp_comp_config(comp, state->pending_width,
->  				    state->pending_height,
-> -				    state->pending_vrefresh, 0);
-> +				    state->pending_vrefresh, 0, NULL);
->  
->  		state->pending_config = false;
->  	}
-> @@ -403,7 +403,7 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
->  
->  			if (comp)
->  				mtk_ddp_comp_layer_config(comp, local_layer,
-> -							  plane_state);
-> +							  plane_state, NULL);
->  			plane_state->pending.config = false;
->  		}
->  		mtk_crtc->pending_planes = false;
-> @@ -562,7 +562,8 @@ static void mtk_drm_crtc_atomic_flush(struct drm_crtc *crtc,
->  		mtk_crtc->pending_planes = true;
->  	if (crtc->state->color_mgmt_changed)
->  		for (i = 0; i < mtk_crtc->ddp_comp_nr; i++)
-> -			mtk_ddp_gamma_set(mtk_crtc->ddp_comp[i], crtc->state);
-> +			mtk_ddp_gamma_set(mtk_crtc->ddp_comp[i],
-> +					  crtc->state, NULL);
-
-If gamm_set is always with NULL packet, I think you need not to change
-the interface of gamma_set.
-
-Regards,
-CK
-
->  
->  	if (priv->data->shadow_register) {
->  		mtk_disp_mutex_acquire(mtk_crtc->mutex);
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> index 3407d38aff8f..6d0f349ddf82 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> @@ -12,7 +12,8 @@
->  #include <linux/of_irq.h>
->  #include <linux/of_platform.h>
->  #include <linux/platform_device.h>
-> -
-> +#include <drm/drmP.h>
-> +#include <linux/soc/mediatek/mtk-cmdq.h>
->  #include "mtk_drm_drv.h"
->  #include "mtk_drm_plane.h"
->  #include "mtk_drm_ddp_comp.h"
-> @@ -76,36 +77,82 @@
->  #define DITHER_ADD_LSHIFT_G(x)			(((x) & 0x7) << 4)
->  #define DITHER_ADD_RSHIFT_G(x)			(((x) & 0x7) << 0)
->  
-> +void mtk_ddp_write(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-> +		   struct mtk_ddp_comp *comp, unsigned int offset)
-> +{
-> +	if (cmdq_pkt)
-> +#ifdef CONFIG_MTK_CMDQ
-> +		cmdq_pkt_write(cmdq_pkt, comp->subsys,
-> +			       comp->regs_pa + offset, value);
-> +#endif
-> +	else
-> +		writel(value, comp->regs + offset);
-> +}
-> +
-> +void mtk_ddp_write_relaxed(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-> +			   struct mtk_ddp_comp *comp,
-> +			   unsigned int offset)
-> +{
-> +	if (cmdq_pkt)
-> +#ifdef CONFIG_MTK_CMDQ
-> +		cmdq_pkt_write(cmdq_pkt, comp->subsys,
-> +			       comp->regs_pa + offset, value);
-> +#endif
-> +	else
-> +		writel_relaxed(value, comp->regs + offset);
-> +}
-> +
-> +void mtk_ddp_write_mask(struct cmdq_pkt *cmdq_pkt,
-> +			unsigned int value,
-> +			struct mtk_ddp_comp *comp,
-> +			unsigned int offset,
-> +			unsigned int mask)
-> +{
-> +	if (cmdq_pkt) {
-> +#ifdef CONFIG_MTK_CMDQ
-> +		cmdq_pkt_write_mask(cmdq_pkt, comp->subsys,
-> +				    comp->regs_pa + offset, value, mask);
-> +#endif
-> +	} else {
-> +		u32 tmp = readl(comp->regs + offset);
-> +
-> +		tmp = (tmp & ~mask) | (value & mask);
-> +		writel(tmp, comp->regs + offset);
-> +	}
-> +}
-> +
->  void mtk_dither_set(struct mtk_ddp_comp *comp, unsigned int bpc,
-> -		    unsigned int CFG)
-> +		    unsigned int CFG, struct cmdq_pkt *cmdq_pkt)
->  {
->  	/* If bpc equal to 0, the dithering function didn't be enabled */
->  	if (bpc == 0)
->  		return;
->  
->  	if (bpc >= MTK_MIN_BPC) {
-> -		writel(0, comp->regs + DISP_DITHER_5);
-> -		writel(0, comp->regs + DISP_DITHER_7);
-> -		writel(DITHER_LSB_ERR_SHIFT_R(MTK_MAX_BPC - bpc) |
-> -		       DITHER_ADD_LSHIFT_R(MTK_MAX_BPC - bpc) |
-> -		       DITHER_NEW_BIT_MODE,
-> -		       comp->regs + DISP_DITHER_15);
-> -		writel(DITHER_LSB_ERR_SHIFT_B(MTK_MAX_BPC - bpc) |
-> -		       DITHER_ADD_LSHIFT_B(MTK_MAX_BPC - bpc) |
-> -		       DITHER_LSB_ERR_SHIFT_G(MTK_MAX_BPC - bpc) |
-> -		       DITHER_ADD_LSHIFT_G(MTK_MAX_BPC - bpc),
-> -		       comp->regs + DISP_DITHER_16);
-> -		writel(DISP_DITHERING, comp->regs + CFG);
-> +		mtk_ddp_write(cmdq_pkt, 0, comp, DISP_DITHER_5);
-> +		mtk_ddp_write(cmdq_pkt, 0, comp, DISP_DITHER_7);
-> +		mtk_ddp_write(cmdq_pkt,
-> +			      DITHER_LSB_ERR_SHIFT_R(MTK_MAX_BPC - bpc) |
-> +			      DITHER_ADD_LSHIFT_R(MTK_MAX_BPC - bpc) |
-> +			      DITHER_NEW_BIT_MODE,
-> +			      comp, DISP_DITHER_15);
-> +		mtk_ddp_write(cmdq_pkt,
-> +			      DITHER_LSB_ERR_SHIFT_B(MTK_MAX_BPC - bpc) |
-> +			      DITHER_ADD_LSHIFT_B(MTK_MAX_BPC - bpc) |
-> +			      DITHER_LSB_ERR_SHIFT_G(MTK_MAX_BPC - bpc) |
-> +			      DITHER_ADD_LSHIFT_G(MTK_MAX_BPC - bpc),
-> +			      comp, DISP_DITHER_16);
-> +		mtk_ddp_write(cmdq_pkt, DISP_DITHERING, comp, CFG);
->  	}
->  }
->  
->  static void mtk_od_config(struct mtk_ddp_comp *comp, unsigned int w,
->  			  unsigned int h, unsigned int vrefresh,
-> -			  unsigned int bpc)
-> +			  unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
->  {
-> -	writel(w << 16 | h, comp->regs + DISP_OD_SIZE);
-> -	writel(OD_RELAYMODE, comp->regs + DISP_OD_CFG);
-> -	mtk_dither_set(comp, bpc, DISP_OD_CFG);
-> +	mtk_ddp_write(cmdq_pkt, w << 16 | h, comp, DISP_OD_SIZE);
-> +	mtk_ddp_write(cmdq_pkt, OD_RELAYMODE, comp, DISP_OD_CFG);
-> +	mtk_dither_set(comp, bpc, DISP_OD_CFG, cmdq_pkt);
->  }
->  
->  static void mtk_od_start(struct mtk_ddp_comp *comp)
-> @@ -120,9 +167,9 @@ static void mtk_ufoe_start(struct mtk_ddp_comp *comp)
->  
->  static void mtk_aal_config(struct mtk_ddp_comp *comp, unsigned int w,
->  			   unsigned int h, unsigned int vrefresh,
-> -			   unsigned int bpc)
-> +			   unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
->  {
-> -	writel(h << 16 | w, comp->regs + DISP_AAL_SIZE);
-> +	mtk_ddp_write(cmdq_pkt, h << 16 | w, comp, DISP_AAL_SIZE);
->  }
->  
->  static void mtk_aal_start(struct mtk_ddp_comp *comp)
-> @@ -137,10 +184,10 @@ static void mtk_aal_stop(struct mtk_ddp_comp *comp)
->  
->  static void mtk_ccorr_config(struct mtk_ddp_comp *comp, unsigned int w,
->  			     unsigned int h, unsigned int vrefresh,
-> -			     unsigned int bpc)
-> +			     unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
->  {
-> -	writel(h << 16 | w, comp->regs + DISP_CCORR_SIZE);
-> -	writel(CCORR_RELAY_MODE, comp->regs + DISP_CCORR_CFG);
-> +	mtk_ddp_write(cmdq_pkt, h << 16 | w, comp, DISP_CCORR_SIZE);
-> +	mtk_ddp_write(cmdq_pkt, CCORR_RELAY_MODE, comp, DISP_CCORR_CFG);
->  }
->  
->  static void mtk_ccorr_start(struct mtk_ddp_comp *comp)
-> @@ -155,10 +202,10 @@ static void mtk_ccorr_stop(struct mtk_ddp_comp *comp)
->  
->  static void mtk_dither_config(struct mtk_ddp_comp *comp, unsigned int w,
->  			      unsigned int h, unsigned int vrefresh,
-> -			      unsigned int bpc)
-> +			      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
->  {
-> -	writel(h << 16 | w, comp->regs + DISP_DITHER_SIZE);
-> -	writel(DITHER_RELAY_MODE, comp->regs + DISP_DITHER_CFG);
-> +	mtk_ddp_write(cmdq_pkt, h << 16 | w, comp, DISP_DITHER_SIZE);
-> +	mtk_ddp_write(cmdq_pkt, DITHER_RELAY_MODE, comp, DISP_DITHER_CFG);
->  }
->  
->  static void mtk_dither_start(struct mtk_ddp_comp *comp)
-> @@ -173,10 +220,10 @@ static void mtk_dither_stop(struct mtk_ddp_comp *comp)
->  
->  static void mtk_gamma_config(struct mtk_ddp_comp *comp, unsigned int w,
->  			     unsigned int h, unsigned int vrefresh,
-> -			     unsigned int bpc)
-> +			     unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
->  {
-> -	writel(h << 16 | w, comp->regs + DISP_GAMMA_SIZE);
-> -	mtk_dither_set(comp, bpc, DISP_GAMMA_CFG);
-> +	mtk_ddp_write(cmdq_pkt, h << 16 | w, comp, DISP_GAMMA_SIZE);
-> +	mtk_dither_set(comp, bpc, DISP_GAMMA_CFG, cmdq_pkt);
->  }
->  
->  static void mtk_gamma_start(struct mtk_ddp_comp *comp)
-> @@ -190,24 +237,23 @@ static void mtk_gamma_stop(struct mtk_ddp_comp *comp)
->  }
->  
->  static void mtk_gamma_set(struct mtk_ddp_comp *comp,
-> -			  struct drm_crtc_state *state)
-> +			  struct drm_crtc_state *state,
-> +			  struct cmdq_pkt *cmdq_pkt)
->  {
-> -	unsigned int i, reg;
-> +	unsigned int i;
->  	struct drm_color_lut *lut;
-> -	void __iomem *lut_base;
->  	u32 word;
->  
->  	if (state->gamma_lut) {
-> -		reg = readl(comp->regs + DISP_GAMMA_CFG);
-> -		reg = reg | GAMMA_LUT_EN;
-> -		writel(reg, comp->regs + DISP_GAMMA_CFG);
-> -		lut_base = comp->regs + DISP_GAMMA_LUT;
-> +		mtk_ddp_write_mask(cmdq_pkt, GAMMA_LUT_EN, comp,
-> +				   DISP_GAMMA_CFG, GAMMA_LUT_EN);
->  		lut = (struct drm_color_lut *)state->gamma_lut->data;
->  		for (i = 0; i < MTK_LUT_SIZE; i++) {
->  			word = (((lut[i].red >> 6) & LUT_10BIT_MASK) << 20) +
->  				(((lut[i].green >> 6) & LUT_10BIT_MASK) << 10) +
->  				((lut[i].blue >> 6) & LUT_10BIT_MASK);
-> -			writel(word, (lut_base + i * 4));
-> +			mtk_ddp_write(cmdq_pkt, word, comp,
-> +				      DISP_GAMMA_LUT + i * 4);
->  		}
->  	}
->  }
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> index ec55c7488cc3..5b0a3d48dfa6 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> @@ -69,25 +69,30 @@ enum mtk_ddp_comp_id {
->  };
->  
->  struct mtk_ddp_comp;
-> -
-> +struct cmdq_pkt;
->  struct mtk_ddp_comp_funcs {
->  	void (*config)(struct mtk_ddp_comp *comp, unsigned int w,
-> -		       unsigned int h, unsigned int vrefresh, unsigned int bpc);
-> +		       unsigned int h, unsigned int vrefresh,
-> +		       unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
->  	void (*start)(struct mtk_ddp_comp *comp);
->  	void (*stop)(struct mtk_ddp_comp *comp);
->  	void (*enable_vblank)(struct mtk_ddp_comp *comp, struct drm_crtc *crtc);
->  	void (*disable_vblank)(struct mtk_ddp_comp *comp);
->  	unsigned int (*supported_rotations)(struct mtk_ddp_comp *comp);
->  	unsigned int (*layer_nr)(struct mtk_ddp_comp *comp);
-> -	void (*layer_on)(struct mtk_ddp_comp *comp, unsigned int idx);
-> -	void (*layer_off)(struct mtk_ddp_comp *comp, unsigned int idx);
-> +	void (*layer_on)(struct mtk_ddp_comp *comp, unsigned int idx,
-> +			 struct cmdq_pkt *cmdq_pkt);
-> +	void (*layer_off)(struct mtk_ddp_comp *comp, unsigned int idx,
-> +			  struct cmdq_pkt *cmdq_pkt);
->  	int (*layer_check)(struct mtk_ddp_comp *comp,
->  			   unsigned int idx,
->  			   struct mtk_plane_state *state);
->  	void (*layer_config)(struct mtk_ddp_comp *comp, unsigned int idx,
-> -			     struct mtk_plane_state *state);
-> +			     struct mtk_plane_state *state,
-> +			     struct cmdq_pkt *cmdq_pkt);
->  	void (*gamma_set)(struct mtk_ddp_comp *comp,
-> -			  struct drm_crtc_state *state);
-> +			  struct drm_crtc_state *state,
-> +			  struct cmdq_pkt *cmdq_pkt);
->  	void (*bgclr_in_on)(struct mtk_ddp_comp *comp);
->  	void (*bgclr_in_off)(struct mtk_ddp_comp *comp);
->  };
-> @@ -99,14 +104,17 @@ struct mtk_ddp_comp {
->  	struct device *dev;
->  	enum mtk_ddp_comp_id id;
->  	const struct mtk_ddp_comp_funcs *funcs;
-> +	resource_size_t regs_pa;
-> +	u8 subsys;
->  };
->  
->  static inline void mtk_ddp_comp_config(struct mtk_ddp_comp *comp,
->  				       unsigned int w, unsigned int h,
-> -				       unsigned int vrefresh, unsigned int bpc)
-> +				       unsigned int vrefresh, unsigned int bpc,
-> +				       struct cmdq_pkt *cmdq_pkt)
->  {
->  	if (comp->funcs && comp->funcs->config)
-> -		comp->funcs->config(comp, w, h, vrefresh, bpc);
-> +		comp->funcs->config(comp, w, h, vrefresh, bpc, cmdq_pkt);
->  }
->  
->  static inline void mtk_ddp_comp_start(struct mtk_ddp_comp *comp)
-> @@ -152,17 +160,19 @@ static inline unsigned int mtk_ddp_comp_layer_nr(struct mtk_ddp_comp *comp)
->  }
->  
->  static inline void mtk_ddp_comp_layer_on(struct mtk_ddp_comp *comp,
-> -					 unsigned int idx)
-> +					 unsigned int idx,
-> +					 struct cmdq_pkt *cmdq_pkt)
->  {
->  	if (comp->funcs && comp->funcs->layer_on)
-> -		comp->funcs->layer_on(comp, idx);
-> +		comp->funcs->layer_on(comp, idx, cmdq_pkt);
->  }
->  
->  static inline void mtk_ddp_comp_layer_off(struct mtk_ddp_comp *comp,
-> -					  unsigned int idx)
-> +					  unsigned int idx,
-> +					  struct cmdq_pkt *cmdq_pkt)
->  {
->  	if (comp->funcs && comp->funcs->layer_off)
-> -		comp->funcs->layer_off(comp, idx);
-> +		comp->funcs->layer_off(comp, idx, cmdq_pkt);
->  }
->  
->  static inline int mtk_ddp_comp_layer_check(struct mtk_ddp_comp *comp,
-> @@ -176,17 +186,19 @@ static inline int mtk_ddp_comp_layer_check(struct mtk_ddp_comp *comp,
->  
->  static inline void mtk_ddp_comp_layer_config(struct mtk_ddp_comp *comp,
->  					     unsigned int idx,
-> -					     struct mtk_plane_state *state)
-> +					     struct mtk_plane_state *state,
-> +					     struct cmdq_pkt *cmdq_pkt)
->  {
->  	if (comp->funcs && comp->funcs->layer_config)
-> -		comp->funcs->layer_config(comp, idx, state);
-> +		comp->funcs->layer_config(comp, idx, state, cmdq_pkt);
->  }
->  
->  static inline void mtk_ddp_gamma_set(struct mtk_ddp_comp *comp,
-> -				     struct drm_crtc_state *state)
-> +				     struct drm_crtc_state *state,
-> +				     struct cmdq_pkt *cmdq_pkt)
->  {
->  	if (comp->funcs && comp->funcs->gamma_set)
-> -		comp->funcs->gamma_set(comp, state);
-> +		comp->funcs->gamma_set(comp, state, cmdq_pkt);
->  }
->  
->  static inline void mtk_ddp_comp_bgclr_in_on(struct mtk_ddp_comp *comp)
-> @@ -209,6 +221,13 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *comp_node,
->  int mtk_ddp_comp_register(struct drm_device *drm, struct mtk_ddp_comp *comp);
->  void mtk_ddp_comp_unregister(struct drm_device *drm, struct mtk_ddp_comp *comp);
->  void mtk_dither_set(struct mtk_ddp_comp *comp, unsigned int bpc,
-> -		    unsigned int CFG);
-> -
-> +		    unsigned int CFG, struct cmdq_pkt *cmdq_pkt);
-> +enum mtk_ddp_comp_type mtk_ddp_comp_get_type(enum mtk_ddp_comp_id comp_id);
-> +void mtk_ddp_write(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-> +		   struct mtk_ddp_comp *comp, unsigned int offset);
-> +void mtk_ddp_write_relaxed(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-> +			   struct mtk_ddp_comp *comp, unsigned int offset);
-> +void mtk_ddp_write_mask(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-> +			struct mtk_ddp_comp *comp, unsigned int offset,
-> +			unsigned int mask);
->  #endif /* MTK_DRM_DDP_COMP_H */
+  OK. I will modify it as reset-a10sr.c do.
+> 
+> regards
+> Philipp
+> 
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
