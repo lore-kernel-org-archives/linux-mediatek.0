@@ -1,63 +1,63 @@
-Return-Path: <SRS0=/i6S=ZZ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=B6WE=Z2=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D4E1BC432C0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 18:55:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8CEDBC432C0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2019 02:04:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A1F1220833
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Dec 2019 18:55:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 585332073F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2019 02:04:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FBv0+5iA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A1F1220833
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZNRJkn+M"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 585332073F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E5hphoE7qaX3a0vDExf3umBKgaBbNc3uIflY6EuhZGY=; b=FBv0+5iAjhRWXh
-	PrgGSKhyDQxaLvU25h1XQTnDWlv+gPiR/9JXKSx/zuUC/qxNbGnNcrwprvIyiUSlmf5o1ZFgeTpvv
-	dHoJ4lnK5EreQGut4cIHdXO8Zw2lJoiwm2hAELusErncmnCOpviu3Rb9TFGtGLb7e63A6onbo+S4x
-	L7Wbx4ZwHjLOttl5dYAKIVH8xVppi+CgFP6+bYrRDeKSIUIY5eblX2Ugo+Hd8ETl5kEyD3GSOj3H+
-	2eZf4hhER20TPTowcCVdPpjrkyygJvGmCvzWHjKv3fp792XbsMi8lnNYZK6jEn6s//dji7IkEOuJN
-	l6U7LHu312VgADr8SkSA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Cec5h/wQYZYOrCSHP5UI1IgecTlQQ+fUsIY9La6kyeI=; b=ZNRJkn+MXiyDDv
+	XflSkJPQ3Vx5rK08QoyqY18+pgx6mC8EEBRFZj8Ss0nEksz7Ej/eoTelbCLb/8vFST538/WwmdXnY
+	ei/wcddSYEnvk3083EnAJMzRooCftyth3Yteu7ovSm+S/O95j5AYyswNolInNz+hPdYh4rWfhnW9z
+	zBWhVdRIXeSifPHZ23G+Bi3HYMtzqKKwCpUVqKK8U8EL/UTPtycjIKlYVH0uTvZqE+H2dGBp3fDZq
+	ijljjLu0MHTWUavCQLBD4sizFZUOzszl2gIIO/NW7oCXiBDBeBGXq/qwsb8KoLwuidBKpVwOjXpeZ
+	VVrPP9+M8Um42GdDeAgg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1icDKk-0005zE-Hi; Tue, 03 Dec 2019 18:55:38 +0000
-Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
+	id 1icK2B-0008BO-08; Wed, 04 Dec 2019 02:04:55 +0000
+Received: from szxga04-in.huawei.com ([45.249.212.190] helo=huawei.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1icDKZ-0005q2-Ue; Tue, 03 Dec 2019 18:55:29 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx1.suse.de (Postfix) with ESMTP id 0884CB12D;
- Tue,  3 Dec 2019 18:55:26 +0000 (UTC)
-Subject: Re: [PATCH 6/6] dt-bindings: clk: realtek: add rtd1619 clock
- controller bindings
-To: James Tai <james.tai@realtek.com>
-References: <20191203074513.9416-1-james.tai@realtek.com>
- <20191203074513.9416-7-james.tai@realtek.com>
-From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
-Organization: SUSE Software Solutions Germany GmbH
-Message-ID: <f16bc1ef-8b69-feb4-bf1a-b015d7f8618e@suse.de>
-Date: Tue, 3 Dec 2019 19:55:24 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.1
+ id 1icK22-000836-3K; Wed, 04 Dec 2019 02:04:48 +0000
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 00030B68322770FDCDDD;
+ Wed,  4 Dec 2019 10:04:37 +0800 (CST)
+Received: from localhost.localdomain.localdomain (10.175.113.25) by
+ DGGEMS407-HUB.china.huawei.com (10.3.19.207) with Microsoft SMTP Server id
+ 14.3.439.0; Wed, 4 Dec 2019 10:04:27 +0800
+From: Mao Wenan <maowenan@huawei.com>
+To: <eddie.huang@mediatek.com>, <sean.wang@mediatek.com>,
+ <a.zummo@towertech.it>, <alexandre.belloni@bootlin.com>,
+ <matthias.bgg@gmail.com>
+Subject: [PATCH -next] rtc: mt6397: drop free_irq of devm_xx allocated irq
+Date: Wed, 4 Dec 2019 10:02:09 +0800
+Message-ID: <20191204020209.10363-1-maowenan@huawei.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <20191203074513.9416-7-james.tai@realtek.com>
-Content-Language: en-US
+X-Originating-IP: [10.175.113.25]
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191203_105528_278515_BA3773AD 
-X-CRM114-Status: GOOD (  23.87  )
+X-CRM114-CacheID: sfid-20191203_180446_328167_99B83BD0 
+X-CRM114-Status: UNSURE (   7.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,91 +69,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- cylee12 <cylee12@realtek.com>, linux-realtek-soc@lists.infradead.org,
- Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-riscv@lists.infradead.org,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-rtc@vger.kernel.org, kernel-janitors@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Mao Wenan <maowenan@huawei.com>,
+ Hulk Robot <hulkci@huawei.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgSmFtZXMsCgpbZHJvcHBpbmcgUGFsbWVyLCBhZGRpbmcgUGhpbGlwcF0KCkFtIDAzLjEyLjE5
-IHVtIDA4OjQ1IHNjaHJpZWIgSmFtZXMgVGFpOgo+IEZyb206IGN5bGVlMTIgPGN5bGVlMTJAcmVh
-bHRlay5jb20+CgpBdXRob3IuCgokc3ViamVjdDogY2xrIHZzLiBjbG9jayBwcmVmaXgKCkxhY2tp
-bmcgYSBjb21taXQgbWVzc2FnZSBoZXJlLgoKPiAKPiBTaWduZWQtb2ZmLWJ5OiBDaGVuZy1ZdSBM
-ZWUgPGN5bGVlMTJAcmVhbHRlay5jb20+Cj4gU2lnbmVkLW9mZi1ieTogSmFtZXMgVGFpIDxqYW1l
-cy50YWlAcmVhbHRlay5jb20+Cj4gLS0tCj4gIC4uLi9iaW5kaW5ncy9jbG9jay9yZWFsdGVrLGNs
-b2Nrcy50eHQgICAgICAgICB8IDM4ICsrKysrKysrKysrKysrKysrKysKClBsZWFzZSB1c2UgWUFN
-TCBzY2hlbWEgZm9yIGFueSBuZXcgYmluZGluZ3MuCgo+ICAxIGZpbGUgY2hhbmdlZCwgMzggaW5z
-ZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
-L2JpbmRpbmdzL2Nsb2NrL3JlYWx0ZWssY2xvY2tzLnR4dAoKVGhpcyBwYXRjaCBuZWVkcyB0byBi
-ZSBvcmRlcmVkIGJlZm9yZSBwYXRjaGVzIHVzaW5nIHRoZSBiaW5kaW5nIGluIGEKZHJpdmVyIG9y
-IERULiBJbiB0aGlzIGNhc2UgaXQgc2hvdWxkJ3ZlIGJlZW4gc3F1YXNoZWQgaW50byAxLzYuCgo+
-IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2svcmVh
-bHRlayxjbG9ja3MudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2Nr
-L3JlYWx0ZWssY2xvY2tzLnR4dAo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAw
-MDAwMDAwLi5kYjEwMTUwOGFjNmEKPiAtLS0gL2Rldi9udWxsCj4gKysrIGIvRG9jdW1lbnRhdGlv
-bi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JlYWx0ZWssY2xvY2tzLnR4dAo+IEBAIC0wLDAg
-KzEsMzggQEAKPiArUmVhbHRlayBDbG9jay9SZXNldCBDb250cm9sbGVyCj4gKz09PT09PT09PT09
-PT09PT09PT09PT09PT09PT09PQo+ICsKPiArUmVhbHRlayBDUlQvSVNPIGNvbnRyb2xsZXIgZGV2
-aWNlLXRyZWUgYmluZGluZyBmb3IgUmVhbHRlayBQbGF0Zm9ybXMuCj4gKwo+ICtUaGlzIGJpbmRp
-bmcgdXNlcyB0aGUgY29tbW9uIGNsb2NrIGJpbmRpbmdbMV0uCj4gKwo+ICtUaGUgY29udHJvbGxl
-ciBub2RlIHNob3VsZCBiZSB0aGUgY2hpbGQgb2YgYSBzeXNjb24gbm9kZSB3aXRoIHRoZSByZXF1
-aXJlZAo+ICtwcm9wZXJ0aXNlOgo+ICsKPiArLSBjb21wYXRpYmxlIDoKPiArCXNob3VsZCBjb250
-YWluIG9ubHkgb25lIG9mIHRoZSBmb2xsb3dpbmc6Cj4gKwkJInJlYWx0ZWsscnRkMTYxOS1jYyIg
-Zm9yIFJURDE2MTkgQ1JUIGNsb2NrIGNvbnRyb2xsZXIsCj4gKwkJInJlYWx0ZWsscnRkMTYxOS1p
-YyIgZm9yIFJURDE2MTkgSVNPIGNsb2NrIGNvbnRyb2xsZXIsCgotaWMgZG9lcyBub3Qgc3RyaWtl
-IG1lIGFzIHRoZSBiZXN0IG5hbWUsIGNhbiB3ZSBnbyB3aXRoIC1pc28tc29tZXRoaW5nCmZvciBj
-b25zaXN0ZW5jeT8KCj4gKwo+ICstICNjbG9jay1jZWxscyA6IHNob3VsZCBiZSAxLgo+ICsKPiAr
-LSAjcmVzZXQtY2VsbHMgOiBzaG91bGQgYmUgMS4KPiArCj4gK1sxXSBEb2N1bWVudGF0aW9uL2Rl
-dmljZXRyZWUvYmluZGluZ3MvY2xvY2svY2xvY2stYmluZGluZ3MudHh0Cj4gKwo+ICtFeGFtcGxl
-Ogo+ICsKPiArCWNydEA5ODAwMDAwMCB7CgpjcnQ6IHN5c2NvbkAuLi4KCkFsd2F5cyBwcmVmZXIg
-Z2VuZXJpYyBub2RlIG5hbWVzIHdoZW4gcG9zc2libGUuCgo+ICsJCWNvbXBhdGlibGUgPSAicmVh
-bHRlayxydGQxNjE5LWNydCIsICJzaW1wbGUtbWZkIiwgInN5c2NvbiI7CgoxKSBZb3UgbXVzdCBu
-b3QgdXNlIHVuZGVmaW5lZCBjb21wYXRpYmxlIHN0cmluZ3MgaW4geW91ciBleGFtcGxlISBJZiB3
-ZQp3YW50IHRvIHVzZSBzdWNoIGNvbXBhdGlibGVzICh3aGljaCBJIGFncmVlIHdpdGggaW4gcHJp
-bmNpcGxlKSwgdGhlbiB3ZQpuZWVkIHRvIHBvc3Qgc2VwYXJhdGUgYmluZGluZ3MgcGF0Y2hlcyBi
-ZWZvcmUgeW91IGRvIHNvLiBUaGUgYmlnIGlzc3VlCnRoZXJlIGlzIGhvdyB0byBuYW1lIHRoZW0g
-dG8gd29yayBhY3Jvc3MgU29DIGZhbWlsaWVzLiBGb3IgdGhhdCByZWFzb24KbXkgc3lzY29uIHNl
-cmllcyBkaWQgbm90IGluY2x1ZGUgZHQtYmluZGluZ3MsIHRvIG5vdCBob2xkIHVzIHVwIHdpdGgK
-dGhlbS4gRHJvcCBpdCBoZXJlIGZvciBub3c/CgoyKSBZb3UgbXVzdCByZXRhaW4gdGhlIHZhbGlk
-IG9yZGVyLCBoZXJlIGRlZmluZWQgYnkgdGhlIHN5c2NvbiBiaW5kaW5nLgpMaWtlIEkgc2FpZCBm
-b3IgdGhlIE1qb2xuaXIgLmR0cy4gSWYgd2UgY29uc2VxdWVudGx5IHVzZSBZQU1MIHNjaGVtYXMs
-CnRoZW4geW91IGNhbiBjaGVjayB5b3VyIC5kdHMgZmlsZXMgd2l0aCBtYWtlIGR0YnNfY2hlY2sg
-YW5kIGhvcGVmdWxseQpub3RpY2UgaXQgeW91cnNlbGYgYmVmb3JlIEkgY29tcGxhaW4uIC5kdHNp
-IHBhdGNoZXMgYXJlIHNhZGx5IG1pc3NpbmcgaW4KdGhpcyBzZXJpZXMsIHNvIHlvdSBjb3VsZCBv
-bmx5IHJ1biBsaW1pdGVkIG1ha2UgZHRfYmluZGluZ19jaGVjay4KCj4gKwkJcmVnID0gPDB4OTgw
-MDAwMDAgMHgxMDAwPjsKPiArCj4gKwkJY2M6IGNjQDk4MDAwMDAwIHsKCmNjOiBjbG9jay1jb250
-cm9sbGVyQC4uLgoKQnV0IHlvdSBtdXN0IG5vdCBnaXZlIGEgdW5pdCBhZGRyZXNzIGluIGFic2Vu
-Y2Ugb2YgcmVnLgoKPiArCQkJY29tcGF0aWJsZSA9ICJyZWFsdGVrLHJ0ZDE2MTktY2MiOwoKcmVn
-IG1pc3NpbmcuIFdoZW4geW91IGFkZCBpdCwgeW91IG5lZWQgI2FkZHJlc3MtY2VsbHMgYW5kICNz
-aXplLWNlbGxzCmFib3ZlLCB0b28uIEFsc28gcmFuZ2VzIGZvciBjb21wbGV0ZW5lc3MuIEluIFlB
-TUwgaXQgZ2V0cyBjb21waWxlLXRlc3RlZAphbmQgc2hvdWxkIG5vdCBzcHJvdXQgd2FybmluZ3Mu
-Cgo+ICsJCQkjY2xvY2stY2VsbHMgPSA8MT47Cj4gKwkJCSNyZXNldC1jZWxscyA9IDwxPjsKCkJU
-VyBnaXZlbiB0aGUgY29tcGxleCBtYXBwaW5ncyB0aGF0IHlvdSBhdHRlbXB0LCB3b3VsZG4ndCBp
-dCBiZSBlYXNpZXIKdG8gdXNlICNyZXNldC1jZWxscyA9IDwyPj8gSW4gdGhhdCBjYXNlIG9uZSBj
-b3VsZCBhZ2FpbiBhcmd1ZSB0aGF0IGEKcGVyLWJhbmsgbm9kZS9kcml2ZXIgd2lsbCBiZSBlYXNp
-ZXIuCgo+ICsJCX07Cj4gKwl9OwoKSGF2ZW4ndCB0ZXN0ZWQgdGhpcyB5ZXQsIGJ1dCBJIHdvbmRl
-ciB3aGV0aGVyIHdlIGNvdWxkIGp1c3QgdXNlCiJyZWFsdGVrLHJ0ZDE2MTktY3J0IiBmb3IgdGhl
-IGNsb2NrIGNvbnRyb2xsZXIgZGlyZWN0bHkgYW5kIHN0aWxsIHVzZQp0aGUgc2FtZSBub2RlIGFz
-IHN5c2NvbiBtZmQ/IElmIG5vdCwgaXQgbWlnaHQgYmUgbmljZSB0byBkZXNjcmliZSBpbiB0aGUK
-Y2hpbGQgbm9kZSdzIHJlZyB3aGF0IGV4YWN0bHkgaXMgY292ZXJlZCBpbnN0ZWFkIG9mIGp1c3Qg
-PDB4MCAweDEwMDA+LgoKTXkgcG9pbnQgaGVyZSBpcyB0aGF0IHRoZSBEVCBkZXNjcmliZXMgdGhl
-IGhhcmR3YXJlLCBidXQgdGhhdCBkb2VzIG5vdApkaWN0YXRlIGhvdyB0aGUgTGludXggZHJpdmVy
-cyBiaW5kIHRvIERULiBjbGsgaXMgbm8gcGxhdGZvcm1fZHJpdmVyLCBzbwp5b3UgY2FuIGhhdmUg
-Y2xrIGFuZCByZXNldCBkcml2ZXJzIGJpbmRpbmcgdG8gdGhlIHNhbWUgRFQgY29tcGF0aWJsZS4K
-RGlkIHRoYXQgZm9yIFNUTTMyIENSVCBvbmNlLiBIb3dldmVyLCBkb24ndCBoaWRlIHRoZSBiaW5k
-aW5nIHVuZGVyIGNsb2NrCmlmIGl0J3MgcmVhbGx5IG1mZCAtIHNvbWVvbmUgbG9va2luZyBmb3Ig
-cmVzZXQgYmluZGluZ3MgaXMgZ29pbmcgdG8gaGF2ZQphIGhhcmQgdGltZSBmaW5kaW5nIHRoZW0g
-dW5kZXIgY2xvY2suCgo+ICsKPiArCWNvbnN1bWVyIHsKPiArCQljbG9ja3MgPSA8JmNjIENDX0NL
-RV9HU1BJPjsKPiArCX07Cj4gKwoKUmVnYXJkcywKQW5kcmVhcwoKLS0gClNVU0UgU29mdHdhcmUg
-U29sdXRpb25zIEdlcm1hbnkgR21iSApNYXhmZWxkc3RyLiA1LCA5MDQwOSBOw7xybmJlcmcsIEdl
-cm1hbnkKR0Y6IEZlbGl4IEltZW5kw7ZyZmZlcgpIUkIgMzY4MDkgKEFHIE7DvHJuYmVyZykKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlh
-dGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+rtc->irq is requested by devm_request_threaded_irq,
+and request_threaded_irq. IRQs requested with this
+function will be automatically freed on driver detach.
+
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Signed-off-by: Mao Wenan <maowenan@huawei.com>
+---
+ drivers/rtc/rtc-mt6397.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+index 5249fc99fd5f..d6a10111137a 100644
+--- a/drivers/rtc/rtc-mt6397.c
++++ b/drivers/rtc/rtc-mt6397.c
+@@ -293,7 +293,6 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+ 	return 0;
+ 
+ out_free_irq:
+-	free_irq(rtc->irq, rtc);
+ 	return ret;
+ }
+ 
+-- 
+2.20.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
