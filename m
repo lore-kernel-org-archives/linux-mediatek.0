@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7C777C43603
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2019 09:51:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 58B85C43603
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2019 09:52:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4A703206DB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2019 09:51:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CFE9D206DB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2019 09:52:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MbGHj1kU";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="alesoQI7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4A703206DB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GR21oIF9";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="lJrr/ueu"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CFE9D206DB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=epWE7GjnH43mxL4AOGpqujAfnBq9MoZH51dtxGcYDwk=; b=MbGHj1kUqX0mDb
-	3w/ElXxfjZd0xfw6f9Gi9Mzrvg17myHSEqi5Mk5XOO6rXxZ1dZc7uTWAYD7/XrelBe/LZLLXhMpGI
-	qFvgEA3pZe/FGGWikgQexwzokAFKEDX30K+KQvGfKM0WEbAQuOGFh+PQAQ3n3sXawUs1+6c1ksQzb
-	s/Qw1AILXbDjdtH6xQyQx6yzXrVNbVIQ1+lDH+AgB10Sa0Y3TZ6V4a3QBtUNBORHnY9yp/6v2KgND
-	4RGZzJOE8wOY+huNGZT8dLPqzCy+G7l7KgiQ4gFeWDyrlzzs8pdMvEYNbFkO1aqxEfjcHBHWHXazq
-	7lsrzaeg/pxb7NOlYUEw==;
+	List-Owner; bh=Tm6auNPPyJenmBCqZlWU4QohX6vKzYlJAyNh2KjNOEg=; b=GR21oIF9oO3nJw
+	GAjQdU8YMf6vCBk7IwlqDqFcHwjOfRfxbvOaVDPqKrpxKp3hJ3Lp5eiO+ltfRrLAKWCFOAODCnCQ8
+	ViVxuU3JFtP6+o4n7pV1RrvDtMC9zzlP03sqzf9dO6ZEknSUKpX1tKoYjFOJZrIYIoZLr6BbBELxA
+	Er3M4RFwMWhvZLv2EvH2H9t6XysBq29vDwyuMoEmeyX8IAdCL6I4dPHHcZLBsHcmpnYhU3OFHEdQq
+	+FhbVZftxUBNPwNfi9wA31RBWSflH62LxpYuADkC7hTpe5qDrHgVhFfCCxpTBUu543sb185dEulLX
+	3BLFZqV3y2rxyOD8habA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1icRJt-0002X3-Q7; Wed, 04 Dec 2019 09:51:41 +0000
+	id 1icRKE-0002ta-6m; Wed, 04 Dec 2019 09:52:02 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1icRJV-00024m-7E; Wed, 04 Dec 2019 09:51:18 +0000
-X-UUID: 5d31777da2e2431485fec679bdeb9791-20191204
+ id 1icRJW-00024G-1V; Wed, 04 Dec 2019 09:51:19 +0000
+X-UUID: 39487664434449e2af0eb42291769fa0-20191204
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=VcoIehMe+46z0sneQ8TvV0LGJmr02/Jryq1p3LPajfg=; 
- b=alesoQI7SKo2B6YOZC6zLDQO5UQ62X6Owm+ot6SdT8zmVLu+p8BWR7j0UkoHRuZhf+nog9417g2P218OgcJxP0chgLUWfsqFYFsFPb+cqowauD53kS4zu+d/zJ+/9sEWx2WmawVodnH8gMCVbOu4dYEY2UwBOsz2MaiHw+lm4/k=;
-X-UUID: 5d31777da2e2431485fec679bdeb9791-20191204
+ bh=wfbgAypWcJD8BoKp0RqiMZYqAeZg3ySAwC4T95RExtU=; 
+ b=lJrr/ueupVz0WSkoDJlS95bYPJ7eU51g0D/wDusXx9gUdyDB6luLRFND2OY5/RXFgaSU0oAml0NT5V+VcYqOqWxwwqoCcKS7p4sgTiz0MtaAazHP286eoVbKFvw8hFxg1mgWGCFjBhv+E+d17E2esRd9rKQSC8xqVaeXBFg2Z/o=;
+X-UUID: 39487664434449e2af0eb42291769fa0-20191204
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <bibby.hsieh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1271252769; Wed, 04 Dec 2019 01:51:14 -0800
+ with ESMTP id 1192117603; Wed, 04 Dec 2019 01:51:14 -0800
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1395.4; Wed, 4 Dec 2019 01:44:56 -0800
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 4 Dec 2019 17:44:38 +0800
+ 15.0.1395.4; Wed, 4 Dec 2019 17:44:37 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Wed, 4 Dec 2019 17:43:49 +0800
+ Frontend Transport; Wed, 4 Dec 2019 17:43:48 +0800
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
 To: David Airlie <airlied@linux.ie>, Matthias Brugger
  <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>,
  <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v3 6/6] drm/mediatek: apply CMDQ control flow
-Date: Wed, 4 Dec 2019 17:44:41 +0800
-Message-ID: <20191204094441.5116-7-bibby.hsieh@mediatek.com>
+Subject: [PATCH v3 2/6] drm/mediatek: handle events when enabling/disabling
+ crtc
+Date: Wed, 4 Dec 2019 17:44:37 +0800
+Message-ID: <20191204094441.5116-3-bibby.hsieh@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20191204094441.5116-1-bibby.hsieh@mediatek.com>
 References: <20191204094441.5116-1-bibby.hsieh@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191204_015117_267819_013AC966 
-X-CRM114-Status: GOOD (  13.45  )
+X-CRM114-CacheID: sfid-20191204_015118_088303_89F0BD34 
+X-CRM114-Status: GOOD (  10.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,185 +86,52 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: drinkcat@chromium.org, Bibby Hsieh <bibby.hsieh@mediatek.com>,
- srv_heupstream@mediatek.com, Yongqiang Niu <yongqiang.niu@mediatek.com>,
- linux-kernel@vger.kernel.org, tfiga@chromium.org, CK Hu <ck.hu@mediatek.com>,
- Thierry Reding <thierry.reding@gmail.com>,
+ srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, tfiga@chromium.org,
+ CK Hu <ck.hu@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>,
  Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Unlike other SoCs, MT8183 does not have "shadow"
-registers for performaing an atomic video mode
-set or page flip at vblank/vsync.
+The driver currently handles vblank events only when updating planes on
+an already enabled CRTC. The atomic update API however allows requesting
+an event when enabling or disabling a CRTC. This currently leads to
+event objects being leaked in the kernel and to events not being sent
+out. Fix it.
 
-The CMDQ (Commend Queue) in MT8183 is used to help
-update all relevant display controller registers
-with critical time limation.
-
-Signed-off-by: YT Shen <yt.shen@mediatek.com>
-Signed-off-by: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
 Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 80 ++++++++++++++++++++++++-
- 1 file changed, 77 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 9f1ff2f3f104..9340346e2727 100644
+index f5eeb0eebf76..4bc52346093d 100644
 --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
 +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -12,6 +12,8 @@
- #include <drm/drm_plane_helper.h>
- #include <drm/drm_probe_helper.h>
- #include <drm/drm_vblank.h>
-+#include <linux/of_address.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
- 
- #include "mtk_drm_drv.h"
- #include "mtk_drm_crtc.h"
-@@ -42,6 +44,9 @@ struct mtk_drm_crtc {
- 	unsigned int			layer_nr;
- 	bool				pending_planes;
- 
-+	struct cmdq_client		*cmdq_client;
-+	u32				cmdq_event;
-+
- 	void __iomem			*config_regs;
- 	const struct mtk_mmsys_reg_data *mmsys_reg_data;
- 	struct mtk_disp_mutex		*mutex;
-@@ -59,6 +64,11 @@ struct mtk_crtc_state {
- 	unsigned int			pending_width;
- 	unsigned int			pending_height;
- 	unsigned int			pending_vrefresh;
-+	struct cmdq_pkt			*cmdq_handle;
-+};
-+
-+struct mtk_cmdq_cb_data {
-+	struct cmdq_pkt			*cmdq_handle;
- };
- 
- static inline struct mtk_drm_crtc *to_mtk_crtc(struct drm_crtc *c)
-@@ -233,6 +243,47 @@ struct mtk_ddp_comp *mtk_drm_ddp_comp_for_plane(struct drm_crtc *crtc,
- 	return NULL;
- }
- 
-+#ifdef CONFIG_MTK_CMDQ
-+static void ddp_cmdq_cb(struct cmdq_cb_data data)
-+{
-+	struct mtk_cmdq_cb_data *cb_data = data.data;
-+
-+	cmdq_pkt_destroy(cb_data->cmdq_handle);
-+	kfree(cb_data);
-+}
-+
-+static void mtk_cmdq_acquire(struct drm_crtc *crtc)
-+{
-+	struct mtk_crtc_state *mtk_crtc_state =
-+			to_mtk_crtc_state(crtc->state);
-+	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
-+
-+	mtk_crtc_state->cmdq_handle =
-+			cmdq_pkt_create(mtk_crtc->cmdq_client,
-+					PAGE_SIZE);
-+	cmdq_pkt_clear_event(mtk_crtc_state->cmdq_handle,
-+			     mtk_crtc->cmdq_event);
-+	cmdq_pkt_wfe(mtk_crtc_state->cmdq_handle, mtk_crtc->cmdq_event);
-+}
-+
-+static void mtk_cmdq_release(struct drm_crtc *crtc)
-+{
-+	struct mtk_crtc_state *mtk_crtc_state =
-+			to_mtk_crtc_state(crtc->state);
-+	struct mtk_cmdq_cb_data *cb_data;
-+
-+	cb_data = kmalloc(sizeof(*cb_data), GFP_KERNEL);
-+	if (!cb_data) {
-+		DRM_DEV_ERROR(crtc->dev->dev, "Failed to alloc cb_data\n");
-+		return;
-+	}
-+
-+	cb_data->cmdq_handle = mtk_crtc_state->cmdq_handle;
-+	cmdq_pkt_flush_async(mtk_crtc_state->cmdq_handle,
-+			     ddp_cmdq_cb, cb_data);
-+}
-+#endif
-+
- static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
+@@ -338,6 +338,7 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
+ static void mtk_crtc_ddp_hw_fini(struct mtk_drm_crtc *mtk_crtc)
  {
- 	struct drm_crtc *crtc = &mtk_crtc->base;
-@@ -393,7 +444,8 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
- 	if (state->pending_config) {
- 		mtk_ddp_comp_config(comp, state->pending_width,
- 				    state->pending_height,
--				    state->pending_vrefresh, 0, NULL);
-+				    state->pending_vrefresh, 0,
-+				    state->cmdq_handle);
+ 	struct drm_device *drm = mtk_crtc->base.dev;
++	struct drm_crtc *crtc = &mtk_crtc->base;
+ 	int i;
  
- 		state->pending_config = false;
- 	}
-@@ -413,7 +465,8 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+ 	DRM_DEBUG_DRIVER("%s\n", __func__);
+@@ -364,6 +365,13 @@ static void mtk_crtc_ddp_hw_fini(struct mtk_drm_crtc *mtk_crtc)
+ 		mtk_ddp_comp_unprepare(mtk_crtc->ddp_comp[i]);
  
- 			if (comp)
- 				mtk_ddp_comp_layer_config(comp, local_layer,
--							  plane_state, NULL);
-+							  plane_state,
-+							  state->cmdq_handle);
- 			plane_state->pending.config = false;
- 		}
- 		mtk_crtc->pending_planes = false;
-@@ -452,6 +505,13 @@ static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
- 		mtk_crtc_ddp_config(crtc);
- 		mtk_disp_mutex_release(mtk_crtc->mutex);
- 	}
-+#ifdef CONFIG_MTK_CMDQ
-+	if (mtk_crtc->cmdq_client) {
-+		mtk_cmdq_acquire(crtc);
-+		mtk_crtc_ddp_config(crtc);
-+		mtk_cmdq_release(crtc);
+ 	pm_runtime_put(drm->dev);
++
++	if (crtc->state->event && !crtc->state->active) {
++		spin_lock_irq(&crtc->dev->event_lock);
++		drm_crtc_send_vblank_event(crtc, crtc->state->event);
++		crtc->state->event = NULL;
++		spin_unlock_irq(&crtc->dev->event_lock);
 +	}
-+#endif
- 	mutex_unlock(&mtk_crtc->hw_lock);
  }
  
-@@ -528,6 +588,7 @@ static void mtk_drm_crtc_atomic_disable(struct drm_crtc *crtc,
- 	mtk_crtc->pending_planes = true;
- 
- 	/* Wait for planes to be disabled */
-+	mtk_drm_crtc_hw_config(mtk_crtc);
- 	drm_crtc_wait_one_vblank(crtc);
- 
- 	drm_crtc_vblank_off(crtc);
-@@ -619,7 +680,7 @@ void mtk_crtc_ddp_irq(struct drm_crtc *crtc, struct mtk_ddp_comp *comp)
- 	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
- 	struct mtk_drm_private *priv = crtc->dev->dev_private;
- 
--	if (!priv->data->shadow_register)
-+	if (!priv->data->shadow_register && !mtk_crtc->cmdq_client)
- 		mtk_crtc_ddp_config(crtc);
- 
- 	mtk_drm_finish_page_flip(mtk_crtc);
-@@ -763,5 +824,18 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 	priv->num_pipes++;
- 	mutex_init(&mtk_crtc->hw_lock);
- 
-+#ifdef CONFIG_MTK_CMDQ
-+	mtk_crtc->cmdq_client =
-+			cmdq_mbox_create(dev, drm_crtc_index(&mtk_crtc->base),
-+					 2000);
-+	of_property_read_u32_index(dev->of_node, "mediatek,gce-events",
-+				   drm_crtc_index(&mtk_crtc->base),
-+				   &mtk_crtc->cmdq_event);
-+	if (IS_ERR(mtk_crtc->cmdq_client)) {
-+		dev_dbg(dev, "mtk_crtc %d failed to create mailbox client, writing register by CPU now\n",
-+			drm_crtc_index(&mtk_crtc->base));
-+		mtk_crtc->cmdq_client = NULL;
-+	}
-+#endif
- 	return 0;
- }
+ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
 -- 
 2.18.0
 _______________________________________________
