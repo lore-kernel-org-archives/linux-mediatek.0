@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 36D82C43603
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2019 09:56:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B219CC43603
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2019 09:56:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D965D2073B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2019 09:56:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 768212073B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Dec 2019 09:56:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="J3m0NleX";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="W+gF2RHw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D965D2073B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="L6XfVwJv";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="F+/r6GoQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 768212073B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iQFlmf8yl1K73abOS8ElMpmHH3K0nzqcFreW6YBrYyE=; b=J3m0NleXtdrO3h
-	oiR6iTnEf+X/YTkQ5NnS0KtiI7O8GJAZAiujiIM3kX7/PY20SUtijkVRurAIWPr0+UYYvAZiGO1fU
-	5Rg7hTtH0lwDZ8YCeK79v4mcQzlNpYLQJvZ8IGbUUJjABA/WL6UMl8b9NJ4iqtD6KSaluE+9DuPTU
-	2D7rdaImGt0FA+hamoGkypI4Ykj9ejsJ0i7OZ53qR+0+07k1vGYUwgdsufLz5zpBSj24weghTy76l
-	oJD4ze9/g8sRO/SOpLMQ63fjWo6BoyS/aBzTvryBA0DGxcKWVegf1CxozhQYcy0atPmSosUnjFzBl
-	a1pxuStG4bKFU1qK1zqQ==;
+	List-Owner; bh=z9wTIiMxIpEFVnWcX/2R3SQwENdnu3cq2EoL4huH/4E=; b=L6XfVwJv6qOogi
+	B264AqRkdzleGIyJGsHjJuLYheqkSQF0qBjtYWmRshh5acPSt6fd/xCcZXVyzYS1HXFp+/Sbn2Erw
+	zRTG1fxVLH47g/R97L834n++MtRout9YkrpHoCx7HY6nUireZ+nFlAw5lj/3lFWz1yQwHQDRX4iw/
+	hu2PxcV2P65pti1YjjDc9vs++JEvEc2x3WOX/I0+DN9ZAt/xqyeY/JumiXRINRaxIFgIx8sUg5yty
+	KFBAOLFri6YegaWX3VfMQABLRZ622DM/zyTAARDi4Dt5f0bv8u3ptkMJwlkZkz/5CtYIVW6327Xbr
+	HIegCt8Osb0WL5MyxfvA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1icROV-00079W-1I; Wed, 04 Dec 2019 09:56:27 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1icROk-0007Ng-VB; Wed, 04 Dec 2019 09:56:43 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1icRN1-0004Um-UI; Wed, 04 Dec 2019 09:55:01 +0000
-X-UUID: 4afdffdba4c742cc802e533c57a38720-20191204
+ id 1icRNk-0006UZ-W5; Wed, 04 Dec 2019 09:55:50 +0000
+X-UUID: ae87d8ad6e1d41f8952955547643a499-20191204
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=zeI4ICPtqxp35u4HJC5LrLmjn1XLRLqaMUPt40t6DjE=; 
- b=W+gF2RHw2lT9a/Vm+njPih5ucAkHZf3zqDg4bRiK9Sbu4LlRqWAPdyCf/oAoOZZ6xrCk3MLTwYwhTPcYrf0w10+OodkKjpwF/Z66kqA5NXete7VXRST3VA9N4mRS6icM2rjkhNV4jgi2Bu26beDxqgyk/dHhCwcYDKfmgKwFD2E=;
-X-UUID: 4afdffdba4c742cc802e533c57a38720-20191204
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <bibby.hsieh@mediatek.com>)
+ bh=MD+xNNGYy473YVBvhwMzf5AJKpt7UJg8FotfZasHtoM=; 
+ b=F+/r6GoQfa/M324q0m7uOlLwi8stBk9LlVFFz/srqrwyRcPuKmN0L6JWVzc0gv5xm3KDmpyF/27eG6I0EmFAsScLLHA/jDi8wVuwH9TcdMm2UGHKtnb3WcIy1zNXFkv1GG3jq83No4qvWuy4h5ZOuIE6IRaYSNNc8v/ZQtjFsLE=;
+X-UUID: ae87d8ad6e1d41f8952955547643a499-20191204
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <xia.jiang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1582168288; Wed, 04 Dec 2019 01:54:49 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 4 Dec 2019 01:45:35 -0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 4 Dec 2019 17:44:40 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Wed, 4 Dec 2019 17:43:49 +0800
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-To: David Airlie <airlied@linux.ie>, Matthias Brugger
- <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>,
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v3 5/6] drm/mediatek: support CMDQ interface in ddp component
-Date: Wed, 4 Dec 2019 17:44:40 +0800
-Message-ID: <20191204094441.5116-6-bibby.hsieh@mediatek.com>
+ with ESMTP id 1815384654; Wed, 04 Dec 2019 01:55:37 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 4 Dec 2019 01:46:25 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 4 Dec 2019 17:45:22 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Wed, 4 Dec 2019 17:45:06 +0800
+From: Xia Jiang <xia.jiang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+ <mchehab+samsung@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>
+Subject: [PATCH v5 5/5] media: platform: Add jpeg dec/enc feature
+Date: Wed, 4 Dec 2019 17:44:29 +0800
+Message-ID: <20191204094424.2562-6-xia.jiang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20191204094441.5116-1-bibby.hsieh@mediatek.com>
-References: <20191204094441.5116-1-bibby.hsieh@mediatek.com>
+In-Reply-To: <20191204094424.2562-1-xia.jiang@mediatek.com>
+References: <20191204094424.2562-1-xia.jiang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191204_015456_341070_38D44FC1 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20191204_015541_166771_44966310 
+X-CRM114-Status: GOOD (  17.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,621 +84,1665 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: drinkcat@chromium.org, Bibby Hsieh <bibby.hsieh@mediatek.com>,
- srv_heupstream@mediatek.com, Yongqiang Niu <yongqiang.niu@mediatek.com>,
- linux-kernel@vger.kernel.org, tfiga@chromium.org, CK Hu <ck.hu@mediatek.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Cc: Xia Jiang <xia.jiang@mediatek.com>, devicetree@vger.kernel.org,
+ srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
+ Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
+ linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The CMDQ (Command Queue) in MT8183 is used to help
-update all relevant display controller registers
-with critical time limation.
-This patch add cmdq interface in ddp_comp interface,
-let all ddp_comp interface can support cpu/cmdq function
-at the same time.
+Add mtk jpeg encode v4l2 driver based on jpeg decode, because that jpeg
+decode and encode have great similarities with function operation.
 
-Signed-off-by: YT Shen <yt.shen@mediatek.com>
-Signed-off-by: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
-Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_color.c   |   7 +-
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |  65 +++++-----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |  43 ++++---
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |   8 +-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 136 +++++++++++++++-----
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  31 +++--
- 6 files changed, 197 insertions(+), 93 deletions(-)
+v5: support crop for encoder and compose for decoder in s_selection and
+    g_selection function.
+    use clamp() to replace mtk_jpeg_bound_align_image() and round_up()
+    to replace mtk_jpeg_align().
+    delete jpeg_enc_param/mtk_jpeg_enc_param structure and
+    mtk_jpeg_set_param(), program the registers directly based on
+    the original V4L2 values.
+    move macro definition about hw to mtk_jpeg_enc_reg.h.
+    delete unnecessary V4L2 logs in driver.
+    cancel spin lock and unlock operation in deviec run function.
+    change jpeg enc register offset hex numberals from upercase to
+    lowercase.
+  
+v4: split mtk_jpeg_try_fmt_mplane() to two functions, one for encoder,                                                      
+    one for decoder.                                                          
+    split mtk_jpeg_set_default_params() to two functions, one for                                                          
+    encoder, one for decoder.                                                          
+    add cropping support for encoder in g/s_selection ioctls.                                                          
+    change exif mode support by using V4L2_JPEG_ACTIVE_MARKER_APP1.                                                         
+    change MTK_JPEG_MAX_WIDTH/MTK_JPEG_MAX_HEIGH from 8192 to 65535 by                                                      
+    specification.                                                          
+    move width shifting operation behind aligning operation in                                                          
+    mtk_jpeg_try_enc_fmt_mplane() for bug fix.                                                          
+    fix user abuseing data_offset issue for DMABUF in                                                          
+    mtk_jpeg_set_enc_src().                                                          
+    fix kbuild warings: change MTK_JPEG_MIN_HEIGHT/MTK_JPEG_MAX_HEIGHT                                                      
+                        and MTK_JPEG_MIN_WIDTH/MTK_JPEG_MAX_WIDTH from                                                      
+                        'int' type to 'unsigned int' type.                                                          
+                        fix msleadingly indented of 'else'.                                                          
+                                                          
+v3: delete Change-Id.                                                          
+    only test once handler->error after the last v4l2_ctrl_new_std().                                                       
+    seperate changes of v4l2-ctrls.c and v4l2-controls.h to new patch.                                                      
+                                                          
+v2: fix compliance test fail, check created buffer size in driver. 
+---
+ drivers/media/platform/mtk-jpeg/Makefile      |   5 +-
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 678 ++++++++++++++----
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  43 +-
+ .../media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h |   7 +-
+ .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c | 271 +++++++
+ .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h |  86 +++
+ .../platform/mtk-jpeg/mtk_jpeg_enc_reg.h      |  78 ++
+ 7 files changed, 1004 insertions(+), 164 deletions(-)
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h
+ create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_reg.h
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_color.c b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-index 59de2a46aa49..6fb0d6983a4a 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_color.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-@@ -9,6 +9,7 @@
- #include <linux/of_device.h>
- #include <linux/of_irq.h>
- #include <linux/platform_device.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
+diff --git a/drivers/media/platform/mtk-jpeg/Makefile b/drivers/media/platform/mtk-jpeg/Makefile
+index 48516dcf96e6..76c33aad0f3f 100644
+--- a/drivers/media/platform/mtk-jpeg/Makefile
++++ b/drivers/media/platform/mtk-jpeg/Makefile
+@@ -1,3 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0-only
+-mtk_jpeg-objs := mtk_jpeg_core.o mtk_jpeg_dec_hw.o mtk_jpeg_dec_parse.o
++mtk_jpeg-objs := mtk_jpeg_core.o \
++		 mtk_jpeg_dec_hw.o \
++		 mtk_jpeg_dec_parse.o \
++		 mtk_jpeg_enc_hw.o
+ obj-$(CONFIG_VIDEO_MEDIATEK_JPEG) += mtk_jpeg.o
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+index 01ce20e32953..682adb010692 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+@@ -3,6 +3,7 @@
+  * Copyright (c) 2016 MediaTek Inc.
+  * Author: Ming Hsiu Tsai <minghsiu.tsai@mediatek.com>
+  *         Rick Chang <rick.chang@mediatek.com>
++ *         Xia Jiang <xia.jiang@mediatek.com>
+  */
  
- #include "mtk_drm_crtc.h"
- #include "mtk_drm_ddp_comp.h"
-@@ -45,12 +46,12 @@ static inline struct mtk_disp_color *comp_to_color(struct mtk_ddp_comp *comp)
+ #include <linux/clk.h>
+@@ -23,6 +24,7 @@
+ #include <media/videobuf2-dma-contig.h>
+ #include <soc/mediatek/smi.h>
  
- static void mtk_color_config(struct mtk_ddp_comp *comp, unsigned int w,
- 			     unsigned int h, unsigned int vrefresh,
--			     unsigned int bpc)
-+			     unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
++#include "mtk_jpeg_enc_hw.h"
+ #include "mtk_jpeg_dec_hw.h"
+ #include "mtk_jpeg_core.h"
+ #include "mtk_jpeg_dec_parse.h"
+@@ -31,7 +33,8 @@ static struct mtk_jpeg_fmt mtk_jpeg_formats[] = {
+ 	{
+ 		.fourcc		= V4L2_PIX_FMT_JPEG,
+ 		.colplanes	= 1,
+-		.flags		= MTK_JPEG_FMT_FLAG_DEC_OUTPUT,
++		.flags		= MTK_JPEG_FMT_FLAG_DEC_OUTPUT |
++				  MTK_JPEG_FMT_FLAG_ENC_CAPTURE,
+ 	},
+ 	{
+ 		.fourcc		= V4L2_PIX_FMT_YUV420M,
+@@ -51,6 +54,42 @@ static struct mtk_jpeg_fmt mtk_jpeg_formats[] = {
+ 		.v_align	= 3,
+ 		.flags		= MTK_JPEG_FMT_FLAG_DEC_CAPTURE,
+ 	},
++	{
++		.fourcc		= V4L2_PIX_FMT_NV12M,
++		.h_sample	= {4, 2, 2},
++		.v_sample	= {4, 2, 2},
++		.colplanes	= 2,
++		.h_align	= 4,
++		.v_align	= 4,
++		.flags		= MTK_JPEG_FMT_FLAG_ENC_OUTPUT,
++	},
++	{
++		.fourcc		= V4L2_PIX_FMT_NV21M,
++		.h_sample	= {4, 2, 2},
++		.v_sample	= {4, 2, 2},
++		.colplanes	= 2,
++		.h_align	= 4,
++		.v_align	= 4,
++		.flags		= MTK_JPEG_FMT_FLAG_ENC_OUTPUT,
++	},
++	{
++		.fourcc		= V4L2_PIX_FMT_YUYV,
++		.h_sample	= {4, 2, 2},
++		.v_sample	= {4, 4, 4},
++		.colplanes	= 1,
++		.h_align	= 4,
++		.v_align	= 3,
++		.flags		= MTK_JPEG_FMT_FLAG_ENC_OUTPUT,
++	},
++	{
++		.fourcc		= V4L2_PIX_FMT_YVYU,
++		.h_sample	= {4, 2, 2},
++		.v_sample	= {4, 4, 4},
++		.colplanes	= 1,
++		.h_align	= 4,
++		.v_align	= 3,
++		.flags		= MTK_JPEG_FMT_FLAG_ENC_OUTPUT,
++	},
+ };
+ 
+ #define MTK_JPEG_NUM_FORMATS ARRAY_SIZE(mtk_jpeg_formats)
+@@ -70,6 +109,11 @@ struct mtk_jpeg_src_buf {
+ static int debug;
+ module_param(debug, int, 0644);
+ 
++static inline struct mtk_jpeg_ctx *ctrl_to_ctx(struct v4l2_ctrl *ctrl)
++{
++	return container_of(ctrl->handler, struct mtk_jpeg_ctx, ctrl_hdl);
++}
++
+ static inline struct mtk_jpeg_ctx *mtk_jpeg_fh_to_ctx(struct v4l2_fh *fh)
  {
- 	struct mtk_disp_color *color = comp_to_color(comp);
- 
--	writel(w, comp->regs + DISP_COLOR_WIDTH(color));
--	writel(h, comp->regs + DISP_COLOR_HEIGHT(color));
-+	mtk_ddp_write(cmdq_pkt, w, comp, DISP_COLOR_WIDTH(color));
-+	mtk_ddp_write(cmdq_pkt, h, comp, DISP_COLOR_HEIGHT(color));
- }
- 
- static void mtk_color_start(struct mtk_ddp_comp *comp)
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 8a32248671c3..649e371dd9b7 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -12,6 +12,7 @@
- #include <linux/of_irq.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
- 
- #include "mtk_drm_crtc.h"
- #include "mtk_drm_ddp_comp.h"
-@@ -125,14 +126,15 @@ static void mtk_ovl_stop(struct mtk_ddp_comp *comp)
- 
- static void mtk_ovl_config(struct mtk_ddp_comp *comp, unsigned int w,
- 			   unsigned int h, unsigned int vrefresh,
--			   unsigned int bpc)
-+			   unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+ 	return container_of(fh, struct mtk_jpeg_ctx, fh);
+@@ -86,14 +130,70 @@ static int mtk_jpeg_querycap(struct file *file, void *priv,
  {
- 	if (w != 0 && h != 0)
--		writel_relaxed(h << 16 | w, comp->regs + DISP_REG_OVL_ROI_SIZE);
--	writel_relaxed(0x0, comp->regs + DISP_REG_OVL_ROI_BGCLR);
-+		mtk_ddp_write_relaxed(cmdq_pkt, h << 16 | w, comp,
-+				      DISP_REG_OVL_ROI_SIZE);
-+	mtk_ddp_write_relaxed(cmdq_pkt, 0x0, comp, DISP_REG_OVL_ROI_BGCLR);
+ 	struct mtk_jpeg_dev *jpeg = video_drvdata(file);
  
--	writel(0x1, comp->regs + DISP_REG_OVL_RST);
--	writel(0x0, comp->regs + DISP_REG_OVL_RST);
-+	mtk_ddp_write(cmdq_pkt, 0x1, comp, DISP_REG_OVL_RST);
-+	mtk_ddp_write(cmdq_pkt, 0x0, comp, DISP_REG_OVL_RST);
- }
+-	strscpy(cap->driver, MTK_JPEG_NAME " decoder", sizeof(cap->driver));
+-	strscpy(cap->card, MTK_JPEG_NAME " decoder", sizeof(cap->card));
++	strscpy(cap->driver, MTK_JPEG_NAME, sizeof(cap->driver));
++	if (jpeg->mode ==  MTK_JPEG_ENC)
++		strscpy(cap->card, MTK_JPEG_NAME " encoder", sizeof(cap->card));
++	else
++		strscpy(cap->card, MTK_JPEG_NAME " decoder", sizeof(cap->card));
+ 	snprintf(cap->bus_info, sizeof(cap->bus_info), "platform:%s",
+ 		 dev_name(jpeg->dev));
  
- static unsigned int mtk_ovl_layer_nr(struct mtk_ddp_comp *comp)
-@@ -176,16 +178,16 @@ static int mtk_ovl_layer_check(struct mtk_ddp_comp *comp, unsigned int idx,
  	return 0;
  }
  
--static void mtk_ovl_layer_on(struct mtk_ddp_comp *comp, unsigned int idx)
-+static void mtk_ovl_layer_on(struct mtk_ddp_comp *comp, unsigned int idx,
-+			     struct cmdq_pkt *cmdq_pkt)
- {
--	unsigned int reg;
- 	unsigned int gmc_thrshd_l;
- 	unsigned int gmc_thrshd_h;
- 	unsigned int gmc_value;
- 	struct mtk_disp_ovl *ovl = comp_to_ovl(comp);
- 
--	writel(0x1, comp->regs + DISP_REG_OVL_RDMA_CTRL(idx));
--
-+	mtk_ddp_write(cmdq_pkt, 0x1, comp,
-+		      DISP_REG_OVL_RDMA_CTRL(idx));
- 	gmc_thrshd_l = GMC_THRESHOLD_LOW >>
- 		      (GMC_THRESHOLD_BITS - ovl->data->gmc_bits);
- 	gmc_thrshd_h = GMC_THRESHOLD_HIGH >>
-@@ -195,22 +197,19 @@ static void mtk_ovl_layer_on(struct mtk_ddp_comp *comp, unsigned int idx)
- 	else
- 		gmc_value = gmc_thrshd_l | gmc_thrshd_l << 8 |
- 			    gmc_thrshd_h << 16 | gmc_thrshd_h << 24;
--	writel(gmc_value, comp->regs + DISP_REG_OVL_RDMA_GMC(idx));
--
--	reg = readl(comp->regs + DISP_REG_OVL_SRC_CON);
--	reg = reg | BIT(idx);
--	writel(reg, comp->regs + DISP_REG_OVL_SRC_CON);
-+	mtk_ddp_write(cmdq_pkt, gmc_value,
-+		      comp, DISP_REG_OVL_RDMA_GMC(idx));
-+	mtk_ddp_write_mask(cmdq_pkt, BIT(idx), comp,
-+			   DISP_REG_OVL_SRC_CON, BIT(idx));
- }
- 
--static void mtk_ovl_layer_off(struct mtk_ddp_comp *comp, unsigned int idx)
-+static void mtk_ovl_layer_off(struct mtk_ddp_comp *comp, unsigned int idx,
-+			      struct cmdq_pkt *cmdq_pkt)
- {
--	unsigned int reg;
--
--	reg = readl(comp->regs + DISP_REG_OVL_SRC_CON);
--	reg = reg & ~BIT(idx);
--	writel(reg, comp->regs + DISP_REG_OVL_SRC_CON);
--
--	writel(0x0, comp->regs + DISP_REG_OVL_RDMA_CTRL(idx));
-+	mtk_ddp_write_mask(cmdq_pkt, 0, comp,
-+			   DISP_REG_OVL_SRC_CON, BIT(idx));
-+	mtk_ddp_write(cmdq_pkt, 0, comp,
-+		      DISP_REG_OVL_RDMA_CTRL(idx));
- }
- 
- static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
-@@ -250,7 +249,8 @@ static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
- }
- 
- static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
--				 struct mtk_plane_state *state)
-+				 struct mtk_plane_state *state,
-+				 struct cmdq_pkt *cmdq_pkt)
- {
- 	struct mtk_disp_ovl *ovl = comp_to_ovl(comp);
- 	struct mtk_plane_pending_state *pending = &state->pending;
-@@ -262,7 +262,7 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
- 	unsigned int con;
- 
- 	if (!pending->enable)
--		mtk_ovl_layer_off(comp, idx);
-+		mtk_ovl_layer_off(comp, idx, cmdq_pkt);
- 
- 	con = ovl_fmt_convert(ovl, fmt);
- 	if (idx != 0)
-@@ -278,14 +278,19 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
- 		addr += pending->pitch - 1;
- 	}
- 
--	writel_relaxed(con, comp->regs + DISP_REG_OVL_CON(idx));
--	writel_relaxed(pitch, comp->regs + DISP_REG_OVL_PITCH(idx));
--	writel_relaxed(src_size, comp->regs + DISP_REG_OVL_SRC_SIZE(idx));
--	writel_relaxed(offset, comp->regs + DISP_REG_OVL_OFFSET(idx));
--	writel_relaxed(addr, comp->regs + DISP_REG_OVL_ADDR(ovl, idx));
-+	mtk_ddp_write_relaxed(cmdq_pkt, con, comp,
-+			      DISP_REG_OVL_CON(idx));
-+	mtk_ddp_write_relaxed(cmdq_pkt, pitch, comp,
-+			      DISP_REG_OVL_PITCH(idx));
-+	mtk_ddp_write_relaxed(cmdq_pkt, src_size, comp,
-+			      DISP_REG_OVL_SRC_SIZE(idx));
-+	mtk_ddp_write_relaxed(cmdq_pkt, offset, comp,
-+			      DISP_REG_OVL_OFFSET(idx));
-+	mtk_ddp_write_relaxed(cmdq_pkt, addr, comp,
-+			      DISP_REG_OVL_ADDR(ovl, idx));
- 
- 	if (pending->enable)
--		mtk_ovl_layer_on(comp, idx);
-+		mtk_ovl_layer_on(comp, idx, cmdq_pkt);
- }
- 
- static void mtk_ovl_bgclr_in_on(struct mtk_ddp_comp *comp)
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index 15cc4ae84aee..c1abde3743bf 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -10,6 +10,7 @@
- #include <linux/of_irq.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
- 
- #include "mtk_drm_crtc.h"
- #include "mtk_drm_ddp_comp.h"
-@@ -127,15 +128,17 @@ static void mtk_rdma_stop(struct mtk_ddp_comp *comp)
- 
- static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
- 			    unsigned int height, unsigned int vrefresh,
--			    unsigned int bpc)
-+			    unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
- {
- 	unsigned int threshold;
- 	unsigned int reg;
- 	struct mtk_disp_rdma *rdma = comp_to_rdma(comp);
- 	u32 rdma_fifo_size;
- 
--	rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0, 0xfff, width);
--	rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_1, 0xfffff, height);
-+	mtk_ddp_write_mask(cmdq_pkt, width, comp,
-+			   DISP_REG_RDMA_SIZE_CON_0, 0xfff);
-+	mtk_ddp_write_mask(cmdq_pkt, height, comp,
-+			   DISP_REG_RDMA_SIZE_CON_1, 0xfffff);
- 
- 	if (rdma->fifo_size)
- 		rdma_fifo_size = rdma->fifo_size;
-@@ -152,7 +155,7 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
- 	reg = RDMA_FIFO_UNDERFLOW_EN |
- 	      RDMA_FIFO_PSEUDO_SIZE(rdma_fifo_size) |
- 	      RDMA_OUTPUT_VALID_FIFO_THRESHOLD(threshold);
--	writel(reg, comp->regs + DISP_REG_RDMA_FIFO_CON);
-+	mtk_ddp_write(cmdq_pkt, reg, comp, DISP_REG_RDMA_FIFO_CON);
- }
- 
- static unsigned int rdma_fmt_convert(struct mtk_disp_rdma *rdma,
-@@ -198,7 +201,8 @@ static unsigned int mtk_rdma_layer_nr(struct mtk_ddp_comp *comp)
- }
- 
- static void mtk_rdma_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
--				  struct mtk_plane_state *state)
-+				  struct mtk_plane_state *state,
-+				  struct cmdq_pkt *cmdq_pkt)
- {
- 	struct mtk_disp_rdma *rdma = comp_to_rdma(comp);
- 	struct mtk_plane_pending_state *pending = &state->pending;
-@@ -208,24 +212,27 @@ static void mtk_rdma_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
- 	unsigned int con;
- 
- 	con = rdma_fmt_convert(rdma, fmt);
--	writel_relaxed(con, comp->regs + DISP_RDMA_MEM_CON);
-+	mtk_ddp_write_relaxed(cmdq_pkt, con, comp, DISP_RDMA_MEM_CON);
- 
- 	if (fmt == DRM_FORMAT_UYVY || fmt == DRM_FORMAT_YUYV) {
--		rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0,
--				 RDMA_MATRIX_ENABLE, RDMA_MATRIX_ENABLE);
--		rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0,
--				 RDMA_MATRIX_INT_MTX_SEL,
--				 RDMA_MATRIX_INT_MTX_BT601_to_RGB);
-+		mtk_ddp_write_mask(cmdq_pkt, RDMA_MATRIX_ENABLE, comp,
-+				   DISP_REG_RDMA_SIZE_CON_0,
-+				   RDMA_MATRIX_ENABLE);
-+		mtk_ddp_write_mask(cmdq_pkt, RDMA_MATRIX_INT_MTX_BT601_to_RGB,
-+				   comp, DISP_REG_RDMA_SIZE_CON_0,
-+				   RDMA_MATRIX_INT_MTX_SEL);
- 	} else {
--		rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0,
--				 RDMA_MATRIX_ENABLE, 0);
-+		mtk_ddp_write_mask(cmdq_pkt, 0, comp,
-+				   DISP_REG_RDMA_SIZE_CON_0,
-+				   RDMA_MATRIX_ENABLE);
- 	}
-+	mtk_ddp_write_relaxed(cmdq_pkt, addr, comp, DISP_RDMA_MEM_START_ADDR);
-+	mtk_ddp_write_relaxed(cmdq_pkt, pitch, comp, DISP_RDMA_MEM_SRC_PITCH);
-+	mtk_ddp_write(cmdq_pkt, RDMA_MEM_GMC, comp,
-+		      DISP_RDMA_MEM_GMC_SETTING_0);
-+	mtk_ddp_write_mask(cmdq_pkt, RDMA_MODE_MEMORY, comp,
-+			   DISP_REG_RDMA_GLOBAL_CON, RDMA_MODE_MEMORY);
- 
--	writel_relaxed(addr, comp->regs + DISP_RDMA_MEM_START_ADDR);
--	writel_relaxed(pitch, comp->regs + DISP_RDMA_MEM_SRC_PITCH);
--	writel(RDMA_MEM_GMC, comp->regs + DISP_RDMA_MEM_GMC_SETTING_0);
--	rdma_update_bits(comp, DISP_REG_RDMA_GLOBAL_CON,
--			 RDMA_MODE_MEMORY, RDMA_MODE_MEMORY);
- }
- 
- static const struct mtk_ddp_comp_funcs mtk_disp_rdma_funcs = {
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 92b3b397c6c4..9f1ff2f3f104 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -311,7 +311,7 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
- 		if (prev == DDP_COMPONENT_OVL0)
- 			mtk_ddp_comp_bgclr_in_on(comp);
- 
--		mtk_ddp_comp_config(comp, width, height, vrefresh, bpc);
-+		mtk_ddp_comp_config(comp, width, height, vrefresh, bpc, NULL);
- 		mtk_ddp_comp_start(comp);
- 	}
- 
-@@ -326,7 +326,7 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
- 		comp = mtk_drm_ddp_comp_for_plane(crtc, plane, &local_layer);
- 		if (comp)
- 			mtk_ddp_comp_layer_config(comp, local_layer,
--						  plane_state);
-+						  plane_state, NULL);
- 	}
- 
- 	return 0;
-@@ -393,7 +393,7 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
- 	if (state->pending_config) {
- 		mtk_ddp_comp_config(comp, state->pending_width,
- 				    state->pending_height,
--				    state->pending_vrefresh, 0);
-+				    state->pending_vrefresh, 0, NULL);
- 
- 		state->pending_config = false;
- 	}
-@@ -413,7 +413,7 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
- 
- 			if (comp)
- 				mtk_ddp_comp_layer_config(comp, local_layer,
--							  plane_state);
-+							  plane_state, NULL);
- 			plane_state->pending.config = false;
- 		}
- 		mtk_crtc->pending_planes = false;
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index 3407d38aff8f..e93e46726de6 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -12,7 +12,8 @@
- #include <linux/of_irq.h>
- #include <linux/of_platform.h>
- #include <linux/platform_device.h>
--
-+#include <drm/drmP.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
- #include "mtk_drm_drv.h"
- #include "mtk_drm_plane.h"
- #include "mtk_drm_ddp_comp.h"
-@@ -76,36 +77,82 @@
- #define DITHER_ADD_LSHIFT_G(x)			(((x) & 0x7) << 4)
- #define DITHER_ADD_RSHIFT_G(x)			(((x) & 0x7) << 0)
- 
-+void mtk_ddp_write(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-+		   struct mtk_ddp_comp *comp, unsigned int offset)
++static int vidioc_jpeg_s_ctrl(struct v4l2_ctrl *ctrl)
 +{
-+	if (cmdq_pkt)
-+#ifdef CONFIG_MTK_CMDQ
-+		cmdq_pkt_write(cmdq_pkt, comp->subsys,
-+			       comp->regs_pa + offset, value);
-+#endif
-+	else
-+		writel(value, comp->regs + offset);
-+}
-+
-+void mtk_ddp_write_relaxed(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-+			   struct mtk_ddp_comp *comp,
-+			   unsigned int offset)
-+{
-+	if (cmdq_pkt)
-+#ifdef CONFIG_MTK_CMDQ
-+		cmdq_pkt_write(cmdq_pkt, comp->subsys,
-+			       comp->regs_pa + offset, value);
-+#endif
-+	else
-+		writel_relaxed(value, comp->regs + offset);
-+}
-+
-+void mtk_ddp_write_mask(struct cmdq_pkt *cmdq_pkt,
-+			unsigned int value,
-+			struct mtk_ddp_comp *comp,
-+			unsigned int offset,
-+			unsigned int mask)
-+{
-+	if (cmdq_pkt) {
-+#ifdef CONFIG_MTK_CMDQ
-+		cmdq_pkt_write_mask(cmdq_pkt, comp->subsys,
-+				    comp->regs_pa + offset, value, mask);
-+#endif
-+	} else {
-+		u32 tmp = readl(comp->regs + offset);
-+
-+		tmp = (tmp & ~mask) | (value & mask);
-+		writel(tmp, comp->regs + offset);
-+	}
-+}
-+
- void mtk_dither_set(struct mtk_ddp_comp *comp, unsigned int bpc,
--		    unsigned int CFG)
-+		    unsigned int CFG, struct cmdq_pkt *cmdq_pkt)
- {
- 	/* If bpc equal to 0, the dithering function didn't be enabled */
- 	if (bpc == 0)
- 		return;
- 
- 	if (bpc >= MTK_MIN_BPC) {
--		writel(0, comp->regs + DISP_DITHER_5);
--		writel(0, comp->regs + DISP_DITHER_7);
--		writel(DITHER_LSB_ERR_SHIFT_R(MTK_MAX_BPC - bpc) |
--		       DITHER_ADD_LSHIFT_R(MTK_MAX_BPC - bpc) |
--		       DITHER_NEW_BIT_MODE,
--		       comp->regs + DISP_DITHER_15);
--		writel(DITHER_LSB_ERR_SHIFT_B(MTK_MAX_BPC - bpc) |
--		       DITHER_ADD_LSHIFT_B(MTK_MAX_BPC - bpc) |
--		       DITHER_LSB_ERR_SHIFT_G(MTK_MAX_BPC - bpc) |
--		       DITHER_ADD_LSHIFT_G(MTK_MAX_BPC - bpc),
--		       comp->regs + DISP_DITHER_16);
--		writel(DISP_DITHERING, comp->regs + CFG);
-+		mtk_ddp_write(cmdq_pkt, 0, comp, DISP_DITHER_5);
-+		mtk_ddp_write(cmdq_pkt, 0, comp, DISP_DITHER_7);
-+		mtk_ddp_write(cmdq_pkt,
-+			      DITHER_LSB_ERR_SHIFT_R(MTK_MAX_BPC - bpc) |
-+			      DITHER_ADD_LSHIFT_R(MTK_MAX_BPC - bpc) |
-+			      DITHER_NEW_BIT_MODE,
-+			      comp, DISP_DITHER_15);
-+		mtk_ddp_write(cmdq_pkt,
-+			      DITHER_LSB_ERR_SHIFT_B(MTK_MAX_BPC - bpc) |
-+			      DITHER_ADD_LSHIFT_B(MTK_MAX_BPC - bpc) |
-+			      DITHER_LSB_ERR_SHIFT_G(MTK_MAX_BPC - bpc) |
-+			      DITHER_ADD_LSHIFT_G(MTK_MAX_BPC - bpc),
-+			      comp, DISP_DITHER_16);
-+		mtk_ddp_write(cmdq_pkt, DISP_DITHERING, comp, CFG);
- 	}
- }
- 
- static void mtk_od_config(struct mtk_ddp_comp *comp, unsigned int w,
- 			  unsigned int h, unsigned int vrefresh,
--			  unsigned int bpc)
-+			  unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
- {
--	writel(w << 16 | h, comp->regs + DISP_OD_SIZE);
--	writel(OD_RELAYMODE, comp->regs + DISP_OD_CFG);
--	mtk_dither_set(comp, bpc, DISP_OD_CFG);
-+	mtk_ddp_write(cmdq_pkt, w << 16 | h, comp, DISP_OD_SIZE);
-+	mtk_ddp_write(cmdq_pkt, OD_RELAYMODE, comp, DISP_OD_CFG);
-+	mtk_dither_set(comp, bpc, DISP_OD_CFG, cmdq_pkt);
- }
- 
- static void mtk_od_start(struct mtk_ddp_comp *comp)
-@@ -120,9 +167,9 @@ static void mtk_ufoe_start(struct mtk_ddp_comp *comp)
- 
- static void mtk_aal_config(struct mtk_ddp_comp *comp, unsigned int w,
- 			   unsigned int h, unsigned int vrefresh,
--			   unsigned int bpc)
-+			   unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
- {
--	writel(h << 16 | w, comp->regs + DISP_AAL_SIZE);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, comp, DISP_AAL_SIZE);
- }
- 
- static void mtk_aal_start(struct mtk_ddp_comp *comp)
-@@ -137,10 +184,10 @@ static void mtk_aal_stop(struct mtk_ddp_comp *comp)
- 
- static void mtk_ccorr_config(struct mtk_ddp_comp *comp, unsigned int w,
- 			     unsigned int h, unsigned int vrefresh,
--			     unsigned int bpc)
-+			     unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
- {
--	writel(h << 16 | w, comp->regs + DISP_CCORR_SIZE);
--	writel(CCORR_RELAY_MODE, comp->regs + DISP_CCORR_CFG);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, comp, DISP_CCORR_SIZE);
-+	mtk_ddp_write(cmdq_pkt, CCORR_RELAY_MODE, comp, DISP_CCORR_CFG);
- }
- 
- static void mtk_ccorr_start(struct mtk_ddp_comp *comp)
-@@ -155,10 +202,10 @@ static void mtk_ccorr_stop(struct mtk_ddp_comp *comp)
- 
- static void mtk_dither_config(struct mtk_ddp_comp *comp, unsigned int w,
- 			      unsigned int h, unsigned int vrefresh,
--			      unsigned int bpc)
-+			      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
- {
--	writel(h << 16 | w, comp->regs + DISP_DITHER_SIZE);
--	writel(DITHER_RELAY_MODE, comp->regs + DISP_DITHER_CFG);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, comp, DISP_DITHER_SIZE);
-+	mtk_ddp_write(cmdq_pkt, DITHER_RELAY_MODE, comp, DISP_DITHER_CFG);
- }
- 
- static void mtk_dither_start(struct mtk_ddp_comp *comp)
-@@ -173,10 +220,10 @@ static void mtk_dither_stop(struct mtk_ddp_comp *comp)
- 
- static void mtk_gamma_config(struct mtk_ddp_comp *comp, unsigned int w,
- 			     unsigned int h, unsigned int vrefresh,
--			     unsigned int bpc)
-+			     unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
- {
--	writel(h << 16 | w, comp->regs + DISP_GAMMA_SIZE);
--	mtk_dither_set(comp, bpc, DISP_GAMMA_CFG);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, comp, DISP_GAMMA_SIZE);
-+	mtk_dither_set(comp, bpc, DISP_GAMMA_CFG, cmdq_pkt);
- }
- 
- static void mtk_gamma_start(struct mtk_ddp_comp *comp)
-@@ -324,6 +371,9 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
- 		      const struct mtk_ddp_comp_funcs *funcs)
- {
- 	struct platform_device *comp_pdev;
-+	struct resource res;
-+	struct cmdq_client_reg *cmdq_reg;
++	struct mtk_jpeg_ctx *ctx = ctrl_to_ctx(ctrl);
++	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
 +	int ret = 0;
- 
- 	if (comp_id < 0 || comp_id >= DDP_COMPONENT_ID_MAX)
- 		return -EINVAL;
-@@ -358,6 +408,34 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
- 	}
- 	comp->dev = &comp_pdev->dev;
- 
-+#ifdef CONFIG_MTK_CMDQ
-+	if (of_address_to_resource(node, 0, &res) != 0) {
-+		dev_err(dev, "Missing reg in %s node\n",
-+			node->full_name);
-+		return -EINVAL;
-+	}
-+	comp->regs_pa = res.start;
 +
-+	comp_pdev = of_find_device_by_node(node);
-+	if (!comp_pdev) {
-+		dev_warn(dev, "Waiting for component device %s\n",
-+			 node->full_name);
-+		return -EPROBE_DEFER;
++	switch (ctrl->id) {
++	case V4L2_CID_JPEG_RESTART_INTERVAL:
++		ctx->restart_interval = ctrl->val;
++		break;
++	case V4L2_CID_JPEG_COMPRESSION_QUALITY:
++		ctx->enc_quality = ctrl->val;
++		break;
++	case V4L2_CID_JPEG_ACTIVE_MARKER:
++		ctx->enable_exif = ctrl->val & V4L2_JPEG_ACTIVE_MARKER_APP1;
++		break;
 +	}
 +
-+	cmdq_reg = kzalloc(sizeof(*cmdq_reg), GFP_KERNEL);
-+	if (!cmdq_reg)
-+		return -EINVAL;
++	return ret;
++}
 +
-+	ret = cmdq_dev_get_client_reg(&comp_pdev->dev, cmdq_reg, 0);
-+	if (ret != 0)
-+		dev_dbg(&comp_pdev->dev,
-+			"get mediatek,gce-client-reg fail!\n");
++static const struct v4l2_ctrl_ops mtk_jpeg_ctrl_ops = {
++	.s_ctrl = vidioc_jpeg_s_ctrl,
++};
++
++int mtk_jpeg_ctrls_setup(struct mtk_jpeg_ctx *ctx)
++{
++	const struct v4l2_ctrl_ops *ops = &mtk_jpeg_ctrl_ops;
++	struct v4l2_ctrl_handler *handler = &ctx->ctrl_hdl;
++	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
++
++	v4l2_ctrl_handler_init(handler, 3);
++
++	if (jpeg->mode == MTK_JPEG_ENC) {
++		v4l2_ctrl_new_std(handler, ops, V4L2_CID_JPEG_RESTART_INTERVAL,
++				  0, 100, 1, 0);
++		v4l2_ctrl_new_std(handler, ops,
++				  V4L2_CID_JPEG_COMPRESSION_QUALITY, 48, 100, 1,
++				  90);
++		v4l2_ctrl_new_std(handler, ops, V4L2_CID_JPEG_ACTIVE_MARKER, 0,
++				  V4L2_JPEG_ACTIVE_MARKER_APP1, 0, 0);
++
++		if (handler->error) {
++			v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
++			return handler->error;
++		}
++	}
++
++	v4l2_ctrl_handler_setup(&ctx->ctrl_hdl);
++
++	return 0;
++}
++
+ static int mtk_jpeg_enum_fmt(struct mtk_jpeg_fmt *mtk_jpeg_formats, int n,
+ 			     struct v4l2_fmtdesc *f, u32 type)
+ {
+@@ -118,19 +218,27 @@ static int mtk_jpeg_enum_fmt(struct mtk_jpeg_fmt *mtk_jpeg_formats, int n,
+ static int mtk_jpeg_enum_fmt_vid_cap(struct file *file, void *priv,
+ 				     struct v4l2_fmtdesc *f)
+ {
++	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
++
+ 	return mtk_jpeg_enum_fmt(mtk_jpeg_formats, MTK_JPEG_NUM_FORMATS, f,
++				 ctx->jpeg->mode == MTK_JPEG_ENC ?
++				 MTK_JPEG_FMT_FLAG_ENC_CAPTURE :
+ 				 MTK_JPEG_FMT_FLAG_DEC_CAPTURE);
+ }
+ 
+ static int mtk_jpeg_enum_fmt_vid_out(struct file *file, void *priv,
+ 				     struct v4l2_fmtdesc *f)
+ {
++	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
++
+ 	return mtk_jpeg_enum_fmt(mtk_jpeg_formats, MTK_JPEG_NUM_FORMATS, f,
++				 ctx->jpeg->mode == MTK_JPEG_ENC ?
++				 MTK_JPEG_FMT_FLAG_ENC_OUTPUT :
+ 				 MTK_JPEG_FMT_FLAG_DEC_OUTPUT);
+ }
+ 
+-static struct mtk_jpeg_q_data *mtk_jpeg_get_q_data(struct mtk_jpeg_ctx *ctx,
+-						   enum v4l2_buf_type type)
++static struct mtk_jpeg_q_data *
++mtk_jpeg_get_q_data(struct mtk_jpeg_ctx *ctx, enum v4l2_buf_type type)
+ {
+ 	if (V4L2_TYPE_IS_OUTPUT(type))
+ 		return &ctx->out_q;
+@@ -143,9 +251,14 @@ static struct mtk_jpeg_fmt *mtk_jpeg_find_format(struct mtk_jpeg_ctx *ctx,
+ {
+ 	unsigned int k, fmt_flag;
+ 
+-	fmt_flag = (fmt_type == MTK_JPEG_FMT_TYPE_OUTPUT) ?
+-		   MTK_JPEG_FMT_FLAG_DEC_OUTPUT :
+-		   MTK_JPEG_FMT_FLAG_DEC_CAPTURE;
++	if (ctx->jpeg->mode ==  MTK_JPEG_ENC)
++		fmt_flag = (fmt_type == MTK_JPEG_FMT_TYPE_OUTPUT) ?
++			   MTK_JPEG_FMT_FLAG_ENC_OUTPUT :
++			   MTK_JPEG_FMT_FLAG_ENC_CAPTURE;
 +	else
-+		comp->subsys = cmdq_reg->subsys;
++		fmt_flag = (fmt_type == MTK_JPEG_FMT_TYPE_OUTPUT) ?
++			   MTK_JPEG_FMT_FLAG_DEC_OUTPUT :
++			   MTK_JPEG_FMT_FLAG_DEC_CAPTURE;
+ 
+ 	for (k = 0; k < MTK_JPEG_NUM_FORMATS; k++) {
+ 		struct mtk_jpeg_fmt *fmt = &mtk_jpeg_formats[k];
+@@ -177,7 +290,71 @@ static void mtk_jpeg_adjust_fmt_mplane(struct mtk_jpeg_ctx *ctx,
+ 	}
+ }
+ 
+-static int mtk_jpeg_try_fmt_mplane(struct v4l2_format *f,
++static int mtk_jpeg_try_enc_fmt_mplane(struct v4l2_format *f,
++				       struct mtk_jpeg_fmt *fmt,
++				       struct mtk_jpeg_ctx *ctx, int q_type)
++{
++	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
++	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
++	int i, align_w, align_h;
 +
-+	kfree(cmdq_reg);
-+#endif
++	memset(pix_mp->reserved, 0, sizeof(pix_mp->reserved));
++	pix_mp->field = V4L2_FIELD_NONE;
++
++	if (ctx->state != MTK_JPEG_INIT) {
++		mtk_jpeg_adjust_fmt_mplane(ctx, f);
++		return 0;
++	}
++
++	pix_mp->num_planes = fmt->colplanes;
++	pix_mp->pixelformat = fmt->fourcc;
++
++	if (q_type == MTK_JPEG_FMT_TYPE_OUTPUT) {
++		if (pix_mp->num_planes == 1U) {
++			pix_mp->height = clamp(round_up(pix_mp->height, 8),
++					       MTK_JPEG_MIN_HEIGHT,
++					       MTK_JPEG_MAX_HEIGHT);
++			pix_mp->width = clamp(round_up(pix_mp->width, 32),
++					      MTK_JPEG_MIN_WIDTH,
++					      MTK_JPEG_MAX_WIDTH);
++			pix_mp->plane_fmt[0].bytesperline = pix_mp->width * 2;
++			pix_mp->plane_fmt[0].sizeimage =
++				pix_mp->width * pix_mp->height * 2;
++		}
++		if (pix_mp->num_planes == 2U) {
++			pix_mp->height = clamp(round_up(pix_mp->height, 16),
++					       MTK_JPEG_MIN_HEIGHT,
++					       MTK_JPEG_MAX_HEIGHT);
++			pix_mp->width = clamp(round_up(pix_mp->width, 16),
++					      MTK_JPEG_MIN_WIDTH,
++					      MTK_JPEG_MAX_WIDTH);
++			for (i = 0; i < pix_mp->num_planes; i++) {
++				pix_mp->plane_fmt[i].bytesperline =
++					pix_mp->width;
++				pix_mp->plane_fmt[i].sizeimage =
++					pix_mp->width * pix_mp->height / (i+1);
++			}
++		}
++	} else {
++		pix_mp->height = clamp(pix_mp->height, MTK_JPEG_MIN_HEIGHT,
++				       MTK_JPEG_MAX_HEIGHT);
++		pix_mp->width = clamp(pix_mp->width, MTK_JPEG_MIN_WIDTH,
++				      MTK_JPEG_MAX_WIDTH);
++
++		if (fmt->fourcc == V4L2_PIX_FMT_JPEG) {
++			pix_mp->plane_fmt[0].bytesperline = 0;
++			pix_mp->plane_fmt[0].sizeimage =
++				round_up(pix_mp->plane_fmt[0].sizeimage, 128);
++			if (pix_mp->plane_fmt[0].sizeimage == 0)
++				pix_mp->plane_fmt[0].sizeimage =
++					MTK_JPEG_DEFAULT_SIZEIMAGE;
++		}
++	}
++
++	return 0;
++}
++
++static int mtk_jpeg_try_dec_fmt_mplane(struct v4l2_format *f,
+ 				   struct mtk_jpeg_fmt *fmt,
+ 				   struct mtk_jpeg_ctx *ctx, int q_type)
+ {
+@@ -287,6 +464,7 @@ static int mtk_jpeg_try_fmt_vid_cap_mplane(struct file *file, void *priv,
+ {
+ 	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
+ 	struct mtk_jpeg_fmt *fmt;
++	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+ 
+ 	fmt = mtk_jpeg_find_format(ctx, f->fmt.pix_mp.pixelformat,
+ 				   MTK_JPEG_FMT_TYPE_CAPTURE);
+@@ -300,7 +478,12 @@ static int mtk_jpeg_try_fmt_vid_cap_mplane(struct file *file, void *priv,
+ 		 (fmt->fourcc >> 16 & 0xff),
+ 		 (fmt->fourcc >> 24 & 0xff));
+ 
+-	return mtk_jpeg_try_fmt_mplane(f, fmt, ctx, MTK_JPEG_FMT_TYPE_CAPTURE);
++	if (jpeg->mode == MTK_JPEG_ENC)
++		return mtk_jpeg_try_enc_fmt_mplane(f, fmt, ctx,
++						   MTK_JPEG_FMT_TYPE_CAPTURE);
++	else
++		return mtk_jpeg_try_dec_fmt_mplane(f, fmt, ctx,
++						   MTK_JPEG_FMT_TYPE_CAPTURE);
+ }
+ 
+ static int mtk_jpeg_try_fmt_vid_out_mplane(struct file *file, void *priv,
+@@ -308,6 +491,7 @@ static int mtk_jpeg_try_fmt_vid_out_mplane(struct file *file, void *priv,
+ {
+ 	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
+ 	struct mtk_jpeg_fmt *fmt;
++	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+ 
+ 	fmt = mtk_jpeg_find_format(ctx, f->fmt.pix_mp.pixelformat,
+ 				   MTK_JPEG_FMT_TYPE_OUTPUT);
+@@ -321,7 +505,12 @@ static int mtk_jpeg_try_fmt_vid_out_mplane(struct file *file, void *priv,
+ 		 (fmt->fourcc >> 16 & 0xff),
+ 		 (fmt->fourcc >> 24 & 0xff));
+ 
+-	return mtk_jpeg_try_fmt_mplane(f, fmt, ctx, MTK_JPEG_FMT_TYPE_OUTPUT);
++	if (jpeg->mode == MTK_JPEG_ENC)
++		return mtk_jpeg_try_enc_fmt_mplane(f, fmt, ctx,
++						   MTK_JPEG_FMT_TYPE_OUTPUT);
++	else
++		return mtk_jpeg_try_dec_fmt_mplane(f, fmt, ctx,
++						   MTK_JPEG_FMT_TYPE_OUTPUT);
+ }
+ 
+ static int mtk_jpeg_s_fmt_mplane(struct mtk_jpeg_ctx *ctx,
+@@ -426,28 +615,48 @@ static int mtk_jpeg_g_selection(struct file *file, void *priv,
+ 				struct v4l2_selection *s)
+ {
+ 	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
++	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+ 
+-	if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
+-		return -EINVAL;
++	if (jpeg->mode == MTK_JPEG_ENC) {
++		if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
++			return -EINVAL;
+ 
+-	switch (s->target) {
+-	case V4L2_SEL_TGT_COMPOSE:
+-	case V4L2_SEL_TGT_COMPOSE_DEFAULT:
+-		s->r.width = ctx->out_q.w;
+-		s->r.height = ctx->out_q.h;
+-		s->r.left = 0;
+-		s->r.top = 0;
+-		break;
+-	case V4L2_SEL_TGT_COMPOSE_BOUNDS:
+-	case V4L2_SEL_TGT_COMPOSE_PADDED:
+-		s->r.width = ctx->cap_q.w;
+-		s->r.height = ctx->cap_q.h;
+-		s->r.left = 0;
+-		s->r.top = 0;
+-		break;
+-	default:
+-		return -EINVAL;
++		switch (s->target) {
++		case V4L2_SEL_TGT_CROP:
++		case V4L2_SEL_TGT_CROP_BOUNDS:
++		case V4L2_SEL_TGT_CROP_DEFAULT:
++			s->r.width = ctx->out_q.w;
++			s->r.height = ctx->out_q.h;
++			s->r.left = 0;
++			s->r.top = 0;
++			break;
++		default:
++			return -EINVAL;
++		}
++	} else {
++		if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
++			return -EINVAL;
++
++		switch (s->target) {
++		case V4L2_SEL_TGT_COMPOSE:
++		case V4L2_SEL_TGT_COMPOSE_DEFAULT:
++			s->r.width = ctx->out_q.w;
++			s->r.height = ctx->out_q.h;
++			s->r.left = 0;
++			s->r.top = 0;
++			break;
++		case V4L2_SEL_TGT_COMPOSE_BOUNDS:
++		case V4L2_SEL_TGT_COMPOSE_PADDED:
++			s->r.width = ctx->cap_q.w;
++			s->r.height = ctx->cap_q.h;
++			s->r.left = 0;
++			s->r.top = 0;
++			break;
++		default:
++			return -EINVAL;
++		}
+ 	}
++
  	return 0;
  }
  
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index dbfb90e9b9cf..384abae5a8c8 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -69,10 +69,11 @@ enum mtk_ddp_comp_id {
- };
- 
- struct mtk_ddp_comp;
--
-+struct cmdq_pkt;
- struct mtk_ddp_comp_funcs {
- 	void (*config)(struct mtk_ddp_comp *comp, unsigned int w,
--		       unsigned int h, unsigned int vrefresh, unsigned int bpc);
-+		       unsigned int h, unsigned int vrefresh,
-+		       unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
- 	void (*start)(struct mtk_ddp_comp *comp);
- 	void (*stop)(struct mtk_ddp_comp *comp);
- 	void (*enable_vblank)(struct mtk_ddp_comp *comp, struct drm_crtc *crtc);
-@@ -85,7 +86,8 @@ struct mtk_ddp_comp_funcs {
- 			   unsigned int idx,
- 			   struct mtk_plane_state *state);
- 	void (*layer_config)(struct mtk_ddp_comp *comp, unsigned int idx,
--			     struct mtk_plane_state *state);
-+			     struct mtk_plane_state *state,
-+			     struct cmdq_pkt *cmdq_pkt);
- 	void (*gamma_set)(struct mtk_ddp_comp *comp,
- 			  struct drm_crtc_state *state);
- 	void (*bgclr_in_on)(struct mtk_ddp_comp *comp);
-@@ -99,14 +101,17 @@ struct mtk_ddp_comp {
- 	struct device *dev;
- 	enum mtk_ddp_comp_id id;
- 	const struct mtk_ddp_comp_funcs *funcs;
-+	resource_size_t regs_pa;
-+	u8 subsys;
- };
- 
- static inline void mtk_ddp_comp_config(struct mtk_ddp_comp *comp,
- 				       unsigned int w, unsigned int h,
--				       unsigned int vrefresh, unsigned int bpc)
-+				       unsigned int vrefresh, unsigned int bpc,
-+				       struct cmdq_pkt *cmdq_pkt)
+@@ -455,20 +664,38 @@ static int mtk_jpeg_s_selection(struct file *file, void *priv,
+ 				struct v4l2_selection *s)
  {
- 	if (comp->funcs && comp->funcs->config)
--		comp->funcs->config(comp, w, h, vrefresh, bpc);
-+		comp->funcs->config(comp, w, h, vrefresh, bpc, cmdq_pkt);
+ 	struct mtk_jpeg_ctx *ctx = mtk_jpeg_fh_to_ctx(priv);
++	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+ 
+-	if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
+-		return -EINVAL;
++	if (jpeg->mode == MTK_JPEG_ENC) {
++		if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
++			return -EINVAL;
+ 
+-	switch (s->target) {
+-	case V4L2_SEL_TGT_COMPOSE:
+-		s->r.left = 0;
+-		s->r.top = 0;
+-		ctx->out_q.w = s->r.width;
+-		ctx->out_q.h = s->r.height;
+-		break;
+-	default:
+-		return -EINVAL;
++		switch (s->target) {
++		case V4L2_SEL_TGT_CROP:
++			s->r.left = 0;
++			s->r.top = 0;
++			ctx->out_q.w = s->r.width;
++			ctx->out_q.h = s->r.height;
++			break;
++		default:
++			return -EINVAL;
++		}
++	} else {
++		if (s->type != V4L2_BUF_TYPE_VIDEO_CAPTURE)
++			return -EINVAL;
++
++		switch (s->target) {
++		case V4L2_SEL_TGT_COMPOSE:
++			s->r.left = 0;
++			s->r.top = 0;
++			ctx->out_q.w = s->r.width;
++			ctx->out_q.h = s->r.height;
++			break;
++		default:
++			return -EINVAL;
++		}
+ 	}
++
+ 	return 0;
  }
  
- static inline void mtk_ddp_comp_prepare(struct mtk_ddp_comp *comp)
-@@ -174,10 +179,11 @@ static inline int mtk_ddp_comp_layer_check(struct mtk_ddp_comp *comp,
+@@ -644,29 +871,42 @@ static void mtk_jpeg_buf_queue(struct vb2_buffer *vb)
+ 		goto end;
  
- static inline void mtk_ddp_comp_layer_config(struct mtk_ddp_comp *comp,
- 					     unsigned int idx,
--					     struct mtk_plane_state *state)
-+					     struct mtk_plane_state *state,
-+					     struct cmdq_pkt *cmdq_pkt)
- {
- 	if (comp->funcs && comp->funcs->layer_config)
--		comp->funcs->layer_config(comp, idx, state);
-+		comp->funcs->layer_config(comp, idx, state, cmdq_pkt);
+ 	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(vb);
+-	param = &jpeg_src_buf->dec_param;
+-	memset(param, 0, sizeof(*param));
+-
+-	if (jpeg_src_buf->flags & MTK_JPEG_BUF_FLAGS_LAST_FRAME) {
+-		v4l2_dbg(1, debug, &jpeg->v4l2_dev, "Got eos\n");
+-		goto end;
+-	}
+-	header_valid = mtk_jpeg_parse(param, (u8 *)vb2_plane_vaddr(vb, 0),
+-				      vb2_get_plane_payload(vb, 0));
+-	if (!header_valid) {
+-		v4l2_err(&jpeg->v4l2_dev, "Header invalid.\n");
+-		vb2_buffer_done(vb, VB2_BUF_STATE_ERROR);
+-		return;
+-	}
+-
+-	if (ctx->state == MTK_JPEG_INIT) {
+-		struct vb2_queue *dst_vq = v4l2_m2m_get_vq(
+-			ctx->fh.m2m_ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
++	if (jpeg->mode == MTK_JPEG_ENC) {
++		if (jpeg_src_buf->flags & MTK_JPEG_BUF_FLAGS_LAST_FRAME) {
++			v4l2_dbg(1, debug, &jpeg->v4l2_dev, "Got eos");
++			goto end;
++		}
++		if (ctx->state == MTK_JPEG_INIT)
++			ctx->state = MTK_JPEG_RUNNING;
++	} else {
++		param = &jpeg_src_buf->dec_param;
++		memset(param, 0, sizeof(*param));
++
++		if (jpeg_src_buf->flags & MTK_JPEG_BUF_FLAGS_LAST_FRAME) {
++			v4l2_dbg(1, debug, &jpeg->v4l2_dev, "Got eos\n");
++			goto end;
++		}
++		header_valid = mtk_jpeg_parse(param,
++					      (u8 *)vb2_plane_vaddr(vb, 0),
++					      vb2_get_plane_payload(vb, 0));
++		if (!header_valid) {
++			v4l2_err(&jpeg->v4l2_dev, "Header invalid.\n");
++			vb2_buffer_done(vb, VB2_BUF_STATE_ERROR);
++			return;
++		}
+ 
+-		mtk_jpeg_queue_src_chg_event(ctx);
+-		mtk_jpeg_set_queue_data(ctx, param);
+-		ctx->state = vb2_is_streaming(dst_vq) ?
+-				MTK_JPEG_SOURCE_CHANGE : MTK_JPEG_RUNNING;
++		if (ctx->state == MTK_JPEG_INIT) {
++			struct vb2_queue *dst_vq;
++
++			dst_vq = v4l2_m2m_get_vq
++					(ctx->fh.m2m_ctx,
++					 V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
++			mtk_jpeg_queue_src_chg_event(ctx);
++			mtk_jpeg_set_queue_data(ctx, param);
++			ctx->state = vb2_is_streaming(dst_vq) ?
++					MTK_JPEG_SOURCE_CHANGE :
++					MTK_JPEG_RUNNING;
++		}
+ 	}
+ end:
+ 	v4l2_m2m_buf_queue(ctx->fh.m2m_ctx, to_vb2_v4l2_buffer(vb));
+@@ -709,16 +949,16 @@ static void mtk_jpeg_stop_streaming(struct vb2_queue *q)
+ 	 * subsampling. Update capture queue when the stream is off.
+ 	 */
+ 	if (ctx->state == MTK_JPEG_SOURCE_CHANGE &&
+-	    !V4L2_TYPE_IS_OUTPUT(q->type)) {
++	    !V4L2_TYPE_IS_OUTPUT(q->type) &&
++	    ctx->jpeg->mode == MTK_JPEG_DEC) {
+ 		struct mtk_jpeg_src_buf *src_buf;
+ 
+ 		vb = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+ 		src_buf = mtk_jpeg_vb2_to_srcbuf(&vb->vb2_buf);
+ 		mtk_jpeg_set_queue_data(ctx, &src_buf->dec_param);
+ 		ctx->state = MTK_JPEG_RUNNING;
+-	} else if (V4L2_TYPE_IS_OUTPUT(q->type)) {
++	} else if (V4L2_TYPE_IS_OUTPUT(q->type))
+ 		ctx->state = MTK_JPEG_INIT;
+-	}
+ 
+ 	while ((vb = mtk_jpeg_buf_remove(ctx, q->type)))
+ 		v4l2_m2m_buf_done(vb, VB2_BUF_STATE_ERROR);
+@@ -773,6 +1013,45 @@ static int mtk_jpeg_set_dec_dst(struct mtk_jpeg_ctx *ctx,
+ 	return 0;
  }
  
- static inline void mtk_ddp_gamma_set(struct mtk_ddp_comp *comp,
-@@ -207,6 +213,13 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *comp_node,
- int mtk_ddp_comp_register(struct drm_device *drm, struct mtk_ddp_comp *comp);
- void mtk_ddp_comp_unregister(struct drm_device *drm, struct mtk_ddp_comp *comp);
- void mtk_dither_set(struct mtk_ddp_comp *comp, unsigned int bpc,
--		    unsigned int CFG);
--
-+		    unsigned int CFG, struct cmdq_pkt *cmdq_pkt);
-+enum mtk_ddp_comp_type mtk_ddp_comp_get_type(enum mtk_ddp_comp_id comp_id);
-+void mtk_ddp_write(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-+		   struct mtk_ddp_comp *comp, unsigned int offset);
-+void mtk_ddp_write_relaxed(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-+			   struct mtk_ddp_comp *comp, unsigned int offset);
-+void mtk_ddp_write_mask(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-+			struct mtk_ddp_comp *comp, unsigned int offset,
-+			unsigned int mask);
- #endif /* MTK_DRM_DDP_COMP_H */
++static void mtk_jpeg_set_enc_dst(struct mtk_jpeg_ctx *ctx, void __iomem *base,
++				 struct vb2_buffer *dst_buf,
++				 struct mtk_jpeg_enc_bs *bs)
++{
++	bs->dma_addr = vb2_dma_contig_plane_dma_addr(dst_buf, 0);
++	bs->dma_addr_offset = ctx->enable_exif ? MTK_JPEG_DEFAULT_EXIF_SIZE : 0;
++	bs->dma_addr_offsetmask = bs->dma_addr & JPEG_ENC_DST_ADDR_OFFSET_MASK;
++	bs->size = round_up(vb2_plane_size(dst_buf, 0), 128);
++
++	mtk_jpeg_enc_set_dst_addr(base, bs->dma_addr, bs->size,
++				  bs->dma_addr_offset,
++				  bs->dma_addr_offsetmask);
++}
++
++static void mtk_jpeg_set_enc_src(struct mtk_jpeg_ctx *ctx, void __iomem *base,
++				 struct vb2_buffer *src_buf,
++				 struct mtk_jpeg_enc_fb *fb)
++{
++	int i;
++
++	mtk_jpeg_enc_set_img_size(base, ctx->out_q.w, ctx->out_q.h);
++	mtk_jpeg_enc_set_encFormat(base, ctx->out_q.fmt->fourcc);
++	mtk_jpeg_enc_set_blk_num(base, ctx->out_q.fmt->fourcc, ctx->out_q.w,
++				 ctx->out_q.h);
++	mtk_jpeg_enc_set_stride(base, ctx->out_q.fmt->fourcc, ctx->out_q.w,
++				ctx->out_q.h, ctx->out_q.bytesperline[0]);
++
++	for (i = 0; i < src_buf->num_planes; i++) {
++		fb->fb_addr[i].dma_addr =
++			vb2_dma_contig_plane_dma_addr(src_buf, i) +
++			src_buf->planes[i].data_offset;
++		fb->fb_addr[i].size = vb2_plane_size(src_buf, i) -
++				      src_buf->planes[i].data_offset;
++	}
++
++	mtk_jpeg_enc_set_src_addr(base, fb->fb_addr[0].dma_addr,
++				  fb->fb_addr[1].dma_addr);
++}
++
+ static void mtk_jpeg_device_run(void *priv)
+ {
+ 	struct mtk_jpeg_ctx *ctx = priv;
+@@ -783,6 +1062,8 @@ static void mtk_jpeg_device_run(void *priv)
+ 	struct mtk_jpeg_src_buf *jpeg_src_buf;
+ 	struct mtk_jpeg_bs bs;
+ 	struct mtk_jpeg_fb fb;
++	struct mtk_jpeg_enc_bs enc_bs;
++	struct mtk_jpeg_enc_fb enc_fb;
+ 	int i;
+ 
+ 	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+@@ -793,28 +1074,44 @@ static void mtk_jpeg_device_run(void *priv)
+ 		for (i = 0; i < dst_buf->vb2_buf.num_planes; i++)
+ 			vb2_set_plane_payload(&dst_buf->vb2_buf, i, 0);
+ 		buf_state = VB2_BUF_STATE_DONE;
+-		goto dec_end;
++		goto device_run_end;
+ 	}
+ 
+-	if (mtk_jpeg_check_resolution_change(ctx, &jpeg_src_buf->dec_param)) {
+-		mtk_jpeg_queue_src_chg_event(ctx);
+-		ctx->state = MTK_JPEG_SOURCE_CHANGE;
+-		v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+-		return;
+-	}
++	if (jpeg->mode == MTK_JPEG_ENC) {
++		mtk_jpeg_enc_reset(jpeg->reg_base);
++
++		mtk_jpeg_set_enc_dst(ctx, jpeg->reg_base, &dst_buf->vb2_buf,
++				     &enc_bs);
++		mtk_jpeg_set_enc_src(ctx, jpeg->reg_base, &src_buf->vb2_buf,
++				     &enc_fb);
++		mtk_jpeg_enc_set_ctrl_cfg(jpeg->reg_base, ctx->enable_exif,
++					  ctx->enc_quality,
++					  ctx->restart_interval);
++
++		mtk_jpeg_enc_start(jpeg->reg_base);
++	} else {
++		if (mtk_jpeg_check_resolution_change
++			(ctx, &jpeg_src_buf->dec_param)) {
++			mtk_jpeg_queue_src_chg_event(ctx);
++			ctx->state = MTK_JPEG_SOURCE_CHANGE;
++			v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
++			return;
++		}
+ 
+-	mtk_jpeg_set_dec_src(ctx, &src_buf->vb2_buf, &bs);
+-	if (mtk_jpeg_set_dec_dst(ctx, &jpeg_src_buf->dec_param, &dst_buf->vb2_buf, &fb))
+-		goto dec_end;
++		mtk_jpeg_set_dec_src(ctx, &src_buf->vb2_buf, &bs);
++		if (mtk_jpeg_set_dec_dst(ctx, &jpeg_src_buf->dec_param,
++					 &dst_buf->vb2_buf, &fb))
++			goto device_run_end;
+ 
+-	mtk_jpeg_dec_reset(jpeg->dec_reg_base);
+-	mtk_jpeg_dec_set_config(jpeg->dec_reg_base,
+-				&jpeg_src_buf->dec_param, &bs, &fb);
++		mtk_jpeg_dec_reset(jpeg->reg_base);
++		mtk_jpeg_dec_set_config(jpeg->reg_base,
++					&jpeg_src_buf->dec_param, &bs, &fb);
+ 
+-	mtk_jpeg_dec_start(jpeg->dec_reg_base);
++		mtk_jpeg_dec_start(jpeg->reg_base);
++	}
+ 	return;
+ 
+-dec_end:
++device_run_end:
+ 	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+ 	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+ 	v4l2_m2m_buf_done(src_buf, buf_state);
+@@ -874,30 +1171,30 @@ static void mtk_jpeg_clk_on(struct mtk_jpeg_dev *jpeg)
+ 	ret = mtk_smi_larb_get(jpeg->larb);
+ 	if (ret)
+ 		dev_err(jpeg->dev, "mtk_smi_larb_get larbvdec fail %d\n", ret);
+-	clk_prepare_enable(jpeg->clk_jdec_smi);
+-	clk_prepare_enable(jpeg->clk_jdec);
++	if (jpeg->mode == MTK_JPEG_DEC)
++		clk_prepare_enable(jpeg->clk_jpeg_smi);
++	clk_prepare_enable(jpeg->clk_jpeg);
+ }
+ 
+ static void mtk_jpeg_clk_off(struct mtk_jpeg_dev *jpeg)
+ {
+-	clk_disable_unprepare(jpeg->clk_jdec);
+-	clk_disable_unprepare(jpeg->clk_jdec_smi);
++	clk_disable_unprepare(jpeg->clk_jpeg);
++	if (jpeg->mode == MTK_JPEG_DEC)
++		clk_disable_unprepare(jpeg->clk_jpeg_smi);
+ 	mtk_smi_larb_put(jpeg->larb);
+ }
+ 
+-static irqreturn_t mtk_jpeg_dec_irq(int irq, void *priv)
++static irqreturn_t mtk_jpeg_irq(int irq, void *priv)
+ {
+ 	struct mtk_jpeg_dev *jpeg = priv;
+ 	struct mtk_jpeg_ctx *ctx;
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+ 	struct mtk_jpeg_src_buf *jpeg_src_buf;
+ 	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
+-	u32	dec_irq_ret;
+-	u32 dec_ret;
++	u32 irq_ret;
++	u32 ret, result_size;
+ 	int i;
+ 
+-	dec_ret = mtk_jpeg_dec_get_int_status(jpeg->dec_reg_base);
+-	dec_irq_ret = mtk_jpeg_dec_enum_result(dec_ret);
+ 	ctx = v4l2_m2m_get_curr_priv(jpeg->m2m_dev);
+ 	if (!ctx) {
+ 		v4l2_err(&jpeg->v4l2_dev, "Context is NULL\n");
+@@ -908,32 +1205,89 @@ static irqreturn_t mtk_jpeg_dec_irq(int irq, void *priv)
+ 	dst_buf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+ 	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
+ 
+-	if (dec_irq_ret >= MTK_JPEG_DEC_RESULT_UNDERFLOW)
+-		mtk_jpeg_dec_reset(jpeg->dec_reg_base);
++	if (jpeg->mode == MTK_JPEG_ENC) {
++		ret = mtk_jpeg_enc_get_int_status(jpeg->reg_base);
++		irq_ret = mtk_jpeg_enc_enum_result(jpeg->reg_base, ret);
+ 
+-	if (dec_irq_ret != MTK_JPEG_DEC_RESULT_EOF_DONE) {
+-		dev_err(jpeg->dev, "decode failed\n");
+-		goto dec_end;
+-	}
++		if (irq_ret >= MTK_JPEG_ENC_RESULT_STALL)
++			mtk_jpeg_enc_reset(jpeg->reg_base);
++
++		if (irq_ret != MTK_JPEG_ENC_RESULT_DONE) {
++			dev_err(jpeg->dev, "encode failed\n");
++			goto irq_end;
++		}
++
++		result_size = mtk_jpeg_enc_get_file_size(jpeg->reg_base);
++		vb2_set_plane_payload(&dst_buf->vb2_buf, 0,
++				      result_size);
++	} else {
++		ret = mtk_jpeg_dec_get_int_status(jpeg->reg_base);
++		irq_ret = mtk_jpeg_dec_enum_result(ret);
++
++		if (irq_ret >= MTK_JPEG_DEC_RESULT_UNDERFLOW)
++			mtk_jpeg_dec_reset(jpeg->reg_base);
+ 
+-	for (i = 0; i < dst_buf->vb2_buf.num_planes; i++)
+-		vb2_set_plane_payload(&dst_buf->vb2_buf, i,
+-				      jpeg_src_buf->dec_param.comp_size[i]);
++		if (irq_ret != MTK_JPEG_DEC_RESULT_EOF_DONE) {
++			dev_err(jpeg->dev, "decode failed\n");
++			goto irq_end;
++		}
++
++		for (i = 0; i < dst_buf->vb2_buf.num_planes; i++)
++			vb2_set_plane_payload
++				(&dst_buf->vb2_buf, i,
++				 jpeg_src_buf->dec_param.comp_size[i]);
++	}
+ 
+ 	buf_state = VB2_BUF_STATE_DONE;
+ 
+-dec_end:
++irq_end:
+ 	v4l2_m2m_buf_done(src_buf, buf_state);
+ 	v4l2_m2m_buf_done(dst_buf, buf_state);
+ 	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+ 	return IRQ_HANDLED;
+ }
+ 
+-static void mtk_jpeg_set_default_params(struct mtk_jpeg_ctx *ctx)
++static void mtk_jpeg_set_enc_default_params(struct mtk_jpeg_ctx *ctx)
++{
++	struct mtk_jpeg_q_data *q = &ctx->out_q;
++
++	ctx->fh.ctrl_handler = &ctx->ctrl_hdl;
++
++	ctx->colorspace = V4L2_COLORSPACE_JPEG,
++	ctx->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
++	ctx->quantization = V4L2_QUANTIZATION_DEFAULT;
++	ctx->xfer_func = V4L2_XFER_FUNC_DEFAULT;
++
++	q->w = MTK_JPEG_MIN_WIDTH;
++	q->h = MTK_JPEG_MIN_HEIGHT;
++
++	q->fmt = mtk_jpeg_find_format(ctx, V4L2_PIX_FMT_YUYV,
++				      MTK_JPEG_FMT_TYPE_OUTPUT);
++
++	q->w = clamp(round_up(q->w, 32), MTK_JPEG_MIN_WIDTH,
++		     MTK_JPEG_MAX_WIDTH);
++	q->h = clamp(round_up(q->h, 8), MTK_JPEG_MIN_HEIGHT,
++		     MTK_JPEG_MAX_HEIGHT);
++
++	q->sizeimage[0] = q->w * q->h * 2;
++	q->bytesperline[0] = q->w * 2;
++
++	q = &ctx->cap_q;
++	q->w = MTK_JPEG_MIN_WIDTH;
++	q->h = MTK_JPEG_MIN_HEIGHT;
++	q->fmt = mtk_jpeg_find_format(ctx, V4L2_PIX_FMT_JPEG,
++				      MTK_JPEG_FMT_TYPE_CAPTURE);
++	q->bytesperline[0] = 0;
++	q->sizeimage[0] = MTK_JPEG_DEFAULT_SIZEIMAGE;
++}
++
++static void mtk_jpeg_set_dec_default_params(struct mtk_jpeg_ctx *ctx)
+ {
+ 	struct mtk_jpeg_q_data *q = &ctx->out_q;
+ 	int i;
+ 
++	ctx->fh.ctrl_handler = &ctx->ctrl_hdl;
++
+ 	ctx->colorspace = V4L2_COLORSPACE_JPEG,
+ 	ctx->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
+ 	ctx->quantization = V4L2_QUANTIZATION_DEFAULT;
+@@ -989,7 +1343,18 @@ static int mtk_jpeg_open(struct file *file)
+ 		goto error;
+ 	}
+ 
+-	mtk_jpeg_set_default_params(ctx);
++	ret = mtk_jpeg_ctrls_setup(ctx);
++	if (ret) {
++		v4l2_err(&jpeg->v4l2_dev, "Failed to setup controls() (%d)\n",
++			 ret);
++		goto error;
++	}
++
++	if (jpeg->mode == MTK_JPEG_ENC)
++		mtk_jpeg_set_enc_default_params(ctx);
++	else
++		mtk_jpeg_set_dec_default_params(ctx);
++
+ 	mutex_unlock(&jpeg->lock);
+ 	return 0;
+ 
+@@ -1009,6 +1374,7 @@ static int mtk_jpeg_release(struct file *file)
+ 
+ 	mutex_lock(&jpeg->lock);
+ 	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
++	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+ 	v4l2_fh_del(&ctx->fh);
+ 	v4l2_fh_exit(&ctx->fh);
+ 	kfree(ctx);
+@@ -1042,19 +1408,24 @@ static int mtk_jpeg_clk_init(struct mtk_jpeg_dev *jpeg)
+ 
+ 	jpeg->larb = &pdev->dev;
+ 
+-	jpeg->clk_jdec = devm_clk_get(jpeg->dev, "jpgdec");
+-	if (IS_ERR(jpeg->clk_jdec))
+-		return PTR_ERR(jpeg->clk_jdec);
++	if (jpeg->mode == MTK_JPEG_ENC) {
++		jpeg->clk_jpeg = devm_clk_get(jpeg->dev, "jpgenc");
++		return PTR_ERR_OR_ZERO(jpeg->clk_jpeg);
++	}
++
++	jpeg->clk_jpeg = devm_clk_get(jpeg->dev, "jpgdec");
++	if (IS_ERR(jpeg->clk_jpeg))
++		return PTR_ERR(jpeg->clk_jpeg);
+ 
+-	jpeg->clk_jdec_smi = devm_clk_get(jpeg->dev, "jpgdec-smi");
+-	return PTR_ERR_OR_ZERO(jpeg->clk_jdec_smi);
++	jpeg->clk_jpeg_smi = devm_clk_get(jpeg->dev, "jpgdec-smi");
++	return PTR_ERR_OR_ZERO(jpeg->clk_jpeg_smi);
+ }
+ 
+ static int mtk_jpeg_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_jpeg_dev *jpeg;
+ 	struct resource *res;
+-	int dec_irq;
++	int jpeg_irq;
+ 	int ret;
+ 
+ 	jpeg = devm_kzalloc(&pdev->dev, sizeof(*jpeg), GFP_KERNEL);
+@@ -1064,28 +1435,26 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
+ 	mutex_init(&jpeg->lock);
+ 	spin_lock_init(&jpeg->hw_lock);
+ 	jpeg->dev = &pdev->dev;
++	jpeg->mode = (enum mtk_jpeg_mode)of_device_get_match_data(jpeg->dev);
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	jpeg->dec_reg_base = devm_ioremap_resource(&pdev->dev, res);
+-	if (IS_ERR(jpeg->dec_reg_base)) {
+-		ret = PTR_ERR(jpeg->dec_reg_base);
++	jpeg->reg_base = devm_ioremap_resource(&pdev->dev, res);
++	if (IS_ERR(jpeg->reg_base)) {
++		ret = PTR_ERR(jpeg->reg_base);
+ 		return ret;
+ 	}
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+-	dec_irq = platform_get_irq(pdev, 0);
+-	if (!res || dec_irq < 0) {
+-		dev_err(&pdev->dev, "Failed to get dec_irq %d.\n", dec_irq);
+-		ret = -EINVAL;
+-		return ret;
++	jpeg_irq = platform_get_irq(pdev, 0);
++	if (jpeg_irq < 0) {
++		dev_err(&pdev->dev, "Failed to get jpeg_irq %d.\n", jpeg_irq);
++		return jpeg_irq;
+ 	}
+ 
+-	ret = devm_request_irq(&pdev->dev, dec_irq, mtk_jpeg_dec_irq, 0,
++	ret = devm_request_irq(&pdev->dev, jpeg_irq, mtk_jpeg_irq, 0,
+ 			       pdev->name, jpeg);
+ 	if (ret) {
+-		dev_err(&pdev->dev, "Failed to request dec_irq %d (%d)\n",
+-			dec_irq, ret);
+-		ret = -EINVAL;
++		dev_err(&pdev->dev, "Failed to request jpeg_irq %d (%d)\n",
++			jpeg_irq, ret);
+ 		goto err_req_irq;
+ 	}
+ 
+@@ -1109,33 +1478,35 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
+ 		goto err_m2m_init;
+ 	}
+ 
+-	jpeg->dec_vdev = video_device_alloc();
+-	if (!jpeg->dec_vdev) {
++	jpeg->vfd_jpeg = video_device_alloc();
++	if (!jpeg->vfd_jpeg) {
+ 		ret = -ENOMEM;
+-		goto err_dec_vdev_alloc;
++		goto err_vfd_jpeg_alloc;
+ 	}
+-	snprintf(jpeg->dec_vdev->name, sizeof(jpeg->dec_vdev->name),
+-		 "%s-dec", MTK_JPEG_NAME);
+-	jpeg->dec_vdev->fops = &mtk_jpeg_fops;
+-	jpeg->dec_vdev->ioctl_ops = &mtk_jpeg_ioctl_ops;
+-	jpeg->dec_vdev->minor = -1;
+-	jpeg->dec_vdev->release = video_device_release;
+-	jpeg->dec_vdev->lock = &jpeg->lock;
+-	jpeg->dec_vdev->v4l2_dev = &jpeg->v4l2_dev;
+-	jpeg->dec_vdev->vfl_dir = VFL_DIR_M2M;
+-	jpeg->dec_vdev->device_caps = V4L2_CAP_STREAMING |
++	snprintf(jpeg->vfd_jpeg->name, sizeof(jpeg->vfd_jpeg->name),
++		 "%s-%s", MTK_JPEG_NAME,
++		 jpeg->mode == MTK_JPEG_ENC ? "enc" : "dec");
++	jpeg->vfd_jpeg->fops = &mtk_jpeg_fops;
++	jpeg->vfd_jpeg->ioctl_ops = &mtk_jpeg_ioctl_ops;
++	jpeg->vfd_jpeg->minor = -1;
++	jpeg->vfd_jpeg->release = video_device_release;
++	jpeg->vfd_jpeg->lock = &jpeg->lock;
++	jpeg->vfd_jpeg->v4l2_dev = &jpeg->v4l2_dev;
++	jpeg->vfd_jpeg->vfl_dir = VFL_DIR_M2M;
++	jpeg->vfd_jpeg->device_caps = V4L2_CAP_STREAMING |
+ 				      V4L2_CAP_VIDEO_M2M_MPLANE;
+ 
+-	ret = video_register_device(jpeg->dec_vdev, VFL_TYPE_GRABBER, 3);
++	ret = video_register_device(jpeg->vfd_jpeg, VFL_TYPE_GRABBER, -1);
+ 	if (ret) {
+ 		v4l2_err(&jpeg->v4l2_dev, "Failed to register video device\n");
+-		goto err_dec_vdev_register;
++		goto err_vfd_jpeg_register;
+ 	}
+ 
+-	video_set_drvdata(jpeg->dec_vdev, jpeg);
++	video_set_drvdata(jpeg->vfd_jpeg, jpeg);
+ 	v4l2_info(&jpeg->v4l2_dev,
+-		  "decoder device registered as /dev/video%d (%d,%d)\n",
+-		  jpeg->dec_vdev->num, VIDEO_MAJOR, jpeg->dec_vdev->minor);
++		  "jpeg device %d registered as /dev/video%d (%d,%d)\n",
++		  jpeg->mode, jpeg->vfd_jpeg->num, VIDEO_MAJOR,
++		  jpeg->vfd_jpeg->minor);
+ 
+ 	platform_set_drvdata(pdev, jpeg);
+ 
+@@ -1143,10 +1514,10 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
+ 
+ 	return 0;
+ 
+-err_dec_vdev_register:
+-	video_device_release(jpeg->dec_vdev);
++err_vfd_jpeg_register:
++	video_device_release(jpeg->vfd_jpeg);
+ 
+-err_dec_vdev_alloc:
++err_vfd_jpeg_alloc:
+ 	v4l2_m2m_release(jpeg->m2m_dev);
+ 
+ err_m2m_init:
+@@ -1166,8 +1537,8 @@ static int mtk_jpeg_remove(struct platform_device *pdev)
+ 	struct mtk_jpeg_dev *jpeg = platform_get_drvdata(pdev);
+ 
+ 	pm_runtime_disable(&pdev->dev);
+-	video_unregister_device(jpeg->dec_vdev);
+-	video_device_release(jpeg->dec_vdev);
++	video_unregister_device(jpeg->vfd_jpeg);
++	video_device_release(jpeg->vfd_jpeg);
+ 	v4l2_m2m_release(jpeg->m2m_dev);
+ 	v4l2_device_unregister(&jpeg->v4l2_dev);
+ 
+@@ -1178,7 +1549,11 @@ static __maybe_unused int mtk_jpeg_pm_suspend(struct device *dev)
+ {
+ 	struct mtk_jpeg_dev *jpeg = dev_get_drvdata(dev);
+ 
+-	mtk_jpeg_dec_reset(jpeg->dec_reg_base);
++	if (jpeg->mode == MTK_JPEG_ENC)
++		mtk_jpeg_enc_reset(jpeg->reg_base);
++	else
++		mtk_jpeg_dec_reset(jpeg->reg_base);
++
+ 	mtk_jpeg_clk_off(jpeg);
+ 
+ 	return 0;
+@@ -1189,7 +1564,10 @@ static __maybe_unused int mtk_jpeg_pm_resume(struct device *dev)
+ 	struct mtk_jpeg_dev *jpeg = dev_get_drvdata(dev);
+ 
+ 	mtk_jpeg_clk_on(jpeg);
+-	mtk_jpeg_dec_reset(jpeg->dec_reg_base);
++	if (jpeg->mode == MTK_JPEG_ENC)
++		mtk_jpeg_enc_reset(jpeg->reg_base);
++	else
++		mtk_jpeg_dec_reset(jpeg->reg_base);
+ 
+ 	return 0;
+ }
+@@ -1225,11 +1603,15 @@ static const struct dev_pm_ops mtk_jpeg_pm_ops = {
+ static const struct of_device_id mtk_jpeg_match[] = {
+ 	{
+ 		.compatible = "mediatek,mt8173-jpgdec",
+-		.data       = NULL,
++		.data       = (void *)MTK_JPEG_DEC,
+ 	},
+ 	{
+ 		.compatible = "mediatek,mt2701-jpgdec",
+-		.data       = NULL,
++		.data       = (void *)MTK_JPEG_DEC,
++	},
++	{
++		.compatible = "mediatek,mtk-jpgenc",
++		.data       = (void *)MTK_JPEG_ENC,
+ 	},
+ 	{},
+ };
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+index d32a6fbaa311..2202224d699a 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+@@ -3,6 +3,7 @@
+  * Copyright (c) 2016 MediaTek Inc.
+  * Author: Ming Hsiu Tsai <minghsiu.tsai@mediatek.com>
+  *         Rick Chang <rick.chang@mediatek.com>
++ *         Xia Jiang <xia.jiang@mediatek.com>
+  */
+ 
+ #ifndef _MTK_JPEG_CORE_H
+@@ -19,16 +20,19 @@
+ 
+ #define MTK_JPEG_FMT_FLAG_DEC_OUTPUT	BIT(0)
+ #define MTK_JPEG_FMT_FLAG_DEC_CAPTURE	BIT(1)
++#define MTK_JPEG_FMT_FLAG_ENC_OUTPUT	BIT(2)
++#define MTK_JPEG_FMT_FLAG_ENC_CAPTURE	BIT(3)
+ 
+ #define MTK_JPEG_FMT_TYPE_OUTPUT	1
+ #define MTK_JPEG_FMT_TYPE_CAPTURE	2
+ 
+-#define MTK_JPEG_MIN_WIDTH	32
+-#define MTK_JPEG_MIN_HEIGHT	32
+-#define MTK_JPEG_MAX_WIDTH	8192
+-#define MTK_JPEG_MAX_HEIGHT	8192
++#define MTK_JPEG_MIN_WIDTH	32U
++#define MTK_JPEG_MIN_HEIGHT	32U
++#define MTK_JPEG_MAX_WIDTH	65535U
++#define MTK_JPEG_MAX_HEIGHT	65535U
+ 
+ #define MTK_JPEG_DEFAULT_SIZEIMAGE	(1 * 1024 * 1024)
++#define MTK_JPEG_DEFAULT_EXIF_SIZE	(64 * 1024)
+ 
+ /**
+  * enum mtk_jpeg_ctx_state - contex state of jpeg
+@@ -39,6 +43,14 @@ enum mtk_jpeg_ctx_state {
+ 	MTK_JPEG_SOURCE_CHANGE,
+ };
+ 
++/**
++ * enum mtk_jpeg_mode - mode of jpeg
++ */
++enum mtk_jpeg_mode {
++	MTK_JPEG_ENC,
++	MTK_JPEG_DEC,
++};
++
+ /**
+  * struct mt_jpeg - JPEG IP abstraction
+  * @lock:		the mutex protecting this structure
+@@ -48,11 +60,12 @@ enum mtk_jpeg_ctx_state {
+  * @v4l2_dev:		v4l2 device for mem2mem mode
+  * @m2m_dev:		v4l2 mem2mem device data
+  * @alloc_ctx:		videobuf2 memory allocator's context
+- * @dec_vdev:		video device node for decoder mem2mem mode
+- * @dec_reg_base:	JPEG registers mapping
+- * @clk_jdec:		JPEG hw working clock
+- * @clk_jdec_smi:	JPEG SMI bus clock
++ * @vfd_jpeg:		video device node for jpeg mem2mem mode
++ * @reg_base:		JPEG registers mapping
++ * @clk_jpeg:		JPEG hw working clock
++ * @clk_jpeg_smi:	JPEG SMI bus clock
+  * @larb:		SMI device
++ * @mode:		compression (encode) operation or decompression (decode)
+  */
+ struct mtk_jpeg_dev {
+ 	struct mutex		lock;
+@@ -62,11 +75,12 @@ struct mtk_jpeg_dev {
+ 	struct v4l2_device	v4l2_dev;
+ 	struct v4l2_m2m_dev	*m2m_dev;
+ 	void			*alloc_ctx;
+-	struct video_device	*dec_vdev;
+-	void __iomem		*dec_reg_base;
+-	struct clk		*clk_jdec;
+-	struct clk		*clk_jdec_smi;
++	struct video_device	*vfd_jpeg;
++	void __iomem		*reg_base;
++	struct clk		*clk_jpeg;
++	struct clk		*clk_jpeg_smi;
+ 	struct device		*larb;
++	enum mtk_jpeg_mode	mode;
+ };
+ 
+ /**
+@@ -113,6 +127,7 @@ struct mtk_jpeg_q_data {
+  * @cap_q:		destination (capture) queue queue information
+  * @fh:			V4L2 file handle
+  * @state:		state of the context
++ * @ctrl_hdl:		controls handler
+  * @colorspace: enum v4l2_colorspace; supplemental to pixelformat
+  * @ycbcr_enc: enum v4l2_ycbcr_encoding, Y'CbCr encoding
+  * @quantization: enum v4l2_quantization, colorspace quantization
+@@ -124,6 +139,10 @@ struct mtk_jpeg_ctx {
+ 	struct mtk_jpeg_q_data		cap_q;
+ 	struct v4l2_fh			fh;
+ 	enum mtk_jpeg_ctx_state		state;
++	u8 enable_exif;
++	u8 enc_quality;
++	u8 restart_interval;
++	struct v4l2_ctrl_handler	ctrl_hdl;
+ 
+ 	enum v4l2_colorspace colorspace;
+ 	enum v4l2_ycbcr_encoding ycbcr_enc;
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
+index 1cc37dbfc8e7..ce263db5f30a 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
+@@ -3,10 +3,11 @@
+  * Copyright (c) 2016 MediaTek Inc.
+  * Author: Ming Hsiu Tsai <minghsiu.tsai@mediatek.com>
+  *         Rick Chang <rick.chang@mediatek.com>
++ *         Xia Jiang <xia.jiang@mediatek.com>
+  */
+ 
+-#ifndef _MTK_JPEG_HW_H
+-#define _MTK_JPEG_HW_H
++#ifndef _MTK_JPEG_DEC_HW_H
++#define _MTK_JPEG_DEC_HW_H
+ 
+ #include <media/videobuf2-core.h>
+ 
+@@ -75,4 +76,4 @@ void mtk_jpeg_dec_set_config(void __iomem *base,
+ void mtk_jpeg_dec_reset(void __iomem *dec_reg_base);
+ void mtk_jpeg_dec_start(void __iomem *dec_reg_base);
+ 
+-#endif /* _MTK_JPEG_HW_H */
++#endif /* _MTK_JPEG_DEC_HW_H */
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+new file mode 100644
+index 000000000000..530e31aaf185
+--- /dev/null
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+@@ -0,0 +1,271 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright (c) 2019 MediaTek Inc.
++ * Author: Xia Jiang <xia.jiang@mediatek.com>
++ *
++ */
++
++#include <linux/io.h>
++#include <linux/kernel.h>
++#include <media/videobuf2-core.h>
++
++#include "mtk_jpeg_enc_hw.h"
++
++static struct mtk_jpeg_enc_qlt mtk_jpeg_enc_quality[] = {
++	{
++		.quality_param		= 97,
++		.hardware_value	= JPEG_ENC_QUALITY_Q97,
++	},
++	{
++		.quality_param		= 95,
++		.hardware_value	= JPEG_ENC_QUALITY_Q95,
++	},
++	{
++		.quality_param		= 92,
++		.hardware_value	= JPEG_ENC_QUALITY_Q92,
++	},
++	{
++		.quality_param		= 90,
++		.hardware_value	= JPEG_ENC_QUALITY_Q90,
++	},
++	{
++		.quality_param		= 87,
++		.hardware_value	= JPEG_ENC_QUALITY_Q87,
++	},
++	{
++		.quality_param		= 84,
++		.hardware_value	= JPEG_ENC_QUALITY_Q84,
++	},
++	{
++		.quality_param		= 82,
++		.hardware_value	= JPEG_ENC_QUALITY_Q82,
++	},
++	{
++		.quality_param		= 80,
++		.hardware_value	= JPEG_ENC_QUALITY_Q80,
++	},
++	{
++		.quality_param		= 74,
++		.hardware_value	= JPEG_ENC_QUALITY_Q74,
++	},
++	{
++		.quality_param		= 68,
++		.hardware_value	= JPEG_ENC_QUALITY_Q68,
++	},
++	{
++		.quality_param		= 64,
++		.hardware_value	= JPEG_ENC_QUALITY_Q64,
++	},
++	{
++		.quality_param		= 60,
++		.hardware_value	= JPEG_ENC_QUALITY_Q60,
++	},
++	{
++		.quality_param		= 48,
++		.hardware_value	= JPEG_ENC_QUALITY_Q48,
++	},
++	{
++		.quality_param		= 39,
++		.hardware_value	= JPEG_ENC_QUALITY_Q39,
++	},
++	{
++		.quality_param		= 34,
++		.hardware_value	= JPEG_ENC_QUALITY_Q34,
++	},
++};
++
++#define MTK_JPEG_ENC_NUM_QUALITY ARRAY_SIZE(mtk_jpeg_enc_quality)
++
++void mtk_jpeg_enc_reset(void __iomem *base)
++{
++	writel(0x00, base + JPEG_ENC_RSTB);
++	writel(JPEG_ENC_RESET_BIT, base + JPEG_ENC_RSTB);
++	writel(0x00, base + JPEG_ENC_CODEC_SEL);
++}
++
++u32 mtk_jpeg_enc_get_int_status(void __iomem *base)
++{
++	u32 ret;
++
++	ret = readl(base + JPEG_ENC_INT_STS) &
++		    JPEG_ENC_INT_STATUS_MASK_ALLIRQ;
++	if (ret)
++		writel(0, base + JPEG_ENC_INT_STS);
++
++	return ret;
++}
++
++u32 mtk_jpeg_enc_get_file_size(void __iomem *base)
++{
++	return readl(base + JPEG_ENC_DMA_ADDR0) -
++	       readl(base + JPEG_ENC_DST_ADDR0);
++}
++
++u32 mtk_jpeg_enc_enum_result(void __iomem *base, u32 irq_status)
++{
++	if (irq_status & JPEG_ENC_INT_STATUS_DONE)
++		return MTK_JPEG_ENC_RESULT_DONE;
++	else if (irq_status & JPEG_ENC_INT_STATUS_STALL)
++		return MTK_JPEG_ENC_RESULT_STALL;
++	else if (irq_status & JPEG_ENC_INT_STATUS_VCODEC_IRQ)
++		return MTK_JPEG_ENC_RESULT_VCODEC_IRQ;
++	return MTK_JPEG_ENC_RESULT_ERROR_UNKNOWN;
++}
++
++void mtk_jpeg_enc_set_img_size(void __iomem *base, u32 width, u32 height)
++{
++	u32 value;
++
++	value = JPEG_ENC_WIDTH_HEIGHT(width, height);
++	writel(value, base + JPEG_ENC_IMG_SIZE);
++}
++
++void mtk_jpeg_enc_set_encFormat(void __iomem *base, u32 enc_format)
++{
++	u32 yuv_format, value;
++
++	switch (enc_format) {
++	case V4L2_PIX_FMT_YUYV:
++		yuv_format = JPEG_ENC_YUV_FORMAT_YUYV;
++		break;
++	case V4L2_PIX_FMT_YVYU:
++		yuv_format = JPEG_ENC_YUV_FORMAT_YVYU;
++		break;
++	case V4L2_PIX_FMT_NV12M:
++		yuv_format = JPEG_ENC_YUV_FORMAT_NV12;
++		break;
++	case V4L2_PIX_FMT_NV21M:
++		yuv_format = JPEG_ENC_YUV_FORMAT_NV12;
++		break;
++	default:
++		break;
++	}
++
++	value = readl(base + JPEG_ENC_CTRL);
++	value &= ~JPEG_ENC_CTRL_YUV_FORMAT_MASK;
++	value |= JPEG_ENC_FORMAT(yuv_format);
++	writel(value, base + JPEG_ENC_CTRL);
++}
++
++void mtk_jpeg_enc_set_blk_num(void __iomem *base, u32 enc_format, u32 width,
++			      u32 height)
++{
++	u32 blk_num;
++	u32 is_420;
++	u32 padding_width;
++	u32 padding_height;
++
++	is_420 = (enc_format == V4L2_PIX_FMT_NV12M ||
++		  enc_format == V4L2_PIX_FMT_NV21M) ? 1 : 0;
++	padding_width = round_up(width, 16);
++	padding_height = round_up(height, is_420 ? 16 : 8);
++
++	blk_num = (padding_width >> 4) * (padding_height >> (is_420 ? 4 : 3)) *
++		  (is_420 ? 6 : 4) - 1;
++
++	writel(blk_num, base + JPEG_ENC_BLK_NUM);
++}
++
++void mtk_jpeg_enc_set_stride(void __iomem *base, u32 enc_format, u32 width,
++			     u32 height, u32 bytesperline)
++{
++	u32 width_even;
++	u32 is_420;
++	u32 img_stride;
++	u32 mem_stride;
++
++	width_even = round_up(width, 2);
++	is_420 = (enc_format == V4L2_PIX_FMT_NV12M ||
++		  enc_format == V4L2_PIX_FMT_NV21M) ? 1 : 0;
++	if (!is_420)
++		width_even = width_even << 1;
++	img_stride = round_up(width_even, (is_420 ? 16 : 32));
++	mem_stride = is_420 ? bytesperline : round_up(width_even, 32);
++
++	writel(img_stride, base + JPEG_ENC_IMG_STRIDE);
++	writel(mem_stride, base + JPEG_ENC_STRIDE);
++}
++
++void mtk_jpeg_enc_set_src_addr(void __iomem *base, u32 src_addr,
++			       u32 src_addr_c)
++{
++	writel(src_addr, base + JPEG_ENC_SRC_LUMA_ADDR);
++	writel(src_addr_c, base + JPEG_ENC_SRC_CHROMA_ADDR);
++}
++
++void mtk_jpeg_enc_set_dst_addr(void __iomem *base, u32 dst_addr,
++			       u32 stall_size, u32 init_offset,
++			       u32 offset_mask)
++{
++	writel(JPEG_ENC_INIT_OFFSET(init_offset), base + JPEG_ENC_OFFSET_ADDR);
++	writel(JPEG_ENC_OFFSET_MASK(offset_mask),
++	       base + JPEG_ENC_BYTE_OFFSET_MASK);
++	writel(JPEG_ENC_DST_ADDR(dst_addr), base + JPEG_ENC_DST_ADDR0);
++	writel(JPEG_ENC_STALL_ADDR(dst_addr, stall_size),
++	       base + JPEG_ENC_STALL_ADDR0);
++}
++
++static void mtk_jpeg_enc_set_quality(void __iomem *base, u32 quality)
++{
++	u32 value;
++	u32 i, enc_quality;
++
++	for (i = 0; i < MTK_JPEG_ENC_NUM_QUALITY; i++) {
++		if (quality >= mtk_jpeg_enc_quality[i].quality_param) {
++			enc_quality = mtk_jpeg_enc_quality[i].hardware_value;
++			break;
++		}
++	}
++
++	value = readl(base + JPEG_ENC_QUALITY);
++	value = JPEG_ENC_SET_QUALITY(value, enc_quality);
++	writel(value, base + JPEG_ENC_QUALITY);
++}
++
++static void mtk_jpeg_enc_set_restart_interval(void __iomem *base,
++					      u32 restart_interval)
++{
++	u32 value;
++
++	value = readl(base + JPEG_ENC_CTRL);
++	if (restart_interval)
++		value |= JPEG_ENC_CTRL_RESTART_EN_BIT;
++	else
++		value &= ~JPEG_ENC_CTRL_RESTART_EN_BIT;
++	writel(value, base + JPEG_ENC_CTRL);
++	writel(restart_interval, base + JPEG_ENC_RST_MCU_NUM);
++}
++
++static void mtk_jpeg_enc_set_encode_mode(void __iomem *base, u32 exif_en)
++{
++	u32 value;
++
++	value = readl(base + JPEG_ENC_CTRL);
++	value &= ~JPEG_ENC_CTRL_FILE_FORMAT_BIT;
++	writel(value, base + JPEG_ENC_CTRL);
++
++	if (exif_en) {
++		value = readl(base + JPEG_ENC_CTRL);
++		value |= JPEG_ENC_EN_JFIF_EXIF;
++		writel(value, base + JPEG_ENC_CTRL);
++	}
++}
++
++void mtk_jpeg_enc_set_ctrl_cfg(void __iomem *base, u32 exif_en, u32 quality,
++			       u32 restart_interval)
++{
++	mtk_jpeg_enc_set_quality(base, quality);
++
++	mtk_jpeg_enc_set_restart_interval(base, restart_interval);
++
++	mtk_jpeg_enc_set_encode_mode(base, exif_en);
++}
++
++void mtk_jpeg_enc_start(void __iomem *base)
++{
++	u32 value;
++
++	value = readl(base + JPEG_ENC_CTRL);
++	value |= JPEG_ENC_CTRL_INT_EN_BIT | JPEG_ENC_CTRL_ENABLE_BIT;
++	writel(value, base + JPEG_ENC_CTRL);
++}
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h
+new file mode 100644
+index 000000000000..7d46bdee8ea2
+--- /dev/null
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h
+@@ -0,0 +1,86 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2019 MediaTek Inc.
++ * Author: Xia Jiang <xia.jiang@mediatek.com>
++ *
++ */
++
++#ifndef _MTK_JPEG_ENC_HW_H
++#define _MTK_JPEG_ENC_HW_H
++
++#include <media/videobuf2-core.h>
++
++#include "mtk_jpeg_core.h"
++#include "mtk_jpeg_enc_reg.h"
++
++enum {
++	MTK_JPEG_ENC_RESULT_DONE		= 0,
++	MTK_JPEG_ENC_RESULT_STALL,
++	MTK_JPEG_ENC_RESULT_VCODEC_IRQ,
++	MTK_JPEG_ENC_RESULT_ERROR_UNKNOWN
++};
++
++/**
++ * struct mtk_jpeg_enc_qlt - JPEG encoder quality data
++ * @quality_param:	quality value
++ * @hardware_value:hardware value of quality
++ */
++struct mtk_jpeg_enc_qlt {
++	u8	quality_param;
++	u8	hardware_value;
++};
++
++/**
++ * struct mt_jpeg_enc_bs - JPEG encoder bitstream  buffer
++ * @dma_addr:			JPEG encoder destination address
++ * @size:			JPEG encoder bistream size
++ * @dma_addr_offset:		JPEG encoder offset address
++ * @dma_addr_offsetmask:	JPEG encoder destination address offset mask
++ */
++struct mtk_jpeg_enc_bs {
++	dma_addr_t	dma_addr;
++	size_t		size;
++	u32			dma_addr_offset;
++	u32			dma_addr_offsetmask;
++};
++
++/**
++ * struct mtk_jpeg_mem - JPEG memory
++ * @dma_addr:		memory address
++ * @size:		memory size
++ */
++struct mtk_jpeg_mem {
++	dma_addr_t	dma_addr;
++	size_t		size;
++};
++
++/**
++ * struct mtk_jpeg_enc_fb - JPEG encoder frame buffer
++ * @fb_addr:		frmae buffer memory information
++ * @num_planes:		number of planes
++ */
++struct mtk_jpeg_enc_fb {
++	struct mtk_jpeg_mem	fb_addr[MTK_JPEG_COMP_MAX];
++	u32			num_planes;
++};
++
++void mtk_jpeg_enc_reset(void __iomem *base);
++u32 mtk_jpeg_enc_get_int_status(void __iomem *base);
++u32 mtk_jpeg_enc_get_file_size(void __iomem *base);
++u32 mtk_jpeg_enc_enum_result(void __iomem *base, u32 irq_status);
++void mtk_jpeg_enc_set_img_size(void __iomem *base, u32 width, u32 height);
++void mtk_jpeg_enc_set_encFormat(void __iomem *base, u32 enc_format);
++void mtk_jpeg_enc_set_blk_num(void __iomem *base, u32 enc_format, u32 width,
++			      u32 height);
++void mtk_jpeg_enc_set_stride(void __iomem *base, u32 enc_format, u32 width,
++			     u32 height, u32 bytesperline);
++void mtk_jpeg_enc_set_src_addr(void __iomem *base, u32 src_addr,
++			       u32 src_addr_c);
++void mtk_jpeg_enc_set_dst_addr(void __iomem *base, u32 dst_addr,
++			       u32 stall_size, u32 init_offset,
++			       u32 offset_mask);
++void mtk_jpeg_enc_set_ctrl_cfg(void __iomem *base, u32 exif_en, u32 quality,
++			       u32 restart_interval);
++void mtk_jpeg_enc_start(void __iomem *enc_reg_base);
++
++#endif /* _MTK_JPEG_ENC_HW_H */
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_reg.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_reg.h
+new file mode 100644
+index 000000000000..cec3631addc5
+--- /dev/null
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_reg.h
+@@ -0,0 +1,78 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2019 MediaTek Inc.
++ * Author: Xia Jiang <xia.jiang@mediatek.com>
++ *
++ */
++#ifndef _MTK_JPEG_ENC_REG_H
++#define _MTK_JPEG_ENC_REG_H
++
++#define JPEG_ENC_INT_STATUS_DONE			BIT(0)
++#define JPEG_ENC_INT_STATUS_STALL			BIT(1)
++#define JPEG_ENC_INT_STATUS_VCODEC_IRQ		BIT(4)
++#define JPEG_ENC_INT_STATUS_MASK_ALLIRQ		0x13
++
++#define JPEG_ENC_DST_ADDR_OFFSET_MASK GENMASK(3, 0)
++
++#define JPEG_ENC_CTRL_YUV_FORMAT_MASK 0x18
++#define JPEG_ENC_CTRL_RESTART_EN_BIT            BIT(10)
++#define JPEG_ENC_CTRL_FILE_FORMAT_BIT           BIT(5)
++#define JPEG_ENC_EN_JFIF_EXIF                   BIT(5)
++#define JPEG_ENC_CTRL_INT_EN_BIT                BIT(2)
++#define JPEG_ENC_CTRL_ENABLE_BIT                BIT(0)
++#define JPEG_ENC_RESET_BIT                      BIT(0)
++
++#define JPEG_ENC_YUV_FORMAT_YUYV 0
++#define JPEG_ENC_YUV_FORMAT_YVYU 1
++#define JPEG_ENC_YUV_FORMAT_NV12 2
++#define JEPG_ENC_YUV_FORMAT_NV21 3
++
++#define JPEG_ENC_QUALITY_Q60 0x0
++#define JPEG_ENC_QUALITY_Q80 0x1
++#define JPEG_ENC_QUALITY_Q90 0x2
++#define JPEG_ENC_QUALITY_Q95 0x3
++#define JPEG_ENC_QUALITY_Q39 0x4
++#define JPEG_ENC_QUALITY_Q68 0x5
++#define JPEG_ENC_QUALITY_Q84 0x6
++#define JPEG_ENC_QUALITY_Q92 0x7
++#define JPEG_ENC_QUALITY_Q48 0x8
++#define JPEG_ENC_QUALITY_Q74 0xa
++#define JPEG_ENC_QUALITY_Q87 0xb
++#define JPEG_ENC_QUALITY_Q34 0xc
++#define JPEG_ENC_QUALITY_Q64 0xe
++#define JPEG_ENC_QUALITY_Q82 0xf
++#define JPEG_ENC_QUALITY_Q97 0x10
++
++#define JPEG_ENC_RSTB				0x100
++#define JPEG_ENC_CTRL				0x104
++#define JPEG_ENC_QUALITY			0x108
++#define JPEG_ENC_BLK_NUM			0x10C
++#define JPEG_ENC_BLK_CNT			0x110
++#define JPEG_ENC_INT_STS			0x11c
++#define JPEG_ENC_DST_ADDR0			0x120
++#define JPEG_ENC_DMA_ADDR0			0x124
++#define JPEG_ENC_STALL_ADDR0		0x128
++#define JPEG_ENC_OFFSET_ADDR		0x138
++#define JPEG_ENC_RST_MCU_NUM		0x150
++#define JPEG_ENC_IMG_SIZE			0x154
++#define JPEG_ENC_DEBUG_INFO0		0x160
++#define JPEG_ENC_DEBUG_INFO1		0x164
++#define JPEG_ENC_TOTAL_CYCLE		0x168
++#define JPEG_ENC_BYTE_OFFSET_MASK	0x16c
++#define JPEG_ENC_SRC_LUMA_ADDR		0x170
++#define JPEG_ENC_SRC_CHROMA_ADDR	0x174
++#define JPEG_ENC_STRIDE				0x178
++#define JPEG_ENC_IMG_STRIDE			0x17c
++#define JPEG_ENC_DCM_CTRL			0x300
++#define JPEG_ENC_CODEC_SEL			0x314
++#define JPEG_ENC_ULTRA_THRES		0x318
++
++#define JPEG_ENC_FORMAT(x)		(((x) & 3) << 3)
++#define JPEG_ENC_WIDTH_HEIGHT(w, h)	(((w) << 16) | (h))
++#define JPEG_ENC_INIT_OFFSET(x)		((x) & (~0xf))
++#define JPEG_ENC_OFFSET_MASK(x)		((x) & 0xf)
++#define JPEG_ENC_DST_ADDR(x)		((x) & (~0xf))
++#define JPEG_ENC_STALL_ADDR(x, y)		(((x) + (y)) & (~0xf))
++#define JPEG_ENC_SET_QUALITY(x, y)	(((x) & 0xffff0000) | (y))
++
++#endif /* _MTK_JPEG_ENC_REG_H */
 -- 
 2.18.0
 _______________________________________________
