@@ -2,22 +2,24 @@ Return-Path: <SRS0=lqdO=Z3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 09747C43603
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2019 13:34:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EAC2CC43603
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2019 14:49:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C666820659
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2019 13:34:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8E0242245C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2019 14:49:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="K8uK7b2R";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.b="MlpeNYP4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C666820659
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jEX3bnWK";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="tEjy3aWT"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E0242245C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -25,43 +27,77 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qlBTJU0t1t5DXQPPJGwdJYHAyRfdqVb9PYP7hoec5EU=; b=K8uK7b2RXELudj
-	iNfExOnAfK7ZfcjST/M9ISUY8NsZVmstDqSNhjL0TKwCgpCxYdRNlSXT3GM50Uj/Hwaig8pf+1cyY
-	a0ZQ0EcJvz0S7oDIVjSTXXvqbFQVHfBX4f0B6zyEmC4g0i7df2UULklNTRaW1NShGWjJ7xu5RdaUZ
-	andf3xzsyUz/OoOLyrgUhlB5vnOctxxOSGRbTvHQGiuGwY7+LoY+FgUUzb8O3y3UUC+/pt87dPL46
-	X6QD94vXf/AAXKWX57b1IjySquFXayWPvR5NuaMe9ngNc0sTuoo5A21nbn4V5sB91FgZR+LvmsePt
-	WLKPUtekU+zo4fN0NynA==;
+	List-Owner; bh=F1NTnh80qECbGZbH+61O9GqQhEaZvXdh8Gf14+XjrSE=; b=jEX3bnWK+rIcPV
+	Lj+hUTRlp+pyD4YVOOn49Nl68+FIljvNuVQpy7/jFZ93h/lxJt7U7ICLwb0KLMIBCnXzNXZ7Jvaw1
+	SQniYHCQAzCvQDd7Z5AcIUWk24YaUQG2e8ZuSjux915Pm/GGRJb6d88QzoJU7kFWsD8u7pZrkeBlw
+	/6g1a/7RQsyZQMx6OpAA0i8FG4jAo5l6vYM6eQFzuW2pac/dcwAgthnwCQYGXxO3CtxYd3+1i5jSl
+	RDurmHGx1Z7AJDMzeFJRShryJUracK2HtUynReDJ33CmjXum6Qy1fQI01NToB20XTJAg5N+cyXR7c
+	Zc226a156TYhH4tDr7eA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1icrHU-00079j-Iq; Thu, 05 Dec 2019 13:34:56 +0000
-Received: from perceval.ideasonboard.com
- ([2001:4b98:dc2:55:216:3eff:fef7:d647])
+	id 1icsRK-00047r-RL; Thu, 05 Dec 2019 14:49:10 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1icrHB-0006xy-2w; Thu, 05 Dec 2019 13:34:39 +0000
-Received: from pendragon.ideasonboard.com (81-175-216-236.bb.dnainternet.fi
- [81.175.216.236])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 89C522E5;
- Thu,  5 Dec 2019 14:34:27 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1575552867;
- bh=0HedxuO8GILWK520SguktJIAXVtxP6EZ4rn1OAPP0xo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=MlpeNYP4gbB0kKANkT+MTkT1+unea206ouvGNXEmn0gy11wm9QaCfOmYOBTMrbT9G
- IT55pmcrho3NHp+RLfl9GwjLntERWZmncHv7tAl7C4/BTi16kVfxj3FL91vfv4/H+C
- zOt94C+MrUoziG3z0nMxH3XfWYx/yR8fC+Q/FORc=
-Date: Thu, 5 Dec 2019 15:34:20 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Mihail Atanassov <Mihail.Atanassov@arm.com>
-Subject: Re: [PATCH v2 00/28] drm/bridge: Consolidate initialization
-Message-ID: <20191205133420.GF4734@pendragon.ideasonboard.com>
-References: <20191204114732.28514-1-mihail.atanassov@arm.com>
+ id 1icsR9-0003yD-QZ; Thu, 05 Dec 2019 14:49:01 +0000
+Received: by mail-pg1-x542.google.com with SMTP id b137so1716689pga.6;
+ Thu, 05 Dec 2019 06:48:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=zerf2jeTJ9T1+KiLBXKGAOgo3NLhscKc1xofy5L3cP8=;
+ b=tEjy3aWT847idRVE/j0aVnV+HovrelpV9vx0sXBsnUpcJaSTMtuUK9EonXSlEmpgl1
+ C9VryYh2cCZrCnW8vu2GEUIhS1quctAlNiL9Goa66xRuo0oShIqxqmUSmNhGAeIJPKeY
+ /A3gYs7IiEIeQA4LyulxkKV9s+CaUGdgFzH+NntG0IJb9eilyvi8inTVBpLPGMehSs4w
+ lehgRMa8jyYGgcqGj5AaOkBlnGaKbs6EkfVa5PiGSw9yWeIiUj8f1Ys/bthnCuqbtMi6
+ vVroLppUxdUsWEDqOJWh3TBslzixAHJdllVIo9pZnzHDN0pMjuA/LYn3EKuhbYS6pzSL
+ T3sA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=zerf2jeTJ9T1+KiLBXKGAOgo3NLhscKc1xofy5L3cP8=;
+ b=DaeGzxuvnm1KlVryHZuB86b/nphHgD+/J8UFofocZXz5yU8T7ac+mS1mrtekwpL2Qj
+ YzO1/Y0lBD61OIac3J9Q4Szz+6Xk8xj22nLDcCEXDnmQ4I+J6kySDi/ivDOBZ7GPJ3dg
+ V/pOJGppZeSVsavB+GD/lRfS6nrjAeQODs/VUB8ldC3o8GgLBR/g7CzAyf5+oP+3OnqU
+ H67aprIrWfWBZxwJGDLodLOkoalACPJ7QYDweAQSgPY7HZzX3aYjUSUcV3zAqSnlS+jT
+ +yn/kLwS4dcXizH/U5T/V0FCaG7ZHI3Iemzm7usq6VfOruL1JN74u6n5mIBJuYR2EWd4
+ gh8w==
+X-Gm-Message-State: APjAAAW4mkNerTbLZKMW389FebLA6M4MUqwz7r5SPAsQVmaCJQBVkhCh
+ Ilnqa0v7O1Uej3q3cu7UUXj+bELnH7s=
+X-Google-Smtp-Source: APXvYqyoEwFvj/ecUcKGhOn5iUEfeT3IoooJMwY33IQjpCOk/nMjVc0JZT4J+N3pT6rDv4VDA3+2oQ==
+X-Received: by 2002:aa7:98cd:: with SMTP id e13mr9039200pfm.56.1575557338720; 
+ Thu, 05 Dec 2019 06:48:58 -0800 (PST)
+Received: from nishad ([106.51.232.103])
+ by smtp.gmail.com with ESMTPSA id z130sm12175224pgz.6.2019.12.05.06.48.52
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Thu, 05 Dec 2019 06:48:58 -0800 (PST)
+Date: Thu, 5 Dec 2019 20:18:48 +0530
+From: Nishad Kamdar <nishadkamdar@gmail.com>
+To: Andreas =?utf-8?Q?F=C3=A4rber?= <afaerber@suse.de>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Kevin Hilman <khilman@baylibre.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@st.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Joe Perches <joe@perches.com>,
+ Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH 1/5] pinctrl: actions: Use the correct style for SPDX
+ License Identifier
+Message-ID: <20191205144844.GA2903@nishad>
+References: <cover.1574871463.git.nishadkamdar@gmail.com>
+ <5b588fc885efca6efdc73869aa4b1eeeb3d6f6c5.1574871463.git.nishadkamdar@gmail.com>
+ <c76290a7-b9bb-7f70-e750-04fe6fdbb7e1@suse.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191204114732.28514-1-mihail.atanassov@arm.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <c76290a7-b9bb-7f70-e750-04fe6fdbb7e1@suse.de>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191205_053437_461288_3D8804D8 
-X-CRM114-Status: GOOD (  20.87  )
+X-CRM114-CacheID: sfid-20191205_064859_886287_A6D69004 
+X-CRM114-Status: GOOD (  21.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,172 +109,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Martyn Welch <martyn.welch@collabora.co.uk>,
- Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
- Linus Walleij <linus.walleij@linaro.org>,
- Peter Senna Tschudin <peter.senna@gmail.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- Russell King <linux@armlinux.org.uk>, Andrzej Hajda <a.hajda@samsung.com>,
- Benjamin Gaignard <benjamin.gaignard@linaro.org>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Sam Ravnborg <sam@ravnborg.org>, Jerome Brunet <jbrunet@baylibre.com>,
- "linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>,
- "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
- Joonyoung Shim <jy0922.shim@samsung.com>,
- Vincent Abriou <vincent.abriou@st.com>,
- Martin Donnelly <martin.donnelly@ge.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Vasily Khoruzhick <anarsoul@gmail.com>,
- Kukjin Kim <kgene@kernel.org>, CK Hu <ck.hu@mediatek.com>,
- Icenowy Zheng <icenowy@aosc.io>, Rob Clark <robdclark@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Brian Masney <masneyb@onstation.org>, Maxime Ripard <mripard@kernel.org>,
- Inki Dae <inki.dae@samsung.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, nd <nd@arm.com>,
- Sean Paul <sean@poorly.run>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Seung-Woo Kim <sw0312.kim@samsung.com>,
- Douglas Anderson <dianders@chromium.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Yannick =?utf-8?Q?Fertr=C3=A9?= <yannick.fertre@st.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
- Torsten Duwe <duwe@lst.de>, Daniel Vetter <daniel@ffwll.ch>,
- Dariusz Marcinkiewicz <darekm@google.com>,
- "freedreno@lists.freedesktop.org" <freedreno@lists.freedesktop.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mihail,
-
-Thank you for the patches.
-
-On Wed, Dec 04, 2019 at 11:48:01AM +0000, Mihail Atanassov wrote:
-> Hi all,
-> 
-> I've dropped the fun parts of this series since they need more work, but
-> figured drm_bridge_init() as a concept is still valuable on its own (and
-> I think I'll need it to roll out device links for registered bridges),
-> so here goes.
-> 
-> v2:
->  - expanded commit messages and added some extra bridge-related
->    documentation (Daniel)
->  - dropped v1 patches 29 and 30: 29 needs more work, and 30 depends on
->    it
->  - added all remaining drm_bridge implementers, found by searching for
->    drm_bridge_funcs which is mandatory for any bridge; new uses in
->    patches 3, 27, and 28 (Sam)
->  - due to the above, I've decided to squash all analogix changes into
->    one patch
-
-For patches 02, 04 to 11 and 13 to 17, 19 to 24, and 27 to 28,
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-
-> ---
-> v1 [https://patchwork.freedesktop.org/series/70039/] cover text below:
-> 
-> This series adds device links support to drm_bridge. The motivation
-> behind it is that a drm_bridge in a module could get removed under the
-> feet of the bridge user without warning, so we need a way to remove and
-> reprobe the client as needed to avoid peering into the void.
-> 
-> 1: Add a drm_bridge_init() function which wraps all initialisation of
-> the structure prior to calling drm_bridge_add().
-> 
-> 2-26,28: Apply the drm_bridge_init() refactor to every bridge that uses
-> drm_bridge_add().
-> 
-> 27: Minor cleanup in rcar-du.
-> 
-> 29: Add of_drm_find_bridge_devlink() which functions the same as
-> of_drm_find_bridge() plus adds a device device link from the owning
-> drm_device to the bridge device.
-> 
-> 30: As a motivating example, convert komeda to exclusively use
-> drm_bridge for its pipe outputs; this isn't a regression in usability
-> any more since device links bring the same automatic remove/reprobe
-> feature as components.
-> 
-> Mihail Atanassov (28):
->   drm: Introduce drm_bridge_init()
->   drm/bridge: adv7511: Use drm_bridge_init()
->   drm/bridge/analogix: Use drm_bridge_init()
->   drm/bridge: cdns: Use drm_bridge_init()
->   drm/bridge: dumb-vga-dac: Use drm_bridge_init()
->   drm/bridge: lvds-encoder: Use drm_bridge_init()
->   drm/bridge: megachips-stdpxxxx-ge-b850v3-fw: Use drm_bridge_init()
->   drm/bridge: nxp-ptn3460: Use drm_bridge_init()
->   drm/bridge: panel: Use drm_bridge_init()
->   drm/bridge: ps8622: Use drm_bridge_init()
->   drm/bridge: sii902x: Use drm_bridge_init()
->   gpu: drm: bridge: sii9234: Use drm_bridge_init()
->   drm/bridge: sil_sii8620: Use drm_bridge_init()
->   drm/bridge: dw-hdmi: Use drm_bridge_init()
->   drm/bridge/synopsys: dsi: Use drm_bridge_init()
->   drm/bridge: tc358764: Use drm_bridge_init()
->   drm/bridge: tc358767: Use drm_bridge_init()
->   drm/bridge: thc63: Use drm_bridge_init()
->   drm/bridge: ti-sn65dsi86: Use drm_bridge_init()
->   drm/bridge: ti-tfp410: Use drm_bridge_init()
->   drm/exynos: mic: Use drm_bridge_init()
->   drm/i2c: tda998x: Use drm_bridge_init()
->   drm/mcde: dsi: Use drm_bridge_init()
->   drm/mediatek: hdmi: Use drm_bridge_init()
->   drm: rcar-du: lvds: Use drm_bridge_init()
->   drm: rcar-du: lvds: Don't set drm_bridge private pointer
->   drm/sti: Use drm_bridge_init()
->   drm/msm: Use drm_bridge_init()
-> 
->  drivers/gpu/drm/bridge/adv7511/adv7511_drv.c  |  5 ++-
->  .../drm/bridge/analogix/analogix-anx6345.c    |  5 ++-
->  .../drm/bridge/analogix/analogix-anx78xx.c    |  8 ++---
->  .../drm/bridge/analogix/analogix_dp_core.c    |  5 ++-
->  drivers/gpu/drm/bridge/cdns-dsi.c             |  4 +--
->  drivers/gpu/drm/bridge/dumb-vga-dac.c         |  6 ++--
->  drivers/gpu/drm/bridge/lvds-encoder.c         |  7 ++--
->  .../bridge/megachips-stdpxxxx-ge-b850v3-fw.c  |  4 +--
->  drivers/gpu/drm/bridge/nxp-ptn3460.c          |  4 +--
->  drivers/gpu/drm/bridge/panel.c                |  7 ++--
->  drivers/gpu/drm/bridge/parade-ps8622.c        |  3 +-
->  drivers/gpu/drm/bridge/sii902x.c              |  5 ++-
->  drivers/gpu/drm/bridge/sii9234.c              |  3 +-
->  drivers/gpu/drm/bridge/sil-sii8620.c          |  3 +-
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c     |  7 ++--
->  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c |  7 ++--
->  drivers/gpu/drm/bridge/tc358764.c             |  4 +--
->  drivers/gpu/drm/bridge/tc358767.c             |  3 +-
->  drivers/gpu/drm/bridge/thc63lvd1024.c         |  7 ++--
->  drivers/gpu/drm/bridge/ti-sn65dsi86.c         |  5 ++-
->  drivers/gpu/drm/bridge/ti-tfp410.c            |  5 ++-
->  drivers/gpu/drm/drm_bridge.c                  | 34 ++++++++++++++++++-
->  drivers/gpu/drm/exynos/exynos_drm_mic.c       |  8 +----
->  drivers/gpu/drm/i2c/tda998x_drv.c             |  6 +---
->  drivers/gpu/drm/mcde/mcde_dsi.c               |  3 +-
->  drivers/gpu/drm/mediatek/mtk_hdmi.c           |  4 +--
->  drivers/gpu/drm/msm/dsi/dsi_manager.c         |  4 +--
->  drivers/gpu/drm/msm/edp/edp_bridge.c          |  3 +-
->  drivers/gpu/drm/msm/hdmi/hdmi_bridge.c        |  4 +--
->  drivers/gpu/drm/rcar-du/rcar_lvds.c           |  5 ++-
->  drivers/gpu/drm/sti/sti_dvo.c                 |  4 +--
->  drivers/gpu/drm/sti/sti_hda.c                 |  3 +-
->  drivers/gpu/drm/sti/sti_hdmi.c                |  3 +-
->  include/drm/drm_bridge.h                      | 15 +++++++-
->  34 files changed, 100 insertions(+), 103 deletions(-)
-
--- 
-Regards,
-
-Laurent Pinchart
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gV2VkLCBOb3YgMjcsIDIwMTkgYXQgMTA6MDI6MDhQTSArMDEwMCwgQW5kcmVhcyBGw6RyYmVy
+IHdyb3RlOgo+IEFtIDI3LjExLjE5IHVtIDE3OjQwIHNjaHJpZWIgTmlzaGFkIEthbWRhcjoKPiA+
+IFRoaXMgcGF0Y2ggY29ycmVjdHMgdGhlIFNQRFggTGljZW5zZSBJZGVudGlmaWVyIHN0eWxlIGlu
+Cj4gPiBoZWFkZXIgZmlsZSByZWxhdGVkIEFjdGlvbnMgU2VtaSBPV0wgcGluY3RybCBkcml2ZXIu
+Cj4gCj4gT3dsCj4gCkkgdXNlZCB0aGUgc2FtZSBmb3JtYXQgbWVudGlvbmVkIGJlbG93LCB3aGlj
+aCBhbHNvIHNheXMgT1dMLgpNZXliZSB3ZSBjYW4gY2hhbmdlIGJvdGggb2YgdGhlbSBpbiBhIHNl
+cGFyYXRlIHBhdGNoLgoKPiA+IEZvciBDIGhlYWRlciBmaWxlcyBEb2N1bWVudGF0aW9uL3Byb2Nl
+c3MvbGljZW5zZS1ydWxlcy5yc3QKPiA+IG1hbmRhdGVzIEMtbGlrZSBjb21tZW50cyAob3Bwb3Nl
+ZCB0byBDIHNvdXJjZSBmaWxlcyB3aGVyZQo+ID4gQysrIHN0eWxlIHNob3VsZCBiZSB1c2VkKS4K
+PiA+IAo+ID4gQ2hhbmdlcyBtYWRlIGJ5IHVzaW5nIGEgc2NyaXB0IHByb3ZpZGVkIGJ5IEpvZSBQ
+ZXJjaGVzIGhlcmU6Cj4gPiBodHRwczovL2xrbWwub3JnL2xrbWwvMjAxOS8yLzcvNDYuCj4gPiAK
+PiA+IFN1Z2dlc3RlZC1ieTogSm9lIFBlcmNoZXMgPGpvZUBwZXJjaGVzLmNvbT4KPiA+IFNpZ25l
+ZC1vZmYtYnk6IE5pc2hhZCBLYW1kYXIgPG5pc2hhZGthbWRhckBnbWFpbC5jb20+Cj4gPiAtLS0K
+PiA+ICBkcml2ZXJzL3BpbmN0cmwvYWN0aW9ucy9waW5jdHJsLW93bC5oIHwgMiArLQo+ID4gIDEg
+ZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+ID4gCj4gPiBkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9waW5jdHJsL2FjdGlvbnMvcGluY3RybC1vd2wuaCBiL2RyaXZlcnMv
+cGluY3RybC9hY3Rpb25zL3BpbmN0cmwtb3dsLmgKPiA+IGluZGV4IGRhZTJlODM2M2ZkNS4uZmVl
+ZTdhZDdlMjdlIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9waW5jdHJsL2FjdGlvbnMvcGluY3Ry
+bC1vd2wuaAo+ID4gKysrIGIvZHJpdmVycy9waW5jdHJsL2FjdGlvbnMvcGluY3RybC1vd2wuaAo+
+ID4gQEAgLTEsNCArMSw0IEBACj4gPiAtLy8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0y
+LjArCj4gPiArLyogU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjArICovCj4gCj4gVGhp
+cyBpcyBub3QgYSB1YXBpIG9yIGFzbSBoZWFkZXIsIHdoaWNoIHRoYXQgLyogKi8gcnVsZSB3YXMg
+bGF0ZXIgYWRkZWQKPiBmb3IsIEkgdGhvdWdodD8KPgoKSSBtaWdodCBiZSB3cm9uZyBidXQgSSB0
+aGluayBpdCBhcHBsaWVzIHRvIHRoaXMgZmlsZSB0b28gYXMgdGhlcmUgYXMgdGhlcmUgaXMgYSBT
+UERYCmlkZW50aWZpZXIgaW4gdGhlIGZpcnN0IHBsYWNlLgo+ID4gIC8qCj4gPiAgICogT1dMIFNv
+QydzIFBpbmN0cmwgZGVmaW5pdGlvbnMKPiA+ICAgKgo+IAo+IE5vdCBvYmplY3RpbmcsIGp1c3Qg
+bWFraW5nIHN1cmUgd2UncmUgbm90IGJsaW5kbHkgcmVmYWN0b3JpbmcgY29kZS4KPiAKCkkgYW0g
+bm90IHN1cmUgd2hhdCB5b3UgYXJlIHRyeWluZyB0byBzYXkgaGVyZSwgYnV0IHRoZSBTUERYIGlk
+ZW50aWZpZXIKcmVxdWlyZXMgYW4gaW5kZXBlbmRlbnQgYmxvY2sgY29tbWVudC4gSGVuY2UgcGxh
+Y2VkIHRoZSBvYm92ZSBjb2RlIGluIGEKc2VwYXJhdGUgYmxvY2sgY29tbWVudC4gRXZlcnl0aGlu
+ZyBlbHNlIGlzIGFzIGl0IGlzLgoKPiBJZiBkb2luZyB0aGlzLCBJIHN1Z2dlc3QgdXBkYXRpbmcg
+dG8gR1BMLTIuMC1vci1sYXRlci4KPiAKCldlIGNhbiBkbyB0aGlzIGluIGEgc2VwYXJhdGUgcGF0
+Y2ggYXMgdGhpcyBwYXRjaCBvbmx5IHRhbGtzIGFib3V0CnRoZSBzdHlsZS4KCj4gUmVnYXJkcywK
+PiBBbmRyZWFzCj4gCj4gLS0gCj4gU1VTRSBTb2Z0d2FyZSBTb2x1dGlvbnMgR2VybWFueSBHbWJI
+Cj4gTWF4ZmVsZHN0ci4gNSwgOTA0MDkgTsO8cm5iZXJnLCBHZXJtYW55Cj4gR0Y6IEZlbGl4IElt
+ZW5kw7ZyZmZlcgo+IEhSQiAzNjgwOSAoQUcgTsO8cm5iZXJnKQoKVGhhbmtzIHZlcnkgbXVjaCBm
+b3IgeW91ciB0aW1lIGFuZCByZXZpZXcuCgpSZWdhcmRzLApOaXNoYWQKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcg
+bGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
