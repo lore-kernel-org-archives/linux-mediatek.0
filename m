@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EA57BC43603
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2019 04:51:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CFB15C2D0C0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2019 05:45:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BAFF6205ED
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2019 04:51:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A45562245C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Dec 2019 05:45:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mg4ddDx6";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="BNKMjaJ/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BAFF6205ED
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="V7aBK3jl";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="A2/T+2gQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A45562245C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bvbwUAET5X3R3v7KKSoUPJGSQMe5/MJYR/sMmB/gCpY=; b=mg4ddDx6F4GeSl
-	vt0X2H7ZWmhZJ7tdjXZBT74jzaK/CJuq1ggxDXh4/pjiwGFmDwIjdc3K5ErxDF5b5l0txyuWqxf34
-	g6yYNITUIVXN+bM+5UwvYvHLDSPMdux6DQ/eCEj5PqMc3gYf5jmxeJQz3LZjh1Xs4SzaMRmSKXaYy
-	oUjs0rRXmtKPH/mih0poBA9wT5/6+RPC+fxJMBKFrXt+NRc/oxVS9/vO9tXKyZ/GwLgbIRA/ifzq8
-	XCLbdGZ+nICluXs7S5aUzzfCxqwG5Gs58n9ATgV0HerpmfFFqJ6a4H3/ej78bQZn9+lkdRqFe9oxQ
-	9aWdR34AxBsYCTezqTtw==;
+	List-Owner; bh=iECyZ9tQ8bujiYwbU4iAvyQDDt9aB/tuTnbS2z16xiE=; b=V7aBK3jl/LTZcc
+	j9Drs5RlKILpe6ba7mEpvwLu0AnPF/xoNX6/NpV68S3jRiffGcrqWJpeelv3CN24P49wYZFx6Y13z
+	fb+xzskKm0dKc00ISGftfEyZW0QSptpLT0jjqm7XFFmSD8Q0QhM/Cy8Dm3eII7LutQI6DXruITEx2
+	dNxfPrepjpLmvc17/OJ4/XeKyz1XpGhXIrMoe+qSeJBUS9DJ6CjI/5t/bRqX+rWRTuYBMgF8O5qZe
+	Ek3pHQaimD9ZGMQzJ5nADvTeYQTv1zxtAmCOFc/oXOdJVWBe2ykQ96Uyb9wBiwmwwphQPJ8utNXvh
+	3UIKUk2LHnlqqNpsg0ug==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1icj6Y-0003kh-SL; Thu, 05 Dec 2019 04:51:06 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1icjwz-0004QE-Vr; Thu, 05 Dec 2019 05:45:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1icj6P-0003eZ-Ar; Thu, 05 Dec 2019 04:50:59 +0000
-X-UUID: 18f6653f7d5e4411927a6a0cec29eb25-20191204
+ id 1icjwq-0003Wn-Tg; Thu, 05 Dec 2019 05:45:11 +0000
+X-UUID: 6bf56341d73343febdb41a236cdfc115-20191204
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=s/Zob46rm/gB42OZlQiOKfWys+tar2a34P8ilcTgUYg=; 
- b=BNKMjaJ/ksGMOaMMvXaZIuOcOcnl9BRlZnrv4Dt8JJKdEZFeDBZqroPPWOyTjNb6zXUTo06i27kaHtZN4MK2FNv+5187z3yCboj+lf6ko9DaOJHvNhLhNPsfwJlighrqHd545+ON3WzxdqYCLE0383JExiAezVRcB6507i27mGQ=;
-X-UUID: 18f6653f7d5e4411927a6a0cec29eb25-20191204
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ bh=DMukBWFVgZU4DzzXUc2ShgiywIROlscb4YOByu87/p4=; 
+ b=A2/T+2gQ9t2mkR4JREyWfUNk7Pba/h+gDoz5DgGGID9QWt7BZ9fMSi+kPhsZr2WyYzU1shFYhFrMrQ9HTbSA8SWfAoyeeaaO54B5HBxmcoZ4syiADXyDM54X0p85gKj05ZZEbUdeSrVn+Mcyth/L15qF9QCQlvBa9oR9g4Zq4/Q=;
+X-UUID: 6bf56341d73343febdb41a236cdfc115-20191204
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1258338523; Wed, 04 Dec 2019 20:50:51 -0800
+ with ESMTP id 596374458; Wed, 04 Dec 2019 21:45:01 -0800
 Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 4 Dec 2019 20:51:36 -0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 4 Dec 2019 21:45:51 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 5 Dec 2019 12:50:32 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
+ 15.0.1395.4; Thu, 5 Dec 2019 13:44:41 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Thu, 5 Dec 2019 12:49:50 +0800
-Message-ID: <1575521448.24783.11.camel@mtksdaap41>
-Subject: Re: [PATCH v3 5/6] drm/mediatek: support CMDQ interface in ddp
- component
+ Transport; Thu, 5 Dec 2019 13:44:27 +0800
+Message-ID: <1575524697.24783.20.camel@mtksdaap41>
+Subject: Re: [PATCH v3 6/6] drm/mediatek: apply CMDQ control flow
 From: CK Hu <ck.hu@mediatek.com>
 To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Date: Thu, 5 Dec 2019 12:50:48 +0800
-In-Reply-To: <20191204094441.5116-6-bibby.hsieh@mediatek.com>
+Date: Thu, 5 Dec 2019 13:44:57 +0800
+In-Reply-To: <20191204094441.5116-7-bibby.hsieh@mediatek.com>
 References: <20191204094441.5116-1-bibby.hsieh@mediatek.com>
- <20191204094441.5116-6-bibby.hsieh@mediatek.com>
+ <20191204094441.5116-7-bibby.hsieh@mediatek.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191204_205057_384964_122560FE 
-X-CRM114-Status: GOOD (  15.76  )
+X-CRM114-CacheID: sfid-20191204_214508_977529_CE19DFC7 
+X-CRM114-Status: GOOD (  20.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,12 +99,13 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Hi, Bibby:
 
 On Wed, 2019-12-04 at 17:44 +0800, Bibby Hsieh wrote:
-> The CMDQ (Command Queue) in MT8183 is used to help
+> Unlike other SoCs, MT8183 does not have "shadow"
+> registers for performaing an atomic video mode
+> set or page flip at vblank/vsync.
+> 
+> The CMDQ (Commend Queue) in MT8183 is used to help
 > update all relevant display controller registers
 > with critical time limation.
-> This patch add cmdq interface in ddp_comp interface,
-> let all ddp_comp interface can support cpu/cmdq function
-> at the same time.
 > 
 > Signed-off-by: YT Shen <yt.shen@mediatek.com>
 > Signed-off-by: CK Hu <ck.hu@mediatek.com>
@@ -113,147 +113,183 @@ On Wed, 2019-12-04 at 17:44 +0800, Bibby Hsieh wrote:
 > Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
 > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_disp_color.c   |   7 +-
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |  65 +++++-----
->  drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |  43 ++++---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |   8 +-
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 136 +++++++++++++++-----
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  31 +++--
->  6 files changed, 197 insertions(+), 93 deletions(-)
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 80 ++++++++++++++++++++++++-
+>  1 file changed, 77 insertions(+), 3 deletions(-)
 > 
-
-[snip]
-
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> index 3407d38aff8f..e93e46726de6 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> @@ -12,7 +12,8 @@
->  #include <linux/of_irq.h>
->  #include <linux/of_platform.h>
->  #include <linux/platform_device.h>
-> -
-> +#include <drm/drmP.h>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> index 9f1ff2f3f104..9340346e2727 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -12,6 +12,8 @@
+>  #include <drm/drm_plane_helper.h>
+>  #include <drm/drm_probe_helper.h>
+>  #include <drm/drm_vblank.h>
+> +#include <linux/of_address.h>
 > +#include <linux/soc/mediatek/mtk-cmdq.h>
+>  
 >  #include "mtk_drm_drv.h"
->  #include "mtk_drm_plane.h"
->  #include "mtk_drm_ddp_comp.h"
-> @@ -76,36 +77,82 @@
->  #define DITHER_ADD_LSHIFT_G(x)			(((x) & 0x7) << 4)
->  #define DITHER_ADD_RSHIFT_G(x)			(((x) & 0x7) << 0)
+>  #include "mtk_drm_crtc.h"
+> @@ -42,6 +44,9 @@ struct mtk_drm_crtc {
+>  	unsigned int			layer_nr;
+>  	bool				pending_planes;
 >  
-> +void mtk_ddp_write(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-> +		   struct mtk_ddp_comp *comp, unsigned int offset)
-> +{
-> +	if (cmdq_pkt)
+> +	struct cmdq_client		*cmdq_client;
+> +	u32				cmdq_event;
+> +
+>  	void __iomem			*config_regs;
+>  	const struct mtk_mmsys_reg_data *mmsys_reg_data;
+>  	struct mtk_disp_mutex		*mutex;
+> @@ -59,6 +64,11 @@ struct mtk_crtc_state {
+>  	unsigned int			pending_width;
+>  	unsigned int			pending_height;
+>  	unsigned int			pending_vrefresh;
+> +	struct cmdq_pkt			*cmdq_handle;
+
+The handle is just used in mtk_drm_crtc_hw_config(), so I think you need
+not to store it in mtk_crtc_state. Make it a local variable in
+mtk_drm_crtc_hw_config() is enough.
+
+> +};
+> +
+> +struct mtk_cmdq_cb_data {
+> +	struct cmdq_pkt			*cmdq_handle;
+>  };
+>  
+>  static inline struct mtk_drm_crtc *to_mtk_crtc(struct drm_crtc *c)
+> @@ -233,6 +243,47 @@ struct mtk_ddp_comp *mtk_drm_ddp_comp_for_plane(struct drm_crtc *crtc,
+>  	return NULL;
+>  }
+>  
 > +#ifdef CONFIG_MTK_CMDQ
-> +		cmdq_pkt_write(cmdq_pkt, comp->subsys,
-> +			       comp->regs_pa + offset, value);
-> +#endif
-> +	else
-> +		writel(value, comp->regs + offset);
-
-If CONFIG_MTK_CMDQ is not defined, this code would become
-
-	if (cmdq_pkt)
-
-	else
-		writel(value, comp->regs + offset);
-
+> +static void ddp_cmdq_cb(struct cmdq_cb_data data)
+> +{
+> +	struct mtk_cmdq_cb_data *cb_data = data.data;
+> +
+> +	cmdq_pkt_destroy(cb_data->cmdq_handle);
+> +	kfree(cb_data);
 > +}
 > +
-> +void mtk_ddp_write_relaxed(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-> +			   struct mtk_ddp_comp *comp,
-> +			   unsigned int offset)
+> +static void mtk_cmdq_acquire(struct drm_crtc *crtc)
 > +{
-> +	if (cmdq_pkt)
-> +#ifdef CONFIG_MTK_CMDQ
-> +		cmdq_pkt_write(cmdq_pkt, comp->subsys,
-> +			       comp->regs_pa + offset, value);
-> +#endif
-> +	else
-> +		writel_relaxed(value, comp->regs + offset);
+> +	struct mtk_crtc_state *mtk_crtc_state =
+> +			to_mtk_crtc_state(crtc->state);
+> +	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+> +
+> +	mtk_crtc_state->cmdq_handle =
+> +			cmdq_pkt_create(mtk_crtc->cmdq_client,
+> +					PAGE_SIZE);
+> +	cmdq_pkt_clear_event(mtk_crtc_state->cmdq_handle,
+> +			     mtk_crtc->cmdq_event);
+> +	cmdq_pkt_wfe(mtk_crtc_state->cmdq_handle, mtk_crtc->cmdq_event);
 > +}
 > +
-> +void mtk_ddp_write_mask(struct cmdq_pkt *cmdq_pkt,
-> +			unsigned int value,
-> +			struct mtk_ddp_comp *comp,
-> +			unsigned int offset,
-> +			unsigned int mask)
+> +static void mtk_cmdq_release(struct drm_crtc *crtc)
 > +{
-> +	if (cmdq_pkt) {
-> +#ifdef CONFIG_MTK_CMDQ
-> +		cmdq_pkt_write_mask(cmdq_pkt, comp->subsys,
-> +				    comp->regs_pa + offset, value, mask);
-> +#endif
-> +	} else {
-> +		u32 tmp = readl(comp->regs + offset);
+> +	struct mtk_crtc_state *mtk_crtc_state =
+> +			to_mtk_crtc_state(crtc->state);
+> +	struct mtk_cmdq_cb_data *cb_data;
 > +
-> +		tmp = (tmp & ~mask) | (value & mask);
-> +		writel(tmp, comp->regs + offset);
+> +	cb_data = kmalloc(sizeof(*cb_data), GFP_KERNEL);
+> +	if (!cb_data) {
+> +		DRM_DEV_ERROR(crtc->dev->dev, "Failed to alloc cb_data\n");
+> +		return;
 > +	}
-> +}
 > +
+> +	cb_data->cmdq_handle = mtk_crtc_state->cmdq_handle;
+> +	cmdq_pkt_flush_async(mtk_crtc_state->cmdq_handle,
+> +			     ddp_cmdq_cb, cb_data);
 
-[snip]
+Why do you create mtk_cmdq_cb_data{}? You could directly put handle in
+cb_date parameter.
 
->  
->  static void mtk_gamma_start(struct mtk_ddp_comp *comp)
-> @@ -324,6 +371,9 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
->  		      const struct mtk_ddp_comp_funcs *funcs)
+> +}
+> +#endif
+> +
+>  static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
 >  {
->  	struct platform_device *comp_pdev;
-> +	struct resource res;
-> +	struct cmdq_client_reg *cmdq_reg;
+>  	struct drm_crtc *crtc = &mtk_crtc->base;
+> @@ -393,7 +444,8 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+>  	if (state->pending_config) {
+>  		mtk_ddp_comp_config(comp, state->pending_width,
+>  				    state->pending_height,
+> -				    state->pending_vrefresh, 0, NULL);
+> +				    state->pending_vrefresh, 0,
+> +				    state->cmdq_handle);
+>  
+>  		state->pending_config = false;
+>  	}
+> @@ -413,7 +465,8 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
+>  
+>  			if (comp)
+>  				mtk_ddp_comp_layer_config(comp, local_layer,
+> -							  plane_state, NULL);
+> +							  plane_state,
+> +							  state->cmdq_handle);
+>  			plane_state->pending.config = false;
+>  		}
+>  		mtk_crtc->pending_planes = false;
+> @@ -452,6 +505,13 @@ static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
+>  		mtk_crtc_ddp_config(crtc);
+>  		mtk_disp_mutex_release(mtk_crtc->mutex);
+>  	}
+> +#ifdef CONFIG_MTK_CMDQ
+> +	if (mtk_crtc->cmdq_client) {
+> +		mtk_cmdq_acquire(crtc);
+> +		mtk_crtc_ddp_config(crtc);
+> +		mtk_cmdq_release(crtc);
+> +	}
+> +#endif
+>  	mutex_unlock(&mtk_crtc->hw_lock);
+>  }
+>  
+> @@ -528,6 +588,7 @@ static void mtk_drm_crtc_atomic_disable(struct drm_crtc *crtc,
+>  	mtk_crtc->pending_planes = true;
+>  
+>  	/* Wait for planes to be disabled */
+> +	mtk_drm_crtc_hw_config(mtk_crtc);
 
-I think you could simply defined as below, so you need not to allocate
-and free.
+I think shadow register has the same problem, so I would like to move
+this part to an independent patch which fix shadow register problem. And
+I think this statement should be moved before the comment because this
+statement does not doing wait.
 
-struct cmdq_client_reg cmdq_reg;
+>  	drm_crtc_wait_one_vblank(crtc);
+>  
+>  	drm_crtc_vblank_off(crtc);
+> @@ -619,7 +680,7 @@ void mtk_crtc_ddp_irq(struct drm_crtc *crtc, struct mtk_ddp_comp *comp)
+>  	struct mtk_drm_crtc *mtk_crtc = to_mtk_crtc(crtc);
+>  	struct mtk_drm_private *priv = crtc->dev->dev_private;
+>  
+> -	if (!priv->data->shadow_register)
+> +	if (!priv->data->shadow_register && !mtk_crtc->cmdq_client)
+>  		mtk_crtc_ddp_config(crtc);
+>  
+>  	mtk_drm_finish_page_flip(mtk_crtc);
+> @@ -763,5 +824,18 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+>  	priv->num_pipes++;
+>  	mutex_init(&mtk_crtc->hw_lock);
+>  
+> +#ifdef CONFIG_MTK_CMDQ
+> +	mtk_crtc->cmdq_client =
+> +			cmdq_mbox_create(dev, drm_crtc_index(&mtk_crtc->base),
+> +					 2000);
+> +	of_property_read_u32_index(dev->of_node, "mediatek,gce-events",
+> +				   drm_crtc_index(&mtk_crtc->base),
+> +				   &mtk_crtc->cmdq_event);
+
+Check the return value.
 
 Regards,
 CK
 
-> +	int ret = 0;
->  
->  	if (comp_id < 0 || comp_id >= DDP_COMPONENT_ID_MAX)
->  		return -EINVAL;
-> @@ -358,6 +408,34 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
->  	}
->  	comp->dev = &comp_pdev->dev;
->  
-> +#ifdef CONFIG_MTK_CMDQ
-> +	if (of_address_to_resource(node, 0, &res) != 0) {
-> +		dev_err(dev, "Missing reg in %s node\n",
-> +			node->full_name);
-> +		return -EINVAL;
+> +	if (IS_ERR(mtk_crtc->cmdq_client)) {
+> +		dev_dbg(dev, "mtk_crtc %d failed to create mailbox client, writing register by CPU now\n",
+> +			drm_crtc_index(&mtk_crtc->base));
+> +		mtk_crtc->cmdq_client = NULL;
 > +	}
-> +	comp->regs_pa = res.start;
-> +
-> +	comp_pdev = of_find_device_by_node(node);
-> +	if (!comp_pdev) {
-> +		dev_warn(dev, "Waiting for component device %s\n",
-> +			 node->full_name);
-> +		return -EPROBE_DEFER;
-> +	}
-> +
-> +	cmdq_reg = kzalloc(sizeof(*cmdq_reg), GFP_KERNEL);
-> +	if (!cmdq_reg)
-> +		return -EINVAL;
-> +
-> +	ret = cmdq_dev_get_client_reg(&comp_pdev->dev, cmdq_reg, 0);
-> +	if (ret != 0)
-> +		dev_dbg(&comp_pdev->dev,
-> +			"get mediatek,gce-client-reg fail!\n");
-> +	else
-> +		comp->subsys = cmdq_reg->subsys;
-> +
-> +	kfree(cmdq_reg);
 > +#endif
 >  	return 0;
 >  }
->  
-
 
 _______________________________________________
 Linux-mediatek mailing list
