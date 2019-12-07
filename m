@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 37AB9C43603
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Dec 2019 14:11:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B4460C43603
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Dec 2019 14:11:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0C62A24677
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Dec 2019 14:11:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8793724677
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Dec 2019 14:11:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TqRJpID3";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="s22pFD4Y"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0C62A24677
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="O3ef+vzm";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="del00zw1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8793724677
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,66 +26,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jQXxfrlPchiqbA3UnoL/R6QwwtyjAey0EsULuKV8IAk=; b=TqRJpID3t372hM
-	zvHcjPo9n2eE5Val75HRPp9icIPH6SmQ5h2qTPc6zO3lLHeNmXPVMuhyMPN2r4UFf6F9cCa9RG5LY
-	9hPhp3y3n14bGvkwVEjyG1yHCoxlS0rSLbgFCRjUY8rICYJ5f1FSyAFGkxGz9j7IzYYiIcqkyhClC
-	PhKEOlQh+foCwZs5Bo8reRAzoBTx2R2+a3UpvYnDsw6VZkqBRV22ppq7IYdjwXDXbwzGNUu97IF8A
-	vC0axAx2Rq/fUU8VBj/V6yVH0W9zwzcykhTmC7m6OKjm/pDnsZPnXHt6OSc+o+oYyx03vfpOiHi+Q
-	GYKInC4kqH4RFwDE0rcQ==;
+	List-Owner; bh=RrLAhbwYcAa4MyTa6kiCf0BNJesqDsacj96L7lGDEiA=; b=O3ef+vzmjiGiIY
+	WJs/LEV4lLlY22sDi52TTKuaK6EuU2Df2U9XSyvqOYM6ahbN34vh3BOYHH74mZcmJa9su3v+9HfP4
+	r83SS0ebtw72SjWy9XBUcqBOoF/Dy40KOvd3Ce7Cbo30iMdZKhQd6QEvf4OX0lqS2U8cIS5ukh97K
+	f/9LTTFuOY36lktOcD0VWZw7eZxkGj/F6kXY25gGWpMxi3lqFLuzczU/RCQi3uKzLb5em7WIsC+9R
+	ZXtbh8+mVA4dguHl68HXbqkeH1qI8elTKm3h+13QGehwCcmbL0lfL5F3bYZWK/RJPGYlWw0ORdk7p
+	HIaQYrjlBAXOut6fPdoA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1idany-0005tx-Mx; Sat, 07 Dec 2019 14:11:30 +0000
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144])
+	id 1idaoB-0006Dz-G6; Sat, 07 Dec 2019 14:11:43 +0000
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1idahD-0005iv-MJ; Sat, 07 Dec 2019 14:04:43 +0000
-Received: by mail-lf1-x144.google.com with SMTP id y5so7411562lfy.7;
- Sat, 07 Dec 2019 06:04:31 -0800 (PST)
+ id 1idahM-0005pD-Lp; Sat, 07 Dec 2019 14:04:46 +0000
+Received: by mail-lj1-x244.google.com with SMTP id d20so10659723ljc.12;
+ Sat, 07 Dec 2019 06:04:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=uCcsUdwReshm9HwMNcrU5BxdMhIAKJ/ocTck1sZP+Fo=;
- b=s22pFD4YrEM3PFFzKv+ZLsVIXm+HdH/EaDdcclRIe89iftvcVnXlN37VAJLTLRpKCI
- Joj9aeFpY8riXENAwhHWUGERnh/I5RyC2zHkzJ4cvd/ly3H5g+HjF7GEvZPbNkirgs3P
- ZVynpmSQopiLvYNmQKwKGrQsFS4gud4WijDs1HgxL2uNpFOb7fIg/6ULqcKqAMszS3Rj
- 3KtWDPxC+GD7oLwj9GPbI4DrWrOgAo6SdNIDXyYnDcF7eOmSvKVExMRWyVzwV/tSHyMC
- E76/PwPIZVH4HkQC9Me7Eg88eefxTIt8g9IHrCvjj+IcTjeu1oIAncoo/mzoGU9hxyPr
- B8Ow==
+ bh=9ajEOdCUpT16GVN8gH4RbvIy9yc0BScTRBZ/ljCGiME=;
+ b=del00zw1hnJOSv6lindha+LEL+pXCeIab6795BI3uAGU4qQMEuuUbjQwOGzbrRfYnV
+ sLSpfj7wW3bvryQATj7Q51EwRQD7wRWf62nDjfn6BJFcMaN5LBIhK6IJMt0XJ1Ebfo6J
+ XUVLV3X2Ol3AiWrAA9fIpAo3H6pPHhti2T+aMNzt8UWn1Bt5wiHgZX3ad8qBtPltlD/C
+ 46l3GHw3p5o3zqTX2ZlVW52Bzx2xLd494I1jvveB4FXyii3QJbWyltaWAjdwlm7zXUoI
+ jqbYvwE1QXqvMA4YnM5UQcphd58kDP+oaaRq+YP7wmtRkB5l6+6cYecRYZcs/vzQN+4A
+ dMQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=uCcsUdwReshm9HwMNcrU5BxdMhIAKJ/ocTck1sZP+Fo=;
- b=roLDPej+1NQu+5DK7stNvJ/EYY+PlGf7dWDPk1DNe3O4RcDhz9IBjVVa55H5E9dVQw
- DrC0MyYeZIH6OMP4C9+yGvMq+ZyvyEkWDRjg2q2+Hke3NmhR0/g7wNry8L/x9fNvw2F/
- 53Iqs6Bs4RPyQECCb6iKrjQg168CVF3SMXexYsz07yQFuSgD9ggMqdnLmSGNTVVxRUEm
- IKd6OhG0wBcyB5IHbI6+cg9NSyIxuV4RyCnIPsyNHCYSAWcBc3d4Qsm5jSAdqdKdl+pw
- Xv8Wkk/7iFgaSV1ru6DUCyeF3xEBhm+OIC5ioEKfLTDW1wcVDVz9vhERKOp4OVHXVJmK
- 2I8A==
-X-Gm-Message-State: APjAAAVHoAmtg5Cg+OpCxYJ5JmUKAIuYNObDYd2hIS6SWhapUNIxYsBS
- 6c3aUV/eQ+cCOval8KYpIBQ=
-X-Google-Smtp-Source: APXvYqwODyhNxo//UXLNaOKxcezmY/8FXmz3+HXMvPwIlwOjWb5g2QkT3BMHdTPdMLzXRsxZlWwl5w==
-X-Received: by 2002:ac2:5635:: with SMTP id b21mr814144lff.127.1575727469887; 
- Sat, 07 Dec 2019 06:04:29 -0800 (PST)
+ bh=9ajEOdCUpT16GVN8gH4RbvIy9yc0BScTRBZ/ljCGiME=;
+ b=YGdJuC/X2V/toaE8r5Y1nWc734OKytkjyGGx9u08057xlvOrxDHlELliU+odCJbtKm
+ RVZHH8dtEmlodTUS2BgNRX4lJKPj/iOZMgV4ZLfVYalIZy3Odmzx4XiOKOOJJaHHW7jL
+ Sav2d04QtOzbr/OPifUdsvuUDWVCWC/IIT9cQFsig+uwhLRgmnVS/OpvU9Qg+NbhREG0
+ lb89PamKL0fiTBsiig7xzBM+my2e/8a7Z7xVKAAcDFm3bPeblRh20W1OtdOLYcFYN5BY
+ cA3DHuREfoiFqc0L9+hvgXFCl7Z4g3gnRBq1gddTkVKjQtzjucoFJbjZNTZqS7seBeIZ
+ cVpQ==
+X-Gm-Message-State: APjAAAVC8ZFoV60ndMBqQm5sPTGg7j51Uw+wn3XhXhPyFQnDc6ZjUvHe
+ KFnZI2cpG54I2YCNwIzgbvA=
+X-Google-Smtp-Source: APXvYqzCbSGlblzAZsh3pGQCv4tblDf1OnHgS/cPV5hd9q+X+WS1X5hlR+rDAbIA4PDjxaKo1Ddq2Q==
+X-Received: by 2002:a2e:9890:: with SMTP id b16mr11789523ljj.190.1575727478849; 
+ Sat, 07 Dec 2019 06:04:38 -0800 (PST)
 Received: from saturn.lan (18.158-248-194.customer.lyse.net. [158.248.194.18])
  by smtp.gmail.com with ESMTPSA id
- w17sm5644188lfn.22.2019.12.07.06.04.28
+ w17sm5644188lfn.22.2019.12.07.06.04.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 07 Dec 2019 06:04:29 -0800 (PST)
+ Sat, 07 Dec 2019 06:04:38 -0800 (PST)
 From: Sam Ravnborg <sam@ravnborg.org>
 To: dri-devel@lists.freedesktop.org, Thierry Reding <thierry.reding@gmail.com>,
  Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
  Linus Walleij <linus.walleij@linaro.org>, Sam Ravnborg <sam@ravnborg.org>
-Subject: [PATCH v2 11/25] drm/panel: kingdisplay-kd097d04: use drm_panel
- backlight support
-Date: Sat,  7 Dec 2019 15:03:39 +0100
-Message-Id: <20191207140353.23967-12-sam@ravnborg.org>
+Subject: [PATCH v2 16/25] drm/panel: raydium-rm68200: use drm_panel backlight
+ support
+Date: Sat,  7 Dec 2019 15:03:44 +0100
+Message-Id: <20191207140353.23967-17-sam@ravnborg.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191207140353.23967-1-sam@ravnborg.org>
 References: <20191207140353.23967-1-sam@ravnborg.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191207_060433_429173_3678C6D5 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20191207_060440_869870_F563E936 
+X-CRM114-Status: GOOD (  10.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -124,101 +124,72 @@ Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Cc: Thierry Reding <thierry.reding@gmail.com>
 Cc: Sam Ravnborg <sam@ravnborg.org>
 ---
- .../drm/panel/panel-kingdisplay-kd097d04.c    | 28 ++++++-------------
- 1 file changed, 8 insertions(+), 20 deletions(-)
+ drivers/gpu/drm/panel/panel-raydium-rm68200.c | 15 +++++----------
+ 1 file changed, 5 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/gpu/drm/panel/panel-kingdisplay-kd097d04.c b/drivers/gpu/drm/panel/panel-kingdisplay-kd097d04.c
-index 353ee6caa01c..bac1a2a06c92 100644
---- a/drivers/gpu/drm/panel/panel-kingdisplay-kd097d04.c
-+++ b/drivers/gpu/drm/panel/panel-kingdisplay-kd097d04.c
-@@ -3,7 +3,6 @@
-  * Copyright (c) 2017, Fuzhou Rockchip Electronics Co., Ltd
+diff --git a/drivers/gpu/drm/panel/panel-raydium-rm68200.c b/drivers/gpu/drm/panel/panel-raydium-rm68200.c
+index d6a03328e594..e8982948e0ea 100644
+--- a/drivers/gpu/drm/panel/panel-raydium-rm68200.c
++++ b/drivers/gpu/drm/panel/panel-raydium-rm68200.c
+@@ -6,9 +6,9 @@
+  *          Yannick Fertre <yannick.fertre@st.com>
   */
  
 -#include <linux/backlight.h>
  #include <linux/delay.h>
  #include <linux/gpio/consumer.h>
++#include <linux/mod_devicetable.h>
  #include <linux/module.h>
-@@ -23,7 +22,6 @@ struct kingdisplay_panel {
- 	struct drm_panel base;
- 	struct mipi_dsi_device *link;
+ #include <linux/regulator/consumer.h>
  
--	struct backlight_device *backlight;
+@@ -78,7 +78,6 @@ struct rm68200 {
+ 	struct drm_panel panel;
+ 	struct gpio_desc *reset_gpio;
  	struct regulator *supply;
- 	struct gpio_desc *enable_gpio;
- 
-@@ -191,8 +189,6 @@ static int kingdisplay_panel_disable(struct drm_panel *panel)
- 	if (!kingdisplay->enabled)
+-	struct backlight_device *backlight;
+ 	bool prepared;
+ 	bool enabled;
+ };
+@@ -242,8 +241,6 @@ static int rm68200_disable(struct drm_panel *panel)
+ 	if (!ctx->enabled)
  		return 0;
  
--	backlight_disable(kingdisplay->backlight);
+-	backlight_disable(ctx->backlight);
 -
- 	err = mipi_dsi_dcs_set_display_off(kingdisplay->link);
- 	if (err < 0)
- 		DRM_DEV_ERROR(panel->dev, "failed to set display off: %d\n",
-@@ -303,18 +299,10 @@ static int kingdisplay_panel_prepare(struct drm_panel *panel)
- static int kingdisplay_panel_enable(struct drm_panel *panel)
- {
- 	struct kingdisplay_panel *kingdisplay = to_kingdisplay_panel(panel);
--	int ret;
- 
- 	if (kingdisplay->enabled)
- 		return 0;
- 
--	ret = backlight_enable(kingdisplay->backlight);
--	if (ret) {
--		DRM_DEV_ERROR(panel->dev,
--			      "Failed to enable backlight %d\n", ret);
--		return ret;
--	}
--
- 	kingdisplay->enabled = true;
+ 	ctx->enabled = false;
  
  	return 0;
-@@ -388,13 +376,13 @@ static int kingdisplay_panel_add(struct kingdisplay_panel *kingdisplay)
- 		kingdisplay->enable_gpio = NULL;
+@@ -328,8 +325,6 @@ static int rm68200_enable(struct drm_panel *panel)
+ 	if (ctx->enabled)
+ 		return 0;
+ 
+-	backlight_enable(ctx->backlight);
+-
+ 	ctx->enabled = true;
+ 
+ 	return 0;
+@@ -392,10 +387,6 @@ static int rm68200_probe(struct mipi_dsi_device *dsi)
+ 		return ret;
  	}
  
--	kingdisplay->backlight = devm_of_find_backlight(dev);
--	if (IS_ERR(kingdisplay->backlight))
--		return PTR_ERR(kingdisplay->backlight);
+-	ctx->backlight = devm_of_find_backlight(dev);
+-	if (IS_ERR(ctx->backlight))
+-		return PTR_ERR(ctx->backlight);
 -
- 	drm_panel_init(&kingdisplay->base, &kingdisplay->link->dev,
- 		       &kingdisplay_panel_funcs, DRM_MODE_CONNECTOR_DSI);
+ 	mipi_dsi_set_drvdata(dsi, ctx);
  
-+	err = drm_panel_of_backlight(&kingdisplay->base);
-+	if (err)
-+		return err;
+ 	ctx->dev = dev;
+@@ -408,6 +399,10 @@ static int rm68200_probe(struct mipi_dsi_device *dsi)
+ 	drm_panel_init(&ctx->panel, dev, &rm68200_drm_funcs,
+ 		       DRM_MODE_CONNECTOR_DSI);
+ 
++	ret = drm_panel_of_backlight(&ctx->panel);
++	if (ret)
++		return ret;
 +
- 	return drm_panel_add(&kingdisplay->base);
- }
+ 	drm_panel_add(&ctx->panel);
  
-@@ -432,12 +420,12 @@ static int kingdisplay_panel_remove(struct mipi_dsi_device *dsi)
- 	struct kingdisplay_panel *kingdisplay = mipi_dsi_get_drvdata(dsi);
- 	int err;
- 
--	err = kingdisplay_panel_unprepare(&kingdisplay->base);
-+	err = drm_panel_unprepare(&kingdisplay->base);
- 	if (err < 0)
- 		DRM_DEV_ERROR(&dsi->dev, "failed to unprepare panel: %d\n",
- 			      err);
- 
--	err = kingdisplay_panel_disable(&kingdisplay->base);
-+	err = drm_panel_disable(&kingdisplay->base);
- 	if (err < 0)
- 		DRM_DEV_ERROR(&dsi->dev, "failed to disable panel: %d\n", err);
- 
-@@ -455,8 +443,8 @@ static void kingdisplay_panel_shutdown(struct mipi_dsi_device *dsi)
- {
- 	struct kingdisplay_panel *kingdisplay = mipi_dsi_get_drvdata(dsi);
- 
--	kingdisplay_panel_unprepare(&kingdisplay->base);
--	kingdisplay_panel_disable(&kingdisplay->base);
-+	drm_panel_unprepare(&kingdisplay->base);
-+	drm_panel_disable(&kingdisplay->base);
- }
- 
- static struct mipi_dsi_driver kingdisplay_panel_driver = {
+ 	ret = mipi_dsi_attach(dsi);
 -- 
 2.20.1
 
