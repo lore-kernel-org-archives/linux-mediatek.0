@@ -2,22 +2,22 @@ Return-Path: <SRS0=LwTv=Z5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BCEFC43603
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Dec 2019 14:08:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ED34EC43603
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Dec 2019 14:11:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6CC3724670
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Dec 2019 14:08:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BB79F24677
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Dec 2019 14:11:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s6137jKw";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ZfHiRiue"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CC3724670
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Efe98y0t";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="eXo50RX1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BB79F24677
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,66 +26,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Jsrq/VeCtiGl9cEUmxzE3fdN5fn6x+AovvWPp8lP+PM=; b=s6137jKw7gPKa1
-	g/QD0trDxnu+FwO5n6e7zXfcpefe0ajKjxY7xD8i+i50UzmYtDYGup2rCBJtF9QOCu1yA8GX9Wz0E
-	K64PnRCKC/oBuY+UkN3isWzqrho4m0jlSvFY+i7RDhpxDS8oKRa1vvX8vPbuAyL/LvNGq5PQmVnpo
-	poUIXN0tKv5YyqXTFGQj0GAn0g0o0wrEBbktP6+Hjt4O2DF6CtxtHPj1b3vCp0XX8u6gQ2hASfecR
-	N21f9M0XlYYkA63Lvz4ROZnhtrGAGE3DTKVkzyroYdzaWcf7HOrxR7XMWI7Kpc0BzDOfCzqiX469d
-	EpMGk8sDsMtbAzBWEIkQ==;
+	List-Owner; bh=PFCsI/CqS6ntZyZwaJXGyJEukEEr0U1wuxeU0LezkfI=; b=Efe98y0tp1ONsB
+	VCpG1mnITS9/D/Ya/xH1N5GcNN9zSWsXZok/w2Kur9NlxBo8c5v+NMxf1tvmS8KjnkC2MfUEVELLT
+	Ys5fjV+3Oauu/PaOh7/L83m9Mbdknv1h0KMqJKmvCmm2e8C65//Yqq56okW/fEdtb5oNsXAEqhAyY
+	nuGOneSro5pTjBk94UTua5EB9i9JreS1Wqz8owR9rIxR2ULzp34tH5yjnb8xSRyNvGjlhovWoZPrJ
+	/nNKOVOXkCs7XZ6QkmsD2AtcVSSyptozGowBay96nwhR1vJtmu1dgVhFcTI294SAxwfU7CzMigJkr
+	k7fVHMerfMjmGV+iTkxw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1idalD-00026a-2V; Sat, 07 Dec 2019 14:08:39 +0000
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
+	id 1idanZ-0005YZ-2t; Sat, 07 Dec 2019 14:11:05 +0000
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1idahC-0005hL-1O; Sat, 07 Dec 2019 14:04:31 +0000
-Received: by mail-lj1-x243.google.com with SMTP id m6so10742809ljc.1;
- Sat, 07 Dec 2019 06:04:29 -0800 (PST)
+ id 1idahH-0005lm-5v; Sat, 07 Dec 2019 14:04:43 +0000
+Received: by mail-lf1-x142.google.com with SMTP id y19so7378435lfl.9;
+ Sat, 07 Dec 2019 06:04:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=PEkkKHiq+AcHePdv87qZ46O+yNk0TpaePUBzT0oWsAc=;
- b=ZfHiRiueSHRoMm/wWPg2IEAFbC+nin4k5/h6+jqp6YAW6dtNdKpHxhLUqyQBrdiW5X
- IS69T1/XMFvXqXGcc956VzDbI9EAU0LALkPtX5E1ULJfoYNnPXw878/lGy/5UDWRyoZn
- lOJzZCmr3W4w+L4mhA22VZAR5ei76vWyygf4hVaS3BMOuchXlSmvt1qbmiOnS6ogFTSO
- AFppLqocMVslabJ7DToSGuHPtYw6gN3Q4temBKQ8tfmnNP9Mpz7mwHqyqb78C40OcI3S
- W84v8/HgfHEL4T9hbGi/iSwgNqm/ytbENpyqiJ1UF+/MPBXwVyJpguDgnGdveWD5YDi/
- QtIA==
+ bh=66uC10NTDsBRb7X6vStnogHiILcbdjND8PJjJ30cYbk=;
+ b=eXo50RX1awgOgNqXA1euoTjADMDxJIIFt7Pu3nB1qA9kL/D53Wde7x1V7fPKl2ER6f
+ mKPD6elw1ZuMST7wwxBb3iv3VN9n4mHUZuCyvBBdvRZ+zO9nzDUfgM+nr89reyidFjk2
+ 5bl5lEnsZ5a+YLW/5u7sk+EqFefyVyztWmjYqKsrM0j+3Hu9JYA32AFZOHg/zXqQEhil
+ EaIetBjkLamIOXtQH7Ef+AHxOdglN5O/sqEFpPCFljHdlSqIYsq3aggg2FUtPigLHmwG
+ Qwnhq8a1y98GH4vItHdyUv4SzuVygkRRme4IlJZiEXPhgPjwJOXY5+RKh3KzTEoOj3Oe
+ uylw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=PEkkKHiq+AcHePdv87qZ46O+yNk0TpaePUBzT0oWsAc=;
- b=T7ClYDaIz2TVic+kBYIV5PYjvA3gscZarplT0t6PvYo2bzCuUDhSrKcD02BQBXZetG
- u+Kf6LKedeQeEJ+4X9yRoobJP8KuHihrJjJfUbVY1fm/b7rLchAFcgBKakT3rzU69KDs
- jnH/FQfHBG+GyTn3lFZ2secp72GU/Sgom4N4h2wUyJPryVPQiRH+M4p599cb1fvp1uB8
- Lu56LTC0Pj9bXyAhYACJrhP4yFN0z4kSPnMo0ilWLqNE4EjVEbrV5d8VGFxj4L+HGn6T
- fBa/hlh/te9SuO3JoK4joDBHtHb6A273BDvWxWlCjtcfMBiD+DIW1DwObsHjN/EM4+sa
- XC4A==
-X-Gm-Message-State: APjAAAWDNzAKzeXKOBf1ECVsfHSmgAaRcwY+6qGiYqcuOXPT9u3kFpxM
- nU1gV9vXzDp05qoTFD+ai8w=
-X-Google-Smtp-Source: APXvYqyvSwIE32v2Kp9t6aC1p3mZ5oj9u6z9msGZC5D9TpRLAqQ5hY1QRbeh6HQns7Z439S/CNir0g==
-X-Received: by 2002:a2e:978d:: with SMTP id y13mr11771522lji.103.1575727468217; 
- Sat, 07 Dec 2019 06:04:28 -0800 (PST)
+ bh=66uC10NTDsBRb7X6vStnogHiILcbdjND8PJjJ30cYbk=;
+ b=lITHTzSCzcrBLldgODRU9dCl2c4yyG7ZpnKWz4rudE2q1iZ2/Z/oH6t4PcCZlXnsGz
+ q67CquRFG92TFiReB51HIKRIWVpsF5KmRVQxL+5dOIDxqMopXsRGaiRIe8RgOIDhWD+t
+ WOz6RyoK4jT4JnQtJLQB+hFT6SqmDWckQWarcHtCmGx6bjFlEOClB2T2Cj1/dxEzc1og
+ eLWS9cezyZE3heKgvn9OMg13WO9mtT+uIfFfTmI0aXTVpow/YXP8ckd0n1AswszZHJiE
+ ELEk/gcqmSu4ANWHDHDVScYvf669MXOvPopr1ypi6uIg2E9GRYFkzyFnrMbjhlIxMiAU
+ RjXw==
+X-Gm-Message-State: APjAAAVSD6yf56ylkaeK/KIlkfn0KnuI2gsxRhv+kRId7mBReV0JEeg8
+ TVU85iL58/su5fyOG2OP/zQ=
+X-Google-Smtp-Source: APXvYqxVNVpfDn6H4MM9EgRQ26sPL400SlH6382v5r0u3Jj20zEKSwiT5FQB/2Gog+qGIuLc4xC8dA==
+X-Received: by 2002:a19:550a:: with SMTP id n10mr10813033lfe.104.1575727473305; 
+ Sat, 07 Dec 2019 06:04:33 -0800 (PST)
 Received: from saturn.lan (18.158-248-194.customer.lyse.net. [158.248.194.18])
  by smtp.gmail.com with ESMTPSA id
- w17sm5644188lfn.22.2019.12.07.06.04.26
+ w17sm5644188lfn.22.2019.12.07.06.04.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 07 Dec 2019 06:04:27 -0800 (PST)
+ Sat, 07 Dec 2019 06:04:32 -0800 (PST)
 From: Sam Ravnborg <sam@ravnborg.org>
 To: dri-devel@lists.freedesktop.org, Thierry Reding <thierry.reding@gmail.com>,
  Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
  Linus Walleij <linus.walleij@linaro.org>, Sam Ravnborg <sam@ravnborg.org>
-Subject: [PATCH v2 10/25] drm/panel: innolux-p079zca: use drm_panel backlight
- support
-Date: Sat,  7 Dec 2019 15:03:38 +0100
-Message-Id: <20191207140353.23967-11-sam@ravnborg.org>
+Subject: [PATCH v2 13/25] drm/panel: olimex-lcd-olinuxino: use drm_panel
+ backlight support
+Date: Sat,  7 Dec 2019 15:03:41 +0100
+Message-Id: <20191207140353.23967-14-sam@ravnborg.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191207140353.23967-1-sam@ravnborg.org>
 References: <20191207140353.23967-1-sam@ravnborg.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191207_060430_120786_9EAE15E1 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20191207_060435_436473_6538958B 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,8 +100,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
  Stefan Agner <stefan@agner.ch>, Andrzej Hajda <a.hajda@samsung.com>,
  Benjamin Gaignard <benjamin.gaignard@linaro.org>,
- linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Tomi Valkeinen <tomi.valkeinen@ti.com>,
+ linux-samsung-soc@vger.kernel.org, Stefan Mavrodiev <stefan@olimex.com>,
+ linux-rockchip@lists.infradead.org, Tomi Valkeinen <tomi.valkeinen@ti.com>,
  Jagan Teki <jagan@amarulasolutions.com>, NXP Linux Team <linux-imx@nxp.com>,
  Jitao Shi <jitao.shi@mediatek.com>,
  Pengutronix Kernel Team <kernel@pengutronix.de>,
@@ -121,104 +121,80 @@ Use the backlight support in drm_panel to simplify the driver
 
 Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
 Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Stefan Mavrodiev <stefan@olimex.com>
 Cc: Thierry Reding <thierry.reding@gmail.com>
 Cc: Sam Ravnborg <sam@ravnborg.org>
 ---
- drivers/gpu/drm/panel/panel-innolux-p079zca.c | 28 ++++++-------------
- 1 file changed, 8 insertions(+), 20 deletions(-)
+ .../gpu/drm/panel/panel-olimex-lcd-olinuxino.c | 18 ++++++------------
+ 1 file changed, 6 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/gpu/drm/panel/panel-innolux-p079zca.c b/drivers/gpu/drm/panel/panel-innolux-p079zca.c
-index b9de37a8a0c5..7419f1f0acee 100644
---- a/drivers/gpu/drm/panel/panel-innolux-p079zca.c
-+++ b/drivers/gpu/drm/panel/panel-innolux-p079zca.c
-@@ -3,7 +3,6 @@
-  * Copyright (c) 2017, Fuzhou Rockchip Electronics Co., Ltd
+diff --git a/drivers/gpu/drm/panel/panel-olimex-lcd-olinuxino.c b/drivers/gpu/drm/panel/panel-olimex-lcd-olinuxino.c
+index e553e584399b..09deb99981a4 100644
+--- a/drivers/gpu/drm/panel/panel-olimex-lcd-olinuxino.c
++++ b/drivers/gpu/drm/panel/panel-olimex-lcd-olinuxino.c
+@@ -6,7 +6,6 @@
+  *   Author: Stefan Mavrodiev <stefan@olimex.com>
   */
  
 -#include <linux/backlight.h>
- #include <linux/delay.h>
+ #include <linux/crc32.h>
  #include <linux/gpio/consumer.h>
- #include <linux/module.h>
-@@ -52,7 +51,6 @@ struct innolux_panel {
- 	struct mipi_dsi_device *link;
- 	const struct panel_desc *desc;
+ #include <linux/i2c.h>
+@@ -68,7 +67,6 @@ struct lcd_olinuxino {
+ 	bool prepared;
+ 	bool enabled;
  
 -	struct backlight_device *backlight;
- 	struct regulator_bulk_data *supplies;
+ 	struct regulator *supply;
  	struct gpio_desc *enable_gpio;
  
-@@ -72,8 +70,6 @@ static int innolux_panel_disable(struct drm_panel *panel)
- 	if (!innolux->enabled)
+@@ -87,8 +85,6 @@ static int lcd_olinuxino_disable(struct drm_panel *panel)
+ 	if (!lcd->enabled)
  		return 0;
  
--	backlight_disable(innolux->backlight);
+-	backlight_disable(lcd->backlight);
 -
- 	innolux->enabled = false;
+ 	lcd->enabled = false;
  
  	return 0;
-@@ -204,18 +200,10 @@ static int innolux_panel_prepare(struct drm_panel *panel)
- static int innolux_panel_enable(struct drm_panel *panel)
- {
- 	struct innolux_panel *innolux = to_innolux_panel(panel);
--	int ret;
- 
- 	if (innolux->enabled)
+@@ -134,8 +130,6 @@ static int lcd_olinuxino_enable(struct drm_panel *panel)
+ 	if (lcd->enabled)
  		return 0;
  
--	ret = backlight_enable(innolux->backlight);
--	if (ret) {
--		DRM_DEV_ERROR(panel->dev,
--			      "Failed to enable backlight %d\n", ret);
--		return ret;
--	}
+-	backlight_enable(lcd->backlight);
 -
- 	innolux->enabled = true;
+ 	lcd->enabled = true;
  
  	return 0;
-@@ -482,13 +470,13 @@ static int innolux_panel_add(struct mipi_dsi_device *dsi,
- 		innolux->enable_gpio = NULL;
- 	}
+@@ -283,13 +277,13 @@ static int lcd_olinuxino_probe(struct i2c_client *client,
+ 	if (IS_ERR(lcd->enable_gpio))
+ 		return PTR_ERR(lcd->enable_gpio);
  
--	innolux->backlight = devm_of_find_backlight(dev);
--	if (IS_ERR(innolux->backlight))
--		return PTR_ERR(innolux->backlight);
+-	lcd->backlight = devm_of_find_backlight(dev);
+-	if (IS_ERR(lcd->backlight))
+-		return PTR_ERR(lcd->backlight);
 -
- 	drm_panel_init(&innolux->base, dev, &innolux_panel_funcs,
- 		       DRM_MODE_CONNECTOR_DSI);
+ 	drm_panel_init(&lcd->panel, dev, &lcd_olinuxino_funcs,
+ 		       DRM_MODE_CONNECTOR_DPI);
  
-+	err = drm_panel_of_backlight(&innolux->base);
-+	if (err)
-+		return err;
++	ret = drm_panel_of_backlight(&lcd->panel);
++	if (ret)
++		return ret;
 +
- 	err = drm_panel_add(&innolux->base);
- 	if (err < 0)
- 		return err;
-@@ -526,12 +514,12 @@ static int innolux_panel_remove(struct mipi_dsi_device *dsi)
- 	struct innolux_panel *innolux = mipi_dsi_get_drvdata(dsi);
- 	int err;
- 
--	err = innolux_panel_unprepare(&innolux->base);
-+	err = drm_panel_unprepare(&innolux->base);
- 	if (err < 0)
- 		DRM_DEV_ERROR(&dsi->dev, "failed to unprepare panel: %d\n",
- 			      err);
- 
--	err = innolux_panel_disable(&innolux->base);
-+	err = drm_panel_disable(&innolux->base);
- 	if (err < 0)
- 		DRM_DEV_ERROR(&dsi->dev, "failed to disable panel: %d\n", err);
- 
-@@ -549,8 +537,8 @@ static void innolux_panel_shutdown(struct mipi_dsi_device *dsi)
- {
- 	struct innolux_panel *innolux = mipi_dsi_get_drvdata(dsi);
- 
--	innolux_panel_unprepare(&innolux->base);
--	innolux_panel_disable(&innolux->base);
-+	drm_panel_unprepare(&innolux->base);
-+	drm_panel_disable(&innolux->base);
+ 	return drm_panel_add(&lcd->panel);
  }
  
- static struct mipi_dsi_driver innolux_panel_driver = {
+@@ -299,8 +293,8 @@ static int lcd_olinuxino_remove(struct i2c_client *client)
+ 
+ 	drm_panel_remove(&panel->panel);
+ 
+-	lcd_olinuxino_disable(&panel->panel);
+-	lcd_olinuxino_unprepare(&panel->panel);
++	drm_panel_disable(&panel->panel);
++	drm_panel_unprepare(&panel->panel);
+ 
+ 	return 0;
+ }
 -- 
 2.20.1
 
