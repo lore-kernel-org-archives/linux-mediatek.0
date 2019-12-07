@@ -1,64 +1,79 @@
-Return-Path: <SRS0=uEYr=Z4=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=LwTv=Z5=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C7B5EC2BBE2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Dec 2019 15:36:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B0110C3F68F
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Dec 2019 06:39:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7FE862173E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Dec 2019 15:36:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 604F624682
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Dec 2019 06:39:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PuIMFG9I"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7FE862173E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bPtZ4mw9";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Ch2EJJRY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 604F624682
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZK+EmGAdyFgvc7tg3zuww1ZaHm9H3DgWdBKbFEGgdfk=; b=PuIMFG9IsBa0Sm
-	hUgj7E3hxYQqQpeMR4gLJv32s94SfdDxifFQiE9Jbzn2LBwieBFcBgzOBdkjNT9sxe0cnPp1p2Jno
-	ZzJ0uZGtnrJGufZNzwG3YUrC1FZiGEDpzSsD5bMiEF5sQaKg3W4PDrXHKUw62TYrLsMyFXz0g+5N9
-	D88T4p7mUdaJLs1XTM8zElAo2SdeEk8X7A15R5BZ6+50cYYEA37pypLPutN4bI/h3OzPyX0TlLMJJ
-	lMT8auaVo4zUDgFApBAA60AsCU5RAniRMvU80Qhzkw5JL0k2CMZ1yCgMkDlSrt9dawGCzt1e1kBKp
-	UniMv1w5bxEbupXF3V0Q==;
+	List-Owner; bh=fRQxhSDfgjPAAgpQUfxG0LIjJr6iPbpEToFIHeAztN0=; b=bPtZ4mw9tQkVMB
+	zdcH2JThjr9VbLEMA5Tl/d/66t3m7fTzpWpzS3X7+cMwxsP1eLFUkqC2UsfbFOq6ODhvFRM1BSkxh
+	HblYIK2InDsbYlMyCU/1VOfCFs3pAAMC5gWsT9iyobVyqSwpKWWdtIqpLB1o0c3BfBtsVXqS3znrY
+	CzznqOe5dQw1Bzfn15vX5s6Ej6uQ5+Lz2EZoduU86F5vQwFB2c1iObKb2W+XNYKv5Mx3c3HEGNKzD
+	D6BUAqN6UDh4TQ2otS4Zvr6w0vEzqDoWA4JtqQ1g3h5ZlPHULaIEMKfKt2+Ltqt8gQpkTwy7atSYB
+	M1dSguQ/DlaHtIOh7JgA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1idFez-0004GO-6a; Fri, 06 Dec 2019 15:36:49 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1idFet-0004Av-3Q; Fri, 06 Dec 2019 15:36:44 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id BB8D031B;
- Fri,  6 Dec 2019 07:36:41 -0800 (PST)
-Received: from e121166-lin.cambridge.arm.com (e121166-lin.cambridge.arm.com
- [10.1.196.255])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 25D843F718;
- Fri,  6 Dec 2019 07:36:38 -0800 (PST)
-Date: Fri, 6 Dec 2019 15:36:33 +0000
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-To: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 11/25] PCI: rockchip: Drop storing driver private
- outbound resource data
-Message-ID: <20191206153633.GA18142@e121166-lin.cambridge.arm.com>
-References: <20191028163256.8004-1-robh@kernel.org>
- <20191028163256.8004-12-robh@kernel.org>
+	id 1idTkS-0003ts-Ej; Sat, 07 Dec 2019 06:39:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1idTkP-0003tN-1X; Sat, 07 Dec 2019 06:39:22 +0000
+X-UUID: e05e125153d9401b898bf37850b2e51f-20191206
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=FsOPpGNcvyN3hqCpKWKad5Cxcn0GwUWSQI3FseIG2Rg=; 
+ b=Ch2EJJRY4iHukue/yzS8oQ9cnCLyxaAYDIp8wKWnk6b2vAHc5j440FyHfuc5usvXgozSluJe0PiAnf0NO/IOaFu68v3rDG8/39vFGnzV6jGZPPo/v+gUEuh2fKLUwUpiubf/r9KC6REHx8Q/NWhF6iF8b4IW2RFhgYTKgHFH2c0=;
+X-UUID: e05e125153d9401b898bf37850b2e51f-20191206
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 2086838484; Fri, 06 Dec 2019 22:39:13 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 6 Dec 2019 22:40:08 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sat, 7 Dec 2019 14:38:51 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Sat, 7 Dec 2019 14:38:44 +0800
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <alim.akhtar@samsung.com>,
+ <pedrom.sousa@synopsys.com>, <jejb@linux.ibm.com>, <matthias.bgg@gmail.com>
+Subject: [PATCH v1 2/2] scsi: ufs-mediatek: add device reset implementation
+Date: Sat, 7 Dec 2019 14:39:08 +0800
+Message-ID: <1575700748-28191-3-git-send-email-stanley.chu@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1575700748-28191-1-git-send-email-stanley.chu@mediatek.com>
+References: <1575700748-28191-1-git-send-email-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191028163256.8004-12-robh@kernel.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191206_073643_230050_72185049 
-X-CRM114-Status: GOOD (  20.52  )
+X-CRM114-CacheID: sfid-20191206_223921_096445_312114F7 
+X-CRM114-Status: UNSURE (   8.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,197 +85,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>,
- Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Michal Simek <michal.simek@xilinx.com>,
- Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org,
- bcm-kernel-feedback-list@broadcom.com, Shawn Lin <shawn.lin@rock-chips.com>,
- eballetbo@gmail.com, Ray Jui <rjui@broadcom.com>,
- Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Simon Horman <horms@verge.net.au>,
- linux-mediatek@lists.infradead.org, Andrew Murray <andrew.murray@arm.com>,
- Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org,
- Scott Branden <sbranden@broadcom.com>, Jingoo Han <jingoohan1@gmail.com>,
- rfi@lists.rocketboards.org, linux-renesas-soc@vger.kernel.org,
- Tom Joseph <tjoseph@cadence.com>, Srinath Mannam <srinath.mannam@broadcom.com>,
- Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
- Ley Foon Tan <lftan@altera.com>
+Cc: leon.chen@mediatek.com, andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org,
+ beanhuo@micron.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[+Eric]
+Add device reset vops implementation in MediaTek UFS driver.
 
-On Mon, Oct 28, 2019 at 11:32:42AM -0500, Rob Herring wrote:
-> The Rockchip host bridge driver doesn't need to store outboard resources
-> in its private struct as they are already stored in struct
-> pci_host_bridge.
-> 
-> Cc: Shawn Lin <shawn.lin@rock-chips.com>
-> Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-> Cc: Andrew Murray <andrew.murray@arm.com>
-> Cc: Bjorn Helgaas <bhelgaas@google.com>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: linux-rockchip@lists.infradead.org
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->  drivers/pci/controller/pcie-rockchip-host.c | 54 +++++++++------------
->  drivers/pci/controller/pcie-rockchip.h      |  5 --
->  2 files changed, 23 insertions(+), 36 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-> index 8d2e6f2e141e..f375e55ea02e 100644
-> --- a/drivers/pci/controller/pcie-rockchip-host.c
-> +++ b/drivers/pci/controller/pcie-rockchip-host.c
-> @@ -806,19 +806,28 @@ static int rockchip_pcie_prog_ib_atu(struct rockchip_pcie *rockchip,
->  static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
->  {
->  	struct device *dev = rockchip->dev;
-> +	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(rockchip);
-> +	struct resource_entry *entry;
-> +	u64 pci_addr, size;
->  	int offset;
->  	int err;
->  	int reg_no;
->  
->  	rockchip_pcie_cfg_configuration_accesses(rockchip,
->  						 AXI_WRAPPER_TYPE0_CFG);
-> +	entry = resource_list_first_type(&bridge->windows, IORESOURCE_MEM);
-> +	if (!entry)
-> +		return -ENODEV;
-> +
-> +	size = resource_size(entry->res);
-> +	pci_addr = entry->res->start - entry->offset;
-> +	rockchip->msg_bus_addr = pci_addr;
->  
-> -	for (reg_no = 0; reg_no < (rockchip->mem_size >> 20); reg_no++) {
-> +	for (reg_no = 0; reg_no < (size >> 20); reg_no++) {
->  		err = rockchip_pcie_prog_ob_atu(rockchip, reg_no + 1,
->  						AXI_WRAPPER_MEM_WRITE,
->  						20 - 1,
-> -						rockchip->mem_bus_addr +
-> -						(reg_no << 20),
-> +						pci_addr + (reg_no << 20),
->  						0);
->  		if (err) {
->  			dev_err(dev, "program RC mem outbound ATU failed\n");
-> @@ -832,14 +841,20 @@ static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
->  		return err;
->  	}
->  
-> -	offset = rockchip->mem_size >> 20;
-> -	for (reg_no = 0; reg_no < (rockchip->io_size >> 20); reg_no++) {
-> +	entry = resource_list_first_type(&bridge->windows, IORESOURCE_IO);
-> +	if (!entry)
-> +		return -ENODEV;
-> +
-> +	size = resource_size(entry->res);
-> +	pci_addr = entry->res->start - entry->offset;
-> +
-> +	offset = size >> 20;
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/scsi/ufs/ufs-mediatek.c | 27 +++++++++++++++++++++++++++
+ drivers/scsi/ufs/ufs-mediatek.h |  7 +++++++
+ 2 files changed, 34 insertions(+)
 
-Just trying to find what triggers:
-
-https://lore.kernel.org/linux-pci/CAFqH_52BiQJzNEzd_0pB3K+JmzVOVikYQo0xfiC0J-DwiXdtqw@mail.gmail.com/T/#u
-
-I think this offset calculation changed the behaviour:
-
-Before:
-
-> -	offset = rockchip->mem_size >> 20;
-
-Now:
-
-> +	offset = size >> 20;
-
-size must be the IORESOURCE_MEM resource size instead we are using the
-IORESOURCE_IO size so IIUC the ATU window setup may be compromised.
-
-Lorenzo
-
-> +	for (reg_no = 0; reg_no < (size >> 20); reg_no++) {
->  		err = rockchip_pcie_prog_ob_atu(rockchip,
->  						reg_no + 1 + offset,
->  						AXI_WRAPPER_IO_WRITE,
->  						20 - 1,
-> -						rockchip->io_bus_addr +
-> -						(reg_no << 20),
-> +						pci_addr + (reg_no << 20),
->  						0);
->  		if (err) {
->  			dev_err(dev, "program RC io outbound ATU failed\n");
-> @@ -852,8 +867,7 @@ static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
->  				  AXI_WRAPPER_NOR_MSG,
->  				  20 - 1, 0, 0);
->  
-> -	rockchip->msg_bus_addr = rockchip->mem_bus_addr +
-> -					((reg_no + offset) << 20);
-> +	rockchip->msg_bus_addr += ((reg_no + offset) << 20);
->  	return err;
->  }
->  
-> @@ -951,7 +965,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  	struct pci_bus *bus, *child;
->  	struct pci_host_bridge *bridge;
->  	struct resource *bus_res;
-> -	struct resource_entry *win;
->  	int err;
->  
->  	if (!dev->of_node)
-> @@ -997,27 +1010,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  
->  	rockchip->root_bus_nr = bus_res->start;
->  
-> -	/* Get the I/O and memory ranges from DT */
-> -	resource_list_for_each_entry(win, &bridge->windows) {
-> -		switch (resource_type(win->res)) {
-> -		case IORESOURCE_IO:
-> -			io = win->res;
-> -			io->name = "I/O";
-> -			rockchip->io_size = resource_size(io);
-> -			rockchip->io_bus_addr = io->start - win->offset;
-> -			rockchip->io = io;
-> -			break;
-> -		case IORESOURCE_MEM:
-> -			mem = win->res;
-> -			mem->name = "MEM";
-> -			rockchip->mem_size = resource_size(mem);
-> -			rockchip->mem_bus_addr = mem->start - win->offset;
-> -			break;
-> -		default:
-> -			continue;
-> -		}
-> -	}
-> -
->  	err = rockchip_pcie_cfg_atu(rockchip);
->  	if (err)
->  		goto err_remove_irq_domain;
-> diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-> index 8e87a059ce73..bef42a803b56 100644
-> --- a/drivers/pci/controller/pcie-rockchip.h
-> +++ b/drivers/pci/controller/pcie-rockchip.h
-> @@ -304,13 +304,8 @@ struct rockchip_pcie {
->  	struct	irq_domain *irq_domain;
->  	int     offset;
->  	struct pci_bus *root_bus;
-> -	struct resource *io;
-> -	phys_addr_t io_bus_addr;
-> -	u32     io_size;
->  	void    __iomem *msg_region;
-> -	u32     mem_size;
->  	phys_addr_t msg_bus_addr;
-> -	phys_addr_t mem_bus_addr;
->  	bool is_rc;
->  	struct resource *mem_res;
->  };
-> -- 
-> 2.20.1
-> 
-
+diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+index 83e28edc3ac5..6a3ec11b16db 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.c
++++ b/drivers/scsi/ufs/ufs-mediatek.c
+@@ -6,10 +6,12 @@
+  *	Peter Wang <peter.wang@mediatek.com>
+  */
+ 
++#include <linux/arm-smccc.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
++#include <linux/soc/mediatek/mtk_sip_svc.h>
+ 
+ #include "ufshcd.h"
+ #include "ufshcd-pltfrm.h"
+@@ -269,6 +271,30 @@ static int ufs_mtk_link_startup_notify(struct ufs_hba *hba,
+ 	return ret;
+ }
+ 
++static void ufs_mtk_device_reset(struct ufs_hba *hba)
++{
++	struct arm_smccc_res res;
++
++	arm_smccc_smc(MTK_SIP_UFS_CONTROL, UFS_MTK_SIP_DEVICE_RESET,
++		      0, 0, 0, 0, 0, 0, &res);
++	/*
++	 * The reset signal is active low. UFS devices shall detect
++	 * more than or equal to 1us of positive or negative RST_n
++	 * pulse width.
++	 *
++	 * To be on safe side, keep the reset low for at least 10us.
++	 */
++	usleep_range(10, 15);
++
++	arm_smccc_smc(MTK_SIP_UFS_CONTROL, UFS_MTK_SIP_DEVICE_RESET,
++		      1, 0, 0, 0, 0, 0, &res);
++
++	/* Some devices may need time to respond to rst_n */
++	usleep_range(10000, 15000);
++
++	dev_info(hba->dev, "device reset done\n");
++}
++
+ static int ufs_mtk_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ {
+ 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+@@ -303,6 +329,7 @@ static struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
+ 	.pwr_change_notify   = ufs_mtk_pwr_change_notify,
+ 	.suspend             = ufs_mtk_suspend,
+ 	.resume              = ufs_mtk_resume,
++	.device_reset        = ufs_mtk_device_reset,
+ };
+ 
+ /**
+diff --git a/drivers/scsi/ufs/ufs-mediatek.h b/drivers/scsi/ufs/ufs-mediatek.h
+index 19f8c42fe06f..b03f601d3a9e 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.h
++++ b/drivers/scsi/ufs/ufs-mediatek.h
+@@ -6,6 +6,8 @@
+ #ifndef _UFS_MEDIATEK_H
+ #define _UFS_MEDIATEK_H
+ 
++#include <linux/bitops.h>
++
+ /*
+  * Vendor specific pre-defined parameters
+  */
+@@ -29,6 +31,11 @@
+ #define VS_SAVEPOWERCONTROL         0xD0A6
+ #define VS_UNIPROPOWERDOWNCONTROL   0xD0A8
+ 
++/*
++ * SiP commands
++ */
++#define UFS_MTK_SIP_DEVICE_RESET    BIT(1)
++
+ /*
+  * VS_DEBUGCLOCKENABLE
+  */
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
