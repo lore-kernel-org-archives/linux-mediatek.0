@@ -2,21 +2,22 @@ Return-Path: <SRS0=LwTv=Z5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-7.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	SPF_PASS,UNWANTED_LANGUAGE_BODY,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 16EFEC43603
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Dec 2019 22:50:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6664FC43603
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Dec 2019 22:50:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B8E52206DF
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Dec 2019 22:50:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3698E24677
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Dec 2019 22:50:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QhXekIsa";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="CvYvGt3z"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B8E52206DF
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YBRIlTTJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="slqNGvYI"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3698E24677
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,47 +26,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jHq8nNbEK03MmO8V/ci8lEXVqn6tcQFrg0J8UPMSjWI=; b=QhXekIsa4lS+jV
-	gditNHoKQANEh7W3LXMXV9AcZAOllu7ZS22GP+yc0rbRO+IoBPIWmyMm2K4lUZ1ICDh8MNnYeeTWC
-	k6U59T8wJwgWl4bR4zLYj7ymg4Dr2fb3wKlx7ZAk4OuGQPv/ZsPvWHkiSn/WfX5PRm8/02J7DyBCW
-	uL9UHmbx6gtbNeirMQ+Ea8w5BQZjqlmUCkvqz1B4b598jVpCBuFXwLuryMV5qGlSs1M0vzexrSEpL
-	X9IwlB1DYuae8ZRYK48jQME8XFKgaKGCgDfAL6BZW3/mf0yaUmNQlM9Qp/B921cJoa7sUmGrOmko8
-	i9BJ8rxQheHkj2RdXSXQ==;
+	List-Owner; bh=dp2dqF2GQhmR8tmgazAIJkgpXdbkbSci9sZ5aBtTfI0=; b=YBRIlTTJ6kaqpv
+	iMg16qX1VH0NoE/FtiPcsHAjuJtVBYD0wAJ/Gr5GxOx6ZGBP/Cl3+BjdEOdgWQB38mrv8S21nx81m
+	4lpWxSSjOI8v8q7vIMNzLuYdu2ow47EvLYf/KtQ0LFf7fMBYYK5HMiwVXh48yp8MESeDfkk+y3eZ8
+	bByCXRH5eAJXb6tl+BGzMZld9e6kLvyTIXlCwi4J1+O+w7Gm0ZcFpRJ4WEqyut9q9aPfRKZNbipg0
+	FxdDm6BBBnavMe3MPYk9M0K7B7xFuW3vjCehfql3DR/PL4ffJBWTTl3+Trl23MYYnM/X5dqwyIrah
+	L6MV/As/nfLbj5qZqvaQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iditd-0004q4-UQ; Sat, 07 Dec 2019 22:49:53 +0000
+	id 1idiu0-00064M-Uh; Sat, 07 Dec 2019 22:50:16 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1idisH-0003OG-A1; Sat, 07 Dec 2019 22:48:32 +0000
+ id 1idisL-0003SH-VF; Sat, 07 Dec 2019 22:48:35 +0000
 Received: from ziggy.de (unknown [95.169.229.25])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5E2592467E;
- Sat,  7 Dec 2019 22:48:23 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 76E652467C;
+ Sat,  7 Dec 2019 22:48:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1575758908;
- bh=T3/4wZPL9p7tEA69OL6cyT7PPtrc6Pr84n3ts0k0Pfo=;
+ s=default; t=1575758913;
+ bh=FAUVKc3LCu1hHsC00k/MW/ZDjSgvalsHfSMYXaOWuAo=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=CvYvGt3z/Sy+gpaY9YyraZYD2q3rsfkCdtc4BVBxEbD6975AhN+QnXfUMQt0i+ojx
- 6S+x+4EoWlezGIT7geS9GrUahPX+e0uBpCR9m/QgZCWIXB3Vmkt62Qxx+uXBzb+e/8
- QBS35ZBCJ92daP1WH0ClM8d06l6/4I25cUotuXCE=
+ b=slqNGvYIkHPiWH0SVYrJieIrY/BdHrnDMEq2YBEeviwF+xRAQbnTcAfXtHU4ru5sY
+ tChI3Jge/v0ITEB5mFaMKO2KGp3RNxPTPYtCpFApaJTxA9/f95b0YEu4ij5bWWo7zL
+ TKYZiX9319uoU4c2WgM55GchJc4ee6IgFgxuOnEg=
 From: matthias.bgg@kernel.org
 To: robh+dt@kernel.org, mark.rutland@arm.com, ck.hu@mediatek.com,
  p.zabel@pengutronix.de, airlied@linux.ie, mturquette@baylibre.com,
  sboyd@kernel.org, ulrich.hecht+renesas@gmail.com,
  laurent.pinchart@ideasonboard.com, enric.balletbo@collabora.com
-Subject: [resend PATCH v6 05/12] media: mtk-mdp: Check return value of
- of_clk_get
-Date: Sat,  7 Dec 2019 23:47:33 +0100
-Message-Id: <20191207224740.24536-6-matthias.bgg@kernel.org>
+Subject: [resend PATCH v6 06/12] clk: mediatek: mt2701: switch mmsys to
+ platform device probing
+Date: Sat,  7 Dec 2019 23:47:34 +0100
+Message-Id: <20191207224740.24536-7-matthias.bgg@kernel.org>
 X-Mailer: git-send-email 2.24.0
 In-Reply-To: <20191207224740.24536-1-matthias.bgg@kernel.org>
 References: <20191207224740.24536-1-matthias.bgg@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191207_144829_459566_E5C60909 
-X-CRM114-Status: UNSURE (   9.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191207_144834_088141_4A0CE84E 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,31 +90,99 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Matthias Brugger <mbrugger@suse.com>
 
-Check the return value of of_clk_get and print an error
-message if not EPROBE_DEFER.
+Switch probing for the MMSYS to support invocation to a plain
+paltform device. The driver will be probed by the DRM subsystem.
 
 Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 ---
- drivers/media/platform/mtk-mdp/mtk_mdp_comp.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/clk/mediatek/clk-mt2701-mm.c | 41 ++++++++++++++++++++--------
+ 1 file changed, 29 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
-index 9afe8161a8c0..4e2fc1337b80 100644
---- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
-+++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
-@@ -110,6 +110,12 @@ int mtk_mdp_comp_init(struct device *dev, struct device_node *node,
+diff --git a/drivers/clk/mediatek/clk-mt2701-mm.c b/drivers/clk/mediatek/clk-mt2701-mm.c
+index 054b597d4a73..4a9433c2b2b8 100644
+--- a/drivers/clk/mediatek/clk-mt2701-mm.c
++++ b/drivers/clk/mediatek/clk-mt2701-mm.c
+@@ -4,14 +4,20 @@
+  * Author: Shunli Wang <shunli.wang@mediatek.com>
+  */
  
- 	for (i = 0; i < ARRAY_SIZE(comp->clk); i++) {
- 		comp->clk[i] = of_clk_get(node, i);
-+		if (IS_ERR(comp->clk[i])i) {
-+			if (PTR_ERR(comp->clk[i] != -EPROBE_DEFER)
-+					dev_err(dev, "Failed to get clock\n");
++#include <linux/module.h>
+ #include <linux/clk-provider.h>
+ #include <linux/platform_device.h>
++#include <linux/slab.h>
+ 
+ #include "clk-mtk.h"
+ #include "clk-gate.h"
+ 
+ #include <dt-bindings/clock/mt2701-clk.h>
+ 
++struct clk_mt2701_mm_priv {
++	struct clk_onecell_data *clk_data;
++};
 +
-+			return PTR_ERR(comp->clk[i]);
-+		}
+ static const struct mtk_gate_regs disp0_cg_regs = {
+ 	.set_ofs = 0x0104,
+ 	.clr_ofs = 0x0108,
+@@ -79,23 +85,25 @@ static const struct mtk_gate mm_clks[] = {
+ 	GATE_DISP1(CLK_MM_TVE_FMM, "mm_tve_fmm", "mm_sel", 14),
+ };
  
- 		/* Only RDMA needs two clocks */
- 		if (comp->type != MTK_MDP_RDMA)
+-static const struct of_device_id of_match_clk_mt2701_mm[] = {
+-	{ .compatible = "mediatek,mt2701-mmsys", },
+-	{}
+-};
+-
+ static int clk_mt2701_mm_probe(struct platform_device *pdev)
+ {
+-	struct clk_onecell_data *clk_data;
+ 	int r;
+-	struct device_node *node = pdev->dev.of_node;
++	struct device_node *node = pdev->dev.parent->of_node;
++	struct clk_mt2701_mm_priv *private;
++
++	private = devm_kzalloc(&pdev->dev, sizeof(*private), GFP_KERNEL);
++	if (!private)
++		return -ENOMEM;
+ 
+-	clk_data = mtk_alloc_clk_data(CLK_MM_NR);
++	private->clk_data = mtk_alloc_clk_data(CLK_MM_NR);
++
++	platform_set_drvdata(pdev, private);
+ 
+ 	mtk_clk_register_gates(node, mm_clks, ARRAY_SIZE(mm_clks),
+-						clk_data);
++					private->clk_data);
+ 
+-	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
++	r = of_clk_add_provider(node, of_clk_src_onecell_get,
++					private->clk_data);
+ 	if (r)
+ 		dev_err(&pdev->dev,
+ 			"could not register clock provider: %s: %d\n",
+@@ -104,12 +112,21 @@ static int clk_mt2701_mm_probe(struct platform_device *pdev)
+ 	return r;
+ }
+ 
++static int clk_mt2701_mm_remove(struct platform_device *pdev)
++{
++	struct clk_mt2701_mm_priv *private = platform_get_drvdata(pdev);
++
++	kfree(private->clk_data);
++
++	return 0;
++}
++
+ static struct platform_driver clk_mt2701_mm_drv = {
+ 	.probe = clk_mt2701_mm_probe,
++	.remove = clk_mt2701_mm_remove,
+ 	.driver = {
+ 		.name = "clk-mt2701-mm",
+-		.of_match_table = of_match_clk_mt2701_mm,
+ 	},
+ };
+ 
+-builtin_platform_driver(clk_mt2701_mm_drv);
++module_platform_driver(clk_mt2701_mm_drv);
 -- 
 2.24.0
 
