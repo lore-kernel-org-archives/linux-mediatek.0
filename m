@@ -2,68 +2,77 @@ Return-Path: <SRS0=SGDP=Z7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0A2D3C2D0BF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 00:56:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ED44FC43603
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 04:49:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D3A78206E0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 00:56:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BEE2720637
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 04:49:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mXZlRMDU";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.b="T5cbUBsZ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D3A78206E0
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cNljoXDq";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="glfGCYkY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BEE2720637
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9NzlUWsfSPuT2wXEEFU3xdEZWti+ZGiiepi5ziwhkTI=; b=mXZlRMDU89S25U
-	y36bmlh9CNKsx5qkYVcxrUuhE3OdWQbCFelOLLoWtlQl2HeR5CjFy8htNEzAaiOMGFyUoWXXkKihj
-	bGkA5ES29Xuvp12Ah8kekxiy3l28/xctIvTRh02hUkEtrI9LPrm/JLfcEq7OY7To7wITPC3HobMX0
-	fgMJ0Nw6todZvTrM7zjcbLfM9AxDz5dg/hh8GAJfVl7c9DNAOvCfysBG4XMbnJzJhN6Ll54m3xGh0
-	KYZ4sFVO/D+0GuTkhBBKlKZf6ZPxrQKZadLy6HYMz+DN7GvLiv6ubHzb2mGx2Q5hd4RCijW+3oC3H
-	nnAVP5RTpnhJrKLmxUZA==;
+	List-Owner; bh=sNQrW18saJKz1IOKeolfCCxhY1BKmtfkFvwl4xglh0g=; b=cNljoXDqNYJqfQ
+	4q7dCyFLjvaxojUd6Aj2czPBWwrXu9n5UK7CB0GV03pSfiSEOI/9ae58FejeuJWE7vfWalENHlrgh
+	xchaFUO+RE3C4knWhffzINteqjp+Zm9GmXYNQW0LK4onC1Hua1/Q7nQ9wG7+s2CRA3QkVP+gHafVb
+	7qnPXjvQecE0ZNOPzuVAyqqXVsQ5UNFpfVKB0qjjvS1OQulibJUthLJqMkuzvUtMA0/VqM0//D1Zm
+	SYO9U4b6r1xPZ+ouNJlOqIImrLsf54IaxNl2vV2z2pTcG6DmwdPT2KdXPlVOiyZUOChSpWg0Ba/H8
+	dBofCWS7K2RP/GQ05KvQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ie7Lk-0007bx-45; Mon, 09 Dec 2019 00:56:32 +0000
-Received: from perceval.ideasonboard.com
- ([2001:4b98:dc2:55:216:3eff:fef7:d647])
+	id 1ieAyo-0006vB-6C; Mon, 09 Dec 2019 04:49:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ie7LH-00077B-6j; Mon, 09 Dec 2019 00:56:05 +0000
-Received: from pendragon.ideasonboard.com (81-175-216-236.bb.dnainternet.fi
- [81.175.216.236])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id E011752B;
- Mon,  9 Dec 2019 01:56:00 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1575852961;
- bh=J6yIt17nBqwPKwVZXRtdxjHrhpUgI8Kou5WpdOIZ5YE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=T5cbUBsZJFEm8iBpxpsDzOaQbbEBdWh0bc55kfLncjhrFA90srpzIJTF5ep242mQO
- b5t70DxIKO2bWncxDKMv8rEKTqbMGB6Wc4rf0t1JrZ0hGjCETsQDuEAh6St3IsX09H
- Vk/pTQgLD1qS5KsBNhE3mVt1u8/X3js4Qn7p822U=
-Date: Mon, 9 Dec 2019 02:55:54 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [PATCH v2 02/25] drm/panel: add backlight support
-Message-ID: <20191209005554.GK14311@pendragon.ideasonboard.com>
-References: <20191207140353.23967-1-sam@ravnborg.org>
- <20191207140353.23967-3-sam@ravnborg.org>
+ id 1ieAye-0006oF-Ai; Mon, 09 Dec 2019 04:48:58 +0000
+X-UUID: 15b597eb00e84f3190ecaccb581992f0-20191208
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=YcgZtnqzg5VT3Hj1syPa/xCvJ6RF8xt8gpVFl7qpqMI=; 
+ b=glfGCYkYNOGN2BY8rePw6TlmD+rXhi9x84TLt5gd7g8twW+mDutlcXvD5XlXPH08bgfg2ODPnpB19AtwcksCXZVQF0cTPMErgDUM14//VvalbDh2WG+t+wLFqFUFXUNNSm3Gk09ffGTyGVRCt37DfFas2+16hPUfP3jR/iH8dVc=;
+X-UUID: 15b597eb00e84f3190ecaccb581992f0-20191208
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 803527195; Sun, 08 Dec 2019 20:48:50 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sun, 8 Dec 2019 20:49:03 -0800
+Received: from mtkcas09.mediatek.inc (172.21.101.178) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 9 Dec 2019 12:47:46 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Mon, 9 Dec 2019 12:48:31 +0800
+Message-ID: <1575866920.32541.4.camel@mtksdaap41>
+Subject: Re: [PATCH v4 0/7] drm/mediatek: fix cursor issue and apply CMDQ in
+ MTK DRM
+From: CK Hu <ck.hu@mediatek.com>
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Date: Mon, 9 Dec 2019 12:48:40 +0800
+In-Reply-To: <20191205092749.4021-1-bibby.hsieh@mediatek.com>
+References: <20191205092749.4021-1-bibby.hsieh@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191207140353.23967-3-sam@ravnborg.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-TM-SNTS-SMTP: 55801605C57CA610921F609EFECE446D43442399BAEEDB01006B5353DB3550B02000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191208_165603_554460_19BA7985 
-X-CRM114-Status: GOOD (  31.04  )
+X-CRM114-CacheID: sfid-20191208_204856_380027_A81BFEB4 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,261 +84,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
- Linus Walleij <linus.walleij@linaro.org>, dri-devel@lists.freedesktop.org,
- Andrzej Hajda <a.hajda@samsung.com>, Thierry Reding <thierry.reding@gmail.com>,
- Benjamin Gaignard <benjamin.gaignard@linaro.org>,
- Stefan Agner <stefan@agner.ch>, linux-samsung-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Tomi Valkeinen <tomi.valkeinen@ti.com>,
- NXP Linux Team <linux-imx@nxp.com>, Jagan Teki <jagan@amarulasolutions.com>,
- Jitao Shi <jitao.shi@mediatek.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, linux-mediatek@lists.infradead.org,
- Abhinav Kumar <abhinavk@codeaurora.org>, linux-tegra@vger.kernel.org,
- Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>,
- linux-arm-kernel@lists.infradead.org, Purism Kernel Team <kernel@puri.sm>,
- linux-renesas-soc@vger.kernel.org,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Daniel Vetter <daniel@ffwll.ch>
+Cc: drinkcat@chromium.org, srv_heupstream@mediatek.com,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel.vetter@ffwll.ch>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ tfiga@chromium.org, Thierry Reding <thierry.reding@gmail.com>,
+ linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sam,
+Hi, Bibby:
 
-Thank you for the patch.
+I've tried to apply this series to 5.5-rc1, but there are many
+conflicts. Please resend this series based on 5.5-rc1.
 
-On Sat, Dec 07, 2019 at 03:03:30PM +0100, Sam Ravnborg wrote:
-> Panels often supports backlight as specified in a device tree.
+And I've found that if I config CONFIG_MTK_CMDQ=m, the code inside
+'#ifdef CONFIG_MTK_CMDQ' would not be built. I think you should change
+this to '#if IS_ENABLED(CONFIG_MTK_CMDQ)'.
 
-s/supports/support/
-
-> Update the drm_panel infrastructure to support this to
-> simplify the drivers.
-> 
-> With this the panel driver just needs to add the following to the
-> probe() function:
-> 
->     err = drm_panel_of_backlight(panel);
->     if (err)
->             return err;
-> 
-> Then drm_panel will handle all the rest.
-> 
-> There is one caveat with the backlight support.
-> If drm_panel_(enable|disable) are called multiple times
-> in row then backlight_(enable|disable) will be called multiple times.
-
-s/in row/in a row/
-
-> The above will happen when a panel drivers unconditionally
-> calls drm_panel_disable() in their shutdown() function,
-> whan the panel is already disabled and then shutdown() is called.
-> 
-> Reading the backlight code it seems safe to call
-> the backlight_(enable|disable) several times.
-> 
-> v3:
-> - Improve comments, fix grammar (Laurent)
-> - Do not fail in drm_panel_of_backlight() if no DT support (Laurent)
-> - Log if backlight_(enable|disable) fails (Laurent)
-> - Improve drm_panel_of_backlight() docs
-> - Updated changelog with backlight analysis (triggered by Laurent)
-> 
-> v2:
-> - Drop test of CONFIG_DRM_PANEL in header-file (Laurent)
-> - do not enable backlight if ->enable() returns an error
-> 
-> Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
-> Cc: Thierry Reding <thierry.reding@gmail.com>
-> Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-> Cc: Maxime Ripard <maxime.ripard@bootlin.com>
-> Cc: Sean Paul <sean@poorly.run>
-> Cc: David Airlie <airlied@linux.ie>
-> Cc: Daniel Vetter <daniel@ffwll.ch>
-> ---
->  drivers/gpu/drm/drm_panel.c | 58 ++++++++++++++++++++++++++++++++++++-
->  include/drm/drm_panel.h     | 25 ++++++++++++++++
->  2 files changed, 82 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/drm_panel.c b/drivers/gpu/drm/drm_panel.c
-> index 4ab7229fb22b..c312d5eb214d 100644
-> --- a/drivers/gpu/drm/drm_panel.c
-> +++ b/drivers/gpu/drm/drm_panel.c
-> @@ -21,11 +21,13 @@
->   * DEALINGS IN THE SOFTWARE.
->   */
->  
-> +#include <linux/backlight.h>
->  #include <linux/err.h>
->  #include <linux/module.h>
->  
->  #include <drm/drm_crtc.h>
->  #include <drm/drm_panel.h>
-> +#include <drm/drm_print.h>
->  
->  static DEFINE_MUTEX(panel_lock);
->  static LIST_HEAD(panel_list);
-> @@ -196,11 +198,20 @@ EXPORT_SYMBOL(drm_panel_unprepare);
->   */
->  int drm_panel_enable(struct drm_panel *panel)
->  {
-> +	int ret = 0;
-> +
->  	if (!panel)
->  		return -EINVAL;
->  
->  	if (panel->funcs && panel->funcs->enable)
-> -		return panel->funcs->enable(panel);
-> +		ret = panel->funcs->enable(panel);
-> +
-> +	if (ret < 0)
-> +		return ret;
-
-You can move this within the above if () block and avoid initializing
-ret to 0:
-
-	if (panel->funcs && panel->funcs->enable) {
-		ret = panel->funcs->enable(panel);
-		if (ret < 0)
-			return ret;
-	}
-
-With these small issues addressed,
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-
-> +	ret = backlight_enable(panel->backlight);
-> +	if (ret < 0)
-> +		DRM_DEV_INFO(panel->dev, "failed to enable backlight: %d\n", ret);
->  
->  	return 0;
->  }
-> @@ -218,9 +229,15 @@ EXPORT_SYMBOL(drm_panel_enable);
->   */
->  int drm_panel_disable(struct drm_panel *panel)
->  {
-> +	int ret;
-> +
->  	if (!panel)
->  		return -EINVAL;
->  
-> +	ret = backlight_disable(panel->backlight);
-> +	if (ret < 0)
-> +		DRM_DEV_INFO(panel->dev, "failed to disable backlight: %d\n", ret);
-> +
->  	if (panel->funcs && panel->funcs->disable)
->  		return panel->funcs->disable(panel);
->  
-> @@ -289,6 +306,45 @@ struct drm_panel *of_drm_find_panel(const struct device_node *np)
->  EXPORT_SYMBOL(of_drm_find_panel);
->  #endif
->  
-> +#ifdef CONFIG_BACKLIGHT_CLASS_DEVICE
-> +/**
-> + * drm_panel_of_backlight - use backlight device node for backlight
-> + * @panel: DRM panel
-> + *
-> + * Use this function to enable backlight handling if your panel
-> + * uses device tree and has a backlight phandle.
-> + *
-> + * When the panel is enabled backlight will be enabled after a
-> + * successfull call to &drm_panel_funcs.enable()
-> + *
-> + * When the panel is disabled backlight will be disabled before the
-> + * call to &drm_panel_funcs.disable().
-> + *
-> + * A typical implementation for a panel driver supporting device tree
-> + * will call this function at probe time. Backlight will then be handled
-> + * transparently without requiring any intervention from the driver.
-> + * drm_panel_of_backlight() must be called after the call to drm_panel_init().
-> + *
-> + * Return: 0 on success or a negative error code on failure.
-> + */
-> +int drm_panel_of_backlight(struct drm_panel *panel)
-> +{
-> +	struct backlight_device *backlight;
-> +
-> +	if (!panel || !panel->dev)
-> +		return -EINVAL;
-> +
-> +	backlight = devm_of_find_backlight(panel->dev);
-> +
-> +	if (IS_ERR(backlight))
-> +                return PTR_ERR(backlight);
-> +
-> +	panel->backlight = backlight;
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL(drm_panel_of_backlight);
-> +#endif
-> +
->  MODULE_AUTHOR("Thierry Reding <treding@nvidia.com>");
->  MODULE_DESCRIPTION("DRM panel infrastructure");
->  MODULE_LICENSE("GPL and additional rights");
-> diff --git a/include/drm/drm_panel.h b/include/drm/drm_panel.h
-> index d71655b2634c..c751c9b17df0 100644
-> --- a/include/drm/drm_panel.h
-> +++ b/include/drm/drm_panel.h
-> @@ -28,6 +28,7 @@
->  #include <linux/errno.h>
->  #include <linux/list.h>
->  
-> +struct backlight_device;
->  struct device_node;
->  struct drm_connector;
->  struct drm_device;
-> @@ -59,6 +60,10 @@ struct display_timing;
->   *
->   * To save power when no video data is transmitted, a driver can power down
->   * the panel. This is the job of the .unprepare() function.
-> + *
-> + * Backlight can be handled automatically if configured using
-> + * drm_panel_of_backlight(). Then the driver does not need to implement the
-> + * functionality to enable/disable backlight.
->   */
->  struct drm_panel_funcs {
->  	/**
-> @@ -146,6 +151,17 @@ struct drm_panel {
->  	 */
->  	struct device *dev;
->  
-> +	/**
-> +	 * @backlight:
-> +	 *
-> +	 * Backlight device, used to turn on backlight after the call
-> +	 * to enable(), and to turn off backlight before the call to
-> +	 * disable().
-> +	 * backlight is set by drm_panel_of_backlight() and drivers
-> +	 * shall not assign it.
-> +	 */
-> +	struct backlight_device *backlight;
-> +
->  	/**
->  	 * @funcs:
->  	 *
-> @@ -197,4 +213,13 @@ static inline struct drm_panel *of_drm_find_panel(const struct device_node *np)
->  }
->  #endif
->  
-> +#if IS_ENABLED(CONFIG_BACKLIGHT_CLASS_DEVICE)
-> +int drm_panel_of_backlight(struct drm_panel *panel);
-> +#else
-> +static inline int drm_panel_of_backlight(struct drm_panel *panel)
-> +{
-> +	return 0;
-> +}
-> +#endif
-> +
->  #endif
-
--- 
 Regards,
+CK
 
-Laurent Pinchart
+On Thu, 2019-12-05 at 17:27 +0800, Bibby Hsieh wrote:
+> The CMDQ (Command Queue) in MT8183 is used to help update all
+> relevant display controller registers with critical time limation.
+> This patch add cmdq interface in ddp_comp interface, let all
+> ddp_comp interface can support cpu/cmdq function at the same time.
+> 
+> These patches also can fixup cursor moving is not smooth
+> when heavy load in webgl.
+> 
+> This patch depends on ptach:
+> add drm support for MT8183
+> (https://patchwork.kernel.org/cover/11121519/)
+> support gce on mt8183 platform
+> (https://patchwork.kernel.org/cover/11255147)
+> drm/mediatek: Refactor plane init/check and support rotation
+> (https://pw-emeril.freedesktop.org/series/69015/)
+> drm/mediatek: Check return value of mtk_drm_ddp_comp_for_plane
+> (https://lore.kernel.org/patchwork/patch/1154517/)
+> 
+> Changes since v3:
+>  - remove redundant code and variable
+> 
+> Changes since v2:
+>  - move some changes to another patch
+>  - disable layer in atomic_disable()
+> 
+> Changes since v1:
+>  - remove redundant code
+>  - merge the duplicate code
+>  - use async instead of cursor
+> 
+> Changes since v0:
+>  - remove redundant code
+>  - remove patch
+>    "drm/mediatek: fix atomic_state reference counting"
+>    After remove this patch, the issue we met before is gone.
+>    So I do not add any extra code to do something.
+> 
+> Bibby Hsieh (7):
+>   drm/mediatek: use DRM core's atomic commit helper
+>   drm/mediatek: handle events when enabling/disabling crtc
+>   drm/mediatek: update cursors by using async atomic update
+>   drm/mediatek: disable all the planes in atomic_disable
+>   drm/mediatek: remove unused external function
+>   drm/mediatek: support CMDQ interface in ddp component
+>   drm/mediatek: apply CMDQ control flow
+> 
+>  drivers/gpu/drm/mediatek/mtk_disp_color.c   |   7 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |  67 ++++----
+>  drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |  43 ++---
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 165 ++++++++++++++++----
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |   2 +
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 132 ++++++++++++----
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  47 +++---
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  86 +---------
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   7 -
+>  drivers/gpu/drm/mediatek/mtk_drm_plane.c    |  47 ++++++
+>  drivers/gpu/drm/mediatek/mtk_drm_plane.h    |   2 +
+>  11 files changed, 381 insertions(+), 224 deletions(-)
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
