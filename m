@@ -2,176 +2,60 @@ Return-Path: <SRS0=SGDP=Z7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8AD1CC43603
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 11:09:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6ACB2C43603
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 18:59:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4EFED207FD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 11:09:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3914A214AF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 18:59:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aCZpXe3d";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=armh.onmicrosoft.com header.i=@armh.onmicrosoft.com header.b="o0V5fQ8l";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=armh.onmicrosoft.com header.i=@armh.onmicrosoft.com header.b="o0V5fQ8l"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4EFED207FD
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jxOY6yku"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3914A214AF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bk9uY37BjyfAQMMuOC19U/DlD33bbtA7ltj+vTANcm4=; b=aCZpXe3dPkCJvL
-	WsRUpGLzGPLRlOVcByXGX52sZRbW2xySeqRa6lFf1yNFjepBaELbPdIJ/dNEBLEdIpxl2JH+qYrj1
-	CHU7NcelM1jamD8RKCKfkOYV96//9RvMyEzu9kR3xJRnwk6E5qKFrNCK6SRGyZvaglPGPHq9t67+2
-	+99bVWpxoelcN23rc49OpXWjhNRPbDb28CXQWmZKVgz/7JEb4ajYas1tnGg2mb524c5bM0PjsCcXC
-	Zts9+c15M+Ylm5Y6jhcpUbF+LfeX7mgX9bqJxfQ9OV/3EDTyR/uNdOe3wlO+V3fPSVUfxCU3oUvk7
-	FkiDyEhWz57Up4mwJKxw==;
+	References:List-Owner; bh=2J2XZMLHnlE0A+WPoUMx6DHQht8d7iqi8vjracXGt7A=; b=jxO
+	Y6ykubN3lbvkdKbaIWsKf7nz88FFnnU/zpA4d+kGA7POH1UE5SxFYIYbKuVpzk3zDyrqEUd3SGs1I
+	hxAB3IBbBRODc0lYLcrdFp38biOqZxR/qftttGN4j6IoA2qIz+4z13UdgXvb1G0QAcobXlhqP19az
+	J8dEXB2htrJLdEXlWnIzaghKejpTVT75G3rwHxFSYlRqyf43k0FJS7VfT63MtJe357luVWcx7lBBT
+	KMfO43oAzqU/eXUDOHKWz2YDHfRLGzc+EJVP4ybooXTsTKrIPe8D/Fu4HUC+U281/hdV0x8wPj2NG
+	siFNNb5b/rfb1cgSdYqYiw6r/wga03Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ieGuT-00020V-GG; Mon, 09 Dec 2019 11:09:01 +0000
-Received: from mail-eopbgr10059.outbound.protection.outlook.com ([40.107.1.59]
- helo=EUR02-HE1-obe.outbound.protection.outlook.com)
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieGuO-0001r6-OS; Mon, 09 Dec 2019 11:08:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=armh.onmicrosoft.com; 
- s=selector2-armh-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=KObIKmOul30/wdgaaLfLddlLWgevjRSvoR4urKSF5Oo=;
- b=o0V5fQ8lmIL/mzjEJUsMLuJjrhwzVtVo40UUC+jM7S7t99vndJV1lXkNuNrmc38+1kSHMfgCzc66BaddmROQHkt+m5L/TBRIcirndXg7FiQOllbuy5Q3N4KfjvIuMJwzbIQRkwvFrd2EPUYAD4ej8gm/mEQbND+YASdAxjKHfYQ=
-Received: from VI1PR08CA0096.eurprd08.prod.outlook.com (2603:10a6:800:d3::22)
- by DB7PR08MB3451.eurprd08.prod.outlook.com (2603:10a6:10:49::23) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2516.14; Mon, 9 Dec
- 2019 11:08:48 +0000
-Received: from DB5EUR03FT046.eop-EUR03.prod.protection.outlook.com
- (2a01:111:f400:7e0a::204) by VI1PR08CA0096.outlook.office365.com
- (2603:10a6:800:d3::22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2516.13 via Frontend
- Transport; Mon, 9 Dec 2019 11:08:48 +0000
-Authentication-Results: spf=pass (sender IP is 63.35.35.123)
- smtp.mailfrom=arm.com; lists.infradead.org; dkim=pass (signature was
- verified) header.d=armh.onmicrosoft.com;lists.infradead.org;
- dmarc=bestguesspass action=none header.from=arm.com;
-Received-SPF: Pass (protection.outlook.com: domain of arm.com designates
- 63.35.35.123 as permitted sender) receiver=protection.outlook.com;
- client-ip=63.35.35.123; helo=64aa7808-outbound-1.mta.getcheckrecipient.com;
-Received: from 64aa7808-outbound-1.mta.getcheckrecipient.com (63.35.35.123) by
- DB5EUR03FT046.mail.protection.outlook.com (10.152.21.230) with
- Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2495.18 via Frontend Transport; Mon, 9 Dec 2019 11:08:48 +0000
-Received: ("Tessian outbound 5574dd7ffaa4:v37");
- Mon, 09 Dec 2019 11:08:47 +0000
-X-CheckRecipientChecked: true
-X-CR-MTA-CID: ce6e759f3d951b5c
-X-CR-MTA-TID: 64aa7808
-Received: from 99659ef87d22.1
- by 64aa7808-outbound-1.mta.getcheckrecipient.com id
- 69F66424-0E93-4006-9F26-971950A802A7.1; 
- Mon, 09 Dec 2019 11:08:40 +0000
-Received: from EUR01-HE1-obe.outbound.protection.outlook.com
- by 64aa7808-outbound-1.mta.getcheckrecipient.com with ESMTPS id 99659ef87d22.1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384);
- Mon, 09 Dec 2019 11:08:40 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=BLU/lG0C4SveixcWptv+ykkBp2GEJiov9kF6HBmAdPVvGqRGdMZlfVuqDV8tkblwulrBcDfQl1cxTuZf3qfQClKodr3eFdomFtOJP1QHia7AeLV9XddLIEB2gVm55JGH/3fnqrHWy//GMGi6vNnFLyt6AeKcOqrqUhLB/u/cB+CUtcxgef/i78Dnf0Ney3d/9aqAnPEB6Cs0hSAU7HFYkyEOZQ0yGMBoS42fP1qkiaNw/tcAD/YY2IgobwxtyKLwAyr5bb451A1S/MZ4NSlBiZdx6w7WROWeCuWCgM6JACylgutVEBuEC5UIV4wDPRJUb+9WxVHdEH90/ATKguMMYg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=KObIKmOul30/wdgaaLfLddlLWgevjRSvoR4urKSF5Oo=;
- b=XCVmCakkxuXWD/2cWb2KCNDdwVvO2OySLKXui05uzSFL8DvYL5/RDUHoArxQh00I1UKQfjEG682dc+GfrVaIvtf44h5hlhTjinfOZH9FGB8Olwfo1g9J6J3k7Wsj1FjZ9I/UJxGUiYNSJaUyCc0fg/ndQVQMPmxqBW9j8dZjVz3QL0/5GgJlG7FPMGhpgdYY1xdTr8uF8PdcHt7cFxHJ85MY7CtGfx3OU4S4n5XqQDz87/Ej8/oJsLXLbxnGMKoonepUOTmhpOvBq7nE0Skc/NawjXCpeRkvIRKz9NpbvwbYeD7B3n3dm5FRFS3UMRPvD/1FNvQzCXkKeaC1k0ZnIg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=arm.com; dmarc=pass action=none header.from=arm.com; dkim=pass
- header.d=arm.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=armh.onmicrosoft.com; 
- s=selector2-armh-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=KObIKmOul30/wdgaaLfLddlLWgevjRSvoR4urKSF5Oo=;
- b=o0V5fQ8lmIL/mzjEJUsMLuJjrhwzVtVo40UUC+jM7S7t99vndJV1lXkNuNrmc38+1kSHMfgCzc66BaddmROQHkt+m5L/TBRIcirndXg7FiQOllbuy5Q3N4KfjvIuMJwzbIQRkwvFrd2EPUYAD4ej8gm/mEQbND+YASdAxjKHfYQ=
-Received: from VI1PR08MB4078.eurprd08.prod.outlook.com (20.178.127.92) by
- VI1PR08MB4206.eurprd08.prod.outlook.com (20.178.204.147) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2516.14; Mon, 9 Dec 2019 11:08:36 +0000
-Received: from VI1PR08MB4078.eurprd08.prod.outlook.com
- ([fe80::3d0a:7cde:7f1f:fe7c]) by VI1PR08MB4078.eurprd08.prod.outlook.com
- ([fe80::3d0a:7cde:7f1f:fe7c%7]) with mapi id 15.20.2516.018; Mon, 9 Dec 2019
- 11:08:35 +0000
-From: Mihail Atanassov <Mihail.Atanassov@arm.com>
-To: Neil Armstrong <narmstrong@baylibre.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>
-Subject: Re: [PATCH v2 00/28] drm/bridge: Consolidate initialization
-Thread-Topic: [PATCH v2 00/28] drm/bridge: Consolidate initialization
-Thread-Index: AQHVqpiuNcYsgGgOskGx3fwlqVtM9aexpJKAgAAIAIA=
-Date: Mon, 9 Dec 2019 11:08:35 +0000
-Message-ID: <2634531.l7d0rgvqDW@e123338-lin>
-References: <20191204114732.28514-1-mihail.atanassov@arm.com>
- <2989c044-8134-bb7c-a7e0-c518334bf4a6@baylibre.com>
-In-Reply-To: <2989c044-8134-bb7c-a7e0-c518334bf4a6@baylibre.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [217.140.106.54]
-x-clientproxiedby: LO2P123CA0044.GBRP123.PROD.OUTLOOK.COM (2603:10a6:600::32)
- To VI1PR08MB4078.eurprd08.prod.outlook.com
- (2603:10a6:803:e5::28)
-Authentication-Results-Original: spf=none (sender IP is )
- smtp.mailfrom=Mihail.Atanassov@arm.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-ms-publictraffictype: Email
-X-MS-Office365-Filtering-HT: Tenant
-X-MS-Office365-Filtering-Correlation-Id: c3e008a3-fa25-4812-a50b-08d77c982a68
-X-MS-TrafficTypeDiagnostic: VI1PR08MB4206:|DB7PR08MB3451:
-X-Microsoft-Antispam-PRVS: <DB7PR08MB34518E465B23E19EFCA4801D8F580@DB7PR08MB3451.eurprd08.prod.outlook.com>
-x-checkrecipientrouted: true
-x-ms-oob-tlc-oobclassifiers: OLM:298;OLM:298;
-x-forefront-prvs: 02462830BE
-X-Forefront-Antispam-Report-Untrusted: SFV:NSPM;
- SFS:(10009020)(7916004)(4636009)(396003)(136003)(376002)(366004)(346002)(39860400002)(51914003)(199004)(189003)(53754006)(7416002)(229853002)(6512007)(2906002)(186003)(5660300002)(7406005)(966005)(8936002)(71190400001)(52116002)(9686003)(8676002)(6486002)(66556008)(53546011)(316002)(305945005)(71200400001)(6506007)(33716001)(66476007)(81166006)(81156014)(54906003)(64756008)(4326008)(86362001)(110136005)(66946007)(478600001)(26005)(66446008)(39026012);
- DIR:OUT; SFP:1101; SCL:1; SRVR:VI1PR08MB4206;
- H:VI1PR08MB4078.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: arm.com does not designate
- permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam-Untrusted: BCL:0;
-X-Microsoft-Antispam-Message-Info-Original: 8z/I4+ZeXMvRgLBU8q8Do1Fop3db4YUeAUvfDy5fw+fv7moLU4/xWtv9ZHAFvBAIpMb/GNuQBBUtsXO6o4muxdwHtH/W7TvRVsmSgIOtTxndPkGc1awIe4I88H3qkEjM/CJgKNtDLzR8iQj6R4I+c5VHhIn/Z4GoPF3DmfR43CcQC5BmW1zW4cJSUJQNV7OedCmjfB2j6eHZNxluaYJY0vQuy2Wjvs3a8MyBIHBLvJjj8RM+naSwsIDSKsQ+CCOWHXJcOGk4heZmLbL95z/0URrdXoZ402QeXIdZCcmksocrOg3w9qKgFh35+GhKTLS1BFf2qQpn+S7BUJfHsYsNHZO1UKtd8dgT0xAc08gWeTlayKXmf/XkPQtRpVibWnx760BTdhe3L0XBlGIC/BHPC1M6zbkoI2xDYx1tUAJQPsURv7WiB/Ir9s3XmKIMjdL9N/1ExRC/7HtMo/CRp0UR85mb1OHSItjnmw3i5aGRU1gMpHOTy9xOevMp+9zw3HgrfdNheZIKNVctKkSgQ1uAwxtBIEmOpFhOxYSpkPGgCUuUaVF/jhWErL8x1UlFjLVjq9/Vys8/86s1zeVwAQBhvA==
-x-ms-exchange-transport-forked: True
-Content-ID: <6DE8CEF268029D48A1091A9874B0AA3F@eurprd08.prod.outlook.com>
-MIME-Version: 1.0
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR08MB4206
-Original-Authentication-Results: spf=none (sender IP is )
- smtp.mailfrom=Mihail.Atanassov@arm.com; 
-X-EOPAttributedMessage: 0
-X-MS-Exchange-Transport-CrossTenantHeadersStripped: DB5EUR03FT046.eop-EUR03.prod.protection.outlook.com
-X-Forefront-Antispam-Report: CIP:63.35.35.123; IPV:CAL; SCL:-1; CTRY:IE;
- EFV:NLI; SFV:NSPM;
- SFS:(10009020)(7916004)(4636009)(346002)(376002)(396003)(136003)(39860400002)(51914003)(53754006)(199004)(189003)(316002)(6486002)(53546011)(76130400001)(336012)(86362001)(478600001)(6506007)(6512007)(9686003)(450100002)(81166006)(5660300002)(8936002)(33716001)(81156014)(26005)(107886003)(54906003)(356004)(4326008)(186003)(70586007)(110136005)(229853002)(8676002)(70206006)(26826003)(2906002)(966005)(305945005)(39026012);
- DIR:OUT; SFP:1101; SCL:1; SRVR:DB7PR08MB3451;
- H:64aa7808-outbound-1.mta.getcheckrecipient.com; FPR:; SPF:Pass; LANG:en;
- PTR:ec2-63-35-35-123.eu-west-1.compute.amazonaws.com; A:1; MX:1; 
-X-MS-Office365-Filtering-Correlation-Id-Prvs: bb56fc6b-b4c8-4697-d8a5-08d77c9822af
-NoDisclaimer: True
-X-Forefront-PRVS: 02462830BE
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: JOgs6zhli568wHTwCq8U3OStMYcnYDuPOLrElygoJjQgWfhRtqYOfHbf6Wk70/DiLkMnCg+o909JUpS3I3UPaHQvu44mZW4OmQ/JFUoQLLOcO5BBWMM9+w0ukt9/rBHep3gclsId8ffUYp6jM3Y76SNuaFQYXk76t+gqPuKa6ruVzyM8RkXPLGgVwv14LZluXl4gZDvVY7sg+vbjVbAOf9C9GTTaPMsVAnWIieucq3tE33fLspY3TtWJrfqJ53tW/7lTwnGeYqc+T7mqiXulWcxVOl71XW1TXUAgPfsrUI5yCWNBoaiFqzwPCHvWX/AgfqT0umEOXMZ9NeKQkRk3tQjw4cbvUZpN0JUVPdfMJoKl/Bx/UpRnjg80kDeX5sYi8GZwul7sLnXZQ3TRBMv3qAQQKudXq2qRSZ0H4VkvhToDoKuwb0wy1i5Mrbk/LCNju0P7PxvMtLnYZjjTUPBgEN1FfGKIoR2RZ/U0Dqjw2qnUqNYTGWUxfXZwKOOZcN3UC5YNZ/kJJOTQVwE9puDhEdtJsz0Ul3scE+HFKT+XRHNwPignjhMd0IxAFeUP9hE4XqrsHSHFWNkygX2G0aqbDw==
-X-OriginatorOrg: arm.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Dec 2019 11:08:48.3898 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: c3e008a3-fa25-4812-a50b-08d77c982a68
-X-MS-Exchange-CrossTenant-Id: f34e5979-57d9-4aaa-ad4d-b122a662184d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=f34e5979-57d9-4aaa-ad4d-b122a662184d; Ip=[63.35.35.123];
- Helo=[64aa7808-outbound-1.mta.getcheckrecipient.com]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB7PR08MB3451
+	id 1ieOFu-0001rN-HB; Mon, 09 Dec 2019 18:59:38 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1ieOFq-0001q3-OO
+ for linux-mediatek@lists.infradead.org; Mon, 09 Dec 2019 18:59:37 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E75E313A1;
+ Mon,  9 Dec 2019 10:59:33 -0800 (PST)
+Received: from localhost (unknown [10.37.6.21])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 6489C3F6CF;
+ Mon,  9 Dec 2019 10:59:33 -0800 (PST)
+Date: Mon, 09 Dec 2019 18:59:31 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Eason Yen <eason.yen@mediatek.com>
+Subject: Applied "ASoC: mediatek: common: refine hw_params and hw_prepare" to
+ the asoc tree
+In-Reply-To: <1573814926-15805-3-git-send-email-eason.yen@mediatek.com>
+Message-Id: <applied-1573814926-15805-3-git-send-email-eason.yen@mediatek.com>
+X-Patchwork-Hint: ignore
+X-Bad-Reply: In-Reply-To but no 'Re:' in Subject.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191209_030857_080859_60F87855 
-X-CRM114-Status: GOOD (  19.43  )
+X-CRM114-CacheID: sfid-20191209_105934_885972_DD788AE1 
+X-CRM114-Status: GOOD (  15.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -183,172 +67,291 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Martyn Welch <martyn.welch@collabora.co.uk>,
- David Airlie <airlied@linux.ie>, Peter Senna Tschudin <peter.senna@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Sam Ravnborg <sam@ravnborg.org>, Jerome Brunet <jbrunet@baylibre.com>,
- =?iso-8859-1?Q?Yannick_Fertr=E9?= <yannick.fertre@st.com>,
- "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
- Sean Paul <sean@poorly.run>, Russell King <linux@armlinux.org.uk>,
- Krzysztof Kozlowski <krzk@kernel.org>, Vasily Khoruzhick <anarsoul@gmail.com>,
- Kukjin Kim <kgene@kernel.org>, Icenowy Zheng <icenowy@aosc.io>,
- Jonas Karlman <jonas@kwiboo.se>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, nd <nd@arm.com>,
- Vincent Abriou <vincent.abriou@st.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Dariusz Marcinkiewicz <darekm@google.com>,
- Martin Donnelly <martin.donnelly@ge.com>,
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
- Seung-Woo Kim <sw0312.kim@samsung.com>,
- Douglas Anderson <dianders@chromium.org>,
- "linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Boris Brezillon <boris.brezillon@collabora.com>, Torsten Duwe <duwe@lst.de>,
- Brian Masney <masneyb@onstation.org>,
- "freedreno@lists.freedesktop.org" <freedreno@lists.freedesktop.org>
+Cc: alsa-devel@alsa-project.org, chipeng.chang@mediatek.com,
+ jiaxin.yu@mediatek.com, Mark Brown <broonie@kernel.org>,
+ linux-mediatek@lists.infradead.org, eason.yen@mediatek.com,
+ matthias.bgg@gmail.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Monday, 9 December 2019 10:39:07 GMT Neil Armstrong wrote:
-> Hi Mihail,
+The patch
 
-Hi Neil,
+   ASoC: mediatek: common: refine hw_params and hw_prepare
 
-> 
-> On 04/12/2019 12:48, Mihail Atanassov wrote:
-> > Hi all,
-> > 
-> > I've dropped the fun parts of this series since they need more work, but
-> > figured drm_bridge_init() as a concept is still valuable on its own (and
-> > I think I'll need it to roll out device links for registered bridges),
-> > so here goes.
-> > 
-> > v2:
-> >  - expanded commit messages and added some extra bridge-related
-> >    documentation (Daniel)
-> >  - dropped v1 patches 29 and 30: 29 needs more work, and 30 depends on
-> >    it
-> >  - added all remaining drm_bridge implementers, found by searching for
-> >    drm_bridge_funcs which is mandatory for any bridge; new uses in
-> >    patches 3, 27, and 28 (Sam)
-> >  - due to the above, I've decided to squash all analogix changes into
-> >    one patch
-> > 
-> > ---
-> > v1 [https://patchwork.freedesktop.org/series/70039/] cover text below:
-> > 
-> > This series adds device links support to drm_bridge. The motivation
-> > behind it is that a drm_bridge in a module could get removed under the
-> > feet of the bridge user without warning, so we need a way to remove and
-> > reprobe the client as needed to avoid peering into the void.
-> > 
-> > 1: Add a drm_bridge_init() function which wraps all initialisation of
-> > the structure prior to calling drm_bridge_add().
-> > 
-> > 2-26,28: Apply the drm_bridge_init() refactor to every bridge that uses
-> > drm_bridge_add().
-> > 
-> > 27: Minor cleanup in rcar-du.
-> > 
-> > 29: Add of_drm_find_bridge_devlink() which functions the same as
-> > of_drm_find_bridge() plus adds a device device link from the owning
-> > drm_device to the bridge device.
-> > 
-> > 30: As a motivating example, convert komeda to exclusively use
-> > drm_bridge for its pipe outputs; this isn't a regression in usability
-> > any more since device links bring the same automatic remove/reprobe
-> > feature as components.
-> > 
-> > Mihail Atanassov (28):
-> >   drm: Introduce drm_bridge_init()
-> >   drm/bridge: adv7511: Use drm_bridge_init()
-> >   drm/bridge/analogix: Use drm_bridge_init()
-> >   drm/bridge: cdns: Use drm_bridge_init()
-> >   drm/bridge: dumb-vga-dac: Use drm_bridge_init()
-> >   drm/bridge: lvds-encoder: Use drm_bridge_init()
-> >   drm/bridge: megachips-stdpxxxx-ge-b850v3-fw: Use drm_bridge_init()
-> >   drm/bridge: nxp-ptn3460: Use drm_bridge_init()
-> >   drm/bridge: panel: Use drm_bridge_init()
-> >   drm/bridge: ps8622: Use drm_bridge_init()
-> >   drm/bridge: sii902x: Use drm_bridge_init()
-> >   gpu: drm: bridge: sii9234: Use drm_bridge_init()
-> >   drm/bridge: sil_sii8620: Use drm_bridge_init()
-> >   drm/bridge: dw-hdmi: Use drm_bridge_init()
-> >   drm/bridge/synopsys: dsi: Use drm_bridge_init()
-> >   drm/bridge: tc358764: Use drm_bridge_init()
-> >   drm/bridge: tc358767: Use drm_bridge_init()
-> >   drm/bridge: thc63: Use drm_bridge_init()
-> >   drm/bridge: ti-sn65dsi86: Use drm_bridge_init()
-> >   drm/bridge: ti-tfp410: Use drm_bridge_init()
-> >   drm/exynos: mic: Use drm_bridge_init()
-> >   drm/i2c: tda998x: Use drm_bridge_init()
-> >   drm/mcde: dsi: Use drm_bridge_init()
-> >   drm/mediatek: hdmi: Use drm_bridge_init()
-> >   drm: rcar-du: lvds: Use drm_bridge_init()
-> >   drm: rcar-du: lvds: Don't set drm_bridge private pointer
-> >   drm/sti: Use drm_bridge_init()
-> >   drm/msm: Use drm_bridge_init()
-> > 
-> >  drivers/gpu/drm/bridge/adv7511/adv7511_drv.c  |  5 ++-
-> >  .../drm/bridge/analogix/analogix-anx6345.c    |  5 ++-
-> >  .../drm/bridge/analogix/analogix-anx78xx.c    |  8 ++---
-> >  .../drm/bridge/analogix/analogix_dp_core.c    |  5 ++-
-> >  drivers/gpu/drm/bridge/cdns-dsi.c             |  4 +--
-> >  drivers/gpu/drm/bridge/dumb-vga-dac.c         |  6 ++--
-> >  drivers/gpu/drm/bridge/lvds-encoder.c         |  7 ++--
-> >  .../bridge/megachips-stdpxxxx-ge-b850v3-fw.c  |  4 +--
-> >  drivers/gpu/drm/bridge/nxp-ptn3460.c          |  4 +--
-> >  drivers/gpu/drm/bridge/panel.c                |  7 ++--
-> >  drivers/gpu/drm/bridge/parade-ps8622.c        |  3 +-
-> >  drivers/gpu/drm/bridge/sii902x.c              |  5 ++-
-> >  drivers/gpu/drm/bridge/sii9234.c              |  3 +-
-> >  drivers/gpu/drm/bridge/sil-sii8620.c          |  3 +-
-> >  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c     |  7 ++--
-> >  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c |  7 ++--
-> >  drivers/gpu/drm/bridge/tc358764.c             |  4 +--
-> >  drivers/gpu/drm/bridge/tc358767.c             |  3 +-
-> >  drivers/gpu/drm/bridge/thc63lvd1024.c         |  7 ++--
-> >  drivers/gpu/drm/bridge/ti-sn65dsi86.c         |  5 ++-
-> >  drivers/gpu/drm/bridge/ti-tfp410.c            |  5 ++-
-> >  drivers/gpu/drm/drm_bridge.c                  | 34 ++++++++++++++++++-
-> >  drivers/gpu/drm/exynos/exynos_drm_mic.c       |  8 +----
-> >  drivers/gpu/drm/i2c/tda998x_drv.c             |  6 +---
-> >  drivers/gpu/drm/mcde/mcde_dsi.c               |  3 +-
-> >  drivers/gpu/drm/mediatek/mtk_hdmi.c           |  4 +--
-> >  drivers/gpu/drm/msm/dsi/dsi_manager.c         |  4 +--
-> >  drivers/gpu/drm/msm/edp/edp_bridge.c          |  3 +-
-> >  drivers/gpu/drm/msm/hdmi/hdmi_bridge.c        |  4 +--
-> >  drivers/gpu/drm/rcar-du/rcar_lvds.c           |  5 ++-
-> >  drivers/gpu/drm/sti/sti_dvo.c                 |  4 +--
-> >  drivers/gpu/drm/sti/sti_hda.c                 |  3 +-
-> >  drivers/gpu/drm/sti/sti_hdmi.c                |  3 +-
-> >  include/drm/drm_bridge.h                      | 15 +++++++-
-> >  34 files changed, 100 insertions(+), 103 deletions(-)
-> > 
-> 
-> Can you check it doesn't collides with Boris 1-7 of "drm: Add support for bus-format negotiation" patches he just pushed on drm-misc-next ?
+has been applied to the asoc tree at
 
-Thanks for the heads-up. There's no technical conflict but the build fails.
-I'll fix it for v3 after I get the de-midlayering of drm_bridge done
-(see https://patchwork.freedesktop.org/patch/343643/?series=70432&rev=1 for
-context) and the s/bridge->dev/bridge->drm/ patch merged
-(https://patchwork.freedesktop.org/patch/343824/).
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-5.6
 
-> 
-> Neil
-> 
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
 
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+From df799b9502edf84a6f5bf2476917ce1ebdead4a2 Mon Sep 17 00:00:00 2001
+From: Eason Yen <eason.yen@mediatek.com>
+Date: Fri, 15 Nov 2019 18:48:46 +0800
+Subject: [PATCH] ASoC: mediatek: common: refine hw_params and hw_prepare
+
+Refine mtk_afe_fe_hw_params and mtk_afe_fe_prepare by
+these helpers.
+- mtk_memif_set_enable
+- mtk_memif_set_disable
+- mtk_memif_set_addr
+- mtk_memif_set_channel
+- mtk_memif_set_rate
+- mtk_memif_set_rate_substream
+- mtk_memif_set_format
+- mtk_memif_set_pbuf_size
+
+Signed-off-by: Eason Yen <eason.yen@mediatek.com>
+Link: https://lore.kernel.org/r/1573814926-15805-3-git-send-email-eason.yen@mediatek.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ sound/soc/mediatek/common/mtk-afe-fe-dai.c | 143 +++++++++++----------
+ 1 file changed, 77 insertions(+), 66 deletions(-)
+
+diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.c b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
+index 309dc1ef6841..e761cb66be5d 100644
+--- a/sound/soc/mediatek/common/mtk-afe-fe-dai.c
++++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
+@@ -6,11 +6,13 @@
+  * Author: Garlic Tseng <garlic.tseng@mediatek.com>
+  */
+ 
++#include <linux/io.h>
+ #include <linux/module.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/regmap.h>
+ #include <sound/soc.h>
+ #include "mtk-afe-platform-driver.h"
++#include <sound/pcm_params.h>
+ #include "mtk-afe-fe-dai.h"
+ #include "mtk-base-afe.h"
+ 
+@@ -120,50 +122,64 @@ int mtk_afe_fe_hw_params(struct snd_pcm_substream *substream,
+ {
+ 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+ 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+-	struct mtk_base_afe_memif *memif = &afe->memif[rtd->cpu_dai->id];
+-	int msb_at_bit33 = 0;
+-	int ret, fs = 0;
++	int id = rtd->cpu_dai->id;
++	struct mtk_base_afe_memif *memif = &afe->memif[id];
++	int ret;
++	unsigned int channels = params_channels(params);
++	unsigned int rate = params_rate(params);
++	snd_pcm_format_t format = params_format(params);
+ 
+ 	ret = snd_pcm_lib_malloc_pages(substream, params_buffer_bytes(params));
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	msb_at_bit33 = upper_32_bits(substream->runtime->dma_addr) ? 1 : 0;
+-	memif->phys_buf_addr = lower_32_bits(substream->runtime->dma_addr);
+-	memif->buffer_size = substream->runtime->dma_bytes;
+-
+-	/* start */
+-	mtk_regmap_write(afe->regmap, memif->data->reg_ofs_base,
+-			 memif->phys_buf_addr);
+-	/* end */
+-	mtk_regmap_write(afe->regmap,
+-			 memif->data->reg_ofs_base + AFE_BASE_END_OFFSET,
+-			 memif->phys_buf_addr + memif->buffer_size - 1);
+-
+-	/* set MSB to 33-bit */
+-	mtk_regmap_update_bits(afe->regmap, memif->data->msb_reg,
+-			       1, msb_at_bit33, memif->data->msb_shift);
++	if (afe->request_dram_resource)
++		afe->request_dram_resource(afe->dev);
++
++	dev_dbg(afe->dev, "%s(), %s, ch %d, rate %d, fmt %d, dma_addr %pad, dma_area %p, dma_bytes 0x%zx\n",
++		__func__, memif->data->name,
++		channels, rate, format,
++		&substream->runtime->dma_addr,
++		substream->runtime->dma_area,
++		substream->runtime->dma_bytes);
++
++	memset_io(substream->runtime->dma_area, 0,
++		  substream->runtime->dma_bytes);
++
++	/* set addr */
++	ret = mtk_memif_set_addr(afe, id,
++				 substream->runtime->dma_area,
++				 substream->runtime->dma_addr,
++				 substream->runtime->dma_bytes);
++	if (ret) {
++		dev_err(afe->dev, "%s(), error, id %d, set addr, ret %d\n",
++			__func__, id, ret);
++		return ret;
++	}
+ 
+ 	/* set channel */
+-	if (memif->data->mono_shift >= 0) {
+-		unsigned int mono = (params_channels(params) == 1) ? 1 : 0;
+-
+-		mtk_regmap_update_bits(afe->regmap, memif->data->mono_reg,
+-				       1, mono, memif->data->mono_shift);
++	ret = mtk_memif_set_channel(afe, id, channels);
++	if (ret) {
++		dev_err(afe->dev, "%s(), error, id %d, set channel %d, ret %d\n",
++			__func__, id, channels, ret);
++		return ret;
+ 	}
+ 
+ 	/* set rate */
+-	if (memif->data->fs_shift < 0)
+-		return 0;
+-
+-	fs = afe->memif_fs(substream, params_rate(params));
+-
+-	if (fs < 0)
+-		return -EINVAL;
++	ret = mtk_memif_set_rate_substream(substream, id, rate);
++	if (ret) {
++		dev_err(afe->dev, "%s(), error, id %d, set rate %d, ret %d\n",
++			__func__, id, rate, ret);
++		return ret;
++	}
+ 
+-	mtk_regmap_update_bits(afe->regmap, memif->data->fs_reg,
+-			       memif->data->fs_maskbit, fs,
+-			       memif->data->fs_shift);
++	/* set format */
++	ret = mtk_memif_set_format(afe, id, format);
++	if (ret) {
++		dev_err(afe->dev, "%s(), error, id %d, set format %d, ret %d\n",
++			__func__, id, format, ret);
++		return ret;
++	}
+ 
+ 	return 0;
+ }
+@@ -172,6 +188,11 @@ EXPORT_SYMBOL_GPL(mtk_afe_fe_hw_params);
+ int mtk_afe_fe_hw_free(struct snd_pcm_substream *substream,
+ 		       struct snd_soc_dai *dai)
+ {
++	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
++
++	if (afe->release_dram_resource)
++		afe->release_dram_resource(afe->dev);
++
+ 	return snd_pcm_lib_free_pages(substream);
+ }
+ EXPORT_SYMBOL_GPL(mtk_afe_fe_hw_free);
+@@ -182,20 +203,25 @@ int mtk_afe_fe_trigger(struct snd_pcm_substream *substream, int cmd,
+ 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+ 	struct snd_pcm_runtime * const runtime = substream->runtime;
+ 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+-	struct mtk_base_afe_memif *memif = &afe->memif[rtd->cpu_dai->id];
++	int id = rtd->cpu_dai->id;
++	struct mtk_base_afe_memif *memif = &afe->memif[id];
+ 	struct mtk_base_afe_irq *irqs = &afe->irqs[memif->irq_usage];
+ 	const struct mtk_base_irq_data *irq_data = irqs->irq_data;
+ 	unsigned int counter = runtime->period_size;
+ 	int fs;
++	int ret;
+ 
+ 	dev_dbg(afe->dev, "%s %s cmd=%d\n", __func__, memif->data->name, cmd);
+ 
+ 	switch (cmd) {
+ 	case SNDRV_PCM_TRIGGER_START:
+ 	case SNDRV_PCM_TRIGGER_RESUME:
+-		mtk_regmap_update_bits(afe->regmap,
+-				       memif->data->enable_reg,
+-				       1, 1, memif->data->enable_shift);
++		ret = mtk_memif_set_enable(afe, id);
++		if (ret) {
++			dev_err(afe->dev, "%s(), error, id %d, memif enable, ret %d\n",
++				__func__, id, ret);
++			return ret;
++		}
+ 
+ 		/* set irq counter */
+ 		mtk_regmap_update_bits(afe->regmap, irq_data->irq_cnt_reg,
+@@ -219,15 +245,19 @@ int mtk_afe_fe_trigger(struct snd_pcm_substream *substream, int cmd,
+ 		return 0;
+ 	case SNDRV_PCM_TRIGGER_STOP:
+ 	case SNDRV_PCM_TRIGGER_SUSPEND:
+-		mtk_regmap_update_bits(afe->regmap, memif->data->enable_reg,
+-				       1, 0, memif->data->enable_shift);
++		ret = mtk_memif_set_disable(afe, id);
++		if (ret) {
++			dev_err(afe->dev, "%s(), error, id %d, memif enable, ret %d\n",
++				__func__, id, ret);
++		}
++
+ 		/* disable interrupt */
+ 		mtk_regmap_update_bits(afe->regmap, irq_data->irq_en_reg,
+ 				       1, 0, irq_data->irq_en_shift);
+ 		/* and clear pending IRQ */
+ 		mtk_regmap_write(afe->regmap, irq_data->irq_clr_reg,
+ 				 1 << irq_data->irq_clr_shift);
+-		return 0;
++		return ret;
+ 	default:
+ 		return -EINVAL;
+ 	}
+@@ -239,34 +269,15 @@ int mtk_afe_fe_prepare(struct snd_pcm_substream *substream,
+ {
+ 	struct snd_soc_pcm_runtime *rtd  = substream->private_data;
+ 	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+-	struct mtk_base_afe_memif *memif = &afe->memif[rtd->cpu_dai->id];
+-	int hd_audio = 0;
+-	int hd_align = 0;
++	int id = rtd->cpu_dai->id;
++	int pbuf_size;
+ 
+-	/* set hd mode */
+-	switch (substream->runtime->format) {
+-	case SNDRV_PCM_FORMAT_S16_LE:
+-		hd_audio = 0;
+-		break;
+-	case SNDRV_PCM_FORMAT_S32_LE:
+-		hd_audio = 1;
+-		hd_align = 1;
+-		break;
+-	case SNDRV_PCM_FORMAT_S24_LE:
+-		hd_audio = 1;
+-		break;
+-	default:
+-		dev_err(afe->dev, "%s() error: unsupported format %d\n",
+-			__func__, substream->runtime->format);
+-		break;
++	if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
++		if (afe->get_memif_pbuf_size) {
++			pbuf_size = afe->get_memif_pbuf_size(substream);
++			mtk_memif_set_pbuf_size(afe, id, pbuf_size);
++		}
+ 	}
+-
+-	mtk_regmap_update_bits(afe->regmap, memif->data->hd_reg,
+-			       1, hd_audio, memif->data->hd_shift);
+-
+-	mtk_regmap_update_bits(afe->regmap, memif->data->hd_align_reg,
+-			       1, hd_align, memif->data->hd_align_mshift);
+-
+ 	return 0;
+ }
+ EXPORT_SYMBOL_GPL(mtk_afe_fe_prepare);
 -- 
-Mihail
-
-
+2.20.1
 
 
 _______________________________________________
