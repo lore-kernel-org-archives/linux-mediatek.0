@@ -2,74 +2,76 @@ Return-Path: <SRS0=SGDP=Z7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EB757C43603
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 05:35:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CE7DDC43603
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 05:49:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6F96F20663
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 05:35:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9E50C206D3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 05:49:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cKgRdYdM";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="boUCfZId"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6F96F20663
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oRE3x7Rt";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="T0rnmY1g"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9E50C206D3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pekUCkk2FoowjTF73i59hSRkKXQr+mJgT6qA+qe2Cgc=; b=cKgRdYdMfGqAzf
-	rgLt+N9dHuBz+xkMIW0cW2oh0JlYPTUukc8mqIz7+t7R8y5MBmapz3+bZaFMa1fqYgOH8cmh4J7n8
-	CZel154lkjMZNQnWQ3HNQTbPbGhifcQ3py+y83v5QTYw1fx4+UDHc4weGePTJH/KqLLCAzM15g21l
-	mtIvEmxLiMRH++a+v+RHX/zCxJs8ELg4xKAbhOtL7kXtX4MkvGsEXUHYFIbbmgZgYCII1yOlMm9C3
-	+9B3ELM1VCWmU5ZfNMzWJ4pHkObQyokn318pYtioZGdUP8XRWPozrOavKxnEzJT8dH98LEU5L14yS
-	LnHRRwA8x82hw+GBVXCA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JksgdXUadqGgwxiJcrLL52jo4NTzud+BADlB18MPQ5g=; b=oRE3x7RtphoCDT
+	QHMcsG6jSczj1/ruu7LQG5wvrnJZRZLz3bKt+UHGqg91mLCPQ0Mri92dG467zPuVYXH/77A02lBQl
+	pfoW7m2D539HKzejGOOY+pda8IOFpasCM2OyOeAuTr6AxBRPmPSroeS4t7aTVBI0JlwCwsjGh5ih6
+	t0+xfesBE6mDV4OoXA1p+Nw8RH8ifIh2a5CVX/uUVz1XwgU+y6Kc1wmbHlE6pT/yvxrOtn/aiU47E
+	L0dvSZEjeqsm6nM6X1Ver9Hodq6cyyn2RUZw5Y+TOzLu9OmO8gqlexQPUoQubV6WOtd6EBXHFBBzy
+	i+xN5yvlZeWaqQg09lgg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ieBh4-0005h3-DJ; Mon, 09 Dec 2019 05:34:50 +0000
+	id 1ieBv5-00035M-A4; Mon, 09 Dec 2019 05:49:19 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieBh1-0005gZ-FJ; Mon, 09 Dec 2019 05:34:48 +0000
-X-UUID: a6126f41ea634940a194b3ba83313f89-20191208
+ id 1ieBuw-0002yH-IK; Mon, 09 Dec 2019 05:49:11 +0000
+X-UUID: 7dfd98404e724f388f27a43bbaead681-20191208
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=IfbqGrd5rrP8sh9a0nWcVEhjpDGUtdEIy6n7ea6KzZ4=; 
- b=boUCfZIdSJ/9DWCp6nuTkpNiIU2FGTRS0vx8r72kqWPe7iiBnqymypHrcOMHg82YHw1/HV6ciTFCqgAchs58jgtAiafI2PBXYbXimJeKnYNVC7JHfO6VTVAb7PDMcl/NzsDRzIrJ+394T7jagw/xYif3D5xaZBssKuKc32niLoc=;
-X-UUID: a6126f41ea634940a194b3ba83313f89-20191208
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=zK5djuSKYwqaaHgHxdED8AbROBXJzib5e6bG7MyafoQ=; 
+ b=T0rnmY1g38CZXStFCH3SSNkP+iHjXCP0tF0EoP6CwBeQoRi4n9o1pk9Ho96wxCubp9pWELGxyyXm0HKFcEPuSoXA/wPFmg8ZanRnFpTpvrgHuTigNbrghjq+bWzQ2KFTzoGJE5E4XRp9r8kKGYpTxsJrJfRmd+eCOr66WRNRnJ0=;
+X-UUID: 7dfd98404e724f388f27a43bbaead681-20191208
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ (envelope-from <walter-zh.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2074226365; Sun, 08 Dec 2019 21:34:45 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 8 Dec 2019 21:35:44 -0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Mon, 9 Dec 2019 13:34:52 +0800
-Message-ID: <1575869682.7013.14.camel@mtksdaap41>
-Subject: Re: [resend PATCH v6 12/12] drm/mediatek: Add support for mmsys
- through a pdev
-From: CK Hu <ck.hu@mediatek.com>
-To: <matthias.bgg@kernel.org>
-Date: Mon, 9 Dec 2019 13:34:42 +0800
-In-Reply-To: <20191207224740.24536-13-matthias.bgg@kernel.org>
-References: <20191207224740.24536-1-matthias.bgg@kernel.org>
- <20191207224740.24536-13-matthias.bgg@kernel.org>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ with ESMTP id 916638455; Sun, 08 Dec 2019 21:49:06 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sun, 8 Dec 2019 21:49:07 -0800
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 9 Dec 2019 13:48:43 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Mon, 9 Dec 2019 13:48:36 +0800
+From: Walter Wu <walter-zh.wu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner
+ <tglx@linutronix.de>, Alexander Potapenko <glider@google.com>, Josh Poimboeuf
+ <jpoimboe@redhat.com>
+Subject: [PATCH] lib/stackdepot: Fix global out-of-bounds in stackdepot
+Date: Mon, 9 Dec 2019 13:48:49 +0800
+Message-ID: <20191209054849.26756-1-walter-zh.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191208_213447_524331_378875DC 
-X-CRM114-Status: GOOD (  17.12  )
+X-CRM114-CacheID: sfid-20191208_214910_608738_E45FE5BC 
+X-CRM114-Status: UNSURE (   9.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,128 +83,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, rdunlap@infradead.org, airlied@linux.ie,
- mturquette@baylibre.com, dri-devel@lists.freedesktop.org,
- laurent.pinchart@ideasonboard.com, ulrich.hecht+renesas@gmail.com,
- linux-clk@vger.kernel.org, drinkcat@chromium.org, wens@csie.org,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- frank-w@public-files.de, sean.wang@mediatek.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
- linux-arm-kernel@lists.infradead.org, mbrugger@suse.com, sboyd@kernel.org,
- sean.wang@kernel.org, linux-kernel@vger.kernel.org, p.zabel@pengutronix.de,
- enric.balletbo@collabora.com
+Cc: Walter Wu <walter-zh.wu@mediatek.com>, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ wsd_upstream <wsd_upstream@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Matthias:
+If the depot_index = STACK_ALLOC_MAX_SLABS - 2, then it will cause
+array out-of-bounds access, so that we should modify the detection
+to avoid this array out-of-bounds bug.
 
-On Sat, 2019-12-07 at 23:47 +0100, matthias.bgg@kernel.org wrote:
-> From: Matthias Brugger <mbrugger@suse.com>
-> 
-> The MMSYS subsystem includes clocks and drm components.
-> This patch adds an initailization path through a platform device
-> for the clock part, so that both drivers get probed from the same
-> device tree compatible.
+Consider following call flow sequence:
 
-You've switched mt6779 and mt6797 clock driver to platform device
-probing, but you does not probe then in drm driver, so your design is to
-let mmsys clock not work if drm driver is not enabled? It's fine for me
-because it seems that drm driver is the only user of mmsys clock now.
+stack_depot_save()
+   depot_alloc_stack()
+      if (unlikely(depot_index + 1 >= STACK_ALLOC_MAX_SLABS)) //pass
+      depot_index++  //depot_index = STACK_ALLOC_MAX_SLABS - 1
 
-Regards,
-CK
+stack_depot_save()
+   init_stack_slab()
+      stack_slabs[depot_index + 1]  //here get global out-of-bounds
 
-> 
-> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 24 ++++++++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_drm_drv.h |  2 ++
->  2 files changed, 26 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index 210455e9f46c..5ada74d8d0c9 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -186,6 +186,7 @@ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
->  	.ext_path = mt2701_mtk_ddp_ext,
->  	.ext_len = ARRAY_SIZE(mt2701_mtk_ddp_ext),
->  	.shadow_register = true,
-> +	.clk_drv_name = "clk-mt2701-mm",
->  };
->  
->  static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
-> @@ -195,6 +196,7 @@ static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
->  	.ext_len = ARRAY_SIZE(mt2712_mtk_ddp_ext),
->  	.third_path = mt2712_mtk_ddp_third,
->  	.third_len = ARRAY_SIZE(mt2712_mtk_ddp_third),
-> +	.clk_drv_name = "clk-mt2712-mm",
->  };
->  
->  static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
-> @@ -202,6 +204,7 @@ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
->  	.main_len = ARRAY_SIZE(mt8173_mtk_ddp_main),
->  	.ext_path = mt8173_mtk_ddp_ext,
->  	.ext_len = ARRAY_SIZE(mt8173_mtk_ddp_ext),
-> +	.clk_drv_name = "clk-mt8173-mm",
->  };
->  
->  static int mtk_drm_kms_init(struct drm_device *drm)
-> @@ -499,6 +502,24 @@ static int mtk_drm_probe(struct platform_device *pdev)
->  	INIT_WORK(&private->commit.work, mtk_atomic_work);
->  	private->data = of_device_get_match_data(dev);
->  
-> +	/*
-> +	 * MMSYS includes apart from components management a block providing
-> +	 * clocks for the subsystem. We probe this clock driver via a platform
-> +	 * device.
-> +	 */
-> +	if (private->data->clk_drv_name) {
-> +		private->clk_dev = platform_device_register_data(dev,
-> +						private->data->clk_drv_name, -1,
-> +						NULL, 0);
-> +
-> +		if (IS_ERR(private->clk_dev)) {
-> +			dev_err(dev, "failed to register %s platform device\n",
-> +				private->data->clk_drv_name);
-> +
-> +			return PTR_ERR(private->clk_dev);
-> +		}
-> +	}
-> +
->  	private->config_regs = syscon_node_to_regmap(dev->of_node);
->  	if (IS_ERR(private->config_regs))
->  		return PTR_ERR(private->config_regs);
-> @@ -605,6 +626,9 @@ static int mtk_drm_remove(struct platform_device *pdev)
->  	for (i = 0; i < DDP_COMPONENT_ID_MAX; i++)
->  		of_node_put(private->comp_node[i]);
->  
-> +	if (private->clk_dev)
-> +		platform_device_unregister(private->clk_dev);
-> +
->  	return 0;
->  }
->  
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> index 63a121577dcb..8fe9136adc38 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-> @@ -29,11 +29,13 @@ struct mtk_mmsys_driver_data {
->  	unsigned int third_len;
->  
->  	bool shadow_register;
-> +	const char *clk_drv_name;
->  };
->  
->  struct mtk_drm_private {
->  	struct drm_device *drm;
->  	struct device *dma_dev;
-> +	struct platform_device *clk_dev;
->  
->  	unsigned int num_pipes;
->  
+Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+---
+ lib/stackdepot.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/lib/stackdepot.c b/lib/stackdepot.c
+index ed717dd08ff3..7e8a15e41600 100644
+--- a/lib/stackdepot.c
++++ b/lib/stackdepot.c
+@@ -106,7 +106,7 @@ static struct stack_record *depot_alloc_stack(unsigned long *entries, int size,
+ 	required_size = ALIGN(required_size, 1 << STACK_ALLOC_ALIGN);
+ 
+ 	if (unlikely(depot_offset + required_size > STACK_ALLOC_SIZE)) {
+-		if (unlikely(depot_index + 1 >= STACK_ALLOC_MAX_SLABS)) {
++		if (unlikely(depot_index + 2 >= STACK_ALLOC_MAX_SLABS)) {
+ 			WARN_ONCE(1, "Stack depot reached limit capacity");
+ 			return NULL;
+ 		}
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
