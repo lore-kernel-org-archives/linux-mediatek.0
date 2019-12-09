@@ -2,60 +2,99 @@ Return-Path: <SRS0=SGDP=Z7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A456C00454
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 18:59:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 74989C04E30
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 19:57:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E9D00206D5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 18:59:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 43E7320836
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 19:57:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IPAwKAUj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9D00206D5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UyE8N5XX";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="j+hgEZpZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43E7320836
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	References:List-Owner; bh=7gppbzXprBveMtX5FtM8935QjnDbvg39z4bf8lPjcyI=; b=IPA
-	wKAUjKzYfLQjrEZQZqNxPChdos8oPuJfoGIYM4QGQJD/E9pBP6jiRIt6pBIg6W9JDwguJuJbvGXrT
-	NmjUemlSnhPE7yqoRqKzGqCnHIB4lw3OwSsuSGtmkWu00R5+0II2wAJ3+KM06aCFCp2E1SDUIj7Cd
-	oeJUCMux5Hg42D5FtqVBNb49V1/7TP/2CW7SbMe+ukDla13LbRv58m01uVGdy0c2ypuVECItf6eqp
-	U3GKQvekiCqAuTKaSSE3i4ZRg8uvLjsOwhmqHo5dv0DZAjLvRD29UZ+PcpkBdDiiYYxHpzPtFwoze
-	EIHArWlAcYMmUGCT8xL5tef+ZVJtusg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=VYVES7D8UzHZuYF2hShoTpYuyRkohHPcESjbdDE8kXY=; b=UyE
+	8N5XXiuFtX9Iistf6jFCjptCygiyuSPDi6tnTX4TU1uaUnCS3K5lbBUzZp9vpbJS43FJs0rGL2VA1
+	viPGTONAwIHE+RQZuiCiT4nTkW5ZD6IhZAUlMGzPwWJ1QQ6Pk18+8C4Z1uIS6i/Al7/oAiS4loCGC
+	KDWexx18TFVrGpQnsL35dXnplFo5rP3SoW6dhiRZV4LaxvHldbO7rht0h63UFHmZRNo+w+vretkfW
+	FT8EBaSzpxdJRsRFpaoBEICl5iuZbpv1WcVvgDTh704fawPNGyihpLXb2kBfdy3V7xTwDOJfmzUjp
+	A/jdB57eSGMc9Vd9EcWRiKlO8eX0tNA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ieOFw-0001tC-Dj; Mon, 09 Dec 2019 18:59:40 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieOFs-0001qr-Rl
- for linux-mediatek@lists.infradead.org; Mon, 09 Dec 2019 18:59:38 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 65E5313D5;
- Mon,  9 Dec 2019 10:59:36 -0800 (PST)
-Received: from localhost (unknown [10.37.6.21])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D81153F6CF;
- Mon,  9 Dec 2019 10:59:35 -0800 (PST)
-Date: Mon, 09 Dec 2019 18:59:34 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Eason Yen <eason.yen@mediatek.com>
-Subject: Applied "ASoC: mediatek: common: add some helpers to control
- mtk_memif" to the asoc tree
-In-Reply-To: <1573814926-15805-2-git-send-email-eason.yen@mediatek.com>
-Message-Id: <applied-1573814926-15805-2-git-send-email-eason.yen@mediatek.com>
-X-Patchwork-Hint: ignore
-X-Bad-Reply: In-Reply-To but no 'Re:' in Subject.
+	id 1iePAK-0001RT-RG; Mon, 09 Dec 2019 19:57:56 +0000
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iePAF-0001Op-VE; Mon, 09 Dec 2019 19:57:53 +0000
+Received: by mail-pf1-x441.google.com with SMTP id h14so7752461pfe.10;
+ Mon, 09 Dec 2019 11:57:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=IvoK48XMkvTMy8qiYExc0dK2WdplKiTgSr2CX/mQRuY=;
+ b=j+hgEZpZ55FVOsvuQu5R+uJRyxi6R8PbS8VSObrqP6U6QABWGFNmJk7rsKEttOtMqY
+ CWLgzTDEnRHLon5MC6xAns6zDB1Q6TFv4m2LjMws94TmRUFuwVijAuAYrAnjNg2hgy/b
+ L++ZcMnL/zWmMyU8iQvSzEtUCtE8wNjH1U+wYQhpCluLfkLAZ1PMjqCKh5AloR6aB6Nf
+ VCVpKkxGRHFeNE5Nw4bGTeFtYHeK2yPSlqVGT14zz+uzsVeYoin8sj3wewHRPEsa5H5F
+ I0XNdbA8FosC/WO4PPbL8xwsZbUO3cYHpEnpqi40sF0mL2PKdkjFCAcfT1bXJ6UElPFb
+ P8FQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=IvoK48XMkvTMy8qiYExc0dK2WdplKiTgSr2CX/mQRuY=;
+ b=umLzHEkwTnmTbE8ggypwHqf9EJn/NigVulCad6wAuXPSEHYwPm+aDazdRwef1YMcC7
+ R3HStozF0054W8n3xPwX8dsGJkorIVDQtDt0eXVFR6LUZFfhhnTS0wHE5loJdveDmzhH
+ GIQHHQnMTo9rYEN02IXB7nooy2laOq89fR2+vV0KhfsKTPFl+dU/0hUhtYzhM3jUkz7q
+ 6IXFq/9RTAWLx5sVUGDcD+Zkbc6jCtamD7L3lEwRjuSUL9uO6151nJadxeWqbfemsLqc
+ uTbiLXZdmke3JR0dHjegwasoYvh1tOACWaYQ7KM5xmbGEOzw8mz3Rl/Y3eOUqVKY3Zjb
+ /lig==
+X-Gm-Message-State: APjAAAUip06qDwgYfGYBYcpBnA5khiUnYkZ27srEsdKmdLlzMkHyS4ic
+ RMN3HxPsomq9KlTHh3GmbNw=
+X-Google-Smtp-Source: APXvYqwuBV1uQV1WLQZ4M+aEZQMsoHsNQhsRHxo1Ou+jCE6+Qsb06pjjlBpaPji+HVgJJhu669OFbA==
+X-Received: by 2002:a63:2808:: with SMTP id o8mr20217117pgo.39.1575921471235; 
+ Mon, 09 Dec 2019 11:57:51 -0800 (PST)
+Received: from localhost ([2001:19f0:6001:12c8:5400:2ff:fe72:6403])
+ by smtp.gmail.com with ESMTPSA id e10sm316733pfm.3.2019.12.09.11.57.50
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 09 Dec 2019 11:57:50 -0800 (PST)
+From: Yangtao Li <tiny.windzz@gmail.com>
+To: afaerber@suse.de, manivannan.sadhasivam@linaro.org,
+ mturquette@baylibre.com, sboyd@kernel.org, Eugeniy.Paltsev@synopsys.com,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, agross@kernel.org,
+ s.nawrocki@samsung.com, tomasz.figa@gmail.com, cw00.choi@samsung.com,
+ kgene@kernel.org, krzk@kernel.org, palmer@sifive.com,
+ paul.walmsley@sifive.com, dinguyen@kernel.org, mripard@kernel.org,
+ wens@csie.org, emilio@elopez.com.ar, pdeschrijver@nvidia.com,
+ pgaikwad@nvidia.com, thierry.reding@gmail.com, jonathanh@nvidia.com,
+ matthias.bgg@gmail.com, rfontana@redhat.com, gregkh@linuxfoundation.org,
+ t-kristo@ti.com, john@phrozen.org, tglx@linutronix.de, allison@lohutok.net,
+ kstewart@linuxfoundation.org, swinslow@gmail.com, aisheng.dong@nxp.com,
+ robh@kernel.org, daniel.baluta@nxp.com, weiyongjun1@huawei.com,
+ wangyan.wang@mediatek.com, chunhui.dai@mediatek.com,
+ miquel.raynal@bootlin.com, heiko@sntech.de, jcmvbkbc@gmail.com,
+ nsekhar@ti.com, geert+renesas@glider.be
+Subject: [PATCH 01/17] clk: sunxi: sunxi-ng: convert to
+ devm_platform_ioremap_resource
+Date: Mon,  9 Dec 2019 19:57:33 +0000
+Message-Id: <20191209195749.868-1-tiny.windzz@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191209_105936_984026_39E37819 
-X-CRM114-Status: GOOD (  18.25  )
+X-CRM114-CacheID: sfid-20191209_115752_012430_06417A5A 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,391 +106,288 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, chipeng.chang@mediatek.com,
- jiaxin.yu@mediatek.com, Mark Brown <broonie@kernel.org>,
- linux-mediatek@lists.infradead.org, eason.yen@mediatek.com,
- matthias.bgg@gmail.com
+Cc: linux-samsung-soc@vger.kernel.org, Yangtao Li <tiny.windzz@gmail.com>,
+ linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
+ linux-riscv@lists.infradead.org, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The patch
+Use devm_platform_ioremap_resource() to simplify code.
 
-   ASoC: mediatek: common: add some helpers to control mtk_memif
-
-has been applied to the asoc tree at
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-5.6
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From 9cdf85a19b3a67433fff2c8c798dc80e81d34a94 Mon Sep 17 00:00:00 2001
-From: Eason Yen <eason.yen@mediatek.com>
-Date: Fri, 15 Nov 2019 18:48:45 +0800
-Subject: [PATCH] ASoC: mediatek: common: add some helpers to control mtk_memif
-
-1. Add the following helper in mtk-afe-fe-dai to control
-to control mtk_memif
-- mtk_memif_set_enable
-- mtk_memif_set_disable
-- mtk_memif_set_addr
-- mtk_memif_set_channel
-- mtk_memif_set_rate
-- mtk_memif_set_rate_substream
-- mtk_memif_set_format
-- mtk_memif_set_pbuf_size
-
-2.extend mtk_base_memif_data struct for new platform
-
-Signed-off-by: Eason Yen <eason.yen@mediatek.com>
-Link: https://lore.kernel.org/r/1573814926-15805-2-git-send-email-eason.yen@mediatek.com
-Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 ---
- sound/soc/mediatek/common/mtk-afe-fe-dai.c | 216 +++++++++++++++++++++
- sound/soc/mediatek/common/mtk-afe-fe-dai.h |  16 ++
- sound/soc/mediatek/common/mtk-base-afe.h   |  28 ++-
- 3 files changed, 259 insertions(+), 1 deletion(-)
+ drivers/clk/sunxi-ng/ccu-sun50i-a64.c    | 4 +---
+ drivers/clk/sunxi-ng/ccu-sun50i-h6.c     | 4 +---
+ drivers/clk/sunxi-ng/ccu-sun8i-a83t.c    | 4 +---
+ drivers/clk/sunxi-ng/ccu-sun8i-de2.c     | 4 +---
+ drivers/clk/sunxi-ng/ccu-sun8i-r40.c     | 4 +---
+ drivers/clk/sunxi-ng/ccu-sun9i-a80-de.c  | 4 +---
+ drivers/clk/sunxi-ng/ccu-sun9i-a80-usb.c | 4 +---
+ drivers/clk/sunxi-ng/ccu-sun9i-a80.c     | 4 +---
+ drivers/clk/sunxi/clk-mod0.c             | 4 +---
+ drivers/clk/sunxi/clk-sun6i-apb0-gates.c | 4 +---
+ drivers/clk/sunxi/clk-sun6i-apb0.c       | 4 +---
+ drivers/clk/sunxi/clk-sun6i-ar100.c      | 4 +---
+ drivers/clk/sunxi/clk-sun8i-apb0.c       | 4 +---
+ 13 files changed, 13 insertions(+), 39 deletions(-)
 
-diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.c b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-index 10ea4fdbeb1e..309dc1ef6841 100644
---- a/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-+++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
-@@ -361,6 +361,222 @@ int mtk_afe_dai_resume(struct snd_soc_dai *dai)
- }
- EXPORT_SYMBOL_GPL(mtk_afe_dai_resume);
+diff --git a/drivers/clk/sunxi-ng/ccu-sun50i-a64.c b/drivers/clk/sunxi-ng/ccu-sun50i-a64.c
+index 49bd7a4c015c..087880b20c15 100644
+--- a/drivers/clk/sunxi-ng/ccu-sun50i-a64.c
++++ b/drivers/clk/sunxi-ng/ccu-sun50i-a64.c
+@@ -923,12 +923,10 @@ static const struct sunxi_ccu_desc sun50i_a64_ccu_desc = {
  
-+int mtk_memif_set_enable(struct mtk_base_afe *afe, int id)
-+{
-+	struct mtk_base_afe_memif *memif = &afe->memif[id];
-+
-+	if (memif->data->enable_shift < 0) {
-+		dev_warn(afe->dev, "%s(), error, id %d, enable_shift < 0\n",
-+			 __func__, id);
-+		return 0;
-+	}
-+	return mtk_regmap_update_bits(afe->regmap, memif->data->enable_reg,
-+				      1, 1, memif->data->enable_shift);
-+}
-+EXPORT_SYMBOL_GPL(mtk_memif_set_enable);
-+
-+int mtk_memif_set_disable(struct mtk_base_afe *afe, int id)
-+{
-+	struct mtk_base_afe_memif *memif = &afe->memif[id];
-+
-+	if (memif->data->enable_shift < 0) {
-+		dev_warn(afe->dev, "%s(), error, id %d, enable_shift < 0\n",
-+			 __func__, id);
-+		return 0;
-+	}
-+	return mtk_regmap_update_bits(afe->regmap, memif->data->enable_reg,
-+				      1, 0, memif->data->enable_shift);
-+}
-+EXPORT_SYMBOL_GPL(mtk_memif_set_disable);
-+
-+int mtk_memif_set_addr(struct mtk_base_afe *afe, int id,
-+		       unsigned char *dma_area,
-+		       dma_addr_t dma_addr,
-+		       size_t dma_bytes)
-+{
-+	struct mtk_base_afe_memif *memif = &afe->memif[id];
-+	int msb_at_bit33 = upper_32_bits(dma_addr) ? 1 : 0;
-+	unsigned int phys_buf_addr = lower_32_bits(dma_addr);
-+	unsigned int phys_buf_addr_upper_32 = upper_32_bits(dma_addr);
-+
-+	memif->dma_area = dma_area;
-+	memif->dma_addr = dma_addr;
-+	memif->dma_bytes = dma_bytes;
-+
-+	/* start */
-+	mtk_regmap_write(afe->regmap, memif->data->reg_ofs_base,
-+			 phys_buf_addr);
-+	/* end */
-+	if (memif->data->reg_ofs_end)
-+		mtk_regmap_write(afe->regmap,
-+				 memif->data->reg_ofs_end,
-+				 phys_buf_addr + dma_bytes - 1);
-+	else
-+		mtk_regmap_write(afe->regmap,
-+				 memif->data->reg_ofs_base +
-+				 AFE_BASE_END_OFFSET,
-+				 phys_buf_addr + dma_bytes - 1);
-+
-+	/* set start, end, upper 32 bits */
-+	if (memif->data->reg_ofs_base_msb) {
-+		mtk_regmap_write(afe->regmap, memif->data->reg_ofs_base_msb,
-+				 phys_buf_addr_upper_32);
-+		mtk_regmap_write(afe->regmap,
-+				 memif->data->reg_ofs_end_msb,
-+				 phys_buf_addr_upper_32);
-+	}
-+
-+	/* set MSB to 33-bit */
-+	if (memif->data->msb_reg >= 0)
-+		mtk_regmap_update_bits(afe->regmap, memif->data->msb_reg,
-+				       1, msb_at_bit33, memif->data->msb_shift);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mtk_memif_set_addr);
-+
-+int mtk_memif_set_channel(struct mtk_base_afe *afe,
-+			  int id, unsigned int channel)
-+{
-+	struct mtk_base_afe_memif *memif = &afe->memif[id];
-+	unsigned int mono;
-+
-+	if (memif->data->mono_shift < 0)
-+		return 0;
-+
-+	if (memif->data->quad_ch_mask) {
-+		unsigned int quad_ch = (channel == 4) ? 1 : 0;
-+
-+		mtk_regmap_update_bits(afe->regmap, memif->data->quad_ch_reg,
-+				       memif->data->quad_ch_mask,
-+				       quad_ch, memif->data->quad_ch_shift);
-+	}
-+
-+	if (memif->data->mono_invert)
-+		mono = (channel == 1) ? 0 : 1;
-+	else
-+		mono = (channel == 1) ? 1 : 0;
-+
-+	return mtk_regmap_update_bits(afe->regmap, memif->data->mono_reg,
-+				      1, mono, memif->data->mono_shift);
-+}
-+EXPORT_SYMBOL_GPL(mtk_memif_set_channel);
-+
-+static int mtk_memif_set_rate_fs(struct mtk_base_afe *afe,
-+				 int id, int fs)
-+{
-+	struct mtk_base_afe_memif *memif = &afe->memif[id];
-+
-+	if (memif->data->fs_shift >= 0)
-+		mtk_regmap_update_bits(afe->regmap, memif->data->fs_reg,
-+				       memif->data->fs_maskbit,
-+				       fs, memif->data->fs_shift);
-+
-+	return 0;
-+}
-+
-+int mtk_memif_set_rate(struct mtk_base_afe *afe,
-+		       int id, unsigned int rate)
-+{
-+	int fs = 0;
-+
-+	if (!afe->get_dai_fs) {
-+		dev_err(afe->dev, "%s(), error, afe->get_dai_fs == NULL\n",
-+			__func__);
-+		return -EINVAL;
-+	}
-+
-+	fs = afe->get_dai_fs(afe, id, rate);
-+
-+	if (fs < 0)
-+		return -EINVAL;
-+
-+	return mtk_memif_set_rate_fs(afe, id, fs);
-+}
-+EXPORT_SYMBOL_GPL(mtk_memif_set_rate);
-+
-+int mtk_memif_set_rate_substream(struct snd_pcm_substream *substream,
-+				 int id, unsigned int rate)
-+{
-+	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-+	struct snd_soc_component *component =
-+		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
-+	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
-+
-+	int fs = 0;
-+
-+	if (!afe->memif_fs) {
-+		dev_err(afe->dev, "%s(), error, afe->memif_fs == NULL\n",
-+			__func__);
-+		return -EINVAL;
-+	}
-+
-+	fs = afe->memif_fs(substream, rate);
-+
-+	if (fs < 0)
-+		return -EINVAL;
-+
-+	return mtk_memif_set_rate_fs(afe, id, fs);
-+}
-+EXPORT_SYMBOL_GPL(mtk_memif_set_rate_substream);
-+
-+int mtk_memif_set_format(struct mtk_base_afe *afe,
-+			 int id, snd_pcm_format_t format)
-+{
-+	struct mtk_base_afe_memif *memif = &afe->memif[id];
-+	int hd_audio = 0;
-+	int hd_align = 0;
-+
-+	/* set hd mode */
-+	switch (format) {
-+	case SNDRV_PCM_FORMAT_S16_LE:
-+	case SNDRV_PCM_FORMAT_U16_LE:
-+		hd_audio = 0;
-+		break;
-+	case SNDRV_PCM_FORMAT_S32_LE:
-+	case SNDRV_PCM_FORMAT_U32_LE:
-+		hd_audio = 1;
-+		hd_align = 1;
-+		break;
-+	case SNDRV_PCM_FORMAT_S24_LE:
-+	case SNDRV_PCM_FORMAT_U24_LE:
-+		hd_audio = 1;
-+		break;
-+	default:
-+		dev_err(afe->dev, "%s() error: unsupported format %d\n",
-+			__func__, format);
-+		break;
-+	}
-+
-+	mtk_regmap_update_bits(afe->regmap, memif->data->hd_reg,
-+			       1, hd_audio, memif->data->hd_shift);
-+
-+	mtk_regmap_update_bits(afe->regmap, memif->data->hd_align_reg,
-+			       1, hd_align, memif->data->hd_align_mshift);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mtk_memif_set_format);
-+
-+int mtk_memif_set_pbuf_size(struct mtk_base_afe *afe,
-+			    int id, int pbuf_size)
-+{
-+	const struct mtk_base_memif_data *memif_data = afe->memif[id].data;
-+
-+	if (memif_data->pbuf_mask == 0 || memif_data->minlen_mask == 0)
-+		return 0;
-+
-+	mtk_regmap_update_bits(afe->regmap, memif_data->pbuf_reg,
-+			       memif_data->pbuf_mask,
-+			       pbuf_size, memif_data->pbuf_shift);
-+
-+	mtk_regmap_update_bits(afe->regmap, memif_data->minlen_reg,
-+			       memif_data->minlen_mask,
-+			       pbuf_size, memif_data->minlen_shift);
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mtk_memif_set_pbuf_size);
-+
- MODULE_DESCRIPTION("Mediatek simple fe dai operator");
- MODULE_AUTHOR("Garlic Tseng <garlic.tseng@mediatek.com>");
- MODULE_LICENSE("GPL v2");
-diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.h b/sound/soc/mediatek/common/mtk-afe-fe-dai.h
-index 55074fb9861a..507e3e7c3c7d 100644
---- a/sound/soc/mediatek/common/mtk-afe-fe-dai.h
-+++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.h
-@@ -34,4 +34,20 @@ int mtk_dynamic_irq_release(struct mtk_base_afe *afe, int irq_id);
- int mtk_afe_dai_suspend(struct snd_soc_dai *dai);
- int mtk_afe_dai_resume(struct snd_soc_dai *dai);
+ static int sun50i_a64_ccu_probe(struct platform_device *pdev)
+ {
+-	struct resource *res;
+ 	void __iomem *reg;
+ 	u32 val;
  
-+int mtk_memif_set_enable(struct mtk_base_afe *afe, int id);
-+int mtk_memif_set_disable(struct mtk_base_afe *afe, int id);
-+int mtk_memif_set_addr(struct mtk_base_afe *afe, int id,
-+		       unsigned char *dma_area,
-+		       dma_addr_t dma_addr,
-+		       size_t dma_bytes);
-+int mtk_memif_set_channel(struct mtk_base_afe *afe,
-+			  int id, unsigned int channel);
-+int mtk_memif_set_rate(struct mtk_base_afe *afe,
-+		       int id, unsigned int rate);
-+int mtk_memif_set_rate_substream(struct snd_pcm_substream *substream,
-+				 int id, unsigned int rate);
-+int mtk_memif_set_format(struct mtk_base_afe *afe,
-+			 int id, snd_pcm_format_t format);
-+int mtk_memif_set_pbuf_size(struct mtk_base_afe *afe,
-+			    int id, int pbuf_size);
- #endif
-diff --git a/sound/soc/mediatek/common/mtk-base-afe.h b/sound/soc/mediatek/common/mtk-base-afe.h
-index 60cb609a9790..a8cf44d98244 100644
---- a/sound/soc/mediatek/common/mtk-base-afe.h
-+++ b/sound/soc/mediatek/common/mtk-base-afe.h
-@@ -16,21 +16,38 @@ struct mtk_base_memif_data {
- 	const char *name;
- 	int reg_ofs_base;
- 	int reg_ofs_cur;
-+	int reg_ofs_end;
-+	int reg_ofs_base_msb;
-+	int reg_ofs_cur_msb;
-+	int reg_ofs_end_msb;
- 	int fs_reg;
- 	int fs_shift;
- 	int fs_maskbit;
- 	int mono_reg;
- 	int mono_shift;
-+	int mono_invert;
-+	int quad_ch_reg;
-+	int quad_ch_mask;
-+	int quad_ch_shift;
- 	int enable_reg;
- 	int enable_shift;
- 	int hd_reg;
--	int hd_align_reg;
- 	int hd_shift;
-+	int hd_align_reg;
- 	int hd_align_mshift;
- 	int msb_reg;
- 	int msb_shift;
-+	int msb2_reg;
-+	int msb2_shift;
- 	int agent_disable_reg;
- 	int agent_disable_shift;
-+	/* playback memif only */
-+	int pbuf_reg;
-+	int pbuf_mask;
-+	int pbuf_shift;
-+	int minlen_reg;
-+	int minlen_mask;
-+	int minlen_shift;
- };
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	reg = devm_ioremap_resource(&pdev->dev, res);
++	reg = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(reg))
+ 		return PTR_ERR(reg);
  
- struct mtk_base_irq_data {
-@@ -84,6 +101,12 @@ struct mtk_base_afe {
- 			unsigned int rate);
- 	int (*irq_fs)(struct snd_pcm_substream *substream,
- 		      unsigned int rate);
-+	int (*get_dai_fs)(struct mtk_base_afe *afe,
-+			  int dai_id, unsigned int rate);
-+	int (*get_memif_pbuf_size)(struct snd_pcm_substream *substream);
-+
-+	int (*request_dram_resource)(struct device *dev);
-+	int (*release_dram_resource)(struct device *dev);
+diff --git a/drivers/clk/sunxi-ng/ccu-sun50i-h6.c b/drivers/clk/sunxi-ng/ccu-sun50i-h6.c
+index f2497d0a4683..00fa8ff2f51b 100644
+--- a/drivers/clk/sunxi-ng/ccu-sun50i-h6.c
++++ b/drivers/clk/sunxi-ng/ccu-sun50i-h6.c
+@@ -1183,13 +1183,11 @@ static const u32 usb2_clk_regs[] = {
  
- 	void *platform_priv;
- };
-@@ -95,6 +118,9 @@ struct mtk_base_afe_memif {
- 	const struct mtk_base_memif_data *data;
- 	int irq_usage;
- 	int const_irq;
-+	unsigned char *dma_area;
-+	dma_addr_t dma_addr;
-+	size_t dma_bytes;
- };
+ static int sun50i_h6_ccu_probe(struct platform_device *pdev)
+ {
+-	struct resource *res;
+ 	void __iomem *reg;
+ 	u32 val;
+ 	int i;
  
- struct mtk_base_afe_irq {
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	reg = devm_ioremap_resource(&pdev->dev, res);
++	reg = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(reg))
+ 		return PTR_ERR(reg);
+ 
+diff --git a/drivers/clk/sunxi-ng/ccu-sun8i-a83t.c b/drivers/clk/sunxi-ng/ccu-sun8i-a83t.c
+index 2b434521c5cc..b2aaa99ad23f 100644
+--- a/drivers/clk/sunxi-ng/ccu-sun8i-a83t.c
++++ b/drivers/clk/sunxi-ng/ccu-sun8i-a83t.c
+@@ -887,12 +887,10 @@ static void sun8i_a83t_cpu_pll_fixup(void __iomem *reg)
+ 
+ static int sun8i_a83t_ccu_probe(struct platform_device *pdev)
+ {
+-	struct resource *res;
+ 	void __iomem *reg;
+ 	u32 val;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	reg = devm_ioremap_resource(&pdev->dev, res);
++	reg = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(reg))
+ 		return PTR_ERR(reg);
+ 
+diff --git a/drivers/clk/sunxi-ng/ccu-sun8i-de2.c b/drivers/clk/sunxi-ng/ccu-sun8i-de2.c
+index d9668493c3f9..f48f61297551 100644
+--- a/drivers/clk/sunxi-ng/ccu-sun8i-de2.c
++++ b/drivers/clk/sunxi-ng/ccu-sun8i-de2.c
+@@ -251,7 +251,6 @@ static const struct sunxi_ccu_desc sun8i_v3s_de2_clk_desc = {
+ 
+ static int sunxi_de2_clk_probe(struct platform_device *pdev)
+ {
+-	struct resource *res;
+ 	struct clk *bus_clk, *mod_clk;
+ 	struct reset_control *rstc;
+ 	void __iomem *reg;
+@@ -262,8 +261,7 @@ static int sunxi_de2_clk_probe(struct platform_device *pdev)
+ 	if (!ccu_desc)
+ 		return -EINVAL;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	reg = devm_ioremap_resource(&pdev->dev, res);
++	reg = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(reg))
+ 		return PTR_ERR(reg);
+ 
+diff --git a/drivers/clk/sunxi-ng/ccu-sun8i-r40.c b/drivers/clk/sunxi-ng/ccu-sun8i-r40.c
+index 897490800102..b456f85fd8da 100644
+--- a/drivers/clk/sunxi-ng/ccu-sun8i-r40.c
++++ b/drivers/clk/sunxi-ng/ccu-sun8i-r40.c
+@@ -1294,14 +1294,12 @@ static struct regmap_config sun8i_r40_ccu_regmap_config = {
+ 
+ static int sun8i_r40_ccu_probe(struct platform_device *pdev)
+ {
+-	struct resource *res;
+ 	struct regmap *regmap;
+ 	void __iomem *reg;
+ 	u32 val;
+ 	int ret;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	reg = devm_ioremap_resource(&pdev->dev, res);
++	reg = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(reg))
+ 		return PTR_ERR(reg);
+ 
+diff --git a/drivers/clk/sunxi-ng/ccu-sun9i-a80-de.c b/drivers/clk/sunxi-ng/ccu-sun9i-a80-de.c
+index 6616e8114f62..94552199d54d 100644
+--- a/drivers/clk/sunxi-ng/ccu-sun9i-a80-de.c
++++ b/drivers/clk/sunxi-ng/ccu-sun9i-a80-de.c
+@@ -203,14 +203,12 @@ static const struct sunxi_ccu_desc sun9i_a80_de_clk_desc = {
+ 
+ static int sun9i_a80_de_clk_probe(struct platform_device *pdev)
+ {
+-	struct resource *res;
+ 	struct clk *bus_clk;
+ 	struct reset_control *rstc;
+ 	void __iomem *reg;
+ 	int ret;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	reg = devm_ioremap_resource(&pdev->dev, res);
++	reg = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(reg))
+ 		return PTR_ERR(reg);
+ 
+diff --git a/drivers/clk/sunxi-ng/ccu-sun9i-a80-usb.c b/drivers/clk/sunxi-ng/ccu-sun9i-a80-usb.c
+index 4b4a507d04ed..adac159a5f63 100644
+--- a/drivers/clk/sunxi-ng/ccu-sun9i-a80-usb.c
++++ b/drivers/clk/sunxi-ng/ccu-sun9i-a80-usb.c
+@@ -92,13 +92,11 @@ static const struct sunxi_ccu_desc sun9i_a80_usb_clk_desc = {
+ 
+ static int sun9i_a80_usb_clk_probe(struct platform_device *pdev)
+ {
+-	struct resource *res;
+ 	struct clk *bus_clk;
+ 	void __iomem *reg;
+ 	int ret;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	reg = devm_ioremap_resource(&pdev->dev, res);
++	reg = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(reg))
+ 		return PTR_ERR(reg);
+ 
+diff --git a/drivers/clk/sunxi-ng/ccu-sun9i-a80.c b/drivers/clk/sunxi-ng/ccu-sun9i-a80.c
+index dcac1391767f..8295667e2252 100644
+--- a/drivers/clk/sunxi-ng/ccu-sun9i-a80.c
++++ b/drivers/clk/sunxi-ng/ccu-sun9i-a80.c
+@@ -1213,12 +1213,10 @@ static void sun9i_a80_cpu_pll_fixup(void __iomem *reg)
+ 
+ static int sun9i_a80_ccu_probe(struct platform_device *pdev)
+ {
+-	struct resource *res;
+ 	void __iomem *reg;
+ 	u32 val;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	reg = devm_ioremap_resource(&pdev->dev, res);
++	reg = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(reg))
+ 		return PTR_ERR(reg);
+ 
+diff --git a/drivers/clk/sunxi/clk-mod0.c b/drivers/clk/sunxi/clk-mod0.c
+index 0cca91e075a5..cdb98937f584 100644
+--- a/drivers/clk/sunxi/clk-mod0.c
++++ b/drivers/clk/sunxi/clk-mod0.c
+@@ -88,14 +88,12 @@ CLK_OF_DECLARE_DRIVER(sun4i_a10_mod0, "allwinner,sun4i-a10-mod0-clk",
+ static int sun4i_a10_mod0_clk_probe(struct platform_device *pdev)
+ {
+ 	struct device_node *np = pdev->dev.of_node;
+-	struct resource *r;
+ 	void __iomem *reg;
+ 
+ 	if (!np)
+ 		return -ENODEV;
+ 
+-	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	reg = devm_ioremap_resource(&pdev->dev, r);
++	reg = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(reg))
+ 		return PTR_ERR(reg);
+ 
+diff --git a/drivers/clk/sunxi/clk-sun6i-apb0-gates.c b/drivers/clk/sunxi/clk-sun6i-apb0-gates.c
+index a165e7172346..abae2813c59e 100644
+--- a/drivers/clk/sunxi/clk-sun6i-apb0-gates.c
++++ b/drivers/clk/sunxi/clk-sun6i-apb0-gates.c
+@@ -41,7 +41,6 @@ static int sun6i_a31_apb0_gates_clk_probe(struct platform_device *pdev)
+ 	const struct gates_data *data;
+ 	const char *clk_parent;
+ 	const char *clk_name;
+-	struct resource *r;
+ 	void __iomem *reg;
+ 	int ngates;
+ 	int i;
+@@ -55,8 +54,7 @@ static int sun6i_a31_apb0_gates_clk_probe(struct platform_device *pdev)
+ 		return -ENODEV;
+ 	data = device->data;
+ 
+-	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	reg = devm_ioremap_resource(&pdev->dev, r);
++	reg = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(reg))
+ 		return PTR_ERR(reg);
+ 
+diff --git a/drivers/clk/sunxi/clk-sun6i-apb0.c b/drivers/clk/sunxi/clk-sun6i-apb0.c
+index 10f70c35c265..f80c67bafe38 100644
+--- a/drivers/clk/sunxi/clk-sun6i-apb0.c
++++ b/drivers/clk/sunxi/clk-sun6i-apb0.c
+@@ -32,12 +32,10 @@ static int sun6i_a31_apb0_clk_probe(struct platform_device *pdev)
+ 	struct device_node *np = pdev->dev.of_node;
+ 	const char *clk_name = np->name;
+ 	const char *clk_parent;
+-	struct resource *r;
+ 	void __iomem *reg;
+ 	struct clk *clk;
+ 
+-	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	reg = devm_ioremap_resource(&pdev->dev, r);
++	reg = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(reg))
+ 		return PTR_ERR(reg);
+ 
+diff --git a/drivers/clk/sunxi/clk-sun6i-ar100.c b/drivers/clk/sunxi/clk-sun6i-ar100.c
+index e1b7d0929cf7..ffc297732f8f 100644
+--- a/drivers/clk/sunxi/clk-sun6i-ar100.c
++++ b/drivers/clk/sunxi/clk-sun6i-ar100.c
+@@ -71,12 +71,10 @@ static DEFINE_SPINLOCK(sun6i_ar100_lock);
+ static int sun6i_a31_ar100_clk_probe(struct platform_device *pdev)
+ {
+ 	struct device_node *np = pdev->dev.of_node;
+-	struct resource *r;
+ 	void __iomem *reg;
+ 	struct clk *clk;
+ 
+-	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	reg = devm_ioremap_resource(&pdev->dev, r);
++	reg = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(reg))
+ 		return PTR_ERR(reg);
+ 
+diff --git a/drivers/clk/sunxi/clk-sun8i-apb0.c b/drivers/clk/sunxi/clk-sun8i-apb0.c
+index fc5d6e3b77d1..f605ecca879f 100644
+--- a/drivers/clk/sunxi/clk-sun8i-apb0.c
++++ b/drivers/clk/sunxi/clk-sun8i-apb0.c
+@@ -87,12 +87,10 @@ CLK_OF_DECLARE_DRIVER(sun8i_a23_apb0, "allwinner,sun8i-a23-apb0-clk",
+ static int sun8i_a23_apb0_clk_probe(struct platform_device *pdev)
+ {
+ 	struct device_node *np = pdev->dev.of_node;
+-	struct resource *r;
+ 	void __iomem *reg;
+ 	struct clk *clk;
+ 
+-	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	reg = devm_ioremap_resource(&pdev->dev, r);
++	reg = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(reg))
+ 		return PTR_ERR(reg);
+ 
 -- 
-2.20.1
+2.17.1
 
 
 _______________________________________________
