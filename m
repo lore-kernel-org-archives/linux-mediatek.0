@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 94EADC43603
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 02:09:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 59D0EC43603
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 02:50:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6726B20409
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 02:09:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2B931206E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 02:50:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CtPwVHT+";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="DW8tM8/K"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6726B20409
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="M052c7Sq";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="iXHtkFlw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2B931206E0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dOwU3gJRkwCPEmP6PJJEYLRvA0TU27nQejnA3JFDE0Y=; b=CtPwVHT+EDmjX0
-	cjBDmlLDd25I44ennpEkyNWHvlQct/EVZRMeob7Sam0l7PQg5mSDARfJt/ORJ0cTsSaSLzhIglktU
-	9FvurKqxtHSTQaXz9vqf3rwUWPtlSxsl/rUQPQS8xqcDUUqcyOH2V/CGH5g68ZkHppFa0TfiNcTy1
-	FgtVgtvF5p91KtLokiFWbO+hnWE1mP9xH0Xex3Db/NE1RjW0+T2nt7yrbUpA2t5Jb950K78VMAID/
-	zcHid/72nLtmBi+R1Lb1Z4erasVuqaRWyy6ThYUBA/cmkTU5Dl5XHnfXlDnkggg/1E9+Pz8zMDbwR
-	uxRUytwr0NJ6GEkkvFGQ==;
+	List-Owner; bh=25d31bP0fwQM3BZXEzRBs+0nqmm6/ZaBomrcwqPq2L8=; b=M052c7SqORdr1Z
+	2s8+bu4DJEMHjCjEcmT2UYXOkes9+rxLBaVfNDu8eBre96B0C0DH7VFkaORN0iXKXec40+y4kwcGC
+	bhldEtUOdgpILxyQsTEv2IZvGHCmexmapLuwtBxG9+y83L/s10stdNQUMY9clqq1LJKWsEEd0b0rY
+	N9ohlBAO1VrgNOorT6FIXhf5SNjJsE/NJMpDnf24l+uo28inDv+STRTk1Kd6MOpEYfxrRlF3fNmm5
+	65o5l2rU6ETgtGsbsSQkldFI6dp6Kr2NRbOzEX9PoAet6OBizLZFv1ZnVhtkS3HD87PIRPd6JAb74
+	asX5/np7nTrmwZnEyB2g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ieUxN-0007K2-8l; Tue, 10 Dec 2019 02:08:57 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ieVb8-0003xM-12; Tue, 10 Dec 2019 02:50:02 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieUxB-0007C6-FI; Tue, 10 Dec 2019 02:08:49 +0000
-X-UUID: 0bb2b523c845447990082a62305aad49-20191209
+ id 1ieVax-0003nk-QK; Tue, 10 Dec 2019 02:49:53 +0000
+X-UUID: 34ab6c951bf5449ba283ed0b46683a43-20191209
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=IgQuYhZqNMmjibztfb1saVE2u9WvD1IS81QOavynYoU=; 
- b=DW8tM8/Ka3LOpURBGBoTo0BCjYP9AoFYe4okNaeyvDfYnVuIRIyblE1pW80yFo5NO5pIHo3y31TkJdOrrClvLPqexadzDtDBGXDatBbI7eDVPVVxI7KRzfD4+9NHIAEvfJdeT3MDVUcd0GSuGGAlk2ToXJBfVGv1qLbEWpFoBPA=;
-X-UUID: 0bb2b523c845447990082a62305aad49-20191209
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=3p9xe1k8UZpHU7V65IFk3agqCgquUJjR9B/HHNjxoE4=; 
+ b=iXHtkFlw5EqtcJGCRYIPyntinI+xVifE0nr4IvDgZRIl/aq4thDe3nIk9dpHgyrYFJW1BHUFdu3st2/sl8tVzGiUPavST++VF5LAuVQzb6fGTE398Cc8hjl+iNhjcQaiS6tIBarGU632FVV3ao18dQPePtT+3mScB4p/kRiohKo=;
+X-UUID: 34ab6c951bf5449ba283ed0b46683a43-20191209
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1968220720; Mon, 09 Dec 2019 18:08:42 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 9 Dec 2019 18:05:39 -0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 10 Dec 2019 10:04:06 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
+ with ESMTP id 1123243309; Mon, 09 Dec 2019 18:49:44 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 9 Dec 2019 18:50:39 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 10 Dec 2019 10:49:20 +0800
+Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 10 Dec 2019 10:04:11 +0800
-Message-ID: <1575943469.16676.0.camel@mtksdaap41>
-Subject: Re: [PATCH v2 03/14] mailbox: cmdq: support mt6779 gce platform
- definition
+ Transport; Tue, 10 Dec 2019 10:49:09 +0800
+Message-ID: <1575946181.16676.4.camel@mtksdaap41>
+Subject: Re: [PATCH v2 04/14] mailbox: mediatek: cmdq: clear task in channel
+ before shutdown
 From: CK Hu <ck.hu@mediatek.com>
 To: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
-Date: Tue, 10 Dec 2019 10:04:29 +0800
-In-Reply-To: <1574819937-6246-5-git-send-email-dennis-yc.hsieh@mediatek.com>
+Date: Tue, 10 Dec 2019 10:49:41 +0800
+In-Reply-To: <1574819937-6246-6-git-send-email-dennis-yc.hsieh@mediatek.com>
 References: <1574819937-6246-1-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1574819937-6246-5-git-send-email-dennis-yc.hsieh@mediatek.com>
+ <1574819937-6246-6-git-send-email-dennis-yc.hsieh@mediatek.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191209_180848_072972_0EB01108 
-X-CRM114-Status: UNSURE (   9.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191209_184951_865964_6B25D45E 
+X-CRM114-Status: GOOD (  11.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,33 +98,57 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Hi, Dennis:
 
 On Wed, 2019-11-27 at 09:58 +0800, Dennis YC Hsieh wrote:
-> Add gce v4 hardware support with different thread number and shift.
+> Do success callback in channel when shutdown. For those task not finish,
+> callback with error code thus client has chance to cleanup or reset.
 > 
-
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-
 > Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
 > ---
->  drivers/mailbox/mtk-cmdq-mailbox.c | 2 ++
->  1 file changed, 2 insertions(+)
+>  drivers/mailbox/mtk-cmdq-mailbox.c | 26 ++++++++++++++++++++++++++
+>  1 file changed, 26 insertions(+)
 > 
 > diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-> index d5536563fce1..fd519b6f518b 100644
+> index fd519b6f518b..c12a768d1175 100644
 > --- a/drivers/mailbox/mtk-cmdq-mailbox.c
 > +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -572,10 +572,12 @@ static const struct dev_pm_ops cmdq_pm_ops = {
+> @@ -450,6 +450,32 @@ static int cmdq_mbox_startup(struct mbox_chan *chan)
 >  
->  static const struct gce_plat gce_plat_v2 = {.thread_nr = 16, .shift = 0};
->  static const struct gce_plat gce_plat_v3 = {.thread_nr = 24, .shift = 0};
-> +static const struct gce_plat gce_plat_v4 = {.thread_nr = 24, .shift = 3};
+>  static void cmdq_mbox_shutdown(struct mbox_chan *chan)
+>  {
+> +	struct cmdq_thread *thread = (struct cmdq_thread *)chan->con_priv;
+> +	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
+> +	struct cmdq_task *task, *tmp;
+> +	unsigned long flags;
+> +
+> +	spin_lock_irqsave(&thread->chan->lock, flags);
+> +	if (list_empty(&thread->task_busy_list))
+> +		goto done;
+> +
+> +	WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
+> +
+> +	/* make sure executed tasks have success callback */
+> +	cmdq_thread_irq_handler(cmdq, thread);
+> +	if (list_empty(&thread->task_busy_list))
+> +		goto done;
+> +
+> +	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
+> +				 list_entry) {
+> +		cmdq_task_exec_done(task, -ECONNABORTED);
+> +		kfree(task);
+> +	}
+> +
+> +	cmdq_thread_disable(cmdq, thread);
+> +	clk_disable(cmdq->clock);
+> +done:
+
+cmdq_thread_resume(thread);
+
+Regards,
+CK
+
+> +	spin_unlock_irqrestore(&thread->chan->lock, flags);
+>  }
 >  
->  static const struct of_device_id cmdq_of_ids[] = {
->  	{.compatible = "mediatek,mt8173-gce", .data = (void *)&gce_plat_v2},
->  	{.compatible = "mediatek,mt8183-gce", .data = (void *)&gce_plat_v3},
-> +	{.compatible = "mediatek,mt6779-gce", .data = (void *)&gce_plat_v4},
->  	{}
->  };
->  
+>  static const struct mbox_chan_ops cmdq_mbox_chan_ops = {
 
 _______________________________________________
 Linux-mediatek mailing list
