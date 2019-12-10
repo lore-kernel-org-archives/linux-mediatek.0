@@ -1,66 +1,78 @@
-Return-Path: <SRS0=SGDP=Z7=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=F6Lp=2A=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 996DCC43603
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 22:05:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 80F9FC43603
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 01:25:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 68680206D5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Dec 2019 22:05:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 521412073D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 01:25:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hiEefVeJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 68680206D5
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uaIleQGb";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="gcPpE+/5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 521412073D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3e/UTRiUxGHmVrvgxfpWBN/ANtiLBRBkPsgEw//tlMY=; b=hiEefVeJsc/1O2
-	DA10SRwpZ2lvUK2W1K2LAjvApf+Bbi1nUibyu8ZoO4FjcYTfOZROFLzwoT0OB/STuTdaTXvbdHEtf
-	Vq/kf/wX1Tfj85lIeRk5AFOEy6fjNX+xK1SbiBdBU9MLG4U89zTtZgR2yXyueDKiyvOlAWgbacqMy
-	qQhHEP9OzA+BV0iHuG4Tr6nJOkbN4bdQwCxlaLEbNF2/3pzcjz7v8Mj+fkYNghjWPqDtiYMTZeZCi
-	DF/gIzITZIQrMsWVyV8+niA+/0E1d+NDtsxajhTs+IOZDxPTZ/FkSwJd+jwmzX4H+Cx40yznKJf2S
-	0uAtDsNtgc/n1vpzuxdg==;
+	List-Owner; bh=cwNcYB0Ama5XZcBLk9b20E1ZnzK/ULXEZavbnQrev5k=; b=uaIleQGbiUIJJv
+	YCwWFcNUTC5BbNZnJdgEZNhh+ZpDerp42x9csOl6XPvQK6egHliFdQvpWpXcXsYqExw93mLUlfLMh
+	YdouPEqYakghH4Xmm+eqaAAs/5a39xy1ao/bZH9w99gcYiIHSjZ5kdVnKoK6NXSC4bxcZ6LHiToSl
+	jJdsz3WHZ+6gvbxPcy8uyWgvNmSPLGaujyopzxsb0GNaaGECJQdGNvAo0Biv6fBnOa3EZkdN6v/21
+	bMOYJwdaidPRu9LpjmvnxBvQKeTqD6byaOUACmzjLx5rNh1npYnSF3NACV0NR4/wlrQHZ82ntkGn9
+	bu6fOVz8/TW43EMCZdmA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ieR9f-00048J-Ir; Mon, 09 Dec 2019 22:05:23 +0000
-Received: from asavdk4.altibox.net ([109.247.116.15])
+	id 1ieUGz-0001ue-MD; Tue, 10 Dec 2019 01:25:09 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieR9U-0003BU-RG; Mon, 09 Dec 2019 22:05:15 +0000
-Received: from ravnborg.org (unknown [158.248.194.18])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by asavdk4.altibox.net (Postfix) with ESMTPS id 9E94580514;
- Mon,  9 Dec 2019 23:05:01 +0100 (CET)
-Date: Mon, 9 Dec 2019 23:04:59 +0100
-From: Sam Ravnborg <sam@ravnborg.org>
-To: dri-devel@lists.freedesktop.org, Thierry Reding <thierry.reding@gmail.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH v2 0/25] drm/panel infrastructure + backlight update
-Message-ID: <20191209220459.GA11015@ravnborg.org>
-References: <20191207140353.23967-1-sam@ravnborg.org>
+ id 1ieUGg-0000yS-It; Tue, 10 Dec 2019 01:24:51 +0000
+X-UUID: 4bda56e0eda04f5587c8c2463e0c8aab-20191209
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=uS+vnIodKcC3nYeOH364CYiGDOfQNtI3mPSCouI1v0o=; 
+ b=gcPpE+/50n18No5AZmiEkd3C3cSllzyT7fYi6K8YFsPoZyqwFQ8VQr1H2plHvwffV2EGBag/Cckd/SwXSWTBqGaote7w/Hq4JfhE4QZKBaowDBMJh227YsKXJyFTZK0F1urZXGKKCvxMLNQOL8qPlpg9/UyM1RanJjrOPlNzus4=;
+X-UUID: 4bda56e0eda04f5587c8c2463e0c8aab-20191209
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 830653311; Mon, 09 Dec 2019 17:24:46 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 9 Dec 2019 17:25:41 -0800
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 10 Dec 2019 09:23:39 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Tue, 10 Dec 2019 09:24:16 +0800
+Message-ID: <1575941074.9782.0.camel@mtksdaap41>
+Subject: Re: [PATCH v2 24/28] drm/mediatek: hdmi: Use drm_bridge_init()
+From: CK Hu <ck.hu@mediatek.com>
+To: Mihail Atanassov <Mihail.Atanassov@arm.com>
+Date: Tue, 10 Dec 2019 09:24:34 +0800
+In-Reply-To: <20191204114732.28514-25-mihail.atanassov@arm.com>
+References: <20191204114732.28514-1-mihail.atanassov@arm.com>
+ <20191204114732.28514-25-mihail.atanassov@arm.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191207140353.23967-1-sam@ravnborg.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-CMAE-Score: 0
-X-CMAE-Analysis: v=2.3 cv=VcLZwmh9 c=1 sm=1 tr=0
- a=UWs3HLbX/2nnQ3s7vZ42gw==:117 a=UWs3HLbX/2nnQ3s7vZ42gw==:17
- a=jpOVt7BSZ2e4Z31A5e1TngXxSK0=:19 a=kj9zAlcOel0A:10
- a=-e7YKnP9ej6YZVhYjlAA:9 a=CjuIK1q_8ugA:10
+X-TM-SNTS-SMTP: C2053D4113A1F6C2D03FB17F90EEE848F312EC60C58E129E95C51A71E518A3AF2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191209_140514_037362_6D9F781A 
-X-CRM114-Status: GOOD (  20.06  )
+X-CRM114-CacheID: sfid-20191209_172450_627723_DB1FE953 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,71 +84,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
- Stefan Agner <stefan@agner.ch>, Andrzej Hajda <a.hajda@samsung.com>,
- Benjamin Gaignard <benjamin.gaignard@linaro.org>,
- linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Tomi Valkeinen <tomi.valkeinen@ti.com>,
- Jagan Teki <jagan@amarulasolutions.com>, NXP Linux Team <linux-imx@nxp.com>,
- Jitao Shi <jitao.shi@mediatek.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, linux-mediatek@lists.infradead.org,
- Abhinav Kumar <abhinavk@codeaurora.org>, linux-tegra@vger.kernel.org,
- Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org,
- Purism Kernel Team <kernel@puri.sm>, linux-renesas-soc@vger.kernel.org,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Daniel Vetter <daniel@ffwll.ch>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ nd <nd@arm.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Dec 07, 2019 at 03:03:28PM +0100, Sam Ravnborg wrote:
-> This patchset include a couple of different
-> things - all related to panels.
+Hi, Mihail:
+
+On Wed, 2019-12-04 at 11:48 +0000, Mihail Atanassov wrote:
+> No functional change.
 > 
-> - The callbacks are optional - so drop error if
->   callback is not present.
+
+Acked-by: CK Hu <ck.hu@mediatek.com>
+
+> Signed-off-by: Mihail Atanassov <mihail.atanassov@arm.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_hdmi.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> index f684947c5243..9761a80674d9 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> @@ -1708,8 +1708,8 @@ static int mtk_drm_hdmi_probe(struct platform_device *pdev)
 >  
-> - Add support for backlight in drm_panel.
->   This allows us to make much simpler backlight
->   support to most panels.
->   The patchset include conversion of most of the
->   trivial cases.
-> 
-> - Drop drm_connector from drm_panel.
->   This change required many changes to most
->   panels and many bridges and display drivers.
->   This is by far the most invasive change in this patchset.
-> 
-> With this patchset drm_panel_(attach|detach) are nop's
-> but they are kept for now.
-> 
-> A few of these patches has been sent out before - but versioning
-> started again from v1 - as the most patches are new.
-> 
-> I have tested the panel-simple changes, and thus some
-> of the infrastructure changes.
-> The testing was done on an earlier iteration - and I ended
-> up submitting this as Laurent and others started to depend on it.
-> 
-> v2:
->   This is mostly addressing comments from Laurent.
->   - drop get_timings removal, we should start using it
->   - do not fail in drm_panel_of_backlight() if DT is not enabled
->   - updated changelogs and code comments in many places (thanks Laurent!)
->   - get_modes is a mandatory callback - return -EOPNOTSUPP if not specified
->   - log if backlight update fails
->   - added a-b/r-bs
->     o thanks to Laurent and Linus for the prompt reviews!
-> 
-> When "drm/panel: add backlight support" is reviewed I plan to
-> apply the full series to drm-misc-next.
-
-Fixed the last bits pointed out by Laurent and pushed to drm-misc-next.
-
-	Sam
+>  	mtk_hdmi_register_audio_driver(dev);
+>  
+> -	hdmi->bridge.funcs = &mtk_hdmi_bridge_funcs;
+> -	hdmi->bridge.of_node = pdev->dev.of_node;
+> +	drm_bridge_init(&hdmi->bridge, &pdev->dev, &mtk_hdmi_bridge_funcs,
+> +			NULL, NULL);
+>  	drm_bridge_add(&hdmi->bridge);
+>  
+>  	ret = mtk_hdmi_clk_enable_audio(hdmi);
 
 _______________________________________________
 Linux-mediatek mailing list
