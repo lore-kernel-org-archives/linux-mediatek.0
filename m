@@ -2,77 +2,158 @@ Return-Path: <SRS0=F6Lp=2A=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EE7FCC43603
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 01:55:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A621C04E30
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 02:04:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BFC4620637
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 01:55:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F009024654
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 02:04:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ck6p/+9f";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="uZaQ7cQe"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BFC4620637
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="V7ST+6WJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="JJQk8o7y"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F009024654
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
+	Date:Message-ID:From:To:Subject:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=omeiTkG98uz56uVP7oB1vZTVashZ4uJerT/pL5nmReI=; b=Ck6p/+9f45KLRH
-	w1gXML7LATK60wDzqrd0bFGs6FcyzyBFjBgZqcpZJoPCx706BO4ilpbfzYHDcbT4t//KUxqViSClO
-	nk1Ld3t36Zo3qcDb4oOuVirT1R9jAmT6gIxlHhnDnJdASqjXFUzUjWHE+5bhIUVEWfDm7GWmXgP5V
-	5F9Z7OmcEdI+jo7XRLIpLCV/Y5adajOW7llD/bTdIEJUCJS5zOEsPSLAtHZJX1mNZwW8bvRALSISM
-	AKU0+cPlYSau/SJficNnxzclLCxVO7Yzxd+qLPDsjOcTzHvmRZAY5OvKweeGmzJT9EMJm60jsh5tK
-	wy4T/vA1GNooMnQjS37w==;
+	List-Owner; bh=t8+inYAUHJMmfEsWIYXwCiBIK2ZcRlpmzYg4+GEqniY=; b=V7ST+6WJid+gdh
+	9g5MaXkjoF3l7R4JJpaRSlq03fsCm80ovZl2Az0/PJ0lLGF4Z0NFIrGIorhFhQFDaF4xFg3H6v3Qb
+	sNZ5muuxnCE0in4nmASwhdcx6Xiwp4RSDY5tay0VGqdOZqhooNBzqCwgaXWnCSfm89rFgnfCYnJQA
+	bhOCJlaxgAdPJrefUevIHcUTQgp/RhWsc32BXRP6Zspg9b+aXOHQfeVRBLKtSYNMd55K2xKTE+bFb
+	RkDNOcqmdn+JyAej7GeyvwC4jJNqnAx1byTR0Nr3G4AA6G5DHbx5bhdgfQXnOejEPilulmLEkr37u
+	QCq6NUNj9HAIocwarOPA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ieUkM-0003QM-ED; Tue, 10 Dec 2019 01:55:30 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ieUt2-0005KX-0d; Tue, 10 Dec 2019 02:04:28 +0000
+Received: from mailout4.samsung.com ([203.254.224.34])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieUkA-0003Fj-3Y; Tue, 10 Dec 2019 01:55:21 +0000
-X-UUID: 381942953cb247da980d37d60d1b8f56-20191209
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=982g9dOwewSGMZ2O7hXVzIKUMw7xMt+hL8+JyD3K+Vs=; 
- b=uZaQ7cQe4fjytkh4JOaviVooU/CfNLnDqTsd7oedT2a33v/5AtbbMwfnyzERD/O4/2Gs9EGyjEcrtK8r2uTBHiazzsYDm1X9vKSDCslghqT3n9/0+bGvY6W5LyZx2c2p280Gv54FM3lZB00An0L7m8gfrXVFlz06/q7PIem73VU=;
-X-UUID: 381942953cb247da980d37d60d1b8f56-20191209
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1284111491; Mon, 09 Dec 2019 17:55:09 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 9 Dec 2019 17:55:23 -0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 10 Dec 2019 09:54:48 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 10 Dec 2019 09:54:48 +0800
-Message-ID: <1575942906.12891.6.camel@mtksdaap41>
-Subject: Re: [PATCH v2 02/14] mailbox: cmdq: variablize address shift in
- platform
-From: CK Hu <ck.hu@mediatek.com>
-To: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
-Date: Tue, 10 Dec 2019 09:55:06 +0800
-In-Reply-To: <1574819937-6246-4-git-send-email-dennis-yc.hsieh@mediatek.com>
-References: <1574819937-6246-1-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1574819937-6246-4-git-send-email-dennis-yc.hsieh@mediatek.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1ieUsy-0005Ja-LC; Tue, 10 Dec 2019 02:04:26 +0000
+Received: from epcas1p1.samsung.com (unknown [182.195.41.45])
+ by mailout4.samsung.com (KnoxPortal) with ESMTP id
+ 20191210020418epoutp04311046dab4d46ed4a083aa16c0a91919~e4DmxOs8I1450614506epoutp04I;
+ Tue, 10 Dec 2019 02:04:18 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com
+ 20191210020418epoutp04311046dab4d46ed4a083aa16c0a91919~e4DmxOs8I1450614506epoutp04I
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1575943458;
+ bh=JIlFhIxGiAWFjXmj8eutng+eKDk0ywJyefbSTWOuCns=;
+ h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
+ b=JJQk8o7yF1js+i8wr7DbP4opuQkC18/V/d/fwlp5vdnBQjUIzATM1kk6fxI3RPdpb
+ rh7ASkXsDo+PQ7yvMHdsyb0gPx72Wzsf+zGS996PoLxs3IA7lReAemwE1J/Egerf1d
+ 5FfKNG2QNaVEXPDJkF7jHjTJmB+U3FAFXzAX3t+c=
+Received: from epsnrtp4.localdomain (unknown [182.195.42.165]) by
+ epcas1p3.samsung.com (KnoxPortal) with ESMTP id
+ 20191210020417epcas1p3103e50cf5f2838be97d66d7844edca06~e4DmOD-n70406004060epcas1p3V;
+ Tue, 10 Dec 2019 02:04:17 +0000 (GMT)
+Received: from epsmges1p2.samsung.com (unknown [182.195.40.156]) by
+ epsnrtp4.localdomain (Postfix) with ESMTP id 47X3Jv075zzMqYl1; Tue, 10 Dec
+ 2019 02:04:15 +0000 (GMT)
+Received: from epcas1p3.samsung.com ( [182.195.41.47]) by
+ epsmges1p2.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 84.58.48498.E1DFEED5; Tue, 10 Dec 2019 11:04:14 +0900 (KST)
+Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
+ epcas1p3.samsung.com (KnoxPortal) with ESMTPA id
+ 20191210020413epcas1p3e11eda64344c8e15d7781c5071e76953~e4DjAEU5S0406004060epcas1p3Q;
+ Tue, 10 Dec 2019 02:04:13 +0000 (GMT)
+Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
+ epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
+ 20191210020413epsmtrp2b7f2e8b02004fb0c1daadd1d2454ecce~e4Di_LLlV2765727657epsmtrp2N;
+ Tue, 10 Dec 2019 02:04:13 +0000 (GMT)
+X-AuditID: b6c32a36-a55ff7000001bd72-dd-5deefd1ee477
+Received: from epsmtip2.samsung.com ( [182.195.34.31]) by
+ epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
+ C6.AD.10238.D1DFEED5; Tue, 10 Dec 2019 11:04:13 +0900 (KST)
+Received: from [10.113.221.102] (unknown [10.113.221.102]) by
+ epsmtip2.samsung.com (KnoxPortal) with ESMTPA id
+ 20191210020413epsmtip2b78f213eb12d5fbee4bff5729c9aae69~e4DiI_two1930619306epsmtip2Y;
+ Tue, 10 Dec 2019 02:04:13 +0000 (GMT)
+Subject: Re: [PATCH 03/17] clk: samsung: convert to
+ devm_platform_ioremap_resource
+To: Yangtao Li <tiny.windzz@gmail.com>, afaerber@suse.de,
+ manivannan.sadhasivam@linaro.org, mturquette@baylibre.com, sboyd@kernel.org,
+ Eugeniy.Paltsev@synopsys.com, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
+ agross@kernel.org, s.nawrocki@samsung.com, tomasz.figa@gmail.com,
+ kgene@kernel.org, krzk@kernel.org, palmer@sifive.com,
+ paul.walmsley@sifive.com, dinguyen@kernel.org, mripard@kernel.org,
+ wens@csie.org, emilio@elopez.com.ar, pdeschrijver@nvidia.com,
+ pgaikwad@nvidia.com, thierry.reding@gmail.com, jonathanh@nvidia.com,
+ matthias.bgg@gmail.com, rfontana@redhat.com, gregkh@linuxfoundation.org,
+ t-kristo@ti.com, john@phrozen.org, tglx@linutronix.de, allison@lohutok.net,
+ kstewart@linuxfoundation.org, swinslow@gmail.com, aisheng.dong@nxp.com,
+ robh@kernel.org, daniel.baluta@nxp.com, wangyan.wang@mediatek.com,
+ chunhui.dai@mediatek.com, miquel.raynal@bootlin.com, heiko@sntech.de,
+ jcmvbkbc@gmail.com, nsekhar@ti.com, geert+renesas@glider.be
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Organization: Samsung Electronics
+Message-ID: <02ece950-b3d2-0d1a-fd94-acb64272bc96@samsung.com>
+Date: Tue, 10 Dec 2019 11:10:39 +0900
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101
+ Thunderbird/59.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20191209195749.868-3-tiny.windzz@gmail.com>
+Content-Language: en-US
+X-Brightmail-Tracker: H4sIAAAAAAAAA01UbTCcVxSeu+/HLo3mrUhdfrTrzbSdmBEWy9FGqq3KO22m1SYxnXSM7tg3
+ KNZ2l3z+aBKKRQbJENkS5KNKZHwOayPWEBGdYRmNSmszjZVISzdV35XQta9M/XvOc55znnvu
+ mXslhKtR4ilJUKXyGpUiiaWdyZbunb4+rz23RfvlVoVAeqMWBqwrJMwVGQmovrtKQvaDchoa
+ 2i009JhviuBx/Zydqyql4OG9T6Hs+3MI0q/U0bA2PkXBwsNKBObFNhoy9JdJqClqIyHfOkWA
+ 2VwvhrzSMwgarSMUFJr6xTCT94CCnH+rCRg2ltIwnD6EoGU2g4YSc4cIdHN6GiwZOgrOZARA
+ d1YHBZm6HygY+ulDMJ2tF0FTQYWd0m+FczeKENwvPwzt1joC1toNYnje2khC93QWBasjDSQ8
+ aXYH09AMgquPsmloaiwiYNl4iYSylQIaaozPEJTXLFGw3GUWhcm5p6PfiblLtSe5+vHrFPfM
+ tpcr7Pfh2vQWMddYo6O5sZF2mrMNDIg5U1mtmGu6+i03Mz0h5jL6TCR3Nt1Gcw02g4jLf+4X
+ 6XEocXc8r1DyGimvik1RJqjiQtmP98d8ECMP8pP5yEIgmJWqFMl8KBu+L9InIiHJvhhWekSR
+ lGanIhVaLeu7Z7cmJS2Vl8anaFNDWV6tTFKHqHdpFcnaNFXcrtiU5Ldlfn7+crvwq8T4ptb7
+ tPq09NiPqwvoFJrwzEFOEswEYuvf42QOcpa4MgaE8+5mbwT/IPyo04SEYAHhyYV84kWJZXRR
+ LCRuIfxHbhEhBE8R7pz5jVxXbWMOYENOnSPhxuRK8Oj5CdF6QDC5Itwwf9HRi2a8senJKL2O
+ tzJe+N6SFa1jF2YPzusZdGhI5g38s9VCrePtTBTua8nY0LyC+y5OONycmBCcXlnv6EMw7vjX
+ iXKRgF/HrX+VOk6BmcdO+GZtCSkMEY6ndHdEAt6G/+xtFgvYE8/abtECPomr+27TQnE2ws2m
+ QUpIBGDTtfP2YondYSeuM/oKtBduWylDgvHL2DafR61LMOOCszNdBckOPPy7ZcPWA1/J0tEF
+ iNVvGke/aQT9phH0/5tVILIGvcqrtclxvFam9t+88EbkeLfeQQZ0eWBfF2IkiN3iUhFmi3al
+ FEe0x5O7EJYQrJtLb6adclEqjp/gNSkxmrQkXtuF5PbbLiQ8t8em2H8BVWqMTO4fEBAAgbIg
+ uUzGurtIloaiXZk4RSqfyPNqXvOiTiRx8jyFOqePvTXWkz8+Jl/8xT+n2ItNZnV7O3KrTzh7
+ tn00rwz0z6racQgHv3cNfV1w5/OXqg9ohnMj3umN3n+jmIogK4Pn3L5oCi5ee3fS+bNvhma7
+ 37TU+VTNRjdUhU9KT28xHD34viHqwnKU/GB9eKLH0RK/w7bbYZMGZb+0YND45fXpT9xZUhuv
+ kHkTGq3iP+SSlHzNBAAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA02SbUxTZxTH89x3iJ2XouOBbXFrsiwj0YFOPSaGsCXKs2zJ/KAuminrxh26
+ 0Up6QSdbMkc7pBUmmnS6y0thkCmdrqUYKdDRhK4oZlAYg+Bia7RlIcHWEBF1Ao4L2cK33/mf
+ 8/t/OgKtbeYyhMPGEslk1BfpuGTmakC3bv1L84kDWf3nssDskWEw+pSBGXsXDa3XFxiojDg4
+ aPOFOQiGuin42z2zmF2oY+HO6PtQX3sWgbnZxcGzu1MszN5pQhB61MmBRfmRAae9k4HT0Ska
+ QiE3D1V15Qg80TEWzvgHeJiuirBg+6eVhpGuOg5GzMMIrj6wcHA+1EOBdUbhIGyxslBu2QSB
+ kz0sVFh/YmH4xg7wV7spaK9pXIyU1XD2sh3BTcen4Iu6aHjm8/Iw3+FhIHDvJAsLY20MTF5J
+ A//wNIKWiUoO2j12Gp50NTBQ/7SGA2fXHAKH8zELT3pDVO5mcn/8W540XPqSuO/+zJK5RB45
+ M7CedCphnnicVo7cGvNxJDE4yBN//SWetLd8TabvxXhi6fczpNqc4EhbwkuR0/NZu9L3J28v
+ kIoOH5VMb+R8lHyoveMmV/zNy19cXJhFJ1Asw4aSBCy+icPjj3gbSha0YjfCtQ/rqeVFOv5+
+ OEjbkLDIqTgQkNVYK8YRttemqJwq7sZem4tW3TXiKQH3TTWz6kCLpygc/L2C/r/V1tTGqAon
+ ZmL/5Din8mrxFTz6OIpU1og5uCo4RKvMiK/iP6NhVuW14l7c2RKllm9ScP8PsaWeJHEbNje5
+ l3po8TU81/AHvcxp+K+Yg1rmdbgjXkfXoFRlha6sUJQVirJCaUSME6VLxbKh0CBnF2cbpWMb
+ ZL1BLjUWbvjkiMGDll4383UvGmnJ70WigHSrNI25iQNaVn9UPm7oRVigdWs01yoWI02B/niZ
+ ZDqSbyotkuRe9ILA6NI0E8a+fVqxUF8ifS5JxZLpvy0lJGWcQBsrg4kJmMlNlOdt/My6J0jy
+ nfa3r2/d9MF06pbq4O7SaGVZyh783pzl+dKPW6mCdzb/MurfX+KJ73y32xlxVfhs511f3U6P
+ 7NslXPwub6e/8MVfu82zQz3b4m9dmLgfL7u8d6sSueH9bXLMdpDEnsseUm5byZUBR2vfhzty
+ Dj44N69j5EP67EzaJOv/BcgKhNC2AwAA
+X-CMS-MailID: 20191210020413epcas1p3e11eda64344c8e15d7781c5071e76953
+X-Msg-Generator: CA
+X-Sendblock-Type: SVC_REQ_APPROVE
+CMS-TYPE: 101P
+DLP-Filter: Pass
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20191209195912epcas5p2759273f3c5b15df7e78285e5db964ee5
+References: <20191209195749.868-1-tiny.windzz@gmail.com>
+ <CGME20191209195912epcas5p2759273f3c5b15df7e78285e5db964ee5@epcas5p2.samsung.com>
+ <20191209195749.868-3-tiny.windzz@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191209_175518_165100_43DD90FF 
-X-CRM114-Status: GOOD (  18.79  )
+X-CRM114-CacheID: sfid-20191209_180425_092917_E9BC29C4 
+X-CRM114-Status: GOOD (  17.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,242 +165,119 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
- Jassi Brar <jassisinghbrar@gmail.com>, linux-kernel@vger.kernel.org,
- Houlong Wei <houlong.wei@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Bibby Hsieh <bibby.hsieh@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-tegra@vger.kernel.org, linux-riscv@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dennis:
+Hi,
 
-On Wed, 2019-11-27 at 09:58 +0800, Dennis YC Hsieh wrote:
-> Some gce hardware shift pc and end address in register to support
-> large dram addressing.
-> Implement gce address shift when write or read pc and end register.
-> And add shift bit in platform definition.
+On 12/10/19 4:57 AM, Yangtao Li wrote:
+> Use devm_platform_ioremap_resource() to simplify code.
 > 
-> Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
+> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 > ---
->  drivers/mailbox/mtk-cmdq-mailbox.c       | 57 ++++++++++++++++++------
->  drivers/soc/mediatek/mtk-cmdq-helper.c   |  3 +-
->  include/linux/mailbox/mtk-cmdq-mailbox.h |  2 +
->  3 files changed, 48 insertions(+), 14 deletions(-)
+>  drivers/clk/samsung/clk-exynos-audss.c   | 4 +---
+>  drivers/clk/samsung/clk-exynos4412-isp.c | 4 +---
+>  drivers/clk/samsung/clk-exynos5433.c     | 4 +---
+>  drivers/clk/samsung/clk-s5pv210-audss.c  | 4 +---
+>  4 files changed, 4 insertions(+), 12 deletions(-)
 > 
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-> index 9a6ce9f5a7db..d5536563fce1 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -76,8 +76,21 @@ struct cmdq {
->  	struct cmdq_thread	*thread;
->  	struct clk		*clock;
->  	bool			suspended;
-> +	u8			shift_pa;
->  };
+> diff --git a/drivers/clk/samsung/clk-exynos-audss.c b/drivers/clk/samsung/clk-exynos-audss.c
+> index 42b5d32c6cc7..9cc127a162ad 100644
+> --- a/drivers/clk/samsung/clk-exynos-audss.c
+> +++ b/drivers/clk/samsung/clk-exynos-audss.c
+> @@ -129,7 +129,6 @@ static int exynos_audss_clk_probe(struct platform_device *pdev)
+>  	struct clk *pll_ref, *pll_in, *cdclk, *sclk_audio, *sclk_pcm_in;
+>  	const struct exynos_audss_clk_drvdata *variant;
+>  	struct clk_hw **clk_table;
+> -	struct resource *res;
+>  	struct device *dev = &pdev->dev;
+>  	int i, ret = 0;
 >  
-> +struct gce_plat {
-> +	u32 thread_nr;
-> +	u8 shift;
-> +};
-> +
-> +u8 cmdq_mbox_shift(struct mbox_chan *chan)
-> +{
-> +	struct cmdq *cmdq = container_of(chan->mbox, struct cmdq, mbox);
-> +
-> +	return cmdq->shift_pa;
-> +}
-
-EXPORT_SYMBOL(cmdq_mbox_shift);
-
-> +
->  static int cmdq_thread_suspend(struct cmdq *cmdq, struct cmdq_thread *thread)
->  {
->  	u32 status;
-> @@ -176,6 +189,7 @@ static void cmdq_task_remove_wfe(struct cmdq_task *task)
->  {
->  	struct device *dev = task->cmdq->mbox.dev;
->  	u64 *base = task->pkt->va_base;
-> +	struct cmdq *cmdq = task->cmdq;
+> @@ -137,8 +136,7 @@ static int exynos_audss_clk_probe(struct platform_device *pdev)
+>  	if (!variant)
+>  		return -EINVAL;
+>  
+> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> -	reg_base = devm_ioremap_resource(dev, res);
+> +	reg_base = devm_platform_ioremap_resource(pdev, 0);
+>  	if (IS_ERR(reg_base))
+>  		return PTR_ERR(reg_base);
+>  
+> diff --git a/drivers/clk/samsung/clk-exynos4412-isp.c b/drivers/clk/samsung/clk-exynos4412-isp.c
+> index 4b9e73608c21..20f5129f7212 100644
+> --- a/drivers/clk/samsung/clk-exynos4412-isp.c
+> +++ b/drivers/clk/samsung/clk-exynos4412-isp.c
+> @@ -110,11 +110,9 @@ static int __init exynos4x12_isp_clk_probe(struct platform_device *pdev)
+>  	struct samsung_clk_provider *ctx;
+>  	struct device *dev = &pdev->dev;
+>  	struct device_node *np = dev->of_node;
+> -	struct resource *res;
+>  	void __iomem *reg_base;
+>  
+> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> -	reg_base = devm_ioremap_resource(dev, res);
+> +	reg_base = devm_platform_ioremap_resource(pdev, 0);
+>  	if (IS_ERR(reg_base)) {
+>  		dev_err(dev, "failed to map registers\n");
+>  		return PTR_ERR(reg_base);
+> diff --git a/drivers/clk/samsung/clk-exynos5433.c b/drivers/clk/samsung/clk-exynos5433.c
+> index 4b1aa9382ad2..b0d48cddfd6e 100644
+> --- a/drivers/clk/samsung/clk-exynos5433.c
+> +++ b/drivers/clk/samsung/clk-exynos5433.c
+> @@ -5557,7 +5557,6 @@ static int __init exynos5433_cmu_probe(struct platform_device *pdev)
+>  	struct exynos5433_cmu_data *data;
+>  	struct samsung_clk_provider *ctx;
+>  	struct device *dev = &pdev->dev;
+> -	struct resource *res;
+>  	void __iomem *reg_base;
 >  	int i;
 >  
->  	dma_sync_single_for_cpu(dev, task->pa_base, task->pkt->cmd_buf_size,
-> @@ -183,7 +197,7 @@ static void cmdq_task_remove_wfe(struct cmdq_task *task)
->  	for (i = 0; i < CMDQ_NUM_CMD(task->pkt); i++)
->  		if (cmdq_command_is_wfe(base[i]))
->  			base[i] = (u64)CMDQ_JUMP_BY_OFFSET << 32 |
-> -				  CMDQ_JUMP_PASS;
-> +				  CMDQ_JUMP_PASS >> cmdq->shift_pa;
-
-cmdq is only used here, so I would like
-
-CMDQ_JUMP_PASS >> task->cmdq->shift_pa;
-
->  	dma_sync_single_for_device(dev, task->pa_base, task->pkt->cmd_buf_size,
->  				   DMA_TO_DEVICE);
->  }
-> @@ -221,13 +235,15 @@ static void cmdq_task_handle_error(struct cmdq_task *task)
+> @@ -5570,8 +5569,7 @@ static int __init exynos5433_cmu_probe(struct platform_device *pdev)
+>  		return -ENOMEM;
+>  	ctx = &data->ctx;
+>  
+> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> -	reg_base = devm_ioremap_resource(dev, res);
+> +	reg_base = devm_platform_ioremap_resource(pdev, 0);
+>  	if (IS_ERR(reg_base))
+>  		return PTR_ERR(reg_base);
+>  
+> diff --git a/drivers/clk/samsung/clk-s5pv210-audss.c b/drivers/clk/samsung/clk-s5pv210-audss.c
+> index 14985ebd043b..503bd8a10d8f 100644
+> --- a/drivers/clk/samsung/clk-s5pv210-audss.c
+> +++ b/drivers/clk/samsung/clk-s5pv210-audss.c
+> @@ -63,15 +63,13 @@ static struct syscore_ops s5pv210_audss_clk_syscore_ops = {
+>  static int s5pv210_audss_clk_probe(struct platform_device *pdev)
 >  {
->  	struct cmdq_thread *thread = task->thread;
->  	struct cmdq_task *next_task;
-> +	struct cmdq *cmdq = task->cmdq;
+>  	int i, ret = 0;
+> -	struct resource *res;
+>  	const char *mout_audss_p[2];
+>  	const char *mout_i2s_p[3];
+>  	const char *hclk_p;
+>  	struct clk_hw **clk_table;
+>  	struct clk *hclk, *pll_ref, *pll_in, *cdclk, *sclk_audio;
 >  
->  	dev_err(task->cmdq->mbox.dev, "task 0x%p error\n", task);
->  	WARN_ON(cmdq_thread_suspend(task->cmdq, thread) < 0);
->  	next_task = list_first_entry_or_null(&thread->task_busy_list,
->  			struct cmdq_task, list_entry);
->  	if (next_task)
-> -		writel(next_task->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
-> +		writel(next_task->pa_base >> cmdq->shift_pa,
-> +		       thread->base + CMDQ_THR_CURR_ADDR);
->  	cmdq_thread_resume(thread);
->  }
->  
-> @@ -257,7 +273,7 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
->  	else
->  		return;
->  
-> -	curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR);
-> +	curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) << cmdq->shift_pa;
->  
->  	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
->  				 list_entry) {
-> @@ -373,16 +389,20 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
->  		WARN_ON(clk_enable(cmdq->clock) < 0);
->  		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
->  
-> -		writel(task->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
-> -		writel(task->pa_base + pkt->cmd_buf_size,
-> +		writel(task->pa_base >> cmdq->shift_pa,
-> +		       thread->base + CMDQ_THR_CURR_ADDR);
-> +		writel((task->pa_base + pkt->cmd_buf_size) >> cmdq->shift_pa,
->  		       thread->base + CMDQ_THR_END_ADDR);
-> +
->  		writel(thread->priority, thread->base + CMDQ_THR_PRIORITY);
->  		writel(CMDQ_THR_IRQ_EN, thread->base + CMDQ_THR_IRQ_ENABLE);
->  		writel(CMDQ_THR_ENABLED, thread->base + CMDQ_THR_ENABLE_TASK);
->  	} else {
->  		WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
-> -		curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR);
-> -		end_pa = readl(thread->base + CMDQ_THR_END_ADDR);
-> +		curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) <<
-> +			cmdq->shift_pa;
-> +		end_pa = readl(thread->base + CMDQ_THR_END_ADDR) <<
-> +			cmdq->shift_pa;
->  
->  		/*
->  		 * Atomic execution should remove the following wfe, i.e. only
-> @@ -395,7 +415,7 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
->  				cmdq_thread_wait_end(thread, end_pa);
->  				WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
->  				/* set to this task directly */
-> -				writel(task->pa_base,
-> +				writel(task->pa_base >> cmdq->shift_pa,
->  				       thread->base + CMDQ_THR_CURR_ADDR);
->  			} else {
->  				cmdq_task_insert_into_thread(task);
-> @@ -407,14 +427,14 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
->  			if (curr_pa == end_pa - CMDQ_INST_SIZE ||
->  			    curr_pa == end_pa) {
->  				/* set to this task directly */
-> -				writel(task->pa_base,
-> +				writel(task->pa_base >> cmdq->shift_pa,
->  				       thread->base + CMDQ_THR_CURR_ADDR);
->  			} else {
->  				cmdq_task_insert_into_thread(task);
->  				smp_mb(); /* modify jump before enable thread */
->  			}
->  		}
-> -		writel(task->pa_base + pkt->cmd_buf_size,
-> +		writel((task->pa_base + pkt->cmd_buf_size) >> cmdq->shift_pa,
->  		       thread->base + CMDQ_THR_END_ADDR);
->  		cmdq_thread_resume(thread);
->  	}
-> @@ -461,6 +481,7 @@ static int cmdq_probe(struct platform_device *pdev)
->  	struct resource *res;
->  	struct cmdq *cmdq;
->  	int err, i;
-> +	struct gce_plat *plat_data;
->  
->  	cmdq = devm_kzalloc(dev, sizeof(*cmdq), GFP_KERNEL);
->  	if (!cmdq)
-> @@ -479,7 +500,14 @@ static int cmdq_probe(struct platform_device *pdev)
->  		return -EINVAL;
->  	}
->  
-> -	cmdq->thread_nr = (u32)(unsigned long)of_device_get_match_data(dev);
-> +	plat_data = (struct gce_plat *)of_device_get_match_data(dev);
-> +	if (!plat_data) {
-> +		dev_err(dev, "failed to get match data\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	cmdq->thread_nr = plat_data->thread_nr;
-> +	cmdq->shift_pa = plat_data->shift;
->  	cmdq->irq_mask = GENMASK(cmdq->thread_nr - 1, 0);
->  	err = devm_request_irq(dev, cmdq->irq, cmdq_irq_handler, IRQF_SHARED,
->  			       "mtk_cmdq", cmdq);
-> @@ -542,9 +570,12 @@ static const struct dev_pm_ops cmdq_pm_ops = {
->  	.resume = cmdq_resume,
->  };
->  
-> +static const struct gce_plat gce_plat_v2 = {.thread_nr = 16, .shift = 0};
-> +static const struct gce_plat gce_plat_v3 = {.thread_nr = 24, .shift = 0};
+> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> -	reg_base = devm_ioremap_resource(&pdev->dev, res);
+> +	reg_base = devm_platform_ioremap_resource(pdev, 0);
+>  	if (IS_ERR(reg_base)) {
+>  		dev_err(&pdev->dev, "failed to map audss registers\n");
+>  		return PTR_ERR(reg_base);
+> 
 
-For global variable, you need not to initialize it to zero.
+Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
 
-> +
->  static const struct of_device_id cmdq_of_ids[] = {
-> -	{.compatible = "mediatek,mt8173-gce", .data = (void *)16},
-> -	{.compatible = "mediatek,mt8183-gce", .data = (void *)24},
-> +	{.compatible = "mediatek,mt8173-gce", .data = (void *)&gce_plat_v2},
-> +	{.compatible = "mediatek,mt8183-gce", .data = (void *)&gce_plat_v3},
->  	{}
->  };
->  
-> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index 9add0fd5fa6c..274f6f311d05 100644
-> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -281,6 +281,7 @@ EXPORT_SYMBOL(cmdq_pkt_poll_mask);
->  
->  static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
->  {
-> +	struct cmdq_client *cl = pkt->cl;
->  	struct cmdq_instruction inst = { {0} };
->  	int err;
->  
-> @@ -293,7 +294,7 @@ static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
->  
->  	/* JUMP to end */
->  	inst.op = CMDQ_CODE_JUMP;
-> -	inst.value = CMDQ_JUMP_PASS;
-> +	inst.value = CMDQ_JUMP_PASS >> cmdq_mbox_shift(cl->chan);
 
-cl is used only here, so I would like
-
-cmdq_mbox_shift(pkt->cl->chan);
-
-Regards,
-CK
-
->  	err = cmdq_pkt_append_command(pkt, inst);
->  
->  	return err;
-> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> index a4dc45fbec0a..dfe5b2eb85cc 100644
-> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
-> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> @@ -88,4 +88,6 @@ struct cmdq_pkt {
->  	void			*cl;
->  };
->  
-> +u8 cmdq_mbox_shift(struct mbox_chan *chan);
-> +
->  #endif /* __MTK_CMDQ_MAILBOX_H__ */
+-- 
+Best Regards,
+Chanwoo Choi
+Samsung Electronics
 
 _______________________________________________
 Linux-mediatek mailing list
