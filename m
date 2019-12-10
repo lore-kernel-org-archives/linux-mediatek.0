@@ -2,139 +2,85 @@ Return-Path: <SRS0=F6Lp=2A=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A08C3C2D0BF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 10:26:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9CED7C3F68F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 11:37:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 719332073B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 10:26:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 722A8208C3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 11:37:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eGWcqMlM";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="cNKIjWu8";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="QHwbiNKr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 719332073B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z+iFcy4t";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=gmx.net header.i=@gmx.net header.b="DYqzdHVF"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 722A8208C3
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:To:
+	From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ChMde0zztqPTA6dOoIqxxNZ4v4MJxYz4yn5erHK7Vg8=; b=eGWcqMlM4QGoZk
-	dELPyH4H08YIusFNqa3pEZ2pEzUZjgF5pUjM0OxQbIswq748gWHjo8MaieTHG4puuRfWuueclxS5L
-	8uxWuy+9b0nO7zfO9WIpMS4sybBU1I9BodrsxDJsHXMtzG6ADJK8ykagjr4eDnK5ETmXvHFB9VB8Z
-	p5j34319MMe6pS7rTommkv+N6ht5MslKN9wYAr3aEjd5AeCx6ucSgj8s/NSwI9TOk3xv3MJh22wzl
-	P7Yzfh4c8eIlC7AuQCGIINTCYqFcZ8+ayftLXa7FSu7AV32Ue0Oq0AM2YvedE1X2L17Yi7zVIqpVC
-	+0G6BmqnWx2K9tRh9pJA==;
+	List-Owner; bh=haRBAW5re8OHdvz0eU/0n5NEBualyLIpGVI+aPevOy8=; b=Z+iFcy4tdXlAQD
+	Ses3Hg59rhuq+W1pLaU7Ywwf+Paq3rZ+luhwyl37ogOIScEnJV83eZExmhYpRe4YY7OQKtE1n4Wfm
+	NajI/8EgB3NT+2Pt8pxWjqmL10AbBCJTvWD8AU2D45mFBiOOmHi7s9o8zsV2AY/fUp4eCs8EJfsZA
+	MkjBTNtTzVbYfREIRRxHptaPRDAKEyrttKrrr32z70iaP5J9p6D8azI3m5ZDbm492cxAFeIjjY+xV
+	gvvvNqysjNz2FSyWrj11HUkAbB8zVzbl5TKbxXD7NTC+xNiDTkpIno8zFu+smUpnL78OODTMvK+cb
+	1THK5BlzBNjSCeU1wGxA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iecj1-00040P-9g; Tue, 10 Dec 2019 10:26:39 +0000
-Received: from esa5.hgst.iphmx.com ([216.71.153.144])
+	id 1iedps-0000wP-SU; Tue, 10 Dec 2019 11:37:48 +0000
+Received: from mout.gmx.net ([212.227.15.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieciy-0003zN-J6; Tue, 10 Dec 2019 10:26:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1575973597; x=1607509597;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=59PC+vslyVH3+RidnZZvWipI0KF/p468mnOMKVWB+3k=;
- b=cNKIjWu8xi0q+LKKOLodiKpBxs0uKyY3UwetIBZnRZ4NlX5vVmzhR3CG
- AAAKBforIUVDgkYfbYkyeLjlaJgfu99um82Mtq6yQ3siZ6Iarvpgqr2c0
- Nu2OVJXOrd9Yaa8xrvN30bAMbDdMkHFq4BuUQR6ZoqltQmNs5IzwT7qt6
- qCF8tGgq2yAcd9XzwqeeY0spyygBA56tew3bKkgfewsDMi7fUlb+VqJeU
- RX0fiMyw+My74/UrwFzJt4OSaDedRLWKtBIJUikCfxC5UzO13hjtupfAd
- xXXgb4jpB9i/3i7xGcd1nrjK9OHW0G0yt8siobGRB9aLZues5YeHfc/eL g==;
-IronPort-SDR: nYLRGXq6AjqiFpZ3kxMbYbz4v/QJ1zwPm+L+JVuU1pRIKw377RQwq+eSK0zuXwLC1++3qelkmQ
- lmaiLBkXeTrXb2Rc1XAUVd0LnqOjBTTxOHWBU9IVc0vX3KKLc4PuI8GZutz6bBp+/8Ps4XZBEQ
- kPHbyidVS8w1piyC65Ww8C+YRZRRsmIuMHjxfNnSAAOHqQukBLc0FtIhkNwn3lXt4LW0MJNRyj
- wjFldA04ndsS54bCU41/ZuZ3THspFVAe3BQmmIQi4PPk3swujKhGy3Db/w+wEjnKjLcKfsrR1W
- YY4=
-X-IronPort-AV: E=Sophos;i="5.69,299,1571673600"; d="scan'208";a="125769038"
-Received: from mail-co1nam04lp2050.outbound.protection.outlook.com (HELO
- NAM04-CO1-obe.outbound.protection.outlook.com) ([104.47.45.50])
- by ob1.hgst.iphmx.com with ESMTP; 10 Dec 2019 18:26:33 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Z/LCFfecHHNjwnPRepgfHdfLR7RO5RGUU6GSmfZr05t7h3Enjky6vCwD22FRiFfayNSYvzCPscP37KUcKd9Pb0gjaVV1IZkpvusRXErx7WS21h17QBDz+EuOSsVolahKe9u6cKS0s50XvBSSwOACX9n2k8xKZ2WpWFVEJ1oP5jZnKZEq7uAb/I1FEJfzUbEn/nP+rvJi+kuqZlNj5F50Q5y7S/PkFH4y2cfBZTeV4jvrI+AHhTtUrYre/o3u2wY3Xk13CuXRRylk+vF6eN5m4He491ZvtivsHiLWbGtsyRNxprjuNiCRN2eSb0cosPrkq9u5wrT5caF/LvZWzKTJfA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=59PC+vslyVH3+RidnZZvWipI0KF/p468mnOMKVWB+3k=;
- b=jVZSzr4V2kRPpYUxwZjib5jx4cOKWpx1Dt2ULox7z6wEpf2v9D6a9VipOaJQdFOmcaYXdeS3z9QXfRHgemsFxJUmJfdq2fKrV+2mOGC7G4UlgwX9++1QdS24lLN+5M2+epnRFZkvqKwEuwSDpOjZwPADDuNW0rs8mwqGbqtX8HsdGUs+MzwOjYzzfOOOGKSjxYZ0X0S4qgY/05py9wzCnd8t7I+hXBgacGRKMuHf7aAkgzr2Sm0AgWWffGx0ezxALxHxVycr7in6GW8ly1F7jT5LWxgHHNdyjUl+Bmpex//qiJWErm8GiPj8mOhmVt9BcxetEmL6IV0NF/uHR5di3A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=59PC+vslyVH3+RidnZZvWipI0KF/p468mnOMKVWB+3k=;
- b=QHwbiNKrt6VFzaFLwmaHeR24jisYkSppTIH5hbVfJPrSUrUi1kliRswkDkAmrapCRrVsdyce1CSl2b+RjP2nyjfLAnwCWjxiHH5+F37YC9y5Q1jp/xKjzRIlw35NnPLVONKOErW3USPrLaju4D6igIImmQm3u4jcQkEBfTgM9UM=
-Received: from MN2PR04MB6991.namprd04.prod.outlook.com (10.186.144.209) by
- MN2PR04MB5599.namprd04.prod.outlook.com (20.178.255.154) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2516.12; Tue, 10 Dec 2019 10:26:30 +0000
-Received: from MN2PR04MB6991.namprd04.prod.outlook.com
- ([fe80::9447:fa71:53df:f866]) by MN2PR04MB6991.namprd04.prod.outlook.com
- ([fe80::9447:fa71:53df:f866%3]) with mapi id 15.20.2538.012; Tue, 10 Dec 2019
- 10:26:30 +0000
-From: Avri Altman <Avri.Altman@wdc.com>
-To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
- <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
- <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
- <alim.akhtar@samsung.com>, "pedrom.sousa@synopsys.com"
- <pedrom.sousa@synopsys.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "f.fainelli@gmail.com"
- <f.fainelli@gmail.com>
-Subject: RE: [PATCH v2 2/2] scsi: ufs-mediatek: add device reset implementation
-Thread-Topic: [PATCH v2 2/2] scsi: ufs-mediatek: add device reset
- implementation
-Thread-Index: AQHVrmrHDAfAzH7xfkuuIrib76GxA6ezK3ug
-Date: Tue, 10 Dec 2019 10:26:30 +0000
-Message-ID: <MN2PR04MB6991F59EC0F03596777A782CFC5B0@MN2PR04MB6991.namprd04.prod.outlook.com>
-References: <1575880154-6099-1-git-send-email-stanley.chu@mediatek.com>
- <1575880154-6099-3-git-send-email-stanley.chu@mediatek.com>
-In-Reply-To: <1575880154-6099-3-git-send-email-stanley.chu@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Avri.Altman@wdc.com; 
-x-originating-ip: [212.25.79.133]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 0e4d314a-3969-4705-d042-08d77d5b6c42
-x-ms-traffictypediagnostic: MN2PR04MB5599:
-x-microsoft-antispam-prvs: <MN2PR04MB5599159A89C11B35230DDE92FC5B0@MN2PR04MB5599.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:1247;
-x-forefront-prvs: 02475B2A01
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(136003)(366004)(39860400002)(346002)(396003)(376002)(199004)(189003)(5660300002)(33656002)(55016002)(6506007)(9686003)(8676002)(4326008)(7696005)(186003)(71200400001)(81166006)(81156014)(8936002)(76116006)(66946007)(478600001)(86362001)(66476007)(52536014)(7416002)(26005)(66556008)(316002)(558084003)(54906003)(64756008)(2906002)(66446008)(110136005);
- DIR:OUT; SFP:1102; SCL:1; SRVR:MN2PR04MB5599;
- H:MN2PR04MB6991.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: uBUwZymv60+2zbn9JKUclQs+vyMloJO/q2qXvOI2RxFllH8lr+xwvfLXkF5syTYJGmk/qBROsePheYftTw3qZ+hPf2lKIopfeJTKYOG5xWFb8EHJhfqnQ8YvLVblMOeVgUVpBaUqTg9956TWjNGRYoMQqZ1GItbRYy7Cz4FSuFhmdpBsg9PBtp5k3BrReulOUwrj+4WbOCEDRiaCHiBbDBvWnq/LJXbgxDAHWzy1dEkqCVz32cI+GsgFzuczT9CUcjd4KAP+2oPDtoQpq/cetsgCfa1FW9EvKY3o7NmN/qaVat/fzALozfTcvQ0tN339lQLjwsUJB/Jtkq0k1wU6e94tGB5w0ZnNCx2WOHrayaWZzbS3hG9P1sB0NlY8EBpLbv/xh7iLE4PQrEAShe5tQ27CLYQjZwEm8PdIHPFRjLzBF8/HCXMPQNGUwPensNV1
-x-ms-exchange-transport-forked: True
+ id 1iedpq-0000vV-1f
+ for linux-mediatek@lists.infradead.org; Tue, 10 Dec 2019 11:37:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1575977828;
+ bh=He5CmkAr29FB4eRkHCWB5ZuYfLynVAdGIaPMEFclt6s=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=DYqzdHVF3y06fAIXaE34SiDAOXxtMS0iMf4tbr1NeEs2LTBwlLeLZU1UnvRoNYZww
+ p5qEgZyz8GYP9B7mBKQoLECKd85cU+Ydm//VbFwzzwZ2BRS/MQacS1jWkp8niWsGj6
+ 4lzXDmK9bdKNTGVlshtPgFE61gIVkJtAFfVI1JdM=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [185.53.43.95] ([185.53.43.95]) by web-mail.gmx.net
+ (3c-app-gmx-bs14.server.lan [172.19.170.66]) (via HTTP); Tue, 10 Dec 2019
+ 12:37:08 +0100
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0e4d314a-3969-4705-d042-08d77d5b6c42
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Dec 2019 10:26:30.6564 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: sHyKf3FxNBA2mugSL0fJCcRM/7JkoXUdQCPQkAAnC/GUW43Pct+oWTV5CVHBhujG9wMfSd99XcyXSti5vBVb0w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB5599
+Message-ID: <trinity-be64e2d4-f70d-4bd8-82aa-fb5b07de0149-1575977828752@3c-app-gmx-bs14>
+From: "Frank Wunderlich" <frank-w@public-files.de>
+To: "Landen Chao" <landen.chao@mediatek.com>
+Subject: Aw: [PATCH net-next 0/6] net-next: dsa: mt7530: add support for MT7531
+Date: Tue, 10 Dec 2019 12:37:08 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <cover.1575914275.git.landen.chao@mediatek.com>
+References: <cover.1575914275.git.landen.chao@mediatek.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:4r71h9Id7lIxLvhWGaanz8HzVDn2EN4RDfdcEk93knYE5eLJt3mSN3keYSRt852HP3ezg
+ dBD8EAohBV7/z3Y8L50s6x5trisCsEm6WrRDoVWkLUFLmAGr3SvqFvfvqV16qZptKs7OhfEkt1Sz
+ CQoqy0ysdmK0EJJq9zNF+DEcPm2gfIXsZtClhWjqR8iEdZtNUbr25JKrrlOLilkTkONwxoDzuLHA
+ Y8oGaZngiKm8j8U8UI9maT/CVxDsGfaTyb1PD1kGDS0RghX7ngay1cM+xlKnsfZ7a+1P+WaxaPDs
+ 84=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Y+zfh0Nni9M=:d1BklLbL735ejs8j88j0bC
+ mpbX9pJBwfbOSVwp4/Bishz6v3EBsAU68LYy+DejDCXgRBUODaqznRkE6gafuko9FT5rhQ89z
+ 6CVr7ZfYWtHIJ87rlcCwkxZB3xZnyL4SS7nctqsOS6W4Vs+VfChBOXhta1UvEjIdyzxn3Eww3
+ grYrGOhh5F5jdlWrgCKws7kVbFZqXndDhKHLgIbBso0nm3Kd9u2RG88Jx2lNnrPc61Ibe8VUz
+ THLjI6IVcGDARMHSJXKicoghxd0NjJaW625vZahyqr+Jhxtx9S7KOCNE6rYbh4arVnY8JvtHD
+ Fpuh0OxLyldsAwhIBIGsiYm1ZD0OI2jIKAKuYgQ/1Z6lyJQdgnIM5CstNNgssoBZrlSjW1Y/a
+ AxpHrfoB2W8RowBd5H3l1y0VreRKuDNqqtS6Pe/rBrN9PTw6b6ZyLJ4YXoLNQBjw/aE9hmaQm
+ bTfXsL83vCcBAhOSlqdT78pJ0iPVjbF8ntMYxUBV+nJxp5Ck1a4CJWRmH+W/eZpqrhuVeGtfV
+ ymxyiR+9Gi8t/oRhwoBqXqACKgkw/nZEuF+0WcftL6SQvQc1cRcn9sh2BMiWJPzIMH+Sro6fp
+ Gfrm1FMebISZYVCIcGhZmXnqdyfHKtpMhJgoIGqiU0Dy04dck/X/RX4Eb8ZJgT1Ag7aQGApaN
+ wjmIBkZAioBxyr5MYv0J7q31pbvBdZuMhNIqGUkaoMEaMpCIRWK7MAo8tV42PhudlRCE=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191210_022636_727787_F288CAB4 
-X-CRM114-Status: UNSURE (   7.53  )
+X-CRM114-CacheID: sfid-20191210_033746_422930_014096F0 
+X-CRM114-Status: UNSURE (   5.65  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -147,26 +93,93 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "leon.chen@mediatek.com" <leon.chen@mediatek.com>,
- "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
- "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
- "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "beanhuo@micron.com" <beanhuo@micron.com>
+Cc: mark.rutland@arm.com, andrew@lunn.ch,
+ Landen Chao <landen.chao@mediatek.com>, f.fainelli@gmail.com,
+ vivien.didelot@savoirfairelinux.com, netdev@vger.kernel.org,
+ sean.wang@mediatek.com, linux-kernel@vger.kernel.org, opensource@vdorst.com,
+ devicetree@vger.kernel.org, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
- 
-> 
-> Add device reset vops implementation in MediaTek UFS driver.
-> 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-Reviewed-by: Avri Altman <avri.altman@wdc.com>
+Hi
+
+thank you for the DSA-driver, works so far, but a bit to improve:
+
+i got some retransmitts on RX (TX looks good)...i guess a clk/pll problem
+
+Iperf3-Client (BPI-R64,192.168.0.19):
+
+root@bpi-r64:~# iperf3 -c 192.168.0.21
+Connecting to host 192.168.0.21, port 5201
+[  5] local 192.168.0.19 port 56412 connected to 192.168.0.21 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec   114 MBytes   957 Mbits/sec    0   1003 KBytes
+[  5]   1.00-2.00   sec   113 MBytes   944 Mbits/sec    0   1.08 MBytes
+[  5]   2.00-3.00   sec   112 MBytes   941 Mbits/sec    0   1.08 MBytes
+[  5]   3.00-4.00   sec   112 MBytes   941 Mbits/sec    0   1.08 MBytes
+[  5]   4.00-5.00   sec   112 MBytes   942 Mbits/sec    0   1.08 MBytes
+[  5]   5.00-6.00   sec   112 MBytes   944 Mbits/sec    0   1.21 MBytes
+[  5]   6.00-7.00   sec   112 MBytes   944 Mbits/sec    0   1.27 MBytes
+[  5]   7.00-8.00   sec   112 MBytes   943 Mbits/sec    0   1.27 MBytes
+[  5]   8.00-9.00   sec   111 MBytes   934 Mbits/sec    0   1.27 MBytes
+[  5]   9.00-10.00  sec   112 MBytes   944 Mbits/sec    0   1.27 MBytes
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  1.10 GBytes   943 Mbits/sec    0             sender
+[  5]   0.00-10.00  sec  1.10 GBytes   941 Mbits/sec                  receiver
+
+iperf Done.
+
+root@bpi-r64:~# iperf3 -c 192.168.0.21 -R
+Connecting to host 192.168.0.21, port 5201
+Reverse mode, remote host 192.168.0.21 is sending
+[  5] local 192.168.0.19 port 56420 connected to 192.168.0.21 port 5201
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec   112 MBytes   941 Mbits/sec
+[  5]   1.00-2.00   sec   112 MBytes   941 Mbits/sec
+[  5]   2.00-3.00   sec   111 MBytes   933 Mbits/sec
+[  5]   3.00-4.00   sec   112 MBytes   941 Mbits/sec
+[  5]   4.00-5.00   sec   112 MBytes   937 Mbits/sec
+[  5]   5.00-6.00   sec   112 MBytes   941 Mbits/sec
+[  5]   6.00-7.00   sec   111 MBytes   933 Mbits/sec
+[  5]   7.00-8.00   sec   112 MBytes   939 Mbits/sec
+[  5]   8.00-9.00   sec   112 MBytes   936 Mbits/sec
+[  5]   9.00-10.00  sec   112 MBytes   941 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  1.10 GBytes   942 Mbits/sec  605             sender
+[  5]   0.00-10.00  sec  1.09 GBytes   939 Mbits/sec                  receiver
+
+iperf Done.
+
+Iperf3-Server (my Laptop,192.168.0.21, reverse mode only):
+
+Accepted connection from 192.168.0.19, port 56418
+[  5] local 192.168.0.21 port 5201 connected to 192.168.0.19 port 56420
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  5]   0.00-1.00   sec   115 MBytes   965 Mbits/sec    0    772 KBytes
+[  5]   1.00-2.00   sec   112 MBytes   944 Mbits/sec    0    772 KBytes
+[  5]   2.00-3.00   sec   111 MBytes   933 Mbits/sec  157    643 KBytes
+[  5]   3.00-4.00   sec   112 MBytes   944 Mbits/sec    0    755 KBytes
+[  5]   4.00-5.00   sec   111 MBytes   933 Mbits/sec  141    625 KBytes
+[  5]   5.00-6.00   sec   112 MBytes   944 Mbits/sec    0    740 KBytes
+[  5]   6.00-7.00   sec   111 MBytes   933 Mbits/sec  307    438 KBytes
+[  5]   7.00-8.00   sec   111 MBytes   933 Mbits/sec    0    585 KBytes
+[  5]   8.00-9.00   sec   112 MBytes   944 Mbits/sec    0    700 KBytes
+[  5]   9.00-10.00  sec   112 MBytes   944 Mbits/sec    0    803 KBytes
+[  5]  10.00-10.00  sec  0.00 Bytes  0.00 bits/sec    0    803 KBytes
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  5]   0.00-10.00  sec  1.10 GBytes   942 Mbits/sec  605             sender
+[  5]   0.00-10.00  sec  0.00 Bytes  0.00 bits/sec                  receiver
+
+regards Frank
+
+[1] https://github.com/frank-w/BPI-R2-4.14/tree/5.5-r64-netnext
 
 _______________________________________________
 Linux-mediatek mailing list
