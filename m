@@ -2,82 +2,89 @@ Return-Path: <SRS0=F6Lp=2A=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D4028C43603
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 12:43:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EEFB1C43603
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 13:22:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A51E72073B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 12:43:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C168B2073B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 13:22:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LyyU7eB5";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="SjVyZzwl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A51E72073B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oOF9clLv";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="grYvPN3c"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C168B2073B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9moR4bCicsJ6gjOcb+U6ijZ67ixT7eBO/TvFVoJg9+E=; b=LyyU7eB55oxJMa
-	ALAkrTVVIogA1SBCFSxbUC0VgH6+1hQU3o5/eVYbY4gg06gESznA4ERR6xBePppcJMHD3b1gk4hnh
-	Tjsr4SCUpUF7QIdRm9b9UMF5rtmODj02b/uljHr2s9bt8lxgRAiaZG9NItpU9JkSBYe1FEtrb9rfN
-	FRQbtBjzVobIAcxc4FFrH2MszSpsl/md85x3ZNrdgFrzN5rfDD4okMi8/FEM1A9y0UVL5URAWiuny
-	fYb4RAaAM3G9tgg9MPE0FGCYPqyf+l3/nxN3mPKPQc3poNmXagib9mbHV2XjSj6u+2txncGVNJiVB
-	/s/UmUOGHB0Cg4/rVL+g==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=eZhAoK6j6lRQocrYgyEWk8LEmSuV+VhZzSujVfPwSFE=; b=oOF9clLvhVWvhGC1jejJhpCok
+	lPt/PD4Cu4O+dfAJUwkmWk38tVPFFNffR+HYxNglgeY9M4sLTpFLsjpb8Zhzbqgd08vBCWFl+0R8v
+	Uj01IFgiZLlmOLLR8LwC+6T8/lc/At+lAP2q//1xTuZ9B5fvVYYlqFtL9BnlneefKXW+WkvcldYCC
+	hqI2V5uHSlLErnwmKYcDaVdCRd6u2Qsa0psDwuOdjnSncJuW8QN7tuIFRyKwD29nz7xze/DOQbq3m
+	YZtlhXweLJPmZqhnrNNSTD+DVukt0Jml2sbVGxiURx+LlLSh2EZStNvAbfMSeJT5uGrmBnPCrnpD9
+	//JULvsnQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ieerU-0002Ua-Kt; Tue, 10 Dec 2019 12:43:32 +0000
-Received: from mail-vk1-xa42.google.com ([2607:f8b0:4864:20::a42])
+	id 1iefSc-0000hv-Dm; Tue, 10 Dec 2019 13:21:54 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieerL-0002LQ-69
- for linux-mediatek@lists.infradead.org; Tue, 10 Dec 2019 12:43:24 +0000
-Received: by mail-vk1-xa42.google.com with SMTP id x199so5537437vke.6
- for <linux-mediatek@lists.infradead.org>; Tue, 10 Dec 2019 04:43:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=rmEiSSp96CqMy1Ppsk8W6nnDKAAqnPQ9Fp0EYBdV+7E=;
- b=SjVyZzwl1gFe4ZV18t5rV4aLho7lO9k6u7FJV6ZAqeuFB7bj2OpZ7m0NdHHPB5P/9J
- F1GRcZF8vBqkPBqBMbXJp1yuJ+IAcubDftWI51y+mNDpGrT6YxHSHu3zzeoVuKOXTUL6
- ofai+5OMyCUrw7aMsKCreGKjupSo3Hr8MQseWJ2xCsncPzWOMFL/Zih9GO6A6c/ZjqzK
- JyQZpoeWVRpPl0H1oX5XjRDyHL02eQQ9+RL/TZcZdazLKImnbYsdmtz0DQPBGEJMtLj3
- 8uxieE2T+RpsIhE9/Ytd6ACKGxx+oh90ka0loPrxuxNct8VjQ+3Ll7M3kAKlYy5U84kC
- DmBw==
+ id 1iefSY-0000gO-8J; Tue, 10 Dec 2019 13:21:51 +0000
+Received: by mail-wr1-x444.google.com with SMTP id y11so20050381wrt.6;
+ Tue, 10 Dec 2019 05:21:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=PD9rD6bg++gMjCswMooVuJ6GHSrSEW3rhBvWYCoYFEg=;
+ b=grYvPN3cIERnB3LqghBbImfPbQdfQQj9oEFeLf/acZGQbfYH4EOYEgtWTJjz/rly+1
+ WFWuXoNJkvIyE+Kubj+PvKRgiEfFpczjtEhtQqvJZlCEn316NFFQuF+lks0IhfaSVbYk
+ jvb5CjwV6dsDZ67zXhAXu1DZfwebNmbsV8ryAPckhN8cF1/+Jnh9m+Oxthb1hpkyM/ko
+ ugA/6AHtm3XYKFDclLk46c0JQAhtWVHX/hdMMUH5ZndH027aJjGHZSVHPb1eT+AHHlM8
+ U0X/zjKonF9Z3q8VH7Bwbs3Ct2F63UthGaHvfRcyBPzVZMPLK4AikpijZRBry0xNHNxc
+ NIdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=rmEiSSp96CqMy1Ppsk8W6nnDKAAqnPQ9Fp0EYBdV+7E=;
- b=mLm12TnibqmmJyL9V1EqlA8g34BV6iODnlBj7CVqGNmApk657Ynh7lMVKPoY/pETmG
- z6S8QZkIRX+k6rBqJJBSIlDiLmEb7OsDoe88M81UFi00zRBayza+CMiZ/gPHiKekKJ3I
- Gbdt7pQng02R1OxsIofd4V9s18++kEhvXDY3UXLVRCJDAgXJ1En0WcQNmBYEE4sJiNtL
- 0276r39kxTDY8CpWvn5kQAGXg4CV00GG9UmOzVDhahPftuV1E3yIw8ef1UbbmGGHEdAM
- sFGrQe+kylBr3PZ8E0BpF6qkbLkKbAJkDBpuim87acCRZsC3X0MdnFrmie4GT9NmBP2Z
- vMUw==
-X-Gm-Message-State: APjAAAXiMTrmvE7dW4wpLbhybjfPj6msKZdZt2VpI5MhRIZd2lwiWAKD
- L6U2KYrgXD2Prvj3mDsCqrjatpRSPCQuxfzqwdCAUg==
-X-Google-Smtp-Source: APXvYqwYeuWm53/m5Bq2qBEuOXIjm6v1jerpImsqqYFfOVtKgHeSeKsZzlwtHErJOzdB13a85RtG6b5LG2BU3bpzpc4=
-X-Received: by 2002:a1f:4541:: with SMTP id s62mr8918335vka.59.1575981801902; 
- Tue, 10 Dec 2019 04:43:21 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=PD9rD6bg++gMjCswMooVuJ6GHSrSEW3rhBvWYCoYFEg=;
+ b=r0p7R8USHb+/Ukn2uqxAfQg5TBtAKP6BzrAewmswxYQnDXRUeh4oYJBo1ec50d5XXH
+ 76jo4TdukWi96nBpWPfMECzVuvO94QMgtwCIjEqh0Qu9Lb085FGHhyTSpmwnjGL1IaWz
+ JjAdiK2RCtaRzIkDqbLjNd6Oee87Tn6sbkGGFtcwhdCrN4gVv4DMqziisFbAnT8v/V/2
+ Pzeri+uluBIGy3lPayes+3Yj9PIdEIJ8v7ersMft5vqHHEgEq4akGsZGBO4juKjr9XB8
+ e1aIIN0vxWuIsLwOB+h+ZQkjourwD2tX6B0xOtYfuPiItnpQ560LMYqPXZnrJouehxbD
+ Nkhw==
+X-Gm-Message-State: APjAAAXS8qo5hpNPzykIk/zeEsUDRnwk2nBw+3XbU4kHRCWrcNIjAqCJ
+ 1LgjjLThYVGmaUSs4yPuEuI=
+X-Google-Smtp-Source: APXvYqyNp9El3jJPA92qJwowDt0LvCr4BQ8RPG5Z45U5YRoQ7PFff1oHgeQlTzeIWm17Ll8QsfEczA==
+X-Received: by 2002:adf:ea88:: with SMTP id s8mr3271577wrm.293.1575984108567; 
+ Tue, 10 Dec 2019 05:21:48 -0800 (PST)
+Received: from localhost (pD9E518ED.dip0.t-ipconnect.de. [217.229.24.237])
+ by smtp.gmail.com with ESMTPSA id g21sm3536295wrb.48.2019.12.10.05.21.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Dec 2019 05:21:47 -0800 (PST)
+Date: Tue, 10 Dec 2019 14:21:46 +0100
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Leonard Crestez <leonard.crestez@nxp.com>
+Subject: Re: [PATCH 08/17] clk: imx: convert to devm_platform_ioremap_resource
+Message-ID: <20191210132146.GF2703785@ulmo>
+References: <20191209195749.868-1-tiny.windzz@gmail.com>
+ <20191209195749.868-8-tiny.windzz@gmail.com>
+ <VI1PR04MB7023BD6E46B6DEEBBB762060EE580@VI1PR04MB7023.eurprd04.prod.outlook.com>
 MIME-Version: 1.0
-References: <20191204071958.18553-1-chaotian.jing@mediatek.com>
- <CAPDyKFo9Z2yj7zC5VOS-iX_LyavPp1A4n73eAp7VD-Q+dpoqpw@mail.gmail.com>
- <1575979419.7714.1.camel@mhfsdcap03>
-In-Reply-To: <1575979419.7714.1.camel@mhfsdcap03>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Tue, 10 Dec 2019 13:42:45 +0100
-Message-ID: <CAPDyKFpCjzpxOLi+bfawgHJNXve16tkJmg-Z0Jqjf3zJ5UxV_g@mail.gmail.com>
-Subject: Re: [PATCH] mmc: mediatek: fix CMD_TA to 2 for MT8173 HS200/HS400 mode
-To: Chaotian Jing <chaotian.jing@mediatek.com>
+In-Reply-To: <VI1PR04MB7023BD6E46B6DEEBBB762060EE580@VI1PR04MB7023.eurprd04.prod.outlook.com>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191210_044323_238867_E9ED0331 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20191210_052150_319846_13454699 
+X-CRM114-Status: GOOD (  19.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,44 +96,189 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: srv_heupstream <srv_heupstream@mediatek.com>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- hsinyi@google.com, Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "kstewart@linuxfoundation.org" <kstewart@linuxfoundation.org>,
+ "pgaikwad@nvidia.com" <pgaikwad@nvidia.com>,
+ "heiko@sntech.de" <heiko@sntech.de>,
+ "geert+renesas@glider.be" <geert+renesas@glider.be>,
+ "chunhui.dai@mediatek.com" <chunhui.dai@mediatek.com>,
+ Yangtao Li <tiny.windzz@gmail.com>,
+ "mturquette@baylibre.com" <mturquette@baylibre.com>,
+ "palmer@sifive.com" <palmer@sifive.com>, "nsekhar@ti.com" <nsekhar@ti.com>,
+ "tomasz.figa@gmail.com" <tomasz.figa@gmail.com>,
+ "rfontana@redhat.com" <rfontana@redhat.com>,
+ "weiyongjun1@huawei.com" <weiyongjun1@huawei.com>,
+ "s.nawrocki@samsung.com" <s.nawrocki@samsung.com>,
+ "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ "festevam@gmail.com" <festevam@gmail.com>,
+ "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+ "john@phrozen.org" <john@phrozen.org>, "robh@kernel.org" <robh@kernel.org>,
+ "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+ "emilio@elopez.com.ar" <emilio@elopez.com.ar>,
+ "krzk@kernel.org" <krzk@kernel.org>,
+ "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
+ "cw00.choi@samsung.com" <cw00.choi@samsung.com>,
+ "wens@csie.org" <wens@csie.org>, "agross@kernel.org" <agross@kernel.org>,
+ dl-linux-imx <linux-imx@nxp.com>,
+ "Eugeniy.Paltsev@synopsys.com" <Eugeniy.Paltsev@synopsys.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
+ "miquel.raynal@bootlin.com" <miquel.raynal@bootlin.com>,
+ "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+ "s.hauer@pengutronix.de" <s.hauer@pengutronix.de>,
+ "mripard@kernel.org" <mripard@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "swinslow@gmail.com" <swinslow@gmail.com>,
+ "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "tglx@linutronix.de" <tglx@linutronix.de>,
+ Daniel Baluta <daniel.baluta@nxp.com>,
+ "allison@lohutok.net" <allison@lohutok.net>,
+ Aisheng Dong <aisheng.dong@nxp.com>, "jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>,
+ "sboyd@kernel.org" <sboyd@kernel.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "pdeschrijver@nvidia.com" <pdeschrijver@nvidia.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "t-kristo@ti.com" <t-kristo@ti.com>,
+ "dinguyen@kernel.org" <dinguyen@kernel.org>,
+ "kgene@kernel.org" <kgene@kernel.org>,
+ "kernel@pengutronix.de" <kernel@pengutronix.de>,
+ "wangyan.wang@mediatek.com" <wangyan.wang@mediatek.com>,
+ "shawnguo@kernel.org" <shawnguo@kernel.org>,
+ "afaerber@suse.de" <afaerber@suse.de>
+Content-Type: multipart/mixed; boundary="===============3322513988307490705=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 10 Dec 2019 at 13:03, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
->
-> On Tue, 2019-12-10 at 10:51 +0100, Ulf Hansson wrote:
-> > On Wed, 4 Dec 2019 at 08:20, Chaotian Jing <chaotian.jing@mediatek.com> wrote:
-> > >
-> > > there is a chance that always get response CRC error after HS200 tuning,
-> > > the reason is that need set CMD_TA to 2. this modification is only for
-> > > MT8173.
-> > >
-> > > Signed-off-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> >
-> > I have applied this for fixes, however it seems like this should also
-> > be tagged for stable, right?
-> > Yes! should be tagged for stable.
-> > Is there a specific commit this fixes or should we just find the
-> > version it applies to?
-> >
->  this patch should be a fix to commit:
-> 1ede5cb88a29bba1aad1b68965c5fc8e00b20ed9
 
-Perfect, I add that!
+--===============3322513988307490705==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="yH1ZJFh+qWm+VodA"
+Content-Disposition: inline
 
-[...]
 
-Kind regards
-Uffe
+--yH1ZJFh+qWm+VodA
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Dec 09, 2019 at 08:44:39PM +0000, Leonard Crestez wrote:
+> On 09.12.2019 21:58, Yangtao Li wrote:
+> > Use devm_platform_ioremap_resource() to simplify code.
+> >=20
+> > Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
+> > ---
+> >   drivers/clk/imx/clk-imx8qxp-lpcg.c | 6 +-----
+> >   1 file changed, 1 insertion(+), 5 deletions(-)
+> >=20
+> > diff --git a/drivers/clk/imx/clk-imx8qxp-lpcg.c b/drivers/clk/imx/clk-i=
+mx8qxp-lpcg.c
+> > index c0aff7ca6374..10ae712447c6 100644
+> > --- a/drivers/clk/imx/clk-imx8qxp-lpcg.c
+> > +++ b/drivers/clk/imx/clk-imx8qxp-lpcg.c
+> > @@ -164,7 +164,6 @@ static int imx8qxp_lpcg_clk_probe(struct platform_d=
+evice *pdev)
+> >   	struct clk_hw_onecell_data *clk_data;
+> >   	const struct imx8qxp_ss_lpcg *ss_lpcg;
+> >   	const struct imx8qxp_lpcg_data *lpcg;
+> > -	struct resource *res;
+> >   	struct clk_hw **clks;
+> >   	void __iomem *base;
+> >   	int i;
+> > @@ -173,10 +172,7 @@ static int imx8qxp_lpcg_clk_probe(struct platform_=
+device *pdev)
+> >   	if (!ss_lpcg)
+> >   		return -ENODEV;
+> >  =20
+> > -	res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> > -	if (!res)
+> > -		return -EINVAL;
+> > -	base =3D devm_ioremap(dev, res->start, resource_size(res));
+> > +	base =3D devm_platform_ioremap_resource(pdev, 0);
+> >   	if (!base)
+> >   		return -ENOMEM;
+>=20
+> This breaks imx8qxp-mek boot by causing most peripherals (like uart) to=
+=20
+> fail to probe.
+>=20
+> The old and new paths are not equivalent: devm_platform_ioremap_resource
+> calls devm_ioremap_resource which differs from devm_ioremap by also=20
+> calling devm_request_mem_region.
+>=20
+> This prevents other mappings in the area and imx8qxp-lpcg nodes map=20
+> whole hardware "subsystems" and overlap most peripherals. For example:
+>=20
+>                   adma_lpcg: clock-controller@59000000 {
+>                           compatible =3D "fsl,imx8qxp-lpcg-adma";
+>                           reg =3D <0x59000000 0x2000000>;
+>                           #clock-cells =3D <1>;
+> 		};
+>=20
+>                  adma_lpuart0: serial@5a060000 {
+> 			reg =3D <0x5a060000 0x1000>;
+> 			...
+> 		};
+
+The whole point of doing a request_mem_region() is to avoid having
+multiple drivers trample on each others' mappings. What you do above
+doesn't look right. Why does that clock controller need access to 32
+MiB of I/O memory space?
+
+That said, there are legitimate reasons for sharing mappings across
+drivers, so I agree that automated conversions like this should be done
+very carefully. The difficulty is that there are cases where drivers
+simply omitted that request_mem_region() by mistake and where the
+conversion can be correct (and in fact an improvement), but we can't
+make the assumption blindly.
+
+Thierry
+
+> I don't know if this issue affects any other platforms (imx8 lpcg=20
+> bindings are unusual) but if you found this with an automated tool=20
+> perhaps it should be adjusted?
+>=20
+> By my count it's the 4th time this incorrect cleanup was posted.
+>=20
+> Previously: https://lkml.org/lkml/2019/12/4/487
+>=20
+> --
+> Regards,
+> Leonard
+
+--yH1ZJFh+qWm+VodA
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl3vm+kACgkQ3SOs138+
+s6GULxAAilZa8OEmaTs15SX7kJWFjGSMuGZCPAm85TmYwx53oHvbjOuvkDgdiJVy
+bHs51DNXVvFeKTKCiiZLDflAjAhtV6lFBx0mqUk6re6p6Ix/wvmGqZUSJyFOgXBs
+DR33v6akOaCrtnJTEyyCvVJf1RmYd4T+MeONWbm6rfz93xzxT9DZmrU4I7VmRsxn
+8onxkgYw9VjtJQBxR++NgKmCqDoVmsf5nLBQxhuvZpFADhUPwhTfdkv4ehEmPETE
+WcdPQkzbQtqqjWvIMq0SDMr5wxybbQzZKb1j/R0H5umvNAAJYdxihPcMsLuXf5iX
+paNWTVxUjnRzmiPUzy8dPsxBYhlazonR791Clt22p91PJ+/WceAgPW7AaBWZnHT1
+U2jGi1puhPTaUIe93EUS4mgmMUOmbXFoLGBdj7tw9gla4OW8fCsQyIr23gXgCSWp
+iM2eHKLajC3q1sz7nwQ/YmJcEbXzu5BUF1XLo/MyOE04wdqnVAUGnDhSW06MOZpR
+/28nhqZxRMGeTSpGN4wjLGl/7zVF7U9XZVF+1mkgGBAWLeKoHZ+zznk7eRRAs3jm
+G55LaB83ZpUlJcRGTb6mvTMLntmcKTdff5IyNND9S5QRAzsxnUqS3PIGARSm5erh
+aM8vbqsy8rN4viYsg6b4AnC3pkXuzP9g6CymxLl8NlFMykwKJZE=
+=S6GE
+-----END PGP SIGNATURE-----
+
+--yH1ZJFh+qWm+VodA--
+
+
+--===============3322513988307490705==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============3322513988307490705==--
+
