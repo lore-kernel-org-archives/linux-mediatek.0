@@ -2,77 +2,77 @@ Return-Path: <SRS0=F6Lp=2A=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DDEECC43603
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 05:16:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C8A0C43603
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 05:18:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ABC2320637
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 05:16:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F032720663
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Dec 2019 05:18:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pt+58+Br";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="SWOKu2BM"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ABC2320637
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OQhEg+71";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qyd8Ajmd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F032720663
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1LGJtNPVWsF1L+IFNY5OgkEaYLZAclNXFn7ZFkOUSWc=; b=pt+58+BrXoDd9G
-	NBElOmmmFTE2qIVSNqJHZIVthkFn/UwASoeWW55AA69aKCs10iiUseVD3e571mU9z2ix0PzgN75SO
-	Vb65edZX+KS1oSmc2z4URVShX3ml1QNKRvHHfDg7zoInVs73fxNKDp2GWwIsNP5LawtXDIJrSEtye
-	8g3RLtdjWVB/ExSpcCmbRKxZdRDy8/karqbt4oV8e9ZpE5axhot7ruO/G7AgosxeD1C4/Ongu/hXt
-	YzBLBkA57y4hNDK8UcTH7+oBkKmFNJ5nk+TVgTS1+KGEg1RBwxY71g3tisq1ML6VrL7Hrly1GOL7w
-	TdF3ngodQdE7+Z0suR3g==;
+	List-Owner; bh=e+yNtaf+3ZIMbypOm85f3VrcU46QM7VH1bk7ORibsi8=; b=OQhEg+71VHJ2ce
+	qrGEI6SrRUNlnb3w6Lss0S2pPqJrjl8QCZpsVunnU78p4hZ5SqSrnLLHUok/UmViBEjhGpkZ723hy
+	TQM9Emt9sfHk6a++ThqMY//6fvhj1poJUp6ZCv4M2apR+rN+N5VgAJnmMnbg5PLbpoAoP3Q8l2O+t
+	urylxlZviPiV2IcbkYV0SM+y9bDjTM7jw56gb9NIXTPBG0xSJH++HE8/6ZJ6LdCaYLuYdYHAxprfF
+	hF5BeeWotIlgOlNSTX4Kt/ai3UklDg+g8M0UxUt/WxRRzuJbrw8fcGqKRxTczhFnEdXBURmEVLXXu
+	dIJaRGZwcpfl9qdKj3vA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ieXsk-0008Vv-9r; Tue, 10 Dec 2019 05:16:22 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ieXuv-0000YC-R0; Tue, 10 Dec 2019 05:18:37 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieXs7-0007px-J0; Tue, 10 Dec 2019 05:15:46 +0000
-X-UUID: b6c70485c1924c088db58e3f53c851eb-20191209
+ id 1ieXuo-0000PZ-1L; Tue, 10 Dec 2019 05:18:31 +0000
+X-UUID: ee288fb1aa5d440f886f8862e024b5e7-20191209
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Bh4f/pJ1G5Y1usxueSX6L/F7vzquDSO+zcHNExHv1Ts=; 
- b=SWOKu2BMBZaWphUnc68RpZMx2oT/zoevTg1GYgzQYzf0pu26JDBlFxraTMb2YnRjUVyUlBTDZ88xd3Mmx+7rC+wAAwq4gz+1wrR+bWDo0nngrISUytlTxUUDNwWPVWU9l3z+qM9Lm/MT8/TGQH/gyrp74mYFgXW1JaFwskLSSwQ=;
-X-UUID: b6c70485c1924c088db58e3f53c851eb-20191209
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <bibby.hsieh@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=U5dn9iiS6Lkny5IY/aF5ZMW3uyg18odEyEQls0K5nvY=; 
+ b=qyd8AjmdbjWrwWMz26LJC1Y0teT8iupvnBZhwcdqezVOyapKuZ6JuPGHwB5lJ6OCUd0ND2MzXmjqO1/6kcSU3SRRJ6PcUlVmsYdtA9CaZw8+Te+6SFz7r7vCKWlNTVGA+RerLfZYQ9QrGmO727OeofMwRSW3msB5i1qnXiESX+U=;
+X-UUID: ee288fb1aa5d440f886f8862e024b5e7-20191209
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 568863900; Mon, 09 Dec 2019 21:15:37 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 9 Dec 2019 21:06:33 -0800
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 10 Dec 2019 13:05:05 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas09.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Tue, 10 Dec 2019 13:05:22 +0800
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-To: David Airlie <airlied@linux.ie>, Matthias Brugger
- <matthias.bgg@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>,
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v5 6/7] drm/mediatek: support CMDQ interface in ddp component
-Date: Tue, 10 Dec 2019 13:05:25 +0800
-Message-ID: <20191210050526.4437-7-bibby.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20191210050526.4437-1-bibby.hsieh@mediatek.com>
-References: <20191210050526.4437-1-bibby.hsieh@mediatek.com>
+ with ESMTP id 560084488; Mon, 09 Dec 2019 21:18:27 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 9 Dec 2019 21:18:41 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 10 Dec 2019 13:17:28 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Tue, 10 Dec 2019 13:18:28 +0800
+Message-ID: <1575955103.31262.10.camel@mtksdaap41>
+Subject: Re: [PATCH v2 08/14] soc: mediatek: cmdq: add write_s function
+From: CK Hu <ck.hu@mediatek.com>
+To: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
+Date: Tue, 10 Dec 2019 13:18:23 +0800
+In-Reply-To: <1574819937-6246-10-git-send-email-dennis-yc.hsieh@mediatek.com>
+References: <1574819937-6246-1-git-send-email-dennis-yc.hsieh@mediatek.com>
+ <1574819937-6246-10-git-send-email-dennis-yc.hsieh@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 19114C2D8273052152C91583BBC66896FDADFDC8BD073E8DD6DB629FEDD384B22000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191209_211543_649301_F49621F5 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20191209_211830_084553_D1BDB49D 
+X-CRM114-Status: GOOD (  18.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,627 +84,153 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: drinkcat@chromium.org, Bibby Hsieh <bibby.hsieh@mediatek.com>,
- srv_heupstream@mediatek.com, Yongqiang Niu <yongqiang.niu@mediatek.com>,
- linux-kernel@vger.kernel.org, tfiga@chromium.org, CK Hu <ck.hu@mediatek.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ Jassi Brar <jassisinghbrar@gmail.com>, linux-kernel@vger.kernel.org,
+ Houlong Wei <houlong.wei@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Bibby Hsieh <bibby.hsieh@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The CMDQ (Command Queue) in MT8183 is used to help
-update all relevant display controller registers
-with critical time limation.
-This patch add cmdq interface in ddp_comp interface,
-let all ddp_comp interface can support cpu/cmdq function
-at the same time.
+Hi, Dennis:
 
-Signed-off-by: YT Shen <yt.shen@mediatek.com>
-Signed-off-by: CK Hu <ck.hu@mediatek.com>
-Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
-Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_color.c   |   7 +-
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |  65 +++++-----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |  43 ++++---
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     |  10 +-
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 131 +++++++++++++++-----
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  31 +++--
- 6 files changed, 193 insertions(+), 94 deletions(-)
+On Wed, 2019-11-27 at 09:58 +0800, Dennis YC Hsieh wrote:
+> add write_s function in cmdq helper functions which
+> writes value contains in internal register to address
+> with large dma access support.
+> 
+> Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mtk-cmdq-helper.c   | 40 ++++++++++++++++++++++++
+>  include/linux/mailbox/mtk-cmdq-mailbox.h |  2 ++
+>  include/linux/soc/mediatek/mtk-cmdq.h    | 12 +++++++
+>  3 files changed, 54 insertions(+)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> index 9cc234f08ec5..2edbc0954d97 100644
+> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
+> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> @@ -15,11 +15,18 @@
+>  #define CMDQ_EOC_CMD		((u64)((CMDQ_CODE_EOC << CMDQ_OP_CODE_SHIFT)) \
+>  				<< 32 | CMDQ_EOC_IRQ_EN)
+>  #define CMDQ_REG_TYPE		1
+> +#define CMDQ_ADDR_HIGH(addr)	((u32)(((addr) >> 16) & GENMASK(31, 0)))
+> +#define CMDQ_ADDR_LOW_BIT	BIT(1)
+> +#define CMDQ_ADDR_LOW(addr)	((u16)(addr) | CMDQ_ADDR_LOW_BIT)
+>  
+>  struct cmdq_instruction {
+>  	union {
+>  		u32 value;
+>  		u32 mask;
+> +		struct {
+> +			u16 arg_c;
+> +			u16 arg_b;
+> +		};
+>  	};
+>  	union {
+>  		u16 offset;
+> @@ -224,6 +231,39 @@ int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
+>  }
+>  EXPORT_SYMBOL(cmdq_pkt_write_mask);
+>  
+> +int cmdq_pkt_write_s(struct cmdq_pkt *pkt, phys_addr_t addr, u16 reg_idx,
+> +		     u32 mask)
+> +{
+> +	struct cmdq_instruction inst = { {0} };
+> +	const u16 dst_reg_idx = CMDQ_SPR_TEMP;
+> +	int err;
+> +
+> +	if (mask != U32_MAX) {
+> +		inst.op = CMDQ_CODE_MASK;
+> +		inst.mask = ~mask;
+> +		err = cmdq_pkt_append_command(pkt, inst);
+> +		if (err < 0)
+> +			return err;
+> +
+> +		inst.mask = 0;
+> +		inst.op = CMDQ_CODE_WRITE_S_MASK;
+> +	} else {
+> +		inst.op = CMDQ_CODE_WRITE_S;
+> +	}
+> +
+> +	err = cmdq_pkt_assign(pkt, dst_reg_idx, CMDQ_ADDR_HIGH(addr));
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_color.c b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-index 59de2a46aa49..6fb0d6983a4a 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_color.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-@@ -9,6 +9,7 @@
- #include <linux/of_device.h>
- #include <linux/of_irq.h>
- #include <linux/platform_device.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
- 
- #include "mtk_drm_crtc.h"
- #include "mtk_drm_ddp_comp.h"
-@@ -45,12 +46,12 @@ static inline struct mtk_disp_color *comp_to_color(struct mtk_ddp_comp *comp)
- 
- static void mtk_color_config(struct mtk_ddp_comp *comp, unsigned int w,
- 			     unsigned int h, unsigned int vrefresh,
--			     unsigned int bpc)
-+			     unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
- {
- 	struct mtk_disp_color *color = comp_to_color(comp);
- 
--	writel(w, comp->regs + DISP_COLOR_WIDTH(color));
--	writel(h, comp->regs + DISP_COLOR_HEIGHT(color));
-+	mtk_ddp_write(cmdq_pkt, w, comp, DISP_COLOR_WIDTH(color));
-+	mtk_ddp_write(cmdq_pkt, h, comp, DISP_COLOR_HEIGHT(color));
- }
- 
- static void mtk_color_start(struct mtk_ddp_comp *comp)
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 8a32248671c3..649e371dd9b7 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -12,6 +12,7 @@
- #include <linux/of_irq.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
- 
- #include "mtk_drm_crtc.h"
- #include "mtk_drm_ddp_comp.h"
-@@ -125,14 +126,15 @@ static void mtk_ovl_stop(struct mtk_ddp_comp *comp)
- 
- static void mtk_ovl_config(struct mtk_ddp_comp *comp, unsigned int w,
- 			   unsigned int h, unsigned int vrefresh,
--			   unsigned int bpc)
-+			   unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
- {
- 	if (w != 0 && h != 0)
--		writel_relaxed(h << 16 | w, comp->regs + DISP_REG_OVL_ROI_SIZE);
--	writel_relaxed(0x0, comp->regs + DISP_REG_OVL_ROI_BGCLR);
-+		mtk_ddp_write_relaxed(cmdq_pkt, h << 16 | w, comp,
-+				      DISP_REG_OVL_ROI_SIZE);
-+	mtk_ddp_write_relaxed(cmdq_pkt, 0x0, comp, DISP_REG_OVL_ROI_BGCLR);
- 
--	writel(0x1, comp->regs + DISP_REG_OVL_RST);
--	writel(0x0, comp->regs + DISP_REG_OVL_RST);
-+	mtk_ddp_write(cmdq_pkt, 0x1, comp, DISP_REG_OVL_RST);
-+	mtk_ddp_write(cmdq_pkt, 0x0, comp, DISP_REG_OVL_RST);
- }
- 
- static unsigned int mtk_ovl_layer_nr(struct mtk_ddp_comp *comp)
-@@ -176,16 +178,16 @@ static int mtk_ovl_layer_check(struct mtk_ddp_comp *comp, unsigned int idx,
- 	return 0;
- }
- 
--static void mtk_ovl_layer_on(struct mtk_ddp_comp *comp, unsigned int idx)
-+static void mtk_ovl_layer_on(struct mtk_ddp_comp *comp, unsigned int idx,
-+			     struct cmdq_pkt *cmdq_pkt)
- {
--	unsigned int reg;
- 	unsigned int gmc_thrshd_l;
- 	unsigned int gmc_thrshd_h;
- 	unsigned int gmc_value;
- 	struct mtk_disp_ovl *ovl = comp_to_ovl(comp);
- 
--	writel(0x1, comp->regs + DISP_REG_OVL_RDMA_CTRL(idx));
--
-+	mtk_ddp_write(cmdq_pkt, 0x1, comp,
-+		      DISP_REG_OVL_RDMA_CTRL(idx));
- 	gmc_thrshd_l = GMC_THRESHOLD_LOW >>
- 		      (GMC_THRESHOLD_BITS - ovl->data->gmc_bits);
- 	gmc_thrshd_h = GMC_THRESHOLD_HIGH >>
-@@ -195,22 +197,19 @@ static void mtk_ovl_layer_on(struct mtk_ddp_comp *comp, unsigned int idx)
- 	else
- 		gmc_value = gmc_thrshd_l | gmc_thrshd_l << 8 |
- 			    gmc_thrshd_h << 16 | gmc_thrshd_h << 24;
--	writel(gmc_value, comp->regs + DISP_REG_OVL_RDMA_GMC(idx));
--
--	reg = readl(comp->regs + DISP_REG_OVL_SRC_CON);
--	reg = reg | BIT(idx);
--	writel(reg, comp->regs + DISP_REG_OVL_SRC_CON);
-+	mtk_ddp_write(cmdq_pkt, gmc_value,
-+		      comp, DISP_REG_OVL_RDMA_GMC(idx));
-+	mtk_ddp_write_mask(cmdq_pkt, BIT(idx), comp,
-+			   DISP_REG_OVL_SRC_CON, BIT(idx));
- }
- 
--static void mtk_ovl_layer_off(struct mtk_ddp_comp *comp, unsigned int idx)
-+static void mtk_ovl_layer_off(struct mtk_ddp_comp *comp, unsigned int idx,
-+			      struct cmdq_pkt *cmdq_pkt)
- {
--	unsigned int reg;
--
--	reg = readl(comp->regs + DISP_REG_OVL_SRC_CON);
--	reg = reg & ~BIT(idx);
--	writel(reg, comp->regs + DISP_REG_OVL_SRC_CON);
--
--	writel(0x0, comp->regs + DISP_REG_OVL_RDMA_CTRL(idx));
-+	mtk_ddp_write_mask(cmdq_pkt, 0, comp,
-+			   DISP_REG_OVL_SRC_CON, BIT(idx));
-+	mtk_ddp_write(cmdq_pkt, 0, comp,
-+		      DISP_REG_OVL_RDMA_CTRL(idx));
- }
- 
- static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
-@@ -250,7 +249,8 @@ static unsigned int ovl_fmt_convert(struct mtk_disp_ovl *ovl, unsigned int fmt)
- }
- 
- static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
--				 struct mtk_plane_state *state)
-+				 struct mtk_plane_state *state,
-+				 struct cmdq_pkt *cmdq_pkt)
- {
- 	struct mtk_disp_ovl *ovl = comp_to_ovl(comp);
- 	struct mtk_plane_pending_state *pending = &state->pending;
-@@ -262,7 +262,7 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
- 	unsigned int con;
- 
- 	if (!pending->enable)
--		mtk_ovl_layer_off(comp, idx);
-+		mtk_ovl_layer_off(comp, idx, cmdq_pkt);
- 
- 	con = ovl_fmt_convert(ovl, fmt);
- 	if (idx != 0)
-@@ -278,14 +278,19 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
- 		addr += pending->pitch - 1;
- 	}
- 
--	writel_relaxed(con, comp->regs + DISP_REG_OVL_CON(idx));
--	writel_relaxed(pitch, comp->regs + DISP_REG_OVL_PITCH(idx));
--	writel_relaxed(src_size, comp->regs + DISP_REG_OVL_SRC_SIZE(idx));
--	writel_relaxed(offset, comp->regs + DISP_REG_OVL_OFFSET(idx));
--	writel_relaxed(addr, comp->regs + DISP_REG_OVL_ADDR(ovl, idx));
-+	mtk_ddp_write_relaxed(cmdq_pkt, con, comp,
-+			      DISP_REG_OVL_CON(idx));
-+	mtk_ddp_write_relaxed(cmdq_pkt, pitch, comp,
-+			      DISP_REG_OVL_PITCH(idx));
-+	mtk_ddp_write_relaxed(cmdq_pkt, src_size, comp,
-+			      DISP_REG_OVL_SRC_SIZE(idx));
-+	mtk_ddp_write_relaxed(cmdq_pkt, offset, comp,
-+			      DISP_REG_OVL_OFFSET(idx));
-+	mtk_ddp_write_relaxed(cmdq_pkt, addr, comp,
-+			      DISP_REG_OVL_ADDR(ovl, idx));
- 
- 	if (pending->enable)
--		mtk_ovl_layer_on(comp, idx);
-+		mtk_ovl_layer_on(comp, idx, cmdq_pkt);
- }
- 
- static void mtk_ovl_bgclr_in_on(struct mtk_ddp_comp *comp)
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index 1e05664aecbd..a915f68aac35 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -10,6 +10,7 @@
- #include <linux/of_irq.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
- 
- #include "mtk_drm_crtc.h"
- #include "mtk_drm_ddp_comp.h"
-@@ -127,14 +128,16 @@ static void mtk_rdma_stop(struct mtk_ddp_comp *comp)
- 
- static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
- 			    unsigned int height, unsigned int vrefresh,
--			    unsigned int bpc)
-+			    unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
- {
- 	unsigned int threshold;
- 	unsigned int reg;
- 	struct mtk_disp_rdma *rdma = comp_to_rdma(comp);
- 
--	rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0, 0xfff, width);
--	rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_1, 0xfffff, height);
-+	mtk_ddp_write_mask(cmdq_pkt, width, comp,
-+			   DISP_REG_RDMA_SIZE_CON_0, 0xfff);
-+	mtk_ddp_write_mask(cmdq_pkt, height, comp,
-+			   DISP_REG_RDMA_SIZE_CON_1, 0xfffff);
- 
- 	/*
- 	 * Enable FIFO underflow since DSI and DPI can't be blocked.
-@@ -146,7 +149,7 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
- 	reg = RDMA_FIFO_UNDERFLOW_EN |
- 	      RDMA_FIFO_PSEUDO_SIZE(RDMA_FIFO_SIZE(rdma)) |
- 	      RDMA_OUTPUT_VALID_FIFO_THRESHOLD(threshold);
--	writel(reg, comp->regs + DISP_REG_RDMA_FIFO_CON);
-+	mtk_ddp_write(cmdq_pkt, reg, comp, DISP_REG_RDMA_FIFO_CON);
- }
- 
- static unsigned int rdma_fmt_convert(struct mtk_disp_rdma *rdma,
-@@ -192,7 +195,8 @@ static unsigned int mtk_rdma_layer_nr(struct mtk_ddp_comp *comp)
- }
- 
- static void mtk_rdma_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
--				  struct mtk_plane_state *state)
-+				  struct mtk_plane_state *state,
-+				  struct cmdq_pkt *cmdq_pkt)
- {
- 	struct mtk_disp_rdma *rdma = comp_to_rdma(comp);
- 	struct mtk_plane_pending_state *pending = &state->pending;
-@@ -202,24 +206,27 @@ static void mtk_rdma_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
- 	unsigned int con;
- 
- 	con = rdma_fmt_convert(rdma, fmt);
--	writel_relaxed(con, comp->regs + DISP_RDMA_MEM_CON);
-+	mtk_ddp_write_relaxed(cmdq_pkt, con, comp, DISP_RDMA_MEM_CON);
- 
- 	if (fmt == DRM_FORMAT_UYVY || fmt == DRM_FORMAT_YUYV) {
--		rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0,
--				 RDMA_MATRIX_ENABLE, RDMA_MATRIX_ENABLE);
--		rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0,
--				 RDMA_MATRIX_INT_MTX_SEL,
--				 RDMA_MATRIX_INT_MTX_BT601_to_RGB);
-+		mtk_ddp_write_mask(cmdq_pkt, RDMA_MATRIX_ENABLE, comp,
-+				   DISP_REG_RDMA_SIZE_CON_0,
-+				   RDMA_MATRIX_ENABLE);
-+		mtk_ddp_write_mask(cmdq_pkt, RDMA_MATRIX_INT_MTX_BT601_to_RGB,
-+				   comp, DISP_REG_RDMA_SIZE_CON_0,
-+				   RDMA_MATRIX_INT_MTX_SEL);
- 	} else {
--		rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0,
--				 RDMA_MATRIX_ENABLE, 0);
-+		mtk_ddp_write_mask(cmdq_pkt, 0, comp,
-+				   DISP_REG_RDMA_SIZE_CON_0,
-+				   RDMA_MATRIX_ENABLE);
- 	}
-+	mtk_ddp_write_relaxed(cmdq_pkt, addr, comp, DISP_RDMA_MEM_START_ADDR);
-+	mtk_ddp_write_relaxed(cmdq_pkt, pitch, comp, DISP_RDMA_MEM_SRC_PITCH);
-+	mtk_ddp_write(cmdq_pkt, RDMA_MEM_GMC, comp,
-+		      DISP_RDMA_MEM_GMC_SETTING_0);
-+	mtk_ddp_write_mask(cmdq_pkt, RDMA_MODE_MEMORY, comp,
-+			   DISP_REG_RDMA_GLOBAL_CON, RDMA_MODE_MEMORY);
- 
--	writel_relaxed(addr, comp->regs + DISP_RDMA_MEM_START_ADDR);
--	writel_relaxed(pitch, comp->regs + DISP_RDMA_MEM_SRC_PITCH);
--	writel(RDMA_MEM_GMC, comp->regs + DISP_RDMA_MEM_GMC_SETTING_0);
--	rdma_update_bits(comp, DISP_REG_RDMA_GLOBAL_CON,
--			 RDMA_MODE_MEMORY, RDMA_MODE_MEMORY);
- }
- 
- static const struct mtk_ddp_comp_funcs mtk_disp_rdma_funcs = {
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index adf072fb4ae3..5b3e24a7ef6c 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -306,7 +306,7 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
- 		if (i == 1)
- 			mtk_ddp_comp_bgclr_in_on(comp);
- 
--		mtk_ddp_comp_config(comp, width, height, vrefresh, bpc);
-+		mtk_ddp_comp_config(comp, width, height, vrefresh, bpc, NULL);
- 		mtk_ddp_comp_start(comp);
- 	}
- 
-@@ -321,7 +321,7 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
- 		comp = mtk_drm_ddp_comp_for_plane(crtc, plane, &local_layer);
- 		if (comp)
- 			mtk_ddp_comp_layer_config(comp, local_layer,
--						  plane_state);
-+						  plane_state, NULL);
- 	}
- 
- 	return 0;
-@@ -391,7 +391,7 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
- 	if (state->pending_config) {
- 		mtk_ddp_comp_config(comp, state->pending_width,
- 				    state->pending_height,
--				    state->pending_vrefresh, 0);
-+				    state->pending_vrefresh, 0, NULL);
- 
- 		state->pending_config = false;
- 	}
-@@ -411,7 +411,7 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
- 
- 			if (comp)
- 				mtk_ddp_comp_layer_config(comp, local_layer,
--							  plane_state);
-+							  plane_state, NULL);
- 			plane_state->pending.config = false;
- 		}
- 		mtk_crtc->pending_planes = false;
-@@ -432,7 +432,7 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc)
- 
- 			if (comp)
- 				mtk_ddp_comp_layer_config(comp, local_layer,
--							  plane_state);
-+							  plane_state, NULL);
- 			plane_state->pending.async_config = false;
- 		}
- 		mtk_crtc->pending_async_planes = false;
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index 3407d38aff8f..cb3296f67f50 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -12,7 +12,7 @@
- #include <linux/of_irq.h>
- #include <linux/of_platform.h>
- #include <linux/platform_device.h>
--
-+#include <linux/soc/mediatek/mtk-cmdq.h>
- #include "mtk_drm_drv.h"
- #include "mtk_drm_plane.h"
- #include "mtk_drm_ddp_comp.h"
-@@ -76,36 +76,84 @@
- #define DITHER_ADD_LSHIFT_G(x)			(((x) & 0x7) << 4)
- #define DITHER_ADD_RSHIFT_G(x)			(((x) & 0x7) << 0)
- 
-+void mtk_ddp_write(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-+		   struct mtk_ddp_comp *comp, unsigned int offset)
-+{
-+#if IS_ENABLED(CONFIG_MTK_CMDQ)
-+	if (cmdq_pkt)
-+		cmdq_pkt_write(cmdq_pkt, comp->subsys,
-+			       comp->regs_pa + offset, value);
-+	else
-+#endif
-+		writel(value, comp->regs + offset);
-+}
-+
-+void mtk_ddp_write_relaxed(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-+			   struct mtk_ddp_comp *comp,
-+			   unsigned int offset)
-+{
-+#if IS_ENABLED(CONFIG_MTK_CMDQ)
-+	if (cmdq_pkt)
-+		cmdq_pkt_write(cmdq_pkt, comp->subsys,
-+			       comp->regs_pa + offset, value);
-+	else
-+#endif
-+		writel_relaxed(value, comp->regs + offset);
-+}
-+
-+void mtk_ddp_write_mask(struct cmdq_pkt *cmdq_pkt,
-+			unsigned int value,
-+			struct mtk_ddp_comp *comp,
-+			unsigned int offset,
-+			unsigned int mask)
-+{
-+#if IS_ENABLED(CONFIG_MTK_CMDQ)
-+	if (cmdq_pkt) {
-+		cmdq_pkt_write_mask(cmdq_pkt, comp->subsys,
-+				    comp->regs_pa + offset, value, mask);
-+	} else {
-+#endif
-+		u32 tmp = readl(comp->regs + offset);
-+
-+		tmp = (tmp & ~mask) | (value & mask);
-+		writel(tmp, comp->regs + offset);
-+#if IS_ENABLED(CONFIG_MTK_CMDQ)
-+	}
-+#endif
-+}
-+
- void mtk_dither_set(struct mtk_ddp_comp *comp, unsigned int bpc,
--		    unsigned int CFG)
-+		    unsigned int CFG, struct cmdq_pkt *cmdq_pkt)
- {
- 	/* If bpc equal to 0, the dithering function didn't be enabled */
- 	if (bpc == 0)
- 		return;
- 
- 	if (bpc >= MTK_MIN_BPC) {
--		writel(0, comp->regs + DISP_DITHER_5);
--		writel(0, comp->regs + DISP_DITHER_7);
--		writel(DITHER_LSB_ERR_SHIFT_R(MTK_MAX_BPC - bpc) |
--		       DITHER_ADD_LSHIFT_R(MTK_MAX_BPC - bpc) |
--		       DITHER_NEW_BIT_MODE,
--		       comp->regs + DISP_DITHER_15);
--		writel(DITHER_LSB_ERR_SHIFT_B(MTK_MAX_BPC - bpc) |
--		       DITHER_ADD_LSHIFT_B(MTK_MAX_BPC - bpc) |
--		       DITHER_LSB_ERR_SHIFT_G(MTK_MAX_BPC - bpc) |
--		       DITHER_ADD_LSHIFT_G(MTK_MAX_BPC - bpc),
--		       comp->regs + DISP_DITHER_16);
--		writel(DISP_DITHERING, comp->regs + CFG);
-+		mtk_ddp_write(cmdq_pkt, 0, comp, DISP_DITHER_5);
-+		mtk_ddp_write(cmdq_pkt, 0, comp, DISP_DITHER_7);
-+		mtk_ddp_write(cmdq_pkt,
-+			      DITHER_LSB_ERR_SHIFT_R(MTK_MAX_BPC - bpc) |
-+			      DITHER_ADD_LSHIFT_R(MTK_MAX_BPC - bpc) |
-+			      DITHER_NEW_BIT_MODE,
-+			      comp, DISP_DITHER_15);
-+		mtk_ddp_write(cmdq_pkt,
-+			      DITHER_LSB_ERR_SHIFT_B(MTK_MAX_BPC - bpc) |
-+			      DITHER_ADD_LSHIFT_B(MTK_MAX_BPC - bpc) |
-+			      DITHER_LSB_ERR_SHIFT_G(MTK_MAX_BPC - bpc) |
-+			      DITHER_ADD_LSHIFT_G(MTK_MAX_BPC - bpc),
-+			      comp, DISP_DITHER_16);
-+		mtk_ddp_write(cmdq_pkt, DISP_DITHERING, comp, CFG);
- 	}
- }
- 
- static void mtk_od_config(struct mtk_ddp_comp *comp, unsigned int w,
- 			  unsigned int h, unsigned int vrefresh,
--			  unsigned int bpc)
-+			  unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
- {
--	writel(w << 16 | h, comp->regs + DISP_OD_SIZE);
--	writel(OD_RELAYMODE, comp->regs + DISP_OD_CFG);
--	mtk_dither_set(comp, bpc, DISP_OD_CFG);
-+	mtk_ddp_write(cmdq_pkt, w << 16 | h, comp, DISP_OD_SIZE);
-+	mtk_ddp_write(cmdq_pkt, OD_RELAYMODE, comp, DISP_OD_CFG);
-+	mtk_dither_set(comp, bpc, DISP_OD_CFG, cmdq_pkt);
- }
- 
- static void mtk_od_start(struct mtk_ddp_comp *comp)
-@@ -120,9 +168,9 @@ static void mtk_ufoe_start(struct mtk_ddp_comp *comp)
- 
- static void mtk_aal_config(struct mtk_ddp_comp *comp, unsigned int w,
- 			   unsigned int h, unsigned int vrefresh,
--			   unsigned int bpc)
-+			   unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
- {
--	writel(h << 16 | w, comp->regs + DISP_AAL_SIZE);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, comp, DISP_AAL_SIZE);
- }
- 
- static void mtk_aal_start(struct mtk_ddp_comp *comp)
-@@ -137,10 +185,10 @@ static void mtk_aal_stop(struct mtk_ddp_comp *comp)
- 
- static void mtk_ccorr_config(struct mtk_ddp_comp *comp, unsigned int w,
- 			     unsigned int h, unsigned int vrefresh,
--			     unsigned int bpc)
-+			     unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
- {
--	writel(h << 16 | w, comp->regs + DISP_CCORR_SIZE);
--	writel(CCORR_RELAY_MODE, comp->regs + DISP_CCORR_CFG);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, comp, DISP_CCORR_SIZE);
-+	mtk_ddp_write(cmdq_pkt, CCORR_RELAY_MODE, comp, DISP_CCORR_CFG);
- }
- 
- static void mtk_ccorr_start(struct mtk_ddp_comp *comp)
-@@ -155,10 +203,10 @@ static void mtk_ccorr_stop(struct mtk_ddp_comp *comp)
- 
- static void mtk_dither_config(struct mtk_ddp_comp *comp, unsigned int w,
- 			      unsigned int h, unsigned int vrefresh,
--			      unsigned int bpc)
-+			      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
- {
--	writel(h << 16 | w, comp->regs + DISP_DITHER_SIZE);
--	writel(DITHER_RELAY_MODE, comp->regs + DISP_DITHER_CFG);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, comp, DISP_DITHER_SIZE);
-+	mtk_ddp_write(cmdq_pkt, DITHER_RELAY_MODE, comp, DISP_DITHER_CFG);
- }
- 
- static void mtk_dither_start(struct mtk_ddp_comp *comp)
-@@ -173,10 +221,10 @@ static void mtk_dither_stop(struct mtk_ddp_comp *comp)
- 
- static void mtk_gamma_config(struct mtk_ddp_comp *comp, unsigned int w,
- 			     unsigned int h, unsigned int vrefresh,
--			     unsigned int bpc)
-+			     unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
- {
--	writel(h << 16 | w, comp->regs + DISP_GAMMA_SIZE);
--	mtk_dither_set(comp, bpc, DISP_GAMMA_CFG);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, comp, DISP_GAMMA_SIZE);
-+	mtk_dither_set(comp, bpc, DISP_GAMMA_CFG, cmdq_pkt);
- }
- 
- static void mtk_gamma_start(struct mtk_ddp_comp *comp)
-@@ -324,6 +372,9 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
- 		      const struct mtk_ddp_comp_funcs *funcs)
- {
- 	struct platform_device *comp_pdev;
-+	struct resource res;
-+	struct cmdq_client_reg cmdq_reg;
-+	int ret = 0;
- 
- 	if (comp_id < 0 || comp_id >= DDP_COMPONENT_ID_MAX)
- 		return -EINVAL;
-@@ -358,6 +409,28 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
- 	}
- 	comp->dev = &comp_pdev->dev;
- 
-+#if IS_ENABLED(CONFIG_MTK_CMDQ)
-+	if (of_address_to_resource(node, 0, &res) != 0) {
-+		dev_err(dev, "Missing reg in %s node\n",
-+			node->full_name);
-+		return -EINVAL;
-+	}
-+	comp->regs_pa = res.start;
-+
-+	comp_pdev = of_find_device_by_node(node);
-+	if (!comp_pdev) {
-+		dev_warn(dev, "Waiting for component device %s\n",
-+			 node->full_name);
-+		return -EPROBE_DEFER;
-+	}
-+
-+	ret = cmdq_dev_get_client_reg(&comp_pdev->dev, &cmdq_reg, 0);
-+	if (ret != 0)
-+		dev_dbg(&comp_pdev->dev,
-+			"get mediatek,gce-client-reg fail!\n");
-+	else
-+		comp->subsys = cmdq_reg.subsys;
-+#endif
- 	return 0;
- }
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index dbfb90e9b9cf..384abae5a8c8 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -69,10 +69,11 @@ enum mtk_ddp_comp_id {
- };
- 
- struct mtk_ddp_comp;
--
-+struct cmdq_pkt;
- struct mtk_ddp_comp_funcs {
- 	void (*config)(struct mtk_ddp_comp *comp, unsigned int w,
--		       unsigned int h, unsigned int vrefresh, unsigned int bpc);
-+		       unsigned int h, unsigned int vrefresh,
-+		       unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
- 	void (*start)(struct mtk_ddp_comp *comp);
- 	void (*stop)(struct mtk_ddp_comp *comp);
- 	void (*enable_vblank)(struct mtk_ddp_comp *comp, struct drm_crtc *crtc);
-@@ -85,7 +86,8 @@ struct mtk_ddp_comp_funcs {
- 			   unsigned int idx,
- 			   struct mtk_plane_state *state);
- 	void (*layer_config)(struct mtk_ddp_comp *comp, unsigned int idx,
--			     struct mtk_plane_state *state);
-+			     struct mtk_plane_state *state,
-+			     struct cmdq_pkt *cmdq_pkt);
- 	void (*gamma_set)(struct mtk_ddp_comp *comp,
- 			  struct drm_crtc_state *state);
- 	void (*bgclr_in_on)(struct mtk_ddp_comp *comp);
-@@ -99,14 +101,17 @@ struct mtk_ddp_comp {
- 	struct device *dev;
- 	enum mtk_ddp_comp_id id;
- 	const struct mtk_ddp_comp_funcs *funcs;
-+	resource_size_t regs_pa;
-+	u8 subsys;
- };
- 
- static inline void mtk_ddp_comp_config(struct mtk_ddp_comp *comp,
- 				       unsigned int w, unsigned int h,
--				       unsigned int vrefresh, unsigned int bpc)
-+				       unsigned int vrefresh, unsigned int bpc,
-+				       struct cmdq_pkt *cmdq_pkt)
- {
- 	if (comp->funcs && comp->funcs->config)
--		comp->funcs->config(comp, w, h, vrefresh, bpc);
-+		comp->funcs->config(comp, w, h, vrefresh, bpc, cmdq_pkt);
- }
- 
- static inline void mtk_ddp_comp_prepare(struct mtk_ddp_comp *comp)
-@@ -174,10 +179,11 @@ static inline int mtk_ddp_comp_layer_check(struct mtk_ddp_comp *comp,
- 
- static inline void mtk_ddp_comp_layer_config(struct mtk_ddp_comp *comp,
- 					     unsigned int idx,
--					     struct mtk_plane_state *state)
-+					     struct mtk_plane_state *state,
-+					     struct cmdq_pkt *cmdq_pkt)
- {
- 	if (comp->funcs && comp->funcs->layer_config)
--		comp->funcs->layer_config(comp, idx, state);
-+		comp->funcs->layer_config(comp, idx, state, cmdq_pkt);
- }
- 
- static inline void mtk_ddp_gamma_set(struct mtk_ddp_comp *comp,
-@@ -207,6 +213,13 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *comp_node,
- int mtk_ddp_comp_register(struct drm_device *drm, struct mtk_ddp_comp *comp);
- void mtk_ddp_comp_unregister(struct drm_device *drm, struct mtk_ddp_comp *comp);
- void mtk_dither_set(struct mtk_ddp_comp *comp, unsigned int bpc,
--		    unsigned int CFG);
--
-+		    unsigned int CFG, struct cmdq_pkt *cmdq_pkt);
-+enum mtk_ddp_comp_type mtk_ddp_comp_get_type(enum mtk_ddp_comp_id comp_id);
-+void mtk_ddp_write(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-+		   struct mtk_ddp_comp *comp, unsigned int offset);
-+void mtk_ddp_write_relaxed(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-+			   struct mtk_ddp_comp *comp, unsigned int offset);
-+void mtk_ddp_write_mask(struct cmdq_pkt *cmdq_pkt, unsigned int value,
-+			struct mtk_ddp_comp *comp, unsigned int offset,
-+			unsigned int mask);
- #endif /* MTK_DRM_DDP_COMP_H */
--- 
-2.18.0
+You combine assign and write_s in this function, so you always occupy
+register CMDQ_SPR_TEMP for this purpose, client could not use
+CMDQ_SPR_TEMP for other purpose. So I would like you just do write_s in
+this function. So the code in client would be:
+
+cmdq_pkt_assign(pkt, high_addr_reg_idx, CMDQ_ADDR_HIGH(addr));
+cmdq_pkt_write_s(pkt, high_addr_reg_idx, CMDQ_ADDR_LOW(addr),
+src_reg_idx, mask);
+
+Let client to decide which register for high address.
+
+Another benefit of not combining instruction is that client driver owner
+would be more clear about which command is in command buffer and it's
+easier for them to debug.
+
+> +	if (err < 0)
+> +		return err;
+> +
+> +	inst.arg_b_t = CMDQ_REG_TYPE;
+> +	inst.sop = dst_reg_idx;
+> +	inst.offset = CMDQ_ADDR_LOW(addr);
+> +	inst.arg_b = reg_idx;
+
+I seems arg_b has a meaningful name.
+
+Regards,
+CK
+
+> +
+> +	return cmdq_pkt_append_command(pkt, inst);
+> +}
+> +EXPORT_SYMBOL(cmdq_pkt_write_s);
+> +
+>  int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event)
+>  {
+>  	struct cmdq_instruction inst = { {0} };
+> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+> index 121c3bb6d3de..8ef87e1bd03b 100644
+> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
+> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+> @@ -59,6 +59,8 @@ enum cmdq_code {
+>  	CMDQ_CODE_JUMP = 0x10,
+>  	CMDQ_CODE_WFE = 0x20,
+>  	CMDQ_CODE_EOC = 0x40,
+> +	CMDQ_CODE_WRITE_S = 0x90,
+> +	CMDQ_CODE_WRITE_S_MASK = 0x91,
+>  	CMDQ_CODE_LOGIC = 0xa0,
+>  };
+>  
+> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+> index c66b3a0da2a2..56ff1970197c 100644
+> --- a/include/linux/soc/mediatek/mtk-cmdq.h
+> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
+> @@ -106,6 +106,18 @@ int cmdq_pkt_write(struct cmdq_pkt *pkt, u8 subsys, u16 offset, u32 value);
+>  int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
+>  			u16 offset, u32 value, u32 mask);
+>  
+> +/**
+> + * cmdq_pkt_write_s_mask() - append write_s command to the CMDQ packet
+> + * @pkt:	the CMDQ packet
+> + * @addr:	the physical address of register or dma
+> + * @reg_idx:	the CMDQ internal register ID which cache source value
+> + * @mask:	the specified target register mask
+> + *
+> + * Return: 0 for success; else the error code is returned
+> + */
+> +int cmdq_pkt_write_s(struct cmdq_pkt *pkt, phys_addr_t addr, u16 reg_idx,
+> +		     u32 mask);
+> +
+>  /**
+>   * cmdq_pkt_wfe() - append wait for event command to the CMDQ packet
+>   * @pkt:	the CMDQ packet
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
