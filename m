@@ -7,74 +7,77 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A4669C43603
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 15:51:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D032C43603
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 15:52:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 690B62073B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 15:51:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 51A932073B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 15:52:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gz0cOxhO";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="m2NiP0Cn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 690B62073B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GcQzyXTz";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="T7tmarUt"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 51A932073B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:From:Subject:Mime-Version:Message-Id
-	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/0lWKJLWz4J921ElmeSfTx+qYlhZDB9qeagckHwWG7k=; b=gz0cOxhOPR95ms
-	XPou0u6JM4ghuNa16ij7bgJ17LecpbiytI2fPIwobUOWiimTDL//KSeinKvzeYl+TYt877rZpngVq
-	EqQ0w0fg00TzIfLl0UYrUSXVtfQ/JvZxV1u+MbHGk8zys7B2t+PTvBBAVFYNXbnrss2CUkypUYYWz
-	fZJs4jUVgkJiOz3yiKCHXY7C9ofGRJDoM5hdqYT38H8hVlPZEATwGU/uCA8fGzggLLkN9M6/y5Uzd
-	Z3/OFAVKmU6g+znNiQJmypHVofw/da3TanQQjKMjoQ8Dha+AGfIx3N2e7pTDMyR6VF3PR0v7ITYHL
-	uHg76C9osNUvWMZOE5lA==;
+	List-Archive:List-Unsubscribe:List-Id:To:From:Subject:References:Mime-Version
+	:Message-Id:In-Reply-To:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cCfn+MarlolZ6IfRhA5+nsfNYDjnDAmgX7N3j/FTs1o=; b=GcQzyXTzd9krAB
+	vI9eqSmgSKAwwXc3Fl0zTvdc8NicuScXwXsjIwx2nA4ZRFoO78Vc0d8aN4RcMZLoLzJ/8Qvh1y0y9
+	x3CnAW+CpdQS7JI/UivHm0y6BsZGcNvpMP6JlT0QYa9WEZzFNpTDnwgEHxTXASYkdJB0gKMuiPvHm
+	Sz0dt1YJIcV5rbXWSbqGZYAjVdV+1uh31LbLNa3Wa0j8Le1maSZ0whBspdtlDUtXQdWqzOVZoK6xO
+	EhQ8EXTHV3kRprWVpEf0LsR/sG3eqY1z0/0FwM/2Gs5mT31LfVr/J3zrwpOFAp5TIXKEGmq9qSQs3
+	QiEJGK5aoJn8871RrLew==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1if4HF-0000vr-Tz; Wed, 11 Dec 2019 15:51:50 +0000
-Received: from mail-yw1-xc4a.google.com ([2607:f8b0:4864:20::c4a])
+	id 1if4HZ-0001F3-PV; Wed, 11 Dec 2019 15:52:09 +0000
+Received: from mail-qt1-x849.google.com ([2607:f8b0:4864:20::849])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1if4Em-00050n-9i
- for linux-mediatek@lists.infradead.org; Wed, 11 Dec 2019 15:49:18 +0000
-Received: by mail-yw1-xc4a.google.com with SMTP id q124so8745638ywb.16
- for <linux-mediatek@lists.infradead.org>; Wed, 11 Dec 2019 07:49:14 -0800 (PST)
+ id 1if4Ep-00055D-3B
+ for linux-mediatek@lists.infradead.org; Wed, 11 Dec 2019 15:49:21 +0000
+Received: by mail-qt1-x849.google.com with SMTP id x8so4638987qtq.14
+ for <linux-mediatek@lists.infradead.org>; Wed, 11 Dec 2019 07:49:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=+84MmMAoxZMowKg1LejiSRn+LGavX3XL0RXX6IMOW+w=;
- b=m2NiP0CnGnotNR/yMx/w5OIeIfCUnZkQxMGnHlJQgBxOA/FXbl7y2EYygJSnUU7MrL
- kJ3L4rLG6BKMC6Kw7F601lW847yaNWWQzxCbN9s1MYJ/eu1LeC5BesWLk3yZ3tt2FePN
- 92VLc8xSfXsMFhJ4ItMCqBRqc7K/K40iD+AjeKs7eASl25E05/A0xRwMtATFIE75BGE0
- P6839NDZrpb/tdJSU3vkmmUS+e7YjYoAGICMyToI9z5hc49ilIEE5SPTUDNcmV8niTEb
- HhHa8oIT6pJcepbPvKt2SuJctQ0v2091Cw9qWrvd7TEfd5roezf2Rd0FvxgpGZFv/pLU
- wWkg==
+ h=date:in-reply-to:message-id:mime-version:references:subject:from:to
+ :cc; bh=L3bqEDJc/83H6XSH4dKpp4Sz+uUocCwUuCh066ZPD24=;
+ b=T7tmarUt73QPvvzsmlX8joprU84Bgn+q+g3Bub5VpNuPOkJ2OMgW/GR2NfK7AzKClC
+ TVaQfOgipbhJkxSaBENCKqcs/xBqhcht6ipt8vpVxU8N0K7LDCJSrRC/1rsFS9tb+m1i
+ xrDG46KfHWOx7stN/zivVYevObR3Lt28+6MPEh3++sYAWKHfWyyPtHWT99FEvqBwKUsk
+ /2L6mMknwQVjBCXY2SHvUs9Tq7wghQ+mqZ1/jCay1ViVuWUsLkq7UxOQEwPovdQGJZDZ
+ bvwP7rUww+runAY6qHX8Fl4Plmaut9fSbirsX6AWRHXQ1HGlqeCzE2/4WMjMeqTZd74Z
+ Ssjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=+84MmMAoxZMowKg1LejiSRn+LGavX3XL0RXX6IMOW+w=;
- b=ThdY5TPQNArjro2qd9enQBc4+XmjTcRMbgIlCCzeJOb7be5pKQ/Y0NQc8LxS03NwAr
- tN4MEp3AEqVBhznTC7uhu7L9iZ+6BQXUox3SNb/1zPccE9neBe9ZtYYbSGpyGLknZrR6
- 0Sj06le3GKm6l6bTRI0S8rPO1mPhafRUPY1t/HePXp7YcZgwvxjMHiiwU2HtFp+jjNnC
- 0+By3VpqiwAW7dFMwejXhN1EtSArV8gz51wt0Kgh4tUjsPkaE6trsmkEORi+xR0891ot
- 41ZKDvPhWwrPvAOpXCyPRuvk2syANActg9sAVACljJlkzL/xs24+/ol2QP9gbg9u3EbJ
- 3cwg==
-X-Gm-Message-State: APjAAAX3Oh0rbXGkkVoN9NBeAmpKW9pdXU58Bn3z8lwIaWzp1SaaH7uq
- d2r8AfnPVZtaMKy2TNfjIpIz0rKOu6WO6vVf
-X-Google-Smtp-Source: APXvYqzgag2uEK1TrKN/WHaL/XtHsyuWNO7uPzN29U6f0LWDaOKfxY1Ep76cMLNac+NAL6BSwAjUWiYDY6LG4QTQ
-X-Received: by 2002:a0d:d247:: with SMTP id u68mr297158ywd.1.1576079353136;
- Wed, 11 Dec 2019 07:49:13 -0800 (PST)
-Date: Wed, 11 Dec 2019 10:49:00 -0500
-Message-Id: <20191211154901.176256-1-markyacoub@google.com>
+ h=x-gm-message-state:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc;
+ bh=L3bqEDJc/83H6XSH4dKpp4Sz+uUocCwUuCh066ZPD24=;
+ b=D6YbotwX7kCzDTOLXYsYcRnORpspItT0LnSp9jzZjMve1XrJj0lMOXDbcVINO57Cxn
+ lbABH8TJlkkp88hqgVstTwrvuNoeTS41s6968k/TtoQII/BftlCqozOI3NPQboLwXrXR
+ 5/EAfaDOWYA9MzmeTDzZ0AenDY14+Jhh7rFbjmgi54Oe8jPOy4kuYykWdzagxRMLvRpU
+ Smlj6LO/BXY/zVT2Aa+UoVGbIfOGAjSKRHdMAXRt3mGtZP9eihgdW1Giy+2vVDyiCY2h
+ 0W6KxLmi7Dw8pY5c1HBi8/IS2khGwhSSIvqgF64kg044Su0IxRV/EcbMNpsVwr6KANn5
+ ZHwQ==
+X-Gm-Message-State: APjAAAXAw8f7WSNf37Sq0xQP+ztZHNdkIMe8gYexk8KcFJ8GvJR8CCyq
+ /8wDBc+AE6SRX1mdx/OIIgR/i60WTevIog6y
+X-Google-Smtp-Source: APXvYqzWVPRzbCutVlIWkKgo8ZdWbTIe/i8BsJDaINwYPE1tnMGWPJw4+4d/x/wDNk8QtVgjgmAdkZUNDVCj/ebY
+X-Received: by 2002:a0c:d0f1:: with SMTP id b46mr3637071qvh.188.1576079357145; 
+ Wed, 11 Dec 2019 07:49:17 -0800 (PST)
+Date: Wed, 11 Dec 2019 10:49:01 -0500
+In-Reply-To: <20191211154901.176256-1-markyacoub@google.com>
+Message-Id: <20191211154901.176256-2-markyacoub@google.com>
 Mime-Version: 1.0
+References: <20191211154901.176256-1-markyacoub@google.com>
 X-Mailer: git-send-email 2.24.0.525.g8f36a354ae-goog
-Subject: [PATCH 1/2] Return from mtk_ovl_layer_config after mtk_ovl_layer_off
+Subject: [PATCH 2/2] Turn off Alpha bit when plane format has no alpha
 From: Mark Yacoub <markyacoub@google.com>
 To: CK Hu <ck.hu@mediatek.com>, dri-devel@lists.freedesktop.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191211_074916_390555_C4CA2658 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20191211_074919_177174_5EBD3E29 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,12 +99,10 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-drm/mediatek: return if plane pending state is disabled.
+drm/mediatek: Add OVL_CON_ALPHA only when the plane format has_alpha.
 
-If the plane pending state is disabled, call mtk_ovl_layer_off then
-return.
-This guarantees that that the state is valid for all operations when the
-pending state is enabled.
+This change enables XR24 format to be displayed as an overlay on top of
+the primary plane.
 
 Suggested-by: Sean Paul <seanpaul@chromium.org>
 To: CK Hu <ck.hu@mediatek.com>
@@ -115,35 +116,22 @@ Cc: linux-arm-kernel@lists.infradead.org
 Cc: linux-mediatek@lists.infradead.org
 Signed-off-by: Mark Yacoub <markyacoub@google.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 4a55bb6e2213..526b595eeff9 100644
+index 526b595eeff9..a7851756dddf 100644
 --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
 +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -260,8 +260,10 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
- 	unsigned int src_size = (pending->height << 16) | pending->width;
- 	unsigned int con;
- 
--	if (!pending->enable)
-+	if (!pending->enable) {
- 		mtk_ovl_layer_off(comp, idx);
-+		return;
-+	}
+@@ -266,7 +266,7 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
+ 	}
  
  	con = ovl_fmt_convert(ovl, fmt);
- 	if (idx != 0)
-@@ -283,8 +285,7 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
- 	writel_relaxed(offset, comp->regs + DISP_REG_OVL_OFFSET(idx));
- 	writel_relaxed(addr, comp->regs + DISP_REG_OVL_ADDR(ovl, idx));
+-	if (idx != 0)
++	if (state->base.fb->format->has_alpha)
+ 		con |= OVL_CON_AEN | OVL_CON_ALPHA;
  
--	if (pending->enable)
--		mtk_ovl_layer_on(comp, idx);
-+	mtk_ovl_layer_on(comp, idx);
- }
- 
- static void mtk_ovl_bgclr_in_on(struct mtk_ddp_comp *comp)
+ 	if (pending->rotation & DRM_MODE_REFLECT_Y) {
 -- 
 2.24.0.525.g8f36a354ae-goog
 
