@@ -2,88 +2,78 @@ Return-Path: <SRS0=jhbW=2B=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 61B92C43603
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 09:49:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C89EBC43603
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 09:52:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 323BA205C9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 09:49:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9A5DA2053B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 09:52:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MLYUGs+9";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=nvidia.com header.i=@nvidia.com header.b="fehz9BkD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 323BA205C9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=nvidia.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Uzq3sU4a";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="mSPy3cTg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9A5DA2053B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ic2tVW5ydql/z7pGrnOgrZPvNTFjJC1II7UbCznYUEY=; b=MLYUGs+9kvxW3H
-	WpwJGLipc7AB3WS0BB+DNAF5/NNSO7NbF7AosgnL/UYehkOHEps4tz6raMWk+rx5rBqyZtelSHD+K
-	bBAkGYpttv58CM3Zd4S0z3T8d/WAEquXO0pZomhRjnVg+uRtD9uykykYjGJqwCl+9xvdfm74+Th1P
-	Lzq5RVnNM7rXtlKydlNDUrzrIwQthnESZ19CxM6id39SqKyqAcUDCXtRWflaLYMJhDoHkvg3iixtl
-	s8qDum4OqLUzbzUrb+qT8h49Rwbapqv7gN3bwXUxlVOR7o/78wdhUEZqPKrbFUUrUnzVjQ5pkgVF3
-	9ZGZMeBilrVdZGwCHiqg==;
+	List-Owner; bh=/Z21xMFY0uLASaPVZ70efGqltajp2vHwlfwjOYuoB0A=; b=Uzq3sU4ahX9kT1
+	1mBIZjoam4QOQxqBqAM4q4A7WfkF5RCQs+HzEpzQTzQfLjiE1jTEXcJHUxQaHPjoIWsxLAsmCvGWO
+	olpLL6jgsI5hRuARziGvWjvTcoFX7Qx9GIL1J8RW4NIJJOOfZQLsVZFxht03aCVyd0uEpkUTUyMtz
+	XOfBLgqmP7QlokKGOhSJvTkkJO9gyX7xmkyVs2YJ28H/Y4r8lXXhvzH4czw6uRw5bgH/JBuUhmSpE
+	St5EctxNmx5LcKIr/8kYn1mlrPE1AIqXy4kWweed/O+7q5ZdPG+Iv3yLcbYV/qGB1+rJImurshkQt
+	N54ygAynHzGaiiDKiKQg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ieycH-0005dU-3x; Wed, 11 Dec 2019 09:49:09 +0000
-Received: from hqnvemgate24.nvidia.com ([216.228.121.143])
+	id 1ieyfC-0007kT-VR; Wed, 11 Dec 2019 09:52:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieycE-0005d4-5w; Wed, 11 Dec 2019 09:49:07 +0000
-Received: from hqpgpgate102.nvidia.com (Not Verified[216.228.121.13]) by
- hqnvemgate24.nvidia.com (using TLS: TLSv1.2, DES-CBC3-SHA)
- id <B5df0bb7b0000>; Wed, 11 Dec 2019 01:48:43 -0800
-Received: from hqmail.nvidia.com ([172.20.161.6])
- by hqpgpgate102.nvidia.com (PGP Universal service);
- Wed, 11 Dec 2019 01:49:05 -0800
-X-PGP-Universal: processed;
- by hqpgpgate102.nvidia.com on Wed, 11 Dec 2019 01:49:05 -0800
-Received: from DRHQMAIL107.nvidia.com (10.27.9.16) by HQMAIL101.nvidia.com
- (172.20.187.10) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Wed, 11 Dec
- 2019 09:49:04 +0000
-Received: from tbergstrom-lnx.Nvidia.com (10.124.1.5) by
- DRHQMAIL107.nvidia.com (10.27.9.16) with Microsoft SMTP Server (TLS) id
- 15.0.1473.3; Wed, 11 Dec 2019 09:49:03 +0000
-Received: by tbergstrom-lnx.Nvidia.com (Postfix, from userid 1000)
- id 83C0540D1A; Wed, 11 Dec 2019 11:49:01 +0200 (EET)
-Date: Wed, 11 Dec 2019 11:49:01 +0200
-From: Peter De Schrijver <pdeschrijver@nvidia.com>
-To: Yangtao Li <tiny.windzz@gmail.com>
-Subject: Re: [PATCH 06/17] clk: tegra: convert to
- devm_platform_ioremap_resource
-Message-ID: <20191211094901.GY28289@pdeschrijver-desktop.Nvidia.com>
-References: <20191209195749.868-1-tiny.windzz@gmail.com>
- <20191209195749.868-6-tiny.windzz@gmail.com>
+ id 1ieyf0-0007ZV-Ko; Wed, 11 Dec 2019 09:52:00 +0000
+X-UUID: dc9e056432ae433b970ffd04bc227b02-20191211
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=1VJn5jAqrnLtlvKIMuG2cASmtgyBeVkMvB5FhRuXq5E=; 
+ b=mSPy3cTgopQCd80cf04vcENKuvBrUsV1icnSes3Z7HtoQT5gidqKKPvhF67bfOMN1mpn6tGgcl2P1HS9RT54deKwNlZnOmPSvyO7azgl38M3wGtIv1Jbg0hlEdwr7we/5ERffNd4EiQLg7DJrEJrdTB6U7GQYuMxVFc/zFQsDUw=;
+X-UUID: dc9e056432ae433b970ffd04bc227b02-20191211
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <hsin-hsiung.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1280619561; Wed, 11 Dec 2019 01:51:56 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 11 Dec 2019 01:44:14 -0800
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 11 Dec 2019 17:43:35 +0800
+Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Wed, 11 Dec 2019 17:43:34 +0800
+From: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+To: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Alexandre Belloni <alexandre.belloni@free-electrons.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>
+Subject: [PATCH v7 6/6] rtc: Add support for the MediaTek MT6358 RTC
+Date: Wed, 11 Dec 2019 17:43:55 +0800
+Message-ID: <1576057435-3561-7-git-send-email-hsin-hsiung.wang@mediatek.com>
+X-Mailer: git-send-email 2.6.4
+In-Reply-To: <1576057435-3561-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+References: <1576057435-3561-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191209195749.868-6-tiny.windzz@gmail.com>
-X-NVConfidentiality: public
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Originating-IP: [10.124.1.5]
-X-ClientProxiedBy: HQMAIL111.nvidia.com (172.20.187.18) To
- DRHQMAIL107.nvidia.com (10.27.9.16)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
- t=1576057723; bh=r6KMkLsJhUlJn6kT8Vu8wn2241qWLrLOKRW+auTAdBw=;
- h=X-PGP-Universal:Date:From:To:CC:Subject:Message-ID:References:
- MIME-Version:Content-Type:Content-Disposition:In-Reply-To:
- X-NVConfidentiality:User-Agent:X-Originating-IP:X-ClientProxiedBy;
- b=fehz9BkDjC3DMVoGOpqVqlRcbFB+5HaVT04s5D4cWHQvhLCn6gXQEF6JJYvG9urlB
- s4hOQT8rZMu0RxfbGXBHlrizVjlU+MBWpN0zdOvs7VXqzPEAx0rJQEoyRB1VSgAF0A
- m289OxsJav4Sxdi0oVtNIPZGjVdeNbo8sx+JhKsl1iNDcTpdmnXX5k0gKmMauhQ+9Z
- XDGiV4yhyfPTseM3aKAa1n/aVdjBBiRP1CcndpVLoWBMQIL+f1qomtdDweAF2jj+Oc
- haxlit6zV7iSueYhAjyDiFWvEhl7qBKIz75rmqG+D6byUdQIM6BSB47B6wmYyTUifb
- AkfA7cHM53gag==
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191211_014906_232011_F2BAD4B0 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20191211_015158_687195_94DA988E 
+X-CRM114-Status: GOOD (  13.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,115 +85,131 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kstewart@linuxfoundation.org, pgaikwad@nvidia.com, heiko@sntech.de,
- geert+renesas@glider.be, chunhui.dai@mediatek.com, mturquette@baylibre.com,
- palmer@sifive.com, nsekhar@ti.com, tomasz.figa@gmail.com, rfontana@redhat.com,
- thierry.reding@gmail.com, weiyongjun1@huawei.com, s.nawrocki@samsung.com,
- manivannan.sadhasivam@linaro.org, linux-riscv@lists.infradead.org,
- festevam@gmail.com, linux-clk@vger.kernel.org, john@phrozen.org,
- robh@kernel.org, linux-samsung-soc@vger.kernel.org, emilio@elopez.com.ar,
- krzk@kernel.org, jonathanh@nvidia.com, cw00.choi@samsung.com, wens@csie.org,
- agross@kernel.org, linux-imx@nxp.com, Eugeniy.Paltsev@synopsys.com,
- linux-arm-kernel@lists.infradead.org, linux-tegra@vger.kernel.org,
- miquel.raynal@bootlin.com, linux-arm-msm@vger.kernel.org,
- s.hauer@pengutronix.de, mripard@kernel.org, linux-mediatek@lists.infradead.org,
- swinslow@gmail.com, paul.walmsley@sifive.com, matthias.bgg@gmail.com,
- tglx@linutronix.de, daniel.baluta@nxp.com, allison@lohutok.net,
- aisheng.dong@nxp.com, jcmvbkbc@gmail.com, sboyd@kernel.org,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, t-kristo@ti.com,
- dinguyen@kernel.org, kgene@kernel.org, kernel@pengutronix.de,
- wangyan.wang@mediatek.com, shawnguo@kernel.org, afaerber@suse.de
+Cc: Mark Rutland <mark.rutland@arm.com>, Alessandro
+ Zummo <a.zummo@towertech.it>, Josef Friedl <josef.friedl@speed.at>,
+ srv_heupstream@mediatek.com, Frank Wunderlich <frank-w@public-files.de>,
+ Kate Stewart <kstewart@linuxfoundation.org>,
+ Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+ Tianping Fang <tianping.fang@mediatek.com>, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>,
+ Ran Bi <ran.bi@mediatek.com>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+ linux-rtc@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 09, 2019 at 07:57:38PM +0000, Yangtao Li wrote:
-> External email: Use caution opening links or attachments
-> 
-> 
+From: Ran Bi <ran.bi@mediatek.com>
 
-Acked-by:  Peter De Schrijver <pdeschrijver@nvidia.com>
+This add support for the MediaTek MT6358 RTC. Driver using
+compatible data to store different RTC_WRTGR address offset.
 
-> Use devm_platform_ioremap_resource() to simplify code.
-> 
-> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
-> ---
->  drivers/clk/tegra/clk-dfll.c | 34 ++++------------------------------
->  1 file changed, 4 insertions(+), 30 deletions(-)
-> 
-> diff --git a/drivers/clk/tegra/clk-dfll.c b/drivers/clk/tegra/clk-dfll.c
-> index c051d92c2bbf..070a2957e119 100644
-> --- a/drivers/clk/tegra/clk-dfll.c
-> +++ b/drivers/clk/tegra/clk-dfll.c
-> @@ -1935,7 +1935,6 @@ static int dfll_fetch_common_params(struct tegra_dfll *td)
->  int tegra_dfll_register(struct platform_device *pdev,
->                         struct tegra_dfll_soc_data *soc)
->  {
-> -       struct resource *mem;
->         struct tegra_dfll *td;
->         int ret;
-> 
-> @@ -1985,51 +1984,26 @@ int tegra_dfll_register(struct platform_device *pdev,
->                 return ret;
->         }
-> 
-> -       mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -       if (!mem) {
-> -               dev_err(td->dev, "no control register resource\n");
-> -               return -ENODEV;
-> -       }
-> -
-> -       td->base = devm_ioremap(td->dev, mem->start, resource_size(mem));
-> +       td->base = devm_platform_ioremap_resource(pdev, 0);
->         if (!td->base) {
->                 dev_err(td->dev, "couldn't ioremap DFLL control registers\n");
->                 return -ENODEV;
->         }
-> 
-> -       mem = platform_get_resource(pdev, IORESOURCE_MEM, 1);
-> -       if (!mem) {
-> -               dev_err(td->dev, "no i2c_base resource\n");
-> -               return -ENODEV;
-> -       }
-> -
-> -       td->i2c_base = devm_ioremap(td->dev, mem->start, resource_size(mem));
-> +       td->i2c_base = devm_platform_ioremap_resource(pdev, 1);
->         if (!td->i2c_base) {
->                 dev_err(td->dev, "couldn't ioremap i2c_base resource\n");
->                 return -ENODEV;
->         }
-> 
-> -       mem = platform_get_resource(pdev, IORESOURCE_MEM, 2);
-> -       if (!mem) {
-> -               dev_err(td->dev, "no i2c_controller_base resource\n");
-> -               return -ENODEV;
-> -       }
-> -
-> -       td->i2c_controller_base = devm_ioremap(td->dev, mem->start,
-> -                                              resource_size(mem));
-> +       td->i2c_controller_base = devm_platform_ioremap_resource(pdev, 2);
->         if (!td->i2c_controller_base) {
->                 dev_err(td->dev,
->                         "couldn't ioremap i2c_controller_base resource\n");
->                 return -ENODEV;
->         }
-> 
-> -       mem = platform_get_resource(pdev, IORESOURCE_MEM, 3);
-> -       if (!mem) {
-> -               dev_err(td->dev, "no lut_base resource\n");
-> -               return -ENODEV;
-> -       }
-> -
-> -       td->lut_base = devm_ioremap(td->dev, mem->start, resource_size(mem));
-> +       td->lut_base = devm_platform_ioremap_resource(pdev, 3);
->         if (!td->lut_base) {
->                 dev_err(td->dev,
->                         "couldn't ioremap lut_base resource\n");
-> --
-> 2.17.1
-> 
+Signed-off-by: Ran Bi <ran.bi@mediatek.com>
+Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
+---
+ drivers/rtc/rtc-mt6397.c       | 24 ++++++++++++++++--------
+ include/linux/mfd/mt6397/rtc.h | 16 +++++++++++++++-
+ 2 files changed, 31 insertions(+), 9 deletions(-)
 
+diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+index 9135e21..6ca54f9 100644
+--- a/drivers/rtc/rtc-mt6397.c
++++ b/drivers/rtc/rtc-mt6397.c
+@@ -15,12 +15,24 @@
+ #include <linux/mfd/mt6397/rtc.h>
+ #include <linux/mod_devicetable.h>
+ 
++static const struct of_device_id mt6397_rtc_of_match[] = {
++	{ .compatible = "mediatek,mt6323-rtc",
++		.data = (void *)&mt6397_rtc_data, },
++	{ .compatible = "mediatek,mt6358-rtc",
++		.data = (void *)&mt6358_rtc_data, },
++	{ .compatible = "mediatek,mt6397-rtc",
++		.data = (void *)&mt6397_rtc_data, },
++	{}
++};
++MODULE_DEVICE_TABLE(of, mt6397_rtc_of_match);
++
+ static int mtk_rtc_write_trigger(struct mt6397_rtc *rtc)
+ {
+ 	int ret;
+ 	u32 data;
+ 
+-	ret = regmap_write(rtc->regmap, rtc->addr_base + RTC_WRTGR, 1);
++	ret = regmap_write(rtc->regmap,
++			   rtc->addr_base + rtc->data->wrtgr, 1);
+ 	if (ret < 0)
+ 		return ret;
+ 
+@@ -269,6 +281,9 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	rtc->addr_base = res->start;
+ 
++	rtc->data = (struct mtk_rtc_data *)
++			of_device_get_match_data(&pdev->dev);
++
+ 	rtc->irq = platform_get_irq(pdev, 0);
+ 	if (rtc->irq < 0)
+ 		return rtc->irq;
+@@ -333,13 +348,6 @@ static int mt6397_rtc_resume(struct device *dev)
+ static SIMPLE_DEV_PM_OPS(mt6397_pm_ops, mt6397_rtc_suspend,
+ 			mt6397_rtc_resume);
+ 
+-static const struct of_device_id mt6397_rtc_of_match[] = {
+-	{ .compatible = "mediatek,mt6323-rtc", },
+-	{ .compatible = "mediatek,mt6397-rtc", },
+-	{ }
+-};
+-MODULE_DEVICE_TABLE(of, mt6397_rtc_of_match);
+-
+ static struct platform_driver mtk_rtc_driver = {
+ 	.driver = {
+ 		.name = "mt6397-rtc",
+diff --git a/include/linux/mfd/mt6397/rtc.h b/include/linux/mfd/mt6397/rtc.h
+index 7dfb63b..8810e6f 100644
+--- a/include/linux/mfd/mt6397/rtc.h
++++ b/include/linux/mfd/mt6397/rtc.h
+@@ -18,7 +18,8 @@
+ #define RTC_BBPU_CBUSY         BIT(6)
+ #define RTC_BBPU_KEY            (0x43 << 8)
+ 
+-#define RTC_WRTGR              0x003c
++#define RTC_WRTGR_MT6358       0x3a
++#define RTC_WRTGR_MT6397       0x3c
+ 
+ #define RTC_IRQ_STA            0x0002
+ #define RTC_IRQ_STA_AL         BIT(0)
+@@ -65,6 +66,10 @@
+ #define MTK_RTC_POLL_DELAY_US  10
+ #define MTK_RTC_POLL_TIMEOUT   (jiffies_to_usecs(HZ))
+ 
++struct mtk_rtc_data {
++	u32			wrtgr;
++};
++
+ struct mt6397_rtc {
+ 	struct device           *dev;
+ 	struct rtc_device       *rtc_dev;
+@@ -74,6 +79,15 @@ struct mt6397_rtc {
+ 	struct regmap           *regmap;
+ 	int                     irq;
+ 	u32                     addr_base;
++	const struct mtk_rtc_data *data;
++};
++
++static const struct mtk_rtc_data mt6358_rtc_data = {
++	.wrtgr = RTC_WRTGR_MT6358,
++};
++
++static const struct mtk_rtc_data mt6397_rtc_data = {
++	.wrtgr = RTC_WRTGR_MT6397,
+ };
+ 
+ #endif /* _LINUX_MFD_MT6397_RTC_H_ */
+-- 
+2.6.4
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
