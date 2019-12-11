@@ -2,73 +2,64 @@ Return-Path: <SRS0=jhbW=2B=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DFC4C43603
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 19:27:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AE5C2C43603
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 19:55:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 61F652073B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 19:27:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7E72F222C4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 19:55:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OsCLNLXA";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=lunn.ch header.i=@lunn.ch header.b="0/wx5BRx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 61F652073B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lunn.ch
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="odcixQ6X"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7E72F222C4
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=59CjZ8GyBSyr0bDKHn/x4bLy59NRme9vSmq7WuWfW4g=; b=OsCLNLXA6DtWqR
-	snKCeDEf2bxgyZ8kYWrz5YIqvUmjJf39+UEJK09DGmq0on0zXlNe57y+0pNIariKRzM8FxDhJSKsg
-	k1k2kSIQJ38F4/03hs/6O7/Bh5CGctKIF75/0uVxiI585iSOHDQJV8TVAMCZQIW/YRxxKzO3HRztu
-	PaDIVCZc/cWFb7mmAMGnBfbEn6Jx1lSvqPvLWrB/G+hBEvn7upKFIPwDxAkeNgZeYKDapYHgxLzes
-	hF05SxzQ1kqy1ufNu62cUDBfVcmBzdIUTA18bI8rSUbW+u9f/iuWocG33Jnw77FKPXSW4L8CCqYev
-	jLeH6Wdv1Gc8rXsCWHww==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=r+Pvvq/QF6eFoHIrIu6ERLWoVHvCz0hLjWbxidD8xPs=; b=odcixQ6X2+FjXO
+	x037G/sgzpH98S0THWiMZvb6ENc1taJjbPlrIlxyLxp0q4JHh7t2WmuKEcJNfqRxUAikI1vPvZzE5
+	2z5solqgxF65ZsYZdi3RH52ScKvHoNmjQw1M5xIvbfM1lmy/MCL7fPkFUgBQmqUDtV75yBn9vWZHK
+	nLizBt/FT2aiOPoLE80wqUvOjyMPgrkptR284su0juNDgdufn4CUfzM68YTMvwrcdWQZgglwpiuMs
+	IaD6jGphsgL6BWrSdtNNRjzveRWuG1LNJIKZNOmKo0PhkZcAtnVmfC7y0PV8QbgdOeW8CZYuFfep0
+	ZRKJUbTLmpQdO0q33GVw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1if7dm-0003ps-PV; Wed, 11 Dec 2019 19:27:18 +0000
-Received: from vps0.lunn.ch ([185.16.172.187])
+	id 1if84i-0003ve-AT; Wed, 11 Dec 2019 19:55:08 +0000
+Received: from mx2.suse.de ([195.135.220.15] helo=mx1.suse.de)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1if7dk-0003m2-18
- for linux-mediatek@lists.infradead.org; Wed, 11 Dec 2019 19:27:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
- s=20171124; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
- Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=fhhzlnh0YMGIMRykWTm4rFFLUMRsYVi5NX6Vsu+Wz9k=; b=0/wx5BRx38jwBupSBL9HPDq+Op
- 4XueCGjMApYHbc+xiDtJoqQ9UauFW2OCaMQQGSjhWNbdSGh6A4tqk4HR+ycvlZpZSvkY4VN929aDZ
- lsooxXG98r2sDAlaF2LQAar50cl7CsEAieCTcLjrUlq7BEeM+cJDRDyJM75MDOFUa3QA=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.92.2)
- (envelope-from <andrew@lunn.ch>)
- id 1if7dX-0006xS-2G; Wed, 11 Dec 2019 20:27:03 +0100
-Date: Wed, 11 Dec 2019 20:27:03 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Landen Chao <landen.chao@mediatek.com>
-Subject: Re: [PATCH net-next 4/6] net: dsa: mt7530: Add the support of MT7531
- switch
-Message-ID: <20191211192703.GC30053@lunn.ch>
-References: <cover.1575914275.git.landen.chao@mediatek.com>
- <6d608dd024edc90b09ba4fe35417b693847f973c.1575914275.git.landen.chao@mediatek.com>
- <20191210164438.GD27714@lunn.ch>
- <1576088280.23763.73.camel@mtksdccf07>
+ id 1if84e-0002wR-45; Wed, 11 Dec 2019 19:55:05 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx1.suse.de (Postfix) with ESMTP id 5F336AC1C;
+ Wed, 11 Dec 2019 19:54:59 +0000 (UTC)
+Subject: Re: [PATCH 08/17] clk: imx: convert to devm_platform_ioremap_resource
+To: Paul Walmsley <paul@pwsan.com>
+References: <20191209195749.868-1-tiny.windzz@gmail.com>
+ <20191209195749.868-8-tiny.windzz@gmail.com>
+ <VI1PR04MB7023BD6E46B6DEEBBB762060EE580@VI1PR04MB7023.eurprd04.prod.outlook.com>
+ <20191210132146.GF2703785@ulmo>
+ <8ff73b97-cf2e-0c91-2764-05ce4c548b06@suse.de>
+ <alpine.DEB.2.21.999.1912111751490.32095@utopia.booyaka.com>
+From: =?UTF-8?Q?Andreas_F=c3=a4rber?= <afaerber@suse.de>
+Organization: SUSE Software Solutions Germany GmbH
+Message-ID: <76d72777-b144-0679-1f4c-1136496a5f06@suse.de>
+Date: Wed, 11 Dec 2019 20:54:53 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1576088280.23763.73.camel@mtksdccf07>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <alpine.DEB.2.21.999.1912111751490.32095@utopia.booyaka.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191211_112716_084223_EF804D26 
-X-CRM114-Status: UNSURE (   3.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191211_115504_464093_70488CB8 
+X-CRM114-Status: GOOD (  15.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,32 +71,162 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "frank-w@public-files.de" <frank-w@public-files.de>,
- "f.fainelli@gmail.com" <f.fainelli@gmail.com>,
- "vivien.didelot@savoirfairelinux.com" <vivien.didelot@savoirfairelinux.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Sean Wang <Sean.Wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "opensource@vdorst.com" <opensource@vdorst.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+Cc: "kstewart@linuxfoundation.org" <kstewart@linuxfoundation.org>,
+ "pgaikwad@nvidia.com" <pgaikwad@nvidia.com>,
+ "heiko@sntech.de" <heiko@sntech.de>,
+ "geert+renesas@glider.be" <geert+renesas@glider.be>,
+ "chunhui.dai@mediatek.com" <chunhui.dai@mediatek.com>,
+ Yangtao Li <tiny.windzz@gmail.com>,
+ "mturquette@baylibre.com" <mturquette@baylibre.com>,
+ "miquel.raynal@bootlin.com" <miquel.raynal@bootlin.com>,
+ "nsekhar@ti.com" <nsekhar@ti.com>,
+ "tomasz.figa@gmail.com" <tomasz.figa@gmail.com>,
+ "rfontana@redhat.com" <rfontana@redhat.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ "weiyongjun1@huawei.com" <weiyongjun1@huawei.com>,
+ "krzk@kernel.org" <krzk@kernel.org>,
+ "s.nawrocki@samsung.com" <s.nawrocki@samsung.com>,
+ "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
+ "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
+ Leonard Crestez <leonard.crestez@nxp.com>,
+ "festevam@gmail.com" <festevam@gmail.com>,
+ "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+ "emilio@elopez.com.ar" <emilio@elopez.com.ar>,
+ "linux-realtek-soc@lists.infradead.org"
+ <linux-realtek-soc@lists.infradead.org>,
+ "allison@lohutok.net" <allison@lohutok.net>,
+ Fabien DESSENNE <fabien.dessenne@st.com>,
+ "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
+ "cw00.choi@samsung.com" <cw00.choi@samsung.com>,
+ "wens@csie.org" <wens@csie.org>, "agross@kernel.org" <agross@kernel.org>,
  "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "davem@davemloft.net" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ dl-linux-imx <linux-imx@nxp.com>,
+ "Eugeniy.Paltsev@synopsys.com" <Eugeniy.Paltsev@synopsys.com>,
+ "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+ "s.hauer@pengutronix.de" <s.hauer@pengutronix.de>,
+ "mripard@kernel.org" <mripard@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "swinslow@gmail.com" <swinslow@gmail.com>,
+ "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
+ "john@phrozen.org" <john@phrozen.org>,
+ "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
+ "tglx@linutronix.de" <tglx@linutronix.de>,
+ Daniel Baluta <daniel.baluta@nxp.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ Aisheng Dong <aisheng.dong@nxp.com>, James Tai <james.tai@realtek.com>,
+ Cheng-Yu Lee <cylee12@realtek.com>, "jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>,
+ "sboyd@kernel.org" <sboyd@kernel.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "pdeschrijver@nvidia.com" <pdeschrijver@nvidia.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "t-kristo@ti.com" <t-kristo@ti.com>,
+ "dinguyen@kernel.org" <dinguyen@kernel.org>,
+ "kgene@kernel.org" <kgene@kernel.org>,
+ "kernel@pengutronix.de" <kernel@pengutronix.de>,
+ "wangyan.wang@mediatek.com" <wangyan.wang@mediatek.com>,
+ "shawnguo@kernel.org" <shawnguo@kernel.org>
+Content-Type: text/plain; charset="iso-8859-15"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Do you also hint at using the same number of parameters for
-> mt7531_ind_c22_phy_read() and mt7531_ind_c45_phy_read()?
+Am 11.12.19 um 18:57 schrieb Paul Walmsley:
+> On Tue, 10 Dec 2019, Andreas F=E4rber wrote:
+> =
 
-That is up to you. It just seems like your MDIO bus can do both C22
-and C45. And somebody might connect an external C45 PHY, so you might
-as well support it.
+>> I have similar cases with Realtek where registers are simply not grouped
+>> into convenient blocks but spread across large memory regions.
+> =
 
-   Andrew
+> At the hardware level, registers are grouped into IP blocks, to simply =
+
+> both design integration and address decoding.
+
+Reality shows, not all vendors/chips always care about simplification.
+
+Blocks do have names, but they don't always group registers of the same
+kind, as Linux expects it - be it for historical backwards compatibility
+reasons or because Linux/Android wasn't their main use case in the past.
+Firmware developers won't care where their registers are located.
+
+>  Not knowing which Realtek =
+
+> device you're referring to,
+
+Arm based RTD1195 and RTD1295/RTD1395/RTD1619/RTD1319 SoC families,
+which I maintain.
+
+> most likely it's the same situation as with =
+
+> the IMX8M TRM, where the DT data doesn't match the underlying reality of =
+
+> the hardware.  In those cases the best approach is usually to just fix th=
+e =
+
+> DT data.
+
+No, you're not reading me. My DT data matches the hardware as far as I
+know it. You can be really happy that you can login to get NXP manuals;
+for other vendors, manuals simply don't exist and we have to deduce DT
+from register names/offsets ourselves. Reality is messy!
+
+Just please accept that hardware does not always allow for unique
+contiguous memory reservations, and we therefore cannot force these
+types of reservations onto everybody.
+
+There might be an opportunity for a new helper with even longer name
+that does the expected combination of actions. But is it worth it?
+People seem to have stopped giving motivations for their patches in
+commit message or cover letter, so it remains entirely unclear how else
+one might satisfy the submitter's goals while keeping your code working.
+(Also referring to unjustified style-only cleanups popping up lately.)
+"to simplify code" is not much to go on, it sounds like a style cleanup
+without any practical error avoidance benefits nor an API to be dropped.
+
+Note that I did not receive any cover letter accompanying this patch,
+but was CC'ed on plenty of other patches like this one that I'm not
+maintainer of, leading me to assume that none was sent.
+
+Alternatively one could do the reservations decoupled from DT inside the
+driver, but again not using this suggested helper.
+
+From what I read on other such patches, apparently some Coccinelle build
+target emits warnings when it matches some pattern for potential
+refactoring, which people then set out to resolve, without understanding
+the code they touch or being able to actually test it. That's probably
+the root cause that someone would need to tackle - whitelisting
+fully-intentional usages of certain APIs to protect against unwarranted
+refactorings, or otherwise making sure that people don't get inspired to
+in their best intentions break other people's code. I assume kbuild bot
+doesn't send out such cocci warnings to us maintainers for good reasons.
+
+A completely fragmented DT with either dozens of reg entries for single
+registers or distinct compatible strings for individual registers, to
+give them their own DT nodes, is not really handy, compared to one or
+two larger clk nodes that handle reg offsets under the hood, without
+impacting public DT bindings (e.g., bumping reg's maxItems, clk header).
+
+If you care about modeling this, you're welcome to participate in patch
+review @ DTML/LAKML/LRSML. So far there's largely been a yawning silence
+in response to my patches introducing syscon and simple-mfd as cleanups,
+before things get worse as we add to the DT. Following an unreviewed clk
+RFC of mine two years back, there's now been a clk patchset from Realtek
+that got a load of review comments from me, waiting for a v2.
+
+If you don't care, then please don't lecture us about how you think
+other people's hardware should ideally be like. That's not helpful.
+
+Regards,
+Andreas
+
+-- =
+
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+GF: Felix Imend=F6rffer
+HRB 36809 (AG N=FCrnberg)
 
 _______________________________________________
 Linux-mediatek mailing list
