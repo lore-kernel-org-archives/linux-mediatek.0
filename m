@@ -2,79 +2,84 @@ Return-Path: <SRS0=jhbW=2B=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F218CC43603
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 09:52:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CE631C43603
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 11:00:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C88832053B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 09:52:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8245D2073B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 11:00:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="O8c/Oz9X";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Tto/TXc5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C88832053B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="m2y61NLQ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=nvidia.com header.i=@nvidia.com header.b="XYF0uUIP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8245D2073B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=nvidia.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1qY5tFW+q7I4HbQ5nLyo5gdfPGwweq82dWpZAtS/myY=; b=O8c/Oz9Xl+1PyN
-	r279sywdGqVJ3DG8ay+qTi8HcBsz8V/RXnpDCYHDgYg3xem3+f8fQjRCvw+3G8+twlCF2uV1zJqH+
-	5WO5nehIYgyfhqXr/vzHNmRgM9jVVEK2GBs0Qj+1PcepniUh5mT0Cmd1mRD76bqgF7u889F4YIsPd
-	5OYPpV9pvbiR4J5eqhy2/lHk2kb0HkAYlFzNFMIHUYgdDmrlRMpa/bJxZ3MHQucWBJjnWJtFeSCbB
-	xX8AypIl+lqovG5VXVQENw6XpKSUzNucWNWqHd0XJlT60BJlvsZfNvVOYVA79VA4lPS/94UYEcIjo
-	19YQrPAqQG4nyEQ0jrJg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DSy/2gedsRPdrb0AXbHPZWh26U3dIg9QFAmHbL9HYJk=; b=m2y61NLQdKuIdV
+	mBis+534Sbb2LIfDVZaa8bxK1nHxWLtVUK/LJJ2P8SxkGuTR/YqVTuHygXLSoahUHTQravSN1LTv+
+	DfcaiqjZE+Bnz8x54MsbUdc4XnFoGgGYHM2gopOFTuuaFGBwjgxi5x96c843p7VaTNB5n+mQgXFeT
+	Glx76T5P9QJn+pA8IJxsM3qMiJOgKX8TnPN0A8j3cD4pgxy+K5DiJdevnulHAoWF8W69KLFd2YvNp
+	ERomOqMLMiD90yoQLsDFG3XGIvu1ski+qtsdMmLhm3dW1P7QaC0lvg5+rG16QNItwdqrnTXmLZv6z
+	jDexF60i7WG31hAyvFWw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ieyfY-00086d-Jp; Wed, 11 Dec 2019 09:52:32 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1iezj7-0006DP-O9; Wed, 11 Dec 2019 11:00:17 +0000
+Received: from hqnvemgate25.nvidia.com ([216.228.121.64])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieyf1-0007aA-Ea; Wed, 11 Dec 2019 09:52:01 +0000
-X-UUID: 6ed83d7056cb44a3920c8266741890fe-20191211
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=sNkHpXF8izKZUF7qsuSvErydtyfam/Pb0hpHXYo69zY=; 
- b=Tto/TXc5UCP++bH4rTnUjXzl0aXbv2dzh8q0wrS64R1rz5AKm2nZLS3gajXYuuzvdxFVfgDnLcGrR76d1tL5DSxl1m0nGuXsFrbFRy12zW99RapB9mEAHEHhW6P2qviSgelYlz5H4y6qtThTUPyczyH8WIaL9Bl+u3pQpysxeBg=;
-X-UUID: 6ed83d7056cb44a3920c8266741890fe-20191211
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <hsin-hsiung.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2100280102; Wed, 11 Dec 2019 01:51:56 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 11 Dec 2019 01:44:14 -0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 11 Dec 2019 17:43:35 +0800
-Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Wed, 11 Dec 2019 17:43:33 +0800
-From: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-To: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Alexandre Belloni <alexandre.belloni@free-electrons.com>, Matthias Brugger
- <matthias.bgg@gmail.com>
-Subject: [PATCH v7 2/6] dt-bindings: mfd: Add compatible for the MediaTek
- MT6358 PMIC
-Date: Wed, 11 Dec 2019 17:43:51 +0800
-Message-ID: <1576057435-3561-3-git-send-email-hsin-hsiung.wang@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1576057435-3561-1-git-send-email-hsin-hsiung.wang@mediatek.com>
-References: <1576057435-3561-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ id 1iezis-0004rL-HH; Wed, 11 Dec 2019 11:00:15 +0000
+Received: from hqpgpgate101.nvidia.com (Not Verified[216.228.121.13]) by
+ hqnvemgate25.nvidia.com (using TLS: TLSv1.2, DES-CBC3-SHA)
+ id <B5df0cc260000>; Wed, 11 Dec 2019 02:59:52 -0800
+Received: from hqmail.nvidia.com ([172.20.161.6])
+ by hqpgpgate101.nvidia.com (PGP Universal service);
+ Wed, 11 Dec 2019 02:59:59 -0800
+X-PGP-Universal: processed;
+ by hqpgpgate101.nvidia.com on Wed, 11 Dec 2019 02:59:59 -0800
+Received: from DRHQMAIL107.nvidia.com (10.27.9.16) by HQMAIL101.nvidia.com
+ (172.20.187.10) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Wed, 11 Dec
+ 2019 10:59:57 +0000
+Received: from [10.26.11.206] (10.124.1.5) by DRHQMAIL107.nvidia.com
+ (10.27.9.16) with Microsoft SMTP Server (TLS) id 15.0.1473.3; Wed, 11 Dec
+ 2019 10:59:53 +0000
+Subject: Re: [PATCH] ASoC: rt5677: add SPI_MASTER dependency
+To: Arnd Bergmann <arnd@arndb.de>, Mark Brown <broonie@kernel.org>
+References: <20191210195333.648018-1-arnd@arndb.de>
+From: Jon Hunter <jonathanh@nvidia.com>
+Message-ID: <d739240f-aaa6-c310-9c68-16c1a08ce759@nvidia.com>
+Date: Wed, 11 Dec 2019 10:59:51 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.1
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20191210195333.648018-1-arnd@arndb.de>
+X-Originating-IP: [10.124.1.5]
+X-ClientProxiedBy: HQMAIL105.nvidia.com (172.20.187.12) To
+ DRHQMAIL107.nvidia.com (10.27.9.16)
+Content-Language: en-US
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nvidia.com; s=n1;
+ t=1576061992; bh=MQK8ZVgrVvXj2CCi28ItwK2/xlFo7vqiSDqFxR2ycEA=;
+ h=X-PGP-Universal:Subject:To:CC:References:From:Message-ID:Date:
+ User-Agent:MIME-Version:In-Reply-To:X-Originating-IP:
+ X-ClientProxiedBy:Content-Type:Content-Language:
+ Content-Transfer-Encoding;
+ b=XYF0uUIPrfVZWGpMaViwy03efYcRVbDgtnOcU0FZmQogsvCRIi7nl5qF7oHsMi1cB
+ UR126BMNKqOpTLRdnWGkSTzRk1y76Gg2XyJutGSZDP55Kvi80aBdQ2MWCt2l+Wm0QJ
+ EKxVYbjxVxz/Bowr/qYlCXOlVyTcB0405ASX3VXwZJkuLpNzthrWpF8LH4dGkoMbD6
+ 2ZCio9eSOkANH2ysYs0lWfvl3zyd8Ck/BoCTPNDZSVOBwAcZTUp01vLexN1vtHDq50
+ jhnyS/6aeYyuK7icmpNbnibMOIX9aTAM19weFl61QAtNC+aaUb7XGGeOforRV9Wm11
+ FJug7rWvb8ObQ==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191211_015159_507902_F90A633B 
-X-CRM114-Status: UNSURE (   9.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191211_030002_675233_F093DB96 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,71 +91,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Alessandro
- Zummo <a.zummo@towertech.it>, Josef Friedl <josef.friedl@speed.at>,
- srv_heupstream@mediatek.com, Frank Wunderlich <frank-w@public-files.de>,
- Kate Stewart <kstewart@linuxfoundation.org>,
- Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
- Tianping Fang <tianping.fang@mediatek.com>, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>,
- Ran Bi <ran.bi@mediatek.com>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
- linux-rtc@vger.kernel.org
+Cc: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+ Cezary Rojewski <cezary.rojewski@intel.com>, linux-tegra@vger.kernel.org,
+ Charles Keepax <ckeepax@opensource.cirrus.com>, alsa-devel@alsa-project.org,
+ linux-kernel@vger.kernel.org, Jie Yang <yang.jie@linux.intel.com>,
+ Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>,
+ Ben Zhang <benzh@chromium.org>, Thierry Reding <thierry.reding@gmail.com>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Curtis Malainey <cujomalainey@chromium.org>, Jaroslav
+ Kysela <perex@perex.cz>, linux-arm-kernel@lists.infradead.org,
+ KaiChieh Chuang <kaichieh.chuang@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This adds compatible for the MediaTek MT6358 PMIC.
 
-Acked-for-mfd-by: Lee Jones <lee.jones@linaro.org>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
----
- Documentation/devicetree/bindings/mfd/mt6397.txt | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+On 10/12/2019 19:52, Arnd Bergmann wrote:
+> When CONFIG_SPI is disabled, the newly added code for the DSP
+> firmware loading fails to link:
+> 
+> ERROR: "rt5677_spi_hotword_detected" [sound/soc/codecs/snd-soc-rt5677.ko] undefined!
+> ERROR: "rt5677_spi_write" [sound/soc/codecs/snd-soc-rt5677.ko] undefined!
 
-diff --git a/Documentation/devicetree/bindings/mfd/mt6397.txt b/Documentation/devicetree/bindings/mfd/mt6397.txt
-index a9b105a..0df4382 100644
---- a/Documentation/devicetree/bindings/mfd/mt6397.txt
-+++ b/Documentation/devicetree/bindings/mfd/mt6397.txt
-@@ -18,24 +18,30 @@ See the following for pwarp node definitions:
- This document describes the binding for MFD device and its sub module.
- 
- Required properties:
--compatible: "mediatek,mt6397" or "mediatek,mt6323"
-+compatible:
-+	"mediatek,mt6323" for PMIC MT6323
-+	"mediatek,mt6358" for PMIC MT6358
-+	"mediatek,mt6397" for PMIC MT6397
- 
- Optional subnodes:
- 
- - rtc
- 	Required properties: Should be one of follows
- 		- compatible: "mediatek,mt6323-rtc"
-+		- compatible: "mediatek,mt6358-rtc"
- 		- compatible: "mediatek,mt6397-rtc"
- 	For details, see ../rtc/rtc-mt6397.txt
- - regulators
- 	Required properties:
--		- compatible: "mediatek,mt6397-regulator"
--	see ../regulator/mt6397-regulator.txt
- 		- compatible: "mediatek,mt6323-regulator"
- 	see ../regulator/mt6323-regulator.txt
-+		- compatible: "mediatek,mt6358-regulator"
-+	see ../regulator/mt6358-regulator.txt
-+		- compatible: "mediatek,mt6397-regulator"
-+	see ../regulator/mt6397-regulator.txt
- - codec
- 	Required properties:
--		- compatible: "mediatek,mt6397-codec"
-+		- compatible: "mediatek,mt6397-codec" or "mediatek,mt6358-sound"
- - clk
- 	Required properties:
- 		- compatible: "mediatek,mt6397-clk"
+Would it be better if the above functions or the functions that call
+these are conditional on CONFIG_SND_SOC_RT5677_SPI?
+
+> Add a dependency to prevent this configuration.
+> 
+> Note: the does not work with the DT probing, as there is no binding
+
+Are you missing 'SPI' or something here?
+
+> for the SPI half of the driver, but nothing seems to be using that
+> with the mainline kernel anyway.
+
+From a Tegra perspective, given that we don't use SPI in conjunction
+with the rt5677 codec, only I2C so far, I am not sure we should make the
+tegra_rt5677 driver dependent upon it. We should be able to operate
+without the SPI bits enabled.
+
+Cheers
+Jon
+
 -- 
-2.6.4
+nvpublic
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
