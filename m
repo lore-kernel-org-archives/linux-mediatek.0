@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 91A1BC2D0C6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 09:44:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 06E06C2D0C5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 09:44:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5825A214D8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 09:44:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CDBDB205C9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 09:44:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="enC2LFgw";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="si6PFyLo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5825A214D8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l5u7oq6q";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="YRU+KoTo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CDBDB205C9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,35 +26,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CEQMsCQv3izMEMSjVxBJYkLxQUVad1QPt1QIw6pQEtI=; b=enC2LFgw03PAIJ
-	kVjYUBEqI0c4YfTS1I+J+7dwL/zpoUUq4ca26aEhb0ZM23QWfKadx5LUapof9uVJD7IRoGpqDyBiI
-	QYfAdKjc+IaoY45CTmNda2aZR9KUbv83d2/waHomRpzU9Km2Tr9SzyPY/fMaOJA9gd0pdqRqxWl+U
-	WgykwcYnJhheKwOszKzoMO2tw5IBvr8BPfVNBFJ5GKljaT/HrphaiihE0Pe7rtLKhkps8AVBnRXPy
-	7rfBaEArASN1bdGenJknYQN6li5U2XTEUi0LP1qNoo6Rbxt1zzC1W4OeE+DDl4lKw477nuiGFx6rS
-	bda5P9gIv2LcfNXRpk+Q==;
+	List-Owner; bh=LpLRff4sHrVGSbVDgOmnNo6CzOge+SbqxVbVyhEb0eY=; b=l5u7oq6qGWllgr
+	x3AOHIpeOWF+C8I8tBO7yS4GLSTFGo/M+N6hEhP8FteYHS6HjmljBaQoqf8luYRqr7WAaqiZlsqz+
+	lxt/XuqD/4CKu3KQl9aH1PcisJ9SycD/Kv82HiaU1jse16kzdIYnUarQ9ESBkwmzGZx/FA3DHQfbn
+	0VHWngCBsbpSvclV89pjDR0pag+2J/Wn/nHo9SzzGvMwA359SrUaIhrbxC5gdlWWNu1VjXH8d7lMN
+	L1uPaa5wultZMv5mMWoupQjCG3d4ij7/wXl+3M+wCYBfd8nXv0jLufo9plRuLMzA6tsdB8+WZHgfL
+	23p2xpVXxl4mu66W2uLA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ieyXu-0002P6-GH; Wed, 11 Dec 2019 09:44:38 +0000
+	id 1ieyXs-0002Mi-CE; Wed, 11 Dec 2019 09:44:36 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ieyXL-0001rf-RO; Wed, 11 Dec 2019 09:44:05 +0000
-X-UUID: 3fbca94f1b6c4a1bbe5355727d885da5-20191211
+ id 1ieyXL-0001rg-RJ; Wed, 11 Dec 2019 09:44:05 +0000
+X-UUID: 48915b614b6f4327af8386a22dbdecf4-20191211
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=vQNyyDLAOhUx/esjjJKKmBtt5AHvW77SqweS/Ym/Fh8=; 
- b=si6PFyLoYo3M87dC2AoUMRbRHIVtu6YTFz5wukBD0GWovLURanGzPRcOeZlOgAqSptkQG8rWA3apMZyyJRnqCeJ3aEo7HpDmymbsuwes07I3Nmll+WifUN24ed/5o7atBMasKggnCZG1NzayIPUpT7aTVkZB1fXmwV90Aty/Y48=;
-X-UUID: 3fbca94f1b6c4a1bbe5355727d885da5-20191211
+ bh=KCa4WuZtBEy7drSeISibY0DG6RoZ8edaCDVMIrX/w0s=; 
+ b=YRU+KoTojA6dwZPY1WmbnLsT1xf8TESKyGTUWEbOH1gbF8XEMhtvuAcal3+0znDj1M/qBG6lBq7TngA5wmMQ8Lf0ufkf8FXfu7QWoOfvTf+PDeYSdh/7K3r7kGeNsom99IuMbjvSXcKHT1J0W4UluTkh4WGjISv22T4r8K3yv6Y=;
+X-UUID: 48915b614b6f4327af8386a22dbdecf4-20191211
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <hsin-hsiung.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1574361053; Wed, 11 Dec 2019 01:44:00 -0800
+ with ESMTP id 1150381415; Wed, 11 Dec 2019 01:44:00 -0800
 Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1395.4; Wed, 11 Dec 2019 01:45:04 -0800
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 11 Dec 2019 17:43:33 +0800
+ 15.0.1395.4; Wed, 11 Dec 2019 17:43:34 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
  Frontend Transport; Wed, 11 Dec 2019 17:43:33 +0800
@@ -62,18 +62,18 @@ From: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 To: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
  Alexandre Belloni <alexandre.belloni@free-electrons.com>, Matthias Brugger
  <matthias.bgg@gmail.com>
-Subject: [PATCH v7 1/6] mfd: mt6397: modify suspend/resume behavior
-Date: Wed, 11 Dec 2019 17:43:50 +0800
-Message-ID: <1576057435-3561-2-git-send-email-hsin-hsiung.wang@mediatek.com>
+Subject: [PATCH v7 5/6] rtc: mt6397: fix alarm register overwrite
+Date: Wed, 11 Dec 2019 17:43:54 +0800
+Message-ID: <1576057435-3561-6-git-send-email-hsin-hsiung.wang@mediatek.com>
 X-Mailer: git-send-email 2.6.4
 In-Reply-To: <1576057435-3561-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 References: <1576057435-3561-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 3C210F3274EF605D8A096194314ED7147F601C6527E113954096689DCD8CF7542000:8
+X-TM-SNTS-SMTP: 3ECBA1CF6336FB346A8A28D880DBC03AE986D52D6E5457734021BC0E34E47F992000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191211_014403_898684_4B066EEF 
-X-CRM114-Status: GOOD (  14.29  )
+X-CRM114-CacheID: sfid-20191211_014403_902687_C1C6940C 
+X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,148 +100,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some pmics don't need backup interrupt settings, so we change to use
-pm notifier for the pmics which are necessary to store settings.
+From: Ran Bi <ran.bi@mediatek.com>
 
+Alarm registers high byte was reserved for other functions.
+This add mask in alarm registers operation functions.
+This also fix error condition in interrupt handler.
+
+Fixes: fc2979118f3f ("rtc: mediatek: Add MT6397 RTC driver")
+
+Signed-off-by: Ran Bi <ran.bi@mediatek.com>
 Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 ---
- drivers/mfd/mt6397-core.c       | 30 ------------------------------
- drivers/mfd/mt6397-irq.c        | 33 +++++++++++++++++++++++++++++++++
- include/linux/mfd/mt6397/core.h |  2 ++
- 3 files changed, 35 insertions(+), 30 deletions(-)
+ drivers/rtc/rtc-mt6397.c       | 39 +++++++++++++++++++++++++--------------
+ include/linux/mfd/mt6397/rtc.h |  8 ++++++++
+ 2 files changed, 33 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
-index 0437c85..d2e70d8 100644
---- a/drivers/mfd/mt6397-core.c
-+++ b/drivers/mfd/mt6397-core.c
-@@ -100,35 +100,6 @@ static const struct mfd_cell mt6397_devs[] = {
- 	}
- };
+diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+index 5249fc9..9135e21 100644
+--- a/drivers/rtc/rtc-mt6397.c
++++ b/drivers/rtc/rtc-mt6397.c
+@@ -47,7 +47,7 @@ static irqreturn_t mtk_rtc_irq_handler_thread(int irq, void *data)
+ 		irqen = irqsta & ~RTC_IRQ_EN_AL;
+ 		mutex_lock(&rtc->lock);
+ 		if (regmap_write(rtc->regmap, rtc->addr_base + RTC_IRQ_EN,
+-				 irqen) < 0)
++				 irqen) == 0)
+ 			mtk_rtc_write_trigger(rtc);
+ 		mutex_unlock(&rtc->lock);
  
--#ifdef CONFIG_PM_SLEEP
--static int mt6397_irq_suspend(struct device *dev)
--{
--	struct mt6397_chip *chip = dev_get_drvdata(dev);
--
--	regmap_write(chip->regmap, chip->int_con[0], chip->wake_mask[0]);
--	regmap_write(chip->regmap, chip->int_con[1], chip->wake_mask[1]);
--
--	enable_irq_wake(chip->irq);
--
--	return 0;
--}
--
--static int mt6397_irq_resume(struct device *dev)
--{
--	struct mt6397_chip *chip = dev_get_drvdata(dev);
--
--	regmap_write(chip->regmap, chip->int_con[0], chip->irq_masks_cur[0]);
--	regmap_write(chip->regmap, chip->int_con[1], chip->irq_masks_cur[1]);
--
--	disable_irq_wake(chip->irq);
--
--	return 0;
--}
--#endif
--
--static SIMPLE_DEV_PM_OPS(mt6397_pm_ops, mt6397_irq_suspend,
--			mt6397_irq_resume);
--
- struct chip_data {
- 	u32 cid_addr;
- 	u32 cid_shift;
-@@ -238,7 +209,6 @@ static struct platform_driver mt6397_driver = {
- 	.driver = {
- 		.name = "mt6397",
- 		.of_match_table = of_match_ptr(mt6397_of_match),
--		.pm = &mt6397_pm_ops,
- 	},
- 	.id_table = mt6397_id,
- };
-diff --git a/drivers/mfd/mt6397-irq.c b/drivers/mfd/mt6397-irq.c
-index b2d3ce1..669e93d 100644
---- a/drivers/mfd/mt6397-irq.c
-+++ b/drivers/mfd/mt6397-irq.c
-@@ -9,6 +9,7 @@
- #include <linux/of_irq.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-+#include <linux/suspend.h>
- #include <linux/mfd/mt6323/core.h>
- #include <linux/mfd/mt6323/registers.h>
- #include <linux/mfd/mt6397/core.h>
-@@ -128,6 +129,36 @@ static const struct irq_domain_ops mt6397_irq_domain_ops = {
- 	.map = mt6397_irq_domain_map,
- };
+@@ -169,12 +169,12 @@ static int mtk_rtc_read_alarm(struct device *dev, struct rtc_wkalrm *alm)
+ 	alm->pending = !!(pdn2 & RTC_PDN2_PWRON_ALARM);
+ 	mutex_unlock(&rtc->lock);
  
-+static int mt6397_irq_pm_notifier(struct notifier_block *notifier,
-+				  unsigned long pm_event, void *unused)
-+{
-+	struct mt6397_chip *chip =
-+		container_of(notifier, struct mt6397_chip, pm_nb);
+-	tm->tm_sec = data[RTC_OFFSET_SEC];
+-	tm->tm_min = data[RTC_OFFSET_MIN];
+-	tm->tm_hour = data[RTC_OFFSET_HOUR];
+-	tm->tm_mday = data[RTC_OFFSET_DOM];
+-	tm->tm_mon = data[RTC_OFFSET_MTH];
+-	tm->tm_year = data[RTC_OFFSET_YEAR];
++	tm->tm_sec = data[RTC_OFFSET_SEC] & RTC_AL_SEC_MASK;
++	tm->tm_min = data[RTC_OFFSET_MIN] & RTC_AL_MIN_MASK;
++	tm->tm_hour = data[RTC_OFFSET_HOUR] & RTC_AL_HOU_MASK;
++	tm->tm_mday = data[RTC_OFFSET_DOM] & RTC_AL_DOM_MASK;
++	tm->tm_mon = data[RTC_OFFSET_MTH] & RTC_AL_MTH_MASK;
++	tm->tm_year = data[RTC_OFFSET_YEAR] & RTC_AL_YEA_MASK;
+ 
+ 	tm->tm_year += RTC_MIN_YEAR_OFFSET;
+ 	tm->tm_mon--;
+@@ -195,14 +195,25 @@ static int mtk_rtc_set_alarm(struct device *dev, struct rtc_wkalrm *alm)
+ 	tm->tm_year -= RTC_MIN_YEAR_OFFSET;
+ 	tm->tm_mon++;
+ 
+-	data[RTC_OFFSET_SEC] = tm->tm_sec;
+-	data[RTC_OFFSET_MIN] = tm->tm_min;
+-	data[RTC_OFFSET_HOUR] = tm->tm_hour;
+-	data[RTC_OFFSET_DOM] = tm->tm_mday;
+-	data[RTC_OFFSET_MTH] = tm->tm_mon;
+-	data[RTC_OFFSET_YEAR] = tm->tm_year;
+-
+ 	mutex_lock(&rtc->lock);
++	ret = regmap_bulk_read(rtc->regmap, rtc->addr_base + RTC_AL_SEC,
++			       data, RTC_OFFSET_COUNT);
++	if (ret < 0)
++		goto exit;
 +
-+	switch (pm_event) {
-+	case PM_SUSPEND_PREPARE:
-+		regmap_write(chip->regmap,
-+			     chip->int_con[0], chip->wake_mask[0]);
-+		regmap_write(chip->regmap,
-+			     chip->int_con[1], chip->wake_mask[1]);
-+		enable_irq_wake(chip->irq);
-+		break;
++	data[RTC_OFFSET_SEC] = ((data[RTC_OFFSET_SEC] & ~(RTC_AL_SEC_MASK)) |
++				(tm->tm_sec & RTC_AL_SEC_MASK));
++	data[RTC_OFFSET_MIN] = ((data[RTC_OFFSET_MIN] & ~(RTC_AL_MIN_MASK)) |
++				(tm->tm_min & RTC_AL_MIN_MASK));
++	data[RTC_OFFSET_HOUR] = ((data[RTC_OFFSET_HOUR] & ~(RTC_AL_HOU_MASK)) |
++				(tm->tm_hour & RTC_AL_HOU_MASK));
++	data[RTC_OFFSET_DOM] = ((data[RTC_OFFSET_DOM] & ~(RTC_AL_DOM_MASK)) |
++				(tm->tm_mday & RTC_AL_DOM_MASK));
++	data[RTC_OFFSET_MTH] = ((data[RTC_OFFSET_MTH] & ~(RTC_AL_MTH_MASK)) |
++				(tm->tm_mon & RTC_AL_MTH_MASK));
++	data[RTC_OFFSET_YEAR] = ((data[RTC_OFFSET_YEAR] & ~(RTC_AL_YEA_MASK)) |
++				(tm->tm_year & RTC_AL_YEA_MASK));
 +
-+	case PM_POST_SUSPEND:
-+		regmap_write(chip->regmap,
-+			     chip->int_con[0], chip->irq_masks_cur[0]);
-+		regmap_write(chip->regmap,
-+			     chip->int_con[1], chip->irq_masks_cur[1]);
-+		disable_irq_wake(chip->irq);
-+		break;
+ 	if (alm->enabled) {
+ 		ret = regmap_bulk_write(rtc->regmap,
+ 					rtc->addr_base + RTC_AL_SEC,
+diff --git a/include/linux/mfd/mt6397/rtc.h b/include/linux/mfd/mt6397/rtc.h
+index f84b916..7dfb63b 100644
+--- a/include/linux/mfd/mt6397/rtc.h
++++ b/include/linux/mfd/mt6397/rtc.h
+@@ -46,6 +46,14 @@
+ 
+ #define RTC_AL_SEC             0x0018
+ 
++#define RTC_AL_SEC_MASK        0x003f
++#define RTC_AL_MIN_MASK        0x003f
++#define RTC_AL_HOU_MASK        0x001f
++#define RTC_AL_DOM_MASK        0x001f
++#define RTC_AL_DOW_MASK        0x0007
++#define RTC_AL_MTH_MASK        0x000f
++#define RTC_AL_YEA_MASK        0x007f
 +
-+	default:
-+		break;
-+	}
-+
-+	return NOTIFY_DONE;
-+}
-+
- int mt6397_irq_init(struct mt6397_chip *chip)
- {
- 	int ret;
-@@ -159,6 +190,7 @@ int mt6397_irq_init(struct mt6397_chip *chip)
- 	regmap_write(chip->regmap, chip->int_con[0], 0x0);
- 	regmap_write(chip->regmap, chip->int_con[1], 0x0);
+ #define RTC_PDN2               0x002e
+ #define RTC_PDN2_PWRON_ALARM   BIT(4)
  
-+	chip->pm_nb.notifier_call = mt6397_irq_pm_notifier;
- 	chip->irq_domain = irq_domain_add_linear(chip->dev->of_node,
- 						 MT6397_IRQ_NR,
- 						 &mt6397_irq_domain_ops,
-@@ -177,5 +209,6 @@ int mt6397_irq_init(struct mt6397_chip *chip)
- 		return ret;
- 	}
- 
-+	register_pm_notifier(&chip->pm_nb);
- 	return 0;
- }
-diff --git a/include/linux/mfd/mt6397/core.h b/include/linux/mfd/mt6397/core.h
-index fc88d31..b81d333 100644
---- a/include/linux/mfd/mt6397/core.h
-+++ b/include/linux/mfd/mt6397/core.h
-@@ -8,6 +8,7 @@
- #define __MFD_MT6397_CORE_H__
- 
- #include <linux/mutex.h>
-+#include <linux/notifier.h>
- 
- enum chip_id {
- 	MT6323_CHIP_ID = 0x23,
-@@ -54,6 +55,7 @@ enum mt6397_irq_numbers {
- struct mt6397_chip {
- 	struct device *dev;
- 	struct regmap *regmap;
-+	struct notifier_block pm_nb;
- 	int irq;
- 	struct irq_domain *irq_domain;
- 	struct mutex irqlock;
 -- 
 2.6.4
 _______________________________________________
