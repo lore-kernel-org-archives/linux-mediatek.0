@@ -2,81 +2,70 @@ Return-Path: <SRS0=jhbW=2B=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6C38AC2D0C6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 14:59:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D03B0C43603
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 15:14:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 33F1F214AF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 14:59:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9C84724684
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 15:14:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YcKXZhB/";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="u31nn+sg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 33F1F214AF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rbjjoU7o";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="sp2Mk/PE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9C84724684
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m2RtVtDKwKaJOt/5CC0PZD0C9jYh4zetcUQ35IoDfCI=; b=YcKXZhB/AcTLnU
-	drHdRwHFnbq+rUqZoQ6nJbA7VVWucClsGOVn/t3HwtWfFYscONw5R5la5xRwE3XCMwc38/C0fCZRd
-	/GtxLPBctBkJa9NAg9L01ZCvrM5d0RTLS0pftpWo0IKa70eJFdsAn3Wm0IdN67Os5myGHVJmTEB72
-	GG4dt47BkbITvihKDeTO7J3Y6+UG0UXntTpJel3E8UdJM1MHp4yfFgT7AkOeMXu8cDOCROW1UvDae
-	GXCoi079Ut5vCCcgKh9kopdQuPPYKWVjVGFSyeTqkao56HvQGh8NhERiOihLyQK/2GbmFGh63H6Fh
-	jEMQ7NB7Gel4CRo18sMw==;
+	List-Owner; bh=MGrVEZRAmupIFe7C4YkWqoa4DUV+ERwJT9lILU8c8d0=; b=rbjjoU7oMYHgEj
+	Q3spqh2mn1ZP+j9Zcr7p91prd7FoAetWx6fT08GNGDQVqvSTnbZF/dK7ij7vQsZnmVTBpXLVhmBwv
+	vlXvsG5d888TFOOBUGEM58uCcm/ySBtETm8lEjZWCboU+9HFUDed0VBLRIqRZxA8BhA6kVZVM4sv/
+	eeUagnTIErVsyDB636JdcGJ/fvnZUI0jinHo7jWoQlOGwXqnzIyLaiWAo6/8Jc/RAIczg1K0fSalw
+	KemTjjYRzLDcsYrkHd1gCocIEZZWhg6Zr2VnHqvZsobC7h5l2WaGDIGeIn5BwqYhNOJVrkZJGGZpJ
+	o4U0haUG8vq5a3Fgw8Gw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1if3SL-0004kq-HO; Wed, 11 Dec 2019 14:59:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1if3gg-0004Bg-1u; Wed, 11 Dec 2019 15:14:02 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1if3Rc-0003ya-Lv; Wed, 11 Dec 2019 14:58:30 +0000
-X-UUID: 0b4c6052a6b34ce7bb253295881cca4a-20191211
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=BhFStqHINugZXLbNdVW+BFM4oGLuOot6pcNXv0LqlEM=; 
- b=u31nn+sgiWuraivB+2JuDI/+MQ8DC7GanYno3TpdHlLH+R+WAl37QVPKSVl3w6/Ex2YaaOS8oprC+EXFZO0GE5rWk1bjpUul+S3vSzIcd6WyecTS+73F4TrXZacDEVE/SOVbKjIhUcHgwgC0qTw8XQcv48OjuV68Mi+NVNrvMw0=;
-X-UUID: 0b4c6052a6b34ce7bb253295881cca4a-20191211
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1926754532; Wed, 11 Dec 2019 06:58:22 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 11 Dec 2019 06:59:20 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 11 Dec 2019 22:58:09 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 11 Dec 2019 22:58:15 +0800
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: <yong.liang@mediatek.com>, <wim@linux-watchdog.org>, <linux@roeck-us.net>, 
- <p.zabel@pengutronix.de>, <matthias.bgg@gmail.com>,
- <linux-watchdog@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <devicetree@vger.kernel.org>
-Subject: [PATCH 2/2] watchdog: mtk_wdt: mt8183: Add reset controller
-Date: Wed, 11 Dec 2019 22:58:12 +0800
-Message-ID: <1576076292-17860-3-git-send-email-jiaxin.yu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1576076292-17860-1-git-send-email-jiaxin.yu@mediatek.com>
-References: <1576076292-17860-1-git-send-email-jiaxin.yu@mediatek.com>
+ id 1if3gG-0003hz-0E; Wed, 11 Dec 2019 15:13:39 +0000
+Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
+ [73.47.72.35])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id BD7CD24658;
+ Wed, 11 Dec 2019 15:13:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1576077215;
+ bh=QzZyIlv3e+f0yiiUgnn5LfILedViL6/F9hkS/D/ZS0E=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=sp2Mk/PEHveU86AgPk/5/dRMmQdBSNXnLSnf1AL0/58zYpjXmarM4TInFomt+rKxY
+ riW1G4p1jr0yGRtT0YdtWtpCzt8F96zqOjESwlbW7ja5dyHdl/eTF/pUux3rrzBC2P
+ LpcukhZjLwOki6ZGZ36PHoG6azvyzlza8mioSv1M=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.4 096/134] scsi: ufs: Fix up auto hibern8 enablement
+Date: Wed, 11 Dec 2019 10:11:12 -0500
+Message-Id: <20191211151150.19073-96-sashal@kernel.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20191211151150.19073-1-sashal@kernel.org>
+References: <20191211151150.19073-1-sashal@kernel.org>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 39E68621187D9847D9BF7E197D2B3B8447D3F7DC070A8537E68BFACE7F9AE0812000:8
-X-MTK: N
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191211_065828_723121_443FAB80 
-X-CRM114-Status: GOOD (  14.53  )
+X-CRM114-CacheID: sfid-20191211_071336_092112_8951A811 
+X-CRM114-Status: GOOD (  13.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,206 +77,127 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: sboyd@kernel.org, yinjoe.chen@mediatek.com
+Cc: Sasha Levin <sashal@kernel.org>, linux-scsi@vger.kernel.org,
+ "Martin K . Petersen" <martin.petersen@oracle.com>,
+ Can Guo <cang@codeaurora.org>, linux-mediatek@lists.infradead.org,
+ Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "yong.liang" <yong.liang@mediatek.com>
+From: Can Guo <cang@codeaurora.org>
 
-Add reset controller API in watchdog driver.
-Besides watchdog, MTK toprgu module alsa provide sub-system (eg, audio,
-camera, codec and connectivity) software reset functionality.
+[ Upstream commit 71d848b8d97ec0f8e993d63cf9de6ac8b3f7c43d ]
 
-Signed-off-by: yong.liang <yong.liang@mediatek.com>
+Fix up possible unclocked register access to auto hibern8 register in
+resume path and through sysfs entry. Meanwhile, enable auto hibern8 only
+after device is fully initialized in probe path.
+
+Link: https://lore.kernel.org/r/1573798172-20534-4-git-send-email-cang@codeaurora.org
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+Signed-off-by: Can Guo <cang@codeaurora.org>
+Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/watchdog/Kconfig   |   1 +
- drivers/watchdog/mtk_wdt.c | 109 ++++++++++++++++++++++++++++++++++++-
- 2 files changed, 109 insertions(+), 1 deletion(-)
+ drivers/scsi/ufs/ufs-sysfs.c | 15 +++++++++------
+ drivers/scsi/ufs/ufshcd.c    | 14 +++++++-------
+ drivers/scsi/ufs/ufshcd.h    |  2 ++
+ 3 files changed, 18 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/watchdog/Kconfig b/drivers/watchdog/Kconfig
-index 2e07caab9db2..629249fe5305 100644
---- a/drivers/watchdog/Kconfig
-+++ b/drivers/watchdog/Kconfig
-@@ -717,6 +717,7 @@ config MEDIATEK_WATCHDOG
- 	tristate "Mediatek SoCs watchdog support"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
- 	select WATCHDOG_CORE
-+	select RESET_CONTROLLER
- 	help
- 	  Say Y here to include support for the watchdog timer
- 	  in Mediatek SoCs.
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index 9c3d0033260d..667380031dfd 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -9,6 +9,9 @@
-  * Based on sunxi_wdt.c
-  */
+diff --git a/drivers/scsi/ufs/ufs-sysfs.c b/drivers/scsi/ufs/ufs-sysfs.c
+index 969a36b15897b..ad2abc96c0f19 100644
+--- a/drivers/scsi/ufs/ufs-sysfs.c
++++ b/drivers/scsi/ufs/ufs-sysfs.c
+@@ -126,13 +126,16 @@ static void ufshcd_auto_hibern8_update(struct ufs_hba *hba, u32 ahit)
+ 		return;
  
-+#include <dt-bindings/reset-controller/mt2712-resets.h>
-+#include <dt-bindings/reset-controller/mt8183-resets.h>
-+#include <linux/delay.h>
- #include <linux/err.h>
- #include <linux/init.h>
- #include <linux/io.h>
-@@ -16,10 +19,12 @@
- #include <linux/module.h>
- #include <linux/moduleparam.h>
- #include <linux/of.h>
-+#include <linux/of_device.h>
- #include <linux/platform_device.h>
-+#include <linux/reset-controller.h>
-+#include <linux/slab.h>
- #include <linux/types.h>
- #include <linux/watchdog.h>
--#include <linux/delay.h>
- 
- #define WDT_MAX_TIMEOUT		31
- #define WDT_MIN_TIMEOUT		1
-@@ -44,6 +49,9 @@
- #define WDT_SWRST		0x14
- #define WDT_SWRST_KEY		0x1209
- 
-+#define WDT_SWSYSRST		0x18U
-+#define WDT_SWSYS_RST_KEY	0x88000000
-+
- #define DRV_NAME		"mtk-wdt"
- #define DRV_VERSION		"1.0"
- 
-@@ -53,8 +61,97 @@ static unsigned int timeout;
- struct mtk_wdt_dev {
- 	struct watchdog_device wdt_dev;
- 	void __iomem *wdt_base;
-+	spinlock_t lock; /* protects WDT_SWSYSRST reg */
-+	struct reset_controller_dev rcdev;
-+};
-+
-+struct mtk_wdt_data {
-+	int infracfg_sw_rst_num;
-+	int toprgu_sw_rst_num;
-+};
-+
-+static const struct mtk_wdt_data mt2712_data = {
-+	.toprgu_sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
-+};
-+
-+static const struct mtk_wdt_data mt8183_data = {
-+	.infracfg_sw_rst_num = MT8183_INFRACFG_SW_RST_NUM,
-+	.toprgu_sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
-+};
-+
-+static int toprgu_reset_update(struct reset_controller_dev *rcdev,
-+			       unsigned long id, bool assert)
-+{
-+	unsigned int tmp;
-+	unsigned long flags;
-+
-+	struct mtk_wdt_dev *data =
-+		 container_of(rcdev, struct mtk_wdt_dev, rcdev);
-+
-+	spin_lock_irqsave(&data->lock, flags);
-+
-+	tmp = readl(data->wdt_base + WDT_SWSYSRST);
-+	if (assert)
-+		tmp |= BIT(id);
-+	else
-+		tmp &= ~BIT(id);
-+	tmp |= WDT_SWSYS_RST_KEY;
-+	writel(tmp, data->wdt_base + WDT_SWSYSRST);
-+
-+	spin_unlock_irqrestore(&data->lock, flags);
-+
-+	return 0;
-+}
-+
-+static int toprgu_reset_assert(struct reset_controller_dev *rcdev,
-+			       unsigned long id)
-+{
-+	return toprgu_reset_update(rcdev, id, true);
-+}
-+
-+static int toprgu_reset_deassert(struct reset_controller_dev *rcdev,
-+				 unsigned long id)
-+{
-+	return toprgu_reset_update(rcdev, id, false);
-+}
-+
-+static int toprgu_reset(struct reset_controller_dev *rcdev,
-+			unsigned long id)
-+{
-+	int ret;
-+
-+	ret = toprgu_reset_assert(rcdev, id);
-+	if (ret)
-+		return ret;
-+
-+	return toprgu_reset_deassert(rcdev, id);
-+}
-+
-+static const struct reset_control_ops toprgu_reset_ops = {
-+	.assert = toprgu_reset_assert,
-+	.deassert = toprgu_reset_deassert,
-+	.reset = toprgu_reset,
- };
- 
-+static int toprgu_register_reset_controller(struct platform_device *pdev,
-+					    int rst_num)
-+{
-+	int ret;
-+	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
-+
-+	spin_lock_init(&mtk_wdt->lock);
-+
-+	mtk_wdt->rcdev.owner = THIS_MODULE;
-+	mtk_wdt->rcdev.nr_resets = rst_num;
-+	mtk_wdt->rcdev.ops = &toprgu_reset_ops;
-+	mtk_wdt->rcdev.of_node = pdev->dev.of_node;
-+	ret = devm_reset_controller_register(&pdev->dev, &mtk_wdt->rcdev);
-+	if (ret != 0)
-+		dev_err(&pdev->dev,
-+			"couldn't register wdt reset controller: %d\n", ret);
-+	return ret;
-+}
-+
- static int mtk_wdt_restart(struct watchdog_device *wdt_dev,
- 			   unsigned long action, void *data)
- {
-@@ -155,6 +252,7 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_wdt_dev *mtk_wdt;
-+	struct mtk_wdt_data *wdt_data;
- 	int err;
- 
- 	mtk_wdt = devm_kzalloc(dev, sizeof(*mtk_wdt), GFP_KERNEL);
-@@ -190,6 +288,13 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 	dev_info(dev, "Watchdog enabled (timeout=%d sec, nowayout=%d)\n",
- 		 mtk_wdt->wdt_dev.timeout, nowayout);
- 
-+	wdt_data = (struct mtk_wdt_data *)of_device_get_match_data(dev);
-+	if (wdt_data) {
-+		err = toprgu_register_reset_controller(pdev,
-+						       wdt_data->toprgu_sw_rst_num);
-+		if (err)
-+			return err;
+ 	spin_lock_irqsave(hba->host->host_lock, flags);
+-	if (hba->ahit == ahit)
+-		goto out_unlock;
+-	hba->ahit = ahit;
+-	if (!pm_runtime_suspended(hba->dev))
+-		ufshcd_writel(hba, hba->ahit, REG_AUTO_HIBERNATE_IDLE_TIMER);
+-out_unlock:
++	if (hba->ahit != ahit)
++		hba->ahit = ahit;
+ 	spin_unlock_irqrestore(hba->host->host_lock, flags);
++	if (!pm_runtime_suspended(hba->dev)) {
++		pm_runtime_get_sync(hba->dev);
++		ufshcd_hold(hba, false);
++		ufshcd_auto_hibern8_enable(hba);
++		ufshcd_release(hba);
++		pm_runtime_put(hba->dev);
 +	}
- 	return 0;
  }
  
-@@ -218,7 +323,9 @@ static int mtk_wdt_resume(struct device *dev)
- #endif
+ /* Convert Auto-Hibernate Idle Timer register value to microseconds */
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 0036dcffc4a90..25a6a25b17a28 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -3950,7 +3950,7 @@ static int ufshcd_uic_hibern8_exit(struct ufs_hba *hba)
+ 	return ret;
+ }
  
- static const struct of_device_id mtk_wdt_dt_ids[] = {
-+	{ .compatible = "mediatek,mt2712-wdt", .data = &mt2712_data },
- 	{ .compatible = "mediatek,mt6589-wdt" },
-+	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
- 	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, mtk_wdt_dt_ids);
+-static void ufshcd_auto_hibern8_enable(struct ufs_hba *hba)
++void ufshcd_auto_hibern8_enable(struct ufs_hba *hba)
+ {
+ 	unsigned long flags;
+ 
+@@ -6890,9 +6890,6 @@ static int ufshcd_probe_hba(struct ufs_hba *hba)
+ 	/* UniPro link is active now */
+ 	ufshcd_set_link_active(hba);
+ 
+-	/* Enable Auto-Hibernate if configured */
+-	ufshcd_auto_hibern8_enable(hba);
+-
+ 	ret = ufshcd_verify_dev_init(hba);
+ 	if (ret)
+ 		goto out;
+@@ -6943,6 +6940,9 @@ static int ufshcd_probe_hba(struct ufs_hba *hba)
+ 	/* set the state as operational after switching to desired gear */
+ 	hba->ufshcd_state = UFSHCD_STATE_OPERATIONAL;
+ 
++	/* Enable Auto-Hibernate if configured */
++	ufshcd_auto_hibern8_enable(hba);
++
+ 	/*
+ 	 * If we are in error handling context or in power management callbacks
+ 	 * context, no need to scan the host
+@@ -7959,12 +7959,12 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ 	if (hba->clk_scaling.is_allowed)
+ 		ufshcd_resume_clkscaling(hba);
+ 
+-	/* Schedule clock gating in case of no access to UFS device yet */
+-	ufshcd_release(hba);
+-
+ 	/* Enable Auto-Hibernate if configured */
+ 	ufshcd_auto_hibern8_enable(hba);
+ 
++	/* Schedule clock gating in case of no access to UFS device yet */
++	ufshcd_release(hba);
++
+ 	goto out;
+ 
+ set_old_link_state:
+diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+index c94cfda528290..52c9676a12425 100644
+--- a/drivers/scsi/ufs/ufshcd.h
++++ b/drivers/scsi/ufs/ufshcd.h
+@@ -916,6 +916,8 @@ int ufshcd_query_attr(struct ufs_hba *hba, enum query_opcode opcode,
+ int ufshcd_query_flag(struct ufs_hba *hba, enum query_opcode opcode,
+ 	enum flag_idn idn, bool *flag_res);
+ 
++void ufshcd_auto_hibern8_enable(struct ufs_hba *hba);
++
+ #define SD_ASCII_STD true
+ #define SD_RAW false
+ int ufshcd_read_string_desc(struct ufs_hba *hba, u8 desc_index,
 -- 
-2.18.0
+2.20.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
