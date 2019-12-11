@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 231B0C43603
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 06:05:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B5D54C43603
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 06:05:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EA7382077B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 06:05:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 522342077B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 06:05:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CcNsuWtL";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="j0kQGBwG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA7382077B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rnBj8GPP";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ep7xk4GY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 522342077B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,52 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ctsZUBnuNNtVYCI4EhcP2l0vUnxN7AIXSXTaUygvaHw=; b=CcNsuWtLJnbmvI
-	Ns/Z9I3QDuRZ8zbJ1G/xnrAWN20SadtTA/tOCJ4pHTb1AAy0mCw8txQj8OnFmzvkUIUp5rsCvDIf7
-	Zxr7WfnLyvJM9Ucw1LKOQzzTttWHK2g3aEuckJ4u7RcbB9yoLKdqZUJmPbKA18DPZLIpwqayKPd2n
-	hchLikCPeFgIcHHOE8q/J2HjpKH1SkAkth18mwLlXkt3Hl65kWDrcOTttLu7xvgXUu6Aw+P38pZKE
-	YZnaGFesxI5x8ewr412iciTYE00BUBzIKd65GE11CSoU3nqO3hrAaXMmukDS3cvIps+q5SHRXPf2j
-	YseDfCdOThxmkKl7JG1g==;
+	List-Owner; bh=LGjye83GmDoo5b7Snw3xqAoUf7w+NND9ezfpguhfFBI=; b=rnBj8GPPHS3URU
+	oYKJdsnlUTKp+omi8e3aEVDOEAhO8yUUUDJICFO56nQrEE3WAy1cbkIFInGEhROMjImu5ZIxyc5FR
+	OnRVyEUjSAekJRCReettjZgch7DysMyALtqsJ8U/2tPAkqZ/10Oi3e1b0c4SNzlDsM7/m+iYgQSIW
+	k6g8U66Z5xcg0Fys7VxgAaZIpPZ3GhvKHuRDpPpXIYvU4NWw+PW+rRR1ysqVHUfFcHwDdozLxQryr
+	oG2Yc0e2nKPHlYrFO+l0B9Uh1EN3I1pWHViAmTZNeCk5wYpfYBGDeSXVQxzv3VJRri2xqX+zV4wg8
+	5fCkUFGqOow6+wLIQtjA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iev7s-0005PM-Hu; Wed, 11 Dec 2019 06:05:32 +0000
+	id 1iev7r-0005N5-BL; Wed, 11 Dec 2019 06:05:31 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iev7H-0003ce-OF; Wed, 11 Dec 2019 06:04:57 +0000
-X-UUID: a10bc86129dc4c3aae05e82336706e94-20191210
+ id 1iev7G-0003ce-CN; Wed, 11 Dec 2019 06:04:55 +0000
+X-UUID: 66dc5317afd0416891a3eee7b83ac1e8-20191210
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Tn+ocDgoE7quv83eopc3270X61VLoovrwR+4z9klDjM=; 
- b=j0kQGBwGQNLa5Nvotutt0m/oxZszocf02ZKvOIUMfsf/KjUT4Q5QXDHlswOlYb6bRSHTs5XGqX8Uvi53PIsyx+25eXwh8k7hzghUU4yjBjwuEubM2fHyzhEg9sZunvgfQRlApeLAodCKJI/es3T9znwKsz0cynbemZF/icVSuR8=;
-X-UUID: a10bc86129dc4c3aae05e82336706e94-20191210
+ bh=bGOiBo8UsCQP2pWWgLyPzgbBIX20HC4dwHtdo02etrI=; 
+ b=ep7xk4GYDsyKD9xp3Z+EExpku2RPOkckb+99ivOgNZFshjCYD3RXUP5nZhlL3twSey6DpN22xDriUkZELY18G1MDk98/2yLBhBenpiwNi3UPwN1ZplJ0r6j8/w7QdiwgFVCeW/VVfX2pgKCsyOKt693ycuEVDUH6kv5CQmJANDU=;
+X-UUID: 66dc5317afd0416891a3eee7b83ac1e8-20191210
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1116531605; Tue, 10 Dec 2019 22:04:51 -0800
+ with ESMTP id 385962300; Tue, 10 Dec 2019 22:04:47 -0800
 Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 10 Dec 2019 21:56:02 -0800
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 10 Dec 2019 21:55:50 -0800
 Received: from mtkcas09.mediatek.inc (172.21.101.178) by
  MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 11 Dec 2019 13:54:48 +0800
+ 15.0.1395.4; Wed, 11 Dec 2019 13:54:41 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 11 Dec 2019 13:54:49 +0800
+ Transport; Wed, 11 Dec 2019 13:54:43 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: [PATCH v5 10/11] phy: phy-mtk-tphy: add a new reference clock
-Date: Wed, 11 Dec 2019 13:54:22 +0800
-Message-ID: <1576043663-14240-10-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH v5 05/11] dt-bindings: phy-mtk-tphy: add the properties about
+ address mapping
+Date: Wed, 11 Dec 2019 13:54:17 +0800
+Message-ID: <1576043663-14240-5-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1576043663-14240-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1576043663-14240-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 71B177F444723FF40304FB1FDDEB37AF3AEB01BF2B0B94793FEBA94021D1D8442000:8
+X-TM-SNTS-SMTP: B460AA0BFF4E72BC7B7F8C602940F06412E8EBCBAB5A88572525C73B5F0966292000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191210_220455_827248_83878A33 
-X-CRM114-Status: GOOD (  13.04  )
+X-CRM114-CacheID: sfid-20191210_220454_424527_C2750659 
+X-CRM114-Status: GOOD (  11.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,72 +94,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Usually the digital and analog phys use the same reference clock,
-but some platforms have two separate reference clocks for each of
-them, so add another optional clock to support them.
-In order to keep the clock names consistent with PHY IP's, change
-the da_ref for analog phy and ref clock for digital phy.
+Add three required properties about the address mapping, including
+'#address-cells', '#size-cells' and 'ranges'
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
 ---
 v3~v5: no changes
 
-v2: fix typo of analog
+v2: add Reviewed-by Rob
 ---
- drivers/phy/mediatek/phy-mtk-tphy.c | 19 ++++++++++++++++++-
- 1 file changed, 18 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index c6424fd2a06d..cdbcc49f7115 100644
---- a/drivers/phy/mediatek/phy-mtk-tphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -298,7 +298,8 @@ struct mtk_phy_instance {
- 		struct u2phy_banks u2_banks;
- 		struct u3phy_banks u3_banks;
- 	};
--	struct clk *ref_clk;	/* reference clock of anolog phy */
-+	struct clk *ref_clk;	/* reference clock of (digital) phy */
-+	struct clk *da_ref_clk;	/* reference clock of analog phy */
- 	u32 index;
- 	u8 type;
- 	int eye_src;
-@@ -925,6 +926,13 @@ static int mtk_phy_init(struct phy *phy)
- 		return ret;
- 	}
+diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+index a859b0db4051..dd75b676b71d 100644
+--- a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
++++ b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+@@ -14,6 +14,16 @@ Required properties (controller (parent) node):
+ 		  make use of "mediatek,generic-tphy-v1" on mt2701 instead and
+ 		  "mediatek,generic-tphy-v2" on mt2712 instead.
  
-+	ret = clk_prepare_enable(instance->da_ref_clk);
-+	if (ret) {
-+		dev_err(tphy->dev, "failed to enable da_ref\n");
-+		clk_disable_unprepare(instance->ref_clk);
-+		return ret;
-+	}
++- #address-cells:	the number of cells used to represent physical
++		base addresses.
++- #size-cells:	the number of cells used to represent the size of an address.
++- ranges:	the address mapping relationship to the parent, defined with
++		- empty value: if optional 'reg' is used.
++		- non-empty value: if optional 'reg' is not used. should set
++			the child's base address to 0, the physical address
++			within parent's address space, and the length of
++			the address map.
 +
- 	switch (instance->type) {
- 	case PHY_TYPE_USB2:
- 		u2_phy_instance_init(tphy, instance);
-@@ -984,6 +992,7 @@ static int mtk_phy_exit(struct phy *phy)
- 		u2_phy_instance_exit(tphy, instance);
- 
- 	clk_disable_unprepare(instance->ref_clk);
-+	clk_disable_unprepare(instance->da_ref_clk);
- 	return 0;
- }
- 
-@@ -1170,6 +1179,14 @@ static int mtk_tphy_probe(struct platform_device *pdev)
- 			retval = PTR_ERR(instance->ref_clk);
- 			goto put_child;
- 		}
-+
-+		instance->da_ref_clk =
-+			devm_clk_get_optional(&phy->dev, "da_ref");
-+		if (IS_ERR(instance->da_ref_clk)) {
-+			dev_err(dev, "failed to get da_ref_clk(id-%d)\n", port);
-+			retval = PTR_ERR(instance->da_ref_clk);
-+			goto put_child;
-+		}
- 	}
- 
- 	provider = devm_of_phy_provider_register(dev, mtk_phy_xlate);
+ Required nodes	: a sub-node is required for each port the controller
+ 		  provides. Address range information including the usual
+ 		  'reg' property is used inside these nodes to describe
 -- 
 2.24.0
 _______________________________________________
