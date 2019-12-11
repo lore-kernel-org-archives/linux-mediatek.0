@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 56235C2D0C6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 18:40:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 57BC3C43603
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 18:57:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 28D3020836
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 18:40:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2AD02206C3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 18:57:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XG0xveWx";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="g3aQZioJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 28D3020836
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="M79MswvP";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="BLWJejK8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2AD02206C3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,56 +27,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gz+OY1XJwjw7t55wmFPbQw+J45E9vaFh3sxOwFXdGYc=; b=XG0xveWxK7Mwkg
-	M9lKdrKSIoGzs5feWUVJxmmO7XGzwaqO9DcbbpRfGXmpMwOxFj2TR5coiTwZuKRofYGAJ/GOoAfM9
-	dsYoJ+weV5eEcsyxZcqESxXKj7OZhJOvQkmtM159FH7oHFgIlzblPOpWbb5mhTBu8Ctlc8cj7hBnJ
-	1Sne/jJh6YnGHDSEhjr08HRo+8psWv2eEMyPFpdbxqwRNTTVjmxl7T52jVV3DL4SB4Ke1RUD+2/Xs
-	6oe2aUf0gIkdlLB4uoZTMIGTgXLwV9zTGLWTlnLLJ6KT0LmyME7UcWIlYSmV44fVitHtfm2lx0Bsq
-	0gjDaUVuTRzpySJbQSHw==;
+	List-Owner; bh=I5ztw5mSGgeF62V3Vf4MPIl70Eh91m9uWto19xfU8p0=; b=M79MswvPpORwMH
+	/nNCB2nYQuoDT6ZKvOqSDZCzmxnlb6vhaNR4Q2DCHHRA5fasxBDSMTfLLmETo6cGG+p8wsCEIExJk
+	Ff4/REsxeyxgqRBMgfC0ZL1DpJ6cF3627j5VWax5o4jlxHOtYX+5nmSFXQ9ZWJlkVhP3Pge64hgwB
+	BoDX76FVopJlKddWBiGZYwp+FxSnoLJ9FPnAv1wfRAffMKUKyu4InSer2aijxfcVazEPcvgk+WX9d
+	WGiRPamrJmEtfVZThlNpsKzL0R5IA5YphyrKzewrvgBr4yAVmU9pjo1ku0EWtqyzdvVlf5Zaxf8t2
+	jww/HT1rUgMJDldEEEgQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1if6u6-0002CE-7B; Wed, 11 Dec 2019 18:40:06 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1if7AT-0005YD-Gt; Wed, 11 Dec 2019 18:57:01 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1if6u3-0001ZE-5i; Wed, 11 Dec 2019 18:40:04 +0000
-Received: by mail-wr1-x443.google.com with SMTP id q10so25194207wrm.11;
- Wed, 11 Dec 2019 10:39:59 -0800 (PST)
+ id 1if7AQ-0005XJ-Uz; Wed, 11 Dec 2019 18:57:00 +0000
+Received: by mail-wr1-x441.google.com with SMTP id y17so25272859wrh.5;
+ Wed, 11 Dec 2019 10:56:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=zYYDjt3Ovik1awdLbWzeDKyMC0WwdnN6hp/A1DAq03k=;
- b=g3aQZioJn52q6amyG1eAWd2DVGPgKF9D70D7jjX+OqSGZqNRTGz5bnkDncAP+hwIBB
- 2bikjTu7lEpSRzQjVVva0N0b9KiDhE9vdka8EGbeg46b7p2rROehSmdi55UusMRXGUDe
- htgMRA2LOMd0xHb/2H7RiZ47yRucdHqLZTEwuv/ip5yVK9Och1e9lK/eC1dCVuQjbZgV
- KLgRvOLFCjOSm/FDlzEw0omVWjHsKSS8g57K0khVroUlEt+BWxxArqr6QT+Mv1iayNuL
- 1F1Qfbtg3le5COBTBx040zRHRrztcCM75STuZv+gotBqmqWOrr0ukk2f6NROQozi5iIl
- TMjA==
+ bh=KO/PT8YLg9RE0kmC/cdfWjmy4qJpLFmVv6I9AqT2IME=;
+ b=BLWJejK8wwGAIZq0IZsPphS4B/jXMihyQhqxthJHRW9eBM1c6wHy401tZwbU22fLmd
+ 7ftCoDklFyL8nxk/6NA128si+/76UhuDzpjzvEqeRiyYYcaUZ6WlXAFJBXq6a1WQmrME
+ LJV8GFYe80r+Vn5F2niayTIUcg7bhP7wIjoytsL3Q6vRHvdYOJ0hapEBFjxi5W5HXeHa
+ pTXjrOwfkNpP16qY8R482aY5YHahjwXxVZNJj3sWZmSEzTxBJdUcgcHct4JyMdwir+Hr
+ MT/QWRXsYzih99fWESTxBg8qFatIn5F1mfMF6JRSi7u24Q/IO8W655YsI9CNS9fqw8sr
+ K8mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=zYYDjt3Ovik1awdLbWzeDKyMC0WwdnN6hp/A1DAq03k=;
- b=X/4Eb7QUhtmspWGM4bsyePyMBz5fV8G7nw7DTBS4xXLdzAG89L0UZuMLtA8chGv6qD
- rddwr/D2N+p6KbraaUOhWWNs7S3hLwCQ5zicOlmUL9O7xtolJaoR4+xwaSSablTfnM1z
- hp7kSAVeNrzulVOMibXvBilCC6Yape6+aglFGiTJHGhnPtWPYbHc0IKn4/XVe0wax8jB
- qKI/Zy4LBlaz9ZKe4ZX4CjB0sjHeG01b1AT5/SXGi9hdzUhmSnzJBK/QtkgWFKU+IUZE
- 8xQKu+AjwN6W7zmQGb/qxS+g52tk3InC6FQVM5H9z586tlmtbPc4qT5RP/bPpoRj8btQ
- 9L1Q==
-X-Gm-Message-State: APjAAAUUTO4LKS5HDsGdu+7rLwiVSuB6ILjtaVYA2BHLQ8Wuuv7f4l71
- dKbLEIaga4HUV22Jx++SXWo=
-X-Google-Smtp-Source: APXvYqwX1VOSRVynEgRsKGiEiMm6NXmZaBRygt3BI3vuWXyaaEWhL42JHz8hKSdN0WllXT8c7dvbjw==
-X-Received: by 2002:a5d:4a8c:: with SMTP id o12mr1321320wrq.43.1576089597783; 
- Wed, 11 Dec 2019 10:39:57 -0800 (PST)
+ bh=KO/PT8YLg9RE0kmC/cdfWjmy4qJpLFmVv6I9AqT2IME=;
+ b=iciE1BhV6/TBwE58NklOrj8GmmyLws6n7Z0iRN0tA9yepOCV/3cV8g8wgrUVgzUi2m
+ 9kukiOr+dfLXBu1nDglfvcvpRf5NNLolYcrUpNWP+VRT+F/RRXOXTobRu8eVoQZBWaKZ
+ 5IcNAT6SHW5c+GVrbhrCn82d0aY2gVx5WC2KejlENiTEsghxcl9HyoOSx1ozaBSIJ4Nd
+ V/lt7tRj5d5FFiTlSPo8W+3yxrIeDFPys2lq6uTrfEfCgDCcK5lrPSrydXs2hyjKNK8P
+ 7qkKc3r+80canca4TXW35nTmsmnoZf21AwrtByrbSd+jgYeFSnZEzGhCIkHS2ud38A1P
+ 5JNQ==
+X-Gm-Message-State: APjAAAWppThdGx8IOYvROsQSuNRhYhKPSK3UCqY7fGcoMHP8YSZhMYv9
+ eE5RG18E89cuhP/Z99AGAlU=
+X-Google-Smtp-Source: APXvYqxrtqrMKDwyn2AocAF/cW9glC8Bys26t2rGFL7Cn6+JE+RyFaHBNH4dyboFxEod46hvOWq+Iw==
+X-Received: by 2002:a5d:4c85:: with SMTP id z5mr1431993wrs.42.1576090617636;
+ Wed, 11 Dec 2019 10:56:57 -0800 (PST)
 Received: from ziggy.stardust ([37.223.145.31])
- by smtp.gmail.com with ESMTPSA id g18sm3052350wmh.48.2019.12.11.10.39.56
+ by smtp.gmail.com with ESMTPSA id x6sm3753232wmi.44.2019.12.11.10.56.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 11 Dec 2019 10:39:56 -0800 (PST)
-Subject: Re: [PATCH v17 3/6] soc: mediatek: cmdq: define the instruction struct
-To: CK Hu <ck.hu@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>
+ Wed, 11 Dec 2019 10:56:57 -0800 (PST)
+Subject: Re: [PATCH v17 6/6] arm64: dts: add gce node for mt8183
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
+ CK HU <ck.hu@mediatek.com>
 References: <20191121015410.18852-1-bibby.hsieh@mediatek.com>
- <20191121015410.18852-4-bibby.hsieh@mediatek.com>
- <1574411430.19450.5.camel@mtksdaap41>
+ <20191121015410.18852-7-bibby.hsieh@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -152,16 +152,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <d5c0e144-3906-0041-8d0d-ab0daca7c55a@gmail.com>
-Date: Wed, 11 Dec 2019 19:39:55 +0100
+Message-ID: <889e7c63-6922-2ff7-c74e-b87766f22771@gmail.com>
+Date: Wed, 11 Dec 2019 19:56:56 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <1574411430.19450.5.camel@mtksdaap41>
+In-Reply-To: <20191121015410.18852-7-bibby.hsieh@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191211_104003_254485_77737103 
-X-CRM114-Status: GOOD (  18.12  )
+X-CRM114-CacheID: sfid-20191211_105659_045864_CDBA1D6B 
+X-CRM114-Status: GOOD (  15.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -176,8 +176,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
  srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
  Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -185,206 +184,47 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 22/11/2019 09:30, CK Hu wrote:
-> Hi, Bibby:
+On 21/11/2019 02:54, Bibby Hsieh wrote:
+> add gce device node for mt8183
 > 
-> On Thu, 2019-11-21 at 09:54 +0800, Bibby Hsieh wrote:
->> Define an instruction structure for gce driver to append command.
->> This structure can make the client's code more readability.
-> 
-> Even though I do not like pass struct parameter by value, but struct
-> cmdq_instruction is just a 64 bits integer and would not be modified in
-> cmdq_pkt_append_command(), so
-> 
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> 
+> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+> ---
 
-Applied to v5.5-next/soc
+Applied to v5.5-next/dts64
 
 Thanks!
 
->>
->> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
->> ---
->>  drivers/soc/mediatek/mtk-cmdq-helper.c   | 73 ++++++++++++++++--------
->>  include/linux/mailbox/mtk-cmdq-mailbox.h | 10 ++++
->>  2 files changed, 59 insertions(+), 24 deletions(-)
->>
->> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
->> index c8fb69787649..11bfcc150ebd 100644
->> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
->> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
->> @@ -9,12 +9,24 @@
->>  #include <linux/mailbox_controller.h>
->>  #include <linux/soc/mediatek/mtk-cmdq.h>
->>  
->> -#define CMDQ_ARG_A_WRITE_MASK	0xffff
->>  #define CMDQ_WRITE_ENABLE_MASK	BIT(0)
->>  #define CMDQ_EOC_IRQ_EN		BIT(0)
->>  #define CMDQ_EOC_CMD		((u64)((CMDQ_CODE_EOC << CMDQ_OP_CODE_SHIFT)) \
->>  				<< 32 | CMDQ_EOC_IRQ_EN)
->>  
->> +struct cmdq_instruction {
->> +	union {
->> +		u32 value;
->> +		u32 mask;
->> +	};
->> +	union {
->> +		u16 offset;
->> +		u16 event;
->> +	};
->> +	u8 subsys;
->> +	u8 op;
->> +};
->> +
->>  static void cmdq_client_timeout(struct timer_list *t)
->>  {
->>  	struct cmdq_client *client = from_timer(client, t, timer);
->> @@ -110,10 +122,10 @@ void cmdq_pkt_destroy(struct cmdq_pkt *pkt)
->>  }
->>  EXPORT_SYMBOL(cmdq_pkt_destroy);
->>  
->> -static int cmdq_pkt_append_command(struct cmdq_pkt *pkt, enum cmdq_code code,
->> -				   u32 arg_a, u32 arg_b)
->> +static int cmdq_pkt_append_command(struct cmdq_pkt *pkt,
->> +				   struct cmdq_instruction inst)
->>  {
->> -	u64 *cmd_ptr;
->> +	struct cmdq_instruction *cmd_ptr;
->>  
->>  	if (unlikely(pkt->cmd_buf_size + CMDQ_INST_SIZE > pkt->buf_size)) {
->>  		/*
->> @@ -129,8 +141,9 @@ static int cmdq_pkt_append_command(struct cmdq_pkt *pkt, enum cmdq_code code,
->>  			__func__, (u32)pkt->buf_size);
->>  		return -ENOMEM;
->>  	}
->> +
->>  	cmd_ptr = pkt->va_base + pkt->cmd_buf_size;
->> -	(*cmd_ptr) = (u64)((code << CMDQ_OP_CODE_SHIFT) | arg_a) << 32 | arg_b;
->> +	*cmd_ptr = inst;
->>  	pkt->cmd_buf_size += CMDQ_INST_SIZE;
->>  
->>  	return 0;
->> @@ -138,21 +151,28 @@ static int cmdq_pkt_append_command(struct cmdq_pkt *pkt, enum cmdq_code code,
->>  
->>  int cmdq_pkt_write(struct cmdq_pkt *pkt, u8 subsys, u16 offset, u32 value)
->>  {
->> -	u32 arg_a = (offset & CMDQ_ARG_A_WRITE_MASK) |
->> -		    (subsys << CMDQ_SUBSYS_SHIFT);
->> +	struct cmdq_instruction inst;
->>  
->> -	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WRITE, arg_a, value);
->> +	inst.op = CMDQ_CODE_WRITE;
->> +	inst.value = value;
->> +	inst.offset = offset;
->> +	inst.subsys = subsys;
->> +
->> +	return cmdq_pkt_append_command(pkt, inst);
->>  }
->>  EXPORT_SYMBOL(cmdq_pkt_write);
->>  
->>  int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
->>  			u16 offset, u32 value, u32 mask)
->>  {
->> -	u32 offset_mask = offset;
->> +	struct cmdq_instruction inst = { {0} };
->> +	u16 offset_mask = offset;
->>  	int err;
->>  
->>  	if (mask != 0xffffffff) {
->> -		err = cmdq_pkt_append_command(pkt, CMDQ_CODE_MASK, 0, ~mask);
->> +		inst.op = CMDQ_CODE_MASK;
->> +		inst.mask = ~mask;
->> +		err = cmdq_pkt_append_command(pkt, inst);
->>  		if (err < 0)
->>  			return err;
->>  
->> @@ -166,45 +186,50 @@ EXPORT_SYMBOL(cmdq_pkt_write_mask);
->>  
->>  int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event)
->>  {
->> -	u32 arg_b;
->> +	struct cmdq_instruction inst = { {0} };
->>  
->>  	if (event >= CMDQ_MAX_EVENT)
->>  		return -EINVAL;
->>  
->> -	/*
->> -	 * WFE arg_b
->> -	 * bit 0-11: wait value
->> -	 * bit 15: 1 - wait, 0 - no wait
->> -	 * bit 16-27: update value
->> -	 * bit 31: 1 - update, 0 - no update
->> -	 */
->> -	arg_b = CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | CMDQ_WFE_WAIT_VALUE;
->> +	inst.op = CMDQ_CODE_WFE;
->> +	inst.value = CMDQ_WFE_OPTION;
->> +	inst.event = event;
->>  
->> -	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WFE, event, arg_b);
->> +	return cmdq_pkt_append_command(pkt, inst);
->>  }
->>  EXPORT_SYMBOL(cmdq_pkt_wfe);
->>  
->>  int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u16 event)
->>  {
->> +	struct cmdq_instruction inst = { {0} };
->> +
->>  	if (event >= CMDQ_MAX_EVENT)
->>  		return -EINVAL;
->>  
->> -	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WFE, event,
->> -				       CMDQ_WFE_UPDATE);
->> +	inst.op = CMDQ_CODE_WFE;
->> +	inst.value = CMDQ_WFE_UPDATE;
->> +	inst.event = event;
->> +
->> +	return cmdq_pkt_append_command(pkt, inst);
->>  }
->>  EXPORT_SYMBOL(cmdq_pkt_clear_event);
->>  
->>  static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
->>  {
->> +	struct cmdq_instruction inst = { {0} };
->>  	int err;
->>  
->>  	/* insert EOC and generate IRQ for each command iteration */
->> -	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_EOC, 0, CMDQ_EOC_IRQ_EN);
->> +	inst.op = CMDQ_CODE_EOC;
->> +	inst.value = CMDQ_EOC_IRQ_EN;
->> +	err = cmdq_pkt_append_command(pkt, inst);
->>  	if (err < 0)
->>  		return err;
->>  
->>  	/* JUMP to end */
->> -	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_JUMP, 0, CMDQ_JUMP_PASS);
->> +	inst.op = CMDQ_CODE_JUMP;
->> +	inst.value = CMDQ_JUMP_PASS;
->> +	err = cmdq_pkt_append_command(pkt, inst);
->>  
->>  	return err;
->>  }
->> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
->> index e6f54ef6698b..678760548791 100644
->> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
->> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
->> @@ -20,6 +20,16 @@
->>  #define CMDQ_WFE_WAIT			BIT(15)
->>  #define CMDQ_WFE_WAIT_VALUE		0x1
->>  
->> +/*
->> + * WFE arg_b
->> + * bit 0-11: wait value
->> + * bit 15: 1 - wait, 0 - no wait
->> + * bit 16-27: update value
->> + * bit 31: 1 - update, 0 - no update
->> + */
->> +#define CMDQ_WFE_OPTION			(CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | \
->> +					CMDQ_WFE_WAIT_VALUE)
->> +
->>  /** cmdq event maximum */
->>  #define CMDQ_MAX_EVENT			0x3ff
->>  
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 6cbbd7726d36..954bcd766c97 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -9,6 +9,7 @@
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+>  #include <dt-bindings/interrupt-controller/irq.h>
+>  #include <dt-bindings/power/mt8183-power.h>
+> +#include <dt-bindings/gce/mt8183-gce.h>
+>  #include "mt8183-pinfunc.h"
+>  
+>  / {
+> @@ -336,6 +337,15 @@
+>  			status = "disabled";
+>  		};
+>  
+> +		gce: mailbox@10238000 {
+> +			compatible = "mediatek,mt8183-gce";
+> +			reg = <0 0x10238000 0 0x4000>;
+> +			interrupts = <GIC_SPI 162 IRQ_TYPE_LEVEL_LOW>;
+> +			#mbox-cells = <3>;
+> +			clocks = <&infracfg CLK_INFRA_GCE>;
+> +			clock-names = "gce";
+> +		};
+> +
+>  		uart0: serial@11002000 {
+>  			compatible = "mediatek,mt8183-uart",
+>  				     "mediatek,mt6577-uart";
 > 
 
 _______________________________________________
