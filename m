@@ -2,76 +2,60 @@ Return-Path: <SRS0=jhbW=2B=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 02264C43603
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 11:39:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 384B5C43603
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 12:25:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C88FD2073D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 11:39:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F351D20836
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 12:25:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="k0E0A0K4";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="HWM5xuHk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C88FD2073D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="maQT7fZe"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F351D20836
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bootlin.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+frCG5ocsdi8quSAiNl6Ou3C7xJbnR9er83uG+6B0g0=; b=k0E0A0K4JXEgEz
-	39kSrGhfg4Roth0/7shmmGeSpkx/gfq7hoy/87K+2i5VKVuDn+KVL4/eWEnLtp6ekNmB0OjdcXC50
-	WFyJENPrlORzUGn9T22gRepCUvZfNaVIL5wg1aecGRLMGiTrFvLlwAze9OOETFvzb3bM4KbKI9/k7
-	Hjq5+T6opaIxi+kcmGarVKet5ZbwXqm8maHxZF3soq1UEk7dGsd4uiyNLOO8gxy3cxORw6NohQeBj
-	ZrlIizi/gJ5ofyZci+cbZI5bPOkAy2ofX4e/Mg+u/NeDe8pad3jtdyFPdFJvaY8pdoUEbVzqMKIQg
-	fBFkssDEbgRx1XxvvB4A==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Jn9AUdCU8mYrRQvVJadQa+CV3ZzgdE6pesgF+wR/OrE=; b=maQT7fZeB4AZZb
+	UtC2t0xpkOm+lvpjfmICs5Gd2YxZPukqOKS5qPZBrzSpkmpvcoIWthGPr/Uh0Es0cu5AoJWIBmOWF
+	mNVpJDpB3PavjN8bQugxWL669ZOS8fE13hR335XETgQ4j0S1NZ07WIOiNlb59h+RESUQYvaf9LOGf
+	cgPJgxlW05o4PoaGevI/dSh6jhQ+e3Xbw0NhcaJ/o3rpgOCsK9TIx2RzCGnCChqQ/q9JD0UwNeXqh
+	gnnzo2CIbZHkQgCDOKKXIcmJNGMUYT3mB/UCjS1Kwjj7qrVlp77HRT2c33a5vhxbNSMykJrRWwL7P
+	o1SCFf53gGTBwII65kSw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1if0L3-0004of-BQ; Wed, 11 Dec 2019 11:39:29 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1if13j-0007xU-Mj; Wed, 11 Dec 2019 12:25:39 +0000
+Received: from relay9-d.mail.gandi.net ([217.70.183.199])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1if0Ka-0004GB-9a; Wed, 11 Dec 2019 11:39:03 +0000
-X-UUID: 85dac62e3f3649d0aadba0f95f229830-20191211
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=E6iZNCkFCawyWjZRc34zhuu8VrWUse/gSOjQa/y+r/g=; 
- b=HWM5xuHk3TqbXjVy/WRN4RQ1WNBaWP0zFwTpKBWTCGYAQ0iT3CRFbHTHuCsXKIddn5LPghJiV3pZ23/AzAbV32EGwIHcCF2RhswKOVH00tKV/u05DONrRPyG0fekQxfM7HWYjTEDmDy0ohl/cSTJF4RZn5kq5E/vp9j9YE5phmk=;
-X-UUID: 85dac62e3f3649d0aadba0f95f229830-20191211
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 410802635; Wed, 11 Dec 2019 03:38:55 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 11 Dec 2019 03:29:58 -0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 11 Dec 2019 19:28:36 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 11 Dec 2019 19:28:26 +0800
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: <mchehab@kernel.org>, <andriy.shevchenko@linux.intel.com>,
- <robh+dt@kernel.org>, <mark.rutland@arm.com>, <sakari.ailus@linux.intel.com>, 
- <drinkcat@chromium.org>, <tfiga@chromium.org>, <matthias.bgg@gmail.com>,
- <bingbu.cao@intel.com>
-Subject: [V6, 0/2] media: i2c: Add support for OV02A10 sensor
-Date: Wed, 11 Dec 2019 19:28:47 +0800
-Message-ID: <20191211112849.16705-1-dongchun.zhu@mediatek.com>
-X-Mailer: git-send-email 2.9.2
+ id 1if13X-0007m0-Ns; Wed, 11 Dec 2019 12:25:29 +0000
+X-Originating-IP: 90.182.112.136
+Received: from localhost (136.112.broadband15.iol.cz [90.182.112.136])
+ (Authenticated sender: alexandre.belloni@bootlin.com)
+ by relay9-d.mail.gandi.net (Postfix) with ESMTPSA id 42316FF80D;
+ Wed, 11 Dec 2019 12:25:13 +0000 (UTC)
+Date: Wed, 11 Dec 2019 13:25:09 +0100
+From: Alexandre Belloni <alexandre.belloni@bootlin.com>
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Subject: Re: [PATCH v7 5/6] rtc: mt6397: fix alarm register overwrite
+Message-ID: <20191211122509.GX1463890@piout.net>
+References: <1576057435-3561-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1576057435-3561-6-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1576057435-3561-6-git-send-email-hsin-hsiung.wang@mediatek.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191211_033900_349919_B93315BD 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20191211_042527_921257_F100925F 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,80 +67,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- shengnan.wang@mediatek.com, sj.huang@mediatek.com,
- linux-mediatek@lists.infradead.org, dongchun.zhu@mediatek.com,
- louis.kuo@mediatek.com, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Alessandro Zummo <a.zummo@towertech.it>, Josef Friedl <josef.friedl@speed.at>,
+ srv_heupstream@mediatek.com, Frank Wunderlich <frank-w@public-files.de>,
+ Ran Bi <ran.bi@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ linux-kernel@vger.kernel.org, Tianping Fang <tianping.fang@mediatek.com>,
+ devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>,
+ Lee Jones <lee.jones@linaro.org>, Kate Stewart <kstewart@linuxfoundation.org>,
+ linux-rtc@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+On 11/12/2019 17:43:54+0800, Hsin-Hsiung Wang wrote:
+> From: Ran Bi <ran.bi@mediatek.com>
+> 
+> Alarm registers high byte was reserved for other functions.
+> This add mask in alarm registers operation functions.
+> This also fix error condition in interrupt handler.
+> 
+> Fixes: fc2979118f3f ("rtc: mediatek: Add MT6397 RTC driver")
+> 
+> Signed-off-by: Ran Bi <ran.bi@mediatek.com>
+> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> ---
+>  drivers/rtc/rtc-mt6397.c       | 39 +++++++++++++++++++++++++--------------
+>  include/linux/mfd/mt6397/rtc.h |  8 ++++++++
+>  2 files changed, 33 insertions(+), 14 deletions(-)
+> 
 
-This series adds DT binding and driver for Omnivision's OV02A10 2 megapixel CMOS 1/5" sensor,
-which has a single MIPI lane interface and output format of 10-bit RAW.
-
-The driver is implemented wth V4L2 framework.
-1. Async registered as a V4L2 I2C sub-device.
-2. The first component of camera system including Seninf, ISP.
-3. A media entity that can provide one source pad in common and two for dual camera.
-
-Changes compared to v5:
- - Rebase onto 5.5-rc1
- - Remove the handler of "ovti, hs-vod-adjust" property
- - Define new macro HZ_PER_MHZ to describe frequency-related parameters
- - Fixup coding style and improve code quality
- - Fix other reviewed issues in v5
-
-Changes of v5 are addressing comments from Sakari, Tomasz.
- - Set default orientation in dt-bindings
- - Move the content of power on/off directly to the resume/suspend callbacks
- - Move sensor id check to power on to avoid the privacy LED flash on boot
- - Remove unnecessary debug log in driver
- - Fix other reviewed issues in v4
-
-Changes of v4 mainly address the comments from Sakari, Rob, Tomasz.
- - Remove data-lanes property in DT
- - Add link frequencies in DT to match the expect value that driver requires
- - Omit open callback as int_cfg is implemented
- - Use i2c_smbus_write_byte_data/i2c_smbus_read_byte_data instead of customed APIs
- - Use do_div to calculate pixel rate
- - Use usleep_range directly for shoter sleep case
- - Re-adjust sensor power up/off sequence
- - Re-set pd/rst GPIO inverter property according to the datasheet
- - Refine set_exposure/set_gain/set_vblanking/set_test_pattern functions
- - Fix other reviewed issues in v3
-
-Changes of v3 are mainly addressing comments from Rob, Sakari, Bingbu.
- - Fix coding style errors in dt-bindings
- - Use macro flag to describle basic line 1224 when updating v-blanking
- - Remove unnecessary debug log in driver
-
-Mainly changes of v2 are addressing the comments from Nicolas, Bingbu, Sakari, Rob,
-including,
- - Put dt binding before driver in series
- - Add MAINTAINERS entries
- - Squash the MAINTAINERS entry and Kconfig to driver patch
- - Add rotation support for driver
- - Fix other reviewed issues in v1
-
-Dongchun Zhu (2):
-  media: dt-bindings: media: i2c: Document OV02A10 bindings
-  media: i2c: ov02a10: Add OV02A10 image sensor driver
-
- .../devicetree/bindings/media/i2c/ov02a10.txt      |   54 +
- MAINTAINERS                                        |    8 +
- drivers/media/i2c/Kconfig                          |   11 +
- drivers/media/i2c/Makefile                         |    1 +
- drivers/media/i2c/ov02a10.c                        | 1102 ++++++++++++++++++++
- 5 files changed, 1176 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/i2c/ov02a10.txt
- create mode 100644 drivers/media/i2c/ov02a10.c
+Applied to rtc-fixes. I'm not sure why you used my previous email
+address though, v6 had the correct one.
 
 -- 
-2.9.2
+Alexandre Belloni, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
