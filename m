@@ -2,115 +2,166 @@ Return-Path: <SRS0=jhbW=2B=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B8D0C2D0C6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 18:38:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 56235C2D0C6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 18:40:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1ADA020836
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 18:38:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 28D3020836
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Dec 2019 18:40:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="a5ZesMSI";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=nxp.com header.i=@nxp.com header.b="jH1DEERY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1ADA020836
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=nxp.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XG0xveWx";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="g3aQZioJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 28D3020836
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=XddjL9DbSeDIfPsCXJ82xm2Cqpsg2VIlSQmtJBAf+1o=; b=a5ZesMSInOHYpa
-	AmAB46PUUNQDlxnxBwX5QRd/13Q0Cr5l6GmVgat7EFDVR90abo/tCEFyoKhFXtke74zOJaE84e1tJ
-	I6aXT/id6K8NsvBzq/JbnFnmTbgz8fEBbVoHK47HvXKKmV8WvclWzq+Y+AB8iA6n+zyDSwzZ3K6Ps
-	2q18i4WOSBLpGiwmKUHlTiuDrPOid2mS9ga8qlrsjZN2KtmYIazBulsFH1fKAPCsIDAOJMk822XXS
-	uiW3HY7tLxE3jz+SW/0tH1JmOtQqebe7SJqzBqU/76uvArElrvSVel4aq/z2t4sNdXFUWs5t6+/hU
-	HqV3S4HgoNGQemF4CaZQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Gz+OY1XJwjw7t55wmFPbQw+J45E9vaFh3sxOwFXdGYc=; b=XG0xveWxK7Mwkg
+	M9lKdrKSIoGzs5feWUVJxmmO7XGzwaqO9DcbbpRfGXmpMwOxFj2TR5coiTwZuKRofYGAJ/GOoAfM9
+	dsYoJ+weV5eEcsyxZcqESxXKj7OZhJOvQkmtM159FH7oHFgIlzblPOpWbb5mhTBu8Ctlc8cj7hBnJ
+	1Sne/jJh6YnGHDSEhjr08HRo+8psWv2eEMyPFpdbxqwRNTTVjmxl7T52jVV3DL4SB4Ke1RUD+2/Xs
+	6oe2aUf0gIkdlLB4uoZTMIGTgXLwV9zTGLWTlnLLJ6KT0LmyME7UcWIlYSmV44fVitHtfm2lx0Bsq
+	0gjDaUVuTRzpySJbQSHw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1if6sP-0001EB-1G; Wed, 11 Dec 2019 18:38:21 +0000
-Received: from mail-eopbgr60051.outbound.protection.outlook.com ([40.107.6.51]
- helo=EUR04-DB3-obe.outbound.protection.outlook.com)
+	id 1if6u6-0002CE-7B; Wed, 11 Dec 2019 18:40:06 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1if6sK-0001AF-AE; Wed, 11 Dec 2019 18:38:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=c//LfYlhbLX3Gh2A2P1TUdcg0/G0NVeA6t84y55SL+zEUKGQbHDFVmjxSrq0miPS4JpVzssrOWK3i2NbuPw6kWRIpZY3qSgT/Sl4hOGXbjr2xlmbmo69n0QZmE14q651yMLkQsD6LRIFPGh/FKHjyAtdalVvOTB4tKwGxwBsGit+JOZH8pV4jIMcpPbu1B4qoCEPMdMc0twJHUimHaYRzjhYGZN5mS4vthr4WzpMnon8CE7COhtagNQo9ZrSbqMLDqWo8izFLagh+yMc1kz1y6o0uFh6nyb6M/+dipwC/Lb6nXvC0fO81gT77K4oMnQ0cWcA8wGzBrO/RmKUJ8MhSQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rk/eK3wfgdRYRQNeCULei0VDf+d8TbJZkfjMeJ2oZ2w=;
- b=NZr3VyuCpoqjCvoVGRaQ7brFWRtskD4Ayn/m2ergTXDeSFHtR/Uen9poj7jFoEkC3ysov+IKDZLDwo5iKYcNaaFqZ8+JDzIf1TTzzGJ3DZmWTWw/RdMbJnAX9pa2HrtLriBK3anqZ+dTgbi38Mxeduh4+GdEYHGh/QC8m/8KZ6KviIhFtyghh2q9hCJTFMA2PtTpGTmCxDU7VUk+Ix3PHfmRSWSt+IfkcZfiApz6f/zX027jdvo0CByd+HVXMbyfSRQoUZVmRbVGMRm3xHxGTnd/lDF0aBv3q4YOL2bBYZA7gm/49STgz6JJ9Ip9owB2ET4ho4H3STZqaq4cPfFucg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rk/eK3wfgdRYRQNeCULei0VDf+d8TbJZkfjMeJ2oZ2w=;
- b=jH1DEERY0bKw2JCWCDkuDhCiOMGd0xvieald1iuLgyL16mVVR7ioRCpxcilVuPBLcaW3XZ6lt49f5H1aeK0qAl4XDMiDem8lsW8zG1vGo3V+3PFXzZUrCqZdQ1BRzztnNM8KH+QVG352JykbOw8Gc3zhbM1UlqcykpESQuOm6II=
-Received: from VI1PR04MB7023.eurprd04.prod.outlook.com (10.186.159.144) by
- VI1PR04MB7182.eurprd04.prod.outlook.com (10.186.156.7) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2538.16; Wed, 11 Dec 2019 18:38:12 +0000
-Received: from VI1PR04MB7023.eurprd04.prod.outlook.com
- ([fe80::2c49:44c8:2c02:68b1]) by VI1PR04MB7023.eurprd04.prod.outlook.com
- ([fe80::2c49:44c8:2c02:68b1%5]) with mapi id 15.20.2538.016; Wed, 11 Dec 2019
- 18:38:12 +0000
-From: Leonard Crestez <leonard.crestez@nxp.com>
-To: Paul Walmsley <paul@pwsan.com>, Thierry Reding <thierry.reding@gmail.com>, 
- "sboyd@kernel.org" <sboyd@kernel.org>
-Subject: Re: [PATCH 08/17] clk: imx: convert to devm_platform_ioremap_resource
-Thread-Topic: [PATCH 08/17] clk: imx: convert to devm_platform_ioremap_resource
-Thread-Index: AQHVrsr/8/dokU6K/U2uIVGyaN+gaw==
-Date: Wed, 11 Dec 2019 18:38:11 +0000
-Message-ID: <VI1PR04MB7023943556EB5E6967AE3E0CEE5A0@VI1PR04MB7023.eurprd04.prod.outlook.com>
-References: <20191209195749.868-1-tiny.windzz@gmail.com>
- <20191209195749.868-8-tiny.windzz@gmail.com>
- <VI1PR04MB7023BD6E46B6DEEBBB762060EE580@VI1PR04MB7023.eurprd04.prod.outlook.com>
- <20191210132146.GF2703785@ulmo>
- <alpine.DEB.2.21.999.1912111743560.32095@utopia.booyaka.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=leonard.crestez@nxp.com; 
-x-originating-ip: [89.37.124.34]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: e4ef7c60-bae4-4c97-1598-08d77e6946d3
-x-ms-traffictypediagnostic: VI1PR04MB7182:|VI1PR04MB7182:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <VI1PR04MB71828FFACE570A928ED59DB4EE5A0@VI1PR04MB7182.eurprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-forefront-prvs: 024847EE92
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(346002)(366004)(396003)(376002)(39860400002)(136003)(199004)(189003)(4326008)(54906003)(478600001)(52536014)(6506007)(45080400002)(2906002)(5660300002)(110136005)(53546011)(966005)(9686003)(8936002)(86362001)(66476007)(81166006)(66946007)(8676002)(76116006)(91956017)(55016002)(44832011)(81156014)(66556008)(7416002)(186003)(7696005)(7366002)(7406005)(64756008)(66446008)(33656002)(26005)(71200400001)(316002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:VI1PR04MB7182;
- H:VI1PR04MB7023.eurprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: nxp.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: XSxqeS5bjTs50npOsu2W1m9bwdVPQs+vXBFynHbmCycxgE3lP28JkJg9fM3nHW53SMVM059tRMhSFffPTuwZHOlHl/JpChpMHGcWCkzTXgVNA3kg/DNuS+Lr4WnddiAw9NUA94JxH6MYC3QVXlO6wUDEsnNmjze2/LDY+NlDoLtioBkxleD99uute0yb17xYFAmcLL1y2FqjJo+PcQ8SfK9CKnfyX/GBp87E9J+kOtnt8Ry5LseF26FFD/YD3o0JYMLly1qv3p889ux52t9BGYdgm3QgOG+Qt6Bx/kdDI5iYyQC/Qf/FH/Nl0bISqaHaNDOz3vjr97TWpiT6GSNOQfAcucaSSRt4B7Hqc2UeUHyvmxRGbA8xY2veZO63H/djq/gVA+DpNgF+xujoUZLi+jiX/gDczTTu96f6WOYKCn6mNHyrCt8b1R18LUtSdHLtb2GmvkrfxLqY/mzke7FwcWEyvuhkePGwpLnJilEJvM8=
+ id 1if6u3-0001ZE-5i; Wed, 11 Dec 2019 18:40:04 +0000
+Received: by mail-wr1-x443.google.com with SMTP id q10so25194207wrm.11;
+ Wed, 11 Dec 2019 10:39:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=zYYDjt3Ovik1awdLbWzeDKyMC0WwdnN6hp/A1DAq03k=;
+ b=g3aQZioJn52q6amyG1eAWd2DVGPgKF9D70D7jjX+OqSGZqNRTGz5bnkDncAP+hwIBB
+ 2bikjTu7lEpSRzQjVVva0N0b9KiDhE9vdka8EGbeg46b7p2rROehSmdi55UusMRXGUDe
+ htgMRA2LOMd0xHb/2H7RiZ47yRucdHqLZTEwuv/ip5yVK9Och1e9lK/eC1dCVuQjbZgV
+ KLgRvOLFCjOSm/FDlzEw0omVWjHsKSS8g57K0khVroUlEt+BWxxArqr6QT+Mv1iayNuL
+ 1F1Qfbtg3le5COBTBx040zRHRrztcCM75STuZv+gotBqmqWOrr0ukk2f6NROQozi5iIl
+ TMjA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=zYYDjt3Ovik1awdLbWzeDKyMC0WwdnN6hp/A1DAq03k=;
+ b=X/4Eb7QUhtmspWGM4bsyePyMBz5fV8G7nw7DTBS4xXLdzAG89L0UZuMLtA8chGv6qD
+ rddwr/D2N+p6KbraaUOhWWNs7S3hLwCQ5zicOlmUL9O7xtolJaoR4+xwaSSablTfnM1z
+ hp7kSAVeNrzulVOMibXvBilCC6Yape6+aglFGiTJHGhnPtWPYbHc0IKn4/XVe0wax8jB
+ qKI/Zy4LBlaz9ZKe4ZX4CjB0sjHeG01b1AT5/SXGi9hdzUhmSnzJBK/QtkgWFKU+IUZE
+ 8xQKu+AjwN6W7zmQGb/qxS+g52tk3InC6FQVM5H9z586tlmtbPc4qT5RP/bPpoRj8btQ
+ 9L1Q==
+X-Gm-Message-State: APjAAAUUTO4LKS5HDsGdu+7rLwiVSuB6ILjtaVYA2BHLQ8Wuuv7f4l71
+ dKbLEIaga4HUV22Jx++SXWo=
+X-Google-Smtp-Source: APXvYqwX1VOSRVynEgRsKGiEiMm6NXmZaBRygt3BI3vuWXyaaEWhL42JHz8hKSdN0WllXT8c7dvbjw==
+X-Received: by 2002:a5d:4a8c:: with SMTP id o12mr1321320wrq.43.1576089597783; 
+ Wed, 11 Dec 2019 10:39:57 -0800 (PST)
+Received: from ziggy.stardust ([37.223.145.31])
+ by smtp.gmail.com with ESMTPSA id g18sm3052350wmh.48.2019.12.11.10.39.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 11 Dec 2019 10:39:56 -0800 (PST)
+Subject: Re: [PATCH v17 3/6] soc: mediatek: cmdq: define the instruction struct
+To: CK Hu <ck.hu@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>
+References: <20191121015410.18852-1-bibby.hsieh@mediatek.com>
+ <20191121015410.18852-4-bibby.hsieh@mediatek.com>
+ <1574411430.19450.5.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <d5c0e144-3906-0041-8d0d-ab0daca7c55a@gmail.com>
+Date: Wed, 11 Dec 2019 19:39:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e4ef7c60-bae4-4c97-1598-08d77e6946d3
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Dec 2019 18:38:11.9396 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 229+aDnP9rtLfTYh11aq8TLj4pTTozFh9M5SaXA3gp8Z713GazUu/ACj/x2YNePb5dzzOZ2tYBkCJuhZERqRsA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB7182
+In-Reply-To: <1574411430.19450.5.camel@mtksdaap41>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191211_103816_464465_4FD58869 
-X-CRM114-Status: GOOD (  10.87  )
+X-CRM114-CacheID: sfid-20191211_104003_254485_77737103 
+X-CRM114-Status: GOOD (  18.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -122,127 +173,219 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "kstewart@linuxfoundation.org" <kstewart@linuxfoundation.org>,
- "pgaikwad@nvidia.com" <pgaikwad@nvidia.com>,
- "heiko@sntech.de" <heiko@sntech.de>,
- "geert+renesas@glider.be" <geert+renesas@glider.be>,
- "chunhui.dai@mediatek.com" <chunhui.dai@mediatek.com>,
- Yangtao Li <tiny.windzz@gmail.com>,
- "mturquette@baylibre.com" <mturquette@baylibre.com>,
- "palmer@sifive.com" <palmer@sifive.com>, "nsekhar@ti.com" <nsekhar@ti.com>,
- "tomasz.figa@gmail.com" <tomasz.figa@gmail.com>,
- "rfontana@redhat.com" <rfontana@redhat.com>,
- "weiyongjun1@huawei.com" <weiyongjun1@huawei.com>,
- "s.nawrocki@samsung.com" <s.nawrocki@samsung.com>,
- "manivannan.sadhasivam@linaro.org" <manivannan.sadhasivam@linaro.org>,
- "linux-riscv@lists.infradead.org" <linux-riscv@lists.infradead.org>,
- "festevam@gmail.com" <festevam@gmail.com>,
- "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
- "robh@kernel.org" <robh@kernel.org>,
- "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
- "emilio@elopez.com.ar" <emilio@elopez.com.ar>,
- "allison@lohutok.net" <allison@lohutok.net>,
- "krzk@kernel.org" <krzk@kernel.org>,
- "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
- "cw00.choi@samsung.com" <cw00.choi@samsung.com>,
- "wens@csie.org" <wens@csie.org>, "agross@kernel.org" <agross@kernel.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- dl-linux-imx <linux-imx@nxp.com>,
- "Eugeniy.Paltsev@synopsys.com" <Eugeniy.Paltsev@synopsys.com>,
- "miquel.raynal@bootlin.com" <miquel.raynal@bootlin.com>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "s.hauer@pengutronix.de" <s.hauer@pengutronix.de>,
- "mripard@kernel.org" <mripard@kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "swinslow@gmail.com" <swinslow@gmail.com>,
- "paul.walmsley@sifive.com" <paul.walmsley@sifive.com>,
- "john@phrozen.org" <john@phrozen.org>,
- "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
- "tglx@linutronix.de" <tglx@linutronix.de>,
- Daniel Baluta <daniel.baluta@nxp.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- Aisheng Dong <aisheng.dong@nxp.com>, "jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "pdeschrijver@nvidia.com" <pdeschrijver@nvidia.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "t-kristo@ti.com" <t-kristo@ti.com>,
- "dinguyen@kernel.org" <dinguyen@kernel.org>,
- "kgene@kernel.org" <kgene@kernel.org>,
- "kernel@pengutronix.de" <kernel@pengutronix.de>,
- "wangyan.wang@mediatek.com" <wangyan.wang@mediatek.com>,
- "shawnguo@kernel.org" <shawnguo@kernel.org>,
- "afaerber@suse.de" <afaerber@suse.de>
+Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
+ srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
+ Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11.12.2019 19:51, Paul Walmsley wrote:
-> On Tue, 10 Dec 2019, Thierry Reding wrote:
->> On Mon, Dec 09, 2019 at 08:44:39PM +0000, Leonard Crestez wrote:
+
+
+On 22/11/2019 09:30, CK Hu wrote:
+> Hi, Bibby:
+> 
+> On Thu, 2019-11-21 at 09:54 +0800, Bibby Hsieh wrote:
+>> Define an instruction structure for gce driver to append command.
+>> This structure can make the client's code more readability.
+> 
+> Even though I do not like pass struct parameter by value, but struct
+> cmdq_instruction is just a 64 bits integer and would not be modified in
+> cmdq_pkt_append_command(), so
+> 
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> 
+
+Applied to v5.5-next/soc
+
+Thanks!
+
 >>
->>> This breaks imx8qxp-mek boot by causing most peripherals (like uart) to
->>> fail to probe.
->>>
->>> The old and new paths are not equivalent: devm_platform_ioremap_resource
->>> calls devm_ioremap_resource which differs from devm_ioremap by also
->>> calling devm_request_mem_region.
->>>
->>> This prevents other mappings in the area and imx8qxp-lpcg nodes map
->>> whole hardware "subsystems" and overlap most peripherals. For example:
->>>
->>>                    adma_lpcg: clock-controller@59000000 {
->>>                            compatible = "fsl,imx8qxp-lpcg-adma";
->>>                            reg = <0x59000000 0x2000000>;
->>>                            #clock-cells = <1>;
->>> 		};
->>>
->>>                   adma_lpuart0: serial@5a060000 {
->>> 			reg = <0x5a060000 0x1000>;
->>> 			...
->>> 		};
+>> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+>> ---
+>>  drivers/soc/mediatek/mtk-cmdq-helper.c   | 73 ++++++++++++++++--------
+>>  include/linux/mailbox/mtk-cmdq-mailbox.h | 10 ++++
+>>  2 files changed, 59 insertions(+), 24 deletions(-)
 >>
->> The whole point of doing a request_mem_region() is to avoid having
->> multiple drivers trample on each others' mappings. What you do above
->> doesn't look right. Why does that clock controller need access to 32
->> MiB of I/O memory space?
+>> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+>> index c8fb69787649..11bfcc150ebd 100644
+>> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
+>> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+>> @@ -9,12 +9,24 @@
+>>  #include <linux/mailbox_controller.h>
+>>  #include <linux/soc/mediatek/mtk-cmdq.h>
+>>  
+>> -#define CMDQ_ARG_A_WRITE_MASK	0xffff
+>>  #define CMDQ_WRITE_ENABLE_MASK	BIT(0)
+>>  #define CMDQ_EOC_IRQ_EN		BIT(0)
+>>  #define CMDQ_EOC_CMD		((u64)((CMDQ_CODE_EOC << CMDQ_OP_CODE_SHIFT)) \
+>>  				<< 32 | CMDQ_EOC_IRQ_EN)
+>>  
+>> +struct cmdq_instruction {
+>> +	union {
+>> +		u32 value;
+>> +		u32 mask;
+>> +	};
+>> +	union {
+>> +		u16 offset;
+>> +		u16 event;
+>> +	};
+>> +	u8 subsys;
+>> +	u8 op;
+>> +};
+>> +
+>>  static void cmdq_client_timeout(struct timer_list *t)
+>>  {
+>>  	struct cmdq_client *client = from_timer(client, t, timer);
+>> @@ -110,10 +122,10 @@ void cmdq_pkt_destroy(struct cmdq_pkt *pkt)
+>>  }
+>>  EXPORT_SYMBOL(cmdq_pkt_destroy);
+>>  
+>> -static int cmdq_pkt_append_command(struct cmdq_pkt *pkt, enum cmdq_code code,
+>> -				   u32 arg_a, u32 arg_b)
+>> +static int cmdq_pkt_append_command(struct cmdq_pkt *pkt,
+>> +				   struct cmdq_instruction inst)
+>>  {
+>> -	u64 *cmd_ptr;
+>> +	struct cmdq_instruction *cmd_ptr;
+>>  
+>>  	if (unlikely(pkt->cmd_buf_size + CMDQ_INST_SIZE > pkt->buf_size)) {
+>>  		/*
+>> @@ -129,8 +141,9 @@ static int cmdq_pkt_append_command(struct cmdq_pkt *pkt, enum cmdq_code code,
+>>  			__func__, (u32)pkt->buf_size);
+>>  		return -ENOMEM;
+>>  	}
+>> +
+>>  	cmd_ptr = pkt->va_base + pkt->cmd_buf_size;
+>> -	(*cmd_ptr) = (u64)((code << CMDQ_OP_CODE_SHIFT) | arg_a) << 32 | arg_b;
+>> +	*cmd_ptr = inst;
+>>  	pkt->cmd_buf_size += CMDQ_INST_SIZE;
+>>  
+>>  	return 0;
+>> @@ -138,21 +151,28 @@ static int cmdq_pkt_append_command(struct cmdq_pkt *pkt, enum cmdq_code code,
+>>  
+>>  int cmdq_pkt_write(struct cmdq_pkt *pkt, u8 subsys, u16 offset, u32 value)
+>>  {
+>> -	u32 arg_a = (offset & CMDQ_ARG_A_WRITE_MASK) |
+>> -		    (subsys << CMDQ_SUBSYS_SHIFT);
+>> +	struct cmdq_instruction inst;
+>>  
+>> -	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WRITE, arg_a, value);
+>> +	inst.op = CMDQ_CODE_WRITE;
+>> +	inst.value = value;
+>> +	inst.offset = offset;
+>> +	inst.subsys = subsys;
+>> +
+>> +	return cmdq_pkt_append_command(pkt, inst);
+>>  }
+>>  EXPORT_SYMBOL(cmdq_pkt_write);
+>>  
+>>  int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
+>>  			u16 offset, u32 value, u32 mask)
+>>  {
+>> -	u32 offset_mask = offset;
+>> +	struct cmdq_instruction inst = { {0} };
+>> +	u16 offset_mask = offset;
+>>  	int err;
+>>  
+>>  	if (mask != 0xffffffff) {
+>> -		err = cmdq_pkt_append_command(pkt, CMDQ_CODE_MASK, 0, ~mask);
+>> +		inst.op = CMDQ_CODE_MASK;
+>> +		inst.mask = ~mask;
+>> +		err = cmdq_pkt_append_command(pkt, inst);
+>>  		if (err < 0)
+>>  			return err;
+>>  
+>> @@ -166,45 +186,50 @@ EXPORT_SYMBOL(cmdq_pkt_write_mask);
+>>  
+>>  int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event)
+>>  {
+>> -	u32 arg_b;
+>> +	struct cmdq_instruction inst = { {0} };
+>>  
+>>  	if (event >= CMDQ_MAX_EVENT)
+>>  		return -EINVAL;
+>>  
+>> -	/*
+>> -	 * WFE arg_b
+>> -	 * bit 0-11: wait value
+>> -	 * bit 15: 1 - wait, 0 - no wait
+>> -	 * bit 16-27: update value
+>> -	 * bit 31: 1 - update, 0 - no update
+>> -	 */
+>> -	arg_b = CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | CMDQ_WFE_WAIT_VALUE;
+>> +	inst.op = CMDQ_CODE_WFE;
+>> +	inst.value = CMDQ_WFE_OPTION;
+>> +	inst.event = event;
+>>  
+>> -	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WFE, event, arg_b);
+>> +	return cmdq_pkt_append_command(pkt, inst);
+>>  }
+>>  EXPORT_SYMBOL(cmdq_pkt_wfe);
+>>  
+>>  int cmdq_pkt_clear_event(struct cmdq_pkt *pkt, u16 event)
+>>  {
+>> +	struct cmdq_instruction inst = { {0} };
+>> +
+>>  	if (event >= CMDQ_MAX_EVENT)
+>>  		return -EINVAL;
+>>  
+>> -	return cmdq_pkt_append_command(pkt, CMDQ_CODE_WFE, event,
+>> -				       CMDQ_WFE_UPDATE);
+>> +	inst.op = CMDQ_CODE_WFE;
+>> +	inst.value = CMDQ_WFE_UPDATE;
+>> +	inst.event = event;
+>> +
+>> +	return cmdq_pkt_append_command(pkt, inst);
+>>  }
+>>  EXPORT_SYMBOL(cmdq_pkt_clear_event);
+>>  
+>>  static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
+>>  {
+>> +	struct cmdq_instruction inst = { {0} };
+>>  	int err;
+>>  
+>>  	/* insert EOC and generate IRQ for each command iteration */
+>> -	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_EOC, 0, CMDQ_EOC_IRQ_EN);
+>> +	inst.op = CMDQ_CODE_EOC;
+>> +	inst.value = CMDQ_EOC_IRQ_EN;
+>> +	err = cmdq_pkt_append_command(pkt, inst);
+>>  	if (err < 0)
+>>  		return err;
+>>  
+>>  	/* JUMP to end */
+>> -	err = cmdq_pkt_append_command(pkt, CMDQ_CODE_JUMP, 0, CMDQ_JUMP_PASS);
+>> +	inst.op = CMDQ_CODE_JUMP;
+>> +	inst.value = CMDQ_JUMP_PASS;
+>> +	err = cmdq_pkt_append_command(pkt, inst);
+>>  
+>>  	return err;
+>>  }
+>> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+>> index e6f54ef6698b..678760548791 100644
+>> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
+>> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+>> @@ -20,6 +20,16 @@
+>>  #define CMDQ_WFE_WAIT			BIT(15)
+>>  #define CMDQ_WFE_WAIT_VALUE		0x1
+>>  
+>> +/*
+>> + * WFE arg_b
+>> + * bit 0-11: wait value
+>> + * bit 15: 1 - wait, 0 - no wait
+>> + * bit 16-27: update value
+>> + * bit 31: 1 - update, 0 - no update
+>> + */
+>> +#define CMDQ_WFE_OPTION			(CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | \
+>> +					CMDQ_WFE_WAIT_VALUE)
+>> +
+>>  /** cmdq event maximum */
+>>  #define CMDQ_MAX_EVENT			0x3ff
+>>  
 > 
-> Thierry's right; your DT data looks broken.  Unfortunately the IMX8M TRM
-> requires some sort of signup to download, so I can't easily read it, but
-> based on files like this:
-> 
-> https://eur01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgit.kernel.org%2Fpub%2Fscm%2Flinux%2Fkernel%2Fgit%2Ftorvalds%2Flinux.git%2Ftree%2Fdrivers%2Fclk%2Fimx%2Fclk-imx8qxp-lpcg.h&amp;data=02%7C01%7Cleonard.crestez%40nxp.com%7Cf0e68024888e4aed777e08d77e62c5df%7C686ea1d3bc2b4c6fa92cd99c5c301635%7C0%7C1%7C637116835018036168&amp;sdata=z70QUYwknXfvc4zhyOrT7dcLPq5eryv4U7HoGMzI4ZE%3D&amp;reserved=0
-> 
-> it looks like what should be in the DT instead is either a large set of
-> smaller register ranges, or a set of separate DT nodes/drivers: one per
-> peripheral LPCG instance.  That should avoid the overlapping memory range
-> issue.
-
-Yes, current imx8 clock DT bindings are definitely odd. I only objected 
-to the cleanup because it breaks boot.
-
-This series converts imx8 LPCG to use separate DT nodes for each 
-peripheral LPCG instance and makes other improvements, it's just been 
-stuck in review:
-
-https://patchwork.kernel.org/cover/11248249/
-
-Having a large number of clock-providing DT nodes is also odd but it 
-closely aligns with SOC hardware architecture. The clock gating bits 
-were deliberately split into many 64k areas so that access can be 
-controlled for each peripheral using very coarse-grained access control 
-methods.
-
-For example hypervisors can control guest access on page boundaries but 
-not to individual bits in a byte.
-
-This design makes it easy to securely grant control for a peripheral and 
-all of its clock bits to an M4 core or virtualization guest without 
-additional layers of software indirection.
-
---
-Regards,
-Leonard
 
 _______________________________________________
 Linux-mediatek mailing list
