@@ -2,23 +2,22 @@ Return-Path: <SRS0=NAie=2C=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-5.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C864AC43603
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2019 03:47:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D9188C04E30
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2019 03:47:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9CCC621655
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2019 03:47:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AF4EE214D8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2019 03:47:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Mdlpg4wN";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="kVTWHYIL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9CCC621655
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dvE5jF4k";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="fPAqKbxQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF4EE214D8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,60 +26,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FPHoyB7oSOsoBNlUh+A7+kWbEulp2LMVVsQJYrzE2qc=; b=Mdlpg4wNQTeGeb
-	lDbBOatj/07+f215o7oBEDWj5lcJ1xpxExVlA0jrz/tV4/sBBPeSu5RmUk3zcNNBR4Lj5ThwvbAF2
-	/5xA7RgifIfAVInHn+UnxhOjPLqO1tSaDsBDYsEO7OZn0WOWgcu4IYbeHAzBYn8rkzV3hbp9iidql
-	sMm4VYQ+TrD98CYFpVQgSoTfF8t+XH/fluv5cwWp7KD6VhxB1e0br02AmLFRRxdPloX5wGqz5g95g
-	qT9mj476QAhp6kyiqdNifdNber2MZnAMICAxn6ZVrs8Y5zKiK3HAAjRhyEg4A916mLBB2cmQUQdnI
-	NTewc+Nig0gjBy+o2k+g==;
+	List-Owner; bh=KjSWh4NdBOSn56FJSPZRKZhiP4+rF57GXdd72t949RA=; b=dvE5jF4khO4+4d
+	RV3mJm9aj9zwMWuptNtYyK73NzLRG41WucKr5do4xS5sMUh05bKLeBu3+nW8t1BvyqnlX7hH8jyVj
+	YS63mLaHhFtrsyG1PvxWpnNEZI40SGgvc3uAaQfx0Cl4NUahpFgFSC8r7p314vtrdyvTOcXVjxU8o
+	hFbRerdtYhuzugNZQyRZeIcoeMz56/dIWSkjcQgHLzhS01cljpZdraa910Z9eZyIQ3ue96AtNqeZw
+	1JcA7eLADAnz7w94OwU7HSxvfQqsTCjgkj+C+P2EYuf+z5dQeoTIqhXqK9tQ6/pzdOIllM2LopqTY
+	Th7+cx8ololLUbwkXnmQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ifFRg-0001Li-1T; Thu, 12 Dec 2019 03:47:20 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1ifFRh-0001Mu-61; Thu, 12 Dec 2019 03:47:21 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ifFQH-0008H1-Tm
- for linux-mediatek@lists.infradead.org; Thu, 12 Dec 2019 03:45:55 +0000
-Received: by mail-pg1-x543.google.com with SMTP id b137so415104pga.6
- for <linux-mediatek@lists.infradead.org>; Wed, 11 Dec 2019 19:45:53 -0800 (PST)
+ id 1ifFRF-0000ud-6j
+ for linux-mediatek@lists.infradead.org; Thu, 12 Dec 2019 03:46:55 +0000
+Received: by mail-pg1-x541.google.com with SMTP id r11so430554pgf.1
+ for <linux-mediatek@lists.infradead.org>; Wed, 11 Dec 2019 19:46:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=07OMjO7lmkGh9f8g4geNEJnFp2GEjPLld3FY42QsWmc=;
- b=kVTWHYIL6XGFhib+bfcDZWj9aQTUa0qUNex7+FONF0PiBz/uh80+2A2951UAsQpB79
- YHq7ZHeWYfOI1dUGnwiwL7ZiUkNE765/TYymlYSwW5K/xKVEmVu9rfIQHWQbsZZDvO1R
- jkneKok0uYxJ3P79Pm4mpdN9aaaterhJKrjszPEr0cPuEZE8PEw57pDsqczlSHKwt9dL
- DpZ/ygKS1kC6pjdhFdqaWtFsu9C6ZULC12xNbOtM1b3Eld508H2zoWcFJkfab2zXQ0Uy
- uVDv4O1ShWzyKgzpUZt3YDlGXGe3P159yjdNiiM8UQCCwAQf0vh6NVIMNcjSOZ8+gmMR
- EHhQ==
+ bh=VxRH7y7mD8w9ZMZtzGYEhqBg5gtMnJozuYmxD6CW22s=;
+ b=fPAqKbxQ0dJtthqA7ldLeEe0ZalIWx+lVwE7yf7MPF8PK3PFVU4Yjpv/mhcxq7vOUI
+ DEa2ZKPGQTT4hPbXw6VztGvV7h7FKAMXjZy+759xiWlozmvUrK7OwR2Lb7y/6gU0oqdV
+ WodjjXnQTedSQQB1Zhz3fmpvEJ7Oa3A+w428wl0uWduvlTWCfgKEtKtC9DU+q9Arudpy
+ yYzTRRe7UMnFYvsOlPyUUqKU76HWn16VDe5fe/2TltoQaKa4FT4oC7GxtAPSxwC9mih7
+ PAUBB5hIuNlQT3FP0AqXO7sDG/zedVyAjoSFRBl6H9pZHYmk42ax3UY6qoBIFffiMhYn
+ 7a9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=07OMjO7lmkGh9f8g4geNEJnFp2GEjPLld3FY42QsWmc=;
- b=SoT+GgMGLMIQmIkRo30Svz+d2xv3dLa0uNmR4O/iastSZI4koGDFKzYMU3UNCvJNH9
- o6b8/TuEBOsQVl94vw8lj4GHtO29sfstEDTWuY4YBMhJN4HBA0iTF0OS+MzXmqgshcqb
- eHoPG0rNJp4gnEcjlsyyRJPTz7BkioRjoRen0idu7LpT7cAMW6kQ1aTyL/FT27gsbYK0
- v7GmEM03m/LpVtOhy1/7v3nePTP1mpPyZ8XlafSrQW9iqffZMRTT1VqqHboCt/XwJ4A9
- XdxdyJjGhjBivnpb2klUebhklMt92/xfyFmSAore4zaaPy/RfFFDww7b1fUg2htsKzJY
- OJVQ==
-X-Gm-Message-State: APjAAAWoGZ+dHx5HnZd8AyPWF4y5HPS5oUAPt7tsRK9I9IpJ3N6Rd9en
- YBjk7VNEfGQsus7iA15Jmug=
-X-Google-Smtp-Source: APXvYqznVMLWoXaG1KfzuljASoCWife9zOWrqBlls/IfY9KLjzX12fazK1jnaNL/zOx/Z0m9Z3PhjA==
-X-Received: by 2002:a65:6249:: with SMTP id q9mr8479861pgv.340.1576122352840; 
- Wed, 11 Dec 2019 19:45:52 -0800 (PST)
+ bh=VxRH7y7mD8w9ZMZtzGYEhqBg5gtMnJozuYmxD6CW22s=;
+ b=Zgb3WzRjVYQ6BfuIs2uE1T+Ol+QXsDQyNPRMPOl71Br+xYUCd4SYqAtk48L6nPHNNG
+ dDKtV+YAC/X4ZJiMrV564I5LwLNNlHDFDd84EtIaHROFS05B1sezvklABsmwrYBvxLt9
+ 7N+tggK1ebYwB5Ess9GmzFMLGFioXc9eexynZ09OGAQcLN6FQQG5iVPxeQXDKAYu4Qiq
+ iM7nv1urRPb3MLz0MNb9ntGmHPjB1t5tOJ335sX/M9P9yjfGFIbUlupsWsKFlaQpnmso
+ +KA//m02UT7wY92l95laVVD32Rr9RWTjCuj8upgeEOIMC3bHleeQOcY8hOh2FhIF0myQ
+ U1CA==
+X-Gm-Message-State: APjAAAXxsvl2/tq8w1GI4V45vTuxwzm2puLxt1mpUZR4r+DJpYQyDrnW
+ 9MGwaqsW1Mr/UZpQAPIaiWQ=
+X-Google-Smtp-Source: APXvYqwI7ntwHsEHTnB33WT/ymjEuB/A8th9gpJMZ7lWikARhC2o8fe9tNDXiIHZRqRQ28bySBi+hA==
+X-Received: by 2002:a63:d358:: with SMTP id u24mr8241064pgi.218.1576122411557; 
+ Wed, 11 Dec 2019 19:46:51 -0800 (PST)
 Received: from [192.168.1.3] (ip68-111-84-250.oc.oc.cox.net. [68.111.84.250])
  by smtp.gmail.com with ESMTPSA id
- c18sm4441414pgj.24.2019.12.11.19.45.51
+ p21sm4718312pfn.103.2019.12.11.19.46.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 11 Dec 2019 19:45:52 -0800 (PST)
-Subject: Re: [PATCH net-next 2/6] net: dsa: mt7530: Extend device data ready
- for adding a new hardware
+ Wed, 11 Dec 2019 19:46:51 -0800 (PST)
+Subject: Re: [PATCH net-next 3/6] dt-bindings: net: dsa: add new MT7531
+ binding to support MT7531
 To: Landen Chao <landen.chao@mediatek.com>, andrew@lunn.ch,
  vivien.didelot@savoirfairelinux.com, matthias.bgg@gmail.com,
  robh+dt@kernel.org, mark.rutland@arm.com
 References: <cover.1575914275.git.landen.chao@mediatek.com>
- <2d546d6bb15ff8b4b75af2220e20db4e634f4145.1575914275.git.landen.chao@mediatek.com>
+ <1c382fd916b66bfe3ce8ef18c12f954dbcbddbbc.1575914275.git.landen.chao@mediatek.com>
 From: Florian Fainelli <f.fainelli@gmail.com>
 Autocrypt: addr=f.fainelli@gmail.com; keydata=
  mQGiBEjPuBIRBACW9MxSJU9fvEOCTnRNqG/13rAGsj+vJqontvoDSNxRgmafP8d3nesnqPyR
@@ -136,16 +135,17 @@ Autocrypt: addr=f.fainelli@gmail.com; keydata=
  caxTGgc5zzQHeX67eMzrGomG3ZnIxmd1sAbgvJUDaD2GrYlulfwGWwWyTNbWRvMighVdPkSF
  6XFgQaosWxkV0OELLy2N485YrTr2Uq64VKyxpncLh50e2RnyAJ9qfUATKC9NgZjRvBztfqy4
  a9BQwACgnzGuH1BVeT2J0Ra+ZYgkx7DaPR0=
-Message-ID: <d77e3109-e022-3581-2ca8-02889c5ddbf4@gmail.com>
-Date: Wed, 11 Dec 2019 19:45:51 -0800
+Message-ID: <8afaf60d-bbbd-2931-3992-69511fb1e839@gmail.com>
+Date: Wed, 11 Dec 2019 19:46:49 -0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
  Thunderbird/68.3.0
 MIME-Version: 1.0
-In-Reply-To: <2d546d6bb15ff8b4b75af2220e20db4e634f4145.1575914275.git.landen.chao@mediatek.com>
+In-Reply-To: <1c382fd916b66bfe3ce8ef18c12f954dbcbddbbc.1575914275.git.landen.chao@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191211_194553_995943_12448E24 
-X-CRM114-Status: GOOD (  17.09  )
+X-CRM114-CacheID: sfid-20191211_194653_293535_E133A7E7 
+X-CRM114-Status: UNSURE (   7.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -168,66 +168,13 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 12/10/2019 12:14 AM, Landen Chao wrote:
-> Add a structure holding required operations for each device such as device
-> initialization, PHY port read or write, a checker whether PHY interface is
-> supported on a certain port, MAC port setup for either bus pad or a
-> specific PHY interface.
+> Add devicetree binding to support the compatible mt7531 switch as used
+> in the MediaTek MT7531 switch.
 > 
-> The patch is done for ready adding a new hardware MT7531.
-> 
-> Signed-off-by: Landen Chao <landen.chao@mediatek.com>
 > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
-[snip]
+> Signed-off-by: Landen Chao <landen.chao@mediatek.com>
 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index ed1ec10ec62b..9a648d1f5d09 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -425,7 +425,7 @@ mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
->  }
->  
->  static int
-> -mt7530_pad_clk_setup(struct dsa_switch *ds, int mode)
-> +mt7530_pad_clk_setup(struct dsa_switch *ds, phy_interface_t mode)
-
-Here you pass a phy_interface_t argument but not in mt7632_pad_clk_setup().
-
-> +static int
-> +mt7530_pad_setup(struct dsa_switch *ds, const struct phylink_link_state *state)
-> +{
-> +	struct mt7530_priv *priv = ds->priv;
-> +
-> +	/* Setup TX circuit incluing relevant PAD and driving */
-> +	mt7530_pad_clk_setup(ds, state->interface);
-> +
-> +	if (priv->id == ID_MT7530) {
-> +		/* Setup RX circuit, relevant PAD and driving on the
-> +		 * host which must be placed after the setup on the
-> +		 * device side is all finished.
-> +		 */
-> +		mt7623_pad_clk_setup(ds);
-
-Would not it make sense to pass it down here as well for consistency?
-
-[snip]
-
-> @@ -1660,8 +1768,19 @@ mt7530_probe(struct mdio_device *mdiodev)
->  	/* Get the hardware identifier from the devicetree node.
->  	 * We will need it for some of the clock and regulator setup.
->  	 */
-> -	priv->id = (unsigned int)(unsigned long)
-> -		of_device_get_match_data(&mdiodev->dev);
-> +	priv->info = of_device_get_match_data(&mdiodev->dev);
-> +	if (!priv->info)
-> +		return -EINVAL;
-> +
-> +	/* Sanity check if these required device operstaions are filled
-> +	 * properly.
-
-Typo: operations.
-
-Other than that, this looks okay to me.
+With the comments from Andrew fixed, this looks good to me.
 -- 
 Florian
 
