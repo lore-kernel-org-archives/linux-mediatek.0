@@ -2,78 +2,83 @@ Return-Path: <SRS0=NAie=2C=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8F73BC43603
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2019 09:58:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6C981C43603
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2019 10:31:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 203E6206DA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2019 09:58:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3DAC1206DA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2019 10:31:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HSSMA7v+";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jq1MoFnX"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 203E6206DA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XvZejWfL";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="fZDuU0N+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3DAC1206DA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=axG/SmeFrIuEbPkZMT/Los5y7So+NGvpjrSMgSCwymc=; b=HSSMA7v+vH1l+6
-	DEfenKZHcjALyX1OiPgTHxwZ6zNnJHzRG7GMJ4RYTF0QH/7mU2PGXvzIs5cXQp7nAGCpDfLS5Uxj8
-	RfGnjQxaBF0saix3COBGjXJBu+xA4XVFPWY4cg3NygUfAnr0pNrGJHTEysmgpNSpi2UF6F9iN4RgK
-	fLr4joEVSwbW3dmcAfseWs0iUxeTu3AZuJoKqqz9ETVVy/HsZD1BwCpVR5UUnGQHeLiKx4INSbnEL
-	5JgVTwnlygYawE1FVGgMIwiXrOpmYpU+g3vwwwteI/ihxzRcOTfB/uppTHx0ZwLSrtx3UG3o+mWMh
-	/3RV0WYicXdxM0orgXsg==;
+	List-Owner; bh=kYmvC62t+Yrptbp2KERusRgNjz1DYqHcb5ANyRcDPnk=; b=XvZejWfLFFWkm6
+	TnfKp7FyzBDduQYO5Le7CfDC+dvi3zGEPHR3gWZWiLg5oWYcZ5HJdPB/gYHCkI4/B8fnc4PSNUPXY
+	Sn1u3SL+b6nnmoVtV2VrSQqU4pIuWUv2jICuVe+QqRjdwG0+aQB9vQMyFh0eDcruOZIhd+6UbCRkR
+	M8KLgCsgTGjpTl1NuMF6ot6CRoegGAP3JHZ9HZEjgIgpIKqpSr99nd/r9HYkmg9f/6QPdsCFHwqmr
+	V7XW7STqz+u5qQ8qNuBKY9IFrJoKXDN9s0VxFOW7vMPN8JV5iDnVKz/VWpwBoJnA/S9hRmk9quKS+
+	bhtqhJaezyqmjN1/a4Gw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ifLEe-0000PS-6Q; Thu, 12 Dec 2019 09:58:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ifLke-0006pr-ON; Thu, 12 Dec 2019 10:31:20 +0000
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ifLEP-0000BA-FU; Thu, 12 Dec 2019 09:58:02 +0000
-X-UUID: 0002e869d2b64c58a74eb2c293629ba9-20191212
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=jjUFyhr70q5Qwl+cMOFBMZpPatFW/kw0aENfH71RXPE=; 
- b=jq1MoFnXSMWZvmV0J7XARns1yvG2bHjCQbtyK65p/f/bLDgB/PvOdmWrmEMcXF5rTX9bvglZotXQa5HwIpiqnc+QdQsXWCsRVFfcnnM/cVX6QsHaS1Lq6YfkMfQSvyrBVim5vxfXraDAoabZFjvpD1fe5Qm152QqcUSnzzDZzuQ=;
-X-UUID: 0002e869d2b64c58a74eb2c293629ba9-20191212
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <bibby.hsieh@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 392406774; Thu, 12 Dec 2019 01:57:52 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 12 Dec 2019 01:48:06 -0800
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 12 Dec 2019 17:47:29 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Thu, 12 Dec 2019 17:47:46 +0800
-Message-ID: <1576144069.16442.3.camel@mtksdaap41>
-Subject: Re: [PATCH v17 0/6] support gce on mt8183 platform
-From: Bibby Hsieh <bibby.hsieh@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Jassi Brar
- <jassisinghbrar@gmail.com>
-Date: Thu, 12 Dec 2019 17:47:49 +0800
-In-Reply-To: <cb5cd58e-dc62-ae30-9ddd-7c2b95fde3e3@gmail.com>
-References: <20191121015410.18852-1-bibby.hsieh@mediatek.com>
- <CANMq1KCTJQL+GFqo8HYM8cEpzXJmebJ=9ju4CzHLwyuQfbZEAA@mail.gmail.com>
- <cb5cd58e-dc62-ae30-9ddd-7c2b95fde3e3@gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1ifLkb-0006n7-CD
+ for linux-mediatek@lists.infradead.org; Thu, 12 Dec 2019 10:31:18 +0000
+Received: by mail-lj1-x243.google.com with SMTP id h23so1674538ljc.8
+ for <linux-mediatek@lists.infradead.org>; Thu, 12 Dec 2019 02:31:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=f/qSsW2S4gXfFEnforjNWu8lIQGXL5dRAyt8kzqxpuE=;
+ b=fZDuU0N+AhTbnEh57bnDJj1EoCK+XXOdr6IRYznjCaZ2psiaZrAXliK0OpPjZIvzbF
+ J+bGHQCln9OElsWj5qV/aJmku0MM8+XM5E1VOo2lxS8DAKTrACMxIs8ly2lo3lJMjcGc
+ yo36UrIw5c75fA5bjgLBm5l9+rj3f5JY37InHawthBG412gcb2xpPSWo/i1ebUH3/xqO
+ iIvPB9blatrrjcfYXaqOd3ODAcYy/fbPaETF0PDm8BDsZLug0WpCfUiszAwRaO5Qgapk
+ oGVZxlK0RdrD3aAxV9d6zrPmFqNrTcAAJKIgHtP2y99az+o0mkkeGORazWBi+vTKRuxW
+ CyIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=f/qSsW2S4gXfFEnforjNWu8lIQGXL5dRAyt8kzqxpuE=;
+ b=c0hFuuDD1xBf8lWrE1l36wMcd7zo450u7o1Bgk2gFLP8oegEBbqtSK2VnonOdfFDCB
+ aVY1OXAl9ZsOZaEgjrGTRdQwbIKXTyEZCEWcpUIYz36quBcPzblta63UrXmbi5LCevst
+ OFT1ORwUdE9pgzx67b49Fvsh444aWSXoOPearzwuZKn2hR7PguPuJlCOpIUdoLm0aGTv
+ AnD+zFkIt7Z0Eas1gHeEbcDW0ZkPuKHUQv99V0Nik2GnukEM3YC/RCh/+a8HD4znBlVf
+ MLDLBe/rX0oWdIx/Q9cpDeRRD3EXMKjY72jiqUwPbssd3SKpeb969rVw2wNDZlqqu+k2
+ Y1dg==
+X-Gm-Message-State: APjAAAVPzlnP/vg4M1NlbCfcYR4g3EOp67puwQaPQU6saPoAkWM9vx06
+ vQVsWpQIBx0nJz5B06r3G5i2qBJdZCqF5IAYO3hkGg==
+X-Google-Smtp-Source: APXvYqwfr5GivrQVvdc97Yn6qfrHgDDWWu2K/jPDNAvjTKnSaqEL3i8x5+An5WIHWQfkD9wCG6V18D2mfqh9hPgEK8s=
+X-Received: by 2002:a2e:9ec4:: with SMTP id h4mr5428950ljk.77.1576146674969;
+ Thu, 12 Dec 2019 02:31:14 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <cover.1574871463.git.nishadkamdar@gmail.com>
+ <2994fb2f3375790e832396cdbb0a279dc8c8839f.1574871463.git.nishadkamdar@gmail.com>
+In-Reply-To: <2994fb2f3375790e832396cdbb0a279dc8c8839f.1574871463.git.nishadkamdar@gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 12 Dec 2019 11:31:03 +0100
+Message-ID: <CACRpkdbgmY7ozr3auxQqB6vUvWAj+21-3aypGRG43+94W75wWQ@mail.gmail.com>
+Subject: Re: [PATCH 2/5] pinctrl: mediatek: Use the correct style for SPDX
+ License Identifier
+To: Nishad Kamdar <nishadkamdar@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191212_015801_548544_22128ADC 
-X-CRM114-Status: GOOD (  15.61  )
+X-CRM114-CacheID: sfid-20191212_023117_416268_C5F0E244 
+X-CRM114-Status: UNSURE (   7.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,87 +90,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- lkml <linux-kernel@vger.kernel.org>,
- Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, CK HU <ck.hu@mediatek.com>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Cc: Alexandre Torgue <alexandre.torgue@st.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Kevin Hilman <khilman@baylibre.com>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Sean Wang <sean.wang@kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ linux-stm32@st-md-mailman.stormreply.com,
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ Joe Perches <joe@perches.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>,
+ =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2019-12-12 at 08:49 +0100, Matthias Brugger wrote:
-> 
-> On 11/12/2019 23:09, Nicolas Boichat wrote:
-> > Hi Matthias,
-> > 
-> > Quick question, any reason you picked only patches 2+3+6 from this
-> > series, and not the 3 others?
-> > 
-> 
-> The quick answer, time :)
-> The longer one:
-> 1/6 went already in through fixes for v5.4
-> 4/6 it touches mailbox code, so we will need a acked-by from Jassi
+On Wed, Nov 27, 2019 at 5:42 PM Nishad Kamdar <nishadkamdar@gmail.com> wrote:
 
-Hi, Jassi,
+> This patch corrects the SPDX License Identifier style in
+> header file related mediatek mt2712 pinctrl driver.
+> For C header files Documentation/process/license-rules.rst
+> mandates C-like comments (opposed to C source files where
+> C++ style should be used).
+>
+> Changes made by using a script provided by Joe Perches here:
+> https://lkml.org/lkml/2019/2/7/46.
+>
+> Suggested-by: Joe Perches <joe@perches.com>
+> Signed-off-by: Nishad Kamdar <nishadkamdar@gmail.com>
 
-Sorry for the mailing losing.
-Could you help me to review [PATCH 4/6 soc: mediatek: cmdq: add polling
-function] if you are free?
+Patch applied.
 
-Bibby
-
-> 5/6 time, I want to have a better look onto this to see if that makes sense (I
-> slightly remember some old comment I had on this)
-> 
-> Regards,
-> Matthias
-> 
-> > Thanks.
-> > 
-> > On Wed, Nov 20, 2019 at 5:54 PM Bibby Hsieh <bibby.hsieh@mediatek.com> wrote:
-> >>
-> >> Changes since v16:
-> >>  - naming the poll mask enable bit
-> >>  - add a patch to fiup the input order of write api
-> >>
-> >> Changes since v15:
-> >>  - rebase onto 5.4-rc1
-> >>  - rollback the v14 change
-> >>  - add a patch to fixup the combination of return value
-> >>
-> >> Changes since v14:
-> >>  - change input argument as pointer in append_commend()
-> >>
-> >> Changes since v13:
-> >>  - separate poll function as poll w/ & w/o mask function
-> >>  - directly pass inst into append_command function instead
-> >>    of returns a pointer
-> >>  - fixup coding style
-> >>  - rebase onto 5.3-rc1
-> >>
-> >> [... snip ...]
-> >>
-> >> Bibby Hsieh (6):
-> >>   soc: mediatek: cmdq: fixup wrong input order of write api
-> >>   soc: mediatek: cmdq: remove OR opertaion from err return
-> >>   soc: mediatek: cmdq: define the instruction struct
-> >>   soc: mediatek: cmdq: add polling function
-> >>   soc: mediatek: cmdq: add cmdq_dev_get_client_reg function
-> >>   arm64: dts: add gce node for mt8183
-> >>
-> >>  arch/arm64/boot/dts/mediatek/mt8183.dtsi |  10 ++
-> >>  drivers/soc/mediatek/mtk-cmdq-helper.c   | 147 +++++++++++++++++++----
-> >>  include/linux/mailbox/mtk-cmdq-mailbox.h |  11 ++
-> >>  include/linux/soc/mediatek/mtk-cmdq.h    |  53 ++++++++
-> >>  4 files changed, 195 insertions(+), 26 deletions(-)
-> >>
-> >> --
-> >> 2.18.0
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-mediatek mailing list
