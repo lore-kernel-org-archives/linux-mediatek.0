@@ -2,22 +2,23 @@ Return-Path: <SRS0=NAie=2C=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A90E1C43603
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2019 14:04:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 63CC7C43603
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2019 14:14:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 73FC021655
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2019 14:04:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3588F2173E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Dec 2019 14:14:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YIWgJfm8";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="XiZKyVtF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 73FC021655
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tmS/46sq";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=poorly.run header.i=@poorly.run header.b="ZEpemDip"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3588F2173E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=poorly.run
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -25,65 +26,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yV1WGevKCdyJwhtRJWvqhxS92RmbkfrZD5Z8/2hbFrs=; b=YIWgJfm8Cghph/
-	UNVhol9vRqGYiOdyd9n53pUP/2DFb+OsAJ84jPVBjQms2W6kmGdli5reJ25cs81WvhELjJ/xXSMjJ
-	CRi6xXjGvqS5EecOjiIrDemUTJvuHQtoZ3jktI0Meyc1a6ROWBpKGQhbi9a/hZkhlA3xaghm1hqau
-	CthyFvPiu9XRH71y0inCkMQhxvnIPsOhvqZvOm/VpHSJyMnDstb2+uvUi94DvxLgSIHXpfvCajqKt
-	GWCXdNch9weU0uXai1wT7pVYq+t9M9aG8ghUxYnckb9l9AFOjWADoL+uPwdQXsD8thGAtPADgztgi
-	qdqMunpLMfW9oXvuElWw==;
+	List-Owner; bh=rstKs+6hxGgRmEaOsV/pzfRA91Bzvfvkwjp2gxHS9ZY=; b=tmS/46sqgyalza
+	rC5xnBr9m+NBWlthWa+3BnZjmziTzSuO7s4KYcvAvWYG5Ptg+MfPOD9qJo670Y0Hd7+crC2Nlav/C
+	RuIm+YlFh8q6atF3vNGMjR89OdME2FcptJQbOllR+twxGHlu0NHCr3CkAl7htC290jKFGSMEsMdOB
+	yL4VjDSUxBptAt5gFEsUEc5RAA0XImtaRODDX4t5w2hIIwTPTPD/bl1PUglz2MwcIBB6LS5mbxYHZ
+	O4Hu/IAgI72JsK1CIIgasRR0wsK+hs82l94f39xHdwFavhBMLiWBvgv6fbLYrEKKSTd55q17oeYB9
+	07L5J+fwL75ctprWi/Hg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ifP4i-0000OB-RM; Thu, 12 Dec 2019 14:04:16 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1ifPEg-0004eT-TV; Thu, 12 Dec 2019 14:14:34 +0000
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ifP4X-0000Eg-C2
- for linux-mediatek@lists.infradead.org; Thu, 12 Dec 2019 14:04:07 +0000
-Received: by mail-wr1-x444.google.com with SMTP id q10so2827054wrm.11
- for <linux-mediatek@lists.infradead.org>; Thu, 12 Dec 2019 06:03:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ id 1ifPEe-0004e1-3l
+ for linux-mediatek@lists.infradead.org; Thu, 12 Dec 2019 14:14:33 +0000
+Received: by mail-io1-xd41.google.com with SMTP id x1so2924302iop.7
+ for <linux-mediatek@lists.infradead.org>; Thu, 12 Dec 2019 06:14:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=poorly.run; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=YadRPUKRq+F+OfrkUFp7sfL3GGaSi5RtCx1mrcXaajw=;
- b=XiZKyVtF24JXNcMYL8Xwe6LFXRC5rGLAOXIUebbHSaeHrG07WKUNr8RJwQ823LolID
- XnFR2jJK+OvfWeKwOzAJUnPI+UDjOIOAgaUxlmeNOgEYTjulFbraIKmKbxd3ld4BJepg
- G8B4irn4mFBPM4Zu1GzyaWBuarsTxkULoMSdz25SJyyVexc+thf8CLbZtfVE9FbRTaOh
- 07zSU07GZuRh33XLh0EaBWoqfCLw6SwC7WrBpEUnaHaZ6x4A62aUKnANPqKliM4Y0vez
- uxK2fzumLw0PuinGG6OouRcXDf86rYM3J9sV+PomXgyY3qXZ+pLRC39ja+f/oDQUrtUn
- HCsg==
+ :cc; bh=rYO0vtrh5ndy7gwZikU1oH7JLP2fHnRpDb1aMOPMlmg=;
+ b=ZEpemDipLJFLngdu5DRHLK9+G9LT0ArmVRxkc8wGxIJnqkil2etBm4qSp+IMEctcSB
+ OaorxX5ZkSpoAZAOyvdKfot1SClAuqc5sA1E179IY2tokIY8etLGQ1V5l4ZhuXNJJm/4
+ x6IRDfrQ977wlrNNXnTBZrDV7TgagxbLLav5lYzy1dl2N/pjWuNkYxf1v27pDbQ6tyce
+ n9zaJ+LgPuJ2H69BsPTLviGI7wdCrYaCVRSkFz8RPRGsGZZDxAixGKOt1caM6QhqC3G1
+ QegodW0hqpFnlRN2EmipG2w/5jSb7CygatS9gavL1rORWt3K7EZGGYkkyNtIXvNQcVGF
+ PDAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=YadRPUKRq+F+OfrkUFp7sfL3GGaSi5RtCx1mrcXaajw=;
- b=L2QMXZo1ql2zNHWVZD9gY8FXyqtPx38EcZzc2bUORmlZCOF80lb5Kd8RWxz3lRF9S+
- kw2GgKAYprypQbEew68v5I2YroIADIciVfpYj4CiEK4ZODDxslmJAns5zztE8aOhMChE
- YHdEs85d3gLX6Y6PThE6WFvhSMG/MSfwm2uUeuet2MomGqurd3jb/PWcc95asXqWUlMN
- m3QPilRKXt0OBp1bwD3vAeeCk0E9wte0p6tbQLhgym5xn00A7NPAq8s/hFxnE4Z6FNbS
- KTmEIiK3csEaQzJxq85kyqIE7dpj44ATBoZX3UidTl73BsYMX41/MF9WvHTeTOaHv356
- Hhog==
-X-Gm-Message-State: APjAAAXB3znuUZYD7U1X9pg6rMzTrL36/Ur7oDR4T2R/jIrXbE6On0bb
- RR1Jz3jPiCNN3SnL2cw5Hk27tRcGY45jtpxuOQaAFA==
-X-Google-Smtp-Source: APXvYqyP/fsTNrCsT+L04hV7mtxjhyRS7l6whdWu7iB4pHI+wGkJkmQ7EMGzQOTq1HesEWkup/WBxhYzqcz5ap1GBSE=
-X-Received: by 2002:a5d:6652:: with SMTP id f18mr6737640wrw.246.1576159437310; 
- Thu, 12 Dec 2019 06:03:57 -0800 (PST)
+ bh=rYO0vtrh5ndy7gwZikU1oH7JLP2fHnRpDb1aMOPMlmg=;
+ b=tifmldMLIVBaqetAj4ozHqGcny+P1cski3MIvwXjzpiLBjWYtxZoFm2nhdJmMUj3Eb
+ HphR+f56XNNAm5tx4J5po2ZRRJmxV768cQitwacZlA2OnsPiyB/O3QIzxFCqu3NMi9Gk
+ cBkKBOPawtDtmVltJ4cOzumQkx3I+e8qVKBIpsjcPILGDZw2ygF8U/hptQKNukMK84WK
+ 3Kk4kEUZIaEKT3Ti+jgI7YMMUeFiQiDJE0svxM2PvLikjSH4On+v6sjQI1GdTCPn5vgD
+ EkIimI11K1DzaN7pIroyDiOINjEiahQopScqOVI470xsJFQ0sbC8J154ntBZLDRM5Yc9
+ iX+A==
+X-Gm-Message-State: APjAAAU7rR0ncH4C/XA3RpmS9kEq8HQntmQdW5ofEVPJmHpj86CuLQ8F
+ EeLubhbI7fwJ4mnB8ijoaWoS/i//X/784NlWAogT1g==
+X-Google-Smtp-Source: APXvYqwXu9iyecqx40na9enDvYofmCWOETmlMVhDGZVixaQ93xIQYvWAz1tw1Gs5v2KKKODm4Ff9b32roWCcC4rYKpM=
+X-Received: by 2002:a6b:bd06:: with SMTP id n6mr3199167iof.165.1576160070755; 
+ Thu, 12 Dec 2019 06:14:30 -0800 (PST)
 MIME-Version: 1.0
-References: <1574864578-467-1-git-send-email-neal.liu@mediatek.com>
- <1574864578-467-4-git-send-email-neal.liu@mediatek.com>
- <CADnJP=uhD=J2NrpSwiX8oCTd-u_q05=HhsAV-ErCsXNDwVS0rA@mail.gmail.com>
- <1575027046.24848.4.camel@mtkswgap22>
- <CAKv+Gu_um7eRYXbieW7ogDX5mmZaxP7JQBJM9CajK+6CsO5RgQ@mail.gmail.com>
- <20191202191146.79e6368c@why> <299029b0-0689-c2c4-4656-36ced31ed513@gmail.com>
- <b7043e932211911a81383274e0cc983d@www.loen.fr>
- <1576127609.27185.8.camel@mtkswgap22>
- <a5982b8ed10440eef14c04df6e6060b6@www.loen.fr>
-In-Reply-To: <a5982b8ed10440eef14c04df6e6060b6@www.loen.fr>
-From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Date: Thu, 12 Dec 2019 15:03:42 +0100
-Message-ID: <CAKv+Gu9YhkzpKbrxa=xDOkS6=kZSMaidor_4DqGY6f1M0tO7kQ@mail.gmail.com>
-Subject: Re: [PATCH v5 3/3] hwrng: add mtk-sec-rng driver
-To: Marc Zyngier <maz@kernel.org>
+References: <20191211154901.176256-1-markyacoub@google.com>
+ <1576125900.29693.0.camel@mtksdaap41>
+In-Reply-To: <1576125900.29693.0.camel@mtksdaap41>
+From: Sean Paul <sean@poorly.run>
+Date: Thu, 12 Dec 2019 09:13:55 -0500
+Message-ID: <CAMavQKKOtYKVnCs3RCi3iYiX-2rLHoaDBTsEHyQmvWGoYj4M0g@mail.gmail.com>
+Subject: Re: [PATCH 1/2] Return from mtk_ovl_layer_config after
+ mtk_ovl_layer_off
+To: CK Hu <ck.hu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191212_060405_416832_92950873 
-X-CRM114-Status: GOOD (  28.42  )
+X-CRM114-CacheID: sfid-20191212_061432_218923_CE9AFA54 
+X-CRM114-Status: GOOD (  18.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,143 +90,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Herbert Xu <herbert@gondor.apana.org.au>, Pawel Moll <pawel.moll@arm.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Sean Wang <sean.wang@kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- wsd_upstream <wsd_upstream@mediatek.com>,
- =?UTF-8?B?Q3J5c3RhbCBHdW8gKOmDreaZtik=?= <crystal.guo@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, Neal Liu <neal.liu@mediatek.com>,
- "open list:HARDWARE RANDOM NUMBER GENERATOR CORE"
- <linux-crypto@vger.kernel.org>, Matt Mackall <mpm@selenic.com>,
+Cc: Daniele Castagna <dcastagna@chromium.org>, David Airlie <airlied@linux.ie>,
+ dri-devel <dri-devel@lists.freedesktop.org>, Sean Paul <seanpaul@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Will Deacon <will@kernel.org>, Lars Persson <lists@bofh.nu>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ Mark Yacoub <markyacoub@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 12 Dec 2019 at 12:45, Marc Zyngier <maz@kernel.org> wrote:
+On Wed, Dec 11, 2019 at 11:45 PM CK Hu <ck.hu@mediatek.com> wrote:
 >
-> On 2019-12-12 05:13, Neal Liu wrote:
-> > On Tue, 2019-12-03 at 11:17 +0000, Marc Zyngier wrote:
-> >> On 2019-12-03 04:16, Florian Fainelli wrote:
-> >> > On 12/2/2019 11:11 AM, Marc Zyngier wrote:
-> >> >> On Mon, 2 Dec 2019 16:12:09 +0000
-> >> >> Ard Biesheuvel <ard.biesheuvel@linaro.org> wrote:
-> >> >>
-> >> >>> (adding some more arm64 folks)
-> >> >>>
-> >> >>> On Fri, 29 Nov 2019 at 11:30, Neal Liu <neal.liu@mediatek.com>
-> >> >>> wrote:
-> >> >>>>
-> >> >>>> On Fri, 2019-11-29 at 18:02 +0800, Lars Persson wrote:
-> >> >>>>> Hi Neal,
-> >> >>>>>
-> >> >>>>> On Wed, Nov 27, 2019 at 3:23 PM Neal Liu
-> >> <neal.liu@mediatek.com>
-> >> >>>>> wrote:
-> >> >>>>>>
-> >> >>>>>> For MediaTek SoCs on ARMv8 with TrustZone enabled,
-> >> peripherals
-> >> >>>>>> like
-> >> >>>>>> entropy sources is not accessible from normal world (linux)
-> >> and
-> >> >>>>>> rather accessible from secure world (ATF/TEE) only. This
-> >> driver
-> >> >>>>>> aims
-> >> >>>>>> to provide a generic interface to ATF rng service.
-> >> >>>>>>
-> >> >>>>>
-> >> >>>>> I am working on several SoCs that also will need this kind of
-> >> >>>>> driver
-> >> >>>>> to get entropy from Arm trusted firmware.
-> >> >>>>> If you intend to make this a generic interface, please clean
-> >> up
-> >> >>>>> the
-> >> >>>>> references to MediaTek and give it a more generic name. For
-> >> >>>>> example
-> >> >>>>> "Arm Trusted Firmware random number driver".
-> >> >>>>>
-> >> >>>>> It will also be helpful if the SMC call number is
-> >> configurable.
-> >> >>>>>
-> >> >>>>> - Lars
-> >> >>>>
-> >> >>>> Yes, I'm trying to make this to a generic interface. I'll try
-> >> to
-> >> >>>> make
-> >> >>>> HW/platform related dependency to be configurable and let it
-> >> more
-> >> >>>> generic.
-> >> >>>> Thanks for your suggestion.
-> >> >>>>
-> >> >>>
-> >> >>> I don't think it makes sense for each arm64 platform to expose
-> >> an
-> >> >>> entropy source via SMC calls in a slightly different way, and
-> >> model
-> >> >>> it
-> >> >>> as a h/w driver. Instead, we should try to standardize this, and
-> >> >>> perhaps expose it via the architectural helpers that already
-> >> exist
-> >> >>> (get_random_seed_long() and friends), so they get plugged into
-> >> the
-> >> >>> kernel random pool driver directly.
-> >> >>
-> >> >> Absolutely. I'd love to see a standard, ARM-specified,
-> >> virtualizable
-> >> >> RNG that is abstracted from the HW.
-> >> >
-> >> > Do you think we could use virtio-rng on top of a modified
-> >> virtio-mmio
-> >> > which instead of being backed by a hardware mailbox, could use
-> >> > hvc/smc
-> >> > calls to signal writes to shared memory and get notifications via
-> >> an
-> >> > interrupt? This would also open up the doors to other virtio uses
-> >> > cases
-> >> > beyond just RNG (e.g.: console, block devices?). If this is
-> >> > completely
-> >> > stupid, then please disregard this comment.
-> >>
-> >> The problem with a virtio device is that it is a ... device. What we
-> >> want
-> >> is to be able to have access to an entropy source extremely early in
-> >> the
-> >> kernel life, and devices tend to be available pretty late in the
-> >> game.
-> >> This means we cannot plug them in the architectural helpers that Ard
-> >> mentions above.
-> >>
-> >> What you're suggesting looks more like a new kind of virtio
-> >> transport,
-> >> which is interesting, in a remarkably twisted way... ;-)
-> >>
-> >> Thanks,
-> >>
-> >>          M.
+> Hi, Mark:
+>
+> On Wed, 2019-12-11 at 10:49 -0500, Mark Yacoub wrote:
+> > drm/mediatek: return if plane pending state is disabled.
 > >
-> > In conclusion, is it helpful that hw_random has a generic interface
-> > to
-> > add device randomness by talking to hwrng which is implemented in the
-> > firmware or the hypervisor?
-> > For most chip vendors, I think the answer is yes. We already prepared
-> > a
-> > new patchset and need you agree with this idea.
+> > If the plane pending state is disabled, call mtk_ovl_layer_off then
+> > return.
+> > This guarantees that that the state is valid for all operations when the
+> > pending state is enabled.
 >
-> As long as it is a *unified* interface, I'm all for that.
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
 >
 
+Thanks for reviewing these patches, CK. When you apply them to your
+tree, could you please fixup the subjects with the correct prefixes?
 
-Yeah, but I'm not sure it makes sense to model it as a device like
-this. It would be nice if we could tie this into the ARM SMCCC
-discovery, and use the SMC calls to back arch_get_random_seed_long()
-[provided we fix the braindead way in which that is being used today
-in the interrupt code]
+Both patches are also
+
+Reviewed-by: Sean Paul <seanpaul@chromium.org>
+
+Sean
+
+> >
+> > Suggested-by: Sean Paul <seanpaul@chromium.org>
+> > To: CK Hu <ck.hu@mediatek.com>
+> > To: dri-devel@lists.freedesktop.org
+> > Cc: Daniele Castagna <dcastagna@chromium.org>
+> > Cc: Philipp Zabel <p.zabel@pengutronix.de>
+> > Cc: David Airlie <airlied@linux.ie>
+> > Cc: Daniel Vetter <daniel@ffwll.ch>
+> > Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> > Cc: linux-arm-kernel@lists.infradead.org
+> > Cc: linux-mediatek@lists.infradead.org
+> > Signed-off-by: Mark Yacoub <markyacoub@google.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 7 ++++---
+> >  1 file changed, 4 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> > index 4a55bb6e2213..526b595eeff9 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+> > @@ -260,8 +260,10 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
+> >       unsigned int src_size = (pending->height << 16) | pending->width;
+> >       unsigned int con;
+> >
+> > -     if (!pending->enable)
+> > +     if (!pending->enable) {
+> >               mtk_ovl_layer_off(comp, idx);
+> > +             return;
+> > +     }
+> >
+> >       con = ovl_fmt_convert(ovl, fmt);
+> >       if (idx != 0)
+> > @@ -283,8 +285,7 @@ static void mtk_ovl_layer_config(struct mtk_ddp_comp *comp, unsigned int idx,
+> >       writel_relaxed(offset, comp->regs + DISP_REG_OVL_OFFSET(idx));
+> >       writel_relaxed(addr, comp->regs + DISP_REG_OVL_ADDR(ovl, idx));
+> >
+> > -     if (pending->enable)
+> > -             mtk_ovl_layer_on(comp, idx);
+> > +     mtk_ovl_layer_on(comp, idx);
+> >  }
+> >
+> >  static void mtk_ovl_bgclr_in_on(struct mtk_ddp_comp *comp)
+>
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
 
 _______________________________________________
 Linux-mediatek mailing list
