@@ -2,77 +2,77 @@ Return-Path: <SRS0=P2Dl=2D=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E449C43603
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Dec 2019 08:11:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ADE83C43603
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Dec 2019 08:12:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7174D22527
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Dec 2019 08:11:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7D74F22527
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Dec 2019 08:12:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="csRT2mv8";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="fwBWIdda"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7174D22527
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sh9ebu4C";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Db5yipWK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7D74F22527
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:
-	In-Reply-To:Date:To:From:Subject:Message-ID:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lWxRhQwW+UU0VoEml3HwCf43LPQ0wtK3UJH/ID4OSh0=; b=csRT2mv8stuF1J
-	AtZEwgF4jhZEAdLPYJ0sATSJEAsxl+S3rl47764uEUgw/7iIIOeBmCVXon4yfxWcmNPi9eUIqKsNk
-	l2J/uRDZh+/Rn8wjcdejcpzPT7ag9VcOvDx2M4wrS3C3WjE0pOu6reMk74fTxjNmU89Mq+PqkFMeR
-	5wutTFkGSCem/Cv2T1fRH59w6WybOJpGQ73dYFTBK2Syi67DGkfYDNQtwAzYgmsXJQ9zVUh2aVYmG
-	rpW+lupg7KMBTn+QTnqDmQp6ShBLhl2w5FCuwiQ/Us8wE61R3eV9CP0io/lcNUBttOWR+q66ludlX
-	ckQMArwzG7w8PeYHNU9A==;
+	List-Owner; bh=EhLbeqqE0tEDKYyPJCqBH2+XE/o5GjyMEOsBRNIn7ko=; b=sh9ebu4CHjtbN6
+	IdZouHZK4Ksq9fPvQvq4LDl6KHvTXLIjQ6rf1J9BKtb5LXKg6YFIxL7b4h4/oIPnGoq865d8PSM7J
+	F+JGDa8OIRBM3aw/ZukhKXoEdOj2dslGAiLV6qU0CENGH/fDxLqFs/jp76cYi4lZPWx6bE0h3cWEA
+	9ZYY7RCh53M/QIZz31W+rM9wIDAq9bIMnLfulZElPFOt2HMfGDt+ZLgOzqgBUqZC8pdWjLwkhTxBV
+	uowdOipl/fsAuTqcJ12fS54MrBQ6SugymvmiS6Pmo2sA9p3rNWTwH+wqRd61Ve5/UeQ4KTA6hm+Tw
+	GIT+Rstvq1AZmSR96LIw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ifg2s-0008MT-EO; Fri, 13 Dec 2019 08:11:30 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ifg3J-000078-J0; Fri, 13 Dec 2019 08:11:57 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ifg2h-0008EE-BI; Fri, 13 Dec 2019 08:11:21 +0000
-X-UUID: 75ab53db01f045eca5b1a7c06e4251e6-20191213
+ id 1ifg3G-00005Y-1W; Fri, 13 Dec 2019 08:11:55 +0000
+X-UUID: 0f4604af9b8647369d4ae136b1cec1f4-20191213
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:Reply-To:From:Subject:Message-ID;
- bh=EKD7QQ/TdtJi51T5Vize7rcSiXuT7zYiDce6IZbkLA4=; 
- b=fwBWIddaGEZJWMJgKOYyF85EtJtZ05bygXB08VgCIRgIhbgYTWpBh1lBYR+1Klf2+XTDwidWIBVCWbxnigDmiagzEwqreOQHyxsDUEmuwZzQMbBG2J1po4hlE5Q9WBOUQJ54MAqg8EoiMOQRFHW/dfpuiunKwHgXfFwMrvz8OGM=;
-X-UUID: 75ab53db01f045eca5b1a7c06e4251e6-20191213
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <yongqiang.niu@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=XhTCXQMz9W16QzlMSFeAKscL9UN80OVD7nIAnDiOOmE=; 
+ b=Db5yipWKuqgNE3knz/yBjVKvN05hRBb7UotvnXqeLVIz8v8oPmH7ZAPsAtgDaJlkiHPR3Boz4O8iilY8dJBIU7WTNswFzt847Bz6Jyc8iE4qVezUQcgTUclzK1xWs8yEEMRHueqe1rgOQcHp94Wi6Oqb38TF28nZ6IJLmMYtc5s=;
+X-UUID: 0f4604af9b8647369d4ae136b1cec1f4-20191213
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 559954261; Fri, 13 Dec 2019 00:11:17 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ with ESMTP id 1571896366; Fri, 13 Dec 2019 00:11:47 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 13 Dec 2019 00:11:32 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs05n1.mediatek.inc
- (172.21.101.15) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Fri, 13 Dec 2019 16:10:49 +0800
-Received: from [10.17.3.153] (172.27.4.253) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Fri, 13 Dec 2019 16:11:12 +0800
-Message-ID: <1576224672.31822.6.camel@mhfsdcap03>
-Subject: Re: [PATCH v2, 2/2] drm/mediatek: Add ctm property support
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>
-Date: Fri, 13 Dec 2019 16:11:12 +0800
-In-Reply-To: <1576223825.9817.6.camel@mtksdaap41>
-References: <1576222132-31586-1-git-send-email-yongqiang.niu@mediatek.com>
- <1576222132-31586-3-git-send-email-yongqiang.niu@mediatek.com>
- <1576223825.9817.6.camel@mtksdaap41>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ 15.0.1395.4; Fri, 13 Dec 2019 00:12:02 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 13 Dec 2019 16:11:18 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Fri, 13 Dec 2019 16:11:05 +0800
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <alim.akhtar@samsung.com>,
+ <pedrom.sousa@synopsys.com>, <jejb@linux.ibm.com>, <matthias.bgg@gmail.com>
+Subject: [PATCH v1 1/4] scsi: ufs-mediatek: introduce reference clock control
+Date: Fri, 13 Dec 2019 16:11:32 +0800
+Message-ID: <1576224695-22657-2-git-send-email-stanley.chu@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1576224695-22657-1-git-send-email-stanley.chu@mediatek.com>
+References: <1576224695-22657-1-git-send-email-stanley.chu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191213_001119_396841_712AA30C 
-X-CRM114-Status: GOOD (  18.67  )
+X-CRM114-CacheID: sfid-20191213_001154_091153_B4B01934 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,208 +84,184 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org,
+ beanhuo@micron.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2019-12-13 at 15:57 +0800, CK Hu wrote:
-> On Fri, 2019-12-13 at 15:28 +0800, Yongqiang Niu wrote:
-> > Add ctm property support
-> > 
-> > Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 10 ++++-
-> >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 62 ++++++++++++++++++++++++++++-
-> >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  9 +++++
-> >  3 files changed, 78 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > index 9a8e1d4..db3031e 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> > @@ -614,8 +614,10 @@ static void mtk_drm_crtc_atomic_flush(struct drm_crtc *crtc,
-> >  	if (mtk_crtc->event)
-> >  		mtk_crtc->pending_needs_vblank = true;
-> >  	if (crtc->state->color_mgmt_changed)
-> > -		for (i = 0; i < mtk_crtc->ddp_comp_nr; i++)
-> > +		for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
-> >  			mtk_ddp_gamma_set(mtk_crtc->ddp_comp[i], crtc->state);
-> > +			mtk_ddp_ctm_set(mtk_crtc->ddp_comp[i], crtc->state);
-> > +		}
-> >  	mtk_drm_crtc_hw_config(mtk_crtc);
-> >  }
-> >  
-> > @@ -734,6 +736,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
-> >  	int pipe = priv->num_pipes;
-> >  	int ret;
-> >  	int i;
-> > +	bool has_ctm = false;
-> >  	uint gamma_lut_size = 0;
-> >  
-> >  	if (!path)
-> > @@ -787,6 +790,9 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
-> >  
-> >  		mtk_crtc->ddp_comp[i] = comp;
-> >  
-> > +		if (comp->funcs->ctm_set)
-> > +			has_ctm = true;
-> > +
-> >  		if (comp->funcs->gamma_set)
-> >  			gamma_lut_size = MTK_LUT_SIZE;
-> >  	}
-> > @@ -812,7 +818,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
-> >  
-> >  	if (gamma_lut_size)
-> >  		drm_mode_crtc_set_gamma_size(&mtk_crtc->base, gamma_lut_size);
-> > -	drm_crtc_enable_color_mgmt(&mtk_crtc->base, 0, false, gamma_lut_size);
-> > +	drm_crtc_enable_color_mgmt(&mtk_crtc->base, 0, has_ctm, gamma_lut_size);
-> 
-> May enable color management when has gamma or ctm.
-> 
-> Regards,
-> CK
-> 
-drm_crtc_enable_color_mgmt will check the parameter validation.
-if has_ctm is false, will not attach ctm property.
-if gamma_lut_size is zero, will not attach gamma property.
+Introduce reference clock control in MediaTek Chipset in order
+to disable it if it is not necessary by UFS device to save system power.
 
+Currently reference clock can be disabled during system suspend, runtime
+suspend and clock-gating after link enters hibernate state.
 
-> >  	priv->num_pipes++;
-> >  	mutex_init(&mtk_crtc->hw_lock);
-> >  
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > index cb3296f..182990a 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> > @@ -37,7 +37,15 @@
-> >  #define CCORR_EN				BIT(0)
-> >  #define DISP_CCORR_CFG				0x0020
-> >  #define CCORR_RELAY_MODE			BIT(0)
-> > +#define CCORR_ENGINE_EN				BIT(1)
-> > +#define CCORR_GAMMA_OFF				BIT(2)
-> > +#define CCORR_WGAMUT_SRC_CLIP			BIT(3)
-> >  #define DISP_CCORR_SIZE				0x0030
-> > +#define DISP_CCORR_COEF_0			0x0080
-> > +#define DISP_CCORR_COEF_1			0x0084
-> > +#define DISP_CCORR_COEF_2			0x0088
-> > +#define DISP_CCORR_COEF_3			0x008C
-> > +#define DISP_CCORR_COEF_4			0x0090
-> >  
-> >  #define DISP_DITHER_EN				0x0000
-> >  #define DITHER_EN				BIT(0)
-> > @@ -188,7 +196,7 @@ static void mtk_ccorr_config(struct mtk_ddp_comp *comp, unsigned int w,
-> >  			     unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-> >  {
-> >  	mtk_ddp_write(cmdq_pkt, h << 16 | w, comp, DISP_CCORR_SIZE);
-> > -	mtk_ddp_write(cmdq_pkt, CCORR_RELAY_MODE, comp, DISP_CCORR_CFG);
-> > +	mtk_ddp_write(cmdq_pkt, CCORR_ENGINE_EN, comp, DISP_CCORR_CFG);
-> >  }
-> >  
-> >  static void mtk_ccorr_start(struct mtk_ddp_comp *comp)
-> > @@ -201,6 +209,57 @@ static void mtk_ccorr_stop(struct mtk_ddp_comp *comp)
-> >  	writel_relaxed(0x0, comp->regs + DISP_CCORR_EN);
-> >  }
-> >  
-> > +/* Converts a DRM S31.32 value to the HW S1.10 format. */
-> > +static u16 mtk_ctm_s31_32_to_s1_10(u64 in)
-> > +{
-> > +	u16 r;
-> > +
-> > +	/* Sign bit. */
-> > +	r = in & BIT_ULL(63) ? BIT(11) : 0;
-> > +
-> > +	if ((in & GENMASK_ULL(62, 33)) > 0) {
-> > +		/* identity value 0x100000000 -> 0x400, */
-> > +		/* if bigger this, set it to max 0x7ff. */
-> > +		r |= GENMASK(10, 0);
-> > +	} else {
-> > +		/* take the 11 most important bits. */
-> > +		r |= (in >> 22) & GENMASK(10, 0);
-> > +	}
-> > +
-> > +	return r;
-> > +}
-> > +
-> > +static void mtk_ccorr_ctm_set(struct mtk_ddp_comp *comp,
-> > +			      struct drm_crtc_state *state)
-> > +{
-> > +	struct drm_property_blob *blob = state->ctm;
-> > +	struct drm_color_ctm *ctm;
-> > +	const u64 *input;
-> > +	uint16_t coeffs[9] = { 0 };
-> > +	int i;
-> > +	struct cmdq_pkt *cmdq_pkt = NULL;
-> > +
-> > +	if (!blob)
-> > +		return;
-> > +
-> > +	ctm = (struct drm_color_ctm *)blob->data;
-> > +	input = ctm->matrix;
-> > +
-> > +	for (i = 0; i < ARRAY_SIZE(coeffs); i++)
-> > +		coeffs[i] = mtk_ctm_s31_32_to_s1_10(input[i]);
-> > +
-> > +	mtk_ddp_write(cmdq_pkt, coeffs[0] << 16 | coeffs[1],
-> > +		      comp, DISP_CCORR_COEF_0);
-> > +	mtk_ddp_write(cmdq_pkt, coeffs[2] << 16 | coeffs[3],
-> > +		      comp, DISP_CCORR_COEF_1);
-> > +	mtk_ddp_write(cmdq_pkt, coeffs[4] << 16 | coeffs[5],
-> > +		      comp, DISP_CCORR_COEF_2);
-> > +	mtk_ddp_write(cmdq_pkt, coeffs[6] << 16 | coeffs[7],
-> > +		      comp, DISP_CCORR_COEF_3);
-> > +	mtk_ddp_write(cmdq_pkt, coeffs[8] << 16,
-> > +		      comp, DISP_CCORR_COEF_4);
-> > +}
-> > +
-> >  static void mtk_dither_config(struct mtk_ddp_comp *comp, unsigned int w,
-> >  			      unsigned int h, unsigned int vrefresh,
-> >  			      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-> > @@ -271,6 +330,7 @@ static void mtk_gamma_set(struct mtk_ddp_comp *comp,
-> >  	.config = mtk_ccorr_config,
-> >  	.start = mtk_ccorr_start,
-> >  	.stop = mtk_ccorr_stop,
-> > +	.ctm_set = mtk_ccorr_ctm_set,
-> >  };
-> >  
-> >  static const struct mtk_ddp_comp_funcs ddp_dither = {
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> > index 384abae..20fe55d 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> > @@ -92,6 +92,8 @@ struct mtk_ddp_comp_funcs {
-> >  			  struct drm_crtc_state *state);
-> >  	void (*bgclr_in_on)(struct mtk_ddp_comp *comp);
-> >  	void (*bgclr_in_off)(struct mtk_ddp_comp *comp);
-> > +	void (*ctm_set)(struct mtk_ddp_comp *comp,
-> > +			struct drm_crtc_state *state);
-> >  };
-> >  
-> >  struct mtk_ddp_comp {
-> > @@ -205,6 +207,13 @@ static inline void mtk_ddp_comp_bgclr_in_off(struct mtk_ddp_comp *comp)
-> >  		comp->funcs->bgclr_in_off(comp);
-> >  }
-> >  
-> > +static inline void mtk_ddp_ctm_set(struct mtk_ddp_comp *comp,
-> > +				   struct drm_crtc_state *state)
-> > +{
-> > +	if (comp->funcs && comp->funcs->ctm_set)
-> > +		comp->funcs->ctm_set(comp, state);
-> > +}
-> > +
-> >  int mtk_ddp_comp_get_id(struct device_node *node,
-> >  			enum mtk_ddp_comp_type comp_type);
-> >  int mtk_ddp_comp_init(struct device *dev, struct device_node *comp_node,
-> 
-> 
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/scsi/ufs/ufs-mediatek.c | 64 ++++++++++++++++++++++++++++++---
+ drivers/scsi/ufs/ufs-mediatek.h | 20 +++++++++--
+ 2 files changed, 78 insertions(+), 6 deletions(-)
 
+diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+index 6a3ec11b16db..690483c78212 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.c
++++ b/drivers/scsi/ufs/ufs-mediatek.c
+@@ -18,6 +18,11 @@
+ #include "unipro.h"
+ #include "ufs-mediatek.h"
+ 
++#define ufs_mtk_ref_clk_notify(on, res) \
++	arm_smccc_smc(MTK_SIP_UFS_CONTROL, \
++		      UFS_MTK_SIP_REF_CLK_NOTIFICATION, \
++		      on, 0, 0, 0, 0, 0, &(res))
++
+ static void ufs_mtk_cfg_unipro_cg(struct ufs_hba *hba, bool enable)
+ {
+ 	u32 tmp;
+@@ -83,6 +88,49 @@ static int ufs_mtk_bind_mphy(struct ufs_hba *hba)
+ 	return err;
+ }
+ 
++static int ufs_mtk_setup_ref_clk(struct ufs_hba *hba, bool on)
++{
++	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
++	struct arm_smccc_res res;
++	unsigned long timeout;
++	u32 value;
++
++	if (host->ref_clk_enabled == on)
++		return 0;
++
++	if (on) {
++		ufs_mtk_ref_clk_notify(on, res);
++		ufshcd_writel(hba, REFCLK_REQUEST, REG_UFS_REFCLK_CTRL);
++	} else {
++		ufshcd_writel(hba, REFCLK_RELEASE, REG_UFS_REFCLK_CTRL);
++	}
++
++	/* Wait for ack */
++	timeout = jiffies + msecs_to_jiffies(REFCLK_REQ_TIMEOUT_MS);
++	do {
++		value = ufshcd_readl(hba, REG_UFS_REFCLK_CTRL);
++
++		/* Wait until ack bit equals to req bit */
++		if (((value & REFCLK_ACK) >> 1) == (value & REFCLK_REQUEST))
++			goto out;
++
++		usleep_range(100, 200);
++	} while (time_before(jiffies, timeout));
++
++	dev_err(hba->dev, "missing ack of refclk req, reg: 0x%x\n", value);
++
++	ufs_mtk_ref_clk_notify(host->ref_clk_enabled, res);
++
++	return -ETIMEDOUT;
++
++out:
++	host->ref_clk_enabled = on;
++	if (!on)
++		ufs_mtk_ref_clk_notify(on, res);
++
++	return 0;
++}
++
+ /**
+  * ufs_mtk_setup_clocks - enables/disable clocks
+  * @hba: host controller instance
+@@ -107,12 +155,16 @@ static int ufs_mtk_setup_clocks(struct ufs_hba *hba, bool on,
+ 
+ 	switch (status) {
+ 	case PRE_CHANGE:
+-		if (!on)
++		if (!on) {
++			ufs_mtk_setup_ref_clk(hba, on);
+ 			ret = phy_power_off(host->mphy);
++		}
+ 		break;
+ 	case POST_CHANGE:
+-		if (on)
++		if (on) {
+ 			ret = phy_power_on(host->mphy);
++			ufs_mtk_setup_ref_clk(hba, on);
++		}
+ 		break;
+ 	}
+ 
+@@ -299,8 +351,10 @@ static int ufs_mtk_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ {
+ 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+ 
+-	if (ufshcd_is_link_hibern8(hba))
++	if (ufshcd_is_link_hibern8(hba)) {
+ 		phy_power_off(host->mphy);
++		ufs_mtk_setup_ref_clk(hba, false);
++	}
+ 
+ 	return 0;
+ }
+@@ -309,8 +363,10 @@ static int ufs_mtk_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ {
+ 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+ 
+-	if (ufshcd_is_link_hibern8(hba))
++	if (ufshcd_is_link_hibern8(hba)) {
++		ufs_mtk_setup_ref_clk(hba, true);
+ 		phy_power_on(host->mphy);
++	}
+ 
+ 	return 0;
+ }
+diff --git a/drivers/scsi/ufs/ufs-mediatek.h b/drivers/scsi/ufs/ufs-mediatek.h
+index b03f601d3a9e..14f8a8357c09 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.h
++++ b/drivers/scsi/ufs/ufs-mediatek.h
+@@ -6,7 +6,21 @@
+ #ifndef _UFS_MEDIATEK_H
+ #define _UFS_MEDIATEK_H
+ 
+-#include <linux/bitops.h>
++/*
++ * Vendor specific UFSHCI Registers
++ */
++#define REG_UFS_REFCLK_CTRL         0x144
++
++/*
++ * Ref-clk control
++ *
++ * Values for register REG_UFS_REFCLK_CTRL
++ */
++#define REFCLK_RELEASE              0x0
++#define REFCLK_REQUEST              BIT(0)
++#define REFCLK_ACK                  BIT(1)
++
++#define REFCLK_REQ_TIMEOUT_MS       3
+ 
+ /*
+  * Vendor specific pre-defined parameters
+@@ -34,7 +48,8 @@
+ /*
+  * SiP commands
+  */
+-#define UFS_MTK_SIP_DEVICE_RESET    BIT(1)
++#define UFS_MTK_SIP_DEVICE_RESET          BIT(1)
++#define UFS_MTK_SIP_REF_CLK_NOTIFICATION  BIT(3)
+ 
+ /*
+  * VS_DEBUGCLOCKENABLE
+@@ -55,6 +70,7 @@ enum {
+ struct ufs_mtk_host {
+ 	struct ufs_hba *hba;
+ 	struct phy *mphy;
++	bool ref_clk_enabled;
+ };
+ 
+ #endif /* !_UFS_MEDIATEK_H */
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
