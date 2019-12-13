@@ -2,81 +2,71 @@ Return-Path: <SRS0=P2Dl=2D=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 104A9C43603
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Dec 2019 22:22:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC40FC43603
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Dec 2019 22:24:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D591E22527
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Dec 2019 22:22:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C3B4E2077B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Dec 2019 22:24:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="immxMwyT";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="Cbhnm/ox"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D591E22527
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RHEtSf6M";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=lunn.ch header.i=@lunn.ch header.b="B022IG0f"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C3B4E2077B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lunn.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0Ea9qFGAvkbXC56FyZA6EDpnzDjY33UEIf4ilsmG/mA=; b=immxMwyTMg1g6a
-	0IcgCGYwM2pAUH5reEgPwv5CckQrjvlrU4Gh8tbv6Ca/gb0zP8aRpZxrzWVMpY6jhF4C4meT8ZNEU
-	ceseRmHtC7OLPQbyKY17VIDMJRzSVPy7gX6XciY35JdQXkSn/uvaqWEeitBRQvyaL/tiXHutS0gsK
-	PmXJoklILvsk2DQH9H55Y0qYjld5VISONLx6egUJ0w4OLQp7QTpKmyjylssSZBKdIwMTiG+uejP2/
-	NFvwSUN0hXQKyNh/JXGduXO5rh89pn0itrBA8xMKq1N8vGbkUpt1sRuQwYwLX9lph/FFSID6HlxRO
-	RQLreL+HL2mKYEkGdyeQ==;
+	List-Owner; bh=Jx/pTBTXB2Fig1EBm652LKNf+1b51AFx2phCdrKY6qw=; b=RHEtSf6MFsduRd
+	SAPI02O5sN1SiHJbK7A+Imku281dGc7KTebSKTdUSmvt6zcPMpYBKyZo+UasL8YXXN4bKVl2Hs0g6
+	fct/0WgNmwlHN82b6vj0OeS5grealyxoTPFsciIGwptGbEhy8qw8orJLkKLnPjP7wIXBAwUo4M3gs
+	GuCXvEDqAyYH+1vFsy+m53duUZDFjAJLjPYxBj7EDr3QpDmXSKmM1BlpMzNq9VG2iR1Axpdp3gOUr
+	obr1dBz+HZ3espDuFJa/ZGAgcODG0Ui+hAaOAWD43AFArHMVCZVdxqWZwbAKLOTLkX6cYzSLnq0Ub
+	duyqi7TWDeErvIAu/hAA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ifl2Y-0000n9-3W; Fri, 13 Dec 2019 13:31:30 +0000
-Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242])
+	id 1iflIH-0006KV-Jv; Fri, 13 Dec 2019 13:47:45 +0000
+Received: from vps0.lunn.ch ([185.16.172.187])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ifl2C-0000Sk-Ei
- for linux-mediatek@lists.infradead.org; Fri, 13 Dec 2019 13:31:09 +0000
-Received: by mail-lj1-x242.google.com with SMTP id s22so2637021ljs.7
- for <linux-mediatek@lists.infradead.org>; Fri, 13 Dec 2019 05:31:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=HrvoDck5eY5GK0w6K4AhLmPPIWL1Xrc1xH4Up/JEjjk=;
- b=Cbhnm/ox1I54nuH9njXHzccQrQot6KLJxrMb3XxyvsplUdUL3Q5Rul7FpZFaw6qIui
- KYp2hTrI1d6g+6A/dt3EeK/jyydFWmrzksF0s5cf6LxX401J1UfovmCKuRKzXFovXU5C
- QsI8OLd61zJoOK06uURda9yi4bsvTHAi28Tnrv3Y2WUQG8yz9MVsYlfxzXPwO2QT9YRG
- RsAyEYz1F5CKeLy89t5OQs+1Sn+GSZS1npqdvVHKIH8gmwGE2/La+4ljJz3l0hoayrrz
- IPjK34H/OTvJKUlP1UABm4Vzd9dvTCGe00klnysMonCEbsx3CWRH5rIYuP+ptTWBx8JB
- NZeA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=HrvoDck5eY5GK0w6K4AhLmPPIWL1Xrc1xH4Up/JEjjk=;
- b=doBX/f31FTbJf9nqW9vynTb/IOPWUVjz+RDCtjOxGkTulR8QcouLXGuc6MW1i227SE
- vJw6LXh2RMy/g9nw15inZA5m8Fjsap02etipR6jOvhIVWEXqoF96QVib0RF8zpp9iy4x
- oaRttcKFycESNM5e4Rk7dHXomPCSjHeVIqbOzQF5ob9rYPdITVMrVkt/9Y53zRMAN0TH
- vBoXFwMvVtAgjOh4PsDnEm6xcRv83io6zeUG3yQpN2hHKLjP8EN9F1YwIbqxmtRcAUd/
- sfvvSJrWHTN340A8FvZoYOTCp5t+mNnHUZtQzQPqOSTeTALJFm6xxK79xHVXptc3+LC+
- o68Q==
-X-Gm-Message-State: APjAAAUpPDwzooj6ZFk2EhvvA5Rl6SorGoALWWFHeEeIprPlznGxp9+C
- 52pvU70/pVIhL3rU/se873aSb5oePPcx2xmCWQsW2w==
-X-Google-Smtp-Source: APXvYqwMLtHFJLKb/OsUbyLvQlBeLa8EouQdhXkxY6ssHTmFd/qwkZ2hUZ7P2vEvqVVUtgkdycvnaAaf3SbpBeZBuMg=
-X-Received: by 2002:a2e:9587:: with SMTP id w7mr9207930ljh.42.1576243865608;
- Fri, 13 Dec 2019 05:31:05 -0800 (PST)
+ id 1iflI6-0006Br-P6; Fri, 13 Dec 2019 13:47:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+ s=20171124; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
+ Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=awCXz0GwD1LDcWzOjDMp0h+d0sdlS80mO4Nbpi4KuV0=; b=B022IG0f4HXZeMBlMNrforMruq
+ dFK7znmRa1CpiTRnP5y5JakiioHQ+FdeEMCHwk2Gj0/OgbKerI8jebCoeNmN1LuX1Yu+7UNmUTTXy
+ MGKwep3ErD6V9+pLSXg9iuy7P0DRSQDYOfxGJpzrOZ0+YYKV7JvJNzXUQvMMLC7dJSiw=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.92.2)
+ (envelope-from <andrew@lunn.ch>)
+ id 1iflHg-00019i-1C; Fri, 13 Dec 2019 14:47:08 +0100
+Date: Fri, 13 Dec 2019 14:47:08 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: biao huang <biao.huang@mediatek.com>
+Subject: Re: [PATCH 1/2] net-next: stmmac: mediatek: add more suuport for RMII
+Message-ID: <20191213134708.GA4286@lunn.ch>
+References: <20191212024145.21752-1-biao.huang@mediatek.com>
+ <20191212024145.21752-2-biao.huang@mediatek.com>
+ <20191212132520.GB9959@lunn.ch>
+ <1576200981.29387.13.camel@mhfsdcap03>
 MIME-Version: 1.0
-References: <20191207140353.23967-1-sam@ravnborg.org>
- <20191207140353.23967-3-sam@ravnborg.org>
-In-Reply-To: <20191207140353.23967-3-sam@ravnborg.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 13 Dec 2019 14:30:54 +0100
-Message-ID: <CACRpkdaVYeJme0O8CW-heTmf3-0EHowFwcOAyy3jx13gjfj4zA@mail.gmail.com>
-Subject: Re: [PATCH v2 02/25] drm/panel: add backlight support
-To: Sam Ravnborg <sam@ravnborg.org>
+Content-Disposition: inline
+In-Reply-To: <1576200981.29387.13.camel@mhfsdcap03>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191213_053108_507469_93B052EB 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20191213_054734_815056_381D1C6B 
+X-CRM114-Status: UNSURE (   9.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,65 +78,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
- "open list:DRM PANEL DRIVERS" <dri-devel@lists.freedesktop.org>,
- Andrzej Hajda <a.hajda@samsung.com>, Thierry Reding <thierry.reding@gmail.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Benjamin Gaignard <benjamin.gaignard@linaro.org>,
- Stefan Agner <stefan@agner.ch>,
- linux-samsung-soc <linux-samsung-soc@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Tomi Valkeinen <tomi.valkeinen@ti.com>, NXP Linux Team <linux-imx@nxp.com>,
- Jagan Teki <jagan@amarulasolutions.com>, Jitao Shi <jitao.shi@mediatek.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Abhinav Kumar <abhinavk@codeaurora.org>, linux-tegra@vger.kernel.org,
- Maxime Ripard <maxime.ripard@bootlin.com>, Sean Paul <sean@poorly.run>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Purism Kernel Team <kernel@puri.sm>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Daniel Vetter <daniel@ffwll.ch>
+Cc: Mark Rutland <mark.rutland@arm.com>, Jose Abreu <joabreu@synopsys.com>,
+ Alexandre Torgue <alexandre.torgue@st.com>, devicetree@vger.kernel.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>, davem@davemloft.net,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Dec 7, 2019 at 3:04 PM Sam Ravnborg <sam@ravnborg.org> wrote:
+> The clock labeled as "rmii_internal" is needed only in RMII(when MAC provides
+> reference clock), and useless for RGMII/MII/RMII(when phy provides reference
+> clock).
+> 
+> So, add a boolean flag to indicate where the RMII reference clock is from, MAC
+> or PHY, if MAC, enable the "rmii_internal", or disable it.
+> and this clock already documented in dt-binding in PATCH 2/2.
+> 
+> For power saving, it should not be enabled in default, so can't add it to the
+> existing list of clocks directly.
+> 
+> Any advice for this special case?
 
-> Panels often supports backlight as specified in a device tree.
-> Update the drm_panel infrastructure to support this to
-> simplify the drivers.
->
-> With this the panel driver just needs to add the following to the
-> probe() function:
->
->     err = drm_panel_of_backlight(panel);
->     if (err)
->             return err;
->
-> Then drm_panel will handle all the rest.
->
-> There is one caveat with the backlight support.
-> If drm_panel_(enable|disable) are called multiple times
-> in row then backlight_(enable|disable) will be called multiple times.
->
-> The above will happen when a panel drivers unconditionally
-> calls drm_panel_disable() in their shutdown() function,
-> whan the panel is already disabled and then shutdown() is called.
->
-> Reading the backlight code it seems safe to call
-> the backlight_(enable|disable) several times.
->
-> v3:
+O.K. Add the boolean, but also add the clock to the list of clocks in
+DT. Don't hard code the clock name in the driver.
 
-v3 looks good to me +/- Laurent's comments:
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
-
-Yours,
-Linus Walleij
+    Andrew
 
 _______________________________________________
 Linux-mediatek mailing list
