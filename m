@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 304D4C43603
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Dec 2019 21:58:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6910DC43603
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Dec 2019 22:07:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F325C2073D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Dec 2019 21:58:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3B84E206A5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Dec 2019 22:07:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tYyN6WPJ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="cV4vyswL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F325C2073D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nL7KUsk7";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="NK2lZltG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B84E206A5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,57 +27,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TygqYUIZ5AsUL9PJjgMnSLr2BOj4/9D+UQHxcQSog44=; b=tYyN6WPJRMTI4r
-	gNANfKtiLpehYjfHmVlUr6EvWY8deV7vgKUKqK4fOaekQghKPU+hImsaed3i0iva6XnzizfBYwY8M
-	rx8P8dyiRl55UnKDsA0aJkjzzbSK4GzUw9rSImfijpF65wLpAm0aNtpfr63Xxsl2+WvD3+NxgzFdL
-	cwaXsByJUkhO/qbWkCHHE7b3t4blNAw91zXMiqEzv2dwH+8MUbzBfGXxJ69Bg/7VfRJ9eh0mfjuGw
-	JYkYosPj54bNl3d+RA4lGOp5nZ/0R2MFTosnySPEBCTMageWr2i//0UHgKzV5IEF59RwcGBkywsC1
-	X39IyShfJMI6Iw1s3Rrw==;
+	List-Owner; bh=Ng4ysoh6Gf/h33JnOO8wn6AQ9dnP2LPIdHKrroVf5kc=; b=nL7KUsk7iRQhGD
+	6QOBHLX1HeZmofKraEVvha6sQ7FG0N8L2YTQ7/QoT3LoQLPDvq2xfjYyBopd7M4izQhvL5MXIF6h/
+	mIuwezVLrrHMQ9N+8iNJkLroCGHxeQ49sbGuv1MHRL4aNMFZNS60hj2xfxz3Lu7NuqdPxPvWxm5QR
+	nU4tfjgdrW88k3yQyM3nG90tp2lBowSPY9uuqbehA1fYLLkdJlfDk/IUdzRJvFTE9cqh3LmbkxJzA
+	UbjlzD846NwLR02wfQy30uOb7P+SB8OzhMTOMfDGp92ocQWxKrA1mvk+1Y7cq9hfw1jTldwPMIonu
+	LT7dEdk3ZzQxtjCiFc4g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1igFQK-0001rE-57; Sat, 14 Dec 2019 21:58:04 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1igFZn-0005sE-06; Sat, 14 Dec 2019 22:07:51 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1igFQC-0001qJ-OB; Sat, 14 Dec 2019 21:58:03 +0000
-Received: by mail-wr1-x441.google.com with SMTP id q6so2681811wro.9;
- Sat, 14 Dec 2019 13:57:56 -0800 (PST)
+ id 1igFZX-0005ic-Rd; Sat, 14 Dec 2019 22:07:41 +0000
+Received: by mail-wm1-x341.google.com with SMTP id p17so2552248wma.1;
+ Sat, 14 Dec 2019 14:07:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=bH9eEmcu8wx9wAtORa7NBU2ePyVsuyeiAeNWDqVk32U=;
- b=cV4vyswLmCUCUGNExYKH5QIx0rfVdBflYIO6GT5C9EfW9hyPeFtJv3wZKoc4Rxrgb8
- 7n21fuMq9T7suenohTVQaGEXO/iPO4l23WqQMp2OdNW1KTTt5dHCIZGcTneBjZBDPFmp
- OqTCCUIFx2UMrRS7dB+5BS1Zk7An5f4FnxPjyUQXLRhpbS7fvvO9YIdKmtCig8z/UWsd
- YUHQ2dbrrxekE2wom3K6S1v/ONDL/bcIgeGcDS6v5MOt+veks0yKtkzkuT1DhVGiItl+
- Gi9yIeKbmllDBDvzAm97soWpaMEfiiVyoznv8mFy/oiX3kKJotWlmmDZYoofKQ91io5Q
- wvjA==
+ bh=Kcq4NIY5ddls0AgpyFpiRpxwhD8107/FYsJo1LU87u0=;
+ b=NK2lZltGmJi8Xpr2SpBSEx9PKj+Ppt1Ge17Sjz42Lx8unolOxpmJfxW10Ul32jT7F5
+ 3OF4nX0IFkFLfUf4JjRmgPRNIa288vUy2oJNDOqRuFoZEjapzlvvpWn/ohw1PKe5c8EN
+ x+wUcEWWp723jMgLgJryIBNfko/jGkhaQkrCr08Cv/Q6gZoY20l/varnP9rqBIO4VKj9
+ xQM9uyjappoVwhEBc/yBydIvC+gyYF8XdEvOB9UFVyMfi9vYJWZZuVcLRHyINxP3NPhR
+ B4R9pu4jX6y5jfQsTrzn9INNPlrf0hrnrDwVfh4zyo6mt6c9b75ItpjULLNSco9dqktU
+ JZVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=bH9eEmcu8wx9wAtORa7NBU2ePyVsuyeiAeNWDqVk32U=;
- b=OcByxzpaq/gmauSXIDTUqgilj5W2mkhGf4xBFQ3w6pG4mftEVnK2wAzMuedlf2mfn9
- LAwweUFodmtNYk0SwG8I37qxTkGogciV4P1YbuCse6+1bPOgsz4ddN5/ISKGuXvgSw/2
- jJQgyIASsq3J8Zb5aaKkyaMqhgWIXX1UaxdrnHZMlbFwhcC0Ab+QL4Hi9hbz0Q7FMVbs
- 5eNrCc5uuy2/LNDBpU23nzgivtPmPrDGL21YP6B2ONvFE3mkaUUoRdymbNMlfHmSfTh7
- 7HVPJgK17kxYMUfGUYHh1gV3s8W9l/ST27tOcK/3qbVBh8YSPYb57e4kmoJLNXn2z+h+
- 3jkw==
-X-Gm-Message-State: APjAAAXwQGlCzPbYWzz3VSksG2whfFJPy8KbnPAoAiQrnIvV4Lu7lG3x
- VNoVaciRhjMjnEOC6lOIDTc=
-X-Google-Smtp-Source: APXvYqwGINYyAMpf/FMYyahL73Ns2g2qagEZfSwYuLlvWl58NR0r5pXqhZXGknMJIFNbwEqp3WLXkw==
-X-Received: by 2002:a5d:6211:: with SMTP id y17mr20734132wru.344.1576360675105; 
- Sat, 14 Dec 2019 13:57:55 -0800 (PST)
+ bh=Kcq4NIY5ddls0AgpyFpiRpxwhD8107/FYsJo1LU87u0=;
+ b=fTpTU5UblXRx0hAa/2igYVw5nskZ2C5yi5U2b3KGwX63OvTXoKt8ivlHHLhE/SYZfM
+ Kfnn9xXE1RQ1QAgRXofNLZtWkaHqrHw2Uu108v1erweWzQQQkdthXSa+dOb0WsSIuRMV
+ IWh6vgECyipqLoV5Y8nfaPQayP/a22ro04HKYKGG61D5J05Jn0qSc+Oza3vYmsjk2Nab
+ DafH4yQeG7z/JO4BAceLTmDT7qCzEKCnNnLAFkEH/JCI+QFe0AASlhHuAAZ2MzuwjbI+
+ eVf/JXgUa6RhoErAFAeUjFBDPWIyhS0hTPNSZz5sLKrfY+MJtWGayvZaKOJiKo7GCSis
+ QpWg==
+X-Gm-Message-State: APjAAAW9MoB/EYDYO1imvYHc2NpFCnoB/jZvjDTIjL9Dh7tUJ2izxBYj
+ SebkIHL+RdiJeXuL53FGPcs=
+X-Google-Smtp-Source: APXvYqyBSiBL1Uwn/iE0Igr2lgqCfMYOwj2WzsEgkG67traPxQDB5KEF8okYmqm9sNElOTf3LjEHnA==
+X-Received: by 2002:a7b:cd11:: with SMTP id f17mr12423087wmj.48.1576361253202; 
+ Sat, 14 Dec 2019 14:07:33 -0800 (PST)
 Received: from ziggy.stardust ([95.169.225.199])
- by smtp.gmail.com with ESMTPSA id s19sm14707115wmj.33.2019.12.14.13.57.54
+ by smtp.gmail.com with ESMTPSA id i8sm15572270wro.47.2019.12.14.14.07.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 14 Dec 2019 13:57:54 -0800 (PST)
-Subject: Re: [PATCH v17 5/6] soc: mediatek: cmdq: add cmdq_dev_get_client_reg
- function
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
- CK HU <ck.hu@mediatek.com>
-References: <20191121015410.18852-1-bibby.hsieh@mediatek.com>
- <20191121015410.18852-6-bibby.hsieh@mediatek.com>
+ Sat, 14 Dec 2019 14:07:32 -0800 (PST)
+Subject: Re: [PATCH] soc: mediatek: cmdq: delete not used define
+To: matthias.bgg@kernel.org, bibby.hsieh@mediatek.com
+References: <20191211185950.31358-1-matthias.bgg@kernel.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -153,16 +150,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <d9a66b89-a79b-0a42-401e-5c032c0a0072@gmail.com>
-Date: Sat, 14 Dec 2019 22:57:53 +0100
+Message-ID: <9a092a8e-8eb8-ff83-6ace-ab9bc0ea5681@gmail.com>
+Date: Sat, 14 Dec 2019 23:07:31 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20191121015410.18852-6-bibby.hsieh@mediatek.com>
+In-Reply-To: <20191211185950.31358-1-matthias.bgg@kernel.org>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191214_135757_528322_FDCE81B7 
-X-CRM114-Status: GOOD (  19.08  )
+X-CRM114-CacheID: sfid-20191214_140735_921207_D6BEC91F 
+X-CRM114-Status: GOOD (  14.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -174,10 +171,8 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
- srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
- Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -185,102 +180,36 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 21/11/2019 02:54, Bibby Hsieh wrote:
-> GCE cannot know the register base address, this function
-> can help cmdq client to get the cmdq_client_reg structure.
+On 11/12/2019 19:59, matthias.bgg@kernel.org wrote:
+> From: Matthias Brugger <mbrugger@suse.com>
 > 
-> Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> Reviewed-by: Houlong Wei <houlong.wei@mediatek.com>
+> Define CMDQ_EOC_CMD was actually never used. Delete it.
+> 
+> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+> 
 
 Applied to v5.5-next/soc
 
-Thanks!
+Thanks for the reviews!
 
 > ---
->  drivers/soc/mediatek/mtk-cmdq-helper.c | 29 ++++++++++++++++++++++++++
->  include/linux/soc/mediatek/mtk-cmdq.h  | 21 +++++++++++++++++++
->  2 files changed, 50 insertions(+)
+> 
+>  drivers/soc/mediatek/mtk-cmdq-helper.c | 2 --
+>  1 file changed, 2 deletions(-)
 > 
 > diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index 9094fda5a8fe..9add0fd5fa6c 100644
+> index 3c82de5f9417..1127c19c4e91 100644
 > --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
 > +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -28,6 +28,35 @@ struct cmdq_instruction {
->  	u8 op;
->  };
+> @@ -12,8 +12,6 @@
+>  #define CMDQ_ARG_A_WRITE_MASK	0xffff
+>  #define CMDQ_WRITE_ENABLE_MASK	BIT(0)
+>  #define CMDQ_EOC_IRQ_EN		BIT(0)
+> -#define CMDQ_EOC_CMD		((u64)((CMDQ_CODE_EOC << CMDQ_OP_CODE_SHIFT)) \
+> -				<< 32 | CMDQ_EOC_IRQ_EN)
 >  
-> +int cmdq_dev_get_client_reg(struct device *dev,
-> +			    struct cmdq_client_reg *client_reg, int idx)
-> +{
-> +	struct of_phandle_args spec;
-> +	int err;
-> +
-> +	if (!client_reg)
-> +		return -ENOENT;
-> +
-> +	err = of_parse_phandle_with_fixed_args(dev->of_node,
-> +					       "mediatek,gce-client-reg",
-> +					       3, idx, &spec);
-> +	if (err < 0) {
-> +		dev_err(dev,
-> +			"error %d can't parse gce-client-reg property (%d)",
-> +			err, idx);
-> +
-> +		return err;
-> +	}
-> +
-> +	client_reg->subsys = (u8)spec.args[0];
-> +	client_reg->offset = (u16)spec.args[1];
-> +	client_reg->size = (u16)spec.args[2];
-> +	of_node_put(spec.np);
-> +
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL(cmdq_dev_get_client_reg);
-> +
 >  static void cmdq_client_timeout(struct timer_list *t)
 >  {
->  	struct cmdq_client *client = from_timer(client, t, timer);
-> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-> index 92bd5b5c6341..a74c1d5acdf3 100644
-> --- a/include/linux/soc/mediatek/mtk-cmdq.h
-> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-> @@ -15,6 +15,12 @@
->  
->  struct cmdq_pkt;
->  
-> +struct cmdq_client_reg {
-> +	u8 subsys;
-> +	u16 offset;
-> +	u16 size;
-> +};
-> +
->  struct cmdq_client {
->  	spinlock_t lock;
->  	u32 pkt_cnt;
-> @@ -24,6 +30,21 @@ struct cmdq_client {
->  	u32 timeout_ms; /* in unit of microsecond */
->  };
->  
-> +/**
-> + * cmdq_dev_get_client_reg() - parse cmdq client reg from the device
-> + *			       node of CMDQ client
-> + * @dev:	device of CMDQ mailbox client
-> + * @client_reg: CMDQ client reg pointer
-> + * @idx:	the index of desired reg
-> + *
-> + * Return: 0 for success; else the error code is returned
-> + *
-> + * Help CMDQ client parsing the cmdq client reg
-> + * from the device node of CMDQ client.
-> + */
-> +int cmdq_dev_get_client_reg(struct device *dev,
-> +			    struct cmdq_client_reg *client_reg, int idx);
-> +
->  /**
->   * cmdq_mbox_create() - create CMDQ mailbox client and channel
->   * @dev:	device of CMDQ mailbox client
 > 
 
 _______________________________________________
