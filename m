@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2309DC43603
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Dec 2019 23:40:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8257AC43603
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Dec 2019 23:41:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E5E8E20706
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Dec 2019 23:40:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 522CD20706
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Dec 2019 23:41:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="akqN/AZW";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="rLfcgXMr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E5E8E20706
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WRVPx5mS";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="r5hCX8z/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 522CD20706
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,52 +27,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bq3p+NFiIGYaNylST25djUXeYPHqk1cloY1LJCDta4w=; b=akqN/AZWzhl3y+
-	8LIuisDCTPrh6FSktdEF4hneRYdQx+1egSD0gypwvOazPBWDMwiVccOQYBm4G22VoLqcOxrAEl5vK
-	NVrMKQk5vQDDgoCvbiLtUxkzX8pbKyA7l5xC84XfyWCy0Ni7LGjxAQ/kbhfgy7u0Y7eOJ1m6ZHnai
-	iyBuMv5AGhLUwgUL6LstkdOZenkZA3Y4++lNnITXYPqizdSEqgCP92LyzIPyy4Gq20c6TSN1zSPFq
-	l2oxKYBBnzQZS6yjdwZmpW/cBPaLDRJc8wTDBAim9Ww+pmBc0fvJi+Rc1hOpdXOuEhGhMH7JPOUYw
-	1UA+IrmaneCJ5m4L7K0w==;
+	List-Owner; bh=UcQUr7c4W77nAZaB4N+e4mItcH5+H7a9zCdQkmbYr/4=; b=WRVPx5mSRK8WG+
+	+ISaH3SNEd4u8e9JXnoWt+fseOnqmGL5oX322ZgGDu3pvYzO+L2m9qjFDeFOe1w6Z5Z2wlvAfptoy
+	EpYUOqecb6xceApqUbIO4tg6PGOTK2cAWzp0D//TX4qHKd72eXlPdses5lTl9WRQgYbq5h12WvfgP
+	8OXK67TqWwS8vW7d8UONGVR4/Kjq6XIMY4Lw1VIpZGG5PnzFv+2oM7mvnEeyOYz+SlLG/goGBIHeU
+	tWPuY4NJ3FI3BadQ3+MBvzmJwRNiOc/d94b1hgUKmoHrGV9bWXEg58eDNdEkREnQZEUPy5bNx/Yct
+	2cc5E+sjpIaoimh6we4A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1igH1S-0003Dk-BV; Sat, 14 Dec 2019 23:40:30 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1igH1o-0003Yq-Fk; Sat, 14 Dec 2019 23:40:52 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1igH1P-0003DH-IM; Sat, 14 Dec 2019 23:40:28 +0000
-Received: by mail-wr1-x442.google.com with SMTP id z7so2814955wrl.13;
- Sat, 14 Dec 2019 15:40:26 -0800 (PST)
+ id 1igH1l-0003XG-Eu; Sat, 14 Dec 2019 23:40:51 +0000
+Received: by mail-wm1-x341.google.com with SMTP id p17so2695604wmb.0;
+ Sat, 14 Dec 2019 15:40:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Gq6DPQTedWoJ2EC52Yru0BCO1bz45zBjv1rmkjo/4v8=;
- b=rLfcgXMrH7xKBAVOTkHe3IjrNdUql1S9ypnlrbWqij2fBbXtqqm5KBVsHwXk0ipBoh
- uwpUDlz7s1aah9j7d8KZ+DbrZxdCg5asvJdLh9BQcs0RhICFj1gb0HskjphR6GkZLPem
- qdrjKcdGHkLu14eAsRnKRmUSAXdw5RxRUtvV0ipTu2QbYYUnlWKI8Jx5NeD2m27oiZJu
- luPuY6WsxRIzn+CEUmD9yrqyR354kkg6fil9e3XVnxRNOsWozeekUSP6VVYJUQnNQNVV
- nTGOgwqzAULWtjjmzoIeDA1Y5xVsXpsBmd2Cpd2PimimUoMZEALxPipDpq3AhhK0VU7k
- /mWQ==
+ bh=HK4ZUk2RrQbJn9u/ZAGcwGNg99C7gN0OBa5d5+v6ey4=;
+ b=r5hCX8z/38dPb5myme7epOIigAdO+zD5iP/de51ZhIKk/n0KMmwHEM9rtiFL9c0fII
+ PSFGcAdJVH8PeUiWc9UjSC9Vmgp4CDCbjLYRjHtzURBgjwN2JTdhk2LtzEek5gajoJPI
+ 6/IyEkG3i2d+ScHxjOSWeB0/iHkFYhPgc2zLEQg/onuKyI0buFZ5mmzYjc0E940eWayE
+ MkCxWFszc/b1PbhrYt4rNm2bhKTkQoycGKJWrlh+BQwpNyG6ZE2q8L1rXoVbVLotAFKb
+ Sp2eWNwjy9krShe2fYFP63UyqqWCe4vrB3Znv6ebUsBIOVjnPT+RKgHJtMS1R9rnJjlu
+ auNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=Gq6DPQTedWoJ2EC52Yru0BCO1bz45zBjv1rmkjo/4v8=;
- b=mJi2yy2fbYHQVNNCpA4oUS5ipNJ72cTIeVz5UtnZIrkZVGHUcMR7AyMKx+mq46spvB
- 7Ur+U9p92jaJ7oWCX8gLB7VrI3B2uWjSt/YEgnU70u+cFJLqZU7ngg8K3hNigI4rc/k2
- EgJCg5uzJBNDuL0irXPINv3wvRq2DuXKWqrGEgL5mKh87XGY6VAAZ1FRbyxWLgdsA4hb
- z3kSuqQM+4am2ukrllltmCZZJSpihtIOITQ0kTQnE4JNqRzlosKyTLapGxsTbzoW76pA
- 83VB2aE/191fwK218lNbxHeix6kXd44UvIrLhbUYxeTLwz99NSkA8ztafgDa82R53s3i
- /E4A==
-X-Gm-Message-State: APjAAAU4WkadQpUub7usxB4GUoDY5aPBe7xXwXdlm2bGcpA7FD+djy8W
- pa7Io7cfoWnP7U+hYvNAVQ4=
-X-Google-Smtp-Source: APXvYqwImijF0mNiLbAGYtl7RXxSNZPJlyUMo6935CXed0MNbkIxlsxlt21jOCaLbFTlsEjo0+YjdA==
-X-Received: by 2002:adf:b648:: with SMTP id i8mr21601678wre.91.1576366825595; 
- Sat, 14 Dec 2019 15:40:25 -0800 (PST)
+ bh=HK4ZUk2RrQbJn9u/ZAGcwGNg99C7gN0OBa5d5+v6ey4=;
+ b=jsqwKrDx8fysyNd545hdYhC4SbO6+2GcXE7Gp7AeCJIUBQtXNjeBKUCSZOmA7TIfrr
+ 2aFxlZylw6b6BVYkibUUVqnIivDxtrMwO0IQMZcFMm/mdTLF59abK1vhfVhigG7GAjbr
+ UqYRpEivPiZ1PoiMxE6xncMvWS4Q99QaoFbbWvAwU5GLtTvWnHP8qQuYYqN4SzOBjJUN
+ 1SY7hg0S6YAQY1Mr4gXkYqgIbM394TzwsCVbh8Vt6cUIvPz9Vr0SeSfjuPnP61KtsT0K
+ /FpJ7wuWBEF4Wm6DlPJ2T6CWTbQR2f1RUfhp8FJjvr3O3t4AIL4kItDClcM2l/6kNv1i
+ 2MFA==
+X-Gm-Message-State: APjAAAWh/ewNrfp1fsl8t8jgt0QigNVnapt1Ztklv5a+Ft1RisuzavWi
+ rLOU3Ku7PYt05J61UYcg8qY=
+X-Google-Smtp-Source: APXvYqxoPqTJIx5C5j0+yQRP9NWOQKspY2Cnh9arhNt/uS4XxdfYvtt1/ywSyupEAX8C5roQzCYbvA==
+X-Received: by 2002:a1c:f60f:: with SMTP id w15mr21165036wmc.132.1576366847786; 
+ Sat, 14 Dec 2019 15:40:47 -0800 (PST)
 Received: from ziggy.stardust ([95.169.225.199])
- by smtp.gmail.com with ESMTPSA id a1sm15598559wrr.80.2019.12.14.15.40.24
+ by smtp.gmail.com with ESMTPSA id m7sm15443988wma.39.2019.12.14.15.40.46
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 14 Dec 2019 15:40:24 -0800 (PST)
-Subject: Re: [PATCH v6 3/8] dt-bindings: mediatek: add MT6765 power dt-bindings
+ Sat, 14 Dec 2019 15:40:47 -0800 (PST)
+Subject: Re: [PATCH v6 6/8] soc: mediatek: add MT6765 scpsys and subdomain
+ support
 To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
  Marc Zyngier <marc.zyngier@arm.com>, Ryder Lee <ryder.lee@mediatek.com>,
  Stephen Boyd <sboyd@kernel.org>, Sean Wang <sean.wang@mediatek.com>,
@@ -80,7 +81,7 @@ To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <1562924653-10056-1-git-send-email-macpaul.lin@mediatek.com>
- <1562924653-10056-4-git-send-email-macpaul.lin@mediatek.com>
+ <1562924653-10056-7-git-send-email-macpaul.lin@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -156,16 +157,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <829dc506-ca3d-174b-11dc-7b948e5344bb@gmail.com>
-Date: Sun, 15 Dec 2019 00:40:23 +0100
+Message-ID: <bdadcb15-7bbc-11a9-5780-edcb984b051a@gmail.com>
+Date: Sun, 15 Dec 2019 00:40:46 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <1562924653-10056-4-git-send-email-macpaul.lin@mediatek.com>
+In-Reply-To: <1562924653-10056-7-git-send-email-macpaul.lin@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191214_154027_635866_E78B012E 
-X-CRM114-Status: GOOD (  17.69  )
+X-CRM114-CacheID: sfid-20191214_154049_501408_1C49A394 
+X-CRM114-Status: GOOD (  17.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -190,74 +191,182 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 12/07/2019 11:43, Macpaul Lin wrote:
 > From: Mars Cheng <mars.cheng@mediatek.com>
 > 
-> This adds power dt-bindings for MT6765
+> This adds scpsys support for MT6765
+> Add subdomain support for MT6765:
+> isp, mm, connsys, mfg, and cam.
 > 
 > Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
 > Signed-off-by: Owen Chen <owen.chen@mediatek.com>
 > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
 
 Applied to v5.5-next/soc
 
-Sorry for the delay
-
 > ---
->  .../devicetree/bindings/soc/mediatek/scpsys.txt    |  6 ++++++
->  include/dt-bindings/power/mt6765-power.h           | 14 ++++++++++++++
->  2 files changed, 20 insertions(+)
->  create mode 100644 include/dt-bindings/power/mt6765-power.h
+>  drivers/soc/mediatek/mtk-scpsys.c | 130 ++++++++++++++++++++++++++++++
+>  1 file changed, 130 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> index 00eab7e6ff22..6109b4992522 100644
-> --- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> +++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> @@ -10,6 +10,7 @@ domain control.
->  The driver implements the Generic PM domain bindings described in
->  power/power_domain.txt. It provides the power domains defined in
->  - include/dt-bindings/power/mt8173-power.h
-> +- include/dt-bindings/power/mt6765-power.h
->  - include/dt-bindings/power/mt6797-power.h
->  - include/dt-bindings/power/mt2701-power.h
->  - include/dt-bindings/power/mt2712-power.h
-> @@ -20,6 +21,7 @@ Required properties:
->  - compatible: Should be one of:
->  	- "mediatek,mt2701-scpsys"
->  	- "mediatek,mt2712-scpsys"
-> +	- "mediatek,mt6765-scpsys"
->  	- "mediatek,mt6797-scpsys"
->  	- "mediatek,mt7622-scpsys"
->  	- "mediatek,mt7623-scpsys", "mediatek,mt2701-scpsys": For MT7623 SoC
-> @@ -38,6 +40,10 @@ Required properties:
->                        enabled before releasing bus protection.
->  	Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
->  	Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
-> +	Required clocks for MT6765: MUX: "mm", "mfg"
-> +				    CG: "mm-0", "mm-1", "mm-2", "mm-3", "isp-0",
-> +					"isp-1", "cam-0", "cam-1", "cam-2",
-> +					"cam-3","cam-4"
->  	Required clocks for MT6797: "mm", "mfg", "vdec"
->  	Required clocks for MT7622 or MT7629: "hif_sel"
->  	Required clocks for MT7623A: "ethif"
-> diff --git a/include/dt-bindings/power/mt6765-power.h b/include/dt-bindings/power/mt6765-power.h
-> new file mode 100644
-> index 000000000000..d347b4ee9eed
-> --- /dev/null
-> +++ b/include/dt-bindings/power/mt6765-power.h
-> @@ -0,0 +1,14 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +#ifndef _DT_BINDINGS_POWER_MT6765_POWER_H
-> +#define _DT_BINDINGS_POWER_MT6765_POWER_H
+> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> index ea5a221a16e9..ff124c514e9c 100644
+> --- a/drivers/soc/mediatek/mtk-scpsys.c
+> +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> @@ -16,6 +16,7 @@
+>  
+>  #include <dt-bindings/power/mt2701-power.h>
+>  #include <dt-bindings/power/mt2712-power.h>
+> +#include <dt-bindings/power/mt6765-power.h>
+>  #include <dt-bindings/power/mt6797-power.h>
+>  #include <dt-bindings/power/mt7622-power.h>
+>  #include <dt-bindings/power/mt7623a-power.h>
+> @@ -869,6 +870,120 @@ static const struct scp_subdomain scp_subdomain_mt2712[] = {
+>  	{MT2712_POWER_DOMAIN_MFG_SC2, MT2712_POWER_DOMAIN_MFG_SC3},
+>  };
+>  
+> +/*
+> + * MT6765 power domain support
+> + */
+> +#define SPM_PWR_STATUS_MT6765			0x0180
+> +#define SPM_PWR_STATUS_2ND_MT6765		0x0184
 > +
-> +#define MT6765_POWER_DOMAIN_CONN		0
-> +#define MT6765_POWER_DOMAIN_MM			1
-> +#define MT6765_POWER_DOMAIN_MFG_ASYNC		2
-> +#define MT6765_POWER_DOMAIN_ISP			3
-> +#define MT6765_POWER_DOMAIN_MFG			4
-> +#define MT6765_POWER_DOMAIN_MFG_CORE0		5
-> +#define MT6765_POWER_DOMAIN_CAM			6
-> +#define MT6765_POWER_DOMAIN_VCODEC		7
+> +static const struct scp_domain_data scp_domain_data_mt6765[] = {
+> +	[MT6765_POWER_DOMAIN_VCODEC] = {
+> +		.name = "vcodec",
+> +		.sta_mask = BIT(26),
+> +		.ctl_offs = 0x300,
+> +		.sram_pdn_bits = GENMASK(8, 8),
+> +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> +	},
+> +	[MT6765_POWER_DOMAIN_ISP] = {
+> +		.name = "isp",
+> +		.sta_mask = BIT(5),
+> +		.ctl_offs = 0x308,
+> +		.sram_pdn_bits = GENMASK(8, 8),
+> +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> +		.subsys_clk_prefix = "isp",
+> +		.bp_table = {
+> +			BUS_PROT(IFR_TYPE, 0x2A8, 0x2AC, 0, 0x258,
+> +				BIT(20), BIT(20)),
+> +			BUS_PROT(SMI_TYPE, 0x3C4, 0x3C8, 0, 0x3C0,
+> +				BIT(2), BIT(2)),
+> +		},
+> +	},
+> +	[MT6765_POWER_DOMAIN_MM] = {
+> +		.name = "mm",
+> +		.sta_mask = BIT(3),
+> +		.ctl_offs = 0x30C,
+> +		.sram_pdn_bits = GENMASK(8, 8),
+> +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> +		.basic_clk_id = {"mm"},
+> +		.subsys_clk_prefix = "mm",
+> +		.bp_table = {
+> +			BUS_PROT(IFR_TYPE, 0x2A8, 0x2AC, 0, 0x258,
+> +				BIT(16) | BIT(17), BIT(16) | BIT(17)),
+> +			BUS_PROT(IFR_TYPE, 0x2A0, 0x2A4, 0, 0x228,
+> +				BIT(10) | BIT(11), BIT(10) | BIT(11)),
+> +			BUS_PROT(IFR_TYPE, 0x2A0, 0x2A4, 0, 0x228,
+> +				BIT(1) | BIT(2), BIT(1) | BIT(2)),
+> +		},
+> +	},
+> +	[MT6765_POWER_DOMAIN_CONN] = {
+> +		.name = "conn",
+> +		.sta_mask = BIT(1),
+> +		.ctl_offs = 0x32C,
+> +		.sram_pdn_bits = 0,
+> +		.sram_pdn_ack_bits = 0,
+> +		.bp_table = {
+> +			BUS_PROT(IFR_TYPE, 0x2A0, 0x2A4, 0, 0x228,
+> +				BIT(13), BIT(13)),
+> +			BUS_PROT(IFR_TYPE, 0x2A8, 0x2AC, 0, 0x258,
+> +				BIT(18), BIT(18)),
+> +			BUS_PROT(IFR_TYPE, 0x2A0, 0x2A4, 0, 0x228,
+> +				BIT(14) | BIT(16), BIT(14) | BIT(16)),
+> +		},
+> +	},
+> +	[MT6765_POWER_DOMAIN_MFG_ASYNC] = {
+> +		.name = "mfg_async",
+> +		.sta_mask = BIT(23),
+> +		.ctl_offs = 0x334,
+> +		.sram_pdn_bits = 0,
+> +		.sram_pdn_ack_bits = 0,
+> +		.basic_clk_id = {"mfg"},
+> +	},
+> +	[MT6765_POWER_DOMAIN_MFG] = {
+> +		.name = "mfg",
+> +		.sta_mask = BIT(4),
+> +		.ctl_offs = 0x338,
+> +		.sram_pdn_bits = GENMASK(8, 8),
+> +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> +		.bp_table = {
+> +			BUS_PROT(IFR_TYPE, 0x2A0, 0x2A4, 0, 0x228,
+> +				BIT(25), BIT(25)),
+> +			BUS_PROT(IFR_TYPE, 0x2A0, 0x2A4, 0, 0x228,
+> +				BIT(21) | BIT(22), BIT(21) | BIT(22)),
+> +		}
+> +	},
+> +	[MT6765_POWER_DOMAIN_CAM] = {
+> +		.name = "cam",
+> +		.sta_mask = BIT(25),
+> +		.ctl_offs = 0x344,
+> +		.sram_pdn_bits = GENMASK(8, 9),
+> +		.sram_pdn_ack_bits = GENMASK(12, 13),
+> +		.subsys_clk_prefix = "cam",
+> +		.bp_table = {
+> +			BUS_PROT(IFR_TYPE, 0x2A8, 0x2AC, 0, 0x258,
+> +				BIT(19) | BIT(21), BIT(19) | BIT(21)),
+> +			BUS_PROT(IFR_TYPE, 0x2A0, 0x2A4, 0, 0x228,
+> +				BIT(20), BIT(20)),
+> +			BUS_PROT(SMI_TYPE, 0x3C4, 0x3C8, 0, 0x3C0,
+> +				BIT(3), BIT(3)),
+> +		}
+> +	},
+> +	[MT6765_POWER_DOMAIN_MFG_CORE0] = {
+> +		.name = "mfg_core0",
+> +		.sta_mask = BIT(7),
+> +		.ctl_offs = 0x34C,
+> +		.sram_pdn_bits = GENMASK(8, 8),
+> +		.sram_pdn_ack_bits = GENMASK(12, 12),
+> +	},
+> +};
 > +
-> +#endif /* _DT_BINDINGS_POWER_MT6765_POWER_H */
+> +static const struct scp_subdomain scp_subdomain_mt6765[] = {
+> +	{MT6765_POWER_DOMAIN_MM, MT6765_POWER_DOMAIN_CAM},
+> +	{MT6765_POWER_DOMAIN_MM, MT6765_POWER_DOMAIN_ISP},
+> +	{MT6765_POWER_DOMAIN_MM, MT6765_POWER_DOMAIN_VCODEC},
+> +	{MT6765_POWER_DOMAIN_MFG_ASYNC, MT6765_POWER_DOMAIN_MFG},
+> +	{MT6765_POWER_DOMAIN_MFG, MT6765_POWER_DOMAIN_MFG_CORE0},
+> +};
+> +
+>  /*
+>   * MT6797 power domain support
+>   */
+> @@ -1363,6 +1478,18 @@ static const struct scp_soc_data mt2712_data = {
+>  	.bus_prot_reg_update = false,
+>  };
+>  
+> +static const struct scp_soc_data mt6765_data = {
+> +	.domains = scp_domain_data_mt6765,
+> +	.num_domains = ARRAY_SIZE(scp_domain_data_mt6765),
+> +	.subdomains = scp_subdomain_mt6765,
+> +	.num_subdomains = ARRAY_SIZE(scp_subdomain_mt6765),
+> +	.regs = {
+> +		.pwr_sta_offs = SPM_PWR_STATUS_MT6765,
+> +		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND_MT6765,
+> +	},
+> +	.bus_prot_reg_update = true,
+> +};
+> +
+>  static const struct scp_soc_data mt6797_data = {
+>  	.domains = scp_domain_data_mt6797,
+>  	.num_domains = ARRAY_SIZE(scp_domain_data_mt6797),
+> @@ -1429,6 +1556,9 @@ static const struct of_device_id of_scpsys_match_tbl[] = {
+>  	}, {
+>  		.compatible = "mediatek,mt2712-scpsys",
+>  		.data = &mt2712_data,
+> +	}, {
+> +		.compatible = "mediatek,mt6765-scpsys",
+> +		.data = &mt6765_data,
+>  	}, {
+>  		.compatible = "mediatek,mt6797-scpsys",
+>  		.data = &mt6797_data,
 > 
 
 _______________________________________________
