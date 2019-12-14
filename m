@@ -2,75 +2,86 @@ Return-Path: <SRS0=Zwng=2E=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 77D4EC43603
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Dec 2019 11:26:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ECD31C43603
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Dec 2019 17:55:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4BA6720706
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Dec 2019 11:26:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B96EA214D8
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Dec 2019 17:55:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="o2w3AUlQ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Q1snk9PL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4BA6720706
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MAz0ETjA";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="gHnjEtAC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B96EA214D8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=BRUfIQHBynCKYCEUcexe8addPYiJHRvmDUfVfBduO98=; b=o2w3AUlQIUHlOa
-	5iUVXsSJeCalzyG7JdZYDGOsUdrUT/OCdDtdDhCuY8rluKp2X3HEC19I6/JD3hyl4441QsHFerQ8+
-	KwKxbmO+tKuGIcWEki+oQRBmmDpMJ08Ze38rbW2MDEasbShN14FIJjudD2lQ5FqXvhearwXmIql4t
-	gxM8hZdo0XuUsa43K8BbNXRNdvZvps0PrHLXJ+lV4G6ep3jmer22KcXv87xS2wG2K6acP6YuJrXMC
-	S2tM6h3rhbztrpzy89IGpTKb+iG7GC3wUArGsFzvfYb+aRpZm3Hxflogk9H5KhCYr+D3lWMjii4iW
-	MmvpV3TrUTKgpfh/es8g==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=M3+fRKX/h/h+IPFhqcaWMq/bfOblJKYmgHMEkJ2M/84=; b=MAz
+	0ETjABqxS13QipZ4esIQRVDVNubmu/zJhhFUt+EDxnynIgCq++xSn0mIkjyJqGeiQx3/Bmjk3OWBc
+	WaV9Faae74P0G3kakQ3D2TKqytvrzxfLRmkC86rJoVknydBhOLOCqx3jEyF6qOD+PTmKZKc3RHvB+
+	jbyPpfeC0J9kVuBX+ORi2ytR66fNvnGYzgtGleJrVxFEtMU2hvEOnhpBICe/nL4dRqnNCcwIsNcnz
+	IIGE7HerhfycbqWI1/a0jruhN7jPWdd8SyElk/dh+sUj9U0WT5JB+sNu2ey0xi3K1/6Af+mXuZ6aA
+	JaLSsgEoYg4hJKxOw5mewND2Jum4mGA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ig5Yl-0003W0-Gk; Sat, 14 Dec 2019 11:26:07 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1igBdP-0004xu-Rv; Sat, 14 Dec 2019 17:55:19 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ig5Yh-0003UJ-Uh
- for linux-mediatek@lists.infradead.org; Sat, 14 Dec 2019 11:26:05 +0000
-X-UUID: 190e4aa909db4eedac83f1c264e14e76-20191214
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=tu9Jxro/WRqZ8zFULZtR4PTpeFKrsiSb8i5Fjp7K8r0=; 
- b=Q1snk9PLCyWms+mrI6Y86hxirL+HOWCY1RYtpTDrJbWTwyBoxo4gLIHIF8mV6bZxOI5PBqK29gOXOMnmhMKY73q0m79flPKkggEa3GJCOyr1EfnNC9u6+DZdUvOnDgzccDJ0AUhZPHTq2H1yFdII2FuITwq23RKVXfXX6DKbBAU=;
-X-UUID: 190e4aa909db4eedac83f1c264e14e76-20191214
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <shayne.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 673563318; Sat, 14 Dec 2019 03:25:59 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sat, 14 Dec 2019 03:27:03 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sat, 14 Dec 2019 19:25:55 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Sat, 14 Dec 2019 19:25:14 +0800
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-Subject: [PATCH] mt76: do not overwrite max_tx_fragments if it has been set
-Date: Sat, 14 Dec 2019 19:22:04 +0800
-Message-ID: <20191214112204.32701-1-shayne.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-MIME-Version: 1.0
-X-TM-SNTS-SMTP: 6C614476A65735D8D959C8976F109021CB8C575DD9BAB6DA3602F85CBB2D2B3C2000:8
-X-MTK: N
+ id 1igBd0-0003O8-3p; Sat, 14 Dec 2019 17:54:55 +0000
+Received: by mail-pg1-x541.google.com with SMTP id 6so1198605pgk.0;
+ Sat, 14 Dec 2019 09:54:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=HUgbRO2BhcAt34RLIr2Su6ppZQ/Nd1zKa7NZkK38qdo=;
+ b=gHnjEtACweKJQ9KxtQ461Zgr7NfGqheFDsRZTRRJFz6YFL8wuergs72JfrcnO77sdJ
+ /QS7UPm1Bg4iIc3NujE4sEMdigb/F/ubMD4/HZVOB5uT9H+42YKgm8+veKx3a8YgFdtN
+ 4jggFFFOQRkLhxlPZm6C6OxcyQ1QbRzAyrzeiBX8bXkva7ITvJqNDVSY0Fae7CSC21vy
+ JP8PdkfrraxJdDi8nNQMD4jxIHdZTp8NmiB1F0c7GS7VpvR2GLV2CyfBpXw8hFKCMdY4
+ 5RyngV4Optzg3+dljoTt0tZeJ5RhogtepGPUJ1LqLD44vd/D1CspHKleJVWmOwLZLop4
+ BhsA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=HUgbRO2BhcAt34RLIr2Su6ppZQ/Nd1zKa7NZkK38qdo=;
+ b=fnase88RwqYVL+M9Et1ssmcIu+f9UHymY4AL5WrK/mU3w8r60F65duj7Kf3S/anVMc
+ wkgVWL4DKKhdN/CATJF1D4GnSkoOSk66E0Y21XG07MY3nt2hWJGyjnXbE4ORuehMKdmU
+ pF2vH7eLMhHyyDK9h/Ks0fm5lXnIQjKl3ow/K9F6IGB2sIc9qQ6xnuKkYxU9kO/zo1kb
+ RwVKNGSfpTBQpw6t470yUywfsE6G+5VkxoGb9jxcE5MjZGEi4VbyWZhUVbCDazUNlfe+
+ AHAyB9ajVyC0YPPw+Or2LZNBM5504tVhSuChdgnLBy3IkbER/vqnCpyp0/LBMh/y8GS1
+ P3Mw==
+X-Gm-Message-State: APjAAAUy9wKY2m9bD/R8O/Qasc/fXd63lGZjYZiqN0mfYP8rpRfUCJtg
+ 3YgMILfmGU31kpj+Ew/stwI=
+X-Google-Smtp-Source: APXvYqzczN9kvUPQ7Hc2LxnRw9L6ohEd0G4hrwU0EL1lvwEgBvQanEfnjjXSSKWlr9BOfM41oALivA==
+X-Received: by 2002:a63:111e:: with SMTP id g30mr6840840pgl.251.1576346092717; 
+ Sat, 14 Dec 2019 09:54:52 -0800 (PST)
+Received: from localhost ([2001:19f0:6001:12c8:5400:2ff:fe72:6403])
+ by smtp.gmail.com with ESMTPSA id j16sm16064250pfi.165.2019.12.14.09.54.51
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Sat, 14 Dec 2019 09:54:52 -0800 (PST)
+From: Yangtao Li <tiny.windzz@gmail.com>
+To: khilman@baylibre.com, leoyang.li@nxp.com, khalasa@piap.pl,
+ john@phrozen.org, matthias.bgg@gmail.com, agross@kernel.org,
+ bjorn.andersson@linaro.org, kgene@kernel.org, krzk@kernel.org,
+ mripard@kernel.org, wens@csie.org, ssantosh@kernel.org, jun.nie@linaro.org,
+ shawnguo@kernel.org
+Subject: [PATCH 01/10] soc: sunxi: convert to devm_platform_ioremap_resource
+Date: Sat, 14 Dec 2019 17:54:38 +0000
+Message-Id: <20191214175447.25482-1-tiny.windzz@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191214_032603_994903_C5174959 
-X-CRM114-Status: UNSURE (   7.34  )
+X-CRM114-CacheID: sfid-20191214_095454_178450_502980C9 
+X-CRM114-Status: UNSURE (   9.12  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -83,41 +94,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder
- Lee <ryder.lee@mediatek.com>, linux-wireless <linux-wireless@vger.kernel.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>,
- Roy Luo <royluo@google.com>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Shayne Chen <shayne.chen@mediatek.com>
+Cc: linux-samsung-soc@vger.kernel.org, Yangtao Li <tiny.windzz@gmail.com>,
+ linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
+ linux-arm-kernel@lists.infradead.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Prevent the overwriting of max_tx_fragments if it has already been set
-in chip-specific init routine.
+Use devm_platform_ioremap_resource() to simplify code.
 
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 ---
- drivers/net/wireless/mediatek/mt76/mac80211.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/soc/sunxi/sunxi_sram.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index 00c2a875a596..0c71d671f29a 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -287,7 +287,9 @@ mt76_phy_init(struct mt76_dev *dev, struct ieee80211_hw *hw)
- 	wiphy->available_antennas_rx = dev->phy.antenna_mask;
+diff --git a/drivers/soc/sunxi/sunxi_sram.c b/drivers/soc/sunxi/sunxi_sram.c
+index 1b0d50f36349..f73fbcc73f51 100644
+--- a/drivers/soc/sunxi/sunxi_sram.c
++++ b/drivers/soc/sunxi/sunxi_sram.c
+@@ -320,7 +320,6 @@ static struct regmap_config sunxi_sram_emac_clock_regmap = {
  
- 	hw->txq_data_size = sizeof(struct mt76_txq);
--	hw->max_tx_fragments = 16;
-+
-+	if (!hw->max_tx_fragments)
-+		hw->max_tx_fragments = 16;
+ static int sunxi_sram_probe(struct platform_device *pdev)
+ {
+-	struct resource *res;
+ 	struct dentry *d;
+ 	struct regmap *emac_clock;
+ 	const struct sunxi_sramc_variant *variant;
+@@ -331,8 +330,7 @@ static int sunxi_sram_probe(struct platform_device *pdev)
+ 	if (!variant)
+ 		return -EINVAL;
  
- 	ieee80211_hw_set(hw, SIGNAL_DBM);
- 	ieee80211_hw_set(hw, PS_NULLFUNC_STACK);
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	base = devm_ioremap_resource(&pdev->dev, res);
++	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+ 		return PTR_ERR(base);
+ 
 -- 
 2.17.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
