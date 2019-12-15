@@ -2,72 +2,78 @@ Return-Path: <SRS0=PXBb=2F=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 12214C43603
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2019 10:48:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA8FAC43603
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2019 11:57:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DC0AE206CB
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2019 10:48:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AF874206DA
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2019 11:57:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ewQbcw1c"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DC0AE206CB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="a06+FoTO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF874206DA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HjaZK46HDWPP+KIyc0brRJUL5Ael/H9XYbsGd92A3lE=; b=ewQbcw1c7WzHlh
-	c6rHNvfB27JoUxip9rYzd9teK4S/HIYLinCYkRmLl6VlMcfuobeTKldctdMQlsK/2bBW1Xk9iHEQR
-	ccKRZaRBvPqaLUyQsDvB9WaZzbwr6NNnvipsBaO2Zdx7S2rBbx1D3qyBMedmguUWlLA5fpl99qkZe
-	70Trr4j2uKk94p3CcCPBowUpnKXfN4UZxNkYl0+tJHV4Dae0ljwEgHr9aj670H1Unyv+aXzAeJBX/
-	KGHA2LF4R5h3y34y2ZPS7+ePEZNlhF5eOcw13uLyterzdmZyZoeySQTFXF6MR4nfVCUs+wUOja9eW
-	HVzbyszb+vQ/p7QziE5g==;
+	List-Owner; bh=hM41CLvbzTFcKD6dP8GD+lgyirFAxxiB28sI1lbt4EY=; b=a06+FoTOsar9o1
+	P1bm7UzUS4bUmPCq6aVVaHCiz1CjuB6jvtSIG4rmhJ24I+DP/Nhio7tDLHsg2CF9l1uYF5bGQQnyf
+	SA3kpN6i2hTNxOMvqUVdVipspBxCKh9bs+2QBaCwK/CzUlvOvFVjlo5P3YpuJWBH2IFfeEnUEHBzg
+	ujbdA3a8oaVRbzVguryl8914Briqnn/RYWC04ew8IUg3EE6Q5qfvkpRY+TtGGWWFOFAbOhfcZm3jf
+	ccBzUKrfL+x7oAN6HRqk9Ygewi+CPbuFsobkqe6wNICO6rya1BBag3A20czmq3UF1VqvTZosiRoPW
+	7F2OW9/9IFFUWDXNVbuA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1igRS6-00027t-9L; Sun, 15 Dec 2019 10:48:42 +0000
-Received: from inca-roads.misterjones.org ([213.251.177.50])
+	id 1igSWv-0001IN-Cr; Sun, 15 Dec 2019 11:57:45 +0000
+Received: from mail-ed1-f65.google.com ([209.85.208.65])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1igRS2-00026x-IL; Sun, 15 Dec 2019 10:48:40 +0000
-Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
- helo=why)
- by cheepnis.misterjones.org with esmtpsa (TLSv1.2:AES256-GCM-SHA384:256)
- (Exim 4.80) (envelope-from <maz@kernel.org>)
- id 1igRRq-0007sB-2S; Sun, 15 Dec 2019 11:48:26 +0100
-Date: Sun, 15 Dec 2019 10:48:24 +0000
-From: Marc Zyngier <maz@kernel.org>
+ id 1igSWi-00016s-9I; Sun, 15 Dec 2019 11:57:33 +0000
+Received: by mail-ed1-f65.google.com with SMTP id r21so2788004edq.0;
+ Sun, 15 Dec 2019 03:57:31 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=3bFRjA9UFM72dx5MZDZ0tLg6rOZz8LMmXjc51eyWHQw=;
+ b=Jd5omKNAEbdzRoLRBSesG4YIFt9XY7XkJWQ+J33TenIMsF6yDNaPjrmr33ONsf7bGq
+ LAjpSkqLcsu8oHLJdyQsHCU81+naVIrwF6vRokHrxvYeOA9jIYnXHv7JQZ68kkqRNreb
+ ZsrAeQYrNIOHLDjxUsVCUd2L3bLuq/LAvL9OpL7U2sUBNNxB+r+0qY8+6NSaEnfCcwQx
+ F3b3L2pFbqusIKgieNNJn+H6OvOUkx52qvQodVDADhNDYquKGdptopf1U1IIQ7MUAwZ1
+ WGUKfsx0ZGZ1eg5ynE0TYBqW9CfBsrXIq96j0bU7y517o2743TRNsemOT4aQt1M5FOFE
+ oNLw==
+X-Gm-Message-State: APjAAAXNlkzWoVrvx/3MezBZn+feuUMapGj+6a8mUwqpXOEAbUxpsDvx
+ KRB9pOdkefBS0V+LbAqEEvU=
+X-Google-Smtp-Source: APXvYqwZaqP3BPfUD1WWLgwtYw1XJJ7Zy4zkrjF1M4qRiNjNshTKEWnoyc7zscsZ5R0wuEWiJvnvIw==
+X-Received: by 2002:aa7:d306:: with SMTP id p6mr26042390edq.72.1576411050586; 
+ Sun, 15 Dec 2019 03:57:30 -0800 (PST)
+Received: from kozik-lap ([194.230.155.234])
+ by smtp.googlemail.com with ESMTPSA id l18sm663825edw.59.2019.12.15.03.57.28
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Sun, 15 Dec 2019 03:57:29 -0800 (PST)
+Date: Sun, 15 Dec 2019 12:57:27 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Yangtao Li <tiny.windzz@gmail.com>
-Subject: Re: [PATCH 10/10] soc: qcom: convert to devm_platform_ioremap_resource
-Message-ID: <20191215104824.658889d3@why>
-In-Reply-To: <20191214175447.25482-10-tiny.windzz@gmail.com>
+Subject: Re: [PATCH 02/10] soc: samsung: convert to
+ devm_platform_ioremap_resource
+Message-ID: <20191215115727.GB30973@kozik-lap>
 References: <20191214175447.25482-1-tiny.windzz@gmail.com>
- <20191214175447.25482-10-tiny.windzz@gmail.com>
-Organization: Approximate
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+ <20191214175447.25482-2-tiny.windzz@gmail.com>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 62.31.163.78
-X-SA-Exim-Rcpt-To: tiny.windzz@gmail.com, khilman@baylibre.com,
- leoyang.li@nxp.com, khalasa@piap.pl, john@phrozen.org, matthias.bgg@gmail.com,
- agross@kernel.org, bjorn.andersson@linaro.org, kgene@kernel.org,
- krzk@kernel.org, mripard@kernel.org, wens@csie.org, ssantosh@kernel.org,
- jun.nie@linaro.org, shawnguo@kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
- linux-arm-kernel@lists.infradead.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on cheepnis.misterjones.org);
- SAEximRunCond expanded to false
+Content-Disposition: inline
+In-Reply-To: <20191214175447.25482-2-tiny.windzz@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191215_024838_751053_AD68F9C5 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20191215_035732_380405_417ADEFC 
+X-CRM114-Status: UNSURE (   6.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,65 +85,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: john@phrozen.org, linux-kernel@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, khilman@baylibre.com, krzk@kernel.org,
- wens@csie.org, agross@kernel.org, linux-arm-msm@vger.kernel.org,
- mripard@kernel.org, khalasa@piap.pl, ssantosh@kernel.org,
- matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org,
- bjorn.andersson@linaro.org, linux-arm-kernel@lists.infradead.org,
- shawnguo@kernel.org, linux-mips@vger.kernel.org, leoyang.li@nxp.com,
- kgene@kernel.org, linux-mediatek@lists.infradead.org, jun.nie@linaro.org,
- linuxppc-dev@lists.ozlabs.org
+Cc: linuxppc-dev@lists.ozlabs.org, linux-mips@vger.kernel.org,
+ khilman@baylibre.com, linux-arm-msm@vger.kernel.org, ssantosh@kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ mripard@kernel.org, leoyang.li@nxp.com, linux-samsung-soc@vger.kernel.org,
+ wens@csie.org, agross@kernel.org, khalasa@piap.pl, kgene@kernel.org,
+ john@phrozen.org, matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org,
+ jun.nie@linaro.org, bjorn.andersson@linaro.org, shawnguo@kernel.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 14 Dec 2019 17:54:47 +0000
-Yangtao Li <tiny.windzz@gmail.com> wrote:
-
+On Sat, Dec 14, 2019 at 05:54:39PM +0000, Yangtao Li wrote:
 > Use devm_platform_ioremap_resource() to simplify code.
 > 
 > Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 > ---
->  drivers/soc/qcom/llcc-qcom.c    | 7 +------
->  drivers/soc/qcom/qcom-geni-se.c | 4 +---
->  drivers/soc/qcom/qcom_aoss.c    | 4 +---
->  drivers/soc/qcom/qcom_gsbi.c    | 5 +----
->  drivers/soc/qcom/spm.c          | 4 +---
->  5 files changed, 5 insertions(+), 19 deletions(-)
-> 
-> diff --git a/drivers/soc/qcom/llcc-qcom.c b/drivers/soc/qcom/llcc-qcom.c
-> index 429b5a60a1ba..99e19df76889 100644
-> --- a/drivers/soc/qcom/llcc-qcom.c
-> +++ b/drivers/soc/qcom/llcc-qcom.c
-> @@ -387,7 +387,6 @@ static int qcom_llcc_remove(struct platform_device *pdev)
->  static struct regmap *qcom_llcc_init_mmio(struct platform_device *pdev,
->  		const char *name)
->  {
-> -	struct resource *res;
->  	void __iomem *base;
->  	struct regmap_config llcc_regmap_config = {
->  		.reg_bits = 32,
-> @@ -396,11 +395,7 @@ static struct regmap *qcom_llcc_init_mmio(struct platform_device *pdev,
->  		.fast_io = true,
->  	};
->  
-> -	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, name);
-> -	if (!res)
-> -		return ERR_PTR(-ENODEV);
-> -
-> -	base = devm_ioremap_resource(&pdev->dev, res);
-> +	base = devm_platform_ioremap_resource(pdev, 0);
+>  drivers/soc/samsung/exynos-pmu.c | 4 +---
 
-What guarantees do you have that entry 0 matches name?
+Thanks, applied.
 
-I find these changes pointless: they don't add much to the readability
-or maintainability of the code, and instead introduce creative bugs.
+Best regards,
+Krzysztof
 
-	M.
--- 
-Jazz is not dead. It just smells funny...
 
 _______________________________________________
 Linux-mediatek mailing list
