@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-9.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 47B3DC2D0CB
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2019 17:56:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CE01DC43603
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2019 17:56:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1095924679
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2019 17:56:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A930F24679
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2019 17:56:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sRBi1Xxp";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="VkW7kWPX"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1095924679
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NfCbpQ8L";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="VUB0KVQA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A930F24679
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -28,50 +28,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=eR2G+An1FQ7ee7QHT40Kxv47FY1Gh7Pt5bePV+Im+YY=; b=sRBi1XxpOUhS29Xk3/x3FO4IRg
-	wv0/b33avgBtrb0pc95QF1eM372PJQyVgrEw5EYIl8gxW1TWF3tZRKfOoUXwEHqZaILsCa3LixV1a
-	2yGnobrUcG3eR+e0MHSQuw3/PKhMy0XaDKUs+4f0TwvvQ4nFtfvwa99OgbZigdWM7tkbRmyecsOTW
-	ZJM14AKYx+Rl8HjIKPIHl3MiAZvuB+oxMsRuPkhyd/1LSNj57rJSx+JBv7Wsif1r4R4J4pXpB2ECu
-	Z00pRszmP1WqFB5AsUApCwTZD+3wEjpGAF0EjMvBFc46q7E+SR61f2FJT2TYiZlOvuPe6wTSQJJjq
-	nNWF7kLg==;
+	bh=ZACjpzh+SiKQOyTY1u4VvRQ4a/5ZAiEQ57dJ40QwEGc=; b=NfCbpQ8LJxrcY9GpM8yZaKWBOV
+	o0J+tH13Cg5dH6iq4PzH0RMOnht6z72LK7mzM6bvh8HYWpjMqFSFQz7wXqPc7Q19XFlKVk/XWVG1k
+	jepQkPINcBNc9DtL3UjX2Y5XYS2m8p+HAapgjb8McjVPtXra/prE51RxhCtBTztQa/Ogwp47qu7MO
+	hXztTJzBWEn4738whrUuEHbrZyO0sEAj9FrgPxR7B4flImybtCai/2VwGTnohngM6Cy0EvhIaSYh2
+	Zv/AMr7xDrJBhaZK/ckiDRtX+oASPEGWCOYw99Udz3tIZwG6j3jvtTw/O1n0GGGAi8z/bA1mfOHhN
+	yOKVLYWw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1igY86-0000YL-S8; Sun, 15 Dec 2019 17:56:31 +0000
-Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
+	id 1igY8R-0000nY-6q; Sun, 15 Dec 2019 17:56:51 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1igY3X-0003kv-BB; Sun, 15 Dec 2019 17:51:48 +0000
-Received: by mail-pj1-x1042.google.com with SMTP id n96so1972503pjc.3;
- Sun, 15 Dec 2019 09:51:47 -0800 (PST)
+ id 1igY3d-0003qd-1i; Sun, 15 Dec 2019 17:51:56 +0000
+Received: by mail-pl1-x643.google.com with SMTP id g6so3451908plp.7;
+ Sun, 15 Dec 2019 09:51:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=YhjgtX960UbsjbrvQDkjR25LC0Xp5UzP+rm2Z3AHVDQ=;
- b=VkW7kWPXziC0PIAM0OaTLrvFFbF7v1ufFpviwDay49gsDMIcH+IRBccBJkurcCi4Vq
- q5zOaB1wZls+sDA4pOti1NqA+zCz50hczkno5ZcBXkTH7MAUjtp+hxim8dDi0xM9zlBh
- ORTfc7tfdwMyf44es4S115TlGJAo26zBaga4SP9Y2tm88AQJ8aj2m7/XSID274AaZLms
- r7kAlePWaMqowpfXAbyBnPXOCr/YpBVHULS1GQ8tBd2FKQnh71FuVAqFXVNByMVol0gD
- bv4nHt2lDPvuMrqo5uZe2xwrtq1AVl0Tr5mMHy7rSIm1CxFBmAOLQYeCQ17ker7YtIVV
- /G1Q==
+ bh=/cz4vRUnbRV9SZ3G6wT7uGNBKfnOEqLWr9ZhQq3aPJY=;
+ b=VUB0KVQAHEHprXd8JPg/0jED90d4vxehQR5oM13rBTaAw8YxpSr2SHoeE4jGTI7E22
+ 9CU2zoUYjBTnG3V+h4FvWpk0N4jlhpjp3RLjpQqDiDyO3pz0inFoNokv0y6Fsu0Awb+b
+ M7s6Pjtbd8WVa7wOSJJuhjTi8zjBu2AzhoYEhH4fmQZO8q7pTFpxAYhgqOwQ4eb0W5aG
+ zmAXTggqqLYOk2JsO0UFqjCtuNRE80TkubJxiCWtarkBSzlpDy5d5eZOKISXqW7sd+ap
+ kPsjx2a3CPqG9IkXh3otL1pUVKFSZOoFGepy/lTbYnDJhLyZkz4V+bsRjFtnTv1ABJz3
+ 6zqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=YhjgtX960UbsjbrvQDkjR25LC0Xp5UzP+rm2Z3AHVDQ=;
- b=Ian3PzKiZ1TzvzTEgvifDkDPPi5F72fq6WByrUZK5x1pEsAzlVPGMUMjQhxXDfer+e
- 5oDpTg6qZn3dVS6ZwLMnFTXWPlthTeH3S8OI4vXAcAuZtpXSgQvfntmrKE429YvLexrQ
- 1BKYXqBBboWPIs68LvfE0Al47qvK/70EM/XGdeeeLdVYN9srPlZLvgL6w7UXCDeJgwYA
- xiC+VMaFVtpRUvbDHxk04TV1AALL8w/RIfg15CDCLKPbV719Fhu/E6wFftLOuqDmN+/m
- RfoWayiMzpuSVfzrJ6zAI6ugVLIyyfpzSprBWFyXx/wtoGD2gpT7oBg5D86JN+Gb9u7c
- Gw/A==
-X-Gm-Message-State: APjAAAWq4VKZFq8vpSPwU9YEVznqQCM/8AIhGIAwAIYtz0+R+9nIudwN
- 5Pmo9rvQk0GmeqIBCAtvbEs=
-X-Google-Smtp-Source: APXvYqyFOVnVHQlrCHXl4b4SA8i+eeSI1R8YkDiMXk+XQeJjyOl6YSByuDfOki4oIhQ8Xaa4GARrSg==
-X-Received: by 2002:a17:90a:86c9:: with SMTP id
- y9mr13116519pjv.88.1576432306430; 
- Sun, 15 Dec 2019 09:51:46 -0800 (PST)
+ bh=/cz4vRUnbRV9SZ3G6wT7uGNBKfnOEqLWr9ZhQq3aPJY=;
+ b=DzAQhV7W/31HWtDn9jEfwhGAUVeioOedGsYLg4wXu+C2e6hKSB4BWKBLY4ow735L4T
+ msybYdhI+CgdERjujO7hPq4U0HlpEOs47qyTaq/NsW6yPT1dXbN9+fIC+Qn3Co9rNAdg
+ 3SsCaYcCWZiiHwuYgm1VVgK3WwSPrljPSD1dqsO72KFHX2HffXIH+8rYb6yUhNhHhoDp
+ fV9IVO8j2AUa1b75SZXzTjfJn5VWg9DPkAqYkUY6PJZ6aa8jV4csBTXhdUAOH+t/M9tn
+ /jmAfp1Kbop9n86ySYA0wfxRyoZJ/40GiYsdMiyx5xIe14/6C3FINmag8Gn61keE6mPn
+ mG+w==
+X-Gm-Message-State: APjAAAX2AWwfg66NvdjPWz8Fi7+OeGkBG+MgqX42d5QVICYzMY7Cb/eF
+ 1/bu9Fd27ENXWswWadb9vF8=
+X-Google-Smtp-Source: APXvYqwynwF10fAEJxkpOjzXrYzf6q0kcA5H9tyhmFPNupU2grFmbw3V9ozwvElSbTNjK4798iHyCA==
+X-Received: by 2002:a17:902:d708:: with SMTP id
+ w8mr11897094ply.280.1576432312130; 
+ Sun, 15 Dec 2019 09:51:52 -0800 (PST)
 Received: from localhost ([2001:19f0:6001:12c8:5400:2ff:fe72:6403])
- by smtp.gmail.com with ESMTPSA id p28sm18232181pgb.93.2019.12.15.09.51.45
+ by smtp.gmail.com with ESMTPSA id h3sm19102447pfr.15.2019.12.15.09.51.51
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 15 Dec 2019 09:51:46 -0800 (PST)
+ Sun, 15 Dec 2019 09:51:51 -0800 (PST)
 From: Yangtao Li <tiny.windzz@gmail.com>
 To: manuel.lauss@gmail.com, ulf.hansson@linaro.org, khilman@baylibre.com,
  chaotian.jing@mediatek.com, matthias.bgg@gmail.com, nico@fluxnic.net,
@@ -82,17 +82,15 @@ To: manuel.lauss@gmail.com, ulf.hansson@linaro.org, khilman@baylibre.com,
  yamada.masahiro@socionext.com, tglx@linutronix.de, allison@lohutok.net,
  yoshihiro.shimoda.uh@renesas.com, geert+renesas@glider.be,
  linus.walleij@linaro.org
-Subject: [PATCH 10/13] mmc: sdhci-msm: convert to
- devm_platform_ioremap_resource
-Date: Sun, 15 Dec 2019 17:51:17 +0000
-Message-Id: <20191215175120.3290-10-tiny.windzz@gmail.com>
+Subject: [PATCH 13/13] mmc: au1xmmc: switch to platform_get_irq
+Date: Sun, 15 Dec 2019 17:51:20 +0000
+Message-Id: <20191215175120.3290-13-tiny.windzz@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20191215175120.3290-1-tiny.windzz@gmail.com>
 References: <20191215175120.3290-1-tiny.windzz@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191215_095147_472106_A0033A54 
-X-CRM114-Status: UNSURE (   9.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191215_095153_119417_DAA6CCC7 
+X-CRM114-Status: GOOD (  10.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,36 +112,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use devm_platform_ioremap_resource() to simplify code.
+platform_get_resource(pdev, IORESOURCE_IRQ) is not recommended for
+requesting IRQ's resources, as they can be not ready yet. Using
+platform_get_irq() instead is preferred for getting IRQ even if it
+was not retrieved earlier.
 
 Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 ---
- drivers/mmc/host/sdhci-msm.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ drivers/mmc/host/au1xmmc.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/mmc/host/sdhci-msm.c b/drivers/mmc/host/sdhci-msm.c
-index 3d0bb5e2e09b..6daacef4ceec 100644
---- a/drivers/mmc/host/sdhci-msm.c
-+++ b/drivers/mmc/host/sdhci-msm.c
-@@ -1746,7 +1746,6 @@ static int sdhci_msm_probe(struct platform_device *pdev)
- 	struct sdhci_host *host;
- 	struct sdhci_pltfm_host *pltfm_host;
- 	struct sdhci_msm_host *msm_host;
--	struct resource *core_memres;
- 	struct clk *clk;
- 	int ret;
- 	u16 host_version, core_minor;
-@@ -1847,9 +1846,7 @@ static int sdhci_msm_probe(struct platform_device *pdev)
+diff --git a/drivers/mmc/host/au1xmmc.c b/drivers/mmc/host/au1xmmc.c
+index bc8aeb47a7b4..8823680ca42c 100644
+--- a/drivers/mmc/host/au1xmmc.c
++++ b/drivers/mmc/host/au1xmmc.c
+@@ -984,12 +984,9 @@ static int au1xmmc_probe(struct platform_device *pdev)
+ 		goto out2;
  	}
  
- 	if (!msm_host->mci_removed) {
--		core_memres = platform_get_resource(pdev, IORESOURCE_MEM, 1);
--		msm_host->core_mem = devm_ioremap_resource(&pdev->dev,
--				core_memres);
-+		msm_host->core_mem = devm_platform_ioremap_resource(pdev, 1);
+-	r = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+-	if (!r) {
+-		dev_err(&pdev->dev, "no IRQ defined\n");
++	host->irq = platform_get_irq(pdev, 0);
++	if (host->irq < 0)
+ 		goto out3;
+-	}
+-	host->irq = r->start;
  
- 		if (IS_ERR(msm_host->core_mem)) {
- 			ret = PTR_ERR(msm_host->core_mem);
+ 	mmc->ops = &au1xmmc_ops;
+ 
 -- 
 2.17.1
 
