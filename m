@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-9.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2EC0EC43603
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2019 17:56:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 99C59C43603
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2019 17:56:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0A99824679
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2019 17:56:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 54B2A2467A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2019 17:56:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u2TBitpn";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Vs9JBuJN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0A99824679
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kQW64COa";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="eQhWosuw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 54B2A2467A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -28,50 +28,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=ODyC08bNAtNWfcJyEbBrYbj+OB8qcT9U5wtZwATtKhk=; b=u2TBitpnN6cQcrgxcWP/OPK+1b
-	bSDSp8AkRwJupFotiwOm7CTws6k6Ort89JhAzcF4VXXXMQ1dfNj+Ni4QmZ23qe8ozuYXVxOORj5DR
-	U32fvzqI+V6w8NIYOcUcL7RD3mTK2/UjKPAV0sTYAZgxM+jFlvYFGJykPdKvgTc5OS9COyxWNh55C
-	EZZGw2S1uo57H45x0/W92P4gGkd0P2N6jP6PXRlyLZxnR/0Tvtl7IKyqdllrRRDEpz+aUaTI2BKxj
-	njJu9c4tKvauoe9SbD62daXWfnWRGltW+jpW2OWkK5673LYI0wcpj76S6UtFjXC/5++PXYvEJvh9x
-	kgQTq/FA==;
+	bh=fKhh3BIAmJpuUqOztx1wttvkkcVVhwkx/iRcmMMsN2c=; b=kQW64COa/pianxDMttjNnUZRFu
+	hN+El7XgN8XlUuknGY031so6hq4Ww2yzwQdEu90k4GR8veKIr1Yif4s/ILri4DuFge4SqXOdC+P/d
+	73slFhmHU/8XNBmcfT13s68HLlIDPubjMV5N1e70WbrXBCOTkkQ3PNGLLdDf/BKr8bAyXdoYcyJCK
+	ebjwfs5HrB8iAJOmF4oLUo3sKkXsx/CziXswNfkwarObEKanIIhudpDwBRCRVd34T5w+epmAHIjIT
+	thIfwzKR09j+3nr5tjyWEjuXa74BXpsW9kE+lAjH7w5/fBomIBv4xMHdZ5tafOV+U6w0cHnAYIdtw
+	bA2L1i7g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1igY7V-0008Og-3S; Sun, 15 Dec 2019 17:55:53 +0000
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+	id 1igY8F-0000et-42; Sun, 15 Dec 2019 17:56:39 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1igY3V-0003if-Rl; Sun, 15 Dec 2019 17:51:47 +0000
-Received: by mail-pl1-x641.google.com with SMTP id x13so3450987plr.9;
- Sun, 15 Dec 2019 09:51:45 -0800 (PST)
+ id 1igY3Y-0003mx-RW; Sun, 15 Dec 2019 17:51:50 +0000
+Received: by mail-pg1-x541.google.com with SMTP id b137so2330177pga.6;
+ Sun, 15 Dec 2019 09:51:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=szqF6wBatd141DYcdeo2AKZKHAndczMcysoH1ninemU=;
- b=Vs9JBuJNJgoOVxp/KSDwEkQIgdPDJROFyC0pjCA6tSN96Gz2QLnZcxrIZftP/0vpOz
- 1XRwerz7LUlFA7m7JVRVEYTBhus+FTcNU5oI0GcZKEu28b6bhaRGFeR4UFmyztTAIUsN
- EWfCjHjr0axlnC5vKyu64QiMI/2mzM3bxyhO/CWxAbfoWrJJ3ihzzUkhYUhagoj0nX0S
- a1nUV6UUaWC+yy6bYjA9QctSoc6BiMC3BgFRegMkY03eDkw8o8TGZ5GS+l1mos4+XpVN
- u0rn8oHp6l56e/IojaMT2NqW9UzxqLNcOxntYNN7ZPeRrgnfujsJrFOKPyS7lYMI1cyh
- eLyg==
+ bh=qIcZpVaq+iaWAioOWHH7QyZK8f/ao9N/kVPUnMEajrg=;
+ b=eQhWosuwmegDI3J/X1lPGlAItpCcpP+ZIhdz/qqbfb6orbQFKn4DWfrncu89r+aQbm
+ fwFbVih2JALiHfXd2X1+MCWrWH4RSC4JuF1cg1BlWTEtAfFqst8Rn+lRBAVP0tw0UWvP
+ X4ippjV15+9c/2NDDbj9OjZ4jfMQK2Mw/YkNFEHyUjYZTD77gd1eIeLya1FuM3vgF3P2
+ vjSaBoDB6iSDBMHfu1t+WBZHSPnVmfJXVymcmZy84YNbGOuXhINfETqsvsT8t0aBRps9
+ 0QLO3Lcpmwi5QbvOItENts7vwfPBMP85HHs/BpSvycP+rHMksXVTnIYJDTKTPgTuhqWN
+ m6aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=szqF6wBatd141DYcdeo2AKZKHAndczMcysoH1ninemU=;
- b=AG0sRroQfVyJjA7c2yPPQjBnxtUKQrtPUnQQWpq1styBvPN8J50XlDD18uJkc6x3ON
- /Yb+qRfTGXJeSxLzFaW+6LhGa91ok892zaVbe6i2NFtA8a1WEhgJj6TpIMArzeh3C3xM
- E54HlDYEjzeVcgjlQSPjy/RjUYS2FGtSjBkPDfAhBpzZkOGP9VoA6lYSnVERrChrhpdX
- WQSAXqg5PA2zETFj3+qmDCX87KP0zFjui0+pMD3/UpCc1HVD1rjJIJ9krTM10TODWw7q
- P9DG7tfcVy90EiU8zj6LUVFnp8XAi8IYTtbUubemRyhJKRGuvUbA43Fy2N4kmm/MPkb7
- v3Xw==
-X-Gm-Message-State: APjAAAVQ/HyOWmkxPHzXJBRXI93GMGnqZXPFOBcsvpQuZLKTA5dohYes
- bLtPTwSGnv6f3rt7hca5TKA=
-X-Google-Smtp-Source: APXvYqxLXCEA1K+SbpDYjjsq3TkaS0vAO6JjXHILJhQBtbuyekHgkxOcbQ0IvpAcBqayQz3nTOHFsA==
-X-Received: by 2002:a17:90a:b010:: with SMTP id
- x16mr13570307pjq.130.1576432304351; 
- Sun, 15 Dec 2019 09:51:44 -0800 (PST)
+ bh=qIcZpVaq+iaWAioOWHH7QyZK8f/ao9N/kVPUnMEajrg=;
+ b=lBNWnMUqDLkPSWm5SXtot7MRFzUnvccwT8yL2VlJMELn4rqKJ4TykwiQwMhEDasrO6
+ t67kSy42dnue0RIptz6N5F3hjzFWh8xwvLVp9i864mI1NXGTSAY1ijIgBRvk7Himlm2q
+ bxqM13O1XfVM1+hEIw1AX9fW3Y86oM8slSi194YfvJ1lnurWOKamLrnybqm/axGCZCQm
+ 02CVLwkhOg8k/sZJONPsSEQcpggjxRzM4z5EZajR/REHwLyfzPOX3AxnrFBipIAzXgC2
+ f/Y1WIxkZjsns98V6bwBpQ6wKCCikmmLDzp3+iLe69VZbkzwW46DN0a+C5/WQeI6urY7
+ dhng==
+X-Gm-Message-State: APjAAAXTHb35XitS9dNgzumRCpFu7inWZ91h8uUhI+Jm76jiBGgXcuKY
+ FoyTEgBXob4JDKgKJMf8FXw=
+X-Google-Smtp-Source: APXvYqzMOkkvgyckqiTIpy5X7VqgwsZVaBxnJUyY/NoJodtBNikPzj1CKS0zJ3tx829QCCA+BuuTIA==
+X-Received: by 2002:a62:d444:: with SMTP id u4mr11821902pfl.153.1576432308269; 
+ Sun, 15 Dec 2019 09:51:48 -0800 (PST)
 Received: from localhost ([2001:19f0:6001:12c8:5400:2ff:fe72:6403])
- by smtp.gmail.com with ESMTPSA id 133sm18872446pfy.14.2019.12.15.09.51.43
+ by smtp.gmail.com with ESMTPSA id y76sm19858133pfc.87.2019.12.15.09.51.47
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 15 Dec 2019 09:51:43 -0800 (PST)
+ Sun, 15 Dec 2019 09:51:47 -0800 (PST)
 From: Yangtao Li <tiny.windzz@gmail.com>
 To: manuel.lauss@gmail.com, ulf.hansson@linaro.org, khilman@baylibre.com,
  chaotian.jing@mediatek.com, matthias.bgg@gmail.com, nico@fluxnic.net,
@@ -82,17 +81,15 @@ To: manuel.lauss@gmail.com, ulf.hansson@linaro.org, khilman@baylibre.com,
  yamada.masahiro@socionext.com, tglx@linutronix.de, allison@lohutok.net,
  yoshihiro.shimoda.uh@renesas.com, geert+renesas@glider.be,
  linus.walleij@linaro.org
-Subject: [PATCH 09/13] mmc: sdhci-milbeaut: convert to
- devm_platform_ioremap_resource
-Date: Sun, 15 Dec 2019 17:51:16 +0000
-Message-Id: <20191215175120.3290-9-tiny.windzz@gmail.com>
+Subject: [PATCH 11/13] mmc: mvsdio: convert to devm_platform_ioremap_resource
+Date: Sun, 15 Dec 2019 17:51:18 +0000
+Message-Id: <20191215175120.3290-11-tiny.windzz@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20191215175120.3290-1-tiny.windzz@gmail.com>
 References: <20191215175120.3290-1-tiny.windzz@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191215_095145_995956_34AB0C05 
-X-CRM114-Status: UNSURE (   9.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191215_095148_963728_4A3E228E 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,31 +115,40 @@ Use devm_platform_ioremap_resource() to simplify code.
 
 Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 ---
- drivers/mmc/host/sdhci-milbeaut.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/mmc/host/mvsdio.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/mmc/host/sdhci-milbeaut.c b/drivers/mmc/host/sdhci-milbeaut.c
-index a1aa21b9ae1c..e6245b7bda21 100644
---- a/drivers/mmc/host/sdhci-milbeaut.c
-+++ b/drivers/mmc/host/sdhci-milbeaut.c
-@@ -242,7 +242,6 @@ static int sdhci_milbeaut_probe(struct platform_device *pdev)
- {
- 	struct sdhci_host *host;
- 	struct device *dev = &pdev->dev;
--	struct resource *res;
- 	int irq, ret = 0;
- 	struct f_sdhost_priv *priv;
+diff --git a/drivers/mmc/host/mvsdio.c b/drivers/mmc/host/mvsdio.c
+index 74a0a7fbbf7f..203b61712601 100644
+--- a/drivers/mmc/host/mvsdio.c
++++ b/drivers/mmc/host/mvsdio.c
+@@ -696,16 +696,14 @@ static int mvsd_probe(struct platform_device *pdev)
+ 	struct mmc_host *mmc = NULL;
+ 	struct mvsd_host *host = NULL;
+ 	const struct mbus_dram_target_info *dram;
+-	struct resource *r;
+ 	int ret, irq;
  
-@@ -280,8 +279,7 @@ static int sdhci_milbeaut_probe(struct platform_device *pdev)
- 	host->ops = &sdhci_milbeaut_ops;
- 	host->irq = irq;
+ 	if (!np) {
+ 		dev_err(&pdev->dev, "no DT node\n");
+ 		return -ENODEV;
+ 	}
+-	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	irq = platform_get_irq(pdev, 0);
+-	if (!r || irq < 0)
++	if (irq < 0)
+ 		return -ENXIO;
  
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	host->ioaddr = devm_ioremap_resource(&pdev->dev, res);
-+	host->ioaddr = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(host->ioaddr)) {
- 		ret = PTR_ERR(host->ioaddr);
- 		goto err;
+ 	mmc = mmc_alloc_host(sizeof(struct mvsd_host), &pdev->dev);
+@@ -758,7 +756,7 @@ static int mvsd_probe(struct platform_device *pdev)
+ 
+ 	spin_lock_init(&host->lock);
+ 
+-	host->base = devm_ioremap_resource(&pdev->dev, r);
++	host->base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(host->base)) {
+ 		ret = PTR_ERR(host->base);
+ 		goto out;
 -- 
 2.17.1
 
