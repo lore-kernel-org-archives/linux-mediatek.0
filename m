@@ -2,82 +2,66 @@ Return-Path: <SRS0=PXBb=2F=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D4DFBC2D0C8
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2019 12:00:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B43FBC43603
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2019 12:36:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AA67620866
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2019 12:00:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8670E206C3
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Dec 2019 12:36:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pT7oi4fx";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="OSen5Gcv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AA67620866
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uSw+8pQa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8670E206C3
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x9xzO+ingk2fZc20UbhqXDJUUEWJotLdkcXeK9VCkJ4=; b=pT7oi4fxY7nWzT
-	AmkWbnXL5EkThQErV+R/PvyyOpG7YA43emiYjs64n5M8VrT5PE6SMVftuhXmxOc222SxzD0aXmfkD
-	pF5/iTZDjnKnwUdYQ3ytOU4o8E3zVe18hNAu/LYsXezbqseA8+Mo8UYrDfFLKxAvgJTqUMdnsy1Nb
-	NlWPXHWwRlgg7IMHb4AEp16f1wCXIt7d/InyxUeqxhqYqZU7UnqgidOVPIV4hu5SbzHTiTIXIZIkP
-	cpSWYkxCfxtAWNG4cZqg9YHjHyDyK3inkswyg3BYJcdNWd6f8G9R7xBuhr0NcFcc/r0EAfBgGmJUh
-	7mRcwcvPE4ucmGms2ucw==;
+	List-Owner; bh=0/oi02+s+CZEq0H9nqvewZj5fq36dVKuvL/2uwTdGJ4=; b=uSw+8pQaIOkC3e
+	hV88N1YgfWUWKLRgeydBPFz21yblObfAtpnw94F3d8RuoFnL+oYCX4XN4yzPlA07Tm3SNvMI6rFG3
+	4i67dRqZACC9Ch+SDpHtzBrUqlIXDNlsg37Z8VyAcz1DWm+LxpxuhDOwlt7sVq9rWmz1ueQJXOMdz
+	cFd61OxqBj8XNAaI9kSM3u2Nb5ksLNPMoQMNMEEuqS8o/qg+JHS0iRjVt2iL+VXifaiaCB6YGXdG4
+	A+pvk+w60Hn74i1F2Ri+LKrhhPERe3a9lnnZbWPuA6pC0k56qvZLD5NohssKD7J8m8R025Ka1+Qti
+	Qe/roxJSRAQiOcSbza+Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1igSZN-0002sD-Fj; Sun, 15 Dec 2019 12:00:17 +0000
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
+	id 1igT84-0006Zo-DQ; Sun, 15 Dec 2019 12:36:08 +0000
+Received: from asavdk4.altibox.net ([109.247.116.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1igSZK-0002rg-DB; Sun, 15 Dec 2019 12:00:15 +0000
-Received: by mail-io1-xd41.google.com with SMTP id z193so540182iof.1;
- Sun, 15 Dec 2019 04:00:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=U32Ya4ZtyKRe0g31iyaOrg9bNIbVTfXKPEbGivDkS10=;
- b=OSen5Gcvcdj9lEzBZB15Tn6QiRTI9MWlO/rPN49bMq0K83mAgq18VHkzQ7zVlPrjML
- gszdUGt2eF1kyYhDFF+GP7FeP1RPEnPsfH7wY9I095RPAYClYjywGRCaSteDEqN+zK62
- IKehzG864B+NpPZLPI1yH3m0V9J02rnTKvgIZxkccK3VNzHuy++Doo+IV2cQKWeFpyGv
- sOw1S4YJdTl9C8RnFpAVjILHeJMichKHxPUSI98wDRt0UmqQkWCWFLtA7q2g+jukhVzx
- EloylsApJVNnAMvbYem3m+vszDWIyz4reg4yOYbOHfUjbut1/oBMn1uR67AGYca3deCP
- DSrg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=U32Ya4ZtyKRe0g31iyaOrg9bNIbVTfXKPEbGivDkS10=;
- b=Ox9khvQK28UlWRysi1owebpg6ISPT+U3GDWX7ukkmZcLxxsE4usOyJP1GFm0i5X6yW
- zTH4kZvU/rkK5sEXjDmYxZ21k64uD/+Gg3CjLvJ9guqrqvDc/7J1aq0PzNidiBWe18sJ
- 7kSFK9d6tGVSiGO3J3Rpqdurm6TeMfaoU7QoeI2Kwp4qDc63MqmshSTke3NSzE7olekf
- qH0emWXgpkea84AY9C43yzlYOUxC4jaNQQEFFSPSNY3cV/xGwCcqyf5c2/fw0rkLyDcA
- 0He9kUW0gAXiHQpE+YjNBETq88X0PHqqF9bFMynizvF9JEzSy/lBqi8Y5b7RkHV2zlmE
- 7U3Q==
-X-Gm-Message-State: APjAAAUkSBYVRbYlE56IpKsgHaFadhGbo0/WknU46e29g8A16us6o76J
- KOnxobrnG+PEOeYzkzzitiDGVGhFtAcfzmamWkE=
-X-Google-Smtp-Source: APXvYqytWwvnLfUD+171nhXHDbJqlTikV21tQNc2dQdQlOI6X6lJ/eLQFLTNTro7mQyhFx4wzdvzbYn6q+tytdyDIA8=
-X-Received: by 2002:a5d:9f05:: with SMTP id q5mr14678305iot.295.1576411213379; 
- Sun, 15 Dec 2019 04:00:13 -0800 (PST)
+ id 1igT80-0006Z2-Td
+ for linux-mediatek@lists.infradead.org; Sun, 15 Dec 2019 12:36:07 +0000
+Received: from ravnborg.org (unknown [158.248.194.18])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by asavdk4.altibox.net (Postfix) with ESMTPS id 17A26804FC;
+ Sun, 15 Dec 2019 13:35:52 +0100 (CET)
+Date: Sun, 15 Dec 2019 13:35:51 +0100
+From: Sam Ravnborg <sam@ravnborg.org>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Subject: Re: [PATCH] drm/panel: seperate panel power control from panel
+ prepare/unprepare
+Message-ID: <20191215123551.GA32327@ravnborg.org>
+References: <20191106064005.8016-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-References: <20191214175447.25482-1-tiny.windzz@gmail.com>
- <20191214175447.25482-10-tiny.windzz@gmail.com>
- <20191215104824.658889d3@why>
-In-Reply-To: <20191215104824.658889d3@why>
-From: Frank Lee <tiny.windzz@gmail.com>
-Date: Sun, 15 Dec 2019 20:00:01 +0800
-Message-ID: <CAEExFWtgXt2pGM1fGfmxNdk_7S_53gnhN0-bProWA4-vOaNN3w@mail.gmail.com>
-Subject: Re: [PATCH 10/10] soc: qcom: convert to devm_platform_ioremap_resource
-To: Marc Zyngier <maz@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20191106064005.8016-1-jitao.shi@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-CMAE-Score: 0
+X-CMAE-Analysis: v=2.3 cv=VcLZwmh9 c=1 sm=1 tr=0
+ a=UWs3HLbX/2nnQ3s7vZ42gw==:117 a=UWs3HLbX/2nnQ3s7vZ42gw==:17
+ a=jpOVt7BSZ2e4Z31A5e1TngXxSK0=:19 a=kj9zAlcOel0A:10 a=mpaa-ttXAAAA:8
+ a=UN12_I82iCspjviWGz0A:9 a=CjuIK1q_8ugA:10 a=6heAxKwa5pAsJatQ0mat:22
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191215_040014_475285_C43D3923 
-X-CRM114-Status: GOOD (  14.64  )
+X-CRM114-CacheID: sfid-20191215_043605_331042_9D9E9962 
+X-CRM114-Status: GOOD (  19.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,76 +73,164 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: john@phrozen.org, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-samsung-soc@vger.kernel.org, khilman@baylibre.com, krzk@kernel.org,
- Chen-Yu Tsai <wens@csie.org>, agross@kernel.org, linux-arm-msm@vger.kernel.org,
- Maxime Ripard <mripard@kernel.org>, khalasa@piap.pl, ssantosh@kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-amlogic@lists.infradead.org,
- bjorn.andersson@linaro.org, Linux ARM <linux-arm-kernel@lists.infradead.org>,
- shawnguo@kernel.org, linux-mips@vger.kernel.org, leoyang.li@nxp.com,
- kgene@kernel.org, linux-mediatek@lists.infradead.org, jun.nie@linaro.org,
- linuxppc-dev@lists.ozlabs.org
+Cc: David Airlie <airlied@linux.ie>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ linux-kernel@vger.kernel.org, Maxime Ripard <mripard@kernel.org>,
+ sj.huang@mediatek.com, Thierry Reding <thierry.reding@gmail.com>,
+ linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>,
+ Sean Paul <sean@poorly.run>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Dec 15, 2019 at 6:48 PM Marc Zyngier <maz@kernel.org> wrote:
->
-> On Sat, 14 Dec 2019 17:54:47 +0000
-> Yangtao Li <tiny.windzz@gmail.com> wrote:
->
-> > Use devm_platform_ioremap_resource() to simplify code.
-> >
-> > Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
-> > ---
-> >  drivers/soc/qcom/llcc-qcom.c    | 7 +------
-> >  drivers/soc/qcom/qcom-geni-se.c | 4 +---
-> >  drivers/soc/qcom/qcom_aoss.c    | 4 +---
-> >  drivers/soc/qcom/qcom_gsbi.c    | 5 +----
-> >  drivers/soc/qcom/spm.c          | 4 +---
-> >  5 files changed, 5 insertions(+), 19 deletions(-)
-> >
-> > diff --git a/drivers/soc/qcom/llcc-qcom.c b/drivers/soc/qcom/llcc-qcom.c
-> > index 429b5a60a1ba..99e19df76889 100644
-> > --- a/drivers/soc/qcom/llcc-qcom.c
-> > +++ b/drivers/soc/qcom/llcc-qcom.c
-> > @@ -387,7 +387,6 @@ static int qcom_llcc_remove(struct platform_device *pdev)
-> >  static struct regmap *qcom_llcc_init_mmio(struct platform_device *pdev,
-> >               const char *name)
-> >  {
-> > -     struct resource *res;
-> >       void __iomem *base;
-> >       struct regmap_config llcc_regmap_config = {
-> >               .reg_bits = 32,
-> > @@ -396,11 +395,7 @@ static struct regmap *qcom_llcc_init_mmio(struct platform_device *pdev,
-> >               .fast_io = true,
-> >       };
-> >
-> > -     res = platform_get_resource_byname(pdev, IORESOURCE_MEM, name);
-> > -     if (!res)
-> > -             return ERR_PTR(-ENODEV);
-> > -
-> > -     base = devm_ioremap_resource(&pdev->dev, res);
-> > +     base = devm_platform_ioremap_resource(pdev, 0);
->
-> What guarantees do you have that entry 0 matches name?
+Hi Jitao.
 
-Yeah, this place is wrong. I intruduce another helper.
+On Wed, Nov 06, 2019 at 02:40:05PM +0800, Jitao Shi wrote:
+> Some dsi panels require the dsi lanes keeping low before panel power
+> on. So seperate the panel power control and the communication with panel.
+> 
+> And put the power control in drm_panel_prepare_power and
+> drm_panel_unprepare_power. Put the communication with panel in
+> drm_panel_prepare and drm_panel_unprepare.
+> 
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 
-https://lore.kernel.org/patchwork/patch/1165186/
+Panels that requires power before communicating often/always have
+some timing constraints. Power need to be applied in XYZ micro seconds
+before it is safe to communicate with the panel.
 
-Thx,
-Yangtao
+To support this a typical pattern is:
+
+panel_xxx_prepare()
+{
+   // power on the panel using one or a few regulators
+
+   // wait until panel is known to be ready
+
+   // Communicate with the panel
+
+}
+
+first driver I looked at (panel-feiyang-fy07024di26a30d.c) follows this
+pattern.
+
+So we have the timing spelled out in the enable() function
+and the sequence is obvious.
 
 
->
-> I find these changes pointless: they don't add much to the readability
-> or maintainability of the code, and instead introduce creative bugs.
->
->         M.
-> --
-> Jazz is not dead. It just smells funny...
+What will the benefit be from a separate drm_panel_prepare_power()
+function pointer?
+
+	Sam
+
+
+> ---
+>  drivers/gpu/drm/drm_panel.c | 38 +++++++++++++++++++++++++++++++++++++
+>  include/drm/drm_panel.h     | 17 +++++++++++++++++
+>  2 files changed, 55 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/drm_panel.c b/drivers/gpu/drm/drm_panel.c
+> index 6b0bf42039cf..e57f6385d2cc 100644
+> --- a/drivers/gpu/drm/drm_panel.c
+> +++ b/drivers/gpu/drm/drm_panel.c
+> @@ -131,6 +131,24 @@ void drm_panel_detach(struct drm_panel *panel)
+>  }
+>  EXPORT_SYMBOL(drm_panel_detach);
+>  
+> +/**
+> + * drm_panel_prepare_power - power on a panel's power
+> + * @panel: DRM panel
+> + *
+> + * Calling this function will enable power and deassert any reset signals to
+> + * the panel.
+> + *
+> + * Return: 0 on success or a negative error code on failure.
+> + */
+> +int drm_panel_prepare_power(struct drm_panel *panel)
+> +{
+> +	if (panel && panel->funcs && panel->funcs->prepare_power)
+> +		return panel->funcs->prepare_power(panel);
+> +
+> +	return panel ? -ENOSYS : -EINVAL;
+> +}
+> +EXPORT_SYMBOL(drm_panel_prepare_power);
+> +
+>  /**
+>   * drm_panel_prepare - power on a panel
+>   * @panel: DRM panel
+> @@ -170,6 +188,26 @@ int drm_panel_unprepare(struct drm_panel *panel)
+>  }
+>  EXPORT_SYMBOL(drm_panel_unprepare);
+>  
+> +/**
+> + * drm_panel_unprepare_power - power off a panel
+> + * @panel: DRM panel
+> + *
+> + * Calling this function will completely power off a panel (assert the panel's
+> + * reset, turn off power supplies, ...). After this function has completed, it
+> + * is usually no longer possible to communicate with the panel until another
+> + * call to drm_panel_prepare_power and drm_panel_prepare().
+> + *
+> + * Return: 0 on success or a negative error code on failure.
+> + */
+> +int drm_panel_unprepare_power(struct drm_panel *panel)
+> +{
+> +	if (panel && panel->funcs && panel->funcs->unprepare_power)
+> +		return panel->funcs->unprepare_power(panel);
+> +
+> +	return panel ? -ENOSYS : -EINVAL;
+> +}
+> +EXPORT_SYMBOL(drm_panel_unprepare_power);
+> +
+>  /**
+>   * drm_panel_enable - enable a panel
+>   * @panel: DRM panel
+> diff --git a/include/drm/drm_panel.h b/include/drm/drm_panel.h
+> index 624bd15ecfab..0d8c4855405c 100644
+> --- a/include/drm/drm_panel.h
+> +++ b/include/drm/drm_panel.h
+> @@ -61,6 +61,13 @@ struct display_timing;
+>   * the panel. This is the job of the .unprepare() function.
+>   */
+>  struct drm_panel_funcs {
+> +	/**
+> +	 * @prepare_power:
+> +	 *
+> +	 * Turn on panel power.
+> +	 */
+> +	int (*prepare_power)(struct drm_panel *panel);
+> +
+>  	/**
+>  	 * @prepare:
+>  	 *
+> @@ -89,6 +96,13 @@ struct drm_panel_funcs {
+>  	 */
+>  	int (*unprepare)(struct drm_panel *panel);
+>  
+> +	/**
+> +	 * @unprepare_power:
+> +	 *
+> +	 * Turn off panel_power.
+> +	 */
+> +	int (*unprepare_power)(struct drm_panel *panel);
+> +
+>  	/**
+>  	 * @get_modes:
+>  	 *
+> @@ -155,6 +169,9 @@ void drm_panel_remove(struct drm_panel *panel);
+>  int drm_panel_attach(struct drm_panel *panel, struct drm_connector *connector);
+>  void drm_panel_detach(struct drm_panel *panel);
+>  
+> +int drm_panel_prepare_power(struct drm_panel *panel);
+> +int drm_panel_unprepare_power(struct drm_panel *panel);
+> +
+>  int drm_panel_prepare(struct drm_panel *panel);
+>  int drm_panel_unprepare(struct drm_panel *panel);
+>  
+> -- 
+> 2.21.0
 
 _______________________________________________
 Linux-mediatek mailing list
