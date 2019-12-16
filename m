@@ -2,22 +2,21 @@ Return-Path: <SRS0=XFYx=2G=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 811F7C43603
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2019 07:29:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 966F2C43603
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2019 07:43:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 53C4F20717
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2019 07:29:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6A39920700
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2019 07:43:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QMgMLcau";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="DtWiSVkz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 53C4F20717
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sWbUGajn";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="F7lQExjy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6A39920700
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +25,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FGeP1/7w6P3Rifx04gyZFhbIJd/6GRmypOrX88qhsdc=; b=QMgMLcauCao+wG
-	47xwBp9UbG1XX7b0aiyi9Jgmp9Q89P79waODf+VasWaPdQMEIDHiSRfJ818VXGTI8q5HgFoEezdb0
-	5X6HURxoof1OoGqmQ9etdeYTwDlGuTwTikBmMyKALYqQEo1kbGiNzJxiHDHhxXM9PqF/AiBbUgboR
-	n5lHrCemOCu6Sch8RX7z1ETuHe5Hj8NiA8kJDOUIrG6QzbrcLGxX4rbdFvkY60Hbqq3/qZ8kQg97F
-	OYXpkSrEL/vzwJEQHosGCdYZuDmEmxX+YENQ7b2KWltUNcY8rMH0inKOopId4B9NhpNHKc/PPsynk
-	gsJ+hVK9K1RqtCw5ZqkQ==;
+	List-Owner; bh=xo5RuO8mkWLE7knrGm4yXR8NEoGUlSPhu7h2LCgTQCI=; b=sWbUGajnfFxX8E
+	QYis2XiYvhDsJSPG7gT7PrRJ8c+u6XNtML+O+cfIHWqcVhucOoynPJajUuKsy79d/tsF/ZTMh9kDu
+	awmYlCizC4ote6ZZeTUq10wvCPfEdDcP9mA8EuxvNq7KJGHXgo8xdIkvwWtI9tg/Tr4fs3y3jH2Wb
+	Rle4y/YWhT60TpPcsTjTS0ckdgp79zCGNr2lqtLYKKrk6ZCAzmdfb1oZZRRhv2Ov5LZjRXLjXetZa
+	NYwU9FvsQspHWzvv9Imt4HKy7tte+o6aTU8JQlCsun0tDRzELa0C2ZlayT5zJez5/vEYtvWXhSQsu
+	zArCBsHP2hyle4E6atdw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1igkoj-0007M1-G0; Mon, 16 Dec 2019 07:29:21 +0000
-Received: from mail-qv1-xf42.google.com ([2607:f8b0:4864:20::f42])
+	id 1igl1w-000425-8g; Mon, 16 Dec 2019 07:43:00 +0000
+Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1igkoZ-0007Br-0U
- for linux-mediatek@lists.infradead.org; Mon, 16 Dec 2019 07:29:12 +0000
-Received: by mail-qv1-xf42.google.com with SMTP id m14so1790618qvl.3
- for <linux-mediatek@lists.infradead.org>; Sun, 15 Dec 2019 23:29:10 -0800 (PST)
+ id 1igl1i-0003pO-JF
+ for linux-mediatek@lists.infradead.org; Mon, 16 Dec 2019 07:42:47 +0000
+Received: by mail-qv1-xf43.google.com with SMTP id o18so2362030qvf.1
+ for <linux-mediatek@lists.infradead.org>; Sun, 15 Dec 2019 23:42:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=dV2vlOFsb8F1dAAOKXkJvVUNN8FBypx/gfjiA3eTMEk=;
- b=DtWiSVkzUKVe/+yccfzUw4WSKnnZtLyFCqfBtFPkSMldVlhuvwOPUyS3ok/mY4XPAF
- PHC1IMbSqaHlr4Hh5oFyoIovVNdsI1TN66gV/B7nWVJSXuKWQgYaJFdCbhAg0Rlu7mRD
- 3qHcptFRU6nlSJeHsmFWtsqh6MrCKNSH1Nv9k=
+ :cc; bh=keYwZ/CIw81Q8Cz3kuUmGzB6KcfZrFvM2y9zPZnUX3A=;
+ b=F7lQExjymC0jAXQuYrfQWnEeV+li1jrHiCWUC3toxdLUvy7gryXioe76XE9KNl0EL5
+ 1p+DfYuFrjAwzIxXIHQQo7Di+Ta4vk88rzX/l6w7+TJkxdwoy3hPi1wNgPGTae6FZ67N
+ sual9RcCfTdOqz+QoiZXw+L41K7jncfVPB3Dw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=dV2vlOFsb8F1dAAOKXkJvVUNN8FBypx/gfjiA3eTMEk=;
- b=SAzhCLtxWtWOwWazc618jCVGEV4hZhgTKz7IkHFVzLJkA8e+Aoc63+6bZeffhvn+bF
- ns/Ce9zn44wuEsuzK5H13J6xjyK3i8aTO19vAlLv5AWE73eRyOvnPyujdY1TDG5ehyll
- ADUilCjRxT5/1Dbu07l89CQY+xwGYoVGIaLTbiRIgOWzvg70F4FFGGs00pgWNphhIhdG
- hTVsUJvZ7NTzD8tiPq9BXnCMCJhJ4MGY+YAln0vwcfWbq768+hx9wpPk9zx8C80SvKYZ
- XZ25lMvTECDsE9Tw0dutkL6KseUOTN5TsLr993qHKzbH9D7HiSfmor7n3WQrlqyUkhBN
- jJeg==
-X-Gm-Message-State: APjAAAVxHmopqNidyRJGfc9Ab+vZXhsG/rja9doHkWHBuRwZEq54WX3z
- 3c4vBhRGgHAH6jfWlfu+DHxfbxhri+57m3/ggWr3OQ==
-X-Google-Smtp-Source: APXvYqwq88sA56fSNNx0AkPlWaUiYAr/DCMmo6+DmdP4m8AvPhTWR6m3PCZRTb+X+AY/KsJkRJPt4zf5ONRH+6KvmMI=
-X-Received: by 2002:a0c:f703:: with SMTP id w3mr25474009qvn.6.1576481349748;
- Sun, 15 Dec 2019 23:29:09 -0800 (PST)
+ bh=keYwZ/CIw81Q8Cz3kuUmGzB6KcfZrFvM2y9zPZnUX3A=;
+ b=PcTDNy6574BtMTJkb0xblRwpZhQZIAmIUq/nM4R/tA4jhYOU8tAfq3Obg4NhvAgD+R
+ uvca2zg8g0NqW/FiixE9uXJX35liTSUZEIX+S64sCyl12+UG9OwRl1CRk2Yt/yZ9JwoI
+ vuQOwZh65igcFpVo21KPIeyXU5/hcMK7bVcnExoCLG40VyRmMHtxFOFN95P8pOwulVuj
+ WN9Uipc5fmVuvHx8Kv7Lo++yelow1kh6jCo1e1qlsVa4RiOITeHiRJwdOGgWH0+pGinw
+ MdRw7okkTUbl4P3v1ul/mQde6WT4DRrsE6DHAaO4KsjgxKazwpN8lO/ewOtoFCjM/NQX
+ I0hw==
+X-Gm-Message-State: APjAAAWCYrbHJcvXH82unH+lzPBbE4Ry8wLsBSh37glD9LrRVlIOt+T5
+ qOWJZVX/la6HNyWdlmfuFvIRrRpk9N3mvEKIfs5cnw==
+X-Google-Smtp-Source: APXvYqzAVzG3X2eMMGzUs9utrlUgztg1oZUTm5FQxljAgX7mY47YjrCiIGyz7hJKN4AC71cnKcaj/IqsHmNdC8dIfmk=
+X-Received: by 2002:a0c:b5cd:: with SMTP id o13mr25785784qvf.47.1576482165124; 
+ Sun, 15 Dec 2019 23:42:45 -0800 (PST)
 MIME-Version: 1.0
 References: <1575960413-6900-1-git-send-email-weiyi.lu@mediatek.com>
- <1575960413-6900-7-git-send-email-weiyi.lu@mediatek.com>
-In-Reply-To: <1575960413-6900-7-git-send-email-weiyi.lu@mediatek.com>
+ <1575960413-6900-8-git-send-email-weiyi.lu@mediatek.com>
+In-Reply-To: <1575960413-6900-8-git-send-email-weiyi.lu@mediatek.com>
 From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Mon, 16 Dec 2019 15:28:58 +0800
-Message-ID: <CANMq1KDkywkPBDK9bbKqDcYser-QiXV-XSuDmVCqnkh6Su9Awg@mail.gmail.com>
-Subject: Re: [PATCH v9 6/9] soc: mediatek: Add extra sram control
+Date: Mon, 16 Dec 2019 15:42:34 +0800
+Message-ID: <CANMq1KBC=aZoXtcvEj92v1z6uUKWxFsMKHUQ++x5C8fFPWheRw@mail.gmail.com>
+Subject: Re: [PATCH v9 7/9] soc: mediatek: Add MT8183 scpsys support
 To: Weiyi Lu <weiyi.lu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191215_232911_049211_AF1BD028 
-X-CRM114-Status: GOOD (  16.16  )
+X-CRM114-CacheID: sfid-20191215_234246_630466_B131BA52 
+X-CRM114-Status: GOOD (  10.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,86 +96,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Just a minor nit, but I can't really comment on the exact register
+addresses (what I could find in register table made sense).
+
 On Tue, Dec 10, 2019 at 2:47 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
 >
-> For some power domains like vpu_core on MT8183 whose sram need to
-> do clock and internal isolation while power on/off sram.
-> We add a flag "sram_iso_ctrl" in scp_domain_data to judge if we
-> need to do the extra sram isolation control or not.
+> Add scpsys driver for MT8183
 >
 > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+
+Otherwise:
+
+Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
+
 > ---
->  drivers/soc/mediatek/mtk-scpsys.c | 25 +++++++++++++++++++++++--
->  1 file changed, 23 insertions(+), 2 deletions(-)
+>  drivers/soc/mediatek/mtk-scpsys.c | 226 ++++++++++++++++++++++++++++++++++++++
+> [snip]
+> @@ -1197,6 +1409,17 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+>         .bus_prot_reg_update = true,
+>  };
 >
-> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> index 2bbf907..0676b46 100644
-> --- a/drivers/soc/mediatek/mtk-scpsys.c
-> +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> @@ -57,6 +57,8 @@
->  #define PWR_ON_BIT                     BIT(2)
->  #define PWR_ON_2ND_BIT                 BIT(3)
->  #define PWR_CLK_DIS_BIT                        BIT(4)
-> +#define PWR_SRAM_CLKISO_BIT            BIT(5)
-> +#define PWR_SRAM_ISOINT_B_BIT          BIT(6)
->
->  #define PWR_STATUS_CONN                        BIT(1)
->  #define PWR_STATUS_DISP                        BIT(3)
-> @@ -115,6 +117,8 @@ enum clk_id {
->   * @name: The domain name.
->   * @sta_mask: The mask for power on/off status bit.
->   * @ctl_offs: The offset for main power control register.
-> + * @sram_iso_ctrl: The flag to judge if the power domain need to do
-> + *                 the extra sram isolation control.
->   * @sram_pdn_bits: The mask for sram power control bits.
->   * @sram_pdn_ack_bits: The mask for sram power control acked bits.
->   * @bus_prot_mask: The mask for single step bus protection.
-> @@ -130,6 +134,7 @@ struct scp_domain_data {
->         const char *name;
->         u32 sta_mask;
->         int ctl_offs;
-> +       bool sram_iso_ctrl;
->         u32 sram_pdn_bits;
->         u32 sram_pdn_ack_bits;
->         u32 bus_prot_mask;
-> @@ -269,6 +274,14 @@ static int scpsys_sram_enable(struct scp_domain *scpd, void __iomem *ctl_addr)
->                         return ret;
+> +static const struct scp_soc_data mt8183_data = {
+> +       .domains = scp_domain_data_mt8183,
+> +       .num_domains = ARRAY_SIZE(scp_domain_data_mt8183),
+> +       .subdomains = scp_subdomain_mt8183,
+> +       .num_subdomains = ARRAY_SIZE(scp_subdomain_mt8183),
+> +       .regs = {
+> +               .pwr_sta_offs = 0x0180,
+> +               .pwr_sta2nd_offs = 0x0184
+
+Add a comma at the end.
+
+> +       }
+> +};
+> +
+>  /*
+>   * scpsys driver init
+>   */
+> @@ -1221,6 +1444,9 @@ static void mtk_register_power_domains(struct platform_device *pdev,
+>                 .compatible = "mediatek,mt8173-scpsys",
+>                 .data = &mt8173_data,
+>         }, {
+> +               .compatible = "mediatek,mt8183-scpsys",
+> +               .data = &mt8183_data,
+> +       }, {
+>                 /* sentinel */
 >         }
->
-> +       if (scpd->data->sram_iso_ctrl)  {
-> +               val = readl(ctl_addr) | PWR_SRAM_ISOINT_B_BIT;
-> +               writel(val, ctl_addr);
-> +               udelay(1);
-> +               val &= ~PWR_SRAM_CLKISO_BIT;
-> +               writel(val, ctl_addr);
-> +       }
-> +
->         return 0;
->  }
->
-> @@ -278,8 +291,16 @@ static int scpsys_sram_disable(struct scp_domain *scpd, void __iomem *ctl_addr)
->         u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
->         int tmp;
->
-> -       val = readl(ctl_addr);
-> -       val |= scpd->data->sram_pdn_bits;
-> +       if (scpd->data->sram_iso_ctrl)  {
-> +               val = readl(ctl_addr);
-> +               val |= PWR_SRAM_CLKISO_BIT;
-
-You do this in 1 line above. I don't really care, but be consistent?
-e.g. val = readl(ctl_addr) | PWR_SRAM_CLKISO_BIT;
-
-> +               writel(val, ctl_addr);
-> +               val &= ~PWR_SRAM_ISOINT_B_BIT;
-> +               writel(val, ctl_addr);
-> +               udelay(1);
-> +       }
-> +
-> +       val = readl(ctl_addr) | scpd->data->sram_pdn_bits;
->         writel(val, ctl_addr);
->
->         /* Either wait until SRAM_PDN_ACK all 1 or 0 */
+>  };
 > --
 > 1.8.1.1.dirty
 
