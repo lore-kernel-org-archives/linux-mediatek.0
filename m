@@ -2,77 +2,79 @@ Return-Path: <SRS0=XFYx=2G=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B8DB6C2D0CF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2019 05:50:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D30D0C43603
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2019 07:02:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8AC7F2072B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2019 05:50:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9772C20700
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2019 07:02:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sa+lvfW/";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ptO/HWgD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8AC7F2072B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="q/45dppp";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="k8Jz8WhY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9772C20700
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DUPJfV7VD68Xhyfy72Tdw5qaWw+cn00ufd3DFkcL77c=; b=sa+lvfW/wKSlc/
-	3xdXILUrOjKO3G2SN+IbpikdXq4EfierWpnvaGSHLKys4ZY58Fs99zhceK+6f0d7jwykla3WBVGj6
-	CfhjI1QRQGxH4S5q34UQgwSN2o+UCpcKPbhz8VrQIzwfp0hVQ6Mjoer7ANH9MtqEidBlUqKT/iqLf
-	0/gVkjKovxMW7FUTaasMoPaBx/liAHge1FS1GlxKjGqeLGpMNRuDyUjX4JQn3cHphxHUhmjKan53o
-	AdXqiA27ooGDdynG9xSHYp+hFh2j3h8lhCt0oRkr/8F5fPLJz2VQjmSPqS9Z6QaPcqihbn2f5Ige9
-	2cDVlPZGQTRdTaVL+QPw==;
+	List-Owner; bh=NMF6/hyeA39vzx+QoKFiFL/822vShALh0qIPBvPhj7Q=; b=q/45dppp/UjVWT
+	2NpN6V0iJbn9oo2P5KTHkdbyZ0Sjis+plGjI00mZPXuwj/hiS65fdoz4yanCNBOW/tzFgDWoBr2S7
+	TaRUg8VbKUY4FTuL4lllTooTQbjTBZnMcJUpdqJg5RIAxDQxQ46UTkzS6WzVsgebblw60B5sovn60
+	5LMCF8x37nGb9uNNXeh7LVcVuewow+8PtkQNuQy9zVt6GTXhZvqWLce7/YglcEfoNMWRZW4MyBpr0
+	k0jswtVLE0cYkTolI2SxjbzlBGj/Rizjtg8u/YQ4mXMwuTleZzWNp1r9V1ljOs6NTaQ6DUIpGGkJ6
+	BYLfFtCEmSkf2AkDU8hw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1igjH1-0005Lj-5e; Mon, 16 Dec 2019 05:50:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1igkOP-0005QD-CT; Mon, 16 Dec 2019 07:02:09 +0000
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1igjGn-000505-PJ; Mon, 16 Dec 2019 05:50:15 +0000
-X-UUID: 713cfa6644a640f9950028b16605cd95-20191215
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=XgzVOi17Vs8h7Os6AUr7k8KXtqKn1aJ/ASp808k2SkU=; 
- b=ptO/HWgD1jU4QxS+djYDFcNoC/5Tws2wyhXir2rC4NlPyjgHXhN5udulBS9qzj6Ux2KIcoDZKfDTMdEw8+y+PEfe+xAonCz5nDwlz9lhfyN5ohDlaIVFBOHoZjxerHpdAhkXBvGX1Q7Nl9ZzhZcf53SZhuEWxEstI+a48LeG8ng=;
-X-UUID: 713cfa6644a640f9950028b16605cd95-20191215
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <biao.huang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 998469011; Sun, 15 Dec 2019 21:50:11 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 15 Dec 2019 21:40:28 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 16 Dec 2019 13:38:57 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Mon, 16 Dec 2019 13:39:21 +0800
-From: Biao Huang <biao.huang@mediatek.com>
-To: <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, Andrew Lunn
- <andrew@lunn.ch>
-Subject: [v2, PATCH 1/2] net-next: stmmac: mediatek: add more support for RMII
-Date: Mon, 16 Dec 2019 13:39:57 +0800
-Message-ID: <20191216053958.26130-2-biao.huang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20191216053958.26130-1-biao.huang@mediatek.com>
-References: <20191216053958.26130-1-biao.huang@mediatek.com>
+ id 1igkO0-00051U-8V
+ for linux-mediatek@lists.infradead.org; Mon, 16 Dec 2019 07:01:46 +0000
+Received: by mail-qk1-x742.google.com with SMTP id w127so4401725qkb.11
+ for <linux-mediatek@lists.infradead.org>; Sun, 15 Dec 2019 23:01:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=mNxq9QEx/Y0AFfmFBHfjO9qh1l6j5wyPEAuFcOtgvko=;
+ b=k8Jz8WhY1cxn9bFKXeAi5vzaTBfRitVt26Dv8N8sNlYJP+LrdDlQqaBI0DhBwVSp3j
+ jqUvtkluKNvckqYdwX0zAwgdTSijpgtwIQkpJR0wV31kbIiO6lN/sqeFNJxRolylHi9z
+ mkNpLYAbfL38r2dXtuppefORp2tXgISUEAbu4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=mNxq9QEx/Y0AFfmFBHfjO9qh1l6j5wyPEAuFcOtgvko=;
+ b=WRMlv+MKVgj24bYNAVDiQTykvb4YQmJJw/bKxC+JlZs+1VP9h2u8uX1LnlbTR6HIcN
+ BfUsMbATxwt6vsvjjnAMBGJp2iOK0ISMxZX3xC8ilbScLGuFyDLsgYla1chRik0xlmiw
+ cVWGvPrlfqTFfnFxm9rSkgCWWYDWKBEhgkFlKSo6mT935OCOdo0NM0KctFoSdUIkGL2e
+ oNogCv0I14x+U277GSHnUDiRQjKeFzKJo6gwfv03YNvhfX85Jz3b/jwobOA5/2crPLGf
+ pYO+Y1G+8vdZ7Foeaw7Ui8TJasN4O86RqiZ53ZR0ro0RXiXTS/eluSnmxiFOBDaLix/1
+ MJZA==
+X-Gm-Message-State: APjAAAVTkjbAc3PC5nFWrukvtKk8IK2AnZeT8wx0OhMHv4edIcWkJ5V4
+ hkoe6QJbOOUGKi8AjzvFxfg+ZQUPrx4Q/5k/qeUWMA==
+X-Google-Smtp-Source: APXvYqzVdceLqcG+3fAzc6E6Q5G9XbMKp+zuFLQXrq1VY+BvVu+NpyPVVDbAVBh4Vyd+Tbmbw9ZSQBEix3ZXm6HqNCo=
+X-Received: by 2002:ae9:f003:: with SMTP id l3mr25598095qkg.457.1576479702489; 
+ Sun, 15 Dec 2019 23:01:42 -0800 (PST)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: FFD112F3E34E808E1A08A0EBFFB5922AF512472578675134A16BFA7B742593E12000:8
-X-MTK: N
+References: <1575960413-6900-1-git-send-email-weiyi.lu@mediatek.com>
+ <1575960413-6900-4-git-send-email-weiyi.lu@mediatek.com>
+In-Reply-To: <1575960413-6900-4-git-send-email-weiyi.lu@mediatek.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Mon, 16 Dec 2019 15:01:31 +0800
+Message-ID: <CANMq1KC4Qz8yKNTqfjYb335RCY8t5pdRa09Bvroo_BNXv19hWQ@mail.gmail.com>
+Subject: Re: [PATCH v9 3/9] soc: mediatek: Add basic_clk_id to scp_power_data
+To: Weiyi Lu <weiyi.lu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191215_215013_858277_A5A3493D 
-X-CRM114-Status: GOOD (  18.36  )
+X-CRM114-CacheID: sfid-20191215_230144_324021_3089810A 
+X-CRM114-Status: GOOD (  17.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,193 +86,103 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Alexandre Torgue <alexandre.torgue@st.com>,
- Biao Huang <biao.huang@mediatek.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Jose
- Abreu <joabreu@synopsys.com>, linux-mediatek@lists.infradead.org,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
+Cc: Rob Herring <robh@kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>,
+ James Liao <jamesjj.liao@mediatek.com>, lkml <linux-kernel@vger.kernel.org>,
+ Fan Chen <fan.chen@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Yong Wu <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT2712 SoC can provide the rmii reference clock, and the clock
-will output from TXC pin only, which means ref_clk pin of external
-PHY should connect to TXC pin in this case.
-Add corresponding clock and timing settings.
+On Tue, Dec 10, 2019 at 2:47 PM Weiyi Lu <weiyi.lu@mediatek.com> wrote:
+>
+> Try to stop extending the clk_id or clk_names if there are
+> more and more new BASIC clocks. To get its own clocks by the
+> basic_clk_id of each power domain.
 
-Signed-off-by: Biao Huang <biao.huang@mediatek.com>
----
- .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 89 +++++++++++++------
- 1 file changed, 60 insertions(+), 29 deletions(-)
+Looking at this a bit more, I'm not sure why we make this an option...
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-index bdb80421acac..9e4b83832938 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-@@ -55,6 +55,8 @@ struct mediatek_dwmac_plat_data {
- 	struct regmap *peri_regmap;
- 	struct device *dev;
- 	phy_interface_t phy_mode;
-+	int num_clks_to_config;
-+	bool rmii_clk_from_mac;
- 	bool rmii_rxc;
- };
- 
-@@ -73,21 +75,33 @@ struct mediatek_dwmac_variant {
- 
- /* list of clocks required for mac */
- static const char * const mt2712_dwmac_clk_l[] = {
--	"axi", "apb", "mac_main", "ptp_ref"
-+	"axi", "apb", "mac_main", "ptp_ref", "rmii_internal"
- };
- 
- static int mt2712_set_interface(struct mediatek_dwmac_plat_data *plat)
- {
-+	int rmii_clk_from_mac = plat->rmii_clk_from_mac ? RMII_CLK_SRC_INTERNAL : 0;
- 	int rmii_rxc = plat->rmii_rxc ? RMII_CLK_SRC_RXC : 0;
- 	u32 intf_val = 0;
- 
-+	/* The clock labeled as "rmii_internal" in mt2712_dwmac_clk_l is needed
-+	 * only in RMII(when MAC provides the reference clock), and useless for
-+	 * RGMII/MII/RMII(when PHY provides the reference clock).
-+	 * num_clks_to_config indicates the real number of clocks should be
-+	 * configured, equals to (plat->variant->num_clks - 1) in default for all the case,
-+	 * then +1 for rmii_clk_from_mac case.
-+	 */
-+	plat->num_clks_to_config = plat->variant->num_clks - 1;
-+
- 	/* select phy interface in top control domain */
- 	switch (plat->phy_mode) {
- 	case PHY_INTERFACE_MODE_MII:
- 		intf_val |= PHY_INTF_MII;
- 		break;
- 	case PHY_INTERFACE_MODE_RMII:
--		intf_val |= (PHY_INTF_RMII | rmii_rxc);
-+		if (plat->rmii_clk_from_mac)
-+			plat->num_clks_to_config++;
-+		intf_val |= (PHY_INTF_RMII | rmii_rxc | rmii_clk_from_mac);
- 		break;
- 	case PHY_INTERFACE_MODE_RGMII:
- 	case PHY_INTERFACE_MODE_RGMII_TXID:
-@@ -173,35 +187,50 @@ static int mt2712_set_delay(struct mediatek_dwmac_plat_data *plat)
- 		delay_val |= FIELD_PREP(ETH_DLY_RXC_INV, mac_delay->rx_inv);
- 		break;
- 	case PHY_INTERFACE_MODE_RMII:
--		/* the rmii reference clock is from external phy,
--		 * and the property "rmii_rxc" indicates which pin(TXC/RXC)
--		 * the reference clk is connected to. The reference clock is a
--		 * received signal, so rx_delay/rx_inv are used to indicate
--		 * the reference clock timing adjustment
--		 */
--		if (plat->rmii_rxc) {
--			/* the rmii reference clock from outside is connected
--			 * to RXC pin, the reference clock will be adjusted
--			 * by RXC delay macro circuit.
--			 */
--			delay_val |= FIELD_PREP(ETH_DLY_RXC_ENABLE, !!mac_delay->rx_delay);
--			delay_val |= FIELD_PREP(ETH_DLY_RXC_STAGES, mac_delay->rx_delay);
--			delay_val |= FIELD_PREP(ETH_DLY_RXC_INV, mac_delay->rx_inv);
--		} else {
--			/* the rmii reference clock from outside is connected
--			 * to TXC pin, the reference clock will be adjusted
--			 * by TXC delay macro circuit.
-+		if (plat->rmii_clk_from_mac) {
-+			/* case 1: mac provides the rmii reference clock,
-+			 * and the clock output to TXC pin.
-+			 * The egress timing can be adjusted by GTXC delay macro circuit.
-+			 * The ingress timing can be adjusted by TXC delay macro circuit.
- 			 */
- 			delay_val |= FIELD_PREP(ETH_DLY_TXC_ENABLE, !!mac_delay->rx_delay);
- 			delay_val |= FIELD_PREP(ETH_DLY_TXC_STAGES, mac_delay->rx_delay);
- 			delay_val |= FIELD_PREP(ETH_DLY_TXC_INV, mac_delay->rx_inv);
-+
-+			delay_val |= FIELD_PREP(ETH_DLY_GTXC_ENABLE, !!mac_delay->tx_delay);
-+			delay_val |= FIELD_PREP(ETH_DLY_GTXC_STAGES, mac_delay->tx_delay);
-+			delay_val |= FIELD_PREP(ETH_DLY_GTXC_INV, mac_delay->tx_inv);
-+		} else {
-+			/* case 2: the rmii reference clock is from external phy,
-+			 * and the property "rmii_rxc" indicates which pin(TXC/RXC)
-+			 * the reference clk is connected to. The reference clock is a
-+			 * received signal, so rx_delay/rx_inv are used to indicate
-+			 * the reference clock timing adjustment
-+			 */
-+			if (plat->rmii_rxc) {
-+				/* the rmii reference clock from outside is connected
-+				 * to RXC pin, the reference clock will be adjusted
-+				 * by RXC delay macro circuit.
-+				 */
-+				delay_val |= FIELD_PREP(ETH_DLY_RXC_ENABLE, !!mac_delay->rx_delay);
-+				delay_val |= FIELD_PREP(ETH_DLY_RXC_STAGES, mac_delay->rx_delay);
-+				delay_val |= FIELD_PREP(ETH_DLY_RXC_INV, mac_delay->rx_inv);
-+			} else {
-+				/* the rmii reference clock from outside is connected
-+				 * to TXC pin, the reference clock will be adjusted
-+				 * by TXC delay macro circuit.
-+				 */
-+				delay_val |= FIELD_PREP(ETH_DLY_TXC_ENABLE, !!mac_delay->rx_delay);
-+				delay_val |= FIELD_PREP(ETH_DLY_TXC_STAGES, mac_delay->rx_delay);
-+				delay_val |= FIELD_PREP(ETH_DLY_TXC_INV, mac_delay->rx_inv);
-+			}
-+			/* tx_inv will inverse the tx clock inside mac relateive to
-+			 * reference clock from external phy,
-+			 * and this bit is located in the same register with fine-tune
-+			 */
-+			if (mac_delay->tx_inv)
-+				fine_val = ETH_RMII_DLY_TX_INV;
- 		}
--		/* tx_inv will inverse the tx clock inside mac relateive to
--		 * reference clock from external phy,
--		 * and this bit is located in the same register with fine-tune
--		 */
--		if (mac_delay->tx_inv)
--			fine_val = ETH_RMII_DLY_TX_INV;
- 		break;
- 	case PHY_INTERFACE_MODE_RGMII:
- 	case PHY_INTERFACE_MODE_RGMII_TXID:
-@@ -278,6 +307,7 @@ static int mediatek_dwmac_config_dt(struct mediatek_dwmac_plat_data *plat)
- 	mac_delay->tx_inv = of_property_read_bool(plat->np, "mediatek,txc-inverse");
- 	mac_delay->rx_inv = of_property_read_bool(plat->np, "mediatek,rxc-inverse");
- 	plat->rmii_rxc = of_property_read_bool(plat->np, "mediatek,rmii-rxc");
-+	plat->rmii_clk_from_mac = of_property_read_bool(plat->np, "mediatek,rmii-clk-from-mac");
- 
- 	return 0;
- }
-@@ -294,6 +324,8 @@ static int mediatek_dwmac_clk_init(struct mediatek_dwmac_plat_data *plat)
- 	for (i = 0; i < num; i++)
- 		plat->clks[i].id = variant->clk_list[i];
- 
-+	plat->num_clks_to_config = variant->num_clks;
-+
- 	return devm_clk_bulk_get(plat->dev, num, plat->clks);
- }
- 
-@@ -321,7 +353,7 @@ static int mediatek_dwmac_init(struct platform_device *pdev, void *priv)
- 		return ret;
- 	}
- 
--	ret = clk_bulk_prepare_enable(variant->num_clks, plat->clks);
-+	ret = clk_bulk_prepare_enable(plat->num_clks_to_config, plat->clks);
- 	if (ret) {
- 		dev_err(plat->dev, "failed to enable clks, err = %d\n", ret);
- 		return ret;
-@@ -336,9 +368,8 @@ static int mediatek_dwmac_init(struct platform_device *pdev, void *priv)
- static void mediatek_dwmac_exit(struct platform_device *pdev, void *priv)
- {
- 	struct mediatek_dwmac_plat_data *plat = priv;
--	const struct mediatek_dwmac_variant *variant = plat->variant;
- 
--	clk_bulk_disable_unprepare(variant->num_clks, plat->clks);
-+	clk_bulk_disable_unprepare(plat->num_clks_to_config, plat->clks);
- 
- 	pm_runtime_put_sync(&pdev->dev);
- 	pm_runtime_disable(&pdev->dev);
--- 
-2.18.0
+The easiest way to make this consistent with non-MT8183 scpsys drivers
+is to add your missing clocks to "enum clk_id" and clk_names, but I
+understand it's not desired (number of clocks would blow up).
+
+Can we, instead, convert all existing scpsys drivers to use "char *"
+clock names instead?
+I made an attempt here and it seems simple enough:
+https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/1969103
+
+>
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mtk-scpsys.c | 29 +++++++++++++++++++++--------
+>  1 file changed, 21 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+> index f669d37..915d635 100644
+> --- a/drivers/soc/mediatek/mtk-scpsys.c
+> +++ b/drivers/soc/mediatek/mtk-scpsys.c
+> @@ -117,6 +117,8 @@ enum clk_id {
+>   * @sram_pdn_ack_bits: The mask for sram power control acked bits.
+>   * @bus_prot_mask: The mask for single step bus protection.
+>   * @clk_id: The basic clocks required by this power domain.
+> + * @basic_clk_id: provide the same purpose with field "clk_id"
+> + *                by declaring basic clock prefix name rather than clk_id.
+
+Actually, I prefer the name clk_name, not sure why I pushed you in
+that direction...
+
+>   * @caps: The flag for active wake-up action.
+>   */
+>  struct scp_domain_data {
+> @@ -127,6 +129,7 @@ struct scp_domain_data {
+>         u32 sram_pdn_ack_bits;
+>         u32 bus_prot_mask;
+>         enum clk_id clk_id[MAX_CLKS];
+> +       const char *basic_clk_id[MAX_CLKS];
+>         u8 caps;
+>  };
+>
+> @@ -493,16 +496,26 @@ static struct scp *init_scp(struct platform_device *pdev,
+>
+>                 scpd->data = data;
+>
+> -               for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
+> -                       struct clk *c = clk[data->clk_id[j]];
+> +               if (data->clk_id[0]) {
+> +                       WARN_ON(data->basic_clk_id[0]);
+>
+> -                       if (IS_ERR(c)) {
+> -                               dev_err(&pdev->dev, "%s: clk unavailable\n",
+> -                                       data->name);
+> -                               return ERR_CAST(c);
+> -                       }
+> +                       for (j = 0; j < MAX_CLKS && data->clk_id[j]; j++) {
+> +                               struct clk *c = clk[data->clk_id[j]];
+> +
+> +                               if (IS_ERR(c)) {
+> +                                       dev_err(&pdev->dev,
+> +                                               "%s: clk unavailable\n",
+> +                                               data->name);
+> +                                       return ERR_CAST(c);
+> +                               }
+>
+> -                       scpd->clk[j] = c;
+> +                               scpd->clk[j] = c;
+> +                       }
+> +               } else if (data->basic_clk_id[0]) {
+> +                       for (j = 0; j < MAX_CLKS &&
+> +                                       data->basic_clk_id[j]; j++)
+> +                               scpd->clk[j] = devm_clk_get(&pdev->dev,
+> +                                               data->basic_clk_id[j]);
+>                 }
+>
+>                 genpd->name = data->name;
+> --
+> 1.8.1.1.dirty
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
