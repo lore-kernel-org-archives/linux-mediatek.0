@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EF1CCC43603
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2019 08:19:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 63202C43603
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2019 08:21:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B850120725
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2019 08:19:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 344D020725
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2019 08:21:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PqR3GoZ8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B850120725
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hIwVIqf4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 344D020725
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,37 +24,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8WlU+21udKCrxwFwWtA5AH51YvIqfoqRZ0aZz1XQPq8=; b=PqR3GoZ8h9xuid
-	gHJCRL+wfvfv/6VnRm0X6xkAd4ETr9BCVT8cK8SGvOP/OHJhiU18krjGXBoFQHr3a+9P8hIfkOfKj
-	9360Q6JI9IxczeOY8mutncghNlLL5R84nZqEW5UPfY6pC8ZKpHj/5+yoK87SfOtocU2LgTKkQGmd9
-	NnpjDKun0wQPYkvGlvEuPMfLgaeQpfLhtXRVlw7O9u1izyHPgC2gM5QeOz4/kcZF3PdRg+xcpEvX1
-	L8cs/iOBaBEylgjgNVliVJ7wQlfLGOycHL56ZdvPnM8yeMAcRpIj0QSHwT2KSfQFh1UMlNtw7hGFz
-	3cHMVgsQRs5wDYRgtjDA==;
+	List-Owner; bh=40BwlV4THLkTp86sDgUTbLEZyWclQYfm8wkTnIepCdA=; b=hIwVIqf4BKxcKV
+	Z1cvO9GXOBEWvnC9YMXUIFBB//jbNLie60scZMS2o+voqVGLHdmilVzAXPOS2y2LMbv+jppHLDITA
+	zc8nUqPlfn7aGsigo544/SikPUxAf001RQxvZpKc6NlyTY2Ohx6Z2sAcql6z+7OF3/bsNSDTcyLcR
+	HK3Ov7IqKcD7oRCMF6mfEd4QEA5okqie6FuBwbIvPr1ppmkhN4+Xg6OFojOXDfSRB+0OyVZEoq3kx
+	tHHLHphGczV/IWaQLVOUxEU3JJ1n25vbAAncpPnFrIehCXG/Gim1llYJUqbtaKlADH5JtxNo7CCrU
+	W/U3Uong4MOeq0hygjWA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iglad-0000A6-GT; Mon, 16 Dec 2019 08:18:51 +0000
+	id 1iglcq-00028s-E9; Mon, 16 Dec 2019 08:21:08 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iglaa-000093-Hs
- for linux-mediatek@lists.infradead.org; Mon, 16 Dec 2019 08:18:50 +0000
+ id 1iglci-00020O-3u
+ for linux-mediatek@lists.infradead.org; Mon, 16 Dec 2019 08:21:01 +0000
 Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <ukl@pengutronix.de>)
- id 1iglaW-0007fX-In; Mon, 16 Dec 2019 09:18:44 +0100
+ id 1iglcg-0007wx-JI; Mon, 16 Dec 2019 09:20:58 +0100
 Received: from ukl by ptx.hi.pengutronix.de with local (Exim 4.89)
  (envelope-from <ukl@pengutronix.de>)
- id 1iglaV-0003S5-5C; Mon, 16 Dec 2019 09:18:43 +0100
-Date: Mon, 16 Dec 2019 09:18:43 +0100
+ id 1iglcg-0003qd-8E; Mon, 16 Dec 2019 09:20:58 +0100
+Date: Mon, 16 Dec 2019 09:20:58 +0100
 From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
 To: Jitao Shi <jitao.shi@mediatek.com>
-Subject: Re: [PATCH v2 1/2] pwm: fine tune pwm-mtk-disp clock control flow
-Message-ID: <20191216081843.yxe3vm674jwurwri@pengutronix.de>
+Subject: Re: [PATCH v2 2/2] pwm/mtk_disp: move the reg enable trigger in config
+Message-ID: <20191216082058.xisbafewfttpkij6@pengutronix.de>
 References: <20191216070123.114719-1-jitao.shi@mediatek.com>
- <20191216070123.114719-2-jitao.shi@mediatek.com>
+ <20191216070123.114719-3-jitao.shi@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20191216070123.114719-2-jitao.shi@mediatek.com>
+In-Reply-To: <20191216070123.114719-3-jitao.shi@mediatek.com>
 User-Agent: NeoMutt/20170113 (1.7.2)
 X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
 X-SA-Exim-Mail-From: ukl@pengutronix.de
@@ -62,8 +62,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191216_001848_594356_747A9320 
-X-CRM114-Status: UNSURE (   7.16  )
+X-CRM114-CacheID: sfid-20191216_002100_152842_ECAC8B1A 
+X-CRM114-Status: UNSURE (   5.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -86,18 +86,12 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+On Mon, Dec 16, 2019 at 03:01:23PM +0800, Jitao Shi wrote:
+> Remove the regist enable trigger setting in probe.
+> Move the trigger to mtk_disp_pwm_config().
 
-On Mon, Dec 16, 2019 at 03:01:22PM +0800, Jitao Shi wrote:
-> Match pwm clock when suspend and resume.
-> Prepare and enable disp_pwm clock when disp_pwm enable.
-> Disable and unprepare disp_pwm clock when disp_pwm disable.
-
-Assuming you catched all clock operations (I didn't check), the patch
-looks fine. The commit log could however be improved. Additional to
-describing what the patch does, some words about the motivation would be
-good. Does this fix a bug? Is it to save some power while the PWM isn't
-in use?
+Same as in patch 1: You describe what is (somewhat) obvious when reading
+the patch. But the motivation isn't clear.
 
 Best regards
 Uwe
