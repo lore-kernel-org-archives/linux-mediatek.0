@@ -2,140 +2,135 @@ Return-Path: <SRS0=Z+8g=2H=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A391C43603
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2019 07:25:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6E8C5C2D0C5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2019 07:38:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1B4F82067C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2019 07:25:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 39879206D8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2019 07:38:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tVclYZX7";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="cUkwmnpH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1B4F82067C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jdm4fWpM";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="b7/NKg9L";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="pNOxsnou"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39879206D8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
-	Date:Message-ID:From:To:Subject:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xn/8PwDdJrZMTwNHJJxbIG3437tRuA0rLyMjaFuN3ME=; b=tVclYZX7qj0hrx
-	hjuCggBRejQ/v8sYI+haSd8mvo2tDQER7rtYppFpJl4e3ry23hI4/NlbheMMm18KJzDQMs+yqAnl5
-	FG+AqRJumlI6CJe2/cXCXCZ7QoaRb2yZIPk8wFuHw5Sly2fYlWiVuWPiy62GN+iWLkUhuGxAqteqN
-	VNRvqt5YDlzGhq1z2hm2pNesanyzzJcpM4yGggYlCQpN92kXt/ppi/jk+ZCPDMVXCsbQC0l/c2hNC
-	+DWkJhexd/vIek8Jk7Q+gMC85DkYnExsqA3+KurfRygnsiPg07XCbP/zE+J0jDQYum1+U8bpn+j0m
-	8h2fY1e9heDqlFZphihg==;
+	List-Owner; bh=tIWhBVxpgopveT8/9ig7DenGNPz2JoUqP2UMjJcpiPY=; b=jdm4fWpMLYpQ6r
+	1gzuqBbeOn03oS8V3AWabF7E3rbMRo4EaBtiTW1zQCPOffiejOcDfJ8W5Tk08Eef05TCn+ROsLN3W
+	NVZGsGWHj+PGURNlCqWBnOFUKIoMdqjtd+dJLl3Vey/3CPjaTdoMLZktMrxKlELhA1NHyhCBhk8E5
+	wE58gvUuNLfF8VpRVdz8uQrujUT4ay6xvXLhOIPuf1xYpToDuLhh4T3Hao5nYO/nEEFa6Aa8VJ0t/
+	Yaqx+/k6DvTLsM/IOD0HcGFvCuLunX5VuNfiIA6nmMCl759XZ6rJ9vUzf17yPebXqVMk89egNN0yj
+	VvjJR7AgJ5cfB/pIKXXA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ih7EX-00041G-3b; Tue, 17 Dec 2019 07:25:29 +0000
-Received: from mailout1.samsung.com ([203.254.224.24])
+	id 1ih7Qu-0000pI-Sf; Tue, 17 Dec 2019 07:38:16 +0000
+Received: from esa5.hgst.iphmx.com ([216.71.153.144])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ih7EK-0003t7-RH
- for linux-mediatek@lists.infradead.org; Tue, 17 Dec 2019 07:25:20 +0000
-Received: from epcas1p3.samsung.com (unknown [182.195.41.47])
- by mailout1.samsung.com (KnoxPortal) with ESMTP id
- 20191217072510epoutp0105d98ac858f1da330849c1deaede5cd5~hF8whHpHL2374523745epoutp01e
- for <linux-mediatek@lists.infradead.org>; Tue, 17 Dec 2019 07:25:10 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.samsung.com
- 20191217072510epoutp0105d98ac858f1da330849c1deaede5cd5~hF8whHpHL2374523745epoutp01e
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1576567510;
- bh=jsZgMfZBFENSHUxjARWp1+l9QDIbLF9XpJF95DHtcvY=;
- h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
- b=cUkwmnpHs3QEA8gZc8j6pIlISP9HAOh2Sm+8f64QgqZsNNCHx+2Cer/teZO4C/nuQ
- SKqWESzNH7lFN/pD8bGEEuDHR6Wq1yL8Yuf2DdkpDRstA5shM48udP6nIqsM2XCaMR
- moTgvfZ0pae8qi0qSsxwqhrh8VnA4SXbxph6th14=
-Received: from epsnrtp2.localdomain (unknown [182.195.42.163]) by
- epcas1p4.samsung.com (KnoxPortal) with ESMTP id
- 20191217072509epcas1p4324b8c934d6a4ca1cf86b4e178b3001f~hF8wDyjSu3077330773epcas1p4V;
- Tue, 17 Dec 2019 07:25:09 +0000 (GMT)
-Received: from epsmges1p3.samsung.com (unknown [182.195.40.153]) by
- epsnrtp2.localdomain (Postfix) with ESMTP id 47cV5t4jxwzMqYkk; Tue, 17 Dec
- 2019 07:25:06 +0000 (GMT)
-Received: from epcas1p1.samsung.com ( [182.195.41.45]) by
- epsmges1p3.samsung.com (Symantec Messaging Gateway) with SMTP id
- 93.54.52419.2D288FD5; Tue, 17 Dec 2019 16:25:06 +0900 (KST)
-Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
- epcas1p3.samsung.com (KnoxPortal) with ESMTPA id
- 20191217072506epcas1p36bf0e286c809f5e9b82f3ccf9e75f586~hF8s4nCAw2913129131epcas1p3X;
- Tue, 17 Dec 2019 07:25:06 +0000 (GMT)
-Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
- epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
- 20191217072506epsmtrp1e9479d2e9221b0e08a8f7ed6a1c528d8~hF8s3pAnI0758107581epsmtrp1U;
- Tue, 17 Dec 2019 07:25:06 +0000 (GMT)
-X-AuditID: b6c32a37-5b7ff7000001ccc3-98-5df882d268e3
-Received: from epsmtip2.samsung.com ( [182.195.34.31]) by
- epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
- DE.85.10238.1D288FD5; Tue, 17 Dec 2019 16:25:06 +0900 (KST)
-Received: from [10.113.221.102] (unknown [10.113.221.102]) by
- epsmtip2.samsung.com (KnoxPortal) with ESMTPA id
- 20191217072505epsmtip2e0f5fca9c77e96f2a1eb00806e493075~hF8skYWcr0201702017epsmtip2Z;
- Tue, 17 Dec 2019 07:25:05 +0000 (GMT)
-Subject: Re: [v5, PATCH 0/5] Add cpufreq and cci devfreq for mt8183, and SVS
- support
-To: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>, MyungJoo Ham
- <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob
- Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- Viresh Kumar <viresh.kumar@linaro.org>, Nishanth Menon <nm@ti.com>, Stephen
- Boyd <sboyd@kernel.org>
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Organization: Samsung Electronics
-Message-ID: <cfce1a04-68e9-f948-0d3a-3bccfa44c797@samsung.com>
-Date: Tue, 17 Dec 2019 16:31:40 +0900
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101
- Thunderbird/59.0
-MIME-Version: 1.0
-In-Reply-To: <1574769046-28449-1-git-send-email-andrew-sh.cheng@mediatek.com>
+ id 1ih7Qs-0000ny-6F; Tue, 17 Dec 2019 07:38:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1576568295; x=1608104295;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=plvsS3EbFtnT2jEj+CKpl0ADN0AY/rYgqgK33djc6Jc=;
+ b=b7/NKg9LVqOtqbBJaZUwKaPZS7FnIUmhcG/8C1wwvbFUomgnA0LTkbnk
+ bDs/VyrhhHHT9ervPj4Ojap5snSyHCNfa3HGM+4aoFoBjRfu1yJpHCavt
+ mU9wAXS5oGkWMhP8EkXMIFIlIpHi5bs0RKeGZZ1I024u0jtD559YRRGmc
+ rUO3HXDlGY58fsjFv4/oDOMX0bjoGY6w3G63H+Ny/3kGCazvgLINSqWEE
+ aCSsUeqwvIHFXphHvwtkrcVPxwdtd1YxLDFIaa6VM1uliyP+hes4QPPMo
+ D6v4DhaVa4Yj29wx1y9b6AbKHVkK9OMsWkzVTt91miFFWN5nOjJfYQO99 w==;
+IronPort-SDR: hW5mPVhkRRnuUCvCMhZL/pkSWE9B3p0F9jZF9DArTQFAjqkvOlkIJcFfSEt0CDDiO+7XPhfQ6s
+ SETxKEFCzNuZsMw/FaiWhKIV88koHQiYNdasuiLRS7Mhu5UtmH0HjKneVU6I5zpKG0XoGtrePy
+ aaO8WcV8MGrz1odPB4HTd5nQ7jlX5ZEWB+/JVMoc3x30HyAcz2kyUA0emeU2U69frZ61yS3yIy
+ HErVqu5nMfz0fiJC7m42NDyBOdxixbTvQGwQGpYxv60myGW/qVtlGMZ+tGiVpjl59coyfFx+//
+ XEM=
+X-IronPort-AV: E=Sophos;i="5.69,324,1571673600"; d="scan'208";a="126294481"
+Received: from mail-bn3nam04lp2055.outbound.protection.outlook.com (HELO
+ NAM04-BN3-obe.outbound.protection.outlook.com) ([104.47.46.55])
+ by ob1.hgst.iphmx.com with ESMTP; 17 Dec 2019 15:38:11 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=i5cM0ttULvWSEHlr1Xb4SsZ96clZCL1mKfMLunYK1ff6gxqyivvNkT3JF7Yb9PVlcCL+DEa1CXB05JNYQMGrYcjon/EGO54mkfwNnl20wHgFRR3XLbxja0+bsoXX111Gfigs1T7a0w49C9YW04iGjZQSgrQV3sGLeh0diAeVwYsD5uB9c1bZWhjkhZCfCEzjYsz7PDx6pCGRMASAqpwn11j23aW4YS5+LG2vsoAFAdHJIrWaiyT6KnRbYEQwNLYCwz/fE1YblhPBjZ7ijIZdDo6Ak6QND+IIruQ5C94u36knzPSSgyVEbr75gL0T5RFNAFP913skhO1TF3Vqcv+uOg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=plvsS3EbFtnT2jEj+CKpl0ADN0AY/rYgqgK33djc6Jc=;
+ b=C5M2sFfb6KrcgkkZxgNVRmq/mfsNSREATxBK2wfgVEJ+kkLJqOLeZmjCdBlXLIvYfw8mDRoB8X1Zi1039r6C+EG6GVTb6erVXtPcippXL+r4dMmEGyZODOePktcd9XJd5S79V+yROzuZUNcFRGG/TeljyznWBPgIDnj6WOy8DlUwPmh9UgWfLyfgNWzK66jifzqXw48xBHPJXAtU+gaw+xKJ1hD+wDmE+rqiCWmYMQO5xbAbRFMgnGRmxzrGxzCqbR92QKgm2bdA1HeopfQlHrvVysU0qJW1rkHQvGFqTKnHctzFzwxMLStBE/dmoWgFqXBGP6UwxIfyWLKJ+/oC5Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=plvsS3EbFtnT2jEj+CKpl0ADN0AY/rYgqgK33djc6Jc=;
+ b=pNOxsnoucfZuVGYer8avxZbKK3LtETglXa49mUYZhjo3Haumx8gsFpShMp00s/IWs5PF7vwCU+hXQFiG0976qc56HiD54OL06jUPAqo/BgST1tkJ9IAmeiJIHvsV/YwG1H6tnb6QeRtQey++6+/GJEfgAvUYSkQOTerVIC2M3Ts=
+Received: from MN2PR04MB6991.namprd04.prod.outlook.com (10.186.144.209) by
+ MN2PR04MB7104.namprd04.prod.outlook.com (10.186.147.212) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2538.16; Tue, 17 Dec 2019 07:38:09 +0000
+Received: from MN2PR04MB6991.namprd04.prod.outlook.com
+ ([fe80::9447:fa71:53df:f866]) by MN2PR04MB6991.namprd04.prod.outlook.com
+ ([fe80::9447:fa71:53df:f866%3]) with mapi id 15.20.2538.019; Tue, 17 Dec 2019
+ 07:38:09 +0000
+From: Avri Altman <Avri.Altman@wdc.com>
+To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
+ <linux-scsi@vger.kernel.org>, "alim.akhtar@samsung.com"
+ <alim.akhtar@samsung.com>, "pedrom.sousa@synopsys.com"
+ <pedrom.sousa@synopsys.com>
+Subject: RE: [PATCH v1 0/2] scsi: ufs: fixup active period of ufshcd interrupt
+Thread-Topic: [PATCH v1 0/2] scsi: ufs: fixup active period of ufshcd interrupt
+Thread-Index: AQHVsV/LOTQTZ9v6wk2kTdk6DisVqqe99tMg
+Date: Tue, 17 Dec 2019 07:38:09 +0000
+Message-ID: <MN2PR04MB6991F22FCFF3BDEB0EC7713EFC500@MN2PR04MB6991.namprd04.prod.outlook.com>
+References: <1575721321-8071-1-git-send-email-stanley.chu@mediatek.com>
+ <1576205295.12066.5.camel@mtkswgap22>
+In-Reply-To: <1576205295.12066.5.camel@mtkswgap22>
+Accept-Language: en-US
 Content-Language: en-US
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFnrHJsWRmVeSWpSXmKPExsWy7bCmru6lph+xBic7VSy2r3/BajH/yDlW
- i293fjNZnG16w26x6fE1VovLu+awWVxuvsho8bn3CKPF0usXmSyaWowtbjeuYLN48+Msk8WZ
- 05dYLVr3HmG3+HdtI4vF9LtCFhu/ejgIeqyZt4bRY+esu+wem1Z1snncubaHzWPzknqPlpP7
- WTy2XG1n8ejbsorR4/iN7UwenzfJBXBFZdtkpCampBYppOYl56dk5qXbKnkHxzvHm5oZGOoa
- WlqYKynkJeam2iq5+AToumXmAH2jpFCWmFMKFApILC5W0rezKcovLUlVyMgvLrFVSi1IySmw
- LNArTswtLs1L10vOz7UyNDAwMgUqTMjO+LHvMVvBb+6K53s/sTcw9nF2MXJySAiYSNztn87Y
- xcjFISSwg1Fi94cLTBDOJ0aJpV/3sEE43xglzr3ZzAzTsnzXJRaIxF5GiUUXp7JDOO8ZJY40
- rmIBqRIWCJN4PG8VK0hCRGASs8SEzQ8YQRLMArcYJV7vZwOx2QS0JPa/uAFm8wsoSlz98Ris
- hlfATuLw+fesIDaLgKrEkvWnweKiQENPbmuBqhGUODnzCdgyTgFfiVPTT7FDzBeXuPVkPhOE
- LS+x/e0cZpAjJATusUvsfTOdHeIHF4mr3X9YIWxhiVfHt0DFpSRe9rdB2dUSK08eYYNo7mCU
- 2LL/AlSDscT+pZOBNnAAbdCUWL9LHyKsKLHz91yoJ/kk3n3tYQUpkRDglehoE4IoUZa4/OAu
- E4QtKbG4vZNtAqPSLCTvzELywiwkL8xCWLaAkWUVo1hqQXFuemqxYYExcnxvYgSndS3zHYwb
- zvkcYhTgYFTi4S0o+x4rxJpYVlyZe4hRgoNZSYR3hwJQiDclsbIqtSg/vqg0J7X4EKMpMLQn
- MkuJJucDc05eSbyhqZGxsbGFiaGZqaGhkjgvx4+LsUIC6YklqdmpqQWpRTB9TBycUsAUNfPP
- JGaz+P0Rix73HLy7ZYWIrIz4D1alpLiel26B3xOnT77haLYsoFnko2DXybtpZVJ7xHM4br9d
- 9SJ47b66tsWLrRzOTfMxS5DdzspVepWj6fnBRd/FvXr+69y/9/bskt/2Gd+Vgz4X7wt49Vf/
- NMNfR95yiy9mrQutj597NXvBjdSEubrySizFGYmGWsxFxYkANpRDiwEEAAA=
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrJIsWRmVeSWpSXmKPExsWy7bCSvO6lph+xBqfPMFpsX/+C1WL+kXOs
- Ft/u/GayONv0ht1i0+NrrBaXd81hs7jcfJHR4nPvEUaLpdcvMlk0tRhb3G5cwWbx5sdZJosz
- py+xWrTuPcJu8e/aRhaL6XeFLDZ+9XAQ9Fgzbw2jx85Zd9k9Nq3qZPO4c20Pm8fmJfUeLSf3
- s3hsudrO4tG3ZRWjx/Eb25k8Pm+SC+CK4rJJSc3JLEst0rdL4Mr4se8xW8Fv7ornez+xNzD2
- cXYxcnJICJhILN91iaWLkYtDSGA3o8Szt4dZIBKSEtMuHmXuYuQAsoUlDh8uhqh5yyixaP9h
- VpAaYYEwicfzVrGCJEQEpjFLPP33mg3EYRa4xSixqfkIO0TLAkaJ3lvXwVrYBLQk9r+4wQZi
- 8wsoSlz98ZgRxOYVsJM4fP49WA2LgKrEkvWnweKiQCt2LnnMBFEjKHFy5hOw8zgFfCVOTT/F
- DmIzC6hL/Jl3iRnCFpe49WQ+E4QtL7H97RzmCYzCs5C0z0LSMgtJyywkLQsYWVYxSqYWFOem
- 5xYbFhjmpZbrFSfmFpfmpesl5+duYgRHuJbmDsbLS+IPMQpwMCrx8EqUfI8VYk0sK67MPcQo
- wcGsJMK7QwEoxJuSWFmVWpQfX1Sak1p8iFGag0VJnPdp3rFIIYH0xJLU7NTUgtQimCwTB6dU
- A6NWsJdIk+0nj+R7NdYhC0pi7grPnJK5/vCPXKXUKL5K+c+dG3cclX5/LnRHWjz/qoLYNXfE
- K2eove20n8Ghc/z/2o5nU4S38E/yZn1WmPjxz6zzD2ft+6uSsMBPzcnv4T+3++tmqRyzf+uz
- fOcGG+6jexqkO7bufBu9h3eZqJHRNuEzIs4pCvuVWIozEg21mIuKEwE7Gqa27AIAAA==
-X-CMS-MailID: 20191217072506epcas1p36bf0e286c809f5e9b82f3ccf9e75f586
-X-Msg-Generator: CA
-X-Sendblock-Type: SVC_REQ_APPROVE
-CMS-TYPE: 101P
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20191126115058epcas1p3caa6da2508caa5fbe71c202834184b15
-References: <CGME20191126115058epcas1p3caa6da2508caa5fbe71c202834184b15@epcas1p3.samsung.com>
- <1574769046-28449-1-git-send-email-andrew-sh.cheng@mediatek.com>
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Avri.Altman@wdc.com; 
+x-originating-ip: [212.25.79.133]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: ccca7b09-5bc0-46f4-ef1c-08d782c41040
+x-ms-traffictypediagnostic: MN2PR04MB7104:
+x-microsoft-antispam-prvs: <MN2PR04MB710445C8B9E42A0CA8B38E98FC500@MN2PR04MB7104.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:3968;
+x-forefront-prvs: 02543CD7CD
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(4636009)(346002)(376002)(396003)(39860400002)(136003)(366004)(199004)(189003)(8676002)(5660300002)(54906003)(66946007)(186003)(8936002)(81156014)(81166006)(26005)(33656002)(9686003)(66476007)(66556008)(64756008)(55016002)(66446008)(52536014)(7696005)(71200400001)(86362001)(4326008)(110136005)(7416002)(2906002)(316002)(6506007)(478600001)(4744005)(76116006);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:MN2PR04MB7104;
+ H:MN2PR04MB6991.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: ihigtQ1DYwDR+CVbkxOumRW1C62PStKncC5mtDeRoTaXBfCXqEx3fwyTBIxRHDXyXOnShO26A76CmaO3deaemoF0hDFZnDtf2Ooe/Ta9xeNUYmFWPA9bbIoCShg03cpffrC7qJM2L73f1/7YjOfHi+48E4QaKji/4i8VDlgMGgVWnngAW7haY0APAcJEWPQ60Dw77PeNM8pUGnZcFjR0GdfYZzqUC7/6K/rV/+3jeeNYvImWnNknhGmEpOFklEyhkMwpUPW+y24yARvd6+hQwPQW5r+AaeIzRq2nlduJY34jROjpqe7FwmeE0lfO2a70Ji8KMS5XgcCyMg+pzVUBvj7fLpP2/103KYSLiSeYxY9no5Pmlz5vfxx0JXiIDqYwJAPbZsyAwLccrZ5OCSpo1qzw2zw1ko1pAMHosvBYc7YZPFSCtBJbS5YY3209sjlP
+x-ms-exchange-transport-forked: True
+MIME-Version: 1.0
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ccca7b09-5bc0-46f4-ef1c-08d782c41040
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Dec 2019 07:38:09.2184 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 3Q0t5ia0HS0vCL+itKWgQ1qRbyfOzN4kaGkNSi8GwR6rUvjdLPSDjMJ0hITVMdzgk2y6WXcUSdDD7X1JkIl+Gw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB7104
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191216_232517_242472_99E0B7F9 
-X-CRM114-Status: GOOD (  19.89  )
+X-CRM114-CacheID: sfid-20191216_233814_414116_E245F55D 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -147,57 +142,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, fan.chen@mediatek.com,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
+ "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "beanhuo@micron.com" <beanhuo@micron.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Looks good to me.
+Reviewed-by: Avri Altman <avri.altman@wdc.com>
 
-On 11/26/19 8:50 PM, Andrew-sh.Cheng wrote:
-> From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
 > 
-> MT8183 supports CPU DVFS and CCI DVFS, and LITTLE cpus and CCI are in the same voltage domain.
-> So, this series is to add drivers to handle the voltage coupling between CPU and CCI DVFS.
+> On Sat, 2019-12-07 at 20:21 +0800, Stanley Chu wrote:
+> > This patchset fixes up active duration of ufshcd interrupt to avoid potential
+> system hang issues.
+> >
+> > Stanley Chu (2):
+> >   scsi: ufs: disable irq before disabling clocks
+> >   scsi: ufs: disable interrupt during clock-gating
+> >
+> >  drivers/scsi/ufs/ufshcd.c | 15 ++++++++++-----
+> >  1 file changed, 10 insertions(+), 5 deletions(-)
+> >
 > 
-> For SVS support, need OPP_EVENT_ADJUST_VOLTAGE and corresponding reaction.
-
-What is correct full word of SVS?
-- S(?) VS (Voltage Scaling) ?
-
-> depend on:
-> 	https://patchwork.kernel.org/patch/11193513/ 
-> 
-> Change since v4:
-> 	- Remove redundant code
-> 
-> 
-> Andrew-sh.Cheng (5):
->   cpufreq: mediatek: add clock enable for intermediate clock
->   dt-bindings: devfreq: add compatible for mt8183 cci devfreq
->   devfreq: add mediatek cci devfreq
->   cpufreq: mediatek: add opp notification for SVS support
->   devfreq: mediatek: cci devfreq register opp notification for SVS
->     support
-> 
->  .../bindings/devfreq/mt8183-cci-devfreq.txt        |  20 ++
->  drivers/cpufreq/mediatek-cpufreq.c                 |  92 +++++-
->  drivers/devfreq/Kconfig                            |  10 +
->  drivers/devfreq/Makefile                           |   1 +
->  drivers/devfreq/mt8183-cci-devfreq.c               | 308 +++++++++++++++++++++
->  5 files changed, 429 insertions(+), 2 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/devfreq/mt8183-cci-devfreq.txt
->  create mode 100644 drivers/devfreq/mt8183-cci-devfreq.c
-> 
-
-
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
+> Thanks,
+> Stanley
 
 _______________________________________________
 Linux-mediatek mailing list
