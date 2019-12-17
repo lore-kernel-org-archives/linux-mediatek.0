@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3954FC43603
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2019 03:09:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3CFE4C43603
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2019 03:15:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 09EA4207FF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2019 03:09:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D763E2082E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2019 03:15:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XgfJT4DO";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="is4N3uuA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 09EA4207FF
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ehDjaR07";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="IHCr8bFT"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D763E2082E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mDV6zMik38hfvopS52Sioprauy0SshW+rnTiqpEr1Jo=; b=XgfJT4DOl8QxBc
-	oUwM6Jkr4sxw2tRktk96TBwcmZOOs960olaQJ7BZSxgIH4AyXqnxlZS7ZxGztYHvyHHp5tshIsg2B
-	oKUy8gnmYOI+4ojqAUmAccQpDWoTAAmQolDBOEgnjDDaqeeG/6W6rjIYUcjfZcQhvktexYmK1O6Jr
-	2KEYuKFKlksKsO4PdSEy48DH7wW5qv6TwWi9vR2YF4HsjmSVlpiZ75Mxz2AWfuiaU0EP3xMNAbiVj
-	/QTClk/7AXfp9sLHkUQ1c4Oxqjqc4rbUJEllYqPapXYU/cxujedKo2v25XnddPHW+ipHlBBfoJ21Q
-	TVlSRULQtxHFlarZMFGA==;
+	List-Owner; bh=RskvzfbodxXYRKIKO+qaAsTvkc08R1V/t61rnXUiWoQ=; b=ehDjaR07CYHyrr
+	rtqr7stlUTE3jw5/olvjVLVfMEUnEqO0ISyPvBo/3qC4nVoEqpWm9IRUfvWMUhro5JPs75rqiazPK
+	gEA91iEU3tVjIG/pwIs2jcckuHRLAbe7adf5lKy9HyG8/b+uaytJjXKonsEhbC12JrVNZxLBIOpBW
+	P0mfwBi9RQGYbXcJcxf1AuCXzibySIoykCHdg6sPMBM4VXEnMMARzEkeA8AwmsEsIcIX0zvpKJMHy
+	acb4jtk87axzYI7WcTGiw3Ez6zk8g+0LIonIX+K0ZkkY8HQ5h/s7mkkq9fsebQryQYoHJTXIUlCBn
+	JOfax55VZmzPtJoNg33w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ih3EX-0001ng-Cx; Tue, 17 Dec 2019 03:09:13 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ih3K5-00049Z-Vv; Tue, 17 Dec 2019 03:14:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ih3E4-0001LD-F5; Tue, 17 Dec 2019 03:08:45 +0000
-X-UUID: c949f432e4f84e3cb90ba4e0668fb7cc-20191216
+ id 1ih3Jv-0003yQ-I8; Tue, 17 Dec 2019 03:14:49 +0000
+X-UUID: 949068cd0037409e84720e80aa3552e6-20191216
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=NXAXywe6bG/ogKzjc7bR2k8BXtOTUM9mI6/1bMTQUeg=; 
- b=is4N3uuAJASaDf1gCgtW7vi43UfACM35woO5378gO0ogFp8GH8G5PAl8bzthbzOxZw13ohymfVjqSEyvtoCKtdFH/3AYjgWnEAI9/ytjyZma+Ey57hBTK6L+XzflWK87UHv42PoYL3pi79sZi58eKrmnEydJ4PzIiIAnNmHFORY=;
-X-UUID: c949f432e4f84e3cb90ba4e0668fb7cc-20191216
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=tZYQtktGRy8Who+pLVHW/cHqPk4WeYEvryM79MNiedY=; 
+ b=IHCr8bFTemeyR0yHyvSYnntrcKSIY9PQ4eL3IJhVo4vtJgivGHX9RBV3Hj3QKaSd//7et7KFMvDJWNaJPXTUW5kQcuP22oEvv+TTpEC2aciJWcjXQd10nZ2NyXIVqnYYqsyNRTrZMwwnRWgmEZqKg3tExEQSNJNnSgkGvaquFnA=;
+X-UUID: 949068cd0037409e84720e80aa3552e6-20191216
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jitao.shi@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 453015940; Mon, 16 Dec 2019 19:08:42 -0800
-Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 16 Dec 2019 19:05:50 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
- (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Tue, 17 Dec 2019 11:03:42 +0800
+ with ESMTP id 443965297; Mon, 16 Dec 2019 19:14:43 -0800
+Received: from MTKMBS33DR.mediatek.inc (172.27.6.106) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 16 Dec 2019 19:05:00 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33DR.mediatek.inc
+ (172.27.6.106) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Tue, 17 Dec 2019 11:02:04 +0800
 Received: from mszsdclx1018.gcn.mediatek.inc (172.27.4.253) by
  MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1395.4 via Frontend Transport; Tue, 17 Dec 2019 11:04:16 +0800
+ 15.0.1395.4 via Frontend Transport; Tue, 17 Dec 2019 11:04:17 +0800
 From: Jitao Shi <jitao.shi@mediatek.com>
 To: Thierry Reding <thierry.reding@gmail.com>, Uwe Kleine-Koenig
  <u.kleine-koenig@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
  <linux-pwm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-kernel@vger.kernel.org>, CK Hu <ck.hu@mediatek.com>
-Subject: [PATCH v3 1/2] pwm: fix pwm clocks not poweroff when disable pwm
-Date: Tue, 17 Dec 2019 11:04:37 +0800
-Message-ID: <20191217030438.26657-2-jitao.shi@mediatek.com>
+Subject: [PATCH v3 2/2] pwm: keep the trigger register after pwm setting.
+Date: Tue, 17 Dec 2019 11:04:38 +0800
+Message-ID: <20191217030438.26657-3-jitao.shi@mediatek.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191217030438.26657-1-jitao.shi@mediatek.com>
 References: <20191217030438.26657-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: A48D6B2B5460CE96AC1D7495E1536D28FC3904D05A98F51561804B251FDF4A0E2000:8
+X-TM-SNTS-SMTP: BF5E4A39B272E435A2A08B084DA617DEA8856AAB3BF88A51B8CFCEF636FAB20D2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191216_190844_522213_F55FD645 
-X-CRM114-Status: GOOD (  11.82  )
+X-CRM114-CacheID: sfid-20191216_191447_615893_37D5BDEA 
+X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,136 +94,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The clocks of pwm are still in prepare state when disable pwm.
+Move the trigger after pwm setting to avoid the pwm wrong signal
+output.
 
-Because the clocks is prepared in mtk_disp_pwm_probe() and unprepared
-in mtk_disp_pwm_remove().
-
-clk_prepare and clk_unprepare aren't called by mtk_disp_pwm_enable()
-and mtk_disp_pwm_disable().
-
-Modified:
-So clk_enable() is instread with clk_prepare_enable().
-clk_disable() is instread with clk_disable_unprepare().
-
-And remove the clk_prepare() from mtk_disp_pwm_probe(),
-remove the clk_unprepare from mtk_disp_pwm_remove().
+Remove the regist enable trigger setting in probe.
+Move the trigger to end of mtk_disp_pwm_config().
 
 Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 ---
- drivers/pwm/pwm-mtk-disp.c | 43 +++++++++++---------------------------
- 1 file changed, 12 insertions(+), 31 deletions(-)
+ drivers/pwm/pwm-mtk-disp.c | 20 +++++++-------------
+ 1 file changed, 7 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
-index 83b8be0209b7..c7b14acc9316 100644
+index c7b14acc9316..c1aae5b5693b 100644
 --- a/drivers/pwm/pwm-mtk-disp.c
 +++ b/drivers/pwm/pwm-mtk-disp.c
-@@ -98,13 +98,13 @@ static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 	high_width = div64_u64(rate * duty_ns, div);
- 	value = period | (high_width << PWM_HIGH_WIDTH_SHIFT);
- 
--	err = clk_enable(mdp->clk_main);
-+	err = clk_prepare_enable(mdp->clk_main);
- 	if (err < 0)
- 		return err;
- 
--	err = clk_enable(mdp->clk_mm);
-+	err = clk_prepare_enable(mdp->clk_mm);
- 	if (err < 0) {
--		clk_disable(mdp->clk_main);
-+		clk_disable_unprepare(mdp->clk_main);
- 		return err;
- 	}
- 
-@@ -124,8 +124,8 @@ static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+@@ -122,6 +122,13 @@ static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 		mtk_disp_pwm_update_bits(mdp, mdp->data->commit,
+ 					 mdp->data->commit_mask,
  					 0x0);
++	} else {
++		mtk_disp_pwm_update_bits(mdp, mdp->data->bls_debug,
++					 mdp->data->bls_debug_mask,
++					 mdp->data->bls_debug_mask);
++		mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
++					 mdp->data->con0_sel,
++					 mdp->data->con0_sel);
  	}
  
--	clk_disable(mdp->clk_mm);
--	clk_disable(mdp->clk_main);
-+	clk_disable_unprepare(mdp->clk_mm);
-+	clk_disable_unprepare(mdp->clk_main);
- 
- 	return 0;
- }
-@@ -135,13 +135,13 @@ static int mtk_disp_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
- 	struct mtk_disp_pwm *mdp = to_mtk_disp_pwm(chip);
- 	int err;
- 
--	err = clk_enable(mdp->clk_main);
-+	err = clk_prepare_enable(mdp->clk_main);
- 	if (err < 0)
- 		return err;
- 
--	err = clk_enable(mdp->clk_mm);
-+	err = clk_prepare_enable(mdp->clk_mm);
- 	if (err < 0) {
--		clk_disable(mdp->clk_main);
-+		clk_disable_unprepare(mdp->clk_main);
- 		return err;
- 	}
- 
-@@ -158,8 +158,8 @@ static void mtk_disp_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
- 	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, mdp->data->enable_mask,
- 				 0x0);
- 
--	clk_disable(mdp->clk_mm);
--	clk_disable(mdp->clk_main);
-+	clk_disable_unprepare(mdp->clk_mm);
-+	clk_disable_unprepare(mdp->clk_main);
- }
- 
- static const struct pwm_ops mtk_disp_pwm_ops = {
-@@ -194,14 +194,6 @@ static int mtk_disp_pwm_probe(struct platform_device *pdev)
- 	if (IS_ERR(mdp->clk_mm))
- 		return PTR_ERR(mdp->clk_mm);
- 
--	ret = clk_prepare(mdp->clk_main);
--	if (ret < 0)
--		return ret;
--
--	ret = clk_prepare(mdp->clk_mm);
--	if (ret < 0)
--		goto disable_clk_main;
--
- 	mdp->chip.dev = &pdev->dev;
- 	mdp->chip.ops = &mtk_disp_pwm_ops;
- 	mdp->chip.base = -1;
-@@ -210,7 +202,7 @@ static int mtk_disp_pwm_probe(struct platform_device *pdev)
- 	ret = pwmchip_add(&mdp->chip);
- 	if (ret < 0) {
- 		dev_err(&pdev->dev, "pwmchip_add() failed: %d\n", ret);
--		goto disable_clk_mm;
-+		return ret;
- 	}
+ 	clk_disable_unprepare(mdp->clk_mm);
+@@ -207,19 +214,6 @@ static int mtk_disp_pwm_probe(struct platform_device *pdev)
  
  	platform_set_drvdata(pdev, mdp);
-@@ -229,24 +221,13 @@ static int mtk_disp_pwm_probe(struct platform_device *pdev)
- 	}
  
+-	/*
+-	 * For MT2701, disable double buffer before writing register
+-	 * and select manual mode and use PWM_PERIOD/PWM_HIGH_WIDTH.
+-	 */
+-	if (!mdp->data->has_commit) {
+-		mtk_disp_pwm_update_bits(mdp, mdp->data->bls_debug,
+-					 mdp->data->bls_debug_mask,
+-					 mdp->data->bls_debug_mask);
+-		mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
+-					 mdp->data->con0_sel,
+-					 mdp->data->con0_sel);
+-	}
+-
  	return 0;
--
--disable_clk_mm:
--	clk_unprepare(mdp->clk_mm);
--disable_clk_main:
--	clk_unprepare(mdp->clk_main);
--	return ret;
  }
  
- static int mtk_disp_pwm_remove(struct platform_device *pdev)
- {
- 	struct mtk_disp_pwm *mdp = platform_get_drvdata(pdev);
--	int ret;
--
--	ret = pwmchip_remove(&mdp->chip);
--	clk_unprepare(mdp->clk_mm);
--	clk_unprepare(mdp->clk_main);
- 
--	return ret;
-+	return pwmchip_remove(&mdp->chip);
- }
- 
- static const struct mtk_pwm_data mt2701_pwm_data = {
 -- 
 2.21.0
 _______________________________________________
