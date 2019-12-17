@@ -2,98 +2,82 @@ Return-Path: <SRS0=Z+8g=2H=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C415FC43603
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2019 14:28:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F18B1C2D0D1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2019 14:35:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 919C621D7D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2019 14:28:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C492B24655
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2019 14:35:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JWm+OoM1";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=cerno.tech header.i=@cerno.tech header.b="hzl3RxcC";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=messagingengine.com header.i=@messagingengine.com header.b="Pj8zWa8S"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 919C621D7D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=cerno.tech
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="h8gWW7rA";
+	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="UXcywob3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C492B24655
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
+	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5yOFVcibkuw8gyt0zq5jDqTBwVtnbsr5fQY1zLViVXs=; b=JWm+OoM19EJxCe
-	7MU2JoV+GE3TAiq4uVcbkNq2ZDHqz1o4d5eSdeVdtfsDXALo/iWREmvUj4CTW0H7NYz7ds5MjDgU2
-	2Hx5SJw+dv3yVpgON8X7z/szTIgjNnYhdupywE7mxUrcAKpSNX8/OsNxnMfhYC/ZQi7tpgw2vKdQD
-	myv4kJ6on8JIFmQhOLy7Wkn6LmjTcmSx9qHVJeqYUAfWmWGAcfMt3qj9tqPPV/FP5SWz+BlXY5E+g
-	z31gB/K/7jQXnZGHvhDSnTcRKiORF3KMOX+hb0hV+fPR5Vilhe0I1Jp44KT18614MMkWneF3s5bw2
-	5WqcC998XsMC8bmaWsCw==;
+	List-Owner; bh=Vtd3Ur5vWfM+48tJ5F2DJQzB6xcvBCU/hcd50+FA0ek=; b=h8gWW7rAejzLiM
+	Mwt15gZZnCbf9ryCfYHIhjXn1YGsIR6ZDYI7DhBGm5WSml6OguImuPanLoRKtsfwtZm0Ulds9PtZp
+	6JFMW3QqiirM7GmP6LfGMLga9UvGutnezVMPiewa8eGFCyqJ6P5mAGxVGtI42TNWAGO2hVORICqtz
+	jvumBL9glU3ZRUI06ELsD455U6rAa5aM9lKeA8GjQYUyqJe7S+dBH9ReUWyEXEBM2JvBEDA+XRs3v
+	omg+1TbeNgbdH54G9iKrmPCUaEpRP319DqcpmtkU6vf1BxmTOxxdyImyIzCD7bUdouGE1brNSUJPa
+	T4fmNjCf67Jt50MtShow==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ihDqB-00075A-Ms; Tue, 17 Dec 2019 14:28:47 +0000
-Received: from new2-smtp.messagingengine.com ([66.111.4.224])
+	id 1ihDwV-0002gX-N8; Tue, 17 Dec 2019 14:35:19 +0000
+Received: from mail25.static.mailgun.info ([104.130.122.25])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ihDpw-0006p1-SX; Tue, 17 Dec 2019 14:28:35 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailnew.nyi.internal (Postfix) with ESMTP id 07CD61EAE;
- Tue, 17 Dec 2019 09:28:24 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Tue, 17 Dec 2019 09:28:24 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm1; bh=o7MJ2oxooSAZLrE4IgKBFIHl/Fq
- uvlsScI7dDq2S0Lo=; b=hzl3RxcCTOf/6vakmast5z/ssSN6fGEGQslELZEROQ3
- Frk7iXOG9tka5Q9WYrFjC/s8fkuSuROpKxvkLx9TkuD5AA15EFHmVBNUFH4nC7KO
- czKIYqDJ2IfAm2CD5mEzM2hw0F9A35p63gDQUDV7MC+ms9U9Ja13sXsvttjKpy0G
- mpcZ/WgegUv4YSjDtIcpHYFwCUyqWvprtkA/bOCzwqx4fh0VGv3Dwdir50dq2ScV
- kvntqKv26XwNpqLNCm+TJ+ZsfdrKqv2ZJd3q7B4+vFXuBRb3jsgzFbuQdJFmv5je
- +dCwtpPwEmYgBLmiRxUZemO1gqL1JcREZyFU8/Kevrw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=o7MJ2o
- xooSAZLrE4IgKBFIHl/FquvlsScI7dDq2S0Lo=; b=Pj8zWa8SuQBOs6JWhrGdUr
- w5dAZH6vBwr25rTvG16U+YHnDjv6UhrVdGT7wvlHKzLbuZHb41bwqZMlxBw1sbQO
- KqIZrUUfSJC53mtKc85UqL3vw3YLIP9qFEFMgTHiTJKgCtbu+guYOiTyKBMUq3PE
- Tpo4ZrxZ1YwrbTomSpOx+jfMJ9slBwWc3nfl+OQdar6R8ZdqgMsbxkry+rLjNTer
- 1Iax9QpBMSlGZq/KKF6cUC81qSIrvlWH4nQKjMkiSEZTqe9N15FjvQ7LJAp+nwyL
- CxZYQZZnLzGVRQh8VE/3P431BVGieKHdTEfT08sdqmJPtxLbWecRYPuNU6YklynQ
- ==
-X-ME-Sender: <xms:B-b4XaxYogkGZ-VkhbmZAG8ZW-NeQdkGcAS8s1TZJWAEIkLrLEMZrQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrvddtjedgieegucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpeforgigihhm
- vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecukfhppeeltd
- drkeelrdeikedrjeeinecurfgrrhgrmhepmhgrihhlfhhrohhmpehmrgigihhmvgestggv
- rhhnohdrthgvtghhnecuvehluhhsthgvrhfuihiivgeptd
-X-ME-Proxy: <xmx:B-b4XXUAC8RJFDB70axFrRUjezaNbOEDUp4OeYRUgBeVlokkhlNd3g>
- <xmx:B-b4XfQkfHMZglJ4EjBq084hYFss1JXRAvMRoQ_r3bCpqSiYZXp04w>
- <xmx:B-b4XeM52bBJz35B3keMx4xLX-ahcscnJRrJlGeUlMda_qbJwUo1Qw>
- <xmx:COb4XYoVYHxDAt4SzjQwApM83lGLo5BlzAgc4Dj9NSlurRM0FrE-Nw>
-Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
- [90.89.68.76])
- by mail.messagingengine.com (Postfix) with ESMTPA id 922EA80066;
- Tue, 17 Dec 2019 09:28:22 -0500 (EST)
-Date: Tue, 17 Dec 2019 15:28:21 +0100
-From: Maxime Ripard <maxime@cerno.tech>
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: Re: [PATCH v21 1/2] Documentation: bridge: Add documentation for
- ps8640 DT properties
-Message-ID: <20191217142821.xitumpvfg52heb4t@gilmour.lan>
-References: <20191216135834.27775-1-enric.balletbo@collabora.com>
- <20191216135834.27775-2-enric.balletbo@collabora.com>
+ id 1ihDwQ-0002d8-SS
+ for linux-mediatek@lists.infradead.org; Tue, 17 Dec 2019 14:35:16 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1576593314; h=Content-Type: MIME-Version: Message-ID:
+ In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
+ bh=21aBxipy8p7uk0rKdijJDM9b/aNaNo4M823NpVdIVDU=;
+ b=UXcywob3w3WHof0J0qPgk0jTMxjv2Tunxr1gJbJ0KcbsjZEgGzxvYMaXM/JTlGap1YisduzI
+ M1A/RgA8afeFu0fw0QIthwc6GIcCb2Und0mrJbQ34bvISuNKlkYy5boKaV+ej1+0DSH+epm+
+ EIalLQrBXPQcIFRDMq3U43q2H0g=
+X-Mailgun-Sending-Ip: 104.130.122.25
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
+ by mxa.mailgun.org with ESMTP id 5df8e79e.7fa12ff73ca8-smtp-out-n03;
+ Tue, 17 Dec 2019 14:35:10 -0000 (UTC)
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 3CC1CC4479C; Tue, 17 Dec 2019 14:35:09 +0000 (UTC)
+Received: from potku.adurom.net (88-114-240-156.elisa-laajakaista.fi
+ [88.114.240.156])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: kvalo)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 6A0EEC43383;
+ Tue, 17 Dec 2019 14:35:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 6A0EEC43383
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=none smtp.mailfrom=kvalo@codeaurora.org
+From: Kalle Valo <kvalo@codeaurora.org>
+To: Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [PATCH] mt76: fix LED link time failure
+References: <20191216131902.3251040-1-arnd@arndb.de>
+Date: Tue, 17 Dec 2019 16:35:02 +0200
+In-Reply-To: <20191216131902.3251040-1-arnd@arndb.de> (Arnd Bergmann's message
+ of "Mon, 16 Dec 2019 14:18:42 +0100")
+Message-ID: <87lfrbaull.fsf@kamboji.qca.qualcomm.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191216135834.27775-2-enric.balletbo@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191217_062833_087850_5EB9718A 
-X-CRM114-Status: GOOD (  14.52  )
+X-CRM114-CacheID: sfid-20191217_063514_983095_C09CA2E4 
+X-CRM114-Status: GOOD (  14.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,107 +89,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Ulrich Hecht <uli@fpond.eu>,
- drinkcat@chromium.org, Jitao Shi <jitao.shi@mediatek.com>,
- devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- hsinyi@chromium.org, matthias.bgg@gmail.com,
- Collabora Kernel ML <kernel@collabora.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Stanislaw Gruszka <sgruszka@redhat.com>,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org, Roy Luo <royluo@google.com>,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org,
+ Felix Fietkau <nbd@nbd.name>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 16, 2019 at 02:58:33PM +0100, Enric Balletbo i Serra wrote:
-> From: Jitao Shi <jitao.shi@mediatek.com>
->
-> Add documentation for DT properties supported by
-> ps8640 DSI-eDP converter.
->
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Acked-by: Rob Herring <robh@kernel.org>
-> Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
-> Signed-off-by: Ulrich Hecht <uli@fpond.eu>
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> ---
->
-> Changes in v21: None
-> Changes in v19: None
-> Changes in v18: None
-> Changes in v17: None
-> Changes in v16: None
-> Changes in v15: None
-> Changes in v14: None
-> Changes in v13: None
-> Changes in v12: None
-> Changes in v11: None
->
->  .../bindings/display/bridge/ps8640.txt        | 44 +++++++++++++++++++
->  1 file changed, 44 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/bridge/ps8640.txt
->
-> diff --git a/Documentation/devicetree/bindings/display/bridge/ps8640.txt b/Documentation/devicetree/bindings/display/bridge/ps8640.txt
-> new file mode 100644
-> index 000000000000..7b13f92f7359
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/bridge/ps8640.txt
-> @@ -0,0 +1,44 @@
-> +ps8640-bridge bindings
-> +
-> +Required properties:
-> +	- compatible: "parade,ps8640"
-> +	- reg: first page address of the bridge.
-> +	- sleep-gpios: OF device-tree gpio specification for PD pin.
-> +	- reset-gpios: OF device-tree gpio specification for reset pin.
-> +	- vdd12-supply: OF device-tree regulator specification for 1.2V power.
-> +	- vdd33-supply: OF device-tree regulator specification for 3.3V power.
-> +	- ports: The device node can contain video interface port nodes per
-> +		 the video-interfaces bind[1]. For port@0,set the reg = <0> as
-> +		 ps8640 dsi in and port@1,set the reg = <1> as ps8640 eDP out.
-> +
-> +Optional properties:
-> +	- mode-sel-gpios: OF device-tree gpio specification for mode-sel pin.
-> +[1]: Documentation/devicetree/bindings/media/video-interfaces.txt
-> +
-> +Example:
-> +	edp-bridge@18 {
-> +		compatible = "parade,ps8640";
-> +		reg = <0x18>;
-> +		sleep-gpios = <&pio 116 GPIO_ACTIVE_LOW>;
-> +		reset-gpios = <&pio 115 GPIO_ACTIVE_LOW>;
-> +		mode-sel-gpios = <&pio 92 GPIO_ACTIVE_HIGH>;
-> +		vdd12-supply = <&ps8640_fixed_1v2>;
-> +		vdd33-supply = <&mt6397_vgp2_reg>;
-> +
-> +		ports {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +			port@0 {
-> +				reg = <0>;
-> +				ps8640_in: endpoint {
-> +					remote-endpoint = <&dsi0_out>;
-> +				};
-> +			};
-> +			port@1 {
-> +				reg = <1>;
-> +				ps8640_out: endpoint {
-> +					remote-endpoint = <&panel_in>;
-> +				};
-> +			};
-> +		};
-> +	};
+Arnd Bergmann <arnd@arndb.de> writes:
 
-It's not really fair to ask this after the rough history of this
-patchset apparently, but bindings should be submitted in the YAML
-format now.
+> The mt76_led_cleanup() function is called unconditionally, which
+> leads to a link error when CONFIG_LEDS is a loadable module or
+> disabled but mt76 is built-in:
+>
+> drivers/net/wireless/mediatek/mt76/mac80211.o: In function `mt76_unregister_device':
+> mac80211.c:(.text+0x2ac): undefined reference to `led_classdev_unregister'
+>
+> Use the same trick that is guarding the registration, using an
+> IS_ENABLED() check for the CONFIG_MT76_LEDS symbol that indicates
+> whether LEDs can be used or not.
+>
+> Fixes: 36f7e2b2bb1d ("mt76: do not use devm API for led classdev")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-This wouldn't be nice to stop it from going in just because of this,
-so can you send a subsequent patch fixing this?
+Felix, as this is a regression in v5.5-rc1 can I take this directly to
+wireless-drivers?
 
-Thanks!
-Maxime
+-- 
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
 _______________________________________________
 Linux-mediatek mailing list
