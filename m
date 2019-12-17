@@ -1,128 +1,73 @@
-Return-Path: <SRS0=XFYx=2G=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=Z+8g=2H=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4CBD2C43603
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2019 20:21:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B0F5BC43603
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2019 01:13:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1EEFE21582
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Dec 2019 20:21:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 82130206E6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2019 01:13:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BaGC/XHy";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="wNxxO5tB"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1EEFE21582
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lwJWrtCg";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.b="Ud8Pp6GN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 82130206E6
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3nLZLYj0QemTPpM0edyCeWG1vgbg028hlC3AAzUf9/k=; b=BaGC/XHye5mLaQ
-	G0sS8ntDWXVf3TmY/DSs7rvIv92+scbtWbFYELVD1UOQDijveYlJVADPlv+CJSk6kp8G02eIF9Jta
-	cNTew+lr+Yhhv6n0DaeOzMwb1+0leKCXCHnh12KoBSboGM9v5UThg7F3FPttb3jqK6POG1rf/0IfZ
-	E/Ri9AnfvESoViguTVJf3JxSzjXsZtKe8rSHQJ/4XBTunR7xwFU5gWmDhnu5x/bDNd9beADUcKtqQ
-	54E7C7KRXJx0cbyYInMv2EbCrm/d9+/de0DzZ1nClCBRFNHSQzIV8/nlIAQ7WgEZhuGM14fGza/MM
-	XApHAVKjxEWcSl0g5MtA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zF2HUyqoOPY79odQtMLEu436+bIPPj2UNCUMbJZSoaY=; b=lwJWrtCg+myF2c
+	0Vhr3uUXRZc0KuHiQiq5Mkk9ClbKbFDcR97wYQeKFxikRj+YGPi6Oi2NvKOcc/veEvrvLrxB6nv9/
+	HoX5J/V8AfqxHrJ1Jkdxf+bC5otmNcH27oZyp0DEc0g2zJE09ZsJt+A4Cds23oBaZTXdTQDLC8BCo
+	rzFlwo0UOxkr6N295i5DeLbyqUfdN8HWK5pnlJutJfLN+WOWjKCZfrQeqrl3RqRMgSwoLs/jpbKAg
+	YrpuXqWTW5+mwV0WV74hQ8N+Dwswd5efmcuxf5WYWru+uM1jEaCU6+Bjzhhwd8hVDTDhx5n0GjcqI
+	KffoTSzz/28pUGqqcmkg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1igwrT-000333-Ko; Mon, 16 Dec 2019 20:20:59 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1ih1Pu-0000o7-BD; Tue, 17 Dec 2019 01:12:50 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1igwrQ-00032e-U7; Mon, 16 Dec 2019 20:20:58 +0000
-Received: from [192.168.1.37] (cpe-70-114-128-244.austin.res.rr.com
- [70.114.128.244])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A2FC52082E;
- Mon, 16 Dec 2019 20:20:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1576527656;
- bh=hmnXgG+nuVbuFMvNlKiLO65Ck2pIEJTMLtm4NV3bQwU=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=wNxxO5tBWrt3GxRjRi3i6qBJSdppQfmInusBrk8ighJ+vYpijvbffBQboNrsM2qVq
- UeqTswiZIyietPKXKKMkxbasJmS82DiK3/132DIeHAgi39AEBKQMgFF3vmfjCCn1p4
- +RNBSscagqEZEobwyPpBmLUxbkdqiKfm2bVgI0AE=
-Subject: Re: [PATCH 12/17] clk: socfpga: convert to
- devm_platform_ioremap_resource
-To: Yangtao Li <tiny.windzz@gmail.com>, afaerber@suse.de,
- manivannan.sadhasivam@linaro.org, mturquette@baylibre.com, sboyd@kernel.org,
- Eugeniy.Paltsev@synopsys.com, shawnguo@kernel.org, s.hauer@pengutronix.de,
- kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
- agross@kernel.org, s.nawrocki@samsung.com, tomasz.figa@gmail.com,
- cw00.choi@samsung.com, kgene@kernel.org, krzk@kernel.org, palmer@sifive.com,
- paul.walmsley@sifive.com, mripard@kernel.org, wens@csie.org,
- emilio@elopez.com.ar, pdeschrijver@nvidia.com, pgaikwad@nvidia.com,
- thierry.reding@gmail.com, jonathanh@nvidia.com, matthias.bgg@gmail.com,
- rfontana@redhat.com, gregkh@linuxfoundation.org, t-kristo@ti.com,
- john@phrozen.org, tglx@linutronix.de, allison@lohutok.net,
- kstewart@linuxfoundation.org, swinslow@gmail.com, aisheng.dong@nxp.com,
- robh@kernel.org, daniel.baluta@nxp.com, weiyongjun1@huawei.com,
- wangyan.wang@mediatek.com, chunhui.dai@mediatek.com,
- miquel.raynal@bootlin.com, heiko@sntech.de, jcmvbkbc@gmail.com,
- nsekhar@ti.com, geert+renesas@glider.be
-References: <20191209195749.868-1-tiny.windzz@gmail.com>
- <20191209195749.868-12-tiny.windzz@gmail.com>
-From: Dinh Nguyen <dinguyen@kernel.org>
-Autocrypt: addr=dinguyen@kernel.org; prefer-encrypt=mutual; keydata=
- xsFNBFEnvWwBEAC44OQqJjuetSRuOpBMIk3HojL8dY1krl8T8GJjfgc/Gh97CfVbrqhV5yQ3
- Sk/MW9mxO9KNvQCbZtthfn62YHmroNwipjZ6wKOMfKdtJR4+8JW/ShIJYnrMfwN8Wki6O+5a
- yPNNCeENHleV0FLVXw3aACxOcjEzGJHYmg4UC+56rfoxPEhKF6aGBTV5aGKMtQy77ywuqt12
- c+hlRXHODmXdIeT2V4/u/AsFNAq6UFUEvHrVj+dMIyv2VhjRvkcESIGnG12ifPdU7v/+wom/
- smtfOAGojgTCqpwd0Ay2xFzgGnSCIFRHp0I/OJqhUcwAYEAdgHSBVwiyTQx2jP+eDu3Q0jI3
- K/x5qrhZ7lj8MmJPJWQOSYC4fYSse2oVO+2msoMTvMi3+Jy8k+QNH8LhB6agq7wTgF2jodwO
- yij5BRRIKttp4U62yUgfwbQtEUvatkaBQlG3qSerOzcdjSb4nhRPxasRqNbgkBfs7kqH02qU
- LOAXJf+y9Y1o6Nk9YCqb5EprDcKCqg2c8hUya8BYqo7y+0NkBU30mpzhaJXncbCMz3CQZYgV
- 1TR0qEzMv/QtoVuuPtWH9RCC83J5IYw1uFUG4RaoL7Z03fJhxGiXx3/r5Kr/hC9eMl2he6vH
- 8rrEpGGDm/mwZOEoG5D758WQHLGH4dTAATg0+ZzFHWBbSnNaSQARAQABzSFEaW5oIE5ndXll
- biA8ZGluZ3V5ZW5Aa2VybmVsLm9yZz7CwXgEEwECACIFAlbG5oQCGwMGCwkIBwMCBhUIAgkK
- CwQWAgMBAh4BAheAAAoJEBmUBAuBoyj0fIgQAICrZ2ceRWpkZv1UPM/6hBkWwOo3YkzSQwL+
- AH15hf9xx0D5mvzEtZ97ZoD0sAuB+aVIFwolet+nw49Q8HA3E/3j0DT7sIAqJpcPx3za+kKT
- twuQ4NkQTTi4q5WCpA5b6e2qzIynB50b3FA6bCjJinN06PxhdOixJGv1qDDmJ01fq2lA7/PL
- cny/1PIo6PVMWo9nf77L6iXVy8sK/d30pa1pjhMivfenIleIPYhWN1ZdRAkH39ReDxdqjQXN
- NHanNtsnoCPFsqeCLmuUwcG+XSTo/gEM6l2sdoMF4qSkD4DdrVf5rsOyN4KJAY9Uqytn4781
- n6l1NAQSRr0LPT5r6xdQ3YXIbwUfrBWh2nDPm0tihuHoH0CfyJMrFupSmjrKXF84F3cq0DzC
- yasTWUKyW/YURbWeGMpQH3ioDLvBn0H3AlVoSloaRzPudQ6mP4O8mY0DZQASGf6leM82V3t0
- Gw8MxY9tIiowY7Yl2bHqXCorPlcEYXjzBP32UOxIK7y7AQ1JQkcv6pZ0/6lX6hMshzi9Ydw0
- m8USfFRZb48gsp039gODbSMCQ2NfxBEyUPw1O9nertCMbIO/0bHKkP9aiHwg3BPwm3YL1UvM
- ngbze/8cyjg9pW3Eu1QAzMQHYkT1iiEjJ8fTssqDLjgJyp/I3YHYUuAf3i8SlcZTusIwSqnD
- zsFNBFEnvWwBEADZqma4LI+vMqJYe15fxnX8ANw+ZuDeYHy17VXqQ7dA7n8E827ndnoXoBKB
- 0n7smz1C0I9StarHQPYTUciMLsaUpedEfpYgqLa7eRLFPvk/cVXxmY8Pk+aO8zHafr8yrFB1
- cYHO3Ld8d/DvF2DuC3iqzmgXzaRQhvQZvJ513nveCa2zTPPCj5w4f/Qkq8OgCz9fOrf/CseM
- xcP3Jssyf8qTZ4CTt1L6McRZPA/oFNTTgS/KA22PMMP9i8E6dF0Nsj0MN0R7261161PqfA9h
- 5c+BBzKZ6IHvmfwY+Fb0AgbqegOV8H/wQYCltPJHeA5y1kc/rqplw5I5d8Q6B29p0xxXSfaP
- UQ/qmXUkNQPNhsMnlL3wRoCol60IADiEyDJHVZRIl6U2K54LyYE1vkf14JM670FsUH608Hmk
- 30FG8bxax9i+8Muda9ok/KR4Z/QPQukmHIN9jVP1r1C/aAEvjQ2PK9aqrlXCKKenQzZ8qbeC
- rOTXSuJgWmWnPWzDrMxyEyy+e84bm+3/uPhZjjrNiaTzHHSRnF2ffJigu9fDKAwSof6SwbeH
- eZcIM4a9Dy+Ue0REaAqFacktlfELeu1LVzMRvpIfPua8izTUmACTgz2kltTaeSxAXZwIziwY
- prPU3cfnAjqxFHO2TwEpaQOMf8SH9BSAaCXArjfurOF+Pi3lKwARAQABwsFfBBgBAgAJBQJR
- J71sAhsMAAoJEBmUBAuBoyj0MnIQAI+bcNsfTNltf5AbMJptDgzISZJrYCXuzOgv4+d1CubD
- 83s0k6VJgsiCIEpvELQJsr58xB6l+o3yTBZRo/LViNLk0jF4CmCdXWjTyaQAIceEdlaeeTGH
- d5GqAud9rv9q1ERHTcvmoEX6pwv3m66ANK/dHdBV97vXacl+BjQ71aRiAiAFySbJXnqj+hZQ
- K8TCI/6TOtWJ9aicgiKpmh/sGmdeJCwZ90nxISvkxDXLEmJ1prvbGc74FGNVNTW4mmuNqj/p
- oNr0iHan8hjPNXwoyLNCtj3I5tBmiHZcOiHDUufHDyKQcsKsKI8kqW3pJlDSACeNpKkrjrib
- 3KLQHSEhTQCt3ZUDf5xNPnFHOnBjQuGkumlmhkgD5RVguki39AP2BQYp/mdk1NCRQxz5PR1B
- 2w0QaTgPY24chY9PICcMw+VeEgHZJAhuARKglxiYj9szirPd2kv4CFu2w6a5HNMdVT+i5Hov
- cJEJNezizexE0dVclt9OS2U9Xwb3VOjs1ITMEYUf8T1j83iiCCFuXqH4U3Eji0nDEiEN5Ac0
- Jn/EGOBG2qGyKZ4uOec9j5ABF7J6hyO7H6LJaX5bLtp0Z7wUbyVaR4UIGdIOchNgNQk4stfm
- JiyuXyoFl/1ihREfvUG/e7+VAAoOBnMjitE5/qUERDoEkkuQkMcAHyEyd+XZMyXY
-Message-ID: <2ebd88a1-7b04-a6e6-cffc-59353a6846dc@kernel.org>
-Date: Mon, 16 Dec 2019 14:20:50 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.1
+ id 1ih1Pl-0000fW-8R; Tue, 17 Dec 2019 01:12:43 +0000
+Received: from pendragon.ideasonboard.com (81-175-216-236.bb.dnainternet.fi
+ [81.175.216.236])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 93CEC9C5;
+ Tue, 17 Dec 2019 02:12:26 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1576545147;
+ bh=KcjcirugnejZF/v8qYCaUPEjRMBZVSzSBT527du65ro=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Ud8Pp6GNKk4VcnODZGhTIPdvic9f0EE0uzu/AAfk2bEcRKWujIP+SVNygSd9k21Gb
+ DVO6vq1bgcVLDVrJXIgx0bDBc93dTNvbxS9tvJFvDxOuW3JTGYv0dIsw5Z0diCsI6L
+ 9RMPQHAJ8kEN1Gd9ZH6orkpF5w+Ad7q9Pquc6Yuo=
+Date: Tue, 17 Dec 2019 03:12:15 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 5/6] drm/mediatek: Convert to use CMA helpers
+Message-ID: <20191217011215.GM4856@pendragon.ideasonboard.com>
+References: <20191021214550.1461-1-robh@kernel.org>
+ <20191021214550.1461-6-robh@kernel.org>
+ <1cbca96c-19dd-1d15-949c-7fbcc15369b4@gmail.com>
+ <CAL_JsqL6G=F45G+-QXF6T1269f9YquXfYtjoUkCpAoNartxM=Q@mail.gmail.com>
+ <1571864784.19128.8.camel@mtksdaap41>
+ <CAL_JsqJJ2ET2oCCkE=fqk7PWTWp3xiMRiMM_AmxRDws-NaKoOg@mail.gmail.com>
+ <1571900577.27203.6.camel@mtksdaap41>
 MIME-Version: 1.0
-In-Reply-To: <20191209195749.868-12-tiny.windzz@gmail.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1571900577.27203.6.camel@mtksdaap41>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191216_122057_014797_5975176A 
-X-CRM114-Status: GOOD (  13.37  )
+X-CRM114-CacheID: sfid-20191216_171241_605458_033A6210 
+X-CRM114-Status: GOOD (  26.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -134,45 +79,104 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-tegra@vger.kernel.org, linux-riscv@lists.infradead.org,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
+ Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
+ Liviu Dudau <liviu.dudau@arm.com>, Sandy Huang <hjc@rock-chips.com>,
+ Benjamin Gaignard <benjamin.gaignard@linaro.org>,
+ Yannick Fertre <yannick.fertre@st.com>,
+ Nicolas Boichat <drinkcat@chromium.org>, Kevin Hilman <khilman@baylibre.com>,
+ Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+ Xinliang Liu <z.liuxinliang@hisilicon.com>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Chen-Yu Tsai <wens@csie.org>,
+ Noralf =?utf-8?Q?Tr=C3=B8nnes?= <noralf@tronnes.org>,
+ "James \(Qian\) Wang" <james.qian.wang@arm.com>, CK Hu <ck.hu@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Ulrich Hecht <uli@fpond.eu>,
+ Alexandre Torgue <alexandre.torgue@st.com>,
+ Chen Feng <puck.chen@hisilicon.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Sean Paul <sean@poorly.run>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, Philippe Cornu <philippe.cornu@st.com>,
+ Vincent Abriou <vincent.abriou@st.com>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Rongrong Zou <zourongrong@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Rob,
 
+On Thu, Oct 24, 2019 at 03:02:57PM +0800, CK Hu wrote:
+> On Wed, 2019-10-23 at 17:56 -0500, Rob Herring wrote:
+> > On Wed, Oct 23, 2019 at 4:06 PM CK Hu wrote:
+> > > On Wed, 2019-10-23 at 12:42 -0500, Rob Herring wrote:
+> > > > On Tue, Oct 22, 2019 at 12:07 PM Matthias Brugger wrote:
+> > > > > On 21/10/2019 23:45, Rob Herring wrote:
+> > > > > > The only reason the Mediatek driver doesn't use the CMA helpers is it
+> > > > > > sets DMA_ATTR_NO_KERNEL_MAPPING and does a vmap() on demand. Using
+> > > > > > vmap() is not even guaranteed to work as DMA buffers may not have a
+> > > > > > struct page. Now that the CMA helpers support setting
+> > > > > > DMA_ATTR_NO_KERNEL_MAPPING as needed or not, convert Mediatek driver to
+> > > > > > use CMA helpers.
+> > > > > >
+> > > > > > Cc: CK Hu <ck.hu@mediatek.com>
+> > > > > > Cc: Philipp Zabel <p.zabel@pengutronix.de>
+> > > > > > Cc: David Airlie <airlied@linux.ie>
+> > > > > > Cc: Daniel Vetter <daniel@ffwll.ch>
+> > > > > > Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> > > > > > Cc: linux-arm-kernel@lists.infradead.org
+> > > > > > Cc: linux-mediatek@lists.infradead.org
+> > > > > > Signed-off-by: Rob Herring <robh@kernel.org>
+> > > > > > ---
+> > > > >
+> > > > > I tested this on my Chromebook with some patches on top of v5.4-rc1 [1], which
+> > > > > work. If I add your patches on top of that, the system does not boot up.
+> > > > > Unfortunately I don't have a serial console, so I wasn't able to see if there is
+> > > > > any error message.
+> > > >
+> > > > Thanks for testing. I'm based on drm-misc-next, but don't see anything
+> > > > obvious there that would matter. There are some mmap changes, but I
+> > > > think they shouldn't matter.
+> > > >
+> > > > Did you have fbcon enabled? That may give more clues about where the problem is.
+> > >
+> > > There are priv->dma_dev for dma device, but it is not drm device. In
+> > > mt8173.dtsi [1], there are mmsys device and ovl device, mmsys device is
+> > > drm device and ovl device is mmsys's sub device which provide dma
+> > > function, so ovl is the priv->dma_dev. I think your patch directly use
+> > > drm device for dma operation and this would cause dma function fail.
+> > > Please use priv->dma_dev for dma operation.
+> > 
+> > Right, thanks for catching that. Either we'll need to make CMA GEM
+> > object have a struct device ptr or adjust the drm_device.dev to have
+> > the necessary DMA setup.
+> > 
+> > One question though, why do you use CMA when you have an IOMMU? That's
+> > not optimal as CMA size may be limited. Or you don't always have an
+> > IOMMU?
 
-On 12/9/19 1:57 PM, Yangtao Li wrote:
-> Use devm_platform_ioremap_resource() to simplify code.
-> 
-> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
-> ---
->  drivers/clk/socfpga/clk-s10.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/drivers/clk/socfpga/clk-s10.c b/drivers/clk/socfpga/clk-s10.c
-> index 993f3a73c71e..85055fc56404 100644
-> --- a/drivers/clk/socfpga/clk-s10.c
-> +++ b/drivers/clk/socfpga/clk-s10.c
-> @@ -276,11 +276,9 @@ static struct stratix10_clock_data *__socfpga_s10_clk_init(struct platform_devic
->  	struct device *dev = &pdev->dev;
->  	struct stratix10_clock_data *clk_data;
->  	struct clk **clk_table;
-> -	struct resource *res;
->  	void __iomem *base;
->  
-> -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	base = devm_ioremap_resource(dev, res);
-> +	base = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(base)) {
->  		pr_err("%s: failed to map clock registers\n", __func__);
->  		return ERR_CAST(base);
+Please note that the DRM GEM CMA helpers are misnamed, they use the DMA
+coherent allocation API, and thus don't use CMA if the device is backed
+by an IOMMU. They should really have been named DRM GEM DMA helpers.
+
+> For all upstreamed mediatek SoC, all has IOMMU, so it does not need CMA.
+> I think we use CMA just because we refer to other drm driver to
+> implement mediatek drm driver and we misused CMA helper function but it
+> works. I think we should change to more accurate implementation. If you
+> want, you could modify it in this series.
 > 
 
-Tested-by: Dinh Nguyen <dinguyen@kernel.org>
+-- 
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-mediatek mailing list
