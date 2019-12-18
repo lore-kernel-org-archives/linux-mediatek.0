@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E1C87C43603
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2019 08:41:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C722C43603
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2019 08:41:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AD45624650
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2019 08:41:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EC3B121D7D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2019 08:41:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kRWg/9gL";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="DIhSvp3q"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD45624650
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oECsQCbm";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="CCxXhGGA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EC3B121D7D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,34 +26,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NyXIhZqwEM/i/AlmimFDa99ZB8w4+mTz/FqzNcDBMNo=; b=kRWg/9gLBCAp3W
-	Tr+JxYlCaeXipRqG3rcayn/FpgRmKk1J43BW34CdK6HbNuxNUyr1HLAr+RxIc3q+UDBjuUqRmfnLp
-	fzZEERzFqblizHbbdJcevVr+RM/5IVddQrDQZBMVPo7ci4MluAaCTKd42k9otF3Iuxnlw7Hfs3ApP
-	bJAaPA7kUPr/EiTQpY0rJ0eC4DcuhcbCVlrC8ws/pdLBk2HGpdCJ3/rnrcPID1n8RDThqUsYF58oL
-	2I+2Q2enXCtRZ+3MBSa0uS0uKD6xB/A/2U6g/ZSuI0MjsXlcYowyz9vaFNAHswVIwtbodvvm4YG/d
-	Q5pNlYzV6rFtdPm+n/1g==;
+	List-Owner; bh=tPg/6UeoI5tAWfWGne26fGnqksfcIZ6RufsEpR1flX4=; b=oECsQCbmSfgeVF
+	+c2/JMzfHq/1ekeXFECXknsJMWJmhOnKx/jHBVf5vTuUqeQFu43KMKSAgER1lSEeLnLlxvq+j1FfH
+	rZ3RKvhfaJgk5lWTb4MfA/uGIjM3kBUCYv0kvvxOKMO17jAIXouEd2vItK9yKSSYD/Cd4sQgMOO2c
+	hGZxyK5eDmg0edxV3UA9qyz/NpmkOAf5T8E5hVniUWO5GJf2iEow9tL39eJt5ebeu01nhm0keZVKR
+	ODY0EfaoYw/MXEWE5fhlWj1B1MDWpMKLWyEybDLsAKLD21d0mUmwwzV6bmDB1P2YrlwTpBhbIQPr9
+	hm6Cdl3SaIehh8WF227w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ihUtG-0004El-Cu; Wed, 18 Dec 2019 08:41:06 +0000
+	id 1ihUtf-0004be-FW; Wed, 18 Dec 2019 08:41:31 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ihUtD-0004DR-Ko; Wed, 18 Dec 2019 08:41:05 +0000
-X-UUID: 1e5b1cd32f7b4832b15eaa614036725b-20191218
+ id 1ihUtE-0004Dh-6O; Wed, 18 Dec 2019 08:41:05 +0000
+X-UUID: 6afe5ed5a93641a7937dd764ffa0e4bb-20191218
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=71LTUrp3pf9bXQ3diJtb3X5tIs0vCbA342jebiH0HbM=; 
- b=DIhSvp3qKqqTWlQ7OUDxOMtvr5z/U6spNktoMw5xnVdQPp2XdSzPUsmJ4QiB/EQkAr1oKMHsY2k3BNhk/2JPTPxZ7763QD17z2jZbNw6wnPvGeiJd5cNbhx1IQ9xWSfqa5N71xnbotva+qAwvfiuV3i4HpsHIdupStSzqhfFaTc=;
-X-UUID: 1e5b1cd32f7b4832b15eaa614036725b-20191218
+ bh=qhKN5WCrE6NondREBgkOsegHHegoC/CoETvPSlY37GI=; 
+ b=CCxXhGGAGuM3uwJKst/0naiJFxMMErRmfPoDpSOfDvhPSBrBpA2cFjCaCXo8nPiQzQVHljAplOmm9crNhGzHDooCagQ1npOdBWfYEIQuYh3NKk0WdbBloavSbd7BjUpIHRQOwAQIhYLAgILLDKEiF6N+58LCFU3WyWTFqYhyN0Q=;
+X-UUID: 6afe5ed5a93641a7937dd764ffa0e4bb-20191218
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1787460401; Wed, 18 Dec 2019 00:41:00 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 2045388208; Wed, 18 Dec 2019 00:41:00 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1395.4; Wed, 18 Dec 2019 00:31:20 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
  15.0.1395.4; Wed, 18 Dec 2019 16:30:41 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
@@ -62,19 +62,17 @@ From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Nicolas Boichat <drinkcat@chromium.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, Sascha Hauer
  <kernel@pengutronix.de>
-Subject: [PATCH v10 11/12] arm64: dts: Add power controller device node of
- MT8183
-Date: Wed, 18 Dec 2019 16:30:47 +0800
-Message-ID: <1576657848-14711-12-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v10 09/12] soc: mediatek: Add extra sram control
+Date: Wed, 18 Dec 2019 16:30:45 +0800
+Message-ID: <1576657848-14711-10-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1576657848-14711-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1576657848-14711-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191218_004103_815984_A1B490A4 
-X-CRM114-Status: UNSURE (   8.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191218_004104_236464_75662197 
+X-CRM114-Status: GOOD (  12.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,102 +93,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add power controller node and smi-common node for MT8183
-In scpsys node, it contains clocks and regmapping of
-infracfg and smi-common for bus protection.
+For some power domains like vpu_core on MT8183 whose sram need to
+do clock and internal isolation while power on/off sram.
+We add a flag "sram_iso_ctrl" in scp_domain_data to judge if we
+need to do the extra sram isolation control or not.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 62 ++++++++++++++++++++++++++++++++
- 1 file changed, 62 insertions(+)
+ drivers/soc/mediatek/mtk-scpsys.c | 24 ++++++++++++++++++++++--
+ 1 file changed, 22 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 10b3247..91217e4f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -8,6 +8,7 @@
- #include <dt-bindings/clock/mt8183-clk.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/power/mt8183-power.h>
- #include "mt8183-pinfunc.h"
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 9f06f17..e010fb3 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -56,6 +56,8 @@
+ #define PWR_ON_BIT			BIT(2)
+ #define PWR_ON_2ND_BIT			BIT(3)
+ #define PWR_CLK_DIS_BIT			BIT(4)
++#define PWR_SRAM_CLKISO_BIT		BIT(5)
++#define PWR_SRAM_ISOINT_B_BIT		BIT(6)
  
- / {
-@@ -253,6 +254,62 @@
- 			#interrupt-cells = <2>;
- 		};
+ #define PWR_STATUS_CONN			BIT(1)
+ #define PWR_STATUS_DISP			BIT(3)
+@@ -86,6 +88,8 @@
+  * @name: The domain name.
+  * @sta_mask: The mask for power on/off status bit.
+  * @ctl_offs: The offset for main power control register.
++ * @sram_iso_ctrl: The flag to judge if the power domain need to do
++ *                 the extra sram isolation control.
+  * @sram_pdn_bits: The mask for sram power control bits.
+  * @sram_pdn_ack_bits: The mask for sram power control acked bits.
+  * @basic_clk_name: The basic clocks required by this power domain.
+@@ -98,6 +102,7 @@ struct scp_domain_data {
+ 	const char *name;
+ 	u32 sta_mask;
+ 	int ctl_offs;
++	bool sram_iso_ctrl;
+ 	u32 sram_pdn_bits;
+ 	u32 sram_pdn_ack_bits;
+ 	const char *basic_clk_name[MAX_CLKS];
+@@ -233,6 +238,14 @@ static int scpsys_sram_enable(struct scp_domain *scpd, void __iomem *ctl_addr)
+ 			return ret;
+ 	}
  
-+		scpsys: syscon@10006000 {
-+			compatible = "mediatek,mt8183-scpsys", "syscon";
-+			#power-domain-cells = <1>;
-+			reg = <0 0x10006000 0 0x1000>;
-+			clocks = <&topckgen CLK_TOP_MUX_AUD_INTBUS>,
-+				 <&infracfg CLK_INFRA_AUDIO>,
-+				 <&infracfg CLK_INFRA_AUDIO_26M_BCLK>,
-+				 <&topckgen CLK_TOP_MUX_MFG>,
-+				 <&topckgen CLK_TOP_MUX_MM>,
-+				 <&topckgen CLK_TOP_MUX_CAM>,
-+				 <&topckgen CLK_TOP_MUX_IMG>,
-+				 <&topckgen CLK_TOP_MUX_IPU_IF>,
-+				 <&topckgen CLK_TOP_MUX_DSP>,
-+				 <&topckgen CLK_TOP_MUX_DSP1>,
-+				 <&topckgen CLK_TOP_MUX_DSP2>,
-+				 <&mmsys CLK_MM_SMI_COMMON>,
-+				 <&mmsys CLK_MM_SMI_LARB0>,
-+				 <&mmsys CLK_MM_SMI_LARB1>,
-+				 <&mmsys CLK_MM_GALS_COMM0>,
-+				 <&mmsys CLK_MM_GALS_COMM1>,
-+				 <&mmsys CLK_MM_GALS_CCU2MM>,
-+				 <&mmsys CLK_MM_GALS_IPU12MM>,
-+				 <&mmsys CLK_MM_GALS_IMG2MM>,
-+				 <&mmsys CLK_MM_GALS_CAM2MM>,
-+				 <&mmsys CLK_MM_GALS_IPU2MM>,
-+				 <&imgsys CLK_IMG_LARB5>,
-+				 <&imgsys CLK_IMG_LARB2>,
-+				 <&camsys CLK_CAM_LARB6>,
-+				 <&camsys CLK_CAM_LARB3>,
-+				 <&camsys CLK_CAM_SENINF>,
-+				 <&camsys CLK_CAM_CAMSV0>,
-+				 <&camsys CLK_CAM_CAMSV1>,
-+				 <&camsys CLK_CAM_CAMSV2>,
-+				 <&camsys CLK_CAM_CCU>,
-+				 <&ipu_conn CLK_IPU_CONN_IPU>,
-+				 <&ipu_conn CLK_IPU_CONN_AHB>,
-+				 <&ipu_conn CLK_IPU_CONN_AXI>,
-+				 <&ipu_conn CLK_IPU_CONN_ISP>,
-+				 <&ipu_conn CLK_IPU_CONN_CAM_ADL>,
-+				 <&ipu_conn CLK_IPU_CONN_IMG_ADL>;
-+			clock-names = "audio", "audio1", "audio2",
-+				      "mfg", "mm", "cam",
-+				      "isp", "vpu", "vpu1",
-+				      "vpu2", "vpu3", "mm-0",
-+				      "mm-1", "mm-2", "mm-3",
-+				      "mm-4", "mm-5", "mm-6",
-+				      "mm-7", "mm-8", "mm-9",
-+				      "isp-0", "isp-1", "cam-0",
-+				      "cam-1", "cam-2", "cam-3",
-+				      "cam-4", "cam-5", "cam-6",
-+				      "vpu-0", "vpu-1", "vpu-2",
-+				      "vpu-3", "vpu-4", "vpu-5";
-+			infracfg = <&infracfg>;
-+			smi_comm = <&smi_common>;
-+		};
++	if (scpd->data->sram_iso_ctrl)	{
++		val = readl(ctl_addr) | PWR_SRAM_ISOINT_B_BIT;
++		writel(val, ctl_addr);
++		udelay(1);
++		val &= ~PWR_SRAM_CLKISO_BIT;
++		writel(val, ctl_addr);
++	}
 +
- 		apmixedsys: syscon@1000c000 {
- 			compatible = "mediatek,mt8183-apmixedsys", "syscon";
- 			reg = <0 0x1000c000 0 0x1000>;
-@@ -594,6 +651,11 @@
- 			#clock-cells = <1>;
- 		};
+ 	return 0;
+ }
  
-+		smi_common: smi@14019000 {
-+			compatible = "mediatek,mt8183-smi-common", "syscon";
-+			reg = <0 0x14019000 0 0x1000>;
-+		};
+@@ -242,8 +255,15 @@ static int scpsys_sram_disable(struct scp_domain *scpd, void __iomem *ctl_addr)
+ 	u32 pdn_ack = scpd->data->sram_pdn_ack_bits;
+ 	int tmp;
+ 
+-	val = readl(ctl_addr);
+-	val |= scpd->data->sram_pdn_bits;
++	if (scpd->data->sram_iso_ctrl)	{
++		val = readl(ctl_addr) | PWR_SRAM_CLKISO_BIT;
++		writel(val, ctl_addr);
++		val &= ~PWR_SRAM_ISOINT_B_BIT;
++		writel(val, ctl_addr);
++		udelay(1);
++	}
 +
- 		imgsys: syscon@15020000 {
- 			compatible = "mediatek,mt8183-imgsys", "syscon";
- 			reg = <0 0x15020000 0 0x1000>;
++	val = readl(ctl_addr) | scpd->data->sram_pdn_bits;
+ 	writel(val, ctl_addr);
+ 
+ 	/* Either wait until SRAM_PDN_ACK all 1 or 0 */
 -- 
 1.8.1.1.dirty
 _______________________________________________
