@@ -2,91 +2,77 @@ Return-Path: <SRS0=QBl7=2I=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F16EC2D0CD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2019 06:30:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 97CFCC43603
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2019 08:10:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E934220717
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2019 06:30:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 586E6218AC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2019 08:10:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="f3E3wDSc";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="WVTTapXo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E934220717
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Y84bga9u";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="RPUI1b+a"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 586E6218AC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5Ak+6JzaXGRTasB3tiv+Rr4/JKWWU+Zc9X4a5I54yTM=; b=f3E3wDScfqgDvE
-	O11+vEev/gVaEjMPjlhYnlED1n1O5h68AJN/ZUBzRY7hGYCCoi3OHSiHAmSIPQpvoCg97eQ79keE4
-	hFHs5uVSAUccZGf8jOK566D2k40D7QQLA23xoi3HRgePcsj7nQ6RNb2/PgZxrnhQygi0bEKXrlOoy
-	WyS0a/U9+hEBGI2HxKKYzz+w3ESGYnARS8M/lie7DEneDPTwK0wFshNrLmaDAhohqX0Q88eaqa7id
-	wL7tEq3zyfFAk8JHTZixEaH/K5nrAjSaRNn0pZRjADLKaYc8Py54AXG0EM8HrVZIsS/cMXP8RAGHQ
-	SE7OaI4d5gKmmFXXMy1g==;
+	List-Owner; bh=RxlZw0JkncrTP3pqSh8mYzz3JYydIoDWZuFsQfZlay0=; b=Y84bga9un1fZIn
+	4cDVKS9wlNo1vBv7rmiJpREt/AfRLWdEpbST1BfdGHXm2oA3M4+n68QOlnl1G+VCVNSztfuBx6E3o
+	cEhdJW67hz0jwcjW6MPADz1kWSmvNuk235MArjpRMspV1Pj4f08Bj/XueXc60YxZjZaPLw5yQkRVG
+	IyEJhfoBsTXGmZCIwymFsVXhbuePY01cK8hkl3fSsNkUQRCTlqN8AohLkrYIZsHyshkIYDgPqkj+a
+	jOnzJ/RgOMfCI3/7dm7VFPZRFeRTZdwQSfDC+zvSnCwgNWJpQbFvHcnfwT969h5eXiBItxct/jPkY
+	T4SWqWwYkRL5c2WvtR0w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ihSqy-000487-Hk; Wed, 18 Dec 2019 06:30:36 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1ihUPe-0001SV-4s; Wed, 18 Dec 2019 08:10:30 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ihSqu-00045m-GD
- for linux-mediatek@lists.infradead.org; Wed, 18 Dec 2019 06:30:35 +0000
-Received: by mail-pg1-x544.google.com with SMTP id k25so699036pgt.7
- for <linux-mediatek@lists.infradead.org>; Tue, 17 Dec 2019 22:30:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=QUqCKPDBExCLLAwVtzgi61MYbDhx2OZCOHrZup6vycw=;
- b=WVTTapXo9831RocflUB0ikHKFJuh9iAvfg6my6hM4pUeSOGR+cnsYT1tCVdopTiQHg
- a9iyF7SBYSz9UrCG2ZhM5bNW2gpuyr4iZK+AREwohsVYFPGEm3aJRxhiJoNKRvDCWBHH
- 4E9e9gsfZo2EyGyj4UVSpFyMPwZKH/MGKHkN/6w3Dc+ayTlnFZSl8dy9UlJEuimtMebw
- hR1PyhRC8cTn/D+OJt/V/RKflu+iF9f35hC5f/4d3DJNrgZ6hbymq2gc7V/5oso7HO6F
- xqeBCMVDMd5B6szz4pJ9wsJuj00hJjcZf+ZH3dqw1+1/63XOgvTlvCVrQzT4/Etad3w1
- 4QYg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=QUqCKPDBExCLLAwVtzgi61MYbDhx2OZCOHrZup6vycw=;
- b=UfDrb6atKFXXf+ctzlFxO2MfyBggVem2+dIje7tXkEQuKbAloo4vS70CAHpGGcYefi
- rxxZBOQlb4AiwO7ZLYKx7cW0bK47W1UXGrBdWrF2zhxUWAC6qFE7XWgXViDb4N22M9XD
- bTO3BzXL4X86XQXWFdsmeg7ljsAmJVd3taj01PCMUMuGazTL8TMA42DM3xQ06V9Je47l
- pE3+CBRgIyGI4uASmrv1Xh16dRFdHiECZarbXseISyaujEknT3t2msKEheDsjvBctGdb
- pBm70m2wMPc3Po9iKItzMdzVo7T+KfaiB3NHHCzWkjdLYmNDBXH0vcnGNxh6rXrK4k/z
- JwxA==
-X-Gm-Message-State: APjAAAXROggpLVCQ8++pYGDeQnpNc6fHq3JHPnUJyxjNyK+UZ/g/g3Db
- Cb4pXEOKEpnHu3EwG2VNnxhGDg==
-X-Google-Smtp-Source: APXvYqzIvX0pWBlNmYdcCxRQD7mXEfg6Upgu8h5ATMfO9O8MRrkIOt+XJa8qeUETe/PDXbEwm9iagA==
-X-Received: by 2002:aa7:848c:: with SMTP id u12mr1237038pfn.12.1576650631883; 
- Tue, 17 Dec 2019 22:30:31 -0800 (PST)
-Received: from builder (104-188-17-28.lightspeed.sndgca.sbcglobal.net.
- [104.188.17.28])
- by smtp.gmail.com with ESMTPSA id p5sm1253789pgs.28.2019.12.17.22.30.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 Dec 2019 22:30:31 -0800 (PST)
-Date: Tue, 17 Dec 2019 22:30:28 -0800
-From: Bjorn Andersson <bjorn.andersson@linaro.org>
-To: Yangtao Li <tiny.windzz@gmail.com>
-Subject: Re: [PATCH 10/13] mmc: sdhci-msm: convert to
- devm_platform_ioremap_resource
-Message-ID: <20191218063028.GC3755841@builder>
-References: <20191215175120.3290-1-tiny.windzz@gmail.com>
- <20191215175120.3290-10-tiny.windzz@gmail.com>
+ id 1ihUPT-0001II-Ee; Wed, 18 Dec 2019 08:10:20 +0000
+X-UUID: d7a6b468d6324b64b9e24c654c26d2a3-20191218
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=aNiLrGJZwK0lvEyneiSTQQEeAe5Qvk/0jbjSDQ3VN2c=; 
+ b=RPUI1b+aKYkqYxlxBVt65fXuDdhXfdF/maf7zJ6L0bciqcu7iis8vuM2Ih7e+vA7WboexmR9qy0/ysYZMLx63ZoYn3PISoparTcxqqGjXgGAqBOPW/j4rpYPRayXKuLjBK8w59SdXXg3UmnK3seFdvqYH13lvU+XNPvF31FgJ80=;
+X-UUID: d7a6b468d6324b64b9e24c654c26d2a3-20191218
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <dennis-yc.hsieh@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1496358697; Wed, 18 Dec 2019 00:10:09 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 18 Dec 2019 00:00:20 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 18 Dec 2019 15:59:48 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Wed, 18 Dec 2019 15:59:38 +0800
+Message-ID: <1576656006.5933.3.camel@mtkswgap22>
+Subject: Re: [PATCH v2 06/14] soc: mediatek: cmdq: return send msg error code
+From: Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>
+Date: Wed, 18 Dec 2019 16:00:06 +0800
+In-Reply-To: <1575604966.6151.1.camel@mtksdaap41>
+References: <1574819937-6246-1-git-send-email-dennis-yc.hsieh@mediatek.com>
+ <1574819937-6246-8-git-send-email-dennis-yc.hsieh@mediatek.com>
+ <1575604966.6151.1.camel@mtksdaap41>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191215175120.3290-10-tiny.windzz@gmail.com>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191217_223033_613670_79C2033C 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20191218_001019_504398_FC012049 
+X-CRM114-Status: GOOD (  14.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,65 +84,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kstewart@linuxfoundation.org, ulf.hansson@linaro.org,
- geert+renesas@glider.be, linus.walleij@linaro.org,
- linux-kernel@vger.kernel.org, yamada.masahiro@socionext.com,
- khilman@baylibre.com, jh80.chung@samsung.com, wens@csie.org, agross@kernel.org,
- chaotian.jing@mediatek.com, linux-arm-msm@vger.kernel.org,
- wsa+renesas@sang-engineering.com, mripard@kernel.org,
- linux-mediatek@lists.infradead.org, ben-linux@fluff.org,
- matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org, tglx@linutronix.de,
- allison@lohutok.net, linux-arm-kernel@lists.infradead.org, nico@fluxnic.net,
- gregkh@linuxfoundation.org, yoshihiro.shimoda.uh@renesas.com,
- linux-mmc@vger.kernel.org, adrian.hunter@intel.com, vireshk@kernel.org,
- manuel.lauss@gmail.com
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ Jassi Brar <jassisinghbrar@gmail.com>, linux-kernel@vger.kernel.org,
+ Houlong Wei <houlong.wei@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun 15 Dec 09:51 PST 2019, Yangtao Li wrote:
+Hi Bibby,
 
-> Use devm_platform_ioremap_resource() to simplify code.
+On Fri, 2019-12-06 at 12:02 +0800, Bibby Hsieh wrote:
+> On Wed, 2019-11-27 at 09:58 +0800, Dennis YC Hsieh wrote:
+> > Return error code to client if send message fail,
+> > so that client has chance to error handling.
+> > 
+> This patches seems like a fix patch.
+> Please add fixes, thanks.
 > 
-> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
-> ---
->  drivers/mmc/host/sdhci-msm.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
-> 
-> diff --git a/drivers/mmc/host/sdhci-msm.c b/drivers/mmc/host/sdhci-msm.c
-> index 3d0bb5e2e09b..6daacef4ceec 100644
-> --- a/drivers/mmc/host/sdhci-msm.c
-> +++ b/drivers/mmc/host/sdhci-msm.c
-> @@ -1746,7 +1746,6 @@ static int sdhci_msm_probe(struct platform_device *pdev)
->  	struct sdhci_host *host;
->  	struct sdhci_pltfm_host *pltfm_host;
->  	struct sdhci_msm_host *msm_host;
-> -	struct resource *core_memres;
->  	struct clk *clk;
->  	int ret;
->  	u16 host_version, core_minor;
-> @@ -1847,9 +1846,7 @@ static int sdhci_msm_probe(struct platform_device *pdev)
->  	}
->  
->  	if (!msm_host->mci_removed) {
-> -		core_memres = platform_get_resource(pdev, IORESOURCE_MEM, 1);
-> -		msm_host->core_mem = devm_ioremap_resource(&pdev->dev,
-> -				core_memres);
-> +		msm_host->core_mem = devm_platform_ioremap_resource(pdev, 1);
->  
+> Bibby
 
-This would now look better without this empty line.
+Do you mean add *fixes* in title?
+How about *fixes flush async function return error when send fail* ?
 
-Reviewed-by: Bjorn Andersson <bjorn.andersson@linaro.org>
 
 Regards,
-Bjorn
+Dennis
 
->  		if (IS_ERR(msm_host->core_mem)) {
->  			ret = PTR_ERR(msm_host->core_mem);
-> -- 
-> 2.17.1
+> > Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
+> > ---
+> >  drivers/soc/mediatek/mtk-cmdq-helper.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> > index 274f6f311d05..8421b4090304 100644
+> > --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
+> > +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> > @@ -353,11 +353,11 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
+> >  		spin_unlock_irqrestore(&client->lock, flags);
+> >  	}
+> >  
+> > -	mbox_send_message(client->chan, pkt);
+> > +	err = mbox_send_message(client->chan, pkt);
+> >  	/* We can send next packet immediately, so just call txdone. */
+> >  	mbox_client_txdone(client->chan, 0);
+> >  
+> > -	return 0;
+> > +	return err;
+> >  }
+> >  EXPORT_SYMBOL(cmdq_pkt_flush_async);
+> >  
+> 
 > 
 
 _______________________________________________
