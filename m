@@ -1,87 +1,75 @@
-Return-Path: <SRS0=Z+8g=2H=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=QBl7=2I=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3AC44C43603
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2019 23:25:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 853AEC43603
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2019 02:27:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0835121582
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Dec 2019 23:25:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 497AA21582
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Dec 2019 02:27:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="t4BY3jJh";
-	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="q7J36WgE"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0835121582
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WX0bTThF";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="hCi55Za6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 497AA21582
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OuqfhsWBezLFXTVfVnSteV5x/de7yQZ0iyxtZkifhLo=; b=t4BY3jJhkIJtBM6fPkHqu6Grv
-	jjIzCe554PPu94Gs2CxYsxyjmJvNae8ghNH/52fkMGbUBTIG8pzgAaCr9iBZgfbvOkUw6+0FdQu/r
-	7CzlLgHx3xGUXTOQ2qiRYpQGybgIXKkWJLF13ueg9K6gCmor048TCo8PXfhqNik5yryhwo5c6bPa3
-	NS6g1aG0mp/GXIP/JIXdKhKtgMZuhbLjOEQKSqwOloZagkpXIn/StDigXgJfRlHw77etU0WcHUrhj
-	X3ITAYxFjz1nkPusUIpO6BtIwN2N/V+9ZjsHh0hMKPUZI9bRxp2DRKuoptHQGsqUkP9XJ26xWDF+D
-	Flh0X8osQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bc8I9z7jgLFnztvrO5lW0pnAfgDWXSqqAtkkbmq8Ams=; b=WX0bTThF6deCc5
+	+CMc/Bl/m+WQaXt1ARFjKad+O8sQpwGeyqhb4fuzTqipSUv4ZITX5oDAeYnaoBkK39Vlh8pKiComK
+	XJ0LMXqy5+GD8uzxZ8h/kDooBZnFbwEM93RYt/s/6hMHYYiA8XFuHHPOIhk7H7fT+VccAbDGMVVH+
+	Nj1nPKzCcXftpH1MHreL6Ro5fkNH7Q2QjdRL/cVNliMeCeSnR2x4Dxg9n9TDn4PV5VBEPh8siGdF7
+	887XH7D8fm5Hs/pef6Z/Z30AFw1yFPm2eDocDOLqjWNA5yfOBu1K94VEXcI2aiVQBkRYlZEaTl/TB
+	1lTy4hmObphQ4n/7e97Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ihMDo-0004Px-7J; Tue, 17 Dec 2019 23:25:44 +0000
-Received: from mail26.static.mailgun.info ([104.130.122.26])
+	id 1ihP3r-0001CA-6n; Wed, 18 Dec 2019 02:27:39 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ihMDe-0004Ib-0D
- for linux-mediatek@lists.infradead.org; Tue, 17 Dec 2019 23:25:37 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1576625135; h=Content-Transfer-Encoding: Content-Type:
- In-Reply-To: MIME-Version: Date: Message-ID: From: References: Cc: To:
- Subject: Sender; bh=YJEwly1+ltZDuvrkRrwDOT3yLn4EXIUPFyMApEtgGuc=;
- b=q7J36WgEzgAj5se+ZfcEZxlna3Mgt3O0wst8SGhDXO1mNo52mTP00RKmt8YZOo81afZDOKpR
- cDVxEDHNA5IRW0Oq0xleKmRtBEqBzxrgjcerffa1dak1q535CQmlrFVOrwNt5djw5NY9kidX
- dOukqxupzYvp9B9DUh+jDJGE7BM=
-X-Mailgun-Sending-Ip: 104.130.122.26
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
- by mxa.mailgun.org with ESMTP id 5df963ea.7f18eb62cdf8-smtp-out-n03;
- Tue, 17 Dec 2019 23:25:30 -0000 (UTC)
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 8B204C4479C; Tue, 17 Dec 2019 23:25:29 +0000 (UTC)
-Received: from [10.46.161.159] (i-global254.qualcomm.com [199.106.103.254])
+ id 1ihP3a-00010B-7r; Wed, 18 Dec 2019 02:27:23 +0000
+Received: from mail-wr1-f50.google.com (mail-wr1-f50.google.com
+ [209.85.221.50])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: asutoshd)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 480D5C433CB;
- Tue, 17 Dec 2019 23:25:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 480D5C433CB
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=none smtp.mailfrom=asutoshd@codeaurora.org
-Subject: Re: [PATCH v1 2/2] scsi: ufs: disable interrupt during clock-gating
-To: Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- pedrom.sousa@synopsys.com, jejb@linux.ibm.com, matthias.bgg@gmail.com
-References: <1575721321-8071-1-git-send-email-stanley.chu@mediatek.com>
- <1575721321-8071-3-git-send-email-stanley.chu@mediatek.com>
-From: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
-Message-ID: <a36d111e-ef7f-9f9b-6f6a-692a9980103a@codeaurora.org>
-Date: Tue, 17 Dec 2019 15:25:27 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.1
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8795824679;
+ Wed, 18 Dec 2019 02:27:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1576636041;
+ bh=XXM1qIhv6mp83mUAwPbmy0ZfgUh12/5MVM64g+j5teY=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=hCi55Za6H6EHQPAD6URE8PGJGj3b8jufgHzcpYxUrTf1oOUk0J+qMQUm0sPJCtc7r
+ 6hqTkdqqH/VSIYUPWgFk0SWRXd5zDliUXY7JRQjWGD8UVI/Jkk3JvuQlCMV4fucBh3
+ b39jAE0qN9Y0vhBvTYjp72lV3E2ydN0Rtg9KqVu8=
+Received: by mail-wr1-f50.google.com with SMTP id c14so561837wrn.7;
+ Tue, 17 Dec 2019 18:27:21 -0800 (PST)
+X-Gm-Message-State: APjAAAUdafRhupAvPkorn9W6inWc5ipH7bgjxmcaAbo/lkAhEL+KwgI0
+ i4eY0O7Ghj8y65TxtobuP9g8jOoEwbS38Br8IO4=
+X-Google-Smtp-Source: APXvYqx5UqcfQ1FFJHQCZKd5vBjgfL46TLBnUHJQVj6I1P5C7P5qttyGdV5lMniGCCRpoGO06aEnPCSAImq8qwlk310=
+X-Received: by 2002:adf:81e3:: with SMTP id 90mr1054120wra.23.1576636040002;
+ Tue, 17 Dec 2019 18:27:20 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1575721321-8071-3-git-send-email-stanley.chu@mediatek.com>
-Content-Language: en-US
+References: <20191215175120.3290-1-tiny.windzz@gmail.com>
+In-Reply-To: <20191215175120.3290-1-tiny.windzz@gmail.com>
+From: Chen-Yu Tsai <wens@kernel.org>
+Date: Wed, 18 Dec 2019 10:27:08 +0800
+X-Gmail-Original-Message-ID: <CAGb2v64uQr6JKCbhY+iMd___bLedvSOMTffg=JDX-pOZHY+sbw@mail.gmail.com>
+Message-ID: <CAGb2v64uQr6JKCbhY+iMd___bLedvSOMTffg=JDX-pOZHY+sbw@mail.gmail.com>
+Subject: Re: [PATCH 01/13] mmc: sunxi-mmc: convert to
+ devm_platform_ioremap_resource
+To: Yangtao Li <tiny.windzz@gmail.com>, Ulf Hansson <ulf.hansson@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191217_152535_354229_A49F7675 
-X-CRM114-Status: GOOD (  18.54  )
+X-CRM114-CacheID: sfid-20191217_182722_306554_5AC1BE76 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,61 +81,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Cc: Kate Stewart <kstewart@linuxfoundation.org>, geert+renesas@glider.be,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Masahiro Yamada <yamada.masahiro@socionext.com>,
+ Kevin Hilman <khilman@baylibre.com>, Jaehoon Chung <jh80.chung@samsung.com>,
+ Andy Gross <agross@kernel.org>, chaotian.jing@mediatek.com,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ wsa+renesas@sang-engineering.com, Maxime Ripard <mripard@kernel.org>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ ben-linux@fluff.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>,
+ Thomas Gleixner <tglx@linutronix.de>, allison@lohutok.net,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, nico@fluxnic.net,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ yoshihiro.shimoda.uh@renesas.com, linux-mmc <linux-mmc@vger.kernel.org>,
+ Adrian Hunter <adrian.hunter@intel.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>, Viresh Kumar <vireshk@kernel.org>,
+ manuel.lauss@gmail.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/7/2019 4:22 AM, Stanley Chu wrote:
-> Similar to suspend, ufshcd interrupt can be disabled since
-> there won't be any host controller transaction expected till
-> clocks ungated.
-> 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+On Mon, Dec 16, 2019 at 1:51 AM Yangtao Li <tiny.windzz@gmail.com> wrote:
+>
+> Use devm_platform_ioremap_resource() to simplify code.
+>
+> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 > ---
->   drivers/scsi/ufs/ufshcd.c | 4 ++++
->   1 file changed, 4 insertions(+)
-> 
-> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> index f80bd4e811cb..5de105e82c32 100644
-> --- a/drivers/scsi/ufs/ufshcd.c
-> +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -1490,6 +1490,8 @@ static void ufshcd_ungate_work(struct work_struct *work)
->   	spin_unlock_irqrestore(hba->host->host_lock, flags);
->   	ufshcd_setup_clocks(hba, true);
->   
-> +	ufshcd_enable_irq(hba);
-> +
->   	/* Exit from hibern8 */
->   	if (ufshcd_can_hibern8_during_gating(hba)) {
->   		/* Prevent gating in this path */
-> @@ -1636,6 +1638,8 @@ static void ufshcd_gate_work(struct work_struct *work)
->   		ufshcd_set_link_hibern8(hba);
->   	}
->   
-> +	ufshcd_disable_irq(hba);
-> +
->   	if (!ufshcd_is_link_active(hba))
->   		ufshcd_setup_clocks(hba, false);
->   	else
-> 
 
-Hi,
-Does this save significant power? I see that gate/ungate of clocks 
-happen far too frequently than suspend/resume.
+Acked-by: Chen-Yu Tsai <wens@csie.org>
 
-Have you considered how much latency this would add to the 
-gating/ungating path?
-
--asd
-
--- 
-The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
-Linux Foundation Collaborative Project
+>  drivers/mmc/host/sunxi-mmc.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/drivers/mmc/host/sunxi-mmc.c b/drivers/mmc/host/sunxi-mmc.c
+> index d577a6b0ceae..f87d7967457f 100644
+> --- a/drivers/mmc/host/sunxi-mmc.c
+> +++ b/drivers/mmc/host/sunxi-mmc.c
+> @@ -1273,8 +1273,7 @@ static int sunxi_mmc_resource_request(struct sunxi_mmc_host *host,
+>         if (ret)
+>                 return ret;
+>
+> -       host->reg_base = devm_ioremap_resource(&pdev->dev,
+> -                             platform_get_resource(pdev, IORESOURCE_MEM, 0));
+> +       host->reg_base = devm_platform_ioremap_resource(pdev, 0);
+>         if (IS_ERR(host->reg_base))
+>                 return PTR_ERR(host->reg_base);
+>
+> --
+> 2.17.1
+>
 
 _______________________________________________
 Linux-mediatek mailing list
