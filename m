@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-6.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B416C2D0D1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2019 18:26:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E0C2C2D0C1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2019 18:33:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2A8AE24672
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2019 18:26:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D2CC324672
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2019 18:33:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GA9MojLn";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="njedkY2J"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A8AE24672
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Huc5wq/i";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="glXTEz6x"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D2CC324672
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,58 +26,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uvfxLeYAmSajb6IPtpIg2MUICwsWBqTXy59Vy7VSlO8=; b=GA9MojLnxYGl51
-	tMjrBTm9yX6sXtroYYbmQnB18T8xskEuIUpa9nrw2AwlA/xf2ZFcLpunffmJbL2yM4ycXU3wXbhq2
-	WRt4BNre6jm0w19wpMTNeGD8zA2H+NpbDpJhb1LcoRNspKJRlxjwv8gDdYpyGc9KjCbmHLUSjibAw
-	1c07SOdWNYzAlxCIwDTM6GgRC6mjshQPUQy9F+Z0ui61rqMMAZAHKPOhHLr/Q8gC0p6jDBve1/iY8
-	i8B+fz0TVgjR9s38imT/AJl3ePDUoCINXx/bLO91a81oD6r05FRMP7IPO7G2W/Mag5HvjXmm5p8OR
-	UQX0W2Qmvt59CzGw/RHw==;
+	List-Owner; bh=ToLAmIpoavPvakDKoiat4H/CnGVXwF5zq3GJqukGO+E=; b=Huc5wq/i9N4YUs
+	hTZbulDqVkDiaefTKHUj9RCGJWqXXMP7PKTYOqsotFSYT0Arssxmd/2wnnHtZhmdO87MaPO2EnEt5
+	KW1yOgufCJmPMdgrL2SUoXmgJM1+I4hisW6tH1k9Mn/i3KBw2w2NYafV0oV1I0mlePYB2XNVaVBJQ
+	zPBjJYx/Nxw8C8lmc1RsiSYKiuQBJ0AqfwvoRfM3EtpyWg31W4SOzRHwGN3LyMSW009fXtb5DPDz+
+	oSs373hBaII56krDSAeQuNhPrscdlZfJO7rC12mnhAYKXsIffTrDJjmiqFsFDLC0p8CiP8KdOoAXw
+	v+eOT3+K7Y5crrB3EpEw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ii0VA-0004DO-Se; Thu, 19 Dec 2019 18:26:20 +0000
-Received: from mail-vs1-xe42.google.com ([2607:f8b0:4864:20::e42])
+	id 1ii0bf-00064I-Gx; Thu, 19 Dec 2019 18:33:03 +0000
+Received: from mail-ua1-x943.google.com ([2607:f8b0:4864:20::943])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ii0V8-0004D0-GL; Thu, 19 Dec 2019 18:26:19 +0000
-Received: by mail-vs1-xe42.google.com with SMTP id n27so4399398vsa.0;
- Thu, 19 Dec 2019 10:26:18 -0800 (PST)
+ id 1ii0bc-00063J-CM; Thu, 19 Dec 2019 18:33:01 +0000
+Received: by mail-ua1-x943.google.com with SMTP id f7so2301555uaa.8;
+ Thu, 19 Dec 2019 10:33:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=rFab9TFuVyy0B0hidssVyx0Ip53fX/LaEkCJxLNWYBA=;
- b=njedkY2JO/DXhybGjAgtuJQ3ELQtSyBbr4LtklvedJ40JfEyQUuq/88wWz760rpihi
- +QPs+7JUh2ExfDnz5RJ3yVQD2clbnAeeCYgLgYcuhXKFx/trbXWgVvIHtzuyiEmHwh8U
- umfPvRs60aCXka/6STVBQOfMateoMZaMcaQtstMCwwVW4Qyja8DM8evmAdjcWrmW/WlP
- W1o0SpPgU/y0ughI3pA5oqlSyOSguwQzm/lfh9fgPHYF6ItaxFmzBhBvMX3OCu3Ka2kh
- dDp42dc9BynBuc2KdnyZo+QZ8KUWSZpBqcdXmcy9G/UA52saC7UhjAhmdqSzAG1DVI8c
- SVNw==
+ :cc; bh=VOyymaYGcmSJ1WRzuqz4Ak0rmhgIqLCqZ8zG2kPHNMo=;
+ b=glXTEz6xo8pZIYtMNXBEZKiZ6kJgRXxgzHEMYNU3S58gEmx1YdW2HvnbOPO9ixmQ1w
+ JTqyRLAr76LLdCT4bxMI1SmmDS/6dXWPYgyri6gBmzDXrBgFdhKFUgezb0cIDPigANgE
+ E9IZQvFNURFRyGqU7OKos8+sbog3m8xUCEzQCYb4PR/viN3IIsMviu0e1K/E5IbFVg4t
+ oPHGjpJNZInKrcf3fI8mbv5IeegUQpAy8NxZ4n9nvDz3nSOZYq9q7WQZ9J6+V08tlCJl
+ sylHG8fEiJAvulZsLjgf3pWqz+Jj4RgxEue9g0gKXdrtHYI/6Nz0A9v/zZ5U0kZbdVX0
+ awWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=rFab9TFuVyy0B0hidssVyx0Ip53fX/LaEkCJxLNWYBA=;
- b=qXkHxmgLN6AgiGBw8Frw/QmWCMXKEpHUe7RJVAULQ64m/TXgb/MOE2GMvdhua07Mcb
- LrQHRhvbZK2+z7BMUTXGInEy/bBEbz2usYXHATAjKQMYJrecYKgB7bZN5tTQs4ScoKfV
- RSaHGHLAotvUtEzm7McsOWcCKN/gqV83BcmPCWKAzU4skZGH+TY6Kgqnt2JdMeMfVUFF
- imEmeJM4/pKp9WKNJPzW0Fx736zXI1Y6FATOJ8vowk5XAZ178X/t5zACz2tY/g8USOZ8
- 4zun36qHh3MyAJngF5v7BZ5Zh8Aj6W6LsAwVkZqJYT7fsmogX3aVbRuPFyI0tBtMoq+i
- F8mQ==
-X-Gm-Message-State: APjAAAXYY2EjN11Ay4xYcruFa6jTygw82T74/zTfflzF4Y7WVA0rT1hC
- KQllCVvcmSbfc+MYTAwD9ZCpdGVAmZcfjx/R7Jw=
-X-Google-Smtp-Source: APXvYqyLPE/PUdXmbPKj8EMXclPSXyJgYJpxajEIC9HQ1RfZo8Iy2l7Mc313mPx7rnQ5LEzufff/eY7Ua8VC1PyZ+ag=
-X-Received: by 2002:a67:fb14:: with SMTP id d20mr5904491vsr.136.1576779977603; 
- Thu, 19 Dec 2019 10:26:17 -0800 (PST)
+ bh=VOyymaYGcmSJ1WRzuqz4Ak0rmhgIqLCqZ8zG2kPHNMo=;
+ b=Ne52wCQwYU6Zwp0Sh129wGq1lQ7ymH4YaHnualW4XzuXJTa4vNV7nhwt9aNLn0euCe
+ 0al/YW701B6xHlki9kU1d35RcgQBI+SAmXzSZomdB1zvyiCul9XEUuth+w1COumI/K+j
+ ZA9LzOyuNUI7jqGx+3l0tYPFU6JsAnm8Uf211lS7CatDqUXX9HZrJn6vCcfW53vB1g/t
+ fVDYePohUVgj0KPWEjCpgS6PXlWRUSEU+JBzi5QzNC/4Vt+6bRArgMGwvc7VTYA3LP36
+ yzEJz0tq9eSVtkJ/emj35EpHXMn6uiIiu753is2pMEPyZUePQPal3AY9zQtouEfJNOpc
+ 1RZQ==
+X-Gm-Message-State: APjAAAUeLP/Te+XAWzA47GVbhxoQ//F9i2jDiSFGb7+PDHw9RTwzvQ27
+ PUZFzXS/GwpLATlh7v7txJxBaDOWzNSDv/+q0jIpSVu66ts=
+X-Google-Smtp-Source: APXvYqwM3UEwSjHttH0IdDl/GVqzd05+x7SvoHGEo+WgDCx2bVOHaGPhK0SsHTOHsJq/GpXPgXIoNGKQmA3xGy6FlWA=
+X-Received: by 2002:ab0:7049:: with SMTP id v9mr6389360ual.95.1576780379310;
+ Thu, 19 Dec 2019 10:32:59 -0800 (PST)
 MIME-Version: 1.0
 References: <1576224695-22657-1-git-send-email-stanley.chu@mediatek.com>
- <1576224695-22657-4-git-send-email-stanley.chu@mediatek.com>
-In-Reply-To: <1576224695-22657-4-git-send-email-stanley.chu@mediatek.com>
+ <1576224695-22657-3-git-send-email-stanley.chu@mediatek.com>
+In-Reply-To: <1576224695-22657-3-git-send-email-stanley.chu@mediatek.com>
 From: Alim Akhtar <alim.akhtar@gmail.com>
-Date: Thu, 19 Dec 2019 23:55:41 +0530
-Message-ID: <CAGOxZ50orn8JYxvCv4S6ziMdnB6+BG0DSdkand=x9Vw3H-Dejw@mail.gmail.com>
-Subject: Re: [PATCH v1 3/4] scsi: ufs-mediatek: configure customized
- auto-hibern8 timer
+Date: Fri, 20 Dec 2019 00:02:22 +0530
+Message-ID: <CAGOxZ52ffkFwkcrdyq+gjuXarjr-aqGRw2ck25Yu0QgppGh9hQ@mail.gmail.com>
+Subject: Re: [PATCH v1 2/4] scsi: ufs: export ufshcd_auto_hibern8_update for
+ vendor usage
 To: Stanley Chu <stanley.chu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191219_102618_564677_268C8FD3 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20191219_103300_444212_C41988E2 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,50 +97,100 @@ Cc: linux-scsi@vger.kernel.org,
  linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
  Alim Akhtar <alim.akhtar@samsung.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Pedro Sousa <pedrom.sousa@synopsys.com>, linux-arm-kernel@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
  "Bean Huo \(beanhuo\)" <beanhuo@micron.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 13, 2019 at 3:04 PM Stanley Chu <stanley.chu@mediatek.com> wrote:
+On Fri, Dec 13, 2019 at 2:07 PM Stanley Chu <stanley.chu@mediatek.com> wrote:
 >
-> Configure customized auto-hibern8 timer in MediaTek Chipsets.
+> Export ufshcd_auto_hibern8_update to allow vendors to use common
+> interface to customize auto-hibernate timer.
 >
 > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 
 Reviewed-by: Alim Akhtar <alim.akhtar@samsung.com>
+
 > ---
->  drivers/scsi/ufs/ufs-mediatek.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
+>  drivers/scsi/ufs/ufs-sysfs.c | 20 --------------------
+>  drivers/scsi/ufs/ufshcd.c    | 18 ++++++++++++++++++
+>  drivers/scsi/ufs/ufshcd.h    |  1 +
+>  3 files changed, 19 insertions(+), 20 deletions(-)
 >
-> diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-> index 690483c78212..71e2e0e4ea11 100644
-> --- a/drivers/scsi/ufs/ufs-mediatek.c
-> +++ b/drivers/scsi/ufs/ufs-mediatek.c
-> @@ -7,6 +7,7 @@
->   */
->
->  #include <linux/arm-smccc.h>
-> +#include <linux/bitfield.h>
->  #include <linux/of.h>
->  #include <linux/of_address.h>
->  #include <linux/phy/phy.h>
-> @@ -300,6 +301,13 @@ static int ufs_mtk_post_link(struct ufs_hba *hba)
->         /* enable unipro clock gating feature */
->         ufs_mtk_cfg_unipro_cg(hba, true);
->
-> +       /* configure auto-hibern8 timer to 10ms */
-> +       if (ufshcd_is_auto_hibern8_supported(hba)) {
-> +               ufshcd_auto_hibern8_update(hba,
-> +                       FIELD_PREP(UFSHCI_AHIBERN8_TIMER_MASK, 10) |
-> +                       FIELD_PREP(UFSHCI_AHIBERN8_SCALE_MASK, 3));
-> +       }
-> +
->         return 0;
+> diff --git a/drivers/scsi/ufs/ufs-sysfs.c b/drivers/scsi/ufs/ufs-sysfs.c
+> index ad2abc96c0f1..720be3f64be7 100644
+> --- a/drivers/scsi/ufs/ufs-sysfs.c
+> +++ b/drivers/scsi/ufs/ufs-sysfs.c
+> @@ -118,26 +118,6 @@ static ssize_t spm_target_link_state_show(struct device *dev,
+>                                 ufs_pm_lvl_states[hba->spm_lvl].link_state));
 >  }
 >
+> -static void ufshcd_auto_hibern8_update(struct ufs_hba *hba, u32 ahit)
+> -{
+> -       unsigned long flags;
+> -
+> -       if (!ufshcd_is_auto_hibern8_supported(hba))
+> -               return;
+> -
+> -       spin_lock_irqsave(hba->host->host_lock, flags);
+> -       if (hba->ahit != ahit)
+> -               hba->ahit = ahit;
+> -       spin_unlock_irqrestore(hba->host->host_lock, flags);
+> -       if (!pm_runtime_suspended(hba->dev)) {
+> -               pm_runtime_get_sync(hba->dev);
+> -               ufshcd_hold(hba, false);
+> -               ufshcd_auto_hibern8_enable(hba);
+> -               ufshcd_release(hba);
+> -               pm_runtime_put(hba->dev);
+> -       }
+> -}
+> -
+>  /* Convert Auto-Hibernate Idle Timer register value to microseconds */
+>  static int ufshcd_ahit_to_us(u32 ahit)
+>  {
+> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+> index b5966faf3e98..589f519316aa 100644
+> --- a/drivers/scsi/ufs/ufshcd.c
+> +++ b/drivers/scsi/ufs/ufshcd.c
+> @@ -3956,6 +3956,24 @@ static int ufshcd_uic_hibern8_exit(struct ufs_hba *hba)
+>         return ret;
+>  }
+>
+> +void ufshcd_auto_hibern8_update(struct ufs_hba *hba, u32 ahit)
+> +{
+> +       unsigned long flags;
+> +
+> +       if (!(hba->capabilities & MASK_AUTO_HIBERN8_SUPPORT))
+> +               return;
+> +
+> +       spin_lock_irqsave(hba->host->host_lock, flags);
+> +       if (hba->ahit == ahit)
+> +               goto out_unlock;
+> +       hba->ahit = ahit;
+> +       if (!pm_runtime_suspended(hba->dev))
+> +               ufshcd_writel(hba, hba->ahit, REG_AUTO_HIBERNATE_IDLE_TIMER);
+> +out_unlock:
+> +       spin_unlock_irqrestore(hba->host->host_lock, flags);
+> +}
+> +EXPORT_SYMBOL_GPL(ufshcd_auto_hibern8_update);
+> +
+>  void ufshcd_auto_hibern8_enable(struct ufs_hba *hba)
+>  {
+>         unsigned long flags;
+> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+> index 2740f6941ec6..86586a0b9aa5 100644
+> --- a/drivers/scsi/ufs/ufshcd.h
+> +++ b/drivers/scsi/ufs/ufshcd.h
+> @@ -927,6 +927,7 @@ int ufshcd_query_flag(struct ufs_hba *hba, enum query_opcode opcode,
+>         enum flag_idn idn, bool *flag_res);
+>
+>  void ufshcd_auto_hibern8_enable(struct ufs_hba *hba);
+> +void ufshcd_auto_hibern8_update(struct ufs_hba *hba, u32 ahit);
+>
+>  #define SD_ASCII_STD true
+>  #define SD_RAW false
 > --
 > 2.18.0
 
