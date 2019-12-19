@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-6.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
 	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7764BC2D0D1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2019 18:18:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B416C2D0D1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2019 18:26:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 43611227BF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2019 18:18:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2A8AE24672
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2019 18:26:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CaXn0sMH";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="tCS54bJd"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43611227BF
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GA9MojLn";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="njedkY2J"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A8AE24672
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,59 +26,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fwe99gq4TzYjnC6siggugOYdwXUoDyAeSzpb3A5Oezg=; b=CaXn0sMH9k/GEw
-	e7DLBOVI3aS2TRZNfSjZUw1V99ltKDoxPV0mi1lKuia9/TtQaE2cu9CZnABDHFN9oTui+Vob1Y56b
-	OKiObhixMez9bFy7sknlcM36S2hP+5zi/3ytTXidKGjuVGWjm7fTE9qPC4k3au1L/xJ8BDH94VxcF
-	skj5zOU6rsAFMaYkmF+VRyuyFsPNtbvcFmUEpFnVcVDkd/H8pSL5w4Pvo/RzT5Jw9ArAFvB6aOvK3
-	rbpdV8AbDjt3Me5SjXWBsrQ8niJmTUFwSaRbDTUrOnWI6tQCuvNLQaF7j7w/pslEbZSAej2Hlw5AC
-	RY7vTLbJG8kEXYTeYXzg==;
+	List-Owner; bh=uvfxLeYAmSajb6IPtpIg2MUICwsWBqTXy59Vy7VSlO8=; b=GA9MojLnxYGl51
+	tMjrBTm9yX6sXtroYYbmQnB18T8xskEuIUpa9nrw2AwlA/xf2ZFcLpunffmJbL2yM4ycXU3wXbhq2
+	WRt4BNre6jm0w19wpMTNeGD8zA2H+NpbDpJhb1LcoRNspKJRlxjwv8gDdYpyGc9KjCbmHLUSjibAw
+	1c07SOdWNYzAlxCIwDTM6GgRC6mjshQPUQy9F+Z0ui61rqMMAZAHKPOhHLr/Q8gC0p6jDBve1/iY8
+	i8B+fz0TVgjR9s38imT/AJl3ePDUoCINXx/bLO91a81oD6r05FRMP7IPO7G2W/Mag5HvjXmm5p8OR
+	UQX0W2Qmvt59CzGw/RHw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ii0Ni-0007ZA-OE; Thu, 19 Dec 2019 18:18:38 +0000
+	id 1ii0VA-0004DO-Se; Thu, 19 Dec 2019 18:26:20 +0000
 Received: from mail-vs1-xe42.google.com ([2607:f8b0:4864:20::e42])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ii0Ng-0007Yg-Ni; Thu, 19 Dec 2019 18:18:38 +0000
-Received: by mail-vs1-xe42.google.com with SMTP id v12so4360340vsv.5;
- Thu, 19 Dec 2019 10:18:36 -0800 (PST)
+ id 1ii0V8-0004D0-GL; Thu, 19 Dec 2019 18:26:19 +0000
+Received: by mail-vs1-xe42.google.com with SMTP id n27so4399398vsa.0;
+ Thu, 19 Dec 2019 10:26:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hdfl3j3PUu29KvhFJr+t8q9A7l1fLtUS6dfELY8PVLE=;
- b=tCS54bJd6f3428WApblIOzLQvg9gXUk1ry2iLEcNoz5mn+Ev/It5H2F9ixzC8H3L7O
- gy0IKkXEef1q6L0ksBFGDnOsjR/d7EBCW93dzLdMYSzBycxQDu5ezgzhvuFSzH3C8Lm/
- JlAmLHyjT024P+gfLHAh9AEPlaXfFD3YP4yLDycw9CpwqSePfClSIox4XVdEvj5Nr5Bn
- FjVC6LL8OR3gYVOQ86fmVwGRCASN1MYtioAty36QxsKkpWaLkkDWk5onwgp+d+6B+dOw
- +x6EdoeRB0BmdvaglW+aUzVAef6OztV1h6RgZVussRPpI7Udtcb9/edVA/g/XEvrPZnk
- C5rA==
+ :cc; bh=rFab9TFuVyy0B0hidssVyx0Ip53fX/LaEkCJxLNWYBA=;
+ b=njedkY2JO/DXhybGjAgtuJQ3ELQtSyBbr4LtklvedJ40JfEyQUuq/88wWz760rpihi
+ +QPs+7JUh2ExfDnz5RJ3yVQD2clbnAeeCYgLgYcuhXKFx/trbXWgVvIHtzuyiEmHwh8U
+ umfPvRs60aCXka/6STVBQOfMateoMZaMcaQtstMCwwVW4Qyja8DM8evmAdjcWrmW/WlP
+ W1o0SpPgU/y0ughI3pA5oqlSyOSguwQzm/lfh9fgPHYF6ItaxFmzBhBvMX3OCu3Ka2kh
+ dDp42dc9BynBuc2KdnyZo+QZ8KUWSZpBqcdXmcy9G/UA52saC7UhjAhmdqSzAG1DVI8c
+ SVNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=hdfl3j3PUu29KvhFJr+t8q9A7l1fLtUS6dfELY8PVLE=;
- b=UQ98q2lnx5Djit4gC4xDnOo8qAAhGsesKlxhKfX+nRP+Gguca9iCVvjmYtDaS+pARf
- 6PC0EDu9Qx4miOAG27gikPRZAA+Yh1RyyJMzpd8XWayr/sh7tWanb8zTYsaj366ODkdf
- /lw1ifG0fMRtfFqDtf7C09hTkxMU0TnK9cl2d3M7hr9QuwtHSaczlJ7GBh1esgFTrJ/6
- J/6uTqh3fN3h1SAAAxwEqki+8u5d/1LFZbMDGAzHK+LugELFChJQFMW1bpkQcD0G4Ns+
- NPt64XLkKhjZ/L+zXe5yKWCMiBzy2Y5MOCQ+jg8w8bUacYH5a/h/3EGh7me06UJzMnNg
- n+bw==
-X-Gm-Message-State: APjAAAWQIjK71H/a3uGOumsBepVA0oLxr+qVRPdAPsjEFORGkzVFm/tR
- 1I+v9AXrF6kGi0DNmC1WiHx0v6RnPq3/dGbwAb0=
-X-Google-Smtp-Source: APXvYqx2+nDxq2ixPv2h29IpGt0iubjleAq9aMOGE+An5nayL0a+8XISERr+3e5yfQuKP1zTRewKys0Qg4k4OKGNcqU=
-X-Received: by 2002:a05:6102:204a:: with SMTP id
- q10mr6222578vsr.127.1576779515189; 
- Thu, 19 Dec 2019 10:18:35 -0800 (PST)
+ bh=rFab9TFuVyy0B0hidssVyx0Ip53fX/LaEkCJxLNWYBA=;
+ b=qXkHxmgLN6AgiGBw8Frw/QmWCMXKEpHUe7RJVAULQ64m/TXgb/MOE2GMvdhua07Mcb
+ LrQHRhvbZK2+z7BMUTXGInEy/bBEbz2usYXHATAjKQMYJrecYKgB7bZN5tTQs4ScoKfV
+ RSaHGHLAotvUtEzm7McsOWcCKN/gqV83BcmPCWKAzU4skZGH+TY6Kgqnt2JdMeMfVUFF
+ imEmeJM4/pKp9WKNJPzW0Fx736zXI1Y6FATOJ8vowk5XAZ178X/t5zACz2tY/g8USOZ8
+ 4zun36qHh3MyAJngF5v7BZ5Zh8Aj6W6LsAwVkZqJYT7fsmogX3aVbRuPFyI0tBtMoq+i
+ F8mQ==
+X-Gm-Message-State: APjAAAXYY2EjN11Ay4xYcruFa6jTygw82T74/zTfflzF4Y7WVA0rT1hC
+ KQllCVvcmSbfc+MYTAwD9ZCpdGVAmZcfjx/R7Jw=
+X-Google-Smtp-Source: APXvYqyLPE/PUdXmbPKj8EMXclPSXyJgYJpxajEIC9HQ1RfZo8Iy2l7Mc313mPx7rnQ5LEzufff/eY7Ua8VC1PyZ+ag=
+X-Received: by 2002:a67:fb14:: with SMTP id d20mr5904491vsr.136.1576779977603; 
+ Thu, 19 Dec 2019 10:26:17 -0800 (PST)
 MIME-Version: 1.0
 References: <1576224695-22657-1-git-send-email-stanley.chu@mediatek.com>
- <1576224695-22657-2-git-send-email-stanley.chu@mediatek.com>
-In-Reply-To: <1576224695-22657-2-git-send-email-stanley.chu@mediatek.com>
+ <1576224695-22657-4-git-send-email-stanley.chu@mediatek.com>
+In-Reply-To: <1576224695-22657-4-git-send-email-stanley.chu@mediatek.com>
 From: Alim Akhtar <alim.akhtar@gmail.com>
-Date: Thu, 19 Dec 2019 23:47:59 +0530
-Message-ID: <CAGOxZ539Fr5Vxg8Zg=LpYhxTacwh81Ee+S9MWFybwbAPr5RgYQ@mail.gmail.com>
-Subject: Re: [PATCH v1 1/4] scsi: ufs-mediatek: introduce reference clock
- control
+Date: Thu, 19 Dec 2019 23:55:41 +0530
+Message-ID: <CAGOxZ50orn8JYxvCv4S6ziMdnB6+BG0DSdkand=x9Vw3H-Dejw@mail.gmail.com>
+Subject: Re: [PATCH v1 3/4] scsi: ufs-mediatek: configure customized
+ auto-hibern8 timer
 To: Stanley Chu <stanley.chu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191219_101836_775124_B0A568DC 
-X-CRM114-Status: GOOD (  18.37  )
+X-CRM114-CacheID: sfid-20191219_102618_564677_268C8FD3 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,177 +104,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 13, 2019 at 2:23 PM Stanley Chu <stanley.chu@mediatek.com> wrote:
+On Fri, Dec 13, 2019 at 3:04 PM Stanley Chu <stanley.chu@mediatek.com> wrote:
 >
-> Introduce reference clock control in MediaTek Chipset in order
-> to disable it if it is not necessary by UFS device to save system power.
->
-> Currently reference clock can be disabled during system suspend, runtime
-> suspend and clock-gating after link enters hibernate state.
+> Configure customized auto-hibern8 timer in MediaTek Chipsets.
 >
 > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 
 Reviewed-by: Alim Akhtar <alim.akhtar@samsung.com>
-
 > ---
->  drivers/scsi/ufs/ufs-mediatek.c | 64 ++++++++++++++++++++++++++++++---
->  drivers/scsi/ufs/ufs-mediatek.h | 20 +++++++++--
->  2 files changed, 78 insertions(+), 6 deletions(-)
+>  drivers/scsi/ufs/ufs-mediatek.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
 >
 > diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-> index 6a3ec11b16db..690483c78212 100644
+> index 690483c78212..71e2e0e4ea11 100644
 > --- a/drivers/scsi/ufs/ufs-mediatek.c
 > +++ b/drivers/scsi/ufs/ufs-mediatek.c
-> @@ -18,6 +18,11 @@
->  #include "unipro.h"
->  #include "ufs-mediatek.h"
->
-> +#define ufs_mtk_ref_clk_notify(on, res) \
-> +       arm_smccc_smc(MTK_SIP_UFS_CONTROL, \
-> +                     UFS_MTK_SIP_REF_CLK_NOTIFICATION, \
-> +                     on, 0, 0, 0, 0, 0, &(res))
-> +
->  static void ufs_mtk_cfg_unipro_cg(struct ufs_hba *hba, bool enable)
->  {
->         u32 tmp;
-> @@ -83,6 +88,49 @@ static int ufs_mtk_bind_mphy(struct ufs_hba *hba)
->         return err;
->  }
->
-> +static int ufs_mtk_setup_ref_clk(struct ufs_hba *hba, bool on)
-> +{
-> +       struct ufs_mtk_host *host = ufshcd_get_variant(hba);
-> +       struct arm_smccc_res res;
-> +       unsigned long timeout;
-> +       u32 value;
-> +
-> +       if (host->ref_clk_enabled == on)
-> +               return 0;
-> +
-> +       if (on) {
-> +               ufs_mtk_ref_clk_notify(on, res);
-> +               ufshcd_writel(hba, REFCLK_REQUEST, REG_UFS_REFCLK_CTRL);
-> +       } else {
-> +               ufshcd_writel(hba, REFCLK_RELEASE, REG_UFS_REFCLK_CTRL);
-> +       }
-> +
-> +       /* Wait for ack */
-> +       timeout = jiffies + msecs_to_jiffies(REFCLK_REQ_TIMEOUT_MS);
-> +       do {
-> +               value = ufshcd_readl(hba, REG_UFS_REFCLK_CTRL);
-> +
-> +               /* Wait until ack bit equals to req bit */
-> +               if (((value & REFCLK_ACK) >> 1) == (value & REFCLK_REQUEST))
-> +                       goto out;
-> +
-> +               usleep_range(100, 200);
-> +       } while (time_before(jiffies, timeout));
-> +
-> +       dev_err(hba->dev, "missing ack of refclk req, reg: 0x%x\n", value);
-> +
-> +       ufs_mtk_ref_clk_notify(host->ref_clk_enabled, res);
-> +
-> +       return -ETIMEDOUT;
-> +
-> +out:
-> +       host->ref_clk_enabled = on;
-> +       if (!on)
-> +               ufs_mtk_ref_clk_notify(on, res);
-> +
-> +       return 0;
-> +}
-> +
->  /**
->   * ufs_mtk_setup_clocks - enables/disable clocks
->   * @hba: host controller instance
-> @@ -107,12 +155,16 @@ static int ufs_mtk_setup_clocks(struct ufs_hba *hba, bool on,
->
->         switch (status) {
->         case PRE_CHANGE:
-> -               if (!on)
-> +               if (!on) {
-> +                       ufs_mtk_setup_ref_clk(hba, on);
->                         ret = phy_power_off(host->mphy);
-> +               }
->                 break;
->         case POST_CHANGE:
-> -               if (on)
-> +               if (on) {
->                         ret = phy_power_on(host->mphy);
-> +                       ufs_mtk_setup_ref_clk(hba, on);
-> +               }
->                 break;
->         }
->
-> @@ -299,8 +351,10 @@ static int ufs_mtk_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  {
->         struct ufs_mtk_host *host = ufshcd_get_variant(hba);
->
-> -       if (ufshcd_is_link_hibern8(hba))
-> +       if (ufshcd_is_link_hibern8(hba)) {
->                 phy_power_off(host->mphy);
-> +               ufs_mtk_setup_ref_clk(hba, false);
-> +       }
->
->         return 0;
->  }
-> @@ -309,8 +363,10 @@ static int ufs_mtk_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  {
->         struct ufs_mtk_host *host = ufshcd_get_variant(hba);
->
-> -       if (ufshcd_is_link_hibern8(hba))
-> +       if (ufshcd_is_link_hibern8(hba)) {
-> +               ufs_mtk_setup_ref_clk(hba, true);
->                 phy_power_on(host->mphy);
-> +       }
->
->         return 0;
->  }
-> diff --git a/drivers/scsi/ufs/ufs-mediatek.h b/drivers/scsi/ufs/ufs-mediatek.h
-> index b03f601d3a9e..14f8a8357c09 100644
-> --- a/drivers/scsi/ufs/ufs-mediatek.h
-> +++ b/drivers/scsi/ufs/ufs-mediatek.h
-> @@ -6,7 +6,21 @@
->  #ifndef _UFS_MEDIATEK_H
->  #define _UFS_MEDIATEK_H
->
-> -#include <linux/bitops.h>
-> +/*
-> + * Vendor specific UFSHCI Registers
-> + */
-> +#define REG_UFS_REFCLK_CTRL         0x144
-> +
-> +/*
-> + * Ref-clk control
-> + *
-> + * Values for register REG_UFS_REFCLK_CTRL
-> + */
-> +#define REFCLK_RELEASE              0x0
-> +#define REFCLK_REQUEST              BIT(0)
-> +#define REFCLK_ACK                  BIT(1)
-> +
-> +#define REFCLK_REQ_TIMEOUT_MS       3
->
->  /*
->   * Vendor specific pre-defined parameters
-> @@ -34,7 +48,8 @@
->  /*
->   * SiP commands
+> @@ -7,6 +7,7 @@
 >   */
-> -#define UFS_MTK_SIP_DEVICE_RESET    BIT(1)
-> +#define UFS_MTK_SIP_DEVICE_RESET          BIT(1)
-> +#define UFS_MTK_SIP_REF_CLK_NOTIFICATION  BIT(3)
 >
->  /*
->   * VS_DEBUGCLOCKENABLE
-> @@ -55,6 +70,7 @@ enum {
->  struct ufs_mtk_host {
->         struct ufs_hba *hba;
->         struct phy *mphy;
-> +       bool ref_clk_enabled;
->  };
+>  #include <linux/arm-smccc.h>
+> +#include <linux/bitfield.h>
+>  #include <linux/of.h>
+>  #include <linux/of_address.h>
+>  #include <linux/phy/phy.h>
+> @@ -300,6 +301,13 @@ static int ufs_mtk_post_link(struct ufs_hba *hba)
+>         /* enable unipro clock gating feature */
+>         ufs_mtk_cfg_unipro_cg(hba, true);
 >
->  #endif /* !_UFS_MEDIATEK_H */
+> +       /* configure auto-hibern8 timer to 10ms */
+> +       if (ufshcd_is_auto_hibern8_supported(hba)) {
+> +               ufshcd_auto_hibern8_update(hba,
+> +                       FIELD_PREP(UFSHCI_AHIBERN8_TIMER_MASK, 10) |
+> +                       FIELD_PREP(UFSHCI_AHIBERN8_SCALE_MASK, 3));
+> +       }
+> +
+>         return 0;
+>  }
+>
 > --
 > 2.18.0
 
