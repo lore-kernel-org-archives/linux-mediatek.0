@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-6.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
 	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6EDC7C2D0D1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2019 18:01:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7764BC2D0D1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2019 18:18:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1125020716
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2019 18:01:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 43611227BF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Dec 2019 18:18:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e+EBOUgL";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="dsLosRjy"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1125020716
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CaXn0sMH";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="tCS54bJd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43611227BF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,58 +26,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eFwPLVKONJEALH95D6eSXDJf6ZLysFTzUjPw+ZCQves=; b=e+EBOUgLJMMvxJ
-	wLcJo8rL2yWMB5fd8EgV2rNVV5orEchehXIb+Gm8Po80vxsCk/+0/DQl6rwgHVH/ImkEDC9PUh16K
-	z4l7tL44XJ6gvd7IBA6JvQ3u1/PhcOdznC/OLuu9uTeZwapjiom1nK63vR7T997P0ZyKf2x5cdKML
-	bMhzbEGFp7Lc5fCrb/KHmJgMI5T79OssMO2m5setifLaAwyoI2wr3tBHaGSnqNyDYzLWeEIbU4VNC
-	Iu6OqSymXv4BQ3pyqutbPWrjm25jiqVsGamLZMcP/2Qx3E69a0bt9T2IPgbkDoURUBuPXFbE2hACg
-	Pdbo/lvCmOr8ckgwcBSA==;
+	List-Owner; bh=Fwe99gq4TzYjnC6siggugOYdwXUoDyAeSzpb3A5Oezg=; b=CaXn0sMH9k/GEw
+	e7DLBOVI3aS2TRZNfSjZUw1V99ltKDoxPV0mi1lKuia9/TtQaE2cu9CZnABDHFN9oTui+Vob1Y56b
+	OKiObhixMez9bFy7sknlcM36S2hP+5zi/3ytTXidKGjuVGWjm7fTE9qPC4k3au1L/xJ8BDH94VxcF
+	skj5zOU6rsAFMaYkmF+VRyuyFsPNtbvcFmUEpFnVcVDkd/H8pSL5w4Pvo/RzT5Jw9ArAFvB6aOvK3
+	rbpdV8AbDjt3Me5SjXWBsrQ8niJmTUFwSaRbDTUrOnWI6tQCuvNLQaF7j7w/pslEbZSAej2Hlw5AC
+	RY7vTLbJG8kEXYTeYXzg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ii06p-00020s-MY; Thu, 19 Dec 2019 18:01:11 +0000
-Received: from mail-ua1-x943.google.com ([2607:f8b0:4864:20::943])
+	id 1ii0Ni-0007ZA-OE; Thu, 19 Dec 2019 18:18:38 +0000
+Received: from mail-vs1-xe42.google.com ([2607:f8b0:4864:20::e42])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ii06m-000202-De; Thu, 19 Dec 2019 18:01:11 +0000
-Received: by mail-ua1-x943.google.com with SMTP id v18so2273412uaq.7;
- Thu, 19 Dec 2019 10:01:07 -0800 (PST)
+ id 1ii0Ng-0007Yg-Ni; Thu, 19 Dec 2019 18:18:38 +0000
+Received: by mail-vs1-xe42.google.com with SMTP id v12so4360340vsv.5;
+ Thu, 19 Dec 2019 10:18:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QjPQ9I3MaulCTCZ2YdAid7nxSKyySRyNct57kaSUS88=;
- b=dsLosRjyuSjvTAjKSLXV2e4+t0VYWTXQuFL+k20JqPB/UoaAMZPo4h1L8DlmR6qem2
- U3mQKxfqj2KdK8oG/Tg1BGUE/9neDB7zOKyz52MNGgqTkDXz2QLPBzEF2sL2XH2umOMD
- cbqrJweHNN/WfptPBOryXSaBIfTz9J8FkByItcChZ+1hEmzV6B01R+CvA3h2Z8C/3Rfp
- gEWWN5x+KIZwVHQaJ91U6UFmwfN0Bczg8Xk3buYK5KfpaY7gHj42tBzB1jtYrwccxCdY
- zLaqSUPrQMv0T1VKRlxzMiDSZNGOqOKCa1PdLeWoldNU4ZD0ojXcIGhbyHBa96vMtVp1
- ebrw==
+ :cc; bh=hdfl3j3PUu29KvhFJr+t8q9A7l1fLtUS6dfELY8PVLE=;
+ b=tCS54bJd6f3428WApblIOzLQvg9gXUk1ry2iLEcNoz5mn+Ev/It5H2F9ixzC8H3L7O
+ gy0IKkXEef1q6L0ksBFGDnOsjR/d7EBCW93dzLdMYSzBycxQDu5ezgzhvuFSzH3C8Lm/
+ JlAmLHyjT024P+gfLHAh9AEPlaXfFD3YP4yLDycw9CpwqSePfClSIox4XVdEvj5Nr5Bn
+ FjVC6LL8OR3gYVOQ86fmVwGRCASN1MYtioAty36QxsKkpWaLkkDWk5onwgp+d+6B+dOw
+ +x6EdoeRB0BmdvaglW+aUzVAef6OztV1h6RgZVussRPpI7Udtcb9/edVA/g/XEvrPZnk
+ C5rA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=QjPQ9I3MaulCTCZ2YdAid7nxSKyySRyNct57kaSUS88=;
- b=iMcSnmgCzFc3Y7vQaOiK12nQRLBL2fIWvzA03Jp2LlW49OMH9B3UOuYhgG7OCKcF2q
- vC9J+c6SKkdJy3CFLOMLFY4BjgmBA8NcOQnJyr7Fj2ZWMGLev1VgnZHSLdKWQRC5TTNP
- h6fCQn/ZQ1nsFHfSM0HZj4wSMlaPbTJJdYkZfAuFqy3GcM2EVp5sLRsz+4OCj3QLYbqv
- JpTmjz9TazS9E2oS5MR74xSQUjK5IjALO1bDarHEOUvF3teomG7YB0ypFxAaJWAyMyxO
- I0ZLCW1BvfTHfVcRmg2y4i9e1mEace9vanQDjzDGeAwXhCtbgiNxfhrp5JRLF5bXpAAa
- s68g==
-X-Gm-Message-State: APjAAAUEKX8OFCR+AwIkC44M75M4DfaHCjX2x6MvMitL42W9wdR51QgA
- Bm4j1p0xPLKfbmwuwTtHhppFv9kx6vXm0pxHNBI=
-X-Google-Smtp-Source: APXvYqwNBImtkGHDKyuRda18yw7naA/7n+2veuddJDpT4jKTMKEftJPEz5htPYoBKMPuYkbjM0g7DvUkosrf9MYJ+8I=
-X-Received: by 2002:ab0:4966:: with SMTP id a35mr6112212uad.141.1576778466344; 
- Thu, 19 Dec 2019 10:01:06 -0800 (PST)
+ bh=hdfl3j3PUu29KvhFJr+t8q9A7l1fLtUS6dfELY8PVLE=;
+ b=UQ98q2lnx5Djit4gC4xDnOo8qAAhGsesKlxhKfX+nRP+Gguca9iCVvjmYtDaS+pARf
+ 6PC0EDu9Qx4miOAG27gikPRZAA+Yh1RyyJMzpd8XWayr/sh7tWanb8zTYsaj366ODkdf
+ /lw1ifG0fMRtfFqDtf7C09hTkxMU0TnK9cl2d3M7hr9QuwtHSaczlJ7GBh1esgFTrJ/6
+ J/6uTqh3fN3h1SAAAxwEqki+8u5d/1LFZbMDGAzHK+LugELFChJQFMW1bpkQcD0G4Ns+
+ NPt64XLkKhjZ/L+zXe5yKWCMiBzy2Y5MOCQ+jg8w8bUacYH5a/h/3EGh7me06UJzMnNg
+ n+bw==
+X-Gm-Message-State: APjAAAWQIjK71H/a3uGOumsBepVA0oLxr+qVRPdAPsjEFORGkzVFm/tR
+ 1I+v9AXrF6kGi0DNmC1WiHx0v6RnPq3/dGbwAb0=
+X-Google-Smtp-Source: APXvYqx2+nDxq2ixPv2h29IpGt0iubjleAq9aMOGE+An5nayL0a+8XISERr+3e5yfQuKP1zTRewKys0Qg4k4OKGNcqU=
+X-Received: by 2002:a05:6102:204a:: with SMTP id
+ q10mr6222578vsr.127.1576779515189; 
+ Thu, 19 Dec 2019 10:18:35 -0800 (PST)
 MIME-Version: 1.0
-References: <1576468137-17220-1-git-send-email-stanley.chu@mediatek.com>
- <1576468137-17220-2-git-send-email-stanley.chu@mediatek.com>
-In-Reply-To: <1576468137-17220-2-git-send-email-stanley.chu@mediatek.com>
+References: <1576224695-22657-1-git-send-email-stanley.chu@mediatek.com>
+ <1576224695-22657-2-git-send-email-stanley.chu@mediatek.com>
+In-Reply-To: <1576224695-22657-2-git-send-email-stanley.chu@mediatek.com>
 From: Alim Akhtar <alim.akhtar@gmail.com>
-Date: Thu, 19 Dec 2019 23:30:30 +0530
-Message-ID: <CAGOxZ50RKYAEw=HwYMH=Jm7cagUV12C-fwhauJhJqx6HscAmFA@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2 RESEND] soc: mediatek: add header for SiP service
- interface
+Date: Thu, 19 Dec 2019 23:47:59 +0530
+Message-ID: <CAGOxZ539Fr5Vxg8Zg=LpYhxTacwh81Ee+S9MWFybwbAPr5RgYQ@mail.gmail.com>
+Subject: Re: [PATCH v1 1/4] scsi: ufs-mediatek: introduce reference clock
+ control
 To: Stanley Chu <stanley.chu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191219_100108_496458_88C20946 
-X-CRM114-Status: GOOD (  13.71  )
+X-CRM114-CacheID: sfid-20191219_101836_775124_B0A568DC 
+X-CRM114-Status: GOOD (  18.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,10 +90,10 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: f.fainelli@gmail.com, linux-scsi@vger.kernel.org,
- "Martin K. Petersen" <martin.petersen@oracle.com>, leon.chen@mediatek.com,
- andy.teng@mediatek.com, "James E.J. Bottomley" <jejb@linux.ibm.com>,
- chun-hung.wu@mediatek.com, Kuohong Wang <kuohong.wang@mediatek.com>,
+Cc: linux-scsi@vger.kernel.org,
+ "Martin K. Petersen" <martin.petersen@oracle.com>, andy.teng@mediatek.com,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>, chun-hung.wu@mediatek.com,
+ Kuohong Wang <kuohong.wang@mediatek.com>,
  open list <linux-kernel@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>,
  linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
  Alim Akhtar <alim.akhtar@samsung.com>,
@@ -104,57 +105,177 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
-
-On Mon, Dec 16, 2019 at 9:19 AM Stanley Chu <stanley.chu@mediatek.com> wrote:
+On Fri, Dec 13, 2019 at 2:23 PM Stanley Chu <stanley.chu@mediatek.com> wrote:
 >
-> Add a header for the SiP service interface in order to access
-> the UFSHCI controller for secure command handling in MediaTek Chipsets.
+> Introduce reference clock control in MediaTek Chipset in order
+> to disable it if it is not necessary by UFS device to save system power.
+>
+> Currently reference clock can be disabled during system suspend, runtime
+> suspend and clock-gating after link enters hibernate state.
 >
 > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+
+Reviewed-by: Alim Akhtar <alim.akhtar@samsung.com>
+
 > ---
->  include/linux/soc/mediatek/mtk_sip_svc.h | 29 ++++++++++++++++++++++++
->  1 file changed, 29 insertions(+)
->  create mode 100644 include/linux/soc/mediatek/mtk_sip_svc.h
+>  drivers/scsi/ufs/ufs-mediatek.c | 64 ++++++++++++++++++++++++++++++---
+>  drivers/scsi/ufs/ufs-mediatek.h | 20 +++++++++--
+>  2 files changed, 78 insertions(+), 6 deletions(-)
 >
-> diff --git a/include/linux/soc/mediatek/mtk_sip_svc.h b/include/linux/soc/mediatek/mtk_sip_svc.h
-> new file mode 100644
-> index 000000000000..97311959d7d7
-> --- /dev/null
-> +++ b/include/linux/soc/mediatek/mtk_sip_svc.h
-> @@ -0,0 +1,29 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
+> diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+> index 6a3ec11b16db..690483c78212 100644
+> --- a/drivers/scsi/ufs/ufs-mediatek.c
+> +++ b/drivers/scsi/ufs/ufs-mediatek.c
+> @@ -18,6 +18,11 @@
+>  #include "unipro.h"
+>  #include "ufs-mediatek.h"
+>
+> +#define ufs_mtk_ref_clk_notify(on, res) \
+> +       arm_smccc_smc(MTK_SIP_UFS_CONTROL, \
+> +                     UFS_MTK_SIP_REF_CLK_NOTIFICATION, \
+> +                     on, 0, 0, 0, 0, 0, &(res))
+> +
+>  static void ufs_mtk_cfg_unipro_cg(struct ufs_hba *hba, bool enable)
+>  {
+>         u32 tmp;
+> @@ -83,6 +88,49 @@ static int ufs_mtk_bind_mphy(struct ufs_hba *hba)
+>         return err;
+>  }
+>
+> +static int ufs_mtk_setup_ref_clk(struct ufs_hba *hba, bool on)
+> +{
+> +       struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+> +       struct arm_smccc_res res;
+> +       unsigned long timeout;
+> +       u32 value;
+> +
+> +       if (host->ref_clk_enabled == on)
+> +               return 0;
+> +
+> +       if (on) {
+> +               ufs_mtk_ref_clk_notify(on, res);
+> +               ufshcd_writel(hba, REFCLK_REQUEST, REG_UFS_REFCLK_CTRL);
+> +       } else {
+> +               ufshcd_writel(hba, REFCLK_RELEASE, REG_UFS_REFCLK_CTRL);
+> +       }
+> +
+> +       /* Wait for ack */
+> +       timeout = jiffies + msecs_to_jiffies(REFCLK_REQ_TIMEOUT_MS);
+> +       do {
+> +               value = ufshcd_readl(hba, REG_UFS_REFCLK_CTRL);
+> +
+> +               /* Wait until ack bit equals to req bit */
+> +               if (((value & REFCLK_ACK) >> 1) == (value & REFCLK_REQUEST))
+> +                       goto out;
+> +
+> +               usleep_range(100, 200);
+> +       } while (time_before(jiffies, timeout));
+> +
+> +       dev_err(hba->dev, "missing ack of refclk req, reg: 0x%x\n", value);
+> +
+> +       ufs_mtk_ref_clk_notify(host->ref_clk_enabled, res);
+> +
+> +       return -ETIMEDOUT;
+> +
+> +out:
+> +       host->ref_clk_enabled = on;
+> +       if (!on)
+> +               ufs_mtk_ref_clk_notify(on, res);
+> +
+> +       return 0;
+> +}
+> +
+>  /**
+>   * ufs_mtk_setup_clocks - enables/disable clocks
+>   * @hba: host controller instance
+> @@ -107,12 +155,16 @@ static int ufs_mtk_setup_clocks(struct ufs_hba *hba, bool on,
+>
+>         switch (status) {
+>         case PRE_CHANGE:
+> -               if (!on)
+> +               if (!on) {
+> +                       ufs_mtk_setup_ref_clk(hba, on);
+>                         ret = phy_power_off(host->mphy);
+> +               }
+>                 break;
+>         case POST_CHANGE:
+> -               if (on)
+> +               if (on) {
+>                         ret = phy_power_on(host->mphy);
+> +                       ufs_mtk_setup_ref_clk(hba, on);
+> +               }
+>                 break;
+>         }
+>
+> @@ -299,8 +351,10 @@ static int ufs_mtk_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>  {
+>         struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+>
+> -       if (ufshcd_is_link_hibern8(hba))
+> +       if (ufshcd_is_link_hibern8(hba)) {
+>                 phy_power_off(host->mphy);
+> +               ufs_mtk_setup_ref_clk(hba, false);
+> +       }
+>
+>         return 0;
+>  }
+> @@ -309,8 +363,10 @@ static int ufs_mtk_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>  {
+>         struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+>
+> -       if (ufshcd_is_link_hibern8(hba))
+> +       if (ufshcd_is_link_hibern8(hba)) {
+> +               ufs_mtk_setup_ref_clk(hba, true);
+>                 phy_power_on(host->mphy);
+> +       }
+>
+>         return 0;
+>  }
+> diff --git a/drivers/scsi/ufs/ufs-mediatek.h b/drivers/scsi/ufs/ufs-mediatek.h
+> index b03f601d3a9e..14f8a8357c09 100644
+> --- a/drivers/scsi/ufs/ufs-mediatek.h
+> +++ b/drivers/scsi/ufs/ufs-mediatek.h
+> @@ -6,7 +6,21 @@
+>  #ifndef _UFS_MEDIATEK_H
+>  #define _UFS_MEDIATEK_H
+>
+> -#include <linux/bitops.h>
 > +/*
-> + * Copyright (C) 2019 MediaTek Inc.
+> + * Vendor specific UFSHCI Registers
 > + */
-> +#ifndef __MTK_SIP_SVC_H
-> +#define __MTK_SIP_SVC_H
+> +#define REG_UFS_REFCLK_CTRL         0x144
 > +
-> +/* Error Code */
-> +#define SIP_SVC_E_SUCCESS               0
-> +#define SIP_SVC_E_NOT_SUPPORTED         -1
-> +#define SIP_SVC_E_INVALID_PARAMS        -2
-> +#define SIP_SVC_E_INVALID_RANGE         -3
-> +#define SIP_SVC_E_PERMISSION_DENIED     -4
+> +/*
+> + * Ref-clk control
+> + *
+> + * Values for register REG_UFS_REFCLK_CTRL
+> + */
+> +#define REFCLK_RELEASE              0x0
+> +#define REFCLK_REQUEST              BIT(0)
+> +#define REFCLK_ACK                  BIT(1)
 > +
-> +#ifdef CONFIG_ARM64
-> +#define MTK_SIP_SMC_CONVENTION          ARM_SMCCC_SMC_64
-> +#else
-> +#define MTK_SIP_SMC_CONVENTION          ARM_SMCCC_SMC_32
-> +#endif
-> +
-> +#define MTK_SIP_SMC_CMD(fn_id) \
-> +       ARM_SMCCC_CALL_VAL(ARM_SMCCC_FAST_CALL, MTK_SIP_SMC_CONVENTION, \
-> +                          ARM_SMCCC_OWNER_SIP, fn_id)
-> +
-> +/* UFS related SMC call */
-> +#define MTK_SIP_UFS_CONTROL \
-> +       MTK_SIP_SMC_CMD(0x276)
-> +
-How about moving UFS specific stuff to MTK UFS driver and include this
-header in driver file?
-Rest looks fine.
-> +#endif
+> +#define REFCLK_REQ_TIMEOUT_MS       3
+>
+>  /*
+>   * Vendor specific pre-defined parameters
+> @@ -34,7 +48,8 @@
+>  /*
+>   * SiP commands
+>   */
+> -#define UFS_MTK_SIP_DEVICE_RESET    BIT(1)
+> +#define UFS_MTK_SIP_DEVICE_RESET          BIT(1)
+> +#define UFS_MTK_SIP_REF_CLK_NOTIFICATION  BIT(3)
+>
+>  /*
+>   * VS_DEBUGCLOCKENABLE
+> @@ -55,6 +70,7 @@ enum {
+>  struct ufs_mtk_host {
+>         struct ufs_hba *hba;
+>         struct phy *mphy;
+> +       bool ref_clk_enabled;
+>  };
+>
+>  #endif /* !_UFS_MEDIATEK_H */
 > --
 > 2.18.0
 
