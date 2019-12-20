@@ -2,79 +2,78 @@ Return-Path: <SRS0=AkNb=2K=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1153EC43603
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2019 08:48:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3E080C43603
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2019 08:55:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D461320716
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2019 08:48:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 10BB324679
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2019 08:55:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JuDNeMyI";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dClNCxXh"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D461320716
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j86uaKjD";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="W0dWNacy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 10BB324679
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3L3ZAwy7ib5t6UMxSNJAdtOsg6q/Qlj1XQqBBmrRuY0=; b=JuDNeMyIf1A34Y
-	crbSXGy63lESd6el1jm7ODQbeTev5ZbF2Z2UPXMY3iUsWMyd8ElNbAH1GOnUUMhivzEusf4HvIb0u
-	GbUGuDf6e59KyhpezFrGy+yKsbimg0OXVih6AZIxFvuhzzH6TtNSvysGcuuujdO71Vs0KmjmpsosZ
-	2k0Ow/N0WbosIHEXFkBbIUHUn4L3pID7lp9rLY9SRfUsgC48fHPwrkbULbHVyn9NyZ7Q4nTOo6ndu
-	tvcqlVDAVaPa1VLAk2hB7Q3hhVnmkJjSSS7gJUzJww/KQp+uamC3IYOIhFigGArMgxSYb+Cjj9XIx
-	RIx0Pgf62Uu3ufyk4xhw==;
+	List-Owner; bh=NvxyhfPanFudhdFFFv7CELhyLzx2FvDvyilALUGtiAM=; b=j86uaKjDrbjij/
+	H9w0UB+I9Vh3yR0HswIV/4zXd2DnTPjfSYGK9tLONRbry44xayupZpY8sy79UmoDJ206FckASIfrJ
+	AekrJeZvgkN3NfhhdnDb94aCCYIwifV7PMkOJDW3NPAGlZDsD/cT9eDzJGF9OG0CVgEJi8ypvUSej
+	yNxpeiCc4iPUOVUk2ehtaO36GAkZ3IaSr68X9L8FPcnknuDoJWVSXL2jXVu/78gyFNHPL923ZOuZ+
+	LJR1b8FnpePMyC4/YKNe2kJnsCF9tCaj/wx8miD+iqnse9fazYtvcbELESUfgTchJTWgzWX9f7VYU
+	e1mXg5H8Csg/cCD00mpA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iiDws-0005WT-1U; Fri, 20 Dec 2019 08:47:50 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1iiE4b-0001bn-LD; Fri, 20 Dec 2019 08:55:49 +0000
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iiDvo-0004Z2-0y; Fri, 20 Dec 2019 08:46:45 +0000
-X-UUID: 2f47a3c6483f4d7f9768a49fdab2b7fc-20191220
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=1dTM/x2XgEndTdXRTGoeD0Ozp3L9tzAYcN6PciDyt3c=; 
- b=dClNCxXhNVqDx8r6BXkfQwB5V9UU2+rjpa+fKc1h9T+wAcDpIniTtvT4Iu6Q4VJNu5U0OBOYuQRUwXR3NhoGyY1cqEpQIF/SZpwoZhaoZCpSZL7rw31YuPNY6kN1af9odjvCNWb9jS6eJDrLC7EyST4u1/eUQ0bLzMQp6xk5w20=;
-X-UUID: 2f47a3c6483f4d7f9768a49fdab2b7fc-20191220
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 726109059; Fri, 20 Dec 2019 00:46:40 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 20 Dec 2019 00:36:59 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 20 Dec 2019 16:35:59 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Fri, 20 Dec 2019 16:35:39 +0800
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
- <avri.altman@wdc.com>, <alim.akhtar@samsung.com>,
- <pedrom.sousa@synopsys.com>, <jejb@linux.ibm.com>, <matthias.bgg@gmail.com>,
- <f.fainelli@gmail.com>
-Subject: [PATCH v1 6/6] scsi: ufs-mediatek: configure and enable clk-gating
-Date: Fri, 20 Dec 2019 16:36:28 +0800
-Message-ID: <1576830988-22435-7-git-send-email-stanley.chu@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1576830988-22435-1-git-send-email-stanley.chu@mediatek.com>
-References: <1576830988-22435-1-git-send-email-stanley.chu@mediatek.com>
+ id 1iiE4R-0001Sy-VU
+ for linux-mediatek@lists.infradead.org; Fri, 20 Dec 2019 08:55:41 +0000
+Received: by mail-io1-xd43.google.com with SMTP id b10so8619431iof.11
+ for <linux-mediatek@lists.infradead.org>; Fri, 20 Dec 2019 00:55:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=hFyk6wfDM3uJNZM3XmVJRb6zXEf3/dZ+tc8Bv4YB2yY=;
+ b=W0dWNacy+Z08VU2VNyW6cLKarj2vQSvC7GwIrBrk5kAeHpY8LUCugVbH17i6+PQmyA
+ lzshmpaK75tqkDiY8MXYJFy40HtHbIraPO0UNF/SdTr1T0MrZjg9bMNdnlBgv7STNqf6
+ AcP0G+MibU3+k6+ra+ZS/fYB+z7mO6Z7OA5uI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=hFyk6wfDM3uJNZM3XmVJRb6zXEf3/dZ+tc8Bv4YB2yY=;
+ b=XLixN4wuLTQFTFjragBaJdwx04J1+iSO8cQmi0DgEY4x0+6U+Yf3XRVRKvHSolTyI8
+ ISwdeiUM+ZDLiXdvUxU/DXMC4r8fasGOXcDGd5W1z1Pct8TBjqgWCgGpa9DraXTYVceN
+ afXYwiJy/9kMHUHj1l7IbjC4gdvBKeyZa0GWig4pyqBZ4VOaFfvcWO6E2cwQARLE25r6
+ s2w04mBaM5J4sAXx2KULkcBlJMgTREmOGB/2817bA5eboQzEiE4qw//OmMe8PS9cYKw8
+ b25VCBAhMq9TOzyWiAJzlAJ+1Y+ng4sQk3XN0jxvq3yKWqBmWCMeCh1Ad+oaGM12JkoV
+ Mc/A==
+X-Gm-Message-State: APjAAAVSVAOYci7ZH52gGSB6fj/AY2jV5erzbSgGU9ghqaMYssL1V9YS
+ RMbVyDAk7QfmjpI8A2DQ6OE6kbi8RK3/g/IarG2zCA==
+X-Google-Smtp-Source: APXvYqx6jNS3ruJSqRukqpBfv5nCziRlHY3HFBeibFf5MWoadOk37sDVbGh863vc8QU+b1jTv0rGaDTo6tv6CoaEyJc=
+X-Received: by 2002:a6b:3845:: with SMTP id f66mr9807832ioa.102.1576832138346; 
+ Fri, 20 Dec 2019 00:55:38 -0800 (PST)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 367E02E7C7D61D709754BA5D29E13B252DAD17ECDB3D2FE27103CD478EB3C1812000:8
-X-MTK: N
+References: <20191220081738.1895-1-enric.balletbo@collabora.com>
+ <20191220081738.1895-3-enric.balletbo@collabora.com>
+In-Reply-To: <20191220081738.1895-3-enric.balletbo@collabora.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Fri, 20 Dec 2019 16:55:12 +0800
+Message-ID: <CAJMQK-h9w5a1CKyTqdBsmz6TYbcGMzhPLNwU7kYBYp56EV0PZA@mail.gmail.com>
+Subject: Re: [PATCH v22 2/2] drm/bridge: Add I2C based driver for ps8640 bridge
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191220_004644_150308_C24D31A4 
-X-CRM114-Status: UNSURE (   8.27  )
+X-CRM114-CacheID: sfid-20191220_005540_041516_C380812C 
+X-CRM114-Status: UNSURE (   6.10  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -87,74 +86,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: leon.chen@mediatek.com, andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org,
- beanhuo@micron.com
+Cc: Ulrich Hecht <uli@fpond.eu>, Jernej Skrabec <jernej.skrabec@siol.net>,
+ Nicolas Boichat <drinkcat@chromium.org>, Jitao Shi <jitao.shi@mediatek.com>,
+ Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
+ Neil Armstrong <narmstrong@baylibre.com>, lkml <linux-kernel@vger.kernel.org>,
+ Andrzej Hajda <a.hajda@samsung.com>, linux-mediatek@lists.infradead.org,
+ dri-devel <dri-devel@lists.freedesktop.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Collabora Kernel ML <kernel@collabora.com>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable clk-gating with customized delayed timer value in
-MediaTek Chipsets.
+On Fri, Dec 20, 2019 at 4:17 PM Enric Balletbo i Serra
+<enric.balletbo@collabora.com> wrote:
+>
+> From: Jitao Shi <jitao.shi@mediatek.com>
+>
+> This patch adds drm_bridge driver for parade DSI to eDP bridge chip.
+>
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+> Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> [uli: followed API changes, removed FW update feature]
+> Signed-off-by: Ulrich Hecht <uli@fpond.eu>
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Tested-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> ---
+tested on mt8173 chromebook
 
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-Reviewed-by: Alim Akhtar <alim.akhtar@samsung.com>
----
- drivers/scsi/ufs/ufs-mediatek.c | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
-
-diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-index 71e2e0e4ea11..282ad06ec846 100644
---- a/drivers/scsi/ufs/ufs-mediatek.c
-+++ b/drivers/scsi/ufs/ufs-mediatek.c
-@@ -205,6 +205,9 @@ static int ufs_mtk_init(struct ufs_hba *hba)
- 	/* Enable runtime autosuspend */
- 	hba->caps |= UFSHCD_CAP_RPM_AUTOSUSPEND;
- 
-+	/* Enable clock-gating */
-+	hba->caps |= UFSHCD_CAP_CLK_GATING;
-+
- 	/*
- 	 * ufshcd_vops_init() is invoked after
- 	 * ufshcd_setup_clock(true) in ufshcd_hba_init() thus
-@@ -293,6 +296,23 @@ static int ufs_mtk_pre_link(struct ufs_hba *hba)
- 	return ret;
- }
- 
-+static void ufs_mtk_setup_clk_gating(struct ufs_hba *hba)
-+{
-+	unsigned long flags;
-+	u32 ah_ms;
-+
-+	if (ufshcd_is_clkgating_allowed(hba)) {
-+		if (ufshcd_is_auto_hibern8_supported(hba) && hba->ahit)
-+			ah_ms = FIELD_GET(UFSHCI_AHIBERN8_TIMER_MASK,
-+					  hba->ahit);
-+		else
-+			ah_ms = 10;
-+		spin_lock_irqsave(hba->host->host_lock, flags);
-+		hba->clk_gating.delay_ms = ah_ms + 5;
-+		spin_unlock_irqrestore(hba->host->host_lock, flags);
-+	}
-+}
-+
- static int ufs_mtk_post_link(struct ufs_hba *hba)
- {
- 	/* disable device LCC */
-@@ -308,6 +328,8 @@ static int ufs_mtk_post_link(struct ufs_hba *hba)
- 			FIELD_PREP(UFSHCI_AHIBERN8_SCALE_MASK, 3));
- 	}
- 
-+	ufs_mtk_setup_clk_gating(hba);
-+
- 	return 0;
- }
- 
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
