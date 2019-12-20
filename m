@@ -2,79 +2,79 @@ Return-Path: <SRS0=AkNb=2K=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3E080C43603
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2019 08:55:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8D686C43603
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2019 11:13:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 10BB324679
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2019 08:55:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 506BA24680
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2019 11:13:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j86uaKjD";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="W0dWNacy"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 10BB324679
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BEjDzK5h";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="UTsoNvfM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 506BA24680
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NvxyhfPanFudhdFFFv7CELhyLzx2FvDvyilALUGtiAM=; b=j86uaKjDrbjij/
-	H9w0UB+I9Vh3yR0HswIV/4zXd2DnTPjfSYGK9tLONRbry44xayupZpY8sy79UmoDJ206FckASIfrJ
-	AekrJeZvgkN3NfhhdnDb94aCCYIwifV7PMkOJDW3NPAGlZDsD/cT9eDzJGF9OG0CVgEJi8ypvUSej
-	yNxpeiCc4iPUOVUk2ehtaO36GAkZ3IaSr68X9L8FPcnknuDoJWVSXL2jXVu/78gyFNHPL923ZOuZ+
-	LJR1b8FnpePMyC4/YKNe2kJnsCF9tCaj/wx8miD+iqnse9fazYtvcbELESUfgTchJTWgzWX9f7VYU
-	e1mXg5H8Csg/cCD00mpA==;
+	List-Owner; bh=TpKo8lgxw5mFoKdxl3XhSwd2g/mbv4VRceqKcMDghK4=; b=BEjDzK5hn5UlmD
+	g1eXpGQm+hmtYpNsOgtWfd48yj6BwQTGvlA6nsShLA8bga0oFDves7SplzocvA+Mm+Pfp/XKEco5I
+	bjfj0EqLbw7CY4/aKgkkEbEWjegUcum9TQMo6PPFTUFjfGEjmnJO2X+QU4GWEXTr+WInrG4TYKx+i
+	tkLSukVxTxzLTY+6NqEtsr/FQVQAj1P5kEZLiPWaaTz9tE+Pa8vZwwUhFE9Q/0eT6Xb+GmlzbaNdf
+	xejc6qUceiAH+7PDKaVynTDDM7ImGJz1RL/4z1EVRlT4FOochYuXnc5NREFihsZp+pxcwiYRHOE7K
+	1wE4zwazqtWdMQQrtBtw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iiE4b-0001bn-LD; Fri, 20 Dec 2019 08:55:49 +0000
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
+	id 1iiGDF-0000PO-Gk; Fri, 20 Dec 2019 11:12:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iiE4R-0001Sy-VU
- for linux-mediatek@lists.infradead.org; Fri, 20 Dec 2019 08:55:41 +0000
-Received: by mail-io1-xd43.google.com with SMTP id b10so8619431iof.11
- for <linux-mediatek@lists.infradead.org>; Fri, 20 Dec 2019 00:55:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hFyk6wfDM3uJNZM3XmVJRb6zXEf3/dZ+tc8Bv4YB2yY=;
- b=W0dWNacy+Z08VU2VNyW6cLKarj2vQSvC7GwIrBrk5kAeHpY8LUCugVbH17i6+PQmyA
- lzshmpaK75tqkDiY8MXYJFy40HtHbIraPO0UNF/SdTr1T0MrZjg9bMNdnlBgv7STNqf6
- AcP0G+MibU3+k6+ra+ZS/fYB+z7mO6Z7OA5uI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=hFyk6wfDM3uJNZM3XmVJRb6zXEf3/dZ+tc8Bv4YB2yY=;
- b=XLixN4wuLTQFTFjragBaJdwx04J1+iSO8cQmi0DgEY4x0+6U+Yf3XRVRKvHSolTyI8
- ISwdeiUM+ZDLiXdvUxU/DXMC4r8fasGOXcDGd5W1z1Pct8TBjqgWCgGpa9DraXTYVceN
- afXYwiJy/9kMHUHj1l7IbjC4gdvBKeyZa0GWig4pyqBZ4VOaFfvcWO6E2cwQARLE25r6
- s2w04mBaM5J4sAXx2KULkcBlJMgTREmOGB/2817bA5eboQzEiE4qw//OmMe8PS9cYKw8
- b25VCBAhMq9TOzyWiAJzlAJ+1Y+ng4sQk3XN0jxvq3yKWqBmWCMeCh1Ad+oaGM12JkoV
- Mc/A==
-X-Gm-Message-State: APjAAAVSVAOYci7ZH52gGSB6fj/AY2jV5erzbSgGU9ghqaMYssL1V9YS
- RMbVyDAk7QfmjpI8A2DQ6OE6kbi8RK3/g/IarG2zCA==
-X-Google-Smtp-Source: APXvYqx6jNS3ruJSqRukqpBfv5nCziRlHY3HFBeibFf5MWoadOk37sDVbGh863vc8QU+b1jTv0rGaDTo6tv6CoaEyJc=
-X-Received: by 2002:a6b:3845:: with SMTP id f66mr9807832ioa.102.1576832138346; 
- Fri, 20 Dec 2019 00:55:38 -0800 (PST)
+ id 1iiGDC-0000Ot-7z; Fri, 20 Dec 2019 11:12:51 +0000
+X-UUID: d7e3bbc0fb044724a0c743edf5514638-20191220
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Aatwr+ttc7zxtmKQFYI1z8gYIV9l40lZAUrGhcyY+f0=; 
+ b=UTsoNvfMIUoGvvlSNUgB2UmObQmBJ+442yHczbdjBdYZu6Hfzn7Jwidyqp5HfgzNJVvgeU4yw1XXKYmpKq193HvZ206AuMWiLLyp7NpgqsAddrr3MZsb6y1O6TFzQo9gxaYMlCja/pZIFm0O/FfvcMYG4FxN0RWy9F4IpEJCTxY=;
+X-UUID: d7e3bbc0fb044724a0c743edf5514638-20191220
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chao.hao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1778191535; Fri, 20 Dec 2019 03:12:42 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 20 Dec 2019 03:03:01 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 20 Dec 2019 19:02:38 +0800
+Received: from [10.15.20.246] (10.15.20.246) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Fri, 20 Dec 2019 19:01:43 +0800
+Message-ID: <1576839713.20031.2.camel@mbjsdccf07>
+Subject: Re: [RESEND,PATCH 01/13] dt-bindings: mediatek: Add bindings for
+ MT6779
+From: chao hao <Chao.Hao@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>
+Date: Fri, 20 Dec 2019 19:01:53 +0800
+In-Reply-To: <1576497901.28043.71.camel@mhfsdcap03>
+References: <20191104115238.2394-1-chao.hao@mediatek.com>
+ <20191104115238.2394-2-chao.hao@mediatek.com>
+ <1576497901.28043.71.camel@mhfsdcap03>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-References: <20191220081738.1895-1-enric.balletbo@collabora.com>
- <20191220081738.1895-3-enric.balletbo@collabora.com>
-In-Reply-To: <20191220081738.1895-3-enric.balletbo@collabora.com>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Fri, 20 Dec 2019 16:55:12 +0800
-Message-ID: <CAJMQK-h9w5a1CKyTqdBsmz6TYbcGMzhPLNwU7kYBYp56EV0PZA@mail.gmail.com>
-Subject: Re: [PATCH v22 2/2] drm/bridge: Add I2C based driver for ps8640 bridge
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+X-TM-SNTS-SMTP: CED2145DA5A5DB969C5A979274DE6004671E4E920E54B13366D6759B41D5A90B2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191220_005540_041516_C380812C 
-X-CRM114-Status: UNSURE (   6.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191220_031250_298232_3B5C9C96 
+X-CRM114-Status: GOOD (  20.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,38 +86,200 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ulrich Hecht <uli@fpond.eu>, Jernej Skrabec <jernej.skrabec@siol.net>,
- Nicolas Boichat <drinkcat@chromium.org>, Jitao Shi <jitao.shi@mediatek.com>,
- Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
- Neil Armstrong <narmstrong@baylibre.com>, lkml <linux-kernel@vger.kernel.org>,
- Andrzej Hajda <a.hajda@samsung.com>, linux-mediatek@lists.infradead.org,
- dri-devel <dri-devel@lists.freedesktop.org>, Daniel Vetter <daniel@ffwll.ch>,
+Cc: Anan Sun <anan.sun@mediatek.com>, devicetree@vger.kernel.org,
+ Cui Zhang <cui.zhang@mediatek.com>, Jun Yan <jun.yan@mediatek.com>,
+ wsd_upstream@mediatek.com, Joerg Roedel <joro@8bytes.org>,
+ linux-kernel@vger.kernel.org, iommu@lists.linux-foundation.org,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Miles Chen <miles.chen@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Collabora Kernel ML <kernel@collabora.com>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+ linux-arm-kernel@lists.infradead.org,
+ Guangming Cao <guangming.cao@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 20, 2019 at 4:17 PM Enric Balletbo i Serra
-<enric.balletbo@collabora.com> wrote:
->
-> From: Jitao Shi <jitao.shi@mediatek.com>
->
-> This patch adds drm_bridge driver for parade DSI to eDP bridge chip.
->
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
-> Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> [uli: followed API changes, removed FW update feature]
-> Signed-off-by: Ulrich Hecht <uli@fpond.eu>
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Tested-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> ---
-tested on mt8173 chromebook
+On Mon, 2019-12-16 at 20:05 +0800, Yong Wu wrote:
+> On Mon, 2019-11-04 at 19:52 +0800, Chao Hao wrote:
+> > This patch adds description for MT6779 IOMMU.
+> > 
+> > MT6779 has two iommus, they are MM_IOMMU and APU_IOMMU which
+> > use ARM Short-Descriptor translation format.
+> > 
+> > The MT6779 IOMMU hardware diagram is as below, it is only a brief
+> > diagram about iommu, it don't focus on the part of smi_larb, so
+> > I don't describe the smi_larb detailedly.
+> > 
+> > 			     EMI
+> > 			      |
+> > 	   --------------------------------------
+> > 	   |					|
+> >         MM_IOMMU                            APU_IOMMU
+> > 	   |					|
+> >        SMI_COMMOM-----------		     APU_BUS
+> >           |		   |			|
+> >     SMI_LARB(0~11)  SMI_LARB12(FAKE)	    SMI_LARB13(FAKE)
+> > 	  |		   |			|
+> > 	  |		   |		   --------------
+> > 	  |		   |		   |	 |	|
+> >    Multimedia engine	  CCU		  VPU   MDLA   EMDA
+> > 
+> > All the connections are hardware fixed, software can not adjust it.
+> > 
+> > From the diagram above, MM_IOMMU provides mapping for multimedia engine,
+> > but CCU is connected with smi_common directly, we can take them as larb12.
+> > APU_IOMMU provides mapping for APU engine, we can take them larb13.
+> > Larb12 and Larb13 are fake larbs.
+> > 
+> > Signed-off-by: Chao Hao <chao.hao@mediatek.com>
+> > ---
+> >  .../bindings/iommu/mediatek,iommu.txt         |   2 +
+> >  include/dt-bindings/memory/mt6779-larb-port.h | 217 ++++++++++++++++++
+> >  2 files changed, 219 insertions(+)
+> >  create mode 100644 include/dt-bindings/memory/mt6779-larb-port.h
+> > 
+> > diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt b/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+> > index ce59a505f5a4..c1ccd8582eb2 100644
+> > --- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+> > +++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+> > @@ -58,6 +58,7 @@ Required properties:
+> >  - compatible : must be one of the following string:
+> >  	"mediatek,mt2701-m4u" for mt2701 which uses generation one m4u HW.
+> >  	"mediatek,mt2712-m4u" for mt2712 which uses generation two m4u HW.
+> > +	"mediatek,mt6779-m4u" for mt6779 which uses generation two m4u HW.
+> >  	"mediatek,mt7623-m4u", "mediatek,mt2701-m4u" for mt7623 which uses
+> >  						     generation one m4u HW.
+> >  	"mediatek,mt8173-m4u" for mt8173 which uses generation two m4u HW.
+> > @@ -78,6 +79,7 @@ Required properties:
+> >  	Specifies the mtk_m4u_id as defined in
+> >  	dt-binding/memory/mt2701-larb-port.h for mt2701, mt7623
+> >  	dt-binding/memory/mt2712-larb-port.h for mt2712,
+> > +	dt-binding/memory/mt6779-larb-port.h for mt6779,
+> >  	dt-binding/memory/mt8173-larb-port.h for mt8173, and
+> >  	dt-binding/memory/mt8183-larb-port.h for mt8183.
+> >  
+> > diff --git a/include/dt-bindings/memory/mt6779-larb-port.h b/include/dt-bindings/memory/mt6779-larb-port.h
+> > new file mode 100644
+> > index 000000000000..8b7f2d2446ea
+> > --- /dev/null
+> > +++ b/include/dt-bindings/memory/mt6779-larb-port.h
+> > @@ -0,0 +1,217 @@
+> > +/* SPDX-License-Identifier: GPL-2.0 */
+> > +/*
+> > + * Copyright (c) 2019 MediaTek Inc.
+> > + * Author: Chao Hao <chao.hao@mediatek.com>
+> > + */
+> > +
+> > +#ifndef _DTS_IOMMU_PORT_MT6779_H_
+> > +#define _DTS_IOMMU_PORT_MT6779_H_
+> > +
+> > +#define MTK_M4U_ID(larb, port)		 (((larb) << 5) | (port))
+> > +
+> > +#define M4U_LARB0_ID			 0
+> > +#define M4U_LARB1_ID			 1
+> > +#define M4U_LARB2_ID			 2
+> > +#define M4U_LARB3_ID			 3
+> > +#define M4U_LARB4_ID			 4
+> > +#define M4U_LARB5_ID			 5
+> > +#define M4U_LARB6_ID			 6
+> > +#define M4U_LARB7_ID			 7
+> > +#define M4U_LARB8_ID			 8
+> > +#define M4U_LARB9_ID			 9
+> > +#define M4U_LARB10_ID			 10
+> > +#define M4U_LARB11_ID			 11
+> > +#define M4U_LARB12_ID			 12
+> > +#define M4U_LARB13_ID			 13
+> > +
+> > +/* larb0 */
+> > +#define M4U_PORT_DISP_POSTMASK0		 MTK_M4U_ID(M4U_LARB0_ID, 0)
+> > +#define M4U_PORT_DISP_OVL0_HDR		 MTK_M4U_ID(M4U_LARB0_ID, 1)
+> > +#define M4U_PORT_DISP_OVL1_HDR		 MTK_M4U_ID(M4U_LARB0_ID, 2)
+> > +#define M4U_PORT_DISP_OVL0		 MTK_M4U_ID(M4U_LARB0_ID, 3)
+> > +#define M4U_PORT_DISP_OVL1		 MTK_M4U_ID(M4U_LARB0_ID, 4)
+> > +#define M4U_PORT_DISP_PVRIC0		 MTK_M4U_ID(M4U_LARB0_ID, 5)
+> > +#define M4U_PORT_DISP_RDMA0		 MTK_M4U_ID(M4U_LARB0_ID, 6)
+> > +#define M4U_PORT_DISP_WDMA0		 MTK_M4U_ID(M4U_LARB0_ID, 7)
+> > +#define M4U_PORT_DISP_FAKE0		 MTK_M4U_ID(M4U_LARB0_ID, 8)
+> > +
+> > +/* larb1 */
+> > +#define M4U_PORT_DISP_OVL0_2L_HDR	 MTK_M4U_ID(M4U_LARB1_ID, 0)
+> > +#define M4U_PORT_DISP_OVL1_2L_HDR	 MTK_M4U_ID(M4U_LARB1_ID, 1)
+> > +#define M4U_PORT_DISP_OVL0_2L		 MTK_M4U_ID(M4U_LARB1_ID, 2)
+> > +#define M4U_PORT_DISP_OVL1_2L		 MTK_M4U_ID(M4U_LARB1_ID, 3)
+> > +#define M4U_PORT_DISP_RDMA1		 MTK_M4U_ID(M4U_LARB1_ID, 4)
+> > +#define M4U_PORT_MDP_PVRIC0		 MTK_M4U_ID(M4U_LARB1_ID, 5)
+> > +#define M4U_PORT_MDP_PVRIC1		 MTK_M4U_ID(M4U_LARB1_ID, 6)
+> > +#define M4U_PORT_MDP_RDMA0		 MTK_M4U_ID(M4U_LARB1_ID, 7)
+> > +#define M4U_PORT_MDP_RDMA1		 MTK_M4U_ID(M4U_LARB1_ID, 8)
+> > +#define M4U_PORT_MDP_WROT0_R		 MTK_M4U_ID(M4U_LARB1_ID, 9)
+> > +#define M4U_PORT_MDP_WROT0_W		 MTK_M4U_ID(M4U_LARB1_ID, 10)
+> > +#define M4U_PORT_MDP_WROT1_R		 MTK_M4U_ID(M4U_LARB1_ID, 11)
+> > +#define M4U_PORT_MDP_WROT1_W		 MTK_M4U_ID(M4U_LARB1_ID, 12)
+> > +#define M4U_PORT_DISP_FAKE1		 MTK_M4U_ID(M4U_LARB1_ID, 13)
+> > +
+> > +/* larb2-VDEC */
+> > +#define M4U_PORT_HW_VDEC_MC_EXT          MTK_M4U_ID(M4U_LARB2_ID, 0)
+> > +#define M4U_PORT_HW_VDEC_UFO_EXT         MTK_M4U_ID(M4U_LARB2_ID, 1)
+> > +#define M4U_PORT_HW_VDEC_PP_EXT          MTK_M4U_ID(M4U_LARB2_ID, 2)
+> > +#define M4U_PORT_HW_VDEC_PRED_RD_EXT     MTK_M4U_ID(M4U_LARB2_ID, 3)
+> > +#define M4U_PORT_HW_VDEC_PRED_WR_EXT     MTK_M4U_ID(M4U_LARB2_ID, 4)
+> > +#define M4U_PORT_HW_VDEC_PPWRAP_EXT      MTK_M4U_ID(M4U_LARB2_ID, 5)
+> > +#define M4U_PORT_HW_VDEC_TILE_EXT        MTK_M4U_ID(M4U_LARB2_ID, 6)
+> > +#define M4U_PORT_HW_VDEC_VLD_EXT         MTK_M4U_ID(M4U_LARB2_ID, 7)
+> > +#define M4U_PORT_HW_VDEC_VLD2_EXT        MTK_M4U_ID(M4U_LARB2_ID, 8)
+> > +#define M4U_PORT_HW_VDEC_AVC_MV_EXT      MTK_M4U_ID(M4U_LARB2_ID, 9)
+> > +#define M4U_PORT_HW_VDEC_UFO_ENC_EXT     MTK_M4U_ID(M4U_LARB2_ID, 10)
+> > +#define M4U_PORT_HW_VDEC_RG_CTRL_DMA_EXT MTK_M4U_ID(M4U_LARB2_ID, 11)
+> > +
+> > +/*larb3-VENC*/
+> 
+> Normally add space before and after the word. Like: /* larb3-VENC */
+> 
+> below are the same.
+> 
+> > +#define M4U_PORT_VENC_RCPU		 MTK_M4U_ID(M4U_LARB3_ID, 0)
+> > +#define M4U_PORT_VENC_REC		 MTK_M4U_ID(M4U_LARB3_ID, 1)
+> > +#define M4U_PORT_VENC_BSDMA		 MTK_M4U_ID(M4U_LARB3_ID, 2)
+> > +#define M4U_PORT_VENC_SV_COMV		 MTK_M4U_ID(M4U_LARB3_ID, 3)
+> > +#define M4U_PORT_VENC_RD_COMV		 MTK_M4U_ID(M4U_LARB3_ID, 4)
+> > +#define M4U_PORT_VENC_NBM_RDMA		 MTK_M4U_ID(M4U_LARB3_ID, 5)
+> > +#define M4U_PORT_VENC_NBM_RDMA_LITE	 MTK_M4U_ID(M4U_LARB3_ID, 6)
+> > +#define M4U_PORT_JPGENC_Y_RDMA		 MTK_M4U_ID(M4U_LARB3_ID, 7)
+> > +#define M4U_PORT_JPGENC_C_RDMA		 MTK_M4U_ID(M4U_LARB3_ID, 8)
+> > +#define M4U_PORT_JPGENC_Q_TABLE		 MTK_M4U_ID(M4U_LARB3_ID, 9)
+> > +#define M4U_PORT_JPGENC_BSDMA		 MTK_M4U_ID(M4U_LARB3_ID, 10)
+> > +#define M4U_PORT_JPGDEC_WDMA		 MTK_M4U_ID(M4U_LARB3_ID, 11)
+> > +#define M4U_PORT_JPGDEC_BSDMA		 MTK_M4U_ID(M4U_LARB3_ID, 12)
+> > +#define M4U_PORT_VENC_NBM_WDMA		 MTK_M4U_ID(M4U_LARB3_ID, 13)
+> > +#define M4U_PORT_VENC_NBM_WDMA_LITE	 MTK_M4U_ID(M4U_LARB3_ID, 14)
+> > +#define M4U_PORT_VENC_CUR_LUMA		 MTK_M4U_ID(M4U_LARB3_ID, 15)
+> > +#define M4U_PORT_VENC_CUR_CHROMA	 MTK_M4U_ID(M4U_LARB3_ID, 16)
+> > +#define M4U_PORT_VENC_REF_LUMA		 MTK_M4U_ID(M4U_LARB3_ID, 17)
+> > +#define M4U_PORT_VENC_REF_CHROMA	 MTK_M4U_ID(M4U_LARB3_ID, 18)
+> > +
+> > +/*larb4-dummy*/
+> > +
+> > +/*larb5-IMG*/
+> 
+> [snip]
+> 
+> > +
+> > +#define M4U_PORT_VPU			 MTK_M4U_ID(M4U_LARB13_ID, 0)
+> > +#define M4U_PORT_MDLA			 MTK_M4U_ID(M4U_LARB13_ID, 1)
+> > +#define M4U_PORT_EDMA			 MTK_M4U_ID(M4U_LARB13_ID, 2)
+> > +
+> > +#define M4U_PORT_UNKNOWN		 (M4U_PORT_EDMA + 1)
+> 
+> When do you need this UNKNOWN one? The other SoC doesn't have it. Please
+> remove if it is unnecessary.
+> 
+ok, I will fix it in next version, thanks
+
+> > +
+> > +#endif
+> 
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
