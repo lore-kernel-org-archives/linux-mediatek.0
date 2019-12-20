@@ -2,59 +2,59 @@ Return-Path: <SRS0=AkNb=2K=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3BE58C43603
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2019 08:46:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 68AE3C43603
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2019 08:47:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 00FC224680
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2019 08:46:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 27B7920716
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Dec 2019 08:47:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Dbssujhr";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="NQBu2fJr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 00FC224680
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="knmd/zxa";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="l/ipJZ+7"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 27B7920716
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=XzHMbFCkj0x1uBjDnoJru1/upXxKH66Ine+asmD0gTM=; b=Dbssujhr7eBF9Z
-	B/oZfdghXFCaDio9WylYnHlng/POTTCMeVhm6tSrOX3ngm3whyLuyV+jcLpJKXjUT1z/6pZsXfI+E
-	jlWSNKG7gyPu9DcXCqmu8j/gZKILie0vALfdHjAyrxkuM3785+xY7o6LWbIcDhVuMopW5X0AXW4g1
-	TBVME56aT3Vg+YA9pJS6MdgO5Q2jDaNTY34Anj+UYqlggx6+SMFP4HHvzJSFs0itfAQLvA5uWL9PJ
-	EE/PORj/0aVg0rz1BWEoUiSDqekxB5TXdr3Jbz/t2vVCKfYYQyuMDN0vYLYgRCjCKiJXTC2GXlaqQ
-	mK/D+TXu8pMlk3woYsGw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=u0jUjYxMzJ3ITlTD1/CHwvhNbdhcdS0qSDOJUXF9TCI=; b=knmd/zxaAWOEl5
+	SrCXvi8GAjaBo7eP9lo65786VZsAhZQ/1YqwExzqjoOkBYSnClPnc1Gm6LmvuhqzJwlve6vQtq6+3
+	z36aHuWt0MQV7Gam3+QIeLqgRb5/93KtzTkmrGE6+C8RXuGN968tyC8ZsQFLsHisT0NhdpwVqTxIz
+	pBc75EEvHEMS1ymJupF25Y7JLoKUNa0A60+alhdtYLDRmiAI4z9usOfpPSmLy2Lbhx8ZSOHD90q2L
+	OJRTK8zLo81JE0R7h0ErH2cuFTa0lMrEzZ/X4N24LUBJU6S/pAqFsm/zXGS7ZN55SbVW4fdit3aQR
+	7ib6wead46scYwG2j1rQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iiDvi-0004Ua-Tl; Fri, 20 Dec 2019 08:46:38 +0000
+	id 1iiDvz-0004k0-TS; Fri, 20 Dec 2019 08:46:55 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iiDvg-0004TV-HE; Fri, 20 Dec 2019 08:46:38 +0000
-X-UUID: 5a12a856ea4649c190c3995b427e0cf8-20191220
+ id 1iiDvh-0004Tm-Ce; Fri, 20 Dec 2019 08:46:38 +0000
+X-UUID: 3b13e0a2b4ed40c1b0c0b56dd7262d35-20191220
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=PcM+2dB1UiAkEVeuTQbNEDOE+dDrKTu+Lu5fS74BXMM=; 
- b=NQBu2fJrkKWQxj3JWs5vapCwN/tGr7uLEYjWeneA3+MFkVY4SpbstJ18VrLrIIDL2sYN7bc8BhE202finWVPP/uJGEtCuI/9bDiecBy2Sg9hYUjceKaGsr9Zk1WlOxJHeQCO3tZlRZfResU752wuXwhk752vPJtG29gGxj27oa4=;
-X-UUID: 5a12a856ea4649c190c3995b427e0cf8-20191220
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=l08SFBEtiS5XwcTagngkFHiv7bDYBCW7NMaM25KwiwI=; 
+ b=l/ipJZ+7YBS8CVylfnJretVa3f9B+6yvI82aE2+A2tEhMktoFNUWkv7MjZVm2dGMUxhLy1MGpGHPNierXHXPHRdHXDOIOFsmxSzIr2Jc7ZQEbAqyf1yXsFUsm2FP06A6o6dTsBziZ03n59xUsYTB2qj/nJJNKL+uHcV5Mwizi6E=;
+X-UUID: 3b13e0a2b4ed40c1b0c0b56dd7262d35-20191220
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 793379809; Fri, 20 Dec 2019 00:46:35 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ with ESMTP id 1948204352; Fri, 20 Dec 2019 00:46:35 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 20 Dec 2019 00:36:55 -0800
+ 15.0.1395.4; Fri, 20 Dec 2019 00:36:49 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 20 Dec 2019 16:35:57 +0800
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 20 Dec 2019 16:36:12 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
  Frontend Transport; Fri, 20 Dec 2019 16:35:38 +0800
@@ -63,15 +63,17 @@ To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>,
  <pedrom.sousa@synopsys.com>, <jejb@linux.ibm.com>, <matthias.bgg@gmail.com>,
  <f.fainelli@gmail.com>
-Subject: [PATCH v1 0/6] scsi: ufs: add MediaTek vendor implementations
-Date: Fri, 20 Dec 2019 16:36:22 +0800
-Message-ID: <1576830988-22435-1-git-send-email-stanley.chu@mediatek.com>
+Subject: [PATCH v1 2/6] scsi: ufs-mediatek: add device reset implementation
+Date: Fri, 20 Dec 2019 16:36:24 +0800
+Message-ID: <1576830988-22435-3-git-send-email-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1576830988-22435-1-git-send-email-stanley.chu@mediatek.com>
+References: <1576830988-22435-1-git-send-email-stanley.chu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191220_004636_802691_D6969FF2 
-X-CRM114-Status: UNSURE (   6.10  )
+X-CRM114-CacheID: sfid-20191220_004637_429632_45A369B8 
+X-CRM114-Status: UNSURE (   8.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -94,38 +96,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Add device reset vops implementation in MediaTek UFS driver.
 
-Because the series "scsi: ufs-mediatek: provide power management" depends on series "scsi: ufs-mediatek: add device reset implementation", I would like to provide a new combined series of both patch sets.
-Also this new series is rebased to the latest Martin's "queue" branch.
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Avri Altman <avri.altman@wdc.com>
+---
+ drivers/scsi/ufs/ufs-mediatek.c | 27 +++++++++++++++++++++++++++
+ drivers/scsi/ufs/ufs-mediatek.h |  7 +++++++
+ 2 files changed, 34 insertions(+)
 
-    scsi: ufs-mediatek: add device reset implementation
-    scsi: ufs-mediatek: provide power management
-
-This series provides MediaTek vendor implementations as below,
-
-    1. Device reset
-    1. Reference clock control
-    2. Auto-hibernate enabling with customized timer value
-    3. Clk-gating enabling with customized delayed timer value
-
-Stanley Chu (6):
-  soc: mediatek: add header for SiP service interface
-  scsi: ufs-mediatek: add device reset implementation
-  scsi: ufs-mediatek: introduce reference clock control
-  scsi: ufs: export ufshcd_auto_hibern8_update for vendor usage
-  scsi: ufs-mediatek: configure customized auto-hibern8 timer
-  scsi: ufs-mediatek: configure and enable clk-gating
-
- drivers/scsi/ufs/ufs-mediatek.c          | 121 ++++++++++++++++++++++-
- drivers/scsi/ufs/ufs-mediatek.h          |  23 +++++
- drivers/scsi/ufs/ufs-sysfs.c             |  20 ----
- drivers/scsi/ufs/ufshcd.c                |  18 ++++
- drivers/scsi/ufs/ufshcd.h                |   1 +
- include/linux/soc/mediatek/mtk_sip_svc.h |  29 ++++++
- 6 files changed, 188 insertions(+), 24 deletions(-)
- create mode 100644 include/linux/soc/mediatek/mtk_sip_svc.h
-
+diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+index 83e28edc3ac5..6a3ec11b16db 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.c
++++ b/drivers/scsi/ufs/ufs-mediatek.c
+@@ -6,10 +6,12 @@
+  *	Peter Wang <peter.wang@mediatek.com>
+  */
+ 
++#include <linux/arm-smccc.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
++#include <linux/soc/mediatek/mtk_sip_svc.h>
+ 
+ #include "ufshcd.h"
+ #include "ufshcd-pltfrm.h"
+@@ -269,6 +271,30 @@ static int ufs_mtk_link_startup_notify(struct ufs_hba *hba,
+ 	return ret;
+ }
+ 
++static void ufs_mtk_device_reset(struct ufs_hba *hba)
++{
++	struct arm_smccc_res res;
++
++	arm_smccc_smc(MTK_SIP_UFS_CONTROL, UFS_MTK_SIP_DEVICE_RESET,
++		      0, 0, 0, 0, 0, 0, &res);
++	/*
++	 * The reset signal is active low. UFS devices shall detect
++	 * more than or equal to 1us of positive or negative RST_n
++	 * pulse width.
++	 *
++	 * To be on safe side, keep the reset low for at least 10us.
++	 */
++	usleep_range(10, 15);
++
++	arm_smccc_smc(MTK_SIP_UFS_CONTROL, UFS_MTK_SIP_DEVICE_RESET,
++		      1, 0, 0, 0, 0, 0, &res);
++
++	/* Some devices may need time to respond to rst_n */
++	usleep_range(10000, 15000);
++
++	dev_info(hba->dev, "device reset done\n");
++}
++
+ static int ufs_mtk_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ {
+ 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+@@ -303,6 +329,7 @@ static struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
+ 	.pwr_change_notify   = ufs_mtk_pwr_change_notify,
+ 	.suspend             = ufs_mtk_suspend,
+ 	.resume              = ufs_mtk_resume,
++	.device_reset        = ufs_mtk_device_reset,
+ };
+ 
+ /**
+diff --git a/drivers/scsi/ufs/ufs-mediatek.h b/drivers/scsi/ufs/ufs-mediatek.h
+index 19f8c42fe06f..b03f601d3a9e 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.h
++++ b/drivers/scsi/ufs/ufs-mediatek.h
+@@ -6,6 +6,8 @@
+ #ifndef _UFS_MEDIATEK_H
+ #define _UFS_MEDIATEK_H
+ 
++#include <linux/bitops.h>
++
+ /*
+  * Vendor specific pre-defined parameters
+  */
+@@ -29,6 +31,11 @@
+ #define VS_SAVEPOWERCONTROL         0xD0A6
+ #define VS_UNIPROPOWERDOWNCONTROL   0xD0A8
+ 
++/*
++ * SiP commands
++ */
++#define UFS_MTK_SIP_DEVICE_RESET    BIT(1)
++
+ /*
+  * VS_DEBUGCLOCKENABLE
+  */
 -- 
 2.18.0
 _______________________________________________
