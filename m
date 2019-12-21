@@ -2,22 +2,22 @@ Return-Path: <SRS0=6qD2=2L=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 10477C2D0C0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Dec 2019 15:06:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A5721C2D0C0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Dec 2019 15:06:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D9D262070C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Dec 2019 15:06:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 664722070C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Dec 2019 15:06:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="V2HEJs3N";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=tcd-ie.20150623.gappssmtp.com header.i=@tcd-ie.20150623.gappssmtp.com header.b="CTktPvnN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D9D262070C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XZJkVm4W";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=tcd-ie.20150623.gappssmtp.com header.i=@tcd-ie.20150623.gappssmtp.com header.b="LF2xaqTB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 664722070C
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=tcd.ie
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,65 +26,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S465UCoZQqURBMufVEYu5V/pa5U9w1OE47ULk+hCuf4=; b=V2HEJs3NeZo7KX
-	qtVHbUgJoF5Mq/Do1IIPRLbitY+tYMzBuFp/plc39g2UcdwKatcCnZQlQO0tXORBiDt0MWGGf2bQ0
-	yaz0WzT4QZnPvhdBsYvLedbR8/X1J05WvlC6V8vqsWQyPfktZKmWdjKgN/AVu8GIMs1FMOd/6jb+E
-	+F1876sr9ieCSkNo2kEe+79iNUlb7dPCBAsnKH83CWxIerqjfDXswnlC2q3LvMkOjMYxb2OPD9wo+
-	tVug19jO8wnj1wRl7J1gNsfGXGcJB//MmE6/bDcE+uRng66GN00QL1jmpOnIyoLrUQRafKiNtpJvP
-	HkleMlLQUrbsA73V2inw==;
+	List-Owner; bh=FgvKZK1vrt2v1GlIT/gsepCKuXBCu4CFiFQWPErEShc=; b=XZJkVm4WJpu+61
+	LeYkTZagMhqKF07sopKZ1JScUnn87TeJm3BxnQ7dZm7Z7jDsl1jdfSEfKonHn+6HztamLxc0egv8j
+	f96h6HJUAZwvRhO6fHxdfVJBvMJZy5UspXavrymIhK4QUIqobygfze3tN/0tXpmScEzIsAzzPAgNL
+	YQ8a+lRJz8sOM3RmuWiQvPzGEFZ5nRAfhdYv/x+6F7TRTSWw4PrqpZPyuhUtwEX4AdvR00LxSNchZ
+	MIZWalimiPRE1GrMhA7VleNGOJN3oNn3VUib1NMqcuRXgepnUy57Uaz25+4E3mfGsk1wEh5J9m1cT
+	+0GY7EMl47SOBVdI8CdQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iigKI-0001a4-EY; Sat, 21 Dec 2019 15:05:54 +0000
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542])
+	id 1iigKY-0001sD-Fi; Sat, 21 Dec 2019 15:06:10 +0000
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iigIt-0007d2-Ln
- for linux-mediatek@lists.infradead.org; Sat, 21 Dec 2019 15:04:29 +0000
-Received: by mail-ed1-x542.google.com with SMTP id dc19so11377648edb.10
- for <linux-mediatek@lists.infradead.org>; Sat, 21 Dec 2019 07:04:27 -0800 (PST)
+ id 1iigJ0-0007jh-E4
+ for linux-mediatek@lists.infradead.org; Sat, 21 Dec 2019 15:04:36 +0000
+Received: by mail-ed1-x543.google.com with SMTP id i16so11383195edr.5
+ for <linux-mediatek@lists.infradead.org>; Sat, 21 Dec 2019 07:04:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=tcd-ie.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=g9kFTz+OIjtd02sboEb/xPH2umLLduJGHZnkezx3k0U=;
- b=CTktPvnNq1jyejKuw4FPmsDHJqlMqnIK+LqTDjsTZ1ZsJVdD5K3EVXU9H9QfhP1vZi
- Dr+qg3qIXY699xoJ8F0TOCouYc1BBGbU43hDF2kmAYXm04HO5vI0AZGZAi2jkV0r6EFN
- Uqqu8MF/N0nkVC19U2nfYFQHC/XM6Mw8TaFgZUgu9czVrLEwvawDZRjnsTBB+/yigVh0
- MNGrdrt/6eys15k3D6741eDIFVQEakAIF0yLafdCTI/WakOrjNrokbN5gIZLsHdv6rvT
- JHYoqwNQsVMDBB0wYNztnmjEhP8hzVgepORwDvLZVBZd6aM2+hZeuyiCzwGgtYXJJ1Dy
- 5Qag==
+ bh=3kw9XOM83Gnbnm5VBWA2//dqKfolDXj7oZ7r7B1xmXk=;
+ b=LF2xaqTBBlPQ7i0KVmncE+goIEe89wuyJqhz7klIJWAT71TTSCk30NViAVT7SqjMw+
+ 7mDm8B7wD8nu4PWLGnZXpzTlibPXPwnZcaD0bsKB74d0NgcPmlUzaRXKjLR17+gOcimK
+ 8fjIXvrME+nRk1BO7gm1A2LxBEHGbznK81gTHWmTZMMCaBlZyxrmIn7FGdI85YZOwsIG
+ mZw5pwH6nNkr1sXWvObIhq7po60PRXw2xmIt1UG+M5Qvx3peWdtOiYVPQYFu+brgYfWA
+ HDkIR8dxB86cKmJJ7DVe6QZcvYxm/BF8hmbwSr9yCIqznQUjonCUJj32NcQy9vmF1Oq+
+ PxqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=g9kFTz+OIjtd02sboEb/xPH2umLLduJGHZnkezx3k0U=;
- b=Zp0ZrYtSWegTUJKHEujSn5QZuFXjq0VkeVto1tHeGlStLkT1bF6/jKrVvplAkITn4/
- hvfAfk7Yz427JW795AM6LtlLLbwoAUrYTVSl3bFyEeWLudWNJOp4JXlJMxY2YwdsA6Cx
- 5dXBgZJWh0md0nrOWyUyCm/S5oKsHrfLRbnuWmqv8GkWc3GLm2p/n9F9L4VBJbKNWu3+
- 9MZJlPNfgjet0AnV8sKZtMfGKldj4j39OwV0b7eNxhsyTizg931mmFTSgJCrbX5oJh99
- R1YpNFSretaGJlQF0NWQhxhoc67jrQo4tAZxwc+lAgcjjdvMfTBF5hEmwl7LfLHusOgV
- rpoQ==
-X-Gm-Message-State: APjAAAVDMmsWz7mhRL0jdyoZrFmY+aDy+XXwj81S4W6bBOhe5VqV1DhY
- ijdp2Z5VP+9swTWjSguKbo/KAQ==
-X-Google-Smtp-Source: APXvYqz53m9hdZ0HCFwnxdnPVWgrcBCgGDP73tz51CWh/bfe9HlHp6dFxdkAOOP0s/SRLuvh29w7og==
-X-Received: by 2002:a50:d0d0:: with SMTP id g16mr22057226edf.75.1576940666211; 
- Sat, 21 Dec 2019 07:04:26 -0800 (PST)
+ bh=3kw9XOM83Gnbnm5VBWA2//dqKfolDXj7oZ7r7B1xmXk=;
+ b=V+IdzhwUnnbvHhoy3jEHA+4NeS8E4hcbI4dLmtkSdTbuLfhHxJLbTJ51KsVNcNakOf
+ 1Tz/z5awH3eKavYJ2Yhoek41wrD/aabQzP8WHRYvOXkAyISuwTySPbJ+TD5+tY4Sr6Gb
+ WSTHWGhoQgmfU+00ZlkFLpqI8DmE05qbS43vJemdA2zfznyIslG6LDN+0Is3RbxJmAeT
+ cqG1+qMphV3Bo6XQmeZ6Fxah3EKwiuBcJ4CEUJEKvleUBgExy+Pu2tcx/bI2ycvV3u1O
+ 4RgdswKYPA4yeJzdPKF0Zr5kT6suuuMJ8kCB7vrLGJ5lzUBbGC44Ez4VR907NRFQ8MW+
+ I0Vg==
+X-Gm-Message-State: APjAAAVbHNwwEhECSsFAe5Amk0kvh4AX7zIEVjAII+jlWqQ1TlZNijI/
+ dwGvS6HzeJc+F1ZIynCCbRQ8OQ==
+X-Google-Smtp-Source: APXvYqyaL08IHL0GcHhm3cVmdCwxRxirUVhP6DZU/+/bnczE7blAGMOLi2oiWq+7pBmE+gO544tPVg==
+X-Received: by 2002:a17:906:49c4:: with SMTP id
+ w4mr22272847ejv.158.1576940673039; 
+ Sat, 21 Dec 2019 07:04:33 -0800 (PST)
 Received: from localhost.localdomain ([80.233.37.20])
- by smtp.googlemail.com with ESMTPSA id u13sm1517639ejz.69.2019.12.21.07.04.22
+ by smtp.googlemail.com with ESMTPSA id u13sm1517639ejz.69.2019.12.21.07.04.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Dec 2019 07:04:25 -0800 (PST)
+ Sat, 21 Dec 2019 07:04:32 -0800 (PST)
 From: Tom Murphy <murphyt7@tcd.ie>
 To: iommu@lists.linux-foundation.org
-Subject: [PATCH 2/8] iommu/vt-d: Use default dma_direct_* mapping functions
- for direct mapped devices
-Date: Sat, 21 Dec 2019 15:03:54 +0000
-Message-Id: <20191221150402.13868-3-murphyt7@tcd.ie>
+Subject: [PATCH 3/8] iommu/vt-d: Remove IOVA handling code from non-dma_ops
+ path
+Date: Sat, 21 Dec 2019 15:03:55 +0000
+Message-Id: <20191221150402.13868-4-murphyt7@tcd.ie>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191221150402.13868-1-murphyt7@tcd.ie>
 References: <20191221150402.13868-1-murphyt7@tcd.ie>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191221_070427_812933_27F7681E 
-X-CRM114-Status: GOOD (  16.48  )
+X-CRM114-CacheID: sfid-20191221_070434_604637_C6395BD6 
+X-CRM114-Status: GOOD (  18.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -127,176 +128,190 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-We should only assign intel_dma_ops to devices which will actually use
-the iommu and let the default fall back dma_direct_* functions handle
-all other devices. This won't change any behaviour but will just use the
-generic implementations for direct mapped devices rather than intel
-specific ones.
+Remove all IOVA handling code from the non-dma_ops path in the intel
+iommu driver.
+
+There's no need for the non-dma_ops path to keep track of IOVAs. The
+whole point of the non-dma_ops path is that it allows the IOVAs to be
+handled separately. The IOVA handling code removed in this patch is
+pointless.
 
 Signed-off-by: Tom Murphy <murphyt7@tcd.ie>
 ---
- drivers/iommu/intel-iommu.c | 52 +++++--------------------------------
- 1 file changed, 6 insertions(+), 46 deletions(-)
+ drivers/iommu/intel-iommu.c | 89 ++++++++++++++-----------------------
+ 1 file changed, 33 insertions(+), 56 deletions(-)
 
 diff --git a/drivers/iommu/intel-iommu.c b/drivers/iommu/intel-iommu.c
-index c1ea66467918..64b1a9793daa 100644
+index 64b1a9793daa..8d72ea0fb843 100644
 --- a/drivers/iommu/intel-iommu.c
 +++ b/drivers/iommu/intel-iommu.c
-@@ -2794,17 +2794,6 @@ static int __init si_domain_init(int hw)
+@@ -1908,7 +1908,8 @@ static void domain_exit(struct dmar_domain *domain)
+ 	domain_remove_dev_info(domain);
+ 
+ 	/* destroy iovas */
+-	put_iova_domain(&domain->iovad);
++	if (domain->domain.type == IOMMU_DOMAIN_DMA)
++		put_iova_domain(&domain->iovad);
+ 
+ 	if (domain->pgd) {
+ 		struct page *freelist;
+@@ -2671,19 +2672,9 @@ static struct dmar_domain *set_domain_for_dev(struct device *dev,
+ }
+ 
+ static int iommu_domain_identity_map(struct dmar_domain *domain,
+-				     unsigned long long start,
+-				     unsigned long long end)
++				     unsigned long first_vpfn,
++				     unsigned long last_vpfn)
+ {
+-	unsigned long first_vpfn = start >> VTD_PAGE_SHIFT;
+-	unsigned long last_vpfn = end >> VTD_PAGE_SHIFT;
+-
+-	if (!reserve_iova(&domain->iovad, dma_to_mm_pfn(first_vpfn),
+-			  dma_to_mm_pfn(last_vpfn))) {
+-		pr_err("Reserving iova failed\n");
+-		return -ENOMEM;
+-	}
+-
+-	pr_debug("Mapping reserved region %llx-%llx\n", start, end);
+ 	/*
+ 	 * RMRR range might have overlap with physical memory range,
+ 	 * clear it first
+@@ -2760,7 +2751,8 @@ static int __init si_domain_init(int hw)
+ 
+ 		for_each_mem_pfn_range(i, nid, &start_pfn, &end_pfn, NULL) {
+ 			ret = iommu_domain_identity_map(si_domain,
+-					PFN_PHYS(start_pfn), PFN_PHYS(end_pfn));
++					mm_to_dma_pfn(start_pfn),
++					mm_to_dma_pfn(end_pfn));
+ 			if (ret)
+ 				return ret;
+ 		}
+@@ -4593,58 +4585,37 @@ static int intel_iommu_memory_notifier(struct notifier_block *nb,
+ 				       unsigned long val, void *v)
+ {
+ 	struct memory_notify *mhp = v;
+-	unsigned long long start, end;
+-	unsigned long start_vpfn, last_vpfn;
++	unsigned long start_vpfn = mm_to_dma_pfn(mhp->start_pfn);
++	unsigned long last_vpfn = mm_to_dma_pfn(mhp->start_pfn +
++			mhp->nr_pages - 1);
+ 
+ 	switch (val) {
+ 	case MEM_GOING_ONLINE:
+-		start = mhp->start_pfn << PAGE_SHIFT;
+-		end = ((mhp->start_pfn + mhp->nr_pages) << PAGE_SHIFT) - 1;
+-		if (iommu_domain_identity_map(si_domain, start, end)) {
+-			pr_warn("Failed to build identity map for [%llx-%llx]\n",
+-				start, end);
++		if (iommu_domain_identity_map(si_domain, start_vpfn,
++					last_vpfn)) {
++			pr_warn("Failed to build identity map for [%lx-%lx]\n",
++				start_vpfn, last_vpfn);
+ 			return NOTIFY_BAD;
+ 		}
+ 		break;
+ 
+ 	case MEM_OFFLINE:
+ 	case MEM_CANCEL_ONLINE:
+-		start_vpfn = mm_to_dma_pfn(mhp->start_pfn);
+-		last_vpfn = mm_to_dma_pfn(mhp->start_pfn + mhp->nr_pages - 1);
+-		while (start_vpfn <= last_vpfn) {
+-			struct iova *iova;
++		{
+ 			struct dmar_drhd_unit *drhd;
+ 			struct intel_iommu *iommu;
+ 			struct page *freelist;
+ 
+-			iova = find_iova(&si_domain->iovad, start_vpfn);
+-			if (iova == NULL) {
+-				pr_debug("Failed get IOVA for PFN %lx\n",
+-					 start_vpfn);
+-				break;
+-			}
+-
+-			iova = split_and_remove_iova(&si_domain->iovad, iova,
+-						     start_vpfn, last_vpfn);
+-			if (iova == NULL) {
+-				pr_warn("Failed to split IOVA PFN [%lx-%lx]\n",
+-					start_vpfn, last_vpfn);
+-				return NOTIFY_BAD;
+-			}
+-
+-			freelist = domain_unmap(si_domain, iova->pfn_lo,
+-					       iova->pfn_hi);
++			freelist = domain_unmap(si_domain, start_vpfn,
++					last_vpfn);
+ 
+ 			rcu_read_lock();
+ 			for_each_active_iommu(iommu, drhd)
+ 				iommu_flush_iotlb_psi(iommu, si_domain,
+-					iova->pfn_lo, iova_size(iova),
++					start_vpfn, mhp->nr_pages,
+ 					!freelist, 0);
+ 			rcu_read_unlock();
+ 			dma_free_pagelist(freelist);
+-
+-			start_vpfn = iova->pfn_hi + 1;
+-			free_iova_mem(iova);
+ 		}
+ 		break;
+ 	}
+@@ -4672,8 +4643,9 @@ static void free_all_cpu_cached_iovas(unsigned int cpu)
+ 		for (did = 0; did < cap_ndoms(iommu->cap); did++) {
+ 			domain = get_iommu_domain(iommu, (u16)did);
+ 
+-			if (!domain)
++			if (!domain || domain->domain.type != IOMMU_DOMAIN_DMA)
+ 				continue;
++
+ 			free_cpu_cached_iovas(cpu, &domain->iovad);
+ 		}
+ 	}
+@@ -5095,9 +5067,6 @@ static int md_domain_init(struct dmar_domain *domain, int guest_width)
+ {
+ 	int adjust_width;
+ 
+-	init_iova_domain(&domain->iovad, VTD_PAGE_SIZE, IOVA_START_PFN);
+-	domain_reserve_special_ranges(domain);
+-
+ 	/* calculate AGAW */
+ 	domain->gaw = guest_width;
+ 	adjust_width = guestwidth_to_adjustwidth(guest_width);
+@@ -5116,6 +5085,18 @@ static int md_domain_init(struct dmar_domain *domain, int guest_width)
  	return 0;
  }
  
--static int identity_mapping(struct device *dev)
--{
--	struct device_domain_info *info;
--
--	info = dev->archdata.iommu;
--	if (info && info != DUMMY_DEVICE_DOMAIN_INFO && info != DEFER_DEVICE_DOMAIN_INFO)
--		return (info->domain == si_domain);
--
--	return 0;
--}
--
- static int domain_add_dev_info(struct dmar_domain *domain, struct device *dev)
++static void intel_init_iova_domain(struct dmar_domain *dmar_domain)
++{
++	init_iova_domain(&dmar_domain->iovad, VTD_PAGE_SIZE, IOVA_START_PFN);
++	copy_reserved_iova(&reserved_iova_list, &dmar_domain->iovad);
++
++	if (init_iova_flush_queue(&dmar_domain->iovad, iommu_flush_iova,
++				iova_entry_free)) {
++		pr_warn("iova flush queue initialization failed\n");
++		intel_iommu_strict = 1;
++	}
++}
++
+ static struct iommu_domain *intel_iommu_domain_alloc(unsigned type)
  {
- 	struct dmar_domain *ndomain;
-@@ -3461,12 +3450,6 @@ static struct dmar_domain *get_private_domain_for_dev(struct device *dev)
- 	return domain;
- }
- 
--/* Check if the dev needs to go through non-identity map and unmap process.*/
--static bool iommu_no_mapping(struct device *dev)
--{
--	return iommu_dummy(dev) || identity_mapping(dev);
--}
--
- static dma_addr_t __intel_map_single(struct device *dev, phys_addr_t paddr,
- 				     size_t size, int dir, u64 dma_mask)
- {
-@@ -3531,9 +3514,6 @@ static dma_addr_t intel_map_page(struct device *dev, struct page *page,
- 				 enum dma_data_direction dir,
- 				 unsigned long attrs)
- {
--	if (iommu_no_mapping(dev))
--		return dma_direct_map_page(dev, page, offset, size, dir, attrs);
--
- 	return __intel_map_single(dev, page_to_phys(page) + offset, size, dir,
- 			*dev->dma_mask);
- }
-@@ -3542,10 +3522,6 @@ static dma_addr_t intel_map_resource(struct device *dev, phys_addr_t phys_addr,
- 				     size_t size, enum dma_data_direction dir,
- 				     unsigned long attrs)
- {
--	if (iommu_no_mapping(dev))
--		return dma_direct_map_resource(dev, phys_addr, size, dir,
--				attrs);
--
- 	return __intel_map_single(dev, phys_addr, size, dir, *dev->dma_mask);
- }
- 
-@@ -3597,17 +3573,13 @@ static void intel_unmap_page(struct device *dev, dma_addr_t dev_addr,
- 			     size_t size, enum dma_data_direction dir,
- 			     unsigned long attrs)
- {
--	if (iommu_no_mapping(dev))
--		dma_direct_unmap_page(dev, dev_addr, size, dir, attrs);
--	else
--		intel_unmap(dev, dev_addr, size);
-+	intel_unmap(dev, dev_addr, size);
- }
- 
- static void intel_unmap_resource(struct device *dev, dma_addr_t dev_addr,
- 		size_t size, enum dma_data_direction dir, unsigned long attrs)
- {
--	if (!iommu_no_mapping(dev))
--		intel_unmap(dev, dev_addr, size);
-+	intel_unmap(dev, dev_addr, size);
- }
- 
- static void *intel_alloc_coherent(struct device *dev, size_t size,
-@@ -3617,9 +3589,6 @@ static void *intel_alloc_coherent(struct device *dev, size_t size,
- 	struct page *page = NULL;
- 	int order;
- 
--	if (iommu_no_mapping(dev))
--		return dma_direct_alloc(dev, size, dma_handle, flags, attrs);
--
- 	size = PAGE_ALIGN(size);
- 	order = get_order(size);
- 
-@@ -3653,9 +3622,6 @@ static void intel_free_coherent(struct device *dev, size_t size, void *vaddr,
- 	int order;
- 	struct page *page = virt_to_page(vaddr);
- 
--	if (iommu_no_mapping(dev))
--		return dma_direct_free(dev, size, vaddr, dma_handle, attrs);
--
- 	size = PAGE_ALIGN(size);
- 	order = get_order(size);
- 
-@@ -3673,9 +3639,6 @@ static void intel_unmap_sg(struct device *dev, struct scatterlist *sglist,
- 	struct scatterlist *sg;
- 	int i;
- 
--	if (iommu_no_mapping(dev))
--		return dma_direct_unmap_sg(dev, sglist, nelems, dir, attrs);
--
- 	for_each_sg(sglist, sg, nelems, i) {
- 		nrpages += aligned_nrpages(sg_dma_address(sg), sg_dma_len(sg));
- 	}
-@@ -3699,8 +3662,6 @@ static int intel_map_sg(struct device *dev, struct scatterlist *sglist, int nele
- 	struct intel_iommu *iommu;
- 
- 	BUG_ON(dir == DMA_NONE);
--	if (iommu_no_mapping(dev))
--		return dma_direct_map_sg(dev, sglist, nelems, dir, attrs);
- 
- 	domain = deferred_attach_domain(dev);
- 	if (!domain)
-@@ -3747,8 +3708,6 @@ static int intel_map_sg(struct device *dev, struct scatterlist *sglist, int nele
- 
- static u64 intel_get_required_mask(struct device *dev)
- {
--	if (iommu_no_mapping(dev))
--		return dma_direct_get_required_mask(dev);
- 	return DMA_BIT_MASK(32);
- }
- 
-@@ -5014,7 +4973,6 @@ int __init intel_iommu_init(void)
- 	if (!has_untrusted_dev() || intel_no_bounce)
- 		swiotlb = 0;
- #endif
--	dma_ops = &intel_dma_ops;
- 
- 	init_iommu_pm_ops();
- 
-@@ -5623,6 +5581,8 @@ static int intel_iommu_add_device(struct device *dev)
- 				dev_info(dev,
- 					 "Device uses a private identity domain.\n");
- 			}
-+		} else {
-+			dev->dma_ops = &intel_dma_ops;
+ 	struct dmar_domain *dmar_domain;
+@@ -5136,12 +5117,8 @@ static struct iommu_domain *intel_iommu_domain_alloc(unsigned type)
+ 			return NULL;
  		}
- 	} else {
- 		if (device_def_domain_type(dev) == IOMMU_DOMAIN_DMA) {
-@@ -5639,6 +5599,7 @@ static int intel_iommu_add_device(struct device *dev)
- 				dev_info(dev,
- 					 "Device uses a private dma domain.\n");
- 			}
-+			dev->dma_ops = &intel_dma_ops;
- 		}
- 	}
  
-@@ -5665,8 +5626,7 @@ static void intel_iommu_remove_device(struct device *dev)
+-		if (type == IOMMU_DOMAIN_DMA &&
+-		    init_iova_flush_queue(&dmar_domain->iovad,
+-					  iommu_flush_iova, iova_entry_free)) {
+-			pr_warn("iova flush queue initialization failed\n");
+-			intel_iommu_strict = 1;
+-		}
++		if (type == IOMMU_DOMAIN_DMA)
++			intel_init_iova_domain(dmar_domain);
  
- 	iommu_device_unlink(&iommu->iommu, dev);
+ 		domain_update_iommu_cap(dmar_domain);
  
--	if (device_needs_bounce(dev))
--		set_dma_ops(dev, NULL);
-+	set_dma_ops(dev, NULL);
- }
- 
- static void intel_iommu_get_resv_regions(struct device *device,
 -- 
 2.20.1
 
