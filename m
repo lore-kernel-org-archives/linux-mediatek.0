@@ -1,4 +1,4 @@
-Return-Path: <SRS0=6qD2=2L=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=fxQu=2M=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
@@ -7,85 +7,90 @@ X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A2B45C2D0C3
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Dec 2019 23:47:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 838D1C2D0C0
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Dec 2019 14:15:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 71EB8206D3
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Dec 2019 23:47:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 554C220665
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Dec 2019 14:15:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AKQaShDR";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="K2F08+kb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 71EB8206D3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=alum.mit.edu
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ANfy4zUP";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=nbd.name header.i=@nbd.name header.b="trcjrr1L"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 554C220665
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=nbd.name
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t5S0CmNl42H0NU7up9bDZi1+NeVPSE5vRdMMh9qWi1k=; b=AKQaShDRXVUUiK
-	YEIX1rj3CwyeHzaj8CUVsTgaT84ZaTeY/ZaOOhhuBpr81M4Zf1n+O8JYYvbBPuOYrZjxyiJow1v+N
-	1b20GqYduj2tiDAacxDv5PHtVSeiEfQSj50jlNiuZcsUaGUxnMTm7J1wjLP2PLmxyAUwTYgQn2AaN
-	Jdl/VUwyCSDmqp1+Bs1SywDf/q+ok40MdYzBqgXmqs8loXue+7V/t3yTGDQePkwkh1kRgfusqeCyW
-	DO58ysQAL2BqchVoAWIs5SIOr4+d5A4KFw2ohHo4kp30yfoEkqnfGCHnHEYwcHL5eEeIA9AHC0ZvU
-	ZwHz621ryUFix1AplkhQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tFVixLGKrz1KW9SVK/DoyT5yn3b6nMmSAJrlwFUEuRo=; b=ANfy4zUPYdboRN
+	S+Sww3N8gogfQrLj9ALlxDVJaadRiHDBEt6d8tI+LCcO7dmLlV0h0HmoHg8L0ssRU89URyX/scGl1
+	n4BiyvXLDbAb5dAvmsjvCZNH4Sziv7M967z+EslTOoc25eS+9rZjzaiIQx4Ea3/oIrr4opxNBk2KP
+	vqlIioobEZ6byJC5bI6jXTIfeASMSoutw+uZ5iHGW5x1jv80Q/RQXOvGWqf99zceUagHgH0K3zsLz
+	UbECbbuggCKeqGXV9QrHWF1kMt9wcC6+4aj03AfwMjt7o5RfPoiUgXGxjVYnFYF5h7OlwiNM16D8m
+	eOffHY6gxnbviLRe5kQw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iioSU-0007YT-OJ; Sat, 21 Dec 2019 23:46:54 +0000
-Received: from mail-qv1-xf42.google.com ([2607:f8b0:4864:20::f42])
+	id 1ij20T-000510-4e; Sun, 22 Dec 2019 14:14:53 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iioSJ-0007QF-MZ; Sat, 21 Dec 2019 23:46:45 +0000
-Received: by mail-qv1-xf42.google.com with SMTP id p2so5055134qvo.10;
- Sat, 21 Dec 2019 15:46:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:date:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=DZy1sByRbPp81Fc4unsIfUDkM1speXohHbJEFLa+79Y=;
- b=K2F08+kbBOHpEb5GI2snEkwsgZNjaPXWMKDftdpnSDrNjdoFsaU7mJy1E8X+UN6pTF
- CqMGQGTCVzkASTJTbCKGzwmcE+xGW9X9DoBShnHYBHrUjwA2y0thgfSaIDeXsAsxh80K
- Lzsw/9ErY21ZUOic82HoE2snRWWJy1wLWDPwW7IWmh5yvrdgv4rUVX4xVE004OheL+PI
- /8AUmTvOKwGIU5Ku/sIm9m5U0rOim/SPjYy3gzVxef0QWGwTj1JJt9SDEH83TWoChVOq
- wLkEyhYrjgWcWjYym7iQAuL3qcxgGsX3JQNmgv7pU5p9IHVMooy6My1cg5SbonFnCmxX
- Fqwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:date:to:cc:subject:message-id
- :references:mime-version:content-disposition:in-reply-to:user-agent;
- bh=DZy1sByRbPp81Fc4unsIfUDkM1speXohHbJEFLa+79Y=;
- b=dLr7ME3IHq3n/fTPMPlxwr5ZtqXX/r5S4M4NCv6iVkjedBam9ZOEIrCZNn9bWuJ03u
- eOTAdeKUlqH5yW+Z0C+s1l0SCRYGzlrkc8/X3KTStOUvaIrVlVvOz930g4QbykzESOqG
- /+HRWZ1T/L8xQWAD3ehOwgme8CjZpSQ2yA40W8RXaFng27sroj18zOHm/EbT3iiUf5tA
- 7Tclu/X22H0v+ZiRKNW/eDec3zTeGzjhGHd25p6ZNKfy2tTXjCMvFZxOWWaSPzpVTSap
- MCouTOhGPNMA5zzatU74z8bFSRHNFUqoIc2TspWTPl0Gm7ssceo9G9HMrCZXhtVr1H2S
- JA6Q==
-X-Gm-Message-State: APjAAAUe6QPm3SW+4cPGW2Csf+QPUAR5ju4DP0Za1TxM1qPoTfj8+YUV
- z7+5wMNa1tysqeSV9cAIk8M=
-X-Google-Smtp-Source: APXvYqxZv5pvU+COa+Z57bqd7TVlj3AKMVnWrlNSwtaonBLRwl6oAVA7CbZzWjXYXul1zP2Wc7+ZAQ==
-X-Received: by 2002:a05:6214:14b3:: with SMTP id
- bo19mr18216129qvb.93.1576972000657; 
- Sat, 21 Dec 2019 15:46:40 -0800 (PST)
-Received: from rani.riverdale.lan ([2001:470:1f07:5f3::b55f])
- by smtp.gmail.com with ESMTPSA id b7sm4323472qkh.106.2019.12.21.15.46.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Dec 2019 15:46:40 -0800 (PST)
-From: Arvind Sankar <nivedita@alum.mit.edu>
-X-Google-Original-From: Arvind Sankar <arvind@rani.riverdale.lan>
-Date: Sat, 21 Dec 2019 18:46:37 -0500
-To: Tom Murphy <murphyt7@tcd.ie>
-Subject: Re: [PATCH 1/8] iommu/vt-d: clean up 32bit si_domain assignment
-Message-ID: <20191221234635.GA99623@rani.riverdale.lan>
-References: <20191221150402.13868-1-murphyt7@tcd.ie>
- <20191221150402.13868-2-murphyt7@tcd.ie>
+ id 1ij1z5-0003oT-9H
+ for linux-mediatek@lists.infradead.org; Sun, 22 Dec 2019 14:13:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=m0FgooPBBIw1l4x4W2SABSMsW8gCsRYOEWrhJk0KSk8=; b=trcjrr1L5OUiRNoawN+h04Qicr
+ GyfvtVwhZbylyzWYSwPL/rfT2N39PmXENs4hpxRFmblIdqYnOkKWqyp0zowTj3THxKB/3R4NmDjj8
+ MEGzqOosu38d0cY9tb6JLFexPwi5O8oOCIkF8qgsKmWJp/w2q11ETb0L6KoKRJZbKj9M=;
+Received: from [81.95.5.44] (helo=nf.local)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1ij1yz-0000ut-DI; Sun, 22 Dec 2019 15:13:21 +0100
+Subject: Re: [PATCH 2/2] mt76: mt7615: add set_antenna callback
+To: Ryder Lee <ryder.lee@mediatek.com>,
+ Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+References: <d3d47e29e2a39c42adfcf912a27b9d19a01d5010.1576381077.git.ryder.lee@mediatek.com>
+ <6b3ac6736c0cfa12492f383ec9cfcaad91bfb965.1576381077.git.ryder.lee@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
+Autocrypt: addr=nbd@nbd.name; prefer-encrypt=mutual; keydata=
+ xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
+ ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
+ Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
+ AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
+ vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
+ wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
+ TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
+ l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
+ dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
+ HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
+ VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
+ CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
+ VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
+ Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
+ DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
+ wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
+ f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
+ aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
+ FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
+ TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
+ GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCfTKx80VvCR/PvsUlrvdOLsIgeRGAAn1ee
+ RjMaxwtSdaCKMw3j33ZbsWS4
+Message-ID: <a29cf0f3-6f7d-9fe5-8d5f-70712963366d@nbd.name>
+Date: Sun, 22 Dec 2019 15:13:20 +0100
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:68.0)
+ Gecko/20100101 Thunderbird/68.3.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191221150402.13868-2-murphyt7@tcd.ie>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <6b3ac6736c0cfa12492f383ec9cfcaad91bfb965.1576381077.git.ryder.lee@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191221_154643_763109_2D4BEAF4 
-X-CRM114-Status: GOOD (  19.38  )
+X-CRM114-CacheID: sfid-20191222_061328_107757_19B254EE 
+X-CRM114-Status: GOOD (  16.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,74 +102,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, kvm@vger.kernel.org,
- David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Bjorn Andersson <bjorn.andersson@linaro.org>,
- linux-tegra@vger.kernel.org, Julien Grall <julien.grall@arm.com>,
- Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>,
- Joerg Roedel <joro@8bytes.org>, iommu@lists.linux-foundation.org,
- Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
- linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-s390@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- Jani Nikula <jani.nikula@linux.intel.com>, Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- linux-mediatek@lists.infradead.org, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- virtualization@lists.linux-foundation.org,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- David Woodhouse <dwmw2@infradead.org>, Cornelia Huck <cohuck@redhat.com>,
- linux-kernel@vger.kernel.org, Rob Clark <robdclark@gmail.com>,
- Kukjin Kim <kgene@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
- Robin Murphy <robin.murphy@arm.com>, Lu Baolu <baolu.lu@linux.intel.com>
+Cc: linux-mediatek@lists.infradead.org, Shayne Chen <shayne.chen@mediatek.com>,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Roy Luo <royluo@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Dec 21, 2019 at 03:03:53PM +0000, Tom Murphy wrote:
-> In the intel iommu driver devices which only support 32bit DMA can't be
-> direct mapped. The implementation of this is weird. Currently we assign
-> it a direct mapped domain and then remove the domain later and replace
-> it with a domain of type IOMMU_DOMAIN_IDENTITY. We should just assign it
-> a domain of type IOMMU_DOMAIN_IDENTITY from the begging rather than
-> needlessly swapping domains.
+On 2019-12-15 04:56, Ryder Lee wrote:
+> Add a set_antenna callback to setup per phy tx/rx streams.
 > 
-> Signed-off-by: Tom Murphy <murphyt7@tcd.ie>
+> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 > ---
->  drivers/iommu/intel-iommu.c | 88 +++++++++++++------------------------
->  1 file changed, 31 insertions(+), 57 deletions(-)
+>  .../net/wireless/mediatek/mt76/mt7615/main.c  | 30 +++++++++++++++++++
+>  1 file changed, 30 insertions(+)
 > 
-> diff --git a/drivers/iommu/intel-iommu.c b/drivers/iommu/intel-iommu.c
-> index 0c8d81f56a30..c1ea66467918 100644
-> --- a/drivers/iommu/intel-iommu.c
-> +++ b/drivers/iommu/intel-iommu.c
-> @@ -5640,7 +5609,12 @@ static int intel_iommu_add_device(struct device *dev)
->  	domain = iommu_get_domain_for_dev(dev);
->  	dmar_domain = to_dmar_domain(domain);
->  	if (domain->type == IOMMU_DOMAIN_DMA) {
-> -		if (device_def_domain_type(dev) == IOMMU_DOMAIN_IDENTITY) {
-> +		/*
-> +		 * We check dma_mask >= dma_get_required_mask(dev) because
-> +		 * 32 bit DMA falls back to non-identity mapping.
-> +		 */
-> +		if (device_def_domain_type(dev) == IOMMU_DOMAIN_IDENTITY &&
-> +				dma_mask >= dma_get_required_mask(dev)) {
->  			ret = iommu_request_dm_for_dev(dev);
->  			if (ret) {
->  				dmar_remove_one_dev_info(dev);
-> -- 
-> 2.20.1
-> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+> index 759a66997c6f..70791544a088 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+> @@ -48,6 +48,8 @@ static int mt7615_start(struct ieee80211_hw *hw)
+>  		mt7615_mcu_set_mac_enable(dev, 1, true);
+>  	}
+>  
+> +	mt7615_mcu_set_chan_info(phy, MCU_EXT_CMD_SET_RX_PATH);
+> +
+>  	set_bit(MT76_STATE_RUNNING, &phy->mt76->state);
+>  
+>  	if (running)
+This chunk needs to be moved to the first patch to avoid creating a
+regression.
 
-Should this be dma_direct_get_required_mask? dma_get_required_mask may
-return DMA_BIT_MASK(32) -- it callbacks into intel_get_required_mask,
-but I'm not sure what iommu_no_mapping(dev) will do at this point?
+> @@ -635,6 +637,33 @@ mt7615_set_coverage_class(struct ieee80211_hw *hw, s16 coverage_class)
+>  	mt7615_mac_set_timing(phy);
+>  }
+>  
+> +static int
+> +mt7615_set_antenna(struct ieee80211_hw *hw, u32 tx_ant, u32 rx_ant)
+> +{
+> +	struct mt7615_dev *dev = mt7615_hw_dev(hw);
+> +	struct mt7615_phy *phy = mt7615_hw_phy(hw);
+> +	int max_nss = hweight8(hw->wiphy->available_antennas_tx);
+> +	bool ext_phy = phy != &dev->phy;
+> +
+> +	if (!tx_ant || tx_ant != rx_ant || ffs(tx_ant) > max_nss)
+> +		return -EINVAL;
+> +
+> +	if ((BIT(hweight8(tx_ant)) - 1) != tx_ant)
+> +		tx_ant = BIT(ffs(tx_ant) - 1) - 1;
+> +
+> +	mutex_lock(&dev->mt76.mutex);
+> +
+> +	phy->mt76->antenna_mask = tx_ant;
+> +	phy->chainmask = ext_phy ? tx_ant << 2 : tx_ant;
+> +
+> +	mt76_set_stream_caps(&dev->mt76, true);
+> +	mt7615_mcu_set_chan_info(phy, MCU_EXT_CMD_SET_RX_PATH);
+This call is unnecessary, because antenna settings can only be changed
+when the device is not running.
+
+- Felix
 
 _______________________________________________
 Linux-mediatek mailing list
