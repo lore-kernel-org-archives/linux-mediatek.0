@@ -2,61 +2,53 @@ Return-Path: <SRS0=Yz5u=2N=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EC190C2D0C0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2019 14:28:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 96E93C2D0C0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2019 14:36:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BCFB220709
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2019 14:28:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6CA1120715
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2019 14:36:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZZoz5pae"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BCFB220709
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FmLL/lAQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CA1120715
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bQ3TOk6+RLRcE4KZAPNXO2zmKDlYoOYRbQvlfL7EWWQ=; b=ZZoz5paeWRcdBN
-	C7apgwC7jLPx9PZanilXeE0BbP7ddnBZG0Jj2AcIq/AhkfgN4kwiWWE66Hs/Dpfx6FIw7liYZqwGK
-	+r2IccqMJRP8nJlCaijmo95qOOET3wLGv186Oy11IfNXEFywJ/SQw5XZM673ix/8FHmitmJa8WFHC
-	eLHa22Z/afTytxgSf0/TZHaOsZr+BJEMXgrLoDOMRm3C9w3a0NURVqvlyMd1ioaeBUDb9ak6RSArx
-	QA0e+n6OHu9cQ7B4wOALGfWo4EwhxR8+O8aEConOKjv6GCFxisBq9555M4r7Un0mwCwVvnVnJUEEe
-	xSx/HCvMEQWzcQS/f0tQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4gpRsiWWKKh5Vraf9GfbgcErsDY3fso9Pz9bs1zU1e4=; b=FmLL/lAQFSJmTr
+	sgaaC4f7OAzBcMwGQ8ieAO5D9V8BZ5rEZnwmFCmBpc9YJ5BBsbvBXVFNIbryyUkiO6MeOaEaAvh+Q
+	wqcTwsp0m4Tx1YEOmetQoJp+bc6ByoG7oOpoD5exThGAODy6CbmR0oO7TyFTmi8JdAnQIQRZPwFVk
+	3M4TvxpcvLV8rPgNpecDwOLVnuQLUQhaMYbogp4aO9JemolUHtqLzbxKk0Lno3JD0Gti2jKfl8yMP
+	Xid/SJJjeooFCq7HQ07v8RRvbVBfH+gNpnjYaVT78xAlzx8+6Lg3PBEZJ5N3Gpw659mUAdYmjPh71
+	yniiU5lPk2mwsuPvtJXA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ijOgw-0007Sp-2v; Mon, 23 Dec 2019 14:28:14 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1ijOoZ-0005qZ-Ua; Mon, 23 Dec 2019 14:36:07 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ijOgh-00076P-JN; Mon, 23 Dec 2019 14:28:01 +0000
+ id 1ijOoG-0005bp-0A; Mon, 23 Dec 2019 14:35:49 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 8D11B292129
-Subject: Re: [PATCH v22 2/2] drm/bridge: Add I2C based driver for ps8640 bridge
-To: Nicolas Boichat <drinkcat@chromium.org>
-References: <20191220081738.1895-1-enric.balletbo@collabora.com>
- <20191220081738.1895-3-enric.balletbo@collabora.com>
- <CANMq1KBHsc8oqcjWnjLPCpRToyOm16X6EcQqmqPjZf=D7wA2-Q@mail.gmail.com>
- <05db638b-02a6-0e3a-43ed-44a0a1458d87@collabora.com>
- <CANMq1KA4mp648p1LicOzAyra6tdgN2qdDY=N0XyDYhgt6BP26w@mail.gmail.com>
+ (Authenticated sender: eballetbo) with ESMTPSA id C88CA28A3A8
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <1c68fa67-c4c4-ea78-bfe4-6344799bbf46@collabora.com>
-Date: Mon, 23 Dec 2019 15:27:54 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.0
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH v22 0/2] drm/bridge: PS8640 MIPI-to-eDP bridge
+Date: Mon, 23 Dec 2019 15:35:36 +0100
+Message-Id: <20191223143538.20327-1-enric.balletbo@collabora.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <CANMq1KA4mp648p1LicOzAyra6tdgN2qdDY=N0XyDYhgt6BP26w@mail.gmail.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191223_062759_792943_1D04954E 
-X-CRM114-Status: GOOD (  15.91  )
+X-CRM114-CacheID: sfid-20191223_063548_301557_A0C55F6D 
+X-CRM114-Status: GOOD (  14.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,86 +60,151 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ulrich Hecht <uli@fpond.eu>, Jernej Skrabec <jernej.skrabec@siol.net>,
- Jitao Shi <jitao.shi@mediatek.com>, Jonas Karlman <jonas@kwiboo.se>,
- David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>,
- lkml <linux-kernel@vger.kernel.org>, Andrzej Hajda <a.hajda@samsung.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Collabora Kernel ML <kernel@collabora.com>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Jernej Skrabec <jernej.skrabec@siol.net>, drinkcat@chromium.org,
+ Jitao Shi <jitao.shi@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>,
+ Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
+ Neil Armstrong <narmstrong@baylibre.com>, dri-devel@lists.freedesktop.org,
+ Andrzej Hajda <a.hajda@samsung.com>, Ulrich Hecht <uli@fpond.eu>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, hsinyi@chromium.org,
+ matthias.bgg@gmail.com, Collabora Kernel ML <kernel@collabora.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Nicolas,
+Hi all,
 
-On 23/12/19 10:14, Nicolas Boichat wrote:
-> On Mon, Dec 23, 2019 at 3:10 PM Enric Balletbo i Serra
-> <enric.balletbo@collabora.com> wrote:
->>
->> Hi Nicolas,
->>
->> Many thanks for you review. Just preparing a new version with your comments
->> addressed.
->>
->> On 20/12/19 9:44, Nicolas Boichat wrote:
->>> On Fri, Dec 20, 2019 at 4:17 PM Enric Balletbo i Serra
->>> <enric.balletbo@collabora.com> wrote:
->>>>
->>>> From: Jitao Shi <jitao.shi@mediatek.com>
->>>>
->>>> This patch adds drm_bridge driver for parade DSI to eDP bridge chip.
->>>>
->>>> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
->>>> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
->>>> Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->>>> [uli: followed API changes, removed FW update feature]
->>>> Signed-off-by: Ulrich Hecht <uli@fpond.eu>
->>>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->>>> ---
->> [snip]
->>>> +       ret = i2c_smbus_write_byte_data(client, PAGE2_MCS_EN,
->>>> +                                       status & ~MCS_EN);
->>>> +       if (ret < 0) {
->>>> +               DRM_ERROR("failed write PAGE2_MCS_EN: %d\n", ret);
->>>> +               goto err_regulators_disable;
->>>> +       }
->>>> +
->>>> +       ret = ps8640_bridge_unmute(ps_bridge);
->>>> +       if (ret)
->>>> +               DRM_ERROR("failed to enable unmutevideo: %d\n", ret);
->>>
->>> failed to unmute? Or failed to enable?
->>>
->>
->> failed to unmute sound more clear to me.
-> 
-> I may be wrong, but I have the feeling that the functions
-> "mute/unmute" video/display, actually... And that the function naming
-> is strange...
-> 
+This is another version of the driver. Note that the driver changed
+significally and is a more simply because now is using the panel_bridge
+helpers. Apart from this, I addressed the comments from Maxime, Laurent
+and Ezequiel.
 
-Yes, that's strange.
+This bridge is required to have the embedded display working on an Acer
+Chromebook R13 ("Elm"). Hopefully we are a bit more close to have this
+driver merged. If more changes are required, please let me know and I
+will work on it.
 
-> You could just try to remove the calls, as there is no audio on the
-> board you have (elm), so if video still works, maybe this is actually
-> audio ,-)
-> 
-
-And without those the display doesn't work. So I suspect that what is wrong and
-confusing is the message, instead of mute/unmute, and based on the register
-names this looks more like an internal regulator that you need to enable and
-disable, so I'll change the error message accordingly.
+Note: Along these around 20 revisions of this driver I was unable to
+reconstruct the full changelog history, so I'm skipping this. Sorry
+about that, I promise I'll maintain the changelog for future revisions.
 
 Thanks,
  Enric
 
-> Thanks,
-> 
+Changes in v23:
+- Merge mute/unmute functions into one (Nicolas Boichat)
+- Use enum for ENABLE/DISABLE instead of bool (Ezequiel Garcia)
+- Rename mute/unmute to vdo_control and fix error messages (Nicolas Boichat and Enric)
+- Add space between address and address parameter 'address%02x' (Nicolas Boichat)
+- Add Tested-by Hsin-Yi
+- Added me as author after the refactor
+
+Changes in v22:
+- Migrate to YAML format (Maxime Ripart)
+- Remove mode-sel property.
+- Rename sleep-gpios to powerdown-gpios.
+- Remove sysfs attributes because are not really used (Enric Balletbo)
+- Use enum for address page offsets (Ezequiel Garcia)
+- Remove enable tracking (Enric Balletbo)
+- Use panel_bridge API (Laurent Pinchart)
+- Do not use kernel-doc format for non kernel-doc formatted commands (Enric Balletbo)
+- Remove verbose message for PAGE1_VSTART command (Ezequiel Garcia)
+- Use time_is_after_jiffies idiom (Ezequiel Garcia)
+- Remove unused macros (Ezequiel Garcia)
+- Fix weird alignment in dsi->mode_flags (Laurent Pinchart)
+- Use drm_of_find_panel_or_bridge helper (Laurent Pinchart)
+- Remove mode-sel-gpios as is not used (Laurent Pinchart)
+- Remove error messages to get gpios as the core will already report it (Enric Balletbo)
+- Remove redundant message getting the regulators (Laurent Pinchart)
+- Rename sleep-gpios to powerdown-gpios (Laurent Pinchart)
+- Use ARRAY_SIZE(ps_bridge->page) instead of MAX_DEV when possible (Laurent Pinchart)
+- Fix race with userspace accessing the sysfs attributes (Laurent Pinchart)
+- Remove id_table as is only used on DR platforms (Laurent Pinchart)
+- Convert to new i2c device probe() (Laurent Pinchart)
+- Use i2c_smbus_read/write helpers instead of open coding it (Laurent Pinchart)
+- Remove unnused global variables (Laurent Pinchart)
+- Remove unnused fields in ps8640 struct (Laurent Pinchart)
+- Remove commented-out headers (Laurent Pinchart)
+
+Changes in v21:
+ - Use devm_i2c_new_dummy_device and fix build issue using deprecated i2c_new_dummy
+ - Fix build issue due missing drm_bridge.h
+ - Do not remove in ps8640_remove device managed resources
+
+Changes in v19:
+ - fixed return value of ps8640_probe() when no panel is found
+
+Changes in v18:
+ - followed DRM API changes
+ - use DEVICE_ATTR_RO()
+ - remove firmware update code
+ - add SPDX identifier
+
+Changes in v17:
+ - remove some unused head files.
+ - add macros for ps8640 pages.
+ - remove ddc_i2c client
+ - add mipi_dsi_device_register_full
+ - remove the manufacturer from the name and i2c_device_id
+
+Changes in v16:
+ - Disable ps8640 DSI MCS Function.
+ - Rename gpios name more clearly.
+ - Tune the ps8640 power on sequence.
+
+Changes in v15:
+ - Drop drm_connector_(un)register calls from parade ps8640.
+   The main DRM driver mtk_drm_drv now calls
+   drm_connector_register_all() after drm_dev_register() in the
+   mtk_drm_bind() function. That function should iterate over all
+   connectors and call drm_connector_register() for each of them.
+   So, remove drm_connector_(un)register calls from parade ps8640.
+
+Changes in v14:
+ - update copyright info.
+ - change bridge_to_ps8640 and connector_to_ps8640 to inline function.
+ - fix some coding style.
+ - use sizeof as array counter.
+ - use drm_get_edid when read edid.
+ - add mutex when firmware updating.
+
+Changes in v13:
+ - add const on data, ps8640_write_bytes(struct i2c_client *client, const u8 *data, u16 data_len)
+ - fix PAGE2_SW_REST tyro.
+ - move the buf[3] init to entrance of the function.
+
+Changes in v12:
+ - fix hw_chip_id build warning
+
+Changes in v11:
+ - Remove depends on I2C, add DRM depends
+ - Reuse ps8640_write_bytes() in ps8640_write_byte()
+ - Use timer check for polling like the routines in <linux/iopoll.h>
+ - Fix no drm_connector_unregister/drm_connector_cleanup when ps8640_bridge_attach fail
+ - Check the ps8640 hardware id in ps8640_validate_firmware
+ - Remove fw_version check
+ - Move ps8640_validate_firmware before ps8640_enter_bl
+ - Add ddc_i2c unregister when probe fail and ps8640_remove
+
+Jitao Shi (2):
+  Documentation: bridge: Add documentation for ps8640 DT properties
+  drm/bridge: Add I2C based driver for ps8640 bridge
+
+ .../bindings/display/bridge/ps8640.yaml       | 112 ++++++
+ drivers/gpu/drm/bridge/Kconfig                |  11 +
+ drivers/gpu/drm/bridge/Makefile               |   1 +
+ drivers/gpu/drm/bridge/parade-ps8640.c        | 348 ++++++++++++++++++
+ 4 files changed, 472 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/ps8640.yaml
+ create mode 100644 drivers/gpu/drm/bridge/parade-ps8640.c
+
+-- 
+2.20.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
