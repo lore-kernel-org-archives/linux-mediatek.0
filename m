@@ -2,80 +2,59 @@ Return-Path: <SRS0=Yz5u=2N=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.4 required=3.0 tests=DATE_IN_PAST_12_24,
-	DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 07BD1C2D0D2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2019 03:11:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 71EDDC2D0C0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2019 07:10:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CFCF720709
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2019 03:11:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3BCD3206B7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2019 07:10:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nQexsjZx";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bltNlyAc"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CFCF720709
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HIQAz9IW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3BCD3206B7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:References:
-	In-Reply-To:To:From:Subject:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=XKXPXPRw04CJSZCWKmrbFj0QLo44pgI0cVJQ4BZvzco=; b=nQexsjZxwyH4MePRwjbIr3T1eq
-	bbyd+Uyd9nkPT5QNqUckJNkPjmII3gkhILYy4asPPhdHpzB+9Uav/k9pDz1wnWlih+R9uuvYvbnjR
-	A+nN5wo3tzw8+uToGwT9gXM5foes/cSoXpkKNnTnqFbDpLoKickaQWxWB+LxEPNFMcMM7Obwng5X/
-	nMBRoh9wv/G6JOM/kuMNqbXz8oAHBg7UH298MoHS9Akw9f7nT8Bafl1K0fI1fS5LWKTzM/AlvP3aG
-	UNkmodz2gVggiFGmi6vlBXzjr7zaX2n3Jd0Z60hKxeQqOGu9RKfsZhonVlo6My2eWOhvDrVjtLBJj
-	tqiIULLA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8V7k8W7Wf3OfTU8NpCKC7AL1E8NuE3v7dgYa740m17s=; b=HIQAz9IWwzw9e4
+	6oE5BQwwqlt0Pzn2cCqWPnL4gLNaOhDJpdunVrrl8ryRImuyAUEAz4XNNdoHrxY0chMGE255Vbd6L
+	69WQyeTZMbxRwHp+RKMqtrmkkmlIKJ7Eb/ZvFCK3noA5FzLLdzgDtIWjflyEQn4xxX+41OTAvMIQe
+	0r1Uz56vk50jLkk+7YBrJE602g9mQuzZwBE/4O732vbdbnV6xAzk6q8CbkBMIUBUefP7+1SAeDwmQ
+	GesLuJxnVALtnY5ND+d9IfojvbVx14iQ65KPy/v/Cti2GI0AlrvW3r/nnx0+6sFvZs/uf/W2Ib/Rh
+	9lSkI2ntnewiwTWK8VQg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ijE7o-0007Z0-De; Mon, 23 Dec 2019 03:11:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ijHr9-0008SD-0T; Mon, 23 Dec 2019 07:10:19 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ijE7l-0007Y9-Ug
- for linux-mediatek@lists.infradead.org; Mon, 23 Dec 2019 03:11:15 +0000
-X-UUID: d5e8874385bc461892e16c253f71dc65-20191222
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Date:Content-Type:References:In-Reply-To:CC:To:From:Subject:Message-ID;
- bh=1gjqBsxQJFzTJYcXv+4xkR26006Bc8pqbfyHt8iDVik=; 
- b=bltNlyAcaQK0NROYx4CJosBHds/na0LlyG2rB2vmu2OT42YBTic+cwnHz4E7K6I+LZ1BxQkr6/CTdOiaszTFk05aif+OslcdjvtkCAkyNnHLkrY5XgbCHZcAMjsUGxouo346EPUrzkzbRYiQ/nNU1lR5sfGgsu+bDrvBeX4UFf0=;
-X-UUID: d5e8874385bc461892e16c253f71dc65-20191222
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <hanks.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2126639822; Sun, 22 Dec 2019 19:11:04 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 22 Dec 2019 19:11:33 -0800
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 23 Dec 2019 11:10:59 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas09.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Mon, 23 Dec 2019 11:11:12 +0800
-Message-ID: <1577022724.7468.20.camel@mtkswgap22>
-Subject: Re: [PATCH v2 05/11] pinctrl: mediatek: avoid virtual gpio trying
- to set reg
-From: Hanks Chen <hanks.chen@mediatek.com>
-To: Linus Walleij <linus.walleij@linaro.org>
-In-Reply-To: <CACRpkdZa_sQgvWC3ic0NxrVi9gS1cNTsV-wa-SDpA0e5kutBRw@mail.gmail.com>
-References: <1566206502-4347-1-git-send-email-mars.cheng@mediatek.com>
- <1566206502-4347-6-git-send-email-mars.cheng@mediatek.com>
- <CACRpkdZa_sQgvWC3ic0NxrVi9gS1cNTsV-wa-SDpA0e5kutBRw@mail.gmail.com>
-Date: Sun, 22 Dec 2019 21:52:04 +0800
+ id 1ijHqw-0007An-N2; Mon, 23 Dec 2019 07:10:09 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id 79C76283E20
+Subject: Re: [PATCH v22 2/2] drm/bridge: Add I2C based driver for ps8640 bridge
+To: Nicolas Boichat <drinkcat@chromium.org>
+References: <20191220081738.1895-1-enric.balletbo@collabora.com>
+ <20191220081738.1895-3-enric.balletbo@collabora.com>
+ <CANMq1KBHsc8oqcjWnjLPCpRToyOm16X6EcQqmqPjZf=D7wA2-Q@mail.gmail.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Message-ID: <05db638b-02a6-0e3a-43ed-44a0a1458d87@collabora.com>
+Date: Mon, 23 Dec 2019 08:09:57 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.0
 MIME-Version: 1.0
-X-Mailer: Evolution 3.2.3-0ubuntu6 
-X-MTK: N
+In-Reply-To: <CANMq1KBHsc8oqcjWnjLPCpRToyOm16X6EcQqmqPjZf=D7wA2-Q@mail.gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191222_191113_996006_7E40276B 
-X-CRM114-Status: GOOD (  17.60  )
+X-CRM114-CacheID: sfid-20191222_231007_028103_0627CFD2 
+X-CRM114-Status: GOOD (  22.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,106 +66,461 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, CC Hwang <cc.hwang@mediatek.com>,
- wsd_upstream@mediatek.com, "open list:OPEN FIRMWARE AND FLATTENED
- DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
- Stephen Boyd <sboyd@kernel.org>, Sean Wang <sean.wang@kernel.org>,
- Loda Chou <loda.chou@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Marc Zyngier <marc.zyngier@arm.com>, Mars Cheng <mars.cheng@mediatek.com>,
- mtk01761 <wendell.lin@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+Cc: Ulrich Hecht <uli@fpond.eu>, Jernej Skrabec <jernej.skrabec@siol.net>,
+ Jitao Shi <jitao.shi@mediatek.com>, Jonas Karlman <jonas@kwiboo.se>,
+ David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>,
+ lkml <linux-kernel@vger.kernel.org>, Andrzej Hajda <a.hajda@samsung.com>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-clk <linux-clk@vger.kernel.org>
+ dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Collabora Kernel ML <kernel@collabora.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2019-08-23 at 10:57 +0200, Linus Walleij wrote:
-> On Mon, Aug 19, 2019 at 11:22 AM Mars Cheng <mars.cheng@mediatek.com> wrote:
-> 
-> > for virtual gpios, they should not do reg setting and
-> > should behave as expected for eint function.
-> >
-> > Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
-> 
-> This does not explain what a "virtual GPIO" is in this
-> context, so please elaborate. What is this? Why does
-> it exist? What is it used for?
-> 
-> GPIO is "general purpose input/output" and it is a
-> pretty rubbery category already as it is, so we need
-> to define our terms pretty strictly.
-> 
-Virtual GPIO only used inside SOC and not being exported to outside SOC
-in MTK platform. Some modules use virtual GPIO as eint (e.g. pmic or
-usb).
-In MTK platform, external interrupt (EINT) and GPIO is 1-1 mapping and
-we can set GPIO as eint.
-But some modules use specific eint which doesn't have real GPIO pin.
-So we use virtual GPIO to map it.
+Hi Nicolas,
 
-> > +bool mtk_is_virt_gpio(struct mtk_pinctrl *hw, unsigned int gpio_n)
-> > +{
-> > +       const struct mtk_pin_desc *desc;
-> > +       bool virt_gpio = false;
-> > +
-> > +       if (gpio_n >= hw->soc->npins)
-> > +               return virt_gpio;
-> > +
-> > +       desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio_n];
-> > +
-> > +       if (desc->funcs &&
-> > +           desc->funcs[desc->eint.eint_m].name == 0)
+Many thanks for you review. Just preparing a new version with your comments
+addressed.
+
+On 20/12/19 9:44, Nicolas Boichat wrote:
+> On Fri, Dec 20, 2019 at 4:17 PM Enric Balletbo i Serra
+> <enric.balletbo@collabora.com> wrote:
+>>
+>> From: Jitao Shi <jitao.shi@mediatek.com>
+>>
+>> This patch adds drm_bridge driver for parade DSI to eDP bridge chip.
+>>
+>> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+>> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+>> Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>> [uli: followed API changes, removed FW update feature]
+>> Signed-off-by: Ulrich Hecht <uli@fpond.eu>
+>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>> ---
+>> [snip]
+>>
+>>  drivers/gpu/drm/bridge/Kconfig         |  11 +
+>>  drivers/gpu/drm/bridge/Makefile        |   1 +
+>>  drivers/gpu/drm/bridge/parade-ps8640.c | 354 +++++++++++++++++++++++++
 > 
-> NULL check is done like this:
+> Half the size! Sounds great.
 > 
-> if (desc->funcs && !desc->funcs[desc->eint.eint_m].name)
+> Mostly nits below.
 > 
-> > +               virt_gpio = true;
+>>  3 files changed, 366 insertions(+)
+>>  create mode 100644 drivers/gpu/drm/bridge/parade-ps8640.c
+>>
+>> diff --git a/drivers/gpu/drm/bridge/parade-ps8640.c b/drivers/gpu/drm/bridge/parade-ps8640.c
+>> new file mode 100644
+>> index 000000000000..aa0045037f44
+>> --- /dev/null
+>> +++ b/drivers/gpu/drm/bridge/parade-ps8640.c
+>> @@ -0,0 +1,354 @@
+>> +// SPDX-License-Identifier: GPL-2.0-only
+>> +/*
+>> + * Copyright (c) 2016 MediaTek Inc.
+>> + */
+>> +
+>> +#include <linux/delay.h>
+>> +#include <linux/err.h>
+>> +#include <linux/gpio/consumer.h>
+>> +#include <linux/i2c.h>
+>> +#include <linux/module.h>
+>> +#include <linux/of_graph.h>
+>> +#include <linux/regulator/consumer.h>
+>> +
+>> +#include <drm/drm_bridge.h>
+>> +#include <drm/drm_mipi_dsi.h>
+>> +#include <drm/drm_of.h>
+>> +#include <drm/drm_panel.h>
+>> +#include <drm/drm_print.h>
+>> +
+>> +#define PAGE2_GPIO_H           0xa7
+>> +#define PS_GPIO9               BIT(1)
+>> +#define PAGE2_I2C_BYPASS       0xea
+>> +#define I2C_BYPASS_EN          0xd0
+>> +#define PAGE2_MCS_EN           0xf3
+>> +#define MCS_EN                 BIT(0)
+>> +#define PAGE3_SET_ADD          0xfe
+>> +#define VDO_CTL_ADD            0x13
+>> +#define VDO_DIS                        0x18
+>> +#define VDO_EN                 0x1c
+>> +
+>> +/*
+>> + * PS8640 uses multiple addresses:
+>> + * page[0]: for DP control
+>> + * page[1]: for VIDEO Bridge
+>> + * page[2]: for control top
+>> + * page[3]: for DSI Link Control1
+>> + * page[4]: for MIPI Phy
+>> + * page[5]: for VPLL
+>> + * page[6]: for DSI Link Control2
+>> + * page[7]: for SPI ROM mapping
+>> + */
+>> +enum page_addr_offset {
+>> +       PAGE0_DP_CNTL = 0,
+>> +       PAGE1_VDO_BDG,
+>> +       PAGE2_TOP_CNTL,
+>> +       PAGE3_DSI_CNTL1,
+>> +       PAGE4_MIPI_PHY,
+>> +       PAGE5_VPLL,
+>> +       PAGE6_DSI_CNTL2,
+>> +       PAGE7_SPI_CNTL,
+>> +       MAX_DEVS
+>> +};
+>> +
+>> +struct ps8640 {
+>> +       struct drm_bridge bridge;
+>> +       struct drm_bridge *panel_bridge;
+>> +       struct mipi_dsi_device *dsi;
+>> +       struct i2c_client *page[MAX_DEVS];
+>> +       struct regulator_bulk_data supplies[2];
+>> +       struct gpio_desc *gpio_reset;
+>> +       struct gpio_desc *gpio_powerdown;
+>> +};
+>> +
+>> +static inline struct ps8640 *bridge_to_ps8640(struct drm_bridge *e)
+>> +{
+>> +       return container_of(e, struct ps8640, bridge);
+>> +}
+>> +
+>> +static int ps8640_bridge_unmute(struct ps8640 *ps_bridge)
+>> +{
+>> +       struct i2c_client *client = ps_bridge->page[PAGE3_DSI_CNTL1];
+>> +       u8 vdo_ctrl_buf[] = { VDO_CTL_ADD, VDO_EN };
+> 
+> nit: const?
+> 
+>> +       int ret;
+>> +
+>> +       ret = i2c_smbus_write_i2c_block_data(client, PAGE3_SET_ADD,
+>> +                                            sizeof(vdo_ctrl_buf),
+>> +                                            vdo_ctrl_buf);
+>> +       if (ret < 0)
+>> +               return ret;
+>> +
+>> +       return 0;
+>> +}
+>> +
+>> +static int ps8640_bridge_mute(struct ps8640 *ps_bridge)
+>> +{
+>> +       struct i2c_client *client = ps_bridge->page[PAGE3_DSI_CNTL1];
+>> +       u8 vdo_ctrl_buf[] = { VDO_CTL_ADD, VDO_DIS };
+> 
+> ditto
+> 
+>> +       int ret;
+>> +
+>> +       ret = i2c_smbus_write_i2c_block_data(client, PAGE3_SET_ADD,
+>> +                                            sizeof(vdo_ctrl_buf),
+>> +                                            vdo_ctrl_buf);
+>> +       if (ret < 0)
+>> +               return ret;
+>> +
+>> +       return 0;
+>> +}
+> 
+> Since the 2 functions are almost the same, you could shrink the driver
+> a bit further by merging them into one with a boolean parameter? (then
+> maybe give up on the const u8 comment).
 > 
 
-got it, will fix it in v3. Thanks for reviewing.
+I decided to merge the two functions and use and enum instead of a boolean
+parameter, so the "bool" value is more understandable.
 
-> So why is this GPIO "virtual" because it does not have
-> a name in the funcs table?
+>> +
+>> +static void ps8640_pre_enable(struct drm_bridge *bridge)
+>> +{
+>> +       struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
+>> +       struct i2c_client *client = ps_bridge->page[PAGE2_TOP_CNTL];
+>> +       unsigned long timeout;
+>> +       int ret, status;
+>> +
+>> +       ret = regulator_bulk_enable(ARRAY_SIZE(ps_bridge->supplies),
+>> +                                   ps_bridge->supplies);
+>> +       if (ret < 0) {
+>> +               DRM_ERROR("cannot enable regulators %d\n", ret);
+>> +               return;
+>> +       }
+>> +
+>> +       gpiod_set_value(ps_bridge->gpio_powerdown, 1);
+>> +       gpiod_set_value(ps_bridge->gpio_reset, 0);
+>> +       usleep_range(2000, 2500);
+>> +       gpiod_set_value(ps_bridge->gpio_reset, 1);
+>> +
+>> +       /*
+>> +        * Wait for the ps8640 embedded MCU to be ready
+>> +        * First wait 200ms and then check the MCU ready flag every 20ms
+>> +        */
+>> +       msleep(200);
+>> +
+>> +       timeout = jiffies + msecs_to_jiffies(200) + 1;
+>> +
+>> +       while (time_is_after_jiffies(timeout)) {
+>> +               status = i2c_smbus_read_byte_data(client, PAGE2_GPIO_H);
+>> +               if (status < 0) {
+>> +                       DRM_ERROR("failed read PAGE2_GPIO_H: %d\n", status);
+>> +                       goto err_regulators_disable;
+>> +               }
+>> +               if ((status & PS_GPIO9) == PS_GPIO9)
+>> +                       break;
+>> +
+>> +               msleep(20);
+>> +       }
+>> +
+>> +       msleep(50);
+>> +
+>> +       /*
+>> +        * The Manufacturer Command Set (MCS) is a device dependent interface
+>> +        * intended for factory programming of the display module default
+>> +        * parameters. Once the display module is configured, the MCS shall be
+>> +        * disabled by the manufacturer. Once disabled, all MCS commands are
+>> +        * ignored by the display interface.
+>> +        */
+>> +       status = i2c_smbus_read_byte_data(client, PAGE2_MCS_EN);
+>> +       if (status < 0) {
+>> +               DRM_ERROR("failed read PAGE2_MCS_EN: %d\n", status);
+>> +               goto err_regulators_disable;
+>> +       }
+>> +
+>> +       ret = i2c_smbus_write_byte_data(client, PAGE2_MCS_EN,
+>> +                                       status & ~MCS_EN);
+>> +       if (ret < 0) {
+>> +               DRM_ERROR("failed write PAGE2_MCS_EN: %d\n", ret);
+>> +               goto err_regulators_disable;
+>> +       }
+>> +
+>> +       ret = ps8640_bridge_unmute(ps_bridge);
+>> +       if (ret)
+>> +               DRM_ERROR("failed to enable unmutevideo: %d\n", ret);
 > 
-yes, it doesn't have real GPIO pin and name, so we set it as virtual GPIO.
-
-> > @@ -278,6 +295,9 @@ static int mtk_xt_set_gpio_as_eint(void *data, unsigned long eint_n)
-> >         if (err)
-> >                 return err;
-> >
-> > +       if (mtk_is_virt_gpio(hw, gpio_n))
-> > +               return 0;
+> failed to unmute? Or failed to enable?
 > 
-> So does this mean we always succeed in setting a GPIO as eint
-> if it is virtual? Why? Explanatory comment is needed.
+
+failed to unmute sound more clear to me.
+
+>> +
+>> +       /* Switch access edp panel's edid through i2c */
+>> +       ret = i2c_smbus_write_byte_data(client, PAGE2_I2C_BYPASS,
+>> +                                       I2C_BYPASS_EN);
+>> +       if (ret < 0) {
+>> +               DRM_ERROR("failed write PAGE2_I2C_BYPASS: %d\n", ret);
+>> +               goto err_regulators_disable;
+>> +       }
+>> +
+>> +       return;
+>> +
+>> +err_regulators_disable:
+>> +       regulator_bulk_disable(ARRAY_SIZE(ps_bridge->supplies),
+>> +                              ps_bridge->supplies);
+>> +}
+>> +
+>> +static void ps8640_post_disable(struct drm_bridge *bridge)
+>> +{
+>> +       struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
+>> +       int ret;
+>> +
+>> +       ret = ps8640_bridge_mute(ps_bridge);
+>> +       if (ret < 0)
+>> +               DRM_ERROR("failed to unmutevideo: %d\n", ret);
 > 
-yes, we use virtual GPIO to map it.
-
-> > @@ -693,6 +693,9 @@ static int mtk_gpio_get_direction(struct gpio_chip *chip, unsigned int gpio)
-> >         const struct mtk_pin_desc *desc;
-> >         int value, err;
-> >
-> > +       if (mtk_is_virt_gpio(hw, gpio))
-> > +               return 1;
+> ditto
 > 
-> Why are "virtual GPIOs" always inputs?
+
+Done.
+
+>> +
+>> +       gpiod_set_value(ps_bridge->gpio_reset, 0);
+>> +       gpiod_set_value(ps_bridge->gpio_powerdown, 0);
+>> +       ret = regulator_bulk_disable(ARRAY_SIZE(ps_bridge->supplies),
+>> +                                    ps_bridge->supplies);
+>> +       if (ret < 0)
+>> +               DRM_ERROR("cannot disable regulators %d\n", ret);
+>> +}
+>> +
+>> +int ps8640_bridge_attach(struct drm_bridge *bridge)
+>> +{
+>> +       struct ps8640 *ps_bridge = bridge_to_ps8640(bridge);
+>> +       struct device *dev = &ps_bridge->page[0]->dev;
+>> +       struct device_node *in_ep, *dsi_node;
+>> +       struct mipi_dsi_device *dsi;
+>> +       struct mipi_dsi_host *host;
+>> +       int ret;
+>> +       const struct mipi_dsi_device_info info = { .type = "ps8640",
+>> +                                                  .channel = 0,
+>> +                                                  .node = NULL,
+>> +                                                };
+>> +       /* port@0 is ps8640 dsi input port */
+>> +       in_ep = of_graph_get_endpoint_by_regs(dev->of_node, 0, -1);
+>> +       if (!in_ep)
+>> +               return -ENODEV;
+>> +
+>> +       dsi_node = of_graph_get_remote_port_parent(in_ep);
+>> +       of_node_put(in_ep);
+>> +       if (!dsi_node)
+>> +               return -ENODEV;
+>> +
+>> +       host = of_find_mipi_dsi_host_by_node(dsi_node);
+>> +       of_node_put(dsi_node);
+>> +       if (!host)
+>> +               return -ENODEV;
+>> +
+>> +       dsi = mipi_dsi_device_register_full(host, &info);
+>> +       if (IS_ERR(dsi)) {
+>> +               dev_err(dev, "failed to create dsi device\n");
+>> +               ret = PTR_ERR(dsi);
+>> +               return ret;
+>> +       }
+>> +
+>> +       ps_bridge->dsi = dsi;
+>> +
+>> +       dsi->host = host;
+>> +       dsi->mode_flags = MIPI_DSI_MODE_VIDEO |
+>> +                         MIPI_DSI_MODE_VIDEO_SYNC_PULSE;
+>> +       dsi->format = MIPI_DSI_FMT_RGB888;
+>> +       dsi->lanes = 4;
+>> +       ret = mipi_dsi_attach(dsi);
+>> +       if (ret)
+>> +               goto err_dsi_attach;
+>> +
+>> +       /* Attach the panel-bridge to the dsi bridge */
+>> +       return drm_bridge_attach(bridge->encoder, ps_bridge->panel_bridge,
+>> +                                &ps_bridge->bridge);
+>> +
+>> +err_dsi_attach:
+>> +       mipi_dsi_device_unregister(dsi);
+>> +       return ret;
+>> +}
+>> +
+>> +static const struct drm_bridge_funcs ps8640_bridge_funcs = {
+>> +       .attach = ps8640_bridge_attach,
+>> +       .post_disable = ps8640_post_disable,
+>> +       .pre_enable = ps8640_pre_enable,
+>> +};
+>> +
+>> +static int ps8640_probe(struct i2c_client *client)
+>> +{
+>> +       struct device *dev = &client->dev;
+>> +       struct device_node *np = dev->of_node;
+>> +       struct ps8640 *ps_bridge;
+>> +       struct drm_panel *panel;
+>> +       int ret;
+>> +       u32 i;
+>> +
+>> +       ps_bridge = devm_kzalloc(dev, sizeof(*ps_bridge), GFP_KERNEL);
+>> +       if (!ps_bridge)
+>> +               return -ENOMEM;
+>> +
+>> +       /* port@1 is ps8640 output port */
+>> +       ret = drm_of_find_panel_or_bridge(np, 1, 0, &panel, NULL);
+>> +       if (ret < 0)
+>> +               return ret;
+>> +       if (!panel)
+>> +               return -ENODEV;
+>> +
+>> +       panel->connector_type = DRM_MODE_CONNECTOR_eDP;
+>> +
+>> +       ps_bridge->panel_bridge = devm_drm_panel_bridge_add(dev, panel);
+>> +       if (IS_ERR(ps_bridge->panel_bridge))
+>> +               return PTR_ERR(ps_bridge->panel_bridge);
+>> +
+>> +       ps_bridge->supplies[0].supply = "vdd33";
+>> +       ps_bridge->supplies[1].supply = "vdd12";
+>> +       ret = devm_regulator_bulk_get(dev, ARRAY_SIZE(ps_bridge->supplies),
+>> +                                     ps_bridge->supplies);
+>> +       if (ret)
+>> +               return ret;
+>> +
+>> +       ps_bridge->gpio_powerdown = devm_gpiod_get(&client->dev, "powerdown",
+>> +                                                  GPIOD_OUT_LOW);
+>> +       if (IS_ERR(ps_bridge->gpio_powerdown))
+>> +               return PTR_ERR(ps_bridge->gpio_powerdown);
+>> +
+>> +       /*
+>> +        * Request the reset pin low to avoid the bridge being
+>> +        * initialized prematurely
+>> +        */
+>> +       ps_bridge->gpio_reset = devm_gpiod_get(&client->dev, "reset",
+>> +                                              GPIOD_OUT_LOW);
+>> +       if (IS_ERR(ps_bridge->gpio_reset))
+>> +               return PTR_ERR(ps_bridge->gpio_reset);
+>> +
+>> +       ps_bridge->bridge.funcs = &ps8640_bridge_funcs;
+>> +       ps_bridge->bridge.of_node = dev->of_node;
+>> +
+>> +       ps_bridge->page[PAGE0_DP_CNTL] = client;
+>> +
+>> +       for (i = 1; i < ARRAY_SIZE(ps_bridge->page); i++) {
+>> +               ps_bridge->page[i] = devm_i2c_new_dummy_device(&client->dev,
+>> +                                                            client->adapter,
+>> +                                                            client->addr + i);
+>> +               if (IS_ERR(ps_bridge->page[i])) {
+>> +                       dev_err(dev, "failed i2c dummy device, address%02x\n",
 > 
-We set virtual GPIO as eint.
-It mean virtual GPIO only used inside SOC and not being exported to
-outside SOC.
+> Space after address?
+> 
 
-> Yours,
-> Linus Walleij
+Ack and done.
 
-Sorry for the late reply.
+>> +                               client->addr + i);
+>> +                       return PTR_ERR(ps_bridge->page[i]);
+>> +               }
+>> +       }
+>> +
+>> +       i2c_set_clientdata(client, ps_bridge);
+>> +
+>> +       drm_bridge_add(&ps_bridge->bridge);
+>> +
+>> +       return 0;
+>> +}
+>> +
+>> +static int ps8640_remove(struct i2c_client *client)
+>> +{
+>> +       struct ps8640 *ps_bridge = i2c_get_clientdata(client);
+>> +
+>> +       drm_bridge_remove(&ps_bridge->bridge);
+>> +
+>> +       return 0;
+>> +}
+>> +
+>> +static const struct of_device_id ps8640_match[] = {
+>> +       { .compatible = "parade,ps8640" },
+>> +       { }
+>> +};
+>> +MODULE_DEVICE_TABLE(of, ps8640_match);
+>> +
+>> +static struct i2c_driver ps8640_driver = {
+>> +       .probe_new = ps8640_probe,
+>> +       .remove = ps8640_remove,
+>> +       .driver = {
+>> +               .name = "ps8640",
+>> +               .of_match_table = ps8640_match,
+>> +       },
+>> +};
+>> +module_i2c_driver(ps8640_driver);
+>> +
+>> +MODULE_AUTHOR("Jitao Shi <jitao.shi@mediatek.com>");
+>> +MODULE_AUTHOR("CK Hu <ck.hu@mediatek.com>");
+> 
+> Since you just did a major refactor, do you want to add your name here?
+> 
 
-I'm the new bsp contact of mtk phone project.
-I will be taking over from Mars.
+Sure.
 
-Thanks for reviewing.
+Thanks,
+ Enric
+
+>> +MODULE_DESCRIPTION("PARADE ps8640 DSI-eDP converter driver");
+>> +MODULE_LICENSE("GPL v2");
+>> --
+>> 2.20.1
+>>
+> 
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
