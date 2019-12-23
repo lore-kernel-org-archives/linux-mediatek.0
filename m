@@ -2,88 +2,61 @@ Return-Path: <SRS0=Yz5u=2N=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 72CE6C2D0C0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2019 12:33:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC190C2D0C0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2019 14:28:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4547B206D3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2019 12:33:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BCFB220709
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2019 14:28:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Vdt+LNWP";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lca.pw header.i=@lca.pw header.b="tFEObTs8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4547B206D3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lca.pw
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZZoz5pae"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BCFB220709
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	Date:Subject:Mime-Version:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o2bwpBXSprWarhAfS15TXZX3zyMl718MNlFpG9cmSPg=; b=Vdt+LNWPkw9eUF
-	gBiAeDeyrDaHzz25rAqQsxzKIoAKsExVRNbw8WlVF9zcEykKLllfvRoD+n2L3X1sBMnuoHddOr2fT
-	qWFprmswTOnjquKmvVQTXxSSDpEXJHk/kanNjKNSqoVMPoaxqcvPXE0DWmesfbMq9A5N5e3PbAExd
-	hXPAYehpqpxM9iLvoVZAhivgL+8xZI6szDKA9v4/lgI7cwF61byq2zAhG0cDLIae1ENQ8LW/oucDw
-	4YKRMteLE/5nAnRSl+s57GwWLz5uKHWkieI91wkbxlYVQUHddsbkfRX53bGxbYDMNFX5iOFgzfllZ
-	cQ5WHL8XxlRmkIcRMhnw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bQ3TOk6+RLRcE4KZAPNXO2zmKDlYoOYRbQvlfL7EWWQ=; b=ZZoz5paeWRcdBN
+	C7apgwC7jLPx9PZanilXeE0BbP7ddnBZG0Jj2AcIq/AhkfgN4kwiWWE66Hs/Dpfx6FIw7liYZqwGK
+	+r2IccqMJRP8nJlCaijmo95qOOET3wLGv186Oy11IfNXEFywJ/SQw5XZM673ix/8FHmitmJa8WFHC
+	eLHa22Z/afTytxgSf0/TZHaOsZr+BJEMXgrLoDOMRm3C9w3a0NURVqvlyMd1ioaeBUDb9ak6RSArx
+	QA0e+n6OHu9cQ7B4wOALGfWo4EwhxR8+O8aEConOKjv6GCFxisBq9555M4r7Un0mwCwVvnVnJUEEe
+	xSx/HCvMEQWzcQS/f0tQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ijMtO-0005Ck-ED; Mon, 23 Dec 2019 12:32:58 +0000
-Received: from mail-qt1-x844.google.com ([2607:f8b0:4864:20::844])
+	id 1ijOgw-0007Sp-2v; Mon, 23 Dec 2019 14:28:14 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ijMtL-0005B9-6W
- for linux-mediatek@lists.infradead.org; Mon, 23 Dec 2019 12:32:56 +0000
-Received: by mail-qt1-x844.google.com with SMTP id k40so15272772qtk.8
- for <linux-mediatek@lists.infradead.org>; Mon, 23 Dec 2019 04:32:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lca.pw; s=google;
- h=content-transfer-encoding:from:mime-version:subject:date:message-id
- :references:cc:in-reply-to:to;
- bh=5v07SKyPaqffC8bgmTpkEvagnuvh7nvXwKsl6Tz/hL8=;
- b=tFEObTs8/qK+YCCxq6rd2xWJLb5qMY6jSRETUikApl3wF4s8YwsthzwPkk00RUqNtr
- xOCi/4YeetxUNLJnaraqe3fwNfeZKzdKrChvEvNTtP03YyTkE8tHw+wOzFwl6wBl1p3s
- 2+IQSvguDAoWtrFVTiM97pUGw5XT6nNATFDl6p4oy1mSGFckJaYUyvOboMoh6iBReLeg
- Tc27pAPYvWPCX7BRmlq/6OFpFr3PuQjNlP6+5QbzdL3LnRSxkl6Lko+doqfT1dtT0Lfz
- SHJsVSvmKeJuyVQhq/EkIbLdYO+MBMAup+l49cmargA+jDKlef0FoOfphoiLBLEqc4+K
- 9ZBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:content-transfer-encoding:from:mime-version
- :subject:date:message-id:references:cc:in-reply-to:to;
- bh=5v07SKyPaqffC8bgmTpkEvagnuvh7nvXwKsl6Tz/hL8=;
- b=F9kfqlCoUeZjXWPcVmUHShDI/mO5Itb3GRcI9v0p3R7MkU9tiWSzVOvr0SqbfmDgFS
- 6udKCPB/TpWgSfn4PJ2YCgBgJlMSley3v2pHF+a5IVoEQO3aHaWtH1dOsIvCJC2jdtgt
- 75f3EhSkNlBpznIbwJM5fTon6qM2ejuVzrLkNwTzn69vkiVtmZ+eYK295ElOhT0aQa9W
- ol4NwFElQ/H3mBjbiHIskatJC8ZxQ17VMprGsg8PqDPvdrHxozIaBNlcrEMDz1SXWxZr
- ugUci93YLEsMB6GyeiRGb+/MjP3UPy4Ld2VsT2GJAvoTBer+Pyx749vi06gbpBMZ7FrO
- QQMA==
-X-Gm-Message-State: APjAAAU4R+EK5ZTXrgVszdrM+AUuN8ce4aBTfWfOanpZf/RNfkTD947d
- nQmYU4ZqpnlCQ4fG7F0Eb+QyZQ==
-X-Google-Smtp-Source: APXvYqzomcqE0md8Wui8VaPZ7yD3QLDSggZQbK8fs17J1q5ZqSVle38Zt4wXVU70LiGdk2yXOhAAJA==
-X-Received: by 2002:aed:22c8:: with SMTP id q8mr23370747qtc.133.1577104372593; 
- Mon, 23 Dec 2019 04:32:52 -0800 (PST)
-Received: from [192.168.1.183] (pool-71-184-117-43.bstnma.fios.verizon.net.
- [71.184.117.43])
- by smtp.gmail.com with ESMTPSA id v5sm6253417qth.70.2019.12.23.04.32.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 23 Dec 2019 04:32:51 -0800 (PST)
-From: Qian Cai <cai@lca.pw>
-Mime-Version: 1.0 (1.0)
-Subject: Re: [PATCH] mm/page_owner: print largest memory consumer when OOM
- panic occurs
-Date: Mon, 23 Dec 2019 07:32:50 -0500
-Message-Id: <2B938D94-FFBB-4A3D-AD07-D7D04A4D4161@lca.pw>
-References: <20191223113326.13828-1-miles.chen@mediatek.com>
-In-Reply-To: <20191223113326.13828-1-miles.chen@mediatek.com>
-To: Miles Chen <miles.chen@mediatek.com>
-X-Mailer: iPhone Mail (17C54)
+ id 1ijOgh-00076P-JN; Mon, 23 Dec 2019 14:28:01 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id 8D11B292129
+Subject: Re: [PATCH v22 2/2] drm/bridge: Add I2C based driver for ps8640 bridge
+To: Nicolas Boichat <drinkcat@chromium.org>
+References: <20191220081738.1895-1-enric.balletbo@collabora.com>
+ <20191220081738.1895-3-enric.balletbo@collabora.com>
+ <CANMq1KBHsc8oqcjWnjLPCpRToyOm16X6EcQqmqPjZf=D7wA2-Q@mail.gmail.com>
+ <05db638b-02a6-0e3a-43ed-44a0a1458d87@collabora.com>
+ <CANMq1KA4mp648p1LicOzAyra6tdgN2qdDY=N0XyDYhgt6BP26w@mail.gmail.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Message-ID: <1c68fa67-c4c4-ea78-bfe4-6344799bbf46@collabora.com>
+Date: Mon, 23 Dec 2019 15:27:54 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.0
+MIME-Version: 1.0
+In-Reply-To: <CANMq1KA4mp648p1LicOzAyra6tdgN2qdDY=N0XyDYhgt6BP26w@mail.gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191223_043255_266103_A8BD4084 
-X-CRM114-Status: GOOD (  14.21  )
+X-CRM114-CacheID: sfid-20191223_062759_792943_1D04954E 
+X-CRM114-Status: GOOD (  15.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,59 +68,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Michal Hocko <mhocko@suse.com>, wsd_upstream@mediatek.com,
- linux-kernel@vger.kernel.org, linux-mm@kvack.org,
- linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Ulrich Hecht <uli@fpond.eu>, Jernej Skrabec <jernej.skrabec@siol.net>,
+ Jitao Shi <jitao.shi@mediatek.com>, Jonas Karlman <jonas@kwiboo.se>,
+ David Airlie <airlied@linux.ie>, Neil Armstrong <narmstrong@baylibre.com>,
+ lkml <linux-kernel@vger.kernel.org>, Andrzej Hajda <a.hajda@samsung.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Collabora Kernel ML <kernel@collabora.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Cgo+IE9uIERlYyAyMywgMjAxOSwgYXQgNjozMyBBTSwgTWlsZXMgQ2hlbiA8bWlsZXMuY2hlbkBt
-ZWRpYXRlay5jb20+IHdyb3RlOgo+IAo+IE1vdGl2YXRpb246Cj4gLS0tLS0tLS0tLS0KPiAKPiBX
-aGVuIGRlYnVnIHdpdGggYSBPT00ga2VybmVsIHBhbmljLCBpdCBpcyBkaWZmaWN1bHQgdG8ga25v
-dyB0aGUKPiBtZW1vcnkgYWxsb2NhdGVkIGJ5IGtlcm5lbCBkcml2ZXJzIG9mIHZtYWxsb2MoKSBi
-eSBjaGVja2luZyB0aGUKPiBNZW0tSW5mbyBvciBOb2RlL1pvbmUgaW5mby4gRm9yIGV4YW1wbGU6
-Cj4gCj4gIE1lbS1JbmZvOgo+ICBhY3RpdmVfYW5vbjo1MTQ0IGluYWN0aXZlX2Fub246MTYxMjAg
-aXNvbGF0ZWRfYW5vbjowCj4gICBhY3RpdmVfZmlsZTowIGluYWN0aXZlX2ZpbGU6MCBpc29sYXRl
-ZF9maWxlOjAKPiAgIHVuZXZpY3RhYmxlOjAgZGlydHk6MCB3cml0ZWJhY2s6MCB1bnN0YWJsZTow
-Cj4gICBzbGFiX3JlY2xhaW1hYmxlOjczOSBzbGFiX3VucmVjbGFpbWFibGU6NDQyNDY5Cj4gICBt
-YXBwZWQ6NTM0IHNobWVtOjIxMDUwIHBhZ2V0YWJsZXM6MjEgYm91bmNlOjAKPiAgIGZyZWU6MTQ4
-MDggZnJlZV9wY3A6MzM4OSBmcmVlX2NtYTo4MTI4Cj4gCj4gIE5vZGUgMCBhY3RpdmVfYW5vbjoy
-MDU3NmtCIGluYWN0aXZlX2Fub246NjQ0ODBrQiBhY3RpdmVfZmlsZTowa0IKPiAgaW5hY3RpdmVf
-ZmlsZTowa0IgdW5ldmljdGFibGU6MGtCIGlzb2xhdGVkKGFub24pOjBrQiBpc29sYXRlZChmaWxl
-KTowa0IKPiAgbWFwcGVkOjIxMzZrQiBkaXJ0eTowa0Igd3JpdGViYWNrOjBrQiBzaG1lbTo4NDIw
-MGtCIHNobWVtX3RocDogMGtCCj4gIHNobWVtX3BtZG1hcHBlZDogMGtCIGFub25fdGhwOiAwa0Ig
-d3JpdGViYWNrX3RtcDowa0IgdW5zdGFibGU6MGtCCj4gIGFsbF91bnIgZWNsYWltYWJsZT8geWVz
-Cj4gCj4gIE5vZGUgMCBETUEgZnJlZToxNDQ3NmtCIG1pbjoyMTUxMmtCIGxvdzoyNjg4OGtCIGhp
-Z2g6MzIyNjRrQgo+ICByZXNlcnZlZF9oaWdoYXRvbWljOjBLQiBhY3RpdmVfYW5vbjowa0IgaW5h
-Y3RpdmVfYW5vbjowa0IKPiAgYWN0aXZlX2ZpbGU6IDBrQiBpbmFjdGl2ZV9maWxlOjBrQiB1bmV2
-aWN0YWJsZTowa0Igd3JpdGVwZW5kaW5nOjBrQgo+ICBwcmVzZW50OjEwNDg1NzZrQiBtYW5hZ2Vk
-Ojk1MjczNmtCIG1sb2NrZWQ6MGtCIGtlcm5lbF9zdGFjazowa0IKPiAgcGFnZXRhYmxlczowa0Ig
-Ym91bmNlOjBrQiBmcmVlX3BjcDoyNzE2a0IgbG9jYWxfcGNwOjBrQiBmcmVlX2NtYTowa0IKPiAK
-PiBUaGUgaW5mb3JtYXRpb24gYWJvdmUgdGVsbHMgdXMgdGhlIG1lbW9yeSB1c2FnZSBvZiB0aGUg
-a25vd24gbWVtb3J5Cj4gY2F0ZWdvcmllcyBhbmQgd2UgY2FuIGNoZWNrIHRoZSBhYm5vcm1hbCBs
-YXJnZSBudW1iZXJzLiBIb3dldmVyLCBpZiBhCj4gbWVtb3J5IGxlYWthZ2UgY2Fubm90IGJlIG9i
-c2VydmVkIGluIHRoZSBjYXRlZ29yaWVzIGFib3ZlLCB3ZSBuZWVkIHRvCj4gcmVwcm9kdWNlIHRo
-ZSBpc3N1ZSB3aXRoIENPTkZJR19QQUdFX09XTkVSLgo+IAo+IEl0IGlzIHBvc3NpYmxlIHRvIHJl
-YWQgdGhlIHBhZ2Ugb3duZXIgaW5mb3JtYXRpb24gZnJvbSBjb3JlZHVtcCBmaWxlcy4KPiBIb3dl
-dmVyLCBjb3JlZHVtcCBmaWxlcyBtYXkgbm90IGFsd2F5cyBiZSBhdmFpbGFibGUsIHNvIG15IGFw
-cHJvYWNoIGlzCj4gdG8gcHJpbnQgb3V0IHRoZSBsYXJnZXN0IHBhZ2UgY29uc3VtZXIgd2hlbiBP
-T00ga2VybmVsIHBhbmljIG9jY3Vycy4KCk1hbnkgb2YgdGhvc2UgcGF0Y2hlcyBoZWxwaW5nIGRl
-YnVnZ2luZyBzcGVjaWFsIGNhc2VzIGhhZCBiZWVuIHNob3QgZG93biBpbiB0aGUgcGFzdC4gSSBk
-b27igJl0IHNlZSBtdWNoIGRpZmZlcmVuY2UgdGhpcyB0aW1lLiBJZiB5b3Ugd29ycnkgYWJvdXQg
-bWVtb3J5IGxlYWssIGVuYWJsZSBrbWVtbGVhayBhbmQgdGhlbiB0byByZXByb2R1Y2UuIE90aGVy
-d2lzZSwgd2Ugd2lsbCBlbmQgdXAgd2l0aCB0b28gbWFueSBoZXVyaXN0aWNzIGp1c3QgZm9yIGRl
-YnVnZ2luZy4KCj4gCj4gVGhlIGhldXJpc3RpYyBhcHByb2FjaCBhc3N1bWVzIHRoYXQgdGhlIE9P
-TSBrZXJuZWwgcGFuaWMgaXMgY2F1c2VkIGJ5Cj4gYSBzaW5nbGUgYmFja3RyYWNlLiBUaGUgYXNz
-dW1wdGlvbiBpcyBub3QgYWx3YXlzIHRydWUgYnV0IGl0IHdvcmtzIGluCj4gbWFueSBjYXNlcyBk
-dXJpbmcgb3VyIHRlc3QuCj4gCj4gV2UgaGF2ZSB0ZXN0ZWQgdGhpcyBoZXVyaXN0aWMgYXBwcm9h
-Y2ggc2luY2UgMjAxOS81IG9uIGFuZHJvaWQgZGV2aWNlcy4KPiBJbiAzOCBpbnRlcm5hbCBPT00g
-a2VybmVsIHBhbmljIHJlcG9ydHM6Cj4gCj4gMzEvMzg6IGNhbiBiZSBhbmFseXplZCBieSB1c2lu
-ZyBleGlzdGluZyBpbmZvcm1hdGlvbgo+IDcvMzg6IG5lZWQgcGFnZSBvd25lciBmb3JtYXRpbm8g
-YW5kIHRoZSBoZXVyaXN0aWMgYXBwcm9hY2ggaW4gdGhpcyBwYXRjaAo+IHByaW50cyB0aGUgY29y
-cmVjdCBiYWNrdHJhY2VzIG9mIGFibm9ybWFsIG1lbW9yeSBhbGxvY2F0aW9ucy4gTm8gbmVlZCB0
-bwo+IHJlcHJvZHVjZSB0aGUgaXNzdWVzLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlh
-dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Hi Nicolas,
+
+On 23/12/19 10:14, Nicolas Boichat wrote:
+> On Mon, Dec 23, 2019 at 3:10 PM Enric Balletbo i Serra
+> <enric.balletbo@collabora.com> wrote:
+>>
+>> Hi Nicolas,
+>>
+>> Many thanks for you review. Just preparing a new version with your comments
+>> addressed.
+>>
+>> On 20/12/19 9:44, Nicolas Boichat wrote:
+>>> On Fri, Dec 20, 2019 at 4:17 PM Enric Balletbo i Serra
+>>> <enric.balletbo@collabora.com> wrote:
+>>>>
+>>>> From: Jitao Shi <jitao.shi@mediatek.com>
+>>>>
+>>>> This patch adds drm_bridge driver for parade DSI to eDP bridge chip.
+>>>>
+>>>> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+>>>> Reviewed-by: Daniel Kurtz <djkurtz@chromium.org>
+>>>> Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>>>> [uli: followed API changes, removed FW update feature]
+>>>> Signed-off-by: Ulrich Hecht <uli@fpond.eu>
+>>>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>>>> ---
+>> [snip]
+>>>> +       ret = i2c_smbus_write_byte_data(client, PAGE2_MCS_EN,
+>>>> +                                       status & ~MCS_EN);
+>>>> +       if (ret < 0) {
+>>>> +               DRM_ERROR("failed write PAGE2_MCS_EN: %d\n", ret);
+>>>> +               goto err_regulators_disable;
+>>>> +       }
+>>>> +
+>>>> +       ret = ps8640_bridge_unmute(ps_bridge);
+>>>> +       if (ret)
+>>>> +               DRM_ERROR("failed to enable unmutevideo: %d\n", ret);
+>>>
+>>> failed to unmute? Or failed to enable?
+>>>
+>>
+>> failed to unmute sound more clear to me.
+> 
+> I may be wrong, but I have the feeling that the functions
+> "mute/unmute" video/display, actually... And that the function naming
+> is strange...
+> 
+
+Yes, that's strange.
+
+> You could just try to remove the calls, as there is no audio on the
+> board you have (elm), so if video still works, maybe this is actually
+> audio ,-)
+> 
+
+And without those the display doesn't work. So I suspect that what is wrong and
+confusing is the message, instead of mute/unmute, and based on the register
+names this looks more like an internal regulator that you need to enable and
+disable, so I'll change the error message accordingly.
+
+Thanks,
+ Enric
+
+> Thanks,
+> 
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
