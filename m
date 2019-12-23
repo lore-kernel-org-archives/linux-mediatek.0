@@ -2,64 +2,66 @@ Return-Path: <SRS0=Yz5u=2N=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B9585C2D0C0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2019 11:42:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 95B61C2D0C0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2019 11:45:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8CE5120709
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2019 11:42:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 66233206D3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Dec 2019 11:45:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lNtXgjBe"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8CE5120709
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rPmtrU4W";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=crapouillou.net header.i=@crapouillou.net header.b="jX9LJcjW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 66233206D3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=crapouillou.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nzlBsY21E0w4Wv6QI615EW+kVEac3sgipMKWv6Bs+Xk=; b=lNtXgjBeSry3Da
-	xQrW4gQTXE17EgXQH5DJtdA1dhcMphiXC+SBPIpa3t7GKkGrWJ4q3NwpG6x0l8COkj05Cqfp5hLNJ
-	Vy9oMhoGgaH6TM/yP9PYrth5mF/Z1g13F4fz53MZHJ7lZgjq4jpeMCxnRiJqzSWTJt3PeNlRZj5KO
-	G4SLYFclafyIZURLJbFVtkqmJH9uvAA4Fo7N2DGkUwJlgP/DVQIlqEfJVwkvXvkCjhuSO3TfqujbP
-	wC8V+6rYR4gV2u19TG1jzEF7Pv8iEgHDObgNYPOejkwxKcDYj6zStU9Hl4SO95k6ceStwdpuTYAHL
-	4O29iMA78Xaw7Nf4aNoQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:To:
+	Subject:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=r1AB2Y8Lq5xb7PKcKbKA7Q7htJAZzMQa7Xih67ZzLOM=; b=rPmtrU4WPD00zYTvyZpEIxGzZ
+	zGDP06n5ii7cZ1O5w/mhbSXmV4z3ALJXPotRB0FZ0WqIV/hCOsbdKU9K8b29KjwjMzegFyVgVP750
+	JH0gKW1eAP0RvgsZI1f/G/GcqjXcB69aRrg40gI1zK1iYbtz6vJQYXjaVQUdoyOUcWohHBWtkOzeK
+	V3TApqGLr3TI4/ZkNejWTa1ZJli8denzNWvidkK3sLlHvD5BXHb9l6FBcwEaAEWQsVg3Nz8T/QwVk
+	eez1wmgQPOh3vK8oKdAYGf7vz0NfRlledDbufV312dE45uGXeJ8iIfp2NHhGCde6x1cGVL0HufQvG
+	pkXZEad4A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ijM5v-0003rR-Gg; Mon, 23 Dec 2019 11:41:51 +0000
-Received: from mga17.intel.com ([192.55.52.151])
+	id 1ijM8t-0004OC-VB; Mon, 23 Dec 2019 11:44:55 +0000
+Received: from outils.crapouillou.net ([89.234.176.41] helo=crapouillou.net)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ijM5s-0003qJ-6S; Mon, 23 Dec 2019 11:41:49 +0000
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 23 Dec 2019 03:41:45 -0800
-X-IronPort-AV: E=Sophos;i="5.69,347,1571727600"; d="scan'208";a="211530914"
-Received: from jnikula-mobl3.fi.intel.com (HELO localhost) ([10.237.66.161])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 23 Dec 2019 03:41:35 -0800
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Robin Murphy <robin.murphy@arm.com>, Tom Murphy <murphyt7@tcd.ie>,
- iommu@lists.linux-foundation.org
-Subject: Re: [PATCH 0/8] Convert the intel iommu driver to the dma-iommu api
-In-Reply-To: <432d306c-fe9f-75b2-f0f7-27698f1467ad@arm.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20191221150402.13868-1-murphyt7@tcd.ie>
- <87blrzwcn8.fsf@intel.com> <432d306c-fe9f-75b2-f0f7-27698f1467ad@arm.com>
-Date: Mon, 23 Dec 2019 13:41:33 +0200
-Message-ID: <87o8vzuv4i.fsf@intel.com>
+ id 1ijM8k-0004F7-1x; Mon, 23 Dec 2019 11:44:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=crapouillou.net;
+ s=mail; t=1577101475; h=from:from:sender:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=uVdlO9cJhU3uZR9PsalU+9sk35dl6Zqn8751jyDz6hE=;
+ b=jX9LJcjWIqPnnuyZly5BdZOoj2/inQqbVjiES4HFwhniV6JNaGO+ALAE433xhQmOf7hoHr
+ 74R9G8HAr3LeKzr0sbxjFJVOggyg28MPxpD0DHH9YfttM3lvpC+gmVq6n3+Ac/2Iy0eHBk
+ VXMTWUiAs8EHGfFQgFmRp6lvylZSZUE=
+Date: Mon, 23 Dec 2019 12:44:26 +0100
+From: Paul Cercueil <paul@crapouillou.net>
+Subject: Re: [PATCH 2/9] memory: jz4780_nemc: convert to
+ devm_platform_ioremap_resource
+To: Yangtao Li <tiny.windzz@gmail.com>
+Message-Id: <1577101466.3.0@crapouillou.net>
+In-Reply-To: <20191222185034.4665-2-tiny.windzz@gmail.com>
+References: <20191222185034.4665-1-tiny.windzz@gmail.com>
+ <20191222185034.4665-2-tiny.windzz@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191223_034148_247028_9C4A586B 
-X-CRM114-Status: GOOD (  18.91  )
+X-CRM114-CacheID: sfid-20191223_034446_289596_837769B8 
+X-CRM114-Status: UNSURE (   8.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,81 +73,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, kvm@vger.kernel.org,
- David Airlie <airlied@linux.ie>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- dri-devel@lists.freedesktop.org, Bjorn Andersson <bjorn.andersson@linaro.org>,
- linux-tegra@vger.kernel.org, Julien Grall <julien.grall@arm.com>,
- Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>,
- Joerg Roedel <joro@8bytes.org>, Krzysztof Kozlowski <krzk@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org,
- Andy Gross <agross@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- linux-mediatek@lists.infradead.org, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- virtualization@lists.linux-foundation.org,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>, linux-kernel@vger.kernel.org,
- Rob Clark <robdclark@gmail.com>, Kukjin Kim <kgene@kernel.org>,
- Daniel Vetter <daniel@ffwll.ch>, David Woodhouse <dwmw2@infradead.org>,
- Lu Baolu <baolu.lu@linux.intel.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: kstewart@linuxfoundation.org, tony@atomide.com, ssantosh@kernel.org,
+ rfontana@redhat.com, thierry.reding@gmail.com, krzk@kernel.org,
+ digetx@gmail.com, linux-samsung-soc@vger.kernel.org, evgreen@chromium.org,
+ jonathanh@nvidia.com, kgene@kernel.org, allison@lohutok.net, jroedel@suse.de,
+ linux-tegra@vger.kernel.org, linux-pm@vger.kernel.org,
+ alexios.zavras@intel.com, linux-mediatek@lists.infradead.org, john@phrozen.org,
+ matthias.bgg@gmail.com, tglx@linutronix.de, linux-omap@vger.kernel.org,
+ yong.wu@mediatek.com, rogerq@ti.com, linux-arm-kernel@lists.infradead.org,
+ sboyd@kernel.org, pdeschrijver@nvidia.com, linux-kernel@vger.kernel.org,
+ info@metux.net, lukasz.luba@arm.com
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMyBEZWMgMjAxOSwgUm9iaW4gTXVycGh5IDxyb2Jpbi5tdXJwaHlAYXJtLmNvbT4g
-d3JvdGU6Cj4gT24gMjAxOS0xMi0yMyAxMDozNyBhbSwgSmFuaSBOaWt1bGEgd3JvdGU6Cj4+IE9u
-IFNhdCwgMjEgRGVjIDIwMTksIFRvbSBNdXJwaHkgPG11cnBoeXQ3QHRjZC5pZT4gd3JvdGU6Cj4+
-PiBUaGlzIHBhdGNoc2V0IGNvbnZlcnRzIHRoZSBpbnRlbCBpb21tdSBkcml2ZXIgdG8gdGhlIGRt
-YS1pb21tdSBhcGkuCj4+Pgo+Pj4gV2hpbGUgY29udmVydGluZyB0aGUgZHJpdmVyIEkgZXhwb3Nl
-ZCBhIGJ1ZyBpbiB0aGUgaW50ZWwgaTkxNSBkcml2ZXIKPj4+IHdoaWNoIGNhdXNlcyBhIGh1Z2Ug
-YW1vdW50IG9mIGFydGlmYWN0cyBvbiB0aGUgc2NyZWVuIG9mIG15Cj4+PiBsYXB0b3AuIFlvdSBj
-YW4gc2VlIGEgcGljdHVyZSBvZiBpdCBoZXJlOgo+Pj4gaHR0cHM6Ly9naXRodWIuY29tL3BpcHB5
-MzYwL2tlcm5lbFBhdGNoZXMvYmxvYi9tYXN0ZXIvSU1HXzIwMTkxMjE5XzIyNTkyMi5qcGcKPj4+
-Cj4+PiBUaGlzIGlzc3VlIGlzIG1vc3QgbGlrZWx5IGluIHRoZSBpOTE1IGRyaXZlciBhbmQgaXMg
-bW9zdCBsaWtlbHkgY2F1c2VkCj4+PiBieSB0aGUgZHJpdmVyIG5vdCByZXNwZWN0aW5nIHRoZSBy
-ZXR1cm4gdmFsdWUgb2YgdGhlCj4+PiBkbWFfbWFwX29wczo6bWFwX3NnIGZ1bmN0aW9uLiBZb3Ug
-Y2FuIHNlZSB0aGUgZHJpdmVyIGlnbm9yaW5nIHRoZQo+Pj4gcmV0dXJuIHZhbHVlIGhlcmU6Cj4+
-PiBodHRwczovL2dpdGh1Yi5jb20vdG9ydmFsZHMvbGludXgvYmxvYi83ZTAxNjViMmYxYTkxMmEw
-NmUzODFlOTFmMGY0ZTQ5NWY0YWMzNzM2L2RyaXZlcnMvZ3B1L2RybS9pOTE1L2dlbS9pOTE1X2dl
-bV9kbWFidWYuYyNMNTEKPj4+Cj4+PiBQcmV2aW91c2x5IHRoaXMgZGlkbuKAmXQgY2F1c2UgaXNz
-dWVzIGJlY2F1c2UgdGhlIGludGVsIG1hcF9zZyBhbHdheXMKPj4+IHJldHVybmVkIHRoZSBzYW1l
-IG51bWJlciBvZiBlbGVtZW50cyBhcyB0aGUgaW5wdXQgc2NhdHRlciBnYXRoZXIgbGlzdAo+Pj4g
-YnV0IHdpdGggdGhlIGNoYW5nZSB0byB0aGlzIGRtYS1pb21tdSBhcGkgdGhpcyBpcyBubyBsb25n
-ZXIgdGhlCj4+PiBjYXNlLiBJIHdhc27igJl0IGFibGUgdG8gdHJhY2sgdGhlIGJ1ZyBkb3duIHRv
-IGEgc3BlY2lmaWMgbGluZSBvZiBjb2RlCj4+PiB1bmZvcnR1bmF0ZWx5Lgo+Pj4KPj4+IENvdWxk
-IHNvbWVvbmUgZnJvbSB0aGUgaW50ZWwgdGVhbSBsb29rIGF0IHRoaXM/Cj4+IAo+PiBMZXQgbWUg
-Z2V0IHRoaXMgc3RyYWlnaHQuIFRoZXJlIGlzIGN1cnJlbnQgQVBJIHRoYXQgb24gc3VjY2VzcyBh
-bHdheXMKPj4gcmV0dXJucyB0aGUgc2FtZSBudW1iZXIgb2YgZWxlbWVudHMgYXMgdGhlIGlucHV0
-IHNjYXR0ZXIgZ2F0aGVyCj4+IGxpc3QuIFlvdSBwcm9wb3NlIHRvIGNoYW5nZSB0aGUgQVBJIHNv
-IHRoYXQgdGhpcyBpcyBubyBsb25nZXIgdGhlIGNhc2U/Cj4KPiBObywgdGhlIEFQSSBmb3IgZG1h
-X21hcF9zZygpIGhhcyBhbHdheXMgYmVlbiB0aGF0IGl0IG1heSByZXR1cm4gZmV3ZXIgCj4gRE1B
-IHNlZ21lbnRzIHRoYW4gbmVudHMgLSBzZWUgRG9jdW1lbnRhdGlvbi9ETUEtQVBJLnR4dCAoYW5k
-IG90aGVyd2lzZSwgCj4gdGhlIHJldHVybiB2YWx1ZSB3b3VsZCBzdXJlbHkgYmUgYSBzaW1wbGUg
-c3VjY2Vzcy9mYWlsIGNvbmRpdGlvbikuIAo+IFJlbHlpbmcgb24gYSBwYXJ0aWN1bGFyIGltcGxl
-bWVudGF0aW9uIGJlaGF2aW91ciBoYXMgbmV2ZXIgYmVlbiBzdHJpY3RseSAKPiBjb3JyZWN0LCBl
-dmVuIGlmIGl0IGRvZXMgaGFwcGVuIHRvIGJlIGEgdmVyeSBjb21tb24gYmVoYXZpb3VyLgo+Cj4+
-IEEgcXVpY2sgY2hlY2sgb2YgdmFyaW91cyBkbWFfbWFwX3NnKCkgY2FsbHMgaW4gdGhlIGtlcm5l
-bCBzZWVtcyB0bwo+PiBpbmRpY2F0ZSBjaGVja2luZyBmb3IgMCBmb3IgZXJyb3JzIGFuZCB0aGVu
-IGlnbm9yaW5nIHRoZSBub24temVybyByZXR1cm4KPj4gaXMgYSBjb21tb24gcGF0dGVybi4gQXJl
-IHlvdSBzdXJlIGl0J3Mgb2theSB0byBtYWtlIHRoZSBjaGFuZ2UgeW91J3JlCj4+IHByb3Bvc2lu
-Zz8KPgo+IFZhcmlvdXMgY29kZSB1c2VzIHRyaWNrcyBsaWtlIGp1c3QgaXRlcmF0aW5nIHRoZSBt
-YXBwZWQgbGlzdCB1bnRpbCB0aGUgCj4gZmlyc3Qgc2VnbWVudCB3aXRoIHplcm8gc2dfZG1hX2xl
-bigpLiBPdGhlcnMgbWF5IHdlbGwgc2ltcGx5IGhhdmUgYnVncy4KClRoYW5rcyBmb3IgdGhlIGNs
-YXJpZmljYXRpb24uCgpCUiwKSmFuaS4KCj4KPiBSb2Jpbi4KPgo+PiBBbnl3YXksIGR1ZSB0byB0
-aGUgdGltZSBvZiB5ZWFyIGFuZCBhbGwsIEknZCBsaWtlIHRvIGFzayB5b3UgdG8gZmlsZSBhCj4+
-IGJ1ZyBhZ2FpbnN0IGk5MTUgYXQgWzFdIHNvIHRoaXMgaXMgbm90IGZvcmdvdHRlbiwgYW5kIHBs
-ZWFzZSBsZXQncyBub3QKPj4gbWVyZ2UgdGhlIGNoYW5nZXMgYmVmb3JlIHRoaXMgaXMgcmVzb2x2
-ZWQuCj4+IAo+PiAKPj4gVGhhbmtzLAo+PiBKYW5pLgo+PiAKPj4gCj4+IFsxXSBodHRwczovL2dp
-dGxhYi5mcmVlZGVza3RvcC5vcmcvZHJtL2ludGVsL2lzc3Vlcy9uZXcKPj4gCj4+IAoKLS0gCkph
-bmkgTmlrdWxhLCBJbnRlbCBPcGVuIFNvdXJjZSBHcmFwaGljcyBDZW50ZXIKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxp
-bmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+Hi,
+
+
+Le dim., d=E9c. 22, 2019 at 18:50, Yangtao Li <tiny.windzz@gmail.com> a =
+
+=E9crit :
+> Use devm_platform_ioremap_resource() to simplify code.
+> =
+
+> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
+
+Acked-by: Paul Cercueil <paul@crapouillou.net>
+
+Cheers,
+-Paul
+
+
+> ---
+>  drivers/memory/jz4780-nemc.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> =
+
+> diff --git a/drivers/memory/jz4780-nemc.c =
+
+> b/drivers/memory/jz4780-nemc.c
+> index b232ed279fc3..857a9fa5cba5 100644
+> --- a/drivers/memory/jz4780-nemc.c
+> +++ b/drivers/memory/jz4780-nemc.c
+> @@ -269,7 +269,6 @@ static int jz4780_nemc_probe(struct =
+
+> platform_device *pdev)
+>  {
+>  	struct device *dev =3D &pdev->dev;
+>  	struct jz4780_nemc *nemc;
+> -	struct resource *res;
+>  	struct device_node *child;
+>  	const __be32 *prop;
+>  	unsigned int bank;
+> @@ -287,8 +286,7 @@ static int jz4780_nemc_probe(struct =
+
+> platform_device *pdev)
+>  	spin_lock_init(&nemc->lock);
+>  	nemc->dev =3D dev;
+> =
+
+> -	res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> -	nemc->base =3D devm_ioremap_resource(dev, res);
+> +	nemc->base =3D devm_platform_ioremap_resource(pdev, 0);
+>  	if (IS_ERR(nemc->base)) {
+>  		dev_err(dev, "failed to get I/O memory\n");
+>  		return PTR_ERR(nemc->base);
+> --
+> 2.17.1
+> =
+
+
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
