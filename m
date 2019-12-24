@@ -2,59 +2,59 @@ Return-Path: <SRS0=Ncyn=2O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 07E48C2D0D2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Dec 2019 17:35:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 78C2BC2D0CF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Dec 2019 17:37:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C760D2071A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Dec 2019 17:35:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 26F582063A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Dec 2019 17:37:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Sg+Wx4WQ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=armh.onmicrosoft.com header.i=@armh.onmicrosoft.com header.b="X0JPwCEY";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=armh.onmicrosoft.com header.i=@armh.onmicrosoft.com header.b="X0JPwCEY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C760D2071A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cvw/t+dn";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=armh.onmicrosoft.com header.i=@armh.onmicrosoft.com header.b="2BEAS5H5";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=armh.onmicrosoft.com header.i=@armh.onmicrosoft.com header.b="2BEAS5H5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 26F582063A
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4MLdkAW62XvuVkpSp2zut0Nd23LuDH+rZMw4Z9INyNQ=; b=Sg+Wx4WQogiWiO
-	pxSWScCttCnHLdHDJhsMqD8xYvLSCFZ+h9f7xZGjzwKtN4PQK/aJCASXX32g5gn2TAwtMtd5kYibH
-	7dUyUwXeZvsuSKd5Vcea0V+evAakgiaOnGeV2P69FTd6y/+t58QzYoyAQRE6H1C0M9/mDq+R69c2o
-	kh5x6fMJQGqnc+OjsEYEvGW+1CzcSy7lI87FUCBDhu1rzU6istKfTuglu+r4VwTyAuFnDY8yHtApE
-	naCmiZfC1zAB6RrI+jwhHteGwoi9/EIBSsOmVj3ezxGABc3lH6smZmMpXGNdctN9TvatZKVagdZu+
-	8oBJNUM/RcOG5FlwdwsA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=viEMIw7j7rlRXdd7AyIPvEm3QX4Oo6seCRD0PpZgq1U=; b=cvw/t+dn5KK68o
+	6bYF+4wAVtZ2mGjx/x69b7khF2ymPI2aCLjIn8rFP7C8KsV7umzMbWE4SHBDRHwqlO2rLgdAWnFkP
+	GvHeGQ7jUg3R18P/lGv7gUkXhyJPFaQljdPj/ApVr3H5ESgubn2HXRKS4M9ExpgcRLMyhsGSx73EU
+	khsHIA7g1JXHGhPnaNFhx8L0RRepVUiRtz3ScTwMCKUtkBajD6KCYKc2hzt5ZqDB/Q7EXARUJbdKR
+	PcbpO1obWa0gxNblNigwlGUGl5U0sZHsdDktNoIcQIIQBKTf40m0XO2+aEjlCM8vuw3Y5z6Ny+b8b
+	voOSJ5Abz+ObXf5UmL6w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ijo66-0003Gv-5u; Tue, 24 Dec 2019 17:35:54 +0000
-Received: from mail-eopbgr20067.outbound.protection.outlook.com ([40.107.2.67]
- helo=EUR02-VE1-obe.outbound.protection.outlook.com)
+	id 1ijo7B-0003eg-Ow; Tue, 24 Dec 2019 17:37:01 +0000
+Received: from mail-eopbgr80047.outbound.protection.outlook.com ([40.107.8.47]
+ helo=EUR04-VI1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ijo5n-00030s-0K; Tue, 24 Dec 2019 17:35:38 +0000
+ id 1ijo71-0003V6-DG; Tue, 24 Dec 2019 17:36:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=armh.onmicrosoft.com; 
  s=selector2-armh-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=aawaic+7F9JxuHcXn/LveVUKjL6TBezQVbgQSBWd5jw=;
- b=X0JPwCEYU9IiEM99tpyztROfHShsL0+cdRnGcje4fu8BWimKT/ReJHp4LBq8diDGEdiONjvisjEwtgbTVUmagDZMV6eo3mzlZ73Cobz63zl9YNHPcVUFFVr/VTuBUgYBy8bA8zjH/J2ZEdYGe59Nv7UfPSj+gQ5O7HEBAVYzDwg=
-Received: from VI1PR08CA0195.eurprd08.prod.outlook.com (2603:10a6:800:d2::25)
- by VI1PR0802MB2623.eurprd08.prod.outlook.com (2603:10a6:800:b9::21)
+ bh=UWvJevW4xRToyZQGigK+R8NypYOG19jLBIcxe/VCxDY=;
+ b=2BEAS5H5+Ej5RjwcSYQYnNdfCouOCVr6PZkZ8OWtBfl/7GePPdkAkU8trQIkAqI3f8y8lIDQlP0N9CqATf+wkxfDWjPos6FX+zZ6bhgnnVy4OQS/nXzs/LCffER4U39ROeFBIjykGUsephUyfBK3ySegsc/qxiHONyd7ayvzb50=
+Received: from HE1PR0802CA0015.eurprd08.prod.outlook.com (2603:10a6:3:bd::25)
+ by VI1PR0802MB2479.eurprd08.prod.outlook.com (2603:10a6:800:af::14)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2559.15; Tue, 24 Dec
- 2019 17:35:31 +0000
-Received: from VE1EUR03FT034.eop-EUR03.prod.protection.outlook.com
- (2a01:111:f400:7e09::208) by VI1PR08CA0195.outlook.office365.com
- (2603:10a6:800:d2::25) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2559.14 via Frontend
- Transport; Tue, 24 Dec 2019 17:35:31 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2559.14; Tue, 24 Dec
+ 2019 17:36:45 +0000
+Received: from VE1EUR03FT036.eop-EUR03.prod.protection.outlook.com
+ (2a01:111:f400:7e09::202) by HE1PR0802CA0015.outlook.office365.com
+ (2603:10a6:3:bd::25) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2581.11 via Frontend
+ Transport; Tue, 24 Dec 2019 17:36:45 +0000
 Authentication-Results: spf=pass (sender IP is 63.35.35.123)
  smtp.mailfrom=arm.com; lists.infradead.org; dkim=pass (signature was
  verified) header.d=armh.onmicrosoft.com;lists.infradead.org;
@@ -63,55 +63,53 @@ Received-SPF: Pass (protection.outlook.com: domain of arm.com designates
  63.35.35.123 as permitted sender) receiver=protection.outlook.com;
  client-ip=63.35.35.123; helo=64aa7808-outbound-1.mta.getcheckrecipient.com;
 Received: from 64aa7808-outbound-1.mta.getcheckrecipient.com (63.35.35.123) by
- VE1EUR03FT034.mail.protection.outlook.com (10.152.18.85) with
+ VE1EUR03FT036.mail.protection.outlook.com (10.152.19.204) with
  Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2559.14 via Frontend Transport; Tue, 24 Dec 2019 17:35:30 +0000
-Received: ("Tessian outbound 28955e0c1ca8:v40");
- Tue, 24 Dec 2019 17:35:30 +0000
+ 15.20.2559.14 via Frontend Transport; Tue, 24 Dec 2019 17:36:45 +0000
+Received: ("Tessian outbound e09e55c05044:v40");
+ Tue, 24 Dec 2019 17:36:43 +0000
 X-CheckRecipientChecked: true
-X-CR-MTA-CID: f874434845d6cb7d
+X-CR-MTA-CID: e233a8ff672766e4
 X-CR-MTA-TID: 64aa7808
-Received: from 2398bdd0a748.6
+Received: from df58a739e11a.1
  by 64aa7808-outbound-1.mta.getcheckrecipient.com id
- 64153F3C-3911-45CA-AEE2-3284817689BB.1; 
- Tue, 24 Dec 2019 17:35:25 +0000
-Received: from EUR04-HE1-obe.outbound.protection.outlook.com
- by 64aa7808-outbound-1.mta.getcheckrecipient.com with ESMTPS id 2398bdd0a748.6
+ 304581A2-2F56-4A1F-84E8-EAF1F21F7C60.1; 
+ Tue, 24 Dec 2019 17:34:21 +0000
+Received: from EUR01-VE1-obe.outbound.protection.outlook.com
+ by 64aa7808-outbound-1.mta.getcheckrecipient.com with ESMTPS id df58a739e11a.1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384);
- Tue, 24 Dec 2019 17:35:25 +0000
+ Tue, 24 Dec 2019 17:34:21 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=UQZe7+y40eK4v2MVKdPjI4R3EnPJftMsYARUjHxBKq+d20PiDGwzzCUiZAW4GZ3UjSh65gYgpR8thPN+LUk7tcS8WFiTR3KcPuSHRSsyOeo71cbG9o3eMo1xfrlwvX3cNDZhRSXCzP6/vI0rKNuYtbwXsAee47Sj4aSbU1HFqu+DEpSHZCZWKFbtW3AiElINlj8t1LUeHDjleWy44DpaMWs37CYGtmo8DJYtGYpIIwGYhj+M0HqBXOPgCdC9FTfQKCl423UJtaW31U7E5XelWlXYQH0Wjs/yT0DCl11GBejzKrJy1FL1fED8LJYd2hCJC9KfsPvK2bW4EBe0xRzd/w==
+ b=U8VA9gifruGxHBkDiKih9yj2ORXS5HorrYfs/nA61CHix36rT5XIWT4vlx/PvqShBt4q9Le1mIp7e/Wx3VvfnZd/b2wqUQfVg379fmcOV0T4v7Jr4yZgPu9dIje2hzBjvcionh35OwX0XbqKeZyqcsGSP/GSL3dFPG2hn7OW13QxJErIfHdz+RkUyjLR0Ay0STIOxoeK8tqOsrIKOjpE4LKq8NGcTjIz3Pz8ucmN6dZTV0RLyZL5jmt7+p7QIl0YLTQZT+0uqo3KDWnCWPfOQ+d9wzjlSaZNmw/Tm1gjb3fLWpbV/pZ6Mf04AMUt1acUeEaXqNcNCQzX1xg+9uddGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=aawaic+7F9JxuHcXn/LveVUKjL6TBezQVbgQSBWd5jw=;
- b=ir1daXCuMT8RuIPlKBHWZnEXJPm0ZQWvPtEQ6Oj9Aroi14gwTJd8EnWBLrphoFnEyk9YLVWWOhy6kx8KncMJ7V/Sp0dHlGCgBZRLXWSJPj6itAciMkvo7GYhJa9HcyiG0njJY2GKzzYMGUx3vUYqQnixJa5I9KUUoR327Aff81oVfMctlA9k/9NciKnQnbPM3iNQalpExGvvGdD7T4T260JheWD1dd+htabRvs0QcqsbxyOIO9icwNdhh0Xo1yxtvd7yOaN3mt+lnoHvlRQ6pyKAiWLmBE/rbct+7wxwHEJOJK5fexzop4JtlWicDjWvijJ02qJgYcTfqnxIAp6u6w==
+ bh=UWvJevW4xRToyZQGigK+R8NypYOG19jLBIcxe/VCxDY=;
+ b=CZOFSxCdOaBG57IQ1ITwIFNSUru1dZHr54t7ShRsdQVlQ6q0pZTmKMlsKaTx+3cTX5svtWsA2FRI/f4kjR6PRgPOoYAqg513TS9qlqDml3WJiKjoakunBX593Cjr3BXzYTeUDFMLSLAqdH4DfvFPQ71CEhgGvvV4gbtWCz9qDmV6JalB2mC3YXAWsShDkTSNapHJt9eBCxiF6CWNCZGiA4Kyte8GkFZJbSjrBPLVhwnS1CLHZLgXGozixDYviXWlDPnmz8r7KX16zGtFadR6R1nCh6IArjeCzJE1upaznQlQYFfCb733S5RfcA1Hi6rncIdATAh2kEvfHOBrWdPtnA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=arm.com; dmarc=pass action=none header.from=arm.com; dkim=pass
  header.d=arm.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=armh.onmicrosoft.com; 
  s=selector2-armh-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=aawaic+7F9JxuHcXn/LveVUKjL6TBezQVbgQSBWd5jw=;
- b=X0JPwCEYU9IiEM99tpyztROfHShsL0+cdRnGcje4fu8BWimKT/ReJHp4LBq8diDGEdiONjvisjEwtgbTVUmagDZMV6eo3mzlZ73Cobz63zl9YNHPcVUFFVr/VTuBUgYBy8bA8zjH/J2ZEdYGe59Nv7UfPSj+gQ5O7HEBAVYzDwg=
+ bh=UWvJevW4xRToyZQGigK+R8NypYOG19jLBIcxe/VCxDY=;
+ b=2BEAS5H5+Ej5RjwcSYQYnNdfCouOCVr6PZkZ8OWtBfl/7GePPdkAkU8trQIkAqI3f8y8lIDQlP0N9CqATf+wkxfDWjPos6FX+zZ6bhgnnVy4OQS/nXzs/LCffER4U39ROeFBIjykGUsephUyfBK3ySegsc/qxiHONyd7ayvzb50=
 Received: from VI1PR08MB4078.eurprd08.prod.outlook.com (20.178.127.92) by
- VI1PR08MB2672.eurprd08.prod.outlook.com (10.170.238.27) with Microsoft SMTP
+ VI1PR08MB2702.eurprd08.prod.outlook.com (10.170.239.32) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2559.16; Tue, 24 Dec 2019 17:35:21 +0000
+ 15.20.2559.14; Tue, 24 Dec 2019 17:34:18 +0000
 Received: from VI1PR08MB4078.eurprd08.prod.outlook.com
  ([fe80::3d0a:7cde:7f1f:fe7c]) by VI1PR08MB4078.eurprd08.prod.outlook.com
  ([fe80::3d0a:7cde:7f1f:fe7c%7]) with mapi id 15.20.2559.017; Tue, 24 Dec 2019
- 17:35:21 +0000
+ 17:34:18 +0000
 From: Mihail Atanassov <Mihail.Atanassov@arm.com>
 To: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>
-Subject: [PATCH v3 32/35] drm/mediatek: hdmi: Use drm_bridge_init()
-Thread-Topic: [PATCH v3 32/35] drm/mediatek: hdmi: Use drm_bridge_init()
-Thread-Index: AQHVuoBzYhz6qpsZD02IuqSUEsF2WA==
-Date: Tue, 24 Dec 2019 17:34:52 +0000
-Message-ID: <20191224173408.25624-33-mihail.atanassov@arm.com>
-References: <20191224173408.25624-1-mihail.atanassov@arm.com>
-In-Reply-To: <20191224173408.25624-1-mihail.atanassov@arm.com>
+Subject: [PATCH v3 00/35] drm/bridge: Consolidate initialization
+Thread-Topic: [PATCH v3 00/35] drm/bridge: Consolidate initialization
+Thread-Index: AQHVuoBd9M/nIZUWsU+Eo17ASMPFrw==
+Date: Tue, 24 Dec 2019 17:34:17 +0000
+Message-ID: <20191224173408.25624-1-mihail.atanassov@arm.com>
 Accept-Language: en-GB, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -126,52 +124,51 @@ Authentication-Results-Original: spf=none (sender IP is )
 x-ms-exchange-messagesentrepresentingtype: 1
 x-ms-publictraffictype: Email
 X-MS-Office365-Filtering-HT: Tenant
-X-MS-Office365-Filtering-Correlation-Id: 234e0c74-54d7-463e-ca24-08d78897ac6d
-X-MS-TrafficTypeDiagnostic: VI1PR08MB2672:|VI1PR08MB2672:|VI1PR0802MB2623:
+X-MS-Office365-Filtering-Correlation-Id: f490f94b-cef0-420f-533a-08d78897d8b3
+X-MS-TrafficTypeDiagnostic: VI1PR08MB2702:|VI1PR08MB2702:|VI1PR0802MB2479:
 x-ms-exchange-transport-forked: True
-X-Microsoft-Antispam-PRVS: <VI1PR0802MB262341EFE520BDA97F3CB01D8F290@VI1PR0802MB2623.eurprd08.prod.outlook.com>
+X-Microsoft-Antispam-PRVS: <VI1PR0802MB247987DED49AE091D86CC3BC8F290@VI1PR0802MB2479.eurprd08.prod.outlook.com>
 x-checkrecipientrouted: true
-x-ms-oob-tlc-oobclassifiers: OLM:324;OLM:324;
+x-ms-oob-tlc-oobclassifiers: OLM:182;OLM:182;
 x-forefront-prvs: 0261CCEEDF
 X-Forefront-Antispam-Report-Untrusted: SFV:NSPM;
- SFS:(10009020)(4636009)(346002)(376002)(39860400002)(396003)(136003)(366004)(199004)(189003)(186003)(26005)(52116002)(6506007)(6486002)(81166006)(6512007)(81156014)(8676002)(8936002)(44832011)(54906003)(478600001)(316002)(6916009)(2906002)(4326008)(2616005)(36756003)(1076003)(66446008)(64756008)(66556008)(66476007)(66946007)(4744005)(5660300002)(6666004)(71200400001)(86362001);
- DIR:OUT; SFP:1101; SCL:1; SRVR:VI1PR08MB2672;
+ SFS:(10009020)(4636009)(346002)(376002)(136003)(366004)(396003)(39860400002)(53754006)(189003)(199004)(81156014)(8676002)(478600001)(36756003)(4326008)(8936002)(66446008)(64756008)(66946007)(66476007)(66556008)(26005)(7416002)(186003)(44832011)(6506007)(7406005)(2616005)(81166006)(71200400001)(316002)(2906002)(1076003)(6512007)(54906003)(6916009)(6486002)(86362001)(5660300002)(52116002);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:VI1PR08MB2702;
  H:VI1PR08MB4078.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
+ PTR:InfoNoRecords; MX:1; A:1; 
 received-spf: None (protection.outlook.com: arm.com does not designate
  permitted sender hosts)
 X-MS-Exchange-SenderADCheck: 1
 X-Microsoft-Antispam-Untrusted: BCL:0;
-X-Microsoft-Antispam-Message-Info-Original: cV27tvp6q+UWLP46VckiQyvP5aTwvS1N1FO//Sa1bQJtMVlJg0cCX6ZqfFddtvAqYTplJUk37WTAVi8T6TfQz+2ruixxI07udErqpndpSY720uOIIC0bqnqKiaOX4WALtDvRJXJg+FnIhYxhIhqMtdwWIiLM9erAlJm8HnHNC40wen+Bt0XrYQXBoUKbzsDKMkTcdzVdWYumK03P9Ffyo8ODpshCV+LKWUlTltdJIvX4gZ9/jyZ6wXkIQ2TQb5A34OwDlHSHZ9brSumYMU372Et5d71f6nDvo2ryunf+TWarZYw/SzSIZ9s4LLqxIJv4uudzf8O1f3P2t5Nc0uzB40bJ3S9FwZEtDU32PJmvZnjeoZ5sw+JUR8bobNfPmRDpJdYD/aLhyaRgr+tcHsATB4LKY9eUmH0mAuVjo+2mNLJkJHyxj9LYtbNxnZY857bb
+X-Microsoft-Antispam-Message-Info-Original: Gb7NFTsHGBhDbgR2I/htyd9tebpsIWIpCB+qvmXhXnJ+Du19QU6xOKxhhbbaNYB94gaPiVr0IF9b+K3eDqkUel9rn3qviyF4VDitMqtMM/9+w4FXGm2GFbWzwPyKaJ6h2RyTHglI97QA650colcRFnLiAe4UHEM30RWRVm5QERysHbtuDqPntsZ7XizkECBI66DX3SPYs2kbEVCHvJdR7XjpQbO5kbTFzii5jkUsxA18mQTqYed9noqJbfIlXBzCIRXv75G6eJ8YFFRicytpd8K7r0200q7Cmj5bXAS7NcKjo5P9757jaqz3EfWFECzdL/xs6N/9ARblVInHajEnmrMpeB3STmsct1ULKKOh1Azz15MxRu7CxDZe+1NarVXimtTBmOSbrFaksF9Q8G33TeNrWo4LJeEq6ZnRhDNZti52A8+Xf+snmOzd+3NEezm4+zF6FOAMeh4nLkBvQZzhx4muN/DR4BBxazWT2916gXeg7w5g9C6U2gcL0AcfDeGM
 MIME-Version: 1.0
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR08MB2672
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR08MB2702
 Original-Authentication-Results: spf=none (sender IP is )
  smtp.mailfrom=Mihail.Atanassov@arm.com; 
 X-EOPAttributedMessage: 0
-X-MS-Exchange-Transport-CrossTenantHeadersStripped: VE1EUR03FT034.eop-EUR03.prod.protection.outlook.com
+X-MS-Exchange-Transport-CrossTenantHeadersStripped: VE1EUR03FT036.eop-EUR03.prod.protection.outlook.com
 X-Forefront-Antispam-Report: CIP:63.35.35.123; IPV:CAL; SCL:-1; CTRY:IE;
  EFV:NLI; SFV:NSPM;
- SFS:(10009020)(4636009)(346002)(376002)(396003)(136003)(39860400002)(199004)(189003)(86362001)(6486002)(478600001)(2616005)(70586007)(5660300002)(26826003)(1076003)(70206006)(6512007)(8936002)(336012)(186003)(450100002)(6862004)(26005)(4744005)(36756003)(107886003)(76130400001)(2906002)(8676002)(6506007)(81156014)(6666004)(54906003)(356004)(4326008)(316002)(81166006);
- DIR:OUT; SFP:1101; SCL:1; SRVR:VI1PR0802MB2623;
+ SFS:(10009020)(4636009)(346002)(376002)(136003)(39860400002)(396003)(189003)(199004)(53754006)(5660300002)(76130400001)(2906002)(1076003)(6506007)(86362001)(356004)(70586007)(336012)(70206006)(186003)(26005)(2616005)(6486002)(54906003)(107886003)(26826003)(478600001)(4326008)(450100002)(36906005)(8936002)(81166006)(36756003)(81156014)(8676002)(316002)(6512007)(6862004);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:VI1PR0802MB2479;
  H:64aa7808-outbound-1.mta.getcheckrecipient.com; FPR:; SPF:Pass; LANG:en;
- PTR:ec2-63-35-35-123.eu-west-1.compute.amazonaws.com; A:1; MX:1; 
-X-MS-Office365-Filtering-Correlation-Id-Prvs: 15250682-1cb5-4aa6-b4b9-08d78897956a
+ PTR:ec2-63-35-35-123.eu-west-1.compute.amazonaws.com; MX:1; A:1; 
+X-MS-Office365-Filtering-Correlation-Id-Prvs: d70dcff6-a071-4c2b-18fa-08d788978063
 NoDisclaimer: True
 X-Forefront-PRVS: 0261CCEEDF
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: yQmfbNNlfL1IdaEd0ChkxQ7iYIU9cfvO8v/VeGX6L+ap9Ekb6fPTPc/oG7ffjB0UztpJvLhgsDchn4oVXhAe6Nqq1C/6pv5GI9U3uWzklXIdGBukWu26yEA6r0Aa0dX17pLTr7lOQ76OIT6vZS45yl3sZ7prly8A3GCkoHvncwSnM/ge9e1JTZEk9GQm1T/Gy5dO8o17Q/pgA8DWP5oquqIgE+ZWE18YitLOut7baLvofZSbVkf4z4h7Szk/7ejOiWxngZOCq8ApnEEwNJ0KzucstJCe8zLgE5bNLfKDHm8+/a/4dd2dfvvrSqmswy/ROd9EoCaNtRcYfZ8nxpmsnyWtklzXPjiNBtULetfiC0ztfTjn7CyXa0MoPmW+LdgCvvRzVtKoRdTEDVCpflWY7Xf/L4+QOkPGZf3Pfv77WDhOPKvS+h3pbnM/hlWlMuHF
+X-Microsoft-Antispam-Message-Info: y6C76b2WEr7KDSy0EqYYNflOF8OqYN+RMXXsbtFlzYy2OPgwVMEu0WgvfcBVp7mEu3TxsaVtMWl9C5+J0PBZHl50ZyWRXfOkIyrECBQwdrx2yd5EYzY3LKKlOkMyGCHe2LSonNgoQp+tkELo6D+hlD5ofQ3cgaMIzAX6Ai1YBL1tsDmR3TInomzGm4vtUXwW/uc3e0fajBX8qArkTtKlPPY7hZ+NFPDbssY/i0XslBV4zfy4MWWKAqoL14pRT0Y55/ViEFKfTeyB+NiRm14GRXWh3XdTXgHJZMNq1T/zNAsV5SVEBNy+rSkyKEhmaOfs5AD5+fQusPfCNcfhNpg0EO2eQWsuWqg1r5jYLjmxwjFHuCvZZGz44uCwWlm1Ft5HLzDD6JQ1telgrV0Am5diFyVJDwiK0JeVKvTxnGsyhU9gHiY5S0K1WtT6vy1Zr0UdINoF53ht1y7tqlK7/iFlqN5vSt8kNLpOdPuwb9/Q8SzTDvjw8nAi/7t6kMgo8JTt
 X-OriginatorOrg: arm.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Dec 2019 17:35:30.8788 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 234e0c74-54d7-463e-ca24-08d78897ac6d
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Dec 2019 17:36:45.1823 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: f490f94b-cef0-420f-533a-08d78897d8b3
 X-MS-Exchange-CrossTenant-Id: f34e5979-57d9-4aaa-ad4d-b122a662184d
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=f34e5979-57d9-4aaa-ad4d-b122a662184d; Ip=[63.35.35.123];
  Helo=[64aa7808-outbound-1.mta.getcheckrecipient.com]
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR0802MB2623
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR0802MB2479
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191224_093535_066760_645293E8 
-X-CRM114-Status: UNSURE (   9.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191224_093651_615403_B00D04DC 
+X-CRM114-Status: GOOD (  12.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -183,46 +180,139 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mihail Atanassov <Mihail.Atanassov@arm.com>,
- David Airlie <airlied@linux.ie>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
+Cc: Martyn Welch <martyn.welch@collabora.co.uk>,
+ Neil Armstrong <narmstrong@baylibre.com>, David Airlie <airlied@linux.ie>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Peter Senna Tschudin <peter.senna@gmail.com>,
+ Andrzej Hajda <a.hajda@samsung.com>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Benjamin Gaignard <benjamin.gaignard@linaro.org>,
+ Mihail Atanassov <Mihail.Atanassov@arm.com>, Sam Ravnborg <sam@ravnborg.org>,
+ "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+ Vincent Abriou <vincent.abriou@st.com>, Russell King <linux@armlinux.org.uk>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Kukjin Kim <kgene@kernel.org>,
+ CK Hu <ck.hu@mediatek.com>, Thomas Zimmermann <tzimmermann@suse.de>,
+ "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Inki Dae <inki.dae@samsung.com>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>, nd <nd@arm.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+ Matthias Brugger <matthias.bgg@gmail.com>, nd <nd@arm.com>,
+ Sean Paul <sean@poorly.run>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>,
+ Rob Clark <robdclark@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ "freedreno@lists.freedesktop.org" <freedreno@lists.freedesktop.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-No functional change.
+Hi all,
+
+Version 3 of my drm_bridge_init() series here. The biggest change from
+the previous version is the removal of drm_bridge->dev (1/35) and the
+removal of ->driver_private (2-7/35). The rest of the patches are mostly
+the same, save for dropping the driver_private argument from
+drm_bridge_init().
 
 v3:
- - drop driver_private argument (Laurent)
+ - remove drm_bridge->dev (Thomas)
+ - convert ->driver_private users to container_of() (Laurent)
+ - remove drm_bridge->driver_private (Laurent)
+ - remove driver_private argument from drm_bridge_init() (Laurent)
+ - clean up the wording on some comments (Laurent)
+ - pass the correct struct device to drm_bridge_init in analogix
+   (Laurent)
+ - I've kept the rcar-du patches separate but changed their order; this
+   should make it easier to take only one part of the series if needed
 
-Acked-by: CK Hu <ck.hu@mediatek.com>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Signed-off-by: Mihail Atanassov <mihail.atanassov@arm.com>
----
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+v2:
+ - expanded commit messages and added some extra bridge-related
+   documentation (Daniel)
+ - dropped v1 patches 29 and 30: 29 needs more work, and 30 depends on
+   it
+ - added all remaining drm_bridge implementers, found by searching for
+   drm_bridge_funcs which is mandatory for any bridge; new uses in
+   patches 3, 27, and 28 (Sam)
+ - due to the above, I've decided to squash all analogix changes into
+   one patch
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 5e4a4dbda443..a5fd2b68e407 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1710,8 +1710,8 @@ static int mtk_drm_hdmi_probe(struct platform_device *pdev)
- 
- 	mtk_hdmi_register_audio_driver(dev);
- 
--	hdmi->bridge.funcs = &mtk_hdmi_bridge_funcs;
--	hdmi->bridge.of_node = pdev->dev.of_node;
-+	drm_bridge_init(&hdmi->bridge, &pdev->dev, &mtk_hdmi_bridge_funcs,
-+			NULL);
- 	drm_bridge_add(&hdmi->bridge);
- 
- 	ret = mtk_hdmi_clk_enable_audio(hdmi);
+Mihail Atanassov (35):
+  drm: Remove drm_bridge->dev
+  drm/bridge: analogix_dp: Stop using drm_bridge->driver_private
+  drm/bridge/synopsys: Stop using drm_bridge->driver_private
+  drm/bridge: thc63lvd1024: Don't set drm_bridge->driver_private
+  drm/exynos: mic: Stop using drm_bridge->driver_private
+  drm: rcar-du: lvds: Don't set drm_bridge->driver_private
+  drm/sti: Stop using drm_bridge->driver_private
+  drm: Remove drm_bridge->driver_private
+  drm: Introduce drm_bridge_init()
+  drm/bridge: adv7511: Use drm_bridge_init()
+  drm/bridge/analogix: Use drm_bridge_init()
+  drm/bridge: cdns: Use drm_bridge_init()
+  drm/bridge: dumb-vga-dac: Use drm_bridge_init()
+  drm/bridge: lvds-codec: Use drm_bridge_init()
+  drm/bridge: megachips-stdpxxxx-ge-b850v3-fw: Use drm_bridge_init()
+  drm/bridge: nxp-ptn3460: Use drm_bridge_init()
+  drm/bridge: panel: Use drm_bridge_init()
+  drm/bridge: ps8622: Use drm_bridge_init()
+  drm/bridge: sii902x: Use drm_bridge_init()
+  drm/bridge: sii9234: Use drm_bridge_init()
+  drm/bridge: sil_sii8620: Use drm_bridge_init()
+  drm/bridge: dw-hdmi: Use drm_bridge_init()
+  drm/bridge/synopsys: dsi: Use drm_bridge_init()
+  drm/bridge: tc358764: Use drm_bridge_init()
+  drm/bridge: tc358767: Use drm_bridge_init()
+  drm/bridge: thc63: Use drm_bridge_init()
+  drm/bridge: ti-sn65dsi86: Use drm_bridge_init()
+  drm/bridge: ti-tfp410: Use drm_bridge_init()
+  drm/exynos: mic: Use drm_bridge_init()
+  drm/i2c: tda998x: Use drm_bridge_init()
+  drm/mcde: dsi: Use drm_bridge_init()
+  drm/mediatek: hdmi: Use drm_bridge_init()
+  drm: rcar-du: lvds: Use drm_bridge_init()
+  drm/sti: Use drm_bridge_init()
+  drm/msm: Use drm_bridge_init()
+
+ drivers/gpu/drm/bridge/adv7511/adv7511_drv.c  |  6 +--
+ .../drm/bridge/analogix/analogix-anx6345.c    |  7 ++--
+ .../drm/bridge/analogix/analogix-anx78xx.c    | 10 ++---
+ .../drm/bridge/analogix/analogix_dp_core.c    | 42 +++++++------------
+ .../drm/bridge/analogix/analogix_dp_core.h    |  8 +++-
+ drivers/gpu/drm/bridge/cdns-dsi.c             |  6 +--
+ drivers/gpu/drm/bridge/dumb-vga-dac.c         |  8 ++--
+ drivers/gpu/drm/bridge/lvds-codec.c           |  8 ++--
+ .../bridge/megachips-stdpxxxx-ge-b850v3-fw.c  |  6 +--
+ drivers/gpu/drm/bridge/nxp-ptn3460.c          |  5 +--
+ drivers/gpu/drm/bridge/panel.c                |  9 ++--
+ drivers/gpu/drm/bridge/parade-ps8622.c        |  5 +--
+ drivers/gpu/drm/bridge/sii902x.c              | 11 +++--
+ drivers/gpu/drm/bridge/sii9234.c              |  3 +-
+ drivers/gpu/drm/bridge/sil-sii8620.c          |  3 +-
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c     | 26 ++++++------
+ drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c |  7 +---
+ drivers/gpu/drm/bridge/tc358764.c             |  8 ++--
+ drivers/gpu/drm/bridge/tc358767.c             |  9 ++--
+ drivers/gpu/drm/bridge/thc63lvd1024.c         |  7 +---
+ drivers/gpu/drm/bridge/ti-sn65dsi86.c         |  7 ++--
+ drivers/gpu/drm/bridge/ti-tfp410.c            | 10 ++---
+ drivers/gpu/drm/drm_bridge.c                  | 40 +++++++++++++++---
+ drivers/gpu/drm/exynos/exynos_drm_mic.c       | 16 +++----
+ drivers/gpu/drm/i2c/tda998x_drv.c             |  8 +---
+ drivers/gpu/drm/mcde/mcde_dsi.c               |  5 +--
+ drivers/gpu/drm/mediatek/mtk_hdmi.c           |  4 +-
+ drivers/gpu/drm/msm/dsi/dsi_manager.c         |  3 +-
+ drivers/gpu/drm/msm/edp/edp_bridge.c          |  5 +--
+ drivers/gpu/drm/msm/hdmi/hdmi_bridge.c        |  7 ++--
+ drivers/gpu/drm/rcar-du/rcar_lvds.c           |  7 ++--
+ drivers/gpu/drm/sti/sti_dvo.c                 | 23 ++++------
+ drivers/gpu/drm/sti/sti_hda.c                 | 19 ++++-----
+ drivers/gpu/drm/sti/sti_hdmi.c                | 15 +++----
+ drivers/gpu/drm/sti/sti_hdmi.h                |  5 +++
+ include/drm/drm_bridge.h                      | 16 +++++--
+ 36 files changed, 181 insertions(+), 203 deletions(-)
+
 -- 
 2.24.0
 
