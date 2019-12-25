@@ -2,78 +2,78 @@ Return-Path: <SRS0=B1Xv=2P=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B531AC2D0DA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Dec 2019 08:21:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A3B78C2D0DA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Dec 2019 09:36:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 889942072A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Dec 2019 08:21:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6D0102073B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Dec 2019 09:36:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OgnTErtx";
-	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="Y/8W9RJ2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 889942072A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="O4+DJctS";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="hyyuIbMz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D0102073B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GtismjyTiZrjy0lP0pgpRFdWTlrBlgNaMpo+MkIc6F4=; b=OgnTErtxA7VH+9EcwEU66GEFT
-	6XgmuZLnKkVoSnuHjvf54p0owPWu8I+/bI5rQKF0CJrlerbx+eyV1LTGoIDQeaprSlp9UQhGUHGVa
-	mgDfi6+LyYS2OIHGgxtM13cw6fb438bxa8b2k4PqRp8hBhlwl2w5Gp15SiMLyLskxRecTwObHvGNp
-	eM9nkwR2s68DpW/zcBtESz8OWc0oJ1cvprB/5SRgMXANGzOJhxZfkarJC/SF6YpgBfaotso6NNlUP
-	AFRqDK2iFnLecb52+8vJG2boOlXgQ2esl/qAMvoTDyLciRlHdhWEzaSHRrOW2cwOJQxvD1mGFbfOD
-	EakHMjIRA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZVM3msIV10356VYH3uYptLEMbl3EObKS255dqbQ0h+Q=; b=O4+DJctS255lXV
+	EWVbQrgjlFTDA6MKwiYUk2i034hNvplLrAwx4YAl5dwXNQ+R/WzrTsPS3XqX/2B9/0l/fRek399BN
+	kdcZf5Gd1ARcDRsFkWk1l0q4Gz3v+VWfuc/zPLNqSjHXGQZT1LEUfL8hBTdztqCLmHFF6vv6AaH0u
+	7Pg+Iv+tu/qxwNwdy5Efpa+HetcUPIQzwol0vuQ+DjHf6k7AUJ0CgULzs9Xtl6EQWFsXYWUh2bmOB
+	3xePs47VvQD9d5hXtGuFYDPi9yGZkBm9+68h2pMh4GoOch3smhjbZx0wOzFnmCWTA/mTN85BOGV8P
+	1utIZVA1Xd0GuZu1U2uw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ik1v9-0004b8-Vu; Wed, 25 Dec 2019 08:21:31 +0000
-Received: from mail26.static.mailgun.info ([104.130.122.26])
+	id 1ik35F-0000d6-Av; Wed, 25 Dec 2019 09:36:01 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ik1v7-0004aH-1G
- for linux-mediatek@lists.infradead.org; Wed, 25 Dec 2019 08:21:30 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1577262087; h=Message-ID: References: In-Reply-To: Subject:
- Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=K83HIkx3t93SDXJyO1FB5pObJwAm8xvbYEkqpHJP7VU=;
- b=Y/8W9RJ2C/a3gGCnpbdWY1D1RIfkFrDXBy5BmpeqjLv4fXn2xek5Kn+wXnekJGrTnmW0akwF
- gkTKYZLO9lcJN7DQ5Nzw3Vt0fRuCCcFEcc2NHM7NOcgwB7RXOauTAdVAk+t/ZF0AwtLzyqtd
- km0uEFNm/2GWk7IzSyh/AsSZcuA=
-X-Mailgun-Sending-Ip: 104.130.122.26
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
- by mxa.mailgun.org with ESMTP id 5e031c06.7fdadd69fbc8-smtp-out-n02;
- Wed, 25 Dec 2019 08:21:26 -0000 (UTC)
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id AC96DC433A2; Wed, 25 Dec 2019 08:21:25 +0000 (UTC)
-Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
- (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
- (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 09744C433CB;
- Wed, 25 Dec 2019 08:21:25 +0000 (UTC)
+ id 1ik35C-0000cK-Jb
+ for linux-mediatek@lists.infradead.org; Wed, 25 Dec 2019 09:36:00 +0000
+X-UUID: ab6e964bfd74435294e86c80ffd31583-20191225
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=MQpZnlOW3rHl7XcCvW/fiVIv7mvsoc4U1tYgVz64kwo=; 
+ b=hyyuIbMzic0VYRogqCCFKuTYs/TvNOwZZqr3i4C9wi7o02au4JYeRZIBX7eE+d+1YxCxemQ6wqkBH+jYcCav7rCqQf8lnogQrTosc5wa3vFbkbf5B95fVHzV0N2WDfTDe2trqnv7fkXez12tdAeRb9+VBen+LOYi5FRhcIK5Di4=;
+X-UUID: ab6e964bfd74435294e86c80ffd31583-20191225
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1694603866; Wed, 25 Dec 2019 01:35:49 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 25 Dec 2019 01:29:30 -0800
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 25 Dec 2019 17:28:44 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Wed, 25 Dec 2019 17:28:42 +0800
+Message-ID: <1577266145.31907.4.camel@mtkswgap22>
+Subject: Re: [PATCH] mm/page_owner: print largest memory consumer when OOM
+ panic occurs
+From: Miles Chen <miles.chen@mediatek.com>
+To: Qian Cai <cai@lca.pw>
+Date: Wed, 25 Dec 2019 17:29:05 +0800
+In-Reply-To: <5E08DE19-5B71-4245-8908-548BB4FA861F@lca.pw>
+References: <1577169946.4959.4.camel@mtkswgap22>
+ <5E08DE19-5B71-4245-8908-548BB4FA861F@lca.pw>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-Date: Wed, 25 Dec 2019 16:21:25 +0800
-From: Can Guo <cang@codeaurora.org>
-To: Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [PATCH v1 1/2] scsi: ufs: unify scsi_block_requests usage
-In-Reply-To: <1577192466-20762-2-git-send-email-stanley.chu@mediatek.com>
-References: <1577192466-20762-1-git-send-email-stanley.chu@mediatek.com>
- <1577192466-20762-2-git-send-email-stanley.chu@mediatek.com>
-Message-ID: <d97b91ae4547e5b6e433891446a68545@codeaurora.org>
-X-Sender: cang@codeaurora.org
-User-Agent: Roundcube Webmail/1.3.9
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191225_002129_139932_873B32E9 
-X-CRM114-Status: GOOD (  12.95  )
+X-CRM114-CacheID: sfid-20191225_013558_657342_BB68018F 
+X-CRM114-Status: GOOD (  18.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,54 +85,99 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-scsi@vger.kernel.org, martin.petersen@oracle.com,
- andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, avri.altman@wdc.com,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- alim.akhtar@samsung.com, matthias.bgg@gmail.com, pedrom.sousa@synopsys.com,
- linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Cc: Michal Hocko <mhocko@suse.com>, wsd_upstream@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-mm@kvack.org,
+ linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2019-12-24 21:01, Stanley Chu wrote:
-> Currently UFS driver has ufshcd_scsi_block_requests() with
-> reference counter mechanism to avoid possible racing of blocking and
-> unblocking requests flow. Unify all users in UFS driver to use the
-> same function.
+On Tue, 2019-12-24 at 08:47 -0500, Qian Cai wrote:
 > 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> ---
->  drivers/scsi/ufs/ufshcd.c |    4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> > On Dec 24, 2019, at 1:45 AM, Miles Chen <miles.chen@mediatek.com> wrote:
+> > 
+> > We use kmemleak too, but a memory leakage which is caused by
+> > alloc_pages() in a kernel device driver cannot be caught by kmemleak.
+> > We have fought against this kind of real problems for a few years and 
+> > find a way to make the debugging easier.
+> > 
+> > We currently have information during OOM: process Node, zone, swap, 
+> > process (pid, rss, name), slab usage, and the backtrace, order, and
+> > gfp flags of the OOM backtrace. 
+> > We can tell many different types of OOM problems by the information
+> > above except the alloc_pages() leakage.
+> > 
+> > The patch does work and save a lot of debugging time.
+> > Could we consider the "greatest memory consumer" as another useful 
+> > OOM information?
 > 
-> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> index ed02a70..b6b9665 100644
-> --- a/drivers/scsi/ufs/ufshcd.c
-> +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -5177,7 +5177,7 @@ static void
-> ufshcd_exception_event_handler(struct work_struct *work)
->  	hba = container_of(work, struct ufs_hba, eeh_work);
-> 
->  	pm_runtime_get_sync(hba->dev);
-> -	scsi_block_requests(hba->host);
-> +	ufshcd_scsi_block_requests(hba);
->  	err = ufshcd_get_ee_status(hba, &status);
->  	if (err) {
->  		dev_err(hba->dev, "%s: failed to get exception status %d\n",
-> @@ -5191,7 +5191,7 @@ static void
-> ufshcd_exception_event_handler(struct work_struct *work)
->  		ufshcd_bkops_exception_event_handler(hba);
-> 
->  out:
-> -	scsi_unblock_requests(hba->host);
-> +	ufshcd_scsi_unblock_requests(hba);
->  	pm_runtime_put_sync(hba->dev);
->  	return;
->  }
+> This is rather situational considering there are memory leaks here and there but it is not necessary that straightforward as a single place of greatest consumer.
 
-Reviewed-by: Can Guo <cang@codeaurora.org>
+Agreed, but having the greatest memory consumer information does no harm
+here.
+Maybe you can share some cases to me?
+
+
+The greatest memory consumer provides a strong clue of of a memory
+leakage.
+I have seen some different types of OOM issues.
+
+1. task leakage, we can observe these by the kernel_stack numbers
+
+2. memory fragmentation, check the ZONE memory status and the allocation
+order
+
+3. kmalloc leakage, check the slab numbers and let's say the number
+kamlloc-512 is abnormal,
+and we can enable kmemleak, reproduce the issue. Most of the time, I saw
+a single backtrace of that leak.
+It's helpful to have the greatest memory consumer in this case.
+
+4. vmalloc leakage, we have no vmalloc numbers now. And I saw a case
+that we pass a large number
+into vmalloc() in a fuzzing test and it causes OOM kernel panic.
+It is hard to reproduce the issue and kmemleak can do little help here
+because it is a OOM kernel panic.
+That is the issue which inspires me to create this patch. We found the
+root cause by this approach.
+
+5. OOM due to out of normal memory (in 32bit kernel), we can check the
+allocate flags and the
+zone memory status. In this case, we can try to check the memory
+allocations and see if they can
+use highmem. Knowing the greatest memory consumer may or may not be
+useful here.
+
+6. OOM caused by 2 or more different backtraces. I saw this once and we
+enable PAGE_OWNER and
+get the complete information of memory usage and locate the root cause.
+Again, knowing the greatest
+memory consumer is still a help in this issue.
+
+7. OOM cause by alloc_pages(). There are no existing useful information
+for this issue. 
+CONFIG_PAGE_OWNER is useful and we can do more base on
+CONFIG_PAGE_OWNER. (this patch)
+
+> 
+> The other question is why the offensive drivers that use alloc_pages() repeatedly without using any object allocator? Do you have examples of this in drivers that could happen?
+
+
+For example, we're implementing our iommu driver and there are many
+alloc_pages() in drivers/iommu.
+This approach helps us located some memory leakages in our
+implementation.
+
+Thanks again for your comments
+It's Christmas now so I think we can discuss after the Christmas break?
+
+I have posted the number of issues addressed by this approach (7 real
+problems since 2019/5) 
+I think this approach can help people. :)
+
+
+  Miles
 
 _______________________________________________
 Linux-mediatek mailing list
