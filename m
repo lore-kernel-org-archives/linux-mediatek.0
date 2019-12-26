@@ -2,78 +2,132 @@ Return-Path: <SRS0=Aqg+=2Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6AB0BC2D0DA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Dec 2019 07:43:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 970D3C2D0DA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Dec 2019 08:40:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3558E2075E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Dec 2019 07:43:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F30D3206CB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Dec 2019 08:40:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="W6zoPG9s";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="LZdR0xLr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3558E2075E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FkTAMHdh";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="oQy4guff"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F30D3206CB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:MIME-Version:Message-ID:Date
+	:Subject:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EJ31wm4bG7NoBLZqbbo61e9F3sT/i3Ocub9DYAEKP6I=; b=W6zoPG9slek4Il
-	c3XgJu7dorJpmPJO7hQbGIV857gid5w9HDZK2FnAtasy9ifQo4ST008wjy0SD1WiYbx4sjGKMm0+E
-	Ki9H59FK24bjTQ8TfZE6lzmg83ScGGiwdMb+GyxJlb2XVOzMyHbOVC+AQ15WMGIhAKXJeV/MIPxXi
-	ZZVkuCXwqmwZ4aBdm8o21Kx5bCOelU7kkuxqi+EXfb/gVUoGAbY6JjbeTFkWgUKZ/sP/latRyygto
-	KQgtvUd82NdB/NE3CPiD2NXm9lw77m18ECdyQaXp/vK4bkDqcHIOwdWR4WYBl1b87ETsEwfi24cPu
-	InYILkcMOiKe6ppx/haw==;
+	List-Owner; bh=/Uyun4WssUBc2d1BfkGoxXmORoYlAmd2HUYfQZlWUDY=; b=FkTAMHdha9Da4/
+	cZtxf2PxNo5qh/C8xzhLQAjhcbHWHRm/2HNacIGlgSDpA8r2WKKWtiExY4bapOZRB+WuAiTV07Gc4
+	xJUgDn2rJD0JL0xvAVOHd9hpx3x1ybkQ8zEj3yFPVdSEC3ORNz8KtiuZA9WFtvCsN0EyjRKguY7ra
+	121U6h/yZ6IfYdCj7UClnJ6iweds/8dB3gHPflhdgjKSBY4fPVmROjpOm7uufX49Bn8VSZmb5fMQn
+	G9pRrIjYID1EPAQ5aLypZvSj0jT7Z4r+aq8GyP/0vgx8jUhZgw73OxKVZzTN6xSdrBx0S0Wl93tVM
+	nNlQjjQDdhAr/xU8VS4w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ikNnQ-0003u7-WD; Thu, 26 Dec 2019 07:43:01 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ikOgv-0004w9-ND; Thu, 26 Dec 2019 08:40:21 +0000
+Received: from mailout1.samsung.com ([203.254.224.24])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ikNnD-0003ld-Ox; Thu, 26 Dec 2019 07:42:50 +0000
-X-UUID: e88a83898ede4aa48abeeb6d3b494270-20191225
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=B8FgD3ZrjisgjSkL3JaHceiILrlLNx2yrKhwr8RakCI=; 
- b=LZdR0xLrEYvhQJGiDA3Mue8i2JMovgNzQ6JSwmdkVunNdVu5g16UY4b002ZkDZrKeOkDIil+AgRb4p9gyjb4yRweZJYwQQhzqVfr6SJAMeTSH6gQTYr+0iKQ9X097YLztJtWKa+9Qoon34gxo9W8ZOM2vSqo23WQrLiHgKFSRio=;
-X-UUID: e88a83898ede4aa48abeeb6d3b494270-20191225
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <yong.liang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 995227162; Wed, 25 Dec 2019 23:42:40 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 25 Dec 2019 23:43:03 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31DR.mediatek.inc
- (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Thu, 26 Dec 2019 15:42:07 +0800
-Received: from [10.17.3.153] (172.27.4.253) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Thu, 26 Dec 2019 15:42:28 +0800
-Message-ID: <1577346109.20923.3.camel@mhfsdcap03>
-Subject: Re: [PATCH v6 2/2] watchdog: mtk_wdt: mt8183: Add reset controller
-From: Yong Liang <yong.liang@mediatek.com>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Date: Thu, 26 Dec 2019 15:41:49 +0800
-In-Reply-To: <fe8b8b2aac6d92a1d7ffc32ea012db9898ab6857.camel@pengutronix.de>
-References: <1576081356-18298-1-git-send-email-jiaxin.yu@mediatek.com>
- <1576081356-18298-3-git-send-email-jiaxin.yu@mediatek.com>
- <fe8b8b2aac6d92a1d7ffc32ea012db9898ab6857.camel@pengutronix.de>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1ikOgs-0004vc-7T
+ for linux-mediatek@lists.infradead.org; Thu, 26 Dec 2019 08:40:20 +0000
+Received: from epcas5p4.samsung.com (unknown [182.195.41.42])
+ by mailout1.samsung.com (KnoxPortal) with ESMTP id
+ 20191226084014epoutp0152b4a3f50230d361762c8eac1772011b~j3x4EAbR42742327423epoutp016
+ for <linux-mediatek@lists.infradead.org>; Thu, 26 Dec 2019 08:40:14 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.samsung.com
+ 20191226084014epoutp0152b4a3f50230d361762c8eac1772011b~j3x4EAbR42742327423epoutp016
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1577349614;
+ bh=dT1jdzLXqQk1HbSpHz9Xm0UikVHPXoEORT4MA39J+xA=;
+ h=From:To:Cc:In-Reply-To:Subject:Date:References:From;
+ b=oQy4guffTQfshsBfIEf/xXj0Xwsj6fXVAg3uQZ0XzzptyWUMSVPM+dO2p/6MjcaI2
+ VxJ450vQCclGpX3VZgNYTZv8FKzbK33dcs9dymxGHm/DUumM4NUdbNbgoSRfK1SV08
+ FFh6Eei+/WcKrgpzChZVefpMwA5QRlZjWq0fuxQM=
+Received: from epsmges5p1new.samsung.com (unknown [182.195.42.73]) by
+ epcas5p3.samsung.com (KnoxPortal) with ESMTP id
+ 20191226084014epcas5p374a6b7fab3b8651282ecc8a0572bb3cb~j3x3oHNOg1792117921epcas5p3Q;
+ Thu, 26 Dec 2019 08:40:14 +0000 (GMT)
+Received: from epcas5p1.samsung.com ( [182.195.41.39]) by
+ epsmges5p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 20.86.19726.DE1740E5; Thu, 26 Dec 2019 17:40:14 +0900 (KST)
+Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
+ epcas5p1.samsung.com (KnoxPortal) with ESMTPA id
+ 20191226084013epcas5p1ee20f34b2a92a048c9509d2db7f33c47~j3x3HogFA0110601106epcas5p1F;
+ Thu, 26 Dec 2019 08:40:13 +0000 (GMT)
+Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
+ epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
+ 20191226084013epsmtrp2a826e03d7991ee4c69cd91ae250437ea~j3x3Gsowj0738407384epsmtrp2a;
+ Thu, 26 Dec 2019 08:40:13 +0000 (GMT)
+X-AuditID: b6c32a49-7c1ff70000014d0e-49-5e0471edef1d
+Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
+ epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 48.05.10238.DE1740E5; Thu, 26 Dec 2019 17:40:13 +0900 (KST)
+Received: from alimakhtar02 (unknown [107.111.84.32]) by
+ epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
+ 20191226084010epsmtip12e0d5bf2805c3aa1df1c575834167b22~j3x0uWbxT2568525685epsmtip1S;
+ Thu, 26 Dec 2019 08:40:10 +0000 (GMT)
+From: "Alim Akhtar" <alim.akhtar@samsung.com>
+To: "'Stanley Chu'" <stanley.chu@mediatek.com>, "'Alim Akhtar'"
+ <alim.akhtar@gmail.com>
+In-Reply-To: <1577259276.13056.54.camel@mtkswgap22>
+Subject: RE: [PATCH v2 1/2 RESEND] soc: mediatek: add header for SiP service
+ interface
+Date: Thu, 26 Dec 2019 14:10:09 +0530
+Message-ID: <000001d5bbc8$1714f380$453eda80$@samsung.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 8574F099F3B0AD104410C800107372672A0E4739F5A4B188550EFA2C7F63128E2000:8
-X-MTK: N
+X-Mailer: Microsoft Outlook 16.0
+Thread-Index: AQLfsl7NswcOymnlnDUFcsSWGXSx+QFOXFOPAqs67pcB7B9dkQIaRF/qAcXWdxmlafunoA==
+Content-Language: en-in
+X-Brightmail-Tracker: H4sIAAAAAAAAA02Se0hTYRjG+3bO2c5Gq9NR8s0gbCSVlmYWfFGUROExuvhHiEloBzvNyMvc
+ 1K6QlaltylqR5jAx80JXy1SmYtoqbWimqZWSQqUsrawcGWY3t6Pkf7/ve56H533hpQl2lPKk
+ D8YnCdp4PlYlVZDVj5YvXTmSSEauMiTikt7juKWgm8BD491S/PDtORLf+GSR4p8jj2W46HW1
+ BJ/9O0zgQWMliSvev6RwZ22+FHee6UDY8GrSV9b8R4JPpwXitKbvJK4anaBwSVUPCmK5GnOf
+ jDtf1Ii4+8UnuTRbA8n9KM+Uct8Ge0mussGBOEfFIi6j0SAJlUcoNuwXYg+mCFr/jfsUMRXW
+ AVJjhCMD1jWpKMNDj+Q0MGvgTZYN6ZGCZpk6BKafNyVOgWVGEYz27BGFMQTFef3EdMJueioT
+ hXoEV1oHKfExjOCsXe9ySZmVYLmWLnWyO7MHXnzUu0wEkyaDy5/trg45Ewjttj8udmPC4V1R
+ lotJxhuef+qlnKxk1oHR0iUTeR7Y8gZIJxOML5Re/Tg1kheMD5ZSYlkY5OV2UaLHA56MZxHO
+ YmDaZGDSX6LEwBaY+H1nit1guLlSJrInOEbqJ6emJ/kQZNUGit8noKSgiRR5EzR25ZNOC8Es
+ h/Jaf7FqDmRPDEjEpBIy01nR7Q1nRrqnkgvBZDBMlXJge5YtOY8Wm2csZp6xmHnGAub/ZYWI
+ vIEWCBpdnFrQrdUExAuH/XR8nC45Xu0XnRBXgVyX6BNiQea27VbE0Eg1W3n3ABHJUnyK7mic
+ FQFNqNyVN7UoklXu548eE7QJUdrkWEFnRQtpUuWhvEB172UZNZ8kHBIEjaCdViW03DMVhSW9
+ /7Durv98U/Du+q2595aNbzW6T9wOCY+aS0XPWa/QOBJm4exbq4Pp6D6fspoFb+Se7FrfnG2N
+ fhZtsNK4OfxCR8OXHRcjck6dvj7GF6bSl3e2Nod+zfzFL3HkD6v//rBjR/gDt57O8hVke+au
+ 5P7ClpqhvsURXheL7HVR+eogFamL4QN8CK2O/weExJqahQMAAA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFrrJIsWRmVeSWpSXmKPExsWy7bCSnO7bQpY4g3WPpCyW3qq2OD3vKrPF
+ y59X2SwOPuxksVj1Zgebxa93R9gtFt3YxmTR+v8Vs8XT/i0sFpseX2O1uLxrDpvF5eaLjBbd
+ 14Hqlh//x2TR1GJs0XLsK4vF1k+/WS2Wbr3J6CDksXPWXXaPCYsOMHpsXlLv0XJyP4vH9/Ud
+ bB4fn95i8diy/zOjx+dNch7tB7qZAjijuGxSUnMyy1KL9O0SuDK2nPvLVLBasGLWx7wGxt+8
+ XYycHBICJhLPJ55g72Lk4hAS2M0ocXBPMxtEQlri+sYJ7BC2sMTKf8+hil4wSsy708wCkmAT
+ 0JXYsbgNrEFEIFKibdkRZpAiZoE2dolHJ5exQXS8YpJ4s/EDWBWngLHEhZP/mEBsYYEwibWN
+ /8FsFgFVifNvbrGC2LwClhL9O66wQ9iCEidnPgHbxiygLfH05lM4e9nC18wQ5ylI/Hy6jBXi
+ ijCJmdOvsELUiEsc/dnDPIFReBaSUbOQjJqFZNQsJC0LGFlWMUqmFhTnpucWGxYY5qWW6xUn
+ 5haX5qXrJefnbmIER7iW5g7Gy0viDzEKcDAq8fBuSGOOE2JNLCuuzD3EKMHBrCTCu7qIMU6I
+ NyWxsiq1KD++qDQntfgQozQHi5I479O8Y5FCAumJJanZqakFqUUwWSYOTqkGxnaWz9t+XK2L
+ uWMY87Jtf8LT5o9eXXN6Lm/Z+TAjJNV0aVKh989YYV6rS3aitvNNs0IK10z5s8fpc5/j4bsc
+ L9zZbb8mHP/ENmmOk7r97nU3xaSvzeHxTb9RdI3X10Rd4c2OfEG2eykudc31h3k9JZ5Mbvzf
+ c8TDiXWeTqfif51/c7Lc0uK+KLEUZyQaajEXFScCAGEY9LjsAgAA
+X-CMS-MailID: 20191226084013epcas5p1ee20f34b2a92a048c9509d2db7f33c47
+X-Msg-Generator: CA
+CMS-TYPE: 105P
+X-CMS-RootMailID: 20191225073443epcas3p3dfb0484e3bef98cba01c063ca62e26fe
+References: <1576468137-17220-1-git-send-email-stanley.chu@mediatek.com>
+ <1576468137-17220-2-git-send-email-stanley.chu@mediatek.com>
+ <CAGOxZ50RKYAEw=HwYMH=Jm7cagUV12C-fwhauJhJqx6HscAmFA@mail.gmail.com>
+ <1576804540.13056.22.camel@mtkswgap22>
+ <CGME20191225073443epcas3p3dfb0484e3bef98cba01c063ca62e26fe@epcas3p3.samsung.com>
+ <1577259276.13056.54.camel@mtkswgap22>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191225_234247_820980_AA4289DE 
-X-CRM114-Status: GOOD (  23.21  )
+X-CRM114-CacheID: sfid-20191226_004018_603792_B080094A 
+X-CRM114-Status: UNSURE (   7.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,193 +139,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-watchdog@vger.kernel.org" <linux-watchdog@vger.kernel.org>,
- "sboyd@kernel.org" <sboyd@kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Jiaxin Yu =?UTF-8?Q?=28=E4=BF=9E=E5=AE=B6=E9=91=AB=29?=
- <Jiaxin.Yu@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?=
- <Yingjoe.Chen@mediatek.com>, "wim@linux-watchdog.org" <wim@linux-watchdog.org>,
- "linux@roeck-us.net" <linux@roeck-us.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: f.fainelli@gmail.com, linux-scsi@vger.kernel.org, "'Martin K.
+ Petersen'" <martin.petersen@oracle.com>,
+ =?utf-8?B?J0xlb24gQ2hlbiAo6Zmz5paH6Y+YKSc=?= <Leon.Chen@mediatek.com>,
+ =?utf-8?Q?'Andy_Teng_=28=1B$B{}G!9=28=1B=28B=29'?= <Andy.Teng@mediatek.com>,
+ "'James E.J. Bottomley'" <jejb@linux.ibm.com>,
+ =?utf-8?Q?'Chun-Hung_Wu_=28=E5=B7=AB=E9=A7=BF=E5=AE=8F=29'?=
+ <Chun-hung.Wu@mediatek.com>,
+ =?utf-8?Q?'Kuohong_Wang_=28=E7=8E=8B=E5=9C=8B=E9=B4=BB=29'?=
+ <kuohong.wang@mediatek.com>, 'open list' <linux-kernel@vger.kernel.org>,
+ 'Avri Altman' <avri.altman@wdc.com>, linux-mediatek@lists.infradead.org,
+ =?utf-8?Q?'Peter_Wang_=28=E7=8E=8B=E4=BF=A1=E5=8F=8B=29'?=
+ <peter.wang@mediatek.com>, 'Matthias Brugger' <matthias.bgg@gmail.com>,
+ 'Pedro Sousa' <pedrom.sousa@synopsys.com>,
+ linux-arm-kernel@lists.infradead.org,
+ "'Bean Huo \(beanhuo\)'" <beanhuo@micron.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2019-12-12 at 00:44 +0800, Philipp Zabel wrote:
-> Hi,
-> 
-> On Thu, 2019-12-12 at 00:22 +0800, Jiaxin Yu wrote:
-> > From: "yong.liang" <yong.liang@mediatek.com>
-> > 
-> > Add reset controller API in watchdog driver.
-> > Besides watchdog, MTK toprgu module alsa provide sub-system (eg, audio,
-> > camera, codec and connectivity) software reset functionality.
-> 
-> Do any of the listed sub-systems use the reset_control_reset()
-> functionality? Is there no delay requirement between assert and
-> deassert? Otherwise it would be safer not to implement the .reset()
-> operation at all.
-> 
-> > Audio use this reset API to reset audio, and it works well.
-    It is no need to add delay between assert and deassert.
-
-> > Signed-off-by: yong.liang <yong.liang@mediatek.com>
-> > ---
-> >  drivers/watchdog/Kconfig   |   1 +
-> >  drivers/watchdog/mtk_wdt.c | 109 ++++++++++++++++++++++++++++++++++++-
-> >  2 files changed, 109 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/watchdog/Kconfig b/drivers/watchdog/Kconfig
-> > index 2e07caab9db2..629249fe5305 100644
-> > --- a/drivers/watchdog/Kconfig
-> > +++ b/drivers/watchdog/Kconfig
-> > @@ -717,6 +717,7 @@ config MEDIATEK_WATCHDOG
-> >  	tristate "Mediatek SoCs watchdog support"
-> >  	depends on ARCH_MEDIATEK || COMPILE_TEST
-> >  	select WATCHDOG_CORE
-> > +	select RESET_CONTROLLER
-> >  	help
-> >  	  Say Y here to include support for the watchdog timer
-> >  	  in Mediatek SoCs.
-> > diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-> > index 9c3d0033260d..667380031dfd 100644
-> > --- a/drivers/watchdog/mtk_wdt.c
-> > +++ b/drivers/watchdog/mtk_wdt.c
-> > @@ -9,6 +9,9 @@
-> >   * Based on sunxi_wdt.c
-> >   */
-> >  
-> > +#include <dt-bindings/reset-controller/mt2712-resets.h>
-> > +#include <dt-bindings/reset-controller/mt8183-resets.h>
-> > +#include <linux/delay.h>
-> >  #include <linux/err.h>
-> >  #include <linux/init.h>
-> >  #include <linux/io.h>
-> > @@ -16,10 +19,12 @@
-> >  #include <linux/module.h>
-> >  #include <linux/moduleparam.h>
-> >  #include <linux/of.h>
-> > +#include <linux/of_device.h>
-> >  #include <linux/platform_device.h>
-> > +#include <linux/reset-controller.h>
-> > +#include <linux/slab.h>
-> 
-> What is this required for?
-
-  It is no use. I will remove it.
-> 
-> >  #include <linux/types.h>
-> >  #include <linux/watchdog.h>
-> > -#include <linux/delay.h>
-> >
-> >  #define WDT_MAX_TIMEOUT		31
-> >  #define WDT_MIN_TIMEOUT		1
-> > @@ -44,6 +49,9 @@
-> >  #define WDT_SWRST		0x14
-> >  #define WDT_SWRST_KEY		0x1209
-> >  
-> > +#define WDT_SWSYSRST		0x18U
-> > +#define WDT_SWSYS_RST_KEY	0x88000000
-> > +
-> >  #define DRV_NAME		"mtk-wdt"
-> >  #define DRV_VERSION		"1.0"
-> >  
-> > @@ -53,8 +61,97 @@ static unsigned int timeout;
-> >  struct mtk_wdt_dev {
-> >  	struct watchdog_device wdt_dev;
-> >  	void __iomem *wdt_base;
-> > +	spinlock_t lock; /* protects WDT_SWSYSRST reg */
-> > +	struct reset_controller_dev rcdev;
-> > +};
-> > +
-> > +struct mtk_wdt_data {
-> > +	int infracfg_sw_rst_num;
-> 
-> This is not used at all, better remove it.
-  I will remove it.
-> 
-> > +	int toprgu_sw_rst_num;
-> > +};
-> > +
-> > +static const struct mtk_wdt_data mt2712_data = {
-> > +	.toprgu_sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
-> > +};
-> > +
-> > +static const struct mtk_wdt_data mt8183_data = {
-> > +	.infracfg_sw_rst_num = MT8183_INFRACFG_SW_RST_NUM,
-> 
-> Same as above.
-  I will remove it.
-> 
-> > +	.toprgu_sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
-> > +};
-> > +
-> > +static int toprgu_reset_update(struct reset_controller_dev *rcdev,
-> > +			       unsigned long id, bool assert)
-> > +{
-> > +	unsigned int tmp;
-> > +	unsigned long flags;
-> > +
-> 
-> This empty line can be removed.
-  I will remove it.
-> 
-> > +	struct mtk_wdt_dev *data =
-> > +		 container_of(rcdev, struct mtk_wdt_dev, rcdev);
-> > +
-> > +	spin_lock_irqsave(&data->lock, flags);
-> > +
-> > +	tmp = readl(data->wdt_base + WDT_SWSYSRST);
-> > +	if (assert)
-> > +		tmp |= BIT(id);
-> > +	else
-> > +		tmp &= ~BIT(id);
-> > +	tmp |= WDT_SWSYS_RST_KEY;
-> > +	writel(tmp, data->wdt_base + WDT_SWSYSRST);
-> > +
-> > +	spin_unlock_irqrestore(&data->lock, flags);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int toprgu_reset_assert(struct reset_controller_dev *rcdev,
-> > +			       unsigned long id)
-> > +{
-> > +	return toprgu_reset_update(rcdev, id, true);
-> > +}
-> > +
-> > +static int toprgu_reset_deassert(struct reset_controller_dev *rcdev,
-> > +				 unsigned long id)
-> > +{
-> > +	return toprgu_reset_update(rcdev, id, false);
-> > +}
-> > +
-> > +static int toprgu_reset(struct reset_controller_dev *rcdev,
-> > +			unsigned long id)
-> > +{
-> > +	int ret;
-> > +
-> > +	ret = toprgu_reset_assert(rcdev, id);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	return toprgu_reset_deassert(rcdev, id);
-> > +}
-> 
-> As mentioned above, is this needed? Does this work for all modules?
-> Only implement this if you are sure both are true.
-  I think it's safe. Many modules has used it in MTK inside.
-> 
-> regards
-> Philipp
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgU3RhbmxleSwKSXRzIG9rLCBJIHdpbGwgdGFrZSBhIGxvb2sgaW4geW91ciBuZXcgcGF0Y2gg
+c2V0IHNvb24uClRoYW5rcwoKUmVnYXJkcywKQWxpbQoKPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2Ut
+LS0tLQo+IEZyb206IFN0YW5sZXkgQ2h1IDxzdGFubGV5LmNodUBtZWRpYXRlay5jb20+Cj4gU2Vu
+dDogMjUgRGVjZW1iZXIgMjAxOSAxMzowNQo+IFRvOiBBbGltIEFraHRhciA8YWxpbS5ha2h0YXJA
+Z21haWwuY29tPgo+IENjOiBmLmZhaW5lbGxpQGdtYWlsLmNvbTsgbGludXgtc2NzaUB2Z2VyLmtl
+cm5lbC5vcmc7IE1hcnRpbiBLLiBQZXRlcnNlbgo+IDxtYXJ0aW4ucGV0ZXJzZW5Ab3JhY2xlLmNv
+bT47IExlb24gQ2hlbiAo6Zmz5paH6Y+YKQ0KPiA8TGVvbi5DaGVuQG1lZGlhdGVrLmNvbT47IEFu
+ZHkgVGVuZyAoGyRCe31HITkoGyhCKQ0KPiA8QW5keS5UZW5nQG1lZGlhdGVrLmNvbT47IEphbWVz
+IEUuSi4gQm90dG9tbGV5IDxqZWpiQGxpbnV4LmlibS5jb20+Ow0KPiBDaHVuLUh1bmcgV3UgKOW3
+q+mnv+WujykgPENodW4taHVuZy5XdUBtZWRpYXRlay5jb20+OyBLdW9ob25nIFdhbmcgKOeOiw0K
+PiDlnIvptLspIDxrdW9ob25nLndhbmdAbWVkaWF0ZWsuY29tPjsgb3BlbiBsaXN0IDxsaW51eC0N
+Cj4ga2VybmVsQHZnZXIua2VybmVsLm9yZz47IEF2cmkgQWx0bWFuIDxhdnJpLmFsdG1hbkB3ZGMu
+Y29tPjsgbGludXgtDQo+IG1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmc7IFBldGVyIFdhbmcg
+KOeOi+S/oeWPiykNCj4gPHBldGVyLndhbmdAbWVkaWF0ZWsuY29tPjsgQWxpbSBBa2h0YXIgPGFs
+aW0uYWtodGFyQHNhbXN1bmcuY29tPjsNCj4gTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdn
+QGdtYWlsLmNvbT47IFBlZHJvIFNvdXNhDQo+IDxwZWRyb20uc291c2FAc3lub3BzeXMuY29tPjsg
+bGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnOyBCZWFuDQo+IEh1byAoYmVhbmh1
+bykgPGJlYW5odW9AbWljcm9uLmNvbT4NCj4gU3ViamVjdDogUmU6IFtQQVRDSCB2MiAxLzIgUkVT
+RU5EXSBzb2M6IG1lZGlhdGVrOiBhZGQgaGVhZGVyIGZvciBTaVAgc2VydmljZQ0KPiBpbnRlcmZh
+Y2UNCj4gDQo+IEhpIEFsaW0sDQo+IA0KPiBXb3VsZCB5b3UgdGhpbmsgYmVsb3cgZXhwbGFuYXRp
+b24gaXMgT0sgdG8geW91Pw0KPiANCj4gQlRXLCBGWUksIHRoaXMgc2VyaWVzIHdhcyBjb21iaW5l
+ZCB0byB0aGUgbmV3IHNlcmllcyAic2NzaTogdWZzOiBhZGQgTWVkaWFUZWsNCj4gdmVuZG9yIGlt
+cGxlbWVudGF0aW9ucyIgd2l0aCB0aGlzIHNhbWUgcGF0Y2ggaW4gaXQuDQo+IA0KPiBUaGFua3Ms
+DQo+IFN0YW5sZXkNCj4gDQo+IA0KPiBPbiBGcmksIDIwMTktMTItMjAgYXQgMDk6MTUgKzA4MDAs
+IFN0YW5sZXkgQ2h1IHdyb3RlOg0KPiA+IEhpIEFsaW0sDQo+ID4NCj4gPiBPbiBGcmksIDIwMTkt
+MTItMjAgYXQgMDI6MDAgKzA4MDAsIEFsaW0gQWtodGFyIHdyb3RlOg0KPiA+ID4gPiArLyogVUZT
+IHJlbGF0ZWQgU01DIGNhbGwgKi8NCj4gPiA+ID4gKyNkZWZpbmUgTVRLX1NJUF9VRlNfQ09OVFJP
+TCBcDQo+ID4gPiA+ICsgICAgICAgTVRLX1NJUF9TTUNfQ01EKDB4Mjc2KQ0KPiA+ID4gPiArDQo+
+ID4gPiBIb3cgYWJvdXQgbW92aW5nIFVGUyBzcGVjaWZpYyBzdHVmZiB0byBNVEsgVUZTIGRyaXZl
+ciBhbmQgaW5jbHVkZQ0KPiA+ID4gdGhpcyBoZWFkZXIgaW4gZHJpdmVyIGZpbGU/DQo+ID4gPiBS
+ZXN0IGxvb2tzIGZpbmUuDQo+ID4NCj4gPiBUaGFua3Mgc28gbXVjaCBmb3IgeW91ciByZXZpZXcu
+DQo+ID4NCj4gPiBPdXIgaW50ZW50aW9uIGlzIHRvIGNvbGxlY3QgYWxsIFNNQyBjYWxsIGNvbW1h
+bmQgdHlwZXMgaW4gTWVkaWFUZWsNCj4gPiBDaGlwc2V0cyBoZXJlIGZvciBlYXNpZXIgbWFuYWdl
+bWVudC4NCj4gPg0KPiA+IFRoaXMgaXMgdGhlIGZpcnN0IHRpbWUgd2Ugc2hvdyB0aGlzIGhlYWRl
+ciB0aHVzIG9ubHkgVUZTIHJlbGF0ZWQgc3R1ZmYNCj4gPiBpcyBwcmVzZW50IGhlcmUuDQo+ID4N
+Cj4gPiA+ID4gKyNlbmRpZg0KPiA+ID4gPiAtLQ0KPiA+ID4gPiAyLjE4LjANCj4gPiA+DQo+ID4g
+Pg0KPiA+DQo+ID4gVGhhbmtzLA0KPiA+IFN0YW5sZXkNCj4gPg0KPiANCg0KDQoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1h
+aWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
