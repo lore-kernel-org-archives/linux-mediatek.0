@@ -2,89 +2,78 @@ Return-Path: <SRS0=Aqg+=2Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 727E6C2D0C0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Dec 2019 05:53:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6AB0BC2D0DA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Dec 2019 07:43:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 42A1B2071E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Dec 2019 05:53:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3558E2075E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Dec 2019 07:43:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tiaqiY1D";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lca.pw header.i=@lca.pw header.b="Cx17dLra"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 42A1B2071E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lca.pw
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="W6zoPG9s";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="LZdR0xLr"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3558E2075E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	Date:Subject:Mime-Version:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dy15x1EQpiCgXxbape9B8yUSULafA5mcBnEWHPwb4N0=; b=tiaqiY1DwuUt10
-	xsu/ZoE2u1aVkLadfkyihI0sR+sgjDRwVuCdsztZpQubelaYAsko6XPvhvsgurGO4MNwUu0+dihgX
-	VIGGpzJ4N+21r+cljdXoRX385kuX0l3F87EllGThZGXXv0vOpgBAgwnYEXy1g/gHVcy2I3N4LkeTk
-	5BB943JFkv0zRA2kz8gTdut+s2YlIxn/ktEm9Rql65KlicuHhSNs+lSxZd3OY5HPXflQb9hooMYmi
-	tN0iVeNpof3JdgUr69KMI+ESULXFv3OmjDeEre/y+hbNg23uWU/dgIWDv2+fSGWGfro5w+kk5Mpkn
-	I3IIGZV1RatGxvOUrr+Q==;
+	List-Owner; bh=EJ31wm4bG7NoBLZqbbo61e9F3sT/i3Ocub9DYAEKP6I=; b=W6zoPG9slek4Il
+	c3XgJu7dorJpmPJO7hQbGIV857gid5w9HDZK2FnAtasy9ifQo4ST008wjy0SD1WiYbx4sjGKMm0+E
+	Ki9H59FK24bjTQ8TfZE6lzmg83ScGGiwdMb+GyxJlb2XVOzMyHbOVC+AQ15WMGIhAKXJeV/MIPxXi
+	ZZVkuCXwqmwZ4aBdm8o21Kx5bCOelU7kkuxqi+EXfb/gVUoGAbY6JjbeTFkWgUKZ/sP/latRyygto
+	KQgtvUd82NdB/NE3CPiD2NXm9lw77m18ECdyQaXp/vK4bkDqcHIOwdWR4WYBl1b87ETsEwfi24cPu
+	InYILkcMOiKe6ppx/haw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ikM5a-0003we-8a; Thu, 26 Dec 2019 05:53:38 +0000
-Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743])
+	id 1ikNnQ-0003u7-WD; Thu, 26 Dec 2019 07:43:01 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ikM5X-0003vz-7P
- for linux-mediatek@lists.infradead.org; Thu, 26 Dec 2019 05:53:36 +0000
-Received: by mail-qk1-x743.google.com with SMTP id 21so18855786qky.4
- for <linux-mediatek@lists.infradead.org>; Wed, 25 Dec 2019 21:53:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lca.pw; s=google;
- h=content-transfer-encoding:from:mime-version:subject:date:message-id
- :references:cc:in-reply-to:to;
- bh=cLzbJhpD5Hwr6N5MywLf3Xs4c3eeLRB2SD3vQXIQzSw=;
- b=Cx17dLrafYJa5xPSv3lVV3wzk31qC+KuZ6fLVcFnXa4R/jDr945lUBLfgMMNqesPO2
- bbPvceUrbeuHpRJbs9gPFRRoCA3Oa7L32NITAvVcWQxV3lOjAmjxzcCijmWuHrVv/bDW
- PN5o0PsuX/Z0BmPbo7U3DJ8oJwNvMZ5E2vCiRJTRLIakHip1+ffnlDToeZArfb2D8UZY
- HKUa3kDwmYWMMpP+SaXltEIN/aMU8P7De+gA/OYTrJ6JdnYzGhIRTyk+Xe74Qy7usL7o
- XcgSwW77eQcilqJDF4qeTna4Rea8G6Q/hH3MQTg6q0KnSj3njHUUzKf+GVDYo9vuGQ/M
- HCxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:content-transfer-encoding:from:mime-version
- :subject:date:message-id:references:cc:in-reply-to:to;
- bh=cLzbJhpD5Hwr6N5MywLf3Xs4c3eeLRB2SD3vQXIQzSw=;
- b=fRjxUp0VQsRegjGLst00NI9lpm30qv47uJt0cQHlUXjZPDMh4kOzXqn6YmMr2AGb0P
- eqsrVDsTS7c2zeXPk1v7h+398uu9QsEe/DcZUwRUcY6UOqv1siG9WnnAOGLjKjzsW6se
- 58XD+IX1mZVcaLtIK3TBAUGYil24o4FBETNt1693gmsRwJ6dyYkky3eJv9p7UVegL6xC
- L0j4kFHnXKwkpzlFAqI2ykvtAkQEOVw/jIad/MCrYpv0nFpXoFzRpHDszm3JWE5Yvpsf
- 6pqzS1KgyJrGyQJCUV/ccrsOJdMb2vtTpryvmc1XIASeWXDVwglibA0BH/rTG1tKGUD5
- g+bg==
-X-Gm-Message-State: APjAAAXol7eTNRYmKdxKB7lTwLjiTlFQthYIfibIvRuOc2cTmhO4lNjk
- IcRl3s4kFfKuORRA9dzo0/2Zfg==
-X-Google-Smtp-Source: APXvYqzdbAALcUwCJ//wHxNu4rEzRWBsEQ9+zVEIJE8/RNPfGM5mfTkwmvfYkpkDZDHTnScUlnklKQ==
-X-Received: by 2002:ae9:c018:: with SMTP id u24mr37176052qkk.339.1577339609314; 
- Wed, 25 Dec 2019 21:53:29 -0800 (PST)
-Received: from [192.168.1.183] (pool-71-184-117-43.bstnma.fios.verizon.net.
- [71.184.117.43])
- by smtp.gmail.com with ESMTPSA id t3sm9253977qtc.8.2019.12.25.21.53.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Dec 2019 21:53:28 -0800 (PST)
-From: Qian Cai <cai@lca.pw>
-Mime-Version: 1.0 (1.0)
-Subject: Re: [PATCH] mm/page_owner: print largest memory consumer when OOM
- panic occurs
-Date: Thu, 26 Dec 2019 00:53:27 -0500
-Message-Id: <95CD23C9-D10D-4E6A-BF53-A4C1A4DB281A@lca.pw>
-References: <20191226040114.8123-1-miles.chen@mediatek.com>
-In-Reply-To: <20191226040114.8123-1-miles.chen@mediatek.com>
-To: Miles Chen <miles.chen@mediatek.com>
-X-Mailer: iPhone Mail (17C54)
+ id 1ikNnD-0003ld-Ox; Thu, 26 Dec 2019 07:42:50 +0000
+X-UUID: e88a83898ede4aa48abeeb6d3b494270-20191225
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=B8FgD3ZrjisgjSkL3JaHceiILrlLNx2yrKhwr8RakCI=; 
+ b=LZdR0xLrEYvhQJGiDA3Mue8i2JMovgNzQ6JSwmdkVunNdVu5g16UY4b002ZkDZrKeOkDIil+AgRb4p9gyjb4yRweZJYwQQhzqVfr6SJAMeTSH6gQTYr+0iKQ9X097YLztJtWKa+9Qoon34gxo9W8ZOM2vSqo23WQrLiHgKFSRio=;
+X-UUID: e88a83898ede4aa48abeeb6d3b494270-20191225
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <yong.liang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 995227162; Wed, 25 Dec 2019 23:42:40 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 25 Dec 2019 23:43:03 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31DR.mediatek.inc
+ (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Thu, 26 Dec 2019 15:42:07 +0800
+Received: from [10.17.3.153] (172.27.4.253) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Thu, 26 Dec 2019 15:42:28 +0800
+Message-ID: <1577346109.20923.3.camel@mhfsdcap03>
+Subject: Re: [PATCH v6 2/2] watchdog: mtk_wdt: mt8183: Add reset controller
+From: Yong Liang <yong.liang@mediatek.com>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Date: Thu, 26 Dec 2019 15:41:49 +0800
+In-Reply-To: <fe8b8b2aac6d92a1d7ffc32ea012db9898ab6857.camel@pengutronix.de>
+References: <1576081356-18298-1-git-send-email-jiaxin.yu@mediatek.com>
+ <1576081356-18298-3-git-send-email-jiaxin.yu@mediatek.com>
+ <fe8b8b2aac6d92a1d7ffc32ea012db9898ab6857.camel@pengutronix.de>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
+MIME-Version: 1.0
+X-TM-SNTS-SMTP: 8574F099F3B0AD104410C800107372672A0E4739F5A4B188550EFA2C7F63128E2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191225_215335_314153_3E5F4018 
-X-CRM114-Status: UNSURE (   7.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191225_234247_820980_AA4289DE 
+X-CRM114-Status: GOOD (  23.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,23 +85,192 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Michal Hocko <mhocko@suse.com>, wsd_upstream@mediatek.com,
- linux-kernel@vger.kernel.org, linux-mm@kvack.org,
- linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-watchdog@vger.kernel.org" <linux-watchdog@vger.kernel.org>,
+ "sboyd@kernel.org" <sboyd@kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Jiaxin Yu =?UTF-8?Q?=28=E4=BF=9E=E5=AE=B6=E9=91=AB=29?=
+ <Jiaxin.Yu@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?=
+ <Yingjoe.Chen@mediatek.com>, "wim@linux-watchdog.org" <wim@linux-watchdog.org>,
+ "linux@roeck-us.net" <linux@roeck-us.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-> On Dec 25, 2019, at 11:01 PM, Miles Chen <miles.chen@mediatek.com> wrote:
+On Thu, 2019-12-12 at 00:44 +0800, Philipp Zabel wrote:
+> Hi,
 > 
-> That is what the patch does -- targeting on the memory leakage which causes an OOM kernel panic, so the greatest consumer information helps (the amount of leakage is big enough to cause an OOM kernel panic)
+> On Thu, 2019-12-12 at 00:22 +0800, Jiaxin Yu wrote:
+> > From: "yong.liang" <yong.liang@mediatek.com>
+> > 
+> > Add reset controller API in watchdog driver.
+> > Besides watchdog, MTK toprgu module alsa provide sub-system (eg, audio,
+> > camera, codec and connectivity) software reset functionality.
 > 
-> I've posted the number of real problems since 2019/5 I solved by this approach.
+> Do any of the listed sub-systems use the reset_control_reset()
+> functionality? Is there no delay requirement between assert and
+> deassert? Otherwise it would be safer not to implement the .reset()
+> operation at all.
+> 
+> > Audio use this reset API to reset audio, and it works well.
+    It is no need to add delay between assert and deassert.
 
-The point is in order to make your debugging patch upstream, it has to be general useful. Right now, it feels rather situational for me for the reasons given in the previous emails.
+> > Signed-off-by: yong.liang <yong.liang@mediatek.com>
+> > ---
+> >  drivers/watchdog/Kconfig   |   1 +
+> >  drivers/watchdog/mtk_wdt.c | 109 ++++++++++++++++++++++++++++++++++++-
+> >  2 files changed, 109 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/watchdog/Kconfig b/drivers/watchdog/Kconfig
+> > index 2e07caab9db2..629249fe5305 100644
+> > --- a/drivers/watchdog/Kconfig
+> > +++ b/drivers/watchdog/Kconfig
+> > @@ -717,6 +717,7 @@ config MEDIATEK_WATCHDOG
+> >  	tristate "Mediatek SoCs watchdog support"
+> >  	depends on ARCH_MEDIATEK || COMPILE_TEST
+> >  	select WATCHDOG_CORE
+> > +	select RESET_CONTROLLER
+> >  	help
+> >  	  Say Y here to include support for the watchdog timer
+> >  	  in Mediatek SoCs.
+> > diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+> > index 9c3d0033260d..667380031dfd 100644
+> > --- a/drivers/watchdog/mtk_wdt.c
+> > +++ b/drivers/watchdog/mtk_wdt.c
+> > @@ -9,6 +9,9 @@
+> >   * Based on sunxi_wdt.c
+> >   */
+> >  
+> > +#include <dt-bindings/reset-controller/mt2712-resets.h>
+> > +#include <dt-bindings/reset-controller/mt8183-resets.h>
+> > +#include <linux/delay.h>
+> >  #include <linux/err.h>
+> >  #include <linux/init.h>
+> >  #include <linux/io.h>
+> > @@ -16,10 +19,12 @@
+> >  #include <linux/module.h>
+> >  #include <linux/moduleparam.h>
+> >  #include <linux/of.h>
+> > +#include <linux/of_device.h>
+> >  #include <linux/platform_device.h>
+> > +#include <linux/reset-controller.h>
+> > +#include <linux/slab.h>
+> 
+> What is this required for?
+
+  It is no use. I will remove it.
+> 
+> >  #include <linux/types.h>
+> >  #include <linux/watchdog.h>
+> > -#include <linux/delay.h>
+> >
+> >  #define WDT_MAX_TIMEOUT		31
+> >  #define WDT_MIN_TIMEOUT		1
+> > @@ -44,6 +49,9 @@
+> >  #define WDT_SWRST		0x14
+> >  #define WDT_SWRST_KEY		0x1209
+> >  
+> > +#define WDT_SWSYSRST		0x18U
+> > +#define WDT_SWSYS_RST_KEY	0x88000000
+> > +
+> >  #define DRV_NAME		"mtk-wdt"
+> >  #define DRV_VERSION		"1.0"
+> >  
+> > @@ -53,8 +61,97 @@ static unsigned int timeout;
+> >  struct mtk_wdt_dev {
+> >  	struct watchdog_device wdt_dev;
+> >  	void __iomem *wdt_base;
+> > +	spinlock_t lock; /* protects WDT_SWSYSRST reg */
+> > +	struct reset_controller_dev rcdev;
+> > +};
+> > +
+> > +struct mtk_wdt_data {
+> > +	int infracfg_sw_rst_num;
+> 
+> This is not used at all, better remove it.
+  I will remove it.
+> 
+> > +	int toprgu_sw_rst_num;
+> > +};
+> > +
+> > +static const struct mtk_wdt_data mt2712_data = {
+> > +	.toprgu_sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
+> > +};
+> > +
+> > +static const struct mtk_wdt_data mt8183_data = {
+> > +	.infracfg_sw_rst_num = MT8183_INFRACFG_SW_RST_NUM,
+> 
+> Same as above.
+  I will remove it.
+> 
+> > +	.toprgu_sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
+> > +};
+> > +
+> > +static int toprgu_reset_update(struct reset_controller_dev *rcdev,
+> > +			       unsigned long id, bool assert)
+> > +{
+> > +	unsigned int tmp;
+> > +	unsigned long flags;
+> > +
+> 
+> This empty line can be removed.
+  I will remove it.
+> 
+> > +	struct mtk_wdt_dev *data =
+> > +		 container_of(rcdev, struct mtk_wdt_dev, rcdev);
+> > +
+> > +	spin_lock_irqsave(&data->lock, flags);
+> > +
+> > +	tmp = readl(data->wdt_base + WDT_SWSYSRST);
+> > +	if (assert)
+> > +		tmp |= BIT(id);
+> > +	else
+> > +		tmp &= ~BIT(id);
+> > +	tmp |= WDT_SWSYS_RST_KEY;
+> > +	writel(tmp, data->wdt_base + WDT_SWSYSRST);
+> > +
+> > +	spin_unlock_irqrestore(&data->lock, flags);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int toprgu_reset_assert(struct reset_controller_dev *rcdev,
+> > +			       unsigned long id)
+> > +{
+> > +	return toprgu_reset_update(rcdev, id, true);
+> > +}
+> > +
+> > +static int toprgu_reset_deassert(struct reset_controller_dev *rcdev,
+> > +				 unsigned long id)
+> > +{
+> > +	return toprgu_reset_update(rcdev, id, false);
+> > +}
+> > +
+> > +static int toprgu_reset(struct reset_controller_dev *rcdev,
+> > +			unsigned long id)
+> > +{
+> > +	int ret;
+> > +
+> > +	ret = toprgu_reset_assert(rcdev, id);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	return toprgu_reset_deassert(rcdev, id);
+> > +}
+> 
+> As mentioned above, is this needed? Does this work for all modules?
+> Only implement this if you are sure both are true.
+  I think it's safe. Many modules has used it in MTK inside.
+> 
+> regards
+> Philipp
+> 
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
