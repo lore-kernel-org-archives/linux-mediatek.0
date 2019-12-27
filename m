@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 37367C2D0CE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Dec 2019 09:06:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B39C5C2D0C6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Dec 2019 09:06:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0967D208C4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Dec 2019 09:06:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8657E20828
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Dec 2019 09:06:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EERWzVmN";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EKoEhgkm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0967D208C4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HF9CgkO7";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="uLwIdT3V"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8657E20828
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,56 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gQEG+2KuW+/effTHhnv3AxJKDUx+ee1zolyftK1rE7M=; b=EERWzVmN4EBz3o
-	n8x38bwAJNCi4HN23QGqkr0LfUODWgRx3vqBQbl9yOYAK2kPavTpuUC4Qctuc8iKcndRTDFMDgdoh
-	a22jWtz1VsAKSYmZWjkzDj3s8rlNksfWotv6p1/nr+O5Ci4JhTxZg0Y0Z9GmoV0awxqXbSrXwNmnI
-	qVV2ZeOWXqjWXgi9Suzi3rzcw3/FUc0gEyfiC0Zp7wOmrze/g3uOoMxRC8QYoiJKZEZJ+lO2URXY1
-	gFMl+4zBggy9WmaqWncLgNLiuPu4x7/DrZHoUTCnJBPfUg3NqrfXbyKTy0ovO3DKED9gfa7l9wEO9
-	CoBu5jae2Lp9NRNz9vZA==;
+	List-Owner; bh=mLTacfzwj2z7BlvOYZCiQIz8REY4ry7BR/wVyiRwnrM=; b=HF9CgkO7Zz7psm
+	B2Q4UkAvA2NoR9p/lpwfBQ88PMQytHe+gGmzymiMcNOg3+JRl0zQDQFhnsQcFVCBNU3bhpg6cVnYh
+	9KTCItj2s6uchpOMPw8NYHzYU3UjpdSNSQe5UQELEE2mKquuvp2f2hG1ToekqRxWXuSeBLcJby/Ce
+	0Igt2uQDVQiAmnTGSVd+8SmLNrBejRtU2fOfpLFrEC6eTnH7rhv8zMYamwa/3w0Kc/oFWr72v4V+X
+	1ikH+n78KpIA7hlHuAtgAmTX0vj5PF8QMi/xjnTGVrD0RhpSpvTpKMlH324LS228L3MH9In6/lSf1
+	eEU8lMBZNBzt/qGg4KOg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iklZW-0006BH-7d; Fri, 27 Dec 2019 09:06:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1iklZw-0006Xl-5y; Fri, 27 Dec 2019 09:06:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iklZH-0005uh-53; Fri, 27 Dec 2019 09:06:00 +0000
-X-UUID: 748b0d5ac49644c494de3309a862ea3c-20191227
+ id 1iklZt-0006Vx-0A
+ for linux-mediatek@lists.infradead.org; Fri, 27 Dec 2019 09:06:38 +0000
+X-UUID: 5e9fddd2fea24718bad1c3a6ca598b64-20191227
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=A/2ymTZqQ2jkPG8u32ExgoxYm7lzBLEHJ316WhcxO0U=; 
- b=EKoEhgkmG/+Fl8+U2S3NLVeGhFx46M83wvkEPz3gxF3ULtmb1KO7gUqdqhh1x801glxot4Kb5ozOM9E/yTjco8rKTMTQcJlkR81EVasDGRrmHWrxwNf7+/gXvgMvqoxtNGs/uhlHAtLSVY1NJ6k3RBSyik9PXZ1xgl6wBIZCZRY=;
-X-UUID: 748b0d5ac49644c494de3309a862ea3c-20191227
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
+ bh=ay+ibNcB5NYuieSrDeYdH8wOhecnM0m+aMHmpuj+/+g=; 
+ b=uLwIdT3VyvXUEqpZz/gaOGkvTkabUUP2+eJ7AU7Lbl+EQCbt+qjs25Ss51iAQYIn93jYfGI8r4N7sVHuYgO85wiFgVNAGOH8nBtQeCRVapUOfPIBZKlhGaMgil/X7lBl1VocrJ+88J3gQ4vAv4hqDRsi2KWckwYz3MgmHtfA6rk=;
+X-UUID: 5e9fddd2fea24718bad1c3a6ca598b64-20191227
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 334286553; Fri, 27 Dec 2019 01:05:54 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 27 Dec 2019 01:06:02 -0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 27 Dec 2019 17:05:24 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Fri, 27 Dec 2019 17:05:18 +0800
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: <yong.liang@mediatek.com>, <wim@linux-watchdog.org>, <linux@roeck-us.net>, 
- <p.zabel@pengutronix.de>, <matthias.bgg@gmail.com>,
- <linux-watchdog@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <devicetree@vger.kernel.org>, <chang-an.chen@mediatek.com>,
- <freddy.hsin@mediatek.com>
-Subject: [PATCH v7 1/2] dt-bindings: mediatek: mt8183: Add #reset-cells
-Date: Fri, 27 Dec 2019 17:04:53 +0800
-Message-ID: <1577437494-738-2-git-send-email-jiaxin.yu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1577437494-738-1-git-send-email-jiaxin.yu@mediatek.com>
-References: <1577437494-738-1-git-send-email-jiaxin.yu@mediatek.com>
+ with ESMTP id 781078996; Fri, 27 Dec 2019 01:06:33 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 27 Dec 2019 01:00:21 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 27 Dec 2019 16:59:38 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Fri, 27 Dec 2019 17:00:00 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+Subject: [PATCH 3/3] mt76: mt7615: add a .get_stats callback
+Date: Fri, 27 Dec 2019 17:00:09 +0800
+Message-ID: <b9c5cf59dd656fb5dea67b46ed264d0e0290da3f.1577411732.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <7d450f0c4fec3c7242804e47f9bce13255e7f28d.1577411732.git.ryder.lee@mediatek.com>
+References: <7d450f0c4fec3c7242804e47f9bce13255e7f28d.1577411732.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: D8B3679B52C8892946EFCE5EE48E5DCE8D2162D8BAB16D665268CFBF2D8ACECB2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191227_010559_231567_669E10FF 
-X-CRM114-Status: UNSURE (   8.79  )
+X-CRM114-CacheID: sfid-20191227_010637_044260_38F490D6 
+X-CRM114-Status: UNSURE (   5.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -88,78 +86,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: sboyd@kernel.org, yingjoe.chen@mediatek.com,
- Jiaxin Yu <jiaxin.yu@mediatek.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Sean
+ Wang <sean.wang@mediatek.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Roy Luo <royluo@google.com>,
+ Shayne Chen <shayne.chen@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add #reset-cells property and update example
+Add a .get_stats callback.
 
-Signed-off-by: yong.liang <yong.liang@mediatek.com>
-Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- .../reset-controller/mt2712-resets.h          | 22 +++++++++++++++++++
- .../reset-controller/mt8183-resets.h          | 17 ++++++++++++++
- 2 files changed, 39 insertions(+)
- create mode 100644 include/dt-bindings/reset-controller/mt2712-resets.h
+ drivers/net/wireless/mediatek/mt76/mt7615/main.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-diff --git a/include/dt-bindings/reset-controller/mt2712-resets.h b/include/dt-bindings/reset-controller/mt2712-resets.h
-new file mode 100644
-index 000000000000..9e7ee762f076
---- /dev/null
-+++ b/include/dt-bindings/reset-controller/mt2712-resets.h
-@@ -0,0 +1,22 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (c) 2019 MediaTek Inc.
-+ * Author: Yong Liang <yong.liang@mediatek.com>
-+ */
-+
-+#ifndef _DT_BINDINGS_RESET_CONTROLLER_MT2712
-+#define _DT_BINDINGS_RESET_CONTROLLER_MT2712
-+
-+#define MT2712_TOPRGU_INFRA_SW_RST				0
-+#define MT2712_TOPRGU_MM_SW_RST					1
-+#define MT2712_TOPRGU_MFG_SW_RST				2
-+#define MT2712_TOPRGU_VENC_SW_RST				3
-+#define MT2712_TOPRGU_VDEC_SW_RST				4
-+#define MT2712_TOPRGU_IMG_SW_RST				5
-+#define MT2712_TOPRGU_INFRA_AO_SW_RST				8
-+#define MT2712_TOPRGU_USB_SW_RST				9
-+#define MT2712_TOPRGU_APMIXED_SW_RST				10
-+
-+#define MT2712_TOPRGU_SW_RST_NUM				11
-+
-+#endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT2712 */
-diff --git a/include/dt-bindings/reset-controller/mt8183-resets.h b/include/dt-bindings/reset-controller/mt8183-resets.h
-index 8804e34ebdd4..a1bbd41e0d12 100644
---- a/include/dt-bindings/reset-controller/mt8183-resets.h
-+++ b/include/dt-bindings/reset-controller/mt8183-resets.h
-@@ -78,4 +78,21 @@
- #define MT8183_INFRACFG_AO_I2C7_SW_RST				126
- #define MT8183_INFRACFG_AO_I2C8_SW_RST				127
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+index 0efd8065812c..331bed775b6d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+@@ -628,6 +628,21 @@ mt7615_sta_remove(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 			  IEEE80211_STA_NOTEXIST);
+ }
  
-+#define MT8183_INFRACFG_SW_RST_NUM				128
++static int
++mt7615_get_stats(struct ieee80211_hw *hw,
++		 struct ieee80211_low_level_stats *stats)
++{
++	struct mt7615_phy *phy = mt7615_hw_phy(hw);
++	struct mib_stats *mib = &phy->mib;
 +
-+#define MT8183_TOPRGU_MM_SW_RST					1
-+#define MT8183_TOPRGU_MFG_SW_RST				2
-+#define MT8183_TOPRGU_VENC_SW_RST				3
-+#define MT8183_TOPRGU_VDEC_SW_RST				4
-+#define MT8183_TOPRGU_IMG_SW_RST				5
-+#define MT8183_TOPRGU_MD_SW_RST					7
-+#define MT8183_TOPRGU_CONN_SW_RST				9
-+#define MT8183_TOPRGU_CONN_MCU_SW_RST				12
-+#define MT8183_TOPRGU_IPU0_SW_RST				14
-+#define MT8183_TOPRGU_IPU1_SW_RST				15
-+#define MT8183_TOPRGU_AUDIO_SW_RST				17
-+#define MT8183_TOPRGU_CAMSYS_SW_RST				18
++	stats->dot11RTSSuccessCount = mib->rts_cnt;
++	stats->dot11RTSFailureCount = mib->rts_retries_cnt;
++	stats->dot11FCSErrorCount = mib->fcs_err_cnt;
++	stats->dot11ACKFailureCount = mib->ack_fail_cnt;
 +
-+#define MT8183_TOPRGU_SW_RST_NUM				19
++	return 0;
++}
 +
- #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8183 */
+ static u64
+ mt7615_get_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
+ {
+@@ -679,6 +694,7 @@ const struct ieee80211_ops mt7615_ops = {
+ 	.release_buffered_frames = mt76_release_buffered_frames,
+ 	.get_txpower = mt76_get_txpower,
+ 	.channel_switch_beacon = mt7615_channel_switch_beacon,
++	.get_stats = mt7615_get_stats,
+ 	.get_tsf = mt7615_get_tsf,
+ 	.get_survey = mt76_get_survey,
+ 	.get_antenna = mt76_get_antenna,
 -- 
 2.18.0
 _______________________________________________
