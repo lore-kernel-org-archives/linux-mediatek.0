@@ -2,81 +2,76 @@ Return-Path: <SRS0=MHhQ=2R=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27F9BC2D0DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Dec 2019 01:34:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A6C1DC2D0C3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Dec 2019 04:06:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EFD642080D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Dec 2019 01:34:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2A4DE20828
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Dec 2019 04:06:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hxzihsWD";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="hKSl9LsH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EFD642080D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iwNHDvs7";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ClsM3+gW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A4DE20828
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6FMga047bHNPCuTFC18Y7flE58hlR3IWdym2f7a3Edc=; b=hxzihsWDe0sLBL
-	8YelJ4BZx1N3txQPseougtdHCqa1itopck8fzpbqj3KVkd1v6sHWsOAlEGbKpYqiQLPRZ/Fn5GUXg
-	x42h2UZJGmJAhGCY435ruLH2SddxUlar6Nn1znleMxAI5mG1Ll1x4LUjrgqdin7r4RDKWY0bfMfP/
-	rlyV/S9Qtiz7VgEBflH1vZIWbUb4rELuP3WNGzdx0lYu1YO3zAf1TPABX7ZDq1PluwtzHoaJVTRFJ
-	Bpy/OU0fa+ywW0GF17gcYX/OIbJWvoEaoE9pik0Ine8OpdGxGiuvmBE41Iu5BR2BHcxUsw1bzLEg7
-	m7wnNrh7BhjyanKpapYw==;
+	List-Owner; bh=NyAePVnjr/umfq64QnaoxAvZjN0Mm9Nc68ttPb/UsMY=; b=iwNHDvs7Pl3yZG
+	OMl1kDpC7/y+4VVDckny2/PFXcvOwZdorSuSoF0LC/3w4m1P5c0THm3dBrKsKK56bYKOzI+gSHi4M
+	XNY66vNUTWRdUIt/aqKMaTCUXsL9K1hEAPcF9+9IUQvICf433871YR/COL+HMBMbGS9HrJhqfV1PV
+	YTJKwoQ2EVrc3S3yHyZ+R7h7U6ykdvrYxedWCPu2YnnNSH08LSGyYA8TaIIRhHBM++jqL+X+OOuSn
+	2bpx9PiKK3ezxUXb1BlRrChhXAgfFvfYIXw9znr5UvbfqeG2ErFeojbNaaKNGL6cW83e8uxfG5ujq
+	9nhL/HHtE3MlvQ7uMjvA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ikeWI-0007T9-VM; Fri, 27 Dec 2019 01:34:26 +0000
-Received: from mail-vs1-xe44.google.com ([2607:f8b0:4864:20::e44])
+	id 1ikgt6-00057c-BE; Fri, 27 Dec 2019 04:06:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ikeWF-0007S6-CD; Fri, 27 Dec 2019 01:34:25 +0000
-Received: by mail-vs1-xe44.google.com with SMTP id p6so16124339vsj.11;
- Thu, 26 Dec 2019 17:34:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=c2NZUOXB+u4N/6ynLgzIx+P3HGegc5/3CrzlQhhVkNg=;
- b=hKSl9LsHyLf6H23TKYquoRCv47amnB07IAyIWTFA9xS6edi3vbQWpcM2zU6pybyxEU
- dp+PpHmvMbMNCW2aOsz66YpRfNTAfNegZlNr5HVVZVFv5Fq6z27Z0chyKa1+aLB4q/2r
- GdVY2xhVnBRRh50DSgotuxalNVk9415GL1lhux1GUGgRHsF4hPxu1dBrDVVxx03+RUE/
- 9+VGwm8yjt4qA1RSySKH+kcNmD8gq06d0ilNk9gUCN04JqE2a/r+wpP5olPyJtN21g52
- fa21lrcwK375iWKayzpmyVMMYtdIPJnP8I+HHhfhfE41ujSu7UOUhpd5lhOa3F9vlxQu
- 8RIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=c2NZUOXB+u4N/6ynLgzIx+P3HGegc5/3CrzlQhhVkNg=;
- b=eh/8t35bp838E2TrqDQ7zp5ed6wtCCbvBNrorhkXV/dPGi6gLw41L+PIZklp+bvxF8
- TvjVYHSBfR9DuI9pjJ8nd3zaC6whV9BViTULar71wXBPkrzniWk7C2gXgEP8KidAXxXA
- o0OUzRlgVFAho1SRVTt8WVKGvfxA9w+3X+UbQ02bgXLUEBjgXmb/eEuG4yIDQt6KvNVp
- JyREpU4jordGQdFIGSuTk6x3t6Shsbc9UTBHa4vK1SA+fqNopgee/pbvzErHXFT8iOHE
- iuA6mNwnvypAjlt3ajwgJ5UCUQTp1gnq6wmRNjIy8UbJ+A3ShyuRMXjBV/qsXsw308cg
- zwNw==
-X-Gm-Message-State: APjAAAVh6pahHOZ8KfMNED82F7V3LvkMcXzXLo7Ft2vYjM7dtXba388u
- a9Q3IgJqDPXQaTvBJuqq+fPdajcFTjN0qMgabAc=
-X-Google-Smtp-Source: APXvYqyVeOGbvgWGe1iD9awj8wB/SgMSBPry9zyGE8kBSWztrseHrfYrKTMNOXiqV0LTSPsEceV4deRha4vbzTbFBjY=
-X-Received: by 2002:a05:6102:3102:: with SMTP id
- e2mr27328735vsh.179.1577410461880; 
- Thu, 26 Dec 2019 17:34:21 -0800 (PST)
+ id 1ikgt2-00055y-QP
+ for linux-mediatek@lists.infradead.org; Fri, 27 Dec 2019 04:06:06 +0000
+X-UUID: f9f6b672349c4b2284e05f5f714a4048-20191226
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=jcoI7sSAP0WUWoL73vFfOHM1Cxi2u4vd3UC1VSbMP/c=; 
+ b=ClsM3+gWOPHDYowwfrRNRzwqyunvsA5H/B8ZVAxUL6qF5jZC97KK75eypAX3yNJ59bkuqJ9kXTATXO+WdXtpZhAm3JAP/SP180YS2x1XnhbYTaf0wQXsjM5ott5GBHCPv9XpWRKB64obXVqYpbvwHjILj/pljMSf9DLLugsz8aI=;
+X-UUID: f9f6b672349c4b2284e05f5f714a4048-20191226
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <fengping.yu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1852391995; Thu, 26 Dec 2019 20:05:59 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 26 Dec 2019 18:26:56 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 27 Dec 2019 09:38:41 +0800
+Received: from localhost.localdomain (10.15.20.246) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Fri, 27 Dec 2019 09:38:52 +0800
+From: fengping yu <fengping.yu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH V2 1/2] Documentation: devicetree: bindings: input
+Date: Fri, 27 Dec 2019 09:37:21 +0800
+Message-ID: <20191227013722.12201-2-fengping.yu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20191227013722.12201-1-fengping.yu@mediatek.com>
+References: <20191227013722.12201-1-fengping.yu@mediatek.com>
 MIME-Version: 1.0
-References: <1577192466-20762-1-git-send-email-stanley.chu@mediatek.com>
-In-Reply-To: <1577192466-20762-1-git-send-email-stanley.chu@mediatek.com>
-From: Alim Akhtar <alim.akhtar@gmail.com>
-Date: Fri, 27 Dec 2019 07:03:45 +0530
-Message-ID: <CAGOxZ53wWCcJJpcO3BRDuOKS=gsNmYd=EjU3YEo+8z68iT+EiQ@mail.gmail.com>
-Subject: Re: [PATCH v1 0/2] scsi: ufs: use existed well-defined functions
-To: Stanley Chu <stanley.chu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191226_173423_436264_944F69C1 
-X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-CacheID: sfid-20191226_200604_865923_777B6FC8 
+X-CRM114-Status: UNSURE (   9.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -89,49 +84,78 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-scsi@vger.kernel.org,
- "Martin K. Petersen" <martin.petersen@oracle.com>, andy.teng@mediatek.com,
- "James E.J. Bottomley" <jejb@linux.ibm.com>, chun-hung.wu@mediatek.com,
- Kuohong Wang <kuohong.wang@mediatek.com>,
- open list <linux-kernel@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>,
- Can Guo <cang@codeaurora.org>, linux-mediatek@lists.infradead.org,
- peter.wang@mediatek.com, Alim Akhtar <alim.akhtar@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org,
- "Bean Huo \(beanhuo\)" <beanhuo@micron.com>
+Cc: devicetree@vger.kernel.org, "fengping.yu" <fengping.yu@mediatek.com>,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ wsd_upstream@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Stanley
+From: "fengping.yu" <fengping.yu@mediatek.com>
 
-On Tue, Dec 24, 2019 at 6:31 PM Stanley Chu <stanley.chu@mediatek.com> wrote:
->
-> Hi,
->
-> This patchset fixes two small place to use existed well-defined functions to replace legacy statements.
->
-> Stanley Chu (2):
->   scsi: ufs: unify scsi_block_requests usage
->   scsi: ufs: use ufshcd_vops_dbg_register_dump for vendor specific
->     dumps
->
->  drivers/scsi/ufs/ufshcd.c |    7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
->
-> --
-For this series,
-Reviewed-by: Alim Akhtar <alim.akhtar@samsung.com>
+Add mtk keypad device tree documentation.
 
-> 1.7.9.5
+Change-Id: I415b76ee980784992763c768829b2dda76699dea
+Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
+---
+ .../devicetree/bindings/input/mtk-kpd.txt     | 45 +++++++++++++++++++
+ 1 file changed, 45 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/input/mtk-kpd.txt
 
-
-
+diff --git a/Documentation/devicetree/bindings/input/mtk-kpd.txt b/Documentation/devicetree/bindings/input/mtk-kpd.txt
+new file mode 100644
+index 000000000000..2af81e696159
+--- /dev/null
++++ b/Documentation/devicetree/bindings/input/mtk-kpd.txt
+@@ -0,0 +1,45 @@
++* Mediatek's Keypad Controller device tree binding
++
++Mediatek's Keypad controller is used to interface a SoC with a matrix-type
++keypad device. The keypad controller supports multiple row and column lines.
++A key can be placed at each intersection of a unique row and a unique column.
++The keypad controller can sense a key-press and key-release and report the
++event using a interrupt to the cpu.
++
++Required properties:
++- compatible should contain:
++	* "mediatek,mt6779-keypad" for MT6779 keypad
++	* "mediatek,kp" for common keypad
++
++- reg: The base address of the Keypad register bank.
++
++- interrupts: A single interrupt specifier.
++
++- mediatek,key-debounce-ms: Debounce interval in milliseconds, maximum value
++  is 256ms
++
++- mediatek,hw-map-num: Number of entries of keycode in mediatek,hw-init-map
++
++- mediatek,hw-init-map: An array of packed 1-cell entries containing the
++  equivalent of hw-map-num linux key-code. Each cell is Linux keymap of
++  corresponding row/col, arrange like this:
++
++  row0col0, row0col1, row0col2,...row0col8,
++  row1col0, row1col1, row1col2,...row1col8,
++  ...
++  row7col0, row7col1, row7col2,...row7col8.
++
++Example:
++
++	keypad: kp@10010000 {
++		compatible = "mediatek,mt6779-keypad", "mediatek,kp";
++		reg = <0 0x10010000 0 0x1000>;
++		interrupts = <GIC_SPI 75 IRQ_TYPE_EDGE_FALLING>;
++	};
++
++	&keypad {
++		mediatek,key-debounce-ms = <1024>;
++		/*HW Keycode [0~71] -> Linux Keycode*/
++		mediatek,khw-map-num = <72>;
++		mediatek,hw-init-map = <114 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 >;
++	};
 -- 
-Regards,
-Alim
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
