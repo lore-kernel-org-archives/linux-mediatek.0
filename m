@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0899EC2D0C6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Dec 2019 14:15:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 842ACC2D0C6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Dec 2019 14:25:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CD135208C4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Dec 2019 14:15:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 53E8D20882
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Dec 2019 14:25:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Phz2D/Rf";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="gDbh3tPm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD135208C4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Q9y+c37A";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Vul3stcg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 53E8D20882
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,56 +26,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8cRWhvqiI2xpVN5R6ADgzzBwKdODGODpX2vuuTD65e4=; b=Phz2D/Rf1ZL80Q
-	62j9VajMa38rnQU/kGw1x2Cn5x1f2QicbBZM3ZsyB+zJIUTDWGdRUFGU3z6EmLE9r1d99w0YpieLX
-	AX4MpK0a0BdpEDd1ahyY3f9+mubjHcdEg9fHnllDrBe312cTuS39KbbiYdSbv9i2NS1yTGwg2kFNL
-	R+kcwOXAd8c2u268xSmtQPuARm9IBWTDpLthAil8IaHb39GIXM4bzN/kIWyH3MkfLj9pFaJrPV6E3
-	oLMsnuGUkOaFiUMLdxZBsTmAvATfXvbu/xxvpVVRnMn0sU1QnKygpNmBm7a6KyOdaakhu9z8zMWCV
-	clKup1N9rNjD4Cpx3S3Q==;
+	List-Owner; bh=KNsv7T7wF1p3nlucXNOVo/tNjT6bgGgTHs39VH2YhGM=; b=Q9y+c37AoxkXB5
+	HsHLS6cC9yQf7FET34a23zY/75xinXopjyNPW9SqK2BNOrf+E2vZ8g5dBsIzwWLrCSMVt76n/IzDt
+	wFu89l4mN5xLkMp6KM1+CysPmJYXB9fIPqfZUq6aJqfiC4tQOxyU0XmVwIq25EchLMQYa+OjhkPTg
+	wTBHFLHLmvQUKrnK5e/XXbTDnZHIPZWC6FkJEAwXQVkpJo1uj8hJ6MhKjK9R57loud/E5sHVQK34p
+	R45H9sZiMJjT/buAjPpQdiP9FhdWo/+0oeuq+yTXpJRYpPTuYw1i/5OpdIyYcsjhUjHieCABHYXuI
+	s1gqRiMqLtyWmRvYVzLA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ikqP1-0005sf-0T; Fri, 27 Dec 2019 14:15:43 +0000
+	id 1ikqYR-0000hs-TH; Fri, 27 Dec 2019 14:25:27 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ikqOb-0005Pq-CM; Fri, 27 Dec 2019 14:15:22 +0000
-X-UUID: 360037144ae2426eae6e50c7f0242fbe-20191227
+ id 1ikqYH-0000ZU-Tf; Fri, 27 Dec 2019 14:25:19 +0000
+X-UUID: 62f24943bdb84c23aa77f9b309ddbc7b-20191227
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=hYdZmAwLVCeFCpsriUEzZ1+MZbETmTkKJGq6zQc2fQk=; 
- b=gDbh3tPm36xfb7X++BSSaZSTHXTjctuxdOagaU310uA6V8yRgqqVQDvCEyRKsgpB8cdnXLcbaLQYw1m7P4MCx3I9FWxhqTVLpbz8IoXh0hvZYKeGTX3l0pB5zF2axxkSgRHTfVBpKAkPfEmv02f9zPELypvjyBx/AJu4WcGQIoA=;
-X-UUID: 360037144ae2426eae6e50c7f0242fbe-20191227
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=1zRXQBBd4HgmvNxvuWR+gqGoagId5f7H7dFTXUFOo1Q=; 
+ b=Vul3stcgS+VJfvN3abysF4cArcwPp0abSUrWHnV4nqJF4IZtgMHK+WMPSlo2AamnfD4qdNXBGxKPCA+4aRQh/+Rx0F0KLzHXej5UwxgNCheSmHW1vYDJFxGq5A2jipIep4l4CCmr37VJcOTm/lS9XUMO4iV4HauVb1H2lPYngEQ=;
+X-UUID: 62f24943bdb84c23aa77f9b309ddbc7b-20191227
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.liang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 563276248; Fri, 27 Dec 2019 06:15:14 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 27 Dec 2019 06:15:22 -0800
+ with ESMTP id 85024612; Fri, 27 Dec 2019 06:25:14 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 27 Dec 2019 06:15:21 -0800
 Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 27 Dec 2019 22:14:42 +0800
+ MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 27 Dec 2019 22:14:33 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Fri, 27 Dec 2019 22:15:24 +0800
+ Transport; Fri, 27 Dec 2019 22:15:26 +0800
 From: Yong Liang <yong.liang@mediatek.com>
 To: <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <robh+dt@kernel.org>,
  <mark.rutland@arm.com>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <wim@linux-watchdog.org>,
  <linux@roeck-us.net>, <linux-watchdog@vger.kernel.org>
-Subject: [PATCH v3 1/2] amr64: dts: modify mt8183.dtsi
-Date: Fri, 27 Dec 2019 22:14:04 +0800
-Message-ID: <20191227141405.3396-2-yong.liang@mediatek.com>
+Subject: [PATCH v3 2/2] dt-bindings: mt8183: Add watchdog dt-binding
+Date: Fri, 27 Dec 2019 22:14:05 +0800
+Message-ID: <20191227141405.3396-3-yong.liang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20191227141405.3396-1-yong.liang@mediatek.com>
 References: <20191227141405.3396-1-yong.liang@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 65573B1BF2CA74CE9D4CBFF7A61812BFA2E2A57D9D751D313324137F0D19EB7B2000:8
+X-TM-SNTS-SMTP: AC0E245F852230B6D0DBCBF49B10D944B4A66F6B530D98FD61051C746FE4C2FD2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191227_061517_490414_6DE320A4 
-X-CRM114-Status: UNSURE (   7.54  )
+X-CRM114-CacheID: sfid-20191227_062517_965792_324BF4B7 
+X-CRM114-Status: UNSURE (   6.96  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -96,48 +96,26 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "yong.liang" <yong.liang@mediatek.com>
 
-1. Include mt8183-reset.h and add reset-cells in infracfg
-in dtsi file
-2. Add watchdog device node
+This patch add watchdog binding documentation for
+watchdog on MTK Socs.
 
 Signed-off-by: yong.liang <yong.liang@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 10b32471bc7b..c86f5684d502 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -8,6 +8,7 @@
- #include <dt-bindings/clock/mt8183-clk.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/reset-controller/mt8183-resets.h>
- #include "mt8183-pinfunc.h"
+diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+index fd380eb28df5..3ee625d0812f 100644
+--- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
++++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+@@ -9,6 +9,7 @@ Required properties:
+ 	"mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
+ 	"mediatek,mt7623-wdt", "mediatek,mt6589-wdt": for MT7623
+ 	"mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
++	"mediatek,mt8183-wdt", "mediatek,mt6589-wdt": for MT8183
+ 	"mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
  
- / {
-@@ -227,6 +228,7 @@
- 			compatible = "mediatek,mt8183-infracfg", "syscon";
- 			reg = <0 0x10001000 0 0x1000>;
- 			#clock-cells = <1>;
-+			#reset-cells = <1>;
- 		};
- 
- 		pio: pinctrl@10005000 {
-@@ -253,6 +255,12 @@
- 			#interrupt-cells = <2>;
- 		};
- 
-+		watchdog: watchdog@10007000 {
-+			compatible = "mediatek,mt8183-wdt",
-+				     "mediatek,mt6589-wdt";
-+			reg = <0 0x10007000 0 0x100>;
-+		};
-+
- 		apmixedsys: syscon@1000c000 {
- 			compatible = "mediatek,mt8183-apmixedsys", "syscon";
- 			reg = <0 0x1000c000 0 0x1000>;
+ - reg : Specifies base physical address and size of the registers.
 -- 
 2.18.0
 _______________________________________________
