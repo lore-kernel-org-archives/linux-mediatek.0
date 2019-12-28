@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D1026C2D0C3
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Dec 2019 03:06:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B6408C2D0C3
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Dec 2019 03:16:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A461A208C4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Dec 2019 03:06:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 86D03208C4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Dec 2019 03:16:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="a1zzmlxE";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="AG4KEV3c"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A461A208C4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CNQpU8xH";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GcqiQznp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 86D03208C4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R1z4P5bVSdxWbO1lSR+5e79SU4ObVSaAyZCruAZJPXg=; b=a1zzmlxEclNXRm
-	C9pjJ4tHd6MZwCAbzViunENl/spTSRkeRzVw6H7fCfMJ9c2YtNH81/Dg40HOtqElnww6QtQnWWoeV
-	0zV+v+DJrMzw/ri9D0XSBFj7f3QOUHIbxjSZt4KDlg9Gj2E4bhngUj+XuCayQKQgtu+mttGqK8J4G
-	8yuHPw+spvCE3duGXDUa6/Px+aj68pK9foR5QPMx9638Uh7nPYx+2wm+crVDhwwml+x/pWyQ1zVkC
-	gjbX7N1bcV3b+uqa5e23b8lDhSBXB58Aw3oAmkwKEBta4qrgHQhRmzt8dQEKPZrjz9MO2MJj7K/BV
-	QC8YOGjIucqgNIsMkMIw==;
+	List-Owner; bh=VPhl6PG0FcFjlmuAr7oHHTi7idSo1dt5LZwLOtsLo7s=; b=CNQpU8xHuLix6O
+	I558xtaPuNZiSKaIxI5BWN0NmjJDK+L63acmQotzLRxTQg6b8nuDySZHpDQ4mTBQ9MojT0zt5EURa
+	sASfG0DYyF1L9VS66WhHySzNxw2y6rEns0Z0bL9oz9P/ZJsPMEN6udkfbV66kDWRO2RfWswYDW51D
+	VCxcJhnLX+8IRs+tmSO6ePJaQnuKHX6qZtHS1hTIaaG3kolmSQ2/Pd2LPs+JZXBU0FWAThw/a5kVd
+	AjywGjn4jWZ46xQa92AoZJDO2dwD3689WeA4JVdtjQr654NFGfw+avtd4sfOrOWkRHVPLHZvBOoA2
+	MYNbVZEPrQk0kVf9JF2A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1il2RH-00036M-Kc; Sat, 28 Dec 2019 03:06:51 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1il2ak-0005os-Sl; Sat, 28 Dec 2019 03:16:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1il2RE-000361-0W
- for linux-mediatek@lists.infradead.org; Sat, 28 Dec 2019 03:06:49 +0000
-X-UUID: 3837fa15675546648c8b0db780969f57-20191227
+ id 1il2ai-0005o9-8f
+ for linux-mediatek@lists.infradead.org; Sat, 28 Dec 2019 03:16:37 +0000
+X-UUID: 70ee6781ff7643af8d6077f949359410-20191227
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ij959lRItOwY5+DCQXFnh/qX3GVtKszFINCfTg2rMt0=; 
- b=AG4KEV3cgVh7zGOCoKwcCbFz6pX5J+tsT8uj9NWohpeBzxUoTU+Xp+RC8P1VUohaA7Lo/Px9c3Q5E1dnnQ2rWjMUtYbFgRjL2UK9IDDbKWrYlmNKWOf9c6TXWW+dVvoI+2lStSMqXrScOABSyKW/AskjdJWDmFhO3k16KbGIcLo=;
-X-UUID: 3837fa15675546648c8b0db780969f57-20191227
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=59pqvoAaU68tyt/+uUeT/9cG7cvBamrg76YhqKNa9Pk=; 
+ b=GcqiQznpnYTiQXvU0Az8ZblzNksY0t5dy6YaVu/C9pSJ05uogxjUIflvHXbsygLNMu8+Ra23dxuUFIi2vpy0qahrt+eTUgkBCPIsth0nsoEZvwcFs+AvrsAucd8HPF3SXBjG8nQw/YXBxMs00osOOnfkTYghdeuB9rfzXcgWqzw=;
+X-UUID: 70ee6781ff7643af8d6077f949359410-20191227
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 148913698; Fri, 27 Dec 2019 19:06:44 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 27 Dec 2019 19:06:54 -0800
+ with ESMTP id 133346433; Fri, 27 Dec 2019 19:16:32 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 27 Dec 2019 19:06:37 -0800
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sat, 28 Dec 2019 11:05:52 +0800
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sat, 28 Dec 2019 11:06:27 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Sat, 28 Dec 2019 11:05:52 +0800
+ Frontend Transport; Sat, 28 Dec 2019 11:05:51 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>
-Subject: [PATCH v1 3/3] mt76: mt7615: add a get_stats() callback
-Date: Sat, 28 Dec 2019 11:05:12 +0800
-Message-ID: <294f99d401beeee1e7f1e65bf32d580d1568aa24.1577501739.git.ryder.lee@mediatek.com>
+Subject: [PATCH v1 2/3] mt76: mt7615: add per-phy mib statistics
+Date: Sat, 28 Dec 2019 11:05:11 +0800
+Message-ID: <ddf49ee8dbb323be45967f804f348b8596847a3a.1577501739.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <769aba6e014b8e7650c3909d6adb8427c1d5c5ae.1577501739.git.ryder.lee@mediatek.com>
 References: <769aba6e014b8e7650c3909d6adb8427c1d5c5ae.1577501739.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: C67F8ACB24958420C070F8DC06EF8CBC01D642FFE0CBF873142BF4F0890688832000:8
+X-TM-SNTS-SMTP: 2DCC9F50CED6423EB6868D28408D639660D286A3AC266B14C66630E41025135D2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191227_190648_060913_D90433EC 
-X-CRM114-Status: UNSURE (   5.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191227_191636_316544_C0AADCFC 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,47 +94,174 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a get_stats() callback for mib statistics.
+Update per-phy mib counters every 500ms.
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7615/main.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+changes since v1 - mark mt7615_mac_update_mib_stats() as a static function.
+---
+ .../net/wireless/mediatek/mt76/mt7615/mac.c   | 56 +++++++++++++------
+ .../wireless/mediatek/mt76/mt7615/mt7615.h    |  9 +++
+ .../net/wireless/mediatek/mt76/mt7615/regs.h  | 16 ++++--
+ 3 files changed, 60 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index fa67331918ea..4a2bf689c795 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -628,6 +628,21 @@ mt7615_sta_remove(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 			  IEEE80211_STA_NOTEXIST);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index 1b52d8b79496..d6cb6532a883 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -1480,25 +1480,14 @@ static void
+ mt7615_mac_scs_check(struct mt7615_phy *phy)
+ {
+ 	struct mt7615_dev *dev = phy->dev;
+-	u32 val, rts_cnt = 0, rts_retries_cnt = 0, rts_err_rate = 0;
++	struct mib_stats *mib = &phy->mib;
++	u32 val, rts_err_rate = 0;
+ 	u32 mdrdy_cck, mdrdy_ofdm, pd_cck, pd_ofdm;
+ 	bool ext_phy = phy != &dev->phy;
+-	int i;
+ 
+ 	if (!dev->scs_en)
+ 		return;
+ 
+-	for (i = 0; i < 4; i++) {
+-		u32 data;
+-
+-		val = mt76_rr(dev, MT_MIB_MB_SDR(ext_phy, i));
+-		data = FIELD_GET(MT_MIB_RTS_RETRIES_COUNT_MASK, val);
+-		if (data > rts_retries_cnt) {
+-			rts_cnt = FIELD_GET(MT_MIB_RTS_COUNT_MASK, val);
+-			rts_retries_cnt = data;
+-		}
+-	}
+-
+ 	val = mt76_rr(dev, MT_WF_PHY_R0_PHYCTRL_STS0(ext_phy));
+ 	pd_cck = FIELD_GET(MT_WF_PHYCTRL_STAT_PD_CCK, val);
+ 	pd_ofdm = FIELD_GET(MT_WF_PHYCTRL_STAT_PD_OFDM, val);
+@@ -1511,9 +1500,9 @@ mt7615_mac_scs_check(struct mt7615_phy *phy)
+ 	phy->false_cca_cck = pd_cck - mdrdy_cck;
+ 	mt7615_mac_cca_stats_reset(phy);
+ 
+-	if (rts_cnt + rts_retries_cnt)
+-		rts_err_rate = MT_FRAC(rts_retries_cnt,
+-				       rts_cnt + rts_retries_cnt);
++	if (mib->rts_cnt + mib->rts_retries_cnt)
++		rts_err_rate = MT_FRAC(mib->rts_retries_cnt,
++				       mib->rts_cnt + mib->rts_retries_cnt);
+ 
+ 	/* cck */
+ 	mt7615_mac_adjust_sensitivity(phy, rts_err_rate, false);
+@@ -1588,6 +1577,36 @@ void mt7615_update_channel(struct mt76_dev *mdev)
+ 	mt76_set(dev, MT_WF_RMAC_MIB_TIME0, MT_WF_RMAC_MIB_RXTIME_CLR);
  }
  
-+static int
-+mt7615_get_stats(struct ieee80211_hw *hw,
-+		 struct ieee80211_low_level_stats *stats)
++static void
++mt7615_mac_update_mib_stats(struct mt7615_phy *phy)
 +{
-+	struct mt7615_phy *phy = mt7615_hw_phy(hw);
++	struct mt7615_dev *dev = phy->dev;
 +	struct mib_stats *mib = &phy->mib;
++	bool ext_phy = phy != &dev->phy;
++	int i;
 +
-+	stats->dot11RTSSuccessCount = mib->rts_cnt;
-+	stats->dot11RTSFailureCount = mib->rts_retries_cnt;
-+	stats->dot11FCSErrorCount = mib->fcs_err_cnt;
-+	stats->dot11ACKFailureCount = mib->ack_fail_cnt;
++	memset(mib, 0, sizeof(*mib));
 +
-+	return 0;
++	mib->fcs_err_cnt = mt76_get_field(dev, MT_MIB_SDR3(ext_phy),
++					  MT_MIB_SDR3_FCS_ERR_MASK);
++
++	for (i = 0; i < 4; i++) {
++		u32 data, val, val2;
++
++		val = mt76_get_field(dev, MT_MIB_MB_SDR1(ext_phy, i),
++				     MT_MIB_ACK_FAIL_COUNT_MASK);
++		if (val > mib->ack_fail_cnt)
++			mib->ack_fail_cnt = val;
++
++		val2 = mt76_rr(dev, MT_MIB_MB_SDR0(ext_phy, i));
++		data = FIELD_GET(MT_MIB_RTS_RETRIES_COUNT_MASK, val2);
++		if (data > mib->rts_retries_cnt) {
++			mib->rts_cnt = FIELD_GET(MT_MIB_RTS_COUNT_MASK, val2);
++			mib->rts_retries_cnt = data;
++		}
++	}
 +}
 +
- static u64
- mt7615_get_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
+ void mt7615_mac_work(struct work_struct *work)
  {
-@@ -679,6 +694,7 @@ const struct ieee80211_ops mt7615_ops = {
- 	.release_buffered_frames = mt76_release_buffered_frames,
- 	.get_txpower = mt76_get_txpower,
- 	.channel_switch_beacon = mt7615_channel_switch_beacon,
-+	.get_stats = mt7615_get_stats,
- 	.get_tsf = mt7615_get_tsf,
- 	.get_survey = mt76_get_survey,
- 	.get_antenna = mt76_get_antenna,
+ 	struct mt7615_dev *dev;
+@@ -1602,9 +1621,12 @@ void mt7615_mac_work(struct work_struct *work)
+ 	if (++dev->mac_work_count == 5) {
+ 		ext_phy = mt7615_ext_phy(dev);
+ 
++		mt7615_mac_update_mib_stats(&dev->phy);
+ 		mt7615_mac_scs_check(&dev->phy);
+-		if (ext_phy)
++		if (ext_phy) {
++			mt7615_mac_update_mib_stats(ext_phy);
+ 			mt7615_mac_scs_check(ext_phy);
++		}
+ 
+ 		dev->mac_work_count = 0;
+ 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+index eaafae9cc279..d215a84d6c49 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+@@ -87,6 +87,13 @@ struct mt7615_vif {
+ 	struct mt7615_sta sta;
+ };
+ 
++struct mib_stats {
++	u32 ack_fail_cnt;
++	u32 fcs_err_cnt;
++	u32 rts_cnt;
++	u32 rts_retries_cnt;
++};
++
+ struct mt7615_phy {
+ 	struct mt76_phy *mt76;
+ 	struct mt7615_dev *dev;
+@@ -112,6 +119,8 @@ struct mt7615_phy {
+ 
+ 	__le32 rx_ampdu_ts;
+ 	u32 ampdu_ref;
++
++	struct mib_stats mib;
+ };
+ 
+ struct mt7615_dev {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
+index b0c14067a832..40e58b332e75 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
+@@ -333,10 +333,9 @@
+ #define MT_WF_MIB(ofs)			(MT_WF_MIB_BASE + (ofs))
+ 
+ #define MT_MIB_M0_MISC_CR		MT_WF_MIB(0x00c)
+-#define MT_MIB_MB_SDR(_band, n)		MT_WF_MIB(0x100 + ((_band) << 9) + \
+-						  ((n) << 4))
+-#define MT_MIB_RTS_RETRIES_COUNT_MASK	GENMASK(31, 16)
+-#define MT_MIB_RTS_COUNT_MASK		GENMASK(15, 0)
++
++#define MT_MIB_SDR3(n)			MT_WF_MIB(0x014 + ((n) << 9))
++#define MT_MIB_SDR3_FCS_ERR_MASK	GENMASK(15, 0)
+ 
+ #define MT_MIB_SDR9(n)			MT_WF_MIB(0x02c + ((n) << 9))
+ #define MT_MIB_SDR9_BUSY_MASK		GENMASK(23, 0)
+@@ -349,6 +348,15 @@
+ #define MT_MIB_SDR37(n)			MT_WF_MIB(0x09c + ((n) << 9))
+ #define MT_MIB_SDR37_RXTIME_MASK	GENMASK(23, 0)
+ 
++#define MT_MIB_MB_SDR0(_band, n)	MT_WF_MIB(0x100 + ((_band) << 9) + \
++						  ((n) << 4))
++#define MT_MIB_RTS_RETRIES_COUNT_MASK	GENMASK(31, 16)
++#define MT_MIB_RTS_COUNT_MASK		GENMASK(15, 0)
++
++#define MT_MIB_MB_SDR1(_band, n)	MT_WF_MIB(0x104 + ((_band) << 9) + \
++						  ((n) << 4))
++#define MT_MIB_ACK_FAIL_COUNT_MASK	GENMASK(31, 16)
++
+ #define MT_TX_AGG_CNT(n)		MT_WF_MIB(0xa8 + ((n) << 2))
+ 
+ #define MT_LED_BASE_PHYS		0x80024000
 -- 
 2.18.0
 _______________________________________________
