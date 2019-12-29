@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-9.6 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 02F9AC2D0C6
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Dec 2019 08:19:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 351A1C2D0CE
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Dec 2019 08:19:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B9D5320722
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Dec 2019 08:19:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 02EA620722
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Dec 2019 08:19:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j3kytV0J";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="E/JzGOtp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B9D5320722
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="n7jvewXo";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="jcjs/+PL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 02EA620722
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -28,49 +28,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=PTfIp2jed+uc3HR+FO4TG9TQ0FaPIuI2Hzg7JKcNuxM=; b=j3kytV0JJbx/FH/6508xu0QQ1S
-	oPSPXEbQiTrlqafh/6lOvT+gkMWY/3RDCMCBjuuY4s/ShoQ4NlzphXtiN54XP2mpfx5x1EwEq+P95
-	rBqFLrWLs0TI0Ku+pBJi49B5arZKzsJ5kow+ZLyCRTpG0RMBeE38FdyLdtwGZyupco8WpOxXJiew0
-	UB1FBiN/TJz5f43gQBhpN4vcHVaW7EdHBzs62sSLXquZYBtWLaqPJ6rTny7A4YnHPKYZxTv8dNY8R
-	olgvzEq4/9qw05sfpJopAnLoCK1TBsPqWs+BACN6D2Sd4KV8OcYFAgP9bpDUFqTvbHwFdWphfeZ8y
-	L9EfeXrw==;
+	bh=KbVpZKimHNzilYeCHoPSHDxoWfXTr+kJclnS4zGIfb4=; b=n7jvewXoHbXS0yz5cOCKgQca0H
+	eXHaMUpAJfyPV5eTaLQVc+7ZuRhFzUEnnM80YPgap0/q+WrQ2+5HJVZfZqUQHZrxd1d5euPsfycyd
+	FTH6GxYexBgpxXyGZmEcKk/7sogP4Ps7uTgqy+HqhB+DrRqXOahcGtNLITlFFzsz3dy5ae1AUP4LE
+	HI8slnBHvsxAw05At0cry3zD8Zh/jf03l3DO+WpCr2DWLdFQW+UmROBXsoskU8y0gUXx0Nkqry/l9
+	OIw2iXj3hNJ8c/BVReCspv4FCgk5i1CWQGCIlCNk5pQbrq8/Fg5L8tVqrWQJiQ6cAr5oH8IxRg0vj
+	VyQJ/1LQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ilTnh-0006pu-2X; Sun, 29 Dec 2019 08:19:49 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1ilTnZ-0006ec-3z; Sun, 29 Dec 2019 08:19:41 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ilTb5-0001Dm-TR; Sun, 29 Dec 2019 08:06:49 +0000
-Received: by mail-pf1-x443.google.com with SMTP id q8so16881822pfh.7;
- Sun, 29 Dec 2019 00:06:46 -0800 (PST)
+ id 1ilTb2-0001Ar-LW; Sun, 29 Dec 2019 08:06:46 +0000
+Received: by mail-pf1-x442.google.com with SMTP id w62so16880061pfw.8;
+ Sun, 29 Dec 2019 00:06:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=zcHD+rWT+BbboeyvNLj2n3ooAcJQzfyFO4UCzDGkuhw=;
- b=E/JzGOtpfinHn+r6Nqt4BI5pFks+bjbqVron4JoRxP94w0UIFIVAEzNAykvpZoDTHG
- YdpP4wRAK6M/FQIdpYYxzBLZOmoog2O1Y40cOyLcpnDo/2O9fxR4NFzOaZ1x0EmaujHB
- Vov8M5Z25EwOhuPEoRoEFu/dM5gTDeGkLvqCDdPZaObFIo5vY7JIpHeZfiIFIeDhprQE
- u04G5AatFvvQ7aoNiA0/W7lgxLSTfHxFlafECN0owOb2uTbRi1abpNLb+TGTQxNmryPh
- gpocdwGzgwwZYgjXfmEJf96i9Gz2VuYiig3Dzl2RXfsSMky3WavexL5Kr3R4FWeDNl3p
- DeBw==
+ bh=7C9csqsnQvcsncB7BFqdTNUWmGo/VsO+LA8tqtfgkPA=;
+ b=jcjs/+PLV2JXKvRK5ziMpwAysMkDPC8s9r4UV5yKxf4yhxZbU8xB5E75T6G/P7ulXb
+ jMY8puOpg9UcDUg+10rYov5RFZx8U6pvz4XAD5KpWg1cX8Siwjtz26KDB7AsB2gVNtQq
+ CdAnqGPr372cK1kcSr9c2X17LwY8wOcSstoRm94NWpcEYAserNiA/w0Fz2JVpBDTPH3+
+ ZA0RD/rOJvts3a0XWraMURs26hCaQ8lK+tQcN5PLYuiY9GrIdZaJdFguQV38dmJ+UQmc
+ I+hhBYo+RfLtod0vQrpGTa2vLgx4GA/hKk8mkWnVqFHW1XLgE+QVEHR369nWbR8cE3fo
+ iL/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=zcHD+rWT+BbboeyvNLj2n3ooAcJQzfyFO4UCzDGkuhw=;
- b=PY3x46GF+VgzfNawl/5NXPNQ/A6X1vkN1stJ8TJ6rxrd0bTiMQvx+RhiWCd6JJ9cUV
- hXope451nSDAgC53VRXNtKMkXKzGVwo+uOqij5iJ6GFufO/rsQrunatSHg+xTqQNX+h7
- Y2McX1vzaiMl8pc2OSzfwyFHUP5rBht7vdm+J7s0cwxckK6YeeGuFy4Zyi70UZnhBnzW
- 81bhRlII6v2hnMrnqPjeA2mJ5guKM+djy5wH/aklRR6Bc0Y9ZMplVXQLtyG0dv+3hNSh
- zoAmEZ6COCoBWlH4tvuqyu45yJq6xkKsw8yhsDZF2/gOmHvtHEo1tcaYqLQz+YCxVKE5
- OAWQ==
-X-Gm-Message-State: APjAAAXTmOmL8eEN3f2ZxWBCicx1GCIQyPXJruViUNCdmEEKBDuVUKVh
- F1s2NAlF2npwbiiTvGN8HqU=
-X-Google-Smtp-Source: APXvYqwWymCsuMsS6doL78LFT042zKrJjX+UYK0FXE7pm0oZc+RfEaCYhPRMzd55UCYO0aSn6F1J+A==
-X-Received: by 2002:a63:134e:: with SMTP id 14mr65912691pgt.115.1577606806183; 
- Sun, 29 Dec 2019 00:06:46 -0800 (PST)
+ bh=7C9csqsnQvcsncB7BFqdTNUWmGo/VsO+LA8tqtfgkPA=;
+ b=HigiZ3wUCrmi/EILaph9vLqirnS9orkhsJpbpQUB3Ejwil9vDkamb6ebj7Crx9GKLE
+ eqMEx3LfxaHd58RcwE5JiDkE8KSf3ZPKqJlLlVz0iW71n6wlj+tcyWvwbHh/M00pzSsX
+ XETV0WQs1TDRNWR5eHAvp4TlUYzolEZJy8D2aW0l4tSn8ZqclII3Zr2pSYtNwS2/3Y8O
+ IqkLGBN+6gVyqrdsXxQa/dTSk1LdaxD8IUoSI6ljlbxp2zov1v7dYUkKZ0g3uxYUU58L
+ stvBqOCe0rzOjkoNb2Hb13jXQuSWGsD7aXkq03LYiRSNAXyGd3QGU7hNeGc375t2g9QE
+ gfVg==
+X-Gm-Message-State: APjAAAX3la+eE7UTp8p576nE0uTF+h5Lb3PFr2n95PcqDu2Lmke7kAEh
+ vuLSosTxNh+ERpAwzPoKfFo=
+X-Google-Smtp-Source: APXvYqzUdmO2Rv7imffzZ5diTgtjXIZc+zetWCpfjNYcI++CXUFajSDwDRs8JEjaQLkbgWwatBbprA==
+X-Received: by 2002:a62:a515:: with SMTP id v21mr65261927pfm.128.1577606801886; 
+ Sun, 29 Dec 2019 00:06:41 -0800 (PST)
 Received: from localhost ([2001:19f0:6001:12c8:5400:2ff:fe72:6403])
- by smtp.gmail.com with ESMTPSA id a9sm19507006pfn.38.2019.12.29.00.06.45
+ by smtp.gmail.com with ESMTPSA id d21sm16349375pjs.25.2019.12.29.00.06.41
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 29 Dec 2019 00:06:45 -0800 (PST)
+ Sun, 29 Dec 2019 00:06:41 -0800 (PST)
 From: Yangtao Li <tiny.windzz@gmail.com>
 To: claudiu.beznea@microchip.com, thierry.reding@gmail.com,
  u.kleine-koenig@pengutronix.de, nicolas.ferre@microchip.com,
@@ -88,15 +88,15 @@ To: claudiu.beznea@microchip.com, thierry.reding@gmail.com,
  linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
  linux-tegra@vger.kernel.org
-Subject: [PATCH 27/32] pwm: clps711x: convert to devm_platform_ioremap_resource
-Date: Sun, 29 Dec 2019 08:06:05 +0000
-Message-Id: <20191229080610.7597-27-tiny.windzz@gmail.com>
+Subject: [PATCH 23/32] pwm: berlin: convert to devm_platform_ioremap_resource
+Date: Sun, 29 Dec 2019 08:06:01 +0000
+Message-Id: <20191229080610.7597-23-tiny.windzz@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20191229080610.7597-1-tiny.windzz@gmail.com>
 References: <20191229080610.7597-1-tiny.windzz@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191229_000648_016421_15BA066B 
-X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-CacheID: sfid-20191229_000644_840357_485839A7 
+X-CRM114-Status: UNSURE (   8.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -120,28 +120,29 @@ Use devm_platform_ioremap_resource() to simplify code.
 
 Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 ---
- drivers/pwm/pwm-clps711x.c | 4 +---
+ drivers/pwm/pwm-berlin.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/pwm/pwm-clps711x.c b/drivers/pwm/pwm-clps711x.c
-index 924d39a797cf..e69a5877cec6 100644
---- a/drivers/pwm/pwm-clps711x.c
-+++ b/drivers/pwm/pwm-clps711x.c
-@@ -113,14 +113,12 @@ static struct pwm_device *clps711x_pwm_xlate(struct pwm_chip *chip,
- static int clps711x_pwm_probe(struct platform_device *pdev)
+diff --git a/drivers/pwm/pwm-berlin.c b/drivers/pwm/pwm-berlin.c
+index b91c477cc84b..fe405289e582 100644
+--- a/drivers/pwm/pwm-berlin.c
++++ b/drivers/pwm/pwm-berlin.c
+@@ -186,15 +186,13 @@ MODULE_DEVICE_TABLE(of, berlin_pwm_match);
+ static int berlin_pwm_probe(struct platform_device *pdev)
  {
- 	struct clps711x_chip *priv;
+ 	struct berlin_pwm_chip *pwm;
 -	struct resource *res;
+ 	int ret;
  
- 	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
+ 	pwm = devm_kzalloc(&pdev->dev, sizeof(*pwm), GFP_KERNEL);
+ 	if (!pwm)
  		return -ENOMEM;
  
 -	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->pmpcon = devm_ioremap_resource(&pdev->dev, res);
-+	priv->pmpcon = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->pmpcon))
- 		return PTR_ERR(priv->pmpcon);
+-	pwm->base = devm_ioremap_resource(&pdev->dev, res);
++	pwm->base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(pwm->base))
+ 		return PTR_ERR(pwm->base);
  
 -- 
 2.17.1
