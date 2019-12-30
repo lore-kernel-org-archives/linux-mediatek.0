@@ -2,22 +2,22 @@ Return-Path: <SRS0=GpGz=2U=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C6C1EC2D0C3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 05:34:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 23ED6C2D0C3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 05:34:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8533D20718
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 05:34:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EA71D20718
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 05:34:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Xgawe4UV";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="oNPS4xmp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8533D20718
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="n2mzuUHJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="p0BakxZe"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA71D20718
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lYhv306OrEgWSp75wE2mkPpx12cbOqA0TT6ub9g2E64=; b=Xgawe4UVvfuKqx
-	OEaWdvXsZJNseSQhuWBzswNWF8UEBWUpPrfHua1zYNmW/H4JQb2aHe7xppXyN6R19pNlFVsezE8K0
-	r5W+HQKEyo5rPI1O/tC/vHH+GEPW2IeV7YUgdllYpEheF562ULju0YgL2n2/2Yr7t59JPLNlpt9Bk
-	8w2XpMlEjpFTokd18BpGw2jAxhDsw+TQY3vfmwIQkxn/B14eNLby1xKA7UisDE3vTG1y3qNdDTjHS
-	3h3UH/hwJByWU36iJqNn3t3a1eTXnirOZzGc9MuKbRNVkegK0VUbRC+ljSG5ExGBOdqEsZUvauJBx
-	+Vqj6+No+tn1sXYXppsQ==;
+	List-Owner; bh=y4ysA5rr0WM1LOPbhL07dBA9wil8NPbRxu1I8R287eI=; b=n2mzuUHJScczRW
+	MfYQ/jWwqNBQzr1EP31hrJ8omj3/8RpGv8f3tvUqbmtHZl9DfpCczPTHPcICxN2s6W8Cf25MUm7oC
+	4OAQ7tnP4QOKueZlBi/baULhbXbwqGN5pPZCW68q2cI/oqTRD7C6y8dmRw9xAibPuzuEuVvb7FTXm
+	5q+FH4hiTA3h/5JmqBX3Wa4GfZd3oPuVKzCjGvWJuLJshwNclX3abqECSJxSqGUupj3pddIdf1xgt
+	jf2GLs5miGYN+TdvX3gATpfhFMGdaVcantNiUtjfp5oRnos4g7grz6gG+LW2WdfQBlvGHXAwt/UL7
+	2XXzJ9Xy3evX/sLHiz5Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ilnhE-00006B-Jx; Mon, 30 Dec 2019 05:34:28 +0000
+	id 1ilnhD-0008WK-6g; Mon, 30 Dec 2019 05:34:27 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ilnft-0007AB-4V; Mon, 30 Dec 2019 05:33:07 +0000
-X-UUID: 611f8ea592ec43c38366e0660ab19176-20191229
+ id 1ilnft-00078k-4A; Mon, 30 Dec 2019 05:33:07 +0000
+X-UUID: b8ed36d208384a9b893b5dd49df283f6-20191229
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=CT6J6Mos8F012MHJEi2dQQCWX4KKKCdgeXYgBRHOS3k=; 
- b=oNPS4xmpH1QbfA/e8MS3EK28wTDCCkRqJxxug7ZWJq/zPG8nSgCOASSfCEFz7Ofdaywx56/0quWdpRJtG3wuG0QiRX7fmXgnNDfPlR1PtGSYhIkjcNV+1Y0DdY2iOm1B1eXMkdIEJktoip0KkHB+1mjaF+TOPVe9B+ERV3K7MlI=;
-X-UUID: 611f8ea592ec43c38366e0660ab19176-20191229
+ bh=lASBnsWC43Rfu6UB24oYUGd0P99a4d4L+O1D0Rkd/kg=; 
+ b=p0BakxZeyUmy4+OrwLlFFIwnpTpmvnZoVDazX1F0Qg56PJUrh4Igyn+7zc/wiknx5mQ0oteUBYquY5u82KvZrWyON6GOpYkVhDMZPYlyze4V3+rt/a1TO5V9Ut/QFQFIF9JyFsfjsIwm3Xrq2ig3b4fqUYxE9YosmZj8SUyTaPE=;
+X-UUID: b8ed36d208384a9b893b5dd49df283f6-20191229
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1039479302; Sun, 29 Dec 2019 21:32:59 -0800
+ with ESMTP id 1674888027; Sun, 29 Dec 2019 21:32:59 -0800
 Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 29 Dec 2019 21:33:14 -0800
+ 15.0.1395.4; Sun, 29 Dec 2019 21:33:13 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
  15.0.1395.4; Mon, 30 Dec 2019 13:32:05 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Mon, 30 Dec 2019 13:31:37 +0800
+ Frontend Transport; Mon, 30 Dec 2019 13:31:31 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>,
  <pedrom.sousa@synopsys.com>, <jejb@linux.ibm.com>, <matthias.bgg@gmail.com>,
  <bvanassche@acm.org>, <f.fainelli@gmail.com>
-Subject: [PATCH v2 3/6] scsi: ufs-mediatek: introduce reference clock control
-Date: Mon, 30 Dec 2019 13:32:27 +0800
-Message-ID: <1577683950-1702-4-git-send-email-stanley.chu@mediatek.com>
+Subject: [PATCH v2 2/6] scsi: ufs-mediatek: add device reset implementation
+Date: Mon, 30 Dec 2019 13:32:26 +0800
+Message-ID: <1577683950-1702-3-git-send-email-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <1577683950-1702-1-git-send-email-stanley.chu@mediatek.com>
 References: <1577683950-1702-1-git-send-email-stanley.chu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191229_213305_230867_49AB0681 
-X-CRM114-Status: GOOD (  13.43  )
+X-CRM114-CacheID: sfid-20191229_213305_191609_45571C6C 
+X-CRM114-Status: GOOD (  10.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,11 +95,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce reference clock control in MediaTek Chipset in order
-to disable it if it is not necessary by UFS device to save system power.
-
-Currently reference clock can be disabled during system suspend, runtime
-suspend and clock-gating after link enters hibernate state.
+Add device reset vops implementation in MediaTek UFS driver.
 
 Cc: Alim Akhtar <alim.akhtar@samsung.com>
 Cc: Avri Altman <avri.altman@wdc.com>
@@ -109,166 +105,107 @@ Cc: Can Guo <cang@codeaurora.org>
 Cc: Florian Fainelli <f.fainelli@gmail.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-Reviewed-by: Alim Akhtar <alim.akhtar@samsung.com>
+Reviewed-by: Avri Altman <avri.altman@wdc.com>
 ---
- drivers/scsi/ufs/ufs-mediatek.c | 62 ++++++++++++++++++++++++++++++---
- drivers/scsi/ufs/ufs-mediatek.h | 22 ++++++++++--
- 2 files changed, 78 insertions(+), 6 deletions(-)
+ drivers/scsi/ufs/ufs-mediatek.c | 33 +++++++++++++++++++++++++++++++++
+ drivers/scsi/ufs/ufs-mediatek.h |  9 +++++++++
+ 2 files changed, 42 insertions(+)
 
 diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-index 37e2c91fc452..fc5ba21ec02a 100644
+index 83e28edc3ac5..37e2c91fc452 100644
 --- a/drivers/scsi/ufs/ufs-mediatek.c
 +++ b/drivers/scsi/ufs/ufs-mediatek.c
-@@ -22,6 +22,9 @@
- 	arm_smccc_smc(MTK_SIP_UFS_CONTROL, \
- 		      cmd, val, 0, 0, 0, 0, 0, &(res))
+@@ -6,16 +6,25 @@
+  *	Peter Wang <peter.wang@mediatek.com>
+  */
  
-+#define ufs_mtk_ref_clk_notify(on, res) \
-+	ufs_mtk_smc(UFS_MTK_SIP_REF_CLK_NOTIFICATION, on, res)
++#include <linux/arm-smccc.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
++#include <linux/soc/mediatek/mtk_sip_svc.h>
+ 
+ #include "ufshcd.h"
+ #include "ufshcd-pltfrm.h"
+ #include "unipro.h"
+ #include "ufs-mediatek.h"
+ 
++#define ufs_mtk_smc(cmd, val, res) \
++	arm_smccc_smc(MTK_SIP_UFS_CONTROL, \
++		      cmd, val, 0, 0, 0, 0, 0, &(res))
 +
- #define ufs_mtk_device_reset_ctrl(high, res) \
- 	ufs_mtk_smc(UFS_MTK_SIP_DEVICE_RESET, high, res)
- 
-@@ -90,6 +93,49 @@ static int ufs_mtk_bind_mphy(struct ufs_hba *hba)
- 	return err;
++#define ufs_mtk_device_reset_ctrl(high, res) \
++	ufs_mtk_smc(UFS_MTK_SIP_DEVICE_RESET, high, res)
++
+ static void ufs_mtk_cfg_unipro_cg(struct ufs_hba *hba, bool enable)
+ {
+ 	u32 tmp;
+@@ -269,6 +278,29 @@ static int ufs_mtk_link_startup_notify(struct ufs_hba *hba,
+ 	return ret;
  }
  
-+static int ufs_mtk_setup_ref_clk(struct ufs_hba *hba, bool on)
++static void ufs_mtk_device_reset(struct ufs_hba *hba)
 +{
-+	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
 +	struct arm_smccc_res res;
-+	unsigned long timeout;
-+	u32 value;
 +
-+	if (host->ref_clk_enabled == on)
-+		return 0;
++	ufs_mtk_device_reset_ctrl(0, res);
 +
-+	if (on) {
-+		ufs_mtk_ref_clk_notify(on, res);
-+		ufshcd_writel(hba, REFCLK_REQUEST, REG_UFS_REFCLK_CTRL);
-+	} else {
-+		ufshcd_writel(hba, REFCLK_RELEASE, REG_UFS_REFCLK_CTRL);
-+	}
++	/*
++	 * The reset signal is active low. UFS devices shall detect
++	 * more than or equal to 1us of positive or negative RST_n
++	 * pulse width.
++	 *
++	 * To be on safe side, keep the reset low for at least 10us.
++	 */
++	usleep_range(10, 15);
 +
-+	/* Wait for ack */
-+	timeout = jiffies + msecs_to_jiffies(REFCLK_REQ_TIMEOUT_MS);
-+	do {
-+		value = ufshcd_readl(hba, REG_UFS_REFCLK_CTRL);
++	ufs_mtk_device_reset_ctrl(1, res);
 +
-+		/* Wait until ack bit equals to req bit */
-+		if (((value & REFCLK_ACK) >> 1) == (value & REFCLK_REQUEST))
-+			goto out;
++	/* Some devices may need time to respond to rst_n */
++	usleep_range(10000, 15000);
 +
-+		usleep_range(100, 200);
-+	} while (time_before(jiffies, timeout));
-+
-+	dev_err(hba->dev, "missing ack of refclk req, reg: 0x%x\n", value);
-+
-+	ufs_mtk_ref_clk_notify(host->ref_clk_enabled, res);
-+
-+	return -ETIMEDOUT;
-+
-+out:
-+	host->ref_clk_enabled = on;
-+	if (!on)
-+		ufs_mtk_ref_clk_notify(on, res);
-+
-+	return 0;
++	dev_info(hba->dev, "device reset done\n");
 +}
 +
+ static int ufs_mtk_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+ {
+ 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+@@ -303,6 +335,7 @@ static struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
+ 	.pwr_change_notify   = ufs_mtk_pwr_change_notify,
+ 	.suspend             = ufs_mtk_suspend,
+ 	.resume              = ufs_mtk_resume,
++	.device_reset        = ufs_mtk_device_reset,
+ };
+ 
  /**
-  * ufs_mtk_setup_clocks - enables/disable clocks
-  * @hba: host controller instance
-@@ -114,12 +160,16 @@ static int ufs_mtk_setup_clocks(struct ufs_hba *hba, bool on,
- 
- 	switch (status) {
- 	case PRE_CHANGE:
--		if (!on)
-+		if (!on) {
-+			ufs_mtk_setup_ref_clk(hba, on);
- 			ret = phy_power_off(host->mphy);
-+		}
- 		break;
- 	case POST_CHANGE:
--		if (on)
-+		if (on) {
- 			ret = phy_power_on(host->mphy);
-+			ufs_mtk_setup_ref_clk(hba, on);
-+		}
- 		break;
- 	}
- 
-@@ -305,8 +355,10 @@ static int ufs_mtk_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- {
- 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
- 
--	if (ufshcd_is_link_hibern8(hba))
-+	if (ufshcd_is_link_hibern8(hba)) {
- 		phy_power_off(host->mphy);
-+		ufs_mtk_setup_ref_clk(hba, false);
-+	}
- 
- 	return 0;
- }
-@@ -315,8 +367,10 @@ static int ufs_mtk_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- {
- 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
- 
--	if (ufshcd_is_link_hibern8(hba))
-+	if (ufshcd_is_link_hibern8(hba)) {
-+		ufs_mtk_setup_ref_clk(hba, true);
- 		phy_power_on(host->mphy);
-+	}
- 
- 	return 0;
- }
 diff --git a/drivers/scsi/ufs/ufs-mediatek.h b/drivers/scsi/ufs/ufs-mediatek.h
-index ce68ce25fdd7..31b7fead19eb 100644
+index 19f8c42fe06f..ce68ce25fdd7 100644
 --- a/drivers/scsi/ufs/ufs-mediatek.h
 +++ b/drivers/scsi/ufs/ufs-mediatek.h
-@@ -9,6 +9,22 @@
- #include <linux/bitops.h>
- #include <linux/soc/mediatek/mtk_sip_svc.h>
+@@ -6,6 +6,9 @@
+ #ifndef _UFS_MEDIATEK_H
+ #define _UFS_MEDIATEK_H
  
-+/*
-+ * Vendor specific UFSHCI Registers
-+ */
-+#define REG_UFS_REFCLK_CTRL         0x144
-+
-+/*
-+ * Ref-clk control
-+ *
-+ * Values for register REG_UFS_REFCLK_CTRL
-+ */
-+#define REFCLK_RELEASE              0x0
-+#define REFCLK_REQUEST              BIT(0)
-+#define REFCLK_ACK                  BIT(1)
-+
-+#define REFCLK_REQ_TIMEOUT_MS       3
++#include <linux/bitops.h>
++#include <linux/soc/mediatek/mtk_sip_svc.h>
 +
  /*
   * Vendor specific pre-defined parameters
   */
-@@ -35,8 +51,9 @@
- /*
-  * SiP commands
-  */
--#define MTK_SIP_UFS_CONTROL         MTK_SIP_SMC_CMD(0x276)
--#define UFS_MTK_SIP_DEVICE_RESET    BIT(1)
-+#define MTK_SIP_UFS_CONTROL               MTK_SIP_SMC_CMD(0x276)
-+#define UFS_MTK_SIP_DEVICE_RESET          BIT(1)
-+#define UFS_MTK_SIP_REF_CLK_NOTIFICATION  BIT(3)
+@@ -29,6 +32,12 @@
+ #define VS_SAVEPOWERCONTROL         0xD0A6
+ #define VS_UNIPROPOWERDOWNCONTROL   0xD0A8
  
++/*
++ * SiP commands
++ */
++#define MTK_SIP_UFS_CONTROL         MTK_SIP_SMC_CMD(0x276)
++#define UFS_MTK_SIP_DEVICE_RESET    BIT(1)
++
  /*
   * VS_DEBUGCLOCKENABLE
-@@ -57,6 +74,7 @@ enum {
- struct ufs_mtk_host {
- 	struct ufs_hba *hba;
- 	struct phy *mphy;
-+	bool ref_clk_enabled;
- };
- 
- #endif /* !_UFS_MEDIATEK_H */
+  */
 -- 
 2.18.0
 _______________________________________________
