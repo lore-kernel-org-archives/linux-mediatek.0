@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.1 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5DB4CC2D0C2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 18:21:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 722E4C2D0C2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 18:22:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3323C206DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 18:21:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3994B2053B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 18:22:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ma+e3WFy";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="MG23K+tz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3323C206DB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Os7aeA/B";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="XNvSZqeO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3994B2053B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,57 +27,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I/BNzUUM5w0ldAH0/7ERwAVFJBpr/+roiu4GLu83CJw=; b=ma+e3WFyJHK8kl
-	Q79monS2oDLCjzS0485Fpu5lIbXIeidEyGLZZPfhIgOAZxPIfhi3Euy5V7KAUpmCap1vGTRsy+wVQ
-	ibx/FVSoivWV73fi/2philka/0DkV/+EolXR1wHHxNxef1Qqc7o4QS59zo4B8jXU6ble/+YVpHOD0
-	Bcl0SmwrfTgBwR5uKJ3ymx1hz+e03UUwBeozBuhMSFYn+AgTdJuCQSbN37Wv6/tsUf3rF7VFjF4hh
-	ijhPkrIXKLEIflhZTSO27tYWp2/zzkkkODwaEUUuJwXpZXVpucNStwDBE9WYkw9Unst7LVv2GMwV1
-	KDRfESszvj9fg2IVfjRA==;
+	List-Owner; bh=NW7gKxvtTpVm+0TOgYlaMadDswzK/mwJqcRR7KbEZLc=; b=Os7aeA/BSPcsgQ
+	NwzXhYahiLfOGTwawATQE0/xRB+dm7lk23GZWOqH3sbwAl/4iiCfbC/QSBNReKwWcVhBmbwI2P2dd
+	cWQYjmf+y6+P4Ofo7z67CXqYv5opfzMGTypFgNL+mKxd85wDmSt0zitgkC77b3mAon1iUfidRipKg
+	VLv3+fOKXpQVRvEy6BkfKxnM9SNLXpOE6AUO2nBHbb5lABlzC2ODTSNGou0YXWh98VrAfX/NIWF0v
+	Em+GNGHoDe9C4lCF41oOvzUdwnoUOiyhC/1wDpghFHQH3i0rXvBC+evPNV6DEdL/gwLrHJN6JqlJo
+	i/Wi2kyi0vNxmhoTgvGQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ilzf5-0007t6-Bt; Mon, 30 Dec 2019 18:21:03 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1ilzgj-0008OM-UT; Mon, 30 Dec 2019 18:22:45 +0000
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ilzf2-0007sH-Hm; Mon, 30 Dec 2019 18:21:01 +0000
-Received: by mail-wr1-x442.google.com with SMTP id j42so33380966wrj.12;
- Mon, 30 Dec 2019 10:20:59 -0800 (PST)
+ id 1ilzgh-0008Ng-S0; Mon, 30 Dec 2019 18:22:45 +0000
+Received: by mail-ed1-x544.google.com with SMTP id r21so33420237edq.0;
+ Mon, 30 Dec 2019 10:22:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=w0q654yqDEnffJ0BauqH2GM/TgoupvqMZ4bdJnZRrYA=;
- b=MG23K+tz5O/93loAW9k0F55CyVOXjs17QmgMRA6BN7XICGWToDF/npEWf/TF1zexim
- tDDlPWaTiPX3W53v41Y9bgQ+7/JhxHPUsLbULg4YFZYTjmam6q76mAy8IC2u/zeBvuJ2
- ZydaHRxR7MFtbMv2e7v6OzPILVzlNv37OFk+o4SHST7PwaIMjRNmBp4G88Jz3bYdM3LF
- Hp/BOits5addgWkXD2KPkH9esfshnzZAM5oCurlel74wnKpDOA62/CUv2T2v9Iq619ms
- 6CwkcDNCrNKS8stc3w904JUQoAF0sKj9B6ntWRukRUO6c7Z6OIwWLgerfNaletdEHLkK
- E2lg==
+ bh=1PCJd/PF3F895m58Bbet4dhzTSwbc0BhoKZ/thaid2A=;
+ b=XNvSZqeOjPbBghYGKMAqgzcoEQxQh7qz8z0epZqyyD84FktXAmQ+6VSUpknm3bi282
+ hmmz3vQdqAM1AmmLifZtHnFcFWGD7SyihttBgZ/ra87vP3IE2bIkyv6PctX3rH0FSrV0
+ pDd33S/6BTh5aR7ikuYH38r7h1Oc7zmRth2nxwSDTwe43I4LQU/DqgQvvxOZZFFf+jQf
+ GqpgJ1q7otLF6VntxRiVQcF83npY4MDiusBKbwAhZH1ynlG3QgsRNzSOU2+Plg8/DQPO
+ BjkaJWVsE095Xk+WBGZfg4TYwXlL/hrdNcVbMuLJbK0/R0Qx3hCyC/HuIBJhjniBka37
+ eBUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=w0q654yqDEnffJ0BauqH2GM/TgoupvqMZ4bdJnZRrYA=;
- b=tiJpwLEm5C26LdghloiWuzbCnaZOmEiPH/+aZfDOk7yBZAuOJrLxxo611Xql/gG9Zl
- qv0BavXqaSf/1G+zn0hQU/P+8P8Zt4tY/qsOm71GJDFTKAH+sXxA6xXVjwPqW9+7Zkqg
- B9ZTdpDvbu3z6fBeYbdim7J43U8ajsJ9HKOTZwi/mj2IgEHJ8FdTO295NAHj1376wGHy
- Td+rb5Kt2iny2KT6IeeobVCJ1GyYvi7h8d5A9nPqO6xHUDnbzBR32V1Cw5oymHZU8wuM
- idbGwrHnxMY7bkOmW+s/vMAOsXucJaEzNIcJFH+XWWIGHY274rlcKL3jvGPiyP6HjsBi
- 0HNw==
-X-Gm-Message-State: APjAAAU4MojpWDiMo4IOziG/qRKcL+6V8726eO3E/2l4N0efP7rTdraX
- bzMjITjK/E8JAs058rk1jnadZjWH
-X-Google-Smtp-Source: APXvYqxZn8C79IyACkJJnscuowAqiVaiO+0Bh4Sm/IygPWsVC6eZJaC43fr5Z24nJnQXOh9ILsKZfg==
-X-Received: by 2002:a17:906:2e46:: with SMTP id
- r6mr71882689eji.310.1577730056943; 
- Mon, 30 Dec 2019 10:20:56 -0800 (PST)
+ bh=1PCJd/PF3F895m58Bbet4dhzTSwbc0BhoKZ/thaid2A=;
+ b=lKQUKgKljbP88GUsm2quZHqhUo7Ji6U6wzrOCn+5KDm7gQQWIVvhj3jWzDbYp/W3Ds
+ fjFwDj5TfFMX2ckRrg8IOaI0T49oQ5yCgNqSq7JJIi6wnJpPYB0OSEcoJu1mKavm54/G
+ Ut8ckDDIx1tQqhW8I4m0Ubj2hXKWQKWLVnHullcvE+eeb8sjOO2rTl1Pbhzk2OO6NUD0
+ Ls23vTqxYq1CXZ7bD1uol6DpSeJVQjKySoS/nJapKkiyTk/UWTraVgqJePSemtxC6PC+
+ rG7hHv7wENh0DYI2SNxl8HPMe6Pib+O2vv4cPRVTSM3ZbFr86V5GFfjIKmY+zi/a52Tw
+ inmA==
+X-Gm-Message-State: APjAAAVM6YDxSFpgJHkaMx3z6dhPvBdVj95PS7LxI8V2UBRy7TKOFtO4
+ h1ZbuvNGK4OdZErNzGMW7TYsW5/V
+X-Google-Smtp-Source: APXvYqycsD5svkUunq2bz6mbMT36LIYCNQr/Ym+gLT6E8LdO740CXm9+u1gLp3zDwdEnpVFna8Z0Yg==
+X-Received: by 2002:aa7:d6d1:: with SMTP id x17mr36095454edr.57.1577730162346; 
+ Mon, 30 Dec 2019 10:22:42 -0800 (PST)
 Received: from [10.67.50.49] ([192.19.223.252])
- by smtp.googlemail.com with ESMTPSA id f13sm5411640edq.26.2019.12.30.10.20.52
+ by smtp.googlemail.com with ESMTPSA id y5sm5064437ejm.57.2019.12.30.10.22.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 Dec 2019 10:20:56 -0800 (PST)
-Subject: Re: [PATCH RFC net-next 05/19] net: dsa: tag_ar9331: add GRO callbacks
+ Mon, 30 Dec 2019 10:22:41 -0800 (PST)
+Subject: Re: [PATCH RFC net-next 03/19] net: dsa: tag_ar9331: add
+ .flow_dissect() callback
 To: Alexander Lobakin <alobakin@dlink.ru>,
  "David S. Miller" <davem@davemloft.net>
 References: <20191230143028.27313-1-alobakin@dlink.ru>
- <20191230143028.27313-6-alobakin@dlink.ru>
+ <20191230143028.27313-4-alobakin@dlink.ru>
 From: Florian Fainelli <f.fainelli@gmail.com>
 Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
  xsDiBEjPuBIRBACW9MxSJU9fvEOCTnRNqG/13rAGsj+vJqontvoDSNxRgmafP8d3nesnqPyR
@@ -133,16 +133,16 @@ Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
  HvsHIcv4lxCWkFXkwsuWqzEKK6kxVpRDoEQPDj+Oy/ZJ5fYuMbkdHrlegwoQ64LrqdmiVVPC
  TwQYEQIADwIbDAUCVF/S8QUJHlwd3wAKCRBhV5kVtWN2Do+FAJ956xSz2XpDHql+Wg/2qv3b
  G10n8gCguORqNGMsVRxrlLs7/himep7MrCc=
-Message-ID: <ee6f83fd-edf4-5a98-9868-4cbe9e226b9b@gmail.com>
-Date: Mon, 30 Dec 2019 10:20:50 -0800
+Message-ID: <74d9de44-95ff-2308-90df-ea5fe4f88ddf@gmail.com>
+Date: Mon, 30 Dec 2019 10:22:36 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20191230143028.27313-6-alobakin@dlink.ru>
+In-Reply-To: <20191230143028.27313-4-alobakin@dlink.ru>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191230_102100_589591_A3FED430 
-X-CRM114-Status: GOOD (  22.15  )
+X-CRM114-CacheID: sfid-20191230_102243_958141_7847BA6E 
+X-CRM114-Status: GOOD (  18.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -174,97 +174,53 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 12/30/19 6:30 AM, Alexander Lobakin wrote:
-> Add GRO callbacks to the AR9331 tagger so GRO layer can now process
-> such frames.
+> ...to make RPS work correctly if user would like to configure it.
+> Misc: fix identation of ar9331_netdev_ops structure.
 > 
 > Signed-off-by: Alexander Lobakin <alobakin@dlink.ru>
-
-This is a good example and we should probably build a tagger abstraction
-that is much simpler to fill in callbacks for (although indirect
-function calls may end-up killing performance with retpoline and
-friends), but let's consider this idea.
-
 > ---
->  net/dsa/tag_ar9331.c | 77 ++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 77 insertions(+)
+>  net/dsa/tag_ar9331.c | 18 +++++++++++++-----
+>  1 file changed, 13 insertions(+), 5 deletions(-)
 > 
 > diff --git a/net/dsa/tag_ar9331.c b/net/dsa/tag_ar9331.c
-> index c22c1b515e02..99cc7fd92d8e 100644
+> index 466ffa92a474..399ca21ec03b 100644
 > --- a/net/dsa/tag_ar9331.c
 > +++ b/net/dsa/tag_ar9331.c
-> @@ -100,12 +100,89 @@ static void ar9331_tag_flow_dissect(const struct sk_buff *skb, __be16 *proto,
->  	*proto = ar9331_tag_encap_proto(skb->data);
+> @@ -83,12 +83,20 @@ static struct sk_buff *ar9331_tag_rcv(struct sk_buff *skb,
+>  	return skb;
 >  }
 >  
-> +static struct sk_buff *ar9331_tag_gro_receive(struct list_head *head,
-> +					      struct sk_buff *skb)
+> +static void ar9331_tag_flow_dissect(const struct sk_buff *skb, __be16 *proto,
+> +				    int *offset)
 > +{
-> +	const struct packet_offload *ptype;
-> +	struct sk_buff *p, *pp = NULL;
-> +	u32 data_off, data_end;
-> +	const u8 *data;
-> +	int flush = 1;
+> +	*offset = AR9331_HDR_LEN;
+> +	*proto = *(__be16 *)skb->data;
+
+If we provided an offset from the beginning of the frame, then there is
+no need to call .flow_dissect() at all and we can just return the
+dsa_device_ops::overhead and offset_start (whatever is the name we pick)
+and avoid a function call.
+
+> +}
 > +
-> +	data_off = skb_gro_offset(skb);
-> +	data_end = data_off + AR9331_HDR_LEN;
+>  static const struct dsa_device_ops ar9331_netdev_ops = {
+> -	.name	= "ar9331",
+> -	.proto	= DSA_TAG_PROTO_AR9331,
+> -	.xmit	= ar9331_tag_xmit,
+> -	.rcv	= ar9331_tag_rcv,
+> -	.overhead = AR9331_HDR_LEN,
+> +	.name		= "ar9331",
+> +	.proto		= DSA_TAG_PROTO_AR9331,
+> +	.xmit		= ar9331_tag_xmit,
+> +	.rcv		= ar9331_tag_rcv,
+> +	.flow_dissect	= ar9331_tag_flow_dissect,
+> +	.overhead	= AR9331_HDR_LEN,
+>  };
+>  
+>  MODULE_LICENSE("GPL v2");
+> 
 
-AR9331_HDR_LEN is a parameter here which is incidentally
-dsa_device_ops::overhead.
 
-> +
-> +	data = skb_gro_header_fast(skb, data_off);
-> +	if (skb_gro_header_hard(skb, data_end)) {
-> +		data = skb_gro_header_slow(skb, data_end, data_off);
-> +		if (unlikely(!data))
-> +			goto out;
-> +	}
-> +
-> +	/* Data that is to the left from the current position is already
-> +	 * pulled to the head
-> +	 */
-> +	if (unlikely(!ar9331_tag_sanity_check(skb->data + data_off)))
-> +		goto out;
-
-This is applicable to all taggers, they need to verify the sanity of the
-header they are being handed.
-
-> +
-> +	rcu_read_lock();
-> +
-> +	ptype = gro_find_receive_by_type(ar9331_tag_encap_proto(data));
-
-If there is no encapsulation a tagger can return the frame's protocol
-directly, so similarly the tagger can be interrogated for returning that.
-
-> +	if (!ptype)
-> +		goto out_unlock;
-> +
-> +	flush = 0;
-> +
-> +	list_for_each_entry(p, head, list) {
-> +		if (!NAPI_GRO_CB(p)->same_flow)
-> +			continue;
-> +
-> +		if (ar9331_tag_source_port(skb->data + data_off) ^
-> +		    ar9331_tag_source_port(p->data + data_off))
-
-Similarly here, the tagger could provide a function whose job is to
-return the port number from within its own tag.
-
-So with that being said, what do you think about building a tagger
-abstraction which is comprised of:
-
-- header length which is dsa_device_ops::overhead
-- validate_tag()
-- get_tag_encap_proto()
-- get_port_number()
-
-and the rest is just wrapping the general GRO list manipulation?
-
-Also, I am wondering should we somehow expose the DSA master
-net_device's napi_struct such that we could have the DSA slave
-net_devices call napi_gro_receive() themselves directly such that they
-could also perform additional GRO on top of Ethernet frames?
 -- 
 Florian
 
