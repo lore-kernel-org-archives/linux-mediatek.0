@@ -2,73 +2,68 @@ Return-Path: <SRS0=GpGz=2U=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 81670C2D0C2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 17:22:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2BF47C2D0C2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 17:22:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 55CCC206DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 17:22:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 00089206DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 17:22:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DdTLuoIs";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="EKqJvBpz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55CCC206DB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="L8/Fk/RL";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=lunn.ch header.i=@lunn.ch header.b="iSv7ysfd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 00089206DB
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lunn.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=md7J2dY/KMMVHw3GdndEVNUgsjvk3g2IIdlL1x5W074=; b=DdTLuoIs+XS7Aqwj+zkLOsdbqu
-	1dNAbKf9jTEERF8aDwEw7pkqARjmF3jghOGDrB5ajSkBul51jeY0P2JL74zH48BYnPDcu9Hc/HQxD
-	Z/8L7lOrtPZJUkAUlU86PJwPN8Q/4/OxbR5wpPGNlILjA5N2uVg2dlK4uE9GrGQmxFjASwj/c0PC1
-	OnhxRwn4HZfAJMs+gJ5MHsrA3gZvuy+CDyUAgCSa/P/Y1fXh5Z0uQTOJ1BIdCs1YMDzco+dIqiVke
-	TazmFmNonDKJrLAFu8XhHurYjhwJvHB4nKb4kdG9j7f4V0Fz2FxkMkvd4/ENsol11P39zysopbiEw
-	nYoZX4TQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hD38k+ph25PXON+LiTPmj9ZR7uW1J1elkcbNUUSVlbQ=; b=L8/Fk/RLiSGc1I
+	8A+u/unz1KqzbD3ciA/vsT3NoOt0TZb//NB7Z1Waa0lkmZlBK6qfObA6RIQNYKc5i7NCMAYlTWPIi
+	37hffALWc/3N5dFX5Eye49XK0FyhY7/FGM9ShImSWRNgjV1Qpdc4ImVxgXSp5H9d6lF+1LJfT/Je9
+	x8pXcIJmE0tZPujKlxSJTBbZm4ehv6EBsB0jsonIgIFIo4efCr/sDA7oyc6Lk2JWXtuoPu0TDX2Wh
+	Y99lHe1PdzJYLwaDTsbgF+vN1kHAKJw/s/ZZwlkzL/u30oqG6xVOlTUkScDDZ6FOMr+3qetQS7U80
+	tm2ZY+DLHX5gOWsfKdyQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ilyjz-0007eo-Ix; Mon, 30 Dec 2019 17:22:03 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1ilykm-0008HV-5Y; Mon, 30 Dec 2019 17:22:52 +0000
+Received: from vps0.lunn.ch ([185.16.172.187])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ilyjW-00078S-CG; Mon, 30 Dec 2019 17:21:36 +0000
-Received: from localhost.localdomain (unknown [194.230.155.138])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id BFA1A2071E;
- Mon, 30 Dec 2019 17:21:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1577726493;
- bh=e/gvJO5s9HFPQBYMAs10A6ZLymzdOsgN0GewiWTGEzk=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=EKqJvBpzzpOYneGnhs8+1kBprz2jBvn9qBcEnJWm6i9ypCO1aVp42ozM7U3ccQuZX
- xMN1HY+mA9JNqWBU58Pk8fnRWNYWdf3Uv6QmOdgK++8ndBn9uGB5ubIA4eBXDUGKlu
- Z5I+qeirfMdyB/IfeSN2xxeDnQeNODnX0SdxOZSQ=
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Thierry Reding <thierry.reding@gmail.com>,
- =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- bcm-kernel-feedback-list@broadcom.com,
- linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-tegra@vger.kernel.org
-Subject: [PATCH 2/2] pwm: Enable compile testing for some of drivers
-Date: Mon, 30 Dec 2019 18:21:13 +0100
-Message-Id: <20191230172113.17222-2-krzk@kernel.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20191230172113.17222-1-krzk@kernel.org>
-References: <20191230172113.17222-1-krzk@kernel.org>
+ id 1ilykT-00081b-9v; Mon, 30 Dec 2019 17:22:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+ s=20171124; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
+ Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=LvLtlNVIraZ0K0BvAC5sz2iObsMdXa39MW+pknncAe8=; b=iSv7ysfdrw1VwJYAGLPPJNd9NM
+ KGau6p3kXLxDpdxTm2WplWp0/sl76MT0ivU7mdQUYlrjNbuWITalxN7VLliyisHVL8+sbLagNdeAf
+ UtYhMZd4l4+AJ0mq4Tx4L7TW6YbSLc1BMQlSgwA5uu+0sqrbrScaRXphYxfNFPyAhWKw=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.93)
+ (envelope-from <andrew@lunn.ch>)
+ id 1ilyk5-0004Ct-AJ; Mon, 30 Dec 2019 18:22:09 +0100
+Date: Mon, 30 Dec 2019 18:22:09 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Alexander Lobakin <alobakin@dlink.ru>
+Subject: Re: [PATCH RFC net-next 06/19] net: dsa: tag_gswip: fix typo in tag
+ name
+Message-ID: <20191230172209.GE13569@lunn.ch>
+References: <20191230143028.27313-1-alobakin@dlink.ru>
+ <20191230143028.27313-7-alobakin@dlink.ru>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20191230143028.27313-7-alobakin@dlink.ru>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191230_092134_506530_577C08CF 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20191230_092233_847795_5EB7DDD3 
+X-CRM114-Status: UNSURE (   5.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,238 +75,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>
-MIME-Version: 1.0
+Cc: Song Liu <songliubraving@fb.com>,
+ Jakub Kicinski <jakub.kicinski@netronome.com>,
+ Yoshiki Komachi <komachi.yoshiki@gmail.com>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Stanislav Fomichev <sdf@google.com>,
+ Matteo Croce <mcroce@redhat.com>, Edward Cree <ecree@solarflare.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Jakub Sitnicki <jakub@cloudflare.com>,
+ Daniel Borkmann <daniel@iogearbox.net>, Paolo Abeni <pabeni@redhat.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>, Hauke Mehrtens <hauke@hauke-m.de>,
+ Sean Wang <sean.wang@mediatek.com>, Jiri Pirko <jiri@mellanox.com>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
+ Paul Blakey <paulb@mellanox.com>,
+ Stephen Hemminger <stephen@networkplumber.org>,
+ "David S. Miller" <davem@davemloft.net>, Taehee Yoo <ap420073@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some of the PWM drivers can be compile tested to increase build
-coverage.
+On Mon, Dec 30, 2019 at 05:30:14PM +0300, Alexander Lobakin wrote:
+> "gwsip" -> "gswip".
+> 
+> Signed-off-by: Alexander Lobakin <alobakin@dlink.ru>
 
-The Meson PWM driver requires COMMON_CLK dependency.
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
----
- drivers/pwm/Kconfig | 48 +++++++++++++++++++++++----------------------
- 1 file changed, 25 insertions(+), 23 deletions(-)
-
-diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
-index c865d688f6b4..d5661a227321 100644
---- a/drivers/pwm/Kconfig
-+++ b/drivers/pwm/Kconfig
-@@ -44,7 +44,7 @@ config PWM_AB8500
- 
- config PWM_ATMEL
- 	tristate "Atmel PWM support"
--	depends on ARCH_AT91 && OF
-+	depends on (ARCH_AT91 || COMPILE_TEST) && OF
- 	help
- 	  Generic PWM framework driver for Atmel SoC.
- 
-@@ -100,7 +100,7 @@ config PWM_BCM_KONA
- 
- config PWM_BCM2835
- 	tristate "BCM2835 PWM support"
--	depends on ARCH_BCM2835
-+	depends on ARCH_BCM2835 || COMPILE_TEST
- 	help
- 	  PWM framework driver for BCM2835 controller (Raspberry Pi)
- 
-@@ -109,7 +109,7 @@ config PWM_BCM2835
- 
- config PWM_BERLIN
- 	tristate "Marvell Berlin PWM support"
--	depends on ARCH_BERLIN
-+	depends on ARCH_BERLIN || COMPILE_TEST
- 	help
- 	  PWM framework driver for Marvell Berlin SoCs.
- 
-@@ -118,7 +118,7 @@ config PWM_BERLIN
- 
- config PWM_BRCMSTB
- 	tristate "Broadcom STB PWM support"
--	depends on ARCH_BRCMSTB || BMIPS_GENERIC
-+	depends on ARCH_BRCMSTB || BMIPS_GENERIC || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for the Broadcom Set-top-Box
- 	  SoCs (BCM7xxx).
-@@ -152,7 +152,7 @@ config PWM_CROS_EC
- 
- config PWM_EP93XX
- 	tristate "Cirrus Logic EP93xx PWM support"
--	depends on ARCH_EP93XX
-+	depends on ARCH_EP93XX || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for Cirrus Logic EP93xx.
- 
-@@ -195,7 +195,7 @@ config PWM_IMG
- 
- config PWM_IMX1
- 	tristate "i.MX1 PWM support"
--	depends on ARCH_MXC
-+	depends on ARCH_MXC || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for i.MX1 and i.MX21
- 
-@@ -204,7 +204,7 @@ config PWM_IMX1
- 
- config PWM_IMX27
- 	tristate "i.MX27 PWM support"
--	depends on ARCH_MXC
-+	depends on ARCH_MXC || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for i.MX27 and later i.MX SoCs.
- 
-@@ -244,7 +244,7 @@ config PWM_LP3943
- 
- config PWM_LPC18XX_SCT
- 	tristate "LPC18xx/43xx PWM/SCT support"
--	depends on ARCH_LPC18XX
-+	depends on ARCH_LPC18XX || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for NXP LPC18xx PWM/SCT which
- 	  supports 16 channels.
-@@ -256,7 +256,7 @@ config PWM_LPC18XX_SCT
- 
- config PWM_LPC32XX
- 	tristate "LPC32XX PWM support"
--	depends on ARCH_LPC32XX
-+	depends on ARCH_LPC32XX || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for LPC32XX. The LPC32XX SOC has two
- 	  PWM controllers.
-@@ -289,7 +289,8 @@ config PWM_LPSS_PLATFORM
- 
- config PWM_MESON
- 	tristate "Amlogic Meson PWM driver"
--	depends on ARCH_MESON
-+	depends on ARCH_MESON || COMPILE_TEST
-+	depends on COMMON_CLK
- 	help
- 	  The platform driver for Amlogic Meson PWM controller.
- 
-@@ -318,7 +319,7 @@ config PWM_MEDIATEK
- 
- config PWM_MXS
- 	tristate "Freescale MXS PWM support"
--	depends on ARCH_MXS && OF
-+	depends on (ARCH_MXS && OF) || COMPILE_TEST
- 	select STMP_DEVICE
- 	help
- 	  Generic PWM framework driver for Freescale MXS.
-@@ -328,7 +329,8 @@ config PWM_MXS
- 
- config PWM_OMAP_DMTIMER
- 	tristate "OMAP Dual-Mode Timer PWM support"
--	depends on OF && ARCH_OMAP && OMAP_DM_TIMER
-+	depends on (ARCH_OMAP && OMAP_DM_TIMER) || COMPILE_TEST
-+	depends on OF
- 	help
- 	  Generic PWM framework driver for OMAP Dual-Mode Timer PWM output
- 
-@@ -356,7 +358,7 @@ config PWM_PUV3
- 
- config PWM_PXA
- 	tristate "PXA PWM support"
--	depends on ARCH_PXA
-+	depends on ARCH_PXA || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for PXA.
- 
-@@ -387,14 +389,14 @@ config PWM_RENESAS_TPU
- 
- config PWM_ROCKCHIP
- 	tristate "Rockchip PWM support"
--	depends on ARCH_ROCKCHIP
-+	depends on ARCH_ROCKCHIP || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for the PWM controller found on
- 	  Rockchip SoCs.
- 
- config PWM_SAMSUNG
- 	tristate "Samsung PWM support"
--	depends on PLAT_SAMSUNG || ARCH_EXYNOS
-+	depends on PLAT_SAMSUNG || ARCH_EXYNOS || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for Samsung.
- 
-@@ -414,7 +416,7 @@ config PWM_SIFIVE
- 
- config PWM_SPEAR
- 	tristate "STMicroelectronics SPEAr PWM support"
--	depends on PLAT_SPEAR
-+	depends on PLAT_SPEAR || COMPILE_TEST
- 	depends on OF
- 	help
- 	  Generic PWM framework driver for the PWM controller on ST
-@@ -436,7 +438,7 @@ config PWM_SPRD
- 
- config PWM_STI
- 	tristate "STiH4xx PWM support"
--	depends on ARCH_STI
-+	depends on ARCH_STI || COMPILE_TEST
- 	depends on OF
- 	help
- 	  Generic PWM framework driver for STiH4xx SoCs.
-@@ -446,7 +448,7 @@ config PWM_STI
- 
- config PWM_STM32
- 	tristate "STMicroelectronics STM32 PWM"
--	depends on MFD_STM32_TIMERS
-+	depends on MFD_STM32_TIMERS || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for STM32 SoCs.
- 
-@@ -482,7 +484,7 @@ config PWM_SUN4I
- 
- config PWM_TEGRA
- 	tristate "NVIDIA Tegra PWM support"
--	depends on ARCH_TEGRA
-+	depends on ARCH_TEGRA || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for the PWFM controller found on NVIDIA
- 	  Tegra SoCs.
-@@ -492,7 +494,7 @@ config PWM_TEGRA
- 
- config PWM_TIECAP
- 	tristate "ECAP PWM support"
--	depends on ARCH_OMAP2PLUS || ARCH_DAVINCI_DA8XX || ARCH_KEYSTONE || ARCH_K3
-+	depends on ARCH_OMAP2PLUS || ARCH_DAVINCI_DA8XX || ARCH_KEYSTONE || ARCH_K3 || COMPILE_TEST
- 	help
- 	  PWM driver support for the ECAP APWM controller found on TI SOCs
- 
-@@ -501,7 +503,7 @@ config PWM_TIECAP
- 
- config PWM_TIEHRPWM
- 	tristate "EHRPWM PWM support"
--	depends on ARCH_OMAP2PLUS || ARCH_DAVINCI_DA8XX || ARCH_K3
-+	depends on ARCH_OMAP2PLUS || ARCH_DAVINCI_DA8XX || ARCH_K3 || COMPILE_TEST
- 	help
- 	  PWM driver support for the EHRPWM controller found on TI SOCs
- 
-@@ -528,7 +530,7 @@ config PWM_TWL_LED
- 
- config PWM_VT8500
- 	tristate "vt8500 PWM support"
--	depends on ARCH_VT8500
-+	depends on ARCH_VT8500 || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for vt8500.
- 
-@@ -537,7 +539,7 @@ config PWM_VT8500
- 
- config PWM_ZX
- 	tristate "ZTE ZX PWM support"
--	depends on ARCH_ZX
-+	depends on ARCH_ZX || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for ZTE ZX family SoCs.
- 
--- 
-2.17.1
-
+    Andrew
 
 _______________________________________________
 Linux-mediatek mailing list
