@@ -2,22 +2,23 @@ Return-Path: <SRS0=GpGz=2U=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.1 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-8.1 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 588F2C2D0CE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 19:30:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B46A2C2D0C3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 20:11:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2E06920409
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 19:30:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 879712071E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 20:11:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Qcc0fnEh";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Ckxf1ezo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2E06920409
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tRTOd0fh";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="f/bIxziY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 879712071E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,64 +28,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:From:References:To:Subject:Reply-To:Cc:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=pvvDjBr7g0/+a2QQI9qBcmLGMCtuHrWwCkwHQQ0OFTM=; b=Qcc0fnEhQOjWr1vcph4grgiK9n
-	ljlqA3y2OGfr3kZqMaRVUfKzAZ/yipcsZmCFgedDy/wydbjMl4RSJG2BwedQ7WhNs8kxGWhOe2IgU
-	bxM7/q+ow2khvBw1x1TemJLrrsxYYJidZuz/YWBNGjcqUWYBDZyvMiUywWHdbBdWZ+I6CBwztofkp
-	7frbHYtZPGSq/ROJl9tU/ulW44tBClZBo+iloaDVBwIeb12xrxb6/BgSLC8wCqExjGAfN8VknwXWu
-	qDdgky4u4aTWM+Py6X36cAM3IMigIzuhUzkV6YHUruSYHjIsnfmbLSK6XxYc61QP3Z91IhZvM4Jpy
-	Bq9Br3Vg==;
+	bh=MQrMjxRuXsyFQZDxf7zAdygNy22z+iwV0prIScuuuAM=; b=tRTOd0fhCJUs5A23fpBS7eShIc
+	kVGG/2F4dgg3n9+MUtA8Q0YQ9Cs3eDi7oaTQmx6JFGSPa4Su+mercNbx3p/sOY4ri4zhjPVQ4Y8ow
+	mLUY82MmTSItK54pjUZzLUJfIg5MS87AI2SygIGpdr8rVT8hNY3iny+fKI+aEZB7qPB7LERSpsmNA
+	sfnVztSXEAOQtcDJwVGQG37+e3MR2mZnWI3PCtU26V3dApZlH2UOWKvziBfpGQd67D4wWsagwLyX/
+	86ZvPSs2sHRvf+amduhjZOKr44XZC9dJHVwEx0+tZ6IcbuKcOS3bo9e1mw5ZhEV4CvJLif/0HzZnA
+	XL3O9dfw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1im0kI-0007JX-DC; Mon, 30 Dec 2019 19:30:30 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1im1NU-0005dV-1x; Mon, 30 Dec 2019 20:11:00 +0000
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1im0kD-0007GC-UY; Mon, 30 Dec 2019 19:30:27 +0000
-Received: by mail-pf1-x441.google.com with SMTP id p14so18684875pfn.4;
- Mon, 30 Dec 2019 11:30:24 -0800 (PST)
+ id 1im1NR-0005cL-6M; Mon, 30 Dec 2019 20:10:58 +0000
+Received: by mail-ed1-x542.google.com with SMTP id m8so33734970edi.13;
+ Mon, 30 Dec 2019 12:10:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=lfFvjAHzztkBHQqeqM3JnsMFnOWhvN63cVt0FVuc/rg=;
- b=Ckxf1ezo1kMdGuu5UvVtJenFMH24AdiHCsSyHHRM1xB0bOoCyrGpStweDLBde0M4Iu
- ZLVA6r+AzmYRPu9dS9zXst+q05XkCuxUQxnN6rhos8JfV1eHQbwd/Ok4J5aTdrr2FgPp
- J4sy5PC4tyVpW21MOHitl5KTIZJQwJ+8J7nY8cGmujr7Vtl1wB/SvpVZQStW7vHj9KzC
- JgWxWidK4hyHt8Na69/BAuCAijw85IfYkNIcPgbNhqZy1vD1+VIxa2N3J2+W5kkmVtce
- Cl9qcCOEyZ4ii4qhsaeWNnrjq76dbM2SNX6RTBMmzRVaarHAJ3lM2aavQYZC5Iwf5o1S
- Ry+A==
+ bh=OdWN2VZt7r/0qVQN2N6DJ853sCi1Y1JAuLy91U8S5nc=;
+ b=f/bIxziYW4bHwbJKkI3mYgpDYCheY5o5G1AhIkeyzeIzCYIvAVvViUZIhxZH1PlJYZ
+ fbA5BIPLD+iJ2AP4aQwMiwEBiHhgze8jrtw/oYpF4P1YOH3r2ewVOraSqxizhrC+D7HQ
+ uEsis8UJ66qjYy1mSEPGcuRM+hhsKSCbmMprNB8aCpeGkcu/tQrriK7VBvBArLl8K2G4
+ wxmhUoO6+895/1nxxKGmyQ6mafXkDKlwQzlCFM/rxfH/U1GOtnjO4lMpXpR2jERW1DvU
+ 8HeOG+A9EcKFsR9f0KUhVr6fQ4PvqDyOXvzsngrYsRASIIDEeGdzpVzeM1rrhB0eNMxw
+ F8ZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:autocrypt:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=lfFvjAHzztkBHQqeqM3JnsMFnOWhvN63cVt0FVuc/rg=;
- b=hbozjdvCk6CbE5ZABAHzCrii9R0XRFOGudYFTSa3MFA45aM/LZaJdDLlP5bmE0Qday
- vRGQAUdu8cCZLnZspQLOSNx/tNi5diqJPLH1A+LmZtxySpQYcPUfl6cPLQsRgvjaOoH1
- 20z89AmPI//y3AkzUmTUZNWcAhqo+gaCL/u9yRmx6dx88G1mOzOmtgUHB+J2WLnzYpZu
- DbJLYsWSVpsRmqYRlXBtq9v7OHFrEmmIyuUqTjPJUS7hWpcsQw2mawO5nsKfIidhStkz
- Ylzq5++389BKIQBH78puI4IzYIlpbnr0Rb2Eb7FSNlb6VC+ooVfnOHF7Jv0BxUxIOctc
- YKeA==
-X-Gm-Message-State: APjAAAX8FE4Qn7KQwK6PYap6UHBwdTS4SBb/z65PbGN1L7Rm/Yw3GrD6
- LRvapqzrjjr6bJ9Gjp4vxLY=
-X-Google-Smtp-Source: APXvYqxZjsc3gJcd4WMict1b6TF3Sk6SKBLDJmpMEcd8pyqhlQOsW0+wZp3W5e04k7wLy6rZ5rRpVQ==
-X-Received: by 2002:a63:bc01:: with SMTP id q1mr77448318pge.442.1577734224048; 
- Mon, 30 Dec 2019 11:30:24 -0800 (PST)
+ bh=OdWN2VZt7r/0qVQN2N6DJ853sCi1Y1JAuLy91U8S5nc=;
+ b=Zihkegs2yHAsM4fZfqxJppvN5LXXGLoE7+YhLUSsfGy0TjYXGuhPekVSsK1M3/7LL6
+ 4ro4jwRbAbsYFYW33CAuZxaZocO0YvxOVsK8SJYcMehY76MII5jxJaMbqDjFqR3HjbnG
+ 3vhhoSJXBFf3x+1KkkSvpIW54BHssOtnM3n6Aa4P0RyueWV9k1IpTx+Kk38Y2wkOBldc
+ CtdCJ4kPwPwQ6wJlmuEceD/lAM7AoglRkwu+HKbyU0rwDnkgRVR8uIY2qnokZjhx0t9h
+ 6hGXckr9fV59mI/GFW9qC/yU1i5x3qXON2XCWMCba1IBTHeQDJywMqs5RjvmVDern7q0
+ OH8Q==
+X-Gm-Message-State: APjAAAVsH/P3YsGUB9UmiH/Bcm4NRPNpAeTNCJnsp6+xkEIo+G+7XWJK
+ 3qgHmrH11rNzDWdYqn9tg8qMQT6U
+X-Google-Smtp-Source: APXvYqz74/Q+DJr6TY1BdcXnQnWy3KCUxK5Sio3RUPWE2tI1MgZGjPwsjJccrL/ApXMb3hobajEIkg==
+X-Received: by 2002:a17:906:1117:: with SMTP id
+ h23mr71761232eja.88.1577736655378; 
+ Mon, 30 Dec 2019 12:10:55 -0800 (PST)
 Received: from [10.67.50.49] ([192.19.223.252])
- by smtp.googlemail.com with ESMTPSA id
- u12sm30993562pfm.165.2019.12.30.11.30.22
+ by smtp.googlemail.com with ESMTPSA id 2sm5523277edv.87.2019.12.30.12.10.52
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 Dec 2019 11:30:23 -0800 (PST)
-Subject: Re: [PATCH 2/2] pwm: Enable compile testing for some of drivers
+ Mon, 30 Dec 2019 12:10:54 -0800 (PST)
+Subject: Re: [PATCH 2/2] phy: Enable compile testing for some of drivers
 To: Krzysztof Kozlowski <krzk@kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
- linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com,
- linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-tegra@vger.kernel.org
-References: <20191230172113.17222-1-krzk@kernel.org>
- <20191230172113.17222-2-krzk@kernel.org>
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard
+ <mripard@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20191230172449.17648-1-krzk@kernel.org>
+ <20191230172449.17648-2-krzk@kernel.org>
 From: Florian Fainelli <f.fainelli@gmail.com>
 Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
  xsDiBEjPuBIRBACW9MxSJU9fvEOCTnRNqG/13rAGsj+vJqontvoDSNxRgmafP8d3nesnqPyR
@@ -140,17 +138,16 @@ Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
  HvsHIcv4lxCWkFXkwsuWqzEKK6kxVpRDoEQPDj+Oy/ZJ5fYuMbkdHrlegwoQ64LrqdmiVVPC
  TwQYEQIADwIbDAUCVF/S8QUJHlwd3wAKCRBhV5kVtWN2Do+FAJ956xSz2XpDHql+Wg/2qv3b
  G10n8gCguORqNGMsVRxrlLs7/himep7MrCc=
-Message-ID: <31653485-d6f1-5887-f101-ea8926a7879c@gmail.com>
-Date: Mon, 30 Dec 2019 11:30:21 -0800
+Message-ID: <791d83ef-faee-d6e6-445e-a8088c5ac654@gmail.com>
+Date: Mon, 30 Dec 2019 12:10:51 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <20191230172113.17222-2-krzk@kernel.org>
+In-Reply-To: <20191230172449.17648-2-krzk@kernel.org>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191230_113026_011197_CBFCC657 
-X-CRM114-Status: UNSURE (   8.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20191230_121057_234052_C73958EA 
+X-CRM114-Status: GOOD (  19.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -167,17 +164,194 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/30/19 9:21 AM, Krzysztof Kozlowski wrote:
-> Some of the PWM drivers can be compile tested to increase build
+Hi Krzysztof,
+
+On 12/30/19 9:24 AM, Krzysztof Kozlowski wrote:
+> Some of the phy drivers can be compile tested to increase build
 > coverage.
-> 
-> The Meson PWM driver requires COMMON_CLK dependency.
 > 
 > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 
-Acked-by: Florian Fainelli <f.fainelli@gmail.com>
+This looks fine, you could also consider adding a bunch of other
+Broadcom PHY drivers which are not currently under COMPILE_TEST, yet
+build fine:
 
-for PWM_BCM2835 and PWM_BRCMSTB, thanks!
+diff --git a/drivers/phy/broadcom/Kconfig b/drivers/phy/broadcom/Kconfig
+index d3d983c128ea..d56db6d375e1 100644
+--- a/drivers/phy/broadcom/Kconfig
++++ b/drivers/phy/broadcom/Kconfig
+@@ -50,7 +50,7 @@ config PHY_BCM_NS_USB3
+
+ config PHY_NS2_PCIE
+        tristate "Broadcom Northstar2 PCIe PHY driver"
+-       depends on OF && MDIO_BUS_MUX_BCM_IPROC
++       depends on (OF && MDIO_BUS_MUX_BCM_IPROC) || COMPILE_TEST
+        select GENERIC_PHY
+        default ARCH_BCM_IPROC
+        help
+@@ -83,7 +83,7 @@ config PHY_BRCM_SATA
+
+ config PHY_BRCM_USB
+        tristate "Broadcom STB USB PHY driver"
+-       depends on ARCH_BRCMSTB
++       depends on ARCH_BRCMSTB || COMPILE_TEST
+        depends on OF
+        select GENERIC_PHY
+        select SOC_BRCMSTB
+
+> ---
+>  drivers/phy/allwinner/Kconfig | 3 ++-
+>  drivers/phy/marvell/Kconfig   | 8 +++++---
+>  drivers/phy/mediatek/Kconfig  | 9 ++++++---
+>  drivers/phy/samsung/Kconfig   | 8 ++++----
+>  drivers/phy/ti/Kconfig        | 4 ++--
+>  5 files changed, 19 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/phy/allwinner/Kconfig b/drivers/phy/allwinner/Kconfig
+> index 3dab79e9d52b..e760d89d3976 100644
+> --- a/drivers/phy/allwinner/Kconfig
+> +++ b/drivers/phy/allwinner/Kconfig
+> @@ -48,7 +48,8 @@ config PHY_SUN9I_USB
+>  
+>  config PHY_SUN50I_USB3
+>  	tristate "Allwinner H6 SoC USB3 PHY driver"
+> -	depends on ARCH_SUNXI && HAS_IOMEM && OF
+> +	depends on ARCH_SUNXI || COMPILE_TEST
+> +	depends on HAS_IOMEM && OF
+>  	depends on RESET_CONTROLLER
+>  	select GENERIC_PHY
+>  	help
+> diff --git a/drivers/phy/marvell/Kconfig b/drivers/phy/marvell/Kconfig
+> index 005e02dd4a91..8f6273c837ec 100644
+> --- a/drivers/phy/marvell/Kconfig
+> +++ b/drivers/phy/marvell/Kconfig
+> @@ -10,14 +10,16 @@ config ARMADA375_USBCLUSTER_PHY
+>  
+>  config PHY_BERLIN_SATA
+>  	tristate "Marvell Berlin SATA PHY driver"
+> -	depends on ARCH_BERLIN && HAS_IOMEM && OF
+> +	depends on ARCH_BERLIN || COMPILE_TEST
+> +	depends on OF && HAS_IOMEM
+>  	select GENERIC_PHY
+>  	help
+>  	  Enable this to support the SATA PHY on Marvell Berlin SoCs.
+>  
+>  config PHY_BERLIN_USB
+>  	tristate "Marvell Berlin USB PHY Driver"
+> -	depends on ARCH_BERLIN && RESET_CONTROLLER && HAS_IOMEM && OF
+> +	depends on ARCH_BERLIN || COMPILE_TEST
+> +	depends on OF && HAS_IOMEM && RESET_CONTROLLER
+>  	select GENERIC_PHY
+>  	help
+>  	  Enable this to support the USB PHY on Marvell Berlin SoCs.
+> @@ -95,7 +97,7 @@ config PHY_PXA_28NM_USB2
+>  
+>  config PHY_PXA_USB
+>  	tristate "Marvell PXA USB PHY Driver"
+> -	depends on ARCH_PXA || ARCH_MMP
+> +	depends on ARCH_PXA || ARCH_MMP || COMPILE_TEST
+>  	select GENERIC_PHY
+>  	help
+>  	  Enable this to support Marvell PXA USB PHY driver for Marvell
+> diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
+> index 7d19134c6b7c..dee757c957f2 100644
+> --- a/drivers/phy/mediatek/Kconfig
+> +++ b/drivers/phy/mediatek/Kconfig
+> @@ -4,7 +4,8 @@
+>  #
+>  config PHY_MTK_TPHY
+>  	tristate "MediaTek T-PHY Driver"
+> -	depends on ARCH_MEDIATEK && OF
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	depends on OF
+>  	select GENERIC_PHY
+>  	help
+>  	  Say 'Y' here to add support for MediaTek T-PHY driver,
+> @@ -16,7 +17,8 @@ config PHY_MTK_TPHY
+>  
+>  config PHY_MTK_UFS
+>  	tristate "MediaTek UFS M-PHY driver"
+> -	depends on ARCH_MEDIATEK && OF
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	depends on OF
+>  	select GENERIC_PHY
+>  	help
+>  	  Support for UFS M-PHY on MediaTek chipsets.
+> @@ -26,7 +28,8 @@ config PHY_MTK_UFS
+>  
+>  config PHY_MTK_XSPHY
+>  	tristate "MediaTek XS-PHY Driver"
+> -	depends on ARCH_MEDIATEK && OF
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	depends on OF
+>  	select GENERIC_PHY
+>  	help
+>  	  Enable this to support the SuperSpeedPlus XS-PHY transceiver for
+> diff --git a/drivers/phy/samsung/Kconfig b/drivers/phy/samsung/Kconfig
+> index 290a6c70f570..349fcb23e5f3 100644
+> --- a/drivers/phy/samsung/Kconfig
+> +++ b/drivers/phy/samsung/Kconfig
+> @@ -32,7 +32,7 @@ config PHY_EXYNOS_PCIE
+>  config PHY_SAMSUNG_USB2
+>  	tristate "Samsung USB 2.0 PHY driver"
+>  	depends on HAS_IOMEM
+> -	depends on USB_EHCI_EXYNOS || USB_OHCI_EXYNOS || USB_DWC2
+> +	depends on USB_EHCI_EXYNOS || USB_OHCI_EXYNOS || USB_DWC2 || COMPILE_TEST
+>  	select GENERIC_PHY
+>  	select MFD_SYSCON
+>  	default ARCH_EXYNOS
+> @@ -60,7 +60,7 @@ config PHY_EXYNOS5250_USB2
+>  config PHY_S5PV210_USB2
+>  	bool "Support for S5PV210"
+>  	depends on PHY_SAMSUNG_USB2
+> -	depends on ARCH_S5PV210
+> +	depends on ARCH_S5PV210 || COMPILE_TEST
+>  	help
+>  	  Enable USB PHY support for S5PV210. This option requires that Samsung
+>  	  USB 2.0 PHY driver is enabled and means that support for this
+> @@ -69,7 +69,7 @@ config PHY_S5PV210_USB2
+>  
+>  config PHY_EXYNOS5_USBDRD
+>  	tristate "Exynos5 SoC series USB DRD PHY driver"
+> -	depends on ARCH_EXYNOS && OF
+> +	depends on (ARCH_EXYNOS && OF) || COMPILE_TEST
+>  	depends on HAS_IOMEM
+>  	depends on USB_DWC3_EXYNOS
+>  	select GENERIC_PHY
+> @@ -82,7 +82,7 @@ config PHY_EXYNOS5_USBDRD
+>  
+>  config PHY_EXYNOS5250_SATA
+>  	tristate "Exynos5250 Sata SerDes/PHY driver"
+> -	depends on SOC_EXYNOS5250
+> +	depends on SOC_EXYNOS5250 || COMPILE_TEST
+>  	depends on HAS_IOMEM
+>  	depends on OF
+>  	select GENERIC_PHY
+> diff --git a/drivers/phy/ti/Kconfig b/drivers/phy/ti/Kconfig
+> index 174888609779..e231c0e369c5 100644
+> --- a/drivers/phy/ti/Kconfig
+> +++ b/drivers/phy/ti/Kconfig
+> @@ -4,7 +4,7 @@
+>  #
+>  config PHY_DA8XX_USB
+>  	tristate "TI DA8xx USB PHY Driver"
+> -	depends on ARCH_DAVINCI_DA8XX
+> +	depends on ARCH_DAVINCI_DA8XX || COMPILE_TEST
+>  	select GENERIC_PHY
+>  	select MFD_SYSCON
+>  	help
+> @@ -14,7 +14,7 @@ config PHY_DA8XX_USB
+>  
+>  config PHY_DM816X_USB
+>  	tristate "TI dm816x USB PHY driver"
+> -	depends on ARCH_OMAP2PLUS
+> +	depends on ARCH_OMAP2PLUS || COMPILE_TEST
+>  	depends on USB_SUPPORT
+>  	select GENERIC_PHY
+>  	select USB_PHY
+> 
+
+
 -- 
 Florian
 
