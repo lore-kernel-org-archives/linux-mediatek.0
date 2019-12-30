@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1BA0BC2D0C3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 05:43:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4CB22C2D0C3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 05:43:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E25DD20663
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 05:43:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DC56C20663
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Dec 2019 05:43:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PNmfzZZn";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jGIZbKeg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E25DD20663
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jGLNGwy/";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="fB8Q1VNy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DC56C20663
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EMqd/GXGDrGxrDjEGgl+YmXmiYKJHikFIkT7nANAhOk=; b=PNmfzZZnRekCDg
-	MvVfOnE73YVdipmIHoZ5+Lwa7uzWR9Z0XoBVpct+mmNhfQ53JJcTRqW3X+8UkFPGxF3061ThYvT57
-	G7ilF5Hj1r2j5seBtQK5c9WH5hdmqdvuKXZ2BQHZ7PhXz4FrfFe8U2P2vBm442/kPAt8E8owYy4y+
-	dv08J0khJ7k60a+wlEaBff2k9V+0kfyw0cNaDwtA/g1fD50qMxPs0pvHNRkZwBDCIMvvTxQ4AiYei
-	d7J7WOzsLB3bxwy6Vdq0OkSkt9GqXadWgCN6e/pSs2aF286Uvb6AsBhthYTnYVdA2tPoO8pHQVAmM
-	9n3xxpfGOYnSwGvsiZHQ==;
+	List-Owner; bh=IXWdoSKKK2f1TfP7aU7fsBN2XEhVdXSjULkX0OlV8W4=; b=jGLNGwy/13uxeS
+	xUTxDYj+ijNWsrDYoEkeznWIs7fCfQk2+UxqFFn3cVcumvkGgrKcJc1Uznpc6/lwuQYDBU5cQ6z5x
+	bNYnYpATz1VDEcFRRKRK7JvnCFfPBalvoxIeJoOo6O8y1+XlwNr2zBtsrbeFGTB6ssR+Kexcfnw8i
+	o3rvZouGjhyVb8raOsUJiWgEummVegZ9vTwb/H/NSNv0dcWk9yHulOVTCGtGaXHzgoLv/lbhzktJu
+	gOW5mBAbKHY1xS9TDAR2TOXLPV45vPLvsqabFDs6z84MjBAQhZucSiXzPecqEZazy0W3vcfJC2joo
+	Da/V4z2JDPoDtcTNnLrA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ilnpm-0003Of-4h; Mon, 30 Dec 2019 05:43:18 +0000
+	id 1ilnpp-0003RV-7h; Mon, 30 Dec 2019 05:43:21 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ilnpL-00030R-Iq; Mon, 30 Dec 2019 05:42:53 +0000
-X-UUID: a80bab29a3c744fda7c4ece0062c707a-20191229
+ id 1ilnpL-00030T-Ir; Mon, 30 Dec 2019 05:42:53 +0000
+X-UUID: e4bb5cdfb97b4cd1ae6edb32334cd508-20191229
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=c9VpmytTBWUhbyeGUJ4t0316OksYU3H36qNO5LPrNNg=; 
- b=jGIZbKegTKGyEQvqGCGNzQBxBYYgVOJwjTntbOuYgdbJVEMM8KxJHjSfhiULm16PCI5RVLCdzHlPEjIYOhu3/syoxiv4aPuZDRvMdG6VlO50PlbD1pvxc91LZ6wjlBY3lHtGmJ+luajY9YgIEMStwLYHzD5OdZBA1Oof3c0WV9c=;
-X-UUID: a80bab29a3c744fda7c4ece0062c707a-20191229
+ bh=zcqo/uUAToxxvQgNL6zzmxHLy2AwGsR7I5v8srG1wtE=; 
+ b=fB8Q1VNy9BkcjMm7a40vQb+NWWUYfksb0Hcl7ikKYWnTxXSRUfL4IJn18v0J2eoYUoGe5pr40OYBs83fMNEkc7n8+7l9EfAnfnofrTMcJG63kxclGriURv6y3hptaurb1sOkdxZOG8ju81fyOAy+cuX4gFXvZMW/TsKtCP8WqGs=;
+X-UUID: e4bb5cdfb97b4cd1ae6edb32334cd508-20191229
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 111129702; Sun, 29 Dec 2019 21:42:48 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ with ESMTP id 1454679799; Sun, 29 Dec 2019 21:42:48 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 29 Dec 2019 21:32:52 -0800
+ 15.0.1395.4; Sun, 29 Dec 2019 21:33:00 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 30 Dec 2019 13:33:20 +0800
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 30 Dec 2019 13:32:10 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Mon, 30 Dec 2019 13:31:30 +0800
+ Frontend Transport; Mon, 30 Dec 2019 13:31:37 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>,
  <pedrom.sousa@synopsys.com>, <jejb@linux.ibm.com>, <matthias.bgg@gmail.com>,
  <bvanassche@acm.org>, <f.fainelli@gmail.com>
-Subject: [PATCH v2 1/6] soc: mediatek: add header for SiP service interface
-Date: Mon, 30 Dec 2019 13:32:25 +0800
-Message-ID: <1577683950-1702-2-git-send-email-stanley.chu@mediatek.com>
+Subject: [PATCH v2 6/6] scsi: ufs-mediatek: configure and enable clk-gating
+Date: Mon, 30 Dec 2019 13:32:30 +0800
+Message-ID: <1577683950-1702-7-git-send-email-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <1577683950-1702-1-git-send-email-stanley.chu@mediatek.com>
 References: <1577683950-1702-1-git-send-email-stanley.chu@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 2A150414534660147BE3BB69D4F20D1A8206033647AC2FCC00F343D7FC19C24F2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191229_214251_632072_C54090B7 
-X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-CacheID: sfid-20191229_214251_632391_F096D0AC 
+X-CRM114-Status: UNSURE (   9.35  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -96,7 +97,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a common header for the SiP service interface in MediaTek Chipsets.
+Enable clk-gating with customized delayed timer value in
+MediaTek Chipsets.
 
 Cc: Alim Akhtar <alim.akhtar@samsung.com>
 Cc: Avri Altman <avri.altman@wdc.com>
@@ -106,42 +108,58 @@ Cc: Can Guo <cang@codeaurora.org>
 Cc: Florian Fainelli <f.fainelli@gmail.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Alim Akhtar <alim.akhtar@samsung.com>
 ---
- include/linux/soc/mediatek/mtk_sip_svc.h | 25 ++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
- create mode 100644 include/linux/soc/mediatek/mtk_sip_svc.h
+ drivers/scsi/ufs/ufs-mediatek.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/include/linux/soc/mediatek/mtk_sip_svc.h b/include/linux/soc/mediatek/mtk_sip_svc.h
-new file mode 100644
-index 000000000000..082398e0cfb1
---- /dev/null
-+++ b/include/linux/soc/mediatek/mtk_sip_svc.h
-@@ -0,0 +1,25 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (C) 2019 MediaTek Inc.
-+ */
-+#ifndef __MTK_SIP_SVC_H
-+#define __MTK_SIP_SVC_H
+diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+index 1f025723b61b..41f80eeada46 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.c
++++ b/drivers/scsi/ufs/ufs-mediatek.c
+@@ -210,6 +210,9 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+ 	/* Enable runtime autosuspend */
+ 	hba->caps |= UFSHCD_CAP_RPM_AUTOSUSPEND;
+ 
++	/* Enable clock-gating */
++	hba->caps |= UFSHCD_CAP_CLK_GATING;
 +
-+/* Error Code */
-+#define SIP_SVC_E_SUCCESS               0
-+#define SIP_SVC_E_NOT_SUPPORTED         -1
-+#define SIP_SVC_E_INVALID_PARAMS        -2
-+#define SIP_SVC_E_INVALID_RANGE         -3
-+#define SIP_SVC_E_PERMISSION_DENIED     -4
+ 	/*
+ 	 * ufshcd_vops_init() is invoked after
+ 	 * ufshcd_setup_clock(true) in ufshcd_hba_init() thus
+@@ -298,6 +301,23 @@ static int ufs_mtk_pre_link(struct ufs_hba *hba)
+ 	return ret;
+ }
+ 
++static void ufs_mtk_setup_clk_gating(struct ufs_hba *hba)
++{
++	unsigned long flags;
++	u32 ah_ms;
 +
-+#ifdef CONFIG_ARM64
-+#define MTK_SIP_SMC_CONVENTION          ARM_SMCCC_SMC_64
-+#else
-+#define MTK_SIP_SMC_CONVENTION          ARM_SMCCC_SMC_32
-+#endif
++	if (ufshcd_is_clkgating_allowed(hba)) {
++		if (ufshcd_is_auto_hibern8_supported(hba) && hba->ahit)
++			ah_ms = FIELD_GET(UFSHCI_AHIBERN8_TIMER_MASK,
++					  hba->ahit);
++		else
++			ah_ms = 10;
++		spin_lock_irqsave(hba->host->host_lock, flags);
++		hba->clk_gating.delay_ms = ah_ms + 5;
++		spin_unlock_irqrestore(hba->host->host_lock, flags);
++	}
++}
 +
-+#define MTK_SIP_SMC_CMD(fn_id) \
-+	ARM_SMCCC_CALL_VAL(ARM_SMCCC_FAST_CALL, MTK_SIP_SMC_CONVENTION, \
-+			   ARM_SMCCC_OWNER_SIP, fn_id)
+ static int ufs_mtk_post_link(struct ufs_hba *hba)
+ {
+ 	/* disable device LCC */
+@@ -313,6 +333,8 @@ static int ufs_mtk_post_link(struct ufs_hba *hba)
+ 			FIELD_PREP(UFSHCI_AHIBERN8_SCALE_MASK, 3));
+ 	}
+ 
++	ufs_mtk_setup_clk_gating(hba);
 +
-+#endif
+ 	return 0;
+ }
+ 
 -- 
 2.18.0
 _______________________________________________
