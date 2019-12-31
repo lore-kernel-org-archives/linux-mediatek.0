@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D478C2D0C2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Dec 2019 13:52:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 930DEC2D0C2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Dec 2019 13:52:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C1BCF205ED
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Dec 2019 13:52:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 66F20205ED
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Dec 2019 13:52:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VVzbd+Bi";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="SuPrK7A2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C1BCF205ED
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VbAuniWu";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="kc/WTTbh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 66F20205ED
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AunU0r+dLJBXXcjKtbfP7agFX7zk7ZsdG0VQAUBvofM=; b=VVzbd+BiBz/QbN
-	+AYimu0VM58/zflIzXsTOT8yeSTD0gA1CCs9TknFMu5pOKnZXJ1Xd8APV02lJJ+OY2og+2ITdL5t8
-	UfTLvRtt40zu2h3Qw5ybh5hHPVjw+jRyj2a134hVoIpktiI/1CNKb1lI9pyrkkg3qvU1tjV8hAq5c
-	8k5PhSzOKHzw2KYJaYsPjHOPy8DTYZJBgT89wPS5sP4LsugcP1/El6gtqI9gKURTwEfDq6uz1NZLm
-	gTgJ9O1ixv9/2dYdC8YRdUN9whhxw69s4SSlVCNM/KS0OwjjXtxg5uICw19+9iCt576IUSU7kFai7
-	DcI+bAGoP6AFZ0e+carw==;
+	List-Owner; bh=D+mBft/6SnZ2GV3GWWpLdV/O19vXvg8kVMbTUKFtvDE=; b=VbAuniWu8KIK8w
+	dQUgl+5NFcUuWDP4Uar8ZLJ/JFq+szix6YheAooCRaKVI8dTCKkfJ8N2HBVBReDFnebMQ08ayVfn4
+	zVGnO+NK/fbhek523VxwE4+6C/VWWhaF7S81cp+VBz0O8UTJwMIHOpaduNP/SvLjGV8qh4aqfN5fB
+	1LivWOen3BF8979UbrZe61apFxR1fyvpUd0IVIAkQoCd3v1jvSKp5PIyI1XoFv/9d2RFDFB90SWWx
+	wJF5Hfg6izJqdgBtyl2O3jHolKqzjeyyowh43MNLDP31av/E5Vo85sHmxaFYGnmuDX+Ej66SGj6HA
+	GpAGEipZlpMnvmH1KHHA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1imHwG-0006Zn-2R; Tue, 31 Dec 2019 13:52:00 +0000
+	id 1imHwF-0006Z5-7L; Tue, 31 Dec 2019 13:51:59 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1imHwC-0006Xp-SH
+ id 1imHwC-0006Xd-SH
  for linux-mediatek@lists.infradead.org; Tue, 31 Dec 2019 13:51:58 +0000
-X-UUID: 20eeb316e7504e7ba85f05ee0d1c5807-20191231
+X-UUID: 33b7c3cc678f43ae9a4b622d44a97300-20191231
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=z3pZFT+6t8ylWCp7AMGBvI067vp4npjbNdsiLxU09zM=; 
- b=SuPrK7A2wsSKEWknPVXkflkhacOSI812EAZI2Kh6yIHY+5xTpgeK1eUTUUgYrz9PA2Lcem1yvryAcst20y2Ndc4zPOwe/I1mniO/JhUfO0Zv2oE689ulPiS5AB7CKLzKeozMCGrkvEyVTlugDsR08a4vvSRZGE51Qw3ogCAaImM=;
-X-UUID: 20eeb316e7504e7ba85f05ee0d1c5807-20191231
+ bh=iF7bo0bD8duTIrSbLoimLZ9b/gptBGQwd48GDl2KccQ=; 
+ b=kc/WTTbh0K4/uCPp+ggzU5eNBAcT8mJ+UFq/KGkSsgZ1qZYFaXsQMkr4Nkb+fpmgrpR74jGJOMr79uvZUGLJUx4Ax7y9sbmPBApwBpYv9n6US243aIhfynzLxo1OLZooho1kCjB+D01A5JDnGUG6UeXSOcX+sMKUDzSU2AM7t9g=;
+X-UUID: 33b7c3cc678f43ae9a4b622d44a97300-20191231
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <light.hsieh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1126686280; Tue, 31 Dec 2019 05:51:53 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ with ESMTP id 1377517176; Tue, 31 Dec 2019 05:51:53 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 31 Dec 2019 05:42:10 -0800
+ 15.0.1395.4; Tue, 31 Dec 2019 05:42:21 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 31 Dec 2019 21:41:05 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 31 Dec 2019 21:42:19 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
  Frontend Transport; Tue, 31 Dec 2019 21:41:17 +0800
 From: Light Hsieh <light.hsieh@mediatek.com>
 To: <linus.walleij@linaro.org>
-Subject: [PATCH v7 6/6] Add support for pin configuration dump via debugfs.
-Date: Tue, 31 Dec 2019 21:41:47 +0800
-Message-ID: <1577799707-11855-6-git-send-email-light.hsieh@mediatek.com>
+Subject: [PATCH v7 4/6] Refine mtk_pinconf_get()
+Date: Tue, 31 Dec 2019 21:41:45 +0800
+Message-ID: <1577799707-11855-4-git-send-email-light.hsieh@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1577799707-11855-1-git-send-email-light.hsieh@mediatek.com>
 References: <1577799707-11855-1-git-send-email-light.hsieh@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 32219F344A537A986D604800AECCF3AE49384A06C2C055A05C0A4F98DFB81C412000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191231_055156_924175_FD0F213B 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20191231_055156_923886_52507AD2 
+X-CRM114-Status: GOOD (  10.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,164 +91,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for pin configuration dump via catting
-/sys/kernel/debug/pinctrl/$platform_dependent_path/pinconf-pins.
-pinctrl framework had already support such dump. This patch implement the
-operation function pointer to fullfill this dump.
+Correct cases for PIN_CONFIG_SLEW_RATE, PIN_CONFIG_INPUT_SCHMITT_ENABLE,
+and PIN_CONFIG_OUTPUT_ENABLE -
+Use variable ret to receive value in mtk_hw_get_value() (instead of
+variable val) since pinconf_to_config_packed() at end of this function
+use variable ret to pack config value.
 
-Change-Id: I823642561adaedb847e77f9a8baea182913d6163
+Change-Id: Icdeecee8f614346a9b53764d20122b2b4940b381
 ---
- drivers/pinctrl/mediatek/pinctrl-paris.c | 109 +++++++++++++++++++++++++++++++
- drivers/pinctrl/mediatek/pinctrl-paris.h |   3 +
- 2 files changed, 112 insertions(+)
+ drivers/pinctrl/mediatek/pinctrl-paris.c | 40 ++++++++++++--------------------
+ 1 file changed, 15 insertions(+), 25 deletions(-)
 
 diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-index 115ebc1..83bf29c 100644
+index 2f07500..d09a726 100644
 --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
 +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-@@ -539,12 +539,120 @@ static int mtk_pctrl_get_group_pins(struct pinctrl_dev *pctldev,
- 	return 0;
- }
+@@ -78,7 +78,7 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
+ {
+ 	struct mtk_pinctrl *hw = pinctrl_dev_get_drvdata(pctldev);
+ 	u32 param = pinconf_to_config_param(*config);
+-	int val, val2, err, reg, ret = 1;
++	int err, reg, ret = 1;
+ 	const struct mtk_pin_desc *desc;
  
-+static int mtk_hw_get_value_wrap(struct mtk_pinctrl *hw, unsigned int gpio, int field)
-+{
-+	const struct mtk_pin_desc *desc;
-+	int value, err;
-+
-+	if (gpio > hw->soc->npins)
-+		return -EINVAL;
-+
-+	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
-+
-+	err = mtk_hw_get_value(hw, desc, field, &value);
-+	if (err)
-+		return err;
-+
-+	return value;
-+}
-+
-+#define mtk_pctrl_get_pinmux(hw, gpio)			\
-+	mtk_hw_get_value_wrap(hw, gpio, PINCTRL_PIN_REG_MODE)
-+
-+#define mtk_pctrl_get_direction(hw, gpio)		\
-+	mtk_hw_get_value_wrap(hw, gpio, PINCTRL_PIN_REG_DIR)
-+
-+#define mtk_pctrl_get_out(hw, gpio)			\
-+	mtk_hw_get_value_wrap(hw, gpio, PINCTRL_PIN_REG_DO)
-+
-+#define mtk_pctrl_get_in(hw, gpio)			\
-+	mtk_hw_get_value_wrap(hw, gpio, PINCTRL_PIN_REG_DI)
-+
-+#define mtk_pctrl_get_smt(hw, gpio)			\
-+	mtk_hw_get_value_wrap(hw, gpio, PINCTRL_PIN_REG_SMT)
-+
-+#define mtk_pctrl_get_ies(hw, gpio)			\
-+	mtk_hw_get_value_wrap(hw, gpio, PINCTRL_PIN_REG_IES)
-+
-+#define mtk_pctrl_get_driving(hw, gpio)			\
-+	mtk_hw_get_value_wrap(hw, gpio, PINCTRL_PIN_REG_DRV)
-+
-+ssize_t mtk_pctrl_show_one_pin(struct mtk_pinctrl *hw,
-+	unsigned int gpio, char *buf, unsigned int bufLen)
-+{
-+	int pinmux, pullup, pullen, len = 0, r1 = -1, r0 = -1;
-+	const struct mtk_pin_desc *desc;
-+
-+	if (gpio > hw->soc->npins)
-+		return -EINVAL;
-+
-+	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
-+	pinmux = mtk_pctrl_get_pinmux(hw, gpio);
-+	if (pinmux >= hw->soc->nfuncs)
-+		pinmux -= hw->soc->nfuncs;
-+
-+	mtk_pinconf_bias_get_combo(hw, desc, &pullup, &pullen);
-+	if (pullen == MTK_PUPD_SET_R1R0_00) {
-+		pullen = 0;
-+		r1 = 0;
-+		r0 = 0;
-+	} else if (pullen == MTK_PUPD_SET_R1R0_01) {
-+		pullen = 1;
-+		r1 = 0;
-+		r0 = 1;
-+	} else if (pullen == MTK_PUPD_SET_R1R0_10) {
-+		pullen = 1;
-+		r1 = 1;
-+		r0 = 0;
-+	} else if (pullen == MTK_PUPD_SET_R1R0_11) {
-+		pullen = 1;
-+		r1 = 1;
-+		r0 = 1;
-+	} else if (pullen != MTK_DISABLE && pullen != MTK_ENABLE) {
-+		pullen = 0;
-+	}
-+	len += snprintf(buf + len, bufLen - len,
-+			"%03d: %1d%1d%1d%1d%02d%1d%1d%1d%1d",
-+			gpio,
-+			pinmux,
-+			mtk_pctrl_get_direction(hw, gpio),
-+			mtk_pctrl_get_out(hw, gpio),
-+			mtk_pctrl_get_in(hw, gpio),
-+			mtk_pctrl_get_driving(hw, gpio),
-+			mtk_pctrl_get_smt(hw, gpio),
-+			mtk_pctrl_get_ies(hw, gpio),
-+			pullen,
-+			pullup);
-+
-+	if (r1 != -1) {
-+		len += snprintf(buf + len, bufLen - len, " (%1d %1d)\n",
-+			r1, r0);
-+	} else {
-+		len += snprintf(buf + len, bufLen - len, "\n");
-+	}
-+
-+	return len;
-+}
-+
-+#define PIN_DBG_BUF_SZ 96
-+static void mtk_pctrl_dbg_show(struct pinctrl_dev *pctldev, struct seq_file *s,
-+			  unsigned int gpio)
-+{
-+	struct mtk_pinctrl *hw = pinctrl_dev_get_drvdata(pctldev);
-+	char buf[PIN_DBG_BUF_SZ];
-+
-+	(void)mtk_pctrl_show_one_pin(hw, gpio, buf, PIN_DBG_BUF_SZ);
-+
-+	seq_printf(s, "%s", buf);
-+}
-+
- static const struct pinctrl_ops mtk_pctlops = {
- 	.dt_node_to_map		= mtk_pctrl_dt_node_to_map,
- 	.dt_free_map		= pinctrl_utils_free_map,
- 	.get_groups_count	= mtk_pctrl_get_groups_count,
- 	.get_group_name		= mtk_pctrl_get_group_name,
- 	.get_group_pins		= mtk_pctrl_get_group_pins,
-+	.pin_dbg_show           = mtk_pctrl_dbg_show,
- };
+ 	if (pin >= hw->soc->npins) {
+@@ -107,17 +107,11 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
+ 			err = -ENOTSUPP;
+ 		break;
+ 	case PIN_CONFIG_SLEW_RATE:
+-		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_SR, &val);
+-		if (err)
+-			return err;
+-
+-		if (!val)
+-			return -EINVAL;
+-
++		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_SR, &ret);
+ 		break;
+ 	case PIN_CONFIG_INPUT_ENABLE:
+ 	case PIN_CONFIG_OUTPUT_ENABLE:
+-		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &val);
++		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &ret);
+ 		if (err)
+ 			goto out;
+ 		/*     CONFIG     Current direction return value
+@@ -128,20 +122,22 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
+ 		 *                     input        1 (= reverse HW value)
+ 		 */
+ 		if (param == PIN_CONFIG_INPUT_ENABLE)
+-			val = !val;
++			ret = !ret;
  
- static int mtk_pmx_get_funcs_cnt(struct pinctrl_dev *pctldev)
-@@ -641,6 +749,7 @@ static int mtk_pconf_group_set(struct pinctrl_dev *pctldev, unsigned group,
- 	.pin_config_get = mtk_pinconf_get,
- 	.pin_config_group_get	= mtk_pconf_group_get,
- 	.pin_config_group_set	= mtk_pconf_group_set,
-+	.is_generic = true,
- };
+ 		break;
+ 	case PIN_CONFIG_INPUT_SCHMITT_ENABLE:
+-		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &val);
++		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &ret);
+ 		if (err)
+-			return err;
+-
+-		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_SMT, &val2);
+-		if (err)
+-			return err;
++			goto out;
++		/* return error when in output mode
++		 * because schmitt trigger only work in input mode
++		 */
++		if (ret) {
++			err = -EINVAL;
++			goto out;
++		}
  
- static struct pinctrl_desc mtk_desc = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.h b/drivers/pinctrl/mediatek/pinctrl-paris.h
-index 3d43771..afb7650 100644
---- a/drivers/pinctrl/mediatek/pinctrl-paris.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-paris.h
-@@ -60,6 +60,9 @@
- int mtk_paris_pinctrl_probe(struct platform_device *pdev,
- 			    const struct mtk_pin_soc *soc);
+-		if (val || !val2)
+-			return -EINVAL;
++		err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_SMT, &ret);
  
-+ssize_t mtk_pctrl_show_one_pin(struct mtk_pinctrl *hw,
-+	unsigned int gpio, char *buf, unsigned int bufLen);
-+
- extern const struct dev_pm_ops mtk_paris_pinctrl_pm_ops;
- 
- #endif /* __PINCTRL_PARIS_H */
+ 		break;
+ 	case PIN_CONFIG_DRIVE_STRENGTH:
+@@ -154,13 +150,7 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
+ 	case MTK_PIN_CONFIG_RDSEL:
+ 		reg = (param == MTK_PIN_CONFIG_TDSEL) ?
+ 		       PINCTRL_PIN_REG_TDSEL : PINCTRL_PIN_REG_RDSEL;
+-
+-		err = mtk_hw_get_value(hw, desc, reg, &val);
+-		if (err)
+-			return err;
+-
+-		ret = val;
+-
++		err = mtk_hw_get_value(hw, desc, reg, &ret);
+ 		break;
+ 	case MTK_PIN_CONFIG_PU_ADV:
+ 	case MTK_PIN_CONFIG_PD_ADV:
 -- 
 1.8.1.1.dirty
 _______________________________________________
