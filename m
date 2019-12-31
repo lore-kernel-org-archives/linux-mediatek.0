@@ -2,68 +2,69 @@ Return-Path: <SRS0=SHoq=2V=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
-	version=3.4.0
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 49ADCC2D0CE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Dec 2019 07:51:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A04BDC2D0CE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Dec 2019 08:06:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 03AAC206D9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Dec 2019 07:51:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6B815206D9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Dec 2019 08:06:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YXb9Ogzn";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="sd2ARO9Z"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 03AAC206D9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XQjTZC+P";
+	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="W0HYANFW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6B815206D9
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g+dNal01ASKu+zvP6z9grFHllYeisOJGRYnE4hMnPeo=; b=YXb9Ogzn2lmyhS
-	IKchKLP3VTsHNgOhOGI/oL/sgCOeN0rBRgbt3GyvMb5A3HPPN8zfbai5c1x1F20xuXpiVJXL/YI1+
-	qtVzuKnDA7JZXiiwqXQBqYqp5KGYwxKyKOgdkF7AXlTRWSQhPfKLM/Y7VBqSKohgR38LpiCoOhCa3
-	jhWyjbJ6V1SyY7E59+KP0x5IeUxMast1oB4X1oy4Li3R5XfxpoQu+28/utRwTpW7gcyhnEkIaSN3P
-	+rDDoYkwz+arHSia41K97I4io49k+AbGx5wM3Vnh1sAmXHSsbPQGbQyvRzQddImZbRfcu5QnRnd7O
-	IeAzOypVz0GhA1YGLYOQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
+	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=nhr1IrJdsTbAYBxNvCdzksJfYHIkfejEEyKv1ouj4WY=; b=XQjTZC+Pe4iuBft7uGykknz5S
+	bJFhAr+4/x8ImoEsa2+D0loveFf/MD5YdXDiB3aYsBYWK+E/IGzq2ldFpX6SvFprR4EGspDKjvRGD
+	sc78qlQe9d8nsaECQRn78pPXZ1C7BhVJzEH76pbl6nr13uM0ADZDSNerPNw8R23pOWrD+Nm7zZQp7
+	gy8xDOMeLnOc+j72Scnyv1wejhvGz8xp8skiOCErni7K+yC5+znUbE7PntWEe1IrgLEE18HBfOxw/
+	oXbtu2tjKNO+GjaJR/Eq0Yga6wQ5F0UXZwMy811mwWk+KTvYQl00J5B1/hbUnV8BYQE0U/CzyKeOn
+	ljDutK5gg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1imCJe-0007Y0-Ec; Tue, 31 Dec 2019 07:51:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1imCXj-0004ON-Ks; Tue, 31 Dec 2019 08:06:19 +0000
+Received: from mail25.static.mailgun.info ([104.130.122.25])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1imCJc-0007Xa-Ay; Tue, 31 Dec 2019 07:51:45 +0000
-X-UUID: cf0a849ff3b34751a89a2312357c3bf6-20191230
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=G3qstG1VMSmVPYGxJvUnbDb79Y6VwOFhgHb1R1BPAB4=; 
- b=sd2ARO9ZcLQg+xPUgoNfM0dwG0ZQfhw0lKWKHnqr+5d8syR7SPOPjSP77c/bveshPhmXBF9Ohsx4uf/I7Wu1Mou/hhpX7QwamGqDOjS3c/cUK7VlxkFABt4efIXd6NCfr+Ih4jG58MZ9EpgbVHbmRGNaBQBubzs6tibmesJZvQ8=;
-X-UUID: cf0a849ff3b34751a89a2312357c3bf6-20191230
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1932347968; Mon, 30 Dec 2019 23:51:33 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 30 Dec 2019 23:45:16 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 31 Dec 2019 15:44:06 +0800
-Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 31 Dec 2019 15:43:33 +0800
-Message-ID: <1577778290.13164.45.camel@mtkswgap22>
-Subject: Re: [PATCH v1 1/2] scsi: ufs: set device as default active power
- mode during initialization only
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: Can Guo <cang@codeaurora.org>
-Date: Tue, 31 Dec 2019 15:44:50 +0800
+ id 1imCXX-0004FH-Nh
+ for linux-mediatek@lists.infradead.org; Tue, 31 Dec 2019 08:06:11 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1577779569; h=Message-ID: References: In-Reply-To: Subject:
+ Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
+ MIME-Version: Sender; bh=BbUFBKLuGvpwFWTaBaOIbSVqQ9CkH2lY2UR83lDpcCo=;
+ b=W0HYANFWsngESK2FAS28NFio0FD4M5ZS7J6GEjwceMoEZhhjZFSAYb9h/5FrFV07kL2HFOaU
+ UctyvYfPcCcWzvISg3IuktJ6WPpDWe90ljciQLaxxv2j/8O4w46sgWIFhpKS+K/DK3xQdtZL
+ hoeCfpeWon8dzB1W54tIAleM/M8=
+X-Mailgun-Sending-Ip: 104.130.122.25
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
+ by mxa.mailgun.org with ESMTP id 5e0b0168.7f89f30c46c0-smtp-out-n01;
+ Tue, 31 Dec 2019 08:06:00 -0000 (UTC)
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 221D0C433A2; Tue, 31 Dec 2019 08:06:00 +0000 (UTC)
+Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
+ (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+ (No client certificate requested) (Authenticated sender: cang)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 25D52C43383;
+ Tue, 31 Dec 2019 08:05:59 +0000 (UTC)
+MIME-Version: 1.0
+Date: Tue, 31 Dec 2019 16:05:59 +0800
+From: Can Guo <cang@codeaurora.org>
+To: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH v1 1/2] scsi: ufs: set device as default active power mode
+ during initialization only
 In-Reply-To: <1577766179.13164.24.camel@mtkswgap22>
 References: <1577693546-7598-1-git-send-email-stanley.chu@mediatek.com>
  <1577693546-7598-2-git-send-email-stanley.chu@mediatek.com>
@@ -71,13 +72,12 @@ References: <1577693546-7598-1-git-send-email-stanley.chu@mediatek.com>
  <1577754469.13164.5.camel@mtkswgap22>
  <836772092daffd8283a97d633e59fc34@codeaurora.org>
  <1577766179.13164.24.camel@mtkswgap22>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
-MIME-Version: 1.0
-X-TM-SNTS-SMTP: 45FB1168EF4BF48378D8C06BB302A9DF542A4E7C9858C67C2092FB067919067B2000:8
-X-MTK: N
+Message-ID: <cf94a0e8f8e0746ae5f8434631207ea4@codeaurora.org>
+X-Sender: cang@codeaurora.org
+User-Agent: Roundcube Webmail/1.3.9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20191230_235144_387904_344DC4F3 
-X-CRM114-Status: GOOD (  15.75  )
+X-CRM114-CacheID: sfid-20191231_000609_758106_549D2829 
+X-CRM114-Status: GOOD (  18.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,26 +98,24 @@ Cc: martin.petersen@oracle.com, linux-scsi@vger.kernel.org,
  alim.akhtar@samsung.com, beanhuo@micron.com, pedrom.sousa@synopsys.com,
  bvanassche@acm.org, linux-arm-kernel@lists.infradead.org,
  matthias.bgg@gmail.com
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Can,
-
-On Tue, 2019-12-31 at 12:22 +0800, Stanley Chu wrote:
+On 2019-12-31 12:22, Stanley Chu wrote:
 > Hi Can,
 > 
 > 
-> > Hi Stanley,
-> > 
-> > I see skipping ufshcd_set_ufs_dev_active() in ufshcd_probe_hba()
-> > if it is called from ufshcd_resume() path is the purpose here.
-> > 
-> > If so, then ufshcd_set_dev_pwr_mode() would be called, meaning
-> > SSU command will be sent. Why is this SSU command needed to be
-> > sent after a full host reset and restore? Is ufshcd_probe_hba()
-> > not enough to make UFS device fully functional?
+>> Hi Stanley,
+>> 
+>> I see skipping ufshcd_set_ufs_dev_active() in ufshcd_probe_hba()
+>> if it is called from ufshcd_resume() path is the purpose here.
+>> 
+>> If so, then ufshcd_set_dev_pwr_mode() would be called, meaning
+>> SSU command will be sent. Why is this SSU command needed to be
+>> sent after a full host reset and restore? Is ufshcd_probe_hba()
+>> not enough to make UFS device fully functional?
 > 
 > After resume (for both runtime resume and system resume), device power
 > mode shall be back to "Active" to service incoming requests.
@@ -135,8 +133,34 @@ On Tue, 2019-12-31 at 12:22 +0800, Stanley Chu wrote:
 > flag is set as ACTIVE, but device may be still in PowerDown state if
 > device power is not fully shutdown or device HW reset is not executed
 > before resume), in the end, ufshcd_resume() will not invoke
-> ufshcd_set_dev_pwr_mode() to send SSU command to make device change back
+> ufshcd_set_dev_pwr_mode() to send SSU command to make device change 
+> back
 > to Active power mode.
+
+Hi Stanley,
+
+Isn't below change fixing the problem you are saying above?
+With it, after ufshcd_link_startup(), UFS device's power mode will
+become Active anyways. Do you mean below change is not working properly
+and you are removing it?
+
+commit 7caf489b99a42a9017ef3d733912aea8794677e7
+Author: subhashj@codeaurora.org <subhashj@codeaurora.org>
+Date:   Wed Nov 23 16:32:20 2016 -0800
+
+     scsi: ufs: issue link starup 2 times if device isn't active
+
+     If we issue the link startup to the device while its UniPro state is
+     LinkDown (and device state is sleep/power-down) then link startup
+     will not move the device state to Active. Device will only move to
+     active state if the link starup is issued when its UniPro state is
+     LinkUp. So in this case, we would have to issue the link startup 2
+     times to make sure that device moves to active state.
+
+Thanks,
+
+Can Guo
+
 > 
 > But if device is fully reset before resume (not by current mainstream
 > driver), device can be already in "Active" power mode after power on
@@ -146,25 +170,11 @@ On Tue, 2019-12-31 at 12:22 +0800, Stanley Chu wrote:
 > 
 > Thanks,
 > Stanley
-
-I think currently the assumption in ufshcd_probe_hba() that "device
-shall be already in Active power mode" makes sense because many device
-commands will be sent to device in ufshcd_probe_hba() but device is not
-promised to handle those commands in PowerDown power mode according to
-UFS spec. 
-
-So, maybe always ensuring device being Active power mode before leaving
-ufshcd_probe_hba() is more reasonable. If so, I will drop this patch
-first.
-
-Thanks so much for your reviews.
-
-Happy new year!
-
-Thanks,
-Stanley
-
-
+> 
+>> _______________________________________________
+>> Linux-mediatek mailing list
+>> Linux-mediatek@lists.infradead.org
+>> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
