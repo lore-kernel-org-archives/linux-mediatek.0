@@ -2,79 +2,70 @@ Return-Path: <SRS0=VH+m=2X=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.4 required=3.0 tests=DATE_IN_PAST_96_XX,
-	DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5DFDBC2D0DC
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2020 09:06:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 424C3C3276D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2020 11:56:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3078E2085B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2020 09:06:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1924020863
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Jan 2020 11:56:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YQKDWMgC";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Xua3Ef7O"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3078E2085B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XjFQ9fyE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1924020863
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:References:
-	In-Reply-To:To:From:Subject:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=9z2KO+QFmDFIcnZFU5iIE3aCscldxGwEcEi4Es4o3Pk=; b=YQKDWMgCBUvhTLyXHkhaZ6DUvA
-	fS8s9WpZQiPCoFlyU3xFlg5jibqFvOL1eLJ+8K2LzWsM+Txycr2kRp8O1Wmm2TND9F3pvtzW2GCQU
-	onQGXncCGXYQGkOkk8IFT1/b5BZ8jGoVN8d1rrVanu+LD6xKGNTainm1HOH6sYuCxFrPX4MZeXdbH
-	ud8Y5Y8arbgvIXKJYUbKuTZOM4db147ITkm5RpP8jhJxSwuQmt6yxDRGkZkZHGUCacH9uYeCHt8Ou
-	oQkPOzE26qCYj4gPS4VuW2osd7wIUYJ+rohWPs+HuIbJdjYU61a2eui9CoWJQEGVKr5M9xpHsOvQz
-	nmOaRLSw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/ZrJN8HD0ioBAzC/AgmKvryAEtufFZBy6yVRS3pYTxo=; b=XjFQ9fyEnKmceB
+	Gvz0Pp0zjSsUPi8Rdybct9Agqylxya7ZP535LmM5IOmDD+YqBA6Tt/yT+Af5jUmKikMuq7lSqt8Dr
+	kKxufxX2tNEXOaeQU3V2NQpSgWr2D+p0Mqcsu3za0QD0GIC4wU1iV6pDGdKdxDCFfWXdCzKOoBGuZ
+	UdHuDQX900mzwrk8R6c4HoHhhTfFJV2qVGEbCt3CMI9GZpAceCrfrbF/w0bM8FM/h0o/Rn/YCywgj
+	xbTtH+k4YfnsJYXyu25XzQ5W2Y32ojD5tnBKbuFglK3UgsrFWckNnvaB0GBq3lrZyZyY3YkHtJlvQ
+	or9xkMKYy+MaXkVjLMCA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1imwQs-0004ki-Ko; Thu, 02 Jan 2020 09:06:18 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1imz5s-0007pl-L1; Thu, 02 Jan 2020 11:56:48 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1imwQl-0004e7-6c; Thu, 02 Jan 2020 09:06:13 +0000
-X-UUID: b5c7d7ca83554e8d9635cde6c0bd4915-20200102
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Date:Content-Type:References:In-Reply-To:CC:To:From:Subject:Message-ID;
- bh=JGdPpUo4222DzCM6wDjv30KIDNPq7IUZFH93VPCjlWU=; 
- b=Xua3Ef7O93oKkZwSYVxlRAHi5l9naLTK7fqm1szfzl9rE/bcqyaUlYRu2xPKMLSsgzSJKDMsLB9w6inQK7JVwCz+xhGMnxwZvA9hKTtWBlIRim61uyy+16pUspcRTDwYMNz7YMV+wfFKP48YIN30UKzpT//b3mxZ53rfsVErW0A=;
-X-UUID: b5c7d7ca83554e8d9635cde6c0bd4915-20200102
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <srv_yingjoe.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 943449014; Thu, 02 Jan 2020 01:06:06 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 2 Jan 2020 00:56:26 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 2 Jan 2020 16:55:08 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Thu, 2 Jan 2020 16:55:12 +0800
-Message-ID: <1573716890.27914.8.camel@mtksdaap41>
-Subject: Re: [PATCH v4 2/2] watchdog: mtk_wdt: mt8183: Add reset controller
-From: Yingjoe Chen <srv_yingjoe.chen@mediatek.com>
-To: Jiaxin Yu <jiaxin.yu@mediatek.com>
-In-Reply-To: <1571205548-13704-3-git-send-email-jiaxin.yu@mediatek.com>
-References: <1571205548-13704-1-git-send-email-jiaxin.yu@mediatek.com>
- <1571205548-13704-3-git-send-email-jiaxin.yu@mediatek.com>
-Date: Thu, 14 Nov 2019 15:34:50 +0800
+ id 1imz5o-0007jZ-B2
+ for linux-mediatek@lists.infradead.org; Thu, 02 Jan 2020 11:56:45 +0000
+Received: from lupine.hi.pengutronix.de
+ ([2001:67c:670:100:3ad5:47ff:feaf:1a17] helo=lupine)
+ by metis.ext.pengutronix.de with esmtp (Exim 4.92)
+ (envelope-from <p.zabel@pengutronix.de>)
+ id 1imz5Z-0002We-MF; Thu, 02 Jan 2020 12:56:29 +0100
+Message-ID: <f3a5ccdc211b5d94b1901e72cfc2ef57d4107054.camel@pengutronix.de>
+Subject: Re: [PATCH v7 1/2] dt-bindings: mediatek: mt8183: Add #reset-cells
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Jiaxin Yu <jiaxin.yu@mediatek.com>, yong.liang@mediatek.com, 
+ wim@linux-watchdog.org, linux@roeck-us.net, matthias.bgg@gmail.com, 
+ linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ devicetree@vger.kernel.org, chang-an.chen@mediatek.com,
+ freddy.hsin@mediatek.com
+Date: Thu, 02 Jan 2020 12:56:27 +0100
+In-Reply-To: <1577437494-738-2-git-send-email-jiaxin.yu@mediatek.com>
+References: <1577437494-738-1-git-send-email-jiaxin.yu@mediatek.com>
+ <1577437494-738-2-git-send-email-jiaxin.yu@mediatek.com>
+User-Agent: Evolution 3.30.5-1.1 
 MIME-Version: 1.0
-X-Mailer: Evolution 3.10.4-0ubuntu2 
-X-TM-SNTS-SMTP: 105F61B96C4E2C1BE8BCE53C9F69A468765DF4EA5532D9FF8CFC651CB3642BD62000:8
-X-MTK: N
+X-SA-Exim-Connect-IP: 2001:67c:670:100:3ad5:47ff:feaf:1a17
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200102_010611_763170_A4CA6D49 
-X-CRM114-Status: GOOD (  17.38  )
+X-CRM114-CacheID: sfid-20200102_035644_377364_1D3E37F8 
+X-CRM114-Status: UNSURE (   4.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,224 +77,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, alsa-devel@alsa-project.org, yong.liang@mediatek.com,
- robh+dt@kernel.org, lgirdwood@gmail.com, tzungbi@google.com,
- broonie@kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, eason.yen@mediatek.com, perex@perex.cz,
- wim@linux-watchdog.org, linux@roeck-us.net
+Cc: sboyd@kernel.org, yingjoe.chen@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2019-10-16 at 13:59 +0800, Jiaxin Yu wrote:
-> From: "yong.liang" <yong.liang@mediatek.com>
-> 
-> Add reset controller API in watchdog driver.
-> Besides watchdog, MTK toprgu module also provide sub-system (eg, audio,
-> camera, codec and connectivity) software reset functionality.
+On Fri, 2019-12-27 at 17:04 +0800, Jiaxin Yu wrote:
+> Add #reset-cells property and update example
 > 
 > Signed-off-by: yong.liang <yong.liang@mediatek.com>
+> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
 
-Jiaxin,
+Acked-by: Philipp Zabel <p.zabel@pengutronix.de>
 
-Since you send this patch, you should add your signed-off-by tag here as
-well.
+to be merged together with patch 2.
 
-This looks good to me otherwise. Feel free to add my reviewed by if you
-want:
+regards
+Philipp
 
-Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
-
-Joe.C
-
-> ---
->  drivers/watchdog/Kconfig   |   1 +
->  drivers/watchdog/mtk_wdt.c | 111 ++++++++++++++++++++++++++++++++++++-
->  2 files changed, 111 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/watchdog/Kconfig b/drivers/watchdog/Kconfig
-> index 2e07caab9db2..629249fe5305 100644
-> --- a/drivers/watchdog/Kconfig
-> +++ b/drivers/watchdog/Kconfig
-> @@ -717,6 +717,7 @@ config MEDIATEK_WATCHDOG
->  	tristate "Mediatek SoCs watchdog support"
->  	depends on ARCH_MEDIATEK || COMPILE_TEST
->  	select WATCHDOG_CORE
-> +	select RESET_CONTROLLER
->  	help
->  	  Say Y here to include support for the watchdog timer
->  	  in Mediatek SoCs.
-> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-> index 9c3d0033260d..d29484c7940a 100644
-> --- a/drivers/watchdog/mtk_wdt.c
-> +++ b/drivers/watchdog/mtk_wdt.c
-> @@ -9,6 +9,9 @@
->   * Based on sunxi_wdt.c
->   */
->  
-> +#include <dt-bindings/reset-controller/mt2712-resets.h>
-> +#include <dt-bindings/reset-controller/mt8183-resets.h>
-> +#include <linux/delay.h>
->  #include <linux/err.h>
->  #include <linux/init.h>
->  #include <linux/io.h>
-> @@ -16,10 +19,12 @@
->  #include <linux/module.h>
->  #include <linux/moduleparam.h>
->  #include <linux/of.h>
-> +#include <linux/of_device.h>
->  #include <linux/platform_device.h>
-> +#include <linux/reset-controller.h>
-> +#include <linux/slab.h>
->  #include <linux/types.h>
->  #include <linux/watchdog.h>
-> -#include <linux/delay.h>
->  
->  #define WDT_MAX_TIMEOUT		31
->  #define WDT_MIN_TIMEOUT		1
-> @@ -44,6 +49,9 @@
->  #define WDT_SWRST		0x14
->  #define WDT_SWRST_KEY		0x1209
->  
-> +#define WDT_SWSYSRST		0x18U
-> +#define WDT_SWSYS_RST_KEY	0x88000000
-> +
->  #define DRV_NAME		"mtk-wdt"
->  #define DRV_VERSION		"1.0"
->  
-> @@ -53,8 +61,99 @@ static unsigned int timeout;
->  struct mtk_wdt_dev {
->  	struct watchdog_device wdt_dev;
->  	void __iomem *wdt_base;
-> +	spinlock_t lock; /* protects WDT_SWSYSRST reg */
-> +	struct reset_controller_dev rcdev;
-> +};
-> +
-> +struct mtk_wdt_data {
-> +	int sw_rst_num;
->  };
->  
-> +static const struct mtk_wdt_data mt2712_data = {
-> +	.sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
-> +};
-> +
-> +static const struct mtk_wdt_data mt8183_data = {
-> +	.sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
-> +};
-> +
-> +static int toprgu_reset_assert(struct reset_controller_dev *rcdev,
-> +			       unsigned long id)
-> +{
-> +	unsigned int tmp;
-> +	unsigned long flags;
-> +	struct mtk_wdt_dev *data =
-> +		 container_of(rcdev, struct mtk_wdt_dev, rcdev);
-> +
-> +	spin_lock_irqsave(&data->lock, flags);
-> +
-> +	tmp = __raw_readl(data->wdt_base + WDT_SWSYSRST);
-> +	tmp |= BIT(id);
-> +	tmp |= WDT_SWSYS_RST_KEY;
-> +	writel(tmp, data->wdt_base + WDT_SWSYSRST);
-> +
-> +	spin_unlock_irqrestore(&data->lock, flags);
-> +
-> +	return 0;
-> +}
-> +
-> +static int toprgu_reset_deassert(struct reset_controller_dev *rcdev,
-> +				 unsigned long id)
-> +{
-> +	unsigned int tmp;
-> +	unsigned long flags;
-> +	struct mtk_wdt_dev *data =
-> +		 container_of(rcdev, struct mtk_wdt_dev, rcdev);
-> +
-> +	spin_lock_irqsave(&data->lock, flags);
-> +
-> +	tmp = __raw_readl(data->wdt_base + WDT_SWSYSRST);
-> +	tmp &= ~BIT(id);
-> +	tmp |= WDT_SWSYS_RST_KEY;
-> +	writel(tmp, data->wdt_base + WDT_SWSYSRST);
-> +
-> +	spin_unlock_irqrestore(&data->lock, flags);
-> +
-> +	return 0;
-> +}
-> +
-> +static int toprgu_reset(struct reset_controller_dev *rcdev,
-> +			unsigned long id)
-> +{
-> +	int ret;
-> +
-> +	ret = toprgu_reset_assert(rcdev, id);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return toprgu_reset_deassert(rcdev, id);
-> +}
-> +
-> +static const struct reset_control_ops toprgu_reset_ops = {
-> +	.assert = toprgu_reset_assert,
-> +	.deassert = toprgu_reset_deassert,
-> +	.reset = toprgu_reset,
-> +};
-> +
-> +static int toprgu_register_reset_controller(struct platform_device *pdev,
-> +					    int rst_num)
-> +{
-> +	int ret;
-> +	struct mtk_wdt_dev *mtk_wdt = platform_get_drvdata(pdev);
-> +
-> +	spin_lock_init(&mtk_wdt->lock);
-> +
-> +	mtk_wdt->rcdev.owner = THIS_MODULE;
-> +	mtk_wdt->rcdev.nr_resets = rst_num;
-> +	mtk_wdt->rcdev.ops = &toprgu_reset_ops;
-> +	mtk_wdt->rcdev.of_node = pdev->dev.of_node;
-> +	ret = reset_controller_register(&mtk_wdt->rcdev);
-> +	if (ret != 0)
-> +		dev_err(&pdev->dev,
-> +			"couldn't register wdt reset controller: %d\n", ret);
-> +	return ret;
-> +}
-> +
->  static int mtk_wdt_restart(struct watchdog_device *wdt_dev,
->  			   unsigned long action, void *data)
->  {
-> @@ -155,6 +254,7 @@ static int mtk_wdt_probe(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
->  	struct mtk_wdt_dev *mtk_wdt;
-> +	struct mtk_wdt_data *wdt_data;
->  	int err;
->  
->  	mtk_wdt = devm_kzalloc(dev, sizeof(*mtk_wdt), GFP_KERNEL);
-> @@ -190,6 +290,13 @@ static int mtk_wdt_probe(struct platform_device *pdev)
->  	dev_info(dev, "Watchdog enabled (timeout=%d sec, nowayout=%d)\n",
->  		 mtk_wdt->wdt_dev.timeout, nowayout);
->  
-> +	wdt_data = (struct mtk_wdt_data *)of_device_get_match_data(dev);
-> +	if (wdt_data) {
-> +		err = toprgu_register_reset_controller(pdev,
-> +						       wdt_data->sw_rst_num);
-> +		if (err)
-> +			return err;
-> +	}
->  	return 0;
->  }
->  
-> @@ -218,7 +325,9 @@ static int mtk_wdt_resume(struct device *dev)
->  #endif
->  
->  static const struct of_device_id mtk_wdt_dt_ids[] = {
-> +	{ .compatible = "mediatek,mt2712-wdt", .data = &mt2712_data },
->  	{ .compatible = "mediatek,mt6589-wdt" },
-> +	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
->  	{ /* sentinel */ }
->  };
->  MODULE_DEVICE_TABLE(of, mtk_wdt_dt_ids);
 
 _______________________________________________
 Linux-mediatek mailing list
