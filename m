@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0ADB8C3276F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 03:19:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D5576C3276F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 03:19:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CEF92222C3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 03:19:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A8B5921D7D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 03:19:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e97rhGBu";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EdkSMjXp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CEF92222C3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OzS5KPzL";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ojNVaQFR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A8B5921D7D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RJ1/nqToNlZe4OpiORcXMT5I9An7ezy7NIJ8HYcy2nY=; b=e97rhGBugtUStI
-	33H+Q1d34cvrb3GcPxBk39ZDocNWSVKMi+WbvMXO461bcOcM6XC9CWZkAAe8sUOXpx1UwA+I2t3xk
-	ohJKq6Wx+YfuidPMcSAumnA13ZupA7XEMwWRA56Ko9+2l4f04BVMeH/3Vr7F2VCEgnuYT2sUjQpLl
-	Zp/J6ah7RafqGikZDx/+mizVpn68oNXQuUQvvbB9A7KwXOmoTPUKteUgW0B/G7kW8rYSAWL8YSmgZ
-	DPqle9pwK3zdXLQ4swBa8TTXHdMpEUmfO3PN9tfRszT26NnS82uMnqDVZ2kAb3ZI5TFv8V7uehC3M
-	yuC+ntrtjV2vULu1FB4Q==;
+	List-Owner; bh=k4b1pYf5z6bQa5yYKOdIx7rxHHyFsE3dmFrXy2Q9FwQ=; b=OzS5KPzLSuB5EA
+	jbcmbkqn3qyv65PbhI6Rd4QD7oAhX+YX1lZmsTRKNJt59/gJKUQzAsVt24cljK21N4k+ccGV/+Mfp
+	I1Q1c456oQaG7Io+iTwn+3dRBbCuzGaUdcBkwtt5u+R8W+HDCRtLmBRp8uGlVJaLYKE/RAnuEyP9F
+	Zk0LePPdasSR1Ap4av3wsikLidXw4Wg1xlWRvz4507s5E/TDjwgy/lO1o8KVAIvz1FP+3FqBnlM8T
+	fHvJEOtk/jpenokSx/7wW1FvmyKahPbS5PI6atohcSeDGtZnhn+BaEjHXx2IPAb8zpIxR6kC9SeJH
+	WbsG973spdJJO2/lJZug==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1inDUw-0007tB-9c; Fri, 03 Jan 2020 03:19:38 +0000
+	id 1inDVE-0008Bq-Pe; Fri, 03 Jan 2020 03:19:56 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1inDUQ-0007LI-6U; Fri, 03 Jan 2020 03:19:07 +0000
-X-UUID: fdb3959824fc4179ba4d86c438eba7c1-20200102
+ id 1inDUR-0007LZ-08; Fri, 03 Jan 2020 03:19:08 +0000
+X-UUID: cd2f20d904334757add5db0460a29919-20200102
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=w/UNojmvQeoqj5ssGa9RuxeKs7Wh0EGoWwzhQTkdINo=; 
- b=EdkSMjXpmxbDN5zEn9moHTciTd4/qvfEdqHeLV/NOZe6qz34jtIGI9fUnGLHUPUp3wclDxzgAxkfcI/QpxNUC4fs0PRGWhKY+lMCBWV172J5UIqJGPaC/Vf3PkoX6ydMyR0sYmObdNLeazOY+nAwqxOqiPETf/AzysL6RVLOhaw=;
-X-UUID: fdb3959824fc4179ba4d86c438eba7c1-20200102
+ bh=RT3d9kWeiIuE9GL2srPbr1r8xa3wmXvPk20GUq9hFEg=; 
+ b=ojNVaQFRTsOtpOTFVlbAGj1wdqlPN4XuPFndpNDVEcTnE/X2911X7dnyUiDCqiQDhfF67gWlpreZn9YR6dy009XgAMK1clj1pQdSpJckvRPNIkYGf2X/9UcCvh4KTZDLYo7pFJ8HjpQQmB9Yc8QivoYIDCL7lMFYDbMzfAkKmpA=;
+X-UUID: cd2f20d904334757add5db0460a29919-20200102
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 932828056; Thu, 02 Jan 2020 19:19:01 -0800
+ with ESMTP id 1483347800; Thu, 02 Jan 2020 19:19:01 -0800
 Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 2 Jan 2020 19:13:09 -0800
+ 15.0.1395.4; Thu, 2 Jan 2020 19:13:15 -0800
 Received: from mtkcas09.mediatek.inc (172.21.101.178) by
  mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 3 Jan 2020 11:12:19 +0800
+ 15.0.1395.4; Fri, 3 Jan 2020 11:12:24 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Fri, 3 Jan 2020 11:13:12 +0800
+ Transport; Fri, 3 Jan 2020 11:13:18 +0800
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Rob
  Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [RESEND PATCH v6 10/17] drm/mediatek: add connection from RDMA0 to
- COLOR0
-Date: Fri, 3 Jan 2020 11:12:21 +0800
-Message-ID: <1578021148-32413-11-git-send-email-yongqiang.niu@mediatek.com>
+Subject: [RESEND PATCH v6 16/17] drm/mediatek: add fifo_size into rdma private
+ data
+Date: Fri, 3 Jan 2020 11:12:27 +0800
+Message-ID: <1578021148-32413-17-git-send-email-yongqiang.niu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1578021148-32413-1-git-send-email-yongqiang.niu@mediatek.com>
 References: <1578021148-32413-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200102_191906_240163_75D4AC85 
-X-CRM114-Status: UNSURE (   9.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200102_191907_042990_73CFB9B7 
+X-CRM114-Status: GOOD (  12.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,37 +94,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch add connection from RDMA0 to COLOR0
+the fifo size of rdma in mt8183 is different.
+rdma0 fifo size is 5k
+rdma1 fifo size is 2k
 
 Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-index 3a1aa9a..b6b86600 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-@@ -172,6 +172,8 @@ struct mtk_ddp {
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+index 405afef..0e0af04a 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+@@ -62,6 +62,7 @@ struct mtk_disp_rdma {
+ 	struct mtk_ddp_comp		ddp_comp;
+ 	struct drm_crtc			*crtc;
+ 	const struct mtk_disp_rdma_data	*data;
++	u32				fifo_size;
+ };
  
- struct mtk_mmsys_reg_data {
- 	u32 ovl0_mout_en;
-+	u32 rdma0_sout_sel_in;
-+	u32 rdma0_sout_color0;
- 	u32 rdma1_sout_sel_in;
- 	u32 rdma1_sout_dpi0;
- 	u32 dpi0_sel_in;
-@@ -432,6 +434,9 @@ static unsigned int mtk_ddp_sout_sel(const struct mtk_mmsys_reg_data *data,
- 	} else if (cur == DDP_COMPONENT_RDMA2 && next == DDP_COMPONENT_DSI3) {
- 		*addr = DISP_REG_CONFIG_DISP_RDMA2_SOUT;
- 		value = RDMA2_SOUT_DSI3;
-+	} else if (cur == DDP_COMPONENT_RDMA0 && next == DDP_COMPONENT_COLOR0) {
-+		*addr = data->rdma0_sout_sel_in;
-+		value = data->rdma0_sout_color0;
- 	} else {
- 		value = 0;
+ static inline struct mtk_disp_rdma *comp_to_rdma(struct mtk_ddp_comp *comp)
+@@ -130,10 +131,16 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
+ 	unsigned int threshold;
+ 	unsigned int reg;
+ 	struct mtk_disp_rdma *rdma = comp_to_rdma(comp);
++	u32 rdma_fifo_size;
+ 
+ 	rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_0, 0xfff, width);
+ 	rdma_update_bits(comp, DISP_REG_RDMA_SIZE_CON_1, 0xfffff, height);
+ 
++	if (rdma->fifo_size)
++		rdma_fifo_size = rdma->fifo_size;
++	else
++		rdma_fifo_size = RDMA_FIFO_SIZE(rdma);
++
+ 	/*
+ 	 * Enable FIFO underflow since DSI and DPI can't be blocked.
+ 	 * Keep the FIFO pseudo size reset default of 8 KiB. Set the
+@@ -142,7 +149,7 @@ static void mtk_rdma_config(struct mtk_ddp_comp *comp, unsigned int width,
+ 	 */
+ 	threshold = width * height * vrefresh * 4 * 7 / 1000000;
+ 	reg = RDMA_FIFO_UNDERFLOW_EN |
+-	      RDMA_FIFO_PSEUDO_SIZE(RDMA_FIFO_SIZE(rdma)) |
++	      RDMA_FIFO_PSEUDO_SIZE(rdma_fifo_size) |
+ 	      RDMA_OUTPUT_VALID_FIFO_THRESHOLD(threshold);
+ 	writel(reg, comp->regs + DISP_REG_RDMA_FIFO_CON);
+ }
+@@ -284,6 +291,16 @@ static int mtk_disp_rdma_probe(struct platform_device *pdev)
+ 		return comp_id;
  	}
+ 
++	if (of_find_property(dev->of_node, "mediatek,rdma_fifo_size", &ret)) {
++		ret = of_property_read_u32(dev->of_node,
++					   "mediatek,rdma_fifo_size",
++					   &priv->fifo_size);
++		if (ret) {
++			dev_err(dev, "Failed to get rdma fifo size\n");
++			return ret;
++		}
++	}
++
+ 	ret = mtk_ddp_comp_init(dev, dev->of_node, &priv->ddp_comp, comp_id,
+ 				&mtk_disp_rdma_funcs);
+ 	if (ret) {
 -- 
 1.8.1.1.dirty
 _______________________________________________
