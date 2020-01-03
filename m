@@ -2,83 +2,81 @@ Return-Path: <SRS0=lxIO=2Y=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.6 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9F2BEC2D0C2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 21:29:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A122C00523
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 22:09:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 70F93222C3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 21:29:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 16D0121835
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 22:09:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ipn0nhgD";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="vRNZ8xR0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 70F93222C3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FgK9eRaV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16D0121835
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NssK3yXF+UEq/T9mhZ5KtlsUQ0CjuABb5v0FedQLrqY=; b=Ipn0nhgDXG+gV8
-	o5K2Ts/vDyWfsQ53eKoYcNFTnU0GnyaZ0V+B/lNbIAv4fh33gNdKZCNtEBbc4SgDd+DpBBPiEhkV3
-	c3z4kGbpD6ogU1y8mFR6ttDvQWCBT9ST46H0y8QZd38AoapNFLq/WKViStuIwFIeGyT8LrrHC7g/c
-	WWOyckpAVCUnji0RLx39Y0CLoBWbPNwRpFMfjdj83dP3mZEx7qManZ4dsNp5AR5xHmf4gym89IBN8
-	0R3S5Yp5ON89GX1AjvZmLdFQxUHTUb6LrvDVEMN2LjH6hNeDFJulOil/RUuVUML5yBs6p1uMNswY1
-	krIIXBJKiYkvjC0UvFfg==;
+	List-Owner; bh=5uNnRuOdr7mi6C9rOkUkmTtJIlX1I47PC9zKLUhbBlA=; b=FgK9eRaVoYMLKS
+	NF64rV7FUOo6ium5ROf8Uq61VEiDZP1ATdTxLzSkWlx8yaoO9JNofqPuFV8Pce8XHz+O0//T9OCqh
+	4d/zwMFKCZbBF1gtEZmHz5Xl4XCcDisS3GIMz281Zx9p079rbdFKnWLojFYoa1MDtbTAqX6jXWAHJ
+	nayKzvXDw0M+MNiwNTkuz0sVP+2fBVn95ieR6g09Id9OyopP5zrWEXVesgQ72fSuI1yDbgynJVvHV
+	luhqhCMN5/3w6hdJwqJOqefoM80WuHimgoW35ljy6/JILdbJH+CuG7pJlIZJjDrUChNv1ybZU8V4N
+	UNCHMiOQ484mXcIuK8wA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1inUVJ-0002T7-5t; Fri, 03 Jan 2020 21:29:09 +0000
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542])
+	id 1inV88-0000JE-2L; Fri, 03 Jan 2020 22:09:16 +0000
+Received: from mail-il1-f195.google.com ([209.85.166.195])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1inUVC-0002LR-4P; Fri, 03 Jan 2020 21:29:03 +0000
-Received: by mail-ed1-x542.google.com with SMTP id b8so42711193edx.7;
- Fri, 03 Jan 2020 13:29:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=sY+5gBJ9KBN9CmCnj27mx4Jhd9hNgJKF8zYt9OnsI4Q=;
- b=vRNZ8xR0cRi5hS92dxr96kspn6z+MidQ30Ls7zmJ3eyz4Xo26rNawGDzaAtNvsBXFw
- 9WnPYoPKyKmc9tJED3/GaF5K9lv/Y9Jf267LnqvgwTdnkoQLc0jE6kZb/yQNk5BjRy2q
- WT0d/g5JIcy9BKL8g2nvmIQLNDBFT40TIT22cOSm73Nz15KO5forfXbMUujZKmurOAs/
- hVK3NZ1kG1fYxuom5n+1EIetBuxP9iIZ8VrZph+ggGnNvr4axOlZgUcQjzVm5Osgr87t
- cR1PzkkayFotuz84RqtglbEJfyDtSQzQRzB5YHM51busvhxUz8jFEheKMkoL4MTeCtcr
- 4IzA==
+ id 1inV80-0000BY-Kf
+ for linux-mediatek@lists.infradead.org; Fri, 03 Jan 2020 22:09:10 +0000
+Received: by mail-il1-f195.google.com with SMTP id t17so37743584ilm.13
+ for <linux-mediatek@lists.infradead.org>; Fri, 03 Jan 2020 14:09:08 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=sY+5gBJ9KBN9CmCnj27mx4Jhd9hNgJKF8zYt9OnsI4Q=;
- b=F+YZxv86hRiTeXc5m5P35lsVtO6lgu6CnpkO0Kux1RuIVwc5aig2ycKrqLSnq1HEp/
- jasvAvi0+JEfIpd1UEvP751z1HCfmqPPNM3dvScq0UYzrBxB7s9EHglD2jq61Ro6sAtA
- czqXFqMHHnwtW2Y20QVoZQofLa5qabSrM29VLv5lujsR56ydnYJDP0X4eKzJHQbuWEuU
- U1mIrc/HGkFdFdRWvcOKvTywUYvM6xmP9M3QBYRkuRIF4nU9eMWuhcnWFeuUqZKRX1FP
- 5ozjLVKgqvjmMeac+hnvqM3T93m10UOk4fSsDfXyboZcdtoJWLrRCko35T3tslXDQvbF
- lsRQ==
-X-Gm-Message-State: APjAAAUVwzw8gRA1Ki6Jsi4fYfXa0xAaD1gVi9qp6e8p1knz0yc3v/ze
- qcj9kL4Bwq+ExjCB1cTx24kHF3mAkMM4PCXUPm4=
-X-Google-Smtp-Source: APXvYqz6C0gPA0BhTifMkDy7tGjqFdi13Pdnw86CYCjTgOWj/u5iR1rZ2K6vSRub8lpQ1YCZR9r0P0aJe4S60ETEH9c=
-X-Received: by 2002:aa7:cccf:: with SMTP id y15mr94922090edt.108.1578086938142; 
- Fri, 03 Jan 2020 13:28:58 -0800 (PST)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=jaq5PZV0113fH8a1/ccNdlJ+K9H3T4ORM/dajcDMbeI=;
+ b=CItb3JOY/akmMZLVjh3cOwIUMh/Xbwcq4TXNtDil+qj9Nmf6tyHzPwjUH/d3f0pasv
+ iy+aqC9OcM8uhet4HcfF6k/AQ2vDmjK3tLp72fUlIdJ402EcDbEhMrfL779fRxiAm82j
+ OQhi8dBaxyo0qnJkslr0dZhXOwNCM1pBWm3BckXvczs8ZfQMv6ip8iB56dEbojaCgEWX
+ MxmTgVouCDSRdP9be8ohA7ZCz71XOAmmlSiJOu/XbFgLDRK1PTsMgmIYJIeykWOdsXv0
+ +0Farem3JvML4pvpDhCjiPuob571hTNwLoeXfeeJLM++okBPvY9XlpWGdccHJJ0GdUY6
+ wrJQ==
+X-Gm-Message-State: APjAAAX7a/3hOBQqxX85Dczsu2Oj0N6K2uGPkDY+TTR2vjmocLQr1QXz
+ REuH6dpFj11BWggiej/hnEfgPeM=
+X-Google-Smtp-Source: APXvYqxjEDyLjj8K1TnehNUrTgatWCMlktT6wyQXqJKaxlyuXB+buskf7mZ7anMs4L2PsECRRGNA9Q==
+X-Received: by 2002:a92:1547:: with SMTP id v68mr73559009ilk.58.1578089345940; 
+ Fri, 03 Jan 2020 14:09:05 -0800 (PST)
+Received: from rob-hp-laptop ([64.188.179.251])
+ by smtp.gmail.com with ESMTPSA id f72sm21392249ilg.84.2020.01.03.14.09.04
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 03 Jan 2020 14:09:05 -0800 (PST)
+Received: from rob (uid 1000) (envelope-from rob@rob-hp-laptop) id 2219a5
+ by rob-hp-laptop (DragonFly Mail Agent v0.11);
+ Fri, 03 Jan 2020 15:09:03 -0700
+Date: Fri, 3 Jan 2020 15:09:03 -0700
+From: Rob Herring <robh@kernel.org>
+To: Fabien Parent <fparent@baylibre.com>
+Subject: Re: [PATCH v2 1/2] arm64: dts: mediatek: add dtsi for MT8516
+Message-ID: <20200103220903.GA14332@bogus>
+References: <20200103162234.103094-1-fparent@baylibre.com>
 MIME-Version: 1.0
-References: <20200102233657.12933-1-f.fainelli@gmail.com>
- <CA+h21hrLO2Nfryu74Joj-T3-ithgoSFOQZsw4Z5QWOnhttvGiA@mail.gmail.com>
- <91eb2720-d933-f1fd-8d50-e9a81434545b@gmail.com>
-In-Reply-To: <91eb2720-d933-f1fd-8d50-e9a81434545b@gmail.com>
-From: Vladimir Oltean <olteanv@gmail.com>
-Date: Fri, 3 Jan 2020 23:28:47 +0200
-Message-ID: <CA+h21hqEnFjPHyK9ZanzwXdvkcdTA3uZzJMf0eo0FZWRTFzouw@mail.gmail.com>
-Subject: Re: [PATCH net-next] net: dsa: Remove indirect function call for flow
- dissection
-To: Florian Fainelli <f.fainelli@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20200103162234.103094-1-fparent@baylibre.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200103_132902_201150_D8DECA93 
-X-CRM114-Status: GOOD (  12.13  )
+X-CRM114-CacheID: sfid-20200103_140908_683396_E1F3401F 
+X-CRM114-Status: GOOD (  16.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,67 +88,498 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Song Liu <songliubraving@fb.com>,
- Vladimir Oltean <vladimir.oltean@nxp.com>,
- Alexander Lobakin <alobakin@dlink.ru>,
- Yoshiki Komachi <komachi.yoshiki@gmail.com>,
- open list <linux-kernel@vger.kernel.org>, Eric Dumazet <edumazet@google.com>,
- Stanislav Fomichev <sdf@google.com>, Matteo Croce <mcroce@redhat.com>,
- Petar Penkov <ppenkov@google.com>, Jakub Sitnicki <jakub@cloudflare.com>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Woojung Huh <woojung.huh@microchip.com>, Hauke Mehrtens <hauke@hauke-m.de>,
- Sean Wang <sean.wang@mediatek.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, netdev <netdev@vger.kernel.org>,
- Paul Blakey <paulb@mellanox.com>,
- Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
- Russell King <rmk+kernel@armlinux.org.uk>,
- "David S. Miller" <davem@davemloft.net>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 3 Jan 2020 at 22:50, Florian Fainelli <f.fainelli@gmail.com> wrote:
->
-> The call path is the following on TX (e.g.: when you run a DHCP client),
+On Fri, Jan 03, 2020 at 05:22:33PM +0100, Fabien Parent wrote:
+> The MT8516 SoC provides the following peripherals: GPIO, UART, USB2,
+> SPI, eMMC, SDIO, NAND, Flash, ADC, I2C, PWM, Timers, IR, Ethernet, and
+> Audio (I2S, SPDIF, TDM).
+> 
+> This commit is adding the basic dtsi file with the support of the
+> following IPs: Clock, Pinctrl, WDT, GPIO, UART, SPI, eMMC, I2C, Timers,
+> MMC, RNG PWM.
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> ---
+> 
+> V2:
+> 	* Remove unused clock for CPU nodes
+> 	* Fix formatting / spacing
+> 	* Fix compatible for SPI node: s/mediatek,mt2701-spi/mediatek,mt2712-spi/
+> 	* Rename "sdio" node label into "mmc"
+> 	* Add "rng" and "pwm" nodes.
+> 
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8516-pinfunc.h | 663 ++++++++++++++++++
+>  arch/arm64/boot/dts/mediatek/mt8516.dtsi      | 426 +++++++++++
+>  2 files changed, 1089 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8516-pinfunc.h
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8516.dtsi
 
-Oh, it gets called on TX too, ok.
-In that case, static proto_off information won't work for asymmetric
-taggers such as ocelot which may have an independently configurable
-prefix length on RX and TX.
-I want to get rid of the RX tag prefix in ocelot though, but just saying.
 
-> I don't think your formula works for EDSA which has an EtherType, but
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8516.dtsi b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
+> new file mode 100644
+> index 000000000000..39ce244f1e40
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
+> @@ -0,0 +1,426 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2019 MediaTek Inc.
+> + * Copyright (c) 2019 BayLibre, SAS.
+> + * Author: Fabien Parent <fparent@baylibre.com>
+> + */
+> +
+> +#include <dt-bindings/clock/mt8516-clk.h>
+> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> +#include <dt-bindings/interrupt-controller/irq.h>
+> +
+> +#include "mt8516-pinfunc.h"
+> +
+> +/ {
+> +	compatible = "mediatek,mt8516";
+> +	interrupt-parent = <&sysirq>;
+> +	#address-cells = <2>;
+> +	#size-cells = <2>;
+> +
+> +	cluster0_opp: opp_table0 {
 
-Why doesn't it work with edsa?
+opp-table-0
 
-> this would probably work for all tags we currently support except trailer.
->
-> proto = (__be16 *)(skb->data)[overhead / 2 - 1];
->
+> +		compatible = "operating-points-v2";
+> +		opp-shared;
+> +		opp-598000000 {
+> +			opp-hz = /bits/ 64 <598000000>;
+> +			opp-microvolt = <1150000>;
+> +		};
+> +		opp-747500000 {
+> +			opp-hz = /bits/ 64 <747500000>;
+> +			opp-microvolt = <1150000>;
+> +		};
+> +		opp-1040000000 {
+> +			opp-hz = /bits/ 64 <1040000000>;
+> +			opp-microvolt = <1200000>;
+> +		};
+> +		opp-1196000000 {
+> +			opp-hz = /bits/ 64 <1196000000>;
+> +			opp-microvolt = <1250000>;
+> +		};
+> +		opp-1300000000 {
+> +			opp-hz = /bits/ 64 <1300000000>;
+> +			opp-microvolt = <1300000>;
+> +		};
+> +	};
+> +
+> +	cpus {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		cpu0: cpu@0 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a35";
+> +			reg = <0x0>;
+> +			enable-method = "psci";
+> +			cpu-idle-states = <&CLUSTER_SLEEP_0 &CLUSTER_SLEEP_0>,
+> +				<&CPU_SLEEP_0_0 &CPU_SLEEP_0_0 &CPU_SLEEP_0_0>;
+> +			clocks = <&infracfg CLK_IFR_MUX1_SEL>,
+> +				 <&topckgen CLK_TOP_MAINPLL_D2>;
+> +			clock-names = "cpu", "intermediate";
+> +			operating-points-v2 = <&cluster0_opp>;
+> +		};
+> +
+> +		cpu1: cpu@1 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a35";
+> +			reg = <0x1>;
+> +			enable-method = "psci";
+> +			cpu-idle-states = <&CLUSTER_SLEEP_0 &CLUSTER_SLEEP_0>,
+> +				<&CPU_SLEEP_0_0 &CPU_SLEEP_0_0 &CPU_SLEEP_0_0>;
+> +			clocks = <&infracfg CLK_IFR_MUX1_SEL>,
+> +				 <&topckgen CLK_TOP_MAINPLL_D2>;
+> +			clock-names = "cpu", "intermediate";
+> +			operating-points-v2 = <&cluster0_opp>;
+> +		};
+> +
+> +		cpu2: cpu@2 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a35";
+> +			reg = <0x2>;
+> +			enable-method = "psci";
+> +			cpu-idle-states = <&CLUSTER_SLEEP_0 &CLUSTER_SLEEP_0>,
+> +				<&CPU_SLEEP_0_0 &CPU_SLEEP_0_0 &CPU_SLEEP_0_0>;
+> +			clocks = <&infracfg CLK_IFR_MUX1_SEL>,
+> +				 <&topckgen CLK_TOP_MAINPLL_D2>;
+> +			clock-names = "cpu", "intermediate";
+> +			operating-points-v2 = <&cluster0_opp>;
+> +		};
+> +
+> +		cpu3: cpu@3 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a35";
+> +			reg = <0x3>;
+> +			enable-method = "psci";
+> +			cpu-idle-states = <&CLUSTER_SLEEP_0 &CLUSTER_SLEEP_0>,
+> +				<&CPU_SLEEP_0_0 &CPU_SLEEP_0_0 &CPU_SLEEP_0_0>;
+> +			clocks = <&infracfg CLK_IFR_MUX1_SEL>,
+> +				 <&topckgen CLK_TOP_MAINPLL_D2>;
+> +			clock-names = "cpu", "intermediate", "armpll";
+> +			operating-points-v2 = <&cluster0_opp>;
+> +		};
+> +
+> +		idle-states {
+> +			entry-method = "psci";
+> +
+> +			CPU_SLEEP_0_0: cpu-sleep-0-0 {
+> +				compatible = "arm,idle-state";
+> +				entry-latency-us = <600>;
+> +				exit-latency-us = <600>;
+> +				min-residency-us = <1200>;
+> +				arm,psci-suspend-param = <0x0010000>;
+> +			};
+> +
+> +			CLUSTER_SLEEP_0: cluster-sleep-0 {
+> +				compatible = "arm,idle-state";
+> +				entry-latency-us = <800>;
+> +				exit-latency-us = <1000>;
+> +				min-residency-us = <2000>;
+> +				arm,psci-suspend-param = <0x2010000>;
+> +			};
+> +		};
+> +	};
+> +
+> +	psci {
+> +		compatible = "arm,psci-1.0", "arm,psci-0.2", "arm,psci";
 
-I wasn't suggesting to do this exact calculation in flow_dissector.c,
-but rather to pre-populate proto_off with a value statically derived
-from it on a piece of paper, with the trailer exception where it would
-be -2 in bytes or -1 in shorts, but nonetheless a negative and valid
-value.
+Not a valid combination of compatibles. Running 'make dtbs_check' will 
+tell you this.
 
->
-> I don't think anyone except Alexander did serious investigation this.
-> For now, what I am interested in is reducing the amount of technical
-> debt and expensive function calls.
+> +		method = "smc";
+> +	};
+> +
+> +	clk26m: clk26m {
+> +		compatible = "fixed-clock";
+> +		#clock-cells = <0>;
+> +		clock-frequency = <26000000>;
+> +		clock-output-names = "clk26m";
+> +	};
+> +
+> +	clk32k: clk32k {
+> +		compatible = "fixed-clock";
+> +		#clock-cells = <0>;
+> +		clock-frequency = <32000>;
+> +		clock-output-names = "clk32k";
+> +	};
+> +
+> +	reserved-memory {
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +
+> +		/* 128 KiB reserved for ARM Trusted Firmware (BL31) */
+> +		bl31_secmon_reserved: secmon@43000000 {
+> +			no-map;
+> +			reg = <0 0x43000000 0 0x20000>;
+> +		};
+> +	};
+> +
+> +	timer {
+> +		compatible = "arm,armv8-timer";
+> +		interrupt-parent = <&gic>;
+> +		interrupts = <GIC_PPI 13
+> +			     (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
+> +			     <GIC_PPI 14
+> +			     (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
+> +			     <GIC_PPI 11
+> +			     (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
+> +			     <GIC_PPI 10
+> +			     (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>;
+> +	};
+> +
+> +	pmu {
+> +		compatible = "arm,armv8-pmuv3";
+> +		interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 5 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 6 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_SPI 7 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupt-affinity = <&cpu0>, <&cpu1>, <&cpu2>, <&cpu3>;
+> +	};
+> +
+> +	soc {
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		compatible = "simple-bus";
+> +		ranges;
+> +
+> +		topckgen: topckgen@10000000 {
+> +			compatible = "mediatek,mt8516-topckgen", "syscon";
+> +			reg = <0 0x10000000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		infracfg: infracfg@10001000 {
+> +			compatible = "mediatek,mt8516-infracfg", "syscon";
+> +			reg = <0 0x10001000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		apmixedsys: apmixedsys@10018000 {
+> +			compatible = "mediatek,mt8516-apmixedsys", "syscon";
+> +			reg = <0 0x10018000 0 0x710>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		toprgu: toprgu@10007000 {
+> +			compatible = "mediatek,mt8516-wdt",
+> +				     "mediatek,mt6589-wdt";
+> +			reg = <0 0x10007000 0 0x1000>;
+> +			interrupts = <GIC_SPI 198 IRQ_TYPE_EDGE_FALLING>;
+> +			#reset-cells = <1>;
+> +		};
+> +
+> +		timer: timer@10008000 {
+> +			compatible = "mediatek,mt8516-timer",
+> +				     "mediatek,mt6577-timer";
+> +			reg = <0 0x10008000 0 0x1000>;
+> +			interrupts = <GIC_SPI 132 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&topckgen CLK_TOP_CLK26M_D2>,
+> +				 <&clk32k>,
+> +				 <&topckgen CLK_TOP_APXGPT>;
+> +			clock-names = "clk13m", "clk32k", "bus";
+> +		};
+> +
+> +		syscfg_pctl_a: syscfg_pctl_a@10005000 {
 
-Does the change bring any measurable improvement?
+Don't use '_' in node names.
 
-> --
-> Florian
+> +			compatible = "mediatek,mt8516-pctl-a-syscfg", "syscon";
+> +			reg = <0 0x10005000 0 0x1000>;
+> +		};
+> +
+> +		pio: pinctrl@10005000 {
+> +			compatible = "mediatek,mt8516-pinctrl";
+> +			reg = <0 0x1000b000 0 0x1000>;
+> +			mediatek,pctl-regmap = <&syscfg_pctl_a>;
+> +			pins-are-numbered;
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +			interrupts = <GIC_SPI 134 IRQ_TYPE_LEVEL_HIGH>;
+> +		};
+> +
+> +		pwrap: pwrap@1000f000 {
+> +			compatible = "mediatek,mt8516-pwrap";
+> +			reg = <0 0x1000f000 0 0x1000>;
+> +			reg-names = "pwrap";
+> +			interrupts = <GIC_SPI 204 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&topckgen CLK_TOP_PMICWRAP_26M>,
+> +				 <&topckgen CLK_TOP_PMICWRAP_AP>;
+> +			clock-names = "spi", "wrap";
+> +		};
+> +
+> +		sysirq: intpol-controller@10200620 {
 
-Regards,
--Vladimir
+interrupt-controller@...
+
+> +			compatible = "mediatek,mt8516-sysirq",
+> +				     "mediatek,mt6577-sysirq";
+> +			interrupt-controller;
+> +			#interrupt-cells = <3>;
+> +			interrupt-parent = <&gic>;
+> +			reg = <0 0x10200620 0 0x20>;
+> +		};
+> +
+> +		gic: interrupt-controller@10310000 {
+> +			compatible = "arm,gic-400";
+> +			#interrupt-cells = <3>;
+> +			interrupt-parent = <&gic>;
+> +			interrupt-controller;
+> +			reg = <0 0x10310000 0 0x1000>,
+> +			      <0 0x10320000 0 0x1000>,
+> +			      <0 0x10340000 0 0x2000>,
+> +			      <0 0x10360000 0 0x2000>;
+> +			interrupts = <GIC_PPI 9
+> +				(GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
+> +		};
+> +
+> +		uart0: serial@11005000 {
+> +			compatible = "mediatek,mt8516-uart",
+> +				     "mediatek,mt6577-uart";
+> +			reg = <0 0x11005000 0 0x1000>;
+> +			interrupts = <GIC_SPI 84 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&topckgen CLK_TOP_UART0_SEL>,
+> +				 <&topckgen CLK_TOP_UART0>;
+> +			clock-names = "baud","bus";
+
+space                                        ^
+
+> +			status = "disabled";
+> +		};
+> +
+> +		uart1: serial@11006000 {
+> +			compatible = "mediatek,mt8516-uart",
+> +				     "mediatek,mt6577-uart";
+> +			reg = <0 0x11006000 0 0x1000>;
+> +			interrupts = <GIC_SPI 85 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&topckgen CLK_TOP_UART1_SEL>,
+> +				 <&topckgen CLK_TOP_UART1>;
+> +			clock-names = "baud","bus";
+
+space
+
+> +			status = "disabled";
+> +		};
+> +
+> +		uart2: serial@11007000 {
+> +			compatible = "mediatek,mt8516-uart",
+> +				     "mediatek,mt6577-uart";
+> +			reg = <0 0x11007000 0 0x1000>;
+> +			interrupts = <GIC_SPI 211 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&topckgen CLK_TOP_UART2_SEL>,
+> +				 <&topckgen CLK_TOP_UART2>;
+> +			clock-names = "baud","bus";
+
+space
+
+> +			status = "disabled";
+> +		};
+> +
+> +		i2c0: i2c@11009000 {
+> +			compatible = "mediatek,mt8516-i2c",
+> +				     "mediatek,mt2712-i2c";
+> +			reg = <0 0x11009000 0 0x90>,
+> +			      <0 0x11000180 0 0x80>;
+> +			interrupts = <GIC_SPI 80 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&topckgen CLK_TOP_AHB_INFRA_D2>,
+> +				 <&infracfg CLK_IFR_I2C0_SEL>,
+> +				 <&topckgen CLK_TOP_I2C0>,
+> +				 <&topckgen CLK_TOP_APDMA>;
+> +			clock-names = "main-source",
+> +				      "main-sel",
+> +				      "main",
+> +				      "dma";
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+> +		i2c1: i2c@1100a000 {
+> +			compatible = "mediatek,mt8516-i2c",
+> +				     "mediatek,mt2712-i2c";
+> +			reg = <0 0x1100a000 0 0x90>,
+> +			      <0 0x11000200 0 0x80>;
+> +			interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&topckgen CLK_TOP_AHB_INFRA_D2>,
+> +				 <&infracfg CLK_IFR_I2C1_SEL>,
+> +				 <&topckgen CLK_TOP_I2C1>,
+> +				 <&topckgen CLK_TOP_APDMA>;
+> +			clock-names = "main-source",
+> +				      "main-sel",
+> +				      "main",
+> +				      "dma";
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+> +		i2c2: i2c@1100b000 {
+> +			compatible = "mediatek,mt8516-i2c",
+> +				     "mediatek,mt2712-i2c";
+> +			reg = <0 0x1100b000 0 0x90>, <0 0x11000280 0 0x80>;
+> +			interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&topckgen CLK_TOP_AHB_INFRA_D2>,
+> +				 <&infracfg CLK_IFR_I2C2_SEL>,
+> +				 <&topckgen CLK_TOP_I2C2>,
+> +				 <&topckgen CLK_TOP_APDMA>;
+> +			clock-names = "main-source",
+> +				      "main-sel",
+> +				      "main",
+> +				      "dma";
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			status = "disabled";
+> +		};
+> +
+> +		spi: spi@1100c000 {
+> +			compatible = "mediatek,mt8516-spi",
+> +				     "mediatek,mt2712-spi";
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +			reg = <0 0x1100c000 0 0x1000>;
+> +			interrupts = <GIC_SPI 104 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&topckgen CLK_TOP_UNIVPLL_D12>,
+> +				 <&topckgen CLK_TOP_SPI_SEL>,
+> +				 <&topckgen CLK_TOP_SPI>;
+> +			clock-names = "parent-clk", "sel-clk", "spi-clk";
+> +			status = "disabled";
+> +		};
+> +
+> +		mmc0: mmc@11120000 {
+> +			compatible = "mediatek,mt8516-mmc";
+> +			reg = <0 0x11120000 0 0x1000>;
+> +			interrupts = <GIC_SPI 78 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&topckgen CLK_TOP_MSDC0>,
+> +				 <&topckgen CLK_TOP_AHB_INFRA_SEL>,
+> +				 <&topckgen CLK_TOP_MSDC0_INFRA>;
+> +			clock-names = "source", "hclk", "source_cg";
+> +			status = "disabled";
+> +		};
+> +
+> +		mmc1: mmc@11130000 {
+> +			compatible = "mediatek,mt8516-mmc";
+> +			reg = <0 0x11130000 0 0x1000>;
+> +			interrupts = <GIC_SPI 79 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&topckgen CLK_TOP_MSDC1>,
+> +				 <&topckgen CLK_TOP_AHB_INFRA_SEL>,
+> +				 <&topckgen CLK_TOP_MSDC1_INFRA>;
+> +			clock-names = "source", "hclk", "source_cg";
+> +			status = "disabled";
+> +		};
+> +
+> +		mmc2: mmc@11170000 {
+> +			compatible = "mediatek,mt8516-mmc";
+> +			reg = <0 0x11170000 0 0x1000>;
+> +			interrupts = <GIC_SPI 109 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&topckgen CLK_TOP_MSDC2>,
+> +				 <&topckgen CLK_TOP_RG_MSDC2>,
+> +				 <&topckgen CLK_TOP_MSDC2_INFRA>;
+> +			clock-names = "source", "hclk", "source_cg";
+> +			status = "disabled";
+> +		};
+> +
+> +		rng: rng@1020c000 {
+> +			compatible = "mediatek,mt8516-rng",
+> +				     "mediatek,mt7623-rng";
+> +			reg = <0 0x1020c000 0 0x100>;
+> +			clocks = <&topckgen CLK_TOP_TRNG>;
+> +			clock-names = "rng";
+> +		};
+> +
+> +		pwm: pwm@11008000 {
+> +			compatible = "mediatek,mt8516-pwm";
+> +			reg = <0 0x11008000 0 0x1000>;
+> +			interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&topckgen CLK_TOP_PWM>,
+> +				 <&topckgen CLK_TOP_PWM_B>,
+> +				 <&topckgen CLK_TOP_PWM1_FB>,
+> +				 <&topckgen CLK_TOP_PWM2_FB>,
+> +				 <&topckgen CLK_TOP_PWM3_FB>,
+> +				 <&topckgen CLK_TOP_PWM4_FB>,
+> +				 <&topckgen CLK_TOP_PWM5_FB>;
+> +			clock-names = "top", "main", "pwm1", "pwm2", "pwm3",
+> +				      "pwm4", "pwm5";
+> +		};
+> +	};
+> +};
+> -- 
+> 2.25.0.rc0
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
