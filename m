@@ -2,78 +2,86 @@ Return-Path: <SRS0=lxIO=2Y=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 14EA6C2D0CE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 05:10:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D10C6C2D0CE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 05:29:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DC45721734
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 05:10:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7CEBB21D7D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 05:29:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QJAoylZv";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="gLoH/uxp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DC45721734
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mY+MI/z7";
+	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="LYyR/k4Z"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7CEBB21D7D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DlnT54usc2IKlETBDmu1aKfpSOwbNXT0sig8kEiVWYI=; b=QJAoylZvH3GQ/4
-	RoAL7cKDTGPoOSj2HmDSzzAnsX1ulEm++whgi7vqedWqu3Gt6EXpivMvToDX4umyjTxGC1TUaAcvw
-	a6ISTLlY4nImbux1Xo/F+C4zsTFOQlyqrWWEM/Dz+HzjNHEwnph8dznw3NOYEJAqxpOquM8m4IG9+
-	UCMFpuBKN0HSOT9ml4FUHsnzP1y12s9mOIoBlo/CBpy0EVag+4AUm+3G5eXqMJ8Cy3I3lCsTnWXgU
-	ZQf+oQ3ON0S2Z7mKz3GAMCWBBKY4mJx7YhxcKaEMPXQfCcb9OmrSgBS14skPDQ6ep5YTxWkcaorUF
-	V0dUygc1e57TV17Alg2Q==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
+	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=IOFKyi7iYwfXNfJ4IoaIFcSx0U1qOMJhZGxoKpumWVE=; b=mY+MI/z7lXBA2QjHGs1i25QBP
+	55SFYw6gNFB8EuUP1bdPfl8MPDVKuvllVvpQAaoym8Jfw47kyuqS/EG0nhz++RAPBTKMFvwUEDXq+
+	Bwt14C/TcQnGUs/WzRIAnuXwH5ORePzONanKJx3KBOK3VGxbs84FMnmrVGpLtMnhr1uenObuFNE9B
+	mZDOQYKwDx5h2trtt6gj12xGfO33Rgqw42jgyZk+MuWIfk0ACgRC6fzoIe+NSon2KG1FbdNTwpRPY
+	Iw5s+QS/G2u607rXc9x3L7+U/rv9B9ob1DrTO46q8oHvoFr/hANKhIrJcqqmnxBMwB+HwgFpADpMu
+	nyXamR5CQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1inFEd-00013m-Gd; Fri, 03 Jan 2020 05:10:55 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1inFWF-0005kS-Sw; Fri, 03 Jan 2020 05:29:07 +0000
+Received: from mail25.static.mailgun.info ([104.130.122.25])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1inFEU-0000wG-Ke; Fri, 03 Jan 2020 05:10:48 +0000
-X-UUID: db2464a7b7cc41a7ac60c5d2f4a4c066-20200102
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=IHfE2/cUwA9PEC02rixYfsxdmjk+Xm9SLy2M7/wL2z0=; 
- b=gLoH/uxpS5v/wPVDWh1RDv2Z1+spfEKGpl4N58+bzVp7JoTGjqDD45E80mZ1QQQaUV3byb5rS5EtFSXJRxBvT5XHi6FRh3dNvO5NyBIl9qDDJ6y/Cj5ukchHCdNVivkDJSco+yUq2zYnlqrJ4gjDW+T4xqTUuVjwOJ0UEVfVgpA=;
-X-UUID: db2464a7b7cc41a7ac60c5d2f4a4c066-20200102
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1101560080; Thu, 02 Jan 2020 21:10:42 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 2 Jan 2020 21:11:04 -0800
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 3 Jan 2020 13:10:07 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Fri, 3 Jan 2020 13:11:06 +0800
-Message-ID: <1578028238.31107.2.camel@mtksdaap41>
-Subject: Re: [RESEND PATCH v6 01/17] dt-bindings: mediatek: add
- rdma_fifo_size description for mt8183 display
-From: CK Hu <ck.hu@mediatek.com>
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Date: Fri, 3 Jan 2020 13:10:38 +0800
-In-Reply-To: <1578021148-32413-2-git-send-email-yongqiang.niu@mediatek.com>
-References: <1578021148-32413-1-git-send-email-yongqiang.niu@mediatek.com>
- <1578021148-32413-2-git-send-email-yongqiang.niu@mediatek.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1inFWB-0005j9-Jw
+ for linux-mediatek@lists.infradead.org; Fri, 03 Jan 2020 05:29:05 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1578029342; h=Message-ID: References: In-Reply-To: Subject:
+ Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
+ MIME-Version: Sender; bh=QGQ3D1GyNhd0LAoBVLxbTbXL6/9pOn4Pwzlj2/BukcY=;
+ b=LYyR/k4ZguRjctuToqDra1iRTOqdkB+Snzlrid/mQrioopWlka6Oygpco5WihMecdhB7dOJY
+ s8rt7oklrSL4QlRfPTOFwmd3sveG29Zx7k7frTLR3BiLaNl5/6RkCjcBdu3yEey2onRMUGEs
+ rF9oOtOBAF8sdJkdSgwF3Usxwtg=
+X-Mailgun-Sending-Ip: 104.130.122.25
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
+ by mxa.mailgun.org with ESMTP id 5e0ed11b.7f815f4f8b90-smtp-out-n01;
+ Fri, 03 Jan 2020 05:28:59 -0000 (UTC)
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 823F2C43383; Fri,  3 Jan 2020 05:28:59 +0000 (UTC)
+Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
+ (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+ (No client certificate requested) (Authenticated sender: cang)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 7B4A2C433CB;
+ Fri,  3 Jan 2020 05:28:58 +0000 (UTC)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: CA0325267D1E118D9AC11A3B80C3B2A10A2F0AF8FD38E2509178C262CC5F8E2C2000:8
-X-MTK: N
+Date: Fri, 03 Jan 2020 13:28:58 +0800
+From: Can Guo <cang@codeaurora.org>
+To: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH v1 1/2] scsi: ufs: set device as default active power mode
+ during initialization only
+In-Reply-To: <4888afd46a9065b7f298a5de039426c9@codeaurora.org>
+References: <1577693546-7598-1-git-send-email-stanley.chu@mediatek.com>
+ <1577693546-7598-2-git-send-email-stanley.chu@mediatek.com>
+ <fd129b859c013852bd80f60a36425757@codeaurora.org>
+ <1577754469.13164.5.camel@mtkswgap22>
+ <836772092daffd8283a97d633e59fc34@codeaurora.org>
+ <1577766179.13164.24.camel@mtkswgap22>
+ <1577778290.13164.45.camel@mtkswgap22>
+ <44393ed9ff3ba9878bae838307e7eec0@codeaurora.org>
+ <1577947124.13164.75.camel@mtkswgap22>
+ <4888afd46a9065b7f298a5de039426c9@codeaurora.org>
+Message-ID: <e13011fd858cf3ec0258c4b7ac914973@codeaurora.org>
+X-Sender: cang@codeaurora.org
+User-Agent: Roundcube Webmail/1.3.9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200102_211046_683970_4AF9C7E6 
-X-CRM114-Status: GOOD (  12.53  )
+X-CRM114-CacheID: sfid-20200102_212903_722513_C489EDFD 
+X-CRM114-Status: GOOD (  13.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,67 +93,123 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: alim.akhtar@samsung.com, beanhuo@micron.com, bvanassche@acm.org,
+ linux-scsi@vger.kernel.org, peter.wang@mediatek.com, cc.chou@mediatek.com,
+ andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
+ ron.hsu@mediatek.com, avri.altman@wdc.com, linux-mediatek@lists.infradead.org,
+ linux-scsi-owner@vger.kernel.org, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org, martin.petersen@oracle.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org, subhashj@codeaurora.org, pedrom.sousa@synopsys.com,
+ asutoshd@codeaurora.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Yongqiang:
-
-On Fri, 2020-01-03 at 11:12 +0800, Yongqiang Niu wrote:
-> Update device tree binding documention for rdma_fifo_size
+On 2020-01-03 09:51, Can Guo wrote:
+> On 2020-01-02 14:38, Stanley Chu wrote:
+>> Hi Can,
+>> 
+>> On Tue, 2019-12-31 at 16:35 +0800, Can Guo wrote:
+>> 
+>>> Hi Stanley,
+>>> 
+>>> I missed this mail before I hit send. In current code, as per my
+>>> understanding,
+>>> UFS device's power state should be Active after ufshcd_link_startup()
+>>> returns.
+>>> If I am wrong, please feel free to correct me.
+>>> 
+>> 
+>> Yes, this assumption of ufshcd_probe_hba() is true so I will drop this
+>> patch.
+>> Thanks for remind.
+>> 
+>>> Due to you are almost trying to revert commit 7caf489b99a42a, I am 
+>>> just
+>>> wondering
+>>> if you encounter failure/error caused by it.
+>> 
+>> Yes, we actually have some doubts from the commit message of "scsi: 
+>> ufs:
+>> issue link startup 2 times if device isn't active"
+>> 
+>> If we configured system suspend as device=PowerDown/Link=LinkDown 
+>> mode,
+>> during resume, the 1st link startup will be successful, and after that
+>> device could be accessed normally so it shall be already in Active 
+>> power
+>> mode. We did not find devices which need twice linkup for normal work.
+>> 
+>> And because the 1st linkup is OK, the forced 2nd linkup by commit 
+>> "scsi:
+>> ufs: issue link startup 2 times if device isn't active" leads to link
+>> lost and finally the 3rd linkup is made again by retry mechanism in
+>> ufshcd_link_startup() and be successful. So a linkup performance issue
+>> is introduced here: We actually need one-time linkup only but finally
+>> got 3 linkup operations.
+>> 
+>> According to the UFS spec, all reset types (including POR and Host
+>> UniPro Warm Reset which both may happen in above configurations) other
+>> than LU reset, UFS device power mode shall return to Sleep mode or
+>> Active mode depending on bInitPowerMode, by default, it's Active mode.
+>> 
+>> So we are curious that why enforcing twice linkup is necessary here?
+>> Could you kindly help us clarify this?
+>> 
+>> If anything wrong in above description, please feel free to correct 
+>> me.
+>> 
 > 
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-> ---
->  .../devicetree/bindings/display/mediatek/mediatek,disp.txt  | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
+> Hi Stanley,
 > 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> index 681502e..34bef44 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> @@ -70,6 +70,10 @@ Required properties (DMA function blocks):
->    argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
->    for details.
->  
-> +Required properties (DMA function blocks):
-> +- mediatek,rdma_fifo_size: rdma fifo size may be different even in same SOC, add this
-> +  property to the corresponding rdma
+> Above description is correct. The reason why the UFS device becomes
+> Active after the 1st link startup in your experiment is due to you
+> set spm_lvl to 5, during system suspend, UFS device is powered down.
+> When resume kicks start, the UFS device is power cycled once.
+> 
+> Moreover, if you set rpm_lvl to 5, during runtime suspend, if bkops is
+> enabled, the UFS device will not be powered off, meaning when runtime
+> resume kicks start, the UFS device is not power cycled, in this case,
+> we need 3 times of link startup.
+> 
+> Does above explain?
+> 
+> Thanks,
+> 
+> Can Guo.
+> 
 
-I think "mediatek,rdma_fifo_size" is not a 'required' property. In
-mt8173.dtsi [1], there is no mediatek,rdma_fifo_size in rdma0, rdma1,
-and rdma2. So I think you should move this to 'optional' property.
+Hi Stanley,
 
-[1]
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/mediatek/mt8173.dtsi?h=v5.5-rc4
+Sorry, typo before. I meant if set rpm_lvl/spm_lvl to 5, during suspend,
+if is_lu_power_on_wp is set, the UFS device will not be fully powered 
+off
+(only VCC is down), meaning when resume kicks start, the UFS device is 
+not
+power cycled, in this case, we need 3 times of link startup.
 
 Regards,
-CK
 
-> +
->  Examples:
->  
->  mmsys: clock-controller@14000000 {
-> @@ -211,3 +215,12 @@ od@14023000 {
->  	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
->  	clocks = <&mmsys CLK_MM_DISP_OD>;
->  };
-> +
-> +rdma1: rdma@1400c000 {
-> +	compatible = "mediatek,mt8183-disp-rdma";
-> +	reg = <0 0x1400c000 0 0x1000>;
-> +	interrupts = <GIC_SPI 229 IRQ_TYPE_LEVEL_LOW>;
-> +	power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
-> +	clocks = <&mmsys CLK_MM_DISP_RDMA1>;
-> +	mediatek,rdma_fifo_size = <2048>;
-> +};
-> \ No newline at end of file
+Can Guo.
+
+>>> 
+>>> Happy new year to you too!
+>>> 
+>>> Thanks,
+>>> 
+>>> Can Guo
+>> 
+>> Thanks,
+>> 
+>> Stanley
+>> 
+>>> 
+>>> _______________________________________________
+>>> Linux-mediatek mailing list
+>>> Linux-mediatek@lists.infradead.org
+>>> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
