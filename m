@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 00968C2D0CE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 06:53:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E2E6C2D0CE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 06:53:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B114D217F4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 06:53:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4D626217F4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 06:53:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bne3sd8P";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="rdW0GrgD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B114D217F4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="H+mcgyud";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dyVDyXkz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4D626217F4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,56 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F5Ie367w/SfUSp1Fv4Ha83Owz3QTy0FGtwyigTNSiAk=; b=bne3sd8PszMMJ5
-	v1XZhAWCXrAaWjmDYepe+c+iqXYACJWdYYkrmHIHKF/KnNAjQCVjO2oI4/ab4T2I25W3OaQ2YQdQX
-	GYpqU+nmsKbke0C0SjmiXv2wTEKepAj+1RJa1TpIVDa8rivAaq1d/NIHlSm80FNaTwShWcepmW4qp
-	rraDDw9QER05kyl/xp6SyfVR0E58JT9VvI/fuQFNdV4ckXyDMND1vvHyImrhxe56IkpGcj39AcNa6
-	g4ptHxOynCU4NXw+ZPGYc2zhnruCvCPJPB3Cgc73oQzEiu9MCWYqP+cy5OcphNHr8r6V5yLai0gMY
-	zMy+x5zUr0/agK86jJuw==;
+	List-Owner; bh=HXflpMlpGsjvm86ahaznL/eL1njg8LQWrtFgXA3M2V0=; b=H+mcgyudMUGIMV
+	6bk91FcKJjCd2i/p4XRtSlMZIsc0QGLrOSjuKmAi71NLA2ZNGm+JHSCTtK4qTPyJQ1t/yRcSYNsuY
+	QTtbo+X0PjoAC/jPCHfNdvLoVS1znpoGp+d6FUEyO3pD9ei5yFcRJjSPOvF2ffYMzNRggEKI9qKOv
+	3HvKa6JcYTe4ZPGGNXHBGoxZ4KZLXDlSAg+wi2Fhchbgb9nyWYuM4Sj7Y3e7kxRlN64yfEvji2HK2
+	VfphvUmclabmRLeDOUw6V37goOvNtW6DVbUsBGzaiGi1aeB3hYf+0xmqpWiZ9lbSBATjjvVtqCp0t
+	j7mlkVe948G0DcV1KH/g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1inGpq-0001HW-Ph; Fri, 03 Jan 2020 06:53:26 +0000
+	id 1inGpn-0001F8-WA; Fri, 03 Jan 2020 06:53:24 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1inGp4-0000Tm-1W; Fri, 03 Jan 2020 06:52:39 +0000
-X-UUID: 75195a8b6dfb489ea5befc1d2484e40f-20200102
+ id 1inGp3-0000TV-Qm; Fri, 03 Jan 2020 06:52:39 +0000
+X-UUID: 63b1e6dc2eb84938a3184d7a4f6d16e6-20200102
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=yaMLlKsEIl1OWXRikBdtHqUCvedw37WzykjPiMt4cJ4=; 
- b=rdW0GrgDK+KC+n/Ub1Vgcyy1Iit3TA9JtYy5UGQChbmij9TI0Ldh5wvYkdDOmip+Rt/E6FQ9nNND5Tg+KOM8Zj+tkCeIoS00RZ2WAqy5QcuNjUdOywClH1ECpUIYwC/XK0ADvgx5XCc2tOjH8Tp1YQJxFLfMZNYDfrbxaGHMmmE=;
-X-UUID: 75195a8b6dfb489ea5befc1d2484e40f-20200102
+ bh=Uj1PHnlMjHZZtgpd4ky9cMYDx21GFrXK0KB5WSI+oCE=; 
+ b=dyVDyXkzguDuOvCxzYMkUs1cIY789nwpD4HkRsHseoDwjc6CFW3lEoq8dOHJofJG0u5J0ax41YKtqTmHUZfmmp0hOQ7eEa3GwoZ9o9FSD0OHwK61ihCaLhYEwvZMqMHP+ZrG4osqDwAeDYkvAX/9G6//GFvOZ0m1qCZrVoXLC/I=;
+X-UUID: 63b1e6dc2eb84938a3184d7a4f6d16e6-20200102
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <michael.kao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1615357810; Thu, 02 Jan 2020 22:52:32 -0800
+ with ESMTP id 89289239; Thu, 02 Jan 2020 22:52:32 -0800
 Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 2 Jan 2020 22:44:14 -0800
+ 15.0.1395.4; Thu, 2 Jan 2020 22:44:16 -0800
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 3 Jan 2020 14:43:39 +0800
+ 15.0.1395.4; Fri, 3 Jan 2020 14:43:40 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Fri, 3 Jan 2020 14:44:08 +0800
+ Frontend Transport; Fri, 3 Jan 2020 14:44:09 +0800
 From: Michael Kao <michael.kao@mediatek.com>
 To: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>,
  Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
  Mark Rutland <mark.rutland@arm.com>, Matthias Brugger
  <matthias.bgg@gmail.com>, <hsinyi@chromium.org>, <linux-pm@vger.kernel.org>,
  <srv_heupstream@mediatek.com>
-Subject: [PATCH v3,3/8] arm64: dts: mt8183: Add #cooling-cells to CPU nodes
-Date: Fri, 3 Jan 2020 14:44:02 +0800
-Message-ID: <20200103064407.19861-4-michael.kao@mediatek.com>
+Subject: [PATCH v3,8/8] thermal: mediatek: use spinlock to protect PTPCORESEL
+Date: Fri, 3 Jan 2020 14:44:07 +0800
+Message-ID: <20200103064407.19861-9-michael.kao@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200103064407.19861-1-michael.kao@mediatek.com>
 References: <20200103064407.19861-1-michael.kao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200102_225238_106631_A677EBF7 
-X-CRM114-Status: UNSURE (   8.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200102_225237_875581_ED3F817D 
+X-CRM114-Status: GOOD (  11.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,90 +96,63 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "michael.kao" <michael.kao@mediatek.com>
 
-The #cooling-cells property needs to be specified to allow a CPU
-to be used as cooling device.
+The driver of thermal and svs will use the
+same register for the project which should select
+bank before reading sensor value.
 
 Signed-off-by: Michael Kao <michael.kao@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ drivers/thermal/mtk_thermal.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index cfb74af260e0..63378ae14a16 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -9,6 +9,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include "mt8183-pinfunc.h"
-+#include <dt-bindings/thermal/thermal.h>
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index 9be9fcb18d9e..639d34ed223b 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -22,6 +22,7 @@
+ #include <linux/thermal.h>
+ #include <linux/reset.h>
+ #include <linux/types.h>
++#include <linux/power/mtk_svs.h>
  
- / {
- 	compatible = "mediatek,mt8183";
-@@ -74,6 +75,7 @@
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <741>;
- 			dynamic-power-coefficient = <84>;
-+			#cooling-cells = <2>;
- 		};
+ /* AUXADC Registers */
+ #define AUXADC_CON1_SET_V	0x008
+@@ -262,7 +263,7 @@ struct mtk_thermal {
+ 	struct clk *clk_peri_therm;
+ 	struct clk *clk_auxadc;
+ 	/* lock: for getting and putting banks */
+-	struct mutex lock;
++	unsigned long flags;
  
- 		cpu1: cpu@1 {
-@@ -83,6 +85,7 @@
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <741>;
- 			dynamic-power-coefficient = <84>;
-+			#cooling-cells = <2>;
- 		};
+ 	/* Calibration values */
+ 	s32 adc_ge;
+@@ -561,7 +562,7 @@ static void mtk_thermal_get_bank(struct mtk_thermal_bank *bank)
+ 	u32 val;
  
- 		cpu2: cpu@2 {
-@@ -92,6 +95,7 @@
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <741>;
- 			dynamic-power-coefficient = <84>;
-+			#cooling-cells = <2>;
- 		};
+ 	if (mt->conf->need_switch_bank) {
+-		mutex_lock(&mt->lock);
++		mt->flags = claim_mtk_svs_lock();
  
- 		cpu3: cpu@3 {
-@@ -101,6 +105,7 @@
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <741>;
- 			dynamic-power-coefficient = <84>;
-+			#cooling-cells = <2>;
- 		};
+ 		val = readl(mt->thermal_base + PTPCORESEL);
+ 		val &= ~0xf;
+@@ -581,7 +582,7 @@ static void mtk_thermal_put_bank(struct mtk_thermal_bank *bank)
+ 	struct mtk_thermal *mt = bank->mt;
  
- 		cpu4: cpu@100 {
-@@ -110,6 +115,7 @@
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <1024>;
- 			dynamic-power-coefficient = <211>;
-+			#cooling-cells = <2>;
- 		};
+ 	if (mt->conf->need_switch_bank)
+-		mutex_unlock(&mt->lock);
++		release_mtk_svs_lock(mt->flags);
+ }
  
- 		cpu5: cpu@101 {
-@@ -119,6 +125,7 @@
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <1024>;
- 			dynamic-power-coefficient = <211>;
-+			#cooling-cells = <2>;
- 		};
+ /**
+@@ -936,8 +937,6 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return ret;
  
- 		cpu6: cpu@102 {
-@@ -128,6 +135,7 @@
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <1024>;
- 			dynamic-power-coefficient = <211>;
-+			#cooling-cells = <2>;
- 		};
+-	mutex_init(&mt->lock);
+-
+ 	mt->dev = &pdev->dev;
  
- 		cpu7: cpu@103 {
-@@ -137,6 +145,7 @@
- 			enable-method = "psci";
- 			capacity-dmips-mhz = <1024>;
- 			dynamic-power-coefficient = <211>;
-+			#cooling-cells = <2>;
- 		};
- 	};
- 
+ 	auxadc = of_parse_phandle(np, "mediatek,auxadc", 0);
 -- 
 2.18.0
 _______________________________________________
