@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ABB64C3276F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 03:19:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0ADB8C3276F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 03:19:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7935221D7D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 03:19:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CEF92222C3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 03:19:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YDGo1x41";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="kw1QRWG+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7935221D7D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e97rhGBu";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EdkSMjXp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CEF92222C3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xoHGtWlfFj9tS4a7BGqeXMY0ayfchvTEn0GLn10hRxk=; b=YDGo1x416Dn8LS
-	QZezHzj/ufQOcFmOrFSQQI9oAg5OuoB1QmqIx3MSIq2vlWN81ad8VP2cf95iv3nqfGeqsrNT7RIif
-	JzmkZE9wLpCCKcEJmqoDu8esA8NnZ5vhQhOvz0n+qQJAh0HUJrgiyBrsw7E6wfmRcixazN/YHMcc3
-	xZP2EqDcqsXmBb1+07M3tP09tJAEv48UdVvyk6jLFHAE+9OJRoBsFF+LWeaBELBacoL+Vr9eqOTGW
-	0SbuoJZoilwc07Ayd1UjpKuH9mN09O1y+rsJs75ETnR+g2bo/+MeEhFWEpRt+TjBntbcuh3GO9N4u
-	jKEfNF8nKSAxpbTRX30w==;
+	List-Owner; bh=RJ1/nqToNlZe4OpiORcXMT5I9An7ezy7NIJ8HYcy2nY=; b=e97rhGBugtUStI
+	33H+Q1d34cvrb3GcPxBk39ZDocNWSVKMi+WbvMXO461bcOcM6XC9CWZkAAe8sUOXpx1UwA+I2t3xk
+	ohJKq6Wx+YfuidPMcSAumnA13ZupA7XEMwWRA56Ko9+2l4f04BVMeH/3Vr7F2VCEgnuYT2sUjQpLl
+	Zp/J6ah7RafqGikZDx/+mizVpn68oNXQuUQvvbB9A7KwXOmoTPUKteUgW0B/G7kW8rYSAWL8YSmgZ
+	DPqle9pwK3zdXLQ4swBa8TTXHdMpEUmfO3PN9tfRszT26NnS82uMnqDVZ2kAb3ZI5TFv8V7uehC3M
+	yuC+ntrtjV2vULu1FB4Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1inDUc-0007Xh-GM; Fri, 03 Jan 2020 03:19:18 +0000
+	id 1inDUw-0007tB-9c; Fri, 03 Jan 2020 03:19:38 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1inDUP-0007LZ-MA; Fri, 03 Jan 2020 03:19:06 +0000
-X-UUID: 88a67dd797164d8f88920641a6025658-20200102
+ id 1inDUQ-0007LI-6U; Fri, 03 Jan 2020 03:19:07 +0000
+X-UUID: fdb3959824fc4179ba4d86c438eba7c1-20200102
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=AZ8/447VJNbbd8DAVi6I6/qkJI1QbjXzazXWfml24wA=; 
- b=kw1QRWG+b7BUyRMkrnFI617iNybnp05vhkvsHNqCxnhCLlK2Hhd0tHS1NQagyEea6y41iqVEhT2VpdmKkACNWAcdqZ/wIqrcPCIzExx/Z38r5mec7n+8QLSWH6Xq9IMjOGrXQMc3Hy7yN0oS5WRiuXCW2WAc/HIqZVtY5e4AkhA=;
-X-UUID: 88a67dd797164d8f88920641a6025658-20200102
+ bh=w/UNojmvQeoqj5ssGa9RuxeKs7Wh0EGoWwzhQTkdINo=; 
+ b=EdkSMjXpmxbDN5zEn9moHTciTd4/qvfEdqHeLV/NOZe6qz34jtIGI9fUnGLHUPUp3wclDxzgAxkfcI/QpxNUC4fs0PRGWhKY+lMCBWV172J5UIqJGPaC/Vf3PkoX6ydMyR0sYmObdNLeazOY+nAwqxOqiPETf/AzysL6RVLOhaw=;
+X-UUID: fdb3959824fc4179ba4d86c438eba7c1-20200102
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 106196390; Thu, 02 Jan 2020 19:19:01 -0800
+ with ESMTP id 932828056; Thu, 02 Jan 2020 19:19:01 -0800
 Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 2 Jan 2020 19:13:04 -0800
+ 15.0.1395.4; Thu, 2 Jan 2020 19:13:09 -0800
 Received: from mtkcas09.mediatek.inc (172.21.101.178) by
  mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 3 Jan 2020 11:12:13 +0800
+ 15.0.1395.4; Fri, 3 Jan 2020 11:12:19 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Fri, 3 Jan 2020 11:13:07 +0800
+ Transport; Fri, 3 Jan 2020 11:13:12 +0800
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 To: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "Rob
  Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [RESEND PATCH v6 04/17] drm/mediatek: make sout select function
- format same with select input
-Date: Fri, 3 Jan 2020 11:12:15 +0800
-Message-ID: <1578021148-32413-5-git-send-email-yongqiang.niu@mediatek.com>
+Subject: [RESEND PATCH v6 10/17] drm/mediatek: add connection from RDMA0 to
+ COLOR0
+Date: Fri, 3 Jan 2020 11:12:21 +0800
+Message-ID: <1578021148-32413-11-git-send-email-yongqiang.niu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1578021148-32413-1-git-send-email-yongqiang.niu@mediatek.com>
 References: <1578021148-32413-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200102_191905_724114_58173B59 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20200102_191906_240163_75D4AC85 
+X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,60 +95,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-there will be more sout case in the future,
-make the sout function format same mtk_ddp_sel_in
+This patch add connection from RDMA0 to COLOR0
 
 Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 24 ++++++++++++++++--------
- 1 file changed, 16 insertions(+), 8 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-index d66ce31..ae08fc4 100644
+index 3a1aa9a..b6b86600 100644
 --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
 +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp.c
-@@ -386,17 +386,23 @@ static unsigned int mtk_ddp_sel_in(enum mtk_ddp_comp_id cur,
- 	return value;
- }
+@@ -172,6 +172,8 @@ struct mtk_ddp {
  
--static void mtk_ddp_sout_sel(struct regmap *config_regs,
--			     enum mtk_ddp_comp_id cur,
--			     enum mtk_ddp_comp_id next)
-+static unsigned int mtk_ddp_sout_sel(enum mtk_ddp_comp_id cur,
-+				     enum mtk_ddp_comp_id next,
-+				     unsigned int *addr)
- {
-+	unsigned int value;
-+
- 	if (cur == DDP_COMPONENT_BLS && next == DDP_COMPONENT_DSI0) {
--		regmap_write(config_regs, DISP_REG_CONFIG_OUT_SEL,
--				BLS_TO_DSI_RDMA1_TO_DPI1);
-+		*addr = DISP_REG_CONFIG_OUT_SEL;
-+		value = BLS_TO_DSI_RDMA1_TO_DPI1;
- 	} else if (cur == DDP_COMPONENT_BLS && next == DDP_COMPONENT_DPI0) {
--		regmap_write(config_regs, DISP_REG_CONFIG_OUT_SEL,
--				BLS_TO_DPI_RDMA1_TO_DSI);
-+		*addr = DISP_REG_CONFIG_OUT_SEL;
-+		value = BLS_TO_DPI_RDMA1_TO_DSI;
-+	} else {
-+		value = 0;
+ struct mtk_mmsys_reg_data {
+ 	u32 ovl0_mout_en;
++	u32 rdma0_sout_sel_in;
++	u32 rdma0_sout_color0;
+ 	u32 rdma1_sout_sel_in;
+ 	u32 rdma1_sout_dpi0;
+ 	u32 dpi0_sel_in;
+@@ -432,6 +434,9 @@ static unsigned int mtk_ddp_sout_sel(const struct mtk_mmsys_reg_data *data,
+ 	} else if (cur == DDP_COMPONENT_RDMA2 && next == DDP_COMPONENT_DSI3) {
+ 		*addr = DISP_REG_CONFIG_DISP_RDMA2_SOUT;
+ 		value = RDMA2_SOUT_DSI3;
++	} else if (cur == DDP_COMPONENT_RDMA0 && next == DDP_COMPONENT_COLOR0) {
++		*addr = data->rdma0_sout_sel_in;
++		value = data->rdma0_sout_color0;
+ 	} else {
+ 		value = 0;
  	}
-+
-+	return value;
- }
- 
- void mtk_ddp_add_comp_to_path(struct regmap *config_regs,
-@@ -409,7 +415,9 @@ void mtk_ddp_add_comp_to_path(struct regmap *config_regs,
- 	if (value)
- 		regmap_update_bits(config_regs, addr, value, value);
- 
--	mtk_ddp_sout_sel(config_regs, cur, next);
-+	value = mtk_ddp_sout_sel(cur, next, &addr);
-+	if (value)
-+		regmap_update_bits(config_regs, addr, value, value);
- 
- 	value = mtk_ddp_sel_in(cur, next, &addr);
- 	if (value)
 -- 
 1.8.1.1.dirty
 _______________________________________________
