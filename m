@@ -4,83 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+	SPF_PASS,UNPARSEABLE_RELAY autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D7F2C3276C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 01:52:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 69F10C3276F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 02:59:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0F3982084D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 01:52:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 40852222C3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 02:59:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Go6NDLsD";
-	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="Y03M3PXd"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F3982084D
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ss1slLZU";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="jXs9UuBT"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 40852222C3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6vYXimp5jmEuC0QSABqpv61PyFXwLN1mDOUiY2XjOrY=; b=Go6NDLsDz+nY+s9VRip+w+pgJ
-	OWxXGnVw0Kaf/O3pi6mu4mwIfTJ7aqIoYITM8ro2IWHbtuVdEpTuGh9Rag5jqA7ROTmFDLwYiNtNJ
-	XKdO3uI9USKfrlpAz+cWqM1YsT7bXTJ6+3GTEJUZIzQDgeqbgvKojcYRf2UWs31fz3IJYXK5UZzC0
-	aao1zd6Cve/5JNk7ZbPIsKpKAjFfpKhA85GzMJ4cg6YBTfw1O7hfMSA5yzcY/LywExTijIG9UJZ+/
-	5C/e5U9JkAOrXc0ONbx1bLxMIwWgdLpKmsWtqoFabEeJA1kuvIGfafLUWkoyB9vVvs2JdMIzE4BZR
-	WZR0kOM+g==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
+	Date:References:From:Subject:To:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=U+Sk4XTLFPp2j52wvwkkNdRhitHANDJZNpdLYdbEEoc=; b=ss1slLZUL9vTK0
+	4F7l/ZSLgwTsEJpa9dIXTZePUWkdydaIS6fcdggXQWPao7+X83Gl3reLaVNwgCCRJi+vS6BDxDdJp
+	tnm13ExuXmukXg6wwPw+IexXYU55P1d+ixA3l6DLTG9ErT8m8QgPrJO40mmSorQ4FKucbBo3mDHqI
+	uVFLD86LBYlEswJB5UYCXZACLzoXr8kPLDpFr474lzryYPvy2dPfJNEbDGMl5K7XzlQ+6NLC7DlV/
+	JBt+GxzqKc3H1IRP4fXcfzXhOSpIUfX0BAtgk2ZO6QaIdgUMFhqhYd5IObm51B56Xiv+KyIejxBDB
+	pjvbLuD8XESgevfcMYsQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1inC8N-00084n-Dc; Fri, 03 Jan 2020 01:52:15 +0000
-Received: from mail26.static.mailgun.info ([104.130.122.26])
+	id 1inDBV-0006QV-Qe; Fri, 03 Jan 2020 02:59:33 +0000
+Received: from userp2130.oracle.com ([156.151.31.86])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1inC8G-0007yH-87
- for linux-mediatek@lists.infradead.org; Fri, 03 Jan 2020 01:52:10 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1578016326; h=Message-ID: References: In-Reply-To: Subject:
- Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=iBGH70qouVE4uKPgzHJQRb9IHWifgoN13TEvuu1+Ybs=;
- b=Y03M3PXdQl+PkvGwHQW2huTZLiAD33KEZJfcXVDkejZReOy6MPupr8zQ/QeII4UCWz/DaVi6
- cWSbd2ezJqIPvBxYx0kDvaeM0GNSoyebmZgBWFrV5coiIBHRARjbQ58qEVabRBsYpwA0GZNQ
- MxCaT6TGggfZsZuAm4M54Amh9zU=
-X-Mailgun-Sending-Ip: 104.130.122.26
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
- by mxa.mailgun.org with ESMTP id 5e0e9e43.7faf3046a490-smtp-out-n01;
- Fri, 03 Jan 2020 01:52:03 -0000 (UTC)
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 05AABC447A2; Fri,  3 Jan 2020 01:52:00 +0000 (UTC)
-Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
- (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
- (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id E401FC43383;
- Fri,  3 Jan 2020 01:51:59 +0000 (UTC)
-MIME-Version: 1.0
-Date: Fri, 03 Jan 2020 09:51:59 +0800
-From: Can Guo <cang@codeaurora.org>
+ id 1inDBT-0006Px-EM; Fri, 03 Jan 2020 02:59:32 +0000
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 0032xBiP104379;
+ Fri, 3 Jan 2020 02:59:20 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=to : cc : subject :
+ from : references : date : in-reply-to : message-id : mime-version :
+ content-type; s=corp-2019-08-05;
+ bh=rWwWD69eO91r+gpNDRmSb19mEmJxC/+3duQYtKk/M1I=;
+ b=jXs9UuBTM4K/MvDumMVEpGmFsnMD97d4YRLz60E2CO7e22lE4sclY2d0LIK+wLpFdqXk
+ nOiYiBXafKOhbJICZzakhaWgQjngKsy9LQ6rVBREnA+H0yvLeCsehs9ZeoShNENCyjQp
+ MhUB7Dv57/MEqndw+L8yWkrPtp9PFyaReMHzZnoQM9647KrzilJSNWUCYak3OFP+vj5n
+ 5bs6uXlZp46hE/PExofMOBUQLP8OqsOiucsUpl+rvlzrefxNlyNohawCUHw9sticMAdA
+ IWYpljgIahDm6cb7n1z3VW7DveLinzKb82RMg3mYtPWhWTMmaK23Tm9KCs5LKcIHzXIq vQ== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2130.oracle.com with ESMTP id 2x5xfttekd-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 03 Jan 2020 02:59:20 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.27/8.16.0.27) with SMTP id 0032xGKv182604;
+ Fri, 3 Jan 2020 02:59:20 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3030.oracle.com with ESMTP id 2x8gjbbb45-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 03 Jan 2020 02:59:20 +0000
+Received: from abhmp0012.oracle.com (abhmp0012.oracle.com [141.146.116.18])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0032wFEs030082;
+ Fri, 3 Jan 2020 02:58:16 GMT
+Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Thu, 02 Jan 2020 18:58:15 -0800
 To: Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [PATCH v1 1/2] scsi: ufs: set device as default active power mode
- during initialization only
-In-Reply-To: <1577947124.13164.75.camel@mtkswgap22>
-References: <1577693546-7598-1-git-send-email-stanley.chu@mediatek.com>
- <1577693546-7598-2-git-send-email-stanley.chu@mediatek.com>
- <fd129b859c013852bd80f60a36425757@codeaurora.org>
- <1577754469.13164.5.camel@mtkswgap22>
- <836772092daffd8283a97d633e59fc34@codeaurora.org>
- <1577766179.13164.24.camel@mtkswgap22>
- <1577778290.13164.45.camel@mtkswgap22>
- <44393ed9ff3ba9878bae838307e7eec0@codeaurora.org>
- <1577947124.13164.75.camel@mtkswgap22>
-Message-ID: <4888afd46a9065b7f298a5de039426c9@codeaurora.org>
-X-Sender: cang@codeaurora.org
-User-Agent: Roundcube Webmail/1.3.9
+Subject: Re: [PATCH v1 0/2] scsi: ufs: use existed well-defined functions
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+Organization: Oracle Corporation
+References: <1577192466-20762-1-git-send-email-stanley.chu@mediatek.com>
+Date: Thu, 02 Jan 2020 21:58:11 -0500
+In-Reply-To: <1577192466-20762-1-git-send-email-stanley.chu@mediatek.com>
+ (Stanley Chu's message of "Tue, 24 Dec 2019 21:01:04 +0800")
+Message-ID: <yq1eewh5jr0.fsf@oracle.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1.92 (gnu/linux)
+MIME-Version: 1.0
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9488
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=792
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1911140001 definitions=main-2001030026
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9488
+ signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1015
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=855 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1911140001
+ definitions=main-2001030027
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200102_175208_351847_CF8215DB 
-X-CRM114-Status: GOOD (  16.58  )
+X-CRM114-CacheID: sfid-20200102_185931_614144_C2E1AAD4 
+X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,106 +108,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alim.akhtar@samsung.com, beanhuo@micron.com, bvanassche@acm.org,
- linux-scsi@vger.kernel.org, peter.wang@mediatek.com, cc.chou@mediatek.com,
+Cc: linux-scsi@vger.kernel.org, martin.petersen@oracle.com,
  andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
- ron.hsu@mediatek.com, avri.altman@wdc.com, linux-mediatek@lists.infradead.org,
- linux-scsi-owner@vger.kernel.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org, martin.petersen@oracle.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
- stable@vger.kernel.org, subhashj@codeaurora.org, pedrom.sousa@synopsys.com,
- asutoshd@codeaurora.org
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, avri.altman@wdc.com,
+ cang@codeaurora.org, linux-mediatek@lists.infradead.org,
+ peter.wang@mediatek.com, alim.akhtar@samsung.com, matthias.bgg@gmail.com,
+ pedrom.sousa@synopsys.com, linux-arm-kernel@lists.infradead.org,
+ beanhuo@micron.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-01-02 14:38, Stanley Chu wrote:
-> Hi Can,
-> 
-> On Tue, 2019-12-31 at 16:35 +0800, Can Guo wrote:
-> 
->> Hi Stanley,
->> 
->> I missed this mail before I hit send. In current code, as per my
->> understanding,
->> UFS device's power state should be Active after ufshcd_link_startup()
->> returns.
->> If I am wrong, please feel free to correct me.
->> 
-> 
-> Yes, this assumption of ufshcd_probe_hba() is true so I will drop this
-> patch.
-> Thanks for remind.
-> 
->> Due to you are almost trying to revert commit 7caf489b99a42a, I am 
->> just
->> wondering
->> if you encounter failure/error caused by it.
-> 
-> Yes, we actually have some doubts from the commit message of "scsi: 
-> ufs:
-> issue link startup 2 times if device isn't active"
-> 
-> If we configured system suspend as device=PowerDown/Link=LinkDown mode,
-> during resume, the 1st link startup will be successful, and after that
-> device could be accessed normally so it shall be already in Active 
-> power
-> mode. We did not find devices which need twice linkup for normal work.
-> 
-> And because the 1st linkup is OK, the forced 2nd linkup by commit 
-> "scsi:
-> ufs: issue link startup 2 times if device isn't active" leads to link
-> lost and finally the 3rd linkup is made again by retry mechanism in
-> ufshcd_link_startup() and be successful. So a linkup performance issue
-> is introduced here: We actually need one-time linkup only but finally
-> got 3 linkup operations.
-> 
-> According to the UFS spec, all reset types (including POR and Host
-> UniPro Warm Reset which both may happen in above configurations) other
-> than LU reset, UFS device power mode shall return to Sleep mode or
-> Active mode depending on bInitPowerMode, by default, it's Active mode.
-> 
-> So we are curious that why enforcing twice linkup is necessary here?
-> Could you kindly help us clarify this?
-> 
-> If anything wrong in above description, please feel free to correct me.
-> 
 
-Hi Stanley,
+Stanley,
 
-Above description is correct. The reason why the UFS device becomes
-Active after the 1st link startup in your experiment is due to you
-set spm_lvl to 5, during system suspend, UFS device is powered down.
-When resume kicks start, the UFS device is power cycled once.
+> This patchset fixes two small place to use existed well-defined
+> functions to replace legacy statements.
 
-Moreover, if you set rpm_lvl to 5, during runtime suspend, if bkops is
-enabled, the UFS device will not be powered off, meaning when runtime
-resume kicks start, the UFS device is not power cycled, in this case,
-we need 3 times of link startup.
+Applied to 5.6/scsi-queue, thanks!
 
-Does above explain?
-
-Thanks,
-
-Can Guo.
-
->> 
->> Happy new year to you too!
->> 
->> Thanks,
->> 
->> Can Guo
-> 
-> Thanks,
-> 
-> Stanley
-> 
->> 
->> _______________________________________________
->> Linux-mediatek mailing list
->> Linux-mediatek@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
 _______________________________________________
 Linux-mediatek mailing list
