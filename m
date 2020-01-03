@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C088FC2D0CE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 06:44:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0BA18C2D0CE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 06:44:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 92AA82084D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 06:44:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D127224125
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 06:44:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YmElBr20";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bTBT50Qw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 92AA82084D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bKf8RY2U";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="a5u2SUAB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D127224125
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,32 +26,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CypeAj7LUW49kPNrXMzE61Ei74TyOWCPCduWJEIEMnI=; b=YmElBr20IDIYzg
-	xWRwKc93QVGx38jchx/Q4zdyPnCtfw/2ybSj1tMuccH3eb+r628Ds4cC85cbOk+myKgdhypwEhVJK
-	YRGmOwKHlhSFfAxJxnwBJvGXmwOiV6mK90augerobTxGBiZ/5ta01RIpC0ZOOmm5WH73TR+x4ihur
-	FruH1M+TKFy/xYfJgX3rvv3yAae/UIKRq0zOKL0Eyr1aHApflzCff2HPjecUYtCOikS5mo+NfftTJ
-	HOWf2r2c86oV9ezA2LxakEQ23RcBavJkCVW5iOXINQmz9tagStJSBuYB0tD6G1VL0lkdfC+On5ROo
-	W7YpGH3hhGyT7XD2rOlg==;
+	List-Owner; bh=AcX2tbNNspjNFMiG42eg8ANgj/7dSpXWYheMM8UTP1M=; b=bKf8RY2UTmKi0S
+	T69HPfYVYO04UYJSc0m4bx9iWjuUQYe+JXWPDZN2hn6vXs63PBG5yO4fHMmJMGjkx39pkI2ADqvzA
+	0DOq8vv6+NNkYGN9QpSzdIaEcqTBs9N43iiTa2RrPn9N701eytFE/5hM1omPMC06u7fX+bvHSJpbe
+	IZ3tvyih3+fmSNQWUhXvIDdUGeagc157H0XOGRVf+cM/fcs1nTjAnt1WHjvsDDSC4YHlljFH3BC8D
+	9HKrdehQ5Gjl3CA89sgoRIC7sdnePAI52zaKOaAExcRJ72xbzjYYrpxcEAENaf8UWhjN9RA4G1D6G
+	4Hz6L+E4aURlP76pr0GQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1inGhD-0004mI-W7; Fri, 03 Jan 2020 06:44:31 +0000
+	id 1inGhE-0004mv-Eh; Fri, 03 Jan 2020 06:44:32 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1inGhB-0004lH-FU; Fri, 03 Jan 2020 06:44:30 +0000
-X-UUID: 5b9cbf944739474896bf2f54761efe72-20200102
+ id 1inGhB-0004lI-EK; Fri, 03 Jan 2020 06:44:31 +0000
+X-UUID: a583988803af45e4b947fe748b166e23-20200102
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=GEl2IJWtVb7X+Ga7VN/59GHFWgKdMGNmXSnRT3bIOoQ=; 
- b=bTBT50Qw/+ulUSRpqsjyMDZXu/TpSdDXJKmnm5n1P802GGBzYpYXwHrYY+Eh259BiSIADUKfj3Zu5ErTOVi4KJ2zEkFuA5AV03NsYzo99gl4tXSHZNjUCNRCk0T2rWn+9Dl9+GG85Us8vp9JZY76J+HMkMRlmnBX7HjxHcOj2XQ=;
-X-UUID: 5b9cbf944739474896bf2f54761efe72-20200102
+ bh=nZu5Vg6KMNlzJgVAxVNPrImqFUM2QdXibq/TjqkgBuo=; 
+ b=a5u2SUABpErw+Z3MiXyeTKhfpmQ8l83pcyM/AAGPQx2foGxH8WoivR52CXmHdN2QidfbvAsxwRgaK1/AmLlEv8XJC07879w1XG43Lz4zzeS0W9zLbSLh1NxFNtoDFaqWPGWE8sys54B4LnQ1lIF9nbbsBbL7A8n0sl1SrWq7HSU=;
+X-UUID: a583988803af45e4b947fe748b166e23-20200102
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <michael.kao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1184778756; Thu, 02 Jan 2020 22:44:23 -0800
+ with ESMTP id 1050637886; Thu, 02 Jan 2020 22:44:23 -0800
 Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 2 Jan 2020 22:44:36 -0800
+ 15.0.1395.4; Thu, 2 Jan 2020 22:44:37 -0800
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
  15.0.1395.4; Fri, 3 Jan 2020 14:43:44 +0800
@@ -65,19 +65,17 @@ To: Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>,
  <matthias.bgg@gmail.com>, <hsinyi@chromium.org>, <linux-pm@vger.kernel.org>,
  <srv_heupstream@mediatek.com>
 Subject: [PATCH v3,
- 5/8] arm64: dts: mt8183: Increase polling frequency for CPU thermal
- zone
-Date: Fri, 3 Jan 2020 14:44:04 +0800
-Message-ID: <20200103064407.19861-6-michael.kao@mediatek.com>
+ 7/8] thermal: mediatek: add another get_temp ops for thermal sensors
+Date: Fri, 3 Jan 2020 14:44:06 +0800
+Message-ID: <20200103064407.19861-8-michael.kao@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200103064407.19861-1-michael.kao@mediatek.com>
 References: <20200103064407.19861-1-michael.kao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200102_224429_516909_14E82427 
-X-CRM114-Status: UNSURE (   9.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200102_224429_492158_25E919C9 
+X-CRM114-Status: GOOD (  17.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,40 +87,162 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- Michael Kao <michael.kao@mediatek.com>, Matthias Kaehlcke <mka@chromium.org>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Michael Kao <michael.kao@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Matthias Kaehlcke <mka@chromium.org>
+Provide thermal zone to read thermal sensor
+in the SoC. We can read all the thermal sensors
+value in the SoC by the node /sys/class/thermal/
 
-Evaluate the thermal zone every 500ms while not cooling and every
-100ms when passive cooling is performed.
+Bypass the failure that non cpu_thermal sensor is not find in thermal-zones
+in dts, which is normal for mt8173, so prompt a warning here instead of
+failing.
 
-Signed-off-by: Matthias Kaehlcke <mka@chromium.org>
+Return -EAGAIN instead of -EACCESS on the first read of sensor that
+often are bogus values. This can avoid following warning on boot:
+
+  thermal thermal_zone6: failed to read out thermal zone (-13)
+
 Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/thermal/mtk_thermal.c | 74 +++++++++++++++++++++++++++++++----
+ 1 file changed, 66 insertions(+), 8 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 78575c3183a4..042ef48f3efe 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -605,8 +605,8 @@
+diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+index d6fabd0a7da6..9be9fcb18d9e 100644
+--- a/drivers/thermal/mtk_thermal.c
++++ b/drivers/thermal/mtk_thermal.c
+@@ -225,6 +225,11 @@ enum {
  
- 		thermal-zones {
- 			cpu_thermal: cpu_thermal {
--				polling-delay-passive = <1000>;
--				polling-delay = <1000>;
-+				polling-delay-passive = <100>;
-+				polling-delay = <500>;
- 				thermal-sensors = <&thermal 0>;
- 				sustainable-power = <5000>;
+ struct mtk_thermal;
  
++struct mtk_thermal_zone {
++	struct mtk_thermal *mt;
++	int id;
++};
++
+ struct thermal_bank_cfg {
+ 	unsigned int num_sensors;
+ 	const int *sensors;
+@@ -607,7 +612,7 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+ 		 * not immediately shut down.
+ 		 */
+ 		if (temp > 200000)
+-			temp = 0;
++			temp = -EAGAIN;
+ 
+ 		if (temp > max)
+ 			max = temp;
+@@ -618,7 +623,8 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
+ 
+ static int mtk_read_temp(void *data, int *temperature)
+ {
+-	struct mtk_thermal *mt = data;
++	struct mtk_thermal_zone *tz = data;
++	struct mtk_thermal *mt = tz->mt;
+ 	int i;
+ 	int tempmax = INT_MIN;
+ 
+@@ -631,16 +637,48 @@ static int mtk_read_temp(void *data, int *temperature)
+ 
+ 		mtk_thermal_put_bank(bank);
+ 	}
+-
+ 	*temperature = tempmax;
+ 
+ 	return 0;
+ }
+ 
++static int mtk_read_sensor_temp(void *data, int *temperature)
++{
++	struct mtk_thermal_zone *tz = data;
++	struct mtk_thermal *mt = tz->mt;
++	const struct mtk_thermal_data *conf = mt->conf;
++	int id = tz->id - 1;
++	int temp = INT_MIN;
++	u32 raw;
++
++	if (id < 0)
++		return  -EACCES;
++
++	raw = readl(mt->thermal_base + conf->msr[id]);
++
++	temp = raw_to_mcelsius(mt, id, raw);
++
++	/*
++	 * The first read of a sensor often contains very high bogus
++	 * temperature value. Filter these out so that the system does
++	 * not immediately shut down.
++	 */
++
++	if (temp > 200000)
++		return  -EAGAIN;
++
++	*temperature = temp;
++	return 0;
++}
++
+ static const struct thermal_zone_of_device_ops mtk_thermal_ops = {
+ 	.get_temp = mtk_read_temp,
+ };
+ 
++static const struct thermal_zone_of_device_ops mtk_thermal_sensor_ops = {
++	.get_temp = mtk_read_sensor_temp,
++};
++
+ static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
+ 				  u32 apmixed_phys_base, u32 auxadc_phys_base,
+ 				  int ctrl_id)
+@@ -873,6 +911,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 	struct resource *res;
+ 	u64 auxadc_phys_base, apmixed_phys_base;
+ 	struct thermal_zone_device *tzdev;
++	struct mtk_thermal_zone *tz;
+ 
+ 	mt = devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
+ 	if (!mt)
+@@ -954,11 +993,30 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, mt);
+ 
+-	tzdev = devm_thermal_zone_of_sensor_register(&pdev->dev, 0, mt,
+-						     &mtk_thermal_ops);
+-	if (IS_ERR(tzdev)) {
+-		ret = PTR_ERR(tzdev);
+-		goto err_disable_clk_peri_therm;
++	for (i = 0; i < mt->conf->num_sensors + 1; i++) {
++		tz = kmalloc(sizeof(*tz), GFP_KERNEL);
++		if (!tz)
++			return -ENOMEM;
++
++		tz->mt = mt;
++		tz->id = i;
++
++		tzdev = devm_thermal_zone_of_sensor_register(&pdev->dev, i,
++				tz, (i == 0) ?
++				&mtk_thermal_ops : &mtk_thermal_sensor_ops);
++
++		if (IS_ERR(tzdev)) {
++			if (PTR_ERR(tzdev) == -ENODEV) {
++				dev_warn(&pdev->dev,
++					"sensor %d not registered in thermal zone in dt\n",
++					i);
++				continue;
++			}
++			if (IS_ERR(tzdev) != -EACCES) {
++				ret = PTR_ERR(tzdev);
++				goto err_disable_clk_peri_therm;
++			}
++		}
+ 	}
+ 
+ 	return 0;
 -- 
 2.18.0
 _______________________________________________
