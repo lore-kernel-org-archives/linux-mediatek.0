@@ -2,81 +2,85 @@ Return-Path: <SRS0=lxIO=2Y=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.6 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 71B96C3276C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 00:20:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D7F2C3276C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 01:52:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 42B5A21D56
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 00:20:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0F3982084D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Jan 2020 01:52:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="k/wy6ne5";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Be1Z4lKr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 42B5A21D56
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Go6NDLsD";
+	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="Y03M3PXd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F3982084D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lhWD+pFewVkzzUNWV0JulKEWd06EZwf0zUabGeoVezQ=; b=k/wy6ne5NjpPph
-	zC4n9zjg01XafUid0w5eXOM1knTPlR7NVhJi66NmTM/OqETMcF2fR2pW8qJ/OXaFfQrtuxGvESrMb
-	+L9MA6XPlKUEvRYW1xG5idSF6SK4wtEaPhp2UDAodLWIcr8IxyLTstY3oA59NEj83bjh7iARdOiuE
-	V4Bb6rTWMmT7RLIZ4zfTPcLguHGZleyllMfCN8VZ5mJOAvaFjXnWK8zo2EfoSqFM/u7usVj5bHRoE
-	5oxb+8S/QEi0b/1XEp8LnUFO05gLQUYZEV/DhwN3SSUIhvsELgVcUfQtQt4qRwsbvwYB7D2WfEy2d
-	EjuvCjSP6Jn0lVZCD6Eg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
+	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=6vYXimp5jmEuC0QSABqpv61PyFXwLN1mDOUiY2XjOrY=; b=Go6NDLsDz+nY+s9VRip+w+pgJ
+	OWxXGnVw0Kaf/O3pi6mu4mwIfTJ7aqIoYITM8ro2IWHbtuVdEpTuGh9Rag5jqA7ROTmFDLwYiNtNJ
+	XKdO3uI9USKfrlpAz+cWqM1YsT7bXTJ6+3GTEJUZIzQDgeqbgvKojcYRf2UWs31fz3IJYXK5UZzC0
+	aao1zd6Cve/5JNk7ZbPIsKpKAjFfpKhA85GzMJ4cg6YBTfw1O7hfMSA5yzcY/LywExTijIG9UJZ+/
+	5C/e5U9JkAOrXc0ONbx1bLxMIwWgdLpKmsWtqoFabEeJA1kuvIGfafLUWkoyB9vVvs2JdMIzE4BZR
+	WZR0kOM+g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1inAhO-0007Yu-Qt; Fri, 03 Jan 2020 00:20:18 +0000
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542])
+	id 1inC8N-00084n-Dc; Fri, 03 Jan 2020 01:52:15 +0000
+Received: from mail26.static.mailgun.info ([104.130.122.26])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1inAhI-0007Sz-CX; Fri, 03 Jan 2020 00:20:13 +0000
-Received: by mail-ed1-x542.google.com with SMTP id i16so40457254edr.5;
- Thu, 02 Jan 2020 16:20:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=FV5X7fA+rrUeDnXZ5UiKMokLx1xAJtoG3k2CK746+60=;
- b=Be1Z4lKrrI8RtYjq/BzQfrsrCUA2UJPv3VAYzJae/rKQQP4Mi+149d9Yfc4ozDEFnb
- Zk8lQf019qLG1AXIqKFCL0h84IaKBpxEFDMdoLOB+KtZC8hcNg27wvwd6H4boJJUuVwJ
- p06otaRRzArTVUjHQB80gpgk9NqfS8sn9WrJAqlGRZfRnzhgjHXsl7WH3TgmsjC/loS1
- WRQE2gex7s4Z0hTVMOgYJMHsXVl8HfZzqMX1Q2JPYaM7L2pP6Y2M6SBICtxchYmXn7v0
- NkvIFR+5N8zDAC+NT1XtLku0AXonKX+rgIRYheh7gNXyQhAamyBQvq1W0yyYgo68zdd6
- nSwQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=FV5X7fA+rrUeDnXZ5UiKMokLx1xAJtoG3k2CK746+60=;
- b=AdnlzNj2my0IBh4I5WIHDjJ/37vpAAD/+DIPeOSsZLtL443PzSJeazZ6opjMiFqd1D
- YaOFJNCCQ/2CgrN7Fyp+pgjwSv/1qNvke5Qe2lTUdL3rsoeZ0iTfOWmhUgvHQuTag39g
- VC7pQvmvz3GedCCsqiRaNFVWRkUvIqaPP3+kZ3PzBJ1ALDhRrKTQaPwWotWinNka3qxO
- 28uChBPMUU1JS8UgRTBzUAAJkbmyQpvzsiWOhFJNxQUp667NZEpjnxKnO8+IB/CaR7x0
- s+yufcicaMe7jw0Rhx5ICfZ3NFn9PZLgqiAvc3idHm+MEZIrPldUns87CHNQN3boR7Xu
- uywA==
-X-Gm-Message-State: APjAAAWHFyK2KnLUm7PPTHXkanDevWutxsgxVU6L59rfCCytzrFr2+tq
- D/57mIsXHzfvdyEfdTgFf2W/jBIPXSmsoQzcdOg=
-X-Google-Smtp-Source: APXvYqyneY6vp7MndZY2IHVlAnYW2Ny5AcY4pl2xKrupts1lB1ozOUhHi1uWOz20Rt6s9+dkTrmWhTv4viThJydhKuA=
-X-Received: by 2002:aa7:d34d:: with SMTP id m13mr89428224edr.140.1578010809821; 
- Thu, 02 Jan 2020 16:20:09 -0800 (PST)
+ id 1inC8G-0007yH-87
+ for linux-mediatek@lists.infradead.org; Fri, 03 Jan 2020 01:52:10 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1578016326; h=Message-ID: References: In-Reply-To: Subject:
+ Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
+ MIME-Version: Sender; bh=iBGH70qouVE4uKPgzHJQRb9IHWifgoN13TEvuu1+Ybs=;
+ b=Y03M3PXdQl+PkvGwHQW2huTZLiAD33KEZJfcXVDkejZReOy6MPupr8zQ/QeII4UCWz/DaVi6
+ cWSbd2ezJqIPvBxYx0kDvaeM0GNSoyebmZgBWFrV5coiIBHRARjbQ58qEVabRBsYpwA0GZNQ
+ MxCaT6TGggfZsZuAm4M54Amh9zU=
+X-Mailgun-Sending-Ip: 104.130.122.26
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
+ by mxa.mailgun.org with ESMTP id 5e0e9e43.7faf3046a490-smtp-out-n01;
+ Fri, 03 Jan 2020 01:52:03 -0000 (UTC)
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 05AABC447A2; Fri,  3 Jan 2020 01:52:00 +0000 (UTC)
+Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
+ (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+ (No client certificate requested) (Authenticated sender: cang)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id E401FC43383;
+ Fri,  3 Jan 2020 01:51:59 +0000 (UTC)
 MIME-Version: 1.0
-References: <20200102233657.12933-1-f.fainelli@gmail.com>
-In-Reply-To: <20200102233657.12933-1-f.fainelli@gmail.com>
-From: Vladimir Oltean <olteanv@gmail.com>
-Date: Fri, 3 Jan 2020 02:19:58 +0200
-Message-ID: <CA+h21hrLO2Nfryu74Joj-T3-ithgoSFOQZsw4Z5QWOnhttvGiA@mail.gmail.com>
-Subject: Re: [PATCH net-next] net: dsa: Remove indirect function call for flow
- dissection
-To: Florian Fainelli <f.fainelli@gmail.com>
+Date: Fri, 03 Jan 2020 09:51:59 +0800
+From: Can Guo <cang@codeaurora.org>
+To: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH v1 1/2] scsi: ufs: set device as default active power mode
+ during initialization only
+In-Reply-To: <1577947124.13164.75.camel@mtkswgap22>
+References: <1577693546-7598-1-git-send-email-stanley.chu@mediatek.com>
+ <1577693546-7598-2-git-send-email-stanley.chu@mediatek.com>
+ <fd129b859c013852bd80f60a36425757@codeaurora.org>
+ <1577754469.13164.5.camel@mtkswgap22>
+ <836772092daffd8283a97d633e59fc34@codeaurora.org>
+ <1577766179.13164.24.camel@mtkswgap22>
+ <1577778290.13164.45.camel@mtkswgap22>
+ <44393ed9ff3ba9878bae838307e7eec0@codeaurora.org>
+ <1577947124.13164.75.camel@mtkswgap22>
+Message-ID: <4888afd46a9065b7f298a5de039426c9@codeaurora.org>
+X-Sender: cang@codeaurora.org
+User-Agent: Roundcube Webmail/1.3.9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200102_162012_454209_1AAE5864 
-X-CRM114-Status: GOOD (  14.10  )
+X-CRM114-CacheID: sfid-20200102_175208_351847_CF8215DB 
+X-CRM114-Status: GOOD (  16.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,83 +92,106 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Song Liu <songliubraving@fb.com>,
- Vladimir Oltean <vladimir.oltean@nxp.com>,
- Alexander Lobakin <alobakin@dlink.ru>,
- Yoshiki Komachi <komachi.yoshiki@gmail.com>,
- open list <linux-kernel@vger.kernel.org>, Eric Dumazet <edumazet@google.com>,
- Stanislav Fomichev <sdf@google.com>, Matteo Croce <mcroce@redhat.com>,
- Petar Penkov <ppenkov@google.com>, Jakub Sitnicki <jakub@cloudflare.com>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Woojung Huh <woojung.huh@microchip.com>, Hauke Mehrtens <hauke@hauke-m.de>,
- Sean Wang <sean.wang@mediatek.com>, Claudiu Manoil <claudiu.manoil@nxp.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, netdev <netdev@vger.kernel.org>,
- Paul Blakey <paulb@mellanox.com>,
- Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
- Russell King <rmk+kernel@armlinux.org.uk>,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
+Cc: alim.akhtar@samsung.com, beanhuo@micron.com, bvanassche@acm.org,
+ linux-scsi@vger.kernel.org, peter.wang@mediatek.com, cc.chou@mediatek.com,
+ andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
+ ron.hsu@mediatek.com, avri.altman@wdc.com, linux-mediatek@lists.infradead.org,
+ linux-scsi-owner@vger.kernel.org, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org, martin.petersen@oracle.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org, subhashj@codeaurora.org, pedrom.sousa@synopsys.com,
+ asutoshd@codeaurora.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Florian,
+On 2020-01-02 14:38, Stanley Chu wrote:
+> Hi Can,
+> 
+> On Tue, 2019-12-31 at 16:35 +0800, Can Guo wrote:
+> 
+>> Hi Stanley,
+>> 
+>> I missed this mail before I hit send. In current code, as per my
+>> understanding,
+>> UFS device's power state should be Active after ufshcd_link_startup()
+>> returns.
+>> If I am wrong, please feel free to correct me.
+>> 
+> 
+> Yes, this assumption of ufshcd_probe_hba() is true so I will drop this
+> patch.
+> Thanks for remind.
+> 
+>> Due to you are almost trying to revert commit 7caf489b99a42a, I am 
+>> just
+>> wondering
+>> if you encounter failure/error caused by it.
+> 
+> Yes, we actually have some doubts from the commit message of "scsi: 
+> ufs:
+> issue link startup 2 times if device isn't active"
+> 
+> If we configured system suspend as device=PowerDown/Link=LinkDown mode,
+> during resume, the 1st link startup will be successful, and after that
+> device could be accessed normally so it shall be already in Active 
+> power
+> mode. We did not find devices which need twice linkup for normal work.
+> 
+> And because the 1st linkup is OK, the forced 2nd linkup by commit 
+> "scsi:
+> ufs: issue link startup 2 times if device isn't active" leads to link
+> lost and finally the 3rd linkup is made again by retry mechanism in
+> ufshcd_link_startup() and be successful. So a linkup performance issue
+> is introduced here: We actually need one-time linkup only but finally
+> got 3 linkup operations.
+> 
+> According to the UFS spec, all reset types (including POR and Host
+> UniPro Warm Reset which both may happen in above configurations) other
+> than LU reset, UFS device power mode shall return to Sleep mode or
+> Active mode depending on bInitPowerMode, by default, it's Active mode.
+> 
+> So we are curious that why enforcing twice linkup is necessary here?
+> Could you kindly help us clarify this?
+> 
+> If anything wrong in above description, please feel free to correct me.
+> 
 
-On Fri, 3 Jan 2020 at 01:39, Florian Fainelli <f.fainelli@gmail.com> wrote:
->
-> We only need "static" information to be given for DSA flow dissection,
-> so replace the expensive call to .flow_dissect() with an integer giving
-> us the offset into the packet array of bytes that we must de-reference
+Hi Stanley,
 
-packet array? packed array?
+Above description is correct. The reason why the UFS device becomes
+Active after the 1st link startup in your experiment is due to you
+set spm_lvl to 5, during system suspend, UFS device is powered down.
+When resume kicks start, the UFS device is power cycled once.
 
-> to obtain the protocol number. The overhead was alreayd available from
+Moreover, if you set rpm_lvl to 5, during runtime suspend, if bkops is
+enabled, the UFS device will not be powered off, meaning when runtime
+resume kicks start, the UFS device is not power cycled, in this case,
+we need 3 times of link startup.
 
-already
+Does above explain?
 
-> the dsa_device_ops structure so use that directly.
->
-> The presence of a flow_dissect callback used to indicate that the DSA
-> tagger supported returning that information,we now encode this with a
-> proto_off value of DSA_PROTO_OFF_UNPSEC if the tagger does not support
+Thanks,
 
-UNSPEC
+Can Guo.
 
-> providing that information yet.
->
-> Signed-off-by: Florian Fainelli <f.fainelli@gmail.com>
-> ---
-
-Unfortunately I don't really understand the DSA implementations of flow_dissect.
-Is proto_off supposed to mean "the __be16 pointer difference A - B
-between A. the position of the real EtherType and B. the current
-skb->data (aka ETH_HLEN bytes into the frame, aka 2 bytes after the
-normal EtherType was supposed to be)"?
-Otherwise said, the offset in bytes between the real EtherType
-position and skb->data is 2 * (proto_off + 1).
-Furthermore, the offset in bytes is exactly equal to the tagger
-overhead in bytes, unless it's a tag that doesn't push the EtherType
-to the right, such as the trailer tag.
-
-If the above is indeed correct, can you just skip DSA_PROTO_OFF_UNSPEC
-and add proper proto_off values "in blind" for all taggers? I think
-it's rather safe to assume that they all push the EtherType to the
-right with the exception of the trailer tag, which will have an offset
-of -1 in terms of __be16 pointers, by the way (so your -1 encoding of
-DSA_PROTO_OFF_UNSPEC won't work for it anyway).
-
-Also, documenting the unit of measurement for proto_off would really
-go a long way.
-
-What is a good test that the flow_dissector does what it's supposed to
-do with DSA?
-
-Regards,
--Vladimir
+>> 
+>> Happy new year to you too!
+>> 
+>> Thanks,
+>> 
+>> Can Guo
+> 
+> Thanks,
+> 
+> Stanley
+> 
+>> 
+>> _______________________________________________
+>> Linux-mediatek mailing list
+>> Linux-mediatek@lists.infradead.org
+>> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
