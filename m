@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 17FD3C2D0C2
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jan 2020 14:26:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 79986C2D0C2
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jan 2020 14:27:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E0EFA24653
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jan 2020 14:26:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4CE422464E
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jan 2020 14:27:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iXsKkfVg";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Z1lhBqcg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E0EFA24653
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="K6avJIBf";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="JuSCF7/Q"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CE422464E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B0p1PqFsMRevRSFW/RWs3g1RJ0dsbN7uU4Ws9J1nDt0=; b=iXsKkfVgV75wpw
-	ciVNf5RTWuk97HeJeigM6Bx8V7dRsg+wheB8gzxfR3zHh3UEjTzRyiXtoomgOcleP5GsTbPjHMrTO
-	S36FjOAeakTYffmLT+T5n6VlZfr1lEqMTczCxQAXJlLHSCHWJxFi94EXnqASqDZRodjwG6mVc7xtl
-	WsHQ7Xfvyh5QVaTku1aIPomB3Fwc8txwRDyVRPpl8C108pKZai29UUVCDeAB1W4M/A76TsKdpH6eY
-	IxJz52l176T86hIw0+eK7BkTdR+Oino9l45B1zrCCHj42FPMSfLghz3frkibMSmdaNsz2KI1cJ78B
-	V3UiWNK0UmLT4D2yydbg==;
+	List-Owner; bh=G2p9jMj+vilR/m4BgfBu1c5h19lllgj7q4/tAzb2FWU=; b=K6avJIBf1pz3qs
+	KSvK47pH8O6c13S9+djh1JyqN2DhyN6klYC7RfWWgjEKj0KWMJIvUDJcRaTVsUhWIVxgsMSMLCXBI
+	0YMWd+TYJ5vdl9LKu7xJQy2afvN/Rm49OTrFAnvYmWsqghLDQeRifXStex2Az4agrmR9mwWVJsqGQ
+	gWEcicjYIXwk1S7fPxcoesX+U5Vyrb2ZRA6yBCEQdlhG9DpIm722ECB97e28HSN+m4h5U2NOAUsXA
+	7IfjNqffMQYvunEZ+YczRx4Z9olk7voIV35FOjZjWSJL0iSDpZRRiu1q2Lbs+RgE0wUzsWs64hzCp
+	IHULK0GMdasK12REA4+w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1inkNo-00005P-8z; Sat, 04 Jan 2020 14:26:28 +0000
+	id 1inkOT-0000i1-Qu; Sat, 04 Jan 2020 14:27:09 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1inkNf-0008Nx-J2; Sat, 04 Jan 2020 14:26:21 +0000
-X-UUID: 3ec3ede03b9b49abaa10ede337b29247-20200104
+ id 1inkNl-0008TE-Eg; Sat, 04 Jan 2020 14:26:27 +0000
+X-UUID: 01ce70e498164561b083f81d4d911d35-20200104
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Lcy3+KlfMb7jLpiBkhLUoc+fZ0Xd/X066UNWWwKFUng=; 
- b=Z1lhBqcgEO/h+MWEeifc2Pkj+Ix4L8mD/gm333vaE/5EVABiB9qqN3HJQEE7vbZS8y+jpApuEOTdudiLUPpKwJDnD9Tlm8j8i37VNGNpyjzYH56A3TUY2xsrurpJa5DYr1GFmb/6I0kbWRpKbaG4xU+6J6zss7LgnJI4mfvqntY=;
-X-UUID: 3ec3ede03b9b49abaa10ede337b29247-20200104
+ bh=6Ow9gLDlz0YaDc5rObbYGuAgpDVGXNzexRoce87poYU=; 
+ b=JuSCF7/QNA6eWBZYlJ0ZP7mI/nX0L+RBMHTtjxwhqF0XMZifzTigMI2Y6nun1uw13ERB5J4HXwwG9hkpX8gehTDEF/kRVSEFoDfHehbIZBzXzsgXD9kIhruEaOSVjBMCSlrsdwEqXLrCND0zwXzoryKHW01QtqyGPXIiY1/7Fqs=;
+X-UUID: 01ce70e498164561b083f81d4d911d35-20200104
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 670809894; Sat, 04 Jan 2020 06:26:12 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sat, 4 Jan 2020 06:26:37 -0800
+ with ESMTP id 625971017; Sat, 04 Jan 2020 06:26:24 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sat, 4 Jan 2020 06:26:50 -0800
 Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sat, 4 Jan 2020 22:25:38 +0800
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sat, 4 Jan 2020 22:25:17 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Sat, 4 Jan 2020 22:26:40 +0800
+ Frontend Transport; Sat, 4 Jan 2020 22:26:39 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v1 2/3] scsi: ufs: add device reset history for vendor
- implementations
-Date: Sat, 4 Jan 2020 22:26:07 +0800
-Message-ID: <1578147968-30938-3-git-send-email-stanley.chu@mediatek.com>
+Subject: [PATCH v1 1/3] scsi: ufs: fix empty check of error history
+Date: Sat, 4 Jan 2020 22:26:06 +0800
+Message-ID: <1578147968-30938-2-git-send-email-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <1578147968-30938-1-git-send-email-stanley.chu@mediatek.com>
 References: <1578147968-30938-1-git-send-email-stanley.chu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200104_062619_636968_ADE26FFA 
-X-CRM114-Status: UNSURE (   8.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200104_062625_565422_7B5F855E 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,8 +94,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Device reset history shall be also added for vendor's device
-reset variant operation implementation.
+Currently checking if an error history element is empty or
+not is by its "value". In most cases, value is error code.
+
+However this checking is not correct because some errors or
+events do not specify any values in error history so values
+remain as 0, and this will lead to incorrect empty checking.
+
+Fix it by checking "timestamp" instead of "value" because
+timestamp will be always assigned for all history elements
 
 Cc: Alim Akhtar <alim.akhtar@samsung.com>
 Cc: Asutosh Das <asutoshd@codeaurora.org>
@@ -108,56 +113,22 @@ Cc: Can Guo <cang@codeaurora.org>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
- drivers/scsi/ufs/ufshcd.c | 5 +++--
- drivers/scsi/ufs/ufshcd.h | 6 +++++-
- 2 files changed, 8 insertions(+), 3 deletions(-)
+ drivers/scsi/ufs/ufshcd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index bae43da00bb6..29e3d50aabfb 100644
+index 1b97f2dc0b63..bae43da00bb6 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -4346,13 +4346,14 @@ static inline int ufshcd_disable_device_tx_lcc(struct ufs_hba *hba)
- 	return ufshcd_disable_tx_lcc(hba, true);
- }
+@@ -385,7 +385,7 @@ static void ufshcd_print_err_hist(struct ufs_hba *hba,
+ 	for (i = 0; i < UFS_ERR_REG_HIST_LENGTH; i++) {
+ 		int p = (i + err_hist->pos) % UFS_ERR_REG_HIST_LENGTH;
  
--static void ufshcd_update_reg_hist(struct ufs_err_reg_hist *reg_hist,
--				   u32 reg)
-+void ufshcd_update_reg_hist(struct ufs_err_reg_hist *reg_hist,
-+			    u32 reg)
- {
- 	reg_hist->reg[reg_hist->pos] = reg;
- 	reg_hist->tstamp[reg_hist->pos] = ktime_get();
- 	reg_hist->pos = (reg_hist->pos + 1) % UFS_ERR_REG_HIST_LENGTH;
- }
-+EXPORT_SYMBOL_GPL(ufshcd_update_reg_hist);
- 
- /**
-  * ufshcd_link_startup - Initialize unipro link startup
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index e05cafddc87b..de1be6a862b0 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -805,6 +805,8 @@ int ufshcd_wait_for_register(struct ufs_hba *hba, u32 reg, u32 mask,
- 				u32 val, unsigned long interval_us,
- 				unsigned long timeout_ms, bool can_sleep);
- void ufshcd_parse_dev_ref_clk_freq(struct ufs_hba *hba, struct clk *refclk);
-+void ufshcd_update_reg_hist(struct ufs_err_reg_hist *reg_hist,
-+			    u32 reg);
- 
- static inline void check_upiu_size(void)
- {
-@@ -1083,8 +1085,10 @@ static inline void ufshcd_vops_dbg_register_dump(struct ufs_hba *hba)
- 
- static inline void ufshcd_vops_device_reset(struct ufs_hba *hba)
- {
--	if (hba->vops && hba->vops->device_reset)
-+	if (hba->vops && hba->vops->device_reset) {
- 		hba->vops->device_reset(hba);
-+		ufshcd_update_reg_hist(&hba->ufs_stats.dev_reset, 0);
-+	}
- }
- 
- extern struct ufs_pm_lvl_states ufs_pm_lvl_states[];
+-		if (err_hist->reg[p] == 0)
++		if (err_hist->tstamp[p] == 0)
+ 			continue;
+ 		dev_err(hba->dev, "%s[%d] = 0x%x at %lld us\n", err_name, p,
+ 			err_hist->reg[p], ktime_to_us(err_hist->tstamp[p]));
 -- 
 2.18.0
 _______________________________________________
