@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 79986C2D0C2
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jan 2020 14:27:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5E69C2D0C2
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jan 2020 14:27:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4CE422464E
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jan 2020 14:27:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B755A2464E
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Jan 2020 14:27:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="K6avJIBf";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="JuSCF7/Q"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CE422464E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AI4gjnI7";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="goI72hwU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B755A2464E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,52 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G2p9jMj+vilR/m4BgfBu1c5h19lllgj7q4/tAzb2FWU=; b=K6avJIBf1pz3qs
-	KSvK47pH8O6c13S9+djh1JyqN2DhyN6klYC7RfWWgjEKj0KWMJIvUDJcRaTVsUhWIVxgsMSMLCXBI
-	0YMWd+TYJ5vdl9LKu7xJQy2afvN/Rm49OTrFAnvYmWsqghLDQeRifXStex2Az4agrmR9mwWVJsqGQ
-	gWEcicjYIXwk1S7fPxcoesX+U5Vyrb2ZRA6yBCEQdlhG9DpIm722ECB97e28HSN+m4h5U2NOAUsXA
-	7IfjNqffMQYvunEZ+YczRx4Z9olk7voIV35FOjZjWSJL0iSDpZRRiu1q2Lbs+RgE0wUzsWs64hzCp
-	IHULK0GMdasK12REA4+w==;
+	List-Owner; bh=I/DIYG8UOlYVjP5O8bFm/FSSvmA4dCbFwtNGFHMpJUU=; b=AI4gjnI7ZYNwPJ
+	HFzIeHGyfhBGjLwoZcG7q9btumbrutrKoZXlUtmxHk3kh5RgJygoehVCKohsly5fDABepSTwMl5zK
+	CuKBIL72MYVWm0T1yOAFg1yWt6l7wCaHzK0F0NRTFVhAhs5kYY+nYOqTTc7aIiwReZoOcWoQPnkrt
+	rlfh8pdQMyO79YCFM5xoQCmpun7/cSAFcWMW2aoOsVIOTrS/YAGKPB1dSykCypT/t6SKJBsuLO/kF
+	/SzqE/A7FiN80d5Pp9pyTseK5d8M1q1O2a2j0aQ+o5KbnAT2zil4oA1iOBMwwcFc1GIEjhHxcb+6p
+	LRaymR7WNGbiq+agqB7w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1inkOT-0000i1-Qu; Sat, 04 Jan 2020 14:27:09 +0000
+	id 1inkOR-0000gO-Hw; Sat, 04 Jan 2020 14:27:07 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1inkNl-0008TE-Eg; Sat, 04 Jan 2020 14:26:27 +0000
-X-UUID: 01ce70e498164561b083f81d4d911d35-20200104
+ id 1inkNm-0008Up-CO; Sat, 04 Jan 2020 14:26:27 +0000
+X-UUID: 72b67ee65db04b368f69e9de0266c741-20200104
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=6Ow9gLDlz0YaDc5rObbYGuAgpDVGXNzexRoce87poYU=; 
- b=JuSCF7/QNA6eWBZYlJ0ZP7mI/nX0L+RBMHTtjxwhqF0XMZifzTigMI2Y6nun1uw13ERB5J4HXwwG9hkpX8gehTDEF/kRVSEFoDfHehbIZBzXzsgXD9kIhruEaOSVjBMCSlrsdwEqXLrCND0zwXzoryKHW01QtqyGPXIiY1/7Fqs=;
-X-UUID: 01ce70e498164561b083f81d4d911d35-20200104
+ bh=TsvdKljEI6vD5i07UDFZns0vwy5dihbpsSkQB+yr7JI=; 
+ b=goI72hwUhO7pkobr6JnahfA1RS5Ea5TIaAcLU6Jq79d66dhKhLpW7fut47sZT1H6xxw8htpDCGWXhX+hVAcc8a5D8H5JoghrxD99bOojbd4iTN7dZgSMqahbXx31LxN2VpZnsgCGaBsvS33vNOKtDCC+wtl17Phmao5D/sHOyYE=;
+X-UUID: 72b67ee65db04b368f69e9de0266c741-20200104
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 625971017; Sat, 04 Jan 2020 06:26:24 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ with ESMTP id 1440783035; Sat, 04 Jan 2020 06:26:24 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1395.4; Sat, 4 Jan 2020 06:26:50 -0800
 Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sat, 4 Jan 2020 22:25:17 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sat, 4 Jan 2020 22:26:26 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Sat, 4 Jan 2020 22:26:39 +0800
+ Frontend Transport; Sat, 4 Jan 2020 22:26:40 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v1 1/3] scsi: ufs: fix empty check of error history
-Date: Sat, 4 Jan 2020 22:26:06 +0800
-Message-ID: <1578147968-30938-2-git-send-email-stanley.chu@mediatek.com>
+Subject: [PATCH v1 3/3] scsi: ufs: remove "errors" word in
+ ufshcd_print_err_hist()
+Date: Sat, 4 Jan 2020 22:26:08 +0800
+Message-ID: <1578147968-30938-4-git-send-email-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <1578147968-30938-1-git-send-email-stanley.chu@mediatek.com>
 References: <1578147968-30938-1-git-send-email-stanley.chu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200104_062625_565422_7B5F855E 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20200104_062626_455137_DF5F6C12 
+X-CRM114-Status: UNSURE (   9.12  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,15 +96,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently checking if an error history element is empty or
-not is by its "value". In most cases, value is error code.
+Remove "errors" word in output string by ufshcd_print_err_hist()
+since not all printed targets are "errors". Sometimes they are
+just "events".
 
-However this checking is not correct because some errors or
-events do not specify any values in error history so values
-remain as 0, and this will lead to incorrect empty checking.
-
-Fix it by checking "timestamp" instead of "value" because
-timestamp will be always assigned for all history elements
+In addition, all events which can be treated as "errors" already
+have "err" or "fail" words in their names.
 
 Cc: Alim Akhtar <alim.akhtar@samsung.com>
 Cc: Asutosh Das <asutoshd@codeaurora.org>
@@ -117,18 +116,18 @@ Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 1b97f2dc0b63..bae43da00bb6 100644
+index 29e3d50aabfb..d847426507e7 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -385,7 +385,7 @@ static void ufshcd_print_err_hist(struct ufs_hba *hba,
- 	for (i = 0; i < UFS_ERR_REG_HIST_LENGTH; i++) {
- 		int p = (i + err_hist->pos) % UFS_ERR_REG_HIST_LENGTH;
+@@ -393,7 +393,7 @@ static void ufshcd_print_err_hist(struct ufs_hba *hba,
+ 	}
  
--		if (err_hist->reg[p] == 0)
-+		if (err_hist->tstamp[p] == 0)
- 			continue;
- 		dev_err(hba->dev, "%s[%d] = 0x%x at %lld us\n", err_name, p,
- 			err_hist->reg[p], ktime_to_us(err_hist->tstamp[p]));
+ 	if (!found)
+-		dev_err(hba->dev, "No record of %s errors\n", err_name);
++		dev_err(hba->dev, "No record of %s\n", err_name);
+ }
+ 
+ static void ufshcd_print_host_regs(struct ufs_hba *hba)
 -- 
 2.18.0
 _______________________________________________
