@@ -6,92 +6,152 @@ X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
 	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A2C9C32771
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2020 09:36:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AEE8BC32771
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2020 09:54:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DFD76206DB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2020 09:36:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 77228207FD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2020 09:54:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KTsTkH9V";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kroah.com header.i=@kroah.com header.b="kzScDLeb";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=messagingengine.com header.i=@messagingengine.com header.b="Kh2chubZ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DFD76206DB
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=kroah.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F5zViIFn";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=microchiptechnology.onmicrosoft.com header.i=@microchiptechnology.onmicrosoft.com header.b="ObK9NWuO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 77228207FD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=microchip.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5dJQ3VunHvZ6NClvU6FAcKe6g8QqW9PYlBfo4CB2dkk=; b=KTsTkH9V4ACLTu
-	fNhQZACP6FMJ09N++looyLdzerG5vV3kYXDENWZCyiAPGqCkaYBKtS5+/+f1uDGLasY0fD07JVw7m
-	GM3CozsBi/SnrC6qC0cJtT+xqZ/GOD+OQZTlczx4/OE8vsk+rWQJ3Skh/LaQPgJD67vZjJxciLDbF
-	WNApBH3dwztNty5vNyin4niUI8f/a8fsFaJvCzUHHtqPMShIZr4IWEdb6AxqVGDL0GzqxVUOFeCvc
-	jQTx0j5fRHitX8j8i0TqGJDiguNFnlmzhpKCBFpfWnTiiCYxBP8BOg/VTv0s1Qu2Pw+XgBALKaq0Y
-	9M0qPdJT+QMvj+Otj/YA==;
+	List-Owner; bh=dY5ft8igaE5GpESSg22zOHlYtPZ20mpUJWNr095VR7w=; b=F5zViIFnQZknB0
+	CUy8FAFaJPdyKpvybUO9cXQsnq9yTFG7jzgNEjULas0L/XZNzZPYlNequLJCXpqzEB54ShGF0NxpV
+	+oW9CzK6saSMRHvzoziQYTOHeSn3pbdjQ48mZ2bn8kpl6Z6lYhzOaMQzYCclnB1eHZ6S0L8HryfKG
+	w7rRbhRFpnzLkmYDqq5kLt9WIw9K7/Nf/zLO74CKZSt07IxzSGzeXo6cv6Gq2heCWuu0iXlmCv2yW
+	NWQuBRNT8dLUWlJOPxxmqe797WtdKwkT5BQH0M6lWGrQlumMf2yEB2aIR0OnSiOa7kn1JNmwUSBEB
+	x7tJ69KwxGFwBlGxjW8w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ioOnm-0003jU-FZ; Mon, 06 Jan 2020 09:35:58 +0000
-Received: from wout4-smtp.messagingengine.com ([64.147.123.20])
+	id 1ioP5J-00038s-Pc; Mon, 06 Jan 2020 09:54:05 +0000
+Received: from esa3.microchip.iphmx.com ([68.232.153.233])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ioOne-0003aW-25; Mon, 06 Jan 2020 09:35:51 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
- by mailout.west.internal (Postfix) with ESMTP id 86610B6A;
- Mon,  6 Jan 2020 04:35:46 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute6.internal (MEProxy); Mon, 06 Jan 2020 04:35:47 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm2; bh=Az6842jCwBnlC75YpfmD47hgMm/
- fEpPSyC0cxuz5s9w=; b=kzScDLebOyUrdPpqvzrwdoYxq+UFq+taB9NTurVyeiK
- S86xICcEca9s27KD3g+Yl56cssDqpOViihmO46C8YBBq/YgUCL8M9Lg0CsUIFnHr
- Q9v943r5ZzSkveqnnBzGNaWHR1Gdh0CC7DuOkP0jEd8m8BspxOxhCk5s2Swr3Hsb
- Hf5FxBpKBOeUl68e6UJ8BtP/hc/S/BOHzN3ha6o9OwpAtHujwYouP8VW//XpA3US
- DDxDgXk0SOd+lrS8hKfAjzg/UHI8i8Vz2CBdywUTPPKD9gX6DP7jS8VCI1DPjGnc
- EnnIHbXR4ezDmQy/TM0SCGBR3gmFyTh1+HkBdecdbDA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=Az6842
- jCwBnlC75YpfmD47hgMm/fEpPSyC0cxuz5s9w=; b=Kh2chubZJUEYhmmKE+k6VQ
- MeSt0HWCXClLTPmNA+IulC1Tom/dJorN4zMD3NmTRa878y/Sz637Mr0LXybDBK+T
- sPN3x4xi0YtGx7b/wNOrX0lm8INO0CYMhmV5fnMgSnUCUAhTbCZDUfQ8nrRbYkqi
- KBPhfNVM5QqFO3DcYZHsidPtmzl5MpKo2NYgOPR0nJQMDdPK2Yi03U0mrIDIpB2h
- iTn6a0BoWGMla3X0Ya1D+Vp7LHlOpC4v+v7H5e95kSrIncRUiWaSgPwImQ0U4Iyc
- irTCGzBFKBaYbViIH5dqW6GwOD1sLInqhhMGNnHNbu0QKZdvQZuIEKm5g+Gjwlhw
- ==
-X-ME-Sender: <xms:cf8SXpIA947rVvmHUPBysszxau7raxjqa_kD0WYq0rGaM0GlIk2Z-Q>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrvdehtddgtdejucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehttdertddttddvnecuhfhrohhmpefirhgvghcu
- mffjuceoghhrvghgsehkrhhorghhrdgtohhmqeenucfkphepkeefrdekiedrkeelrddutd
- ejnecurfgrrhgrmhepmhgrihhlfhhrohhmpehgrhgvgheskhhrohgrhhdrtghomhenucev
- lhhushhtvghrufhiiigvpedt
-X-ME-Proxy: <xmx:cf8SXoZyxCA8_Yv0eRB19xnOEQgYzhRkpcvv_VQ2fffGtbKFSdyOQQ>
- <xmx:cf8SXrKq2yKIRrhkX6SfgbS02ciFJiwIKaynzWtr4m2BRbpwrOdy1A>
- <xmx:cf8SXmAVXVUSWRBdo_agnlvNDdms-8IEP9aglXKIT8rE4DYbEKEjbw>
- <xmx:cv8SXgo1bpQ4NQlMnyvCcfqEANfylS-nP0m6lPlkJPN4MmW3i6PRfw>
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- by mail.messagingengine.com (Postfix) with ESMTPA id BD67380059;
- Mon,  6 Jan 2020 04:35:44 -0500 (EST)
-Date: Mon, 6 Jan 2020 10:35:42 +0100
-From: Greg KH <greg@kroah.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [PATCH v2 2/2] phy: Enable compile testing for some of drivers
-Message-ID: <20200106093542.GA3125672@kroah.com>
-References: <20200103164710.4829-1-krzk@kernel.org>
- <20200103164710.4829-2-krzk@kernel.org>
+ id 1ioP5B-0002zK-KM; Mon, 06 Jan 2020 09:53:58 +0000
+Received-SPF: Pass (esa3.microchip.iphmx.com: domain of
+ Claudiu.Beznea@microchip.com designates 198.175.253.82 as
+ permitted sender) identity=mailfrom;
+ client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
+ envelope-from="Claudiu.Beznea@microchip.com";
+ x-sender="Claudiu.Beznea@microchip.com";
+ x-conformance=spf_only; x-record-type="v=spf1";
+ x-record-text="v=spf1 mx a:ushub1.microchip.com
+ a:smtpout.microchip.com -exists:%{i}.spf.microchip.iphmx.com
+ include:servers.mcsv.net include:mktomail.com
+ include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa3.microchip.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@email.microchip.com) identity=helo;
+ client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
+ envelope-from="Claudiu.Beznea@microchip.com";
+ x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
+Authentication-Results: esa3.microchip.iphmx.com;
+ spf=Pass smtp.mailfrom=Claudiu.Beznea@microchip.com;
+ spf=None smtp.helo=postmaster@email.microchip.com;
+ dkim=pass (signature verified) header.i=@microchiptechnology.onmicrosoft.com;
+ dmarc=pass (p=none dis=none) d=microchip.com
+IronPort-SDR: zRYaw4MeO4BFWFLdqJXvUY4C8JTd6rsGJCwIJ8YlLTugfq0JmWZaPogmdcwBHuWUZ++ko7DEGD
+ BJJGNFA57Sl79e73vBQSMa6SCMiY4i9i91fTHYXugjtElNw5uB78HquFSr8yexIUHXrkYEksaY
+ YvegeIvKQ+aitDPClbUEfrYNlhUCrbKtKUrmTH155eMDQljBsWiXKOrNC3/Ri4FJfVnyTjtadA
+ KYRORygrteaJ/5RBN6OIwm3rcfgKZiqIdTgpy7okIqMBSSt1X2VAIhDb3/zWQobDcwsmUwkdp+
+ GYk=
+X-IronPort-AV: E=Sophos;i="5.69,402,1571727600"; d="scan'208";a="62304574"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 06 Jan 2020 02:53:56 -0700
+Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
+ chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Mon, 6 Jan 2020 02:53:55 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
+ via Frontend Transport; Mon, 6 Jan 2020 02:53:55 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=M6+sOCUNgE+sv79pOH7kUbSG9qURMPA1dAm5fxhtIfOdllB7j8oOQUXuq4UVPDH3K6kyZ84lRz2s5YVfeQPPQR8QIQAY9l+Ux86ST8Ct7iVL2dLyLxKY1quJKVFTo6ttkmzgQqo8Rp6PMu7N3ufe+8TD6KoaKS5ZreGOxG9UjmMgx6DzVWKJyCzr77teNi69BbgzQ4/mno0VE+/lJinyVtU2IdF43ljxiOADQjJhBzRQnhSD3iQW5miSz5gXILRA4kehDRaXYzW72mH6WNSGuFpEk6wB3le/4EYQgiByvjr54XzOdeu/T8wDVRlgVZTKMjyzx/Ru0Pn2YoQfdbhfZg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=+gm1Br1CHUtUOfgm+A45dSW91JgI1NL3xTYIa8s1JGo=;
+ b=a0U49dyvkiMBMRgGGE00g5gvxs8k7jlVrAdhhlRinlVULsPnQTDXEguRKZkL1KONA7HTvyN9sn/J83CUm84GhGAwQqDWutNz3BkFQ/KixS3MWq7dN5sOZe3OFL4HllS4IkrpAF9PWZ0fDZ43P7KjqsAIF8g1wGNA3DOpWnesICVwV05CRTk9bHmguTgrVdu6T5Wu9l/k3NzEjYfH7GZvQblk1lME19wIAxCxMcnN8ggPNXUB4NBD/WciEaOfVoDvvwCgGZmv7kfVy6TkePwvynMC6j+dFeESgb9rPag5Wzi+Oi1QXVdcPdC5CCOkOPxGCy1biZatXK9+TOydK+Qfrw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microchip.com; dmarc=pass action=none
+ header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector2-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=+gm1Br1CHUtUOfgm+A45dSW91JgI1NL3xTYIa8s1JGo=;
+ b=ObK9NWuOUA2Ra5xdx/mS3cPhEFFH1X0iYxOt9W+7P5FUopxHqJOk0L7ZjvI1nKqNtyOBL8UGJvMnC+AwMskDCxkQ+RH7pvnpXckbg+aKZomFbpBhTEyJ7weDynWu1hszOHfmSZZ5TjRssoZBKQDThbIM5FWS/nyb61QnU6pZjyU=
+Received: from DM6PR11MB3225.namprd11.prod.outlook.com (20.176.120.224) by
+ DM6PR11MB3868.namprd11.prod.outlook.com (10.255.61.13) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2602.10; Mon, 6 Jan 2020 09:53:53 +0000
+Received: from DM6PR11MB3225.namprd11.prod.outlook.com
+ ([fe80::106f:424f:ac54:1dbb]) by DM6PR11MB3225.namprd11.prod.outlook.com
+ ([fe80::106f:424f:ac54:1dbb%7]) with mapi id 15.20.2602.015; Mon, 6 Jan 2020
+ 09:53:53 +0000
+From: <Claudiu.Beznea@microchip.com>
+To: <krzk@kernel.org>, <thierry.reding@gmail.com>,
+ <u.kleine-koenig@pengutronix.de>, <linux-pwm@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <bcm-kernel-feedback-list@broadcom.com>,
+ <linux-rpi-kernel@lists.infradead.org>, <linux-amlogic@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-riscv@lists.infradead.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>, <linux-tegra@vger.kernel.org>
+Subject: Re: [PATCH 2/2] pwm: Enable compile testing for some of drivers
+Thread-Topic: [PATCH 2/2] pwm: Enable compile testing for some of drivers
+Thread-Index: AQHVxHc0gN2UoP7Gc0Ocsx6/BxJUcA==
+Date: Mon, 6 Jan 2020 09:53:53 +0000
+Message-ID: <145f61f5-941b-d0f4-7abd-33ce7f005fca@microchip.com>
+References: <20191230172113.17222-1-krzk@kernel.org>
+ <20191230172113.17222-2-krzk@kernel.org>
+In-Reply-To: <20191230172113.17222-2-krzk@kernel.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [94.177.32.156]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: cd98d837-f71d-4669-e076-08d7928e56fe
+x-ms-traffictypediagnostic: DM6PR11MB3868:
+x-microsoft-antispam-prvs: <DM6PR11MB386839E19F8AE22C56AED43D873C0@DM6PR11MB3868.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:5516;
+x-forefront-prvs: 0274272F87
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(396003)(346002)(376002)(39860400002)(136003)(366004)(189003)(199004)(66476007)(478600001)(66556008)(64756008)(8676002)(2616005)(66446008)(31686004)(6506007)(66946007)(53546011)(91956017)(76116006)(26005)(186003)(71200400001)(7416002)(110136005)(316002)(6486002)(8936002)(2906002)(558084003)(86362001)(5660300002)(6512007)(31696002)(36756003)(81156014)(81166006)(921003)(1121003);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:DM6PR11MB3868;
+ H:DM6PR11MB3225.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: microchip.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: wOMKXiNGziR8dv9gol0oOsf6AU3jg0EgTcvPeER6oGWQ/VHSV6mZ4G35IavOvUWvfJowh6rCgEhlk8dQaHqqGFPgluMQ/mqNOqzZVUbtBXvd+M8DHE4Ih/QhaACanEKd2yY2+hKwmKfmIpxc1EDyNlGPemaiqh/eovfKhRtnMxavwU1Rh5GcI/Bfjng/YCxdkty/e8RkHg/iDVeRjL+c/LvR4hzUbhvVz3lKSJuB5ISxB3wNgEJGnvL8HRHkVq0weTLXARW5wg0/ogGuGqlsHjEi26ZJ9uuAZdKfXOph3zN5gzzRsREIrYqQtIndwiq3oYxJ7K+SEPHCJN1cZszNc3RUqF6sq9ENqwWlsZVSQaJswTwMjrUgUQEtDbwvv2LYq+67tv/sGjVbjPS4m9b4PUGsbsVMg053jU9TpUZuCpkkSbnD/5hZPBztOan2HJK8UmTIUVrmLulShBaKbP3pI4lxjuCXzYZMVtW9YYwU/x5yVUIMoaO/gPvVe18u5JSW
+x-ms-exchange-transport-forked: True
+Content-ID: <C6A04D4974AB244693C3B9F0D1537D34@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200103164710.4829-2-krzk@kernel.org>
+X-MS-Exchange-CrossTenant-Network-Message-Id: cd98d837-f71d-4669-e076-08d7928e56fe
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Jan 2020 09:53:53.6461 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 3t7GXAiHVzcYWfgg7rs7BGYg4AhBXFOdWKJswiYpNOQZcRLxnjLB8thujRLTCNbSdB/NeinF2BmkaKx5I9MFDTEFmIV3xzqyWRswi5WXJcE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3868
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200106_013550_120424_B0F24719 
-X-CRM114-Status: UNSURE (   6.16  )
+X-CRM114-CacheID: sfid-20200106_015357_678495_F691050E 
+X-CRM114-Status: UNSURE (   4.88  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -104,28 +164,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Florian Fainelli <f.fainelli@gmail.com>, linux-kernel@vger.kernel.org,
- Maxime Ripard <mripard@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 03, 2020 at 05:47:10PM +0100, Krzysztof Kozlowski wrote:
-> Some of the phy drivers can be compile tested to increase build
+
+
+On 30.12.2019 19:21, Krzysztof Kozlowski wrote:
+> Some of the PWM drivers can be compile tested to increase build
 > coverage.
+> 
+> The Meson PWM driver requires COMMON_CLK dependency.
 > 
 > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 
-I've  taken this through my usb tree as this is needed to resolve some
-build Kconfig warnings that now show up there.
-
-thanks,
-
-greg k-h
-
+for PWM_ATMEL:
+Acked-by: Claudiu Beznea <claudiu.beznea@microchip.com>
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
