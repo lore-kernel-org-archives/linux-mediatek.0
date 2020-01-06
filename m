@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D1EAC33C8C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2020 17:34:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 83A80C33C8C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2020 17:45:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E434420731
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2020 17:34:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 572CD207FD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2020 17:45:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KoVx0hEq";
-	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="lLPicAf/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E434420731
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bhej8JWO";
+	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="WNV1qgjh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 572CD207FD
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
 	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=fyUk+1S+ud9arPxrDTi1/23j5n6RVAd92rXG83dGZaI=; b=KoVx0hEqG/9TJgrlZkgKf9uBc
-	w8qxOfzAVx42NatGggf0QelEqqF1TrVtif3ggwLKKieRFvI+usDQ6y664MfIUK9ki7o9tR6m3ARzv
-	BgLPSQ2kMV/rV8JQgTN9J4eqJrRZ70OMpS6Wl4UX7bqANlh/8DdcgFfOOT+uaB2jCbhNSoraOyrHg
-	GCvVAzPF4ub+erqJsiozQtnAa4zjrJWIegiqwzehb5vPHHUvwSdXrJhikYDe/lIFpshgiKk25hgLF
-	7JLowpMpOuyP4tygSFiiXW8Tszb/icfGsMlnhV7y8O3iPfcsC1TpSQgDJ+6Dd9t6N+n9YfRDelPx2
-	J5rBQOsLQ==;
+	 bh=JaNqfJQR5aX5NPn6W+hArqA0nJP9b/stcBAxWwgC0pU=; b=bhej8JWODLLuQ6rF4EUjomZBq
+	sogh+y5PdIBuPlc+CnuHx28v13rzJDqnD6wGeQEjOr07OtBy3UTtz/3+tY4yRvSdzbW3QlbUkYy1r
+	9g0owETM/KbJdR8N274tfvl+Mu37l2/Zdi/FzqNpzEzDCH60LOqNIvNeDCq3i8/IhXEph0pHHRi9p
+	epettBnQvXlpc2CxMXqRT1rx1zQBqk/xJKsXkQsbbloU1XQVsoR3UQfuTrjxA2FZQQoXoPDvK9xNz
+	AdwgqpFR6eXjgTX3lDeF79EOL9YUyy/+Ww/gLsrHLiKU/fIPGmRmh8ZOH1D9T1OjDtYAV160TS0jg
+	iaYP16u4w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ioWGh-0007CH-Vr; Mon, 06 Jan 2020 17:34:19 +0000
-Received: from mail25.static.mailgun.info ([104.130.122.25])
+	id 1ioWRo-00059y-7d; Mon, 06 Jan 2020 17:45:48 +0000
+Received: from mail26.static.mailgun.info ([104.130.122.26])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ioWGZ-0006yo-Dp
- for linux-mediatek@lists.infradead.org; Mon, 06 Jan 2020 17:34:12 +0000
+ id 1ioWRW-0004r3-Di
+ for linux-mediatek@lists.infradead.org; Mon, 06 Jan 2020 17:45:32 +0000
 DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
  q=dns/txt; 
- s=smtp; t=1578332050; h=Message-ID: References: In-Reply-To: Subject:
+ s=smtp; t=1578332730; h=Message-ID: References: In-Reply-To: Subject:
  Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=LtY77c4ckIl8xeGO5RUZJ/girLgK8v2bv5Hi6fr6xIs=;
- b=lLPicAf/WzfMQbZ1Ktx8CcZKyfBYLb/cwpF4SlvTbFScaS2QcZsOcRwcOb7uvPbyszARmeJa
- 7IgpXhlKbE3+iJ8fQXxcbuUGYsKilEsNikncsqBzXHhCdsP3+E+UwC2ipLaSPyPUb1wWzlUb
- HQWUF5WPQqkvNVr33OErKnsDdJE=
-X-Mailgun-Sending-Ip: 104.130.122.25
+ MIME-Version: Sender; bh=aE88VHpKzshop14jt/7qVz5iKKzIOcAtFxm19yTXAyw=;
+ b=WNV1qgjhynMbb2DDctgHF2vaWOdq6D8eRZE19OyRjlUYbJf2DMebqZDK+fy8bWwIB0HzLIiu
+ 6A75s4Jhun6R8P7V5De7ZfSncCHsRevE7umrbRZi0NrBLBz6l8nA7DfIwgYkcSZHRJsdDf3X
+ /mfjvNz1M40rOyYQegueX/ppY+k=
+X-Mailgun-Sending-Ip: 104.130.122.26
 X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
 Received: from smtp.codeaurora.org
  (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
- by mxa.mailgun.org with ESMTP id 5e136f8f.7f9b41984030-smtp-out-n01;
- Mon, 06 Jan 2020 17:34:07 -0000 (UTC)
+ by mxa.mailgun.org with ESMTP id 5e137237.7f774c137538-smtp-out-n02;
+ Mon, 06 Jan 2020 17:45:27 -0000 (UTC)
 Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id ADF46C433A2; Mon,  6 Jan 2020 17:34:06 +0000 (UTC)
+ id 7BA40C447AC; Mon,  6 Jan 2020 17:45:27 +0000 (UTC)
 Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
  (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
  (No client certificate requested) (Authenticated sender: asutoshd)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id BC4CAC43383;
- Mon,  6 Jan 2020 17:34:05 +0000 (UTC)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 00987C433A2;
+ Mon,  6 Jan 2020 17:45:25 +0000 (UTC)
 MIME-Version: 1.0
-Date: Mon, 06 Jan 2020 09:34:05 -0800
+Date: Mon, 06 Jan 2020 09:45:25 -0800
 From: asutoshd@codeaurora.org
 To: Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [PATCH v1 1/3] scsi: ufs: fix empty check of error history
-In-Reply-To: <1578147968-30938-2-git-send-email-stanley.chu@mediatek.com>
-References: <1578147968-30938-1-git-send-email-stanley.chu@mediatek.com>
- <1578147968-30938-2-git-send-email-stanley.chu@mediatek.com>
-Message-ID: <926596b3823333bd8d31aed8630509de@codeaurora.org>
+Subject: Re: [PATCH v2 1/2] scsi: ufs: pass device information to
+ apply_dev_quirks
+In-Reply-To: <1578270431-9873-2-git-send-email-stanley.chu@mediatek.com>
+References: <1578270431-9873-1-git-send-email-stanley.chu@mediatek.com>
+ <1578270431-9873-2-git-send-email-stanley.chu@mediatek.com>
+Message-ID: <5eafff63c1c2e4ca6fdaf2d349a74dac@codeaurora.org>
 X-Sender: asutoshd@codeaurora.org
 User-Agent: Roundcube Webmail/1.3.9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200106_093411_528056_E7513D35 
-X-CRM114-Status: GOOD (  16.49  )
+X-CRM114-CacheID: sfid-20200106_094530_578460_2E37B848 
+X-CRM114-Status: GOOD (  18.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,16 +98,13 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-01-04 06:26, Stanley Chu wrote:
-> Currently checking if an error history element is empty or
-> not is by its "value". In most cases, value is error code.
+On 2020-01-05 16:27, Stanley Chu wrote:
+> Pass UFS device information to vendor-specific variant callback
+> "apply_dev_quirks" because some platform vendors need to know such
+> information to apply special handlings or quirks in specific devices.
 > 
-> However this checking is not correct because some errors or
-> events do not specify any values in error history so values
-> remain as 0, and this will lead to incorrect empty checking.
-> 
-> Fix it by checking "timestamp" instead of "value" because
-> timestamp will be always assigned for all history elements
+> In the same time, modify existed vendor implementation according to
+> the new interface.
 > 
 > Cc: Alim Akhtar <alim.akhtar@samsung.com>
 > Cc: Asutosh Das <asutoshd@codeaurora.org>
@@ -115,29 +113,86 @@ On 2020-01-04 06:26, Stanley Chu wrote:
 > Cc: Bean Huo <beanhuo@micron.com>
 > Cc: Can Guo <cang@codeaurora.org>
 > Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Reviewed-by: Avri Altman <avri.altman@wdc.com>
 > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 > ---
->  drivers/scsi/ufs/ufshcd.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/scsi/ufs/ufs-qcom.c | 3 ++-
+>  drivers/scsi/ufs/ufshcd.c   | 5 +++--
+>  drivers/scsi/ufs/ufshcd.h   | 7 ++++---
+>  3 files changed, 9 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/scsi/ufs/ufs-qcom.c b/drivers/scsi/ufs/ufs-qcom.c
+> index c69c29a1ceb9..ebb5c66e069f 100644
+> --- a/drivers/scsi/ufs/ufs-qcom.c
+> +++ b/drivers/scsi/ufs/ufs-qcom.c
+> @@ -949,7 +949,8 @@ static int
+> ufs_qcom_quirk_host_pa_saveconfigtime(struct ufs_hba *hba)
+>  	return err;
+>  }
+> 
+> -static int ufs_qcom_apply_dev_quirks(struct ufs_hba *hba)
+> +static int ufs_qcom_apply_dev_quirks(struct ufs_hba *hba,
+> +				     struct ufs_dev_desc *card)
+>  {
+>  	int err = 0;
 > 
 > diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> index 1b97f2dc0b63..bae43da00bb6 100644
+> index 1b97f2dc0b63..9abf0ea8c308 100644
 > --- a/drivers/scsi/ufs/ufshcd.c
 > +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -385,7 +385,7 @@ static void ufshcd_print_err_hist(struct ufs_hba 
-> *hba,
->  	for (i = 0; i < UFS_ERR_REG_HIST_LENGTH; i++) {
->  		int p = (i + err_hist->pos) % UFS_ERR_REG_HIST_LENGTH;
+> @@ -6803,7 +6803,8 @@ static int
+> ufshcd_quirk_tune_host_pa_tactivate(struct ufs_hba *hba)
+>  	return ret;
+>  }
 > 
-> -		if (err_hist->reg[p] == 0)
-> +		if (err_hist->tstamp[p] == 0)
->  			continue;
->  		dev_err(hba->dev, "%s[%d] = 0x%x at %lld us\n", err_name, p,
->  			err_hist->reg[p], ktime_to_us(err_hist->tstamp[p]));
+> -static void ufshcd_tune_unipro_params(struct ufs_hba *hba)
+> +static void ufshcd_tune_unipro_params(struct ufs_hba *hba,
+> +				      struct ufs_dev_desc *card)
+>  {
+>  	if (ufshcd_is_unipro_pa_params_tuning_req(hba)) {
+>  		ufshcd_tune_pa_tactivate(hba);
+> @@ -6817,7 +6818,7 @@ static void ufshcd_tune_unipro_params(struct 
+> ufs_hba *hba)
+>  	if (hba->dev_quirks & UFS_DEVICE_QUIRK_HOST_PA_TACTIVATE)
+>  		ufshcd_quirk_tune_host_pa_tactivate(hba);
+> 
+> -	ufshcd_vops_apply_dev_quirks(hba);
+> +	ufshcd_vops_apply_dev_quirks(hba, card);
+>  }
+> 
+>  static void ufshcd_clear_dbg_ufs_stats(struct ufs_hba *hba)
+> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+> index e05cafddc87b..4f3fa71303da 100644
+> --- a/drivers/scsi/ufs/ufshcd.h
+> +++ b/drivers/scsi/ufs/ufshcd.h
+> @@ -320,7 +320,7 @@ struct ufs_hba_variant_ops {
+>  	void	(*setup_task_mgmt)(struct ufs_hba *, int, u8);
+>  	void    (*hibern8_notify)(struct ufs_hba *, enum uic_cmd_dme,
+>  					enum ufs_notify_change_status);
+> -	int	(*apply_dev_quirks)(struct ufs_hba *);
+> +	int	(*apply_dev_quirks)(struct ufs_hba *, struct ufs_dev_desc *);
+>  	int     (*suspend)(struct ufs_hba *, enum ufs_pm_op);
+>  	int     (*resume)(struct ufs_hba *, enum ufs_pm_op);
+>  	void	(*dbg_register_dump)(struct ufs_hba *hba);
+> @@ -1052,10 +1052,11 @@ static inline void
+> ufshcd_vops_hibern8_notify(struct ufs_hba *hba,
+>  		return hba->vops->hibern8_notify(hba, cmd, status);
+>  }
+> 
+> -static inline int ufshcd_vops_apply_dev_quirks(struct ufs_hba *hba)
+> +static inline int ufshcd_vops_apply_dev_quirks(struct ufs_hba *hba,
+> +					       struct ufs_dev_desc *card)
+>  {
+>  	if (hba->vops && hba->vops->apply_dev_quirks)
+> -		return hba->vops->apply_dev_quirks(hba);
+> +		return hba->vops->apply_dev_quirks(hba, card);
+>  	return 0;
+>  }
 
-Looks good to me.
+Please separate the vendor code (ufs-qcom, in this case) to a separate 
+patch.
 
-Reviewed by:- Asutosh Das <asutoshd@codeaurora.org>
+-asd
 
 _______________________________________________
 Linux-mediatek mailing list
