@@ -2,79 +2,137 @@ Return-Path: <SRS0=+t0h=23=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 83A80C33C8C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2020 17:45:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 53EA2C33C8C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2020 20:21:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 572CD207FD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2020 17:45:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 208E22081E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2020 20:21:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bhej8JWO";
-	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="WNV1qgjh"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 572CD207FD
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Vp9Vhqjp";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="hZZl/CXO";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="iUdYrOUY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 208E22081E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JaNqfJQR5aX5NPn6W+hArqA0nJP9b/stcBAxWwgC0pU=; b=bhej8JWODLLuQ6rF4EUjomZBq
-	sogh+y5PdIBuPlc+CnuHx28v13rzJDqnD6wGeQEjOr07OtBy3UTtz/3+tY4yRvSdzbW3QlbUkYy1r
-	9g0owETM/KbJdR8N274tfvl+Mu37l2/Zdi/FzqNpzEzDCH60LOqNIvNeDCq3i8/IhXEph0pHHRi9p
-	epettBnQvXlpc2CxMXqRT1rx1zQBqk/xJKsXkQsbbloU1XQVsoR3UQfuTrjxA2FZQQoXoPDvK9xNz
-	AdwgqpFR6eXjgTX3lDeF79EOL9YUyy/+Ww/gLsrHLiKU/fIPGmRmh8ZOH1D9T1OjDtYAV160TS0jg
-	iaYP16u4w==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4WXTiJC8ppwp6kUKLvzxP6nlSfQztte1IMFUOJy5gW4=; b=Vp9VhqjpSiO68e
+	Jqn2IuzhFbQop1V1DHR6uUpgjOY+OG7Q5X1KZvGVm1yr07aLOJOC8fSTJ9ScfFdCRBhbyQj5yZRVt
+	zr3DDFTW1jsX//3SRQoSQ0QkJTLVolqwt097NCLHYPyxpsLah6J3co21YFLop77v4rYpHhWnyjqNd
+	Jg8wuAiWR1XvtW4I+3z0XjbE2zMLr3RkDpwqevglkhuJoxaz9c8sMppxwnaA+YXURZUJC56vT7uVQ
+	yKGydbhmK3ZrzWc9kpkbrpYLsCfn9Ft73YKCVd8/MsYSLn8tMwwld+hly5FrJ6RnGMJ9WcKq9t9Xl
+	C5p7/aJYaodn3HgC6LNg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ioWRo-00059y-7d; Mon, 06 Jan 2020 17:45:48 +0000
-Received: from mail26.static.mailgun.info ([104.130.122.26])
+	id 1ioYsF-0001Ym-6U; Mon, 06 Jan 2020 20:21:15 +0000
+Received: from esa5.hgst.iphmx.com ([216.71.153.144])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ioWRW-0004r3-Di
- for linux-mediatek@lists.infradead.org; Mon, 06 Jan 2020 17:45:32 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1578332730; h=Message-ID: References: In-Reply-To: Subject:
- Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=aE88VHpKzshop14jt/7qVz5iKKzIOcAtFxm19yTXAyw=;
- b=WNV1qgjhynMbb2DDctgHF2vaWOdq6D8eRZE19OyRjlUYbJf2DMebqZDK+fy8bWwIB0HzLIiu
- 6A75s4Jhun6R8P7V5De7ZfSncCHsRevE7umrbRZi0NrBLBz6l8nA7DfIwgYkcSZHRJsdDf3X
- /mfjvNz1M40rOyYQegueX/ppY+k=
-X-Mailgun-Sending-Ip: 104.130.122.26
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
- by mxa.mailgun.org with ESMTP id 5e137237.7f774c137538-smtp-out-n02;
- Mon, 06 Jan 2020 17:45:27 -0000 (UTC)
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 7BA40C447AC; Mon,  6 Jan 2020 17:45:27 +0000 (UTC)
-Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
- (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
- (No client certificate requested) (Authenticated sender: asutoshd)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 00987C433A2;
- Mon,  6 Jan 2020 17:45:25 +0000 (UTC)
-MIME-Version: 1.0
-Date: Mon, 06 Jan 2020 09:45:25 -0800
-From: asutoshd@codeaurora.org
-To: Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [PATCH v2 1/2] scsi: ufs: pass device information to
+ id 1ioYsD-0001YO-76; Mon, 06 Jan 2020 20:21:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1578342073; x=1609878073;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=0IC4VkaO+C/3JRyUhv+IfVCOKYW6ETmNhwVfU9S31Ec=;
+ b=hZZl/CXOr38tSHZ6efWxhSrkHv0wBOhsYDx/GT7dQffU+TP/6M6SkTKp
+ kvl95hc8Ls6XNTD9cnpu4/opOmSKOIudhmXnnH9gQrrjw8F/k5dYwPSHx
+ 7MUNOeLc4LlTAZ0iDgy1n5/igScwCGJdkoWdxpYpeBRYuFlYF8DcDSyRP
+ Y9+u0ajxUmzahhG9aILVV5aVbor/LCe34VMTL7m4Jvgsd9+JBfrPo2eEJ
+ JIGAhhfaEjItcOnBXR9MW1Qnh8bg8D4+Qb2ezXJNGSIcSyN2M69h+QFQS
+ uam1BTPR7MF18tbkdqBSX6DxtRx4jOKWqG+1usCL82xY2WIlDwteJRwRK g==;
+IronPort-SDR: +KatWXF0fMroBxqQ913IoZDDM+0uw4T2i/Kp7way3B+41ckq7ZYZAM9G4/X1+PzZT0yCyl/ccC
+ +pcUXyVa4D7IxQbltTQUQ6hSOdjyy9jOuxaJAiwmEIAldk5c0cXd2uwWuEtYh8PqJe24Uinm+2
+ vcp2/EJ97NQuMbOKRUU0n5U/cNuVGL8iSeNQoEfE5IzdyHEsLDtmHN0AK4efbnInoDuHO4PNSw
+ ckMSgopmabxbfSp5/k/RVJojSPnnh13EkAhJqUrDEMmQETbQNbEtQF6NDrLXV6MbzPZbEVLfa5
+ chg=
+X-IronPort-AV: E=Sophos;i="5.69,403,1571673600"; d="scan'208";a="127553157"
+Received: from mail-bl2nam02lp2059.outbound.protection.outlook.com (HELO
+ NAM02-BL2-obe.outbound.protection.outlook.com) ([104.47.38.59])
+ by ob1.hgst.iphmx.com with ESMTP; 07 Jan 2020 04:21:11 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=C05tXnfyj+Dh06aLhLLfkiObsu64cOAaaM/+m4dOklXok2rM2gtFBsS5yoj4iCWptQbnhAa7UO0RVF2k8rUrW54FPKmXSXQRsjGx0fQMLsw2KJUQ4fkeN2+nafzW/rGYjBRtFbPJNnrRzKshWMFCTB/3C0N5I1O8H/L+e+A/vnkg69ocdhjoqd0aQ/YWpn4ATEg2A03egG52QS8018EiQzcCZj2jfGIHM8XXVWtq/CDqTUd0SIEVDHIYRV5j8qgfjPBY2dg9CaDkOd2QzOg4gKVq6KHmD5NvuyONkbgBCjuiG4VivV95xY5if9w2OZtF8gguusTDf2s6iyyx3uJBaQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0IC4VkaO+C/3JRyUhv+IfVCOKYW6ETmNhwVfU9S31Ec=;
+ b=fRgGhpg5Ucysxv1XFBF+OlwZf6ZJIcR5elUqwYxF7FLd8Z7bm4hvANA2kzvxUQeXDsIHJ6KE6Ih5La/Ng9SsFbPzNUuRaWLate4RRQGHj6cGuy9Uvuhj84xcqSSLqx5/9Nq/S2YEOXvStkyodGGM/b5/UfGgwBw13dU4R2psDLJPnzFExTLmacyf8wxnPGw/PEHCbSGXdl7b7YzvYWW0PzCXkERtGARJPwAw+AhGYcDjze777vVA6IubqEzH1UA/HOceCZfQX6pCkKvGlbVxd5QXeS7Q26a/XzVoVStnoC2jMQLwym5ib+RoTvn1mPO7uXx3NgAZt99/wuHYFCJtRA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0IC4VkaO+C/3JRyUhv+IfVCOKYW6ETmNhwVfU9S31Ec=;
+ b=iUdYrOUYCqlsWGZbpXxmWvL1pLQZRUkHLXVXAhw7KRyfVKY3vMVZFRvTmI+qv2yQ2jJPSjawd9OSkPlrpB21ZhRuJUH73RWQBVgQdHJ1yLfTzwJ0jgXglJGcvRXsA0BV2BR+mN94ziGyHyQ/Eqa/zjwj0axgsY49EdUQ8CoCkEY=
+Received: from MN2PR04MB6991.namprd04.prod.outlook.com (10.186.144.209) by
+ MN2PR04MB6029.namprd04.prod.outlook.com (20.178.246.139) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2602.10; Mon, 6 Jan 2020 20:21:09 +0000
+Received: from MN2PR04MB6991.namprd04.prod.outlook.com
+ ([fe80::460:1c02:5953:6b45]) by MN2PR04MB6991.namprd04.prod.outlook.com
+ ([fe80::460:1c02:5953:6b45%4]) with mapi id 15.20.2602.015; Mon, 6 Jan 2020
+ 20:21:09 +0000
+From: Avri Altman <Avri.Altman@wdc.com>
+To: "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>, Stanley Chu
+ <stanley.chu@mediatek.com>
+Subject: RE: [PATCH v2 1/2] scsi: ufs: pass device information to
  apply_dev_quirks
-In-Reply-To: <1578270431-9873-2-git-send-email-stanley.chu@mediatek.com>
+Thread-Topic: [PATCH v2 1/2] scsi: ufs: pass device information to
+ apply_dev_quirks
+Thread-Index: AQHVxCgaC8sxE7C8uECJ43BudWBWe6fd6daAgAArAjA=
+Date: Mon, 6 Jan 2020 20:21:09 +0000
+Message-ID: <MN2PR04MB69919AA40A33639BB45BC0F4FC3C0@MN2PR04MB6991.namprd04.prod.outlook.com>
 References: <1578270431-9873-1-git-send-email-stanley.chu@mediatek.com>
  <1578270431-9873-2-git-send-email-stanley.chu@mediatek.com>
-Message-ID: <5eafff63c1c2e4ca6fdaf2d349a74dac@codeaurora.org>
-X-Sender: asutoshd@codeaurora.org
-User-Agent: Roundcube Webmail/1.3.9
+ <5eafff63c1c2e4ca6fdaf2d349a74dac@codeaurora.org>
+In-Reply-To: <5eafff63c1c2e4ca6fdaf2d349a74dac@codeaurora.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Avri.Altman@wdc.com; 
+x-originating-ip: [77.137.86.228]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: 35068aec-ff1e-467c-3d9c-08d792e5f79e
+x-ms-traffictypediagnostic: MN2PR04MB6029:
+x-microsoft-antispam-prvs: <MN2PR04MB6029D4EF3A706BF0A935CB70FC3C0@MN2PR04MB6029.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:7691;
+x-forefront-prvs: 0274272F87
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(4636009)(396003)(39860400002)(376002)(346002)(136003)(366004)(189003)(199004)(478600001)(33656002)(7696005)(7416002)(5660300002)(6506007)(4326008)(76116006)(86362001)(2906002)(66946007)(81156014)(186003)(66446008)(64756008)(81166006)(66556008)(71200400001)(66476007)(9686003)(52536014)(316002)(8676002)(54906003)(110136005)(8936002)(55016002)(26005)(558084003);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:MN2PR04MB6029;
+ H:MN2PR04MB6991.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: xdDRIH6Jw4CG7Bg5may6+Mhl8Q8BBotXtebCdwya7Z+CesdzjNPQUeZXTKnUzpd22ovPgJ1+ULE+ApHcWT+JxVrYKDyWkF22nx9c6ZMqwacthGLd3PmWbutyHTi8w2ro6yHjbbsqXxpbG/tIGnuU0RzK35k8qB81HeIjt8KgEnnSn/qoIr7cWRyxNZSq+B/nMwkG/O+mMbXLw8KH7rNjHZh3iadC9oi91xxlJ5+zBE5kbAcvAi+JE4wwPAS5xgmla4DA+xcO0jd+dFB6uW3DqIKWhJa9R9kaN/U8LwntU8YdTi3Oyto1GVOGiJ68r8Y1iu+BDJ4B0qgY1NHhzD2fhAzTNde7YwOJ/MQYuJnU45e8VnDE6S92PO2MCvGnH5/YyDwuq0QncJA/lfzUwcGK5C8EWe5JZEc9hKw9qRJonDWxOo5gSEGD3MH25AndHv0q
+x-ms-exchange-transport-forked: True
+MIME-Version: 1.0
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 35068aec-ff1e-467c-3d9c-08d792e5f79e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Jan 2020 20:21:09.4180 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: zsHjtFVKhbck6+bBVnmkigaaXbWetFBZglBRfjPLfHe/oND7xqP/nTVTleb8M6/bAjJAeJaZorNmSxjzJpvYfA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB6029
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200106_094530_578460_2E37B848 
-X-CRM114-Status: GOOD (  18.54  )
+X-CRM114-CacheID: sfid-20200106_122113_325634_5E8ED152 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,113 +144,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-scsi-owner@vger.kernel.org, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, andy.teng@mediatek.com, jejb@linux.ibm.com,
- chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, avri.altman@wdc.com, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- alim.akhtar@samsung.com, matthias.bgg@gmail.com, bvanassche@acm.org,
- linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Cc: "linux-scsi-owner@vger.kernel.org" <linux-scsi-owner@vger.kernel.org>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
+ "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "cang@codeaurora.org" <cang@codeaurora.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "bvanassche@acm.org" <bvanassche@acm.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "beanhuo@micron.com" <beanhuo@micron.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-01-05 16:27, Stanley Chu wrote:
-> Pass UFS device information to vendor-specific variant callback
-> "apply_dev_quirks" because some platform vendors need to know such
-> information to apply special handlings or quirks in specific devices.
 > 
-> In the same time, modify existed vendor implementation according to
-> the new interface.
-> 
-> Cc: Alim Akhtar <alim.akhtar@samsung.com>
-> Cc: Asutosh Das <asutoshd@codeaurora.org>
-> Cc: Avri Altman <avri.altman@wdc.com>
-> Cc: Bart Van Assche <bvanassche@acm.org>
-> Cc: Bean Huo <beanhuo@micron.com>
-> Cc: Can Guo <cang@codeaurora.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Reviewed-by: Avri Altman <avri.altman@wdc.com>
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> ---
->  drivers/scsi/ufs/ufs-qcom.c | 3 ++-
->  drivers/scsi/ufs/ufshcd.c   | 5 +++--
->  drivers/scsi/ufs/ufshcd.h   | 7 ++++---
->  3 files changed, 9 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/scsi/ufs/ufs-qcom.c b/drivers/scsi/ufs/ufs-qcom.c
-> index c69c29a1ceb9..ebb5c66e069f 100644
-> --- a/drivers/scsi/ufs/ufs-qcom.c
-> +++ b/drivers/scsi/ufs/ufs-qcom.c
-> @@ -949,7 +949,8 @@ static int
-> ufs_qcom_quirk_host_pa_saveconfigtime(struct ufs_hba *hba)
->  	return err;
->  }
-> 
-> -static int ufs_qcom_apply_dev_quirks(struct ufs_hba *hba)
-> +static int ufs_qcom_apply_dev_quirks(struct ufs_hba *hba,
-> +				     struct ufs_dev_desc *card)
->  {
->  	int err = 0;
-> 
-> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> index 1b97f2dc0b63..9abf0ea8c308 100644
-> --- a/drivers/scsi/ufs/ufshcd.c
-> +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -6803,7 +6803,8 @@ static int
-> ufshcd_quirk_tune_host_pa_tactivate(struct ufs_hba *hba)
->  	return ret;
->  }
-> 
-> -static void ufshcd_tune_unipro_params(struct ufs_hba *hba)
-> +static void ufshcd_tune_unipro_params(struct ufs_hba *hba,
-> +				      struct ufs_dev_desc *card)
->  {
->  	if (ufshcd_is_unipro_pa_params_tuning_req(hba)) {
->  		ufshcd_tune_pa_tactivate(hba);
-> @@ -6817,7 +6818,7 @@ static void ufshcd_tune_unipro_params(struct 
-> ufs_hba *hba)
->  	if (hba->dev_quirks & UFS_DEVICE_QUIRK_HOST_PA_TACTIVATE)
->  		ufshcd_quirk_tune_host_pa_tactivate(hba);
-> 
-> -	ufshcd_vops_apply_dev_quirks(hba);
-> +	ufshcd_vops_apply_dev_quirks(hba, card);
->  }
-> 
->  static void ufshcd_clear_dbg_ufs_stats(struct ufs_hba *hba)
-> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-> index e05cafddc87b..4f3fa71303da 100644
-> --- a/drivers/scsi/ufs/ufshcd.h
-> +++ b/drivers/scsi/ufs/ufshcd.h
-> @@ -320,7 +320,7 @@ struct ufs_hba_variant_ops {
->  	void	(*setup_task_mgmt)(struct ufs_hba *, int, u8);
->  	void    (*hibern8_notify)(struct ufs_hba *, enum uic_cmd_dme,
->  					enum ufs_notify_change_status);
-> -	int	(*apply_dev_quirks)(struct ufs_hba *);
-> +	int	(*apply_dev_quirks)(struct ufs_hba *, struct ufs_dev_desc *);
->  	int     (*suspend)(struct ufs_hba *, enum ufs_pm_op);
->  	int     (*resume)(struct ufs_hba *, enum ufs_pm_op);
->  	void	(*dbg_register_dump)(struct ufs_hba *hba);
-> @@ -1052,10 +1052,11 @@ static inline void
-> ufshcd_vops_hibern8_notify(struct ufs_hba *hba,
->  		return hba->vops->hibern8_notify(hba, cmd, status);
->  }
-> 
-> -static inline int ufshcd_vops_apply_dev_quirks(struct ufs_hba *hba)
-> +static inline int ufshcd_vops_apply_dev_quirks(struct ufs_hba *hba,
-> +					       struct ufs_dev_desc *card)
->  {
->  	if (hba->vops && hba->vops->apply_dev_quirks)
-> -		return hba->vops->apply_dev_quirks(hba);
-> +		return hba->vops->apply_dev_quirks(hba, card);
->  	return 0;
->  }
+> Please separate the vendor code (ufs-qcom, in this case) to a separate patch.
+He can't - this patch won't compile if he does.
 
-Please separate the vendor code (ufs-qcom, in this case) to a separate 
-patch.
+Thanks,
+Avri
 
--asd
+> 
+> -asd
 
 _______________________________________________
 Linux-mediatek mailing list
