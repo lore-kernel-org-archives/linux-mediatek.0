@@ -2,137 +2,67 @@ Return-Path: <SRS0=+t0h=23=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 53EA2C33C8C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2020 20:21:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 84512C33C8C
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2020 21:56:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 208E22081E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2020 20:21:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 55C9A206DB
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Jan 2020 21:56:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Vp9Vhqjp";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="hZZl/CXO";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="iUdYrOUY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 208E22081E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BxFcDey4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55C9A206DB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4WXTiJC8ppwp6kUKLvzxP6nlSfQztte1IMFUOJy5gW4=; b=Vp9VhqjpSiO68e
-	Jqn2IuzhFbQop1V1DHR6uUpgjOY+OG7Q5X1KZvGVm1yr07aLOJOC8fSTJ9ScfFdCRBhbyQj5yZRVt
-	zr3DDFTW1jsX//3SRQoSQ0QkJTLVolqwt097NCLHYPyxpsLah6J3co21YFLop77v4rYpHhWnyjqNd
-	Jg8wuAiWR1XvtW4I+3z0XjbE2zMLr3RkDpwqevglkhuJoxaz9c8sMppxwnaA+YXURZUJC56vT7uVQ
-	yKGydbhmK3ZrzWc9kpkbrpYLsCfn9Ft73YKCVd8/MsYSLn8tMwwld+hly5FrJ6RnGMJ9WcKq9t9Xl
-	C5p7/aJYaodn3HgC6LNg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=3XFoceidxuJ0kfTrT8w8PlctdyTGS8i9uvz420XUME8=; b=BxFcDey4AgPeowhAWvUWr9CKK
+	zUbSQmwfABGC6yWd2cGc7Ed5D0/HGk8s80XAFrmemg9iHrk9/aYVHLlFTMCix/56QafUV7HqoySnG
+	k+5d5eZjNn/nsBLcEVDXOR5zd5CCrEwlvLdsNSy7RFdvlzZQz+gvCPgSF9wb+83JV1HeInvLHmHfm
+	r1zKOIrvKHLlxAjdX+fgVjlfSS3eL0u/llpJsV5Bdwy2Ic7nUwhLNS6by85/s4S4m4y/HwJnZ5aOm
+	aRd1TL6Slf7MFxxI+mLCNsPFtLAdSoQrHhi7PqYoab9yF4jP74VyirCuf9k6u3xc0IcfpglGKTPS3
+	OhpSBkSAw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ioYsF-0001Ym-6U; Mon, 06 Jan 2020 20:21:15 +0000
-Received: from esa5.hgst.iphmx.com ([216.71.153.144])
+	id 1ioaM1-0007Fa-Re; Mon, 06 Jan 2020 21:56:05 +0000
+Received: from mga05.intel.com ([192.55.52.43])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ioYsD-0001YO-76; Mon, 06 Jan 2020 20:21:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1578342073; x=1609878073;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=0IC4VkaO+C/3JRyUhv+IfVCOKYW6ETmNhwVfU9S31Ec=;
- b=hZZl/CXOr38tSHZ6efWxhSrkHv0wBOhsYDx/GT7dQffU+TP/6M6SkTKp
- kvl95hc8Ls6XNTD9cnpu4/opOmSKOIudhmXnnH9gQrrjw8F/k5dYwPSHx
- 7MUNOeLc4LlTAZ0iDgy1n5/igScwCGJdkoWdxpYpeBRYuFlYF8DcDSyRP
- Y9+u0ajxUmzahhG9aILVV5aVbor/LCe34VMTL7m4Jvgsd9+JBfrPo2eEJ
- JIGAhhfaEjItcOnBXR9MW1Qnh8bg8D4+Qb2ezXJNGSIcSyN2M69h+QFQS
- uam1BTPR7MF18tbkdqBSX6DxtRx4jOKWqG+1usCL82xY2WIlDwteJRwRK g==;
-IronPort-SDR: +KatWXF0fMroBxqQ913IoZDDM+0uw4T2i/Kp7way3B+41ckq7ZYZAM9G4/X1+PzZT0yCyl/ccC
- +pcUXyVa4D7IxQbltTQUQ6hSOdjyy9jOuxaJAiwmEIAldk5c0cXd2uwWuEtYh8PqJe24Uinm+2
- vcp2/EJ97NQuMbOKRUU0n5U/cNuVGL8iSeNQoEfE5IzdyHEsLDtmHN0AK4efbnInoDuHO4PNSw
- ckMSgopmabxbfSp5/k/RVJojSPnnh13EkAhJqUrDEMmQETbQNbEtQF6NDrLXV6MbzPZbEVLfa5
- chg=
-X-IronPort-AV: E=Sophos;i="5.69,403,1571673600"; d="scan'208";a="127553157"
-Received: from mail-bl2nam02lp2059.outbound.protection.outlook.com (HELO
- NAM02-BL2-obe.outbound.protection.outlook.com) ([104.47.38.59])
- by ob1.hgst.iphmx.com with ESMTP; 07 Jan 2020 04:21:11 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=C05tXnfyj+Dh06aLhLLfkiObsu64cOAaaM/+m4dOklXok2rM2gtFBsS5yoj4iCWptQbnhAa7UO0RVF2k8rUrW54FPKmXSXQRsjGx0fQMLsw2KJUQ4fkeN2+nafzW/rGYjBRtFbPJNnrRzKshWMFCTB/3C0N5I1O8H/L+e+A/vnkg69ocdhjoqd0aQ/YWpn4ATEg2A03egG52QS8018EiQzcCZj2jfGIHM8XXVWtq/CDqTUd0SIEVDHIYRV5j8qgfjPBY2dg9CaDkOd2QzOg4gKVq6KHmD5NvuyONkbgBCjuiG4VivV95xY5if9w2OZtF8gguusTDf2s6iyyx3uJBaQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0IC4VkaO+C/3JRyUhv+IfVCOKYW6ETmNhwVfU9S31Ec=;
- b=fRgGhpg5Ucysxv1XFBF+OlwZf6ZJIcR5elUqwYxF7FLd8Z7bm4hvANA2kzvxUQeXDsIHJ6KE6Ih5La/Ng9SsFbPzNUuRaWLate4RRQGHj6cGuy9Uvuhj84xcqSSLqx5/9Nq/S2YEOXvStkyodGGM/b5/UfGgwBw13dU4R2psDLJPnzFExTLmacyf8wxnPGw/PEHCbSGXdl7b7YzvYWW0PzCXkERtGARJPwAw+AhGYcDjze777vVA6IubqEzH1UA/HOceCZfQX6pCkKvGlbVxd5QXeS7Q26a/XzVoVStnoC2jMQLwym5ib+RoTvn1mPO7uXx3NgAZt99/wuHYFCJtRA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0IC4VkaO+C/3JRyUhv+IfVCOKYW6ETmNhwVfU9S31Ec=;
- b=iUdYrOUYCqlsWGZbpXxmWvL1pLQZRUkHLXVXAhw7KRyfVKY3vMVZFRvTmI+qv2yQ2jJPSjawd9OSkPlrpB21ZhRuJUH73RWQBVgQdHJ1yLfTzwJ0jgXglJGcvRXsA0BV2BR+mN94ziGyHyQ/Eqa/zjwj0axgsY49EdUQ8CoCkEY=
-Received: from MN2PR04MB6991.namprd04.prod.outlook.com (10.186.144.209) by
- MN2PR04MB6029.namprd04.prod.outlook.com (20.178.246.139) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2602.10; Mon, 6 Jan 2020 20:21:09 +0000
-Received: from MN2PR04MB6991.namprd04.prod.outlook.com
- ([fe80::460:1c02:5953:6b45]) by MN2PR04MB6991.namprd04.prod.outlook.com
- ([fe80::460:1c02:5953:6b45%4]) with mapi id 15.20.2602.015; Mon, 6 Jan 2020
- 20:21:09 +0000
-From: Avri Altman <Avri.Altman@wdc.com>
-To: "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>, Stanley Chu
- <stanley.chu@mediatek.com>
-Subject: RE: [PATCH v2 1/2] scsi: ufs: pass device information to
- apply_dev_quirks
-Thread-Topic: [PATCH v2 1/2] scsi: ufs: pass device information to
- apply_dev_quirks
-Thread-Index: AQHVxCgaC8sxE7C8uECJ43BudWBWe6fd6daAgAArAjA=
-Date: Mon, 6 Jan 2020 20:21:09 +0000
-Message-ID: <MN2PR04MB69919AA40A33639BB45BC0F4FC3C0@MN2PR04MB6991.namprd04.prod.outlook.com>
-References: <1578270431-9873-1-git-send-email-stanley.chu@mediatek.com>
- <1578270431-9873-2-git-send-email-stanley.chu@mediatek.com>
- <5eafff63c1c2e4ca6fdaf2d349a74dac@codeaurora.org>
-In-Reply-To: <5eafff63c1c2e4ca6fdaf2d349a74dac@codeaurora.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Avri.Altman@wdc.com; 
-x-originating-ip: [77.137.86.228]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 35068aec-ff1e-467c-3d9c-08d792e5f79e
-x-ms-traffictypediagnostic: MN2PR04MB6029:
-x-microsoft-antispam-prvs: <MN2PR04MB6029D4EF3A706BF0A935CB70FC3C0@MN2PR04MB6029.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
-x-forefront-prvs: 0274272F87
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(396003)(39860400002)(376002)(346002)(136003)(366004)(189003)(199004)(478600001)(33656002)(7696005)(7416002)(5660300002)(6506007)(4326008)(76116006)(86362001)(2906002)(66946007)(81156014)(186003)(66446008)(64756008)(81166006)(66556008)(71200400001)(66476007)(9686003)(52536014)(316002)(8676002)(54906003)(110136005)(8936002)(55016002)(26005)(558084003);
- DIR:OUT; SFP:1102; SCL:1; SRVR:MN2PR04MB6029;
- H:MN2PR04MB6991.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: xdDRIH6Jw4CG7Bg5may6+Mhl8Q8BBotXtebCdwya7Z+CesdzjNPQUeZXTKnUzpd22ovPgJ1+ULE+ApHcWT+JxVrYKDyWkF22nx9c6ZMqwacthGLd3PmWbutyHTi8w2ro6yHjbbsqXxpbG/tIGnuU0RzK35k8qB81HeIjt8KgEnnSn/qoIr7cWRyxNZSq+B/nMwkG/O+mMbXLw8KH7rNjHZh3iadC9oi91xxlJ5+zBE5kbAcvAi+JE4wwPAS5xgmla4DA+xcO0jd+dFB6uW3DqIKWhJa9R9kaN/U8LwntU8YdTi3Oyto1GVOGiJ68r8Y1iu+BDJ4B0qgY1NHhzD2fhAzTNde7YwOJ/MQYuJnU45e8VnDE6S92PO2MCvGnH5/YyDwuq0QncJA/lfzUwcGK5C8EWe5JZEc9hKw9qRJonDWxOo5gSEGD3MH25AndHv0q
-x-ms-exchange-transport-forked: True
+ id 1ioaLs-00074E-M8; Mon, 06 Jan 2020 21:55:59 +0000
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 06 Jan 2020 13:55:55 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.69,403,1571727600"; d="scan'208";a="245719807"
+Received: from chewang-mobl.amr.corp.intel.com (HELO [10.254.185.10])
+ ([10.254.185.10])
+ by fmsmga004.fm.intel.com with ESMTP; 06 Jan 2020 13:55:53 -0800
+Subject: Re: [PATCH] ASoC: rt5677: add SPI_MASTER dependency
+To: Jon Hunter <jonathanh@nvidia.com>, Arnd Bergmann <arnd@arndb.de>,
+ Mark Brown <broonie@kernel.org>
+References: <20191210195333.648018-1-arnd@arndb.de>
+ <d739240f-aaa6-c310-9c68-16c1a08ce759@nvidia.com>
+From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Message-ID: <9c9169cc-0da5-f247-c8f7-f6913ca2bfb5@linux.intel.com>
+Date: Mon, 6 Jan 2020 15:55:53 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 35068aec-ff1e-467c-3d9c-08d792e5f79e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Jan 2020 20:21:09.4180 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: zsHjtFVKhbck6+bBVnmkigaaXbWetFBZglBRfjPLfHe/oND7xqP/nTVTleb8M6/bAjJAeJaZorNmSxjzJpvYfA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB6029
+In-Reply-To: <d739240f-aaa6-c310-9c68-16c1a08ce759@nvidia.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200106_122113_325634_5E8ED152 
-X-CRM114-Status: UNSURE (   9.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200106_135558_032130_B54E0334 
+X-CRM114-Status: GOOD (  17.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -144,36 +74,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-scsi-owner@vger.kernel.org" <linux-scsi-owner@vger.kernel.org>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
- "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
- "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "cang@codeaurora.org" <cang@codeaurora.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "bvanassche@acm.org" <bvanassche@acm.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "beanhuo@micron.com" <beanhuo@micron.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: Cezary Rojewski <cezary.rojewski@intel.com>, linux-tegra@vger.kernel.org,
+ Charles Keepax <ckeepax@opensource.cirrus.com>, alsa-devel@alsa-project.org,
+ linux-kernel@vger.kernel.org, Jie Yang <yang.jie@linux.intel.com>,
+ Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>,
+ Ben Zhang <benzh@chromium.org>, Thierry Reding <thierry.reding@gmail.com>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Curtis Malainey <cujomalainey@chromium.org>, Jaroslav Kysela <perex@perex.cz>,
+ linux-arm-kernel@lists.infradead.org,
+ KaiChieh Chuang <kaichieh.chuang@mediatek.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> 
-> Please separate the vendor code (ufs-qcom, in this case) to a separate patch.
-He can't - this patch won't compile if he does.
 
-Thanks,
-Avri
 
+On 12/11/19 4:59 AM, Jon Hunter wrote:
 > 
-> -asd
+> On 10/12/2019 19:52, Arnd Bergmann wrote:
+>> When CONFIG_SPI is disabled, the newly added code for the DSP
+>> firmware loading fails to link:
+>>
+>> ERROR: "rt5677_spi_hotword_detected" [sound/soc/codecs/snd-soc-rt5677.ko] undefined!
+>> ERROR: "rt5677_spi_write" [sound/soc/codecs/snd-soc-rt5677.ko] undefined!
+> 
+> Would it be better if the above functions or the functions that call
+> these are conditional on CONFIG_SND_SOC_RT5677_SPI?
+
+they are already conditional, with a fallback provided:
+
+#if IS_ENABLED(CONFIG_SND_SOC_RT5677_SPI)
+int rt5677_spi_read(u32 addr, void *rxbuf, size_t len);
+int rt5677_spi_write(u32 addr, const void *txbuf, size_t len);
+int rt5677_spi_write_firmware(u32 addr, const struct firmware *fw);
+void rt5677_spi_hotword_detected(void);
+#else
+static inline int rt5677_spi_read(u32 addr, void *rxbuf, size_t len)
+{
+	return -EINVAL;
+}
+static inline int rt5677_spi_write(u32 addr, const void *txbuf, size_t len)
+{
+	return -EINVAL;
+}
+static inline int rt5677_spi_write_firmware(u32 addr, const struct 
+firmware *fw)
+{
+	return -EINVAL;
+}
+static inline void rt5677_spi_hotword_detected(void){}
+#endif
+
+and since we have the following definition
+
+config SND_SOC_RT5677_SPI
+	tristate
+	default SND_SOC_RT5677 && SPI
+
+in theory if SPI is not enabled the fallback static inlines would always 
+be selected?
+
+Arnd, if you can share the .config that exposes this problem it'd be nice
+
+FWIW, there are other missing dependencies, the SPI controller was not 
+explicitly enabled so depending on the Kconfigs used by a distro the 
+machine driver probe could fail with the spi-RT5677AA component never 
+registered. The patch below seems to work for me (more testing needed)
+
+diff --git a/sound/soc/intel/boards/Kconfig b/sound/soc/intel/boards/Kconfig
+index b149e28a2076..cf1a2fde4c47 100644
+--- a/sound/soc/intel/boards/Kconfig
++++ b/sound/soc/intel/boards/Kconfig
+@@ -50,6 +50,9 @@ config SND_SOC_INTEL_BDW_RT5677_MACH
+         depends on I2C_DESIGNWARE_PLATFORM || COMPILE_TEST
+         depends on GPIOLIB || COMPILE_TEST
+         depends on X86_INTEL_LPSS || COMPILE_TEST
++       depends on SPI_MASTER
++       select SPI_PXA2XX
++       select SND_SOC_RT5677_SPI
+         select SND_SOC_RT5677
+         help
+           This adds support for Intel Broadwell platform based boards with
 
 _______________________________________________
 Linux-mediatek mailing list
