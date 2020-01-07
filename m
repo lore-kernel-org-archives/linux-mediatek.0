@@ -2,84 +2,66 @@ Return-Path: <SRS0=GJVM=24=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E8210C33C99
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2020 10:20:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 39C8AC33C99
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2020 10:38:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B0DE020678
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2020 10:20:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0BC2E2077B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2020 10:38:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Cv2iVoB7";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="xCw2aOcD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B0DE020678
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="swlCU8mW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0BC2E2077B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=mclink.it
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P3jyUtcrTeCR1t0E67U/6GwaukDpvT/71cavgDKPjv4=; b=Cv2iVoB7/iEOZO
-	rd3fANlqIuQuPc1icN2Mi/JPHT/Dqxs/yqWcfJ7Yi5m8k0UrmxuKmUMgmXED4urqTazEwL5eb3M6q
-	/AeruwbaEwjRCZaVbv2NEttqFsC4lgeIhD4aYCpsDkvffs1hZsVQl85XDlgwrqy5RWQv446eAxQES
-	af6M9tP8zcLWoOsphaVJ1pbEwLgSH3zU1p4CPTcWdYe0i+wVMyQaWV4hf8pZMDnUdwwQBPs8DK/4b
-	26uy4UF4gXQUWBk43WisDWYf+oZi7K4iKIXjCM2D4JENM32gQVZD3SA6cer0jv9vmJAkFy3foLPC+
-	QW2YFR6DpjLV1kq4Q5Ag==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:Subject:
+	From:To:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ydtZt+RuKyzqATk9z6dSeqIMUqvauZ0NPOR5FYbSxMU=; b=swlCU8mWHMjVL0
+	FbJnPqeNYPCxmOVgaE6tx2yrS4v84chDC490i5hkknFUNv2X4C4m7heuNmjuP/U90qG0MV/iugNIt
+	mp9PXbZb2QtU5lX8ik4t522yvAgjYDgGBaeioxAYzLFF0riuAaRTQyxYqRsB+KGA6dvIk4b3cXcwE
+	AQNHi82I5pk2GTyibNlE+UQmOodWz0RNN0hNTXroNE4Ojjy+sUB4mKpSM7Dr1rnnZxOkxN9ymHRFl
+	e8jkopVxgvE6dCh7iiy5thbIYSezOg4mwO6CqZW3NHgKMlZFTWNonHShUr3YwdTsf5PNsDfoKZIKK
+	Di/uaLU2XmXkAt5n2P2Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iolyM-0006OJ-HT; Tue, 07 Jan 2020 10:20:26 +0000
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iolyJ-0006NQ-Qt
- for linux-mediatek@lists.infradead.org; Tue, 07 Jan 2020 10:20:25 +0000
-Received: by mail-lf1-x144.google.com with SMTP id n12so38483389lfe.3
- for <linux-mediatek@lists.infradead.org>; Tue, 07 Jan 2020 02:20:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=eMXkNg8gjjjP4/UPSl/T3BVhY6m7trOu4dhjFlvWIdM=;
- b=xCw2aOcDbDhAosRUZpI6S8jMUrGPkDQqWqFwb5KY/DgItDqPB6ptgX5V8gs2yDC82+
- TQSjZ5E2cLNKjaz6JtEmt4T7mFfIrrPYNyrT3jiAN6/2Iyc2srA526cttuVeaA9GgZy7
- RsjrRB4c79+Wti1TvIpqtZa5J1rHZihfl2JV8GWrftEngwr59RFHWw/BAxyZc22OAW9/
- mAqEQpKUAtdMyffk8S0eL1YYz/+fwuQPZL+9BCsW8/zdkEbMRl8S/rExnFRhho40HLDS
- VkvUCyyWA7t7vhznmbNtN4ENfD3DyIk0oCQtLNU+auQQZHfpdNT541zidQxXe0Qz4M0T
- FgfA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=eMXkNg8gjjjP4/UPSl/T3BVhY6m7trOu4dhjFlvWIdM=;
- b=gfLAns3GvdQba6bhMq7A7pp53wlb+0NnrLLOH1XPVGXrxdmvMNBpRPOodIw2WwZZV9
- IRTrF0tTCIgsOE/KpxGffjUpLNp24exyohhzyLjyvqBXnLUVhcXGmLoEmEBtYHM4x1nX
- XfycnLebMbzmcgYV2tj3MhX0BxDZ8o2/1MjVSQYfvBsJw58npnENkGW6kEGDrUP7hjQH
- hiJtDyUiqR9MBFB84SEah3rO2GUOxhPmNBztRngCYdGjH3X8FU+aMOyW6iJlCHtnYyMo
- sVKg+0NuNn7JNr3XuLAAeq+shYnXttlU/cpHkC/5/gmIzoqjnrdyXdaX6u+UwSxBjh+R
- yv/Q==
-X-Gm-Message-State: APjAAAU2H/TIyhC6sJzHROfM53Sltm86+AUaxVFr1SQl9MgiQ/XoYwlR
- AYOJh2QjfmyLhyVC9Y6UT6H8fxZ88uKQbZWlc+1N3Q==
-X-Google-Smtp-Source: APXvYqx+1HVleR9t6Yuyooq8t8xa7rjXdvZgR0S/2R2tmpjcPZ3EC1OYv8foVlifSxaWiiQHWGnQCar3duKMNpwhtnc=
-X-Received: by 2002:ac2:55a8:: with SMTP id y8mr58557682lfg.117.1578392421291; 
- Tue, 07 Jan 2020 02:20:21 -0800 (PST)
+	id 1iomFz-0005kx-8V; Tue, 07 Jan 2020 10:38:39 +0000
+Received: from relaygw2-4.mclink.it ([213.21.178.139])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iomFv-0005dV-3c
+ for linux-mediatek@lists.infradead.org; Tue, 07 Jan 2020 10:38:36 +0000
+Received: from smtpoutgw3.mclink.it ([172.24.30.43] verified)
+ by relaygw2-4.mclink.it (CommuniGate Pro SMTP 6.0.4)
+ with ESMTP id 160738466 for linux-mediatek@lists.infradead.org;
+ Tue, 07 Jan 2020 11:38:31 +0100
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: =?us-ascii?q?A2DHAQA0XhRe//jaMU8NWRwBAQEBAQcBA?=
+ =?us-ascii?q?REBBAQBAYF8iE+RBoQThgCBPZALCQEBAQEBAQEBATcBAYZPOBMCEAEBBQEBAQE?=
+ =?us-ascii?q?BBQSMOA8BewImAmwIAQGDHoJTq3t1gTKFT4MrgT2BDiiMcoFBgTgMhCKEEoJDg?=
+ =?us-ascii?q?l4EgT8BAQGLeKFkAQYCgV9ZlhYGG5pfhEOnAoF6gl6BT08ljSqOL48AXwEB?=
+Received: from host248-218-dynamic.49-79-r.retail.telecomitalia.it (HELO
+ [192.168.7.118]) ([79.49.218.248])
+ by smtpoutgw3.mclink.it with ESMTP; 07 Jan 2020 11:38:30 +0100
+To: linux-mediatek@lists.infradead.org
+From: Mauro Condarelli <mc5686@mclink.it>
+Subject: MT7628AN Device Tree settings
+Message-ID: <f4c98274-4213-342d-df7f-4e066090d8af@mclink.it>
+Date: Tue, 7 Jan 2020 11:38:30 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.1
 MIME-Version: 1.0
-References: <1566206502-4347-1-git-send-email-mars.cheng@mediatek.com>
- <1566206502-4347-6-git-send-email-mars.cheng@mediatek.com>
- <CACRpkdZa_sQgvWC3ic0NxrVi9gS1cNTsV-wa-SDpA0e5kutBRw@mail.gmail.com>
- <1577022724.7468.20.camel@mtkswgap22>
-In-Reply-To: <1577022724.7468.20.camel@mtkswgap22>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 7 Jan 2020 11:20:10 +0100
-Message-ID: <CACRpkdZUxpQ1tS9mKG9tc_U==M2BL9HwXt3DS1t413GGSEaVTA@mail.gmail.com>
-Subject: Re: [PATCH v2 05/11] pinctrl: mediatek: avoid virtual gpio trying to
- set reg
-To: Hanks Chen <hanks.chen@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200107_022023_920336_0F356201 
-X-CRM114-Status: GOOD (  17.66  )
+X-CRM114-CacheID: sfid-20200107_023835_329267_DB31DDC2 
+X-CRM114-Status: UNSURE (   4.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,77 +73,24 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, CC Hwang <cc.hwang@mediatek.com>,
- wsd_upstream@mediatek.com,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Stephen Boyd <sboyd@kernel.org>,
- Sean Wang <sean.wang@kernel.org>, Loda Chou <loda.chou@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Marc Zyngier <marc.zyngier@arm.com>, Mars Cheng <mars.cheng@mediatek.com>,
- mtk01761 <wendell.lin@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-clk <linux-clk@vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 23, 2019 at 4:11 AM Hanks Chen <hanks.chen@mediatek.com> wrote:
-> On Fri, 2019-08-23 at 10:57 +0200, Linus Walleij wrote:
-> > On Mon, Aug 19, 2019 at 11:22 AM Mars Cheng <mars.cheng@mediatek.com> wrote:
-
-> > This does not explain what a "virtual GPIO" is in this
-> > context, so please elaborate. What is this? Why does
-> > it exist? What is it used for?
-> >
-> > GPIO is "general purpose input/output" and it is a
-> > pretty rubbery category already as it is, so we need
-> > to define our terms pretty strictly.
-> >
-> Virtual GPIO only used inside SOC and not being exported to outside SOC
-> in MTK platform. Some modules use virtual GPIO as eint (e.g. pmic or
-> usb).
-
-I would call that internal GPIOs, those are very real rails inside
-the chip made with polysilicone so there is nothing "virtual"
-about them. If the documentation for the chip calls them virtual
-then explain in the driver that these are SoC-internal
-lines so that everyone will get it.
-
-Is the PMIC inside the SoC? I thought that was usually outside of it
-in its own chip.
-
-But I suppose there could be some interface to it in the SoC and
-then that interface has this EINT?
-
-> In MTK platform, external interrupt (EINT) and GPIO is 1-1 mapping and
-> we can set GPIO as eint.
-> But some modules use specific eint which doesn't have real GPIO pin.
-> So we use virtual GPIO to map it.
-
-OK I get it I think... just put these comments into the code as well
-so we understand when reading the code what is going on.
-
-> > > +       if (mtk_is_virt_gpio(hw, gpio))
-> > > +               return 1;
-> >
-> > Why are "virtual GPIOs" always inputs?
->
-> We set virtual GPIO as eint.
-> It mean virtual GPIO only used inside SOC and not being exported to
-> outside SOC.
-
-Are you saying that:
-- "Virtual" GPIOs are always and only used for interrupts
-- Since they are only used for interrupts, they are always inputs
-
-Then write that in a comment to the above change so we know
-this context.
-
-Yours,
-Linus Walleij
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SSBhbSB0cnlpbmcgdG8gZnVsbHkgY29uZmlndXJlIGEgY3VzdG9tIGJvYXJkIGJhc2VkIG9uIFZv
+Q29yZTIgU29NCnNwb3J0aW5nIGEgTVQ3NjI4QU4gU29DLgoKQmFzaWMgZnVuY3Rpb25hbGl0eSB3
+b3JrcywgYnV0IHNldmVyYWwgc3Vic3lzdGVtcyBhcmUgc3RpbGwgbm90CmNvbmZpZ3VyZWQgcHJv
+cGVybHkuCgpJbiBwYXJ0aWN1bGFyIEknbSBzdHJ1Z2dsaW5nIHdpdGg6CgotIFdhdGNoZG9nOiBp
+dCdzIHdvcmtpbmcgaW4gVS1Cb290LCBidXQgYXBwYXJlbnRseSBub3QgaW4gTGludXgga2VybmVs
+CsKgIChJIHNlZSBubyAvZGV2L3dhdGNoZG9nKQoKLSBSTkc6IElGRiBJIHVuZGVyc3RhbmQgY29y
+cmVjdGx5IE1UNzYyOCBoYXMgYSBtdDc2MjMtY29tcGF0aWJsZQpoYXJkd2FyZSBSTkcuCsKgIFVu
+Zm9ydHVuYXRlbHkgSSB3YXMgdW5hYmxlIHRvIGZpbmQgc3BlY2lmaWMgZG9jdW1lbnRhdGlvbiBh
+bmQgdGh1cyBJCmNhbid0IHdyaXRlCsKgIHRoZSBuZWVkZWQgLmR0cyBzdGFuY2UuCgpDYW4gc29t
+ZW9uZSBwb2ludCBtZSBpbiB0aGUgcmlnaHQgZGlyZWN0aW9uPwpUaGlzIGlzLCBvZiBjb3Vyc2Us
+IGEgcHJlbGltaW5hcnkgaW5xdWlyeSwgSSdtIGZ1bGx5IHByZXBhcmVkIHRvIGdpdmUKYWxsIGRl
+dGFpbHMgYW5kCnRvIGZvbGxvdyBhbnkgbmVlZGVkIHByb2NlZHVyZSB0byBpbmNvcnBvcmF0ZSBy
+ZXN1bHRzIHVwc3RyZWFtLgoKSGFwcHkgTmV3IFllYXIhCk1hdXJvIENvbmRhcmVsbGkKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVr
+IG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
