@@ -2,66 +2,84 @@ Return-Path: <SRS0=GJVM=24=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 39C8AC33C99
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2020 10:38:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 450CAC33C99
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2020 10:41:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0BC2E2077B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2020 10:38:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 153C62077B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2020 10:41:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="swlCU8mW"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0BC2E2077B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=mclink.it
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Kyou/ZW2";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="S8e5zkbA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 153C62077B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:Subject:
-	From:To:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ydtZt+RuKyzqATk9z6dSeqIMUqvauZ0NPOR5FYbSxMU=; b=swlCU8mWHMjVL0
-	FbJnPqeNYPCxmOVgaE6tx2yrS4v84chDC490i5hkknFUNv2X4C4m7heuNmjuP/U90qG0MV/iugNIt
-	mp9PXbZb2QtU5lX8ik4t522yvAgjYDgGBaeioxAYzLFF0riuAaRTQyxYqRsB+KGA6dvIk4b3cXcwE
-	AQNHi82I5pk2GTyibNlE+UQmOodWz0RNN0hNTXroNE4Ojjy+sUB4mKpSM7Dr1rnnZxOkxN9ymHRFl
-	e8jkopVxgvE6dCh7iiy5thbIYSezOg4mwO6CqZW3NHgKMlZFTWNonHShUr3YwdTsf5PNsDfoKZIKK
-	Di/uaLU2XmXkAt5n2P2Q==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wDsJPxuEcz/WROt5yp+tHeknCHo8NB+C8NI+Qpayabs=; b=Kyou/ZW25v2NNQ
+	smkAtv0JY7YY1SwYam5H/cYEr0wQFi3HTKAnoG95X8tqG+nff/7pJWo6UncE7YqVS+J1SxRxTUJGi
+	TXGzbWsncWIKcrYzb6hjdPnHx/ULk9IVAV4nvSj+691OleyWBJVPhae0l0jul7pIuFSulHbKwmI+j
+	9TWB6G0eXfAtp9STank+TeVudFgcAPilyqM9kic35Vzl1oLqt0XaGmbfe3bQzt33l5afsTlj689Fm
+	Hsl4s1FWPX4lKzMddelh99mbuj9GdqlicVxgzcTOTdxRJ0slOIQTwycwCfEGZVsMCM6eoB3RyRs0z
+	x4wlpaa/NLkkGB7ykeNQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iomFz-0005kx-8V; Tue, 07 Jan 2020 10:38:39 +0000
-Received: from relaygw2-4.mclink.it ([213.21.178.139])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iomFv-0005dV-3c
- for linux-mediatek@lists.infradead.org; Tue, 07 Jan 2020 10:38:36 +0000
-Received: from smtpoutgw3.mclink.it ([172.24.30.43] verified)
- by relaygw2-4.mclink.it (CommuniGate Pro SMTP 6.0.4)
- with ESMTP id 160738466 for linux-mediatek@lists.infradead.org;
- Tue, 07 Jan 2020 11:38:31 +0100
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: =?us-ascii?q?A2DHAQA0XhRe//jaMU8NWRwBAQEBAQcBA?=
- =?us-ascii?q?REBBAQBAYF8iE+RBoQThgCBPZALCQEBAQEBAQEBATcBAYZPOBMCEAEBBQEBAQE?=
- =?us-ascii?q?BBQSMOA8BewImAmwIAQGDHoJTq3t1gTKFT4MrgT2BDiiMcoFBgTgMhCKEEoJDg?=
- =?us-ascii?q?l4EgT8BAQGLeKFkAQYCgV9ZlhYGG5pfhEOnAoF6gl6BT08ljSqOL48AXwEB?=
-Received: from host248-218-dynamic.49-79-r.retail.telecomitalia.it (HELO
- [192.168.7.118]) ([79.49.218.248])
- by smtpoutgw3.mclink.it with ESMTP; 07 Jan 2020 11:38:30 +0100
-To: linux-mediatek@lists.infradead.org
-From: Mauro Condarelli <mc5686@mclink.it>
-Subject: MT7628AN Device Tree settings
-Message-ID: <f4c98274-4213-342d-df7f-4e066090d8af@mclink.it>
-Date: Tue, 7 Jan 2020 11:38:30 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.1
+	id 1iomIR-00007c-QZ; Tue, 07 Jan 2020 10:41:11 +0000
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1iomIP-00007E-Bm
+ for linux-mediatek@lists.infradead.org; Tue, 07 Jan 2020 10:41:10 +0000
+Received: by mail-lj1-x243.google.com with SMTP id h23so54208364ljc.8
+ for <linux-mediatek@lists.infradead.org>; Tue, 07 Jan 2020 02:41:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=UBtiNBdMZvnrnfPGqTIDF0mKwmvB3WgjS2DJzVGXsWA=;
+ b=S8e5zkbAC4vGQyN2oQss8+zjnBiH2/1Oxd7//7o3rqWykwynawOBgCdO/acAzcuB5s
+ mODoPHD8qcw1L3hjquQCkC0OrsKrcB77niLT521ZG6XitmsVfXMynWJ0GV5sUyh27+6c
+ F5sa19WSHj3ogwD0IBzDD5qOUnOnWfXQhXVbCRpjMxcv40IymAx9IzzcIdDW78P3BMOI
+ F6NvHOluAoPtlerKGz/DgXzJFBDujqnWB7hghFmAiTw91WKVMfFytwqCY4iPZ7wFzFsa
+ INUIQKDoVJaPbk4IKdzkl3uWNrGDY013KPqlTmEjB5IbTXAtPRNjwCgsI97dA8rZ8Mmx
+ 4vcA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=UBtiNBdMZvnrnfPGqTIDF0mKwmvB3WgjS2DJzVGXsWA=;
+ b=GiYemgiu0HXN+CCk1PxmMVle+tDBlZxJxB7eYBx6Xjy4F6WVTLSfNbzec574ovPp2t
+ d1C5QNe7B3fsEuc7JQeZI4QO4XQlBBGWF/7108CTgZyYFyOCl/qSiQuKRdsMLGVkfgXf
+ P+3YYKLGCY+a/OhFkhU/1A7448okOXc9SN+aTLxRq/jB7hh+g0dokR+D+a1OLw3AE6Qy
+ Hx7bWjLDQFgEHQCRwzVtK3KMvWf2xnRfBs4A/S2xeIV8rhyjyZSz+ZVv26kiSbRW0jlV
+ sGDO1SBDTPpWdrcENhFcd3DapQRI+LPV8xxPw9IUFAv9+ryq/GOLiur2UVO0YLVGwgrv
+ aDkA==
+X-Gm-Message-State: APjAAAUMjkrzZGdmqz+xcflbWCMi1telFOrGCzneb0pXso/K3tbfc8sG
+ WEWQDOrfQIByxFG/kW3yjs42hHomrRKgIlP1I68pfg==
+X-Google-Smtp-Source: APXvYqzPw/Qdx+sCdiOeNl65OnuQtCOolmEVElFYMMkBD7EgYjlKsv9P3YvfyZW4sD2cny18hKjAeDvhBrKHQUlYRoE=
+X-Received: by 2002:a2e:a0cd:: with SMTP id f13mr25961364ljm.251.1578393667915; 
+ Tue, 07 Jan 2020 02:41:07 -0800 (PST)
 MIME-Version: 1.0
-Content-Language: en-US
+References: <1577799707-11855-1-git-send-email-light.hsieh@mediatek.com>
+ <1577799707-11855-5-git-send-email-light.hsieh@mediatek.com>
+In-Reply-To: <1577799707-11855-5-git-send-email-light.hsieh@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 7 Jan 2020 11:40:57 +0100
+Message-ID: <CACRpkdbto2goahTjzozi_LXXo1QNUTV1wm_rwoFOTcb36w0jkw@mail.gmail.com>
+Subject: Re: [PATCH v7 5/6] Backward compatible to previous Mediatek's
+ bias-pull usage
+To: Light Hsieh <light.hsieh@mediatek.com>, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200107_023835_329267_DB31DDC2 
-X-CRM114-Status: UNSURE (   4.04  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200107_024109_441588_A7A81A2B 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,24 +91,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Sean Wang <sean.wang@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ kuohong.wang@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SSBhbSB0cnlpbmcgdG8gZnVsbHkgY29uZmlndXJlIGEgY3VzdG9tIGJvYXJkIGJhc2VkIG9uIFZv
-Q29yZTIgU29NCnNwb3J0aW5nIGEgTVQ3NjI4QU4gU29DLgoKQmFzaWMgZnVuY3Rpb25hbGl0eSB3
-b3JrcywgYnV0IHNldmVyYWwgc3Vic3lzdGVtcyBhcmUgc3RpbGwgbm90CmNvbmZpZ3VyZWQgcHJv
-cGVybHkuCgpJbiBwYXJ0aWN1bGFyIEknbSBzdHJ1Z2dsaW5nIHdpdGg6CgotIFdhdGNoZG9nOiBp
-dCdzIHdvcmtpbmcgaW4gVS1Cb290LCBidXQgYXBwYXJlbnRseSBub3QgaW4gTGludXgga2VybmVs
-CsKgIChJIHNlZSBubyAvZGV2L3dhdGNoZG9nKQoKLSBSTkc6IElGRiBJIHVuZGVyc3RhbmQgY29y
-cmVjdGx5IE1UNzYyOCBoYXMgYSBtdDc2MjMtY29tcGF0aWJsZQpoYXJkd2FyZSBSTkcuCsKgIFVu
-Zm9ydHVuYXRlbHkgSSB3YXMgdW5hYmxlIHRvIGZpbmQgc3BlY2lmaWMgZG9jdW1lbnRhdGlvbiBh
-bmQgdGh1cyBJCmNhbid0IHdyaXRlCsKgIHRoZSBuZWVkZWQgLmR0cyBzdGFuY2UuCgpDYW4gc29t
-ZW9uZSBwb2ludCBtZSBpbiB0aGUgcmlnaHQgZGlyZWN0aW9uPwpUaGlzIGlzLCBvZiBjb3Vyc2Us
-IGEgcHJlbGltaW5hcnkgaW5xdWlyeSwgSSdtIGZ1bGx5IHByZXBhcmVkIHRvIGdpdmUKYWxsIGRl
-dGFpbHMgYW5kCnRvIGZvbGxvdyBhbnkgbmVlZGVkIHByb2NlZHVyZSB0byBpbmNvcnBvcmF0ZSBy
-ZXN1bHRzIHVwc3RyZWFtLgoKSGFwcHkgTmV3IFllYXIhCk1hdXJvIENvbmRhcmVsbGkKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVr
-IG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Tue, Dec 31, 2019 at 2:41 PM Light Hsieh <light.hsieh@mediatek.com> wrote:
+
+> Refine mtk_pinconf_set()/mtk_pinconf_get() for backward compatibility to
+> previous MediaTek's bias-pull usage.
+> In PINCTRL_MTK that use pinctrl-mtk-common.c, bias-pull setting for pins
+> with 2 pull resistors can be specified as value for bias-pull-up and
+> bias-pull-down. For example:
+>     bias-pull-up = <MTK_PUPD_SET_R1R0_00>;
+>     bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
+>     bias-pull-up = <MTK_PUPD_SET_R1R0_10>;
+>     bias-pull-up = <MTK_PUPD_SET_R1R0_11>;
+>     bias-pull-down = <MTK_PUPD_SET_R1R0_00>;
+>     bias-pull-down = <MTK_PUPD_SET_R1R0_01>;
+>     bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
+>     bias-pull-down = <MTK_PUPD_SET_R1R0_11>;
+>
+> On the other hand, PINCTRL_MTK_PARIS use customized properties
+> "mediatek,pull-up-adv" and "mediatek,pull-down-adv" to specify bias-pull
+> setting for pins with 2 pull resistors.
+> This introduce in-compatibility in device tree and increase porting
+> effort to MediaTek's customer that had already used PINCTRL_MTK version.
+> Besides, if customers are not aware of this change and still write devicetree
+> for PINCTRL_MTK version, they may encounter runtime failure with pinctrl and
+> spent time to debug.
+>
+> This patch adds backward compatible to previous MediaTek's bias-pull usage
+> so that Mediatek's customer need not use a new devicetree property name.
+> The rationale is that: changing driver implementation had better leave
+> interface unchanged.
+
+Are these devicetree bindings upstream, or are these bindings never
+submitted for inclusion in the official device tree bindings?
+
+I don't really want to encourage out-of-tree non-canonical device
+tree experiments.
+
+On the other hand I want running code.
+
+I suppose if there is a solid use case for backwards compatibility
+that also affect independent developers (such as people just
+hacking around with these devices) then we could add it.
+
+Yours,
+Linus Walleij
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
