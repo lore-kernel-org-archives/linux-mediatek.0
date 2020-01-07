@@ -2,77 +2,82 @@ Return-Path: <SRS0=GJVM=24=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 41686C33C99
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2020 07:49:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 19456C33C99
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2020 08:17:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0AB9B207FD
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2020 07:49:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DC915207E0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Jan 2020 08:17:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oNuXua/O";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="pWch+AEG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0AB9B207FD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JGxsMjB1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DC915207E0
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arndb.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vNQPvE1nhyVXqrSo0Bbyc/TDOlXcX8t/JMRbdqgiL6I=; b=oNuXua/OO0EZvc
-	EVQRFREZK59RhkwndgUX80GYgZLDT0jOijfsUK4bUpNu6XFX/OyeOvVzj/AF/6qL25MofiR6I1X2R
-	gSV7y9lZ1oqdiphlCtDF/hJiToC1Dw+/rmBaFcRXxpYtyA2mGK3s/qybu554RrsnzH6HNl+IixrHB
-	7FtJO+HwBgPXAQar5PdZus8f5Ry7xopGbtXiI4LoqHpYrlt6n2U/OZE3gyI6nspI2Q7Z2xOTJJfsH
-	Pq6NtVYTMEfdSBxFsZ+wKOCTrKTxd+mdJV8c7Z31CZROzWOW/gvfE+kn8TqBWJsJtCrhiUzO9j2m7
-	fu46hT6jJ75bif8NQeXg==;
+	List-Owner; bh=InrR9VhGl72B240cDyyUyRevAKJX9MoEAfpaXI3HB8k=; b=JGxsMjB1Pyy4+C
+	5hnoHaNRRi/bF3HhHO5OR6lO2zOS7yXrORmJBw4A+CQrqjcSkd9T2CXVmCuphX4lIpdIBnAI2dMWQ
+	yr6FyRp/JM6BEr9rC1act6G1/1Rt753L1FRj+wrSoFPxod/w70Tys41cMo04pNM04rw6kIifok8aS
+	HQaX3WOJ8i0nwG0vgkQjOeq1BsDbBc27bCIElUWXB2khdNhWAA8yCYMJ0jPZEygZiX3GnrqYiVaPR
+	99gEhvPB+tN1ZS0cgCXIJxNFIJeTrH/RcCEdNnPSg6+MzI/1zlIx3JG06kVOYkfeVACcZMYVImm5Z
+	KpLHrrfbQhZnRoUThn8Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iojcO-0002wY-DD; Tue, 07 Jan 2020 07:49:36 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1iok2w-000698-1G; Tue, 07 Jan 2020 08:17:02 +0000
+Received: from mout.kundenserver.de ([212.227.17.13])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iojcL-0002vr-O0
- for linux-mediatek@lists.infradead.org; Tue, 07 Jan 2020 07:49:35 +0000
-X-UUID: 8959147760554add80edd702ebd6249e-20200106
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=G5gjdG4z3oIMuvOmLeNru5HNzB1wIMfOjrHqMxHNamg=; 
- b=pWch+AEGD/jfzObHKkGONrtsKAxG/TP3JQdOzWyw7N6G4V8wImM4Wp88zuFT7pB4uxrzLdCLT1QxSmOTpJNsXSXHyEOPUrpd+lDTkj8okWoWNSrPYtBzx4Bq5bG16h9fHty/U7+LV+P9Mldaf77/KtoMYT+2FIFmYxG4gp9mGxk=;
-X-UUID: 8959147760554add80edd702ebd6249e-20200106
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yingjoe.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 414134432; Mon, 06 Jan 2020 23:49:28 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 6 Jan 2020 23:49:27 -0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 7 Jan 2020 15:48:59 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 7 Jan 2020 15:49:07 +0800
-Message-ID: <1578383365.12740.7.camel@mtksdaap41>
-Subject: Re: [PATCH V2 1/2] Documentation: devicetree: bindings: input
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-To: fengping yu <fengping.yu@mediatek.com>
-Date: Tue, 7 Jan 2020 15:49:25 +0800
-In-Reply-To: <20191227013722.12201-2-fengping.yu@mediatek.com>
-References: <20191227013722.12201-1-fengping.yu@mediatek.com>
- <20191227013722.12201-2-fengping.yu@mediatek.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1iok2n-00060a-Pi; Tue, 07 Jan 2020 08:16:55 +0000
+Received: from mail-qt1-f176.google.com ([209.85.160.176]) by
+ mrelayeu.kundenserver.de (mreue109 [212.227.15.145]) with ESMTPSA (Nemesis)
+ id 1My3AX-1jdErf3QAZ-00zWdd; Tue, 07 Jan 2020 09:16:49 +0100
+Received: by mail-qt1-f176.google.com with SMTP id l12so44639194qtq.12;
+ Tue, 07 Jan 2020 00:16:48 -0800 (PST)
+X-Gm-Message-State: APjAAAVNs9cUyRiD8hfFEb7ZzTxZ2CxE4i31aPpqZdOCWowP/bIaMVbd
+ 3RYDVCoTTG1pNi8i8gAriXnMobgl/pCLe7t0CQQ=
+X-Google-Smtp-Source: APXvYqy5Ck9gkPV52yg24WY0VrQ2y2C1CXBRF6Y6+8OBXLwg0dzkbS2jd5oixwoipa94cQmOYesNS9M2hLIm4uQS2qw=
+X-Received: by 2002:ac8:709a:: with SMTP id y26mr78397663qto.304.1578385007686; 
+ Tue, 07 Jan 2020 00:16:47 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20191210195333.648018-1-arnd@arndb.de>
+ <d739240f-aaa6-c310-9c68-16c1a08ce759@nvidia.com>
+ <9c9169cc-0da5-f247-c8f7-f6913ca2bfb5@linux.intel.com>
+In-Reply-To: <9c9169cc-0da5-f247-c8f7-f6913ca2bfb5@linux.intel.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Tue, 7 Jan 2020 09:16:31 +0100
+X-Gmail-Original-Message-ID: <CAK8P3a1it2a1CmkkOfVqhLE33jmKWhHEtria+ESoz6uSkcP8_w@mail.gmail.com>
+Message-ID: <CAK8P3a1it2a1CmkkOfVqhLE33jmKWhHEtria+ESoz6uSkcP8_w@mail.gmail.com>
+Subject: Re: [PATCH] ASoC: rt5677: add SPI_MASTER dependency
+To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+X-Provags-ID: V03:K1:sGTxaUX2A0H5envO3FrEziEkgMpF1tmBuTOz5sJgdNRKvBtlz1h
+ bJj2dbFQYpofORBtF4TGNypgdnWLtJP1y1iYMZfMSMpTO6Yw9/nbzdprTEwW91BWY2i1nju
+ F08vAY472h520Ta00W+Y/MzprbiGO3vw13uw9FGw8n71psg/4RjcnU9GJBpO39IdMSEf2ak
+ bcL1BMcBU0Ro494aZ6pFw==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:DXt8epKEjKY=:v6XC5T5ui0g5owdllBtdcq
+ gMlF2jeMyvD0FPxJ54b9GIVdOAReh4WJynnrPSfencpE0wa2YSE7PZVm+nTmMi4neNhymNTL0
+ 9SRnUWQApgHgougmgm3jMWJu/HnusJP3b3SsGZ74m7iC56FcAeCwNVZ9uY1qDi4zjYJPr2+r5
+ rOZ8wcuWXPh76PfgvyKOPLTZ+h4wxWLA8xpVH6MlC84XVQkf3Xg0kneTOlrBtA4dy2bth8p4M
+ 80ZxZKk8gyT1T8vVwsl5gqc6iIAYtCpH2IMIuWzyAfc1ngchDYbxlZtA/Zawt/r7eFqtwS+cS
+ VgtqbAF7H/VKRcpYU+jI/1gi09lpzs2/rIa9pU/hNp56V+PCvgZJttm9G+UzkPAB1ji+nxUrU
+ 4ZSQxuQH3DCy+vuasF3kWncSSaHG2utt4Z1UmE9teOQGkpTirKYCeffBoXKawvzGYgfcOepxc
+ cQ8cBJimQjVIX3xhgdbf8Y7HLHuvFB1UZf2rd5CNOUPDg5gsCzq+DAPplNg4TZdcg7fbzBab3
+ IVxIJk52xIUgn8sOZIIGfRdjw8aWVrhhFfjOuZVTx6CLemGT8yhwjPr2eBF1RJSlLaFXZmwLQ
+ 3b1J+QF8ujZs9iZbeMzaItIMZL41qP8PanZKW6q517lceJFYujbIOH6I3CzOyq2+qKGInjMQp
+ 9KnZyWKFzHAFk9/+KAsQVDKZT5isZnAyAmyyXIhS89epe9GZ1DiDu8MyFaMn8N4X6d8CzquGd
+ g/5IiRBdjf229UNkolQlof00NpEmT1xX0vlxISzr0zxKgIagMBnUvK/gjyacITZN6vsPjgr6t
+ zh/8OULy2BF+IWJ/55E3PddOxsTNsC8UX1yyXOKJ88xG4kF72/h11cxnZIZHGhm8WYNBKBa4/
+ 5uhOlfmrIwiJFLhzKusA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200106_234933_789923_27009F6D 
-X-CRM114-Status: GOOD (  17.27  )
+X-CRM114-CacheID: sfid-20200107_001654_124431_A8674517 
+X-CRM114-Status: GOOD (  14.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,105 +89,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- wsd_upstream@mediatek.com
+Cc: Cezary Rojewski <cezary.rojewski@intel.com>,
+ "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ ALSA Development Mailing List <alsa-devel@alsa-project.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Takashi Iwai <tiwai@suse.com>, Jie Yang <yang.jie@linux.intel.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+ Ben Zhang <benzh@chromium.org>, Mark Brown <broonie@kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Curtis Malainey <cujomalainey@chromium.org>, Jon Hunter <jonathanh@nvidia.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ KaiChieh Chuang <kaichieh.chuang@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Jan 6, 2020 at 10:55 PM Pierre-Louis Bossart
+<pierre-louis.bossart@linux.intel.com> wrote:
+> On 12/11/19 4:59 AM, Jon Hunter wrote:
+> >
+> > On 10/12/2019 19:52, Arnd Bergmann wrote:
+> >> When CONFIG_SPI is disabled, the newly added code for the DSP
+> >> firmware loading fails to link:
+> >>
+> >> ERROR: "rt5677_spi_hotword_detected" [sound/soc/codecs/snd-soc-rt5677.ko] undefined!
+> >> ERROR: "rt5677_spi_write" [sound/soc/codecs/snd-soc-rt5677.ko] undefined!
+> >
+> > Would it be better if the above functions or the functions that call
+> > these are conditional on CONFIG_SND_SOC_RT5677_SPI?
+>
+> they are already conditional, with a fallback provided:
+>
+> #if IS_ENABLED(CONFIG_SND_SOC_RT5677_SPI)
+> int rt5677_spi_read(u32 addr, void *rxbuf, size_t len);
 
-Hi, Fengping,
+Right, this fixed the problem.
 
-You missed several maintainers and mailing lists. Please
-use ./scripts/get_maintainer.pl to find proper maintainers & lists.
+> in theory if SPI is not enabled the fallback static inlines would always
+> be selected?
+>
+> Arnd, if you can share the .config that exposes this problem it'd be nice
 
-Bad summary, You can use git log --oneline to find proper summary.
-Maybe:
-dt-bindings: input: keyboard: add MediaTek keypad controller binding
+I just tried it again and it seems that the issue was already fixed by
+commit fb3194413d1e ("ASoC: rt5677: Fix build error without CONFIG_SPI"),
+which had not been merged by the time I created my patch as an
+alternative workaround.
 
-On Fri, 2019-12-27 at 09:37 +0800, fengping yu wrote:
-> From: "fengping.yu" <fengping.yu@mediatek.com>
-> 
-> Add mtk keypad device tree documentation.
-> 
-> Change-Id: I415b76ee980784992763c768829b2dda76699dea
-
-Please remove Change-Id
-
-> Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
-> ---
->  .../devicetree/bindings/input/mtk-kpd.txt     | 45 +++++++++++++++++++
->  1 file changed, 45 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/input/mtk-kpd.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/input/mtk-kpd.txt b/Documentation/devicetree/bindings/input/mtk-kpd.txt
-> new file mode 100644
-> index 000000000000..2af81e696159
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/input/mtk-kpd.txt
-> @@ -0,0 +1,45 @@
-> +* Mediatek's Keypad Controller device tree binding
-> +
-> +Mediatek's Keypad controller is used to interface a SoC with a matrix-type
-> +keypad device. The keypad controller supports multiple row and column lines.
-> +A key can be placed at each intersection of a unique row and a unique column.
-> +The keypad controller can sense a key-press and key-release and report the
-> +event using a interrupt to the cpu.
-> +
-> +Required properties:
-> +- compatible should contain:
-> +	* "mediatek,mt6779-keypad" for MT6779 keypad
-> +	* "mediatek,kp" for common keypad
-> +
-> +- reg: The base address of the Keypad register bank.
-> +
-> +- interrupts: A single interrupt specifier.
-> +
-> +- mediatek,key-debounce-ms: Debounce interval in milliseconds, maximum value
-> +  is 256ms
-> +
-> +- mediatek,hw-map-num: Number of entries of keycode in mediatek,hw-init-map
-> +
-> +- mediatek,hw-init-map: An array of packed 1-cell entries containing the
-> +  equivalent of hw-map-num linux key-code. Each cell is Linux keymap of
-> +  corresponding row/col, arrange like this:
-> +
-> +  row0col0, row0col1, row0col2,...row0col8,
-> +  row1col0, row1col1, row1col2,...row1col8,
-> +  ...
-> +  row7col0, row7col1, row7col2,...row7col8.
-> +
-> +Example:
-> +
-> +	keypad: kp@10010000 {
-> +		compatible = "mediatek,mt6779-keypad", "mediatek,kp";
-> +		reg = <0 0x10010000 0 0x1000>;
-> +		interrupts = <GIC_SPI 75 IRQ_TYPE_EDGE_FALLING>;
-> +	};
-> +
-> +	&keypad {
-> +		mediatek,key-debounce-ms = <1024>;
-
-The maximum value is 256ms, why set it to 1024?
-
-
-> +		/*HW Keycode [0~71] -> Linux Keycode*/
-Don't need this line.
-
-> +		mediatek,khw-map-num = <72>;
-
-typo?
-
-> +		mediatek,hw-init-map = <114 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 >;
-
-I think it make sense to arrange it as 9*8 array to make it shorter in
-lines and easier to find entries.
-
-Joe.C
-
-> +	};
+      Arnd
 
 _______________________________________________
 Linux-mediatek mailing list
