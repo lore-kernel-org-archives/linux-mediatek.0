@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B0B67C33C9B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 01:52:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EB0C4C33C9B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 01:53:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 820992075A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 01:52:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BAB29214D8
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 01:53:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LYWmptv+";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="RQSMp7T8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 820992075A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JdGgtQ8V";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Lp3YNNSv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BAB29214D8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=14TQnpgReUTX9ieFXNEGaSurykDWQjapGS1SfWd47V8=; b=LYWmptv+saJf1G
-	KLNex5+B8BQLGq9vXI7EsWGIjuE1oC/xE4NyH2s3qB9SYrFZSAi8ORVFrvhDnBi8UYEoPOyXqwQa6
-	tGu15RUNooLpIMIrW/TG2ilJfowJZ9s16RhmFiH4JwO5AARA53SQgaiu27/fjzArOV8XyArkJVnQ2
-	ZFZyED3LjprnCaWJZ6RA+G6XYjC0KUFobz8ZV6q7+8Kkq2iSt2WBA8/ogEs11uC1ZXLNSOq486TDS
-	eC312qQ5LsXPi85+t86PoOtzqYM0LHzIPsoeS24y7T1LbPTGlqvGNLdHSueZBY0bzYt5tr/QNSTdl
-	ge0wTMKKJRmYMzmORZ1g==;
+	List-Owner; bh=LGjye83GmDoo5b7Snw3xqAoUf7w+NND9ezfpguhfFBI=; b=JdGgtQ8VhaolVi
+	sqq8b4YYspI3oKQSrwhdY6Qit3ZamVDjD3W4+GKhHTbJZbxbfuH9dwVXM2n9/Ykve1TYhB1HJ/w8p
+	xrzOJWVQb/YBbiygIveDEtgrNP+34wJXdXSy7Q///LrFD41yZYJjLHhyU6D6uiH3tdubFMDbNfBm/
+	UJnAYLETEjwMeDy7rOVYoFhmvVN38flaQJ9uKwX3Ad122xlU/ICwJsaQm1LS4hQGk42F6APH/c5sc
+	qXS/CJ4vh8xVBzzt/7uaAD3T7uTekK25Vj53btHo1uvNcjctHVbKkrgoMrEI+BK4xgWsW/L1RahtI
+	Halu5EnctzAFms1mFfHg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ip0WU-0003nL-Vy; Wed, 08 Jan 2020 01:52:38 +0000
+	id 1ip0Wq-0004Fn-Po; Wed, 08 Jan 2020 01:53:00 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ip0WQ-0003eF-Ay; Wed, 08 Jan 2020 01:52:35 +0000
-X-UUID: 556d7ff5d2034b1e9912b85853c4ddc4-20200107
+ id 1ip0WQ-0003iT-AZ; Wed, 08 Jan 2020 01:52:36 +0000
+X-UUID: 3e38387b6dc44509951f631c98a6aa71-20200107
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=LJDVcR2SAcZk3iqycmeYvlBCWvpND3jjXyNcWGnWUEM=; 
- b=RQSMp7T8ZcIzFBAGzECFR2Ub17ThOSducEc4uDxuDim+m9/6dWEOu8KhcK5lNd+hX6xfsTKaPnRB9LAm5Y2n5FpJKXmjkx9XE+brpXgPO+g8KGyXlaN/f2eLG6YjT/1GCXv3cXrNt4dZ10HUx6bhOTZ30wqaiw7A7fpb9zV8NzE=;
-X-UUID: 556d7ff5d2034b1e9912b85853c4ddc4-20200107
+ bh=bGOiBo8UsCQP2pWWgLyPzgbBIX20HC4dwHtdo02etrI=; 
+ b=Lp3YNNSvku1REfvKcdlpexuPe+R6Sdzn7z8j9K/fmqLgrBtj3qXC4xXzPKE/9Xf31au0NufCMtPAjTv6/6pQsNz5c8aYJf+4QwhBKdMXWP/ar25ydxUJlkSw1qKb2w7s2I1nsst4AljQz45DqNJoQUIu/LanIuYVyTQ8uSVopL4=;
+X-UUID: 3e38387b6dc44509951f631c98a6aa71-20200107
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1609436939; Tue, 07 Jan 2020 17:52:29 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ with ESMTP id 806019241; Tue, 07 Jan 2020 17:52:29 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 7 Jan 2020 17:52:27 -0800
+ 15.0.1395.4; Tue, 7 Jan 2020 17:52:28 -0800
 Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 8 Jan 2020 09:51:50 +0800
+ MTKMBS31DR.mediatek.inc (172.27.6.102) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 8 Jan 2020 09:50:47 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 8 Jan 2020 09:53:00 +0800
+ Transport; Wed, 8 Jan 2020 09:53:01 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: [RESEND PATCH v5 04/11] dt-bindings: phy-mtk-tphy: add a new
- reference clock
-Date: Wed, 8 Jan 2020 09:51:59 +0800
-Message-ID: <1578448326-27455-4-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [RESEND PATCH v5 05/11] dt-bindings: phy-mtk-tphy: add the properties
+ about address mapping
+Date: Wed, 8 Jan 2020 09:52:00 +0800
+Message-ID: <1578448326-27455-5-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1578448326-27455-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1578448326-27455-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 8EFC1DA0629319F690A31448ABDB0DDE135AE70D460796112408316940711EB32000:8
+X-TM-SNTS-SMTP: E7AD8DAC7C6F2045B14EF4CC6E078C9256E7C003A7D15FF2034D30DC13356E7B2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200107_175234_383180_A802A8B5 
-X-CRM114-Status: GOOD (  10.87  )
+X-CRM114-CacheID: sfid-20200107_175234_382832_8C578771 
+X-CRM114-Status: GOOD (  11.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,43 +94,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Usually the digital and analog phys use the same reference clock,
-but on some platforms, they are separated, so add another optional
-clock to support it.
-In order to keep the clock names consistent with PHY IP's, use
-the da_ref for analog phy and ref clock for digital phy.
+Add three required properties about the address mapping, including
+'#address-cells', '#size-cells' and 'ranges'
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Rob Herring <robh@kernel.org>
 ---
-v4~v5: no changes
+v3~v5: no changes
 
-v3: add acked-by Rob
-
-v2: fix typo of analog and needed
+v2: add Reviewed-by Rob
 ---
- Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-index 48bc1a2e9299..a859b0db4051 100644
+index a859b0db4051..dd75b676b71d 100644
 --- a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
 +++ b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-@@ -41,9 +41,12 @@ Optional properties (PHY_TYPE_USB2 port (child) node):
- - clocks	: a list of phandle + clock-specifier pairs, one for each
- 		  entry in clock-names
- - clock-names	: may contain
--		  "ref": 48M reference clock for HighSpeed anolog phy; and 26M
--			reference clock for SuperSpeed anolog phy, sometimes is
-+		  "ref": 48M reference clock for HighSpeed (digital) phy; and 26M
-+			reference clock for SuperSpeed (digital) phy, sometimes is
- 			24M, 25M or 27M, depended on platform.
-+		  "da_ref": the reference clock of analog phy, used if the clocks
-+			of analog and digital phys are separated, otherwise uses
-+			"ref" clock only if needed.
+@@ -14,6 +14,16 @@ Required properties (controller (parent) node):
+ 		  make use of "mediatek,generic-tphy-v1" on mt2701 instead and
+ 		  "mediatek,generic-tphy-v2" on mt2712 instead.
  
- - mediatek,eye-src	: u32, the value of slew rate calibrate
- - mediatek,eye-vrt	: u32, the selection of VRT reference voltage
++- #address-cells:	the number of cells used to represent physical
++		base addresses.
++- #size-cells:	the number of cells used to represent the size of an address.
++- ranges:	the address mapping relationship to the parent, defined with
++		- empty value: if optional 'reg' is used.
++		- non-empty value: if optional 'reg' is not used. should set
++			the child's base address to 0, the physical address
++			within parent's address space, and the length of
++			the address map.
++
+ Required nodes	: a sub-node is required for each port the controller
+ 		  provides. Address range information including the usual
+ 		  'reg' property is used inside these nodes to describe
 -- 
 2.24.0
 _______________________________________________
