@@ -2,75 +2,75 @@ Return-Path: <SRS0=HKXf=25=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,USER_AGENT_SANE_1
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 61B60C00523
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 06:43:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B7C0C33C9B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 07:12:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 344D22075D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 06:43:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5D202206DB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 07:12:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ls5bjszP";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="NxTLHYrQ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 344D22075D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NbrnL3C5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5D202206DB
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w9XhRCXeq1BpAPbwmjsOvgMFmM7aobrAn+zQvCFrQxs=; b=Ls5bjszP/Yx3el
-	yXvONxSJbaolKDYYsLWIcnZ0pngLROK+NLWjg6i8EpQhi78x8Okmptaxpz+zYCwRBxIDeQPa0Lyao
-	UFogPL6ypyafLi5baeu+CTWLWN/D2UW3gnjIvaqDmQR0yj0mo9+5Bq+B3u58x3WSeLzhgOviis0mF
-	o6PyFvTXMNhJbxLx0pxsojrN+4pinVFWXcmpBrXH4MP6VG4GwRSRM6Xos31CPAG3faHjqw26VGNQE
-	sqn4Th7BQBKtqa18KSehKUpkRTrAqLAG4AKoWmXHBLPwWuXazz7msaIql2rhXc6Q9lAzIV6dt/g5o
-	TZC+2x0LyOmLWVT/dUgg==;
+	List-Owner; bh=QzDOvyIa/jm+ft8LvYcoad18aFn54jr5oE0dyZj9RP4=; b=NbrnL3C55LmYGv
+	WadyzEOrj7OwCm/ezJWkEhvAyGG1Nvm+zQq95Qar6niXT/Ww+835rENrbP94UOtTKXtvCn3WYCjTi
+	eH4I1FhOK5da7Tr5FQSOordnJZc/IHpxNn7Z+5Rts1MotfMsrvpTQoIYRaVBhfssKrxYoWmSZO5tV
+	IToX7wJJXkgQtgVOUx7JE0pgrgXEID/3QdR0G1EgRHuHXAAFoJZg6y42mM1Ga4rukXiEMKU6UrO+8
+	CqX9ZMRyki5koL/uEYGZNG5JUlV/Q8WOOvrlf2PwBKN2vvcY/gmNP18xkWFF6Il3HiB/2vH6Z5/95
+	fbhWaRBGSIRhALBQoz2w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ip53b-0002xk-1d; Wed, 08 Jan 2020 06:43:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ip5VW-0007KH-I2; Wed, 08 Jan 2020 07:11:58 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ip52E-0001UK-Af; Wed, 08 Jan 2020 06:41:44 +0000
-X-UUID: cb36fe832000426c8240d9d669d3c7a1-20200107
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=YZUHtY5Et7Z+h9F0lLzp+7QIBnsI3mM9pQonsoRaQYM=; 
- b=NxTLHYrQSPGOGLKqi6c32DnpCn2ku7VyFkiF6DZhhq5UMwu4kkj5qvcpr84XAZvQMK0sT9DeZi4iAp9PXRvFk3Lh12cOzeUIxsheBecp7pBUrSX+6hvcZHo4vOmkGZJ/994NWKHTlzgtITC+bLLuKYesrCw3okZuUubxClDF1wo=;
-X-UUID: cb36fe832000426c8240d9d669d3c7a1-20200107
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <ming-fan.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1359956608; Tue, 07 Jan 2020 22:41:35 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 7 Jan 2020 22:42:08 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 8 Jan 2020 14:41:08 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Wed, 8 Jan 2020 14:39:59 +0800
-From: Ming-Fan Chen <ming-fan.chen@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v3 3/3] memory: mtk-smi: Add bandwidth initial golden setting
-Date: Wed, 8 Jan 2020 14:41:31 +0800
-Message-ID: <1578465691-30692-5-git-send-email-ming-fan.chen@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1578465691-30692-1-git-send-email-ming-fan.chen@mediatek.com>
-References: <1578465691-30692-1-git-send-email-ming-fan.chen@mediatek.com>
+ id 1ip5VS-0007J7-S6
+ for linux-mediatek@lists.infradead.org; Wed, 08 Jan 2020 07:11:57 +0000
+Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <mfe@pengutronix.de>)
+ id 1ip5V7-0002RS-R4; Wed, 08 Jan 2020 08:11:33 +0100
+Received: from mfe by pty.hi.pengutronix.de with local (Exim 4.89)
+ (envelope-from <mfe@pengutronix.de>)
+ id 1ip5V4-000369-JP; Wed, 08 Jan 2020 08:11:30 +0100
+Date: Wed, 8 Jan 2020 08:11:30 +0100
+From: Marco Felsch <m.felsch@pengutronix.de>
+To: fengping yu <fengping.yu@mediatek.com>
+Subject: Re: [PATCH V2 2/2] drivers: input: keyboard
+Message-ID: <20200108071130.leowzwzkexozumda@pengutronix.de>
+References: <20200108062923.14684-1-fengping.yu@mediatek.com>
+ <20200108062923.14684-3-fengping.yu@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20200108062923.14684-3-fengping.yu@mediatek.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 07:38:33 up 53 days, 21:57, 46 users,  load average: 0.01, 0.03, 0.00
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
+X-SA-Exim-Mail-From: mfe@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200107_224142_460435_173FD025 
-X-CRM114-Status: GOOD (  14.07  )
+X-CRM114-CacheID: sfid-20200107_231155_221024_F38E32E3 
+X-CRM114-Status: GOOD (  29.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,234 +82,517 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Joerg
- Roedel <jroedel@suse.de>, wsd_upstream@mediatek.com,
- linux-kernel@vger.kernel.org, Evan Green <evgreen@chromium.org>,
- linux-mediatek@lists.infradead.org, Yong Wu <yong.wu@mediatek.com>, Ming-Fan
- Chen <ming-fan.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Jacky Bai <ping.bai@nxp.com>,
+ wsd_upstream@mediatek.com, Stefan Agner <stefan@agner.cn>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Leonard Crestez <leonard.crestez@nxp.com>, Will Deacon <will@kernel.org>,
+ Anson Huang <Anson.Huang@nxp.com>, YueHaibing <yuehaibing@huawei.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ linux-input@vger.kernel.org, Thierry Reding <treding@nvidia.com>,
+ Valentin Schneider <valentin.schneider@arm.com>, devicetree@vger.kernel.org,
+ Arnd Bergmann <arnd@arndb.de>, Maxime Ripard <mripard@kernel.org>,
+ Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ linux-arm-kernel@lists.infradead.org, Aisheng Dong <aisheng.dong@nxp.com>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org,
+ Dinh Nguyen <dinguyen@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Olof Johansson <olof@lixom.net>, Shawn Guo <shawnguo@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SMI bandwidth initial golden setting for MT6779 make sure
-better performance of memory control for multimedia modules.
+Hi,
 
-changelog since v2:
-Define local variable from long to short
-Merge writel_relaxed into one line
-Remove SMI_LARB_SW_FLAG in smi-larb
+this is just a short review I did not check all details. Since this is a
+v2 you should say what you changed.
 
-Signed-off-by: Ming-Fan Chen <ming-fan.chen@mediatek.com>
----
- drivers/memory/mtk-smi.c |  118 +++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 117 insertions(+), 1 deletion(-)
+Regards,
+  Marco
 
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index d0b747a..222ac7e 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -41,21 +41,47 @@
- #define SMI_LARB_NONSEC_CON(id)	(0x380 + ((id) * 4))
- #define F_MMU_EN		BIT(0)
- 
-+#define SMI_LARB_CMD_THRT_CON	 0x24
-+#define SMI_LARB_OSTDL_PORT	 0x200
-+#define SMI_LARB_OSTDL_PORTx(id) (SMI_LARB_OSTDL_PORT + (((id) & 0x1f) << 2))
-+
- /* SMI COMMON */
-+#define SMI_L1LEN			0x100
-+#define SMI_L1ARB0			0x104
-+#define SMI_L1ARB(id)			(SMI_L1ARB0 + (((id) & 0x7) << 2))
-+
- #define SMI_BUS_SEL			0x220
- #define SMI_BUS_LARB_SHIFT(larbid)	((larbid) << 1)
- /* All are MMU0 defaultly. Only specialize mmu1 here. */
- #define F_MMU1_LARB(larbid)		(0x1 << SMI_BUS_LARB_SHIFT(larbid))
- 
-+#define SMI_M4U_TH			0x234
-+#define SMI_FIFO_TH1			0x238
-+#define SMI_FIFO_TH2			0x23c
-+#define SMI_DCM				0x300
-+#define SMI_DUMMY			0x444
-+
-+#define SMI_LARB_PORT_NR_MAX		32
-+#define SMI_LARB_MISC_NR		1
-+
- enum mtk_smi_gen {
- 	MTK_SMI_GEN1,
- 	MTK_SMI_GEN2
- };
- 
-+struct mtk_smi_reg_pair {
-+	u16	offset;
-+	u32	value;
-+};
-+
- struct mtk_smi_common_plat {
- 	enum mtk_smi_gen gen;
- 	bool             has_gals;
- 	u32              bus_sel; /* Balance some larbs to enter mmu0 or mmu1 */
-+	bool                          has_bwc;
-+	u8                            larb_nr;
-+	const u16                     *l1arb;
-+	const struct mtk_smi_reg_pair *misc;
- };
- 
- struct mtk_smi_larb_gen {
-@@ -63,6 +89,9 @@ struct mtk_smi_larb_gen {
- 	void (*config_port)(struct device *);
- 	unsigned int			larb_direct_to_common_mask;
- 	bool				has_gals;
-+	bool				has_bwc;
-+	const u8			(*ostdl)[SMI_LARB_PORT_NR_MAX];
-+	const struct mtk_smi_reg_pair	(*misc)[SMI_LARB_MISC_NR];
- };
- 
- struct mtk_smi {
-@@ -159,6 +188,8 @@ void mtk_smi_larb_put(struct device *larbdev)
- static void mtk_smi_larb_config_port_gen2_general(struct device *dev)
- {
- 	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
-+	const struct mtk_smi_reg_pair *misc;
-+	const u8 *ostdl;
- 	u32 reg;
- 	int i;
- 
-@@ -170,6 +201,18 @@ static void mtk_smi_larb_config_port_gen2_general(struct device *dev)
- 		reg |= F_MMU_EN;
- 		writel(reg, larb->base + SMI_LARB_NONSEC_CON(i));
- 	}
-+
-+	if (!larb->larb_gen->has_bwc)
-+		return;
-+
-+	for (i = 0, ostdl = larb->larb_gen->ostdl[larb->larbid];
-+		i < SMI_LARB_PORT_NR_MAX; i++)
-+		writel_relaxed(ostdl[i], larb->base + SMI_LARB_OSTDL_PORTx(i));
-+
-+	for (i = 0, misc = larb->larb_gen->misc[larb->larbid];
-+		i < SMI_LARB_MISC_NR; i++)
-+		writel_relaxed(misc[i].value, larb->base + misc[i].offset);
-+	wmb(); /* make sure settings are written */
- }
- 
- static void mtk_smi_larb_config_port_mt8173(struct device *dev)
-@@ -239,11 +282,53 @@ static void mtk_smi_larb_config_port_gen1(struct device *dev)
- 	.larb_direct_to_common_mask = BIT(8) | BIT(9),      /* bdpsys */
- };
- 
-+static const u8 mtk_smi_larb_mt6779_ostdl[][SMI_LARB_PORT_NR_MAX] = {
-+	{0x28, 0x28, 0x01, 0x28, 0x01, 0x01, 0x0a, 0x0a, 0x28,},
-+	{0x28, 0x01, 0x28, 0x28, 0x0a, 0x01, 0x01, 0x0d, 0x0d, 0x07,
-+	 0x01, 0x07, 0x01, 0x28,},
-+	{0x18, 0x01, 0x08, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x02,
-+	 0x01, 0x01},
-+	{0x01, 0x03, 0x02, 0x01, 0x01, 0x01, 0x01, 0x04, 0x02, 0x01,
-+	 0x04, 0x01, 0x01, 0x01, 0x01, 0x04, 0x0b, 0x13, 0x14,},
-+	{},
-+	{0x13, 0x0f, 0x0d, 0x07, 0x07, 0x04, 0x03, 0x01, 0x03, 0x01,
-+	 0x05, 0x0c, 0x01, 0x01, 0x08, 0x06, 0x02, 0x01, 0x08, 0x08,
-+	 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,},
-+	{0x01, 0x01, 0x01,},
-+	{0x01, 0x01, 0x01, 0x01,},
-+	{0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,},
-+	{0x1f, 0x1a, 0x02, 0x04, 0x1f, 0x02, 0x14, 0x01, 0x1f, 0x04,
-+	 0x04, 0x01, 0x01, 0x01, 0x02, 0x02, 0x04, 0x02, 0x01, 0x02,
-+	 0x04, 0x02, 0x02, 0x01,},
-+	{0x1f, 0x1a, 0x02, 0x04, 0x1f, 0x02, 0x14, 0x01, 0x1f, 0x1a,
-+	 0x02, 0x04, 0x1f, 0x02, 0x14, 0x01, 0x01, 0x02, 0x02, 0x04,
-+	 0x02, 0x0a, 0x02, 0x02, 0x04, 0x02, 0x0a, 0x02, 0x04, 0x02, 0x04,},
-+	{0x01, 0x01, 0x01, 0x01, 0x01,},
-+};
-+
-+static const struct mtk_smi_reg_pair
-+mtk_smi_larb_mt6779_misc[][SMI_LARB_MISC_NR] = {
-+	{{SMI_LARB_CMD_THRT_CON, 0x370256},},
-+	{{SMI_LARB_CMD_THRT_CON, 0x300256},},
-+	{{SMI_LARB_CMD_THRT_CON, 0x370256},},
-+	{},
-+	{{SMI_LARB_CMD_THRT_CON, 0x300256},},
-+	{{SMI_LARB_CMD_THRT_CON, 0x300256},},
-+	{{SMI_LARB_CMD_THRT_CON, 0x300256},},
-+	{{SMI_LARB_CMD_THRT_CON, 0x300256},},
-+	{{SMI_LARB_CMD_THRT_CON, 0x370256},},
-+	{{SMI_LARB_CMD_THRT_CON, 0x370256},},
-+	{{SMI_LARB_CMD_THRT_CON, 0x370256},},
-+};
-+
- static const struct mtk_smi_larb_gen mtk_smi_larb_mt6779 = {
- 	.config_port  = mtk_smi_larb_config_port_gen2_general,
- 	.larb_direct_to_common_mask =
- 		BIT(4) | BIT(6) | BIT(11) | BIT(12) | BIT(13),
- 		/* DUMMY | IPU0 | IPU1 | CCU | MDLA */
-+	.has_bwc = true,
-+	.ostdl   = mtk_smi_larb_mt6779_ostdl,
-+	.misc    = mtk_smi_larb_mt6779_misc,
- };
- 
- static const struct mtk_smi_larb_gen mtk_smi_larb_mt8183 = {
-@@ -397,11 +482,30 @@ static int __maybe_unused mtk_smi_larb_suspend(struct device *dev)
- 	.gen = MTK_SMI_GEN2,
- };
- 
-+static const u16 mtk_smi_common_mt6779_l1arb[] = {
-+	0x1000, 0x1000, 0x1000, 0x1000, 0x1000, 0x1000, 0x1000, 0x1000,
-+};
-+
-+static const struct
-+mtk_smi_reg_pair mtk_smi_common_mt6779_misc[SMI_COMMON_MISC_NR] = {
-+	{SMI_L1LEN, 0xb},
-+	{SMI_M4U_TH, 0xe100e10},
-+	{SMI_FIFO_TH1, 0x506090a},
-+	{SMI_FIFO_TH2, 0x506090a},
-+	{SMI_DCM, 0x4f1},
-+	{SMI_DUMMY, 0x1},
-+};
-+
- static const struct mtk_smi_common_plat mtk_smi_common_mt6779 = {
- 	.gen		= MTK_SMI_GEN2,
- 	.has_gals	= true,
- 	.bus_sel	= F_MMU1_LARB(1) | F_MMU1_LARB(2) | F_MMU1_LARB(4) |
- 			  F_MMU1_LARB(5) | F_MMU1_LARB(6) | F_MMU1_LARB(7),
-+	.has_bwc	= true,
-+	.larb_nr	= ARRAY_SIZE(mtk_smi_common_mt6779_l1arb),
-+	.l1arb		= mtk_smi_common_mt6779_l1arb,
-+	.misc_nr	= ARRAY_SIZE(mtk_smi_common_mt6779_misc),
-+	.misc		= mtk_smi_common_mt6779_misc,
- };
- 
- static const struct mtk_smi_common_plat mtk_smi_common_mt8183 = {
-@@ -506,7 +610,7 @@ static int __maybe_unused mtk_smi_common_resume(struct device *dev)
- {
- 	struct mtk_smi *common = dev_get_drvdata(dev);
- 	u32 bus_sel = common->plat->bus_sel;
--	int ret;
-+	int i, ret;
- 
- 	ret = mtk_smi_clk_enable(common);
- 	if (ret) {
-@@ -516,6 +620,18 @@ static int __maybe_unused mtk_smi_common_resume(struct device *dev)
- 
- 	if (common->plat->gen == MTK_SMI_GEN2 && bus_sel)
- 		writel(bus_sel, common->base + SMI_BUS_SEL);
-+
-+	if (!common->plat->has_bwc)
-+		return 0;
-+
-+	for (i = 0; i < common->plat->larb_nr; i++)
-+		writel_relaxed(common->plat->l1arb[i],
-+			       common->base + SMI_L1ARB(i));
-+
-+	for (i = 0; i < common->plat->misc_nr; i++)
-+		writel_relaxed(common->plat->misc[i].value,
-+			       common->base + common->plat->misc[i].value);
-+	wmb(); /* make sure settings are written */
- 	return 0;
- }
- 
+On 20-01-08 14:29, fengping yu wrote:
+> From: "fengping.yu" <fengping.yu@mediatek.com>
+> 
+> add mtk keypad driver
+
+Hm.. can you explain it a bit more?
+
+> Change-Id: I20bb26ee4112f51f60476b7ff7d6e42b43f729dc
+> Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
+> ---
+>  .../devicetree/bindings/input/mtk-kpd.txt     |  13 +-
+>  arch/arm64/configs/defconfig                  |   1 +
+>  drivers/input/keyboard/Kconfig                |   8 +
+>  drivers/input/keyboard/Makefile               |   1 +
+>  drivers/input/keyboard/mtk-kpd.c              | 357 ++++++++++++++++++
+>  5 files changed, 377 insertions(+), 3 deletions(-)
+>  create mode 100644 drivers/input/keyboard/mtk-kpd.c
+> 
+> diff --git a/Documentation/devicetree/bindings/input/mtk-kpd.txt b/Documentation/devicetree/bindings/input/mtk-kpd.txt
+> index 2af81e696159..e3c17513c02c 100644
+> --- a/Documentation/devicetree/bindings/input/mtk-kpd.txt
+> +++ b/Documentation/devicetree/bindings/input/mtk-kpd.txt
+> @@ -38,8 +38,15 @@ Example:
+>  	};
+>  
+>  	&keypad {
+> -		mediatek,key-debounce-ms = <1024>;
+> +		mediatek,key-debounce-ms = <32>;
+>  		/*HW Keycode [0~71] -> Linux Keycode*/
+> -		mediatek,khw-map-num = <72>;
+> -		mediatek,hw-init-map = <114 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 >;
+> +		mediatek,hw-map-num = <72>;
+> +		mediatek,hw-init-map = <114 0 0 0 0 0 0 0 0
+> +															0 0 0 0 0 0 0 0 0
+> +															0 0 0 0 0 0 0 0 0
+> +															0 0 0 0 0 0 0 0 0
+> +															0 0 0 0 0 0 0 0 0
+> +															0 0 0 0 0 0 0 0 0
+> +															0 0 0 0 0 0 0 0 0
+> +															0 0 0 0 0 0 0 0 0 >;
+>  	};
+
+This should be part of patch 1.
+
+> diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+> index 8e05c39eab08..62bed77ec127 100644
+> --- a/arch/arm64/configs/defconfig
+> +++ b/arch/arm64/configs/defconfig
+> @@ -315,6 +315,7 @@ CONFIG_KEYBOARD_ADC=m
+>  CONFIG_KEYBOARD_GPIO=y
+>  CONFIG_KEYBOARD_SNVS_PWRKEY=m
+>  CONFIG_KEYBOARD_CROS_EC=y
+> +CONFIG_KEYBOARD_MTK=y
+>  CONFIG_INPUT_TOUCHSCREEN=y
+>  CONFIG_TOUCHSCREEN_ATMEL_MXT=m
+>  CONFIG_INPUT_MISC=y
+
+This should be a extra patch.
+
+> diff --git a/drivers/input/keyboard/Kconfig b/drivers/input/keyboard/Kconfig
+> index 8911bc2ec42a..01747a97536b 100644
+> --- a/drivers/input/keyboard/Kconfig
+> +++ b/drivers/input/keyboard/Kconfig
+> @@ -775,4 +775,12 @@ config KEYBOARD_MTK_PMIC
+>  	  To compile this driver as a module, choose M here: the
+>  	  module will be called pmic-keys.
+>  
+> +config KEYBOARD_MTK
+> +	tristate "MediaTek Keypad Support"
+> +	help
+> +	  Say Y here if you want to use the keypad.
+> +	  If unuse, say N.
+> +	  To compile this driver as a module, choose M here: the
+> +	  module will be called mtk-kpd.
+> +
+>  endif
+> diff --git a/drivers/input/keyboard/Makefile b/drivers/input/keyboard/Makefile
+> index 9510325c0c5d..daa654bcce6e 100644
+> --- a/drivers/input/keyboard/Makefile
+> +++ b/drivers/input/keyboard/Makefile
+> @@ -41,6 +41,7 @@ obj-$(CONFIG_KEYBOARD_MATRIX)		+= matrix_keypad.o
+>  obj-$(CONFIG_KEYBOARD_MAX7359)		+= max7359_keypad.o
+>  obj-$(CONFIG_KEYBOARD_MCS)		+= mcs_touchkey.o
+>  obj-$(CONFIG_KEYBOARD_MPR121)		+= mpr121_touchkey.o
+> +obj-$(CONFIG_KEYBOARD_MTK) 		+= mtk-kpd.o
+>  obj-$(CONFIG_KEYBOARD_MTK_PMIC) 	+= mtk-pmic-keys.o
+>  obj-$(CONFIG_KEYBOARD_NEWTON)		+= newtonkbd.o
+>  obj-$(CONFIG_KEYBOARD_NOMADIK)		+= nomadik-ske-keypad.o
+> diff --git a/drivers/input/keyboard/mtk-kpd.c b/drivers/input/keyboard/mtk-kpd.c
+> new file mode 100644
+> index 000000000000..740a58b44dac
+> --- /dev/null
+> +++ b/drivers/input/keyboard/mtk-kpd.c
+> @@ -0,0 +1,357 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (C) 2019 MediaTek Inc.
+> + * Author Terry Chang <terry.chang@mediatek.com>
+> + */
+> +#include <linux/atomic.h>
+> +#include <linux/clk.h>
+> +#include <linux/debugfs.h>
+> +#include <linux/delay.h>
+> +#include <linux/fs.h>
+> +#include <linux/gpio.h>
+> +#include <linux/init.h>
+> +#include <linux/input.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/io.h>
+> +#include <linux/ioctl.h>
+> +#include <linux/kernel.h>
+> +#include <linux/miscdevice.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/of_address.h>
+> +#include <linux/of_irq.h>
+> +#include <linux/pinctrl/consumer.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/pm_wakeup.h>
+> +#include <linux/regmap.h>
+> +#include <linux/timer.h>
+> +#include <linux/workqueue.h>
+
+Please check if you need all these includes at least the workqueue isn't
+required.
+
+> +#define KPD_NAME	"mtk-kpd"
+> +
+> +#define KP_STA			(0x0000)
+> +#define KP_MEM1			(0x0004)
+> +#define KP_MEM2			(0x0008)
+> +#define KP_MEM3			(0x000c)
+> +#define KP_MEM4			(0x0010)
+> +#define KP_MEM5			(0x0014)
+> +#define KP_DEBOUNCE		(0x0018)
+> +#define KP_SEL			(0x0020)
+> +#define KP_EN			(0x0024)
+> +
+> +#define KP_COL0_SEL		(1 << 10)
+> +#define KP_COL1_SEL		(1 << 11)
+> +#define KP_COL2_SEL		(1 << 12)
+> +
+> +#define KPD_DEBOUNCE_MASK	((1U << 14) - 1)
+> +#define KPD_DOUBLE_KEY_MASK	(1U << 0)
+> +
+> +#define KPD_NUM_MEMS	5
+> +#define KPD_MEM5_BITS	8
+> +#define KPD_NUM_KEYS	72	/* 4 * 16 + KPD_MEM5_BITS */
+> +
+> +struct mtk_keypad {
+> +	struct input_dev *input_dev;
+> +	struct wakeup_source *suspend_lock;
+> +	struct tasklet_struct tasklet;
+
+Why do you use a tasklet instead of a simple softirq?
+
+> +	struct clk *clk;
+> +	void __iomem *base;
+> +	unsigned int irqnr;
+> +	u32 key_debounce;
+> +	u32 hw_map_num;
+> +	u32 hw_init_map[KPD_NUM_KEYS];
+> +	u16 keymap_state[KPD_NUM_MEMS];
+> +};
+> +
+> +/* for keymap handling */
+> +static void kpd_keymap_handler(unsigned long data);
+> +
+> +static int kpd_pdrv_probe(struct platform_device *pdev);
+
+Why do you delcare these functions here?
+
+> +static void kpd_get_keymap_state(void __iomem *kp_base, u16 state[])
+> +{
+> +	state[0] = readw(kp_base + KP_MEM1);
+> +	state[1] = readw(kp_base + KP_MEM2);
+> +	state[2] = readw(kp_base + KP_MEM3);
+> +	state[3] = readw(kp_base + KP_MEM4);
+> +	state[4] = readw(kp_base + KP_MEM5);
+> +	pr_debug("kpd register = %x %x %x %x %x\n",
+> +		 state[0], state[1], state[2], state[3], state[4]);
+> +}
+> +
+> +static void kpd_keymap_handler(unsigned long data)
+> +{
+> +	int i, j;
+> +	int pressed;
+> +	u16 new_state[KPD_NUM_MEMS], change, mask;
+> +	u16 hw_keycode, keycode;
+> +	void *dest;
+> +	struct mtk_keypad *keypad = (struct mtk_keypad *)data;
+> +
+> +	kpd_get_keymap_state(keypad->base, new_state);
+> +
+> +	__pm_wakeup_event(keypad->suspend_lock, 500);
+> +
+> +	for (i = 0; i < KPD_NUM_MEMS; i++) {
+> +		change = new_state[i] ^ keypad->keymap_state[i];
+> +		if (!change)
+> +			continue;
+> +
+> +		for (j = 0; j < 16U; j++) {
+> +			mask = (u16)1 << j;
+> +			if (!(change & mask))
+> +				continue;
+> +
+> +			hw_keycode = (i << 4) + j;
+> +
+> +			if (hw_keycode >= KPD_NUM_KEYS)
+> +				continue;
+> +
+> +			/* bit is 1: not pressed, 0: pressed */
+> +			pressed = (new_state[i] & mask) == 0U;
+> +			pr_debug("(%s) HW keycode = %d\n",
+> +				 (pressed) ? "pressed" : "released",
+> +				 hw_keycode);
+> +
+> +			keycode = keypad->hw_init_map[hw_keycode];
+> +			if (!keycode)
+> +				continue;
+> +			input_report_key(keypad->input_dev, keycode, pressed);
+> +			input_sync(keypad->input_dev);
+> +			pr_debug("report Linux keycode = %d\n", keycode);
+> +		}
+> +	}
+> +
+> +	dest = memcpy(keypad->keymap_state, new_state, sizeof(new_state));
+> +	enable_irq(keypad->irqnr);
+> +}
+> +
+> +static irqreturn_t kpd_irq_handler(int irq, void *dev_id)
+> +{
+> +	/* use _nosync to avoid deadlock */
+> +	struct mtk_keypad *keypad = dev_id;
+> +
+> +	disable_irq_nosync(keypad->irqnr);
+> +	tasklet_schedule(&keypad->tasklet);
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +static int kpd_get_dts_info(struct mtk_keypad *keypad,
+> +			    struct device_node *node)
+> +{
+> +	int ret;
+> +
+> +	ret = of_property_read_u32(node, "mediatek,key-debounce-ms",
+> +				   &keypad->key_debounce);
+> +	if (ret) {
+> +		pr_debug("read mediatek,key-debounce-ms error.\n");
+> +		return ret;
+> +	}
+> +
+> +	ret = of_property_read_u32(node, "mediatek,hw-map-num",
+> +				   &keypad->hw_map_num);
+> +	if (ret) {
+> +		pr_debug("read mediatek,hw-map-num error.\n");
+> +		return ret;
+> +	}
+> +
+> +	if (keypad->hw_map_num > KPD_NUM_KEYS) {
+> +		pr_debug("hw-map-num error, it cannot bigger than %d.\n",
+> +			 KPD_NUM_KEYS);
+> +		return -EINVAL;
+> +	}
+> +
+> +	ret = of_property_read_u32_array(node, "mediatek,hw-init-map",
+> +					 keypad->hw_init_map,
+> +					 keypad->hw_map_num);
+> +
+> +	if (ret) {
+> +		pr_debug("hw-init-map was not defined in dts.\n");
+> +		return ret;
+> +	}
+> +
+> +	pr_debug("deb= %d\n", keypad->key_debounce);
+> +
+> +	return 0;
+> +}
+> +
+> +static int kpd_gpio_init(struct device *dev)
+> +{
+> +	struct pinctrl *keypad_pinctrl;
+> +	struct pinctrl_state *kpd_default;
+> +
+> +	keypad_pinctrl = devm_pinctrl_get(dev);
+> +	if (IS_ERR(keypad_pinctrl)) {
+> +		pr_debug("Cannot find keypad_pinctrl!\n");
+> +
+> +		return (int)PTR_ERR(keypad_pinctrl);
+> +	}
+> +
+> +	kpd_default = pinctrl_lookup_state(keypad_pinctrl, "default");
+> +	if (IS_ERR(kpd_default)) {
+> +		pr_debug("Cannot find ecall_state!\n");
+> +
+> +		return (int)PTR_ERR(kpd_default);
+> +	}
+> +
+> +	return pinctrl_select_state(keypad_pinctrl,
+> +				kpd_default);
+> +}
+> +
+> +static int kpd_pdrv_probe(struct platform_device *pdev)
+> +{
+> +	struct mtk_keypad *keypad;
+> +	struct resource *res;
+> +	int i;
+> +	int err;
+> +
+> +	keypad = devm_kzalloc(&pdev->dev, sizeof(*keypad), GFP_KERNEL);
+> +	if (!keypad)
+> +		return -ENOMEM;
+> +
+> +	keypad->clk = devm_clk_get(&pdev->dev, "kpd");
+> +	if (IS_ERR(keypad->clk)) {
+> +		pr_notice("get kpd-clk fail: %d\n", (int)PTR_ERR(keypad->clk));
+> +		return (int)PTR_ERR(keypad->clk);
+> +	}
+
+There is no need to cast it to (int).
+
+> +
+> +	err = clk_prepare_enable(keypad->clk);
+> +	if (err) {
+> +		pr_notice("kpd-clk prepare enable failed.\n");
+> +		return err;
+> +	}
+> +
+> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +	if (!res) {
+> +		err = -ENODEV;
+> +		goto err_unprepare_clk;
+> +	}
+> +
+> +	keypad->base = devm_ioremap(&pdev->dev, res->start,
+> +				    resource_size(res));
+> +	if (!keypad->base) {
+> +		pr_notice("KP iomap failed\n");
+> +		err = -EBUSY;
+> +		goto err_unprepare_clk;
+> +	}
+> +
+> +	keypad->irqnr = irq_of_parse_and_map(pdev->dev.of_node, 0);
+> +	if (!keypad->irqnr) {
+> +		pr_notice("KP get irqnr failed\n");
+> +		err = -ENODEV;
+> +		goto err_unprepare_clk;
+> +	}
+> +
+> +	pr_info("kp base: 0x%p, addr:0x%p,  kp irq: %d\n",
+> +		keypad->base, &keypad->base, keypad->irqnr);
+
+Can we move that to pr_info.
+
+> +	err = kpd_gpio_init(&pdev->dev);
+
+This can be done here too but is jsut a nitpick.
+
+> +	if (err) {
+> +		pr_debug("gpio init failed\n");
+> +		goto err_unprepare_clk;
+> +	}
+> +
+> +	err = kpd_get_dts_info(keypad, pdev->dev.of_node);
+> +	if (err) {
+> +		pr_debug("get dts info failed.\n");
+> +		goto err_unprepare_clk;
+> +	}
+> +
+> +	memset(keypad->keymap_state, 0xff, sizeof(keypad->keymap_state));
+> +
+> +	keypad->input_dev = devm_input_allocate_device(&pdev->dev);
+> +	if (!keypad->input_dev) {
+> +		pr_notice("input allocate device fail.\n");
+> +		err = -ENOMEM;
+> +		goto err_unprepare_clk;
+> +	}
+> +
+> +	keypad->input_dev->name = KPD_NAME;
+> +	keypad->input_dev->id.bustype = BUS_HOST;
+> +	keypad->input_dev->dev.parent = &pdev->dev;
+> +
+> +	__set_bit(EV_KEY, keypad->input_dev->evbit);
+> +
+> +	for (i = 0; i < KPD_NUM_KEYS; i++) {
+> +		if (keypad->hw_init_map[i])
+> +			__set_bit(keypad->hw_init_map[i],
+> +				  keypad->input_dev->keybit);
+> +	}
+> +
+> +	err = input_register_device(keypad->input_dev);
+> +	if (err) {
+> +		pr_notice("register input device failed (%d)\n", err);
+> +		goto err_unprepare_clk;
+> +	}
+> +
+> +	input_set_drvdata(keypad->input_dev, keypad);
+> +
+> +	keypad->suspend_lock = wakeup_source_register(NULL, "kpd wakelock");
+> +	if (!keypad->suspend_lock) {
+> +		pr_notice("wakeup source init failed.\n");
+> +		err = -ENOMEM;
+> +		goto err_unregister_device;
+> +	}
+
+What if someone won't use this device as wakeup source?
+
+> +	tasklet_init(&keypad->tasklet, kpd_keymap_handler,
+> +		     (unsigned long)keypad);
+> +
+> +	writew((u16)(keypad->key_debounce & KPD_DEBOUNCE_MASK),
+> +		     keypad->base + KP_DEBOUNCE);
+> +
+> +	/* register IRQ */
+> +	err = request_irq(keypad->irqnr, kpd_irq_handler, IRQF_TRIGGER_NONE,
+> +			  KPD_NAME, keypad);
+> +	if (err) {
+> +		pr_notice("register IRQ failed (%d)\n", err);
+> +		goto err_irq;
+> +	}
+> +
+> +	pr_info("kpd_probe OK.\n");
+> +
+> +	return 0;
+> +
+> +err_irq:
+> +	tasklet_kill(&keypad->tasklet);
+> +	wakeup_source_unregister(keypad->suspend_lock);
+> +
+> +err_unregister_device:
+> +	input_unregister_device(keypad->input_dev);
+> +
+> +err_unprepare_clk:
+> +	clk_disable_unprepare(keypad->clk);
+> +
+> +	return err;
+> +}
+> +
+> +static int kpd_pdrv_remove(struct platform_device *pdev)
+> +{
+> +	struct mtk_keypad *keypad = platform_get_drvdata(pdev);
+> +
+> +	tasklet_kill(&keypad->tasklet);
+> +	wakeup_source_unregister(keypad->suspend_lock);
+> +	input_unregister_device(keypad->input_dev);
+> +	clk_disable_unprepare(keypad->clk);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct of_device_id kpd_of_match[] = {
+> +	{.compatible = "mediatek,mt6779-keypad"},
+> +	{.compatible = "mediatek,kp"},
+> +	{},
+> +};
+> +
+> +static struct platform_driver kpd_pdrv = {
+> +	.probe = kpd_pdrv_probe,
+> +	.remove = kpd_pdrv_remove,
+> +	.driver = {
+> +		   .name = KPD_NAME,
+> +		   .of_match_table = kpd_of_match,
+> +		   },
+
+Please align this correct.
+
+> +};
+> +
+> +module_platform_driver(kpd_pdrv);
+> +
+> +MODULE_AUTHOR("Mediatek Corporation");
+> +MODULE_DESCRIPTION("MTK Keypad (KPD) Driver");
+> +MODULE_LICENSE("GPL");
+> -- 
+> 2.18.0
+
 -- 
-1.7.9.5
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
