@@ -2,22 +2,22 @@ Return-Path: <SRS0=HKXf=25=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 13BEDC00523
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 06:42:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C4852C00523
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 06:43:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DB5292077B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 06:42:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 975412075D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 06:43:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rRtExiy/";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ZtGHu6Z/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DB5292077B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aGxBX+gZ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="r59Z0UQj"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 975412075D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,51 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gp8yq2/6j/+IHoebC4xhlXv5fP9P3D5Yh+t7KOxC1ec=; b=rRtExiy/7H3Dze
-	s+nlufl8Deut7J/nNgTobUqKTrJhGfG2Lm9X7/SyzoW6GD/fdNlGuXF6J0Y7brAblPHBH7xIS2JvZ
-	q2Der7UmhPhVk3TAIBUHBanc0ppt1QDKQFV9cqE6jpUbddDVxDMBDOdXmY+stiE3WFkOT00SgHMwU
-	9NAuQyt6m0Sl3kzv1UUeQqC15MMoVF15NKI9Ffha9sVTSn6LGHFO8vi60p4SY/rLQpT7qnNXGPQff
-	Sst72mlUNtmWGSAw58o4zvQxeLIv3Tfw8owBW+vVBZo2VuzjNTCbEjfR7isTA9C/bYn45zevUls33
-	JLJ0bVfXPfZj2/jQALaw==;
+	List-Owner; bh=+/Db6y/cWW2+NLcu4I5DH32piviLBkcM734z6zSKQCA=; b=aGxBX+gZZnfxbL
+	6e7VlFrHRjYy0/HpxFj9dNa/Cak7L96tXW9tg4E7tQbhFBLbSg+9F3YlG20TF54AWVlTCviGkAx+4
+	npO+LOhwPHmHPQKLIyG+YNjY+aTR3/J6IBMoWaWQI/RXQxjmj2uBVaADrPGm21LTA2aRsXBJABtq0
+	J94k79Ev+lMGFQGYQlbnX10AqVcwUQlv8/bQIe1ixTElaXJl9UYzPvHP3YfyL093ZMi7W011ujfYW
+	PP3aQpzmIrzXfOusit65sEJWmvHNSt/OFx5VcfSH2jSFSYy4Bw+nBXJhQkZsyBzZ3vwRsThoYMcGL
+	NLZCTQNC4vHvlYjm5VXg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ip53G-0002af-Kn; Wed, 08 Jan 2020 06:42:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ip53J-0002eS-My; Wed, 08 Jan 2020 06:42:49 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ip52B-0001VO-2D; Wed, 08 Jan 2020 06:41:42 +0000
-X-UUID: 1f5be4b6353848bfaa01208142817fa2-20200107
+ id 1ip52B-0001Ut-Vc; Wed, 08 Jan 2020 06:41:42 +0000
+X-UUID: b7d289a606b5449390a6c38b2f196ac1-20200107
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=xgNVawMicDpvGvOC8oJR2aOtTAfe55SaH1croKlcdI4=; 
- b=ZtGHu6Z/wLbmH7zkP9UKz0yr7kgm8qg4hsAbq7v3d64eCvLSg4dCyATETM7dAa3Xvf4NeWkhVg2FdGbhCuMc3ebmHVWGrECUEDwt5RUq6xOR7uC3711aBQ3F3rcO9DGLUyfGrSit53TcYbkScJDVNOAoqpWDOGKQKgf83+LQ0as=;
-X-UUID: 1f5be4b6353848bfaa01208142817fa2-20200107
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=Yu9NqwYbodwJATiMDbCNRoEDTSoP+9XjHOc4EfpOpn0=; 
+ b=r59Z0UQjDPytbSDPxEgtRHtSDkO/HXRRrNMvzncfo+f9cwFS79Z5iIglIsU1pCljPTK+4aTgIg4XciBj2MhgQkxik7/mJHv+fAJ0OemCsa64LUMyFldVMPUaJQPjPnMGi/KwTMEgjkffs9Zdwt99+UXxNkA+ioJgwgxSvv9lhhc=;
+X-UUID: b7d289a606b5449390a6c38b2f196ac1-20200107
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <ming-fan.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1375368148; Tue, 07 Jan 2020 22:41:35 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 7 Jan 2020 22:42:09 -0800
+ with ESMTP id 1129365498; Tue, 07 Jan 2020 22:41:35 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 7 Jan 2020 22:42:07 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 8 Jan 2020 14:42:08 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 8 Jan 2020 14:41:07 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
  Frontend Transport; Wed, 8 Jan 2020 14:39:59 +0800
 From: Ming-Fan Chen <ming-fan.chen@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v3 1/3] dt-bindings: mediatek: Add binding for MT6779 SMI
-Date: Wed, 8 Jan 2020 14:41:29 +0800
-Message-ID: <1578465691-30692-3-git-send-email-ming-fan.chen@mediatek.com>
+Subject: [PATCH v3 0/3] memory: mtk-smi: Add bandwidth initial golden setting
+Date: Wed, 8 Jan 2020 14:41:28 +0800
+Message-ID: <1578465691-30692-2-git-send-email-ming-fan.chen@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <1578465691-30692-1-git-send-email-ming-fan.chen@mediatek.com>
 References: <1578465691-30692-1-git-send-email-ming-fan.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200107_224139_128463_168A6265 
-X-CRM114-Status: GOOD (  10.23  )
+X-CRM114-CacheID: sfid-20200107_224140_018697_42D6EC8B 
+X-CRM114-Status: UNSURE (   6.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,69 +93,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch add description for MT6779 SMI.
-There are GALS in smi-larb but without clock of GALS alone.
+*** BLURB HERE ***
 
-changelog since v2:
-Add GALS for mt6779 in smi-common.txt
+Ming-Fan Chen (3):
+  dt-bindings: mediatek: Add binding for MT6779 SMI
+  memory: mtk-smi: Add basic support for MT6779
+  memory: mtk-smi: Add bandwidth initial golden setting
 
-Signed-off-by: Ming-Fan Chen <ming-fan.chen@mediatek.com>
----
- .../memory-controllers/mediatek,smi-common.txt     |    5 +++--
- .../memory-controllers/mediatek,smi-larb.txt       |    3 ++-
- 2 files changed, 5 insertions(+), 3 deletions(-)
+ .../memory-controllers/mediatek,smi-common.txt     |    5 +-
+ .../memory-controllers/mediatek,smi-larb.txt       |    3 +-
+ drivers/memory/mtk-smi.c                           |  140 +++++++++++++++++++-
+ 3 files changed, 144 insertions(+), 4 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
-index b478ade..b645736 100644
---- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.txt
-@@ -5,7 +5,7 @@ The hardware block diagram please check bindings/iommu/mediatek,iommu.txt
- Mediatek SMI have two generations of HW architecture, here is the list
- which generation the SoCs use:
- generation 1: mt2701 and mt7623.
--generation 2: mt2712, mt8173 and mt8183.
-+generation 2: mt2712, mt6779, mt8173 and mt8183.
- 
- There's slight differences between the two SMI, for generation 2, the
- register which control the iommu port is at each larb's register base. But
-@@ -18,6 +18,7 @@ Required properties:
- - compatible : must be one of :
- 	"mediatek,mt2701-smi-common"
- 	"mediatek,mt2712-smi-common"
-+	"mediatek,mt6779-smi-common"
- 	"mediatek,mt7623-smi-common", "mediatek,mt2701-smi-common"
- 	"mediatek,mt8173-smi-common"
- 	"mediatek,mt8183-smi-common"
-@@ -35,7 +36,7 @@ Required properties:
-   and these 2 option clocks for generation 2 smi HW:
-   - "gals0": the path0 clock of GALS(Global Async Local Sync).
-   - "gals1": the path1 clock of GALS(Global Async Local Sync).
--  Here is the list which has this GALS: mt8183.
-+  Here is the list which has this GALS: mt6779 and mt8183.
- 
- Example:
- 	smi_common: smi@14022000 {
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
-index 4b369b3..8f19dfe 100644
---- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
-@@ -6,6 +6,7 @@ Required properties:
- - compatible : must be one of :
- 		"mediatek,mt2701-smi-larb"
- 		"mediatek,mt2712-smi-larb"
-+		"mediatek,mt6779-smi-larb"
- 		"mediatek,mt7623-smi-larb", "mediatek,mt2701-smi-larb"
- 		"mediatek,mt8173-smi-larb"
- 		"mediatek,mt8183-smi-larb"
-@@ -21,7 +22,7 @@ Required properties:
-   - "gals": the clock for GALS(Global Async Local Sync).
-   Here is the list which has this GALS: mt8183.
- 
--Required property for mt2701, mt2712 and mt7623:
-+Required property for mt2701, mt2712, mt6779 and mt7623:
- - mediatek,larb-id :the hardware id of this larb.
- 
- Example:
 -- 
 1.7.9.5
 _______________________________________________
