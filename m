@@ -2,84 +2,80 @@ Return-Path: <SRS0=HKXf=25=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-5.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2905BC33CA1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 14:05:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 53E93C33CA1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 14:13:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E9D9820705
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 14:05:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2908020643
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 14:13:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hXF0HCAC";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="URWyEtCo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9D9820705
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ARMLxhmb";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="nfWxuj2C"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2908020643
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Cc:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=Oo3tC334zXVQlXidAwsPxDyTFCwprCATpFeT7NSyRfQ=; b=hXF0HCACoqyEF9k4eN/Cxrl9qB
-	gzfiBs6RzvdY1pSKFugaEX+7jpM/3R8PgIsvoUdtOh9eEMYoQcWyF9Q1TNTA9lFKgwbCKw2hGIq9e
-	x354ahaimYgsoSunnzGktHCghZ44FD+yT7wNH2SrcFA0lIb1C1ACAWxXAte2VyiQdp0/nz5QFzNyK
-	65vtb0iLcr86N9vXBfXK6kzfX1O9WnNsamexvN7aEeodCaC2pF84aA39viFHuzLpxjgA0vVa8Xz3F
-	hKBLdtiQ7/CBqZWbF+3JkqXrAFbmHXkTLhlfoQemqGWXtCsbihiLkcBUmuPbAyABfVjat0Ic77aR7
-	kx9v/SIQ==;
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xa+1X9YEJ+QHaCa1i9VSL3XMY3TNOUy7Tm1/uvrVSFM=; b=ARMLxhmbRo4Ded
+	n+yMyoZzn4hUPtPLwdGV26Mdgosyr0VmXxoiPV/GhIc//ZURG7smH7d9jCORjAhZw0gOoXOs87jFH
+	4TZfeyw3GAuup4+WwbyLWIPoPdV7w4fRQCYm6Fyrz8fhvqzKRPfnaSmogs0BfT6TteCVbwj6GUK7t
+	C3BH8yOobC/7AexG8L2iBH/UyuGFzDsUtxzLHuzqMBHnq8fy9ZoQ4JiRaqKqORxDbwGljyvHhn6iN
+	FwvnoBC5/qviuAlt7Y0UkaNI7sXen5SKZ6DeP2s8fYMIXkmb2xL2GFYWelCHaU4iuT/oL4NVvN8mq
+	Oguz/88dXtwvOHr/RZTw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ipBxS-000808-3q; Wed, 08 Jan 2020 14:05:14 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1ipC5f-0002mS-PA; Wed, 08 Jan 2020 14:13:43 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ipBxP-0007jy-8D; Wed, 08 Jan 2020 14:05:12 +0000
-Received: by mail-wm1-x341.google.com with SMTP id q9so2583911wmj.5;
- Wed, 08 Jan 2020 06:05:09 -0800 (PST)
+ id 1ipC5d-0002lq-42; Wed, 08 Jan 2020 14:13:42 +0000
+Received: by mail-wr1-x441.google.com with SMTP id y17so3554018wrh.5;
+ Wed, 08 Jan 2020 06:13:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:references:from:autocrypt:message-id:date:user-agent
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=1zbmyk+SyKwSlMEKcrv2EjxG0gr/se8ybCbQeAylWx0=;
- b=URWyEtCo5UBUrrf2baswqxUtTQCd4pE9/fHeSapVV9OMYR9zwRFxcoc8a0C64F1yWh
- fjW4M1TiiYdFltibb5SQszOHR22DpQl3HkehIyNSA5w2d537zw6w7ZVc4hA3vqz+4t7e
- BROs3NnerJOM4aC5OVdJS6EmC1iUnstKlXkfDD2aSavPw9CQLLCLEjuwBGS6Iwxd7FEb
- 7bLBDUTyPoOlICBvlGcdAu6drojaiWC4iBtgOGvrx0FvdcmTTLZARcovE8oCeIqwS200
- cLpwSV8GGna4p8BBhwm6n0fCwuKepMdvnRQLmztJruzX+ZZtqzw0a30EfF+uKJP4FUYF
- EkDQ==
+ bh=2x1C5yOWwzfsYH6sWa4HyqOBy9nBQDg+JqzZhVPWJCo=;
+ b=nfWxuj2CnIHrpkW2bGNIIFNeP2f1sPwfROdSLNXK7JDeY1yLSLVABwabXAgy5SheD4
+ Kcr1H0jcmFkmz+AVRm+gSr/HBxPB08+ZycfGVigDAtcLqoF/QxyZXtGv3WcR23LUXZNY
+ 6ITtJ1qv7t1TK/gDmtbtlnXIy9AB2yAKCcNf/QZwDMnC97Yb/jfc0uAWM6emjbtIX6K0
+ L0uHzBEEF9skA+AQkbnMmgPcy/CZ/QwXjHP6L0zS3B8lH6ghUiHFG/Gpg33D6Q6+6mg+
+ g0MxLFfOjs7FctVsSY/wMukXkhSIrouLMHWdnwxe3R1ncDxUtS8Yu86UOewdeqa7qhxD
+ 9qYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:autocrypt:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=1zbmyk+SyKwSlMEKcrv2EjxG0gr/se8ybCbQeAylWx0=;
- b=rhJY05wPI529ER7czpaCMpxh6N+he4lTv60OYs+30/3ABWZQXHWccwu3SEaNiUwW5o
- FKAWQVCf+IyDW5PvFdnkn0bTkfHbSZQX878qvt/wIbj5J8W3wr83m+ieo9yUegHJJaCf
- PX4FDAaQvpI2qTRgV+98lASkAkj9Esif2poG7A5Hm1s4JwEZFu02YMehjW1d3c0KSxJ4
- tr1fjQedwCaa4qclBeCo41sRaO11jDFtKEIGmBhbOL1VPK2oUpQ7UWVHxiHTNcd6cc/6
- CoeshieVbLBruZGFxJTlX4nhTI1h/eGDbC86B/ykkJ+hyfFCOBVFqmHq/dlhfD9HaMej
- +nKA==
-X-Gm-Message-State: APjAAAXmpSCbOSnWUDoxdsul5FJ0B6yT4fdkor91yOmQkSPeJWsVk2o0
- bB0EQZKG918tuGCAdZ/8z7g=
-X-Google-Smtp-Source: APXvYqxQRCubgiXl57XPJNP5BLcMfrEji6CP+S/fSrrvcYmEq1MGa/0pP7ePlkgX9LPLbNTOwlouGg==
-X-Received: by 2002:a1c:ded6:: with SMTP id v205mr4050688wmg.86.1578492307977; 
- Wed, 08 Jan 2020 06:05:07 -0800 (PST)
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=2x1C5yOWwzfsYH6sWa4HyqOBy9nBQDg+JqzZhVPWJCo=;
+ b=HDOKpQpQGahypn+Dt1c06Pw+/OZpu3sf660Oc0wXndwvrgec/z5dZJH/cu7CHO7Cgc
+ 6UWNgrojsl0E/Q59zy/8voFGrlUjzeR/SUhGWnega8nQmjUSfzaShPIZCVqJCpWFH627
+ eFYM6W3rKbu6I6sbxH/cDg7Sv94AVB8ZCPM+XPpF03KTFkqbH047dE5hin4dLBtOg/u2
+ 7LQqvYsO4NEwcyVnfDP3quWr2JQXGkCmLbKfxJ6wpavNAWVafOYmVjP5dIsnBH4nRxSG
+ 9LH2Q9ghNoFVguUK8hDNFofdA8YzSi/irBOp2qhlaum3kV2NTdx4xgTXC27TL8dQDogR
+ 7PnQ==
+X-Gm-Message-State: APjAAAXnyTHxqPvkjzGlpTzEgQQrGFJ2CISaJ+dfhU3cd5A+TCbGm3y9
+ MsnBrWFkcpSzhe5dnv70Pok=
+X-Google-Smtp-Source: APXvYqz1cp9jE2luyvifKI9/b3fxKMbxQGvXhLzH04RvUddywtDukBMmjLB8OvjoI8hDVacGpFo7yQ==
+X-Received: by 2002:adf:ebd0:: with SMTP id v16mr5008580wrn.146.1578492819635; 
+ Wed, 08 Jan 2020 06:13:39 -0800 (PST)
 Received: from ziggy.stardust ([37.223.145.31])
- by smtp.gmail.com with ESMTPSA id t25sm3857933wmj.19.2020.01.08.06.05.06
+ by smtp.gmail.com with ESMTPSA id d16sm4689842wrg.27.2020.01.08.06.13.38
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Jan 2020 06:05:07 -0800 (PST)
-Subject: Re: [PATCH v1 1/1] amr64: dts: modify mt8183.dtsi
-To: Yong Liang <yong.liang@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20191226093930.22413-1-yong.liang@mediatek.com>
- <20191226093930.22413-2-yong.liang@mediatek.com>
+ Wed, 08 Jan 2020 06:13:38 -0800 (PST)
+Subject: Re: [PATCH v10 2/2] watchdog: mtk_wdt: mt8183: Add reset controller
+To: Nicolas Boichat <drinkcat@chromium.org>, Jiaxin Yu <jiaxin.yu@mediatek.com>
+References: <1578280296-18946-1-git-send-email-jiaxin.yu@mediatek.com>
+ <1578280296-18946-3-git-send-email-jiaxin.yu@mediatek.com>
+ <CANMq1KD3n5r1ACy2acKgXTfTLHMsONzT-NscL=AoY1Jr-eqdww@mail.gmail.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -155,16 +151,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <675aa211-eba5-e44c-0931-32c1b6d5ca8b@gmail.com>
-Date: Wed, 8 Jan 2020 15:05:01 +0100
+Message-ID: <2e0a2ce4-0107-f49f-57fd-11b3b87dce45@gmail.com>
+Date: Wed, 8 Jan 2020 15:13:37 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.3.0
 MIME-Version: 1.0
-In-Reply-To: <20191226093930.22413-2-yong.liang@mediatek.com>
+In-Reply-To: <CANMq1KD3n5r1ACy2acKgXTfTLHMsONzT-NscL=AoY1Jr-eqdww@mail.gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200108_060511_319941_41466F7E 
-X-CRM114-Status: GOOD (  14.16  )
+X-CRM114-CacheID: sfid-20200108_061341_165650_AEB7D415 
+X-CRM114-Status: GOOD (  13.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -176,6 +172,15 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Devicetree List <devicetree@vger.kernel.org>,
+ Yong Liang <yong.liang@mediatek.com>, freddy.hsin@mediatek.com,
+ linux-watchdog@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>,
+ lkml <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Yingjoe Chen <yingjoe.chen@mediatek.com>, chang-an.chen@mediatek.com,
+ wim@linux-watchdog.org, linux@roeck-us.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -183,43 +188,30 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 26/12/2019 10:39, Yong Liang wrote:
-> From: "yong.liang" <yong.liang@mediatek.com>
+On 08/01/2020 10:25, Nicolas Boichat wrote:
+> On Mon, Jan 6, 2020 at 11:11 AM Jiaxin Yu <jiaxin.yu@mediatek.com> wrote:
+>>
+>> Add reset controller API in watchdog driver.
+>> Besides watchdog, MTK toprgu module alsa provide sub-system (eg, audio,
+>> camera, codec and connectivity) software reset functionality.
 > 
-> Include mt8183-reset.h and add reset-cells in infracfg
-> in dtsi file
+> You add support for reset controller on both 8183 and 2712, do you
+> want to say that in the commit title and message?
 > 
-> Signed-off-by: yong.liang <yong.liang@mediatek.com>
 
-applied with fixed subject line to v5.5-next/dts64
+I normally prefer to split that into at least two patches.
 
-Thanks
+Regards,
+Matthias
 
-> ---
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 10b32471bc7b..76bfcbdf097a 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -8,6 +8,7 @@
->  #include <dt-bindings/clock/mt8183-clk.h>
->  #include <dt-bindings/interrupt-controller/arm-gic.h>
->  #include <dt-bindings/interrupt-controller/irq.h>
-> +#include <dt-bindings/reset-controller/mt8183-resets.h>
->  #include "mt8183-pinfunc.h"
->  
->  / {
-> @@ -227,6 +228,7 @@
->  			compatible = "mediatek,mt8183-infracfg", "syscon";
->  			reg = <0 0x10001000 0 0x1000>;
->  			#clock-cells = <1>;
-> +			#reset-cells = <1>;
->  		};
->  
->  		pio: pinctrl@10005000 {
-> 
+>>
+>> Signed-off-by: yong.liang <yong.liang@mediatek.com>
+>> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+>> Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+>> Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+>> ---
+>>  drivers/watchdog/mtk_wdt.c | 105 ++++++++++++++++++++++++++++++++++++-
+>>  1 file changed, 104 insertions(+), 1 deletion(-)
 
 _______________________________________________
 Linux-mediatek mailing list
