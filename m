@@ -2,68 +2,80 @@ Return-Path: <SRS0=HKXf=25=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F2F6EC00523
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 09:43:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BC7AAC00523
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 09:58:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C6D012070E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 09:43:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 85C2C2070E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 09:58:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HFQ/qMD2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C6D012070E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bootlin.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="H/+Uj3FC";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="LGhwTuIZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 85C2C2070E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QqqVGpWV0KUPdX7Nnksyzvg3yxezZ1AfwdjxMpqvKiY=; b=HFQ/qMD2Lsn+Ox
-	PHCFpXlrz9B5KpMiyOK0oQu/93sClQHh6E/38SrLWty1kVKL9dBCF7UQeww0zOZIPvyHdS6CWHgJS
-	OQZ8q+f0zkhRFwZfaXdQ1Cbmm5hJKxulkXeBqVz/XgSPm0j0cixjlEFRQdHgAnvkxc7Iv5klH2i1n
-	2twgpeQ5EF42Kn2TfLQ8PShE3lisFZIhJoBdaz2YzMR69MealfIgYZ2Cqsq6cWwGWZaj37J1O/Lp/
-	UaOeVLtIfLZWppA0J6jbSNRAUKT3iXkJBe/6kNEAsZGiMJsvNy/B9JdpKInvejpZgBgG4NJDXWvL/
-	dfsMmqn3VhTYCyQzyouw==;
+	List-Owner; bh=J1WYrLeBHQSov41UT20hqoE8UL+74IdBEZEcVlQRm+w=; b=H/+Uj3FC31WCSZ
+	+60zBlBEza2OXHn6e1G2JjiZnnT2NokRunIIyaIzRyVeTKk/9myq3BZKBpvUuKwGflV0c2eKfHPCt
+	Zb4ZS6PoH4Yqmc/Z2G2JQe5MX8T6Pbm4gnV0ITADhYETmtCSJw0aGFf6BrX84L1vAn0k503L7VSK+
+	lG8Cu0YAhHiJrNSUANPHZoxySFfffvMBcJNJdHXB8DFya2qhSqBO93GtX+ZgU4kDlk88D1Pj/SRTn
+	D3j9BoSIes51V0Sge/Bu/x7vXwv83Ngtp1v+AZID7SEf3BJHLQVwjAMzWFPiBlaZ2sZfJejCs57kX
+	RNrOFTW2mK1Rvukyx7Fw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ip7s4-0002IT-DX; Wed, 08 Jan 2020 09:43:24 +0000
-Received: from relay7-d.mail.gandi.net ([217.70.183.200])
+	id 1ip86m-0007WZ-5r; Wed, 08 Jan 2020 09:58:36 +0000
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ip7rv-00029r-1s; Wed, 08 Jan 2020 09:43:16 +0000
-X-Originating-IP: 90.65.102.129
-Received: from localhost (lfbn-lyo-1-1670-129.w90-65.abo.wanadoo.fr
- [90.65.102.129]) (Authenticated sender: gregory.clement@bootlin.com)
- by relay7-d.mail.gandi.net (Postfix) with ESMTPSA id A72C020007;
- Wed,  8 Jan 2020 09:43:04 +0000 (UTC)
-From: Gregory CLEMENT <gregory.clement@bootlin.com>
-To: Yangtao Li <tiny.windzz@gmail.com>, jassisinghbrar@gmail.com,
- nsaenzjulienne@suse.de, f.fainelli@gmail.com, rjui@broadcom.com,
- sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, lftan@altera.com,
- matthias.bgg@gmail.com, agross@kernel.org, bjorn.andersson@linaro.org,
- mcoquelin.stm32@gmail.com, alexandre.torgue@st.com, thierry.reding@gmail.com,
- jonathanh@nvidia.com, linux-kernel@vger.kernel.org,
- linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- nios2-dev@lists.rocketboards.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-tegra@vger.kernel.org
-Subject: Re: [PATCH 13/13] mailbox: armada-37xx-rwtm: convert to
- devm_platform_ioremap_resource
-In-Reply-To: <20191228183538.26189-13-tiny.windzz@gmail.com>
-References: <20191228183538.26189-1-tiny.windzz@gmail.com>
- <20191228183538.26189-13-tiny.windzz@gmail.com>
-Date: Wed, 08 Jan 2020 10:43:04 +0100
-Message-ID: <87imlmb7x3.fsf@FE-laptop>
+ id 1ip86i-0007Vh-TD
+ for linux-mediatek@lists.infradead.org; Wed, 08 Jan 2020 09:58:34 +0000
+Received: by mail-io1-xd43.google.com with SMTP id i11so2485284ioi.12
+ for <linux-mediatek@lists.infradead.org>; Wed, 08 Jan 2020 01:58:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=QAtR7WNLGbja1kZFYbC1LM6r/2gOOz73oNIxwZf1sK8=;
+ b=LGhwTuIZMsvckUaUhJ+tDGp6Y0jn0LYn/xbxleZUSDMkTwotTTy+1Fg5ZHuiCgbnuW
+ ABixaa78LQAMQqSXxlOdTlfDx+n2+WrJQM9cCO+dERP4pTnItxTE5IlWAuVhshqD5D0f
+ 0ZiCF95TJ+fR3w2e37nT74ePbWYE2y6TFcorU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=QAtR7WNLGbja1kZFYbC1LM6r/2gOOz73oNIxwZf1sK8=;
+ b=tc8rnaKolP+Drx9B8SdEs4F8cOZh7F/nqJxqCJckzOq77Ti54PNKavNOIMA7994rIM
+ AsoibXeulNnAvPxAqgkEIRBopF6CoxF+b73dz5WUSMgNwwaEFNCS3hzxugywvalyvC46
+ h60ebvCyWM/mCtrbg0KlqQc0UJCI2AJWrrQG7lOjsLUKXm9OyKVvaEg/dX6u7L2ms2AG
+ AQ24u8+sZq15w2mQaZZbXuk9Bnh6qs4UmOQZx0Mxs5N8PidMX8zxP4EqxegiIaqNlCEh
+ XanjAKQOg5XuWzZ+D3+gG8GmN8DX0/mGzERwuNYlM4HTJl4O2mOqwA8CapfvN3NZEvzt
+ m63w==
+X-Gm-Message-State: APjAAAWSZOM930f2M37Ulbw7ancfikXZhV9Dk/YUVI5Z0+1ANXcQgHrW
+ /sunTsA1zBuJBmBAwhyBC+emRgpoLKJeOjptEazaMg==
+X-Google-Smtp-Source: APXvYqwH5rufYzM9JfRPQjj7bRhJ6sm9RgJQyx7qvhgpJjalHtt1/UbVPcBLfTvCu23laYbDf4TKavfcetdwMpGEoRY=
+X-Received: by 2002:a6b:3845:: with SMTP id f66mr2819729ioa.102.1578477511547; 
+ Wed, 08 Jan 2020 01:58:31 -0800 (PST)
 MIME-Version: 1.0
+References: <20200103064407.19861-1-michael.kao@mediatek.com>
+ <20200103064407.19861-7-michael.kao@mediatek.com>
+In-Reply-To: <20200103064407.19861-7-michael.kao@mediatek.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Wed, 8 Jan 2020 17:58:05 +0800
+Message-ID: <CAJMQK-hQ5BWp7isGDTz_Y4ttxfoM0guqfcAEFrh3Eq7SMcNM5w@mail.gmail.com>
+Subject: Re: [PATCH v3,
+ 6/8] thermal: mediatek: mt8183: fix bank number settings
+To: Michael Kao <michael.kao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200108_014315_236384_ABF4C5C6 
-X-CRM114-Status: GOOD (  11.39  )
+X-CRM114-CacheID: sfid-20200108_015832_968764_FF8415FF 
+X-CRM114-Status: UNSURE (   7.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,64 +87,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Yangtao Li <tiny.windzz@gmail.com>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Devicetree List <devicetree@vger.kernel.org>, srv_heupstream@mediatek.com,
+ linux-pm@vger.kernel.org, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ lkml <linux-kernel@vger.kernel.org>, Eduardo Valentin <edubezval@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Zhang Rui <rui.zhang@intel.com>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yangtao Li,
-
-> Use devm_platform_ioremap_resource() to simplify code.
+On Fri, Jan 3, 2020 at 2:44 PM Michael Kao <michael.kao@mediatek.com> wrote:
 >
-> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
-
-Applied on mvebu/drivers
-
-Thanks,
-
-Gregory
-
+> MT8183_NUM_ZONES should be set to 1
+> because MT8183 doesn't have multiple banks.
+>
+> Fixes: a4ffe6b52d27 ("thermal: mediatek: add support for MT8183")
+> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
 > ---
->  drivers/mailbox/armada-37xx-rwtm-mailbox.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
->
-> diff --git a/drivers/mailbox/armada-37xx-rwtm-mailbox.c b/drivers/mailbox/armada-37xx-rwtm-mailbox.c
-> index 19f086716dc5..02b7b28e6969 100644
-> --- a/drivers/mailbox/armada-37xx-rwtm-mailbox.c
-> +++ b/drivers/mailbox/armada-37xx-rwtm-mailbox.c
-> @@ -143,7 +143,6 @@ static const struct mbox_chan_ops a37xx_mbox_ops = {
->  static int armada_37xx_mbox_probe(struct platform_device *pdev)
->  {
->  	struct a37xx_mbox *mbox;
-> -	struct resource *regs;
->  	struct mbox_chan *chans;
->  	int ret;
->  
-> @@ -156,9 +155,7 @@ static int armada_37xx_mbox_probe(struct platform_device *pdev)
->  	if (!chans)
->  		return -ENOMEM;
->  
-> -	regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -
-> -	mbox->base = devm_ioremap_resource(&pdev->dev, regs);
-> +	mbox->base = devm_platform_ioremap_resource(pdev, 0);
->  	if (IS_ERR(mbox->base)) {
->  		dev_err(&pdev->dev, "ioremap failed\n");
->  		return PTR_ERR(mbox->base);
-> -- 
-> 2.17.1
->
->
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
--- 
-Gregory Clement, Bootlin
-Embedded Linux and Kernel engineering
-http://bootlin.com
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 
 _______________________________________________
 Linux-mediatek mailing list
