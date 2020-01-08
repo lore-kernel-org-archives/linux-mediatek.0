@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 795EDC33C9E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 02:01:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AC794C33C99
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 02:01:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3A15A2081E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 02:01:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7EA4D2081E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Jan 2020 02:01:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CdzYZAvb";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="UN/z2HQe"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3A15A2081E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fOpQNiIj";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="AstZOzVd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7EA4D2081E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,52 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ctsZUBnuNNtVYCI4EhcP2l0vUnxN7AIXSXTaUygvaHw=; b=CdzYZAvbGZcLHI
-	LTJcyrg6K2FJwcpXr5q6CzzLMxS+fw0hKWNQjCMmtsmc4B5Fv3j1qpsmsLS2z8QJ9E87LsuteD2Py
-	nSUPRWDtspzqnvzZWHGgufqAO2gUETw9y/XrPtZ5W61j5Hq65Ao/Ma3PfkjCuUMIlRkjUkMFfaCH+
-	hbKlSDQHZelm3iIxrlMILWzRGiGPM12R/wJ5dlOed0qG2I9BXDzdcnIDe9SJvbpXFBKu8nDZrrZdW
-	nnZZONs5l8IxMxNjk0zQkd6RpfIwAxDSOgV6crEyrFKnFopfCcbWdDkK9WRcNv0llWI8uVPUDNDdN
-	ct/tdGM/99UFf5XehtZw==;
+	List-Owner; bh=t1JQW495r1cv3Aih//klo+RiWqVniXqazwMmfZpc2xY=; b=fOpQNiIjAEMsYz
+	KC6DUSFDkWbQDlhDNlSVXm++yP5Lpcnlybk9BCXn1Ic5bOsxVh+adM7SYE8CYbBikYP7Q1D+Oc8Ao
+	tklX2gZ86USeqcnmfc04Qy7mXE0PAlLGpGtackknGsZ3KyOOP6srmX/ZbIEhf1Qyt0j+krom2Ohnx
+	wD+3O0t3WpwHr4VkGc9ZAKcg1H6Hn92U86MxtOfB+rBpDW86WKz9hf6rA8003YD1IWTv3XYcLAjPe
+	HWkhHNwOFBMSON9j8LG6byrxQRXKEBrEPvUDaZoROp6oXzNjYXxL5g2T8n8C/TTas1UmIt27W2EON
+	GwJWcNLsMhn0NJN/T/Cg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ip0fA-0000ox-2H; Wed, 08 Jan 2020 02:01:36 +0000
+	id 1ip0fN-000135-23; Wed, 08 Jan 2020 02:01:49 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ip0eh-0000IY-QB; Wed, 08 Jan 2020 02:01:09 +0000
-X-UUID: f9a8693955164c7b8d76ef12e1853d2d-20200107
+ id 1ip0ei-0000In-IC; Wed, 08 Jan 2020 02:01:10 +0000
+X-UUID: 8c7417cbc45b4226a1799180723044b8-20200107
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Tn+ocDgoE7quv83eopc3270X61VLoovrwR+4z9klDjM=; 
- b=UN/z2HQeaTRBMtzEN8N2YwZKlg2M08imkkVHjfba9dVlrUBTnaEdEcNhurpc/hwAKGZa6laqSTRPv8pQaB+Ge9SsZvmKQ16OO0lr5RrkR8r5fD8+SPpHfGM2aKFWDeTi/psFjkl+aY++3/spb3zBxr3ci81fS9x96IznyrxOR5M=;
-X-UUID: f9a8693955164c7b8d76ef12e1853d2d-20200107
+ bh=oZdq+ZB5lizA1Zsv3OtqtZc7ySPrJ90tee+pr+IgKBQ=; 
+ b=AstZOzVdlKNQpGDw2kWutbSCtHKfXowENkD4LJkKW0wfe5lR4dqbKTFcYblOiYg19NnOXn5hLg6CiwcB71BPi2FlOVC3D1ZMD1id8+q+vlNtFuFbF5e9WhOl+LpkkRE/SLG3vl4wMH8nz7p4r+erhMp7Mz8vRPLdxuH22fMg6AU=;
+X-UUID: 8c7417cbc45b4226a1799180723044b8-20200107
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 422800735; Tue, 07 Jan 2020 18:01:02 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ with ESMTP id 474636169; Tue, 07 Jan 2020 18:01:02 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 7 Jan 2020 17:53:10 -0800
+ 15.0.1395.4; Tue, 7 Jan 2020 17:53:07 -0800
 Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 8 Jan 2020 09:51:57 +0800
+ MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 8 Jan 2020 09:51:17 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 8 Jan 2020 09:53:07 +0800
+ Transport; Wed, 8 Jan 2020 09:53:02 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: [RESEND PATCH v5 10/11] phy: phy-mtk-tphy: add a new reference clock
-Date: Wed, 8 Jan 2020 09:52:05 +0800
-Message-ID: <1578448326-27455-10-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [RESEND PATCH v5 06/11] phy: phy-mtk-tphy: add a property for
+ disconnect threshold
+Date: Wed, 8 Jan 2020 09:52:01 +0800
+Message-ID: <1578448326-27455-6-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1578448326-27455-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1578448326-27455-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 394569979869DFA0C5D2DE7AD80DFBA25B01A84F9741918F098C6E7299E92AFF2000:8
+X-TM-SNTS-SMTP: BFA84CA48E7339B3DB0587B4124D89784EB6BDEA2575B14996EC5CD22A51D9592000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200107_180107_855497_2545AF42 
-X-CRM114-Status: GOOD (  13.59  )
+X-CRM114-CacheID: sfid-20200107_180108_636377_652A2768 
+X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,72 +94,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Usually the digital and analog phys use the same reference clock,
-but some platforms have two separate reference clocks for each of
-them, so add another optional clock to support them.
-In order to keep the clock names consistent with PHY IP's, change
-the da_ref for analog phy and ref clock for digital phy.
+This is used to tune the threshold of disconnect, the index range
+is [0, 15], the threshold voltage is about 400mV for 0, 700mV for
+15, and the step is 20mV.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
-v3~v5: no changes
+v5: no changes
 
-v2: fix typo of analog
+v4: change commit log
+
+v2~3: no changes
 ---
- drivers/phy/mediatek/phy-mtk-tphy.c | 19 ++++++++++++++++++-
- 1 file changed, 18 insertions(+), 1 deletion(-)
+ drivers/phy/mediatek/phy-mtk-tphy.c | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index c6424fd2a06d..cdbcc49f7115 100644
+index cb2ed3b25068..5afe33621dbc 100644
 --- a/drivers/phy/mediatek/phy-mtk-tphy.c
 +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -298,7 +298,8 @@ struct mtk_phy_instance {
- 		struct u2phy_banks u2_banks;
- 		struct u3phy_banks u3_banks;
- 	};
--	struct clk *ref_clk;	/* reference clock of anolog phy */
-+	struct clk *ref_clk;	/* reference clock of (digital) phy */
-+	struct clk *da_ref_clk;	/* reference clock of analog phy */
- 	u32 index;
- 	u8 type;
+@@ -60,6 +60,8 @@
+ #define U3P_USBPHYACR6		0x018
+ #define PA6_RG_U2_BC11_SW_EN		BIT(23)
+ #define PA6_RG_U2_OTG_VBUSCMP_EN	BIT(20)
++#define PA6_RG_U2_DISCTH		GENMASK(7, 4)
++#define PA6_RG_U2_DISCTH_VAL(x)	((0xf & (x)) << 4)
+ #define PA6_RG_U2_SQTH		GENMASK(3, 0)
+ #define PA6_RG_U2_SQTH_VAL(x)	(0xf & (x))
+ 
+@@ -300,6 +302,7 @@ struct mtk_phy_instance {
  	int eye_src;
-@@ -925,6 +926,13 @@ static int mtk_phy_init(struct phy *phy)
- 		return ret;
- 	}
+ 	int eye_vrt;
+ 	int eye_term;
++	int discth;
+ 	bool bc12_en;
+ };
  
-+	ret = clk_prepare_enable(instance->da_ref_clk);
-+	if (ret) {
-+		dev_err(tphy->dev, "failed to enable da_ref\n");
-+		clk_disable_unprepare(instance->ref_clk);
-+		return ret;
-+	}
-+
- 	switch (instance->type) {
- 	case PHY_TYPE_USB2:
- 		u2_phy_instance_init(tphy, instance);
-@@ -984,6 +992,7 @@ static int mtk_phy_exit(struct phy *phy)
- 		u2_phy_instance_exit(tphy, instance);
- 
- 	clk_disable_unprepare(instance->ref_clk);
-+	clk_disable_unprepare(instance->da_ref_clk);
- 	return 0;
+@@ -850,9 +853,12 @@ static void phy_parse_property(struct mtk_tphy *tphy,
+ 				 &instance->eye_vrt);
+ 	device_property_read_u32(dev, "mediatek,eye-term",
+ 				 &instance->eye_term);
+-	dev_dbg(dev, "bc12:%d, src:%d, vrt:%d, term:%d\n",
++	device_property_read_u32(dev, "mediatek,discth",
++				 &instance->discth);
++	dev_dbg(dev, "bc12:%d, src:%d, vrt:%d, term:%d, disc:%d\n",
+ 		instance->bc12_en, instance->eye_src,
+-		instance->eye_vrt, instance->eye_term);
++		instance->eye_vrt, instance->eye_term,
++		instance->discth);
  }
  
-@@ -1170,6 +1179,14 @@ static int mtk_tphy_probe(struct platform_device *pdev)
- 			retval = PTR_ERR(instance->ref_clk);
- 			goto put_child;
- 		}
-+
-+		instance->da_ref_clk =
-+			devm_clk_get_optional(&phy->dev, "da_ref");
-+		if (IS_ERR(instance->da_ref_clk)) {
-+			dev_err(dev, "failed to get da_ref_clk(id-%d)\n", port);
-+			retval = PTR_ERR(instance->da_ref_clk);
-+			goto put_child;
-+		}
+ static void u2_phy_props_set(struct mtk_tphy *tphy,
+@@ -888,6 +894,13 @@ static void u2_phy_props_set(struct mtk_tphy *tphy,
+ 		tmp |= PA1_RG_TERM_SEL_VAL(instance->eye_term);
+ 		writel(tmp, com + U3P_USBPHYACR1);
  	}
++
++	if (instance->discth) {
++		tmp = readl(com + U3P_USBPHYACR6);
++		tmp &= ~PA6_RG_U2_DISCTH;
++		tmp |= PA6_RG_U2_DISCTH_VAL(instance->discth);
++		writel(tmp, com + U3P_USBPHYACR6);
++	}
+ }
  
- 	provider = devm_of_phy_provider_register(dev, mtk_phy_xlate);
+ static int mtk_phy_init(struct phy *phy)
 -- 
 2.24.0
 _______________________________________________
