@@ -2,118 +2,189 @@ Return-Path: <SRS0=6pE3=3C=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MSGID_FROM_MTA_HEADER,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C2574C33CA8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 09:59:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D382C33CA8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 09:59:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9005C2080D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 09:59:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2AFBE2080D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 09:59:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uUzVp4mi";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=micron.com header.i=@micron.com header.b="xRNgMX61"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9005C2080D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=micron.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RYDJLjrK";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=xilinx.onmicrosoft.com header.i=@xilinx.onmicrosoft.com header.b="XHWtpYSX";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="y8IhXwVK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2AFBE2080D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xilinx.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O+uPaNbqkUEQctRV1fnXzjfEhMf4TDaYOCGeIsFku78=; b=uUzVp4mid4Yj7V
-	GRn2cmjRzH5h3dE6opjhD9X0xZ9WNzzDNPORnTJVpbU0QsNcLCgya5YphE2+CqX9T1atIOcyuxou2
-	0o9xeo57bjwr2YiZ4HFRBUXbpSFwHChWHP4iZJFC27zlOanfofQl80d7A/uPRgpsz4N7ir78WaNv8
-	j2uqikFV1sh5/ce0TkmHY8M2Crrk+Y5pDEMFbRW5gLP/FYlmgw9avPc/BfjHal1Kq/C9e7nAz9N6r
-	gdS3N69xcLkvvzdbsqTL86EqOaRmEgnlK8i2eIpclaVR6pyyaxwgGkr4YCI2sYX6lO5Mn9waaBgRk
-	5lE87CdaRPuE+7i4/Xxg==;
+	List-Owner; bh=AHWJiGrjjygtCTeow+JkQLNdBt8fWDa6MHkbx/rytF4=; b=RYDJLjrKKi7DMY
+	TT4nBIb5YCJ3B0X4n8GXkoJEKoB4WcIe90y1NI11K5ndPGP0jJTuogDtg0NUkIlMh+PKqgqXGoDpb
+	ECyfvNL2CdYB/FUE+tdp7QbgfEDQBU4uBzpx/5bysl5kZ44KZbEA3OAIN46gtOzYT6aTNOSWtA5gS
+	aSzrYc2cQT+HneDWzKBy/6Yt3Vyc6+/43cLOh2u9+NwLsdoByzpuGl9lyBWe+cJYytzTuI81KhH/t
+	GD86VyIzPkRap/86obBFCnygQx7/wMzCK7UJINbHZN18rZoZBS4s6wErWekxL+0MjmgTXLy8Jsivw
+	DP6UEZED8MPCxOS6kvdw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iqwUr-00080c-SN; Mon, 13 Jan 2020 09:58:57 +0000
-Received: from mail-mw2nam12on2078.outbound.protection.outlook.com
- ([40.107.244.78] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+	id 1iqwVQ-0008Uh-HY; Mon, 13 Jan 2020 09:59:32 +0000
+Received: from mail-mw2nam10on2041.outbound.protection.outlook.com
+ ([40.107.94.41] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iqwUp-0007zS-BF; Mon, 13 Jan 2020 09:58:56 +0000
+ id 1iqwUo-0007zQ-PJ; Mon, 13 Jan 2020 09:58:57 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HOz/eEFrG1inWPOM1JJcLgsv4JBMX1suVKQn5dE4h65JIwvEWQOmtxS+piOe9RV+rTxdG42rbnc7R/ox0PUHn4vzHN/ORrAgGyi+AyGJ5nCSY2s+aQ1zPyT70HuxGR4ItL/WuNstqu/xIu6A+d86ZX2iXPKxCeqHUp/ZU7SkTT2/YOETchRBoWvqhlWsWQu15OtE1DQHqT3K6TWi5gvpC6IE2XgTPDYMLX64z3YjHO+7FdwDbSsVnQdJtbSSVMP5VYjfxSqDuNjpHrBB8qgR2/CVtm4JufQHn6IgRHhKMy5vk8CUnfQp1Ct1cFuGJLygkDGZlO0s7Ws94669nt421A==
+ b=YwIO/7w6TCoOBAUvgS/0ZTh4EQmmQrknYkyhX9WM7C9Jm8Lz1QtPniJGaszEMgKfTYlWLZHVLPgoKeNPLv0R3PYlHndRMKiMRWfAeOOMUkLZ2Z3y8EboSu95IqiFV6DePs3AY1yEK2GGCYF/6MSyrhZLbgTuOLdQyhfaKBspdu7wcd3a2QfefAkWgM8TadzYl4dmMCkXpPVm4vUTqilBeEiowd2MPYDkkoKQhReSAIpKNoPESOTck+D6FbNaNmqeAotb3lACA0neacYuisT7/YgDGMrfEWN0EP9MNhsuobXzwHn3Ht2QIdKTx/4BI+4e4Aq/YY+LU0A8mSmmMHZJyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mkzh2HqmbmY1jtwx3yTyry6Lixdo5GjU70EYVHBqcZI=;
- b=Kx8weRhF4MLXzGE3A5r2jRxXxjMcvBATMgwNZ3s/dfQ1wCn3z/YnWD6cDWeKDs5ROdG0dopFGZNxP5vZPRTeR313HMAHvKIC779BYOaXP/0K4T22cJ4Qq4+ujxpO82iZ0D9YJ75qLbz3ZcpO9Ao98q9edJJ1pX8tvw4DgrKIqMtqFrXul0QPL+Gfiv521T0Uy5ya8YQBYsIdA3ptVZF+I3iBR3cFB+5/4DBNiCfkUOh1jNIOA2WcF1CGYprQTY+tsC/XL/yIJ3XrV20ClqSH2uLpBTks29N65rwQJFWIrZKFDck2q6j+FJr67lzu1F/jwXU0in9pvRN9rwKdhQLHPA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=micron.com; dmarc=pass action=none header.from=micron.com;
- dkim=pass header.d=micron.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=micron.com;
- s=selector2;
+ bh=grWyuPCpOJljSa+J1mOgn1wSHuxaPFZw5L1ctw3Q418=;
+ b=IlcJnn9NouCMNF1HSbZfMvjuXDsVxesiuwT11j9N9fL+D9VR3p4+M8YQ5a6S1w2NGVpbzBtEdK0vnghhueg5WhGpsOZoie2lie6mJcTJSWa3cCrhcDLOl11qGgyegHY4zSBHKuriWXMv7gB4hq043eZKUOrRU5gj1MO2nSbtF5gl7VRNHAoQwgTmOQ8yhQIol8G0lyThAaJ4DceoNcTlDgrSXeHDFMCL4HbrBt0PLRsuck7W0PC9jgK//CMDGu8HtZq4vh2DZ99DNeE4iKdqhiE+s2RPnASBJARP3li81XQ6ZItYEctW/OV+x1rxbM6q4DFLLo58ksrNQlYXlMj/pw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 149.199.60.83) smtp.rcpttodomain=lists.infradead.org
+ smtp.mailfrom=xilinx.com; dmarc=bestguesspass action=none
+ header.from=xilinx.com; dkim=fail (signature did not verify)
+ header.d=kernel.org; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mkzh2HqmbmY1jtwx3yTyry6Lixdo5GjU70EYVHBqcZI=;
- b=xRNgMX619b8LJzLAVJHBEl9NVPl0K/FdIT5TIVK7aAYi7ACN50UsZDdntrXZL6g/OZ/LpHtIAZ0jVIRiZPqHE4IQJKYaNMWqebNus4AydKQ271avkxHpqK+iGyPf07zoviqISfWmnp8KjcVp1M9CjcfxNEJY4PXY1EWAPh4Nmew=
-Received: from BN7PR08MB5684.namprd08.prod.outlook.com (20.176.179.87) by
- BN7PR08MB5089.namprd08.prod.outlook.com (20.176.177.220) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2623.9; Mon, 13 Jan 2020 09:58:52 +0000
-Received: from BN7PR08MB5684.namprd08.prod.outlook.com
- ([fe80::981f:90d7:d45f:fd11]) by BN7PR08MB5684.namprd08.prod.outlook.com
- ([fe80::981f:90d7:d45f:fd11%7]) with mapi id 15.20.2623.015; Mon, 13 Jan 2020
- 09:58:52 +0000
-From: "Bean Huo (beanhuo)" <beanhuo@micron.com>
-To: Stanley Chu <stanley.chu@mediatek.com>
-Subject: RE: [EXT] [PATCH v1 1/3] scsi: ufs: fix empty check of error history
-Thread-Topic: [EXT] [PATCH v1 1/3] scsi: ufs: fix empty check of error history
-Thread-Index: AQHVwwrtYdyISOHmvEWfKtFqbPPmzqfoX2LQgAAGaICAAABC0A==
-Date: Mon, 13 Jan 2020 09:58:51 +0000
-Message-ID: <BN7PR08MB568462931864FC928D262098DB350@BN7PR08MB5684.namprd08.prod.outlook.com>
-References: <1578147968-30938-1-git-send-email-stanley.chu@mediatek.com>
- <1578147968-30938-2-git-send-email-stanley.chu@mediatek.com>
- <BN7PR08MB56841F049CEF89CD8F40B4E3DB350@BN7PR08MB5684.namprd08.prod.outlook.com>
- <1578908621.17435.18.camel@mtkswgap22>
-In-Reply-To: <1578908621.17435.18.camel@mtkswgap22>
-Accept-Language: en-150, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-dg-ref: PG1ldGE+PGF0IG5tPSJib2R5LnR4dCIgcD0iYzpcdXNlcnNcYmVhbmh1b1xhcHBkYXRhXHJvYW1pbmdcMDlkODQ5YjYtMzJkMy00YTQwLTg1ZWUtNmI4NGJhMjllMzViXG1zZ3NcbXNnLTQ5ZWNkZDY2LTM1ZWItMTFlYS04Yjg4LWRjNzE5NjFmOWRkM1xhbWUtdGVzdFw0OWVjZGQ2Ny0zNWViLTExZWEtOGI4OC1kYzcxOTYxZjlkZDNib2R5LnR4dCIgc3o9IjE3MjkiIHQ9IjEzMjIzMzgzMTI3MjU3NzA3MCIgaD0iR29mQVgwaU90MEJUTmtzY0FBenVqZFdncnhNPSIgaWQ9IiIgYmw9IjAiIGJvPSIxIi8+PC9tZXRhPg==
-x-dg-rorf: true
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=beanhuo@micron.com; 
-x-originating-ip: [195.89.176.137]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: d3551af9-03c7-4af9-e0cb-08d7980f31df
-x-ms-traffictypediagnostic: BN7PR08MB5089:|BN7PR08MB5089:|BN7PR08MB5089:
-x-microsoft-antispam-prvs: <BN7PR08MB508900ADDE6689A1C0C35D9DDB350@BN7PR08MB5089.namprd08.prod.outlook.com>
-x-ms-exchange-transport-forked: True
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-forefront-prvs: 028166BF91
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(39860400002)(136003)(376002)(346002)(366004)(396003)(189003)(199004)(4326008)(54906003)(71200400001)(86362001)(8936002)(9686003)(55016002)(8676002)(7696005)(81156014)(2906002)(6916009)(66946007)(33656002)(66556008)(76116006)(66446008)(64756008)(66476007)(478600001)(81166006)(7416002)(5660300002)(6506007)(52536014)(26005)(186003)(316002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:BN7PR08MB5089;
- H:BN7PR08MB5684.namprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: micron.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 6zrUJ3uxkhrShR1eBkUvsN2fwy2LNolvKQwC/GgTAkgQx2mUepfSOkeoDlFo3aVnKjUkL+2JEe6Eo84Gn+JfRvE0Dxrav2q4nlJpGR6tBGyO9mP81/I2KvyTRWCIov03SH09KbLDtyupnk+JiOOy9GTHvkkSwdSBqCc6ZnRZP4Vzvk36cbGglo/nqdHhQsxCd2drhN89Vl4cGBp6XvJDGc3JucXmZ1LUfXtlJ8Zr/4WWjJrmyQMr2ZwPMoLRduDUVk6/oq6XRbywOOvQAxqfJNmtecJicWu5m5NdDn+muwDBe4dQIeIg1TBgXaWSXH7weMHCfNITGARk2MEAWGbppja9r5rTU08PLOMUPFpPn6FGTnPYLPI171adMBTVRWH81pQiX97qV2mMlS+izGIPYADcbRS5L5GQ9ajeDBaME5qfXA8e5cz1iw7LXGS7lTet
+ bh=grWyuPCpOJljSa+J1mOgn1wSHuxaPFZw5L1ctw3Q418=;
+ b=XHWtpYSXAVVXuQmjjXT74gzeMOi0tiXGUYb0CgZxO1QS0SraVvy0IWMyYcSvjeA8x7Nbl1L02Pa3dEIP5uve84VYCdjxiBzBVQ8mSuAHPHxzxv5vln9fT+IhvkdIM6I1UwkK7rwAkBpK/0w6RI0FhXn2vSeFCcmx4wS44WeJrjk=
+Received: from BYAPR02CA0028.namprd02.prod.outlook.com (2603:10b6:a02:ee::41)
+ by MN2PR02MB5807.namprd02.prod.outlook.com (2603:10b6:208:11d::20)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2623.13; Mon, 13 Jan
+ 2020 09:58:50 +0000
+Received: from SN1NAM02FT051.eop-nam02.prod.protection.outlook.com
+ (2a01:111:f400:7e44::203) by BYAPR02CA0028.outlook.office365.com
+ (2603:10b6:a02:ee::41) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2623.9 via Frontend
+ Transport; Mon, 13 Jan 2020 09:58:50 +0000
+Authentication-Results: spf=pass (sender IP is 149.199.60.83)
+ smtp.mailfrom=xilinx.com; lists.infradead.org; dkim=fail (signature did not
+ verify) header.d=kernel.org;lists.infradead.org; dmarc=bestguesspass
+ action=none header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+ 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+ client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+ SN1NAM02FT051.mail.protection.outlook.com (10.152.73.103) with Microsoft SMTP
+ Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.2623.9
+ via Frontend Transport; Mon, 13 Jan 2020 09:58:49 +0000
+Received: from unknown-38-66.xilinx.com ([149.199.38.66] helo=xsj-pvapsmtp01)
+ by xsj-pvapsmtpgw01 with esmtp (Exim 4.63)
+ (envelope-from <bharat.kumar.gogada@xilinx.com>)
+ id 1iqwUj-0000IA-8H; Mon, 13 Jan 2020 01:58:49 -0800
+Received: from [127.0.0.1] (helo=localhost)
+ by xsj-pvapsmtp01 with smtp (Exim 4.63)
+ (envelope-from <bharat.kumar.gogada@xilinx.com>)
+ id 1iqwUd-0004Cu-Vy; Mon, 13 Jan 2020 01:58:44 -0800
+Received: from xsj-pvapsmtp01 (smtp-fallback.xilinx.com [149.199.38.66] (may
+ be forged))
+ by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id 00D9wdNb014418; 
+ Mon, 13 Jan 2020 01:58:39 -0800
+Received: from [10.140.9.2] (helo=xhdbharatku40.xilinx.com)
+ by xsj-pvapsmtp01 with esmtp (Exim 4.63)
+ (envelope-from <bharat.kumar.gogada@xilinx.com>)
+ id 1iqwUY-0003nG-Fy; Mon, 13 Jan 2020 01:58:39 -0800
+From: Bharat Kumar Gogada <bharat.kumar.gogada@xilinx.com>
+To: git-dev@xilinx.com, linux-pci@vger.kernel.org,
+ Bjorn Helgaas <bhelgaas@google.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: [PATCH 06/11] PCI: of: Add inbound resource parsing to helpers
+Date: Mon, 13 Jan 2020 15:26:47 +0530
+Message-Id: <20190924214630.12817-7-robh@kernel.org>
+X-Mailer: git-send-email 2.7.4
+X-Patchwork-Submitter: Rob Herring <robh@kernel.org>
+X-Patchwork-Id: 11159679
+X-Patchwork-Delegate: geert@linux-m68k.org
+Received: from vger.kernel.org (vger.kernel.org [209.132.180.67]) by
+ mail.kernel.org (Postfix) with ESMTP id 0BD7320872 for
+ <patchwork-linux-renesas-soc@patchwork.kernel.org>;
+ Tue, 24 Sep 2019 21:46:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org; s=default;
+ t=1569361602; bh=0LcT+0PGsHr4ZHhbwt6VvYrA2psYP10+I2+t1la6QIk=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:List-ID:From;
+ b=y8IhXwVKT/UGz2uXNxChg/Dd/7wnVwMBovQNVb+gx87P3CymADhEDcmhMz6lKqsk7
+ CVwQrzBk1WcH11Fr3j1AiadXqduhKI/lREtGhZcpmyvMWGjpsTdB9bRutDKkT0LzP7
+ hsdxEv32auOrrtWg4bPqPDly5G5FGxrBcQbL/xwE=
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand id
+ S2394482AbfIXVql (ORCPT <rfc822;
+ patchwork-linux-renesas-soc@patchwork.kernel.org>);
+ Tue, 24 Sep 2019 17:46:41 -0400
+Received: from mail-oi1-f194.google.com ([209.85.167.194]:43426 "EHLO
+ mail-oi1-f194.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org with
+ ESMTP id S2388524AbfIXVql (ORCPT <rfc822; linux-renesas-soc@vger.kernel.org>);
+ Tue, 24 Sep 2019 17:46:41 -0400
+Received: by mail-oi1-f194.google.com with SMTP id t84so3042302oih.10;
+ Tue, 24 Sep 2019 14:46:40 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=1e100.net;
+ s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=NoeAS779Z7n+6bw4b58c1x/JgogGZV7oOEiXSfojCsM=;
+ b=T7ovEIXdVY09AkE2NOvyoystac8CwLrB/zPJodIhOPqTDHWmge7p7GTxqfL8/+NrPP
+ Bz+56rLEdq6OIoiDDnyE7uyJr5AdADpNyMqWIgwqhlxlRCeeG8qyZquxbyO0DzkqnGrm
+ uHw00UEeIvajisDd5SxPmK/htnACjoyqAg0uzq0DXorJTNUTiQqQ+DUXtzAAr4dCZjPo
+ EL85TAeesRO4d45qqmwSdJm1bxMJ1S2rZRMufjFzQp/TnHd1q+ArzCvIhh56pr4+g+o+
+ 4sX0djL8NFseydwyDVJI2rNpb0SWi6bakgv0Javwg8JjLMuzz1jZNp3CMDl57nnjaTvL 2hjA==
+X-Gm-Message-State: APjAAAV/AKWOKnqB7hl4Cd2SAQe0bQCTLV2B4j6iUV21RpHMxuhvlYPY
+ D8x7eYNtzvUxE208flt2LhpW0+A=
+X-Google-Smtp-Source: APXvYqxdAPeGtkEzrkp60jWMj/G0sVTCH/6vT1EK9Awn+6rp6xQIJmnnnBtehNhsOnyt3SkFcaTbLg==
+X-Received: by 2002:aca:1a16:: with SMTP id a22mr2013528oia.49.1569361599819;
+ Tue, 24 Sep 2019 14:46:39 -0700 (PDT)
+Received: from xps15.herring.priv (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49]) by smtp.googlemail.com with ESMTPSA id
+ s66sm976787otb.65.2019.09.24.14.46.38 (version=TLS1_3
+ cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 24 Sep 2019 14:46:39 -0700 (PDT)
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190924214630.12817-1-robh@kernel.org>
+References: <20190924214630.12817-1-robh@kernel.org>
 MIME-Version: 1.0
-X-OriginatorOrg: micron.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d3551af9-03c7-4af9-e0cb-08d7980f31df
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Jan 2020 09:58:52.2715 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: f38a5ecd-2813-4862-b11b-ac1d563c806f
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: kpVHKFgO4HKMqNpgRCfInpjUdg5mAM31h63RDvRDe400+3SHFjbOqc26FfMPdry3pRqRZCaPotwaWFeh6DrDug==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR08MB5089
+Precedence: bulk
+X-Mailing-List: linux-renesas-soc@vger.kernel.org
+X-RCIS-Action: ALLOW
+X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
+X-TM-AS-User-Approved-Sender: Yes;Yes
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-Forefront-Antispam-Report: CIP:149.199.60.83; IPV:; CTRY:US; EFV:NLI;
+ SFV:NSPM;
+ SFS:(10009020)(4636009)(136003)(346002)(39860400002)(376002)(396003)(199004)(189003)(316002)(30864003)(81156014)(81166006)(8676002)(478600001)(54906003)(5660300002)(4326008)(110136005)(9686003)(70586007)(70206006)(8936002)(7846003)(336012)(956004)(36756003)(19810500001)(7416002)(2906002)(186003)(1076003)(26005)(356004)(6666004)(1736002)(42866002);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR02MB5807; H:xsj-pvapsmtpgw01; FPR:;
+ SPF:Pass; LANG:en; PTR:unknown-60-83.xilinx.com; A:1; MX:1; 
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: bcaa27d7-4382-4f17-ef51-08d7980f305a
+X-MS-TrafficTypeDiagnostic: MN2PR02MB5807:
+X-LD-Processed: 657af505-d5df-48d0-8300-c31994686c5c,ExtAddr
+X-Microsoft-Antispam-PRVS: <MN2PR02MB5807704C91619787E808FAB0A5350@MN2PR02MB5807.namprd02.prod.outlook.com>
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-Oob-TLC-OOBClassifiers: OLM:3826;
+X-Forefront-PRVS: 028166BF91
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: cdSSpvpLhPLl99QXO3XIFAWbKenjTE14eX1uXNNT3LRXz/osQis2mhM0OLSfpPwWr2mLxAlZ7A8xV3tvfr1hrosqeTI5ibUCRsSEd1hfExOBJ18buJX0zz6LG1owfkMf9BxhOzwBiumU7HI21XHDmak8VSQVXKifqvkCQKK89fDqPkJMm1kngLwzETYHePXPV10un3Dhe5epJdIb4xeFc/jAuvYf3fD+wzpTtPL8yr8h6xsQgotkYEx5wwsUmfzLU8Jmttci507pZYN5oXFkIgMUHWz0KBKIG4+uEqUdNO2s7UdOTCqRlAgP1QZTfdXhKHuz+jkwycNILgd/hw8a+pr/oJEUGEZQZiywV5i2CwsUFyk0xto0tTVbaMs8M3gkfhC8D1105WTGfvRvSbFjBGknqO3COGmtfjuUn43v3XnY9+hFydBAeGSFi8L8dicIDB3u5SR2ITVF8jriz5EDpq8MJCVBXwc06PU3jTgh0UW0MdyEZ8g/UuOXU7avjPjEm+tzar1+aHAItRmyDqxIPg==
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jan 2020 09:58:49.7200 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: bcaa27d7-4382-4f17-ef51-08d7980f305a
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
+ Helo=[xsj-pvapsmtpgw01]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR02MB5807
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200113_015855_388614_C8933D53 
-X-CRM114-Status: GOOD (  16.47  )
+X-CRM114-CacheID: sfid-20200113_015854_893035_0E1050AF 
+X-CRM114-Status: GOOD (  17.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
-Precedence: list
 List-Id: <linux-mediatek.lists.infradead.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=unsubscribe>
@@ -122,71 +193,420 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
- "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
- "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "cang@codeaurora.org" <cang@codeaurora.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "bvanassche@acm.org" <bvanassche@acm.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Toan Le <toan@os.amperecomputing.com>, Will Deacon <will@kernel.org>,
+ Rob Herring <robh@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Michal Simek <michal.simek@xilinx.com>,
+ linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com,
+ michals@xilinx.com, Shawn Lin <shawn.lin@rock-chips.com>,
+ Ray Jui <rjui@broadcom.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
+ Simon Horman <horms@verge.net.au>, rgummal@xilinx.com,
+ linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>,
+ Jingoo Han <jingoohan1@gmail.com>, rfi@lists.rocketboards.org,
+ linux-renesas-soc@vger.kernel.org, Tom Joseph <tjoseph@cadence.com>,
+ Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+ Ley Foon Tan <lftan@altera.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+Message-ID: <20200113095647.8HjI6xVun0J6TdFdiKgFue7f4b25_WPXFk0AkB8Z5Q8@z>
 
-> Subject: RE: [EXT] [PATCH v1 1/3] scsi: ufs: fix empty check of error history
-> 
-> Hi Bean,
-> 
-> On Mon, 2020-01-13 at 09:28 +0000, Bean Huo (beanhuo) wrote:
-> > Hi, Stanley
-> >
-> > >
-> > > Currently checking if an error history element is empty or not is by
-> > > its "value". In most cases, value is error code.
-> > >
-> > > However this checking is not correct because some errors or events
-> > > do not specify any values in error history so values remain as 0,
-> > > and this will lead to incorrect empty checking.
-> > >
-> > Do you think this is a bug of UFS host controller? According to the
-> > UFS host Spec, If there had error detected in each layer, at least
-> > bit31 in its error code register Should be set to 1.
-> >
-> > Why there was an error happening, but host didn't set this bit31?
-> >
-> 
-> Thanks so much for review.
-> 
-> Yes, the case bit[31] set is true for UIC errors.
-> 
-> However the users of UFS error history, i.e., users of ufshcd_update_reg_hlist(),
-> are not only UIC errors. Some other essential events will update history too, for
-> example, device reset events and abort events.
-> 
-> Take "device reset events" as example: parameter "val" may be 0 while invoking
-> ufshcd_update_reg_hlist(). If this happens, the device reset event will not be
-> printed out because its err_hist->reg[p] is 0 according to the original logic in
-> ufshcd_print_err_hist().
-> 
-> Feel free to correct above description if it is wrong.
-> 
-> Thanks,
-> Stanley
+From: Rob Herring <robh@kernel.org>
 
-Hi, Stanley
-Thanks, now clear, it is not controller negative act issue.
+Extend devm_of_pci_get_host_bridge_resources() and
+pci_parse_request_of_pci_ranges() helpers to also parse the inbound
+addresses from DT 'dma-ranges' and populate a resource list with the
+translated addresses. This will help ensure 'dma-ranges' is always
+parsed in a consistent way.
 
-Reviewed-by: Bean Huo <beanhuo@micron.com>
+Cc: Jingoo Han <jingoohan1@gmail.com>
+Cc: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+Cc: Will Deacon <will@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>
+Cc: Toan Le <toan@os.amperecomputing.com>
+Cc: Ley Foon Tan <lftan@altera.com>
+Cc: Tom Joseph <tjoseph@cadence.com>
+Cc: Ray Jui <rjui@broadcom.com>
+Cc: Scott Branden <sbranden@broadcom.com>
+Cc: bcm-kernel-feedback-list@broadcom.com
+Cc: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>
+Cc: Hou Zhiqiang <Zhiqiang.Hou@nxp.com>
+Cc: Simon Horman <horms@verge.net.au>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Michal Simek <michal.simek@xilinx.com>
+Cc: rfi@lists.rocketboards.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-renesas-soc@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org
+Signed-off-by: Rob Herring <robh@kernel.org>
+Tested-by: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+Reviewed-by: Andrew Murray <andrew.murray@arm.com>
+Acked-by: Gustavo Pimentel <gustavo.pimentel@synopsys.com>
+Acked-by: Jingoo Han <jingoohan1@gmail.com>
+Acked-by: Jingoo Han <jingoohan1@gmail.com>
+---
+ .../pci/controller/dwc/pcie-designware-host.c |  3 +-
+ drivers/pci/controller/pci-aardvark.c         |  2 +-
+ drivers/pci/controller/pci-ftpci100.c         |  3 +-
+ drivers/pci/controller/pci-host-common.c      |  2 +-
+ drivers/pci/controller/pci-v3-semi.c          |  2 +-
+ drivers/pci/controller/pci-versatile.c        |  2 +-
+ drivers/pci/controller/pci-xgene.c            |  1 +
+ drivers/pci/controller/pcie-altera.c          |  2 +-
+ drivers/pci/controller/pcie-cadence-host.c    |  2 +-
+ drivers/pci/controller/pcie-iproc-platform.c  |  1 +
+ drivers/pci/controller/pcie-mediatek.c        |  2 +-
+ drivers/pci/controller/pcie-mobiveil.c        |  4 +-
+ drivers/pci/controller/pcie-rcar.c            |  3 +-
+ drivers/pci/controller/pcie-rockchip-host.c   |  3 +-
+ drivers/pci/controller/pcie-xilinx-nwl.c      |  2 +-
+ drivers/pci/controller/pcie-xilinx.c          |  2 +-
+ drivers/pci/of.c                              | 44 ++++++++++++++++++-
+ drivers/pci/pci.h                             |  8 +++-
+ include/linux/pci.h                           |  2 +
+ 19 files changed, 72 insertions(+), 18 deletions(-)
+
+diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
+index f93252d0da5b..0743ae64bb0f 100644
+--- a/drivers/pci/controller/dwc/pcie-designware-host.c
++++ b/drivers/pci/controller/dwc/pcie-designware-host.c
+@@ -342,7 +342,8 @@ int dw_pcie_host_init(struct pcie_port *pp)
+ 		return -ENOMEM;
+ 
+ 	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
+-					&bridge->windows, &pp->io_base);
++					&bridge->windows, &bridge->dma_ranges,
++					&pp->io_base);
+ 	if (ret)
+ 		return ret;
+ 
+diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
+index ff3af3d34028..c00b391529f3 100644
+--- a/drivers/pci/controller/pci-aardvark.c
++++ b/drivers/pci/controller/pci-aardvark.c
+@@ -940,7 +940,7 @@ static int advk_pcie_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	ret = pci_parse_request_of_pci_ranges(dev, &pcie->resources,
+-					      &bus);
++					      &bridge->dma_ranges, &bus);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to parse resources\n");
+ 		return ret;
+diff --git a/drivers/pci/controller/pci-ftpci100.c b/drivers/pci/controller/pci-ftpci100.c
+index bf5ece5d9291..3e07a8203736 100644
+--- a/drivers/pci/controller/pci-ftpci100.c
++++ b/drivers/pci/controller/pci-ftpci100.c
+@@ -481,7 +481,8 @@ static int faraday_pci_probe(struct platform_device *pdev)
+ 		return PTR_ERR(p->base);
+ 
+ 	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
+-						    &res, &io_base);
++						    &res, &host->dma_ranges,
++						    &io_base);
+ 	if (ret)
+ 		return ret;
+ 
+diff --git a/drivers/pci/controller/pci-host-common.c b/drivers/pci/controller/pci-host-common.c
+index c742881b5061..183381c19ee8 100644
+--- a/drivers/pci/controller/pci-host-common.c
++++ b/drivers/pci/controller/pci-host-common.c
+@@ -27,7 +27,7 @@ static struct pci_config_window *gen_pci_init(struct device *dev,
+ 	struct pci_config_window *cfg;
+ 
+ 	/* Parse our PCI ranges and request their resources */
+-	err = pci_parse_request_of_pci_ranges(dev, resources, &bus_range);
++	err = pci_parse_request_of_pci_ranges(dev, resources, NULL, &bus_range);
+ 	if (err)
+ 		return ERR_PTR(err);
+ 
+diff --git a/drivers/pci/controller/pci-v3-semi.c b/drivers/pci/controller/pci-v3-semi.c
+index d219404bad92..090df766faf9 100644
+--- a/drivers/pci/controller/pci-v3-semi.c
++++ b/drivers/pci/controller/pci-v3-semi.c
+@@ -794,7 +794,7 @@ static int v3_pci_probe(struct platform_device *pdev)
+ 		return PTR_ERR(v3->config_base);
+ 
+ 	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &res,
+-						    &io_base);
++						    &host->dma_ranges, &io_base);
+ 	if (ret)
+ 		return ret;
+ 
+diff --git a/drivers/pci/controller/pci-versatile.c b/drivers/pci/controller/pci-versatile.c
+index 237b1abb26f2..211159f54b4a 100644
+--- a/drivers/pci/controller/pci-versatile.c
++++ b/drivers/pci/controller/pci-versatile.c
+@@ -93,7 +93,7 @@ static int versatile_pci_probe(struct platform_device *pdev)
+ 	if (IS_ERR(versatile_cfg_base[1]))
+ 		return PTR_ERR(versatile_cfg_base[1]);
+ 
+-	ret = pci_parse_request_of_pci_ranges(dev, &pci_res, NULL);
++	ret = pci_parse_request_of_pci_ranges(dev, &pci_res, NULL, NULL);
+ 	if (ret)
+ 		return ret;
+ 
+diff --git a/drivers/pci/controller/pci-xgene.c b/drivers/pci/controller/pci-xgene.c
+index ffda3e8b4742..11f27c42c06a 100644
+--- a/drivers/pci/controller/pci-xgene.c
++++ b/drivers/pci/controller/pci-xgene.c
+@@ -635,6 +635,7 @@ static int xgene_pcie_probe(struct platform_device *pdev)
+ 		return ret;
+ 
+ 	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &res,
++						    &bridge->dma_ranges,
+ 						    &iobase);
+ 	if (ret)
+ 		return ret;
+diff --git a/drivers/pci/controller/pcie-altera.c b/drivers/pci/controller/pcie-altera.c
+index 2ed00babff5a..fde6a3b16fb9 100644
+--- a/drivers/pci/controller/pcie-altera.c
++++ b/drivers/pci/controller/pcie-altera.c
+@@ -801,7 +801,7 @@ static int altera_pcie_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	ret = pci_parse_request_of_pci_ranges(dev, &pcie->resources,
+-					      NULL);
++					      &bridge->dma_ranges, NULL);
+ 	if (ret) {
+ 		dev_err(dev, "Failed add resources\n");
+ 		return ret;
+diff --git a/drivers/pci/controller/pcie-cadence-host.c b/drivers/pci/controller/pcie-cadence-host.c
+index 97e251090b4f..a8f7a6284c3e 100644
+--- a/drivers/pci/controller/pcie-cadence-host.c
++++ b/drivers/pci/controller/pcie-cadence-host.c
+@@ -211,7 +211,7 @@ static int cdns_pcie_host_init(struct device *dev,
+ 	int err;
+ 
+ 	/* Parse our PCI ranges and request their resources */
+-	err = pci_parse_request_of_pci_ranges(dev, resources, &bus_range);
++	err = pci_parse_request_of_pci_ranges(dev, resources, NULL, &bus_range);
+ 	if (err)
+ 		return err;
+ 
+diff --git a/drivers/pci/controller/pcie-iproc-platform.c b/drivers/pci/controller/pcie-iproc-platform.c
+index 5a3550b6bb29..62eee2d17f43 100644
+--- a/drivers/pci/controller/pcie-iproc-platform.c
++++ b/drivers/pci/controller/pcie-iproc-platform.c
+@@ -101,6 +101,7 @@ static int iproc_pcie_pltfm_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &resources,
++						    &bridge->dma_ranges,
+ 						    &iobase);
+ 	if (ret) {
+ 		dev_err(dev, "unable to get PCI host bridge resources\n");
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index cea4112b5309..f3996eed152d 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -1032,7 +1032,7 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
+ 	int err;
+ 
+ 	err = pci_parse_request_of_pci_ranges(dev, windows,
+-					      &bus);
++					      &host->dma_ranges, &bus);
+ 	if (err)
+ 		return err;
+ 
+diff --git a/drivers/pci/controller/pcie-mobiveil.c b/drivers/pci/controller/pcie-mobiveil.c
+index 672e633601c7..93064faaa656 100644
+--- a/drivers/pci/controller/pcie-mobiveil.c
++++ b/drivers/pci/controller/pcie-mobiveil.c
+@@ -875,7 +875,9 @@ static int mobiveil_pcie_probe(struct platform_device *pdev)
+ 
+ 	/* parse the host bridge base addresses from the device tree file */
+ 	ret = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
+-						    &pcie->resources, &iobase);
++						    &pcie->resources,
++						    &bridge->dma_ranges,
++						    &iobase);
+ 	if (ret) {
+ 		dev_err(dev, "Getting bridge resources failed\n");
+ 		return ret;
+diff --git a/drivers/pci/controller/pcie-rcar.c b/drivers/pci/controller/pcie-rcar.c
+index f6a669a9af41..b8d6e86a5539 100644
+--- a/drivers/pci/controller/pcie-rcar.c
++++ b/drivers/pci/controller/pcie-rcar.c
+@@ -1138,7 +1138,8 @@ static int rcar_pcie_probe(struct platform_device *pdev)
+ 	pcie->dev = dev;
+ 	platform_set_drvdata(pdev, pcie);
+ 
+-	err = pci_parse_request_of_pci_ranges(dev, &pcie->resources, NULL);
++	err = pci_parse_request_of_pci_ranges(dev, &pcie->resources,
++					      &bridge->dma_ranges, NULL);
+ 	if (err)
+ 		goto err_free_bridge;
+ 
+diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
+index 8d20f1793a61..093b816b9dc9 100644
+--- a/drivers/pci/controller/pcie-rockchip-host.c
++++ b/drivers/pci/controller/pcie-rockchip-host.c
+@@ -996,7 +996,8 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 		goto err_deinit_port;
+ 
+ 	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff,
+-						    &res, &io_base);
++						    &res, &bridge->dma_ranges,
++						    &io_base);
+ 	if (err)
+ 		goto err_remove_irq_domain;
+ 
+diff --git a/drivers/pci/controller/pcie-xilinx-nwl.c b/drivers/pci/controller/pcie-xilinx-nwl.c
+index 45c0f344ccd1..5c9132a02d15 100644
+--- a/drivers/pci/controller/pcie-xilinx-nwl.c
++++ b/drivers/pci/controller/pcie-xilinx-nwl.c
+@@ -846,7 +846,7 @@ static int nwl_pcie_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &res,
+-						    &iobase);
++						    &bridge->dma_ranges, &iobase);
+ 	if (err) {
+ 		dev_err(dev, "Getting bridge resources failed\n");
+ 		return err;
+diff --git a/drivers/pci/controller/pcie-xilinx.c b/drivers/pci/controller/pcie-xilinx.c
+index 5bf3af3b28e6..a95faca30291 100644
+--- a/drivers/pci/controller/pcie-xilinx.c
++++ b/drivers/pci/controller/pcie-xilinx.c
+@@ -648,7 +648,7 @@ static int xilinx_pcie_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &res,
+-						    &iobase);
++						    &bridge->dma_ranges, &iobase);
+ 	if (err) {
+ 		dev_err(dev, "Getting bridge resources failed\n");
+ 		return err;
+diff --git a/drivers/pci/of.c b/drivers/pci/of.c
+index bc7b27a28795..8d31e078461f 100644
+--- a/drivers/pci/of.c
++++ b/drivers/pci/of.c
+@@ -257,7 +257,9 @@ EXPORT_SYMBOL_GPL(of_pci_check_probe_only);
+  */
+ int devm_of_pci_get_host_bridge_resources(struct device *dev,
+ 			unsigned char busno, unsigned char bus_max,
+-			struct list_head *resources, resource_size_t *io_base)
++			struct list_head *resources,
++			struct list_head *ib_resources,
++			resource_size_t *io_base)
+ {
+ 	struct device_node *dev_node = dev->of_node;
+ 	struct resource *res, tmp_res;
+@@ -340,6 +342,42 @@ int devm_of_pci_get_host_bridge_resources(struct device *dev,
+ 		pci_add_resource_offset(resources, res,	res->start - range.pci_addr);
+ 	}
+ 
++	/* Check for dma-ranges property */
++	if (!ib_resources)
++		return 0;
++	err = of_pci_dma_range_parser_init(&parser, dev_node);
++	if (err)
++		return 0;
++
++	dev_dbg(dev, "Parsing dma-ranges property...\n");
++	for_each_of_pci_range(&parser, &range) {
++		/*
++		 * If we failed translation or got a zero-sized region
++		 * then skip this range
++		 */
++		if (((range.flags & IORESOURCE_TYPE_BITS) != IORESOURCE_MEM) ||
++		    range.cpu_addr == OF_BAD_ADDR || range.size == 0)
++			continue;
++
++		dev_info(dev, "IB MEM %#010llx..%#010llx -> %#010llx\n",
++			 range.cpu_addr,
++			 range.cpu_addr + range.size - 1, range.pci_addr);
++
++
++		err = of_pci_range_to_resource(&range, dev_node, &tmp_res);
++		if (err)
++			continue;
++
++		res = devm_kmemdup(dev, &tmp_res, sizeof(tmp_res), GFP_KERNEL);
++		if (!res) {
++			err = -ENOMEM;
++			goto failed;
++		}
++
++		pci_add_resource_offset(ib_resources, res,
++					res->start - range.pci_addr);
++	}
++
+ 	return 0;
+ 
+ failed:
+@@ -482,6 +520,7 @@ EXPORT_SYMBOL_GPL(of_irq_parse_and_map_pci);
+ 
+ int pci_parse_request_of_pci_ranges(struct device *dev,
+ 				    struct list_head *resources,
++				    struct list_head *ib_resources,
+ 				    struct resource **bus_range)
+ {
+ 	int err, res_valid = 0;
+@@ -489,8 +528,9 @@ int pci_parse_request_of_pci_ranges(struct device *dev,
+ 	struct resource_entry *win, *tmp;
+ 
+ 	INIT_LIST_HEAD(resources);
++	INIT_LIST_HEAD(ib_resources);
+ 	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, resources,
+-						    &iobase);
++						    ib_resources, &iobase);
+ 	if (err)
+ 		return err;
+ 
+diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
+index d22d1b807701..790458953c54 100644
+--- a/drivers/pci/pci.h
++++ b/drivers/pci/pci.h
+@@ -582,11 +582,15 @@ of_pci_get_max_link_speed(struct device_node *node)
+ #if defined(CONFIG_OF_ADDRESS)
+ int devm_of_pci_get_host_bridge_resources(struct device *dev,
+ 			unsigned char busno, unsigned char bus_max,
+-			struct list_head *resources, resource_size_t *io_base);
++			struct list_head *resources,
++			struct list_head *ib_resources,
++			resource_size_t *io_base);
+ #else
+ static inline int devm_of_pci_get_host_bridge_resources(struct device *dev,
+ 			unsigned char busno, unsigned char bus_max,
+-			struct list_head *resources, resource_size_t *io_base)
++			struct list_head *resources,
++			struct list_head *ib_resources,
++			resource_size_t *io_base);
+ {
+ 	return -EINVAL;
+ }
+diff --git a/include/linux/pci.h b/include/linux/pci.h
+index 82e4cd1b7ac3..d57389b86f92 100644
+--- a/include/linux/pci.h
++++ b/include/linux/pci.h
+@@ -2312,6 +2312,7 @@ void pci_release_bus_of_node(struct pci_bus *bus);
+ struct irq_domain *pci_host_bridge_of_msi_domain(struct pci_bus *bus);
+ int pci_parse_request_of_pci_ranges(struct device *dev,
+ 				    struct list_head *resources,
++				    struct list_head *ib_resources,
+ 				    struct resource **bus_range);
+ 
+ /* Arch may override this (weak) */
+@@ -2326,6 +2327,7 @@ static inline struct irq_domain *
+ pci_host_bridge_of_msi_domain(struct pci_bus *bus) { return NULL; }
+ static inline int pci_parse_request_of_pci_ranges(struct device *dev,
+ 						  struct list_head *resources,
++						  struct list_head *ib_resources,
+ 						  struct resource **bus_range)
+ {
+ 	return -EINVAL;
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
