@@ -2,79 +2,76 @@ Return-Path: <SRS0=6pE3=3C=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6150EC33CA9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 18:59:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 46835C33CA9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 19:11:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2479521744
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 18:59:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1CF6821556
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 19:11:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UR1e5DZz";
-	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="HLp9DLKG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2479521744
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bO9f77mw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1CF6821556
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gwnEhxsVPOwJQwPkvHWpmDrjRyut+y8XwGxTrrcHq0c=; b=UR1e5DZz8h5h//G5FLImB3NRa
-	YkIEdN859NuF0Cu8ZjfasPwr/SMRBOGujJG0AVX2DtlR3VbjWkwN36pyM1jcVEDUNS8r4Ocxl/EXW
-	zqCMtMvpdJZ3ImxvOZJm/rwS3D5I/ySf9D61imbzB1Fw1vUE5b0UHKB7ODZMgSdWgUGbT0Nmc0CqT
-	2fPL4WRExUl/xjHogDJ/+dQj08VX17qf/YaL84LAhCrFIbaum5h3xHrgfWOs58N1rIl3Cb1lFRhWy
-	c7mY3uaqFAiqwSYxkQihbdc9dmQ6wJLR33Yack3fFDZDIm5ownDReYgnBHIUj5yEW3yDyXaseELAk
-	lTw5Cv6Cg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	References:Subject:To:From:Date:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=gq85vt3VC/Z0aHLyVjneESmhE4FN8Ia3vtB8rQW/qJs=; b=bO9f77mwlRwtyhOw1RpDVDz/ex
+	wlwfNzKKUJaq7cvkgPycmJqUTpMbMmFhqxP4+gIkjkEcnh+rFLXtbJt0RzabU7lcp+NPzEdMGNwoX
+	QM3wnN+rFHmi5BUWIAkjuVxTw4i2lW1agz6Iq3foJGlSbLqoPsoNCR1y2jSwfA8ofDhvmOgVyjXcd
+	CQuqr9eWeMT/byivPb1aiFUJXeItp9h0Yy93DtO+0xvakXPZMLgaXgcbUjMCPHGnlw0azcJhiZugF
+	RFauNXwRv11+x1dlnnmroI80az/00LlqFHWReTChwUrKs5yjx+o9T8Mlddp/CqeUiKp1o+eHuDCxT
+	T4caHGbw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ir4vz-0001Pp-9q; Mon, 13 Jan 2020 18:59:31 +0000
-Received: from mail26.static.mailgun.info ([104.130.122.26])
+	id 1ir57F-00072m-4B; Mon, 13 Jan 2020 19:11:09 +0000
+Received: from mail-pf1-f194.google.com ([209.85.210.194])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ir4vm-0001Ef-Lg
- for linux-mediatek@lists.infradead.org; Mon, 13 Jan 2020 18:59:20 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1578941959; h=Message-ID: References: In-Reply-To: Subject:
- Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=rEVhNoA+SMCklIOXL2qRZ8K89XUanuaNJQR/wOG0Dcw=;
- b=HLp9DLKGIkgi62qAQLPRYClSKO16AcjWJK4FJN5+4wU7QiU2yKlEwCkc+CGhtiUtMye2zJbF
- En5+6Ry/Bi5ZslExl7cKxQSgbYYqCdq6gXw7PZ5MgJFRT7zxPtbUpjnIoG78pSYqIHciq5c9
- jlLozHKYBrQwfJAz+CIvRBJEIkg=
-X-Mailgun-Sending-Ip: 104.130.122.26
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
- by mxa.mailgun.org with ESMTP id 5e1cbdfa.7f83ae025fb8-smtp-out-n01;
- Mon, 13 Jan 2020 18:59:06 -0000 (UTC)
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id D2515C447A5; Mon, 13 Jan 2020 18:59:04 +0000 (UTC)
-Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
- (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
- (No client certificate requested) (Authenticated sender: asutoshd)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 758BBC433CB;
- Mon, 13 Jan 2020 18:59:03 +0000 (UTC)
-MIME-Version: 1.0
-Date: Mon, 13 Jan 2020 10:59:03 -0800
-From: asutoshd@codeaurora.org
-To: Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [PATCH v1 2/3] scsi: ufs: add device reset history for vendor
- implementations
-In-Reply-To: <1578147968-30938-3-git-send-email-stanley.chu@mediatek.com>
-References: <1578147968-30938-1-git-send-email-stanley.chu@mediatek.com>
- <1578147968-30938-3-git-send-email-stanley.chu@mediatek.com>
-Message-ID: <20ed97a2333ff27d5901c373579f710a@codeaurora.org>
-X-Sender: asutoshd@codeaurora.org
-User-Agent: Roundcube Webmail/1.3.9
+ id 1ir56w-0006ly-07; Mon, 13 Jan 2020 19:10:53 +0000
+Received: by mail-pf1-f194.google.com with SMTP id x185so5321229pfc.5;
+ Mon, 13 Jan 2020 11:10:49 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:message-id:date:from:to:cc:cc:cc:subject
+ :references:in-reply-to;
+ bh=TKkoejQV2c6zTi0Lk84zRP/sLh+dHPb6nJ3LQs91rO0=;
+ b=qvWDRqgEuyO1vGHwEylGdjs0b+S9Z7w/wmDTvjCRa44D5rCp3W8J5yHftjVWmtZmRH
+ KwN+gSNicb6yCw6hbuDM1gY3ukxaSmGWQmgs5SV/IObDdNa5lRhQ2+pGLc6k8+stjX1X
+ A9rvxvPA59rOAdhVUmX0P2+lPE0QaLvL32G9SMEjTy+/slWylNPCO4+9bfmzobk+UlrG
+ ern0Ld5KSzVdxicebnP5vw63zP2J34pCbfYNg/yzbogws+oCfZCfbm35RwR4WK+xwdbS
+ JroW3hBBisGG35OsRqbmuu5fhHQf8FlXk77nRouivVSFIKAB2CwgZE8LoAbtdGABnwt5
+ aCdg==
+X-Gm-Message-State: APjAAAVJDp7uDI32YSNk9nM1Fk+KgZjwtQeFmTa/pm0m+JsopIE38xfV
+ qiT6YlRWLMJSJrDFAMUzatA=
+X-Google-Smtp-Source: APXvYqxpcMDnuAK6LNWLusoFsllAJWymSw/KyOmcfqBZ+FKSDh+VYiY8UaD3R5kny7v3CzIXMzUf6w==
+X-Received: by 2002:a63:6b07:: with SMTP id g7mr21929891pgc.243.1578942648698; 
+ Mon, 13 Jan 2020 11:10:48 -0800 (PST)
+Received: from localhost (MIPS-TECHNO.ear1.SanJose1.Level3.net. [4.15.122.74])
+ by smtp.gmail.com with ESMTPSA id
+ y6sm14563154pgc.10.2020.01.13.11.10.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 13 Jan 2020 11:10:47 -0800 (PST)
+Message-ID: <5e1cc0b7.1c69fb81.c151b.187c@mx.google.com>
+Date: Mon, 13 Jan 2020 11:10:47 -0800
+From: Paul Burton <paulburton@kernel.org>
+To: Yangtao Li <tiny.windzz@gmail.com>
+Subject: Re: [PATCH 08/10] soc: lantiq: convert to
+ devm_platform_ioremap_resource
+References: <20191214175447.25482-8-tiny.windzz@gmail.com>
+In-Reply-To: <20191214175447.25482-8-tiny.windzz@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200113_105919_144977_5570B596 
-X-CRM114-Status: GOOD (  12.91  )
+X-CRM114-CacheID: sfid-20200113_111050_052397_F211E6A0 
+X-CRM114-Status: UNSURE (   4.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,86 +83,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-scsi@vger.kernel.org, martin.petersen@oracle.com,
- andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, avri.altman@wdc.com,
- cang@codeaurora.org, linux-mediatek@lists.infradead.org,
- peter.wang@mediatek.com, alim.akhtar@samsung.com, matthias.bgg@gmail.com,
- bvanassche@acm.org, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Cc: Yangtao Li <tiny.windzz@gmail.com>, john@phrozen.org,
+ linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ khilman@baylibre.com, krzk@kernel.org, wens@csie.org, agross@kernel.org,
+ linux-arm-msm@vger.kernel.org, mripard@kernel.org,
+ linux-mediatek@lists.infradead.org, ssantosh@kernel.org,
+ matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org,
+ bjorn.andersson@linaro.org, linux-arm-kernel@lists.infradead.org,
+ shawnguo@kernel.org, linux-mips@vger.kernel.org, leoyang.li@nxp.com,
+ kgene@kernel.org, khalasa@piap.pl, jun.nie@linaro.org,
+ linuxppc-dev@lists.ozlabs.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-01-04 06:26, Stanley Chu wrote:
-> Device reset history shall be also added for vendor's device
-> reset variant operation implementation.
-> 
-> Cc: Alim Akhtar <alim.akhtar@samsung.com>
-> Cc: Asutosh Das <asutoshd@codeaurora.org>
-> Cc: Avri Altman <avri.altman@wdc.com>
-> Cc: Bart Van Assche <bvanassche@acm.org>
-> Cc: Bean Huo <beanhuo@micron.com>
-> Cc: Can Guo <cang@codeaurora.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> ---
->  drivers/scsi/ufs/ufshcd.c | 5 +++--
->  drivers/scsi/ufs/ufshcd.h | 6 +++++-
->  2 files changed, 8 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> index bae43da00bb6..29e3d50aabfb 100644
-> --- a/drivers/scsi/ufs/ufshcd.c
-> +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -4346,13 +4346,14 @@ static inline int
-> ufshcd_disable_device_tx_lcc(struct ufs_hba *hba)
->  	return ufshcd_disable_tx_lcc(hba, true);
->  }
-> 
-> -static void ufshcd_update_reg_hist(struct ufs_err_reg_hist *reg_hist,
-> -				   u32 reg)
-> +void ufshcd_update_reg_hist(struct ufs_err_reg_hist *reg_hist,
-> +			    u32 reg)
->  {
->  	reg_hist->reg[reg_hist->pos] = reg;
->  	reg_hist->tstamp[reg_hist->pos] = ktime_get();
->  	reg_hist->pos = (reg_hist->pos + 1) % UFS_ERR_REG_HIST_LENGTH;
->  }
-> +EXPORT_SYMBOL_GPL(ufshcd_update_reg_hist);
-> 
->  /**
->   * ufshcd_link_startup - Initialize unipro link startup
-> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-> index e05cafddc87b..de1be6a862b0 100644
-> --- a/drivers/scsi/ufs/ufshcd.h
-> +++ b/drivers/scsi/ufs/ufshcd.h
-> @@ -805,6 +805,8 @@ int ufshcd_wait_for_register(struct ufs_hba *hba,
-> u32 reg, u32 mask,
->  				u32 val, unsigned long interval_us,
->  				unsigned long timeout_ms, bool can_sleep);
->  void ufshcd_parse_dev_ref_clk_freq(struct ufs_hba *hba, struct clk 
-> *refclk);
-> +void ufshcd_update_reg_hist(struct ufs_err_reg_hist *reg_hist,
-> +			    u32 reg);
-> 
->  static inline void check_upiu_size(void)
->  {
-> @@ -1083,8 +1085,10 @@ static inline void
-> ufshcd_vops_dbg_register_dump(struct ufs_hba *hba)
-> 
->  static inline void ufshcd_vops_device_reset(struct ufs_hba *hba)
->  {
-> -	if (hba->vops && hba->vops->device_reset)
-> +	if (hba->vops && hba->vops->device_reset) {
->  		hba->vops->device_reset(hba);
-> +		ufshcd_update_reg_hist(&hba->ufs_stats.dev_reset, 0);
-> +	}
->  }
-> 
->  extern struct ufs_pm_lvl_states ufs_pm_lvl_states[];
+Hello,
 
-Reviewed-by: Asutosh Das <asutoshd@codeaurora.org>
+Yangtao Li wrote:
+> Use devm_platform_ioremap_resource() to simplify code.
+
+Applied to mips-next.
+
+> commit 23c25c732530
+> https://git.kernel.org/mips/c/23c25c732530
+> 
+> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
+> Signed-off-by: Paul Burton <paulburton@kernel.org>
+
+Thanks,
+    Paul
+
+[ This message was auto-generated; if you believe anything is incorrect
+  then please email paulburton@kernel.org to report it. ]
 
 _______________________________________________
 Linux-mediatek mailing list
