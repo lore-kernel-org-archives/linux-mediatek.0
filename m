@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-12.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0CCFDC33CA8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 10:10:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 58131C33CAD
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 10:18:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CA67B21739
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 10:10:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 29F592081E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 10:18:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CY69Ie7Q";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="i5NUpSBj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA67B21739
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="E+9oq58x";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="d/OcBl19"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 29F592081E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,53 +27,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:Subject:
 	From:To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=24MijKk60b4KzicG7jQUuQJ6/+llXxILiSvAKLIuGOM=; b=CY69Ie7QtoL5N3
-	pPLyPsh6P302uL/2UfeZGZIKiZ/A5lvNoSKvvMsmUYnURuVOnvKhUW1b70E2FDbCVxHmnnBaCpCBM
-	JWgnhIfeSzd8h0N6yDzcXiXnn86MEbhj3fi3RlJRsMDTulhKm/96NTv0ZTeCcftNUGuPBRd+Yjpx8
-	P5WYO18l73UX5s0uZ3F6NYKmTVHPZ7MQAKirWDQ8q5ZN7XdsKJSvGxNcnU0arkwmtV/ORDs8ULxw2
-	Cm9rDWAW/MNc4BFqHkzpIUVZu7I0EqFuDg/r11jn+Y8pj2BVeESJktBSeMPhPsOmIH9DwyeSrQAfn
-	ERbLdNPA0VSMKV8BM0Jg==;
+	List-Owner; bh=NpxRUG8tJSRS22uhoxrG8mXMZkLB4KwKSj3L+pcXXa4=; b=E+9oq58xLGV4QS
+	3757o88C3N5QSr1rwswwjuJQ3AmkclZZRz6dHyoRukmPQP2N9cG7RryWIYtlCNN7YF2hGKt1krRO3
+	aiF3n3aRaNZwVjH7QrVtzp2Vgz8ZzVvVkKzsakkllN1jBgATkRfGDbiF5ELN9/iNHfvCExysJ810C
+	Im1Myv5rAGYGSHqev5od1JbyWoRPin3HnkBWDsL44n9MLRIlt9cnDIpbekbnRY158IRpzbOVe43vQ
+	pwPiFFDDHz/Brvn0HMocedWosWg+ru8JjEKNf3dDieR+qjWFc6/c1CoaR2qmjznnfV8TKj265xloz
+	Evn4HnVfRKnqfch2Bvgw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iqwfi-0006GR-DY; Mon, 13 Jan 2020 10:10:10 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1iqwnP-0003rq-VL; Mon, 13 Jan 2020 10:18:07 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iqwfd-0005Sk-8u; Mon, 13 Jan 2020 10:10:07 +0000
-Received: by mail-wr1-x444.google.com with SMTP id y11so7885780wrt.6;
- Mon, 13 Jan 2020 02:10:03 -0800 (PST)
+ id 1iqwnL-0003ft-ID; Mon, 13 Jan 2020 10:18:06 +0000
+Received: by mail-pl1-x641.google.com with SMTP id p9so3645731plk.9;
+ Mon, 13 Jan 2020 02:18:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=to:cc:from:subject:autocrypt:message-id:date:user-agent
  :mime-version:content-language:content-transfer-encoding;
- bh=jjpN5Ow6/aZRBLolHzu6P+ich0iwaCInP4VJOA7STgc=;
- b=i5NUpSBjTdgwawulpSF3tmkFBRvJEToDXieYfdj0BQTCx/jANWwJ9Qgq/BPQZyUQLb
- WTxN+QgMswU2iZAoPRi/HoDgZSlbwZnkUYLtc/kQ/8pIT6/wHKg74WRD5mX6O4Zp6yZC
- vnfqIlxZ6bBAMxV1F3fUH6IzPAYdHLupcjH+9TUYvQeRrynD5ehVxII4W5nznu8dw7Gu
- qyVztJvOljMTO9yKK//oG8XSOZog13WkPakQD5Z3Uam9b2jiEDoD/wtVlNR2APal6LXx
- l7HtiA12zgcfyM5Bcbb6pB0DW0NNiz8GAIwiccv3Iov/6Z+uDoJ+zXGjZ3UxpxnFq9Ha
- Kt4g==
+ bh=ElUa+51W0DqnStPRHOx2nqRKXBMdKx54c4aEHdfoxPo=;
+ b=d/OcBl19aeuhnvDGzhbGgtLlW4gQfB7DhLSwFc8RO1eOhc1198O0M6vBUIoyYQ0QV4
+ dk3rVRptC/QXg3QV6j7Zy9iKRaJByqNYTmLNmba9FGRCOhE2kRtKYOghSC3G6fSrsron
+ U2Z9JwTch/QiryG3GL+h1wJmcCzHoP6DL3ow4Fn7Mmy24PmDpdBJnf7O8iZaZfyVE0uZ
+ jHyhlbDg+ANAKHa95L2wXTZCaKFp3BXAfTMrAIAChY7zgyw0jhuBDhdoRMJoz9UI90vH
+ mZCTV/MkNgWNpch59fSICW/6h4zZBkmmlVEm8YIVhoWEqzZd+1Qwf/ISw12IqkJL8cYO
+ NeqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:to:cc:from:subject:autocrypt:message-id:date
  :user-agent:mime-version:content-language:content-transfer-encoding;
- bh=jjpN5Ow6/aZRBLolHzu6P+ich0iwaCInP4VJOA7STgc=;
- b=EgJgQkQcRz53b4ySJNfivg6aOiR73Ly1TeMm3k57wCLBKAhl36fzMx42L7Ai3BV+UV
- Hz/Y43Co0r6a6MBYZ1uM1FZ088pkNGfA7VM3uNGHk06jG0KGCuimTeJE/tUH8Ib1/paS
- 0L3RnTbID9oc4OS/MVcs4P6+fSs4ZVPg2YZsBvMVgWjb6xneMEIr4DuNM4U5YKihbXfL
- HZF01Vi2w18Beg+JAG7UfnLeO9xTeYYduF7XKYVyZNr5DYnyCmVhkW+KK8xIkNyMgSZm
- MoPfGin/Lm76q2jgGY/LZz2Fl0x3LL/ngh6Quw/zXDGR6gqqzd7duae9w+X/Nlebo/As
- fM1w==
-X-Gm-Message-State: APjAAAVl27fm4jUREKmQ2UB61fEsOnkuHDTulqKdQZfn4fY7LNOcjtCe
- OVdDQRiHd3am1WH5+xhvZuE=
-X-Google-Smtp-Source: APXvYqzAGIa1A14taqP6dnTqWc/PKB0NOdCnYYeqf0fbYEp5jP8F8rXR7/bY/PCht0cFsFPy45VUAw==
-X-Received: by 2002:adf:bc4f:: with SMTP id a15mr17617165wrh.160.1578910201417; 
- Mon, 13 Jan 2020 02:10:01 -0800 (PST)
+ bh=ElUa+51W0DqnStPRHOx2nqRKXBMdKx54c4aEHdfoxPo=;
+ b=iYLLFIcLtnWe3zFHAFP9uP/yHYLTLwW3NAle9/+nz8x9wkA6YeYxFr0it03TpSL8Nb
+ XgIgqv0YdSKMa2cVuOJRYYV4o3H1hmmoolWT/9Po4+yKgJU62RDF/i7ZvbknNHC+vCYU
+ mkcRNliPsbvsxk93bjLLI0dyKqcNLgqZ4rOKZdNUcy7Wlpg4yudhzBPeOjL/ZtJZ1e7I
+ KdE+v7cmsg6HYu2kccgx//A53qOUmps/B3G10Cq2iGNv2QgqjuVzN9c35sIMOgHineWe
+ mbMcvaGUI9Q22Zsg4LjmavmYfudV7cVwF4nSHmmw3PQF2mJeSrEV++Xch6p+1mVy19gQ
+ m2TA==
+X-Gm-Message-State: APjAAAVUltQvIXHf16tmYa7GphDkdJXCFKRgkqLHfS1ogpfxXIb+BrLZ
+ 3igKGQr/kdVpkI3GFEYNEv0=
+X-Google-Smtp-Source: APXvYqzTcN3ncWlHAIeXi6ZhxMq11vCvYigJfhmdHTIQWbOqiYFH17TR9QYy5xuxuaBudCfDGBCFyw==
+X-Received: by 2002:a17:90a:d34c:: with SMTP id
+ i12mr21482646pjx.18.1578910682591; 
+ Mon, 13 Jan 2020 02:18:02 -0800 (PST)
 Received: from ziggy.stardust ([37.223.145.31])
- by smtp.gmail.com with ESMTPSA id 60sm14619729wrn.86.2020.01.13.02.10.00
+ by smtp.gmail.com with ESMTPSA id p5sm12780341pgs.28.2020.01.13.02.17.59
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Jan 2020 02:10:00 -0800 (PST)
+ Mon, 13 Jan 2020 02:18:01 -0800 (PST)
 To: soc@kernel.org, arm-soc <arm@kernel.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] arm64: mediatek: dts64 updates for v5.6
+Subject: [GIT PULL] soc: mediatek: updates for v5.6
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
  fL3eT7ZsYV5nur7zctmJ+vbszoOASXUpfq8M+S5hU2w7sBaVk5rpH9yW8CUWz2+ZpQXPJcFa
@@ -148,15 +149,15 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <46c1a244-3f74-8069-6600-8ced02775677@gmail.com>
-Date: Mon, 13 Jan 2020 11:09:59 +0100
+Message-ID: <9b365e76-e346-f813-d750-d7cfd0d16e4e@gmail.com>
+Date: Mon, 13 Jan 2020 11:17:58 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.3.0
 MIME-Version: 1.0
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200113_021005_471078_39E4A1A3 
-X-CRM114-Status: GOOD (  13.64  )
+X-CRM114-CacheID: sfid-20200113_021803_643689_FD906D04 
+X-CRM114-Status: GOOD (  17.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -168,20 +169,27 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Hsin-Yi Wang <hsinyi@google.com>, "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- Michael Kao <michael.kao@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Mars Cheng <mars.cheng@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Bibby Hsieh <bibby.hsieh@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Olof and Arnd,
+Hi Olof,
+Hi ARnds,
 
-Please have look (and pull :) the following updates of arm64 DTS for v5.6
+Please have a look on the following patches for mediatek soc drivers for v5.6
 
-Thanks,
+I includes the stable branch v5.5-next/cmdq-stable which should also be merged
+in the DRM tree. I'm not very familiar with providing a stable tree, although I
+double-checked that in the pull request to the DRM tree the commit IDs are the
+same, I thought it is worth noting.
+
+Regards,
 Matthias
 
 ---
@@ -193,37 +201,43 @@ The following changes since commit e42617b825f8073569da76dc4510bfa019b1c35a:
 are available in the Git repository at:
 
   https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-tags/v5.5-next-dts64
+tags/v5.5-next-soc
 
-for you to fetch changes up to a845ad16212e3202589687713aae2d743e6b875c:
+for you to fetch changes up to 9c26abeb86ce6ab53b6397873bb3f556016c05ba:
 
-  arm64: dts: mt8183: add reset-cells in infracfg (2020-01-13 10:29:11 +0100)
-
-----------------------------------------------------------------
-mt8173:
-- add dynamic power coefficient to the cpu clusters
-- add jpeg decoder node
-
-mt8183:
-- add node for the Global Command Engine (gce)
-- add reset cells to the infracfg node
+  Merge branch 'v5.5-next/cmdq-stable' into v5.5-next/soc (2020-01-10 11:00:45
++0100)
 
 ----------------------------------------------------------------
-Bibby Hsieh (1):
-      arm64: dts: add gce node for mt8183
+cmdq:
+- clean ups of unused code and debuggability
+- add cmdq_instruction to make the function call interface more readable
+- add functions for polling and providing info for the user of cmdq
 
-Hsin-Yi Wang (1):
-      arm64: dts: mt8173: add Mediatek JPEG Codec
+scpsys:
+- add bindings for MT6765
 
-michael.kao (1):
-      arm64: dts: mt8173: Add dynamic power node.
+----------------------------------------------------------------
+Bibby Hsieh (4):
+      soc: mediatek: cmdq: remove OR opertaion from err return
+      soc: mediatek: cmdq: define the instruction struct
+      soc: mediatek: cmdq: add polling function
+      soc: mediatek: cmdq: add cmdq_dev_get_client_reg function
 
-yong.liang (1):
-      arm64: dts: mt8183: add reset-cells in infracfg
+Mars Cheng (1):
+      dt-bindings: mediatek: add MT6765 power dt-bindings
 
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 18 ++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 11 +++++++++++
- 2 files changed, 29 insertions(+)
+Matthias Brugger (2):
+      soc: mediatek: cmdq: delete not used define
+      Merge branch 'v5.5-next/cmdq-stable' into v5.5-next/soc
+
+ .../devicetree/bindings/soc/mediatek/scpsys.txt    |   6 +
+ drivers/soc/mediatek/mtk-cmdq-helper.c             | 149 +++++++++++++++++----
+ include/dt-bindings/power/mt6765-power.h           |  14 ++
+ include/linux/mailbox/mtk-cmdq-mailbox.h           |  11 ++
+ include/linux/soc/mediatek/mtk-cmdq.h              |  53 ++++++++
+ 5 files changed, 205 insertions(+), 28 deletions(-)
+ create mode 100644 include/dt-bindings/power/mt6765-power.h
 
 _______________________________________________
 Linux-mediatek mailing list
