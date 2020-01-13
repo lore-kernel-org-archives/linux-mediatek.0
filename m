@@ -2,21 +2,22 @@ Return-Path: <SRS0=6pE3=3C=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B3911C33CAE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 06:27:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4DA5AC33CAB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 06:44:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 63E7B21744
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 06:27:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1FF3B214D8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 06:44:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oSyJoWcx";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="BesEvaNj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 63E7B21744
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="X9q51GJL";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="OyvIPxXK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1FF3B214D8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,59 +26,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0PO1QxvFAy2r3XTckmBVIn5E+9x4V/pfxRNlAQMty54=; b=oSyJoWcx0ctC9e
-	KJC/4lgEsrg5IIGoLZz25VeOqkpgLv/IUxQo//2pbz0WGZj6+MBpAsj7kX4EnvviUs1C7e7zKxrb7
-	PFAyJnQGZTUWJDT3p0mZqff0bC0/3KM459Dlum2RaZJfN2DHPto8nc+0NuCk7cVcnbYLmTO4J6YBW
-	BLF6RStckk2gYazKziaakbvDums2d7x0c2VQKGZ4rd1dPrrl1W7bFXQZj+8Lvf1iIgz7VQ/PVQhB6
-	XDwQZULc2F7crNHHeUK0oRwpp4Pe1wzRFYHnYiHEaAwZbFJDxt2UijyKKWsyc618Ic5WnaQeWZdgi
-	LduDKi/a85XnEQ/U8qlg==;
+	List-Owner; bh=DbBDxEqncHYzf13HgmfPRR8J4R4MELzplo2HjWK2Pig=; b=X9q51GJLtZfkJY
+	8+LHY8OqPq57ciawDbVWVbTU47BBjlKgQKMZRR2+UAK7hxlUB/N/sEt/mhfLmOM7TkNP8aejYzkEY
+	lnSfIKFj52AAP4iOJ1EFMZQzRYppv00auDnUaFvVUypsYUadjGPgpamrK71IrLMVA0cvDzypMSqtj
+	v8HcKK3MlW38hHURTg3Lth9oU0o/AH3myJ66c3JHDInNK/WSz1WrWEw4Qglot+89tmmYR7NY66xmv
+	m8x/TUhoqdqG4CHa5OglBVfP7Ex3tEoQ7l3s0rfsp+r7T4LoE5OZGRI3iq+Grd81X3uoZOv2pjytF
+	iKY6no2gnedlAZXGrk7A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iqtCQ-0007Bd-G4; Mon, 13 Jan 2020 06:27:42 +0000
-Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743])
+	id 1iqtSf-00058C-KO; Mon, 13 Jan 2020 06:44:29 +0000
+Received: from mail-qk1-x741.google.com ([2607:f8b0:4864:20::741])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iqtCN-00073A-0R
- for linux-mediatek@lists.infradead.org; Mon, 13 Jan 2020 06:27:40 +0000
-Received: by mail-qk1-x743.google.com with SMTP id 21so7562726qky.4
- for <linux-mediatek@lists.infradead.org>; Sun, 12 Jan 2020 22:27:38 -0800 (PST)
+ id 1iqtSV-0004yr-9s
+ for linux-mediatek@lists.infradead.org; Mon, 13 Jan 2020 06:44:20 +0000
+Received: by mail-qk1-x741.google.com with SMTP id c17so7562217qkg.7
+ for <linux-mediatek@lists.infradead.org>; Sun, 12 Jan 2020 22:44:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=qqU50tJXg4btjktw2VvbKv0T9TvXNsl1InIj+ksOmtQ=;
- b=BesEvaNjkjkIaEKU8s1yXxtetLayewpTzSIxgPAnNIWav0rTK98k3PPyGaPY2ooOev
- PIM5l4QCvCTOXJN9/lV28q95hAXAwCBK0NsqjUnuTxlcAFy50WZaCvEZUAtRr7ZYVZUl
- GjvY+SmcmMu/fBk4T4iGDv10EKa6Rk0lxaUB4=
+ :cc; bh=BNID1+xlk/LusKrfyvTRadaTjl4JTdHdZqFClmlrkE8=;
+ b=OyvIPxXK+9gRKfh1j2g/pw9Okrn9nsbKhZjAf9nvWrFWTasOHoycaN/UYYMfhcIC19
+ q7V2LwdxqeCs4zYNYujxCALeZwUnxdGHWOyse3uCMcKGt+LjGnSL1M0bpUfxgD4n2fec
+ c1TWiw/luhrhXoyB6w/D1tFMJi+V+IvKJEasQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=qqU50tJXg4btjktw2VvbKv0T9TvXNsl1InIj+ksOmtQ=;
- b=gJWzVIz+T6DRCrvrz3lH+Cil8Lz0e6tDoFZNdoMG8TLdJnAF3KkXqjvzzqBySVC0dG
- rohNpI6hSONdctAbQ/0NVpFQBuDYFME/9FT0ePm50/BOpXiUJfU+h2iA64hkUeWjAfE4
- Rmyp8/OjOD7v5iYyWQZc0p7O6k2dhbSWPcglh1PZYP+Mmr21oTJSvcXHxfumfmDgFZMc
- eKIJachLw92VUCBBkhOB+/CXPGV+1XJJ3RJiDAIrT4sGvh6aQzhxMDD2IbPb+jNV40K4
- 5pkE6klQVnSGVWylcC5PJtTXiOdGsArwg38+e/COOoFwt+rKB6iaCKPrzILAiQZqMM52
- WeBg==
-X-Gm-Message-State: APjAAAWvHjB5EDlZ5mDncktXbwuyxIK9IwXHDoZnUA0V+Os2+n2Vj3f5
- FxIOQIg6Fm6Nl5sJZckfBYW6Q1UGj7ufHmNBxaxQWg==
-X-Google-Smtp-Source: APXvYqzP2GQhgfRONDK0y5ZOBxgMhbBnqFh8jwEdZzw+mIw4d1s/lLCcUIgYHMP8DEVTe7wIzDfiU37pKS7LntYC0ao=
-X-Received: by 2002:a37:6551:: with SMTP id z78mr15363934qkb.144.1578896857929; 
- Sun, 12 Jan 2020 22:27:37 -0800 (PST)
+ bh=BNID1+xlk/LusKrfyvTRadaTjl4JTdHdZqFClmlrkE8=;
+ b=N0N2sbdKUI1JebnXPilwv9m2Y61v+8hTTIVT3//wRYL9hp3pdGlmv4fXBktX2Af4pR
+ ZdjjL4qPZUi9Y1XUJrRXt1N6g7xRhZyR03hy9q/8PElftNbG9AZrP4UF52rDZ85N/YUj
+ TjEUoYhHBFfEXONJAE1zrFnPJ15AAupou+V6w+kT5YkZYVxBVKfn5VlQ5IHbsQlp2jk5
+ zGaWFp4wEOXVE/wdk/jdPgRWki4OYEdtUJC5niLffNU0CgEC/UmX6G61XYOqYcYhdjnR
+ mYH3qUQxGxmet3mdcIA5Z4uNnQ00hpIZUENAVjbsLpJicQKsI9eCePQlP/fE9CBsy52B
+ n5mw==
+X-Gm-Message-State: APjAAAVLNfMvxInto5sHTlHuMpuuIejBEP3hiXGHy6ND7d3+WnS+3DXb
+ Zye/nCIuiGhnNAsCzi1VyNkGCTe8Gh8XY/+9uufE+g==
+X-Google-Smtp-Source: APXvYqzL5B5r73soR628uc2jDkq8fU1OUh+0wVt0KMcWK9cN8MbW5ohquaKM4R+Ks/ACv40A/WWnmnHJYeJHxhoohe8=
+X-Received: by 2002:a05:620a:6d7:: with SMTP id
+ 23mr14117387qky.299.1578897858106; 
+ Sun, 12 Jan 2020 22:44:18 -0800 (PST)
 MIME-Version: 1.0
-References: <20191227141405.3396-1-yong.liang@mediatek.com>
- <20191227141405.3396-2-yong.liang@mediatek.com>
- <CANMq1KD=jAPn4Y7zQZrsg9FB7Cq6tNX0R8OF4qX21Sjy2=0Naw@mail.gmail.com>
- <CANMq1KB4PzAUdp03go0Ur_khi2bM3+oNUhHtMK=--V6DmGXiDA@mail.gmail.com>
- <2bbd8f47-fe68-574c-cbe9-bcc680dd4c84@gmail.com>
- <CANMq1KCXMUP=5ijqLsZ67MvO2ROFkG0vSX64KqmWtYKm7w8f2g@mail.gmail.com>
-In-Reply-To: <CANMq1KCXMUP=5ijqLsZ67MvO2ROFkG0vSX64KqmWtYKm7w8f2g@mail.gmail.com>
+References: <20200107070154.1574-1-roger.lu@mediatek.com>
+ <20200107070154.1574-2-roger.lu@mediatek.com>
+ <20200108203829.GA18987@bogus>
+In-Reply-To: <20200108203829.GA18987@bogus>
 From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Mon, 13 Jan 2020 14:27:27 +0800
-Message-ID: <CANMq1KCLGx2K5qSVJLFkFqYjghVk40HaZcBeUmSxpBSJQAMOzg@mail.gmail.com>
-Subject: Re: [PATCH v3 1/2] amr64: dts: modify mt8183.dtsi
-To: Matthias Brugger <matthias.bgg@gmail.com>
+Date: Mon, 13 Jan 2020 14:44:07 +0800
+Message-ID: <CANMq1KBu-gFy701BgFcjEwyhV9GgCCU2mkT9c8LviOJKBF30UA@mail.gmail.com>
+Subject: Re: [PATCH v6 1/3] dt-bindings: soc: add mtk svs dt-bindings
+To: Rob Herring <robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200112_222739_075702_81FEE329 
-X-CRM114-Status: GOOD (  15.77  )
+X-CRM114-CacheID: sfid-20200112_224419_368637_AB98793A 
+X-CRM114-Status: GOOD (  19.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,82 +88,116 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Devicetree List <devicetree@vger.kernel.org>,
- Yong Liang <yong.liang@mediatek.com>, linux-watchdog@vger.kernel.org,
- lkml <linux-kernel@vger.kernel.org>, Jiaxin Yu <jiaxin.yu@mediatek.com>,
- Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@google.com>,
+ Angus Lin <Angus.Lin@mediatek.com>, Kevin Hilman <khilman@kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, linux-pm@vger.kernel.org,
+ Roger Lu <roger.lu@mediatek.com>, lkml <linux-kernel@vger.kernel.org>,
+ HenryC Chen <HenryC.Chen@mediatek.com>, YT Lee <yt.lee@mediatek.com>,
+ Fan Chen <fan.chen@mediatek.com>, Devicetree List <devicetree@vger.kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux@roeck-us.net, wim@linux-watchdog.org,
+ Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
+ Charles Yang <Charles.Yang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Nishanth Menon <nm@ti.com>,
  linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-+Jiaxin +Sj Huang
-
-On Mon, Jan 13, 2020 at 12:44 PM Nicolas Boichat <drinkcat@chromium.org> wrote:
+On Thu, Jan 9, 2020 at 4:38 AM Rob Herring <robh@kernel.org> wrote:
 >
-> On Fri, Jan 10, 2020 at 6:09 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
-> > [snip]
-> > That's all a bit confusing, I thought we are fine to add the reset cells to
-> > infracfg as we have the resets defined in
-> > 64ebb57a3df6 ("clk: reset: Modify reset-controller driver")
+> On Tue, Jan 07, 2020 at 03:01:52PM +0800, Roger Lu wrote:
+> > Document the binding for enabling mtk svs on MediaTek SoC.
+> >
+> > Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/power/mtk-svs.txt     | 76 +++++++++++++++++++
+> >  1 file changed, 76 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/power/mtk-svs.txt
+> >
+> > diff --git a/Documentation/devicetree/bindings/power/mtk-svs.txt b/Documentation/devicetree/bindings/power/mtk-svs.txt
+> > new file mode 100644
+> > index 000000000000..9a3e81b9e1d2
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/power/mtk-svs.txt
+> > @@ -0,0 +1,76 @@
+> > +* Mediatek Smart Voltage Scaling (MTK SVS)
+> > +
+> > +This describes the device tree binding for the MTK SVS controller (bank)
+> > +which helps provide the optimized CPU/GPU/CCI voltages. This device also
+> > +needs thermal data to calculate thermal slope for accurately compensate
+> > +the voltages when temperature change.
+> > +
+> > +Required properties:
+> > +- compatible:
+> > +  - "mediatek,mt8183-svs" : For MT8183 family of SoCs
+> > +- reg: Address range of the MTK SVS controller.
+> > +- interrupts: IRQ for the MTK SVS controller.
+> > +- clocks, clock-names: Clocks needed for the svs hardware. required
+> > +                       clocks are:
+> > +                    "main": Main clock for svs controller to work.
+> > +- nvmem-cells: Phandle to the calibration data provided by a nvmem device.
+> > +- nvmem-cell-names: Should be "svs-calibration-data" and "calibration-data"
+> > +
+> > +Subnodes:
+> > +- svs-cpu-little: SVS bank device node of little CPU
+> > +  compatible: "mediatek,mt8183-svs-cpu-little"
+> > +  operating-points-v2: OPP table hooked by SVS little CPU bank.
+> > +                    SVS will optimze this OPP table voltage part.
+> > +  vcpu-little-supply: PMIC buck of little CPU
+> > +- svs-cpu-big: SVS bank device node of big CPU
+> > +  compatible: "mediatek,mt8183-svs-cpu-big"
+> > +  operating-points-v2: OPP table hooked by SVS big CPU bank.
+> > +                    SVS will optimze this OPP table voltage part.
+> > +  vcpu-big-supply: PMIC buck of big CPU
+> > +- svs-cci: SVS bank device node of CCI
+> > +  compatible: "mediatek,mt8183-svs-cci"
+> > +  operating-points-v2: OPP table hooked by SVS CCI bank.
+> > +                    SVS will optimze this OPP table voltage part.
+> > +  vcci-supply: PMIC buck of CCI
+> > +- svs-gpu: SVS bank device node of GPU
+> > +  compatible: "mediatek,mt8183-svs-gpu"
+> > +  operating-points-v2: OPP table hooked by SVS GPU bank.
+> > +                    SVS will optimze this OPP table voltage part.
+> > +  vgpu-supply: PMIC buck of GPU
+> > +
+> > +Example:
+> > +
+> > +     svs: svs@1100b000 {
+> > +             compatible = "mediatek,mt8183-svs";
+> > +             reg = <0 0x1100b000 0 0x1000>;
+> > +             interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
+> > +             clocks = <&infracfg CLK_INFRA_THERM>;
+> > +             clock-names = "main_clk";
+> > +             nvmem-cells = <&svs_calibration>, <&thermal_calibration>;
+> > +             nvmem-cell-names = "svs-calibration-data", "calibration-data";
+> > +
+> > +             svs_cpu_little: svs-cpu-little {
+> > +                     compatible = "mediatek,mt8183-svs-cpu-little";
+> > +                     operating-points-v2 = <&cluster0_opp>;
+> > +                     vcpu-little-supply = <&mt6358_vproc12_reg>;
+> > +             };
 >
-> You're right, we're fine. But at least in theory, we should still have
-> the binding documentation that I linked above.
+> I don't think this is a good binding. This information already exists
+> elsewhere in the DT, so your driver should just look in those nodes.
+> For example the regulator can be in the cpu nodes or the OPP table
+> itself.
+
+Roger, if that helps, without changing any other binding, on 8183,
+basically you could have:
+ - svs-cpu-little: Add a handle to &cpu0 and get the regulator/opp
+table from it.
+ - svs-cpu-big: Handle to &cpu4
+ - svs-cci: Handle to &cci
+ - svs-gpu: Handle to &gpu (BTW, it is expected that SVS would only
+apply to vgpu/mali regulator, and not vsram regulator?)
+
+I'm not too sure how we'd fetch the right regulator name, however (for
+the first 3 the name is "proc", for the last one it's "mali"), maybe
+add a regulator-name list in the DT?
+
 >
-> I will try to pick up all the required patches, split them across
-> 8183/2712 and resend as one series.
-
-Okay, summary of the patches, there are 2 series:
-
-https://patchwork.kernel.org/patch/11311237/
-[1.1] [v3,1/2] amr64: dts: modify mt8183.dtsi
-  => Partially applied to Matthias' v5.5-next/dts64
-  => Other part depend on [1.2], needs to be applied
-https://patchwork.kernel.org/patch/11311241/
-[1.2] [v3,2/2] dt-bindings: mt8183: Add watchdog dt-binding
-  => Pending Guenter/Wim
-
-https://patchwork.kernel.org/cover/11326757/
-[2.0] [PATCH v11 0/3] ASoC: mt8183: fix audio playback slowly after playback
-[2.1] [PATCH v11 1/3] dt-bindings: mediatek: mt8183: Add #reset-cells
-  => IMHO adding mt2712 compatible should be another patch
-  => Depends on [1.2]
-  => Tags should be all dropped
-[2.2] [PATCH v11 2/3] watchdog: mtk_wdt: mt8183: Add reset controller
-  => Issues about tags
-[2.3] [PATCH v11 3/3] watchdog: mtk_wdt: mt2712: Add reset controller
-  => Issues about tags
-
-Jiaxin/Yong Liang/Matthias: Please let me know, I'm happy to pick up
-the patches, clean them up and resend them, if you think that helps.
-
-
-> > That's why I took this part from:
-> > https://lore.kernel.org/linux-mediatek/20191226093930.22413-1-yong.liang@mediatek.com/
-> >
-> > Please let me know if I'm wrong and I'll drop it.
-> >
-> > Regards,
-> > Matthias
-> >
-> > >>> 2. Add watchdog device node
-> > >
-> > > Can we have a patch with just this change instead, since you're
-> > > sending the binding with it.
-> > >
-> > >>>
-> > >>> Signed-off-by: yong.liang <yong.liang@mediatek.com>
-> > >>
-> > >> Tested-by: Nicolas Boichat <drinkcat@chromium.org>
-> > >>
-> > >>> ---
-> > >>>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 8 ++++++++
-> > >>>  1 file changed, 8 insertions(+)
-> > >>> [snip]
+> Rob
 
 _______________________________________________
 Linux-mediatek mailing list
