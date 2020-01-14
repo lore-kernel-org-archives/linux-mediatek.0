@@ -1,77 +1,79 @@
-Return-Path: <SRS0=6pE3=3C=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=z6AG=3D=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,TO_MALFORMED,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 46835C33CA9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 19:11:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F0C64C33CA9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 00:31:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1CF6821556
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Jan 2020 19:11:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C24DC2080D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 00:31:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bO9f77mw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1CF6821556
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Y6WIvFRG";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="HbME1p8g"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C24DC2080D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	References:Subject:To:From:Date:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=gq85vt3VC/Z0aHLyVjneESmhE4FN8Ia3vtB8rQW/qJs=; b=bO9f77mwlRwtyhOw1RpDVDz/ex
-	wlwfNzKKUJaq7cvkgPycmJqUTpMbMmFhqxP4+gIkjkEcnh+rFLXtbJt0RzabU7lcp+NPzEdMGNwoX
-	QM3wnN+rFHmi5BUWIAkjuVxTw4i2lW1agz6Iq3foJGlSbLqoPsoNCR1y2jSwfA8ofDhvmOgVyjXcd
-	CQuqr9eWeMT/byivPb1aiFUJXeItp9h0Yy93DtO+0xvakXPZMLgaXgcbUjMCPHGnlw0azcJhiZugF
-	RFauNXwRv11+x1dlnnmroI80az/00LlqFHWReTChwUrKs5yjx+o9T8Mlddp/CqeUiKp1o+eHuDCxT
-	T4caHGbw==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0OyQvC5HVNGtGOUToND612d7lXYBS2gzoBYlxdSLzZg=; b=Y6WIvFRG71rso2
+	dZXkvwtl9JpBSNUmKeA/C9Ttq3bsq8g2rZruJNy2q54vJkxuZECSX/Qgq6FsEW/iS1C7iqa/IP5Ct
+	37b0Vd9jaX+/jB75aMV2HhvShkx3hWyr5z9DiD6viUS3SoiIgt5k453dG1Qxv8dkW9fFS3qnLCvo4
+	lRiLLCqdZdxjfKGvE5R/heuLAv2twfe1XPZFZa2yMJZmIUyPXE6lPWbl0muskr3oBGPrddMB7fvUD
+	MIOs/nNk4CHd5O7nssZt5TASrDKOCrWa2awzoC81YWpDa3n1uvY28ObpqzzwzWjVpQr78XmoUqB1x
+	Vu2lXjOPcjDPNENrOx/w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ir57F-00072m-4B; Mon, 13 Jan 2020 19:11:09 +0000
-Received: from mail-pf1-f194.google.com ([209.85.210.194])
+	id 1irA6s-0000m1-BF; Tue, 14 Jan 2020 00:31:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ir56w-0006ly-07; Mon, 13 Jan 2020 19:10:53 +0000
-Received: by mail-pf1-f194.google.com with SMTP id x185so5321229pfc.5;
- Mon, 13 Jan 2020 11:10:49 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:date:from:to:cc:cc:cc:subject
- :references:in-reply-to;
- bh=TKkoejQV2c6zTi0Lk84zRP/sLh+dHPb6nJ3LQs91rO0=;
- b=qvWDRqgEuyO1vGHwEylGdjs0b+S9Z7w/wmDTvjCRa44D5rCp3W8J5yHftjVWmtZmRH
- KwN+gSNicb6yCw6hbuDM1gY3ukxaSmGWQmgs5SV/IObDdNa5lRhQ2+pGLc6k8+stjX1X
- A9rvxvPA59rOAdhVUmX0P2+lPE0QaLvL32G9SMEjTy+/slWylNPCO4+9bfmzobk+UlrG
- ern0Ld5KSzVdxicebnP5vw63zP2J34pCbfYNg/yzbogws+oCfZCfbm35RwR4WK+xwdbS
- JroW3hBBisGG35OsRqbmuu5fhHQf8FlXk77nRouivVSFIKAB2CwgZE8LoAbtdGABnwt5
- aCdg==
-X-Gm-Message-State: APjAAAVJDp7uDI32YSNk9nM1Fk+KgZjwtQeFmTa/pm0m+JsopIE38xfV
- qiT6YlRWLMJSJrDFAMUzatA=
-X-Google-Smtp-Source: APXvYqxpcMDnuAK6LNWLusoFsllAJWymSw/KyOmcfqBZ+FKSDh+VYiY8UaD3R5kny7v3CzIXMzUf6w==
-X-Received: by 2002:a63:6b07:: with SMTP id g7mr21929891pgc.243.1578942648698; 
- Mon, 13 Jan 2020 11:10:48 -0800 (PST)
-Received: from localhost (MIPS-TECHNO.ear1.SanJose1.Level3.net. [4.15.122.74])
- by smtp.gmail.com with ESMTPSA id
- y6sm14563154pgc.10.2020.01.13.11.10.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 Jan 2020 11:10:47 -0800 (PST)
-Message-ID: <5e1cc0b7.1c69fb81.c151b.187c@mx.google.com>
-Date: Mon, 13 Jan 2020 11:10:47 -0800
-From: Paul Burton <paulburton@kernel.org>
-To: Yangtao Li <tiny.windzz@gmail.com>
-Subject: Re: [PATCH 08/10] soc: lantiq: convert to
- devm_platform_ioremap_resource
-References: <20191214175447.25482-8-tiny.windzz@gmail.com>
-In-Reply-To: <20191214175447.25482-8-tiny.windzz@gmail.com>
+ id 1irA6o-0000kr-TN; Tue, 14 Jan 2020 00:31:04 +0000
+X-UUID: 67eb85b89e8e4ede9d99205a7ee0bda6-20200113
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=9hc72qii6aEbO5HSZ/JJr0ZnpKxriy/nHTRZcH5uTGc=; 
+ b=HbME1p8gNH2uQH8SQo1b+WaFDB6R5E4aGgm0lxXTswaOjFjwhhRbC7FDb7G1xq8kS9DUopRvGkFupmy87VgCKArHAfn2nkwNqcaWnmhsGI+yNRQ06IL4xp1l8oMwYVhUGaHGpHEtgIv8T+SSwKfWA1wLmUt66ZBM+SEM0h9vkhE=;
+X-UUID: 67eb85b89e8e4ede9d99205a7ee0bda6-20200113
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1006332047; Mon, 13 Jan 2020 16:30:58 -0800
+Received: from MTKMBS32DR.mediatek.inc (172.27.6.104) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 13 Jan 2020 16:30:55 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32DR.mediatek.inc
+ (172.27.6.104) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Tue, 14 Jan 2020 08:30:00 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Tue, 14 Jan 2020 08:30:09 +0800
+Message-ID: <1578961847.21256.27.camel@mhfsdcap03>
+Subject: Re: [RESEND PATCH v5 01/11] dt-bindings: phy-mtk-tphy: add two
+ optional properties for u2phy
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Kishon Vijay Abraham I <kishon@a0393678ub>
+Date: Tue, 14 Jan 2020 08:30:47 +0800
+In-Reply-To: <20200110111006.GB2220@a0393678ub>
+References: <1578448326-27455-1-git-send-email-chunfeng.yun@mediatek.com>
+ <20200110111006.GB2220@a0393678ub>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
+MIME-Version: 1.0
+X-TM-SNTS-SMTP: AF61AF8D6FD7E89E3E467A138EA30DB0D5E4DFF88A35929018A5237C3BB832952000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200113_111050_052397_F211E6A0 
-X-CRM114-Status: UNSURE (   4.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200113_163102_957204_F214DC5F 
+X-CRM114-Status: GOOD (  16.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,40 +85,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Yangtao Li <tiny.windzz@gmail.com>, john@phrozen.org,
- linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- khilman@baylibre.com, krzk@kernel.org, wens@csie.org, agross@kernel.org,
- linux-arm-msm@vger.kernel.org, mripard@kernel.org,
- linux-mediatek@lists.infradead.org, ssantosh@kernel.org,
- matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org,
- bjorn.andersson@linaro.org, linux-arm-kernel@lists.infradead.org,
- shawnguo@kernel.org, linux-mips@vger.kernel.org, leoyang.li@nxp.com,
- kgene@kernel.org, khalasa@piap.pl, jun.nie@linaro.org,
- linuxppc-dev@lists.ozlabs.org
-MIME-Version: 1.0
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
-
-Yangtao Li wrote:
-> Use devm_platform_ioremap_resource() to simplify code.
-
-Applied to mips-next.
-
-> commit 23c25c732530
-> https://git.kernel.org/mips/c/23c25c732530
+On Fri, 2020-01-10 at 16:40 +0530, Kishon Vijay Abraham I wrote:
+> Hi,
 > 
-> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
-> Signed-off-by: Paul Burton <paulburton@kernel.org>
+> On Wed, Jan 08, 2020 at 09:51:56AM +0800, Chunfeng Yun wrote:
+> > Add two optional properties, one for tuning J-K voltage by INTR,
+> > another for disconnect threshold, both of them are related with
+> > connect detection
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > Acked-by: Rob Herring <robh@kernel.org>
+> 
+> Patch does not apply. I get the following errors
+> error: patch failed: Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt:52
+> error: Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt: patch does not apply
+> error: Did you hand edit your patch?
+> 
+> Can you send them again in the right format?
+Sorry, I'll check it.
 
-Thanks,
-    Paul
-
-[ This message was auto-generated; if you believe anything is incorrect
-  then please email paulburton@kernel.org to report it. ]
+> 
+> Thanks
+> Kishon
+> > ---
+> > v5: add acked-by Rob
+> > 
+> > v4: no changes
+> > 
+> > v3: change commit log
+> > 
+> > v2: change description
+> > ---
+> >  Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt | 2 ++
+> >  1 file changed, 2 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+> > index a5f7a4f0dbc1..ce6abfbdfbe1 100644
+> > --- a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+> > +++ b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+> > @@ -52,6 +52,8 @@ Optional properties (PHY_TYPE_USB2 port (child) node):
+> >  - mediatek,eye-vrt	: u32, the selection of VRT reference voltage
+> >  - mediatek,eye-term	: u32, the selection of HS_TX TERM reference voltage
+> >  - mediatek,bc12	: bool, enable BC12 of u2phy if support it
+> > +- mediatek,discth	: u32, the selection of disconnect threshold
+> > +- mediatek,intr	: u32, the selection of internal R (resistance)
+> >  
+> >  Example:
+> >  
+> > -- 
+> > 2.24.0
 
 _______________________________________________
 Linux-mediatek mailing list
