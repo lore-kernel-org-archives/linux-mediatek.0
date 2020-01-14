@@ -2,78 +2,76 @@ Return-Path: <SRS0=z6AG=3D=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PULL_REQUEST,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 61106C33CA9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 03:29:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6FA4CC33CA9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 03:32:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 346D620CC7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 03:29:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3A67E20CC7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 03:32:53 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Fgflj9EJ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dAQWXiEQ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 346D620CC7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GoDcp1ba";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="BVkmlRCe"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3A67E20CC7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:To:From:Subject:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LZejlgJChaVCAc5qn2WEG0uHUkC7ukgNGfOqM947MBE=; b=Fgflj9EJP0cuG2
-	1y7jKjJ7Dl35K/l9jUPn98lHGV/5reTI1k3fmJSn6FY9AY5lfGERY+ofehuOzbCOgVz+UIQZ+LRgp
-	PHFEISkih/49zJ4k5+8Kc0PsDHX7MqPaBsIfIg9wjS6qghbBIbhCLLR3UddThPm/W4avWDmUZGH5V
-	TyLw01oSdmxyzqp3YmyXchX0ChOeDFt3uM3pWH/jqL3IIR6aS2J3oukuBhNbakzbl9eLHmH2t0UZd
-	L8Ewh0Hi7SSLmHCWJeVNueZprHEXjyP5f4JuFz3TdUArXnO3to4fcln3CJwMLKVOmFvT0tUpBuWp2
-	Wll6F8TuXyq9cQLDx0pQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jTvH9RyjeDBzP5VJJlhEWzIoQfhoGtJhpUojDHj9o4Y=; b=GoDcp1baL9kBK5
+	ozezmK3bFjR+Jr2r7GDMG1M9GCA2BBvTCP8OMc4jTL2X0epTJ0msvRfnquIZVN8r1v0y4QkDTWq4+
+	nZt1dwb07Tgh3UK2bR0ZpxOIR7nv+jLovjHCs1utqLuwXSNoCIde7RKdIRLo7g2NuJWD9QacEGY1P
+	4CxelL1/eQQV7Qp1pdc2maqJjssH5zUIcBjqelTNw5lyMiQsi0F9EXhnrC81lKXx1CfEevHvWp3oN
+	6ugCW4akgMIryWh4LrwKxGzb0qovcchOo5d70T+kpNtTpROyakx0xL9i/7MWNGlKhB32HrmegT493
+	ZeKAiGzwqs7q8GCdwsdg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1irCt4-0002yb-5g; Tue, 14 Jan 2020 03:29:02 +0000
+	id 1irCwf-0004ON-4J; Tue, 14 Jan 2020 03:32:45 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1irCt0-0002xw-QO
- for linux-mediatek@lists.infradead.org; Tue, 14 Jan 2020 03:29:00 +0000
-X-UUID: 23ebb97127384643b1efdba029edbfd7-20200113
+ id 1irCwc-0004NY-8b; Tue, 14 Jan 2020 03:32:43 +0000
+X-UUID: f99a34e724cd4e9d9e1ff6e344745583-20200113
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:Date:To:From:Subject:Message-ID;
- bh=3lK1Ebr64dtMdpNNko6BZFpLwXLNtP0MU90WQGJmPks=; 
- b=dAQWXiEQI34eCnADVne70Fx0uu6Mu5+WU4GofNtkYu+uvGY0qw2wK16ll1/C2ABqScdpuqZ0SaNLOrxR2TnJt8TCp0Qp/NDzvjumNXSkUL/IG/Vwk7SxMgkyNQTwQ015bYHKo/Te4wTlDyt4h2wYmSf2Qs+uO/11FXxAsNspnmk=;
-X-UUID: 23ebb97127384643b1efdba029edbfd7-20200113
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=XLvcWral8p9KiUuPJwP/lks3XQA8VB4u3bPZ7v2sRGk=; 
+ b=BVkmlRCelb0+JZgzzWO9R8lRDIed1YLcPRlElGGNqHu3Pn9Yx4G9dMvzIvCLtkmKUOHcOs4akwlywPdnYKpvs/uNiScQ1A0aONm4E5wCMSc6px17B93XLpWKs3pwpBBiGqOULMKuA5tpV4004sJYFjr6FK4zlXTq2GHDOlyqKsY=;
+X-UUID: f99a34e724cd4e9d9e1ff6e344745583-20200113
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <gtk_ruiwang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1793462547; Mon, 13 Jan 2020 19:28:55 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 13 Jan 2020 19:29:42 -0800
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 14 Jan 2020 11:27:31 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
+ with ESMTP id 1175490561; Mon, 13 Jan 2020 19:32:37 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 13 Jan 2020 19:33:21 -0800
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 14 Jan 2020 11:32:08 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 14 Jan 2020 11:29:30 +0800
-Message-ID: <1578972526.14594.8.camel@mtksdaap41>
-Subject: [GIT PULL] mediatek drm next for 5.6
-From: CK Hu <ck.hu@mediatek.com>
-To: Airlie <airlied@gmail.com>, Daniel Vetter <daniel.vetter@intel.com>,
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>
-Date: Tue, 14 Jan 2020 11:28:46 +0800
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ Transport; Tue, 14 Jan 2020 11:32:46 +0800
+From: <gtk_ruiwang@mediatek.com>
+To: Hans Verkuil <hverkuil@xs4all.nl>, Alexandre Courbot
+ <acourbot@chromium.org>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>, Thomas Gleixner
+ <tglx@linutronix.de>, Tomasz Figa <tfiga@chromium.org>
+Subject: media: mtk-vcodec: reset segment data then trig decoder
+Date: Tue, 14 Jan 2020 11:32:26 +0800
+Message-ID: <20200114033226.16786-1-gtk_ruiwang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 071BCE1FFB819546AB63B32ECE7083E45224F80BB23B15F37DB2B6807481E9D02000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200113_192858_859532_A0173547 
-X-CRM114-Status: UNSURE (   6.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200113_193242_307317_9C9D03C3 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,90 +83,86 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: gtk_ruiwang@mediatek.com, Maoguang Meng <maoguang.meng@mediatek.com>,
+ srv_heupstream@mediatek.com, Yunfei Dong <yunfei.dong@mediatek.com>,
+ Longfei Wang <longfei.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Tiffany Lin <tiffany.lin@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave, Daniel:
+From: gtk_ruiwang <gtk_ruiwang@mediatek.com>
 
-This fix non-smooth cursor problem, add cmdq support, add ctm property
-support and some refinement.
+VP9 bitstream specification indicate segment data should reset to
+default when meet key frames, intra only frames or enable error
+resilience mode. So memset segmentation map buffer before every
+decode process is not appropriate.
 
-Regards,
-CK
+Reset segment data only when needed, then trig decoder hardware
 
+Signed-off-by: Rui Wang <gtk_ruiwang@mediatek.com>
+---
+ .../platform/mtk-vcodec/vdec/vdec_vp9_if.c    | 19 +++++++++++++++----
+ 1 file changed, 15 insertions(+), 4 deletions(-)
 
-The following changes since commit
-e42617b825f8073569da76dc4510bfa019b1c35a:
-
-  Linux 5.5-rc1 (2019-12-08 14:57:55 -0800)
-
-are available in the Git repository at:
-
-  https://github.com/ckhu-mediatek/linux.git-tags.git
-tags/mediatek-drm-next-5.6
-
-for you to fetch changes up to d04a07a8dc93dfc40b3a41c977db78ba340f209d:
-
-  drm/mediatek: Fix indentation in Makefile (2020-01-10 14:10:49 +0800)
-
-----------------------------------------------------------------
-Mediatek DRM Next for Linux 5.6
-
-----------------------------------------------------------------
-Bibby Hsieh (11):
-      drm/mediatek: use DRM core's atomic commit helper
-      drm/mediatek: handle events when enabling/disabling crtc
-      drm/mediatek: update cursors by using async atomic update
-      drm/mediatek: disable all the planes in atomic_disable
-      drm/mediatek: remove unused external function
-      soc: mediatek: cmdq: remove OR opertaion from err return
-      soc: mediatek: cmdq: define the instruction struct
-      soc: mediatek: cmdq: add polling function
-      soc: mediatek: cmdq: add cmdq_dev_get_client_reg function
-      drm/mediatek: support CMDQ interface in ddp component
-      drm/mediatek: apply CMDQ control flow
-
-CK Hu (1):
-      Merge tag 'v5.5-next-cmdq-stable' of
-https://git.kernel.org/.../matthias.bgg/linux
-
-Fabien Parent (1):
-      drm/mediatek: Fix indentation in Makefile
-
-Mark Yacoub (2):
-      drm/mediatek: Return from mtk_ovl_layer_config after
-mtk_ovl_layer_off
-      drm/mediatek: Turn off Alpha bit when plane format has no alpha
-
-Pi-Hsun Shih (1):
-      drm/mediatek: Check return value of mtk_drm_ddp_comp_for_plane.
-
-Yongqiang Niu (3):
-      drm/mediatek: Fix can't get component for external display plane.
-      drm/mediatek: Add gamma property according to hardware capability
-      drm/mediatek: Add ctm property support
-
- drivers/gpu/drm/mediatek/Makefile           |   2 +-
- drivers/gpu/drm/mediatek/mtk_disp_color.c   |   7 +-
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |  76 ++++++-----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |  43 +++---
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 204
-+++++++++++++++++++++++-----
- drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |   2 +
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 184
-+++++++++++++++++++++----
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  56 ++++----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  86 +-----------
- drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   7 -
- drivers/gpu/drm/mediatek/mtk_drm_plane.c    |  47 +++++++
- drivers/gpu/drm/mediatek/mtk_drm_plane.h    |   2 +
- drivers/soc/mediatek/mtk-cmdq-helper.c      | 147 ++++++++++++++++----
- include/linux/mailbox/mtk-cmdq-mailbox.h    |  11 ++
- include/linux/soc/mediatek/mtk-cmdq.h       |  53 ++++++++
- 15 files changed, 666 insertions(+), 261 deletions(-)
-
+diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+index 24c1f0bf2147..42c9c3c98076 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
++++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+@@ -110,7 +110,9 @@ struct vp9_sf_ref_fb {
+  * @buf_len_sz_c : size used to store cbcr plane ufo info (AP-R, VPU-W)
+ 
+  * @profile : profile sparsed from vpu (AP-R, VPU-W)
+- * @show_frame : display this frame or not (AP-R, VPU-W)
++ * @show_frame : [BIT(0)] display this frame or not (AP-R, VPU-W)
++ *	[BIT(14)] reset segment data or not (AP-R, VPU-W)
++ *	[BIT(15)] trig decoder hardware or not (AP-R, VPU-W)
+  * @show_existing_frame : inform this frame is show existing frame
+  *	(AP-R, VPU-W)
+  * @frm_to_show_idx : index to show frame (AP-R, VPU-W)
+@@ -494,12 +496,12 @@ static void vp9_swap_frm_bufs(struct vdec_vp9_inst *inst)
+ 					frm_to_show->fb->base_y.size);
+ 		}
+ 		if (!vp9_is_sf_ref_fb(inst, inst->cur_fb)) {
+-			if (vsi->show_frame)
++			if (vsi->show_frame & BIT(0))
+ 				vp9_add_to_fb_disp_list(inst, inst->cur_fb);
+ 		}
+ 	} else {
+ 		if (!vp9_is_sf_ref_fb(inst, inst->cur_fb)) {
+-			if (vsi->show_frame)
++			if (vsi->show_frame & BIT(0))
+ 				vp9_add_to_fb_disp_list(inst, frm_to_show->fb);
+ 		}
+ 	}
+@@ -870,13 +872,22 @@ static int vdec_vp9_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+ 					vsi->sf_frm_sz[idx]);
+ 			}
+ 		}
+-		memset(inst->seg_id_buf.va, 0, inst->seg_id_buf.size);
+ 		ret = vpu_dec_start(&inst->vpu, data, 3);
+ 		if (ret) {
+ 			mtk_vcodec_err(inst, "vpu_dec_start failed");
+ 			goto DECODE_ERROR;
+ 		}
+ 
++		if ((vsi->show_frame & BIT(15)) &&
++		    (vsi->show_frame & BIT(14))) {
++			memset(inst->seg_id_buf.va, 0, inst->seg_id_buf.size);
++			ret = vpu_dec_start(&inst->vpu, NULL, 0);
++			if (ret) {
++				mtk_vcodec_err(inst, "vpu trig decoder failed");
++				goto DECODE_ERROR;
++			}
++		}
++
+ 		ret = validate_vsi_array_indexes(inst, vsi);
+ 		if (ret) {
+ 			mtk_vcodec_err(inst, "Invalid values from VPU.");
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
