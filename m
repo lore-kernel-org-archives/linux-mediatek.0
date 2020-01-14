@@ -2,22 +2,22 @@ Return-Path: <SRS0=z6AG=3D=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-5.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A4482C33C9E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 21:56:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BF0E7C33C9E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 21:57:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 70F8524658
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 21:56:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 90BB624676
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 21:57:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QBM0iLVA";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="L8TLJ3X3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 70F8524658
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Cqy8oJ3U";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="NjvFavWX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 90BB624676
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,60 +26,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OFzmKM92CrkBoiLh8/9p5ctezEMZWNAjjHY+nlVgz9w=; b=QBM0iLVA476gzH
-	ZTZUhWsFF+IYELzeJYmWDcX5hXXPBkT1xpSHfmF4bFZQn//KulUobFu8lxdsTWPaag783eG/05yJY
-	XGQlMGEvRsfushsfPVcJH51tLzGK7mhOuh+gi/3YnAkqdykp7P+td3ZTHWFlmDu5k3jk/39+jJj2O
-	ppyc5MXhcDi7khDB3p7nDwzkWRuzouz3su+Dm4l8bow5Q70jVtBL/0vlSWQk+NhMQtb8MLA/0oSlf
-	7kwsoLc09BXhHFOe1Ef+OXFGPQ1DVi8cInVfCcNzUnEQ6lA6VePaskFG5NghmnQXSKvQpOlbXNzOg
-	XcorkxhK6wv/sUEjkxAg==;
+	List-Owner; bh=t5FBgTkxuFamGc+2QiemrESbQtZiLaBzTnqrId1lNys=; b=Cqy8oJ3UMAhvOe
+	pYL0XzmnuG00Nv7ymOfYOHHWMtcMxiVmCcgC3RBIoaNzke2RJzMwztuqwA8IAvFwaF9TEe2NY8aX4
+	joLI7STHO3v4YtHwO1kd7ZhWFvToT8afdLhoag0UemoHFGVYlwp+MrPixj3LIxaOJN7At+DK0NgH5
+	PuzRzSUEmFLXUkRXeQI4za+MicCObpN0G7EiL8TRV8aVCoFvX6Lh8vMkfUzgFbaFOne96CTXkx2Ls
+	jv1tFqk7ZIyn5dAtaaekt8iuK0MCVPdsH1RUmr42aoK05cecMImNOHtXUN0oON77eu+x46bR5VFR+
+	SZxBBWT+0hRj1cXfrhBg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1irUAj-0002L1-1z; Tue, 14 Jan 2020 21:56:25 +0000
+	id 1irUBS-0002d9-U8; Tue, 14 Jan 2020 21:57:10 +0000
 Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1irUAg-0002KT-1l; Tue, 14 Jan 2020 21:56:23 +0000
-Received: by mail-ed1-x541.google.com with SMTP id i16so13465714edr.5;
- Tue, 14 Jan 2020 13:56:21 -0800 (PST)
+ id 1irUBQ-0002cj-NR; Tue, 14 Jan 2020 21:57:10 +0000
+Received: by mail-ed1-x541.google.com with SMTP id f8so13471866edv.2;
+ Tue, 14 Jan 2020 13:57:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=yH3gRAxnfteCLLH/u2qSnjxRy8GxS8UCwyFGMa2DlSk=;
- b=L8TLJ3X3zeA1DIMsprrsvpWLzlNOIhK4gRrrwo1pWCBT2v6TzZt4fyCDREJ5gMRHB1
- w3Tp0Ge+TB+EcXDYqq/S3H3H6dsnQhPBnJDXcrIekSfsKC9NqaQvKCOeGIpuJE05Ipkc
- 2Uw8qi25HOS7n5tOtEoGTi7iZeSrf2TttZ2Jl/iyp7NOqn4KJsYpRNvl93C9zqvvfWAV
- VLaPVVelE92hWnWCTwTnfNksNwxvNpUQnWb3fpWfqlkXLVWAo540W2abWB2ihtMd5AFP
- SSv4sdAdjrGGpIPzE5oneuBDdE5vw70m3ZK18regWMUwN5vUjoNXQKiasgd6vJ1gDr0S
- n49w==
+ bh=dWX0qH3iccx0g4AYWNuVHAofcVC/hMHz2INt2O8t/GA=;
+ b=NjvFavWXuubzGh467wyrmrgu/taGZf/9CWRMDm1ZpUOXqXRtdphGeRW77uSbeyPQsv
+ v9pr+Wm0ouvQJd6o4bFZYTbOhr2X9wZImTpQLo0kwzRSaAlHcpfFp/fZfesfqF13kTA9
+ +HrHFyNAw9f4jA0z36wRvMGWbu2zORRVdvoz7ABCf909a86w+pYdSV7ENLBK55Dm78mw
+ 6N+WC/1BK+1LGTw4agLY02HhgKGnAGKmZW6tGuf24wO8NjgYD0HjABo10jcidpYTb/ik
+ SUTR/B43SHq4fiUkUa41jymCwUKy9D2/ET/JF8rNE8nSRFDnIpBr6zhTK2J938OX2/pH
+ Ghjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=yH3gRAxnfteCLLH/u2qSnjxRy8GxS8UCwyFGMa2DlSk=;
- b=g2dFqNi5TDMW+vONFg1odILWlxJPh8qzo2TYNBpjnA1uLA2QkRpSK8RiixITTkhjvI
- uJLlTSUtYlW71himdT4+z7gRmeC+0D6QHK/ovoLp4H/XUuVul+rBXkF+xcmnuKFErzOM
- KBsQ3tmtkcRKZ4uSCwTUnitoDSoJ02npG8LpxcBBFlqP+FssApPGjWyDe4BXiDEJ7od8
- 0TkYOXTEgLj1s2u3DYOQDGhVNn0cYERalOmcswhHLqxQ+lFyy8c2GObIz3oqHkmmp6T/
- 7GF2KXFfeUGLg144GYk6cao0mPxb7bY5sW4vg9L3JUPklAlOEtVgfXthPgLMnclHsrOj
- i/KQ==
-X-Gm-Message-State: APjAAAVS49gWXAKQdVUKqYhBhgWa09VDk1KDUjVwReCEUWvJNiEncjf/
- Mi/rMu6SleW7JGx96B7YAgZQWAfX
-X-Google-Smtp-Source: APXvYqyWnO9iRf5STWhMn69PWxX8fFlxQ2pGMtj6O19YvlnMFQQfsTfJA4C1fnENHdovGqy+6ivD2g==
-X-Received: by 2002:aa7:d84b:: with SMTP id f11mr25642369eds.96.1579038979890; 
- Tue, 14 Jan 2020 13:56:19 -0800 (PST)
+ bh=dWX0qH3iccx0g4AYWNuVHAofcVC/hMHz2INt2O8t/GA=;
+ b=kdIUWOWa0ooTn2gi38ujiGCQzqjfo23teB0X4f/5/YqZPzQrDAc16UFWq5So/bHjuV
+ lnWOxCSibE07HwX4jbgAEs6reNyzSpLWT8Nqc0WzgMm+TyGD4mqkVWoZKNjs7kbiLQT9
+ oUfkmSwZb5LQ6JD5qF3YaACapNhE+VIH3CkX3Dx6/JDPTFAMdHFe7figOPeb+aoWY9F3
+ 41orvuraoOpP5a0I5dLfUFdSbsgXndV+sDlvIBrYwe7n/uQWCmWvryoL5dPwJ+8dqF5h
+ n594CdvNyUslULO+IN6bDM8StJOYI5o0iRv3LaUFKbZ23A2HuFJZtW6A0p2IakE61FMe
+ 2Nrg==
+X-Gm-Message-State: APjAAAU70LbkDmBZBkWzj7KA/YYmRhyJY9qlTGwZlhE56gE2YnFt1ykO
+ U8/ghamVakQQtaVl/bx8jzMjgc+f
+X-Google-Smtp-Source: APXvYqzSYmganXj/6DwiVipHB62E3FOeOHJ3lMar2NcWyAIMaP6N4qyIYkAfeJDBjRznzIDNewaV7g==
+X-Received: by 2002:a05:6402:609:: with SMTP id
+ n9mr26283516edv.305.1579039027311; 
+ Tue, 14 Jan 2020 13:57:07 -0800 (PST)
 Received: from [10.67.50.41] ([192.19.223.252])
- by smtp.googlemail.com with ESMTPSA id i11sm656262eds.23.2020.01.14.13.56.14
+ by smtp.googlemail.com with ESMTPSA id lc20sm662295ejb.78.2020.01.14.13.57.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Jan 2020 13:56:19 -0800 (PST)
-Subject: Re: [PATCH RFC net-next 05/19] net: dsa: tag_ar9331: add GRO callbacks
-To: Vladimir Oltean <olteanv@gmail.com>, Alexander Lobakin <alobakin@dlink.ru>
+ Tue, 14 Jan 2020 13:57:06 -0800 (PST)
+Subject: Re: [PATCH RFC net-next 16/19] net: dsa: tag_qca: fix doubled Tx
+ statistics
+To: Andrew Lunn <andrew@lunn.ch>, Alexander Lobakin <alobakin@dlink.ru>
 References: <20191230143028.27313-1-alobakin@dlink.ru>
- <20191230143028.27313-6-alobakin@dlink.ru>
- <ee6f83fd-edf4-5a98-9868-4cbe9e226b9b@gmail.com>
- <ed0ad0246c95a9ee87352d8ddbf0d4a1@dlink.ru>
- <CA+h21hoSoZT+ieaOu8N=MCSqkzey0L6HeoXSyLtHjZztT0S9ug@mail.gmail.com>
- <0002a7388dfd5fb70db4b43a6c521c52@dlink.ru>
- <CA+h21hqZoLrU7nL3Vo0KcmFnOxNxQPwoOVSEd6styyjK7XO+5w@mail.gmail.com>
+ <20191230143028.27313-17-alobakin@dlink.ru> <20191230172345.GF13569@lunn.ch>
 From: Florian Fainelli <f.fainelli@gmail.com>
 Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
  xsDiBEjPuBIRBACW9MxSJU9fvEOCTnRNqG/13rAGsj+vJqontvoDSNxRgmafP8d3nesnqPyR
@@ -135,16 +132,16 @@ Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
  HvsHIcv4lxCWkFXkwsuWqzEKK6kxVpRDoEQPDj+Oy/ZJ5fYuMbkdHrlegwoQ64LrqdmiVVPC
  TwQYEQIADwIbDAUCVF/S8QUJHlwd3wAKCRBhV5kVtWN2Do+FAJ956xSz2XpDHql+Wg/2qv3b
  G10n8gCguORqNGMsVRxrlLs7/himep7MrCc=
-Message-ID: <129bf2bc-c0e9-02a3-7d40-0f7920803769@gmail.com>
-Date: Tue, 14 Jan 2020 13:56:11 -0800
+Message-ID: <2a9bdadd-4724-bbad-a8c2-79066a03ba36@gmail.com>
+Date: Tue, 14 Jan 2020 13:57:00 -0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.2.2
 MIME-Version: 1.0
-In-Reply-To: <CA+h21hqZoLrU7nL3Vo0KcmFnOxNxQPwoOVSEd6styyjK7XO+5w@mail.gmail.com>
+In-Reply-To: <20191230172345.GF13569@lunn.ch>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200114_135622_095854_DCEE7BA8 
-X-CRM114-Status: GOOD (  14.74  )
+X-CRM114-CacheID: sfid-20200114_135708_882352_616E4D49 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -156,57 +153,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Song Liu <songliubraving@fb.com>,
+Cc: Song Liu <songliubraving@fb.com>,
  Jakub Kicinski <jakub.kicinski@netronome.com>,
- Yoshiki Komachi <komachi.yoshiki@gmail.com>,
- lkml <linux-kernel@vger.kernel.org>, Eric Dumazet <edumazet@google.com>,
- Stanislav Fomichev <sdf@google.com>, Matteo Croce <mcroce@redhat.com>,
- Edward Cree <ecree@solarflare.com>, Jakub Sitnicki <jakub@cloudflare.com>,
- Daniel Borkmann <daniel@iogearbox.net>, Paolo Abeni <pabeni@redhat.com>,
- Vivien Didelot <vivien.didelot@gmail.com>, Hauke Mehrtens <hauke@hauke-m.de>,
- Sean Wang <sean.wang@mediatek.com>, Jiri Pirko <jiri@mellanox.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Yoshiki Komachi <komachi.yoshiki@gmail.com>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Stanislav Fomichev <sdf@google.com>,
+ Matteo Croce <mcroce@redhat.com>, Edward Cree <ecree@solarflare.com>,
+ Jakub Sitnicki <jakub@cloudflare.com>, Daniel Borkmann <daniel@iogearbox.net>,
+ Paolo Abeni <pabeni@redhat.com>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Hauke Mehrtens <hauke@hauke-m.de>, Sean Wang <sean.wang@mediatek.com>,
+ Jiri Pirko <jiri@mellanox.com>, linux-mediatek@lists.infradead.org,
  Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, netdev <netdev@vger.kernel.org>,
+ linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
  Paul Blakey <paulb@mellanox.com>,
  Stephen Hemminger <stephen@networkplumber.org>,
  "David S. Miller" <davem@davemloft.net>, Taehee Yoo <ap420073@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMS8xMy8yMCAyOjI4IEFNLCBWbGFkaW1pciBPbHRlYW4gd3JvdGU6Cj4gT24gTW9uLCAxMyBK
-YW4gMjAyMCBhdCAxMTo0NiwgQWxleGFuZGVyIExvYmFraW4gPGFsb2Jha2luQGRsaW5rLnJ1PiB3
-cm90ZToKPj4KPj4gVmxhZGltaXIgT2x0ZWFuIHdyb3RlIDEzLjAxLjIwMjAgMTI6NDI6Cj4+PiBI
-aSBBbGV4YW5kZXIsCj4+Pgo+Pj4gT24gTW9uLCAxMyBKYW4gMjAyMCBhdCAxMToyMiwgQWxleGFu
-ZGVyIExvYmFraW4gPGFsb2Jha2luQGRsaW5rLnJ1Pgo+Pj4gd3JvdGU6Cj4+Pj4KPj4+PiBDUFUg
-cG9ydHMgY2FuJ3QgYmUgYnJpZGdlZCBhbnl3YXkKPj4+Pgo+Pj4+IFJlZ2FyZHMsCj4+Pj4g4Zq3
-IOGbliDhmqIg4ZqmIOGaoCDhmrEKPj4+Cj4+PiBUaGUgZmFjdCB0aGF0IENQVSBwb3J0cyBjYW4n
-dCBiZSBicmlkZ2VkIGlzIGFscmVhZHkgbm90IGlkZWFsLgo+Pj4gT25lIGNhbiBoYXZlIGEgRFNB
-IHN3aXRjaCB3aXRoIGNhc2NhZGVkIHN3aXRjaGVzIG9uIGVhY2ggcG9ydCwgc28gaXQKPj4+IGFj
-dHMgbGlrZSBOIERTQSBtYXN0ZXJzIChub3QgYXMgRFNBIGxpbmtzLCBzaW5jZSB0aGUgdGFnZ2Vy
-cyBhcmUKPj4+IGluY29tcGF0aWJsZSksIHdpdGggZWFjaCBzd2l0Y2ggZm9ybWluZyBpdHMgb3du
-IHRyZWUuIEl0IGlzIGRlc2lyYWJsZQo+Pj4gdGhhdCB0aGUgcG9ydHMgb2YgdGhlIERTQSBzd2l0
-Y2ggb24gdG9wIGFyZSBicmlkZ2VkLCBzbyB0aGF0Cj4+PiBmb3J3YXJkaW5nIGJldHdlZW4gY2Fz
-Y2FkZWQgc3dpdGNoZXMgZG9lcyBub3QgcGFzcyB0aHJvdWdoIHRoZSBDUFUuCj4+Cj4+IE9oLCBJ
-IHNlZS4gQnV0IGN1cnJlbnRseSBEU0EgaW5mcmEgZm9yYmlkcyB0aGUgYWRkaW5nIERTQSBtYXN0
-ZXJzIHRvCj4+IGJyaWRnZXMgSUlSQy4gQ2FuJ3QgbmFtZSBpdCBnb29kIG9yIGJhZCBkZWNpc2lv
-biwgYnV0IHdhcyBpbnRyb2R1Y2VkCj4+IHRvIHByZXZlbnQgYWNjaWRlbnRhbCBwYWNrZXQgZmxv
-dyBicmVha2luZyBvbiBEU0Egc2V0dXBzLgo+Pgo+IAo+IEkganVzdCB3YW50ZWQgdG8gcG9pbnQg
-b3V0IHRoYXQgc29tZSBwZW9wbGUgYXJlIGdvaW5nIHRvIGJlIGxvb2tpbmcgYXQKPiB3YXlzIGJ5
-IHdoaWNoIHRoZSBFVEhfUF9YRFNBIGhhbmRsZXIgY2FuIGJlIG1hZGUgdG8gcGxheSBuaWNlIHdp
-dGggdGhlCj4gbWFzdGVyJ3MgcnhfaGFuZGxlciwgYW5kIHRoYXQgaXQgd291bGQgYmUgbmljZSB0
-byBhdCBsZWFzdCBub3QgbWFrZQo+IHRoZSBsaW1pdGF0aW9uIHdvcnNlIHRoYW4gaXQgaXMgYnkg
-Y29udmVydGluZyBldmVyeXRoaW5nIHRvCj4gcnhfaGFuZGxlcnMgKHdoaWNoICJjdXJyZW50bHki
-IGNhbid0IGJlIHN0YWNrZWQsIGZyb20gdGhlIGNvbW1lbnRzIGluCj4gbmV0ZGV2aWNlLmgpLgoK
-SSBhbSBub3Qgc3VyZSB0aGlzIHdvdWxkIGNoYW5nZSB0aGUgc2l0dWF0aW9uIG11Y2gsIHRvZGF5
-IHdlIGNhbm5vdCBoYXZlCmFueXRoaW5nIGJ1dCBzd2l0Y2ggdGFncyB0cmF2ZWwgb24gdGhlIERT
-QSBtYXN0ZXIgbmV0d29yayBkZXZpY2UsCndoZXRoZXIgd2UgYWNjb21wbGlzaCB0aGUgUlggdGFw
-IHRocm91Z2ggYSBzcGVjaWFsIHNrYi0+cHJvdG9jb2wgdmFsdWUKb3IgdmlhIHJ4X2hhbmRsZXIs
-IGl0IHByb2JhYmx5IGRvZXMgbm90IGZ1bmN0aW9uYWxseSBtYXR0ZXIsIGJ1dCBpdApjb3VsZCBj
-aGFuZ2UgdGhlIHBlcmZvcm1hbmNlLgotLSAKRmxvcmlhbgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Ckxp
-bnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On 12/30/19 9:23 AM, Andrew Lunn wrote:
+> On Mon, Dec 30, 2019 at 05:30:24PM +0300, Alexander Lobakin wrote:
+>> DSA core updates Tx stats for slaves in dsa_slave_xmit(), no need to do
+>> it manually in .xmit() tagger callback.
+>>
+>> Signed-off-by: Alexander Lobakin <alobakin@dlink.ru>
+> 
+> Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+
+Alexander, can you submit that separately from your GRO series and add a
+Fixes tag for this?
+
+Thanks!
+-- 
+Florian
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
