@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93DD9C33CA9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 07:18:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 31047C33CA9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 07:18:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4A052207FD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 07:18:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EE639207FD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 07:18:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AYsdh2FB";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="nyrwVyLc"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4A052207FD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TVaq1Ubz";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="ithCmGPB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EE639207FD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,61 +26,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AMAlmpIdOWejdh8my05KnROyhJ3arwDxsUiL4GL3czA=; b=AYsdh2FBI+WGVq
-	/PW1bjq+Ac2KzuKgtBcImUUw2ieXNusiHnEFsQ0vPGajg/uiJCoa9zR8hXA+k3ZPkPg0dpZRlSewo
-	xQAB5W2gt5AvzgI4QxjiQxy467sBA4IGf4frhnh4zflX2jBEW5jhCVb5VRY/KYbiUiguuXF9QlCci
-	LetLEXkCJ0LhRv/iRHaYFxfyY6ADDtwBO5SR9kN7nuYkA/tsiUGhXcM83hgYrE9SmQY39tpD6ykDt
-	jViVrTdnSDqtZDJE9nAYwjtF24yQ2FQPcr9LPZRUXqYyD+tAqDHBIGD+fQDcLql0ln9I2vOUV/p6q
-	uj3gQ11PO/rCNLq91LoQ==;
+	List-Owner; bh=JA0cAeeAz7BxuUFmfcIpiyhPn8NRoYpp6EbVuY0fd1Y=; b=TVaq1Ubziw8YNb
+	8Lrr0ah1ZXFFKpe29en41Cz8vYhvIwptrLIwezkkKQ7G6ZW/6PQF93Q80hXItavcTTplxlDw3mXHV
+	8rlaCpFNTFhfWnHn8GzXYOP3RHF0k+OOsrHQGCKZ7ZPrYs/z/YAMOcWhuOChEbXwRi4/iDFcY+R3V
+	q1bS5sWPQWk2ZHX53uJ0q7V9kAsr9gcN9Zd1NBMlw8vjIY1Y8jrw2wDko8DDrwrirbCXMWojQI4pk
+	kChevh2lJk4Aklm52U5HySu7s/alf7d7zKrZeICCSBBNRWxfW703vnvacy6Otvk3hMtNQq7UTgmEg
+	dZZh9KvrdaIjUljA22hw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1irGSi-0005Zk-0h; Tue, 14 Jan 2020 07:18:04 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1irGSr-0005iv-Gq; Tue, 14 Jan 2020 07:18:13 +0000
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1irGR7-00041N-11
- for linux-mediatek@lists.infradead.org; Tue, 14 Jan 2020 07:16:27 +0000
-Received: by mail-pf1-x441.google.com with SMTP id x185so6147324pfc.5
- for <linux-mediatek@lists.infradead.org>; Mon, 13 Jan 2020 23:16:24 -0800 (PST)
+ id 1irGR9-000442-S0
+ for linux-mediatek@lists.infradead.org; Tue, 14 Jan 2020 07:16:29 +0000
+Received: by mail-pj1-x1043.google.com with SMTP id n59so5458739pjb.1
+ for <linux-mediatek@lists.infradead.org>; Mon, 13 Jan 2020 23:16:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=kL7MaPtbEc21MOhREjvhOgoDbupsHbrcTaafCHl6zWw=;
- b=nyrwVyLcYnNR5mbm92LNGb5QtmCx+5pUoIH0aD8TvRWaA/To6hN3kVrNsRDENiENh9
- y1BPUp40uFVRbuMzqrcmBYs+eWomH0z/SV1EzZnxa4zl0EM3jf+TUHwBnkr03hwwPk4+
- rmBcnoqFF80mCeo3ILegZQxvfm8H/5T97yIao=
+ bh=e5zg+Nyx8gIh15cqNDiymw6e+al01EbMcgFt2zvz0/E=;
+ b=ithCmGPBDK/u6wxmb7C8KnWpF6VLxN1iVW9EKRTQdp6gCK/wkyNVGMrjLzSyYPtuZj
+ KT0dAo1mqlGPGF8vvWskaLxI8E4PJM7ppHVCuRSeKdX+EsfMf57sl+NMqrMkGaZe+a9e
+ jMDmnOEr16LjZs3JxaJxhJ4YKueNcn/vlkQrw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=kL7MaPtbEc21MOhREjvhOgoDbupsHbrcTaafCHl6zWw=;
- b=q7IasoFYntkfcMEjclobJBkvyR4tAtJdqO2AnFf3NK/2ObzZZ2HMCcqCaq4907E9ci
- OzenOkgKGYaI8V8wuqWhl4/xJz5WpXjR5K1NpG5VlJfC2w/ajkTO4P9VLf6kWFOAlJPd
- /h1X5ur7GFCnP8ipqJzMRW9t+dT8/XVhjqaZG0l+SnHiDlydj0emz3bxtwb+650zhvFy
- k3CTKGE0Ev4Xi6JpBtsrsvP1kNjwuIm9WVNTQWXWXJtlVUdp222UMsCaPy21k44vECtk
- s2M101CJ1Jy3nic0oB8IMHXKNLioCNfblCoIq4dC9MFPJaIjxI7NoFz2C5yAccuVXPIn
- x6Fw==
-X-Gm-Message-State: APjAAAWQXr8rX9Eicc/0dEqHIQi2ZJdfyT1atcdlLOf/x6YVQL5pooo/
- fCbDb7kj76mhgg7+h+Lm0GEVnQ==
-X-Google-Smtp-Source: APXvYqz1Db5nZXfVgPpUvk0sMU7jCh8DwGo6ABq63Sc0zluJCZpvIMzGYhdDt6IlBlStywedDMXynA==
-X-Received: by 2002:a63:d62:: with SMTP id 34mr26391053pgn.268.1578986183441; 
- Mon, 13 Jan 2020 23:16:23 -0800 (PST)
+ bh=e5zg+Nyx8gIh15cqNDiymw6e+al01EbMcgFt2zvz0/E=;
+ b=h+Cw7AN9mFCrWLEEDT32nhwH8n7w8mLRYxhaR1+rm3GRQ9E3IS62GNHtSATg5UnAd/
+ Tc1Y/H+aencr5qBezAy+HpyiCMLzAssnRPLs750mZeUjvQRd62+mh8plDKULYKzX5vao
+ CYl7mFdkDosu1Jp7mg3oIbz06zuCivGoW8w8BNmsZetSsJUlJwnjSofbrEcFlUwt1jBL
+ 2gZaNttAd1FUYDPecxVOkUB/aFalhCAXe+qcNQHw+JETSttXQPWVAOCPLenqAwMuvtiE
+ 3AjptEAzdJlXlvpG17+mCNqn2UqkrBe4R68zoxnZVdnahSn953NKotR4PkuLAbovfTKV
+ 6oUQ==
+X-Gm-Message-State: APjAAAUZpUFSx5CUbW9Hl5O+b8ZaDgvHYZNDeQ8UANkPcL/UZXF6FQX6
+ bLe3U5r4Fvb28dan0zSCZd81jA==
+X-Google-Smtp-Source: APXvYqz4laPa/9RzoUxpMClNTomxEKcjjRkPSrqYnULimr14OR/2zncKlcPo6jiMuGgeOUer2Xg6RA==
+X-Received: by 2002:a17:902:fe90:: with SMTP id
+ x16mr17202238plm.31.1578986186739; 
+ Mon, 13 Jan 2020 23:16:26 -0800 (PST)
 Received: from drinkcat2.tpe.corp.google.com
  ([2401:fa00:1:b:d8b7:33af:adcb:b648])
- by smtp.gmail.com with ESMTPSA id b4sm17092976pfd.18.2020.01.13.23.16.20
+ by smtp.gmail.com with ESMTPSA id b4sm17092976pfd.18.2020.01.13.23.16.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 Jan 2020 23:16:22 -0800 (PST)
+ Mon, 13 Jan 2020 23:16:26 -0800 (PST)
 From: Nicolas Boichat <drinkcat@chromium.org>
 To: Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v3 5/7] drm/panfrost: Add support for multiple power domains
-Date: Tue, 14 Jan 2020 15:16:00 +0800
-Message-Id: <20200114071602.47627-6-drinkcat@chromium.org>
+Subject: [PATCH v3 6/7, RFC] drm/panfrost: Add mt8183-mali compatible string
+Date: Tue, 14 Jan 2020 15:16:01 +0800
+Message-Id: <20200114071602.47627-7-drinkcat@chromium.org>
 X-Mailer: git-send-email 2.25.0.rc1.283.g88dfdc4193-goog
 In-Reply-To: <20200114071602.47627-1-drinkcat@chromium.org>
 References: <20200114071602.47627-1-drinkcat@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200113_231625_113470_73660AF1 
-X-CRM114-Status: GOOD (  21.52  )
+X-CRM114-CacheID: sfid-20200113_231627_942970_591A1363 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,232 +108,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When there is a single power domain per device, the core will
-ensure the power domain is switched on (so it is technically
-equivalent to having not power domain specified at all).
-
-However, when there are multiple domains, as in MT8183 Bifrost
-GPU, we need to handle them in driver code.
+For testing only, the driver doesn't really work yet, AFAICT.
 
 Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
 
 ---
 
-The downstream driver we use on chromeos-4.19 currently uses 2
-additional devices in device tree to accomodate for this [1], but
-I believe this solution is cleaner.
-
-[1] https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-4.19/drivers/gpu/arm/midgard/platform/mediatek/mali_kbase_runtime_pm.c#31
-
 v3:
- - Use the compatible matching data to specify the number of power
-   domains. Note that setting 0 or 1 in num_pm_domains is equivalent
-   as the core will handle these 2 cases in the exact same way
-   (automatically, without driver intervention), and there should
-   be no adverse consequence in this case (the concern is about
-   switching on only some power domains and not others).
+ - Match mt8183-mali instead of bifrost, as we require special
+   handling for the 2 regulators and 3 power domains.
 
- drivers/gpu/drm/panfrost/panfrost_device.c | 95 ++++++++++++++++++++--
- drivers/gpu/drm/panfrost/panfrost_device.h |  9 ++
- drivers/gpu/drm/panfrost/panfrost_drv.c    |  1 +
- 3 files changed, 97 insertions(+), 8 deletions(-)
+drivers/gpu/drm/panfrost/panfrost_drv.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/drivers/gpu/drm/panfrost/panfrost_device.c b/drivers/gpu/drm/panfrost/panfrost_device.c
-index c30e0a3772a4f57..7c9766f76cc7689 100644
---- a/drivers/gpu/drm/panfrost/panfrost_device.c
-+++ b/drivers/gpu/drm/panfrost/panfrost_device.c
-@@ -5,6 +5,7 @@
- #include <linux/clk.h>
- #include <linux/reset.h>
- #include <linux/platform_device.h>
-+#include <linux/pm_domain.h>
- #include <linux/regulator/consumer.h>
- 
- #include "panfrost_device.h"
-@@ -119,6 +120,75 @@ static void panfrost_regulator_fini(struct panfrost_device *pfdev)
- 			pfdev->regulators);
- }
- 
-+static void panfrost_pm_domain_fini(struct panfrost_device *pfdev)
-+{
-+	int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(pfdev->pm_domain_devs); i++) {
-+		if (!pfdev->pm_domain_devs[i])
-+			break;
-+
-+		if (pfdev->pm_domain_links[i])
-+			device_link_del(pfdev->pm_domain_links[i]);
-+
-+		dev_pm_domain_detach(pfdev->pm_domain_devs[i], true);
-+	}
-+}
-+
-+static int panfrost_pm_domain_init(struct panfrost_device *pfdev)
-+{
-+	int err;
-+	int i, num_domains;
-+
-+	num_domains = of_count_phandle_with_args(pfdev->dev->of_node,
-+						 "power-domains",
-+						 "#power-domain-cells");
-+
-+	/*
-+	 * Single domain is handled by the core, and, if only a single power
-+	 * the power domain is requested, the property is optional.
-+	 */
-+	if (num_domains < 2 && pfdev->comp->num_pm_domains < 2)
-+		return 0;
-+
-+	if (num_domains != pfdev->comp->num_pm_domains) {
-+		dev_err(pfdev->dev,
-+			"Incorrect number of power domains: %d provided, %d needed\n",
-+			num_domains, pfdev->comp->num_pm_domains);
-+		return -EINVAL;
-+	}
-+
-+	BUG_ON(num_domains > ARRAY_SIZE(pfdev->pm_domain_devs));
-+
-+	for (i = 0; i < num_domains; i++) {
-+		pfdev->pm_domain_devs[i] =
-+			dev_pm_domain_attach_by_id(pfdev->dev, i);
-+		if (IS_ERR(pfdev->pm_domain_devs[i])) {
-+			err = PTR_ERR(pfdev->pm_domain_devs[i]);
-+			pfdev->pm_domain_devs[i] = NULL;
-+			dev_err(pfdev->dev,
-+				"failed to get pm-domain %d: %d\n", i, err);
-+			goto err;
-+		}
-+
-+		pfdev->pm_domain_links[i] = device_link_add(pfdev->dev,
-+				pfdev->pm_domain_devs[i], DL_FLAG_PM_RUNTIME |
-+				DL_FLAG_STATELESS | DL_FLAG_RPM_ACTIVE);
-+		if (!pfdev->pm_domain_links[i]) {
-+			dev_err(pfdev->pm_domain_devs[i],
-+				"adding device link failed!\n");
-+			err = -ENODEV;
-+			goto err;
-+		}
-+	}
-+
-+	return 0;
-+
-+err:
-+	panfrost_pm_domain_fini(pfdev);
-+	return err;
-+}
-+
- int panfrost_device_init(struct panfrost_device *pfdev)
- {
- 	int err;
-@@ -149,37 +219,45 @@ int panfrost_device_init(struct panfrost_device *pfdev)
- 		goto err_out1;
- 	}
- 
-+	err = panfrost_pm_domain_init(pfdev);
-+	if (err) {
-+		dev_err(pfdev->dev, "pm_domain init failed %d\n", err);
-+		goto err_out2;
-+	}
-+
- 	res = platform_get_resource(pfdev->pdev, IORESOURCE_MEM, 0);
- 	pfdev->iomem = devm_ioremap_resource(pfdev->dev, res);
- 	if (IS_ERR(pfdev->iomem)) {
- 		dev_err(pfdev->dev, "failed to ioremap iomem\n");
- 		err = PTR_ERR(pfdev->iomem);
--		goto err_out2;
-+		goto err_out3;
- 	}
- 
- 	err = panfrost_gpu_init(pfdev);
- 	if (err)
--		goto err_out2;
-+		goto err_out3;
- 
- 	err = panfrost_mmu_init(pfdev);
- 	if (err)
--		goto err_out3;
-+		goto err_out4;
- 
- 	err = panfrost_job_init(pfdev);
- 	if (err)
--		goto err_out4;
-+		goto err_out5;
- 
- 	err = panfrost_perfcnt_init(pfdev);
- 	if (err)
--		goto err_out5;
-+		goto err_out6;
- 
- 	return 0;
--err_out5:
-+err_out6:
- 	panfrost_job_fini(pfdev);
--err_out4:
-+err_out5:
- 	panfrost_mmu_fini(pfdev);
--err_out3:
-+err_out4:
- 	panfrost_gpu_fini(pfdev);
-+err_out3:
-+	panfrost_pm_domain_fini(pfdev);
- err_out2:
- 	panfrost_reset_fini(pfdev);
- err_out1:
-@@ -196,6 +274,7 @@ void panfrost_device_fini(struct panfrost_device *pfdev)
- 	panfrost_mmu_fini(pfdev);
- 	panfrost_gpu_fini(pfdev);
- 	panfrost_reset_fini(pfdev);
-+	panfrost_pm_domain_fini(pfdev);
- 	panfrost_regulator_fini(pfdev);
- 	panfrost_clk_fini(pfdev);
- }
-diff --git a/drivers/gpu/drm/panfrost/panfrost_device.h b/drivers/gpu/drm/panfrost/panfrost_device.h
-index 021f063ffb3747f..143eab57180a2e1 100644
---- a/drivers/gpu/drm/panfrost/panfrost_device.h
-+++ b/drivers/gpu/drm/panfrost/panfrost_device.h
-@@ -21,6 +21,7 @@ struct panfrost_perfcnt;
- 
- #define NUM_JOB_SLOTS 3
- #define MAX_REGULATORS 2
-+#define MAX_PM_DOMAINS 3
- 
- struct panfrost_features {
- 	u16 id;
-@@ -61,6 +62,11 @@ struct panfrost_compatible {
- 	/* Supplies count and names. */
- 	int num_supplies;
- 	const char * const *supply_names;
-+	/*
-+	 * Number of power domains required, note that values 0 and 1 are
-+	 * handled identically, as only values > 1 need special handling.
-+	 */
-+	int num_pm_domains;
- };
- 
- struct panfrost_device {
-@@ -73,6 +79,9 @@ struct panfrost_device {
- 	struct clk *bus_clock;
- 	struct regulator_bulk_data regulators[MAX_REGULATORS];
- 	struct reset_control *rstc;
-+	/* pm_domains for devices with more than one. */
-+	struct device *pm_domain_devs[MAX_PM_DOMAINS];
-+	struct device_link *pm_domain_links[MAX_PM_DOMAINS];
- 
- 	struct panfrost_features features;
- 	const struct panfrost_compatible* comp;
 diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-index db3563b80150c9d..42b87e29e605149 100644
+index 42b87e29e605149..3379a3ea754ccde 100644
 --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
 +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-@@ -589,6 +589,7 @@ const char * const default_supplies[] = { "mali" };
- static const struct panfrost_compatible default_data = {
- 	.num_supplies = ARRAY_SIZE(default_supplies),
- 	.supply_names = default_supplies,
-+	.num_pm_domains = 1, /* optional */
+@@ -592,6 +592,13 @@ static const struct panfrost_compatible default_data = {
+ 	.num_pm_domains = 1, /* optional */
  };
  
++const char * const mediatek_mt8183_supplies[] = { "mali", "sram" };
++static const struct panfrost_compatible mediatek_mt8183_data = {
++	.num_supplies = ARRAY_SIZE(mediatek_mt8183_supplies),
++	.supply_names = mediatek_mt8183_supplies,
++	.num_pm_domains = 3,
++};
++
  static const struct of_device_id dt_match[] = {
+ 	{ .compatible = "arm,mali-t604", .data = &default_data, },
+ 	{ .compatible = "arm,mali-t624", .data = &default_data, },
+@@ -602,6 +609,8 @@ static const struct of_device_id dt_match[] = {
+ 	{ .compatible = "arm,mali-t830", .data = &default_data, },
+ 	{ .compatible = "arm,mali-t860", .data = &default_data, },
+ 	{ .compatible = "arm,mali-t880", .data = &default_data, },
++	{ .compatible = "mediatek,mt8183-mali",
++		.data = &mediatek_mt8183_data },
+ 	{}
+ };
+ MODULE_DEVICE_TABLE(of, dt_match);
 -- 
 2.25.0.rc1.283.g88dfdc4193-goog
 
