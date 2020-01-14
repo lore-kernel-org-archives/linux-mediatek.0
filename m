@@ -2,79 +2,73 @@ Return-Path: <SRS0=z6AG=3D=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6073DC33CB1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 12:39:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B4F96C3F68F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 13:35:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2CD2024679
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 12:39:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 804732467D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 13:35:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cKfpWE1z";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="YFzbfz09"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2CD2024679
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Y88+uWEh";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="G/lFZEhd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 804732467D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=no3xSkQVhfWPLCnWDiOInVcgtA1HxpL6SscOlvFlius=; b=cKfpWE1zilEfnf
-	7Qjjf7inoocNXxZpN40lou71IcM9SfCpvPLk8wzDLXJJAAPhYq416MlHeNdK+WPDnL/DdKXJc2Ke3
-	IP5JeqaVQD26mlVB8WlntMc7Q4S4U7IQ6ink+wGtzMWNeF6TUxh2hR83ZRvmoiQ4TACt7+fckQ07J
-	7Q2h9HyG/eNxyZDdsd4Am2r6fx5jjgV8L2O8qANj69v2YIRRhvZ4iTNIV0VeFkTc/DRSS+Mah9FCb
-	Mu5jvsuNIlqr4AWYIm5/prQMsVGwN7i5N+T0tuBmixvMM6d7Q/bW/+PGhyyM+OELS0N5VKZ7wW+hR
-	BzjPtoVmRzeymI8nNxJA==;
+	List-Owner; bh=Mp2clQljv25/Olc1T2+Y4bVkt2c9MwldDRa4ve44BUI=; b=Y88+uWEhVDsle3
+	YhQqVBfBGM57mTzR4uPZ5ni70dvFSL3inT6pio4xHSGLGJGpWqX8WG6iJ+o09m+sAMXu7WEJr+eg/
+	B6Gmc+rI3j6JjxZvXqXwR9ZM6J0tbeqzjfdhAu8f8OIozWts8YVkIKi29HdgeXs1Wfgwmg6usO6x6
+	rQkXNZ6oXmoDuI4UG8uESP5abdVxmKw8+tRj4heTj607Ht7Ye6sxrDK7AZCpZA+ZNU3bhO03KBDqn
+	rJVNcyasjd50tAx4TsJD3vJjutWNBzR8XTwZSQyOsFc6whaCYsvTqV7bfNxrijn5W/JNrPTDccF1b
+	48oFX4PW3ymFX3mBwExA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1irLTc-0002YP-AV; Tue, 14 Jan 2020 12:39:20 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1irMLj-00084v-M4; Tue, 14 Jan 2020 13:35:15 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1irLTO-0002Qo-FB; Tue, 14 Jan 2020 12:39:11 +0000
-X-UUID: 9168a724a12d4e0f9d97c3ebbaefb8ff-20200114
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=bnFecRJX7Aa4q5ksT7zK8kTGrThsp/iwgnapcyNcxAE=; 
- b=YFzbfz09rS9+IXVwUguIcTKgtAeXE+gVcCaDoEMKDyoJCnvSJJYyIE+gmMOhpYyK0hic+nOjD+iqb7GJYbylQQwW/SOKfETlEQo69sJIhHVOkSCJMxF+jsB7VTg7zDFIZNz9RG7/wtmM63MOZiIh34xBE+VwvBpFhDzg2Yq0P28=;
-X-UUID: 9168a724a12d4e0f9d97c3ebbaefb8ff-20200114
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <fengping.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1123245876; Tue, 14 Jan 2020 04:39:04 -0800
-Received: from MTKMBS32DR.mediatek.inc (172.27.6.104) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 14 Jan 2020 04:29:48 -0800
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- MTKMBS32DR.mediatek.inc (172.27.6.104) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 14 Jan 2020 20:28:04 +0800
-Received: from localhost.localdomain (10.15.43.140) by mtkcas09.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 14 Jan 2020 20:29:44 +0800
-From: fengping.yu <fengping.yu@mediatek.com>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Marco Felsch <m.felsch@pengutronix.de>, Matthias Brugger
- <matthias.bgg@gmail.com>
-Subject: [PATCH V3 2/2] drivers: input: keyboard: add mtk keypad driver
-Date: Tue, 14 Jan 2020 20:27:41 +0800
-Message-ID: <20200114122738.103344-3-fengping.yu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200114122738.103344-1-fengping.yu@mediatek.com>
-References: <20200114122738.103344-1-fengping.yu@mediatek.com>
+ id 1irMLW-0006kx-FX; Tue, 14 Jan 2020 13:35:06 +0000
+Received: from mail-qv1-f50.google.com (mail-qv1-f50.google.com
+ [209.85.219.50])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 41E742467D;
+ Tue, 14 Jan 2020 13:35:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1579008901;
+ bh=0ghVVnTBZhNvg1AJ2oPToO73881dd/NHeITQTqTLWxI=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=G/lFZEhdHe3ydclV+TmtrDs9QjTdwW6bZ31l3IhVdfAOwOCVu2AfDi94vmifvYmm1
+ TXFehXUCRWmiGutK1ymNrnQtMUGERrIgLohMmfLFNu/px184/IyY6AmwqxILVhrygJ
+ NZBCIjp3FRCbLPTESuVqZfBtOrfNLGNjTHthFOkU=
+Received: by mail-qv1-f50.google.com with SMTP id dp13so5626145qvb.7;
+ Tue, 14 Jan 2020 05:35:01 -0800 (PST)
+X-Gm-Message-State: APjAAAXEWf7HHqtN3BMlNyw79D0FZhl8zaR0Uhmwg1eS0sBBLnSwQR4B
+ eyKT6vJgFgj2YNALcOA8VEnk9C0kblD8EIL3c7U=
+X-Google-Smtp-Source: APXvYqzOqlxC0uai1sE24Xuw2w8hBzEMT/71be1S1hw9KqGPL+bJoJZFBLpiVMGuBZvnEV9JeXw9j+9BEBZFKOwbSCs=
+X-Received: by 2002:ad4:4dc3:: with SMTP id cw3mr20423625qvb.130.1579008900416; 
+ Tue, 14 Jan 2020 05:35:00 -0800 (PST)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 2C1AE87E0845F6354DDCF9DBECAB361CE7C439E6664B7BE32F23C13A4E1B70052000:8
-X-MTK: N
+References: <20200114091836.19403-1-gtk_ruiwang@mediatek.com>
+In-Reply-To: <20200114091836.19403-1-gtk_ruiwang@mediatek.com>
+From: Josh Boyer <jwboyer@kernel.org>
+Date: Tue, 14 Jan 2020 08:34:28 -0500
+X-Gmail-Original-Message-ID: <CA+5PVA5aD+8Zc-e39eUtE=vPA_Dm5Z5_iXhFoYwpKstUssUVWQ@mail.gmail.com>
+Message-ID: <CA+5PVA5aD+8Zc-e39eUtE=vPA_Dm5Z5_iXhFoYwpKstUssUVWQ@mail.gmail.com>
+Subject: Re: pull request: linux-firmware: Update Mediatek MT8173 VPU firmware
+To: gtk_ruiwang@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200114_043906_519430_B2B17956 
-X-CRM114-Status: GOOD (  14.89  )
+X-CRM114-CacheID: sfid-20200114_053502_552827_D38BE626 
+X-CRM114-Status: GOOD (  15.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,355 +80,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org,
- "fengping.yu" <fengping.yu@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: Maoguang Meng <maoguang.meng@mediatek.com>,
+ Alexandre Courbot <acourbot@chromium.org>, srv_heupstream@mediatek.com,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Longfei Wang <longfei.wang@mediatek.com>,
+ "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>,
+ Linux Firmware <linux-firmware@kernel.org>, Tomasz Figa <tfiga@chromium.org>,
+ linux-mediatek@lists.infradead.org, PoChun.Lin@mediatek.com,
+ Tiffany Lin <tiffany.lin@mediatek.com>, linux-arm-kernel@lists.infradead.org,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
+On Tue, Jan 14, 2020 at 4:18 AM <gtk_ruiwang@mediatek.com> wrote:
+>
+> Hi linux-firmware maintainers,
+>
+> The following changes since commit 67d4ff59bf3334895626cf165e508e9eb1846e24:
+>
+>   Mellanox: Add new mlxsw_spectrum firmware xx.2000.2714 (2020-01-07 09:08:25 -0500)
+>
+> are available in the Git repository at:
+>
+>   https://github.com/ruiwang-mtk/linux_fw_vpu_v1.1.3.git
+>
+> for you to fetch changes up to 7f3177d224ee7afdd6e36ed01a13f499d671e167:
+>
+>   mediatek: update MT8173 VPU firmware to v1.1.3 (2020-01-14 15:33:19 +0800)
+>
+> ----------------------------------------------------------------
+> gtk_ruiwang (1):
+>       mediatek: update MT8173 VPU firmware to v1.1.3
+>
+>  vpu_d.bin | Bin 2977008 -> 2977136 bytes
+>  vpu_p.bin | Bin 131180 -> 131180 bytes
+>  2 files changed, 0 insertions(+), 0 deletions(-)
 
-Add matrix keypad driver for MTK SoC.
+Pulled the v1.1.3 branch and pushed out.  I'm assuming the pull
+request is sufficient since it looks like the patch you sent
+separately is the only thing in the pull request.  Let me know if
+there is something else needed with the patch.
 
----
- arch/arm64/configs/defconfig     |   1 +
- drivers/input/keyboard/Kconfig   |   8 +
- drivers/input/keyboard/Makefile  |   1 +
- drivers/input/keyboard/mtk-kpd.c | 280 +++++++++++++++++++++++++++++++
- 4 files changed, 290 insertions(+)
- create mode 100644 drivers/input/keyboard/mtk-kpd.c
+josh
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 8e05c39eab08..62bed77ec127 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -315,6 +315,7 @@ CONFIG_KEYBOARD_ADC=m
- CONFIG_KEYBOARD_GPIO=y
- CONFIG_KEYBOARD_SNVS_PWRKEY=m
- CONFIG_KEYBOARD_CROS_EC=y
-+CONFIG_KEYBOARD_MTK=y
- CONFIG_INPUT_TOUCHSCREEN=y
- CONFIG_TOUCHSCREEN_ATMEL_MXT=m
- CONFIG_INPUT_MISC=y
-diff --git a/drivers/input/keyboard/Kconfig b/drivers/input/keyboard/Kconfig
-index 8911bc2ec42a..01747a97536b 100644
---- a/drivers/input/keyboard/Kconfig
-+++ b/drivers/input/keyboard/Kconfig
-@@ -775,4 +775,12 @@ config KEYBOARD_MTK_PMIC
- 	  To compile this driver as a module, choose M here: the
- 	  module will be called pmic-keys.
- 
-+config KEYBOARD_MTK
-+	tristate "MediaTek Keypad Support"
-+	help
-+	  Say Y here if you want to use the keypad.
-+	  If unuse, say N.
-+	  To compile this driver as a module, choose M here: the
-+	  module will be called mtk-kpd.
-+
- endif
-diff --git a/drivers/input/keyboard/Makefile b/drivers/input/keyboard/Makefile
-index 9510325c0c5d..daa654bcce6e 100644
---- a/drivers/input/keyboard/Makefile
-+++ b/drivers/input/keyboard/Makefile
-@@ -41,6 +41,7 @@ obj-$(CONFIG_KEYBOARD_MATRIX)		+= matrix_keypad.o
- obj-$(CONFIG_KEYBOARD_MAX7359)		+= max7359_keypad.o
- obj-$(CONFIG_KEYBOARD_MCS)		+= mcs_touchkey.o
- obj-$(CONFIG_KEYBOARD_MPR121)		+= mpr121_touchkey.o
-+obj-$(CONFIG_KEYBOARD_MTK) 		+= mtk-kpd.o
- obj-$(CONFIG_KEYBOARD_MTK_PMIC) 	+= mtk-pmic-keys.o
- obj-$(CONFIG_KEYBOARD_NEWTON)		+= newtonkbd.o
- obj-$(CONFIG_KEYBOARD_NOMADIK)		+= nomadik-ske-keypad.o
-diff --git a/drivers/input/keyboard/mtk-kpd.c b/drivers/input/keyboard/mtk-kpd.c
-new file mode 100644
-index 000000000000..e36461c9dd89
---- /dev/null
-+++ b/drivers/input/keyboard/mtk-kpd.c
-@@ -0,0 +1,280 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (C) 2019 MediaTek Inc.
-+ * Author Terry Chang <terry.chang@mediatek.com>
-+ */
-+#include <linux/clk.h>
-+#include <linux/fs.h>
-+#include <linux/gpio.h>
-+#include <linux/init.h>
-+#include <linux/input/matrix_keypad.h>
-+#include <linux/interrupt.h>
-+#include <linux/io.h>
-+#include <linux/module.h>
-+#include <linux/of_address.h>
-+#include <linux/of_irq.h>
-+#include <linux/pinctrl/consumer.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+
-+#define KPD_NAME	"mtk-kpd"
-+
-+#define KP_STA				0x0000
-+#define KP_MEM1				0x0004
-+#define KP_MEM2				0x0008
-+#define KP_MEM3				0x000c
-+#define KP_MEM4				0x0010
-+#define KP_MEM5				0x0014
-+#define KP_DEBOUNCE			0x0018
-+#define KP_SEL				0x0020
-+#define KP_EN				0x0024
-+
-+#define KP_COL0_SEL		BIT(10)
-+#define KP_COL1_SEL		BIT(11)
-+#define KP_COL2_SEL		BIT(12)
-+
-+#define KPD_DEBOUNCE_MASK	GENMASK_ULL(13, 0)
-+
-+#define KPD_NUM_MEMS	5
-+#define KPD_MEM5_BITS	8
-+#define KPD_NUM_KEYS	72	/* 4 * 16 + KPD_MEM5_BITS */
-+
-+struct mtk_keypad {
-+	struct input_dev *input_dev;
-+	struct clk *clk;
-+	void __iomem *base;
-+	unsigned int irqnr;
-+	bool wakeup;
-+	u32 key_debounce;
-+	u32 n_rows;
-+	u32 n_cols;
-+	u32 keymap_state[KPD_NUM_MEMS];
-+};
-+
-+static void kpd_get_keymap_state(void __iomem *kp_base, u32 state[])
-+{
-+	memset_io(state, 0xff, KPD_NUM_MEMS);
-+	memcpy_fromio(state, kp_base, KPD_NUM_MEMS);
-+}
-+
-+static irqreturn_t kpd_irq_handler(int irq, void *dev_id)
-+{
-+	/* use _nosync to avoid deadlock */
-+	struct mtk_keypad *keypad = dev_id;
-+	unsigned short *keycode = keypad->input_dev->keycode;
-+	u32 new_state[KPD_NUM_MEMS], mask;
-+	unsigned long change = 0;
-+	int bit_nr;
-+	int pressed;
-+	u32 row_shift = get_count_order(keypad->n_cols);
-+	unsigned short code;
-+	int i;
-+
-+	disable_irq_nosync(keypad->irqnr);
-+
-+	kpd_get_keymap_state(keypad->base, new_state);
-+
-+	for (i = 0; i < KPD_NUM_MEMS; i++) {
-+		change = new_state[i] ^ keypad->keymap_state[i];
-+		if (!change)
-+			continue;
-+
-+		for_each_set_bit(bit_nr, &change, 32) {
-+			mask = 1 << bit_nr;
-+			pressed = (new_state[i] & mask) == 0U;
-+			dev_dbg(&keypad->input_dev->dev,
-+				"%s", pressed ? "pressed" : "released");
-+
-+			code = keycode[MATRIX_SCAN_CODE(i, bit_nr, row_shift)];
-+
-+			input_report_key(keypad->input_dev, code, pressed);
-+			input_sync(keypad->input_dev);
-+
-+			dev_dbg(&keypad->input_dev->dev,
-+				"report Linux keycode = %d\n", code);
-+		}
-+	}
-+
-+	memcpy(keypad->keymap_state, new_state, sizeof(new_state));
-+
-+	enable_irq(keypad->irqnr);
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static int kpd_get_dts_info(struct mtk_keypad *keypad)
-+{
-+	int ret;
-+	struct device *dev = keypad->input_dev->dev.parent;
-+	struct device_node *node = dev->of_node;
-+
-+	ret = matrix_keypad_parse_properties(dev, &keypad->n_rows,
-+					     &keypad->n_cols);
-+
-+	if (ret) {
-+		dev_err(dev, "failed to parse keypad params.\n");
-+		return ret;
-+	}
-+
-+	ret = of_property_read_u32(node, "mediatek,debounce-us",
-+				   &keypad->key_debounce);
-+	if (ret) {
-+		pr_debug("read mediatek,debounce-us error.\n");
-+		return ret;
-+	}
-+
-+	keypad->wakeup = of_property_read_bool(node, "wakeup-source");
-+
-+	dev_dbg(dev, "n_row=%d n_col=%d debounce=%d.\n",
-+		keypad->n_rows, keypad->n_cols,
-+		keypad->key_debounce);
-+
-+	return 0;
-+}
-+
-+static int kpd_gpio_init(struct device *dev)
-+{
-+	struct pinctrl *keypad_pinctrl;
-+	struct pinctrl_state *kpd_default;
-+
-+	keypad_pinctrl = devm_pinctrl_get(dev);
-+	if (IS_ERR(keypad_pinctrl)) {
-+		dev_err(dev, "Cannot find keypad_pinctrl!\n");
-+
-+		return PTR_ERR(keypad_pinctrl);
-+	}
-+
-+	kpd_default = pinctrl_lookup_state(keypad_pinctrl, "default");
-+	if (IS_ERR(kpd_default)) {
-+		dev_err(dev, "Cannot find ecall_state!\n");
-+
-+		return PTR_ERR(kpd_default);
-+	}
-+
-+	return pinctrl_select_state(keypad_pinctrl, kpd_default);
-+}
-+
-+static int kpd_pdrv_probe(struct platform_device *pdev)
-+{
-+	struct mtk_keypad *keypad;
-+	struct resource *res;
-+	int err;
-+
-+	if (!pdev->dev.of_node) {
-+		dev_err(&pdev->dev, "No device tree data present.\n");
-+		return -EINVAL;
-+	}
-+
-+	keypad = devm_kzalloc(&pdev->dev, sizeof(*keypad), GFP_KERNEL);
-+	if (!keypad)
-+		return -ENOMEM;
-+
-+	memset(keypad->keymap_state, 0xff, sizeof(keypad->keymap_state));
-+
-+	keypad->input_dev = devm_input_allocate_device(&pdev->dev);
-+	if (!keypad->input_dev) {
-+		dev_err(&pdev->dev, "input allocate device fail.\n");
-+		return -ENOMEM;
-+	}
-+
-+	keypad->input_dev->name = KPD_NAME;
-+	keypad->input_dev->id.bustype = BUS_HOST;
-+	keypad->input_dev->dev.parent = &pdev->dev;
-+
-+	err = kpd_get_dts_info(keypad);
-+	if (err) {
-+		dev_err(&pdev->dev, "get dts info failed.\n");
-+		return err;
-+	}
-+
-+	err = matrix_keypad_build_keymap(NULL, NULL,
-+					keypad->n_rows,
-+					keypad->n_cols,
-+					NULL,
-+					keypad->input_dev);
-+
-+	if (err) {
-+		dev_err(&pdev->dev, "build keymap failed.\n");
-+		return err;
-+	}
-+
-+	input_set_drvdata(keypad->input_dev, keypad);
-+
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	if (!res) {
-+		dev_err(&pdev->dev, "get IO memory resource failed.\n");
-+		return -ENODEV;
-+	}
-+
-+	keypad->base = devm_ioremap_resource(&pdev->dev, res);
-+	if (IS_ERR(keypad->base)) {
-+		dev_err(&pdev->dev, "KP iomap failed\n");
-+		return PTR_ERR(keypad->base);
-+	}
-+
-+	writew((keypad->key_debounce * 32 / 1000 & KPD_DEBOUNCE_MASK),
-+		keypad->base + KP_DEBOUNCE);
-+
-+	keypad->clk = devm_clk_get(&pdev->dev, "kpd");
-+	if (IS_ERR(keypad->clk)) {
-+		dev_err(&pdev->dev, "get kpd-clk fail.\n");
-+		return PTR_ERR(keypad->clk);
-+	}
-+
-+	err = clk_prepare_enable(keypad->clk);
-+	if (err) {
-+		dev_err(&pdev->dev, "kpd-clk prepare enable failed.\n");
-+		return err;
-+	}
-+
-+	err = kpd_gpio_init(&pdev->dev);
-+	if (err) {
-+		dev_err(&pdev->dev, "gpio init failed\n");
-+		return err;
-+	}
-+
-+	keypad->irqnr = platform_get_irq(pdev, 0);
-+	if (!keypad->irqnr) {
-+		dev_err(&pdev->dev, "KP get irqnr failed\n");
-+		return -EINVAL;
-+	}
-+
-+	err = devm_request_irq(&pdev->dev, keypad->irqnr,
-+				kpd_irq_handler, 0,
-+				KPD_NAME, keypad);
-+	if (err) {
-+		dev_err(&pdev->dev, "register IRQ failed.\n");
-+		return err;
-+	}
-+
-+	err = input_register_device(keypad->input_dev);
-+	if (err) {
-+		dev_err(&pdev->dev, "register input device failed.\n");
-+		return err;
-+	}
-+
-+	device_init_wakeup(&pdev->dev, keypad->wakeup);
-+
-+	platform_set_drvdata(pdev, keypad);
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id kpd_of_match[] = {
-+	{.compatible = "mediatek,kp"},
-+	{}
-+};
-+
-+static struct platform_driver kpd_pdrv = {
-+	.probe = kpd_pdrv_probe,
-+	.driver = {
-+		   .name = KPD_NAME,
-+		   .of_match_table = kpd_of_match,
-+	},
-+};
-+
-+module_platform_driver(kpd_pdrv);
-+
-+MODULE_AUTHOR("Mediatek Corporation");
-+MODULE_DESCRIPTION("MTK Keypad (KPD) Driver");
-+MODULE_LICENSE("GPL");
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
