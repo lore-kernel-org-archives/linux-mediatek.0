@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CB02BC33CA9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 07:17:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 93DD9C33CA9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 07:18:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9E1A82084D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 07:17:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4A052207FD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 07:18:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Gzou6JuD";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="OaXWhDzn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9E1A82084D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AYsdh2FB";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="nyrwVyLc"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4A052207FD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,62 +26,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TsT1yIERo84As9avAUH77E3FqYllnUnYxb+Q73hhvZI=; b=Gzou6JuDOry97q
-	m/TIXHUI73Bm6sZ97NnmU+v8O4gAyO78WoWVoQ16UhCu8rEXAM1e9z9im0oVX5bwjJJ2pjwzJ6pql
-	deYs1mk3NC6CpctQR0g7+adWlMJaRt9EKq5uxKIaoePBNt2cRG0wV61keUE6jCVjgcT62bUmegvsQ
-	2dTb/G9aLey3mfSbj6UmEvOKvHSjL3HF5qjI22mujk+Ci02e+pR27U1NFaBtyE/8zkmrp0I6PhVk5
-	W65QO1xtjLPVNMMe0hXFnSR5V423p+EIoDAC9GOmKXJozicjJrcjBUpXzdfUTl5d86XlPJvfMHZkx
-	Tym5mo3zlAdrCAitdhpg==;
+	List-Owner; bh=AMAlmpIdOWejdh8my05KnROyhJ3arwDxsUiL4GL3czA=; b=AYsdh2FBI+WGVq
+	/PW1bjq+Ac2KzuKgtBcImUUw2ieXNusiHnEFsQ0vPGajg/uiJCoa9zR8hXA+k3ZPkPg0dpZRlSewo
+	xQAB5W2gt5AvzgI4QxjiQxy467sBA4IGf4frhnh4zflX2jBEW5jhCVb5VRY/KYbiUiguuXF9QlCci
+	LetLEXkCJ0LhRv/iRHaYFxfyY6ADDtwBO5SR9kN7nuYkA/tsiUGhXcM83hgYrE9SmQY39tpD6ykDt
+	jViVrTdnSDqtZDJE9nAYwjtF24yQ2FQPcr9LPZRUXqYyD+tAqDHBIGD+fQDcLql0ln9I2vOUV/p6q
+	uj3gQ11PO/rCNLq91LoQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1irGS9-000517-4W; Tue, 14 Jan 2020 07:17:29 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1irGSi-0005Zk-0h; Tue, 14 Jan 2020 07:18:04 +0000
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1irGR4-0003yE-1G
- for linux-mediatek@lists.infradead.org; Tue, 14 Jan 2020 07:16:24 +0000
-Received: by mail-pl1-x644.google.com with SMTP id a6so4881726plm.3
- for <linux-mediatek@lists.infradead.org>; Mon, 13 Jan 2020 23:16:21 -0800 (PST)
+ id 1irGR7-00041N-11
+ for linux-mediatek@lists.infradead.org; Tue, 14 Jan 2020 07:16:27 +0000
+Received: by mail-pf1-x441.google.com with SMTP id x185so6147324pfc.5
+ for <linux-mediatek@lists.infradead.org>; Mon, 13 Jan 2020 23:16:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=aLfPCVSIPmuFzsEvFRWITFE6Wzi8RULGPe0z6zRKf5k=;
- b=OaXWhDznHboRO3zEjD8nrdw+NPv7XDmxHexHQ18scUseKp8UXWMnxGYaQfSFy8cFnE
- +Ubbzc9gJeDRMbc5G+6XYetc1Q0c4ODeK1pxl54x9asrntyjC6EY07Svt1G9m8ZrwPkq
- ucF48ITInsC2HX4bRf9zpq+ZC+grBF3fRwtoE=
+ bh=kL7MaPtbEc21MOhREjvhOgoDbupsHbrcTaafCHl6zWw=;
+ b=nyrwVyLcYnNR5mbm92LNGb5QtmCx+5pUoIH0aD8TvRWaA/To6hN3kVrNsRDENiENh9
+ y1BPUp40uFVRbuMzqrcmBYs+eWomH0z/SV1EzZnxa4zl0EM3jf+TUHwBnkr03hwwPk4+
+ rmBcnoqFF80mCeo3ILegZQxvfm8H/5T97yIao=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=aLfPCVSIPmuFzsEvFRWITFE6Wzi8RULGPe0z6zRKf5k=;
- b=pBdR/9x2IqaKqpxC+NHZA8/i/NFOWQepRTy4f2AGMWkKr+Imn7ktQzQj10qmbNgCBI
- 1W9SXvs9aRlX9CbtPyh6xGaJlyukWf1Fi8kMv2fEfc7x9qNWfUNR3Gr+6KU2hHU25kDF
- NOiaJ+uW9s8MS8TAtVf0FLeAH1Zq/IXTwXyH/McESq/utgn9JAiRWoBlvM83pzQUDPj4
- X03b1wD+w77pRXLme5dz9eFLaQLneMhrNxecS+izLTlnPrN5GdBi30m9M/YSlopBgSpk
- Qi8ByREcAFoDhVGr4/alT/iRPQJmoKZaX5fqWBYbL4Qk/12if/BFGLdH3MtL6k3Palvm
- rHWg==
-X-Gm-Message-State: APjAAAUG9SElflf8Ax7zTbd/6wtXPiOoo781y61O/PF7cViKBXOWZ1wB
- UJdPTQQc5h13Y8uYHRX0XwSWog==
-X-Google-Smtp-Source: APXvYqxoaFfKjcW7VC6bDMKbEbYjDWj5GXViWzYi47SIsxZBtHqGh0p0/A6VUYpSg16lvWuN86PdnA==
-X-Received: by 2002:a17:902:5a85:: with SMTP id
- r5mr18780643pli.222.1578986180443; 
- Mon, 13 Jan 2020 23:16:20 -0800 (PST)
+ bh=kL7MaPtbEc21MOhREjvhOgoDbupsHbrcTaafCHl6zWw=;
+ b=q7IasoFYntkfcMEjclobJBkvyR4tAtJdqO2AnFf3NK/2ObzZZ2HMCcqCaq4907E9ci
+ OzenOkgKGYaI8V8wuqWhl4/xJz5WpXjR5K1NpG5VlJfC2w/ajkTO4P9VLf6kWFOAlJPd
+ /h1X5ur7GFCnP8ipqJzMRW9t+dT8/XVhjqaZG0l+SnHiDlydj0emz3bxtwb+650zhvFy
+ k3CTKGE0Ev4Xi6JpBtsrsvP1kNjwuIm9WVNTQWXWXJtlVUdp222UMsCaPy21k44vECtk
+ s2M101CJ1Jy3nic0oB8IMHXKNLioCNfblCoIq4dC9MFPJaIjxI7NoFz2C5yAccuVXPIn
+ x6Fw==
+X-Gm-Message-State: APjAAAWQXr8rX9Eicc/0dEqHIQi2ZJdfyT1atcdlLOf/x6YVQL5pooo/
+ fCbDb7kj76mhgg7+h+Lm0GEVnQ==
+X-Google-Smtp-Source: APXvYqz1Db5nZXfVgPpUvk0sMU7jCh8DwGo6ABq63Sc0zluJCZpvIMzGYhdDt6IlBlStywedDMXynA==
+X-Received: by 2002:a63:d62:: with SMTP id 34mr26391053pgn.268.1578986183441; 
+ Mon, 13 Jan 2020 23:16:23 -0800 (PST)
 Received: from drinkcat2.tpe.corp.google.com
  ([2401:fa00:1:b:d8b7:33af:adcb:b648])
- by smtp.gmail.com with ESMTPSA id b4sm17092976pfd.18.2020.01.13.23.16.17
+ by smtp.gmail.com with ESMTPSA id b4sm17092976pfd.18.2020.01.13.23.16.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 Jan 2020 23:16:19 -0800 (PST)
+ Mon, 13 Jan 2020 23:16:22 -0800 (PST)
 From: Nicolas Boichat <drinkcat@chromium.org>
 To: Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v3 4/7] drm/panfrost: Add support for multiple regulators
-Date: Tue, 14 Jan 2020 15:15:59 +0800
-Message-Id: <20200114071602.47627-5-drinkcat@chromium.org>
+Subject: [PATCH v3 5/7] drm/panfrost: Add support for multiple power domains
+Date: Tue, 14 Jan 2020 15:16:00 +0800
+Message-Id: <20200114071602.47627-6-drinkcat@chromium.org>
 X-Mailer: git-send-email 2.25.0.rc1.283.g88dfdc4193-goog
 In-Reply-To: <20200114071602.47627-1-drinkcat@chromium.org>
 References: <20200114071602.47627-1-drinkcat@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200113_231622_223178_0E24585A 
-X-CRM114-Status: GOOD (  22.12  )
+X-CRM114-CacheID: sfid-20200113_231625_113470_73660AF1 
+X-CRM114-Status: GOOD (  21.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,187 +106,232 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some GPUs, namely, the bifrost/g72 part on MT8183, have a second
-regulator for their SRAM, let's add support for that.
+When there is a single power domain per device, the core will
+ensure the power domain is switched on (so it is technically
+equivalent to having not power domain specified at all).
 
-We extend the framework in a generic manner so that we could
-support more than 2 regulators, if required.
+However, when there are multiple domains, as in MT8183 Bifrost
+GPU, we need to handle them in driver code.
 
 Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
 
 ---
 
+The downstream driver we use on chromeos-4.19 currently uses 2
+additional devices in device tree to accomodate for this [1], but
+I believe this solution is cleaner.
+
+[1] https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-4.19/drivers/gpu/arm/midgard/platform/mediatek/mali_kbase_runtime_pm.c#31
+
 v3:
- - Make this more generic, by allowing any number of regulators
-   (in practice we fix the maximum number of regulators to 2, but
-   this could be increased easily).
- - We only probe the second regulator if the device tree matching
-   data asks for it.
- - I couldn't find a way to detect the number of regulators in the
-   device tree, if we wanted to refuse to probe the device if there
-   are too many regulators, which might be required for safety, see
-   the thread on v2 [1].
- - The discussion also included the idea of a separate device tree
-   entry for a "soft PDC", or at least a separate driver. I'm not
-   sure to understand the full picture, and how different vendors
-   implement this, so I'm still integrating everything in the main
-   driver. I'd be happy to try to make mt8183 fit into such a
-   framework after it's created, but I don't think I'm best placed
-   to implement (and again, the main purpose of this was to test
-   if the binding is correct).
+ - Use the compatible matching data to specify the number of power
+   domains. Note that setting 0 or 1 in num_pm_domains is equivalent
+   as the core will handle these 2 cases in the exact same way
+   (automatically, without driver intervention), and there should
+   be no adverse consequence in this case (the concern is about
+   switching on only some power domains and not others).
 
-[1] https://patchwork.kernel.org/patch/11322839/
-
- drivers/gpu/drm/panfrost/panfrost_device.c | 25 ++++++++++++-------
- drivers/gpu/drm/panfrost/panfrost_device.h | 15 +++++++++++-
- drivers/gpu/drm/panfrost/panfrost_drv.c    | 28 +++++++++++++++-------
- 3 files changed, 50 insertions(+), 18 deletions(-)
+ drivers/gpu/drm/panfrost/panfrost_device.c | 95 ++++++++++++++++++++--
+ drivers/gpu/drm/panfrost/panfrost_device.h |  9 ++
+ drivers/gpu/drm/panfrost/panfrost_drv.c    |  1 +
+ 3 files changed, 97 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/gpu/drm/panfrost/panfrost_device.c b/drivers/gpu/drm/panfrost/panfrost_device.c
-index 238fb6d54df4732..c30e0a3772a4f57 100644
+index c30e0a3772a4f57..7c9766f76cc7689 100644
 --- a/drivers/gpu/drm/panfrost/panfrost_device.c
 +++ b/drivers/gpu/drm/panfrost/panfrost_device.c
-@@ -87,18 +87,26 @@ static void panfrost_clk_fini(struct panfrost_device *pfdev)
+@@ -5,6 +5,7 @@
+ #include <linux/clk.h>
+ #include <linux/reset.h>
+ #include <linux/platform_device.h>
++#include <linux/pm_domain.h>
+ #include <linux/regulator/consumer.h>
  
- static int panfrost_regulator_init(struct panfrost_device *pfdev)
- {
--	int ret;
-+	int ret, i;
- 
--	pfdev->regulator = devm_regulator_get(pfdev->dev, "mali");
--	if (IS_ERR(pfdev->regulator)) {
--		ret = PTR_ERR(pfdev->regulator);
--		dev_err(pfdev->dev, "failed to get regulator: %d\n", ret);
-+	BUG_ON(pfdev->comp->num_supplies > ARRAY_SIZE(pfdev->regulators));
-+
-+	for (i = 0; i < pfdev->comp->num_supplies; i++) {
-+		pfdev->regulators[i].supply = pfdev->comp->supply_names[i];
-+	}
-+
-+	ret = devm_regulator_bulk_get(pfdev->dev,
-+				      pfdev->comp->num_supplies,
-+				      pfdev->regulators);
-+	if (ret < 0) {
-+		dev_err(pfdev->dev, "failed to get regulators: %d\n", ret);
- 		return ret;
- 	}
- 
--	ret = regulator_enable(pfdev->regulator);
-+	ret = regulator_bulk_enable(pfdev->comp->num_supplies,
-+				    pfdev->regulators);
- 	if (ret < 0) {
--		dev_err(pfdev->dev, "failed to enable regulator: %d\n", ret);
-+		dev_err(pfdev->dev, "failed to enable regulators: %d\n", ret);
- 		return ret;
- 	}
- 
-@@ -107,7 +115,8 @@ static int panfrost_regulator_init(struct panfrost_device *pfdev)
- 
- static void panfrost_regulator_fini(struct panfrost_device *pfdev)
- {
--	regulator_disable(pfdev->regulator);
-+	regulator_bulk_disable(pfdev->comp->num_supplies,
-+			pfdev->regulators);
+ #include "panfrost_device.h"
+@@ -119,6 +120,75 @@ static void panfrost_regulator_fini(struct panfrost_device *pfdev)
+ 			pfdev->regulators);
  }
  
++static void panfrost_pm_domain_fini(struct panfrost_device *pfdev)
++{
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(pfdev->pm_domain_devs); i++) {
++		if (!pfdev->pm_domain_devs[i])
++			break;
++
++		if (pfdev->pm_domain_links[i])
++			device_link_del(pfdev->pm_domain_links[i]);
++
++		dev_pm_domain_detach(pfdev->pm_domain_devs[i], true);
++	}
++}
++
++static int panfrost_pm_domain_init(struct panfrost_device *pfdev)
++{
++	int err;
++	int i, num_domains;
++
++	num_domains = of_count_phandle_with_args(pfdev->dev->of_node,
++						 "power-domains",
++						 "#power-domain-cells");
++
++	/*
++	 * Single domain is handled by the core, and, if only a single power
++	 * the power domain is requested, the property is optional.
++	 */
++	if (num_domains < 2 && pfdev->comp->num_pm_domains < 2)
++		return 0;
++
++	if (num_domains != pfdev->comp->num_pm_domains) {
++		dev_err(pfdev->dev,
++			"Incorrect number of power domains: %d provided, %d needed\n",
++			num_domains, pfdev->comp->num_pm_domains);
++		return -EINVAL;
++	}
++
++	BUG_ON(num_domains > ARRAY_SIZE(pfdev->pm_domain_devs));
++
++	for (i = 0; i < num_domains; i++) {
++		pfdev->pm_domain_devs[i] =
++			dev_pm_domain_attach_by_id(pfdev->dev, i);
++		if (IS_ERR(pfdev->pm_domain_devs[i])) {
++			err = PTR_ERR(pfdev->pm_domain_devs[i]);
++			pfdev->pm_domain_devs[i] = NULL;
++			dev_err(pfdev->dev,
++				"failed to get pm-domain %d: %d\n", i, err);
++			goto err;
++		}
++
++		pfdev->pm_domain_links[i] = device_link_add(pfdev->dev,
++				pfdev->pm_domain_devs[i], DL_FLAG_PM_RUNTIME |
++				DL_FLAG_STATELESS | DL_FLAG_RPM_ACTIVE);
++		if (!pfdev->pm_domain_links[i]) {
++			dev_err(pfdev->pm_domain_devs[i],
++				"adding device link failed!\n");
++			err = -ENODEV;
++			goto err;
++		}
++	}
++
++	return 0;
++
++err:
++	panfrost_pm_domain_fini(pfdev);
++	return err;
++}
++
  int panfrost_device_init(struct panfrost_device *pfdev)
+ {
+ 	int err;
+@@ -149,37 +219,45 @@ int panfrost_device_init(struct panfrost_device *pfdev)
+ 		goto err_out1;
+ 	}
+ 
++	err = panfrost_pm_domain_init(pfdev);
++	if (err) {
++		dev_err(pfdev->dev, "pm_domain init failed %d\n", err);
++		goto err_out2;
++	}
++
+ 	res = platform_get_resource(pfdev->pdev, IORESOURCE_MEM, 0);
+ 	pfdev->iomem = devm_ioremap_resource(pfdev->dev, res);
+ 	if (IS_ERR(pfdev->iomem)) {
+ 		dev_err(pfdev->dev, "failed to ioremap iomem\n");
+ 		err = PTR_ERR(pfdev->iomem);
+-		goto err_out2;
++		goto err_out3;
+ 	}
+ 
+ 	err = panfrost_gpu_init(pfdev);
+ 	if (err)
+-		goto err_out2;
++		goto err_out3;
+ 
+ 	err = panfrost_mmu_init(pfdev);
+ 	if (err)
+-		goto err_out3;
++		goto err_out4;
+ 
+ 	err = panfrost_job_init(pfdev);
+ 	if (err)
+-		goto err_out4;
++		goto err_out5;
+ 
+ 	err = panfrost_perfcnt_init(pfdev);
+ 	if (err)
+-		goto err_out5;
++		goto err_out6;
+ 
+ 	return 0;
+-err_out5:
++err_out6:
+ 	panfrost_job_fini(pfdev);
+-err_out4:
++err_out5:
+ 	panfrost_mmu_fini(pfdev);
+-err_out3:
++err_out4:
+ 	panfrost_gpu_fini(pfdev);
++err_out3:
++	panfrost_pm_domain_fini(pfdev);
+ err_out2:
+ 	panfrost_reset_fini(pfdev);
+ err_out1:
+@@ -196,6 +274,7 @@ void panfrost_device_fini(struct panfrost_device *pfdev)
+ 	panfrost_mmu_fini(pfdev);
+ 	panfrost_gpu_fini(pfdev);
+ 	panfrost_reset_fini(pfdev);
++	panfrost_pm_domain_fini(pfdev);
+ 	panfrost_regulator_fini(pfdev);
+ 	panfrost_clk_fini(pfdev);
+ }
 diff --git a/drivers/gpu/drm/panfrost/panfrost_device.h b/drivers/gpu/drm/panfrost/panfrost_device.h
-index 06713811b92cdf7..021f063ffb3747f 100644
+index 021f063ffb3747f..143eab57180a2e1 100644
 --- a/drivers/gpu/drm/panfrost/panfrost_device.h
 +++ b/drivers/gpu/drm/panfrost/panfrost_device.h
-@@ -7,6 +7,7 @@
- 
- #include <linux/atomic.h>
- #include <linux/io-pgtable.h>
-+#include <linux/regulator/consumer.h>
- #include <linux/spinlock.h>
- #include <drm/drm_device.h>
- #include <drm/drm_mm.h>
-@@ -19,6 +20,7 @@ struct panfrost_job;
- struct panfrost_perfcnt;
+@@ -21,6 +21,7 @@ struct panfrost_perfcnt;
  
  #define NUM_JOB_SLOTS 3
-+#define MAX_REGULATORS 2
+ #define MAX_REGULATORS 2
++#define MAX_PM_DOMAINS 3
  
  struct panfrost_features {
  	u16 id;
-@@ -51,6 +53,16 @@ struct panfrost_features {
- 	unsigned long hw_issues[64 / BITS_PER_LONG];
+@@ -61,6 +62,11 @@ struct panfrost_compatible {
+ 	/* Supplies count and names. */
+ 	int num_supplies;
+ 	const char * const *supply_names;
++	/*
++	 * Number of power domains required, note that values 0 and 1 are
++	 * handled identically, as only values > 1 need special handling.
++	 */
++	int num_pm_domains;
  };
  
-+/*
-+ * Features that cannot be automatically detected and need matching using the
-+ * compatible string, typically SoC-specific.
-+ */
-+struct panfrost_compatible {
-+	/* Supplies count and names. */
-+	int num_supplies;
-+	const char * const *supply_names;
-+};
-+
  struct panfrost_device {
- 	struct device *dev;
- 	struct drm_device *ddev;
-@@ -59,10 +71,11 @@ struct panfrost_device {
- 	void __iomem *iomem;
- 	struct clk *clock;
+@@ -73,6 +79,9 @@ struct panfrost_device {
  	struct clk *bus_clock;
--	struct regulator *regulator;
-+	struct regulator_bulk_data regulators[MAX_REGULATORS];
+ 	struct regulator_bulk_data regulators[MAX_REGULATORS];
  	struct reset_control *rstc;
++	/* pm_domains for devices with more than one. */
++	struct device *pm_domain_devs[MAX_PM_DOMAINS];
++	struct device_link *pm_domain_links[MAX_PM_DOMAINS];
  
  	struct panfrost_features features;
-+	const struct panfrost_compatible* comp;
- 
- 	spinlock_t as_lock;
- 	unsigned long as_in_use_mask;
+ 	const struct panfrost_compatible* comp;
 diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-index 48e3c4165247cea..db3563b80150c9d 100644
+index db3563b80150c9d..42b87e29e605149 100644
 --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
 +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-@@ -510,6 +510,10 @@ static int panfrost_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, pfdev);
- 
-+	pfdev->comp = of_device_get_match_data(&pdev->dev);
-+	if (!pfdev->comp)
-+		return -ENODEV;
-+
- 	/* Allocate and initialze the DRM device. */
- 	ddev = drm_dev_alloc(&panfrost_drm_driver, &pdev->dev);
- 	if (IS_ERR(ddev))
-@@ -581,16 +585,22 @@ static int panfrost_remove(struct platform_device *pdev)
- 	return 0;
- }
- 
-+const char * const default_supplies[] = { "mali" };
-+static const struct panfrost_compatible default_data = {
-+	.num_supplies = ARRAY_SIZE(default_supplies),
-+	.supply_names = default_supplies,
-+};
-+
- static const struct of_device_id dt_match[] = {
--	{ .compatible = "arm,mali-t604" },
--	{ .compatible = "arm,mali-t624" },
--	{ .compatible = "arm,mali-t628" },
--	{ .compatible = "arm,mali-t720" },
--	{ .compatible = "arm,mali-t760" },
--	{ .compatible = "arm,mali-t820" },
--	{ .compatible = "arm,mali-t830" },
--	{ .compatible = "arm,mali-t860" },
--	{ .compatible = "arm,mali-t880" },
-+	{ .compatible = "arm,mali-t604", .data = &default_data, },
-+	{ .compatible = "arm,mali-t624", .data = &default_data, },
-+	{ .compatible = "arm,mali-t628", .data = &default_data, },
-+	{ .compatible = "arm,mali-t720", .data = &default_data, },
-+	{ .compatible = "arm,mali-t760", .data = &default_data, },
-+	{ .compatible = "arm,mali-t820", .data = &default_data, },
-+	{ .compatible = "arm,mali-t830", .data = &default_data, },
-+	{ .compatible = "arm,mali-t860", .data = &default_data, },
-+	{ .compatible = "arm,mali-t880", .data = &default_data, },
- 	{}
+@@ -589,6 +589,7 @@ const char * const default_supplies[] = { "mali" };
+ static const struct panfrost_compatible default_data = {
+ 	.num_supplies = ARRAY_SIZE(default_supplies),
+ 	.supply_names = default_supplies,
++	.num_pm_domains = 1, /* optional */
  };
- MODULE_DEVICE_TABLE(of, dt_match);
+ 
+ static const struct of_device_id dt_match[] = {
 -- 
 2.25.0.rc1.283.g88dfdc4193-goog
 
