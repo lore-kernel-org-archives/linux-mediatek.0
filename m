@@ -2,165 +2,66 @@ Return-Path: <SRS0=47E0=3E=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1CB3FC32771
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 16:34:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 38F8EC32771
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 21:16:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E3FF9206D7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 16:34:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F41732084D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 21:16:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kZezZ8uF";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="bWvAKkH9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E3FF9206D7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eaTj6zEH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F41732084D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6ZfiI17GaFGy28eH1Ka7/DQb8n5GMySumhoiPVVROUo=; b=kZezZ8uFPZDuyQ
-	qNJd1zyimTDhOzKa9U7TfIFNKAzqaj/WqERGKmCs72FuJ/Pz5tUyyHxEzS39BLfdkt4+VpkHveq2n
-	6ROaLPBU4lkz8yePJ8D/pbOg37UXGDL8QBtblf78iecwl8t/zY6zsZR3fE3U7PeJAIpucnlxCdVPG
-	nO6JNck3vmWwocRRj5vO1kKLRiN1Mn6L4Vf4UxnhptqfKXVW/Voh0qpdzlPuoZDZOk7nSVZbhLtP/
-	uC9ZBoV0aeysDLiPlYW1KeH+wFEWYcV8Zw96GyuwBRCEHdYUNX+MJ9HP1mj/zMRkEZEckAzjASVIR
-	zRbsM4lDstm67c3/bIng==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bYTPRLm4be0gXFeCaQQToYL+pgfIQsdLuiV4HyFyiEs=; b=eaTj6zEHBHesU7
+	LjOfgwIkN31m2zoG0lqxBQ1fQM/ZMkah4PJfunmzJglWTRkusdUMBoA3Hd0b2AREEh19TGWwPKb1H
+	HgzlKbrab2ZVM7LBjSN7kPw+QWSbj7gPvqnxy3B6oIwCdrhfEzhYh2x+4161P6yq8nw8UDhdp96Xl
+	RyehA3qk3WnOc0kQWuWrI1xzmUf7jp4aHRWKg7ogMPebNxdJhHQwKDrBetxMLIaPgXVuYY0ahNAkT
+	2G6liGyf2RwssbMLzLqH9fmlpQFMw9skX5rjQm4EdMQkxc8nFxlOf+g2pgPQRmsilPzEmuMF5q6UH
+	FTuXZASVmYhJmI6XbqYg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1irlcx-00073x-Cq; Wed, 15 Jan 2020 16:34:43 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1irq1T-0004PL-Bp; Wed, 15 Jan 2020 21:16:19 +0000
+Received: from asavdk4.altibox.net ([109.247.116.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1irlcn-0006vg-AJ; Wed, 15 Jan 2020 16:34:37 +0000
-Received: by mail-wr1-x444.google.com with SMTP id y11so16390862wrt.6;
- Wed, 15 Jan 2020 08:34:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=eiPggUYZp/xQcpsjSZQUw89xeLxmmQi5kr/2jQMSVt0=;
- b=bWvAKkH91R12baIIjJmw9Vl4C/qXFMDwyMHSoeGIBcJCNWFV+Cegmw57Pw194FKtB8
- 1zG4tUmy4fdV3diB80EOn4DkM5Z3FefTtlD9tzRgSIHLCsLchn5gqNSGtWUXFn2ADNkc
- C6qSn6N5Vrt9Onc3xTZt7ppQsEznZecQZT/EpF+kTw5UEk5HfeOivAi1Eu10CrSYXQcn
- eGjdEVgLfGhV+4FSAODYdQCoT4UYK+PdBH2yyNGdFt0zlkRg2sAIXBDMNCI7tI4qrYEn
- Zi3/3QqKbMyvPal4JeNimR5txI955ThAQ2DjxgnmAzPThNmHb9cBMGQSW4EDguN+0Exm
- 3phQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=eiPggUYZp/xQcpsjSZQUw89xeLxmmQi5kr/2jQMSVt0=;
- b=Ypmnh4vL5IbZfAjDv8H+5yfBuhQGjEENkXOti1cymDf3ADFRKjccf4DStbcS3O9wwo
- IvRb4OPuC1xi/mNLVswgqvxQwIpnvkrb9uhw1UV59N9cd9Dh9QODewUZi7dkK5mj7NaT
- o1mko9s/nEsRw+oTKEfKeWVT4T7Ef0hhzhwBuDKlwobEYHVi2CiQUksS9zibv5QTljVN
- Qd4CvnswPTgCRFV8qWrrgIb7eypVFjKya7p0xaztZg4CgIm9MBHSy/u7AuLQq8cSo1rD
- MSP9dH8hmkXhc3IW/lTcQ5OLwIZLO2KHOAjelU7a9pvuVyI+1G1zO/uh0eVVmIfq8c2C
- KODQ==
-X-Gm-Message-State: APjAAAXv7mqIzinaW3Wvb3efLCdNfBjW9sSL2QgnHTe8A0ejEHQPfNNH
- Ro+TPuqIrlAQZFwov6PdVOgkm/C8
-X-Google-Smtp-Source: APXvYqyulJJfQY9vSrpubio3QqQ1w5kvgs8OBmfR+jUbDHLQgw9gOqpYuTMGw6abmdNVTd9964xjHQ==
-X-Received: by 2002:a5d:4847:: with SMTP id n7mr32294073wrs.30.1579106071100; 
- Wed, 15 Jan 2020 08:34:31 -0800 (PST)
-Received: from ziggy.stardust ([37.223.145.31])
- by smtp.gmail.com with ESMTPSA id q15sm25227861wrr.11.2020.01.15.08.34.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 15 Jan 2020 08:34:30 -0800 (PST)
-Subject: Re: [PATCH v3] arm64: dts: mt8183: Enable CPU idle-states
-To: James Liao <jamesjj.liao@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
- Mark Rutland <mark.rutland@arm.com>
-References: <1579066955-2214-1-git-send-email-jamesjj.liao@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <eab75b17-020c-251d-61ae-7f2521510b18@gmail.com>
-Date: Wed, 15 Jan 2020 17:34:29 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.0
+ id 1irq1Q-0002tc-F3
+ for linux-mediatek@lists.infradead.org; Wed, 15 Jan 2020 21:16:18 +0000
+Received: from ravnborg.org (unknown [158.248.194.18])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by asavdk4.altibox.net (Postfix) with ESMTPS id 1D865804E5;
+ Wed, 15 Jan 2020 22:14:05 +0100 (CET)
+Date: Wed, 15 Jan 2020 22:14:04 +0100
+From: Sam Ravnborg <sam@ravnborg.org>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Subject: Re: [PATCH v8 2/8] drm/panel: support for BOE tv101wum-nl6 wuxga dsi
+ video mode panel
+Message-ID: <20200115211404.GC28904@ravnborg.org>
+References: <20200115135958.126303-1-jitao.shi@mediatek.com>
+ <20200115135958.126303-3-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <1579066955-2214-1-git-send-email-jamesjj.liao@mediatek.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20200115135958.126303-3-jitao.shi@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-CMAE-Score: 0
+X-CMAE-Analysis: v=2.3 cv=VcLZwmh9 c=1 sm=1 tr=0
+ a=UWs3HLbX/2nnQ3s7vZ42gw==:117 a=UWs3HLbX/2nnQ3s7vZ42gw==:17
+ a=jpOVt7BSZ2e4Z31A5e1TngXxSK0=:19 a=kj9zAlcOel0A:10 a=mpaa-ttXAAAA:8
+ a=qFe5Z7MAUKcRMEBcnwwA:9 a=CjuIK1q_8ugA:10 a=6heAxKwa5pAsJatQ0mat:22
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200115_083433_386321_779F08D8 
-X-CRM114-Status: GOOD (  15.95  )
+X-CRM114-CacheID: sfid-20200115_131616_884565_611C1D19 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -172,123 +73,148 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- srv_heupstream@mediatek.com
+Cc: bibby.hsieh@mediatek.com, srv_heupstream@mediatek.com,
+ David Airlie <airlied@linux.ie>, stonea168@163.com,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ cawa.cheng@mediatek.com, ck.hu@mediatek.com,
+ Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ yingjoe.chen@mediatek.com, eddie.huang@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Jitao.
 
-
-On 15/01/2020 06:42, James Liao wrote:
-> Enable mcdi-cpu and mcdi-cluster on MT8183 CPUs.
-> 
-> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
-
-pushed to v5.6-tmp/dts64 which will end-up to be v5.6-next/dts64 when v5.6-rc1
-is out.
-
-Thanks!
-
-> ---
-> This patch bases on v5.5-rc6, adds idle-states for MT8183 CPUs.
-> 
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 30 ++++++++++++++++++++++++++++++
->  1 file changed, 30 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 10b3247..1007a13 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -73,6 +73,7 @@
->  			reg = <0x000>;
->  			enable-method = "psci";
->  			capacity-dmips-mhz = <741>;
-> +			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
->  		};
->  
->  		cpu1: cpu@1 {
-> @@ -81,6 +82,7 @@
->  			reg = <0x001>;
->  			enable-method = "psci";
->  			capacity-dmips-mhz = <741>;
-> +			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
->  		};
->  
->  		cpu2: cpu@2 {
-> @@ -89,6 +91,7 @@
->  			reg = <0x002>;
->  			enable-method = "psci";
->  			capacity-dmips-mhz = <741>;
-> +			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
->  		};
->  
->  		cpu3: cpu@3 {
-> @@ -97,6 +100,7 @@
->  			reg = <0x003>;
->  			enable-method = "psci";
->  			capacity-dmips-mhz = <741>;
-> +			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
->  		};
->  
->  		cpu4: cpu@100 {
-> @@ -105,6 +109,7 @@
->  			reg = <0x100>;
->  			enable-method = "psci";
->  			capacity-dmips-mhz = <1024>;
-> +			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
->  		};
->  
->  		cpu5: cpu@101 {
-> @@ -113,6 +118,7 @@
->  			reg = <0x101>;
->  			enable-method = "psci";
->  			capacity-dmips-mhz = <1024>;
-> +			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
->  		};
->  
->  		cpu6: cpu@102 {
-> @@ -121,6 +127,7 @@
->  			reg = <0x102>;
->  			enable-method = "psci";
->  			capacity-dmips-mhz = <1024>;
-> +			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
->  		};
->  
->  		cpu7: cpu@103 {
-> @@ -129,6 +136,29 @@
->  			reg = <0x103>;
->  			enable-method = "psci";
->  			capacity-dmips-mhz = <1024>;
-> +			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
-> +		};
 > +
-> +		idle-states {
-> +			entry-method = "psci";
+> +static int boe_panel_add(struct boe_panel *boe)
+> +{
+> +	struct device *dev = &boe->dsi->dev;
+> +	int err;
 > +
-> +			CPU_SLEEP: cpu-sleep {
-> +				compatible = "arm,idle-state";
-> +				local-timer-stop;
-> +				arm,psci-suspend-param = <0x00010001>;
-> +				entry-latency-us = <200>;
-> +				exit-latency-us = <200>;
-> +				min-residency-us = <800>;
-> +			};
+> +	boe->avdd = devm_regulator_get(dev, "avdd");
+> +	if (IS_ERR(boe->avdd))
+> +		return PTR_ERR(boe->avdd);
 > +
-> +			CLUSTER_SLEEP: cluster-sleep {
-> +				compatible = "arm,idle-state";
-> +				local-timer-stop;
-> +				arm,psci-suspend-param = <0x01010001>;
-> +				entry-latency-us = <250>;
-> +				exit-latency-us = <400>;
-> +				min-residency-us = <1300>;
-> +			};
->  		};
->  	};
->  
-> 
+> +	boe->avee = devm_regulator_get(dev, "avee");
+> +	if (IS_ERR(boe->avee))
+> +		return PTR_ERR(boe->avee);
+> +
+> +	boe->pp1800 = devm_regulator_get(dev, "pp1800");
+> +	if (IS_ERR(boe->pp1800))
+> +		return PTR_ERR(boe->pp1800);
+> +
+> +	boe->enable_gpio = devm_gpiod_get(dev, "enable", GPIOD_OUT_LOW);
+> +	if (IS_ERR(boe->enable_gpio)) {
+> +		dev_err(dev, "cannot get reset-gpios %ld\n",
+> +			PTR_ERR(boe->enable_gpio));
+> +		return PTR_ERR(boe->enable_gpio);
+> +	}
+> +
+> +	gpiod_set_value(boe->enable_gpio, 0);
+> +
+> +	err = drm_panel_of_backlight(&boe->base);
+> +	if (err)
+> +		return err;
+From the descrition of drm_panel_of_backlight():
+
+""
+drm_panel_of_backlight() must be called after the call to drm_panel_init().
+""
+
+Please do as documented.
+
+	Sam
+
+> +
+> +	drm_panel_init(&boe->base, dev, &boe_panel_funcs,
+> +		       DRM_MODE_CONNECTOR_DSI);
+> +
+> +	boe->base.funcs = &boe_panel_funcs;
+> +	boe->base.dev = &boe->dsi->dev;
+> +
+> +	return drm_panel_add(&boe->base);
+> +}
+> +
+> +static int boe_panel_probe(struct mipi_dsi_device *dsi)
+> +{
+> +	struct boe_panel *boe;
+> +	int ret;
+> +	const struct panel_desc *desc;
+> +
+> +	boe = devm_kzalloc(&dsi->dev, sizeof(*boe), GFP_KERNEL);
+> +	if (!boe)
+> +		return -ENOMEM;
+> +
+> +	desc = of_device_get_match_data(&dsi->dev);
+> +	dsi->lanes = desc->lanes;
+> +	dsi->format = desc->format;
+> +	dsi->mode_flags = desc->mode_flags;
+> +	boe->desc = desc;
+> +	boe->dsi = dsi;
+> +	ret = boe_panel_add(boe);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	mipi_dsi_set_drvdata(dsi, boe);
+> +
+> +	ret = mipi_dsi_attach(dsi);
+> +	if (ret)
+> +		drm_panel_remove(&boe->base);
+> +
+> +	return ret;
+> +}
+> +
+> +static void boe_panel_shutdown(struct mipi_dsi_device *dsi)
+> +{
+> +	struct boe_panel *boe = mipi_dsi_get_drvdata(dsi);
+> +
+> +	drm_panel_disable(&boe->base);
+> +	drm_panel_unprepare(&boe->base);
+> +}
+> +
+> +static int boe_panel_remove(struct mipi_dsi_device *dsi)
+> +{
+> +	struct boe_panel *boe = mipi_dsi_get_drvdata(dsi);
+> +	int ret;
+> +
+> +	boe_panel_shutdown(dsi);
+> +
+> +	ret = mipi_dsi_detach(dsi);
+> +	if (ret < 0)
+> +		dev_err(&dsi->dev, "failed to detach from DSI host: %d\n", ret);
+> +
+> +	if (boe->base.dev)
+> +		drm_panel_remove(&boe->base);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct of_device_id boe_of_match[] = {
+> +	{ .compatible = "boe,tv101wum-nl6",
+> +	  .data = &boe_tv101wum_nl6_desc
+> +	},
+> +	{ /* sentinel */ }
+> +};
+> +MODULE_DEVICE_TABLE(of, boe_of_match);
+> +
+> +static struct mipi_dsi_driver boe_panel_driver = {
+> +	.driver = {
+> +		.name = "panel-boe-tv101wum-nl6",
+> +		.of_match_table = boe_of_match,
+> +	},
+> +	.probe = boe_panel_probe,
+> +	.remove = boe_panel_remove,
+> +	.shutdown = boe_panel_shutdown,
+> +};
+> +module_mipi_dsi_driver(boe_panel_driver);
+> +
+> +MODULE_AUTHOR("Jitao Shi <jitao.shi@mediatek.com>");
+> +MODULE_DESCRIPTION("BOE tv101wum-nl6 1200x1920 video mode panel driver");
+> +MODULE_LICENSE("GPL v2");
+> -- 
+> 2.21.0
 
 _______________________________________________
 Linux-mediatek mailing list
