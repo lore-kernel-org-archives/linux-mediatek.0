@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 01862C33CB1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 16:19:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1CB3FC32771
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 16:34:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B01F9222C3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 16:19:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E3FF9206D7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 16:34:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UW61W4FM";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Iv3d2Ny2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B01F9222C3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kZezZ8uF";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="bWvAKkH9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E3FF9206D7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,59 +27,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/dZ85+u30E+ejgA9UqHwwPfDug4Pjd7509b4VXhUjVU=; b=UW61W4FMPjOV74
-	JpushsLx8s+wKVXs18Kvt8B3kzJ1dMIzuqdgwUuwyFgUtkPpiLy5V+95q66aLG9dfjOKbmwU9+Mtf
-	APuYH1ImHS+E8jCT88CRnGkcqRSvddd3o/k5nAN0T0wUkKkeJcJBISckh073xWashlp5Dr7liyPHF
-	vza+OtOk/EH4yMV9g7/Lec+QtAbV+omFArqmio5ojKJf7GAf4UwzdnEaAB1mBf0x1WR+TjsVGks6T
-	NrfgDeE/ZSjrtbxXxM5KNHF6N3nq3Wq26HCqvd/J3sED5njbx7IWalUsWBjCI+rAccTn8+Ta1rXmv
-	Y/vpIVIDx361L2i38+HQ==;
+	List-Owner; bh=6ZfiI17GaFGy28eH1Ka7/DQb8n5GMySumhoiPVVROUo=; b=kZezZ8uFPZDuyQ
+	qNJd1zyimTDhOzKa9U7TfIFNKAzqaj/WqERGKmCs72FuJ/Pz5tUyyHxEzS39BLfdkt4+VpkHveq2n
+	6ROaLPBU4lkz8yePJ8D/pbOg37UXGDL8QBtblf78iecwl8t/zY6zsZR3fE3U7PeJAIpucnlxCdVPG
+	nO6JNck3vmWwocRRj5vO1kKLRiN1Mn6L4Vf4UxnhptqfKXVW/Voh0qpdzlPuoZDZOk7nSVZbhLtP/
+	uC9ZBoV0aeysDLiPlYW1KeH+wFEWYcV8Zw96GyuwBRCEHdYUNX+MJ9HP1mj/zMRkEZEckAzjASVIR
+	zRbsM4lDstm67c3/bIng==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1irlNe-0000en-Us; Wed, 15 Jan 2020 16:18:54 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1irlcx-00073x-Cq; Wed, 15 Jan 2020 16:34:43 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1irlNX-0000Wo-FT; Wed, 15 Jan 2020 16:18:51 +0000
-Received: by mail-pg1-x542.google.com with SMTP id r11so8443091pgf.1;
- Wed, 15 Jan 2020 08:18:47 -0800 (PST)
+ id 1irlcn-0006vg-AJ; Wed, 15 Jan 2020 16:34:37 +0000
+Received: by mail-wr1-x444.google.com with SMTP id y11so16390862wrt.6;
+ Wed, 15 Jan 2020 08:34:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=kFZXMHBry+L47F+qM+tBs/CLu4eTyxiD1l9sMPZiabg=;
- b=Iv3d2Ny2zXWbM48eUhUk9dHw9fNN1BcoCyW/u65PYOuMwrAkjU2P+BGI0tngaLBpto
- huTFtiCH4La8U2zXlXyDNMmaMziDo8X5HU/+ZtQ+y0C4wBgHF8jH1BXCrh/SyLmbfl2x
- rDtq4s4iAV+n4MruclgcbNUN7r7MjpeKKn0UIuWS51B48+1kk5nKkDoQ5jjBsYVbrisk
- hfc38kUyWjMaKdZD16BWMWjTVfqqDcQlPn4rS70dfPtDrBmDyKILDVqz6ZYgDIl/H266
- LXWbxCF5O49sLI22T5xVfuEOc0UefKb+aTLfH7MiSL+szmBlEsbvLsehJuuvtFxL2dyP
- ee5A==
+ bh=eiPggUYZp/xQcpsjSZQUw89xeLxmmQi5kr/2jQMSVt0=;
+ b=bWvAKkH91R12baIIjJmw9Vl4C/qXFMDwyMHSoeGIBcJCNWFV+Cegmw57Pw194FKtB8
+ 1zG4tUmy4fdV3diB80EOn4DkM5Z3FefTtlD9tzRgSIHLCsLchn5gqNSGtWUXFn2ADNkc
+ C6qSn6N5Vrt9Onc3xTZt7ppQsEznZecQZT/EpF+kTw5UEk5HfeOivAi1Eu10CrSYXQcn
+ eGjdEVgLfGhV+4FSAODYdQCoT4UYK+PdBH2yyNGdFt0zlkRg2sAIXBDMNCI7tI4qrYEn
+ Zi3/3QqKbMyvPal4JeNimR5txI955ThAQ2DjxgnmAzPThNmHb9cBMGQSW4EDguN+0Exm
+ 3phQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=kFZXMHBry+L47F+qM+tBs/CLu4eTyxiD1l9sMPZiabg=;
- b=tA/sN5y+itsYS/V+nPr1m4ITyAoz8QF2NcCrjnxazVJ7tqcn5B55xK0VvIy0PqEbsb
- 6h100L6JIBmeVSu0IR9OMeJ7ISxmp5UUqks1IloTvtNKiRvkCR54RzowmEf7qkOWzt+J
- QDYbPHbqiANtKrJD6R7fr6v+jtvpJifrYcLZCPLQ0GccZtsMSUqxXpRHxxwOIuci0Quy
- PjeKqjjbyKbN3f98RUtqkGiLz9q/ySAjeGW7Sg3e9fTnRRh0wd2hTLwRmf8aLB8/XbtN
- GwWMGalbssTqsaftucJVKPrAFIR6jCM6y4rd0kJ91sCm0Rzs0uclYjRFtg0q0KwnBXd/
- gisA==
-X-Gm-Message-State: APjAAAXN+p877G8eUy7gTtzMPCosLZgg0wUD8kkqe1stpzzvmDSKYsrr
- hTU4Ay7nNLFcqMmclX2QAzw=
-X-Google-Smtp-Source: APXvYqyAzKfeOQN1KEqcuJJsYULzFNW7nRQf0FhEjcUHl8gG0GpWS07Xin657lcnmljGgLIQkCfndA==
-X-Received: by 2002:aa7:824d:: with SMTP id e13mr32114420pfn.247.1579105126655; 
- Wed, 15 Jan 2020 08:18:46 -0800 (PST)
+ bh=eiPggUYZp/xQcpsjSZQUw89xeLxmmQi5kr/2jQMSVt0=;
+ b=Ypmnh4vL5IbZfAjDv8H+5yfBuhQGjEENkXOti1cymDf3ADFRKjccf4DStbcS3O9wwo
+ IvRb4OPuC1xi/mNLVswgqvxQwIpnvkrb9uhw1UV59N9cd9Dh9QODewUZi7dkK5mj7NaT
+ o1mko9s/nEsRw+oTKEfKeWVT4T7Ef0hhzhwBuDKlwobEYHVi2CiQUksS9zibv5QTljVN
+ Qd4CvnswPTgCRFV8qWrrgIb7eypVFjKya7p0xaztZg4CgIm9MBHSy/u7AuLQq8cSo1rD
+ MSP9dH8hmkXhc3IW/lTcQ5OLwIZLO2KHOAjelU7a9pvuVyI+1G1zO/uh0eVVmIfq8c2C
+ KODQ==
+X-Gm-Message-State: APjAAAXv7mqIzinaW3Wvb3efLCdNfBjW9sSL2QgnHTe8A0ejEHQPfNNH
+ Ro+TPuqIrlAQZFwov6PdVOgkm/C8
+X-Google-Smtp-Source: APXvYqyulJJfQY9vSrpubio3QqQ1w5kvgs8OBmfR+jUbDHLQgw9gOqpYuTMGw6abmdNVTd9964xjHQ==
+X-Received: by 2002:a5d:4847:: with SMTP id n7mr32294073wrs.30.1579106071100; 
+ Wed, 15 Jan 2020 08:34:31 -0800 (PST)
 Received: from ziggy.stardust ([37.223.145.31])
- by smtp.gmail.com with ESMTPSA id t63sm22592758pfb.70.2020.01.15.08.18.43
+ by smtp.gmail.com with ESMTPSA id q15sm25227861wrr.11.2020.01.15.08.34.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 15 Jan 2020 08:18:45 -0800 (PST)
-Subject: Re: [PATCH v12 4/4] watchdog: mtk_wdt: mt2712: Add reset controller
-To: Yong Liang <yong.liang@mediatek.com>, wim@linux-watchdog.org,
- linux@roeck-us.net, p.zabel@pengutronix.de, linux-watchdog@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- chang-an.chen@mediatek.com, freddy.hsin@mediatek.com, jiaxin.yu@mediatek.com
-References: <20200115085828.27791-1-yong.liang@mediatek.com>
- <20200115085828.27791-5-yong.liang@mediatek.com>
+ Wed, 15 Jan 2020 08:34:30 -0800 (PST)
+Subject: Re: [PATCH v3] arm64: dts: mt8183: Enable CPU idle-states
+To: James Liao <jamesjj.liao@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
+ Mark Rutland <mark.rutland@arm.com>
+References: <1579066955-2214-1-git-send-email-jamesjj.liao@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -155,16 +151,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <987a7ccf-3d1b-9d4b-d766-63925268c21e@gmail.com>
-Date: Wed, 15 Jan 2020 17:18:41 +0100
+Message-ID: <eab75b17-020c-251d-61ae-7f2521510b18@gmail.com>
+Date: Wed, 15 Jan 2020 17:34:29 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.3.0
 MIME-Version: 1.0
-In-Reply-To: <20200115085828.27791-5-yong.liang@mediatek.com>
+In-Reply-To: <1579066955-2214-1-git-send-email-jamesjj.liao@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200115_081847_552473_D6A9EB1A 
-X-CRM114-Status: GOOD (  17.79  )
+X-CRM114-CacheID: sfid-20200115_083433_386321_779F08D8 
+X-CRM114-Status: GOOD (  15.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -176,7 +172,9 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: sboyd@kernel.org, yingjoe.chen@mediatek.com
+Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ srv_heupstream@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -184,55 +182,112 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 15/01/2020 09:58, Yong Liang wrote:
-> From: "yong.liang" <yong.liang@mediatek.com>
+On 15/01/2020 06:42, James Liao wrote:
+> Enable mcdi-cpu and mcdi-cluster on MT8183 CPUs.
 > 
-> Add reset controller for 2712.
-> Besides watchdog, MTK toprgu module alsa provide sub-system (eg, audio,
-> camera, codec and connectivity) software reset functionality.
-> 
-> Signed-off-by: yong.liang <yong.liang@mediatek.com>
-> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-> Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
-> Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+> Signed-off-by: James Liao <jamesjj.liao@mediatek.com>
 
-Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
+pushed to v5.6-tmp/dts64 which will end-up to be v5.6-next/dts64 when v5.6-rc1
+is out.
+
+Thanks!
 
 > ---
->  drivers/watchdog/mtk_wdt.c | 6 ++++++
->  1 file changed, 6 insertions(+)
+> This patch bases on v5.5-rc6, adds idle-states for MT8183 CPUs.
 > 
-> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-> index e88aacb0404d..d6a6393f609d 100644
-> --- a/drivers/watchdog/mtk_wdt.c
-> +++ b/drivers/watchdog/mtk_wdt.c
-> @@ -9,6 +9,7 @@
->   * Based on sunxi_wdt.c
->   */
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 30 ++++++++++++++++++++++++++++++
+>  1 file changed, 30 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 10b3247..1007a13 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -73,6 +73,7 @@
+>  			reg = <0x000>;
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <741>;
+> +			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
+>  		};
 >  
-> +#include <dt-bindings/reset-controller/mt2712-resets.h>
->  #include <dt-bindings/reset-controller/mt8183-resets.h>
->  #include <linux/delay.h>
->  #include <linux/err.h>
-> @@ -67,6 +68,10 @@ struct mtk_wdt_data {
->  	int toprgu_sw_rst_num;
->  };
+>  		cpu1: cpu@1 {
+> @@ -81,6 +82,7 @@
+>  			reg = <0x001>;
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <741>;
+> +			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
+>  		};
 >  
-> +static const struct mtk_wdt_data mt2712_data = {
-> +	.toprgu_sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
-> +};
+>  		cpu2: cpu@2 {
+> @@ -89,6 +91,7 @@
+>  			reg = <0x002>;
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <741>;
+> +			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
+>  		};
+>  
+>  		cpu3: cpu@3 {
+> @@ -97,6 +100,7 @@
+>  			reg = <0x003>;
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <741>;
+> +			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
+>  		};
+>  
+>  		cpu4: cpu@100 {
+> @@ -105,6 +109,7 @@
+>  			reg = <0x100>;
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <1024>;
+> +			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
+>  		};
+>  
+>  		cpu5: cpu@101 {
+> @@ -113,6 +118,7 @@
+>  			reg = <0x101>;
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <1024>;
+> +			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
+>  		};
+>  
+>  		cpu6: cpu@102 {
+> @@ -121,6 +127,7 @@
+>  			reg = <0x102>;
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <1024>;
+> +			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
+>  		};
+>  
+>  		cpu7: cpu@103 {
+> @@ -129,6 +136,29 @@
+>  			reg = <0x103>;
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <1024>;
+> +			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
+> +		};
 > +
->  static const struct mtk_wdt_data mt8183_data = {
->  	.toprgu_sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
->  };
-> @@ -314,6 +319,7 @@ static int mtk_wdt_resume(struct device *dev)
->  #endif
+> +		idle-states {
+> +			entry-method = "psci";
+> +
+> +			CPU_SLEEP: cpu-sleep {
+> +				compatible = "arm,idle-state";
+> +				local-timer-stop;
+> +				arm,psci-suspend-param = <0x00010001>;
+> +				entry-latency-us = <200>;
+> +				exit-latency-us = <200>;
+> +				min-residency-us = <800>;
+> +			};
+> +
+> +			CLUSTER_SLEEP: cluster-sleep {
+> +				compatible = "arm,idle-state";
+> +				local-timer-stop;
+> +				arm,psci-suspend-param = <0x01010001>;
+> +				entry-latency-us = <250>;
+> +				exit-latency-us = <400>;
+> +				min-residency-us = <1300>;
+> +			};
+>  		};
+>  	};
 >  
->  static const struct of_device_id mtk_wdt_dt_ids[] = {
-> +	{ .compatible = "mediatek,mt2712-wdt", .data = &mt2712_data },
->  	{ .compatible = "mediatek,mt6589-wdt" },
->  	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
->  	{ /* sentinel */ }
 > 
 
 _______________________________________________
