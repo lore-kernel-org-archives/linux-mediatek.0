@@ -2,62 +2,62 @@ Return-Path: <SRS0=47E0=3E=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A5B0FC33CB3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 08:59:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7AE85C33CB1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 09:09:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 78B7C24655
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 08:59:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 462892081E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 09:09:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TiuJ0T8i";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="WKM4s8x7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 78B7C24655
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BQqN4cOD";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Mydr4I9m"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 462892081E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=i5fK1tMkg0X6w1hYUm28ltUSUy0KTYo6WY/0pTR2mYQ=; b=TiuJ0T8iYe0Ssg
-	kOQgVSRhNCuqQdrQS0eXcy9wsZIq+MQSDmHZllAl6r1FMRV1yRLLZ6EnWYAgNa+GMNKHUHkXzDtVx
-	4xLgZuXPbEIpZVYNoEysvGtaKfTINFHgw0Iz0N2wXHReExWuQDC2xoie8evxX16QjOao5RyV2ag1k
-	D5O96X7J3Ofo5OzfYSzJ6iMiUvNf7hciedr/n4Usn/TUb2zjcTxs+xrESA/aW0avP3oIARRipg0tu
-	bJ68dd6d42YcEm3fN+hLg0Xa3j1R30ysVsOPmrAR5QVemeXNudDZdx3BtxQVaI2jHdGEw0oGHxGkz
-	5NqSX7goP23LxpPsHmHg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=eDncRrUKD2yjgjK/Btc21D8tWw+kPf0jyA3zw6xfpOI=; b=BQqN4cODk5Qcpk
+	DiaVHWmR0khs6a/Rr+2P//V9k7bzjE9St1bw94HNzLwxAEYc1xo4mGBjthbZsFs+/YhEDL50Aahs6
+	VRcir/NNHrkKRqvX3PG/fAijLKWLUsiQytj1TytwQlBZ1UEyvGn5tLGTSsBnMAwpUopcOAdwK7+dG
+	5TQtE47d2Uc9OsJKqAQ4fuK0/gkIN9XGO6zj6InrqFM5ZqYUQVkHG10MsOW0ovoKrJ5euH0tvimhR
+	70Ftc54GJFI8yWxs99D5Dm2tEgiSwtYXWe/4s1HLdZxoTM7BglShKrsRywKETvdDsfr4ym7BSzSNw
+	JEsxpEhgcXzHJ9CtMkmg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ireW8-0002YD-17; Wed, 15 Jan 2020 08:59:12 +0000
+	id 1irefS-0006BJ-NG; Wed, 15 Jan 2020 09:08:50 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ireVr-0002Gs-2X; Wed, 15 Jan 2020 08:58:57 +0000
-X-UUID: 8e7b7373972e4af8900f261b2478513c-20200115
+ id 1irefN-00069e-4z; Wed, 15 Jan 2020 09:08:49 +0000
+X-UUID: e121a770a9b040a4a5d6bf4d9afd11d3-20200115
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=UunoMdrTa5yiW8ikAsKa+Kru5ZGQaRL2GDjuh52c1xM=; 
- b=WKM4s8x7uySODSryQ9BraD5Fba8+6UAiH/siwKu7CWdp2lUzmpVDAL5EF0qgqnEWngs8PACPwAnWfA3G+K25kULmS7oAIU3zYRfl/XZacNsDC89A2Fwx/leBinCcgMZgIXd/MDNeqhQAas1l3wG6+I4FS+yudMyfI5hy8ZI5EB4=;
-X-UUID: 8e7b7373972e4af8900f261b2478513c-20200115
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=U6iKhf6uYPrEgi3REmjZlRMPvQB9C+waid6ttTWHp3c=; 
+ b=Mydr4I9mx5azGMIgXkcH8EzodVbCb3N8zbquuoiA0CLiLloVsQSoUQu1ZJR6wzT0+2ugOgCtpq6tc9wfdd5gK+7a6JcoDp+p8DQDQeCMFFrzwjfa3XwPDUqvBcRDqzun6ULKk7qHHZvyYz6h1ztbs2fiFuEgxKqdgKvDaJC1bHs=;
+X-UUID: e121a770a9b040a4a5d6bf4d9afd11d3-20200115
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.liang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1599314029; Wed, 15 Jan 2020 00:58:51 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 15 Jan 2020 00:58:48 -0800
+ with ESMTP id 1103814478; Wed, 15 Jan 2020 01:08:41 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 15 Jan 2020 00:59:27 -0800
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 15 Jan 2020 16:57:32 +0800
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 15 Jan 2020 16:57:40 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 15 Jan 2020 16:58:42 +0800
+ Transport; Wed, 15 Jan 2020 16:58:43 +0800
 From: Yong Liang <yong.liang@mediatek.com>
 To: <yong.liang@mediatek.com>, <wim@linux-watchdog.org>, <linux@roeck-us.net>, 
  <p.zabel@pengutronix.de>, <matthias.bgg@gmail.com>,
@@ -65,15 +65,18 @@ To: <yong.liang@mediatek.com>, <wim@linux-watchdog.org>, <linux@roeck-us.net>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <devicetree@vger.kernel.org>, <chang-an.chen@mediatek.com>,
  <freddy.hsin@mediatek.com>, <jiaxin.yu@mediatek.com>
-Subject: [PATCH v12 0/4] ASoC: mt8183: fix audio playback slowly after playback
-Date: Wed, 15 Jan 2020 16:58:24 +0800
-Message-ID: <20200115085828.27791-1-yong.liang@mediatek.com>
+Subject: [PATCH v12 1/4] dt-bindings: mediatek: mt8183: Add #reset-cells
+Date: Wed, 15 Jan 2020 16:58:25 +0800
+Message-ID: <20200115085828.27791-2-yong.liang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20200115085828.27791-1-yong.liang@mediatek.com>
+References: <20200115085828.27791-1-yong.liang@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 3E993CFABE8082746CE03459EF01B1928F41185E6C47FF61257C188683AB69782000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200115_005855_156509_A6620679 
-X-CRM114-Status: UNSURE (   8.19  )
+X-CRM114-CacheID: sfid-20200115_010845_219718_B8F7D34B 
+X-CRM114-Status: UNSURE (   8.75  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -94,78 +97,74 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "yong.liang" <yong.liang@mediatek.com>
 
-This series patches add reset controller for MT8183 and MT2712, and audio will use it in 
-machine driver during bootup, they depend on the for-next.
+Add #reset-cells property and update example
 
-v12 changes:
-1. Split MT2712 from MT8183 for mtk-wdt.txt
+Signed-off-by: yong.liang <yong.liang@mediatek.com>
+Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+Reviewed-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Guenter Roeck <groeck7@gmail.com>
+---
+ .../devicetree/bindings/watchdog/mtk-wdt.txt    | 10 +++++++---
+ .../reset-controller/mt8183-resets.h            | 17 +++++++++++++++++
+ 2 files changed, 24 insertions(+), 3 deletions(-)
 
-v11 changes:
-1. Create a new patch for MT2712.
-
-v10 changes:
-1. Modify mtk-wdt.txt dt-bindings.
-
-v9 changes:
-1. Remove Change-Id.
-
-v8 changes:
-1. Delete cast: (struct mtk_wdt_data *)
-
-v7 changes:
-1. Delete no use code.
-
-v6 changes:
-1. Simplify toprug_reset_assert() & toprug_reset_deassert().
-2. Add members for mt2712_data & mt8183_data.
-
-v5 changes:
-1. Add Signed-off-by tag and Reviewed-by tag.
-
-v4 changes:
-1. Fixed wrong signed-off as correct mail suffix.
-2. Fixed patch subject that add patch version.
-
-v3 changes:
-1. https://patchwork.kernel.org/patch/11164283/ and 
-  https://patchwork.kernel.org/patch/11164305/ has been merged.
-2. Change the name of mtk_wdt_compatible to mtk_wdt_data.
-3. Remove toprgu_reset struct and use mtk_wdt_dev instead.
-4. Get the value of sw_rst_num from .h file.
-5. Adddd mt2712-resets.h for mt2712.
-6. Improve commit message.
-
-v2 changes:
-1. remove "WIP" that in the title of patches
-2. add hyper link for the patch that depends on
-3. patchwork list:
-https://patchwork.kernel.org/cover/11164285/
-https://patchwork.kernel.org/patch/11164295/
-https://patchwork.kernel.org/patch/11164299/
-https://patchwork.kernel.org/patch/11164283/
-https://patchwork.kernel.org/patch/11164305/
-
-v1 changes:
-1. patchwork list:
-https://patchwork.kernel.org/cover/11164173/
-https://patchwork.kernel.org/patch/11164181/
-https://patchwork.kernel.org/patch/11164185/
-https://patchwork.kernel.org/patch/11164187/
-https://patchwork.kernel.org/patch/11164175/
-
-yong.liang (4):
-  dt-bindings: mediatek: mt8183: Add #reset-cells
-  dt-bindings: mediatek: mt2712: Add #reset-cells
-  watchdog: mtk_wdt: mt8183: Add reset controller
-  watchdog: mtk_wdt: mt2712: Add reset controller
-
- .../devicetree/bindings/watchdog/mtk-wdt.txt  |  11 +-
- drivers/watchdog/mtk_wdt.c                    | 105 +++++++++++++++++-
- .../reset-controller/mt2712-resets.h          |  22 ++++
- .../reset-controller/mt8183-resets.h          |  17 +++
- 4 files changed, 151 insertions(+), 4 deletions(-)
- create mode 100644 include/dt-bindings/reset-controller/mt2712-resets.h
-
+diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+index fd380eb28df5..ecb9ff784832 100644
+--- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
++++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+@@ -9,17 +9,21 @@ Required properties:
+ 	"mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
+ 	"mediatek,mt7623-wdt", "mediatek,mt6589-wdt": for MT7623
+ 	"mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
++	"mediatek,mt8183-wdt", "mediatek,mt6589-wdt": for MT8183
+ 	"mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
+ 
+ - reg : Specifies base physical address and size of the registers.
+ 
+ Optional properties:
+ - timeout-sec: contains the watchdog timeout in seconds.
++- #reset-cells: Should be 1.
+ 
+ Example:
+ 
+-wdt: watchdog@10000000 {
+-	compatible = "mediatek,mt6589-wdt";
+-	reg = <0x10000000 0x18>;
++watchdog: watchdog@10007000 {
++	compatible = "mediatek,mt8183-wdt",
++		     "mediatek,mt6589-wdt";
++	reg = <0 0x10007000 0 0x100>;
+ 	timeout-sec = <10>;
++	#reset-cells = <1>;
+ };
+diff --git a/include/dt-bindings/reset-controller/mt8183-resets.h b/include/dt-bindings/reset-controller/mt8183-resets.h
+index 8804e34ebdd4..a1bbd41e0d12 100644
+--- a/include/dt-bindings/reset-controller/mt8183-resets.h
++++ b/include/dt-bindings/reset-controller/mt8183-resets.h
+@@ -78,4 +78,21 @@
+ #define MT8183_INFRACFG_AO_I2C7_SW_RST				126
+ #define MT8183_INFRACFG_AO_I2C8_SW_RST				127
+ 
++#define MT8183_INFRACFG_SW_RST_NUM				128
++
++#define MT8183_TOPRGU_MM_SW_RST					1
++#define MT8183_TOPRGU_MFG_SW_RST				2
++#define MT8183_TOPRGU_VENC_SW_RST				3
++#define MT8183_TOPRGU_VDEC_SW_RST				4
++#define MT8183_TOPRGU_IMG_SW_RST				5
++#define MT8183_TOPRGU_MD_SW_RST					7
++#define MT8183_TOPRGU_CONN_SW_RST				9
++#define MT8183_TOPRGU_CONN_MCU_SW_RST				12
++#define MT8183_TOPRGU_IPU0_SW_RST				14
++#define MT8183_TOPRGU_IPU1_SW_RST				15
++#define MT8183_TOPRGU_AUDIO_SW_RST				17
++#define MT8183_TOPRGU_CAMSYS_SW_RST				18
++
++#define MT8183_TOPRGU_SW_RST_NUM				19
++
+ #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8183 */
 -- 
 2.18.0
 _______________________________________________
