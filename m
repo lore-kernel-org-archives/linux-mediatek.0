@@ -2,79 +2,91 @@ Return-Path: <SRS0=47E0=3E=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C9086C33C9E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 02:27:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 68B43C33C9E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 03:48:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 93B1D24679
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 02:27:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 41176222C3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 03:48:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qdYLuMy+";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ePJgFl1O"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 93B1D24679
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Umw9QDS4";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="blCG6NNq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 41176222C3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=90zEzEdznc0Y0H3ghPMncWxgGqvrulzDVwnyZxpz2kk=; b=qdYLuMy+y8tyjs
-	JXjM8AiJ5WhrX25aQ4/48W+JnvTI9aDt0Zt0NPm5Z+KHxzFdFsGQTc0aBoiGrAeh9T+d+yUPeteH+
-	EmOB8A4hU/jvHkbYghExgE0xWxY239C1A2uRDM2kI44cHphNXhTbC256LFBypxiCzldfQ5Zb7sMcV
-	6cLJKEVYmUyGDQulRqGCkIOMDMz7iQeJNRqmfqTsvVM4VnFZE3y1LT1vvCK5BKO+UyIfnBFvLakoX
-	667Zb45/mUjpG3BNZnl2XpgpChhOi/js1t60dteVBuOnhYr1McJj2bzmlo1oSy2akbi3jFsr10bwa
-	BtLNenHv2+FFiGEqDPVw==;
+	List-Owner; bh=m3IKkmFHbdfDDYLAdQ7g3D6ZRqSfjadCVp+2rZQLQoE=; b=Umw9QDS4Gwc/dD
+	0zyzJtz/8oBH23uyA7jbTJkPPGiS5CKUiW3X0vCGsT0m+JCTjyN4dBtrHA6ERtD/QDCyst6owHMi/
+	GOWV+YOyigEn7OCzwZHVDnCfSeVuL+cC8/8IOmNvBMbCVXz3R9vtzSQfZtYqLCJ3vIRGXKBtHfk6A
+	xFgoO4k7CVLxWhf8aovPcQrI8KDpPSySJimQ8OSJzPvebCvWOZb8FY41hxvddI026MDTDQZDkMC26
+	FZSlB9s8GLlamuE/nGOC2wvfMpQ0z50Yh7swBBNEFI+W4mwGHCMCi9hGZuV20/1+SvXlI1F2vWzbR
+	qPTeIe90GvhSV6ISuvmA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1irYPD-00045j-AG; Wed, 15 Jan 2020 02:27:39 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1irZeu-0005ab-BT; Wed, 15 Jan 2020 03:47:56 +0000
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1irYP9-00045H-V3; Wed, 15 Jan 2020 02:27:37 +0000
-X-UUID: fe80f3403572480289d653f60677eb9b-20200114
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=t7G0F5wFKNpxOWWP1HfUu2lE6k+aZLiE8/TaEH0DhZY=; 
- b=ePJgFl1O0gI1j7JP5yfOQJZvZQSsKi2O++HGnh7M/Fzuh2fihu/AVLhw+0qDXabJASuzXnqkThlCGLWMt8Eniih2xPsotjYvoq1O/E19ebOi6R8IiTWPaUWmZvpQm0FVcSuTEBKN90ja61Of7MYuKkqV34WUT8USgv5Rexy4VcM=;
-X-UUID: fe80f3403572480289d653f60677eb9b-20200114
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1600501926; Tue, 14 Jan 2020 18:27:29 -0800
-Received: from MTKMBS32DR.mediatek.inc (172.27.6.104) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 14 Jan 2020 18:28:15 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32DR.mediatek.inc
- (172.27.6.104) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Wed, 15 Jan 2020 10:26:26 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 15 Jan 2020 10:26:37 +0800
-Message-ID: <1579055239.21256.41.camel@mhfsdcap03>
-Subject: Re: [RESEND PATCH v5 01/11] dt-bindings: phy-mtk-tphy: add two
- optional properties for u2phy
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Date: Wed, 15 Jan 2020 10:27:19 +0800
-In-Reply-To: <970b7cce-40ed-9ab7-5e04-9e3d609eadf7@ti.com>
-References: <1578448326-27455-1-git-send-email-chunfeng.yun@mediatek.com>
- <20200110111006.GB2220@a0393678ub> <1578990166.21256.35.camel@mhfsdcap03>
- <970b7cce-40ed-9ab7-5e04-9e3d609eadf7@ti.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1irZem-0005UX-NS
+ for linux-mediatek@lists.infradead.org; Wed, 15 Jan 2020 03:47:50 +0000
+Received: by mail-ot1-x343.google.com with SMTP id r27so14875788otc.8
+ for <linux-mediatek@lists.infradead.org>; Tue, 14 Jan 2020 19:47:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=fXE1pb9ZXSzUXM/cWp0vEuD1ufr49jnlyg/BuiYZBlA=;
+ b=blCG6NNqmLU0+Yk3taOGfpNtJDvgllIRe1SUqtLakI2cGhtlgR7yOi6ZEASVsLviqR
+ iyMUzuQ2s8+c3MOxNrGvBQg30aRdU8eM6KVBNxY9j8LAW4rePBASrqJ9bvNU+hQpe2Ea
+ utDje7lx9JZAIV6DHWN8teCJ5y4glPgV1PECY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=fXE1pb9ZXSzUXM/cWp0vEuD1ufr49jnlyg/BuiYZBlA=;
+ b=g4fN59TEtcoQXOJOdjT1P4rWYflCf5VH4S4Ebn9b0qbaEPycXnESRefWg0xSFw27ZK
+ JBSG5CKPeZuoIuT9TMNZ20mcvUORtXQCgBHDfwezVj+CXUmK+d4Jl6Zc5N3EI8p7loza
+ k0p/h34xXCm2Cdn7RdmwbY456i5Y8IXkJ2y2JLXo6EmUnpzU7UN/Se8SKS4LghoZ5CSM
+ 7G0R7uTIBOXnZTAoraJseLyIo2mPJnCKwmVQC6SdYirFUMqcHnw4sC9qG/UhZNzlCV4n
+ 65RR8fOE+4mdbHFvi7nEkNG14Ws+Rq7DV7rIOCsHNQnYGVZnitllyDA9mLD2rtFEVOWS
+ 1ISw==
+X-Gm-Message-State: APjAAAUdzSzays7XGUsWsuqRv3FPGnQq993xjcCYbns91fSLlNdrNJeD
+ SyyJPosKKPNiU/MBuDYnUfNIEyoIhts=
+X-Google-Smtp-Source: APXvYqwmLPzULBKlwX+ym9xLSA8dzwdxV2MVHTeZ/Qg+IiHZ8CnORwBwd0kaTFwpDtdYiTKO5p+gHA==
+X-Received: by 2002:a05:6830:11d2:: with SMTP id
+ v18mr1362843otq.151.1579060065198; 
+ Tue, 14 Jan 2020 19:47:45 -0800 (PST)
+Received: from mail-ot1-f54.google.com (mail-ot1-f54.google.com.
+ [209.85.210.54])
+ by smtp.gmail.com with ESMTPSA id z17sm6119229otk.3.2020.01.14.19.47.43
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 14 Jan 2020 19:47:44 -0800 (PST)
+Received: by mail-ot1-f54.google.com with SMTP id w21so14873190otj.7
+ for <linux-mediatek@lists.infradead.org>; Tue, 14 Jan 2020 19:47:43 -0800 (PST)
+X-Received: by 2002:a05:6830:13da:: with SMTP id
+ e26mr1239454otq.97.1579060063207; 
+ Tue, 14 Jan 2020 19:47:43 -0800 (PST)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: D6F4E3B3560C67F3EC8745B1AA703FF32EBECC3C2932946A4CB08C403FC63D962000:8
-X-MTK: N
+References: <20200114033226.16786-1-gtk_ruiwang@mediatek.com>
+In-Reply-To: <20200114033226.16786-1-gtk_ruiwang@mediatek.com>
+From: Alexandre Courbot <acourbot@chromium.org>
+Date: Wed, 15 Jan 2020 12:47:32 +0900
+X-Gmail-Original-Message-ID: <CAPBb6MXhiNK84PuUy8=RUUeSh5j4VXw-Ar5SbZDHZAobp7xpEQ@mail.gmail.com>
+Message-ID: <CAPBb6MXhiNK84PuUy8=RUUeSh5j4VXw-Ar5SbZDHZAobp7xpEQ@mail.gmail.com>
+Subject: Re: media: mtk-vcodec: reset segment data then trig decoder
+To: gtk_ruiwang <gtk_ruiwang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200114_182736_011370_58F1B353 
-X-CRM114-Status: GOOD (  21.73  )
+X-CRM114-CacheID: sfid-20200114_194748_766049_9C3DA3A3 
+X-CRM114-Status: GOOD (  21.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,109 +98,108 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Kishon Vijay Abraham I <kishon@a0393678ub>, linux-mediatek@lists.infradead.org,
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>, srv_heupstream@mediatek.com,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Longfei Wang <longfei.wang@mediatek.com>, LKML <linux-kernel@vger.kernel.org>,
+ Tomasz Figa <tfiga@chromium.org>, Hans Verkuil <hverkuil@xs4all.nl>,
+ Maoguang Meng <maoguang.meng@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+ Thomas Gleixner <tglx@linutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Kishon,
+On Tue, Jan 14, 2020 at 12:32 PM <gtk_ruiwang@mediatek.com> wrote:
+>
+> From: gtk_ruiwang <gtk_ruiwang@mediatek.com>
+>
+> VP9 bitstream specification indicate segment data should reset to
+> default when meet key frames, intra only frames or enable error
+> resilience mode. So memset segmentation map buffer before every
+> decode process is not appropriate.
+>
+> Reset segment data only when needed, then trig decoder hardware
+>
+> Signed-off-by: Rui Wang <gtk_ruiwang@mediatek.com>
+> ---
+>  .../platform/mtk-vcodec/vdec/vdec_vp9_if.c    | 19 +++++++++++++++----
+>  1 file changed, 15 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+> index 24c1f0bf2147..42c9c3c98076 100644
+> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
+> @@ -110,7 +110,9 @@ struct vp9_sf_ref_fb {
+>   * @buf_len_sz_c : size used to store cbcr plane ufo info (AP-R, VPU-W)
+>
+>   * @profile : profile sparsed from vpu (AP-R, VPU-W)
+> - * @show_frame : display this frame or not (AP-R, VPU-W)
+> + * @show_frame : [BIT(0)] display this frame or not (AP-R, VPU-W)
+> + *     [BIT(14)] reset segment data or not (AP-R, VPU-W)
+> + *     [BIT(15)] trig decoder hardware or not (AP-R, VPU-W)
+>   * @show_existing_frame : inform this frame is show existing frame
+>   *     (AP-R, VPU-W)
+>   * @frm_to_show_idx : index to show frame (AP-R, VPU-W)
+> @@ -494,12 +496,12 @@ static void vp9_swap_frm_bufs(struct vdec_vp9_inst *inst)
+>                                         frm_to_show->fb->base_y.size);
+>                 }
+>                 if (!vp9_is_sf_ref_fb(inst, inst->cur_fb)) {
+> -                       if (vsi->show_frame)
+> +                       if (vsi->show_frame & BIT(0))
+>                                 vp9_add_to_fb_disp_list(inst, inst->cur_fb);
+>                 }
+>         } else {
+>                 if (!vp9_is_sf_ref_fb(inst, inst->cur_fb)) {
+> -                       if (vsi->show_frame)
+> +                       if (vsi->show_frame & BIT(0))
+>                                 vp9_add_to_fb_disp_list(inst, frm_to_show->fb);
+>                 }
+>         }
+> @@ -870,13 +872,22 @@ static int vdec_vp9_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
+>                                         vsi->sf_frm_sz[idx]);
+>                         }
+>                 }
+> -               memset(inst->seg_id_buf.va, 0, inst->seg_id_buf.size);
+>                 ret = vpu_dec_start(&inst->vpu, data, 3);
+>                 if (ret) {
+>                         mtk_vcodec_err(inst, "vpu_dec_start failed");
+>                         goto DECODE_ERROR;
+>                 }
+>
+> +               if ((vsi->show_frame & BIT(15)) &&
+> +                   (vsi->show_frame & BIT(14))) {
 
-On Tue, 2020-01-14 at 14:01 +0530, Kishon Vijay Abraham I wrote:
-> Hi Chunfeng,
-> 
-> On 14/01/20 1:52 PM, Chunfeng Yun wrote:
-> > Hi Kishon,
-> > 
-> > On Fri, 2020-01-10 at 16:40 +0530, Kishon Vijay Abraham I wrote:
-> >> Hi,
-> >>
-> >> On Wed, Jan 08, 2020 at 09:51:56AM +0800, Chunfeng Yun wrote:
-> >>> Add two optional properties, one for tuning J-K voltage by INTR,
-> >>> another for disconnect threshold, both of them are related with
-> >>> connect detection
-> >>>
-> >>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> >>> Acked-by: Rob Herring <robh@kernel.org>
-> >>
-> >> Patch does not apply. I get the following errors
-> >> error: patch failed: Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt:52
-> >> error: Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt: patch does not apply
-> >> error: Did you hand edit your patch?
-> >>
-> >> Can you send them again in the right format?
-> > I download this patch from https://patchwork.kernel.org/patch/11322505/
-> > and fetch kernel5.5-rc5, then
-> 
-> Please try applying to
-> git://git.kernel.org/pub/scm/linux/kernel/git/kishon/linux-phy.git next
+Using the new bits in this manner means this patch is not compatible
+with the older firmware.
 
-Sorry, still not reproduce it on your next branch, logs as following:
+On an older firmware, these bits will be 0, which means the decoder
+will never be started. To preserve compatibility, the behavior should
+be reversed: *do not* reset and/or start the decoder if the bits are
+set.
 
-[linux-phy]$git am --reject
-RESEND-v5-01-11-dt-bindings-phy-mtk-tphy-add-two-optional-properties-for-u2phy.patch
-Applying: dt-bindings: phy-mtk-tphy: add two optional properties for
-u2phy
-Checking patch Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt...
-Applied patch Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-cleanly.
+Also both bits are only used together - we should either separate the
+data segment reset and decoder start, or rely on only one bit for
+this.
 
-[linux-phy]$git log --oneline -6
-e93d3cf70eee (HEAD -> next) dt-bindings: phy-mtk-tphy: add two optional
-properties for u2phy
-28a263814638 (origin/next) dt-bindings: phy: Add PHY_TYPE_DP definition
-56b337ef505d phy: ti: j721e-wiz: Fix return value check in wiz_probe()
-b66d1ac82918 dt-bindings: usb: Convert Allwinner A80 USB PHY controller
-to a schema
-b109c13a533b phy: intel-lgm-emmc: Fix warning by adding missing
-MODULE_LICENSE
-c9f9eba06629 phy: ti: j721e-wiz: Manage typec-gpio-dir
-
-> > 
-> > git am --reject
-> > RESEND-v5-01-11-dt-bindings-phy-mtk-tphy-add-two-optional-properties-for-u2phy.patch
-> > Applying: dt-bindings: phy-mtk-tphy: add two optional properties for
-> > u2phy
-> > Checking patch Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt...
-> > Applied patch Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-> > cleanly.
-> > 
-> > don't reproduce the error you encountered, can you tell me the steps you
-> > apply the patch, thanks
-> 
-> git am chunfeng.yun.patch --reject
-> Applying: dt-bindings: phy-mtk-tphy: add two optional properties for u2phy
-> Checking patch Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt...
-> error: while searching for:
-> - mediatek,eye-vrt	: u32, the selection of VRT reference voltage?
-> - mediatek,eye-term	: u32, the selection of HS_TX TERM reference voltage?
-> - mediatek,bc12	: bool, enable BC12 of u2phy if support it?
-> ?
-> Example:?
-> ?
-BTW, ? is line break?
-
-When I open the patch by vim, and set invlist, line break is $.
-
-> 
-> error: patch failed:
-> Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt:52
-> Applying patch Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-> with 1 reject...
-> Rejected hunk #1.
-> Patch failed at 0001 dt-bindings: phy-mtk-tphy: add two optional
-> properties for u2phy
-> Use 'git am --show-current-patch' to see the failed patch
-> When you have resolved this problem, run "git am --continue".
-> If you prefer to skip this patch, run "git am --skip" instead.
-> To restore the original branch and stop patching, run "git am --abort".
-> 
-> Thanks
-> Kishon
+> +                       memset(inst->seg_id_buf.va, 0, inst->seg_id_buf.size);
+> +                       ret = vpu_dec_start(&inst->vpu, NULL, 0);
+> +                       if (ret) {
+> +                               mtk_vcodec_err(inst, "vpu trig decoder failed");
+> +                               goto DECODE_ERROR;
+> +                       }
+> +               }
+> +
+>                 ret = validate_vsi_array_indexes(inst, vsi);
+>                 if (ret) {
+>                         mtk_vcodec_err(inst, "Invalid values from VPU.");
+> --
+> 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
