@@ -1,147 +1,80 @@
-Return-Path: <SRS0=z6AG=3D=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=47E0=3E=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5FA62C33C9E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 21:58:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C9086C33C9E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 02:27:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2F4332467A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Jan 2020 21:58:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 93B1D24679
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 02:27:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MHVO82wQ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="n52rsCEi"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2F4332467A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qdYLuMy+";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ePJgFl1O"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 93B1D24679
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9lwW5VLRlsGyGn5wOcP2HYscP/lW/rxBLHRnWe/X9h4=; b=MHVO82wQ5m63xn
-	ncoS83Acw7922HzZfn4FxdFBtvZHMu0FgFxLpJutuODPVPTe8CbjPcHJQ0SvPZoqiZeh3YNN/m9Q5
-	ZKEd5QkmgJtuwGU8n8lawJbIfbd0ggk0BdqN0NpW3aoduSbgbhl02YernDKqCHXsd83gwHENTFWQk
-	wkQqsIoHQFkvxXseF2oV/mY1PZue3MRsHNJ3FwHLfveR+7ZDKTOV2zQxprutzZGOQLrJEUFvxYm0X
-	JUnb2Sc5gQCb/m3q357KfnbE/OvRgw/umU658t2jIY2y+Ok0q4e/3tU8OwIqUYE2XfFDdkEr+oHs8
-	9MivQAp2lQOpRv6i0k7w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=90zEzEdznc0Y0H3ghPMncWxgGqvrulzDVwnyZxpz2kk=; b=qdYLuMy+y8tyjs
+	JXjM8AiJ5WhrX25aQ4/48W+JnvTI9aDt0Zt0NPm5Z+KHxzFdFsGQTc0aBoiGrAeh9T+d+yUPeteH+
+	EmOB8A4hU/jvHkbYghExgE0xWxY239C1A2uRDM2kI44cHphNXhTbC256LFBypxiCzldfQ5Zb7sMcV
+	6cLJKEVYmUyGDQulRqGCkIOMDMz7iQeJNRqmfqTsvVM4VnFZE3y1LT1vvCK5BKO+UyIfnBFvLakoX
+	667Zb45/mUjpG3BNZnl2XpgpChhOi/js1t60dteVBuOnhYr1McJj2bzmlo1oSy2akbi3jFsr10bwa
+	BtLNenHv2+FFiGEqDPVw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1irUCS-00031l-6w; Tue, 14 Jan 2020 21:58:12 +0000
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541])
+	id 1irYPD-00045j-AG; Wed, 15 Jan 2020 02:27:39 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1irUCP-000310-MO; Tue, 14 Jan 2020 21:58:11 +0000
-Received: by mail-ed1-x541.google.com with SMTP id cy15so13493100edb.4;
- Tue, 14 Jan 2020 13:58:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Mye4LmyzQE+LrbbIEq6tP/9MPNsewchUD91k+otVz+w=;
- b=n52rsCEiRkzPFenvyx25SeM1GC8hE/eMjP0sjse+wfLL1IXV4keBvfRflPo8igr69f
- m2z5keNNqfIGqxNsbFUM7CmlS/ifpZYvSUKWsyMKdtN08cpWEk20wH1+1EWO6mawknjh
- 04hnMapLyNp4Mmzxxm0ddfuLS1xMgl8Cn8ULxDjtqPpai9AiDAhjPD9yZJoEzc0bzC7+
- mY2YfGbdky7W3S+neN+QY5bkt0Htu+ChM2KLROgntLWCuPWBpIvJwkCZu4GCnLU7BNel
- othYC5z84OXy7XQThXKC98DIQnbCTTQuFS8/qeLA1GycbCPMxd/Peq6HFSRX6VjtLFxM
- 2Otw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=Mye4LmyzQE+LrbbIEq6tP/9MPNsewchUD91k+otVz+w=;
- b=bgpu5zBfWIpYUsk1AQoNXtWuGlKgaUSDg6Q6Zw/Gz4EE5IwQeSQT3BRajwtudTtlFB
- 5dolw1qK/ZqysM47UxlsX7yoWysXlZzsqKmUZJ3DXbgmLIzrIEm2DhfmgEejuYfOLKzR
- ykWmpBSwR6zRUoGn5710KNVOAmhSusWMTr+nNFl8mhXw6ZpRzMo4XwRk5aynWiLUTIUw
- 569ya3jAGI2pEjIH3kYRC4MaYA5jFsakvvcfQI2XPxLp+xfNVHdBDWbKbH0jYIdWxiIL
- egXEfGtycTy3ATWjkGEOmv0QmdFj6nC4KD4i1rO/VbUMWTtEDbu/9tjdQXjF3dVKok/3
- 2j0g==
-X-Gm-Message-State: APjAAAWbKGgxJCrN0U96SxoV1LIiyI04MqykBdqx4MtpqlKU5OaQ+CgT
- xEU2fG8iQgWjvQFPKTenb7pq9ce4
-X-Google-Smtp-Source: APXvYqxB09DwRODZB2nlJ/k1cFJE9gsRdldb66R9ThkKbXcsmtV8y8kBgCC6iLHu2bkV3WZ35PRLCQ==
-X-Received: by 2002:a17:906:1356:: with SMTP id
- x22mr25313595ejb.55.1579039088179; 
- Tue, 14 Jan 2020 13:58:08 -0800 (PST)
-Received: from [10.67.50.41] ([192.19.223.252])
- by smtp.googlemail.com with ESMTPSA id ba29sm655434edb.47.2020.01.14.13.57.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Jan 2020 13:58:07 -0800 (PST)
-Subject: Re: [PATCH RFC net-next 06/19] net: dsa: tag_gswip: fix typo in tag
- name
-To: Andrew Lunn <andrew@lunn.ch>, Alexander Lobakin <alobakin@dlink.ru>
-References: <20191230143028.27313-1-alobakin@dlink.ru>
- <20191230143028.27313-7-alobakin@dlink.ru> <20191230172209.GE13569@lunn.ch>
-From: Florian Fainelli <f.fainelli@gmail.com>
-Autocrypt: addr=f.fainelli@gmail.com; prefer-encrypt=mutual; keydata=
- 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
- G10n8gCguORqNGMsVRxrlLs7/himep7MrCc=
-Message-ID: <0edda44f-7a75-e6c9-eec3-48259630bb3d@gmail.com>
-Date: Tue, 14 Jan 2020 13:57:56 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ id 1irYP9-00045H-V3; Wed, 15 Jan 2020 02:27:37 +0000
+X-UUID: fe80f3403572480289d653f60677eb9b-20200114
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=t7G0F5wFKNpxOWWP1HfUu2lE6k+aZLiE8/TaEH0DhZY=; 
+ b=ePJgFl1O0gI1j7JP5yfOQJZvZQSsKi2O++HGnh7M/Fzuh2fihu/AVLhw+0qDXabJASuzXnqkThlCGLWMt8Eniih2xPsotjYvoq1O/E19ebOi6R8IiTWPaUWmZvpQm0FVcSuTEBKN90ja61Of7MYuKkqV34WUT8USgv5Rexy4VcM=;
+X-UUID: fe80f3403572480289d653f60677eb9b-20200114
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1600501926; Tue, 14 Jan 2020 18:27:29 -0800
+Received: from MTKMBS32DR.mediatek.inc (172.27.6.104) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 14 Jan 2020 18:28:15 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32DR.mediatek.inc
+ (172.27.6.104) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Wed, 15 Jan 2020 10:26:26 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Wed, 15 Jan 2020 10:26:37 +0800
+Message-ID: <1579055239.21256.41.camel@mhfsdcap03>
+Subject: Re: [RESEND PATCH v5 01/11] dt-bindings: phy-mtk-tphy: add two
+ optional properties for u2phy
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Date: Wed, 15 Jan 2020 10:27:19 +0800
+In-Reply-To: <970b7cce-40ed-9ab7-5e04-9e3d609eadf7@ti.com>
+References: <1578448326-27455-1-git-send-email-chunfeng.yun@mediatek.com>
+ <20200110111006.GB2220@a0393678ub> <1578990166.21256.35.camel@mhfsdcap03>
+ <970b7cce-40ed-9ab7-5e04-9e3d609eadf7@ti.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <20191230172209.GE13569@lunn.ch>
-Content-Language: en-US
+X-TM-SNTS-SMTP: D6F4E3B3560C67F3EC8745B1AA703FF32EBECC3C2932946A4CB08C403FC63D962000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200114_135809_851437_ACA0BDE2 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20200114_182736_011370_58F1B353 
+X-CRM114-Status: GOOD (  21.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -153,40 +86,109 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Song Liu <songliubraving@fb.com>,
- Jakub Kicinski <jakub.kicinski@netronome.com>,
- Yoshiki Komachi <komachi.yoshiki@gmail.com>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Stanislav Fomichev <sdf@google.com>,
- Matteo Croce <mcroce@redhat.com>, Edward Cree <ecree@solarflare.com>,
- Jakub Sitnicki <jakub@cloudflare.com>, Daniel Borkmann <daniel@iogearbox.net>,
- Paolo Abeni <pabeni@redhat.com>, Vivien Didelot <vivien.didelot@gmail.com>,
- Hauke Mehrtens <hauke@hauke-m.de>, Sean Wang <sean.wang@mediatek.com>,
- Jiri Pirko <jiri@mellanox.com>, linux-mediatek@lists.infradead.org,
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Kishon Vijay Abraham I <kishon@a0393678ub>, linux-mediatek@lists.infradead.org,
  Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
- Paul Blakey <paulb@mellanox.com>,
- Stephen Hemminger <stephen@networkplumber.org>,
- "David S. Miller" <davem@davemloft.net>, Taehee Yoo <ap420073@gmail.com>
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/30/19 9:22 AM, Andrew Lunn wrote:
-> On Mon, Dec 30, 2019 at 05:30:14PM +0300, Alexander Lobakin wrote:
->> "gwsip" -> "gswip".
->>
->> Signed-off-by: Alexander Lobakin <alobakin@dlink.ru>
+Hi Kishon,
+
+On Tue, 2020-01-14 at 14:01 +0530, Kishon Vijay Abraham I wrote:
+> Hi Chunfeng,
 > 
-> Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+> On 14/01/20 1:52 PM, Chunfeng Yun wrote:
+> > Hi Kishon,
+> > 
+> > On Fri, 2020-01-10 at 16:40 +0530, Kishon Vijay Abraham I wrote:
+> >> Hi,
+> >>
+> >> On Wed, Jan 08, 2020 at 09:51:56AM +0800, Chunfeng Yun wrote:
+> >>> Add two optional properties, one for tuning J-K voltage by INTR,
+> >>> another for disconnect threshold, both of them are related with
+> >>> connect detection
+> >>>
+> >>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> >>> Acked-by: Rob Herring <robh@kernel.org>
+> >>
+> >> Patch does not apply. I get the following errors
+> >> error: patch failed: Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt:52
+> >> error: Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt: patch does not apply
+> >> error: Did you hand edit your patch?
+> >>
+> >> Can you send them again in the right format?
+> > I download this patch from https://patchwork.kernel.org/patch/11322505/
+> > and fetch kernel5.5-rc5, then
+> 
+> Please try applying to
+> git://git.kernel.org/pub/scm/linux/kernel/git/kishon/linux-phy.git next
 
-Likewise, this is a bug fix that should be extracted out of this GRO
-series and a Fixes: tag be put since this has an user-visible impact
-through /sys/class/net/*/dsa/tagging.
+Sorry, still not reproduce it on your next branch, logs as following:
 
-Thanks
--- 
-Florian
+[linux-phy]$git am --reject
+RESEND-v5-01-11-dt-bindings-phy-mtk-tphy-add-two-optional-properties-for-u2phy.patch
+Applying: dt-bindings: phy-mtk-tphy: add two optional properties for
+u2phy
+Checking patch Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt...
+Applied patch Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+cleanly.
+
+[linux-phy]$git log --oneline -6
+e93d3cf70eee (HEAD -> next) dt-bindings: phy-mtk-tphy: add two optional
+properties for u2phy
+28a263814638 (origin/next) dt-bindings: phy: Add PHY_TYPE_DP definition
+56b337ef505d phy: ti: j721e-wiz: Fix return value check in wiz_probe()
+b66d1ac82918 dt-bindings: usb: Convert Allwinner A80 USB PHY controller
+to a schema
+b109c13a533b phy: intel-lgm-emmc: Fix warning by adding missing
+MODULE_LICENSE
+c9f9eba06629 phy: ti: j721e-wiz: Manage typec-gpio-dir
+
+> > 
+> > git am --reject
+> > RESEND-v5-01-11-dt-bindings-phy-mtk-tphy-add-two-optional-properties-for-u2phy.patch
+> > Applying: dt-bindings: phy-mtk-tphy: add two optional properties for
+> > u2phy
+> > Checking patch Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt...
+> > Applied patch Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+> > cleanly.
+> > 
+> > don't reproduce the error you encountered, can you tell me the steps you
+> > apply the patch, thanks
+> 
+> git am chunfeng.yun.patch --reject
+> Applying: dt-bindings: phy-mtk-tphy: add two optional properties for u2phy
+> Checking patch Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt...
+> error: while searching for:
+> - mediatek,eye-vrt	: u32, the selection of VRT reference voltage?
+> - mediatek,eye-term	: u32, the selection of HS_TX TERM reference voltage?
+> - mediatek,bc12	: bool, enable BC12 of u2phy if support it?
+> ?
+> Example:?
+> ?
+BTW, ? is line break?
+
+When I open the patch by vim, and set invlist, line break is $.
+
+> 
+> error: patch failed:
+> Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt:52
+> Applying patch Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
+> with 1 reject...
+> Rejected hunk #1.
+> Patch failed at 0001 dt-bindings: phy-mtk-tphy: add two optional
+> properties for u2phy
+> Use 'git am --show-current-patch' to see the failed patch
+> When you have resolved this problem, run "git am --continue".
+> If you prefer to skip this patch, run "git am --skip" instead.
+> To restore the original branch and stop patching, run "git am --abort".
+> 
+> Thanks
+> Kishon
 
 _______________________________________________
 Linux-mediatek mailing list
