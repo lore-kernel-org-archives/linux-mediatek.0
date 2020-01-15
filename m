@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 01B4AC33CB2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 14:01:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BB5C5C33CB1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 14:01:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CA3E024656
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 14:01:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9170124656
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Jan 2020 14:01:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dJY5jFYJ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="NwUu7Mic"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA3E024656
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="n4fr7qJK";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EX3kdniP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9170124656
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,56 +26,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=daCm5krCpv79MlHK/LVcEuQm5zRLh7kF7+0Bzfnw6wY=; b=dJY5jFYJw+W3kQ
-	Oh3iIqE/wIV2gIN2rfskz3dShT8MsXP1//utio5Pgng01FW1JhMoU1cXp1rzFf/lXI4h7/tssEdJH
-	6s8njDP1uYaLeQ4oK7L+M2Oluo2jFi6F9s50wtIEDr8mcNy8WH9semMia4g++XCW36hoox1WsK75p
-	xKxtEDSqgQyZYiedtZXNJ9q1AGg22fpawcr0pH+klXIF/lJlZm+pfFieMvyVPh4UpH6/F4J4Yf2QK
-	2jQrd78mFx0czSF4oB5aWJcGAa9YgduIM7uHRY2SvTSj+Ct1acaIF3QvaZIwHri0aap2EUC9kNN1l
-	Aevipxi/wV4BNOpGSnUA==;
+	List-Owner; bh=OcalZLZl1C0ylmNdvpOEEIGaw+2r8tqLLoAEe22ZWd8=; b=n4fr7qJKhkllQR
+	uvOv0XFjTA+61+ZwXqgvwcx+Wu1WgAl/rCUj9XFMeLeh6yYPwQaaWatyuiJpotDI0nHcxRpZI83BE
+	vWZwF1flie6rJkBNR+Y+28J17aVYr2KWhXbnMqqjKpWdk9m9Jy2l0a+2HbYCpoO6TZYjIiM3pUe8i
+	4A5Tu27CXSe5DFbagzpvlEwsCfLiAhIHR9M2hq4SbrFuk+gc6SqAeQqhqi+QReFA9OQ/BId7xauWG
+	aDxopdZrCXHhnXHrv62jYIGZe8TzT9XkiyWWnbP+KLl3NQO45QrlpkeXPieytuMWlCMsXYMqKtDnB
+	IaopbVzn7ganITcYSD4w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1irjEL-0003xN-8U; Wed, 15 Jan 2020 14:01:09 +0000
+	id 1irjEN-0003z6-5C; Wed, 15 Jan 2020 14:01:11 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1irjEF-0003ua-P3
- for linux-mediatek@lists.infradead.org; Wed, 15 Jan 2020 14:01:07 +0000
-X-UUID: 3484c53b2abd4317a2d2fa7a12fccdb5-20200115
+ id 1irjEI-0003vg-9Y
+ for linux-mediatek@lists.infradead.org; Wed, 15 Jan 2020 14:01:10 +0000
+X-UUID: d729aeefda694d3caf60f06ddb859b26-20200115
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=1zzPyvAy87Qpl4i7Jvu5cxPmnsWNRTfp6raNBTPD/Ag=; 
- b=NwUu7MicjxywB3lhbVrCMhbYYqQXTxiAUDY3hlZisXc1kizuZJGH5xJDi+i/mO9ZC5U6K+2tYhskOEJbzVkynr3AJ9cl4PEwICnabqUbLp+42wW7KGxInJvvqodIiXxpVSm1KtkdIEai1qdCrV1ny/dzx21c4NQsQI7WpHXK8e4=;
-X-UUID: 3484c53b2abd4317a2d2fa7a12fccdb5-20200115
+ bh=PC+y6XVTLynjl5MLpT/PpDxclDZ4cq1uAytMsDKh5DM=; 
+ b=EX3kdniPtlTtZg+iWH1VUwjCCGrsc3Z8UDZ7IL7a9GKh5yWXQuujAX+XCh5AB4qt7djyHRVyYY+WmV8lZ8NBF0GMAiyq20p5awNMrd4SFthT3vPvAK3ORtsBNgmmqMR6sL70ZPE3IVdkdzJotrZMzK/fiWhxyhOho1/Qixvm/nA=;
+X-UUID: d729aeefda694d3caf60f06ddb859b26-20200115
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <jitao.shi@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1666909053; Wed, 15 Jan 2020 06:00:58 -0800
+ with ESMTP id 928774514; Wed, 15 Jan 2020 06:01:03 -0800
 Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 15 Jan 2020 06:01:45 -0800
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 15 Jan 2020 06:01:53 -0800
 Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS33N1.mediatek.inc
  (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Wed, 15 Jan 2020 21:59:48 +0800
+ Wed, 15 Jan 2020 21:59:53 +0800
 Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
  MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1395.4 via Frontend Transport; Wed, 15 Jan 2020 22:01:04 +0800
+ 15.0.1395.4 via Frontend Transport; Wed, 15 Jan 2020 22:01:09 +0800
 From: Jitao Shi <jitao.shi@mediatek.com>
 To: Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg
  <sam@ravnborg.org>, David Airlie <airlied@linux.ie>, Daniel Vetter
  <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
  <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH v8 1/8] dt-bindings: display: panel: Add BOE tv101wum-n16
+Subject: [PATCH v8 3/8] dt-bindings: display: panel: add auo kd101n80-45na
  panel bindings
-Date: Wed, 15 Jan 2020 21:59:51 +0800
-Message-ID: <20200115135958.126303-2-jitao.shi@mediatek.com>
+Date: Wed, 15 Jan 2020 21:59:53 +0800
+Message-ID: <20200115135958.126303-4-jitao.shi@mediatek.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20200115135958.126303-1-jitao.shi@mediatek.com>
 References: <20200115135958.126303-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 3E97ECF72CC10E7A5A1785BA4E4CC0653CFB3943D64BE1E6840C7A78AD3C07612000:8
+X-TM-SNTS-SMTP: A2D720D4539F99368B635022A3D053D9F5FEE61485ACDD382E23B679CE2305882000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200115_060103_819258_8A2F8233 
+X-CRM114-CacheID: sfid-20200115_060106_337074_B44BB7DA 
 X-CRM114-Status: UNSURE (   8.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -98,28 +98,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add documentation for boe tv101wum-n16 panel.
+Add documentation for auo kd101n80-45na panel.
 
 Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
 ---
- .../display/panel/boe,tv101wum-nl6.yaml       | 74 +++++++++++++++++++
+ .../display/panel/auo,kd101n80-45na.yaml      | 74 +++++++++++++++++++
  1 file changed, 74 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/panel/boe,tv101wum-nl6.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/panel/auo,kd101n80-45na.yaml
 
-diff --git a/Documentation/devicetree/bindings/display/panel/boe,tv101wum-nl6.yaml b/Documentation/devicetree/bindings/display/panel/boe,tv101wum-nl6.yaml
+diff --git a/Documentation/devicetree/bindings/display/panel/auo,kd101n80-45na.yaml b/Documentation/devicetree/bindings/display/panel/auo,kd101n80-45na.yaml
 new file mode 100644
-index 000000000000..d38aee22d406
+index 000000000000..604566832156
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/display/panel/boe,tv101wum-nl6.yaml
++++ b/Documentation/devicetree/bindings/display/panel/auo,kd101n80-45na.yaml
 @@ -0,0 +1,74 @@
 +# SPDX-License-Identifier: GPL-2.0
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/display/panel/boe,tv101wum-nl6.yaml#
++$id: http://devicetree.org/schemas/display/panel/auo,kd101n80-45na.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: BOE TV101WUM-Nl6 DSI Display Panel
++title: AUO KD101N80-45NA DSI Display Panel
 +
 +maintainers:
 +  - Thierry Reding <thierry.reding@gmail.com>
@@ -131,7 +131,7 @@ index 000000000000..d38aee22d406
 +
 +properties:
 +  compatible:
-+        const: boe,tv101wum-nl6
++        const: auo,kd101n80-45na
 +
 +  reg:
 +    description: the virtual channel number of a DSI peripheral
@@ -170,7 +170,7 @@ index 000000000000..d38aee22d406
 +        #address-cells = <1>;
 +        #size-cells = <0>;
 +        panel@0 {
-+            compatible = "boe,tv101wum-nl6";
++            compatible = "auo,kd101n80-45na";
 +            reg = <0>;
 +            enable-gpios = <&pio 45 0>;
 +            avdd-supply = <&ppvarn_lcd>;
