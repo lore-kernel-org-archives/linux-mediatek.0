@@ -2,64 +2,70 @@ Return-Path: <SRS0=rC0f=3F=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B95E1C33CB1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2020 15:23:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D5B97C33CB6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2020 16:43:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8AA75207E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2020 15:23:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 986DA21582
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2020 16:43:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jSK3tdj2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8AA75207E0
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jrjqgdXX";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="X+6YJkpy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 986DA21582
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=PEbRlcZkFz2TcIeiTdAiS5bD9lSOu2G0LuqWpSRVUuE=; b=jSK3tdj2P+RCV9K3lGRr0gu63Q
-	P4BxD5iPTDiOZwaRX3Zx7bIWW3OOnGXDQLYF7k9X3zuTb69Vp4N99nOrL7vmRU3eGuz+6TMJF1j0a
-	ZToOWVLvBZmRvr0DVo3pLQ4O68XcWUyYVI1vNqpsqOTzY7nc6KmMxdZOWYdhMi2s5EnHMAuWvA0oB
-	mPDOhhQOc3F/3XCRy6z093nVZ+ByQ2/YRcpWWD5Yrvfn/vjAKp6OBk8Yvd5U0VvrdVNb+aJYcXjHy
-	HYdWB5U4lw8kC5BC0+99cBP7BQYoHpYeU5v73vlh3/148eDEwjYiOp3OkpiIPoc+EOMtwqWc1kBr/
-	SZsXhNgA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=oaKvDAF8MYU2oR4lAvGKDaGdeBGswbE3TQQuMO65kAo=; b=jrjqgdXX7jw3GN
+	YZ4Tioqj4xhBEB/ImL3w5OC6RtxdsGEvmL6ioXq3BPusHtMVyBrvKfaQkICmvhv/r9GBindqCKbPl
+	QOniodgRvkFyfSaXcCPnOdDj6TfYoi8Z3wkjiJ+c5qt3X48nn/U7zirNqaaS/9HVwNKvzWf5MEud5
+	kZ+ok0M2DXjwI9rtsprxSNMM+xpgbeAWow9U+l9+XQeyU8lb80zmLum8K4FZHsCzk4JOSZ0Oa4tNn
+	sYDUliXNZHvCtv2Vo9o0oZG0Xkfhd2j6y+IjB0S2jEzr622aJtdQUBRHAejclUS3rZ8i8NgCrI2Ir
+	BV6Y275xmYXPogHD0aew==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1is6z5-0001p1-FR; Thu, 16 Jan 2020 15:22:59 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1is6xv-0000oI-9J; Thu, 16 Jan 2020 15:21:50 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 4E2E01424;
- Thu, 16 Jan 2020 07:21:46 -0800 (PST)
-Received: from e123648.arm.com (unknown [10.37.12.156])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id D11EA3F68E;
- Thu, 16 Jan 2020 07:21:35 -0800 (PST)
-From: lukasz.luba@arm.com
-To: linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org,
- linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-imx@nxp.com
-Subject: [PATCH 4/4] drm/panfrost: Register to the Energy Model with devfreq
- device
-Date: Thu, 16 Jan 2020 15:20:32 +0000
-Message-Id: <20200116152032.11301-5-lukasz.luba@arm.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200116152032.11301-1-lukasz.luba@arm.com>
-References: <20200116152032.11301-1-lukasz.luba@arm.com>
+	id 1is8FN-0006v6-OO; Thu, 16 Jan 2020 16:43:53 +0000
+Received: from mail.kernel.org ([198.145.29.99])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1is8FC-0006na-LF; Thu, 16 Jan 2020 16:43:46 +0000
+Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
+ [73.47.72.35])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id C4F1B2073A;
+ Thu, 16 Jan 2020 16:43:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1579193021;
+ bh=yniaK7tWFQ89CQ3kd3bTqvqGAAEUtmp83p9lQokYnac=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=X+6YJkpy80q1mUK0RoZdXSYuI2XYBdcC7uy26wD48jPdj7KVwdSKAdOtNgy1ZdD9R
+ nq9il+hf0sm2LOkx2CSFmeQGXZf78IA8jejsQFkNgWTRBadNqObld1aXb3yJVTFAar
+ eqKbuV2tQAPMysQX8M/B4jx3tzQ1kHZSks1cOSg0=
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.4 008/205] mt7601u: fix bbp version check in
+ mt7601u_wait_bbp_ready
+Date: Thu, 16 Jan 2020 11:39:43 -0500
+Message-Id: <20200116164300.6705-8-sashal@kernel.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200116164300.6705-1-sashal@kernel.org>
+References: <20200116164300.6705-1-sashal@kernel.org>
+MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200116_072147_471345_AF63B7E4 
-X-CRM114-Status: UNSURE (   7.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200116_084342_715862_1BC20726 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,58 +77,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: nm@ti.com, juri.lelli@redhat.com, peterz@infradead.org,
- viresh.kumar@linaro.org, bjorn.andersson@linaro.org, bsegall@google.com,
- festevam@gmail.com, Morten.Rasmussen@arm.com, robh@kernel.org,
- amit.kucheria@verdurent.com, vincent.guittot@linaro.org, khilman@kernel.org,
- daniel.lezcano@linaro.org, steven.price@arm.com, cw00.choi@samsung.com,
- mingo@redhat.com, mgorman@suse.de, rui.zhang@intel.com,
- alyssa.rosenzweig@collabora.com, daniel@ffwll.ch, b.zolnierkie@samsung.com,
- s.hauer@pengutronix.de, rostedt@goodmis.org, matthias.bgg@gmail.com,
- Chris.Redpath@arm.com, Dietmar.Eggemann@arm.com, airlied@linux.ie,
- javi.merino@arm.com, tomeu.vizoso@collabora.com, qperret@google.com,
- sboyd@kernel.org, shawnguo@kernel.org, rjw@rjwysocki.net, agross@kernel.org,
- kernel@pengutronix.de, sudeep.holla@arm.com, patrick.bellasi@matbug.net,
- ionela.voinescu@arm.com, lukasz.luba@arm.com
-MIME-Version: 1.0
+Cc: Sasha Levin <sashal@kernel.org>, Jakub Kicinski <kubakici@wp.pl>,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Kalle Valo <kvalo@codeaurora.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lukasz Luba <lukasz.luba@arm.com>
+From: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Let Panfrost devfreq device use the Energy Model (EM). The EM can be used
-in thermal subsystem (devfreq_cooling) for calculating the used power.
+[ Upstream commit 15e14f76f85f4f0eab3b8146e1cd3c58ce272823 ]
 
-Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
+Fix bbp ready check in mt7601u_wait_bbp_ready. The issue is reported by
+coverity with the following error:
+
+Logical vs. bitwise operator
+The expression's value does not depend on the operands; inadvertent use
+of the wrong operator is a likely logic error.
+
+Addresses-Coverity-ID: 1309441 ("Logical vs. bitwise operator")
+Fixes: c869f77d6abb ("add mt7601u driver")
+Acked-by: Jakub Kicinski <kubakici@wp.pl>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Kalle Valo <kvalo@codeaurora.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/gpu/drm/panfrost/panfrost_devfreq.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/net/wireless/mediatek/mt7601u/phy.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/panfrost/panfrost_devfreq.c b/drivers/gpu/drm/panfrost/panfrost_devfreq.c
-index 413987038fbf..8771782f67c6 100644
---- a/drivers/gpu/drm/panfrost/panfrost_devfreq.c
-+++ b/drivers/gpu/drm/panfrost/panfrost_devfreq.c
-@@ -105,6 +105,8 @@ int panfrost_devfreq_init(struct panfrost_device *pfdev)
- 	}
- 	pfdev->devfreq.devfreq = devfreq;
+diff --git a/drivers/net/wireless/mediatek/mt7601u/phy.c b/drivers/net/wireless/mediatek/mt7601u/phy.c
+index 06f5702ab4bd..d863ab4a66c9 100644
+--- a/drivers/net/wireless/mediatek/mt7601u/phy.c
++++ b/drivers/net/wireless/mediatek/mt7601u/phy.c
+@@ -213,7 +213,7 @@ int mt7601u_wait_bbp_ready(struct mt7601u_dev *dev)
  
-+	dev_pm_opp_of_register_em(dev);
-+
- 	cooling = of_devfreq_cooling_register(dev->of_node, devfreq);
- 	if (IS_ERR(cooling))
- 		DRM_DEV_INFO(dev, "Failed to register cooling device\n");
-@@ -118,6 +120,7 @@ void panfrost_devfreq_fini(struct panfrost_device *pfdev)
- {
- 	if (pfdev->devfreq.cooling)
- 		devfreq_cooling_unregister(pfdev->devfreq.cooling);
-+	dev_pm_opp_of_unregister_em(&pfdev->pdev->dev);
- 	dev_pm_opp_of_remove_table(&pfdev->pdev->dev);
- }
+ 	do {
+ 		val = mt7601u_bbp_rr(dev, MT_BBP_REG_VERSION);
+-		if (val && ~val)
++		if (val && val != 0xff)
+ 			break;
+ 	} while (--i);
  
 -- 
-2.17.1
+2.20.1
 
 
 _______________________________________________
