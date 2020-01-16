@@ -6,17 +6,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5BEF0C33CB3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2020 17:12:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6CF9DC33CB6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2020 17:19:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CDED22469B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2020 17:12:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 423CF2467A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2020 17:19:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Kwd4GpbX";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="zggOnGeC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CDED22469B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GMACaYa2";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="AQ/uDMdi"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 423CF2467A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,47 +25,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EXo4g58ENhFacN58wtDvhWWe5r6g/CGPSkEajZwiEf8=; b=Kwd4GpbXreSEAo
-	koxtaLS+Whsoyu5051dGvveKFPtFogfCrESpw6JglXJFUylcwUwEJ24Q/cJ3QuyWKo6Wa13LAv04V
-	URudoAi58Iw1/DW9cGYc1h6NeNkYtY9+TILgSKf+kjobm2+iFwEa0OIDE+iLJLiAdC88LPlVMeA7f
-	7d+PWAg1OKhUga8bbpt4K9DwoqSvd3cfKp1klShkmI4PTrxLc/BJlKj9VINprwMcNLXGrspNX+rhF
-	93Y+E6t3YoPa9AAIr8DKyqHF24rf1UwwPJnWVIoQh4QyzQ7RNOZDRCP30Nw4Djo8pfmuMGQMf5kSw
-	6V6kyqXgGn9luIekNlpg==;
+	List-Owner; bh=WTzUR8Qf+bWVFBRMbYBQMG2cb2JwLyVf2zjGaIv+LKw=; b=GMACaYa2vbykHG
+	cGLj8Z7gwc7pLmU1wzPqEE17kNM+8l5hJsmL54mr1LutdbsK7gTgB2i6AcOP5h+YXJNZDDNkCKZSl
+	kjJLFNzAuNLKyvaM5abtWnlAwq+2LPoRJo8UvoQWlm5gAd7+7lJkjWi231LakfQOw7AbA1zOE6CUj
+	k0lXbX2zC0vErJoFH/PO+xskY/IbMz5blJPyCJxpNYzGVYiwIXsLhLDV6HX48zclQ/6n+sNsEUeib
+	Z3M7rlIy8jBCFyRnIxkLs+SPe31l4AVQV+s9YK1BkNR128xGb/ehkcisHobgOiu+GOzfm2zCx/W1W
+	UnP0ZOv2Xk8vDWXt1Iyg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1is8gs-0005r7-Mu; Thu, 16 Jan 2020 17:12:18 +0000
+	id 1is8nU-000467-T2; Thu, 16 Jan 2020 17:19:08 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1is8WI-0001X7-Tf; Thu, 16 Jan 2020 17:01:27 +0000
+ id 1is8aL-0007KW-2Q; Thu, 16 Jan 2020 17:05:37 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 35AE520730;
- Thu, 16 Jan 2020 17:01:21 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 4079A24684;
+ Thu, 16 Jan 2020 17:05:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1579194082;
- bh=hyqnidKUhr5IO7828ua1HHV6ukySUvw9Gad4wTAK1DE=;
+ s=default; t=1579194331;
+ bh=Hv37BfS55KKDAbh7Qq/n5MYz80MnjEqtZFsgK6Mdv/o=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=zggOnGeCZI/EA26jG4oEv6sh3FOEnUmDJdbScRBHtN81CbU0F7jAhANQARL5d0hSU
- +ZJC6X6/o00Eu/RuspxeEGruweQl0VKLA+mkCA1DzmI27VpDhNI28YFv7XCBsyH/vp
- 6C1oqoQU9pH/YW2cVmemwzQ6BGPk7wNsKLKCFJa0=
+ b=AQ/uDMdir2IB3IrBlV2W3YTW8sv0wY7TTiSHV3sflENNBUKSmnS7P1pyACU8+cnJS
+ sUME1CAOQWUPYx/Veep3HNMjzg6eyPrnsBUnKAemLUQ6kh7KnFT0yYKwcQScsVmLC2
+ sm5wloc9N4aqok52LqwZSQWVTYNTj32bMD1aYgMI=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 187/671] mt76: usb: fix possible memory leak in
- mt76u_buf_free
-Date: Thu, 16 Jan 2020 11:51:36 -0500
-Message-Id: <20200116165940.10720-70-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 278/671] rtc: mt6397: Don't call
+ irq_dispose_mapping.
+Date: Thu, 16 Jan 2020 11:58:36 -0500
+Message-Id: <20200116170509.12787-15-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200116165940.10720-1-sashal@kernel.org>
-References: <20200116165940.10720-1-sashal@kernel.org>
+In-Reply-To: <20200116170509.12787-1-sashal@kernel.org>
+References: <20200116170509.12787-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200116_090123_020420_1A0399C9 
-X-CRM114-Status: GOOD (  11.59  )
+X-CRM114-CacheID: sfid-20200116_090533_220223_736C6A18 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,71 +77,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
+Cc: Sasha Levin <sashal@kernel.org>, linux-rtc@vger.kernel.org,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ linux-mediatek@lists.infradead.org, Pi-Hsun Shih <pihsun@chromium.org>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+From: Pi-Hsun Shih <pihsun@chromium.org>
 
-[ Upstream commit cb83585e1121bd6d6c039cf09fa32380bf8b6258 ]
+[ Upstream commit 24db953e942bd7a983e97892bdaddf69d00b1199 ]
 
-Move q->ndesc initialization before the for loop in mt76u_alloc_rx
-since otherwise allocated urbs will not be freed in mt76u_buf_free
-Double-check scatterlist pointer in mt76u_buf_free
+The IRQ mapping was changed to not being created in the rtc-mt6397
+driver, so the irq_dispose_mapping is no longer needed.
+Also the dev_id passed to free_irq should be the same as the last
+argument passed to request_threaded_irq.
+This prevents a "Trying to free already-free IRQ 274" warning when
+unbinding the driver.
 
-Fixes: b40b15e1521f ("mt76: add usb support to mt76 layer")
-Signed-off-by: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Fixes: e695d3a0b3b3 ("mfd: mt6397: Create irq mappings in mfd core driver")
+Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
+Signed-off-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/usb.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+ drivers/rtc/rtc-mt6397.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
-index 8d40e92fb6f2..dcf927de65f3 100644
---- a/drivers/net/wireless/mediatek/mt76/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/usb.c
-@@ -273,10 +273,16 @@ EXPORT_SYMBOL_GPL(mt76u_buf_alloc);
- void mt76u_buf_free(struct mt76u_buf *buf)
- {
- 	struct urb *urb = buf->urb;
-+	struct scatterlist *sg;
- 	int i;
+diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+index e9a25ec4d434..c06cf5202e02 100644
+--- a/drivers/rtc/rtc-mt6397.c
++++ b/drivers/rtc/rtc-mt6397.c
+@@ -343,7 +343,7 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Failed to request alarm IRQ: %d: %d\n",
+ 			rtc->irq, ret);
+-		goto out_dispose_irq;
++		return ret;
+ 	}
  
--	for (i = 0; i < urb->num_sgs; i++)
--		skb_free_frag(sg_virt(&urb->sg[i]));
-+	for (i = 0; i < urb->num_sgs; i++) {
-+		sg = &urb->sg[i];
-+		if (!sg)
-+			continue;
-+
-+		skb_free_frag(sg_virt(sg));
-+	}
- 	usb_free_urb(buf->urb);
+ 	device_init_wakeup(&pdev->dev, 1);
+@@ -359,9 +359,7 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+ 	return 0;
+ 
+ out_free_irq:
+-	free_irq(rtc->irq, rtc->rtc_dev);
+-out_dispose_irq:
+-	irq_dispose_mapping(rtc->irq);
++	free_irq(rtc->irq, rtc);
+ 	return ret;
  }
- EXPORT_SYMBOL_GPL(mt76u_buf_free);
-@@ -478,7 +484,8 @@ static int mt76u_alloc_rx(struct mt76_dev *dev)
- 		nsgs = 1;
- 	}
  
--	for (i = 0; i < MT_NUM_RX_ENTRIES; i++) {
-+	q->ndesc = MT_NUM_RX_ENTRIES;
-+	for (i = 0; i < q->ndesc; i++) {
- 		err = mt76u_buf_alloc(dev, &q->entry[i].ubuf,
- 				      nsgs, q->buf_size,
- 				      SKB_WITH_OVERHEAD(q->buf_size),
-@@ -486,7 +493,6 @@ static int mt76u_alloc_rx(struct mt76_dev *dev)
- 		if (err < 0)
- 			return err;
- 	}
--	q->ndesc = MT_NUM_RX_ENTRIES;
+@@ -369,8 +367,7 @@ static int mtk_rtc_remove(struct platform_device *pdev)
+ {
+ 	struct mt6397_rtc *rtc = platform_get_drvdata(pdev);
  
- 	return mt76u_submit_rx_buffers(dev);
+-	free_irq(rtc->irq, rtc->rtc_dev);
+-	irq_dispose_mapping(rtc->irq);
++	free_irq(rtc->irq, rtc);
+ 
+ 	return 0;
  }
 -- 
 2.20.1
