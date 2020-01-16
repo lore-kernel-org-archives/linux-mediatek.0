@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B2D5BC32771
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2020 02:15:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BB0BFC32771
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2020 02:25:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6CFAA2053B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2020 02:15:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8DFEE207E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Jan 2020 02:25:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ag56ykfY";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ukPNW743"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CFAA2053B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="L2tERStj";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Xfmj0Xqn"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8DFEE207E0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,58 +26,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IY4Rn/Zm6B/+1DBsJFOrtA5FE2hRVJGbAwVc7EUD+0M=; b=ag56ykfYPG9ubo
-	631Dp4ucYvOWmDQU7ODo8GNyV1kHu4ZMNIyn22ki54xNopdqzEV2iYYN/GB42OJ6yO20xI8yjplBL
-	4f+VsjauWe+WPahbn8rOGFQAh9vaGcArSe79gmzA3dc+b9Pf0MEaohBerTn60Uh7oLOfLG3DA0unI
-	KJGhTL75ZjHvDeKWh00r60nVWNmpAjUGt/Jv74CU7UorYbPf/82AhgZuMszMxAVFj4ERtGjCa5vMU
-	ZEYpOZHoT8V0LmRFJzrmcfcy3s4rR/g/xKjSinBa6oeVXztRguAkwQaACrr3iMfR0OmdIEjyl9cCY
-	LC4lcKOlTun2TmdTh+wA==;
+	List-Owner; bh=nwQR+o/R3X2JTmLzZKsobuHpq2hhfCL72EZtuKsv73g=; b=L2tERStjsyvrGU
+	BEKp1k4UnGNhWeX/+4VsJKLl5gPJKHmRTvJ6q1dmWTdZQX/25VETHuDP4VuqRvA98UuRhGcBvddwM
+	R+PnlauFFGnLZNrjXw8uP6Q1uruahXMH/1uGNG3NISvgj6NGN6pJTweygih7tgQ6U+bFm6IwfdtSQ
+	IIMEbOdSrVgNFq36yK5tKe9UqJtXe1lafZNloEqBWfWJnbArMTWJ2acwotfFfyKUqGqINHBSuV6ps
+	JDjvHNuES3sDYc+p25FxaWp8sAdQ+uT8umcVK6yiBd1dOobaz73hwps/xjaiT4aaiUjbuXbYfppDt
+	6jcvj39M1W53jUdga+mQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iruhB-0005Lp-0r; Thu, 16 Jan 2020 02:15:41 +0000
+	id 1iruqf-0001b1-JA; Thu, 16 Jan 2020 02:25:29 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iruh6-0005HA-5a
- for linux-mediatek@lists.infradead.org; Thu, 16 Jan 2020 02:15:40 +0000
-X-UUID: 7cb0d67b3ff6413bb14865aac7f70d41-20200115
+ id 1iruqc-0001aB-F5
+ for linux-mediatek@lists.infradead.org; Thu, 16 Jan 2020 02:25:28 +0000
+X-UUID: 77a7307f42274f8ebbcc2ef32549e6ba-20200115
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=x3qlvVjA+1w0zdnvIBDb63N00F9OElYvDcvNejnWj1k=; 
- b=ukPNW743mG1ol5zw6UA/g5DtX0+C0JSDNvgrT2V8KyYnUw3+HuTT5u7rCdVL8eCZ30/bVAV1mik8Pwb76bTeYFB1UapOmHWZLkw+KR5Y5ncLE6boKDA3p6HFqNsvPTMiJ6SCaLOcmZe6rzm03xsaObyr7rujRxqGmKTNi5fA8Rg=;
-X-UUID: 7cb0d67b3ff6413bb14865aac7f70d41-20200115
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=ivEcPT8iEpAX9W6/VujM8EVm+W1Y9SnJ0dVmMcBNlH8=; 
+ b=Xfmj0XqnyVnPUnXKOcXQoDdQazli1e0cvGmAGK/uHUMZ3ZlMEBmETiEsiAdheYZaLp/5V2LMc0mkQnGq/zsIkM0H6+v74yor+pGO2xIWcyMiiEkuQ68F3kPbG+GR0UVyN+bWvfQI/mCU7Ak0g9PsAmKWTYCWmYdsJC+dQrpXt8Y=;
+X-UUID: 77a7307f42274f8ebbcc2ef32549e6ba-20200115
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jitao.shi@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 327513084; Wed, 15 Jan 2020 18:15:28 -0800
-Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 15 Jan 2020 18:15:26 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N2.mediatek.inc
- (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Thu, 16 Jan 2020 10:15:52 +0800
+ with ESMTP id 1760322169; Wed, 15 Jan 2020 18:25:23 -0800
+Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 15 Jan 2020 18:16:16 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
+ (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Thu, 16 Jan 2020 10:14:15 +0800
 Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
  MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1395.4 via Frontend Transport; Thu, 16 Jan 2020 10:14:30 +0800
+ 15.0.1395.4 via Frontend Transport; Thu, 16 Jan 2020 10:14:27 +0800
 From: Jitao Shi <jitao.shi@mediatek.com>
 To: Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg
  <sam@ravnborg.org>, David Airlie <airlied@linux.ie>, Daniel Vetter
  <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
  <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH v9 5/5] drm/panel: support for auo,
- b101uan08.3 wuxga dsi video mode panel
-Date: Thu, 16 Jan 2020 10:15:11 +0800
-Message-ID: <20200116021511.22675-6-jitao.shi@mediatek.com>
+Subject: [PATCH v9 3/5] drm/panel: support for auo,
+ kd101n80-45na wuxga dsi video mode panel
+Date: Thu, 16 Jan 2020 10:15:09 +0800
+Message-ID: <20200116021511.22675-4-jitao.shi@mediatek.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20200116021511.22675-1-jitao.shi@mediatek.com>
 References: <20200116021511.22675-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: CCE803169FB42EFBDFD24E123096C487210EB1B57222C47804A6D756F52EC3C02000:8
+X-TM-SNTS-SMTP: A9E163718BE7D98B910CE3EDC929C20F035A8CDDEAAD2CE69E028F97959B0B892000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200115_181536_217728_C8E5F602 
-X-CRM114-Status: UNSURE (   7.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200115_182526_725722_FB829368 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,95 +97,117 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Auo,auo,b101uan08.3's connector is same as boe,tv101wum-nl6.
+Auo,kd101n80-45na's connector is same as boe,tv101wum-nl6.
 The most codes can be reuse.
-So auo,b101uan08.3 and boe,tv101wum-nl6 use one driver file.
+So auo,kd101n80-45na and boe,tv101wum-nl6 use one driver file.
 Add the different parts in driver data.
 
 Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
 ---
- .../gpu/drm/panel/panel-boe-tv101wum-nl6.c    | 78 +++++++++++++++++++
- 1 file changed, 78 insertions(+)
+ drivers/gpu/drm/panel/Kconfig                 |  6 +-
+ .../gpu/drm/panel/panel-boe-tv101wum-nl6.c    | 64 +++++++++++++++++--
+ 2 files changed, 61 insertions(+), 9 deletions(-)
 
+diff --git a/drivers/gpu/drm/panel/Kconfig b/drivers/gpu/drm/panel/Kconfig
+index ca727c233a9a..b5413edd625b 100644
+--- a/drivers/gpu/drm/panel/Kconfig
++++ b/drivers/gpu/drm/panel/Kconfig
+@@ -30,13 +30,13 @@ config DRM_PANEL_BOE_HIMAX8279D
+ 	  the host and has a built-in LED backlight.
+ 
+ config DRM_PANEL_BOE_TV101WUM_NL6
+-	tristate "BOE TV101WUM 1200x1920 panel"
++	tristate "BOE TV101WUM and AUO KD101N80 45NA 1200x1920 panel"
+ 	depends on OF
+ 	depends on DRM_MIPI_DSI
+ 	depends on BACKLIGHT_CLASS_DEVICE
+ 	help
+-	  Say Y here if you want to support for BOE TV101WUM WUXGA PANEL
+-	  DSI Video Mode panel
++	  Say Y here if you want to support for BOE TV101WUM and AUO KD101N80
++	  45NA WUXGA PANEL DSI Video Mode panel
+ 
+ config DRM_PANEL_LVDS
+ 	tristate "Generic LVDS panel driver"
 diff --git a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-index e77ea577d93a..01faf8597700 100644
+index 51fde588adc1..2160144ca51b 100644
 --- a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
 +++ b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-@@ -377,6 +377,53 @@ static const struct panel_init_cmd auo_kd101n80_45na_init_cmd[] = {
+@@ -34,6 +34,7 @@ struct panel_desc {
+ 	enum mipi_dsi_pixel_format format;
+ 	const struct panel_init_cmd *init_cmds;
+ 	unsigned int lanes;
++	bool discharge_on_disable;
+ };
+ 
+ struct boe_panel {
+@@ -367,6 +368,15 @@ static const struct panel_init_cmd boe_init_cmd[] = {
  	{},
  };
  
-+static const struct panel_init_cmd auo_b101uan08_3_init_cmd[] = {
++static const struct panel_init_cmd auo_kd101n80_45na_init_cmd[] = {
 +	_INIT_DELAY_CMD(24),
-+	_INIT_DCS_CMD(0xB0, 0x01),
-+	_INIT_DCS_CMD(0xC0, 0x48),
-+	_INIT_DCS_CMD(0xC1, 0x48),
-+	_INIT_DCS_CMD(0xC2, 0x47),
-+	_INIT_DCS_CMD(0xC3, 0x47),
-+	_INIT_DCS_CMD(0xC4, 0x46),
-+	_INIT_DCS_CMD(0xC5, 0x46),
-+	_INIT_DCS_CMD(0xC6, 0x45),
-+	_INIT_DCS_CMD(0xC7, 0x45),
-+	_INIT_DCS_CMD(0xC8, 0x64),
-+	_INIT_DCS_CMD(0xC9, 0x64),
-+	_INIT_DCS_CMD(0xCA, 0x4F),
-+	_INIT_DCS_CMD(0xCB, 0x4F),
-+	_INIT_DCS_CMD(0xCC, 0x40),
-+	_INIT_DCS_CMD(0xCD, 0x40),
-+	_INIT_DCS_CMD(0xCE, 0x66),
-+	_INIT_DCS_CMD(0xCF, 0x66),
-+	_INIT_DCS_CMD(0xD0, 0x4F),
-+	_INIT_DCS_CMD(0xD1, 0x4F),
-+	_INIT_DCS_CMD(0xD2, 0x41),
-+	_INIT_DCS_CMD(0xD3, 0x41),
-+	_INIT_DCS_CMD(0xD4, 0x48),
-+	_INIT_DCS_CMD(0xD5, 0x48),
-+	_INIT_DCS_CMD(0xD6, 0x47),
-+	_INIT_DCS_CMD(0xD7, 0x47),
-+	_INIT_DCS_CMD(0xD8, 0x46),
-+	_INIT_DCS_CMD(0xD9, 0x46),
-+	_INIT_DCS_CMD(0xDA, 0x45),
-+	_INIT_DCS_CMD(0xDB, 0x45),
-+	_INIT_DCS_CMD(0xDC, 0x64),
-+	_INIT_DCS_CMD(0xDD, 0x64),
-+	_INIT_DCS_CMD(0xDE, 0x4F),
-+	_INIT_DCS_CMD(0xDF, 0x4F),
-+	_INIT_DCS_CMD(0xE0, 0x40),
-+	_INIT_DCS_CMD(0xE1, 0x40),
-+	_INIT_DCS_CMD(0xE2, 0x66),
-+	_INIT_DCS_CMD(0xE3, 0x66),
-+	_INIT_DCS_CMD(0xE4, 0x4F),
-+	_INIT_DCS_CMD(0xE5, 0x4F),
-+	_INIT_DCS_CMD(0xE6, 0x41),
-+	_INIT_DCS_CMD(0xE7, 0x41),
-+	_INIT_DELAY_CMD(150),
++	_INIT_DCS_CMD(0x11),
++	_INIT_DELAY_CMD(120),
++	_INIT_DCS_CMD(0x29),
++	_INIT_DELAY_CMD(120),
 +	{},
 +};
 +
  static inline struct boe_panel *to_boe_panel(struct drm_panel *panel)
  {
  	return container_of(panel, struct boe_panel, base);
-@@ -621,6 +668,34 @@ static const struct panel_desc boe_tv101wum_n53_desc = {
- 	.init_cmds = boe_init_cmd,
- };
+@@ -444,12 +454,22 @@ static int boe_panel_unprepare(struct drm_panel *panel)
+ 	}
  
-+static const struct drm_display_mode auo_b101uan08_3_default_mode = {
-+	.clock = 159667,
-+	.hdisplay = 1200,
-+	.hsync_start = 1200 + 60,
-+	.hsync_end = 1200 + 60 + 4,
-+	.htotal = 1200 + 60 + 4 + 80,
-+	.vdisplay = 1920,
-+	.vsync_start = 1920 + 34,
-+	.vsync_end = 1920 + 34 + 2,
-+	.vtotal = 1920 + 34 + 2 + 24,
-+	.vrefresh = 60,
-+	.type = DRM_MODE_TYPE_DRIVER | DRM_MODE_TYPE_PREFERRED,
+ 	msleep(150);
+-	gpiod_set_value(boe->enable_gpio, 0);
+-	usleep_range(500, 1000);
+-	regulator_disable(boe->avee);
+-	regulator_disable(boe->avdd);
+-	usleep_range(5000, 7000);
+-	regulator_disable(boe->pp1800);
++
++	if (boe->desc->discharge_on_disable) {
++		regulator_disable(boe->avee);
++		regulator_disable(boe->avdd);
++		usleep_range(5000, 7000);
++		gpiod_set_value(boe->enable_gpio, 0);
++		usleep_range(5000, 7000);
++		regulator_disable(boe->pp1800);
++	} else {
++		gpiod_set_value(boe->enable_gpio, 0);
++		usleep_range(500, 1000);
++		regulator_disable(boe->avee);
++		regulator_disable(boe->avdd);
++		usleep_range(5000, 7000);
++		regulator_disable(boe->pp1800);
++	}
+ 
+ 	boe->prepared = false;
+ 
+@@ -542,6 +562,35 @@ static const struct panel_desc boe_tv101wum_nl6_desc = {
+ 	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_SYNC_PULSE |
+ 		      MIPI_DSI_MODE_LPM,
+ 	.init_cmds = boe_init_cmd,
++	.discharge_on_disable = false,
 +};
 +
-+static const struct panel_desc auo_b101uan08_3_desc = {
-+	.modes = &auo_b101uan08_3_default_mode,
++static const struct drm_display_mode auo_kd101n80_45na_default_mode = {
++	.clock = 157000,
++	.hdisplay = 1200,
++	.hsync_start = 1200 + 80,
++	.hsync_end = 1200 + 80 + 24,
++	.htotal = 1200 + 80 + 24 + 36,
++	.vdisplay = 1920,
++	.vsync_start = 1920 + 16,
++	.vsync_end = 1920 + 16 + 4,
++	.vtotal = 1920 + 16 + 4 + 16,
++	.vrefresh = 60,
++};
++
++static const struct panel_desc auo_kd101n80_45na_desc = {
++	.modes = &auo_kd101n80_45na_default_mode,
 +	.bpc = 8,
 +	.size = {
 +		.width_mm = 135,
@@ -196,18 +217,17 @@ index e77ea577d93a..01faf8597700 100644
 +	.format = MIPI_DSI_FMT_RGB888,
 +	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_SYNC_PULSE |
 +		      MIPI_DSI_MODE_LPM,
-+	.init_cmds = auo_b101uan08_3_init_cmd,
-+};
-+
++	.init_cmds = auo_kd101n80_45na_init_cmd,
++	.discharge_on_disable = true,
+ };
+ 
  static int boe_panel_get_modes(struct drm_panel *panel,
- 			       struct drm_connector *connector)
- {
-@@ -756,6 +831,9 @@ static const struct of_device_id boe_of_match[] = {
- 	{ .compatible = "boe,tv101wum-n53",
- 	  .data = &boe_tv101wum_n53_desc
+@@ -673,6 +722,9 @@ static const struct of_device_id boe_of_match[] = {
+ 	{ .compatible = "boe,tv101wum-nl6",
+ 	  .data = &boe_tv101wum_nl6_desc
  	},
-+	{ .compatible = "auo,b101uan08.3",
-+	  .data = &auo_b101uan08_3_desc
++	{ .compatible = "auo,kd101n80-45na",
++	  .data = &auo_kd101n80_45na_desc
 +	},
  	{ /* sentinel */ }
  };
