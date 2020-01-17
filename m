@@ -2,83 +2,71 @@ Return-Path: <SRS0=2M+Y=3G=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C7F84C33C9E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jan 2020 17:30:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 795C7C33C9E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jan 2020 18:08:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9259D2073A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jan 2020 17:30:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 518502082F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Jan 2020 18:08:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Q5CQeMMJ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="IfI2V2Vj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9259D2073A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="h9CLsGXH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 518502082F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3EjwmqUpkbDf3AjngyfFNkMtJ9aQkc2OvRL+hIBgucA=; b=Q5CQeMMJPUtaLH
-	G4MXvDk7trcHSJpR7iWuySnCuvEFxa9FbjT7Tgm/BmLPLp16ZJwVftB+vfZrHeNZ8yj5uMiZArKAx
-	05gTXmydG6Z+qWor61uUpomPjLl2hOKjiuQgdlijbBpgHA9mp659N0xjPpUDJl/RSYWVVRZnCpeIF
-	TYT+sIZlM+S7pNeHcET+6J/RSGPcp41N+t4OmOpfk438SCJNRfqz6OAffnoylmBvyI8sZKD3cRotr
-	L/UtQ7wQN/3I3DtZCZAYo79EVPr0I6DSJY5tGe5q5J+0Pz8BrA+mQzvB7N5FtSMSrCadJi2mSIght
-	ZXvStz4q3PL6yn7S4Jgw==;
+	List-Owner; bh=laoXKdr8F8t4tGlBNxOUr3H4rwEP9SQlGSZh7kp8q+A=; b=h9CLsGXHjWKGYx
+	LxwxU19Y24mbGm0oxreMaJzLFrwuBn8PEcavxfheJv/8h8nvFZZKoXW0hC+Rv4n7vn1vs5VAgqxaZ
+	BRLpphUWAqh2cZuaP6ZnvIOSSYQ3ppFzLbwloL8cN5NFqkwK2kJz8UNsFGQ+os6v0MENs5xzxuJdp
+	l6pccmCbB4B2i2ktC4/QaRPRT0AakXdHzByqzFdOyMO530FB1GWYhWrGD++MeLXEavzE350cD82Ft
+	N5aNuKZGBy6ss9FsQlKuKmKh43iQ6VwyQ6rJgQBohExuknfoLmLjs1FjdH0Bcqd1A59YGLhhSEWtk
+	eRzoEFrXnwwfxciGwZcg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1isVSC-0000dd-9q; Fri, 17 Jan 2020 17:30:40 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1isW2u-0000rs-1Q; Fri, 17 Jan 2020 18:08:36 +0000
+Received: from asavdk3.altibox.net ([109.247.116.14])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1isVS6-0000cS-QM
- for linux-mediatek@lists.infradead.org; Fri, 17 Jan 2020 17:30:39 +0000
-Received: by mail-wm1-x343.google.com with SMTP id f129so8456907wmf.2
- for <linux-mediatek@lists.infradead.org>; Fri, 17 Jan 2020 09:30:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=s/Igl7jec5R8DMF3nyQFihy0XoNH7LpzgEc781wHBbE=;
- b=IfI2V2VjiHDEyMxVeB6DJUwZfuJaVSwdWaVbiW2tG1VzG5iMe4Fmndr3Dh8Y5KaF7g
- SbVP5Ca373H4SpjZNwlaPj0ajlmO5/0RXj4cboBUBjlynN2ihp0sj5+LxlF9hYR3Gs5D
- 5Qv2rZh4Yzvc8lS4UP3Ac5LRe5cw1v+Y0yJdR8pwwdPPusdbhjfrDBsi13y8DYwoaakI
- cuAz6BXfPrsKPA1w9FiWbzNzE9zzgpb3Rr4pw20A0bJZFGooUMKUtslJ3QXvxVnMh650
- IIszWgCEmch4wXJw0b3IsDeqswH27TUpZ2/KnyYvteCdFYD5butLob8faQQd6VS5iI6D
- fZyA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=s/Igl7jec5R8DMF3nyQFihy0XoNH7LpzgEc781wHBbE=;
- b=mt++FiRJyBuoKZ3/L+tDST0ip5hrPO/gQATLcZg3u1AFKaEvSLAuWpj7DCijveHcoz
- 0choNlGmPY7FQXLDTFHMbf77T4tWeY8l3twUdkcYDLv385lAtt1zkIQMez7hUNury6hi
- uS5EGJxDQIM9dZeQo1gS3Wbvm55P1Xd8o4mfkrqedS04AmY2sa49HM1FxHSDzz9BHQZG
- CE6n02vsfuVEcOkaVMKHcxzav53lLiR13BDOBTqq11l9/2fEMdcaHJpswp12TlWfF5TM
- MPOQk4Wytg5f0CjP8QN9jX86I0H5JOEmxialhuEngjGeTGkejtr91jWHIK516nbm9jOu
- 6zxw==
-X-Gm-Message-State: APjAAAVpuJ8vw9GKb+NR9ktt/wiuNeKHj0yKjlL2IPj/MBcKkhSf56ek
- 0xmrZOBebWEK5mI7ZkD+hivygdAPQPv1oPVMhplNeg==
-X-Google-Smtp-Source: APXvYqzRUf0wuugbvneoW29gNcVYmOiCM6ix6iVR1pyh/dPBzXnBInYEBfLi/RQ7RKNXoAYeNH1N+QN4jkAc1zvQ3nI=
-X-Received: by 2002:a1c:7e0b:: with SMTP id z11mr5822249wmc.88.1579282226314; 
- Fri, 17 Jan 2020 09:30:26 -0800 (PST)
+ id 1isW2o-0000qq-A1
+ for linux-mediatek@lists.infradead.org; Fri, 17 Jan 2020 18:08:34 +0000
+Received: from ravnborg.org (unknown [158.248.194.18])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by asavdk3.altibox.net (Postfix) with ESMTPS id 549452002C;
+ Fri, 17 Jan 2020 19:08:18 +0100 (CET)
+Date: Fri, 17 Jan 2020 19:08:17 +0100
+From: Sam Ravnborg <sam@ravnborg.org>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Subject: Re: [PATCH v9 1/5] dt-bindings: display: panel: Add boe tv101wum-n16
+ panel bindings
+Message-ID: <20200117180817.GA17294@ravnborg.org>
+References: <20200116021511.22675-1-jitao.shi@mediatek.com>
+ <20200116021511.22675-2-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-References: <20200116043612.52782-1-surenb@google.com>
- <20200117151533.12381-1-mkoutny@suse.com>
-In-Reply-To: <20200117151533.12381-1-mkoutny@suse.com>
-From: Suren Baghdasaryan <surenb@google.com>
-Date: Fri, 17 Jan 2020 09:30:15 -0800
-Message-ID: <CAJuCfpHkOz1LmygyxC9VxXux8_TFmEGr-BsAs-EadKt=AkZyiQ@mail.gmail.com>
-Subject: Re: [PATCH 0/3] cgroup: Iterate tasks that did not finish do_exit()
-To: =?UTF-8?Q?Michal_Koutn=C3=BD?= <mkoutny@suse.com>
+Content-Disposition: inline
+In-Reply-To: <20200116021511.22675-2-jitao.shi@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-CMAE-Score: 0
+X-CMAE-Analysis: v=2.3 cv=eMA9ckh1 c=1 sm=1 tr=0
+ a=UWs3HLbX/2nnQ3s7vZ42gw==:117 a=UWs3HLbX/2nnQ3s7vZ42gw==:17
+ a=jpOVt7BSZ2e4Z31A5e1TngXxSK0=:19 a=kj9zAlcOel0A:10 a=7gkXJVJtAAAA:8
+ a=mpaa-ttXAAAA:8 a=gEfo2CItAAAA:8 a=pGLkceISAAAA:8 a=VwQbUJbxAAAA:8
+ a=e5mUnYsNAAAA:8 a=bHLQw6FTChaek29_IE4A:9 a=GUAa75DiEQyea0yL:21
+ a=icJfZ08v17ktqyR2:21 a=CjuIK1q_8ugA:10 a=E9Po1WZjFZOl8hwRPBS3:22
+ a=6heAxKwa5pAsJatQ0mat:22 a=sptkURWiP4Gy88Gu7hUp:22
+ a=AjGcO6oz07-iQ99wixmX:22 a=Vxmtnl_E_bksehYqCbjh:22
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200117_093034_854919_87F0744F 
-X-CRM114-Status: GOOD (  13.16  )
+X-CRM114-CacheID: sfid-20200117_100830_711915_1E4E4A12 
+X-CRM114-Status: GOOD (  17.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,51 +78,132 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: JeiFeng Lee <linger.lee@mediatek.com>, Tom Cherry <tomcherry@google.com>,
- shuah@kernel.org, LKML <linux-kernel@vger.kernel.org>, matthias.bgg@gmail.com,
- Li Zefan <lizefan@huawei.com>, linux-mediatek@lists.infradead.org,
- linux-kselftest@vger.kernel.org, Johannes Weiner <hannes@cmpxchg.org>,
- Tejun Heo <tj@kernel.org>, cgroups mailinglist <cgroups@vger.kernel.org>,
- alex.shi@linux.alibaba.com, kernel-team <kernel-team@android.com>,
- Roman Gushchin <guro@fb.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>,
+ stonea168@163.com, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, cawa.cheng@mediatek.com,
+ Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ yingjoe.chen@mediatek.com, eddie.huang@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgTWljaGFsLAoKT24gRnJpLCBKYW4gMTcsIDIwMjAgYXQgNzoxNSBBTSBNaWNoYWwgS291dG7D
-vSA8bWtvdXRueUBzdXNlLmNvbT4gd3JvdGU6Cj4KPiBIaSwKPiBJIHdhcyBsb29raW5nIGludG8g
-dGhlIGlzc3VlIGFuZCBjYW1lIHVwIHdpdGggYW4gYWx0ZXJuYXRpdmUgc29sdXRpb24gdGhhdAo+
-IGNoYW5nZXMgdGFzayBpdGVyYXRpb24gdG8gYmUgY29uc2lzdGVudCB3aXRoIGNncm91cF9pc19w
-b3B1bGF0ZWQoKSBjaGVjayBhbmQKPiBtb3ZpbmcgdGhlIHJlc3BvbnNpYmlsaXR5IHRvIGNoZWNr
-IFBGX0VYSVRJTkcgb24gdGhlIGNvbnN1bWVycyBvZiBpdGVyYXRvciBBUEkuCgpZZWFoLCB0aGF0
-IHdhcyBteSBmaXJzdCB0aG91Z2h0IHdoaWNoIGJhc2ljYWxseSByZXZlcnRzIGEgcGFydCBvZgpj
-MDNjZDc3MzhhODMuIFdoZW4gSSBmaXJzdCBicm91Z2h0IHVwIHRoaXMgaXNzdWUgaW4gdGhlIG90
-aGVyIGVtYWlsCnRocmVhZCwgVGVqdW4ncyBjb21tZW50IHdhcyAidGhlIHJpZ2h0IHRoaW5nIHRv
-IGRvIGlzIGFsbG93aW5nCmRlc3RydWN0aW9uIG9mIGNncm91cHMgdy8gb25seQpkZWFkIHByb2Nl
-c3NlcyBpbiBpdCIuIEkgYXNzdW1lZCwgbWF5YmUgaW5jb3JyZWN0bHksIHRoYXQgdGhlIGRlc2ly
-ZQpoZXJlIGlzIG5vdCB0byBpbmNsdWRlIGR5aW5nIHByb2Nlc3NlcyBpbnRvIGNncm91cC5wcm9j
-cyBidXQgdG8gYWxsb3cKY2dyb3VwcyB3aXRoIGR5aW5nIHByb2Nlc3NlcyB0byBiZSBkZWxldGVk
-LgoKVG8gYmUgY2xlYXIsIGVpdGhlciB3YXkgaXMgZmluZSB3aXRoIG1lIHNpbmNlIGJvdGggd2F5
-cyBzb2x2ZSB0aGUKaXNzdWUgYW5kIHRoaXMgd2F5IHRoZSBjb2RlIGlzIGRlZmluaXRlbHkgc2lt
-cGxlci4gSSdsbCByZXJ1biB0aGUKdGVzdHMgd2l0aCB5b3VyIHBhdGNoZXMganVzdCB0byBjb25m
-aXJtIHRoZSBpc3N1ZSBpcyBnb25lLgpUaGFua3MhCgo+IEkgaGF2ZW4ndCBjaGVjayB5b3VyIGFw
-cHJvYWNoIHRob3JvdWdobHksIGhvd2V2ZXIsIGl0IGFwcGVhcnMgdG8gbWUgaXQKPiBjb21wbGlj
-YXRlcyAoYWxyZWFkeSBub24tdHJpdmlhbCkgY2dyb3VwIGRlc3RydWN0aW9uIHBhdGguIEkgcmFu
-IHlvdXIgc2VsZnRlc3QKPiBvbiB0aGUgaXRlcmF0b3JzIGFwcHJvYWNoIGFuZCBpdCBwcm92ZWQg
-d29ya2luZy4KPgo+Cj4gTWljaGFsIEtvdXRuw70gKDIpOgo+ICAgY2dyb3VwOiBVbmlmeSBjc3Nf
-c2V0IHRhc2sgbGlzdHMKPiAgIGNncm91cDogSXRlcmF0ZSB0YXNrcyB0aGF0IGRpZCBub3QgZmlu
-aXNoIGRvX2V4aXQoKQo+Cj4gU3VyZW4gQmFnaGRhc2FyeWFuICgxKToKPiAgIGtzZWxmdGVzdC9j
-Z3JvdXA6IGFkZCBjZ3JvdXAgZGVzdHJ1Y3Rpb24gdGVzdAo+Cj4gIGluY2x1ZGUvbGludXgvY2dy
-b3VwLWRlZnMuaCAgICAgICAgICAgICAgICB8ICAxNSArKy0KPiAgaW5jbHVkZS9saW51eC9jZ3Jv
-dXAuaCAgICAgICAgICAgICAgICAgICAgIHwgICA0ICstCj4gIGtlcm5lbC9jZ3JvdXAvY2dyb3Vw
-LmMgICAgICAgICAgICAgICAgICAgICB8ICA4NiArKysrKysrKy0tLS0tLS0tCj4gIGtlcm5lbC9j
-Z3JvdXAvZGVidWcuYyAgICAgICAgICAgICAgICAgICAgICB8ICAxNiArKy0KPiAgdG9vbHMvdGVz
-dGluZy9zZWxmdGVzdHMvY2dyb3VwL3Rlc3RfY29yZS5jIHwgMTEzICsrKysrKysrKysrKysrKysr
-KysrKwo+ICA1IGZpbGVzIGNoYW5nZWQsIDE3NiBpbnNlcnRpb25zKCspLCA1OCBkZWxldGlvbnMo
-LSkKPgo+IC0tCj4gMi4yNC4xCj4KPiAtLQo+IFRvIHVuc3Vic2NyaWJlIGZyb20gdGhpcyBncm91
-cCBhbmQgc3RvcCByZWNlaXZpbmcgZW1haWxzIGZyb20gaXQsIHNlbmQgYW4gZW1haWwgdG8ga2Vy
-bmVsLXRlYW0rdW5zdWJzY3JpYmVAYW5kcm9pZC5jb20uCj4KCl9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApM
-aW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
-b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+Hi Jitao.
+
+Looks good, much better than the individual files.
+Rob Herring is still listed as maintainer which I questioned in last
+feedback.
+
+With this resolved (kept only if Rob confirms), this is
+Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
+
+On Thu, Jan 16, 2020 at 10:15:07AM +0800, Jitao Shi wrote:
+> Add documentation for "boe,tv101wum-n16", "auo,kd101n80-45na",
+> "boe,tv101wum-n53" and "auo,b101uan08.3" panels.
+> 
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
+> ---
+>  .../display/panel/boe,tv101wum-nl6.yaml       | 81 +++++++++++++++++++
+>  1 file changed, 81 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/panel/boe,tv101wum-nl6.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/display/panel/boe,tv101wum-nl6.yaml b/Documentation/devicetree/bindings/display/panel/boe,tv101wum-nl6.yaml
+> new file mode 100644
+> index 000000000000..cc4e058f5eee
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/panel/boe,tv101wum-nl6.yaml
+> @@ -0,0 +1,81 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/display/panel/boe,tv101wum-nl6.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: BOE TV101WUM-NL6 DSI Display Panel
+> +
+> +maintainers:
+> +  - Thierry Reding <thierry.reding@gmail.com>
+> +  - Sam Ravnborg <sam@ravnborg.org>
+> +  - Rob Herring <robh+dt@kernel.org>
+> +
+> +allOf:
+> +  - $ref: panel-common.yaml#
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +        # BOE TV101WUM-NL6 10.1" WUXGA TFT LCD panel
+> +      - boe,tv101wum-nl6
+> +        # AUO KD101N80-45NA 10.1" WUXGA TFT LCD panel
+> +      - auo,kd101n80-45na
+> +        # BOE TV101WUM-N53 10.1" WUXGA TFT LCD panel
+> +      - boe,tv101wum-n53
+> +        # AUO B101UAN08.3 10.1" WUXGA TFT LCD panel
+> +      - auo,b101uan08.3
+> +
+> +  reg:
+> +    description: the virtual channel number of a DSI peripheral
+> +
+> +  enable-gpios:
+> +    description: a GPIO spec for the enable pin
+> +
+> +  pp1800-supply:
+> +    description: core voltage supply
+> +
+> +  avdd-supply:
+> +    description: phandle of the regulator that provides positive voltage
+> +
+> +  avee-supply:
+> +    description: phandle of the regulator that provides negative voltage
+> +
+> +  backlight:
+> +    description: phandle of the backlight device attached to the panel
+> +
+> +  port: true
+> +
+> +required:
+> + - compatible
+> + - reg
+> + - enable-gpios
+> + - pp1800-supply
+> + - avdd-supply
+> + - avee-supply
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    dsi {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +        panel@0 {
+> +            compatible = "boe,tv101wum-nl6";
+> +            reg = <0>;
+> +            enable-gpios = <&pio 45 0>;
+> +            avdd-supply = <&ppvarn_lcd>;
+> +            avee-supply = <&ppvarp_lcd>;
+> +            pp1800-supply = <&pp1800_lcd>;
+> +            backlight = <&backlight_lcd0>;
+> +            status = "okay";
+> +            port {
+> +                panel_in: endpoint {
+> +                    remote-endpoint = <&dsi_out>;
+> +                };
+> +            };
+> +        };
+> +    };
+> +
+> +...
+> -- 
+> 2.21.0
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
