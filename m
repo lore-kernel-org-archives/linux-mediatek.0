@@ -2,82 +2,78 @@ Return-Path: <SRS0=hb3V=3I=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 45AE3C33CB7
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jan 2020 01:57:04 +0000 (UTC)
-Received: from bombadil.infradead.org (unknown [198.137.202.133])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 01DB8C32771
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jan 2020 03:22:36 +0000 (UTC)
+Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1C787206B7
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jan 2020 01:57:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B51392083E
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jan 2020 03:22:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aNQxJPT4";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="K1rDjvBy"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1C787206B7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uJ1AUsMH";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GDKHRbGq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B51392083E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IY4Rn/Zm6B/+1DBsJFOrtA5FE2hRVJGbAwVc7EUD+0M=; b=aNQxJPT45LyggN
-	TqmNRvrewDy2FS1Gn2x7mwF0+9t7Aep9fPX8Bw9Ma4v6R1brQNCejOdUEAWk85d63A8XIkW7TqlRH
-	aNBxy/nD0hNsqEnTBeHVS60s9vAd82WLb2erlUgbQyLriQcm4JMdZTTZpI0pHo5b+usYsZyDpIfuZ
-	M1bxNVsclrdC2iR4fRs14iAf/KJcmzF/dxRYYnGZGgHhrO1aiE+YuRPKd+aAEcuQa9MQ3fFGpPWiG
-	/FfB7UWclFp4g3fArIAx0wLyTbIrRVXlth0WKKz5kiclEOq5RHh70MNtrWEbQbiohwNyMOphRUD3f
-	IL0WcgGHSG3dfa13agkw==;
+	List-Owner; bh=GO2+j7/qRSue/axFGSuu8TmkUQGSY+DfXIJ8NEDWbnc=; b=uJ1AUsMHLz6+oF
+	Yan2q6L3QfeUFz7EfxwzC+LF5JRGCffhzexQw/ahXSZKaxCetr+lXryBOo0aSOY6bb39gYHNjEgn8
+	kyhjZNjsysOfj3FTjGEDA7y5JasQ6SsBg6GzJFmCDST6eiLtViX+cx/AmVEXCOgqZFEVhxoKp7Noz
+	uPpWDJ1wSZapJF7qPh+J712ppyxn+sqDzlt0G/M8/dG6R4Lwo3tf0QS/rIemj2MZdSknk7dD3E78g
+	n/qCWnmXuFVDG/FTi+B33I4vXU+u1JgNsiWBds4w5vX6bOsP/z1tE+PJD21iPLShsY7vOysiqHumL
+	bzvJ2VjcJbIHCsMPfkyQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iszpI-00084V-K5; Sun, 19 Jan 2020 01:56:32 +0000
+	id 1it1AP-0004Ne-Qx; Sun, 19 Jan 2020 03:22:25 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iszpC-00083o-N7
- for linux-mediatek@lists.infradead.org; Sun, 19 Jan 2020 01:56:30 +0000
-X-UUID: 411c7fe4a7cc4af9850b01097e1cbb13-20200118
+ id 1it1AB-0004Ds-Sh; Sun, 19 Jan 2020 03:22:15 +0000
+X-UUID: c93873cc43a542d88870a6039ee01cd8-20200118
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=x3qlvVjA+1w0zdnvIBDb63N00F9OElYvDcvNejnWj1k=; 
- b=K1rDjvByde+XQKFa+Vl7kreQJRNLGx3sfsIJaJGMag2A+jJn+hs2ApvfuNM3qNRJdaW0d/sruGkBnLozLkFxraaAxil/kRJT0jpw9Erq7VZDD/FJ2VV/qX0yS1IJZJdYmzLxZYzhAuW9FXtbjnezeyUyx18PsA10TghjE42LpY4=;
-X-UUID: 411c7fe4a7cc4af9850b01097e1cbb13-20200118
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jitao.shi@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=N4m9R+HOEDebYFK3h+Sc6tDJ4qpxShm9ZEefTev3gRc=; 
+ b=GDKHRbGqMIa1Fbjl67s5M9EaXA3KXyexPY5V6kV+EhVh/DmDufg6TvQ9JOTuZkUff0nCUoDogkrgVZ+P+8l5jpwmbkib/S3vKmK0dAFDf7ZOz/7PZJC0XPPZvG9F08PD46+C1EG0qyBpoIX9GgZbDJ8eYRgjfaPqDtQyYEWqqSw=;
+X-UUID: c93873cc43a542d88870a6039ee01cd8-20200118
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <yong.liang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1609575275; Sat, 18 Jan 2020 17:56:22 -0800
-Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sat, 18 Jan 2020 17:46:19 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
- (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Sun, 19 Jan 2020 09:45:11 +0800
-Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
- MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1395.4 via Frontend Transport; Sun, 19 Jan 2020 09:45:08 +0800
-From: Jitao Shi <jitao.shi@mediatek.com>
-To: Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg
- <sam@ravnborg.org>, David Airlie <airlied@linux.ie>, Daniel Vetter
- <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH v10 5/5] drm/panel: support for auo,
- b101uan08.3 wuxga dsi video mode panel
-Date: Sun, 19 Jan 2020 09:45:41 +0800
-Message-ID: <20200119014541.64273-6-jitao.shi@mediatek.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20200119014541.64273-1-jitao.shi@mediatek.com>
-References: <20200119014541.64273-1-jitao.shi@mediatek.com>
+ with ESMTP id 1700877670; Sat, 18 Jan 2020 19:22:05 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sat, 18 Jan 2020 19:22:58 -0800
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31DR.mediatek.inc
+ (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Sun, 19 Jan 2020 11:20:20 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Sun, 19 Jan 2020 11:22:07 +0800
+Message-ID: <1579404112.27500.0.camel@mhfsdcap03>
+Subject: Re: [PATCH v12 4/4] watchdog: mtk_wdt: mt2712: Add reset controller
+From: Yong Liang <yong.liang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Date: Sun, 19 Jan 2020 11:21:52 +0800
+In-Reply-To: <987a7ccf-3d1b-9d4b-d766-63925268c21e@gmail.com>
+References: <20200115085828.27791-1-yong.liang@mediatek.com>
+ <20200115085828.27791-5-yong.liang@mediatek.com>
+ <987a7ccf-3d1b-9d4b-d766-63925268c21e@gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: D36ED15BC9F31FC002F2BB930BA4C4A7885D3EF56FE365D4B531C5E7C341AD872000:8
+X-TM-SNTS-SMTP: 0375DB0187E35C7A60A71975C79E48344130A27F5AE250EF19AE1BE1763111EC2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200118_175626_763142_F0AF14A0 
-X-CRM114-Status: UNSURE (   7.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200118_192211_940379_DA130FEF 
+X-CRM114-Status: GOOD (  15.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,131 +85,89 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Jitao Shi <jitao.shi@mediatek.com>, srv_heupstream@mediatek.com,
- stonea168@163.com, cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org,
- bibby.hsieh@mediatek.com, ck.hu@mediatek.com, yingjoe.chen@mediatek.com,
- eddie.huang@mediatek.com
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ Freddy Hsin =?UTF-8?Q?=28=E8=BE=9B=E6=81=92=E8=B1=90=29?=
+ <Freddy.Hsin@mediatek.com>,
+ "linux-watchdog@vger.kernel.org" <linux-watchdog@vger.kernel.org>,
+ "sboyd@kernel.org" <sboyd@kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Jiaxin Yu =?UTF-8?Q?=28=E4=BF=9E=E5=AE=B6=E9=91=AB=29?=
+ <Jiaxin.Yu@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux@roeck-us.net" <linux@roeck-us.net>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ Yingjoe Chen =?UTF-8?Q?=28=E9=99=B3=E8=8B=B1=E6=B4=B2=29?=
+ <Yingjoe.Chen@mediatek.com>,
+ Chang-An Chen =?UTF-8?Q?=28=E9=99=B3=E6=98=B6=E5=AE=89=29?=
+ <Chang-An.Chen@mediatek.com>,
+ "wim@linux-watchdog.org" <wim@linux-watchdog.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Auo,auo,b101uan08.3's connector is same as boe,tv101wum-nl6.
-The most codes can be reuse.
-So auo,b101uan08.3 and boe,tv101wum-nl6 use one driver file.
-Add the different parts in driver data.
+On Thu, 2020-01-16 at 00:18 +0800, Matthias Brugger wrote:
+> 
+> On 15/01/2020 09:58, Yong Liang wrote:
+> > From: "yong.liang" <yong.liang@mediatek.com>
+> > 
+> > Add reset controller for 2712.
+> > Besides watchdog, MTK toprgu module alsa provide sub-system (eg, audio,
+> > camera, codec and connectivity) software reset functionality.
+> > 
+> > Signed-off-by: yong.liang <yong.liang@mediatek.com>
+> > Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> > Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+> > Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+> 
+> Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
----
- .../gpu/drm/panel/panel-boe-tv101wum-nl6.c    | 78 +++++++++++++++++++
- 1 file changed, 78 insertions(+)
+Hi Mattias:
+  May I need send a new patch whith this tag?
+> 
+> > ---
+> >  drivers/watchdog/mtk_wdt.c | 6 ++++++
+> >  1 file changed, 6 insertions(+)
+> > 
+> > diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+> > index e88aacb0404d..d6a6393f609d 100644
+> > --- a/drivers/watchdog/mtk_wdt.c
+> > +++ b/drivers/watchdog/mtk_wdt.c
+> > @@ -9,6 +9,7 @@
+> >   * Based on sunxi_wdt.c
+> >   */
+> >  
+> > +#include <dt-bindings/reset-controller/mt2712-resets.h>
+> >  #include <dt-bindings/reset-controller/mt8183-resets.h>
+> >  #include <linux/delay.h>
+> >  #include <linux/err.h>
+> > @@ -67,6 +68,10 @@ struct mtk_wdt_data {
+> >  	int toprgu_sw_rst_num;
+> >  };
+> >  
+> > +static const struct mtk_wdt_data mt2712_data = {
+> > +	.toprgu_sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
+> > +};
+> > +
+> >  static const struct mtk_wdt_data mt8183_data = {
+> >  	.toprgu_sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
+> >  };
+> > @@ -314,6 +319,7 @@ static int mtk_wdt_resume(struct device *dev)
+> >  #endif
+> >  
+> >  static const struct of_device_id mtk_wdt_dt_ids[] = {
+> > +	{ .compatible = "mediatek,mt2712-wdt", .data = &mt2712_data },
+> >  	{ .compatible = "mediatek,mt6589-wdt" },
+> >  	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
+> >  	{ /* sentinel */ }
+> > 
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
-diff --git a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-index e77ea577d93a..01faf8597700 100644
---- a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-+++ b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
-@@ -377,6 +377,53 @@ static const struct panel_init_cmd auo_kd101n80_45na_init_cmd[] = {
- 	{},
- };
- 
-+static const struct panel_init_cmd auo_b101uan08_3_init_cmd[] = {
-+	_INIT_DELAY_CMD(24),
-+	_INIT_DCS_CMD(0xB0, 0x01),
-+	_INIT_DCS_CMD(0xC0, 0x48),
-+	_INIT_DCS_CMD(0xC1, 0x48),
-+	_INIT_DCS_CMD(0xC2, 0x47),
-+	_INIT_DCS_CMD(0xC3, 0x47),
-+	_INIT_DCS_CMD(0xC4, 0x46),
-+	_INIT_DCS_CMD(0xC5, 0x46),
-+	_INIT_DCS_CMD(0xC6, 0x45),
-+	_INIT_DCS_CMD(0xC7, 0x45),
-+	_INIT_DCS_CMD(0xC8, 0x64),
-+	_INIT_DCS_CMD(0xC9, 0x64),
-+	_INIT_DCS_CMD(0xCA, 0x4F),
-+	_INIT_DCS_CMD(0xCB, 0x4F),
-+	_INIT_DCS_CMD(0xCC, 0x40),
-+	_INIT_DCS_CMD(0xCD, 0x40),
-+	_INIT_DCS_CMD(0xCE, 0x66),
-+	_INIT_DCS_CMD(0xCF, 0x66),
-+	_INIT_DCS_CMD(0xD0, 0x4F),
-+	_INIT_DCS_CMD(0xD1, 0x4F),
-+	_INIT_DCS_CMD(0xD2, 0x41),
-+	_INIT_DCS_CMD(0xD3, 0x41),
-+	_INIT_DCS_CMD(0xD4, 0x48),
-+	_INIT_DCS_CMD(0xD5, 0x48),
-+	_INIT_DCS_CMD(0xD6, 0x47),
-+	_INIT_DCS_CMD(0xD7, 0x47),
-+	_INIT_DCS_CMD(0xD8, 0x46),
-+	_INIT_DCS_CMD(0xD9, 0x46),
-+	_INIT_DCS_CMD(0xDA, 0x45),
-+	_INIT_DCS_CMD(0xDB, 0x45),
-+	_INIT_DCS_CMD(0xDC, 0x64),
-+	_INIT_DCS_CMD(0xDD, 0x64),
-+	_INIT_DCS_CMD(0xDE, 0x4F),
-+	_INIT_DCS_CMD(0xDF, 0x4F),
-+	_INIT_DCS_CMD(0xE0, 0x40),
-+	_INIT_DCS_CMD(0xE1, 0x40),
-+	_INIT_DCS_CMD(0xE2, 0x66),
-+	_INIT_DCS_CMD(0xE3, 0x66),
-+	_INIT_DCS_CMD(0xE4, 0x4F),
-+	_INIT_DCS_CMD(0xE5, 0x4F),
-+	_INIT_DCS_CMD(0xE6, 0x41),
-+	_INIT_DCS_CMD(0xE7, 0x41),
-+	_INIT_DELAY_CMD(150),
-+	{},
-+};
-+
- static inline struct boe_panel *to_boe_panel(struct drm_panel *panel)
- {
- 	return container_of(panel, struct boe_panel, base);
-@@ -621,6 +668,34 @@ static const struct panel_desc boe_tv101wum_n53_desc = {
- 	.init_cmds = boe_init_cmd,
- };
- 
-+static const struct drm_display_mode auo_b101uan08_3_default_mode = {
-+	.clock = 159667,
-+	.hdisplay = 1200,
-+	.hsync_start = 1200 + 60,
-+	.hsync_end = 1200 + 60 + 4,
-+	.htotal = 1200 + 60 + 4 + 80,
-+	.vdisplay = 1920,
-+	.vsync_start = 1920 + 34,
-+	.vsync_end = 1920 + 34 + 2,
-+	.vtotal = 1920 + 34 + 2 + 24,
-+	.vrefresh = 60,
-+	.type = DRM_MODE_TYPE_DRIVER | DRM_MODE_TYPE_PREFERRED,
-+};
-+
-+static const struct panel_desc auo_b101uan08_3_desc = {
-+	.modes = &auo_b101uan08_3_default_mode,
-+	.bpc = 8,
-+	.size = {
-+		.width_mm = 135,
-+		.height_mm = 216,
-+	},
-+	.lanes = 4,
-+	.format = MIPI_DSI_FMT_RGB888,
-+	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_SYNC_PULSE |
-+		      MIPI_DSI_MODE_LPM,
-+	.init_cmds = auo_b101uan08_3_init_cmd,
-+};
-+
- static int boe_panel_get_modes(struct drm_panel *panel,
- 			       struct drm_connector *connector)
- {
-@@ -756,6 +831,9 @@ static const struct of_device_id boe_of_match[] = {
- 	{ .compatible = "boe,tv101wum-n53",
- 	  .data = &boe_tv101wum_n53_desc
- 	},
-+	{ .compatible = "auo,b101uan08.3",
-+	  .data = &auo_b101uan08_3_desc
-+	},
- 	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, boe_of_match);
--- 
-2.21.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
