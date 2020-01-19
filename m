@@ -2,23 +2,22 @@ Return-Path: <SRS0=hb3V=3I=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.7 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-6.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F1E31C33CB1
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jan 2020 14:06:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 52A0DC33CB1
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jan 2020 14:13:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C2F3820684
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jan 2020 14:06:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 06312206D7
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Jan 2020 14:13:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YhbQN158";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="D4HYewrw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C2F3820684
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="r1gsJZ/e";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="QOuc3nSY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 06312206D7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,58 +26,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nt+U6E0hw+SXgg3Hghl8u9BsDJG/owMlFslSchgnApU=; b=YhbQN158tCMF7X
-	cH8fJH+uS98JgM/2fFO9vZF8m6jjRrdAKa9Hz+FcZLBx0mE7y9w6n0L9BNCYFTbIKCS1NBRbXUNqZ
-	yIXd+o1nh3LkEmLVMwVcgmMqtY+UESmLTCiFO4UiEx+f4CVQQ2Cahoq+ZBWE/bkmTImlm+iB1E8gB
-	KVCDZY+ANY3QZ0CjcARaj5AlaxrfwZ7UG3xjKe2TWiaMQq4rnahaxa2wQf5qJcKZcyO0jHRzfGbo4
-	C6IgFvnsTE0YyIHFbIcl3xpf0MHQpYjIbOHh6WMYQfPz5Vn0p9k50ho/tuaGULleuwGSBlo7Bs2FN
-	7O+nZV6ms1D1LPSlPn6w==;
+	List-Owner; bh=KCLdKplwdKXrn0j7OLnDZKEFX+m1lbkQE95bv0PMajE=; b=r1gsJZ/eBIvx/q
+	jl6hD3kQlMc5wiU3QmJdLKDlXsh910OhYsrV5l/r9W5gdOmDHT4FJfSOxjst82pVQKxpvLwOcMWIv
+	Ttu7PD7Ytb5a0XEA5TKHGsoP5dAYgishlbJjMCKozcU/a913f6Z4+gZDEPS5qFzvLkh+wrlIJzDko
+	ke0UldxZr28uLECaf7k1UHWbdzgc/QHzUnVxoeplGSqRNjnsi/kuZ8Z8dt3YyptztEh/Jwhwd9ARX
+	GfC+VbUZjKxqf2OCyLPMvgxltHx31bS9UYcqqvU+WkLlx+Sft77pyWhMpT27g4FgQmVfv0Pj36pms
+	vLWLdd8vBh00BkpXrgSQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1itBD9-00025J-5i; Sun, 19 Jan 2020 14:05:55 +0000
-Received: from mail-vk1-xa44.google.com ([2607:f8b0:4864:20::a44])
+	id 1itBKV-0003xw-AS; Sun, 19 Jan 2020 14:13:31 +0000
+Received: from mail-vs1-xe44.google.com ([2607:f8b0:4864:20::e44])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1itBD7-00023p-1g; Sun, 19 Jan 2020 14:05:54 +0000
-Received: by mail-vk1-xa44.google.com with SMTP id y184so7850734vkc.11;
- Sun, 19 Jan 2020 06:05:50 -0800 (PST)
+ id 1itBKS-0003xN-8m; Sun, 19 Jan 2020 14:13:29 +0000
+Received: by mail-vs1-xe44.google.com with SMTP id x123so17521973vsc.2;
+ Sun, 19 Jan 2020 06:13:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zQ9s6aXRXnoAgbGD22gB4cMgUN7RxJiXOnF2aQocl4w=;
- b=D4HYewrwAwcrLYakl62CNJiFBQ21pi4ZSSvdtblf5pnIkzSU7vQ+QY6eS6wSb8soGu
- tWXzPn5F/se0Rt6m2pey0k3xdLx/CPVJvnLKhitOq7+owIV1+R5iZeE5z4pSsJNCkf8w
- 9cApU/2Bw8FkyDzMqpEWX1fm7IyJ5SQEn57J5Qk85uadJEJsl5oX8erdX/F+tAUnEiLI
- ooIHwdS/TjwcABk0pNszo9xzH0Tfl3ocK7J89gLrm95DRPpMbOH2bo5WXnN2Ez8myrue
- G2GYZx1QKuIkjbZyo+WNcvLRqhBtqXcAVgmIJZ18tFRm1rwxDn2FtSvje/bPn2pnzNAZ
- L/JA==
+ :cc; bh=WS4hpiPJ4ZsLS0bhjTBuxcDiBx1tLS6ob2vAGCFesxE=;
+ b=QOuc3nSYWc5b82Vq+EXtiBO+wIuxcXrcnVdRw/OwDX2vo59211p80vm6G1wVNEp1FM
+ M1hPMqTOcarVwUNrjg0dqeaFu8FrMx59Dq3k2BSCiVoScLFrbKnUz3Lskx8u/csP/K2M
+ n3hJXUaO58pnk9dWkgzWpLCq7BbR5svTUBAoLU1f3Gd05sNJQGmX2fGVE0MEKIbc5FFd
+ E3prO93PSEy3ktg88DgQuxu7NSiW+hufzXPrXUjeJwpW3pegx9B9nCoevU333c5xsZv0
+ XLa0eXZQUyIC0ansVKKx0WYWEEdb+ZWaapL8tieFU1MjzPyZv77eb/HbXLh4f82hziGm
+ iTTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=zQ9s6aXRXnoAgbGD22gB4cMgUN7RxJiXOnF2aQocl4w=;
- b=tkDAmnyJkAPbygDwbuCdTU97dvowktQhouKvnoDzff0gQX4l+zvNfZ1w+tqKfjYGYy
- SMYm/Yijr1odFvXaiADsCKwnJPd+u9+0/iZU4Z64IwgnpiKdezCvZQfMTT7Q6kw2gJ8/
- 2R4/Lt6b8gG2bsI3SJlKZFotbEBY5g+iHWQfdGirIYcRpgIbJ7cpuZY4x59S0b5sl3KB
- CFUuzEJ7UMxBUi+xVYBhy/5Hjd86cKXG0aDzOAe1bFcA7BPbGJ0apZaOwE04/nFSpTjW
- xuvD5YX1HRFa7YpRpGDMwVBygX/grHxgaTgBuWL0xpbYz5MD6CqodgszmQ+Vm7RZY/uu
- KNGA==
-X-Gm-Message-State: APjAAAW2kYzeMijkWDv4grzEdBP3CCIxKcb/9X5WOeNE7MQCVVPy1DYt
- 6v19A3IjUmBumOabVfgvYKQdMthB6ssJgMeJL6k=
-X-Google-Smtp-Source: APXvYqw9nG6xAj+S2gKKCAQ+BbMHU9VAljMkDzXB0Wf9p2t4X/nPF33r/AvPVp0cjllf4FH2e95K5MuKmSvD66pWLFI=
-X-Received: by 2002:a1f:8f44:: with SMTP id r65mr7356012vkd.8.1579442749175;
- Sun, 19 Jan 2020 06:05:49 -0800 (PST)
+ bh=WS4hpiPJ4ZsLS0bhjTBuxcDiBx1tLS6ob2vAGCFesxE=;
+ b=F3ssQnE7nMKnJywCSmbRpAncdm/Ek1vahn0QHPDxp8Axxk0Twrq8re0b2ySoO5fU57
+ O5XqQlqe0uEZd6ekyGCefUE2pxCQPLgJ5k2NcDuwkBK3noaQLs5m4/RpDwQRCdtwzdm1
+ dzcxpJcU6G6LcHW8Ni3aya/ChbBlPwLAARKlomvFjbC2Zj2uG5dbXQKa7TQe6DCO0DL6
+ R4Fk9uMr/j/xskexh4hit9QmupyUjhMKXRVXhu6LgeT7mzACcwEfq2obMR9/786OLrcX
+ 7HLY+qrfAPTb4Vd4tuU2XphSJQ+V+DZfYXagQtGGsLMpdUTLXXm2ZZTt03a+9QmdyMtS
+ XIiA==
+X-Gm-Message-State: APjAAAX6E9BPZT1zudMAvR28JCALSXRMFbcBU99xO5j5k88KBU7akift
+ dJD2jtaG3YSIUGMh4TepIsb9UKdtRj7aF5Mx2cU=
+X-Google-Smtp-Source: APXvYqzJeseQkiqZA+gTc1YOvzk4DZiccEVSWTY2QS9PIluU6q/4bOX3Rmonl/yu7V0uTSOkcMg7w5SonnYmnn5BK1o=
+X-Received: by 2002:a67:1447:: with SMTP id 68mr9872067vsu.76.1579443206847;
+ Sun, 19 Jan 2020 06:13:26 -0800 (PST)
 MIME-Version: 1.0
 References: <20200117035108.19699-1-stanley.chu@mediatek.com>
- <20200117035108.19699-2-stanley.chu@mediatek.com>
-In-Reply-To: <20200117035108.19699-2-stanley.chu@mediatek.com>
+ <20200117035108.19699-3-stanley.chu@mediatek.com>
+In-Reply-To: <20200117035108.19699-3-stanley.chu@mediatek.com>
 From: Alim Akhtar <alim.akhtar@gmail.com>
-Date: Sun, 19 Jan 2020 19:35:12 +0530
-Message-ID: <CAGOxZ51ju5sKxtVzXQAFBKz_4Pc9YEZ0i4o4iHkutGx2d+H2QQ@mail.gmail.com>
-Subject: Re: [PATCH v1 1/3] scsi: ufs-mediatek: add dbg_register_dump
- implementation
+Date: Sun, 19 Jan 2020 19:42:50 +0530
+Message-ID: <CAGOxZ51K1EWY56Kw1aBJJ-8DubXjmY+ew6XUYKSCPXzPZvcs2w@mail.gmail.com>
+Subject: Re: [PATCH v1 2/3] scsi: ufs: export some functions for vendor usage
 To: Stanley Chu <stanley.chu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200119_060553_092660_175E4CED 
-X-CRM114-Status: GOOD (  13.34  )
+X-CRM114-CacheID: sfid-20200119_061328_335466_02E6461A 
+X-CRM114-Status: GOOD (  13.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,72 +103,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Stanley
-
-On Fri, Jan 17, 2020 at 9:44 AM Stanley Chu <stanley.chu@mediatek.com> wrote:
+On Fri, Jan 17, 2020 at 9:45 AM Stanley Chu <stanley.chu@mediatek.com> wrote:
 >
-> Add dbg_register_dump variant vendor implementation in MediaTek
-> UFS driver.
+> Export below functions for vendor usage,
+>
+> int ufshcd_hba_enable(struct ufs_hba *hba);
+> int ufshcd_make_hba_operational(struct ufs_hba *hba);
+> int ufshcd_uic_hibern8_exit(struct ufs_hba *hba);
 >
 > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 > ---
-
 Reviewed-by: Alim Akhtar <alim.akhtar@samsung.com>
 
->  drivers/scsi/ufs/ufs-mediatek.c | 16 ++++++++++++++++
->  drivers/scsi/ufs/ufs-mediatek.h |  5 +++++
->  2 files changed, 21 insertions(+)
+>  drivers/scsi/ufs/ufshcd.c | 11 +++++++----
+>  drivers/scsi/ufs/ufshcd.h |  3 +++
+>  2 files changed, 10 insertions(+), 4 deletions(-)
 >
-> diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-> index 8d999c0e60fe..d5194d0c4ef5 100644
-> --- a/drivers/scsi/ufs/ufs-mediatek.c
-> +++ b/drivers/scsi/ufs/ufs-mediatek.c
-> @@ -406,6 +406,21 @@ static int ufs_mtk_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+> index bea036ab189a..1168baf358ea 100644
+> --- a/drivers/scsi/ufs/ufshcd.c
+> +++ b/drivers/scsi/ufs/ufshcd.c
+> @@ -250,7 +250,6 @@ static int ufshcd_probe_hba(struct ufs_hba *hba);
+>  static int __ufshcd_setup_clocks(struct ufs_hba *hba, bool on,
+>                                  bool skip_ref_clk);
+>  static int ufshcd_setup_clocks(struct ufs_hba *hba, bool on);
+> -static int ufshcd_uic_hibern8_exit(struct ufs_hba *hba);
+>  static int ufshcd_uic_hibern8_enter(struct ufs_hba *hba);
+>  static inline void ufshcd_add_delay_before_dme_cmd(struct ufs_hba *hba);
+>  static int ufshcd_host_reset_and_restore(struct ufs_hba *hba);
+> @@ -3865,7 +3864,7 @@ static int ufshcd_uic_hibern8_enter(struct ufs_hba *hba)
+>         return ret;
+>  }
+>
+> -static int ufshcd_uic_hibern8_exit(struct ufs_hba *hba)
+> +int ufshcd_uic_hibern8_exit(struct ufs_hba *hba)
+>  {
+>         struct uic_command uic_cmd = {0};
+>         int ret;
+> @@ -3891,6 +3890,7 @@ static int ufshcd_uic_hibern8_exit(struct ufs_hba *hba)
+>
+>         return ret;
+>  }
+> +EXPORT_SYMBOL_GPL(ufshcd_uic_hibern8_exit);
+>
+>  void ufshcd_auto_hibern8_update(struct ufs_hba *hba, u32 ahit)
+>  {
+> @@ -4162,7 +4162,7 @@ static int ufshcd_complete_dev_init(struct ufs_hba *hba)
+>   *
+>   * Returns 0 on success, non-zero value on failure
+>   */
+> -static int ufshcd_make_hba_operational(struct ufs_hba *hba)
+> +int ufshcd_make_hba_operational(struct ufs_hba *hba)
+>  {
+>         int err = 0;
+>         u32 reg;
+> @@ -4208,6 +4208,7 @@ static int ufshcd_make_hba_operational(struct ufs_hba *hba)
+>  out:
+>         return err;
+>  }
+> +EXPORT_SYMBOL_GPL(ufshcd_make_hba_operational);
+>
+>  /**
+>   * ufshcd_hba_stop - Send controller to reset state
+> @@ -4285,7 +4286,7 @@ static int ufshcd_hba_execute_hce(struct ufs_hba *hba)
 >         return 0;
 >  }
 >
-> +static void ufs_mtk_dbg_register_dump(struct ufs_hba *hba)
-> +{
-> +       ufshcd_dump_regs(hba, REG_UFS_REFCLK_CTRL, 0x4, "Ref-Clk Ctrl ");
-> +
-> +       ufshcd_dump_regs(hba, REG_UFS_EXTREG, 0x4, "Ext Reg ");
-> +
-> +       ufshcd_dump_regs(hba, REG_UFS_MPHYCTRL,
-> +                        REG_UFS_REJECT_MON - REG_UFS_MPHYCTRL + 4,
-> +                        "MPHY Ctrl ");
-> +
-> +       /* Direct debugging information to REG_MTK_PROBE */
-> +       ufshcd_writel(hba, 0x20, REG_UFS_DEBUG_SEL);
-> +       ufshcd_dump_regs(hba, REG_UFS_PROBE, 0x4, "Debug Probe ");
-> +}
-> +
->  static int ufs_mtk_apply_dev_quirks(struct ufs_hba *hba,
->                                     struct ufs_dev_desc *card)
+> -static int ufshcd_hba_enable(struct ufs_hba *hba)
+> +int ufshcd_hba_enable(struct ufs_hba *hba)
 >  {
-> @@ -430,6 +445,7 @@ static struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
->         .apply_dev_quirks    = ufs_mtk_apply_dev_quirks,
->         .suspend             = ufs_mtk_suspend,
->         .resume              = ufs_mtk_resume,
-> +       .dbg_register_dump   = ufs_mtk_dbg_register_dump,
->         .device_reset        = ufs_mtk_device_reset,
->  };
+>         int ret;
 >
-> diff --git a/drivers/scsi/ufs/ufs-mediatek.h b/drivers/scsi/ufs/ufs-mediatek.h
-> index 31b7fead19eb..fccdd979d6fb 100644
-> --- a/drivers/scsi/ufs/ufs-mediatek.h
-> +++ b/drivers/scsi/ufs/ufs-mediatek.h
-> @@ -13,6 +13,11 @@
->   * Vendor specific UFSHCI Registers
->   */
->  #define REG_UFS_REFCLK_CTRL         0x144
-> +#define REG_UFS_EXTREG              0x2100
-> +#define REG_UFS_MPHYCTRL            0x2200
-> +#define REG_UFS_REJECT_MON          0x22AC
-> +#define REG_UFS_DEBUG_SEL           0x22C0
-> +#define REG_UFS_PROBE               0x22C8
+> @@ -4310,6 +4311,8 @@ static int ufshcd_hba_enable(struct ufs_hba *hba)
 >
->  /*
->   * Ref-clk control
+>         return ret;
+>  }
+> +EXPORT_SYMBOL_GPL(ufshcd_hba_enable);
+> +
+>  static int ufshcd_disable_tx_lcc(struct ufs_hba *hba, bool peer)
+>  {
+>         int tx_lanes, i, err = 0;
+> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+> index b1a1c65be8b1..fca372d98495 100644
+> --- a/drivers/scsi/ufs/ufshcd.h
+> +++ b/drivers/scsi/ufs/ufshcd.h
+> @@ -799,8 +799,11 @@ static inline void ufshcd_rmwl(struct ufs_hba *hba, u32 mask, u32 val, u32 reg)
+>
+>  int ufshcd_alloc_host(struct device *, struct ufs_hba **);
+>  void ufshcd_dealloc_host(struct ufs_hba *);
+> +int ufshcd_hba_enable(struct ufs_hba *hba);
+>  int ufshcd_init(struct ufs_hba * , void __iomem * , unsigned int);
+> +int ufshcd_make_hba_operational(struct ufs_hba *hba);
+>  void ufshcd_remove(struct ufs_hba *);
+> +int ufshcd_uic_hibern8_exit(struct ufs_hba *hba);
+>  int ufshcd_wait_for_register(struct ufs_hba *hba, u32 reg, u32 mask,
+>                                 u32 val, unsigned long interval_us,
+>                                 unsigned long timeout_ms, bool can_sleep);
 > --
 > 2.18.0
 
