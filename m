@@ -2,62 +2,62 @@ Return-Path: <SRS0=AjBH=3J=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 56F94C2D0DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2020 14:43:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 79FB7C2D0DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2020 14:52:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 21925217F4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2020 14:43:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4851522464
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2020 14:52:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KEKkTEnm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 21925217F4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gFgRRTDj"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4851522464
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nTCGldk8Zsd98eskN5iMxMQICmZPZM66P8hZWu57e14=; b=KEKkTEnmE8KA6K
-	2YP5UU/NAaVLSwiII4edgttevJvlRb8KC3MJttUAVdpaYtRHvlGURxXR5fvFPnLwRwCH2Ge6p2lE0
-	yaDSzUcF9z0TXpr1N4/jpmrmTGVTrP6SW6okzhtSQqThBjP+8Wvkwz+i6uq+mCYsawmPH992+ft5b
-	TBDcio+cwhW4rJOePROrcKcE6Fq1J0LbfaU060nfAhgwETMbxtTVuM48hyLEY4QIRIT45+G4KVt7c
-	aDrBTY/X1gQQQKiqvhAhmXAIQXkF5ijQdcrvOE8O2IViKK/YRGiHa0NHD3+x+mVoUBfvtMbUivZwq
-	5gLFxpYwS2A33+WGPARw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=jM/tJHw4gY8/oftowDX7gQF9zxgJwBJrz0ynADocvbA=; b=gFgRRTDjPDus6o9jaw/4h5o52
+	QRmqjtugyGKxOKDU105mWHLJ3b0dC6lQWoWPJW97iLEA3+QzpCMJwelDRm3+nLY5uidWamGTClQmg
+	LY3sMjzktaltlwuuIsXekL7ZbI/MqE6weYjzD2yRMqyimLMiBZ/pzQ5+MGOXtbquOOj26UVBw38CO
+	00EqeUKw60k1orxBlvOYlBogC06BkzG8BV1eSqdGm4IMJvvT+yMiLrg4pMQlegNy5uu4VNcXtNkye
+	xoWlD1k2KwvrOeX3cVz86ROfsOtibtg+jtqGnO1/jw+rfK7IAdONd78h8hUlyzM5KMOK3yi0usn8i
+	WguEPtUYQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1itYH5-0001jg-Rk; Mon, 20 Jan 2020 14:43:31 +0000
+	id 1itYPv-0005Ad-M8; Mon, 20 Jan 2020 14:52:39 +0000
 Received: from foss.arm.com ([217.140.110.172])
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1itYGq-0001af-U9; Mon, 20 Jan 2020 14:43:23 +0000
+ id 1itYPe-000500-K5; Mon, 20 Jan 2020 14:52:28 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 48ABF30E;
- Mon, 20 Jan 2020 06:43:14 -0800 (PST)
-Received: from [10.1.194.52] (e112269-lin.cambridge.arm.com [10.1.194.52])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5D7403F52E;
- Mon, 20 Jan 2020 06:43:12 -0800 (PST)
-Subject: Re: [PATCH v3 4/7] drm/panfrost: Add support for multiple regulators
-To: Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>
-References: <20200114071602.47627-1-drinkcat@chromium.org>
- <20200114071602.47627-5-drinkcat@chromium.org>
-From: Steven Price <steven.price@arm.com>
-Message-ID: <7e82cac2-efbf-806b-8c2e-04dbd0482b50@arm.com>
-Date: Mon, 20 Jan 2020 14:43:10 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.0
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2545930E;
+ Mon, 20 Jan 2020 06:52:20 -0800 (PST)
+Received: from [10.37.12.169] (unknown [10.37.12.169])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D71C33F52E;
+ Mon, 20 Jan 2020 06:52:09 -0800 (PST)
+Subject: Re: [PATCH 1/4] PM / EM: and devices to Energy Model
+To: Quentin Perret <qperret@google.com>
+References: <20200116152032.11301-1-lukasz.luba@arm.com>
+ <20200116152032.11301-2-lukasz.luba@arm.com>
+ <20200117105437.GA211774@google.com>
+From: Lukasz Luba <lukasz.luba@arm.com>
+Message-ID: <40587d98-0e8d-cbac-dbf5-d26501d47a8c@arm.com>
+Date: Mon, 20 Jan 2020 14:52:07 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <20200114071602.47627-5-drinkcat@chromium.org>
+In-Reply-To: <20200117105437.GA211774@google.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200120_064317_063051_C2219BF6 
-X-CRM114-Status: GOOD (  32.30  )
+X-CRM114-CacheID: sfid-20200120_065222_747034_30382638 
+X-CRM114-Status: GOOD (  22.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,221 +69,129 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Tomeu Vizoso <tomeu.vizoso@collabora.com>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- linux-mediatek@lists.infradead.org,
- Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>, hsinyi@chromium.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: nm@ti.com, juri.lelli@redhat.com, daniel.lezcano@linaro.org,
+ peterz@infradead.org, viresh.kumar@linaro.org, dri-devel@lists.freedesktop.org,
+ bjorn.andersson@linaro.org, bsegall@google.com,
+ alyssa.rosenzweig@collabora.com, festevam@gmail.com, Morten.Rasmussen@arm.com,
+ robh@kernel.org, amit.kucheria@verdurent.com, vincent.guittot@linaro.org,
+ khilman@kernel.org, agross@kernel.org, b.zolnierkie@samsung.com,
+ steven.price@arm.com, cw00.choi@samsung.com, mingo@redhat.com,
+ linux-imx@nxp.com, rui.zhang@intel.com, kernel-team@android.com,
+ mgorman@suse.de, daniel@ffwll.ch, linux-pm@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, s.hauer@pengutronix.de, rostedt@goodmis.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ Chris.Redpath@arm.com, linux-omap@vger.kernel.org, Dietmar.Eggemann@arm.com,
+ linux-arm-kernel@lists.infradead.org, airlied@linux.ie, javi.merino@arm.com,
+ tomeu.vizoso@collabora.com, sboyd@kernel.org, shawnguo@kernel.org,
+ rjw@rjwysocki.net, linux-kernel@vger.kernel.org, kernel@pengutronix.de,
+ sudeep.holla@arm.com, ionela.voinescu@arm.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/01/2020 07:15, Nicolas Boichat wrote:
-> Some GPUs, namely, the bifrost/g72 part on MT8183, have a second
-> regulator for their SRAM, let's add support for that.
-> 
-> We extend the framework in a generic manner so that we could
-> support more than 2 regulators, if required.
-> 
-> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-> 
-> ---
-> 
-> v3:
->  - Make this more generic, by allowing any number of regulators
->    (in practice we fix the maximum number of regulators to 2, but
->    this could be increased easily).
->  - We only probe the second regulator if the device tree matching
->    data asks for it.
->  - I couldn't find a way to detect the number of regulators in the
->    device tree, if we wanted to refuse to probe the device if there
->    are too many regulators, which might be required for safety, see
->    the thread on v2 [1].
->  - The discussion also included the idea of a separate device tree
->    entry for a "soft PDC", or at least a separate driver. I'm not
->    sure to understand the full picture, and how different vendors
->    implement this, so I'm still integrating everything in the main
->    driver. I'd be happy to try to make mt8183 fit into such a
->    framework after it's created, but I don't think I'm best placed
->    to implement (and again, the main purpose of this was to test
->    if the binding is correct).
+Hi Quentin,
 
-From discussions offline, I think I've come round to the view that
-having a "soft PDC" in device tree isn't the right solution. Device tree
-should be describing the hardware and that isn't actually a hardware
-component.
+On 1/17/20 10:54 AM, Quentin Perret wrote:
+> Hey Lukasz,
+> 
+> Still reading through this, but with small changes, this looks pretty
+> good to me.
+> 
+> On Thursday 16 Jan 2020 at 15:20:29 (+0000), lukasz.luba@arm.com wrote:
+>> +int em_register_perf_domain(struct device *dev, unsigned int nr_states,
+>> +			struct em_data_callback *cb)
+>>   {
+>>   	unsigned long cap, prev_cap = 0;
+>>   	struct em_perf_domain *pd;
+>> -	int cpu, ret = 0;
+>> +	struct em_device *em_dev;
+>> +	cpumask_t *span = NULL;
+>> +	int cpu, ret;
+>>   
+>> -	if (!span || !nr_states || !cb)
+>> +	if (!dev || !nr_states || !cb || !cb->active_power)
+> 
+> Nit: you check !cb->active_power in em_create_pd() too I think, so only
+> one of the two is needed.
 
-I guess we'll have to wait to see how many devices have a similar
-'quirk' and whether it's worth representing this is software in a more
-generic manner, or if matching on compatible strings will be sufficient
-for the devices that need multiple regulators.
-
-One (minor) comment below, but otherwise LGTM.
+good point, thanks
 
 > 
-> [1] https://patchwork.kernel.org/patch/11322839/
+>>   		return -EINVAL;
+>>   
+>> -	/*
+>> -	 * Use a mutex to serialize the registration of performance domains and
+>> -	 * let the driver-defined callback functions sleep.
+>> -	 */
+>>   	mutex_lock(&em_pd_mutex);
+>>   
+>> -	for_each_cpu(cpu, span) {
+>> -		/* Make sure we don't register again an existing domain. */
+>> -		if (READ_ONCE(per_cpu(em_data, cpu))) {
+>> +	if (_is_cpu_device(dev)) {
+>> +		span = kzalloc(cpumask_size(), GFP_KERNEL);
+>> +		if (!span) {
+>> +			mutex_unlock(&em_pd_mutex);
+>> +			return -ENOMEM;
+>> +		}
+>> +
+>> +		ret = dev_pm_opp_get_sharing_cpus(dev, span);
+>> +		if (ret)
+>> +			goto free_cpumask;
 > 
->  drivers/gpu/drm/panfrost/panfrost_device.c | 25 ++++++++++++-------
->  drivers/gpu/drm/panfrost/panfrost_device.h | 15 +++++++++++-
->  drivers/gpu/drm/panfrost/panfrost_drv.c    | 28 +++++++++++++++-------
->  3 files changed, 50 insertions(+), 18 deletions(-)
+> That I think should be changed. This creates some dependency on PM_OPP
+> for the EM framework. And in fact, the reason we came up with PM_EM was
+> precisely to not depend on PM_OPP which was deemed too Arm-specific.
 > 
-> diff --git a/drivers/gpu/drm/panfrost/panfrost_device.c b/drivers/gpu/drm/panfrost/panfrost_device.c
-> index 238fb6d54df4732..c30e0a3772a4f57 100644
-> --- a/drivers/gpu/drm/panfrost/panfrost_device.c
-> +++ b/drivers/gpu/drm/panfrost/panfrost_device.c
-> @@ -87,18 +87,26 @@ static void panfrost_clk_fini(struct panfrost_device *pfdev)
->  
->  static int panfrost_regulator_init(struct panfrost_device *pfdev)
->  {
-> -	int ret;
-> +	int ret, i;
->  
-> -	pfdev->regulator = devm_regulator_get(pfdev->dev, "mali");
-> -	if (IS_ERR(pfdev->regulator)) {
-> -		ret = PTR_ERR(pfdev->regulator);
-> -		dev_err(pfdev->dev, "failed to get regulator: %d\n", ret);
-> +	BUG_ON(pfdev->comp->num_supplies > ARRAY_SIZE(pfdev->regulators));
-> +
-> +	for (i = 0; i < pfdev->comp->num_supplies; i++) {
-> +		pfdev->regulators[i].supply = pfdev->comp->supply_names[i];
-> +	}
-> +
-> +	ret = devm_regulator_bulk_get(pfdev->dev,
-> +				      pfdev->comp->num_supplies,
-> +				      pfdev->regulators);
-> +	if (ret < 0) {
-> +		dev_err(pfdev->dev, "failed to get regulators: %d\n", ret);
->  		return ret;
->  	}
->  
-> -	ret = regulator_enable(pfdev->regulator);
-> +	ret = regulator_bulk_enable(pfdev->comp->num_supplies,
-> +				    pfdev->regulators);
->  	if (ret < 0) {
-> -		dev_err(pfdev->dev, "failed to enable regulator: %d\n", ret);
-> +		dev_err(pfdev->dev, "failed to enable regulators: %d\n", ret);
->  		return ret;
->  	}
->  
-> @@ -107,7 +115,8 @@ static int panfrost_regulator_init(struct panfrost_device *pfdev)
->  
->  static void panfrost_regulator_fini(struct panfrost_device *pfdev)
->  {
-> -	regulator_disable(pfdev->regulator);
-> +	regulator_bulk_disable(pfdev->comp->num_supplies,
-> +			pfdev->regulators);
->  }
->  
->  int panfrost_device_init(struct panfrost_device *pfdev)
-> diff --git a/drivers/gpu/drm/panfrost/panfrost_device.h b/drivers/gpu/drm/panfrost/panfrost_device.h
-> index 06713811b92cdf7..021f063ffb3747f 100644
-> --- a/drivers/gpu/drm/panfrost/panfrost_device.h
-> +++ b/drivers/gpu/drm/panfrost/panfrost_device.h
-> @@ -7,6 +7,7 @@
->  
->  #include <linux/atomic.h>
->  #include <linux/io-pgtable.h>
-> +#include <linux/regulator/consumer.h>
->  #include <linux/spinlock.h>
->  #include <drm/drm_device.h>
->  #include <drm/drm_mm.h>
-> @@ -19,6 +20,7 @@ struct panfrost_job;
->  struct panfrost_perfcnt;
->  
->  #define NUM_JOB_SLOTS 3
-> +#define MAX_REGULATORS 2
->  
->  struct panfrost_features {
->  	u16 id;
-> @@ -51,6 +53,16 @@ struct panfrost_features {
->  	unsigned long hw_issues[64 / BITS_PER_LONG];
->  };
->  
-> +/*
-> + * Features that cannot be automatically detected and need matching using the
-> + * compatible string, typically SoC-specific.
-> + */
-> +struct panfrost_compatible {
-> +	/* Supplies count and names. */
-> +	int num_supplies;
-> +	const char * const *supply_names;
-> +};
-> +
->  struct panfrost_device {
->  	struct device *dev;
->  	struct drm_device *ddev;
-> @@ -59,10 +71,11 @@ struct panfrost_device {
->  	void __iomem *iomem;
->  	struct clk *clock;
->  	struct clk *bus_clock;
-> -	struct regulator *regulator;
-> +	struct regulator_bulk_data regulators[MAX_REGULATORS];
->  	struct reset_control *rstc;
->  
->  	struct panfrost_features features;
-> +	const struct panfrost_compatible* comp;
->  
->  	spinlock_t as_lock;
->  	unsigned long as_in_use_mask;
-> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> index 48e3c4165247cea..db3563b80150c9d 100644
-> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-> @@ -510,6 +510,10 @@ static int panfrost_probe(struct platform_device *pdev)
->  
->  	platform_set_drvdata(pdev, pfdev);
->  
-> +	pfdev->comp = of_device_get_match_data(&pdev->dev);
-> +	if (!pfdev->comp)
-> +		return -ENODEV;
-> +
->  	/* Allocate and initialze the DRM device. */
->  	ddev = drm_dev_alloc(&panfrost_drm_driver, &pdev->dev);
->  	if (IS_ERR(ddev))
-> @@ -581,16 +585,22 @@ static int panfrost_remove(struct platform_device *pdev)
->  	return 0;
->  }
->  
-> +const char * const default_supplies[] = { "mali" };
+> Suggested alternative: have two registration functions like so:
+> 
+> 	int em_register_dev_pd(struct device *dev, unsigned int nr_states,
+> 			       struct em_data_callback *cb);
+> 	int em_register_cpu_pd(cpumask_t *span, unsigned int nr_states,
+> 			       struct em_data_callback *cb);
 
-This should be static.
+Interesting, in the internal review Dietmar asked me to remove these two
+functions. I had the same idea, which would simplify a bit the
+registration and it does not need to check the dev->bus if it is CPU.
 
-Steve
+Unfortunately, we would need also two function in drivers/opp/of.c:
+dev_pm_opp_of_register_cpu_em(policy->cpus);
+and
+dev_pm_opp_of_register_dev_em(dev);
 
-> +static const struct panfrost_compatible default_data = {
-> +	.num_supplies = ARRAY_SIZE(default_supplies),
-> +	.supply_names = default_supplies,
-> +};
-> +
->  static const struct of_device_id dt_match[] = {
-> -	{ .compatible = "arm,mali-t604" },
-> -	{ .compatible = "arm,mali-t624" },
-> -	{ .compatible = "arm,mali-t628" },
-> -	{ .compatible = "arm,mali-t720" },
-> -	{ .compatible = "arm,mali-t760" },
-> -	{ .compatible = "arm,mali-t820" },
-> -	{ .compatible = "arm,mali-t830" },
-> -	{ .compatible = "arm,mali-t860" },
-> -	{ .compatible = "arm,mali-t880" },
-> +	{ .compatible = "arm,mali-t604", .data = &default_data, },
-> +	{ .compatible = "arm,mali-t624", .data = &default_data, },
-> +	{ .compatible = "arm,mali-t628", .data = &default_data, },
-> +	{ .compatible = "arm,mali-t720", .data = &default_data, },
-> +	{ .compatible = "arm,mali-t760", .data = &default_data, },
-> +	{ .compatible = "arm,mali-t820", .data = &default_data, },
-> +	{ .compatible = "arm,mali-t830", .data = &default_data, },
-> +	{ .compatible = "arm,mali-t860", .data = &default_data, },
-> +	{ .compatible = "arm,mali-t880", .data = &default_data, },
->  	{}
->  };
->  MODULE_DEVICE_TABLE(of, dt_match);
+Thus, I have created only one registration function, which you can see
+in this patch set.
+
+What do you think Dietmar?
+
+> 
+> where em_register_cpu_pd() does the CPU-specific work and then calls
+> em_register_dev_pd() (instead of having that big if (_is_cpu_device(dev))
+> as you currently have). Would that work ?
+
+Yes, I think you made a good point with this OPP dependency, which we
+could avoid when we implement these two registration functions.
+
+> 
+> Another possibility would be to query CPUFreq instead of PM_OPP to get
+> the mask, but I'd need to look again at the driver registration path in
+> CPUFreq to see if the policy masks have been populated when we enter
+> PM_EM ... I am not sure if this is the case, but it's worth having a
+> look too.
+
+The policy mask is populated, our registration function is called at
+the end of the init code of CPUfreq drivers. I will check this option.
+
+> 
+> Thanks,
+> Quentin
 > 
 
+Thank you for your comments.
+
+Regards,
+Lukasz
 
 _______________________________________________
 Linux-mediatek mailing list
