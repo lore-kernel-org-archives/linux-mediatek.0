@@ -2,60 +2,83 @@ Return-Path: <SRS0=AjBH=3J=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7270AC32771
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2020 19:04:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DD809C32771
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2020 19:25:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 494E9217F4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2020 19:04:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B30652253D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Jan 2020 19:25:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hMN7Ntdi"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 494E9217F4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VLfcUB6Q";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lixom-net.20150623.gappssmtp.com header.i=@lixom-net.20150623.gappssmtp.com header.b="BfSP3GbX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B30652253D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lixom.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=IxuPIFpCKc0PlJdpMvNM/wXW4nDeUyxUZvITAoRlDsc=; b=hMN7NtdiFtc3bkxcLlI2Ib8xe
-	zZvBuFPpQax5ss7Bbl8RhqSEoiz0uJGIDRYcqGjiGRg07mRngGiON/33+VvPTm+nX1+QYHXUQj+zY
-	1wiA6zTDwfMeIODn2PTlrrdM3NcY2Iv5aP80Bjj3oSbmmYvrfROo5sBmnkKuzTw/d3q5fGupuvars
-	YPumY3DBp3womQEP+bAVf8fIp1k7eEyh17kH4Q/chRjiZJIeg49M/PvKGhcZMHy80/m83376cMSnq
-	99V32Q6oDNBohTwEN2OlwJiLTMxdbftd7eu0mU+3cqfE/4emreruLBMDGPmlWo9SjBDjxfsS3Xskh
-	m5dIdAevQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Xwb12DKFdYoQ8b/hxot90MiUtpAU2bm5eps++gpTb4c=; b=VLfcUB6Q6D9kF5
+	uCqE6vjmyQqQiLXMQJFu/jtbC4E/GaIMxBmnMCmv94lo7S2G4IOgNtx8mVMDDBxAMShA9aJ9iXlEv
+	oWK1BBgCByNe7Rgwq2UZnhpdcFEX37ru6no0Gs6tbASwq+avvhAAuFV5Teb5VqcgUJs5d4aPC+kXg
+	2w74BZOuSk/i2p2hypd2nd7xyfTjC9iHbmWkbv7GC7w7UQO5o427yY3WtvhvK65G1jVDIugWH6g1S
+	F6BpRXQzrI/gDurRMZa9oyjarIiJIV6EPzzJ5MkwEX+2WE8TyEhoUh/X3gkEeLOZiOfgjPi6FGVFB
+	HvlFB2blzma9Koz8SgUg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1itcLt-0001Hs-GC; Mon, 20 Jan 2020 19:04:45 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1itcLe-00015X-FG; Mon, 20 Jan 2020 19:04:36 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8A43931B;
- Mon, 20 Jan 2020 11:04:29 -0800 (PST)
-Received: from localhost (unknown [10.37.6.21])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 08FCE3F68E;
- Mon, 20 Jan 2020 11:04:28 -0800 (PST)
-Date: Mon, 20 Jan 2020 19:04:27 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Wen Su <Wen.Su@mediatek.com>
-Subject: Re: [RESEND 3/4] regulator: mt6359: Add support for MT6359 regulator
-Message-ID: <20200120190427.GO6852@sirena.org.uk>
-References: <1579506450-21830-1-git-send-email-Wen.Su@mediatek.com>
- <1579506450-21830-4-git-send-email-Wen.Su@mediatek.com>
+	id 1itcgG-0000Zs-Ch; Mon, 20 Jan 2020 19:25:48 +0000
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1itcgA-0000Yc-Iy
+ for linux-mediatek@lists.infradead.org; Mon, 20 Jan 2020 19:25:47 +0000
+Received: by mail-io1-xd41.google.com with SMTP id d15so234203iog.3
+ for <linux-mediatek@lists.infradead.org>; Mon, 20 Jan 2020 11:25:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=lixom-net.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=9bMt15tcXE4PE6qNXyYSET/eEWGyq0OaCNeBHtTvX4o=;
+ b=BfSP3GbX71o1SHhA3EFSfMg+GZVaP73XFsEmUaUSwfO3OpnuveGOVJyWzVyYd/MaOF
+ c/MsFzArRoclKltktpEVFGDeF7iPcmYEOBsZ+xL4TWvN9Kv4gux+GqDXfyv6SxxNNDd+
+ rI8B7t9jh2Tk0f2XZMH62tqkLvhS7ObGiHud6yMUW79P75Fp5ABl7dBLw2vy2tD2nKw5
+ gmpiCJl6d2PKMkHLDVI8I54IQeKrxEF+HMR6yuZKg1jucGSj9VqXvFGiDaCZRlt3Gs2d
+ 9yCvPDPFrV+lPekmbwxCwVkzoXooHZEMgoPToZ5VkuWGPLU3Kl/nJmWI8iH2G5gh9xTP
+ Prdg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=9bMt15tcXE4PE6qNXyYSET/eEWGyq0OaCNeBHtTvX4o=;
+ b=D9MSX6D6rDL4kaE+jJ+rWoroAMrKtFCABpQT7C7mfyMhKIfisH7960eYZkaoc0/kG+
+ r8SKMgrG15DCc5gpka1gpWMN2jzakJiq2ycR8LfZwoIsnAKwJOQAaHJwqV9IQVHPmYxr
+ 6NOWbUeQc7SDs5Wm84DMgq0Xf60gdEPrTpPsY24jDoVLsUlNRklLXLrt2QDen6n35ph9
+ DpOxbIi1zp1hNZZnISJOdNsIqj8OPT3NPZXI1qcnkYxxKLQiR3NT762PfkX4ScsMB5KP
+ HBOiqipi7LzwnbeuWYwRT6YvdKeoiG/+pNQw0RrunUIBHgUz7d0TF8AsHd5O9HroxZTH
+ fKSg==
+X-Gm-Message-State: APjAAAV7hR5ATS1TRKxBOOW/w3zpOAPPhb+HJ7du59aCMO3woMyUost7
+ jMKREVFip0WbQLzxOHM3c/i/wN/kackeLKszUIcfOQ==
+X-Google-Smtp-Source: APXvYqwP3SdqgZL0L28y5AAUef6aoJgxodib4PEZiTX3urKp74wX+5wZUuZeJp8kPylinMmxtaotG9Jkl5w2kpe7yIk=
+X-Received: by 2002:a02:8817:: with SMTP id r23mr465906jai.120.1579548338589; 
+ Mon, 20 Jan 2020 11:25:38 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <1579506450-21830-4-git-send-email-Wen.Su@mediatek.com>
-X-Cookie: I invented skydiving in 1989!
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <9b365e76-e346-f813-d750-d7cfd0d16e4e@gmail.com>
+ <CAOesGMgFXQzHRQVQNwZU7-jO=eqWT5Dv82RRicMP-dKXwbTfvA@mail.gmail.com>
+ <18fa6900-1862-d23c-8453-b7b85cac2ab3@gmail.com>
+In-Reply-To: <18fa6900-1862-d23c-8453-b7b85cac2ab3@gmail.com>
+From: Olof Johansson <olof@lixom.net>
+Date: Mon, 20 Jan 2020 11:25:27 -0800
+Message-ID: <CAOesGMgReoumBfqUX7N9aP06OomYiO0Be0Wp67FMVi3UVF1bLg@mail.gmail.com>
+Subject: Re: [GIT PULL] soc: mediatek: updates for v5.6
+To: Matthias Brugger <matthias.bgg@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200120_110430_562385_024A6D67 
-X-CRM114-Status: GOOD (  13.26  )
+X-CRM114-CacheID: sfid-20200120_112542_620674_5BCCA0E9 
+X-CRM114-Status: GOOD (  17.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,109 +90,70 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
- Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============1104426001313773713=="
+Cc: SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>,
+ Mars Cheng <mars.cheng@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>,
+ CK HU <ck.hu@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Jan 17, 2020 at 1:52 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+>
+>
+>
+> On 17/01/2020 20:22, Olof Johansson wrote:
+> > Hi,
+> >
+> > On Mon, Jan 13, 2020 at 2:18 AM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+> >>
+> >> Hi Olof,
+> >> Hi ARnds,
+> >>
+> >> Please have a look on the following patches for mediatek soc drivers for v5.6
+> >>
+> >> I includes the stable branch v5.5-next/cmdq-stable which should also be merged
+> >> in the DRM tree. I'm not very familiar with providing a stable tree, although I
+> >> double-checked that in the pull request to the DRM tree the commit IDs are the
+> >> same, I thought it is worth noting.
+> >
+> > I'm a little confused as to how the dependencies are expected to line up here.
+> >
+> > Does your non-DRM contents rely on the DRM pieces? If so, you need
+> > them to be based on top of that branch to make sure they are
+> > bisectable, not merge the DRM branch in on top (since a bisect might
+> > land on a commit before the merge).
+>
+> No, it's the other way round. DRM relies on the four patches I took from Bibby
+> Hsieh. They are part of v5.5-next/cmdq-stable and this branch was merged into
+> v5.5-next/soc as well as in Ck Hu's DRM branch. My understanding is that Ck Hu
+> sends pull requests to the DRM branch.
 
---===============1104426001313773713==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Qa0ccP92Gc0Ko3P8"
-Content-Disposition: inline
+Ah, ok -- in that case there's no need to bring in the DRM branch to
+your contents here, they'll merge them at their end.
 
+It doesn't do any harm (besides adding dependencies that aren't
+strictly needed), but we usually avoid doing it.
 
---Qa0ccP92Gc0Ko3P8
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+> > But... I also don't see how there's any actual dependency here? There
+> > are a few cleanups, the DRM branch builds without them, and the branch
+> > when checked out right before the DRM merge in your pull request, also
+> > builds.
+> >
+>
+> The patches add some helper functions like cmdq_dev_get_client_reg on which the
+> DRM branch from Ck Hu depends [1].
+>
+> Hope that clarifies your questions.
 
-On Mon, Jan 20, 2020 at 03:47:29PM +0800, Wen Su wrote:
-
-This seems pretty good, a few comments below but they're fairly small
-and should be easy to address:
-
-> +static int mt6359_set_voltage_sel(struct regulator_dev *rdev,
-> +				  unsigned int selector)
-> +{
-> +	int idx, ret;
-> +	const u32 *pvol;
-> +	struct mt6359_regulator_info *info = rdev_get_drvdata(rdev);
-> +
-> +	pvol = info->index_table;
-> +
-> +	idx = pvol[selector];
-> +	ret = regmap_update_bits(rdev->regmap, info->desc.vsel_reg,
-> +				 info->desc.vsel_mask,
-> +				 idx << info->vsel_shift);
-> +
-> +	return ret;
-> +}
-
-This looks like you should be using regulator_list_voltage_table() and
-associated functions, probably map_voltage_ascend() or _iterate() and
-just a simple set_voltage_sel_regmap().
-
-> +static int mt6359_get_status(struct regulator_dev *rdev)
-> +{
-> +	int ret;
-> +	u32 regval;
-> +	struct mt6359_regulator_info *info = rdev_get_drvdata(rdev);
-> +
-> +	ret = regmap_read(rdev->regmap, info->status_reg, &regval);
-> +	if (ret != 0) {
-> +		dev_err(&rdev->dev, "Failed to get enable reg: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	return (regval & info->qi) ? REGULATOR_STATUS_ON : REGULATOR_STATUS_OFF;
-
-Please write normal conditionl statements rather than using the ternery
-operator to improve legibility.
-
-> +	switch (mode) {
-> +	case REGULATOR_MODE_FAST:
-> +		if (curr_mode == REGULATOR_MODE_IDLE) {
-> +			WARN_ON(1);
-> +			dev_notice(&rdev->dev,
-> +				   "BUCK %s is LP mode, can't FPWM\n",
-> +				   rdev->desc->name);
-> +			return -EIO;
-
-I'd expect the device to go out of low power mode then into force PWM
-mode if it has to do that rather than reject the operation.
-
---Qa0ccP92Gc0Ko3P8
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl4l+boACgkQJNaLcl1U
-h9CShAf/WdS4iLv8FmqgPQ6jxUZsWIHU4beM7oDoeI16KydYH71AEzVsF5AmZ/Fi
-q6qUuiabJm+9IVCwXc55mWA5IlFDMSoYM5VCt+QwxsUxaO2QoCjs/FgdkZcvNPyu
-KJfmVJdGPE3ZzA6UjDC7tVOR1CYCC8ey8U6Y45rhPU6ln4RDxTnVAFFtKlUM5UM7
-/Mw/NwmnR3AtdQvHw20WbLhTqWiNR8m5XAryzMRd+H35WuF/3xRlPSRvrGYjxkAL
-7R3Wbs2KsQ7J+bPCPbLf0N9WSvZurn/hMT++bQJKqeAei0V+bo2Phk66Iq7rQkgJ
-TGSDUr+2JcIj+zZtLcbRkcrnQUCt1w==
-=Vsrk
------END PGP SIGNATURE-----
-
---Qa0ccP92Gc0Ko3P8--
+Yeah, ok -- merging.
 
 
---===============1104426001313773713==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-Olof
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============1104426001313773713==--
-
