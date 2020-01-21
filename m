@@ -2,79 +2,74 @@ Return-Path: <SRS0=O6hk=3K=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A0BB1C33CAA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jan 2020 04:37:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 59D73C33CAA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jan 2020 07:22:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7403A217F4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jan 2020 04:37:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2AA9321734
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jan 2020 07:22:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ANWaQmno";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Y437XdOv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7403A217F4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PishkKw8";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="pFlzyxHo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2AA9321734
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Wls/ltKF7eeAyXE/MsYFxUTAx73vaJzW5Mv2k/xFm18=; b=ANWaQmnomTqeT5
-	Fi2EwfzbYp0jNelttCSnu/SzTn0JK6oPjKdiTsKW9lw2Z9uNap59+AM2yj1Q+OaqJKrsIL0UPQaYc
-	kNPVpYvHwOw9zgh8ZFjC3IEFZDwowPZLSZG5m5tVwbh+Ds0OzMMlXL3yubIOTZGCO1qfWHAw5WeiW
-	rckEax+7wdsmZWEhPzTdkprVyjOQ70b1eLFje+QlXRrnRP/Gkj62KdrXaE0Fo36QTz1F3J/j/PwE9
-	VpuZr//Rj5N0AsJfQxSHT8kmywNo+tia2nl/UG07I6EKqvBzF6XyAUdMZYW6xn0rsK38+zOMKh35t
-	OlKhNmdpkSyC93KoUFgw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qOnNXp9WiwmV9huxNhCXRYLVO4Xt83WijeKWsTVK114=; b=PishkKw83jI3hQ
+	FbUaa1cSesORo4B6FOyE2ZTPYqgCdQTbN20YjTSc4nQoBnRWn6qxEc2aORsbtzwGtFrHjw0dbfU9x
+	CZ+nWx4AqwhG4VHXAuuuGW5ZL6zoDXMoEJv5uG7CNlVN7Q+3+ze+zFDiDeI0KVZSoHfjOU3wjg/vA
+	YzoQ5CAKvd0p3w+WxM7GrJ/NUAD1UU/XULgnZHlajDLvOY6pW15QhhArrxzZkpWLSkSqooiQS1/zA
+	rdQJT2dndUP5vIuiNMu8I3dgFBLYTUyCwBz6p51GMs0Cc/EwP34Vq6xZKwtaN+im3l5Qdr1NspX4y
+	PJF4GpCxDFcw6oZdEF4A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1itlIM-0003hC-1y; Tue, 21 Jan 2020 04:37:42 +0000
-Received: from mail-qv1-xf41.google.com ([2607:f8b0:4864:20::f41])
+	id 1itnrC-0005hc-Cj; Tue, 21 Jan 2020 07:21:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1itlIB-0003Z4-Gz
- for linux-mediatek@lists.infradead.org; Tue, 21 Jan 2020 04:37:32 +0000
-Received: by mail-qv1-xf41.google.com with SMTP id m14so860981qvl.3
- for <linux-mediatek@lists.infradead.org>; Mon, 20 Jan 2020 20:37:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=tE6t4zYqaVXPST4AhwIQ9GsXTC/ddB8hjT5O44X4X2A=;
- b=Y437XdOv0Hto2lq+dzGstZ/dDsYcyHpK4I+DVf73M1v48j1EjilwkEp0HlSg8Iu9gL
- 0tTOS38rUYrM9yCpro7VwAwprgAfaJvNt0icSyt0cimanM+SnEp2Xre2R1C/rtGm8iVZ
- lRVWu7xtrpg+9KP77O5tLZX+QnE1zQQIxeaZk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=tE6t4zYqaVXPST4AhwIQ9GsXTC/ddB8hjT5O44X4X2A=;
- b=MDaXy+ZSYxa7E5JCXt+U/OQwBhm435UFab3qgVooUcaxhXCmQBCwRWaVKe74ZEJykX
- esHilAZYcrKQzN00LmVSd5mizHT+j94XHqEIGCf6Yo12YJAEEh6eBhcOVXQPK4V46Yok
- +RtVXLPRIDmTdtE6YqGZmK4EiLMPueNjTWEefDRnwtnWjrOp9zwmK0fdMhxjX5W51eEM
- NC1G/g1es5lT4790Ir6XzBFYTIPPlY+GBdtymmBrEYv34cyucHJzl3dFqdx93U5qGH9j
- Rm9+tJK84A6Cqy7IxL8c30iUF7gUyZSTFmVdq6qRaC6vwuzOms7LklhVUFUXPLLzkirQ
- RQKQ==
-X-Gm-Message-State: APjAAAW/LNfmtZXS1thNPcq/VUpwqmJgL7vfTzYsR4aBqPTuCO7LJHiU
- w+9Nvf1X7gkb8xETHDydeLqEBHicxsz//keokXDrKQ==
-X-Google-Smtp-Source: APXvYqzdl4VdxIrAynyQuScJnrpT9ZczyRYljUJVkw1OCPfHpQClTp+aKVQtQGPPLLXXuyebvlkJ/h7fxsuCkIoPT4Y=
-X-Received: by 2002:a0c:f703:: with SMTP id w3mr3120793qvn.6.1579581445521;
- Mon, 20 Jan 2020 20:37:25 -0800 (PST)
+ id 1itnqy-0005Yf-1E; Tue, 21 Jan 2020 07:21:40 +0000
+X-UUID: 7e3ccde2b8f241309369301305ae0205-20200120
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=AEp2wHIess4/ILGCkyl2C/BzMPPTKjrRdre9MKipK4A=; 
+ b=pFlzyxHoxin/bt5RDOzjvzkDtI+4Rf0KnsBwG18KSG6HL/HJhoHQVn2arRg9HmnPzbd8UqqUMQ9fp53QytaJlXnGJbH6Jg6IMjV6g4uhkke7+K0fzNpzGxz8gH/ycSI/NusvnsctyT73alUh9mzhzizPg/+OGwo4oBYi5+NDGME=;
+X-UUID: 7e3ccde2b8f241309369301305ae0205-20200120
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <yong.mao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1969211389; Mon, 20 Jan 2020 23:21:29 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 20 Jan 2020 23:22:26 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 21 Jan 2020 15:20:53 +0800
+Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Tue, 21 Jan 2020 15:19:12 +0800
+From: Yong Mao <yong.mao@mediatek.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: [PATCH] mmc: mediatek: fix SDIO irq issue
+Date: Tue, 21 Jan 2020 15:20:57 +0800
+Message-ID: <1579591258-30940-1-git-send-email-yong.mao@mediatek.com>
+X-Mailer: git-send-email 1.9.1
 MIME-Version: 1.0
-References: <20200114071602.47627-1-drinkcat@chromium.org>
- <20200114071602.47627-5-drinkcat@chromium.org>
- <20200114151643.GW3897@sirena.org.uk>
-In-Reply-To: <20200114151643.GW3897@sirena.org.uk>
-From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Tue, 21 Jan 2020 11:37:14 +0700
-Message-ID: <CANMq1KC_-g45wdGgGiBmEyVXAJMkKwsJBJXGBHOMJk_=NyfpYw@mail.gmail.com>
-Subject: Re: [PATCH v3 4/7] drm/panfrost: Add support for multiple regulators
-To: Mark Brown <broonie@kernel.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200120_203731_561808_1390DA9E 
-X-CRM114-Status: GOOD (  13.41  )
+X-CRM114-CacheID: sfid-20200120_232136_079393_0B2685FF 
+X-CRM114-Status: UNSURE (   5.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,45 +81,24 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Devicetree List <devicetree@vger.kernel.org>,
- Tomeu Vizoso <tomeu.vizoso@collabora.com>, David Airlie <airlied@linux.ie>,
- lkml <linux-kernel@vger.kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Steven Price <steven.price@arm.com>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
- Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
+Cc: srv_heupstream@mediatek.com, linux-mmc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 14, 2020 at 10:16 PM Mark Brown <broonie@kernel.org> wrote:
->
-> On Tue, Jan 14, 2020 at 03:15:59PM +0800, Nicolas Boichat wrote:
->
-> >  - I couldn't find a way to detect the number of regulators in the
-> >    device tree, if we wanted to refuse to probe the device if there
-> >    are too many regulators, which might be required for safety, see
-> >    the thread on v2 [1].
->
-> You'd need to enumerate all the properties of the device and look
-> for things matching *-supply.
+yong mao (1):
+  mmc: mediatek: fix SDIO irq issue
 
-I see ,-) I was hoping for something slightly cleaner, or maybe an
-existing function in the core.
+ drivers/mmc/host/mtk-sd.c | 38 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 38 insertions(+)
 
-Steven: How strongly do you feel about this? If so I can add that
-check in the next revision.
-
-Also, just a heads-up, I'm out for the next 2 weeks, I'll send v4 after that.
-
->
-> Reviewed-by: Mark Brown <broonie@kernel.org>
-
+-- 
+2.24.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
