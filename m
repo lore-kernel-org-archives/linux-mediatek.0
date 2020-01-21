@@ -2,62 +2,58 @@ Return-Path: <SRS0=O6hk=3K=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_2 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 69A48C2D0CE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jan 2020 17:12:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 05A83C2D0CE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jan 2020 17:28:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 341B721569
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jan 2020 17:12:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CE6B22253D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Jan 2020 17:28:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Amg3DcEw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 341B721569
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=goodmis.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LLQxvIhh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CE6B22253D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:
+	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Of+7spzo+MdgnJb+GksXN3QofFJt68n/QN1tWqigvlw=; b=Amg3DcEwgdxFPH
-	FPi4LrN3/vjklbForQq0nZ1k5cazjjavCmMkAFsHbnicbRDW82dSDo8Km08yneIXmN8oyuitYHrrB
-	ulNeukB7oUVRtVKtoHKvWQNc83BnAVhaDlWBt51ZTLFSufQkFNerbpssWVVBFcvahCaEhDYvCDF1w
-	T9j/r1bobHNOgVaLid4Ba1eVG+hYDGfWPOnZ11qFKNHlf8AN0qr+b28ECwNKJdtETZvYYTaAVHO3Y
-	ew02TeX+1JoSRRuoszYut71Uf1eP8lzQARtNzA6B0m6Sgv7Nhx0gt2dyFyPo4JwcCmgpiXt6ydr3O
-	Tmb0vr2WCrLBbBgmbKbg==;
+	References:List-Owner; bh=stGmoBG3yKSfF/S1d3y3GUd1umn3uZQrXOyRCDHWuZg=; b=LLQ
+	xvIhhntSEznlC6bS+Dj9gAzIb5DBXulFgFKdRpaS6tu4VgmGMfM0Rqy9zW124oXy4uoY0rrn+6NEZ
+	djvxh6ydC0/p5/61BIKlPuu8Fj5s6b4OMsoyzVTTlOXpRz+C0XOznchwIzFdXCCYSmxdye2uaLzKo
+	D4+cbeh7P9WNIFDQyj5BLYY0+hG7sicAqILBpxLkxKCBKxrOzp/JsJ0y94fD1wegSP87yIzw02KXV
+	Pfbm+tw1yVJfaIpJKhi0A8JZHVNvXIbLQUUzI8qqtgeHXirOMoYIXv7PkZjKspep0LLwJ1oVMHsI5
+	7NQkgQFNtFwNTjunw3tik2dl5JR+J7A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1itx4D-000713-90; Tue, 21 Jan 2020 17:11:53 +0000
-Received: from mail.kernel.org ([198.145.29.99])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1itx3r-0006ko-2k; Tue, 21 Jan 2020 17:11:38 +0000
-Received: from gandalf.local.home (cpe-66-24-58-225.stny.res.rr.com
- [66.24.58.225])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 457E2206A2;
- Tue, 21 Jan 2020 17:11:26 +0000 (UTC)
-Date: Tue, 21 Jan 2020 12:11:24 -0500
-From: Steven Rostedt <rostedt@goodmis.org>
-To: lukasz.luba@arm.com
-Subject: Re: [PATCH 3/4] thermal: devfreq_cooling: Refactor code and switch
- to use Energy Model
-Message-ID: <20200121121124.1a1f3175@gandalf.local.home>
-In-Reply-To: <20200116152032.11301-4-lukasz.luba@arm.com>
-References: <20200116152032.11301-1-lukasz.luba@arm.com>
- <20200116152032.11301-4-lukasz.luba@arm.com>
-X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
-MIME-Version: 1.0
+	id 1itxKA-00063t-FP; Tue, 21 Jan 2020 17:28:22 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1itxJv-0005tO-BY; Tue, 21 Jan 2020 17:28:12 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8260830E;
+ Tue, 21 Jan 2020 09:28:06 -0800 (PST)
+Received: from localhost (unknown [10.37.6.21])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C82203F6C4;
+ Tue, 21 Jan 2020 09:28:05 -0800 (PST)
+Date: Tue, 21 Jan 2020 17:28:04 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Applied "ASoC: dt-bindings: rt5645: add suppliers" to the asoc tree
+In-Reply-To: <20200114150151.8537-1-matthias.bgg@kernel.org>
+Message-Id: <applied-20200114150151.8537-1-matthias.bgg@kernel.org>
+X-Patchwork-Hint: ignore
+X-Bad-Reply: In-Reply-To but no 'Re:' in Subject.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200121_091131_142483_585E10D4 
-X-CRM114-Status: UNSURE (   9.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200121_092807_439653_4C98C84E 
+X-CRM114-Status: GOOD (  12.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,82 +65,79 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: nm@ti.com, juri.lelli@redhat.com, daniel.lezcano@linaro.org,
- peterz@infradead.org, viresh.kumar@linaro.org, dri-devel@lists.freedesktop.org,
- bjorn.andersson@linaro.org, bsegall@google.com,
- alyssa.rosenzweig@collabora.com, festevam@gmail.com, Morten.Rasmussen@arm.com,
- robh@kernel.org, amit.kucheria@verdurent.com, vincent.guittot@linaro.org,
- khilman@kernel.org, agross@kernel.org, b.zolnierkie@samsung.com,
- steven.price@arm.com, cw00.choi@samsung.com, mingo@redhat.com,
- linux-imx@nxp.com, rui.zhang@intel.com, mgorman@suse.de, daniel@ffwll.ch,
- linux-pm@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- s.hauer@pengutronix.de, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, Chris.Redpath@arm.com, linux-omap@vger.kernel.org,
- Dietmar.Eggemann@arm.com, linux-arm-kernel@lists.infradead.org,
- airlied@linux.ie, javi.merino@arm.com, tomeu.vizoso@collabora.com,
- qperret@google.com, sboyd@kernel.org, shawnguo@kernel.org, rjw@rjwysocki.net,
- linux-kernel@vger.kernel.org, kernel@pengutronix.de, sudeep.holla@arm.com,
- patrick.bellasi@matbug.net, ionela.voinescu@arm.com
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ alsa-devel@alsa-project.org, Nicolas Boichat <drinkcat@chromium.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
+ robh+dt@kernel.org, Mark Brown <broonie@kernel.org>,
+ linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ linux-arm-kernel@lists.infradead.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 16 Jan 2020 15:20:31 +0000
-lukasz.luba@arm.com wrote:
+The patch
 
-> diff --git a/include/trace/events/thermal.h b/include/trace/events/thermal.h
-> index 135e5421f003..8a5f04888abd 100644
-> --- a/include/trace/events/thermal.h
-> +++ b/include/trace/events/thermal.h
-> @@ -153,31 +153,30 @@ TRACE_EVENT(thermal_power_cpu_limit,
->  TRACE_EVENT(thermal_power_devfreq_get_power,
->  	TP_PROTO(struct thermal_cooling_device *cdev,
->  		 struct devfreq_dev_status *status, unsigned long freq,
-> -		u32 dynamic_power, u32 static_power, u32 power),
-> +		u32 power),
->  
-> -	TP_ARGS(cdev, status,  freq, dynamic_power, static_power, power),
-> +	TP_ARGS(cdev, status,  freq, power),
->  
->  	TP_STRUCT__entry(
->  		__string(type,         cdev->type    )
->  		__field(unsigned long, freq          )
-> -		__field(u32,           load          )
-> -		__field(u32,           dynamic_power )
-> -		__field(u32,           static_power  )
-> +		__field(u32,           busy_time)
-> +		__field(u32,           total_time)
->  		__field(u32,           power)
->  	),
->  
->  	TP_fast_assign(
->  		__assign_str(type, cdev->type);
->  		__entry->freq = freq;
-> -		__entry->load = (100 * status->busy_time) / status->total_time;
-> -		__entry->dynamic_power = dynamic_power;
-> -		__entry->static_power = static_power;
-> +		__entry->busy_time = status->busy_time;
-> +		__entry->total_time = status->total_time;
->  		__entry->power = power;
->  	),
->  
-> -	TP_printk("type=%s freq=%lu load=%u dynamic_power=%u static_power=%u power=%u",
-> +	TP_printk("type=%s freq=%lu load=%u power=%u",
->  		__get_str(type), __entry->freq,
-> -		__entry->load, __entry->dynamic_power, __entry->static_power,
-> +		__entry->total_time == 0 ? 0 :
-> +			(100 * __entry->busy_time) / __entry->total_time,
->  		__entry->power)
->  );
->  
+   ASoC: dt-bindings: rt5645: add suppliers
 
-Tracing updates look fine to me. Having the division on the output
-makes more sense.
+has been applied to the asoc tree at
 
-Reviewed-by: Steven Rostedt (VMware) <rostedt@goodmis.org> # for tracing code
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-5.6
 
--- Steve
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+From 26aa19174f0d1837cb268b744f6dcb013265ab03 Mon Sep 17 00:00:00 2001
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Date: Tue, 14 Jan 2020 16:01:50 +0100
+Subject: [PATCH] ASoC: dt-bindings: rt5645: add suppliers
+
+The rt5645 and rt5650 have two suppliers, document them.
+
+Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+Link: https://lore.kernel.org/r/20200114150151.8537-1-matthias.bgg@kernel.org
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ Documentation/devicetree/bindings/sound/rt5645.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/sound/rt5645.txt b/Documentation/devicetree/bindings/sound/rt5645.txt
+index a03f9a872a71..41a62fd2ae1f 100644
+--- a/Documentation/devicetree/bindings/sound/rt5645.txt
++++ b/Documentation/devicetree/bindings/sound/rt5645.txt
+@@ -10,6 +10,10 @@ Required properties:
+ 
+ - interrupts : The CODEC's interrupt output.
+ 
++- avdd-supply: Power supply for AVDD, providing 1.8V.
++
++- cpvdd-supply: Power supply for CPVDD, providing 3.5V.
++
+ Optional properties:
+ 
+ - hp-detect-gpios:
+-- 
+2.20.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
