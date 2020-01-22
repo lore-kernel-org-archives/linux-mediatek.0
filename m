@@ -2,144 +2,75 @@ Return-Path: <SRS0=t7yo=3L=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 14C8EC2D0DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jan 2020 16:17:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 64330C2D0DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jan 2020 19:40:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DC1D721569
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jan 2020 16:17:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3B7F7207FF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Jan 2020 19:40:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HxpvS4hn";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="bMOg2ktx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DC1D721569
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZaPGrzKA";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="T/meyFNs"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B7F7207FF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/LaxglnOlX/rVAv6vZGFpovPLlhH1gaq9tK3KXxCRgU=; b=HxpvS4hn7NSAye
-	p61kxg0G59rqf0GhmtKyBFjXovRLQSjBu7mkIlEvCQpt2ZUpnKlm/HWAwlhS8jU+eR6LdDeZcr30F
-	LAcadPkfxexMmSJovQhsDooWTOwHhfkZz+vecn9ijdS6Z7g/t0B2LP6XtYBfDnWNbZBYHsMnhgFSU
-	lq9HR1Y5bOLUgAcGoqKOJ81gw+477sTTufK1Rv0zWclhWYyUj56U/Xx1dMOObchFZCjGr6nL0ufY0
-	mdYswmPWMGoGYDlWWsTkaFeSdfUSxM1P6SDNO6uT0ouuWNaSo9Mg2VXah+8D6/OdFSVh9xZrB6nil
-	sn+UK8Xy3sSdUDRLsRlA==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+XrPkbloCnFUJm0Y+UsuYwWLnhn8UmhsmnDlsbty3PI=; b=ZaPGrzKAJDQC3w
+	yjIRYPtWDGmErprXyV06KJAh5NNpDKELcmbKH9OU05NMEzeZvswH2pdwuGBkvkhugj2lmW1da3YLi
+	92yUL09MauBt1S7+oErrFXOGtcasiAM1dPiIVMBTcpIqsz43all+uANxyZP2HJWNZSkAS54HCTMBP
+	PnCDq6eRvLF50X0g8hAxXfgDx7Br4FHtCZJ/SzHTLgMBSHyjASPb4ORw6JU1N32Wjo7IFcru3ipHL
+	MIE5cDMpHiQ5vpR/yXgxhOIDR1kolXIA3NoH4E5r/wlHO6rBbytkN9LqR4G4rbWQIGhfQXJP0PHRC
+	XE9tYL60fVF0t7LZh+xg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iuIhN-0003Ax-OH; Wed, 22 Jan 2020 16:17:45 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1iuLrh-00070T-SF; Wed, 22 Jan 2020 19:40:37 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iuIhK-00039g-Fv
- for linux-mediatek@lists.infradead.org; Wed, 22 Jan 2020 16:17:44 +0000
-Received: by mail-wm1-x341.google.com with SMTP id t23so3783190wmi.1
- for <linux-mediatek@lists.infradead.org>; Wed, 22 Jan 2020 08:17:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:autocrypt:organization:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=FOrOd17IY6UxRCLs7ZuRWcrsAvlH+vzar6yzTjUmF+g=;
- b=bMOg2ktx2ixHb9xoKebAK8305XoXYSAakZUf1DIM6ZkpHKsNMJZ2HeGKPHbM6NS1oP
- gSFIdvoAdexX0AwsqXHAnloUPmL4Cf5yxsjyyHrLusR6DGdWA96myHvjgmEvpdq3t37+
- Ucl5AvDhX1cV1fwOeIRT0nnAbAVS7lWlGTRDSyWFr5j9vtwerZGBvVDSlVP68FUN3f1u
- 7EBWbDhHfaufCYwRQb/6e3nY4tsV82sTVF0lXwfMSMQ0J5JxSG2TBbQYST28sXTuR6Bh
- kG4GMNCgT+af5dZNeGrTIOUqbHnSkI+TNHT6luZTJJhE0Oz/CpvakoXY5kIoaw9cm+6i
- LvdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :organization:message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=FOrOd17IY6UxRCLs7ZuRWcrsAvlH+vzar6yzTjUmF+g=;
- b=KL3W0klpecLKvqdOh5JQdvNV6y7rjbE9fuFfWUsE9cR+qmBiyJELrTd0BwI68VmVEH
- SjsghX6Afv1j5pOu2K+uADAsDiIfO8RDz7gkMDb3juyUKydFb5XqImJJyXHENCqn4YiU
- 3RfRVVQvJ+wjBx8FpbUnUzWwbukVsbo/IkQ9a5/1CVCL1qw/NcLU1Qc9LvIUZeYTje7w
- /fmuqtyfFKtMJiS9RQBhUtQeG3VU2MYuNjffPz4bQy0o0sDJ3c2zvLiGt8YoCxwH1k8F
- zyWwgHkVCHGnD38rcIxeCmxjvC59/+EgN0dET5AnoasAndExm13TDVhFfROkC0NqrkKD
- 3R6w==
-X-Gm-Message-State: APjAAAUHdz3a1QcbNMb3PfxZeoAGHaHfbJIng3gSndkLDp8CgZ4qRSNX
- RRdLkdz4syvK/9MectYw+zHZ5w==
-X-Google-Smtp-Source: APXvYqwzcSi2Lr7imlGZSmgk5lwITIo8O/yFeeQB2hzIN5uo5LtaT5GOfczCR364Ip0BiZILhfOqkA==
-X-Received: by 2002:a05:600c:21da:: with SMTP id
- x26mr3774940wmj.4.1579709857523; 
- Wed, 22 Jan 2020 08:17:37 -0800 (PST)
-Received: from [10.1.2.12] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr.
- [90.63.244.31])
- by smtp.gmail.com with ESMTPSA id d14sm62050681wru.9.2020.01.22.08.17.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 22 Jan 2020 08:17:36 -0800 (PST)
-Subject: Re: [PATCH v24 0/2] drm/bridge: PS8640 MIPI-to-eDP bridge
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- linux-kernel@vger.kernel.org
-References: <20191230090419.137141-1-enric.balletbo@collabora.com>
-From: Neil Armstrong <narmstrong@baylibre.com>
-Autocrypt: addr=narmstrong@baylibre.com; prefer-encrypt=mutual; keydata=
- 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
- BSwxi7g3Mu7u5kUByanqHyA=
-Organization: Baylibre
-Message-ID: <3dc2bb6d-590c-6b0d-1bac-14891899095e@baylibre.com>
-Date: Wed, 22 Jan 2020 17:17:35 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ id 1iuLrf-000701-14
+ for linux-mediatek@lists.infradead.org; Wed, 22 Jan 2020 19:40:36 +0000
+Received: from mail-io1-f44.google.com (mail-io1-f44.google.com
+ [209.85.166.44])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1572924673
+ for <linux-mediatek@lists.infradead.org>; Wed, 22 Jan 2020 19:40:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1579722034;
+ bh=I3teCKf41lP38KMQNsBxxI2JMwPoZieKq5xCCRmpZbQ=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=T/meyFNs0x2NyU4io1GwIRdQYju4lFfJ8kTVgxkNwazAVqQYaGA1dDJigw0c8oVwG
+ 43K1901Un1lQMDvrVYsg7VP2HI4ZwxrX1uE/7vNPRp24IdsE1ZeO5fTwrmqWWBjEmA
+ NLu9gD9wF+GMa54UdLTW3yFX+F4/svJ68CZf3gSw=
+Received: by mail-io1-f44.google.com with SMTP id i7so486264ioo.5
+ for <linux-mediatek@lists.infradead.org>; Wed, 22 Jan 2020 11:40:34 -0800 (PST)
+X-Gm-Message-State: APjAAAWrYKotjJCrLcbGOo7KLR+F+RzyCMNgW3/21bZYUG55icDJaD6L
+ ZYr8Vg5Ikzx/q4ko0apW5EIdnHLTWvsEJjBBaJg=
+X-Google-Smtp-Source: APXvYqxqe7QNclBhEk+9YkjlIpvsr1YD1RWaWjX9rBV7ifqkcke9QWlPnpq6UBmwlFzuEDWombaYJpCrfBZeTIBQo6A=
+X-Received: by 2002:a6b:e711:: with SMTP id b17mr7897849ioh.307.1579722033348; 
+ Wed, 22 Jan 2020 11:40:33 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20191230090419.137141-1-enric.balletbo@collabora.com>
-Content-Language: en-US
+References: <1579675994-7001-1-git-send-email-light.hsieh@mediatek.com>
+In-Reply-To: <1579675994-7001-1-git-send-email-light.hsieh@mediatek.com>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Wed, 22 Jan 2020 11:40:22 -0800
+X-Gmail-Original-Message-ID: <CAGp9LzqT_mncGPD5wh0rtc62vd0ak+tm22TgX1eUGeesY33zDg@mail.gmail.com>
+Message-ID: <CAGp9LzqT_mncGPD5wh0rtc62vd0ak+tm22TgX1eUGeesY33zDg@mail.gmail.com>
+Subject: Re: [PATCH v8 1/6] pinctrl: mediatek: Check gpio pin number and use
+ binary search in mtk_hw_pin_field_lookup()
+To: Light Hsieh <light.hsieh@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200122_081742_531927_A491D588 
-X-CRM114-Status: GOOD (  25.15  )
+X-CRM114-CacheID: sfid-20200122_114035_114118_797AA885 
+X-CRM114-Status: GOOD (  20.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -151,156 +82,188 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Jernej Skrabec <jernej.skrabec@siol.net>, drinkcat@chromium.org,
- Jitao Shi <jitao.shi@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>,
- Jonas Karlman <jonas@kwiboo.se>, David Airlie <airlied@linux.ie>,
- dri-devel@lists.freedesktop.org, Andrzej Hajda <a.hajda@samsung.com>,
- Ulrich Hecht <uli@fpond.eu>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, hsinyi@chromium.org,
- matthias.bgg@gmail.com, Collabora Kernel ML <kernel@collabora.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ lkml <linux-kernel@vger.kernel.org>, kuohong.wang@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30/12/2019 10:04, Enric Balletbo i Serra wrote:
-> Hi all,
-> 
-> This is another version of the driver. Note that the driver changed
-> significally and is a more simply because now is using the panel_bridge
-> helpers. Apart from this, I addressed the comments from Maxime, Laurent
-> and Ezequiel.
-> 
-> This bridge is required to have the embedded display working on an Acer
-> Chromebook R13 ("Elm"). Hopefully we are a bit more close to have this
-> driver merged. If more changes are required, please let me know and I
-> will work on it.
-> 
-> Note: Along these around 20 revisions of this driver I was unable to
-> reconstruct the full changelog history, so I'm skipping this. Sorry
-> about that, I promise I'll maintain the changelog for future revisions.
-> 
-> Thanks,
->  Enric
-> 
-> Changes in v24:
-> - Fix GPIO polarity as all GPIO descriptors should be handled as active high (Laurent Pinchart)
-> - Make static ps8640_bridge_attach (Ezequiel Garcia)
-> - Use a define for the number of lanes (Ezequiel Garcia)
-> 
-> Changes in v23:
-> - Merge mute/unmute functions into one (Nicolas Boichat)
-> - Use enum for ENABLE/DISABLE instead of bool (Ezequiel Garcia)
-> - Rename mute/unmute to vdo_control and fix error messages (Nicolas Boichat and Enric)
-> - Add space between address and address parameter 'address%02x' (Nicolas Boichat)
-> - Add Tested-by Hsin-Yi
-> - Added me as author after the refactor
-> 
-> Changes in v22:
-> - Migrate to YAML format (Maxime Ripart)
-> - Remove mode-sel property.
-> - Rename sleep-gpios to powerdown-gpios.
-> - Remove sysfs attributes because are not really used (Enric Balletbo)
-> - Use enum for address page offsets (Ezequiel Garcia)
-> - Remove enable tracking (Enric Balletbo)
-> - Use panel_bridge API (Laurent Pinchart)
-> - Do not use kernel-doc format for non kernel-doc formatted commands (Enric Balletbo)
-> - Remove verbose message for PAGE1_VSTART command (Ezequiel Garcia)
-> - Use time_is_after_jiffies idiom (Ezequiel Garcia)
-> - Remove unused macros (Ezequiel Garcia)
-> - Fix weird alignment in dsi->mode_flags (Laurent Pinchart)
-> - Use drm_of_find_panel_or_bridge helper (Laurent Pinchart)
-> - Remove mode-sel-gpios as is not used (Laurent Pinchart)
-> - Remove error messages to get gpios as the core will already report it (Enric Balletbo)
-> - Remove redundant message getting the regulators (Laurent Pinchart)
-> - Rename sleep-gpios to powerdown-gpios (Laurent Pinchart)
-> - Use ARRAY_SIZE(ps_bridge->page) instead of MAX_DEV when possible (Laurent Pinchart)
-> - Fix race with userspace accessing the sysfs attributes (Laurent Pinchart)
-> - Remove id_table as is only used on DR platforms (Laurent Pinchart)
-> - Convert to new i2c device probe() (Laurent Pinchart)
-> - Use i2c_smbus_read/write helpers instead of open coding it (Laurent Pinchart)
-> - Remove unnused global variables (Laurent Pinchart)
-> - Remove unnused fields in ps8640 struct (Laurent Pinchart)
-> - Remove commented-out headers (Laurent Pinchart)
-> 
-> Changes in v21:
->  - Use devm_i2c_new_dummy_device and fix build issue using deprecated i2c_new_dummy
->  - Fix build issue due missing drm_bridge.h
->  - Do not remove in ps8640_remove device managed resources
-> 
-> Changes in v19:
->  - fixed return value of ps8640_probe() when no panel is found
-> 
-> Changes in v18:
->  - followed DRM API changes
->  - use DEVICE_ATTR_RO()
->  - remove firmware update code
->  - add SPDX identifier
-> 
-> Changes in v17:
->  - remove some unused head files.
->  - add macros for ps8640 pages.
->  - remove ddc_i2c client
->  - add mipi_dsi_device_register_full
->  - remove the manufacturer from the name and i2c_device_id
-> 
-> Changes in v16:
->  - Disable ps8640 DSI MCS Function.
->  - Rename gpios name more clearly.
->  - Tune the ps8640 power on sequence.
-> 
-> Changes in v15:
->  - Drop drm_connector_(un)register calls from parade ps8640.
->    The main DRM driver mtk_drm_drv now calls
->    drm_connector_register_all() after drm_dev_register() in the
->    mtk_drm_bind() function. That function should iterate over all
->    connectors and call drm_connector_register() for each of them.
->    So, remove drm_connector_(un)register calls from parade ps8640.
-> 
-> Changes in v14:
->  - update copyright info.
->  - change bridge_to_ps8640 and connector_to_ps8640 to inline function.
->  - fix some coding style.
->  - use sizeof as array counter.
->  - use drm_get_edid when read edid.
->  - add mutex when firmware updating.
-> 
-> Changes in v13:
->  - add const on data, ps8640_write_bytes(struct i2c_client *client, const u8 *data, u16 data_len)
->  - fix PAGE2_SW_REST tyro.
->  - move the buf[3] init to entrance of the function.
-> 
-> Changes in v12:
->  - fix hw_chip_id build warning
-> 
-> Changes in v11:
->  - Remove depends on I2C, add DRM depends
->  - Reuse ps8640_write_bytes() in ps8640_write_byte()
->  - Use timer check for polling like the routines in <linux/iopoll.h>
->  - Fix no drm_connector_unregister/drm_connector_cleanup when ps8640_bridge_attach fail
->  - Check the ps8640 hardware id in ps8640_validate_firmware
->  - Remove fw_version check
->  - Move ps8640_validate_firmware before ps8640_enter_bl
->  - Add ddc_i2c unregister when probe fail and ps8640_remove
-> 
-> Jitao Shi (2):
->   Documentation: bridge: Add documentation for ps8640 DT properties
->   drm/bridge: Add I2C based driver for ps8640 bridge
-> 
->  .../bindings/display/bridge/ps8640.yaml       | 112 ++++++
->  drivers/gpu/drm/bridge/Kconfig                |  11 +
->  drivers/gpu/drm/bridge/Makefile               |   1 +
->  drivers/gpu/drm/bridge/parade-ps8640.c        | 348 ++++++++++++++++++
->  4 files changed, 472 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/bridge/ps8640.yaml
->  create mode 100644 drivers/gpu/drm/bridge/parade-ps8640.c
-> 
+On Tue, Jan 21, 2020 at 10:53 PM <light.hsieh@mediatek.com> wrote:
+>
+> From: Light Hsieh <light.hsieh@mediatek.com>
+>
+> 1. Check if gpio pin number is in valid range to prevent from get invalid
+>    pointer 'desc' in the following code:
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+>
+> 2. Improve  mtk_hw_pin_field_lookup()
+> 2.1 Modify mtk_hw_pin_field_lookup() to use binary search for accelerating
+>      search.
+> 2.2 Correct message after the following check fail:
+>     if (hw->soc->reg_cal && hw->soc->reg_cal[field].range) {
+>                 rc = &hw->soc->reg_cal[field];
+>     The original message is:
+>         "Not support field %d for pin %d (%s)\n"
+>     However, the check is on soc chip level, not on pin level yet.
+>     So the message is corrected as:
+>         "Not support field %d for this soc\n"
+>
+> Signed-off-by: Light Hsieh <light.hsieh@mediatek.com>
 
-Applied to drm-misc-next
+Acked-by: Sean Wang <sean.wang@kernel.org>
+
+> ---
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 27 ++++++++++++++++++------
+>  drivers/pinctrl/mediatek/pinctrl-paris.c         | 25 ++++++++++++++++++++++
+>  2 files changed, 46 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> index 20e1c89..d63e05e 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> @@ -68,32 +68,44 @@ static int mtk_hw_pin_field_lookup(struct mtk_pinctrl *hw,
+>  {
+>         const struct mtk_pin_field_calc *c, *e;
+>         const struct mtk_pin_reg_calc *rc;
+> +       int start = 0, end, check;
+> +       bool found = false;
+>         u32 bits;
+>
+>         if (hw->soc->reg_cal && hw->soc->reg_cal[field].range) {
+>                 rc = &hw->soc->reg_cal[field];
+>         } else {
+>                 dev_dbg(hw->dev,
+> -                       "Not support field %d for pin %d (%s)\n",
+> -                       field, desc->number, desc->name);
+> +                       "Not support field %d for this soc\n", field);
+>                 return -ENOTSUPP;
+>         }
+>
+> +       end = rc->nranges - 1;
+>         c = rc->range;
+>         e = c + rc->nranges;
+>
+> -       while (c < e) {
+> -               if (desc->number >= c->s_pin && desc->number <= c->e_pin)
+> +       while (start <= end) {
+> +               check = (start + end) >> 1;
+> +               if (desc->number >= rc->range[check].s_pin
+> +                && desc->number <= rc->range[check].e_pin) {
+> +                       found = true;
+> +                       break;
+> +               } else if (start == end)
+>                         break;
+> -               c++;
+> +               else if (desc->number < rc->range[check].s_pin)
+> +                       end = check - 1;
+> +               else
+> +                       start = check + 1;
+>         }
+>
+> -       if (c >= e) {
+> +       if (!found) {
+>                 dev_dbg(hw->dev, "Not support field %d for pin = %d (%s)\n",
+>                         field, desc->number, desc->name);
+>                 return -ENOTSUPP;
+>         }
+>
+> +       c = rc->range + check;
+> +
+>         if (c->i_base > hw->nbase - 1) {
+>                 dev_err(hw->dev,
+>                         "Invalid base for field %d for pin = %d (%s)\n",
+> @@ -182,6 +194,9 @@ int mtk_hw_set_value(struct mtk_pinctrl *hw, const struct mtk_pin_desc *desc,
+>         if (err)
+>                 return err;
+>
+> +       if (value < 0 || value > pf.mask)
+> +               return -EINVAL;
+> +
+>         if (!pf.next)
+>                 mtk_rmw(hw, pf.index, pf.offset, pf.mask << pf.bitpos,
+>                         (value & pf.mask) << pf.bitpos);
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> index 923264d..3e13ae7 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> @@ -81,6 +81,8 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
+>         int val, val2, err, reg, ret = 1;
+>         const struct mtk_pin_desc *desc;
+>
+> +       if (pin >= hw->soc->npins)
+> +               return -EINVAL;
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[pin];
+>
+>         switch (param) {
+> @@ -206,6 +208,10 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
+>         int err = 0;
+>         u32 reg;
+>
+> +       if (pin >= hw->soc->npins) {
+> +               err = -EINVAL;
+> +               goto err;
+> +       }
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[pin];
+>
+>         switch ((u32)param) {
+> @@ -693,6 +699,9 @@ static int mtk_gpio_get_direction(struct gpio_chip *chip, unsigned int gpio)
+>         const struct mtk_pin_desc *desc;
+>         int value, err;
+>
+> +       if (gpio > hw->soc->npins)
+> +               return -EINVAL;
+> +
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+>
+>         err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &value);
+> @@ -708,6 +717,9 @@ static int mtk_gpio_get(struct gpio_chip *chip, unsigned int gpio)
+>         const struct mtk_pin_desc *desc;
+>         int value, err;
+>
+> +       if (gpio > hw->soc->npins)
+> +               return -EINVAL;
+> +
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+>
+>         err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DI, &value);
+> @@ -722,6 +734,9 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
+>         struct mtk_pinctrl *hw = gpiochip_get_data(chip);
+>         const struct mtk_pin_desc *desc;
+>
+> +       if (gpio > hw->soc->npins)
+> +               return;
+> +
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+>
+>         mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DO, !!value);
+> @@ -729,12 +744,22 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
+>
+>  static int mtk_gpio_direction_input(struct gpio_chip *chip, unsigned int gpio)
+>  {
+> +       struct mtk_pinctrl *hw = gpiochip_get_data(chip);
+> +
+> +       if (gpio > hw->soc->npins)
+> +               return -EINVAL;
+> +
+>         return pinctrl_gpio_direction_input(chip->base + gpio);
+>  }
+>
+>  static int mtk_gpio_direction_output(struct gpio_chip *chip, unsigned int gpio,
+>                                      int value)
+>  {
+> +       struct mtk_pinctrl *hw = gpiochip_get_data(chip);
+> +
+> +       if (gpio > hw->soc->npins)
+> +               return -EINVAL;
+> +
+>         mtk_gpio_set(chip, gpio, value);
+>
+>         return pinctrl_gpio_direction_output(chip->base + gpio);
+> --
+> 1.8.1.1.dirty
 
 _______________________________________________
 Linux-mediatek mailing list
