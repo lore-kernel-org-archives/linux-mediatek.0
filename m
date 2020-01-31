@@ -1,85 +1,142 @@
 Return-Path: <SRS0=2SDw=3U=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
-X-Spam-Level: 
-X-Spam-Status: No, score=-4.2 required=3.0 tests=DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,URIBL_DBL_ABUSE_MALW autolearn=no autolearn_force=no
+X-Spam-Level: *
+X-Spam-Status: No, score=1.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,URIBL_DBL_ABUSE_MALW autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 58E7BC2D0DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jan 2020 18:12:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9DA4AC2D0DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jan 2020 18:48:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 29DDD20CC7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jan 2020 18:12:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 693CE2082E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jan 2020 18:48:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rOrfVbPz";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="jeDt22Y7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 29DDD20CC7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TeXwPYdD";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="Rq0pk3CT";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="IV4LZK7L"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 693CE2082E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Uwr9t7Il/LcJcauPad+bpbtbGCxHqvGtl0C8YUESYMg=; b=rOrfVbPzqammHx
-	j9c1iTrM8u4FqHtRhxPKzf6nmLYCDWSMYFhQeGYBYgN+GbqDTVpMYlQJLYuQcwve/Zwvk0jc65Op9
-	4CpeeaJ+k6W+040k2k86YrfyMDHh+cdeXygj09pCTHdx8JchKDVH9f4YNaim1D3PDj+MTI9SnhbUO
-	EQOuMPzW9+5XI7rLuUTGTaMEZHjIlMSOW0D3anOGboEMe13/vpJGU9FLmbfm2L9RfWEqOqG/ScoZt
-	Yf8ksiUeZUo0Yq3ieJNLpipMheJ5hV3C2VmA20+LFVj4SLKVgRa+l3TCLvi9+d/xy8zSefsIet5DO
-	v1fUwMuPh/G2YUmiiK+A==;
+	List-Owner; bh=9reCA8/Ttc/Goi+Sd65+fd9WEdxVWKFxYg+QbQwc4IU=; b=TeXwPYdDUYDbGJ
+	MFuhHmMmPj1UilCnmDoCkxRNp+jvhBZ8wUu2+otxNiL40Kz6CRfEVx/xHQXOcL0V907sTT/Mx7jAM
+	qwOidPZttN4A1H891Mr7wf2TA4qWqbkI86CkW1XqRAye/O5mZ4bgC8l9GONLplCuOhuEoXKYjFVmh
+	K01bnMh2QD+dVUyzabg7hhwpJI1vK+90X0SNQaFl2nbUiUj3peJ5jF3dGTFXjsmcS5+sEj0FAnEaN
+	YUmEZR3pD0jmn7rwyeVVg+fPeRYQqg46GO3wImMvBoqv0k05oPCrlISPZlrGf3iAIoWDFKt26l7L1
+	px6fdgoAwRdYO6pGCvSg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ixalv-0007TM-Ig; Fri, 31 Jan 2020 18:12:03 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1ixbL9-00055q-PF; Fri, 31 Jan 2020 18:48:27 +0000
+Received: from esa5.hgst.iphmx.com ([216.71.153.144])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ixalt-0007Sa-JO
- for linux-mediatek@lists.infradead.org; Fri, 31 Jan 2020 18:12:03 +0000
-Received: by mail-wr1-x443.google.com with SMTP id k11so9730508wrd.9
- for <linux-mediatek@lists.infradead.org>; Fri, 31 Jan 2020 10:11:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=fQB69rHX1wLUOB6ckxnewaTIywwOUniSjsLx2ZdmZVU=;
- b=jeDt22Y76Yhwn3Q8wYjH9uJcoKEH0QuY429dXNFN7HruLwWlRqVzXUK751j8JOdxjq
- FULXCK2DPDMD9GR+VdOs4vb/InZZFXbIn0Y73jMsCQBUw7xAQd1SkBJu2EwklkEOxiS6
- 0USCMPOp279Gx/SIRygdYahxOnYgQuJqKQthJwCpA/S0Ut4VeHIr5/WrT9o9OQprpORe
- xvfqMAcldi7yr298nGsS9k0ykRUMQSUO57pZwZ78QXiR6+6BSTCvE6Xxau6WzzcN/2UD
- 6y+X9NEM5Z/eaynqJL6QbY4sQN5sJ43ZQ4BOe/ZqUspMnrtQZJNJlhlFTMDfeKCP2/+H
- d7Zg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=fQB69rHX1wLUOB6ckxnewaTIywwOUniSjsLx2ZdmZVU=;
- b=MR4Zh63S1XphPueqpE3WELqEqiE680WVz3N5BksoRZMoEKQn2ddNkkjFip8Y2lJCcs
- 9jPrNsrGe9z+7+ukykQnii23YoRPO9Ly5YdKgZKjdwAKGNslfuDcSi5k90pmWU2mj+7z
- FutEmZuPgdcH0JrlQKj5pUEltwX86isGmxNddogM6DVwzUhfRueX4rCPLTWhY+zneD/U
- wDgPNB0kFEcRov8C4zvHQxSboXoabcaF+n9x+Geqn5lp57h7TvzLn0aWYNebWD9mfe1P
- 0rQccv3/Hl1Ya4CjdW48z2gTbBvrdixXEZSFYGgFCJoqtY6A4irH2u7eHiDVPCM5grNB
- m+Bg==
-X-Gm-Message-State: APjAAAUWyIt+tuA7wcYbnTaUzIIM3/5k0H26+dX4YwBNpEa/GzP0zfbz
- syMIUj4ma2dWAOWC3y6ym/Nh5Hzhci23CTnOGrGlXg==
-X-Google-Smtp-Source: APXvYqyq/YfoE0oFSPYzEyKRSgA8t1DxpbDmSXNnWAWmVKZvjNNBuUx80heTPOUQbSjAkXy16oEV7Acsq2nO+E63ABI=
-X-Received: by 2002:a5d:6692:: with SMTP id l18mr12918211wru.382.1580494315839; 
- Fri, 31 Jan 2020 10:11:55 -0800 (PST)
+ id 1ixbL7-00054O-9G; Fri, 31 Jan 2020 18:48:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1580496506; x=1612032506;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=fN1CVSHRDKEA6r0Dxq2ZalnLQH9fwSR+D/wSfwSoaU4=;
+ b=Rq0pk3CTSminEYoWACydytUOXeLgjO0j9YKFWnHI5+fXOO+xAzkL62S0
+ cwdIkrHO5U8HXIN7s2eL9kficyjNtrpwORq+8i72YIeZQQ2EWtjHg3lQp
+ RtsSEw//LeMAm0dosDVUcjhPMWHdZIHLfZrxGDKSk+/jSr1Nq0uoPQk/M
+ ITL/68OPXw8kFdR5ju2+92cBflXv+3Dmxj5J91Mo5zwt7NukA2J/3BC7j
+ sWzTk4xsVUJtav2S0DB7YbyDHmFuSn+/7oD+fiUgOOg5JG/HUnaUbUnnb
+ eEUtD6mg+/lBUuF/4Q44NPIX6kgSy1O0nuXOXmZlBCV1TNEuvWCRBUN3D w==;
+IronPort-SDR: 9hhgxNXtVeAssR5GVS/XjFuQ+CqBGPUwwYliebSdEsson58KB0H0wDrlSErI5GlWSy5I15tGJI
+ 7iOvp5j0BjFBu751fJwgJgtTaWB47iQw4/Dg0MOcPVvTvRgkGMFpj8jY2tgRjdjXcAkGPxrOEQ
+ f5SPVX9RWYOoJl0BBsOky7fwz6LdSVgsuXvoE/YQJSISSzrWivwTKLCqW91Fz6MxKkeoXpFE/T
+ vRtY71JhJ6ouHNk43anY15HTB4h0zMoIxJK+YBxxsr1BiCpHTcb+OlD6lfHUKagtwxWOSKIk6P
+ w/0=
+X-IronPort-AV: E=Sophos;i="5.70,386,1574092800"; d="scan'208";a="129407717"
+Received: from mail-mw2nam10lp2107.outbound.protection.outlook.com (HELO
+ NAM10-MW2-obe.outbound.protection.outlook.com) ([104.47.55.107])
+ by ob1.hgst.iphmx.com with ESMTP; 01 Feb 2020 02:48:22 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=DL6ic5zMjv+GqJeKogidT7HzRIpfTrKHo6iCQyCliXz2JoYnz4t8jsvYSoPbaQ0c+vkNLFwUVBTBcsLs6TCyGQayh2sDeP6qRiDI5/HBX1RTayV0LSY2Rk4Dydik3GrRKQzvIMgPELAk9FZ/+gueHG31KR9Q30epmx5FDwuwMtm5JOCgyY6U/qWh+Rz8JHRE8vW+Fnzr1ZKtiL+F5nwV8m15b1Um2litQEYw572nB7Fvh4Qk/K2V3Y9n15jodKXVLpxuh1OqKHi3BrjnhXU3arewI3+9SVJfEWep9cBkp9eFPwm28m2Za563EgrODyJWjZiCzP18qi0Ppzt5+wRZdA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=xve3KMGkoYdCIcomZmbm60dhhHtqw19sglWiDXtc2go=;
+ b=RGNOEwx/oPPAUgdnITbZZmuvPZBk+b6oPsDarLMdD0MEF/+LKpcftcxJIZt6DmvTrqcXoBawOfmvOTSSt8do9AuS+H01flNCMiv3A2p5+5MqSWwf4k1endCFDtqA1EX+vqcZ28ETPi7iaRsCP5UxCxqhcJ46C6DKbCcvme3MSb6O2+L/iQdk4wT8a4Im2Fpm+FZqlPr+vPgjvUOsc8HCjT7so2CfhrKGOyOjlePAIYYRIXawyrrs5DVvyDR1MNlHAvlNNWEASTXt6TMOcHWmxntsJBr/fHPKdPvegGq1EaaeoaQ1JjRZaMAqz3EWtYmUGi608KHVkDrAFbzcakPFhg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=xve3KMGkoYdCIcomZmbm60dhhHtqw19sglWiDXtc2go=;
+ b=IV4LZK7LrYB/duVLcjF2DDaFWbsb/vHcPABaLpH4dhZ7FJFKN9iCG8BER1WQziYE8gyszS1kJEwHpIaqnUYzXOYoSmq0qyHGkd7xUXHhT+QVd6KdHemLgtXypeuCJgvYdn6S1WOEtjyi2503zgJhwd9Af+p9mqPRNHLRJeg+3ws=
+Received: from MN2PR04MB6991.namprd04.prod.outlook.com (10.186.144.209) by
+ MN2PR04MB5758.namprd04.prod.outlook.com (20.179.22.81) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2686.26; Fri, 31 Jan 2020 18:48:20 +0000
+Received: from MN2PR04MB6991.namprd04.prod.outlook.com
+ ([fe80::b870:3f25:f3be:535d]) by MN2PR04MB6991.namprd04.prod.outlook.com
+ ([fe80::b870:3f25:f3be:535d%2]) with mapi id 15.20.2686.025; Fri, 31 Jan 2020
+ 18:48:19 +0000
+From: Avri Altman <Avri.Altman@wdc.com>
+To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
+ <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
+ <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
+ <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ "beanhuo@micron.com" <beanhuo@micron.com>
+Subject: RE: [PATCH RESEND v3 4/4] scsi: ufs-mediatek: gate ref-clk during
+ Auto-Hibern8
+Thread-Topic: [PATCH RESEND v3 4/4] scsi: ufs-mediatek: gate ref-clk during
+ Auto-Hibern8
+Thread-Index: AQHV1pJJyxVd7c6bwEGDInsgF/50kKgFH/iA
+Date: Fri, 31 Jan 2020 18:48:19 +0000
+Message-ID: <MN2PR04MB699108FC14777CC364522069FC070@MN2PR04MB6991.namprd04.prod.outlook.com>
+References: <20200129105251.12466-1-stanley.chu@mediatek.com>
+ <20200129105251.12466-5-stanley.chu@mediatek.com>
+In-Reply-To: <20200129105251.12466-5-stanley.chu@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Avri.Altman@wdc.com; 
+x-originating-ip: [2a00:a040:19b:4327:5d1a:58d1:eef2:f80e]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: a72847a0-8af7-432c-bcac-08d7a67e2438
+x-ms-traffictypediagnostic: MN2PR04MB5758:
+x-microsoft-antispam-prvs: <MN2PR04MB5758ACEC6457F6D1FB7AAE30FC070@MN2PR04MB5758.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:404;
+x-forefront-prvs: 029976C540
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(4636009)(39860400002)(346002)(366004)(396003)(136003)(376002)(199004)(189003)(81166006)(54906003)(316002)(71200400001)(8936002)(66476007)(8676002)(76116006)(66446008)(4326008)(66946007)(110136005)(64756008)(66556008)(81156014)(6506007)(33656002)(86362001)(52536014)(478600001)(7416002)(55016002)(4744005)(7696005)(186003)(2906002)(5660300002)(9686003);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:MN2PR04MB5758;
+ H:MN2PR04MB6991.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: J0XgOHJGaO2zfIwGZuR+FrSpVZHNzqfL+5oJ2VBpGf95qYVvdaiiitm1ge+9o6YufzwM5BvOQhM0tm/Zqnl81HkWEIV6hk+2N9HCiQl+YQBn200BSzqW74QsR1bW+4e9kLA8Pfab8DeDbAwNFrAWkEpl0vLMumFhHnUPs920FadZYGlXUxCPsLzcNrnOZp5Bq2sgfG6FCl394wGtU/OsRe0WcQbvJlrrnNiSp4o/GGhZl+zaXT8pugbJzl6NGnkyPObFuWF9OpwGMmK6qXmca6WmZkaGf92MUlVbmXfvzkcP+cmrGvj7BtyN8gVgfSN6OB1nIpK52sgL0sH24N5dM744NeSBoT/Mmc5zH8y81wyLpG7CmlumijTKibcv2fVn7Ppm/fr7WfQ1SR7IjbEc7tEATYB2j8kKwBstrpV2FswuM64nMZIT80Ardi8yLVc8
+x-ms-exchange-antispam-messagedata: 4atOS7QE1zXjzOxa9C1MUCdKUZQ05zKLV9Td55PfqKTVcJndgwQrKPXJGqlwMxf1qFxC5S8h8lNT+H9iS8zUlZFjJK9hq0/lKe99IQ8uagK5Txagj1nugaMMbnzJMngbMa3bW/Cty/eRWtCOREivm7IjRiaK42/xb6XpXt/eseUSiVuA4dxYk9vnFER3sdnJvLtp+qeoZIq9zd3S+vG3DA==
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
-References: <20200130064430.17198-1-walter-zh.wu@mediatek.com>
- <CAG_fn=X_jSUJXD932z9oN5hBa--n3Qct4zrjzGaPtb2MwJye7A@mail.gmail.com>
- <1580436306.11126.16.camel@mtksdccf07>
-In-Reply-To: <1580436306.11126.16.camel@mtksdccf07>
-From: Alexander Potapenko <glider@google.com>
-Date: Fri, 31 Jan 2020 19:11:44 +0100
-Message-ID: <CAG_fn=X2V0nL=+s38bDbS3UXf2_i61tSevd8vzkV-ZKY=7MHvw@mail.gmail.com>
-Subject: Re: [PATCH v3] lib/stackdepot: Fix global out-of-bounds in stackdepot
-To: Walter Wu <walter-zh.wu@mediatek.com>
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a72847a0-8af7-432c-bcac-08d7a67e2438
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Jan 2020 18:48:19.8230 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 7TkZFSNb21E1KN30wKRYfzmzjSBK41QRzFCyz7Clax2fWZavE/9i/0MXWDfM88DOGRyDBiW7dpFlNfiv7Ic7FA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB5758
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200131_101201_666771_A052D144 
-X-CRM114-Status: GOOD (  23.06  )
+X-CRM114-CacheID: sfid-20200131_104825_380516_68B69CC2 
+X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,102 +148,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Kate Stewart <kstewart@linuxfoundation.org>,
- wsd_upstream <wsd_upstream@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Josh Poimboeuf <jpoimboe@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Dmitry Vyukov <dvyukov@google.com>
+Cc: "bvanassche@acm.org" <bvanassche@acm.org>,
+ "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
+ "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
+ "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "cang@codeaurora.org" <cang@codeaurora.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 31, 2020 at 3:05 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
->
-> On Thu, 2020-01-30 at 13:03 +0100, Alexander Potapenko wrote:
-> > On Thu, Jan 30, 2020 at 7:44 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> >
-> > Hi Walter,
-> >
-> > > If the depot_index = STACK_ALLOC_MAX_SLABS - 2 and next_slab_inited = 0,
-> > > then it will cause array out-of-bounds access, so that we should modify
-> > > the detection to avoid this array out-of-bounds bug.
-> > >
-> > > Assume depot_index = STACK_ALLOC_MAX_SLABS - 3
-> > > Consider following call flow sequence:
-> > >
-> > > stack_depot_save()
-> > >    depot_alloc_stack()
-> > >       if (unlikely(depot_index + 1 >= STACK_ALLOC_MAX_SLABS)) //pass
-> > >       depot_index++  //depot_index = STACK_ALLOC_MAX_SLABS - 2
-> > >       if (depot_index + 1 < STACK_ALLOC_MAX_SLABS) //enter
-> > >          smp_store_release(&next_slab_inited, 0); //next_slab_inited = 0
-> > >       init_stack_slab()
-> > >          if (stack_slabs[depot_index] == NULL) //enter and exit
-> > >
-> > > stack_depot_save()
-> > >    depot_alloc_stack()
-> > >       if (unlikely(depot_index + 1 >= STACK_ALLOC_MAX_SLABS)) //pass
-> > >       depot_index++  //depot_index = STACK_ALLOC_MAX_SLABS - 1
-> > >       init_stack_slab(&prealloc)
-> > >          stack_slabs[depot_index + 1]  //here get global out-of-bounds
-> > >
-> > > Cc: Dmitry Vyukov <dvyukov@google.com>
-> > > Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> > > Cc: Thomas Gleixner <tglx@linutronix.de>
-> > > Cc: Alexander Potapenko <glider@google.com>
-> > > Cc: Josh Poimboeuf <jpoimboe@redhat.com>
-> > > Cc: Kate Stewart <kstewart@linuxfoundation.org>
-> > > Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> > > Cc: Kate Stewart <kstewart@linuxfoundation.org>
-> > > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> > > ---
-> > > changes in v2:
-> > > modify call flow sequence and preconditon
-> > >
-> > > changes in v3:
-> > > add some reviewers
-> > > ---
-> > >  lib/stackdepot.c | 2 +-
-> > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > >
-> > > diff --git a/lib/stackdepot.c b/lib/stackdepot.c
-> > > index ed717dd08ff3..7e8a15e41600 100644
-> > > --- a/lib/stackdepot.c
-> > > +++ b/lib/stackdepot.c
-> > > @@ -106,7 +106,7 @@ static struct stack_record *depot_alloc_stack(unsigned long *entries, int size,
-> > >         required_size = ALIGN(required_size, 1 << STACK_ALLOC_ALIGN);
-> > >
-> > >         if (unlikely(depot_offset + required_size > STACK_ALLOC_SIZE)) {
-> > > -               if (unlikely(depot_index + 1 >= STACK_ALLOC_MAX_SLABS)) {
-> > > +               if (unlikely(depot_index + 2 >= STACK_ALLOC_MAX_SLABS)) {
+> 
+> +static u32 ufs_mtk_link_get_state(struct ufs_hba *hba)
+> +{
+> +       u32 val;
+> +
+> +       ufshcd_writel(hba, 0x20, REG_UFS_DEBUG_SEL);
+> +       val = ufshcd_readl(hba, REG_UFS_PROBE);
+> +       val = val >> 28;
+> +
+> +       return val;
+> +}
+A little bit strange that you are relying on debug registers to setup your ref-clock.
+Is this this debug info is always available?
 
-This again means stack_slabs[STACK_ALLOC_MAX_SLABS - 2] gets
-initialized, but stack_slabs[STACK_ALLOC_MAX_SLABS - 1] doesn't,
-because we'll be bailing out from init_stack_slab() from now on.
-Does this patch actually fix the problem (do you have a reliable reproducer?)
-This addition of 2 is also counterintuitive, I don't think further
-readers will understand the logic behind it.
-
-What if we just check that depot_index + 1 is a valid index before accessing it?
-
-diff --git a/lib/stackdepot.c b/lib/stackdepot.c
-index 2e7d2232ed3c..c2e6ff18d716 100644
---- a/lib/stackdepot.c
-+++ b/lib/stackdepot.c
-@@ -106,7 +106,9 @@ static bool init_stack_slab(void **prealloc)
-        if (stack_slabs[depot_index] == NULL) {
-                stack_slabs[depot_index] = *prealloc;
-        } else {
--               stack_slabs[depot_index + 1] = *prealloc;
-+               /* If this is the last depot slab, do not touch the next one. */
-+               if (depot_index + 1 < STACK_ALLOC_MAX_SLABS)
-+                       stack_slabs[depot_index + 1] = *prealloc;
-                /*
-                 * This smp_store_release pairs with smp_load_acquire() from
-                 * |next_slab_inited| above and in stack_depot_save().
+Thanks,
+Avri
 
 _______________________________________________
 Linux-mediatek mailing list
