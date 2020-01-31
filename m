@@ -4,75 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-5.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_DBL_ABUSE_MALW,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,URIBL_DBL_ABUSE_MALW,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A7120C33CB2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jan 2020 03:32:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 99886C2D0DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jan 2020 14:48:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 78A4C2082E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jan 2020 03:32:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 66338206D5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Jan 2020 14:48:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="D8dll7H9";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="IvQcUXyt"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 78A4C2082E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WjRrPlQV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 66338206D5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9GxbNAajSokhMzkMa8/yIRfbGo0wdjf4Xmmbv7vx5n8=; b=D8dll7H9kDqLsM
-	Hi/gTpZmfasoFXsrFxYtfh/u8RSSqxyBw6UsYTP2BgFJ5W9JHZrSqNvFPqKiZ7e8zeu1DEgRvMqxR
-	9A5nWxkvjGgy517DEs2MqJvkb7dZSQGCCFSpkZKu6qa7JY1sBGuAMSVPbz6mxNNrFa9LFyQL/1Z20
-	YQZ4/82itJSNLF+P6iCaeQ6oy4+4BrKmdAEluHTWIOmN/JTBUjg5riZRFZHcWOa3iNTVIcmrNed2g
-	VjWDiEVRJ25IF6bzo+AROn3s7c3hQxibCnW0dxFLFNxueDckLFA6fxqVQk0plrH0b1cYa1deWDf76
-	SraUZM052FH6LsV9N+yQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=QQwrtZN8GMhP7k1iY6CNAbTe2kxiBArBSOqIXOcK2A4=; b=WjRrPlQVZ88FwJOyWrDa07Avk
+	PM+BZv96aZm/pGN+bTjigSlt6nmF8wUiS0PmyD3lGwVit2r7fj/ay8bVoizcATfzgVXkNnRUpPBX/
+	eyU7kEqNNilHGnh74Z+M57Rpzqt7cEO3e8FLmDPaKKUN2E3TZjx2EXRO3VzjVr5/OC/8tu9LrhkOV
+	mKKpBkmAiXLM8xeboydPFB5fJiC6q8aNfeLSGf41MbVbyWYDCVygcb63P0LR3nXwNQpopmJN5LwQM
+	cWG4TMsND8waIxM76wDw9YVzYDFOEmeX34q123PGGyDPzA6npEhKbZ0vCVXdh2p8cqhk82xMBHfpQ
+	YHFfF6adw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ixN2R-0002IX-2n; Fri, 31 Jan 2020 03:32:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ixXak-0002XC-5H; Fri, 31 Jan 2020 14:48:18 +0000
+Received: from mga14.intel.com ([192.55.52.115])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ixN2G-0002Bo-I6; Fri, 31 Jan 2020 03:32:03 +0000
-X-UUID: 99fb086db79d4560a4f977375ac377c5-20200130
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=aM+4JU8dbdbMJaZA71HRgLbTyLydRZ9ekqagS3/8Hfk=; 
- b=IvQcUXytaGU00ahMsrciJ1XzRHD9HY5+yAM+X6LsliMw4nfOdppPhP7/cJqasut0Thv+ej+UZwtVVrsa0/+7C2uNGYLUoUrpBe8Y+bufMwoRflCjuCMCK49UbOLiV2nBQo4Y6ACCyKtGFbAIL8ezA0l7KZc0DyopZFBwsk40czs=;
-X-UUID: 99fb086db79d4560a4f977375ac377c5-20200130
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1949332648; Thu, 30 Jan 2020 19:31:52 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 30 Jan 2020 19:27:07 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 31 Jan 2020 11:26:12 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Fri, 31 Jan 2020 11:26:05 +0800
-Message-ID: <1580441226.9516.1.camel@mtksdaap41>
-Subject: Re: [PATCH] drm/mediatek: Ensure the cursor plane is on top of
- other overlays
-From: CK Hu <ck.hu@mediatek.com>
-To: Sean Paul <sean@poorly.run>
-Date: Fri, 31 Jan 2020 11:27:06 +0800
-In-Reply-To: <20200130192511.81205-1-sean@poorly.run>
-References: <20200130192511.81205-1-sean@poorly.run>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1ixXaV-0002Kc-JE; Fri, 31 Jan 2020 14:48:05 +0000
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 31 Jan 2020 06:48:00 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,386,1574150400"; d="scan'208";a="310020734"
+Received: from mattu-haswell.fi.intel.com (HELO [10.237.72.170])
+ ([10.237.72.170])
+ by orsmga001.jf.intel.com with ESMTP; 31 Jan 2020 06:47:56 -0800
+Subject: Re: [PATCH] xhci-mtk: Fix NULL pointer dereference with xhci_irq()
+ for shared_hcd
+To: Macpaul Lin <macpaul.lin@mediatek.com>,
+ Mathias Nyman <mathias.nyman@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>
+References: <1579246910-22736-1-git-send-email-macpaul.lin@mediatek.com>
+From: Mathias Nyman <mathias.nyman@linux.intel.com>
+Message-ID: <08f69bab-2ada-d6ab-7bf7-d960e9f148a0@linux.intel.com>
+Date: Fri, 31 Jan 2020 16:50:08 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 810A1D44145352546047498F0C8DF1C0A427603B091BFE8EAD7B2B7BBFEFBB822000:8
-X-MTK: N
+In-Reply-To: <1579246910-22736-1-git-send-email-macpaul.lin@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200130_193200_606794_15FEBC54 
-X-CRM114-Status: GOOD (  14.74  )
+X-CRM114-CacheID: sfid-20200131_064803_645033_AC49B3D5 
+X-CRM114-Status: GOOD (  21.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,63 +78,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: dcastagna@chromium.org, dri-devel@lists.freedesktop.org,
- Sean Paul <seanpaul@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias
- Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: Sriharsha Allenki <sallenki@codeaurora.org>,
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Sean:
-
-On Thu, 2020-01-30 at 14:24 -0500, Sean Paul wrote:
-> From: Sean Paul <seanpaul@chromium.org>
+On 17.1.2020 9.41, Macpaul Lin wrote:
+> According to NULL pointer fix: https://tinyurl.com/uqft5ra
+> xhci: Fix NULL pointer dereference with xhci_irq() for shared_hcd
+> The similar issue has also been found in QC activities in Mediatek.
 > 
-> Currently the cursor is placed on the first overlay plane, which means
-> it will be at the bottom of the stack when the hw does the compositing
-> with anything other than primary plane. Since mtk doesn't support plane
-> zpos, change the cursor location to the top-most plane.
+> Here quote the description from the referenced patch as follows.
+> "Commit ("f068090426ea xhci: Fix leaking USB3 shared_hcd
+> at xhci removal") sets xhci_shared_hcd to NULL without
+> stopping xhci host. This results into a race condition
+> where shared_hcd (super speed roothub) related interrupts
+> are being handled with xhci_irq happens when the
+> xhci_plat_remove is called and shared_hcd is set to NULL.
+> Fix this by setting the shared_hcd to NULL only after the
+> controller is halted and no interrupts are generated."
 > 
-
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-
-> Signed-off-by: Sean Paul <seanpaul@chromium.org>
+> Signed-off-by: Sriharsha Allenki <sallenki@codeaurora.org>
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 8 +++++---
->  1 file changed, 5 insertions(+), 3 deletions(-)
+>   drivers/usb/host/xhci-mtk.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> index 0dfcd1787e651..4ac76b9613926 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -689,11 +689,12 @@ static int mtk_drm_crtc_num_comp_planes(struct mtk_drm_crtc *mtk_crtc,
->  }
->  
->  static inline
-> -enum drm_plane_type mtk_drm_crtc_plane_type(unsigned int plane_idx)
-> +enum drm_plane_type mtk_drm_crtc_plane_type(unsigned int plane_idx,
-> +					    unsigned int num_planes)
->  {
->  	if (plane_idx == 0)
->  		return DRM_PLANE_TYPE_PRIMARY;
-> -	else if (plane_idx == 1)
-> +	else if (plane_idx == (num_planes - 1))
->  		return DRM_PLANE_TYPE_CURSOR;
->  	else
->  		return DRM_PLANE_TYPE_OVERLAY;
-> @@ -712,7 +713,8 @@ static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
->  		ret = mtk_plane_init(drm_dev,
->  				&mtk_crtc->planes[mtk_crtc->layer_nr],
->  				BIT(pipe),
-> -				mtk_drm_crtc_plane_type(mtk_crtc->layer_nr),
-> +				mtk_drm_crtc_plane_type(mtk_crtc->layer_nr,
-> +							num_planes),
->  				mtk_ddp_comp_supported_rotations(comp));
->  		if (ret)
->  			return ret;
+> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+> index b18a6baef204..c227c67f5dc5 100644
+> --- a/drivers/usb/host/xhci-mtk.c
+> +++ b/drivers/usb/host/xhci-mtk.c
+> @@ -593,11 +593,11 @@ static int xhci_mtk_remove(struct platform_device *dev)
+>   	struct usb_hcd  *shared_hcd = xhci->shared_hcd;
+>   
+>   	usb_remove_hcd(shared_hcd);
+> -	xhci->shared_hcd = NULL;
+>   	device_init_wakeup(&dev->dev, false);
+>   
+>   	usb_remove_hcd(hcd);
+>   	usb_put_hcd(shared_hcd);
+> +	xhci->shared_hcd = NULL;
+>   	usb_put_hcd(hcd);
+>   	xhci_mtk_sch_exit(mtk);
+>   	xhci_mtk_clks_disable(mtk);
+> 
+
+Could you share details of the NULL pointer dereference, (backtrace).
+
+The USB3 hcd is already removed when xhci->shared_hcd is set to NULL.
+We might want to add some checks to make sure we are not using the removed
+hcd anymore in that codepath anymore.
+
+-Mathias
 
 _______________________________________________
 Linux-mediatek mailing list
