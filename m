@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-7.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	URIBL_DBL_ABUSE_MALW,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 58583C33CB3
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 921ADC35246
 	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Feb 2020 15:34:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 18956206F0
+	by mail.kernel.org (Postfix) with ESMTPS id 66932206F0
 	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Feb 2020 15:34:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UHOvbhHl";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ekeI1kib"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 18956206F0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IJuu2Oon";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="s/7tmWME"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 66932206F0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,54 +27,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vIbTWqrqCc/fZeG6NkHL3jDM1mz3YVCJnL+ORM9FOQY=; b=UHOvbhHl0evAe+
-	5+ovfwVOjP0rZV22C7E+NLkr0Oy9Fc7xFM4McHWUgbTQTG1V4SP/33mhLJxKfkdXbx//dDHFMfNll
-	3dWcmBmWesiMFq0NPx46zg5eUu0p31nUQ6QNFFL+N2KUzmEgSp8aDegEy9MafiAKTmuD6JCHUKCnz
-	VIeQ9ijlfTd8uXinZmboNA9QpxYfUglt/6/zPbfHmNRsxoNITvcJYhyU00TQZqdy6FTVs5lpMbI1b
-	0m//zwlWr7i6WOUofumRqcmIa+N5+66KGL3jqbYbnzithmaGoWmnf8KYfJsArBMNPaOyDB9VSr2IQ
-	QXnafTFR3AZOcOClupRw==;
+	List-Owner; bh=8RosjprnqbtHxlxU5tUDDbYnGkIhi6iMkQFhcP2H/kc=; b=IJuu2OonWxr3Fx
+	XR1SLpfQ1IL820lIi7L1tCOgO2BZvII2HPC0nvmXWaoZeV/u0zYaKhbNPh9DIO3Ybw+bUQfPxy/YZ
+	6dLhuB4qaaIRSv49KugFGGd/Z9PiXR0HtRXW+6l9hkrvJKVskVKT79XXZxeHvMAQe8RUq1wiqNqes
+	0CdQa4/nJdE6GwCLOD2niC7h0zftKi/ToAp0fH4Hqm6uwFrK4+oP7EZQnzQY0WImkIixGrudYeBMH
+	1ICrj87h4xRxg13ndmJdAppbpS6aA+MrODugPPrMxGvDta9WW+XsZyvN8uu7DU8TD8NurCi4uELd4
+	kPVzdWfXGxQOrbAesDCQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ixumv-0004s8-6t; Sat, 01 Feb 2020 15:34:25 +0000
+	id 1ixumv-0004sv-Os; Sat, 01 Feb 2020 15:34:25 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ixumr-0004qv-Ot
+ id 1ixumr-0004qm-Ou
  for linux-mediatek@lists.infradead.org; Sat, 01 Feb 2020 15:34:23 +0000
-X-UUID: feeba40bbd734b70b2a6b68009e683f5-20200201
+X-UUID: 5ab6335979cc4032a5af029de5fd3042-20200201
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=x0RcsqRquhcXQty96nPHhZqu/2xMH1iLFFxG59uudt4=; 
- b=ekeI1kib4OZbY95KWnv1hvLFb3mJHgU0mePx7mP5yxLYXu5Ydceh3QSDgPaJ+UYAer2Mr8jdPQJuZ66yr1ItAA4b9hnn6CZbYEVjfp3RIBp89L3yiph/aLiZAzYqKjeu9yofsCaDyHGe3py7T1s5eHCISpgOJb4y73apKxm7rW8=;
-X-UUID: feeba40bbd734b70b2a6b68009e683f5-20200201
+ bh=WHvlW4nzcYlhxJhkmi6GNJeu5+5MhcgG+sf8MXm+PcU=; 
+ b=s/7tmWMEyaqxOy/mHRHuLddNY5rVGkoZ/3WSy2nM/LOamrwOX2mVmHPxGSLO3zvguyZ6/XWycUeMtmf2gw3W7WSc/lgEv0nP4Op5a73JNpUEkv/TrjHkEIUP1ZyAdSnPXlX7DybNxAM5sT4w/v125JgPpjhx6Sjlm/8hVnQB4BI=;
+X-UUID: 5ab6335979cc4032a5af029de5fd3042-20200201
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 140594365; Sat, 01 Feb 2020 07:34:09 -0800
+ with ESMTP id 1469915017; Sat, 01 Feb 2020 07:34:09 -0800
 Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sat, 1 Feb 2020 07:34:37 -0800
+ 15.0.1395.4; Sat, 1 Feb 2020 07:34:38 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sat, 1 Feb 2020 23:34:13 +0800
+ 15.0.1395.4; Sat, 1 Feb 2020 23:34:11 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Sat, 1 Feb 2020 23:31:35 +0800
+ Frontend Transport; Sat, 1 Feb 2020 23:31:34 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>
-Subject: [PATCH v2 6/7] mt76: mt7615: switch mt7615_mcu_set_tx_ba to v2 format
-Date: Sat, 1 Feb 2020 23:33:51 +0800
-Message-ID: <d2ec8d96e98d289af203e38c5c0d62634065b15a.1580565624.git.ryder.lee@mediatek.com>
+Subject: [PATCH v2 4/7] mt76: mt7615: add starec operating flow for firmware v2
+Date: Sat, 1 Feb 2020 23:33:49 +0800
+Message-ID: <5a64e78f336c1b72888bf000719b1cf7f77f62db.1580565624.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <cover.1580565624.git.ryder.lee@mediatek.com>
 References: <cover.1580565624.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200201_073421_813293_26D6F48C 
-X-CRM114-Status: UNSURE (   9.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200201_073421_815075_793B80D6 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,105 +94,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To adapt new firmware version.
+Add fw_ver in mt7615_dev to check firmware version, and adjust
+mt7615_mcu_send_sta_rec() to adapt firmware v2 changes.
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-Tested-by: Shayne Chen <shayne.chen@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Tested-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7615/mcu.c   | 60 ++++++++++---------
- 1 file changed, 33 insertions(+), 27 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7615/mcu.c   | 20 +++++++++++++------
+ .../wireless/mediatek/mt76/mt7615/mt7615.h    |  5 +++++
+ 2 files changed, 19 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 58eac8fe5511..a7c4538e56fc 100644
+index baafa8fafaf1..ce70e2c03956 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -1572,28 +1572,11 @@ int mt7615_mcu_set_tx_ba(struct mt7615_dev *dev,
- {
- 	struct mt7615_sta *msta = (struct mt7615_sta *)params->sta->drv_priv;
- 	struct mt7615_vif *mvif = msta->vif;
--	struct {
--		struct wtbl_req_hdr hdr;
--		struct wtbl_ba ba;
--	} wtbl_req = {
--		.hdr = {
--			.wlan_idx = msta->wcid.idx,
--			.operation = WTBL_SET,
--			.tlv_num = cpu_to_le16(1),
--		},
--		.ba = {
--			.tag = cpu_to_le16(WTBL_BA),
--			.len = cpu_to_le16(sizeof(struct wtbl_ba)),
--			.tid = params->tid,
--			.ba_type = MT_BA_TYPE_ORIGINATOR,
--			.sn = add ? cpu_to_le16(params->ssn) : 0,
--			.ba_en = add,
--		},
--	};
- 	struct {
- 		struct sta_req_hdr hdr;
- 		struct sta_rec_ba ba;
--	} sta_req = {
-+		u8 buf[MT7615_WTBL_UPDATE_MAX_SIZE];
-+	} __packed req = {
- 		.hdr = {
- 			.bss_idx = mvif->idx,
- 			.wlan_idx = msta->wcid.idx,
-@@ -1612,7 +1595,32 @@ int mt7615_mcu_set_tx_ba(struct mt7615_dev *dev,
- 			.winsize = cpu_to_le16(params->buf_size),
- 		},
- 	};
--	int ret;
-+	struct sta_rec_wtbl *wtbl = NULL;
-+	struct wtbl_req_hdr *wtbl_hdr;
-+	struct wtbl_ba *wtbl_ba;
-+	u8 *buf = req.buf;
-+
-+	if (dev->fw_ver > MT7615_FIRMWARE_V1) {
-+		req.hdr.tlv_num = cpu_to_le16(2);
-+		wtbl = (struct sta_rec_wtbl *)buf;
-+		wtbl->tag = cpu_to_le16(STA_REC_WTBL);
-+		buf += sizeof(*wtbl);
-+	}
-+
-+	wtbl_hdr = (struct wtbl_req_hdr *)buf;
-+	buf += sizeof(*wtbl_hdr);
-+	wtbl_hdr->wlan_idx = msta->wcid.idx;
-+	wtbl_hdr->operation = WTBL_SET;
-+	wtbl_hdr->tlv_num = cpu_to_le16(1);
-+
-+	wtbl_ba = (struct wtbl_ba *)buf;
-+	buf += sizeof(*wtbl_ba);
-+	wtbl_ba->tag = cpu_to_le16(WTBL_BA);
-+	wtbl_ba->len = cpu_to_le16(sizeof(*wtbl_ba));
-+	wtbl_ba->tid = params->tid;
-+	wtbl_ba->ba_type = MT_BA_TYPE_ORIGINATOR;
-+	wtbl_ba->sn = add ? cpu_to_le16(params->ssn) : 0;
-+	wtbl_ba->ba_en = add;
- 
- 	if (add) {
- 		u8 idx, ba_range[] = { 4, 8, 12, 24, 36, 48, 54, 64 };
-@@ -1622,16 +1630,14 @@ int mt7615_mcu_set_tx_ba(struct mt7615_dev *dev,
- 				break;
- 		}
- 
--		wtbl_req.ba.ba_winsize_idx = idx;
-+		wtbl_ba->ba_winsize_idx = idx;
+@@ -491,6 +491,11 @@ static int mt7615_load_ram(struct mt7615_dev *dev)
+ 		goto out;
  	}
  
--	ret = __mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_WTBL_UPDATE,
--				  &wtbl_req, sizeof(wtbl_req), true);
++	if (!strncmp(hdr->fw_ver, "2.0", 6))
++		dev->fw_ver = MT7615_FIRMWARE_V2;
++	else
++		dev->fw_ver = MT7615_FIRMWARE_V1;
++
+ 	release_firmware(fw);
+ 
+ 	ret = request_firmware(&fw, MT7615_FIRMWARE_CR4, dev->mt76.dev);
+@@ -992,10 +997,11 @@ static int
+ mt7615_mcu_send_sta_rec(struct mt7615_dev *dev, u8 *req, u8 *wreq,
+ 			u8 wlen, bool enable)
+ {
+-	u32 slen = wreq - req;
++	bool is_v1 = (dev->fw_ver == MT7615_FIRMWARE_V1);
++	u32 slen = is_v1 ? wreq - req : wreq - req + wlen;
+ 	int ret;
+ 
+-	if (!enable) {
++	if (is_v1 && !enable) {
+ 		ret = __mt76_mcu_send_msg(&dev->mt76,
+ 					  MCU_EXT_CMD_STA_REC_UPDATE,
+ 					  req, slen, true);
+@@ -1006,10 +1012,12 @@ mt7615_mcu_send_sta_rec(struct mt7615_dev *dev, u8 *req, u8 *wreq,
+ 					   wreq, wlen, true);
+ 	}
+ 
+-	ret = __mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_WTBL_UPDATE, wreq,
+-				  wlen, true);
 -	if (ret)
 -		return ret;
-+	if (wtbl)
-+		wtbl->len = cpu_to_le16(buf - (u8 *)wtbl_hdr);
++	if (is_v1) {
++		ret = __mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_WTBL_UPDATE,
++					  wreq, wlen, true);
++		if (ret)
++			return ret;
++	}
  
--	return __mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_STA_REC_UPDATE,
--				   &sta_req, sizeof(sta_req), true);
-+	return mt7615_mcu_send_sta_rec(dev, (u8 *)&req, (u8 *)wtbl_hdr,
-+				       buf - (u8 *)wtbl_hdr, true);
- }
+ 	return __mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_STA_REC_UPDATE,
+ 				   req, slen, true);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+index 9bd926d6963f..fa39632cd2bd 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+@@ -30,6 +30,9 @@
+ #define MT7615_FIRMWARE_N9		"mediatek/mt7615_n9.bin"
+ #define MT7615_ROM_PATCH		"mediatek/mt7615_rom_patch.bin"
  
- int mt7615_mcu_set_rx_ba(struct mt7615_dev *dev,
++#define MT7615_FIRMWARE_V1		1
++#define MT7615_FIRMWARE_V2		2
++
+ #define MT7615_EEPROM_SIZE		1024
+ #define MT7615_TOKEN_SIZE		4096
+ 
+@@ -144,6 +147,8 @@ struct mt7615_dev {
+ 
+ 	spinlock_t token_lock;
+ 	struct idr token;
++
++	u8 fw_ver;
+ };
+ 
+ enum {
 -- 
 2.18.0
 _______________________________________________
