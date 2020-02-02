@@ -2,62 +2,83 @@ Return-Path: <SRS0=HncU=3W=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,URIBL_DBL_ABUSE_MALW,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,URIBL_DBL_ABUSE_MALW autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EA7A3C35240
-	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Feb 2020 07:45:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4C9AAC35249
+	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Feb 2020 14:35:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B8015206D3
-	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Feb 2020 07:45:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1DDD42080D
+	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Feb 2020 14:35:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ijjKqPd5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B8015206D3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kwzaAOCG";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="mcWFcyry"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1DDD42080D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=VmvZADlZUUS4T8h4RztoNUFQpNdNlYmuglKcID5Y0kA=; b=ijjKqPd5pvwrJu
-	wq68Nb1vjygUD20YzEAWj3enDwN0InP3n4Ib6ZzojbuxnT2OGgC7GOJlqaPu8j0lw2HQIkc9PChGa
-	376n+qK2Iz8ML9yxK+oAXh/J4MNwHbVnhjZ2wCMSb8ZTu89NIXpFrNgjEiTTjIEDIk0TUhDr0ItI9
-	/WAUt2QdAOE6lxk6W53AGMGEA/aPxPdNDbdZVv1Fj5rbuioCaP5acNy2gw6SIR1sei0N9M6hMiDCc
-	CWF5uh0JE24KsEA+UiyOrHHmEGLen73p8t1RZjPlyMwLwz3nObSvx6bn9szRgsaLYBcDTZiF/Wzm8
-	j0TcZIAaT+c8MgHcQW7w==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SHhlbxHCe3wsBBO6MXiyLkpgoeljSO9d/AsD5d/ceNI=; b=kwzaAOCGUkNZH+
+	2hCkfi9oK1oWc+wHfog+3T6tgmykQIlDEmo9Pcb0EbifWxHVNqFR8eCy0DpSnZZzn3ZC3tPsyempS
+	UT04O/gFsrZM6xd3gPHcRYWrkTjlIb+rUhha8calV3o0cT3jXhi5mRJkrxVXQNp64eMvcVPZ8DToj
+	orz+TTqpcjHFpGOXmYBiwa10+ZO05JGGqU2FKP1nXRWo8YnUoK7aP9wkAQkP16B/n6ZHhxDHi+k90
+	I2Xsttl6VK65BAWCEG79IhNCLhFv7bywQyOGZ8KvlELgse2w3aq68m1fLcR4ySncJQ24LdeF79jw+
+	qfNgfPAf1xUdwZVOd3WQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iy9wS-0002OT-R6; Sun, 02 Feb 2020 07:45:16 +0000
-Received: from szxga07-in.huawei.com ([45.249.212.35] helo=huawei.com)
+	id 1iyGLc-0002Fc-P0; Sun, 02 Feb 2020 14:35:40 +0000
+Received: from mail-vs1-xe41.google.com ([2607:f8b0:4864:20::e41])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iy9wI-00012d-EE; Sun, 02 Feb 2020 07:45:08 +0000
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id EF867CAA9F20E8809C09;
- Sun,  2 Feb 2020 15:44:50 +0800 (CST)
-Received: from localhost.localdomain.localdomain (10.175.113.25) by
- DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.439.0; Sun, 2 Feb 2020 15:44:41 +0800
-From: YueHaibing <yuehaibing@huawei.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, Jeff Chang <jeff_chang@richtek.com>
-Subject: [PATCH -next] ASoC: Remove unused including <linux/version.h>
-Date: Sun, 2 Feb 2020 07:39:17 +0000
-Message-ID: <20200202073917.195880-1-yuehaibing@huawei.com>
-X-Mailer: git-send-email 2.20.1
+ id 1iyGLa-0002E4-EA; Sun, 02 Feb 2020 14:35:39 +0000
+Received: by mail-vs1-xe41.google.com with SMTP id x18so7311498vsq.4;
+ Sun, 02 Feb 2020 06:35:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=LZE+Xo98zuPfEJJYc3IqeQRPxedI7zj+vekRKI0XAyw=;
+ b=mcWFcyryu3pb908p8t2ntneOZGWX637x+66nF8J6woHFUe8Nfw26wsxiSbrLieqQZf
+ u/B7Bv73fme8G/rf4KYLbrJdYkXrq2F1DFiOQciq9P+SRlDN6F4Ry/ySeWMERU3Di0v5
+ BYEXlSRbilubviP4KoXvTS4c8ImwmqWC9iYOk9dMsGuAieWURS09EtY8wnhgxXJnwrqq
+ HNbQgKsucidqfbOEY+4aseWUiC1tCiurI3vguTqqAGHLRIdAPkBHUUpFDD+FlWH0UiU9
+ 1IYJywc/l7rmVPf5EyMcK4xM+GfQZl2ru89QJc12JfJJDGo3ZClbJl2OBviUKn1Z9pKG
+ jdvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=LZE+Xo98zuPfEJJYc3IqeQRPxedI7zj+vekRKI0XAyw=;
+ b=dcbM6Ldbyg5PRO0B4Ggy9QszoW1INY0R3F5fV4VgguBGBj6ZtkSeJnr3YMKYDzHV5i
+ 83pU4wYPMpvmjkquRgo0FNGHpY4jpW4Q+fu7zUhlKenKm/pB1ZFaqoMpAAmwGAyEfG3Y
+ h/Ha1UJXw7sXaCE4LF1l298dAdzSUwXYPoj5ZTUR93RzhBK8tkga1KvuQgWELT82Ciyw
+ oHjfWAeqqw2+BwtcGSVox9bhVCCpCydsJMEglG/VTJQBbsCC5IvtQEIeE3HGiqYCGY1t
+ d03PT0dettURtmRNgKMLf03sp1rlA5ocYmLvClIDMCJIWpgUJw7EmCZbSptGm6xOFmyq
+ +qeg==
+X-Gm-Message-State: APjAAAWYSKiHzEhUYYM+iufhhv4zEGTJZp7EB4oog6ueYFJdsLmGUj5k
+ RXzV8cFl0MLw7FHsqNU9IatpBA6TBODf3++Vs/k=
+X-Google-Smtp-Source: APXvYqxZNyOg7XGNhoutzokbnVc5nQbhtV3AlWk76sEbJJ8d09qRGIpzB/q7iLwEM4Rkk0nO84vGVSnjlYvqgh9b+S8=
+X-Received: by 2002:a67:fb14:: with SMTP id d20mr11886738vsr.136.1580654131573; 
+ Sun, 02 Feb 2020 06:35:31 -0800 (PST)
 MIME-Version: 1.0
-X-Originating-IP: [10.175.113.25]
-X-CFilter-Loop: Reflected
+References: <20200129073902.5786-1-stanley.chu@mediatek.com>
+ <20200129073902.5786-2-stanley.chu@mediatek.com>
+In-Reply-To: <20200129073902.5786-2-stanley.chu@mediatek.com>
+From: Alim Akhtar <alim.akhtar@gmail.com>
+Date: Sun, 2 Feb 2020 20:04:55 +0530
+Message-ID: <CAGOxZ521Vz4EcmWApZLqcDwkwa-XHLFLDx2n1HRht0Pf0fFkmw@mail.gmail.com>
+Subject: Re: [PATCH v3 1/4] scsi: ufs-mediatek: ensure UniPro is not powered
+ down before linkup
+To: Stanley Chu <stanley.chu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200201_234506_667774_7C00AED8 
-X-CRM114-Status: UNSURE (   5.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200202_063538_479658_7A0E0457 
+X-CRM114-Status: GOOD (  15.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,38 +90,100 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, YueHaibing <yuehaibing@huawei.com>,
- kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: linux-scsi@vger.kernel.org,
+ "Martin K. Petersen" <martin.petersen@oracle.com>, andy.teng@mediatek.com,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>, chun-hung.wu@mediatek.com,
+ Kuohong Wang <kuohong.wang@mediatek.com>,
+ open list <linux-kernel@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>,
+ Can Guo <cang@codeaurora.org>, linux-mediatek@lists.infradead.org,
+ peter.wang@mediatek.com, Alim Akhtar <alim.akhtar@samsung.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, asutoshd@codeaurora.org,
+ Bart Van Assche <bvanassche@acm.org>, linux-arm-kernel@lists.infradead.org,
+ "Bean Huo \(beanhuo\)" <beanhuo@micron.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove including <linux/version.h> that don't need it.
+HI Stanley
 
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
----
- sound/soc/codecs/mt6660.c | 1 -
- 1 file changed, 1 deletion(-)
+On Wed, Jan 29, 2020 at 1:09 PM Stanley Chu <stanley.chu@mediatek.com> wrote:
+>
+> MediaTek Chipsets can enter proprietary UniPro low-power mode during
+> suspend while link is in hibern8 state. Make sure leaving low-power
+> mode before every link startup to prevent lockup in any possible error recovery
+> path.
+>
+> In the same time, re-factor related funcitons to improve code readability.
+>
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 
-diff --git a/sound/soc/codecs/mt6660.c b/sound/soc/codecs/mt6660.c
-index a36c416caad4..1a3515df1764 100644
---- a/sound/soc/codecs/mt6660.c
-+++ b/sound/soc/codecs/mt6660.c
-@@ -4,7 +4,6 @@
- 
- #include <linux/module.h>
- #include <linux/kernel.h>
--#include <linux/version.h>
- #include <linux/err.h>
- #include <linux/i2c.h>
- #include <linux/pm_runtime.h>
+Reviewed-by: Alim Akhtar <alim.akhtar@samsung.com>
+> ---
+>  drivers/scsi/ufs/ufs-mediatek.c | 19 ++++++++++---------
+>  1 file changed, 10 insertions(+), 9 deletions(-)
+>
+> diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+> index 53eae5fe2ade..7ac838cc15d1 100644
+> --- a/drivers/scsi/ufs/ufs-mediatek.c
+> +++ b/drivers/scsi/ufs/ufs-mediatek.c
+> @@ -30,6 +30,11 @@
+>  #define ufs_mtk_device_reset_ctrl(high, res) \
+>         ufs_mtk_smc(UFS_MTK_SIP_DEVICE_RESET, high, res)
+>
+> +#define ufs_mtk_unipro_powerdown(hba, powerdown) \
+> +       ufshcd_dme_set(hba, \
+> +                      UIC_ARG_MIB_SEL(VS_UNIPROPOWERDOWNCONTROL, 0), \
+> +                      powerdown)
+> +
+>  static void ufs_mtk_cfg_unipro_cg(struct ufs_hba *hba, bool enable)
+>  {
+>         u32 tmp;
+> @@ -290,6 +295,8 @@ static int ufs_mtk_pre_link(struct ufs_hba *hba)
+>         int ret;
+>         u32 tmp;
+>
+> +       ufs_mtk_unipro_powerdown(hba, 0);
+> +
+>         /* disable deep stall */
+>         ret = ufshcd_dme_get(hba, UIC_ARG_MIB(VS_SAVEPOWERCONTROL), &tmp);
+>         if (ret)
+> @@ -390,9 +397,7 @@ static int ufs_mtk_link_set_hpm(struct ufs_hba *hba)
+>         if (err)
+>                 return err;
+>
+> -       err = ufshcd_dme_set(hba,
+> -                            UIC_ARG_MIB_SEL(VS_UNIPROPOWERDOWNCONTROL, 0),
+> -                            0);
+> +       err = ufs_mtk_unipro_powerdown(hba, 0);
+>         if (err)
+>                 return err;
+>
+> @@ -413,14 +418,10 @@ static int ufs_mtk_link_set_lpm(struct ufs_hba *hba)
+>  {
+>         int err;
+>
+> -       err = ufshcd_dme_set(hba,
+> -                            UIC_ARG_MIB_SEL(VS_UNIPROPOWERDOWNCONTROL, 0),
+> -                            1);
+> +       err = ufs_mtk_unipro_powerdown(hba, 1);
+>         if (err) {
+>                 /* Resume UniPro state for following error recovery */
+> -               ufshcd_dme_set(hba,
+> -                              UIC_ARG_MIB_SEL(VS_UNIPROPOWERDOWNCONTROL, 0),
+> -                              0);
+> +               ufs_mtk_unipro_powerdown(hba, 0);
+>                 return err;
+>         }
+>
+> --
+> 2.18.0
 
 
 
-
-
+-- 
+Regards,
+Alim
 
 _______________________________________________
 Linux-mediatek mailing list
