@@ -2,23 +2,23 @@ Return-Path: <SRS0=RqDu=3X=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-7.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
-	URIBL_BLOCKED,URIBL_DBL_ABUSE_MALW,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	URIBL_DBL_ABUSE_MALW,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 699C5C33CAC
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Feb 2020 11:41:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B7152C33CAC
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Feb 2020 11:41:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3C9F920658
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Feb 2020 11:41:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 785A42080D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Feb 2020 11:41:53 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uGk8oBh7";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="a1aI/PS3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C9F920658
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YBUloIaS";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="lqWQc4E3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 785A42080D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,35 +27,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UUvLHeRwiLeyxoCrTwatUuj1LgsPKs/cstJHCti4Xz8=; b=uGk8oBh7jU82yI
-	KSzKzxh9dnaqa9XoaB+uh6nzu9/c6JEq3AGNfE5FWKS2ybQnIbwXJsjrQafU/K1z+AbZSwEZiEVMt
-	JTls1vD8dsDZ0nm9QB/vOr/QXwhGANhn6CrQN98ktH6Ko3Ik6JELuqR+55/uinrgzo3IImwbrxPA0
-	yutnDhmzGnqVW1R2bgRx3mMb+Tog63TW0uRk8yy4B0p5QvKtgWBxCeG8ZbICqlTF+3C0tECG2aVPG
-	GZOh5yvPuw3Ayrxh2adBxLDYRqKiQK3jKcUNidDSLCZK5CRxAJUBAmHBwOfh8aJ1UMDLzas8Cgjnh
-	+uY35EY58ysPVEEIKzaw==;
+	List-Owner; bh=oqCVA0y5zS//CfOMBIYY9wo4anLZ12Ee9tnqVxUim8U=; b=YBUloIaSc7UNUc
+	uKDJ7s3bBOH3r2KLrtBEnrPfpbiIHrgq7O7SzzSutZl+diKBwayjE8r10XqG/3A1UHox+OzoSNIMQ
+	wYcTZSLVe2pUs17aNAuJmp+O+Jvd5QGN6lNOgRRPhbp/5DyH5/i/2WlBlfev3x7Cq8JGUJ82B/yeb
+	OgWFtR7rO6mX5ndTNSqtlJDvQlEu07hZ0MXmiqFmetyjnxCB3E1MEJW45VM0CdEPnAXikcvEhZfOk
+	T3AcXNz725c8AK5SShIOsSOXR7MDb+cOUyfELi2wEvCFu/nffHOx+zv0MQOGWVf2mBouEInrlml2Z
+	ZmWD44P7rh6TXdi8vKqQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iya6W-0006lh-Fo; Mon, 03 Feb 2020 11:41:24 +0000
+	id 1iya6q-0007AV-F4; Mon, 03 Feb 2020 11:41:44 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iya63-0006HV-Dl; Mon, 03 Feb 2020 11:40:56 +0000
-X-UUID: 6744a96e89c946b39285b29681588f4c-20200203
+ id 1iya64-0006HT-DO; Mon, 03 Feb 2020 11:40:57 +0000
+X-UUID: 2c9fdd0777084e67b1bc62209db77e42-20200203
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=uHq9fhw7QNVJhklhNpOI/KW9hh/uLCqY6eBhnwNF2yI=; 
- b=a1aI/PS36Ihda3tdti3VLeVl9ycDH2YqiPJTor7T9ABZYkCRLd91VLiGncPZDQq93J4EiOIn4ZIV0paKwls+Xb9qIF7GIWdtg3rzqreGYT9Hkt3E2O3rEeuBLlJlk1oNymDC9+G/I9Tubkva7Vyo/36Us880xkr3TrGllDlX1aA=;
-X-UUID: 6744a96e89c946b39285b29681588f4c-20200203
+ bh=c4U+R76pck3CjZ+Vh6/dtofCsHfcB5LI8mXWeo6/RFk=; 
+ b=lqWQc4E3XCQ8YLcjfCkRe2n7uOAAJaZytaW10NYRTSlghx5bHj/jLyXvaaYn/Y5EF8im7r9BeqIZu6Y/5+n8hdZL/triLJARLJ9bwcKyJKxEeUdQePL/p/a3Z/OFjAf8xdZfzon3xRpBwrw0b2oJnjmWFuYfNpejCDLgx8O+Mvk=;
+X-UUID: 2c9fdd0777084e67b1bc62209db77e42-20200203
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <hsin-hsiung.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 583269935; Mon, 03 Feb 2020 03:40:49 -0800
+ with ESMTP id 269289720; Mon, 03 Feb 2020 03:40:49 -0800
 Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 3 Feb 2020 03:41:11 -0800
+ 15.0.1395.4; Mon, 3 Feb 2020 03:41:10 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 3 Feb 2020 19:40:01 +0800
+ 15.0.1395.4; Mon, 3 Feb 2020 19:40:00 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
  Frontend Transport; Mon, 3 Feb 2020 19:40:30 +0800
@@ -63,17 +63,17 @@ From: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 To: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
  Alexandre Belloni <alexandre.belloni@bootlin.com>, Matthias Brugger
  <matthias.bgg@gmail.com>
-Subject: [PATCH v8 4/5] rtc: mt6397: Add support for the MediaTek MT6358 RTC
-Date: Mon, 3 Feb 2020 19:40:43 +0800
-Message-ID: <1580730044-30501-5-git-send-email-hsin-hsiung.wang@mediatek.com>
+Subject: [PATCH v8 1/5] mfd: mt6397: modify suspend/resume behavior
+Date: Mon, 3 Feb 2020 19:40:40 +0800
+Message-ID: <1580730044-30501-2-git-send-email-hsin-hsiung.wang@mediatek.com>
 X-Mailer: git-send-email 2.6.4
 In-Reply-To: <1580730044-30501-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 References: <1580730044-30501-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200203_034055_475210_D7C941D3 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20200203_034056_457880_3A1C0074 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,120 +99,149 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ran Bi <ran.bi@mediatek.com>
+Some pmics don't need backup interrupt settings, so we change to use
+pm notifier for the pmics which are necessary to store settings.
 
-This add support for the MediaTek MT6358 RTC. Driver using
-compatible data to store different RTC_WRTGR address offset.
-
-Signed-off-by: Ran Bi <ran.bi@mediatek.com>
+Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
 Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 ---
- drivers/rtc/rtc-mt6397.c       | 25 +++++++++++++++++--------
- include/linux/mfd/mt6397/rtc.h | 16 +++++++++++++++-
- 2 files changed, 32 insertions(+), 9 deletions(-)
+ drivers/mfd/mt6397-core.c       | 30 ------------------------------
+ drivers/mfd/mt6397-irq.c        | 33 +++++++++++++++++++++++++++++++++
+ include/linux/mfd/mt6397/core.h |  2 ++
+ 3 files changed, 35 insertions(+), 30 deletions(-)
 
-diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-index 5249fc9..a90735e1 100644
---- a/drivers/rtc/rtc-mt6397.c
-+++ b/drivers/rtc/rtc-mt6397.c
-@@ -9,18 +9,31 @@
- #include <linux/mfd/mt6397/core.h>
- #include <linux/module.h>
- #include <linux/mutex.h>
-+#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/rtc.h>
- #include <linux/mfd/mt6397/rtc.h>
- #include <linux/mod_devicetable.h>
- 
-+static const struct of_device_id mt6397_rtc_of_match[] = {
-+	{ .compatible = "mediatek,mt6323-rtc",
-+		.data = (void *)&mt6397_rtc_data, },
-+	{ .compatible = "mediatek,mt6358-rtc",
-+		.data = (void *)&mt6358_rtc_data, },
-+	{ .compatible = "mediatek,mt6397-rtc",
-+		.data = (void *)&mt6397_rtc_data, },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, mt6397_rtc_of_match);
-+
- static int mtk_rtc_write_trigger(struct mt6397_rtc *rtc)
- {
- 	int ret;
- 	u32 data;
- 
--	ret = regmap_write(rtc->regmap, rtc->addr_base + RTC_WRTGR, 1);
-+	ret = regmap_write(rtc->regmap,
-+			   rtc->addr_base + rtc->data->wrtgr, 1);
- 	if (ret < 0)
- 		return ret;
- 
-@@ -258,6 +271,9 @@ static int mtk_rtc_probe(struct platform_device *pdev)
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	rtc->addr_base = res->start;
- 
-+	rtc->data = (struct mtk_rtc_data *)
-+			of_device_get_match_data(&pdev->dev);
-+
- 	rtc->irq = platform_get_irq(pdev, 0);
- 	if (rtc->irq < 0)
- 		return rtc->irq;
-@@ -322,13 +338,6 @@ static int mt6397_rtc_resume(struct device *dev)
- static SIMPLE_DEV_PM_OPS(mt6397_pm_ops, mt6397_rtc_suspend,
- 			mt6397_rtc_resume);
- 
--static const struct of_device_id mt6397_rtc_of_match[] = {
--	{ .compatible = "mediatek,mt6323-rtc", },
--	{ .compatible = "mediatek,mt6397-rtc", },
--	{ }
--};
--MODULE_DEVICE_TABLE(of, mt6397_rtc_of_match);
--
- static struct platform_driver mtk_rtc_driver = {
- 	.driver = {
- 		.name = "mt6397-rtc",
-diff --git a/include/linux/mfd/mt6397/rtc.h b/include/linux/mfd/mt6397/rtc.h
-index f84b916..fffe34a 100644
---- a/include/linux/mfd/mt6397/rtc.h
-+++ b/include/linux/mfd/mt6397/rtc.h
-@@ -18,7 +18,8 @@
- #define RTC_BBPU_CBUSY         BIT(6)
- #define RTC_BBPU_KEY            (0x43 << 8)
- 
--#define RTC_WRTGR              0x003c
-+#define RTC_WRTGR_MT6358       0x3a
-+#define RTC_WRTGR_MT6397       0x3c
- 
- #define RTC_IRQ_STA            0x0002
- #define RTC_IRQ_STA_AL         BIT(0)
-@@ -57,6 +58,10 @@
- #define MTK_RTC_POLL_DELAY_US  10
- #define MTK_RTC_POLL_TIMEOUT   (jiffies_to_usecs(HZ))
- 
-+struct mtk_rtc_data {
-+	u32			wrtgr;
-+};
-+
- struct mt6397_rtc {
- 	struct device           *dev;
- 	struct rtc_device       *rtc_dev;
-@@ -66,6 +71,15 @@ struct mt6397_rtc {
- 	struct regmap           *regmap;
- 	int                     irq;
- 	u32                     addr_base;
-+	const struct mtk_rtc_data *data;
-+};
-+
-+static const struct mtk_rtc_data mt6358_rtc_data = {
-+	.wrtgr = RTC_WRTGR_MT6358,
-+};
-+
-+static const struct mtk_rtc_data mt6397_rtc_data = {
-+	.wrtgr = RTC_WRTGR_MT6397,
+diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+index 0437c85..d2e70d8 100644
+--- a/drivers/mfd/mt6397-core.c
++++ b/drivers/mfd/mt6397-core.c
+@@ -100,35 +100,6 @@ static const struct mfd_cell mt6397_devs[] = {
+ 	}
  };
  
- #endif /* _LINUX_MFD_MT6397_RTC_H_ */
+-#ifdef CONFIG_PM_SLEEP
+-static int mt6397_irq_suspend(struct device *dev)
+-{
+-	struct mt6397_chip *chip = dev_get_drvdata(dev);
+-
+-	regmap_write(chip->regmap, chip->int_con[0], chip->wake_mask[0]);
+-	regmap_write(chip->regmap, chip->int_con[1], chip->wake_mask[1]);
+-
+-	enable_irq_wake(chip->irq);
+-
+-	return 0;
+-}
+-
+-static int mt6397_irq_resume(struct device *dev)
+-{
+-	struct mt6397_chip *chip = dev_get_drvdata(dev);
+-
+-	regmap_write(chip->regmap, chip->int_con[0], chip->irq_masks_cur[0]);
+-	regmap_write(chip->regmap, chip->int_con[1], chip->irq_masks_cur[1]);
+-
+-	disable_irq_wake(chip->irq);
+-
+-	return 0;
+-}
+-#endif
+-
+-static SIMPLE_DEV_PM_OPS(mt6397_pm_ops, mt6397_irq_suspend,
+-			mt6397_irq_resume);
+-
+ struct chip_data {
+ 	u32 cid_addr;
+ 	u32 cid_shift;
+@@ -238,7 +209,6 @@ static struct platform_driver mt6397_driver = {
+ 	.driver = {
+ 		.name = "mt6397",
+ 		.of_match_table = of_match_ptr(mt6397_of_match),
+-		.pm = &mt6397_pm_ops,
+ 	},
+ 	.id_table = mt6397_id,
+ };
+diff --git a/drivers/mfd/mt6397-irq.c b/drivers/mfd/mt6397-irq.c
+index b2d3ce1..669e93d 100644
+--- a/drivers/mfd/mt6397-irq.c
++++ b/drivers/mfd/mt6397-irq.c
+@@ -9,6 +9,7 @@
+ #include <linux/of_irq.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
++#include <linux/suspend.h>
+ #include <linux/mfd/mt6323/core.h>
+ #include <linux/mfd/mt6323/registers.h>
+ #include <linux/mfd/mt6397/core.h>
+@@ -128,6 +129,36 @@ static const struct irq_domain_ops mt6397_irq_domain_ops = {
+ 	.map = mt6397_irq_domain_map,
+ };
+ 
++static int mt6397_irq_pm_notifier(struct notifier_block *notifier,
++				  unsigned long pm_event, void *unused)
++{
++	struct mt6397_chip *chip =
++		container_of(notifier, struct mt6397_chip, pm_nb);
++
++	switch (pm_event) {
++	case PM_SUSPEND_PREPARE:
++		regmap_write(chip->regmap,
++			     chip->int_con[0], chip->wake_mask[0]);
++		regmap_write(chip->regmap,
++			     chip->int_con[1], chip->wake_mask[1]);
++		enable_irq_wake(chip->irq);
++		break;
++
++	case PM_POST_SUSPEND:
++		regmap_write(chip->regmap,
++			     chip->int_con[0], chip->irq_masks_cur[0]);
++		regmap_write(chip->regmap,
++			     chip->int_con[1], chip->irq_masks_cur[1]);
++		disable_irq_wake(chip->irq);
++		break;
++
++	default:
++		break;
++	}
++
++	return NOTIFY_DONE;
++}
++
+ int mt6397_irq_init(struct mt6397_chip *chip)
+ {
+ 	int ret;
+@@ -159,6 +190,7 @@ int mt6397_irq_init(struct mt6397_chip *chip)
+ 	regmap_write(chip->regmap, chip->int_con[0], 0x0);
+ 	regmap_write(chip->regmap, chip->int_con[1], 0x0);
+ 
++	chip->pm_nb.notifier_call = mt6397_irq_pm_notifier;
+ 	chip->irq_domain = irq_domain_add_linear(chip->dev->of_node,
+ 						 MT6397_IRQ_NR,
+ 						 &mt6397_irq_domain_ops,
+@@ -177,5 +209,6 @@ int mt6397_irq_init(struct mt6397_chip *chip)
+ 		return ret;
+ 	}
+ 
++	register_pm_notifier(&chip->pm_nb);
+ 	return 0;
+ }
+diff --git a/include/linux/mfd/mt6397/core.h b/include/linux/mfd/mt6397/core.h
+index fc88d31..b81d333 100644
+--- a/include/linux/mfd/mt6397/core.h
++++ b/include/linux/mfd/mt6397/core.h
+@@ -8,6 +8,7 @@
+ #define __MFD_MT6397_CORE_H__
+ 
+ #include <linux/mutex.h>
++#include <linux/notifier.h>
+ 
+ enum chip_id {
+ 	MT6323_CHIP_ID = 0x23,
+@@ -54,6 +55,7 @@ enum mt6397_irq_numbers {
+ struct mt6397_chip {
+ 	struct device *dev;
+ 	struct regmap *regmap;
++	struct notifier_block pm_nb;
+ 	int irq;
+ 	struct irq_domain *irq_domain;
+ 	struct mutex irqlock;
 -- 
 2.6.4
 _______________________________________________
