@@ -1,89 +1,80 @@
-Return-Path: <SRS0=HncU=3W=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=RqDu=3X=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,URIBL_DBL_ABUSE_MALW,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	URIBL_DBL_ABUSE_MALW,USER_AGENT_SANE_2 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E046AC35249
-	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Feb 2020 19:29:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D4C5C35249
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Feb 2020 02:06:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B209A20679
-	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Feb 2020 19:29:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E512120679
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Feb 2020 02:06:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IruoYzxo";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="phTQ09+j"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B209A20679
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="O21W8oMm";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="KfUoiozT"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E512120679
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RF8OtVZFLaEagpxeUUjMH0/WdyAnAkqII++AseRj6DY=; b=IruoYzxoShtsQJ
-	6+YmZmVRkItditQc4N4DUR1xVZ5yMe8mJ04ebAeBjbAQUkcek6wAOecFVZ1dG6PITOUuSCf69H2uK
-	Fflcf7NJvG9x5LZKXq5xDYkJXCCMMj4Sa5/y36+ugFhVN6qDbsMLEEX2sTJ0PtxDl2TG4Q5lTnYT9
-	owaGZJX8l73Q6Tb6seJpwwFw5FcO4nX+Y0awcOw8Wi9naBGdjg0QNUb1yN5i/RJh4nupFUCdgBLWc
-	OZV7XGg/zvRm+ccpRaDTwCHNzd87KtqmQeiy/fIVluN3jPRv0hqz8hWPYTQ2OMvqpbZM3WeJq+QTc
-	HtCtmJ4fvXyWfg3eBg7A==;
+	List-Owner; bh=eALLqlLANXY8uzdpZP2x3V2YpPxqwxcS6c9WejJPPqc=; b=O21W8oMmhREC5y
+	hUmbOq6IakuvlUMxznYS8PRp1+KUYMOfkHCgHRc005mnEwOv9/nQRlVXv2u/JLS3dUNPQtgkTriJM
+	DsUGOFMOXS+fFpWgSuxIFVOeMqq5kL/jZA6CIQ9vvjACGflMtCfm+YPxr5PDeY1Jyb1bfxp1Uc1WP
+	9AV7QCgkR7TPJTBiF4m8CFJqc/sKXDjXIP2/TqwuEbwU54UVUuhoncYnOgtePPt+RFzhq1vRSafO8
+	6gF3aaozHEvD+iIJHh56rhuvagSuucPPABp3UIH0EZu+IzfuWkTtNqbuo83xNfhiROLNLcxadofan
+	nWu6NWLSA+DIuRhBk0iw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iyKvv-0002bW-0U; Sun, 02 Feb 2020 19:29:27 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1iyR7g-00057H-VO; Mon, 03 Feb 2020 02:06:00 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iyKvl-0002Vj-58; Sun, 02 Feb 2020 19:29:18 +0000
-Received: by mail-pg1-x541.google.com with SMTP id k25so6592257pgt.7;
- Sun, 02 Feb 2020 11:29:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=83XBXAdF60qQhjfbLi9bwa5VGB/pa56aRpXZec7GZUQ=;
- b=phTQ09+j8Vr2PTCfUXpoYipZuNKH07aPv2Zc4kKmqWltkBWIFf9lbdsKaJi04tqGKB
- 89O9EaYkOjA51Y7sM+LHx35FD96pzQrI8ycxQF5cEY/yC1ssICLlZEQUycHoZWIVUWt2
- q16FVK+zhYaWdLk8XAHU1LN0lvwpKUL99e4YsRBtm7+KfvKJwYQvUyk+CtcydCMaq+ET
- 221+uh0dgiGXI2gstojGhDXQ1o8QOETUOOtvRTfRA68FI1vzrH0FMON1RKItRVa6CRuq
- g8b3vyU06z53cNAR6K9+60lftqNVoGeOuyjvd2bJRGZh6EoIfJa1jV/TIfNInWanSkyq
- RaVw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :references:mime-version:content-disposition:in-reply-to:user-agent;
- bh=83XBXAdF60qQhjfbLi9bwa5VGB/pa56aRpXZec7GZUQ=;
- b=rVQbUp20sDTMB70rHfrA4MtR18H5wW8Qsqx48BolSLXLTjsUlt6DaS0CohY6YKo74j
- b50zEpMS144XVKJunTeobKX+of7k4L2BsEV+8ze6fljUhU3klNaTiPOEp9Dk2ThMxSLO
- XImHBHJ/uZBMnnNMKz657HX7oVofpInFnd+Tllo/iQ+PGR17/k+QAGaZ6Zbv8WTo+nDy
- g/wOM4PR9r1J3HrybovM1DP3utxXmJkQgBOVxAhpCJ6NUV8hCkXP5a1F89Khr4vch9YE
- pBfI5u11EVBxnpadkKK2Y++4FGLzRXXmOopN36aG2f3oooRoAPe9zACmmJumdUwYroBq
- 4NWw==
-X-Gm-Message-State: APjAAAU2v7R+ApCv7w8Uh205AHqCqj7NP0WB1+U6BSbd5GgP+JQ7SjIS
- oBKxlqhgtWhSWYxelQcl1Bs=
-X-Google-Smtp-Source: APXvYqzJztCs5B5fO2HsKuk9KrOTKzLnJc/BQ7QWxXvbl/crt2aXnI7p1PJyFU1wfbUJKbCsn2dMEA==
-X-Received: by 2002:a63:8dc4:: with SMTP id z187mr5569042pgd.68.1580671754231; 
- Sun, 02 Feb 2020 11:29:14 -0800 (PST)
-Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id b4sm17987390pfd.18.2020.02.02.11.29.13
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 02 Feb 2020 11:29:13 -0800 (PST)
-Date: Sun, 2 Feb 2020 11:29:12 -0800
-From: Guenter Roeck <linux@roeck-us.net>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Subject: Re: [PATCH] xhci-mtk: Fix NULL pointer dereference with xhci_irq()
- for shared_hcd
-Message-ID: <20200202192912.GA20763@roeck-us.net>
-References: <1579246910-22736-1-git-send-email-macpaul.lin@mediatek.com>
+ id 1iyR7Y-00050H-Ow; Mon, 03 Feb 2020 02:05:54 +0000
+X-UUID: c3df323753ad424f81597597546b086f-20200202
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=NWarxv3wt0FpySWansQ4rSsY2Q9gQTyzvXi1iyPbHi8=; 
+ b=KfUoiozTl+xGCm0GvD2XneP2ZVmfO9bJxcTfBM2JruQjmJZ1UvKGiyqhkMYm+fkaIfIB0g/b5Cuza/pnklo4z2bfFbDmN8aPj2PCKlrwrrwwag+qhlrwN6PLt3xe+Qw07XnRaAGHXI6dV1VgoKw8s8Nrz4KWd0ipsaMxytotsBo=;
+X-UUID: c3df323753ad424f81597597546b086f-20200202
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <walter-zh.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1979139905; Sun, 02 Feb 2020 18:05:47 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sun, 2 Feb 2020 18:05:45 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 3 Feb 2020 10:05:06 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Mon, 3 Feb 2020 10:05:30 +0800
+Message-ID: <1580695544.17006.7.camel@mtksdccf07>
+Subject: Re: [PATCH v3] lib/stackdepot: Fix global out-of-bounds in stackdepot
+From: Walter Wu <walter-zh.wu@mediatek.com>
+To: Alexander Potapenko <glider@google.com>
+Date: Mon, 3 Feb 2020 10:05:44 +0800
+In-Reply-To: <CAG_fn=X2V0nL=+s38bDbS3UXf2_i61tSevd8vzkV-ZKY=7MHvw@mail.gmail.com>
+References: <20200130064430.17198-1-walter-zh.wu@mediatek.com>
+ <CAG_fn=X_jSUJXD932z9oN5hBa--n3Qct4zrjzGaPtb2MwJye7A@mail.gmail.com>
+ <1580436306.11126.16.camel@mtksdccf07>
+ <CAG_fn=X2V0nL=+s38bDbS3UXf2_i61tSevd8vzkV-ZKY=7MHvw@mail.gmail.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1579246910-22736-1-git-send-email-macpaul.lin@mediatek.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200202_112917_220755_6F5BE4E4 
-X-CRM114-Status: GOOD (  18.55  )
+X-CRM114-CacheID: sfid-20200202_180552_819441_0ECAE807 
+X-CRM114-Status: GOOD (  24.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,64 +86,110 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sriharsha Allenki <sallenki@codeaurora.org>,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- Mathias Nyman <mathias.nyman@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Kate Stewart <kstewart@linuxfoundation.org>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ LKML <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Josh
+ Poimboeuf <jpoimboe@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Dmitry Vyukov <dvyukov@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 17, 2020 at 03:41:50PM +0800, Macpaul Lin wrote:
-> According to NULL pointer fix: https://tinyurl.com/uqft5ra
-> xhci: Fix NULL pointer dereference with xhci_irq() for shared_hcd
-> The similar issue has also been found in QC activities in Mediatek.
+On Fri, 2020-01-31 at 19:11 +0100, Alexander Potapenko wrote:
+> On Fri, Jan 31, 2020 at 3:05 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+> >
+> > On Thu, 2020-01-30 at 13:03 +0100, Alexander Potapenko wrote:
+> > > On Thu, Jan 30, 2020 at 7:44 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+> > >
+> > > Hi Walter,
+> > >
+> > > > If the depot_index = STACK_ALLOC_MAX_SLABS - 2 and next_slab_inited = 0,
+> > > > then it will cause array out-of-bounds access, so that we should modify
+> > > > the detection to avoid this array out-of-bounds bug.
+> > > >
+> > > > Assume depot_index = STACK_ALLOC_MAX_SLABS - 3
+> > > > Consider following call flow sequence:
+> > > >
+> > > > stack_depot_save()
+> > > >    depot_alloc_stack()
+> > > >       if (unlikely(depot_index + 1 >= STACK_ALLOC_MAX_SLABS)) //pass
+> > > >       depot_index++  //depot_index = STACK_ALLOC_MAX_SLABS - 2
+> > > >       if (depot_index + 1 < STACK_ALLOC_MAX_SLABS) //enter
+> > > >          smp_store_release(&next_slab_inited, 0); //next_slab_inited = 0
+> > > >       init_stack_slab()
+> > > >          if (stack_slabs[depot_index] == NULL) //enter and exit
+> > > >
+> > > > stack_depot_save()
+> > > >    depot_alloc_stack()
+> > > >       if (unlikely(depot_index + 1 >= STACK_ALLOC_MAX_SLABS)) //pass
+> > > >       depot_index++  //depot_index = STACK_ALLOC_MAX_SLABS - 1
+> > > >       init_stack_slab(&prealloc)
+> > > >          stack_slabs[depot_index + 1]  //here get global out-of-bounds
+> > > >
+> > > > Cc: Dmitry Vyukov <dvyukov@google.com>
+> > > > Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> > > > Cc: Thomas Gleixner <tglx@linutronix.de>
+> > > > Cc: Alexander Potapenko <glider@google.com>
+> > > > Cc: Josh Poimboeuf <jpoimboe@redhat.com>
+> > > > Cc: Kate Stewart <kstewart@linuxfoundation.org>
+> > > > Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> > > > Cc: Kate Stewart <kstewart@linuxfoundation.org>
+> > > > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> > > > ---
+> > > > changes in v2:
+> > > > modify call flow sequence and preconditon
+> > > >
+> > > > changes in v3:
+> > > > add some reviewers
+> > > > ---
+> > > >  lib/stackdepot.c | 2 +-
+> > > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > > >
+> > > > diff --git a/lib/stackdepot.c b/lib/stackdepot.c
+> > > > index ed717dd08ff3..7e8a15e41600 100644
+> > > > --- a/lib/stackdepot.c
+> > > > +++ b/lib/stackdepot.c
+> > > > @@ -106,7 +106,7 @@ static struct stack_record *depot_alloc_stack(unsigned long *entries, int size,
+> > > >         required_size = ALIGN(required_size, 1 << STACK_ALLOC_ALIGN);
+> > > >
+> > > >         if (unlikely(depot_offset + required_size > STACK_ALLOC_SIZE)) {
+> > > > -               if (unlikely(depot_index + 1 >= STACK_ALLOC_MAX_SLABS)) {
+> > > > +               if (unlikely(depot_index + 2 >= STACK_ALLOC_MAX_SLABS)) {
 > 
-> Here quote the description from the referenced patch as follows.
-> "Commit ("f068090426ea xhci: Fix leaking USB3 shared_hcd
-> at xhci removal") sets xhci_shared_hcd to NULL without
-> stopping xhci host. This results into a race condition
-> where shared_hcd (super speed roothub) related interrupts
-> are being handled with xhci_irq happens when the
-> xhci_plat_remove is called and shared_hcd is set to NULL.
-> Fix this by setting the shared_hcd to NULL only after the
-> controller is halted and no interrupts are generated."
+> This again means stack_slabs[STACK_ALLOC_MAX_SLABS - 2] gets
+> initialized, but stack_slabs[STACK_ALLOC_MAX_SLABS - 1] doesn't,
+> because we'll be bailing out from init_stack_slab() from now on.
+> Does this patch actually fix the problem (do you have a reliable reproducer?)
+We get it by reviewing code, because Kasan doesn't scan it and we catch
+another bug internally, we found it unintentionally.
+
+> This addition of 2 is also counterintuitive, I don't think further
+> readers will understand the logic behind it.
 > 
-> Signed-off-by: Sriharsha Allenki <sallenki@codeaurora.org>
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> ---
->  drivers/usb/host/xhci-mtk.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+Yes
+
+> What if we just check that depot_index + 1 is a valid index before accessing it?
 > 
-> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-> index b18a6baef204..c227c67f5dc5 100644
-> --- a/drivers/usb/host/xhci-mtk.c
-> +++ b/drivers/usb/host/xhci-mtk.c
-> @@ -593,11 +593,11 @@ static int xhci_mtk_remove(struct platform_device *dev)
->  	struct usb_hcd  *shared_hcd = xhci->shared_hcd;
->  
->  	usb_remove_hcd(shared_hcd);
-> -	xhci->shared_hcd = NULL;
->  	device_init_wakeup(&dev->dev, false);
->  
->  	usb_remove_hcd(hcd);
->  	usb_put_hcd(shared_hcd);
-> +	xhci->shared_hcd = NULL;
+It should fix the problem, do you want to send this patch?
 
-I may be wrong, but I have some concerns that this replaces
-the NULL pointer access with a UAF.
-
-Guenter
-
->  	usb_put_hcd(hcd);
->  	xhci_mtk_sch_exit(mtk);
->  	xhci_mtk_clks_disable(mtk);
-> -- 
-> 2.18.0
+> diff --git a/lib/stackdepot.c b/lib/stackdepot.c
+> index 2e7d2232ed3c..c2e6ff18d716 100644
+> --- a/lib/stackdepot.c
+> +++ b/lib/stackdepot.c
+> @@ -106,7 +106,9 @@ static bool init_stack_slab(void **prealloc)
+>         if (stack_slabs[depot_index] == NULL) {
+>                 stack_slabs[depot_index] = *prealloc;
+>         } else {
+> -               stack_slabs[depot_index + 1] = *prealloc;
+> +               /* If this is the last depot slab, do not touch the next one. */
+> +               if (depot_index + 1 < STACK_ALLOC_MAX_SLABS)
+> +                       stack_slabs[depot_index + 1] = *prealloc;
+>                 /*
+>                  * This smp_store_release pairs with smp_load_acquire() from
+>                  * |next_slab_inited| above and in stack_depot_save().
 
 _______________________________________________
 Linux-mediatek mailing list
