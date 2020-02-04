@@ -1,69 +1,69 @@
 Return-Path: <SRS0=y3Z3=3Y=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
-X-Spam-Level: 
-X-Spam-Status: No, score=-5.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,URIBL_DBL_ABUSE_MALW,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Level: *
+X-Spam-Status: No, score=1.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,URIBL_DBL_ABUSE_MALW autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 49B08C2D0B1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Feb 2020 09:42:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 35A27C2D0B1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Feb 2020 09:46:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1E4D02166E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Feb 2020 09:42:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 081DB2166E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Feb 2020 09:46:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EEb/kap/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1E4D02166E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eY0NPsjZ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="b5PHGApG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 081DB2166E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=RVyZymND19WYzlgAlWaU+iYRKp+bG6sAAdga0m0UUVs=; b=EEb/kap/rlpyHZuICw0wA1wXM
-	B6rJDMioMe3IH5P62R/xzMdygODXYwx16catHU8tZyBv93OmWf7e/TFMzwMh1eZkR34O5cw4rsg30
-	DSZdBbDdDN9XSif9+8DHpeXjTjJGDI3+VYDhfVpLI1Ht038YXTiWUAGM36OXLa8DZbC5hWFx1Jvk0
-	GlU3Wl8gYgjAo32HpQMIjh7Eu6/xhLpQFY8dl+VUO4ABLxxzVujAWhTeb38q9mcwkKL1UHMbGzOTe
-	uwSyOy7+SyIhj1/D0B83HWncxO7QRrlnbptYbBweW1/X/n3O7vbmeJmUn3Wu7QAx2qYONyB6fwJRr
-	POcxAyH8A==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=M5GmDJbbclswfKTcdcSS9BakyyYhSzQ86CBw12uZh5A=; b=eY0NPsjZJmPKYV
+	7nr/nyQ+TOXE5gw8sIjqKzPA+Ucl7+2dqO1NIY50U2jqNek5e4NVTKF3wbZECBfj/hZdqH43XeFe0
+	gx6sSzai5I5UUsLn4VdfmF28tovFqMid9Re4urUBhwUyHQwQA0TqQ/sq+zTZ7rUJKZpixEzDVK3Gr
+	oqPl3OZYK2h9S+4g8q038t9eRDmGgEKA8TCwcaz6ZO7FfHpXxoBvGAbmGFaQHu4kVStHspbfC+8Kw
+	qzhj3Cjd+a0iHMgXF1rEtof3V+/4aTvbB7457jG3uK/QapJ2z3vjQAQnmMQzFtrrj04cgwqYVIrl+
+	bOn99zPGaCpB0WGwk2ww==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1iyuj0-0007M2-GV; Tue, 04 Feb 2020 09:42:30 +0000
-Received: from mga17.intel.com ([192.55.52.151])
+	id 1iyumq-0000tG-FG; Tue, 04 Feb 2020 09:46:28 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1iyuit-0007F7-0M; Tue, 04 Feb 2020 09:42:24 +0000
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga107.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 04 Feb 2020 01:42:22 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,401,1574150400"; d="scan'208";a="310993361"
-Received: from mattu-haswell.fi.intel.com (HELO [10.237.72.170])
- ([10.237.72.170])
- by orsmga001.jf.intel.com with ESMTP; 04 Feb 2020 01:42:18 -0800
-Subject: Re: [PATCH] xhci-mtk: Fix NULL pointer dereference with xhci_irq()
- for shared_hcd
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-References: <1579246910-22736-1-git-send-email-macpaul.lin@mediatek.com>
- <08f69bab-2ada-d6ab-7bf7-d960e9f148a0@linux.intel.com>
- <1580556039.10835.3.camel@mtkswgap22>
-From: Mathias Nyman <mathias.nyman@linux.intel.com>
-Message-ID: <39ec1610-1686-6509-02ac-6e73d8be2453@linux.intel.com>
-Date: Tue, 4 Feb 2020 11:44:29 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ id 1iyumo-0000sl-9v
+ for linux-mediatek@lists.infradead.org; Tue, 04 Feb 2020 09:46:27 +0000
+Received: from localhost (unknown [212.187.182.163])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id DE5402166E;
+ Tue,  4 Feb 2020 09:46:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1580809585;
+ bh=VlRUtSRrLeKtQYvR52+rIA5unH+BH0HRF/MnHJy83kk=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=b5PHGApGK7OQ/RMddsZTNIgFSoKnxB9nwQn7TXLjHH+MkD0ucqoOeNcr37GUUzZZ+
+ rXwkNkMpjgWmAID/1pZ/hlYqkKIdQ4WILvySL4U7M7q6BkYr+6hOrZ8U7tal15BVQE
+ pjf4lmHARICAsPMOWYwHIvGlQzGVlB+8nz169FUI=
+Date: Tue, 4 Feb 2020 09:46:22 +0000
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Frankie Chang <Frankie.Chang@mediatek.com>
+Subject: Re: [PATCH v1] binder: transaction latency tracking for user build
+Message-ID: <20200204094622.GA1087870@kroah.com>
+References: <1580807715-26609-1-git-send-email-Frankie.Chang@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <1580556039.10835.3.camel@mtkswgap22>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1580807715-26609-1-git-send-email-Frankie.Chang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200204_014223_060259_4707F806 
-X-CRM114-Status: GOOD (  22.59  )
+X-CRM114-CacheID: sfid-20200204_014626_372356_6B50E344 
+X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,106 +75,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sriharsha Allenki <sallenki@codeaurora.org>,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- Mathias Nyman <mathias.nyman@intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Todd Kjos <tkjos@android.com>, wsd_upstream@mediatek.com,
+ linux-kernel@vger.kernel.org,
+ Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
+ Jian-Min.Liu@mediatek.com, linux-mediatek@lists.infradead.org,
+ Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
+ Christian Brauner <christian@brauner.io>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 1.2.2020 13.20, Macpaul Lin wrote:
-> On Fri, 2020-01-31 at 16:50 +0200, Mathias Nyman wrote:
->> On 17.1.2020 9.41, Macpaul Lin wrote:
->>> According to NULL pointer fix: https://tinyurl.com/uqft5ra
->>> xhci: Fix NULL pointer dereference with xhci_irq() for shared_hcd
->>> The similar issue has also been found in QC activities in Mediatek.
->>>
->>> Here quote the description from the referenced patch as follows.
->>> "Commit ("f068090426ea xhci: Fix leaking USB3 shared_hcd
->>> at xhci removal") sets xhci_shared_hcd to NULL without
->>> stopping xhci host. This results into a race condition
->>> where shared_hcd (super speed roothub) related interrupts
->>> are being handled with xhci_irq happens when the
->>> xhci_plat_remove is called and shared_hcd is set to NULL.
->>> Fix this by setting the shared_hcd to NULL only after the
->>> controller is halted and no interrupts are generated."
->>>
->>> Signed-off-by: Sriharsha Allenki <sallenki@codeaurora.org>
->>> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
->>> ---
->>>    drivers/usb/host/xhci-mtk.c | 2 +-
->>>    1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
->>> index b18a6baef204..c227c67f5dc5 100644
->>> --- a/drivers/usb/host/xhci-mtk.c
->>> +++ b/drivers/usb/host/xhci-mtk.c
->>> @@ -593,11 +593,11 @@ static int xhci_mtk_remove(struct platform_device *dev)
->>>    	struct usb_hcd  *shared_hcd = xhci->shared_hcd;
->>>    
->>>    	usb_remove_hcd(shared_hcd);
->>> -	xhci->shared_hcd = NULL;
->>>    	device_init_wakeup(&dev->dev, false);
->>>    
->>>    	usb_remove_hcd(hcd);
->>>    	usb_put_hcd(shared_hcd);
->>> +	xhci->shared_hcd = NULL;
->>>    	usb_put_hcd(hcd);
->>>    	xhci_mtk_sch_exit(mtk);
->>>    	xhci_mtk_clks_disable(mtk);
->>>
->>
->> Could you share details of the NULL pointer dereference, (backtrace).
+On Tue, Feb 04, 2020 at 05:15:14PM +0800, Frankie Chang wrote:
+> Record start/end timestamp to binder transaction.
+> When transaction is completed or transaction is free,
+> it would be checked if transaction latency over threshold (2 sec),
+> if yes, printing related information for tracing.
 > 
-> This bug was found by our QA staff while doing 500 times plug-in and
-> plug-out devices. The backtrace I have was recorded by QA and I didn't
-> reproduce this issue on my own environment. However, after applied this
-> patch the issue seems resolve. Here is the backtrace:
 > 
-> Exception Class: Kernel (KE)
-> PC is at [<ffffff8008cccbc0>] xhci_irq+0x728/0x2364
-> LR is at [<ffffff8008ccc788>] xhci_irq+0x2f0/0x2364
+> Frankie Chang (1):
+>   binder: transaction latency tracking for user build
 > 
-> Current Executing Process:
-> [iptables, 859][netdagent, 770]
-> 
-> Backtrace:
-> [<ffffff80080ead58>] __atomic_notifier_call_chain+0xa8/0x130
-> [<ffffff80080eb6d4>] notify_die+0x84/0xac
-> [<ffffff800808e874>] die+0x1d8/0x3b8
-> [<ffffff80080a89b0>] __do_kernel_fault+0x178/0x188
-> [<ffffff80080a81b4>] do_page_fault+0x44/0x3b0
-> [<ffffff80080a811c>] do_translation_fault+0x44/0x98
-> [<ffffff8008080e08>] do_mem_abort+0x4c/0x128
-> [<ffffff80080832d0>] el1_da+0x24/0x3c
-> [<ffffff8008cccbc0>] xhci_irq+0x728/0x2364
-> [<ffffff8008c98804>] usb_hcd_irq+0x2c/0x44
-> [<ffffff8008179bb0>] __handle_irq_event_percpu+0x26c/0x4a4
-> [<ffffff8008179ec8>] handle_irq_event+0x5c/0xd0
-> [<ffffff800817e3c0>] handle_fasteoi_irq+0x10c/0x1e0
-> [<ffffff80081787b0>] __handle_domain_irq+0x32c/0x738
-> [<ffffff800808159c>] gic_handle_irq+0x174/0x1c4
-> [<ffffff8008083cf8>] el0_irq_naked+0x50/0x5c
-> [<ffffffffffffffff>] 0xffffffffffffffff
-> 
+>  drivers/android/Kconfig           |    8 +++
+>  drivers/android/binder.c          |  107 +++++++++++++++++++++++++++++++++++++
+>  drivers/android/binder_internal.h |    4 ++
+>  3 files changed, 119 insertions(+)
 
-Thanks,
-Could you help me find out which line of code xhci_irq+0x728 is in your case.
-
-As Guenter pointed out there is a risk of turning the NULL pointer dereference
-into a use after free if we just solve this by setting xhci->shared_hcd = NULL
-later.
-
-If you still have that kernel around, and xhci is compiled in:
-gdb vmlinux
-gdb li *(xhci_irq+0x728)
-
--Mathias
+There is no patch here :(
 
 _______________________________________________
 Linux-mediatek mailing list
