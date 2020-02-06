@@ -2,84 +2,84 @@ Return-Path: <SRS0=Uacl=32=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.5 required=3.0 tests=DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,URIBL_DBL_ABUSE_MALW,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,URIBL_DBL_ABUSE_MALW,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C20A6C35254
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2020 03:19:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 72596C33CAC
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2020 06:57:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8FFFE20674
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2020 03:19:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4029321741
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2020 06:57:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YgqkOTBH";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="ueuYkYfz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8FFFE20674
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="diCrcpSz";
+	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="Obh68osp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4029321741
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:From:Subject:References:Mime-Version
-	:Message-Id:In-Reply-To:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TyM9YyXLVyuAEaWpwUxg2xwPZ+OArY6vtEsJWHXx0js=; b=YgqkOTBHlcpyyU
-	Rz40yd6qXNyQ5gGoIFpgh3TQsOqCRJRNcobnDQGosKWo8jQ25ZViPooBetVvMs4htrB3hhEl4Nx6j
-	bgQqEucpGWOw4my7AKRBeBdl9RshxA6IVLvy4KTAFLTODBB2nPHXUC7phbhsg7iY9OmvNy3ueUgbv
-	MRV6WUjF7W9cf1OdUSsFRh+XgrcdIb+I4WloOc87CQh8JrKvUG42J1ZZM+IkfPeSia0vs1EwyBGy+
-	ugd76pgBHOGFS3pf9SXaVcxP6KtQo7OcIcYAsTiFGa3vDmUkTaDLcxPSU9t5zVBzc/IOr5VKnaYYb
-	Mq6xx/glIugEuDAb+gjg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=tKrNUPHq+TkqeAcs8oolTvi9Z/6SFmNXr75UnbmjtNU=; b=diCrcpSzSfzlozJ/R3kf1RVSPm
+	j6a+HMJw1D6OK3i2tgRoG1wSFNMA9/b6M/1zYv0V1OlwcO2eLjdBJg1XoeTCTAJEnsGr18EB3Pmjc
+	QntaK+T713UouGlmtMJwHnEMJNRpkGKazQammfVAsyY1wiqpOzbVB9CGRHr474kPzDp5OZ9R7fxTA
+	SO7UBml06yrM1KTGsOfhy3BeA7Vx5+dt45dqXBDHF35//JJ60631qgF5+R8jbyYnSu9qNnGRgKNGW
+	xYKxXwEUt7UiQJd3g8t4y0Xve+c7YhvguAxWG4GyAOxAp9UFWGFFrtHBJE8SaYgJTJWP13CWEf2LK
+	TOp3DLQg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1izXgw-0004Uy-MS; Thu, 06 Feb 2020 03:18:58 +0000
-Received: from mail-qk1-x749.google.com ([2607:f8b0:4864:20::749])
+	id 1izb6L-0002gn-T3; Thu, 06 Feb 2020 06:57:25 +0000
+Received: from mail25.static.mailgun.info ([104.130.122.25])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1izXgS-0003zM-DX
- for linux-mediatek@lists.infradead.org; Thu, 06 Feb 2020 03:18:30 +0000
-Received: by mail-qk1-x749.google.com with SMTP id 12so2681397qkf.20
- for <linux-mediatek@lists.infradead.org>; Wed, 05 Feb 2020 19:18:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=3xSqtFmkuhmH7fZvAamf8hbYq+ufSxebJYVWVye4C7Y=;
- b=ueuYkYfzd1J7mUX84rods+zZPBEDPeQEpjWo1fKgNXmmkJRjFmQ57clQ25FbxVrB81
- 0BoeuWRSAlLi4ikcBydPblOqMIIYdUZlWt96IlppvTopxt4MrWxe1NJNb00pEILdALIL
- mwP9m3shNI4otFS5JNL2mDva9EvmqHjaLpSPV+4fWAoYFTZp1nvG0CRMuMvaQQpiTocd
- RdQCWBIwo+BGVgpp3NbIEtfA/GO13BcJrwl9r2EoO9jqfv5ogBgO5W/6Q7nyLCxted8+
- Q/tls29mCNiLAHzFozF2uSg8V5VCuOfUUjtgXE6vmEdrV5rvwC9qaa9Tedzul30Dx9L2
- FkGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=3xSqtFmkuhmH7fZvAamf8hbYq+ufSxebJYVWVye4C7Y=;
- b=Bpq0DAIKygDCk/FYEGKLspA0hzCh1PjMj/Ey5mouecnAE//giPHJp3dY9FOZsZLnuD
- XMvztJ8BIoYGoJc6PkwILr9jUEe9Fu5Zx9zgx4wDVez+D8Pe3RyfoX8oU1I2mRr4T1wa
- mMO7l32TMn0ZZfeZ85/HA9YFuz3FcfZqDHQ3YQzl6w2V4DGgTusykNA3MniQxfRrXHy5
- AFjiXhIFG0DMe8xlvm4rN9aAMVavwHT6hK1eFFjU3zs/Ku+UDR7ofl93zdpfD2r54ext
- TQ83mTE+nGAyZ/ulUK2xGRsG6O7B5rwaKuOjaFrLWBvi35c1bTKFVVsMpiuWPWYQ4C/e
- 97eA==
-X-Gm-Message-State: APjAAAUh0pk/vokUU9hOf2qTWGrICpWuK9d4phzibtMnUCYMrbX8T46X
- eIFDXcc159IupUKIUFnGT/mKBoCcLi35
-X-Google-Smtp-Source: APXvYqz/fAMuYGvIwuayOCKaf8jH3Jt4uA2sxWoRh0ciqFGB/O4svWNUa/d29O7qRqPWaudemfa9s6lehhZc
-X-Received: by 2002:a0c:fe8e:: with SMTP id d14mr705336qvs.106.1580959106204; 
- Wed, 05 Feb 2020 19:18:26 -0800 (PST)
-Date: Thu,  6 Feb 2020 11:17:52 +0800
-In-Reply-To: <20200206031752.193298-1-tzungbi@google.com>
-Message-Id: <20200206102509.3.I253f51edff62df1d88005de12ba601aa029b1e99@changeid>
-Mime-Version: 1.0
-References: <20200206031752.193298-1-tzungbi@google.com>
-X-Mailer: git-send-email 2.25.0.341.g760bfbb309-goog
-Subject: [PATCH v2 3/3] ASoC: mediatek: mt8173-rt5650: support HDMI jack
- reporting
-From: Tzung-Bi Shih <tzungbi@google.com>
-To: broonie@kernel.org, airlied@linux.ie, daniel@ffwll.ch
+ id 1izb6H-0002ex-SX
+ for linux-mediatek@lists.infradead.org; Thu, 06 Feb 2020 06:57:24 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1580972243; h=References: In-Reply-To: Message-Id: Date:
+ Subject: Cc: To: From: Sender;
+ bh=POhOlLHyX9kprQvl56dSDYTYibjR55MFDfQ2JGrYKXA=;
+ b=Obh68ospleznSh2vz8QkN6MK67V8sEDBA4iRu8SC8PeDEW9vjdtuJ9YYgNSoWFgP+o0ira9p
+ fZCx1f5doNFGwTAxfOx1bEBdLSV1yvPwzWOIM/yAghxGrWTrMAIkGj9OiTRFeoP6PSqbLvDO
+ fD7Qnd+o5K3RKljmU2Az6p+0iJQ=
+X-Mailgun-Sending-Ip: 104.130.122.25
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
+ by mxa.mailgun.org with ESMTP id 5e3bb8c7.7f5935685298-smtp-out-n03;
+ Thu, 06 Feb 2020 06:57:11 -0000 (UTC)
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id D5CE7C447A6; Thu,  6 Feb 2020 06:57:09 +0000 (UTC)
+Received: from pacamara-linux.qualcomm.com (i-global254.qualcomm.com
+ [199.106.103.254])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: cang)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id A9EADC433CB;
+ Thu,  6 Feb 2020 06:57:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org A9EADC433CB
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=none smtp.mailfrom=cang@codeaurora.org
+From: Can Guo <cang@codeaurora.org>
+To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
+ rnayak@codeaurora.org, linux-scsi@vger.kernel.org, kernel-team@android.com,
+ saravanak@google.com, salyzyn@google.com, cang@codeaurora.org
+Subject: [PATCH 2/8] scsi: ufs: set load before setting voltage in regulators
+Date: Wed,  5 Feb 2020 22:56:45 -0800
+Message-Id: <1580972212-29881-3-git-send-email-cang@codeaurora.org>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1580972212-29881-1-git-send-email-cang@codeaurora.org>
+References: <1580972212-29881-1-git-send-email-cang@codeaurora.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200205_191828_542454_DA037D3E 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20200205_225723_117791_62E3471E 
+X-CRM114-Status: GOOD (  12.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,75 +91,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, cychiang@google.com, tzungbi@google.com,
- dri-devel@lists.freedesktop.org, ck.hu@mediatek.com,
- linux-mediatek@lists.infradead.org, p.zabel@pengutronix.de,
- matthias.bgg@gmail.com, dgreid@google.com,
- linux-arm-kernel@lists.infradead.org
+Cc: Bart Van Assche <bvanassche@acm.org>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Venkat Gopalakrishnan <venkatg@codeaurora.org>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ open list <linux-kernel@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomas Winkler <tomas.winkler@intel.com>,
+ Stanley Chu <stanley.chu@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Uses hdmi-codec to support HDMI jack reporting.
+From: Asutosh Das <asutoshd@codeaurora.org>
 
-Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
----
- sound/soc/mediatek/mt8173/mt8173-rt5650.c | 17 ++++++++++++++++-
- 1 file changed, 16 insertions(+), 1 deletion(-)
+This sequence change is required to avoid dips in voltage
+during boot-up.
 
-diff --git a/sound/soc/mediatek/mt8173/mt8173-rt5650.c b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
-index ef6f23675286..849b050a54d1 100644
---- a/sound/soc/mediatek/mt8173/mt8173-rt5650.c
-+++ b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
-@@ -11,6 +11,7 @@
- #include <linux/of_gpio.h>
- #include <sound/soc.h>
- #include <sound/jack.h>
-+#include <sound/hdmi-codec.h>
- #include "../../codecs/rt5645.h"
+Apparently, this dip is caused because in the original
+sequence, the regulators are initialized in lpm mode.
+And then when the load is set to high, and more current
+is drawn, than is allowed in lpm, the dip is seen.
+
+Signed-off-by: Asutosh Das <asutoshd@codeaurora.org>
+Signed-off-by: Can Guo <cang@codeaurora.org>
+Reviewed-by: Hongwu Su <hongwus@codeaurora.org>
+Reviewed-by: Bean Huo <beanhuo@micron.com>
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 10dbc0c..83ae093 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -7248,6 +7248,11 @@ static int ufshcd_config_vreg(struct device *dev,
+ 	name = vreg->name;
  
- #define MCLK_FOR_CODECS		12288000
-@@ -98,7 +99,7 @@ static const struct snd_soc_ops mt8173_rt5650_ops = {
- 	.hw_params = mt8173_rt5650_hw_params,
- };
- 
--static struct snd_soc_jack mt8173_rt5650_jack;
-+static struct snd_soc_jack mt8173_rt5650_jack, mt8173_rt5650_hdmi_jack;
- 
- static int mt8173_rt5650_init(struct snd_soc_pcm_runtime *runtime)
- {
-@@ -144,6 +145,19 @@ static int mt8173_rt5650_init(struct snd_soc_pcm_runtime *runtime)
- 				      &mt8173_rt5650_jack);
- }
- 
-+static int mt8173_rt5650_hdmi_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	int ret;
+ 	if (regulator_count_voltages(reg) > 0) {
++		uA_load = on ? vreg->max_uA : 0;
++		ret = ufshcd_config_vreg_load(dev, vreg, uA_load);
++		if (ret)
++			goto out;
 +
-+	ret = snd_soc_card_jack_new(rtd->card, "HDMI Jack", SND_JACK_LINEOUT,
-+				    &mt8173_rt5650_hdmi_jack, NULL, 0);
-+	if (ret)
-+		return ret;
-+
-+	return hdmi_codec_set_jack_detect(rtd->codec_dai->component,
-+					  &mt8173_rt5650_hdmi_jack);
-+}
-+
- enum {
- 	DAI_LINK_PLAYBACK,
- 	DAI_LINK_CAPTURE,
-@@ -222,6 +236,7 @@ static struct snd_soc_dai_link mt8173_rt5650_dais[] = {
- 		.name = "HDMI BE",
- 		.no_pcm = 1,
- 		.dpcm_playback = 1,
-+		.init = mt8173_rt5650_hdmi_init,
- 		SND_SOC_DAILINK_REG(hdmi_be),
- 	},
- };
+ 		if (vreg->min_uV && vreg->max_uV) {
+ 			min_uV = on ? vreg->min_uV : 0;
+ 			ret = regulator_set_voltage(reg, min_uV, vreg->max_uV);
+@@ -7258,11 +7263,6 @@ static int ufshcd_config_vreg(struct device *dev,
+ 				goto out;
+ 			}
+ 		}
+-
+-		uA_load = on ? vreg->max_uA : 0;
+-		ret = ufshcd_config_vreg_load(dev, vreg, uA_load);
+-		if (ret)
+-			goto out;
+ 	}
+ out:
+ 	return ret;
 -- 
-2.25.0.341.g760bfbb309-goog
-
+The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
+a Linux Foundation Collaborative Project
 
 _______________________________________________
 Linux-mediatek mailing list
