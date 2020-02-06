@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-7.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,URIBL_DBL_ABUSE_MALW,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C651C352A3
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D261C33CAC
 	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2020 08:34:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E4795206CC
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2020 08:34:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1110A217F4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2020 08:34:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TRNTnqwG";
-	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="LQslPWoE"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E4795206CC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KRR7oxNd";
+	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="b4kacyy9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1110A217F4
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,42 +27,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=/djeELwWRoGM5RJT3Rvs1hSHDf7IFLbHDbz2XqqlCLQ=; b=TRNTnqwGOUPCw/2NTjePanzyFO
-	OWVe0EbJwCLa5yBodiFUrqxzhEBYumGO3JuM6MqigriUmlFBlDzNVG+sNTY4WalJj8yeWpHLQXCDA
-	VJbwK0RTv7boNptIKtecbdQL+6IL2JcEShz1mcY+kC/ov/kVi+vAWOyvrkbKkoc/92UV5uQo/Vfsr
-	ILHCipcTlhGmgMkMPpD3U2XMDzAxO3iYevNJ+Qv2Ek2Hy0xlhKAqENOzCrr1NxcLF/IJSz9qdaTMj
-	p2+aZo43GJbXKB067oFqd3c6L6vQEYcGdZ5VODTMG5nFi29+ryqP2hMbdpgnWnqkqHkvrFjJnxUdG
-	JQ6c7dDA==;
+	bh=xIFq9tdBaS+iLvW3aFKe1475mbJljTmH1dYgM8aPRlE=; b=KRR7oxNdM6M6hL/hq3JLsCDXXl
+	/tCEv5ru5uaEcee2Qb7AXnGR3fNlje2XluVsEKPu1gBcTe0UaqhKxGbPRvlgYeBDR401VCCQnCxGy
+	ySYebPnLZXCIqoqgvwItQYIvWxmHd+wKaNu9QcDfc+2au9+0dRKTfrq5EO04C33p6kaj0Q03g5VQU
+	7hy5lY1x5eVLpWdgKULuFh2AH0nIzIXu1h0tvY73gnI3W+4QkEB+rbpEogpOlKaHHMT5+soutgMA8
+	bYBWXYRvX2eQuZHYRfSUSVPLMpF7Q9s0BkhSvsi7wv83hhM8Hx3lHbCgugVxa/lNuA2O+6Y/++T3i
+	M2j3APzg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1izcbp-0005iZ-2G; Thu, 06 Feb 2020 08:34:01 +0000
-Received: from mail25.static.mailgun.info ([104.130.122.25])
+	id 1izcbo-0005ge-3V; Thu, 06 Feb 2020 08:34:00 +0000
+Received: from mail26.static.mailgun.info ([104.130.122.26])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1izcbm-0005bh-4f
- for linux-mediatek@lists.infradead.org; Thu, 06 Feb 2020 08:33:59 +0000
+ id 1izcbh-0005ZI-MN
+ for linux-mediatek@lists.infradead.org; Thu, 06 Feb 2020 08:33:55 +0000
 DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
  q=dns/txt; 
- s=smtp; t=1580978037; h=References: In-Reply-To: Message-Id: Date:
+ s=smtp; t=1580978031; h=References: In-Reply-To: Message-Id: Date:
  Subject: Cc: To: From: Sender;
- bh=9SGjnvm6LlZlgsWKDoqurru12ybAut9xXpgs6hQ/Ncc=;
- b=LQslPWoE5guJ+WJ8kEIv9Mb9FS/Q5HBPZjUWTh2ZSPpAXdGyqUk01msFZM+1qDbwhsBro2CQ
- KKcEsday6C/r8pOZbc9PzauELp+ojgBmrZh+AhjEBvM/BpoKRywJCQIGa0CBzqnMYyjUDqD8
- 1CtmiYqgd6IZW6AFAgzbRE7O1lk=
-X-Mailgun-Sending-Ip: 104.130.122.25
+ bh=6kid3p1QZ9UEZ2W3UC/TZABXrNRicqOESmbFfSk4vhE=;
+ b=b4kacyy9Ii2iSJIEKFAPVPlsk8/euyFCt94nO0sN9zyK0m6QodCpRCXTqNGK+NTwNV+2JmSR
+ YRnAAwPjlCLMDStJWVP+Ex7TOtZyaehRROeBOmySZ2tzO605F7D6ng5QqMYz0XCXlYdLV1Q9
+ y3I/eSA0LiOiDaZ54qK8PAmGxvY=
+X-Mailgun-Sending-Ip: 104.130.122.26
 X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
 Received: from smtp.codeaurora.org
  (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
- by mxa.mailgun.org with ESMTP id 5e3bcf74.7fa316d76ca8-smtp-out-n03;
- Thu, 06 Feb 2020 08:33:56 -0000 (UTC)
+ by mxa.mailgun.org with ESMTP id 5e3bcf6e.7fa687ca0500-smtp-out-n01;
+ Thu, 06 Feb 2020 08:33:50 -0000 (UTC)
 Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 63E36C447B4; Thu,  6 Feb 2020 08:33:54 +0000 (UTC)
+ id 70A43C447B0; Thu,  6 Feb 2020 08:33:49 +0000 (UTC)
 Received: from pacamara-linux.qualcomm.com (i-global254.qualcomm.com
  [199.106.103.254])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 92BA7C447A2;
- Thu,  6 Feb 2020 08:33:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 92BA7C447A2
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id C3AF4C43383;
+ Thu,  6 Feb 2020 08:33:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org C3AF4C43383
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
@@ -71,16 +71,16 @@ From: Can Guo <cang@codeaurora.org>
 To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
  rnayak@codeaurora.org, linux-scsi@vger.kernel.org, kernel-team@android.com,
  saravanak@google.com, salyzyn@google.com, cang@codeaurora.org
-Subject: [PATCH v7 3/8] scsi: ufs: Remove the check before call setup clock
- notify vops
-Date: Thu,  6 Feb 2020 00:33:22 -0800
-Message-Id: <1580978008-9327-4-git-send-email-cang@codeaurora.org>
+Subject: [PATCH v7 2/8] scsi: ufs: set load before setting voltage in
+ regulators
+Date: Thu,  6 Feb 2020 00:33:21 -0800
+Message-Id: <1580978008-9327-3-git-send-email-cang@codeaurora.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1580978008-9327-1-git-send-email-cang@codeaurora.org>
 References: <1580978008-9327-1-git-send-email-cang@codeaurora.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200206_003358_249154_EFD5EE57 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20200206_003353_794783_90695AA8 
+X-CRM114-Status: GOOD (  15.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,60 +110,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The functionality of vendor specific ops should be handled properly in
-platform specific driver, but should not count on the UFS driver.
+From: Asutosh Das <asutoshd@codeaurora.org>
 
+This sequence change is required to avoid dips in voltage
+during boot-up.
+
+Apparently, this dip is caused because in the original
+sequence, the regulators are initialized in lpm mode.
+And then when the load is set to high, and more current
+is drawn, than is allowed in lpm, the dip is seen.
+
+Signed-off-by: Asutosh Das <asutoshd@codeaurora.org>
 Signed-off-by: Can Guo <cang@codeaurora.org>
+Reviewed-by: Hongwu Su <hongwus@codeaurora.org>
 Reviewed-by: Bean Huo <beanhuo@micron.com>
 Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
- drivers/scsi/ufs/ufshcd.c | 26 ++++++--------------------
- 1 file changed, 6 insertions(+), 20 deletions(-)
+ drivers/scsi/ufs/ufshcd.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 83ae093..bbc2607 100644
+index 10dbc0c..83ae093 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -7402,16 +7402,9 @@ static int __ufshcd_setup_clocks(struct ufs_hba *hba, bool on,
- 	if (list_empty(head))
- 		goto out;
+@@ -7248,6 +7248,11 @@ static int ufshcd_config_vreg(struct device *dev,
+ 	name = vreg->name;
  
--	/*
--	 * vendor specific setup_clocks ops may depend on clocks managed by
--	 * this standard driver hence call the vendor specific setup_clocks
--	 * before disabling the clocks managed here.
--	 */
--	if (!on) {
--		ret = ufshcd_vops_setup_clocks(hba, on, PRE_CHANGE);
--		if (ret)
--			return ret;
--	}
-+	ret = ufshcd_vops_setup_clocks(hba, on, PRE_CHANGE);
-+	if (ret)
-+		return ret;
- 
- 	list_for_each_entry(clki, head, list) {
- 		if (!IS_ERR_OR_NULL(clki->clk)) {
-@@ -7435,16 +7428,9 @@ static int __ufshcd_setup_clocks(struct ufs_hba *hba, bool on,
+ 	if (regulator_count_voltages(reg) > 0) {
++		uA_load = on ? vreg->max_uA : 0;
++		ret = ufshcd_config_vreg_load(dev, vreg, uA_load);
++		if (ret)
++			goto out;
++
+ 		if (vreg->min_uV && vreg->max_uV) {
+ 			min_uV = on ? vreg->min_uV : 0;
+ 			ret = regulator_set_voltage(reg, min_uV, vreg->max_uV);
+@@ -7258,11 +7263,6 @@ static int ufshcd_config_vreg(struct device *dev,
+ 				goto out;
+ 			}
  		}
- 	}
- 
--	/*
--	 * vendor specific setup_clocks ops may depend on clocks managed by
--	 * this standard driver hence call the vendor specific setup_clocks
--	 * after enabling the clocks managed here.
--	 */
--	if (on) {
--		ret = ufshcd_vops_setup_clocks(hba, on, POST_CHANGE);
+-
+-		uA_load = on ? vreg->max_uA : 0;
+-		ret = ufshcd_config_vreg_load(dev, vreg, uA_load);
 -		if (ret)
--			return ret;
--	}
-+	ret = ufshcd_vops_setup_clocks(hba, on, POST_CHANGE);
-+	if (ret)
-+		return ret;
- 
+-			goto out;
+ 	}
  out:
- 	if (ret) {
+ 	return ret;
 -- 
 The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
 a Linux Foundation Collaborative Project
