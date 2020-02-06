@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-7.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,URIBL_DBL_ABUSE_MALW,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 977D4C2D0B1
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2020 08:34:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EA2F5C2D0B1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2020 08:34:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5B4F120720
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2020 08:34:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BA6C420720
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2020 08:34:53 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HTCPswzx";
-	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="iQ4Sa3M5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5B4F120720
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XrnUqWd5";
+	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="tcQm1X1C"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BA6C420720
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,42 +27,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=NHP3LbA1DI8SJAnuST4uhs72znUkR3N7gY49QRb8KyY=; b=HTCPswzxYy5uqwcDMrWbW8DEjq
-	8aPfD31d+e2lRSn0kS96zcscgS8YXO4BzHW7XSqvRwG17GHM6rS/TmyRimLKuv4Fv2FlCJIXm3+xh
-	GWNvqwOpDH1b6rxop3jk4khYkORPOmFuGdaeTG+PxtDGgNWNPjHirbHy7fdkloYdt5wls4ts1SZTe
-	fkEhGtKx5AyXZeaRMMZ84fZExvlpbacETMXaj0NYinB3RqUlBqNwIj1cibrVsishha6/RRu/HJrGW
-	bXXe0A6qibC6sht/035yycUFIwLbrsELhUD8qIsz/BuJXp7375LtiZQhM5BMk8yDFNP3pblNvsKZr
-	+JNXp03A==;
+	bh=Ei8MGeZWrgZbL9BnSNTLRpGwJkFQcyV0JgWxca9znb8=; b=XrnUqWd59UjjLa/EsA7jkw3PPe
+	6S+Pyc7bDAnZoXOxyYYebwzpOLHTezBdwYltCMkf/7O69imqRdLg3V6XReOfEk7djOZM9gQ/rIGvo
+	nuG1YRo14Eipla1Ajvvjksm3XPekzpOn6LsuRhGH0O1KdzGduMvaQnp5GwEh+MKDt0LoAhhRMLJmp
+	ZZdlWWeUgAisH0oD4zIkVBJmC69jCB9p+RDja0BtjG15h9GS0CsSt37au+tLFFMsd/ckXEqtzIABX
+	qaF5zT48gaNT1VUZtj8Fl6RHepYKWA5yfZ5z/G823v765YdIOnI6JlTtOqBQMuWcaQBEIy5jIcWCO
+	gH/GW+NA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1izccK-0006KH-SP; Thu, 06 Feb 2020 08:34:32 +0000
-Received: from mail26.static.mailgun.info ([104.130.122.26])
+	id 1izccY-0006aJ-2L; Thu, 06 Feb 2020 08:34:46 +0000
+Received: from mail25.static.mailgun.info ([104.130.122.25])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1izcbr-0005ZI-Ut
- for linux-mediatek@lists.infradead.org; Thu, 06 Feb 2020 08:34:07 +0000
+ id 1izcc2-0005bh-Ka
+ for linux-mediatek@lists.infradead.org; Thu, 06 Feb 2020 08:34:18 +0000
 DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
  q=dns/txt; 
- s=smtp; t=1580978045; h=References: In-Reply-To: Message-Id: Date:
+ s=smtp; t=1580978055; h=References: In-Reply-To: Message-Id: Date:
  Subject: Cc: To: From: Sender;
- bh=M5EiAM340YTfaI+JUM+VIwr5LUgYqYXxc1QkKU1WUtI=;
- b=iQ4Sa3M5MgY7goYusm1XcH5yBTSDPQWfDHWDk/dQtkm+WB9+Anhaewu2bJg63HtzqzqhnfbQ
- G4+Q1sXzYuoQTunbqW/+R8MChXMjN5JMoypHc0ned3htd1yCtMdgSR1bQtROY1uSMKfqqTjt
- Sl1BLFnZA6388LDSZgpgAdKAdhg=
-X-Mailgun-Sending-Ip: 104.130.122.26
+ bh=Lm8OPFjVWBsVgx/X+8V0fNBgHGT7pvVECpfc6EtHCvw=;
+ b=tcQm1X1CFjbSDkhiVAKeSd/wF4Tm4e8YCaDB1cmozBmhgYF4N2yt0R5oGHNONPnRuxkEL5YX
+ DAUIiR524eEA+pCsVSD2EmZPdwSG6FlKvhGYNvNuVnGdFNo+PaGld8emRMlUTHOL/Ce1zVBD
+ Yfty1602vb9ZPxf2xTWKzl6d01E=
+X-Mailgun-Sending-Ip: 104.130.122.25
 X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
 Received: from smtp.codeaurora.org
  (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
- by mxa.mailgun.org with ESMTP id 5e3bcf79.7fa4aa0bc2d0-smtp-out-n03;
- Thu, 06 Feb 2020 08:34:01 -0000 (UTC)
+ by mxa.mailgun.org with ESMTP id 5e3bcf82.7fb6c1b7f538-smtp-out-n03;
+ Thu, 06 Feb 2020 08:34:10 -0000 (UTC)
 Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 766F4C447B7; Thu,  6 Feb 2020 08:34:00 +0000 (UTC)
+ id C71EBC447AC; Thu,  6 Feb 2020 08:34:08 +0000 (UTC)
 Received: from pacamara-linux.qualcomm.com (i-global254.qualcomm.com
  [199.106.103.254])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id C0C83C447A2;
- Thu,  6 Feb 2020 08:33:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org C0C83C447A2
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 25BBFC447A2;
+ Thu,  6 Feb 2020 08:34:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 25BBFC447A2
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
@@ -71,16 +71,15 @@ From: Can Guo <cang@codeaurora.org>
 To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
  rnayak@codeaurora.org, linux-scsi@vger.kernel.org, kernel-team@android.com,
  saravanak@google.com, salyzyn@google.com, cang@codeaurora.org
-Subject: [PATCH v7 5/8] scsi: ufs: Fix ufshcd_hold() caused scheduling while
- atomic
-Date: Thu,  6 Feb 2020 00:33:24 -0800
-Message-Id: <1580978008-9327-6-git-send-email-cang@codeaurora.org>
+Subject: [PATCH v7 6/8] scsi: ufs: Add dev ref clock gating wait time support
+Date: Thu,  6 Feb 2020 00:33:25 -0800
+Message-Id: <1580978008-9327-7-git-send-email-cang@codeaurora.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1580978008-9327-1-git-send-email-cang@codeaurora.org>
 References: <1580978008-9327-1-git-send-email-cang@codeaurora.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200206_003405_476581_3E573D53 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20200206_003415_351826_6E6E2E2F 
+X-CRM114-Status: GOOD (  15.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,6 +99,7 @@ Cc: Bart Van Assche <bvanassche@acm.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
  Alim Akhtar <alim.akhtar@samsung.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>,
  Tomas Winkler <tomas.winkler@intel.com>,
  Stanley Chu <stanley.chu@mediatek.com>,
  "moderated list:ARM/Mediatek SoC support"
@@ -110,37 +110,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The async version of ufshcd_hold(async == true), which is only called
-in queuecommand path as for now, is expected to work in atomic context,
-thus it should not sleep or schedule out. When it runs into the condition
-that clocks are ON but link is still in hibern8 state, it should bail out
-without flushing the clock ungate work.
+In UFS version 3.0, a newly added attribute bRefClkGatingWaitTime defines
+the minimum time for which the reference clock is required by device during
+transition to LS-MODE or HIBERN8 state. Make this change to reflect the new
+requirement by adding delays before turning off the clock.
 
 Signed-off-by: Can Guo <cang@codeaurora.org>
-Reviewed-by: Hongwu Su <hongwus@codeaurora.org>
 Reviewed-by: Asutosh Das <asutoshd@codeaurora.org>
 Reviewed-by: Bean Huo <beanhuo@micron.com>
 Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
- drivers/scsi/ufs/ufshcd.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/scsi/ufs/ufs.h    |  3 +++
+ drivers/scsi/ufs/ufshcd.c | 34 ++++++++++++++++++++++++++++++++++
+ 2 files changed, 37 insertions(+)
 
+diff --git a/drivers/scsi/ufs/ufs.h b/drivers/scsi/ufs/ufs.h
+index cfe3803..990cb48 100644
+--- a/drivers/scsi/ufs/ufs.h
++++ b/drivers/scsi/ufs/ufs.h
+@@ -167,6 +167,7 @@ enum attr_idn {
+ 	QUERY_ATTR_IDN_FFU_STATUS		= 0x14,
+ 	QUERY_ATTR_IDN_PSA_STATE		= 0x15,
+ 	QUERY_ATTR_IDN_PSA_DATA_SIZE		= 0x16,
++	QUERY_ATTR_IDN_REF_CLK_GATING_WAIT_TIME	= 0x17,
+ };
+ 
+ /* Descriptor idn for Query requests */
+@@ -534,6 +535,8 @@ struct ufs_dev_info {
+ 	u16 wmanufacturerid;
+ 	/*UFS device Product Name */
+ 	u8 *model;
++	u16 wspecversion;
++	u32 clk_gating_wait_us;
+ };
+ 
+ /**
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index bbc2607..e8f7f9d 100644
+index e8f7f9d..20fa509 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -1518,6 +1518,11 @@ int ufshcd_hold(struct ufs_hba *hba, bool async)
- 		 */
- 		if (ufshcd_can_hibern8_during_gating(hba) &&
- 		    ufshcd_is_link_hibern8(hba)) {
-+			if (async) {
-+				rc = -EAGAIN;
-+				hba->clk_gating.active_reqs--;
-+				break;
-+			}
- 			spin_unlock_irqrestore(hba->host->host_lock, flags);
- 			flush_work(&hba->clk_gating.ungate_work);
- 			spin_lock_irqsave(hba->host->host_lock, flags);
+@@ -91,6 +91,9 @@
+ /* default delay of autosuspend: 2000 ms */
+ #define RPM_AUTOSUSPEND_DELAY_MS 2000
+ 
++/* Default value of wait time before gating device ref clock */
++#define UFSHCD_REF_CLK_GATING_WAIT_US 0xFF /* microsecs */
++
+ #define ufshcd_toggle_vreg(_dev, _vreg, _on)				\
+ 	({                                                              \
+ 		int _ret;                                               \
+@@ -3281,6 +3284,31 @@ static inline int ufshcd_read_unit_desc_param(struct ufs_hba *hba,
+ 				      param_offset, param_read_buf, param_size);
+ }
+ 
++static int ufshcd_get_ref_clk_gating_wait(struct ufs_hba *hba)
++{
++	int err = 0;
++	u32 gating_wait = UFSHCD_REF_CLK_GATING_WAIT_US;
++
++	if (hba->dev_info.wspecversion >= 0x300) {
++		err = ufshcd_query_attr_retry(hba, UPIU_QUERY_OPCODE_READ_ATTR,
++				QUERY_ATTR_IDN_REF_CLK_GATING_WAIT_TIME, 0, 0,
++				&gating_wait);
++		if (err)
++			dev_err(hba->dev, "Failed reading bRefClkGatingWait. err = %d, use default %uus\n",
++					 err, gating_wait);
++
++		if (gating_wait == 0) {
++			gating_wait = UFSHCD_REF_CLK_GATING_WAIT_US;
++			dev_err(hba->dev, "Undefined ref clk gating wait time, use default %uus\n",
++					 gating_wait);
++		}
++	}
++
++	hba->dev_info.clk_gating_wait_us = gating_wait;
++
++	return err;
++}
++
+ /**
+  * ufshcd_memory_alloc - allocate memory for host memory space data structures
+  * @hba: per adapter instance
+@@ -6626,6 +6654,10 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
+ 	dev_info->wmanufacturerid = desc_buf[DEVICE_DESC_PARAM_MANF_ID] << 8 |
+ 				     desc_buf[DEVICE_DESC_PARAM_MANF_ID + 1];
+ 
++	/* getting Specification Version in big endian format */
++	dev_info->wspecversion = desc_buf[DEVICE_DESC_PARAM_SPEC_VER] << 8 |
++				      desc_buf[DEVICE_DESC_PARAM_SPEC_VER + 1];
++
+ 	model_index = desc_buf[DEVICE_DESC_PARAM_PRDCT_NAME];
+ 	err = ufshcd_read_string_desc(hba, model_index,
+ 				      &dev_info->model, SD_ASCII_STD);
+@@ -7003,6 +7035,8 @@ static int ufshcd_device_params_init(struct ufs_hba *hba)
+ 		goto out;
+ 	}
+ 
++	ufshcd_get_ref_clk_gating_wait(hba);
++
+ 	ufs_fixup_device_setup(hba);
+ 
+ 	if (!ufshcd_query_flag_retry(hba, UPIU_QUERY_OPCODE_READ_FLAG,
 -- 
 The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
 a Linux Foundation Collaborative Project
