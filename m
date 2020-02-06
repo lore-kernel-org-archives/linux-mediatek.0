@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-7.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,URIBL_DBL_ABUSE_MALW,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 72596C33CAC
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2020 06:57:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1EBCFC2D0B1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2020 06:58:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4029321741
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2020 06:57:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E355E206CC
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Feb 2020 06:58:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="diCrcpSz";
-	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="Obh68osp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4029321741
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mGG+zOTW";
+	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="K8F0nVDU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E355E206CC
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,42 +27,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=tKrNUPHq+TkqeAcs8oolTvi9Z/6SFmNXr75UnbmjtNU=; b=diCrcpSzSfzlozJ/R3kf1RVSPm
-	j6a+HMJw1D6OK3i2tgRoG1wSFNMA9/b6M/1zYv0V1OlwcO2eLjdBJg1XoeTCTAJEnsGr18EB3Pmjc
-	QntaK+T713UouGlmtMJwHnEMJNRpkGKazQammfVAsyY1wiqpOzbVB9CGRHr474kPzDp5OZ9R7fxTA
-	SO7UBml06yrM1KTGsOfhy3BeA7Vx5+dt45dqXBDHF35//JJ60631qgF5+R8jbyYnSu9qNnGRgKNGW
-	xYKxXwEUt7UiQJd3g8t4y0Xve+c7YhvguAxWG4GyAOxAp9UFWGFFrtHBJE8SaYgJTJWP13CWEf2LK
-	TOp3DLQg==;
+	bh=8D+0hYnSZ6tx8Q+eKfl7CeCozD8CawVTdPZ2ntcVIhY=; b=mGG+zOTWXuU2ec96MUHrHnW0YM
+	cdYHKU9NaPiL/uQ3XINv5q/Mu0N2Ef3xrSXlGKus1zo02MMpg0zOZU3IqkQsYJSbl2aAApY+FiM/l
+	asolK6bW0I4oGMG/sxUXIuCEwdpHzT7UtCeJVbq2eIA49Orf0KegrHvOCant7PDqbQ0PLMsKQmslA
+	emtatkONGGAXYQI9QvPB08YX432X7JWUMYJwRJsl658/1McBqzfKkNsKfXYHL6dsYP5RUEqCphPCv
+	/tGFbZ1BCOpKj+jMoCf4x+S8nKU9WWtL8YGxhQ2ebGyndwpmhxKqyMidE8o1crNINsC4wz/vnpig6
+	71pBNIeQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1izb6L-0002gn-T3; Thu, 06 Feb 2020 06:57:25 +0000
-Received: from mail25.static.mailgun.info ([104.130.122.25])
+	id 1izb71-0003Zw-Lc; Thu, 06 Feb 2020 06:58:07 +0000
+Received: from mail26.static.mailgun.info ([104.130.122.26])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1izb6H-0002ex-SX
- for linux-mediatek@lists.infradead.org; Thu, 06 Feb 2020 06:57:24 +0000
+ id 1izb6L-0002gC-C7
+ for linux-mediatek@lists.infradead.org; Thu, 06 Feb 2020 06:57:27 +0000
 DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
  q=dns/txt; 
- s=smtp; t=1580972243; h=References: In-Reply-To: Message-Id: Date:
+ s=smtp; t=1580972246; h=References: In-Reply-To: Message-Id: Date:
  Subject: Cc: To: From: Sender;
- bh=POhOlLHyX9kprQvl56dSDYTYibjR55MFDfQ2JGrYKXA=;
- b=Obh68ospleznSh2vz8QkN6MK67V8sEDBA4iRu8SC8PeDEW9vjdtuJ9YYgNSoWFgP+o0ira9p
- fZCx1f5doNFGwTAxfOx1bEBdLSV1yvPwzWOIM/yAghxGrWTrMAIkGj9OiTRFeoP6PSqbLvDO
- fD7Qnd+o5K3RKljmU2Az6p+0iJQ=
-X-Mailgun-Sending-Ip: 104.130.122.25
+ bh=Acsfsqg2b6NUDHJeY/gDJ1vlOSDS93J/sV1EZBqKdko=;
+ b=K8F0nVDUPbrIk58/5E/cuRqkwWeknVN8r5qOUiDV3D8aznDrQs0TEmt2X3gv0DbpmWyJDMsM
+ k6xIaDJiQrpf/KvVItRasYrV6rV6mcGNM0ahliMJjttnI85PI9XzjbA94sABEYGKPKuQE3hw
+ ZrxoQXjIglIWaDsmEoHpHIiYVFM=
+X-Mailgun-Sending-Ip: 104.130.122.26
 X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
 Received: from smtp.codeaurora.org
  (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
- by mxa.mailgun.org with ESMTP id 5e3bb8c7.7f5935685298-smtp-out-n03;
- Thu, 06 Feb 2020 06:57:11 -0000 (UTC)
+ by mxa.mailgun.org with ESMTP id 5e3bb8cf.7fcc8b230e68-smtp-out-n03;
+ Thu, 06 Feb 2020 06:57:19 -0000 (UTC)
 Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id D5CE7C447A6; Thu,  6 Feb 2020 06:57:09 +0000 (UTC)
+ id 9E7DEC4479C; Thu,  6 Feb 2020 06:57:18 +0000 (UTC)
 Received: from pacamara-linux.qualcomm.com (i-global254.qualcomm.com
  [199.106.103.254])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id A9EADC433CB;
- Thu,  6 Feb 2020 06:57:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org A9EADC433CB
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 475A5C433CB;
+ Thu,  6 Feb 2020 06:57:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 475A5C433CB
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
@@ -71,15 +71,16 @@ From: Can Guo <cang@codeaurora.org>
 To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
  rnayak@codeaurora.org, linux-scsi@vger.kernel.org, kernel-team@android.com,
  saravanak@google.com, salyzyn@google.com, cang@codeaurora.org
-Subject: [PATCH 2/8] scsi: ufs: set load before setting voltage in regulators
-Date: Wed,  5 Feb 2020 22:56:45 -0800
-Message-Id: <1580972212-29881-3-git-send-email-cang@codeaurora.org>
+Subject: [PATCH 5/8] scsi: ufs: Fix ufshcd_hold() caused scheduling while
+ atomic
+Date: Wed,  5 Feb 2020 22:56:48 -0800
+Message-Id: <1580972212-29881-6-git-send-email-cang@codeaurora.org>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1580972212-29881-1-git-send-email-cang@codeaurora.org>
 References: <1580972212-29881-1-git-send-email-cang@codeaurora.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200205_225723_117791_62E3471E 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20200205_225726_244395_2152EDB6 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,50 +110,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Asutosh Das <asutoshd@codeaurora.org>
+The async version of ufshcd_hold(async == true), which is only called
+in queuecommand path as for now, is expected to work in atomic context,
+thus it should not sleep or schedule out. When it runs into the condition
+that clocks are ON but link is still in hibern8 state, it should bail out
+without flushing the clock ungate work.
 
-This sequence change is required to avoid dips in voltage
-during boot-up.
-
-Apparently, this dip is caused because in the original
-sequence, the regulators are initialized in lpm mode.
-And then when the load is set to high, and more current
-is drawn, than is allowed in lpm, the dip is seen.
-
-Signed-off-by: Asutosh Das <asutoshd@codeaurora.org>
 Signed-off-by: Can Guo <cang@codeaurora.org>
 Reviewed-by: Hongwu Su <hongwus@codeaurora.org>
+Reviewed-by: Asutosh Das <asutoshd@codeaurora.org>
 Reviewed-by: Bean Huo <beanhuo@micron.com>
 Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
 
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 10dbc0c..83ae093 100644
+index bbc2607..e8f7f9d 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -7248,6 +7248,11 @@ static int ufshcd_config_vreg(struct device *dev,
- 	name = vreg->name;
- 
- 	if (regulator_count_voltages(reg) > 0) {
-+		uA_load = on ? vreg->max_uA : 0;
-+		ret = ufshcd_config_vreg_load(dev, vreg, uA_load);
-+		if (ret)
-+			goto out;
-+
- 		if (vreg->min_uV && vreg->max_uV) {
- 			min_uV = on ? vreg->min_uV : 0;
- 			ret = regulator_set_voltage(reg, min_uV, vreg->max_uV);
-@@ -7258,11 +7263,6 @@ static int ufshcd_config_vreg(struct device *dev,
- 				goto out;
- 			}
- 		}
--
--		uA_load = on ? vreg->max_uA : 0;
--		ret = ufshcd_config_vreg_load(dev, vreg, uA_load);
--		if (ret)
--			goto out;
- 	}
- out:
- 	return ret;
+@@ -1518,6 +1518,11 @@ int ufshcd_hold(struct ufs_hba *hba, bool async)
+ 		 */
+ 		if (ufshcd_can_hibern8_during_gating(hba) &&
+ 		    ufshcd_is_link_hibern8(hba)) {
++			if (async) {
++				rc = -EAGAIN;
++				hba->clk_gating.active_reqs--;
++				break;
++			}
+ 			spin_unlock_irqrestore(hba->host->host_lock, flags);
+ 			flush_work(&hba->clk_gating.ungate_work);
+ 			spin_lock_irqsave(hba->host->host_lock, flags);
 -- 
 The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
 a Linux Foundation Collaborative Project
