@@ -2,89 +2,85 @@ Return-Path: <SRS0=xfzx=33=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A268C35247
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 03:18:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C83C5C2D0B1
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 04:24:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5D0E4222C2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 03:18:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9B89922522
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 04:24:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FgVL5i3T";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=joelfernandes.org header.i=@joelfernandes.org header.b="njryT19l"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5D0E4222C2
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=joelfernandes.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bVqJTqx4";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="eiiOqXCQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9B89922522
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NAJYRaGNYtvAH1rDCMaTbq2D1J4NqK6GNF7NzsV4AFQ=; b=FgVL5i3T1I32pZ
-	HgmwJRy0/HNbXhpyeoWy0J5DsbsLPEcg+AYR8i4oYXnByngX6Rcu8DpfUfwsBMC+jYjgq7DWqkg2k
-	4KgTbgWvsPrUFbce/y+Uw1HLEPiEjNdo6cNTvBxtBESLQJDru8HrVzbXppu1LsvZCrKSCo5OxjAVd
-	j4GtZKBCIZVEh9nEz6EYgvfgdVQQ7rwFBOkMLoQ0HcV5g8LnMl35lljEjR9/Hwe+w+V8hQZwzorMI
-	Rpx2mC/+JMXr2YKdCJRsclxCOkqg9eaMaJgp922+EKpPqydJH189WdO0q4szn+OQvqGBOpwzab6fo
-	DIfdH1tT8ZwVW10N+FQw==;
+	List-Owner; bh=Yd4iaRe1V1PkLu+oFb+JChLAkhXpXJ3gnh+vbhgnMSw=; b=bVqJTqx4MEUo7Q
+	M/DUmmtkp4jyfsIK5MdkxQLZWAIQJ0jtMqiwI8qtRIzjtd1HqwGg/7WR70j2Il9afFVUVH12XLutj
+	/vNT7YyGiaDIACjqCxx/TvHdJ2lEqEfbbiejKVvXdasJko0FQB7nSwCBO6CyXcW3z7S2rlXacllFY
+	dVND+8g8tNLnEflRnA09upklZ630fLHFdNFKEwWNCKUgn/HYEh44i4Qw1gMcLJTXGv0ClE8SQHhLO
+	smNnoOCU9k+5MlDaoD0trTo9TXJEvY6u4JFLyzbK9Qtf+UBdRDojGRqzl0VvubpdTQpvQKR97zeuJ
+	/R1YED6L1S/dyuZXiwTQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1izu9c-00080y-VX; Fri, 07 Feb 2020 03:18:04 +0000
-Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43])
+	id 1izvBS-0003ib-JP; Fri, 07 Feb 2020 04:24:02 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1izu9Z-0007zo-Qb
- for linux-mediatek@lists.infradead.org; Fri, 07 Feb 2020 03:18:03 +0000
-Received: by mail-qv1-xf43.google.com with SMTP id y8so336339qvk.6
- for <linux-mediatek@lists.infradead.org>; Thu, 06 Feb 2020 19:18:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=joelfernandes.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=9YF6ecQRqIE8t6EFOJ14Q98ubnBBnPGkQjHTJTEVnLM=;
- b=njryT19l+gNefzd/NtXJh2y7d4uVNDu2lGxqqrFj+5JRr/tMid/zGMYHMMFWp9vnUJ
- sdPb0nZMzZeo/+BtndY/5T4deVJdCq+o8ZLBszI5Hf895CV5HaoiZ+CdadpbTrW4PFwy
- 8DxTjtnuVeSiS5BUkek/ESIwaGuF8VFCvwCIw=
+ id 1izvBP-0003hx-AY
+ for linux-mediatek@lists.infradead.org; Fri, 07 Feb 2020 04:24:00 +0000
+Received: by mail-pl1-x642.google.com with SMTP id p11so456924plq.10
+ for <linux-mediatek@lists.infradead.org>; Thu, 06 Feb 2020 20:23:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=t4CLMTIbjn78HyIw3MbTj9fsK/Q9HVmk1YRH08HvFW4=;
+ b=eiiOqXCQpKTTs3qcK0ClTRSeD0ED+jYP1J9vmKsXeIxVqH7nb3dGN8TXf1xmZgDlwZ
+ y2cRaE8wwKl+xqQwb9n1WEutzhlXPKh+ksiz8uU4xYzGVv9hHFpOq1Zh4lOqB+UysOVM
+ nlPGDQkicWj7hfppZ1DzZB4KXiZedkDnLILEc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=9YF6ecQRqIE8t6EFOJ14Q98ubnBBnPGkQjHTJTEVnLM=;
- b=LPYs+gs2v5cQWiWHC+OGQMA2oH6p3EdesgL0X7WdhIORk0+ByP6zv3S+bNi7WBEVQ/
- EyXObyTvXSMR181swB1s2SU6JIQHQsOcCzU5O09MlynhnfljMpwaaJ636Qhf4ZYnVnOy
- EbKLDlKjlT+k6T3pX5QicZlRn+mddEdkcy/4+vRl8aK8fFptB5SHJKo9z1cOb5t/qZ9J
- WxhpoveuIGnKgx1ivNa+lrEF9Ilq7/g+YBNMrjz+SgP+qlhabGT7BA0Ensu/glh9GS6p
- FVHy1DJa/z8HRL19CcSl/BsiYsJKwPJLrmnYtbE1nLWrShK3em97hPZwOqtvc7DCb2FH
- SPcA==
-X-Gm-Message-State: APjAAAUkmbtjc8LkiGUxlq3dMX8L344aIzeZkor0eU8yZmPgvxCHWRaq
- 6w0zrMtKQ4Rw2QajFcUejORbOw==
-X-Google-Smtp-Source: APXvYqwu46t0zjq5HVDEfaBuzKZbvsLDcdjKLvXTD1BwARDAOpYzs6XAsiSOqT4HXC7C/VWXZEQ6sw==
-X-Received: by 2002:ad4:496f:: with SMTP id p15mr5003458qvy.191.1581045480294; 
- Thu, 06 Feb 2020 19:18:00 -0800 (PST)
-Received: from localhost ([2620:15c:6:12:9c46:e0da:efbf:69cc])
- by smtp.gmail.com with ESMTPSA id c8sm723458qtp.13.2020.02.06.19.17.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Feb 2020 19:17:59 -0800 (PST)
-Date: Thu, 6 Feb 2020 22:17:59 -0500
-From: Joel Fernandes <joel@joelfernandes.org>
-To: Frankie Chang <Frankie.Chang@mediatek.com>
-Subject: Re: [PATCH v1 1/1] binder: transaction latency tracking for user build
-Message-ID: <20200207031759.GA121785@google.com>
-References: <1580885572-14272-1-git-send-email-Frankie.Chang@mediatek.com>
- <20200205093612.GA1167956@kroah.com>
- <20200205154943.GE142103@google.com>
- <1581045023.22229.46.camel@mtkswgap22>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=t4CLMTIbjn78HyIw3MbTj9fsK/Q9HVmk1YRH08HvFW4=;
+ b=PtrXNcofiuAcUvuSa0ThLj4E1WQcoITFuMDPnCRtjlQmt1q5f5lEsfLDpcuGDiv2kL
+ 1LellYuo3AeLcTNNR6woBp7HzmRanVmSwiPQc4r3AA+nyJ5M8yfnhjumEdf1IWq47tov
+ +x/4QL0XidrmFQQwS0L1Mf1BbbOwmUF5w/mrT6NR9JCugFyNd7Z7cJXxMFEs0Pt9ZGyM
+ LaCJf24V4+1cgb5yOL62mjG2noo5GMheg90dafY3uiWfvSVAp2PyUuoYoV+cTINqpErD
+ 4RUkHkVofCRJWOjfFztOl8MenGTu96Xm0JA2GohUp2s8fuWLDbC00oMkvcGXRwz5E2BF
+ H35A==
+X-Gm-Message-State: APjAAAWolFneNAG3RVq7pPKCxhO5jCXjHWPXFKObIaBmRwNZCmqkPG9g
+ OtIwp5Xg/54IHY4ZSHkspR6Hqw==
+X-Google-Smtp-Source: APXvYqxiM3mqXCuN//rbnMylmv3QEfgT2tAo0lrKJQKSE7Su2Tg5GR9a9AXOc66j0jtTmDYhbnQnRw==
+X-Received: by 2002:a17:90a:3ae5:: with SMTP id
+ b92mr1540962pjc.26.1581049438091; 
+ Thu, 06 Feb 2020 20:23:58 -0800 (PST)
+Received: from localhost ([2401:fa00:9:14:1105:3e8a:838d:e326])
+ by smtp.gmail.com with ESMTPSA id v7sm950245pfn.61.2020.02.06.20.23.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 06 Feb 2020 20:23:57 -0800 (PST)
+From: Evan Benn <evanbenn@chromium.org>
+To: dri-devel@lists.freedesktop.org
+Subject: [PATCH] drm/mediatek: Find the cursor plane instead of hard coding it
+Date: Fri,  7 Feb 2020 15:23:51 +1100
+Message-Id: <20200207152348.1.Ie0633018fc787dda6e869cae23df76ae30f2a686@changeid>
+X-Mailer: git-send-email 2.25.0.341.g760bfbb309-goog
+In-Reply-To: <20200206140140.GA18465@art_vandelay>
+References: <20200206140140.GA18465@art_vandelay>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1581045023.22229.46.camel@mtkswgap22>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200206_191801_866533_275F52E8 
-X-CRM114-Status: GOOD (  26.75  )
+X-CRM114-CacheID: sfid-20200206_202359_386915_D7B86495 
+X-CRM114-Status: GOOD (  10.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,147 +92,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Todd Kjos <tkjos@android.com>, wsd_upstream@mediatek.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Jian-Min.Liu@mediatek.com, linux-mediatek@lists.infradead.org,
- Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>
+Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
+ Evan Benn <evanbenn@chromium.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 07, 2020 at 11:10:23AM +0800, Frankie Chang wrote:
-> On Wed, 2020-02-05 at 10:49 -0500, Joel Fernandes wrote:
-> > On Wed, Feb 05, 2020 at 09:36:12AM +0000, Greg Kroah-Hartman wrote:
-> > > On Wed, Feb 05, 2020 at 02:52:52PM +0800, Frankie Chang wrote:
-> > > > Record start/end timestamp to binder transaction.
-> > > > When transaction is completed or transaction is free,
-> > > > it would be checked if transaction latency over threshold (2 sec),
-> > > > if yes, printing related information for tracing.
-> > > > 
-> > > > Signed-off-by: Frankie Chang <Frankie.Chang@mediatek.com>
-> > > > ---
-> > > >  drivers/android/Kconfig           |    8 +++
-> > > >  drivers/android/binder.c          |  107 +++++++++++++++++++++++++++++++++++++
-> > > >  drivers/android/binder_internal.h |    4 ++
-> > > >  3 files changed, 119 insertions(+)
-> > > > 
-> > > > diff --git a/drivers/android/Kconfig b/drivers/android/Kconfig
-> > > > index 6fdf2ab..7ba80eb 100644
-> > > > --- a/drivers/android/Kconfig
-> > > > +++ b/drivers/android/Kconfig
-> > > > @@ -54,6 +54,14 @@ config ANDROID_BINDER_IPC_SELFTEST
-> > > >  	  exhaustively with combinations of various buffer sizes and
-> > > >  	  alignments.
-> > > >  
-> > > > +config BINDER_USER_TRACKING
-> > > > +	bool "Android Binder transaction tracking"
-> > > > +	help
-> > > > +	  Used for track abnormal binder transaction which is over 2 seconds,
-> > > > +	  when the transaction is done or be free, this transaction would be
-> > > > +	  checked whether it executed overtime.
-> > > > +	  If yes, printing out the detail info about it.
-> > > > +
-> > > >  endif # if ANDROID
-> > > >  
-> > > >  endmenu
-> > > > diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> > > > index e9bc9fc..5a352ee 100644
-> > > > --- a/drivers/android/binder.c
-> > > > +++ b/drivers/android/binder.c
-> > > > @@ -76,6 +76,11 @@
-> > > >  #include "binder_internal.h"
-> > > >  #include "binder_trace.h"
-> > > >  
-> > > > +#ifdef CONFIG_BINDER_USER_TRACKING
-> > > > +#include <linux/rtc.h>
-> > > > +#include <linux/time.h>
-> > > > +#endif
-> > > > +
-> > > >  static HLIST_HEAD(binder_deferred_list);
-> > > >  static DEFINE_MUTEX(binder_deferred_lock);
-> > > >  
-> > > > @@ -591,8 +596,104 @@ struct binder_transaction {
-> > > >  	 * during thread teardown
-> > > >  	 */
-> > > >  	spinlock_t lock;
-> > > > +#ifdef CONFIG_BINDER_USER_TRACKING
-> > > > +	struct timespec timestamp;
-> > > > +	struct timeval tv;
-> > > > +#endif
-> > > >  };
-> > > >  
-> > > > +#ifdef CONFIG_BINDER_USER_TRACKING
-> > > > +
-> > > > +/*
-> > > > + * binder_print_delay - Output info of a delay transaction
-> > > > + * @t:          pointer to the over-time transaction
-> > > > + */
-> > > > +static void binder_print_delay(struct binder_transaction *t)
-> > > > +{
-> > > > +	struct rtc_time tm;
-> > > > +	struct timespec *startime;
-> > > > +	struct timespec cur, sub_t;
-> > > > +
-> > > > +	ktime_get_ts(&cur);
-> > > > +	startime = &t->timestamp;
-> > > > +	sub_t = timespec_sub(cur, *startime);
-> > > > +
-> > > > +	/* if transaction time is over than 2 sec,
-> > > > +	 * show timeout warning log.
-> > > > +	 */
-> > > > +	if (sub_t.tv_sec < 2)
-> > > > +		return;
-> > > > +
-> > > > +	rtc_time_to_tm(t->tv.tv_sec, &tm);
-> > > > +
-> > > > +	spin_lock(&t->lock);
-> > > > +	pr_info_ratelimited("%d: from %d:%d to %d:%d",
-> > > > +			    t->debug_id,
-> > > > +			    t->from ? t->from->proc->pid : 0,
-> > > > +			    t->from ? t->from->pid : 0,
-> > > > +			    t->to_proc ? t->to_proc->pid : 0,
-> > > > +			    t->to_thread ? t->to_thread->pid : 0);
-> > > > +	spin_unlock(&t->lock);
-> > > > +
-> > > > +	pr_info_ratelimited(" total %u.%03ld s code %u start %lu.%03ld android %d-%02d-%02d %02d:%02d:%02d.%03lu\n",
-> > > > +			    (unsigned int)sub_t.tv_sec,
-> > > > +			    (sub_t.tv_nsec / NSEC_PER_MSEC),
-> > > > +			    t->code,
-> > > > +			    (unsigned long)startime->tv_sec,
-> > > > +			    (startime->tv_nsec / NSEC_PER_MSEC),
-> > > > +			    (tm.tm_year + 1900), (tm.tm_mon + 1), tm.tm_mday,
-> > > > +			    tm.tm_hour, tm.tm_min, tm.tm_sec,
-> > > > +			    (unsigned long)(t->tv.tv_usec / USEC_PER_MSEC));
-> > > > +}
-> > > 
-> > > Ick, why not use a tracepoint for this instead?
-> > > 
-> > > And what is userspace supposed to do with this if they see it?
-> > 
-> > Or another option is to implement this separately outside of binder.c using
-> > register_trace_* on the existing binder tracepoints, similar to what say the
-> > block tracer or preempt-off tracers do. Call it, say, "binder-latency tracer".
-> > 
-> > That way all of this tracing code is in-kernel but outside of binder.c.
-> > 
-> > thanks,
-> > 
-> >  - Joel
-> > 
-> Time limitation of recording is the reason why we don't use tracepoint.
-> In some situations, the exception is caused by a series of transactions
-> interaction.
-> Some abnormal transactions may be pending for a long time ago, they
-> could not be recorded due to buffer limited.
+The cursor and primary planes were hard coded.
+Now search for them for passing to drm_crtc_init_with_planes
 
-register_trace_* does not use the trace buffer so I am not sure what you
-mean. I am asking you to use tracepoints, not ftrace events.
+Signed-off-by: Evan Benn <evanbenn@chromium.org>
+---
 
-thanks,
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
 
- - Joel
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 7b392d6c71cc..935652990afa 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -658,10 +658,18 @@ static const struct drm_crtc_helper_funcs mtk_crtc_helper_funcs = {
+ 
+ static int mtk_drm_crtc_init(struct drm_device *drm,
+ 			     struct mtk_drm_crtc *mtk_crtc,
+-			     struct drm_plane *primary,
+-			     struct drm_plane *cursor, unsigned int pipe)
++			     unsigned int pipe)
+ {
+-	int ret;
++	struct drm_plane *primary = NULL;
++	struct drm_plane *cursor = NULL;
++	int i, ret;
++
++	for (i = 0; i < mtk_crtc->layer_nr; i++) {
++		if (mtk_crtc->planes[i].type == DRM_PLANE_TYPE_PRIMARY)
++			primary = &mtk_crtc->planes[i];
++		else if (mtk_crtc->planes[i].type == DRM_PLANE_TYPE_CURSOR)
++			cursor = &mtk_crtc->planes[i];
++	}
+ 
+ 	ret = drm_crtc_init_with_planes(drm, &mtk_crtc->base, primary, cursor,
+ 					&mtk_crtc_funcs, NULL);
+@@ -830,9 +838,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 			return ret;
+ 	}
+ 
+-	ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, &mtk_crtc->planes[0],
+-				mtk_crtc->layer_nr > 1 ? &mtk_crtc->planes[1] :
+-				NULL, pipe);
++	ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, pipe);
+ 	if (ret < 0)
+ 		return ret;
+ 
+-- 
+2.25.0.341.g760bfbb309-goog
 
 
 _______________________________________________
