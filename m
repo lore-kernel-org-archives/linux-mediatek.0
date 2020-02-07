@@ -2,58 +2,83 @@ Return-Path: <SRS0=xfzx=33=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 49CF7C04EB5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 13:53:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D6BD2C04EB5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 14:26:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1DC6220720
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 13:53:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A5BA2214AF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 14:26:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NaUsFS+B"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1DC6220720
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jvf6w++T";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="RVsKo6am"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A5BA2214AF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=c6U2kJg9lt3pIHCOLeOdrr5YXw4N4WFCF/4pi6W8oWc=; b=NaUsFS+BkqHC/9X+X6Z4lrAiD
-	nwlgoNp6NOvs3zRu+LexxkzUS2DreCz73fokNKJkmVCuxXmz4fq0W8SLQd+CplObrZ9+nzRqiD6wh
-	jUMEyah4lhiGtOYej7YFtDEv+4A7nWZl6LNsIPo6PmJCFjPKI6M+h9zs4hxun75tce+ENAQmRW1mv
-	qnGpX7W4X08XOh9bRh+lIP5+UU+1IFE1upIrNuW+fgvm7oHxiT1ID2o4m/8iz7PIgr/rp+nKFXTFf
-	U7PXMJPFcfhkJOAwOkekMsWlYatexD10Yja2JFfEYowp1PE+kvVyHXsYRSmCjMckeW17UM744LHgk
-	5manPzLtg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4iu9Bang3zc4h8L8UypX0hhF/rVb940ESgHHrdpBkgw=; b=jvf6w++TSJBSr7
+	YgeITxDJxcTgPF1ct1WMLsXRbS8LdO8Lz+i5e/qDDrjnSXaoJkoJSoaUX8BKKaYpPZslvhfqtykNh
+	eXVuZuyDyGTmUqY20wbG2OwOElGKaoKQLkOyaOY7nuK7BeTj4ky6pG4Be5RJS8Gl4cXt6RWmV/mM9
+	3Yz+/MUGZMavfo28freeQS+eGcKCT5tRf6p+znEOWyk+KwcBrSXyKiiC1q+pLoFvyviIl/4wr9tgc
+	04ce+g0R79axD8jxdRCuI+L5yXfcaKNurNLKsijgfDFoya39zy4YJnwplnvQ2nTpl9DxDeaBPTCEG
+	Eao0eFao4Qsc25RryyFA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j044B-000139-Rz; Fri, 07 Feb 2020 13:53:07 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1j04aQ-0004sA-LS; Fri, 07 Feb 2020 14:26:26 +0000
+Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j0444-0000wI-2Y; Fri, 07 Feb 2020 13:53:01 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: alyssa) with ESMTPSA id 0478629567D
-Date: Fri, 7 Feb 2020 08:52:51 -0500
-From: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
-To: Nicolas Boichat <drinkcat@chromium.org>
-Subject: Re: [PATCH v4 5/7] drm/panfrost: Add support for multiple power
- domains
-Message-ID: <20200207135251.GA2952@kevin>
+ id 1j04aH-0004jv-DT
+ for linux-mediatek@lists.infradead.org; Fri, 07 Feb 2020 14:26:20 +0000
+Received: by mail-ua1-x944.google.com with SMTP id o42so930788uad.10
+ for <linux-mediatek@lists.infradead.org>; Fri, 07 Feb 2020 06:26:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Mx9ECjfNlENLsB8AuDhvIZ40Y4vAEl7vLu8G7oMl5Mw=;
+ b=RVsKo6amiSr5Aqo29IMdZvq4NC3MIh2yKZrItj3W3BKh7ZRwBATHvr4XIgGq+HWW0y
+ 1Fk/SH5nrIHDirlwzfet3RgfBhucXkS0+hipka6wEoWpsnCFCbGNtUIgbjjHHEGIbrgG
+ YDhyvQT+oFOomZzdKEhLZiCck97MtYsh4EToH3bkWu2QIGpPMr1vfCLcKgqcGdCIW8x+
+ R0PhxilGs2b1/vLxsndT/aPTEIROcvMQ0qFs7PwgR5awpgkEs9kN0TUgtcVAwxSNLa8N
+ 4Gmi8Rb40AgftqM7q6WG4peMXB/XUM6ZJJ8cELLN/QEwf8p6eCOxOm/yvv4kiWYM4nci
+ zvlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Mx9ECjfNlENLsB8AuDhvIZ40Y4vAEl7vLu8G7oMl5Mw=;
+ b=bv93k4RtSkRhihIszsET/wNLZPqwgROBxrYsYhmODXV37CjEKX7syK/QDfhvuE7Put
+ hTCIbiHDLPkAB64dGW7jT5WojfwlJwUoAWT1WRpJ1RIJvKhYTL3XNCJTPAtLH8wwOEXM
+ U2GnMzuGfjlc2Ybvpu9v9PHpLh34+odzZWcccmNo8PE2tnBQtgjx8stIHyCNB4I1IIRM
+ PMIelaJcqAgeXt3D50T+1FdFGf2RyeEHiF/Cnw3E0cALSMnQrurk5LLstmMyZ68AzpwO
+ ChcWLIh8jb4ammsYKG3f/ODh2Yy5RDI5XHxgBuETSYNaRbBt6qydtiHcVskwK0Cw1oEw
+ +5dw==
+X-Gm-Message-State: APjAAAV47nuPWb23+hsNsyJAT5mHprBgMLF9ywvWxAUaN2n+XgYXHO8m
+ yX0XYs3uod8po9ZbDZ+cBPs9s8HWocIHiEieseimFw==
+X-Google-Smtp-Source: APXvYqw82mjBwreczPiQ8M1VhMO9zp9ILdm/YdrZXThljZ80bt7p7iJEl0CFjYXuJ6z5wNz1z6zuf+PRYxSRmbRmNSw=
+X-Received: by 2002:ab0:7802:: with SMTP id x2mr4808449uaq.100.1581085576006; 
+ Fri, 07 Feb 2020 06:26:16 -0800 (PST)
+MIME-Version: 1.0
 References: <20200207052627.130118-1-drinkcat@chromium.org>
  <20200207052627.130118-6-drinkcat@chromium.org>
-MIME-Version: 1.0
 In-Reply-To: <20200207052627.130118-6-drinkcat@chromium.org>
-User-Agent: Mutt/1.12.2 (2019-09-21)
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Fri, 7 Feb 2020 15:25:40 +0100
+Message-ID: <CAPDyKFoz0gUkoofWkd6dFuOkRWqeeCDrv84UHyYYowAAgTiitw@mail.gmail.com>
+Subject: Re: [PATCH v4 5/7] drm/panfrost: Add support for multiple power
+ domains
+To: Nicolas Boichat <drinkcat@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200207_055300_248437_46FFA728 
-X-CRM114-Status: UNSURE (   7.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200207_062618_529100_1AA9CC9E 
+X-CRM114-Status: GOOD (  28.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,71 +90,280 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- ulf.hansson@linaro.org, Tomeu Vizoso <tomeu.vizoso@collabora.com>,
- David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
+Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>,
+ Tomeu Vizoso <tomeu.vizoso@collabora.com>, David Airlie <airlied@linux.ie>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
  Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
- dri-devel@lists.freedesktop.org, Steven Price <steven.price@arm.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, hsinyi@chromium.org,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Steven Price <steven.price@arm.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============5668893989507023910=="
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, 7 Feb 2020 at 06:27, Nicolas Boichat <drinkcat@chromium.org> wrote:
+>
+> When there is a single power domain per device, the core will
+> ensure the power domain is switched on (so it is technically
+> equivalent to having not power domain specified at all).
+>
+> However, when there are multiple domains, as in MT8183 Bifrost
+> GPU, we need to handle them in driver code.
+>
+> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
 
---===============5668893989507023910==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="VbJkn9YxBvnuCH5J"
-Content-Disposition: inline
+Besides a minor nitpick, feel free to add:
 
+Reviewed-by: Ulf Hansson <ulf.hansson@linaro.org>
 
---VbJkn9YxBvnuCH5J
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Kind regards
+Uffe
 
-> +	for (i = 0; i < ARRAY_SIZE(pfdev->pm_domain_devs); i++) {
-> +		if (!pfdev->pm_domain_devs[i])
-> +			break;
+>
+> ---
+>
+> The downstream driver we use on chromeos-4.19 currently uses 2
+> additional devices in device tree to accomodate for this [1], but
+> I believe this solution is cleaner.
+>
+> [1] https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-4.19/drivers/gpu/arm/midgard/platform/mediatek/mali_kbase_runtime_pm.c#31
+>
+> v4:
+>  - Match the exact power domain names as specified in the compatible
+>    struct, instead of just matching the number of power domains.
+>    [Review: Ulf Hansson]
+>  - Dropped print and reordered function [Review: Steven Price]
+>  - nits: Run through latest version of checkpatch:
+>    - Use WARN instead of BUG_ON.
+>    - Drop braces for single expression if block.
+> v3:
+>  - Use the compatible matching data to specify the number of power
+>    domains. Note that setting 0 or 1 in num_pm_domains is equivalent
+>    as the core will handle these 2 cases in the exact same way
+>    (automatically, without driver intervention), and there should
+>    be no adverse consequence in this case (the concern is about
+>    switching on only some power domains and not others).
+>
+>  drivers/gpu/drm/panfrost/panfrost_device.c | 97 ++++++++++++++++++++--
+>  drivers/gpu/drm/panfrost/panfrost_device.h | 11 +++
+>  drivers/gpu/drm/panfrost/panfrost_drv.c    |  2 +
+>  3 files changed, 102 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_device.c b/drivers/gpu/drm/panfrost/panfrost_device.c
+> index 3720d50f6d9f965..8136babd3ba9935 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_device.c
+> +++ b/drivers/gpu/drm/panfrost/panfrost_device.c
+> @@ -5,6 +5,7 @@
+>  #include <linux/clk.h>
+>  #include <linux/reset.h>
+>  #include <linux/platform_device.h>
+> +#include <linux/pm_domain.h>
+>  #include <linux/regulator/consumer.h>
+>
+>  #include "panfrost_device.h"
+> @@ -120,6 +121,79 @@ static void panfrost_regulator_fini(struct panfrost_device *pfdev)
+>                         pfdev->regulators);
+>  }
+>
+> +static void panfrost_pm_domain_fini(struct panfrost_device *pfdev)
+> +{
+> +       int i;
+> +
+> +       for (i = 0; i < ARRAY_SIZE(pfdev->pm_domain_devs); i++) {
+> +               if (!pfdev->pm_domain_devs[i])
+> +                       break;
+> +
+> +               if (pfdev->pm_domain_links[i])
+> +                       device_link_del(pfdev->pm_domain_links[i]);
+> +
+> +               dev_pm_domain_detach(pfdev->pm_domain_devs[i], true);
+> +       }
+> +}
+> +
+> +static int panfrost_pm_domain_init(struct panfrost_device *pfdev)
+> +{
+> +       int err;
+> +       int i, num_domains;
+> +
+> +       num_domains = of_count_phandle_with_args(pfdev->dev->of_node,
+> +                                                "power-domains",
+> +                                                "#power-domain-cells");
+> +
+> +       /*
+> +        * Single domain is handled by the core, and, if only a single power
+> +        * the power domain is requested, the property is optional.
+> +        */
+> +       if (num_domains < 2 && pfdev->comp->num_pm_domains < 2)
+> +               return 0;
+> +
+> +       if (num_domains != pfdev->comp->num_pm_domains) {
+> +               dev_err(pfdev->dev,
+> +                       "Incorrect number of power domains: %d provided, %d needed\n",
+> +                       num_domains, pfdev->comp->num_pm_domains);
+> +               return -EINVAL;
+> +       }
+> +
+> +       if (WARN(num_domains > ARRAY_SIZE(pfdev->pm_domain_devs),
+> +                       "Too many supplies in compatible structure.\n"))
 
-I'm not totally familiar with this code, but should this be a break or
-just a continue?
+Nitpick:
+Not sure this deserves a WARN. Perhaps a regular dev_err() is sufficient.
 
-
---VbJkn9YxBvnuCH5J
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEQ17gm7CvANAdqvY4/v5QWgr1WA0FAl49a6kACgkQ/v5QWgr1
-WA1bjxAAnLaxUD3zjRv8cz282ucvOS+zEVrsYCEtVHJXAXsVa6qH9W4rTswmRCnU
-0xfwIFqVmUch1QzZgxsqX42RrVZPNU20eN1qspQgEfXnIttVsTSzvgnEwHw22TCn
-nr/f+tKDnIRFzz4PZ9ywTyzLBJNYJwR00QoMKTg//184tvoAWDrm0k0h7iVx7X96
-mymCuf6jWpfB24TlTTvcXTCDUcoPVWZqJ1rppHtVV10E0a6VRKRURli75q6d4uBU
-T4yqc02JSUvyaOm8KF5LNce0FOGeEMiQFfEG4jRP1y5FYVuPOoJciB3Gtv7JSeaa
-Tg0PCBs7BYNbIlkLcxYyPjnwD60L5l1IxD5lKzF0DJJucuqoRQP1gpz5kZaLmEOj
-kvXi8P0Bx87ZaF2ghgX+l/IKFLiwHpLfE4BzG6VMLUSE/Nher4Tcvz7+3AbsTBhD
-pJ5tcommgF4KYUkEZ7rfNDD1G5f6h+c7yNMpeUOIadPyMY47NIpr3TBCpZJGiJ02
-nSwt3k/7Y5Hig0OZxypHVgqyBD3FycMPoQpelBC4/gZH4w59DKlE42VBqc8977m/
-dv1vv3QPS0w0RNKO4FnH+N63RnHovNNsUbNAsQkS7GldSGnbCQymGHXRniSdO7XT
-cbs14xJbzZ09gdyTGmybAsL1RKMT1YqGG1/3RSeS7bSOwyFX8Wg=
-=dMt0
------END PGP SIGNATURE-----
-
---VbJkn9YxBvnuCH5J--
-
-
---===============5668893989507023910==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> +               return -EINVAL;
+> +
+> +       for (i = 0; i < num_domains; i++) {
+> +               pfdev->pm_domain_devs[i] =
+> +                       dev_pm_domain_attach_by_name(pfdev->dev,
+> +                                       pfdev->comp->pm_domain_names[i]);
+> +               if (IS_ERR_OR_NULL(pfdev->pm_domain_devs[i])) {
+> +                       err = PTR_ERR(pfdev->pm_domain_devs[i]) ? : -ENODATA;
+> +                       pfdev->pm_domain_devs[i] = NULL;
+> +                       dev_err(pfdev->dev,
+> +                               "failed to get pm-domain %s(%d): %d\n",
+> +                               pfdev->comp->pm_domain_names[i], i, err);
+> +                       goto err;
+> +               }
+> +
+> +               pfdev->pm_domain_links[i] = device_link_add(pfdev->dev,
+> +                               pfdev->pm_domain_devs[i], DL_FLAG_PM_RUNTIME |
+> +                               DL_FLAG_STATELESS | DL_FLAG_RPM_ACTIVE);
+> +               if (!pfdev->pm_domain_links[i]) {
+> +                       dev_err(pfdev->pm_domain_devs[i],
+> +                               "adding device link failed!\n");
+> +                       err = -ENODEV;
+> +                       goto err;
+> +               }
+> +       }
+> +
+> +       return 0;
+> +
+> +err:
+> +       panfrost_pm_domain_fini(pfdev);
+> +       return err;
+> +}
+> +
+>  int panfrost_device_init(struct panfrost_device *pfdev)
+>  {
+>         int err;
+> @@ -150,37 +224,43 @@ int panfrost_device_init(struct panfrost_device *pfdev)
+>                 goto err_out1;
+>         }
+>
+> +       err = panfrost_pm_domain_init(pfdev);
+> +       if (err)
+> +               goto err_out2;
+> +
+>         res = platform_get_resource(pfdev->pdev, IORESOURCE_MEM, 0);
+>         pfdev->iomem = devm_ioremap_resource(pfdev->dev, res);
+>         if (IS_ERR(pfdev->iomem)) {
+>                 dev_err(pfdev->dev, "failed to ioremap iomem\n");
+>                 err = PTR_ERR(pfdev->iomem);
+> -               goto err_out2;
+> +               goto err_out3;
+>         }
+>
+>         err = panfrost_gpu_init(pfdev);
+>         if (err)
+> -               goto err_out2;
+> +               goto err_out3;
+>
+>         err = panfrost_mmu_init(pfdev);
+>         if (err)
+> -               goto err_out3;
+> +               goto err_out4;
+>
+>         err = panfrost_job_init(pfdev);
+>         if (err)
+> -               goto err_out4;
+> +               goto err_out5;
+>
+>         err = panfrost_perfcnt_init(pfdev);
+>         if (err)
+> -               goto err_out5;
+> +               goto err_out6;
+>
+>         return 0;
+> -err_out5:
+> +err_out6:
+>         panfrost_job_fini(pfdev);
+> -err_out4:
+> +err_out5:
+>         panfrost_mmu_fini(pfdev);
+> -err_out3:
+> +err_out4:
+>         panfrost_gpu_fini(pfdev);
+> +err_out3:
+> +       panfrost_pm_domain_fini(pfdev);
+>  err_out2:
+>         panfrost_reset_fini(pfdev);
+>  err_out1:
+> @@ -196,6 +276,7 @@ void panfrost_device_fini(struct panfrost_device *pfdev)
+>         panfrost_job_fini(pfdev);
+>         panfrost_mmu_fini(pfdev);
+>         panfrost_gpu_fini(pfdev);
+> +       panfrost_pm_domain_fini(pfdev);
+>         panfrost_reset_fini(pfdev);
+>         panfrost_regulator_fini(pfdev);
+>         panfrost_clk_fini(pfdev);
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_device.h b/drivers/gpu/drm/panfrost/panfrost_device.h
+> index c9468bc5573ac9d..c30c719a805940a 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_device.h
+> +++ b/drivers/gpu/drm/panfrost/panfrost_device.h
+> @@ -21,6 +21,7 @@ struct panfrost_perfcnt;
+>
+>  #define NUM_JOB_SLOTS 3
+>  #define MAX_REGULATORS 2
+> +#define MAX_PM_DOMAINS 3
+>
+>  struct panfrost_features {
+>         u16 id;
+> @@ -61,6 +62,13 @@ struct panfrost_compatible {
+>         /* Supplies count and names. */
+>         int num_supplies;
+>         const char * const *supply_names;
+> +       /*
+> +        * Number of power domains required, note that values 0 and 1 are
+> +        * handled identically, as only values > 1 need special handling.
+> +        */
+> +       int num_pm_domains;
+> +       /* Only required if num_pm_domains > 1. */
+> +       const char * const *pm_domain_names;
+>  };
+>
+>  struct panfrost_device {
+> @@ -73,6 +81,9 @@ struct panfrost_device {
+>         struct clk *bus_clock;
+>         struct regulator_bulk_data regulators[MAX_REGULATORS];
+>         struct reset_control *rstc;
+> +       /* pm_domains for devices with more than one. */
+> +       struct device *pm_domain_devs[MAX_PM_DOMAINS];
+> +       struct device_link *pm_domain_links[MAX_PM_DOMAINS];
+>
+>         struct panfrost_features features;
+>         const struct panfrost_compatible *comp;
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
+> index 4d08507526239f2..a6e162236d67fdf 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
+> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
+> @@ -663,6 +663,8 @@ const char * const default_supplies[] = { "mali" };
+>  static const struct panfrost_compatible default_data = {
+>         .num_supplies = ARRAY_SIZE(default_supplies),
+>         .supply_names = default_supplies,
+> +       .num_pm_domains = 1, /* optional */
+> +       .pm_domain_names = NULL,
+>  };
+>
+>  static const struct of_device_id dt_match[] = {
+> --
+> 2.25.0.341.g760bfbb309-goog
+>
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============5668893989507023910==--
-
