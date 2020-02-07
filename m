@@ -2,83 +2,87 @@ Return-Path: <SRS0=xfzx=33=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B4ECDC2BA83
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 17:29:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D2A7C2BA83
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 18:15:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 76EF92082E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 17:29:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3459520726
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 18:15:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VWXm4ux+";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=poorly.run header.i=@poorly.run header.b="JiDfGPDA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 76EF92082E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=poorly.run
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AEx3ILKA";
+	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="VZoCYMqp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3459520726
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nqOQxOvAJxSSrWnDVA8lNMSUNK2oSkbnng6JU0iWMFU=; b=VWXm4ux+etbKks
-	80WTA1Z2xKDbJHISYDue0dDtEb9LQIWTDYGeJpNCI8MWDuHaOn0BeEW/mvcUqIUQYG5mwbGCaClQG
-	7BuOczzJrFppFavMD7cTSuVMdKJOy+xdsdrrQNFF/CWTqawQugLbKZ7XvuoV0x6MKGxoBnM9JK/vX
-	JhiQRJzU38nraT9Eax/GDQbmDsvPo37+g7AXaeW5KEROS0vR/25W1Ka3jVEiDLJo7PEhZepVXc9BG
-	X63eHXhls5lG0KoB3p3WNuCpZaU8wDqmMXdNr59y+KeijhSCTxxX6H1tsflneBk0EdImBnHolLJtf
-	vWUu0MFebrVwranuHVIA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=JLwYSdbdMEZ0PBYWhUJtqMRFyBAcjqJiY+idv25q9eg=; b=AEx3ILKAjZ3x2Vq58HMKpoxs1
+	zZX96WfVavujVXSgd5gereAz+bfuIK0pBDk8OQ/XvZUZp10tQF6Y/EUSRIQqvfcExLb7O+AGeTv2y
+	+wLp/OqsHKp0MOpi3HQKpzlCnk7lYeMlVvE8wVJP7Q2P9VwBit1xvpkCcL7caTTxfKeKwFum4xjfU
+	vsXAvSTvGZZJcm8F6gTKyGmonLbmEvU8FWJz61LZ/DKk6pXlkrwfSwzIqZFLpcDG/ruTmTFCraS9q
+	zeYg7sV/5xcf+CDC3bj0d1aTaiormVuT6tBJsON2nDjM3kySG6PrfK4I/EwQmCFmSeP1XlALZihRJ
+	7L3oLuAMg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j07RA-00023l-MR; Fri, 07 Feb 2020 17:29:04 +0000
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143])
+	id 1j089Y-0000JM-RD; Fri, 07 Feb 2020 18:14:56 +0000
+Received: from mail25.static.mailgun.info ([104.130.122.25])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j07R7-00022v-MH
- for linux-mediatek@lists.infradead.org; Fri, 07 Feb 2020 17:29:03 +0000
-Received: by mail-il1-x143.google.com with SMTP id p8so165228iln.12
- for <linux-mediatek@lists.infradead.org>; Fri, 07 Feb 2020 09:29:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=poorly.run; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=SQthra+5Tb+MdByAUBovPY1PsDx5TneOE+jweSiM4d0=;
- b=JiDfGPDAovB+nWhtAim+Qoa8yJlNkdbELjctfRTRJacs8IQcvDG9LBHzFe9BQE3eQv
- dUOCXG2MkvMvtLIh2LL+PXl2A83qDPOOQrPwvxURTxkykvPzQq6O5rtHvJNfil+Wn/Bo
- 26tHe3ii1y1hyDj1HOvXvj+PTlB10z9cnA5mkIB6LDRdAOD0NxM3SbGze+LUNFmHgViB
- CyLR7MuxG0ICSeU2tg1kFLHrIKcn4LFjnwP1nfxJIN8EEMoKzlCYC4AZ2/cC3ObGDdgc
- +RCPQknvTwh8bsAvfydBTTSoj58aGw3qrXn7mVRUyXM3ddYoZ1mUnVg0ap2PgDZLn/8d
- xo4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=SQthra+5Tb+MdByAUBovPY1PsDx5TneOE+jweSiM4d0=;
- b=StzInuIUXg42a253qWv8pSXsmLagY8j0mR7bp5k88Lql8QdV0093p6YDZSn7SPGaTG
- YN+aI1ZTjwZS1LpvJ7N0na2DPLFv0YcXbXUxC7ddFRD7s4iIvgzoP4PZ9hWeiDwbbYzg
- BADyGQSbnWdcdvFHL2IwBo2BElqj7hMvl6ms2dm+jtv+aZlh7xeRnTvqaOfx2kKln+yq
- mYXkb8XULigZ5dONkqvoq0XiCXsycu9DeCw5KZ3g7hS4QHbKI7kGiIdXqSWfXm2tsjS/
- 8T4boDlshqbMikRuw11jbXjijERGPNuwFOR2G8z3WbfuyYmTxNP+1vivYSrlMCcAJxoG
- +A0g==
-X-Gm-Message-State: APjAAAW8XflcI9plRBuCuOYZ+CjhPPIHWgFEpDU5+B+92bVPunShIQC3
- D3sOiBOweoa32HHgfM3//HbCpZaUdMFh3cCV3Riqbw==
-X-Google-Smtp-Source: APXvYqwXFhIati6Vp0GDfgQt0l5PZHt8xFRskEGYtNtbtsgxbozzjhsd86PDJjPrBvQAZjGbzw1snCPkeL1BuMgVfjk=
-X-Received: by 2002:a92:88c4:: with SMTP id m65mr450018ilh.165.1581096540300; 
- Fri, 07 Feb 2020 09:29:00 -0800 (PST)
+ id 1j089Q-0000Cg-MT
+ for linux-mediatek@lists.infradead.org; Fri, 07 Feb 2020 18:14:51 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1581099289; h=Content-Transfer-Encoding: Content-Type:
+ In-Reply-To: MIME-Version: Date: Message-ID: From: References: Cc: To:
+ Subject: Sender; bh=Iv4PGza4+6jG1rG8Ui2Bh8AMg6XFP9qGnwOYs7sfY/g=;
+ b=VZoCYMqpASj55+zAFPIYjBqXD3fgLClHd/kl//fMP4n3c+c/PJdRr8hRJUIpe//u/WZ4rhO0
+ QCYO0M0RLltzY6ZeZtIcF9kQ2LFCeM0w2ubWIZcomcz2tCdPmLrWrF9EetJRWLgoOL9QvzSV
+ caQuwku0w45tRzbrsrwxWO+loBo=
+X-Mailgun-Sending-Ip: 104.130.122.25
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
+ by mxa.mailgun.org with ESMTP id 5e3da913.7f41ef7d09d0-smtp-out-n02;
+ Fri, 07 Feb 2020 18:14:43 -0000 (UTC)
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id F2441C433CB; Fri,  7 Feb 2020 18:14:42 +0000 (UTC)
+Received: from [10.71.154.194] (i-global254.qualcomm.com [199.106.103.254])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: asutoshd)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id DB10BC43383;
+ Fri,  7 Feb 2020 18:14:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org DB10BC43383
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=none smtp.mailfrom=asutoshd@codeaurora.org
+Subject: Re: [PATCH v1 2/2] scsi: ufs: introduce common function to disable
+ host TX LCC
+To: Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com, beanhuo@micron.com
+References: <20200207070357.17169-1-stanley.chu@mediatek.com>
+ <20200207070357.17169-3-stanley.chu@mediatek.com>
+From: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
+Message-ID: <3edbf9cd-a3cb-7a99-f6ef-f767fdf64f1e@codeaurora.org>
+Date: Fri, 7 Feb 2020 10:14:40 -0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.2
 MIME-Version: 1.0
-References: <20200206140140.GA18465@art_vandelay>
- <20200207152348.1.Ie0633018fc787dda6e869cae23df76ae30f2a686@changeid>
-In-Reply-To: <20200207152348.1.Ie0633018fc787dda6e869cae23df76ae30f2a686@changeid>
-From: Sean Paul <sean@poorly.run>
-Date: Fri, 7 Feb 2020 12:28:24 -0500
-Message-ID: <CAMavQKKZAYgpCLPodWw0pS1na7rthuJy8DkSvexOb+TRKHeKfg@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Find the cursor plane instead of hard
- coding it
-To: Evan Benn <evanbenn@chromium.org>
+In-Reply-To: <20200207070357.17169-3-stanley.chu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200207_092901_782302_CC875020 
-X-CRM114-Status: GOOD (  13.97  )
+X-CRM114-CacheID: sfid-20200207_101450_098908_62043FAF 
+X-CRM114-Status: GOOD (  19.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,73 +94,122 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: David Airlie <airlied@linux.ie>, LKML <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: bvanassche@acm.org, andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 6, 2020 at 11:24 PM Evan Benn <evanbenn@chromium.org> wrote:
->
-> The cursor and primary planes were hard coded.
-> Now search for them for passing to drm_crtc_init_with_planes
->
-> Signed-off-by: Evan Benn <evanbenn@chromium.org>
-
-I like it!
-
-Reviewed-by: Sean Paul <seanpaul@chromium.org>
-
+On 2/6/2020 11:03 PM, Stanley Chu wrote:
+> Many vendors would like to disable host TX LCC during initialization
+> flow. Introduce a common function for all users to make drivers easier to
+> read and maintained. This patch does not change any functionality.
+> 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 > ---
->
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 18 ++++++++++++------
->  1 file changed, 12 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> index 7b392d6c71cc..935652990afa 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -658,10 +658,18 @@ static const struct drm_crtc_helper_funcs mtk_crtc_helper_funcs = {
->
->  static int mtk_drm_crtc_init(struct drm_device *drm,
->                              struct mtk_drm_crtc *mtk_crtc,
-> -                            struct drm_plane *primary,
-> -                            struct drm_plane *cursor, unsigned int pipe)
-> +                            unsigned int pipe)
->  {
-> -       int ret;
-> +       struct drm_plane *primary = NULL;
-> +       struct drm_plane *cursor = NULL;
-> +       int i, ret;
+
+Reviewed-by: Asutosh Das <asutoshd@codeaurora.org>
+
+>   drivers/scsi/ufs/cdns-pltfrm.c  | 2 +-
+>   drivers/scsi/ufs/ufs-hisi.c     | 2 +-
+>   drivers/scsi/ufs/ufs-mediatek.c | 2 +-
+>   drivers/scsi/ufs/ufs-qcom.c     | 4 +---
+>   drivers/scsi/ufs/ufshcd-pci.c   | 2 +-
+>   drivers/scsi/ufs/ufshcd.h       | 5 +++++
+>   6 files changed, 10 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/scsi/ufs/cdns-pltfrm.c b/drivers/scsi/ufs/cdns-pltfrm.c
+> index 56a6a1ed5ec2..da065a259f6e 100644
+> --- a/drivers/scsi/ufs/cdns-pltfrm.c
+> +++ b/drivers/scsi/ufs/cdns-pltfrm.c
+> @@ -192,7 +192,7 @@ static int cdns_ufs_link_startup_notify(struct ufs_hba *hba,
+>   	 * and device TX LCC are disabled once link startup is
+>   	 * completed.
+>   	 */
+> -	ufshcd_dme_set(hba, UIC_ARG_MIB(PA_LOCAL_TX_LCC_ENABLE), 0);
+> +	ufshcd_disable_host_tx_lcc(hba);
+>   
+>   	/*
+>   	 * Disabling Autohibern8 feature in cadence UFS
+> diff --git a/drivers/scsi/ufs/ufs-hisi.c b/drivers/scsi/ufs/ufs-hisi.c
+> index 5d6487350a6c..074a6a055a4c 100644
+> --- a/drivers/scsi/ufs/ufs-hisi.c
+> +++ b/drivers/scsi/ufs/ufs-hisi.c
+> @@ -235,7 +235,7 @@ static int ufs_hisi_link_startup_pre_change(struct ufs_hba *hba)
+>   	ufshcd_writel(hba, reg, REG_AUTO_HIBERNATE_IDLE_TIMER);
+>   
+>   	/* Unipro PA_Local_TX_LCC_Enable */
+> -	ufshcd_dme_set(hba, UIC_ARG_MIB_SEL(0x155E, 0x0), 0x0);
+> +	ufshcd_disable_host_tx_lcc(hba);
+>   	/* close Unipro VS_Mk2ExtnSupport */
+>   	ufshcd_dme_set(hba, UIC_ARG_MIB_SEL(0xD0AB, 0x0), 0x0);
+>   	ufshcd_dme_get(hba, UIC_ARG_MIB_SEL(0xD0AB, 0x0), &value);
+> diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+> index 8f73c860f423..9d05962feb15 100644
+> --- a/drivers/scsi/ufs/ufs-mediatek.c
+> +++ b/drivers/scsi/ufs/ufs-mediatek.c
+> @@ -318,7 +318,7 @@ static int ufs_mtk_pre_link(struct ufs_hba *hba)
+>   	 * to make sure that both host and device TX LCC are disabled
+>   	 * once link startup is completed.
+>   	 */
+> -	ret = ufshcd_dme_set(hba, UIC_ARG_MIB(PA_LOCAL_TX_LCC_ENABLE), 0);
+> +	ret = ufshcd_disable_host_tx_lcc(hba);
+>   	if (ret)
+>   		return ret;
+>   
+> diff --git a/drivers/scsi/ufs/ufs-qcom.c b/drivers/scsi/ufs/ufs-qcom.c
+> index c69c29a1ceb9..c2e703d58f63 100644
+> --- a/drivers/scsi/ufs/ufs-qcom.c
+> +++ b/drivers/scsi/ufs/ufs-qcom.c
+> @@ -554,9 +554,7 @@ static int ufs_qcom_link_startup_notify(struct ufs_hba *hba,
+>   		 * completed.
+>   		 */
+>   		if (ufshcd_get_local_unipro_ver(hba) != UFS_UNIPRO_VER_1_41)
+> -			err = ufshcd_dme_set(hba,
+> -					UIC_ARG_MIB(PA_LOCAL_TX_LCC_ENABLE),
+> -					0);
+> +			err = ufshcd_disable_host_tx_lcc(hba);
+>   
+>   		break;
+>   	case POST_CHANGE:
+> diff --git a/drivers/scsi/ufs/ufshcd-pci.c b/drivers/scsi/ufs/ufshcd-pci.c
+> index 3b19de3ae9a3..8f78a8151499 100644
+> --- a/drivers/scsi/ufs/ufshcd-pci.c
+> +++ b/drivers/scsi/ufs/ufshcd-pci.c
+> @@ -44,7 +44,7 @@ static int ufs_intel_disable_lcc(struct ufs_hba *hba)
+>   
+>   	ufshcd_dme_get(hba, attr, &lcc_enable);
+>   	if (lcc_enable)
+> -		ufshcd_dme_set(hba, attr, 0);
+> +		ufshcd_disable_host_tx_lcc(hba);
+>   
+>   	return 0;
+>   }
+> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+> index 81c71a3e3474..8f516b205c32 100644
+> --- a/drivers/scsi/ufs/ufshcd.h
+> +++ b/drivers/scsi/ufs/ufshcd.h
+> @@ -914,6 +914,11 @@ static inline bool ufshcd_is_hs_mode(struct ufs_pa_layer_attr *pwr_info)
+>   		pwr_info->pwr_tx == FASTAUTO_MODE);
+>   }
+>   
+> +static inline int ufshcd_disable_host_tx_lcc(struct ufs_hba *hba)
+> +{
+> +	return ufshcd_dme_set(hba, UIC_ARG_MIB(PA_LOCAL_TX_LCC_ENABLE), 0);
+> +}
 > +
-> +       for (i = 0; i < mtk_crtc->layer_nr; i++) {
-> +               if (mtk_crtc->planes[i].type == DRM_PLANE_TYPE_PRIMARY)
-> +                       primary = &mtk_crtc->planes[i];
-> +               else if (mtk_crtc->planes[i].type == DRM_PLANE_TYPE_CURSOR)
-> +                       cursor = &mtk_crtc->planes[i];
-> +       }
->
->         ret = drm_crtc_init_with_planes(drm, &mtk_crtc->base, primary, cursor,
->                                         &mtk_crtc_funcs, NULL);
-> @@ -830,9 +838,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
->                         return ret;
->         }
->
-> -       ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, &mtk_crtc->planes[0],
-> -                               mtk_crtc->layer_nr > 1 ? &mtk_crtc->planes[1] :
-> -                               NULL, pipe);
-> +       ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, pipe);
->         if (ret < 0)
->                 return ret;
->
-> --
-> 2.25.0.341.g760bfbb309-goog
->
+>   /* Expose Query-Request API */
+>   int ufshcd_query_descriptor_retry(struct ufs_hba *hba,
+>   				  enum query_opcode opcode,
+> 
+
+
+-- 
+The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
+Linux Foundation Collaborative Project
 
 _______________________________________________
 Linux-mediatek mailing list
