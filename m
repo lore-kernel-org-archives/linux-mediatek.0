@@ -2,80 +2,84 @@ Return-Path: <SRS0=xfzx=33=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D0B87C2D0B1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 04:52:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 03A8FC352A2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 05:27:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A44482253D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 04:52:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A7D9522B48
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 05:27:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JHhx+YNu";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="fL8dDpBS"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A44482253D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dGEWR7FN";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="iHfAblZm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A7D9522B48
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SV8+GOHciyGl46X0T34aTcErmBx100cdcyFtt+CwmaI=; b=JHhx+YNudYHODc
-	OU0s8atG8AcQnuLYn80fHIOT5hqTKZzIuCWCZ+zHbTUMtskFmE+jKzaaJmsSUvkuBW8AxqhRmNmpC
-	G2gKG0v4tT9HpGW37gyHpLFF/s2G5oMBTVVHf4gm/7DJrEZv2P/KAik9Rt4ukQ3Wu6CMaFOi98Q//
-	L2niDf+bis7S+JTjlKuSWlibsoJgosFR+1aoOZVJnt+htl0TMt3W9PYMkOD+TArt2qA+OC9/q567p
-	3ai7OBxqqVvRyxj4d9fTHFV5MNEAZAkiSW+YHdBn7mO8IVaCnsce1aVCFAHAZoEXbwZUwRelRUzZc
-	Eimvria5Z0eQAC6/dGAw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=BvQwmcQneGKICLE5WOT5MoWRvtBJId7gzIAXmF/JxAU=; b=dGEWR7FNPveQ9g
+	MgOAq92cp3H8FdC5rsL7BUSBgZeVmiLmToXtHQ/Yhch+h6PiY7WQysE2M1VN4m09Nty95vFxbJrtF
+	d+xyco+L/rBmp9lVhXKhvgFWPKicbq1jS9VnHOKAPExZoWRQwLYPxCqsRiozJr5KEB04X64n/1XqW
+	0fHz8BMIt3bgK+z/02+L1MpmHYbDUJYl4tg8Ijx7xItV8U1ygEGGJoLat4Fcz75mOdTzs9KRpZG41
+	mfQ5g3U8Cglx987tUi6cBSjcCuaL+lHvzyhM8VAyKQkF/I+zm53iNn47sfbe9XYNwh7bnoOv8EFW7
+	wA1/6Z8wwR++lSe2t2/g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1izvdD-0004d3-Jq; Fri, 07 Feb 2020 04:52:43 +0000
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242])
+	id 1izwAG-0006x0-OJ; Fri, 07 Feb 2020 05:26:52 +0000
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1izvd5-0004Vp-Np
- for linux-mediatek@lists.infradead.org; Fri, 07 Feb 2020 04:52:37 +0000
-Received: by mail-oi1-x242.google.com with SMTP id q81so866951oig.0
- for <linux-mediatek@lists.infradead.org>; Thu, 06 Feb 2020 20:52:34 -0800 (PST)
+ id 1izwAD-0006wO-OD
+ for linux-mediatek@lists.infradead.org; Fri, 07 Feb 2020 05:26:51 +0000
+Received: by mail-pj1-x1043.google.com with SMTP id e9so429500pjr.4
+ for <linux-mediatek@lists.infradead.org>; Thu, 06 Feb 2020 21:26:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=W8urWy+QgrC/YMF1CIIkby5XffaDuEx4UNskBOy8RUs=;
- b=fL8dDpBSRVSlM8FGOuZfEp6zopgEtvglqThCVlfAdJyXUd1xw/bl5PyyXPjVJMmE6O
- xhruU/YngLkt6YE9gdDXeL0++a8tYHMimWtQCT1caaDsqrcfcL2TXNgDO46Tg6IwfPBc
- N68ToIQHl33MkLSupJmZeDaLwA89c5qw5fqL8=
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=/zB9xLJSCEmcEROv88A82DPGekOIdz0Re4N4EUvv7YQ=;
+ b=iHfAblZm+66QNJpVWC8jKplx2ZNZqjZfzjQmcBKuD+0bxVGGTQ5lOzM36vtl1ggI/y
+ BOf4sQDqdKsGpwT3fK2xC4db5Y6c9+OsKKLAZoyvCpfNiMc7AWpgFmE6LjIs8qtiPXfQ
+ m1bMLy5a60UKdJJA50YccQmyGqBD0HQibNMpk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=W8urWy+QgrC/YMF1CIIkby5XffaDuEx4UNskBOy8RUs=;
- b=JIoB2VDssQ3YLP2KwRNiXhjQ32FNErQ5kWa16g8gW5KYgdQkMr+RZkAeuMZBC55Lbl
- fI1K5fgMZx+8CfxvH+IqitnFVU8IG6SARzx0sgAGPJ99+J+FDwnNOxplcMfkYT7WGfxV
- Nm8FwtoTQdjAKQogLj5MenTMT64w04wi3ioEt2bCbEZKabUUlm9DINlq/IlrznfJtBeH
- x5jPIxw5F6S69BHFUaQ0XJvoA9DeiCCLFHpuXq6+hiDr1rYoXnUwWb1Xd7aPt32I+rHX
- jcdvPYP5Fb8WvWqRtdvP+coELl2sgULAq8g6b89JKpUvaaRL2MDqaV6n0247XY0GCzZl
- 06dg==
-X-Gm-Message-State: APjAAAWvUqYpA6z0j8Y9iXTrwz9jnuCEbl7GcS/vs/YCbzP903E2vMw0
- 91FaCSRajYIj7HuStjDODREQ0QwO/E1b5PhF664MNQ==
-X-Google-Smtp-Source: APXvYqxiVoCiey9ViAoCoUEG25fwaEz1f1ghn+enzI8QQgzUweirJ8Q8HY0XByHEr76nc8HhKhRjfHYPpevMD5tHvRo=
-X-Received: by 2002:aca:ebc3:: with SMTP id j186mr871922oih.15.1581051154041; 
- Thu, 06 Feb 2020 20:52:34 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=/zB9xLJSCEmcEROv88A82DPGekOIdz0Re4N4EUvv7YQ=;
+ b=beqNtF4ogfm1gY+C9YIWuZdsIMPTermBnFe1mOeoiVegVnvz7D8UbbLJV4o1u8I7Wd
+ gkSgsniSX46pEutAnPjzVz+YV35F8+M6+67y74osnjO7dhweqkR2jivy9RvywFIZ0FeB
+ 9j93btJvF0hrB54EDhc68eemEewHhEGoC1L/VXE8quZTRkmkXiQS3yDWc0rRFa7OyMDV
+ V4Zu0R6X7nbrYgNlFMUiimTGzqVLJCx+uy76wG2FNVIUSsMWuytA7qk8CMdE/I7EpIQM
+ 0j7ogAKiurcF1vhwp5ViMaH/tO8mdE/LiS6vvJzX0rY6pti0LN68kVhw5USew8h+vkDk
+ nc8g==
+X-Gm-Message-State: APjAAAXfKUKMPJjO/0QxKAm7suyC3pJlxhkeZwTNePJV3GrMyZP6KKv5
+ o5TC/7LmDjqasaENZ2Yt1fex4w==
+X-Google-Smtp-Source: APXvYqwDhczmXZwMAxUZru60y6Afvx+soks2DBAlo9PuHeMARGx+nULMRNQyK00qlg2Fi3ADU5IOrQ==
+X-Received: by 2002:a17:90a:a48a:: with SMTP id
+ z10mr1822467pjp.52.1581053208716; 
+ Thu, 06 Feb 2020 21:26:48 -0800 (PST)
+Received: from drinkcat2.tpe.corp.google.com
+ ([2401:fa00:1:b:d8b7:33af:adcb:b648])
+ by smtp.gmail.com with ESMTPSA id i66sm1174485pfg.85.2020.02.06.21.26.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 06 Feb 2020 21:26:47 -0800 (PST)
+From: Nicolas Boichat <drinkcat@chromium.org>
+To: Rob Herring <robh+dt@kernel.org>
+Subject: [PATCH v4 0/7] Add dts for mt8183 GPU (and misc panfrost patches)
+Date: Fri,  7 Feb 2020 13:26:20 +0800
+Message-Id: <20200207052627.130118-1-drinkcat@chromium.org>
+X-Mailer: git-send-email 2.25.0.341.g760bfbb309-goog
 MIME-Version: 1.0
-References: <20200206140140.GA18465@art_vandelay>
- <20200207152348.1.Ie0633018fc787dda6e869cae23df76ae30f2a686@changeid>
-In-Reply-To: <20200207152348.1.Ie0633018fc787dda6e869cae23df76ae30f2a686@changeid>
-From: Evan Benn <evanbenn@chromium.org>
-Date: Fri, 7 Feb 2020 15:52:23 +1100
-Message-ID: <CAEJYR+nhwfqOK3Ogy=w_D9uS8uV-YsPckactgTX0nAe-_MKsQQ@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Find the cursor plane instead of hard
- coding it
-To: dri-devel@lists.freedesktop.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200206_205235_802203_6DDD035D 
-X-CRM114-Status: GOOD (  13.90  )
+X-CRM114-CacheID: sfid-20200206_212649_810994_FD7A8F3B 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,76 +91,82 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ ulf.hansson@linaro.org, Tomeu Vizoso <tomeu.vizoso@collabora.com>,
+ David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
+ Liam Girdwood <lgirdwood@gmail.com>, dri-devel@lists.freedesktop.org,
+ Steven Price <steven.price@arm.com>, Mark Brown <broonie@kernel.org>,
+ linux-mediatek@lists.infradead.org,
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
+ Daniel Vetter <daniel@ffwll.ch>, hsinyi@chromium.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Apologies for the confusing thread. Please apply the above patch:
-'drm/mediatek: Find the cursor plane instead of hard coding it'
-before Sean Paul's original patch:
-'drm/mediatek: Ensure the cursor plane is on top of other overlays'
+Hi!
 
-This way authorship is correctly preserved, but we do not introduce the bug.
+Follow-up on the v3: https://patchwork.kernel.org/cover/11331343/.
 
-Thanks
+The main purpose of this series is to upstream the dts change and the
+binding document, but I wanted to see how far I could probe the GPU, to
+check that the binding is indeed correct. The rest of the patches are
+RFC/work-in-progress, but I think some of them could already be picked up.
 
+So this is tested on MT8183 with a chromeos-4.19 kernel, and a ton of
+backports to get the latest panfrost driver (I should probably try on
+linux-next at some point but this was the path of least resistance).
 
-On Fri, Feb 7, 2020 at 3:23 PM Evan Benn <evanbenn@chromium.org> wrote:
->
-> The cursor and primary planes were hard coded.
-> Now search for them for passing to drm_crtc_init_with_planes
->
-> Signed-off-by: Evan Benn <evanbenn@chromium.org>
-> ---
->
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 18 ++++++++++++------
->  1 file changed, 12 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> index 7b392d6c71cc..935652990afa 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -658,10 +658,18 @@ static const struct drm_crtc_helper_funcs mtk_crtc_helper_funcs = {
->
->  static int mtk_drm_crtc_init(struct drm_device *drm,
->                              struct mtk_drm_crtc *mtk_crtc,
-> -                            struct drm_plane *primary,
-> -                            struct drm_plane *cursor, unsigned int pipe)
-> +                            unsigned int pipe)
->  {
-> -       int ret;
-> +       struct drm_plane *primary = NULL;
-> +       struct drm_plane *cursor = NULL;
-> +       int i, ret;
-> +
-> +       for (i = 0; i < mtk_crtc->layer_nr; i++) {
-> +               if (mtk_crtc->planes[i].type == DRM_PLANE_TYPE_PRIMARY)
-> +                       primary = &mtk_crtc->planes[i];
-> +               else if (mtk_crtc->planes[i].type == DRM_PLANE_TYPE_CURSOR)
-> +                       cursor = &mtk_crtc->planes[i];
-> +       }
->
->         ret = drm_crtc_init_with_planes(drm, &mtk_crtc->base, primary, cursor,
->                                         &mtk_crtc_funcs, NULL);
-> @@ -830,9 +838,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
->                         return ret;
->         }
->
-> -       ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, &mtk_crtc->planes[0],
-> -                               mtk_crtc->layer_nr > 1 ? &mtk_crtc->planes[1] :
-> -                               NULL, pipe);
-> +       ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, pipe);
->         if (ret < 0)
->                 return ret;
->
-> --
-> 2.25.0.341.g760bfbb309-goog
->
+I tested it as a module as it's more challenging (originally probing would
+work built-in, on boot, but not as a module, as I didn't have the power
+domain changes, and all power domains are on by default during boot).
+
+Probing logs looks like this, currently. They look sane.
+[  501.319728] panfrost 13040000.gpu: clock rate = 511999970
+[  501.320041] panfrost 13040000.gpu: Linked as a consumer to regulator.14
+[  501.320102] panfrost 13040000.gpu: Linked as a consumer to regulator.31
+[  501.320651] panfrost 13040000.gpu: Linked as a consumer to genpd:0:13040000.gpu
+[  501.320954] panfrost 13040000.gpu: Linked as a consumer to genpd:1:13040000.gpu
+[  501.321062] panfrost 13040000.gpu: Linked as a consumer to genpd:2:13040000.gpu
+[  501.321734] panfrost 13040000.gpu: mali-g72 id 0x6221 major 0x0 minor 0x3 status 0x0
+[  501.321741] panfrost 13040000.gpu: features: 00000000,13de77ff, issues: 00000000,00000400
+[  501.321747] panfrost 13040000.gpu: Features: L2:0x07120206 Shader:0x00000000 Tiler:0x00000809 Mem:0x1 MMU:0x00002830 AS:0xff JS:0x7
+[  501.321752] panfrost 13040000.gpu: shader_present=0x7 l2_present=0x1
+[  501.324951] [drm] Initialized panfrost 1.1.0 20180908 for 13040000.gpu on minor 2
+
+Some more changes are still required to get devfreq working, and of course
+I do not have a userspace driver to test this with.
+
+I believe at least patches 1, 2, and 3 can be merged. 4 and 5 are mostly
+useful in conjunction with 6 and 7 (which are not ready yet), so I'll let
+maintainers decide.
+
+Thanks!
+
+Nicolas Boichat (7):
+  dt-bindings: gpu: mali-bifrost: Add Mediatek MT8183
+  arm64: dts: mt8183: Add node for the Mali GPU
+  drm/panfrost: Improve error reporting in panfrost_gpu_power_on
+  drm/panfrost: Add support for multiple regulators
+  drm/panfrost: Add support for multiple power domains
+  RFC: drm/panfrost: Add mt8183-mali compatible string
+  RFC: drm/panfrost: devfreq: Add support for 2 regulators
+
+ .../bindings/gpu/arm,mali-bifrost.yaml        |  25 ++++
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts   |   7 +
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 105 +++++++++++++++
+ drivers/gpu/drm/panfrost/panfrost_devfreq.c   |  17 +++
+ drivers/gpu/drm/panfrost/panfrost_device.c    | 123 +++++++++++++++---
+ drivers/gpu/drm/panfrost/panfrost_device.h    |  27 +++-
+ drivers/gpu/drm/panfrost/panfrost_drv.c       |  41 ++++--
+ drivers/gpu/drm/panfrost/panfrost_gpu.c       |  11 +-
+ 8 files changed, 326 insertions(+), 30 deletions(-)
+
+-- 
+2.25.0.341.g760bfbb309-goog
+
 
 _______________________________________________
 Linux-mediatek mailing list
