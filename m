@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0D77CC352A4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 09:25:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C4250C352A2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 09:28:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D715620726
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 09:25:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 961EA20726
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 09:28:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AJ6gNEz2";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="CbsY9buj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D715620726
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="D4yzs7lf";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="c4QBDkIH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 961EA20726
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,38 +26,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nx8fJQ2CcEHSlP8Ap20i9+7ay8XucXBIhllhGd4oeJ8=; b=AJ6gNEz2z1P6Hx
-	PPfj/7mfJnnCp7ddt47Tx7xEPl5YW5X7ghzOJs3wdw8CCJ3ccn+rUej/fhIF+nB1vwcPClWDZWclj
-	kiBviDDNhMgMG+PBfZdKoGFZjYmkFMoy86k6gftBfzvvQmHwjJ1SdkroJ3v4gFie8Hjj9u2PohzwY
-	5m+fp3samJLRy7v0ypV9VF8buobgEYKfTeSTgSOlAB+5FurvwPqiOHIcvU7kKwM8hrlVjr0qmrIi9
-	MjPGPtbE3p8J8JG+Ual2ZhDiK05iF7U79TbZ0++i6ET8nlMa1ERtAiEnjyDild0Wc2KrKKSjduMgJ
-	H6PV2mOiMw0Z/x7xNHzw==;
+	List-Owner; bh=ILM+ZhX6z7IJ+bO2gnIsQhjBLzsKYR8ewR2SelCAeAg=; b=D4yzs7lfw2Z1j4
+	9AT/5ZcM4YZXVdajub7m+A24a/7ffn/Ict7qAJv6htqDvOKsm6AXOMK1oXz+4/Puup59tPslnuIOa
+	XgxCHhSmGwMPV02qyHgYVs8gRiAToi47qOAheqgoTSPotplKS7MhL4dbGY8XNKDqvVqxL/eIMNKIu
+	+GXFn4wAHwCBL7hPyBnCI8JqxTeu5lTtgBM4gDx8T4PWVH8uqEI24uYLoqetjCThwJUURVxLijrnq
+	A75gGd427Xg3XRnJwSxZZ3HOVdgOxhAxx4K7vdvv2MNSzPKCyZFrN8yV/jCoM8ZuK5dnAF96H/1sO
+	tyvI6ojs1EOONH3ayvLA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1izzsj-0007ec-Cx; Fri, 07 Feb 2020 09:25:01 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1izzwS-0000wk-SJ; Fri, 07 Feb 2020 09:28:52 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1izzsf-0007dz-Pe; Fri, 07 Feb 2020 09:24:59 +0000
-X-UUID: 2721003ee6dc4db6b2a968b46961b4f8-20200207
+ id 1izzwP-0000vX-HQ; Fri, 07 Feb 2020 09:28:51 +0000
+X-UUID: f19cbf8bc7d34bf1848d1ec4fc0f95d6-20200207
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=cyJ1TARndvDFv4ZQVV/s5FnYVApReyINhKmHrdH8RJM=; 
- b=CbsY9buj0WfZ9W+AX/b1ha6pRLScg4wZUofxeiUL127eSaSsbz7KxaJOKjDWvuyoWA6ruS+LsncC3jLzS6Fze5WIsbE2nApwn9wkE+zlEO7F/LvsfwQXCXkpt70Kq/+T9KZPVnbJyo4fr/tpq6mpJvHzBkEYELNu+7hlyfU0brw=;
-X-UUID: 2721003ee6dc4db6b2a968b46961b4f8-20200207
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=UbnXG7anPzekXSKoVAsd9UcuJJBevQ2oSv9/xVk+BPE=; 
+ b=c4QBDkIH0ZuQLX8jMdhLi0TLlpQaTvsOo1I+qYvyvVGxbulbcMjPFDr+BXfCdKLn4HDUCWl8XVFgpgyCydTTksdKSi3zch51GZ2Ypy3PfPkc3F3jLttcmtY0fmU+PXQmBmqrs36p/F6tfR0sB7uMk3QSm8cRMnz5F13VIO7w9Ok=;
+X-UUID: f19cbf8bc7d34bf1848d1ec4fc0f95d6-20200207
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <macpaul.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1731719118; Fri, 07 Feb 2020 01:24:54 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 7 Feb 2020 01:24:05 -0800
+ with ESMTP id 1768485092; Fri, 07 Feb 2020 01:28:44 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 7 Feb 2020 01:23:36 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 7 Feb 2020 17:22:47 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 7 Feb 2020 17:24:28 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Fri, 7 Feb 2020 17:22:58 +0800
+ Frontend Transport; Fri, 7 Feb 2020 17:22:59 +0800
 From: Macpaul Lin <macpaul.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas
@@ -73,18 +73,19 @@ To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-clk@vger.kernel.org>
-Subject: [PATCH v7 1/7] dt-bindings: clock: mediatek: document clk bindings
- for Mediatek MT6765 SoC
-Date: Fri, 7 Feb 2020 17:20:44 +0800
-Message-ID: <1581067250-12744-2-git-send-email-macpaul.lin@mediatek.com>
+Subject: [PATCH v7 7/7] arm64: defconfig: add CONFIG_COMMON_CLK_MT6765_XXX
+ clocks
+Date: Fri, 7 Feb 2020 17:20:50 +0800
+Message-ID: <1581067250-12744-8-git-send-email-macpaul.lin@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <1581067250-12744-1-git-send-email-macpaul.lin@mediatek.com>
 References: <1581067250-12744-1-git-send-email-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200207_012457_841996_64756FF5 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20200207_012849_584242_2EF7F3E5 
+X-CRM114-Status: UNSURE (   7.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,192 +104,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Mars Cheng <mars.cheng@mediatek.com>
+From: Owen Chen <owen.chen@mediatek.com>
 
-This patch adds the binding documentation for apmixedsys, audsys, camsys,
-imgsys, infracfg, mipi0a, topckgen, vcodecsys
+Enable MT6765 clock configs, include topckgen, apmixedsys,
+infracfg, and subsystem clocks.
 
-Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
 Signed-off-by: Owen Chen <owen.chen@mediatek.com>
 Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 ---
- .../arm/mediatek/mediatek,apmixedsys.txt      |  1 +
- .../bindings/arm/mediatek/mediatek,audsys.txt |  1 +
- .../bindings/arm/mediatek/mediatek,camsys.txt |  1 +
- .../bindings/arm/mediatek/mediatek,imgsys.txt |  1 +
- .../arm/mediatek/mediatek,infracfg.txt        |  1 +
- .../bindings/arm/mediatek/mediatek,mipi0a.txt | 28 +++++++++++++++++++
- .../bindings/arm/mediatek/mediatek,mmsys.txt  |  1 +
- .../arm/mediatek/mediatek,pericfg.txt         |  1 +
- .../arm/mediatek/mediatek,topckgen.txt        |  1 +
- .../arm/mediatek/mediatek,vcodecsys.txt       | 27 ++++++++++++++++++
- 10 files changed, 63 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mipi0a.txt
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,vcodecsys.txt
+ arch/arm64/configs/defconfig | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
-index ff000ccade78..bd7a0fa5801b 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
-@@ -8,6 +8,7 @@ Required Properties:
- - compatible: Should be one of:
- 	- "mediatek,mt2701-apmixedsys"
- 	- "mediatek,mt2712-apmixedsys", "syscon"
-+	- "mediatek,mt6765-apmixedsys", "syscon"
- 	- "mediatek,mt6779-apmixedsys", "syscon"
- 	- "mediatek,mt6797-apmixedsys"
- 	- "mediatek,mt7622-apmixedsys"
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-index e4ca7b703123..38309db115f5 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.txt
-@@ -7,6 +7,7 @@ Required Properties:
- 
- - compatible: Should be one of:
- 	- "mediatek,mt2701-audsys", "syscon"
-+	- "mediatek,mt6765-audsys", "syscon"
- 	- "mediatek,mt6779-audio", "syscon"
- 	- "mediatek,mt7622-audsys", "syscon"
- 	- "mediatek,mt7623-audsys", "mediatek,mt2701-audsys", "syscon"
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.txt
-index 1f4aaa15a37e..a0ce82085ad0 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.txt
-@@ -6,6 +6,7 @@ The MediaTek camsys controller provides various clocks to the system.
- Required Properties:
- 
- - compatible: Should be one of:
-+	- "mediatek,mt6765-camsys", "syscon"
- 	- "mediatek,mt6779-camsys", "syscon"
- 	- "mediatek,mt8183-camsys", "syscon"
- - #clock-cells: Must be 1
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
-index 2b693e343c56..1e1f00718a7d 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.txt
-@@ -8,6 +8,7 @@ Required Properties:
- - compatible: Should be one of:
- 	- "mediatek,mt2701-imgsys", "syscon"
- 	- "mediatek,mt2712-imgsys", "syscon"
-+	- "mediatek,mt6765-imgsys", "syscon"
- 	- "mediatek,mt6779-imgsys", "syscon"
- 	- "mediatek,mt6797-imgsys", "syscon"
- 	- "mediatek,mt7623-imgsys", "mediatek,mt2701-imgsys", "syscon"
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-index db2f4fd754e7..49a968be1a80 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-@@ -9,6 +9,7 @@ Required Properties:
- - compatible: Should be one of:
- 	- "mediatek,mt2701-infracfg", "syscon"
- 	- "mediatek,mt2712-infracfg", "syscon"
-+	- "mediatek,mt6765-infracfg", "syscon"
- 	- "mediatek,mt6779-infracfg_ao", "syscon"
- 	- "mediatek,mt6797-infracfg", "syscon"
- 	- "mediatek,mt7622-infracfg", "syscon"
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mipi0a.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mipi0a.txt
-new file mode 100644
-index 000000000000..8be5978f388d
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mipi0a.txt
-@@ -0,0 +1,28 @@
-+Mediatek mipi0a (mipi_rx_ana_csi0a) controller
-+============================
-+
-+The Mediatek mipi0a controller provides various clocks
-+to the system.
-+
-+Required Properties:
-+
-+- compatible: Should be one of:
-+	- "mediatek,mt6765-mipi0a", "syscon"
-+- #clock-cells: Must be 1
-+
-+The mipi0a controller uses the common clk binding from
-+Documentation/devicetree/bindings/clock/clock-bindings.txt
-+The available clocks are defined in dt-bindings/clock/mt*-clk.h.
-+
-+The mipi0a controller also uses the common power domain from
-+Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-+The available power doamins are defined in dt-bindings/power/mt*-power.h.
-+
-+Example:
-+
-+mipi0a: clock-controller@11c10000 {
-+	compatible = "mediatek,mt6765-mipi0a", "syscon";
-+	reg = <0 0x11c10000 0 0x1000>;
-+	power-domains = <&scpsys MT6765_POWER_DOMAIN_CAM>;
-+	#clock-cells = <1>;
-+};
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
-index 301eefbe1618..4a712509bec2 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
-@@ -8,6 +8,7 @@ Required Properties:
- - compatible: Should be one of:
- 	- "mediatek,mt2701-mmsys", "syscon"
- 	- "mediatek,mt2712-mmsys", "syscon"
-+	- "mediatek,mt6765-mmsys", "syscon"
- 	- "mediatek,mt6779-mmsys", "syscon"
- 	- "mediatek,mt6797-mmsys", "syscon"
- 	- "mediatek,mt7623-mmsys", "mediatek,mt2701-mmsys", "syscon"
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
-index ecf027a9003a..dcbd414c7fd7 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.txt
-@@ -9,6 +9,7 @@ Required Properties:
- - compatible: Should be one of:
- 	- "mediatek,mt2701-pericfg", "syscon"
- 	- "mediatek,mt2712-pericfg", "syscon"
-+	- "mediatek,mt6765-pericfg", "syscon"
- 	- "mediatek,mt7622-pericfg", "syscon"
- 	- "mediatek,mt7623-pericfg", "mediatek,mt2701-pericfg", "syscon"
- 	- "mediatek,mt7629-pericfg", "syscon"
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
-index 0293d693ce0c..9b0394cbbdc9 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
-@@ -8,6 +8,7 @@ Required Properties:
- - compatible: Should be one of:
- 	- "mediatek,mt2701-topckgen"
- 	- "mediatek,mt2712-topckgen", "syscon"
-+	- "mediatek,mt6765-topckgen", "syscon"
- 	- "mediatek,mt6779-topckgen", "syscon"
- 	- "mediatek,mt6797-topckgen"
- 	- "mediatek,mt7622-topckgen"
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vcodecsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vcodecsys.txt
-new file mode 100644
-index 000000000000..c877bcc1a5c5
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vcodecsys.txt
-@@ -0,0 +1,27 @@
-+Mediatek vcodecsys controller
-+============================
-+
-+The Mediatek vcodecsys controller provides various clocks to the system.
-+
-+Required Properties:
-+
-+- compatible: Should be one of:
-+	- "mediatek,mt6765-vcodecsys", "syscon"
-+- #clock-cells: Must be 1
-+
-+The vcodecsys controller uses the common clk binding from
-+Documentation/devicetree/bindings/clock/clock-bindings.txt
-+The available clocks are defined in dt-bindings/clock/mt*-clk.h.
-+
-+The vcodecsys controller also uses the common power domain from
-+Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-+The available power doamins are defined in dt-bindings/power/mt*-power.h.
-+
-+Example:
-+
-+venc_gcon: clock-controller@17000000 {
-+	compatible = "mediatek,mt6765-vcodecsys", "syscon";
-+	reg = <0 0x17000000 0 0x10000>;
-+	power-domains = <&scpsys MT6765_POWER_DOMAIN_VCODEC>;
-+	#clock-cells = <1>;
-+};
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 6a83ba2aea3e..9d3da81d0d08 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -489,6 +489,12 @@ CONFIG_REGULATOR_QCOM_SMD_RPM=y
+ CONFIG_REGULATOR_QCOM_SPMI=y
+ CONFIG_REGULATOR_RK808=y
+ CONFIG_REGULATOR_S2MPS11=y
++CONFIG_COMMON_CLK_MT6765_AUDIOSYS=y
++CONFIG_COMMON_CLK_MT6765_CAMSYS=y
++CONFIG_COMMON_CLK_MT6765_MMSYS=y
++CONFIG_COMMON_CLK_MT6765_IMGSYS=y
++CONFIG_COMMON_CLK_MT6765_VCODECSYS=y
++CONFIG_COMMON_CLK_MT6765_MIPI0ASYS=y
+ CONFIG_REGULATOR_VCTRL=m
+ CONFIG_RC_CORE=m
+ CONFIG_RC_DECODERS=y
 -- 
 2.18.0
 _______________________________________________
