@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 22442C352A2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 05:27:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6896EC352A2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 05:28:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A5A0422464
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 05:27:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3F83322464
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Feb 2020 05:28:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l1kmopby";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="jehEAPOl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A5A0422464
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BDm0ziKT";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="EfIrgn8K"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3F83322464
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,61 +26,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hOgojwY1OdgAAne9s6zyXod6rdcean8WNNAtwitYvrI=; b=l1kmopbyGM0GRH
-	vax13d4OGtCNv6d83YkRIoGaohd6GJO1jYsR4j/obog+UXEd3C9Jqmw/TL0+OjKfoBN77G/mpqIfh
-	J73oCUWJclTlOrR9dK8JIgBbbJT1Ccy7Xb/YrFuBadZuy8qDDiqaKZC77X+9uyM4lovVq9bpQ/9Td
-	svjP93SDAgHf9iQjNNLN+zogHj6R2EmQL62HeDvIx0hXkitlDAu6OtaiL+sqpgpptsRIXKZ2QI8hJ
-	GcYVdDP7qeRsGftbfgpxjUkl1I4gx89nAcwBml7hKALWYBrLU8XpxSQpaAyi07Yb6r98dbPnMNrcu
-	xTC1lptqNwjxzBQAcsdg==;
+	List-Owner; bh=PO78ZMeZi17BlHsZrlEvNeqxXRcPBhRJlzqgTi4vYJw=; b=BDm0ziKTwkcoY3
+	Abf43+uW/SfoJPsyxHzBI7mYTyrjSl9ntMhMwpteuN9CYRAcZMw5XcVLXU0EABa1mAfud+9DF17UV
+	7+WymuE9YiiQ4bfGs2KjztXPoWKi/pHSetzJJHKXYtztEOuPs7wmRKdhQ6AB0R3juXpYgBry5alqj
+	9Cfu0qSuwiKPW1Gl/EqShmhUHx3vf/slu9WHr6MAH4smJRYle/0bkqPZUNKfJY6k1ZHcNfbIaGW+Q
+	ZTHSnFxX/YNX8baRsmxlE3zkwJHtqW/PwzoORlIpR1ExragVsz7T0WfSZcNY6hxBMB3ibZAfe+H24
+	3Sn3J4fLqQCB3BLg9d0w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1izwAY-0007HM-AZ; Fri, 07 Feb 2020 05:27:10 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1izwBH-000850-7D; Fri, 07 Feb 2020 05:27:55 +0000
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1izwAJ-0006y8-AL
- for linux-mediatek@lists.infradead.org; Fri, 07 Feb 2020 05:26:56 +0000
-Received: by mail-pg1-x542.google.com with SMTP id j4so527538pgi.1
- for <linux-mediatek@lists.infradead.org>; Thu, 06 Feb 2020 21:26:53 -0800 (PST)
+ id 1izwAO-00076u-Ea
+ for linux-mediatek@lists.infradead.org; Fri, 07 Feb 2020 05:27:02 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id 12so425963pjb.5
+ for <linux-mediatek@lists.infradead.org>; Thu, 06 Feb 2020 21:27:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=CIn5sKN4KiBio0RDhfFCPXTE80uz5ajGK0muKh5dKSI=;
- b=jehEAPOlDHxOIf658U57Pz+Lxc9WjB5npjsc5eIfdKKIgLI6wIasqGvVPkiVpdJQ0G
- Hzpf9s+Mrm6ErGv53ZanL5Ar8j551dwPz09ideYJ5ExThnUtNvN841ZIU2L4qTBXCsLw
- CUJvrrL1JkluseTv3rUysxVHovsnV10a4Qg0g=
+ bh=6xpmN6rVRpQ9+/BKl26/gWkRoJrUlmctwTSJRjJCc9M=;
+ b=EfIrgn8KJTdEPRV6t2D01u2C1tbZ2N5L+zz7+zq66y1iSVivuP8DBp9QrRPb2KxMeQ
+ /ektvloYsjEAqIXPfLcxnAAUqVeqhAJibeu5lQbfMyCx5VI1xcyHGPq//k6mqcmQ0gfS
+ CPinmVfCOSlqIHxC/KFn8Uqs9YBoRyqsFwy9g=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=CIn5sKN4KiBio0RDhfFCPXTE80uz5ajGK0muKh5dKSI=;
- b=bvn3SKdVlRtZz8wnhxd7kUqnLtgfVq0GkqMZQemaj9caN9TKQvhDOFnGZsXz4FL7D5
- aib7IhJrsfMIlC9s2kBaYt4XYzr6WnpCnNBxbeDL6mX127KJmu2jpzT5bzLXsrQ9AbJ1
- pWDPxkPlAJMEcgwD6jmjjlX8jt/CKjwCZ7jLufxLjmB0VSHecy3BE9Jbvw7qUK5yKLHC
- WdoE4hXO/3dKZDLe6nz56TnD2MG3emtEJMdTfJHldL95QP/iOMT6xuDyFdoJ/Ucjurs9
- KKuQdWKOZdHGNcTaeBT6ixsmivPvZRB8IUj/kkL0BSJNMsAPhohxny4Z4cJmVd2IPtn4
- eENg==
-X-Gm-Message-State: APjAAAWzNDHvRTg8EuwxabGqGYjq9vbNmHCa569cdo4BC+dUQzeUXTx8
- 6GTmK5s/v78yjWm8iHuEELAHOA==
-X-Google-Smtp-Source: APXvYqx5i7f7z7/eMVnpdL5X2gaY4KuXn3Lv/gF5m1NmEIhVV0KooOh59/YHin0f3dnQN5ufHFD66g==
-X-Received: by 2002:a63:5558:: with SMTP id f24mr7314186pgm.92.1581053213363; 
- Thu, 06 Feb 2020 21:26:53 -0800 (PST)
+ bh=6xpmN6rVRpQ9+/BKl26/gWkRoJrUlmctwTSJRjJCc9M=;
+ b=Z+xyIz47a2LcL9PRkKJ4sim3fF2A2ZAIO6QRoxEmtZ1t2AYDKJVIPxvSbfqKU9sjPH
+ 7SofqtwRF9MGrvOP+zKBa8bMHG1DPxZzw0IFsjPno2vSpO+iFIS9BfhuWpRiUO/fnkxE
+ rjIpXJwK9Kwxf6d5PQ63at+wvn/srWmX9H4oI8bIt32apPdw38ZK375PMl6oG8Uxlz5S
+ kWSL/g3q6uIRje3WuKwufcR84wf4Z7SDxhflLgkbnmDWFMHG1rdwDuOfvU9OrxrnxP9s
+ B0W54qRqCw2fVu6IDe0kodddJbRPcMkf5Qy4dblOuQmSmW6Ilen4mnRZnSeUYlGReTWb
+ KOFQ==
+X-Gm-Message-State: APjAAAUD+Eh74FdlfCZGGH2lHeKZ/a8y0eH1eH7yjv3Sug4gGaXv0O8Y
+ XtzYjDfAmeXNrlDtrW0Fufc6Ew==
+X-Google-Smtp-Source: APXvYqzX299A08Kcu0qlzSD8JRvc5zkotFDW+fzSDBqKgJ0Ds/rXQnBQim49TnwlSOj3Rct3QjyFZg==
+X-Received: by 2002:a17:902:b682:: with SMTP id
+ c2mr8017343pls.127.1581053219763; 
+ Thu, 06 Feb 2020 21:26:59 -0800 (PST)
 Received: from drinkcat2.tpe.corp.google.com
  ([2401:fa00:1:b:d8b7:33af:adcb:b648])
- by smtp.gmail.com with ESMTPSA id i66sm1174485pfg.85.2020.02.06.21.26.50
+ by smtp.gmail.com with ESMTPSA id i66sm1174485pfg.85.2020.02.06.21.26.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Feb 2020 21:26:52 -0800 (PST)
+ Thu, 06 Feb 2020 21:26:59 -0800 (PST)
 From: Nicolas Boichat <drinkcat@chromium.org>
 To: Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v4 1/7] dt-bindings: gpu: mali-bifrost: Add Mediatek MT8183
-Date: Fri,  7 Feb 2020 13:26:21 +0800
-Message-Id: <20200207052627.130118-2-drinkcat@chromium.org>
+Subject: [PATCH v4 3/7] drm/panfrost: Improve error reporting in
+ panfrost_gpu_power_on
+Date: Fri,  7 Feb 2020 13:26:23 +0800
+Message-Id: <20200207052627.130118-4-drinkcat@chromium.org>
 X-Mailer: git-send-email 2.25.0.341.g760bfbb309-goog
 In-Reply-To: <20200207052627.130118-1-drinkcat@chromium.org>
 References: <20200207052627.130118-1-drinkcat@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200206_212655_395023_E13CDB13 
-X-CRM114-Status: UNSURE (   7.73  )
+X-CRM114-CacheID: sfid-20200206_212700_534319_568E701A 
+X-CRM114-Status: UNSURE (   8.52  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -108,65 +110,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Define a compatible string for the Mali Bifrost GPU found in
-Mediatek's MT8183 SoCs.
+It is useful to know which component cannot be powered on.
 
 Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+Reviewed-by: Steven Price <steven.price@arm.com>
 Reviewed-by: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
 ---
 
+Was useful when trying to probe Bifrost GPU, to understand what
+issue we are facing.
+
 v4:
- - Add power-domain-names description
-   (kept Alyssa's reviewed-by as the change is minor)
-v3:
  - No change
+v3:
+ - Rebased on https://patchwork.kernel.org/patch/11325689/
 
- .../bindings/gpu/arm,mali-bifrost.yaml        | 25 +++++++++++++++++++
- 1 file changed, 25 insertions(+)
+ drivers/gpu/drm/panfrost/panfrost_gpu.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-index 4ea6a8789699709..0d93b3981445977 100644
---- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-+++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-@@ -17,6 +17,7 @@ properties:
-     items:
-       - enum:
-           - amlogic,meson-g12a-mali
-+          - mediatek,mt8183-mali
-           - realtek,rtd1619-mali
-           - rockchip,px30-mali
-       - const: arm,mali-bifrost # Mali Bifrost GPU model/revision is fully discoverable
-@@ -62,6 +63,30 @@ allOf:
-           minItems: 2
-       required:
-         - resets
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: mediatek,mt8183-mali
-+    then:
-+      properties:
-+        sram-supply: true
-+        power-domains:
-+          description:
-+            List of phandle and PM domain specifier as documented in
-+            Documentation/devicetree/bindings/power/power_domain.txt
-+          minItems: 3
-+          maxItems: 3
-+        power-domain-names:
-+          items:
-+            - const: core0
-+            - const: core1
-+            - const: 2d
-+
-+      required:
-+        - sram-supply
-+        - power-domains
-+        - power-domains-names
+diff --git a/drivers/gpu/drm/panfrost/panfrost_gpu.c b/drivers/gpu/drm/panfrost/panfrost_gpu.c
+index 460fc190de6e815..856f2fd1fa8ed27 100644
+--- a/drivers/gpu/drm/panfrost/panfrost_gpu.c
++++ b/drivers/gpu/drm/panfrost/panfrost_gpu.c
+@@ -308,17 +308,20 @@ void panfrost_gpu_power_on(struct panfrost_device *pfdev)
+ 	gpu_write(pfdev, L2_PWRON_LO, pfdev->features.l2_present);
+ 	ret = readl_relaxed_poll_timeout(pfdev->iomem + L2_READY_LO,
+ 		val, val == pfdev->features.l2_present, 100, 1000);
++	if (ret)
++		dev_err(pfdev->dev, "error powering up gpu L2");
  
- examples:
-   - |
+ 	gpu_write(pfdev, SHADER_PWRON_LO, pfdev->features.shader_present);
+-	ret |= readl_relaxed_poll_timeout(pfdev->iomem + SHADER_READY_LO,
++	ret = readl_relaxed_poll_timeout(pfdev->iomem + SHADER_READY_LO,
+ 		val, val == pfdev->features.shader_present, 100, 1000);
++	if (ret)
++		dev_err(pfdev->dev, "error powering up gpu shader");
+ 
+ 	gpu_write(pfdev, TILER_PWRON_LO, pfdev->features.tiler_present);
+-	ret |= readl_relaxed_poll_timeout(pfdev->iomem + TILER_READY_LO,
++	ret = readl_relaxed_poll_timeout(pfdev->iomem + TILER_READY_LO,
+ 		val, val == pfdev->features.tiler_present, 100, 1000);
+-
+ 	if (ret)
+-		dev_err(pfdev->dev, "error powering up gpu");
++		dev_err(pfdev->dev, "error powering up gpu tiler");
+ }
+ 
+ void panfrost_gpu_power_off(struct panfrost_device *pfdev)
 -- 
 2.25.0.341.g760bfbb309-goog
 
