@@ -2,142 +2,80 @@ Return-Path: <SRS0=G+tR=35=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 97DF3C35250
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Feb 2020 07:49:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D5753C35250
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Feb 2020 12:43:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6D950207FF
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Feb 2020 07:49:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A8F6B20726
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Feb 2020 12:43:48 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DrQw7onj";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="Xdf7emLA";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="KyX/AKCi"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D950207FF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YjmgA3FI";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="BslnAMPT"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A8F6B20726
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zqj7f3lNL7AM7wfH7zfi7175BQctzQcmFbz4hGdNb1w=; b=DrQw7onjJlZWtB
-	F5HImBbQttrxzLAD8UdQcn0AmXYIfg90JiKcYSdLxtJavjawFl1/ftCBoGOVUe/PliFQjFeMd5NX4
-	TyPfd/Gvlb0JvyOf0S6knCP30w6Tn/Mkg7VpMjzeu9x09bPf4VCTwpD+x4GNEvYRBNuqkGCPmcZ5m
-	IXEKgy2BtiITEwgs7Sj1nw8i/74po9HocyvB6+H/YE7woPtypRV34UomS2DwFHVREiiHPqtZx60Id
-	+/abqPVAPSsxhJ5234/2EqJDwJ3cR8ax35V8wVnkznvIelfOSs235/dPxh6lDrnblL2MTcpo4bEzT
-	v61CTUS/XZzCTm3yIoAQ==;
+	List-Owner; bh=un/qDQRVANdcdfEJPc9c/PuOKxh0G2aatTnBK7R9PE4=; b=YjmgA3FIf8fotv
+	zY5tjjb8zKrZhsbxUfJKSYRV9LJGAAn7wfDd5Ez2+s6XP9pAx5y/y3TlAo2mn1oJzfdqM+QJpObXv
+	AXbpmSw9Yq6HP4GbYdOSQJnRColN+J9AjwyrSEwgb6KRutcuSuFLR4QrikRE5EPYTstuum2Ukbixw
+	oydV3rr8sTIL64PCm5GuRMlzVSalJlKqLAZPINUxad+WgRUdHgUYzT1gfJpjEa8eWKgE/1InVy2Pa
+	4hD64p7hTZSOoavWikD0Tls9uLVuAnSvEhtxqNlFHkBjj38mPbVJEfTuPDbSMP6Vdhvf9uEz9GwBy
+	I5xhRSfB7KTkbosti0oA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j0hKs-0004d8-2q; Sun, 09 Feb 2020 07:48:58 +0000
-Received: from esa2.hgst.iphmx.com ([68.232.143.124])
+	id 1j0lw2-0001q7-MO; Sun, 09 Feb 2020 12:43:38 +0000
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j0hKk-0004YV-PO; Sun, 09 Feb 2020 07:48:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1581234551; x=1612770551;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=At9kaU6dhvsAg8nH3p10caC+DBQibDul+NDdCuPbgWk=;
- b=Xdf7emLADl82n7VL1VoQF/a2PJ8eJ2toMPo42xsHGql0AW6R1foUScXe
- s0O67tCpNxFK3PrFCyqMzxQmuhLW5IGTsS+hy6j3WTwiRosmWzbX/Q2Ni
- 8TuYW8a030J95lZegHKxKkMORfnbEu9XBeo7k+Z7tiagrCv2uYTCsV7BJ
- u3xgbTwxzpY4Ysiqvmm6oVQwe1JH8B/ooXULWknzx/f7UQk7ReOWWRzVT
- YMpEGTly2AVog4ZrNekOPARVUEltpNM0Jr9TCrRbrGfelgAVqD5KLXshq
- haJeWB3o/6P9q0p5K3rj9DYttDkmMAw68dvDi8CGgQkoOumeyle0zGgCd w==;
-IronPort-SDR: gGtsDolP0TGrEwxIr6HUpTE5yD1U8yv8M43ylMSS1x09rCYdulEhxLVRfDtAMzKwhiEh0DyAZ0
- owb95LrAbkqr4Xg6Rq1SFf+XOXiWklIYODebkZn1pebcn2kIT5tH0cWbV7OPuS9nJbZCIPjT6e
- RC98bnlAauheN4JhM6+TqNEVIG14HOTkPGpmcgm4GZv8zzD7Btgy0ZbGmE82d7s2Bbbccwd9Og
- u2hA4Qz9quE6EANIqBxx7yx7VsmWNuCVNiP2HCf3lvVU6Np0RRptf+wDPg/9wKeJ9080TVznkg
- q2M=
-X-IronPort-AV: E=Sophos;i="5.70,420,1574092800"; d="scan'208";a="231219297"
-Received: from mail-bn7nam10lp2109.outbound.protection.outlook.com (HELO
- NAM10-BN7-obe.outbound.protection.outlook.com) ([104.47.70.109])
- by ob1.hgst.iphmx.com with ESMTP; 09 Feb 2020 15:48:55 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ND/DEUcT7pQBN894IVly6txf+I8fm73a6uJtMthhkwneX1K4vpUgILqk5B9VHot42vJs5Z64qdXMzzF/dORErV9TV1vMj2/dutkZNE/UlxaXIp2MwuXICTBq6qNcFerfRnBY2S7an/CZXW7fb1W5WBBfoUxeyL9KWBYjthZh+cC9Tr0b7RMstThKgVEE4EyXjJ8hQNQPTRI2S4FLrU6uy4bSXDvkERDZQ+jdC6w6fOxWd5pxI3V0VXw3VcltGtpw/GcGA6uqQNPzkRTgmbeC+R0kKSIrEr0/vefeNRuqo2yLB0V/9wRlEf3OhWsKzwcdvAe1BV+tLRE1r0InESyB/g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=AGESSIVYuSZhh1/v9pO5zFVMaqah/JUohDbv7uUfDhs=;
- b=QBru3cryp9Z5/sOTBZCxR09UEPwRFH9cWvxfzsnvVgvhf7FaaE4FskLx++aF/ZdETF9WVt945dKXKWMDgTWUFkx5mER5JPL48qMA4Dou1/nOAIWaQMVt+fpztQKG91aBQqty4uY1mmWhrcq5ApKE/X1j+KXEqzLtXj8JsoV1zKNGwS3Od3xOZhfn7QbLb5d//KkVpBgrgsZ8n/X4zHI/zyLM6VP/xJn7J6Eupeg1KiidfKowXfZEcDOzXtnjUsLwlhunIeRsaZ1iype7uMjtHIzLAkS/PNVn67MmqKHEHed9xUuh3XBqrDt6ZLX9VR9UNUc6RjbRXJJ+DG+fdxqS3g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=AGESSIVYuSZhh1/v9pO5zFVMaqah/JUohDbv7uUfDhs=;
- b=KyX/AKCiZGRblSSVVt86d2PVEznknpRom54/671ppjyeO9sUBCSNy536JOdDI8tcy0gAOSWU+35eChYi0/oA3vUOfP1vx9smwcF4cZnczBtI3pXUUl9mHp1D2NIUdJA5uOCt+Bfi/e5hG9U05WnjZszy/L8AVufHgiGK1zOgqq8=
-Received: from MN2PR04MB6991.namprd04.prod.outlook.com (10.186.144.209) by
- MN2PR04MB5726.namprd04.prod.outlook.com (20.179.21.32) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2707.24; Sun, 9 Feb 2020 07:48:37 +0000
-Received: from MN2PR04MB6991.namprd04.prod.outlook.com
- ([fe80::3885:5fac:44af:5de7]) by MN2PR04MB6991.namprd04.prod.outlook.com
- ([fe80::3885:5fac:44af:5de7%7]) with mapi id 15.20.2707.028; Sun, 9 Feb 2020
- 07:48:37 +0000
-From: Avri Altman <Avri.Altman@wdc.com>
-To: Can Guo <cang@codeaurora.org>, "asutoshd@codeaurora.org"
- <asutoshd@codeaurora.org>, "nguyenb@codeaurora.org" <nguyenb@codeaurora.org>, 
- "hongwus@codeaurora.org" <hongwus@codeaurora.org>, "rnayak@codeaurora.org"
- <rnayak@codeaurora.org>, "linux-scsi@vger.kernel.org"
- <linux-scsi@vger.kernel.org>, "kernel-team@android.com"
- <kernel-team@android.com>, "saravanak@google.com" <saravanak@google.com>,
- "salyzyn@google.com" <salyzyn@google.com>
-Subject: RE: [PATCH 5/7] scsi: ufs: Fix ufshcd_hold() caused scheduling while
- atomic
-Thread-Topic: [PATCH 5/7] scsi: ufs: Fix ufshcd_hold() caused scheduling while
- atomic
-Thread-Index: AQHV3hnmgATiAPkOBk2rW7eA93U0SKgSfjAg
-Date: Sun, 9 Feb 2020 07:48:36 +0000
-Message-ID: <MN2PR04MB69919F988AA4F1B7BD36408BFC1E0@MN2PR04MB6991.namprd04.prod.outlook.com>
-References: <1581123030-12023-1-git-send-email-cang@codeaurora.org>
- <1581123030-12023-6-git-send-email-cang@codeaurora.org>
-In-Reply-To: <1581123030-12023-6-git-send-email-cang@codeaurora.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Avri.Altman@wdc.com; 
-x-originating-ip: [212.25.79.133]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: f822112a-e7d7-4444-e322-08d7ad3478c9
-x-ms-traffictypediagnostic: MN2PR04MB5726:
-x-microsoft-antispam-prvs: <MN2PR04MB5726704F56CAE376CF0F864BFC1E0@MN2PR04MB5726.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-forefront-prvs: 0308EE423E
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(366004)(396003)(376002)(136003)(346002)(39860400002)(199004)(189003)(8676002)(6506007)(33656002)(478600001)(26005)(54906003)(110136005)(8936002)(316002)(76116006)(66446008)(64756008)(66556008)(66476007)(66946007)(186003)(81156014)(81166006)(9686003)(86362001)(2906002)(71200400001)(55016002)(5660300002)(7416002)(52536014)(7696005)(4326008);
- DIR:OUT; SFP:1102; SCL:1; SRVR:MN2PR04MB5726;
- H:MN2PR04MB6991.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: HcM50yhcU3R1FXDxt7ACLfAyV22qIUlTF9MQyi3/hkeFB4M3dK2ASJh8zqbIpOdn+7fXutfCSvojRgw5FvR1IYdI9txYBd1EWJ/ipjywLELjo6t1522CBaAHL4GuE6zqWCy+icgOIYM9lvR7xmvaQfpuaKWpUh6p2gQ0VwbQk5QM+aehDdSEgZ2SPjFAiVOeobHFvCFvwCLjwCxFW4vle4OtrFJ7RD1l3dUhagYFo04GpVR1YKrzbrX7iyOYAAY5yS19q3EQonaSZsHZnv4bTX+rhjrdWrESPZ8J2u5izm0KMZ/n5UD060fcjv6QdfC2JEikVEdtDUhXwDRCjEzwVPI7IGcW1ySSZUsJ7fO9nB3bajLNBH440hclSeJWDJGPpSiJwLRmSomSaGMQ3yq5GeGqfbAaMQEBnyJHu9Ki9qMhbJwm7k3PfctQfd3vum3c
-x-ms-exchange-antispam-messagedata: JxiZLUeFm+9dFRGtRAXTjyQZNTuUpc7B5I8Kc1VunK/YFY/p+Ubp6VIZIBRQNEzYPYxr271NwBrbFLtgZen8zmYLeQGcKwNXUUsHNFwnJkcw6PPa22BpdZuu52D20lGes8aJq9V6EeNrsx05+v/m6Q==
-x-ms-exchange-transport-forked: True
+ id 1j0lw0-0001pL-0J
+ for linux-mediatek@lists.infradead.org; Sun, 09 Feb 2020 12:43:37 +0000
+Received: by mail-qk1-x742.google.com with SMTP id q15so3883190qki.2
+ for <linux-mediatek@lists.infradead.org>; Sun, 09 Feb 2020 04:43:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=/HDQIjj7/RoJLWTQe7Qn8xLRJWwhFZyZPFpixKZQtWc=;
+ b=BslnAMPTFediwpaZFlp2heXASRgX8v8aUXs4aofs/vN0jqnkG+BxIvOnq4/ykzx/Eg
+ OdYffEnc4QvF6RVCf74NmtRvLiqEzhYLuHxnSt160Yttiji8URM9DSLodTvmsws37OyT
+ MzdF80b/1Gayu2vTVYQisVu6xLheXWBHCKEf0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=/HDQIjj7/RoJLWTQe7Qn8xLRJWwhFZyZPFpixKZQtWc=;
+ b=L/pSnWiheemERqB57NkzcUxGMXPaNAQjMCBpkQGS3/pteJRXX2Df09I0T+iDjzKatq
+ uslKuvcSato/N6i0HjjG8OkOexh7j0DuosQYhCz7r74eg7A34v/bdkbOOzWpG5bxCE32
+ CTWWgzp7Uob90/aYFll5aVzpNz3vugCfqps6vHMAmM6+aYMZTr9ukvPViXs/lcN1WXYA
+ J7n4eKut7beiqjxFy8eDM8M8svYrpjXSroAIT2fICMo4Xw7UosB7h+mNUWzR3ZxIbSQA
+ hmlb2MSzJJ5/PKhWTex/dLDhATaGd6KSuURfWdKFKulIWWzAH87znaxRCFHUDD6o8rKF
+ y2mg==
+X-Gm-Message-State: APjAAAXqlpsEJBW84kq/WYABt8bdr5rlj0WNC7wmR3lFV4yFw3u6ICXD
+ VcxcLzuRUECbni6lnIfjlVmDFT75GO04pTGOz6fAow==
+X-Google-Smtp-Source: APXvYqxdIXhbGu82ZxdIZ0YX8kCfAxINMhvxHUzLab5jgw1p7s+PzJ92K93PdTlaojIxuAyxA6VD+5BjPwjbjN0wh1U=
+X-Received: by 2002:a05:620a:1656:: with SMTP id
+ c22mr6969362qko.144.1581252213254; 
+ Sun, 09 Feb 2020 04:43:33 -0800 (PST)
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f822112a-e7d7-4444-e322-08d7ad3478c9
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Feb 2020 07:48:36.8752 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: dI5cE8FmZagzBaGQ35IXmAFWNbKZl3R6Sj34BPJzgwZPVVNTaIqF/Nv45FvkHiCf7ExCdKxJVqZZOfGzbzl6AA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB5726
+References: <20200207052627.130118-1-drinkcat@chromium.org>
+ <20200207052627.130118-6-drinkcat@chromium.org> <20200207135251.GA2952@kevin>
+In-Reply-To: <20200207135251.GA2952@kevin>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Sun, 9 Feb 2020 20:43:35 +0800
+Message-ID: <CANMq1KBKmOzaF_JcCMz_zWvDdO=ipnr3sv-PvpUZinheKSX8FA@mail.gmail.com>
+Subject: Re: [PATCH v4 5/7] drm/panfrost: Add support for multiple power
+ domains
+To: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200208_234850_887274_8C0BAA66 
-X-CRM114-Status: GOOD (  16.17  )
+X-CRM114-CacheID: sfid-20200209_044336_072078_2D01F8BC 
+X-CRM114-Status: GOOD (  10.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -149,62 +87,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Bart Van Assche <bvanassche@acm.org>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Venkat Gopalakrishnan <venkatg@codeaurora.org>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>,
- Alim Akhtar <alim.akhtar@samsung.com>,
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Devicetree List <devicetree@vger.kernel.org>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Tomeu Vizoso <tomeu.vizoso@collabora.com>, David Airlie <airlied@linux.ie>,
+ lkml <linux-kernel@vger.kernel.org>, Mark Brown <broonie@kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Steven Price <steven.price@arm.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Tomas Winkler <tomas.winkler@intel.com>,
- Stanley Chu <stanley.chu@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Feb 7, 2020 at 9:52 PM Alyssa Rosenzweig
+<alyssa.rosenzweig@collabora.com> wrote:
+>
+> > +     for (i = 0; i < ARRAY_SIZE(pfdev->pm_domain_devs); i++) {
+> > +             if (!pfdev->pm_domain_devs[i])
+> > +                     break;
 
+(next time, please provide a tiny bit more context when quoting, I had
+to look up to see where this comes from)
+So this comes from panfrost_pm_domain_fini.
 
-You didn't address any of my comments to this patch.
+> I'm not totally familiar with this code, but should this be a break or
+> just a continue?
 
-Thanks,
-Avri 
-> 
-> The async version of ufshcd_hold(async == true), which is only called
-> in queuecommand path as for now, is expected to work in atomic context,
-> thus it should not sleep or schedule out. When it runs into the condition
-> that clocks are ON but link is still in hibern8 state, it should bail out
-> without flushing the clock ungate work.
-> 
-> Signed-off-by: Can Guo <cang@codeaurora.org>
-> Reviewed-by: Hongwu Su <hongwus@codeaurora.org>
-> Reviewed-by: Asutosh Das <asutoshd@codeaurora.org>
-> Reviewed-by: Bean Huo <beanhuo@micron.com>
-> Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
-> 
-> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> index bbc2607..e8f7f9d 100644
-> --- a/drivers/scsi/ufs/ufshcd.c
-> +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -1518,6 +1518,11 @@ int ufshcd_hold(struct ufs_hba *hba, bool async)
->                  */
->                 if (ufshcd_can_hibern8_during_gating(hba) &&
->                     ufshcd_is_link_hibern8(hba)) {
-> +                       if (async) {
-> +                               rc = -EAGAIN;
-> +                               hba->clk_gating.active_reqs--;
-> +                               break;
-> +                       }
->                         spin_unlock_irqrestore(hba->host->host_lock, flags);
->                         flush_work(&hba->clk_gating.ungate_work);
->                         spin_lock_irqsave(hba->host->host_lock, flags);
-> --
-> The Qualcomm Innovation Center, Inc. is a member of the Code Aurora
-> Forum,
-> a Linux Foundation Collaborative Project
+Check how the domains are initialized in panfrost_pm_domain_init, they
+are guaranteed to be "packed" at the beginning of the array, so there
+can't be any holes, so break is safe.
 
 _______________________________________________
 Linux-mediatek mailing list
