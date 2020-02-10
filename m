@@ -2,80 +2,78 @@ Return-Path: <SRS0=lG5C=36=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-13.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
-	version=3.4.0
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E65DC2BA83
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2020 02:01:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 86DE6C2BA83
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2020 02:52:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0E33620658
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2020 02:01:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 574542086A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2020 02:52:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UZzYFfRx";
-	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="qXpPbmf/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E33620658
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="H2NZXPy1";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="t65FEvW9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 574542086A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uNFbfaMFZiQd4NXXmoux/YEn+R8+nbXaD5d4HTmCx4I=; b=UZzYFfRxmYxTPvm1sPaftevfg
-	IbLLZaydZqlrrfPbNDa1zuNhddGNBZlPoXYzskqKanw+ukDq7IZ9NS+S7H4UcNt0xV7V4cVkg0V6C
-	AkiO7X2jzA5roo1QQzL8KmfMhppZ1qoTXtSsjFPoA+Y0nXhqP/y2hls1jI44lcblm/QL+btQG9KTH
-	CWShfqUz6ecJBlIIi1rTP5nkarY5TatOEGTxfW2dyaeAkU9AE3UXgm8GKEoUFurSt0VsyhDoLlLkB
-	+yE9lVXstQvorHrvNVH7aMuYxLnbJb8wak6vbTXs6jUIGOajS7Ex/Kq20ADrQ92/JzAwYwNjljLyL
-	rvrx3ZzIw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=p7JSkGquUnOTW6CtUJWQS46tYhaugiAF0wkkei68yCc=; b=H2NZXPy1YeYBd0
+	qyK6RLilm8jaorCf1ZmBy7nx4Eo1nARRPsab58mNDWcwD32YhWkMIjhyDhcJlVIG5voAkq8InKhbL
+	jP9KDvXf+TUso2d5gQlLRe1Rx862nFBlRWWBLC0jLN/Ufq676l8u4Z0JOBkfdA98E2Ri7WbeY8/u+
+	tR5dJyEPwy1CKOYw8r31Y5GjSSpGgpolydowFVFq9w0O/U1P+0hzINsu0vndr797K1bQys7Xo9R9D
+	6r1N+WjKNqjWlw88aUbSgo5BRPDWrkKTpzJlIVFvUCUu6oW8jpbvk8KsihlerVCOy1Wr4D8kmGSK4
+	SHMym11SaKff85mZsl7A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j0yNZ-0007Hl-3m; Mon, 10 Feb 2020 02:00:53 +0000
-Received: from mail25.static.mailgun.info ([104.130.122.25])
+	id 1j0zBG-0006ac-U0; Mon, 10 Feb 2020 02:52:14 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j0yNS-0005dh-1R
- for linux-mediatek@lists.infradead.org; Mon, 10 Feb 2020 02:00:48 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1581300046; h=Message-ID: References: In-Reply-To: Subject:
- Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=kn1eCoX1vGFsUPSDIWx1LkICtUFdlC5DFGOw/o4zcls=;
- b=qXpPbmf/ROfS9ztv9xfqoNjt2pme1kd/fc0RtbaJWAxJkBkecFm+S+/gXj+UzR7APmkj1oTx
- RHJ5QSxi45iz4isV6VMD7+cvaHF2e/jkC7bJ/BY+dEcAPwcQaaRnLOoIyLTmfliUVHoeqvkC
- 4MYMx0DmSUObmFxQx7sGyPwfvYk=
-X-Mailgun-Sending-Ip: 104.130.122.25
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
- by mxa.mailgun.org with ESMTP id 5e40b949.7f39204587d8-smtp-out-n02;
- Mon, 10 Feb 2020 02:00:41 -0000 (UTC)
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id BC86AC4479C; Mon, 10 Feb 2020 02:00:41 +0000 (UTC)
-Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
- (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
- (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id BDCF7C43383;
- Mon, 10 Feb 2020 02:00:40 +0000 (UTC)
+ id 1j0zB7-0006SD-CQ; Mon, 10 Feb 2020 02:52:06 +0000
+X-UUID: 0355937f39ae445597b2eed98d46f735-20200209
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=EJpRwbjSh58mj6l2nQ/bNZGk/GQgl0/adoFvtAUjmAg=; 
+ b=t65FEvW9RFvsiH+mt1LBXASuu/S25/yu3c0oIIDqK2ea6l0ywQXa7/+/3zWODd46jYK8nZVd063SV/d59UBkd16Xd7fsMAVPZ9jGZsKCdfBr9P3TFXGhNHMKSMrIX6i2YHdq+dDdFQHrHPoX/ECHKLPU2svEuZ/qeKOdLBkC3WQ=;
+X-UUID: 0355937f39ae445597b2eed98d46f735-20200209
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1389923424; Sun, 09 Feb 2020 18:51:58 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sun, 9 Feb 2020 18:52:32 -0800
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 10 Feb 2020 10:50:33 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Mon, 10 Feb 2020 10:52:06 +0800
+Message-ID: <1581303109.951.1.camel@mtksdaap41>
+Subject: Re: [PATCH] drm/mediatek: Ensure the cursor plane is on top of
+ other overlays
+From: CK Hu <ck.hu@mediatek.com>
+To: Sean Paul <sean@poorly.run>
+Date: Mon, 10 Feb 2020 10:51:49 +0800
+In-Reply-To: <1580441226.9516.1.camel@mtksdaap41>
+References: <20200130192511.81205-1-sean@poorly.run>
+ <1580441226.9516.1.camel@mtksdaap41>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Date: Mon, 10 Feb 2020 10:00:40 +0800
-From: Can Guo <cang@codeaurora.org>
-To: Avri Altman <Avri.Altman@wdc.com>
-Subject: Re: [PATCH 5/7] scsi: ufs: Fix ufshcd_hold() caused scheduling while
- atomic
-In-Reply-To: <MN2PR04MB69919F988AA4F1B7BD36408BFC1E0@MN2PR04MB6991.namprd04.prod.outlook.com>
-References: <1581123030-12023-1-git-send-email-cang@codeaurora.org>
- <1581123030-12023-6-git-send-email-cang@codeaurora.org>
- <MN2PR04MB69919F988AA4F1B7BD36408BFC1E0@MN2PR04MB6991.namprd04.prod.outlook.com>
-Message-ID: <c89901f4e7f2c7200d1aefe55e3c9fb4@codeaurora.org>
-X-Sender: cang@codeaurora.org
-User-Agent: Roundcube Webmail/1.3.9
+X-TM-SNTS-SMTP: C0506BEC4AA5A41519AE24F56027614D84231C02A31EF03E8A3004DDC58C47C22000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200209_180046_944541_DAD78B56 
-X-CRM114-Status: GOOD (  12.96  )
+X-CRM114-CacheID: sfid-20200209_185205_432342_0A2765B2 
+X-CRM114-Status: GOOD (  15.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,74 +85,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, Stanley Chu <stanley.chu@mediatek.com>,
- rnayak@codeaurora.org, saravanak@google.com, linux-scsi@vger.kernel.org,
- Venkat Gopalakrishnan <venkatg@codeaurora.org>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>, nguyenb@codeaurora.org,
- open list <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, salyzyn@google.com,
- Alim Akhtar <alim.akhtar@samsung.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Tomas Winkler <tomas.winkler@intel.com>, Bean Huo <beanhuo@micron.com>,
- kernel-team@android.com, Bart Van Assche <bvanassche@acm.org>,
- hongwus@codeaurora.org, asutoshd@codeaurora.org
+Cc: dcastagna@chromium.org, dri-devel@lists.freedesktop.org,
+ Sean Paul <seanpaul@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias
+ Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-02-09 15:48, Avri Altman wrote:
-> You didn't address any of my comments to this patch.
+Hi, Sean:
+
+On Fri, 2020-01-31 at 11:27 +0800, CK Hu wrote:
+> Hi, Sean:
 > 
-> Thanks,
-> Avri
+> On Thu, 2020-01-30 at 14:24 -0500, Sean Paul wrote:
+> > From: Sean Paul <seanpaul@chromium.org>
+> > 
+> > Currently the cursor is placed on the first overlay plane, which means
+> > it will be at the bottom of the stack when the hw does the compositing
+> > with anything other than primary plane. Since mtk doesn't support plane
+> > zpos, change the cursor location to the top-most plane.
+> > 
+> 
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
 
-Replied in that thread.
+Applied to mediatek-drm-fixes-5.6 [1], thanks.
 
-Thanks,
-Can Guo.
+[1]
+https://github.com/ckhu-mediatek/linux.git-tags/commits/mediatek-drm-fixes-5.6
 
->> 
->> The async version of ufshcd_hold(async == true), which is only called
->> in queuecommand path as for now, is expected to work in atomic 
->> context,
->> thus it should not sleep or schedule out. When it runs into the 
->> condition
->> that clocks are ON but link is still in hibern8 state, it should bail 
->> out
->> without flushing the clock ungate work.
->> 
->> Signed-off-by: Can Guo <cang@codeaurora.org>
->> Reviewed-by: Hongwu Su <hongwus@codeaurora.org>
->> Reviewed-by: Asutosh Das <asutoshd@codeaurora.org>
->> Reviewed-by: Bean Huo <beanhuo@micron.com>
->> Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
->> 
->> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
->> index bbc2607..e8f7f9d 100644
->> --- a/drivers/scsi/ufs/ufshcd.c
->> +++ b/drivers/scsi/ufs/ufshcd.c
->> @@ -1518,6 +1518,11 @@ int ufshcd_hold(struct ufs_hba *hba, bool 
->> async)
->>                  */
->>                 if (ufshcd_can_hibern8_during_gating(hba) &&
->>                     ufshcd_is_link_hibern8(hba)) {
->> +                       if (async) {
->> +                               rc = -EAGAIN;
->> +                               hba->clk_gating.active_reqs--;
->> +                               break;
->> +                       }
->>                         spin_unlock_irqrestore(hba->host->host_lock, 
->> flags);
->>                         flush_work(&hba->clk_gating.ungate_work);
->>                         spin_lock_irqsave(hba->host->host_lock, 
->> flags);
->> --
->> The Qualcomm Innovation Center, Inc. is a member of the Code Aurora
->> Forum,
->> a Linux Foundation Collaborative Project
+Regards,
+CK
+
+> 
+> > Signed-off-by: Sean Paul <seanpaul@chromium.org>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 8 +++++---
+> >  1 file changed, 5 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > index 0dfcd1787e651..4ac76b9613926 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > @@ -689,11 +689,12 @@ static int mtk_drm_crtc_num_comp_planes(struct mtk_drm_crtc *mtk_crtc,
+> >  }
+> >  
+> >  static inline
+> > -enum drm_plane_type mtk_drm_crtc_plane_type(unsigned int plane_idx)
+> > +enum drm_plane_type mtk_drm_crtc_plane_type(unsigned int plane_idx,
+> > +					    unsigned int num_planes)
+> >  {
+> >  	if (plane_idx == 0)
+> >  		return DRM_PLANE_TYPE_PRIMARY;
+> > -	else if (plane_idx == 1)
+> > +	else if (plane_idx == (num_planes - 1))
+> >  		return DRM_PLANE_TYPE_CURSOR;
+> >  	else
+> >  		return DRM_PLANE_TYPE_OVERLAY;
+> > @@ -712,7 +713,8 @@ static int mtk_drm_crtc_init_comp_planes(struct drm_device *drm_dev,
+> >  		ret = mtk_plane_init(drm_dev,
+> >  				&mtk_crtc->planes[mtk_crtc->layer_nr],
+> >  				BIT(pipe),
+> > -				mtk_drm_crtc_plane_type(mtk_crtc->layer_nr),
+> > +				mtk_drm_crtc_plane_type(mtk_crtc->layer_nr,
+> > +							num_planes),
+> >  				mtk_ddp_comp_supported_rotations(comp));
+> >  		if (ret)
+> >  			return ret;
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
