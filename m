@@ -2,75 +2,62 @@ Return-Path: <SRS0=lG5C=36=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4ED6EC352A4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2020 08:41:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 73D9CC352A3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2020 11:31:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 21D5520733
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2020 08:41:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 47E3A20842
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Feb 2020 11:31:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jbUQuIdG";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="MlgjgnoI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 21D5520733
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XcQLVNnH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 47E3A20842
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u4LfMVxzhq4qep5Kjvj4XX3ae82Il1RATa6GdNyu3+4=; b=jbUQuIdGuU0udQ
-	6bYSDedJzBkIanrjN8LPr0TKz7Sw1hfrAvZD8Q+cHk7xfe1cLjJ2BVPOVusbLMdyfusqJOd0e7cSp
-	WdhDSUmL+83gBGaQsM3bx8iT+pSwQu0uGNmf12zjjH41aMcRqVdbR/CSRcV4RIWTNMRN1w5uYryki
-	1mEZoxU+p6/OxITjLtzCDvQ3BVPNW8FLaSqX8AJAROZGi7cVT4HtttDpe2nCC/C91UTc/5nd3+oPe
-	KH0bLCXd9o8YqPA5NPQSb0M+8uJUkd8BRwhr1I3W/55MgOurLR2UgxpfjxRUv/akv4m5x2F6YimFZ
-	mbLDPogUYpHagokop6WQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dj5PxZxr4nSdfFexnKxm16yP5uj9m75oa8IgNOMimuE=; b=XcQLVNnH9ihn16
+	ZSWttCmfT04VreEuP2HqrvNQs3CLwZIuXXBUnn73WT/yPcWimHLQbiw/SRPfARckK1k85rvaPL8XM
+	2OzIk6ntiBwXjuX+qkT4pFAzAJsOclawTdp/h4LNZmUJLt7Hrz8J0V4VaST+btl2XFKoQsKrYZ8DR
+	wxH2zwVqve+1uWOiqH3YD4HfWCOsdQBQCxFXdeiL3bOBPKcD3LyDlom9acQXYjvclJONLxQwxMb+s
+	RT+aOQIlN3Y7lKixFYOW/g+0/0uqk96hsruS4DreyS0LyyreDcfKTJOAo140KWWihHY0g7LY9orLv
+	iOpjf961MRS7ng2Ol+gw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j14ct-0003Ta-GT; Mon, 10 Feb 2020 08:41:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j14cq-0003Sp-OI; Mon, 10 Feb 2020 08:41:06 +0000
-X-UUID: 78f00cbbde854adc8629ad60cc099217-20200210
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Jme6XnUcV22sv+Lb0GfidwDPAVP5wJkTpFliBwJ3cpI=; 
- b=MlgjgnoIA4AD4sGad07cNjNs9aeX4kPOkUBvg6aJe/XqqKbp6z7t+WdI8EyBQG7wwk4xzFLVfTa+JAxwf9PZ2n7AHIwcbS7t1WZ32/TY3Vt36qp+4oPBYAJm/RO/vCS/hK5rMBvIQNeNet3kupcf44gHZJvloGaQBGVgtKNZf/Y=;
-X-UUID: 78f00cbbde854adc8629ad60cc099217-20200210
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yingjoe.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1163598211; Mon, 10 Feb 2020 00:40:59 -0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 10 Feb 2020 00:30:55 -0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by mtkcas08.mediatek.inc
- (172.21.101.126) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Mon, 10 Feb 2020 16:31:12 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Mon, 10 Feb 2020 16:31:12 +0800
-Message-ID: <1581323455.2213.6.camel@mtksdaap41>
-Subject: Re: [PATCH v2] mtd: mtk-quadspi: add support for DMA reading
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-To: Chuanhong Guo <gch981213@gmail.com>
-Date: Mon, 10 Feb 2020 16:30:55 +0800
-In-Reply-To: <20200208084022.193231-1-gch981213@gmail.com>
-References: <20200208084022.193231-1-gch981213@gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+	id 1j17I1-0001lf-1T; Mon, 10 Feb 2020 11:31:45 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j17Ht-0001eY-3z; Mon, 10 Feb 2020 11:31:39 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 4E3AB1FB;
+ Mon, 10 Feb 2020 03:31:33 -0800 (PST)
+Received: from [10.1.195.32] (e112269-lin.cambridge.arm.com [10.1.195.32])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 3A7BA3F6CF;
+ Mon, 10 Feb 2020 03:31:31 -0800 (PST)
+Subject: Re: [PATCH v4 4/7] drm/panfrost: Add support for multiple regulators
+To: Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>
+References: <20200207052627.130118-1-drinkcat@chromium.org>
+ <20200207052627.130118-5-drinkcat@chromium.org>
+From: Steven Price <steven.price@arm.com>
+Message-ID: <df99cedb-4c2c-b8b8-14e6-d7b8d8fe351a@arm.com>
+Date: Mon, 10 Feb 2020 11:31:29 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20200207052627.130118-5-drinkcat@chromium.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200210_004104_796155_322B26E2 
-X-CRM114-Status: GOOD (  10.78  )
+X-CRM114-CacheID: sfid-20200210_033137_251325_FDDCAB4C 
+X-CRM114-Status: GOOD (  30.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,43 +69,221 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Vignesh Raghavendra <vigneshr@ti.com>,
- Tudor Ambarus <tudor.ambarus@microchip.com>,
- Richard Weinberger <richard@nod.at>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <Mark.Rutland@arm.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>,
+ Tomeu Vizoso <tomeu.vizoso@collabora.com>, David Airlie <airlied@linux.ie>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Mark Brown <broonie@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
+ Daniel Vetter <daniel@ffwll.ch>, "hsinyi@chromium.org" <hsinyi@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 2020-02-08 at 16:40 +0800, Chuanhong Guo wrote:
-> PIO reading mode on this controller is pretty inefficient
-> (one cmd+addr+dummy sequence reads only one byte)
-> This patch adds support for reading using DMA mode which increases
-> reading speed from 1MB/s to 4MB/s
+On 07/02/2020 05:26, Nicolas Boichat wrote:
+> Some GPUs, namely, the bifrost/g72 part on MT8183, have a second
+> regulator for their SRAM, let's add support for that.
 > 
-> DMA busy checking is implemented with readl_poll_timeout because
-> I don't have access to IRQ-related docs. The speed increment comes
-> from those saved cmd+addr+dummy clocks.
+> We extend the framework in a generic manner so that we could
+> support more than 2 regulators, if required.
+> 
+> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
 
-Hi Chuanhong,
+Reviewed-by: Steven Price <steven.price@arm.com>
 
-Thanks for your patch, I'm checking with Guochun to see if we could
-release IRQ related information to you.
+Thanks,
 
+Steve
 
-> This controller requires that DMA source/destination address and
-> reading length should be 16-byte aligned. We use a bounce buffer if
-> one of them is not aligned, read more than what we need, and copy
-> data from corresponding buffer offset.
+> 
+> ---
+> 
+> v4:
+>  - nits: Run through latest version of checkpatch:
+>    - Use WARN instead of BUG_ON.
+>    - Drop braces in single expression for loop.
+>    - *comp not * comp
+> v3:
+>  - Make this more generic, by allowing any number of regulators
+>    (in practice we fix the maximum number of regulators to 2, but
+>    this could be increased easily).
+>  - We only probe the second regulator if the device tree matching
+>    data asks for it.
+>  - I couldn't find a way to detect the number of regulators in the
+>    device tree, if we wanted to refuse to probe the device if there
+>    are too many regulators, which might be required for safety, see
+>    the thread on v2 [1].
+>  - The discussion also included the idea of a separate device tree
+>    entry for a "soft PDC", or at least a separate driver. I'm not
+>    sure to understand the full picture, and how different vendors
+>    implement this, so I'm still integrating everything in the main
+>    driver. I'd be happy to try to make mt8183 fit into such a
+>    framework after it's created, but I don't think I'm best placed
+>    to implement (and again, the main purpose of this was to test
+>    if the binding is correct).
+> 
+> [1] https://patchwork.kernel.org/patch/11322839/
+> 
+>  drivers/gpu/drm/panfrost/panfrost_device.c | 26 +++++++++++++-------
+>  drivers/gpu/drm/panfrost/panfrost_device.h | 15 +++++++++++-
+>  drivers/gpu/drm/panfrost/panfrost_drv.c    | 28 +++++++++++++++-------
+>  3 files changed, 51 insertions(+), 18 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_device.c b/drivers/gpu/drm/panfrost/panfrost_device.c
+> index 238fb6d54df4732..3720d50f6d9f965 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_device.c
+> +++ b/drivers/gpu/drm/panfrost/panfrost_device.c
+> @@ -87,18 +87,27 @@ static void panfrost_clk_fini(struct panfrost_device *pfdev)
+>  
+>  static int panfrost_regulator_init(struct panfrost_device *pfdev)
+>  {
+> -	int ret;
+> +	int ret, i;
+>  
+> -	pfdev->regulator = devm_regulator_get(pfdev->dev, "mali");
+> -	if (IS_ERR(pfdev->regulator)) {
+> -		ret = PTR_ERR(pfdev->regulator);
+> -		dev_err(pfdev->dev, "failed to get regulator: %d\n", ret);
+> +	if (WARN(pfdev->comp->num_supplies > ARRAY_SIZE(pfdev->regulators),
+> +			"Too many supplies in compatible structure.\n"))
+> +		return -EINVAL;
+> +
+> +	for (i = 0; i < pfdev->comp->num_supplies; i++)
+> +		pfdev->regulators[i].supply = pfdev->comp->supply_names[i];
+> +
+> +	ret = devm_regulator_bulk_get(pfdev->dev,
+> +				      pfdev->comp->num_supplies,
+> +				      pfdev->regulators);
+> +	if (ret < 0) {
+> +		dev_err(pfdev->dev, "failed to get regulators: %d\n", ret);
+>  		return ret;
+>  	}
+>  
+> -	ret = regulator_enable(pfdev->regulator);
+> +	ret = regulator_bulk_enable(pfdev->comp->num_supplies,
+> +				    pfdev->regulators);
+>  	if (ret < 0) {
+> -		dev_err(pfdev->dev, "failed to enable regulator: %d\n", ret);
+> +		dev_err(pfdev->dev, "failed to enable regulators: %d\n", ret);
+>  		return ret;
+>  	}
+>  
+> @@ -107,7 +116,8 @@ static int panfrost_regulator_init(struct panfrost_device *pfdev)
+>  
+>  static void panfrost_regulator_fini(struct panfrost_device *pfdev)
+>  {
+> -	regulator_disable(pfdev->regulator);
+> +	regulator_bulk_disable(pfdev->comp->num_supplies,
+> +			pfdev->regulators);
+>  }
+>  
+>  int panfrost_device_init(struct panfrost_device *pfdev)
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_device.h b/drivers/gpu/drm/panfrost/panfrost_device.h
+> index 06713811b92cdf7..c9468bc5573ac9d 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_device.h
+> +++ b/drivers/gpu/drm/panfrost/panfrost_device.h
+> @@ -7,6 +7,7 @@
+>  
+>  #include <linux/atomic.h>
+>  #include <linux/io-pgtable.h>
+> +#include <linux/regulator/consumer.h>
+>  #include <linux/spinlock.h>
+>  #include <drm/drm_device.h>
+>  #include <drm/drm_mm.h>
+> @@ -19,6 +20,7 @@ struct panfrost_job;
+>  struct panfrost_perfcnt;
+>  
+>  #define NUM_JOB_SLOTS 3
+> +#define MAX_REGULATORS 2
+>  
+>  struct panfrost_features {
+>  	u16 id;
+> @@ -51,6 +53,16 @@ struct panfrost_features {
+>  	unsigned long hw_issues[64 / BITS_PER_LONG];
+>  };
+>  
+> +/*
+> + * Features that cannot be automatically detected and need matching using the
+> + * compatible string, typically SoC-specific.
+> + */
+> +struct panfrost_compatible {
+> +	/* Supplies count and names. */
+> +	int num_supplies;
+> +	const char * const *supply_names;
+> +};
+> +
+>  struct panfrost_device {
+>  	struct device *dev;
+>  	struct drm_device *ddev;
+> @@ -59,10 +71,11 @@ struct panfrost_device {
+>  	void __iomem *iomem;
+>  	struct clk *clock;
+>  	struct clk *bus_clock;
+> -	struct regulator *regulator;
+> +	struct regulator_bulk_data regulators[MAX_REGULATORS];
+>  	struct reset_control *rstc;
+>  
+>  	struct panfrost_features features;
+> +	const struct panfrost_compatible *comp;
+>  
+>  	spinlock_t as_lock;
+>  	unsigned long as_in_use_mask;
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
+> index b7a618db3ee223e..4d08507526239f2 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
+> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
+> @@ -584,6 +584,10 @@ static int panfrost_probe(struct platform_device *pdev)
+>  
+>  	platform_set_drvdata(pdev, pfdev);
+>  
+> +	pfdev->comp = of_device_get_match_data(&pdev->dev);
+> +	if (!pfdev->comp)
+> +		return -ENODEV;
+> +
+>  	/* Allocate and initialze the DRM device. */
+>  	ddev = drm_dev_alloc(&panfrost_drm_driver, &pdev->dev);
+>  	if (IS_ERR(ddev))
+> @@ -655,16 +659,22 @@ static int panfrost_remove(struct platform_device *pdev)
+>  	return 0;
+>  }
+>  
+> +const char * const default_supplies[] = { "mali" };
+> +static const struct panfrost_compatible default_data = {
+> +	.num_supplies = ARRAY_SIZE(default_supplies),
+> +	.supply_names = default_supplies,
+> +};
+> +
+>  static const struct of_device_id dt_match[] = {
+> -	{ .compatible = "arm,mali-t604" },
+> -	{ .compatible = "arm,mali-t624" },
+> -	{ .compatible = "arm,mali-t628" },
+> -	{ .compatible = "arm,mali-t720" },
+> -	{ .compatible = "arm,mali-t760" },
+> -	{ .compatible = "arm,mali-t820" },
+> -	{ .compatible = "arm,mali-t830" },
+> -	{ .compatible = "arm,mali-t860" },
+> -	{ .compatible = "arm,mali-t880" },
+> +	{ .compatible = "arm,mali-t604", .data = &default_data, },
+> +	{ .compatible = "arm,mali-t624", .data = &default_data, },
+> +	{ .compatible = "arm,mali-t628", .data = &default_data, },
+> +	{ .compatible = "arm,mali-t720", .data = &default_data, },
+> +	{ .compatible = "arm,mali-t760", .data = &default_data, },
+> +	{ .compatible = "arm,mali-t820", .data = &default_data, },
+> +	{ .compatible = "arm,mali-t830", .data = &default_data, },
+> +	{ .compatible = "arm,mali-t860", .data = &default_data, },
+> +	{ .compatible = "arm,mali-t880", .data = &default_data, },
+>  	{}
+>  };
+>  MODULE_DEVICE_TABLE(of, dt_match);
+> 
 
-I've checked with our HW guys. The limitation is on DRAM only.
-So for read we should check buffer and length to make sure it is
-aligned, but don't need to check from.
-
-Joe.C
 
 _______________________________________________
 Linux-mediatek mailing list
