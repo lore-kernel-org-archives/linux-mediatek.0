@@ -2,84 +2,77 @@ Return-Path: <SRS0=52uS=37=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3345CC352A4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 02:39:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E621C35242
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 03:18:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EBF942070A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 02:39:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 232E120714
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 03:18:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FE++f31R";
-	dkim=fail reason="key not found in DNS" (0-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="mXK1/scy"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EBF942070A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="V45Vatpo";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Mq6bNoLy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 232E120714
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=/OVf2GiouezHAVjbSCk/uquk5Cq8+ahr5/14Y+/bYHk=; b=FE++f31Ri1H/JRRrjvfx4Pj0i5
-	irC5Ak6gHbm7+v2b5mk03WTr/Y1kBdxRxg4y5CeSev8y08Ofar9koT/RFAUWm2OlVT2Ub+iVSwxsy
-	2xNWHjrJ5kVw4bD5WOYJPiQy/XidraNBvUs96gaQxA/9RG6sBgVYDYVjPJ2y7L8lMJYVwxbYoYi10
-	98cutWDs30+lJjw/z777o6++LNXg2Nm5WCyrIquTVqPqT/QuKm3OkaCPAhJZj2Dv41ZpPLHXZYzR/
-	VeZ02usFUq5eUpB5juB3Cf4NiirWS3Wjz9HgcPDWZt57U/s8eVUumxqLQIR8cjuhImWA+glzFRudQ
-	lkGtTjvQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aZWD5MgmZGSnPlJ726HB16sJ9VG7pxVLSkdtb1v1vbY=; b=V45VatpoZmH0Iy
+	vVrsS0Yk6cll0GIfUrB2sdTS5kN+4w4mSmD8xl6aqbpp32A1SfowAwfNL+Rhxqu6PlZlzzoFqxPDD
+	3UdkjXz9YKBNO2/LMu/TF1JqfCjDGDu4WWZk71W5qoIJ1fe6kBijX1rlNzx1I0OCdmdZkRcbUDDsP
+	Y67dLcU4Ssmj/nLJNp8R5ABY1zY5M6aN7n5NGgdRtyYJPS5vsaxo2mG65+oEXoPIJ9Ys6OCshoEMs
+	jZOuMrVGLodpXtRG5V6TJEKl7i/KzvG1tBGK8HVTF4ESE0PfUK/yezkoRnBCVam5X585WgY4hy7um
+	bSn5Rmbbm/C+/a6yh1TQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j1LSK-0002A5-Lm; Tue, 11 Feb 2020 02:39:20 +0000
-Received: from mail25.static.mailgun.info ([104.130.122.25])
+	id 1j1M4G-0007qk-OZ; Tue, 11 Feb 2020 03:18:32 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j1LRa-00018I-EI
- for linux-mediatek@lists.infradead.org; Tue, 11 Feb 2020 02:38:36 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1581388714; h=References: In-Reply-To: Message-Id: Date:
- Subject: Cc: To: From: Sender;
- bh=tbDNMomGjJ7cvmYyF8PQisUL3aRlv7HcybX79OJNwX8=;
- b=mXK1/scyIumvxE6oKEvVkj5zfe3IaphxW7AEkdyzD5pvnWhqt56MtIrHeWOwtaAb93MT/CbG
- CHDq40b2MzMSHuuP0ve9qPO8bptRUb6Xf9hBm8TpY2hi/glNkeBdaWa9HxNjlybTX7Lvi/Eu
- rrUEF26aE/Rax0+Xr+mhcykAACc=
-X-Mailgun-Sending-Ip: 104.130.122.25
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
- by mxa.mailgun.org with ESMTP id 5e4213a6.7f4e4c4cf9d0-smtp-out-n02;
- Tue, 11 Feb 2020 02:38:30 -0000 (UTC)
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id B4042C447AE; Tue, 11 Feb 2020 02:38:29 +0000 (UTC)
-Received: from pacamara-linux.qualcomm.com (i-global254.qualcomm.com
- [199.106.103.254])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 4533DC447A3;
- Tue, 11 Feb 2020 02:38:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 4533DC447A3
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=none smtp.mailfrom=cang@codeaurora.org
-From: Can Guo <cang@codeaurora.org>
-To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
- rnayak@codeaurora.org, linux-scsi@vger.kernel.org, kernel-team@android.com,
- saravanak@google.com, salyzyn@google.com, cang@codeaurora.org
-Subject: [PATCH v9 6/7] scsi: ufs: Add dev ref clock gating wait time support
-Date: Mon, 10 Feb 2020 18:37:48 -0800
-Message-Id: <1581388671-18078-7-git-send-email-cang@codeaurora.org>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1581388671-18078-1-git-send-email-cang@codeaurora.org>
-References: <1581388671-18078-1-git-send-email-cang@codeaurora.org>
+ id 1j1M45-0007in-To; Tue, 11 Feb 2020 03:18:23 +0000
+X-UUID: 980dcd7ad5e54796b05b72ac25a6416e-20200210
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Q4e7Fdzl/uPZinYhRGJtG7vhEdKUSYrzIdt4zGDHw+A=; 
+ b=Mq6bNoLyJE4QQWehR4LQ3AjaFzR2PlAAnowDxikQz1cY6nsVrlna8gln1dcMd5aEOjo9ufQsH9yJvuzMADWcwQozqVOLlM14IZqgZeuoW7p3TWvusjBFIqBdyKxOg82DhL6bsHLRQ4dqipf/aq7QnBj78MkDb+RSceD6+QTKU+k=;
+X-UUID: 980dcd7ad5e54796b05b72ac25a6416e-20200210
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <michael.kao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1242957250; Mon, 10 Feb 2020 19:18:18 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 10 Feb 2020 19:17:34 -0800
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 11 Feb 2020 11:16:38 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Tue, 11 Feb 2020 11:17:39 +0800
+Message-ID: <1581391046.31005.12.camel@mtksdccf07>
+Subject: Re: [PATCH v3,1/8] arm64: dts: mt8183: add thermal zone node
+From: Michael Kao <michael.kao@mediatek.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Date: Tue, 11 Feb 2020 11:17:26 +0800
+In-Reply-To: <00c8be46-3ba1-571a-0230-7c722ce1901e@linaro.org>
+References: <20200103064407.19861-1-michael.kao@mediatek.com>
+ <20200103064407.19861-2-michael.kao@mediatek.com>
+ <00c8be46-3ba1-571a-0230-7c722ce1901e@linaro.org>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200210_183835_110727_8D191AE0 
-X-CRM114-Status: GOOD (  16.09  )
+X-CRM114-CacheID: sfid-20200210_191821_974247_79C27A15 
+X-CRM114-Status: GOOD (  15.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,129 +84,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Bart Van Assche <bvanassche@acm.org>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Venkat Gopalakrishnan <venkatg@codeaurora.org>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- open list <linux-kernel@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Colin Ian King <colin.king@canonical.com>,
- Tomas Winkler <tomas.winkler@intel.com>,
- Stanley Chu <stanley.chu@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>
-MIME-Version: 1.0
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ srv_heupstream@mediatek.com, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Eduardo Valentin <edubezval@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ hsinyi@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In UFS version 3.0, a newly added attribute bRefClkGatingWaitTime defines
-the minimum time for which the reference clock is required by device during
-transition to LS-MODE or HIBERN8 state. Make this change to reflect the new
-requirement by adding delays before turning off the clock.
+On Thu, 2020-01-09 at 12:31 +0100, Daniel Lezcano wrote:
+> On 03/01/2020 07:44, Michael Kao wrote:
+> > From: "michael.kao" <michael.kao@mediatek.com>
+> > 
+> > Add thermal zone node to Mediatek MT8183 dts file.
+> > 
+> > Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 85 ++++++++++++++++++++++++
+> >  1 file changed, 85 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > index 10b32471bc7b..a2793cf3d994 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > @@ -570,6 +570,88 @@
+> >  			status = "disabled";
+> >  		};
+> >  
+> > +		thermal: thermal@1100b000 {
+> > +			#thermal-sensor-cells = <1>;
+> > +			compatible = "mediatek,mt8183-thermal";
+> > +			reg = <0 0x1100b000 0 0x1000>;
+> > +			interrupts = <0 76 IRQ_TYPE_LEVEL_LOW>;
+> 
+> What is this interrupt for?
 
-Signed-off-by: Can Guo <cang@codeaurora.org>
-Reviewed-by: Asutosh Das <asutoshd@codeaurora.org>
-Reviewed-by: Bean Huo <beanhuo@micron.com>
-Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/scsi/ufs/ufs.h    |  3 +++
- drivers/scsi/ufs/ufshcd.c | 34 ++++++++++++++++++++++++++++++++++
- 2 files changed, 37 insertions(+)
+The interrupts pin is designed in our SoC. But it is not used in our
+upstream thermal code now. There is also add the settings but not use
+for mt8173.dtsi. To align the thermal dtsi format, I follow the past
+experience to add the interrupt settings of this project first.
 
-diff --git a/drivers/scsi/ufs/ufs.h b/drivers/scsi/ufs/ufs.h
-index cfe3803..990cb48 100644
---- a/drivers/scsi/ufs/ufs.h
-+++ b/drivers/scsi/ufs/ufs.h
-@@ -167,6 +167,7 @@ enum attr_idn {
- 	QUERY_ATTR_IDN_FFU_STATUS		= 0x14,
- 	QUERY_ATTR_IDN_PSA_STATE		= 0x15,
- 	QUERY_ATTR_IDN_PSA_DATA_SIZE		= 0x16,
-+	QUERY_ATTR_IDN_REF_CLK_GATING_WAIT_TIME	= 0x17,
- };
- 
- /* Descriptor idn for Query requests */
-@@ -534,6 +535,8 @@ struct ufs_dev_info {
- 	u16 wmanufacturerid;
- 	/*UFS device Product Name */
- 	u8 *model;
-+	u16 wspecversion;
-+	u32 clk_gating_wait_us;
- };
- 
- /**
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index e8f7f9d..adcce41 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -91,6 +91,9 @@
- /* default delay of autosuspend: 2000 ms */
- #define RPM_AUTOSUSPEND_DELAY_MS 2000
- 
-+/* Default value of wait time before gating device ref clock */
-+#define UFSHCD_REF_CLK_GATING_WAIT_US 0xFF /* microsecs */
-+
- #define ufshcd_toggle_vreg(_dev, _vreg, _on)				\
- 	({                                                              \
- 		int _ret;                                               \
-@@ -3281,6 +3284,31 @@ static inline int ufshcd_read_unit_desc_param(struct ufs_hba *hba,
- 				      param_offset, param_read_buf, param_size);
- }
- 
-+static int ufshcd_get_ref_clk_gating_wait(struct ufs_hba *hba)
-+{
-+	int err = 0;
-+	u32 gating_wait = UFSHCD_REF_CLK_GATING_WAIT_US;
-+
-+	if (hba->dev_info.wspecversion >= 0x300) {
-+		err = ufshcd_query_attr_retry(hba, UPIU_QUERY_OPCODE_READ_ATTR,
-+				QUERY_ATTR_IDN_REF_CLK_GATING_WAIT_TIME, 0, 0,
-+				&gating_wait);
-+		if (err)
-+			dev_err(hba->dev, "Failed reading bRefClkGatingWait. err = %d, use default %uus\n",
-+					 err, gating_wait);
-+
-+		if (gating_wait == 0) {
-+			gating_wait = UFSHCD_REF_CLK_GATING_WAIT_US;
-+			dev_err(hba->dev, "Undefined ref clk gating wait time, use default %uus\n",
-+					 gating_wait);
-+		}
-+
-+		hba->dev_info.clk_gating_wait_us = gating_wait;
-+	}
-+
-+	return err;
-+}
-+
- /**
-  * ufshcd_memory_alloc - allocate memory for host memory space data structures
-  * @hba: per adapter instance
-@@ -6626,6 +6654,10 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
- 	dev_info->wmanufacturerid = desc_buf[DEVICE_DESC_PARAM_MANF_ID] << 8 |
- 				     desc_buf[DEVICE_DESC_PARAM_MANF_ID + 1];
- 
-+	/* getting Specification Version in big endian format */
-+	dev_info->wspecversion = desc_buf[DEVICE_DESC_PARAM_SPEC_VER] << 8 |
-+				      desc_buf[DEVICE_DESC_PARAM_SPEC_VER + 1];
-+
- 	model_index = desc_buf[DEVICE_DESC_PARAM_PRDCT_NAME];
- 	err = ufshcd_read_string_desc(hba, model_index,
- 				      &dev_info->model, SD_ASCII_STD);
-@@ -7003,6 +7035,8 @@ static int ufshcd_device_params_init(struct ufs_hba *hba)
- 		goto out;
- 	}
- 
-+	ufshcd_get_ref_clk_gating_wait(hba);
-+
- 	ufs_fixup_device_setup(hba);
- 
- 	if (!ufshcd_query_flag_retry(hba, UPIU_QUERY_OPCODE_READ_FLAG,
--- 
-The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
-a Linux Foundation Collaborative Project
+> 
+> > +			clocks = <&infracfg CLK_INFRA_THERM>,
+> > +				 <&infracfg CLK_INFRA_AUXADC>;
+> > +			clock-names = "therm", "auxadc";
+> > +			resets = <&infracfg  MT8183_INFRACFG_AO_THERM_SW_RST>;
+> > +			mediatek,auxadc = <&auxadc>;
+> > +			mediatek,apmixedsys = <&apmixedsys>;
+> > +			mediatek,hw-reset-temp = <117000>;
+> > +			nvmem-cells = <&thermal_calibration>;
+> > +			nvmem-cell-names = "calibration-data";
+> > +		};
+> > +
+> > +		thermal-zones {
+> > +			cpu_thermal: cpu_thermal {
+> > +				polling-delay-passive = <1000>;
+> > +				polling-delay = <1000>;
+> 
+> [ ... ]
+> 
+> 
+> 
+> 
+> 
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
