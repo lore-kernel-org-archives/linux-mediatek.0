@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8ECBAC3B186
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 03:22:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3169DC35242
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 03:22:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 61EF320661
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 03:22:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 024DF20661
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 03:22:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Re22eNe8";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="vFBoOC8r"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 61EF320661
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IEeIwoDs";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EnBQ14yM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 024DF20661
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pg7IiijeC6a2AmCtsImiPkD2606BMq9LfnD9knvxUnY=; b=Re22eNe88QxCaC
-	yuw2/2tZsmVx59lLL9yiUkUXfAk4XHLgBJTIekn9zWYKvIvQkVXfe4x2Ffv0A4/o5CcRvLlaxwiKs
-	KdYfSXW/Zhw/T2jmDPBd0J/FCkicjMXufP2papmLNQ6EXWQoc6i+Pc1lyEMo1n5QSF1xIKtyt9h4F
-	j0mCuoWBpFH/8EuQH42HhbJGM3uwG7rn8Q/6FxEsILaOOvmmS58RzMuQKtcVLQpj4shRF00pHfijC
-	t7TcIwwPEiyowMFw115D6ddZj13ZXfLpFwQBPTw2uz2bbk4vp+gjFXkD4xKdC+NQ1Mb9utGqVa/iX
-	7ZCNXMKQ2zA73km8mBUg==;
+	List-Owner; bh=eptpMGWN41wKQUVjuiSvQBMNuBOh9n1xXB5XkuF1/I8=; b=IEeIwoDsxBI0qe
+	OSuoydJWJITAj8DPmb05I5kN7W1bmDLQCNEUdjKMP6DB2RVb8CFmNHs180zeR1wC1voD8qizKrnvb
+	aEdD63OJAdUs2yw+0SunqeMFDBIhRZbeYzFI50e/u20LPWIGpYhWRUJHxytA8cmhcPvTqXfTXHXig
+	20oYx4Ca8YpVTz2wpgvcMpyjJi5OjFRfZgiQp28zfICW6FTgCI3pTd11RLEQJclWMWvrUg7DzcNGw
+	5hgR+nFlfBL8VJCcYI2dWGzNiQLOUgAtcoJWp7XCZdiiETeEwoIrvU+DQAkCmUrXJABb3EtxyrY/e
+	2vAbgOjjce37UqWwVnmw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j1M82-0001Xe-1u; Tue, 11 Feb 2020 03:22:26 +0000
+	id 1j1M83-0001Zx-Mj; Tue, 11 Feb 2020 03:22:27 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j1M7a-0000xW-BA; Tue, 11 Feb 2020 03:22:00 +0000
-X-UUID: 1d21991def20499e8bf05eddceee6837-20200210
+ id 1j1M7a-0000y1-4F; Tue, 11 Feb 2020 03:22:00 +0000
+X-UUID: b727e44b7c904414a1e3af84b682d4cf-20200210
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=oiKx670leBobuLz71DRbJVpqumd6BIEQahg52cPS7sk=; 
- b=vFBoOC8rATdiygRZTJF2yN+X2kbUo2fF+HkELwJhHgwuYxFdTD4eXE3i2SAsDjcD4O846J9OcEPhaFEmJVuE12MJ4WUGi0ndB13XojzBCtxrzfg2CaMfEA7HM/Nbemh0o/STmNiyz8+7x2uDA0cpkOTOJzkKLuzURNEmv+A3fqQ=;
-X-UUID: 1d21991def20499e8bf05eddceee6837-20200210
+ bh=r8ejWidlqTJxz08EZdYATpK/d/uKxpmz1wmwhDhD88A=; 
+ b=EnBQ14yM6GCiVgbkRUipum8S2QWgzbzNL2uFXJjXEcvgpwGHM5in8Wsj2lA9nDPuG2o3h9kfUnltUJhJsIBLgzE/7hef0EnSpPPsItImnStK7/72T8N0lsB55QbScprsXxo6ihqmBz4k0IMs656dTXrWFW/6fGub4ZPUZ6LnfCg=;
+X-UUID: b727e44b7c904414a1e3af84b682d4cf-20200210
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2089214742; Mon, 10 Feb 2020 19:21:54 -0800
+ with ESMTP id 1529630207; Mon, 10 Feb 2020 19:21:54 -0800
 Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 10 Feb 2020 19:22:29 -0800
+ 15.0.1395.4; Mon, 10 Feb 2020 19:22:30 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 11 Feb 2020 11:20:22 +0800
+ 15.0.1395.4; Tue, 11 Feb 2020 11:20:24 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 11 Feb 2020 11:20:54 +0800
+ Transport; Tue, 11 Feb 2020 11:20:57 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: [RESEND PATCH v5 02/11] dt-bindings: phy-mtk-tphy: make the ref clock
- optional
-Date: Tue, 11 Feb 2020 11:21:07 +0800
-Message-ID: <9d1cd6018907ae4515f36d7b3d263bed8c8e527b.1581389234.git.chunfeng.yun@mediatek.com>
+Subject: [RESEND PATCH v5 04/11] dt-bindings: phy-mtk-tphy: add a new
+ reference clock
+Date: Tue, 11 Feb 2020 11:21:09 +0800
+Message-ID: <be9f3664d1b3fdd299a5216df4bda643c39c7bd7.1581389234.git.chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <bfcf6a4dd6829dfa1bd0119b34043db7364dfd8e.1581389234.git.chunfeng.yun@mediatek.com>
 References: <bfcf6a4dd6829dfa1bd0119b34043db7364dfd8e.1581389234.git.chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: B67F09B1303EEB41DF04A279959426636F4A0427B68472EE211F451A1AE10B5B2000:8
+X-TM-SNTS-SMTP: C7BF73084191A2E385A32F298866C72CB013C6A40172E1BF65CF20618662C3962000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200210_192158_382362_2FAD9616 
-X-CRM114-Status: UNSURE (   9.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200210_192158_170281_059459C2 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,9 +94,11 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make the ref clock optional, then we no need refer to a fixed-clock
-in DTS anymore when the clock of USB3 PHY comes from oscillator
-directly
+Usually the digital and analog phys use the same reference clock,
+but on some platforms, they are separated, so add another optional
+clock to support it.
+In order to keep the clock names consistent with PHY IP's, use
+the da_ref for analog phy and ref clock for digital phy.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 Acked-by: Rob Herring <robh@kernel.org>
@@ -106,42 +107,30 @@ v4~v5: no changes
 
 v3: add acked-by Rob
 
-v2: no changes
+v2: fix typo of analog and needed
 ---
- .../devicetree/bindings/phy/phy-mtk-tphy.txt        | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+ Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-index ce6abfbdfbe1..1f4a36dd80e0 100644
+index 48bc1a2e9299..a859b0db4051 100644
 --- a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
 +++ b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-@@ -34,12 +34,6 @@ Optional properties (controller (parent) node):
+@@ -41,9 +41,12 @@ Optional properties (PHY_TYPE_USB2 port (child) node):
+ - clocks	: a list of phandle + clock-specifier pairs, one for each
+ 		  entry in clock-names
+ - clock-names	: may contain
+-		  "ref": 48M reference clock for HighSpeed anolog phy; and 26M
+-			reference clock for SuperSpeed anolog phy, sometimes is
++		  "ref": 48M reference clock for HighSpeed (digital) phy; and 26M
++			reference clock for SuperSpeed (digital) phy, sometimes is
+ 			24M, 25M or 27M, depended on platform.
++		  "da_ref": the reference clock of analog phy, used if the clocks
++			of analog and digital phys are separated, otherwise uses
++			"ref" clock only if needed.
  
- Required properties (port (child) node):
- - reg		: address and length of the register set for the port.
--- clocks	: a list of phandle + clock-specifier pairs, one for each
--		  entry in clock-names
--- clock-names	: must contain
--		  "ref": 48M reference clock for HighSpeed analog phy; and 26M
--			reference clock for SuperSpeed analog phy, sometimes is
--			24M, 25M or 27M, depended on platform.
- - #phy-cells	: should be 1 (See second example)
- 		  cell after port phandle is phy type from:
- 			- PHY_TYPE_USB2
-@@ -48,6 +42,13 @@ Required properties (port (child) node):
- 			- PHY_TYPE_SATA
- 
- Optional properties (PHY_TYPE_USB2 port (child) node):
-+- clocks	: a list of phandle + clock-specifier pairs, one for each
-+		  entry in clock-names
-+- clock-names	: may contain
-+		  "ref": 48M reference clock for HighSpeed anolog phy; and 26M
-+			reference clock for SuperSpeed anolog phy, sometimes is
-+			24M, 25M or 27M, depended on platform.
-+
  - mediatek,eye-src	: u32, the value of slew rate calibrate
  - mediatek,eye-vrt	: u32, the selection of VRT reference voltage
- - mediatek,eye-term	: u32, the selection of HS_TX TERM reference voltage
 -- 
 2.25.0
 _______________________________________________
