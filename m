@@ -2,76 +2,81 @@ Return-Path: <SRS0=52uS=37=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D1F9CC352A3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 05:59:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 489FCC352A3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 06:55:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A830920708
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 05:59:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1C8C6206D7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 06:55:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="chIxTQU/";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="UOh+A/U7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A830920708
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DF9mwgY2";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="g0PIYJaW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1C8C6206D7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pB8x8Gfgy5VNvPArJGg2ZHko1X5MP0DbjO/dcJXfGso=; b=chIxTQU/Kjoy6o
-	pIvDtvcJxUvjngKmFOYf/pNCsCTs5M+d/OC41gF+A8dvlTU5ezZeq61E9Vd/t8C3wXVMwhX0ghvru
-	VF3fmLCg32RE5LoXnoxGO99JJqe52iXYqguqK68pv6K84lYRDjTu3CAut7SBFqe65BE2cWscXP4Gg
-	5BYkfTcu+0gHoWtaWiowwX3S0HK+aWiPDeMmtveJ+bPKDj1ud/1lMbKBNPMMmHNVrha9LPEe7yMik
-	rnAvEHAodokzzF0FIeDzzt3M3bDvoxxAAsUfAecU7Bq++jzNu1rX23ifpgVJA1EbayXYJZfhTV2Sb
-	tHEpZbCRwamtLA3hV9vg==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wgHhFNxgyubAfWc6rL3ZckPogg+Ml7SzXXeMvnrBp5U=; b=DF9mwgY2hhBKxy
+	GV44eFdyxK1CCPCjUKD4EQ3XtayrRZsugg2uQCKARMQ8k6hZmCRoT/OSmYnSohkiT6dqi9UK45hNf
+	UEuO5HoUb1SLNmAjQT7Eow//CHm9dsexZePnmdvVN3Ldkt7N79gPf/mAXVhzsrWaEuVmJeIU/iD8F
+	fEC8htspPeIyiGVmGC6vbH8YtgzywLrmCXfYr1+/HPeNMRMuIlHaK05HIkkIbyB4pPM3rG2iankTy
+	OrokyziBV9yRTx3ehATxEtZRgr+V3f/ZACjc53NVJov3MYExM5ES6ja0v4kxjqOGUfJGStDj3ERTJ
+	xtWMycUn4MduQPgpwEBQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j1OaK-0004BG-Lm; Tue, 11 Feb 2020 05:59:48 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1j1PSM-00073T-OF; Tue, 11 Feb 2020 06:55:38 +0000
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j1OaG-00049r-HG; Tue, 11 Feb 2020 05:59:46 +0000
-X-UUID: 2ee3d1b4808743a1a4150ae0d9aa5ee4-20200210
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=UZncKfN5pbA6KAUGfVcuH3KW3o6KJUR94XVtsqFT8Ho=; 
- b=UOh+A/U7C3Nx8AE2R07MSx5HCVb8BRCr80kO+iorXDyKIlAzt8Ru9JshrverC9u0Xpk9OwGV3graYlDqt/hsj3QjmZnHZyn/TZmGabL72q7c932dnDmDvqqr4x03MwxMaG5nufzUw5hfdpR8SLXeSozFPV95zMrNomF+TF+xtNk=;
-X-UUID: 2ee3d1b4808743a1a4150ae0d9aa5ee4-20200210
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <gtk_ruiwang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1378789355; Mon, 10 Feb 2020 21:59:35 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 10 Feb 2020 21:56:01 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 11 Feb 2020 13:55:10 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 11 Feb 2020 13:54:07 +0800
-From: <gtk_ruiwang@mediatek.com>
-To: Hans Verkuil <hverkuil@xs4all.nl>, Alexandre Courbot
- <acourbot@chromium.org>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- "Matthias Brugger" <matthias.bgg@gmail.com>, Thomas Gleixner
- <tglx@linutronix.de>, Tomasz Figa <tfiga@chromium.org>
-Subject: [PATCH][v3] media: mtk-vcodec: reset segment data then trig decoder
-Date: Tue, 11 Feb 2020 13:55:32 +0800
-Message-ID: <20200211055532.4563-1-gtk_ruiwang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1j1PSD-0006vM-OS; Tue, 11 Feb 2020 06:55:31 +0000
+Received: by mail-ot1-x341.google.com with SMTP id i6so9046730otr.7;
+ Mon, 10 Feb 2020 22:55:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=0qsBaYW+8tB375NH6OQOHYpSP00PTX/24760IzgBPWM=;
+ b=g0PIYJaWAWx7ZYpbMTj/h5I8yC9Of7h+6G71MOTcoKwG1sXqIRCtHnj2A1Bog8F0D6
+ gRegnL9DOFPHP3NfmRiQphE7IsOBTlUM31AvacH3fpoDnqGnK2q8LqWAH2RR0/Q/7WzI
+ duP1KOPfAuTlULiUAgHq6CLpSbUiTV1SO95ePO4rsRoWpQ0JplY3NS7yClKK7Cu6bwl8
+ pVzpg5r5EZTiEqSZ4ZQxHUcDTdJ4FA67PpBHgKvI1GDq69mKuFWRGxvx3K0fTf7J98+/
+ IQsiov/bIeai8YzlLGeROG8O9fZ7Fq2Ld7LVDxIjP47KB+IR1/ZBFkCo7JBoQGKe+ew2
+ yJEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=0qsBaYW+8tB375NH6OQOHYpSP00PTX/24760IzgBPWM=;
+ b=ozuFOpcQxxdygaA26FlxINeXH9z+4YmWPcpz2eAwAC8pt6R9NlMgjEJHrEaNDaJK2p
+ mWsPSOxrxl8qDpaRYndk7MkAScfsn8eSwnE5tQ06GD0qewqMxMacccJ9tGaWzwGXK6hX
+ xseVIL15wQlHJjoyHzjX4AUs6spbSJYqtNp7aagwHCAjjwZZxTPlzYW1AfgJCT7RaPa2
+ 8hRHj7SkqPianDGidcyGOl5CI9LzgP0pWBvQ1mSsZ0h01a3iYRxZsPZX6KtWuJaaJsyJ
+ FwyZVK/UefomgzEZtYbzw24MFE+UHJ/f8BJB3ADl0glJkUGdjclrEL6o4VZMbX0gKsjj
+ lBPA==
+X-Gm-Message-State: APjAAAXLeP8RuBcrkXLUqxZ+qEHPFT9/cH5gjpWYOZwZ490Y03yTmBXG
+ WPBComKekDmASg1B2V6xbF6eJxgncHHfdeYPe3A=
+X-Google-Smtp-Source: APXvYqxfpeNlSBi1DWWxelEmsr9hbXLc0MmgqyHPY0wwLkSBHpl+jlRuYrJEeQNRvkKIlN3ori5EnDnw9W4L7XWKMI0=
+X-Received: by 2002:a9d:3e43:: with SMTP id h3mr3925618otg.84.1581404128257;
+ Mon, 10 Feb 2020 22:55:28 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20200208084022.193231-1-gch981213@gmail.com>
+ <1581323455.2213.6.camel@mtksdaap41>
+In-Reply-To: <1581323455.2213.6.camel@mtksdaap41>
+From: Chuanhong Guo <gch981213@gmail.com>
+Date: Tue, 11 Feb 2020 14:55:17 +0800
+Message-ID: <CAJsYDVLzwWfT24NGDJMJShwoG0Qrq06mLqamHbH0xedmMLdrAQ@mail.gmail.com>
+Subject: Re: [PATCH v2] mtd: mtk-quadspi: add support for DMA reading
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200210_215944_573629_1CB53D44 
-X-CRM114-Status: GOOD (  12.00  )
+X-CRM114-CacheID: sfid-20200210_225529_823151_9A9FFD2F 
+X-CRM114-Status: GOOD (  13.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,106 +88,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gtk_ruiwang@mediatek.com, Maoguang Meng <maoguang.meng@mediatek.com>,
- srv_heupstream@mediatek.com, Yunfei Dong <yunfei.dong@mediatek.com>,
- Longfei Wang <longfei.wang@mediatek.com>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Tiffany Lin <tiffany.lin@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: Vignesh Raghavendra <vigneshr@ti.com>,
+ Tudor Ambarus <tudor.ambarus@microchip.com>,
+ Richard Weinberger <richard@nod.at>, open list <linux-kernel@vger.kernel.org>,
+ linux-mediatek@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: gtk_ruiwang <gtk_ruiwang@mediatek.com>
+Hi!
 
-VP9 bitstream specification indicate segment data should reset to
-default when meet key frames, intra only frames or enable error
-resilience mode. So memset segmentation map buffer before every
-decode process is not appropriate.
+On Mon, Feb 10, 2020 at 4:31 PM Yingjoe Chen <yingjoe.chen@mediatek.com> wrote:
+> > DMA busy checking is implemented with readl_poll_timeout because
+> > I don't have access to IRQ-related docs. The speed increment comes
+> > from those saved cmd+addr+dummy clocks.
+>
+> Hi Chuanhong,
+>
+> Thanks for your patch, I'm checking with Guochun to see if we could
+> release IRQ related information to you.
 
-Reset segment data only when needed, then start decoder hardware
+Thanks for the info.
+I'd like to keep using polling mode in this patch for easier reviewing.
+It's already a pretty lengthy patch now. I may implement IRQ support
+in future patches.
 
-Signed-off-by: Rui Wang <gtk_ruiwang@mediatek.com>
----
-Changed in v3:
-- modify bit3 usage description
----
- .../platform/mtk-vcodec/vdec/vdec_vp9_if.c    | 29 ++++++++++++++++---
- 1 file changed, 25 insertions(+), 4 deletions(-)
+>
+> > This controller requires that DMA source/destination address and
+> > reading length should be 16-byte aligned. We use a bounce buffer if
+> > one of them is not aligned, read more than what we need, and copy
+> > data from corresponding buffer offset.
+>
+> I've checked with our HW guys. The limitation is on DRAM only.
+> So for read we should check buffer and length to make sure it is
+> aligned, but don't need to check from.
 
-diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-index 24c1f0bf2147..257a5b5ad212 100644
---- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-@@ -110,7 +110,11 @@ struct vp9_sf_ref_fb {
-  * @buf_len_sz_c : size used to store cbcr plane ufo info (AP-R, VPU-W)
- 
-  * @profile : profile sparsed from vpu (AP-R, VPU-W)
-- * @show_frame : display this frame or not (AP-R, VPU-W)
-+ * @show_frame : [BIT(0)] display this frame or not (AP-R, VPU-W)
-+ *	[BIT(1)] reset segment data or not (AP-R, VPU-W)
-+ *	[BIT(2)] trig decoder hardware or not (AP-R, VPU-W)
-+ *	[BIT(3)] ask VPU to set bits(0~4) accordingly (AP-W, VPU-R)
-+ *	[BIT(4)] do not reset segment data before every frame (AP-R, VPU-W)
-  * @show_existing_frame : inform this frame is show existing frame
-  *	(AP-R, VPU-W)
-  * @frm_to_show_idx : index to show frame (AP-R, VPU-W)
-@@ -494,12 +498,12 @@ static void vp9_swap_frm_bufs(struct vdec_vp9_inst *inst)
- 					frm_to_show->fb->base_y.size);
- 		}
- 		if (!vp9_is_sf_ref_fb(inst, inst->cur_fb)) {
--			if (vsi->show_frame)
-+			if (vsi->show_frame & BIT(0))
- 				vp9_add_to_fb_disp_list(inst, inst->cur_fb);
- 		}
- 	} else {
- 		if (!vp9_is_sf_ref_fb(inst, inst->cur_fb)) {
--			if (vsi->show_frame)
-+			if (vsi->show_frame & BIT(0))
- 				vp9_add_to_fb_disp_list(inst, frm_to_show->fb);
- 		}
- 	}
-@@ -800,6 +804,9 @@ static int vdec_vp9_init(struct mtk_vcodec_ctx *ctx)
- 	}
- 
- 	inst->vsi = (struct vdec_vp9_vsi *)inst->vpu.vsi;
-+
-+	inst->vsi->show_frame |= BIT(3);
-+
- 	init_all_fb_lists(inst);
- 
- 	ctx->drv_handle = inst;
-@@ -870,13 +877,27 @@ static int vdec_vp9_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 					vsi->sf_frm_sz[idx]);
- 			}
- 		}
--		memset(inst->seg_id_buf.va, 0, inst->seg_id_buf.size);
-+
-+		if (!(vsi->show_frame & BIT(4)))
-+			memset(inst->seg_id_buf.va, 0, inst->seg_id_buf.size);
-+
- 		ret = vpu_dec_start(&inst->vpu, data, 3);
- 		if (ret) {
- 			mtk_vcodec_err(inst, "vpu_dec_start failed");
- 			goto DECODE_ERROR;
- 		}
- 
-+		if (vsi->show_frame & BIT(1)) {
-+			memset(inst->seg_id_buf.va, 0, inst->seg_id_buf.size);
-+
-+			if (vsi->show_frame & BIT(2)) {
-+				if (vpu_dec_start(&inst->vpu, NULL, 0)) {
-+					mtk_vcodec_err(inst, "vpu trig decoder failed");
-+					goto DECODE_ERROR;
-+				}
-+			}
-+		}
-+
- 		ret = validate_vsi_array_indexes(inst, vsi);
- 		if (ret) {
- 			mtk_vcodec_err(inst, "Invalid values from VPU.");
--- 
-2.18.0
+My previous test on mt7629 shows that from address also needs to
+be aligned. e.g. If I perform a DMA read from 0x2 I actually got data
+starting from 0x0 instead.
+
+Regards,
+Chuanhong Guo
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
