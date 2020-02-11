@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-12.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9250BC3B187
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 15:49:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 58DEDC352A3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 15:50:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 64A4424680
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 15:49:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A8D2320656
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 15:50:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tRS4iigA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 64A4424680
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="T+g5toF/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A8D2320656
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,36 +25,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:
 	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	References:List-Owner; bh=An0UKfeUijnjiwPsq+7h1CWJuuX1QcbtbhO9m2MYpdU=; b=tRS
-	4iigAQOqgZ9WPq5ldNZlt/ejWRYG9f3OJkTHtf/2eHA/g0ADuDxhGWizqDifSijFb+D6Jq6h5fha0
-	PYwxi1c5M/slHeGczrs2LzmTeMa3JXHg/T/x2GDXAiOikF6bUUB/0OeFeG7RATX2RLDFOrBRUO0pO
-	/maQ2Glij2EdRk7YIrRqPpzUNXx8JGoeQ3PbWlxedQMBER27A+xM+eUofg/eIy9Kw9JD+oZhpjqGR
-	r8ApuX1kdpptfIELDfHFQKS3EppAEr5kkoL93ecGWWbl1BYDyteynff9F9anUy6pQ8oic95Vzcdaz
-	+idwdqEv/G4eqGsHXCOvwXTL3Dtizsw==;
+	References:List-Owner; bh=oZQWbh2Q28PyJah0aZWNeoA+ceEGYPBwEThuy5DLj4M=; b=T+g
+	5toF/dBhy4FN8QoB4JIG7m1eoMdMP5ABmk7fKPdGqDDVFz1MishHrFncyNtDDynnY0Y4wQd6NOxaW
+	O4R6u0L4siDa6/kSjpZaKViKdnc00I8trk7bSPNN0SNea3Udwd07MOnXLdpV8V3RLEmUuto2tO6g7
+	/uUauZkhGePe2rDf/tGILXIojTlB0Ykn1Aa6oOiLRZ43HNWxoQpMT9ohv2Z4xJsD2U+aDfqCo1YZV
+	WaLDYf05tk3Ppkje8y/hKUcUJGxMKnGpY6I4r35OXB++8PaLMayNdCpjNtDByopgnfMIhxcNsoEfE
+	4N4LrjtEJP6eMQOviy5B7kt3ACHD6uA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j1Xn2-0003P6-Tc; Tue, 11 Feb 2020 15:49:33 +0000
+	id 1j1XnN-0003il-TF; Tue, 11 Feb 2020 15:49:53 +0000
 Received: from foss.arm.com ([217.140.110.172])
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j1XmY-0002vT-0h; Tue, 11 Feb 2020 15:49:03 +0000
+ id 1j1Xmf-00031f-0j; Tue, 11 Feb 2020 15:49:11 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2CA0B12FC;
- Tue, 11 Feb 2020 07:49:01 -0800 (PST)
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 364B812FC;
+ Tue, 11 Feb 2020 07:49:08 -0800 (PST)
 Received: from localhost (unknown [10.37.6.21])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A6B643F68E;
- Tue, 11 Feb 2020 07:49:00 -0800 (PST)
-Date: Tue, 11 Feb 2020 15:48:59 +0000
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B07003F68E;
+ Tue, 11 Feb 2020 07:49:07 -0800 (PST)
+Date: Tue, 11 Feb 2020 15:49:06 +0000
 From: Mark Brown <broonie@kernel.org>
 To: Tzung-Bi Shih <tzungbi@google.com>
-Subject: Applied "drm/mediatek: exit earlier if failed to register audio
- driver" to the asoc tree
-In-Reply-To: <20200206102509.1.Ieba8d422486264eb7aaa3aa257620a1b0c74c6db@changeid>
-Message-Id: <applied-20200206102509.1.Ieba8d422486264eb7aaa3aa257620a1b0c74c6db@changeid>
+Subject: Applied "ASoC: mediatek: mt8173-rt5650: support HDMI jack reporting"
+ to the asoc tree
+In-Reply-To: <20200206102509.3.I253f51edff62df1d88005de12ba601aa029b1e99@changeid>
+Message-Id: <applied-20200206102509.3.I253f51edff62df1d88005de12ba601aa029b1e99@changeid>
 X-Patchwork-Hint: ignore
 X-Bad-Reply: In-Reply-To but no 'Re:' in Subject.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200211_074902_141733_AB864F84 
-X-CRM114-Status: GOOD (  16.27  )
+X-CRM114-CacheID: sfid-20200211_074909_312465_873DF7E6 
+X-CRM114-Status: GOOD (  15.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,7 +79,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 The patch
 
-   drm/mediatek: exit earlier if failed to register audio driver
+   ASoC: mediatek: mt8173-rt5650: support HDMI jack reporting
 
 has been applied to the asoc tree at
 
@@ -104,59 +104,69 @@ to this mail.
 Thanks,
 Mark
 
-From f9eb06cd0cdd50a3125bc9c62cdc997dc461eae7 Mon Sep 17 00:00:00 2001
+From c8b60c6d93b8104f5a8d9fbb4f52ad88df918a44 Mon Sep 17 00:00:00 2001
 From: Tzung-Bi Shih <tzungbi@google.com>
-Date: Thu, 6 Feb 2020 11:17:50 +0800
-Subject: [PATCH] drm/mediatek: exit earlier if failed to register audio driver
+Date: Thu, 6 Feb 2020 11:17:52 +0800
+Subject: [PATCH] ASoC: mediatek: mt8173-rt5650: support HDMI jack reporting
 
-Exits earlier if register_audio_driver() returns errors.
+Uses hdmi-codec to support HDMI jack reporting.
 
 Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
-Acked-by: CK Hu <ck.hu@mediatek.com>
-Link: https://lore.kernel.org/r/20200206102509.1.Ieba8d422486264eb7aaa3aa257620a1b0c74c6db@changeid
+Link: https://lore.kernel.org/r/20200206102509.3.I253f51edff62df1d88005de12ba601aa029b1e99@changeid
 Signed-off-by: Mark Brown <broonie@kernel.org>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 11 ++++++++---
- 1 file changed, 8 insertions(+), 3 deletions(-)
+ sound/soc/mediatek/mt8173/mt8173-rt5650.c | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 5e4a4dbda443..fcec06e63e0c 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1659,7 +1659,7 @@ static const struct hdmi_codec_ops mtk_hdmi_audio_codec_ops = {
- 	.get_eld = mtk_hdmi_audio_get_eld,
+diff --git a/sound/soc/mediatek/mt8173/mt8173-rt5650.c b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+index ef6f23675286..849b050a54d1 100644
+--- a/sound/soc/mediatek/mt8173/mt8173-rt5650.c
++++ b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+@@ -11,6 +11,7 @@
+ #include <linux/of_gpio.h>
+ #include <sound/soc.h>
+ #include <sound/jack.h>
++#include <sound/hdmi-codec.h>
+ #include "../../codecs/rt5645.h"
+ 
+ #define MCLK_FOR_CODECS		12288000
+@@ -98,7 +99,7 @@ static const struct snd_soc_ops mt8173_rt5650_ops = {
+ 	.hw_params = mt8173_rt5650_hw_params,
  };
  
--static void mtk_hdmi_register_audio_driver(struct device *dev)
-+static int mtk_hdmi_register_audio_driver(struct device *dev)
- {
- 	struct hdmi_codec_pdata codec_data = {
- 		.ops = &mtk_hdmi_audio_codec_ops,
-@@ -1672,9 +1672,10 @@ static void mtk_hdmi_register_audio_driver(struct device *dev)
- 					     PLATFORM_DEVID_AUTO, &codec_data,
- 					     sizeof(codec_data));
- 	if (IS_ERR(pdev))
--		return;
-+		return PTR_ERR(pdev);
+-static struct snd_soc_jack mt8173_rt5650_jack;
++static struct snd_soc_jack mt8173_rt5650_jack, mt8173_rt5650_hdmi_jack;
  
- 	DRM_INFO("%s driver bound to HDMI\n", HDMI_CODEC_DRV_NAME);
-+	return 0;
+ static int mt8173_rt5650_init(struct snd_soc_pcm_runtime *runtime)
+ {
+@@ -144,6 +145,19 @@ static int mt8173_rt5650_init(struct snd_soc_pcm_runtime *runtime)
+ 				      &mt8173_rt5650_jack);
  }
  
- static int mtk_drm_hdmi_probe(struct platform_device *pdev)
-@@ -1708,7 +1709,11 @@ static int mtk_drm_hdmi_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
--	mtk_hdmi_register_audio_driver(dev);
-+	ret = mtk_hdmi_register_audio_driver(dev);
-+	if (ret) {
-+		dev_err(dev, "Failed to register audio driver: %d\n", ret);
++static int mt8173_rt5650_hdmi_init(struct snd_soc_pcm_runtime *rtd)
++{
++	int ret;
++
++	ret = snd_soc_card_jack_new(rtd->card, "HDMI Jack", SND_JACK_LINEOUT,
++				    &mt8173_rt5650_hdmi_jack, NULL, 0);
++	if (ret)
 +		return ret;
-+	}
- 
- 	hdmi->bridge.funcs = &mtk_hdmi_bridge_funcs;
- 	hdmi->bridge.of_node = pdev->dev.of_node;
++
++	return hdmi_codec_set_jack_detect(rtd->codec_dai->component,
++					  &mt8173_rt5650_hdmi_jack);
++}
++
+ enum {
+ 	DAI_LINK_PLAYBACK,
+ 	DAI_LINK_CAPTURE,
+@@ -222,6 +236,7 @@ static struct snd_soc_dai_link mt8173_rt5650_dais[] = {
+ 		.name = "HDMI BE",
+ 		.no_pcm = 1,
+ 		.dpcm_playback = 1,
++		.init = mt8173_rt5650_hdmi_init,
+ 		SND_SOC_DAILINK_REG(hdmi_be),
+ 	},
+ };
 -- 
 2.20.1
 
