@@ -2,59 +2,166 @@ Return-Path: <SRS0=52uS=37=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 58DEDC352A3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 15:50:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DDC9CC352A3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 16:06:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A8D2320656
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 15:50:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AFAA72070A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Feb 2020 16:06:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="T+g5toF/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A8D2320656
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AckKuGaF";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="DBo01MH7"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AFAA72070A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	References:List-Owner; bh=oZQWbh2Q28PyJah0aZWNeoA+ceEGYPBwEThuy5DLj4M=; b=T+g
-	5toF/dBhy4FN8QoB4JIG7m1eoMdMP5ABmk7fKPdGqDDVFz1MishHrFncyNtDDynnY0Y4wQd6NOxaW
-	O4R6u0L4siDa6/kSjpZaKViKdnc00I8trk7bSPNN0SNea3Udwd07MOnXLdpV8V3RLEmUuto2tO6g7
-	/uUauZkhGePe2rDf/tGILXIojTlB0Ykn1Aa6oOiLRZ43HNWxoQpMT9ohv2Z4xJsD2U+aDfqCo1YZV
-	WaLDYf05tk3Ppkje8y/hKUcUJGxMKnGpY6I4r35OXB++8PaLMayNdCpjNtDByopgnfMIhxcNsoEfE
-	4N4LrjtEJP6eMQOviy5B7kt3ACHD6uA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SQsWmq5wGcEBZr8HmcoBLEYEvwfpaIEA7XN79fPwWaE=; b=AckKuGaF9OF2b5
+	JH+KYKxg1S2L9CzTgmJkmvbbjCjaz+PKHzwMW2G2MurCjyUUZ8iwIn5fg6VL+5tieeEJ6W/JwuNbm
+	0nxhROL7i0lqW/OFODld01/Sj2VGMcd6QSLBY3yKoEuII0RlK5RL6c0ktLNuc4Zd4ZYM3oNZbwmvW
+	nEBD92hieEa4rg4ii6lMSt/qlL2mA4+120bUrkPc/eAAdtDL7XSwn7qMYgyXlrQeHAqaTfiPVfOVT
+	bcUBniHOZGiSqRITK5dCIKtTTRn4WXk6Lt44DImIaF4G0P1SBtAAFebz8ukup8KjEDQUyidGf565u
+	19z2pNya7FwFn3p8BGaQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j1XnN-0003il-TF; Tue, 11 Feb 2020 15:49:53 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j1Xmf-00031f-0j; Tue, 11 Feb 2020 15:49:11 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 364B812FC;
- Tue, 11 Feb 2020 07:49:08 -0800 (PST)
-Received: from localhost (unknown [10.37.6.21])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B07003F68E;
- Tue, 11 Feb 2020 07:49:07 -0800 (PST)
-Date: Tue, 11 Feb 2020 15:49:06 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Tzung-Bi Shih <tzungbi@google.com>
-Subject: Applied "ASoC: mediatek: mt8173-rt5650: support HDMI jack reporting"
- to the asoc tree
-In-Reply-To: <20200206102509.3.I253f51edff62df1d88005de12ba601aa029b1e99@changeid>
-Message-Id: <applied-20200206102509.3.I253f51edff62df1d88005de12ba601aa029b1e99@changeid>
-X-Patchwork-Hint: ignore
-X-Bad-Reply: In-Reply-To but no 'Re:' in Subject.
+	id 1j1Y3g-0004ty-Ub; Tue, 11 Feb 2020 16:06:44 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j1Y3Y-0004mK-Q6; Tue, 11 Feb 2020 16:06:38 +0000
+Received: by mail-wr1-x442.google.com with SMTP id w15so13066346wru.4;
+ Tue, 11 Feb 2020 08:06:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=tyMjsfPPD79nzDxrtbqNkNnpx6CBxZCP3iMJTBkyr6Y=;
+ b=DBo01MH7M6vxwqL1iPrBXUCBtGPnTwvrQKMXi+Fy0Dm9U/yu1AlmDnhtvTPRVlyQlE
+ PZUNFdJ/RYQG9EqTDELU6DSm0hpNWbHJzl2FtXco7cXj+f1JdAEBFIhooBgfxuAF5ayp
+ RZX2PQumMSUqL3Ymr0zZS54PvXOi78Sn19pNzCtqCGLZuYIQyppfbkYbebenvHmQT144
+ ruM5q/FA4xmlR0Hh/cNEOCe05YC2Q/EJvfcezwovJE+OdPpmcOwA2HxgXGbmYd6Oe1ZH
+ hB6Hb9x5fP9NMq2cQ5cuCs7f31h6I4tADjTQJNqCkpGHqb4566UN7/0oKDUm6q2ixn35
+ LIog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=tyMjsfPPD79nzDxrtbqNkNnpx6CBxZCP3iMJTBkyr6Y=;
+ b=GRVzxr0Q/gpyUBHPZi0jlp78LZlV1tB7Y1YYu4jTuIyaP0N3ols1guDMKsVBmqBVjk
+ ZVI9XColBCj1XtgRj1DvEyJsBNtrfeGG1sqPGorvyEh1K3939K/rO1faZPYaK/A9GZA9
+ B07rUPMxeO1ipxhzsKADZVrKOf0vU7vtSeyTPQT1yfs0LVqlxeszwZeURBo8IuMM3yYh
+ 0LGhhtdStXO7mkSjnzN0ony2ReIRw9xC1BLtuBk3U3rvBzTLgC1LTKV/XW25wAIOSitH
+ pRd0Q5F5S05kBMLTWdtPc6fIVQZw/7olaVVRfDfQQv/bdyHzuh3HiG/vYSvcq5+Yo8dU
+ YhaQ==
+X-Gm-Message-State: APjAAAWLWBVYghsqbRPuYa7jRuPpAJzwsvuUCbzvXmyom9gSNGeaTvFj
+ IJbwggxCepyX3K41SIlCNOUU8VVY
+X-Google-Smtp-Source: APXvYqybwlskMbDUDIYyJX2RsZ1REan0y0nn1mu+3HFoB6BiQ6YPoyVsayrWeXyKyuvr+Z3J0L2X1A==
+X-Received: by 2002:adf:eb48:: with SMTP id u8mr9050851wrn.283.1581437194480; 
+ Tue, 11 Feb 2020 08:06:34 -0800 (PST)
+Received: from ziggy.stardust ([37.223.145.31])
+ by smtp.gmail.com with ESMTPSA id s15sm5544594wrp.4.2020.02.11.08.06.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 11 Feb 2020 08:06:33 -0800 (PST)
+Subject: Re: [PATCH v2 1/4] dt-bindings: regulator: Add document for MT6359
+ regulator
+To: Wen Su <Wen.Su@mediatek.com>, Mark Brown <broonie@kernel.org>
+References: <1580958411-2478-1-git-send-email-Wen.Su@mediatek.com>
+ <1580958411-2478-2-git-send-email-Wen.Su@mediatek.com>
+ <20200206114927.GN3897@sirena.org.uk> <1581335854.16783.1.camel@mtkswgap22>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <8398188f-820a-5abf-f52e-b79c0c583704@gmail.com>
+Date: Tue, 11 Feb 2020 17:06:32 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
+MIME-Version: 1.0
+In-Reply-To: <1581335854.16783.1.camel@mtkswgap22>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200211_074909_312465_873DF7E6 
-X-CRM114-Status: GOOD (  15.21  )
+X-CRM114-CacheID: sfid-20200211_080636_849308_9F2BC328 
+X-CRM114-Status: GOOD (  14.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,110 +173,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, cychiang@google.com, tzungbi@google.com,
- airlied@linux.ie, dri-devel@lists.freedesktop.org, matthias.bgg@gmail.com,
- Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
- daniel@ffwll.ch, ck.hu@mediatek.com, p.zabel@pengutronix.de, dgreid@google.com,
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
+ Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Lee Jones <lee.jones@linaro.org>,
  linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The patch
 
-   ASoC: mediatek: mt8173-rt5650: support HDMI jack reporting
 
-has been applied to the asoc tree at
+On 10/02/2020 12:57, Wen Su wrote:
+> Hi, 
+> 
+> On Thu, 2020-02-06 at 11:49 +0000, Mark Brown wrote:
+>> On Thu, Feb 06, 2020 at 11:06:48AM +0800, Wen Su wrote:
+>>
+>>> +Required properties:
+>>> +- compatible: "mediatek,mt6359-regulator"
+>>
+>> Why does this need a compatible string - it looks like it's just
+>> encoding the way Linux splits devices up into the DT, not
+>> providing some reusable IP block.
+> 
+> Thanks for your comments.
+> I will remove it in the next patch.
+> 
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-5.7
+If this the way to go, then please fix all the other MediaTek binding
+description for regulators (+ the dts) as this is then wrong.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From c8b60c6d93b8104f5a8d9fbb4f52ad88df918a44 Mon Sep 17 00:00:00 2001
-From: Tzung-Bi Shih <tzungbi@google.com>
-Date: Thu, 6 Feb 2020 11:17:52 +0800
-Subject: [PATCH] ASoC: mediatek: mt8173-rt5650: support HDMI jack reporting
-
-Uses hdmi-codec to support HDMI jack reporting.
-
-Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
-Link: https://lore.kernel.org/r/20200206102509.3.I253f51edff62df1d88005de12ba601aa029b1e99@changeid
-Signed-off-by: Mark Brown <broonie@kernel.org>
----
- sound/soc/mediatek/mt8173/mt8173-rt5650.c | 17 ++++++++++++++++-
- 1 file changed, 16 insertions(+), 1 deletion(-)
-
-diff --git a/sound/soc/mediatek/mt8173/mt8173-rt5650.c b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
-index ef6f23675286..849b050a54d1 100644
---- a/sound/soc/mediatek/mt8173/mt8173-rt5650.c
-+++ b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
-@@ -11,6 +11,7 @@
- #include <linux/of_gpio.h>
- #include <sound/soc.h>
- #include <sound/jack.h>
-+#include <sound/hdmi-codec.h>
- #include "../../codecs/rt5645.h"
- 
- #define MCLK_FOR_CODECS		12288000
-@@ -98,7 +99,7 @@ static const struct snd_soc_ops mt8173_rt5650_ops = {
- 	.hw_params = mt8173_rt5650_hw_params,
- };
- 
--static struct snd_soc_jack mt8173_rt5650_jack;
-+static struct snd_soc_jack mt8173_rt5650_jack, mt8173_rt5650_hdmi_jack;
- 
- static int mt8173_rt5650_init(struct snd_soc_pcm_runtime *runtime)
- {
-@@ -144,6 +145,19 @@ static int mt8173_rt5650_init(struct snd_soc_pcm_runtime *runtime)
- 				      &mt8173_rt5650_jack);
- }
- 
-+static int mt8173_rt5650_hdmi_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	int ret;
-+
-+	ret = snd_soc_card_jack_new(rtd->card, "HDMI Jack", SND_JACK_LINEOUT,
-+				    &mt8173_rt5650_hdmi_jack, NULL, 0);
-+	if (ret)
-+		return ret;
-+
-+	return hdmi_codec_set_jack_detect(rtd->codec_dai->component,
-+					  &mt8173_rt5650_hdmi_jack);
-+}
-+
- enum {
- 	DAI_LINK_PLAYBACK,
- 	DAI_LINK_CAPTURE,
-@@ -222,6 +236,7 @@ static struct snd_soc_dai_link mt8173_rt5650_dais[] = {
- 		.name = "HDMI BE",
- 		.no_pcm = 1,
- 		.dpcm_playback = 1,
-+		.init = mt8173_rt5650_hdmi_init,
- 		SND_SOC_DAILINK_REG(hdmi_be),
- 	},
- };
--- 
-2.20.1
-
+Thanks!
+Matthias
 
 _______________________________________________
 Linux-mediatek mailing list
