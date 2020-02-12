@@ -2,85 +2,79 @@ Return-Path: <SRS0=vX0G=4A=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F679C2BA83
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2020 06:06:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C8401C3B186
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2020 06:09:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 526232073C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2020 06:06:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9CBA2206ED
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2020 06:09:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DyOPTCmR";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="GidHGpfU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 526232073C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nyTwpVKw";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="QqKpIGph"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9CBA2206ED
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=FwR2hSV0zLa9l+MrYKdz/FFALUiXvNNSN3UVJlFrPqA=; b=DyOPTCmReJ6btf
-	/ur5FbfG0vKKou23xaakT1zIQiSBamAqxGTA/sNJeTrlNjc7iSM7Jz3TISdy93GrrIMKSvrQKI1AI
-	JqMVfeMbaj+SBDFjsidCZeijnsINau2wB++E24aaG3IbioFWyrW7k48qSeqjsfSd0jobMy0pkAtrU
-	hyP8LcLr7BgAvk5nrsD4vrrWBt42r9CX2Bu8eDWbIAqZSP80qcTcOKLnZhkoXWiU0YegDm4KWHWAY
-	qnW4cfkxRUzLsjr3KTgFuvX+Fa/R+2dfvvmG1g95Kn0UIBesmADsMWHw20qBI2gJb/vOfC08fHQVx
-	YufZYjp/4CwwcNmPTW6w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Gelu27GLuV2zjg3qai/Nx7HcHQbMJkcSHqGmpiCE338=; b=nyTwpVKwZ19Gc1
+	VHaQR3xxLmEE+6q2oQpMrXE2UNm+2xrFQy8LpHsU1ics4nOcFS08jH8ccAPHycs8QrdwpP6aGKHzk
+	oE7EKQ+qbsvOWCbROEPkdLrSJFVR2WNm65IbuQ6gfngW0SgR+NgaDU5ELa6fFbOH/4hTug78Z/0KU
+	oYCb3FxzW02z1DFsLmphVxgo6YTXEhGK5fBtunfHc6L+QS+vbSxCuX7H0WBLxy2nC/i72TGdhqvSD
+	YnAyyg33Tm1W0sv8XPzLIyWtfmAgB0IIiYjBWteAbuXOTpvexvqonbF6kJAVwluutvyHntw/IioK3
+	+RUaRxkoz02289o/EIUw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j1l9j-0007Z6-T5; Wed, 12 Feb 2020 06:05:51 +0000
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
+	id 1j1lCc-0008Ik-75; Wed, 12 Feb 2020 06:08:50 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j1l9g-0007Xw-OX
- for linux-mediatek@lists.infradead.org; Wed, 12 Feb 2020 06:05:50 +0000
-Received: by mail-pj1-x1041.google.com with SMTP id j17so410550pjz.3
- for <linux-mediatek@lists.infradead.org>; Tue, 11 Feb 2020 22:05:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Js4SWp4AxGnmgpS0xpb2r+20hjEB6ZJuleDc08nwvzc=;
- b=GidHGpfU+1Q586bqtdp7qWIQdqBWX0kfx/pBWtI1uAajniLiy2nPpkxJ7JjnAweVHg
- ilZrHgwOmIDgE611haEEILEBp4woWOhMLh2UhtBdIbORMMG6SuYfjXk2XjPtQTp5tyr1
- WkA/POXqdq+jTPxtC+KlqAU+qgfuXQsKGJ1cI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Js4SWp4AxGnmgpS0xpb2r+20hjEB6ZJuleDc08nwvzc=;
- b=chV9uNIOrflf1SkMx+6lUNd5H2INoFzM4nmAQwtIWjlKtupqEYU7AZAv2g2DECsyt9
- FUPuu5pYKrlFeE7U6Q4tw0ZRFK7NPVSnq8IzmpfvcXTCfA+v1DMmccvWw74UPeAmFuC5
- j4y0r38lXAxZ0m0AYYHZ8mIGmlsY9st0+XWOaILI5fYfts2oUEkXVVSMGopbCS0Kqzhs
- 3Ol0WDrCaTUIW24H5AogGI5nTKHh+ylGcIbY4sK49MzVpNoNpz05TUgC94sg6pDxoSEZ
- P00Tv+8deKmTkDj9Yf0ZuKYCH8bLQWDap2hS8zUBc/TcS0H8C+aUHeOtKoThl05BdTc5
- b8CQ==
-X-Gm-Message-State: APjAAAUMru2uAZuB8R7AOusbNXKt/FZTyqA9mcDgM99ReHFM2AZS6hF/
- JDPcJ3ydoj1TqakymWQfpnSFMQ==
-X-Google-Smtp-Source: APXvYqxpyZsLuZkNUFq1aaY5ImmMD5AfRib3xtsrExdV4p76C8R6dTdGEPgJdoE+a7Q4WF+2gH+auA==
-X-Received: by 2002:a17:902:9f88:: with SMTP id
- g8mr22080796plq.100.1581487546921; 
- Tue, 11 Feb 2020 22:05:46 -0800 (PST)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:b852:bd51:9305:4261])
- by smtp.gmail.com with ESMTPSA id d69sm6792163pfd.72.2020.02.11.22.05.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Feb 2020 22:05:46 -0800 (PST)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] arm64: dts: mt8173: add arm,no-tick-in-suspend in timer
-Date: Wed, 12 Feb 2020 14:05:37 +0800
-Message-Id: <20200212060536.156890-1-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.25.0.225.g125e21ebc7-goog
+ id 1j1lCZ-0008Hg-GJ; Wed, 12 Feb 2020 06:08:48 +0000
+X-UUID: 02cfdfdb75fd443d980a362fbdc763d7-20200211
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=SWD5TohyT5cMPrdmmo17mXTsqaC7XRDeHZDf6wxl7cY=; 
+ b=QqKpIGphIjGohnCyD8IAS+Rvhp6QiGtoKfw21hkpiSgyk0/ISqf3VfrZaZ0I6USNo/u1GDfCNekz+hx3EDXSorL0F2XISXUewfRUb/mRQ2mdNoeFC+kjaX+gkfWQVISej/+WmlJL94L75bGKmyFJ+VvlCm/JQ42qz88verQ3d2c=;
+X-UUID: 02cfdfdb75fd443d980a362fbdc763d7-20200211
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <wen.su@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1518914913; Tue, 11 Feb 2020 22:08:43 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 11 Feb 2020 22:08:51 -0800
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 12 Feb 2020 14:07:53 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Wed, 12 Feb 2020 14:08:49 +0800
+Message-ID: <1581487721.16783.9.camel@mtkswgap22>
+Subject: Re: [PATCH v2 1/4] dt-bindings: regulator: Add document for MT6359
+ regulator
+From: Wen Su <Wen.Su@mediatek.com>
+To: Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Date: Wed, 12 Feb 2020 14:08:41 +0800
+In-Reply-To: <8398188f-820a-5abf-f52e-b79c0c583704@gmail.com>
+References: <1580958411-2478-1-git-send-email-Wen.Su@mediatek.com>
+ <1580958411-2478-2-git-send-email-Wen.Su@mediatek.com>
+ <20200206114927.GN3897@sirena.org.uk> <1581335854.16783.1.camel@mtkswgap22>
+ <8398188f-820a-5abf-f52e-b79c0c583704@gmail.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200211_220548_809270_26A89B0D 
-X-CRM114-Status: UNSURE (   8.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200211_220847_551677_B8904F32 
+X-CRM114-Status: GOOD (  15.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,40 +87,47 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
+ wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
+ Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Lee Jones <lee.jones@linaro.org>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Arch timer stops during system suspend. Add arm,no-tick-in-suspend
-property in timer.
+Hi, 
 
-This is a follow up for d8ec7595a013
-("clocksource/drivers/arm_arch_timer: Don't assume clock runs in
-suspend")
+On Tue, 2020-02-11 at 17:06 +0100, Matthias Brugger wrote:
+> 
+> On 10/02/2020 12:57, Wen Su wrote:
+> > Hi, 
+> > 
+> > On Thu, 2020-02-06 at 11:49 +0000, Mark Brown wrote:
+> >> On Thu, Feb 06, 2020 at 11:06:48AM +0800, Wen Su wrote:
+> >>
+> >>> +Required properties:
+> >>> +- compatible: "mediatek,mt6359-regulator"
+> >>
+> >> Why does this need a compatible string - it looks like it's just
+> >> encoding the way Linux splits devices up into the DT, not
+> >> providing some reusable IP block.
+> > 
+> > Thanks for your comments.
+> > I will remove it in the next patch.
+> > 
+> 
+> If this the way to go, then please fix all the other MediaTek binding
+> description for regulators (+ the dts) as this is then wrong.
+> Thanks!
+> Matthias
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+The mt6359-regulator driver is still a reusable IP block.It could be
+adding more other MediaTek pmic mt6359 similar compatible device. But
+currently this patch only testing on pmic mt6359.
+Is it allowable to keep compatible string in binding description ?
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 8b4e806d5119..1a9ad90bd7a6 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -331,6 +331,7 @@ timer {
- 			      (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
- 			     <GIC_PPI 10
- 			      (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>;
-+		arm,no-tick-in-suspend;
- 	};
- 
- 	soc {
--- 
-2.25.0.225.g125e21ebc7-goog
-
+Thanks
 
 _______________________________________________
 Linux-mediatek mailing list
