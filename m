@@ -2,88 +2,78 @@ Return-Path: <SRS0=vX0G=4A=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6135CC352A4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2020 22:10:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B7213C352A4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2020 23:45:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3305121734
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2020 22:10:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8BAF8206DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2020 23:45:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Gg9wAD0b";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="KAdSUhYC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3305121734
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WhQ23grq";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="gKNmOOaS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8BAF8206DB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UpI/nx+8Ld4bGNOIB+UPi5F1q/MV0CSEWq6bLT+fSLc=; b=Gg9wAD0bK94RW1
-	nuEUY2dgP4tsovZUE7aOP4cHTNZOxvkP4xHdwh4V1RTjqn/8wZCESoeNkLN/hX45J8j5fy8BsDitJ
-	4WskiAwQHbyChB6bu11vN69dZNmkwCY1Yg0XtzVi8gNOCOnEfp3W+VMxl82l2JFPELlvzJ50tmU24
-	WfJn+57SJZ0IXROhHvqZ7gK49XYb9gmC492a7AMm2N/t9XKitI0YW9T6MO5RpcwEwX4rWykOuUf/H
-	gwqM7m+McTi08ZA8pSOK4jPvdBHq+O7rkgr+x5QxIbR/tQM0AdfnpFJb45kFqCsyrDowOcOnEG7eE
-	3F/YQgFy+59vB62JcZPA==;
+	List-Owner; bh=6EGEGCTOq5+h77QGdYNo4rdrdtntKry6pc2sD1QhTtw=; b=WhQ23grqBrTk3n
+	bwOgvT7Hta7hijddF9SXs95+Z6FxLqS6nPl3bV+cYUKxy8344jRsMNHwDs1yGjb0nUEUIto8bCrkW
+	TlcyeHnehZDn7Ri0JUw/X5ReWVC2h5v7Jf2Ijne/wBJWdFmvLwXYLAQTcJit1ZktfXHjwe0vQD7MW
+	Ow12zAQnLN/8nyvnwmIksmeKHbBYMpxowVhbE075T4EbY+6Rle25OZ3QUKY/WkYiHosk0Vgiq08DK
+	wfXa2aiXKGQeAawSq278aG+eHwOisAI6G+ufC3KkN31adpj5POD7ren1NdNNhJ4gupQLYrf2dY5P5
+	Jy8VHjpV2hWtb4D8XkiA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j20D0-00067v-V8; Wed, 12 Feb 2020 22:10:14 +0000
-Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43])
+	id 1j21gv-0000Jo-JZ; Wed, 12 Feb 2020 23:45:13 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j20Cr-0005Fk-UU; Wed, 12 Feb 2020 22:10:07 +0000
-Received: by mail-qv1-xf43.google.com with SMTP id m5so1705322qvv.4;
- Wed, 12 Feb 2020 14:10:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=cdFC4Sw+amJDnEOMffYysz3PsfK9sMY043rnSWe7/YM=;
- b=KAdSUhYCm4EKSCvAwuyjpY9CBE8LkbBg+RlKisgUNO2Gp0VpVBxINmGcQqUFUjWf2T
- e20M3V0f5wA5yiqnJi2kJ/EXBV0Dl6xWgNdwpVyvjdZegwbvseDkjvsZNALFZQOvhliN
- VllY7hDUn5+cDbxx2pKS+H2AG2RUHhMwPD6C1kZ8/pCoXNg93+BnJVRJKWjjhelynDeJ
- BoWhGrPYv0YnZRVCDvCWSJhQsvb757R7wMhajhvhImQpghd1/01Us6N6oEs4IfNxXmsA
- aQLsb5baITGLE4uDuw0JxWjWNyslVzFaWD2ym7uGdtGBheqZVFgDfphydU//+bVS/pn8
- WsLA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :references:mime-version:content-disposition
- :content-transfer-encoding:in-reply-to;
- bh=cdFC4Sw+amJDnEOMffYysz3PsfK9sMY043rnSWe7/YM=;
- b=Cc3pzlytrMMOS+qUnHFO3hm0G6/FnHbtLln/QCIYRqaEkerXsK9ab1H2+UcbIHpjSt
- I9cL5tQxVPlhGmuE1AM1kfCtIfGEayI/AxIAWf4KWWoKaA3jDJ7kADDHBflaBiBez7Wy
- HSXH8c7QlbQwC3nTIOWsGVcgJnhytyEKMvXcE7361n0yHy/t4a6AtWjGfVLNzMDPo8Kc
- P0SteHEBlZjXnqgSnyZIUgUdYDBkpmsKk5an8EoJXKufxL1IJPLJ9skuBhxE/aiYZCMm
- 4cNAsa3jezYtnw/E2+PtDJDYrnm3lMbIYsJTPK1mxzFCNT2FBc2CfS17+CFgYJEKsukX
- Kr7w==
-X-Gm-Message-State: APjAAAUR9k2gfNpCtZaNfv6Dsi6xblAUG54Omk/CTCJQwsotPl5hYwwf
- CIMgMAdJJZjJfM6iiLq75sQ=
-X-Google-Smtp-Source: APXvYqye2t37XZd6Z9apOR3wigBgtJDxhvPSPYG/19AuNeNK60F3VhB9U+/UkRAyZrCWhH9scv8Vjw==
-X-Received: by 2002:ad4:518d:: with SMTP id b13mr9041062qvp.141.1581545404154; 
- Wed, 12 Feb 2020 14:10:04 -0800 (PST)
-Received: from localhost ([2620:10d:c091:500::1:985a])
- by smtp.gmail.com with ESMTPSA id w41sm283605qtj.49.2020.02.12.14.10.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 Feb 2020 14:10:03 -0800 (PST)
-Date: Wed, 12 Feb 2020 17:10:03 -0500
-From: Tejun Heo <tj@kernel.org>
-To: Michal =?iso-8859-1?Q?Koutn=FD?= <mkoutny@suse.com>
-Subject: Re: [PATCH v2 3/3] kselftest/cgroup: add cgroup destruction test
-Message-ID: <20200212221003.GI80993@mtj.thefacebook.com>
-References: <20200120145635.GA30904@blackbody.suse.cz>
- <20200124114017.8363-1-mkoutny@suse.com>
- <20200124114017.8363-4-mkoutny@suse.com>
+ id 1j21ga-0007WZ-Iu; Wed, 12 Feb 2020 23:44:53 +0000
+Received: from kernel.org (unknown [104.132.0.74])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0F90E206B6;
+ Wed, 12 Feb 2020 23:44:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1581551092;
+ bh=1M3lO/lf9AWfvIAE3n4hv4ebm9MsTlrPuI3pVt0XwiI=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=gKNmOOaSejM7SuOkKHEMPhUSEUcyDAyifJf7mJT5rapx5BcH6wMPBNWB+oG4mmjET
+ 2x/6JgGAIVsMk6Pk35WyNYIXY6DkSk5SnurlOnEoCI3dt6Kn0CivuXKQ+wdi+ZRdTY
+ DaWev8mu0p5NdeznMlDVKHnePkgFoCvSZwd8lHjI=
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200124114017.8363-4-mkoutny@suse.com>
+In-Reply-To: <1581067250-12744-1-git-send-email-macpaul.lin@mediatek.com>
+References: <1581067250-12744-1-git-send-email-macpaul.lin@mediatek.com>
+Subject: Re: [PATCH v7 0/7] Add basic SoC support for mt6765
+From: Stephen Boyd <sboyd@kernel.org>
+To: Catalin Marinas <catalin.marinas@arm.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Evan Green <evgreen@chromium.org>,
+ Fabien Parent <fparent@baylibre.com>, Joerg Roedel <jroedel@suse.de>,
+ Macpaul Lin <macpaul.lin@mediatek.com>, Marc Zyngier <marc.zyngier@arm.com>,
+ Mark Rutland <mark.rutland@arm.com>, Mars Cheng <mars.cheng@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Owen Chen <owen.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Ryder Lee <Ryder.Lee@mediatek.com>, Sean Wang <Sean.Wang@mediatek.com>,
+ Shawn Guo <shawnguo@kernel.org>, Weiyi Lu <weiyi.lu@mediatek.com>,
+ Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, mtk01761 <wendell.lin@mediatek.com>
+Date: Wed, 12 Feb 2020 15:44:51 -0800
+Message-ID: <158155109134.184098.10100489231587620578@swboyd.mtv.corp.google.com>
+User-Agent: alot/0.9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200212_141006_018308_9D795659 
-X-CRM114-Status: UNSURE (   8.42  )
+X-CRM114-CacheID: sfid-20200212_154452_644219_FA417388 
+X-CRM114-Status: UNSURE (   6.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -96,39 +86,19 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linger.lee@mediatek.com, tomcherry@google.com, shuah@kernel.org,
- linux-kernel@vger.kernel.org, surenb@google.com, lizefan@huawei.com,
- linux-mediatek@lists.infradead.org, linux-kselftest@vger.kernel.org,
- hannes@cmpxchg.org, matthias.bgg@gmail.com, cgroups@vger.kernel.org,
- alex.shi@linux.alibaba.com, kernel-team@android.com, guro@fb.com,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>,
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 24, 2020 at 12:40:17PM +0100, Michal Koutn=FD wrote:
-> From: Suren Baghdasaryan <surenb@google.com>
-> =
+Quoting Macpaul Lin (2020-02-07 01:20:43)
+> This patch adds basic SoC support for Mediatek's new 8-core SoC,
+> MT6765, which is mainly for smartphone application.
 
-> Add new test to verify that a cgroup with dead processes can be destroyed.
-> The test spawns a child process which allocates and touches 100MB of RAM
-> to ensure prolonged exit. Subsequently it kills the child, waits until
-> the cgroup containing the child is empty and destroys the cgroup.
-> =
-
-> Signed-off-by: Suren Baghdasaryan <surenb@google.com>
-> [mkoutny@suse.com: Fix typo in test_cgcore_destroy comment]
-> Acked-by: Michal Koutn=FD <mkoutny@suse.com>
-> Signed-off-by: Michal Koutn=FD <mkoutny@suse.com>
-
-Applied 2-3 to cgroup/for-5.7.
-
-Thanks a lot for working on this!
-
--- =
-
-tejun
+Clock patches look OK to me. Can you resend them without the defconfig
+and dts patches and address Matthias' question?
 
 _______________________________________________
 Linux-mediatek mailing list
