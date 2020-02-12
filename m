@@ -2,98 +2,77 @@ Return-Path: <SRS0=vX0G=4A=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F3132C2BA83
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2020 17:16:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 413E0C2BA83
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2020 18:14:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C5439206D7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2020 17:16:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1144821569
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2020 18:14:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EQNerqAZ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=cerno.tech header.i=@cerno.tech header.b="hYIlU5K4";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=messagingengine.com header.i=@messagingengine.com header.b="w4dQ1bvk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C5439206D7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=cerno.tech
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HZkHc7du";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="H0t1S9X9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1144821569
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=e39Rq2hVVwwltJRQiajvNo9X7wxVwFDdbOKQhDZGXbs=; b=EQNerqAZO+vkF1hkt6vVBO0tn
-	o8AZRJkl2uq5p7oB0AVN0Vh99VIM30Cr73reUn1TOWBZz0xgkcuAz6g0Eb+7105wZyph3X7sDKw3V
-	/ejq2y5zq61m+1T3GLbu1TuYodxkVkGVHl8Q+FzWY5A9k9e0TZVxZ/u99QgqaptLcUfeYJthMBTgI
-	+V7HVPmLnzzOQJ5pQP5GSwYdJVEG30xqBqkXuPshMWaQXvvKmNPQr9/bOJfiTjzZ/ap4zjkP38sRW
-	EA4IRPu7uBIozeh47YZej1eaJSpyGYN5EfiRfUFUm15/cUdfjKPJU3LQhP/4AcnH6jkvi+V9X6j7V
-	+VRhIAXQg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DFqZaFh0s1xB++pipfKcLl7tiISnwaD7CP055Jq1vFY=; b=HZkHc7duOCRde0
+	39h/TbQXYrfnrzGK02zKYaW6+a/At7FZhxHnUD5PC+8vDNJ7hxror0u565Eks7kP9Zb8dDbAePtSw
+	5/LeSBYLku55NkxMI9p7appX0DvYCETrUALMijImq58ZgI65P3SIpH53lMvpkzCZfJymeNDuDjncd
+	3EYRmBibdTLTlqBFsDpWdhLEx5qf3S7grR9yr1CrnmxRBZczPiAfYqH0U9vLb3p0G4P98y9YBD2ZN
+	D8viyiGiVaNEGFB8BiatPt1uf4w2Wug1s8yt0M5S/r0fQ1I9tCbAxiB6G2uS3dvsTP2Jm7cacYvaK
+	11JA8EHRRsqnQY+DMZ/w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j1vcU-0005bm-6n; Wed, 12 Feb 2020 17:16:14 +0000
-Received: from new4-smtp.messagingengine.com ([66.111.4.230])
+	id 1j1wWu-0002mG-Bz; Wed, 12 Feb 2020 18:14:32 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j1vcK-0005TW-FN; Wed, 12 Feb 2020 17:16:06 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailnew.nyi.internal (Postfix) with ESMTP id 373D77B86;
- Wed, 12 Feb 2020 12:16:00 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute3.internal (MEProxy); Wed, 12 Feb 2020 12:16:00 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm2; bh=VlwaHrYSMc5EXnk7OL7eHGgUQRx
- 9+OHs9o+E4xgjGdg=; b=hYIlU5K4+ezqu7KluFhemjtph9JOs+x11ZR5fXOy0zW
- kq/xY2VBXMX3S4I+qE0fXsNQrIpAu1cOYcCm3t8I7qrLhalik1b9oKjJ6EpT3xov
- 8/7iBexBt2i/aydlwFqSh7oiHChvKi7SmJgmv90dFD34oNSOn0rsoXCnBuMqM7yR
- Cvezfcu9kB8wMPSNrvROYswP/61c9xMg7YB6oy4//k+dJpbpOn6c/Hgur+bpWKUP
- YCBd8U0nJALJojMf3cmeM/FvSLXOVGQlT2fyX5sD+JkzDWq1T5RZFpkbkbKnZeOD
- kL6lvzEVR4hoGq+TKBaaj1KbGl92MREUNKjuh9PHDhQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=VlwaHr
- YSMc5EXnk7OL7eHGgUQRx9+OHs9o+E4xgjGdg=; b=w4dQ1bvkrRBqTnYkwbOESa
- 5Q3Itg4wv4HIEiNLypSnDC9vw5/Or1wnm27ZHa0Jr07PMBZbC9m1j6uzxzOTKXSJ
- MCaUi6CraFraYKsy1+6UaL0U+TvGNbGP4Tow0w0sv0PgDTtOh11DnDH5SFwtDa6o
- cn5rIM8lBSJtiXlmSoA5cAMwO80n/B6bJot2/TZbCY1APr7hVCQArIRSoXO7+36D
- b6Y6ECkYlbluMSOSIO2Nt9q0fI3wjA0s5+jQp4bKwqf27YkSzX37011B/1rMr4gl
- A3/dzay78+4zK6xw0YFq+CKh9PfsPFowEwA9x1Y8rtFoOv6V4DqJOLV/FuRhf6fQ
- ==
-X-ME-Sender: <xms:zTJEXk6EtNTrdAC_6kwRCIcAhu0CuZLe0RUaLqvKA621vAbYoSUG8A>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedugedrieehgddutddtucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehgtderredttddvnecuhfhrohhmpeforgigihhm
- vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecukfhppeeltd
- drkeelrdeikedrjeeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghi
- lhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:zTJEXqNUOvm3UA2ubbpF_Mn1RE9LyA6nP91YSYaPQpIRo0jz9JXPAg>
- <xmx:zTJEXikuucGRdFkbOzYAUFF2EO1s2d_p6nErMSPNQqNkd383GH6-yQ>
- <xmx:zTJEXhR176hzeg3xaL_go2tR1R3dCGONt-5Kwg8QurmJNHuhng5LTw>
- <xmx:0DJEXlEm2yYxWz6W9MxkKZt8pA49S7ySE_nGRRDsAF5U_RUkpLBazg>
-Received: from localhost (lfbn-tou-1-1502-76.w90-89.abo.wanadoo.fr
- [90.89.68.76])
- by mail.messagingengine.com (Postfix) with ESMTPA id 5A7833060717;
- Wed, 12 Feb 2020 12:15:57 -0500 (EST)
-Date: Wed, 12 Feb 2020 18:15:55 +0100
-From: Maxime Ripard <maxime@cerno.tech>
-To: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH 6/7] ARM: sunxi: Replace <linux/clk-provider.h> by
- <linux/of_clk.h>
-Message-ID: <20200212171555.rhglnhhfxljd2ktb@gilmour.lan>
-References: <20200212100830.446-1-geert+renesas@glider.be>
- <20200212100830.446-7-geert+renesas@glider.be>
- <158152739647.121156.16877229572128607400@swboyd.mtv.corp.google.com>
+ id 1j1wWk-0002ik-Gb; Wed, 12 Feb 2020 18:14:25 +0000
+Received: from mail-qv1-f53.google.com (mail-qv1-f53.google.com
+ [209.85.219.53])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 255FA24649;
+ Wed, 12 Feb 2020 18:14:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1581531261;
+ bh=XPutHtfrd9L6DCjKR/i4gzTwtBJqO9VVCF2dsQMhOT0=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=H0t1S9X9r5QrGUd7DvAOuSUSqqXDsgdC1XTVAcFbzj4EY2h/S8r/mWZNvB10mdCQa
+ 38EaQisKKJidSQ7TOlCXmLvne+3QnPgrSM7v03v8XngdUW7peGivsjAvtTOAtfr4CA
+ wewf/BxAmAKE916HXnBmP76nvVhL3jH9qCPQp3LY=
+Received: by mail-qv1-f53.google.com with SMTP id db9so1363424qvb.3;
+ Wed, 12 Feb 2020 10:14:21 -0800 (PST)
+X-Gm-Message-State: APjAAAWj/Gc9lpFAm6Y6KUN4V+dyNriHskEFpxJ9jktH7EIr3zY8+GDr
+ /O7WuqVCx+REaEyLG4SicEXYB3a8zHb5f7hQzA==
+X-Google-Smtp-Source: APXvYqwYf7OiqvLmE/STxKkwBxfQm+rxJyw5z6FFooFuohKsTmQUlxLvZAqUvV1R4jPQEGjoiAS5DvHkVqtRkL1b//c=
+X-Received: by 2002:a05:6214:11ac:: with SMTP id
+ u12mr8482894qvv.85.1581531260167; 
+ Wed, 12 Feb 2020 10:14:20 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <158152739647.121156.16877229572128607400@swboyd.mtv.corp.google.com>
+References: <20200207052627.130118-1-drinkcat@chromium.org>
+ <20200207052627.130118-8-drinkcat@chromium.org>
+ <CANMq1KBL-S2DVKbCB2h_XNpfUro+pZ96-C5ft0p-8GX_tbXELQ@mail.gmail.com>
+In-Reply-To: <CANMq1KBL-S2DVKbCB2h_XNpfUro+pZ96-C5ft0p-8GX_tbXELQ@mail.gmail.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Wed, 12 Feb 2020 12:14:08 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqLuo+2G2MjiwS9cwNhMV2pGBojXFGNqEfLv3fP-Y04mfA@mail.gmail.com>
+Message-ID: <CAL_JsqLuo+2G2MjiwS9cwNhMV2pGBojXFGNqEfLv3fP-Y04mfA@mail.gmail.com>
+Subject: Re: [PATCH v4 7/7] RFC: drm/panfrost: devfreq: Add support for 2
+ regulators
+To: Nicolas Boichat <drinkcat@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200212_091604_862604_566A826B 
-X-CRM114-Status: UNSURE (   9.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200212_101422_982531_1EDFC21B 
+X-CRM114-Status: GOOD (  22.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,68 +84,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Magnus Damm <magnus.damm@gmail.com>, Michal Simek <michal.simek@xilinx.com>,
- Russell King <linux@armlinux.org.uk>, linux-renesas-soc@vger.kernel.org,
- Lubomir Rintel <lkundrak@v3.sk>, Chen-Yu Tsai <wens@csie.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============4713452539469166930=="
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Devicetree List <devicetree@vger.kernel.org>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Tomeu Vizoso <tomeu.vizoso@collabora.com>, David Airlie <airlied@linux.ie>,
+ lkml <linux-kernel@vger.kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Steven Price <steven.price@arm.com>, Stephen Boyd <sboyd@kernel.org>,
+ Viresh Kumar <viresh.kumar@linaro.org>, Mark Brown <broonie@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---===============4713452539469166930==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="ww2rdwwsu4sgynif"
-Content-Disposition: inline
-
-
---ww2rdwwsu4sgynif
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Wed, Feb 12, 2020 at 09:09:56AM -0800, Stephen Boyd wrote:
-> Quoting Geert Uytterhoeven (2020-02-12 02:08:29)
-> > The Allwinner platform code is not a clock provider, and just needs to
-> > call of_clk_init().
-> >
-> > Hence it can include <linux/of_clk.h> instead of <linux/clk-provider.h>.
-> >
-> > Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> > ---
+On Wed, Feb 12, 2020 at 2:49 AM Nicolas Boichat <drinkcat@chromium.org> wrote:
 >
-> Reviewed-by: Stephen Boyd <sboyd@kernel.org>
+> +Viresh Kumar +Stephen Boyd for clock advice.
+>
+> On Fri, Feb 7, 2020 at 1:27 PM Nicolas Boichat <drinkcat@chromium.org> wrote:
+> >
+> > The Bifrost GPU on MT8183 uses 2 regulators (core and SRAM) for
+> > devfreq, and provides OPP table with 2 sets of voltages.
+> >
+> > TODO: This is incomplete as we'll need add support for setting
+> > a pair of voltages as well.
+>
+> So all we need for this to work (at least apparently, that is, I can
+> change frequency) is this:
+> https://lore.kernel.org/patchwork/patch/1192945/
+> (ah well, Viresh just replied, so, probably not, I'll check that out
+> and use the correct API)
+>
+> But then there's a slight problem: panfrost_devfreq uses a bunch of
+> clk_get_rate calls, and the clock PLLs (at least on MTK platform) are
+> never fully precise, so we get back 299999955 for 300 Mhz and
+> 799999878 for 800 Mhz. That means that the kernel is unable to keep
+> devfreq stats as neither of these values are in the table:
+> [ 4802.470952] devfreq devfreq1: Couldn't update frequency transition
+> information.
+> The kbase driver fixes this by remembering the last set frequency, and
+> reporting that to devfreq. Should we do that as well or is there a
+> better fix?
+>
+> Another thing that I'm not implementing is the dance that Mediatek
+> does in their kbase driver when changing the clock (described in patch
+> 2/7):
+> ""
+> The binding we use with out-of-tree Mali drivers includes more
+> clocks, this is used for devfreq: the out-of-tree driver switches
+> clk_mux to clk_sub_parent (26Mhz), adjusts clk_main_parent, then
+> switches clk_mux back to clk_main_parent:
+> (see https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.19/drivers/gpu/arm/midgard/platform/mediatek/mali_kbase_runtime_pm.c#423)
+> clocks =
+>         <&topckgen CLK_TOP_MFGPLL_CK>,
+>         <&topckgen CLK_TOP_MUX_MFG>,
+>         <&clk26m>,
+>         <&mfgcfg CLK_MFG_BG3D>;
+> clock-names =
+>         "clk_main_parent",
+>         "clk_mux",
+>         "clk_sub_parent",
+>         "subsys_mfg_cg";
+> ""
+> Is there a clean/simple way to implement this in the clock
+> framework/device tree? Or should we implement something in the
+> panfrost driver?
 
-Applied, thanks!
-Maxime
+Putting parent clocks into 'clocks' for a device is a pretty common
+abuse. The 'assigned-clocks' binding is what's used for parent clock
+setup. Not sure that's going to help here though. Is this dance
+because the parent clock frequency can't be changed cleanly? If up to
+me, I'd put that dance in the clock driver. The GPU shouldn't have to
+care.
 
---ww2rdwwsu4sgynif
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCXkQyywAKCRDj7w1vZxhR
-xVAyAP44cXhjx/0CW1CFNAKxhdKU4gzpGWXvxPJibw12XvM6WQD/a/OTdlgu8Ofs
-1nDzz3yzF/+ciyJSn/Q0Gv9vy5DD3Qs=
-=bEj4
------END PGP SIGNATURE-----
-
---ww2rdwwsu4sgynif--
-
-
---===============4713452539469166930==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============4713452539469166930==--
-
