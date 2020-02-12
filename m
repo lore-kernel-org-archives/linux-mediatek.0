@@ -2,78 +2,75 @@ Return-Path: <SRS0=vX0G=4A=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 64DBCC35242
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2020 02:56:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8EB4EC2BA83
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2020 05:33:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2275D206DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2020 02:56:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 51C99206ED
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Feb 2020 05:33:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZfYs3DAJ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="gqfQeijm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2275D206DB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="J5ug2cYe";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="iZrFuqem"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 51C99206ED
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9Qy654jH6CB+KwiPocjl4nI56unO/wNk7H/WdBNPRQQ=; b=ZfYs3DAJ2klzpC
-	SU69SRtv07ZIKRQFmqIL0Gjvl4zb5HoOLobHowjJ0X++DcIF9MPv1ErCYV+HQsUW68BVqnKqsOXdC
-	uHXi8ey/JMolHL1MSsjO4MTljW4dpI4aMwh1xi0alk2sJP5QJeA45sTYNw7P+sjkItXOiEvLtEnmd
-	UaQOav0NelnnqEH/a1C7yGDg2Fmvt4fHEEr7clnCJ/tIduvFB1E0OslLmPf1wz59FuHJfMA/6oEWp
-	Ndnwcn2SKrfZl+gMjIwc5z1FgqNLxmxs/oblM2QgHczU3E8xWJ2lPCr1hRZQeSxk0Mwq9yhHlSKW9
-	zs+ZDv4RIUDfriXJvjqQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kDXGIK/iGK9MoF0hzy6QnrRuzW7O1Ib5R29gMe4myag=; b=J5ug2cYeWVvd9v
+	NNlHxJqs+cyV9GJ1zFfgRnkO2jNFL5PBMhK5spgZKMaVUPydmRCY7vZAO0eX27j61Ax5qKNepPMMi
+	TaRlJVr5x1wfh5DyXixD0RiqqtnJy6BqQ0+AcLPo5PTm6Swii1ClS3BgxU4znBrCY7FI5LgHsBwcR
+	bS8usgrWCa1zAf2orKlx7J2gQUrmVxDmUhcdLdDIgCLYXTQGWIdK8Y3hIY6um1i5tWZppYsdpY3jG
+	SXPI4RUT/y6gKCTnazPvbopcqYxDQjk7bKWQO1LLQi8LC4AtJ/S3v2JRyj44mHrExvStB4QoulV0q
+	YztYTYW9aWpTXlJLSQPw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j1iCT-0003v5-IY; Wed, 12 Feb 2020 02:56:29 +0000
+	id 1j1kei-0005FR-LW; Wed, 12 Feb 2020 05:33:48 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j1iCB-0003de-6g; Wed, 12 Feb 2020 02:56:15 +0000
-X-UUID: 3d757210aef143cca8d0040cfc190127-20200211
+ id 1j1kef-0005Ez-M0
+ for linux-mediatek@lists.infradead.org; Wed, 12 Feb 2020 05:33:47 +0000
+X-UUID: f0f8640e5be1430e8f46b9d91498b41a-20200211
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=NDX3laalc+Z0eaBdDEGSSHydvLxMHFWBywEbFN0gfWc=; 
- b=gqfQeijmZfdugF4hU9qw5c4XLCjvaAHMuAVPaAf1C8rvKNySSIsLK4HMASPCf4mdsQmvyu/c3/U654PMQq6OYI8CPl44h5reVsu1d8fLnH349c+GONXEMRv/FFEQFpkonSlptuLsuFHm3ogkLTBUzL2vBjdNFY7WfNCRckEwRB0=;
-X-UUID: 3d757210aef143cca8d0040cfc190127-20200211
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <weiyi.lu@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=K7E7/v0ZfqVQTT2tzRZw1opQ6Qbixfj+6/SPTDhAPTI=; 
+ b=iZrFuqemUdVVpE6bHf4IFrxAYb+pS2WuqLU5hVvlTPQvHauR/MWg0byQ6yZE5PNhJjIxr4sLtJbT0GyEFf5SlBH8Q0Jaun7cvR6iFD/1YiDXixteIs08/Us4P0Z+HuMGn7rWC2V50v1bwT2k7tlVBlWtIsZC+EjxLmKP7W8RbDE=;
+X-UUID: f0f8640e5be1430e8f46b9d91498b41a-20200211
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <light.hsieh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1233251080; Tue, 11 Feb 2020 18:56:00 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 11 Feb 2020 18:56:37 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 12 Feb 2020 10:54:13 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 12 Feb 2020 10:54:51 +0800
-Message-ID: <1581476150.22901.35.camel@mtksdaap41>
-Subject: Re: [PATCH v11 04/10] soc: mediatek: Add multiple step bus
- protection control
-From: Weiyi Lu <weiyi.lu@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Date: Wed, 12 Feb 2020 10:55:50 +0800
-In-Reply-To: <9cafe21c-2bd2-7ee6-9e7f-ce238b935069@gmail.com>
-References: <1576813564-23927-1-git-send-email-weiyi.lu@mediatek.com>
- <1576813564-23927-5-git-send-email-weiyi.lu@mediatek.com>
- <9cafe21c-2bd2-7ee6-9e7f-ce238b935069@gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ with ESMTP id 1474507389; Tue, 11 Feb 2020 21:33:41 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 11 Feb 2020 21:30:09 -0800
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 12 Feb 2020 13:30:45 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Wed, 12 Feb 2020 13:30:17 +0800
+From: <light.hsieh@mediatek.com>
+To: <linus.walleij@linaro.org>
+Subject: [PATCH v1 1/1] pinctrl: make MediaTek MT6765 pinctrl driver
+ compatible to kernel module
+Date: Wed, 12 Feb 2020 13:30:07 +0800
+Message-ID: <1581485407-32393-1-git-send-email-light.hsieh@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200211_185611_305546_D747D445 
-X-CRM114-Status: GOOD (  26.18  )
+X-CRM114-CacheID: sfid-20200211_213345_733376_01CFEDD1 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,616 +82,443 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
- srv_heupstream@mediatek.com, James Liao <jamesjj.liao@mediatek.com>,
- linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>,
- linux-mediatek@lists.infradead.org, Sascha Hauer <kernel@pengutronix.de>,
- linux-arm-kernel@lists.infradead.org
+Cc: sean.wang@kernel.org, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, Light Hsieh <light.hsieh@mediatek.com>,
+ linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2020-02-11 at 18:49 +0100, Matthias Brugger wrote:
-> 
-> On 20/12/2019 04:45, Weiyi Lu wrote:
-> > Both MT8183 & MT6765 have more control steps of bus protection
-> > than previous project. And there add more bus protection registers
-> > reside at infracfg & smi-common. Also add new APIs for multiple
-> > step bus protection control with more customized arguments.
-> > And then use bp_table for bus protection of all compatibles,
-> > instead of mixing bus_prot_mask and bus_prot_reg_update.
-> > 
-> > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> > ---
-> >  drivers/soc/mediatek/Makefile         |   2 +-
-> >  drivers/soc/mediatek/mtk-scpsys-ext.c | 101 +++++++++++++++++++++++++++++
-> >  drivers/soc/mediatek/mtk-scpsys.c     | 117 +++++++++++++++++++++-------------
-> >  drivers/soc/mediatek/scpsys-ext.h     |  67 +++++++++++++++++++
-> >  4 files changed, 240 insertions(+), 47 deletions(-)
-> >  create mode 100644 drivers/soc/mediatek/mtk-scpsys-ext.c
-> >  create mode 100644 drivers/soc/mediatek/scpsys-ext.h
-> > 
-> > diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
-> > index b017330..b442be9 100644
-> > --- a/drivers/soc/mediatek/Makefile
-> > +++ b/drivers/soc/mediatek/Makefile
-> > @@ -1,5 +1,5 @@
-> >  # SPDX-License-Identifier: GPL-2.0-only
-> >  obj-$(CONFIG_MTK_CMDQ) += mtk-cmdq-helper.o
-> > -obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
-> > +obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o mtk-scpsys-ext.o
-> 
-> It seems that we would need another patch which get's rid of the mtk-infracfg
-> first and then add stuff like the possibility to have different steps.
-> 
+From: Light Hsieh <light.hsieh@mediatek.com>
 
-Actually I have a PATCH 05/11 to remove the mtk-infracfg.
-In this patch, I have some changes, like calling
-mtk_scpsys_ext_set_bus_protection(...) instead of
-mtk_infracfg_set_bus_protection(...) in scpsys_bus_protect_enable(...)
-and replacing bus_prot_mask by bp_table.
-I thought I should introduce the new method first and remove useless one
-later. What do you think?
+To make MediaTek MT6765 pinctrl driver and related MediaTek pinctrl driver
+files be both compatible for building kernel module or built-in, the
+following modification are performed:
 
-> >  obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
-> >  obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
-> > diff --git a/drivers/soc/mediatek/mtk-scpsys-ext.c b/drivers/soc/mediatek/mtk-scpsys-ext.c
-> > new file mode 100644
-> > index 0000000..df402ac
-> > --- /dev/null
-> > +++ b/drivers/soc/mediatek/mtk-scpsys-ext.c
-> 
-> I'm not quite sure why we should put this into a new file. I suppose the
-> rational behind it is the fact that we access other blocks through regmap.
-> 
+1. drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c: export some functions
 
-Yes, those operation are accross infracfg and smi-common so we put these
-into new files.
+2. drivers/pinctrl/mediatek/pinctrl-paris.c: export some functions
 
-> > @@ -0,0 +1,101 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +/*
-> > + * Copyright (c) 2018 MediaTek Inc.
-> > + * Author: Owen Chen <Owen.Chen@mediatek.com>
-> > + */
-> > +#include <linux/ktime.h>
-> > +#include <linux/mfd/syscon.h>
-> > +#include <linux/of_device.h>
-> > +#include <linux/regmap.h>
-> > +#include "scpsys-ext.h"
-> > +
-> > +#define MTK_POLL_DELAY_US   10
-> > +#define MTK_POLL_TIMEOUT    USEC_PER_SEC
-> > +
-> > +static int set_bus_protection(struct regmap *map, u32 mask,
-> > +		u32 reg_set, u32 reg_sta, u32 reg_en)
-> > +{
-> > +	u32 val;
-> > +
-> > +	if (reg_set)
-> > +		regmap_write(map, reg_set, mask);
-> > +	else
-> > +		regmap_update_bits(map, reg_en, mask, mask);
-> > +
-> > +	return regmap_read_poll_timeout(map, reg_sta,
-> > +			val, (val & mask) == mask,
-> > +			MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> > +}
-> > +
-> > +static int clear_bus_protection(struct regmap *map, u32 mask,
-> > +		u32 reg_clr, u32 reg_sta, u32 reg_en, bool ignore_ack)
-> > +{
-> > +	u32 val;
-> > +
-> > +	if (reg_clr)
-> > +		regmap_write(map, reg_clr, mask);
-> > +	else
-> > +		regmap_update_bits(map, reg_en, mask, 0);
-> > +
-> > +	if (ignore_ack)
-> > +		return 0;
-> > +
-> > +	return regmap_read_poll_timeout(map, reg_sta,
-> > +			val, !(val & mask),
-> > +			MTK_POLL_DELAY_US, MTK_POLL_TIMEOUT);
-> > +}
-> > +
-> > +int mtk_scpsys_ext_set_bus_protection(const struct bus_prot *bp_table,
-> > +	struct regmap *infracfg, struct regmap *smi_common)
-> > +{
-> > +	int i;
-> > +
-> > +	for (i = 0; i < MAX_STEPS; i++) {
-> 
-> struct bus_prot bp_table = bp_table[i];
-> 
+3. drivers/pinctrl/mediatek/mtk-eint.c: export some functions
 
-OK, got it.
+4. drivers/pinctrl/pinconf-generic.c: export
+       pinconf_generic_parse_dt_config() for usage by pinctrl-paris.c
+       built as kernel module.
 
-> > +		struct regmap *map = NULL;
-> > +		int ret;
-> > +
-> > +		if (bp_table[i].type == INVALID_TYPE)
-> > +			break;
-> > +		else if (bp_table[i].type == IFR_TYPE)
-> > +			map = infracfg;
-> > +		else if (bp_table[i].type == SMI_TYPE)
-> > +			map = smi_common;
-> 
-> if (bp_table.type == IFR_TYPE)
-> 	map = infracfg;
-> else if (bp_table.type == SMI_TYPE)
-> 	map = smi_common;
-> else
-> 	break;
-> 
+5. drivers/pinctrl/mediatek/Kconfig:
+5.1 PINCTRL_MT6765: change from bool to tristate. It is specified in
+        kernel config file.
+5.2 PINCTRL_MTK_PARIS: change from bool to tristate and select
+        PINCTRL_MTK_V2.
+      * PINCTRL_MTK_PARIS will be y if any PINCTRL_MTXXXX selecting
+        PINCTRL_MTK_PARIS is y.
+      * PINCTRL_MTK_PARIS will be n if all PINCTRL_MTXXXX selecting
+        PINCTRL_MTK_PARIS are n.
+      * PINCTRL_MTK_PARIS will be m if all PINCTRL_MTXXXX selecting
+        PINCTRL_MTK_PARIS are m.
+5.3 PINCTRL_MTK_MOORE: select EINT_MTK and PINCTRL_MTK_V2.
+5.3 PINCTRL_MTK_V2: add this tristate config which depends on
+        PINCTRL_MTK_PARIS and PINCTRL_MTK_MOORE.
+      * PINCTRL_MTK_V2 will be y if either PINCTRL_MTK_PARIS or
+        PINCTRL_MTK_MOORE is y.
+      * PINCTRL_MTK_V2 will be n if both PINCTRL_MTK_PARIS and
+        PINCTRL_MTK_MOORE are n.
+      * PINCTRL_MTK_V2 will be m if both PINCTRL_MTK_PARIS is m and
+        PINCTRL_MTK_MOORE is n.
+5.4 EINT_MTK: change from bool to tristate and add rule for default.
+      * First rule: determine if EINT_MTK is y or n according to
+        selection of PINCTRL_MTK or PINCTRL_MTK_MORE.
+      * Second rule: determine if EINT_MTK is y, m, or n according to
+        selection of PINCTRL_MTK_PARIS.
 
-OK, got it.
+6. drivers/pinctrl/mediatek/Makefile: Use PINCTRL_MTK_V2 to determine
+        if pinctrl-mtk-common-v2.c is built as kernel module or
+        built-in.
 
-> > +
-> > +		ret = set_bus_protection(map,
-> > +				bp_table[i].mask, bp_table[i].set_ofs,
-> > +				bp_table[i].sta_ofs, bp_table[i].en_ofs);
-> 
-> passing map and bp_table here makes code much more readable. I always end-up
-> counting the variables when the names in the callee changes.
-> 
+Signed-off-by: Light Hsieh <light.hsieh@mediatek.com>
+---
+ drivers/pinctrl/mediatek/Kconfig                 | 17 +++++++++++++----
+ drivers/pinctrl/mediatek/Makefile                |  5 +++--
+ drivers/pinctrl/mediatek/mtk-eint.c              |  9 +++++++++
+ drivers/pinctrl/mediatek/pinctrl-mt6765.c        |  4 ++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 24 ++++++++++++++++++++++++
+ drivers/pinctrl/mediatek/pinctrl-paris.c         |  5 +++++
+ drivers/pinctrl/pinconf-generic.c                |  1 +
+ 7 files changed, 59 insertions(+), 6 deletions(-)
 
-OK, I'll fix it.
-
-> > +
-> > +		if (ret)
-> > +			return ret;
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +int mtk_scpsys_ext_clear_bus_protection(const struct bus_prot *bp_table,
-> > +	struct regmap *infracfg, struct regmap *smi_common)
-> > +{
-> > +	int i;
-> > +
-> > +	for (i = MAX_STEPS - 1; i >= 0; i--) {
-> > +		struct regmap *map = NULL;
-> > +		int ret;
-> > +
-> > +		if (bp_table[i].type == INVALID_TYPE)
-> > +			continue;
-> > +		else if (bp_table[i].type == IFR_TYPE)
-> > +			map = infracfg;
-> > +		else if (bp_table[i].type == SMI_TYPE)
-> > +			map = smi_common;
-> > +
-> > +		ret = clear_bus_protection(map,
-> > +				bp_table[i].mask, bp_table[i].clr_ofs,
-> > +				bp_table[i].sta_ofs, bp_table[i].en_ofs,
-> > +				bp_table[i].ignore_clr_ack);
-> > +
-> 
-> same here.
-> 
-
-Got it.
-
-> > +		if (ret)
-> > +			return ret;
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-> > index db35a28..763ca58 100644
-> > --- a/drivers/soc/mediatek/mtk-scpsys.c
-> > +++ b/drivers/soc/mediatek/mtk-scpsys.c
-> > @@ -11,7 +11,7 @@
-> >  #include <linux/platform_device.h>
-> >  #include <linux/pm_domain.h>
-> >  #include <linux/regulator/consumer.h>
-> > -#include <linux/soc/mediatek/infracfg.h>
-> > +#include "scpsys-ext.h"
-> >  
-> >  #include <dt-bindings/power/mt2701-power.h>
-> >  #include <dt-bindings/power/mt2712-power.h>
-> > @@ -87,9 +87,9 @@
-> >   * @ctl_offs: The offset for main power control register.
-> >   * @sram_pdn_bits: The mask for sram power control bits.
-> >   * @sram_pdn_ack_bits: The mask for sram power control acked bits.
-> > - * @bus_prot_mask: The mask for single step bus protection.
-> >   * @basic_clk_name: The basic clocks required by this power domain.
-> >   * @caps: The flag for active wake-up action.
-> > + * @bp_table: The mask table for multiple step bus protection.
-> >   */
-> >  struct scp_domain_data {
-> >  	const char *name;
-> > @@ -97,9 +97,9 @@ struct scp_domain_data {
-> >  	int ctl_offs;
-> >  	u32 sram_pdn_bits;
-> >  	u32 sram_pdn_ack_bits;
-> > -	u32 bus_prot_mask;
-> >  	const char *basic_clk_name[MAX_CLKS];
-> >  	u8 caps;
-> > +	struct bus_prot bp_table[MAX_STEPS];
-> >  };
-> >  
-> >  struct scp;
-> > @@ -123,8 +123,8 @@ struct scp {
-> >  	struct device *dev;
-> >  	void __iomem *base;
-> >  	struct regmap *infracfg;
-> > +	struct regmap *smi_common;
-> >  	struct scp_ctrl_reg ctrl_reg;
-> > -	bool bus_prot_reg_update;
-> >  };
-> >  
-> >  struct scp_subdomain {
-> > @@ -138,7 +138,6 @@ struct scp_soc_data {
-> >  	const struct scp_subdomain *subdomains;
-> >  	int num_subdomains;
-> >  	const struct scp_ctrl_reg regs;
-> > -	bool bus_prot_reg_update;
-> >  };
-> >  
-> >  static int scpsys_domain_is_on(struct scp_domain *scpd)
-> > @@ -252,24 +251,16 @@ static int scpsys_bus_protect_enable(struct scp_domain *scpd)
-> >  {
-> >  	struct scp *scp = scpd->scp;
-> >  
-> > -	if (!scpd->data->bus_prot_mask)
-> > -		return 0;
-> > -
-> > -	return mtk_infracfg_set_bus_protection(scp->infracfg,
-> > -			scpd->data->bus_prot_mask,
-> > -			scp->bus_prot_reg_update);
-> > +	return mtk_scpsys_ext_set_bus_protection(scpd->data->bp_table,
-> > +			scp->infracfg, scp->smi_common);
-> 
-> Now that's just a wrapper which does add nothing but another indirection. We can
-> call mtk_scpsys_ext_set_bus_protection() directly (also I don't like the name,
-> actually why don't mtk_scpsys_set_bus_protection()?)
-> 
-
-You're right. I'll called mtk_scpsys_ext_set_bus_protection() directly.
-
-> >  }
-> >  
-> >  static int scpsys_bus_protect_disable(struct scp_domain *scpd)
-> >  {
-> >  	struct scp *scp = scpd->scp;
-> >  
-> > -	if (!scpd->data->bus_prot_mask)
-> > -		return 0;
-> > -
-> > -	return mtk_infracfg_clear_bus_protection(scp->infracfg,
-> > -			scpd->data->bus_prot_mask,
-> > -			scp->bus_prot_reg_update);
-> > +	return mtk_scpsys_ext_clear_bus_protection(scpd->data->bp_table,
-> > +			scp->infracfg, scp->smi_common);
-> >  }
-> >  
-> >  static int scpsys_power_on(struct generic_pm_domain *genpd)
-> > @@ -404,8 +395,7 @@ static int init_basic_clks(struct platform_device *pdev, struct clk **clk,
-> >  
-> >  static struct scp *init_scp(struct platform_device *pdev,
-> >  			const struct scp_domain_data *scp_domain_data, int num,
-> > -			const struct scp_ctrl_reg *scp_ctrl_reg,
-> > -			bool bus_prot_reg_update)
-> > +			const struct scp_ctrl_reg *scp_ctrl_reg)
-> >  {
-> >  	struct genpd_onecell_data *pd_data;
-> >  	struct resource *res;
-> > @@ -419,8 +409,6 @@ static struct scp *init_scp(struct platform_device *pdev,
-> >  	scp->ctrl_reg.pwr_sta_offs = scp_ctrl_reg->pwr_sta_offs;
-> >  	scp->ctrl_reg.pwr_sta2nd_offs = scp_ctrl_reg->pwr_sta2nd_offs;
-> >  
-> > -	scp->bus_prot_reg_update = bus_prot_reg_update;
-> > -
-> >  	scp->dev = &pdev->dev;
-> >  
-> >  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> > @@ -448,6 +436,17 @@ static struct scp *init_scp(struct platform_device *pdev,
-> >  		return ERR_CAST(scp->infracfg);
-> >  	}
-> >  
-> > +	scp->smi_common = syscon_regmap_lookup_by_phandle(pdev->dev.of_node,
-> > +			"smi_comm");
-> > +
-> > +	if (scp->smi_common == ERR_PTR(-ENODEV)) {
-> > +		scp->smi_common = NULL;
-> > +	} else if (IS_ERR(scp->smi_common)) {
-> > +		dev_err(&pdev->dev, "Cannot find smi_common controller: %ld\n",
-> > +				PTR_ERR(scp->smi_common));
-> > +		return ERR_CAST(scp->smi_common);
-> > +	}
-> > +
-> >  	for (i = 0; i < num; i++) {
-> >  		struct scp_domain *scpd = &scp->domains[i];
-> >  		const struct scp_domain_data *data = &scp_domain_data[i];
-> > @@ -530,8 +529,11 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.name = "conn",
-> >  		.sta_mask = PWR_STATUS_CONN,
-> >  		.ctl_offs = SPM_CONN_PWR_CON,
-> > -		.bus_prot_mask = MT2701_TOP_AXI_PROT_EN_CONN_M |
-> > -				 MT2701_TOP_AXI_PROT_EN_CONN_S,
-> > +		.bp_table = {
-> > +			BUS_PROT(IFR_TYPE, 0, 0, 0x220, 0x228,
-> > +				MT2701_TOP_AXI_PROT_EN_CONN_M |
-> > +				MT2701_TOP_AXI_PROT_EN_CONN_S),
-> > +		},
-> >  		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-> >  	},
-> >  	[MT2701_POWER_DOMAIN_DISP] = {
-> > @@ -540,7 +542,10 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.ctl_offs = SPM_DIS_PWR_CON,
-> >  		.sram_pdn_bits = GENMASK(11, 8),
-> >  		.basic_clk_name = {"mm"},
-> > -		.bus_prot_mask = MT2701_TOP_AXI_PROT_EN_MM_M0,
-> > +		.bp_table = {
-> > +			BUS_PROT(IFR_TYPE, 0, 0, 0x220, 0x228,
-> > +				MT2701_TOP_AXI_PROT_EN_MM_M0),
-> > +		},
-> >  		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-> >  	},
-> >  	[MT2701_POWER_DOMAIN_MFG] = {
-> > @@ -675,7 +680,10 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.sram_pdn_bits = GENMASK(8, 8),
-> >  		.sram_pdn_ack_bits = GENMASK(16, 16),
-> >  		.basic_clk_name = {"mfg"},
-> > -		.bus_prot_mask = BIT(14) | BIT(21) | BIT(23),
-> > +		.bp_table = {
-> > +			BUS_PROT(IFR_TYPE, 0x260, 0x264, 0x220, 0x228,
-> > +				BIT(14) | BIT(21) | BIT(23)),
-> > +		},
-> >  		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-> >  	},
-> >  	[MT2712_POWER_DOMAIN_MFG_SC1] = {
-> > @@ -747,7 +755,10 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.sram_pdn_bits = GENMASK(8, 8),
-> >  		.sram_pdn_ack_bits = GENMASK(12, 12),
-> >  		.basic_clk_name = {"mm"},
-> > -		.bus_prot_mask = (BIT(1) | BIT(2)),
-> > +		.bp_table = {
-> > +			BUS_PROT(IFR_TYPE, 0, 0, 0x220, 0x228,
-> > +				BIT(1) | BIT(2)),
-> > +		},
-> >  	},
-> >  	[MT6797_POWER_DOMAIN_AUDIO] = {
-> >  		.name = "audio",
-> > @@ -794,7 +805,10 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.ctl_offs = SPM_ETHSYS_PWR_CON,
-> >  		.sram_pdn_bits = GENMASK(11, 8),
-> >  		.sram_pdn_ack_bits = GENMASK(15, 12),
-> > -		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_ETHSYS,
-> > +		.bp_table = {
-> > +			BUS_PROT(IFR_TYPE, 0, 0, 0x220, 0x228,
-> > +				MT7622_TOP_AXI_PROT_EN_ETHSYS),
-> > +		},
-> >  		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-> >  	},
-> >  	[MT7622_POWER_DOMAIN_HIF0] = {
-> > @@ -804,7 +818,10 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.sram_pdn_bits = GENMASK(11, 8),
-> >  		.sram_pdn_ack_bits = GENMASK(15, 12),
-> >  		.basic_clk_name = {"hif_sel"},
-> > -		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_HIF0,
-> > +		.bp_table = {
-> > +			BUS_PROT(IFR_TYPE, 0, 0, 0x220, 0x228,
-> > +				MT7622_TOP_AXI_PROT_EN_HIF0),
-> > +		},
-> >  		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-> >  	},
-> >  	[MT7622_POWER_DOMAIN_HIF1] = {
-> > @@ -814,7 +831,10 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.sram_pdn_bits = GENMASK(11, 8),
-> >  		.sram_pdn_ack_bits = GENMASK(15, 12),
-> >  		.basic_clk_name = {"hif_sel"},
-> > -		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_HIF1,
-> > +		.bp_table = {
-> > +			BUS_PROT(IFR_TYPE, 0, 0, 0x220, 0x228,
-> > +				MT7622_TOP_AXI_PROT_EN_HIF1),
-> > +		},
-> >  		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-> >  	},
-> >  	[MT7622_POWER_DOMAIN_WB] = {
-> > @@ -823,7 +843,10 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.ctl_offs = SPM_WB_PWR_CON,
-> >  		.sram_pdn_bits = 0,
-> >  		.sram_pdn_ack_bits = 0,
-> > -		.bus_prot_mask = MT7622_TOP_AXI_PROT_EN_WB,
-> > +		.bp_table = {
-> > +			BUS_PROT(IFR_TYPE, 0, 0, 0x220, 0x228,
-> > +				MT7622_TOP_AXI_PROT_EN_WB),
-> > +		},
-> >  		.caps = MTK_SCPD_ACTIVE_WAKEUP | MTK_SCPD_FWAIT_SRAM,
-> >  	},
-> >  };
-> > @@ -837,8 +860,11 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.name = "conn",
-> >  		.sta_mask = PWR_STATUS_CONN,
-> >  		.ctl_offs = SPM_CONN_PWR_CON,
-> > -		.bus_prot_mask = MT2701_TOP_AXI_PROT_EN_CONN_M |
-> > -				 MT2701_TOP_AXI_PROT_EN_CONN_S,
-> > +		.bp_table = {
-> > +			BUS_PROT(IFR_TYPE, 0, 0, 0x220, 0x228,
-> > +				MT2701_TOP_AXI_PROT_EN_CONN_M |
-> > +				MT2701_TOP_AXI_PROT_EN_CONN_S),
-> > +		},
-> >  		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-> >  	},
-> >  	[MT7623A_POWER_DOMAIN_ETH] = {
-> > @@ -903,8 +929,11 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.sram_pdn_bits = GENMASK(11, 8),
-> >  		.sram_pdn_ack_bits = GENMASK(12, 12),
-> >  		.basic_clk_name = {"mm"},
-> > -		.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MM_M0 |
-> > -			MT8173_TOP_AXI_PROT_EN_MM_M1,
-> > +		.bp_table = {
-> > +			BUS_PROT(IFR_TYPE, 0, 0, 0x220, 0x228,
-> > +				MT8173_TOP_AXI_PROT_EN_MM_M0 |
-> > +				MT8173_TOP_AXI_PROT_EN_MM_M1),
-> > +		},
-> >  	},
-> >  	[MT8173_POWER_DOMAIN_VENC_LT] = {
-> >  		.name = "venc_lt",
-> > @@ -950,10 +979,13 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.ctl_offs = SPM_MFG_PWR_CON,
-> >  		.sram_pdn_bits = GENMASK(13, 8),
-> >  		.sram_pdn_ack_bits = GENMASK(21, 16),
-> > -		.bus_prot_mask = MT8173_TOP_AXI_PROT_EN_MFG_S |
-> > -			MT8173_TOP_AXI_PROT_EN_MFG_M0 |
-> > -			MT8173_TOP_AXI_PROT_EN_MFG_M1 |
-> > -			MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT,
-> > +		.bp_table = {
-> > +			BUS_PROT(IFR_TYPE, 0, 0, 0x220, 0x228,
-> > +				MT8173_TOP_AXI_PROT_EN_MFG_S |
-> > +				MT8173_TOP_AXI_PROT_EN_MFG_M0 |
-> > +				MT8173_TOP_AXI_PROT_EN_MFG_M1 |
-> > +				MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT),
-> > +		},
-> >  	},
-> >  };
-> >  
-> > @@ -969,7 +1001,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.pwr_sta_offs = SPM_PWR_STATUS,
-> >  		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-> >  	},
-> > -	.bus_prot_reg_update = true,
-> >  };
-> >  
-> >  static const struct scp_soc_data mt2712_data = {
-> > @@ -981,7 +1012,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.pwr_sta_offs = SPM_PWR_STATUS,
-> >  		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-> >  	},
-> > -	.bus_prot_reg_update = false,
-> >  };
-> >  
-> >  static const struct scp_soc_data mt6797_data = {
-> > @@ -993,7 +1023,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.pwr_sta_offs = SPM_PWR_STATUS_MT6797,
-> >  		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND_MT6797
-> >  	},
-> > -	.bus_prot_reg_update = true,
-> >  };
-> >  
-> >  static const struct scp_soc_data mt7622_data = {
-> > @@ -1003,7 +1032,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.pwr_sta_offs = SPM_PWR_STATUS,
-> >  		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-> >  	},
-> > -	.bus_prot_reg_update = true,
-> >  };
-> >  
-> >  static const struct scp_soc_data mt7623a_data = {
-> > @@ -1013,7 +1041,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.pwr_sta_offs = SPM_PWR_STATUS,
-> >  		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-> >  	},
-> > -	.bus_prot_reg_update = true,
-> >  };
-> >  
-> >  static const struct scp_soc_data mt8173_data = {
-> > @@ -1025,7 +1052,6 @@ static void mtk_register_power_domains(struct platform_device *pdev,
-> >  		.pwr_sta_offs = SPM_PWR_STATUS,
-> >  		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND
-> >  	},
-> > -	.bus_prot_reg_update = true,
-> >  };
-> >  
-> >  /*
-> > @@ -1066,8 +1092,7 @@ static int scpsys_probe(struct platform_device *pdev)
-> >  
-> >  	soc = of_device_get_match_data(&pdev->dev);
-> >  
-> > -	scp = init_scp(pdev, soc->domains, soc->num_domains, &soc->regs,
-> > -			soc->bus_prot_reg_update);
-> > +	scp = init_scp(pdev, soc->domains, soc->num_domains, &soc->regs);
-> >  	if (IS_ERR(scp))
-> >  		return PTR_ERR(scp);
-> >  
-> > diff --git a/drivers/soc/mediatek/scpsys-ext.h b/drivers/soc/mediatek/scpsys-ext.h
-> > new file mode 100644
-> > index 0000000..458b2c5
-> > --- /dev/null
-> > +++ b/drivers/soc/mediatek/scpsys-ext.h
-> > @@ -0,0 +1,67 @@
-> > +/* SPDX-License-Identifier: GPL-2.0 */
-> > +#ifndef __SOC_MEDIATEK_SCPSYS_EXT_H
-> > +#define __SOC_MEDIATEK_SCPSYS_EXT_H
-> > +
-> > +#define MAX_STEPS	4
-> > +
-> > +#define _BUS_PROT(_type, _set_ofs, _clr_ofs,			\
-> > +		_en_ofs, _sta_ofs, _mask, _ignore_clr_ack) {	\
-> > +		.type = _type,					\
-> > +		.set_ofs = _set_ofs,				\
-> > +		.clr_ofs = _clr_ofs,				\
-> > +		.en_ofs = _en_ofs,				\
-> > +		.sta_ofs = _sta_ofs,				\
-> > +		.mask = _mask,					\
-> > +		.ignore_clr_ack = _ignore_clr_ack,		\
-> > +	}
-> > +
-> > +#define BUS_PROT(_type, _set_ofs, _clr_ofs,		\
-> > +		_en_ofs, _sta_ofs, _mask)		\
-> > +		_BUS_PROT(_type, _set_ofs, _clr_ofs,	\
-> > +		_en_ofs, _sta_ofs, _mask, false)
-> > +
-> > +#define BUS_PROT_IGN(_type, _set_ofs, _clr_ofs,	\
-> > +		_en_ofs, _sta_ofs, _mask)		\
-> > +		_BUS_PROT(_type, _set_ofs, _clr_ofs,	\
-> > +		_en_ofs, _sta_ofs, _mask, true)
-> > +
-> > +#define MT2701_TOP_AXI_PROT_EN_MM_M0		BIT(1)
-> > +#define MT2701_TOP_AXI_PROT_EN_CONN_M		BIT(2)
-> > +#define MT2701_TOP_AXI_PROT_EN_CONN_S		BIT(8)
-> > +
-> > +#define MT7622_TOP_AXI_PROT_EN_ETHSYS		(BIT(3) | BIT(17))
-> > +#define MT7622_TOP_AXI_PROT_EN_HIF0		(BIT(24) | BIT(25))
-> > +#define MT7622_TOP_AXI_PROT_EN_HIF1		(BIT(26) | BIT(27) | \
-> > +						 BIT(28))
-> > +#define MT7622_TOP_AXI_PROT_EN_WB		(BIT(2) | BIT(6) | \
-> > +						 BIT(7) | BIT(8))
-> > +
-> > +#define MT8173_TOP_AXI_PROT_EN_MM_M0		BIT(1)
-> > +#define MT8173_TOP_AXI_PROT_EN_MM_M1		BIT(2)
-> > +#define MT8173_TOP_AXI_PROT_EN_MFG_S		BIT(14)
-> > +#define MT8173_TOP_AXI_PROT_EN_MFG_M0		BIT(21)
-> > +#define MT8173_TOP_AXI_PROT_EN_MFG_M1		BIT(22)
-> > +#define MT8173_TOP_AXI_PROT_EN_MFG_SNOOP_OUT	BIT(23)
-> > +
-> > +enum regmap_type {
-> > +	INVALID_TYPE = 0,
-> > +	IFR_TYPE,
-> > +	SMI_TYPE,
-> > +};
-> > +
-> > +struct bus_prot {
-> > +	enum regmap_type type;
-> > +	u32 set_ofs;
-> > +	u32 clr_ofs;
-> 
-> Please try to keep variable names consistent. You change for example set_ofs to
-> reg_set. That makes the code more difficult to read and understand.
-> 
-
-OK, I'll keep those names consistent.
-
-> > +	u32 en_ofs;
-> > +	u32 sta_ofs;
-> > +	u32 mask;
-> > +	bool ignore_clr_ack;
-> > +};
-> > +
-> > +int mtk_scpsys_ext_set_bus_protection(const struct bus_prot *bp_table,
-> > +	struct regmap *infracfg, struct regmap *smi_common);
-> > +int mtk_scpsys_ext_clear_bus_protection(const struct bus_prot *bp_table,
-> > +	struct regmap *infracfg, struct regmap *smi_common);
-> > +
-> > +#endif /* __SOC_MEDIATEK_SCPSYS_EXT_H */
-> > 
-
+diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+index 701f9af..d48c313 100644
+--- a/drivers/pinctrl/mediatek/Kconfig
++++ b/drivers/pinctrl/mediatek/Kconfig
+@@ -3,10 +3,12 @@ menu "MediaTek pinctrl drivers"
+ 	depends on ARCH_MEDIATEK || COMPILE_TEST
+ 
+ config EINT_MTK
+-	bool "MediaTek External Interrupt Support"
++	tristate "MediaTek External Interrupt Support"
+ 	depends on PINCTRL_MTK || PINCTRL_MTK_MOORE || PINCTRL_MTK_PARIS || COMPILE_TEST
+ 	select GPIOLIB
+ 	select IRQ_DOMAIN
++	default y if PINCTRL_MTK || PINCTRL_MTK_MOORE
++	default PINCTRL_MTK_PARIS
+ 
+ config PINCTRL_MTK
+ 	bool
+@@ -17,23 +19,30 @@ config PINCTRL_MTK
+ 	select EINT_MTK
+ 	select OF_GPIO
+ 
++config PINCTRL_MTK_V2
++	tristate
++	depends on PINCTRL_MTK_MOORE || PINCTRL_MTK_PARIS
++
+ config PINCTRL_MTK_MOORE
+-	bool
++	tristate
+ 	depends on OF
+ 	select GENERIC_PINCONF
+ 	select GENERIC_PINCTRL_GROUPS
+ 	select GENERIC_PINMUX_FUNCTIONS
++	select EINT_MTK
+ 	select GPIOLIB
+ 	select OF_GPIO
++	select PINCTRL_MTK_V2
+ 
+ config PINCTRL_MTK_PARIS
+-	bool
++	tristate
+ 	depends on OF
+ 	select PINMUX
+ 	select GENERIC_PINCONF
+ 	select GPIOLIB
+ 	select EINT_MTK
+ 	select OF_GPIO
++	select PINCTRL_MTK_V2
+ 
+ # For ARMv7 SoCs
+ config PINCTRL_MT2701
+@@ -80,7 +89,7 @@ config PINCTRL_MT2712
+ 	select PINCTRL_MTK
+ 
+ config PINCTRL_MT6765
+-	bool "Mediatek MT6765 pin control"
++	tristate "Mediatek MT6765 pin control"
+ 	depends on OF
+ 	depends on ARM64 || COMPILE_TEST
+ 	default ARM64 && ARCH_MEDIATEK
+diff --git a/drivers/pinctrl/mediatek/Makefile b/drivers/pinctrl/mediatek/Makefile
+index a74325a..4b71328 100644
+--- a/drivers/pinctrl/mediatek/Makefile
++++ b/drivers/pinctrl/mediatek/Makefile
+@@ -2,8 +2,9 @@
+ # Core
+ obj-$(CONFIG_EINT_MTK)		+= mtk-eint.o
+ obj-$(CONFIG_PINCTRL_MTK)	+= pinctrl-mtk-common.o
+-obj-$(CONFIG_PINCTRL_MTK_MOORE) += pinctrl-moore.o pinctrl-mtk-common-v2.o
+-obj-$(CONFIG_PINCTRL_MTK_PARIS) += pinctrl-paris.o pinctrl-mtk-common-v2.o
++obj-$(CONFIG_PINCTRL_MTK_V2)	+= pinctrl-mtk-common-v2.o
++obj-$(CONFIG_PINCTRL_MTK_MOORE) += pinctrl-moore.o
++obj-$(CONFIG_PINCTRL_MTK_PARIS) += pinctrl-paris.o
+ 
+ # SoC Drivers
+ obj-$(CONFIG_PINCTRL_MT2701)	+= pinctrl-mt2701.o
+diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
+index 7e526bcf..99703a8 100644
+--- a/drivers/pinctrl/mediatek/mtk-eint.c
++++ b/drivers/pinctrl/mediatek/mtk-eint.c
+@@ -9,6 +9,7 @@
+  *
+  */
+ 
++#include <linux/module.h>
+ #include <linux/delay.h>
+ #include <linux/err.h>
+ #include <linux/gpio/driver.h>
+@@ -379,6 +380,7 @@ int mtk_eint_do_suspend(struct mtk_eint *eint)
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_eint_do_suspend);
+ 
+ int mtk_eint_do_resume(struct mtk_eint *eint)
+ {
+@@ -386,6 +388,7 @@ int mtk_eint_do_resume(struct mtk_eint *eint)
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_eint_do_resume);
+ 
+ int mtk_eint_set_debounce(struct mtk_eint *eint, unsigned long eint_num,
+ 			  unsigned int debounce)
+@@ -440,6 +443,7 @@ int mtk_eint_set_debounce(struct mtk_eint *eint, unsigned long eint_num,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_eint_set_debounce);
+ 
+ int mtk_eint_find_irq(struct mtk_eint *eint, unsigned long eint_n)
+ {
+@@ -451,6 +455,7 @@ int mtk_eint_find_irq(struct mtk_eint *eint, unsigned long eint_n)
+ 
+ 	return irq;
+ }
++EXPORT_SYMBOL_GPL(mtk_eint_find_irq);
+ 
+ int mtk_eint_do_init(struct mtk_eint *eint)
+ {
+@@ -495,3 +500,7 @@ int mtk_eint_do_init(struct mtk_eint *eint)
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_eint_do_init);
++
++MODULE_LICENSE("GPL v2");
++MODULE_DESCRIPTION("MediaTek EINT Driver");
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6765.c b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
+index 905dae8c..2c59d39 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt6765.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
+@@ -6,6 +6,7 @@
+  *
+  */
+ 
++#include <linux/module.h>
+ #include "pinctrl-mtk-mt6765.h"
+ #include "pinctrl-paris.h"
+ 
+@@ -1103,3 +1104,6 @@ static int __init mt6765_pinctrl_init(void)
+ 	return platform_driver_register(&mt6765_pinctrl_driver);
+ }
+ arch_initcall(mt6765_pinctrl_init);
++
++MODULE_LICENSE("GPL v2");
++MODULE_DESCRIPTION("MediaTek MT6765 Pinctrl Driver");
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+index 1da9425..cdf2d69 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+@@ -6,6 +6,7 @@
+  *
+  */
+ 
++#include <linux/module.h>
+ #include <dt-bindings/pinctrl/mt65xx.h>
+ #include <linux/device.h>
+ #include <linux/err.h>
+@@ -206,6 +207,7 @@ int mtk_hw_set_value(struct mtk_pinctrl *hw, const struct mtk_pin_desc *desc,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_hw_set_value);
+ 
+ int mtk_hw_get_value(struct mtk_pinctrl *hw, const struct mtk_pin_desc *desc,
+ 		     int field, int *value)
+@@ -225,6 +227,7 @@ int mtk_hw_get_value(struct mtk_pinctrl *hw, const struct mtk_pin_desc *desc,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_hw_get_value);
+ 
+ static int mtk_xt_find_eint_num(struct mtk_pinctrl *hw, unsigned long eint_n)
+ {
+@@ -363,6 +366,7 @@ int mtk_build_eint(struct mtk_pinctrl *hw, struct platform_device *pdev)
+ 
+ 	return mtk_eint_do_init(hw->eint);
+ }
++EXPORT_SYMBOL_GPL(mtk_build_eint);
+ 
+ /* Revision 0 */
+ int mtk_pinconf_bias_disable_set(struct mtk_pinctrl *hw,
+@@ -382,6 +386,7 @@ int mtk_pinconf_bias_disable_set(struct mtk_pinctrl *hw,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_bias_disable_set);
+ 
+ int mtk_pinconf_bias_disable_get(struct mtk_pinctrl *hw,
+ 				 const struct mtk_pin_desc *desc, int *res)
+@@ -404,6 +409,7 @@ int mtk_pinconf_bias_disable_get(struct mtk_pinctrl *hw,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_bias_disable_get);
+ 
+ int mtk_pinconf_bias_set(struct mtk_pinctrl *hw,
+ 			 const struct mtk_pin_desc *desc, bool pullup)
+@@ -423,6 +429,7 @@ int mtk_pinconf_bias_set(struct mtk_pinctrl *hw,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_bias_set);
+ 
+ int mtk_pinconf_bias_get(struct mtk_pinctrl *hw,
+ 			 const struct mtk_pin_desc *desc, bool pullup, int *res)
+@@ -442,6 +449,7 @@ int mtk_pinconf_bias_get(struct mtk_pinctrl *hw,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_bias_get);
+ 
+ /* Revision 1 */
+ int mtk_pinconf_bias_disable_set_rev1(struct mtk_pinctrl *hw,
+@@ -456,6 +464,7 @@ int mtk_pinconf_bias_disable_set_rev1(struct mtk_pinctrl *hw,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_bias_disable_set_rev1);
+ 
+ int mtk_pinconf_bias_disable_get_rev1(struct mtk_pinctrl *hw,
+ 				      const struct mtk_pin_desc *desc, int *res)
+@@ -473,6 +482,7 @@ int mtk_pinconf_bias_disable_get_rev1(struct mtk_pinctrl *hw,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_bias_disable_get_rev1);
+ 
+ int mtk_pinconf_bias_set_rev1(struct mtk_pinctrl *hw,
+ 			      const struct mtk_pin_desc *desc, bool pullup)
+@@ -492,6 +502,7 @@ int mtk_pinconf_bias_set_rev1(struct mtk_pinctrl *hw,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_bias_set_rev1);
+ 
+ int mtk_pinconf_bias_get_rev1(struct mtk_pinctrl *hw,
+ 			      const struct mtk_pin_desc *desc, bool pullup,
+@@ -517,6 +528,7 @@ int mtk_pinconf_bias_get_rev1(struct mtk_pinctrl *hw,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_bias_set_gev1);
+ 
+ /* Combo for the following pull register type:
+  * 1. PU + PD
+@@ -717,6 +729,7 @@ int mtk_pinconf_bias_set_combo(struct mtk_pinctrl *hw,
+ out:
+ 	return err;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_bias_set_combo);
+ 
+ int mtk_pinconf_bias_get_combo(struct mtk_pinctrl *hw,
+ 			      const struct mtk_pin_desc *desc,
+@@ -737,6 +750,7 @@ int mtk_pinconf_bias_get_combo(struct mtk_pinctrl *hw,
+ out:
+ 	return err;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_bias_get_combo);
+ 
+ /* Revision 0 */
+ int mtk_pinconf_drive_set(struct mtk_pinctrl *hw,
+@@ -766,6 +780,7 @@ int mtk_pinconf_drive_set(struct mtk_pinctrl *hw,
+ 
+ 	return err;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_drive_set);
+ 
+ int mtk_pinconf_drive_get(struct mtk_pinctrl *hw,
+ 			  const struct mtk_pin_desc *desc, int *val)
+@@ -790,6 +805,7 @@ int mtk_pinconf_drive_get(struct mtk_pinctrl *hw,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_drive_get);
+ 
+ /* Revision 1 */
+ int mtk_pinconf_drive_set_rev1(struct mtk_pinctrl *hw,
+@@ -811,6 +827,7 @@ int mtk_pinconf_drive_set_rev1(struct mtk_pinctrl *hw,
+ 
+ 	return err;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_drive_set_rev1);
+ 
+ int mtk_pinconf_drive_get_rev1(struct mtk_pinctrl *hw,
+ 			       const struct mtk_pin_desc *desc, int *val)
+@@ -828,18 +845,21 @@ int mtk_pinconf_drive_get_rev1(struct mtk_pinctrl *hw,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_drive_get_rev1);
+ 
+ int mtk_pinconf_drive_set_raw(struct mtk_pinctrl *hw,
+ 			       const struct mtk_pin_desc *desc, u32 arg)
+ {
+ 	return mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DRV, arg);
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_drive_set_raw);
+ 
+ int mtk_pinconf_drive_get_raw(struct mtk_pinctrl *hw,
+ 			       const struct mtk_pin_desc *desc, int *val)
+ {
+ 	return mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DRV, val);
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_drive_get_raw);
+ 
+ int mtk_pinconf_adv_pull_set(struct mtk_pinctrl *hw,
+ 			     const struct mtk_pin_desc *desc, bool pullup,
+@@ -880,6 +900,7 @@ int mtk_pinconf_adv_pull_set(struct mtk_pinctrl *hw,
+ 
+ 	return err;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_adv_pull_set);
+ 
+ int mtk_pinconf_adv_pull_get(struct mtk_pinctrl *hw,
+ 			     const struct mtk_pin_desc *desc, bool pullup,
+@@ -922,6 +943,7 @@ int mtk_pinconf_adv_pull_get(struct mtk_pinctrl *hw,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_adv_pull_get);
+ 
+ int mtk_pinconf_adv_drive_set(struct mtk_pinctrl *hw,
+ 			      const struct mtk_pin_desc *desc, u32 arg)
+@@ -948,6 +970,7 @@ int mtk_pinconf_adv_drive_set(struct mtk_pinctrl *hw,
+ 
+ 	return err;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_adv_drive_set);
+ 
+ int mtk_pinconf_adv_drive_get(struct mtk_pinctrl *hw,
+ 			      const struct mtk_pin_desc *desc, u32 *val)
+@@ -971,3 +994,4 @@ int mtk_pinconf_adv_drive_get(struct mtk_pinctrl *hw,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_pinconf_adv_drive_get);
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index 83bf29c..af97794 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -9,6 +9,7 @@
+  *	   Hongzhou.Yang <hongzhou.yang@mediatek.com>
+  */
+ 
++#include <linux/module.h>
+ #include <linux/gpio/driver.h>
+ #include <dt-bindings/pinctrl/mt65xx.h>
+ #include "pinctrl-paris.h"
+@@ -1037,3 +1038,7 @@ static int mtk_paris_pinctrl_resume(struct device *device)
+ 	.suspend_noirq = mtk_paris_pinctrl_suspend,
+ 	.resume_noirq = mtk_paris_pinctrl_resume,
+ };
++EXPORT_SYMBOL_GPL(mtk_paris_pinctrl_probe);
++
++MODULE_LICENSE("GPL v2");
++MODULE_DESCRIPTION("MediaTek Pinctrl Common Driver V2 Paris");
+diff --git a/drivers/pinctrl/pinconf-generic.c b/drivers/pinctrl/pinconf-generic.c
+index 9eb8630..dfef471 100644
+--- a/drivers/pinctrl/pinconf-generic.c
++++ b/drivers/pinctrl/pinconf-generic.c
+@@ -286,6 +286,7 @@ int pinconf_generic_parse_dt_config(struct device_node *np,
+ 	kfree(cfg);
+ 	return ret;
+ }
++EXPORT_SYMBOL_GPL(pinconf_generic_parse_dt_config);
+ 
+ int pinconf_generic_dt_subnode_to_map(struct pinctrl_dev *pctldev,
+ 		struct device_node *np, struct pinctrl_map **map,
+-- 
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
