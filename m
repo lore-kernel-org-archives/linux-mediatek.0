@@ -2,23 +2,23 @@ Return-Path: <SRS0=7p0Y=4B=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E4FDDC352A3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2020 19:36:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D4627C352A3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2020 19:46:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BB5FE2168B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2020 19:36:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AED832073A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2020 19:46:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hrkYWhWf";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="s/PgKohb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BB5FE2168B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Sel0DbLg";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="cvyr0i2n"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AED832073A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,57 +27,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=okh855EhHcq3zA7hbqWlIVt6pp/qcNltZ3eJAQDeOIc=; b=hrkYWhWfpBwOt2
-	TFogxNCc5eFBGZjcpauyBL+6f2LnkJg/YiC8XC/r6SiRdqXJNo32NCWR5OS8UetVvOfX/WFiPE+AB
-	flLlhGMqyVbdZdAT4rNs22tsLXM6FQD7T38LJG6AkvTdOtsvGE8H+GwpxJOx03pDDnXFBy9hqZMVl
-	FUq9nyZsadTZBjG9YlwnDSlbAfB73jisLOTYli7oTKR3s0CicX93MBQMhEl44ibDGZpeQWhdUuRcg
-	rcMpCoyuF6jqaCHhzg4Sk4NDSEGx13CjOKG65qOPSPmy+c7ZgVPb3pgBZPGa97pktCk+iZ035F8WV
-	DKNMj97t0XfDpS36Lasg==;
+	List-Owner; bh=jiq0gIlFuYETKUCsUnVoRJOEYpQOPJsGeMaeJ2E9oX4=; b=Sel0DbLg5h+Yxq
+	bQt/z7ADgoiYWp4Vwd5EJLb2MlvDGUkT3vfF+YNF4IVkHfpSGRr/cucbmh2NUiSmLDpqAMCCEgk3m
+	K/nZAaS0wJqGv7Az8cJx15hgzdS28twdHRl8NMxUbNjde9bX212hqd/fj+Iv79YLC4Ia3KvGwcU7E
+	rbz4GSlAbpCV8lyZo4NHc5RF3EuCO6l7GjTDhcWgZvMi8k0MDGAZJUnEFSImVw5n2z81zVEiGbGpa
+	llzqFn4DGqlZPHRqrLZcjgUr9MhnlmBSlVQ8WRHAJ2P2LF1IFOw5cbgJ2LZC+BzpW/szPpVV1DIfH
+	40L1mk5AprriSm6HA0nQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j2KHC-0000WT-4C; Thu, 13 Feb 2020 19:35:54 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1j2KRK-0004Np-QV; Thu, 13 Feb 2020 19:46:22 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j2KH9-0000VH-AP; Thu, 13 Feb 2020 19:35:52 +0000
-Received: by mail-wm1-x343.google.com with SMTP id c84so8080335wme.4;
- Thu, 13 Feb 2020 11:35:47 -0800 (PST)
+ id 1j2KRC-0004Gm-NH; Thu, 13 Feb 2020 19:46:16 +0000
+Received: by mail-wm1-x341.google.com with SMTP id c84so8106663wme.4;
+ Thu, 13 Feb 2020 11:46:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=jPKJYu3DgQU+kE/T2Ez7h1vTBNnV8iVzy5strPoawhY=;
- b=s/PgKohb0ewa1y2ZDClzH01Er9K1ksIXMUUlMg9sWkPB4eU3UKM1QCXm/XoUtgF4tU
- MMffXhcURT87v5xR43sfrpx+SEwcp7Kc2N98XiF/ite7UmMWh/Ig6HMRc15OEoS4zFDM
- wiwQdoVjx6ixKYyWJqfU3fh9ZqDh2e4rkA82t+0fgA6+pj+HTGVFaF8VM+vd3LycuODN
- DOcGXtfhmh/FEBrbiqZODokNmc+XucgibC08EYO8mVoDiMHkv64fG8fKtsAWe2XXVQ8U
- udocHHTK/QDezp+29O/jCT7TZp4nou8ldDYrrBCmA0wbu4UAZjy8PlL2X5oQ3pWcIGPl
- Xppg==
+ bh=2hQsq1zWI0LoSSVbUKek7HAnLGSdGMm3ylURqnDjbGM=;
+ b=cvyr0i2nzA3WQE6xzlYwI2m8mphhZQBg25RNyvnE/ci9my/itrw4AcTHCvnl9qi3c4
+ mewX9jDOrjQ0WrxOa1U+O/3TMcqprAuhzxm9c8hAllzq5Wax1l2qC8GsYD7m9UVRbvb1
+ WmLSUdFgpRjAANFcpuLRz44Nz8siaLa/7dkkruAVACl0w28gEq8nlg53X3R50mh+2fki
+ BL7uvv++sWlWdg7anbH6SZlcUktw7YaPON9V/AYuqeki/YZWCcyi+R8iiZo9jA2wTIGI
+ lM/jzDp7/+fzUgC3b0efjgolw4/wTJ8zF+gdarwUhqFiGdeKXt1Ww1PBvP4mnW28IcZc
+ 2d0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=jPKJYu3DgQU+kE/T2Ez7h1vTBNnV8iVzy5strPoawhY=;
- b=j5TxUcs1hw1vHmBLUHe3A6VzkJv6j+z45Z+SV4e6s2m0k8e1SGF8cVKROcr0SPXptr
- 8rGZwxXoiCqCim5qDZlCeEMLjDTWhysqcNRe/N6kcp3vAmG/mwREeyFh8uD3VCg/5lKg
- tuFYDMYU33ul/X347FcPcGehfygUG4XXG94h2LK9zdjMnGBHk2oA3IHsFBDcvd+j9gCw
- xVR5Ej3TaVccU4xCDYEcLjh/OCMbT2GcgHBlUYSRc7rw+BFcWEc5vYkiwqBmaBJv8Cmi
- w/xz1d/NwO8zhJDB1lD40WreRxO0TsaOo8eDUfvQ3qzCXyevbtzfR9u+pxV4xU07E2UM
- 67Cw==
-X-Gm-Message-State: APjAAAWM+suSDDbJPmoZZswXEE1pofmhPLfKbsju1niGbAf2wCwHk35R
- O2QCrCUEm3IrmoVvHcufUn8=
-X-Google-Smtp-Source: APXvYqzXe8JoYG+adaKlX4POlnxKw2SUItyWkIlIFFdDdaIDzxMTkeerHzbNa6eYwI9FHaBjLa7+LQ==
-X-Received: by 2002:a1c:5445:: with SMTP id p5mr7292167wmi.75.1581622545884;
- Thu, 13 Feb 2020 11:35:45 -0800 (PST)
+ bh=2hQsq1zWI0LoSSVbUKek7HAnLGSdGMm3ylURqnDjbGM=;
+ b=qgvL2StPu2bO8nxhcvqSt+4azbOUknoIbjs1sI4oboNardD5u/yO/OofaZ1Q2kKtKD
+ v/gvoCLqAtwosjd3oeDiXs0j0Ka9sq6rAb/pNlP7UZfDFDGkWhmBnLfiJVTJ/bAj6e9X
+ j0yXVeFgih8rC4IgO93Jtqnh0ju7JdMvexNlZWhlyWDfYbDVdYaVQcL2PsQWXmZiUmSc
+ VwI7umcByx+WJPHf1FgBMO0K4MPBovHDnICbylmJmTLp0Y913P5M5iJr5W+41mEUbtMy
+ b5wnhvldOiE0/mAdyMeICsyzVK8it/dSK2cgc7QsYd7IT4DmWmBTzTj2XlekzrbiOHEn
+ Pl8A==
+X-Gm-Message-State: APjAAAUB4EOuA2tjpzsrQZRC2XX6o6bWv9uYDV+QeuQ66WV4vUmwvC+b
+ BdsKl/lPvgTuhhaymnbbvbg=
+X-Google-Smtp-Source: APXvYqw3qc1l/1MjS0+Bh4UWD+F8hacjNspBGj0PpdLUnoX2veZPrrAMEHZq5A9uLzbgnOOctNKhfA==
+X-Received: by 2002:a1c:41c4:: with SMTP id o187mr7220584wma.24.1581623171704; 
+ Thu, 13 Feb 2020 11:46:11 -0800 (PST)
 Received: from ziggy.stardust ([37.223.145.31])
- by smtp.gmail.com with ESMTPSA id w1sm4256729wro.72.2020.02.13.11.35.44
+ by smtp.gmail.com with ESMTPSA id z133sm4314641wmb.7.2020.02.13.11.46.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 13 Feb 2020 11:35:45 -0800 (PST)
-Subject: Re: [resend PATCH v6 10/12] clk: mediatek: mt8183: switch mmsys to
- platform device probing
+ Thu, 13 Feb 2020 11:46:10 -0800 (PST)
+Subject: Re: [resend PATCH v6 12/12] drm/mediatek: Add support for mmsys
+ through a pdev
 To: CK Hu <ck.hu@mediatek.com>, matthias.bgg@kernel.org
 References: <20191207224740.24536-1-matthias.bgg@kernel.org>
- <20191207224740.24536-11-matthias.bgg@kernel.org>
- <1575881471.14479.2.camel@mtksdaap41>
+ <20191207224740.24536-13-matthias.bgg@kernel.org>
+ <1575869682.7013.14.camel@mtksdaap41>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -153,16 +153,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <c46b1845-de26-d6f9-512a-e329a762cca7@gmail.com>
-Date: Thu, 13 Feb 2020 20:35:43 +0100
+Message-ID: <0ffe7022-7dcd-4789-92ea-32a3673228b6@gmail.com>
+Date: Thu, 13 Feb 2020 20:46:09 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <1575881471.14479.2.camel@mtksdaap41>
+In-Reply-To: <1575869682.7013.14.camel@mtksdaap41>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200213_113551_364485_6C3562AA 
-X-CRM114-Status: GOOD (  18.18  )
+X-CRM114-CacheID: sfid-20200213_114614_790824_BF2EF2F9 
+X-CRM114-Status: GOOD (  21.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -174,7 +174,7 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, rdunlap@infradead.org, airlied@linux.ie,
+Cc: mark.rutland@arm.com, sean.wang@kernel.org, airlied@linux.ie,
  mturquette@baylibre.com, dri-devel@lists.freedesktop.org,
  laurent.pinchart@ideasonboard.com, ulrich.hecht+renesas@gmail.com,
  linux-clk@vger.kernel.org, drinkcat@chromium.org, wens@csie.org,
@@ -182,7 +182,7 @@ Cc: mark.rutland@arm.com, rdunlap@infradead.org, airlied@linux.ie,
  frank-w@public-files.de, sean.wang@mediatek.com, robh+dt@kernel.org,
  linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
  linux-arm-kernel@lists.infradead.org, mbrugger@suse.com, sboyd@kernel.org,
- sean.wang@kernel.org, linux-kernel@vger.kernel.org, p.zabel@pengutronix.de,
+ rdunlap@infradead.org, linux-kernel@vger.kernel.org, p.zabel@pengutronix.de,
  enric.balletbo@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -191,111 +191,126 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 09/12/2019 09:51, CK Hu wrote:
+On 09/12/2019 06:34, CK Hu wrote:
 > Hi, Matthias:
 > 
 > On Sat, 2019-12-07 at 23:47 +0100, matthias.bgg@kernel.org wrote:
 >> From: Matthias Brugger <mbrugger@suse.com>
 >>
->> Switch probing for the MMSYS to support invocation to a
->> plain paltform device. The driver will be probed by the DRM subsystem.
->>
->> Singed-off-by: Matthias Brugger <mbrugger@suse.com>
->> ---
->>  drivers/clk/mediatek/clk-mt8183-mm.c | 39 +++++++++++++++++++---------
->>  1 file changed, 27 insertions(+), 12 deletions(-)
->>
->> diff --git a/drivers/clk/mediatek/clk-mt8183-mm.c b/drivers/clk/mediatek/clk-mt8183-mm.c
->> index 720c696b506d..e6dcad18d81a 100644
->> --- a/drivers/clk/mediatek/clk-mt8183-mm.c
->> +++ b/drivers/clk/mediatek/clk-mt8183-mm.c
->> @@ -3,14 +3,20 @@
->>  // Copyright (c) 2018 MediaTek Inc.
->>  // Author: Weiyi Lu <weiyi.lu@mediatek.com>
->>  
->> +#include <linux/module.h>
->>  #include <linux/clk-provider.h>
->>  #include <linux/platform_device.h>
->> +#include <linux/slab.h>
->>  
->>  #include "clk-mtk.h"
->>  #include "clk-gate.h"
->>  
->>  #include <dt-bindings/clock/mt8183-clk.h>
->>  
->> +struct clk_mt8183_mm_priv {
->> +	struct clk_onecell_data *clk_data;
->> +};
->> +
->>  static const struct mtk_gate_regs mm0_cg_regs = {
->>  	.set_ofs = 0x104,
->>  	.clr_ofs = 0x108,
->> @@ -84,28 +90,37 @@ static const struct mtk_gate mm_clks[] = {
->>  
->>  static int clk_mt8183_mm_probe(struct platform_device *pdev)
->>  {
->> -	struct clk_onecell_data *clk_data;
->> -	struct device_node *node = pdev->dev.of_node;
->> +	struct clk_mt8183_mm_priv *private;
->> +	struct device_node *node = pdev->dev.parent->of_node;
->> +
->> +	private = devm_kzalloc(&pdev->dev, sizeof(*private), GFP_KERNEL);
->> +	if (!private)
->> +		return -ENOMEM;
->>  
->> -	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
->> +	private->clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
->> +	platform_set_drvdata(pdev, private);
+>> The MMSYS subsystem includes clocks and drm components.
+>> This patch adds an initailization path through a platform device
+>> for the clock part, so that both drivers get probed from the same
+>> device tree compatible.
 > 
-> There is a more simple modification that you need not to define struct
-> clk_mt8183_mm_priv,
-> 
-> clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
-> platform_set_drvdata(pdev, clk_data);
+> You've switched mt6779 and mt6797 clock driver to platform device
+> probing, but you does not probe then in drm driver, so your design is to
+> let mmsys clock not work if drm driver is not enabled? It's fine for me
+> because it seems that drm driver is the only user of mmsys clock now.
 > 
 
-Yes you are right, I'll fix that for all the drivers.
+Exactly. The mmsys clocks are only needed for the drm driver. Therefor we only
+probe them when probing the drm driver.
 
-Thanks,
+Regards,
 Matthias
+
 
 > Regards,
 > CK
 > 
+>>
+>> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+>> ---
+>>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 24 ++++++++++++++++++++++++
+>>  drivers/gpu/drm/mediatek/mtk_drm_drv.h |  2 ++
+>>  2 files changed, 26 insertions(+)
+>>
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> index 210455e9f46c..5ada74d8d0c9 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> @@ -186,6 +186,7 @@ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+>>  	.ext_path = mt2701_mtk_ddp_ext,
+>>  	.ext_len = ARRAY_SIZE(mt2701_mtk_ddp_ext),
+>>  	.shadow_register = true,
+>> +	.clk_drv_name = "clk-mt2701-mm",
+>>  };
 >>  
->>  	mtk_clk_register_gates(node, mm_clks, ARRAY_SIZE(mm_clks),
->> -			clk_data);
->> +			private->clk_data);
+>>  static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
+>> @@ -195,6 +196,7 @@ static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
+>>  	.ext_len = ARRAY_SIZE(mt2712_mtk_ddp_ext),
+>>  	.third_path = mt2712_mtk_ddp_third,
+>>  	.third_len = ARRAY_SIZE(mt2712_mtk_ddp_third),
+>> +	.clk_drv_name = "clk-mt2712-mm",
+>>  };
 >>  
->> -	return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
->> +	return of_clk_add_provider(node, of_clk_src_onecell_get,
->> +			private->clk_data);
+>>  static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
+>> @@ -202,6 +204,7 @@ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
+>>  	.main_len = ARRAY_SIZE(mt8173_mtk_ddp_main),
+>>  	.ext_path = mt8173_mtk_ddp_ext,
+>>  	.ext_len = ARRAY_SIZE(mt8173_mtk_ddp_ext),
+>> +	.clk_drv_name = "clk-mt8173-mm",
+>>  };
+>>  
+>>  static int mtk_drm_kms_init(struct drm_device *drm)
+>> @@ -499,6 +502,24 @@ static int mtk_drm_probe(struct platform_device *pdev)
+>>  	INIT_WORK(&private->commit.work, mtk_atomic_work);
+>>  	private->data = of_device_get_match_data(dev);
+>>  
+>> +	/*
+>> +	 * MMSYS includes apart from components management a block providing
+>> +	 * clocks for the subsystem. We probe this clock driver via a platform
+>> +	 * device.
+>> +	 */
+>> +	if (private->data->clk_drv_name) {
+>> +		private->clk_dev = platform_device_register_data(dev,
+>> +						private->data->clk_drv_name, -1,
+>> +						NULL, 0);
+>> +
+>> +		if (IS_ERR(private->clk_dev)) {
+>> +			dev_err(dev, "failed to register %s platform device\n",
+>> +				private->data->clk_drv_name);
+>> +
+>> +			return PTR_ERR(private->clk_dev);
+>> +		}
+>> +	}
+>> +
+>>  	private->config_regs = syscon_node_to_regmap(dev->of_node);
+>>  	if (IS_ERR(private->config_regs))
+>>  		return PTR_ERR(private->config_regs);
+>> @@ -605,6 +626,9 @@ static int mtk_drm_remove(struct platform_device *pdev)
+>>  	for (i = 0; i < DDP_COMPONENT_ID_MAX; i++)
+>>  		of_node_put(private->comp_node[i]);
+>>  
+>> +	if (private->clk_dev)
+>> +		platform_device_unregister(private->clk_dev);
+>> +
+>>  	return 0;
 >>  }
 >>  
->> -static const struct of_device_id of_match_clk_mt8183_mm[] = {
->> -	{ .compatible = "mediatek,mt8183-mmsys", },
->> -	{}
->> -};
->> +static int clk_mt8183_mm_remove(struct platform_device *pdev)
->> +{
->> +	struct clk_mt8183_mm_priv *private = platform_get_drvdata(pdev);
->> +
->> +	kfree(private->clk_data);
->> +
->> +	return 0;
->> +}
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+>> index 63a121577dcb..8fe9136adc38 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+>> @@ -29,11 +29,13 @@ struct mtk_mmsys_driver_data {
+>>  	unsigned int third_len;
 >>  
->>  static struct platform_driver clk_mt8183_mm_drv = {
->>  	.probe = clk_mt8183_mm_probe,
->> +	.remove = clk_mt8183_mm_remove,
->>  	.driver = {
->>  		.name = "clk-mt8183-mm",
->> -		.of_match_table = of_match_clk_mt8183_mm,
->>  	},
+>>  	bool shadow_register;
+>> +	const char *clk_drv_name;
 >>  };
->> -
->> -builtin_platform_driver(clk_mt8183_mm_drv);
->> +module_platform_driver(clk_mt8183_mm_drv);
+>>  
+>>  struct mtk_drm_private {
+>>  	struct drm_device *drm;
+>>  	struct device *dma_dev;
+>> +	struct platform_device *clk_dev;
+>>  
+>>  	unsigned int num_pipes;
+>>  
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 > 
 
 _______________________________________________
