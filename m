@@ -2,67 +2,167 @@ Return-Path: <SRS0=7p0Y=4B=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 61B0FC2BA83
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2020 15:25:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E91ECC2BA83
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2020 18:18:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 345D124691
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2020 15:25:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BC8E1217F4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2020 18:18:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RFnVCMLq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 345D124691
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="X1n9Wm/r";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="a0TWta1T"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC8E1217F4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BiGpNY/h3YL+dMG7j2qu/k0kdFbSwOhpVkER/sJnm2Y=; b=RFnVCMLqXkvLpkjxBmAysiK7N
-	23lne9XIPqCvg5qK0pmPbTosPtGrytQQf4t+mnYLlVfvkx0TlkswkAlZGig/7bJVeOkuujDdLtQ2M
-	uTjWfitBoiFc+5J0i6h5y97Fx4NDzVxskY/YpxcYd7OT1YaVwB8o1CfXlDesxura1nvSVhQ2dJIQP
-	pJNIQrcgzwBVuzHz38nuFZA/K8vR6Un2oiHkNTe3VN+4YLBT6Mjm5azThTQOEG/Hx+2FqaU21gqV2
-	/dlCtJbC7/+KVBzJ0ILqEUT5i5rPG1dEtmTrKIXXMqEOXlW9xGZ3O1H4ts2wztHTOoH5Gcw9sVe8P
-	3jyzm4IDQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=kdXhWgmwYoIn2pvr/QNw3bRIrhaRmg5lwQPck3eWxjQ=; b=X1n9Wm/rvHv7rA
+	TsJ+r7bzd0JQdZ3w+qDaoMgtgRt7PosnLoaE8gJlBVyHOHHtKajnYfdR3ZcYChua3UDcOBNanFEBG
+	p0WfSdln1QQfOYcRLBbXjB4j3DIwGlXch+s9swsd9DDTMC4zG3DEDNxpfe2DD6f+Wj3yA6lElk6qc
+	pUVNmm84tSTi//h9Se7C4W0yLdFSVldMCCauOH23B38IOr1tyLX2sGgGpVs5gO+zZp6UwnCNTPMUh
+	lEC0xjAhEjga9CVVbRabb19TJV8jfvtqSzOdoFkLvSIcOqipVPgmVLW8r4vtw2c2DRFwtnVvtuWoR
+	+EqnoQrqrmL9w4v1TUdA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j2GMy-0004Zp-VK; Thu, 13 Feb 2020 15:25:37 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j2GMp-0004Ry-GD; Thu, 13 Feb 2020 15:25:29 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 3E55A328;
- Thu, 13 Feb 2020 07:25:24 -0800 (PST)
-Received: from [10.37.12.116] (unknown [10.37.12.116])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 130463F68E;
- Thu, 13 Feb 2020 07:25:13 -0800 (PST)
-Subject: Re: [PATCH v2 1/4] PM / EM: add devices to Energy Model
-To: Dietmar Eggemann <dietmar.eggemann@arm.com>,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org,
- linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-imx@nxp.com
-References: <20200206134640.11367-1-lukasz.luba@arm.com>
- <20200206134640.11367-2-lukasz.luba@arm.com>
- <62a54ec9-0491-367d-0a36-7ea32c449acc@arm.com>
-From: Lukasz Luba <lukasz.luba@arm.com>
-Message-ID: <6b1921bb-42c8-999f-abfa-5682e73015d5@arm.com>
-Date: Thu, 13 Feb 2020 15:25:11 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+	id 1j2J3f-0007Mm-BB; Thu, 13 Feb 2020 18:17:51 +0000
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j2J3R-00079r-Qe; Thu, 13 Feb 2020 18:17:39 +0000
+Received: by mail-pg1-x541.google.com with SMTP id 70so3523959pgf.8;
+ Thu, 13 Feb 2020 10:17:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=b85HmoU7b97JK+C46GgyWlG+CYZE3kmiSc0PmiJHXGE=;
+ b=a0TWta1TDimDQB+xdv8tqJoFlhkrn5vM5Al0M7oRU61KYuHwxjCpUM0SrasNVvPLkN
+ ESwy8jKjiu6uCK8bk9K41MQX87bi6raF1VD84w2R2JbM6Uz8ji0EniNhssnIa0dVtJrr
+ /NhNcDAhSONOutSOrM52IaZF3mbfobk1aX/7IbeHrFRBGM5ro3124ikma370fwv5WaZM
+ xp7vII/Q3oeByPVe7vgZDOB6mZohzh0vTXFvmtjhW+z+mhuZbUa0hI4imp+alPnllrzP
+ zpIP7xPMbRFuXPAs5TDSgy64uupxDBMjJWLdY2zJNSabzXtPfsskoa88FDCjs1ELJZPj
+ GsoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=b85HmoU7b97JK+C46GgyWlG+CYZE3kmiSc0PmiJHXGE=;
+ b=Wb6hE7ktWzaZH0xo+3HMflHbeGgyob+zPqojmUTsj3phLp8pJ4VD8wea/DSV3axHvy
+ BrEdF0r9P2hs1CGhY3TVT2IImipqg9nT4tR/IVclB5G3Yl2v+zv9YEsY0KsRl3SK4lhh
+ cP4hebr3PDxFMJa5g0XA0X/SKQ2QbQOXDRgVO3d8BtCVC/K9lLXV/9zEswfnelDzKE3b
+ 776g/GVkqZF0OiGrMQA4DqlwQ+/w7mEbTRlGTt4tArD6Djqni9+GArSYv47pWWUDYQns
+ pJxPOe3OUNBiOuwQ35WZuhGhrI6jRhmi2zxojrz+ZW3XA3FJ3yDbZgNw3Sj5Vlu/X1NX
+ VWkg==
+X-Gm-Message-State: APjAAAWdzNlYNYm2MgAx46X9EZR5L04YavJ0VnkQyb5F0GdtRYAHQOW4
+ lqVARYUa0gUSewrZYqo66Vk=
+X-Google-Smtp-Source: APXvYqzxwMzYDpBdfER5tYXW3VkmPB2Owoa+PYfJsoqruXWXXCQLCeVhn3yomrW93IkcQGEeQLm9nQ==
+X-Received: by 2002:a63:931e:: with SMTP id b30mr17477267pge.200.1581617857265; 
+ Thu, 13 Feb 2020 10:17:37 -0800 (PST)
+Received: from ziggy.stardust ([37.223.145.31])
+ by smtp.gmail.com with ESMTPSA id i6sm3949441pgm.93.2020.02.13.10.17.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 13 Feb 2020 10:17:36 -0800 (PST)
+Subject: Re: [resend PATCH v6 01/12] dt-bindings: display: mediatek: Add mmsys
+ binding description
+To: CK Hu <ck.hu@mediatek.com>, matthias.bgg@kernel.org
+References: <20191207224740.24536-1-matthias.bgg@kernel.org>
+ <20191207224740.24536-2-matthias.bgg@kernel.org>
+ <1575868373.7013.4.camel@mtksdaap41>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <77c9dd91-8f51-499b-3b1a-f5966f2ed35d@gmail.com>
+Date: Thu, 13 Feb 2020 19:17:30 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <62a54ec9-0491-367d-0a36-7ea32c449acc@arm.com>
+In-Reply-To: <1575868373.7013.4.camel@mtksdaap41>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200213_072527_627641_6EF911D8 
-X-CRM114-Status: GOOD (  17.84  )
+X-CRM114-CacheID: sfid-20200213_101737_870373_9F1F953E 
+X-CRM114-Status: GOOD (  19.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,125 +174,106 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: nm@ti.com, juri.lelli@redhat.com, peterz@infradead.org,
- viresh.kumar@linaro.org, liviu.dudau@arm.com, bjorn.andersson@linaro.org,
- bsegall@google.com, festevam@gmail.com, Morten.Rasmussen@arm.com,
- robh@kernel.org, amit.kucheria@verdurent.com, lorenzo.pieralisi@arm.com,
- vincent.guittot@linaro.org, khilman@kernel.org, daniel.lezcano@linaro.org,
- steven.price@arm.com, cw00.choi@samsung.com, mingo@redhat.com, mgorman@suse.de,
- rui.zhang@intel.com, alyssa.rosenzweig@collabora.com, daniel@ffwll.ch,
- b.zolnierkie@samsung.com, s.hauer@pengutronix.de, rostedt@goodmis.org,
- matthias.bgg@gmail.com, Chris.Redpath@arm.com, airlied@linux.ie,
- javi.merino@arm.com, tomeu.vizoso@collabora.com, qperret@google.com,
- sboyd@kernel.org, shawnguo@kernel.org, rjw@rjwysocki.net, agross@kernel.org,
- kernel@pengutronix.de, sudeep.holla@arm.com, patrick.bellasi@matbug.net,
- ionela.voinescu@arm.com
+Cc: mark.rutland@arm.com, sean.wang@kernel.org, airlied@linux.ie,
+ mturquette@baylibre.com, dri-devel@lists.freedesktop.org,
+ laurent.pinchart@ideasonboard.com, ulrich.hecht+renesas@gmail.com,
+ linux-clk@vger.kernel.org, drinkcat@chromium.org, wens@csie.org,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ frank-w@public-files.de, sean.wang@mediatek.com, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
+ linux-arm-kernel@lists.infradead.org, mbrugger@suse.com, sboyd@kernel.org,
+ rdunlap@infradead.org, linux-kernel@vger.kernel.org, p.zabel@pengutronix.de,
+ enric.balletbo@collabora.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
 
-On 2/13/20 10:59 AM, Dietmar Eggemann wrote:
-> On 06/02/2020 14:46, lukasz.luba@arm.com wrote:
->> From: Lukasz Luba <lukasz.luba@arm.com>
+On 09/12/2019 06:12, CK Hu wrote:
+> Hi, Matthias:
 > 
-> [..]
+> On Sat, 2019-12-07 at 23:47 +0100, matthias.bgg@kernel.org wrote:
+>> From: Matthias Brugger <mbrugger@suse.com>
+>>
+>> The MediaTek DRM has a block called mmsys, which sets
+>> the routing and enalbes the different blocks.
+>> This patch adds one line for the mmsys bindings description.
+>>
+>> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+>> ---
+>>  .../display/mediatek/mediatek,disp.txt        | 28 ++++++++++---------
+>>  1 file changed, 15 insertions(+), 13 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+>> index 8469de510001..c71c8a4b73ff 100644
+>> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+>> @@ -27,20 +27,22 @@ Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt.
+>>  
+>>  Required properties (all function blocks):
+>>  - compatible: "mediatek,<chip>-disp-<function>", one of
+>> -	"mediatek,<chip>-disp-ovl"   - overlay (4 layers, blending, csc)
+>> -	"mediatek,<chip>-disp-rdma"  - read DMA / line buffer
+>> -	"mediatek,<chip>-disp-wdma"  - write DMA
+>> -	"mediatek,<chip>-disp-color" - color processor
+>> -	"mediatek,<chip>-disp-aal"   - adaptive ambient light controller
+>> -	"mediatek,<chip>-disp-gamma" - gamma correction
+>> -	"mediatek,<chip>-disp-merge" - merge streams from two RDMA sources
+>> -	"mediatek,<chip>-disp-split" - split stream to two encoders
+>> -	"mediatek,<chip>-disp-ufoe"  - data compression engine
+>> -	"mediatek,<chip>-dsi"        - DSI controller, see mediatek,dsi.txt
+>> -	"mediatek,<chip>-dpi"        - DPI controller, see mediatek,dpi.txt
+>> -	"mediatek,<chip>-disp-mutex" - display mutex
+>> -	"mediatek,<chip>-disp-od"    - overdrive
+>> +	"mediatek,<chip>-disp-ovl"		- overlay (4 layers, blending, csc)
 > 
->> @@ -26,7 +28,7 @@ framework, and interested clients reading the data from it::
+> This patch conflicts with 5.5-rc, please resend this patch base on
+> 5.5-rc1.
 > 
-> s/::/: ?
+>> +	"mediatek,<chip>-disp-rdma"		- read DMA / line buffer
+>> +	"mediatek,<chip>-disp-wdma"		- write DMA
+>> +	"mediatek,<chip>-disp-color"		- color processor
+>> +	"mediatek,<chip>-disp-aal"		- adaptive ambient light controller
+>> +	"mediatek,<chip>-disp-gamma"		- gamma correction
+>> +	"mediatek,<chip>-disp-merge"		- merge streams from two RDMA sources
+>> +	"mediatek,<chip>-disp-split"		- split stream to two encoders
+>> +	"mediatek,<chip>-disp-ufoe"		- data compression engine
+>> +	"mediatek,<chip>-dsi"			- DSI controller, see mediatek,dsi.txt
+>> +	"mediatek,<chip>-dpi"			- DPI controller, see mediatek,dpi.txt
+>> +	"mediatek,<chip>-disp-mutex"		- display mutex
+>> +	"mediatek,<chip>-disp-od"		- overdrive
+>> +	"mediatek,<chip>-mmsys", "syscon"	- provide clocks and components management
+>>    the supported chips are mt2701, mt2712 and mt8173.
 > 
->>          | Thermal (IPA) |  | Scheduler (EAS) |  |     Other     |
->>          +---------------+  +-----------------+  +---------------+
->>                  |                   | em_pd_energy()    |
->> -               |                   | em_cpu_get()      |
->> +               |  em_get_pd()      | em_cpu_get()      |
->>                  +---------+         |         +---------+
+> The original binding document for mmsys is in [1], I think we should not
+> define it in duplicate. Maybe you could remove the original document.
 > 
-> em_get_pd() and em_cpu_get()? Why not em_pd_get()? em_cpu_get() is a
-> specific em_get_pd(). right?
+> [1]
+> https://www.kernel.org/doc/Documentation/devicetree/bindings/arm/mediatek/mediatek%2Cmmsys.txt
 
-Yes. I will rename 'em_get_pd' to 'em_pd_get'
-
-> 
-> [...]
-> 
->> @@ -85,13 +89,20 @@ API.
->>   2.3 Accessing performance domains
->>   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->>   
->> +There is two API functions which provide the access to the energy model:
->> +em_cpu_get() which takes CPU id as an argument and em_get_pd() with device
->> +pointer as an argument. It depends on the subsystem which interface it is
->> +going to use, but in case of CPU devices both functions return the same
->> +performance domain.
-> 
-> There is probably a reason why we need this specific function for CPU
-> devices? The reason should be described. People might ask why
-> em_get_pd() is not sufficient.
-
-True, good point. I will extend the comment in em_cpu_get().
-
-> 
-> [...]
-> 
->> - * A "performance domain" represents a group of CPUs whose performance is
->> - * scaled together. All CPUs of a performance domain must have the same
->> - * micro-architecture. Performance domains often have a 1-to-1 mapping with
->> - * CPUFreq policies.
->> + * In case of CPU device, a "performance domain" represents a group of CPUs
->> + * whose performance is scaled together. All CPUs of a performance domain
->> + * must have the same micro-architecture. Performance domains often have
->> + * a 1-to-1 mapping with CPUFreq policies.
->> + * In case of other devices the 'priv' field is unused.
->>    */
->>   struct em_perf_domain {
->> -	struct em_cap_state *table;
->> -	int nr_cap_states;
->> -	unsigned long cpus[0];
->> +	struct em_perf_state *table;
->> +	int nr_perf_states;
->> +	void *priv;
-> 
-> In case you go back to the variable length field plus type field to
-> distingush EM devices, keep cpus[0] as the name.
-
-OK, I will.
-
-> 
-> [..]
-> 
->>   /**
->> - * em_pd_energy() - Estimates the energy consumed by the CPUs of a perf. domain
->> + * em_pd_energy() - Estimates the energy consumed by the CPUs of a perf.
->> +			domain
-> 
-> Why this change?
-
-hmmm, that's odd, maybe there was 'device' then I changed it back to
-'CPUs' but forgot to move the 'domain' to the old place.
-
-> 
-> [...]
-> 
->> @@ -141,12 +210,12 @@ static struct em_perf_domain *em_create_pd(cpumask_t *span, int nr_states,
->>   		 */
->>   		opp_eff = freq / power;
->>   		if (opp_eff >= prev_opp_eff)
->> -			pr_warn("pd%d: hertz/watts ratio non-monotonically decreasing: em_cap_state %d >= em_cap_state%d\n",
->> -					cpu, i, i - 1);
->> +			dev_warn(dev, "energy_model: hertz/watts ratio non-monotonically decreasing: em_perf_state %d >= em_perf_state%d\n",
-> 
-> s/energy_model/EM ?
-
-OK, I will rename them in all places.
-
-Thank you for the review.
+I think we should keep it, as it describes some requirements that are otherwise
+lost. I'll adapt the  mmsys description and add a hint to it, like we do for dsi
+and dpi.
 
 Regards,
-Lukasz
+Matthias
+
+> 
+> Regards,
+> CK
+> 
+>> +
+>>  - reg: Physical base address and length of the function block register space
+>>  - interrupts: The interrupt signal from the function block (required, except for
+>>    merge and split function blocks).
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
