@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A273C2BA83
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 10:06:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A4C59C2BA83
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 10:16:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5CBC0217F4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 10:06:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 73AAD20873
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 10:16:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VayUef69";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="E5HAeE5s"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5CBC0217F4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ANAeWf3+";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="MC7/SL6L"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 73AAD20873
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,56 +27,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wxdUMBdXfcQXoI7sxvwJDyV8EDh7ZoqU/LtZ9RxJjGg=; b=VayUef69ins0EL
-	jr0+LpVkPyXRuJmZFa9du21ZIMV8GnoqNp8tmGETHao9+LSpfIVIDZhSDRwVcRQCR8UidjHWvKRDB
-	0SUZnU6iS5d++wqnA3m1YPiOoQZ2VsA9vgiK8U4sRxp2kirLFUbWmKRljGMnefPs1XJNvy+aCBPCA
-	5SxyEW5cnckAAfv7ccR8MPe3xsvejFFBG2hGsRTdETEYa6z+69yFQSVvueBdhfu2e/mSsHNk41zXy
-	ajonDeOZzpLX6q0nDMEgvcFe++QHJdisc8zFGJqLV6/0H6uc6g9/fxP/tdAkHm5ypaNOibwuELV4O
-	69ZjgzzDEIvlkRPkipIw==;
+	List-Owner; bh=iAJAohlKAba8c2JKa48tv7NKU2iS2W1B7OVTz8V7rZk=; b=ANAeWf3+hWJ0QR
+	jhNMSe1hTta9yELfZLI4y/z2rKLHKoyJ7GA4hxiClgUc+mQW/87cnyr7ZqFd/RtNWzzKBCJMtvhiA
+	tHhMitgEanttx6s7dQqqLiIvzOywQK6dFU9PLUrWK9VRRz+dFhJginJhQg6Q9IFjG1INUQhFsKyGs
+	eczcBfdDV0iGLeocYCJt9wpSItIUwbg6xdmlE71XQfWZs7UdjA9JMsLFWXBHWVF+D2DvXIYa+Qoq/
+	+tVUb/13bT+wmTtRtl0vJxlyF1PHqBoMKXLH30jgekdY5WbKPnlyqrcRNniYoYaReQPBTpMySyeG+
+	42XO+RvJ/OxdLtyPyZIQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j2Xs0-0004yP-RH; Fri, 14 Feb 2020 10:06:48 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1j2Y0m-0000aH-Qw; Fri, 14 Feb 2020 10:15:52 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j2Xrs-0004qA-LZ; Fri, 14 Feb 2020 10:06:42 +0000
-Received: by mail-wr1-x444.google.com with SMTP id z3so10242985wru.3;
- Fri, 14 Feb 2020 02:06:39 -0800 (PST)
+ id 1j2Y0k-0000Zu-Om; Fri, 14 Feb 2020 10:15:52 +0000
+Received: by mail-wm1-x343.google.com with SMTP id t23so9357197wmi.1;
+ Fri, 14 Feb 2020 02:15:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=+Fx6pPCH8RR8ID9rWr1nrF033G+BidlFBNsw5aXJeIA=;
- b=E5HAeE5sSN8X7kkBNaxK7vYiTnnnil7Wcbg005B13MiTl850QG3EnajLUK/KErbHrY
- FJPCxZ9Eo13fK+jsXS39W5wnxH4G0MMrve8drXKOYS+fev3eYlNAxCmSH+Dlzbl0k0z8
- nm85UCtQOGjdv3khTcukxrur9bEaYsBeSDn+inyaLb3z8pDFHti8lcu0P1MPRO520Em8
- Pv8b9/YeUBRDbEF0hxwXduEMmKNHbLu7v25xvbAgUsyLgVb6ehycx/eIawUB6x0cKKLb
- /Ky96vgC6UnOZmLdGymzki54Ko6cjfo14aVQDxvhHCUoGQy481UCRspXyYnhjxnNPhK9
- f0UA==
+ bh=qgAcFUTWIVh6J5lFRMAU/DXgNItcCCYEdAynPZvF7SI=;
+ b=MC7/SL6LEeQoUDSP7gclFNwRz+aN0p+hzxp4hg+qGG4eiyJU/Tb7+vWYAbkFBhH+p7
+ mIXlIXA0Hc5FtuQNNIg6SgHzBf+IKgemwwfh4XeVdAgRgj91wdBr3BMBLziszTOh2B9M
+ agVODPdtWVxC2VI2VuLMJmS6KpWb10W+j6sZktpGU2wSoF8SJkrHHny1+k1YJPhDg23I
+ tGMPJWyYetMxZy8otxYDkU7obHrKO116T28rNROZ3Z1Q61zVUrain2W6Kz/jy7IJyfhX
+ qPQ/Ze2Z7mEtDSGIu17n70tMjhUxiubMD/BThjzXjPS+nsQnQLXI2x0F88s23rK8tMfg
+ 6yng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=+Fx6pPCH8RR8ID9rWr1nrF033G+BidlFBNsw5aXJeIA=;
- b=Uux8RQp79tTnQ951pHSaouVYjrCa4yXE/akO53fmglAlUdW88IynQlWryLqQtbKZqG
- cDjJ5w1UMlJFKooFpvs6oQAA12XyUaAaJZMcJzoqFRwPTAeQv0/CPmh5oxRFHliFMjgh
- MHQhjMjnVWQxnKT4/0E5T2jR21izRa2vtG3fruVDvCcaYuM5Z0k+ozaexdtS9mrRvAgk
- rGmeYxDQSqqYSmGWvt7H2+/MMd0jh2t6GN1rpzw4uBIezNZUNTVnRR7plEduQcGZ5n39
- N42bwiK0MsiPcAkrPj+etPORzSPLOykYgqwYxN/huJztOQnl1amUj4LNqx2I5WPU3fxD
- E0kw==
-X-Gm-Message-State: APjAAAVYDkCApRzxjC+dWfK6ZVEiRMraR/P3TDSRKTma98v9Leahbtk1
- 0E9iJqoEqcpPQmstnJj1q4I=
-X-Google-Smtp-Source: APXvYqyqDWoorm6V0ap4Ghlf/y8z9W8al5hs32dhGffprP+bj0HCjCbAWqALwCZb1luirvLMnohzog==
-X-Received: by 2002:adf:fd91:: with SMTP id d17mr3441133wrr.340.1581674798695; 
- Fri, 14 Feb 2020 02:06:38 -0800 (PST)
+ bh=qgAcFUTWIVh6J5lFRMAU/DXgNItcCCYEdAynPZvF7SI=;
+ b=DeKaqwZATOmEc0e/RN+3F6r9Bxua+w2tOJ3HwFsNLuNBQjvJVQn66Fui8aUHyz8XK+
+ PHuJvZEeOYTZdULLQr8HLWfCFwTQZVxb3n96bPAd9b9m6WwdzRf+wnUBSU0AUgw8I2U6
+ pg5Kq/rfN5MR2yjDIXFRaDF+96OIqDMLWjtgNAZmtaAuafj4CbHHTqyFhiCEBQgO5gyQ
+ DGoj5QF17fXYRvE8dLICzOqTVw7ZdTkXqHg4GecVtR2kVJV+ugjJo1YE6LIpTxx6In0Z
+ ZTcS2NWMgMIJZfWrGxro6jeGoRG1w6JHcKOrzZCls0hEmDhTdErfUb3KCB63xX9JuS1f
+ Yaxw==
+X-Gm-Message-State: APjAAAWiAEd9s3vJ5uVlYdzYxK87TN2Gdup1JZZEvfogVsiEZTwGrDWE
+ huNHExTcDN3C5bBqWukHPqhREU2z
+X-Google-Smtp-Source: APXvYqwgp0ONpM4VX7wOCtb6uwK+KrpYOx1wDhgo4oswupDnFUSr/rf8oWIbWNcyi+gLurEvZHEqGQ==
+X-Received: by 2002:a1c:4c10:: with SMTP id z16mr3847792wmf.136.1581675349383; 
+ Fri, 14 Feb 2020 02:15:49 -0800 (PST)
 Received: from ziggy.stardust ([37.223.145.31])
- by smtp.gmail.com with ESMTPSA id v14sm6526745wrm.28.2020.02.14.02.06.37
+ by smtp.gmail.com with ESMTPSA id t128sm7085182wmf.28.2020.02.14.02.15.48
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 14 Feb 2020 02:06:37 -0800 (PST)
-Subject: Re: [PATCH 1/3] arm64: dts: mt8183: Add gce setting in display node
-To: Bibby Hsieh <bibby.hsieh@mediatek.com>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel.vetter@ffwll.ch>, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org
-References: <20200214044954.16923-1-bibby.hsieh@mediatek.com>
+ Fri, 14 Feb 2020 02:15:48 -0800 (PST)
+Subject: Re: [PATCH] soc: mediatek: knows_txdone needs to be set in Mediatek
+ CMDQ helper
+To: Bibby Hsieh <bibby.hsieh@mediatek.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ CK HU <ck.hu@mediatek.com>
+References: <20200214043545.16713-1-bibby.hsieh@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -152,16 +153,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <2369225e-2a92-c493-d089-e03f792df8cf@gmail.com>
-Date: Fri, 14 Feb 2020 11:06:36 +0100
+Message-ID: <03c07fab-3768-7bf2-f955-92b1e626709c@gmail.com>
+Date: Fri, 14 Feb 2020 11:15:47 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200214044954.16923-1-bibby.hsieh@mediatek.com>
+In-Reply-To: <20200214043545.16713-1-bibby.hsieh@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200214_020640_734761_F6D16E51 
-X-CRM114-Status: GOOD (  16.44  )
+X-CRM114-CacheID: sfid-20200214_021550_808262_21F680EC 
+X-CRM114-Status: GOOD (  16.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -173,10 +174,11 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: drinkcat@chromium.org, Yongqiang Niu <yongqiang.niu@mediatek.com>,
- srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org, tfiga@chromium.org,
- CK Hu <ck.hu@mediatek.com>, Thierry Reding <thierry.reding@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
+ srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
+ Houlong Wei <houlong.wei@mediatek.com>,
+ Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -184,136 +186,37 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 14/02/2020 05:49, Bibby Hsieh wrote:
-> In order to use GCE function, we need add some information
-> into display node (mboxes, mediatek,gce-client-reg, mediatek,gce-events).
+On 14/02/2020 05:35, Bibby Hsieh wrote:
+> Mediatek CMDQ driver have a mechanism to do TXDONE_BY_ACK,
+> so we should set knows_txdone.
+> 
+> Fixes:576f1b4bc802 ("soc: mediatek: Add Mediatek CMDQ helper")
 > 
 > Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
-> Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 > ---
 
-For the next time please provide some context on which patches this are based
-on. Bet below the '---' with a link.
+I added a tag:
+Cc: stable@vger.kernel.org # v5.0+
 
-For this time, on which patch/series is this based? :)
+and applied it to v5.6-next/soc
 
-Thanks,
-Matthias
+Thanks
 
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
+>  drivers/soc/mediatek/mtk-cmdq-helper.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index be4428c92f35..8b522b039a37 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -9,6 +9,7 @@
->  #include <dt-bindings/interrupt-controller/arm-gic.h>
->  #include <dt-bindings/interrupt-controller/irq.h>
->  #include <dt-bindings/power/mt8183-power.h>
-> +#include <dt-bindings/gce/mt8183-gce.h>
->  #include "mt8183-pinfunc.h"
+> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> index 9add0fd5fa6c..2ca1a759a347 100644
+> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
+> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> @@ -80,6 +80,7 @@ struct cmdq_client *cmdq_mbox_create(struct device *dev, int index, u32 timeout)
+>  	client->pkt_cnt = 0;
+>  	client->client.dev = dev;
+>  	client->client.tx_block = false;
+> +	client->client.knows_txdone = true;
+>  	client->chan = mbox_request_channel(&client->client, index);
 >  
->  / {
-> @@ -664,6 +665,9 @@
->  			reg = <0 0x14000000 0 0x1000>;
->  			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
->  			#clock-cells = <1>;
-> +			mboxes = <&gce 0 CMDQ_THR_PRIO_HIGHEST>,
-> +				 <&gce 1 CMDQ_THR_PRIO_HIGHEST>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
->  		};
->  
->  		ovl0: ovl@14008000 {
-> @@ -672,6 +676,7 @@
->  			interrupts = <GIC_SPI 225 IRQ_TYPE_LEVEL_LOW>;
->  			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
->  			clocks = <&mmsys CLK_MM_DISP_OVL0>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x8000 0x1000>;
->  		};
->  
->  		ovl_2l0: ovl@14009000 {
-> @@ -680,6 +685,7 @@
->  			interrupts = <GIC_SPI 226 IRQ_TYPE_LEVEL_LOW>;
->  			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
->  			clocks = <&mmsys CLK_MM_DISP_OVL0_2L>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x9000 0x1000>;
->  		};
->  
->  		ovl_2l1: ovl@1400a000 {
-> @@ -688,6 +694,7 @@
->  			interrupts = <GIC_SPI 227 IRQ_TYPE_LEVEL_LOW>;
->  			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
->  			clocks = <&mmsys CLK_MM_DISP_OVL1_2L>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xa000 0x1000>;
->  		};
->  
->  		rdma0: rdma@1400b000 {
-> @@ -697,6 +704,7 @@
->  			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
->  			clocks = <&mmsys CLK_MM_DISP_RDMA0>;
->  			mediatek,rdma_fifo_size = <5120>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xb000 0x1000>;
->  		};
->  
->  		rdma1: rdma@1400c000 {
-> @@ -706,6 +714,7 @@
->  			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
->  			clocks = <&mmsys CLK_MM_DISP_RDMA1>;
->  			mediatek,rdma_fifo_size = <2048>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xc000 0x1000>;
->  		};
->  
->  		color0: color@1400e000 {
-> @@ -715,6 +724,7 @@
->  			interrupts = <GIC_SPI 231 IRQ_TYPE_LEVEL_LOW>;
->  			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
->  			clocks = <&mmsys CLK_MM_DISP_COLOR0>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xe000 0x1000>;
->  		};
->  
->  		ccorr0: ccorr@1400f000 {
-> @@ -723,6 +733,7 @@
->  			interrupts = <GIC_SPI 232 IRQ_TYPE_LEVEL_LOW>;
->  			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
->  			clocks = <&mmsys CLK_MM_DISP_CCORR0>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xf000 0x1000>;
->  		};
->  
->  		aal0: aal@14010000 {
-> @@ -732,6 +743,7 @@
->  			interrupts = <GIC_SPI 233 IRQ_TYPE_LEVEL_LOW>;
->  			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
->  			clocks = <&mmsys CLK_MM_DISP_AAL0>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0 0x1000>;
->  		};
->  
->  		gamma0: gamma@14011000 {
-> @@ -741,6 +753,7 @@
->  			interrupts = <GIC_SPI 234 IRQ_TYPE_LEVEL_LOW>;
->  			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
->  			clocks = <&mmsys CLK_MM_DISP_GAMMA0>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x1000 0x1000>;
->  		};
->  
->  		dither0: dither@14012000 {
-> @@ -749,6 +762,7 @@
->  			interrupts = <GIC_SPI 235 IRQ_TYPE_LEVEL_LOW>;
->  			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
->  			clocks = <&mmsys CLK_MM_DISP_DITHER0>;
-> +			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x2000 0x1000>;
->  		};
->  
->  		mutex: mutex@14016000 {
-> @@ -756,6 +770,8 @@
->  			reg = <0 0x14016000 0 0x1000>;
->  			interrupts = <GIC_SPI 217 IRQ_TYPE_LEVEL_LOW>;
->  			power-domains = <&scpsys MT8183_POWER_DOMAIN_DISP>;
-> +			mediatek,gce-events = <CMDQ_EVENT_MUTEX_STREAM_DONE0>,
-> +					      <CMDQ_EVENT_MUTEX_STREAM_DONE1>;
->  		};
->  
->  		smi_common: smi@14019000 {
+>  	if (IS_ERR(client->chan)) {
 > 
 
 _______________________________________________
