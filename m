@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E3668C3B18F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 09:48:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2702BC2BA83
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 10:01:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B5A142187F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 09:48:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E61CC2187F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 10:01:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Q2JGQOC6";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="OQ5q/ss3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B5A142187F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e+1Z8OBd";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="d7SY3vsz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E61CC2187F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,55 +27,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gABR1+tAm16OB8ekaWLoWn3TXkyqAK6FDOwuhsqmjNc=; b=Q2JGQOC6eq7r+C
-	5ikc37t4kWHHXDhTqIubzCuRtiXHfxowkm9MghR0HYpPkUL1pgsP0AkbL2Q2o3vvvwYQAtK/2qUsq
-	a2zKd3qJjEh+I0ve0YAmnx1Hy3V0/I25SrxtqGB1wK+jpoBmvT7TChHkjK5RTGtQCVtLoSGVohc4J
-	ZCin/0uLyixElscZ2Ov1MN6I7v32nB370MxG1LBFOFOzSU7qcf8wFBfbWEFNn0VO331UDiA6zJwRo
-	MFbGzGJbxNDBBGAMtrNGkshlzp7xPbGZ6vuGLSObEND1rs6Uw5cT8KasIjp/8KaI30wLyU4Q5GAPW
-	f18klAkHwLpdNlWQhWXQ==;
+	List-Owner; bh=YNr+BZjS+MX2qd+DLj3I4WTQw8NuVMDrQPvVo7GgzRw=; b=e+1Z8OBdUd+OBv
+	+lrTmfICcnKuJIUGYchAqW7U4OQIBgEShKncXSHBArW/JJ8CkiBtC0hzkMsDBfVrqZ3OD/+AQeDei
+	rAjq4jD3KTg+YqRXIclFSUjnGBf3e/Mb3K4Cb3sHSI9sFBItd9hA4p73AIUoKNevSqfso0KG0z7d8
+	lyjDu3Iz2uHx69S63/uSqrKsPocoxltB4uVw39cWRk0Ru9/FPEt+ZGODqIqAP03S9BJSy/7vjqSMG
+	+TU0eD7UxJMqdZt9rqTXe/w8lKxHFq6Kvnz/aa/iCHPfqOIRK5WW9/GKc3GTrx6ckujUuNUZasZ/x
+	w+EWZ2bGlJTgVjd1Kw/Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j2XZj-0006ZO-US; Fri, 14 Feb 2020 09:47:55 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1j2Xmy-00036Q-Lk; Fri, 14 Feb 2020 10:01:36 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j2XZg-0006Z4-7X
- for linux-mediatek@lists.infradead.org; Fri, 14 Feb 2020 09:47:53 +0000
-Received: by mail-wm1-x344.google.com with SMTP id a5so9265370wmb.0
- for <linux-mediatek@lists.infradead.org>; Fri, 14 Feb 2020 01:47:51 -0800 (PST)
+ id 1j2Xmn-0002xq-TE; Fri, 14 Feb 2020 10:01:27 +0000
+Received: by mail-wm1-x343.google.com with SMTP id p17so9913373wma.1;
+ Fri, 14 Feb 2020 02:01:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=vclc07gFUU3ox1oVeCPLVKCYytkHZTzBxyFOToqsqjs=;
- b=OQ5q/ss37g2NViK/PfYLjzLEhrX5jWkvs8bsZta26CZwC9k/1FZQ8qhA7lZBHnPOG/
- wmsnD2qhB9Rss1nHQbrYL5DK99Btp6ShH3aZe4G2Ugaz4Yb4O0DWT4QGuFHMwpswR81r
- vXQFNkmKX8z37n57zwHBS8tCXzYdo9Jv0So4xIfznG40248jNd5H8LIQqxYs4nuCUsId
- EsyXfYKnVnO8aZl5JZ28G2ZS5WSU+6OA7FsYBGkwUdTs02UdrI5NS9cRBgLfjsVJDZrL
- 1E1JOCZsXmK0peg4t9DbUCyW5EGaOkUAHglpnEIKy9+ZrG9lrr4EshLype7scIRmoDoN
- GVDA==
+ bh=b7XfvBCe6zYfGaS3vBve2jeEE5i0WUHqRzVH5gemfFE=;
+ b=d7SY3vszbqsK6NOYoSo8GxalieNDL4bWuOPK25O7o8j8bWObGosSooHFiQz3Ay5dTB
+ RIqzZGa29ZYVCCPj6ghEtHcxTl6otzrhz16AzbwReNbwyIlE26jsI1xosZH6qhmKXMrI
+ nCmo7QOK9AQxyJKOa2TUk3yr9nVWvVxJJuROERwKbwhZhgH1K3e3UXK89G9dMYkiUmxC
+ M9z4v87oEI+ND3NgF8HoEE+fKIs6Y9Ewov9wtnCXhuslUdU+jSkEooQ8z1SWahyflLsJ
+ 7CnmAyFnMJGj28RJefhEWZLrTaW14FagspjyiflHnCxZaFnH083BiEnzd5c7l7ER/VRZ
+ WYUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=vclc07gFUU3ox1oVeCPLVKCYytkHZTzBxyFOToqsqjs=;
- b=B9S8X+elxNxXmvgyUWev0EcEZxoYlp71tD+doQbvLzTZlGptTPWRNeM9JSzQrv3HAC
- /yxvdLyYSF4GQZz7gHVUZvlxg/RGvDZo3Yw4ddOD3wJU3whrXf8wKlv9DpZ59vhM8D/j
- FbICeHruUYj/w/GdAUBmduGG2nglU1vxDrj6KB13XI0ovLgHzhXj14sDDPII2ikkztiy
- p9tveuW7klRvbklhD3EjWxZvrWe7KCWVzXsPAz6LQnSHwn6OG5khSoNXqirTdcF+teYL
- wv/wECf17fjPJIUuKsn4M13gyuc+EvLmlQrXH4mNV9Nfh8pV5CD8Ls5Af6k4SijRCNIx
- lLsg==
-X-Gm-Message-State: APjAAAVqd1SBigWS8j1kO4v0/djpzZrEguXue/MhGCVoJRSWa02z+IeE
- IhlPMD5WekkO6WPLmtcWNCs=
-X-Google-Smtp-Source: APXvYqx9P403cuaEK1HAJ5b33nn6XnEsfPDsi2Vej0ERCi2vgX7b7i0yujDHyaZMz7tHgEetI05Xlw==
-X-Received: by 2002:a1c:98d5:: with SMTP id a204mr3774330wme.181.1581673670390; 
- Fri, 14 Feb 2020 01:47:50 -0800 (PST)
+ bh=b7XfvBCe6zYfGaS3vBve2jeEE5i0WUHqRzVH5gemfFE=;
+ b=UXLLVazaT1CG2BSJTj53TqIiW8OdmOmzRpLbO49HRl7FoisplqoS/ZDPi6uF4N5NJF
+ 4KjsreUY3OOxNxVkg54hBS8Yhf76wDGS9/n6cEicgA39F7tjOSjrmpKr1oukg7q745Nw
+ o980cr8Kg5Dbr38nJ/QM9F/QtaHL5QUidMn1X1k+sac5beMZYN7MULUzvvNaFjmVe9ed
+ vGc6QgLqmM28Zd8Cra65AHg76bKbSMNsksbtiMoJPlR5nDrmLbUJJf+Gg8J1iAu36v4v
+ SsYQQLAYDGbsnIELuRaISrTWCiROO3LcP2Zy5T6EB2yYHxhdv6WG94CbUKQrEXkG/w53
+ Bu6w==
+X-Gm-Message-State: APjAAAUgtzwvKRSSG3yeEey7N9MLdzFtx+/uvp2w4VGPyyF3n5AM1JvW
+ N/2ngn+SSyZVHBX2STOpkk0=
+X-Google-Smtp-Source: APXvYqyBEgGsnLQapDgNpEl7MHnOABth8adMHph1z6FABvQrYE7u5M9syuDKG1AwJixjcIFV66aqWw==
+X-Received: by 2002:a7b:c5d9:: with SMTP id n25mr3987393wmk.65.1581674484153; 
+ Fri, 14 Feb 2020 02:01:24 -0800 (PST)
 Received: from ziggy.stardust ([37.223.145.31])
- by smtp.gmail.com with ESMTPSA id k10sm6551045wrd.68.2020.02.14.01.47.49
+ by smtp.gmail.com with ESMTPSA id g21sm6402148wmh.17.2020.02.14.02.01.22
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 14 Feb 2020 01:47:49 -0800 (PST)
-Subject: Re: [PATCH] clk: mediatek: clk-mt8173: fix potential memory leak
-To: qiwuchen55@gmail.com, mturquette@baylibre.com, sboyd@kernel.org
-References: <1581651274-5933-1-git-send-email-qiwuchen55@gmail.com>
+ Fri, 14 Feb 2020 02:01:23 -0800 (PST)
+Subject: Re: [PATCH v7 01/13] dt-bindings: arm: move mmsys description to
+ display
+To: CK Hu <ck.hu@mediatek.com>, matthias.bgg@kernel.org
+References: <20200213201953.15268-1-matthias.bgg@kernel.org>
+ <20200213201953.15268-2-matthias.bgg@kernel.org>
+ <1581662577.17949.3.camel@mtksdaap41>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -151,16 +153,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <9a0b730c-1971-ee21-4abb-e324cd733122@gmail.com>
-Date: Fri, 14 Feb 2020 10:47:48 +0100
+Message-ID: <2bda2dd7-9ed2-8b4c-897e-e585ccfa1fa5@gmail.com>
+Date: Fri, 14 Feb 2020 11:01:21 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <1581651274-5933-1-git-send-email-qiwuchen55@gmail.com>
+In-Reply-To: <1581662577.17949.3.camel@mtksdaap41>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200214_014752_296939_9414D6A3 
-X-CRM114-Status: GOOD (  17.93  )
+X-CRM114-CacheID: sfid-20200214_020125_974792_B1D0CB4C 
+X-CRM114-Status: GOOD (  16.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -172,9 +174,17 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kstewart@linuxfoundation.org, seiya.wang@mediatek.com,
- gregkh@linuxfoundation.org, linux-mediatek@lists.infradead.org,
- tglx@linutronix.de, chenqiwu <chenqiwu@xiaomi.com>, linux-clk@vger.kernel.org
+Cc: mark.rutland@arm.com, airlied@linux.ie, mturquette@baylibre.com,
+ dri-devel@lists.freedesktop.org, laurent.pinchart@ideasonboard.com,
+ ulrich.hecht+renesas@gmail.com, linux-clk@vger.kernel.org,
+ drinkcat@chromium.org, Weiyi Lu <weiyi.lu@mediatek.com>, wens@csie.org,
+ mtk01761 <wendell.lin@mediatek.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, p.zabel@pengutronix.de, frank-w@public-files.de,
+ sean.wang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
+ hsinyi@chromium.org, linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <mbrugger@suse.com>, sboyd@kernel.org, rdunlap@infradead.org,
+ linux-kernel@vger.kernel.org, Daniel Vetter <daniel@ffwll.ch>,
+ enric.balletbo@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -182,162 +192,59 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 14/02/2020 04:34, qiwuchen55@gmail.com wrote:
-> From: chenqiwu <chenqiwu@xiaomi.com>
+On 14/02/2020 07:42, CK Hu wrote:
+> Hi, Matthias:
 > 
-> Free clk_data or iomem resources if init is not successful.
+> On Thu, 2020-02-13 at 21:19 +0100, matthias.bgg@kernel.org wrote:
+>> From: Matthias Brugger <mbrugger@suse.com>
+>>
+>> The mmsys block provides registers and clocks for the display
+>> subsystem. The binding description should therefore live together with
+>> the rest of the display descriptions. Move it to display/mediatek.
+>>
 > 
-> Signed-off-by: chenqiwu <chenqiwu@xiaomi.com>
-> ---
->  drivers/clk/mediatek/clk-mt8173.c | 43 +++++++++++++++++++++++++++++++--------
->  1 file changed, 34 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
-> index 537a7f4..eaf4e70 100644
-> --- a/drivers/clk/mediatek/clk-mt8173.c
-> +++ b/drivers/clk/mediatek/clk-mt8173.c
-> @@ -7,6 +7,7 @@
->  #include <linux/clk.h>
->  #include <linux/of.h>
->  #include <linux/of_address.h>
-> +#include <linux/slab.h>
->  
->  #include "clk-mtk.h"
->  #include "clk-gate.h"
-> @@ -941,9 +942,13 @@ static void __init mtk_topckgen_init(struct device_node *node)
->  			&mt8173_clk_lock, clk_data);
->  
->  	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> -	if (r)
-> +	if (r) {
->  		pr_err("%s(): could not register clock provider: %d\n",
->  			__func__, r);
-> +		kfree(clk_data);
+> Yes, for the upstreamed driver, only display (DRM) use mmsys clock. For
+> some MDP patches [1] in progress, MDP also use mmsys clock. So we just
+> consider what's upstreamed now?
 
-we have to free clk_data->clks as well, don't we?
-This holds for all the other hunks in this patch as well.
-
-Actually a better solution would be to change mtk_alloc_clk_data to pass it a
-struct device and do devm_kzalloc etc. This way we won't need to deal with
-freeing data in case of error. This is an API change and includes changes to all
-clock drivers of MediaTek though.
+I'm not sure if I understand you correctly. Are you proposing to keep the
+binding description in arm/mediatek?
 
 Regards,
 Matthias
 
-> +		clk_data = NULL;
-> +		iounmap(base);
-> +	}
->  
->  	mtk_clk_enable_critical();
->  }
-> @@ -964,9 +969,11 @@ static void __init mtk_infrasys_init(struct device_node *node)
->  				  clk_data);
->  
->  	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> -	if (r)
-> +	if (r) {
->  		pr_err("%s(): could not register clock provider: %d\n",
->  			__func__, r);
-> +		kfree(clk_data);
-> +	}
->  
->  	mtk_register_reset_controller(node, 2, 0x30);
->  }
-> @@ -992,9 +999,12 @@ static void __init mtk_pericfg_init(struct device_node *node)
->  			&mt8173_clk_lock, clk_data);
->  
->  	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> -	if (r)
-> +	if (r) {
->  		pr_err("%s(): could not register clock provider: %d\n",
->  			__func__, r);
-> +		kfree(clk_data);
-> +		iounmap(base);
-> +	}
->  
->  	mtk_register_reset_controller(node, 2, 0);
->  }
-> @@ -1117,9 +1127,14 @@ static void __init mtk_apmixedsys_init(struct device_node *node)
->  	clk_data->clks[CLK_APMIXED_HDMI_REF] = clk;
->  
->  	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> -	if (r)
-> +	if (r) {
->  		pr_err("%s(): could not register clock provider: %d\n",
->  			__func__, r);
-> +		clk_unregister_divider(clk);
-> +		kfree(clk_data);
-> +		clk_data = NULL;
-> +		iounmap(base);
-> +	}
->  
->  	mtk_clk_enable_critical();
->  }
-> @@ -1138,9 +1153,11 @@ static void __init mtk_imgsys_init(struct device_node *node)
->  
->  	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
->  
-> -	if (r)
-> +	if (r) {
->  		pr_err("%s(): could not register clock provider: %d\n",
->  			__func__, r);
-> +		kfree(clk_data);
-> +	}
->  }
->  CLK_OF_DECLARE(mtk_imgsys, "mediatek,mt8173-imgsys", mtk_imgsys_init);
->  
-> @@ -1155,9 +1172,11 @@ static void __init mtk_mmsys_init(struct device_node *node)
->  						clk_data);
->  
->  	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> -	if (r)
-> +	if (r) {
->  		pr_err("%s(): could not register clock provider: %d\n",
->  			__func__, r);
-> +		kfree(clk_data);
-> +	}
->  }
->  CLK_OF_DECLARE(mtk_mmsys, "mediatek,mt8173-mmsys", mtk_mmsys_init);
->  
-> @@ -1172,9 +1191,11 @@ static void __init mtk_vdecsys_init(struct device_node *node)
->  						clk_data);
->  
->  	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> -	if (r)
-> +	if (r) {
->  		pr_err("%s(): could not register clock provider: %d\n",
->  			__func__, r);
-> +		kfree(clk_data);
-> +	}
->  }
->  CLK_OF_DECLARE(mtk_vdecsys, "mediatek,mt8173-vdecsys", mtk_vdecsys_init);
->  
-> @@ -1189,9 +1210,11 @@ static void __init mtk_vencsys_init(struct device_node *node)
->  						clk_data);
->  
->  	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> -	if (r)
-> +	if (r) {
->  		pr_err("%s(): could not register clock provider: %d\n",
->  			__func__, r);
-> +		kfree(clk_data);
-> +	}
->  }
->  CLK_OF_DECLARE(mtk_vencsys, "mediatek,mt8173-vencsys", mtk_vencsys_init);
->  
-> @@ -1206,8 +1229,10 @@ static void __init mtk_vencltsys_init(struct device_node *node)
->  						clk_data);
->  
->  	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
-> -	if (r)
-> +	if (r) {
->  		pr_err("%s(): could not register clock provider: %d\n",
->  			__func__, r);
-> +		kfree(clk_data);
-> +	}
->  }
->  CLK_OF_DECLARE(mtk_vencltsys, "mediatek,mt8173-vencltsys", mtk_vencltsys_init);
+> 
+> [1] https://patchwork.kernel.org/patch/11140747/
+> 
+> Regards,
+> CK
+> 
+>> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+>>
+>> ---
+>>
+>> Changes in v7:
+>> - move the binding description
+>>
+>> Changes in v6: None
+>> Changes in v5: None
+>> Changes in v4: None
+>> Changes in v3: None
+>> Changes in v2: None
+>>
+>>  .../bindings/{arm => display}/mediatek/mediatek,mmsys.txt         | 0
+>>  1 file changed, 0 insertions(+), 0 deletions(-)
+>>  rename Documentation/devicetree/bindings/{arm => display}/mediatek/mediatek,mmsys.txt (100%)
+>>
+>> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,mmsys.txt
+>> similarity index 100%
+>> rename from Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+>> rename to Documentation/devicetree/bindings/display/mediatek/mediatek,mmsys.txt
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 > 
 
 _______________________________________________
