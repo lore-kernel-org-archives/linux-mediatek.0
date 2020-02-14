@@ -1,70 +1,75 @@
-Return-Path: <SRS0=7p0Y=4B=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=lPor=4C=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 33AF5C3B189
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2020 20:24:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 05DF5C352A3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 01:53:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 02BFF2465D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Feb 2020 20:24:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CB70C20848
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 01:53:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VxtbS0y7";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="aoQVPXYT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 02BFF2465D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EjYf0aAL";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="t2l4dAhY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CB70C20848
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7YbA2Z7gePUMCGkQ/3nneFftDKZaevYU3QQQrNHp2nE=; b=VxtbS0y74M9eHc
-	+i+omjI36wtz+a9BklW224YH4BSiQN3rk+n5umH50p7nFnu4hbcF2Emw/uhQgqtZ96dCwMXDRt5y9
-	cv8XdKt6MGsfJRn/CoRBGexmPis/gHdGDACn2hupV/9ngrVRcEjovhMxWJ2Vba1tzffAflj+mT3x3
-	zHvMk7OARVeK8mLoBXhxnIj6Avjd4jxM4DiamJhCL/phPO9yDtW0MgOyGn8fR2sojbPS1QtJdaQdK
-	b9X4VE8bOIEj1DEXba1x9f4uqLQrgklNkpagkqnjGyCL2yF6krsBKyL4HGbK+5cPNVV39g6z3aBnu
-	59+/Iol8KPm0aTve4USQ==;
+	List-Owner; bh=XyJhB30y9uPlZmThhKlIfOb1mAsudvLv+kYe8slMgHk=; b=EjYf0aAL8qaNJG
+	Gj/DatA4XIteL4uxRUUSYCimRC7LWbIVBi2IGJVbKkNDkNt5Pc7Oyb98PiKhsMB6yh+kLvICWR+U4
+	E0M6uw8emXdCZsRjzxzHJCXTv1lxmhp5m7w526WLWJr9aezqaaogjn0DwiHndVsW/IvwS417e9wT7
+	WRjBmspv5WNhOaQpSgCO3W6vvB6oDZInu9rdC1EZzFcuM0fFmPe0h/3nR+a5omnFJttfFmfmgh3DV
+	grlF0xyM0WGuWXEzItxz6ktLwZwOaTygGjhcEq8FBvg+IKwjR4cpxjGL7/ybPCE2kzARD5Z0j3nKS
+	LN2+xwaCHapuJuu/80gA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j2L2N-0004Y7-Nc; Thu, 13 Feb 2020 20:24:39 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1j2QAE-00006s-Qd; Fri, 14 Feb 2020 01:53:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j2Kz1-0000lB-5X; Thu, 13 Feb 2020 20:21:12 +0000
-Received: from ziggy.cz (unknown [37.223.145.31])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6EAFE246AF;
- Thu, 13 Feb 2020 20:21:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1581625270;
- bh=DixFOO1GKT4exK4e47L4oEKto/snnxtafkHfLyzoRjE=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=aoQVPXYTBM5OOAECJE/bFoLv6kRxp2NCvyDhOWHJsrnOAbKQLbnfxHIZ8LjZtSCsC
- ApqfRu79GzpDKRUSbQbon2hwwIiZsGhBYUDMVYJGw4rD3SOCh7oWTlZxDV9B1WYhXo
- pLz5f5al64vrKwo51arNt5Ucl74Gm0bmXnKu+SJ0=
-From: matthias.bgg@kernel.org
-To: robh+dt@kernel.org, mark.rutland@arm.com, ck.hu@mediatek.com,
- p.zabel@pengutronix.de, airlied@linux.ie, mturquette@baylibre.com,
- sboyd@kernel.org, ulrich.hecht+renesas@gmail.com,
- laurent.pinchart@ideasonboard.com, enric.balletbo@collabora.com
-Subject: [PATCH v7 13/13] drm/mediatek: Add support for mmsys through a pdev
-Date: Thu, 13 Feb 2020 21:19:53 +0100
-Message-Id: <20200213201953.15268-14-matthias.bgg@kernel.org>
-X-Mailer: git-send-email 2.24.1
-In-Reply-To: <20200213201953.15268-1-matthias.bgg@kernel.org>
+ id 1j2QA2-0008Fi-S2; Fri, 14 Feb 2020 01:52:56 +0000
+X-UUID: 8d70de22439d4960a674538fdc6239d5-20200213
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=5kuuBKwpTdX0p4HJiRAoqn7HWcPfUW5EtfpYL3ZhCNs=; 
+ b=t2l4dAhY+2Fng+4k5/ovqJsy1gYRA9OXtImVPDXaON1Zp4etcAr0r9Hc3MJF869tohF8vm+gODwMd25Ugs0Yx8wW0RWQ4/ob0R9niL7MhYVk34jMBD4vOKE4X7BpJrrI3e3idHell2kQKZQ0OK62kSJTGWZwtzvqdlcheRkHu00=;
+X-UUID: 8d70de22439d4960a674538fdc6239d5-20200213
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1428441004; Thu, 13 Feb 2020 17:52:50 -0800
+Received: from mtkcas09.mediatek.inc (172.21.101.178) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 13 Feb 2020 17:53:01 -0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Fri, 14 Feb 2020 09:52:11 +0800
+Message-ID: <1581645161.22833.6.camel@mtksdaap41>
+Subject: Re: [PATCH v7 11/13] clk: mediatek: mt8183: switch mmsys to
+ platform device probing
+From: CK Hu <ck.hu@mediatek.com>
+To: <matthias.bgg@kernel.org>
+Date: Fri, 14 Feb 2020 09:52:41 +0800
+In-Reply-To: <20200213201953.15268-12-matthias.bgg@kernel.org>
 References: <20200213201953.15268-1-matthias.bgg@kernel.org>
+ <20200213201953.15268-12-matthias.bgg@kernel.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200213_122111_266607_996D6182 
-X-CRM114-Status: GOOD (  16.99  )
+X-CRM114-CacheID: sfid-20200213_175254_916502_CC675BC9 
+X-CRM114-Status: GOOD (  16.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,156 +81,122 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, drinkcat@chromium.org, frank-w@public-files.de,
- sean.wang@mediatek.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, wens@csie.org,
- Matthias Brugger <mbrugger@suse.com>, linux-mediatek@lists.infradead.org,
- rdunlap@infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- matthias.bgg@kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
- hsinyi@chromium.org, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: mark.rutland@arm.com, airlied@linux.ie, mturquette@baylibre.com,
+ dri-devel@lists.freedesktop.org, laurent.pinchart@ideasonboard.com,
+ ulrich.hecht+renesas@gmail.com, linux-clk@vger.kernel.org,
+ drinkcat@chromium.org, Weiyi Lu <weiyi.lu@mediatek.com>, wens@csie.org,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ frank-w@public-files.de, sean.wang@mediatek.com, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>,
+ sboyd@kernel.org, rdunlap@infradead.org, linux-kernel@vger.kernel.org,
+ p.zabel@pengutronix.de, enric.balletbo@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Matthias Brugger <mbrugger@suse.com>
+Hi, Matthias:
 
-The MMSYS subsystem includes clocks and drm components.
-This patch adds an initailization path through a platform device
-for the clock part, so that both drivers get probed from the same
-device tree compatible.
+On Thu, 2020-02-13 at 21:19 +0100, matthias.bgg@kernel.org wrote:
+> From: Matthias Brugger <mbrugger@suse.com>
+> 
+> Switch probing for the MMSYS to support invocation to a
+> plain paltform device. The driver will be probed by the DRM subsystem.
+> 
+> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+> 
+> ---
+> 
+> Changes in v7:
+> - free clk_data->clks as well
+> - get rid of private data structure
+> 
+> Changes in v6: None
+> Changes in v5: None
+> Changes in v4: None
+> Changes in v3: None
+> Changes in v2: None
+> 
+>  drivers/clk/mediatek/clk-mt8183-mm.c | 30 ++++++++++++++++++----------
+>  1 file changed, 20 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/clk/mediatek/clk-mt8183-mm.c b/drivers/clk/mediatek/clk-mt8183-mm.c
+> index 720c696b506d..7576cd231be3 100644
+> --- a/drivers/clk/mediatek/clk-mt8183-mm.c
+> +++ b/drivers/clk/mediatek/clk-mt8183-mm.c
+> @@ -3,8 +3,10 @@
+>  // Copyright (c) 2018 MediaTek Inc.
+>  // Author: Weiyi Lu <weiyi.lu@mediatek.com>
+>  
+> +#include <linux/module.h>
+>  #include <linux/clk-provider.h>
+>  #include <linux/platform_device.h>
+> +#include <linux/slab.h>
+>  
+>  #include "clk-mtk.h"
+>  #include "clk-gate.h"
+> @@ -85,27 +87,35 @@ static const struct mtk_gate mm_clks[] = {
+>  static int clk_mt8183_mm_probe(struct platform_device *pdev)
+>  {
+>  	struct clk_onecell_data *clk_data;
+> -	struct device_node *node = pdev->dev.of_node;
+> +	struct device_node *node = pdev->dev.parent->of_node;
+> +
+> +	clk_data = devm_kzalloc(&pdev->dev, sizeof(*clk_data), GFP_KERNEL);
 
-Signed-off-by: Matthias Brugger <mbrugger@suse.com>
-Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+I think this is redundant.
 
----
+> +	if (!clk_data)
+> +		return -ENOMEM;
+>  
+>  	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
+> +	platform_set_drvdata(pdev, clk_data);
+>  
+> -	mtk_clk_register_gates(node, mm_clks, ARRAY_SIZE(mm_clks),
+> -			clk_data);
+> +	mtk_clk_register_gates(node, mm_clks, ARRAY_SIZE(mm_clks), clk_data);
+>  
+>  	return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
+>  }
+>  
+> -static const struct of_device_id of_match_clk_mt8183_mm[] = {
+> -	{ .compatible = "mediatek,mt8183-mmsys", },
+> -	{}
+> -};
+> +static int clk_mt8183_mm_remove(struct platform_device *pdev)
+> +{
+> +	struct clk_onecell_data *clk_data = platform_get_drvdata(pdev);
+> +
+> +	kfree(clk_data->clks);
+> +	kfree(clk_data);
 
-Changes in v7:
-- Add Rv-by from Enric
+These two statement looks like a reverse of mtk_alloc_clk_data() and
+exist in many files. It is worth to have a function (maybe
+mtk_free_clk_data()) to do this.
 
-Changes in v6:
-- re-arrange the patch order
-- generate platform_device for mmsys clock driver inside the DRM driver
-- fix DTS binding accordingly
-- switch all mmsys clock driver to platform probing
-- fix mt8173 platform driver remove function
-- fix probe defer path in HDMI driver
-- fix probe defer path in mtk_mdp_comp
-- fix identation of error messages
+In addition, should we undo what is done in clk_mt8183_mm_probe() such
+as mtk_clk_register_gates() and of_clk_add_provider()?
 
-Changes in v5:
-- fix missing regmap accessors in drm diver (patch 1)
-- omit probe deffered warning on all drivers (patch 5)
-- update drm and clk bindings (patch 6 and 7)
-- put mmsys clock part in dts child node of mmsys. Only done
-for HW where no dts backport compatible breakage is expected
-(either DRM driver not yet implemented or no HW available to
-the public) (patch 9 to 12)
+Regards,
+CK
 
-Changes in v4:
-- use platform device to probe clock driver
-- add Acked-by CK Hu for the probe deferred patch
-
-Changes in v3:
-- fix kconfig typo (shame on me)
-- delete __initconst from mm_clocks as converted to a platform driver
-
-Changes in v2:
-- add binding documentation
-- ddp: use regmap_update_bits
-- ddp: ignore EPROBE_DEFER on clock probing
-- mfd: delete mmsys_private
-- add Reviewed-by and Acked-by tags
-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 24 ++++++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.h |  2 ++
- 2 files changed, 26 insertions(+)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index b68837ea02b3..68605dedf997 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -125,6 +125,7 @@ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
- 	.ext_path = mt2701_mtk_ddp_ext,
- 	.ext_len = ARRAY_SIZE(mt2701_mtk_ddp_ext),
- 	.shadow_register = true,
-+	.clk_drv_name = "clk-mt2701-mm",
- };
- 
- static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
-@@ -134,6 +135,7 @@ static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
- 	.ext_len = ARRAY_SIZE(mt2712_mtk_ddp_ext),
- 	.third_path = mt2712_mtk_ddp_third,
- 	.third_len = ARRAY_SIZE(mt2712_mtk_ddp_third),
-+	.clk_drv_name = "clk-mt2712-mm",
- };
- 
- static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
-@@ -141,6 +143,7 @@ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
- 	.main_len = ARRAY_SIZE(mt8173_mtk_ddp_main),
- 	.ext_path = mt8173_mtk_ddp_ext,
- 	.ext_len = ARRAY_SIZE(mt8173_mtk_ddp_ext),
-+	.clk_drv_name = "clk-mt8173-mm",
- };
- 
- static int mtk_drm_kms_init(struct drm_device *drm)
-@@ -437,6 +440,24 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 
- 	private->data = of_device_get_match_data(dev);
- 
-+	/*
-+	 * MMSYS includes apart from components management a block providing
-+	 * clocks for the subsystem. We probe this clock driver via a platform
-+	 * device.
-+	 */
-+	if (private->data->clk_drv_name) {
-+		private->clk_dev = platform_device_register_data(dev,
-+						private->data->clk_drv_name, -1,
-+						NULL, 0);
-+
-+		if (IS_ERR(private->clk_dev)) {
-+			dev_err(dev, "failed to register %s platform device\n",
-+				private->data->clk_drv_name);
-+
-+			return PTR_ERR(private->clk_dev);
-+		}
-+	}
-+
- 	private->config_regs = syscon_node_to_regmap(dev->of_node);
- 	if (IS_ERR(private->config_regs))
- 		return PTR_ERR(private->config_regs);
-@@ -544,6 +565,9 @@ static int mtk_drm_remove(struct platform_device *pdev)
- 	for (i = 0; i < DDP_COMPONENT_ID_MAX; i++)
- 		of_node_put(private->comp_node[i]);
- 
-+	if (private->clk_dev)
-+		platform_device_unregister(private->clk_dev);
-+
- 	return 0;
- }
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index 03201080688d..15652264c233 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -29,11 +29,13 @@ struct mtk_mmsys_driver_data {
- 	unsigned int third_len;
- 
- 	bool shadow_register;
-+	const char *clk_drv_name;
- };
- 
- struct mtk_drm_private {
- 	struct drm_device *drm;
- 	struct device *dma_dev;
-+	struct platform_device *clk_dev;
- 
- 	unsigned int num_pipes;
- 
--- 
-2.24.1
-
+> +
+> +	return 0;
+> +}
+>  
+>  static struct platform_driver clk_mt8183_mm_drv = {
+>  	.probe = clk_mt8183_mm_probe,
+> +	.remove = clk_mt8183_mm_remove,
+>  	.driver = {
+>  		.name = "clk-mt8183-mm",
+> -		.of_match_table = of_match_clk_mt8183_mm,
+>  	},
+>  };
+> -
+> -builtin_platform_driver(clk_mt8183_mm_drv);
+> +module_platform_driver(clk_mt8183_mm_drv);
 
 _______________________________________________
 Linux-mediatek mailing list
