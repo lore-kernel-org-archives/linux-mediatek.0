@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A4C59C2BA83
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 10:16:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 955A0C3B195
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 10:30:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 73AAD20873
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 10:16:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 66A1F22314
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 10:30:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ANAeWf3+";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="MC7/SL6L"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 73AAD20873
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gal7I97w";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="s2Z9q/rz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 66A1F22314
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,57 +27,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iAJAohlKAba8c2JKa48tv7NKU2iS2W1B7OVTz8V7rZk=; b=ANAeWf3+hWJ0QR
-	jhNMSe1hTta9yELfZLI4y/z2rKLHKoyJ7GA4hxiClgUc+mQW/87cnyr7ZqFd/RtNWzzKBCJMtvhiA
-	tHhMitgEanttx6s7dQqqLiIvzOywQK6dFU9PLUrWK9VRRz+dFhJginJhQg6Q9IFjG1INUQhFsKyGs
-	eczcBfdDV0iGLeocYCJt9wpSItIUwbg6xdmlE71XQfWZs7UdjA9JMsLFWXBHWVF+D2DvXIYa+Qoq/
-	+tVUb/13bT+wmTtRtl0vJxlyF1PHqBoMKXLH30jgekdY5WbKPnlyqrcRNniYoYaReQPBTpMySyeG+
-	42XO+RvJ/OxdLtyPyZIQ==;
+	List-Owner; bh=bKOCmhaQfYwT8FmWhe1MbqqDTg10t/oxDKA6LHmpjBE=; b=gal7I97wlgJpfF
+	NShIOjfwPz36SJWfeYWep9UfWF3ZZToQySuy1P5wdGYD+angj6N+HiTSwT/u3MLkxXZbEGunEb0/2
+	1BicsNXr691E1mCeQCqMq+9FgAyMqP2avxDzBvbN00nADTFFQMxZ+LDH34A4UCFtNoiAo1HNvx1g9
+	MAK1QvDISyGMNOxaxz+8cjKkPHPt9X8w42rpnXm51JgT9TswiZgfTB0neI5Qpr/0QID6eonI4FM0F
+	IxaJmz0Rs85BAAa+bc3Eu4Dyhotr1yzuG1As2HbMSZJhXvLOtyEDqchGcX3qXB0njuHlhKjhJYHbh
+	h5nt4WqTDa/Zt5kXbGSQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j2Y0m-0000aH-Qw; Fri, 14 Feb 2020 10:15:52 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1j2YEd-0005pz-Cv; Fri, 14 Feb 2020 10:30:11 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j2Y0k-0000Zu-Om; Fri, 14 Feb 2020 10:15:52 +0000
-Received: by mail-wm1-x343.google.com with SMTP id t23so9357197wmi.1;
- Fri, 14 Feb 2020 02:15:50 -0800 (PST)
+ id 1j2YEa-0005cp-4U; Fri, 14 Feb 2020 10:30:09 +0000
+Received: by mail-pl1-x643.google.com with SMTP id g6so3584035plp.6;
+ Fri, 14 Feb 2020 02:30:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=qgAcFUTWIVh6J5lFRMAU/DXgNItcCCYEdAynPZvF7SI=;
- b=MC7/SL6LEeQoUDSP7gclFNwRz+aN0p+hzxp4hg+qGG4eiyJU/Tb7+vWYAbkFBhH+p7
- mIXlIXA0Hc5FtuQNNIg6SgHzBf+IKgemwwfh4XeVdAgRgj91wdBr3BMBLziszTOh2B9M
- agVODPdtWVxC2VI2VuLMJmS6KpWb10W+j6sZktpGU2wSoF8SJkrHHny1+k1YJPhDg23I
- tGMPJWyYetMxZy8otxYDkU7obHrKO116T28rNROZ3Z1Q61zVUrain2W6Kz/jy7IJyfhX
- qPQ/Ze2Z7mEtDSGIu17n70tMjhUxiubMD/BThjzXjPS+nsQnQLXI2x0F88s23rK8tMfg
- 6yng==
+ bh=sTLeVmJnO399WWs6q6b1FMZmMwZxDrWLv75Nuet/YEo=;
+ b=s2Z9q/rzeABccBvHQcGkHQwDOKQBI3hkKu8aBkOI4DJQiBXkGUTMeNaSVJ8CyDI4j8
+ 7qggaUe7vihnbEz6DfD9Mf/9zzevRjajGiGgGOShkzQ62Z2lL78lAaeToZ0x8EtP07do
+ xbGfLWvUJhHdcf4t4Oq66CJyoASMExSW/GjJZhyBMjNIJ4MzVnOHu/AxN2jNR0dtOYDV
+ vlBqHposRCFt54XjDvCzoAbAQGLABYCiYovctzTDdjuEW2pTyhwQAGfHoEHronv3QP3K
+ hIGp+uOlvCW3gvUO9GL3G9QFHRd+Kzk8BhabgKtuSLg4rrvyBbOanGOJ8LO0EHwr++ru
+ WEmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=qgAcFUTWIVh6J5lFRMAU/DXgNItcCCYEdAynPZvF7SI=;
- b=DeKaqwZATOmEc0e/RN+3F6r9Bxua+w2tOJ3HwFsNLuNBQjvJVQn66Fui8aUHyz8XK+
- PHuJvZEeOYTZdULLQr8HLWfCFwTQZVxb3n96bPAd9b9m6WwdzRf+wnUBSU0AUgw8I2U6
- pg5Kq/rfN5MR2yjDIXFRaDF+96OIqDMLWjtgNAZmtaAuafj4CbHHTqyFhiCEBQgO5gyQ
- DGoj5QF17fXYRvE8dLICzOqTVw7ZdTkXqHg4GecVtR2kVJV+ugjJo1YE6LIpTxx6In0Z
- ZTcS2NWMgMIJZfWrGxro6jeGoRG1w6JHcKOrzZCls0hEmDhTdErfUb3KCB63xX9JuS1f
- Yaxw==
-X-Gm-Message-State: APjAAAWiAEd9s3vJ5uVlYdzYxK87TN2Gdup1JZZEvfogVsiEZTwGrDWE
- huNHExTcDN3C5bBqWukHPqhREU2z
-X-Google-Smtp-Source: APXvYqwgp0ONpM4VX7wOCtb6uwK+KrpYOx1wDhgo4oswupDnFUSr/rf8oWIbWNcyi+gLurEvZHEqGQ==
-X-Received: by 2002:a1c:4c10:: with SMTP id z16mr3847792wmf.136.1581675349383; 
- Fri, 14 Feb 2020 02:15:49 -0800 (PST)
+ bh=sTLeVmJnO399WWs6q6b1FMZmMwZxDrWLv75Nuet/YEo=;
+ b=p+62OVRV3d8l5KBFZsWgrfrTRlFi+QE+JwEvaUiZ6Pf9WS+YqveRftUFPtbFmSv7br
+ V+z+v6EoyK+jlyA2cCoXttYKzgqWM0bG5Vg5W0n2meVJyqABud0BmiK1wiz5ynk0CTJx
+ AKdY3sSd7Z/zQ5rPhuz9BeWAIbHhOZ765GElG9RxJhg7sZkPeToEj/lDEWvLvAczBy6t
+ fF+j8sbClV1UH7OLgmMk2VOT7zzJQfjeLcN/e3JsB37wMI8ZA6caO7v6oIZM6pDsJZib
+ GDt3Dzq4mgpuaKWF27Iht4gXhTPPTUjEKCGbPwZm3ejOsWrOgr9qjplvPUC0LFW3Dsd8
+ RGZw==
+X-Gm-Message-State: APjAAAW+iLuPX+Y7yPOCCjG5oehKFWqHgNf+WupsSumlT8Y4Dr+WzPdi
+ ufmR8zM1hwaoNBURjTOj3Wg=
+X-Google-Smtp-Source: APXvYqzWIhcA/UNvdgc1Clhk8qHXHnuGhmr/D0IrnUhFFW+nhnhH15qCOmZnIPUhfKfRQosG3RssaQ==
+X-Received: by 2002:a17:902:740c:: with SMTP id
+ g12mr2786315pll.166.1581676206729; 
+ Fri, 14 Feb 2020 02:30:06 -0800 (PST)
 Received: from ziggy.stardust ([37.223.145.31])
- by smtp.gmail.com with ESMTPSA id t128sm7085182wmf.28.2020.02.14.02.15.48
+ by smtp.gmail.com with ESMTPSA id x132sm6508359pfc.148.2020.02.14.02.30.03
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 14 Feb 2020 02:15:48 -0800 (PST)
-Subject: Re: [PATCH] soc: mediatek: knows_txdone needs to be set in Mediatek
- CMDQ helper
+ Fri, 14 Feb 2020 02:30:05 -0800 (PST)
+Subject: Re: [PATCH 3/3] dt-binding: gce: remove atomic_exec in mboxes property
 To: Bibby Hsieh <bibby.hsieh@mediatek.com>,
  Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
  CK HU <ck.hu@mediatek.com>
-References: <20200214043545.16713-1-bibby.hsieh@mediatek.com>
+References: <20200214043325.16618-1-bibby.hsieh@mediatek.com>
+ <20200214043325.16618-4-bibby.hsieh@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -153,16 +154,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <03c07fab-3768-7bf2-f955-92b1e626709c@gmail.com>
-Date: Fri, 14 Feb 2020 11:15:47 +0100
+Message-ID: <7cca2ac2-258b-0bc9-a9fe-92c8dc430e3f@gmail.com>
+Date: Fri, 14 Feb 2020 11:30:01 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.4.1
 MIME-Version: 1.0
-In-Reply-To: <20200214043545.16713-1-bibby.hsieh@mediatek.com>
+In-Reply-To: <20200214043325.16618-4-bibby.hsieh@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200214_021550_808262_21F680EC 
-X-CRM114-Status: GOOD (  16.48  )
+X-CRM114-CacheID: sfid-20200214_023008_243584_7108F92B 
+X-CRM114-Status: GOOD (  19.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -186,37 +187,59 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 14/02/2020 05:35, Bibby Hsieh wrote:
-> Mediatek CMDQ driver have a mechanism to do TXDONE_BY_ACK,
-> so we should set knows_txdone.
-> 
-> Fixes:576f1b4bc802 ("soc: mediatek: Add Mediatek CMDQ helper")
+On 14/02/2020 05:33, Bibby Hsieh wrote:
+> There is not any client driver using this feature now,
+> so remove it from binding.
 > 
 > Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
 > ---
-
-I added a tag:
-Cc: stable@vger.kernel.org # v5.0+
-
-and applied it to v5.6-next/soc
-
-Thanks
-
->  drivers/soc/mediatek/mtk-cmdq-helper.c | 1 +
->  1 file changed, 1 insertion(+)
+>  Documentation/devicetree/bindings/mailbox/mtk-gce.txt | 10 ++++------
+>  1 file changed, 4 insertions(+), 6 deletions(-)
 > 
-> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index 9add0fd5fa6c..2ca1a759a347 100644
-> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -80,6 +80,7 @@ struct cmdq_client *cmdq_mbox_create(struct device *dev, int index, u32 timeout)
->  	client->pkt_cnt = 0;
->  	client->client.dev = dev;
->  	client->client.tx_block = false;
-> +	client->client.knows_txdone = true;
->  	client->chan = mbox_request_channel(&client->client, index);
+> diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> index 7b13787ab13d..0b5b2a6bcc48 100644
+> --- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> +++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> @@ -14,13 +14,11 @@ Required properties:
+>  - interrupts: The interrupt signal from the GCE block
+>  - clock: Clocks according to the common clock binding
+>  - clock-names: Must be "gce" to stand for GCE clock
+> -- #mbox-cells: Should be 3.
+> -	<&phandle channel priority atomic_exec>
+> +- #mbox-cells: Should be 2.
+> +	<&phandle channel priority>
+
+Normally we will need to support backwards compatibility for three cells. As we
+don't have a consumer of the mailbox interface for now, I think we are fine
+without providing atomic_exec in the driver and the DT.
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+Ah, by the way. Please beware that devicetree maintainer prefer to have the
+binding changes in the first patch of a series, as it makes their live easier.
+
+Regards,
+Matthias
+
+>  	phandle: Label name of a gce node.
+>  	channel: Channel of mailbox. Be equal to the thread id of GCE.
+>  	priority: Priority of GCE thread.
+> -	atomic_exec: GCE processing continuous packets of commands in atomic
+> -		way.
 >  
->  	if (IS_ERR(client->chan)) {
+>  Required properties for a client device:
+>  - mboxes: Client use mailbox to communicate with GCE, it should have this
+> @@ -54,8 +52,8 @@ Example for a client device:
+>  
+>  	mmsys: clock-controller@14000000 {
+>  		compatible = "mediatek,mt8173-mmsys";
+> -		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST 1>,
+> -			 <&gce 1 CMDQ_THR_PRIO_LOWEST 1>;
+> +		mboxes = <&gce 0 CMDQ_THR_PRIO_LOWEST>,
+> +			 <&gce 1 CMDQ_THR_PRIO_LOWEST>;
+>  		mutex-event-eof = <CMDQ_EVENT_MUTEX0_STREAM_EOF
+>  				CMDQ_EVENT_MUTEX1_STREAM_EOF>;
+>  		mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>,
 > 
 
 _______________________________________________
