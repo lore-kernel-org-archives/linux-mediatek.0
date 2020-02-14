@@ -6,17 +6,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5ACE5C2BA83
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 16:39:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 44C36C3B1A1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 16:48:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 33A582468F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 16:39:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 17F8024650
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 16:48:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qkrkskIQ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="FqOTdTJm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 33A582468F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XBwkLduq";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Bx7R78Y9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 17F8024650
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,46 +25,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=keDIjmFNJf+K4mHkFwU8JFsao7hnWK/3w7wHAOFSYSs=; b=qkrkskIQZ+z6nk
-	qjFpbtMzD5qFIYMdBZKnrVpkXH1ptTTyTogYad0Nx8ShXUJznDMZBFoJG0HAEvWWL49miTx+Foh+Z
-	cl6LDeTjq95nZcXTz9gJNZqyBRC8nOFqSqro1jdUBhBscSl4tFvR5dcMg7Dbq/+0uEs9bIM0uz7Q4
-	uetYmLsjzF8wPWc0rQBWYvItEIPExcPgOL9TNDuSvIHkFzbRMR0wyWZbKE+ZssimYZDTwjh3gwGQH
-	MxRBCoT647fMrQSjTk8DLGTJNXYLs/P+UXrJpW9a8TTH7xzLPywVhPf+eorW5+PcT9dQpLlxWqJ4e
-	2NyNMNy0YWHTtzXIhE9w==;
+	List-Owner; bh=+UOMVwHGoiOpI09m6dwanpwtUwOpNtFXNNBNPsuKkTY=; b=XBwkLduqzILCpS
+	9FcLiCfbha9bOOQMfRXgvPovlPQ5hVPZEUHTqpNIr7IKVvyWn6ahAci3zt2Q5x6FW1NfwDDFhUKrx
+	THmsjAV3XccwxGwcf7IAvWKejs0CuxkqeyeKF80GQExC8jxAJ55i0Lgb5+8Arb4Cl1ivwPX/nECa6
+	33OKbus+BQKTE6QTXvGMCcKbDQIZ7yzEJvdMKG4Vvh7pJDVrQTWOm2bEB0Q+Y1a57uzWE9FdC1JTC
+	FsAcBfGJZvvrSmQ2EcTNTiBhBuTYSj97nNGk8/kZSRG5RLvH8J9B0z8NykPzsy90fYSfyb0RCuhGd
+	QuI2fH1KOSjXNhlB4dbw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j2e05-0000A9-1A; Fri, 14 Feb 2020 16:39:33 +0000
+	id 1j2e8g-0002zX-Vw; Fri, 14 Feb 2020 16:48:27 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j2da0-0004h1-Hq; Fri, 14 Feb 2020 16:12:38 +0000
+ id 1j2dfG-0001T5-Lg; Fri, 14 Feb 2020 16:18:04 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id DAD3F246BD;
- Fri, 14 Feb 2020 16:12:34 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6FB72246F2;
+ Fri, 14 Feb 2020 16:18:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1581696756;
- bh=fVv9jChE4lGjTN7az6IkE+Kme5/I7jbkieth1HEgBVY=;
+ s=default; t=1581697081;
+ bh=TGY9eRF63MvRnoSFi/x/yc6e7exFHtN9syw76TwQoEA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=FqOTdTJmzuqcUKfMp6AYYq1AMDTm4SOHcpSh2KTgSABEsfjIv5TAaTaTUTBvmum83
- AUt3VieA93RYOC1xfR1lUR5zijPxLqIkX+ZQic3MKjEQddA5uiBIkRbtH7pXMJvQ7g
- cGBxOEiAF6wT+8TCxLI9gkXpXZPOcwufq683uyIo=
+ b=Bx7R78Y9fnm6FAR9uSe1+vBPIwg1CE189LVT7kHLm6gZQ4XTtJn++pmNu2Xffyg6v
+ QTi5j/pbvd5As424Of7tiiHuISzQApbPvVE7rhfgi8SZgdqeDk/VSMQltLmLqmpdoY
+ yvNj9onNsWleTDFbJB02SpcyjVBnd400XoG30G48=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 037/252] scsi: ufs: Fix ufshcd_probe_hba() reture
+Subject: [PATCH AUTOSEL 4.14 035/186] scsi: ufs: Fix ufshcd_probe_hba() reture
  value in case ufshcd_scsi_add_wlus() fails
-Date: Fri, 14 Feb 2020 11:08:12 -0500
-Message-Id: <20200214161147.15842-37-sashal@kernel.org>
+Date: Fri, 14 Feb 2020 11:14:44 -0500
+Message-Id: <20200214161715.18113-35-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200214161147.15842-1-sashal@kernel.org>
-References: <20200214161147.15842-1-sashal@kernel.org>
+In-Reply-To: <20200214161715.18113-1-sashal@kernel.org>
+References: <20200214161715.18113-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200214_081236_633407_EFAA09A1 
+X-CRM114-CacheID: sfid-20200214_081802_844408_759B85DB 
 X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -109,10 +109,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index af01be59a721b..f4fcaee41dc26 100644
+index d25082e573e0a..ed9b41bedb633 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -6685,7 +6685,8 @@ static int ufshcd_probe_hba(struct ufs_hba *hba)
+@@ -6412,7 +6412,8 @@ static int ufshcd_probe_hba(struct ufs_hba *hba)
  			ufshcd_init_icc_levels(hba);
  
  		/* Add required well known logical units to scsi mid layer */
