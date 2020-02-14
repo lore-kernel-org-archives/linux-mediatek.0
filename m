@@ -2,81 +2,77 @@ Return-Path: <SRS0=lPor=4C=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 41B38C2BA83
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 10:41:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6234FC3B18F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 10:53:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1391C206B6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 10:41:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 36F042168B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Feb 2020 10:53:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aOKNjzeW";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="ZI+0qXsA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1391C206B6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YTbPO9lK";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=xs4all.nl header.i=@xs4all.nl header.b="AbDhoKRv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 36F042168B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U/T41FZrp6jCVct0/SIy+HzeWDBkuotfaRaqnOwOaKE=; b=aOKNjzeWiTixMz
-	M9EYSpzcTFlp6dwmBsn/vYBt8EDwtiwpvf3eSHOnxiT3qZ7qABxP+07mOPl7IsHHGkOfI+81mFnjk
-	Qz7wmCA+Nikm+Ic2y8xlqihhTdqN7wg7zXBQ8weMQWOXttX9+ydXP4MRr+7g1rNkeC3FaMDlPecW7
-	NuxjXC5VZ9TteLuv4jvupCTTrNCDnzaipUw5xL+dIhPDVAVZ0wRi06VxSL9COYZZ6zj+IoEs77Egl
-	l9MKFT1dh6p3TMRs6Tdkyl8991Qit2TLqnjj72gLdcZEtExFDfEfGLFYDJ0nRcvo1jMNJ2rqQekx/
-	kh9kFBVQKGxZpiedWqOg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GvuaNUjg6kOU1HXBxHIjU9cYxJ8ITOTgovMOKQhcxD8=; b=YTbPO9lKJEhkrA
+	wCXBVrpRrOYAL05SgIU1R+Aj45UY9LMZeLXDk8mIZGUlOZPeTqhLnAEA8VvWAFdNzCQmJq4XkM5Eh
+	mcNGp7hkxmdcjdQrUo+a4/80d6KbHoP/tGMisDf2d99vyH9rK/Fy7LH1sGTSwbRWEZY/QAkqRzof8
+	58k+lao8oazlq7/FUlFsshw3sne6vsNvcopemYM0M85ZyP/3SMIvm71ceFUdpQJp2ItVFA7wbnpyq
+	Idcfv1hYmj/+VAIUcxbJhRr6jcwqdyNGksyA5F/wUdWpnhvXrAPyx31xvfDRdKQEKChfRNeONV+nZ
+	yTs6qXhpxyBq3LYeVeuw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j2YPj-0000vT-KX; Fri, 14 Feb 2020 10:41:39 +0000
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241])
+	id 1j2Yay-0005nb-9d; Fri, 14 Feb 2020 10:53:16 +0000
+Received: from lb2-smtp-cloud8.xs4all.net ([194.109.24.25])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j2YPh-0000vA-7S
- for linux-mediatek@lists.infradead.org; Fri, 14 Feb 2020 10:41:38 +0000
-Received: by mail-lj1-x241.google.com with SMTP id d10so10182216ljl.9
- for <linux-mediatek@lists.infradead.org>; Fri, 14 Feb 2020 02:41:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=I84A/i8tcPKxxOGbCK9A8uezoeqh4sVjuwMk9nGOQlQ=;
- b=ZI+0qXsAcGpAsFA7BAHC/r2eJz4nN4Nx9/qkAEpIDDoDDtOyybIt7BDzE47CID6Zb8
- KXMmlcs3o1Q8M593QyBQoHhzPwoHNJQ4zGVhk7KfRX9tHIalJEZU0yATHyk4H/6agSXL
- gAMP09pjFClhtjllFq78QJmvRKdUfZKjsL1rCKvnAleNtFLlFGT2Cxjz1mlJCSsta0b3
- KKKJn1DNPsLayW72dHiVAOekjpBBMiBKWClSc+KnprNG9aog6lHLlzp6poDAdhIOlyGk
- baBAuwWPvaTk8SFcwHvkkyo0+c+PEW9bquP2Fw+2ouoNeThdQv+XG4j0dW03YIobBLEc
- Tq7Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=I84A/i8tcPKxxOGbCK9A8uezoeqh4sVjuwMk9nGOQlQ=;
- b=nbVZW+FsfEcWu3Ulo8d2ZGZekR96EUfOdQgn1EKxn4IKhHVzNqfgQpdY86PMME3yha
- uvUfhKlug2SobMZ01Y3105hHZwhisSAxUoZRd45i+ak8uFXimxNYXQ6KvJW6dEPXcnxi
- aflQBo8feFQJWHNodO9KIakm5bAsxyiBDkPHqZ0PTZDt9B0dUC2kgW/f2q3jNkHiNLKu
- LPvX3e9kBpGY+Uj6mDlKhb1PhkDPXlTpkUcJpDWpk9oaNwpHapR4wtVpd0Ml6yZL/y9p
- bOvAR1wMzoBQy6fxGvx45Y9oUf8ZS6XxL3C7wkXTh8f6gS3foVboSToupWeeBxg9VFcY
- EPZQ==
-X-Gm-Message-State: APjAAAWmz303ZlBQcpQzhq/oA/mtkcCFI3Az+rBxjG9skfO7yZqzrCwo
- 0Z5wmqDEzruroF99R0e3fctgzhnxdLxlDYGWFLeUVw==
-X-Google-Smtp-Source: APXvYqz8IjNrCqOb2DDhLjIqc5YDiIKJ0wbJLELLFODbj8iR64pcK9T84Q6voECeqUp1U7eWp+sJ9v+o6dnCBu0XMxQ=
-X-Received: by 2002:a2e:81c3:: with SMTP id s3mr1685747ljg.168.1581676895494; 
- Fri, 14 Feb 2020 02:41:35 -0800 (PST)
+ id 1j2Yam-0005ds-D9; Fri, 14 Feb 2020 10:53:06 +0000
+Received: from [IPv6:2001:983:e9a7:1:f887:140a:e9b5:d382]
+ ([IPv6:2001:983:e9a7:1:f887:140a:e9b5:d382])
+ by smtp-cloud8.xs4all.net with ESMTPA
+ id 2YaTjHqXh8i432YaUjPUAB; Fri, 14 Feb 2020 11:52:55 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
+ t=1581677576; bh=PoAwgGAVLFRL4K4umMWVXqOld8muv/SdpfOyJozE5OU=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=AbDhoKRvMaprnnZpO8oWh0F1Mbx9DPDTuXid6FpPQWfUkqrXcH+VnUu9J64V04fNu
+ IuowlxD7c2q0O41eTMoXmn5XIclK1Beb6EQy8iX8FUQHRQxwRaiDdtcx+s1cHm4+4D
+ r+A/3gdpFFHVSgclyBH2YkWwEiUcbs7lq0V+Bxql30HR9NAPPfT0KH6+PLRiHR4CZm
+ XG22I2vmLEjCByXnlecHrih7odabd+veud4rg0RE8DnRowWbWUvLYEau5ziqo4p6C2
+ tokAjiMKSe16EBiUtc0o+azKGyrWivGMgPpH+69OD2ceFuSyS/Uuolp+X2TXHM5h8K
+ f1jZbjZjyxwTQ==
+Subject: Re: [PATCH] media: mtk-vpu: avoid unaligned access to DTCM buffer.
+To: Hsin-Yi Wang <hsinyi@chromium.org>, linux-arm-kernel@lists.infradead.org
+References: <20200210035351.227499-1-hsinyi@chromium.org>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Message-ID: <bf9205b3-6b02-625a-670d-16cfd44d3274@xs4all.nl>
+Date: Fri, 14 Feb 2020 11:52:45 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.2
 MIME-Version: 1.0
-References: <1579675994-7001-1-git-send-email-light.hsieh@mediatek.com>
-In-Reply-To: <1579675994-7001-1-git-send-email-light.hsieh@mediatek.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 14 Feb 2020 11:41:24 +0100
-Message-ID: <CACRpkdYzf0FjBS+GbErPK48QMg92aGX58szQB+4WHqCYk5Gv5Q@mail.gmail.com>
-Subject: Re: [PATCH v8 1/6] pinctrl: mediatek: Check gpio pin number and use
- binary search in mtk_hw_pin_field_lookup()
-To: Light Hsieh <light.hsieh@mediatek.com>
+In-Reply-To: <20200210035351.227499-1-hsinyi@chromium.org>
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfFkv9Y1VAyP3DDACNjYSF9jvrqHkn9y/FDpjLsXTXuxKeZwjTM9Pf/3T92qsTgWt+k+W0O7VP58di/NiQ3rdrrF5C3GjZRbfpYE5UAMnJc8fXNl7dodG
+ mONIJj71oA8y3Y26Iv52bZs+eA1tX4HWXps1vTwRRFoTOq12vsC09vQ2rjbcW0Leu5CEg5crybKNOX80a3g9e4Do7/Ki81hMTe1rD2gRbuc7jEcPxKH6fGM9
+ fU4qYuOvnzSa3+ROaFS9GyJTYVkkZ96oxIIMGFSRJtSqm2Oc/6rIaAhu4KFfHOvlbGHtV7T0H93Jta3FjfHPwPmi8n1xR7XcRlXtvH4dz6mVijZgJ0x5+6RV
+ xW8bSsbWswSeQqzDV3E5M3BbnZlLCJHuhbCobD/3U6GpoNQ7ih79r4X/KcSvh+ZJx75msecoS1aMVNv4zZ3UVnRis+naugmJNle3/btuebHUzLBWgrSYeMdJ
+ 2RpJWo3i3Voy7zHGTRXM0QyqAmVVPk7SqpKSthzWS3jNQaA3f5XPJyU4UqZbibrtfYH6H7yg1zFvwDGNiFHCd3rjyX1nRuc5AH34rUwR4a20Ep6qsVOK0gk5
+ rWUQGpxVr8Ce6ldXtsnAnnDAvkTy53+86L3fS05fip/I+MPkOqaZ+vXbhH2i0r9Rr4XWc+nwCMucxZuolGZuaQ6/XBcwIR19hAxnzRrrLWOx86fYzBudjE6H
+ S/T7UeXNmDfG/Aj7GMz4liy1WIOSJeCa
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200214_024137_299913_1C3309B3 
-X-CRM114-Status: GOOD (  10.87  )
+X-CRM114-CacheID: sfid-20200214_025304_607872_024641C1 
+X-CRM114-Status: GOOD (  16.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,55 +84,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- Sean Wang <sean.wang@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- kuohong.wang@mediatek.com
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ linux-kernel@vger.kernel.org, Houlong Wei <houlong.wei@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 22, 2020 at 7:53 AM <light.hsieh@mediatek.com> wrote:
+Hi Hsin-Yi Wang,
 
-> From: Light Hsieh <light.hsieh@mediatek.com>
->
-> 1. Check if gpio pin number is in valid range to prevent from get invalid
->    pointer 'desc' in the following code:
->         desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
->
-> 2. Improve  mtk_hw_pin_field_lookup()
-> 2.1 Modify mtk_hw_pin_field_lookup() to use binary search for accelerating
->      search.
-> 2.2 Correct message after the following check fail:
->     if (hw->soc->reg_cal && hw->soc->reg_cal[field].range) {
->                 rc = &hw->soc->reg_cal[field];
->     The original message is:
->         "Not support field %d for pin %d (%s)\n"
->     However, the check is on soc chip level, not on pin level yet.
->     So the message is corrected as:
->         "Not support field %d for this soc\n"
->
-> Signed-off-by: Light Hsieh <light.hsieh@mediatek.com>
+On 2/10/20 4:53 AM, Hsin-Yi Wang wrote:
+> struct vpu_run *run in vpu_init_ipi_handler() is an ioremapped DTCM (Data
+> Tightly Coupled Memory) buffer shared with AP.  It's not able to do
+> unaligned access. Otherwise kernel would crash due to unable to handle
+> kernel paging request.
+> 
+> struct vpu_run {
+> 	u32 signaled;
+> 	char fw_ver[VPU_FW_VER_LEN];
+> 	unsigned int	dec_capability;
+> 	unsigned int	enc_capability;
+> 	wait_queue_head_t wq;
+> };
+> 
+> fw_ver starts at 4 byte boundary. If system enables
+> CONFIG_HAVE_EFFICIENT_UNALIGNED_ACCESS, strscpy() will do
+> read_word_at_a_time(), which tries to read 8-byte: *(unsigned long *)addr
+> 
+> Copy the string by memcpy_fromio() for this buffer to avoid unaligned
+> access.
+> 
+> Fixes: 85709cbf1524 ("media: replace strncpy() by strscpy()")
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 
-I managed to apply all 6 patches now for v5.7.
+This patch results in the following sparse warnings:
 
-I had a big problem extracting the patches since they get base64
-encoded and for some reason git am cannot deal with this. I thought
-it would but it doesn't possibly because of custom headers in the
-message.
+sparse: WARNINGS
+SPARSE:mtk-vpu/mtk_vpu.c mtk-vpu/mtk_vpu.c:834:52:  warning: incorrect type in argument 3 (incompatible argument 1 (different address spaces))
+SPARSE:mtk-vpu/mtk_vpu.c mtk-vpu/mtk_vpu.c:609:29:  warning: dereference of noderef expression
+SPARSE:mtk-vpu/mtk_vpu.c mtk-vpu/mtk_vpu.c:613:35:  warning: dereference of noderef expression
+SPARSE:mtk-vpu/mtk_vpu.c mtk-vpu/mtk_vpu.c:614:35:  warning: dereference of noderef expression
 
-I have to save out the base64 part of the message, decode separately,
-then paste back the result removing the transfer-encoding line
-of the original message.
+Can you take a look?
 
-cat mtk65.txt | base64 -d -i > scratch.patch
+Regards,
 
-Any tips on how to handle this more efficiently?
+	Hans
 
-Yours,
-Linus Walleij
+> ---
+>  drivers/media/platform/mtk-vpu/mtk_vpu.c | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+> index a768707abb94..e705e85d6f5a 100644
+> --- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
+> +++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+> @@ -600,13 +600,16 @@ int vpu_load_firmware(struct platform_device *pdev)
+>  }
+>  EXPORT_SYMBOL_GPL(vpu_load_firmware);
+>  
+> -static void vpu_init_ipi_handler(void *data, unsigned int len, void *priv)
+> +static void vpu_init_ipi_handler(void __iomem *data, unsigned int len,
+> +				 void *priv)
+>  {
+>  	struct mtk_vpu *vpu = (struct mtk_vpu *)priv;
+> -	struct vpu_run *run = (struct vpu_run *)data;
+> +	struct vpu_run __iomem *run = data;
+>  
+>  	vpu->run.signaled = run->signaled;
+> -	strscpy(vpu->run.fw_ver, run->fw_ver, sizeof(vpu->run.fw_ver));
+> +	memcpy_fromio(vpu->run.fw_ver, run->fw_ver, sizeof(vpu->run.fw_ver));
+> +	/* Make sure the string is NUL-terminated */
+> +	vpu->run.fw_ver[sizeof(vpu->run.fw_ver) - 1] = '\0';
+>  	vpu->run.dec_capability = run->dec_capability;
+>  	vpu->run.enc_capability = run->enc_capability;
+>  	wake_up_interruptible(&vpu->run.wq);
+> 
+
 
 _______________________________________________
 Linux-mediatek mailing list
