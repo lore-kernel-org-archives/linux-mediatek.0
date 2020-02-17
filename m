@@ -2,76 +2,80 @@ Return-Path: <SRS0=sDSL=4F=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 018FAC7619C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 03:46:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 505E1C7619B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 03:47:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C619C21744
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 03:46:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2216220717
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 03:47:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qFbPJZep";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GL06Y6kd"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C619C21744
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QJbT6yOo";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bl2K4sLO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2216220717
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=npoRpDQuUGhubXSRdJjDZsGAHbJqWENMDY2y1tQGdUg=; b=qFbPJZepP/chNK
-	00jRQiA8WMOy+wrEYs0hCK16Udh2cRPBgUAg53oBDBBWwSjbmvR8v1PfzqP0rjuqPUvxhGaLaNcVs
-	x4d3uuITZcGxop9kLs3wN/EqrqHUvm1wdlC0RJYiu0KgFe/b9cdprKSxaqPV6Baj1zIBvzofFQzcU
-	0UEvhdBgzm9VkvFqnR7z5dQ7jti1LX7vwd2HIghL9Gvq3OO+rWRiUOVNa9Pq6YS80CVx1RLBaL6Q2
-	u+2I0XPaoB4dKoYowCQswTDZ6rCx5CwTmvf2kwKt3p7I7JaL4NRetXOrGSX63kZPnVDfh0XSuOKmn
-	tUt96EuiNVzD6PaXiWfg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vCS3Ct2kAWRe163yIdm2J8xkvRQOck7jZU5LL4E0Ed0=; b=QJbT6yOoUyRgnp
+	ILtaFQkR1fzv23s+wPdMkvvjdDa/Hm8cfH2YJc+/Hqf6YpBYk0q/1TSB/399iNaBXaRSyMuiHWmMk
+	yLO1Am7shQ3M1gL24xuJtUUTcg/Q57vSuPOcSIlKTKEg0evKzM1kiDkG69lQo7a0vz4UMSNi2U5IC
+	2yV6layWXxUgHCque399yuMobgU9gBkQYF6GFhFLeBKBI3HJkznW38Gs08VGzc9pTqdBZQuC5zLOG
+	9PXM8i0LpVZilnd81UHERPmLtsOeakM1Rg+8jgZAJsBa0wn8iNIjxCDPAy0556laX6Xm8o6iJtZiP
+	VTv1rS/WOAKc6yketRGg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j3XMp-0001fJ-Hq; Mon, 17 Feb 2020 03:46:43 +0000
+	id 1j3XN2-0001uj-OO; Mon, 17 Feb 2020 03:46:56 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j3XLv-0000qD-7G; Mon, 17 Feb 2020 03:45:48 +0000
-X-UUID: 4ab96270172a428e83cb51eb1e8b0104-20200216
+ id 1j3XLw-0000q9-Eo; Mon, 17 Feb 2020 03:45:50 +0000
+X-UUID: d17a8475545842cf9237ed5ab76fe6f2-20200216
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=d38kig+Zusa5V6aoIvUBBHX1aAbt63Db2pgRYqg7t0k=; 
- b=GL06Y6kd8pL1HQSDEPE1OZWJymXU5+r0Dce5ILiEuU2l46sP3mb/Egh9RI2oWcGis1rkE1o8OgOlfrOaVn6+ftfzOQizwmM0cIYxPK5Vo3NF2sOQp88PiDFmEppH/jPrjDP7rKo6E/ufFXLioZBGP64CY80+KnfyM64ymiuH8WY=;
-X-UUID: 4ab96270172a428e83cb51eb1e8b0104-20200216
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=ijwC23Ver6dmempwk564z1rj8q4l6AEPxD6fhOUj3L8=; 
+ b=bl2K4sLOIrsoUTD5sATyZxYvERt2lmoNx2WSA4Kr/b9tYFNmHnzSm1Zqu7gUZPKNx3viR3iTO2eTdHQmPCWInZ480F6Lx8MuygSJjI23FszXSAj/ZhcFXMJYqRsYjOck8WzK4Od4afm7ZBYHh4bxHl5RJ0vwJlubLP/5QLwDbM0=;
+X-UUID: d17a8475545842cf9237ed5ab76fe6f2-20200216
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1893847911; Sun, 16 Feb 2020 19:45:33 -0800
+ with ESMTP id 2052173775; Sun, 16 Feb 2020 19:45:33 -0800
 Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 16 Feb 2020 19:35:56 -0800
+ 15.0.1395.4; Sun, 16 Feb 2020 19:35:57 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 17 Feb 2020 11:33:03 +0800
+ 15.0.1395.4; Mon, 17 Feb 2020 11:33:04 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Mon, 17 Feb 2020 11:35:07 +0800
+ Frontend Transport; Mon, 17 Feb 2020 11:35:08 +0800
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat
  <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>, Sascha Hauer
  <kernel@pengutronix.de>
-Subject: [PATCH v12 00/10] Mediatek MT8183 scpsys support
-Date: Mon, 17 Feb 2020 11:35:17 +0800
-Message-ID: <1581910527-1636-1-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v12 09/10] arm64: dts: Add power controller device node of
+ MT8183
+Date: Mon, 17 Feb 2020 11:35:26 +0800
+Message-ID: <1581910527-1636-10-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1581910527-1636-1-git-send-email-weiyi.lu@mediatek.com>
+References: <1581910527-1636-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 785D55F3EA22E4D6C03FE494E98FA6AC1A19E1A6762D691285BCAD124FF076B82000:8
+X-TM-SNTS-SMTP: 123025A41DE5EEAAFDA594A3C6F88AF2A1E432E843D30DEE91B6514F75DDAF2D2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200216_194547_291091_C230C392 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20200216_194548_546990_E8CCA3BD 
+X-CRM114-Status: UNSURE (   8.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,72 +96,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series is based on v5.5-rc1
+Add power controller node and smi-common node for MT8183
+In scpsys node, it contains clocks and regmapping of
+infracfg and smi-common for bus protection.
 
-changes since v11:
-- re-order patches "Remove infracfg misc driver support" and "Add multiple step bus protection"
-- add cap MTK_SCPD_SRAM_ISO for extra sram control
-- minor coding sytle fixes and reword commit messages
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 62 ++++++++++++++++++++++++++++++++
+ 1 file changed, 62 insertions(+)
 
-changes since v10:
-- squash PATCH 04 and PATCH 06 in v9 into its previous patch
-- add "ignore_clr_ack" for multiple step bus protection control to have a clean definition of power domain data
-- keep the mask register bit definitions and do the same for MT8183
-
-changes since v9:
-- add new PATCH 04 and PATCH 06 to replace by new method for all compatibles
-- add new PATCH 07 to remove infracfg misc driver
-- minor coding sytle fix
-
-changes since v7:
-- reword in binding document [PATCH 02/14]
-- fix error return checking bug in subsys clock control [PATCH 10/14]
-- add power domains properity to mfgcfg patch [PATCH 14/14] from
-  https://patchwork.kernel.org/patch/11126199/
-
-changes since v6:
-- remove the patch of SPDX license identifier because it's already fixed
-
-changes since v5:
-- fix documentation in [PATCH 04/14]
-- remove useless variable checking and reuse API of clock control in [PATCH 06/14]
-- coding style fix of bus protection control in [PATCH 08/14]
-- fix naming of new added data in [PATCH 09/14]
-- small refactor of multiple step bus protection control in [PATCH 10/14]
-
-changes since v4:
-- add property to mt8183 smi-common
-- seperate refactor patches and new add function
-- add power controller device node
-
-
-Weiyi Lu (10):
-  dt-bindings: mediatek: Add property to mt8183 smi-common
-  dt-bindings: soc: Add MT8183 power dt-bindings
-  soc: mediatek: Add basic_clk_name to scp_power_data
-  soc: mediatek: Remove infracfg misc driver support
-  soc: mediatek: Add multiple step bus protection control
-  soc: mediatek: Add subsys clock control for bus protection
-  soc: mediatek: Add extra sram control
-  soc: mediatek: Add MT8183 scpsys support
-  arm64: dts: Add power controller device node of MT8183
-  arm64: dts: Add power-domains property to mfgcfg
-
- .../mediatek,smi-common.txt                   |   2 +-
- .../bindings/soc/mediatek/scpsys.txt          |  20 +-
- arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  63 ++
- drivers/soc/mediatek/Kconfig                  |  10 -
- drivers/soc/mediatek/Makefile                 |   1 -
- drivers/soc/mediatek/mtk-infracfg.c           |  79 ---
- drivers/soc/mediatek/mtk-scpsys.c             | 654 ++++++++++++++----
- drivers/soc/mediatek/scpsys.h                 |  90 +++
- include/dt-bindings/power/mt8183-power.h      |  26 +
- include/linux/soc/mediatek/infracfg.h         |  39 --
- 10 files changed, 707 insertions(+), 277 deletions(-)
- delete mode 100644 drivers/soc/mediatek/mtk-infracfg.c
- create mode 100644 drivers/soc/mediatek/scpsys.h
- create mode 100644 include/dt-bindings/power/mt8183-power.h
- delete mode 100644 include/linux/soc/mediatek/infracfg.h
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 10b3247..cef2236 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -8,6 +8,7 @@
+ #include <dt-bindings/clock/mt8183-clk.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/power/mt8183-power.h>
+ #include "mt8183-pinfunc.h"
+ 
+ / {
+@@ -253,6 +254,62 @@
+ 			#interrupt-cells = <2>;
+ 		};
+ 
++		scpsys: power-controller@10006000 {
++			compatible = "mediatek,mt8183-scpsys", "syscon";
++			#power-domain-cells = <1>;
++			reg = <0 0x10006000 0 0x1000>;
++			clocks = <&topckgen CLK_TOP_MUX_AUD_INTBUS>,
++				 <&infracfg CLK_INFRA_AUDIO>,
++				 <&infracfg CLK_INFRA_AUDIO_26M_BCLK>,
++				 <&topckgen CLK_TOP_MUX_MFG>,
++				 <&topckgen CLK_TOP_MUX_MM>,
++				 <&topckgen CLK_TOP_MUX_CAM>,
++				 <&topckgen CLK_TOP_MUX_IMG>,
++				 <&topckgen CLK_TOP_MUX_IPU_IF>,
++				 <&topckgen CLK_TOP_MUX_DSP>,
++				 <&topckgen CLK_TOP_MUX_DSP1>,
++				 <&topckgen CLK_TOP_MUX_DSP2>,
++				 <&mmsys CLK_MM_SMI_COMMON>,
++				 <&mmsys CLK_MM_SMI_LARB0>,
++				 <&mmsys CLK_MM_SMI_LARB1>,
++				 <&mmsys CLK_MM_GALS_COMM0>,
++				 <&mmsys CLK_MM_GALS_COMM1>,
++				 <&mmsys CLK_MM_GALS_CCU2MM>,
++				 <&mmsys CLK_MM_GALS_IPU12MM>,
++				 <&mmsys CLK_MM_GALS_IMG2MM>,
++				 <&mmsys CLK_MM_GALS_CAM2MM>,
++				 <&mmsys CLK_MM_GALS_IPU2MM>,
++				 <&imgsys CLK_IMG_LARB5>,
++				 <&imgsys CLK_IMG_LARB2>,
++				 <&camsys CLK_CAM_LARB6>,
++				 <&camsys CLK_CAM_LARB3>,
++				 <&camsys CLK_CAM_SENINF>,
++				 <&camsys CLK_CAM_CAMSV0>,
++				 <&camsys CLK_CAM_CAMSV1>,
++				 <&camsys CLK_CAM_CAMSV2>,
++				 <&camsys CLK_CAM_CCU>,
++				 <&ipu_conn CLK_IPU_CONN_IPU>,
++				 <&ipu_conn CLK_IPU_CONN_AHB>,
++				 <&ipu_conn CLK_IPU_CONN_AXI>,
++				 <&ipu_conn CLK_IPU_CONN_ISP>,
++				 <&ipu_conn CLK_IPU_CONN_CAM_ADL>,
++				 <&ipu_conn CLK_IPU_CONN_IMG_ADL>;
++			clock-names = "audio", "audio1", "audio2",
++				      "mfg", "mm", "cam",
++				      "isp", "vpu", "vpu1",
++				      "vpu2", "vpu3", "mm-0",
++				      "mm-1", "mm-2", "mm-3",
++				      "mm-4", "mm-5", "mm-6",
++				      "mm-7", "mm-8", "mm-9",
++				      "isp-0", "isp-1", "cam-0",
++				      "cam-1", "cam-2", "cam-3",
++				      "cam-4", "cam-5", "cam-6",
++				      "vpu-0", "vpu-1", "vpu-2",
++				      "vpu-3", "vpu-4", "vpu-5";
++			infracfg = <&infracfg>;
++			smi_comm = <&smi_common>;
++		};
++
+ 		apmixedsys: syscon@1000c000 {
+ 			compatible = "mediatek,mt8183-apmixedsys", "syscon";
+ 			reg = <0 0x1000c000 0 0x1000>;
+@@ -594,6 +651,11 @@
+ 			#clock-cells = <1>;
+ 		};
+ 
++		smi_common: smi@14019000 {
++			compatible = "mediatek,mt8183-smi-common", "syscon";
++			reg = <0 0x14019000 0 0x1000>;
++		};
++
+ 		imgsys: syscon@15020000 {
+ 			compatible = "mediatek,mt8183-imgsys", "syscon";
+ 			reg = <0 0x15020000 0 0x1000>;
+-- 
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
