@@ -2,22 +2,23 @@ Return-Path: <SRS0=sDSL=4F=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B546EC35254
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 10:08:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 24AA4C35254
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 10:11:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5D89920679
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 10:08:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E9FCF20679
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 10:11:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kVEAupTS";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="oY3COUzG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5D89920679
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OYa/rA/+";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="geapOaJ3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9FCF20679
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,57 +27,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fd1SGZlFQ+BKEV0pI7mxonn19FXZW5W3h2Sx4wNcNMc=; b=kVEAupTS9Lp9TX
-	v9ocyX1Izoa1WiJVpY8gtHk0e3jM3Cn1cWvaUnZ8n4GOfVQfe31d4hpvFeS6sJ6cJuuT6ly1F5yqp
-	dTBTper0TlgdpZy4t2lykdebHUTEk/DmKbon8U6KN/rKp49kq2zYsBlso3RW+rH42CBArRWxBcrTw
-	Cp6W4ml2V20PS7b9GuolW/Qip93f+/Q9scIyYzZrEKF/dWoJjW85ISFofHoMCteIKKbpSn6NiDZ4a
-	ek40+3P9AI75g0rI3L9BrPmudKl1UcDfMq1iPwo8ABGPiZt4LrfZqPs3M2wlV6DiQg+MBbVKZ7Swx
-	YWqa7IiDIx/0zu4HDIQQ==;
+	List-Owner; bh=QxwcD5ASAHLDF9SfZ9uHcgNwwMFd3cL+07VBjLtZB5I=; b=OYa/rA/+UjCofj
+	hP2FzDRouTG9j46qlLJ/ILyPmQrC7tFpoGOvLRHG/oeWgy7WwCT3ltAdQn9+9Gs6zfoT9rEIol6H2
+	xJHxY1XpP/VUDNhux7SEijsT7DV/Fy1TI1TZpnQodYXaueCn5+fDsZROOiC9GVwDeQuf7JF0yjZh9
+	vnY2KaDbIkMAHPPFgQZFGShgYZSo9TFS8H4chCH9ebdqh6Gw48NvV8uNagoIdggmP778+lAIPIYqI
+	n5kK1TIdLHOrvKn+QowMusGG21Dd3871Y8bRxrbSvopvSd+8OohjS8aCSTW1P2tEKA/kGSYHYtifS
+	OQ+rikzdgfUVyxtBb3rg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j3dJu-00084U-UM; Mon, 17 Feb 2020 10:08:06 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1j3dMp-0001eb-Ua; Mon, 17 Feb 2020 10:11:07 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j3dJr-00083V-Qh; Mon, 17 Feb 2020 10:08:05 +0000
-Received: by mail-wr1-x441.google.com with SMTP id c9so18941886wrw.8;
- Mon, 17 Feb 2020 02:08:03 -0800 (PST)
+ id 1j3dMd-0001SQ-IO; Mon, 17 Feb 2020 10:10:56 +0000
+Received: by mail-wm1-x342.google.com with SMTP id a9so17755168wmj.3;
+ Mon, 17 Feb 2020 02:10:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=SEQnSgRT0FOL1Cyvatqf8zzf8j+EK3jBq0NkUU5YAvE=;
- b=oY3COUzGJQe9VJEASc4SujUbLPddVJ9pnkEruml4eqB+806cQGmZqpbuI1Yzpqmr52
- R8yc46+J8eKUIWxGkLo/kTOCk6ALtfHup1aFdNjaChjciobvDFokpxLikikDD1mXk8hz
- o8YDO9lLY2bZ8iQCo1yZM748VmAUtUYx2dzW6QW5d5FNJ94GA+RKUF6hKcerXc+TYxlj
- cHtv9aRSgpvAf0eMvPscZlI5/W+Wpxs8Td7F624Y+TEtnzrxKNmQ9J0gJ4jfP6QdowE8
- pXKqD5gU4E6+NVNlTyJb4Yv2rnUkDjAjOWA6EqnK4hv+uHulsadVElV8di2MzTpWjI8M
- Yf+g==
+ bh=LX7y+Gxv8oRaIJU3vImQ/7NA8JiuiTJW0+co3xKxx/0=;
+ b=geapOaJ3nlK45RXQfVL6jtxxGxfiUuiHwgoQnBqh9LjYQcIr9ClD07903OVC+6S0Q1
+ ok9btbORdf4NCHrcrIwr2AU4X07DvYjVl5Lf1/pC9n8VBNStrQ9g6NMOMuEwMfb2gbTV
+ rA7oT58WNAfuyrT4+zoA1Z2snRT3nd+/QcKcq8zzM82HEioDDcBvp9iY5w2gP5WFhs8Z
+ 4o8cxwvIeiOaFqQjN+Dm01wrzKs867P1nct7MI6cWInhcJ8JTBSrUvFjS4XgRXLZ3HGt
+ ZZ6ACCPPvdANTB+h7sfaIuqXHDQpTAq47NIQuew84Orrs7KdbU17VjqPUUjLCUHGZg2p
+ yvLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=SEQnSgRT0FOL1Cyvatqf8zzf8j+EK3jBq0NkUU5YAvE=;
- b=PqsT5kcPs1mS6b4hP6QekHG0eS4NBNmFzq6k25BNlM14W5GEHf2eCrGFNnjg1ZzQMS
- 6wAqOW2F+sG3KUePuJQCQ9h6FneuPwQ8lAAnRpO78U/I2NkPrKOimVrIDiNB738FRqM3
- s1VYKot+dKzyIVcnn1F+AEp8gvDhf4Z8odmlf1bPFZc0giah1fD3hqKIDd+vFKWazACn
- Y7dSGUcSsNHKt2yQLDy4xJbj0ERgcIQQFwhzNUz0mw6G3eW9H6Y5aNcTqGjpadoyDCAv
- gir1sihok7J57Bxn4Vkg/I+uMNvIldk/4LHXflqEfPbTDfApE+/2g/SsxbG3bXxpL80M
- nmzg==
-X-Gm-Message-State: APjAAAUP6IVZeUkjxk8cuEVGaOMRE+6lfsLIZCu9in8zuDEe9B1/EV+W
- pHPMtn4ZbmVAaJtwXhM5C6I7/VRf
-X-Google-Smtp-Source: APXvYqxTalbns3Z/ZglZfTaPbZu28suFO73wYkSuo/83l5r5z+WGa/A0DafZ8y6vdW9NrUQs130xGw==
-X-Received: by 2002:adf:e40f:: with SMTP id g15mr20752872wrm.223.1581934082336; 
- Mon, 17 Feb 2020 02:08:02 -0800 (PST)
+ bh=LX7y+Gxv8oRaIJU3vImQ/7NA8JiuiTJW0+co3xKxx/0=;
+ b=JDQFy3OsiVzbXByaY0zf/wN16EOipx9WfzzeAY2LOLsAhyo9UUD8HUFwffJMnDQcaK
+ j3lkTjFI7a1oCosSkLHLRd9NwdD8qwC4laX9yMdTVlFUzW/IQyH5tSCtzCMmkaUS4gDa
+ nOTNQe789aFK+KWW5xOWqkmYPgjjjo1xFXpLEoJV/irSySVFhWzRpbRhjJaO47B6ob6N
+ +1+0XM0l49jDeg2A/+NqdRGH0OMR4nXtaRE1O4VgDo3Glh1fTIGxJ11ar6z4C8+Tddtj
+ DVngu+2YEASLwx23bgnA3qVSytaGrLvwoy5hXbW/BKMhbMCe/01TSd3Vddzmrsln/QX2
+ b3oA==
+X-Gm-Message-State: APjAAAUw2RgauYbnw6vB3gvweCuSl3ZfAQwvDhgtTaxRWPbjU1W8xyJj
+ QTlWCxg/3/qP64TXKetQx+YsCdNT
+X-Google-Smtp-Source: APXvYqyAHskOIWqEMbSGfBOftJ8ieYOll9XUwpzj3attdAluofPcpc1g45hkJBbhGCXMJD+vXXkO8Q==
+X-Received: by 2002:a1c:b603:: with SMTP id g3mr22602924wmf.133.1581934253295; 
+ Mon, 17 Feb 2020 02:10:53 -0800 (PST)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id h205sm20396617wmf.25.2020.02.17.02.08.00
+ by smtp.gmail.com with ESMTPSA id x11sm19796428wmg.46.2020.02.17.02.10.52
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Feb 2020 02:08:01 -0800 (PST)
-Subject: Re: [PATCH v2 0/3] soc: mediatek: pwrap: add pwrap driver for MT6779
- SoCs
-To: Argus Lin <argus.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Mark Rutland <mark.rutland@arm.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will.deacon@arm.com>
-References: <1581833843-4485-1-git-send-email-argus.lin@mediatek.com>
+ Mon, 17 Feb 2020 02:10:52 -0800 (PST)
+Subject: Re: [PATCH 1/2] ARM: dts: mediatek: rename scpsys nodes to
+ power-controller
+To: matthias.bgg@kernel.org, Rob Herring <robh+dt@kernel.org>,
+ devicetree@vger.kernel.org
+References: <20200212144145.25407-1-matthias.bgg@kernel.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -152,16 +152,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <60a52486-3669-4a3e-c6b1-0eac7a8dceb3@gmail.com>
-Date: Mon, 17 Feb 2020 11:07:59 +0100
+Message-ID: <66df71d2-9295-b0ee-1a43-c13d49ebeaa9@gmail.com>
+Date: Mon, 17 Feb 2020 11:10:51 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <1581833843-4485-1-git-send-email-argus.lin@mediatek.com>
+In-Reply-To: <20200212144145.25407-1-matthias.bgg@kernel.org>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200217_020803_884542_33E239D2 
-X-CRM114-Status: GOOD (  16.83  )
+X-CRM114-CacheID: sfid-20200217_021055_635021_8745BBF9 
+X-CRM114-Status: GOOD (  17.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -173,12 +173,8 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
- Chenglin Xu <chenglin.xu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- linux-kernel@vger.kernel.org, henryc.chen@mediatek.com, flora.fu@mediatek.com,
- Christophe Jaillet <christophe.jaillet@wanadoo.fr>,
- linux-mediatek@lists.infradead.org, Chen Zhong <chen.zhong@mediatek.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -186,39 +182,62 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 16/02/2020 07:17, Argus Lin wrote:
-> changes since v1:
-> 1. Modify pwrap_mt6779 arb_en_all, int_en_all, and wdt_src value
-> when initialization.
-> 2. Remove PWRAP_WDT_UNIT, PWRAP_WDT_UNIT, PWRAP_INT_EN, and
-> PWRAP_CAP_INT1_EN registered value check, we will initialize them
-> again at kernel level.
+On 12/02/2020 15:41, matthias.bgg@kernel.org wrote:
+> From: Matthias Brugger <matthias.bgg@gmail.com>
 > 
-> Here's version 1 of the patch series, include 3 patches:
-> 1. Add compatible for MT6779 pwrap
-> 2. Add pwrap driver for MT6779 SoCs. Keep PWRAP_HIPRIO_ARB_EN,
-> PWRAP_WDT_UNIT, and PWRAP_WDT_SRC_EN value if it has initialized.
-> When we enable interrupt flag, read current value then do logical
-> OR opersion with wrp->master->int_en_all.
-> 3. Add MT6359 support for MT6779 SoCs.
+> The nodes with name scpsys actually implement a power-controller.
+> Rename the nodes to match the bindings description.
 > 
-> Argus Lin (3):
->   dt-bindings: pwrap: mediatek: add pwrap support for MT6779
->   soc: mediatek: pwrap: add pwrap driver for MT6779 SoCs
->   soc: mediatek: pwrap: add support for MT6359 PMIC
-> 
+> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-Applied all three to v5.6-next/soc
+For the record, both applied to v5.6-next/dts[32,64]
 
-Thanks a lot!
-Matthias
-
->  .../devicetree/bindings/soc/mediatek/pwrap.txt     |   1 +
->  drivers/soc/mediatek/mtk-pmic-wrap.c               | 128 +++++++++++++++++++++
->  2 files changed, 129 insertions(+)
+> ---
 > 
-> --
-> 1.8.1.1.dirty
+>  arch/arm/boot/dts/mt2701.dtsi | 2 +-
+>  arch/arm/boot/dts/mt7623.dtsi | 2 +-
+>  arch/arm/boot/dts/mt7629.dtsi | 2 +-
+>  3 files changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
+> index 51e1305c6471..2093b38d6e6d 100644
+> --- a/arch/arm/boot/dts/mt2701.dtsi
+> +++ b/arch/arm/boot/dts/mt2701.dtsi
+> @@ -148,7 +148,7 @@ syscfg_pctl_a: syscfg@10005000 {
+>  		reg = <0 0x10005000 0 0x1000>;
+>  	};
+>  
+> -	scpsys: scpsys@10006000 {
+> +	scpsys: power-controller@10006000 {
+>  		compatible = "mediatek,mt2701-scpsys", "syscon";
+>  		#power-domain-cells = <1>;
+>  		reg = <0 0x10006000 0 0x1000>;
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index a79f0b6c3429..f76b4a3c34b9 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -268,7 +268,7 @@ syscfg_pctl_a: syscfg@10005000 {
+>  		reg = <0 0x10005000 0 0x1000>;
+>  	};
+>  
+> -	scpsys: scpsys@10006000 {
+> +	scpsys: power-controller@10006000 {
+>  		compatible = "mediatek,mt7623-scpsys",
+>  			     "mediatek,mt2701-scpsys",
+>  			     "syscon";
+> diff --git a/arch/arm/boot/dts/mt7629.dtsi b/arch/arm/boot/dts/mt7629.dtsi
+> index 867b88103b9d..60787632e4a1 100644
+> --- a/arch/arm/boot/dts/mt7629.dtsi
+> +++ b/arch/arm/boot/dts/mt7629.dtsi
+> @@ -90,7 +90,7 @@ pericfg: syscon@10002000 {
+>  			#clock-cells = <1>;
+>  		};
+>  
+> -		scpsys: scpsys@10006000 {
+> +		scpsys: power-controller@10006000 {
+>  			compatible = "mediatek,mt7629-scpsys",
+>  				     "mediatek,mt7622-scpsys";
+>  			#power-domain-cells = <1>;
 > 
 
 _______________________________________________
