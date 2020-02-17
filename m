@@ -2,175 +2,77 @@ Return-Path: <SRS0=sDSL=4F=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3E132C35254
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 10:36:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A0712C761A3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 11:35:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 017B92072C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 10:36:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 76DE420836
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 11:35:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SCrl1ArR";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="iURTU7sa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 017B92072C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Inbiz4fe";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="PxgkLckJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 76DE420836
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G+lBcqrshLcv/rhjIAfd5Ibo5A2/L4WNuop+5AGVxK8=; b=SCrl1ArRrObwL7
-	SYF33OLZgxk4txhD6Jgfo6Rv2+QZxkcibmfYrJmTeTIH+RsycyqnWPOCjNcBcVOyJaRexy3WPUkdG
-	a3Y3MkIe1eUExf/5Oe1Em7JQxKn3U7Ea+reg61/53BzykvvIk6OY9cDM6VFtngWv8ac2OcdulHzx1
-	GlxG0L8K0TLjITgefXjkrN1RAKPp9ivqM+HWdXgmXLIp2H1Da81qqXQcV7NbG37cnuCLXe4lQVC7e
-	rQYHuIILovLNx/OM19jChEkU30eyybdmW5Gz4jjtLOOa1/DoRSTFAYpukUGZgB+G5B/tcU/t2Ri9v
-	6WmYnE9/WJSuUVHkbWgg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TWE5SB3NzXyvD2wt8kah6TzRoPurXYKr1epKKfRhyN4=; b=Inbiz4feJE4Q3J
+	A+el2G1gERHxz6X/63rlF/7A7H2NEmA5Cpy7C5VYM39PkefMYm+c7RB1Wa7HclBagMTqRuP+lBMUO
+	S6dxosgK+91na+5kW+HfdxYZD2dZi5oyvf6jEocI2WKI8EN4t2Q3mC3MXTls1auTE6u2EJYAtIyia
+	hfFA+bNAhvZ5nufo8XaC8BTUHOSZU8LFKcLOMnLz1W52yCkObWchudlOZTtnHuFrbg1S80A9BWs19
+	EppsC+7G+zCk9nJoMyVqYIaHJurTVH6NUmrTVvZQeYa7H/XHfk4ljI7DHmRUuYllGD03e3hXXXU23
+	8u15kVfBH3Ik1yc4Vm+w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j3dlB-0006DI-Da; Mon, 17 Feb 2020 10:36:17 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1j3egV-0001HD-Sg; Mon, 17 Feb 2020 11:35:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j3dl2-00063W-Li; Mon, 17 Feb 2020 10:36:10 +0000
-Received: by mail-wm1-x344.google.com with SMTP id a9so17846779wmj.3;
- Mon, 17 Feb 2020 02:36:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=uvtojMvP+V7ADTabtkl+yuRBVwonhrdZ0+EiqW4xzoo=;
- b=iURTU7sanVxWQGKScYzJZFiy6fQWO/TeBrG7roOnsIP1NdEUGfpcfq0XaZg8IAEuEN
- MmAwaiP2YeLvtX8deFeaP2c6uY80JiMcKHc3wXzSGlsd2fOrvREDRny49GcZX94wYNQq
- KR5eVD8PwoYbwXIZUPQtaMIr3OIt4T7r66YehfbhE13V0udIz47zUtXah1acwBQZ9UDC
- o6mMpjGKQTTZmTc1bZuJOVf+KWzI2YLUeAN1znGH8pefP33gOsQPhz8upOjCBmQurz/s
- /jJZrhs3NZd/ikFjhbs8L+T/eKG+eA6TH1nQ9tahl7DO7Ump1t7QlI/2yLeRzIHi43m/
- xzQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=uvtojMvP+V7ADTabtkl+yuRBVwonhrdZ0+EiqW4xzoo=;
- b=nWVQ9/FB3YkG92ZDaKH58eFblnSjriDdHuMqRAvHxFlJrkmHUymsXD1rbOStAM6dLS
- 3hXKEyDdPbA4MlriLPD2jr6acg2qtl6r2unJ1vgJLXNkb3tD0avB3Ikr2I8kWtJ/NB5G
- D/1F4G/eAItlx+BtQ+GrWvhbLU7HvcFQqTJFvb9QithBhGjUBibfCk0ekBVXElk5kB+Y
- ZMiVl9a1i6q3pZMkwnIEdOxNRyhqx/tYq8MIZfesz+QFV1dfr+gJ6/DsIUYjl5QNutXs
- V3Wkv5CpkWtxLV9aPfba7wz0w/A2zl5lK7UWF59399DjSSR748fLwuiQCIxH90BezyO7
- z7iA==
-X-Gm-Message-State: APjAAAWgvB0AmxAmzPKOJ6pweH9dcBACea4HYBG2JxEwtrcjPhkyj2hr
- pi0SOWrSOPAfPQRg+cCSVaM=
-X-Google-Smtp-Source: APXvYqz+rhy+3NH5M2AM8t+uz2TLWy7+Y2+NRRLDO2dzDnhxxTh00G3xgbZFNaJDnzuQq9/uakDgiA==
-X-Received: by 2002:a1c:9d02:: with SMTP id g2mr20910437wme.108.1581935767021; 
- Mon, 17 Feb 2020 02:36:07 -0800 (PST)
-Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id i4sm59907wmd.23.2020.02.17.02.36.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Feb 2020 02:36:06 -0800 (PST)
-Subject: Re: [PATCH v7 5/7] soc: mediatek: add MT6765 scpsys and subdomain
- support
-To: Macpaul Lin <macpaul.lin@mediatek.com>,
- =?UTF-8?B?V2VuZGVsbCBMaW4gKOael+eQpuiAgCk=?= <Wendell.Lin@mediatek.com>,
- Weiyi Lu <Weiyi.Lu@mediatek.com>, Mars Cheng <mars.cheng@mediatek.com>,
- Sean Wang <Sean.Wang@mediatek.com>, Owen Chen <owen.chen@mediatek.com>,
- ",Ryder Lee" <Ryder.Lee@mediatek.com>,
- Morven-CF Yeh <Morven-CF.Yeh@mediatek.com>,
- Kevin-CW Chen <Kevin-CW.Chen@mediatek.com>,
- Albert-ZL Huang <Albert-ZL.Huang@mediatek.com>
-References: <1581067250-12744-1-git-send-email-macpaul.lin@mediatek.com>
- <1581067250-12744-6-git-send-email-macpaul.lin@mediatek.com>
- <c704bdab-8489-0b54-59de-401bc4ab24e6@gmail.com>
- <1581562527.19053.18.camel@mtkswgap22>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <ef3d8aac-f5ec-cf13-0500-644bf37e36ef@gmail.com>
-Date: Mon, 17 Feb 2020 11:36:03 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ id 1j3egT-0001GF-K3; Mon, 17 Feb 2020 11:35:30 +0000
+X-UUID: e0ccc3be668542ce884c3f9c48a572b1-20200217
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=eP5l76kC+wYQ1SgKc3IwEHH0X8lfLQiaEbwRojJdv0w=; 
+ b=PxgkLckJECq3POl9lr7b11FiX6J7VBJhpW9lzfhfyaeC8bClzLDomAHJJNbS0AGFXgqS3lT7bRVr/0XoIUCMxYVG6uTnEwRgFURys9PNNNS1h0ZfwzfIKjaNCvsn6+sMuCkpOKLdJdA5NuyTsBr1JQgK52yKnRv5goDgA1i82tY=;
+X-UUID: e0ccc3be668542ce884c3f9c48a572b1-20200217
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 561370588; Mon, 17 Feb 2020 03:35:22 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 17 Feb 2020 03:35:41 -0800
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by mtkmbs05n1.mediatek.inc
+ (172.21.101.15) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Mon, 17 Feb 2020 19:34:24 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Mon, 17 Feb 2020 19:35:55 +0800
+Message-ID: <1581939298.4784.12.camel@mhfsdcap03>
+Subject: Re: [PATCH 2/2] iommu/mediatek: add support for MT8167
+From: Yong Wu <yong.wu@mediatek.com>
+To: Fabien Parent <fparent@baylibre.com>
+Date: Mon, 17 Feb 2020 19:34:58 +0800
+In-Reply-To: <1581902146.28283.0.camel@mtksdaap41>
+References: <20200103162632.109553-1-fparent@baylibre.com>
+ <20200103162632.109553-2-fparent@baylibre.com>
+ <1581902146.28283.0.camel@mtksdaap41>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <1581562527.19053.18.camel@mtkswgap22>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200217_023608_707622_75E3677B 
-X-CRM114-Status: GOOD (  21.31  )
+X-CRM114-CacheID: sfid-20200217_033529_664293_A21BA71A 
+X-CRM114-Status: GOOD (  17.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -182,96 +84,89 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Joerg Roedel <jroedel@suse.de>,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- CC Hwang <cc.hwang@mediatek.com>, Stephen Boyd <sboyd@kernel.org>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Michael Turquette <mturquette@baylibre.com>,
- Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org,
- Evan Green <evgreen@chromium.org>, Fabien Parent <fparent@baylibre.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Marc Zyngier <marc.zyngier@arm.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Shawn Guo <shawnguo@kernel.org>,
- Will Deacon <will@kernel.org>, linux-clk@vger.kernel.org,
- Yong Wu <yong.wu@mediatek.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, joro@8bytes.org,
+ linux-kernel@vger.kernel.org, CK Hu <ck.hu@mediatek.com>,
+ iommu@lists.linux-foundation.org, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Fabien,
 
+Thanks very much for your patch.
 
-On 13/02/2020 03:55, Macpaul Lin wrote:
-> On Sun, 2020-02-09 at 22:26 +0100, Matthias Brugger wrote:
->>
->> On 07/02/2020 10:20, Macpaul Lin wrote:
->>> From: Mars Cheng <mars.cheng@mediatek.com>
->>>
->>> This adds scpsys support for MT6765
->>> Add subdomain support for MT6765:
->>> isp, mm, connsys, mfg, and cam.
->>>
->>> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
->>> Signed-off-by: Owen Chen <owen.chen@mediatek.com>
->>> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
->>> ---
->>>  drivers/soc/mediatek/mtk-scpsys.c | 130 ++++++++++++++++++++++++++++++
->>>  1 file changed, 130 insertions(+)
->>>
->>> diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
->>> index f669d3754627..9940c6d13222 100644
->>> --- a/drivers/soc/mediatek/mtk-scpsys.c
->>> +++ b/drivers/soc/mediatek/mtk-scpsys.c
->>> @@ -15,6 +15,7 @@
->>>  
->>>  #include <dt-bindings/power/mt2701-power.h>
->>>  #include <dt-bindings/power/mt2712-power.h>
->>> +#include <dt-bindings/power/mt6765-power.h>
->>>  #include <dt-bindings/power/mt6797-power.h>
->>>  #include <dt-bindings/power/mt7622-power.h>
->>>  #include <dt-bindings/power/mt7623a-power.h>
->>> @@ -749,6 +750,120 @@ static const struct scp_subdomain scp_subdomain_mt2712[] = {
->>>  	{MT2712_POWER_DOMAIN_MFG_SC2, MT2712_POWER_DOMAIN_MFG_SC3},
->>>  };
->>>  
->>> +/*
->>> + * MT6765 power domain support
->>> + */
->>> +#define SPM_PWR_STATUS_MT6765			0x0180
->>> +#define SPM_PWR_STATUS_2ND_MT6765		0x0184
->>> +
->>
->> The offsets are the same as for MT6797. Could we rename the define to something
->> generic and move it up and put it just under SPM_PWR_STATUS_2ND? Probably as a
->> separate patch.
->>
->> Regards,
->> Matthias
->>
-> Loop more related owners in this mail loop.
+On Mon, 2020-02-17 at 09:15 +0800, CK Hu wrote:
+> +Yong.Wu.
 > 
-> After check it with our clock driver owners, there are different
-> generations of clock IPs. Because different smart phone chips require
-> different cost-function oriented design, even they use the same
-> generation of clock IPs, might not have the same offsets. Take MT6765
-> and MT6797 for example, the listed offsets are just coincidence.
-> 
-> Our clock driver owners will work on this to summarize the common offset
-> parts for each generations, but at this moment, we suggest just separate
-> the files for mt6797 and mt6765. Commonly used header should be come
-> with the next chip which clock IP just the same generation of mt6797 or
-> mt6765.
-> 
+> On Fri, 2020-01-03 at 17:26 +0100, Fabien Parent wrote:
+> > Add support for the IOMMU on MT8167
+> > 
+> > Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> > ---
+> >  drivers/iommu/mtk_iommu.c | 11 ++++++++++-
+> >  drivers/iommu/mtk_iommu.h |  1 +
+> >  2 files changed, 11 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> > index 6fc1f5ecf91e..5fc6178a82dc 100644
+> > --- a/drivers/iommu/mtk_iommu.c
+> > +++ b/drivers/iommu/mtk_iommu.c
+> > @@ -569,7 +569,8 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+> >  		F_INT_PRETETCH_TRANSATION_FIFO_FAULT;
+> >  	writel_relaxed(regval, data->base + REG_MMU_INT_MAIN_CONTROL);
+> >  
+> > -	if (data->plat_data->m4u_plat == M4U_MT8173)
+> > +	if (data->plat_data->m4u_plat == M4U_MT8173 ||
+> > +	    data->plat_data->m4u_plat == M4U_MT8167)
 
-Sounds good, no need to do anything here. We can do the cleanup in another patch
-afterwards.
+I didn't know mt8167 will do upstream. In my original thought, there is
+only mt8173 use this setting and the later SoC won't use this, So I used
+the "m4u_plat" directly here.
 
-Regards,
-Matthias
+If we also need support mt8167, then CK's suggestion is reasonable. we
+could add a new variable like "legacy_ivrp_paddr" from its register name
+in a seperated patch, then support mt8167 in a new patch.
 
-> Thanks
-> Macpaul Lin
+> >  		regval = (data->protect_base >> 1) | (data->enable_4GB << 31);
+> >  	else
+> >  		regval = lower_32_bits(data->protect_base) |
+> > @@ -782,6 +783,13 @@ static const struct mtk_iommu_plat_data mt2712_data = {
+> >  	.larbid_remap = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
+> >  };
+> >  
+> > +static const struct mtk_iommu_plat_data mt8167_data = {
+> > +	.m4u_plat     = M4U_MT8167,
+> > +	.has_4gb_mode = true,
+> > +	.reset_axi    = true,
+> > +	.larbid_remap = {0, 1, 2, 3, 4, 5}, /* Linear mapping. */
+> > +};
+> > +
+> >  static const struct mtk_iommu_plat_data mt8173_data = {
+> >  	.m4u_plat     = M4U_MT8173,
+> >  	.has_4gb_mode = true,
+> > @@ -798,6 +806,7 @@ static const struct mtk_iommu_plat_data mt8183_data = {
+> >  
+> >  static const struct of_device_id mtk_iommu_of_ids[] = {
+> >  	{ .compatible = "mediatek,mt2712-m4u", .data = &mt2712_data},
+> > +	{ .compatible = "mediatek,mt8167-m4u", .data = &mt8167_data},
+> >  	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
+> >  	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
+> >  	{}
+> > diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+> > index ea949a324e33..cb8fd5970cd4 100644
+> > --- a/drivers/iommu/mtk_iommu.h
+> > +++ b/drivers/iommu/mtk_iommu.h
+> > @@ -30,6 +30,7 @@ struct mtk_iommu_suspend_reg {
+> >  enum mtk_iommu_plat {
+> >  	M4U_MT2701,
+> >  	M4U_MT2712,
+> > +	M4U_MT8167,
+> >  	M4U_MT8173,
+> >  	M4U_MT8183,
+> >  };
 > 
 > 
 
