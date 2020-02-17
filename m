@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 505E1C7619B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 03:47:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4FBC4C35242
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 03:47:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2216220717
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 03:47:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 22E75206E2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 03:47:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QJbT6yOo";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bl2K4sLO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2216220717
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sxhT7N8M";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="mV+o84ZZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 22E75206E2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,56 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vCS3Ct2kAWRe163yIdm2J8xkvRQOck7jZU5LL4E0Ed0=; b=QJbT6yOoUyRgnp
-	ILtaFQkR1fzv23s+wPdMkvvjdDa/Hm8cfH2YJc+/Hqf6YpBYk0q/1TSB/399iNaBXaRSyMuiHWmMk
-	yLO1Am7shQ3M1gL24xuJtUUTcg/Q57vSuPOcSIlKTKEg0evKzM1kiDkG69lQo7a0vz4UMSNi2U5IC
-	2yV6layWXxUgHCque399yuMobgU9gBkQYF6GFhFLeBKBI3HJkznW38Gs08VGzc9pTqdBZQuC5zLOG
-	9PXM8i0LpVZilnd81UHERPmLtsOeakM1Rg+8jgZAJsBa0wn8iNIjxCDPAy0556laX6Xm8o6iJtZiP
-	VTv1rS/WOAKc6yketRGg==;
+	List-Owner; bh=kNOxUGXqhuhSg7necCIPWIsNRbHERKEJHcVRpM5LfCo=; b=sxhT7N8M+PydXC
+	PFM8Jr12UEvrmCoCCo89R5PTgXxil4UY0sJ4K0n8ywT4mFajVa3+nWwJXXaoUDL5h3jaV7CE8Tkt1
+	AoZWaX8SFB8gZuVyGFD2RGG+dAapqSUh9+Hkqk5xe4XREE5x8umUTsjQqxRuXuG04c9L1y3CelAmb
+	ggVk/nG8h2crL0qd/sZ0sTY2TSH08QJUBmEj9Rh3AX/bureszitv10E8XQWyKv8Pfs2RU2/BAca5f
+	f3Q55qGWzEGl0f1pifq+J56oAtqovTo0pxK8vL3UmVUapvCikjSQKdw07SUKzpGLVj3XEHlbZXWXR
+	+UYNv1p5CyI+MiDb2svA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j3XN2-0001uj-OO; Mon, 17 Feb 2020 03:46:56 +0000
+	id 1j3XN9-00020a-Fd; Mon, 17 Feb 2020 03:47:03 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j3XLw-0000q9-Eo; Mon, 17 Feb 2020 03:45:50 +0000
-X-UUID: d17a8475545842cf9237ed5ab76fe6f2-20200216
+ id 1j3XLw-0000qD-VN; Mon, 17 Feb 2020 03:45:50 +0000
+X-UUID: 1cfe374704ba406690a15391a5f5acc2-20200216
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ijwC23Ver6dmempwk564z1rj8q4l6AEPxD6fhOUj3L8=; 
- b=bl2K4sLOIrsoUTD5sATyZxYvERt2lmoNx2WSA4Kr/b9tYFNmHnzSm1Zqu7gUZPKNx3viR3iTO2eTdHQmPCWInZ480F6Lx8MuygSJjI23FszXSAj/ZhcFXMJYqRsYjOck8WzK4Od4afm7ZBYHh4bxHl5RJ0vwJlubLP/5QLwDbM0=;
-X-UUID: d17a8475545842cf9237ed5ab76fe6f2-20200216
+ bh=nyKqbutaaCHQgIz0tIDMWCfASb943xl96hXjeHKXdmc=; 
+ b=mV+o84ZZij/FvvGdQMwFReFgWvoj5dnfVl/M3UBGy/mH8It2oIgES3+K+WIeql4H+FL2DRB81G4qGRH/+n5eV8P6WS8mpduDwVeHq/hpQYJxaa1n7wxzqZD2GXtfsF3N6QZpdixngkYiTyocF2uWwyUV2R3NnGURRVsSttZIFGc=;
+X-UUID: 1cfe374704ba406690a15391a5f5acc2-20200216
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2052173775; Sun, 16 Feb 2020 19:45:33 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ with ESMTP id 1023831421; Sun, 16 Feb 2020 19:45:33 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 16 Feb 2020 19:35:57 -0800
+ 15.0.1395.4; Sun, 16 Feb 2020 19:35:50 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 17 Feb 2020 11:33:04 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 17 Feb 2020 11:34:40 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Mon, 17 Feb 2020 11:35:08 +0800
+ Frontend Transport; Mon, 17 Feb 2020 11:35:07 +0800
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat
  <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>, Sascha Hauer
  <kernel@pengutronix.de>
-Subject: [PATCH v12 09/10] arm64: dts: Add power controller device node of
- MT8183
-Date: Mon, 17 Feb 2020 11:35:26 +0800
-Message-ID: <1581910527-1636-10-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v12 02/10] dt-bindings: soc: Add MT8183 power dt-bindings
+Date: Mon, 17 Feb 2020 11:35:19 +0800
+Message-ID: <1581910527-1636-3-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1581910527-1636-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1581910527-1636-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 123025A41DE5EEAAFDA594A3C6F88AF2A1E432E843D30DEE91B6514F75DDAF2D2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200216_194548_546990_E8CCA3BD 
-X-CRM114-Status: UNSURE (   8.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200216_194549_066186_520850E7 
+X-CRM114-Status: GOOD (  13.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,102 +93,99 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add power controller node and smi-common node for MT8183
-In scpsys node, it contains clocks and regmapping of
-infracfg and smi-common for bus protection.
+Add power dt-bindings of MT8183 and introduces "BASIC" and
+"SUBSYS" clock types in binding document.
+The "BASIC" type is compatible to the original power control with
+clock name [a-z]+[0-9]*, e.g. mm, vpu1.
+The "SUBSYS" type is used for bus protection control with clock
+name [a-z]+-[0-9]+, e.g. isp-0, cam-1.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 62 ++++++++++++++++++++++++++++++++
- 1 file changed, 62 insertions(+)
+ .../devicetree/bindings/soc/mediatek/scpsys.txt    | 20 ++++++++++++++---
+ include/dt-bindings/power/mt8183-power.h           | 26 ++++++++++++++++++++++
+ 2 files changed, 43 insertions(+), 3 deletions(-)
+ create mode 100644 include/dt-bindings/power/mt8183-power.h
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 10b3247..cef2236 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -8,6 +8,7 @@
- #include <dt-bindings/clock/mt8183-clk.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/power/mt8183-power.h>
- #include "mt8183-pinfunc.h"
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+index 8f469d8..8e0e1ed 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
++++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+@@ -14,6 +14,7 @@ power/power-domain.yaml. It provides the power domains defined in
+ - include/dt-bindings/power/mt2701-power.h
+ - include/dt-bindings/power/mt2712-power.h
+ - include/dt-bindings/power/mt7622-power.h
++- include/dt-bindings/power/mt8183-power.h
  
- / {
-@@ -253,6 +254,62 @@
- 			#interrupt-cells = <2>;
- 		};
+ Required properties:
+ - compatible: Should be one of:
+@@ -25,18 +26,31 @@ Required properties:
+ 	- "mediatek,mt7623a-scpsys": For MT7623A SoC
+ 	- "mediatek,mt7629-scpsys", "mediatek,mt7622-scpsys": For MT7629 SoC
+ 	- "mediatek,mt8173-scpsys"
++	- "mediatek,mt8183-scpsys"
+ - #power-domain-cells: Must be 1
+ - reg: Address range of the SCPSYS unit
+ - infracfg: must contain a phandle to the infracfg controller
+-- clock, clock-names: clocks according to the common clock binding.
+-                      These are clocks which hardware needs to be
+-                      enabled before enabling certain power domains.
++- clock, clock-names: Clocks according to the common clock binding.
++                      Some SoCs have to groups of clocks.
++                      BASIC clocks need to be enabled before enabling the
++                      corresponding power domain.
++                      SUBSYS clocks need to be enabled before releasing the
++                      bus protection.
+ 	Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
+ 	Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
+ 	Required clocks for MT6797: "mm", "mfg", "vdec"
+ 	Required clocks for MT7622 or MT7629: "hif_sel"
+ 	Required clocks for MT7623A: "ethif"
+ 	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
++	Required clocks for MT8183: BASIC: "audio", "mfg", "mm", "cam", "isp",
++					   "vpu", "vpu1", "vpu2", "vpu3"
++				    SUBSYS: "mm-0", "mm-1", "mm-2", "mm-3",
++					    "mm-4", "mm-5", "mm-6", "mm-7",
++					    "mm-8", "mm-9", "isp-0", "isp-1",
++					    "cam-0", "cam-1", "cam-2", "cam-3",
++					    "cam-4", "cam-5", "cam-6", "vpu-0",
++					    "vpu-1", "vpu-2", "vpu-3", "vpu-4",
++					    "vpu-5"
  
-+		scpsys: power-controller@10006000 {
-+			compatible = "mediatek,mt8183-scpsys", "syscon";
-+			#power-domain-cells = <1>;
-+			reg = <0 0x10006000 0 0x1000>;
-+			clocks = <&topckgen CLK_TOP_MUX_AUD_INTBUS>,
-+				 <&infracfg CLK_INFRA_AUDIO>,
-+				 <&infracfg CLK_INFRA_AUDIO_26M_BCLK>,
-+				 <&topckgen CLK_TOP_MUX_MFG>,
-+				 <&topckgen CLK_TOP_MUX_MM>,
-+				 <&topckgen CLK_TOP_MUX_CAM>,
-+				 <&topckgen CLK_TOP_MUX_IMG>,
-+				 <&topckgen CLK_TOP_MUX_IPU_IF>,
-+				 <&topckgen CLK_TOP_MUX_DSP>,
-+				 <&topckgen CLK_TOP_MUX_DSP1>,
-+				 <&topckgen CLK_TOP_MUX_DSP2>,
-+				 <&mmsys CLK_MM_SMI_COMMON>,
-+				 <&mmsys CLK_MM_SMI_LARB0>,
-+				 <&mmsys CLK_MM_SMI_LARB1>,
-+				 <&mmsys CLK_MM_GALS_COMM0>,
-+				 <&mmsys CLK_MM_GALS_COMM1>,
-+				 <&mmsys CLK_MM_GALS_CCU2MM>,
-+				 <&mmsys CLK_MM_GALS_IPU12MM>,
-+				 <&mmsys CLK_MM_GALS_IMG2MM>,
-+				 <&mmsys CLK_MM_GALS_CAM2MM>,
-+				 <&mmsys CLK_MM_GALS_IPU2MM>,
-+				 <&imgsys CLK_IMG_LARB5>,
-+				 <&imgsys CLK_IMG_LARB2>,
-+				 <&camsys CLK_CAM_LARB6>,
-+				 <&camsys CLK_CAM_LARB3>,
-+				 <&camsys CLK_CAM_SENINF>,
-+				 <&camsys CLK_CAM_CAMSV0>,
-+				 <&camsys CLK_CAM_CAMSV1>,
-+				 <&camsys CLK_CAM_CAMSV2>,
-+				 <&camsys CLK_CAM_CCU>,
-+				 <&ipu_conn CLK_IPU_CONN_IPU>,
-+				 <&ipu_conn CLK_IPU_CONN_AHB>,
-+				 <&ipu_conn CLK_IPU_CONN_AXI>,
-+				 <&ipu_conn CLK_IPU_CONN_ISP>,
-+				 <&ipu_conn CLK_IPU_CONN_CAM_ADL>,
-+				 <&ipu_conn CLK_IPU_CONN_IMG_ADL>;
-+			clock-names = "audio", "audio1", "audio2",
-+				      "mfg", "mm", "cam",
-+				      "isp", "vpu", "vpu1",
-+				      "vpu2", "vpu3", "mm-0",
-+				      "mm-1", "mm-2", "mm-3",
-+				      "mm-4", "mm-5", "mm-6",
-+				      "mm-7", "mm-8", "mm-9",
-+				      "isp-0", "isp-1", "cam-0",
-+				      "cam-1", "cam-2", "cam-3",
-+				      "cam-4", "cam-5", "cam-6",
-+				      "vpu-0", "vpu-1", "vpu-2",
-+				      "vpu-3", "vpu-4", "vpu-5";
-+			infracfg = <&infracfg>;
-+			smi_comm = <&smi_common>;
-+		};
+ Optional properties:
+ - vdec-supply: Power supply for the vdec power domain
+diff --git a/include/dt-bindings/power/mt8183-power.h b/include/dt-bindings/power/mt8183-power.h
+new file mode 100644
+index 0000000..5c0c8c7
+--- /dev/null
++++ b/include/dt-bindings/power/mt8183-power.h
+@@ -0,0 +1,26 @@
++/* SPDX-License-Identifier: GPL-2.0
++ *
++ * Copyright (c) 2018 MediaTek Inc.
++ * Author: Weiyi Lu <weiyi.lu@mediatek.com>
++ */
 +
- 		apmixedsys: syscon@1000c000 {
- 			compatible = "mediatek,mt8183-apmixedsys", "syscon";
- 			reg = <0 0x1000c000 0 0x1000>;
-@@ -594,6 +651,11 @@
- 			#clock-cells = <1>;
- 		};
- 
-+		smi_common: smi@14019000 {
-+			compatible = "mediatek,mt8183-smi-common", "syscon";
-+			reg = <0 0x14019000 0 0x1000>;
-+		};
++#ifndef _DT_BINDINGS_POWER_MT8183_POWER_H
++#define _DT_BINDINGS_POWER_MT8183_POWER_H
 +
- 		imgsys: syscon@15020000 {
- 			compatible = "mediatek,mt8183-imgsys", "syscon";
- 			reg = <0 0x15020000 0 0x1000>;
++#define MT8183_POWER_DOMAIN_AUDIO	0
++#define MT8183_POWER_DOMAIN_CONN	1
++#define MT8183_POWER_DOMAIN_MFG_ASYNC	2
++#define MT8183_POWER_DOMAIN_MFG		3
++#define MT8183_POWER_DOMAIN_MFG_CORE0	4
++#define MT8183_POWER_DOMAIN_MFG_CORE1	5
++#define MT8183_POWER_DOMAIN_MFG_2D	6
++#define MT8183_POWER_DOMAIN_DISP	7
++#define MT8183_POWER_DOMAIN_CAM		8
++#define MT8183_POWER_DOMAIN_ISP		9
++#define MT8183_POWER_DOMAIN_VDEC	10
++#define MT8183_POWER_DOMAIN_VENC	11
++#define MT8183_POWER_DOMAIN_VPU_TOP	12
++#define MT8183_POWER_DOMAIN_VPU_CORE0	13
++#define MT8183_POWER_DOMAIN_VPU_CORE1	14
++
++#endif /* _DT_BINDINGS_POWER_MT8183_POWER_H */
 -- 
 1.8.1.1.dirty
 _______________________________________________
