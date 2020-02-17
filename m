@@ -2,76 +2,77 @@ Return-Path: <SRS0=sDSL=4F=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CC2C3C7619D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 09:06:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E327C7619F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 09:07:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 91F282067D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 09:06:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E2EFA2067D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 09:07:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ti+yeN+d";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="lOV+nQz2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 91F282067D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cbtt8YX6";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="VgOHmY9/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E2EFA2067D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=kyyJkouB5uLid/x+JOb88Eo8ToilV6tWMJ3trqh8/1w=; b=ti+yeN+duuMrP6
-	1kj6/cpYKqzMSI34iG3XlT+7ZlW1es8veirqQmBkWNNb8l8cc+bYyy6yqKnJboW7osNnUcr4NZTuH
-	EN4uds05o5REqZ8I99JIl9uivIPIkfSWDrfAne2fTTqjw9h80VfDCJEFfMCQgbK5/vWLXOxoMe9qm
-	y3+fGlr7Uo+YVtfLuHhv6gs1g9f6NKxk6T8HTA2mBK/xq3jXVkmL5WPRcHhe2JyNK7O4AVMKIiYrl
-	8OF66dFsTVwdx/gfLAoUcXLlKn4VJHOaiTGDxWx3+KNZapw7emXvsx/2zJgpF2HiY9LUTugvCj3/i
-	S3Yr4A4CFp0hLK2Jy70Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=K7l/woulHk4jDxRLA6/nuUqElCGGZE7HnWtL/AotdOI=; b=cbtt8YX6lmvRtq
+	krV7pbW718+3TIrxxaMh4pdB989Oaf/uUEOuMtIqkI3ju5W+lMn5b/WWzwQ++UdUQBLK8svdqFBVl
+	R0pxuYIvN3YNWUaSYw19e+Cin3kvXDIySUiTKdRgcUEy+zBma3wnamqQBuIKh1bMWhTPjn54iay0N
+	KJLkhqL65j/B0oOx8PeZCU+fzblYb/kB5umBuRXN1f+Jvr5MiyxwhdJvoV1oNHIztstzayuZNyE8H
+	kZPqOMmYsqPrPPPK5/sMTomXMHo17zsglyBtOgHcZIrw57Yq5NreBsMcDwIIjloVfZ9Vc16LOvvEH
+	PHGPWCvXVV6f4e+8aW0w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j3cMI-000469-KM; Mon, 17 Feb 2020 09:06:30 +0000
+	id 1j3cMc-0004MW-Oe; Mon, 17 Feb 2020 09:06:50 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j3cLV-0003Xb-Eo; Mon, 17 Feb 2020 09:05:42 +0000
-X-UUID: 8e6713ee10374a499fe96c9ff4740013-20200217
+ id 1j3cLW-0003XZ-Pu; Mon, 17 Feb 2020 09:05:44 +0000
+X-UUID: 43b8bd47711e42f7874953ed635897ba-20200217
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=TH2Ce9vmxpcBg+uja+1cRFMB0hG0JtrMLOaW8Iql/R8=; 
- b=lOV+nQz2bpgM8/GGsBM1mzyYU3/NmoBU0CFGxj+pQEJGnN5JRYwG8MMci60p1P+M1GnzODIQr0I00u6XRc9zWn5B9weLakOt37YI2rv9Z6bTKeozmVqszuhPpDktg4NcHRdtTcnwnpbvFxe2yxBxnYyu51ZY0v6463vKZRDhC/Y=;
-X-UUID: 8e6713ee10374a499fe96c9ff4740013-20200217
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=I3Oim7gZHvMV9Qef+8S9vRrpbkNgTWn+GySP5pP9Xs4=; 
+ b=VgOHmY9/vyqGbxp3NtNb80kXHOXkz99xqU3Yx4wYe6vrpmytUFPPlDuVT+OzLTWxbSMkBZQcqKUm0uIdJvJLN+Viw0nBTG++rjLZPeCKEEvfwAGFis77uCeKiqiVR406C0iGVj7fLH3R/ndUA86k46me5gS5RFfn7nvNINd8N5M=;
+X-UUID: 43b8bd47711e42f7874953ed635897ba-20200217
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <bibby.hsieh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1021915022; Mon, 17 Feb 2020 01:05:36 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ with ESMTP id 422782845; Mon, 17 Feb 2020 01:05:36 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 17 Feb 2020 01:06:23 -0800
+ 15.0.1395.4; Mon, 17 Feb 2020 01:06:24 -0800
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 17 Feb 2020 17:04:41 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 17 Feb 2020 17:04:49 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Mon, 17 Feb 2020 17:03:35 +0800
+ Frontend Transport; Mon, 17 Feb 2020 17:03:36 +0800
 From: Bibby Hsieh <bibby.hsieh@mediatek.com>
 To: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger
  <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, CK HU
  <ck.hu@mediatek.com>
-Subject: [PATCH v1 0/3] Remove atomic_exec
-Date: Mon, 17 Feb 2020 17:05:29 +0800
-Message-ID: <20200217090532.16019-1-bibby.hsieh@mediatek.com>
+Subject: [PATCH v1 2/3] mailbox: mediatek: implement flush function
+Date: Mon, 17 Feb 2020 17:05:31 +0800
+Message-ID: <20200217090532.16019-3-bibby.hsieh@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20200217090532.16019-1-bibby.hsieh@mediatek.com>
+References: <20200217090532.16019-1-bibby.hsieh@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200217_010541_515501_B18FD373 
-X-CRM114-Status: UNSURE (   6.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200217_010542_885254_6887606B 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,28 +95,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The atomic_exec was designed for processing continuous
-packets of commands in atomic way for Mediatek DRM driver.
+For client driver which need to reorganize the command buffer, it could
+use this function to flush the send command buffer.
+If the channel doesn't be started (usually in waiting for event), this
+function will abort it directly.
 
-After we implement flush function, Mediatek DRM driver
-doesn't need atomic_exec, the primary concept is to let
-Mediatek DRM driver can make sure previous message done or
-be aborted (if the message has not started yet) before they
-send next message.
+Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c | 52 ++++++++++++++++++++++++++++++
+ 1 file changed, 52 insertions(+)
 
-Changes since v0:
- - move the binding changes to first
- - remove unnecessary changes
-
-Bibby Hsieh (3):
-  dt-binding: gce: remove atomic_exec in mboxes property
-  mailbox: mediatek: implement flush function
-  mailbox: mediatek: remove implementation related to atomic_exec
-
- .../devicetree/bindings/mailbox/mtk-gce.txt   |  10 +-
- drivers/mailbox/mtk-cmdq-mailbox.c            | 128 ++++++++----------
- 2 files changed, 64 insertions(+), 74 deletions(-)
-
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 9a6ce9f5a7db..0da5e2dc2c0e 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -432,10 +432,62 @@ static void cmdq_mbox_shutdown(struct mbox_chan *chan)
+ {
+ }
+ 
++static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
++{
++	struct cmdq_thread *thread = (struct cmdq_thread *)chan->con_priv;
++	struct cmdq_task_cb *cb;
++	struct cmdq_cb_data data;
++	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
++	struct cmdq_task *task, *tmp;
++	unsigned long flags;
++	u32 enable;
++
++	spin_lock_irqsave(&thread->chan->lock, flags);
++	if (list_empty(&thread->task_busy_list))
++		goto out;
++
++	WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
++	if (!cmdq_thread_is_in_wfe(thread))
++		goto wait;
++
++	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
++				 list_entry) {
++		cb = &task->pkt->async_cb;
++		if (cb->cb) {
++			data.sta = CMDQ_CB_ERROR;
++			data.data = cb->data;
++			cb->cb(data);
++		}
++		list_del(&task->list_entry);
++		kfree(task);
++	}
++
++	cmdq_thread_resume(thread);
++	cmdq_thread_disable(cmdq, thread);
++	clk_disable(cmdq->clock);
++
++out:
++	spin_unlock_irqrestore(&thread->chan->lock, flags);
++	return 0;
++
++wait:
++	cmdq_thread_resume(thread);
++	spin_unlock_irqrestore(&thread->chan->lock, flags);
++	if (readl_poll_timeout_atomic(thread->base + CMDQ_THR_ENABLE_TASK,
++				      enable, enable == 0, 1, timeout)) {
++		dev_err(cmdq->mbox.dev, "Fail to wait GCE thread 0x%x done\n",
++			(u32)(thread->base - cmdq->base));
++
++		return -EFAULT;
++	}
++	return 0;
++}
++
+ static const struct mbox_chan_ops cmdq_mbox_chan_ops = {
+ 	.send_data = cmdq_mbox_send_data,
+ 	.startup = cmdq_mbox_startup,
+ 	.shutdown = cmdq_mbox_shutdown,
++	.flush = cmdq_mbox_flush,
+ };
+ 
+ static struct mbox_chan *cmdq_xlate(struct mbox_controller *mbox,
 -- 
 2.18.0
 _______________________________________________
