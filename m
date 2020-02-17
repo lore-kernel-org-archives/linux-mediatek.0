@@ -7,103 +7,71 @@ X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 69326C34021
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 16:17:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F7A5C34022
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 17:23:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3BB5B2072C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 16:17:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 43906214D8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Feb 2020 17:23:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MbbIlTCV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3BB5B2072C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=acm.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eDVfDAQv";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=armlinux.org.uk header.i=@armlinux.org.uk header.b="bEe7Mh3Z"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43906214D8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=armlinux.org.uk
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RMO4FonXUyfNJmCxYYGy8W77AIRL7PkA9toBrDchtwc=; b=MbbIlTCVcBMkc3
-	ehBt/wfuAPFl0edP3J5adC3o3gi+OQ3lodUfbW8/YRncMxs82gKn8+0Pcy+bcxOiemi5P2ddGTTy7
-	vbGVs/NKxNy5J4eq51hEIn2dJn8seUCAGmvHUaM6TudKFP26FMRWRPU27zb9XStEb0OZkWPtFqiMf
-	isWXfATpTP2jy7fpw6UvuAmTyh2CUKB4epH3VCvsaVJh6l6YlYbO5qUiYcUVrdt3CO575rJpFvTQi
-	/SO5ivS+nSQtrS9YQoKu/Hj56aMefXeHVcWyNhdB72cWkLtEhSMra4rhxyIBNEFumqdOD/h2cagfn
-	Tpbsywp+qllhbugs7Wkw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=r3/KPHbzKPfnVPJod5DBLDLH+KX7IpwSz7Qo4inybcE=; b=eDVfDAQvdFnxI0
+	4sfBoTkJyuC/0wagT888qS+nmOMZydScJF7PqOiK0elTYeWIP+qhFwrzTmc/5Mf1Ck/0u+8aDePi6
+	HPluzJ3iU/8Q3jfbAdlZQ+3sPi9Y8uvRcbkONt1O4D9nhegRb381n4C0N7rY4V2SAE9dlttrds5sv
+	2BdpRfk+WxNujFonlWTXY37LrtnHpzRn9EXnf5IL0jcVREqHrYq7B1x4USFC4PEOV9O4n9Gj8GvQD
+	fDksFD51lePQFOf2MMUV9+yHS+StIKwI8HU3BqN8Cp31nK1SLF0Pv6NBXXgl3zlqTxWx4grU4D9Z5
+	89FdHmTJxiURcH8qZnVA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j3j5U-0002ZD-Ch; Mon, 17 Feb 2020 16:17:36 +0000
-Received: from mail-pl1-f174.google.com ([209.85.214.174])
+	id 1j3k7P-0003NQ-7S; Mon, 17 Feb 2020 17:23:39 +0000
+Received: from pandora.armlinux.org.uk
+ ([2001:4d48:ad52:3201:214:fdff:fe10:1be6])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j3j5E-0002Ml-ST; Mon, 17 Feb 2020 16:17:22 +0000
-Received: by mail-pl1-f174.google.com with SMTP id y1so6907967plp.7;
- Mon, 17 Feb 2020 08:17:20 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=DhtAN8Z1lq+smog5hx8tnmyToocbQyCvpNHXj+TDxUI=;
- b=Z7peRyOb0uB6Mxh1fZvvLIeuVoti4q+9qfTTGT72JQWsj1HCqSSE+e0LpIWvtpOPQ5
- M+JRvHTwY5sfhUnLWDfrK0BZP3eNlowV2x8NjE3slxkWPlZkxagNpG8BXGOyNFfPHWsO
- mmuLXf8ElsmsmAF7kb6IyYL87limeV5YylMYUh1EMfg85/ug3IJ8UMpnJh48PYSRGm4G
- W31DIFzzVtmvc8SaicSyPvr2vhFgGQrQSCutXmGh5ffiiYNLu7bnJhmT8xzp21IJNlFu
- 7tDNVhxOOHnNvL4gijrEjputh7tKZN0PaNBj/IA31O9tiKS+D4eEZH+wG84S8Ot3rSqo
- 2NgA==
-X-Gm-Message-State: APjAAAVGN0GuEK28jqHHiKfYUkTAIh5UfRYvyBHXUMvWM5Tz1th0JcRv
- JSzV79UyiyCIULLGDWQudnE=
-X-Google-Smtp-Source: APXvYqyUGmGotOQnonxrVSNJHOnl6B9x5PFX1abnD5SGe8SeBqp456IotnkFNe/oXDoMuKeEr2m6JA==
-X-Received: by 2002:a17:902:694b:: with SMTP id
- k11mr16630726plt.334.1581956239464; 
- Mon, 17 Feb 2020 08:17:19 -0800 (PST)
-Received: from ?IPv6:2601:647:4000:d7:2474:e036:5bee:ca5b?
- ([2601:647:4000:d7:2474:e036:5bee:ca5b])
- by smtp.gmail.com with ESMTPSA id o11sm1148585pjs.6.2020.02.17.08.17.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Feb 2020 08:17:18 -0800 (PST)
-Subject: Re: [PATCH v1 1/2] scsi: ufs: add required delay after gating
- reference clock
-To: Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-References: <20200217093559.16830-1-stanley.chu@mediatek.com>
- <20200217093559.16830-2-stanley.chu@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-Autocrypt: addr=bvanassche@acm.org; prefer-encrypt=mutual; keydata=
- mQENBFSOu4oBCADcRWxVUvkkvRmmwTwIjIJvZOu6wNm+dz5AF4z0FHW2KNZL3oheO3P8UZWr
- LQOrCfRcK8e/sIs2Y2D3Lg/SL7qqbMehGEYcJptu6mKkywBfoYbtBkVoJ/jQsi2H0vBiiCOy
- fmxMHIPcYxaJdXxrOG2UO4B60Y/BzE6OrPDT44w4cZA9DH5xialliWU447Bts8TJNa3lZKS1
- AvW1ZklbvJfAJJAwzDih35LxU2fcWbmhPa7EO2DCv/LM1B10GBB/oQB5kvlq4aA2PSIWkqz4
- 3SI5kCPSsygD6wKnbRsvNn2mIACva6VHdm62A7xel5dJRfpQjXj2snd1F/YNoNc66UUTABEB
- AAG0JEJhcnQgVmFuIEFzc2NoZSA8YnZhbmFzc2NoZUBhY20ub3JnPokBOQQTAQIAIwUCVI67
- igIbAwcLCQgHAwIBBhUIAgkKCwQWAgMBAh4BAheAAAoJEHFcPTXFzhAJ8QkH/1AdXblKL65M
- Y1Zk1bYKnkAb4a98LxCPm/pJBilvci6boefwlBDZ2NZuuYWYgyrehMB5H+q+Kq4P0IBbTqTa
- jTPAANn62A6jwJ0FnCn6YaM9TZQjM1F7LoDX3v+oAkaoXuq0dQ4hnxQNu792bi6QyVdZUvKc
- macVFVgfK9n04mL7RzjO3f+X4midKt/s+G+IPr4DGlrq+WH27eDbpUR3aYRk8EgbgGKvQFdD
- CEBFJi+5ZKOArmJVBSk21RHDpqyz6Vit3rjep7c1SN8s7NhVi9cjkKmMDM7KYhXkWc10lKx2
- RTkFI30rkDm4U+JpdAd2+tP3tjGf9AyGGinpzE2XY1K5AQ0EVI67igEIAKiSyd0nECrgz+H5
- PcFDGYQpGDMTl8MOPCKw/F3diXPuj2eql4xSbAdbUCJzk2ETif5s3twT2ER8cUTEVOaCEUY3
- eOiaFgQ+nGLx4BXqqGewikPJCe+UBjFnH1m2/IFn4T9jPZkV8xlkKmDUqMK5EV9n3eQLkn5g
- lco+FepTtmbkSCCjd91EfThVbNYpVQ5ZjdBCXN66CKyJDMJ85HVr5rmXG/nqriTh6cv1l1Js
- T7AFvvPjUPknS6d+BETMhTkbGzoyS+sywEsQAgA+BMCxBH4LvUmHYhpS+W6CiZ3ZMxjO8Hgc
- ++w1mLeRUvda3i4/U8wDT3SWuHcB3DWlcppECLkAEQEAAYkBHwQYAQIACQUCVI67igIbDAAK
- CRBxXD01xc4QCZ4dB/0QrnEasxjM0PGeXK5hcZMT9Eo998alUfn5XU0RQDYdwp6/kMEXMdmT
- oH0F0xB3SQ8WVSXA9rrc4EBvZruWQ+5/zjVrhhfUAx12CzL4oQ9Ro2k45daYaonKTANYG22y
- //x8dLe2Fv1By4SKGhmzwH87uXxbTJAUxiWIi1np0z3/RDnoVyfmfbbL1DY7zf2hYXLLzsJR
- mSsED/1nlJ9Oq5fALdNEPgDyPUerqHxcmIub+pF0AzJoYHK5punqpqfGmqPbjxrJLPJfHVKy
- goMj5DlBMoYqEgpbwdUYkH6QdizJJCur4icy8GUNbisFYABeoJ91pnD4IGei3MTdvINSZI5e
-Message-ID: <87f03ff5-445b-25c2-308d-5c9e18942a0f@acm.org>
-Date: Mon, 17 Feb 2020 08:17:16 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.2
+ id 1j3k7F-0003Eh-8o; Mon, 17 Feb 2020 17:23:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
+ Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=oY8Hprjp+0+cXfhTnYBhP1nb+wmn9WucklmpZMOU5v0=; b=bEe7Mh3ZHtZITIcMegKi4Tbq4
+ cF+tqyiLbpTEFFpy450jEylMS4b4m+hbKMBKY71wdC+5KZTtI5/MOb2u6WU3FcjhGi1j1pEnut6Vo
+ sRL0jkk5D0BMR1L7eJoa66h+dB2q54hf0vhFhNLm9u5Yavss7dHxtDRlX5RCCQlT4WiCdHpAKI6UX
+ lxAU1dkOo6Gu6OTxbpoPD8/uecUCaX2OcbKPqabfYCPphI1IAlyGsHVSClmPRW1CXlRhn88AuagDO
+ sxOvIzOwdZyQAxJhOQyZLSJJN3JHwYJklWvrKhLi3986Exl+lCs4IkBsb/dT4De5XxR53+j+dU4EZ
+ UjtJnpZhQ==;
+Received: from shell.armlinux.org.uk
+ ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:53260)
+ by pandora.armlinux.org.uk with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ (envelope-from <linux@armlinux.org.uk>)
+ id 1j3k6g-000266-K1; Mon, 17 Feb 2020 17:22:54 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.92)
+ (envelope-from <linux@shell.armlinux.org.uk>)
+ id 1j3k6V-0006UE-2c; Mon, 17 Feb 2020 17:22:43 +0000
+Date: Mon, 17 Feb 2020 17:22:43 +0000
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>
+Subject: [CFT 0/8] rework phylink interface for split MAC/PCS support
+Message-ID: <20200217172242.GZ25745@shell.armlinux.org.uk>
 MIME-Version: 1.0
-In-Reply-To: <20200217093559.16830-2-stanley.chu@mediatek.com>
-Content-Language: en-US
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200217_081720_922108_42EA307A 
-X-CRM114-Status: UNSURE (   9.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200217_092329_313739_F182E91F 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,26 +83,82 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, beanhuo@micron.com,
- linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
+Cc: linux-doc@vger.kernel.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ linux-stm32@st-md-mailman.stormreply.com, Felix Fietkau <nbd@openwrt.org>,
+ Ioana Radulescu <ruxandra.radulescu@nxp.com>, Jonathan Corbet <corbet@lwn.net>,
+ Michal Simek <michal.simek@xilinx.com>, Jose Abreu <joabreu@synopsys.com>,
+ Jakub Kicinski <kuba@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Alexandre Torgue <alexandre.torgue@st.com>,
+ Hauke Mehrtens <hauke@hauke-m.de>,
+ Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
+ linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-02-17 01:35, Stanley Chu wrote:
-> -			if (skip_ref_clk && !strcmp(clki->name, "ref_clk"))
-> +			ref_clk = !strcmp(clki->name, "ref_clk") ? true : false;
-> +			if (skip_ref_clk && ref_clk)
+Hi,
 
-Since the " ? true : false" part is superfluous, please leave it out.
+The following series changes the phylink interface to allow us to
+better support split MAC / MAC PCS setups.  The fundamental change
+required for this turns out to be quite simple.
 
-Thanks,
+Today, mac_config() is used for everything to do with setting the
+parameters for the MAC, and mac_link_up() is used to inform the
+MAC driver that the link is now up (and so to allow packet flow.)
+mac_config() also has had a few implementation issues, with folk
+who believe that members such as "speed" and "duplex" are always
+valid, where "link" gets used inappropriately, etc.
 
-Bart.
+With the proposed patches, all this changes subtly - but in a
+backwards compatible way at this stage.
+
+We pass the the full resolved link state (speed, duplex, pause) to
+mac_link_up(), and it is now guaranteed that these parameters to
+this function will always be valid (no more SPEED_UNKNOWN or
+DUPLEX_UNKNOWN here - unless phylink is fed with such things.)
+
+Drivers should convert over to using the state in mac_link_up()
+rather than configuring the speed, duplex and pause in the
+mac_config() method. The patch series includes a number of MAC
+drivers which I've thought have been easy targets - I've left the
+remainder as I think they need maintainer input. However, *all*
+drivers will need conversion for future phylink development.
+
+ Documentation/networking/sfp-phylink.rst          |  17 +++-
+ drivers/net/dsa/b53/b53_common.c                  |   4 +-
+ drivers/net/dsa/b53/b53_priv.h                    |   4 +-
+ drivers/net/dsa/bcm_sf2.c                         |   4 +-
+ drivers/net/dsa/lantiq_gswip.c                    |   4 +-
+ drivers/net/dsa/mt7530.c                          |   4 +-
+ drivers/net/dsa/mv88e6xxx/chip.c                  |  79 +++++++++++++----
+ drivers/net/dsa/sja1105/sja1105_main.c            |   4 +-
+ drivers/net/ethernet/cadence/macb.h               |   1 -
+ drivers/net/ethernet/cadence/macb_main.c          |  53 ++++++-----
+ drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c  |  61 ++++++++-----
+ drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.h  |   1 +
+ drivers/net/ethernet/marvell/mvneta.c             |  63 ++++++++-----
+ drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c   | 102 +++++++++++++---------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c       |   7 +-
+ drivers/net/ethernet/stmicro/stmmac/stmmac_main.c |   4 +-
+ drivers/net/ethernet/xilinx/xilinx_axienet_main.c |  37 ++++----
+ drivers/net/phy/phylink.c                         |   9 +-
+ include/linux/phylink.h                           |  57 ++++++++----
+ include/net/dsa.h                                 |   4 +-
+ net/dsa/port.c                                    |   7 +-
+ 21 files changed, 350 insertions(+), 176 deletions(-)
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+According to speedtest.net: 11.9Mbps down 500kbps up
 
 _______________________________________________
 Linux-mediatek mailing list
