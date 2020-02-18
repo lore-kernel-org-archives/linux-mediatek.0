@@ -2,21 +2,20 @@ Return-Path: <SRS0=iFQR=4G=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BD520C34047
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2020 20:32:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D03CFC34047
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2020 20:40:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8F6252173E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2020 20:32:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A31212173E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2020 20:40:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="awsjJc5u"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8F6252173E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uFbTOsbN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A31212173E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,58 +24,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1AJr7dlOzYPTwBgP5mQBw9az7qd5LH/2MjGI6o7Rtic=; b=awsjJc5u6hLd+L
-	BsEz0OyGp17vZ14GfnRc0CONy1I6Ghbv/CjOdE44e9ClzMNOUmOQ8pWCA8CWyZS40U1HeQ1hlvCgG
-	Vjo7rqZGUnLq3FUjsOhSMCoQH2GV1jfHvXqMrK9wJlxHldvvkFkaPcJfqzTKeBn5r2N9c7PdwrHCm
-	EJSgT096QomgDnPrKaAmNKaAJIe5Id46cR7HKGXSiYS2/Oo1g01+O1i4D/Oslce1ZHflJFseu/emD
-	dYg5N1DvgKgvC7r9sSLL/K9hU/A50CUh67rUE/IgL7yLW/PYdr6e02Y9gZggTgWupTdASmQYy2+Ru
-	7zWEeIsLbyh66KE2CuUw==;
+	List-Owner; bh=9EyzWqiYAhJZIeVzBDbzsWmNxKx+Aq8laV/wD3VhQBU=; b=uFbTOsbNR3wq+V
+	28RT9jeadUmOyHymFyPtgTiBDc0nCcncQz/cPXCA16GnIY/lcQIV0n3uajIpq1Xi7yB+R2Cz0WCqm
+	u26/aeF4feuVkBbd8yNegHBKGPkWUJKGWBvhbiA8XLDqAB5c6S8xeP8kF5BwUw6aVE68fCMTQWDOX
+	e+Q0BfYHKAfjOd2hcOYv/WQL879DN4DtrDzFlb+uGGL9hTwc1cG+PGWA+9ZvknwScsd/8V4JErjg2
+	oh0TcdCbUAkn8MQ5Jwi2ZLmCKYGbUQWaCBihHrRqo6Oh+36dSeyzakghReddJ+jxs6PuEBFiqRI9Q
+	lvyrE9g16BrLQZCrLlig==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j49XB-0005hV-N9; Tue, 18 Feb 2020 20:31:57 +0000
-Received: from mail-oi1-f194.google.com ([209.85.167.194])
+	id 1j49ez-00082Q-H6; Tue, 18 Feb 2020 20:40:01 +0000
+Received: from mail-ot1-f67.google.com ([209.85.210.67])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j49X8-0005gq-PJ; Tue, 18 Feb 2020 20:31:56 +0000
-Received: by mail-oi1-f194.google.com with SMTP id p125so21467659oif.10;
- Tue, 18 Feb 2020 12:31:54 -0800 (PST)
+ id 1j49eq-0007tk-7c; Tue, 18 Feb 2020 20:39:53 +0000
+Received: by mail-ot1-f67.google.com with SMTP id z9so20893224oth.5;
+ Tue, 18 Feb 2020 12:39:51 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=J/VxJ3xiwdS6/BWNfUPWpgIlaLG5DINnCPtjKZgxKdM=;
- b=dBG6gTVnj8DfPuy2Mz0cFObHaIYmrxqrv/Xw9ECMM8uc/edkdyxoyCKWm484mqQDIS
- e+wBte1pMS6+l7P8u4GZY1d3w2W1V2NWQgaGq8L0R832lZIIppbXJ8NVBIMcJE4LqQ4Z
- r3rLzlbLFGCoJ9v2HLfMLMv/H6LiDbm0G9hzBPDhGWHHJz5ZjA3JlWQqKZXmXm+cIlqp
- 01jEtXVeIh04B4PPHKMtKCAZ5++Ygpg4pjfvWrQ1MiDygrINnpRuzUvJvoqgq3H6meM8
- JTsHhTcHHDrw3OLsEIbHhFJbcW91S6NiYKS3l+H45zp5KeC930jsLF46vVsB0vG7vIzd
- lGzw==
-X-Gm-Message-State: APjAAAVg2VjG9pgvIlM1EUMxk4H91s7gXN6H+cxyRYhODBZOP89blxvK
- +sbzxoZ90JZUmPATmZRKrg==
-X-Google-Smtp-Source: APXvYqz4+tMO0xRMFlD+Nj7EMFcqW+z3eblcWmDWok4aK303S3lbrgXPLQt5ovOmoCv1EkypuhWhDA==
-X-Received: by 2002:aca:af50:: with SMTP id y77mr2515745oie.8.1582057913671;
- Tue, 18 Feb 2020 12:31:53 -0800 (PST)
+ bh=C8j0O76ayqbfqE0bVu8zQXNeOaxgxzZC+4WywF7J+iw=;
+ b=GJqZxqNXicaA6RaP7WIIayVlw7vIIqEqJz1G2UjBLoTdpw9LwTQNrB6n43ad7vv6xi
+ J71KIcKkFW8+5N/K4r0zeO52NynKK5WOF/hg60JtM8Up8fLxmqBcLYOGZKgAgX8y3I/F
+ 4pTg9viqrYq2nASx3Gz7ClzkLzLa1zWbztVwzpKo7SJ4WMEMqTW/8gxLpyL9282SweZI
+ /z8n9voFb1IYFq24TZTJpU+mknTWUsQrn9DoOErERwWAvwCfFegCJE8gn0OMfPmNiT6g
+ QUmYy0e7d3n3abyPmhrG4vYke/SiUHp3x3Pz9S2AtpwFxyXmgemUMP5zR5SD7JfkkIyy
+ u5ZA==
+X-Gm-Message-State: APjAAAUR4MX16ZQHDoH/Pru6aJ341LDcp3H1NDukVhFjqt87hg/yZpa/
+ bNFxfYmmR4zcXhLjVHyEiw==
+X-Google-Smtp-Source: APXvYqyH1p5MWdMBardwNwTmNs1F6hhPi3TUJe8KGhFk/oPzVltIMKXI9kg6VgPOTDZoEaMQDFRXnA==
+X-Received: by 2002:a9d:116:: with SMTP id 22mr16069633otu.149.1582058390424; 
+ Tue, 18 Feb 2020 12:39:50 -0800 (PST)
 Received: from rob-hp-laptop (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id y25sm1716518oto.27.2020.02.18.12.31.51
+ by smtp.gmail.com with ESMTPSA id w197sm446590oia.12.2020.02.18.12.39.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Feb 2020 12:31:52 -0800 (PST)
-Received: (nullmailer pid 19094 invoked by uid 1000);
- Tue, 18 Feb 2020 20:31:51 -0000
-Date: Tue, 18 Feb 2020 14:31:51 -0600
+ Tue, 18 Feb 2020 12:39:49 -0800 (PST)
+Received: (nullmailer pid 31148 invoked by uid 1000);
+ Tue, 18 Feb 2020 20:39:48 -0000
+Date: Tue, 18 Feb 2020 14:39:48 -0600
 From: Rob Herring <robh@kernel.org>
-To: matthias.bgg@kernel.org
-Subject: Re: [PATCH v7 02/13] dt-bindings: display: mediatek: Add mmsys
- binding description
-Message-ID: <20200218203151.GA15948@bogus>
-References: <20200213201953.15268-1-matthias.bgg@kernel.org>
- <20200213201953.15268-3-matthias.bgg@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v7 1/7] dt-bindings: clock: mediatek: document clk
+ bindings for Mediatek MT6765 SoC
+Message-ID: <20200218203948.GA28003@bogus>
+References: <1581067250-12744-1-git-send-email-macpaul.lin@mediatek.com>
+ <1581067250-12744-2-git-send-email-macpaul.lin@mediatek.com>
+ <d606aeb2-5327-ff13-0043-e70ef37522f5@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200213201953.15268-3-matthias.bgg@kernel.org>
+In-Reply-To: <d606aeb2-5327-ff13-0043-e70ef37522f5@gmail.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200218_123154_821293_BB0928A7 
-X-CRM114-Status: GOOD (  19.18  )
+X-CRM114-CacheID: sfid-20200218_123952_271586_448940EA 
+X-CRM114-Status: GOOD (  13.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,95 +88,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, airlied@linux.ie, mturquette@baylibre.com,
- dri-devel@lists.freedesktop.org, laurent.pinchart@ideasonboard.com,
- ulrich.hecht+renesas@gmail.com, linux-clk@vger.kernel.org,
- drinkcat@chromium.org, wens@csie.org, ck.hu@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- Daniel Vetter <daniel@ffwll.ch>, frank-w@public-files.de,
- sean.wang@mediatek.com, linux-mediatek@lists.infradead.org,
- hsinyi@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>,
- sboyd@kernel.org, rdunlap@infradead.org, linux-kernel@vger.kernel.org,
- p.zabel@pengutronix.de, enric.balletbo@collabora.com
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Loda Chou <loda.chou@mediatek.com>, Fabien Parent <fparent@baylibre.com>,
+ Mars Cheng <mars.cheng@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+ Will Deacon <will@kernel.org>, linux-clk@vger.kernel.org,
+ Ryder Lee <Ryder.Lee@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>,
+ Evan Green <evgreen@chromium.org>, linux-arm-kernel@lists.infradead.org,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, mtk01761 <wendell.lin@mediatek.com>,
+ Owen Chen <owen.chen@mediatek.com>, devicetree@vger.kernel.org,
+ Joerg Roedel <jroedel@suse.de>, Marc Zyngier <marc.zyngier@arm.com>,
+ Sean Wang <Sean.Wang@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Yong Wu <yong.wu@mediatek.com>, CC Hwang <cc.hwang@mediatek.com>,
+ Stephen Boyd <sboyd@kernel.org>, linux-kernel@vger.kernel.org,
+ Shawn Guo <shawnguo@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 13, 2020 at 09:19:42PM +0100, matthias.bgg@kernel.org wrote:
-> From: Matthias Brugger <mbrugger@suse.com>
+On Tue, Feb 18, 2020 at 05:47:25PM +0100, Matthias Brugger wrote:
 > 
-> The MediaTek DRM has a block called mmsys, which sets
-> the routing and enables the different blocks.
-> This patch adds one line for the mmsys bindings description and changes
-> the mmsys description to use the generic form of referring to a specific
-> Soc.
 > 
-> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+> On 07/02/2020 10:20, Macpaul Lin wrote:
+> > From: Mars Cheng <mars.cheng@mediatek.com>
+> > 
+> > This patch adds the binding documentation for apmixedsys, audsys, camsys,
+> > imgsys, infracfg, mipi0a, topckgen, vcodecsys
+> > 
+> > Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+> > Signed-off-by: Owen Chen <owen.chen@mediatek.com>
+> > Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> > ---
+> >  .../arm/mediatek/mediatek,apmixedsys.txt      |  1 +
+> >  .../bindings/arm/mediatek/mediatek,audsys.txt |  1 +
+> >  .../bindings/arm/mediatek/mediatek,camsys.txt |  1 +
+> >  .../bindings/arm/mediatek/mediatek,imgsys.txt |  1 +
+> >  .../arm/mediatek/mediatek,infracfg.txt        |  1 +
+> >  .../bindings/arm/mediatek/mediatek,mipi0a.txt | 28 +++++++++++++++++++
+> >  .../bindings/arm/mediatek/mediatek,mmsys.txt  |  1 +
+> >  .../arm/mediatek/mediatek,pericfg.txt         |  1 +
+> >  .../arm/mediatek/mediatek,topckgen.txt        |  1 +
+> >  .../arm/mediatek/mediatek,vcodecsys.txt       | 27 ++++++++++++++++++
 > 
-> ---
-> 
-> Changes in v7:
-> - add hint to the mmsys binding document
-> - make mmsys description generic
-> - fix typo in commit message
-> 
-> Changes in v6: None
-> Changes in v5: None
-> Changes in v4: None
-> Changes in v3: None
-> Changes in v2: None
-> 
->  .../bindings/display/mediatek/mediatek,disp.txt          | 3 +++
->  .../bindings/display/mediatek/mediatek,mmsys.txt         | 9 +--------
->  2 files changed, 4 insertions(+), 8 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> index b91e709db7a4..8e453026ef78 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-> @@ -24,6 +24,7 @@ connected to.
->  For a description of the display interface sink function blocks, see
->  Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt and
->  Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt.
-> +Documentation/devicetree/bindings/display/mediatek/mediatek,mmsys.txt.
->  
->  Required properties (all function blocks):
->  - compatible: "mediatek,<chip>-disp-<function>", one of
-> @@ -43,7 +44,9 @@ Required properties (all function blocks):
->  	"mediatek,<chip>-dpi"        		- DPI controller, see mediatek,dpi.txt
->  	"mediatek,<chip>-disp-mutex" 		- display mutex
->  	"mediatek,<chip>-disp-od"    		- overdrive
-> +	"mediatek,<chip>-mmsys", "syscon"	- provide clocks and components management
->    the supported chips are mt2701, mt2712 and mt8173.
-> +
->  - reg: Physical base address and length of the function block register space
->  - interrupts: The interrupt signal from the function block (required, except for
->    merge and split function blocks).
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mmsys.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,mmsys.txt
-> index 301eefbe1618..7bbadee820e3 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,mmsys.txt
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mmsys.txt
-> @@ -5,14 +5,7 @@ The Mediatek mmsys controller provides various clocks to the system.
->  
->  Required Properties:
->  
-> -- compatible: Should be one of:
-> -	- "mediatek,mt2701-mmsys", "syscon"
-> -	- "mediatek,mt2712-mmsys", "syscon"
-> -	- "mediatek,mt6779-mmsys", "syscon"
-> -	- "mediatek,mt6797-mmsys", "syscon"
-> -	- "mediatek,mt7623-mmsys", "mediatek,mt2701-mmsys", "syscon"
+> I think it's OK to put all the bindings, that only add one compatible in onw
+> patch. But I think mipi0a and vcodesys should each go into a separate patch, as
+> we will need a Ack by Rob for that.
 
-You've lost this information about the fallback...
-
-> -	- "mediatek,mt8173-mmsys", "syscon"
-> -	- "mediatek,mt8183-mmsys", "syscon"
-> +- compatible: "mediatek,<chip>-mmsys"
-
-You are just going to have to add these all back when this is converted 
-to schema.
+Yes, and DT schema for the new ones.
 
 Rob
 
