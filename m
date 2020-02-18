@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7BB00C34034
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2020 07:47:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2D593C34031
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2020 08:10:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4DAC6206E2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2020 07:47:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EC1A621D7D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2020 08:10:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NoiV+6c+";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="HD7TFrvS"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4DAC6206E2
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e4iKv5Ib";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="uEQFCC26"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EC1A621D7D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5bngZu3ZwKwQEZO7QbC5Q6CQnP9sKAUi2TUzFXF7i6I=; b=NoiV+6c+8XFrEt
-	06SVNrrKiJ+P5Pdj3JMROXnAts7GP5hbWHwaBiE4Te0Mx3xOvIFne4aocLrd+9OFp13OlfUkmgjhr
-	u1XUW2jkWo0Uw7xoBSdW1rZ6Gu2hFkdscgLRfAy8RaiPWymLaabPKfyqS6HDZ5gHIm/uwCVwLSpiK
-	cvJKz5Dav+dFTFk5Bw6HxkP5zz8wfCYC+nO1iGwHP16mUu/tozWM/XFVQUcvIS1XWw49tkTHGMdRj
-	mUxflz80SYyvuWd3SdDgM5ehqZZixFZv7dgbcsiHe/WmiqjtpX8H/2XHOLrzmE8aVMmIk3OOUVRlO
-	B/TWTwKBiKwmCNznGMRg==;
+	List-Owner; bh=tnTExhcItATcMRJUO3/oQJ8L+hx97KJiL4m3wSAe2/M=; b=e4iKv5IburxXyQ
+	qVi1sF1FOw9XGlgzRloKQkX1BN3+wW6+lejozo+tiPJiZAVhx0BZfSxLj7vt5zkkmDFeaWDjxCxF0
+	Vz/JdQ2b5eThSraVF9s/sS2GGYpitKDqTGpeO/qQGx0A+WoQy/FgMxMxPD+k8uaH7rBtgb4HX7DJ6
+	Jer8+2RDlEYyyMJedkOHGIbRkkPc71HuFiSOWhe3Z0WdR+CQEo7NyHhwXVSBZfiNM2Ml350/kzqvJ
+	sMzh1qkJ0ehg5zBMUc/A8pwkvrOwsaQRlB8CBrrFq1m1yeTGjzq8GMEhyPksbaU4/oiMVEtVUf4u1
+	g6gN+bgdPPqmBGbzlLQg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j3xar-0001hE-NP; Tue, 18 Feb 2020 07:46:57 +0000
+	id 1j3xx7-0001WS-7c; Tue, 18 Feb 2020 08:09:57 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j3xac-0001XD-G6; Tue, 18 Feb 2020 07:46:47 +0000
-X-UUID: 7a6e10c522a6428ca028a7d600ad6149-20200217
+ id 1j3xwx-0001O9-2l; Tue, 18 Feb 2020 08:09:48 +0000
+X-UUID: 805f3dd1c13b494da7138a80919de9f8-20200218
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=g5TmMK5xtaVwCyccKk6B3PT0J4POGsB8eAQQZd7hA8o=; 
- b=HD7TFrvS6QC6Drlf77grZ51MNyFDbKjPzyk/JZWI7CRHiSbSg7oCO6b/oSx4fJoCbx0bk/AlUNiQyynHV+uoluE2iLBPc3LQp6P/N53YrOxpoGQ1dAAIy1Gb4munRdwCCMWiubHm07o1ARpMbctJt76bjdpObTDYTjfxy8IP++I=;
-X-UUID: 7a6e10c522a6428ca028a7d600ad6149-20200217
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ bh=6YFBzKFPnQHNsHeDzbWl+lIwexHJPqvaWd24YzOqLhs=; 
+ b=uEQFCC26nQWv+B57IB5CDkNNnyTWvh5DJ79rjtOKATRZ0yanT1o+RGeUqNhi6k3tC/m1avfuI3eR2Xug+bWdaI0c2MSDcVSxzRIJr+HjIQErRGx5a9wwHTVCPrLj0/HtGJxd2+PbsQpt2J5igg4zgilYc1GvY4tCV7uaJDDZ8EQ=;
+X-UUID: 805f3dd1c13b494da7138a80919de9f8-20200218
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1905686676; Mon, 17 Feb 2020 23:46:40 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 17 Feb 2020 23:47:00 -0800
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 18 Feb 2020 15:45:47 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
+ with ESMTP id 2108546678; Tue, 18 Feb 2020 00:09:42 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 18 Feb 2020 00:00:30 -0800
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 18 Feb 2020 15:58:43 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 18 Feb 2020 15:46:14 +0800
-Message-ID: <1582011997.15399.1.camel@mtksdaap41>
-Subject: Re: [PATCH 2/2] drm/mediatek: add fb swap in async_update
+ Transport; Tue, 18 Feb 2020 15:59:20 +0800
+Message-ID: <1582012779.17361.0.camel@mtksdaap41>
+Subject: Re: [PATCH 2/2] drm/mediatek: move gce event property to mutex
+ device node
 From: CK Hu <ck.hu@mediatek.com>
 To: Bibby Hsieh <bibby.hsieh@mediatek.com>
-Date: Tue, 18 Feb 2020 15:46:37 +0800
-In-Reply-To: <1581566763.12071.1.camel@mtksdaap41>
-References: <20200213012353.26815-1-bibby.hsieh@mediatek.com>
- <20200213012353.26815-2-bibby.hsieh@mediatek.com>
- <1581566763.12071.1.camel@mtksdaap41>
+Date: Tue, 18 Feb 2020 15:59:39 +0800
+In-Reply-To: <1581504244.26347.0.camel@mtksdaap41>
+References: <20200212095501.12124-1-bibby.hsieh@mediatek.com>
+ <20200212095501.12124-2-bibby.hsieh@mediatek.com>
+ <1581504244.26347.0.camel@mtksdaap41>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200217_234646_363838_96664F17 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20200218_000947_129419_BE41C39A 
+X-CRM114-Status: GOOD (  12.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,12 +99,12 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi, Bibby:
 
-On Thu, 2020-02-13 at 12:06 +0800, CK Hu wrote:
+On Wed, 2020-02-12 at 18:44 +0800, CK Hu wrote:
 > Hi, Bibby:
 > 
-> On Thu, 2020-02-13 at 09:23 +0800, Bibby Hsieh wrote:
-> > Besides x, y position, width and height,
-> > fb also need updating in async update.
+> On Wed, 2020-02-12 at 17:55 +0800, Bibby Hsieh wrote:
+> > According mtk hardware design, stream_done0 and stream_done1 are
+> > generated by mutex, so we move gce event property to mutex device mode.
 > > 
 > 
 > Reviewed-by: CK Hu <ck.hu@mediatek.com>
@@ -117,25 +118,24 @@ https://github.com/ckhu-mediatek/linux.git-tags/commits/mediatek-drm-fixes-5.6
 Regards,
 CK
 
-> > Fixes: 920fffcc8912 ("drm/mediatek: update cursors by using async atomic update")
-> > 
 > > Signed-off-by: Bibby Hsieh <bibby.hsieh@mediatek.com>
 > > ---
-> >  drivers/gpu/drm/mediatek/mtk_drm_plane.c | 1 +
-> >  1 file changed, 1 insertion(+)
+> >  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
 > > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> > index d32b494ff1de..e084c36fdd8a 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> > @@ -122,6 +122,7 @@ static void mtk_plane_atomic_async_update(struct drm_plane *plane,
-> >  	plane->state->src_y = new_state->src_y;
-> >  	plane->state->src_h = new_state->src_h;
-> >  	plane->state->src_w = new_state->src_w;
-> > +	swap(plane->state->fb, new_state->fb);
-> >  	state->pending.async_dirty = true;
-> >  
-> >  	mtk_drm_crtc_async_update(new_state->crtc, plane, new_state);
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > index 3c53ea22208c..8a31e5b983db 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> > @@ -819,7 +819,7 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+> >  			drm_crtc_index(&mtk_crtc->base));
+> >  		mtk_crtc->cmdq_client = NULL;
+> >  	}
+> > -	ret = of_property_read_u32_index(dev->of_node, "mediatek,gce-events",
+> > +	ret = of_property_read_u32_index(priv->mutex_node, "mediatek,gce-events",
+> >  					 drm_crtc_index(&mtk_crtc->base),
+> >  					 &mtk_crtc->cmdq_event);
+> >  	if (ret)
 > 
 
 _______________________________________________
