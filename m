@@ -2,23 +2,22 @@ Return-Path: <SRS0=iFQR=4G=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-2.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E9650C34026
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2020 16:40:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DAE0C34048
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2020 16:46:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B5C43208C4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2020 16:40:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2116122B48
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Feb 2020 16:46:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fhJrgFKv";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="tZawfcPZ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B5C43208C4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gqvGQBqg";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="XGEgFZUo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2116122B48
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,57 +26,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bZVX5gPcYYkEsuqxx0AJ++/OtGd+Fun34ANy2oKieV4=; b=fhJrgFKvdBTssj
-	kR93LuJJCKjHS1MvnhW34F3UC8YYQyS8LyhsmddD/vLWMPcJFiHssN+6xfeAEWMW/kSQsNxQlKj/j
-	Q2PJDMYi6DjZoS6gb6zQMkQs9X6ikjbub4OxMYuv9OyA7tMnpRaIBJg+/C3e19e8fkKPZv8+KIk4O
-	lUIRmOn86Ly1aVLEecVF2otHQz0i6+zXxE3r55h0xO7+tKfks904pzVoyRb5lajRulRWpV2hwDlCy
-	CfkeAZ/kkUX3YjpDM/7AL/3JdwgDlubDBsfIqfXRuIeaUchWIrsLtL9e/qtfgHG8bIV5JUkaqS9Nr
-	YMXurkdgryVesnjOj3Qg==;
+	List-Owner; bh=pdlK27EUTJumb9FeZhFty4Y/Z73bWONrcW74KyP0dCI=; b=gqvGQBqggV0ntl
+	FD/b0pLsYte0t4zEyspacCSP93TrP9dOwCZQs0TAs0xJf9vW5TAZJ748LeUL9gIMjp+2IpYcoeBuB
+	+iZ4OxfAXqwMa+6DJY3Bl2roIYILqIGfdH8Iklmuer/vbeS4LgzeLOcEVFCS4FraVVbyGLmN0roFC
+	jfEE1QLjBKZ3UmPNCiEJpimEu9C9Kmsh+B5ovRoEnIF4i/kPg9SNYrgSpKjh+paJ4DOiEBJ6pWOi0
+	O+x0gpCfyWHQ+eSMfRrXnl2ZsKOvnyhiYGVbBRDAgntDLp5SLIzhcFbUO4qkgikCVw3oKt3kWGDVH
+	i14ghrVn0u0ZrS3Ge3Iw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j45uz-0004l8-Ar; Tue, 18 Feb 2020 16:40:17 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1j460X-0007JB-D3; Tue, 18 Feb 2020 16:46:01 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j45uw-0004kW-Of
- for linux-mediatek@lists.infradead.org; Tue, 18 Feb 2020 16:40:16 +0000
-Received: by mail-wr1-x442.google.com with SMTP id c9so24779699wrw.8
- for <linux-mediatek@lists.infradead.org>; Tue, 18 Feb 2020 08:40:14 -0800 (PST)
+ id 1j460P-00077l-I6; Tue, 18 Feb 2020 16:45:55 +0000
+Received: by mail-wr1-x443.google.com with SMTP id t3so24770285wru.7;
+ Tue, 18 Feb 2020 08:45:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=9Joze6fnZvPcBeFZDBLK+IUfRUadcgU8sMXjTz1RXhY=;
- b=tZawfcPZf847NbZgyv7mxhUDujHEFkxgpbV5VLTLara5MFuK1WVrgRg8NqnLIawoLZ
- 7snf1SO6Db09/ee8Bsb/jMe5TBZJ2s1HJ8lefehtJq+DAYopg4FcqAoWXNiPpwxGtOEy
- EFHB+8BdX81mnCaaa09RKc7pgOKrhuDq4Ts/5ywP07QQLLw9MRTDZXnNoHGRvldigwmJ
- 8T0eImmjUsLJgBqrBo9tGpQ9KH7uy1GM83J+sBh5+8/NcbmeHRQCR5UAnR5ysSfsykoF
- jBW+8DxqxpmhuZ9jzMkrBOXV5oQLTm/HekqrmSZ+jiCxQarWr3rVrPX6JkCWmAZpmeSS
- +oDQ==
+ bh=tqM69f0khZgqGzKlv1hT8DZQ288UnU/MUxoUUSqbgDQ=;
+ b=XGEgFZUo4q8mdEvZuy+Xo/9P4vTJZwOZOep8hMcW5nKTL83Sg8OljpG3aSvVCSpNYd
+ kn/ZHgvRwVjoO+pKb0r5YdNSI/QtJ3oNWJY24NGF6dDWmhMx9Mu2kGg6F/8QOnMtqRw8
+ WD6Zm19pS3vpoql4QQp7RyLBIZ+LIrV1/fZdFvFO2aaYLzIAIUlutDwhBMvpUxSx8BT1
+ bkR6JlI0hzww34Xbnew6rb/GOgB7LZ3JO37u4hGYUH2PZ5ja8KPjkCdUuGPjoFLskFc3
+ tiIzUlcWdRLdDGe3OzUIXM45hv2Gt5APqEnWdBL5kmVw2VjS8btQC9vzAJfpocvc/jxu
+ FdMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=9Joze6fnZvPcBeFZDBLK+IUfRUadcgU8sMXjTz1RXhY=;
- b=ki/V7eFl+z7f4i698saOVg7/BC+v+atIrOReqE8tJLBXw74Jpqsk417OAnMK5p6ugu
- KvlcvyB5AkdR83rHIE13lbQ/wfuZFZkFZIJTsbnJSKYVfqeljmwHepp1m4cwxV9j5e+r
- Be3WH/t3B8tvj4zbIydf1LvXChe1ubbhcnD0js90pYawwPms7j7njcOez7lPA6uMQKtg
- Doc4/XOnjUGXQz2KdhZC8XlzFutN42KHZgUqgnPDB99lJjQsd3s99tDDUOhUfup6m6KW
- D+nH61tAD4tTAOV7kp5RxAfycJ2SRcbvGrty3jIJveEh9hiSYaSQlC0uwQVPeNLgKAnv
- j8xA==
-X-Gm-Message-State: APjAAAVSYV8hk/eN4CPsDabLdfiFAqEwSGWwahjyxFqYYV3dZsnm0ABJ
- A5kzTEKkNPZLtWDuqHcOjccmfVM7
-X-Google-Smtp-Source: APXvYqxHDHtarmVE5HdtGrtjP9dEin33Msz4OJ84qLkE6BXuHISu+eQBLKE/u+/4bWSAiC10fdy97A==
-X-Received: by 2002:adf:e5c6:: with SMTP id a6mr30418792wrn.185.1582044012545; 
- Tue, 18 Feb 2020 08:40:12 -0800 (PST)
+ bh=tqM69f0khZgqGzKlv1hT8DZQ288UnU/MUxoUUSqbgDQ=;
+ b=ImME/L2bvuzkVN/OfCrv5qp+IWg/ynSVTwiY35giYg1JzgdP6j19i+kaIUhXK7EquO
+ yXrMvZZhoM2EsHjnO7926LR4wuMllgKz+msWknauZrNrRJ6eaxf4i5YiIiNq9BOLzoDn
+ 9NeZw/zsyod6eRDRNCuyn0/uWqfyjjCBS3rT1E96AEbjkiEBmMfst3WRqKqOldVt335b
+ BcLqVx4TdwrseSdyZGCO6QGNNtCBD1Uq8fVk/05waIWes6eNGRYlZ0h2T0Sb9HOfBfhE
+ Kwtfxo4EIcVkYx5bSiAoNl5TchuQYm3gHlQTquqCD+FPe0jR4Zt5dBgBxTj6XA6VA4Y1
+ lcqw==
+X-Gm-Message-State: APjAAAWB8GXBMDoj7oD9XiBRCecAgMxNOPjCtKsr+2AZki4sC3QQ/E87
+ QW9OIR5f5NvmrH5kSbrZPz4=
+X-Google-Smtp-Source: APXvYqxyg786Trxxu+Jq2TvaeeJPnuolOB24jLJhQrbRlRr2EUoaH9s1p4A5fDuINqKJEyNsK2PuYw==
+X-Received: by 2002:adf:82c7:: with SMTP id 65mr3066094wrc.374.1582044350862; 
+ Tue, 18 Feb 2020 08:45:50 -0800 (PST)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id h128sm4408935wmh.33.2020.02.18.08.40.10
+ by smtp.gmail.com with ESMTPSA id w13sm6825034wru.38.2020.02.18.08.45.44
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Feb 2020 08:40:11 -0800 (PST)
-Subject: Re: [PATCH v1 2/2] pinctrl: make MediaTek MT6765 pinctrl ready for
- buidling loadable module
-To: light.hsieh@mediatek.com, linus.walleij@linaro.org
-References: <1582016614-20728-1-git-send-email-light.hsieh@mediatek.com>
- <1582016614-20728-2-git-send-email-light.hsieh@mediatek.com>
+ Tue, 18 Feb 2020 08:45:50 -0800 (PST)
+Subject: Re: [PATCH v7 0/7] Add basic SoC support for mt6765
+To: Macpaul Lin <macpaul.lin@mediatek.com>, Stephen Boyd <sboyd@kernel.org>
+References: <1581067250-12744-1-git-send-email-macpaul.lin@mediatek.com>
+ <158155109134.184098.10100489231587620578@swboyd.mtv.corp.google.com>
+ <bf5e1a64-1aaa-e1e0-00bf-c0e750dd27ed@gmail.com>
+ <1581999138.19053.21.camel@mtkswgap22>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -153,16 +152,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <dbe41adb-356e-a5c7-99de-c98850f8cd90@gmail.com>
-Date: Tue, 18 Feb 2020 17:40:10 +0100
+Message-ID: <2c6728a5-7789-4ca2-a173-67df57fe5f1e@gmail.com>
+Date: Tue, 18 Feb 2020 17:45:42 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <1582016614-20728-2-git-send-email-light.hsieh@mediatek.com>
+In-Reply-To: <1581999138.19053.21.camel@mtkswgap22>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200218_084014_806532_5FBB833B 
-X-CRM114-Status: GOOD (  15.77  )
+X-CRM114-CacheID: sfid-20200218_084553_629629_406E8B93 
+X-CRM114-Status: GOOD (  16.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -174,8 +173,21 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-gpio@vger.kernel.org, sean.wang@kernel.org, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Loda Chou <loda.chou@mediatek.com>, Fabien Parent <fparent@baylibre.com>,
+ Mars Cheng <mars.cheng@mediatek.com>, Will Deacon <will@kernel.org>,
+ linux-clk@vger.kernel.org, Ryder Lee <Ryder.Lee@mediatek.com>,
+ Weiyi Lu <weiyi.lu@mediatek.com>, Evan Green <evgreen@chromium.org>,
+ Yong Wu <yong.wu@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ mtk01761 <wendell.lin@mediatek.com>, Owen Chen <owen.chen@mediatek.com>,
+ devicetree@vger.kernel.org, Joerg Roedel <jroedel@suse.de>,
+ Marc Zyngier <marc.zyngier@arm.com>, Sean Wang <Sean.Wang@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, CC Hwang <cc.hwang@mediatek.com>,
+ linux-kernel@vger.kernel.org, Shawn Guo <shawnguo@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -183,54 +195,42 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 18/02/2020 10:03, light.hsieh@mediatek.com wrote:
-> From: Light Hsieh <light.hsieh@mediatek.com>
+On 18/02/2020 05:12, Macpaul Lin wrote:
+> On Sat, 2020-02-15 at 02:47 +0100, Matthias Brugger wrote:
 > 
-> This patch make pinctrl-mt6765 ready for building as
-> loadable module.
+> Hi Stephen,
 > 
-> Signed-off-by: Light Hsieh <light.hsieh@mediatek.com>
+>> Hi Stephen,
+>>
+>> On 13/02/2020 00:44, Stephen Boyd wrote:
+>>> Quoting Macpaul Lin (2020-02-07 01:20:43)
+>>>> This patch adds basic SoC support for Mediatek's new 8-core SoC,
+>>>> MT6765, which is mainly for smartphone application.
+>>>
+>>> Clock patches look OK to me. Can you resend them without the defconfig
+>>> and dts patches and address Matthias' question?
+>>>
+>>
+>> I'm not sure if I understand you. Do you prefer to have just the clock parts
+>> send as an independent version so that you can easier apply the patches to your
+>> tree?
+>>
+>> Patch 2, 5, 6 and 7 should go through my tree.
+>> So do you want a series with patches 1, 3 and 4?
+>>
+>> Regards,
+>> Matthias
+> 
+> Yup, I've got a little bit confused, too.
+> Should I separate and resend these patches into 2 patch sets?
+> The 1st patch set includes #1, #3, and #4?
+> And the other includes #2, #5, #6, and #7?
+> 
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Yes please do so. I think that's what Stephen referred to.
 
-> ---
->  drivers/pinctrl/mediatek/Kconfig          | 2 +-
->  drivers/pinctrl/mediatek/pinctrl-mt6765.c | 4 ++++
->  2 files changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-> index 4cd1109..c645fdb 100644
-> --- a/drivers/pinctrl/mediatek/Kconfig
-> +++ b/drivers/pinctrl/mediatek/Kconfig
-> @@ -89,7 +89,7 @@ config PINCTRL_MT2712
->  	select PINCTRL_MTK
->  
->  config PINCTRL_MT6765
-> -	bool "Mediatek MT6765 pin control"
-> +	tristate "Mediatek MT6765 pin control"
->  	depends on OF
->  	depends on ARM64 || COMPILE_TEST
->  	default ARM64 && ARCH_MEDIATEK
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6765.c b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
-> index 905dae8c..2c59d39 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mt6765.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
-> @@ -6,6 +6,7 @@
->   *
->   */
->  
-> +#include <linux/module.h>
->  #include "pinctrl-mtk-mt6765.h"
->  #include "pinctrl-paris.h"
->  
-> @@ -1103,3 +1104,6 @@ static int __init mt6765_pinctrl_init(void)
->  	return platform_driver_register(&mt6765_pinctrl_driver);
->  }
->  arch_initcall(mt6765_pinctrl_init);
-> +
-> +MODULE_LICENSE("GPL v2");
-> +MODULE_DESCRIPTION("MediaTek MT6765 Pinctrl Driver");
-> 
+Regards,
+Matthias
 
 _______________________________________________
 Linux-mediatek mailing list
