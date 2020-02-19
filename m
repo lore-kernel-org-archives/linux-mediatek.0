@@ -2,70 +2,59 @@ Return-Path: <SRS0=zz1H=4H=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B613BC34056
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2020 18:41:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E127C34022
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2020 21:17:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8B14724671
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2020 18:41:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5CAB024671
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Feb 2020 21:17:48 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gyKr6BOn";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Pg2nZ4uo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8B14724671
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="P73Lt99O"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5CAB024671
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wucE2w/e0rKzLrP+V7NAtcJsAjYn5ClR/DTVx7o2n98=; b=gyKr6BOnxN9Tda
-	9Sl2prKnRDunc5pP3AfwqAQz84SOPybjSkEXAmkL5wG4ynp3GRhPYp9zldCJzkE8jfe6RaiTyAAx0
-	ebH4jnMunHbmD/UoBHJrCso4Q/I/IXqqOrZChAG5tZJTTNzzb4pPufAf51PLT28ECkdP8tRgzDaGh
-	5nKgg3CHliE0Fz4cshrPnLss09ov8203dM2ELOkg/j3DGWN1VW6xjeezKx/VoS9BGEZT5qtt5sjWC
-	iyWOGjqAH/rusSgBnltoTfPibN9/13mv/CL+zluRZGb1A396rfpcZxA9CajL3/U5lvlvq1yz3uoTu
-	uzG9wR/gRPG3rMFvupSg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=47wE7LToUeo1zN881b8LMMIPhfQAMPq2h13gmfBQTUI=; b=P73Lt99OQIWjey
+	OTbCu9gnalnEk2AiZuZgVtFQxhpBDTMhB7T1M9irZv2qNlc7T6pbTtOZmEn5b0lsjKALZSigtmCgL
+	3eKTywNKstP9IXEzfFkqvoVD9XymkcojT3JNnYtRCguLtCeH4PtNVeZtnFqSvIBCyvYMENOFG/vl8
+	ARWBLW3oRfVqBmA1HM2YKmWBuCalUUk8jMiUWijwj9ewPmXkQve0u9durWuIs/LR6B6PGKSGKcCSI
+	/nNlT7qGvPbX6wlxVPuFxL7mzfDSmKAcC6ML4V+WsMyXec464XnSJ1r0iM2Edn1NWnsF1hFC39PL2
+	7OLVC2vqvICvtg9PJMQQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j4UI2-00067Q-Im; Wed, 19 Feb 2020 18:41:42 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1j4Wis-0006St-VI; Wed, 19 Feb 2020 21:17:35 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j4UHu-0005vM-3f; Wed, 19 Feb 2020 18:41:35 +0000
-Received: from kernel.org (unknown [104.132.0.74])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9A62B24670;
- Wed, 19 Feb 2020 18:41:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1582137693;
- bh=y154k2uuTbGD94Zlk02vS2B19qqnUVB2EVKv7l94kNw=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=Pg2nZ4uoohWZjP+BIMtpi2NMG9sPU8dIIUTvOC22OSIqGA70OfJB/rzFiJCYjpeww
- DvQL878DwOMYisPb3aPKrLmjbuIOnIjYLwJaVOs1g/vlRJxfuyG+hZApM+W0rTipbe
- QcDbarV7quXlg7jGtGql29sX3o8CfyG29JO0ztAU=
+ id 1j4Wih-0006JO-IF; Wed, 19 Feb 2020 21:17:25 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: koike) with ESMTPSA id C31D428DE65
+Subject: Re: [RFC PATCH V5 0/3] media: support Mediatek sensor interface driver
+To: Louis Kuo <louis.kuo@mediatek.com>, hans.verkuil@cisco.com,
+ laurent.pinchart+renesas@ideasonboard.com, tfiga@chromium.org,
+ keiichiw@chromium.org, matthias.bgg@gmail.com, mchehab@kernel.org
+References: <20200129081650.8027-1-louis.kuo@mediatek.com>
+From: Helen Koike <helen.koike@collabora.com>
+Message-ID: <f825b943-610e-ba19-cbfd-eea2dae2245f@collabora.com>
+Date: Wed, 19 Feb 2020 18:17:10 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.2
 MIME-Version: 1.0
-In-Reply-To: <2c6728a5-7789-4ca2-a173-67df57fe5f1e@gmail.com>
-References: <1581067250-12744-1-git-send-email-macpaul.lin@mediatek.com>
- <158155109134.184098.10100489231587620578@swboyd.mtv.corp.google.com>
- <bf5e1a64-1aaa-e1e0-00bf-c0e750dd27ed@gmail.com>
- <1581999138.19053.21.camel@mtkswgap22>
- <2c6728a5-7789-4ca2-a173-67df57fe5f1e@gmail.com>
-Subject: Re: [PATCH v7 0/7] Add basic SoC support for mt6765
-From: Stephen Boyd <sboyd@kernel.org>
-To: Macpaul Lin <macpaul.lin@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Date: Wed, 19 Feb 2020 10:41:32 -0800
-Message-ID: <158213769281.184098.14491216159423631295@swboyd.mtv.corp.google.com>
-User-Agent: alot/0.9
+In-Reply-To: <20200129081650.8027-1-louis.kuo@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200219_104134_169236_33074DB6 
-X-CRM114-Status: GOOD (  14.59  )
+X-CRM114-CacheID: sfid-20200219_131723_734827_D4CF102C 
+X-CRM114-Status: GOOD (  17.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,66 +66,79 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Michael Turquette <mturquette@baylibre.com>,
- Loda Chou <loda.chou@mediatek.com>, Fabien Parent <fparent@baylibre.com>,
- Mars Cheng <mars.cheng@mediatek.com>, Will Deacon <will@kernel.org>,
- linux-clk@vger.kernel.org, Ryder Lee <Ryder.Lee@mediatek.com>,
- Weiyi Lu <weiyi.lu@mediatek.com>, Evan Green <evgreen@chromium.org>,
- Yong Wu <yong.wu@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- mtk01761 <wendell.lin@mediatek.com>, Owen Chen <owen.chen@mediatek.com>,
- devicetree@vger.kernel.org, Joerg Roedel <jroedel@suse.de>,
- Marc Zyngier <marc.zyngier@arm.com>, Sean Wang <Sean.Wang@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, CC Hwang <cc.hwang@mediatek.com>,
- linux-kernel@vger.kernel.org, Shawn Guo <shawnguo@kernel.org>
+Cc: devicetree@vger.kernel.org, Sean.Cheng@mediatek.com,
+ "kernel@collabora.com" <kernel@collabora.com>, Rynn.Wu@mediatek.com,
+ srv_heupstream@mediatek.com, Jerry-ch.Chen@mediatek.com,
+ jungo.lin@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org,
+ linux-mediatek@lists.infradead.org, zwisler@chromium.org,
+ christie.yu@mediatek.com, frederic.chen@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Matthias Brugger (2020-02-18 08:45:42)
+Hi Louis,
+
+On 1/29/20 6:16 AM, Louis Kuo wrote:
+> Hello,
 > 
+> This is the RFC patch adding Sensor Inferface(seninf) driver on Mediatek mt8183 SoC, which will be used
+> in camera features on CrOS application.
+> It belongs to the first Mediatek's camera driver series based on V4L2 and media controller framework.
+> I posted the main part of the seninf driver as RFC to discuss first and would like some review comments
+> on the overall structure of the driver.
 > 
-> On 18/02/2020 05:12, Macpaul Lin wrote:
-> > On Sat, 2020-02-15 at 02:47 +0100, Matthias Brugger wrote:
-> > 
-> > Hi Stephen,
-> > 
-> >> Hi Stephen,
-> >>
-> >> On 13/02/2020 00:44, Stephen Boyd wrote:
-> >>> Quoting Macpaul Lin (2020-02-07 01:20:43)
-> >>>> This patch adds basic SoC support for Mediatek's new 8-core SoC,
-> >>>> MT6765, which is mainly for smartphone application.
-> >>>
-> >>> Clock patches look OK to me. Can you resend them without the defconfig
-> >>> and dts patches and address Matthias' question?
-> >>>
-> >>
-> >> I'm not sure if I understand you. Do you prefer to have just the clock parts
-> >> send as an independent version so that you can easier apply the patches to your
-> >> tree?
-> >>
-> >> Patch 2, 5, 6 and 7 should go through my tree.
-> >> So do you want a series with patches 1, 3 and 4?
-> >>
-> >> Regards,
-> >> Matthias
-> > 
-> > Yup, I've got a little bit confused, too.
-> > Should I separate and resend these patches into 2 patch sets?
-> > The 1st patch set includes #1, #3, and #4?
-> > And the other includes #2, #5, #6, and #7?
-> > 
+> The driver is implemented with V4L2 framework.
+> 1. Register as a V4L2 sub-device.
+> 2. Only one entity with sink pads linked to camera sensors for choosing desired camera sensor by setup link
+>    and with source pads linked to cam-io for routing different types of decoded packet datas to PASS1 driver
+>    to generate sensor image frame and meta-data.
+
+If I understood correctly, the subdevice represents a bridge, with 4 sink pads and 8 source pads (12 total) right?
+And you can only route a sink to a source at a time and you can't use multiple sensors simultaneously, correct?
+
 > 
-> Yes please do so. I think that's what Stephen referred to.
+> The overall file structure of the seninf driver is as following:
+> 
+> * mtk_seninf.c: Implement software and HW control flow of seninf driver.
+> * mtk_seninf_def.h: Define data structure and enumeration.
+> * mtk_seninf_reg.h: Define HW register R/W macros and HW register names.
+> 
+> [ V5: use recommended coding style, revise DT binding documentation]
+> 
+>   media: platform: mtk-isp: Add Mediatek sensor interface driver
+
+It looks like patch 1/3 didn't reach linux-media mailing list
+    https://patchwork.linuxtv.org/project/linux-media/list/?series=1706
+I guess it's because of its size, you might need to break it into smaller patches.
+I see that mtk_seninf_reg.h is really big and not all of it is used, maybe you can split it up.
+
+
+>   dt-bindings: mt8183: Add sensor interface dt-bindings
+>   dts: arm64: mt8183: Add sensor interface nodes
+> 
+>  .../bindings/media/mediatek-seninf.txt        |   66 +
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi      |   12 +
+>  drivers/media/platform/Makefile               |    1 +
+>  drivers/media/platform/mtk-isp/Kconfig        |   17 +
+>  .../media/platform/mtk-isp/isp_50/Makefile    |    3 +
+>  .../platform/mtk-isp/isp_50/seninf/Makefile   |    6 +
+>  .../mtk-isp/isp_50/seninf/mtk_seninf.c        | 1112 +++
+>  .../mtk-isp/isp_50/seninf/mtk_seninf_def.h    |   72 +
+>  .../mtk-isp/isp_50/seninf/mtk_seninf_reg.h    | 7747 +++++++++++++++++
+>  9 files changed, 9036 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek-seninf.txt
+>  create mode 100644 drivers/media/platform/mtk-isp/Kconfig
+>  create mode 100644 drivers/media/platform/mtk-isp/isp_50/Makefile
+>  create mode 100644 drivers/media/platform/mtk-isp/isp_50/seninf/Makefile
+>  create mode 100644 drivers/media/platform/mtk-isp/isp_50/seninf/mtk_seninf.c
+>  create mode 100644 drivers/media/platform/mtk-isp/isp_50/seninf/mtk_seninf_def.h
+>  create mode 100644 drivers/media/platform/mtk-isp/isp_50/seninf/mtk_seninf_reg.h
 > 
 
-If those are the ones that aren't dts or defconfig patches sounds good
-to me.
+Thanks
+Helen
 
 _______________________________________________
 Linux-mediatek mailing list
