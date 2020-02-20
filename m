@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 60D24C11D25
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2020 20:56:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 37853C11D25
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2020 20:58:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 32EC520679
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2020 20:56:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9740120679
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2020 20:58:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="K/f4Z1T2";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="daXlJRZW"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 32EC520679
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LEBXrlFO";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="vfn5iJ2Z"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9740120679
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,59 +27,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JcP78Npph5xsKduyG9cqRvSJ1xDe7KnLXYQJZwAtusA=; b=K/f4Z1T2cTeROI
-	ZqdBHdd11ZvEbzAbon7NB43K9c5c6ezvoI+yotn66ZbkCb2AEvcAYtFvPwRN8YZwVVASAIN52ZamA
-	x0221BOeZO5ADgjVcZ5U/JSf4onBlRHHyZBESlAdpEGbw7r3FhdlaOCxju784OiPBYRMDvkF1oFYu
-	1e8WUxV4nk5Orc3Qr1PD/HIMF0kBP2cfaLNqI+9VCW9edKi9QYIgFBtACjHNrs5gse5N0goFZPCEH
-	T2T+emlVF1kwS57t7vnTIim/vnbwMObAzjRl6Lnpiqb+MPCQSMXEcpoJBu02yBEwwDQmOoYeLp5Pi
-	JPAwF0L6g0AOdC2nhiZQ==;
+	List-Owner; bh=Efek0apfuvJVuvbX313qwjxxMcPDVlTbLvKzIMTAGo4=; b=LEBXrlFOXBlJ6b
+	c1wExbHx2kwVj54YBsvRQ29IeHRcm5RhoElDyaDrhkWTl+mwM2ik8gx6kpOkve8/VLqjVm0bEB2LW
+	xwZj5OWG85cPjCY9YoY9KWdg2SXjeg66XctzwbtEROwbDCfZx8aDwqZvXgT0mycSyLebMNLBp+ifD
+	3NuhPApQoUQxJ631fOzBbAylFFzeVpoctwUMv20bqCSIpeIceosLlVR+wTKktSls/V3b7sBRbTueR
+	BTkqlQt9Ig8rqWMNmcryiQaQai9BfXeSlRwLCLVIrKpl3k+91ZyU+t8PJXoO8bZhclQBlLz2XWPst
+	B0M0cxUuLb0ImODrWOKQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j4ss9-0003IN-PB; Thu, 20 Feb 2020 20:56:37 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1j4suF-00052N-7Y; Thu, 20 Feb 2020 20:58:47 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j4ss5-0003Hq-SA; Thu, 20 Feb 2020 20:56:35 +0000
-Received: by mail-wm1-x343.google.com with SMTP id n3so14761wmk.4;
- Thu, 20 Feb 2020 12:56:33 -0800 (PST)
+ id 1j4st0-0003jy-RG; Thu, 20 Feb 2020 20:57:32 +0000
+Received: by mail-wm1-x342.google.com with SMTP id s10so22569wmh.3;
+ Thu, 20 Feb 2020 12:57:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=rcN4YXg4PN1EuxBI0LxG+o/DrptYwSPe5a6rXAFIt8w=;
- b=daXlJRZWaekIkf9Msycpw40Er2QlcYj8e+AgVY2VWhoQq5Np02rSZ6IXE3QhxblhNx
- QJe71fmNrjthh8JIqs7jrpyZfP005Du8lYDoQQdNV3nN6zT6Y/DkLBgOJqPo2I/z43k/
- JIw7L1PFloN7aMb6wotnxees8q3+BWohbQpYrKqnQl3WWCoCeDXahdfQG5xOqgg+3vbN
- bgqBs6KFaqggb5i+KO9mfp6+r3A5TtRQTzSb/uIHb5P/wZQjwmozSRWSILzclXgOUwHz
- OVnj3H8Qr1bWVWjnCW1DHSeMCgUzlFHFIRW7osW7ijY/h0LPcfXfKRmreX/bhL62JmRZ
- 7CKA==
+ bh=Bwoyk38+KjVuFBIAFpxZD18LSNp56TI+0ElsisrHqow=;
+ b=vfn5iJ2Z8U6M4aFOQZmB3EqLtTKrPqYv1PCK7ThDbKlHmOL0fDumNItGoaEevQcVSJ
+ f1IeHJ0+VAbkIksdOPvXo323Msr5ReczzFFZJPchJwEFQmjkXR3QvSPpznM+c2B5hHWU
+ lD7Zmf4PioPIpGae8YLziUGYNt5oB9yi5b92P6X3AzD53zGTg+q1WxzDeTFDu8bSe5tk
+ 3ZjzyMxcTt1V2SR9JrKUhdP2RGsbj/TtbZr65G1zUfFsx9s49ywpkvJMaXRsjh2oYKbj
+ oCxZVYYRgiSibVs/M85BLKirbLBdXgLWTysePEIkYKGDOJSpAPCQm2uMXti3wNy4NGG7
+ zk/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=rcN4YXg4PN1EuxBI0LxG+o/DrptYwSPe5a6rXAFIt8w=;
- b=Q56jgaLE7mM1YvHgQo9PrPwx8jVvBPqqK3z46SH+P5pJEdJ08XaProE0OyRBv17xWq
- m/pobwuw6D2r2287LMyERqm19nLe2ftxGUYsxPr+yuV3tkMJKHnVERNC4ouSbvu+4Sya
- kCGQzmyV5tApjg/ilzVtG2c0nG/cvX8D5kr1nYlBUt2g18zU9Nk2fZRwOSXgKWXNHUmN
- 1Sw/DSAJOSvaroBzfrB/KX0gzCCQY8ReilcBztT8vJ2DCfWOYvq2sJ/kP9vBTxz0iiL1
- Vdl/rfkqSjs6cbFOBzBMIm9nz8k1Uxs7uhDL6epra71zPsWf+KQn44rJR1l2lAtre/Pz
- aA1w==
-X-Gm-Message-State: APjAAAWack35TZ+KC0PcYF7Sbz1yRuFKnqlFw2lXwzE7szJE1I2jgIuS
- HkJ6DW4wU8VQ1xrsba+xw7xxTgbn
-X-Google-Smtp-Source: APXvYqwiND6BsPx+aK+Np8Rd2fpk+LBGXs2GATRdyDhVsYTlO/MdERkbcxhNF4WFCU92eHIBKcYn7g==
-X-Received: by 2002:a1c:a9c3:: with SMTP id s186mr6091559wme.64.1582232191903; 
- Thu, 20 Feb 2020 12:56:31 -0800 (PST)
+ bh=Bwoyk38+KjVuFBIAFpxZD18LSNp56TI+0ElsisrHqow=;
+ b=Upy/4Pnp/r5ZvUDL0qdMULeg7xSLA7RSpDttHsflhYcsY5nNsMz09lAqp2xiOJi97E
+ v1xDSZsU7yj5dZ2rEl0zS9nBy4XWtAIs9HUVpTRgakC8yCPzT+GGwiXwqEjoEDu6KLZJ
+ qAGtppaKIjWsr0KuQI+gpIgwT/lNLO9hG4yexDZyvkzruqr8hKk6ThboB7NJVCVyvzqR
+ 0bZ6UEZMB56/9OElyA9ThBAEn6BFCJjD8nZBApd+BzC1gFJTEs2N424/UNiSyxyG3cP6
+ vjZfASeqJgfOx23h7Nis4VmnvFP/NdPmUx4vRwo3qwlHLR2eUpoxRyyChqI4YSl7jFnj
+ iYXg==
+X-Gm-Message-State: APjAAAV9wxEjZdh7w6NfyB9+lcqVsUEM7rRylh3p25oxQfgNFBaT8L1Z
+ Ro76ebaj+aE7hJgwso1jl+mBV5Sv
+X-Google-Smtp-Source: APXvYqz39LInxcAPV0c1O9LZFR53k6cJ7U0rEodvw32A9jYeRvuq5oOBg4rCZYv7BGJrngAYb7Vonw==
+X-Received: by 2002:a7b:c958:: with SMTP id i24mr6444236wml.180.1582232248599; 
+ Thu, 20 Feb 2020 12:57:28 -0800 (PST)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id x6sm614595wmi.44.2020.02.20.12.56.29
+ by smtp.gmail.com with ESMTPSA id y185sm755675wmg.2.2020.02.20.12.57.27
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Feb 2020 12:56:31 -0800 (PST)
+ Thu, 20 Feb 2020 12:57:27 -0800 (PST)
 Subject: Re: [PATCH v3,1/8] arm64: dts: mt8183: add thermal zone node
-To: Michael Kao <michael.kao@mediatek.com>, Zhang Rui <rui.zhang@intel.com>,
- Eduardo Valentin <edubezval@gmail.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring
- <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- hsinyi@chromium.org, linux-pm@vger.kernel.org, srv_heupstream@mediatek.com
+To: Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Michael Kao <michael.kao@mediatek.com>
 References: <20200103064407.19861-1-michael.kao@mediatek.com>
  <20200103064407.19861-2-michael.kao@mediatek.com>
+ <00c8be46-3ba1-571a-0230-7c722ce1901e@linaro.org>
+ <1581391046.31005.12.camel@mtksdccf07>
+ <270efbcf-51bb-629f-c64b-fa343b3d2988@linaro.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -155,16 +155,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <218ccdd0-993e-f64a-2b86-4f668d8bace8@gmail.com>
-Date: Thu, 20 Feb 2020 21:56:24 +0100
+Message-ID: <4fab7d40-d7d9-883e-1c50-0507ee1dd750@gmail.com>
+Date: Thu, 20 Feb 2020 21:57:26 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200103064407.19861-2-michael.kao@mediatek.com>
+In-Reply-To: <270efbcf-51bb-629f-c64b-fa343b3d2988@linaro.org>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200220_125633_935059_9E5EFF26 
-X-CRM114-Status: GOOD (  17.80  )
+X-CRM114-CacheID: sfid-20200220_125730_992954_412E6B73 
+X-CRM114-Status: GOOD (  18.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -176,8 +176,12 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ srv_heupstream@mediatek.com, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Eduardo Valentin <edubezval@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ hsinyi@chromium.org, Zhang Rui <rui.zhang@intel.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -185,126 +189,49 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 03/01/2020 07:44, Michael Kao wrote:
-> From: "michael.kao" <michael.kao@mediatek.com>
+On 20/02/2020 12:52, Daniel Lezcano wrote:
+> On 11/02/2020 04:17, Michael Kao wrote:
+>> On Thu, 2020-01-09 at 12:31 +0100, Daniel Lezcano wrote:
+>>> On 03/01/2020 07:44, Michael Kao wrote:
+>>>> From: "michael.kao" <michael.kao@mediatek.com>
+>>>>
+>>>> Add thermal zone node to Mediatek MT8183 dts file.
+>>>>
+>>>> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+>>>> ---
+>>>>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 85 ++++++++++++++++++++++++
+>>>>  1 file changed, 85 insertions(+)
+>>>>
+>>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+>>>> index 10b32471bc7b..a2793cf3d994 100644
+>>>> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+>>>> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+>>>> @@ -570,6 +570,88 @@
+>>>>  			status = "disabled";
+>>>>  		};
+>>>>  
+>>>> +		thermal: thermal@1100b000 {
+>>>> +			#thermal-sensor-cells = <1>;
+>>>> +			compatible = "mediatek,mt8183-thermal";
+>>>> +			reg = <0 0x1100b000 0 0x1000>;
+>>>> +			interrupts = <0 76 IRQ_TYPE_LEVEL_LOW>;
+>>>
+>>> What is this interrupt for?
+>>
+>> The interrupts pin is designed in our SoC. But it is not used in our
+>> upstream thermal code now. There is also add the settings but not use
+>> for mt8173.dtsi. To align the thermal dtsi format, I follow the past
+>> experience to add the interrupt settings of this project first.
 > 
-> Add thermal zone node to Mediatek MT8183 dts file.
+> Assuming the interrupt can be set by the driver to fire when a specified
+> temperature is set, I suggest to change your driver to handle it so you
+> can get rid of the polling waking up the SoC every second.
 > 
-> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 85 ++++++++++++++++++++++++
->  1 file changed, 85 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 10b32471bc7b..a2793cf3d994 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -570,6 +570,88 @@
->  			status = "disabled";
->  		};
->  
-> +		thermal: thermal@1100b000 {
-> +			#thermal-sensor-cells = <1>;
-> +			compatible = "mediatek,mt8183-thermal";
-> +			reg = <0 0x1100b000 0 0x1000>;
-> +			interrupts = <0 76 IRQ_TYPE_LEVEL_LOW>;
-> +			clocks = <&infracfg CLK_INFRA_THERM>,
-> +				 <&infracfg CLK_INFRA_AUXADC>;
-> +			clock-names = "therm", "auxadc";
-> +			resets = <&infracfg  MT8183_INFRACFG_AO_THERM_SW_RST>;
-> +			mediatek,auxadc = <&auxadc>;
-> +			mediatek,apmixedsys = <&apmixedsys>;
-> +			mediatek,hw-reset-temp = <117000>;
 
-Non uptream property, please delte
+For the record the interrupt is a required property by the binding description.
 
-> +			nvmem-cells = <&thermal_calibration>;
-> +			nvmem-cell-names = "calibration-data";
-> +		};
-> +
-> +		thermal-zones {
-> +			cpu_thermal: cpu_thermal {
-> +				polling-delay-passive = <1000>;
-> +				polling-delay = <1000>;
-> +				thermal-sensors = <&thermal 0>;
-> +				sustainable-power = <5000>;
-> +			};
-> +
-> +			/* The tzts1 ~ tzts6 don't need to polling */
-> +			/* The tzts1 ~ tzts6 don't need to thermal throttle */
-> +
-> +			tzts1: tzts1 {
-> +				polling-delay-passive = <0>;
-> +				polling-delay = <0>;
-> +				thermal-sensors = <&thermal 1>;
-> +				sustainable-power = <5000>;
-> +				trips {};
-> +				cooling-maps {};
-> +			};
-> +
-> +			tzts2: tzts2 {
-> +				polling-delay-passive = <0>;
-> +				polling-delay = <0>;
-> +				thermal-sensors = <&thermal 2>;
-> +				sustainable-power = <5000>;
-> +				trips {};
-> +				cooling-maps {};
-> +			};
-> +
-> +			tzts3: tzts3 {
-> +				polling-delay-passive = <0>;
-> +				polling-delay = <0>;
-> +				thermal-sensors = <&thermal 3>;
-> +				sustainable-power = <5000>;
-> +				trips {};
-> +				cooling-maps {};
-> +			};
-> +
-> +			tzts4: tzts4 {
-> +				polling-delay-passive = <0>;
-> +				polling-delay = <0>;
-> +				thermal-sensors = <&thermal 4>;
-> +				sustainable-power = <5000>;
-> +				trips {};
-> +				cooling-maps {};
-> +			};
-> +
-> +			tzts5: tzts5 {
-> +				polling-delay-passive = <0>;
-> +				polling-delay = <0>;
-> +				thermal-sensors = <&thermal 5>;
-> +				sustainable-power = <5000>;
-> +				trips {};
-> +				cooling-maps {};
-> +			};
-> +
-> +			tztsABB: tztsABB {
-> +				polling-delay-passive = <0>;
-> +				polling-delay = <0>;
-> +				thermal-sensors = <&thermal 6>;
-> +				sustainable-power = <5000>;
-> +				trips {};
-> +				cooling-maps {};
-> +			};
-> +		};
-> +
->  		audiosys: syscon@11220000 {
->  			compatible = "mediatek,mt8183-audiosys", "syscon";
->  			reg = <0 0x11220000 0 0x1000>;
-> @@ -580,6 +662,9 @@
->  			compatible = "mediatek,mt8183-efuse",
->  				     "mediatek,efuse";
->  			reg = <0 0x11f10000 0 0x1000>;
-
-New line here please.
-
-> +			thermal_calibration: calib@180 {
-> +				reg = <0x180 0xc>;
-> +			};
->  		};
->  
->  		mfgcfg: syscon@13000000 {
-> 
+Regards,
+Matthias
 
 _______________________________________________
 Linux-mediatek mailing list
