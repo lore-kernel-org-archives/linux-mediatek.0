@@ -2,76 +2,80 @@ Return-Path: <SRS0=Q2+k=4I=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D1D4C5ACC4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2020 01:36:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 677AEC11D00
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2020 01:37:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4D80921D56
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2020 01:36:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 208B124670
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2020 01:37:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dZAYUAbf";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Cj+GpElC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4D80921D56
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="D8eviIWK";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="xajnGnl+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 208B124670
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AKwmLqXvDqVpSW4/AV/ub81FTae/EbeVao9aGKynWw0=; b=dZAYUAbfo6l7AR
-	ad7aDvuw5yeNcl4TCNX4zYy3OYixF0hz7meqrVqvsk2AxFikTNRtZiuyEd4Sxy5DY34xYnHvUsSFt
-	/fyvTzUnTIGMCeE8B+QfE9WR/u0liC6BagdgUwA73j3UeUGOmOtuywDHwvPC85/Gu34htwVJe1XaH
-	hiBBwByPxcT2UoLjgGVCLsrGECvrv+2bjdK2Sw5DGnEBP7smTmkFLBS7oGorcNX3/yqxMHnXXE8HG
-	34XQNCsnUakFdr+He19tuBjOjMYyVobjsMnnyAeyORUmnmOHDRd1O5KziWJ6g+eaUZth/AdgaPzxy
-	KBD322+AvNiYQQYw9neg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
+	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=zyRW+k61UUSeQ/JY7l4r7hvqndRUBqcWccnE/IEQEXs=; b=D8eviIWK1L+jq3x925a/nVS05
+	Zskc1hHVsKY9tBiaiL/sx96NAaQV9OrJyyJMbmaiwnvLTm1cZMVyqzE1uDa2L9OOwXE2uPlGVnQzr
+	3jflEvnkXbKv6/V6j3Am8ULO6XLAnBKZdozxzY6lGxoN1oRjTMTNr2Wqe498NfWHhfbj1Zu1Fhju1
+	qHNXwnHT8T8p4h62iHGYAM2b+/ZxvYxPdPGRPJk+/yBoE2jpGDpSNWt91m12+DfT15s8mb9e420VB
+	gYtfnC2xG4gEkjENoEFY4wGT6OxkT53PUwk6fbSTjikzvDdnP7iXJdBl4Jbrr89V5WWJGik9ilAC4
+	mewxoswLA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j4alP-0006lY-2z; Thu, 20 Feb 2020 01:36:27 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1j4am9-00077s-6T; Thu, 20 Feb 2020 01:37:13 +0000
+Received: from mail27.static.mailgun.info ([104.130.122.27])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j4alE-0006dJ-OG; Thu, 20 Feb 2020 01:36:19 +0000
-X-UUID: 22ad0f1db8de4e43a22b45bb9871a741-20200219
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=M86BLgqozbH/Kl6AgJIXd8CaALScxACbiWE+AGXHu0M=; 
- b=Cj+GpElCDUUggrUPzXSWal+0LBXA/Js6cHOFqPE/HSfaiaFT5cQVqGJOVhIk4xx0Y8hcHvzyj1y6Q9oTXDtHHS3Uj3fqXFw9iZpkhY6n4ouBXRHWRSCrFNfZ8aENxznZvMCINcJKXhRTUIxqURVMkFU95xxb1IPgavATLujoa7g=;
-X-UUID: 22ad0f1db8de4e43a22b45bb9871a741-20200219
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 148835711; Wed, 19 Feb 2020 17:36:11 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 19 Feb 2020 17:36:09 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 20 Feb 2020 09:36:08 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Thu, 20 Feb 2020 09:35:31 +0800
-Message-ID: <1582162568.24713.0.camel@mtksdaap41>
-Subject: Re: [PATCH] drm/mediatek: component type MTK_DISP_OVL_2L is not
- correctly handled
-From: CK Hu <ck.hu@mediatek.com>
-To: Phong LE <ple@baylibre.com>
-Date: Thu, 20 Feb 2020 09:36:08 +0800
-In-Reply-To: <20200219141324.29299-1-ple@baylibre.com>
-References: <20200219141324.29299-1-ple@baylibre.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1j4aly-0006vv-Pc
+ for linux-mediatek@lists.infradead.org; Thu, 20 Feb 2020 01:37:07 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1582162625; h=Message-ID: References: In-Reply-To: Subject:
+ Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
+ MIME-Version: Sender; bh=hsLg89Wno2a4zivhXbQ7ZlOQv+K/T+fljhSoDklnjik=;
+ b=xajnGnl+M2Ob9ftkxml/TOlBscgR6V+JSU2uSbypIfdlC0UgRIbA0+ktxsIFlJGQb4qX/H4Z
+ gQIluZI+WBh+yWH9N/hKrbfaNKvR+Kziv+dFP7R1+qX0DEcAquHR9Iz2sqVMOgjW1AjOnde/
+ sbrbSSRUxFW+AHRyPm8yzPLRbOc=
+X-Mailgun-Sending-Ip: 104.130.122.27
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
+ by mxa.mailgun.org with ESMTP id 5e4de2ba.7fca98fd8998-smtp-out-n02;
+ Thu, 20 Feb 2020 01:36:58 -0000 (UTC)
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 4DAAFC447A5; Thu, 20 Feb 2020 01:36:58 +0000 (UTC)
+Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
+ (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+ (No client certificate requested) (Authenticated sender: cang)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 90B50C433A2;
+ Thu, 20 Feb 2020 01:36:57 +0000 (UTC)
 MIME-Version: 1.0
-X-MTK: N
+Date: Thu, 20 Feb 2020 09:36:57 +0800
+From: Can Guo <cang@codeaurora.org>
+To: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH v3 1/2] scsi: ufs: pass device information to
+ apply_dev_quirks
+In-Reply-To: <1582009359.26304.29.camel@mtksdccf07>
+References: <1578726707-6596-1-git-send-email-stanley.chu@mediatek.com>
+ <1578726707-6596-2-git-send-email-stanley.chu@mediatek.com>
+ <2a8fc44914b7ed8777a4a99ba6b8647a@codeaurora.org>
+ <1582009359.26304.29.camel@mtksdccf07>
+Message-ID: <57698522f7e1d9401ac27a0bd7f0756a@codeaurora.org>
+X-Sender: cang@codeaurora.org
+User-Agent: Roundcube Webmail/1.3.9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200219_173617_783923_21A42181 
-X-CRM114-Status: GOOD (  12.29  )
+X-CRM114-CacheID: sfid-20200219_173705_654858_3E9BA7B8 
+X-CRM114-Status: GOOD (  14.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,43 +87,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-scsi@vger.kernel.org, martin.petersen@oracle.com,
+ andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, avri.altman@wdc.com,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ alim.akhtar@samsung.com, matthias.bgg@gmail.com, asutoshd@codeaurora.org,
+ bvanassche@acm.org, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Phong:
+Hi Stanley,
 
-On Wed, 2020-02-19 at 15:13 +0100, Phong LE wrote:
-> The larb device remains NULL if the type is MTK_DISP_OVL_2L.
-> A kernel panic is raised when a crtc uses mtk_smi_larb_get or
-> mtk_smi_larb_put.
+On 2020-02-18 15:02, Stanley Chu wrote:
+> Hi Can,
 > 
-
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-
-> Signed-off-by: Phong LE <ple@baylibre.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 1 +
->  1 file changed, 1 insertion(+)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> index 1f5a112bb034..57c88de9a329 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-> @@ -471,6 +471,7 @@ int mtk_ddp_comp_init(struct device *dev, struct device_node *node,
->  	/* Only DMA capable components need the LARB property */
->  	comp->larb_dev = NULL;
->  	if (type != MTK_DISP_OVL &&
-> +	    type != MTK_DISP_OVL_2L &&
->  	    type != MTK_DISP_RDMA &&
->  	    type != MTK_DISP_WDMA)
->  		return 0;
+>> Hi Stanley,
+>> 
+>> Is this series merged? If no, would you mind moving
+>> ufshcd_vops_apply_dev_quirks(hba, card); a little bit? Like below.
+>> 
+>> @@ -6852,14 +6852,14 @@ static void ufshcd_tune_unipro_params(struct
+>> ufs_hba *hba)
+>>                  ufshcd_tune_pa_hibern8time(hba);
+>>          }
+>> 
+>> +       ufshcd_vops_apply_dev_quirks(hba, card);
+>> +
+>>          if (hba->dev_quirks & UFS_DEVICE_QUIRK_PA_TACTIVATE)
+>>                  /* set 1ms timeout for PA_TACTIVATE */
+>>                  ufshcd_dme_set(hba, UIC_ARG_MIB(PA_TACTIVATE), 10);
+>> 
+>> In this way, vendor codes have a chance to modify the dev_quirks
+>> before ufshcd_tune_unipro_params() does the rest of its job.
+>> 
+> 
+> This patch has been merged to 5.6-rc1.
+> 
+> Basically I am fine with your proposal. But if you need to move it to
+> new mentioned position, our apply_dev_quirks callback also need
+> corresponding change so it might need our co-works : )
+> 
+> For example, you could just post your proposed changes and then we 
+> would
+> provide corresponding change as soon as possible?
+> 
+> Besides, I would like to remind that allowing vendor to "fix" device
+> quirks in advance imply that current common device quirks have some
+> problems? If so, would you consider to fix common device quirks 
+> instead?
+> 
+> 
+>> Thanks,
+>> Can Guo.
+> 
+> Thanks,
+> Stanley Chu
+
+Thanks for your cooperations on this :)
+
+There are some failure seen with specific UFS devices on our platforms,
+we can fix it with the quirk QUIRK_HOST_PA_TACTIVATE, but we are not
+sure if other vendors need it or not. So we want to handle it more
+carefully by limiting it to our platforms only. I had sent out that
+patch weeks ago, so I will just upload the new patch as we both agreed
+in that patch series.
+
+Thanks,
+Can Guo
 
 _______________________________________________
 Linux-mediatek mailing list
