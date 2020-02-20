@@ -2,22 +2,23 @@ Return-Path: <SRS0=Q2+k=4I=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F2AEC11D20
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2020 21:06:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9785CC11D25
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2020 21:59:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2ED8C222C4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2020 21:06:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6A294207FD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2020 21:59:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dP2NDBu4";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ZwAuFsVo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2ED8C222C4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lhBn2u1Z";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="t2Zumk2L"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6A294207FD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,58 +27,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4vDVJeY5j4lXjemnweT89w3eB8p8rOiE9eayQTw3p04=; b=dP2NDBu40a0bFD
-	YOdBVuXtIGtAD14UTGoTfArDCf6kNd8GAWmm+9R6n7AZLEF/kgarnlG2WQJ8UkI+kPtrKNCkootLj
-	bE+X65jCr0Av7OAmGZ+5K/So+ZeEwh5aeRXoUZu/f0rYPPcHVVOwRqKwAoReHmhjqceaPQZbQASVZ
-	v6dRylephUiNleregXswplhFGAcQltG3VplpWbi9qr7hZjoBgTKWasbC8FK1ADd8AsjnK79nq6Y7D
-	lvEd6Da4IfSsnQSm6OEWW9S10Ulhb2P5R0iJ6uxfw4B+glBxpCL+iqGtpj5MDnyW//QCdQCHohYuW
-	4KJpCEBzp4RAPStxYsbg==;
+	List-Owner; bh=B/7O9drVAN8j1WSajoq770JasMyD2e5KRbhL1jJ1a/k=; b=lhBn2u1ZkZbr9H
+	1JuoHpt8ZBpCNWDtPSQd481eAIvnFhFLfYkPbpIbwZh/GEZJ0qg8FsOfWK3/DUQDdErODNyXfOGE9
+	zg+e/H6WJr24zyZOa9ZhIxn60s3KQBz6nOVE4zyFGcn2wMXZ0n47yoY9JDPzip57u9jlhvYSaTwo6
+	GRFW6GnZE64A81jA9NYArWy4AJuk6WXIYEFSouxF32NAQtdqdaXjP/su7cPkmaOY8Po+RS1Dq7UlM
+	t7thx6UjVRaXEbNBoSHaAjoO8Hmjwo1HQvHOo3Z43EI+1pECKFeopY86TqItCAAoI3DDuvDPby1fA
+	1k4fqxeZrIEPyyXNkEFg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j4t1x-00010L-Lt; Thu, 20 Feb 2020 21:06:45 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1j4trB-0007d5-47; Thu, 20 Feb 2020 21:59:41 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j4t1m-0000qA-1N; Thu, 20 Feb 2020 21:06:35 +0000
-Received: by mail-wm1-x343.google.com with SMTP id q9so34550wmj.5;
- Thu, 20 Feb 2020 13:06:33 -0800 (PST)
+ id 1j4tr8-0007cd-AE; Thu, 20 Feb 2020 21:59:39 +0000
+Received: by mail-wr1-x443.google.com with SMTP id g3so6278190wrs.12;
+ Thu, 20 Feb 2020 13:59:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=9bvxNllD/h/tIfcnwcp/ikzTsK4qk40squRSx5BVJWI=;
- b=ZwAuFsVo3Pe7ETQAAL4612rYE/HJ3sVsV1Mh3E711A2zkizXsTWHj9PxGshh7H2NsH
- KwD8FZPL+FGbomqp3jJ1asbTshYPBJBEePQg4dwNYIPF/mgf9GrN3RSorv7pDD1gpUnI
- v4px7zvo2T3jERww2WC+0KtG6WWqCJgMFvVXVc+wQSKhwETG8SHswD9SMf2/lNrzjUDf
- W8h4w9+2DruCe7g2LWJTG+P+j9Ob8pdEw7aUT4LxjJU22iOIh+BVVyWg+GiBdu2O6eln
- IwBYnRxfCwCjxhfNQSuNyeEG5qEpZJTaAOFiPMrsliJ7DyznxNvaJDC4NLiA2fIcQv4n
- zjEA==
+ bh=BjqISWsyGNt/OrpyI0FBvIS4xHBzRF9POC4AcIoX3w8=;
+ b=t2Zumk2Lxqbndlbs5st73rxGE1YmqwLg/3EINY/+VeKiwFK0htcQdLzIxltyI4bu9b
+ GEVEQ6N0eF9GMHwHWCjG5lUXXzaFMxxKMf5h6YWSko2Kue+KyuVrlFBrl6aYxgwt27z+
+ Gq+guScegqrrVLGZ6/0r3ddnc4t/PFDBo+UOaHtXshDEdRXML9WbK7n/FXo3yoYkEPc1
+ cI2AFKDtAGTqx9zxD2ZYj7Frgor7QX28pAD4yf1vA0KBcNmk/Fq+9HnyZy03Ey6BqZjG
+ 1SbtrPjRarQQgEKaeJcco2lo8BOosPgNXhdDvOgVkDzCJQRyS7kEjv95X176SV9QyY8Z
+ XX7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=9bvxNllD/h/tIfcnwcp/ikzTsK4qk40squRSx5BVJWI=;
- b=WY7CtXp/4E6slCl6fNjbiuReUKASHQOf67Ds/UGg0cguhCo0W7FNFe620YoTV3XZ/W
- 7La6Oc4ZULm8F3IX7x8F9GDnDmI321PzPzjySnoLVv/5+KArrvw5AZ/VQqO+c3eLHVSM
- FbCTz2Z2ppvEnIhn7o36u9nBN4zMorH6wVsCJizD/D4fiFNvIvJvfuSGZLOL1NyKrjx1
- Auif7Rf93waEroVGpaM+4AwAg54QfNkk5n4w5Dt4wxHS0RJxohXHXsIl6dfm69rRvl0h
- bvKezkL2Z3rra4yTOpUu1ZUPPIW+PXDFhjlsX5J0ed5zwbFNVA0UmXR/PVZs2MIDUy6w
- VSHQ==
-X-Gm-Message-State: APjAAAUopk6wcW1HLW7U+RcxV5V3Z2Fmhu5Q6CnoXGm0lTB6m8RZuILk
- KyyzRbj4ra1CnYeUuQRT1Y+uBP75
-X-Google-Smtp-Source: APXvYqyo9cnjdaNEnf4aNiIi8Adcr6dK9khtbv9hfozmotk1/mnuqtqR25hCoGJa+/65v0l7GDsIKQ==
-X-Received: by 2002:a1c:3b09:: with SMTP id i9mr6288475wma.31.1582232792577;
- Thu, 20 Feb 2020 13:06:32 -0800 (PST)
+ bh=BjqISWsyGNt/OrpyI0FBvIS4xHBzRF9POC4AcIoX3w8=;
+ b=KN50d24wXkxbdDWEfImqfhSjAHHcvtSohLcuJTUUBwJd6Af0S+R8t80xQ1gLk3ygyH
+ qRVQRhe82El9cSXbA0PLgbl/uzv9uZHbWf6DzFdQ00WHuG+hT6nrSf+Lew3j46cN85ya
+ JxrR3mtfJ929gDk2feeF1j+mQM7bMCuzTbAfS+ztOEjKC6FImmKwb2Xc/7w+cpZ2HGiG
+ ON1nAwVBDzelj4gBV+pUqH/+QFt2SzZe18rbED2r/GLiq0MfrmcUn16ZHT/4COTPODyF
+ MwF8/SU8qT6RX3k9N2go9iIPueHdsRbIbRhGOrrm+j6BqNm8epLfV+S5G+jwbSZwwl//
+ 8udg==
+X-Gm-Message-State: APjAAAXALhm7Z0xgOwXKVNajGbk2n1j+cPReMC9JAlr95njWAdcINtAx
+ O99oll2cE2U1F84v8NeUBqEu9Zos
+X-Google-Smtp-Source: APXvYqzcpDacHycw0Grq1vpWdaPG5q7F4YE9fUeHL6FSrlzn3vN1Ng7nwGZalsOW6p3lVxlIbK3sdg==
+X-Received: by 2002:adf:f14b:: with SMTP id y11mr21718686wro.90.1582235976319; 
+ Thu, 20 Feb 2020 13:59:36 -0800 (PST)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id b17sm1018956wrp.49.2020.02.20.13.06.31
+ by smtp.gmail.com with ESMTPSA id 18sm931043wmf.1.2020.02.20.13.59.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Feb 2020 13:06:31 -0800 (PST)
-Subject: Re: [PATCH v3,2/8] arm64: dts: mt8183: add/update dynamic power
- coefficients
-To: Michael Kao <michael.kao@mediatek.com>
+ Thu, 20 Feb 2020 13:59:35 -0800 (PST)
+Subject: Re: [PATCH v3,3/8] arm64: dts: mt8183: Add #cooling-cells to CPU nodes
+To: Michael Kao <michael.kao@mediatek.com>, Zhang Rui <rui.zhang@intel.com>,
+ Eduardo Valentin <edubezval@gmail.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ hsinyi@chromium.org, linux-pm@vger.kernel.org, srv_heupstream@mediatek.com
 References: <20200103064407.19861-1-michael.kao@mediatek.com>
- <20200103064407.19861-3-michael.kao@mediatek.com>
- <963f6a16-152f-f3b0-56fc-4edb3f1023f3@gmail.com>
- <1581386733.31005.6.camel@mtksdccf07>
+ <20200103064407.19861-4-michael.kao@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -153,16 +155,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <1ab274b4-22d0-98da-889c-f521ce5c30a5@gmail.com>
-Date: Thu, 20 Feb 2020 22:06:30 +0100
+Message-ID: <6e37f3e5-d56b-980e-f269-15b15f70d91b@gmail.com>
+Date: Thu, 20 Feb 2020 22:59:33 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <1581386733.31005.6.camel@mtksdccf07>
+In-Reply-To: <20200103064407.19861-4-michael.kao@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200220_130634_113507_BFB65529 
-X-CRM114-Status: GOOD (  18.10  )
+X-CRM114-CacheID: sfid-20200220_135938_384459_4DBA94AF 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -174,12 +176,8 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- srv_heupstream@mediatek.com, linux-pm@vger.kernel.org,
- Daniel Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org,
- Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
- Zhang Rui <rui.zhang@intel.com>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -187,32 +185,99 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 11/02/2020 03:05, Michael Kao wrote:
-> On Fri, 2020-01-10 at 15:40 +0100, Matthias Brugger wrote:
->> I suppose it need rewording.
+On 03/01/2020 07:44, Michael Kao wrote:
+> From: "michael.kao" <michael.kao@mediatek.com>
 > 
-> Hi Matthias,
+> The #cooling-cells property needs to be specified to allow a CPU
+> to be used as cooling device.
 > 
-> This patch was resent following with the patch series,Add Mediatek
-> thermal driver and dtsi.
-> I have write all the changes in the cover letter.
-> There is no change in this patch.
+> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+
+Applied to v5.6-next/dts64
+
+Thanks
+
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 9 +++++++++
+>  1 file changed, 9 insertions(+)
 > 
-> Do you mean that I need to add some word to commit message or
-> change the dynamic power coefficients?
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index cfb74af260e0..63378ae14a16 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -9,6 +9,7 @@
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+>  #include <dt-bindings/interrupt-controller/irq.h>
+>  #include "mt8183-pinfunc.h"
+> +#include <dt-bindings/thermal/thermal.h>
+>  
+>  / {
+>  	compatible = "mediatek,mt8183";
+> @@ -74,6 +75,7 @@
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <741>;
+>  			dynamic-power-coefficient = <84>;
+> +			#cooling-cells = <2>;
+>  		};
+>  
+>  		cpu1: cpu@1 {
+> @@ -83,6 +85,7 @@
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <741>;
+>  			dynamic-power-coefficient = <84>;
+> +			#cooling-cells = <2>;
+>  		};
+>  
+>  		cpu2: cpu@2 {
+> @@ -92,6 +95,7 @@
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <741>;
+>  			dynamic-power-coefficient = <84>;
+> +			#cooling-cells = <2>;
+>  		};
+>  
+>  		cpu3: cpu@3 {
+> @@ -101,6 +105,7 @@
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <741>;
+>  			dynamic-power-coefficient = <84>;
+> +			#cooling-cells = <2>;
+>  		};
+>  
+>  		cpu4: cpu@100 {
+> @@ -110,6 +115,7 @@
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <1024>;
+>  			dynamic-power-coefficient = <211>;
+> +			#cooling-cells = <2>;
+>  		};
+>  
+>  		cpu5: cpu@101 {
+> @@ -119,6 +125,7 @@
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <1024>;
+>  			dynamic-power-coefficient = <211>;
+> +			#cooling-cells = <2>;
+>  		};
+>  
+>  		cpu6: cpu@102 {
+> @@ -128,6 +135,7 @@
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <1024>;
+>  			dynamic-power-coefficient = <211>;
+> +			#cooling-cells = <2>;
+>  		};
+>  
+>  		cpu7: cpu@103 {
+> @@ -137,6 +145,7 @@
+>  			enable-method = "psci";
+>  			capacity-dmips-mhz = <1024>;
+>  			dynamic-power-coefficient = <211>;
+> +			#cooling-cells = <2>;
+>  		};
+>  	};
+>  
 > 
-
-Your commit message says:
-"Add dynamic power coefficients for all cores and update those of CPU0 and CPU4."
-
-But the power coefficients for CPU0-4 are not updated, but added.
-
-I fixed the commit message and pushed to v5.6-next/dts64
-
-Please double check that everything is correct.
-
-Regards,
-Matthias
 
 _______________________________________________
 Linux-mediatek mailing list
