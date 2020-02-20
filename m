@@ -2,101 +2,85 @@ Return-Path: <SRS0=Q2+k=4I=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E9AE9C11D04
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2020 13:24:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D46C7C11D04
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2020 13:31:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BA9F2206E2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2020 13:24:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A8652206E2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Feb 2020 13:31:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Izk8hsX9";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=embeddedor.com header.i=@embeddedor.com header.b="WkfFysgN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BA9F2206E2
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=embeddedor.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DTzgmhTA";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="pKCHkOqt"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A8652206E2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
-	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=KH8ZQ+Q1JiH7LaSR/H6SYfhaiPMozGasV6P355pHTfA=; b=Izk8hsX9gegrPG
-	U/V38ERLEADqv1fAyK1dLq2ZEFuiOXPjF/KxnOImc3Fi3xeDPc2nF5ezXMlBWkhbzOYbx4fCNvl0G
-	w7dklGP5pGNZNre7686a6Lstdn9TRrOCXJsoJsF4eyLvgdBF/KlG67jIxWZUi0g9krqzv0KXkFy20
-	ZZLu4PkPp5px/i18ltRIhKzv279j91fSHfTFi/fmYkplf94PqSB+XjRClMR1e6pDjyFjnuC687NLX
-	c8E5mD0N1SQbXRgqPmcdqSDCsv+Xv7pTKQjCtH6eZj3r0nrQWLY7UXqjwOYBDSDQ/Y4vIpUcqwKKX
-	r1CF9Kd7NJh1CL1d/ucg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sDfzMBerDrRdAntdi+vWEDeXuxL+udHStS4xMqpFlzQ=; b=DTzgmhTA0QJucy
+	iVHGOXtBX/PazBz5R6nLSl7XbIJWGdvvBh55BuvSpNsY9oxIm8gzkpKSzsyca2eH5zJv19ulGOlU4
+	zMMUK4yr9/Ld4L/RCfYlcHfEl1iT96N4BFHgrzd38ybrKSArsnKQUEU3Rsiv/AZykv+2YZn3vXN9n
+	DEMpfyyu7lddTDvGxDizkiDq7rEHOZmw5V9RgRDHNzVnuL+sbzBXv9lVIUfcKBvHHpkQYijq0kzCD
+	uiewYHyJkD/h4rom/r3xDEgJZwZZeRWYeaKYC9DS7ckwETn2VqG3505tRdf2+T7Nf1radZStbTnUl
+	uUhzgLb4vpI8DGu6ApOQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j4lo0-0003Ii-P0; Thu, 20 Feb 2020 13:23:52 +0000
-Received: from gateway21.websitewelcome.com ([192.185.45.38])
+	id 1j4lv1-0007lf-KE; Thu, 20 Feb 2020 13:31:07 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j4lnw-0003IF-Ok
- for linux-mediatek@lists.infradead.org; Thu, 20 Feb 2020 13:23:50 +0000
-Received: from cm13.websitewelcome.com (cm13.websitewelcome.com [100.42.49.6])
- by gateway21.websitewelcome.com (Postfix) with ESMTP id 16FEE4058BC48
- for <linux-mediatek@lists.infradead.org>; Thu, 20 Feb 2020 07:17:35 -0600 (CST)
-Received: from gator4166.hostgator.com ([108.167.133.22]) by cmsmtp with SMTP
- id 4lhujvHmhRP4z4lhvjLLh6; Thu, 20 Feb 2020 07:17:35 -0600
-X-Authority-Reason: nr=8
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=embeddedor.com; s=default; h=Content-Type:MIME-Version:Message-ID:Subject:
- Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=z1nik/sLu1rWe1J16Res5lnb/I2LgkK5u9A27nU3ovY=; b=WkfFysgNRAo+UWyPV48G7KJxrr
- QdENWL2WZlpyux/qZ58g4YNrrdODyN/3/5cURbxev/i8i5y9/fNa5+YyCQqKV2OF1pfuypyeMs6Lw
- Y92EXY+tFP+JEI7zuhJ9u/F6GFh7jn0iMXQaIrEbM3+gaYf84/xhX9DUaDN6ZeBMHJoz95ht6epCx
- mwmOwqv+ZxjhNYtjful6ZZFIlk487O59qsgsT0VioFBEeGpH9HBiP4Jg6ntzqB0+xPpRVA0H+Bz77
- pcSB4jcakHBCa6z+/lfyyqg19of677C4vhYE8WCxtJPfP7j9vA8WbGR6YsuqF2vp5ilM+33vEmh8f
- GwMVz72w==;
-Received: from [201.144.174.47] (port=28175 helo=embeddedor)
- by gator4166.hostgator.com with esmtpa (Exim 4.92)
- (envelope-from <gustavo@embeddedor.com>)
- id 1j4lht-003Yvz-1W; Thu, 20 Feb 2020 07:17:33 -0600
-Date: Thu, 20 Feb 2020 07:20:17 -0600
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Minas Harutyunyan <hminas@synopsys.com>,
- Alan Stern <stern@rowland.harvard.edu>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Mathias Nyman <mathias.nyman@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Johan Hovold <johan@kernel.org>, Felipe Balbi <balbi@kernel.org>
-Subject: [PATCH] USB: Replace zero-length array with flexible-array member
-Message-ID: <20200220132017.GA29262@embeddedor>
+ id 1j4luq-0007WW-HE; Thu, 20 Feb 2020 13:30:58 +0000
+X-UUID: 5077218484e34b079bcc58cbb3197cb3-20200220
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=djf6C0Eeez3RoBVkU7r/xsvLyT1pkg0ulRptnAvpIIw=; 
+ b=pKCHkOqttH21TlFjUvPYdX4gP4MsLYjUlXJZ4qiGeJo9YQmACakGqJB0nOloXDd/Ag3dD53pWbyk9ggCo+FJNhVcfBu3IVFdrYiV0W4fhUUmNh6It2eCQMj2BGHTC1zPob6Wp/abAa9q/4V09OZlUTONwEf6TnGVv4SaKtTmUdk=;
+X-UUID: 5077218484e34b079bcc58cbb3197cb3-20200220
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 518899328; Thu, 20 Feb 2020 05:30:50 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 20 Feb 2020 05:30:48 -0800
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 20 Feb 2020 21:28:54 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Thu, 20 Feb 2020 21:31:13 +0800
+Message-ID: <1582205440.26304.50.camel@mtksdccf07>
+Subject: Re: [PATCH v1 1/2] scsi: ufs: add required delay after gating
+ reference clock
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: Can Guo <cang@codeaurora.org>
+Date: Thu, 20 Feb 2020 21:30:40 +0800
+In-Reply-To: <bbb0b0637d9667d4691a9a28f9988dea@codeaurora.org>
+References: <20200217093559.16830-1-stanley.chu@mediatek.com>
+ <20200217093559.16830-2-stanley.chu@mediatek.com>
+ <c6874825dd60ea04ed401fbd1b5cb568@codeaurora.org>
+ <1581945168.26304.4.camel@mtksdccf07>
+ <e518c4d1d94ec15e9c4c31c34a9e42d1@codeaurora.org>
+ <1581946449.26304.15.camel@mtksdccf07>
+ <56c1fc80919491d058d904fcc7301835@codeaurora.org>
+ <a8cd5beee0a1e12a40da752c6cd9b5de@codeaurora.org>
+ <1582103495.26304.42.camel@mtksdccf07>
+ <bbb0b0637d9667d4691a9a28f9988dea@codeaurora.org>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - embeddedor.com
-X-BWhitelist: no
-X-Source-IP: 201.144.174.47
-X-Source-L: No
-X-Exim-ID: 1j4lht-003Yvz-1W
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: (embeddedor) [201.144.174.47]:28175
-X-Source-Auth: gustavo@embeddedor.com
-X-Email-Count: 14
-X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
-X-Local-Domain: yes
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200220_052348_899769_84B7D47F 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20200220_053056_583042_F8B828F7 
+X-CRM114-Status: GOOD (  21.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,326 +92,99 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "Gustavo A. R. Silva" <gustavo@embeddedor.com>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: chun-hung.wu@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, andy.teng@mediatek.com, jejb@linux.ibm.com,
+ peter.wang@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, avri.altman@wdc.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ alim.akhtar@samsung.com, matthias.bgg@gmail.com, beanhuo@micron.com,
+ bvanassche@acm.org, hongwus@codeaurora.org,
+ Asutosh Das <asutoshd@codeaurora.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The current codebase makes use of the zero-length array language
-extension to the C90 standard, but the preferred mechanism to declare
-variable-length types such as these ones is a flexible array member[1][2],
-introduced in C99:
+Hi Can,
 
-struct foo {
-        int stuff;
-        struct boo array[];
-};
+On Wed, 2020-02-19 at 18:33 +0800, Can Guo wrote:
+> Hi Stanley,
+> 
+> On 2020-02-19 17:11, Stanley Chu wrote:
+> > Hi Can,
+> > 
+> > On Wed, 2020-02-19 at 10:35 +0800, Can Guo wrote:
+> > 
+> >> Since we all need this delay here, how about put the delay in the
+> >> entrence of ufshcd_setup_clocks(), before vops_setup_clocks()?
+> >> If so, we can remove all the delays we added in our vops since the
+> >> delay anyways delays everything inside ufshcd_setup_clocks().
+> >> 
+> > 
+> > Always putting the delay in the entrance of ufshcd_setup_clocks() may
+> > add unwanted delay for vendors, just like your current implementation,
+> > or some other vendors who do not want to disable the reference clock.
+> > 
+> > I think current patch is more reasonable because the delay is applied 
+> > to
+> > clock only named as "ref_clk" specifically.
+> > 
+> > If you needs to keep "ref_clk" in DT, would you consider to remove the
+> > delay in your ufs_qcom_dev_ref_clk_ctrl() and let the delay happens via
+> > common ufshcd_setup_clocks() only? However you may still need delay if
+> > call path comes from ufs_qcom_pwr_change_notify().
+> > 
+> > What do you think?
+> > 
+> 
+> I agree current change is more reasonable from what it looks, but the 
+> fact
+> is that I canont remove the delay in ufs_qcom_dev_ref_clk_ctrl() even 
+> with
+> this change. On our platforms, ref_clk in DT serves multipule purposes,
+> the ref_clk provided to UFS device is actually controlled in
+> ufs_qcom_dev_ref_clk_ctrl(), which comes before where this change kicks 
+> start,
+> so if I remove the delay in ufs_qcom_dev_ref_clk_ctrl(), this change 
+> cannot
+> provide us the correct delay before gate the ref_clk provided to UFS 
+> device.
 
-By making use of the mechanism above, we will get a compiler warning
-in case the flexible array does not occur last in the structure, which
-will help us prevent some kind of undefined behavior bugs from being
-inadvertently introduced[3] to the codebase from now on.
+> > Always putting the delay in the entrance of ufshcd_setup_clocks() may
+> > add unwanted delay for vendors, just like your current implementation,
+> > or some other vendors who do not want to disable the reference clock.
+> 
+> I meant if we put the delay in the entrance, I will be able to remove
+> the delay in ufs_qcom_dev_ref_clk_ctrl(). Meanwhile, we can add proper
+> checks before the delay to make sure it is initiated only if ref_clk 
+> needs
+> to be disabled, i.e:
+> 
+> if(!on && !skip_ref_clk && hba->dev_info.clk_gating_wait_us)
+>      usleep_range();
+> 
+> Does this look better to you?
 
-Also, notice that, dynamic memory allocations won't be affected by
-this change:
+Firstly thanks so much for above details.
 
-"Flexible array members have incomplete type, and so the sizeof operator
-may not be applied. As a quirk of the original implementation of
-zero-length arrays, sizeof evaluates to zero."[1]
+Again this statement may also add unwanted delay if some other vendors
+does not have "ref_clk" in DT or they don't/can't disable the reference
+clock provided to UFS device.
 
-This issue was found with the help of Coccinelle.
+> 
+> Anyways, we will see regressions with this change on our platforms, can 
+> we
+> have more discussions before get it merged? It should be OK if you go 
+> with
+> patch #2 alone first, right? Thanks.
 
-[1] https://gcc.gnu.org/onlinedocs/gcc/Zero-Length.html
-[2] https://github.com/KSPP/linux/issues/21
-[3] commit 76497732932f ("cxgb3/l2t: Fix undefined behaviour")
+Now the fact is that this change will impact your flow and it seems no
+solid conclusion yet. Sure I could drop patch #1 and submit patch #2
+only first : )
 
-Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
----
- drivers/usb/atm/usbatm.h              | 2 +-
- drivers/usb/dwc2/hcd.h                | 2 +-
- drivers/usb/host/ehci-tegra.c         | 2 +-
- drivers/usb/host/ehci.h               | 4 ++--
- drivers/usb/host/fotg210.h            | 2 +-
- drivers/usb/host/ohci.h               | 4 ++--
- drivers/usb/host/xhci-mtk.h           | 2 +-
- drivers/usb/host/xhci.h               | 4 ++--
- drivers/usb/serial/io_usbvend.h       | 4 ++--
- drivers/usb/serial/ti_usb_3410_5052.c | 4 ++--
- include/linux/usb.h                   | 4 ++--
- include/linux/usb/audio-v2.h          | 2 +-
- include/linux/usb/audio-v3.h          | 2 +-
- include/linux/usb/gadget.h            | 2 +-
- include/linux/usb/hcd.h               | 2 +-
- include/linux/usbdevice_fs.h          | 2 +-
- 16 files changed, 22 insertions(+), 22 deletions(-)
+Thanks,
+Stanley Chu
 
-diff --git a/drivers/usb/atm/usbatm.h b/drivers/usb/atm/usbatm.h
-index d3bdc4cc47aa..8725755bd53d 100644
---- a/drivers/usb/atm/usbatm.h
-+++ b/drivers/usb/atm/usbatm.h
-@@ -164,7 +164,7 @@ struct usbatm_data {
- 	unsigned char *cell_buf;	/* holds partial rx cell */
- 	unsigned int buf_usage;
- 
--	struct urb *urbs[0];
-+	struct urb *urbs[];
- };
- 
- static inline void *to_usbatm_driver_data(struct usb_interface *intf)
-diff --git a/drivers/usb/dwc2/hcd.h b/drivers/usb/dwc2/hcd.h
-index 8ca6d12a6f57..1224fa9df604 100644
---- a/drivers/usb/dwc2/hcd.h
-+++ b/drivers/usb/dwc2/hcd.h
-@@ -199,7 +199,7 @@ struct dwc2_hcd_urb {
- 	u32 flags;
- 	u16 interval;
- 	struct dwc2_hcd_pipe_info pipe_info;
--	struct dwc2_hcd_iso_packet_desc iso_descs[0];
-+	struct dwc2_hcd_iso_packet_desc iso_descs[];
- };
- 
- /* Phases for control transfers */
-diff --git a/drivers/usb/host/ehci-tegra.c b/drivers/usb/host/ehci-tegra.c
-index d6433f206c17..10d51daa6a1b 100644
---- a/drivers/usb/host/ehci-tegra.c
-+++ b/drivers/usb/host/ehci-tegra.c
-@@ -282,7 +282,7 @@ static int tegra_ehci_hub_control(
- struct dma_aligned_buffer {
- 	void *kmalloc_ptr;
- 	void *old_xfer_buffer;
--	u8 data[0];
-+	u8 data[];
- };
- 
- static void free_dma_aligned_buffer(struct urb *urb)
-diff --git a/drivers/usb/host/ehci.h b/drivers/usb/host/ehci.h
-index ac5e967907d1..229b3de319e6 100644
---- a/drivers/usb/host/ehci.h
-+++ b/drivers/usb/host/ehci.h
-@@ -255,7 +255,7 @@ struct ehci_hcd {			/* one per controller */
- 	struct list_head	tt_list;
- 
- 	/* platform-specific data -- must come last */
--	unsigned long		priv[0] __aligned(sizeof(s64));
-+	unsigned long		priv[] __aligned(sizeof(s64));
- };
- 
- /* convert between an HCD pointer and the corresponding EHCI_HCD */
-@@ -460,7 +460,7 @@ struct ehci_iso_sched {
- 	struct list_head	td_list;
- 	unsigned		span;
- 	unsigned		first_packet;
--	struct ehci_iso_packet	packet[0];
-+	struct ehci_iso_packet	packet[];
- };
- 
- /*
-diff --git a/drivers/usb/host/fotg210.h b/drivers/usb/host/fotg210.h
-index 1b4db95e5c43..6cee40ec65b4 100644
---- a/drivers/usb/host/fotg210.h
-+++ b/drivers/usb/host/fotg210.h
-@@ -490,7 +490,7 @@ struct fotg210_iso_packet {
- struct fotg210_iso_sched {
- 	struct list_head	td_list;
- 	unsigned		span;
--	struct fotg210_iso_packet	packet[0];
-+	struct fotg210_iso_packet	packet[];
- };
- 
- /*
-diff --git a/drivers/usb/host/ohci.h b/drivers/usb/host/ohci.h
-index b015b00774b2..27c26ca10bfd 100644
---- a/drivers/usb/host/ohci.h
-+++ b/drivers/usb/host/ohci.h
-@@ -337,7 +337,7 @@ typedef struct urb_priv {
- 	u16			length;		// # tds in this request
- 	u16			td_cnt;		// tds already serviced
- 	struct list_head	pending;
--	struct td		*td [0];	// all TDs in this request
-+	struct td		*td[];		// all TDs in this request
- 
- } urb_priv_t;
- 
-@@ -435,7 +435,7 @@ struct ohci_hcd {
- 	struct dentry		*debug_dir;
- 
- 	/* platform-specific data -- must come last */
--	unsigned long           priv[0] __aligned(sizeof(s64));
-+	unsigned long           priv[] __aligned(sizeof(s64));
- 
- };
- 
-diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-index 5ac458b7d2e0..acd56517215a 100644
---- a/drivers/usb/host/xhci-mtk.h
-+++ b/drivers/usb/host/xhci-mtk.h
-@@ -95,7 +95,7 @@ struct mu3h_sch_ep_info {
- 	u32 pkts;
- 	u32 cs_count;
- 	u32 burst_mode;
--	u32 bw_budget_table[0];
-+	u32 bw_budget_table[];
- };
- 
- #define MU3C_U3_PORT_MAX 4
-diff --git a/drivers/usb/host/xhci.h b/drivers/usb/host/xhci.h
-index 3ecee10fdcdc..685180e1b98a 100644
---- a/drivers/usb/host/xhci.h
-+++ b/drivers/usb/host/xhci.h
-@@ -1642,7 +1642,7 @@ struct xhci_scratchpad {
- struct urb_priv {
- 	int	num_tds;
- 	int	num_tds_done;
--	struct	xhci_td	td[0];
-+	struct	xhci_td	td[];
- };
- 
- /*
-@@ -1901,7 +1901,7 @@ struct xhci_hcd {
- 
- 	void			*dbc;
- 	/* platform-specific data -- must come last */
--	unsigned long		priv[0] __aligned(sizeof(s64));
-+	unsigned long		priv[] __aligned(sizeof(s64));
- };
- 
- /* Platform specific overrides to generic XHCI hc_driver ops */
-diff --git a/drivers/usb/serial/io_usbvend.h b/drivers/usb/serial/io_usbvend.h
-index c38e87ac5ea9..0d1a5bb4636e 100644
---- a/drivers/usb/serial/io_usbvend.h
-+++ b/drivers/usb/serial/io_usbvend.h
-@@ -593,7 +593,7 @@ struct ti_i2c_desc {
- 	__u8	Type;			// Type of descriptor
- 	__le16	Size;			// Size of data only not including header
- 	__u8	CheckSum;		// Checksum (8 bit sum of data only)
--	__u8	Data[0];		// Data starts here
-+	__u8	Data[];		// Data starts here
- } __attribute__((packed));
- 
- // for 5152 devices only (type 2 record)
-@@ -601,7 +601,7 @@ struct ti_i2c_desc {
- struct ti_i2c_firmware_rec {
- 	__u8	Ver_Major;		// Firmware Major version number
- 	__u8	Ver_Minor;		// Firmware Minor version number
--	__u8	Data[0];		// Download starts here
-+	__u8	Data[];		// Download starts here
- } __attribute__((packed));
- 
- 
-diff --git a/drivers/usb/serial/ti_usb_3410_5052.c b/drivers/usb/serial/ti_usb_3410_5052.c
-index ef23acc9b9ce..73075b9351c5 100644
---- a/drivers/usb/serial/ti_usb_3410_5052.c
-+++ b/drivers/usb/serial/ti_usb_3410_5052.c
-@@ -219,7 +219,7 @@ struct ti_write_data_bytes {
- 	u8	bDataCounter;
- 	__be16	wBaseAddrHi;
- 	__be16	wBaseAddrLo;
--	u8	bData[0];
-+	u8	bData[];
- } __packed;
- 
- struct ti_read_data_request {
-@@ -234,7 +234,7 @@ struct ti_read_data_bytes {
- 	__u8	bCmdCode;
- 	__u8	bModuleId;
- 	__u8	bErrorCode;
--	__u8	bData[0];
-+	__u8	bData[];
- } __packed;
- 
- /* Interrupt struct */
-diff --git a/include/linux/usb.h b/include/linux/usb.h
-index ca1a5f1e1c5e..9f3c721c70dc 100644
---- a/include/linux/usb.h
-+++ b/include/linux/usb.h
-@@ -325,7 +325,7 @@ struct usb_interface_cache {
- 
- 	/* variable-length array of alternate settings for this interface,
- 	 * stored in no particular order */
--	struct usb_host_interface altsetting[0];
-+	struct usb_host_interface altsetting[];
- };
- #define	ref_to_usb_interface_cache(r) \
- 		container_of(r, struct usb_interface_cache, ref)
-@@ -1589,7 +1589,7 @@ struct urb {
- 	int error_count;		/* (return) number of ISO errors */
- 	void *context;			/* (in) context for completion */
- 	usb_complete_t complete;	/* (in) completion routine */
--	struct usb_iso_packet_descriptor iso_frame_desc[0];
-+	struct usb_iso_packet_descriptor iso_frame_desc[];
- 					/* (in) ISO ONLY */
- };
- 
-diff --git a/include/linux/usb/audio-v2.h b/include/linux/usb/audio-v2.h
-index cb9900b34b67..ead8c9a47c6a 100644
---- a/include/linux/usb/audio-v2.h
-+++ b/include/linux/usb/audio-v2.h
-@@ -153,7 +153,7 @@ struct uac2_feature_unit_descriptor {
- 	__u8 bSourceID;
- 	/* bmaControls is actually u32,
- 	 * but u8 is needed for the hybrid parser */
--	__u8 bmaControls[0]; /* variable length */
-+	__u8 bmaControls[]; /* variable length */
- } __attribute__((packed));
- 
- /* 4.7.2.10 Effect Unit Descriptor */
-diff --git a/include/linux/usb/audio-v3.h b/include/linux/usb/audio-v3.h
-index 6b708434b7f9..c69a6f2e6837 100644
---- a/include/linux/usb/audio-v3.h
-+++ b/include/linux/usb/audio-v3.h
-@@ -109,7 +109,7 @@ struct uac3_feature_unit_descriptor {
- 	__u8 bSourceID;
- 	/* bmaControls is actually u32,
- 	 * but u8 is needed for the hybrid parser */
--	__u8 bmaControls[0]; /* variable length */
-+	__u8 bmaControls[]; /* variable length */
- 	/* wFeatureDescrStr omitted */
- } __attribute__((packed));
- 
-diff --git a/include/linux/usb/gadget.h b/include/linux/usb/gadget.h
-index 124462d65eac..9411c08a5c7e 100644
---- a/include/linux/usb/gadget.h
-+++ b/include/linux/usb/gadget.h
-@@ -767,7 +767,7 @@ struct usb_gadget_strings {
- 
- struct usb_gadget_string_container {
- 	struct list_head        list;
--	u8                      *stash[0];
-+	u8                      *stash[];
- };
- 
- /* put descriptor for string with that id into buf (buflen >= 256) */
-diff --git a/include/linux/usb/hcd.h b/include/linux/usb/hcd.h
-index 712b2a603645..e12105ed3834 100644
---- a/include/linux/usb/hcd.h
-+++ b/include/linux/usb/hcd.h
-@@ -228,7 +228,7 @@ struct usb_hcd {
- 	/* The HC driver's private data is stored at the end of
- 	 * this structure.
- 	 */
--	unsigned long hcd_priv[0]
-+	unsigned long hcd_priv[]
- 			__attribute__ ((aligned(sizeof(s64))));
- };
- 
-diff --git a/include/linux/usbdevice_fs.h b/include/linux/usbdevice_fs.h
-index 79aab0065ec8..14ea197ce37f 100644
---- a/include/linux/usbdevice_fs.h
-+++ b/include/linux/usbdevice_fs.h
-@@ -69,7 +69,7 @@ struct usbdevfs_urb32 {
- 	compat_int_t error_count;
- 	compat_uint_t signr;
- 	compat_caddr_t usercontext; /* unused */
--	struct usbdevfs_iso_packet_desc iso_frame_desc[0];
-+	struct usbdevfs_iso_packet_desc iso_frame_desc[];
- };
- 
- struct usbdevfs_ioctl32 {
--- 
-2.25.0
 
 
 _______________________________________________
