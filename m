@@ -2,77 +2,90 @@ Return-Path: <SRS0=GSZf=4J=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7908FC35641
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2020 09:27:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0897AC35642
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2020 09:52:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4B8CA20722
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2020 09:27:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BB46524672
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2020 09:52:53 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bZ5g/3uy";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Z22Ylokv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4B8CA20722
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NZiYmu+I";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="H51OQx4x"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BB46524672
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Bv2iPG+NvWwxWtZdjjjd3OlVsgBSjbcTJmiR1KYIZ0I=; b=bZ5g/3uy7rZGrI
-	srY2ZM2nFi+7vOaQK8fwlD9s0434twcHrXE2frryaGFTFVLvCvZ8h9cISfzAvIV3qgSUyCQS/bSRn
-	Dv0Xuj9EuehNZ9tkLZLPByyTip+4kOwkj29fNN/9klihYed0qS3bqZOjCsOMWNo8yr2EzJr25feDe
-	KQThsfSforJzPB+wH11atwYvxHwlNPweONanMQ/66twvlc1N0n3sHqqvmIc0xlf2D5EF2zGUtZopN
-	+lId3f6hClPVFl1vzPGQ6xXwFOB/Y61trlsWzz/k8zUuGoKJ+7rmUNY1VrUceztIKJxucT79dxNo8
-	/SIHZnKNNtA9ysi9t67A==;
+	List-Owner; bh=0c2TjedgDd3mZTLIGZ27EXvzPORphtJQGnXJU5nb0FE=; b=NZiYmu+IgQRJYn
+	crdTu5pMlQo7hvwztNskrwiDcl88LQzsld1EMlggvoXZxwKliJx9VN80v+SSjQdonk4TaYdRxRb93
+	jcREblVhynvwijrqo7T4Sf1c3sTi9kt/T6vqOjAc33vgks1+VtX/85EopgElH5Gh6IxKm/Ld0AUOm
+	JsewGHXIf9tAX31JLz7R4g3rpWv0DJYA4U4+HByjFjuj9t0pgctm/ohD7kS0TDgMCOiNqkmpvw+ny
+	KngA88yWTU7FykV96+aa5UTuUPXmxPRymWydMuS+yKDGqJNI/ctgMfNqI2NHFtZUA5TNQNpk+f5zz
+	Jg1Xr/U80UVoatB4RrLA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j54ao-0000ml-55; Fri, 21 Feb 2020 09:27:30 +0000
+	id 1j54zG-00023T-4q; Fri, 21 Feb 2020 09:52:46 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j54ag-0000lX-6l; Fri, 21 Feb 2020 09:27:28 +0000
-X-UUID: 8d0c7fd5e41a4c32b5f1089e5166d696-20200221
+ id 1j54zD-00022U-80; Fri, 21 Feb 2020 09:52:44 +0000
+X-UUID: 8fe5b03ab34645cab7cccaf89dc51621-20200221
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=xtQVmXJH4GNtdqJc6//nA3nfWidVuWpS9hv2OZGn7I4=; 
- b=Z22Ylokvgnb5mQAbC5uzOOjkFyVjnRLONGCj/MjLm5uE7uNgxKkcidqA5JFqr9//3uDFJitPn211/tgiB4jDIgJJMLX2nK3hqJqyTqXFtU6XaljmnL70/HBSKyyHAHQKDzh31AcfSce2PaNbeOR5CEAQfo6xl0Cn/hwbO3cndWQ=;
-X-UUID: 8d0c7fd5e41a4c32b5f1089e5166d696-20200221
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=sd75wbeZl+AV0Luow8F4QTQlXnc6UMRhjSi0P4K7nFg=; 
+ b=H51OQx4xRt97B9A/8FETQToauGUS3nZ9I7+SUjbAkmMf4FxJp/mZFBIZUa564XbUNIuZwtqII1E1arCzIzqsOPzi6j1gh5poFXqtPco3zd28InCPCzUAZSdYZ59qmAMooXO4M1veQpWGpR8/IFu+cvdx6HUfWGW52sF3qMfykgI=;
+X-UUID: 8fe5b03ab34645cab7cccaf89dc51621-20200221
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <macpaul.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1297650235; Fri, 21 Feb 2020 01:27:18 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ with ESMTP id 1937251222; Fri, 21 Feb 2020 01:52:40 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 21 Feb 2020 01:27:44 -0800
+ 15.0.1395.4; Fri, 21 Feb 2020 01:53:06 -0800
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 21 Feb 2020 17:25:22 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Fri, 21 Feb 2020 17:27:39 +0800
-Message-ID: <1582277229.25992.9.camel@mtksdaap41>
-Subject: Re: [PATCH v8 0/6] arm/arm64: mediatek: Fix mmsys device probing
-From: CK Hu <ck.hu@mediatek.com>
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Date: Fri, 21 Feb 2020 17:27:09 +0800
-In-Reply-To: <7a87b486-1622-7f27-f5af-427b94a14c00@collabora.com>
-References: <20200220172147.919996-1-enric.balletbo@collabora.com>
- <1582259996.1846.7.camel@mtksdaap41>
- <7a87b486-1622-7f27-f5af-427b94a14c00@collabora.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 21 Feb 2020 17:51:49 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Fri, 21 Feb 2020 17:52:59 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Catalin Marinas
+ <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Michael Turquette
+ <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, mtk01761
+ <wendell.lin@mediatek.com>, Fabien Parent <fparent@baylibre.com>, Weiyi Lu
+ <weiyi.lu@mediatek.com>, Mars Cheng <mars.cheng@mediatek.com>, Sean Wang
+ <Sean.Wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, Owen Chen
+ <owen.chen@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>, "Evan
+ Green" <evgreen@chromium.org>, Yong Wu <yong.wu@mediatek.com>, Joerg Roedel
+ <jroedel@suse.de>, Shawn Guo <shawnguo@kernel.org>, Marc Zyngier
+ <marc.zyngier@arm.com>, Ryder Lee <Ryder.Lee@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-clk@vger.kernel.org>
+Subject: [PATCH 2/5] dt-bindings: clock: mediatek: document clk bindings
+ mipi0a for Mediatek MT6765 SoC
+Date: Fri, 21 Feb 2020 17:52:19 +0800
+Message-ID: <1582278742-1626-3-git-send-email-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1582278742-1626-1-git-send-email-macpaul.lin@mediatek.com>
+References: <1582278742-1626-1-git-send-email-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 6EF3A2C9A3E4B05AF86BEA1F7204146E58EE0C656601566BA5EB8AEA4259B1CB2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200221_012726_357916_8EAF6D20 
-X-CRM114-Status: GOOD (  30.32  )
+X-CRM114-CacheID: sfid-20200221_015243_291553_E830C000 
+X-CRM114-Status: GOOD (  10.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,200 +97,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, Kate Stewart <kstewart@linuxfoundation.org>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, airlied@linux.ie,
- mturquette@baylibre.com, dri-devel@lists.freedesktop.org,
- Richard Fontana <rfontana@redhat.com>, laurent.pinchart@ideasonboard.com,
- ulrich.hecht+renesas@gmail.com, Collabora Kernel ML <kernel@collabora.com>,
- linux-clk@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
- Weiyi Lu <weiyi.lu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>,
- wens@csie.org, Allison Randal <allison@lohutok.net>,
- mtk01761 <wendell.lin@mediatek.com>, Owen Chen <owen.chen@mediatek.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- p.zabel@pengutronix.de, frank-w@public-files.de,
- Seiya Wang <seiya.wang@mediatek.com>, sean.wang@mediatek.com,
- Houlong Wei <houlong.wei@mediatek.com>, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Thomas
- Gleixner <tglx@linutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>,
- Fabien Parent <fparent@baylibre.com>, sboyd@kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, rdunlap@infradead.org,
- linux-kernel@vger.kernel.org, Daniel Vetter <daniel@ffwll.ch>,
- matthias.bgg@kernel.org
+Cc: CC Hwang <cc.hwang@mediatek.com>, Loda Chou <loda.chou@mediatek.com>,
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Enric:
+This patch adds the binding documentation for mipi0a.
 
-On Fri, 2020-02-21 at 09:56 +0100, Enric Balletbo i Serra wrote:
-> Hi CK,
-> 
-> Thanks for your quick answer.
-> 
-> On 21/2/20 5:39, CK Hu wrote:
-> > Hi, Enric:
-> > 
-> > On Thu, 2020-02-20 at 18:21 +0100, Enric Balletbo i Serra wrote:
-> >> Dear all,
-> >>
-> >> Those patches are intended to solve an old standing issue on some
-> >> Mediatek devices (mt8173, mt2701 and mt2712) in a slightly different way
-> >> to the precedent series.
-> >>
-> >> Up to now both drivers, clock and drm are probed with the same device tree
-> >> compatible. But only the first driver get probed, which in effect breaks
-> >> graphics on those devices.
-> >>
-> >> The version eight of the series tries to solve the problem with a
-> >> different approach than the previous series but similar to how is solved
-> >> on other Mediatek devices.
-> >>
-> >> The MMSYS (Multimedia subsystem) in Mediatek SoCs has some registers to
-> >> control clock gates (which is used in the clk driver) and some registers
-> >> to set the routing and enable the differnet blocks of the display
-> >> and MDP (Media Data Path) subsystem. On this series the clk driver is
-> >> not a pure clock controller but a system controller that can provide
-> >> access to the shared registers between the different drivers that need
-> >> it (mediatek-drm and mediatek-mdp). And the biggest change is, that in
-> >> this version, clk driver is the entry point (parent) which will trigger
-> >> the probe of the corresponding mediatek-drm driver and pass its MMSYS
-> >> platform data for display configuration.
-> > 
-> > When mmsys is a system controller, I prefer to place mmsys in
-> > drivers/soc/mediatek, and it share registers for clock, display, and mdp
-> > driver. This means the probe function is placed in
-> > drivers/soc/mediatek ,its display clock function, mdp clock function are
-> > placed in drivers/clk, display routing are placed in drivers/gpu/drm,
-> > and mdp routing are placed in dirvers/video.
-> > 
-> 
-> I understand what you mean but I am not sure this makes the code clearer and
-> useful. The driver in drivers/soc/mediatek will be a simple dummy implementation
-> of a "simple-mfd" device (a driver that simply matches with
-> "mediatek,mt8173-mmsys" and instantiates the "clk-mt8173-mm" and the
-> "mediatek-drm" driver (note that mediatek-mdp" is already instantiated via
-> device-tree).
-> 
+Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+Signed-off-by: Owen Chen <owen.chen@mediatek.com>
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+---
+ .../bindings/arm/mediatek/mediatek,mipi0a.txt | 28 +++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mipi0a.txt
 
-It's clear that mmsys is neither a pure clock controller nor a pure
-routing controller for display and mdp. 
-
-> It'd be nice had a proper device-tree with a "simple-mfd" for mmsys from the
-> beginning representing how really hardwware is, but I think that, change this
-> now, will break backward compatibility.
-
-Maybe this is a solution. Current device tree would work only on old
-kernel version with a bug, so this mean there is no any device tree
-works on kernel version without bug. Why do we compatible with such
-device tree?
-
-Regards,
-CK
-
-> 
-> IMHO I think that considering the clk driver as entry point is fine, but this is
-> something that the clock maintainers should decide.
-> 
-> Also note that this is not only a MT8173 problem I am seeing the same problem on
-> all other Mediatek SoCs.
-> 
-> Thanks.
-> 
-> > Regards,
-> > CK
-> > 
-> >>
-> >> All this series was tested on the Acer R13 Chromebook only.
-> >>
-> >> For reference, here are the links to the old discussions:
-> >>
-> >> * v7: https://patchwork.kernel.org/project/linux-mediatek/list/?series=241217
-> >> * v6: https://patchwork.kernel.org/project/linux-mediatek/list/?series=213219
-> >> * v5: https://patchwork.kernel.org/project/linux-mediatek/list/?series=44063
-> >> * v4:
-> >>   * https://patchwork.kernel.org/patch/10530871/
-> >>   * https://patchwork.kernel.org/patch/10530883/
-> >>   * https://patchwork.kernel.org/patch/10530885/
-> >>   * https://patchwork.kernel.org/patch/10530911/
-> >>   * https://patchwork.kernel.org/patch/10530913/
-> >> * v3:
-> >>   * https://patchwork.kernel.org/patch/10367857/
-> >>   * https://patchwork.kernel.org/patch/10367861/
-> >>   * https://patchwork.kernel.org/patch/10367877/
-> >>   * https://patchwork.kernel.org/patch/10367875/
-> >>   * https://patchwork.kernel.org/patch/10367885/
-> >>   * https://patchwork.kernel.org/patch/10367883/
-> >>   * https://patchwork.kernel.org/patch/10367889/
-> >>   * https://patchwork.kernel.org/patch/10367907/
-> >>   * https://patchwork.kernel.org/patch/10367909/
-> >>   * https://patchwork.kernel.org/patch/10367905/
-> >> * v2: No relevant discussion, see v3
-> >> * v1:
-> >>   * https://patchwork.kernel.org/patch/10016497/
-> >>   * https://patchwork.kernel.org/patch/10016499/
-> >>   * https://patchwork.kernel.org/patch/10016505/
-> >>   * https://patchwork.kernel.org/patch/10016507/
-> >>
-> >> Best regards,
-> >>  Enric
-> >>
-> >> Changes in v8:
-> >> - Be a builtin_platform_driver like other mediatek mmsys drivers.
-> >> - New patches introduced in this series.
-> >>
-> >> Changes in v7:
-> >> - Add R-by from CK
-> >> - Add R-by from CK
-> >> - Fix check of return value of of_clk_get
-> >> - Fix identation
-> >> - Free clk_data->clks as well
-> >> - Get rid of private data structure
-> >>
-> >> Enric Balletbo i Serra (2):
-> >>   drm/mediatek: Move MMSYS configuration to include/linux/platform_data
-> >>   clk/drm: mediatek: Fix mediatek-drm device probing
-> >>
-> >> Matthias Brugger (4):
-> >>   drm/mediatek: Use regmap for register access
-> >>   drm/mediatek: Omit warning on probe defers
-> >>   media: mtk-mdp: Check return value of of_clk_get
-> >>   clk: mediatek: mt8173: Switch MMSYS to platform driver
-> >>
-> >>  drivers/clk/mediatek/Kconfig                  |   6 +
-> >>  drivers/clk/mediatek/Makefile                 |   1 +
-> >>  drivers/clk/mediatek/clk-mt2701-mm.c          |  30 +++
-> >>  drivers/clk/mediatek/clk-mt2712-mm.c          |  44 +++++
-> >>  drivers/clk/mediatek/clk-mt8173-mm.c          | 172 ++++++++++++++++++
-> >>  drivers/clk/mediatek/clk-mt8173.c             | 104 -----------
-> >>  drivers/gpu/drm/mediatek/mtk_disp_color.c     |   5 +-
-> >>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c       |   5 +-
-> >>  drivers/gpu/drm/mediatek/mtk_disp_rdma.c      |   5 +-
-> >>  drivers/gpu/drm/mediatek/mtk_dpi.c            |  12 +-
-> >>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c       |   4 +-
-> >>  drivers/gpu/drm/mediatek/mtk_drm_ddp.c        |  53 +++---
-> >>  drivers/gpu/drm/mediatek/mtk_drm_ddp.h        |   4 +-
-> >>  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |  56 +-----
-> >>  drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 113 +-----------
-> >>  drivers/gpu/drm/mediatek/mtk_drm_drv.h        |  13 +-
-> >>  drivers/gpu/drm/mediatek/mtk_dsi.c            |   8 +-
-> >>  drivers/gpu/drm/mediatek/mtk_hdmi.c           |   4 +-
-> >>  drivers/media/platform/mtk-mdp/mtk_mdp_comp.c |   6 +
-> >>  include/linux/platform_data/mtk_mmsys.h       |  73 ++++++++
-> >>  20 files changed, 401 insertions(+), 317 deletions(-)
-> >>  create mode 100644 drivers/clk/mediatek/clk-mt8173-mm.c
-> >>  create mode 100644 include/linux/platform_data/mtk_mmsys.h
-> >>
-> > 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mipi0a.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mipi0a.txt
+new file mode 100644
+index 000000000000..8be5978f388d
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mipi0a.txt
+@@ -0,0 +1,28 @@
++Mediatek mipi0a (mipi_rx_ana_csi0a) controller
++============================
++
++The Mediatek mipi0a controller provides various clocks
++to the system.
++
++Required Properties:
++
++- compatible: Should be one of:
++	- "mediatek,mt6765-mipi0a", "syscon"
++- #clock-cells: Must be 1
++
++The mipi0a controller uses the common clk binding from
++Documentation/devicetree/bindings/clock/clock-bindings.txt
++The available clocks are defined in dt-bindings/clock/mt*-clk.h.
++
++The mipi0a controller also uses the common power domain from
++Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
++The available power doamins are defined in dt-bindings/power/mt*-power.h.
++
++Example:
++
++mipi0a: clock-controller@11c10000 {
++	compatible = "mediatek,mt6765-mipi0a", "syscon";
++	reg = <0 0x11c10000 0 0x1000>;
++	power-domains = <&scpsys MT6765_POWER_DOMAIN_CAM>;
++	#clock-cells = <1>;
++};
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
