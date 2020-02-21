@@ -2,59 +2,59 @@ Return-Path: <SRS0=GSZf=4J=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D78F6C35646
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2020 10:22:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 946ACC35647
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2020 10:22:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9EF7E207FD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2020 10:22:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 44272207FD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2020 10:22:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NymTupgI";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="g4sm7Q9u"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9EF7E207FD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MM9Fnjit";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="rzJrUCeY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 44272207FD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=99aVjISLIqxTiAjz2PPjVylu/eKXBRmBXniKfyVLp7Q=; b=NymTupgIiPGsDa
-	ziuOMXDl/1SKxplFuvieaFgTth8QN/Lt4znY+4VeJi5IO+aLmTjz6X3adktygy2I8SKGDms/tSBEW
-	skR4H9aOT3l8kHcY6GoAhP7g+J5mDejYVE+FaBwL43TpEylV7Q3KorgFDXXCj+Abb9c69TFLEEO7N
-	esLhggtHyvdmsTyn+BNGXXDZ0P5XS0hM385CF3xJXTvsYTLbhUv1H7RMAxi78NOiiShhHgaUV7BFI
-	blscQwXbLzVzK24pWDibQ6WxiXRJnP+MxYMN1yvAIyjEW8e1p3HJMdeUpDRYDJ49nqlUyjvhiBoCQ
-	keu5m+pkXhN4whJn2K8Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zc0hDWvUHH3jUzzNXOAqt5J1J8N5uy1ubw48X1zy8EM=; b=MM9Fnjit0IU6mr
+	893Py2cPC/3GqLfVZ5LxdWB9UgS+rqmuBZMhLN1gJrU/N6Boz1AoeKmaTcm8+gth4Umng9yO9R7G5
+	JTd1CNWu1AF8uemsiSHNab5xyr7iHdnawln+HZtxxbjhCJEz1Jqy39bQUswsuBKojRVvTzfJxxfYw
+	EtNVk49DNggZhOkF+ra/qn+pYpukdJDLnPjkYbrsTX76KM97QDA+VP8Wb12TzHphZLKOEkuvvea3k
+	UK7UfGvfKXDLuLL5epa61r2bsUyNVPff7H/0LhOVay44hW+fAA0lBHzCLb9rCbr5RfbwFuIGJwvY6
+	DAKjtAXdlkTfb72tc76Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j55S1-0007ix-0R; Fri, 21 Feb 2020 10:22:29 +0000
+	id 1j55SC-0007v9-53; Fri, 21 Feb 2020 10:22:40 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j55Rx-0007i9-UK; Fri, 21 Feb 2020 10:22:27 +0000
-X-UUID: 8f1d503ab46c4029bb068720f729b1c5-20200221
+ id 1j55Ry-0007iQ-Dd; Fri, 21 Feb 2020 10:22:28 +0000
+X-UUID: 21b63fd526c44b05b00c258e60804b1f-20200221
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=BeBQELOP6/jjvwXwwsxHmMAHpAErb5cdnorUWLKW/vk=; 
- b=g4sm7Q9u/NwE+PBb8TOga72lL9ZKm5fT27j3XwL/hx5k/w+LVfPeevcWFLp3rV+U1sUKQ6vJ7XNbKPaoiIKCEEbb2vHm+vd6Yj4bvbXX3Z9wGw76WLpc2ftuMGKYLGZgqatXLHygrb5GTEUFXkWzLwWmSywYx7SaC/0JlvZuu2A=;
-X-UUID: 8f1d503ab46c4029bb068720f729b1c5-20200221
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=tuEWm1Ee4wXJyzSN+S1Qu1qevryEJRM0ul94CpEBzBo=; 
+ b=rzJrUCeYp8Trg7l902T1UcW9/JRgnZYq0W/E6K4KKKzM3UKkfjLoFYf+28Jh6ShG6jVaaxg1e8QMwpDKrOmF6i6XFx9t/0Yh0pVcf9x96cr6SAbJgnJvwAMtEkNpVKUepnZE/HpvSa/mFhzscIFdTrmbuGuOfyG+K1nfFGTJ5fk=;
+X-UUID: 21b63fd526c44b05b00c258e60804b1f-20200221
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <macpaul.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 534051904; Fri, 21 Feb 2020 02:22:22 -0800
+ with ESMTP id 677823404; Fri, 21 Feb 2020 02:22:22 -0800
 Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 21 Feb 2020 02:13:15 -0800
+ 15.0.1395.4; Fri, 21 Feb 2020 02:13:16 -0800
 Received: from mtkcas09.mediatek.inc (172.21.101.178) by
  mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 21 Feb 2020 18:11:30 +0800
+ 15.0.1395.4; Fri, 21 Feb 2020 18:11:31 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
  Frontend Transport; Fri, 21 Feb 2020 18:11:53 +0800
@@ -73,16 +73,18 @@ To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-clk@vger.kernel.org>
-Subject: [PATCH v8 0/4] Add basic SoC support for mt6765
-Date: Fri, 21 Feb 2020 18:12:05 +0800
-Message-ID: <1582279929-11535-1-git-send-email-macpaul.lin@mediatek.com>
+Subject: [PATCH v8 3/4] arm64: dts: mediatek: add mt6765 support
+Date: Fri, 21 Feb 2020 18:12:08 +0800
+Message-ID: <1582279929-11535-4-git-send-email-macpaul.lin@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1582279929-11535-1-git-send-email-macpaul.lin@mediatek.com>
+References: <1582279929-11535-1-git-send-email-macpaul.lin@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: DA3DDA379D4AE327C2F9F2B41F4294B902761E1F5B0BC745B996EC5B115CB3212000:8
+X-TM-SNTS-SMTP: 813D9FA6D90F61D061BEC2FE1EC4D1E4BAFFE49B23474D79DC21D41A5A447D1C2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200221_022225_986845_69857063 
-X-CRM114-Status: GOOD (  12.85  )
+X-CRM114-CacheID: sfid-20200221_022226_465046_AB2162BF 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,92 +103,336 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds basic SoC support for Mediatek's new 8-core SoC,
-MT6765, which is mainly for smartphone application.
+From: Mars Cheng <mars.cheng@mediatek.com>
 
-Changes in V8:
-1. Origin V7 patchset:
-   https://patchwork.kernel.org/cover/11370105/
-   Split origin V7 patchset into 2 patchset,
-   keep remain patches #2, #5, #6, and #7 in the same order as this
-   V8 patchset.
-   [v7,2/7] dt-bindings: mediatek: Add smi dts binding for Mediatek
-            MT6765 SoC
-   [v7,5/7] soc: mediatek: add MT6765 scpsys and subdomain support
-   [v7,6/7] arm64: dts: mediatek: add mt6765 support
-   [v7,7/7] arm64: defconfig: add CONFIG_COMMON_CLK_MT6765_XXX clocks
+Add basic chip support for Mediatek 6765, include
+uart node with correct uart clocks, pwrap device
 
-Changes in V7:
-1. Adapt V6's patchset to latest kernel tree 5.5-rc1.
-   Origin V6 patchset:
-   https://patchwork.kernel.org/cover/11041963/
-2. Correct 2 clock-controller type in documentation:
-   mipi0 and venc_gcon.
-   [v7 1/7] dt-bindings: clock: mediatek: document clk bindings
-3. Remove V6's patch 03 because it has been taken into 5.5-next-soc
-   [v6, 03/08] dt-bindings: mediatek: add MT6765 power dt-bindings
-3. Update Reviewed-by: Rob Herring <robh@kernel.org> for
-   [v6, 04/08] clk: mediatek: add mt6765 clock IDs
-   --> [v7, 03/07] clk: mediatek: add mt6765 clock IDs
-4. Update SPDX tag for
-   [v6, 05/08] clk: mediatek: Add MT6765 clock support
-   --> [v7, 04/07] clk: mediatek: Add MT6765 clock support
+Add clock controller nodes, include topckgen, infracfg,
+apmixedsys and subsystem.
 
-Changes in V6:
-1. Adapt V5's patchset to latest kernel tree.
-   Origin V5 patchset.
-   https://lore.kernel.org/patchwork/cover/963612/
-2. Due to clk's common code has been submit by other platform,
-   this patch set will have dependencies with the following patchsets
-   as the following orders.
-   2.a. [v8,00/21] MT8183 IOMMU SUPPORT
-        https://patchwork.kernel.org/cover/11023585/
-   2.b. [v11,0/6] Add basic node support for Mediatek MT8183 SoC
-        https://patchwork.kernel.org/cover/10962385/
-   2.c. [v6,00/14] Mediatek MT8183 scpsys support
-        https://patchwork.kernel.org/cover/11005751/
-3. Correct power related patches into dt-binding patches.
-4. Re-order V5's 4/11, 6/11, and 7/11 due clk common code change
-   and make dependencies in order.
-5. Update some commit message in clk related patches.
-
-Changes in V5:
-1. add clk support
-
-Changes in V4:
-1. add gic's settings in reg properties
-2. remove some patches about dt-bindings since GKH already took them
-
-Changes in V3:
-1. split dt-binding document patchs
-2. fix mt6765.dtsi warnings with W=12
-3. remove uncessary PPI affinity for timer
-4. add gicc base for gic dt node
-
-Changes in V2:
-1. fix clk properties in uart dts node
-2. fix typo in submit title
-3. add simple-bus in mt6765.dtsi
-4. use correct SPDX license format
-
-Mars Cheng (3):
-  dt-bindings: mediatek: Add smi dts binding for Mediatek MT6765 SoC
-  soc: mediatek: add MT6765 scpsys and subdomain support
-  arm64: dts: mediatek: add mt6765 support
-
-Owen Chen (1):
-  arm64: defconfig: add CONFIG_COMMON_CLK_MT6765_XXX clocks
-
- .../memory-controllers/mediatek,smi-common.txt     |    1 +
- arch/arm64/boot/dts/mediatek/Makefile              |    1 +
- arch/arm64/boot/dts/mediatek/mt6765-evb.dts        |   33 +++
- arch/arm64/boot/dts/mediatek/mt6765.dtsi           |  253 ++++++++++++++++++++
- arch/arm64/configs/defconfig                       |    6 +
- drivers/soc/mediatek/mtk-scpsys.c                  |  130 ++++++++++
- 6 files changed, 424 insertions(+)
+Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+Signed-off-by: Owen Chen <owen.chen@mediatek.com>
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+Acked-by: Marc Zyngier <marc.zyngier@arm.com>
+---
+ arch/arm64/boot/dts/mediatek/Makefile       |    1 +
+ arch/arm64/boot/dts/mediatek/mt6765-evb.dts |   33 ++++
+ arch/arm64/boot/dts/mediatek/mt6765.dtsi    |  253 +++++++++++++++++++++++++++
+ 3 files changed, 287 insertions(+)
  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765-evb.dts
  create mode 100644 arch/arm64/boot/dts/mediatek/mt6765.dtsi
 
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index 458bbc4..22bdf1a 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -1,6 +1,7 @@
+ # SPDX-License-Identifier: GPL-2.0
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt2712-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6755-evb.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt6765-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6795-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt6765-evb.dts b/arch/arm64/boot/dts/mediatek/mt6765-evb.dts
+new file mode 100644
+index 0000000..36dddff2
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt6765-evb.dts
+@@ -0,0 +1,33 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * dts file for Mediatek MT6765
++ *
++ * (C) Copyright 2018. Mediatek, Inc.
++ *
++ * Mars Cheng <mars.cheng@mediatek.com>
++ */
++
++/dts-v1/;
++#include "mt6765.dtsi"
++
++/ {
++	model = "MediaTek MT6765 EVB";
++	compatible = "mediatek,mt6765-evb", "mediatek,mt6765";
++
++	aliases {
++		serial0 = &uart0;
++	};
++
++	memory@40000000 {
++		device_type = "memory";
++		reg = <0 0x40000000 0 0x1e800000>;
++	};
++
++	chosen {
++		stdout-path = "serial0:921600n8";
++	};
++};
++
++&uart0 {
++	status = "okay";
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt6765.dtsi b/arch/arm64/boot/dts/mediatek/mt6765.dtsi
+new file mode 100644
+index 0000000..2662470
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt6765.dtsi
+@@ -0,0 +1,253 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * dts file for Mediatek MT6765
++ *
++ * (C) Copyright 2018. Mediatek, Inc.
++ *
++ * Mars Cheng <mars.cheng@mediatek.com>
++ */
++
++#include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/interrupt-controller/arm-gic.h>
++#include <dt-bindings/clock/mt6765-clk.h>
++
++/ {
++	compatible = "mediatek,mt6765";
++	interrupt-parent = <&sysirq>;
++	#address-cells = <2>;
++	#size-cells = <2>;
++
++	psci {
++		compatible = "arm,psci-0.2";
++		method = "smc";
++	};
++
++	cpus {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		cpu@0 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a53";
++			enable-method = "psci";
++			reg = <0x000>;
++		};
++
++		cpu@1 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a53";
++			enable-method = "psci";
++			reg = <0x001>;
++		};
++
++		cpu@2 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a53";
++			enable-method = "psci";
++			reg = <0x002>;
++		};
++
++		cpu@3 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a53";
++			enable-method = "psci";
++			reg = <0x003>;
++		};
++
++		cpu@100 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a53";
++			enable-method = "psci";
++			reg = <0x100>;
++		};
++
++		cpu@101 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a53";
++			enable-method = "psci";
++			reg = <0x101>;
++		};
++
++		cpu@102 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a53";
++			enable-method = "psci";
++			reg = <0x102>;
++		};
++
++		cpu@103 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a53";
++			enable-method = "psci";
++			reg = <0x103>;
++		};
++	};
++
++	clocks {
++		clk26m: clk26m {
++			compatible = "fixed-clock";
++			#clock-cells = <0>;
++			clock-frequency = <26000000>;
++		};
++
++		clk32k: clk32k {
++			compatible = "fixed-clock";
++			#clock-cells = <0>;
++			clock-frequency = <32000>;
++		};
++	};
++
++	timer {
++		compatible = "arm,armv8-timer";
++		interrupt-parent = <&gic>;
++		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
++	};
++
++	soc {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		compatible = "simple-bus";
++		ranges;
++
++		gic: interrupt-controller@c000000 {
++			compatible = "arm,gic-v3";
++			#interrupt-cells = <3>;
++			#address-cells = <2>;
++			#size-cells = <2>;
++			interrupt-parent = <&gic>;
++			interrupt-controller;
++			reg = <0 0x0c000000 0 0x40000>,  /* GICD */
++			      <0 0x0c100000 0 0x200000>, /* GICR */
++			      <0 0x0c400000 0 0x2000>,   /* GICC */
++			      <0 0x0c410000 0 0x2000>,   /* GICH */
++			      <0 0x0c420000 0 0x20000>;  /* GICV */
++			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
++		};
++
++		topckgen: syscon@10000000 {
++			compatible = "mediatek,mt6765-topckgen", "syscon";
++			reg = <0 0x10000000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		infracfg: syscon@10001000 {
++			compatible = "mediatek,mt6765-infracfg", "syscon";
++			reg = <0 0x10001000 0 0x1000>;
++			interrupts = <GIC_SPI 147 IRQ_TYPE_EDGE_RISING>;
++			#clock-cells = <1>;
++		};
++
++		pericfg: pericfg@10003000 {
++			compatible = "mediatek,mt6765-pericfg", "syscon";
++			reg = <0 0x10003000 0 0x1000>;
++		};
++
++		scpsys: scpsys@10006000 {
++			compatible = "mediatek,mt6765-scpsys";
++			reg =	<0 0x10006000 0 0x1000>; /* spm */
++			#power-domain-cells = <1>;
++			clocks = <&topckgen CLK_TOP_MFG_SEL>,
++				 <&topckgen CLK_TOP_MM_SEL>,
++				 <&mmsys_config CLK_MM_SMI_COMMON>,
++				 <&mmsys_config CLK_MM_SMI_COMM0>,
++				 <&mmsys_config CLK_MM_SMI_COMM1>,
++				 <&mmsys_config CLK_MM_SMI_LARB0>,
++				 <&imgsys CLK_IMG_LARB2>,
++				 <&mmsys_config CLK_MM_SMI_IMG>,
++				 <&camsys CLK_CAM_LARB3>,
++				 <&camsys CLK_CAM_DFP_VAD>,
++				 <&camsys CLK_CAM>,
++				 <&camsys CLK_CAM_CCU>,
++				 <&mmsys_config CLK_MM_SMI_CAM>;
++			clock-names = "mfg", "mm",
++				      "mm-0", "mm-1", "mm-2", "mm-3",
++				      "isp-0", "isp-1", "cam-0", "cam-1",
++				      "cam-2", "cam-3", "cam-4";
++			infracfg = <&infracfg>;
++			smi_comm = <&smi_common>;
++		};
++
++		apmixed: syscon@1000c000 {
++			compatible = "mediatek,mt6765-apmixedsys", "syscon";
++			reg = <0 0x1000c000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		sysirq: interrupt-controller@10200a80 {
++			compatible = "mediatek,mt6765-sysirq",
++				     "mediatek,mt6577-sysirq";
++			interrupt-controller;
++			#interrupt-cells = <3>;
++			interrupt-parent = <&gic>;
++			reg = <0 0x10200a80 0 0x50>;
++		};
++
++		uart0: serial@11002000 {
++			compatible = "mediatek,mt6765-uart",
++				     "mediatek,mt6577-uart";
++			reg = <0 0x11002000 0 0x400>;
++			interrupts = <GIC_SPI 91 IRQ_TYPE_LEVEL_LOW>;
++			clocks = <&infracfg CLK_IFR_UART0>,
++				 <&infracfg CLK_IFR_AP_DMA>;
++			clock-names = "baud", "bus";
++			status = "disabled";
++		};
++
++		uart1: serial@11003000 {
++			compatible = "mediatek,mt6765-uart",
++				     "mediatek,mt6577-uart";
++			reg = <0 0x11003000 0 0x400>;
++			interrupts = <GIC_SPI 92 IRQ_TYPE_LEVEL_LOW>;
++			clocks = <&infracfg CLK_IFR_UART1>,
++				 <&infracfg CLK_IFR_AP_DMA>;
++			clock-names = "baud", "bus";
++			status = "disabled";
++		};
++
++		audio: syscon@11220000 {
++			compatible = "mediatek,mt6765-audsys", "syscon";
++			reg = <0 0x11220000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		mipi_rx_ana_csi0a: syscon@11c10000 {
++			compatible = "mediatek,mt6765-mipi0a",
++				     "syscon";
++			reg = <0 0x11c10000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		mmsys_config: syscon@14000000 {
++			compatible = "mediatek,mt6765-mmsys", "syscon";
++			reg = <0 0x14000000 0 0x1000>;
++			interrupts = <GIC_SPI 227 IRQ_TYPE_LEVEL_LOW>;
++			#clock-cells = <1>;
++		};
++
++		smi_common: smi_common@14002000 {
++			compatible = "mediatek,mt6765-smi-common", "syscon";
++			reg = <0 0x14002000 0 0x1000>;
++		};
++
++		imgsys: syscon@15020000 {
++			compatible = "mediatek,mt6765-imgsys", "syscon";
++			reg = <0 0x15020000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++
++		venc_gcon: syscon@17000000 {
++			compatible = "mediatek,mt6765-vcodecsys", "syscon";
++			reg = <0 0x17000000 0 0x10000>;
++			#clock-cells = <1>;
++		};
++
++		camsys: syscon@1a000000  {
++			compatible = "mediatek,mt6765-camsys", "syscon";
++			reg = <0 0x1a000000 0 0x1000>;
++			#clock-cells = <1>;
++		};
++	}; /* end of soc */
++};
 -- 
 1.7.9.5
 _______________________________________________
