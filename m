@@ -2,21 +2,21 @@ Return-Path: <SRS0=GSZf=4J=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 07361C35641
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2020 07:46:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E17E9C35640
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2020 07:51:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CDF47208C4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2020 07:46:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A07102073A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2020 07:51:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jot3gfL/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CDF47208C4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Utq2TyUP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A07102073A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,39 +25,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cukTkjny2GhT3m3Hdm5N6nVUGWOd0viqCNNFXNd7yVA=; b=jot3gfL/a/DJ8e
-	xTPXn7vQFFyrIaL+1AkUG9GNngeyFemHN+meZy07xpVsDamwnLdgFppf6V3wPNyJBb0XM1bw2bIsa
-	PUMa9sjDF6q60xDM8WfaDOpuWSbf9ZJ5WAG1abSzjrtcvbOpkkheeYwDV+8Oz0eD9ESxxFt9qhZta
-	7TiiGc4j15mjEF9A5eNsOoWfWkajWsADF2c3cpu8ZrPeML4QEpT5BCzSHB24sprie3pTlZZoFZjYd
-	qrV160yjOLzRqNra+JlJdeaNEvnOTPcxPUq4AHNP0g0Uk8dUXOsC33M4k4sdVwlvNtvnavGMk4CHN
-	beLsp9baDOO4kcK5kwlQ==;
+	List-Owner; bh=KwrTajGzbEPBRQplEEyLJ3rAYYl7cKFZuZ1sErhmkJ4=; b=Utq2TyUPaI83Mq
+	eg/xpGjegt54nJhFQ5OfYqV4NIe64ETGbqUQc9i3njA0CqNwXyC1qv81NW4DBK6NWER+mR6qZnTC+
+	ISLz/zGHm24ql+NnmzlDHKMCmrdnRKfGwoU8PFPQ3/Pq3RTcRP7LfI5VlxLMLM//Rg0lyUXF7zU8j
+	a44lWymhaUN3oYA0KIUO4edwUCdjHhkRp5k/DQlALtJq/fhJD4wWpfnWt9KBhon1fLhIFxFMcsFlt
+	j8xnAoBKKv64JqAfkvuCecRQqdvofWm/kJiWnqmfmH5kh2WKIEV4IHctKGauApDAT/9qIa8Yike7r
+	V3qYCauEWCX8KgSPQ0Jw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j531L-00017Y-6w; Fri, 21 Feb 2020 07:46:47 +0000
+	id 1j535p-00043s-HE; Fri, 21 Feb 2020 07:51:25 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j531B-0000yK-Ao; Fri, 21 Feb 2020 07:46:38 +0000
+ id 1j535d-0003po-67; Fri, 21 Feb 2020 07:51:15 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 8BF432904EA
-Subject: Re: [PATCH v8 1/6] drm/mediatek: Use regmap for register access
-To: Randy Dunlap <rdunlap@infradead.org>, robh+dt@kernel.org,
- mark.rutland@arm.com, ck.hu@mediatek.com, p.zabel@pengutronix.de,
- airlied@linux.ie, mturquette@baylibre.com, sboyd@kernel.org,
- ulrich.hecht+renesas@gmail.com, laurent.pinchart@ideasonboard.com
+ (Authenticated sender: eballetbo) with ESMTPSA id BFD5D29329C
+Subject: Re: [PATCH v8 6/6] clk/drm: mediatek: Fix mediatek-drm device probing
+To: CK Hu <ck.hu@mediatek.com>
 References: <20200220172147.919996-1-enric.balletbo@collabora.com>
- <20200220172147.919996-2-enric.balletbo@collabora.com>
- <0b2046b9-90de-c894-7502-993b5df12e7a@infradead.org>
+ <20200220172147.919996-7-enric.balletbo@collabora.com>
+ <1582262295.30425.8.camel@mtksdaap41>
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <5c19af7a-170b-2cd1-da98-e4125504eb34@collabora.com>
-Date: Fri, 21 Feb 2020 08:46:29 +0100
+Message-ID: <83aa2ed6-5bd7-6883-4c00-43f1d6f5f522@collabora.com>
+Date: Fri, 21 Feb 2020 08:51:05 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <0b2046b9-90de-c894-7502-993b5df12e7a@infradead.org>
+In-Reply-To: <1582262295.30425.8.camel@mtksdaap41>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200220_234637_507144_049603B9 
-X-CRM114-Status: GOOD (  14.58  )
+X-CRM114-CacheID: sfid-20200220_235113_487732_BEB48A91 
+X-CRM114-Status: GOOD (  24.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,63 +66,329 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Kate Stewart <kstewart@linuxfoundation.org>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>, dri-devel@lists.freedesktop.org,
- Richard Fontana <rfontana@redhat.com>,
- Collabora Kernel ML <kernel@collabora.com>, linux-clk@vger.kernel.org,
- Weiyi Lu <weiyi.lu@mediatek.com>, wens@csie.org,
+Cc: mark.rutland@arm.com, Kate Stewart <kstewart@linuxfoundation.org>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, airlied@linux.ie,
+ mturquette@baylibre.com, dri-devel@lists.freedesktop.org,
+ Richard Fontana <rfontana@redhat.com>, laurent.pinchart@ideasonboard.com,
+ ulrich.hecht+renesas@gmail.com, Collabora Kernel ML <kernel@collabora.com>,
+ linux-clk@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>, wens@csie.org,
  linux-arm-kernel@lists.infradead.org, mtk01761 <wendell.lin@mediatek.com>,
  linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- frank-w@public-files.de, Seiya Wang <seiya.wang@mediatek.com>,
- sean.wang@mediatek.com, Houlong Wei <houlong.wei@mediatek.com>,
+ Daniel Vetter <daniel@ffwll.ch>, frank-w@public-files.de,
+ Seiya Wang <seiya.wang@mediatek.com>, sean.wang@mediatek.com,
+ Houlong Wei <houlong.wei@mediatek.com>, robh+dt@kernel.org,
  linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Thomas Gleixner <tglx@linutronix.de>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  Allison Randal <allison@lohutok.net>, Matthias Brugger <mbrugger@suse.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Daniel Vetter <daniel@ffwll.ch>, matthias.bgg@kernel.org
+ sboyd@kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ rdunlap@infradead.org, linux-kernel@vger.kernel.org, p.zabel@pengutronix.de,
+ matthias.bgg@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Randy,
+Hi CK,
 
-On 21/2/20 0:48, Randy Dunlap wrote:
-> On 2/20/20 9:21 AM, Enric Balletbo i Serra wrote:
->> From: Matthias Brugger <mbrugger@suse.com>
+Thanks for your quick feedback.
+
+On 21/2/20 6:18, CK Hu wrote:
+> Hi, Enric:
+> 
+> On Thu, 2020-02-20 at 18:21 +0100, Enric Balletbo i Serra wrote:
+>> In the actual implementation the same compatible string
+>> "mediatek,<chip>-mmsys" is used to bind the clock drivers
+>> (drivers/clk/mediatek) as well as to the gpu driver
+>> (drivers/gpu/drm/mediatek/mtk_drm_drv.c). This ends with the problem
+>> that the only probed driver is the clock driver and there is no display
+>> at all.
 >>
->> The mmsys memory space is shared between the drm and the
->> clk driver. Use regmap to access it.
+>> In any case having the same compatible string for two drivers is not
+>> correct and should be fixed. To fix this, and maintain backward
+>> compatibility, we can consider that the clk-<chip>-mm driver is the
+>> top-level entry point for the MMSYS subsystem, so is not a pure clock
+>> controller but a system controller, and the drm driver is instantiated
+>> by that MMSYS driver.
 >>
->> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
->> Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
->> Reviewed-by: CK Hu <ck.hu@mediatek.com>
 >> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 >> ---
 >>
->> Changes in v8: None
->> Changes in v7:
->> - Add R-by from CK
+>> Changes in v8:
+>> - New patch introduced in this series.
 >>
->>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c |  4 +-
->>  drivers/gpu/drm/mediatek/mtk_drm_ddp.c  | 50 +++++++++++--------------
->>  drivers/gpu/drm/mediatek/mtk_drm_ddp.h  |  4 +-
->>  drivers/gpu/drm/mediatek/mtk_drm_drv.c  | 13 ++-----
->>  drivers/gpu/drm/mediatek/mtk_drm_drv.h  |  2 +-
->>  5 files changed, 30 insertions(+), 43 deletions(-)
+>> Changes in v7: None
+>>
+>>  drivers/clk/mediatek/clk-mt2701-mm.c   |  30 ++++++++
+>>  drivers/clk/mediatek/clk-mt2712-mm.c   |  44 +++++++++++
+>>  drivers/clk/mediatek/clk-mt8173-mm.c   |  35 +++++++++
+>>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 102 ++-----------------------
+>>  4 files changed, 115 insertions(+), 96 deletions(-)
+>>
+>> diff --git a/drivers/clk/mediatek/clk-mt2701-mm.c b/drivers/clk/mediatek/clk-mt2701-mm.c
+>> index 054b597d4a73..b1281680d5bf 100644
+>> --- a/drivers/clk/mediatek/clk-mt2701-mm.c
+>> +++ b/drivers/clk/mediatek/clk-mt2701-mm.c
+>> @@ -5,6 +5,7 @@
+>>   */
 > 
-> Hi. Just a quick question:
+> [snip]
 > 
-> Do you need to select REGMAP or one of its derivatives to make sure
-> that the proper interfaces are available for this driver?
+>>  
+>>  
+>> diff --git a/drivers/clk/mediatek/clk-mt2712-mm.c b/drivers/clk/mediatek/clk-mt2712-mm.c
+>> index 1c5948be35f3..0ae971783997 100644
+>> --- a/drivers/clk/mediatek/clk-mt2712-mm.c
+>> +++ b/drivers/clk/mediatek/clk-mt2712-mm.c
+>> @@ -5,6 +5,7 @@
+>>   */
+>>  
+>>  #include <linux/clk-provider.h>
+>> +#include <linux/platform_data/mtk_mmsys.h>
+>>  #include <linux/platform_device.h>
+>>  
+>>  #include "clk-mtk.h"
+>> @@ -126,9 +127,45 @@ static const struct mtk_gate mm_clks[] = {
+>>  	GATE_MM2(CLK_MM_DSI3_DIGITAL, "mm_dsi3_digital", "dsi1_lntc", 6),
+>>  };
+>>  
+>> +static const enum mtk_ddp_comp_id mt2712_mtk_ddp_main[] = {
+>> +	DDP_COMPONENT_OVL0,
+>> +	DDP_COMPONENT_COLOR0,
+>> +	DDP_COMPONENT_AAL0,
+>> +	DDP_COMPONENT_OD0,
+>> +	DDP_COMPONENT_RDMA0,
+>> +	DDP_COMPONENT_DPI0,
+>> +	DDP_COMPONENT_PWM0,
+>> +};
+>> +
+>> +static const enum mtk_ddp_comp_id mt2712_mtk_ddp_ext[] = {
+>> +	DDP_COMPONENT_OVL1,
+>> +	DDP_COMPONENT_COLOR1,
+>> +	DDP_COMPONENT_AAL1,
+>> +	DDP_COMPONENT_OD1,
+>> +	DDP_COMPONENT_RDMA1,
+>> +	DDP_COMPONENT_DPI1,
+>> +	DDP_COMPONENT_PWM1,
+>> +};
+>> +
+>> +static const enum mtk_ddp_comp_id mt2712_mtk_ddp_third[] = {
+>> +	DDP_COMPONENT_RDMA2,
+>> +	DDP_COMPONENT_DSI3,
+>> +	DDP_COMPONENT_PWM2,
+>> +};
+>> +
+>> +static struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
+>> +	.main_path = mt2712_mtk_ddp_main,
+>> +	.main_len = ARRAY_SIZE(mt2712_mtk_ddp_main),
+>> +	.ext_path = mt2712_mtk_ddp_ext,
+>> +	.ext_len = ARRAY_SIZE(mt2712_mtk_ddp_ext),
+>> +	.third_path = mt2712_mtk_ddp_third,
+>> +	.third_len = ARRAY_SIZE(mt2712_mtk_ddp_third),
+>> +};
+>> +
+> 
+> [snip]
+> 
+>>  
+>> diff --git a/drivers/clk/mediatek/clk-mt8173-mm.c b/drivers/clk/mediatek/clk-mt8173-mm.c
+>> index 83884fd5a750..9136c7f543f1 100644
+>> --- a/drivers/clk/mediatek/clk-mt8173-mm.c
+>> +++ b/drivers/clk/mediatek/clk-mt8173-mm.c
+>> @@ -5,6 +5,7 @@
+>>   */
+>>  
+>>  #include <linux/clk-provider.h>
+>> +#include <linux/platform_data/mtk_mmsys.h>
+>>  #include <linux/platform_device.h>
+>>  
+>>  #include "clk-mtk.h"
+>> @@ -99,10 +100,37 @@ static const struct mtk_gate mm_clks[] = {
+>>  	GATE_MM1(CLK_MM_HDMI_HDCP24M, "mm_hdmi_hdcp24m", "hdcp_24m_sel", 20),
+>>  };
+>>  
+>> +static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
+>> +	DDP_COMPONENT_OVL0,
+>> +	DDP_COMPONENT_COLOR0,
+>> +	DDP_COMPONENT_AAL0,
+>> +	DDP_COMPONENT_OD0,
+>> +	DDP_COMPONENT_RDMA0,
+>> +	DDP_COMPONENT_UFOE,
+>> +	DDP_COMPONENT_DSI0,
+>> +	DDP_COMPONENT_PWM0,
+>> +};
+>> +
+>> +static const enum mtk_ddp_comp_id mt8173_mtk_ddp_ext[] = {
+>> +	DDP_COMPONENT_OVL1,
+>> +	DDP_COMPONENT_COLOR1,
+>> +	DDP_COMPONENT_GAMMA,
+>> +	DDP_COMPONENT_RDMA1,
+>> +	DDP_COMPONENT_DPI0,
+>> +};
+>> +
+>> +static struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
+>> +	.main_path = mt8173_mtk_ddp_main,
+>> +	.main_len = ARRAY_SIZE(mt8173_mtk_ddp_main),
+>> +	.ext_path = mt8173_mtk_ddp_ext,
+>> +	.ext_len = ARRAY_SIZE(mt8173_mtk_ddp_ext),
+>> +};
+>> +
+>>  static int clk_mt8173_mm_probe(struct platform_device *pdev)
+>>  {
+>>  	struct device_node *node = pdev->dev.of_node;
+>>  	struct clk_onecell_data *clk_data;
+>> +	struct platform_device *drm;
+>>  	int ret;
+>>  
+>>  	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
+>> @@ -118,6 +146,13 @@ static int clk_mt8173_mm_probe(struct platform_device *pdev)
+>>  	if (ret)
+>>  		return ret;
+>>  
+>> +	platform_set_drvdata(pdev, &mt8173_mmsys_driver_data);
+>> +
+>> +	drm = platform_device_register_data(&pdev->dev, "mediatek-drm",
+>> +					    PLATFORM_DEVID_NONE, NULL, 0);
+>> +	if (IS_ERR(drm))
+>> +		return PTR_ERR(drm);
+>> +
+>>  	return 0;
+>>  }
+>>  
+>> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> index b68837ea02b3..5b60f6b7d710 100644
+>> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+>> @@ -61,88 +61,6 @@ static const struct drm_mode_config_funcs mtk_drm_mode_config_funcs = {
+>>  	.atomic_commit = drm_atomic_helper_commit,
+>>  };
+>>  
+>> -static const enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
+>> -	DDP_COMPONENT_OVL0,
+>> -	DDP_COMPONENT_RDMA0,
+>> -	DDP_COMPONENT_COLOR0,
+>> -	DDP_COMPONENT_BLS,
+>> -	DDP_COMPONENT_DSI0,
+>> -};
+>> -
+>> -static const enum mtk_ddp_comp_id mt2701_mtk_ddp_ext[] = {
+>> -	DDP_COMPONENT_RDMA1,
+>> -	DDP_COMPONENT_DPI0,
+>> -};
+>> -
+>> -static const enum mtk_ddp_comp_id mt2712_mtk_ddp_main[] = {
+>> -	DDP_COMPONENT_OVL0,
+>> -	DDP_COMPONENT_COLOR0,
+>> -	DDP_COMPONENT_AAL0,
+>> -	DDP_COMPONENT_OD0,
+>> -	DDP_COMPONENT_RDMA0,
+>> -	DDP_COMPONENT_DPI0,
+>> -	DDP_COMPONENT_PWM0,
+>> -};
+>> -
+>> -static const enum mtk_ddp_comp_id mt2712_mtk_ddp_ext[] = {
+>> -	DDP_COMPONENT_OVL1,
+>> -	DDP_COMPONENT_COLOR1,
+>> -	DDP_COMPONENT_AAL1,
+>> -	DDP_COMPONENT_OD1,
+>> -	DDP_COMPONENT_RDMA1,
+>> -	DDP_COMPONENT_DPI1,
+>> -	DDP_COMPONENT_PWM1,
+>> -};
+>> -
+>> -static const enum mtk_ddp_comp_id mt2712_mtk_ddp_third[] = {
+>> -	DDP_COMPONENT_RDMA2,
+>> -	DDP_COMPONENT_DSI3,
+>> -	DDP_COMPONENT_PWM2,
+>> -};
+>> -
+>> -static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
+>> -	DDP_COMPONENT_OVL0,
+>> -	DDP_COMPONENT_COLOR0,
+>> -	DDP_COMPONENT_AAL0,
+>> -	DDP_COMPONENT_OD0,
+>> -	DDP_COMPONENT_RDMA0,
+>> -	DDP_COMPONENT_UFOE,
+>> -	DDP_COMPONENT_DSI0,
+>> -	DDP_COMPONENT_PWM0,
+>> -};
+>> -
+>> -static const enum mtk_ddp_comp_id mt8173_mtk_ddp_ext[] = {
+>> -	DDP_COMPONENT_OVL1,
+>> -	DDP_COMPONENT_COLOR1,
+>> -	DDP_COMPONENT_GAMMA,
+>> -	DDP_COMPONENT_RDMA1,
+>> -	DDP_COMPONENT_DPI0,
+>> -};
+> 
+> I prefer that display routing is placed in drm driver. If you want to
+> move display routing into mmsys driver, I think you should move
+> mtk_ddp_add_comp_to_path() and mtk_ddp_remove_comp_from_path() into
+> mmsys driver because that is the register configuration part. This array
+> could be changed by display driver according to its application. For
+> example, the another routing could be:
+> 
+> static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
+> 	DDP_COMPONENT_OVL0,
+> 	DDP_COMPONENT_COLOR0,
+> 	DDP_COMPONENT_AAL0,
+> 	DDP_COMPONENT_OD0,
+> 	DDP_COMPONENT_RDMA0,
+> 	DDP_COMPONENT_UFOE,
+> 	DDP_COMPONENT_DPI0,
+> };
+> 
+> static const enum mtk_ddp_comp_id mt8173_mtk_ddp_ext[] = {
+> 	DDP_COMPONENT_OVL1,
+> 	DDP_COMPONENT_COLOR1,
+> 	DDP_COMPONENT_GAMMA,
+> 	DDP_COMPONENT_RDMA1,
+> 	DDP_COMPONENT_DSI0,
+> 	DDP_COMPONENT_PWM0,
+> };
+> 
+> I exchange the dsi and dpi component for the two display output. This
+> array is how display driver want to route, so I think this should be
+> kept in display driver.
+> 
+> Regards,
+> CK
 > 
 
-Right, I will fix this in next version.
+I think that what I can do is leave all this part in the drm driver and get the
+compatible string of the parent to match the data with the proper SoC. I'll try
+to do this in next version.
 
-> thanks.
+Thanks.
+
+>> -
+>> -static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+>> -	.main_path = mt2701_mtk_ddp_main,
+>> -	.main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
+>> -	.ext_path = mt2701_mtk_ddp_ext,
+>> -	.ext_len = ARRAY_SIZE(mt2701_mtk_ddp_ext),
+>> -	.shadow_register = true,
+>> -};
+>> -
+>> -static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
+>> -	.main_path = mt2712_mtk_ddp_main,
+>> -	.main_len = ARRAY_SIZE(mt2712_mtk_ddp_main),
+>> -	.ext_path = mt2712_mtk_ddp_ext,
+>> -	.ext_len = ARRAY_SIZE(mt2712_mtk_ddp_ext),
+>> -	.third_path = mt2712_mtk_ddp_third,
+>> -	.third_len = ARRAY_SIZE(mt2712_mtk_ddp_third),
+>> -};
+>> -
+>> -static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
+>> -	.main_path = mt8173_mtk_ddp_main,
+>> -	.main_len = ARRAY_SIZE(mt8173_mtk_ddp_main),
+>> -	.ext_path = mt8173_mtk_ddp_ext,
+>> -	.ext_len = ARRAY_SIZE(mt8173_mtk_ddp_ext),
+>> -};
+>> -
+> 
 > 
 
 _______________________________________________
