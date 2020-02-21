@@ -2,76 +2,83 @@ Return-Path: <SRS0=GSZf=4J=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AF780C11D24
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2020 05:18:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 50128C35640
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2020 05:38:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 78A0E208E4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2020 05:18:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1202A222C4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Feb 2020 05:38:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="baIIAmPu";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Ybqa99C1"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 78A0E208E4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QSAD7xBx";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="QVp/FC2N"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1202A222C4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q4YWpi1STZs3QSdm/vFZQys5uAHsGkIpCagL1184lf0=; b=baIIAmPupiaWRp
-	a2TMmmZb1yJfqsPcPJvCi20RZUEJo/0AZ4hrl30PtO8bPJrO23lPcjty/KmA1QFbwUgA7B3/49G58
-	BGceedr7sjE0WDDYCZmxnlb3yt8X4lgq2ODghmN73/vpEhrkbRWKAZMv+oWGg5CCCMiwqVU/TRS6s
-	6q1Do5xWZfuYVhsX5PUiQ01E2URe4zFGMd9eQ8jTTitn4hvzcoR/xlH6sDiXAuEA1o4W8xtzbSyiB
-	TBoHRRklZetqZATXCqqTDxWMaarRwzMDX9DcD1tW7yhCPzOxUd7Jth/thnwzt/8+OhopHzhZAFrlC
-	/hEuDelU4mZ4gYip44nA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=sTPSqXMA94kuR2zSnuobyrA02ZUgx7h0xhFCOHKjRJM=; b=QSAD7xBxaTPvvS
+	tDvqaKlWV1tOEdh7eYOv375Ta3Ww2KoDxc+vCPIbJiSU7be3SJt++fjECtQ3dDBg3wcRaiwEV+3sX
+	PweDu1ONG/Jbw/GYo/KFkSIBppNz7xbtirorYCjuoxNLvD5n3v4lE3z605a+k7K3aph9/92GFimp0
+	6LMszZ+bQXdQy154BDRRn+YQWDY3+5nohSulahp0sM/cfLQqr5mzuR5oLSv2DuSSx1ElHLpz1/13D
+	fI6JBgByAiQ39c7BmuuGpsOaJ/fK7cYpo1bW9upAOIOwGYDqQcuCcQGPNNMvO1VBRAOVFRL8cstGT
+	Fjwjtj1ZiYPmwlmbGcXA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j50hi-0001QV-UJ; Fri, 21 Feb 2020 05:18:22 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1j5115-0000A8-7n; Fri, 21 Feb 2020 05:38:23 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j50hf-0001Q1-Rk; Fri, 21 Feb 2020 05:18:22 +0000
-X-UUID: 05bf233df6cb4d83a6cd2afa9b966d7c-20200220
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=6UV+C10r2CMR0l2KI7VTcwmaRRwTbWfU9UAXiUnQ4b8=; 
- b=Ybqa99C1yIEm5RRSF6o8lbTBlYhulpmPkog+fZxJJytL3esGzaBxNWMDhVxwlEZ+pbcPfVLp6hV3EYx8h9LLgPCZeIi6qL63760D/balCwUlqxYLsRNNkKHMToKh4EYBaanNAyUZs7/r07BHYx4N7KMBXNhaT2Y5V4O9pkiuGJk=;
-X-UUID: 05bf233df6cb4d83a6cd2afa9b966d7c-20200220
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1548682735; Thu, 20 Feb 2020 21:18:18 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 20 Feb 2020 21:19:12 -0800
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 21 Feb 2020 13:17:28 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Fri, 21 Feb 2020 13:17:56 +0800
-Message-ID: <1582262295.30425.8.camel@mtksdaap41>
-Subject: Re: [PATCH v8 6/6] clk/drm: mediatek: Fix mediatek-drm device probing
-From: CK Hu <ck.hu@mediatek.com>
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Date: Fri, 21 Feb 2020 13:18:15 +0800
-In-Reply-To: <20200220172147.919996-7-enric.balletbo@collabora.com>
-References: <20200220172147.919996-1-enric.balletbo@collabora.com>
- <20200220172147.919996-7-enric.balletbo@collabora.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1j5112-00009J-4m
+ for linux-mediatek@lists.infradead.org; Fri, 21 Feb 2020 05:38:21 +0000
+Received: by mail-pg1-x544.google.com with SMTP id 70so406431pgf.8
+ for <linux-mediatek@lists.infradead.org>; Thu, 20 Feb 2020 21:38:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=xR1GRxFdUV2TwDvxuNR/pK3VYzRWJYZmKivDEUcKc5w=;
+ b=QVp/FC2NiAc3rBycqqqlyoa0rlWBGhP8nW8nvvVd1pRXp9Io6ugF1YFhOrlCramk4m
+ maGakRF1l77Fn3JdI/QLF3uqnkV56NYnLn0ct7McCl8jjFS/RuIzCVK4rKwS0eMsanTp
+ JJZ6xUxzRnD685IHKwcVyvWnx6ogkbaou6bhU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=xR1GRxFdUV2TwDvxuNR/pK3VYzRWJYZmKivDEUcKc5w=;
+ b=ojSr/5/4xuuMoqba/1JO7lBKrWqMvWFx5LhYP27/Y9Fi79yt9dfqLwFkiNWtJesqRW
+ KaBdmlvlRPdZW3v/1MBiB48lOiR6hicJqtL2ScNkoYwsoL/z/Qk10JYk1ZPq7/5+yz/K
+ GuYZmJal3+7PGW8xjjtmMfTnvT60qLmsQBiUyBJUiq1vFb6g1DVenr/Y1tra35e0pvzV
+ 0FJ923ulsH5z7xe4K7xBaK1CxxmenKVw5qXFSSu1q/v+TluMq2mDyFtedZoVQPlsHlyj
+ pAs5jJOQrtWM+9jX5H3HrVHCN7sRXUcLtsv/CbJei8Tw535v3ZUduayeR5W2GAUfWM6p
+ Zueg==
+X-Gm-Message-State: APjAAAUH1OzP583/I3RaZGuLDAdelK0EbpiCE43t3XNqrhvkD2iRoF1G
+ UpNfE/V78I6w67ie3LdB8e8pyw==
+X-Google-Smtp-Source: APXvYqwNbEeASGO4ArQ+KQ49tlopvldlo5/I0QneTu45MVpD2X1Vvxvy9falEjB7Hs8GL48/Mzv+xA==
+X-Received: by 2002:a62:486:: with SMTP id 128mr36207829pfe.236.1582263499298; 
+ Thu, 20 Feb 2020 21:38:19 -0800 (PST)
+Received: from localhost ([2401:fa00:9:14:1105:3e8a:838d:e326])
+ by smtp.gmail.com with ESMTPSA id b25sm1329060pfo.38.2020.02.20.21.38.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 20 Feb 2020 21:38:18 -0800 (PST)
+From: Evan Benn <evanbenn@chromium.org>
+To: LKML <linux-kernel@vger.kernel.org>
+Subject: [PATCH v2 0/2] Add a watchdog driver that uses ARM Secure Monitor
+ Calls.
+Date: Fri, 21 Feb 2020 16:38:00 +1100
+Message-Id: <20200221053802.70716-1-evanbenn@chromium.org>
+X-Mailer: git-send-email 2.25.0.265.gbab2e86ba0-goog
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200220_211819_912185_84CFD379 
-X-CRM114-Status: GOOD (  22.89  )
+X-CRM114-CacheID: sfid-20200220_213820_211012_F9B81948 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,316 +90,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, Kate Stewart <kstewart@linuxfoundation.org>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, airlied@linux.ie,
- mturquette@baylibre.com, dri-devel@lists.freedesktop.org,
- Richard Fontana <rfontana@redhat.com>, laurent.pinchart@ideasonboard.com,
- ulrich.hecht+renesas@gmail.com, Collabora
- Kernel ML <kernel@collabora.com>, linux-clk@vger.kernel.org,
- Weiyi Lu <weiyi.lu@mediatek.com>, wens@csie.org,
- linux-arm-kernel@lists.infradead.org, mtk01761 <wendell.lin@mediatek.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- Daniel Vetter <daniel@ffwll.ch>, frank-w@public-files.de, Seiya
- Wang <seiya.wang@mediatek.com>, sean.wang@mediatek.com,
- Houlong Wei <houlong.wei@mediatek.com>, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Leonard Crestez <leonard.crestez@nxp.com>, Will Deacon <will@kernel.org>,
+ Rob Herring <robh@kernel.org>, Anson Huang <Anson.Huang@nxp.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Evan Benn <evanbenn@chromium.org>,
+ =?UTF-8?q?Cl=C3=A9ment=20P=C3=A9ron?= <peron.clem@gmail.com>,
+ Guenter Roeck <linux@roeck-us.net>, devicetree@vger.kernel.org,
+ linux-watchdog@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Mauro
- Carvalho Chehab <mchehab@kernel.org>, Allison Randal <allison@lohutok.net>,
- Matthias Brugger <mbrugger@suse.com>, sboyd@kernel.org, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, rdunlap@infradead.org,
- linux-kernel@vger.kernel.org, p.zabel@pengutronix.de, matthias.bgg@kernel.org
+ Wim Van Sebroeck <wim@linux-watchdog.org>,
+ linux-arm-kernel@lists.infradead.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dinh Nguyen <dinguyen@kernel.org>, Olof Johansson <olof@lixom.net>,
+ jwerner@chromium.org, Shawn Guo <shawnguo@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Enric:
+This is currently supported in firmware deployed on oak, hana and elm mt8173
+chromebook devices. The kernel driver is written to be a generic SMC
+watchdog driver.
 
-On Thu, 2020-02-20 at 18:21 +0100, Enric Balletbo i Serra wrote:
-> In the actual implementation the same compatible string
-> "mediatek,<chip>-mmsys" is used to bind the clock drivers
-> (drivers/clk/mediatek) as well as to the gpu driver
-> (drivers/gpu/drm/mediatek/mtk_drm_drv.c). This ends with the problem
-> that the only probed driver is the clock driver and there is no display
-> at all.
-> 
-> In any case having the same compatible string for two drivers is not
-> correct and should be fixed. To fix this, and maintain backward
-> compatibility, we can consider that the clk-<chip>-mm driver is the
-> top-level entry point for the MMSYS subsystem, so is not a pure clock
-> controller but a system controller, and the drm driver is instantiated
-> by that MMSYS driver.
-> 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> ---
-> 
-> Changes in v8:
-> - New patch introduced in this series.
-> 
-> Changes in v7: None
-> 
->  drivers/clk/mediatek/clk-mt2701-mm.c   |  30 ++++++++
->  drivers/clk/mediatek/clk-mt2712-mm.c   |  44 +++++++++++
->  drivers/clk/mediatek/clk-mt8173-mm.c   |  35 +++++++++
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 102 ++-----------------------
->  4 files changed, 115 insertions(+), 96 deletions(-)
-> 
-> diff --git a/drivers/clk/mediatek/clk-mt2701-mm.c b/drivers/clk/mediatek/clk-mt2701-mm.c
-> index 054b597d4a73..b1281680d5bf 100644
-> --- a/drivers/clk/mediatek/clk-mt2701-mm.c
-> +++ b/drivers/clk/mediatek/clk-mt2701-mm.c
-> @@ -5,6 +5,7 @@
->   */
+Arm Trusted Firmware upstreaming review:
+    https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/3405
 
-[snip]
+Patch to add oak, hana, elm device tree:
+    https://lore.kernel.org/linux-arm-kernel/20200110073730.213789-1-hsinyi@chromium.org/
+I would like to add the device tree support after the above patch is
+accepted.
 
->  
->  
-> diff --git a/drivers/clk/mediatek/clk-mt2712-mm.c b/drivers/clk/mediatek/clk-mt2712-mm.c
-> index 1c5948be35f3..0ae971783997 100644
-> --- a/drivers/clk/mediatek/clk-mt2712-mm.c
-> +++ b/drivers/clk/mediatek/clk-mt2712-mm.c
-> @@ -5,6 +5,7 @@
->   */
->  
->  #include <linux/clk-provider.h>
-> +#include <linux/platform_data/mtk_mmsys.h>
->  #include <linux/platform_device.h>
->  
->  #include "clk-mtk.h"
-> @@ -126,9 +127,45 @@ static const struct mtk_gate mm_clks[] = {
->  	GATE_MM2(CLK_MM_DSI3_DIGITAL, "mm_dsi3_digital", "dsi1_lntc", 6),
->  };
->  
-> +static const enum mtk_ddp_comp_id mt2712_mtk_ddp_main[] = {
-> +	DDP_COMPONENT_OVL0,
-> +	DDP_COMPONENT_COLOR0,
-> +	DDP_COMPONENT_AAL0,
-> +	DDP_COMPONENT_OD0,
-> +	DDP_COMPONENT_RDMA0,
-> +	DDP_COMPONENT_DPI0,
-> +	DDP_COMPONENT_PWM0,
-> +};
-> +
-> +static const enum mtk_ddp_comp_id mt2712_mtk_ddp_ext[] = {
-> +	DDP_COMPONENT_OVL1,
-> +	DDP_COMPONENT_COLOR1,
-> +	DDP_COMPONENT_AAL1,
-> +	DDP_COMPONENT_OD1,
-> +	DDP_COMPONENT_RDMA1,
-> +	DDP_COMPONENT_DPI1,
-> +	DDP_COMPONENT_PWM1,
-> +};
-> +
-> +static const enum mtk_ddp_comp_id mt2712_mtk_ddp_third[] = {
-> +	DDP_COMPONENT_RDMA2,
-> +	DDP_COMPONENT_DSI3,
-> +	DDP_COMPONENT_PWM2,
-> +};
-> +
-> +static struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
-> +	.main_path = mt2712_mtk_ddp_main,
-> +	.main_len = ARRAY_SIZE(mt2712_mtk_ddp_main),
-> +	.ext_path = mt2712_mtk_ddp_ext,
-> +	.ext_len = ARRAY_SIZE(mt2712_mtk_ddp_ext),
-> +	.third_path = mt2712_mtk_ddp_third,
-> +	.third_len = ARRAY_SIZE(mt2712_mtk_ddp_third),
-> +};
-> +
+Changes in v2:
+- Change name arm > mt8173
+- use watchdog_stop_on_reboot
+- use watchdog_stop_on_unregister
+- use devm_watchdog_register_device
+- remove smcwd_shutdown, smcwd_remove
+- change error codes
 
-[snip]
+Evan Benn (1):
+  dt-bindings: watchdog: Add mt8173,smc-wdt watchdog
 
->  
-> diff --git a/drivers/clk/mediatek/clk-mt8173-mm.c b/drivers/clk/mediatek/clk-mt8173-mm.c
-> index 83884fd5a750..9136c7f543f1 100644
-> --- a/drivers/clk/mediatek/clk-mt8173-mm.c
-> +++ b/drivers/clk/mediatek/clk-mt8173-mm.c
-> @@ -5,6 +5,7 @@
->   */
->  
->  #include <linux/clk-provider.h>
-> +#include <linux/platform_data/mtk_mmsys.h>
->  #include <linux/platform_device.h>
->  
->  #include "clk-mtk.h"
-> @@ -99,10 +100,37 @@ static const struct mtk_gate mm_clks[] = {
->  	GATE_MM1(CLK_MM_HDMI_HDCP24M, "mm_hdmi_hdcp24m", "hdcp_24m_sel", 20),
->  };
->  
-> +static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
-> +	DDP_COMPONENT_OVL0,
-> +	DDP_COMPONENT_COLOR0,
-> +	DDP_COMPONENT_AAL0,
-> +	DDP_COMPONENT_OD0,
-> +	DDP_COMPONENT_RDMA0,
-> +	DDP_COMPONENT_UFOE,
-> +	DDP_COMPONENT_DSI0,
-> +	DDP_COMPONENT_PWM0,
-> +};
-> +
-> +static const enum mtk_ddp_comp_id mt8173_mtk_ddp_ext[] = {
-> +	DDP_COMPONENT_OVL1,
-> +	DDP_COMPONENT_COLOR1,
-> +	DDP_COMPONENT_GAMMA,
-> +	DDP_COMPONENT_RDMA1,
-> +	DDP_COMPONENT_DPI0,
-> +};
-> +
-> +static struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
-> +	.main_path = mt8173_mtk_ddp_main,
-> +	.main_len = ARRAY_SIZE(mt8173_mtk_ddp_main),
-> +	.ext_path = mt8173_mtk_ddp_ext,
-> +	.ext_len = ARRAY_SIZE(mt8173_mtk_ddp_ext),
-> +};
-> +
->  static int clk_mt8173_mm_probe(struct platform_device *pdev)
->  {
->  	struct device_node *node = pdev->dev.of_node;
->  	struct clk_onecell_data *clk_data;
-> +	struct platform_device *drm;
->  	int ret;
->  
->  	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
-> @@ -118,6 +146,13 @@ static int clk_mt8173_mm_probe(struct platform_device *pdev)
->  	if (ret)
->  		return ret;
->  
-> +	platform_set_drvdata(pdev, &mt8173_mmsys_driver_data);
-> +
-> +	drm = platform_device_register_data(&pdev->dev, "mediatek-drm",
-> +					    PLATFORM_DEVID_NONE, NULL, 0);
-> +	if (IS_ERR(drm))
-> +		return PTR_ERR(drm);
-> +
->  	return 0;
->  }
->  
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index b68837ea02b3..5b60f6b7d710 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -61,88 +61,6 @@ static const struct drm_mode_config_funcs mtk_drm_mode_config_funcs = {
->  	.atomic_commit = drm_atomic_helper_commit,
->  };
->  
-> -static const enum mtk_ddp_comp_id mt2701_mtk_ddp_main[] = {
-> -	DDP_COMPONENT_OVL0,
-> -	DDP_COMPONENT_RDMA0,
-> -	DDP_COMPONENT_COLOR0,
-> -	DDP_COMPONENT_BLS,
-> -	DDP_COMPONENT_DSI0,
-> -};
-> -
-> -static const enum mtk_ddp_comp_id mt2701_mtk_ddp_ext[] = {
-> -	DDP_COMPONENT_RDMA1,
-> -	DDP_COMPONENT_DPI0,
-> -};
-> -
-> -static const enum mtk_ddp_comp_id mt2712_mtk_ddp_main[] = {
-> -	DDP_COMPONENT_OVL0,
-> -	DDP_COMPONENT_COLOR0,
-> -	DDP_COMPONENT_AAL0,
-> -	DDP_COMPONENT_OD0,
-> -	DDP_COMPONENT_RDMA0,
-> -	DDP_COMPONENT_DPI0,
-> -	DDP_COMPONENT_PWM0,
-> -};
-> -
-> -static const enum mtk_ddp_comp_id mt2712_mtk_ddp_ext[] = {
-> -	DDP_COMPONENT_OVL1,
-> -	DDP_COMPONENT_COLOR1,
-> -	DDP_COMPONENT_AAL1,
-> -	DDP_COMPONENT_OD1,
-> -	DDP_COMPONENT_RDMA1,
-> -	DDP_COMPONENT_DPI1,
-> -	DDP_COMPONENT_PWM1,
-> -};
-> -
-> -static const enum mtk_ddp_comp_id mt2712_mtk_ddp_third[] = {
-> -	DDP_COMPONENT_RDMA2,
-> -	DDP_COMPONENT_DSI3,
-> -	DDP_COMPONENT_PWM2,
-> -};
-> -
-> -static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
-> -	DDP_COMPONENT_OVL0,
-> -	DDP_COMPONENT_COLOR0,
-> -	DDP_COMPONENT_AAL0,
-> -	DDP_COMPONENT_OD0,
-> -	DDP_COMPONENT_RDMA0,
-> -	DDP_COMPONENT_UFOE,
-> -	DDP_COMPONENT_DSI0,
-> -	DDP_COMPONENT_PWM0,
-> -};
-> -
-> -static const enum mtk_ddp_comp_id mt8173_mtk_ddp_ext[] = {
-> -	DDP_COMPONENT_OVL1,
-> -	DDP_COMPONENT_COLOR1,
-> -	DDP_COMPONENT_GAMMA,
-> -	DDP_COMPONENT_RDMA1,
-> -	DDP_COMPONENT_DPI0,
-> -};
+Julius Werner (1):
+  watchdog: Add new mt8173_smc_wdt watchdog driver
 
-I prefer that display routing is placed in drm driver. If you want to
-move display routing into mmsys driver, I think you should move
-mtk_ddp_add_comp_to_path() and mtk_ddp_remove_comp_from_path() into
-mmsys driver because that is the register configuration part. This array
-could be changed by display driver according to its application. For
-example, the another routing could be:
+ .../bindings/watchdog/mt8173,smc-wdt.yaml     |  30 ++++
+ MAINTAINERS                                   |   7 +
+ arch/arm64/configs/defconfig                  |   1 +
+ drivers/watchdog/Kconfig                      |  13 ++
+ drivers/watchdog/Makefile                     |   1 +
+ drivers/watchdog/mt8173_smc_wdt.c             | 160 ++++++++++++++++++
+ 6 files changed, 212 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/watchdog/mt8173,smc-wdt.yaml
+ create mode 100644 drivers/watchdog/mt8173_smc_wdt.c
 
-static const enum mtk_ddp_comp_id mt8173_mtk_ddp_main[] = {
-	DDP_COMPONENT_OVL0,
-	DDP_COMPONENT_COLOR0,
-	DDP_COMPONENT_AAL0,
-	DDP_COMPONENT_OD0,
-	DDP_COMPONENT_RDMA0,
-	DDP_COMPONENT_UFOE,
-	DDP_COMPONENT_DPI0,
-};
-
-static const enum mtk_ddp_comp_id mt8173_mtk_ddp_ext[] = {
-	DDP_COMPONENT_OVL1,
-	DDP_COMPONENT_COLOR1,
-	DDP_COMPONENT_GAMMA,
-	DDP_COMPONENT_RDMA1,
-	DDP_COMPONENT_DSI0,
-	DDP_COMPONENT_PWM0,
-};
-
-I exchange the dsi and dpi component for the two display output. This
-array is how display driver want to route, so I think this should be
-kept in display driver.
-
-Regards,
-CK
-
-> -
-> -static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
-> -	.main_path = mt2701_mtk_ddp_main,
-> -	.main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
-> -	.ext_path = mt2701_mtk_ddp_ext,
-> -	.ext_len = ARRAY_SIZE(mt2701_mtk_ddp_ext),
-> -	.shadow_register = true,
-> -};
-> -
-> -static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
-> -	.main_path = mt2712_mtk_ddp_main,
-> -	.main_len = ARRAY_SIZE(mt2712_mtk_ddp_main),
-> -	.ext_path = mt2712_mtk_ddp_ext,
-> -	.ext_len = ARRAY_SIZE(mt2712_mtk_ddp_ext),
-> -	.third_path = mt2712_mtk_ddp_third,
-> -	.third_len = ARRAY_SIZE(mt2712_mtk_ddp_third),
-> -};
-> -
-> -static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
-> -	.main_path = mt8173_mtk_ddp_main,
-> -	.main_len = ARRAY_SIZE(mt8173_mtk_ddp_main),
-> -	.ext_path = mt8173_mtk_ddp_ext,
-> -	.ext_len = ARRAY_SIZE(mt8173_mtk_ddp_ext),
-> -};
-> -
+-- 
+2.25.0.265.gbab2e86ba0-goog
 
 
 _______________________________________________
