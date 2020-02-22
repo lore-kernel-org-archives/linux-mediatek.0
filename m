@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 625B8C35666
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Feb 2020 16:26:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E448DC35666
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Feb 2020 16:26:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 13815206ED
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Feb 2020 16:26:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B7D2C206ED
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Feb 2020 16:26:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WfAsgS8a";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="JKfgDHPA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 13815206ED
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MckUdP7P";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="R8Zns9Uf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B7D2C206ED
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,64 +27,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=nqRr52CD3BO1Po75ntTuxUAQAjlIHuEkg2HfQdj7AZo=; b=WfAsgS8aHzyvX3XwDEkLb8gQMA
-	o9Xw5MeyjDzwQZkmYgwMBiOPZP7VI6no3s8P21aPcaMGZT2cXMskHDtJQrBxAW3ZDwVAo151NnF+G
-	4yuzOBGifciUyGd03yzN7ontzXZPY2vic17KHkCyaYf9qrUjO3oqxmN5pkmFIGDEpG2CNDyEAkZh0
-	z5lJXQSPHKNLSRu7WJ/tn/NH0oESvuzJznDAZhOIb85kyXZesSwm7X60tEiNo9AAilDPA2norSwb0
-	oybTYM7kJ7sAwUzU4eobx0+2JFBRN/AA6YU0qmWcNU03tIhstsc78nMDPp448obT91nt4GZMvLLCH
-	J2W76CPg==;
+	bh=kZuIz2dUYAE5WFllrrOSn11/6ts6wvxc3A9eSpUibVU=; b=MckUdP7PdvL8Uv2laC/1/Kf6wD
+	b8jbxEFeaCYgzWFjnoJLEvClSW3GYOX9V/kf+tzcfes8/3xqvYZcX2BxiKAkgNBsRUjAxZYSot/Sc
+	XdevDY5OaMBIEOwlNBEwSx6pWgcMu3KMbVaGalzMmP1Wv8pbnIgTBWzoCrF/8YecMMRPk7/K99wCZ
+	sVycg5eNZpQ9KNZZhdvXMG9qmzZfpW4iMXtaWT9s2M4ogRTLaZY7eVxfCfWHWLjpsU3bxun09DZNU
+	nW8OkXBVbyi2OTopEzthyPIpj2yBkpf7zg+V+WpbP3j24bEBHYytkenKcpxDJ0mU3tFGcvT38Bv+W
+	kJGVIEjA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j5XbY-0001eK-2z; Sat, 22 Feb 2020 16:26:12 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1j5Xbp-0001wl-Di; Sat, 22 Feb 2020 16:26:29 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j5Xah-0000k8-Iq
- for linux-mediatek@lists.infradead.org; Sat, 22 Feb 2020 16:25:21 +0000
-Received: by mail-pg1-x544.google.com with SMTP id j15so2637310pgm.6
- for <linux-mediatek@lists.infradead.org>; Sat, 22 Feb 2020 08:25:18 -0800 (PST)
+ id 1j5Xak-0000oP-VC
+ for linux-mediatek@lists.infradead.org; Sat, 22 Feb 2020 16:25:24 +0000
+Received: by mail-pl1-x641.google.com with SMTP id e8so2179158plt.9
+ for <linux-mediatek@lists.infradead.org>; Sat, 22 Feb 2020 08:25:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=QZ0XPHrkGczK68VTqBdi2gga5qCDB/xbspdRfUcWe3Y=;
- b=JKfgDHPAPplpi8yLoQ8LrU7FuYC9H2z0fll1FQAjYKjGMPvnAfFGzgdvzd1dv7nKHB
- qqTnBKegtVbF51wnpByFo6AesU6BZu6o8rqRedDZLOan/KiLvEOqnU+P5BOBNYVaE0h0
- KJnwe/gQX5wvwIK53GfBCUJsE0DtaDLmAJ/ywAYNTAwMHfZXFTnUFtkfeZlT3+LCK/R8
- fRGsx8iFnxhuJU9Z/YbQV+PpT6hnsZVZ9BRjT/2WpCsCkORzG3l5taWKnxL5bkWBtrTm
- 6poQqzAdbu3cpi9SZ+IXeRex5Enravo9BgL36LxQFLIr1sQpc/I+hsiwinLvmh4Jbm8t
- RONg==
+ bh=gg7bS1nflOAaxyupRzfc5VSU36LQb9MIJVDzdfFhX04=;
+ b=R8Zns9UfFCLkk51MpnD30Zt7kTfhnWJpFVg858FZmvU0SYaspwl+hj5Dxmf5F7KdtD
+ JczjkiLhNwc7OEFMuPNntrvRuDR2bN3B/ojiXZIyhC8X7rCs9cwpxZW+yrCQMtzyoOck
+ Rhr9fF1Y/yrtEdcNZz3R8bAEOiooSfmj7GWb2LqUX3jEiKpf3B2T1bPfuY0xEtvy/71e
+ /eRpU73u+8zxiqOln+O1XpGxRiP4u3ilob3CVnzvNXJoKFZMrdSZ0VIQq+9/1tfFY9zE
+ HDXFIGXM2PO47j3ow9xSshARQrJjsqQ05SKzLMziSVIkKeT1+YzyRhbGx/X+EufB195z
+ Mzkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=QZ0XPHrkGczK68VTqBdi2gga5qCDB/xbspdRfUcWe3Y=;
- b=cHLfa7zPm4E6ZoG3U67CrbphjhX163fQqDjsO3IZlYNKq7r0PQAJu9wY3Et4KAK1cY
- bOjqGLNvcqzWFyFbBraaZqDYaFV1iuOb7YDN1FaAsYwGoZSz7kFrdiXB8Nov4vE61KjX
- spBfOsxDvCEbQ3dEKn8HrI4BSN50a9z77uZFwicjAeFtyEP4oaSM/8hkvU8QS0ouxAS1
- VrPYS4CtFqHKhVL09aykLjI7EpBuexdCeMVbNEynaaCLGlkkIW57UZxm2B6/Zibd9oCj
- XiwNyFwGDrMRGLLQnGdOwtMXEdp4w7XAayIBJ6GWwAI4eW9ZLx63jtFo/H7sx+twUrwN
- cm+g==
-X-Gm-Message-State: APjAAAWanTsv1TSTeTYSS3htOm4the3vtYlO7doumYMrfdnS700Ug5tr
- 1RNLjV1nK02+8JAfgstGRmmP
-X-Google-Smtp-Source: APXvYqwCNJokm7CWkuaJXTaW+Sp3pmLJBq34ZkBB8dcrtjSvqVAQjQaPEdtOdsgpQnUPlTarUqq3TA==
-X-Received: by 2002:aa7:8bcd:: with SMTP id s13mr44039192pfd.234.1582388717854; 
- Sat, 22 Feb 2020 08:25:17 -0800 (PST)
+ bh=gg7bS1nflOAaxyupRzfc5VSU36LQb9MIJVDzdfFhX04=;
+ b=GYAZ1Sl+2XDJUzV5tgdDDkNZsCj5MS8v60GYuBpFRQG/C3xIYxSw6yDO26rCurXdi+
+ vDGiTd1d+Lufl6Vh7LeXTTllt1QXic8YqAiZpwWWhJh9HLKFW2Cs3alUTjipVw7G5Qfp
+ Sywk3Rq+Gj6wu0tqJWlpV/xXEwbHRo207aWPtrNHSusu4Urv+iGVuGzMU0yvnqUsLpX9
+ RzNRPCb/yab9dUiacLyeXJ6Qz2rU55Y8NShnnmf1Ae2oFA7UlMchAoBZKj7FBPNZLwJu
+ rTLAQJLGtj72jx2v62P92sx3xD1B3bowvM0rTuV/bb0HOGzqiCZFKhJp6djQzzJ914Bq
+ ayew==
+X-Gm-Message-State: APjAAAVhSjOzZsx2u9Hs5Bqb5uNkkhZN5pNYG60i2tHsNPEAuD3U/RE8
+ Dygt4Y/NsQgSSY6O6ddjVO41
+X-Google-Smtp-Source: APXvYqyya8y7D5YQFJCiWMM9h4XXO/EBmT5VgPITYvRx6kw0b7p7kv+JpJQey18UWknHAr5CfF29wA==
+X-Received: by 2002:a17:90a:cf07:: with SMTP id
+ h7mr9838281pju.66.1582388722406; 
+ Sat, 22 Feb 2020 08:25:22 -0800 (PST)
 Received: from localhost.localdomain ([2409:4072:801:b38c:89e8:305c:23c4:b77f])
- by smtp.gmail.com with ESMTPSA id q17sm6851296pfg.123.2020.02.22.08.25.13
+ by smtp.gmail.com with ESMTPSA id q17sm6851296pfg.123.2020.02.22.08.25.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 22 Feb 2020 08:25:17 -0800 (PST)
+ Sat, 22 Feb 2020 08:25:21 -0800 (PST)
 From: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 To: matthias.bgg@gmail.com,
 	robh+dt@kernel.org
-Subject: [PATCH 3/4] arm64: dts: mediatek: Enable I2C support for 96Boards X20
- Development board
-Date: Sat, 22 Feb 2020 21:54:43 +0530
-Message-Id: <20200222162444.11590-4-manivannan.sadhasivam@linaro.org>
+Subject: [PATCH 4/4] arm64: dts: mediatek: Switch to SPDX license identifier
+ for MT6797 SoC
+Date: Sat, 22 Feb 2020 21:54:44 +0530
+Message-Id: <20200222162444.11590-5-manivannan.sadhasivam@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200222162444.11590-1-manivannan.sadhasivam@linaro.org>
 References: <20200222162444.11590-1-manivannan.sadhasivam@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200222_082519_755661_A26047AB 
-X-CRM114-Status: UNSURE (   8.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200222_082523_046670_B4D61C8F 
+X-CRM114-Status: GOOD (  10.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,73 +106,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are 7 I2C ports used on this board. Hence, enable all of them.
+Switch to SPDX license identifier for MT6797 SoC.
 
 Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 ---
- .../boot/dts/mediatek/mt6797-x20-dev.dts      | 49 +++++++++++++++++++
- 1 file changed, 49 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt6797.dtsi | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts b/arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts
-index 13939d55b85b..eff9e8dbd076 100644
---- a/arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt6797-x20-dev.dts
-@@ -28,6 +28,55 @@
- 	};
- };
+diff --git a/arch/arm64/boot/dts/mediatek/mt6797.dtsi b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
+index 22f093960d27..c1295bf7080c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6797.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6797.dtsi
+@@ -1,14 +1,7 @@
++// SPDX-License-Identifier: GPL-2.0
+ /*
+  * Copyright (c) 2017 MediaTek Inc.
+  * Author: Mars.C <mars.cheng@mediatek.com>
+- *
+- * This program is free software; you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License version 2 as
+- * published by the Free Software Foundation.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+  */
  
-+/* HDMI */
-+&i2c1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c1_pins_a>;
-+	status = "okay";
-+};
-+
-+/* HS - I2C2 */
-+&i2c2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c2_pins_a>;
-+	status = "okay";
-+};
-+
-+/* HS - I2C3 */
-+&i2c3 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c3_pins_a>;
-+	status = "okay";
-+};
-+
-+/* LS - I2C0 */
-+&i2c4 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c4_pins_a>;
-+	status = "okay";
-+};
-+
-+/* LS - I2C1 */
-+&i2c5 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c5_pins_a>;
-+	status = "okay";
-+};
-+
-+/* POWER_VPROC */
-+&i2c6 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c6_pins_a>;
-+	status = "okay";
-+};
-+
-+/* FAN53555 */
-+&i2c7 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2c7_pins_a>;
-+	status = "okay";
-+};
-+
- &uart1 {
- 	status = "okay";
- 	pinctrl-names = "default";
+ #include <dt-bindings/clock/mt6797-clk.h>
 -- 
 2.17.1
 
