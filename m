@@ -2,82 +2,123 @@ Return-Path: <SRS0=6IrV=4L=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 55D92C35671
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Feb 2020 15:49:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B5FEAC35673
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Feb 2020 22:41:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 29C5C206E0
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Feb 2020 15:49:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 839E4206E2
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Feb 2020 22:41:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="N+wHBKoR";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="rbUsAmSa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 29C5C206E0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VYHs7sIV";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=micron.com header.i=@micron.com header.b="eO//hbqX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 839E4206E2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=micron.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/REfa1JTM4vZHPxobUGfCRC0mgAnsk3gjQmFBod7QFw=; b=N+wHBKoRCh5Gh3
-	qBOp8cf5mfmcJkHdttdh7G2QYC0Uv6mzRlFYqvJJlL8C5m0h7G7CZ7Su432sMm+wyf5CaXEydAevk
-	xJxupxQGxdYmZ6VpWafxNvet91k56qgywCac+2OgcqpP8xZKY296lvA10T9iEjYdaWoxCHJvxy6v8
-	/p/ODej6gA3iptDbpG39caKGMm1FQKRt79cVlf+QEpSDqKl6pCt5s23xvMAWs2IuN7IqII5D3xFnM
-	zW7THRHPbWnJzzGvTi2FKRs2YqQ7ka+HePjmrHkQmE9u6sf9UlyyvlLEIE2KU6iuact4mUB80U5E+
-	yZ9uE1V0pHOmr32RtFmA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=AcBbSflpyehzwH0/I98R23KYPsyAPCQ75Ie7E1SKnD4=; b=VYHs7sIVeSQ8Cr
+	9zharyD2Zu+ilE3fmYeoVVOYDbAhMAluVV03ZsmBTJxlnjn1feB8YPkyOO7ph76YRr6EhPYrnao/3
+	aQIWHDLBiyJp3IQxb2GxjECdMxmce/l1BTqSNKv+igVFAa6+K7w+jhWd/tmz2/ACo0/Am5aiMotGj
+	nWxRvkYEo9/v178YWAbtLbLVDsdYJtYXKkdJilKPyHdvcGYcZmS6oQbv8ftVXJAkdqT9ke4JKErSq
+	8GCOAwLY/aCnDQhRw9pX/thYHIbW3AMYa88mQd42A3q9MJqWrZUiovFaWMgw7Sb4mDe4+oLfQmnV+
+	c6Nd18iVVISCqLS0/dgw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j5tVm-0002Us-VT; Sun, 23 Feb 2020 15:49:42 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1j5zwG-00085m-Vw; Sun, 23 Feb 2020 22:41:28 +0000
+Received: from mail-eopbgr750044.outbound.protection.outlook.com
+ ([40.107.75.44] helo=NAM02-BL2-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j5tVQ-0002If-3W; Sun, 23 Feb 2020 15:49:22 +0000
-X-UUID: 3e88f9394abf45faa3fb208ec09ca814-20200223
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=0nKH1cddPqIhprdICOy5mrIMOZ5r54kyLtHZf1Qc6t4=; 
- b=rbUsAmSaUKac7XbAmN9yZsihbYIy+rDemDxQRGEtTcx7e+tbsvnNjNUCcIfK+Ok1vmz92OfMZ86XnYpu9WOEBiX4cNMe5k0MVewwy3XgsSV9SCCUyInKjKltvdnodlOnF/N414PDBCZOZtgCvpkO0m39g5//U7x/iOqP8+cvPww=;
-X-UUID: 3e88f9394abf45faa3fb208ec09ca814-20200223
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <macpaul.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1794629040; Sun, 23 Feb 2020 07:49:14 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 23 Feb 2020 07:49:12 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 23 Feb 2020 23:48:24 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Sun, 23 Feb 2020 23:48:17 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Shen Jing
- <jingx.shen@intel.com>, Sasha Levin <sashal@kernel.org>, John Stultz
- <john.stultz@linaro.org>, Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
- Vincent Pelletier <plr.vincent@gmail.com>, Jerry Zhang
- <zhangjerry@google.com>, <linux-usb@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Mediatek WSD Upstream
- <wsd_upstream@mediatek.com>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou
- <loda.chou@mediatek.com>, Al Viro <viro@zeniv.linux.org.uk>
-Subject: [PATCH v2] usb: gadget: f_fs: try to fix AIO issue under ARM 64 bit
- TAGGED mode
-Date: Sun, 23 Feb 2020 23:49:07 +0800
-Message-ID: <1582472947-22471-1-git-send-email-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
+ id 1j5zwE-00085Q-QR; Sun, 23 Feb 2020 22:41:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CXyh43UPlYmYkmfc9X6wv+/O9nzahIws3Gd/A2Tj8pS9DTNpjFn73yHkLa8M/0EK3DulLQVrpAdQCTtvz5Wldzz7VVCglZa4JNp6juHjV4W0+3wp+7a5cOiRHj6zLfixXVsUqbVPfQrT+iLnhmTCcWoG16iSy2kPINa/FnbhykjVHoM9blrUBu3wco++sND3SmRRACBX6FFkZMlmnkG24HX5QMJeDK0ecF8Abwdg9O68jun+NU7wgupwSF229Sp8QQnzjxX8QYgLdjGd7NhIVjrwOKwLFHdPrBE+C2nM0dXqHb/NgWNf0zJ1gL+Kwct9+VXZ4kqfDzwMJAv3yjV84w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=dAAltzuBU9UJ5UVuOceNimexpEo8PQ1CnszWESZVC2o=;
+ b=G2jg4RxiTLaw484044QtHMJYrXoZgJQbewLrzEYt3MdRElgPlGN9aCkHGqXcb99qQG7x76dqnZA64FG9TMhIxvs0P/wJnquJR5k02Jq63d42tD6bGDsmLgr788vTWJeHmQEDX3QupkmwdHZhbpSYG4rBQvuer3nawcNgLRqpLdwRD9+ODEM4bJ3nJcv73Pto/Gld0Lzcd8O7aRvNr8hfpAgR+YdLjQzC5dRj0eVVpyJkgX6i8cT8m3ARQZk8EJDhIRY80nT3VBv3EfZV6g1+Suws1Rl/RtJOIFp0LrGZ1IEYn2+TJWUa9xR4/Ve+1GDpKnIJnlegSy7BHYjcGE90kA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=micron.com; dmarc=pass action=none header.from=micron.com;
+ dkim=pass header.d=micron.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=micron.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=dAAltzuBU9UJ5UVuOceNimexpEo8PQ1CnszWESZVC2o=;
+ b=eO//hbqX661BScSWzyzNLDePtXlEQaqPlLZEPOTPWDfH9rBObX+FLT669z2cioD+TYXubUNCV4cGuzZRFTWZ4rbu7CUFvmgDEGMwMrC0ax7HsyqHwNGu/m0Bwjm/NdAfZSLN4tSmfJR2NjoVtevCL3AUE69TNs1JUb1k1klbRM8=
+Received: from BN7PR08MB5684.namprd08.prod.outlook.com (2603:10b6:408:35::23)
+ by BN7PR08MB3955.namprd08.prod.outlook.com (2603:10b6:406:89::25)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2750.21; Sun, 23 Feb
+ 2020 22:41:23 +0000
+Received: from BN7PR08MB5684.namprd08.prod.outlook.com
+ ([fe80::589d:e16:907b:5135]) by BN7PR08MB5684.namprd08.prod.outlook.com
+ ([fe80::589d:e16:907b:5135%5]) with mapi id 15.20.2750.021; Sun, 23 Feb 2020
+ 22:41:23 +0000
+From: "Bean Huo (beanhuo)" <beanhuo@micron.com>
+To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
+ <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
+ <martin.petersen@oracle.com>, "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "jejb@linux.ibm.com"
+ <jejb@linux.ibm.com>
+Subject: RE: [EXT] [PATCH v2 1/1] scsi: ufs: ufs-mediatek: add waiting time
+ for reference clock
+Thread-Topic: [EXT] [PATCH v2 1/1] scsi: ufs: ufs-mediatek: add waiting time
+ for reference clock
+Thread-Index: AQHV5/SBWviNFUGBTUqMAMnr5wxS1KgpZDZw
+Date: Sun, 23 Feb 2020 22:41:22 +0000
+Message-ID: <BN7PR08MB568451F1637CFCB77843745FDBEF0@BN7PR08MB5684.namprd08.prod.outlook.com>
+References: <20200220134848.8807-1-stanley.chu@mediatek.com>
+ <20200220134848.8807-2-stanley.chu@mediatek.com>
+In-Reply-To: <20200220134848.8807-2-stanley.chu@mediatek.com>
+Accept-Language: en-150, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-dg-ref: PG1ldGE+PGF0IG5tPSJib2R5LnR4dCIgcD0iYzpcdXNlcnNcYmVhbmh1b1xhcHBkYXRhXHJvYW1pbmdcMDlkODQ5YjYtMzJkMy00YTQwLTg1ZWUtNmI4NGJhMjllMzViXG1zZ3NcbXNnLTliOTJjMjAzLTU2OGQtMTFlYS04YjhjLWRjNzE5NjFmOWRkM1xhbWUtdGVzdFw5YjkyYzIwNS01NjhkLTExZWEtOGI4Yy1kYzcxOTYxZjlkZDNib2R5LnR4dCIgc3o9IjIyMyIgdD0iMTMyMjY5NzEyNzk4OTg2MTk3IiBoPSJ1WHZyRXlYQVZxb0owVzkzRmdXUVdRN2Z6UXM9IiBpZD0iIiBibD0iMCIgYm89IjEiIGNpPSJjQUFBQUVSSFUxUlNSVUZOQ2dVQUFIQUFBQURWTCsxZG11clZBYVNxaC85aGpDRlhwS3FILzJHTUlWY0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUJBQUFCQUFBQTFRR0tzQUFBQUFBQUFBQUFBQUFBQUE9PSIvPjwvbWV0YT4=
+x-dg-rorf: true
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=beanhuo@micron.com; 
+x-originating-ip: [165.225.86.144]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 33f06e2f-9150-46c2-06cb-08d7b8b18261
+x-ms-traffictypediagnostic: BN7PR08MB3955:|BN7PR08MB3955:|BN7PR08MB3955:
+x-microsoft-antispam-prvs: <BN7PR08MB39558E644E5D59DF4E47577EDBEF0@BN7PR08MB3955.namprd08.prod.outlook.com>
+x-ms-exchange-transport-forked: True
+x-ms-oob-tlc-oobclassifiers: OLM:400;
+x-forefront-prvs: 0322B4EDE1
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(4636009)(396003)(136003)(346002)(39860400002)(376002)(366004)(189003)(199004)(71200400001)(33656002)(64756008)(316002)(66556008)(7416002)(5660300002)(66446008)(52536014)(9686003)(7696005)(76116006)(55016002)(81166006)(8936002)(26005)(186003)(2906002)(86362001)(4326008)(110136005)(66476007)(558084003)(66946007)(54906003)(6506007)(81156014)(8676002)(55236004)(478600001);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:BN7PR08MB3955;
+ H:BN7PR08MB5684.namprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: micron.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: UzpknYlBAlnXG2qm3fgFqqtUpBPjV4czMx//ukw6QPZUMLxwhp6FMx7dW+uITzv7Vhe7aUWm0cYiYK7OHAoR6TP2XFwRkJUQhe2nWeIu/keuxhdAiRJd/McPWT2DonHMOmTPSNKov+HtJA2QouNtldArZ8KUqhb8D7KC7AU0bnqNYpImbUVB5yfkmS4DBkco5WWWt/9SDmYIE/YXxT1N7yro8qCkStyrwLf/aQ3N5I2cm4ilR7NSYw3+rw5O639lxtH/LNYzoo9jcfFX+PSOMc4ZFQwN4ZjmjRdijJcCD+3V4ScytdyBBL945IFtd51te97j1EOtUL7nX+SS6sFv3KS5HJHAWWBs5HfxnAfvhF5SRRUo+eZtaDEDjcXcsh0FUBvZBIqeRBi59Zpv19hkbVBba6uYOY072C+GeItGJBt1a5y8s8Nuy8PlFiiFuelf
+x-ms-exchange-antispam-messagedata: YWTTfKBUOBX+OIirWfp3dMhqNnl8An58L1j5P/Rx1RUlAYx8XkqSUYs2QkQ7wTTlAJmiTUdXUEtxUgmLwd1TYRpuatKPBoSprmmaftA+hFTyHMpn8cCXGOmxukCt2ySYyesC9LIO10zZrwlkla2CXw==
 MIME-Version: 1.0
-X-MTK: N
+X-OriginatorOrg: micron.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 33f06e2f-9150-46c2-06cb-08d7b8b18261
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Feb 2020 22:41:22.8825 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: f38a5ecd-2813-4862-b11b-ac1d563c806f
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: VakhtzpJ9WyriwznLlhRdvwG4I+3LYZNm02SAcgCi8H0t8NP72P0iJ7rPts/U9tMem7E5G3zC7fQulnSkeg6iw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR08MB3955
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200223_074920_155955_E05E7498 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20200223_144126_939716_035208C1 
+X-CRM114-Status: UNSURE (   3.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,71 +130,27 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: "bvanassche@acm.org" <bvanassche@acm.org>,
+ "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
+ "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
+ "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "cang@codeaurora.org" <cang@codeaurora.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This issue was found when adbd trying to open functionfs with AIO mode.
-Usually, we need to set "setprop sys.usb.ffs.aio_compat 0" to enable
-adbd with AIO mode on Android.
 
-When adbd is opening functionfs, it will try to read 24 bytes at the
-fisrt read I/O control. If this reading has been failed, adbd will
-try to send FUNCTIONFS_CLEAR_HALT to functionfs. When adbd is in AIO
-mode, functionfs will be acted with asyncronized I/O path. After the
-successful read transfer has been completed by gadget hardware, the
-following series of functions will be called.
-  ffs_epfile_async_io_complete() -> ffs_user_copy_worker() ->
-    copy_to_iter() -> _copy_to_iter() -> copyout() ->
-    iterate_and_advance() -> iterate_iovec()
+> 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Bean Huo <beanhuo@micron.com>
 
-Adding debug trace to these functions, it has been found that in
-copyout(), access_ok() will check if the user space address is valid
-to write. However if CONFIG_ARM64_TAGGED_ADDR_ABI is enabled, adbd
-always passes user space address start with "0x3C" to gdaget's AIO
-blocks. This tagged address will cause access_ok() check always fail.
-Which causes later calculation in iterate_iovec() turn zero.
-Copyout() won't copy data to userspace since the length to be copied
-"v.iov_len" will be zero. Finally leads ffs_copy_to_iter() always return
--EFAULT, causes adbd cannot open functionfs and send
-FUNCTIONFS_CLEAR_HALT.
-
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
----
-Changes for v2:
-  - Fix build error for 32-bit load. An #if defined(CONFIG_ARM64) still need
-    for avoiding undeclared defines.
-
- drivers/usb/gadget/function/f_fs.c |    5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/drivers/usb/gadget/function/f_fs.c b/drivers/usb/gadget/function/f_fs.c
-index ce1d023..728c260 100644
---- a/drivers/usb/gadget/function/f_fs.c
-+++ b/drivers/usb/gadget/function/f_fs.c
-@@ -35,6 +35,7 @@
- #include <linux/mmu_context.h>
- #include <linux/poll.h>
- #include <linux/eventfd.h>
-+#include <linux/thread_info.h>
- 
- #include "u_fs.h"
- #include "u_f.h"
-@@ -826,6 +827,10 @@ static void ffs_user_copy_worker(struct work_struct *work)
- 	if (io_data->read && ret > 0) {
- 		mm_segment_t oldfs = get_fs();
- 
-+#if defined(CONFIG_ARM64)
-+		if (IS_ENABLED(CONFIG_ARM64_TAGGED_ADDR_ABI))
-+			set_thread_flag(TIF_TAGGED_ADDR);
-+#endif
- 		set_fs(USER_DS);
- 		use_mm(io_data->mm);
- 		ret = ffs_copy_to_iter(io_data->buf, ret, &io_data->data);
--- 
-1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
