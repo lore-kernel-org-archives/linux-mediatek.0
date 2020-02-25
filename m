@@ -2,78 +2,81 @@ Return-Path: <SRS0=J0Vt=4N=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 125EFC35DF5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 09:41:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C62C5C35DF5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 09:41:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C19C3218AC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 09:41:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9B2CA218AC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 09:41:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GgALHLCH";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=armlinux.org.uk header.i=@armlinux.org.uk header.b="pFGy7DwY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C19C3218AC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=armlinux.org.uk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iXdIypgN";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="pFsy1pqO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9B2CA218AC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:To
-	:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bKr/c3OCKdQEZJcyoeQVEqB7NpiJfSfKEj6J5+Eahvc=; b=GgALHLCHabysxc
-	cvkz/J6jSyWg77oFF0BP4gf6w5t9Ep8cf29EqXAzS8ZLWG0zV5i9do/h+NlH+KTJjcf4smT+OEkaD
-	hnMHtjgFPpFg3XPxwQKoK8m8+KEIGYOclzebSwRT9k/Cw+zS76gU6AL1ELjx3NOQMvz5BWk6aIQdh
-	DzSGGzBps0Byrx3J6qobazJXaRUdAj28WBZA/taCMscgm2tOiD0RR6UbIYbpXhEm2vXJtQ7Sf2qwp
-	/zt63ZV1DDU/ZJTtVVZClG5ygxvPOKBo7aLZ8ku7VfloHNA6yYoXUZNE/epIpkLp+X7H1hRXHtNU0
-	mwp37T3uYYEE3shBCtzg==;
+	List-Owner; bh=issPeNI6M2OCfHhvQdcW4VbqNy7MTqQTjfl8ye8ZaQU=; b=iXdIypgNfH0hsS
+	ap+g2F1vM/ca2DBTCr3Sd46+e9ck0VOjneB3C7PSd4422urw5GU5uek6Lrar0Ss5o4Hs6+lIdb4OA
+	pYOthdqd9VoRYPEFAoCGiqbASFyon4vqBes1hPMlpWJMXDpCYWm4pWbUN+8Xzk9z/KODX7Qe2Qm6K
+	p3+WwGOdenmbPVexPB1nhy6mX06W0k0EIlD4PH0igxynFxNQ0s1aahrQv6b+apuAHErt6l453a+1j
+	e7d+VvlW/4VidElMDTw1jVLbwtk55lDT0xMEAe6bbf4uTyX6mA2B/nyUKXKXy0dBoBWQHvb8UaRUU
+	G+hkhd4pmmVGBlUoAXbQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6WiX-0007Sj-4R; Tue, 25 Feb 2020 09:41:29 +0000
-Received: from pandora.armlinux.org.uk
- ([2001:4d48:ad52:3201:214:fdff:fe10:1be6])
+	id 1j6Wia-0007Wt-LD; Tue, 25 Feb 2020 09:41:32 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6WiJ-0006zN-3A; Tue, 25 Feb 2020 09:41:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
- Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
- In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=jiP34lO1U2EOjRP+R8rbkehhBwrfBY+V5xaU3X9MBpI=; b=pFGy7DwYmkP+2TZ9k50w3+B69t
- hepkfRWTXum/qfGMv8o6UDch9kkyXDdtYGaQjWxGUy6G+hiaQ4ZxgePy/nOKTFJ5Upmd/QR20Cv4J
- vzBp4B+H9QUpgU5hzpcDtbYS3u+AWPz94XDDXcAVgX6D0WIK0wGbaL65hof9h/Wk0g8dViWJecQwx
- SLB45vAjEZOvBVVBHvaYRuZJMLxoaymwxmnhIQHvpeITqmHyLI3hYA63dN6oRa16r+ZT5kVS6/hgY
- vylfJ5lIf0DBAMTHoLK7QnRZAUz8HwPyWgXrvUC7tPRm+dzmvJ7cJhvw+v5kPZza5eF3iw0yybE6j
- pWPFV60Q==;
-Received: from e0022681537dd.dyn.armlinux.org.uk
- ([2001:4d48:ad52:3201:222:68ff:fe15:37dd]:51286 helo=rmk-PC.armlinux.org.uk)
- by pandora.armlinux.org.uk with esmtpsa
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <rmk@armlinux.org.uk>)
- id 1j6WgM-0008PS-Ld; Tue, 25 Feb 2020 09:39:15 +0000
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.92)
- (envelope-from <rmk@armlinux.org.uk>)
- id 1j6WgG-0000TJ-CC; Tue, 25 Feb 2020 09:39:08 +0000
-In-Reply-To: <20200225093703.GS25745@shell.armlinux.org.uk>
-References: <20200225093703.GS25745@shell.armlinux.org.uk>
-From: Russell King <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- Heiner Kallweit <hkallweit1@gmail.com>
-Subject: [PATCH net-next 5/8] net: dpaa2-mac: use resolved link config in
- mac_link_up()
+ id 1j6WiL-0007Gf-C0; Tue, 25 Feb 2020 09:41:18 +0000
+X-UUID: ee77cac5bfbd43f79e65540a7a9406b0-20200225
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=EOZhVfNB0b5LZMk1Mx0eD9SqOovmQbwT9yhV2ijRMxs=; 
+ b=pFsy1pqO4Dtq3JvvcUMTKGTAyEeu4oBIzNcp2bcx3LSkKQDB5R5y4IpGjqqd2WORAte90j9t7m7hB1QqNnsrNEQH9VFEadrX8CmtBI/eeOEJdkmdF8hYYJSYJ7kKf/YKt4ODPEnFwba0Jd/3/sjneyENUpQ+76EwmSNASDOsbRg=;
+X-UUID: ee77cac5bfbd43f79e65540a7a9406b0-20200225
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <jitao.shi@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1063809206; Tue, 25 Feb 2020 01:41:12 -0800
+Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 25 Feb 2020 01:41:10 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
+ (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Tue, 25 Feb 2020 17:39:48 +0800
+Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
+ MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1395.4 via Frontend Transport; Tue, 25 Feb 2020 17:39:48 +0800
+From: Jitao Shi <jitao.shi@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
+ <linux-kernel@vger.kernel.org>
+Subject: [PATCH v8 3/7] dt-bindings: display: mediatek: control dpi pins mode
+ to avoid leakage
+Date: Tue, 25 Feb 2020 17:40:53 +0800
+Message-ID: <20200225094057.120144-4-jitao.shi@mediatek.com>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20200225094057.120144-1-jitao.shi@mediatek.com>
+References: <20200225094057.120144-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-Message-Id: <E1j6WgG-0000TJ-CC@rmk-PC.armlinux.org.uk>
-Date: Tue, 25 Feb 2020 09:39:08 +0000
+X-TM-SNTS-SMTP: A6156C3D769845A20D846C6BE7DE540963C817F1ACD04927F075C1E510C863D62000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200225_014115_575527_0D399F56 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20200225_014117_429206_F1F81761 
+X-CRM114-Status: UNSURE (   7.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,145 +88,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-doc@vger.kernel.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Ioana Ciornei <ioana.ciornei@nxp.com>,
- linux-stm32@st-md-mailman.stormreply.com, Jonathan Corbet <corbet@lwn.net>,
- Michal Simek <michal.simek@xilinx.com>, Jose Abreu <joabreu@synopsys.com>,
- Jakub Kicinski <kuba@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Alexandre Torgue <alexandre.torgue@st.com>,
- Hauke Mehrtens <hauke@hauke-m.de>,
- Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
- linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Felix Fietkau <nbd@nbd.name>
+Cc: devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>,
+ srv_heupstream@mediatek.com, huijuan.xie@mediatek.com, stonea168@163.com,
+ cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org,
+ bibby.hsieh@mediatek.com, ck.hu@mediatek.com, yingjoe.chen@mediatek.com,
+ eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert the DPAA2 ethernet driver to use the finalised link parameters
-in mac_link_up() rather than the parameters in mac_config(), which are
-more suited to the needs of the DPAA2 MC firmware than those available
-via mac_config().
+Add property "pinctrl-names" to swap pin mode between gpio and dpi mode. Set
+pin mode to gpio oupput-low to avoid leakage current when dpi disable.
 
-Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 ---
- .../net/ethernet/freescale/dpaa2/dpaa2-mac.c  | 54 +++++++++++--------
- .../net/ethernet/freescale/dpaa2/dpaa2-mac.h  |  1 +
- 2 files changed, 33 insertions(+), 22 deletions(-)
+ .../devicetree/bindings/display/mediatek/mediatek,dpi.txt  | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c b/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c
-index 3a75c5b58f95..3ee236c5fc37 100644
---- a/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c
-+++ b/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c
-@@ -123,35 +123,16 @@ static void dpaa2_mac_config(struct phylink_config *config, unsigned int mode,
- 	struct dpmac_link_state *dpmac_state = &mac->state;
- 	int err;
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
+index 58914cf681b8..a7b1b8bfb65e 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
+@@ -17,6 +17,10 @@ Required properties:
+   Documentation/devicetree/bindings/graph.txt. This port should be connected
+   to the input port of an attached HDMI or LVDS encoder chip.
  
--	if (state->speed != SPEED_UNKNOWN)
--		dpmac_state->rate = state->speed;
--
--	if (state->duplex != DUPLEX_UNKNOWN) {
--		if (!state->duplex)
--			dpmac_state->options |= DPMAC_LINK_OPT_HALF_DUPLEX;
--		else
--			dpmac_state->options &= ~DPMAC_LINK_OPT_HALF_DUPLEX;
--	}
--
- 	if (state->an_enabled)
- 		dpmac_state->options |= DPMAC_LINK_OPT_AUTONEG;
- 	else
- 		dpmac_state->options &= ~DPMAC_LINK_OPT_AUTONEG;
- 
--	if (state->pause & MLO_PAUSE_RX)
--		dpmac_state->options |= DPMAC_LINK_OPT_PAUSE;
--	else
--		dpmac_state->options &= ~DPMAC_LINK_OPT_PAUSE;
--
--	if (!!(state->pause & MLO_PAUSE_RX) ^ !!(state->pause & MLO_PAUSE_TX))
--		dpmac_state->options |= DPMAC_LINK_OPT_ASYM_PAUSE;
--	else
--		dpmac_state->options &= ~DPMAC_LINK_OPT_ASYM_PAUSE;
--
- 	err = dpmac_set_link_state(mac->mc_io, 0,
- 				   mac->mc_dev->mc_handle, dpmac_state);
- 	if (err)
--		netdev_err(mac->net_dev, "dpmac_set_link_state() = %d\n", err);
-+		netdev_err(mac->net_dev, "%s: dpmac_set_link_state() = %d\n",
-+			   __func__, err);
- }
- 
- static void dpaa2_mac_link_up(struct phylink_config *config,
-@@ -165,10 +146,37 @@ static void dpaa2_mac_link_up(struct phylink_config *config,
- 	int err;
- 
- 	dpmac_state->up = 1;
++Optional properties:
++- pinctrl-names: Contain "gpiomode" and "dpimode".
++  pinctrl-names see Documentation/devicetree/bindings/pinctrlpinctrl-bindings.txt
 +
-+	if (mac->if_link_type == DPMAC_LINK_TYPE_PHY) {
-+		/* If the DPMAC is configured for PHY mode, we need
-+		 * to pass the link parameters to the MC firmware.
-+		 */
-+		dpmac_state->rate = speed;
-+
-+		if (duplex == DUPLEX_HALF)
-+			dpmac_state->options |= DPMAC_LINK_OPT_HALF_DUPLEX;
-+		else if (duplex == DUPLEX_FULL)
-+			dpmac_state->options &= ~DPMAC_LINK_OPT_HALF_DUPLEX;
-+
-+		/* This is lossy; the firmware really should take the pause
-+		 * enablement status rather than pause/asym pause status.
-+		 */
-+		if (rx_pause)
-+			dpmac_state->options |= DPMAC_LINK_OPT_PAUSE;
-+		else
-+			dpmac_state->options &= ~DPMAC_LINK_OPT_PAUSE;
-+
-+		if (rx_pause ^ tx_pause)
-+			dpmac_state->options |= DPMAC_LINK_OPT_ASYM_PAUSE;
-+		else
-+			dpmac_state->options &= ~DPMAC_LINK_OPT_ASYM_PAUSE;
-+	}
-+
- 	err = dpmac_set_link_state(mac->mc_io, 0,
- 				   mac->mc_dev->mc_handle, dpmac_state);
- 	if (err)
--		netdev_err(mac->net_dev, "dpmac_set_link_state() = %d\n", err);
-+		netdev_err(mac->net_dev, "%s: dpmac_set_link_state() = %d\n",
-+			   __func__, err);
- }
+ Example:
  
- static void dpaa2_mac_link_down(struct phylink_config *config,
-@@ -241,6 +249,8 @@ int dpaa2_mac_connect(struct dpaa2_mac *mac)
- 		goto err_close_dpmac;
- 	}
+ dpi0: dpi@1401d000 {
+@@ -27,6 +31,9 @@ dpi0: dpi@1401d000 {
+ 		 <&mmsys CLK_MM_DPI_ENGINE>,
+ 		 <&apmixedsys CLK_APMIXED_TVDPLL>;
+ 	clock-names = "pixel", "engine", "pll";
++	pinctrl-names = "gpiomode", "dpimode";
++	pinctrl-0 = <&dpi_pin_gpio>;
++	pinctrl-1 = <&dpi_pin_func>;
  
-+	mac->if_link_type = attr.link_type;
-+
- 	dpmac_node = dpaa2_mac_get_node(attr.id);
- 	if (!dpmac_node) {
- 		netdev_err(net_dev, "No dpmac@%d node found.\n", attr.id);
-diff --git a/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.h b/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.h
-index 4da8079b9155..2130d9c7d40e 100644
---- a/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.h
-+++ b/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.h
-@@ -20,6 +20,7 @@ struct dpaa2_mac {
- 	struct phylink_config phylink_config;
- 	struct phylink *phylink;
- 	phy_interface_t if_mode;
-+	enum dpmac_link_type if_link_type;
- };
- 
- bool dpaa2_mac_is_type_fixed(struct fsl_mc_device *dpmac_dev,
+ 	port {
+ 		dpi0_out: endpoint {
 -- 
-2.20.1
-
-
+2.21.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
