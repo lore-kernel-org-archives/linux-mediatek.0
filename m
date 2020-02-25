@@ -5,19 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27C92C35DF8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 06:47:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 122E0C35DF8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 06:47:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F13042176D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 06:47:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CF8E521556
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 06:47:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="arhBIXbP";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="K0cJVJjF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F13042176D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GEb5ZBOA";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="eALK+AzO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CF8E521556
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +27,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sq8xsVeACKFyhp3AVCGIZkhUvxcY2VNogD4efJDrQBM=; b=arhBIXbPzBnBwm
-	Wz6TvKLPn+e+2wYMXpwwP1Y9ZGAOf1NAlKMBlxz1xzB/8mrtx3QYAL15QF/0RMlD6lWlR3jPCY3JB
-	NBLP2dLk+DzzeF2tXm9sAL5vJERBUDoYV9NaUfRTExXkEpdgLaC2Rc1CqncLiohDfZ0VITuWSkP//
-	dqwPoG4oyBuOOZ/ThYIuKFpgHrWQn9nb5fA04mOLR6MO/8/YuQz+LdWtyjlF9Hr/Ul9HKSP1/8Yh2
-	68AcW/T3iU413lRhY2rUwXUEnvL/VSWyGTLpG+3ZlrblClyW/QMgRxDQ1P7S6kCKQCwDmCWE772oj
-	bvkK8+dczfZbEJPtvY6g==;
+	List-Owner; bh=TsrdDOvJM4lkVlWPQDTqLUe1qNFMzD12hSRn1rAN6a8=; b=GEb5ZBOAmKK/61
+	7YXmRmrbtI05M9RhfX+awLQC06c50JjlZro1VVTqZ28TjHZluOeg84O1VVE+pDSqpFim8MYvzrytc
+	xoDXZfaA6kORdXnK2c6IDg91b655zjdMMaMkfryErOs8aQWpRkxQL0yqKpdHazRs2ZC4Wza5qrBt4
+	uE0X31WKvtleGPbaJtA42BxOBWQR1tqGYwF6VY4z9XH04m4jXhx6MGm7mVU89RabfrJwV9E+JMpLj
+	J5UPhLX+hhMHJZzZu0sr1Rpi618hXeEn5aE7m6UGHNVHZ4Ksy5G3dibeKKOa29wv0Czv+Hkmltekb
+	0eouTGvyjnasum82Lr0Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6Tzf-0005y7-BO; Tue, 25 Feb 2020 06:46:59 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1j6U0I-0006b0-Pd; Tue, 25 Feb 2020 06:47:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6Tzc-0005wM-Re; Tue, 25 Feb 2020 06:46:58 +0000
-X-UUID: 4770f55765a44380a90e361ff2e10a0b-20200224
+ id 1j6Tze-0005wP-4r; Tue, 25 Feb 2020 06:46:59 +0000
+X-UUID: ba4c0f8539854c86bfcd5b294ade7d2b-20200224
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=XR2ppAD5uxrVIqeYRVReyXmjp0MHBUPGhrr7FaNU7Hc=; 
- b=K0cJVJjFRtuJFmX01fuH+CSx0tV2+29+DPcI+ZK7SmZQsget8GqdMXDfbOLKq3uOUrAxEXI5S0m2WjM4CcZPtWg/Gu8wNrokrtzIclvcmEik+20RKR+tzrzyig3yYTx6dM9sVfb9opjbvNCgdXrdbs6LLaPVMqETFkDKcjLbJlg=;
-X-UUID: 4770f55765a44380a90e361ff2e10a0b-20200224
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=ah93O+SRvsLWOuwyTs14lXjM9jwFW/4/KiNPMynf+hs=; 
+ b=eALK+AzOn6zcq9t4LsQPV7Z7W+m6XoFD+kyabPd2LALvrqjF3F4uNU1u/p45qgSsIgyxvjZdI/NDYxEFReP3j+tRxpPgsK/F4eB9kytNpzD960DR4v9WfXdlSy8Sfs5UbqdVlKwkzV2Gc1sPHi9yAoWoDxFf7G9XbZrFcx6o8ZQ=;
+X-UUID: ba4c0f8539854c86bfcd5b294ade7d2b-20200224
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jitao.shi@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1512895240; Mon, 24 Feb 2020 22:46:50 -0800
-Received: from MTKMBS33DR.mediatek.inc (172.27.6.106) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 24 Feb 2020 22:46:48 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33DR.mediatek.inc
- (172.27.6.106) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Tue, 25 Feb 2020 14:42:52 +0800
+ with ESMTP id 484187020; Mon, 24 Feb 2020 22:46:53 -0800
+Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 24 Feb 2020 22:47:54 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
+ (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Tue, 25 Feb 2020 14:45:28 +0800
 Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
  MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1395.4 via Frontend Transport; Tue, 25 Feb 2020 14:45:27 +0800
+ 15.0.1395.4 via Frontend Transport; Tue, 25 Feb 2020 14:45:30 +0800
 From: Jitao Shi <jitao.shi@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
  David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
  <linux-kernel@vger.kernel.org>
-Subject: [PATCH v7 2/4] drm/mediatek: dpi sample mode support
-Date: Tue, 25 Feb 2020 14:46:36 +0800
-Message-ID: <20200225064638.112282-3-jitao.shi@mediatek.com>
+Subject: [PATCH v7 4/4] drm/mediatek: set dpi pin mode to gpio low to avoid
+ leakage current
+Date: Tue, 25 Feb 2020 14:46:38 +0800
+Message-ID: <20200225064638.112282-5-jitao.shi@mediatek.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20200225064638.112282-1-jitao.shi@mediatek.com>
 References: <20200225064638.112282-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: F530CDD1AE990674843909EBD598AE1A7B6D596DFB8696F3C5AA950F8906ABF92000:8
+X-TM-SNTS-SMTP: 2CF4D1DC9803C00A81C421A3E9B72BDFE2CAB33A816F6AD4A1F35BE5DCC8070D2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200224_224656_905118_5E8D74EE 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20200224_224658_195761_9BE77C97 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,76 +98,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-DPI can sample on falling, rising or both edge.
-When DPI sample the data both rising and falling edge.
-It can reduce half data io pins.
+Config dpi pins mode to output and pull low when dpi is disabled.
+Aovid leakage current from some dpi pins (Hsync Vsync DE ... ).
 
 Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c | 18 ++++++++++++++++--
- 1 file changed, 16 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 33 ++++++++++++++++++++++++++++--
+ 1 file changed, 31 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 01fa8b8d763d..08299042dda7 100644
+index c3e631b93c2e..ca570040ffdf 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -75,6 +75,7 @@ struct mtk_dpi {
+@@ -10,7 +10,9 @@
+ #include <linux/kernel.h>
+ #include <linux/of.h>
+ #include <linux/of_device.h>
++#include <linux/of_gpio.h>
+ #include <linux/of_graph.h>
++#include <linux/pinctrl/consumer.h>
+ #include <linux/platform_device.h>
+ #include <linux/types.h>
+ 
+@@ -74,6 +76,9 @@ struct mtk_dpi {
+ 	enum mtk_dpi_out_yc_map yc_map;
  	enum mtk_dpi_out_bit_num bit_num;
  	enum mtk_dpi_out_channel_swap channel_swap;
++	struct pinctrl *pinctrl;
++	struct pinctrl_state *pins_gpio;
++	struct pinctrl_state *pins_dpi;
  	int refcount;
-+	u32 pclk_sample;
+ 	u32 pclk_sample;
  };
+@@ -387,6 +392,9 @@ static void mtk_dpi_power_off(struct mtk_dpi *dpi)
+ 	if (--dpi->refcount != 0)
+ 		return;
  
- static inline struct mtk_dpi *mtk_dpi_from_encoder(struct drm_encoder *e)
-@@ -348,6 +349,13 @@ static void mtk_dpi_config_disable_edge(struct mtk_dpi *dpi)
- 		mtk_dpi_mask(dpi, dpi->conf->reg_h_fre_con, 0, EDGE_SEL_EN);
- }
- 
-+static void mtk_dpi_enable_pclk_sample_dual_edge(struct mtk_dpi *dpi)
-+{
-+	mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE,
-+		     DDR_EN | DDR_4PHASE);
-+	mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, EDGE_SEL, EDGE_SEL);
-+}
++	if (dpi->pinctrl && dpi->pins_gpio)
++		pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
 +
- static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
- 					enum mtk_dpi_out_color_format format)
- {
-@@ -439,7 +447,8 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
- 	pll_rate = clk_get_rate(dpi->tvd_clk);
+ 	mtk_dpi_disable(dpi);
+ 	clk_disable_unprepare(dpi->pixel_clk);
+ 	clk_disable_unprepare(dpi->engine_clk);
+@@ -411,6 +419,9 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
+ 		goto err_pixel;
+ 	}
  
- 	vm.pixelclock = pll_rate / factor;
--	clk_set_rate(dpi->pixel_clk, vm.pixelclock);
-+	clk_set_rate(dpi->pixel_clk,
-+		     vm.pixelclock * (dpi->pclk_sample > 1 ? 2 : 1));
- 	vm.pixelclock = clk_get_rate(dpi->pixel_clk);
- 
- 	dev_dbg(dpi->dev, "Got  PLL %lu Hz, pixel clock %lu Hz\n",
-@@ -450,7 +459,8 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
- 	limit.y_bottom = 0x0010;
- 	limit.y_top = 0x0FE0;
- 
--	dpi_pol.ck_pol = MTK_DPI_POLARITY_FALLING;
-+	dpi_pol.ck_pol = dpi->pclk_sample == 1 ?
-+			 MTK_DPI_POLARITY_RISING : MTK_DPI_POLARITY_FALLING;
- 	dpi_pol.de_pol = MTK_DPI_POLARITY_RISING;
- 	dpi_pol.hsync_pol = vm.flags & DISPLAY_FLAGS_HSYNC_HIGH ?
- 			    MTK_DPI_POLARITY_FALLING : MTK_DPI_POLARITY_RISING;
-@@ -504,6 +514,8 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
- 	mtk_dpi_config_color_format(dpi, dpi->color_format);
- 	mtk_dpi_config_2n_h_fre(dpi);
- 	mtk_dpi_config_disable_edge(dpi);
-+	if (dpi->pclk_sample > 1)
-+		mtk_dpi_enable_pclk_sample_dual_edge(dpi);
- 	mtk_dpi_sw_reset(dpi, false);
- 
++	if (dpi->pinctrl && dpi->pins_dpi)
++		pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
++
+ 	mtk_dpi_enable(dpi);
  	return 0;
-@@ -689,6 +701,8 @@ static int mtk_dpi_probe(struct platform_device *pdev)
+ 
+@@ -716,8 +727,26 @@ static int mtk_dpi_probe(struct platform_device *pdev)
  
  	dpi->dev = dev;
  	dpi->conf = (struct mtk_dpi_conf *)of_device_get_match_data(dev);
-+	dpi->pclk_sample = of_property_read_u32_index(dev->of_node,
-+						      "pclk-sample");
+-	dpi->pclk_sample = of_property_read_u32_index(dev->of_node,
+-						      "pclk-sample");
++	of_property_read_u32_index(dev->of_node, "pclk-sample", 1,
++				   &dpi->pclk_sample);
++
++	dpi->pinctrl = devm_pinctrl_get(&pdev->dev);
++	if (IS_ERR(dpi->pinctrl))
++		dev_dbg(&pdev->dev, "Cannot find pinctrl!\n");
++
++	dpi->pins_gpio = pinctrl_lookup_state(dpi->pinctrl, "gpiomode");
++	if (IS_ERR(dpi->pins_gpio)) {
++		dpi->pins_gpio = NULL;
++		dev_dbg(&pdev->dev, "Cannot find pinctrl gpiomode!\n");
++	}
++	if (dpi->pinctrl && dpi->pins_gpio)
++		pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
++
++	dpi->pins_dpi = pinctrl_lookup_state(dpi->pinctrl, "dpimode");
++	if (IS_ERR(dpi->pins_dpi)) {
++		dpi->pins_dpi = NULL;
++		dev_dbg(&pdev->dev, "Cannot find pinctrl dpimode!\n");
++	}
  
  	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
  	dpi->regs = devm_ioremap_resource(dev, mem);
