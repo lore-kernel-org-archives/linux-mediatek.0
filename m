@@ -2,83 +2,80 @@ Return-Path: <SRS0=J0Vt=4N=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.7 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 22ED7C35E15
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 21:10:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B35B1C4BA04
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 23:24:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E7E3C2176D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 21:10:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8706720732
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 23:24:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Cn4q94Dy";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="g6gfdjSU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E7E3C2176D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QpR1M87o";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=armlinux.org.uk header.i=@armlinux.org.uk header.b="QamDRN5G"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8706720732
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=armlinux.org.uk
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xKdpQx6FGBfpyZw1D/JQH1hy0LmtSIZBUU7N0SCpqo0=; b=Cn4q94Dy1dO5uX
-	tRF63k2xIL06TkSculsf4ULxIaTSIsMb9bLtHCLIY3tYqsKcaPSeZyrI8xPyrDilCfHXyToFAk7wA
-	o6tucA72yJyKVOeGSoM2NhZOSOMZu5WsFA6x4Kon2eltSYpZhIvZ0Y0rAk1tjQ0Ozl+VZJ8bVBaHq
-	8FoDQhnXFRD2i/sRaKWvIDSR3C6F80JLdrgsDWliDKDmwdm8pbPZj1gatELmawp47TveXw7NlLOnb
-	nNLAd1RqIrtjj/COoxIuwSbXFpRBTkOCDhpmG1L+yRQwL2KCBt7aHwyi78phaob+oCLqin3oiEHKH
-	hyFm2WF/ia9+eNyCNBTg==;
+	List-Owner; bh=1xjNwoAFxiHKfOO6qgl7A3fQDrEgDQ+DX8XHQObFQP8=; b=QpR1M87o9nvYeF
+	GTYbCg2iTegbw178ZN6pH0ujm6SmHW8H8dSWn7DPnfO2PXGIM/Dqd3t5pH9jExQgwxvEMkF0DPpXs
+	b+XyjnJNkYY64soKFz2DQa11C13LxCHR8LSFHcZrl1lTjLqVNLFzis8v33Dvwlykoy4PrfcN8Dq4o
+	aamCRv4jEvh0Jcfra8x8Q2p+cgSM/of10mIGC1BPzP6GH2NPxoeukIv2/KgQR9QOkxyEbN2QTiqZQ
+	xbNNrnlhpMmmObXcqmTW99hyOzuzEP6xPpgMCCKihSVlgc76kUFcxAmqel6RnR/Et5DH8IpQRen20
+	Pn98RHVbeU9M3qIwbuDA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6hSx-00026G-BT; Tue, 25 Feb 2020 21:10:07 +0000
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542])
+	id 1j6jYh-0007TE-5z; Tue, 25 Feb 2020 23:24:11 +0000
+Received: from pandora.armlinux.org.uk
+ ([2001:4d48:ad52:3201:214:fdff:fe10:1be6])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6hSj-0001Px-5o; Tue, 25 Feb 2020 21:09:55 +0000
-Received: by mail-ed1-x542.google.com with SMTP id j17so1069202edp.3;
- Tue, 25 Feb 2020 13:09:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4ReknaT/FHBXByMXGGadMEzL/WYd/+sCy+KAJpp5ZwQ=;
- b=g6gfdjSUOo1daNt5JbO1OW+lwH1wDg11Aag/ldGmhkKkxyuiYo8+Th2fgxoAQQ4hXq
- TRfwhYem3PhxViqcWuVx+VibsoPJtyTVagbuspEnHeQYaT2u/LwJMeu3LbXXCD0Gb+P0
- kRLDLX6J05YQ2Y8hv4+QoX7W+8th93s38oDKyijo7aUk+0WA/Q35uUeEjwKyuKG1sJKb
- pHrmZYL+Ul2ujJ6ECXARZynFXSJa6Fk0D+GxbQh8iZeV9tRAEnb/IR6xJlRYeIfUjO0K
- m+I0aO92UvVW8NrmhRC7I6GzDK8oveynokyluJrJ/ckLFboCtOu9kXc5lv28q9nFAWd2
- pQcw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4ReknaT/FHBXByMXGGadMEzL/WYd/+sCy+KAJpp5ZwQ=;
- b=bbqq4ycP6dBZcdORGrH9aDG7bWm/8J8BlvIN5/FYt8jGT6uSZUfiFz/jEpb8M9WG+r
- cMMRO5+xjYPbujqALpYVdU+nMl5XWhdzcoBNkwvQ4LdVy0Vicho6VceIZwkLDqCjvWvP
- MPsZJs9DLtrMXGEH2ajKmVMeem6XSZjB+7IPyeAMRbfADfwgHidCK9AKNCEsxPDZ9Eiv
- AkTUv3nV7KS0og2WQIzkZ6d4duFnvh3PrAVzJzzPTc9ifVzzLW1XC2Zqu3C73Ee+cHk4
- L41W8Gv727VVTfv8cpoK9I0OQWhNxKnHwCSeeVPG/Q1liiKhM0WtztQKv3WxqRCuYeWN
- vXbA==
-X-Gm-Message-State: APjAAAXYp6GORKs1pXajOxiPgPNhslKP3iuCQ3CbGgVKysW4q2GTqalR
- f6kGN+8DE/+ONBphoBV9vq7gM3ZPtRCt4ILn5A0=
-X-Google-Smtp-Source: APXvYqyAzVm/wNR8w7wh+lAC7aHiC7zE7iGdWgqO+BLhvYvGS2dy2yiQw4bZhX/VBimWuHByQuf8RvIEP4SD4vbjH9A=
-X-Received: by 2002:a05:6402:128c:: with SMTP id
- w12mr909815edv.368.1582664986639; 
- Tue, 25 Feb 2020 13:09:46 -0800 (PST)
-MIME-Version: 1.0
+ id 1j6jYX-0007J5-JE; Tue, 25 Feb 2020 23:24:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=1NdWXTtNvNHAGbogy1ZnStwT/++LxICWN164u7rzZr0=; b=QamDRN5GaQqQYbFgMUSdUvUca
+ r3BzD0vUxPtIciEzVXv78nEdi9xBi0AsyCqmDkIcvJ3VLdQeP+OYByQEOa5O2ATfacbKFCcxH7WHP
+ ovBCb0GPhZmW0vzRGgT3XNKehBDXuxYq80Y59w4aGhrLgHjR3Uxi/M8coJZX1E25yPxPIyV3ml1Pp
+ tAZo8Coyep9kRHGO39lxQL8WuOYVz6Ovqtwf8OGZev5JspePoiWie/XOovtBX4wDAj68eyTRRhQty
+ eAjUHMEYKPHQKeWL36pLZe0p75WLRZVRV1iyv9dIBICj49Jp8dNSKhS5I0966IDmyv4hhe61oNASt
+ FP58W0TVQ==;
+Received: from shell.armlinux.org.uk
+ ([2002:4e20:1eda:1:5054:ff:fe00:4ec]:52756)
+ by pandora.armlinux.org.uk with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ (envelope-from <linux@armlinux.org.uk>)
+ id 1j6jXq-0003pP-Oq; Tue, 25 Feb 2020 23:23:18 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.92)
+ (envelope-from <linux@shell.armlinux.org.uk>)
+ id 1j6jXf-0007oA-TF; Tue, 25 Feb 2020 23:23:07 +0000
+Date: Tue, 25 Feb 2020 23:23:07 +0000
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+To: Vladimir Oltean <olteanv@gmail.com>
+Subject: Re: [PATCH net-next 2/8] net: dsa: propagate resolved link config
+ via mac_link_up()
+Message-ID: <20200225232307.GU25745@shell.armlinux.org.uk>
 References: <20200225093703.GS25745@shell.armlinux.org.uk>
  <E1j6Wg0-0000Ss-W7@rmk-PC.armlinux.org.uk>
-In-Reply-To: <E1j6Wg0-0000Ss-W7@rmk-PC.armlinux.org.uk>
-From: Vladimir Oltean <olteanv@gmail.com>
-Date: Tue, 25 Feb 2020 23:09:35 +0200
-Message-ID: <CA+h21hp8KCqhCasOAGz17k0eRteHVVYK-eANQmn4h443qv=2JQ@mail.gmail.com>
-Subject: Re: [PATCH net-next 2/8] net: dsa: propagate resolved link config via
- mac_link_up()
-To: Russell King <rmk+kernel@armlinux.org.uk>
+ <CA+h21hp8KCqhCasOAGz17k0eRteHVVYK-eANQmn4h443qv=2JQ@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CA+h21hp8KCqhCasOAGz17k0eRteHVVYK-eANQmn4h443qv=2JQ@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200225_130953_219633_1FF3C757 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20200225_152401_633818_2584FA56 
+X-CRM114-Status: GOOD (  16.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,38 +113,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Russell,
+On Tue, Feb 25, 2020 at 11:09:35PM +0200, Vladimir Oltean wrote:
+> Hi Russell,
+> 
+> On Tue, 25 Feb 2020 at 11:39, Russell King <rmk+kernel@armlinux.org.uk> wrote:
+> >
+> > Propagate the resolved link configuration down via DSA's
+> > phylink_mac_link_up() operation to allow split PCS/MAC to work.
+> >
+> > Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
+> > ---
+> >  drivers/net/dsa/b53/b53_common.c       | 4 +++-
+> >  drivers/net/dsa/b53/b53_priv.h         | 4 +++-
+> >  drivers/net/dsa/bcm_sf2.c              | 4 +++-
+> >  drivers/net/dsa/lantiq_gswip.c         | 4 +++-
+> >  drivers/net/dsa/mt7530.c               | 4 +++-
+> >  drivers/net/dsa/mv88e6xxx/chip.c       | 4 +++-
+> >  drivers/net/dsa/sja1105/sja1105_main.c | 4 +++-
+> >  include/net/dsa.h                      | 4 +++-
+> >  net/dsa/port.c                         | 3 ++-
+> >  9 files changed, 26 insertions(+), 9 deletions(-)
+> >
+> 
+> It looks like you missed the felix_phylink_mac_link_up() conversion in
+> this patch? (which also makes it fail to build, by the way, I'm
+> supposed the Kbuild robot didn't already jump)
+> Nonetheless, I've manually added the missing speed, duplex, tx_pause
+> and rx_pause parameters, and it appears to work as before.
+> Same for sja1105.
 
-On Tue, 25 Feb 2020 at 11:39, Russell King <rmk+kernel@armlinux.org.uk> wrote:
->
-> Propagate the resolved link configuration down via DSA's
-> phylink_mac_link_up() operation to allow split PCS/MAC to work.
->
-> Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
-> ---
->  drivers/net/dsa/b53/b53_common.c       | 4 +++-
->  drivers/net/dsa/b53/b53_priv.h         | 4 +++-
->  drivers/net/dsa/bcm_sf2.c              | 4 +++-
->  drivers/net/dsa/lantiq_gswip.c         | 4 +++-
->  drivers/net/dsa/mt7530.c               | 4 +++-
->  drivers/net/dsa/mv88e6xxx/chip.c       | 4 +++-
->  drivers/net/dsa/sja1105/sja1105_main.c | 4 +++-
->  include/net/dsa.h                      | 4 +++-
->  net/dsa/port.c                         | 3 ++-
->  9 files changed, 26 insertions(+), 9 deletions(-)
->
+Quite possibly; the patch was developed against 5.5 plus the phylink
+changes, but applied to net-next. Hmm, it seems my coccinelle script
+that detects .mac_link_up initialiser prototypes, but not the DSA
+equivalent using the old prototype.
 
-It looks like you missed the felix_phylink_mac_link_up() conversion in
-this patch? (which also makes it fail to build, by the way, I'm
-supposed the Kbuild robot didn't already jump)
-Nonetheless, I've manually added the missing speed, duplex, tx_pause
-and rx_pause parameters, and it appears to work as before.
-Same for sja1105.
+Thanks for pointing it out.
 
-Tested-by: Vladimir Oltean <vladimir.oltean@nxp.com>
-
-Regards,
--Vladimir
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+According to speedtest.net: 11.9Mbps down 500kbps up
 
 _______________________________________________
 Linux-mediatek mailing list
