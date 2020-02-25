@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A8D7C35DF5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 09:52:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 97DF6C35DF9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 09:52:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6A9C321744
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 09:52:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6D77F21D7E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 09:52:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bLusSTmj";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="oMujGb3S"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6A9C321744
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qiGzPNKH";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="emGqREFp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D77F21D7E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EqZeAUK+CuCzX4XjCIoWDVzJ3B1BbRl1T+plO/mXDGI=; b=bLusSTmj7ig6Qg
-	MpA7QJ3xpWBVcbm93eyqMnezg4o30aQ0grUSh/6MwC3lzXoDzK8is9uere2sFfeIdC65tEOigeixu
-	lMPPZuUlrtJg4HdazjuVEiM3r/3dVc/HEuYs4utINb5UKmfBLkeUeVAyptfHV88wMeLlJ7yhX8nGk
-	rV+ewY4E6fL47eOupqGHHb8ZL40DriJd7EDtFBNLu8eW97Li+2aH6pJZHdRAX9udUhr4PkfLkHn2d
-	4GSfBfc380d7gOdrhGKsG0j9zSt+GkPK8+yYCvLw8lMYu99NfjFpj8He8q4sQ+e0eBY12dPg31cbF
-	0Otl4tpati58tFz/o4xQ==;
+	List-Owner; bh=7Xb4xuW0YLYaiP8/+MUlgz1Q0qvfC9gYvEWoPMDRcIg=; b=qiGzPNKH5e8Qw2
+	jPbPiePE56RSaIFpjrnJJY2ZK2La9lSmXNlinVYS5Fo/oHiJn9+5Fc+2RmN4F6mwfXVrbJ9dYYxXo
+	hhGKyIHi+qnar7D/Xx6aVAQOX7JAZhBorjidbTccbU81MKtn9LdBLrTWIwMmHc0Hhe34Cb5ITsqFc
+	RC6Cgt7l1sPrYCoPZuLwDudNY2uidT3MTNmhtMeAIX1SC3zzthsJ4Sg7cTk/cFoMq9ZM/piJP3VP9
+	3PvKifpdUUyifdWZSpYE1tpxe+iyTiD660UBThE+DihFh+6ZxP/CDjQ7tWC7E3KRkP1TUa7C1nqRk
+	J4wPiJcK0opBMej94VqA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6Wsa-0005TB-3W; Tue, 25 Feb 2020 09:51:52 +0000
+	id 1j6Wsq-0005h0-Jj; Tue, 25 Feb 2020 09:52:08 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6Wrw-0004w5-GS; Tue, 25 Feb 2020 09:51:13 +0000
-X-UUID: 6d599ae381d84d0aa0a4ca5eb188c0d2-20200225
+ id 1j6Wrx-0004wK-9O; Tue, 25 Feb 2020 09:51:14 +0000
+X-UUID: dcda235933ef47a9bc653c603da64b1b-20200225
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=SptAmWhGbMwpUwsCfcOQSGD+SPMchRZi0lvDOYYWsPs=; 
- b=oMujGb3SSyeBTq1Ju5J+J1iJzTvOz4kFpAfvgeVSKWNPMhLdvuVWekW9KkJKaex53FFwhkDgqPvHOT+oOZPwQV+yh1uUUwds3huZ1BMif0awKq8gMHEKEwDIRmQDUFRBz3iXxH/3xvu+gxl1tARjcndRz8lh8GNVf2Bsjy5TevY=;
-X-UUID: 6d599ae381d84d0aa0a4ca5eb188c0d2-20200225
+ bh=vpMwFYeblnbEzKpu1idfOL1h4UHM1wXOHc33vObntLo=; 
+ b=emGqREFph7L5O1A3Vnf4P7ICO0mQmOm1h4ZNgVomyPgvaObXDi2Y63ndzqdHuxi6hcDSKrqJCQEOu6fYBusWTVL4pAK/5Yj0ilC3vvtaQ1zgyA1CCLXhxHO6p96h1G+at5NOA4yt1zZZ0F8f0Hh/u8+VzRtgTC7bodrk7I+uDdY=;
+X-UUID: dcda235933ef47a9bc653c603da64b1b-20200225
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jitao.shi@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1560914397; Tue, 25 Feb 2020 01:51:09 -0800
-Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
+ with ESMTP id 2053325226; Tue, 25 Feb 2020 01:51:09 -0800
+Received: from MTKMBS33DR.mediatek.inc (172.27.6.106) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 25 Feb 2020 01:42:18 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
- (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Tue, 25 Feb 2020 17:39:52 +0800
+ 15.0.1395.4; Tue, 25 Feb 2020 01:42:14 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33DR.mediatek.inc
+ (172.27.6.106) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Tue, 25 Feb 2020 17:37:12 +0800
 Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
  MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1395.4 via Frontend Transport; Tue, 25 Feb 2020 17:39:52 +0800
+ 15.0.1395.4 via Frontend Transport; Tue, 25 Feb 2020 17:39:47 +0800
 From: Jitao Shi <jitao.shi@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
  David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
  <linux-kernel@vger.kernel.org>
-Subject: [PATCH v8 6/7] drm/mediatek: add mt8183 dpi clock factor
-Date: Tue, 25 Feb 2020 17:40:56 +0800
-Message-ID: <20200225094057.120144-7-jitao.shi@mediatek.com>
+Subject: [PATCH v8 2/7] dt-bindings: display: mediatek: update dpi supported
+ chips
+Date: Tue, 25 Feb 2020 17:40:52 +0800
+Message-ID: <20200225094057.120144-3-jitao.shi@mediatek.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20200225094057.120144-1-jitao.shi@mediatek.com>
 References: <20200225094057.120144-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 0E7A7AB6CDEEC6653FCE6FDD180565FA6D554792D1548249266DF4F8E4C2FF9A2000:8
+X-TM-SNTS-SMTP: 66FD1CAB6D1707384966B68276A01628C642C498D34228350256DAE65D13C2212000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200225_015112_553136_45A6DBE3 
-X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-CacheID: sfid-20200225_015113_332058_64705062 
+X-CRM114-Status: UNSURE (   8.26  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -97,58 +98,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The factor depends on the divider of DPI in MT8183, therefore,
-we should fix this factor to the right and new one.
+Add descriptions about supported chips, including MT2701 & MT8173 &
+mt8183
 
 Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ .../devicetree/bindings/display/mediatek/mediatek,dpi.txt        | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index df598f87a40f..db3272f7a4c4 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -676,6 +676,16 @@ static unsigned int mt2701_calculate_factor(int clock)
- 		return 1;
- }
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
+index b6a7e7397b8b..58914cf681b8 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
+@@ -7,6 +7,7 @@ output bus.
  
-+static unsigned int mt8183_calculate_factor(int clock)
-+{
-+	if (clock <= 27000)
-+		return 8;
-+	else if (clock <= 167000)
-+		return 4;
-+	else
-+		return 2;
-+}
-+
- static const struct mtk_dpi_conf mt8173_conf = {
- 	.cal_factor = mt8173_calculate_factor,
- 	.reg_h_fre_con = 0xe0,
-@@ -687,6 +697,11 @@ static const struct mtk_dpi_conf mt2701_conf = {
- 	.edge_sel_en = true,
- };
- 
-+static const struct mtk_dpi_conf mt8183_conf = {
-+	.cal_factor = mt8183_calculate_factor,
-+	.reg_h_fre_con = 0xe0,
-+};
-+
- static int mtk_dpi_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-@@ -784,6 +799,9 @@ static const struct of_device_id mtk_dpi_of_ids[] = {
- 	{ .compatible = "mediatek,mt8173-dpi",
- 	  .data = &mt8173_conf,
- 	},
-+	{ .compatible = "mediatek,mt8183-dpi",
-+	  .data = &mt8183_conf,
-+	},
- 	{ },
- };
- 
+ Required properties:
+ - compatible: "mediatek,<chip>-dpi"
++  the supported chips are mt2701 , mt8173 and mt8183.
+ - reg: Physical base address and length of the controller's registers
+ - interrupts: The interrupt signal from the function block.
+ - clocks: device clocks
 -- 
 2.21.0
 _______________________________________________
