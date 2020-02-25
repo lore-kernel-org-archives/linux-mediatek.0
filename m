@@ -2,76 +2,77 @@ Return-Path: <SRS0=J0Vt=4N=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F1E9FC35DF5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 09:34:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D9DDCC35DF5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 09:38:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C16402176D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 09:34:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9B9852176D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 09:38:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RLAGtP+H";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qA3mC2yx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C16402176D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ONd3ikGO";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=armlinux.org.uk header.i=@armlinux.org.uk header.b="d/Q7do78"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9B9852176D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=armlinux.org.uk
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Qlx6Pq9K7y1WxKo7lYUeVaXT5HJlh22iFjAkCAqQ4/k=; b=RLAGtP+HvlzQJA
-	zhbRPMrSZOKwZjkxli38ECCWwPhRI2mu22jZHyNCvvOUYeU6d1JXClQ+R7HbpXOcp6LDL042NczPt
-	T9Er1T8IfWT319rZZe3J3xQukullZ1Ogx77bjnANOW536KJ0LutIj6pVpDEnMzlcQ/5dYRZnuYT5q
-	o/sThiHWWtw3szEAQrqXrAZJvCYFjm2ee8vxwpen9OM+RLpbIV0lu0P3m2yS39wyF/+7oVvar3ngH
-	lCcmGnM4JY8yKtBZaoLPJbZ6QnbDAJZwAH/oV42jHlGGiIn1GULUJXxZIX0V5upIfFAVFkRb/anr3
-	cKxZiDgRnE08bLaqn0VQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yheGCKup+mFvpq7cIeBB2JVq9ICearggaCQK7DnL+sY=; b=ONd3ikGOU/xjCr
+	Nd4BYOZcWck2CuQrlbpTf9p4dcPHAL3wYqjvwbm60dVuoxrOCXwFkmTcXi1YAvHUTa/6NpWpMzDud
+	dpuroSR/Ot1PGSALRVNugSEMbolVWcAL4fTLlYuOgEmWVuXeAYKwJhFKXFgSL0tadmC9AKbdHMHWF
+	TArgvtZknXPNZC0jDPsMNYhnt7v2+baYVR8QXuZ9xXqSUIYFAdB0DxrCWhySsgT1FdOXtkXy++9Ov
+	98GHll4zkV5EQJDua4xDU+kpSxJDyauCdGE1HWp+anDOKIl7P2eYxedN/6OkRATsXgLBu2HB9MQ5L
+	T9vlEMLdfGxJ4Pd3Kwxg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6Wbd-0003Mz-QJ; Tue, 25 Feb 2020 09:34:21 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1j6Wfa-00059A-8s; Tue, 25 Feb 2020 09:38:26 +0000
+Received: from pandora.armlinux.org.uk
+ ([2001:4d48:ad52:3201:214:fdff:fe10:1be6])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6WbZ-0003M4-5l; Tue, 25 Feb 2020 09:34:20 +0000
-X-UUID: aed5df1548404bfca0bfb866c1cd1a11-20200225
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=JeEC5O8xipDZ9SuDmxbr6QlkFs0WLiFE6a28FBx3yAs=; 
- b=qA3mC2yxMB6SygcRlzRMOunid/h/msgFn7q9EfYybwvsnVddVA8e/5Rbyl1ce8dsm12BVGf+sRYd0ZbMOdyKcFPjpckHBJ6fvrLIzPK5yPZA6jAc9TTdDGcO28Dby0/kRPvndC1UvYweYUztVghzl7LFWLknyV7m4Zox3zI02SU=;
-X-UUID: aed5df1548404bfca0bfb866c1cd1a11-20200225
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <michael.kao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 46452812; Tue, 25 Feb 2020 01:34:09 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 25 Feb 2020 01:35:11 -0800
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 25 Feb 2020 17:33:14 +0800
-Received: from [172.21.84.99] (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 25 Feb 2020 17:31:51 +0800
-Message-ID: <1582623246.27539.3.camel@mtksdccf07>
-Subject: Re: [PATCH v3,4/8] arm64: dts: mt8183: Configure CPU cooling
-From: Michael Kao <michael.kao@mediatek.com>
-To: Zhang Rui <rui.zhang@intel.com>
-Date: Tue, 25 Feb 2020 17:34:06 +0800
-In-Reply-To: <20200103064407.19861-5-michael.kao@mediatek.com>
-References: <20200103064407.19861-1-michael.kao@mediatek.com>
- <20200103064407.19861-5-michael.kao@mediatek.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1j6WfN-00051H-C3; Tue, 25 Feb 2020 09:38:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
+ Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=OgLcUsWl+TfcpKVPqX7tI0GqOaE8EAShX68S92kCpMU=; b=d/Q7do78YcrzGE7LMmEYudWqZ
+ mYDG2BK17749n1rsgAt5lWnGpf6PCujp3aoPmsFt0tuIN3NwTxCZ7MrLyVQ/QlQw87ewH5W2qI932
+ hLvDyBf83T+zBrBxVM0Zk+homMb7ziNqyDeFMjcpXoSNGharheYxgTttkXETRJu/ohz2ZFasXPl0Q
+ c5DnESzfVY2CbeBgC5AWLzJYp2v9kZ3lhEKCCjKyHPu6OHD2fRm3flNrYVaObebsvtTfhzFwJqNcn
+ w1bT04vior/wrkpM9ckAbUCgCMMN0hNyNUTvxR2IEClx5a3CUHj6tK3QY0xot2wcQpLb0Mgd8BXCZ
+ kEK0goFsA==;
+Received: from shell.armlinux.org.uk
+ ([2002:4e20:1eda:1:5054:ff:fe00:4ec]:52520)
+ by pandora.armlinux.org.uk with esmtpsa
+ (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
+ (envelope-from <linux@armlinux.org.uk>)
+ id 1j6Wei-0008OC-Ky; Tue, 25 Feb 2020 09:37:32 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.92)
+ (envelope-from <linux@shell.armlinux.org.uk>)
+ id 1j6WeF-0007KL-PX; Tue, 25 Feb 2020 09:37:03 +0000
+Date: Tue, 25 Feb 2020 09:37:03 +0000
+From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>
+Subject: [PATCH net-next 0/8] rework phylink interface for split MAC/PCS
+ support
+Message-ID: <20200225093703.GS25745@shell.armlinux.org.uk>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200225_013417_227155_F33CFA51 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20200225_013813_575205_019BA97E 
+X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,58 +84,85 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- srv_heupstream@mediatek.com, linux-pm@vger.kernel.org,
- Daniel Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org,
- Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
+Cc: linux-doc@vger.kernel.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Ioana Ciornei <ioana.ciornei@nxp.com>,
+ linux-stm32@st-md-mailman.stormreply.com, Jonathan Corbet <corbet@lwn.net>,
+ Michal Simek <michal.simek@xilinx.com>, Jose Abreu <joabreu@synopsys.com>,
+ Jakub Kicinski <kuba@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Alexandre Torgue <alexandre.torgue@st.com>,
+ Hauke Mehrtens <hauke@hauke-m.de>,
+ Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
+ linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>,
+ Felix Fietkau <nbd@nbd.name>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCAyMDIwLTAxLTAzIGF0IDE0OjQ0ICswODAwLCBNaWNoYWVsIEthbyB3cm90ZToNCj4g
-RnJvbTogTWF0dGhpYXMgS2FlaGxja2UgPG1rYUBjaHJvbWl1bS5vcmc+DQo+IA0KPiBBZGQgdHdv
-IHBhc3NpdmUgdHJpcCBwb2ludHMgYXQgNjjCsEMgYW5kIDg1wrBDIGZvciB0aGUgQ1BVIHRlbXBl
-cmF0dXJlLg0KPiANCj4gU2lnbmVkLW9mZi1ieTogTWF0dGhpYXMgS2FlaGxja2UgPG1rYUBjaHJv
-bWl1bS5vcmc+DQo+IFNpZ25lZC1vZmYtYnk6IE1pY2hhZWwgS2FvIDxtaWNoYWVsLmthb0BtZWRp
-YXRlay5jb20+DQo+IC0tLQ0KPiAgYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxODMu
-ZHRzaSB8IDU1ICsrKysrKysrKysrKysrKysrKysrKysrKw0KPiAgMSBmaWxlIGNoYW5nZWQsIDU1
-IGluc2VydGlvbnMoKykNCj4gDQo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21l
-ZGlhdGVrL210ODE4My5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxODMu
-ZHRzaQ0KPiBpbmRleCA2MzM3OGFlMTRhMTYuLjc4NTc1YzMxODNhNCAxMDA2NDQNCj4gLS0tIGEv
-YXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxODMuZHRzaQ0KPiArKysgYi9hcmNoL2Fy
-bTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE4My5kdHNpDQo+IEBAIC02MDksNiArNjA5LDYxIEBA
-DQo+ICAJCQkJcG9sbGluZy1kZWxheSA9IDwxMDAwPjsNCj4gIAkJCQl0aGVybWFsLXNlbnNvcnMg
-PSA8JnRoZXJtYWwgMD47DQo+ICAJCQkJc3VzdGFpbmFibGUtcG93ZXIgPSA8NTAwMD47DQo+ICsN
-Cj4gKwkJCQl0cmlwcyB7DQo+ICsJCQkJCXRocmVzaG9sZDogdHJpcC1wb2ludEAwIHsNCj4gKwkJ
-CQkJCXRlbXBlcmF0dXJlID0gPDY4MDAwPjsNCj4gKwkJCQkJCWh5c3RlcmVzaXMgPSA8MjAwMD47
-DQo+ICsJCQkJCQl0eXBlID0gInBhc3NpdmUiOw0KPiArCQkJCQl9Ow0KPiArDQo+ICsJCQkJCXRh
-cmdldDogdHJpcC1wb2ludEAxIHsNCj4gKwkJCQkJCXRlbXBlcmF0dXJlID0gPDg1MDAwPjsNCj4g
-KwkJCQkJCWh5c3RlcmVzaXMgPSA8MjAwMD47DQo+ICsJCQkJCQl0eXBlID0gInBhc3NpdmUiOw0K
-PiArCQkJCQl9Ow0KPiArDQo+ICsJCQkJCWNwdV9jcml0OiBjcHUtY3JpdCB7DQo+ICsJCQkJCQl0
-ZW1wZXJhdHVyZSA9IDwxMTUwMDA+Ow0KPiArCQkJCQkJaHlzdGVyZXNpcyA9IDwyMDAwPjsNCj4g
-KwkJCQkJCXR5cGUgPSAiY3JpdGljYWwiOw0KPiArCQkJCQl9Ow0KPiArCQkJCX07DQo+ICsNCj4g
-KwkJCQljb29saW5nLW1hcHMgew0KPiArCQkJCQltYXAwIHsNCj4gKwkJCQkJCXRyaXAgPSA8JnRh
-cmdldD47DQo+ICsJCQkJCQljb29saW5nLWRldmljZSA9IDwmY3B1MA0KPiArCQkJCQkJCVRIRVJN
-QUxfTk9fTElNSVQNCj4gKwkJCQkJCQlUSEVSTUFMX05PX0xJTUlUPiwNCj4gKwkJCQkJCQkJIDwm
-Y3B1MQ0KPiArCQkJCQkJCVRIRVJNQUxfTk9fTElNSVQNCj4gKwkJCQkJCQlUSEVSTUFMX05PX0xJ
-TUlUPiwNCj4gKwkJCQkJCQkJIDwmY3B1Mg0KPiArCQkJCQkJCVRIRVJNQUxfTk9fTElNSVQNCj4g
-KwkJCQkJCQlUSEVSTUFMX05PX0xJTUlUPiwNCj4gKwkJCQkJCQkJIDwmY3B1Mw0KPiArCQkJCQkJ
-CVRIRVJNQUxfTk9fTElNSVQNCj4gKwkJCQkJCQlUSEVSTUFMX05PX0xJTUlUPjsNCj4gKwkJCQkJ
-CWNvbnRyaWJ1dGlvbiA9IDwzMDcyPjsNCj4gKwkJCQkJfTsNCj4gKwkJCQkJbWFwMSB7DQo+ICsJ
-CQkJCQl0cmlwID0gPCZ0YXJnZXQ+Ow0KPiArCQkJCQkJY29vbGluZy1kZXZpY2UgPSA8JmNwdTQN
-Cj4gKwkJCQkJCQlUSEVSTUFMX05PX0xJTUlUDQo+ICsJCQkJCQkJVEhFUk1BTF9OT19MSU1JVD4s
-DQo+ICsJCQkJCQkJCSA8JmNwdTUNCj4gKwkJCQkJCQlUSEVSTUFMX05PX0xJTUlUDQo+ICsJCQkJ
-CQkJVEhFUk1BTF9OT19MSU1JVD4sDQo+ICsJCQkJCQkJCSA8JmNwdTYNCj4gKwkJCQkJCQlUSEVS
-TUFMX05PX0xJTUlUDQo+ICsJCQkJCQkJVEhFUk1BTF9OT19MSU1JVD4sDQo+ICsJCQkJCQkJCSA8
-JmNwdTcNCj4gKwkJCQkJCQlUSEVSTUFMX05PX0xJTUlUDQo+ICsJCQkJCQkJVEhFUk1BTF9OT19M
-SU1JVD47DQo+ICsJCQkJCQljb250cmlidXRpb24gPSA8MTAyND47DQo+ICsJCQkJCX07DQo+ICsJ
-CQkJfTsNCj4gIAkJCX07DQo+ICANCj4gIAkJCS8qIFRoZSB0enRzMSB+IHR6dHM2IGRvbid0IG5l
-ZWQgdG8gcG9sbGluZyAqLw0KDQpHZW50YWxseSByZW1pbmQsIGRvIHlvdSBoYXZlIGFueSBjb21t
-ZW50cz8NCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVk
-aWF0ZWsK
+Hi,
+
+The following series changes the phylink interface to allow us to
+better support split MAC / MAC PCS setups.  The fundamental change
+required for this turns out to be quite simple.
+
+Today, mac_config() is used for everything to do with setting the
+parameters for the MAC, and mac_link_up() is used to inform the
+MAC driver that the link is now up (and so to allow packet flow.)
+mac_config() also has had a few implementation issues, with folk
+who believe that members such as "speed" and "duplex" are always
+valid, where "link" gets used inappropriately, etc.
+
+With the proposed patches, all this changes subtly - but in a
+backwards compatible way at this stage.
+
+We pass the the full resolved link state (speed, duplex, pause) to
+mac_link_up(), and it is now guaranteed that these parameters to
+this function will always be valid (no more SPEED_UNKNOWN or
+DUPLEX_UNKNOWN here - unless phylink is fed with such things.)
+
+Drivers should convert over to using the state in mac_link_up()
+rather than configuring the speed, duplex and pause in the
+mac_config() method. The patch series includes a number of MAC
+drivers which I've thought have been easy targets - I've left the
+remainder as I think they need maintainer input. However, *all*
+drivers will need conversion for future phylink development.
+
+ Documentation/networking/sfp-phylink.rst          |  17 +++-
+ drivers/net/dsa/b53/b53_common.c                  |   4 +-
+ drivers/net/dsa/b53/b53_priv.h                    |   4 +-
+ drivers/net/dsa/bcm_sf2.c                         |   4 +-
+ drivers/net/dsa/lantiq_gswip.c                    |   4 +-
+ drivers/net/dsa/mt7530.c                          |   4 +-
+ drivers/net/dsa/mv88e6xxx/chip.c                  |  79 +++++++++++++----
+ drivers/net/dsa/sja1105/sja1105_main.c            |   4 +-
+ drivers/net/ethernet/cadence/macb.h               |   1 -
+ drivers/net/ethernet/cadence/macb_main.c          |  57 +++++++-----
+ drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c  |  61 ++++++++-----
+ drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.h  |   1 +
+ drivers/net/ethernet/marvell/mvneta.c             |  63 ++++++++-----
+ drivers/net/ethernet/marvell/mvpp2/mvpp2_main.c   | 102 +++++++++++++---------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c       |   7 +-
+ drivers/net/ethernet/stmicro/stmmac/stmmac_main.c |   4 +-
+ drivers/net/ethernet/xilinx/xilinx_axienet_main.c |  37 ++++----
+ drivers/net/phy/phylink.c                         |   9 +-
+ include/linux/phylink.h                           |  57 ++++++++----
+ include/net/dsa.h                                 |   4 +-
+ net/dsa/port.c                                    |   7 +-
+ 21 files changed, 352 insertions(+), 178 deletions(-)
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
+According to speedtest.net: 11.9Mbps down 500kbps up
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
