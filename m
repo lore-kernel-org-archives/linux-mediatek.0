@@ -2,22 +2,23 @@ Return-Path: <SRS0=J0Vt=4N=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A38E7C35DF5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 07:20:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 84F06C35DF5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 07:33:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 74F5E2176D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 07:20:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 56ABB21556
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Feb 2020 07:33:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OT3Y28gt";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="tUljZGnP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 74F5E2176D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YwwKkxJz";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jze759ES"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 56ABB21556
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +27,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+gt8+XvSCrE4Awj+wZU+LUqovsoQ0yWlH3xSgfCtWdg=; b=OT3Y28gtJWHdxr
-	g5CH/f8KxGbKlmUE29LfxFcWRETrGkmMVYGtPPNbh8gBMC1ZGxWa4hQYz1cUqsGXImCPRPhRnSacQ
-	rqlz4L62mKCwXtHnQOL7aelGSFlWbaoemiBfjxKLx3Q34PXAuiGhvahA3JumJCWDO2ygP0d8iVqYe
-	iOp+rkg8Gpyv5DQ88ghiyys8uGO2F0WwsG/FD/+EslWxIdKKtmvOdGEphJ0rZxy4058o/+pKOXDka
-	1rV23oc823n1lDmFsJnpVBRsL4AlWG2DbiCQ+c2oGz/qKk/nqvf724kdMimzYfZJohSOToHXXWQKg
-	rIGf2KTAi9tHmzVEhw3w==;
+	List-Owner; bh=rm7Xjc+GLQdvslkEFZjej0bO2h8yC9JH0ozCycOP7is=; b=YwwKkxJzXIPqeJ
+	J17r48pXwhakY6XJbg4lK4FxPpn+NQem0MO3NqgsdTPXrF/WYtNtvklJs9lTMjMFWpwkhILpzertU
+	Kc/9C0pwz6SeQJmkojUgKt+p5DVWQHRnJInzhWorInLhobWdmq6vASnDwrDvwGl0v3YOnSnroAO4v
+	Ifg8d3EJeU3mkGwoafEfuQLX+uNQkGEltOD7tmG+/x4g8U+tnISTaPyAX3ty85TXMVpu+I0RQkLXo
+	+bG9sNzIOLRN8X9vAKhMHbutf2tbgsBaMM9hQc3J9vXrAx6oMySuBJwdMkReSNk8Vr+3E03x8ODqD
+	e/ZA8dbmQO0FCCK7O49A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6UVu-00032W-Co; Tue, 25 Feb 2020 07:20:18 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1j6UiZ-0006Ol-2t; Tue, 25 Feb 2020 07:33:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6UVk-0002c7-8L; Tue, 25 Feb 2020 07:20:09 +0000
-X-UUID: 92f565236a844ff9934b24c559d7aee9-20200224
+ id 1j6UiN-0006F3-HG; Tue, 25 Feb 2020 07:33:13 +0000
+X-UUID: 1a9304b6e53d43d0906655b35d25e120-20200224
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=vtL1iILHsFW94yP0jBQ/SNoSG9C8HGFiyrsycu7XsME=; 
- b=tUljZGnPBYfB+xLMxjzAar5PvLc7DRpXaXOHfOU/tQGO/7uSIty2ySbze5cBCjPAVzvzsMVGgjEPZJLKWTdKJHGHoz/9ZwRxeNuog933GVYoztDsmCHWnLySewgi8/TxVu32hWQSN2a172t3Fr8+bam/TqLiC86t7/lWNaamO9w=;
-X-UUID: 92f565236a844ff9934b24c559d7aee9-20200224
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=4OrWqlhl7RH1jTafRKkei2XCv7K6NE50cBlz8tG0/s4=; 
+ b=jze759ES5qDcyIlf7ARvdZ8A/RattSLmIsAoPvkXYm7l8Vkrernly5dpqXspmbMGc7Uh8QqpLgGrTOYlCndG9psZHll64+zxt3yClfEJocZwy0Yk0Aqzh+UAh1lrjWR6cdXig92tsD2XIoWJtby1AtcU+KGFQlYn90zil/Uj9+w=;
+X-UUID: 1a9304b6e53d43d0906655b35d25e120-20200224
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1596919323; Mon, 24 Feb 2020 23:20:03 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 24 Feb 2020 23:21:04 -0800
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 25 Feb 2020 15:18:01 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
+ with ESMTP id 32067020; Mon, 24 Feb 2020 23:33:08 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 24 Feb 2020 23:33:06 -0800
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 25 Feb 2020 15:32:13 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 25 Feb 2020 15:19:40 +0800
-Message-ID: <1582615193.21887.15.camel@mtksdaap41>
-Subject: Re: [PATCH v7 1/4] dt-bindings: display: mediatek: update dpi
- supported chips
+ Transport; Tue, 25 Feb 2020 15:33:18 +0800
+Message-ID: <1582615985.30857.5.camel@mtksdaap41>
+Subject: Re: [PATCH v7 4/4] drm/mediatek: set dpi pin mode to gpio low to
+ avoid leakage current
 From: CK Hu <ck.hu@mediatek.com>
 To: Jitao Shi <jitao.shi@mediatek.com>
-Date: Tue, 25 Feb 2020 15:19:53 +0800
-In-Reply-To: <20200225064638.112282-2-jitao.shi@mediatek.com>
+Date: Tue, 25 Feb 2020 15:33:05 +0800
+In-Reply-To: <20200225064638.112282-5-jitao.shi@mediatek.com>
 References: <20200225064638.112282-1-jitao.shi@mediatek.com>
- <20200225064638.112282-2-jitao.shi@mediatek.com>
+ <20200225064638.112282-5-jitao.shi@mediatek.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200224_232008_313985_985A4C04 
-X-CRM114-Status: GOOD (  16.24  )
+X-CRM114-CacheID: sfid-20200224_233311_582911_93DE2670 
+X-CRM114-Status: GOOD (  15.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,77 +101,97 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Hi, Jitao:
 
 On Tue, 2020-02-25 at 14:46 +0800, Jitao Shi wrote:
-> Add decriptions about supported chips, including MT2701 & MT8173 &
-> mt8183
-
-descriptions
-
-> 
-> 1. Add more chips support. ex. MT2701 & MT8173 & MT8183
-> 2. Add property "pinctrl-names" to swap pin mode between gpio and dpi mode. Set
->    pin mode to gpio oupput-low to avoid leakage current when dpi disable.
-> 3. Add property "pclk-sample" to config the dpi sample on falling (0),
->    rising (1), both falling and rising (2).
-
-The title is just about supported chips, so I prefer you move other
-modification to another patch. Of course, you could use a more rough
-title to include all what you do so you need not to break this patch.
-
+> Config dpi pins mode to output and pull low when dpi is disabled.
+> Aovid leakage current from some dpi pins (Hsync Vsync DE ... ).
 > 
 > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 > ---
->  .../bindings/display/mediatek/mediatek,dpi.txt         | 10 ++++++++++
->  1 file changed, 10 insertions(+)
+>  drivers/gpu/drm/mediatek/mtk_dpi.c | 33 ++++++++++++++++++++++++++++--
+>  1 file changed, 31 insertions(+), 2 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
-> index b6a7e7397b8b..0dee4f7a227e 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
-> @@ -7,6 +7,7 @@ output bus.
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> index c3e631b93c2e..ca570040ffdf 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -10,7 +10,9 @@
+>  #include <linux/kernel.h>
+>  #include <linux/of.h>
+>  #include <linux/of_device.h>
+> +#include <linux/of_gpio.h>
+>  #include <linux/of_graph.h>
+> +#include <linux/pinctrl/consumer.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/types.h>
 >  
->  Required properties:
->  - compatible: "mediatek,<chip>-dpi"
-> +  the supported chips are mt2701 , mt8173 and mt8183.
->  - reg: Physical base address and length of the controller's registers
->  - interrupts: The interrupt signal from the function block.
->  - clocks: device clocks
-> @@ -16,6 +17,11 @@ Required properties:
->    Documentation/devicetree/bindings/graph.txt. This port should be connected
->    to the input port of an attached HDMI or LVDS encoder chip.
+> @@ -74,6 +76,9 @@ struct mtk_dpi {
+>  	enum mtk_dpi_out_yc_map yc_map;
+>  	enum mtk_dpi_out_bit_num bit_num;
+>  	enum mtk_dpi_out_channel_swap channel_swap;
+> +	struct pinctrl *pinctrl;
+> +	struct pinctrl_state *pins_gpio;
+> +	struct pinctrl_state *pins_dpi;
+>  	int refcount;
+>  	u32 pclk_sample;
+>  };
+> @@ -387,6 +392,9 @@ static void mtk_dpi_power_off(struct mtk_dpi *dpi)
+>  	if (--dpi->refcount != 0)
+>  		return;
 >  
-> +Optional properties:
-> +- pinctrl-names: Contain "gpiomode" and "dpimode".
-> +- pclk-sample: 0: sample in falling edge, 1: sample in rising edge, 2: sample
-> +  in both falling and rising edge.
+> +	if (dpi->pinctrl && dpi->pins_gpio)
+> +		pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
+> +
+>  	mtk_dpi_disable(dpi);
+>  	clk_disable_unprepare(dpi->pixel_clk);
+>  	clk_disable_unprepare(dpi->engine_clk);
+> @@ -411,6 +419,9 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
+>  		goto err_pixel;
+>  	}
+>  
+> +	if (dpi->pinctrl && dpi->pins_dpi)
+> +		pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
+> +
+>  	mtk_dpi_enable(dpi);
+>  	return 0;
+>  
+> @@ -716,8 +727,26 @@ static int mtk_dpi_probe(struct platform_device *pdev)
+>  
+>  	dpi->dev = dev;
+>  	dpi->conf = (struct mtk_dpi_conf *)of_device_get_match_data(dev);
+> -	dpi->pclk_sample = of_property_read_u32_index(dev->of_node,
+> -						      "pclk-sample");
+> +	of_property_read_u32_index(dev->of_node, "pclk-sample", 1,
+> +				   &dpi->pclk_sample);
 
-pinctrl-names & pclk-sample are defined in another document, please list
-the reference document, [1] is the sample. For pclk-sample, I think you
-should modify [2] to add 'sampling in both failing and rising edge'.
-
-[1] Documentation/devicetree/bindings/display/bridge/ti,tfp410.txt
-[2] Documentation/devicetree/bindings/media/video-interfaces.txt
+Why this exists in this patch?
 
 > +
->  Example:
->  
->  dpi0: dpi@1401d000 {
-> @@ -26,6 +32,10 @@ dpi0: dpi@1401d000 {
->  		 <&mmsys CLK_MM_DPI_ENGINE>,
->  		 <&apmixedsys CLK_APMIXED_TVDPLL>;
->  	clock-names = "pixel", "engine", "pll";
-> +	pclk-sample = 0;
+> +	dpi->pinctrl = devm_pinctrl_get(&pdev->dev);
+> +	if (IS_ERR(dpi->pinctrl))
+> +		dev_dbg(&pdev->dev, "Cannot find pinctrl!\n");
 
-I think you should move pclk-sample into the port node according to [2].
+I think you should set dpi->pinctrl to NULL when error, and check
+dpi->pinctrl before you use it, such as pinctrl_lookup_state().
 
 Regards,
 CK
 
-> +	pinctrl-names = "gpiomode", "dpimode";
-> +	pinctrl-0 = <&dpi_pin_gpio>;
-> +	pinctrl-1 = <&dpi_pin_func>;
+> +
+> +	dpi->pins_gpio = pinctrl_lookup_state(dpi->pinctrl, "gpiomode");
+> +	if (IS_ERR(dpi->pins_gpio)) {
+> +		dpi->pins_gpio = NULL;
+> +		dev_dbg(&pdev->dev, "Cannot find pinctrl gpiomode!\n");
+> +	}
+> +	if (dpi->pinctrl && dpi->pins_gpio)
+> +		pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
+> +
+> +	dpi->pins_dpi = pinctrl_lookup_state(dpi->pinctrl, "dpimode");
+> +	if (IS_ERR(dpi->pins_dpi)) {
+> +		dpi->pins_dpi = NULL;
+> +		dev_dbg(&pdev->dev, "Cannot find pinctrl dpimode!\n");
+> +	}
 >  
->  	port {
->  		dpi0_out: endpoint {
+>  	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>  	dpi->regs = devm_ioremap_resource(dev, mem);
 
 _______________________________________________
 Linux-mediatek mailing list
