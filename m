@@ -2,65 +2,116 @@ Return-Path: <SRS0=ht0X=4O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DEEF4C4BA12
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 14:39:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5AA74C4BA13
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 15:08:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AE2BD21D7E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 14:39:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2FF2E2467D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 15:08:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MWveW76U"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AE2BD21D7E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rv/MJbTt";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=nxp.com header.i=@nxp.com header.b="qh2ymQld"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2FF2E2467D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=nxp.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vwOUtL8RweaUbko0W4PqX2tf2AcMzqbQOgwcqdkdJDA=; b=MWveW76UgW/99NiE3x8OBpNsV
-	wZgvmrOWOwVwPvnMHBHv1pkcwveNN0yb1ZDx/9jIwa08ZvoPVKsxu53bb65NvLiJA27hkkQ9zxULn
-	t4O0LQp4mPtLa6ytbM8C3/Rm+EiCamIASIWM4geFSdNKx33cxB0/aR2xFAkVjhwmF8xrYHQU72ERg
-	7zbZHs1lU7mFNLH+fanp4LA+vBWVFCMe64a70h1Qk/HvI0TCy0LDCnntD6zqcvwapxuOcJ3EHaERj
-	0V0UQmN3KdW0ZckYtMjuuThDDSLcroNhHPJ8TKCMI4YED62pwIFMtodbN20aOmoYcJMqR15g0Nt+H
-	IdcTavKxg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZBJhMgN82HZ3qmyf0IaAShiwH2ZXAq29+M9oZkb0Mps=; b=rv/MJbTtFBEyYH
+	F2ZjeA1olYH7ZA34G+ItiZ6C/hbjZOQScxafUeLJ0bE21K7G9fjFJnL3XTnTl3vLutGfwTp6nxgDq
+	N/6YB7e7UeoV7+UGClqUS3u+oZpLyCR6efS1LAeD7hlCok5KRloSUBAbdsPXCNykkYmiuUs/4/qkV
+	9ahLEqIneW16t1Ecxs+GHyO28X4YQjogorp7iJc9pVQ/7YnkbiFXtROIQDkG5d5V7xhzsFQx8Lgyl
+	eFBwln3HglLe48xdEOEyinJOiXhjiRm9jEZ5YOGqbCmu1bX4tFl8fqDflJzi+xS++Uw6d59Vcp5AZ
+	dyzQcWrc1mDaN+PfYeFw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6xqa-0008Ok-E3; Wed, 26 Feb 2020 14:39:36 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6xqJ-00086N-NU; Wed, 26 Feb 2020 14:39:21 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D1BF630E;
- Wed, 26 Feb 2020 06:39:15 -0800 (PST)
-Received: from [10.37.12.169] (unknown [10.37.12.169])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DB4613F9E6;
- Wed, 26 Feb 2020 06:39:05 -0800 (PST)
-Subject: Re: [PATCH v3 4/4] drm/panfrost: Register to the Energy Model with
- devfreq device
-To: Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh@kernel.org>
-References: <20200221194731.13814-1-lukasz.luba@arm.com>
- <20200221194731.13814-5-lukasz.luba@arm.com>
- <CAL_JsqJ1D6Cf2cxdskDS2JCEe8ja6uUeoSpA3i-wxNgi=S1SYA@mail.gmail.com>
- <96d3287c-4559-7c4a-2f99-0a3aad9e42f6@arm.com>
- <67aef493-82ab-e3e0-7564-610ef8756b48@arm.com>
-From: Lukasz Luba <lukasz.luba@arm.com>
-Message-ID: <e76e0006-db90-145d-a3d7-b13dd7ff58f7@arm.com>
-Date: Wed, 26 Feb 2020 14:39:03 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
-MIME-Version: 1.0
-In-Reply-To: <67aef493-82ab-e3e0-7564-610ef8756b48@arm.com>
+	id 1j6yIG-0002W8-3l; Wed, 26 Feb 2020 15:08:12 +0000
+Received: from mail-eopbgr140040.outbound.protection.outlook.com
+ ([40.107.14.40] helo=EUR01-VE1-obe.outbound.protection.outlook.com)
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j6yI1-0002Mo-1t; Wed, 26 Feb 2020 15:08:01 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=UDgoYgNOk8TqRRTiRVZyTfhPcqPV+rZyFxZiEooeKHcel/xx5jwR0hIwFDow00P4KTBIGHih3U0kWdBwZ2ZAJc1MC4W9r45fCSyNy6hN1bBm83HaRy+b42HUsvQE3/KLugXWv0qX5bE7+3UaaOjHImN/TqRJ1Z1WEvZgJENVRTVkaGO3OjiGezUtrIfSgF0ke04xRSkL+glNrPJhNnS33PVF0NeX+45WMJgvH74uSy0GpIpoa7bMa0GqfXaApV+vP/swTHE7G5WNc77O08faWnHHTb1HU6TvCP5pAkIrJaw3Ou5HBIwPrUD6fvHx66WQSNdi0XsljZ675tDZ6f2uRA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=iKQxL1tg8qxGVVymZDRFYi7aXQYJ/gAgT6avONxa66o=;
+ b=gGlPPI7+y2XaFLVoUyP4i/PWPGlHPAouB1S8Vq1kfKnURZPqVp4SV577s5kXSMFDhks0GXKGZ/2XW184ZEf+R/I9IgGi3nu1TNqRVTvJznFe447uJ4RWdjh1adn2VmNajeWcw3HhP6NjfMvKyQNzSjo9zACuN/1lmIoP16ggte8MaH6nIjJtwjZ0HLVkiHFXgVg48CRGTNtI+dgf8CQHxBajwktsc/3sP49vC9dCHafNTZtGYXtvs4Ncn9mAn1EViGytUxc2qdYL5iyuv1CF34wfiOG8GY/VN8j6rnOENhi9uuwb+pVwayoJBlrBCClEiqOy0wjtGrVaVakF4keUDg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=iKQxL1tg8qxGVVymZDRFYi7aXQYJ/gAgT6avONxa66o=;
+ b=qh2ymQld5yXHCY3O+EEPOOLjB/gFh6bESYsw+wPE4CFOTyJHsdnpGxb5iVvX5NsyYMAp30IBrLPUomPg06jQJ/4gyYRsoMApglMJcp0jKY6ystxXU8KI2MdQgiOhSl0Y/dr3vcW6fDZ5A01yRGFlyYl+xLAJM+AzQK0lUyr0mRk=
+Received: from DB8PR04MB6828.eurprd04.prod.outlook.com (52.133.240.149) by
+ DB8PR04MB6716.eurprd04.prod.outlook.com (20.179.250.22) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2750.21; Wed, 26 Feb 2020 15:07:52 +0000
+Received: from DB8PR04MB6828.eurprd04.prod.outlook.com
+ ([fe80::9484:81c6:c73b:2697]) by DB8PR04MB6828.eurprd04.prod.outlook.com
+ ([fe80::9484:81c6:c73b:2697%6]) with mapi id 15.20.2750.021; Wed, 26 Feb 2020
+ 15:07:52 +0000
+From: Ioana Ciornei <ioana.ciornei@nxp.com>
+To: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+Subject: RE: [PATCH net-next 5/8] net: dpaa2-mac: use resolved link config in
+ mac_link_up()
+Thread-Topic: [PATCH net-next 5/8] net: dpaa2-mac: use resolved link config in
+ mac_link_up()
+Thread-Index: AQHV67+le9Rplv4RF0eFqNNnaoBGEagsGLhggAEqKwCAAFHtwA==
+Date: Wed, 26 Feb 2020 15:07:51 +0000
+Message-ID: <DB8PR04MB6828131F75AB5D9162138F6DE0EA0@DB8PR04MB6828.eurprd04.prod.outlook.com>
+References: <20200225093703.GS25745@shell.armlinux.org.uk>
+ <E1j6WgG-0000TJ-CC@rmk-PC.armlinux.org.uk>
+ <DB8PR04MB68282F710FB598B977C36F99E0ED0@DB8PR04MB6828.eurprd04.prod.outlook.com>
+ <20200226101204.GW25745@shell.armlinux.org.uk>
+In-Reply-To: <20200226101204.GW25745@shell.armlinux.org.uk>
+Accept-Language: en-US
 Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=ioana.ciornei@nxp.com; 
+x-originating-ip: [212.146.100.6]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: b8e8932d-a94c-4dd2-d83b-08d7bacda67a
+x-ms-traffictypediagnostic: DB8PR04MB6716:
+x-microsoft-antispam-prvs: <DB8PR04MB671631EC366662E4A1D10496E0EA0@DB8PR04MB6716.eurprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:10000;
+x-forefront-prvs: 0325F6C77B
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(4636009)(39860400002)(366004)(136003)(376002)(346002)(396003)(189003)(199004)(81156014)(8676002)(33656002)(186003)(8936002)(6916009)(81166006)(71200400001)(44832011)(7696005)(26005)(6506007)(66946007)(66446008)(4326008)(478600001)(86362001)(7416002)(66556008)(64756008)(55016002)(54906003)(9686003)(76116006)(52536014)(66476007)(2906002)(316002)(5660300002);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:DB8PR04MB6716;
+ H:DB8PR04MB6828.eurprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: nxp.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: FG1SoBBnTbK9ttGqNZCCCrC4A9Y2C1emH4fWhzRc7BNmeM3Oy7uWEJ0p3WDst/wl5U8eXCXyTzwyYmojNHwRG0Gz9vbP6eUfn/Wl2WkXaqG6kDVL/woTQ6arloxkriX1wPqkmBsoJnp3gjn9VhccqFxxRqX5fOIrDchUwMYvGEJG91qdpSHEZlHrQGUCZtwtyW6lYGqHFd/ok3fpm63HbFf2Cqrq5Dd503uLBYHNZzvtD62uvcgOkP7CQFLW4U7gptd5HVgMyKCvUkYi9pA4hsfHFik10809ILuL8OxC0pAoV0XfJa63qbRDUg0tjJJgRE2vugZGdDVIurm/Wtw1Tcrbvu0oHGcbKakbAUd8tT9Y0P4y7lR8K+ktWyUKieKxjlqOEw31qGsAm9Y0HVbpEWVWtAz96rJEV7xYhjkR1zH/Jj/NHdUXOB4zP+FTolWJ
+x-ms-exchange-antispam-messagedata: 3tiDRHOqRBv4I8HkL06zHdDmXhpCLu7+GrB0MJKOGt41b38T0bzzE7hew5c/5AaS2kxkkfI0V+6I8kGuFsZ4r86W7T0ADFwmI/PPiWLb/pqIa75JwKLOFU+QgFsRFzGW38RBuIJMhieFagbJMhNFQg==
+x-ms-exchange-transport-forked: True
+MIME-Version: 1.0
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b8e8932d-a94c-4dd2-d83b-08d7bacda67a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Feb 2020 15:07:51.8543 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: aHOETpdVJgxEbhHpPzk9R6ooIwbcIN3IGRu5D7KOJa1A0yvXHEBgSG4d5W9PjDLVUajOYLyrKpi50iExDcQ0zg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR04MB6716
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200226_063919_875981_3B44AD0B 
-X-CRM114-Status: GOOD (  19.04  )
+X-CRM114-CacheID: sfid-20200226_070758_283009_7A5A48BE 
+X-CRM114-Status: GOOD (  19.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,97 +123,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nishanth Menon <nm@ti.com>, juri.lelli@redhat.com,
- Peter Zijlstra <peterz@infradead.org>, Viresh Kumar <viresh.kumar@linaro.org>,
- Liviu Dudau <liviu.dudau@arm.com>, dri-devel <dri-devel@lists.freedesktop.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, bsegall@google.com,
- Fabio Estevam <festevam@gmail.com>,
- Morten Rasmussen <Morten.Rasmussen@arm.com>, patrick.bellasi@matbug.net,
- Amit Kucheria <amit.kucheria@verdurent.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Kevin Hilman <khilman@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- Steven Price <steven.price@arm.com>, Chanwoo Choi <cw00.choi@samsung.com>,
- Ingo Molnar <mingo@redhat.com>,
- Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
- Zhang Rui <rui.zhang@intel.com>, NXP Linux Team <linux-imx@nxp.com>,
- orjan.eide@arm.com, Sascha Hauer <kernel@pengutronix.de>,
- "open list:THERMAL" <linux-pm@vger.kernel.org>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Steven Rostedt <rostedt@goodmis.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-omap <linux-omap@vger.kernel.org>, mgorman@suse.de,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, David Airlie <airlied@linux.ie>,
- javi.merino@arm.com, Tomeu Vizoso <tomeu.vizoso@collabora.com>,
- qperret@google.com, Stephen Boyd <sboyd@kernel.org>,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, Andy Gross <agross@kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Daniel Vetter <daniel@ffwll.ch>, Sudeep Holla <sudeep.holla@arm.com>,
- Shawn Guo <shawnguo@kernel.org>, Dietmar.Eggemann@arm.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Andrew Lunn <andrew@lunn.ch>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ "linux-stm32@st-md-mailman.stormreply.com"
+ <linux-stm32@st-md-mailman.stormreply.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Jonathan Corbet <corbet@lwn.net>,
+ Michal Simek <michal.simek@xilinx.com>, Jose Abreu <joabreu@synopsys.com>,
+ Jakub Kicinski <kuba@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Alexandre Torgue <alexandre.torgue@st.com>,
+ Hauke Mehrtens <hauke@hauke-m.de>,
+ Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ Vladimir Oltean <olteanv@gmail.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, Felix Fietkau <nbd@nbd.name>,
+ "David S. Miller" <davem@davemloft.net>,
+ Heiner Kallweit <hkallweit1@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CgpPbiAyLzI2LzIwIDE6NTUgUE0sIFJvYmluIE11cnBoeSB3cm90ZToKPiBPbiAyNi8wMi8yMDIw
-IDEwOjA2IGFtLCBMdWthc3ogTHViYSB3cm90ZToKPiBbLi4uXQo+Pj4+IEBAIC0xMTgsNiArMTIw
-LDcgQEAgdm9pZCBwYW5mcm9zdF9kZXZmcmVxX2Zpbmkoc3RydWN0IAo+Pj4+IHBhbmZyb3N0X2Rl
-dmljZSAqcGZkZXYpCj4+Pj4gwqAgewo+Pj4+IMKgwqDCoMKgwqDCoMKgwqAgaWYgKHBmZGV2LT5k
-ZXZmcmVxLmNvb2xpbmcpCj4+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZGV2
-ZnJlcV9jb29saW5nX3VucmVnaXN0ZXIocGZkZXYtPmRldmZyZXEuY29vbGluZyk7Cj4+Pj4gK8Kg
-wqDCoMKgwqDCoCBkZXZfcG1fb3BwX29mX3VucmVnaXN0ZXJfZW0oJnBmZGV2LT5wZGV2LT5kZXYp
-Owo+Pj4+IMKgwqDCoMKgwqDCoMKgwqAgZGV2X3BtX29wcF9vZl9yZW1vdmVfdGFibGUoJnBmZGV2
-LT5wZGV2LT5kZXYpOwo+Pj4KPj4+IERvZXMgaXQgbWFrZSBzZW5zZSB0byBrZWVwIHRoaXMgKGFu
-ZCB0aGUgcmVnaXN0cmF0aW9uIHNpZGUpIGFzCj4+PiBzZXBhcmF0ZSBjYWxscz8gUGVyaGFwcyB0
-aGVyZSdzIHNvbWUgb3JkZXJpbmcgcmVxdWlyZW1lbnQgd2l0aAo+Pj4gZXZlcnl0aGluZyBiZXR3
-ZWVuIGRldl9wbV9vcHBfb2ZfYWRkX3RhYmxlKCkgYW5kCj4+PiBkZXZfcG1fb3BwX29mX3JlZ2lz
-dGVyX2VtKCk/Cj4+Cj4+IFllcywgZGV2X3BtX29wcF9vZl9yZWdpc3Rlcl9lbSgpIHVzZXMgZW1f
-ZGF0YV9jYWxsYmFjayB3aGljaCBvcGVyYXRlcwo+PiBvbiBPUFBzIHRvIGNhbGN1bGF0ZSBwb3dl
-ciB2YWx1ZXMgYW5kIGNvc3RzLCBzbyB0aGUgdGhlIE9QUCB0YWJsZSBzaG91bGQKPj4gYmUgYWxy
-ZWFkeSB0aGVyZS4KPj4KPj4+Cj4+PiBXaGlsZSB5b3UncmUganVzdCBhZGRpbmcgMiBsaW5lcywg
-aXQgc2VlbXMgdGhlcmUncyBhIGxvdCBvZiBjb21wbGV4aXR5Cj4+PiBleHBvc2VkIHRvIHRoZSBk
-cml2ZXIganVzdCB0byBpbml0aWFsaXplIGRldmZyZXEvb3BwLgo+Pgo+PiBJdCBkZXBlbmRzLCBm
-b3IgZXhhbXBsZSBkZXZmcmVxIGRldmljZXMgbGlrZSBidXNlcyB3b3VsZCBsaWtlbHkgbmV2ZXIK
-Pj4gdXNlIHRoZSBlbmVyZ3kgbW9kZWwuIFBvdGVudGlhbCBjbGllbnRzIHdvdWxkIGJlIEdQVXMs
-IERTUHMsIElTUHMuCj4gCj4gU3RpbGwsIGl0IHNlZW1zIGxlc3MgdGhhbiBpZGVhbCBmb3IgZXZl
-cnkgY2xpZW50IHRvIGhhdmUgdG8gcmVtZW1iZXIgdG8gCj4gbWFrZSBhbGwgdGhlc2UgaW5kaXZp
-ZHVhbCBjYWxscywgYWxsIGluIHRoZSByaWdodCBvcmRlciAoZXNwZWNpYWxseSB3aGVuIAo+IGl0
-IGNvbWVzIHRvIHVuZG9pbmcgdGhlbSBpbiBmYWlsdXJlIHBhdGhzKS4KClRoZXJlIGFyZSAzIHRo
-aW5ncyB0aGF0IHJlZ2lzdGVyIGFuZCB1bnJlZ2lzdGVyIHByb2Nlc3MgbXVzdCB0YWtlCmludG8g
-YWNjb3VudDoKYSkgRU0gc3RydWN0IGlzIHBvcHVsYXRlZCBiYXNlZCBvbiBPUFBzIG9mIHRoZSBk
-ZXZpY2UKICAgIChPUFBzIG11c3QgYmUgdGhlcmUgYmVmb3JlIEVNIHRyaWVzIHRvIGNhbGN1bGF0
-ZSBwZXItT1BQLWNvc3QpCmIpIEVNIGlzIHJldHVybmVkIHRvIHN1YnN5c3RlbXMgbGlrZTogc2No
-ZWR1bGVyIG9yIHRoZXJtYWwKICAgICh1bnJlZ2lzdGVyIG11c3QgYmUgZG9uZSBhZnRlciByZW1v
-dmluZyBjb29saW5nIGRldmljZSkKYykgRU0gbWlnaHQgYmUgY3JlYXRlZCB3aXRoIGRyaXZlciBz
-cGVjaWZpYyBjYWxsYmFjayBmdW5jdGlvbiwKY2FsbGVkIGZvciBlYWNoIE9QUCBieSB0aGUgRU0g
-ZHVyaW5nIHNldHVwCiAgICAoZG8gbm90IHB1dCBkZWZhdWx0IHNpbXBsZSBFTSBtb2RlbCBpbnRv
-IGZyYW1ld29yayBmdW5jdGlvbikKClNvIGEpIGFuZCBiKSBzaG91bGRuJ3QgYmUgaGFyZCB0byBj
-b2RlLCBidXQgSSBhZ3JlZSwgaXQgd291bGQgYmUgZWFzaWVyCmZvciBkcml2ZXIgZGV2ZWxvcGVy
-IHRvIG5vdCB0aGluayBhYm91dCB0aGVtLgpMZXQgbWUgdHJ5IHRvIGV4cGVyaW1lbnQgYW5kIGFk
-ZHJlc3MgdGhpcy4KCj4gCj4gSSBoYXZlbid0IHF1aXRlIGdyYXNwZWQgd2hldGhlciB0aGUgZW5l
-cmd5IG1vZGVsIGlzIGNvbmNlcHR1YWxseSAib3duZWQiIAo+IGJ5IHRoZSBPUFAgdGFibGUgb3Ig
-YnkgdGhlIGNvb2xpbmcgZGV2aWNlLCBidXQgZWl0aGVyIHdheSBpdCB3b3VsZCBzZWVtIAo+IHRv
-IGJlIGEgbXVjaCBuaWNlciBBUEkgaWYgdGhlcmUgd2VyZSBzaW1wbHkgYW4gYWRkaXRpb25hbCAi
-d2l0aCBlbmVyZ3kgCj4gbW9kZWwiIHZhcmlhbnQgb2YgdGhlIHJlZ2lzdHJhdGlvbiBjYWxsLCBh
-bmQgdGhlIHN0YW5kYXJkIHJlbW92YWwgY2FsbCAKPiBqdXN0IGF1dG9tYXRpY2FsbHkgY2xlYW5l
-ZCB1cCBhbiBlbmVyZ3kgbW9kZWwgYXMgd2VsbCBpZiBvbmUgd2FzIHByZXNlbnQuCgpUaGlzIGRl
-dl9wbV9vcHBfb2ZfKiBjb3VsZCBwb3RlbnRpYWxseSBiZSB1c2VkIGRpcmVjdGx5IGluc2lkZQpk
-ZXZmcmVxX2Nvb2xpbmdfcmVnaXN0ZXIoKSBhbmQgdGhlbiAndW5yZWdpc3RlcicgY2FsbCBkb25l
-IGludGVybmFsbHkuCkp1c3QgbGltaXRpbmcgZGV2ZnJlcV9jb29saW5nIHRvIGEgY2FsbCB0bzoK
-ZGV2X3BtX29wcF9vZl9yZWdpc3Rlcl9lbSgpCndvdWxkIGxpbWl0IHRoZSBFTSBmb3IgZGV2ZnJl
-cSBkZXZpY2VzIHRvIHVzZSBvbmx5IHRoaXMKc2ltcGxlIERUIG1vZGVsICh3aGljaCBpcyBiYXNl
-ZCBvbiAiZHluYW1pYy1wb3dlci1jb2VmZmljaWVudCIpIHdoaWNoCmZhaWxzIGluIGkuZS4gR1BV
-IFNDTUkgd2hlcmUgT1BQIHBvd2VyIGNvbWVzIGZyb20gZmlybXdhcmUuCgpUaGF0IHdvdWxkIHJl
-cXVpcmUgc29tZXRoaW5nIGxpa2UKZGV2ZnJlcV9jb29saW5nX3dpdGhfZW1fcmVnaXN0ZXIoPG9s
-ZF9hcmdzX2hlcmU+LCBzdHJ1Y3QgCmVtX2RhdGFfY2FsbGJhY2sgKmVtX2NiKQoKYW5kIHRoZW4g
-aWYgdGhlICplbV9jYiBpcyBzZXQgdG8gbnVsbCwgaXQgY291bGQgY2FsbApkZXZfcG1fb3BwX29m
-X3JlZ2lzdGVyX2VtKCkgdHJ5aW5nIHRvIHVzZSBpdCdzIGRlZmF1bHQgZW1fY2IKZnVuY3Rpb24s
-IHdoaWNoIHNlZWtzIGZvciAiZHluYW1pYy1wb3dlci1jb2VmZmljaWVudCIuCgpUaGlzIGlzIGRv
-YWJsZSBpbnNpZGUgZGV2ZnJlcV9jb29saW5nLCByZWdpc3RlciBhbmQgdW5yZWdpc3RlcgpvZiBF
-TSB3b3VsZCBiZSBhdm9pZGVkIGluIGRyaXZlcnMgY29kZS4KClRoYW5rIHlvdSBSb2JpbiBmb3Ig
-eW91ciBjb21tZW50cyBjbGFyaWZ5aW5nIHRoZXNlIHRoaW5ncy4KClJlZ2FyZHMsCkx1a2FzegoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
-aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+
+> Subject: Re: [PATCH net-next 5/8] net: dpaa2-mac: use resolved link config in
+> mac_link_up()
+> 
+> On Tue, Feb 25, 2020 at 04:36:32PM +0000, Ioana Ciornei wrote:
+> > > Subject: [PATCH net-next 5/8] net: dpaa2-mac: use resolved link
+> > > config in
+> > > mac_link_up()
+> > >
+> > > Convert the DPAA2 ethernet driver to use the finalised link
+> > > parameters in
+> > > mac_link_up() rather than the parameters in mac_config(), which are
+> > > more suited to the needs of the DPAA2 MC firmware than those
+> > > available via mac_config().
+> > >
+> > > Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
+> >
+> > Tested-by: Ioana Ciornei <ioana.ciornei@nxp.com>
+> 
+> Thanks.
+> 
+> > > +
+> > > +		/* This is lossy; the firmware really should take the pause
+> > > +		 * enablement status rather than pause/asym pause status.
+> > > +		 */
+> >
+> > In what sense it's lossy? I cannot see how information can be lost by
+> translating the rx/tx pause state to pause/asym.
+> > If it's just about the unnecessary double translation, then I agree.. this could
+> have been done in an easier manner.
+> 
+> If you're just translating rx/tx to pause/asym and then doing the reverse, then it
+> isn't lossy, but if the firmware is resolving pause/asym according to the table in
+> IEEE 802.3, then it will be lossy.
+
+The firmware is just doing the reverse translation.
+
+> 
+> If the firmware doesn't interpret the bits, then why not do the sensible thing and
+> just pass the enablement status rather than trying to confusingly encode it back
+> to pause/asym?
+
+I agree. It's unnecessary and confusing. I'll add this on the list of fixups to be made by the firmware team.
+
+Ioana
+
+> 
+> --
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
