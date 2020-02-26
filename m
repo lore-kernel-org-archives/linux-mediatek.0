@@ -2,77 +2,65 @@ Return-Path: <SRS0=ht0X=4O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 30042C4BA10
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 14:30:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DEEF4C4BA12
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 14:39:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 049C42467B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 14:30:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AE2BD21D7E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 14:39:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aRmrH/1Q";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="UgKEAOVP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 049C42467B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MWveW76U"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AE2BD21D7E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Qk4qIa6wNfvVOUAfbiOqsDHyBP2Wz3zjS3nQNDIn/+A=; b=aRmrH/1QEKU2K4
-	u1kQ6FY2kfKKaXsjbB8i7fwmUDgI73HGReHJCQC7DRGmvn0gfXz9bvqP7UZUZPWEyOIvoKNzhWSvp
-	/6+BghDBvE7pxBdI7tIn4gc37wIyuNARebRjl4SHdmSXatBvFRPyYdQRDjaxAf67WwIRmFJnAao4H
-	faYCD8j6SDtEPq0jeVo0GhZ2i/l+jdfQrs1/dBWFtDfFaoVCNLoWXIOWuKICVv46DYlMFDfjCnq0l
-	+tip764dZwAm8tbwnULe8MIqEjNXnc7iI279uTFOynY6J3Oj103pAAV8Mw1yHFmUJQ+SoP0H2dRlk
-	5b72WokXbPZjaLw+2qzg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=vwOUtL8RweaUbko0W4PqX2tf2AcMzqbQOgwcqdkdJDA=; b=MWveW76UgW/99NiE3x8OBpNsV
+	wZgvmrOWOwVwPvnMHBHv1pkcwveNN0yb1ZDx/9jIwa08ZvoPVKsxu53bb65NvLiJA27hkkQ9zxULn
+	t4O0LQp4mPtLa6ytbM8C3/Rm+EiCamIASIWM4geFSdNKx33cxB0/aR2xFAkVjhwmF8xrYHQU72ERg
+	7zbZHs1lU7mFNLH+fanp4LA+vBWVFCMe64a70h1Qk/HvI0TCy0LDCnntD6zqcvwapxuOcJ3EHaERj
+	0V0UQmN3KdW0ZckYtMjuuThDDSLcroNhHPJ8TKCMI4YED62pwIFMtodbN20aOmoYcJMqR15g0Nt+H
+	IdcTavKxg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6xhe-0005Cd-0B; Wed, 26 Feb 2020 14:30:22 +0000
-Received: from mail.kernel.org ([198.145.29.99])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6xhT-00052D-Pv; Wed, 26 Feb 2020 14:30:13 +0000
-Received: from mail-qk1-f170.google.com (mail-qk1-f170.google.com
- [209.85.222.170])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 2028A2468D;
- Wed, 26 Feb 2020 14:30:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1582727409;
- bh=FTavrhRvD3/cAi6dtPOZfJq/yT2BV2F/rKEuNXloXiw=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=UgKEAOVPqCjEnalnG/MJpctIDGJWpzc2VZ3liqn3FBmTSyRcGR6x0QQxl+hDA8K7m
- 0N/mJRIgoKmlNj5OsWGP15UXTpGPisYFxZ62tjsvVR5qzCWQS5DYFn4Ij5KrMu0G8J
- JQK2IWg89VZASe7ljBjnu5MKAJcRa0Sws1CB9+HQ=
-Received: by mail-qk1-f170.google.com with SMTP id z19so2775716qkj.5;
- Wed, 26 Feb 2020 06:30:09 -0800 (PST)
-X-Gm-Message-State: APjAAAViYQk2kYB7PXJyYSHGcRIKOOBIUmuumfysJ9PoPMgWvnZYy9a+
- u7mlWDzI0rGtqxT7ij16lI/eichO8Bp6LOhTYQ==
-X-Google-Smtp-Source: APXvYqx8P7fHvCOhAoSOWA8DnUwX4yyOHQiABO8b/bbXdZCaWKAxi3z6qQ+ITbxwwNfVk+W8jZLhM9/ZJQIl6x+NuTM=
-X-Received: by 2002:a05:620a:12a3:: with SMTP id
- x3mr2439558qki.254.1582727408199; 
- Wed, 26 Feb 2020 06:30:08 -0800 (PST)
+	id 1j6xqa-0008Ok-E3; Wed, 26 Feb 2020 14:39:36 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j6xqJ-00086N-NU; Wed, 26 Feb 2020 14:39:21 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D1BF630E;
+ Wed, 26 Feb 2020 06:39:15 -0800 (PST)
+Received: from [10.37.12.169] (unknown [10.37.12.169])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DB4613F9E6;
+ Wed, 26 Feb 2020 06:39:05 -0800 (PST)
+Subject: Re: [PATCH v3 4/4] drm/panfrost: Register to the Energy Model with
+ devfreq device
+To: Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh@kernel.org>
+References: <20200221194731.13814-1-lukasz.luba@arm.com>
+ <20200221194731.13814-5-lukasz.luba@arm.com>
+ <CAL_JsqJ1D6Cf2cxdskDS2JCEe8ja6uUeoSpA3i-wxNgi=S1SYA@mail.gmail.com>
+ <96d3287c-4559-7c4a-2f99-0a3aad9e42f6@arm.com>
+ <67aef493-82ab-e3e0-7564-610ef8756b48@arm.com>
+From: Lukasz Luba <lukasz.luba@arm.com>
+Message-ID: <e76e0006-db90-145d-a3d7-b13dd7ff58f7@arm.com>
+Date: Wed, 26 Feb 2020 14:39:03 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-References: <20200221053802.70716-1-evanbenn@chromium.org>
- <20200221163717.v2.1.I02ebc5b8743b1a71e0e15f68ea77e506d4e6f840@changeid>
- <CAL_JsqL94vtBEmV2gNWx-D==sLiRXjxBBFZS8fw1cR6=KjS7XQ@mail.gmail.com>
- <CAKz_xw2ETZ5eyNfdWU5cF6Qy23E1NqhpFHoLT_CzUDHWTCbw4Q@mail.gmail.com>
-In-Reply-To: <CAKz_xw2ETZ5eyNfdWU5cF6Qy23E1NqhpFHoLT_CzUDHWTCbw4Q@mail.gmail.com>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Wed, 26 Feb 2020 08:29:56 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqLYpSK6HRT4s=hq153xvU_aiPCq3Hk_oZC-7X7e7daA7Q@mail.gmail.com>
-Message-ID: <CAL_JsqLYpSK6HRT4s=hq153xvU_aiPCq3Hk_oZC-7X7e7daA7Q@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] dt-bindings: watchdog: Add mt8173, smc-wdt watchdog
-To: Evan Benn <evanbenn@chromium.org>
+In-Reply-To: <67aef493-82ab-e3e0-7564-610ef8756b48@arm.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200226_063011_869332_498684A9 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20200226_063919_875981_3B44AD0B 
+X-CRM114-Status: GOOD (  19.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,43 +72,97 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- LINUX-WATCHDOG <linux-watchdog@vger.kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+Cc: Nishanth Menon <nm@ti.com>, juri.lelli@redhat.com,
+ Peter Zijlstra <peterz@infradead.org>, Viresh Kumar <viresh.kumar@linaro.org>,
+ Liviu Dudau <liviu.dudau@arm.com>, dri-devel <dri-devel@lists.freedesktop.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, bsegall@google.com,
+ Fabio Estevam <festevam@gmail.com>,
+ Morten Rasmussen <Morten.Rasmussen@arm.com>, patrick.bellasi@matbug.net,
+ Amit Kucheria <amit.kucheria@verdurent.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Kevin Hilman <khilman@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Steven Price <steven.price@arm.com>, Chanwoo Choi <cw00.choi@samsung.com>,
+ Ingo Molnar <mingo@redhat.com>,
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
+ Zhang Rui <rui.zhang@intel.com>, NXP Linux Team <linux-imx@nxp.com>,
+ orjan.eide@arm.com, Sascha Hauer <kernel@pengutronix.de>,
+ "open list:THERMAL" <linux-pm@vger.kernel.org>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Steven Rostedt <rostedt@goodmis.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Julius Werner <jwerner@chromium.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
- "David S. Miller" <davem@davemloft.net>, Guenter Roeck <linux@roeck-us.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ linux-omap <linux-omap@vger.kernel.org>, mgorman@suse.de,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, David Airlie <airlied@linux.ie>,
+ javi.merino@arm.com, Tomeu Vizoso <tomeu.vizoso@collabora.com>,
+ qperret@google.com, Stephen Boyd <sboyd@kernel.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, Andy Gross <agross@kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Sudeep Holla <sudeep.holla@arm.com>,
+ Shawn Guo <shawnguo@kernel.org>, Dietmar.Eggemann@arm.com
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 25, 2020 at 6:15 PM Evan Benn <evanbenn@chromium.org> wrote:
->
-> Thanks Rob
->
-> > This should be a child of some Mediatek firmware node. I assume
-> > watchdog is not the *only* function.
->
-> I am not quite sure what you mean, do you intend this:
->
->  firmware {
->    watchdog {
-
-Not quite. /firmware is generic container. I'd expect another layer in
-the middle for the overall set of Mediatek firmware behind smc calls.
-Look at 'xlnx,zynqmp-firmware' for an example.
-
-Rob
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+CgpPbiAyLzI2LzIwIDE6NTUgUE0sIFJvYmluIE11cnBoeSB3cm90ZToKPiBPbiAyNi8wMi8yMDIw
+IDEwOjA2IGFtLCBMdWthc3ogTHViYSB3cm90ZToKPiBbLi4uXQo+Pj4+IEBAIC0xMTgsNiArMTIw
+LDcgQEAgdm9pZCBwYW5mcm9zdF9kZXZmcmVxX2Zpbmkoc3RydWN0IAo+Pj4+IHBhbmZyb3N0X2Rl
+dmljZSAqcGZkZXYpCj4+Pj4gwqAgewo+Pj4+IMKgwqDCoMKgwqDCoMKgwqAgaWYgKHBmZGV2LT5k
+ZXZmcmVxLmNvb2xpbmcpCj4+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZGV2
+ZnJlcV9jb29saW5nX3VucmVnaXN0ZXIocGZkZXYtPmRldmZyZXEuY29vbGluZyk7Cj4+Pj4gK8Kg
+wqDCoMKgwqDCoCBkZXZfcG1fb3BwX29mX3VucmVnaXN0ZXJfZW0oJnBmZGV2LT5wZGV2LT5kZXYp
+Owo+Pj4+IMKgwqDCoMKgwqDCoMKgwqAgZGV2X3BtX29wcF9vZl9yZW1vdmVfdGFibGUoJnBmZGV2
+LT5wZGV2LT5kZXYpOwo+Pj4KPj4+IERvZXMgaXQgbWFrZSBzZW5zZSB0byBrZWVwIHRoaXMgKGFu
+ZCB0aGUgcmVnaXN0cmF0aW9uIHNpZGUpIGFzCj4+PiBzZXBhcmF0ZSBjYWxscz8gUGVyaGFwcyB0
+aGVyZSdzIHNvbWUgb3JkZXJpbmcgcmVxdWlyZW1lbnQgd2l0aAo+Pj4gZXZlcnl0aGluZyBiZXR3
+ZWVuIGRldl9wbV9vcHBfb2ZfYWRkX3RhYmxlKCkgYW5kCj4+PiBkZXZfcG1fb3BwX29mX3JlZ2lz
+dGVyX2VtKCk/Cj4+Cj4+IFllcywgZGV2X3BtX29wcF9vZl9yZWdpc3Rlcl9lbSgpIHVzZXMgZW1f
+ZGF0YV9jYWxsYmFjayB3aGljaCBvcGVyYXRlcwo+PiBvbiBPUFBzIHRvIGNhbGN1bGF0ZSBwb3dl
+ciB2YWx1ZXMgYW5kIGNvc3RzLCBzbyB0aGUgdGhlIE9QUCB0YWJsZSBzaG91bGQKPj4gYmUgYWxy
+ZWFkeSB0aGVyZS4KPj4KPj4+Cj4+PiBXaGlsZSB5b3UncmUganVzdCBhZGRpbmcgMiBsaW5lcywg
+aXQgc2VlbXMgdGhlcmUncyBhIGxvdCBvZiBjb21wbGV4aXR5Cj4+PiBleHBvc2VkIHRvIHRoZSBk
+cml2ZXIganVzdCB0byBpbml0aWFsaXplIGRldmZyZXEvb3BwLgo+Pgo+PiBJdCBkZXBlbmRzLCBm
+b3IgZXhhbXBsZSBkZXZmcmVxIGRldmljZXMgbGlrZSBidXNlcyB3b3VsZCBsaWtlbHkgbmV2ZXIK
+Pj4gdXNlIHRoZSBlbmVyZ3kgbW9kZWwuIFBvdGVudGlhbCBjbGllbnRzIHdvdWxkIGJlIEdQVXMs
+IERTUHMsIElTUHMuCj4gCj4gU3RpbGwsIGl0IHNlZW1zIGxlc3MgdGhhbiBpZGVhbCBmb3IgZXZl
+cnkgY2xpZW50IHRvIGhhdmUgdG8gcmVtZW1iZXIgdG8gCj4gbWFrZSBhbGwgdGhlc2UgaW5kaXZp
+ZHVhbCBjYWxscywgYWxsIGluIHRoZSByaWdodCBvcmRlciAoZXNwZWNpYWxseSB3aGVuIAo+IGl0
+IGNvbWVzIHRvIHVuZG9pbmcgdGhlbSBpbiBmYWlsdXJlIHBhdGhzKS4KClRoZXJlIGFyZSAzIHRo
+aW5ncyB0aGF0IHJlZ2lzdGVyIGFuZCB1bnJlZ2lzdGVyIHByb2Nlc3MgbXVzdCB0YWtlCmludG8g
+YWNjb3VudDoKYSkgRU0gc3RydWN0IGlzIHBvcHVsYXRlZCBiYXNlZCBvbiBPUFBzIG9mIHRoZSBk
+ZXZpY2UKICAgIChPUFBzIG11c3QgYmUgdGhlcmUgYmVmb3JlIEVNIHRyaWVzIHRvIGNhbGN1bGF0
+ZSBwZXItT1BQLWNvc3QpCmIpIEVNIGlzIHJldHVybmVkIHRvIHN1YnN5c3RlbXMgbGlrZTogc2No
+ZWR1bGVyIG9yIHRoZXJtYWwKICAgICh1bnJlZ2lzdGVyIG11c3QgYmUgZG9uZSBhZnRlciByZW1v
+dmluZyBjb29saW5nIGRldmljZSkKYykgRU0gbWlnaHQgYmUgY3JlYXRlZCB3aXRoIGRyaXZlciBz
+cGVjaWZpYyBjYWxsYmFjayBmdW5jdGlvbiwKY2FsbGVkIGZvciBlYWNoIE9QUCBieSB0aGUgRU0g
+ZHVyaW5nIHNldHVwCiAgICAoZG8gbm90IHB1dCBkZWZhdWx0IHNpbXBsZSBFTSBtb2RlbCBpbnRv
+IGZyYW1ld29yayBmdW5jdGlvbikKClNvIGEpIGFuZCBiKSBzaG91bGRuJ3QgYmUgaGFyZCB0byBj
+b2RlLCBidXQgSSBhZ3JlZSwgaXQgd291bGQgYmUgZWFzaWVyCmZvciBkcml2ZXIgZGV2ZWxvcGVy
+IHRvIG5vdCB0aGluayBhYm91dCB0aGVtLgpMZXQgbWUgdHJ5IHRvIGV4cGVyaW1lbnQgYW5kIGFk
+ZHJlc3MgdGhpcy4KCj4gCj4gSSBoYXZlbid0IHF1aXRlIGdyYXNwZWQgd2hldGhlciB0aGUgZW5l
+cmd5IG1vZGVsIGlzIGNvbmNlcHR1YWxseSAib3duZWQiIAo+IGJ5IHRoZSBPUFAgdGFibGUgb3Ig
+YnkgdGhlIGNvb2xpbmcgZGV2aWNlLCBidXQgZWl0aGVyIHdheSBpdCB3b3VsZCBzZWVtIAo+IHRv
+IGJlIGEgbXVjaCBuaWNlciBBUEkgaWYgdGhlcmUgd2VyZSBzaW1wbHkgYW4gYWRkaXRpb25hbCAi
+d2l0aCBlbmVyZ3kgCj4gbW9kZWwiIHZhcmlhbnQgb2YgdGhlIHJlZ2lzdHJhdGlvbiBjYWxsLCBh
+bmQgdGhlIHN0YW5kYXJkIHJlbW92YWwgY2FsbCAKPiBqdXN0IGF1dG9tYXRpY2FsbHkgY2xlYW5l
+ZCB1cCBhbiBlbmVyZ3kgbW9kZWwgYXMgd2VsbCBpZiBvbmUgd2FzIHByZXNlbnQuCgpUaGlzIGRl
+dl9wbV9vcHBfb2ZfKiBjb3VsZCBwb3RlbnRpYWxseSBiZSB1c2VkIGRpcmVjdGx5IGluc2lkZQpk
+ZXZmcmVxX2Nvb2xpbmdfcmVnaXN0ZXIoKSBhbmQgdGhlbiAndW5yZWdpc3RlcicgY2FsbCBkb25l
+IGludGVybmFsbHkuCkp1c3QgbGltaXRpbmcgZGV2ZnJlcV9jb29saW5nIHRvIGEgY2FsbCB0bzoK
+ZGV2X3BtX29wcF9vZl9yZWdpc3Rlcl9lbSgpCndvdWxkIGxpbWl0IHRoZSBFTSBmb3IgZGV2ZnJl
+cSBkZXZpY2VzIHRvIHVzZSBvbmx5IHRoaXMKc2ltcGxlIERUIG1vZGVsICh3aGljaCBpcyBiYXNl
+ZCBvbiAiZHluYW1pYy1wb3dlci1jb2VmZmljaWVudCIpIHdoaWNoCmZhaWxzIGluIGkuZS4gR1BV
+IFNDTUkgd2hlcmUgT1BQIHBvd2VyIGNvbWVzIGZyb20gZmlybXdhcmUuCgpUaGF0IHdvdWxkIHJl
+cXVpcmUgc29tZXRoaW5nIGxpa2UKZGV2ZnJlcV9jb29saW5nX3dpdGhfZW1fcmVnaXN0ZXIoPG9s
+ZF9hcmdzX2hlcmU+LCBzdHJ1Y3QgCmVtX2RhdGFfY2FsbGJhY2sgKmVtX2NiKQoKYW5kIHRoZW4g
+aWYgdGhlICplbV9jYiBpcyBzZXQgdG8gbnVsbCwgaXQgY291bGQgY2FsbApkZXZfcG1fb3BwX29m
+X3JlZ2lzdGVyX2VtKCkgdHJ5aW5nIHRvIHVzZSBpdCdzIGRlZmF1bHQgZW1fY2IKZnVuY3Rpb24s
+IHdoaWNoIHNlZWtzIGZvciAiZHluYW1pYy1wb3dlci1jb2VmZmljaWVudCIuCgpUaGlzIGlzIGRv
+YWJsZSBpbnNpZGUgZGV2ZnJlcV9jb29saW5nLCByZWdpc3RlciBhbmQgdW5yZWdpc3RlcgpvZiBF
+TSB3b3VsZCBiZSBhdm9pZGVkIGluIGRyaXZlcnMgY29kZS4KClRoYW5rIHlvdSBSb2JpbiBmb3Ig
+eW91ciBjb21tZW50cyBjbGFyaWZ5aW5nIHRoZXNlIHRoaW5ncy4KClJlZ2FyZHMsCkx1a2FzegoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
+aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
