@@ -2,81 +2,56 @@ Return-Path: <SRS0=ht0X=4O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 49050C4BA0B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 10:40:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D3708C4BA0B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 10:54:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 19F3820714
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 10:40:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A939A24689
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 10:54:53 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QV23hT4w";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=armlinux.org.uk header.i=@armlinux.org.uk header.b="r/p4PjDp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 19F3820714
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=armlinux.org.uk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Tgn2uPKH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A939A24689
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tta8dJpEYt0R49OOf+VpUf6MoMTroB5V4iOMzpbKRQ0=; b=QV23hT4wKsJCGE
-	Km10ElY+MRXctH9d/66pxjSMlcFu8Vmb6yHUMXpUWra3bKE7bEf3jxfYCMxrYyxgLjy9M454pi2S4
-	3FNFh9MQIysCfugsAFoGJVCTzqffRx2HjlEyRiOHFRJHh4YomBxgUHRPfNaPU0ROmOCAEvDDCMstZ
-	l4Rz3IPdJMjLY/6HX4pxbuzw0oK1JTKTPWnz3sJawlTkl1RqXaTbZZ4kk8W7a5i0HBG62S+eyRQaw
-	l5ksPz5iEPlIhkPUhf47OZBZ4qLuFGWSItfVNLqRNYM24EsX/yDtxnbih4JOptuyJfBjEWWgE9JEq
-	vM4FG508irMcP8yGwDuQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ax/gwKPzcq0LIxTB3130bZOlguMWK9ZEBQ4FK/+zITY=; b=Tgn2uPKHlW2sdB
+	/m5hb7G5p9cPkbSjcqyWM91PyFTB3eSB8k7K2zTvrXYVj/BlbA6hyK/m25oGDfJr+3OmEWb9ZydW3
+	LX6mmljdx2ECyO74BakGLqm9q0cGQW/dUT8tDzUzg7OkCzOqTnAhsLe25L7aIrNJ+cFzvrtmc5mhj
+	Pyp3sMiyWQbr0SfDgkfZSkreYy38GfPejDuCxJCZykY/6ENg33sHR7JTz7KG4PI98PcfG6ptNtqwk
+	m7wXPLhK8QFWs6U7C1dHlQeN3aYkgS5lb4WKJ91Yb5GT6T9xR83ywaSOW1kSYXnTczxWwtw5ZZPAW
+	VWhDcp1kUde0pGBtd/uA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6u7C-0005ue-35; Wed, 26 Feb 2020 10:40:30 +0000
-Received: from pandora.armlinux.org.uk
- ([2001:4d48:ad52:3201:214:fdff:fe10:1be6])
+	id 1j6uKv-0001iq-UF; Wed, 26 Feb 2020 10:54:41 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6u79-0005tw-2u; Wed, 26 Feb 2020 10:40:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
- MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=PHjOim15jd4o09NnZjH5LH9s+ZcSG6bZ/1c5E3qyvo4=; b=r/p4PjDpcixJ8lUnSiXLAl4AV
- M3/nlPwheegQWB6gz85+4JN8JbeNT+1nUpxDGwwTIaDpnbxhk/5Fo4H893Ls6FoWMiBxz1xGLG9zU
- Y4R3FIqxjy6zmwaDYotrgUjsLzwq0ZIG0/klV1V2Toz4/xVllt3hk+UDInPxvqY1x8Pp7iWePdElj
- G33ifII3WAfBYsu7CSq/IaGilQ8xfQ16ikE6nIARLjvi9laOHpUwg1SsCwTSLsyCiz1Oj4UTXJm42
- n78Ijep4FE90dHV5Ow9NHKtdBZF2uAFagJmklL2ZqtgGNqDZMKCq+00wOYdK2Uu61a3/96O/gA99Q
- j23bm05mQ==;
-Received: from shell.armlinux.org.uk
- ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:57120)
- by pandora.armlinux.org.uk with esmtpsa
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <linux@armlinux.org.uk>)
- id 1j6u6i-00070o-Gh; Wed, 26 Feb 2020 10:40:00 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.92)
- (envelope-from <linux@shell.armlinux.org.uk>)
- id 1j6u6d-0008LS-Mn; Wed, 26 Feb 2020 10:39:55 +0000
-Date: Wed, 26 Feb 2020 10:39:55 +0000
-From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-To: Vladimir Oltean <olteanv@gmail.com>
-Subject: Re: [PATCH net-next 2/8] net: dsa: propagate resolved link config
- via mac_link_up()
-Message-ID: <20200226103955.GY25745@shell.armlinux.org.uk>
-References: <20200225093703.GS25745@shell.armlinux.org.uk>
- <E1j6Wg0-0000Ss-W7@rmk-PC.armlinux.org.uk>
- <CA+h21hp8KCqhCasOAGz17k0eRteHVVYK-eANQmn4h443qv=2JQ@mail.gmail.com>
- <20200225232307.GU25745@shell.armlinux.org.uk>
+ id 1j6uKj-0001Y3-Oy; Wed, 26 Feb 2020 10:54:31 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id A078328531A
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+To: robh+dt@kernel.org, mark.rutland@arm.com, ck.hu@mediatek.com,
+ p.zabel@pengutronix.de, airlied@linux.ie, mturquette@baylibre.com,
+ sboyd@kernel.org, ulrich.hecht+renesas@gmail.com,
+ laurent.pinchart@ideasonboard.com
+Subject: [PATCH v9 0/4] arm64: mediatek: Fix mt8173 mmsys device probing
+Date: Wed, 26 Feb 2020 11:54:15 +0100
+Message-Id: <20200226105419.632771-1-enric.balletbo@collabora.com>
+X-Mailer: git-send-email 2.25.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200225232307.GU25745@shell.armlinux.org.uk>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200226_024027_129232_25E57FD1 
-X-CRM114-Status: GOOD (  20.64  )
+X-CRM114-CacheID: sfid-20200226_025430_078298_3E358CE1 
+X-CRM114-Status: GOOD (  12.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,80 +63,132 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>,
- Linux Doc Mailing List <linux-doc@vger.kernel.org>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Ioana Ciornei <ioana.ciornei@nxp.com>,
- linux-stm32@st-md-mailman.stormreply.com,
- Florian Fainelli <f.fainelli@gmail.com>, Jonathan Corbet <corbet@lwn.net>,
- Michal Simek <michal.simek@xilinx.com>, Jose Abreu <joabreu@synopsys.com>,
- Jakub Kicinski <kuba@kernel.org>, Vivien Didelot <vivien.didelot@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>, Alexandre Torgue <alexandre.torgue@st.com>,
- Hauke Mehrtens <hauke@hauke-m.de>,
- Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, netdev <netdev@vger.kernel.org>,
- Mark Lee <Mark-MC.Lee@mediatek.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Heiner Kallweit <hkallweit1@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>
+Cc: Kate Stewart <kstewart@linuxfoundation.org>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>, dri-devel@lists.freedesktop.org,
+ Richard Fontana <rfontana@redhat.com>,
+ Collabora Kernel ML <kernel@collabora.com>, linux-clk@vger.kernel.org,
+ Weiyi Lu <weiyi.lu@mediatek.com>, wens@csie.org,
+ linux-arm-kernel@lists.infradead.org, mtk01761 <wendell.lin@mediatek.com>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ frank-w@public-files.de, Seiya Wang <seiya.wang@mediatek.com>,
+ sean.wang@mediatek.com, Houlong Wei <houlong.wei@mediatek.com>,
+ linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Allison Randal <allison@lohutok.net>, Matthias Brugger <mbrugger@suse.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, rdunlap@infradead.org,
+ linux-kernel@vger.kernel.org, Daniel Vetter <daniel@ffwll.ch>,
+ matthias.bgg@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 25, 2020 at 11:23:07PM +0000, Russell King - ARM Linux admin wrote:
-> On Tue, Feb 25, 2020 at 11:09:35PM +0200, Vladimir Oltean wrote:
-> > Hi Russell,
-> > 
-> > On Tue, 25 Feb 2020 at 11:39, Russell King <rmk+kernel@armlinux.org.uk> wrote:
-> > >
-> > > Propagate the resolved link configuration down via DSA's
-> > > phylink_mac_link_up() operation to allow split PCS/MAC to work.
-> > >
-> > > Signed-off-by: Russell King <rmk+kernel@armlinux.org.uk>
-> > > ---
-> > >  drivers/net/dsa/b53/b53_common.c       | 4 +++-
-> > >  drivers/net/dsa/b53/b53_priv.h         | 4 +++-
-> > >  drivers/net/dsa/bcm_sf2.c              | 4 +++-
-> > >  drivers/net/dsa/lantiq_gswip.c         | 4 +++-
-> > >  drivers/net/dsa/mt7530.c               | 4 +++-
-> > >  drivers/net/dsa/mv88e6xxx/chip.c       | 4 +++-
-> > >  drivers/net/dsa/sja1105/sja1105_main.c | 4 +++-
-> > >  include/net/dsa.h                      | 4 +++-
-> > >  net/dsa/port.c                         | 3 ++-
-> > >  9 files changed, 26 insertions(+), 9 deletions(-)
-> > >
-> > 
-> > It looks like you missed the felix_phylink_mac_link_up() conversion in
-> > this patch? (which also makes it fail to build, by the way, I'm
-> > supposed the Kbuild robot didn't already jump)
-> > Nonetheless, I've manually added the missing speed, duplex, tx_pause
-> > and rx_pause parameters, and it appears to work as before.
-> > Same for sja1105.
-> 
-> Quite possibly; the patch was developed against 5.5 plus the phylink
-> changes, but applied to net-next. Hmm, it seems my coccinelle script
-> that detects .mac_link_up initialiser prototypes, but not the DSA
-> equivalent using the old prototype.
-> 
-> Thanks for pointing it out.
+Dear all,
 
-I've just sent v2 with ocelot and qca included... and some recipients
-for patch 2 bounced - the Cc line is now too long!
+Those patches are intended to solve an old standing issue on some
+Mediatek devices (mt8173, mt2701 and mt2712).
 
-As far as the kbuild robot goes, you are not the first to notice that
-kbuild seems to be flakey... I've noticed it for some time, as has
-Greg KH.  It isn't just patches on mailing lists, it's git trees as
-well.
+Up to now both drivers, clock and drm are probed with the same device tree
+compatible. But only the first driver gets probed, which in effect breaks
+graphics on those devices.
+
+The MMSYS (Multimedia subsystem) in Mediatek SoCs has some registers to
+control clock gates (which is used in the clk driver) and some registers
+to set the routing and enable the differnet blocks of the display
+and MDP (Media Data Path) subsystem. On this series the clk driver is
+not a pure clock controller but a system controller that can provide
+access to the shared registers between the different drivers that need
+it (mediatek-drm and mediatek-mdp). Hence the MMSYS clk driver was moved
+to drivers/soc/mediatek and is the entry point (parent) which will trigger
+the probe of the corresponding mediatek-drm driver.
+
+**IMPORTANT** This series only fixes the issue on mt8173 to make it
+simple and as is the only platform I can test. Similar changes should be
+applied for mt2701 and mt2712 to have display working.
+
+For reference, here are the links to the old discussions:
+* v8: https://patchwork.kernel.org/project/linux-mediatek/list/?series=244891
+* v7: https://patchwork.kernel.org/project/linux-mediatek/list/?series=241217
+* v6: https://patchwork.kernel.org/project/linux-mediatek/list/?series=213219
+* v5: https://patchwork.kernel.org/project/linux-mediatek/list/?series=44063
+* v4:
+  * https://patchwork.kernel.org/patch/10530871/
+  * https://patchwork.kernel.org/patch/10530883/
+  * https://patchwork.kernel.org/patch/10530885/
+  * https://patchwork.kernel.org/patch/10530911/
+  * https://patchwork.kernel.org/patch/10530913/
+* v3:
+  * https://patchwork.kernel.org/patch/10367857/
+  * https://patchwork.kernel.org/patch/10367861/
+  * https://patchwork.kernel.org/patch/10367877/
+  * https://patchwork.kernel.org/patch/10367875/
+  * https://patchwork.kernel.org/patch/10367885/
+  * https://patchwork.kernel.org/patch/10367883/
+  * https://patchwork.kernel.org/patch/10367889/
+  * https://patchwork.kernel.org/patch/10367907/
+  * https://patchwork.kernel.org/patch/10367909/
+  * https://patchwork.kernel.org/patch/10367905/
+* v2: No relevant discussion, see v3
+* v1:
+  * https://patchwork.kernel.org/patch/10016497/
+  * https://patchwork.kernel.org/patch/10016499/
+  * https://patchwork.kernel.org/patch/10016505/
+  * https://patchwork.kernel.org/patch/10016507/
+
+Best regards,
+ Enric
+
+Changes in v9:
+- Move mmsys to drivers/soc/mediatek (CK)
+- Do not move the display routing from the drm driver (CK)
+- Removed from this series because are not needed:
+  * [PATCH v8 5/6] drm/mediatek: Move MMSYS configuration to include/linux/platform_data
+- Removed from this series because are applied:
+  * [PATCH v8 3/6] media: mtk-mdp: Check return value of of_clk_get.
+
+Changes in v8:
+- Select REGMAP and MFD_SYSCON (Randy Dunlap)
+- Be a builtin_platform_driver like other mediatek mmsys drivers.
+- New patch introduced in this series.
+
+Changes in v7:
+- Add R-by from CK
+- Free clk_data->clks as well
+- Get rid of private data structure
+
+Enric Balletbo i Serra (1):
+  drm/mediatek: Fix mediatek-drm device probing
+
+Matthias Brugger (3):
+  drm/mediatek: Use regmap for register access
+  drm/mediatek: Omit warning on probe defers
+  soc: mediatek: Move mt8173 MMSYS to platform driver
+
+ drivers/clk/mediatek/clk-mt8173.c         | 104 ----------------
+ drivers/gpu/drm/mediatek/Kconfig          |   2 +
+ drivers/gpu/drm/mediatek/mtk_disp_color.c |   5 +-
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c   |   5 +-
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c  |   5 +-
+ drivers/gpu/drm/mediatek/mtk_dpi.c        |  12 +-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c   |   4 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c    |  53 ++++----
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.h    |   4 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c    |  45 ++++---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h    |   2 +-
+ drivers/gpu/drm/mediatek/mtk_dsi.c        |   8 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi.c       |   4 +-
+ drivers/soc/mediatek/Kconfig              |   7 ++
+ drivers/soc/mediatek/Makefile             |   1 +
+ drivers/soc/mediatek/mt8173-mmsys.c       | 143 ++++++++++++++++++++++
+ 16 files changed, 233 insertions(+), 171 deletions(-)
+ create mode 100644 drivers/soc/mediatek/mt8173-mmsys.c
 
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
-According to speedtest.net: 11.9Mbps down 500kbps up
+2.25.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
