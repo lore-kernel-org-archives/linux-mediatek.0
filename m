@@ -2,74 +2,77 @@ Return-Path: <SRS0=ht0X=4O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3AC73C4BA0A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 05:13:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA885C4BA0A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 05:14:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0D86724650
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 05:13:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7DF9D222C2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 05:14:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qGyJSH9r";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="fnbKOOvY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0D86724650
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="M2IUPuv0";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="WzsCBCmu"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7DF9D222C2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tKcmZBBuT2LkjZeEL/MQOYpqD8JDtrCseoxTi3J8ras=; b=qGyJSH9r5Hxk37
-	VWA/im/44ux3nXlGbnG7dZJftypoWI26ZbPOdDW4fad5hxeBz6JA2aNlTb+hLAvgjXkx62gP5SF9l
-	vkhXe2LMwk8bpdWniKGBUWPmkQcwYcX1UNvcXYSFWB9e7BCGHjgjpcIsY0lTqE+SoOaMZOwaqFzWw
-	4wJzfmuPgaVmfVSMte4jpI4Xt++cr2swhFjBp8XcEJ08YUAmhJ5ymo713hN1Vjg/Q3V9Gbfa0+JHA
-	UmEx+wouju/UQiUmyTsKk/sr/Jza1eMoJKSyPK6F6JxcwCBf5Z3KVnrlByloKOlMr7aJj9Qi6eFJX
-	AnUJDJ9OMz/lgkVVJBEw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VGyIV/HqMc7f0mC5G4gGM9bQpY5mq04+EjY5XkQtOG4=; b=M2IUPuv0L13dj9
+	qKTSO1nVmlipXmCckDSH4GIsmnhJNptjkFQIKS+/HM/K4Y/U/zZ14nWgJeCrb3yg2Df6NJXRpNVWU
+	xCxcflyQvi3DCWwHXhKTSVVoitj8WUXKuDBc0cinr4HPlOKdWt4GHZYxL49mFs8CHUpOYicdupVJa
+	bDO5UeZ7APCxcdsPVmBfXm1m3DPrBd9t82l0li/lYg5S1nQR/aziW8742naPwf5cN3iuh/rzSC2Tv
+	3mIeb0x3xPIDEVIPzfFOjeV1CoMYm6kjdywE27Ji917Z2zcUPCFiilq9HEsjInATtXsnBMepW7Ijs
+	COB+KxxBpQP2NgcHgBMQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6p0o-0002uj-69; Wed, 26 Feb 2020 05:13:34 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1j6p18-0003Eq-HB; Wed, 26 Feb 2020 05:13:54 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6p0d-0002mb-FC; Wed, 26 Feb 2020 05:13:25 +0000
-X-UUID: 6c6e5381aa6a4fc58d4bb9d0c8965af0-20200225
+ id 1j6p0j-0002oZ-Lc; Wed, 26 Feb 2020 05:13:31 +0000
+X-UUID: 6c84fa4d899745dba311b4455f539306-20200225
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=nEHARF1NYyw5mdbN6rF7aICK/jenBfECNzSSvcS+Ztw=; 
- b=fnbKOOvYDgoYsdoejCFhalmhwXKR1To87CyFBMRetCkDT/MXvXrggnPbExmbueF5Q6BgTeH+kPLHiLH+SJ2e6y183r/xF0fWMpy2J1sN/KpYcKPrEZ8bNMTiUsRwlk/FVz6V/CGKUkzvqZJKi27fczYao820JsSVBfbapWNQ8IY=;
-X-UUID: 6c6e5381aa6a4fc58d4bb9d0c8965af0-20200225
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=WprY2p001dM2lLokmS7+bS79wDilKJUSlHK85cBS7ig=; 
+ b=WzsCBCmuu+zP13lR0zHB8p9110EKe+HZZHudEYv4v7DtnkoBLwhwOMObUkZsmvDCae82RUEYqy1F63/Be8eexmyXvfXiSxSQ++ogAY/XQAjuPzAesboKjZZwkLzzhPchWj4DcMhjhZFvUyoixekw3u5+BFmNF4RzZHjhL5V9V5M=;
+X-UUID: 6c84fa4d899745dba311b4455f539306-20200225
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <ran.bi@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1374859130; Tue, 25 Feb 2020 21:13:18 -0800
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ with ESMTP id 79662373; Tue, 25 Feb 2020 21:13:24 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 25 Feb 2020 21:13:15 -0800
+ 15.0.1395.4; Tue, 25 Feb 2020 21:13:21 -0800
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 26 Feb 2020 13:11:59 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 26 Feb 2020 13:12:28 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 26 Feb 2020 13:13:23 +0800
+ Transport; Wed, 26 Feb 2020 13:13:28 +0800
 From: Ran Bi <ran.bi@mediatek.com>
 To: Alexandre Belloni <alexandre.belloni@bootlin.com>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v3 0/4] Add Support for MediaTek MT2712 RTC
-Date: Wed, 26 Feb 2020 13:12:59 +0800
-Message-ID: <20200226051303.22560-1-ran.bi@mediatek.com>
+Subject: [PATCH v3 4/4] MAINTAINERS: add MT2712 RTC files
+Date: Wed, 26 Feb 2020 13:13:03 +0800
+Message-ID: <20200226051303.22560-5-ran.bi@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20200226051303.22560-1-ran.bi@mediatek.com>
+References: <20200226051303.22560-1-ran.bi@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200225_211323_523059_87867910 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20200225_211329_752306_A7057852 
+X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,46 +103,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patchset add support to MT2712 RTC. MT2712 RTC is a SoC based RTC
-with different architecture compared to MT7622 RTC.
+This patch add MT2712 RTC related files to MAINTAINERS file.
 
-Changes in V3:
-1. change struct mt2712_rtc
-2. use 100 as year offset
-3. change irq handle thread
-4. remove useless rtc time check
-5. not modify struct rtc_time in set_time/set_alarm functions
-6. modify rtc init function
-7. add power lost flag for get_time/set_time functions
-8. add .alarm_irq_enable callback
-9. set rtc->range_min and rtc->range_max to do range checking
-10. use fixed driver name
+Signed-off-by: Ran Bi <ran.bi@mediatek.com>
+---
+ MAINTAINERS | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Changes in V2:
-1. change minimum year from 1968 to 2000
-2. fix lock usage
-3. stop to calculate useless day of week
-4. stop to set default date after init
-5. change the prefix of functions
-6. use devm_request_threaded_irq() to replace request_threaded_irq()
-7. add mt2712 rtc related files into MAINTAINERS
-
-Ran Bi (4):
-  bindings: rtc: add bindings for MT2712 RTC
-  rtc: add support for the MediaTek MT2712 RTC
-  arm64: dts: add RTC nodes for MT2712
-  MAINTAINERS: add MT2712 RTC files
-
- .../devicetree/bindings/rtc/rtc-mt2712.txt    |  14 +
- MAINTAINERS                                   |   2 +
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |   6 +
- drivers/rtc/Kconfig                           |  10 +
- drivers/rtc/Makefile                          |   1 +
- drivers/rtc/rtc-mt2712.c                      | 422 ++++++++++++++++++
- 6 files changed, 455 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/rtc/rtc-mt2712.txt
- create mode 100644 drivers/rtc/rtc-mt2712.c
-
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 38fe2f3f7b6f..57549356e731 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1995,7 +1995,9 @@ M:	Sean Wang <sean.wang@mediatek.com>
+ L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
+ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+ S:	Maintained
++F:	Documentation/devicetree/bindings/rtc/rtc-mt2712.txt
+ F:	Documentation/devicetree/bindings/rtc/rtc-mt7622.txt
++F:	drivers/rtc/rtc-mt2712.c
+ F:	drivers/rtc/rtc-mt6397.c
+ F:	drivers/rtc/rtc-mt7622.c
+ 
 -- 
 2.25.0
 _______________________________________________
