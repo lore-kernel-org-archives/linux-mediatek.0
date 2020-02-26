@@ -2,75 +2,68 @@ Return-Path: <SRS0=ht0X=4O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B8A76C4BA0B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 09:04:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E2555C4BA0E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 09:24:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8FB2E24656
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 09:04:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AB68C21556
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 09:24:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KQRx+9Qc";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="uZe/obD/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8FB2E24656
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s580DmIs"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AB68C21556
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=VOf4V8z2qctwfpgAcBIJh5z3uqd0x8tbj51VNdhWWWA=; b=KQRx+9QcKSuaGR
-	HQF2AeyD53LNC1iMrN0IdynZw6n7W6R8PoqSBvTrzpmsYPdZ6iQKp5P2IXwIoavY0XSdUVOjOOoO4
-	O7sdnr8NKtwO2fIZZe2qfqay63hRsszWeHmuKkduf1ZIzI6CvZIBHJGSCuXVXkIc9AIWVWen8wixq
-	czeSzLqkMaE/adexWs1YtVzqixM6+j1Ix4T859E/RhbO9xillv06xyn/UjLJKtM/iLwsZi8zjdqJ/
-	FbcjtRxOq00sZiPaFzXu+pVE1l5aC0J+hoj3TA+jB7T7w0BcCOQY8E2hQeRtn6imx04vDpUtwq+9P
-	nkRqcQhDT80uT+W60+gQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YoLaCwhVT+6CxM5OnLj09LkeVQdFsmgancmarwdqarU=; b=s580DmIsr7go+y
+	rQaRPBarC5wVcfcbzWLjX0ggaZWnEhbTis7NR6Mt40W26JYVGXR0RW+Evjbl1vjYZ7QqbH4+9HqKQ
+	0179MmJz0F+daleITMmAoFD3DLqr1EUPtTa4LkW+CtfKEDaxM0O6JRDxha7Hwc8FQie0MAnpXxGFv
+	uJQGtDl+m+OMMPqt+fgMViCmgy5kAQITIcF5hje80cWxVFtB5I8F79fKFAB7nxSODgBSlzr/mh9zG
+	WB+b9xXyFHjqCujsmcsBAxkw+DerbLB16G7yXUeFGT6c7X23zdefUxXH8Ifpft9eX+8cQFvDQbPsh
+	4+Gbh4mbaUxl74EBvK2w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6sc5-00040T-A2; Wed, 26 Feb 2020 09:04:17 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1j6svV-0004Ln-HO; Wed, 26 Feb 2020 09:24:21 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6sbv-0003rv-Hi; Wed, 26 Feb 2020 09:04:08 +0000
-X-UUID: 47541d3b44cd4009ba6cb06be6b6e450-20200226
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=6C9TgGDdkO5F5jXOiRjOlhQAyTOnDDs9QSKwWISWmG8=; 
- b=uZe/obD/ak+SSznrx3y7i189/TgK7hOprqInSigNldr5+R4OJU5D9M6F9sA0pYAoewzKvBq6pc2tDHhrifHp3sv0YstNLZPciiRsYClmQrSUnN4Sphsl+XXdcSZ+eXgXadovsDrVz/dMTF+yzIcogQ/sCBgxm9oKA4UNflAYu30=;
-X-UUID: 47541d3b44cd4009ba6cb06be6b6e450-20200226
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <changqi.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1426321112; Wed, 26 Feb 2020 01:04:01 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 26 Feb 2020 00:53:57 -0800
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 26 Feb 2020 16:53:08 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas09.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 26 Feb 2020 16:53:45 +0800
-From: Changqi Hu <changqi.hu@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby
- <jslaby@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v4] serial: 8250-mtk: modify mtk uart power and clock
- management
-Date: Wed, 26 Feb 2020 16:53:45 +0800
-Message-ID: <1582707225-26815-1-git-send-email-changqi.hu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
+ id 1j6svL-0004CO-29; Wed, 26 Feb 2020 09:24:12 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id 0209328DB54
+Subject: Re: [PATCH v8 0/6] arm/arm64: mediatek: Fix mmsys device probing
+To: CK Hu <ck.hu@mediatek.com>
+References: <20200220172147.919996-1-enric.balletbo@collabora.com>
+ <1582259996.1846.7.camel@mtksdaap41>
+ <7a87b486-1622-7f27-f5af-427b94a14c00@collabora.com>
+ <1582277229.25992.9.camel@mtksdaap41>
+ <1393a8c5-065f-cccb-2563-8b159c951d4b@suse.com>
+ <1582283518.5889.10.camel@mtksdaap41>
+ <6deab0a4-44a6-a15f-ac01-374f818b267c@collabora.com>
+ <6eb9da70-9a0c-27fc-6c31-3ac62ede5a35@suse.com>
+ <d9ad35c0-57df-ebb2-67e8-4aae55dd2fcb@collabora.com>
+ <1582523544.25316.2.camel@mtksdaap41>
+ <688f6c85-0063-9458-858c-de7bbfb8a530@collabora.com>
+ <1582695176.8324.4.camel@mtksdaap41>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Message-ID: <6355f1fd-b929-730e-e0f6-96dd5100e3f9@collabora.com>
+Date: Wed, 26 Feb 2020 10:24:04 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <1582695176.8324.4.camel@mtksdaap41>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200226_010407_595940_8E173522 
-X-CRM114-Status: GOOD (  13.18  )
+X-CRM114-CacheID: sfid-20200226_012411_233200_A989B6D6 
+X-CRM114-Status: GOOD (  17.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,159 +75,106 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nicolas Boichat <drinkcat@chromium.org>, Changqi
- Hu <changqi.hu@mediatek.com>, srv_heupstream@mediatek.com,
- Frank Wunderlich <frank-w@public-files.de>, linux-kernel@vger.kernel.org,
- Vinod Koul <vkoul@kernel.org>, linux-mediatek@lists.infradead.org,
- linux-serial@vger.kernel.org, Yingjoe Chen <yingjoe.chen@mediatek.com>,
- Claire Chang <tientzu@chromium.org>, Eddie Huang <eddie.huang@mediatek.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: mark.rutland@arm.com, Kate Stewart <kstewart@linuxfoundation.org>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, airlied@linux.ie,
+ mturquette@baylibre.com, Matthias Brugger <"matthias. bgg"@gmail.com>,
+ dri-devel@lists.freedesktop.org, Richard Fontana <rfontana@redhat.com>,
+ laurent.pinchart@ideasonboard.com, ulrich.hecht+renesas@gmail.com,
+ Collabora Kernel ML <kernel@collabora.com>, linux-clk@vger.kernel.org,
+ Nicolas Boichat <drinkcat@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, wens@csie.org,
+ linux-arm-kernel@lists.infradead.org, mtk01761 <wendell.lin@mediatek.com>,
+ Owen Chen <owen.chen@mediatek.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, Daniel Vetter <daniel@ffwll.ch>,
+ frank-w@public-files.de, Seiya Wang <seiya.wang@mediatek.com>,
+ sean.wang@mediatek.com, Houlong Wei <houlong.wei@mediatek.com>,
+ robh+dt@kernel.org, linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Allison Randal <allison@lohutok.net>, Matthias Brugger <mbrugger@suse.com>,
+ Fabien Parent <fparent@baylibre.com>, sboyd@kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, rdunlap@infradead.org,
+ linux-kernel@vger.kernel.org, p.zabel@pengutronix.de, matthias.bgg@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MTK uart design no need to control uart clock,
-so we just control bus clock in runtime function.
-Add uart clock used count to avoid repeatedly switching the clock.
+Hi CK,
 
-Signed-off-by: Changqi Hu <changqi.hu@mediatek.com>
----
+On 26/2/20 6:32, CK Hu wrote:
 
-Changes in v4:
- Modify commit-message
+[snip]
 
-Changes in v3:
- Merge patch v1 and v2 together.
- 
-Changes in v2:
- Enable uart bus clock when probe and resume base on v1 patch,
- but miss v1 patch itself.
+>>
+>> How do you see move mmsys to drivers/soc/mediatek and instantiate the clk and
+>> mediatek-drm driver
+>>
+>>  mmsys: syscon@14000000 {
+>>  	compatible = "mediatek,mt8173-mmsys", "syscon", "simple-mfd";
+>>  	reg = <0 0x14000000 0 0x1000>;
+>>  	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+>>
+>> 	clock-controller {
+>> 		compatible = "mediatek,clk-mt8173-mm"
+>> 		assigned-clocks = <&topckgen CLK_TOP_MM_SEL>;
+>> 	 	assigned-clock-rates = <400000000>;
+>>  		#clock-cells = <1>;
+>> 	};
+>>
+>> 	display-subsystem {
+>> 		compatible = "mediatek,display-subsystem";
+>> 	};
+>>  };
+>>
+> 
+> Let's start with the simple definition.
+> 
+> mmsys: syscon at 14000000 {
+> 	compatible = "mediatek,mt8173-mmsys", "syscon";
+> 	reg = <0 0x14000000 0 0x1000>;
+> 	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+> 	assigned-clocks = <&topckgen CLK_TOP_MM_SEL>;
+> 	assigned-clock-rates = <400000000>;
+> 	#clock-cells = <1>;
+> };
+> 
+> When we break clock control to a sub device of mmsys, the reason is that
+> 'Linux' generally categorize clock controller to a device. When we break
+> display control to a sub device of mmsys, the reason is that 'Linux'
+> generally categorize display controller to a device. All these seems
+> software-oriented reason, so I think we do not break any sub device and
+> keep mmsys simple.
+> 
+> When I search of_clk_add_provider(), I find that not all clock provider
+> code is in drivers/clk. Maybe when a clock controller is not an
+> independent device, the driver code of clock controller could be placed
+> within the device driver it belonged to. We could place mmsys driver in
+> drivers/soc/mediatek/, and it control the clock, routing, fake engine,
+> memory delay,.... I would like drm driver to be placed in
+> drivers/gpu/drm/ because display function block, such as OVL, does not
+> belong to mmsys device. And finally let mmsys driver to probe
+> mediatek-drm driver.
+> 
 
- drivers/tty/serial/8250/8250_mtk.c | 50 ++++++++++++++++++++++++--------------
- 1 file changed, 32 insertions(+), 18 deletions(-)
+You can apply the same reasoning in the clk subsystem, not all the drivers in
+drivers/clk are pure clock controllers, some of them are already
+system-controller or "simple-mfd" and some of them even instantiate other
+subdrivers via the platform register API.
 
-diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-index 4d067f5..f839380 100644
---- a/drivers/tty/serial/8250/8250_mtk.c
-+++ b/drivers/tty/serial/8250/8250_mtk.c
-@@ -32,6 +32,7 @@
- #define MTK_UART_RXTRI_AD	0x14	/* RX Trigger address */
- #define MTK_UART_FRACDIV_L	0x15	/* Fractional divider LSB address */
- #define MTK_UART_FRACDIV_M	0x16	/* Fractional divider MSB address */
-+#define MTK_UART_DEBUG0	0x18
- #define MTK_UART_IER_XOFFI	0x20	/* Enable XOFF character interrupt */
- #define MTK_UART_IER_RTSI	0x40	/* Enable RTS Modem status interrupt */
- #define MTK_UART_IER_CTSI	0x80	/* Enable CTS Modem status interrupt */
-@@ -388,9 +389,18 @@ mtk8250_set_termios(struct uart_port *port, struct ktermios *termios,
- static int __maybe_unused mtk8250_runtime_suspend(struct device *dev)
- {
- 	struct mtk8250_data *data = dev_get_drvdata(dev);
-+	struct uart_8250_port *up = serial8250_get_port(data->line);
- 
--	clk_disable_unprepare(data->uart_clk);
--	clk_disable_unprepare(data->bus_clk);
-+	/* wait until UART in idle status */
-+	while
-+		(serial_in(up, MTK_UART_DEBUG0));
-+
-+	if (data->clk_count == 0U) {
-+		dev_dbg(dev, "%s clock count is 0\n", __func__);
-+	} else {
-+		clk_disable_unprepare(data->bus_clk);
-+		data->clk_count--;
-+	}
- 
- 	return 0;
- }
-@@ -400,16 +410,16 @@ static int __maybe_unused mtk8250_runtime_resume(struct device *dev)
- 	struct mtk8250_data *data = dev_get_drvdata(dev);
- 	int err;
- 
--	err = clk_prepare_enable(data->uart_clk);
--	if (err) {
--		dev_warn(dev, "Can't enable clock\n");
--		return err;
--	}
--
--	err = clk_prepare_enable(data->bus_clk);
--	if (err) {
--		dev_warn(dev, "Can't enable bus clock\n");
--		return err;
-+	if (data->clk_count > 0U) {
-+		dev_dbg(dev, "%s clock count is %d\n", __func__,
-+			data->clk_count);
-+	} else {
-+		err = clk_prepare_enable(data->bus_clk);
-+		if (err) {
-+			dev_warn(dev, "Can't enable bus clock\n");
-+			return err;
-+		}
-+		data->clk_count++;
- 	}
- 
- 	return 0;
-@@ -419,12 +429,14 @@ static void
- mtk8250_do_pm(struct uart_port *port, unsigned int state, unsigned int old)
- {
- 	if (!state)
--		pm_runtime_get_sync(port->dev);
-+		if (!mtk8250_runtime_resume(port->dev))
-+			pm_runtime_get_sync(port->dev);
- 
- 	serial8250_do_pm(port, state, old);
- 
- 	if (state)
--		pm_runtime_put_sync_suspend(port->dev);
-+		if (!pm_runtime_put_sync_suspend(port->dev))
-+			mtk8250_runtime_suspend(port->dev);
- }
- 
- #ifdef CONFIG_SERIAL_8250_DMA
-@@ -501,6 +513,8 @@ static int mtk8250_probe(struct platform_device *pdev)
- 	if (!data)
- 		return -ENOMEM;
- 
-+	data->clk_count = 0;
-+
- 	if (pdev->dev.of_node) {
- 		err = mtk8250_probe_of(pdev, &uart.port, data);
- 		if (err)
-@@ -533,6 +547,7 @@ static int mtk8250_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, data);
- 
-+	pm_runtime_enable(&pdev->dev);
- 	err = mtk8250_runtime_resume(&pdev->dev);
- 	if (err)
- 		return err;
-@@ -541,9 +556,6 @@ static int mtk8250_probe(struct platform_device *pdev)
- 	if (data->line < 0)
- 		return data->line;
- 
--	pm_runtime_set_active(&pdev->dev);
--	pm_runtime_enable(&pdev->dev);
--
- 	data->rx_wakeup_irq = platform_get_irq_optional(pdev, 1);
- 
- 	return 0;
-@@ -556,11 +568,13 @@ static int mtk8250_remove(struct platform_device *pdev)
- 	pm_runtime_get_sync(&pdev->dev);
- 
- 	serial8250_unregister_port(data->line);
--	mtk8250_runtime_suspend(&pdev->dev);
- 
- 	pm_runtime_disable(&pdev->dev);
- 	pm_runtime_put_noidle(&pdev->dev);
- 
-+	if (!pm_runtime_status_suspended(&pdev->dev))
-+		mtk8250_runtime_suspend(&pdev->dev);
-+
- 	return 0;
- }
- 
--- 
-2.6.4
+Note that moving clk-<chip>-mm drivers to drivers/soc/mediatek will imply move a
+lot of code, I'll focus only on mt8173 for now because is the only platform I
+can really test. Let me prepare a v9 and lets see how looks like.
+
+Thanks,
+ Enric
+
+> Regards,
+> CK
+
+[snip]
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
