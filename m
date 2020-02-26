@@ -4,76 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D533FC4BA0E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 09:51:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E8B52C4BA0B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 10:07:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A204224676
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 09:51:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BAFDE20838
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 10:07:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tgjpKMgJ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="E84a7a9t"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A204224676
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GGmyzc9e"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BAFDE20838
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oJ2qorwZLSpZO4BSIV3LdnU2KDV23+y/tx3S7miODZw=; b=tgjpKMgJ41/mrg
-	TtZK3Lcz2yNtLGY2m/Xl4ZMbuL7xoBvbVbXuvWcg+UHvk/XR9+ZXWGBLhpol0vo82vPmx+gKZjwjE
-	Api2amed4JdXlfEdCMKbq9Mqopf2n+hmhwAXiTrmc+xIx3fMdogpF4O3rsQbaSJVYBULk7YlcfXv6
-	EpIy/hqnuLDk0lipX0Yovn3qMeH8+PAYh4G+6I4g3xJNEBWDBj2gXYDqH1NXiWLLOb2eVOpn4Whfk
-	N4Z5QLIdSkreB1EoUYZJTiycR52GuMyHqCW+hNo82gL0PnvzNrmhJslO7khanr6QkmzUtm5l607Do
-	1KgjzYf5/mkHeMFzNX/A==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=0IwFL3oFv0fnBOr415LJxbx2w4WCzQQABw9If67vhWk=; b=GGmyzc9eZ4ON7/18cNS+O8E27
+	2iok5aBI8ayw75oYZd/N56/x5ctlQ4dy9rYyQT5OO/3aCXtnp5dLySWcbNBiPShgmimGPgC2jbfVw
+	bN4plsvIcpFr3niCGwiIdyYaj95TfY16Xx9AxUytmnv+epLs+/QjXeta5yi4UM6lbGwCddShpp92X
+	r3nG1N8RRyCWogjUatkdcT790ulw/98zWUw+DcoeqswPztBkKzE73z/URDG+/oCSvrSt8lR2UhzLU
+	Rug5pnnQ3aG+mG6D+vN8ggX/pDH3jJow4emcdYVS8F/teowzJcI62i3YO1tt3Zur7aNHpPC0bLmHv
+	VZX6Ukw2A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6tLO-0001J7-Uk; Wed, 26 Feb 2020 09:51:07 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6tLD-000194-Fd; Wed, 26 Feb 2020 09:50:57 +0000
-X-UUID: b3ac374e7b6e4344a5313ccfc81e3f1d-20200226
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=/fRN2IsbZHXdwcvgbzOFioJIocfRS7K6ro41pSVrsFw=; 
- b=E84a7a9tmh1SWcspjCJrtEVfZui3pFWGq1YRDdyS8MyPGOWA1gIVgTLxFshwZxPD2pKi8MOqnBYbMjk1tWeSSYxIeRTpE7KHWaZLQHxRGKm0pzMMgHxUiH2Wuq/R22JaG4d/0pH/OpvBplOgq2dcl9ZPaj5bqzce/p4ZPA6kuGs=;
-X-UUID: b3ac374e7b6e4344a5313ccfc81e3f1d-20200226
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yong.mao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1675009510; Wed, 26 Feb 2020 01:50:48 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 26 Feb 2020 01:51:52 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Wed, 26 Feb 2020 17:49:27 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 26 Feb 2020 17:49:20 +0800
-Message-ID: <1582710640.27285.8.camel@mhfsdcap03>
-Subject: Re: [PATCH] mmc: mediatek: fix SDIO irq issue
-From: "yong.mao@mediatek.com" <yong.mao@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Wed, 26 Feb 2020 17:50:40 +0800
-In-Reply-To: <CAPDyKFqh17yRi2wQcu-UxdskRHKwXWhirn8gjCH5qx3i2n=EbQ@mail.gmail.com>
-References: <1579591258-30940-1-git-send-email-yong.mao@mediatek.com>
- <1579591258-30940-2-git-send-email-yong.mao@mediatek.com>
- <CAPDyKFqh17yRi2wQcu-UxdskRHKwXWhirn8gjCH5qx3i2n=EbQ@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+	id 1j6tb7-0006xs-S9; Wed, 26 Feb 2020 10:07:21 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j6tav-0006os-RD; Wed, 26 Feb 2020 10:07:11 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9830B1FB;
+ Wed, 26 Feb 2020 02:07:06 -0800 (PST)
+Received: from [10.37.12.169] (unknown [10.37.12.169])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D265E3F9E6;
+ Wed, 26 Feb 2020 02:06:56 -0800 (PST)
+Subject: Re: [PATCH v3 4/4] drm/panfrost: Register to the Energy Model with
+ devfreq device
+To: Rob Herring <robh@kernel.org>
+References: <20200221194731.13814-1-lukasz.luba@arm.com>
+ <20200221194731.13814-5-lukasz.luba@arm.com>
+ <CAL_JsqJ1D6Cf2cxdskDS2JCEe8ja6uUeoSpA3i-wxNgi=S1SYA@mail.gmail.com>
+From: Lukasz Luba <lukasz.luba@arm.com>
+Message-ID: <96d3287c-4559-7c4a-2f99-0a3aad9e42f6@arm.com>
+Date: Wed, 26 Feb 2020 10:06:55 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: AE4A606A3A45BE2D2D0088196BED2738BF0F53B0C3B8590C6B46C89702285D212000:8
-X-MTK: N
+In-Reply-To: <CAL_JsqJ1D6Cf2cxdskDS2JCEe8ja6uUeoSpA3i-wxNgi=S1SYA@mail.gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200226_015055_538926_EEAB186C 
-X-CRM114-Status: GOOD (  28.49  )
+X-CRM114-CacheID: sfid-20200226_020709_967778_A344A69F 
+X-CRM114-Status: GOOD (  20.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,223 +71,121 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: srv_heupstream <srv_heupstream@mediatek.com>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
+Cc: Nishanth Menon <nm@ti.com>, juri.lelli@redhat.com,
+ Peter Zijlstra <peterz@infradead.org>, Viresh Kumar <viresh.kumar@linaro.org>,
+ Liviu Dudau <liviu.dudau@arm.com>, dri-devel <dri-devel@lists.freedesktop.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, bsegall@google.com,
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
+ Fabio Estevam <festevam@gmail.com>,
+ Morten Rasmussen <Morten.Rasmussen@arm.com>, patrick.bellasi@matbug.net,
+ Amit Kucheria <amit.kucheria@verdurent.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Vincent Guittot <vincent.guittot@linaro.org>,
+ Kevin Hilman <khilman@kernel.org>, Andy Gross <agross@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Steven Price <steven.price@arm.com>, Chanwoo Choi <cw00.choi@samsung.com>,
+ Ingo Molnar <mingo@redhat.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Zhang Rui <rui.zhang@intel.com>, mgorman@suse.de, orjan.eide@arm.com,
+ Daniel Vetter <daniel@ffwll.ch>,
+ "open list:THERMAL" <linux-pm@vger.kernel.org>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Steven Rostedt <rostedt@goodmis.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
+ linux-omap <linux-omap@vger.kernel.org>, Dietmar.Eggemann@arm.com,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, David Airlie <airlied@linux.ie>,
+ javi.merino@arm.com, Tomeu Vizoso <tomeu.vizoso@collabora.com>,
+ qperret@google.com, Stephen Boyd <sboyd@kernel.org>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ Sascha Hauer <kernel@pengutronix.de>, Sudeep Holla <sudeep.holla@arm.com>,
+ Shawn Guo <shawnguo@kernel.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Rob,
 
-On Wed, 2020-02-12 at 16:29 +0100, Ulf Hansson wrote:
-> On Tue, 21 Jan 2020 at 08:21, Yong Mao <yong.mao@mediatek.com> wrote:
-> >
-> > From: yong mao <yong.mao@mediatek.com>
-> >
-> > Host controller may lost interrupt in some specail case.
+On 2/25/20 8:57 PM, Rob Herring wrote:
+> On Fri, Feb 21, 2020 at 1:48 PM Lukasz Luba <lukasz.luba@arm.com> wrote:
+>>
+>> Add device to the Energy Model framework. It will create a dedicated
+>> and unified data structures used i.e. in the thermal framework.
+>> The power model used in dev_pm_opp subsystem is simplified and created
+>> based on DT 'dynamic-power-coefficient', volatage and frequency. It is
 > 
-> Please explain a bit more about the special cases. When and how often
-> does it happen?
-SDIO irq is not triggered by low level, but by falling edge in our
-previous IC. This mechanism only have one chance to catch if a SDIO irq
-comes within the multiple block transmission. This SDIO irq may easily
-lost, because falling edge appears only once within 2 clock after data
-transmission is completed. 
+> typo.
+
+I'll fix it.
 
 > 
-> > Add SDIO irq recheck mechanism to make sure all interrupts
-> > can be processed immediately.
-> >
-> > Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-> > ---
-> >  drivers/mmc/host/mtk-sd.c | 38 ++++++++++++++++++++++++++++++++++++++
-> >  1 file changed, 38 insertions(+)
-> >
-> > diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> > index 7726dcf..18a1b86 100644
-> > --- a/drivers/mmc/host/mtk-sd.c
-> > +++ b/drivers/mmc/host/mtk-sd.c
-> > @@ -128,6 +128,7 @@
-> >  #define MSDC_PS_CDSTS           (0x1 << 1)     /* R  */
-> >  #define MSDC_PS_CDDEBOUNCE      (0xf << 12)    /* RW */
-> >  #define MSDC_PS_DAT             (0xff << 16)   /* R  */
-> > +#define MSDC_PS_DATA1           (0x1 << 17)    /* R  */
-> >  #define MSDC_PS_CMD             (0x1 << 24)    /* R  */
-> >  #define MSDC_PS_WP              (0x1 << 31)    /* R  */
-> >
-> > @@ -361,6 +362,7 @@ struct msdc_save_para {
-> >
-> >  struct mtk_mmc_compatible {
-> >         u8 clk_div_bits;
-> > +       bool recheck_sdio_irq;
-> >         bool hs400_tune; /* only used for MT8173 */
-> >         u32 pad_tune_reg;
-> >         bool async_fifo;
-> > @@ -436,6 +438,7 @@ struct msdc_host {
-> >
-> >  static const struct mtk_mmc_compatible mt8135_compat = {
-> >         .clk_div_bits = 8,
-> > +       .recheck_sdio_irq = false,
-> >         .hs400_tune = false,
-> >         .pad_tune_reg = MSDC_PAD_TUNE,
-> >         .async_fifo = false,
-> > @@ -448,6 +451,7 @@ struct msdc_host {
-> >
-> >  static const struct mtk_mmc_compatible mt8173_compat = {
-> >         .clk_div_bits = 8,
-> > +       .recheck_sdio_irq = true,
-> >         .hs400_tune = true,
-> >         .pad_tune_reg = MSDC_PAD_TUNE,
-> >         .async_fifo = false,
-> > @@ -460,6 +464,7 @@ struct msdc_host {
-> >
-> >  static const struct mtk_mmc_compatible mt8183_compat = {
-> >         .clk_div_bits = 12,
-> > +       .recheck_sdio_irq = false,
-> >         .hs400_tune = false,
-> >         .pad_tune_reg = MSDC_PAD_TUNE0,
-> >         .async_fifo = true,
-> > @@ -472,6 +477,7 @@ struct msdc_host {
-> >
-> >  static const struct mtk_mmc_compatible mt2701_compat = {
-> >         .clk_div_bits = 12,
-> > +       .recheck_sdio_irq = false,
-> >         .hs400_tune = false,
-> >         .pad_tune_reg = MSDC_PAD_TUNE0,
-> >         .async_fifo = true,
-> > @@ -484,6 +490,7 @@ struct msdc_host {
-> >
-> >  static const struct mtk_mmc_compatible mt2712_compat = {
-> >         .clk_div_bits = 12,
-> > +       .recheck_sdio_irq = false,
-> >         .hs400_tune = false,
-> >         .pad_tune_reg = MSDC_PAD_TUNE0,
-> >         .async_fifo = true,
-> > @@ -496,6 +503,7 @@ struct msdc_host {
-> >
-> >  static const struct mtk_mmc_compatible mt7622_compat = {
-> >         .clk_div_bits = 12,
-> > +       .recheck_sdio_irq = false,
-> >         .hs400_tune = false,
-> >         .pad_tune_reg = MSDC_PAD_TUNE0,
-> >         .async_fifo = true,
-> > @@ -508,6 +516,7 @@ struct msdc_host {
-> >
-> >  static const struct mtk_mmc_compatible mt8516_compat = {
-> >         .clk_div_bits = 12,
-> > +       .recheck_sdio_irq = false,
-> >         .hs400_tune = false,
-> >         .pad_tune_reg = MSDC_PAD_TUNE0,
-> >         .async_fifo = true,
-> > @@ -518,6 +527,7 @@ struct msdc_host {
-> >
-> >  static const struct mtk_mmc_compatible mt7620_compat = {
-> >         .clk_div_bits = 8,
-> > +       .recheck_sdio_irq = false,
-> >         .hs400_tune = false,
-> >         .pad_tune_reg = MSDC_PAD_TUNE,
-> >         .async_fifo = false,
-> > @@ -1007,6 +1017,30 @@ static int msdc_auto_cmd_done(struct msdc_host *host, int events,
-> >         return cmd->error;
-> >  }
-> >
-> > +/**
-> > + * msdc_recheck_sdio_irq - recheck whether the SDIO irq is lost
-> > + *
-> > + * Host controller may lost interrupt in some special case.
-> > + * Add SDIO irq recheck mechanism to make sure all interrupts
-> > + * can be processed immediately
-> > + *
-> > + */
-> > +static void msdc_recheck_sdio_irq(struct msdc_host *host)
-> > +{
-> > +       u32 reg_int, reg_inten, reg_ps;
-> > +
-> > +       if ((host->mmc->caps & MMC_CAP_SDIO_IRQ)) {
-> > +               reg_inten = readl(host->base + MSDC_INTEN);
-> > +               if (reg_inten & MSDC_INTEN_SDIOIRQ) {
-> > +                       reg_int = readl(host->base + MSDC_INT);
-> > +                       reg_ps = readl(host->base + MSDC_PS);
-> > +                       if (!((reg_int & MSDC_INT_SDIOIRQ) ||
-> > +                             (reg_ps & MSDC_PS_DATA1)))
+>> similar to the CPU model used in Energy Aware Scheduler.
+>>
+>> Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
+>> ---
+>>   drivers/gpu/drm/panfrost/panfrost_devfreq.c | 3 +++
+>>   1 file changed, 3 insertions(+)
+>>
+>> diff --git a/drivers/gpu/drm/panfrost/panfrost_devfreq.c b/drivers/gpu/drm/panfrost/panfrost_devfreq.c
+>> index 413987038fbf..d527a5113950 100644
+>> --- a/drivers/gpu/drm/panfrost/panfrost_devfreq.c
+>> +++ b/drivers/gpu/drm/panfrost/panfrost_devfreq.c
+>> @@ -105,6 +105,8 @@ int panfrost_devfreq_init(struct panfrost_device *pfdev)
+>>          }
+>>          pfdev->devfreq.devfreq = devfreq;
+>>
+>> +       dev_pm_opp_of_register_em(dev, NULL);
 > 
-> This looks a bit unnecessary complicated and there are more
-> parentheses than needed.
-  Thanks. We will remove unnecessary parentheses in the next version.
+> Can't fail?
+
+Yes, it can fail but the function does not return anything. It can
+easily fail, it's looking for "dynamic-power-coefficient" in the device
+node. The DT binding for the devfreq devices would also be good to add..
+
+I would have to probably change it into returning 'int' and modify all
+old cpufreq drivers.
 
 > 
-> I am also wondering about the logic. This looks like you want to
-> signal an SDIO IRQ when both MSDC_INT_SDIOIRQ and MSDC_PS_DATA1 are
-> cleared. Is that really correct?
-Yes. This can make sure every SW SDIO irq is really lost by HW.
-And also make sure it is not fake irq.
+>> +
+>>          cooling = of_devfreq_cooling_register(dev->of_node, devfreq);
+>>          if (IS_ERR(cooling))
+>>                  DRM_DEV_INFO(dev, "Failed to register cooling device\n");
+>> @@ -118,6 +120,7 @@ void panfrost_devfreq_fini(struct panfrost_device *pfdev)
+>>   {
+>>          if (pfdev->devfreq.cooling)
+>>                  devfreq_cooling_unregister(pfdev->devfreq.cooling);
+>> +       dev_pm_opp_of_unregister_em(&pfdev->pdev->dev);
+>>          dev_pm_opp_of_remove_table(&pfdev->pdev->dev);
+> 
+> Does it make sense to keep this (and the registration side) as
+> separate calls? Perhaps there's some ordering requirement with
+> everything between dev_pm_opp_of_add_table() and
+> dev_pm_opp_of_register_em()?
+
+Yes, dev_pm_opp_of_register_em() uses em_data_callback which operates
+on OPPs to calculate power values and costs, so the the OPP table should
+be already there.
 
 > 
-> Moreover, this means that you will be polling the registers for each
-> every request you complete. This sounds quite inefficient and I wonder
-> if it can be done more seldom, 
-Yes. You are right. Re-check will be invoked often.
-But registers access does not cost more time.
+> While you're just adding 2 lines, it seems there's a lot of complexity
+> exposed to the driver just to initialize devfreq/opp.
 
-> perhaps via a timer event instead.
-This timer will be alive until the SDIO card is removed.
-It is very similar with polling mechanism in sdio_irq_thread.
-Because this patch is only for previous IC(Our new IC does not have
-this issue), we don't want make too many changes in mtk-sd.c.
-If there is some other simple solution, we will update in the next version.
+It depends, for example devfreq devices like buses would likely never
+use the energy model. Potential clients would be GPUs, DSPs, ISPs.
 
+Could you help me with defining a DT binding for this
+"dynamic-power-coefficient" entry? It could be used in different types
+of devices. Should it be placed in each of these devices documentation
+file, or in some one common file?
 
->  And,
-> what if there is no request for a while, then this means the re-check
-> doesn't gets to run. Could that be a problem?
-The SDIO irq in this case can be catch by HW correctly.
+Thank you for your comments.
 
-> 
-> > +                               sdio_signal_irq(host->mmc);
-> 
-> Before calling sdio_signal_irq(), the SDIO IRQ needs to be temporarily
-> disabled. In other words, looks like you should be calling
-> __msdc_enable_sdio_irq(0) from here as well.
-Yes. You are right.
-We will update it in next version.
+Regards,
+Lukasz
 
-> 
-> > +               }
-> > +       }
-> > +}
-> > +
-> >  static void msdc_track_cmd_data(struct msdc_host *host,
-> >                                 struct mmc_command *cmd, struct mmc_data *data)
-> >  {
-> > @@ -1035,6 +1069,8 @@ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
-> >         if (host->error)
-> >                 msdc_reset_hw(host);
-> >         mmc_request_done(host->mmc, mrq);
-> > +       if (host->dev_comp->recheck_sdio_irq)
-> > +               msdc_recheck_sdio_irq(host);
-> >  }
-> >
-> >  /* returns true if command is fully handled; returns false otherwise */
-> > @@ -1393,6 +1429,8 @@ static void __msdc_enable_sdio_irq(struct msdc_host *host, int enb)
-> >         if (enb) {
-> >                 sdr_set_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
-> >                 sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-> > +               if (host->dev_comp->recheck_sdio_irq)
-> > +                       msdc_recheck_sdio_irq(host);
-> >         } else {
-> >                 sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
-> >                 sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-> > --
-> > 1.9.1
-> 
-> Kind regards
-> Uffe
 
 
 _______________________________________________
