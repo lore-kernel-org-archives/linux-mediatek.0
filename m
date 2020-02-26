@@ -2,21 +2,22 @@ Return-Path: <SRS0=ht0X=4O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 30FE4C4BA06
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 00:21:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 29AD0C4BA0A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 00:56:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 01C4020726
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 00:21:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EFC9D22464
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 00:56:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZB0nxlcd";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="MyRXyQ29"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 01C4020726
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tKWVdW4P";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Y7BmXd6M"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EFC9D22464
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,68 +26,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/JwoF0pLV7G09uqMzEFJAYMPUQIvI80mnPYwrxuOXrw=; b=ZB0nxlcdo0XtkQ
-	OFAS1dLA8J/RwnaJj0uEx178SjMMTLPCYMSglfi64Vi7q7shICpH/f/1Vm80pnJB6D3P9lm64XH0x
-	sQbIa0RlPQhD1EsTre61SIeyXi35oV/Vn63h1wTsgFr8t25Z8TsK+S4lMelbxLMrlXHnsNMe40GMY
-	ndCH6x8ibXqh+D0HwUGhCHZO07PFuDKx/6vI/iTmlNorPfffY6SoR3/AlEzvPHErK16r75zHnAmDR
-	swzH9D5APZa5uY5l3QKcPtpIHE+CRIMqb59zVmkoCKmszuY2QrFrVlC6tzeWZlXykyWr++Z5cgJ6S
-	PPr/eWLQwysegaXXzkYw==;
+	List-Owner; bh=yaAA0JsttdDGiqrjVcy/BxacpPMxxxmSUADcw4dm5lg=; b=tKWVdW4PlRQp1W
+	8WQkbbwtuFjlSJyVLTsX69NlA+cjw+OgoFmANwtWVFDCFMkd8hy5FIWtFrjpjplpPZ+2v2Ewo2R0B
+	gyZetk8P7n5EnscNat2yrQeqC1RUedUkvfFCDJUa1rWfrOvKZEY/0ZTzE2rkPM8EJSzoHxKlsh1EC
+	0Qoqua6WfFABRezUmySOT9OQGRa1x43dAigJCVNk9ugFmgqn0NOMWlSEPJStVCnO4TrGbQ9BQKMqq
+	Rd26VT6nOoZHzwZduTkuOqlbSezkMiMM6sZE3Cv8edtilcBMMJnt2DoT6vwISZ7VdWO/GjKOnPAR6
+	oB8NAlfYcuy5rJwh5rkw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6kRg-0000gl-2G; Wed, 26 Feb 2020 00:21:00 +0000
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+	id 1j6kzd-0005lx-Pf; Wed, 26 Feb 2020 00:56:05 +0000
+Received: from mail-qt1-x843.google.com ([2607:f8b0:4864:20::843])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6kRd-0000gN-8q
- for linux-mediatek@lists.infradead.org; Wed, 26 Feb 2020 00:20:58 +0000
-Received: by mail-pf1-x42a.google.com with SMTP id 2so443774pfg.12
- for <linux-mediatek@lists.infradead.org>; Tue, 25 Feb 2020 16:20:55 -0800 (PST)
+ id 1j6kza-0005l2-IA
+ for linux-mediatek@lists.infradead.org; Wed, 26 Feb 2020 00:56:03 +0000
+Received: by mail-qt1-x843.google.com with SMTP id l21so1063304qtr.8
+ for <linux-mediatek@lists.infradead.org>; Tue, 25 Feb 2020 16:56:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=oTRomC2W+BSThGwAQZ4mFHuy58uAWVt5delRT81IvjU=;
- b=MyRXyQ29K/5rD2ii3vJTRTLOQGj7HhOiybWmpSn7wQARePsB21oMCNPqUfbw9IaLkk
- fEjTnM0c2DDcQCOnKybAVQGg6IvEpPJl+yg2p7SHDkweG+05yI8+cKr/gCSIP1gB7R1F
- 2uI0P2Q2CK/LKaq2R3M3UpOFhAR122qdsb7KQ=
+ :cc; bh=KTr07x+ZuW+Wkx10CmLSTlKU+6ax9EaUyaBXKAF3OqM=;
+ b=Y7BmXd6Mfp+6AZ5v7tzuyEct+NldmkDhFbkaCIoOl6/SfR059Z2NK44rQkbVc+4j7t
+ n0RrGob1lJqy4jSvVTBHC3x7e53bCvZCs0af4K9zwmRDwcKU3x3vY+Goiu220sgiSxhg
+ LkPCOLYG0N6aE3fNLH+xw2IiIErd9z+gBVRxo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=oTRomC2W+BSThGwAQZ4mFHuy58uAWVt5delRT81IvjU=;
- b=t5AfVSbAYRo/sDnyYCTXrM7I6wwWp6A5bny2iFyFjFK5TMxVHejgb968xDWTesHSle
- ytDHiDTxnjBvFTvmEl5ZOMTc0jw4mpyvNMfRMweJuVgEzhvwLeMxMOa1Pwua4+oNENgi
- vziaphAiwlafSfu3zy5b2bXTWEkxwJGeGwhg1E9W5CWbvB0JOj/oVH2wG2T7dGfIcT4Y
- KUsPt+TGUths4oY0Oc55VJH+jaZTHoSvi/Qcj5FxmkSFmtPOizN30fZhPv0eYEndeVps
- uA59fgX4W65her60VCshwgwBh/TWATYn2Y6sCeMwC3lciifMZ3603fAEjKe8xXh6NKOQ
- 1VTw==
-X-Gm-Message-State: APjAAAXjwpejE/umrsN6rt71CWCouBawKP6hC215wesVW8NO3RdEpFir
- aQojhqakM8T6kuwoH5wofwDiE1kW1Ng=
-X-Google-Smtp-Source: APXvYqz6Frca228kjlGC0SIG/1sAFc3GnmC15jMuQGMKrNs9KVqLXkrs+ay2VmQIvWWr/kBV4kwZhA==
-X-Received: by 2002:a62:5296:: with SMTP id g144mr1378972pfb.29.1582676455002; 
- Tue, 25 Feb 2020 16:20:55 -0800 (PST)
-Received: from mail-pg1-f180.google.com (mail-pg1-f180.google.com.
- [209.85.215.180])
- by smtp.gmail.com with ESMTPSA id f13sm249388pfk.64.2020.02.25.16.20.54
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Feb 2020 16:20:54 -0800 (PST)
-Received: by mail-pg1-f180.google.com with SMTP id h8so364020pgs.9
- for <linux-mediatek@lists.infradead.org>; Tue, 25 Feb 2020 16:20:54 -0800 (PST)
-X-Received: by 2002:a67:f541:: with SMTP id z1mr1739800vsn.70.1582676150352;
- Tue, 25 Feb 2020 16:15:50 -0800 (PST)
+ bh=KTr07x+ZuW+Wkx10CmLSTlKU+6ax9EaUyaBXKAF3OqM=;
+ b=aJpR5ZsLm2zYAaeTI2LXP/RUAFRf/KUDgi8clmoJzEWRPkB1MwSkzo+gRXBbwJ/7CW
+ vCVAXOBI7UzbdtqGVFdEl0q1yQjFDC+TxXaS1b+A7IIfUG0vd3xgiZF8szazP/iubKl9
+ BbW/nLjP3aEc23KECli1DinsxRRyRS0lBkFrcjXn7CRtmj6YzTArjjNPUvJJdswho9sq
+ ztYB+TzIRzCeUsSx/hyyucnl35Ug8HOVIc36K9Z/J8jWooa5KpKLEVXlqIyWsH6fIKzn
+ K/oRX9v2N8Qsvi28upH+elLAPHgMYvn5YmlOqFAUO18YLtn5uajx68eCsHC7lWlpyS4L
+ 5DTQ==
+X-Gm-Message-State: APjAAAU43Adrd9gerMywDis4m4fdBs/pUEiiYBFsDpfzQnLCKBxOkCkF
+ 4Jy22TQOEUyNUxi4pNn/CmaCzOb0dLPBrX/67AX6DA==
+X-Google-Smtp-Source: APXvYqwn/doZ3Sl5MivNf7aeBY0i9IjKThPIXnCkYsjm6+vHV5atNhFSLqXf91LmG+mgvcdhqR+658LdmJfFTgy7fYc=
+X-Received: by 2002:ac8:72d6:: with SMTP id o22mr1774873qtp.174.1582678561028; 
+ Tue, 25 Feb 2020 16:56:01 -0800 (PST)
 MIME-Version: 1.0
-References: <20200221053802.70716-1-evanbenn@chromium.org>
- <20200221163717.v2.1.I02ebc5b8743b1a71e0e15f68ea77e506d4e6f840@changeid>
- <CAL_JsqL94vtBEmV2gNWx-D==sLiRXjxBBFZS8fw1cR6=KjS7XQ@mail.gmail.com>
-In-Reply-To: <CAL_JsqL94vtBEmV2gNWx-D==sLiRXjxBBFZS8fw1cR6=KjS7XQ@mail.gmail.com>
-From: Evan Benn <evanbenn@chromium.org>
-Date: Wed, 26 Feb 2020 11:15:24 +1100
-X-Gmail-Original-Message-ID: <CAKz_xw2ETZ5eyNfdWU5cF6Qy23E1NqhpFHoLT_CzUDHWTCbw4Q@mail.gmail.com>
-Message-ID: <CAKz_xw2ETZ5eyNfdWU5cF6Qy23E1NqhpFHoLT_CzUDHWTCbw4Q@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] dt-bindings: watchdog: Add mt8173, smc-wdt watchdog
-To: Rob Herring <robh+dt@kernel.org>
+References: <20200207052627.130118-1-drinkcat@chromium.org>
+ <20200207052627.130118-2-drinkcat@chromium.org> <20200225171613.GA7063@bogus>
+In-Reply-To: <20200225171613.GA7063@bogus>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Wed, 26 Feb 2020 08:55:50 +0800
+Message-ID: <CANMq1KAVX4o5yC7c_88Wq_O=F+MaSN_V4uNcs1nzS3wBS6A5AA@mail.gmail.com>
+Subject: Re: [PATCH v4 1/7] dt-bindings: gpu: mali-bifrost: Add Mediatek MT8183
+To: Rob Herring <robh@kernel.org>, Nick Fan <nick.fan@mediatek.com>, 
+ Sj Huang <sj.huang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200225_162057_336856_79896307 
-X-CRM114-Status: UNSURE (   8.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200225_165602_603393_237226CD 
+X-CRM114-Status: GOOD (  13.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,44 +87,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- LINUX-WATCHDOG <linux-watchdog@vger.kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Devicetree List <devicetree@vger.kernel.org>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Tomeu Vizoso <tomeu.vizoso@collabora.com>, David Airlie <airlied@linux.ie>,
+ lkml <linux-kernel@vger.kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Steven Price <steven.price@arm.com>, Mark Brown <broonie@kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Julius Werner <jwerner@chromium.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
- "David S. Miller" <davem@davemloft.net>, Guenter Roeck <linux@roeck-us.net>
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thanks Rob
++Nick Fan +Sj Huang @ MTK
 
-> This should be a child of some Mediatek firmware node. I assume
-> watchdog is not the *only* function.
+On Wed, Feb 26, 2020 at 1:16 AM Rob Herring <robh@kernel.org> wrote:
+>
+> On Fri, Feb 07, 2020 at 01:26:21PM +0800, Nicolas Boichat wrote:
+> > Define a compatible string for the Mali Bifrost GPU found in
+> > Mediatek's MT8183 SoCs.
+> >
+> > Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+> > Reviewed-by: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
+> > ---
+> >
+> > v4:
+> >  - Add power-domain-names description
+> >    (kept Alyssa's reviewed-by as the change is minor)
+> > v3:
+> >  - No change
+> >
+> >  .../bindings/gpu/arm,mali-bifrost.yaml        | 25 +++++++++++++++++++
+> >  1 file changed, 25 insertions(+)
+> >
+> > diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+> > index 4ea6a8789699709..0d93b3981445977 100644
+> > --- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+> > +++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+> > @@ -17,6 +17,7 @@ properties:
+> >      items:
+> >        - enum:
+> >            - amlogic,meson-g12a-mali
+> > +          - mediatek,mt8183-mali
+> >            - realtek,rtd1619-mali
+> >            - rockchip,px30-mali
+> >        - const: arm,mali-bifrost # Mali Bifrost GPU model/revision is fully discoverable
+> > @@ -62,6 +63,30 @@ allOf:
+> >            minItems: 2
+> >        required:
+> >          - resets
+> > +  - if:
+> > +      properties:
+> > +        compatible:
+> > +          contains:
+> > +            const: mediatek,mt8183-mali
+> > +    then:
+> > +      properties:
+> > +        sram-supply: true
+> > +        power-domains:
+> > +          description:
+> > +            List of phandle and PM domain specifier as documented in
+> > +            Documentation/devicetree/bindings/power/power_domain.txt
+> > +          minItems: 3
+> > +          maxItems: 3
+> > +        power-domain-names:
+> > +          items:
+> > +            - const: core0
+> > +            - const: core1
+> > +            - const: 2d
+>
+> AFAIK, there's no '2d' block in bifrost GPUs. A power domain for each
+> core group is correct though.
 
-I am not quite sure what you mean, do you intend this:
-
- firmware {
-   watchdog {
-     ...
-   }
+Good question... Hopefully Nick/SJ@MTK can comment, the non-upstream DTS has:
+gpu: mali@13040000 {
+compatible = "mediatek,mt8183-mali", "arm,mali-bifrost";
+power-domains = <&scpsys MT8183_POWER_DOMAIN_MFG_CORE0>;
+...
 }
 
-I do not have a deep understanding of devicetree yet, can you point me
-to anything that will help me understand
-the consequences of that change?
+gpu_core1: mali_gpu_core1 {
+compatible = "mediatek,gpu_core1";
+power-domains = <&scpsys MT8183_POWER_DOMAIN_MFG_CORE1>;
+};
 
-Thanks
+gpu_core2: mali_gpu_core2 {
+compatible = "mediatek,gpu_core2";
+power-domains = <&scpsys MT8183_POWER_DOMAIN_MFG_2D>;
+};
 
-Evan
+So I picked core0/core1/2d as names, but looking at this, it's likely
+core2 is more appropriate (and MT8183_POWER_DOMAIN_MFG_2D might just
+be a internal/legacy name, if there is no real 2d domain).
+
+Thanks.
+
+> Rob
 
 _______________________________________________
 Linux-mediatek mailing list
