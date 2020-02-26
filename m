@@ -2,80 +2,80 @@ Return-Path: <SRS0=ht0X=4O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.0 required=3.0 tests=DKIM_INVALID,DKIM_SIGNED,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B462FC4BA0A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 05:42:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A0D26C4BA0A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 05:42:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7E77A222C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 05:42:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 76360206E2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 05:42:48 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rJZmbrpr";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="X16CoxP/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7E77A222C2
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LwlJUg22";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jC4jKXhv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 76360206E2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7hxBHf6XV9KAMgm8lYQacHVAkHtRWtUmbyAmJN9HNCQ=; b=rJZmbrprmH8DDB
-	APCyr53huv4w3TjJrtHLTAqDMkPO8U/GKjldeY5He4CaWabBnCrY+8CWr3wppLG2fhGoHyGNdzt2P
-	PxIn/IAp4ev/9g5BbwaF0aEmORgnjcLhh+CTPYZnF6Cj6u2EDfzp+/K5oMJ30NawFJAzy51rZRm3z
-	8bv8mxa2oKxnLUw2TslZY/HeEBaYueVz+zuzOeEJA/rSX5+Qpir0E4Krr344JK+3Lq2Fg8S7tA1PD
-	1rEP7vhBeGlhRu/kTOIrzgmEo4vshnI/UsFSkOQalLPklvNPyzBR2lPAaZd5obhjl+QjFurlgXgZ+
-	jZ/AeVEut24K7QrTfJEw==;
+	List-Owner; bh=zdjO8vP1/Nb+bY3EoE2XjqTGY30xPW9BeXmcUCJlZWc=; b=LwlJUg22ArIidZ
+	K+I0cbfjoUW13/sqRNwCDa5G66GuRFieyJl1s5ZwgThLeZwUVShhSwvJZ/G+hcE8Jd9PGvzGEkPFJ
+	W0EPMa6O0vBUrqTDd4+hNK7b/zn8GAiQAluAUmSUME+ShvniPRHGGrDOC0+vmMaFGN0eSMZTYj1A3
+	wOvypEacM9BFPXhCiptG298hhdPP9dOfxQZi93mABHyHYjQuXq3Mu8xkbf8kfs+e2S7JmjkdWfg7+
+	5kAtc2NvTOnYbsNDhywB7m/ou1AgHfH36+5nWU2Y/OiPzG/2idkCaMMNQWM/jTQCC9MQ7WowNbwvm
+	OJiOa7XzZPN5LeGb+L0Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6pSu-0006K8-FH; Wed, 26 Feb 2020 05:42:36 +0000
+	id 1j6pSx-0006NC-Sm; Wed, 26 Feb 2020 05:42:39 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6pRf-0005I9-MI; Wed, 26 Feb 2020 05:41:21 +0000
-X-UUID: 9b759bf8269644f09299c868443007c1-20200225
+ id 1j6pRe-0005Hx-9Y; Wed, 26 Feb 2020 05:41:19 +0000
+X-UUID: 2eb98edb856141eb80dedba92377fbdf-20200225
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=x7STFyQuO/xyu34ZYtZeHjDau3Np4ocLuWWyy6b0cAI=; 
- b=X16CoxP/dyFBzfjosrCDBmmZNMDYmZCpIhNWGFH4XJ0aTsHA+9gCNrsq5wFoNbHOHGxDfomaJEnezXW5C3vzR7JT02oNu01/7VpioFj2wOHes8lWZ/LZMfsmNqK3DGzcPPFmPMyK1cAIrWCgBB4FxrzKfJF+fnabxQpdtPIEYO8=;
-X-UUID: 9b759bf8269644f09299c868443007c1-20200225
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=JCK+t8ISBOj7yWNmdTukq+mypW1MjFgO15pFBPhk7bk=; 
+ b=jC4jKXhv8juPoGCokMTX34Jj9VavUQNuI0hqAXF8G0/KMH9Kz/DodTwdRFcoCiiGH3rfmsRmH1A4T6Nq5IVlYNFyAh+KaU3dc/LVRF8ljN0ELvx1EMZKoedU097UfpBWSf9UdHwfs31ivQ3OsgbjDZqo14HlPLiTwfLUhMOszNE=;
+X-UUID: 2eb98edb856141eb80dedba92377fbdf-20200225
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jitao.shi@mediatek.com>)
+ (envelope-from <gtk_ruiwang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1341879466; Tue, 25 Feb 2020 21:41:12 -0800
-Received: from MTKMBS33DR.mediatek.inc (172.27.6.106) by
+ with ESMTP id 211629797; Tue, 25 Feb 2020 21:41:12 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 25 Feb 2020 21:33:34 -0800
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33DR.mediatek.inc
- (172.27.6.106) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Wed, 26 Feb 2020 13:28:53 +0800
-Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
- MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1395.4 via Frontend Transport; Wed, 26 Feb 2020 13:31:28 +0800
-From: Jitao Shi <jitao.shi@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH v9 5/5] drm/mediatek: set dpi pin mode to gpio low to avoid
- leakage current
-Date: Wed, 26 Feb 2020 13:32:38 +0800
-Message-ID: <20200226053238.31646-6-jitao.shi@mediatek.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20200226053238.31646-1-jitao.shi@mediatek.com>
-References: <20200226053238.31646-1-jitao.shi@mediatek.com>
+ 15.0.1395.4; Tue, 25 Feb 2020 21:32:26 -0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Wed, 26 Feb 2020 13:30:29 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Wed, 26 Feb 2020 13:30:22 +0800
+Message-ID: <1582695101.6276.21.camel@mhfsdcap03>
+Subject: Re: [PATCH] mediatek: move MT8173 VPU FW to subfolder
+From: gtk_ruiwang <gtk_ruiwang@mediatek.com>
+To: Alexandre Courbot <acourbot@chromium.org>
+Date: Wed, 26 Feb 2020 13:31:41 +0800
+In-Reply-To: <CAPBb6MWcoSjvxj5tHvWTiQWqY5CdgTemCmyhmio0yZMEq-4VWQ@mail.gmail.com>
+References: <20200226033646.20949-1-gtk_ruiwang@mediatek.com>
+ <20200226033646.20949-2-gtk_ruiwang@mediatek.com>
+ <CAPBb6MWN6bXfYvpBJ6XyPCuvJSpdxNOf4Z9RbY0jbnB5=JX_sQ@mail.gmail.com>
+ <1582690790.6276.19.camel@mhfsdcap03>
+ <CAPBb6MWcoSjvxj5tHvWTiQWqY5CdgTemCmyhmio0yZMEq-4VWQ@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: FE2D5650BCB40F1CA1B9C24BBECF52B836DCD3F5FD44BDAEC5892942C903FDF62000:8
+X-TM-SNTS-SMTP: 9A0097486F9233037774B591F3A3B223952FD4F850E57BBE71392346B1574B372000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200225_214119_812837_BEEA5B34 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20200225_214118_344299_9D4BE31D 
+X-CRM114-Status: GOOD (  16.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,97 +87,79 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>,
- srv_heupstream@mediatek.com, huijuan.xie@mediatek.com, stonea168@163.com,
- cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org,
- bibby.hsieh@mediatek.com, ck.hu@mediatek.com, yingjoe.chen@mediatek.com,
- eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
+List-Id: <linux-firmware.lore.kernel.org>
+Cc: Maoguang Meng <maoguang.meng@mediatek.com>, srv_heupstream@mediatek.com,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Longfei Wang <longfei.wang@mediatek.com>, LKML <linux-kernel@vger.kernel.org>,
+ linux-firmware@kernel.org, Tomasz Figa <tfiga@chromium.org>,
+ "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, PoChun.Lin@mediatek.com,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Config dpi pins mode to output and pull low when dpi is disabled.
-Aovid leakage current from some dpi pins (Hsync Vsync DE ... ).
+Dear Alex,
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_dpi.c | 31 ++++++++++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
+we have submit a new patch to linux-firmware, and update WHENCE file.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index db3272f7a4c4..ae4c6308bb68 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -10,7 +10,9 @@
- #include <linux/kernel.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/of_gpio.h>
- #include <linux/of_graph.h>
-+#include <linux/pinctrl/consumer.h>
- #include <linux/platform_device.h>
- #include <linux/types.h>
- 
-@@ -74,6 +76,9 @@ struct mtk_dpi {
- 	enum mtk_dpi_out_yc_map yc_map;
- 	enum mtk_dpi_out_bit_num bit_num;
- 	enum mtk_dpi_out_channel_swap channel_swap;
-+	struct pinctrl *pinctrl;
-+	struct pinctrl_state *pins_gpio;
-+	struct pinctrl_state *pins_dpi;
- 	int refcount;
- 	u32 pclk_sample;
- };
-@@ -387,6 +392,9 @@ static void mtk_dpi_power_off(struct mtk_dpi *dpi)
- 	if (--dpi->refcount != 0)
- 		return;
- 
-+	if (dpi->pinctrl && dpi->pins_gpio)
-+		pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
-+
- 	mtk_dpi_disable(dpi);
- 	clk_disable_unprepare(dpi->pixel_clk);
- 	clk_disable_unprepare(dpi->engine_clk);
-@@ -411,6 +419,9 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
- 		goto err_pixel;
- 	}
- 
-+	if (dpi->pinctrl && dpi->pins_dpi)
-+		pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
-+
- 	mtk_dpi_enable(dpi);
- 	return 0;
- 
-@@ -719,6 +730,26 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- 	of_property_read_u32_index(dev->of_node, "pclk-sample", 1,
- 				   &dpi->pclk_sample);
- 
-+	dpi->pinctrl = devm_pinctrl_get(&pdev->dev);
-+	if (IS_ERR(dpi->pinctrl)) {
-+		dpi->pinctrl = NULL;
-+		dev_dbg(&pdev->dev, "Cannot find pinctrl!\n");
-+	}
-+	if (dpi->pinctrl) {
-+		dpi->pins_gpio = pinctrl_lookup_state(dpi->pinctrl, "gpiomode");
-+		if (IS_ERR(dpi->pins_gpio)) {
-+			dpi->pins_gpio = NULL;
-+			dev_dbg(&pdev->dev, "Cannot find pinctrl gpiomode!\n");
-+		}
-+		if (dpi->pins_gpio)
-+			pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
-+
-+		dpi->pins_dpi = pinctrl_lookup_state(dpi->pinctrl, "dpimode");
-+		if (IS_ERR(dpi->pins_dpi)) {
-+			dpi->pins_dpi = NULL;
-+			dev_dbg(&pdev->dev, "Cannot find pinctrl dpimode!\n");
-+		}
-+	}
- 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	dpi->regs = devm_ioremap_resource(dev, mem);
- 	if (IS_ERR(dpi->regs)) {
--- 
-2.21.0
+please kindly help to review it.
+
+Thanks
+Best Regards
+
+On Wed, 2020-02-26 at 13:45 +0900, Alexandre Courbot wrote:
+> On Wed, Feb 26, 2020 at 1:20 PM gtk_ruiwang <gtk_ruiwang@mediatek.com> wrote:
+> >
+> > Dear Alex,
+> >
+> > Do you mean to create two symbolic link?
+> >
+> > lrwxrwxrwx  1 gtk_ruiwang gtk_ruiwang      25 Feb 26 11:52 vpu_d.bin ->
+> > mediatek/mt8173/vpu_d.bin
+> > lrwxrwxrwx  1 gtk_ruiwang gtk_ruiwang      25 Feb 26 11:52 vpu_p.bin ->
+> > mediatek/mt8173/vpu_p.bin
+> 
+> Yes, otherwise older kernels will become unable to use the firmware. I
+> don't know whether these are supposed to stay forever or whether we
+> can remove them after a while... presumably the former.
+> 
+> Also the WHENCE file should probably be updated to list the new files.
+> 
+> >
+> > we create them at the linux-firmware root folder.
+> >
+> > Thanks
+> > Best Regards
+> >
+> > On Wed, 2020-02-26 at 12:41 +0900, Alexandre Courbot wrote:
+> > > On Wed, Feb 26, 2020 at 12:38 PM <gtk_ruiwang@mediatek.com> wrote:
+> > > >
+> > > > From: gtk_ruiwang <gtk_ruiwang@mediatek.com>
+> > > >
+> > > > Currently vpu_d.bin and vpu_p.bin are at the root of
+> > > > linux-firmware git tree, it's not appropriate so we move
+> > > > them to subfolder mediatek/mt8173
+> > > >
+> > > > Release Version: 1.1.4
+> > > >
+> > > > Signed-off-by: Rui Wang <gtk_ruiwang@mediatek.com>
+> > > > ---
+> > > >  vpu_d.bin => mediatek/mt8173/vpu_d.bin | Bin
+> > > >  vpu_p.bin => mediatek/mt8173/vpu_p.bin | Bin
+> > > >  2 files changed, 0 insertions(+), 0 deletions(-)
+> > > >  rename vpu_d.bin => mediatek/mt8173/vpu_d.bin (100%)
+> > > >  rename vpu_p.bin => mediatek/mt8173/vpu_p.bin (100%)
+> > >
+> > > This is nice as it removes some stuff from the root, but for
+> > > compatibility with older kernels that don't know about the new path
+> > > shouldn't we at least temporarily create a symbolic link between the
+> > > old location and the new one?
+> >
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
