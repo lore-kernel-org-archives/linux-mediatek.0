@@ -2,69 +2,74 @@ Return-Path: <SRS0=ht0X=4O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EE993C4BA1E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 18:26:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A75A6C4BA21
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 18:49:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A4C5320714
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 18:26:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 74B5124672
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 18:49:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jpe53tcV";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=armlinux.org.uk header.i=@armlinux.org.uk header.b="k4QmbmhI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A4C5320714
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=armlinux.org.uk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="b6KUzwEd";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=nxp.com header.i=@nxp.com header.b="XZbg6qS8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 74B5124672
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=nxp.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O5GrfYCLI3idhV2K0OiLF1SHLtWuonaK0Mh2f9U7q0U=; b=jpe53tcVnyQM8d
-	nLMWu6sDjtwU1xnpVh/LDs/8ekSpxoOFV/QW5UMfzDslPfZSyI1xUj530m4ZKWb14oOCi+970D63k
-	Kf9dFLR7O8LThudHK86jZa7ad/yW1Rs4u9vUUKD8Hs02TkIY/THQoG6mPNRG4lXz3uZyz0WxW9Cwq
-	UYu02m76q5T+a0caVwKZX9jsEia68uoTl/S8IEGw5XCdSuysRhlOf4MId6Uhi2c5fCk5G8dgOAiTQ
-	Ha/eAV+in0/AGxvLouEYArP7+FbJUczpkYp8fyL/rseCCyeXtMuZnriKOJh1c0uG7rBbbM+xgB1ef
-	pG3+x+CLVbZysl/vyBWg==;
+	List-Owner; bh=acXQEVzi846+bGvgXnsAqsSIWtMAgEk0ObkTIhVRAvo=; b=b6KUzwEdfS2GoB
+	2Q3wYfw9EMBtApSH/U9vSTPNxFTJVNedGaoGgMcLPIM09/TDGP8kAexgDEQi9WBdqvjmtErmoOn09
+	vaT15BzeCFXWzqlDVpnG0GR+fuHBVykavTMsschz0Rk2ZUcB0nyPtSxn+/41AP68TNhKYWIvCOoHW
+	4bD3qKVAq52aZ7MGrxqMGCpFx+TvikIhGosxYRVBfd/egYRT5aS2yx4sCuLaWntqbAx1jn77vXIG3
+	PMPhh95IeSbJEG489gGU6yntqf1/CyaU4RMY0lHOueOdTi1y1agb15D1HrRYFm2GlTzYfvX7qYm8I
+	bPNF1bSj00A7Ikoed9kg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j71NZ-00075s-Ho; Wed, 26 Feb 2020 18:25:53 +0000
-Received: from pandora.armlinux.org.uk
- ([2001:4d48:ad52:3201:214:fdff:fe10:1be6])
+	id 1j71jx-0006wK-2P; Wed, 26 Feb 2020 18:49:01 +0000
+Received: from mail-vi1eur05on2050.outbound.protection.outlook.com
+ ([40.107.21.50] helo=EUR05-VI1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j71NT-0006uK-Om; Wed, 26 Feb 2020 18:25:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
- MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=hOUv0b1GFoiWX1frBaxubtqcB9/4QUfBoKJJjfThzBY=; b=k4QmbmhIpbE1ndOmYQExKzYDC
- Bw+IdAmxVSYJvfpG8hBiMNThFqRDK6PYLoIIgrbYgnwVPtAcu2qO9c17KvpBl0UUTfAtSxcOBuZwi
- 0r9pZMxl5OzNG4SYm6DUee3CX6rExbFC4mnAiZpPxiiZnzZxzF9rajTziQ5MS8LBhKtVxix132PIs
- gezWo0YgJYdajy/19ySh73R50EAqqWIAw8zDghWw2YO9kmn5C1HaQcAqSobOsg9HWhIqJwDJtE0D+
- gE0BeRT/75bw0dp6T9HI0jnntUZZ0qUR7hn4OQFfRuG10bUSTWXKgOpyPyutWA3di0VMRP6+9LvBB
- jR1BFl4GA==;
-Received: from shell.armlinux.org.uk
- ([2001:4d48:ad52:3201:5054:ff:fe00:4ec]:45614)
- by pandora.armlinux.org.uk with esmtpsa
- (TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256) (Exim 4.90_1)
- (envelope-from <linux@armlinux.org.uk>)
- id 1j71Mx-0000oI-Ft; Wed, 26 Feb 2020 18:25:15 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.92)
- (envelope-from <linux@shell.armlinux.org.uk>)
- id 1j71Mo-0000BO-TK; Wed, 26 Feb 2020 18:25:06 +0000
-Date: Wed, 26 Feb 2020 18:25:06 +0000
-From: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-To: Vladimir Oltean <olteanv@gmail.com>
-Subject: Re: [PATCH net-next v2 1/8] net: phylink: propagate resolved link
+ id 1j71ju-0006vg-9C; Wed, 26 Feb 2020 18:48:59 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=HHYbyzo9CbqJ70o39u/oK2iDC1b3rzLLg0lX6P4Ib1SyXTdAAnlmjZX4667w2vxInhOBH++tPvQCzcNR1VyqUzZ6OBhl+5Hy+v+Qun3BdItdt+X7w2t7SgVhthzA0q0SEJvzkvRiIWZxLuzyABN+ijP8xyM7UNfkDHdVJtKYHS2Bun43/ahoCn0wkfX+AytV4Gel7wvyJ3Ao2AchXRXH/tqFyd8ByA+QCR74zsPfEQEa8OOVlR1Hxnyj+qtXG/TkaYLq8x4AJLUDFV1RlKrmCz7aflVlAyYiWaM7HJ9JSP9idqibawoeztfXBw7GZ8a6IF3h0ke80v2RTOnfIU+VKg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ZOZbHd8rb11IWwTmLIPwcGQSygILwk2WEQIOs0sYfk8=;
+ b=T69WxntVRv3fxbEpaqCK9MyKDUV2hsEBdWyohb+tzHNllZSsPCuvuVt4qsfYJWVwcztG6dG5K4oD+ThK58N0SEVpe41o55GUGx527ld0CbcgkxqwSdTsnkNVlkxaNFEeTlScOMzZQkhe2idt93XCgCLnRS2eDyxBOQfpRgy6O2XDru/jkVfb4T/Uuc7Bc6qbVel9p3QJQFKITN1BE08r3FP9uz87R0/BIAeaXPF+dQE8JT7ZWYQcpbyim9sfWylSvKiUYU8Zd66PP7sCLYNWeVQXj697hjQu9Zgq37+HoxtG4u1GajHYvpKHwrH0HHl8xs/42OwmKgAF50MppyurpQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ZOZbHd8rb11IWwTmLIPwcGQSygILwk2WEQIOs0sYfk8=;
+ b=XZbg6qS8iW0pzesgXdipzht+Ffmwk9P04mM5quuLbxZDKNm+Xj9iZzG8mEIcii8O1HKoLf2onPiTfkznlTmUThl6air5fEhh7xRlJliqZINgvALtv2kpDAFN7XnnSsHU9vYhcdpq477yM3Zups39slSxc9li/2YSKtOQrBN+aUo=
+Received: from DB8PR04MB6828.eurprd04.prod.outlook.com (52.133.240.149) by
+ DB8PR04MB6972.eurprd04.prod.outlook.com (52.133.242.214) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2772.14; Wed, 26 Feb 2020 18:32:55 +0000
+Received: from DB8PR04MB6828.eurprd04.prod.outlook.com
+ ([fe80::9484:81c6:c73b:2697]) by DB8PR04MB6828.eurprd04.prod.outlook.com
+ ([fe80::9484:81c6:c73b:2697%6]) with mapi id 15.20.2750.021; Wed, 26 Feb 2020
+ 18:32:55 +0000
+From: Ioana Ciornei <ioana.ciornei@nxp.com>
+To: Vladimir Oltean <olteanv@gmail.com>, Russell King - ARM Linux admin
+ <linux@armlinux.org.uk>
+Subject: RE: [PATCH net-next v2 1/8] net: phylink: propagate resolved link
  config via mac_link_up()
-Message-ID: <20200226182506.GG25745@shell.armlinux.org.uk>
+Thread-Topic: [PATCH net-next v2 1/8] net: phylink: propagate resolved link
+ config via mac_link_up()
+Thread-Index: AQHV7I7foN/8WjpxZUC/+bNDIQ+7u6gtUF0AgAAN5ICAABITAIAACfwAgABPyICAAAA+gIAAAVTw
+Date: Wed, 26 Feb 2020 18:32:55 +0000
+Message-ID: <DB8PR04MB682837B8182CFC3359B71112E0EA0@DB8PR04MB6828.eurprd04.prod.outlook.com>
 References: <20200226102312.GX25745@shell.armlinux.org.uk>
  <E1j6tqv-0003G6-BO@rmk-PC.armlinux.org.uk>
  <CA+h21hrR1Xkx9gwAT2FHqcH38L=xjWiPxmF2Er7-4fHFTrA8pQ@mail.gmail.com>
@@ -73,13 +78,45 @@ References: <20200226102312.GX25745@shell.armlinux.org.uk>
  <20200226133614.GA25745@shell.armlinux.org.uk>
  <CA+h21hqHfC0joRDhCQP6MntFdVaApFiC51xk=tUf3+y-C7sX_Q@mail.gmail.com>
  <CA+h21hpzCY=+0U4JgFbqGLS=Sh6SjkSt=4J9e0AGVHKJPOHq1A@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
 In-Reply-To: <CA+h21hpzCY=+0U4JgFbqGLS=Sh6SjkSt=4J9e0AGVHKJPOHq1A@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=ioana.ciornei@nxp.com; 
+x-originating-ip: [212.146.100.6]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: 78582035-7dfe-4969-9922-08d7baea4c2d
+x-ms-traffictypediagnostic: DB8PR04MB6972:|DB8PR04MB6972:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <DB8PR04MB697259685DB74C669270AD5CE0EA0@DB8PR04MB6972.eurprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-forefront-prvs: 0325F6C77B
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(4636009)(346002)(136003)(396003)(376002)(366004)(39860400002)(199004)(189003)(110136005)(186003)(316002)(81166006)(81156014)(5660300002)(478600001)(8676002)(26005)(7416002)(8936002)(7696005)(86362001)(2906002)(44832011)(33656002)(6506007)(64756008)(66556008)(66476007)(66446008)(9686003)(76116006)(54906003)(52536014)(71200400001)(55016002)(4326008)(66946007);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:DB8PR04MB6972;
+ H:DB8PR04MB6828.eurprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: nxp.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: lk1EnDL2BQJAw6fjFRszpl81GnNK0ZmzPgltBGuI20Z1oyAOd7DqLRE9nrrXkzNUjr0oQCCzvPtB9Z6q55S52uSQxuCx66g1mzzK9VoxW5zCvxG9kyytS0vBxuauHTL6pbrSQ6RebcI5id1OedlkU/uyr8xLYzcq6x2F+jGHXGU6cYDBjV8dlvZWhYixLeNge2Jzd65uHVI1WhNni5PkOxzHdYE5e2mMiwx4lwP7+jADcmUfki/7c2tv47/QfnnIuaVtpx4v1AAQO9Cp1D1FfGc9XzZHWjmKwPMOtNyIxhmFtmFSSnv9tiRQtBfKnsoaXv5HGAPmHFjsKFdKHCcXnwL1G91ARNPMQU8C5nqB+7jAw0aSor+zLOzFN1wtaxCdws0BSA60G6G9Lq30oDbRZQ84OUnAdwWftistIVofdOLllujeIwC8VaeSX5JxC9kP
+x-ms-exchange-antispam-messagedata: aG9fEw0NIOt5qbiNd8POUHSzXc1m3jSw7VVJlfUjFipOT88pqB1OhLLXPYfj70mSCAz50BSe9VIVS7b/W4MkmUIGGqyRbXh+LdrSzsIktux1jHQu+LppAEdS0Ba/NshjQI9tlsugCFIXrbK4ylN+Mw==
+MIME-Version: 1.0
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 78582035-7dfe-4969-9922-08d7baea4c2d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Feb 2020 18:32:55.8747 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 8c/Cu6JNceOwLaCX2P1Y+qEJ2Lo+P1DYen/5VBZjZrdvyARe3SHFBjg2VcX9qY8T63+RoHz+QjpZuW6axY2RmA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR04MB6972
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200226_102547_896675_C88606E0 
-X-CRM114-Status: GOOD (  15.08  )
+X-CRM114-CacheID: sfid-20200226_104858_329125_D9C453FE 
+X-CRM114-Status: GOOD (  16.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,30 +131,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: Andrew Lunn <andrew@lunn.ch>,
  Linux Doc Mailing List <linux-doc@vger.kernel.org>,
  Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Ioana Ciornei <ioana.ciornei@nxp.com>,
- linux-stm32@st-md-mailman.stormreply.com,
+ "linux-stm32@st-md-mailman.stormreply.com"
+ <linux-stm32@st-md-mailman.stormreply.com>,
  Florian Fainelli <f.fainelli@gmail.com>,
- Ioana Radulescu <ruxandra.radulescu@nxp.com>, Jonathan Corbet <corbet@lwn.net>,
- Michal Simek <michal.simek@xilinx.com>, Jose Abreu <joabreu@synopsys.com>,
- Jakub Kicinski <kuba@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Alexandre Torgue <alexandre.torgue@st.com>,
- Hauke Mehrtens <hauke@hauke-m.de>,
+ Ioana Ciocoi Radulescu <ruxandra.radulescu@nxp.com>,
+ Jonathan Corbet <corbet@lwn.net>, Michal Simek <michal.simek@xilinx.com>,
+ Jose Abreu <joabreu@synopsys.com>, Jakub Kicinski <kuba@kernel.org>,
+ Vivien Didelot <vivien.didelot@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ Alexandre Torgue <alexandre.torgue@st.com>, Hauke Mehrtens <hauke@hauke-m.de>,
  Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "moderated list:ARM/Mediatek
+ SoC support" <linux-mediatek@lists.infradead.org>,
  John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  Giuseppe Cavallaro <peppe.cavallaro@st.com>,
  "moderated list:ARM/Mediatek SoC support"
  <linux-arm-kernel@lists.infradead.org>, netdev <netdev@vger.kernel.org>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Heiner Kallweit <hkallweit1@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>
+ Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, Felix Fietkau <nbd@nbd.name>,
+ "David
+ S. Miller" <davem@davemloft.net>, Heiner Kallweit <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 26, 2020 at 08:22:39PM +0200, Vladimir Oltean wrote:
+> Subject: Re: [PATCH net-next v2 1/8] net: phylink: propagate resolved link config
+> via mac_link_up()
+> 
 > On Wed, 26 Feb 2020 at 20:21, Vladimir Oltean <olteanv@gmail.com> wrote:
 > >
 > > On Wed, 26 Feb 2020 at 15:36, Russell King - ARM Linux admin
@@ -127,10 +167,10 @@ On Wed, Feb 26, 2020 at 08:22:39PM +0200, Vladimir Oltean wrote:
 > > > dpaa2 is complicated by the firmware, and that we can't switch the
 > > > interface mode between (SGMII,1000base-X) and 10G.
 > > >
-> > > If the firmware is in "DPMAC_LINK_TYPE_PHY" mode, it expects to be told
-> > > the current link parameters via the dpmac_set_link_state() call - it
-> > > isn't clear whether that needs to be called for other modes with the
-> > > up/down state (firmware API documentation is poor.)
+> > > If the firmware is in "DPMAC_LINK_TYPE_PHY" mode, it expects to be
+> > > told the current link parameters via the dpmac_set_link_state() call
+> > > - it isn't clear whether that needs to be called for other modes
+> > > with the up/down state (firmware API documentation is poor.)
 > > >
 > >
 > > With PCS control in Linux, I am pretty sure that you don't want
@@ -144,14 +184,15 @@ On Wed, Feb 26, 2020 at 08:22:39PM +0200, Vladimir Oltean wrote:
 > > firmware control of the PCS, leading to undesirable side-effects to
 > > say the least.
 
-Yes, which is why we only register the PCS with phylink if we're in
-DPMAC_LINK_TYPE_PHY mode.
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTC broadband for 0.8mile line in suburbia: sync at 12.1Mbps down 622kbps up
-According to speedtest.net: 11.9Mbps down 500kbps up
+If the DPMAC object is in DPMAC_LINK_TYPE_FIXED, the dpaa2-eth in fact
+does not even connect to a phy so all the phylink interaction is not happening.
+As Vladimir said, in this case it's the MC firmware's job to poll the PCS and
+notify any connected objects of a link change.
 
+> >
+> > Regards,
+> > -Vladimir
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
