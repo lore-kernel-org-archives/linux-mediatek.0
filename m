@@ -2,53 +2,63 @@ Return-Path: <SRS0=ht0X=4O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A967C4BA0B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 11:27:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EF910C4BA0E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 11:36:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F004420637
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 11:27:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C4F29206E6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Feb 2020 11:36:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Hx4OYkqN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F004420637
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="f/W788ty"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C4F29206E6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wUGYV7JULHDijeEE0s5BbFuqy2wWMqOvgDkEQgaX9bA=; b=Hx4OYkqNsYijGj
-	ZE/z4Y4ftWtZ0cLluYbesPLVPhISnHDpTY+dFpSES7mi9BG2OeIf1BfIqjkOkCptPVNMXnlX2458S
-	0S3YQHZmoDFyTzmgg/3gx0oMyPsA7PvvYODRqIF870mXfobdLiLJaGatkJptBIjUkkHYuvZx6LDnK
-	v/vbfKAbEg6m2LQ53yiIDQEYBnQeK5fnX3LEnbBUo1uRvSQdDJ+3sNx1VvBatdZPPCr75myzHLGKH
-	WFSp6OHc7SQ3MHnLH69m2xI+bOum4h4sV4d6tET0qEgZlmTRWfAWw+7kqCYF5TsTH2U2FmoMJ6sTz
-	34Wyo6YKeIBFj3oGCUFA==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=mYPuWyu0jFbStwTlLDIwWQfma2fqdxLhTj8jwcHY8ng=; b=f/W788tyo2VtIt2eqRpBJDfs7
+	/EA5ofCMiG0IcBrJCzyNYYAozgc94fPdGU+Y0p28PsgM0POGem8BUvYwEkTm31ywR/6YLjlpI/jLX
+	HNZIPf84QnognXhnHC7PiP4iK28hB6cBMcEfCouOtEObKJRhgJ7PpUqhEg0O+AorPKljIPl1xdfzl
+	G8KC9bzfkQ48ihNAmLo2KaU1STfH7XVqdMTO4B01fZibG7ia1YT08IxMOuSsjoRH3r14xCxlQ+sK2
+	yplXNR6sZEAptttx5QUxAvX8BsG01Wo/CgNhP53pf5D5tKPBhTYtZ5iwYptRoxVRyzN+wj9SbeRVz
+	sYTv2T3Aw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j6uqu-0008Ul-PB; Wed, 26 Feb 2020 11:27:44 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j6uqj-0008ME-Fn; Wed, 26 Feb 2020 11:27:34 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id C1302293937
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH] drm/mediatek: Remove debug messages for function calls
-Date: Wed, 26 Feb 2020 12:27:23 +0100
-Message-Id: <20200226112723.649954-1-enric.balletbo@collabora.com>
-X-Mailer: git-send-email 2.25.0
+	id 1j6uzK-0003cn-Ex; Wed, 26 Feb 2020 11:36:26 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j6uz6-0003TC-RS; Wed, 26 Feb 2020 11:36:14 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2680D1FB;
+ Wed, 26 Feb 2020 03:36:12 -0800 (PST)
+Received: from localhost (unknown [10.37.6.21])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 9DDD73FA00;
+ Wed, 26 Feb 2020 03:36:11 -0800 (PST)
+Date: Wed, 26 Feb 2020 11:36:10 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Chuanhong Guo <gch981213@gmail.com>
+Subject: Re: [PATCH 0/2] rewrite mtk-quadspi spi-nor driver with spi-mem
+Message-ID: <20200226113610.GD4136@sirena.org.uk>
+References: <20200215065826.739102-1-gch981213@gmail.com>
+ <20200218125557.GD4232@sirena.org.uk>
+ <CAJsYDVL03KJv7eewGekBPCfpbOuTX0tJ6qZaydvJnBDzZ5vEwg@mail.gmail.com>
+ <20200225173137.GA31830@bogus>
+ <CAJsYDVKqcd-ytLLf5zKqs8DfjPAa5ELCX53OiPDAi-tDnLd=Eg@mail.gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <CAJsYDVKqcd-ytLLf5zKqs8DfjPAa5ELCX53OiPDAi-tDnLd=Eg@mail.gmail.com>
+X-Cookie: May all your PUSHes be POPped.
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200226_032733_659226_32E17AC2 
-X-CRM114-Status: UNSURE (   9.30  )
+X-CRM114-CacheID: sfid-20200226_033612_933456_1AA42F75 
+X-CRM114-Status: UNSURE (   9.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -61,94 +71,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
- dri-devel@lists.freedesktop.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
- CK Hu <ck.hu@mediatek.com>, Collabora Kernel ML <kernel@collabora.com>,
+Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh@kernel.org>,
+ Vignesh Raghavendra <vigneshr@ti.com>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Richard Weinberger <richard@nod.at>,
+ open list <linux-kernel@vger.kernel.org>, linux-spi@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6899590223408894945=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Equivalent information can be nowadays obtained using function tracer.
 
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
+--===============6899590223408894945==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ylS2wUBXLOxYXZFQ"
+Content-Disposition: inline
 
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 5 -----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c  | 2 --
- 2 files changed, 7 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index a236499123aa..882c690d3f13 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -192,7 +192,6 @@ static int mtk_crtc_ddp_clk_enable(struct mtk_drm_crtc *mtk_crtc)
- 	int ret;
- 	int i;
- 
--	DRM_DEBUG_DRIVER("%s\n", __func__);
- 	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
- 		ret = clk_prepare_enable(mtk_crtc->ddp_comp[i]->clk);
- 		if (ret) {
-@@ -212,7 +211,6 @@ static void mtk_crtc_ddp_clk_disable(struct mtk_drm_crtc *mtk_crtc)
- {
- 	int i;
- 
--	DRM_DEBUG_DRIVER("%s\n", __func__);
- 	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++)
- 		clk_disable_unprepare(mtk_crtc->ddp_comp[i]->clk);
- }
-@@ -257,7 +255,6 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
- 	int ret;
- 	int i;
- 
--	DRM_DEBUG_DRIVER("%s\n", __func__);
- 	if (WARN_ON(!crtc->state))
- 		return -EINVAL;
- 
-@@ -298,7 +295,6 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
- 		goto err_mutex_unprepare;
- 	}
- 
--	DRM_DEBUG_DRIVER("mediatek_ddp_ddp_path_setup\n");
- 	for (i = 0; i < mtk_crtc->ddp_comp_nr - 1; i++) {
- 		mtk_ddp_add_comp_to_path(mtk_crtc->config_regs,
- 					 mtk_crtc->ddp_comp[i]->id,
-@@ -348,7 +344,6 @@ static void mtk_crtc_ddp_hw_fini(struct mtk_drm_crtc *mtk_crtc)
- 	struct drm_crtc *crtc = &mtk_crtc->base;
- 	int i;
- 
--	DRM_DEBUG_DRIVER("%s\n", __func__);
- 	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
- 		mtk_ddp_comp_stop(mtk_crtc->ddp_comp[i]);
- 		if (i == 1)
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 17f118ee0e57..4934834977b3 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -570,7 +570,6 @@ static int mtk_drm_sys_suspend(struct device *dev)
- 	int ret;
- 
- 	ret = drm_mode_config_helper_suspend(drm);
--	DRM_DEBUG_DRIVER("mtk_drm_sys_suspend\n");
- 
- 	return ret;
- }
-@@ -582,7 +581,6 @@ static int mtk_drm_sys_resume(struct device *dev)
- 	int ret;
- 
- 	ret = drm_mode_config_helper_resume(drm);
--	DRM_DEBUG_DRIVER("mtk_drm_sys_resume\n");
- 
- 	return ret;
- }
--- 
-2.25.0
+--ylS2wUBXLOxYXZFQ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+On Wed, Feb 26, 2020 at 09:31:33AM +0800, Chuanhong Guo wrote:
+> On Wed, Feb 26, 2020 at 1:31 AM Rob Herring <robh@kernel.org> wrote:
+
+> > You should should really only need 'spi-max-frequency' if the max freq
+> > is less than the minimum of the host and device max freq.
+
+> But current spi framework forces that a "spi-max-frequency" property
+> is present. [0]
+> Should we patch spi framework then?
+
+That's one option, yes.  As far as I can tell the bindings have always
+required an explicit frequency specified in the bindings but I've no
+idea why.
+
+--ylS2wUBXLOxYXZFQ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl5WWCkACgkQJNaLcl1U
+h9CC6gf+JGnksoKyOcf+87xz30r83FSXTXHP5TSv0S1iEPWe7PYG3vPRv0NdFdq2
+95nsCYkfFdyrl8ayy/LjsXvZMbZPUv2oDhJGdq11H7EX3/DrKCTcChXdkzpD64NG
+dlKWpB6xvJ6Ka/g9VowGe+WcTwrhQBQByb45Z0EkTZxQ+YScJHQkJy8HZXQKf85E
+IAW7t7mcHtmmIXmJB7yHHE3exT6cOcDurwuz6QOJ+w3YwNYNO2HcR5ZS0T1IjPe4
+WgWVxid2OxLorFCxu8dUxxsq29uDD49lP/kfbyVYkND761fTbk2idLN94r6vvCyx
+6PNQ3DIDylR48WUdePXdGADNjXBUog==
+=d0oJ
+-----END PGP SIGNATURE-----
+
+--ylS2wUBXLOxYXZFQ--
+
+
+--===============6899590223408894945==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============6899590223408894945==--
+
