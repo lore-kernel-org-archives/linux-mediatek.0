@@ -2,61 +2,77 @@ Return-Path: <SRS0=4wrq=4P=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C66A5C4BA24
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Feb 2020 09:55:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D243CC4BA24
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Feb 2020 10:10:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 771C1222C2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Feb 2020 09:55:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A49B924670
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Feb 2020 10:10:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tce2xwmM"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 771C1222C2
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gI2BOt6q";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="BakoIO05"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A49B924670
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OFJJ0r4Qhu/ooKnvOsFXpmZAU/ZEM+m7HSGn57myCfE=; b=tce2xwmMaXuiwJ
-	wqaHjNOjtUR2H4QZgySNaLXP5a5ialcW9IB4eQr+NKchuTZWeVeVnU3uyml3eTL/PJS9F+SocOdI9
-	C3fKZIi6LG8TDt7az5ftOz4Z0qc8dFPEACo64NqnyHo/F7Ni6lnTtVIX/gKhRWFqiWI9y3G3FKBHK
-	3GQSEH3mPDpc/Hzj9Cc+l4m/vhKMVOVPHRECjexVaUBKuoO3vpOsQ8CX0D0JIGIf78mEs8IbhHpHo
-	F2NFaP/nduw33fcfnIgIn7aCj0xzkErZ9MCd07yr3qukRI7/dH4T3UF3yNMqNq5XGUMF9+GvD/eH3
-	lWUUkfAUbyUB/DoV8ZcQ==;
+	List-Owner; bh=ipIrfwECp01Q55JhTMMagYBqCvQoIU6Xtc8MuX4T3rg=; b=gI2BOt6qQiT3Af
+	gSbgQ8Yw6FttU03Qj5I1z6wxUZybYTx/HvAiDWM7YTvhvZwv0xP+8nNMAfTaOLSYIcIRBM2ODwSxY
+	NtbUZJFc18OaDFPiEMEahf7MpUzVW5+Oy4d25zHJeVBZJqMOP32CTcn5Vm9+gfrD03JIya7o6nmHD
+	YKOXti/++X8veCdEJ6l6jvmMZA1iDEY5GjtwpZ0+8fF/VtUvMlaYN9lTpYntxT5gx6VfvFsu1n3Xd
+	fryNkH7BkUPO4tL9Cw+vC9LNc4KLnWXrSnJS4iUFJJBT8r07pXLJEkk2XJNA+otT4GUbz8ZXnsm9l
+	D+ysJezvNC3L5SCvApCA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j7FtI-00017l-Fk; Thu, 27 Feb 2020 09:55:36 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j7Ft8-0000yI-9V; Thu, 27 Feb 2020 09:55:27 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B70461FB;
- Thu, 27 Feb 2020 01:55:25 -0800 (PST)
-Received: from arrakis.emea.arm.com (arrakis.cambridge.arm.com [10.1.196.71])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id
- 4E7FB3F881; Thu, 27 Feb 2020 01:55:23 -0800 (PST)
-Date: Thu, 27 Feb 2020 09:55:21 +0000
-From: Catalin Marinas <catalin.marinas@arm.com>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Subject: Re: [PATCH v4] usb: gadget: f_fs: try to fix AIO issue under ARM 64
- bit TAGGED mode
-Message-ID: <20200227095521.GA3281767@arrakis.emea.arm.com>
-References: <1582627315-21123-1-git-send-email-macpaul.lin@mediatek.com>
- <1582718512-28923-1-git-send-email-macpaul.lin@mediatek.com>
+	id 1j7G7H-0006hO-Rq; Thu, 27 Feb 2020 10:10:03 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j7G7E-0006Wh-Pr; Thu, 27 Feb 2020 10:10:02 +0000
+X-UUID: 1b03fa6e8a38465ca83dfa9628bcfdfb-20200227
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=eLO7gTFF1vCEAIYROkM8MZuVGCM3sjjAWL8M+r6/05Y=; 
+ b=BakoIO05e70F2zY4x9CluisQoeR2XSAUbzcWYoBfojDKRB1rabr2ND/3Fc3BDv/lMD4vRzT0evUdvNnSw44hiIW09QV1L/mWtF9KgXsXt6kEnc3NHimSorPXgazAkfYlCxf4yMFJ+Pp2FT2IrCe9OAS7dVxONIKUsyBrzLxNMj0=;
+X-UUID: 1b03fa6e8a38465ca83dfa9628bcfdfb-20200227
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <sam.shih@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 94554355; Thu, 27 Feb 2020 02:09:54 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 27 Feb 2020 02:00:58 -0800
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 27 Feb 2020 17:59:00 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Thu, 27 Feb 2020 17:59:53 +0800
+Message-ID: <1582797590.25607.10.camel@mtksdccf07>
+Subject: Re: [PATCH 1/1] pwm: mediatek: add longer period support
+From: Sam Shih <sam.shih@mediatek.com>
+To: Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Date: Thu, 27 Feb 2020 17:59:50 +0800
+In-Reply-To: <20200227080450.rkvwfjx6vikn5ls3@pengutronix.de>
+References: <1582789610-23133-1-git-send-email-sam.shih@mediatek.com>
+ <1582789610-23133-2-git-send-email-sam.shih@mediatek.com>
+ <20200227080450.rkvwfjx6vikn5ls3@pengutronix.de>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1582718512-28923-1-git-send-email-macpaul.lin@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200227_015526_421408_D9B6A74F 
-X-CRM114-Status: GOOD (  21.90  )
+X-CRM114-CacheID: sfid-20200227_021000_846692_483944C2 
+X-CRM114-Status: GOOD (  26.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,106 +84,163 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Shen Jing <jingx.shen@intel.com>,
- CC Hwang <cc.hwang@mediatek.com>, Peter Chen <peter.chen@nxp.com>,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- Jerry Zhang <zhangjerry@google.com>, andreyknvl@google.com,
- linux-usb@vger.kernel.org, Loda Chou <loda.chou@mediatek.com>,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org,
- Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
- Miles Chen <miles.chen@mediatek.com>, John Stultz <john.stultz@linaro.org>,
- Al Viro <viro@zeniv.linux.org.uk>, Vincent Pelletier <plr.vincent@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+Cc: linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org,
+ John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-15"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 26, 2020 at 08:01:52PM +0800, Macpaul Lin wrote:
-> This issue was found when adbd trying to open functionfs with AIO mode.
-> Usually, we need to set "setprop sys.usb.ffs.aio_compat 0" to enable
-> adbd with AIO mode on Android.
-> 
-> When adbd is opening functionfs, it will try to read 24 bytes at the
-> first read I/O control. If this reading has been failed, adbd will
-> try to send FUNCTIONFS_CLEAR_HALT to functionfs. When adbd is in AIO
-> mode, functionfs will be acted with asyncronized I/O path. After the
-> successful read transfer has been completed by gadget hardware, the
-> following series of functions will be called.
->   ffs_epfile_async_io_complete() -> ffs_user_copy_worker() ->
->     copy_to_iter() -> _copy_to_iter() -> copyout() ->
->     iterate_and_advance() -> iterate_iovec()
-> 
-> Adding debug trace to these functions, it has been found that in
-> copyout(), access_ok() will check if the user space address is valid
-> to write. However if CONFIG_ARM64_TAGGED_ADDR_ABI is enabled, adbd
-> always passes user space address start with "0x3C" to gadget's AIO
-> blocks. This tagged address will cause access_ok() check always fail.
-> Which causes later calculation in iterate_iovec() turn zero.
-> Copyout() won't copy data to user space since the length to be copied
-> "v.iov_len" will be zero. Finally leads ffs_copy_to_iter() always return
-> -EFAULT, causes adbd cannot open functionfs and send
-> FUNCTIONFS_CLEAR_HALT.
-> 
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> Cc: Peter Chen <peter.chen@nxp.com>
-> Cc: Catalin Marinas <catalin.marinas@arm.com>
-> Cc: Miles Chen <miles.chen@mediatek.com>
-> ---
-> Changes for v4:
->   - Abandon solution v3 by adding "TIF_TAGGED_ADDR" flag to gadget driver.
->     According to Catalin's suggestion, change the solution by untagging 
->     user space address passed by AIO in gadget driver.
+On Thu, 2020-02-27 at 09:04 +0100, Uwe Kleine-K=F6nig wrote:
+On Thu, Feb 27, 2020 at 03:46:50PM +0800, Sam Shih wrote:
+> > The pwm clock source could be divided by 1625 with PWM_CON
+> > BIT(3) setting in mediatek hardware.
+> > =
 
-Well, this was suggested in case you have a strong reason not to do the
-untagging in adbd. As I said, tagged pointers in user space were
-supported long before we introduced CONFIG_ARM64_TAGGED_ADDR_ABI. How
-did adb cope with such tagged pointers before? It was not supposed to
-pass them to the kernel.
+> > This patch add support for longer pwm period configuration,
+> > which allowing blinking LEDs via pwm interface.
+> > =
 
-> diff --git a/drivers/usb/gadget/function/f_fs.c b/drivers/usb/gadget/function/f_fs.c
-> index ce1d023..192935f 100644
-> --- a/drivers/usb/gadget/function/f_fs.c
-> +++ b/drivers/usb/gadget/function/f_fs.c
-> @@ -715,7 +715,20 @@ static void ffs_epfile_io_complete(struct usb_ep *_ep, struct usb_request *req)
->  
->  static ssize_t ffs_copy_to_iter(void *data, int data_len, struct iov_iter *iter)
->  {
-> -	ssize_t ret = copy_to_iter(data, data_len, iter);
-> +	ssize_t ret;
-> +
-> +#if defined(CONFIG_ARM64)
-> +	/*
-> +	 * Replace tagged address passed by user space application before
-> +	 * copying.
-> +	 */
-> +	if (IS_ENABLED(CONFIG_ARM64_TAGGED_ADDR_ABI) &&
-> +		(iter->type == ITER_IOVEC)) {
-> +		*(unsigned long *)&iter->iov->iov_base =
-> +			(unsigned long)untagged_addr(iter->iov->iov_base);
-> +	}
-> +#endif
-> +	ret = copy_to_iter(data, data_len, iter);
+> > Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+> > ---
+> >  drivers/pwm/pwm-mediatek.c | 21 +++++++++++++++++----
+> >  1 file changed, 17 insertions(+), 4 deletions(-)
+> > =
 
-Here you should probably drop all the #ifdefs and IS_ENABLED checks
-since untagged_addr() is defined globally as a no-op (and overridden by
-arm64 and sparc).
+> > diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+> > index b94e0d09c300..9af309bea01a 100644
+> > --- a/drivers/pwm/pwm-mediatek.c
+> > +++ b/drivers/pwm/pwm-mediatek.c
+> > @@ -121,8 +121,8 @@ static int pwm_mediatek_config(struct pwm_chip
+*chip, struct pwm_device *pwm,
+> >  			       int duty_ns, int period_ns)
+> >  {
+> >  	struct pwm_mediatek_chip *pc =3D to_pwm_mediatek_chip(chip);
+> > -	u32 clkdiv =3D 0, cnt_period, cnt_duty, reg_width =3D PWMDWIDTH,
+> > -	    reg_thres =3D PWMTHRES;
+> > +	u32 clkdiv =3D 0, clksel =3D 0, cnt_period, cnt_duty,
+> > +	    reg_width =3D PWMDWIDTH, reg_thres =3D PWMTHRES;
+> >  	u64 resolution;
+> >  	int ret;
+> >  =
 
-Please don't send another patch until we understand (a) whether this is
-a user-space problem to fix or (b) if we fix it in the kernel, is this
-the only/right place? If we settle for the in-kernel untagging, do we
-explicitly untag the addresses in such kernel threads or we default to
-TIF_TAGGED_ADDR for all kernel threads, in case they ever call use_mm()
-(or we could even hook something in use_mm() to set this TIF flag
-temporarily).
+> Adding some more context:
+> =
 
-Looking for feedback from the Android folk and a better analysis of the
-possible solution.
 
--- 
-Catalin
++ /* The pwm source clock can be divided by 2^clkdiv. When the clksel  +
+* bit is set to 1, The final clock output needs to be divided by an +  *
+extra 1625.
++  */
 
+Is this ok ?
+
+
+> > @@ -139,11 +139,20 @@ static int pwm_mediatek_config(struct pwm_chip
+*chip, struct pwm_device *pwm,
+> > 	while (cnt_period > 8191) {
+> >  		resolution *=3D 2;
+> >  		clkdiv++;
+> >  		cnt_period =3D DIV_ROUND_CLOSEST_ULL((u64)period_ns * 1000,
+> >  						   resolution);
+> > +		if (clkdiv > PWM_CLK_DIV_MAX && !clksel) {
+> > +			clksel =3D 1;
+> > +			clkdiv =3D 0;
+> > +			resolution =3D (u64)NSEC_PER_SEC * 1000 * 1625;
+> > +			do_div(resolution,
+> > +				clk_get_rate(pc->clk_pwms[pwm->hwpwm]));
+> > +			cnt_period =3D DIV_ROUND_CLOSEST_ULL(
+> > +					(u64)period_ns * 1000, resolution);
+> =
+
+> The assignment is a repetition from just above the if. Maybe just put
+it
+> once after this if block?
+
+The cnt_period represents the effective range of the PWM period counter,
+when we need changing the pwm output period to a longer value at the
+same clock frequency, we can setting a larger cnt_period, but the width
+of the cnt_peroid register is 12 bits,
+When the request period is too long, we need to divide the clock source
+and then recalculate cnt_period outputs the correct waveform.
+As mentioned above, when changing clkdiv, we need to recalculate
+cnt_period immediately.
+
+If the request period is very long (for example, LED blinking), clkdiv
+may be insufficient. =
+
+In this case, we will use clksel to divide the pwm source clock by an
+additional 1625, and recalculate clkdiv and cnt_period.
+
+I don't think we can just place assignments after the if block.
+
+> =
+
+> > +		}
+> >  	}
+> >  =
+
+> > -	if (clkdiv > PWM_CLK_DIV_MAX) {
+> > +	if (clkdiv > PWM_CLK_DIV_MAX && clksel) {
+> =
+
+> Is this change actually relevant? If the while loop that starts at
+line
+> 139 is never run (because cnt_period is <=3D 8191) clkdiv is zero and so
+> the condition is false with and without "&& clksel". If however the
+> while loop is entered and clkdiv becomes bigger than PWM_CLK_DIV_MAX
+> clksel is 1 and the "&& clksel" doesn't make a difference, too.
+> =
+
+
+You are right, I will remove this.
+
+> The code is hard to follow, I wonder if this could be cleaned up with
+> some comments added that explain the hardware details enough to be
+able
+> to actually understand the code without having the hardware reference
+> manual handy.
+> =
+
+
+Is it sufficient to add some context into comment like the response of
+the second question?
+
+
+> >  		pwm_mediatek_clk_disable(chip, pwm);
+> >  		dev_err(chip->dev, "period %d not supported\n", period_ns);
+> >  		return -EINVAL;
+> > @@ -159,7 +168,11 @@ static int pwm_mediatek_config(struct pwm_chip
+*chip, struct pwm_device *pwm,
+> >  	}
+> >  =
+
+> >  	cnt_duty =3D DIV_ROUND_CLOSEST_ULL((u64)duty_ns * 1000, resolution);
+> > -	pwm_mediatek_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
+> > +	if (clksel)
+> > +		pwm_mediatek_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | BIT(3) |
+> > +				    clkdiv);
+> > +	else
+> > +		pwm_mediatek_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
+> >  	pwm_mediatek_writel(pc, pwm->hwpwm, reg_width, cnt_period);
+> >  	pwm_mediatek_writel(pc, pwm->hwpwm, reg_thres, cnt_duty);
+> >  =
+
+> > -- =
+
+> > 2.17.1
+> =
+
+> Best regards
+> Uwe
+> =
+
+>
+
+Best Regards,
+Sam
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
