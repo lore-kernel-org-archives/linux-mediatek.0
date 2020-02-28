@@ -2,22 +2,23 @@ Return-Path: <SRS0=Knfd=4Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-7.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UPPERCASE_50_75,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E66BFC3F2D2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2020 15:24:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DE011C3F2D2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2020 15:26:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B1F622469F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2020 15:24:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AE7AC246AC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2020 15:26:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FKDVcfHY";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="pb/NYfTo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B1F622469F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ktse2j87";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="iMGY+Kar"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AE7AC246AC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +27,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LqoCPVR0LceOyQzwWATzxhwWFPCKwfqJ5gpz6cg5Tz8=; b=FKDVcfHY3O5XKU
-	AMcj+162MVX07WbWoWYF+rDeY4QwvG1uHOXJ6XRAH2IUmBAw8/+DwzeWamFnsh0XPsgTT9duLDLCC
-	3PS/c5S5LUtSi2Kj9tBU2i/vlZKYCJc2shA4LMymNK05p6aO/Uy2UyV/i33T17lfTokaHvcb+/AWx
-	pCzESU9rVd8g1OpvEELNmV63o4hz2IGdnr9DKfTlZ6Iwu3Y9Q49GIsqgHCnM56gNwSUq3a/X3nUSS
-	nxork+wU7SZ43lpG70zlUTn7rhEyglraLdoI2fX8hTUFFAmiX3Ubo2YcXmXsH6xMVhSvnDHpl/btu
-	xd2ElK/esvjLtgCMSWZQ==;
+	List-Owner; bh=YdJQnWruhQ55WQAXxIGlWsKUwUcY7hNyAwF60tOTd5A=; b=ktse2j87r1RONK
+	hFyd4MKCWe+/OjodtD228kXvxEutUQW2d+5+eN+wA71p5hK2RiuMl4pssmwKMBMXq5etIf+KxBVmE
+	FRLK1qMFaqXnH0iecSkixcSUjMRvEymDrHuZdRqadsee9o0LBZLMU7BnQsXKLrqy+1fQUQEf3G1w1
+	Tvc4TI8w3lJdNPX2X9qoUBoHatbjNSHXfB03Gt5uC4n6hTA7m369NRo+m3Lyj3UNO6NeoApb9kDnB
+	OqoEau/ixowYq9Oi8t2dC6JwapmajU2TZNQbJQN/8jDGqpScoR3Fbst23/6P6cZ6zQrlKmjwtLglM
+	8EDFJZmqmxP0Q7L1RFBg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j7hUT-0005R6-MQ; Fri, 28 Feb 2020 15:23:49 +0000
+	id 1j7hXH-0007bY-NH; Fri, 28 Feb 2020 15:26:43 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j7hTq-0004q2-KE; Fri, 28 Feb 2020 15:23:12 +0000
-X-UUID: a7f527ad11c64f85bf0eef5e9483ffd4-20200228
+ id 1j7hXC-0007WG-IE; Fri, 28 Feb 2020 15:26:40 +0000
+X-UUID: 8efa43e1719e4439943bb9b182d6e743-20200228
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=ifFGmBxdS0EJEl6Bjk1aR1VMhenXnvQtJT+O9VME79I=; 
- b=pb/NYfTolnqw16DbUvgWS6XEbA+BavrBRFbS51xZEBf7wsURNGb0+HmyoJ/HBV0JmLVD4UMj1ZzsuGGoT/3Du0EDFucQNmwoUdLbulgJCw20YUY2mVGknYsVV80dzBjgb96kNPmg9zeu7VqonS+TAbK4qqqCdv+a2f2fgLNQGiQ=;
-X-UUID: a7f527ad11c64f85bf0eef5e9483ffd4-20200228
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=ViFwYC5Iuqie3+fCE6e5hR8JCYBaGd+fxv9YzMHIe9k=; 
+ b=iMGY+Karo1RIWMz4zPsokfjrqrK3eN991oNOpG/74s1OHu63uBByx7luf7A/ujW6l3aoy9jNHnt7RPB4GCGweb68b7TLWK1ffms3R0lTJor3ofmx24WvWNPSOlJ4k4Kygrzst4dF0+dhHUSBZAuyYuMT9JzI6tQa6IhdvVzsN7o=;
+X-UUID: 8efa43e1719e4439943bb9b182d6e743-20200228
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1692798686; Fri, 28 Feb 2020 07:23:00 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 28 Feb 2020 07:22:58 -0800
+ with ESMTP id 1028621814; Fri, 28 Feb 2020 07:26:36 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 28 Feb 2020 07:27:17 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 28 Feb 2020 23:22:03 +0800
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 28 Feb 2020 23:25:35 +0800
 Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Fri, 28 Feb 2020 23:22:39 +0800
-Message-ID: <1582903376.14824.16.camel@mtksdaap41>
-Subject: Re: [PATCH v3 02/13] mailbox: cmdq: variablize address shift in
- platform
+ Transport; Fri, 28 Feb 2020 23:26:15 +0800
+Message-ID: <1582903592.14824.17.camel@mtksdaap41>
+Subject: Re: [PATCH v3 01/13] dt-binding: gce: add gce header file for mt6779
 From: CK Hu <ck.hu@mediatek.com>
 To: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
-Date: Fri, 28 Feb 2020 23:22:56 +0800
-In-Reply-To: <1582897461-15105-4-git-send-email-dennis-yc.hsieh@mediatek.com>
+Date: Fri, 28 Feb 2020 23:26:32 +0800
+In-Reply-To: <1582897461-15105-3-git-send-email-dennis-yc.hsieh@mediatek.com>
 References: <1582897461-15105-1-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1582897461-15105-4-git-send-email-dennis-yc.hsieh@mediatek.com>
+ <1582897461-15105-3-git-send-email-dennis-yc.hsieh@mediatek.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 1861E905388C3C948D591E272C14597B41A6A63496B7A535F6D18F07C7724FCF2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200228_072310_698502_186DFBBE 
-X-CRM114-Status: GOOD (  18.03  )
+X-CRM114-CacheID: sfid-20200228_072638_644433_A3B8FDED 
+X-CRM114-Status: GOOD (  14.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,205 +101,275 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Hi, Dennis:
 
 On Fri, 2020-02-28 at 21:44 +0800, Dennis YC Hsieh wrote:
-> Some gce hardware shift pc and end address in register to support
-> large dram addressing.
-> Implement gce address shift when write or read pc and end register.
-> And add shift bit in platform definition.
+> Add documentation for the mt6779 gce.
 > 
+> Add gce header file defined the gce hardware event,
+> subsys number and constant for mt6779.
+> 
+
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+
 > Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
 > ---
->  drivers/mailbox/mtk-cmdq-mailbox.c       | 57 ++++++++++++++++++------
->  drivers/soc/mediatek/mtk-cmdq-helper.c   |  3 +-
->  include/linux/mailbox/mtk-cmdq-mailbox.h |  2 +
->  3 files changed, 48 insertions(+), 14 deletions(-)
+>  .../devicetree/bindings/mailbox/mtk-gce.txt   |   8 +-
+>  include/dt-bindings/gce/mt6779-gce.h          | 222 ++++++++++++++++++
+>  2 files changed, 227 insertions(+), 3 deletions(-)
+>  create mode 100644 include/dt-bindings/gce/mt6779-gce.h
 > 
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-> index 9a6ce9f5a7db..a98f0357dd7d 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -76,8 +76,22 @@ struct cmdq {
->  	struct cmdq_thread	*thread;
->  	struct clk		*clock;
->  	bool			suspended;
-> +	u8			shift_pa;
->  };
+> diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> index 7b13787ab13d..82c0a83fed09 100644
+> --- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> +++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
+> @@ -9,7 +9,8 @@ CMDQ driver uses mailbox framework for communication. Please refer to
+>  mailbox.txt for generic information about mailbox device-tree bindings.
 >  
-> +struct gce_plat {
-> +	u32 thread_nr;
-> +	u8 shift;
-> +};
+>  Required properties:
+> -- compatible: can be "mediatek,mt8173-gce" or "mediatek,mt8183-gce"
+> +- compatible: can be "mediatek,mt8173-gce", "mediatek,mt8183-gce" or
+> +  "mediatek,mt6779-gce".
+>  - reg: Address range of the GCE unit
+>  - interrupts: The interrupt signal from the GCE block
+>  - clock: Clocks according to the common clock binding
+> @@ -36,8 +37,9 @@ Optional properties for a client device:
+>    start_offset: the start offset of register address that GCE can access.
+>    size: the total size of register address that GCE can access.
+>  
+> -Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h'
+> -or 'dt-binding/gce/mt8183-gce.h'. Such as sub-system ids, thread priority, event ids.
+> +Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h',
+> +'dt-binding/gce/mt8183-gce.h' or 'dt-bindings/gce/mt6779-gce.h'. Such as
+> +sub-system ids, thread priority, event ids.
+>  
+>  Example:
+>  
+> diff --git a/include/dt-bindings/gce/mt6779-gce.h b/include/dt-bindings/gce/mt6779-gce.h
+> new file mode 100644
+> index 000000000000..06101316ace4
+> --- /dev/null
+> +++ b/include/dt-bindings/gce/mt6779-gce.h
+> @@ -0,0 +1,222 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2019 MediaTek Inc.
+> + * Author: Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>
+> + */
 > +
-> +u8 cmdq_mbox_shift(struct mbox_chan *chan)
-> +{
-> +	struct cmdq *cmdq = container_of(chan->mbox, struct cmdq, mbox);
+> +#ifndef _DT_BINDINGS_GCE_MT6779_H
+> +#define _DT_BINDINGS_GCE_MT6779_H
 > +
-> +	return cmdq->shift_pa;
-> +}
-> +EXPORT_SYMBOL(cmdq_mbox_shift);
+> +#define CMDQ_NO_TIMEOUT		0xffffffff
 > +
->  static int cmdq_thread_suspend(struct cmdq *cmdq, struct cmdq_thread *thread)
->  {
->  	u32 status;
-> @@ -183,7 +197,7 @@ static void cmdq_task_remove_wfe(struct cmdq_task *task)
->  	for (i = 0; i < CMDQ_NUM_CMD(task->pkt); i++)
->  		if (cmdq_command_is_wfe(base[i]))
->  			base[i] = (u64)CMDQ_JUMP_BY_OFFSET << 32 |
-> -				  CMDQ_JUMP_PASS;
-> +				  CMDQ_JUMP_PASS >> task->cmdq->shift_pa;
->  	dma_sync_single_for_device(dev, task->pa_base, task->pkt->cmd_buf_size,
->  				   DMA_TO_DEVICE);
->  }
-> @@ -221,13 +235,15 @@ static void cmdq_task_handle_error(struct cmdq_task *task)
->  {
->  	struct cmdq_thread *thread = task->thread;
->  	struct cmdq_task *next_task;
-> +	struct cmdq *cmdq = task->cmdq;
->  
->  	dev_err(task->cmdq->mbox.dev, "task 0x%p error\n", task);
->  	WARN_ON(cmdq_thread_suspend(task->cmdq, thread) < 0);
-
-If you invent local variable 'cmdq', I think you could replace all
-task->cmdq with cmdq in this function.
-
->  	next_task = list_first_entry_or_null(&thread->task_busy_list,
->  			struct cmdq_task, list_entry);
->  	if (next_task)
-> -		writel(next_task->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
-> +		writel(next_task->pa_base >> cmdq->shift_pa,
-> +		       thread->base + CMDQ_THR_CURR_ADDR);
->  	cmdq_thread_resume(thread);
->  }
->  
-> @@ -257,7 +273,7 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
->  	else
->  		return;
->  
-> -	curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR);
-> +	curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) << cmdq->shift_pa;
->  
->  	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
->  				 list_entry) {
-> @@ -373,16 +389,20 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
->  		WARN_ON(clk_enable(cmdq->clock) < 0);
->  		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
->  
-> -		writel(task->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
-> -		writel(task->pa_base + pkt->cmd_buf_size,
-> +		writel(task->pa_base >> cmdq->shift_pa,
-> +		       thread->base + CMDQ_THR_CURR_ADDR);
-> +		writel((task->pa_base + pkt->cmd_buf_size) >> cmdq->shift_pa,
->  		       thread->base + CMDQ_THR_END_ADDR);
+> +/* GCE HW thread priority */
+> +#define CMDQ_THR_PRIO_LOWEST	0
+> +#define CMDQ_THR_PRIO_1		1
+> +#define CMDQ_THR_PRIO_2		2
+> +#define CMDQ_THR_PRIO_3		3
+> +#define CMDQ_THR_PRIO_4		4
+> +#define CMDQ_THR_PRIO_5		5
+> +#define CMDQ_THR_PRIO_6		6
+> +#define CMDQ_THR_PRIO_HIGHEST	7
 > +
->  		writel(thread->priority, thread->base + CMDQ_THR_PRIORITY);
->  		writel(CMDQ_THR_IRQ_EN, thread->base + CMDQ_THR_IRQ_ENABLE);
->  		writel(CMDQ_THR_ENABLED, thread->base + CMDQ_THR_ENABLE_TASK);
->  	} else {
->  		WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
-> -		curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR);
-> -		end_pa = readl(thread->base + CMDQ_THR_END_ADDR);
-> +		curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) <<
-> +			cmdq->shift_pa;
-> +		end_pa = readl(thread->base + CMDQ_THR_END_ADDR) <<
-> +			cmdq->shift_pa;
->  
->  		/*
->  		 * Atomic execution should remove the following wfe, i.e. only
-> @@ -395,7 +415,7 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
->  				cmdq_thread_wait_end(thread, end_pa);
->  				WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
->  				/* set to this task directly */
-> -				writel(task->pa_base,
-> +				writel(task->pa_base >> cmdq->shift_pa,
->  				       thread->base + CMDQ_THR_CURR_ADDR);
->  			} else {
->  				cmdq_task_insert_into_thread(task);
-> @@ -407,14 +427,14 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
->  			if (curr_pa == end_pa - CMDQ_INST_SIZE ||
->  			    curr_pa == end_pa) {
->  				/* set to this task directly */
-> -				writel(task->pa_base,
-> +				writel(task->pa_base >> cmdq->shift_pa,
->  				       thread->base + CMDQ_THR_CURR_ADDR);
->  			} else {
->  				cmdq_task_insert_into_thread(task);
->  				smp_mb(); /* modify jump before enable thread */
->  			}
->  		}
-> -		writel(task->pa_base + pkt->cmd_buf_size,
-> +		writel((task->pa_base + pkt->cmd_buf_size) >> cmdq->shift_pa,
->  		       thread->base + CMDQ_THR_END_ADDR);
->  		cmdq_thread_resume(thread);
->  	}
-> @@ -461,6 +481,7 @@ static int cmdq_probe(struct platform_device *pdev)
->  	struct resource *res;
->  	struct cmdq *cmdq;
->  	int err, i;
-> +	struct gce_plat *plat_data;
->  
->  	cmdq = devm_kzalloc(dev, sizeof(*cmdq), GFP_KERNEL);
->  	if (!cmdq)
-> @@ -479,7 +500,14 @@ static int cmdq_probe(struct platform_device *pdev)
->  		return -EINVAL;
->  	}
->  
-> -	cmdq->thread_nr = (u32)(unsigned long)of_device_get_match_data(dev);
-> +	plat_data = (struct gce_plat *)of_device_get_match_data(dev);
-> +	if (!plat_data) {
-> +		dev_err(dev, "failed to get match data\n");
-> +		return -EINVAL;
-> +	}
+> +/* GCE subsys table */
+> +#define SUBSYS_1300XXXX		0
+> +#define SUBSYS_1400XXXX		1
+> +#define SUBSYS_1401XXXX		2
+> +#define SUBSYS_1402XXXX		3
+> +#define SUBSYS_1502XXXX		4
+> +#define SUBSYS_1880XXXX		5
+> +#define SUBSYS_1881XXXX		6
+> +#define SUBSYS_1882XXXX		7
+> +#define SUBSYS_1883XXXX		8
+> +#define SUBSYS_1884XXXX		9
+> +#define SUBSYS_1000XXXX		10
+> +#define SUBSYS_1001XXXX		11
+> +#define SUBSYS_1002XXXX		12
+> +#define SUBSYS_1003XXXX		13
+> +#define SUBSYS_1004XXXX		14
+> +#define SUBSYS_1005XXXX		15
+> +#define SUBSYS_1020XXXX		16
+> +#define SUBSYS_1028XXXX		17
+> +#define SUBSYS_1700XXXX		18
+> +#define SUBSYS_1701XXXX		19
+> +#define SUBSYS_1702XXXX		20
+> +#define SUBSYS_1703XXXX		21
+> +#define SUBSYS_1800XXXX		22
+> +#define SUBSYS_1801XXXX		23
+> +#define SUBSYS_1802XXXX		24
+> +#define SUBSYS_1804XXXX		25
+> +#define SUBSYS_1805XXXX		26
+> +#define SUBSYS_1808XXXX		27
+> +#define SUBSYS_180aXXXX		28
+> +#define SUBSYS_180bXXXX		29
+> +#define CMDQ_SUBSYS_OFF		32
 > +
-> +	cmdq->thread_nr = plat_data->thread_nr;
-> +	cmdq->shift_pa = plat_data->shift;
->  	cmdq->irq_mask = GENMASK(cmdq->thread_nr - 1, 0);
->  	err = devm_request_irq(dev, cmdq->irq, cmdq_irq_handler, IRQF_SHARED,
->  			       "mtk_cmdq", cmdq);
-> @@ -542,9 +570,12 @@ static const struct dev_pm_ops cmdq_pm_ops = {
->  	.resume = cmdq_resume,
->  };
->  
-> +static const struct gce_plat gce_plat_v2 = {.thread_nr = 16};
-> +static const struct gce_plat gce_plat_v3 = {.thread_nr = 24};
+> +/* GCE hardware events */
+> +#define CMDQ_EVENT_DISP_RDMA0_SOF		0
+> +#define CMDQ_EVENT_DISP_RDMA1_SOF		1
+> +#define CMDQ_EVENT_MDP_RDMA0_SOF		2
+> +#define CMDQ_EVENT_MDP_RDMA1_SOF		3
+> +#define CMDQ_EVENT_MDP_RSZ0_SOF			4
+> +#define CMDQ_EVENT_MDP_RSZ1_SOF			5
+> +#define CMDQ_EVENT_MDP_TDSHP_SOF		6
+> +#define CMDQ_EVENT_MDP_WROT0_SOF		7
+> +#define CMDQ_EVENT_MDP_WROT1_SOF		8
+> +#define CMDQ_EVENT_DISP_OVL0_SOF		9
+> +#define CMDQ_EVENT_DISP_2L_OVL0_SOF		10
+> +#define CMDQ_EVENT_DISP_2L_OVL1_SOF		11
+> +#define CMDQ_EVENT_DISP_WDMA0_SOF		12
+> +#define CMDQ_EVENT_DISP_COLOR0_SOF		13
+> +#define CMDQ_EVENT_DISP_CCORR0_SOF		14
+> +#define CMDQ_EVENT_DISP_AAL0_SOF		15
+> +#define CMDQ_EVENT_DISP_GAMMA0_SOF		16
+> +#define CMDQ_EVENT_DISP_DITHER0_SOF		17
+> +#define CMDQ_EVENT_DISP_PWM0_SOF		18
+> +#define CMDQ_EVENT_DISP_DSI0_SOF		19
+> +#define CMDQ_EVENT_DISP_DPI0_SOF		20
+> +#define CMDQ_EVENT_DISP_POSTMASK0_SOF		21
+> +#define CMDQ_EVENT_DISP_RSZ0_SOF		22
+> +#define CMDQ_EVENT_MDP_AAL_SOF			23
+> +#define CMDQ_EVENT_MDP_CCORR_SOF		24
+> +#define CMDQ_EVENT_DISP_DBI0_SOF		25
+> +#define CMDQ_EVENT_ISP_RELAY_SOF		26
+> +#define CMDQ_EVENT_IPU_RELAY_SOF		27
+> +#define CMDQ_EVENT_DISP_RDMA0_EOF		28
+> +#define CMDQ_EVENT_DISP_RDMA1_EOF		29
+> +#define CMDQ_EVENT_MDP_RDMA0_EOF		30
+> +#define CMDQ_EVENT_MDP_RDMA1_EOF		31
+> +#define CMDQ_EVENT_MDP_RSZ0_EOF			32
+> +#define CMDQ_EVENT_MDP_RSZ1_EOF			33
+> +#define CMDQ_EVENT_MDP_TDSHP_EOF		34
+> +#define CMDQ_EVENT_MDP_WROT0_W_EOF		35
+> +#define CMDQ_EVENT_MDP_WROT1_W_EOF		36
+> +#define CMDQ_EVENT_DISP_OVL0_EOF		37
+> +#define CMDQ_EVENT_DISP_2L_OVL0_EOF		38
+> +#define CMDQ_EVENT_DISP_2L_OVL1_EOF		39
+> +#define CMDQ_EVENT_DISP_WDMA0_EOF		40
+> +#define CMDQ_EVENT_DISP_COLOR0_EOF		41
+> +#define CMDQ_EVENT_DISP_CCORR0_EOF		42
+> +#define CMDQ_EVENT_DISP_AAL0_EOF		43
+> +#define CMDQ_EVENT_DISP_GAMMA0_EOF		44
+> +#define CMDQ_EVENT_DISP_DITHER0_EOF		45
+> +#define CMDQ_EVENT_DISP_DSI0_EOF		46
+> +#define CMDQ_EVENT_DISP_DPI0_EOF		47
+> +#define CMDQ_EVENT_DISP_RSZ0_EOF		49
+> +#define CMDQ_EVENT_MDP_AAL_FRAME_DONE		50
+> +#define CMDQ_EVENT_MDP_CCORR_FRAME_DONE		51
+> +#define CMDQ_EVENT_DISP_POSTMASK0_FRAME_DONE	52
+> +#define CMDQ_EVENT_MUTEX0_STREAM_EOF		130
+> +#define CMDQ_EVENT_MUTEX1_STREAM_EOF		131
+> +#define CMDQ_EVENT_MUTEX2_STREAM_EOF		132
+> +#define CMDQ_EVENT_MUTEX3_STREAM_EOF		133
+> +#define CMDQ_EVENT_MUTEX4_STREAM_EOF		134
+> +#define CMDQ_EVENT_MUTEX5_STREAM_EOF		135
+> +#define CMDQ_EVENT_MUTEX6_STREAM_EOF		136
+> +#define CMDQ_EVENT_MUTEX7_STREAM_EOF		137
+> +#define CMDQ_EVENT_MUTEX8_STREAM_EOF		138
+> +#define CMDQ_EVENT_MUTEX9_STREAM_EOF		139
+> +#define CMDQ_EVENT_MUTEX10_STREAM_EOF		140
+> +#define CMDQ_EVENT_MUTEX11_STREAM_EOF		141
+> +#define CMDQ_EVENT_DISP_RDMA0_UNDERRUN		142
+> +#define CMDQ_EVENT_DISP_RDMA1_UNDERRUN		143
+> +#define CMDQ_EVENT_DISP_RDMA2_UNDERRUN		144
+> +#define CMDQ_EVENT_DISP_RDMA3_UNDERRUN		145
+> +#define CMDQ_EVENT_DSI0_TE			146
+> +#define CMDQ_EVENT_DSI0_IRQ_EVENT		147
+> +#define CMDQ_EVENT_DSI0_DONE_EVENT		148
+> +#define CMDQ_EVENT_DISP_POSTMASK0_RST_DONE	150
+> +#define CMDQ_EVENT_DISP_WDMA0_RST_DONE		151
+> +#define CMDQ_EVENT_MDP_WROT0_RST_DONE		153
+> +#define CMDQ_EVENT_MDP_RDMA0_RST_DONE		154
+> +#define CMDQ_EVENT_DISP_OVL0_RST_DONE		155
+> +#define CMDQ_EVENT_DISP_OVL0_2L_RST_DONE	156
+> +#define CMDQ_EVENT_DISP_OVL1_2L_RST_DONE	157
+> +#define CMDQ_EVENT_DIP_CQ_THREAD0_EOF		257
+> +#define CMDQ_EVENT_DIP_CQ_THREAD1_EOF		258
+> +#define CMDQ_EVENT_DIP_CQ_THREAD2_EOF		259
+> +#define CMDQ_EVENT_DIP_CQ_THREAD3_EOF		260
+> +#define CMDQ_EVENT_DIP_CQ_THREAD4_EOF		261
+> +#define CMDQ_EVENT_DIP_CQ_THREAD5_EOF		262
+> +#define CMDQ_EVENT_DIP_CQ_THREAD6_EOF		263
+> +#define CMDQ_EVENT_DIP_CQ_THREAD7_EOF		264
+> +#define CMDQ_EVENT_DIP_CQ_THREAD8_EOF		265
+> +#define CMDQ_EVENT_DIP_CQ_THREAD9_EOF		266
+> +#define CMDQ_EVENT_DIP_CQ_THREAD10_EOF		267
+> +#define CMDQ_EVENT_DIP_CQ_THREAD11_EOF		268
+> +#define CMDQ_EVENT_DIP_CQ_THREAD12_EOF		269
+> +#define CMDQ_EVENT_DIP_CQ_THREAD13_EOF		270
+> +#define CMDQ_EVENT_DIP_CQ_THREAD14_EOF		271
+> +#define CMDQ_EVENT_DIP_CQ_THREAD15_EOF		272
+> +#define CMDQ_EVENT_DIP_CQ_THREAD16_EOF		273
+> +#define CMDQ_EVENT_DIP_CQ_THREAD17_EOF		274
+> +#define CMDQ_EVENT_DIP_CQ_THREAD18_EOF		275
+> +#define CMDQ_EVENT_DIP_DMA_ERR_EVENT		276
+> +#define CMDQ_EVENT_AMD_FRAME_DONE		277
+> +#define CMDQ_EVENT_MFB_DONE			278
+> +#define CMDQ_EVENT_WPE_A_EOF			279
+> +#define CMDQ_EVENT_VENC_EOF			289
+> +#define CMDQ_EVENT_VENC_CMDQ_PAUSE_DONE		290
+> +#define CMDQ_EVENT_JPEG_ENC_EOF			291
+> +#define CMDQ_EVENT_VENC_MB_DONE			292
+> +#define CMDQ_EVENT_VENC_128BYTE_CNT_DONE	293
+> +#define CMDQ_EVENT_ISP_FRAME_DONE_A		321
+> +#define CMDQ_EVENT_ISP_FRAME_DONE_B		322
+> +#define CMDQ_EVENT_ISP_FRAME_DONE_C		323
+> +#define CMDQ_EVENT_ISP_CAMSV_0_PASS1_DONE	324
+> +#define CMDQ_EVENT_ISP_CAMSV_0_2_PASS1_DONE	325
+> +#define CMDQ_EVENT_ISP_CAMSV_1_PASS1_DONE	326
+> +#define CMDQ_EVENT_ISP_CAMSV_2_PASS1_DONE	327
+> +#define CMDQ_EVENT_ISP_CAMSV_3_PASS1_DONE	328
+> +#define CMDQ_EVENT_ISP_TSF_DONE			329
+> +#define CMDQ_EVENT_SENINF_0_FIFO_FULL		330
+> +#define CMDQ_EVENT_SENINF_1_FIFO_FULL		331
+> +#define CMDQ_EVENT_SENINF_2_FIFO_FULL		332
+> +#define CMDQ_EVENT_SENINF_3_FIFO_FULL		333
+> +#define CMDQ_EVENT_SENINF_4_FIFO_FULL		334
+> +#define CMDQ_EVENT_SENINF_5_FIFO_FULL		335
+> +#define CMDQ_EVENT_SENINF_6_FIFO_FULL		336
+> +#define CMDQ_EVENT_SENINF_7_FIFO_FULL		337
+> +#define CMDQ_EVENT_TG_OVRUN_A_INT_DLY		338
+> +#define CMDQ_EVENT_TG_OVRUN_B_INT_DLY		339
+> +#define CMDQ_EVENT_TG_OVRUN_C_INT		340
+> +#define CMDQ_EVENT_TG_GRABERR_A_INT_DLY		341
+> +#define CMDQ_EVENT_TG_GRABERR_B_INT_DLY		342
+> +#define CMDQ_EVENT_TG_GRABERR_C_INT		343
+> +#define CMDQ_EVENT_CQ_VR_SNAP_A_INT_DLY		344
+> +#define CMDQ_EVENT_CQ_VR_SNAP_B_INT_DLY		345
+> +#define CMDQ_EVENT_CQ_VR_SNAP_C_INT		346
+> +#define CMDQ_EVENT_DMA_R1_ERROR_A_INT_DLY	347
+> +#define CMDQ_EVENT_DMA_R1_ERROR_B_INT_DLY	348
+> +#define CMDQ_EVENT_DMA_R1_ERROR_C_INT		349
+> +#define CMDQ_EVENT_APU_GCE_CORE0_EVENT_0	353
+> +#define CMDQ_EVENT_APU_GCE_CORE0_EVENT_1	354
+> +#define CMDQ_EVENT_APU_GCE_CORE0_EVENT_2	355
+> +#define CMDQ_EVENT_APU_GCE_CORE0_EVENT_3	356
+> +#define CMDQ_EVENT_APU_GCE_CORE1_EVENT_0	385
+> +#define CMDQ_EVENT_APU_GCE_CORE1_EVENT_1	386
+> +#define CMDQ_EVENT_APU_GCE_CORE1_EVENT_2	387
+> +#define CMDQ_EVENT_APU_GCE_CORE1_EVENT_3	388
+> +#define CMDQ_EVENT_VDEC_EVENT_0			416
+> +#define CMDQ_EVENT_VDEC_EVENT_1			417
+> +#define CMDQ_EVENT_VDEC_EVENT_2			418
+> +#define CMDQ_EVENT_VDEC_EVENT_3			419
+> +#define CMDQ_EVENT_VDEC_EVENT_4			420
+> +#define CMDQ_EVENT_VDEC_EVENT_5			421
+> +#define CMDQ_EVENT_VDEC_EVENT_6			422
+> +#define CMDQ_EVENT_VDEC_EVENT_7			423
+> +#define CMDQ_EVENT_VDEC_EVENT_8			424
+> +#define CMDQ_EVENT_VDEC_EVENT_9			425
+> +#define CMDQ_EVENT_VDEC_EVENT_10		426
+> +#define CMDQ_EVENT_VDEC_EVENT_11		427
+> +#define CMDQ_EVENT_VDEC_EVENT_12		428
+> +#define CMDQ_EVENT_VDEC_EVENT_13		429
+> +#define CMDQ_EVENT_VDEC_EVENT_14		430
+> +#define CMDQ_EVENT_VDEC_EVENT_15		431
+> +#define CMDQ_EVENT_FDVT_DONE			449
+> +#define CMDQ_EVENT_FE_DONE			450
+> +#define CMDQ_EVENT_RSC_EOF			451
+> +#define CMDQ_EVENT_DVS_DONE_ASYNC_SHOT		452
+> +#define CMDQ_EVENT_DVP_DONE_ASYNC_SHOT		453
+> +#define CMDQ_EVENT_DSI0_TE_INFRA		898
 > +
->  static const struct of_device_id cmdq_of_ids[] = {
-> -	{.compatible = "mediatek,mt8173-gce", .data = (void *)16},
-> -	{.compatible = "mediatek,mt8183-gce", .data = (void *)24},
-> +	{.compatible = "mediatek,mt8173-gce", .data = (void *)&gce_plat_v2},
-> +	{.compatible = "mediatek,mt8183-gce", .data = (void *)&gce_plat_v3},
->  	{}
->  };
->  
-> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index de20e6cba83b..2e1bc513569b 100644
-> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -291,7 +291,8 @@ static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
->  
->  	/* JUMP to end */
->  	inst.op = CMDQ_CODE_JUMP;
-> -	inst.value = CMDQ_JUMP_PASS;
-> +	inst.value = CMDQ_JUMP_PASS >>
-> +		cmdq_mbox_shift(((struct cmdq_client *)pkt->cl)->chan);
-
-Why not just cmdq_mbox_shift(pkt->cl->chan) ?
-
-Regards,
-CK
-
->  	err = cmdq_pkt_append_command(pkt, inst);
->  
->  	return err;
-> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> index a4dc45fbec0a..dfe5b2eb85cc 100644
-> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
-> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> @@ -88,4 +88,6 @@ struct cmdq_pkt {
->  	void			*cl;
->  };
->  
-> +u8 cmdq_mbox_shift(struct mbox_chan *chan);
-> +
->  #endif /* __MTK_CMDQ_MAILBOX_H__ */
+> +#endif
 
 _______________________________________________
 Linux-mediatek mailing list
