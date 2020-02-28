@@ -2,77 +2,75 @@ Return-Path: <SRS0=Knfd=4Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 884C3C3F2D1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2020 10:07:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7EB9BC3F2CD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2020 13:45:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 59412246A0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2020 10:07:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5367D2072A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2020 13:45:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="blMMF9qN";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="HtrLp0Fn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 59412246A0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VQjFax4L";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Ky9EmE1H"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5367D2072A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F2EzPTn6HQC5wRBk8QAs7U9qvHqiQDXDH3KW0xvlBG0=; b=blMMF9qNHJ09ib
-	EwsYTJ2B4VOJ3haBfnWhad8523CLJ8Dz2Qis8v9Cge4sP+tyQUdh7e/Y8Cu19vvbtcIv/psKFv8Ak
-	le2d+enZ7GkrN6Qe7m9zMPTXZPG0iNAXNL57oR9YF34tfkAVbqhSS5WyJfG2ToaIhRZUoW+iqzHhn
-	ucbUTxo+b60hyIx6Y/n7k4smUBuNfNd+CuafqMN+7MHolTQdpQfULMAOSjHxxcf+lHif5tc6ZHIv8
-	phOXbHcq6moVIvCE1WqyKNXPP7bpEN/FniWKix8f7SkVgXG5Eo7RylrPrgOgOGc8yw14gCp6yHs7b
-	26BYZexir0Nw39dxP+kw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+hMIDrztyEnaEiXRz94nJGoZBM3Lc8KCQfS9F2CO9hE=; b=VQjFax4Lpj18Ot
+	S+aYPjvRfr6kTEvhzqhlj4Vl+STUgzLmFBFEzqtALV3ir7URWEO5ZoEo3xS5bw9cLQeIFcyyONAsU
+	FBDxGQSnRmnuKtiRd7VmJ2P8adnTtRlA6lcamY9EOi6aGbYP3SIZ7v6R6xhCurvbcIxoGps5OH08X
+	TANVYEwPs2DYGrbr3P9KCIiHsPBdZMPQlsZJV7q7Dx9LIRsB16KJPz1Kn+YvjfVQEbENCBXRTaFJq
+	EW5vrAUGRIzTt2NhVc2AvyH7CnShJSo6CzT/gjVRDIvDargsiUVGsa634G2kI5BnnRZMJjwNRp6td
+	T3ZnfgXYyMG1Gx44OC/g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j7cYa-0005w9-FX; Fri, 28 Feb 2020 10:07:44 +0000
+	id 1j7fwv-0006lx-BF; Fri, 28 Feb 2020 13:45:05 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j7cYX-0005va-UC; Fri, 28 Feb 2020 10:07:43 +0000
-X-UUID: 64c696c1aebf45d9bf070f47a52ecfa8-20200228
+ id 1j7fws-0006j8-Cf; Fri, 28 Feb 2020 13:45:03 +0000
+X-UUID: 0822d356e2ab4df9876b7b1ff7986eba-20200228
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=1DhT26Nw0ev4Fr8ahrt98NxVPN2Jg/ECXsapb7EkmRI=; 
- b=HtrLp0Fn/52njlsl7gP4qX/rtdjoWM3Yx5sAZb02xfx13B6XMjhW2GRxxZ1QEn5fRsNCeJ1dIXrb1LeGxJqkuBUieJpcVZvnWdYZ+nUcqKo/fcC/CfQNoZKj82PlQKj4vPBihy3rEzou/j8HSQupuH3lJdKG9VAOCF+v+jzFRtU=;
-X-UUID: 64c696c1aebf45d9bf070f47a52ecfa8-20200228
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=y7T1TMD9w293pE+Fxbud4yhXgZQSFHACeiXgIaBB2Vs=; 
+ b=Ky9EmE1HcdDiMzqgmx6yp9aIR8Hv72WlBjmUImO1yhLIxbMQkIoyxYpswULDla8is0zvtl1hMvkNXm5BOKpuKH017kA9bWK3I6xteBEibdMQWjQYzPHgmLkw56qSJ1goM6VshLdoFXnycChqrCDJRc1q+00bL+USYp6p27a+290=;
+X-UUID: 0822d356e2ab4df9876b7b1ff7986eba-20200228
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <dennis-yc.hsieh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 364121120; Fri, 28 Feb 2020 02:07:40 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 28 Feb 2020 02:08:21 -0800
+ with ESMTP id 84413609; Fri, 28 Feb 2020 05:44:53 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 28 Feb 2020 05:44:52 -0800
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 28 Feb 2020 18:06:43 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Fri, 28 Feb 2020 18:07:36 +0800
-Message-ID: <1582884456.25698.0.camel@mtksdaap41>
-Subject: Re: [PATCH v10 5/5] soc / drm: mediatek: Fix mediatek-drm device
- probing
-From: CK Hu <ck.hu@mediatek.com>
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Date: Fri, 28 Feb 2020 18:07:36 +0800
-In-Reply-To: <20200227180858.1514157-6-enric.balletbo@collabora.com>
-References: <20200227180858.1514157-1-enric.balletbo@collabora.com>
- <20200227180858.1514157-6-enric.balletbo@collabora.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 28 Feb 2020 21:43:52 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Fri, 28 Feb 2020 21:44:49 +0800
+From: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Jassi Brar <jassisinghbrar@gmail.com>
+Subject: [PATCH v3 00/13] support gce on mt6779 platform
+Date: Fri, 28 Feb 2020 21:44:07 +0800
+Message-ID: <1582897461-15105-1-git-send-email-dennis-yc.hsieh@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200228_020741_993052_7061AB1A 
-X-CRM114-Status: GOOD (  21.83  )
+X-CRM114-CacheID: sfid-20200228_054502_454787_6AA096BA 
+X-CRM114-Status: UNSURE (   7.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,158 +82,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, Kate Stewart <kstewart@linuxfoundation.org>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, airlied@linux.ie,
- mturquette@baylibre.com, dri-devel@lists.freedesktop.org,
- Richard Fontana <rfontana@redhat.com>, laurent.pinchart@ideasonboard.com,
- ulrich.hecht+renesas@gmail.com, Collabora
- Kernel ML <kernel@collabora.com>, linux-clk@vger.kernel.org,
- Weiyi Lu <weiyi.lu@mediatek.com>, wens@csie.org,
- linux-arm-kernel@lists.infradead.org, mtk01761 <wendell.lin@mediatek.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- Daniel Vetter <daniel@ffwll.ch>, frank-w@public-files.de, Seiya
- Wang <seiya.wang@mediatek.com>, sean.wang@mediatek.com,
- Houlong Wei <houlong.wei@mediatek.com>, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Mauro
- Carvalho Chehab <mchehab@kernel.org>, Allison Randal <allison@lohutok.net>,
- Matthias Brugger <mbrugger@suse.com>, sboyd@kernel.org, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, rdunlap@infradead.org,
- linux-kernel@vger.kernel.org, p.zabel@pengutronix.de, matthias.bgg@kernel.org
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ wsd_upstream@mediatek.com, linux-kernel@vger.kernel.org,
+ Houlong Wei <houlong.wei@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Bibby Hsieh <bibby.hsieh@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+ Ming-Fan Chen <ming-fan.chen@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Enric:
+This patch support gce on mt6779 platform.
 
-On Thu, 2020-02-27 at 19:08 +0100, Enric Balletbo i Serra wrote:
-> In the actual implementation the same compatible string
-> "mediatek,<chip>-mmsys" is used to bind the clock drivers
-> (drivers/soc/mediatek) as well as to the gpu driver
-> (drivers/gpu/drm/mediatek/mtk_drm_drv.c). This ends with the problem
-> that the only probed driver is the clock driver and there is no display
-> at all.
-> 
-> In any case having the same compatible string for two drivers is not
-> correct and should be fixed. To fix this, and maintain backward
-> compatibility, we can consider that the mmsys driver is the top-level
-> entry point for the multimedia subsystem, so is not a pure clock
-> controller but a system controller, and the drm driver is instantiated
-> by that MMSYS driver.
+Change since v2:
+- rebase onto 5.6-rc1
+- remove unnecessary definition
+- add clear parameter in wfe api
+- separate assign and write_s api
+- add jump api instead of finalize in loop
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> ---
-> 
-> Changes in v10:
-> - Match driver data to get display routing.
-> 
-> Changes in v9:
-> - Do not move the display routing from the drm driver (CK)
-> 
-> Changes in v8:
-> - New patch introduced in this series.
-> 
-> Changes in v7: None
-> 
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 31 ++++++++++++++++----------
->  drivers/soc/mediatek/mtk-mmsys.c       |  6 +++++
->  2 files changed, 25 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> index 02011d3168df..29252fc0aab7 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -422,9 +422,21 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
->  	{ }
->  };
->  
-> +static const struct of_device_id mtk_drm_of_ids[] = {
-> +	{ .compatible = "mediatek,mt2701-mmsys",
-> +	  .data = &mt2701_mmsys_driver_data},
-> +	{ .compatible = "mediatek,mt2712-mmsys",
-> +	  .data = &mt2712_mmsys_driver_data},
-> +	{ .compatible = "mediatek,mt8173-mmsys",
-> +	  .data = &mt8173_mmsys_driver_data},
-> +	{ }
-> +};
-> +
->  static int mtk_drm_probe(struct platform_device *pdev)
->  {
->  	struct device *dev = &pdev->dev;
-> +	struct device_node *phandle = dev->parent->of_node;
-> +	const struct of_device_id *of_id;
->  	struct mtk_drm_private *private;
->  	struct device_node *node;
->  	struct component_match *match = NULL;
-> @@ -443,8 +455,14 @@ static int mtk_drm_probe(struct platform_device *pdev)
->  		return -ENODEV;
->  	}
->  
-> +	of_id = of_match_node(mtk_drm_of_ids, phandle);
-> +	if (!of_id)
-> +		return -ENODEV;
-> +
-> +	private->data = of_id->data;
-> +
->  	/* Iterate over sibling DISP function blocks */
-> -	for_each_child_of_node(dev->of_node->parent, node) {
-> +	for_each_child_of_node(phandle->parent, node) {
->  		const struct of_device_id *of_id;
->  		enum mtk_ddp_comp_type comp_type;
->  		int comp_id;
-> @@ -576,22 +594,11 @@ static int mtk_drm_sys_resume(struct device *dev)
->  static SIMPLE_DEV_PM_OPS(mtk_drm_pm_ops, mtk_drm_sys_suspend,
->  			 mtk_drm_sys_resume);
->  
-> -static const struct of_device_id mtk_drm_of_ids[] = {
-> -	{ .compatible = "mediatek,mt2701-mmsys",
-> -	  .data = &mt2701_mmsys_driver_data},
-> -	{ .compatible = "mediatek,mt2712-mmsys",
-> -	  .data = &mt2712_mmsys_driver_data},
-> -	{ .compatible = "mediatek,mt8173-mmsys",
-> -	  .data = &mt8173_mmsys_driver_data},
-> -	{ }
-> -};
-> -
->  static struct platform_driver mtk_drm_platform_driver = {
->  	.probe	= mtk_drm_probe,
->  	.remove	= mtk_drm_remove,
->  	.driver	= {
->  		.name	= "mediatek-drm",
-> -		.of_match_table = mtk_drm_of_ids,
->  		.pm     = &mtk_drm_pm_ops,
->  	},
->  };
-> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-> index a8a98777064e..d99c8beb2ed2 100644
-> --- a/drivers/soc/mediatek/mtk-mmsys.c
-> +++ b/drivers/soc/mediatek/mtk-mmsys.c
-> @@ -377,6 +377,7 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
->  	const struct mtk_mmsys_driver_data *data;
->  	struct clk_onecell_data *clk_data;
->  	struct device *dev = &pdev->dev;
-> +	struct platform_device *drm;
->  	void __iomem *config_regs;
->  	struct resource *mem;
->  	int ret;
-> @@ -407,6 +408,11 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
->  	if (ret)
->  		return ret;
->  
-> +	drm = platform_device_register_data(&pdev->dev, "mediatek-drm",
-> +					    PLATFORM_DEVID_NONE, NULL, 0);
-> +	if (IS_ERR(drm))
-> +		return PTR_ERR(drm);
-> +
->  	return 0;
->  }
->  
+Change since v1:
+- change write_s interface to consistant with read_s
+- remove combination function and design write_s_value function
+- do not check finalized and export finalize function
+- give arg_a name
 
+
+
+Dennis YC Hsieh (13):
+  dt-binding: gce: add gce header file for mt6779
+  mailbox: cmdq: variablize address shift in platform
+  mailbox: cmdq: support mt6779 gce platform definition
+  mailbox: mediatek: cmdq: clear task in channel before shutdown
+  soc: mediatek: cmdq: return send msg error code
+  soc: mediatek: cmdq: add assign function
+  soc: mediatek: cmdq: add write_s function
+  soc: mediatek: cmdq: add read_s function
+  soc: mediatek: cmdq: add write_s value function
+  soc: mediatek: cmdq: export finalize function
+  soc: mediatek: cmdq: add jump function
+  soc: mediatek: cmdq: add clear option in cmdq_pkt_wfe api
+  soc: mediatek: cmdq: add set event function
+
+ .../devicetree/bindings/mailbox/mtk-gce.txt   |   8 +-
+ drivers/mailbox/mtk-cmdq-mailbox.c            |  97 +++++++-
+ drivers/soc/mediatek/mtk-cmdq-helper.c        | 143 ++++++++++-
+ include/dt-bindings/gce/mt6779-gce.h          | 222 ++++++++++++++++++
+ include/linux/mailbox/mtk-cmdq-mailbox.h      |  10 +-
+ include/linux/soc/mediatek/mtk-cmdq.h         |  94 +++++++-
+ 6 files changed, 543 insertions(+), 31 deletions(-)
+ create mode 100644 include/dt-bindings/gce/mt6779-gce.h
+
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
