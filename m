@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 98592C3F2CD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2020 14:54:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B4333C3F2D2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2020 14:55:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6B7A3246A0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2020 14:54:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 864112072A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Feb 2020 14:55:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rO7GEkws";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="aAX4P0WG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6B7A3246A0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fnRdAfIs";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ThU4rLyw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 864112072A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,52 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tKLE+0pNiBtluCwI42hJU3iUaXagQau3aEFM3fPwrtc=; b=rO7GEkwsGhn0Dr
-	gF0j9r3V47camckueOm+Qlc9yJoKOstF3cKH1Tz2yzpS3+ozuQDK9mg/DPLulabEqEitmoB92XMhU
-	4WpwAlLsyktRf3jWaS8k+FgTO8usBV8vhb3GwNkElbhZRrDOP3wHxm1yu/tZskEH6rHd1nIMJpF/0
-	n4bINlOg0vA5dfgEeQxzl4gg2iiAaXT+4h9/2kkZhKBnutOMZiuTUWEn5BkzgJm/65hIOJu+7PF/g
-	V0Hapbhulqz7lIj7q3XFqxOGTdaWwY9MNP3kXkL6PIcVA/MRCya/zRoJ9oHYuEjR0q8Ob0fXT5W2r
-	cb/ABG793EOgOKQTL0XA==;
+	List-Owner; bh=j7oJ3lgz45HZ7OcgsKHqHy/mawLZj764+Wt+pVq2bqU=; b=fnRdAfIs9io70a
+	l/CTMUgwd0mU4QRss7PxhVc1mrWWzq5tDQJtlPn+lYcVm5DrUcAMYOV4P+8I/U2aJ0ZL1oVHD+qSv
+	gdnNIgMRT3O1Z+w7duWgB63L8A1bFMgcOegqhivejo1Jcal6jVOZF+LvnYdOoofE3xG9C13G/3xSl
+	sxkElyMeOT7Azl0KdghZWHU8AEjzYULVgVLMRasszw2oIBnVxUJK8MPB04XvcyxndDM+oC6TO4lG5
+	GG+KMlye1TCv8/jkulUCjZ0SWu3oT6p3CzThOAyxE0O7SPRf9+Ge03osXlNaA+YqfBdo2q7d9NxRd
+	xdud5URj58YfOt+8a61g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j7h2A-0006E7-Q1; Fri, 28 Feb 2020 14:54:34 +0000
+	id 1j7h3M-0007nG-DH; Fri, 28 Feb 2020 14:55:48 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j7h28-0006Dh-BT; Fri, 28 Feb 2020 14:54:33 +0000
-X-UUID: 99999a077f9d46ad859b7197ac23fec3-20200228
+ id 1j7h3K-0007mi-Jv; Fri, 28 Feb 2020 14:55:48 +0000
+X-UUID: c41979828ef141af94eac4db7827aa71-20200228
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Oo9OqLwNu+IUBMtwmf3xp6IAkUZJKqSI+TGBkTXf0MU=; 
- b=aAX4P0WG+h0kTpklJlFpwG3QklzI4cZrnWC6ozlAq5cRoLnVD9olTH29US0gMR0/Ms8XFuBaLKdUUILegiP1vnERB3a6mB59Bh6AMQbGuevNMOqCwmKbvF34KoPnnENhnRejevaRN1Zo7KyXEIZsd8hcJrehvozcs+itZmgnbE4=;
-X-UUID: 99999a077f9d46ad859b7197ac23fec3-20200228
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=KupROzX3aGOHBHNRJXxfTvVaiYRDVDCR4a16idnL8VA=; 
+ b=ThU4rLyw0fDjktE02a78N+BWBYDMaBMpGojafSlOm0HonxAEVWFXXLjubkieFzj++VbR019Is0KzFL9LGVypePHi1WtAkRMQO5XL9YIporFAMfRKnVtt7Cz8PCDxsR9ilKvERo2qeIl476JxhCd8tRuNn8Na/zNfLPcBJfnFfX8=;
+X-UUID: c41979828ef141af94eac4db7827aa71-20200228
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 680705216; Fri, 28 Feb 2020 06:54:23 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ with ESMTP id 677003324; Fri, 28 Feb 2020 06:55:44 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 28 Feb 2020 06:45:04 -0800
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 28 Feb 2020 22:45:52 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
+ 15.0.1395.4; Fri, 28 Feb 2020 06:56:25 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 28 Feb 2020 22:54:47 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Fri, 28 Feb 2020 22:44:05 +0800
-Message-ID: <1582901053.14824.3.camel@mtksdaap41>
-Subject: Re: [PATCH v3 06/13] soc: mediatek: cmdq: add assign function
+ Transport; Fri, 28 Feb 2020 22:55:23 +0800
+Message-ID: <1582901741.14824.6.camel@mtksdaap41>
+Subject: Re: [PATCH v3 09/13] soc: mediatek: cmdq: add write_s value function
 From: CK Hu <ck.hu@mediatek.com>
 To: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
-Date: Fri, 28 Feb 2020 22:44:13 +0800
-In-Reply-To: <1582897461-15105-8-git-send-email-dennis-yc.hsieh@mediatek.com>
+Date: Fri, 28 Feb 2020 22:55:41 +0800
+In-Reply-To: <1582897461-15105-11-git-send-email-dennis-yc.hsieh@mediatek.com>
 References: <1582897461-15105-1-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1582897461-15105-8-git-send-email-dennis-yc.hsieh@mediatek.com>
+ <1582897461-15105-11-git-send-email-dennis-yc.hsieh@mediatek.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200228_065432_402090_05B3D900 
-X-CRM114-Status: GOOD (  16.34  )
+X-CRM114-CacheID: sfid-20200228_065546_666853_F5E1A526 
+X-CRM114-Status: GOOD (  16.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,106 +99,81 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Hi, Dennis:
 
 On Fri, 2020-02-28 at 21:44 +0800, Dennis YC Hsieh wrote:
-> Add assign function in cmdq helper which assign constant value into
-> internal register by index.
+> add write_s function in cmdq helper functions which
+> writes a constant value to address with large dma
+> access support.
 > 
 
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 
 > Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
 > ---
->  drivers/soc/mediatek/mtk-cmdq-helper.c   | 24 +++++++++++++++++++++++-
->  include/linux/mailbox/mtk-cmdq-mailbox.h |  1 +
->  include/linux/soc/mediatek/mtk-cmdq.h    | 14 ++++++++++++++
->  3 files changed, 38 insertions(+), 1 deletion(-)
+>  drivers/soc/mediatek/mtk-cmdq-helper.c | 26 ++++++++++++++++++++++++++
+>  include/linux/soc/mediatek/mtk-cmdq.h  | 14 ++++++++++++++
+>  2 files changed, 40 insertions(+)
 > 
 > diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index 0698612de5ad..8342a5c94bc7 100644
+> index 428f99288ca6..1336523eb7d4 100644
 > --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
 > +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -12,6 +12,7 @@
->  #define CMDQ_WRITE_ENABLE_MASK	BIT(0)
->  #define CMDQ_POLL_ENABLE_MASK	BIT(0)
->  #define CMDQ_EOC_IRQ_EN		BIT(0)
-> +#define CMDQ_REG_TYPE		1
->  
->  struct cmdq_instruction {
->  	union {
-> @@ -21,8 +22,17 @@ struct cmdq_instruction {
->  	union {
->  		u16 offset;
->  		u16 event;
-> +		u16 reg_dst;
-> +	};
-> +	union {
-> +		u8 subsys;
-> +		struct {
-> +			u8 sop:5;
-> +			u8 arg_c_t:1;
-> +			u8 arg_b_t:1;
-> +			u8 dst_t:1;
-> +		};
->  	};
-> -	u8 subsys;
->  	u8 op;
->  };
->  
-> @@ -277,6 +287,18 @@ int cmdq_pkt_poll_mask(struct cmdq_pkt *pkt, u8 subsys,
+> @@ -269,6 +269,32 @@ int cmdq_pkt_write_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
 >  }
->  EXPORT_SYMBOL(cmdq_pkt_poll_mask);
+>  EXPORT_SYMBOL(cmdq_pkt_write_s);
 >  
-> +int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value)
+> +int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
+> +			   u16 addr_low, u32 value, u32 mask)
 > +{
 > +	struct cmdq_instruction inst = { {0} };
+> +	int err;
 > +
-> +	inst.op = CMDQ_CODE_LOGIC;
-> +	inst.dst_t = CMDQ_REG_TYPE;
-> +	inst.reg_dst = reg_idx;
+> +	if (mask != U32_MAX) {
+> +		inst.op = CMDQ_CODE_MASK;
+> +		inst.mask = ~mask;
+> +		err = cmdq_pkt_append_command(pkt, inst);
+> +		if (err < 0)
+> +			return err;
+> +
+> +		inst.op = CMDQ_CODE_WRITE_S_MASK;
+> +	} else {
+> +		inst.op = CMDQ_CODE_WRITE_S;
+> +	}
+> +
+> +	inst.sop = high_addr_reg_idx;
+> +	inst.offset = addr_low;
 > +	inst.value = value;
+> +
 > +	return cmdq_pkt_append_command(pkt, inst);
 > +}
-> +EXPORT_SYMBOL(cmdq_pkt_assign);
+> +EXPORT_SYMBOL(cmdq_pkt_write_s_value);
 > +
->  static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
+>  int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event)
 >  {
 >  	struct cmdq_instruction inst = { {0} };
-> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> index dfe5b2eb85cc..121c3bb6d3de 100644
-> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
-> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> @@ -59,6 +59,7 @@ enum cmdq_code {
->  	CMDQ_CODE_JUMP = 0x10,
->  	CMDQ_CODE_WFE = 0x20,
->  	CMDQ_CODE_EOC = 0x40,
-> +	CMDQ_CODE_LOGIC = 0xa0,
->  };
->  
->  enum cmdq_cb_status {
 > diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-> index a74c1d5acdf3..83340211e1d3 100644
+> index 01b4184af310..fec292aac83c 100644
 > --- a/include/linux/soc/mediatek/mtk-cmdq.h
 > +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-> @@ -152,6 +152,20 @@ int cmdq_pkt_poll(struct cmdq_pkt *pkt, u8 subsys,
->   */
->  int cmdq_pkt_poll_mask(struct cmdq_pkt *pkt, u8 subsys,
->  		       u16 offset, u32 value, u32 mask);
-> +
+> @@ -135,6 +135,20 @@ int cmdq_pkt_read_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx, u16 addr_low,
+>  int cmdq_pkt_write_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
+>  		     u16 addr_low, u16 src_reg_idx, u32 mask);
+>  
 > +/**
-> + * cmdq_pkt_assign() - Append logic assign command to the CMDQ packet, ask GCE
-> + *		       to execute an instruction that set a constant value into
-> + *		       internal register and use as value, mask or address in
-> + *		       read/write instruction.
+> + * cmdq_pkt_write_s_value() - append write_s command with mask to the CMDQ
+> + *			      packet which write value to a physical address
 > + * @pkt:	the CMDQ packet
-> + * @reg_idx:	the CMDQ internal register ID
-> + * @value:	the specified value
+> + * @high_addr_reg_idx:	internal regisger ID which contains high address of pa
+> + * @addr_low:	low address of pa
+> + * @value:	the specified target value
+> + * @mask:	the specified target mask
 > + *
 > + * Return: 0 for success; else the error code is returned
 > + */
-> +int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value);
+> +int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
+> +			   u16 addr_low, u32 value, u32 mask);
 > +
 >  /**
->   * cmdq_pkt_flush_async() - trigger CMDQ to asynchronously execute the CMDQ
->   *                          packet and call back at the end of done packet
+>   * cmdq_pkt_wfe() - append wait for event command to the CMDQ packet
+>   * @pkt:	the CMDQ packet
 
 _______________________________________________
 Linux-mediatek mailing list
