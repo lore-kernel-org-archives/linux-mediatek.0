@@ -1,169 +1,79 @@
-Return-Path: <SRS0=1pun=4R=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=FI3N=4S=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E363C3F2CD
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Feb 2020 23:36:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 785CBC3F2C6
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2020 03:21:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4F77424677
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Feb 2020 23:36:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4918F2192A
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2020 03:21:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ca5VD03w";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ItyokvZ6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4F77424677
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SjPvXcyg";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="DBbEYTNV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4918F2192A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Cc:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=A4dOdj9VLkm032o/252qz9tISTUre+4r67Rk1yqaP1I=; b=ca5VD03w4YshF5jBKauVOh0xG5
-	ARJ95EfNTES1ql83LENco2dMfGjlxI5J+cSsFOGHFbHNXJu84jOU9cqUIJXHYDPN9rdbrLjAMZtRN
-	lqFZ9uSC5f0WXECB10+M/vSRkUqonOLU6w2KVeeYUfDO3rp6YkWllaOEBXagWWMpDowNWiKThkHel
-	xy1hIp89iIOe9QK66rRkL0w7HmOjWMmQwbsAETqFO+dcesUz3x8jj5Aib7ZjZ9AHty9HT0lQ5nBX/
-	dYPYAjhcBFSTnr3/0Sab5641LJ52u4YBDBZyJbpSZf6F80XoCX9Wct0hSi+yXPPZQ2614MHpdc80k
-	4CG1i99w==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dn4Yy7V5ImvkSRY/mTpiAgtWWfTLVlP1g/8Br7nOvUw=; b=SjPvXcygJEI+QV
+	Xulhdajr6tEX7+cBZ9pygvwMB4UPOuPTjFuuoqmmGpGswThMutMQ1PN2bH6soZWjyQ7N/+NhCAbT7
+	mrQP+9ROliKzeKCWduK7uZX1rGWeEIfCqMj0WJjUcDzmtbBUoFeLaxBUSzE0JQPUtNGE+zEj29/39
+	0UJLy6YjegpKT1FGfpRzGajgx7oj0/RMUyL0EE1e+jMUnMQ3iWpou7eCIPBRLIPArK1gyQ23Fjb77
+	bYq1LT710Ia5BfTuMQVjwCKKcQMCgtw9e+o7UdlE1nwvSmYSi1Wb2ifLv9htlUW/zq4dRxXdHzp8K
+	K3qaGetAnRtOYE5Kn9IA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j8BeE-0003FM-0d; Sat, 29 Feb 2020 23:35:54 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1j8FA8-0000FA-T8; Sun, 01 Mar 2020 03:21:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j8BeA-0003Eu-RR; Sat, 29 Feb 2020 23:35:52 +0000
-Received: by mail-wm1-x343.google.com with SMTP id e26so1672180wme.5;
- Sat, 29 Feb 2020 15:35:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:references:from:autocrypt:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=VeaOZajZ8ChtFxoOKvqFs8Yu23rXbfsqVQmK9eQZCvs=;
- b=ItyokvZ68VpoCugmwkd5n2SHkJG1kw2DiIvEhpFg3YpBNf51uRoKxTd5JA1vMNtK6c
- R9QpgB21nPEqhrNpMJAPuBpNqd/ooOHnfmIk1IbAmaD+lhqEcZR2C5ALbd9iiTDJYXo7
- QC2V9OFRos7CuVRHxTbDUBjztEoF7xzQhI4oRplC5AUqKL5gAah/Fq8lOSTzTl7pes/p
- KHR6Gsx/GxMf0X6p/IfZ+1kiePhZHHTrHuQARyS4vi+q/5LRC13XH4sVOJjd3Grm/sIe
- x02GrptFgOA5dmgyueA5It6NYUmDgxLC+GkGY82s0kC4z2qVIyzWz2ArO8bmuRYtjz+d
- 8dWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:autocrypt:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=VeaOZajZ8ChtFxoOKvqFs8Yu23rXbfsqVQmK9eQZCvs=;
- b=VP/AGwGihnkvPa6LtmWmcJbQHCvO421/4ge35gdOhatPgd16uKq8ezCoyH2oxZwUq9
- OLSq1BDQeK+XVt3QDoA1I7ubZmjb3+xkpOFogwyTgB3J0s93EkxsL//6I9N3vHyB6FPB
- HV6DDt5erM6NIYfimUwsCfrcIV5TfVcbU7MmLDdVaV/fJ9d5eA0qosC2FK5BGmara1U0
- iwtF7pNSIqjPkcMScRlTlN128MzBz+gwNGMoCA5P62zpvLYGWSPOWF2xPF4zT1QAnZGa
- HVkRM4YpHlx453W3D8GT778NMBRQymXgySLKFhb5ayVhFUf8Btm5oCzRBtFvGvl7m+FJ
- rLuA==
-X-Gm-Message-State: APjAAAV6oY5OEQxJXP60ajfaK5L3QebRSCVKiZejyYiQXyLaZQ31S4qG
- QNAyD6ofNJsdmixXFb+r8TE=
-X-Google-Smtp-Source: APXvYqzloFMwhvHis8Vrqiq9LzrNtk0JLn1yNUUtiQ2jT0VLjgFCGUNZQLB5U0wEla2aqGnZz3LOhw==
-X-Received: by 2002:a1c:7c11:: with SMTP id x17mr12215995wmc.168.1583019348936; 
- Sat, 29 Feb 2020 15:35:48 -0800 (PST)
-Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id i18sm16161890wrv.30.2020.02.29.15.35.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 29 Feb 2020 15:35:48 -0800 (PST)
-Subject: Re: [PATCH v3 2/2] arm64: dts: mediatek: add pumpkin board dts
-To: Fabien Parent <fparent@baylibre.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20200229170401.1287324-1-fparent@baylibre.com>
- <20200229170401.1287324-2-fparent@baylibre.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <78a87096-ab65-02fc-1c16-596c48eb8131@gmail.com>
-Date: Sun, 1 Mar 2020 00:35:47 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ id 1j8F9z-00008s-TO; Sun, 01 Mar 2020 03:20:57 +0000
+X-UUID: 967e38062d0746219db2a340770e7c90-20200229
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=gEuqpc3FvuW2EqLSsfehY0NEfaRH3CHq60ZO1Tz8Ll0=; 
+ b=DBbEYTNVuWKolwpjxOOvsL41xfWXB2vWKUedwE1eblZ217SXPMXhDo3Brx5D26nyB4KWZyA4ZLXCuAFixNPCjJije47I28I1oGimaVegueC3TtzJ/hj/wCvo2qwgw821Lz2cY/qNZAi2mDLJnN+pn1p5OdnZ6r1SLc+OgJQ760c=;
+X-UUID: 967e38062d0746219db2a340770e7c90-20200229
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <macpaul.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 57743514; Sat, 29 Feb 2020 19:20:47 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sat, 29 Feb 2020 19:21:57 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sun, 1 Mar 2020 11:22:18 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Sun, 1 Mar 2020 11:20:18 +0800
+Message-ID: <1583032843.12083.24.camel@mtkswgap22>
+Subject: Re: [PATCH v4] usb: gadget: f_fs: try to fix AIO issue under ARM 64
+ bit TAGGED mode
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Catalin Marinas <catalin.marinas@arm.com>
+Date: Sun, 1 Mar 2020 11:20:43 +0800
+In-Reply-To: <20200228164848.GH4019108@arrakis.emea.arm.com>
+References: <1582627315-21123-1-git-send-email-macpaul.lin@mediatek.com>
+ <1582718512-28923-1-git-send-email-macpaul.lin@mediatek.com>
+ <20200228164848.GH4019108@arrakis.emea.arm.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-In-Reply-To: <20200229170401.1287324-2-fparent@baylibre.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200229_153550_896777_2B5E9D2E 
-X-CRM114-Status: GOOD (  25.08  )
+X-CRM114-CacheID: sfid-20200229_192055_975139_CB16F37E 
+X-CRM114-Status: GOOD (  15.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -175,324 +85,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Sasha Levin <sashal@kernel.org>, Shen Jing <jingx.shen@intel.com>, CC
+ Hwang <cc.hwang@mediatek.com>, Mediatek
+ WSD Upstream <wsd_upstream@mediatek.com>, Jerry Zhang <zhangjerry@google.com>,
+ andreyknvl@google.com, linux-usb@vger.kernel.org,
+ Loda Chou <loda.chou@mediatek.com>, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org, Andrzej
+ Pietrasiewicz <andrzej.p@collabora.com>, Miles Chen <miles.chen@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Peter Chen <peter.chen@nxp.com>,
+ Al Viro <viro@zeniv.linux.org.uk>, Vincent
+ Pelletier <plr.vincent@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ John Stultz <john.stultz@linaro.org>, eugenis@google.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 29/02/2020 18:04, Fabien Parent wrote:
-> The pumpkin board is  made by Gossamer Engineering and is using
-> a MediaTek SoC. The board currently comes in two available version:
-> MT8516 SoC and MT8167 SoC.
-> The board provides the following IOs: eMMC, NAND, SD card, USB type-A,
-> Ethernet, Wi-Fi, Bluetooth, Audio (jack out, 2 PDM port, 1 analog in),
-> serial over USB, and an expansion header.
+On Fri, 2020-02-28 at 16:48 +0000, Catalin Marinas wrote:
+> On Wed, Feb 26, 2020 at 08:01:52PM +0800, Macpaul Lin wrote:
+> > diff --git a/drivers/usb/gadget/function/f_fs.c b/drivers/usb/gadget/function/f_fs.c
+> > index ce1d023..192935f 100644
+> > --- a/drivers/usb/gadget/function/f_fs.c
+> > +++ b/drivers/usb/gadget/function/f_fs.c
+> > @@ -715,7 +715,20 @@ static void ffs_epfile_io_complete(struct usb_ep *_ep, struct usb_request *req)
+> >  
+> >  static ssize_t ffs_copy_to_iter(void *data, int data_len, struct iov_iter *iter)
+> >  {
+> > -	ssize_t ret = copy_to_iter(data, data_len, iter);
+> > +	ssize_t ret;
+> > +
+> > +#if defined(CONFIG_ARM64)
+> > +	/*
+> > +	 * Replace tagged address passed by user space application before
+> > +	 * copying.
+> > +	 */
+> > +	if (IS_ENABLED(CONFIG_ARM64_TAGGED_ADDR_ABI) &&
+> > +		(iter->type == ITER_IOVEC)) {
+> > +		*(unsigned long *)&iter->iov->iov_base =
+> > +			(unsigned long)untagged_addr(iter->iov->iov_base);
+> > +	}
+> > +#endif
+> > +	ret = copy_to_iter(data, data_len, iter);
+> >  	if (likely(ret == data_len))
+> >  		return ret;
 > 
-> Additionally there is a HDMI port, DSI port, and camera port only
-> on the MT8167 version of the board.
-> 
-> The board can be powered by battery and/or via a USB Type-C port and
-> is using a PMIC MT6392.
-> 
-> The eMMC and NAND are sharing pins and cannot be used together.
-> 
-> This commit is adding the basic boot support for the Pumpkin MT8516
-> board on the eMMC.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-
-pushed to v5.6-next/dts64
-
-Thanks!
-
-> ---
-> 
-> V3:
-> 	* Fix warnings from dtbs_check and checkpatch.pl
-> 	* Add FW optee nodes
-> 	* Add usb0 and usb0_phy nodes
-> 
-> V2:
-> 	* Remove dependency on PMIC MT6392 to make it easier to merge the DTS
-> 	until the PMIC code is merged.
-> 	* Rename a bunch of label to make them more straighforward
-> 	* Use names for keycode instead of magic values
-> 	* Add chosen for serial port
-> 
-> ---
->  arch/arm64/boot/dts/mediatek/Makefile         |   1 +
->  .../boot/dts/mediatek/mt8516-pumpkin.dts      |  20 ++
->  .../boot/dts/mediatek/pumpkin-common.dtsi     | 221 ++++++++++++++++++
->  3 files changed, 242 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8516-pumpkin.dts
->  create mode 100644 arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index 458bbc422a94..2f8967cb8717 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -8,3 +8,4 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-evb.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8516-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8516-pumpkin.dts
-> new file mode 100644
-> index 000000000000..cce642c53812
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8516-pumpkin.dts
-> @@ -0,0 +1,20 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2019 BayLibre, SAS.
-> + * Author: Fabien Parent <fparent@baylibre.com>
-> + */
-> +
-> +/dts-v1/;
-> +
-> +#include "mt8516.dtsi"
-> +#include "pumpkin-common.dtsi"
-> +
-> +/ {
-> +	model = "Pumpkin MT8516";
-> +	compatible = "mediatek,mt8516";
-> +
-> +	memory@40000000 {
-> +		device_type = "memory";
-> +		reg = <0 0x40000000 0 0x40000000>;
-> +	};
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-> new file mode 100644
-> index 000000000000..a31093d7142b
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-> @@ -0,0 +1,221 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2019 BayLibre, SAS.
-> + * Author: Fabien Parent <fparent@baylibre.com>
-> + */
-> +
-> +#include <dt-bindings/gpio/gpio.h>
-> +
-> +/ {
-> +	aliases {
-> +		serial0 = &uart0;
-> +	};
-> +
-> +	chosen {
-> +		stdout-path = "serial0:921600n8";
-> +	};
-> +
-> +	firmware {
-> +		optee: optee@4fd00000 {
-> +			compatible = "linaro,optee-tz";
-> +			method = "smc";
-> +		};
-> +	};
-> +
-> +	gpio-keys {
-> +		compatible = "gpio-keys";
-> +		input-name = "gpio-keys";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&gpio_keys_default>;
-> +
-> +		volume-up {
-> +			gpios = <&pio 42 GPIO_ACTIVE_LOW>;
-> +			label = "volume_up";
-> +			linux,code = <115>;
-> +			wakeup-source;
-> +			debounce-interval = <15>;
-> +		};
-> +
-> +		volume-down {
-> +			gpios = <&pio 43 GPIO_ACTIVE_LOW>;
-> +			label = "volume_down";
-> +			linux,code = <114>;
-> +			wakeup-source;
-> +			debounce-interval = <15>;
-> +		};
-> +	};
-> +};
-> +
-> +&i2c0 {
-> +	clock-div = <2>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&i2c0_pins_a>;
-> +	status = "okay";
-> +
-> +	tca6416: gpio@20 {
-> +		compatible = "ti,tca6416";
-> +		reg = <0x20>;
-> +		rst-gpio = <&pio 65 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&tca6416_pins>;
-> +
-> +		gpio-controller;
-> +		#gpio-cells = <2>;
-> +
-> +		eint20_mux_sel0 {
-> +			gpio-hog;
-> +			gpios = <0 0>;
-> +			input;
-> +			line-name = "eint20_mux_sel0";
-> +		};
-> +
-> +		expcon_mux_sel1 {
-> +			gpio-hog;
-> +			gpios = <1 0>;
-> +			input;
-> +			line-name = "expcon_mux_sel1";
-> +		};
-> +
-> +		mrg_di_mux_sel2 {
-> +			gpio-hog;
-> +			gpios = <2 0>;
-> +			input;
-> +			line-name = "mrg_di_mux_sel2";
-> +		};
-> +
-> +		sd_sdio_mux_sel3 {
-> +			gpio-hog;
-> +			gpios = <3 0>;
-> +			input;
-> +			line-name = "sd_sdio_mux_sel3";
-> +		};
-> +
-> +		sd_sdio_mux_ctrl7 {
-> +			gpio-hog;
-> +			gpios = <7 0>;
-> +			output-low;
-> +			line-name = "sd_sdio_mux_ctrl7";
-> +		};
-> +
-> +		hw_id0 {
-> +			gpio-hog;
-> +			gpios = <8 0>;
-> +			input;
-> +			line-name = "hw_id0";
-> +		};
-> +
-> +		hw_id1 {
-> +			gpio-hog;
-> +			gpios = <9 0>;
-> +			input;
-> +			line-name = "hw_id1";
-> +		};
-> +
-> +		hw_id2 {
-> +			gpio-hog;
-> +			gpios = <10 0>;
-> +			input;
-> +			line-name = "hw_id2";
-> +		};
-> +
-> +		fg_int_n {
-> +			gpio-hog;
-> +			gpios = <11 0>;
-> +			input;
-> +			line-name = "fg_int_n";
-> +		};
-> +
-> +		usba_pwr_en {
-> +			gpio-hog;
-> +			gpios = <12 0>;
-> +			output-high;
-> +			line-name = "usba_pwr_en";
-> +		};
-> +
-> +		wifi_3v3_pg {
-> +			gpio-hog;
-> +			gpios = <13 0>;
-> +			input;
-> +			line-name = "wifi_3v3_pg";
-> +		};
-> +
-> +		cam_rst {
-> +			gpio-hog;
-> +			gpios = <14 0>;
-> +			output-low;
-> +			line-name = "cam_rst";
-> +		};
-> +
-> +		cam_pwdn {
-> +			gpio-hog;
-> +			gpios = <15 0>;
-> +			output-low;
-> +			line-name = "cam_pwdn";
-> +		};
-> +	};
-> +};
-> +
-> +&i2c2 {
-> +	clock-div = <2>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&i2c2_pins_a>;
-> +	status = "okay";
-> +};
-> +
-> +&uart0 {
-> +	status = "okay";
-> +};
-> +
-> +&usb0 {
-> +	status = "okay";
-> +	dr_mode = "peripheral";
-> +
-> +	usb_con: connector {
-> +		compatible = "usb-c-connector";
-> +		label = "USB-C";
-> +	};
-> +};
-> +
-> +&usb0_phy {
-> +	status = "okay";
-> +};
-> +
-> +&pio {
-> +	gpio_keys_default: gpiodefault {
-> +		pins_cmd_dat {
-> +			pinmux = <MT8516_PIN_42_KPCOL0__FUNC_GPIO42>,
-> +				 <MT8516_PIN_43_KPCOL1__FUNC_GPIO43>;
-> +			bias-pull-up;
-> +			input-enable;
-> +		};
-> +	};
-> +
-> +	i2c0_pins_a: i2c0@0 {
-> +		pins1 {
-> +			pinmux = <MT8516_PIN_58_SDA0__FUNC_SDA0_0>,
-> +				 <MT8516_PIN_59_SCL0__FUNC_SCL0_0>;
-> +			bias-disable;
-> +		};
-> +	};
-> +
-> +	i2c2_pins_a: i2c2@0 {
-> +		pins1 {
-> +			pinmux = <MT8516_PIN_60_SDA2__FUNC_SDA2_0>,
-> +				 <MT8516_PIN_61_SCL2__FUNC_SCL2_0>;
-> +			bias-disable;
-> +		};
-> +	};
-> +
-> +	tca6416_pins: pinmux_tca6416_pins {
-> +		gpio_mux_rst_n_pin {
-> +			pinmux = <MT8516_PIN_65_UTXD1__FUNC_GPIO65>;
-> +			output-high;
-> +		};
-> +
-> +		gpio_mux_int_n_pin {
-> +			pinmux = <MT8516_PIN_64_URXD1__FUNC_GPIO64>;
-> +			input-enable;
-> +			bias-pull-up;
-> +		};
-> +	};
-> +};
+> I had forgotten that we discussed a similar case already a few months
+> ago (thanks to Evgenii for pointing out). Do you have this commit
+> applied to your tree: df325e05a682 ("arm64: Validate tagged addresses in
+> access_ok() called from kernel threads")?
 > 
 
+Yes! We have that patch. I've also got Google's reply about referencing
+this patch in android kernel tree.
+https://android-review.googlesource.com/c/kernel/common/+/1186615
+
+However, during my debugging process, I've dumped specific length (e.g.,
+24 bytes for the first request) AIO request buffer address both in adbd
+and in __range_ok(). Then I've found __range_ok() still always return
+false on address begin with "0x3c". Since untagged_addr() already called
+in __range_ok(), to set "TIF_TAGGED_ADDR" with adbd's user space buffer
+should be the possible solution. Hence I've send the v3 patch.
+
+Anyway, I've found that to disable TAGGED address in adbd is possible by
+this way and will report to Google and see how they think.
+
+diff --git a/adb/daemon/main.cpp b/adb/daemon/main.cpp
+index 9e02e89ab..b2f6f8e3f 100644
+--- a/adb/daemon/main.cpp
++++ b/adb/daemon/main.cpp
+@@ -317,6 +317,8 @@ int main(int argc, char** argv) {
+     mallopt(M_DECAY_TIME, 1);
+ #endif
+
++    prctl(PR_SET_TAGGED_ADDR_CTRL, ~PR_TAGGED_ADDR_ENABLE, 0, 0, 0);
++
+     while (true) {
+         static struct option opts[] = {
+                 {"root_seclabel", required_argument, nullptr, 's'},
+
+Many thanks!
+Macpaul Lin
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
