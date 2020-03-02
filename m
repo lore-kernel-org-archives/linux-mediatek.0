@@ -2,84 +2,76 @@ Return-Path: <SRS0=QQ5c=4T=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-14.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3CEA5C3F2D2
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2020 04:40:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EE1F8C3F2D1
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2020 09:22:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0CE782073B
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2020 04:40:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AF10824695
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2020 09:22:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="M9TqiBZf";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="FT2t3Mpu"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0CE782073B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Zb/2hlHX";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="vAK36ER2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF10824695
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=TX4tZq06NlYa/9r3tKsJhqKz0rNg7L0X/GfTe8TzeZU=; b=M9TqiBZfhVAdAJ
-	nLiRnjPG28+ssle1gbsGtVEMGnn1lfgoF+86acj1R9xp4uP56CqsyPlJ23cDoDagst0+iFeJ8mrQx
-	UAlKuqhVsK9ZPktBI/t+pimZrwM1fWhhZAmTiw1Uh+oEo9PqpPUxUg8QQfGfr7+V2IjVHPAy04aYx
-	dSKtS+4LVJI1nTdQmnZ59rHj3nDyC2DzCGElDHshkYRQlHYn+0KdQKeXBn0yq/RxVZLkXctw9tuQM
-	6NRfUJFoln8a01uPhY2t94wtArXfVeZlDyPrE0yrZkAG6MRpaLcaomhr/Q0MG0hd/GE9TeTjiiK3/
-	5AXJDKOIyqmtAlbzCadg==;
+	List-Owner; bh=+mhG+guda5I0wMIsxW6NRI1/5pj9Y9+JfBSQayiI4mY=; b=Zb/2hlHXISkBuU
+	FNgOKF4/AYI5jbklBVEtvN/NldRLVhioA9HIZot3nYHhh8+zrrCPCQVSEjgsdu4KJJSN3pACQ6VyJ
+	q1cxOHzbiRUhFlUqXkq17rXaB8tRi88hB2yx79BTd6rUI/6R1wArzVfhzpay2xnfXE2Uvq+3HxhTG
+	NWG0Y8uPl8WwKjhQ5n/k1doFy68YoWyn7SwCQMsH45zNS/0Qrjqfgmaq8j5yzKNoZFrvXXxg4/sXO
+	vYxBy1Vg4QaGzlWAIXMTrSXkfHn+4lTnTgjl63PsoME5iF91153eCNctnf98zccjWDe/ObU8zngZ4
+	/yqz6fC2A6ZmDHmLsLhQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j8csf-0001hg-8w; Mon, 02 Mar 2020 04:40:37 +0000
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+	id 1j8hGw-00032e-Km; Mon, 02 Mar 2020 09:21:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j8csX-0001aO-RS
- for linux-mediatek@lists.infradead.org; Mon, 02 Mar 2020 04:40:31 +0000
-Received: by mail-pl1-x644.google.com with SMTP id t14so3680149plr.8
- for <linux-mediatek@lists.infradead.org>; Sun, 01 Mar 2020 20:40:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=JBoBPXSfXN0i6YlT5O3w+IrrwUqvYYFsrcYt5wboxew=;
- b=FT2t3MpuBDpL8dt3OrpOC6aOPTFpny+bXnL67bulR0bRHvNuF2L0alcK4pqgI7T58x
- y6SfKubAdgC0CCTSAdLlkzxM7dJcZ6UwhEJCV8rRWGJHq8bz/UT2KjuVenSCdY8z+LTk
- rLBlppfKW0h+D7aH256sHo5Ef5I5tlqdnm5zM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=JBoBPXSfXN0i6YlT5O3w+IrrwUqvYYFsrcYt5wboxew=;
- b=Q2kZ4fbCGqgugxrc4x+KlhCF/t9EPW/IYo2gySgCTCp8awxc+9+BLG8GcJNI/z+O2v
- 9oTsQAFR8ZjHnJURO2GqVifVT02ip3I6iuOCXX6mdd0QV+zJUM98fivLhvP+SAYca710
- 5fWQZPXUDtrZGCL1N8ndZlXYOHdbwnRwsbL8E7t4UpYMaLlFH3cAwJE3VCLHqiBAgDNV
- 7SLfAklDaMdsVpICUS7sn99mZG489I9oPoBQspiXU67QfaDeg8HzewP5Ydf7geoiXDxE
- uShcE+UpMyZmj0ZHDjikBrG66vrum0sybMjwB9IKsn0C68MQQfp0H4Oz+njXdBF/ELQq
- 0zoA==
-X-Gm-Message-State: APjAAAX2ILscC7YuWe7uHihUVTfWzLrqOfj31lcI5sSRYjRY3kbPJgR+
- Z1dnmxPG689iFiLyZZBxTzU+Vw==
-X-Google-Smtp-Source: APXvYqybK13H+eIbB8Ngys7J7QSF2IWrobmgk4p2PvvFqnxE00d2PqWOmqj/NGCkvg5Do3OENzBvGQ==
-X-Received: by 2002:a17:90a:aa83:: with SMTP id
- l3mr19872063pjq.5.1583124027833; 
- Sun, 01 Mar 2020 20:40:27 -0800 (PST)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:b852:bd51:9305:4261])
- by smtp.gmail.com with ESMTPSA id f8sm18753362pfn.2.2020.03.01.20.40.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 01 Mar 2020 20:40:27 -0800 (PST)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v4] media: mtk-vpu: avoid unaligned access to DTCM buffer.
-Date: Mon,  2 Mar 2020 12:40:21 +0800
-Message-Id: <20200302044021.97415-1-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.25.0.265.gbab2e86ba0-goog
+ id 1j8hGt-00031k-SB; Mon, 02 Mar 2020 09:21:57 +0000
+X-UUID: 7970c94c01f14af6b1101d8a80f17437-20200302
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=0Y23yxwohWhXaBotvUv65ILHSsUsxieq1MmLFigexZw=; 
+ b=vAK36ER269blXWVp9ID1zgWmo9YVYJ4yZROsmsh22z0kJguPv94Cbr9fvWNRUty0Vqt7P2L3rjw3La5SWEKG/lVcW2EhwGaYYQh6HZDR4/lS7+78Nlq0nweI+b+57NW2uey1dIDNMER7A9bgjHAn0Dq1agr8syj3B7JabkS+wL0=;
+X-UUID: 7970c94c01f14af6b1101d8a80f17437-20200302
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1297678464; Mon, 02 Mar 2020 01:21:50 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 2 Mar 2020 01:12:37 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 2 Mar 2020 17:09:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Mon, 2 Mar 2020 17:11:08 +0800
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <ebiggers@kernel.org>,
+ <martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+ <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+Subject: [RFC PATCH v1] scsi: ufs-mediatek: add inline encryption support
+Date: Mon, 2 Mar 2020 17:11:38 +0800
+Message-ID: <20200302091138.10341-1-stanley.chu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 1E0A8519FB5C75622F8B15201DA37225490402B846AFCF514B41CA5CB4FE07DC2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200301_204029_923878_AB5B599F 
-X-CRM114-Status: GOOD (  16.33  )
+X-CRM114-CacheID: sfid-20200302_012155_920066_4B1C3B25 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,265 +83,112 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- linux-kernel@vger.kernel.org, Houlong Wei <houlong.wei@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>, linux-media@vger.kernel.org
+Cc: andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
+ light.hsieh@mediatek.com, satyat@google.com, linux-fscrypt@vger.kernel.org,
+ cang@codeaurora.org, linux-mediatek@lists.infradead.org,
+ peter.wang@mediatek.com, matthias.bgg@gmail.com,
+ Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org,
+ beanhuo@micron.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-media: mtk-vpu: avoid unaligned access to DTCM buffer.
+Add inline encryption support to ufs-mediatek.
 
-Previously, vpu->recv_buf and send_buf are forced cast from
-void __iomem *tcm. vpu->recv_buf->share_buf is passed to
-vpu_ipi_desc.handler(). It's not able to do unaligned access. Otherwise
-kernel would crash due to unable to handle kernel paging request.
+The standards-compliant parts, such as querying the crypto capabilities
+and enabling crypto for individual UFS requests, are already handled by
+ufshcd-crypto.c, which itself is wired into the blk-crypto framework.
 
-struct vpu_run {
-	u32 signaled;
-	char fw_ver[VPU_FW_VER_LEN];
-	unsigned int	dec_capability;
-	unsigned int	enc_capability;
-	wait_queue_head_t wq;
-};
+However MediaTek UFS host requires a vendor-specific hce_enable operation
+to allow crypto-related registers being accessed normally in kernel.
+After this step, MediaTek UFS host can work as standard-compliant host
+for inline-encryption related functions.
 
-fw_ver starts at 4 byte boundary. If system enables
-CONFIG_HAVE_EFFICIENT_UNALIGNED_ACCESS, strscpy() will do
-read_word_at_a_time(), which tries to read 8-byte: *(unsigned long *)addr
+This patch is rebased to the latest wip-inline-encryption branch in
+Eric Biggers's git:
+https://git.kernel.org/pub/scm/linux/kernel/git/ebiggers/linux.git/
 
-vpu_init_ipi_handler() calls strscpy(), which would lead to crash.
-
-vpu_init_ipi_handler() and several other handlers (eg.
-vpu_dec_ipi_handler) only do read access to this data, so they can be
-const, and we can use memcpy_fromio() to copy the buf to another non iomem
-buffer then pass to handler.
-
-Fixes: 85709cbf1524 ("media: replace strncpy() by strscpy()")
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
-Change in v4:
-- Remove forced casting recv_buf from tcm. Copy iomem data before passing
-  to handler.
-Change in v2, v3:
-- fix sparse warnings.
----
- drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c  |  9 ++--
- .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  6 +--
- .../media/platform/mtk-vcodec/venc_vpu_if.c   | 12 ++---
- drivers/media/platform/mtk-vpu/mtk_vpu.c      | 45 ++++++++++---------
- drivers/media/platform/mtk-vpu/mtk_vpu.h      |  2 +-
- 5 files changed, 38 insertions(+), 36 deletions(-)
+ drivers/scsi/ufs/ufs-mediatek.c | 27 ++++++++++++++++++++++++++-
+ drivers/scsi/ufs/ufs-mediatek.h |  1 +
+ 2 files changed, 27 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c b/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c
-index 6720d11f50cf..dc95b8a44759 100644
---- a/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c
-+++ b/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c
-@@ -15,7 +15,7 @@ static inline struct mtk_mdp_ctx *vpu_to_ctx(struct mtk_mdp_vpu *vpu)
- 	return container_of(vpu, struct mtk_mdp_ctx, vpu);
- }
+diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+index 53eae5fe2ade..12d01fd3d5e1 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.c
++++ b/drivers/scsi/ufs/ufs-mediatek.c
+@@ -15,6 +15,7 @@
+ #include <linux/soc/mediatek/mtk_sip_svc.h>
  
--static void mtk_mdp_vpu_handle_init_ack(struct mdp_ipi_comm_ack *msg)
-+static void mtk_mdp_vpu_handle_init_ack(const struct mdp_ipi_comm_ack *msg)
- {
- 	struct mtk_mdp_vpu *vpu = (struct mtk_mdp_vpu *)
- 					(unsigned long)msg->ap_inst;
-@@ -26,10 +26,11 @@ static void mtk_mdp_vpu_handle_init_ack(struct mdp_ipi_comm_ack *msg)
- 	vpu->inst_addr = msg->vpu_inst_addr;
- }
+ #include "ufshcd.h"
++#include "ufshcd-crypto.h"
+ #include "ufshcd-pltfrm.h"
+ #include "ufs_quirks.h"
+ #include "unipro.h"
+@@ -24,6 +25,9 @@
+ 	arm_smccc_smc(MTK_SIP_UFS_CONTROL, \
+ 		      cmd, val, 0, 0, 0, 0, 0, &(res))
  
--static void mtk_mdp_vpu_ipi_handler(void *data, unsigned int len, void *priv)
-+static void mtk_mdp_vpu_ipi_handler(const void *data, unsigned int len,
-+				    void *priv)
- {
--	unsigned int msg_id = *(unsigned int *)data;
--	struct mdp_ipi_comm_ack *msg = (struct mdp_ipi_comm_ack *)data;
-+	unsigned int msg_id = *(const unsigned int *)data;
-+	const struct mdp_ipi_comm_ack *msg = data;
- 	struct mtk_mdp_vpu *vpu = (struct mtk_mdp_vpu *)
- 					(unsigned long)msg->ap_inst;
- 	struct mtk_mdp_ctx *ctx;
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-index 70abfd4cd4b9..948a12fd9d46 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-@@ -9,7 +9,7 @@
- #include "vdec_ipi_msg.h"
- #include "vdec_vpu_if.h"
- 
--static void handle_init_ack_msg(struct vdec_vpu_ipi_init_ack *msg)
-+static void handle_init_ack_msg(const struct vdec_vpu_ipi_init_ack *msg)
- {
- 	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
- 					(unsigned long)msg->ap_inst_addr;
-@@ -34,9 +34,9 @@ static void handle_init_ack_msg(struct vdec_vpu_ipi_init_ack *msg)
-  * This function runs in interrupt context and it means there's an IPI MSG
-  * from VPU.
-  */
--static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
-+static void vpu_dec_ipi_handler(const void *data, unsigned int len, void *priv)
- {
--	struct vdec_vpu_ipi_ack *msg = data;
-+	const struct vdec_vpu_ipi_ack *msg = data;
- 	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
- 					(unsigned long)msg->ap_inst_addr;
- 
-diff --git a/drivers/media/platform/mtk-vcodec/venc_vpu_if.c b/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
-index 3e931b0ed096..9540709c1905 100644
---- a/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
-+++ b/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
-@@ -8,26 +8,26 @@
- #include "venc_ipi_msg.h"
- #include "venc_vpu_if.h"
- 
--static void handle_enc_init_msg(struct venc_vpu_inst *vpu, void *data)
-+static void handle_enc_init_msg(struct venc_vpu_inst *vpu, const void *data)
- {
--	struct venc_vpu_ipi_msg_init *msg = data;
-+	const struct venc_vpu_ipi_msg_init *msg = data;
- 
- 	vpu->inst_addr = msg->vpu_inst_addr;
- 	vpu->vsi = vpu_mapping_dm_addr(vpu->dev, msg->vpu_inst_addr);
- }
- 
--static void handle_enc_encode_msg(struct venc_vpu_inst *vpu, void *data)
-+static void handle_enc_encode_msg(struct venc_vpu_inst *vpu, const void *data)
- {
--	struct venc_vpu_ipi_msg_enc *msg = data;
-+	const struct venc_vpu_ipi_msg_enc *msg = data;
- 
- 	vpu->state = msg->state;
- 	vpu->bs_size = msg->bs_size;
- 	vpu->is_key_frm = msg->is_key_frm;
- }
- 
--static void vpu_enc_ipi_handler(void *data, unsigned int len, void *priv)
-+static void vpu_enc_ipi_handler(const void *data, unsigned int len, void *priv)
- {
--	struct venc_vpu_ipi_msg_common *msg = data;
-+	const struct venc_vpu_ipi_msg_common *msg = data;
- 	struct venc_vpu_inst *vpu =
- 		(struct venc_vpu_inst *)(unsigned long)msg->venc_inst;
- 
-diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-index a768707abb94..2fbccc9b247b 100644
---- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
-+++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-@@ -203,8 +203,8 @@ struct mtk_vpu {
- 	struct vpu_run run;
- 	struct vpu_wdt wdt;
- 	struct vpu_ipi_desc ipi_desc[IPI_MAX];
--	struct share_obj *recv_buf;
--	struct share_obj *send_buf;
-+	struct share_obj __iomem *recv_buf;
-+	struct share_obj __iomem *send_buf;
- 	struct device *dev;
- 	struct clk *clk;
- 	bool fw_loaded;
-@@ -292,7 +292,7 @@ int vpu_ipi_send(struct platform_device *pdev,
- 		 unsigned int len)
- {
- 	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
--	struct share_obj *send_obj = vpu->send_buf;
-+	struct share_obj __iomem *send_obj = vpu->send_buf;
- 	unsigned long timeout;
- 	int ret = 0;
- 
-@@ -325,9 +325,9 @@ int vpu_ipi_send(struct platform_device *pdev,
- 		}
- 	} while (vpu_cfg_readl(vpu, HOST_TO_VPU));
- 
--	memcpy((void *)send_obj->share_buf, buf, len);
--	send_obj->len = len;
--	send_obj->id = id;
-+	memcpy_toio(send_obj->share_buf, buf, len);
-+	writel(len, &send_obj->len);
-+	writel(id, &send_obj->id);
- 
- 	vpu->ipi_id_ack[id] = false;
- 	/* send the command to VPU */
-@@ -600,10 +600,10 @@ int vpu_load_firmware(struct platform_device *pdev)
- }
- EXPORT_SYMBOL_GPL(vpu_load_firmware);
- 
--static void vpu_init_ipi_handler(void *data, unsigned int len, void *priv)
-+static void vpu_init_ipi_handler(const void *data, unsigned int len, void *priv)
- {
--	struct mtk_vpu *vpu = (struct mtk_vpu *)priv;
--	struct vpu_run *run = (struct vpu_run *)data;
-+	struct mtk_vpu *vpu = priv;
-+	const struct vpu_run *run = data;
- 
- 	vpu->run.signaled = run->signaled;
- 	strscpy(vpu->run.fw_ver, run->fw_ver, sizeof(vpu->run.fw_ver));
-@@ -700,19 +700,21 @@ static int vpu_alloc_ext_mem(struct mtk_vpu *vpu, u32 fw_type)
- 
- static void vpu_ipi_handler(struct mtk_vpu *vpu)
- {
--	struct share_obj *rcv_obj = vpu->recv_buf;
-+	struct share_obj __iomem *rcv_obj = vpu->recv_buf;
- 	struct vpu_ipi_desc *ipi_desc = vpu->ipi_desc;
--
--	if (rcv_obj->id < IPI_MAX && ipi_desc[rcv_obj->id].handler) {
--		ipi_desc[rcv_obj->id].handler(rcv_obj->share_buf,
--					      rcv_obj->len,
--					      ipi_desc[rcv_obj->id].priv);
--		if (rcv_obj->id > IPI_VPU_INIT) {
--			vpu->ipi_id_ack[rcv_obj->id] = true;
-+	unsigned char data[SHARE_BUF_SIZE];
-+	s32 id = readl(&rcv_obj->id);
++#define ufs_mtk_crypto_ctrl(res, enable) \
++	ufs_mtk_smc(UFS_MTK_SIP_CRYPTO_CTRL, enable, res)
 +
-+	memcpy_fromio(data, rcv_obj->share_buf, sizeof(data));
-+	if (id < IPI_MAX && ipi_desc[id].handler) {
-+		ipi_desc[id].handler(data, readl(&rcv_obj->len),
-+				     ipi_desc[id].priv);
-+		if (id > IPI_VPU_INIT) {
-+			vpu->ipi_id_ack[id] = true;
- 			wake_up(&vpu->ack_wq);
- 		}
- 	} else {
--		dev_err(vpu->dev, "No such ipi id = %d\n", rcv_obj->id);
-+		dev_err(vpu->dev, "No such ipi id = %d\n", id);
+ #define ufs_mtk_ref_clk_notify(on, res) \
+ 	ufs_mtk_smc(UFS_MTK_SIP_REF_CLK_NOTIFICATION, on, res)
+ 
+@@ -66,7 +70,27 @@ static void ufs_mtk_cfg_unipro_cg(struct ufs_hba *hba, bool enable)
  	}
  }
  
-@@ -722,11 +724,10 @@ static int vpu_ipi_init(struct mtk_vpu *vpu)
- 	vpu_cfg_writel(vpu, 0x0, VPU_TO_HOST);
+-static int ufs_mtk_bind_mphy(struct ufs_hba *hba)
++static void ufs_mtk_crypto_enable(struct ufs_hba *hba)
++{
++	struct arm_smccc_res res;
++
++	ufs_mtk_crypto_ctrl(res, 1);
++	if (res.a0) {
++		dev_info(hba->dev, "%s: crypto enable failed, err: %lu\n",
++			 __func__, res.a0);
++	}
++}
++
++static int ufs_mtk_hce_enable_notify(struct ufs_hba *hba,
++				     enum ufs_notify_change_status status)
++{
++	if (status == PRE_CHANGE && ufshcd_hba_is_crypto_supported(hba))
++		ufs_mtk_crypto_enable(hba);
++
++	return 0;
++}
++
++int ufs_mtk_bind_mphy(struct ufs_hba *hba)
+ {
+ 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+ 	struct device *dev = hba->dev;
+@@ -494,6 +518,7 @@ static struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
+ 	.name                = "mediatek.ufshci",
+ 	.init                = ufs_mtk_init,
+ 	.setup_clocks        = ufs_mtk_setup_clocks,
++	.hce_enable_notify   = ufs_mtk_hce_enable_notify,
+ 	.link_startup_notify = ufs_mtk_link_startup_notify,
+ 	.pwr_change_notify   = ufs_mtk_pwr_change_notify,
+ 	.apply_dev_quirks    = ufs_mtk_apply_dev_quirks,
+diff --git a/drivers/scsi/ufs/ufs-mediatek.h b/drivers/scsi/ufs/ufs-mediatek.h
+index fccdd979d6fb..5ebaa59898bf 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.h
++++ b/drivers/scsi/ufs/ufs-mediatek.h
+@@ -58,6 +58,7 @@
+  */
+ #define MTK_SIP_UFS_CONTROL               MTK_SIP_SMC_CMD(0x276)
+ #define UFS_MTK_SIP_DEVICE_RESET          BIT(1)
++#define UFS_MTK_SIP_CRYPTO_CTRL           BIT(2)
+ #define UFS_MTK_SIP_REF_CLK_NOTIFICATION  BIT(3)
  
- 	/* shared buffer initialization */
--	vpu->recv_buf = (__force struct share_obj *)(vpu->reg.tcm +
--						     VPU_DTCM_OFFSET);
-+	vpu->recv_buf = vpu->reg.tcm + VPU_DTCM_OFFSET;
- 	vpu->send_buf = vpu->recv_buf + 1;
--	memset(vpu->recv_buf, 0, sizeof(struct share_obj));
--	memset(vpu->send_buf, 0, sizeof(struct share_obj));
-+	memset_io(vpu->recv_buf, 0, sizeof(struct share_obj));
-+	memset_io(vpu->send_buf, 0, sizeof(struct share_obj));
- 
- 	return 0;
- }
-diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.h b/drivers/media/platform/mtk-vpu/mtk_vpu.h
-index d4453b4bcee9..ee7c552ce928 100644
---- a/drivers/media/platform/mtk-vpu/mtk_vpu.h
-+++ b/drivers/media/platform/mtk-vpu/mtk_vpu.h
-@@ -15,7 +15,7 @@
-  * VPU interfaces with other blocks by share memory and interrupt.
-  **/
- 
--typedef void (*ipi_handler_t) (void *data,
-+typedef void (*ipi_handler_t) (const void *data,
- 			       unsigned int len,
- 			       void *priv);
- 
+ /*
 -- 
-2.25.0.265.gbab2e86ba0-goog
-
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
