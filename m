@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 06163C3F2CD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2020 18:18:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EF235C3F2D1
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2020 18:23:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CE46520836
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2020 18:18:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C21FA214DB
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2020 18:23:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cMg+MnAw";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=microchiptechnology.onmicrosoft.com header.i=@microchiptechnology.onmicrosoft.com header.b="L1i4RVYb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CE46520836
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="f+Vdvcwi";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=microchiptechnology.onmicrosoft.com header.i=@microchiptechnology.onmicrosoft.com header.b="ESXCafrW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C21FA214DB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=microchip.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,23 +26,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GHGKNwoaJvXTAtQJ6tllDBKlA4B32MWmJdAgXMAyfJM=; b=cMg+MnAwCEaYPE
-	Brcr+qiRs2O+V32Ve5tKHTIJgZdkLSJnkzdXQ/7kXHpbKjkM96Y4RwjUdzx2BPqU2pC/aUNERjQWS
-	sjMSm7J9/KSxvkd247afzm2EYL4aThSwrthedgmzgnzs5dx0E0xtRZROKE+UXSLrnSpkro+KXUtiw
-	5yo79p+yU9zRdp5yXhxATZGAjVvcQc36KMg3EEX/BBcmSUzyhOmTF+fGMQbsYazjheICxoBiw5wxX
-	frPDqBsZDjPT9IfpeCzbhWsp0DdSPxranjsCiaGG5EH/SvdYuQlC3p1SGScFDU9BhUJLHx/1c+Yx6
-	wfHlPx+r7LtT5VVXNOfQ==;
+	List-Owner; bh=fAoJR4/iudMLwmhy/lz4KYcHj/5q6gJlXEtrNUh2QMo=; b=f+Vdvcwi5IUZqT
+	AoBT2NFOG1pxvL+V2YN2QeSe7jgCJmF9erBTH04bKTH8b0aia5WSQ59VHSH+D9c27MTnMZuf79wjX
+	dk0Ifzw6svrmJZ1Gd5QGWtbeUFnyHXH0WKhocw/GyIaa1aOMBgJMIK5syaNzW44cs5bxHH9NgkoHZ
+	NbGX1ngLyaFLulutMfngDBoQm3VlvTZveRxhP+BD5luKMma1awpBKhJs/+NPXeVrwDplJFEezMIFY
+	2osSJMFuPpVhhVRo9QiAnA0iFPyRvDEdaOrVJ6OU0i/+1fO8TUGlIuNIkModqqh5dSYErZAQBixE/
+	G+xCntHLcA8t9L/7rrzQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j8pdV-0004jY-KJ; Mon, 02 Mar 2020 18:17:49 +0000
-Received: from esa6.microchip.iphmx.com ([216.71.154.253])
+	id 1j8pih-0000SB-RU; Mon, 02 Mar 2020 18:23:11 +0000
+Received: from esa2.microchip.iphmx.com ([68.232.149.84])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j8pUW-0003Kp-Au
- for linux-mediatek@lists.infradead.org; Mon, 02 Mar 2020 18:08:34 +0000
-Received-SPF: Pass (esa6.microchip.iphmx.com: domain of
+ id 1j8pie-0000Qk-IM; Mon, 02 Mar 2020 18:23:10 +0000
+Received-SPF: Pass (esa2.microchip.iphmx.com: domain of
  Tudor.Ambarus@microchip.com designates 198.175.253.82 as
  permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa6.microchip.iphmx.com;
+ client-ip=198.175.253.82; receiver=esa2.microchip.iphmx.com;
  envelope-from="Tudor.Ambarus@microchip.com";
  x-sender="Tudor.Ambarus@microchip.com";
  x-conformance=spf_only; x-record-type="v=spf1";
@@ -50,42 +49,42 @@ Received-SPF: Pass (esa6.microchip.iphmx.com: domain of
  a:smtpout.microchip.com -exists:%{i}.spf.microchip.iphmx.com
  include:servers.mcsv.net include:mktomail.com
  include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa6.microchip.iphmx.com: no sender
+Received-SPF: None (esa2.microchip.iphmx.com: no sender
  authenticity information available from domain of
  postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa6.microchip.iphmx.com;
+ client-ip=198.175.253.82; receiver=esa2.microchip.iphmx.com;
  envelope-from="Tudor.Ambarus@microchip.com";
  x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa6.microchip.iphmx.com;
+Authentication-Results: esa2.microchip.iphmx.com;
  spf=Pass smtp.mailfrom=Tudor.Ambarus@microchip.com;
  spf=None smtp.helo=postmaster@email.microchip.com;
  dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: 3Qbe2ZTgyWF5fojg50AG0LVPU3vMyog5ITMpDkvaN7IbzNicW8WAM9EK7lv8unflVoyHbLEAou
- DIu10puNlI5ZSMkuYqlGwSvjpYEBIPAV9hgBGl2j0YTbuCV0/VL5sdLlf+VQu+6ih3HpxIPCTG
- iKcUjJLeSAQVlRzalT9Pnezsc/8mv2ZYB4+R1xEu6X8gZzrJJd4iUFxXM/xZ6NLodpK6Uo5lGv
- m52+ysGu+B80KilQzeIrkVtLTJOm/PNKtVWupp4pW9Bz72qYtR10orVmYwmrs8mcoaBsDz4YVt
- +4E=
-X-IronPort-AV: E=Sophos;i="5.70,507,1574146800"; 
-   d="scan'208";a="4205017"
+IronPort-SDR: w0LdkjvxFcz6lBjCghOwyy5RSSGS06ljCa1VV2N5sCLtxgADxd8lzNcZ2y+LZ9An3QF0aNrmN0
+ dKpnn3T4kTOc8Gece1I0ADEP6hQ5BdiF6PneCtUIAHaUfOR8jVJFO7SxLBtpS2BSaszVWLOgxl
+ Ip5UMgZK6oO9sMaPZ5/CImeVcJfZoIXaH9aso4fQd0iHMjm88Gega3Vli5THUMOJi5pqxwixXF
+ XCh1U5F1vU0+FLyW0Dx+rYIOEtWW0ZG/c9yHlHWj+upFEgwOwsi00S9Hfxe4RoOQ5obhUN6s2i
+ BZQ=
+X-IronPort-AV: E=Sophos;i="5.70,507,1574146800"; d="scan'208";a="67603656"
 Received: from smtpout.microchip.com (HELO email.microchip.com)
  ([198.175.253.82])
- by esa6.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 02 Mar 2020 11:08:03 -0700
-Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
+ by esa2.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 02 Mar 2020 11:23:07 -0700
+Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
  chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
  15.1.1713.5; Mon, 2 Mar 2020 11:08:14 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.151) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5
- via Frontend Transport; Mon, 2 Mar 2020 11:08:00 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.71) with Microsoft SMTP Server
+ (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5 via Frontend
+ Transport; Mon, 2 Mar 2020 11:08:02 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=hGUUbDaGs9OLze7QJBdGJ5oGpzFQD9ZIX6fKEIsHJaVVRg66ubX5fLBVSm72u+6+Lk9yi8Rvo+lzUGBtpb/Kaq8f8P7JTzr6SZQvXBGRfJPvzK63WnLGKr+66xFswl0ZdoHAkGFuSK7TT2iZbxKwu4+5iqqlFi3O5a46+wEbUABjjfiUdXWdML90M+ggaWOjL0GouY3hdVNJGSQAEjVbmSenB3idOeidNeserTf+ym+tNo27Ln5pA9TtlEDnPRlFmcKdvpTpky/ueS3VhemRz3yq+jFJ9Y1Wa5XmZQMiSMyoAXLOykiRpdWJ1flA3Nc7GclAcdzbGA78TDub2rrrqw==
+ b=Tz9cm6VXupF4v5WC5A1g2LRB/JKwul+ugbCekaA5pU+99bR1AMnUxx1NsAAmCbk/FMjInwfjZS+lxeS0xuX1AZDQWabLmZ0tVnkSlSpjFWZM69U/AC5ixBYOwK3662RsiqzECltbMcDlAfachSQwEWn9GV0q//uVMFt/f+hltYSmvrBHTJ0d9FYxaToPKMUtCnfuLN/2eSv1D7rykd2Iwweya1MbrlSD7NxUBaxAfZE1g4oL0ADxf9jzXBHokc+eqwdw6AAVgC4+2aslFfzjlKfVHoaxVGXe1Ome440TqRL7v5Glm1c4Ttwwmwyb446bC986V4rEl/YZzB6TIUqGDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=A5M9N/1e88yHX3LUSWyHfVlKzNlJzJheDKVqRRt+1ZI=;
- b=jAI9Wef0qJztPfOH2P2Wom2sKTrwyOTYx542F/9w6G8L0WbhA2SzYP1sAurvcsmb/VKyKMcYnthnD8BXNlobFtwpoOb7xfRI4Y3eRQhTAjzRj3gKpcsH0VfmSbwd8u8oD+DlmGYrBew+JQVow/EyOLLsLQNqZSjG98KN87R0rLvDjkoQgzoGA3lS9lbjORgcn5SsLovcGbdghgSQWX2d9Y+TBLemx8nz8Xeq/b/BPPn5Oa0/aH1EbZrLGGPpVgScftzflr+tdpdmQ41+APCeFM2copoEo5qVJw94HxXir+blE+xRMgSie+hxClw3PSVxoJdCpLihsx9KLd+VZR4zHg==
+ bh=gOPRzOjkFy+ajctbc4FajKqKi0sI4eQkBgwXrfldr5A=;
+ b=aBvu0P7t47znJlJP8uBVUNoYXAvMoHX1dzny4GxgSmMqZZZmF0UuMo/PbWFz6S2vzA0bpZmjDU33Hj19dh9AYjYb3t4gnu1IhBwWgwnRYSV3+HTRkz6gTtOqzSU7fkJJvDGSKElLcZju39cFDJan20Eqtkd6l6pq4W/xaXy5Ibv62CuWwGPvnbZZrmm6/kLXeJD+sQDZGomdIq0mdGjzl8jtEooGYLzbuTOQ6VHRxe1Skx5/PjJXtM+Ge5HBWhzXdc2NezCL91Hes1KN8psDT4fkqWXgoxzUeoiVfcr0cIPjrlsrLSRf8CuznppzJA5IxeUa7rFrv/PLhjXT6lO6eQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=microchip.com; dmarc=pass action=none
  header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
@@ -93,24 +92,24 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=microchiptechnology.onmicrosoft.com;
  s=selector2-microchiptechnology-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=A5M9N/1e88yHX3LUSWyHfVlKzNlJzJheDKVqRRt+1ZI=;
- b=L1i4RVYbGYfIm/PrQ+caP+bkfu9CGgyxwnG1DMPUgGIDq1b0XmDb6aoJ1DDkiDXGCALs73VDD4DePNxDg3fapKQVVMir/YffiDPJ8WtStj7t+0UoK9+2+0P+WrG4h42fDTNdJXiXgHQ+NjMZQCO9cKbkHVz4I1y9SAArUFdeuI4=
+ bh=gOPRzOjkFy+ajctbc4FajKqKi0sI4eQkBgwXrfldr5A=;
+ b=ESXCafrWC7w98hg00s5cdiufPIWMacd9cZFRj5399qoliz7bZOQT71kqQ6sufGuqgWcbjZegLeUbuENewn+aJVDuD7s4Rk5BOvxJVGkCgkVZwlUJhL3uO2lASuEnUIFMo6yjWLb4XjS4xVCie9wm1c0LYpI5bZ3jLbMDUdglCkY=
 Received: from MN2PR11MB4448.namprd11.prod.outlook.com (2603:10b6:208:193::29)
  by MN2PR11MB4142.namprd11.prod.outlook.com (2603:10b6:208:135::29)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2772.14; Mon, 2 Mar
- 2020 18:07:55 +0000
+ 2020 18:07:56 +0000
 Received: from MN2PR11MB4448.namprd11.prod.outlook.com
  ([fe80::3c8f:7a55:cbd:adfb]) by MN2PR11MB4448.namprd11.prod.outlook.com
  ([fe80::3c8f:7a55:cbd:adfb%5]) with mapi id 15.20.2772.019; Mon, 2 Mar 2020
- 18:07:55 +0000
+ 18:07:56 +0000
 From: <Tudor.Ambarus@microchip.com>
 To: <bbrezillon@kernel.org>, <vigneshr@ti.com>, <linux-mtd@lists.infradead.org>
-Subject: [PATCH 18/23] mtd: spi-nor: Move Winbond bits out of core.c
-Thread-Topic: [PATCH 18/23] mtd: spi-nor: Move Winbond bits out of core.c
-Thread-Index: AQHV8L1/zTBZ4xvLfkW9opCCEvBpqw==
-Date: Mon, 2 Mar 2020 18:07:54 +0000
-Message-ID: <20200302180730.1886678-19-tudor.ambarus@microchip.com>
+Subject: [PATCH 20/23] mtd: spi-nor: Move Xilinx bits out of core.c
+Thread-Topic: [PATCH 20/23] mtd: spi-nor: Move Xilinx bits out of core.c
+Thread-Index: AQHV8L1/nqXX3HpkeUKEtq8g2RPGbA==
+Date: Mon, 2 Mar 2020 18:07:56 +0000
+Message-ID: <20200302180730.1886678-21-tudor.ambarus@microchip.com>
 References: <20200302180730.1886678-1-tudor.ambarus@microchip.com>
 In-Reply-To: <20200302180730.1886678-1-tudor.ambarus@microchip.com>
 Accept-Language: en-US
@@ -119,14 +118,14 @@ X-MS-Has-Attach:
 X-MS-TNEF-Correlator: 
 x-originating-ip: [94.177.32.156]
 x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: f10e74ed-fd9e-4ff0-ed6e-08d7bed4a21c
+x-ms-office365-filtering-correlation-id: 222e2005-7889-41e4-0270-08d7bed4a296
 x-ms-traffictypediagnostic: MN2PR11MB4142:
 x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MN2PR11MB4142D92516D9DC9D659356D4F0E70@MN2PR11MB4142.namprd11.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-microsoft-antispam-prvs: <MN2PR11MB41423A87B0E0EBB1684F704AF0E70@MN2PR11MB4142.namprd11.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:10000;
 x-forefront-prvs: 033054F29A
 x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(346002)(366004)(39860400002)(136003)(396003)(376002)(189003)(199004)(36756003)(26005)(66446008)(107886003)(6486002)(186003)(2616005)(4326008)(478600001)(6512007)(91956017)(64756008)(66946007)(2906002)(71200400001)(76116006)(8936002)(316002)(30864003)(86362001)(54906003)(6506007)(66556008)(5660300002)(66476007)(7406005)(1076003)(7416002)(81156014)(81166006)(110136005)(8676002);
+ SFS:(10009020)(346002)(366004)(39860400002)(136003)(396003)(376002)(189003)(199004)(36756003)(26005)(66446008)(107886003)(6486002)(186003)(2616005)(4326008)(478600001)(6512007)(91956017)(64756008)(66946007)(2906002)(71200400001)(76116006)(8936002)(316002)(86362001)(54906003)(6506007)(66556008)(5660300002)(66476007)(7406005)(1076003)(7416002)(81156014)(81166006)(110136005)(8676002);
  DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR11MB4142;
  H:MN2PR11MB4448.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
  PTR:InfoNoRecords; MX:1; A:1; 
@@ -134,19 +133,19 @@ received-spf: None (protection.outlook.com: microchip.com does not designate
  permitted sender hosts)
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 17anQOtIQ3xDHTt/TefWdY58K58GhOqn4CYEJ3VdkMdubKuMyLKo4vFjk6gvo4zfb9nrNjj3vQ0s9KhrJWAihTT4mo4iu89Wb3wLBlvWwZYNa8CcEp/BxwIdOiUe3Hn3/zpR68TRWPVPEyShLGxD8oLokt0cGWvMuTM/DUd9z+LWgP+ZYlJPMi2q87CJ5xgrlVE2K1S+ip3lgPsR7CzJNcYvhv9Sw+Ei36gCgVnNarg8IuJKo3IwltVn0Y3qlv86wvbD25O7cKElIUCBlZPp5SvCPsjXYqCI/F8TO/THAqQxUs5ws7u+/S8a5ZRvxlUB8A174SaYN5fYFNXgMgY4VW5r3zXpcTmjXpF60UzK8t0iSnGYBPdMeUDwarpXltJCh0RGYobtC3DM+0FPklQ/XtxtPzj0ZZvcjUWy395O6Rn4k8UCMFK8ew1EOXganTO1
-x-ms-exchange-antispam-messagedata: XqAosfgbhRaYCYyoQwuWqOwDDgJaPOGMcWy6UTj6E7klzpQRNatAYSNdpcqq7Bfki7M5TrWsGjL15qQDA5zDC9fxQz/vfuvIisV+LL6vNvWMdpJiRFlCy+6vU3TGwJzRFCfmMMqVPoWmyxxmJpXDQg==
+x-microsoft-antispam-message-info: 3aWAO5TlWxHmhuKzXqjFhuuml1cCjfo+9Imu88wkIAEDeVdXsTYbnZaSrKFRb7Hee653ZHwG2pYWgyiDS4xPrQlqx2tvH8/7Ten8d54BuymCyBv8RGCVU3fHk3qidXz3qR4upyGJrdVxHHZZN8XtbBnkCoS6yMyntXyLUb47Bq32OpFNUfNs91O8Z85VPiCDqhUDRtjeJn9dbkg2F5oKjyg9WCUlYw5v3Oq8sC/SzdW0cru9ranQGoqiqxj8U1DK4kNehT/j/gvCN5xC1HfWTsLIKenJ3FmDHHvKckYwsNb0OkkOFnRO++cg9Gs+aCpPiR2ZPU/J2pK1W8uLyUnETBiO09ijbd9XtopGbXtM2Ahv2VmbSQ6I/Mq4ICthDzYVZT/VhgprUuEKMyVJek/4lXDB+y5QFSd5jPIzJw0qh9ZO6COaXlM/UcnWjjMlmDzw
+x-ms-exchange-antispam-messagedata: ptoJ0CjLbGLvQV7+JVPZ3uM78rMM9EsYqlWgl2sU/kQRnsnsv0RBJrYsPB63pzpXL9wV0BuMVCXEzib/e42yp2KrPgaQseklHZn2B7D4IXDp6Vzjoj1bOlHpMwtRWqiIqqEZqyJHCQgasI19KfS6Tw==
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: f10e74ed-fd9e-4ff0-ed6e-08d7bed4a21c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Mar 2020 18:07:54.8949 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 222e2005-7889-41e4-0270-08d7bed4a296
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Mar 2020 18:07:56.0282 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: vA3umaxuJL+PfUQOG4G+D8sqmTIWOGyNlX2dEBfGnpc9o9GzoZBxRYPqBDafXxJKG4yfK46S2HeFVhL4dD/LXpF+K21Px56tVHpEP3U01uI=
+X-MS-Exchange-CrossTenant-userprincipalname: fNRS58tOlBSXg07qEmo18ijNXmqVsIxkCXiymYoSmGugCQv9AEaSszpVUtiJgl9Mn3s0rZ9p82rV9GV6cGtc3ih7TeCwyg42cUUqv5II27M=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4142
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200302_100832_589015_5DE39F7D 
-X-CRM114-Status: GOOD (  12.22  )
+X-CRM114-CacheID: sfid-20200302_102308_686342_7A900B64 
+X-CRM114-Status: GOOD (  17.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -177,201 +176,197 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Boris Brezillon <bbrezillon@kernel.org>
 
-Create a SPI NOR manufacturer driver for Winbond chips, and move the
-Winbond definitions outside of core.c.
+Create a SPI NOR manufacturer driver for Xilinx chips, and move the
+Xilinx definitions outside of core.c.
+
+While at it, remove the SPI_S3AN flag which is now useless.
 
 Signed-off-by: Boris Brezillon <bbrezillon@kernel.org>
 Signed-off-by: Tudor Ambarus <tudor.ambarus@microchip.com>
 ---
- drivers/mtd/spi-nor/Makefile  |   1 +
- drivers/mtd/spi-nor/core.c    | 115 +---------------------------------
- drivers/mtd/spi-nor/core.h    |   1 +
- drivers/mtd/spi-nor/winbond.c | 113 +++++++++++++++++++++++++++++++++
- 4 files changed, 116 insertions(+), 114 deletions(-)
- create mode 100644 drivers/mtd/spi-nor/winbond.c
+ drivers/mtd/spi-nor/Makefile |  1 +
+ drivers/mtd/spi-nor/core.c   | 76 +----------------------------
+ drivers/mtd/spi-nor/core.h   | 13 +----
+ drivers/mtd/spi-nor/xilinx.c | 94 ++++++++++++++++++++++++++++++++++++
+ 4 files changed, 98 insertions(+), 86 deletions(-)
+ create mode 100644 drivers/mtd/spi-nor/xilinx.c
 
 diff --git a/drivers/mtd/spi-nor/Makefile b/drivers/mtd/spi-nor/Makefile
-index ef7afc654a15..33b6f834a14f 100644
+index cd8d95b727c9..fa03513dd160 100644
 --- a/drivers/mtd/spi-nor/Makefile
 +++ b/drivers/mtd/spi-nor/Makefile
-@@ -13,4 +13,5 @@ spi-nor-objs			+= macronix.o
- spi-nor-objs			+= micron-st.o
+@@ -15,4 +15,5 @@ spi-nor-objs			+= micron-st.o
  spi-nor-objs			+= spansion.o
  spi-nor-objs			+= sst.o
-+spi-nor-objs			+= winbond.o
+ spi-nor-objs			+= winbond.o
++spi-nor-objs			+= xilinx.o
  obj-$(CONFIG_MTD_SPI_NOR)	+= spi-nor.o
 diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
-index 9ff0b09887b4..c99f063b0781 100644
+index 1776fb8eb66b..3e9f6bafa01b 100644
 --- a/drivers/mtd/spi-nor/core.c
 +++ b/drivers/mtd/spi-nor/core.c
-@@ -487,38 +487,6 @@ int spi_nor_write_ear(struct spi_nor *nor, u8 ear)
- 	return ret;
+@@ -1117,26 +1117,6 @@ void spi_nor_unlock_and_unprep(struct spi_nor *nor)
+ 	mutex_unlock(&nor->lock);
  }
  
--/**
-- * winbond_set_4byte() - Set 4-byte address mode for Winbond flashes.
-- * @nor:	pointer to 'struct spi_nor'.
-- * @enable:	true to enter the 4-byte address mode, false to exit the 4-byte
-- *		address mode.
-- *
-- * Return: 0 on success, -errno otherwise.
+-/*
+- * This code converts an address to the Default Address Mode, that has non
+- * power of two page sizes. We must support this mode because it is the default
+- * mode supported by Xilinx tools, it can access the whole flash area and
+- * changing over to the Power-of-two mode is irreversible and corrupts the
+- * original data.
+- * Addr can safely be unsigned int, the biggest S3AN device is smaller than
+- * 4 MiB.
 - */
--static int winbond_set_4byte(struct spi_nor *nor, bool enable)
+-static u32 s3an_convert_addr(struct spi_nor *nor, u32 addr)
 -{
--	int ret;
+-	u32 offset, page;
 -
--	ret = spi_nor_en4_ex4_set_4byte(nor, enable);
--	if (ret || enable)
--		return ret;
+-	offset = addr % nor->page_size;
+-	page = addr / nor->page_size;
+-	page <<= (nor->page_size > 512) ? 10 : 9;
 -
--	/*
--	 * On Winbond W25Q256FV, leaving 4byte mode causes the Extended Address
--	 * Register to be set to 1, so all 3-byte-address reads come from the
--	 * second 16M. We must clear the register to enable normal behavior.
--	 */
--	ret = spi_nor_write_enable(nor);
--	if (ret)
--		return ret;
--
--	ret = spi_nor_write_ear(nor, 0);
--	if (ret)
--		return ret;
--
--	return spi_nor_write_disable(nor);
+-	return page | offset;
 -}
 -
- /**
-  * spi_nor_xread_sr() - Read the Status Register on S3AN flashes.
-  * @nor:	pointer to 'struct spi_nor'.
-@@ -2017,73 +1985,6 @@ int spi_nor_sr2_bit7_quad_enable(struct spi_nor *nor)
+ static u32 spi_nor_convert_addr(struct spi_nor *nor, loff_t addr)
+ {
+ 	if (!nor->params.convert_addr)
+@@ -1985,13 +1965,6 @@ int spi_nor_sr2_bit7_quad_enable(struct spi_nor *nor)
   * old entries may be missing 4K flag.
   */
  static const struct flash_info spi_nor_ids[] = {
--	/* Winbond -- w25x "blocks" are 64K, "sectors" are 4KiB */
--	{ "w25x05", INFO(0xef3010, 0, 64 * 1024,  1,  SECT_4K) },
--	{ "w25x10", INFO(0xef3011, 0, 64 * 1024,  2,  SECT_4K) },
--	{ "w25x20", INFO(0xef3012, 0, 64 * 1024,  4,  SECT_4K) },
--	{ "w25x40", INFO(0xef3013, 0, 64 * 1024,  8,  SECT_4K) },
--	{ "w25x80", INFO(0xef3014, 0, 64 * 1024,  16, SECT_4K) },
--	{ "w25x16", INFO(0xef3015, 0, 64 * 1024,  32, SECT_4K) },
--	{
--		"w25q16dw", INFO(0xef6015, 0, 64 * 1024,  32,
--			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
--			SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
--	},
--	{ "w25x32", INFO(0xef3016, 0, 64 * 1024,  64, SECT_4K) },
--	{
--		"w25q16jv-im/jm", INFO(0xef7015, 0, 64 * 1024,  32,
--			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
--			SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
--	},
--	{ "w25q20cl", INFO(0xef4012, 0, 64 * 1024,  4, SECT_4K) },
--	{ "w25q20bw", INFO(0xef5012, 0, 64 * 1024,  4, SECT_4K) },
--	{ "w25q20ew", INFO(0xef6012, 0, 64 * 1024,  4, SECT_4K) },
--	{ "w25q32", INFO(0xef4016, 0, 64 * 1024,  64, SECT_4K) },
--	{
--		"w25q32dw", INFO(0xef6016, 0, 64 * 1024,  64,
--			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
--			SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
--	},
--	{
--		"w25q32jv", INFO(0xef7016, 0, 64 * 1024,  64,
--			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
--			SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
--	},
--	{
--		"w25q32jwm", INFO(0xef8016, 0, 64 * 1024,  64,
--			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
--			SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
--	},
--	{ "w25x64", INFO(0xef3017, 0, 64 * 1024, 128, SECT_4K) },
--	{ "w25q64", INFO(0xef4017, 0, 64 * 1024, 128, SECT_4K) },
--	{
--		"w25q64dw", INFO(0xef6017, 0, 64 * 1024, 128,
--			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
--			SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
--	},
--	{
--		"w25q128fw", INFO(0xef6018, 0, 64 * 1024, 256,
--			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
--			SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
--	},
--	{
--		"w25q128jv", INFO(0xef7018, 0, 64 * 1024, 256,
--			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
--			SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
--	},
--	{ "w25q80", INFO(0xef5014, 0, 64 * 1024,  16, SECT_4K) },
--	{ "w25q80bl", INFO(0xef4014, 0, 64 * 1024,  16, SECT_4K) },
--	{ "w25q128", INFO(0xef4018, 0, 64 * 1024, 256, SECT_4K) },
--	{ "w25q256", INFO(0xef4019, 0, 64 * 1024, 512,
--			  SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
--			  SPI_NOR_4B_OPCODES) },
--	{ "w25q256jvm", INFO(0xef7019, 0, 64 * 1024, 512,
--			     SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
--	{ "w25q256jw", INFO(0xef6019, 0, 64 * 1024, 512,
--			     SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
--	{ "w25m512jv", INFO(0xef7119, 0, 64 * 1024, 1024,
--			SECT_4K | SPI_NOR_QUAD_READ | SPI_NOR_DUAL_READ) },
+-	/* Xilinx S3AN Internal Flash */
+-	{ "3S50AN", S3AN_INFO(0x1f2200, 64, 264) },
+-	{ "3S200AN", S3AN_INFO(0x1f2400, 256, 264) },
+-	{ "3S400AN", S3AN_INFO(0x1f2400, 256, 264) },
+-	{ "3S700AN", S3AN_INFO(0x1f2500, 512, 264) },
+-	{ "3S1400AN", S3AN_INFO(0x1f2600, 512, 528) },
 -
- 	/* Catalyst / On Semiconductor -- non-JEDEC */
- 	{ "cat25c11", CAT25_INFO(  16, 8, 16, 1, SPI_NOR_NO_ERASE | SPI_NOR_NO_FR) },
- 	{ "cat25c03", CAT25_INFO(  32, 8, 16, 2, SPI_NOR_NO_ERASE | SPI_NOR_NO_FR) },
-@@ -2118,6 +2019,7 @@ static const struct spi_nor_manufacturer *manufacturers[] = {
- 	&spi_nor_st,
+ 	/* XMC (Wuhan Xinxin Semiconductor Manufacturing Corp.) */
+ 	{ "XM25QH64A", INFO(0x207017, 0, 64 * 1024, 128, SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
+ 	{ "XM25QH128A", INFO(0x207018, 0, 64 * 1024, 256, SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
+@@ -2014,6 +1987,7 @@ static const struct spi_nor_manufacturer *manufacturers[] = {
  	&spi_nor_spansion,
  	&spi_nor_sst,
-+	&spi_nor_winbond,
+ 	&spi_nor_winbond,
++	&spi_nor_xilinx,
  };
  
  static const struct flash_info *
-@@ -2811,11 +2713,6 @@ static int spi_nor_setup(struct spi_nor *nor,
- 	return nor->params.setup(nor, hwcaps);
+@@ -2199,46 +2173,6 @@ static int spi_nor_check(struct spi_nor *nor)
+ 	return 0;
  }
  
--static void winbond_set_default_init(struct spi_nor *nor)
+-static int s3an_nor_setup(struct spi_nor *nor,
+-			  const struct spi_nor_hwcaps *hwcaps)
 -{
--	nor->params.set_4byte = winbond_set_4byte;
+-	int ret;
+-
+-	ret = spi_nor_xread_sr(nor, nor->bouncebuf);
+-	if (ret)
+-		return ret;
+-
+-	nor->erase_opcode = SPINOR_OP_XSE;
+-	nor->program_opcode = SPINOR_OP_XPP;
+-	nor->read_opcode = SPINOR_OP_READ;
+-	nor->flags |= SNOR_F_NO_OP_CHIP_ERASE;
+-
+-	/*
+-	 * This flashes have a page size of 264 or 528 bytes (known as
+-	 * Default addressing mode). It can be changed to a more standard
+-	 * Power of two mode where the page size is 256/512. This comes
+-	 * with a price: there is 3% less of space, the data is corrupted
+-	 * and the page size cannot be changed back to default addressing
+-	 * mode.
+-	 *
+-	 * The current addressing mode can be read from the XRDSR register
+-	 * and should not be changed, because is a destructive operation.
+-	 */
+-	if (nor->bouncebuf[0] & XSR_PAGESIZE) {
+-		/* Flash in Power of 2 mode */
+-		nor->page_size = (nor->page_size == 264) ? 256 : 512;
+-		nor->mtd.writebufsize = nor->page_size;
+-		nor->mtd.size = 8 * nor->page_size * nor->info->n_sectors;
+-		nor->mtd.erasesize = 8 * nor->page_size;
+-	} else {
+-		/* Flash in Default addressing mode */
+-		nor->params.convert_addr = s3an_convert_addr;
+-		nor->mtd.erasesize = nor->info->sector_size;
+-	}
+-
+-	return 0;
+-}
+-
+ static void
+ spi_nor_set_read_settings(struct spi_nor_read_command *read,
+ 			  u8 num_mode_clocks,
+@@ -2837,11 +2771,6 @@ static void spi_nor_info_init_params(struct spi_nor *nor)
+ 	spi_nor_init_uniform_erase_map(map, erase_mask, params->size);
+ }
+ 
+-static void s3an_post_sfdp_fixups(struct spi_nor *nor)
+-{
+-	nor->params.setup = s3an_nor_setup;
 -}
 -
  /**
-  * spi_nor_manufacturer_init_params() - Initialize the flash's parameters and
-  * settings based on MFR register and ->default_init() hook.
-@@ -2823,16 +2720,6 @@ static void winbond_set_default_init(struct spi_nor *nor)
+  * spi_nor_post_sfdp_fixups() - Updates the flash's parameters and settings
+  * after SFDP has been parsed (is also called for SPI NORs that do not
+@@ -2854,9 +2783,6 @@ static void s3an_post_sfdp_fixups(struct spi_nor *nor)
   */
- static void spi_nor_manufacturer_init_params(struct spi_nor *nor)
+ static void spi_nor_post_sfdp_fixups(struct spi_nor *nor)
  {
--	/* Init flash parameters based on MFR */
--	switch (JEDEC_MFR(nor->info)) {
--	case SNOR_MFR_WINBOND:
--		winbond_set_default_init(nor);
--		break;
--
--	default:
--		break;
--	}
+-	if (nor->info->flags & SPI_S3AN)
+-		s3an_post_sfdp_fixups(nor);
 -
  	if (nor->manufacturer && nor->manufacturer->fixups &&
- 	    nor->manufacturer->fixups->default_init)
- 		nor->manufacturer->fixups->default_init(nor);
+ 	    nor->manufacturer->fixups->post_sfdp)
+ 		nor->manufacturer->fixups->post_sfdp(nor);
 diff --git a/drivers/mtd/spi-nor/core.h b/drivers/mtd/spi-nor/core.h
-index 7bc0f6a15b36..01e0b8e2b191 100644
+index 9eb46900bc72..abd5332afaf5 100644
 --- a/drivers/mtd/spi-nor/core.h
 +++ b/drivers/mtd/spi-nor/core.h
-@@ -180,6 +180,7 @@ extern const struct spi_nor_manufacturer spi_nor_micron;
- extern const struct spi_nor_manufacturer spi_nor_st;
+@@ -73,16 +73,6 @@ struct flash_info {
+ #define SPI_NOR_XSR_RDY		BIT(10)	/*
+ 					 * S3AN flashes have specific opcode to
+ 					 * read the status register.
+-					 * Flags SPI_NOR_XSR_RDY and SPI_S3AN
+-					 * use the same bit as one implies the
+-					 * other, but we will get rid of
+-					 * SPI_S3AN soon.
+-					 */
+-#define	SPI_S3AN		BIT(10)	/*
+-					 * Xilinx Spartan 3AN In-System Flash
+-					 * (MFR cannot be used for probing
+-					 * because it has the same value as
+-					 * ATMEL flashes)
+ 					 */
+ #define SPI_NOR_4B_OPCODES	BIT(11)	/*
+ 					 * Use dedicated 4byte address op codes
+@@ -150,7 +140,7 @@ struct flash_info {
+ 		.n_sectors = (_n_sectors),				\
+ 		.page_size = _page_size,				\
+ 		.addr_width = 3,					\
+-		.flags = SPI_NOR_NO_FR | SPI_S3AN,
++		.flags = SPI_NOR_NO_FR | SPI_NOR_XSR_RDY,
+ 
+ /**
+  * struct spi_nor_manufacturer - SPI NOR manufacturer object
+@@ -182,6 +172,7 @@ extern const struct spi_nor_manufacturer spi_nor_st;
  extern const struct spi_nor_manufacturer spi_nor_spansion;
  extern const struct spi_nor_manufacturer spi_nor_sst;
-+extern const struct spi_nor_manufacturer spi_nor_winbond;
+ extern const struct spi_nor_manufacturer spi_nor_winbond;
++extern const struct spi_nor_manufacturer spi_nor_xilinx;
  
  int spi_nor_write_enable(struct spi_nor *nor);
  int spi_nor_write_disable(struct spi_nor *nor);
-diff --git a/drivers/mtd/spi-nor/winbond.c b/drivers/mtd/spi-nor/winbond.c
+diff --git a/drivers/mtd/spi-nor/xilinx.c b/drivers/mtd/spi-nor/xilinx.c
 new file mode 100644
-index 000000000000..1e77dffbf729
+index 000000000000..fcf635d89f65
 --- /dev/null
-+++ b/drivers/mtd/spi-nor/winbond.c
-@@ -0,0 +1,113 @@
++++ b/drivers/mtd/spi-nor/xilinx.c
+@@ -0,0 +1,94 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
 + * Copyright (C) 2005, Intec Automation Inc.
@@ -382,109 +377,90 @@ index 000000000000..1e77dffbf729
 +
 +#include "core.h"
 +
-+static const struct flash_info winbond_parts[] = {
-+	/* Winbond -- w25x "blocks" are 64K, "sectors" are 4KiB */
-+	{ "w25x05", INFO(0xef3010, 0, 64 * 1024,  1,  SECT_4K) },
-+	{ "w25x10", INFO(0xef3011, 0, 64 * 1024,  2,  SECT_4K) },
-+	{ "w25x20", INFO(0xef3012, 0, 64 * 1024,  4,  SECT_4K) },
-+	{ "w25x40", INFO(0xef3013, 0, 64 * 1024,  8,  SECT_4K) },
-+	{ "w25x80", INFO(0xef3014, 0, 64 * 1024,  16, SECT_4K) },
-+	{ "w25x16", INFO(0xef3015, 0, 64 * 1024,  32, SECT_4K) },
-+	{ "w25q16dw", INFO(0xef6015, 0, 64 * 1024,  32,
-+			   SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
-+			   SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB) },
-+	{ "w25x32", INFO(0xef3016, 0, 64 * 1024,  64, SECT_4K) },
-+	{ "w25q16jv-im/jm", INFO(0xef7015, 0, 64 * 1024,  32,
-+				 SECT_4K | SPI_NOR_DUAL_READ |
-+				 SPI_NOR_QUAD_READ | SPI_NOR_HAS_LOCK |
-+				 SPI_NOR_HAS_TB) },
-+	{ "w25q20cl", INFO(0xef4012, 0, 64 * 1024,  4, SECT_4K) },
-+	{ "w25q20bw", INFO(0xef5012, 0, 64 * 1024,  4, SECT_4K) },
-+	{ "w25q20ew", INFO(0xef6012, 0, 64 * 1024,  4, SECT_4K) },
-+	{ "w25q32", INFO(0xef4016, 0, 64 * 1024,  64, SECT_4K) },
-+	{ "w25q32dw", INFO(0xef6016, 0, 64 * 1024,  64,
-+			   SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
-+			   SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB) },
-+	{ "w25q32jv", INFO(0xef7016, 0, 64 * 1024,  64,
-+			   SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
-+			   SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
-+	},
-+	{ "w25q32jwm", INFO(0xef8016, 0, 64 * 1024,  64,
-+			    SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
-+			    SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB) },
-+	{ "w25x64", INFO(0xef3017, 0, 64 * 1024, 128, SECT_4K) },
-+	{ "w25q64", INFO(0xef4017, 0, 64 * 1024, 128, SECT_4K) },
-+	{ "w25q64dw", INFO(0xef6017, 0, 64 * 1024, 128,
-+			   SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
-+			   SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB) },
-+	{ "w25q128fw", INFO(0xef6018, 0, 64 * 1024, 256,
-+			    SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
-+			    SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB) },
-+	{ "w25q128jv", INFO(0xef7018, 0, 64 * 1024, 256,
-+			    SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
-+			    SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB) },
-+	{ "w25q80", INFO(0xef5014, 0, 64 * 1024,  16, SECT_4K) },
-+	{ "w25q80bl", INFO(0xef4014, 0, 64 * 1024,  16, SECT_4K) },
-+	{ "w25q128", INFO(0xef4018, 0, 64 * 1024, 256, SECT_4K) },
-+	{ "w25q256", INFO(0xef4019, 0, 64 * 1024, 512,
-+			  SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
-+			  SPI_NOR_4B_OPCODES) },
-+	{ "w25q256jvm", INFO(0xef7019, 0, 64 * 1024, 512,
-+			     SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
-+	{ "w25q256jw", INFO(0xef6019, 0, 64 * 1024, 512,
-+			     SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
-+	{ "w25m512jv", INFO(0xef7119, 0, 64 * 1024, 1024,
-+			    SECT_4K | SPI_NOR_QUAD_READ | SPI_NOR_DUAL_READ) },
++static const struct flash_info xilinx_parts[] = {
++	/* Xilinx S3AN Internal Flash */
++	{ "3S50AN", S3AN_INFO(0x1f2200, 64, 264) },
++	{ "3S200AN", S3AN_INFO(0x1f2400, 256, 264) },
++	{ "3S400AN", S3AN_INFO(0x1f2400, 256, 264) },
++	{ "3S700AN", S3AN_INFO(0x1f2500, 512, 264) },
++	{ "3S1400AN", S3AN_INFO(0x1f2600, 512, 528) },
 +};
 +
-+/**
-+ * winbond_set_4byte() - Set 4-byte address mode for Winbond flashes.
-+ * @nor:	pointer to 'struct spi_nor'.
-+ * @enable:	true to enter the 4-byte address mode, false to exit the 4-byte
-+ *		address mode.
-+ *
-+ * Return: 0 on success, -errno otherwise.
++/*
++ * This code converts an address to the Default Address Mode, that has non
++ * power of two page sizes. We must support this mode because it is the default
++ * mode supported by Xilinx tools, it can access the whole flash area and
++ * changing over to the Power-of-two mode is irreversible and corrupts the
++ * original data.
++ * Addr can safely be unsigned int, the biggest S3AN device is smaller than
++ * 4 MiB.
 + */
-+static int winbond_set_4byte(struct spi_nor *nor, bool enable)
++static u32 s3an_convert_addr(struct spi_nor *nor, u32 addr)
++{
++	u32 offset, page;
++
++	offset = addr % nor->page_size;
++	page = addr / nor->page_size;
++	page <<= (nor->page_size > 512) ? 10 : 9;
++
++	return page | offset;
++}
++
++static int xilinx_nor_setup(struct spi_nor *nor,
++			    const struct spi_nor_hwcaps *hwcaps)
 +{
 +	int ret;
 +
-+	ret = spi_nor_en4_ex4_set_4byte(nor, enable);
-+	if (ret || enable)
++	ret = spi_nor_xread_sr(nor, nor->bouncebuf);
++	if (ret)
 +		return ret;
++
++	nor->erase_opcode = SPINOR_OP_XSE;
++	nor->program_opcode = SPINOR_OP_XPP;
++	nor->read_opcode = SPINOR_OP_READ;
++	nor->flags |= SNOR_F_NO_OP_CHIP_ERASE;
 +
 +	/*
-+	 * On Winbond W25Q256FV, leaving 4byte mode causes the Extended Address
-+	 * Register to be set to 1, so all 3-byte-address reads come from the
-+	 * second 16M. We must clear the register to enable normal behavior.
++	 * This flashes have a page size of 264 or 528 bytes (known as
++	 * Default addressing mode). It can be changed to a more standard
++	 * Power of two mode where the page size is 256/512. This comes
++	 * with a price: there is 3% less of space, the data is corrupted
++	 * and the page size cannot be changed back to default addressing
++	 * mode.
++	 *
++	 * The current addressing mode can be read from the XRDSR register
++	 * and should not be changed, because is a destructive operation.
 +	 */
-+	ret = spi_nor_write_enable(nor);
-+	if (ret)
-+		return ret;
++	if (nor->bouncebuf[0] & XSR_PAGESIZE) {
++		/* Flash in Power of 2 mode */
++		nor->page_size = (nor->page_size == 264) ? 256 : 512;
++		nor->mtd.writebufsize = nor->page_size;
++		nor->mtd.size = 8 * nor->page_size * nor->info->n_sectors;
++		nor->mtd.erasesize = 8 * nor->page_size;
++	} else {
++		/* Flash in Default addressing mode */
++		nor->params.convert_addr = s3an_convert_addr;
++		nor->mtd.erasesize = nor->info->sector_size;
++	}
 +
-+	ret = spi_nor_write_ear(nor, 0);
-+	if (ret)
-+		return ret;
-+
-+	return spi_nor_write_disable(nor);
++	return 0;
 +}
 +
-+static void winbond_default_init(struct spi_nor *nor)
++static void xilinx_post_sfdp_fixups(struct spi_nor *nor)
 +{
-+	nor->params.set_4byte = winbond_set_4byte;
++	nor->params.setup = xilinx_nor_setup;
 +}
 +
-+static const struct spi_nor_fixups winbond_fixups = {
-+	.default_init = winbond_default_init,
++static const struct spi_nor_fixups xilinx_fixups = {
++	.post_sfdp = xilinx_post_sfdp_fixups,
 +};
 +
-+const struct spi_nor_manufacturer spi_nor_winbond = {
-+	.name = "winbond",
-+	.parts = winbond_parts,
-+	.nparts = ARRAY_SIZE(winbond_parts),
-+	.fixups = &winbond_fixups,
++const struct spi_nor_manufacturer spi_nor_xilinx = {
++	.name = "xilinx",
++	.parts = xilinx_parts,
++	.nparts = ARRAY_SIZE(xilinx_parts),
++	.fixups = &xilinx_fixups,
 +};
-+
 -- 
 2.23.0
 
