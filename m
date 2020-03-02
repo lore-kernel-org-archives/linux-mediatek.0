@@ -2,77 +2,63 @@ Return-Path: <SRS0=QQ5c=4T=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E7E20C3F2D7
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2020 13:54:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8F79FC3F2CD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2020 16:19:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BE07721739
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2020 13:54:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 629B4217F4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2020 16:19:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="R1fKOCb/";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="a4c4z1jO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE07721739
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TC7BXA9R"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 629B4217F4
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GGCO6eqw6nQ+ivnROSCFxX/9v92Fre+KTLr6XxO3l2E=; b=R1fKOCb/VUp76P
-	NU4HuHuDDCHOxZf5+mn/Bt9EW1pjCA+/oE5J8/AySA7+T5ynnu9qc8fzwLA4oYgbI9JHqoDZSFm9M
-	8mEj3m/0undno+hXq7+h2dlcxceibhZH2a/fLaq061xra8qKkRSp18UBY5d4P+WXPucXq4HHlbwxc
-	Obe6ORKB0YhkCmTGgd69uFvyxsqpDHx2qsYjluSJonieZVCyd3uO/wFOhVbHpAsBFuGCZRJBUG39E
-	6FahGoJ64xtI2HrWVievFaJPD/zFXvKwtx8sVWU+YcHuhWQThO3ThtzPLEWySigdsxuylfeSn/bMH
-	ssRWAEAxofhoced6pJrg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ak+92tsFXEmbjJarytq28Amh7iyyWD/vBeyQi5aNrQg=; b=TC7BXA9RRwaF+a
+	NIe0rShci5rELA+eEaJPnTEfASOGTgF7EtFn8QrMeHHLaVoS7puKOz/N4gjtzJxjpUZMlY9jxzeUQ
+	xWzc1X4E0fDDO6cLm+AeLoCwyVLiDO6mXLKTst5Vk5BJtfBf8dH4DrtiiC8ugJjDz00Ndon0i7VME
+	++rVt4leJZZvQcXMCUMZwXsya0FBSXYxON+IpHMyhPCKVeFQz360vD/49fCCvWqdeR6WbIpGQfD3z
+	6PDR74ppHh1QKDcpqbQ3nViHbW85hoNeDviZkuC12ktHeBb2bbJmU29izkQSOb2ljze+lbxyF9B0T
+	rg78Ziw5nC/D2KYsJDWA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j8lWN-0000Ku-2p; Mon, 02 Mar 2020 13:54:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j8lWD-0000BM-0o; Mon, 02 Mar 2020 13:54:02 +0000
-X-UUID: f213b5ada7584b608fe2d77466c3fdb9-20200302
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=0RbdWX8Fxh/6C5WD9L6DJxUtCmSunSS08zgopxXghdE=; 
- b=a4c4z1jON8lv4gVbzuW37Je1lS2uRLO33ASDA5d38JEju9sybFThAOJS7j/6S4dO3TmAnb6Ilx49Lk5rK1121Fl73qRHYMR/rxJTCMRZSD8kbr6cu+pwMLn8I26rcUUbuZE3rRlf4BWtIvtqSZkxnnbq5y89bf0bH+0SPnCtkFY=;
-X-UUID: f213b5ada7584b608fe2d77466c3fdb9-20200302
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1621314174; Mon, 02 Mar 2020 05:53:57 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 2 Mar 2020 05:55:11 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 2 Mar 2020 21:51:08 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Mon, 2 Mar 2020 21:53:15 +0800
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
- <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v1] scsi: ufs-mediatek: fix HOST_PA_TACTIVATE quirk for
- Samsung UFS Devices
-Date: Mon, 2 Mar 2020 21:53:46 +0800
-Message-ID: <20200302135346.16797-1-stanley.chu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1j8nnH-0007c1-EE; Mon, 02 Mar 2020 16:19:47 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1j8nn8-0007U0-3A; Mon, 02 Mar 2020 16:19:39 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 771D72F;
+ Mon,  2 Mar 2020 08:19:35 -0800 (PST)
+Received: from C02TF0J2HF1T.cambridge.arm.com (C02TF0J2HF1T.cambridge.arm.com
+ [10.1.38.135])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id EFD083F534;
+ Mon,  2 Mar 2020 08:19:31 -0800 (PST)
+Date: Mon, 2 Mar 2020 16:19:29 +0000
+From: Catalin Marinas <catalin.marinas@arm.com>
+To: Macpaul Lin <macpaul.lin@mediatek.com>
+Subject: Re: [PATCH v4] usb: gadget: f_fs: try to fix AIO issue under ARM 64
+ bit TAGGED mode
+Message-ID: <20200302161929.GA48767@C02TF0J2HF1T.cambridge.arm.com>
+References: <1582627315-21123-1-git-send-email-macpaul.lin@mediatek.com>
+ <1582718512-28923-1-git-send-email-macpaul.lin@mediatek.com>
+ <20200228164848.GH4019108@arrakis.emea.arm.com>
+ <1583032843.12083.24.camel@mtkswgap22>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: D821A7F8565A24F42421CDA7B2AE2730833BCD91F3CAE1B5A150FD3669E3742E2000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1583032843.12083.24.camel@mtkswgap22>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200302_055401_072746_D617EB01 
-X-CRM114-Status: UNSURE (   7.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200302_081938_233488_1C6253E2 
+X-CRM114-Status: GOOD (  21.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,47 +70,91 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Stanley Chu <stanley.chu@mediatek.com>, bvanassche@acm.org,
- andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, beanhuo@micron.com,
- linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
+Cc: Sasha Levin <sashal@kernel.org>, Shen Jing <jingx.shen@intel.com>,
+ CC Hwang <cc.hwang@mediatek.com>,
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
+ Jerry Zhang <zhangjerry@google.com>, andreyknvl@google.com,
+ linux-usb@vger.kernel.org, Loda Chou <loda.chou@mediatek.com>,
+ linux-kernel@vger.kernel.org, stable@vger.kernel.org,
+ Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+ Miles Chen <miles.chen@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Peter Chen <peter.chen@nxp.com>, Al Viro <viro@zeniv.linux.org.uk>,
+ Vincent Pelletier <plr.vincent@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ John Stultz <john.stultz@linaro.org>, eugenis@google.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Device quirk "UFS_DEVICE_QUIRK_HOST_PA_TACTIVATE" is enabled for all
-Samsung devices by default currently.
+On Sun, Mar 01, 2020 at 11:20:43AM +0800, Macpaul Lin wrote:
+> On Fri, 2020-02-28 at 16:48 +0000, Catalin Marinas wrote:
+> > On Wed, Feb 26, 2020 at 08:01:52PM +0800, Macpaul Lin wrote:
+> > > diff --git a/drivers/usb/gadget/function/f_fs.c b/drivers/usb/gadget/function/f_fs.c
+> > > index ce1d023..192935f 100644
+> > > --- a/drivers/usb/gadget/function/f_fs.c
+> > > +++ b/drivers/usb/gadget/function/f_fs.c
+> > > @@ -715,7 +715,20 @@ static void ffs_epfile_io_complete(struct usb_ep *_ep, struct usb_request *req)
+> > >  
+> > >  static ssize_t ffs_copy_to_iter(void *data, int data_len, struct iov_iter *iter)
+> > >  {
+> > > -	ssize_t ret = copy_to_iter(data, data_len, iter);
+> > > +	ssize_t ret;
+> > > +
+> > > +#if defined(CONFIG_ARM64)
+> > > +	/*
+> > > +	 * Replace tagged address passed by user space application before
+> > > +	 * copying.
+> > > +	 */
+> > > +	if (IS_ENABLED(CONFIG_ARM64_TAGGED_ADDR_ABI) &&
+> > > +		(iter->type == ITER_IOVEC)) {
+> > > +		*(unsigned long *)&iter->iov->iov_base =
+> > > +			(unsigned long)untagged_addr(iter->iov->iov_base);
+> > > +	}
+> > > +#endif
+> > > +	ret = copy_to_iter(data, data_len, iter);
+> > >  	if (likely(ret == data_len))
+> > >  		return ret;
+> > 
+> > I had forgotten that we discussed a similar case already a few months
+> > ago (thanks to Evgenii for pointing out). Do you have this commit
+> > applied to your tree: df325e05a682 ("arm64: Validate tagged addresses in
+> > access_ok() called from kernel threads")?
+> > 
+> 
+> Yes! We have that patch. I've also got Google's reply about referencing
+> this patch in android kernel tree.
+> https://android-review.googlesource.com/c/kernel/common/+/1186615
+> 
+> However, during my debugging process, I've dumped specific length (e.g.,
+> 24 bytes for the first request) AIO request buffer address both in adbd
+> and in __range_ok(). Then I've found __range_ok() still always return
+> false on address begin with "0x3c". Since untagged_addr() already called
+> in __range_ok(), to set "TIF_TAGGED_ADDR" with adbd's user space buffer
+> should be the possible solution. Hence I've send the v3 patch.
 
-However MediaTek UFS host requires different host's PA_TACTIVATE
-configuration. Hence clear this quirk first and then apply vendor-specific
-value in vops callback.
+ffs_copy_to_iter() is called from a workqueue (ffs_user_copy_worker()).
+That's still in a kernel thread context but it doesn't have PF_KTHREAD
+set, hence __range_ok() rejects the tagged address. Can you try the diff
+below:
 
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/scsi/ufs/ufs-mediatek.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-index de650822c9d9..3b0e575d7460 100644
---- a/drivers/scsi/ufs/ufs-mediatek.c
-+++ b/drivers/scsi/ufs/ufs-mediatek.c
-@@ -533,8 +533,10 @@ static int ufs_mtk_apply_dev_quirks(struct ufs_hba *hba)
- 	struct ufs_dev_info *dev_info = &hba->dev_info;
- 	u16 mid = dev_info->wmanufacturerid;
+diff --git a/arch/arm64/include/asm/uaccess.h b/arch/arm64/include/asm/uaccess.h
+index 32fc8061aa76..2803143cad1f 100644
+--- a/arch/arm64/include/asm/uaccess.h
++++ b/arch/arm64/include/asm/uaccess.h
+@@ -68,7 +68,8 @@ static inline unsigned long __range_ok(const void __user *addr, unsigned long si
+ 	 * the user address before checking.
+ 	 */
+ 	if (IS_ENABLED(CONFIG_ARM64_TAGGED_ADDR_ABI) &&
+-	    (current->flags & PF_KTHREAD || test_thread_flag(TIF_TAGGED_ADDR)))
++	    (current->flags & (PF_KTHREAD | PF_WQ_WORKER) ||
++	     test_thread_flag(TIF_TAGGED_ADDR)))
+ 		addr = untagged_addr(addr);
  
--	if (mid == UFS_VENDOR_SAMSUNG)
-+	if (mid == UFS_VENDOR_SAMSUNG) {
-+		hba->dev_quirks &= ~UFS_DEVICE_QUIRK_HOST_PA_TACTIVATE;
- 		ufshcd_dme_set(hba, UIC_ARG_MIB(PA_TACTIVATE), 6);
-+	}
- 
- 	/*
- 	 * Decide waiting time before gating reference clock and
--- 
-2.18.0
+ 	__chk_user_ptr(addr);
+-
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
