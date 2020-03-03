@@ -2,21 +2,21 @@ Return-Path: <SRS0=Bv85=4U=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3B494C3F2C6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2020 19:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E85D4C3F2C6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2020 22:47:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 09A5B2073B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2020 19:16:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BA0272072A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2020 22:47:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="btMooeHZ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="DsP98JqY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 09A5B2073B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qfxylnn3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BA0272072A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,44 +25,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xrS2u51oVNpprp2o/txNqI2PQXEH1I54uxaCuNmRGxA=; b=btMooeHZvxnPAK
-	eEGdP/v50jiS4xcWGOUUIcxccSlr/m9apq/BodcsWkqV2BSG//XrSOdS2MeJ0Z0rhklZb028xOTg7
-	eM6L1YM2OfDY7GRD3q9jbpIBxnH+R05xaz+AvwwJERA7dd2uTxVTzNgXK+E2IF5GEV9N92iVvqnrW
-	XyyRcjLN1Q8XJQfmbOVyM6jzACvnZ+A8DhWgVOsCyOboFvXJnjHxAxIoAPXA3lmHinaR46HOhog9h
-	ZthFX/r4hXaC3oE1W8r1Rw2jLLGnPCONzToxt8RMlKj18He1d5dwLsj4qoopX1pJwNeLSy5YX9rHl
-	mlmwsEE+4Zg9f6i/H/CA==;
+	List-Owner; bh=xgnpePNBcs8miOtVT5dxsV69wO7IOQTfvZj/m/NixCE=; b=qfxylnn3l1eSa7
+	wPFu2C6RbxCSZJGLaIIsLa1+MMdd0tkIZi0R7KLBnoQJeseDcWrgrBmHi9DngIBKeKMMDN29DBn17
+	3t1TbuR8a7qwt5Ph0NJqLVVUyP3PymdQgMfkNZw1H0wzaauhnfOH+2yet62N9sDfsE8fiQlZFU0G4
+	kEUjxqpvUS+0lRpPogV/lCJzBc5cTlpgolDGe4wX8tXgA25RvQ848bNe0EUvNKWwqb04OdFjmhLEe
+	zoMNgXFP1otCYqEAp8uYLttxOahMU1pvewKvjaxhKzar7gkDsr3f08jgrTzw7x1G4BI0d2Jdf5Vau
+	RpgWsrFGxbR/97Xps1/A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9D1v-0004wq-Ib; Tue, 03 Mar 2020 19:16:35 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1j9GJj-0008ES-R7; Tue, 03 Mar 2020 22:47:11 +0000
+Received: from mail-ot1-f65.google.com ([209.85.210.65])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9D1s-0004wU-RS
- for linux-mediatek@lists.infradead.org; Tue, 03 Mar 2020 19:16:34 +0000
-Received: from willie-the-truck (236.31.169.217.in-addr.arpa [217.169.31.236])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 141212073B;
- Tue,  3 Mar 2020 19:16:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1583262991;
- bh=rRMdJDhihpbw492Akq7IhrH8YLKWl8VjOzCCbOZqZac=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=DsP98JqYh3FZtjF1CgaIUF1AvB9sYez3Kr5jeTN/D4eI6y+Y2osl0oCTFHFAcXdE3
- E2uj9eZLuK/81D2DscuklPOQ5jC12DWI+V9I2qOViOeoGxqyFsUDmSREGzym4rN9s8
- CieEbNz093Xkw5rG5vlq33olUAgybJvqxCT02uRI=
-Date: Tue, 3 Mar 2020 19:16:25 +0000
-From: Will Deacon <will@kernel.org>
-To: Joerg Roedel <joro@8bytes.org>
-Subject: Re: [PATCH 00/14] iommu: Move iommu_fwspec out of 'struct device'
-Message-ID: <20200303191624.GC27329@willie-the-truck>
-References: <20200228150820.15340-1-joro@8bytes.org>
+ id 1j9GJh-0008Dn-Cn; Tue, 03 Mar 2020 22:47:10 +0000
+Received: by mail-ot1-f65.google.com with SMTP id i14so95454otp.5;
+ Tue, 03 Mar 2020 14:47:09 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=Z0du2wcxyjg7iRH0s/qpIMsj7X0YCwaBDvE2vsxIrbk=;
+ b=lagoFGtSBW7BIMufWo914TZz8gdFTZT16BflTmeZmo2Cvo3+YHT8jP1H3+alOk3zqO
+ EfaLbQbGV5KKO0TFxkFkS2SgV0bYuY5zmkbZOIKybKNvqfkvAHyZwoQSrpmnifLZ+sNh
+ BWVAmoYiJedYKBiw+WpXaZxnfZC9/jcHprkwb2YpiUIX1ORwv4cLnneBI7oxgcKMAYuy
+ LqU2a3es6aUE1gcxWvpLDpSSu4YXhWjEW5hjZLUmCQIB+fhXRuuR8zYBC0Gc4M/JYPC/
+ NAiMAcHXUmT7SS6+g9ENqaA4MbeTbgYU9S9YCxqsDJs9sI5qlkZtCa/kJugR+Be0ja/D
+ 97Lg==
+X-Gm-Message-State: ANhLgQ2tvuEduWb4HPW1NNwaVTaiQX78p1ZsEPamzMxNGN5XC4EiiW87
+ vUjXJ/adXGmbTkNXX48VNw==
+X-Google-Smtp-Source: ADFU+vuU+JCOVQpYg1AlYEQdEKGSsg5SLhgtKZoaS1dScWhKEQWMAhE4l5CbjQlxM9gWy34zkZG6zg==
+X-Received: by 2002:a9d:4c92:: with SMTP id m18mr129586otf.168.1583275628368; 
+ Tue, 03 Mar 2020 14:47:08 -0800 (PST)
+Received: from rob-hp-laptop (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id b2sm5879600oii.20.2020.03.03.14.47.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 Mar 2020 14:47:07 -0800 (PST)
+Received: (nullmailer pid 32174 invoked by uid 1000);
+ Tue, 03 Mar 2020 22:47:06 -0000
+Date: Tue, 3 Mar 2020 16:47:06 -0600
+From: Rob Herring <robh@kernel.org>
+To: Chuanhong Guo <gch981213@gmail.com>
+Subject: Re: [PATCH v2 3/4] dt-bindings: convert mtk-quadspi binding doc for
+ spi-mtk-nor
+Message-ID: <20200303224706.GA22867@bogus>
+References: <20200228043636.559915-1-gch981213@gmail.com>
+ <20200228043636.559915-4-gch981213@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200228150820.15340-1-joro@8bytes.org>
+In-Reply-To: <20200228043636.559915-4-gch981213@gmail.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200303_111632_949089_F13A2BCF 
-X-CRM114-Status: GOOD (  13.53  )
+X-CRM114-CacheID: sfid-20200303_144709_439257_1FC5268B 
+X-CRM114-Status: GOOD (  20.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,50 +88,112 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Clark <robdclark@gmail.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- linux-arm-msm@vger.kernel.org, Sudeep Holla <sudeep.holla@arm.com>,
- linux-kernel@vger.kernel.org, virtualization@lists.linux-foundation.org,
- iommu@lists.linux-foundation.org, Thierry Reding <thierry.reding@gmail.com>,
- linux-mediatek@lists.infradead.org, Andy Gross <agross@kernel.org>,
- Hanjun Guo <guohanjun@huawei.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, Sean Paul <sean@poorly.run>,
- Robin Murphy <robin.murphy@arm.com>
+Cc: devicetree@vger.kernel.org, Vignesh Raghavendra <vigneshr@ti.com>,
+ Tudor Ambarus <tudor.ambarus@microchip.com>,
+ Richard Weinberger <richard@nod.at>, open list <linux-kernel@vger.kernel.org>,
+ linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>,
+ linux-mtd@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Joerg,
-
-On Fri, Feb 28, 2020 at 04:08:06PM +0100, Joerg Roedel wrote:
-> here is a patch-set to rename iommu_param to dev_iommu and
-> establish it as a struct for generic per-device iommu-data.
-> Also move the iommu_fwspec pointer from struct device into
-> dev_iommu to have less iommu-related pointers in struct
-> device.
+On Fri, Feb 28, 2020 at 12:36:35PM +0800, Chuanhong Guo wrote:
+> spi-mtk-nor is a driver to replace mtk-quadspi and they have almost
+> the same device-tree bindings. Reuse this binding documentation and
+> convert it for new driver:
 > 
-> The bigger part of this patch-set moves the iommu_priv
-> pointer from struct iommu_fwspec to dev_iommu, making is
-> usable for iommu-drivers which do not use fwspecs.
+> 1. "Mediatek SoCs" -> "Mediatek ARM SoCs" because MTK MIPS SoCs
+>    use different controllers.
+> 2. document "interrupts" as a required property because it's
+>    available on all SoCs with this controller and new driver takes
+>    advantages of it. It's implemented as optional only to maintain
+>    backward compatibility.
+> 3. replace binding example with a mt7629 one because this is the
+>    only one I know the interrupt assignment.
+
+That doesn't really matter. It would be less churn without that change 
+and examples are just examples.
+
 > 
-> The changes for that were mostly straightforward, except for
-> the arm-smmu (_not_ arm-smmu-v3) and the qcom iommu driver.
-> Unfortunatly I don't have the hardware for those, so any
-> testing of these drivers is greatly appreciated.
+> Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
+> ---
+> Change since v1:
+>  none
+> 
+>  .../mtk-quadspi.txt => spi/spi-mtk-nor.txt}   | 34 ++++++++-----------
+>  1 file changed, 15 insertions(+), 19 deletions(-)
+>  rename Documentation/devicetree/bindings/{mtd/mtk-quadspi.txt => spi/spi-mtk-nor.txt} (62%)
+> 
+> diff --git a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt b/Documentation/devicetree/bindings/spi/spi-mtk-nor.txt
+> similarity index 62%
+> rename from Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+> rename to Documentation/devicetree/bindings/spi/spi-mtk-nor.txt
+> index a12e3b5c495d..829da480b9a9 100644
+> --- a/Documentation/devicetree/bindings/mtd/mtk-quadspi.txt
+> +++ b/Documentation/devicetree/bindings/spi/spi-mtk-nor.txt
+> @@ -1,4 +1,4 @@
+> -* Serial NOR flash controller for MediaTek SoCs
+> +* SPI NOR flash controller for MediaTek ARM SoCs
+>  
+>  Required properties:
+>  - compatible: 	  For mt8173, compatible should be "mediatek,mt8173-nor",
+> @@ -13,6 +13,7 @@ Required properties:
+>  		  "mediatek,mt7629-nor", "mediatek,mt8173-nor"
+>  		  "mediatek,mt8173-nor"
+>  - reg: 		  physical base address and length of the controller's register
+> +- interrupts:	  Interrupt number used by the controller.
+>  - clocks: 	  the phandle of the clocks needed by the nor controller
+>  - clock-names: 	  the names of the clocks
+>  		  the clocks should be named "spi" and "sf". "spi" is used for spi bus,
+> @@ -22,29 +23,24 @@ Required properties:
+>  - #address-cells: should be <1>
+>  - #size-cells:	  should be <0>
+>  
+> -The SPI flash must be a child of the nor_flash node and must have a
+> -compatible property. Also see jedec,spi-nor.txt.
+> -
+> -Required properties:
+> -- compatible:	  May include a device-specific string consisting of the manufacturer
+> -		  and name of the chip. Must also include "jedec,spi-nor" for any
+> -		  SPI NOR flash that can be identified by the JEDEC READ ID opcode (0x9F).
+> -- reg :		  Chip-Select number
+> +There should be only one spi slave device following generic spi bindings.
+> +It's not recommended to use this controller for devices other than SPI NOR
+> +flash due to limited transfer capability of this controller.
+>  
+>  Example:
+> +#include <dt-bindings/interrupt-controller/irq.h>
+> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> +#include <dt-bindings/clock/mt7629-clk.h>
+>  
+> -nor_flash: spi@1100d000 {
+> -	compatible = "mediatek,mt8173-nor";
+> -	reg = <0 0x1100d000 0 0xe0>;
+> -	clocks = <&pericfg CLK_PERI_SPI>,
+> -		 <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
+> +spi_nor: spi@11014000 {
+> +	compatible = "mediatek,mt7629-nor",
+> +		     "mediatek,mt8173-nor";
+> +	reg = <0x11014000 0xe0>;
+> +	interrupts = <GIC_SPI 88 IRQ_TYPE_LEVEL_LOW>;
+> +	clocks = <&pericfg CLK_PERI_FLASH_PD>,
+> +		 <&topckgen CLK_TOP_FLASH_SEL>;
+>  	clock-names = "spi", "sf";
+>  	#address-cells = <1>;
+>  	#size-cells = <0>;
+> -
+> -	flash@0 {
+> -		compatible = "jedec,spi-nor";
+> -		reg = <0>;
+> -	};
 
-I haven't had a chance to review this properly yet, but I did take it
-for a spin on my Seattle board with MMU-400 (arm-smmu) and it seems to
-work the same as before, so:
+Better to leave this in the example IMO.
 
-Tested-by: Will Deacon <will@kernel.org> # arm-smmu
-
-I'll try to review the patches soon.
-
-Cheers,
-
-Will
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
