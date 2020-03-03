@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 13837C3F2CD
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2020 10:59:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ED359C3F2C6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2020 10:59:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E008120873
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2020 10:59:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BC66C214D8
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2020 10:59:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RR3OCZ5d";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="r3/6JHma"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E008120873
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="B/RzHuaJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="cdn22QR+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC66C214D8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jwXvsWdpxwOkHzrFMELM+G4Z0g9edPFl0xImnx2w0jw=; b=RR3OCZ5d9d0Y7f
-	z5LFDDEBk+RJ9Lw2XFb0LCNsEJOYYPfVNgkiEHotY3SrL/5TNTakrYMNz4EEAeu4Fs1B//OYdhPjn
-	fSe13n8A3D6QBpb3mDlX4Neh2Cx0lfv0hdlev7JWnFLFK6qDlnWt1kwHcMUjUayCi+Gz3hUbOMD3W
-	703GE1AeNupsHaxw9TqNUzp+MGxVRowzawWo4c9WnnjILm9wMcifMo4IG6rIS2oyQyiKeYkW/uyTg
-	S4EsOh0zPQy2ol7WNCIQdwmc2rlsf9opfp14B1qqgrwg5I1kdfO69zTnt8XbN8wA4198rtsm+3GK2
-	eXptc7RnNa+7XtDBvtEw==;
+	List-Owner; bh=su8F9EPkzVfURgol4jkJ8uA9ecaYCrmsCsVR53FLfws=; b=B/RzHuaJW7ln16
+	uf7Tpuo+uRu5nl0Hv+A+mUCHlLGoHSi8cZob1fUpUJFu/bkWHqxlubUmoQR8ujBG3S92GOHHDhzYe
+	3AOtaPSDydNb/jcwi3qV1cNrdmIs1ex6IVixHmp/Yw/rUi6IjLxw6FObH1mj1JP/xYn9fSnsjgaOf
+	nxyAC9lRi5A+0gXfcRRaeNJ/FihVNLnwJK5U8EWtcE1Wd3POgNTDF1wTaNDKfq1B5yMr2nacFzMYL
+	hO2ch31bbkCLw6BOVHJLrvdxHsYHbhNEhuGk2RFFmygdN49N0DN9Gin5Vc5eRqaE70F/U4X0+XioB
+	e5M/J1nddyOp09V8WFWA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j95Gl-0004qJ-K1; Tue, 03 Mar 2020 10:59:23 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1j95Gp-0004vO-E6; Tue, 03 Mar 2020 10:59:27 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j95GK-0004IQ-P9; Tue, 03 Mar 2020 10:58:58 +0000
-X-UUID: ee4d9f4d367a4798902e20becc452b49-20200303
+ id 1j95GJ-0004IR-Dq; Tue, 03 Mar 2020 10:58:58 +0000
+X-UUID: a5f3666a74354fa9831a0fd1b401a106-20200303
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=plPRMCv0gSjWkN3Yby1RX9eA2GpH1jcE9KjYJ51C3wA=; 
- b=r3/6JHmaL4oLX1K3JtXaCAtPSrsp5PHKnANxXw+B8zqtoNspV9Hwv0u8AGzZzee7Ll7k9XTQoaB6XDpJyd+0aJ33u30vbteu47rz7ndMddY3TS1FvbMmBuvnwiZUreVa/x0T1mTRLYYBo3iSrwndpRwUKMGz7kuRyLYL5cl00iA=;
-X-UUID: ee4d9f4d367a4798902e20becc452b49-20200303
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=n91f0uofl0asqlUlap0WpLknqR4syuPs3+1WSrUJsOQ=; 
+ b=cdn22QR+sStRIQVwBGt4inGa5ngUM8MVvQVDp7vc2WVoeCvtgckl0oUQgm02w8pX/ERS4HI1xmXjMSzWVXa6fwOTQw4Jis4hwMzmIo2GY6k2IfKaHPDc0ElPVUUEqkXc3dRef77EekzvlhTCmic4Rs1T0U67MG2adkcT1jmBXsE=;
+X-UUID: a5f3666a74354fa9831a0fd1b401a106-20200303
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <dennis-yc.hsieh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 272155682; Tue, 03 Mar 2020 02:58:50 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ with ESMTP id 1488205584; Tue, 03 Mar 2020 02:58:51 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1395.4; Tue, 3 Mar 2020 03:00:06 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
  15.0.1395.4; Tue, 3 Mar 2020 18:57:41 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Tue, 3 Mar 2020 18:58:12 +0800
+ Frontend Transport; Tue, 3 Mar 2020 18:58:11 +0800
 From: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Jassi Brar
  <jassisinghbrar@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, "David
  Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Subject: [PATCH v4 09/13] soc: mediatek: cmdq: add write_s value function
-Date: Tue, 3 Mar 2020 18:58:41 +0800
-Message-ID: <1583233125-7827-10-git-send-email-dennis-yc.hsieh@mediatek.com>
+Subject: [PATCH v4 04/13] mailbox: mediatek: cmdq: clear task in channel
+ before shutdown
+Date: Tue, 3 Mar 2020 18:58:36 +0800
+Message-ID: <1583233125-7827-5-git-send-email-dennis-yc.hsieh@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <1583233125-7827-1-git-send-email-dennis-yc.hsieh@mediatek.com>
 References: <1583233125-7827-1-git-send-email-dennis-yc.hsieh@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: DC30B30E062A9263D4C2EDB9C3BE08E0741AE0EE0162D48019CACD8965CBF2312000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200303_025856_842098_57FB136C 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20200303_025855_482221_1307F41D 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,79 +98,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add write_s function in cmdq helper functions which
-writes a constant value to address with large dma
-access support.
+Do success callback in channel when shutdown. For those task not finish,
+callback with error code thus client has chance to cleanup or reset.
 
 Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-cmdq-helper.c | 26 ++++++++++++++++++++++++++
- include/linux/soc/mediatek/mtk-cmdq.h  | 14 ++++++++++++++
- 2 files changed, 40 insertions(+)
+ drivers/mailbox/mtk-cmdq-mailbox.c | 38 ++++++++++++++++++++++++++++++
+ 1 file changed, 38 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-index 03c129230cd7..a9ebbabb7439 100644
---- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-+++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-@@ -269,6 +269,32 @@ int cmdq_pkt_write_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
- }
- EXPORT_SYMBOL(cmdq_pkt_write_s);
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 9994ac9426d6..b56d340c8982 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -387,6 +387,12 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
  
-+int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
-+			   u16 addr_low, u32 value, u32 mask)
-+{
-+	struct cmdq_instruction inst = { {0} };
-+	int err;
+ 	if (list_empty(&thread->task_busy_list)) {
+ 		WARN_ON(clk_enable(cmdq->clock) < 0);
++		/*
++		 * The thread reset will clear thread related register to 0,
++		 * including pc, end, priority, irq, suspend and enable. Thus
++		 * set CMDQ_THR_ENABLED to CMDQ_THR_ENABLE_TASK will enable
++		 * thread and make it running.
++		 */
+ 		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
+ 
+ 		writel(task->pa_base >> cmdq->shift_pa,
+@@ -450,6 +456,38 @@ static int cmdq_mbox_startup(struct mbox_chan *chan)
+ 
+ static void cmdq_mbox_shutdown(struct mbox_chan *chan)
+ {
++	struct cmdq_thread *thread = (struct cmdq_thread *)chan->con_priv;
++	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
++	struct cmdq_task *task, *tmp;
++	unsigned long flags;
 +
-+	if (mask != U32_MAX) {
-+		inst.op = CMDQ_CODE_MASK;
-+		inst.mask = ~mask;
-+		err = cmdq_pkt_append_command(pkt, inst);
-+		if (err < 0)
-+			return err;
++	spin_lock_irqsave(&thread->chan->lock, flags);
++	if (list_empty(&thread->task_busy_list))
++		goto done;
 +
-+		inst.op = CMDQ_CODE_WRITE_S_MASK;
-+	} else {
-+		inst.op = CMDQ_CODE_WRITE_S;
++	WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
++
++	/* make sure executed tasks have success callback */
++	cmdq_thread_irq_handler(cmdq, thread);
++	if (list_empty(&thread->task_busy_list))
++		goto done;
++
++	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
++				 list_entry) {
++		cmdq_task_exec_done(task, CMDQ_CB_ERROR);
++		kfree(task);
 +	}
 +
-+	inst.sop = high_addr_reg_idx;
-+	inst.offset = addr_low;
-+	inst.value = value;
-+
-+	return cmdq_pkt_append_command(pkt, inst);
-+}
-+EXPORT_SYMBOL(cmdq_pkt_write_s_value);
-+
- int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event)
- {
- 	struct cmdq_instruction inst = { {0} };
-diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-index 01b4184af310..fec292aac83c 100644
---- a/include/linux/soc/mediatek/mtk-cmdq.h
-+++ b/include/linux/soc/mediatek/mtk-cmdq.h
-@@ -135,6 +135,20 @@ int cmdq_pkt_read_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx, u16 addr_low,
- int cmdq_pkt_write_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
- 		     u16 addr_low, u16 src_reg_idx, u32 mask);
++	cmdq_thread_disable(cmdq, thread);
++	clk_disable(cmdq->clock);
++done:
++	/*
++	 * The thread->task_busy_list empty means thread already disable. The
++	 * cmdq_mbox_send_data() always reset thread which clear disable and
++	 * suspend statue when first pkt send to channel, so there is no need
++	 * to do any operation here, only unlock and leave.
++	 */
++	spin_unlock_irqrestore(&thread->chan->lock, flags);
+ }
  
-+/**
-+ * cmdq_pkt_write_s_value() - append write_s command with mask to the CMDQ
-+ *			      packet which write value to a physical address
-+ * @pkt:	the CMDQ packet
-+ * @high_addr_reg_idx:	internal regisger ID which contains high address of pa
-+ * @addr_low:	low address of pa
-+ * @value:	the specified target value
-+ * @mask:	the specified target mask
-+ *
-+ * Return: 0 for success; else the error code is returned
-+ */
-+int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
-+			   u16 addr_low, u32 value, u32 mask);
-+
- /**
-  * cmdq_pkt_wfe() - append wait for event command to the CMDQ packet
-  * @pkt:	the CMDQ packet
+ static const struct mbox_chan_ops cmdq_mbox_chan_ops = {
 -- 
 2.18.0
 _______________________________________________
