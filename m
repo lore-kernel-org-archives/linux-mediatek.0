@@ -2,138 +2,77 @@ Return-Path: <SRS0=Bv85=4U=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2ED88C3F2CD
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2020 09:10:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 90BA6C3F2C6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2020 10:19:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D13B0214DB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2020 09:10:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 65A6921556
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2020 10:19:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CZBOQIgo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D13B0214DB
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BX8XyueM";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="fStkvVGf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 65A6921556
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fSn8QmdulmUOQo8qbt/eZlSpIY0W/CjX8HmbjpcJBnA=; b=CZBOQIgo0NDekK
-	Ddj8Ix+bgChVu1pmaN9eYNu5deUcnBuGpN5CRFW3Mb00Flx2B0Gl44e0w9WdSWnMaIKmlZr6p33f8
-	tNoID/qR78Hvtptd0QuUqhKMMdMAO0HPBEZqvg/qpJsJKkLf4GMk9IV/SzsvuNszvgk0nCwccrt7o
-	EakeOb/QLvaSkqn9mWdrCR/klidCYRd9sbymdzgeBDSktSnDxrYWXiPlH40tj46tm/NKTzNVn37R9
-	dC5y0K0XFGQysP5vLoQTK5lwP/jHHPE6B9BrAXqrsMKvDpcDoO4eg/4mixKSdF2JqHj6DyBBTCES+
-	JebX7+/LPhqV6ADNmw5g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FT+2LN07iTT0U5eSgTgKaD/JhG3tdATPUJD+WOCig60=; b=BX8XyueMS2gUGs
+	MKncmuFsI9uUOyxN6n3CYjStY4OXDJmzBbJdCEz8o0J30330626GLWmj5+wpGGuqn9Qb0mrtCtQBG
+	qKYJmINqDZ/ZU5VvxYuCWEOEPwCr9bngnO//WlDoZ5eHUMxb5MnB5tE5GfRuq2hIp+1Q5Uxs886Ti
+	NQ3F4Xn26DAfLL95KqZbEQQcpv0o53O5s3juyZcdRqF/gz1WHliNRvgxNuLoIWamnED4G0zgxqexw
+	3ElF3mz0Rh1ZN4/03rOXM7MvatgeViERWnY1DXNTT284dOGf219+nhynxMviTLJmqtu/U42A78ip+
+	KwfJNTXaVUjCy8r/ifNQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j93ZJ-00027E-Es; Tue, 03 Mar 2020 09:10:25 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1j94eD-0003j0-II; Tue, 03 Mar 2020 10:19:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j93Yv-0001sT-Pz; Tue, 03 Mar 2020 09:10:04 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 2D1CBAD82;
- Tue,  3 Mar 2020 09:09:56 +0000 (UTC)
-Subject: Re: [PATCH v10 3/5] soc: mediatek: Move mt8173 MMSYS to platform
- driver
-To: CK Hu <ck.hu@mediatek.com>, mturquette@baylibre.com, sboyd@kernel.org
-References: <20200227180858.1514157-1-enric.balletbo@collabora.com>
- <20200227180858.1514157-4-enric.balletbo@collabora.com>
- <72d0e155-83f3-05c3-8f3f-e46f3860453d@suse.com>
- <ed2722ab-8339-359b-8698-14c0b36d1f92@suse.com>
- <1583205520.12858.13.camel@mtksdaap41>
-From: Matthias Brugger <mbrugger@suse.com>
-Autocrypt: addr=mbrugger@suse.com; prefer-encrypt=mutual; keydata=
- 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
- HxUCQ9Y1Y/Ct
-Message-ID: <7e23db5f-2647-3387-fd7d-803b8ceabfa4@suse.com>
-Date: Tue, 3 Mar 2020 10:09:53 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ id 1j94eA-0003hn-5k; Tue, 03 Mar 2020 10:19:31 +0000
+X-UUID: 32216669192f44229ce3ff9c2e44121a-20200303
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=kNo7DFj3b9HktV/9EBruUcLqKxjTBFu6uKwuH9eM2VA=; 
+ b=fStkvVGfdODZUFXguzcaSao361mDB+EW3bBusAbnaUlGGE/VqKZLS5KuAaEyBY9TUxIXZXS5weqU0adXCsNkx6rOzkyQYQmMquvB2VF3631lmuQE71qIba/YVbK+YKby1XTp4ukN2F+CcXHcwjVWne3RcKqaERgSJw5JrlcgMCQ=;
+X-UUID: 32216669192f44229ce3ff9c2e44121a-20200303
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <sam.shih@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1481984747; Tue, 03 Mar 2020 02:19:21 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 3 Mar 2020 02:20:11 -0800
+Received: from mtkcas09.mediatek.inc (172.21.101.178) by
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 3 Mar 2020 18:18:18 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas09.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Tue, 3 Mar 2020 18:19:16 +0800
+From: Sam Shih <sam.shih@mediatek.com>
+To: Thierry Reding <thierry.reding@gmail.com>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v2 1/1] pwm: mediatek: add longer period support
+Date: Tue, 3 Mar 2020 18:19:15 +0800
+Message-ID: <1583230755-25986-2-git-send-email-sam.shih@mediatek.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1583230755-25986-1-git-send-email-sam.shih@mediatek.com>
+References: <1583230755-25986-1-git-send-email-sam.shih@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <1583205520.12858.13.camel@mtksdaap41>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200303_011002_148205_C79F3F42 
-X-CRM114-Status: GOOD (  21.49  )
+X-CRM114-CacheID: sfid-20200303_021930_224400_23657B83 
+X-CRM114-Status: GOOD (  13.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -145,411 +84,92 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, Kate Stewart <kstewart@linuxfoundation.org>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, airlied@linux.ie,
- dri-devel@lists.freedesktop.org, Richard Fontana <rfontana@redhat.com>,
- laurent.pinchart@ideasonboard.com, ulrich.hecht+renesas@gmail.com,
- Collabora Kernel ML <kernel@collabora.com>, linux-clk@vger.kernel.org,
- Weiyi Lu <weiyi.lu@mediatek.com>, wens@csie.org,
- linux-arm-kernel@lists.infradead.org, mtk01761 <wendell.lin@mediatek.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- Daniel Vetter <daniel@ffwll.ch>, frank-w@public-files.de,
- Seiya Wang <seiya.wang@mediatek.com>, sean.wang@mediatek.com,
- Houlong Wei <houlong.wei@mediatek.com>, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Allison Randal <allison@lohutok.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, rdunlap@infradead.org,
- linux-kernel@vger.kernel.org, p.zabel@pengutronix.de, matthias.bgg@kernel.org,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: linux-pwm@vger.kernel.org, Sam Shih <sam.shih@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ John Crispin <john@phrozen.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[to Stephen and Mike]
+The pwm clock source could be divided by 1625 with PWM_CON
+BIT(3) setting in mediatek hardware.
 
-On 03/03/2020 04:18, CK Hu wrote:
-> Hi, Matthias:
-> 
-> On Thu, 2020-02-27 at 19:22 +0100, Matthias Brugger wrote:
->>
->> On 27/02/2020 19:21, Matthias Brugger wrote:
->>>
->>>
->>> On 27/02/2020 19:08, Enric Balletbo i Serra wrote:
->>>> From: Matthias Brugger <mbrugger@suse.com>
->>>>
->>>> There is no strong reason for this to use CLK_OF_DECLARE instead of
->>>> being a platform driver. Plus, this driver provides clocks but also
->>>> a shared register space for the mediatek-drm and the mediatek-mdp
->>>> driver. So move to drivers/soc/mediatek as a platform driver.
->>>>
->>>> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
->>>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->>>> ---
->>>
->>> regarding the merge strategy, I propose that CK takes it through his tree and
->>> provides a stable branch in case I'll need to put some patches on top of the
->>> drivers/soc part.
->>>
->>
->> Sorry, that was meant for 4/5 not this patch.
->>
->>> Makes sense?
-> 
-> There are many dependencies in this series, so I would like to apply
-> this series to a tree together. I think mmsys driver is major of this
-> series, and this series does not conflict with Mediatek DRM tree now, so
-> I would like to apply this series to soc tree. How do you think?
-> 
+This patch add support for longer pwm period configuration,
+which allowing blinking LEDs via pwm interface.
 
-Works for me, I would need an Acked-by from the clock maintainers for 3/5 though.
-Regards,
-Matthias
+Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+---
+ drivers/pwm/pwm-mediatek.c | 34 ++++++++++++++++++++++++++++++----
+ 1 file changed, 30 insertions(+), 4 deletions(-)
 
-> Regards,
-> CK
-> 
->>>
->>> Regards,
->>> Matthias
->>>
->>>>
->>>> Changes in v10:
->>>> - Renamed to be generic mtk-mmsys
->>>> - Add driver data support to be able to support diferent SoCs
->>>>
->>>> Changes in v9:
->>>> - Move mmsys to drivers/soc/mediatek (CK)
->>>>
->>>> Changes in v8:
->>>> - Be a builtin_platform_driver like other mediatek mmsys drivers.
->>>>
->>>> Changes in v7:
->>>> - Free clk_data->clks as well
->>>> - Get rid of private data structure
->>>>
->>>>  drivers/clk/mediatek/clk-mt8173.c | 104 --------------------
->>>>  drivers/soc/mediatek/Kconfig      |   7 ++
->>>>  drivers/soc/mediatek/Makefile     |   1 +
->>>>  drivers/soc/mediatek/mtk-mmsys.c  | 154 ++++++++++++++++++++++++++++++
->>>>  4 files changed, 162 insertions(+), 104 deletions(-)
->>>>  create mode 100644 drivers/soc/mediatek/mtk-mmsys.c
->>>>
->>>> diff --git a/drivers/clk/mediatek/clk-mt8173.c b/drivers/clk/mediatek/clk-mt8173.c
->>>> index 537a7f49b0f7..8f898ac476c0 100644
->>>> --- a/drivers/clk/mediatek/clk-mt8173.c
->>>> +++ b/drivers/clk/mediatek/clk-mt8173.c
->>>> @@ -753,93 +753,6 @@ static const struct mtk_gate img_clks[] __initconst = {
->>>>  	GATE_IMG(CLK_IMG_FD, "img_fd", "mm_sel", 11),
->>>>  };
->>>>  
->>>> -static const struct mtk_gate_regs mm0_cg_regs __initconst = {
->>>> -	.set_ofs = 0x0104,
->>>> -	.clr_ofs = 0x0108,
->>>> -	.sta_ofs = 0x0100,
->>>> -};
->>>> -
->>>> -static const struct mtk_gate_regs mm1_cg_regs __initconst = {
->>>> -	.set_ofs = 0x0114,
->>>> -	.clr_ofs = 0x0118,
->>>> -	.sta_ofs = 0x0110,
->>>> -};
->>>> -
->>>> -#define GATE_MM0(_id, _name, _parent, _shift) {			\
->>>> -		.id = _id,					\
->>>> -		.name = _name,					\
->>>> -		.parent_name = _parent,				\
->>>> -		.regs = &mm0_cg_regs,				\
->>>> -		.shift = _shift,				\
->>>> -		.ops = &mtk_clk_gate_ops_setclr,		\
->>>> -	}
->>>> -
->>>> -#define GATE_MM1(_id, _name, _parent, _shift) {			\
->>>> -		.id = _id,					\
->>>> -		.name = _name,					\
->>>> -		.parent_name = _parent,				\
->>>> -		.regs = &mm1_cg_regs,				\
->>>> -		.shift = _shift,				\
->>>> -		.ops = &mtk_clk_gate_ops_setclr,		\
->>>> -	}
->>>> -
->>>> -static const struct mtk_gate mm_clks[] __initconst = {
->>>> -	/* MM0 */
->>>> -	GATE_MM0(CLK_MM_SMI_COMMON, "mm_smi_common", "mm_sel", 0),
->>>> -	GATE_MM0(CLK_MM_SMI_LARB0, "mm_smi_larb0", "mm_sel", 1),
->>>> -	GATE_MM0(CLK_MM_CAM_MDP, "mm_cam_mdp", "mm_sel", 2),
->>>> -	GATE_MM0(CLK_MM_MDP_RDMA0, "mm_mdp_rdma0", "mm_sel", 3),
->>>> -	GATE_MM0(CLK_MM_MDP_RDMA1, "mm_mdp_rdma1", "mm_sel", 4),
->>>> -	GATE_MM0(CLK_MM_MDP_RSZ0, "mm_mdp_rsz0", "mm_sel", 5),
->>>> -	GATE_MM0(CLK_MM_MDP_RSZ1, "mm_mdp_rsz1", "mm_sel", 6),
->>>> -	GATE_MM0(CLK_MM_MDP_RSZ2, "mm_mdp_rsz2", "mm_sel", 7),
->>>> -	GATE_MM0(CLK_MM_MDP_TDSHP0, "mm_mdp_tdshp0", "mm_sel", 8),
->>>> -	GATE_MM0(CLK_MM_MDP_TDSHP1, "mm_mdp_tdshp1", "mm_sel", 9),
->>>> -	GATE_MM0(CLK_MM_MDP_WDMA, "mm_mdp_wdma", "mm_sel", 11),
->>>> -	GATE_MM0(CLK_MM_MDP_WROT0, "mm_mdp_wrot0", "mm_sel", 12),
->>>> -	GATE_MM0(CLK_MM_MDP_WROT1, "mm_mdp_wrot1", "mm_sel", 13),
->>>> -	GATE_MM0(CLK_MM_FAKE_ENG, "mm_fake_eng", "mm_sel", 14),
->>>> -	GATE_MM0(CLK_MM_MUTEX_32K, "mm_mutex_32k", "rtc_sel", 15),
->>>> -	GATE_MM0(CLK_MM_DISP_OVL0, "mm_disp_ovl0", "mm_sel", 16),
->>>> -	GATE_MM0(CLK_MM_DISP_OVL1, "mm_disp_ovl1", "mm_sel", 17),
->>>> -	GATE_MM0(CLK_MM_DISP_RDMA0, "mm_disp_rdma0", "mm_sel", 18),
->>>> -	GATE_MM0(CLK_MM_DISP_RDMA1, "mm_disp_rdma1", "mm_sel", 19),
->>>> -	GATE_MM0(CLK_MM_DISP_RDMA2, "mm_disp_rdma2", "mm_sel", 20),
->>>> -	GATE_MM0(CLK_MM_DISP_WDMA0, "mm_disp_wdma0", "mm_sel", 21),
->>>> -	GATE_MM0(CLK_MM_DISP_WDMA1, "mm_disp_wdma1", "mm_sel", 22),
->>>> -	GATE_MM0(CLK_MM_DISP_COLOR0, "mm_disp_color0", "mm_sel", 23),
->>>> -	GATE_MM0(CLK_MM_DISP_COLOR1, "mm_disp_color1", "mm_sel", 24),
->>>> -	GATE_MM0(CLK_MM_DISP_AAL, "mm_disp_aal", "mm_sel", 25),
->>>> -	GATE_MM0(CLK_MM_DISP_GAMMA, "mm_disp_gamma", "mm_sel", 26),
->>>> -	GATE_MM0(CLK_MM_DISP_UFOE, "mm_disp_ufoe", "mm_sel", 27),
->>>> -	GATE_MM0(CLK_MM_DISP_SPLIT0, "mm_disp_split0", "mm_sel", 28),
->>>> -	GATE_MM0(CLK_MM_DISP_SPLIT1, "mm_disp_split1", "mm_sel", 29),
->>>> -	GATE_MM0(CLK_MM_DISP_MERGE, "mm_disp_merge", "mm_sel", 30),
->>>> -	GATE_MM0(CLK_MM_DISP_OD, "mm_disp_od", "mm_sel", 31),
->>>> -	/* MM1 */
->>>> -	GATE_MM1(CLK_MM_DISP_PWM0MM, "mm_disp_pwm0mm", "mm_sel", 0),
->>>> -	GATE_MM1(CLK_MM_DISP_PWM026M, "mm_disp_pwm026m", "pwm_sel", 1),
->>>> -	GATE_MM1(CLK_MM_DISP_PWM1MM, "mm_disp_pwm1mm", "mm_sel", 2),
->>>> -	GATE_MM1(CLK_MM_DISP_PWM126M, "mm_disp_pwm126m", "pwm_sel", 3),
->>>> -	GATE_MM1(CLK_MM_DSI0_ENGINE, "mm_dsi0_engine", "mm_sel", 4),
->>>> -	GATE_MM1(CLK_MM_DSI0_DIGITAL, "mm_dsi0_digital", "dsi0_dig", 5),
->>>> -	GATE_MM1(CLK_MM_DSI1_ENGINE, "mm_dsi1_engine", "mm_sel", 6),
->>>> -	GATE_MM1(CLK_MM_DSI1_DIGITAL, "mm_dsi1_digital", "dsi1_dig", 7),
->>>> -	GATE_MM1(CLK_MM_DPI_PIXEL, "mm_dpi_pixel", "dpi0_sel", 8),
->>>> -	GATE_MM1(CLK_MM_DPI_ENGINE, "mm_dpi_engine", "mm_sel", 9),
->>>> -	GATE_MM1(CLK_MM_DPI1_PIXEL, "mm_dpi1_pixel", "lvds_pxl", 10),
->>>> -	GATE_MM1(CLK_MM_DPI1_ENGINE, "mm_dpi1_engine", "mm_sel", 11),
->>>> -	GATE_MM1(CLK_MM_HDMI_PIXEL, "mm_hdmi_pixel", "dpi0_sel", 12),
->>>> -	GATE_MM1(CLK_MM_HDMI_PLLCK, "mm_hdmi_pllck", "hdmi_sel", 13),
->>>> -	GATE_MM1(CLK_MM_HDMI_AUDIO, "mm_hdmi_audio", "apll1", 14),
->>>> -	GATE_MM1(CLK_MM_HDMI_SPDIF, "mm_hdmi_spdif", "apll2", 15),
->>>> -	GATE_MM1(CLK_MM_LVDS_PIXEL, "mm_lvds_pixel", "lvds_pxl", 16),
->>>> -	GATE_MM1(CLK_MM_LVDS_CTS, "mm_lvds_cts", "lvds_cts", 17),
->>>> -	GATE_MM1(CLK_MM_SMI_LARB4, "mm_smi_larb4", "mm_sel", 18),
->>>> -	GATE_MM1(CLK_MM_HDMI_HDCP, "mm_hdmi_hdcp", "hdcp_sel", 19),
->>>> -	GATE_MM1(CLK_MM_HDMI_HDCP24M, "mm_hdmi_hdcp24m", "hdcp_24m_sel", 20),
->>>> -};
->>>> -
->>>>  static const struct mtk_gate_regs vdec0_cg_regs __initconst = {
->>>>  	.set_ofs = 0x0000,
->>>>  	.clr_ofs = 0x0004,
->>>> @@ -1144,23 +1057,6 @@ static void __init mtk_imgsys_init(struct device_node *node)
->>>>  }
->>>>  CLK_OF_DECLARE(mtk_imgsys, "mediatek,mt8173-imgsys", mtk_imgsys_init);
->>>>  
->>>> -static void __init mtk_mmsys_init(struct device_node *node)
->>>> -{
->>>> -	struct clk_onecell_data *clk_data;
->>>> -	int r;
->>>> -
->>>> -	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
->>>> -
->>>> -	mtk_clk_register_gates(node, mm_clks, ARRAY_SIZE(mm_clks),
->>>> -						clk_data);
->>>> -
->>>> -	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
->>>> -	if (r)
->>>> -		pr_err("%s(): could not register clock provider: %d\n",
->>>> -			__func__, r);
->>>> -}
->>>> -CLK_OF_DECLARE(mtk_mmsys, "mediatek,mt8173-mmsys", mtk_mmsys_init);
->>>> -
->>>>  static void __init mtk_vdecsys_init(struct device_node *node)
->>>>  {
->>>>  	struct clk_onecell_data *clk_data;
->>>> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
->>>> index 2114b563478c..7a156944d50e 100644
->>>> --- a/drivers/soc/mediatek/Kconfig
->>>> +++ b/drivers/soc/mediatek/Kconfig
->>>> @@ -44,4 +44,11 @@ config MTK_SCPSYS
->>>>  	  Say yes here to add support for the MediaTek SCPSYS power domain
->>>>  	  driver.
->>>>  
->>>> +config MTK_MMSYS
->>>> +	bool "MediaTek MMSYS Support"
->>>> +	depends on COMMON_CLK_MT8173
->>>> +	help
->>>> +	  Say yes here to add support for the MediaTek Multimedia
->>>> +	  Subsystem (MMSYS).
->>>> +
->>>>  endmenu
->>>> diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
->>>> index b01733074ad6..01f9f873634a 100644
->>>> --- a/drivers/soc/mediatek/Makefile
->>>> +++ b/drivers/soc/mediatek/Makefile
->>>> @@ -3,3 +3,4 @@ obj-$(CONFIG_MTK_CMDQ) += mtk-cmdq-helper.o
->>>>  obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
->>>>  obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
->>>>  obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
->>>> +obj-$(CONFIG_MTK_MMSYS) += mtk-mmsys.o
->>>> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
->>>> new file mode 100644
->>>> index 000000000000..473cdf732fb5
->>>> --- /dev/null
->>>> +++ b/drivers/soc/mediatek/mtk-mmsys.c
->>>> @@ -0,0 +1,154 @@
->>>> +// SPDX-License-Identifier: GPL-2.0-only
->>>> +/*
->>>> + * Copyright (c) 2014 MediaTek Inc.
->>>> + * Author: James Liao <jamesjj.liao@mediatek.com>
->>>> + */
->>>> +
->>>> +#include <linux/clk-provider.h>
->>>> +#include <linux/of_device.h>
->>>> +#include <linux/platform_device.h>
->>>> +
->>>> +#include "../../clk/mediatek/clk-gate.h"
->>>> +#include "../../clk/mediatek/clk-mtk.h"
->>>> +
->>>> +#include <dt-bindings/clock/mt8173-clk.h>
->>>> +
->>>> +static const struct mtk_gate_regs mm0_cg_regs = {
->>>> +	.set_ofs = 0x0104,
->>>> +	.clr_ofs = 0x0108,
->>>> +	.sta_ofs = 0x0100,
->>>> +};
->>>> +
->>>> +static const struct mtk_gate_regs mm1_cg_regs = {
->>>> +	.set_ofs = 0x0114,
->>>> +	.clr_ofs = 0x0118,
->>>> +	.sta_ofs = 0x0110,
->>>> +};
->>>> +
->>>> +#define GATE_MM0(_id, _name, _parent, _shift) {			\
->>>> +		.id = _id,					\
->>>> +		.name = _name,					\
->>>> +		.parent_name = _parent,				\
->>>> +		.regs = &mm0_cg_regs,				\
->>>> +		.shift = _shift,				\
->>>> +		.ops = &mtk_clk_gate_ops_setclr,		\
->>>> +	}
->>>> +
->>>> +#define GATE_MM1(_id, _name, _parent, _shift) {			\
->>>> +		.id = _id,					\
->>>> +		.name = _name,					\
->>>> +		.parent_name = _parent,				\
->>>> +		.regs = &mm1_cg_regs,				\
->>>> +		.shift = _shift,				\
->>>> +		.ops = &mtk_clk_gate_ops_setclr,		\
->>>> +	}
->>>> +
->>>> +static const struct mtk_gate mt8173_mm_clks[] = {
->>>> +	/* MM0 */
->>>> +	GATE_MM0(CLK_MM_SMI_COMMON, "mm_smi_common", "mm_sel", 0),
->>>> +	GATE_MM0(CLK_MM_SMI_LARB0, "mm_smi_larb0", "mm_sel", 1),
->>>> +	GATE_MM0(CLK_MM_CAM_MDP, "mm_cam_mdp", "mm_sel", 2),
->>>> +	GATE_MM0(CLK_MM_MDP_RDMA0, "mm_mdp_rdma0", "mm_sel", 3),
->>>> +	GATE_MM0(CLK_MM_MDP_RDMA1, "mm_mdp_rdma1", "mm_sel", 4),
->>>> +	GATE_MM0(CLK_MM_MDP_RSZ0, "mm_mdp_rsz0", "mm_sel", 5),
->>>> +	GATE_MM0(CLK_MM_MDP_RSZ1, "mm_mdp_rsz1", "mm_sel", 6),
->>>> +	GATE_MM0(CLK_MM_MDP_RSZ2, "mm_mdp_rsz2", "mm_sel", 7),
->>>> +	GATE_MM0(CLK_MM_MDP_TDSHP0, "mm_mdp_tdshp0", "mm_sel", 8),
->>>> +	GATE_MM0(CLK_MM_MDP_TDSHP1, "mm_mdp_tdshp1", "mm_sel", 9),
->>>> +	GATE_MM0(CLK_MM_MDP_WDMA, "mm_mdp_wdma", "mm_sel", 11),
->>>> +	GATE_MM0(CLK_MM_MDP_WROT0, "mm_mdp_wrot0", "mm_sel", 12),
->>>> +	GATE_MM0(CLK_MM_MDP_WROT1, "mm_mdp_wrot1", "mm_sel", 13),
->>>> +	GATE_MM0(CLK_MM_FAKE_ENG, "mm_fake_eng", "mm_sel", 14),
->>>> +	GATE_MM0(CLK_MM_MUTEX_32K, "mm_mutex_32k", "rtc_sel", 15),
->>>> +	GATE_MM0(CLK_MM_DISP_OVL0, "mm_disp_ovl0", "mm_sel", 16),
->>>> +	GATE_MM0(CLK_MM_DISP_OVL1, "mm_disp_ovl1", "mm_sel", 17),
->>>> +	GATE_MM0(CLK_MM_DISP_RDMA0, "mm_disp_rdma0", "mm_sel", 18),
->>>> +	GATE_MM0(CLK_MM_DISP_RDMA1, "mm_disp_rdma1", "mm_sel", 19),
->>>> +	GATE_MM0(CLK_MM_DISP_RDMA2, "mm_disp_rdma2", "mm_sel", 20),
->>>> +	GATE_MM0(CLK_MM_DISP_WDMA0, "mm_disp_wdma0", "mm_sel", 21),
->>>> +	GATE_MM0(CLK_MM_DISP_WDMA1, "mm_disp_wdma1", "mm_sel", 22),
->>>> +	GATE_MM0(CLK_MM_DISP_COLOR0, "mm_disp_color0", "mm_sel", 23),
->>>> +	GATE_MM0(CLK_MM_DISP_COLOR1, "mm_disp_color1", "mm_sel", 24),
->>>> +	GATE_MM0(CLK_MM_DISP_AAL, "mm_disp_aal", "mm_sel", 25),
->>>> +	GATE_MM0(CLK_MM_DISP_GAMMA, "mm_disp_gamma", "mm_sel", 26),
->>>> +	GATE_MM0(CLK_MM_DISP_UFOE, "mm_disp_ufoe", "mm_sel", 27),
->>>> +	GATE_MM0(CLK_MM_DISP_SPLIT0, "mm_disp_split0", "mm_sel", 28),
->>>> +	GATE_MM0(CLK_MM_DISP_SPLIT1, "mm_disp_split1", "mm_sel", 29),
->>>> +	GATE_MM0(CLK_MM_DISP_MERGE, "mm_disp_merge", "mm_sel", 30),
->>>> +	GATE_MM0(CLK_MM_DISP_OD, "mm_disp_od", "mm_sel", 31),
->>>> +	/* MM1 */
->>>> +	GATE_MM1(CLK_MM_DISP_PWM0MM, "mm_disp_pwm0mm", "mm_sel", 0),
->>>> +	GATE_MM1(CLK_MM_DISP_PWM026M, "mm_disp_pwm026m", "pwm_sel", 1),
->>>> +	GATE_MM1(CLK_MM_DISP_PWM1MM, "mm_disp_pwm1mm", "mm_sel", 2),
->>>> +	GATE_MM1(CLK_MM_DISP_PWM126M, "mm_disp_pwm126m", "pwm_sel", 3),
->>>> +	GATE_MM1(CLK_MM_DSI0_ENGINE, "mm_dsi0_engine", "mm_sel", 4),
->>>> +	GATE_MM1(CLK_MM_DSI0_DIGITAL, "mm_dsi0_digital", "dsi0_dig", 5),
->>>> +	GATE_MM1(CLK_MM_DSI1_ENGINE, "mm_dsi1_engine", "mm_sel", 6),
->>>> +	GATE_MM1(CLK_MM_DSI1_DIGITAL, "mm_dsi1_digital", "dsi1_dig", 7),
->>>> +	GATE_MM1(CLK_MM_DPI_PIXEL, "mm_dpi_pixel", "dpi0_sel", 8),
->>>> +	GATE_MM1(CLK_MM_DPI_ENGINE, "mm_dpi_engine", "mm_sel", 9),
->>>> +	GATE_MM1(CLK_MM_DPI1_PIXEL, "mm_dpi1_pixel", "lvds_pxl", 10),
->>>> +	GATE_MM1(CLK_MM_DPI1_ENGINE, "mm_dpi1_engine", "mm_sel", 11),
->>>> +	GATE_MM1(CLK_MM_HDMI_PIXEL, "mm_hdmi_pixel", "dpi0_sel", 12),
->>>> +	GATE_MM1(CLK_MM_HDMI_PLLCK, "mm_hdmi_pllck", "hdmi_sel", 13),
->>>> +	GATE_MM1(CLK_MM_HDMI_AUDIO, "mm_hdmi_audio", "apll1", 14),
->>>> +	GATE_MM1(CLK_MM_HDMI_SPDIF, "mm_hdmi_spdif", "apll2", 15),
->>>> +	GATE_MM1(CLK_MM_LVDS_PIXEL, "mm_lvds_pixel", "lvds_pxl", 16),
->>>> +	GATE_MM1(CLK_MM_LVDS_CTS, "mm_lvds_cts", "lvds_cts", 17),
->>>> +	GATE_MM1(CLK_MM_SMI_LARB4, "mm_smi_larb4", "mm_sel", 18),
->>>> +	GATE_MM1(CLK_MM_HDMI_HDCP, "mm_hdmi_hdcp", "hdcp_sel", 19),
->>>> +	GATE_MM1(CLK_MM_HDMI_HDCP24M, "mm_hdmi_hdcp24m", "hdcp_24m_sel", 20),
->>>> +};
->>>> +
->>>> +struct mtk_mmsys_driver_data {
->>>> +	const struct mtk_gate *gates_clk;
->>>> +	int gates_num;
->>>> +};
->>>> +
->>>> +static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
->>>> +	.gates_clk = mt8173_mm_clks,
->>>> +	.gates_num = ARRAY_SIZE(mt8173_mm_clks),
->>>> +};
->>>> +
->>>> +static int mtk_mmsys_probe(struct platform_device *pdev)
->>>> +{
->>>> +	struct device_node *node = pdev->dev.of_node;
->>>> +	const struct mtk_mmsys_driver_data *data;
->>>> +	struct clk_onecell_data *clk_data;
->>>> +	int ret;
->>>> +
->>>> +	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
->>>> +	if (!clk_data)
->>>> +		return -ENOMEM;
->>>> +
->>>> +	data = of_device_get_match_data(&pdev->dev);
->>>> +
->>>> +	ret = mtk_clk_register_gates(node, data->gates_clk, data->gates_num,
->>>> +				     clk_data);
->>>> +	if (ret)
->>>> +		return ret;
->>>> +
->>>> +	ret = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
->>>> +	if (ret)
->>>> +		return ret;
->>>> +
->>>> +	return 0;
->>>> +}
->>>> +
->>>> +static const struct of_device_id of_match_mtk_mmsys[] = {
->>>> +	{
->>>> +		.compatible = "mediatek,mt8173-mmsys",
->>>> +		.data = &mt8173_mmsys_driver_data,
->>>> +	},
->>>> +	{ }
->>>> +};
->>>> +
->>>> +static struct platform_driver mtk_mmsys_drv = {
->>>> +	.driver = {
->>>> +		.name = "mtk-mmsys",
->>>> +		.of_match_table = of_match_mtk_mmsys,
->>>> +	},
->>>> +	.probe = mtk_mmsys_probe,
->>>> +};
->>>> +
->>>> +builtin_platform_driver(mtk_mmsys_drv);
->>>>
-> 
-
+diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+index b94e0d09c300..c64ecff6c550 100644
+--- a/drivers/pwm/pwm-mediatek.c
++++ b/drivers/pwm/pwm-mediatek.c
+@@ -121,8 +121,11 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 			       int duty_ns, int period_ns)
+ {
+ 	struct pwm_mediatek_chip *pc = to_pwm_mediatek_chip(chip);
+-	u32 clkdiv = 0, cnt_period, cnt_duty, reg_width = PWMDWIDTH,
+-	    reg_thres = PWMTHRES;
++	/* The source clock is divided by 2^clkdiv or iff the clksel bit
++	 * is set by (2^clkdiv*1625)
++	 */
++	u32 clkdiv = 0, clksel = 0, cnt_period, cnt_duty,
++	    reg_width = PWMDWIDTH, reg_thres = PWMTHRES;
+ 	u64 resolution;
+ 	int ret;
+ 
+@@ -133,12 +136,30 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 
+ 	/* Using resolution in picosecond gets accuracy higher */
+ 	resolution = (u64)NSEC_PER_SEC * 1000;
++	/* Calculate resolution based on current clock frequency */
+ 	do_div(resolution, clk_get_rate(pc->clk_pwms[pwm->hwpwm]));
+-
++	/* Using resolution to calculate cnt_period which represents
++	 * the effective range of the PWM period counter
++	 */
+ 	cnt_period = DIV_ROUND_CLOSEST_ULL((u64)period_ns * 1000, resolution);
+ 	while (cnt_period > 8191) {
++		/* Using clkdiv to reduce clock frequency and calculate
++		 * new resolution based on new clock speed
++		 */
+ 		resolution *= 2;
+ 		clkdiv++;
++		if (clkdiv > PWM_CLK_DIV_MAX && !clksel) {
++			/* Using clksel to divide the pwm source clock by
++			 * an additional 1625, and recalculate new clkdiv
++			 * and resolution
++			 */
++			clksel = 1;
++			clkdiv = 0;
++			resolution = (u64)NSEC_PER_SEC * 1000 * 1625;
++			do_div(resolution,
++				clk_get_rate(pc->clk_pwms[pwm->hwpwm]));
++		}
++		/* Calculate cnt_period based on resolution */
+ 		cnt_period = DIV_ROUND_CLOSEST_ULL((u64)period_ns * 1000,
+ 						   resolution);
+ 	}
+@@ -158,8 +179,13 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 		reg_thres = PWM45THRES_FIXUP;
+ 	}
+ 
++	/* Calculate cnt_duty based on resolution */
+ 	cnt_duty = DIV_ROUND_CLOSEST_ULL((u64)duty_ns * 1000, resolution);
+-	pwm_mediatek_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
++	if (clksel)
++		pwm_mediatek_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | BIT(3) |
++				    clkdiv);
++	else
++		pwm_mediatek_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
+ 	pwm_mediatek_writel(pc, pwm->hwpwm, reg_width, cnt_period);
+ 	pwm_mediatek_writel(pc, pwm->hwpwm, reg_thres, cnt_duty);
+ 
+-- 
+2.17.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
