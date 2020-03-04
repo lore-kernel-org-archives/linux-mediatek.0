@@ -2,23 +2,22 @@ Return-Path: <SRS0=cHEQ=4V=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 37F0FC3F2D1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 15:14:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 98256C3F2D1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 16:15:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0DCA021741
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 15:14:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5DAB121739
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 16:15:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eLOyBmj7";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="ZNJALoFg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0DCA021741
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iQgKs0OD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5DAB121739
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -26,66 +25,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EYh7AMRqavSCkdZGNU+GJjD1mDx7T5H3VN6VEytdsjM=; b=eLOyBmj7xceYj8
-	LgDxuXQJCmeEBSgz+g0EzYvaFBMyrlsyRRG8aYO/PjlN5Gw24UP57m6F1CIgRYVzGVDpuM6nFAVm2
-	qgw2C+IhNyFY3+VNTytyly43FUbzw4J2lq4S0onQBRXHjZecjpR5yhNY4F7SjU/I6sagDo/8cisy6
-	2Cci7SV/ZW6gQ4y4lS8Qz/hso/C3NS+KlwbCQnW45r1OPA2eJ60IyFFmkqu3IHnFyONv5cbHeW7Ul
-	KVfLQC/WGLw5Pi41vS+CEUei90FLfybmfpmI/dB08hskXTKQI7m0Ghp5wrbM711bVdzHNFbB1kxqT
-	HNM07+f/8tZ/c/qDwN2A==;
+	List-Owner; bh=a4Tiz8egFB1Y+1us3zr98Xcb3Mib45ZQ8SA63IkOM4M=; b=iQgKs0OD2fPEjC
+	8fGdMHlE5XCXkjR/x5mh5r4n9cdGedehjFk2AkV/qZJJu3gZQMp7gVW13KpMAX4EVqzxM0KwoJG4w
+	SRSH4lrZb88T4Oy6/Xx8XJS1BqJhMiKwXMYT/ZLv+6bxRHD8MhSFOUji6TJ/D5ocKqUo1sBE5hdmj
+	gGBwHRdMzXYTIJ8xlFW4wLFQRWCOVFf0Tpr7Dr+rZLNm3waZ4ra1+V0k50VaWvrmT6h+OIVIpBjXT
+	dVMCoozPBvxkLwJhFO883JMJ9LxayHz9RjLX/T7wffs5H9uRvV9A+kDz8kW9bFdvEBtl8cMNWUix5
+	4s/R3avCk0fB3EtZjwfg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9VjP-0002H1-M8; Wed, 04 Mar 2020 15:14:43 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1j9WgW-0004Gs-1y; Wed, 04 Mar 2020 16:15:48 +0000
+Received: from mail-oi1-f195.google.com ([209.85.167.195])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9VjH-00028p-3r
- for linux-mediatek@lists.infradead.org; Wed, 04 Mar 2020 15:14:36 +0000
-Received: by mail-wm1-x344.google.com with SMTP id a5so2520746wmb.0
- for <linux-mediatek@lists.infradead.org>; Wed, 04 Mar 2020 07:14:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=ntkN2Bt2eytzYo8LHWkETJyp51uX20eFB3He3wFrMNw=;
- b=ZNJALoFg7NbZIlCreszRaLeqZiUnLe5Flj9+uAcQPt3PU/qA2sI14FPluBDqsdXgI/
- 1fCS41eNErjZSFzRZxMeJhMget6pFDN5fOEU5+wD+RfNcrP2bq430ItHZZiyifyZQgW3
- twe3emHg0w9L/OTmr73xd+dGeQTRQaOL6mgy5YZ44MHF5lmqa0qimopn4zrnYGSfjtiF
- Kt0H38kUXf0eNP0snIMzOSgkWWvUuN2AlPcKssLWAU+OeL9TfEr6zQU8fVQNV8lLdhuC
- g1+/G1KOcW7kuW7/qYTbHWrEqg03ocpLCwmC0M+VVslR/xkjNiv41SZ3qUEhqDtWATD1
- +BPw==
+ id 1j9WgN-00045Z-Sk; Wed, 04 Mar 2020 16:15:41 +0000
+Received: by mail-oi1-f195.google.com with SMTP id v19so2593059oic.12;
+ Wed, 04 Mar 2020 08:15:39 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=ntkN2Bt2eytzYo8LHWkETJyp51uX20eFB3He3wFrMNw=;
- b=oHJ9aRIorO8F01pnqWvzD4gMHHGk9/QYhMFyJSlWMDkXAVwWUzzGldG0TMMvXeY0rK
- wK+Ia/oKOlkQ7Skbrivk3wWATXDRS8cTyhMUqEKQkxSAsjO3jxCT3lUEGFDw0eSaWD72
- Tv7pjf2rSsWB8EkhlflCKOmL0VPc9HjCJrSysPAY+LCKfAuQfsE8qFxjFaT7COIP19b6
- JSk7Yxi4VNSKUZNvTGnC8WQee/Ol1Ah0rFiS2tkpr0pcpINkZF5AevCg8cFEmtHb2Xmv
- 0UANiztqoHOlLw7CX5+N6UwbtziGCwRXJ3s3rDCHEJlwouMmiwIT7AX63z0rRGwOTNxO
- 8aVA==
-X-Gm-Message-State: ANhLgQ2bOHuz2uriSNR7+JYumRDLwopd9UoLntNiGcfCgV3XQu1+m2Qr
- nhFcK/SHfH+fXQJuJ3kAQthPyg==
-X-Google-Smtp-Source: ADFU+vsy9i8tQNn4aoMQESfufuXZTbONKfMbOIzTmzcSncwnWJ+oYo6P0UZaWtHBIQA1UKlaxZJ3tA==
-X-Received: by 2002:a1c:f008:: with SMTP id a8mr4024812wmb.81.1583334872783;
- Wed, 04 Mar 2020 07:14:32 -0800 (PST)
-Received: from dell ([2.31.163.122])
- by smtp.gmail.com with ESMTPSA id c11sm39066333wrp.51.2020.03.04.07.14.31
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=G/m9Dnt93HLh8ZZeYopXZOgJzRYkBJrpgZdowTke/ZA=;
+ b=ZRDVjLxT+RV8RqQ3mthiTer/93VDkG3RAdyqGMx+Y6efy8C/cEhupwiutANobuQ0mf
+ De9YtgthN/Xjpe9QbUH6ehsPmV+SkKkBwKursc8YLo5o3OtILYTg2bh2AUcM5p+MAG53
+ yyuyGSj8Uc31zURgQBVwN847hQNJ05NBGAJUQ1b8+X8MHmcJOgJnGKgMnzm9b36YWu/l
+ xm3FY9iktUkmqz8MXmmjBvNr19OkYo7CpsVJrTnnpCFwbp2VQl4NCZEKIpNEagbZZIiI
+ nuunWw3LGOy0xsR7hpdsGgLXNA8EFIEiAYpcuunlPMDk9dMCbpgjczY8VsRkzikHqml7
+ FPZQ==
+X-Gm-Message-State: ANhLgQ013WlEkOEatgQMolUnI4EbiSdgPi4JsH5XWyk9J+Ir6R4AqaBy
+ Sui3skq7OdQtiRO/mS9nSA==
+X-Google-Smtp-Source: ADFU+vvQPKn3HTHYpHagUTruHe80jgRcAKAs1iIPLjepLVEiIsroKoDtfMT7OCsZXUt/LNxDyx47Yw==
+X-Received: by 2002:aca:a9d4:: with SMTP id s203mr2347678oie.106.1583338538421; 
+ Wed, 04 Mar 2020 08:15:38 -0800 (PST)
+Received: from rob-hp-laptop (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id v65sm965478oib.17.2020.03.04.08.15.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Mar 2020 07:14:32 -0800 (PST)
-Date: Wed, 4 Mar 2020 15:15:12 +0000
-From: Lee Jones <lee.jones@linaro.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: 
-Message-ID: <20200304151512.GD3332@dell>
-References: <1583249249-17380-1-git-send-email-gene.chen.richtek@gmail.com>
- <6b920875-8764-73a4-a763-788ce485b0cb@gmail.com>
+ Wed, 04 Mar 2020 08:15:37 -0800 (PST)
+Received: (nullmailer pid 26064 invoked by uid 1000);
+ Wed, 04 Mar 2020 16:15:36 -0000
+Date: Wed, 4 Mar 2020 10:15:36 -0600
+From: Rob Herring <robh@kernel.org>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Subject: Re: [PATCH v12 4/6] dt-bindings: display: mediatek: convert the
+ document format from txt to yaml
+Message-ID: <20200304161536.GA20736@bogus>
+References: <20200303052722.94795-1-jitao.shi@mediatek.com>
+ <20200303052722.94795-5-jitao.shi@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <6b920875-8764-73a4-a763-788ce485b0cb@gmail.com>
+In-Reply-To: <20200303052722.94795-5-jitao.shi@mediatek.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200304_071435_258414_6544ABF0 
-X-CRM114-Status: GOOD (  10.14  )
+X-CRM114-CacheID: sfid-20200304_081539_943275_82CC8795 
+X-CRM114-Status: GOOD (  17.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,33 +88,149 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
- linux-mediatek@lists.infradead.org, Gene Chen <gene.chen.richtek@gmail.com>,
- Wilma.Wu@mediatek.com, linux-arm-kernel@lists.infradead.org,
- shufan_lee@richtek.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ bibby.hsieh@mediatek.com, srv_heupstream@mediatek.com,
+ David Airlie <airlied@linux.ie>, huijuan.xie@mediatek.com, stonea168@163.com,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ cawa.cheng@mediatek.com, ck.hu@mediatek.com,
+ linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ Matthias Brugger <matthias.bgg@gmail.com>, yingjoe.chen@mediatek.com,
+ eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCAwNCBNYXIgMjAyMCwgTWF0dGhpYXMgQnJ1Z2dlciB3cm90ZToKCj4gUGxlYXNlIHJl
-c2VuZCB3aXRoIGFwcHJvcGlhdGUgY29tbWl0IG1lc3NhZ2UuCgpQbGVhc2UgcmVmcmFpbiBmcm9t
-IHRvcC1wb3N0aW5nIGFuZCBkb24ndCBmb3JnZXQgdG8gc25pcC4KCj4gT24gMDMvMDMvMjAyMCAx
-NjoyNywgR2VuZSBDaGVuIHdyb3RlOgo+ID4gQWRkIG1mZCBkcml2ZXIgZm9yIG10NjM2MCBwbWlj
-IGNoaXAgaW5jbHVkZQoKTG9va3MgbGlrZSB5b3VyIGZvcm1hdHRpbmcgaXMgb2ZmLgoKSG93IHdh
-cyB0aGlzIHBhdGNoIHNlbnQ/CgpCZXN0IHByYWN0aWNlIGlzIHRvIHVzZSBgZ2l0IHNlbmQtZW1h
-aWxgLgoKPiA+IEJhdHRlcnkgQ2hhcmdlci9VU0JfUEQvRmxhc2ggTEVEL1JHQiBMRUQvTERPL0J1
-Y2sKPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogR2VuZSBDaGVuIDxnZW5lX2NoZW5AcmljaHRlay5j
-b20KPiA+IC0tLQo+ID4gIGRyaXZlcnMvbWZkL0tjb25maWcgICAgICAgIHwgIDEyICsrCj4gPiAg
-ZHJpdmVycy9tZmQvTWFrZWZpbGUgICAgICAgfCAgIDEgKwo+ID4gIGRyaXZlcnMvbWZkL210NjM2
-MC1jb3JlLmMgIHwgNDI1ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKwo+ID4gIGluY2x1ZGUvbGludXgvbWZkL210NjM2MC5oIHwgMjQwICsrKysrKysrKysrKysr
-KysrKysrKysrKysKPiA+ICA0IGZpbGVzIGNoYW5nZWQsIDY3OCBpbnNlcnRpb25zKCspCj4gPiAg
-Y3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbWZkL210NjM2MC1jb3JlLmMKPiA+ICBjcmVhdGUg
-bW9kZSAxMDA2NDQgaW5jbHVkZS9saW51eC9tZmQvbXQ2MzYwLmgKCi0tIApMZWUgSm9uZXMgW+ad
-jueQvOaWr10KTGluYXJvIFNlcnZpY2VzIFRlY2huaWNhbCBMZWFkCkxpbmFyby5vcmcg4pSCIE9w
-ZW4gc291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29DcwpGb2xsb3cgTGluYXJvOiBGYWNlYm9vayB8
-IFR3aXR0ZXIgfCBCbG9nCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LW1lZGlhdGVrCg==
+On Tue, Mar 03, 2020 at 01:27:20PM +0800, Jitao Shi wrote:
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> ---
+>  .../display/mediatek/mediatek,dpi.txt         | 45 ---------
+>  .../display/mediatek/mediatek,dpi.yaml        | 92 +++++++++++++++++++
+>  2 files changed, 92 insertions(+), 45 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+
+You need to run 'make dt_binding_check' on this and fix the errors.
+
+[...]
+
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> new file mode 100644
+> index 000000000000..eb2b0cb5eb5a
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> @@ -0,0 +1,92 @@
+> +# SPDX-License-Identifier: GPL-2.0
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/display/mediatek,dpi.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: mediatek DPI Controller Device Tree Bindings
+> +
+> +maintainers:
+> +  - CK Hu <ck.hu@mediatek.com>
+> +  - Jitao shi <jitao.shi@mediatek.com>
+> +
+> +description: |
+> +  The Mediatek DPI function block is a sink of the display subsystem and
+> +  provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422 pixel data on a parallel
+> +  output bus.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt2701-dpi
+> +      - mediatek,mt8173-dpi
+> +      - mediatek,mt8183-dpi
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: Pixel Clock
+> +      - description: Engine Clock
+> +      - description: DPI PLL
+> +
+> +  clock-names:
+> +    items:
+> +      - const: pixel
+> +      - const: engine
+> +      - const: pll
+> +
+> +  pinctrl-names:
+> +    items:
+> +      - const: default
+> +      - const: sleep
+
+Doesn't match what you just added to the binding...
+
+> +
+> +  port:
+> +    type: object
+> +    description:
+> +      Output port node with endpoint definitions as described in
+> +      Documentation/devicetree/bindings/graph.txt. This port should be connected
+> +      to the input port of an attached HDMI or LVDS encoder chip.
+> +
+> +    properties:
+> +      pclk-sample:
+> +      description: refer Documentation/devicetree/bindings/media/video-interfaces.txt.
+
+This is wrong in multiple ways. 'description' is missing indentation, so 
+you are defining 'description' to be a property.
+
+And 'pclk-sample' is not a property of 'port' node, but 'endpoint'.
+
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +  - port
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    dpi0: dpi@1401d000 {
+> +        compatible = "mediatek,mt8173-dpi";
+> +        reg = <0 0x1401d000 0 0x1000>;
+> +        interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
+> +        clocks = <&mmsys CLK_MM_DPI_PIXEL>,
+> +             <&mmsys CLK_MM_DPI_ENGINE>,
+> +             <&apmixedsys CLK_APMIXED_TVDPLL>;
+
+Examples are built now and you need to add includes for these defines.
+
+> +        clock-names = "pixel", "engine", "pll";
+> +        pinctrl-names = "default", "sleep";
+> +        pinctrl-0 = <&dpi_pin_func>;
+> +        pinctrl-1 = <&dpi_pin_idle>;
+> +
+> +        port {
+> +            reg = <0>;
+
+Drop 'reg'.
+
+> +            dpi0_out: endpoint {
+> +                pclk-sample = <0>;
+> +                remote-endpoint = <&hdmi0_in>;
+> +            };
+> +        };
+> +    };
+> +
+> +...
+> -- 
+> 2.21.0
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
