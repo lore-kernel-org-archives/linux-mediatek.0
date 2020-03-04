@@ -4,76 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0192FC3F2D1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 02:58:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 222F3C3F2D7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 02:59:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C76DF208C3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 02:58:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E54502073B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 02:59:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GtAOqVe+";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="fUEzAh3r"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C76DF208C3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EwZOppFW";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="eX7bBAfp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E54502073B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Pub2AGTYUZ22oKtzZ8DtYVw1hGqS9kR92CFPlKOAUhg=; b=GtAOqVe+CjQEM8
-	cRIXVF3LJg+cJlVw64q0PB2A5nUDiK6lm2tI7zFtbZYsxSZ2+ZXdCR/l1nG5CZeE3e6q8Bqoi5gTl
-	uklQqZLKlgrnwN2GCG5tITVz7Jn1+vV+mWQB6Ea0JIT8+SzR67BXTgI3UxF42pUMe9XuGUywNm4pC
-	38b7eQ367gm1wWIud+iiIvZ4XdBXok7OVPru0DctH1/v0Dxit4ti7MX8mvh0ajKB4WiYIZ+YwOpTB
-	wegP9L79rlIIziVEk9Q1mMGdab0sesO4LVwX7cm3uWW2MMrLTiAOo8B0cbzJa3e7fdLf03SijKnfV
-	7wTF87tbHkZR1+ANveuA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Vej+vlrCa1Lmqb/y75NURThLZJnnrPKnSesZqYe0vjo=; b=EwZOppFWtToWqc
+	DiYY2TjHqHVBAKGuI/6vC+xBv0kqzOROgSvxX0piy29UTdbVbq2o6mZjh5+MaPqi5T1UaLwSz5obO
+	bcN3CfIxx0uib7mvPAyavS82gMDknWNQ4CDYSZKdI+e1m6H4PK3wFMIxprOm1fSm3Er0mFoChsx80
+	S2gEQADYQbmCN7/Z64HHceZUTAEAs5Ap1JOznWgPkgR+CWmJ8hLQtAnI1AlVO+3P29DmeQrU+vTZ8
+	awmKSQ1jwnqJGdKP/3wXvnQP5rrrNUrOd2RSqsk/8qHz7mVgiLJogsQ3MyQ4IjWDH57cST3PNXK0f
+	HRXxGazdwBuOJqYjbL4Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9KES-0004uC-74; Wed, 04 Mar 2020 02:58:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1j9KFS-00053j-5y; Wed, 04 Mar 2020 02:59:02 +0000
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9KED-0004ey-28
- for linux-mediatek@lists.infradead.org; Wed, 04 Mar 2020 02:57:49 +0000
-X-UUID: 3ba4a00976a94930ba8d08bbca3496ad-20200303
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=+OjRhnFwB7N+qUCZlu/luvxZ8XB1cxUBw5E13DY1Vig=; 
- b=fUEzAh3rXpG5C2POnjlKfnH3PbxtLkJa7kro+Q8KlvQ9046Dx1FRZ8HaEqc7+YQ7GGwQqMGiEsqLj2QkS3VRjJHYr+qv6t6rWFI9pJ54TuT84GPlLPKADBV3hM1auBkYtoab+HaaTDWWgD73vMcU2TalaholUHVS/3m/FWT2E5Y=;
-X-UUID: 3ba4a00976a94930ba8d08bbca3496ad-20200303
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <light.hsieh@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1991864863; Tue, 03 Mar 2020 18:57:40 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 3 Mar 2020 18:57:38 -0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 4 Mar 2020 10:54:56 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Wed, 4 Mar 2020 10:58:16 +0800
-From: <light.hsieh@mediatek.com>
-To: <ulf.hansson@linaro.org>
-Subject: [PATCH v1 2/3] mmc: check write-protection status during BLKROSET
- ioctl
-Date: Wed, 4 Mar 2020 10:57:34 +0800
-Message-ID: <1583290655-7858-3-git-send-email-light.hsieh@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1583290655-7858-1-git-send-email-light.hsieh@mediatek.com>
-References: <1583290655-7858-1-git-send-email-light.hsieh@mediatek.com>
+ id 1j9KFP-00052u-2t
+ for linux-mediatek@lists.infradead.org; Wed, 04 Mar 2020 02:59:00 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id cx7so233696pjb.3
+ for <linux-mediatek@lists.infradead.org>; Tue, 03 Mar 2020 18:58:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=BAsc10FtUOZ97wPJFX5v8aqPNXk1/I6/Vmpze0vc+mM=;
+ b=eX7bBAfp4PkW6ctThNtd423eeN9GUqeVszUJYjooX+U+OYYrla9kvsHXKu+JVGt+UO
+ zYxrdvD5Zv56VcCFoZDa4bTL3ivd/DTAyyx/hHHiAbvTYLaSdgioriFyg4s85jCg1udp
+ KYn91hr0gMg7HfVRYGaYsPfARqwIz+Fz4PQ3g=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=BAsc10FtUOZ97wPJFX5v8aqPNXk1/I6/Vmpze0vc+mM=;
+ b=p2/HTmxwQ22BRcPqFl34+leWzuemb9bJvlVIoDH+PHLUQ8+ulhgOgMlK4dB5eEenfE
+ whbo1XtVDsnWXv/riHriyPASW3mgbn0DPUu+oQ9tNAJsjCXabZy8RoFJwnT8yWph0mVA
+ e9VN7KwZgEtiKY/j9Lah2td7mMXSgbXu/XhzjnMbG0ZwZ39lC5PGHN5y7ZTQTcqu1iWJ
+ kFjNyaJ670MiKqr3jrW6troG2WrVuFa8sJ5UZyPV0cUFwGlutMciOFQZdhFwqC0CgqaP
+ bRtMrQ3gG++BQU4yPh0VWImwdyAumENGA/lCfVX8r2B4sNazzddbW1QFDaMkxlh3ECpf
+ r45Q==
+X-Gm-Message-State: ANhLgQ2DDkS9YxiaRahseWu10pTFKZIqUSdtJ6rCWAPU2OdnrwKeNZpb
+ qiUF2eMVOx7xS6DGLa/hWKRA4Q==
+X-Google-Smtp-Source: ADFU+vt/lZUoMJUP3e8DIgGwdSbt+jZcBaRL2pNBNNeB73NfFQFUtNf/zWgzgoIc/FLtXF93DuxR+Q==
+X-Received: by 2002:a17:902:8bc3:: with SMTP id
+ r3mr1041468plo.220.1583290738077; 
+ Tue, 03 Mar 2020 18:58:58 -0800 (PST)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:b852:bd51:9305:4261])
+ by smtp.gmail.com with ESMTPSA id f8sm25733777pfn.2.2020.03.03.18.58.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 Mar 2020 18:58:57 -0800 (PST)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v5] media: mtk-vpu: avoid unaligned access to DTCM buffer.
+Date: Wed,  4 Mar 2020 10:58:51 +0800
+Message-Id: <20200304025851.173570-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.25.0.265.gbab2e86ba0-goog
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 63251A378050ECF85D71DFBD113D2C84C2393C7DCDFE261DE9F78EBB0CBD561D2000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200303_185745_148838_2AF815C6 
-X-CRM114-Status: GOOD (  21.51  )
+X-CRM114-CacheID: sfid-20200303_185859_153089_F3536321 
+X-CRM114-Status: GOOD (  16.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,315 +91,267 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: axboe@kernel.dk, kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
- Light Hsieh <light.hsieh@mediatek.com>, linux-block@vger.kernel.org,
- linux-mediatek@lists.infradead.org, stanley.chu@mediatek.com
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ linux-kernel@vger.kernel.org, Houlong Wei <houlong.wei@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Light Hsieh <light.hsieh@mediatek.com>
+media: mtk-vpu: avoid unaligned access to DTCM buffer.
 
-Since MMC layer does not implement BLKROSET ioctl, BLKROSET ioctl that
-tries to clear ro attribute of an mmcblk device will get -EINVAL from
-__blkdev_driver_ioctl(). blkdev_roset() regard -EINVAL as "unrecogized
-ioctl" and then clear the ro attribute un-conditionally.
-However, when eMMC write-protection (power-on, temporarily write, or
-permanent) is enabled in some area, this un-conditional clear of ro
-will lead to issue. From user's view, eMMC device is writable since ro
-is not set. But write operation sent to eMMC will get write-protection
-error. Since most write are asynchronus buffered write, such
-write-protection error won't be delivered to user who send the write
-operation.
+Previously, vpu->recv_buf and send_buf are forced cast from
+void __iomem *tcm. vpu->recv_buf->share_buf is passed to
+vpu_ipi_desc.handler(). It's not able to do unaligned access. Otherwise
+kernel would crash due to unable to handle kernel paging request.
 
-This patch implement BLKROSET in MMC layer.
-1. For SD device, 0 is retured.
-2. For setting ro to eMMC area, 0 is returned without any other check.
-2. For clearing ro to eMMC area, write-proetction status is checked:
-2a. For boot0 or boot1 partition, boot_wp_status get from EXTCSD is
-    checked.
-    -EACCES is returned when the target boot partition is write-protected;
-    0 is returned otherwise.
-2b. For user area partition, one or more MMC_SEND_WRITE_PROT_TYPE commands
-    are sent to get/check write-protection status of target address range.
-    -EACCES is returned when target address range is fully/partially
-            write-protected;
-    0 is returned otherwise.
+struct vpu_run {
+	u32 signaled;
+	char fw_ver[VPU_FW_VER_LEN];
+	unsigned int	dec_capability;
+	unsigned int	enc_capability;
+	wait_queue_head_t wq;
+};
 
-With the above implementation and correct ioctl parameters, return value
-of __blkdev_driver_ioctl() will be 0 or -EACCES. blkdev_roset() can continue
-to clear ro attribute when return value is 0, which means whole target eMMC
-address range is not write-protected.
+fw_ver starts at 4 byte boundary. If system enables
+CONFIG_HAVE_EFFICIENT_UNALIGNED_ACCESS, strscpy() will do
+read_word_at_a_time(), which tries to read 8-byte: *(unsigned long *)addr
 
-Signed-off-by: Light Hsieh <light.hsieh@mediatek.com>
+vpu_init_ipi_handler() calls strscpy(), which would lead to crash.
+
+vpu_init_ipi_handler() and several other handlers (eg.
+vpu_dec_ipi_handler) only do read access to this data, so they can be
+const, and we can use memcpy_fromio() to copy the buf to another non iomem
+buffer then pass to handler.
+
+Fixes: 85709cbf1524 ("media: replace strncpy() by strscpy()")
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
- block/ioctl.c            |   2 +-
- drivers/mmc/core/block.c | 216 +++++++++++++++++++++++++++++++++++++++++++++++
- include/linux/mmc/mmc.h  |   1 +
- 3 files changed, 218 insertions(+), 1 deletion(-)
+Change in v5:
+- minor fix in mtk_mdp_vpu_ipi_handler().
+Change in v4:
+- Remove forced casting recv_buf from tcm. Copy iomem data before passing
+  to handler.
+Change in v2, v3:
+- fix sparse warnings.
+---
+ drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c  |  9 ++--
+ .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  6 +--
+ .../media/platform/mtk-vcodec/venc_vpu_if.c   | 12 ++---
+ drivers/media/platform/mtk-vpu/mtk_vpu.c      | 45 ++++++++++---------
+ drivers/media/platform/mtk-vpu/mtk_vpu.h      |  2 +-
+ 5 files changed, 38 insertions(+), 36 deletions(-)
 
-diff --git a/block/ioctl.c b/block/ioctl.c
-index 127194b..af047a0 100644
---- a/block/ioctl.c
-+++ b/block/ioctl.c
-@@ -485,7 +485,7 @@ static int blkdev_roset(struct block_device *bdev, fmode_t mode,
- 		return -EACCES;
- 
- 	ret = __blkdev_driver_ioctl(bdev, mode, cmd, arg);
--	if (!is_unrecognized_ioctl(ret))
-+	if (ret && !is_unrecognized_ioctl(ret))
- 		return ret;
- 	if (get_user(n, (int __user *)arg))
- 		return -EFAULT;
-diff --git a/drivers/mmc/core/block.c b/drivers/mmc/core/block.c
-index 663d879..ee85abf 100644
---- a/drivers/mmc/core/block.c
-+++ b/drivers/mmc/core/block.c
-@@ -778,6 +778,220 @@ static int mmc_blk_check_blkdev(struct block_device *bdev)
- 	return 0;
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c b/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c
+index 6720d11f50cf..b065ccd06914 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_vpu.c
+@@ -15,7 +15,7 @@ static inline struct mtk_mdp_ctx *vpu_to_ctx(struct mtk_mdp_vpu *vpu)
+ 	return container_of(vpu, struct mtk_mdp_ctx, vpu);
  }
  
-+#define MMC_BLK_NO_WP           0
-+#define MMC_BLK_PARTIALLY_WP    1
-+#define MMC_BLK_FULLY_WP        2
-+
-+static int mmc_blk_check_disk_range_wp(struct gendisk *disk,
-+	sector_t part_start, sector_t part_nr_sects)
-+{
-+	struct mmc_command cmd = {0};
-+	struct mmc_request mrq = {NULL};
-+	struct mmc_data data = {0};
-+	struct mmc_blk_data *md;
-+	struct mmc_card *card;
-+	struct scatterlist sg;
-+	unsigned char *buf = NULL, status;
-+	sector_t start, end, quot;
-+	sector_t wp_grp_rem, wp_grp_total, wp_grp_found, status_query_cnt;
-+	unsigned int remain;
-+	int err = 0, i, j, k;
-+	u8 boot_wp_status = 0;
-+
-+	md = mmc_blk_get(disk);
-+	if (!md)
-+		return -EINVAL;
-+
-+	if (!md->queue.card) {
-+		err = -EINVAL;
-+		goto out2;
-+	}
-+
-+	card = md->queue.card;
-+	if (!mmc_card_mmc(card) ||
-+		md->part_type == EXT_CSD_PART_CONFIG_ACC_RPMB) {
-+		err = MMC_BLK_NO_WP;
-+		goto out2;
-+	}
-+
-+	if (md->part_type == 0)
-+		goto check_user_area_wp_status;
-+
-+	/* BOOT_WP_STATUS in EXT_CSD:
-+	 * |-----bit[7:4]-----|-------bit[3:2]--------|-------bit[1:0]--------|
-+	 * |-----reserved-----|----boot1 wp status----|----boot0 wp status----|
-+	 * boot0 area wp type:depending on bit[1:0]
-+	 * 0->not wp; 1->power on wp; 2->permanent wp; 3:reserved value
-+	 * boot1 area wp type:depending on bit[3:2]
-+	 * 0->not wp; 1->power on wp; 2->permanent wp; 3:reserved value
-+	 */
-+	if (md->part_type == EXT_CSD_PART_CONFIG_ACC_BOOT0)
-+		boot_wp_status = card->ext_csd.boot_wp_status & 0x3;
-+	else if (md->part_type == (EXT_CSD_PART_CONFIG_ACC_BOOT0 + 1))
-+		boot_wp_status = (card->ext_csd.boot_wp_status >> 2) & 0x3;
-+
-+	if (boot_wp_status == 0x1 || boot_wp_status == 0x2) {
-+		pr_notice("%s is fully write protected\n", disk->disk_name);
-+		err = MMC_BLK_FULLY_WP;
-+	} else
-+		err = MMC_BLK_NO_WP;
-+	goto out2;
-+
-+check_user_area_wp_status:
-+	if (!card->wp_grp_size) {
-+		pr_notice("Write protect group size cannot be 0!\n");
-+		err = -EINVAL;
-+		goto out2;
-+	}
-+
-+	start = part_start;
-+	quot = start;
-+	remain = do_div(quot, card->wp_grp_size);
-+	if (remain) {
-+		pr_notice("Start 0x%llx of disk %s not write group aligned\n",
-+			(unsigned long long)part_start, disk->disk_name);
-+		start -= remain;
-+	}
-+
-+	end = part_start + part_nr_sects;
-+	quot = end;
-+	remain = do_div(quot, card->wp_grp_size);
-+	if (remain) {
-+		pr_notice("End 0x%llx of disk %s not write group aligned\n",
-+			(unsigned long long)part_start, disk->disk_name);
-+		end += card->wp_grp_size - remain;
-+	}
-+	wp_grp_total = end - start;
-+	do_div(wp_grp_total, card->wp_grp_size);
-+	wp_grp_rem = wp_grp_total;
-+	wp_grp_found = 0;
-+
-+	cmd.opcode = MMC_SEND_WRITE_PROT_TYPE;
-+	cmd.flags = MMC_RSP_SPI_R1 | MMC_RSP_R1 | MMC_CMD_ADTC;
-+
-+	buf = kmalloc(8, GFP_KERNEL);
-+	if (!buf) {
-+		err = -ENOMEM;
-+		goto out2;
-+	}
-+	sg_init_one(&sg, buf, 8);
-+
-+	data.blksz = 8;
-+	data.blocks = 1;
-+	data.flags = MMC_DATA_READ;
-+	data.sg = &sg;
-+	data.sg_len = 1;
-+	mmc_set_data_timeout(&data, card);
-+
-+	mrq.cmd = &cmd;
-+	mrq.data = &data;
-+
-+	mmc_get_card(card, NULL);
-+
-+	err = mmc_blk_part_switch(card, md->part_type);
-+	if (err) {
-+		err = -EIO;
-+		goto out;
-+	}
-+
-+	status_query_cnt = (wp_grp_total + 31) / 32;
-+	for (i = 0; i < status_query_cnt; i++) {
-+		cmd.arg = start + i * card->wp_grp_size * 32;
-+		mmc_wait_for_req(card->host, &mrq);
-+		if (cmd.error) {
-+			pr_notice("%s: cmd error %d\n", __func__, cmd.error);
-+			err = -EIO;
-+			goto out;
-+		}
-+
-+		/* wp status is returned in 8 bytes.
-+		 * The 8 bytes are regarded as 64-bits bit-stream:
-+		 * +--------+--------+-------------------------+--------+
-+		 * | byte 7 | byte 6 |           ...           | byte 0 |
-+		 * |  bits  |  bits  |                         |  bits  |
-+		 * |76543210|76543210|                         |76543210|
-+		 * +--------+--------+-------------------------+--------+
-+		 *   The 2 LSBits represent write-protect group status of
-+		 *       the lowest address group being queried.
-+		 *   The 2 MSBits represent write-protect group status of
-+		 *       the highest address group being queried.
-+		 */
-+		/* Check write-protect group status from lowest address
-+		 *   group to highest address group
-+		 */
-+		for (j = 0; j < 8; j++) {
-+			status = buf[7 - j];
-+			for (k = 0; k < 8; k += 2) {
-+				if (status & (3 << k))
-+					wp_grp_found++;
-+				wp_grp_rem--;
-+				if (!wp_grp_rem)
-+					goto out;
-+			}
-+		}
-+
-+		memset(buf, 0, 8);
-+	}
-+
-+out:
-+	mmc_put_card(card, NULL);
-+	if (!wp_grp_rem) {
-+		if (!wp_grp_found)
-+			err = MMC_BLK_NO_WP;
-+		else if (wp_grp_found == wp_grp_total) {
-+			pr_notice("0x%llx ~ 0x%llx of %s is fully write protected\n",
-+				(unsigned long long)part_start,
-+				(unsigned long long)part_start + part_nr_sects,
-+				disk->disk_name);
-+			err = MMC_BLK_FULLY_WP;
-+		} else {
-+			pr_notice("0x%llx ~ 0x%llx of %s is %u%% write protected\n",
-+				wp_grp_found * 100 / wp_grp_total,
-+				(unsigned long long)part_start,
-+				(unsigned long long)part_start + part_nr_sects,
-+				disk->disk_name);
-+			err = MMC_BLK_PARTIALLY_WP;
-+		}
-+	}
-+
-+	kfree(buf);
-+
-+out2:
-+	mmc_blk_put(md);
-+	return err;
-+}
-+
-+static int mmc_blk_check_wp(struct block_device *bdev)
-+{
-+	if (!bdev->bd_disk || !bdev->bd_part)
-+		return -EINVAL;
-+
-+	return mmc_blk_check_disk_range_wp(bdev->bd_disk,
-+		bdev->bd_part->start_sect,
-+		bdev->bd_part->nr_sects);
-+}
-+
-+static int mmc_blk_ioctl_roset(struct block_device *bdev,
-+	unsigned long arg)
-+{
-+	int val;
-+
-+	/* Always return -EACCES to block layer on any error
-+	 * and then block layer will abort the remaining operation
-+	 */
-+	if (get_user(val, (int __user *)arg))
-+		return -EACCES;
-+
-+	/* No need to check write-protect status when setting as readonly */
-+	if (val)
-+		return 0;
-+
-+	if (mmc_blk_check_wp(bdev) != MMC_BLK_NO_WP)
-+		return -EACCES;
-+
-+	return 0;
-+}
-+
- static int mmc_blk_ioctl(struct block_device *bdev, fmode_t mode,
- 	unsigned int cmd, unsigned long arg)
+-static void mtk_mdp_vpu_handle_init_ack(struct mdp_ipi_comm_ack *msg)
++static void mtk_mdp_vpu_handle_init_ack(const struct mdp_ipi_comm_ack *msg)
  {
-@@ -809,6 +1023,8 @@ static int mmc_blk_ioctl(struct block_device *bdev, fmode_t mode,
- 					NULL);
- 		mmc_blk_put(md);
- 		return ret;
-+	case BLKROSET:
-+		return mmc_blk_ioctl_roset(bdev, arg);
- 	default:
- 		return -EINVAL;
- 	}
-diff --git a/include/linux/mmc/mmc.h b/include/linux/mmc/mmc.h
-index 2c9d988..f7c1237 100644
---- a/include/linux/mmc/mmc.h
-+++ b/include/linux/mmc/mmc.h
-@@ -69,6 +69,7 @@
- #define MMC_SET_WRITE_PROT       28   /* ac   [31:0] data addr   R1b */
- #define MMC_CLR_WRITE_PROT       29   /* ac   [31:0] data addr   R1b */
- #define MMC_SEND_WRITE_PROT      30   /* adtc [31:0] wpdata addr R1  */
-+#define MMC_SEND_WRITE_PROT_TYPE 31   /* adtc [31:0] wpdata addr R1  */
+ 	struct mtk_mdp_vpu *vpu = (struct mtk_mdp_vpu *)
+ 					(unsigned long)msg->ap_inst;
+@@ -26,10 +26,11 @@ static void mtk_mdp_vpu_handle_init_ack(struct mdp_ipi_comm_ack *msg)
+ 	vpu->inst_addr = msg->vpu_inst_addr;
+ }
  
-   /* class 5 */
- #define MMC_ERASE_GROUP_START    35   /* ac   [31:0] data addr   R1  */
+-static void mtk_mdp_vpu_ipi_handler(void *data, unsigned int len, void *priv)
++static void mtk_mdp_vpu_ipi_handler(const void *data, unsigned int len,
++				    void *priv)
+ {
+-	unsigned int msg_id = *(unsigned int *)data;
+-	struct mdp_ipi_comm_ack *msg = (struct mdp_ipi_comm_ack *)data;
++	const struct mdp_ipi_comm_ack *msg = data;
++	unsigned int msg_id = msg->msg_id;
+ 	struct mtk_mdp_vpu *vpu = (struct mtk_mdp_vpu *)
+ 					(unsigned long)msg->ap_inst;
+ 	struct mtk_mdp_ctx *ctx;
+diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+index 70abfd4cd4b9..948a12fd9d46 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
++++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+@@ -9,7 +9,7 @@
+ #include "vdec_ipi_msg.h"
+ #include "vdec_vpu_if.h"
+ 
+-static void handle_init_ack_msg(struct vdec_vpu_ipi_init_ack *msg)
++static void handle_init_ack_msg(const struct vdec_vpu_ipi_init_ack *msg)
+ {
+ 	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
+ 					(unsigned long)msg->ap_inst_addr;
+@@ -34,9 +34,9 @@ static void handle_init_ack_msg(struct vdec_vpu_ipi_init_ack *msg)
+  * This function runs in interrupt context and it means there's an IPI MSG
+  * from VPU.
+  */
+-static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
++static void vpu_dec_ipi_handler(const void *data, unsigned int len, void *priv)
+ {
+-	struct vdec_vpu_ipi_ack *msg = data;
++	const struct vdec_vpu_ipi_ack *msg = data;
+ 	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
+ 					(unsigned long)msg->ap_inst_addr;
+ 
+diff --git a/drivers/media/platform/mtk-vcodec/venc_vpu_if.c b/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
+index 3e931b0ed096..9540709c1905 100644
+--- a/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
++++ b/drivers/media/platform/mtk-vcodec/venc_vpu_if.c
+@@ -8,26 +8,26 @@
+ #include "venc_ipi_msg.h"
+ #include "venc_vpu_if.h"
+ 
+-static void handle_enc_init_msg(struct venc_vpu_inst *vpu, void *data)
++static void handle_enc_init_msg(struct venc_vpu_inst *vpu, const void *data)
+ {
+-	struct venc_vpu_ipi_msg_init *msg = data;
++	const struct venc_vpu_ipi_msg_init *msg = data;
+ 
+ 	vpu->inst_addr = msg->vpu_inst_addr;
+ 	vpu->vsi = vpu_mapping_dm_addr(vpu->dev, msg->vpu_inst_addr);
+ }
+ 
+-static void handle_enc_encode_msg(struct venc_vpu_inst *vpu, void *data)
++static void handle_enc_encode_msg(struct venc_vpu_inst *vpu, const void *data)
+ {
+-	struct venc_vpu_ipi_msg_enc *msg = data;
++	const struct venc_vpu_ipi_msg_enc *msg = data;
+ 
+ 	vpu->state = msg->state;
+ 	vpu->bs_size = msg->bs_size;
+ 	vpu->is_key_frm = msg->is_key_frm;
+ }
+ 
+-static void vpu_enc_ipi_handler(void *data, unsigned int len, void *priv)
++static void vpu_enc_ipi_handler(const void *data, unsigned int len, void *priv)
+ {
+-	struct venc_vpu_ipi_msg_common *msg = data;
++	const struct venc_vpu_ipi_msg_common *msg = data;
+ 	struct venc_vpu_inst *vpu =
+ 		(struct venc_vpu_inst *)(unsigned long)msg->venc_inst;
+ 
+diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+index a768707abb94..2fbccc9b247b 100644
+--- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
++++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+@@ -203,8 +203,8 @@ struct mtk_vpu {
+ 	struct vpu_run run;
+ 	struct vpu_wdt wdt;
+ 	struct vpu_ipi_desc ipi_desc[IPI_MAX];
+-	struct share_obj *recv_buf;
+-	struct share_obj *send_buf;
++	struct share_obj __iomem *recv_buf;
++	struct share_obj __iomem *send_buf;
+ 	struct device *dev;
+ 	struct clk *clk;
+ 	bool fw_loaded;
+@@ -292,7 +292,7 @@ int vpu_ipi_send(struct platform_device *pdev,
+ 		 unsigned int len)
+ {
+ 	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
+-	struct share_obj *send_obj = vpu->send_buf;
++	struct share_obj __iomem *send_obj = vpu->send_buf;
+ 	unsigned long timeout;
+ 	int ret = 0;
+ 
+@@ -325,9 +325,9 @@ int vpu_ipi_send(struct platform_device *pdev,
+ 		}
+ 	} while (vpu_cfg_readl(vpu, HOST_TO_VPU));
+ 
+-	memcpy((void *)send_obj->share_buf, buf, len);
+-	send_obj->len = len;
+-	send_obj->id = id;
++	memcpy_toio(send_obj->share_buf, buf, len);
++	writel(len, &send_obj->len);
++	writel(id, &send_obj->id);
+ 
+ 	vpu->ipi_id_ack[id] = false;
+ 	/* send the command to VPU */
+@@ -600,10 +600,10 @@ int vpu_load_firmware(struct platform_device *pdev)
+ }
+ EXPORT_SYMBOL_GPL(vpu_load_firmware);
+ 
+-static void vpu_init_ipi_handler(void *data, unsigned int len, void *priv)
++static void vpu_init_ipi_handler(const void *data, unsigned int len, void *priv)
+ {
+-	struct mtk_vpu *vpu = (struct mtk_vpu *)priv;
+-	struct vpu_run *run = (struct vpu_run *)data;
++	struct mtk_vpu *vpu = priv;
++	const struct vpu_run *run = data;
+ 
+ 	vpu->run.signaled = run->signaled;
+ 	strscpy(vpu->run.fw_ver, run->fw_ver, sizeof(vpu->run.fw_ver));
+@@ -700,19 +700,21 @@ static int vpu_alloc_ext_mem(struct mtk_vpu *vpu, u32 fw_type)
+ 
+ static void vpu_ipi_handler(struct mtk_vpu *vpu)
+ {
+-	struct share_obj *rcv_obj = vpu->recv_buf;
++	struct share_obj __iomem *rcv_obj = vpu->recv_buf;
+ 	struct vpu_ipi_desc *ipi_desc = vpu->ipi_desc;
+-
+-	if (rcv_obj->id < IPI_MAX && ipi_desc[rcv_obj->id].handler) {
+-		ipi_desc[rcv_obj->id].handler(rcv_obj->share_buf,
+-					      rcv_obj->len,
+-					      ipi_desc[rcv_obj->id].priv);
+-		if (rcv_obj->id > IPI_VPU_INIT) {
+-			vpu->ipi_id_ack[rcv_obj->id] = true;
++	unsigned char data[SHARE_BUF_SIZE];
++	s32 id = readl(&rcv_obj->id);
++
++	memcpy_fromio(data, rcv_obj->share_buf, sizeof(data));
++	if (id < IPI_MAX && ipi_desc[id].handler) {
++		ipi_desc[id].handler(data, readl(&rcv_obj->len),
++				     ipi_desc[id].priv);
++		if (id > IPI_VPU_INIT) {
++			vpu->ipi_id_ack[id] = true;
+ 			wake_up(&vpu->ack_wq);
+ 		}
+ 	} else {
+-		dev_err(vpu->dev, "No such ipi id = %d\n", rcv_obj->id);
++		dev_err(vpu->dev, "No such ipi id = %d\n", id);
+ 	}
+ }
+ 
+@@ -722,11 +724,10 @@ static int vpu_ipi_init(struct mtk_vpu *vpu)
+ 	vpu_cfg_writel(vpu, 0x0, VPU_TO_HOST);
+ 
+ 	/* shared buffer initialization */
+-	vpu->recv_buf = (__force struct share_obj *)(vpu->reg.tcm +
+-						     VPU_DTCM_OFFSET);
++	vpu->recv_buf = vpu->reg.tcm + VPU_DTCM_OFFSET;
+ 	vpu->send_buf = vpu->recv_buf + 1;
+-	memset(vpu->recv_buf, 0, sizeof(struct share_obj));
+-	memset(vpu->send_buf, 0, sizeof(struct share_obj));
++	memset_io(vpu->recv_buf, 0, sizeof(struct share_obj));
++	memset_io(vpu->send_buf, 0, sizeof(struct share_obj));
+ 
+ 	return 0;
+ }
+diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.h b/drivers/media/platform/mtk-vpu/mtk_vpu.h
+index d4453b4bcee9..ee7c552ce928 100644
+--- a/drivers/media/platform/mtk-vpu/mtk_vpu.h
++++ b/drivers/media/platform/mtk-vpu/mtk_vpu.h
+@@ -15,7 +15,7 @@
+  * VPU interfaces with other blocks by share memory and interrupt.
+  **/
+ 
+-typedef void (*ipi_handler_t) (void *data,
++typedef void (*ipi_handler_t) (const void *data,
+ 			       unsigned int len,
+ 			       void *priv);
+ 
 -- 
-1.8.1.1.dirty
+2.25.0.265.gbab2e86ba0-goog
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
