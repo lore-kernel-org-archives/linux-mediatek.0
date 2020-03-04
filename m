@@ -2,22 +2,22 @@ Return-Path: <SRS0=cHEQ=4V=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 97E9FC3F2D1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 03:01:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 34C21C3F2D7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 03:02:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 69A7720838
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 03:01:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0DA4120838
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 03:02:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pAqgZO/M";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="UjMA+0zu"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 69A7720838
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nj1mesfS";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qIyK/K+i"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0DA4120838
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Pub2AGTYUZ22oKtzZ8DtYVw1hGqS9kR92CFPlKOAUhg=; b=pAqgZO/MsFRrfi
-	QU45uNurlOmPv7mdahCL8C3FR6T9YsXXu+myK5q/BUsJ6fTlMQgHwjHs1H23omu/8dxv5bDGvfi16
-	yXVSa5UeuM9N3irGBG9ifdHViGbI5DXFg0oYIkjKXAsDdJz2M+Xm/DPeEA/vgZUQ0XwEd+TTj/Fb8
-	nDdMNQJTuWkv/39FcvOTvORXg4w7pvJ53lOUNMwdNPZjkDGWptE3dEYD+8adbTJ/0ZlExG4wUFknB
-	ms2S7K8OknfEaL8hYa3UMnWGA8MWXJyxuQgBKxwXv9AIXM9CYD+XZyD5Qqnd7t2JKFb95zavI6A35
-	gtfBt8SLcgvlD597A1+w==;
+	List-Owner; bh=6tlbisUcipFQg4YwJUxw5d1pquvjR7ZqafpYLUwZffQ=; b=nj1mesfSg5UgP8
+	lpWvwoXUNpYuDf/v0QDcPuy72z9VySgscZrziKubI/NrYShbCm7n1YX/4LdVdrqWKVz2lHJAa3Mh9
+	SGsPRt5XCarDsLuSxc37UIHRx1zsrM4qi3NImI65ewpq2RTIQ8GYIzVT9pHuYmhpP7+AqoSAfmItN
+	maz1Onixo4eFNgKgYS4YzS0KHA838Ogm4dj/i1PG4pQU0ZSDDt3lQ4pLumgFqLBHS+JXh9fDRo2SJ
+	LGqyZ4f3N/h2+8AQReYHLoonSpd5WW4+EFoHI2GuZterZpHiAd/6e5dXGFDk/HhNCas0Dh9NXoabQ
+	B4qI1lwVCyPnHD1QT+zg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9KHs-0006ls-66; Wed, 04 Mar 2020 03:01:32 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1j9KIP-0006zD-Bk; Wed, 04 Mar 2020 03:02:05 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9KHk-0006eM-LN
- for linux-mediatek@lists.infradead.org; Wed, 04 Mar 2020 03:01:28 +0000
-X-UUID: 5c5d6b8cb56c488f90d17a9ffbb8d81f-20200303
+ id 1j9KIM-0006yL-Gi
+ for linux-mediatek@lists.infradead.org; Wed, 04 Mar 2020 03:02:04 +0000
+X-UUID: 8842103a8fc540c8b8940d5037e38aeb-20200303
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=+OjRhnFwB7N+qUCZlu/luvxZ8XB1cxUBw5E13DY1Vig=; 
- b=UjMA+0zuL7/d0zoo6K0/y9VeRkWGk6ceEL9MLPlqLaSOH7UIPBtxKaJMjy0e9/OkAneMjoH3IzputMSYs2AfUpSgrxsY2RMA/7yHG4/9CanHBOqLXIM0cW3bYba1YRzp4aLoB/xg4IBPOok00FHKW1FU8ATmxPmFxy22lViUnmE=;
-X-UUID: 5c5d6b8cb56c488f90d17a9ffbb8d81f-20200303
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=qsn5ZtkxofEPhSlSyo8Sta1tKWHmr79ZpPp6bUCSBTY=; 
+ b=qIyK/K+i1U4ffA9hwcy+e1Tk1jLVJs9UVNXiANBBiuzwL1kmcEJkVeqSYanXulr0Mpg6DWwwQnvFr0AQZefEhMgdwPRXlE/f7PGnip1biURZt5DRyOnkVBIKmBzQ4CWNb04UEP+qxVwbpFiTffku+wjSJYfOKYR0oyfWblf45Ao=;
+X-UUID: 8842103a8fc540c8b8940d5037e38aeb-20200303
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <light.hsieh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2045986406; Tue, 03 Mar 2020 19:01:18 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 3 Mar 2020 18:52:09 -0800
+ with ESMTP id 1507036293; Tue, 03 Mar 2020 19:02:00 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 3 Mar 2020 19:03:16 -0800
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 4 Mar 2020 10:49:14 +0800
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 4 Mar 2020 11:00:48 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Wed, 4 Mar 2020 10:51:55 +0800
+ Frontend Transport; Wed, 4 Mar 2020 11:02:36 +0800
 From: <light.hsieh@mediatek.com>
 To: <ulf.hansson@linaro.org>
-Subject: [PATCH v1 2/3] mmc: check write-protection status during BLKROSET
- ioctl
-Date: Wed, 4 Mar 2020 10:51:13 +0800
-Message-ID: <1583290274-5525-3-git-send-email-light.hsieh@mediatek.com>
+Subject: [PATCH v1 1/3] mmc: record wp_grp_size and boot_wp_status
+Date: Wed, 4 Mar 2020 11:01:53 +0800
+Message-ID: <1583290915-9858-2-git-send-email-light.hsieh@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1583290274-5525-1-git-send-email-light.hsieh@mediatek.com>
-References: <1583290274-5525-1-git-send-email-light.hsieh@mediatek.com>
+In-Reply-To: <1583290915-9858-1-git-send-email-light.hsieh@mediatek.com>
+References: <1583290915-9858-1-git-send-email-light.hsieh@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: BE8DA5EFDB8B220B59A5896EAFC5D140C2664D312E7DDEE9885A0E2320CB6CD52000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200303_190124_721401_93DA8DFC 
-X-CRM114-Status: GOOD (  21.59  )
+X-CRM114-CacheID: sfid-20200303_190203_149285_7719539E 
+X-CRM114-Status: GOOD (  10.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,303 +94,120 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Light Hsieh <light.hsieh@mediatek.com>
 
-Since MMC layer does not implement BLKROSET ioctl, BLKROSET ioctl that
-tries to clear ro attribute of an mmcblk device will get -EINVAL from
-__blkdev_driver_ioctl(). blkdev_roset() regard -EINVAL as "unrecogized
-ioctl" and then clear the ro attribute un-conditionally.
-However, when eMMC write-protection (power-on, temporarily write, or
-permanent) is enabled in some area, this un-conditional clear of ro
-will lead to issue. From user's view, eMMC device is writable since ro
-is not set. But write operation sent to eMMC will get write-protection
-error. Since most write are asynchronus buffered write, such
-write-protection error won't be delivered to user who send the write
-operation.
-
-This patch implement BLKROSET in MMC layer.
-1. For SD device, 0 is retured.
-2. For setting ro to eMMC area, 0 is returned without any other check.
-2. For clearing ro to eMMC area, write-proetction status is checked:
-2a. For boot0 or boot1 partition, boot_wp_status get from EXTCSD is
-    checked.
-    -EACCES is returned when the target boot partition is write-protected;
-    0 is returned otherwise.
-2b. For user area partition, one or more MMC_SEND_WRITE_PROT_TYPE commands
-    are sent to get/check write-protection status of target address range.
-    -EACCES is returned when target address range is fully/partially
-            write-protected;
-    0 is returned otherwise.
-
-With the above implementation and correct ioctl parameters, return value
-of __blkdev_driver_ioctl() will be 0 or -EACCES. blkdev_roset() can continue
-to clear ro attribute when return value is 0, which means whole target eMMC
-address range is not write-protected.
+1. record wp_grp_size (write-protection group size) in struct mmc_csd and
+   struct mmc_card.
+2. record boot_wp_status (boot partition write-protection status) in struct
+   mmc_ext_csd.
 
 Signed-off-by: Light Hsieh <light.hsieh@mediatek.com>
 ---
- block/ioctl.c            |   2 +-
- drivers/mmc/core/block.c | 216 +++++++++++++++++++++++++++++++++++++++++++++++
- include/linux/mmc/mmc.h  |   1 +
- 3 files changed, 218 insertions(+), 1 deletion(-)
+ drivers/mmc/core/mmc.c   | 16 ++++++++++++++++
+ include/linux/mmc/card.h |  3 +++
+ include/linux/mmc/mmc.h  |  1 +
+ 3 files changed, 20 insertions(+)
 
-diff --git a/block/ioctl.c b/block/ioctl.c
-index 127194b..af047a0 100644
---- a/block/ioctl.c
-+++ b/block/ioctl.c
-@@ -485,7 +485,7 @@ static int blkdev_roset(struct block_device *bdev, fmode_t mode,
- 		return -EACCES;
- 
- 	ret = __blkdev_driver_ioctl(bdev, mode, cmd, arg);
--	if (!is_unrecognized_ioctl(ret))
-+	if (ret && !is_unrecognized_ioctl(ret))
- 		return ret;
- 	if (get_user(n, (int __user *)arg))
- 		return -EFAULT;
-diff --git a/drivers/mmc/core/block.c b/drivers/mmc/core/block.c
-index 663d879..ee85abf 100644
---- a/drivers/mmc/core/block.c
-+++ b/drivers/mmc/core/block.c
-@@ -778,6 +778,220 @@ static int mmc_blk_check_blkdev(struct block_device *bdev)
- 	return 0;
+diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+index f6912de..77305c8 100644
+--- a/drivers/mmc/core/mmc.c
++++ b/drivers/mmc/core/mmc.c
+@@ -127,6 +127,16 @@ static void mmc_set_erase_size(struct mmc_card *card)
+ 	mmc_init_erase(card);
  }
  
-+#define MMC_BLK_NO_WP           0
-+#define MMC_BLK_PARTIALLY_WP    1
-+#define MMC_BLK_FULLY_WP        2
-+
-+static int mmc_blk_check_disk_range_wp(struct gendisk *disk,
-+	sector_t part_start, sector_t part_nr_sects)
++static void mmc_set_wp_grp_size(struct mmc_card *card)
 +{
-+	struct mmc_command cmd = {0};
-+	struct mmc_request mrq = {NULL};
-+	struct mmc_data data = {0};
-+	struct mmc_blk_data *md;
-+	struct mmc_card *card;
-+	struct scatterlist sg;
-+	unsigned char *buf = NULL, status;
-+	sector_t start, end, quot;
-+	sector_t wp_grp_rem, wp_grp_total, wp_grp_found, status_query_cnt;
-+	unsigned int remain;
-+	int err = 0, i, j, k;
-+	u8 boot_wp_status = 0;
-+
-+	md = mmc_blk_get(disk);
-+	if (!md)
-+		return -EINVAL;
-+
-+	if (!md->queue.card) {
-+		err = -EINVAL;
-+		goto out2;
-+	}
-+
-+	card = md->queue.card;
-+	if (!mmc_card_mmc(card) ||
-+		md->part_type == EXT_CSD_PART_CONFIG_ACC_RPMB) {
-+		err = MMC_BLK_NO_WP;
-+		goto out2;
-+	}
-+
-+	if (md->part_type == 0)
-+		goto check_user_area_wp_status;
-+
-+	/* BOOT_WP_STATUS in EXT_CSD:
-+	 * |-----bit[7:4]-----|-------bit[3:2]--------|-------bit[1:0]--------|
-+	 * |-----reserved-----|----boot1 wp status----|----boot0 wp status----|
-+	 * boot0 area wp type:depending on bit[1:0]
-+	 * 0->not wp; 1->power on wp; 2->permanent wp; 3:reserved value
-+	 * boot1 area wp type:depending on bit[3:2]
-+	 * 0->not wp; 1->power on wp; 2->permanent wp; 3:reserved value
-+	 */
-+	if (md->part_type == EXT_CSD_PART_CONFIG_ACC_BOOT0)
-+		boot_wp_status = card->ext_csd.boot_wp_status & 0x3;
-+	else if (md->part_type == (EXT_CSD_PART_CONFIG_ACC_BOOT0 + 1))
-+		boot_wp_status = (card->ext_csd.boot_wp_status >> 2) & 0x3;
-+
-+	if (boot_wp_status == 0x1 || boot_wp_status == 0x2) {
-+		pr_notice("%s is fully write protected\n", disk->disk_name);
-+		err = MMC_BLK_FULLY_WP;
-+	} else
-+		err = MMC_BLK_NO_WP;
-+	goto out2;
-+
-+check_user_area_wp_status:
-+	if (!card->wp_grp_size) {
-+		pr_notice("Write protect group size cannot be 0!\n");
-+		err = -EINVAL;
-+		goto out2;
-+	}
-+
-+	start = part_start;
-+	quot = start;
-+	remain = do_div(quot, card->wp_grp_size);
-+	if (remain) {
-+		pr_notice("Start 0x%llx of disk %s not write group aligned\n",
-+			(unsigned long long)part_start, disk->disk_name);
-+		start -= remain;
-+	}
-+
-+	end = part_start + part_nr_sects;
-+	quot = end;
-+	remain = do_div(quot, card->wp_grp_size);
-+	if (remain) {
-+		pr_notice("End 0x%llx of disk %s not write group aligned\n",
-+			(unsigned long long)part_start, disk->disk_name);
-+		end += card->wp_grp_size - remain;
-+	}
-+	wp_grp_total = end - start;
-+	do_div(wp_grp_total, card->wp_grp_size);
-+	wp_grp_rem = wp_grp_total;
-+	wp_grp_found = 0;
-+
-+	cmd.opcode = MMC_SEND_WRITE_PROT_TYPE;
-+	cmd.flags = MMC_RSP_SPI_R1 | MMC_RSP_R1 | MMC_CMD_ADTC;
-+
-+	buf = kmalloc(8, GFP_KERNEL);
-+	if (!buf) {
-+		err = -ENOMEM;
-+		goto out2;
-+	}
-+	sg_init_one(&sg, buf, 8);
-+
-+	data.blksz = 8;
-+	data.blocks = 1;
-+	data.flags = MMC_DATA_READ;
-+	data.sg = &sg;
-+	data.sg_len = 1;
-+	mmc_set_data_timeout(&data, card);
-+
-+	mrq.cmd = &cmd;
-+	mrq.data = &data;
-+
-+	mmc_get_card(card, NULL);
-+
-+	err = mmc_blk_part_switch(card, md->part_type);
-+	if (err) {
-+		err = -EIO;
-+		goto out;
-+	}
-+
-+	status_query_cnt = (wp_grp_total + 31) / 32;
-+	for (i = 0; i < status_query_cnt; i++) {
-+		cmd.arg = start + i * card->wp_grp_size * 32;
-+		mmc_wait_for_req(card->host, &mrq);
-+		if (cmd.error) {
-+			pr_notice("%s: cmd error %d\n", __func__, cmd.error);
-+			err = -EIO;
-+			goto out;
-+		}
-+
-+		/* wp status is returned in 8 bytes.
-+		 * The 8 bytes are regarded as 64-bits bit-stream:
-+		 * +--------+--------+-------------------------+--------+
-+		 * | byte 7 | byte 6 |           ...           | byte 0 |
-+		 * |  bits  |  bits  |                         |  bits  |
-+		 * |76543210|76543210|                         |76543210|
-+		 * +--------+--------+-------------------------+--------+
-+		 *   The 2 LSBits represent write-protect group status of
-+		 *       the lowest address group being queried.
-+		 *   The 2 MSBits represent write-protect group status of
-+		 *       the highest address group being queried.
-+		 */
-+		/* Check write-protect group status from lowest address
-+		 *   group to highest address group
-+		 */
-+		for (j = 0; j < 8; j++) {
-+			status = buf[7 - j];
-+			for (k = 0; k < 8; k += 2) {
-+				if (status & (3 << k))
-+					wp_grp_found++;
-+				wp_grp_rem--;
-+				if (!wp_grp_rem)
-+					goto out;
-+			}
-+		}
-+
-+		memset(buf, 0, 8);
-+	}
-+
-+out:
-+	mmc_put_card(card, NULL);
-+	if (!wp_grp_rem) {
-+		if (!wp_grp_found)
-+			err = MMC_BLK_NO_WP;
-+		else if (wp_grp_found == wp_grp_total) {
-+			pr_notice("0x%llx ~ 0x%llx of %s is fully write protected\n",
-+				(unsigned long long)part_start,
-+				(unsigned long long)part_start + part_nr_sects,
-+				disk->disk_name);
-+			err = MMC_BLK_FULLY_WP;
-+		} else {
-+			pr_notice("0x%llx ~ 0x%llx of %s is %u%% write protected\n",
-+				wp_grp_found * 100 / wp_grp_total,
-+				(unsigned long long)part_start,
-+				(unsigned long long)part_start + part_nr_sects,
-+				disk->disk_name);
-+			err = MMC_BLK_PARTIALLY_WP;
-+		}
-+	}
-+
-+	kfree(buf);
-+
-+out2:
-+	mmc_blk_put(md);
-+	return err;
++	if (card->ext_csd.erase_group_def & 1)
++		card->wp_grp_size = card->ext_csd.hc_erase_size *
++			card->ext_csd.raw_hc_erase_gap_size;
++	else
++		card->wp_grp_size = card->csd.erase_size *
++			(card->csd.wp_grp_size + 1);
 +}
 +
-+static int mmc_blk_check_wp(struct block_device *bdev)
-+{
-+	if (!bdev->bd_disk || !bdev->bd_part)
-+		return -EINVAL;
-+
-+	return mmc_blk_check_disk_range_wp(bdev->bd_disk,
-+		bdev->bd_part->start_sect,
-+		bdev->bd_part->nr_sects);
-+}
-+
-+static int mmc_blk_ioctl_roset(struct block_device *bdev,
-+	unsigned long arg)
-+{
-+	int val;
-+
-+	/* Always return -EACCES to block layer on any error
-+	 * and then block layer will abort the remaining operation
-+	 */
-+	if (get_user(val, (int __user *)arg))
-+		return -EACCES;
-+
-+	/* No need to check write-protect status when setting as readonly */
-+	if (val)
-+		return 0;
-+
-+	if (mmc_blk_check_wp(bdev) != MMC_BLK_NO_WP)
-+		return -EACCES;
-+
-+	return 0;
-+}
-+
- static int mmc_blk_ioctl(struct block_device *bdev, fmode_t mode,
- 	unsigned int cmd, unsigned long arg)
- {
-@@ -809,6 +1023,8 @@ static int mmc_blk_ioctl(struct block_device *bdev, fmode_t mode,
- 					NULL);
- 		mmc_blk_put(md);
- 		return ret;
-+	case BLKROSET:
-+		return mmc_blk_ioctl_roset(bdev, arg);
- 	default:
- 		return -EINVAL;
+ /*
+  * Given a 128-bit response, decode to our card CSD structure.
+  */
+@@ -177,6 +187,7 @@ static int mmc_decode_csd(struct mmc_card *card)
+ 		b = UNSTUFF_BITS(resp, 37, 5);
+ 		csd->erase_size = (a + 1) * (b + 1);
+ 		csd->erase_size <<= csd->write_blkbits - 9;
++		csd->wp_grp_size = UNSTUFF_BITS(resp, 32, 5);
  	}
+ 
+ 	return 0;
+@@ -496,6 +507,8 @@ static int mmc_decode_ext_csd(struct mmc_card *card, u8 *ext_csd)
+ 		card->ext_csd.boot_ro_lock = ext_csd[EXT_CSD_BOOT_WP];
+ 		card->ext_csd.boot_ro_lockable = true;
+ 
++		card->ext_csd.boot_wp_status = ext_csd[EXT_CSD_BOOT_WP_STATUS];
++
+ 		/* Save power class values */
+ 		card->ext_csd.raw_pwr_cl_52_195 =
+ 			ext_csd[EXT_CSD_PWR_CL_52_195];
+@@ -769,6 +782,7 @@ static int mmc_compare_ext_csds(struct mmc_card *card, unsigned bus_width)
+ 	card->raw_csd[2], card->raw_csd[3]);
+ MMC_DEV_ATTR(date, "%02d/%04d\n", card->cid.month, card->cid.year);
+ MMC_DEV_ATTR(erase_size, "%u\n", card->erase_size << 9);
++MMC_DEV_ATTR(wp_grp_size, "%u\n", card->wp_grp_size << 9);
+ MMC_DEV_ATTR(preferred_erase_size, "%u\n", card->pref_erase << 9);
+ MMC_DEV_ATTR(ffu_capable, "%d\n", card->ext_csd.ffu_capable);
+ MMC_DEV_ATTR(hwrev, "0x%x\n", card->cid.hwrev);
+@@ -828,6 +842,7 @@ static ssize_t mmc_dsr_show(struct device *dev,
+ 	&dev_attr_csd.attr,
+ 	&dev_attr_date.attr,
+ 	&dev_attr_erase_size.attr,
++	&dev_attr_wp_grp_size.attr,
+ 	&dev_attr_preferred_erase_size.attr,
+ 	&dev_attr_fwrev.attr,
+ 	&dev_attr_ffu_capable.attr,
+@@ -1709,6 +1724,7 @@ static int mmc_init_card(struct mmc_host *host, u32 ocr,
+ 			mmc_set_erase_size(card);
+ 		}
+ 	}
++	mmc_set_wp_grp_size(card);
+ 
+ 	/*
+ 	 * Ensure eMMC user default partition is enabled
+diff --git a/include/linux/mmc/card.h b/include/linux/mmc/card.h
+index cf3780a..0139461 100644
+--- a/include/linux/mmc/card.h
++++ b/include/linux/mmc/card.h
+@@ -32,6 +32,7 @@ struct mmc_csd {
+ 	unsigned int		r2w_factor;
+ 	unsigned int		max_dtr;
+ 	unsigned int		erase_size;		/* In sectors */
++	unsigned int		wp_grp_size;
+ 	unsigned int		read_blkbits;
+ 	unsigned int		write_blkbits;
+ 	unsigned int		capacity;
+@@ -94,6 +95,7 @@ struct mmc_ext_csd {
+ 	u8			raw_exception_status;	/* 54 */
+ 	u8			raw_partition_support;	/* 160 */
+ 	u8			raw_rpmb_size_mult;	/* 168 */
++	u8			boot_wp_status;	        /* 174 */
+ 	u8			raw_erased_mem_count;	/* 181 */
+ 	u8			strobe_support;		/* 184 */
+ 	u8			raw_ext_csd_structure;	/* 194 */
+@@ -278,6 +280,7 @@ struct mmc_card {
+ 	unsigned int		eg_boundary;	/* don't cross erase-group boundaries */
+ 	unsigned int		erase_arg;	/* erase / trim / discard */
+  	u8			erased_byte;	/* value of erased bytes */
++	unsigned int		wp_grp_size;    /* write group size(sectors) */
+ 
+ 	u32			raw_cid[4];	/* raw card CID */
+ 	u32			raw_csd[4];	/* raw card CSD */
 diff --git a/include/linux/mmc/mmc.h b/include/linux/mmc/mmc.h
-index 2c9d988..f7c1237 100644
+index 897a87c..2c9d988 100644
 --- a/include/linux/mmc/mmc.h
 +++ b/include/linux/mmc/mmc.h
-@@ -69,6 +69,7 @@
- #define MMC_SET_WRITE_PROT       28   /* ac   [31:0] data addr   R1b */
- #define MMC_CLR_WRITE_PROT       29   /* ac   [31:0] data addr   R1b */
- #define MMC_SEND_WRITE_PROT      30   /* adtc [31:0] wpdata addr R1  */
-+#define MMC_SEND_WRITE_PROT_TYPE 31   /* adtc [31:0] wpdata addr R1  */
- 
-   /* class 5 */
- #define MMC_ERASE_GROUP_START    35   /* ac   [31:0] data addr   R1  */
+@@ -259,6 +259,7 @@ static inline bool mmc_op_multi(u32 opcode)
+ #define EXT_CSD_RPMB_MULT		168	/* RO */
+ #define EXT_CSD_FW_CONFIG		169	/* R/W */
+ #define EXT_CSD_BOOT_WP			173	/* R/W */
++#define EXT_CSD_BOOT_WP_STATUS		174	/* RO */
+ #define EXT_CSD_ERASE_GROUP_DEF		175	/* R/W */
+ #define EXT_CSD_PART_CONFIG		179	/* R/W */
+ #define EXT_CSD_ERASED_MEM_CONT		181	/* RO */
 -- 
 1.8.1.1.dirty
 _______________________________________________
