@@ -2,22 +2,23 @@ Return-Path: <SRS0=cHEQ=4V=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93087C3F2D1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 18:01:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 91520C3F2CE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 18:03:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 615BF24654
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 18:01:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6554D24658
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 18:03:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hURQtX5W";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="DP8KH6Nx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 615BF24654
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JbtYJt0U";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ki/3C0LU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6554D24658
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +27,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dWauqXORujQMYZzSYGd+b50KuqjSZrn28+V7eY3Wi3E=; b=hURQtX5Wdztztr
-	VqxnRKYPv57vowZ7/0zLRxmXKj4RPU37d5dvzZegph9Yvl4v1cOe2Vnq/GhFQcYirTFAhqms2RSIq
-	wj2jqBGYMPsXBS8JRFlMXiNk7J6L1+sBbg9C/Mz8bHOv2l5lHu7Ivn7VgNOfsdr37qHl2ECNup+wm
-	j7kjU//n9bTwYxTuxOA1r2Y5nc8iUuw8PUqQZ9pimP6uZkWr0UW4E5iDUrDXBH7R7Jj2z6y2AwQY1
-	c7HqSu5g23LN9d4RX/UWKg4dnp4SoFU9ZSKTJ6n1O432Ny6qZuNJTKvTPWuD+nKGEi1OtaClAOGTc
-	GDyCC+2pTTZBpqP6PeeQ==;
+	List-Owner; bh=AKWWsntElPyo4vYnL+/d7B2w+pM4pW1KFBMGBcLNoqY=; b=JbtYJt0UdJE7uI
+	qNjqg2jo9UrvwweQdp3SZp1DBw2rcdEVgm+dCOAiC3r8bxoQHABM9ahhFqb4H5EqpBUuTdye+l0t/
+	yfo3VWW2VZi5lfuPOXF92AjhSv0Dwq4/+wCZU47GGzAoB7FI2Q6ytLRoghuPw6gSgg4m9XcQPT674
+	k7hWwd8lfwWw/KzP/OlFg+mEbJ8RWwJ33V2jGLVAmOdgg5y3WcbLZF/GcmFGQiET9aEIT+87l6nLn
+	Qo1EiocHifCH6WmQ5ZJK72nGa+y1YifUIK+QyG89IGOOZzYODUQSJoQEeavDuNHzEY8CapSznrya5
+	7ggsoJa3p/MITBAJEFiQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9YKH-0004tY-SL; Wed, 04 Mar 2020 18:00:57 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1j9YMz-0005KG-IE; Wed, 04 Mar 2020 18:03:45 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9YKF-0004sv-GU; Wed, 04 Mar 2020 18:00:56 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id r17so3568834wrj.7;
- Wed, 04 Mar 2020 10:00:54 -0800 (PST)
+ id 1j9YMx-0005Jd-44; Wed, 04 Mar 2020 18:03:44 +0000
+Received: by mail-wr1-x441.google.com with SMTP id n7so3556036wrt.11;
+ Wed, 04 Mar 2020 10:03:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=kgLAnNoaTeEkFv4F+WVYw5y3BkrfnRnLRAl57TS75sw=;
- b=DP8KH6Nx9exY88O/qLy4No//jIiqJRd2WfYRsFV4Ppe+YotNEKWkpBLT828aajGWLG
- sEJsEyVjowdIAIOPdLvmfC9nIxJcjze0Wx/41PmCsFm9CSrJks1nHl5xdcmH4wm1yH3S
- HzKPTzQxu4UwdqBAfYLr/khoSQ5o3fBoiuhS4VPV2IIwK9TLOjZKNL/t5zBNeeUS6iDY
- c+iQKeI2j+u04zVwCHdE+KEtlZvXpj5njbNp4V/d0PY76t/YXzEu7yHjku0c+KjLu6mC
- Cc6NjlO8eyI3FolO8EUysfa/nHldE2Y8PEtuyii4rAFojBNhMRegd09CfZ2aPf2vHOYF
- I6dQ==
+ bh=x3oBcuX3T5MDzUdnwPcGQIu+NJZ2SMp2mJNZKGglHnI=;
+ b=ki/3C0LUw3ARIDDWvYfWK2fA4pQYwch91XB8ZkAaJfFQBenNU4lsx1FDcWTptaxsQR
+ dO+yPvE3tW5QtJa/l7/s/8/dLbxmtLyDBUUymCpdK/BgrxmPP4iFvfAz889UpXR/bfm4
+ ljJ8kg7kx4Dp5kesWpskisfiqbWkhGZAnrZu8/w+58W72MBTXMys8dQ5ZkiP9Jojqznb
+ F20UfMUA80lbMdp3/WaYlbExtUiRpZbs+foO7bHjfB/mzKjwSVVDrucIVDbk6z1LeZWM
+ 2wcIzLIBXu6Lcrwhh9tbP39oq0U73nmnqFHOEXHU5BcPuSe6/XCGWGxW38PHO7+vVjFb
+ l9iA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=kgLAnNoaTeEkFv4F+WVYw5y3BkrfnRnLRAl57TS75sw=;
- b=BYpcXHj2Xm8iqCpUJYYR397x3wmXMcq6eJGGPmyGcQ7iiHRVF7ckZJ/xgw7HQNOzju
- VjhQi3GVKU8ayU/fHY0n1tT3xQv8g+XYIED2hwaAMoOpyr1etFpLptzVAbnJ0j3GzPC5
- 6WIOisuLA6DxLM3iEu6Pj2TyR6itkxocv1LhYUdO2xrrfHCn0gwAHpcixXU2lg5tkeOz
- F9VhuzQkcxw0oyruOJGXx6dR0ZVmu/s2pV1YJPEuPivOPqiklEAPOylCUQ9WT4JBvy53
- 7UvxPUAGpZjWQ1wkiYTZdoWwv/Nflz8DoBc1tlHsO/K+RrcRtX5EXNqpCMotLfwwueGQ
- T+5Q==
-X-Gm-Message-State: ANhLgQ1zojpi6TowCHm33XvXiRn4AN3TrvNB9Nc4deyO3UzvAph71BfN
- +nL10taRz52AV21/eEiS8T0=
-X-Google-Smtp-Source: ADFU+vtB9nBTJKMt9lQkD3tH71FXuux4DbgRVCXBK5jFuFAuoHACj/9Q/GEBUNGHtWJeEyLloZzAig==
-X-Received: by 2002:a5d:698f:: with SMTP id g15mr5092814wru.3.1583344853511;
- Wed, 04 Mar 2020 10:00:53 -0800 (PST)
+ bh=x3oBcuX3T5MDzUdnwPcGQIu+NJZ2SMp2mJNZKGglHnI=;
+ b=XlaKo79XZst+rDciFhmeprWUeo+FZBs62T7WlpghgegVgOCY71PlnOXUn2HPXv/3fQ
+ lbGS+qZcmfx/wIVnEw7j+PM6cHfbHlzq/0jaoxwJbRM7IRy2ty/b4vPUlpslsxQi3bwD
+ +HDMhMKdb6KGm6ci7blhrsmcoixFTwVu9HEaGXIiORhmdSbo/XtIBHAFcyFAKtbQ60yi
+ Ekhpjcp88OX7a2lB2Slg/52YBOuO0O/ArbygC6rN4sXr9kivf2eJ46vCH/xqgARrZRkz
+ KWpGgfkiuKPy9GzloWgeSjwniCY9H5dicCIzvTPc96erKhwWpbsu+KD9tkywX+kP3EKY
+ IDhg==
+X-Gm-Message-State: ANhLgQ3W6GnZ3ziPWHI3alm5rMF8ARS5uOYUvSVQ+s15jL87TpfE7uwm
+ 4X2xt8BOwemXSGmGjo7xcHV3KfG+
+X-Google-Smtp-Source: ADFU+vuGdLzQM51k3NCL/kBChbUubkHVNKmCdWNux3Z3XzqaobUq1fGEMGBUlGtz1jP57jBxPTRl+w==
+X-Received: by 2002:adf:ed4c:: with SMTP id u12mr5626518wro.204.1583345020752; 
+ Wed, 04 Mar 2020 10:03:40 -0800 (PST)
 Received: from ziggy.stardust (81.172.58.205.dyn.user.ono.com. [81.172.58.205])
- by smtp.gmail.com with ESMTPSA id r12sm5477953wrw.77.2020.03.04.10.00.52
+ by smtp.gmail.com with ESMTPSA id q3sm38905234wrs.1.2020.03.04.10.03.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 04 Mar 2020 10:00:52 -0800 (PST)
-Subject: Re:
-To: Lee Jones <lee.jones@linaro.org>
-References: <1583249249-17380-1-git-send-email-gene.chen.richtek@gmail.com>
- <6b920875-8764-73a4-a763-788ce485b0cb@gmail.com> <20200304151512.GD3332@dell>
+ Wed, 04 Mar 2020 10:03:40 -0800 (PST)
+Subject: Re: [v3,2/2] arm: dts: mediatek: add mt7629 pwm support
+To: Sam Shih <sam.shih@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Mark Rutland <mark.rutland@arm.com>
+References: <1583319973-20694-1-git-send-email-sam.shih@mediatek.com>
+ <1583319973-20694-3-git-send-email-sam.shih@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -150,16 +152,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <e718deb4-2fdf-ab8b-e187-8371b35919c9@gmail.com>
-Date: Wed, 4 Mar 2020 19:00:51 +0100
+Message-ID: <eebadba3-9a8c-fe9d-03ee-3326f6116115@gmail.com>
+Date: Wed, 4 Mar 2020 19:03:39 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200304151512.GD3332@dell>
+In-Reply-To: <1583319973-20694-3-git-send-email-sam.shih@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200304_100055_574769_A9111AD0 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20200304_100343_170611_43E5E24A 
+X-CRM114-Status: GOOD (  16.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -171,10 +173,8 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gene_chen@richtek.com, linux-kernel@vger.kernel.org, cy_huang@richtek.com,
- linux-mediatek@lists.infradead.org, Gene Chen <gene.chen.richtek@gmail.com>,
- Wilma.Wu@mediatek.com, linux-arm-kernel@lists.infradead.org,
- shufan_lee@richtek.com
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -182,21 +182,53 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 04/03/2020 16:15, Lee Jones wrote:
-> On Wed, 04 Mar 2020, Matthias Brugger wrote:
+On 04/03/2020 12:06, Sam Shih wrote:
+> This adds pwm support for MT7629.
 > 
->> Please resend with appropiate commit message.
-> 
-> Please refrain from top-posting and don't forget to snip.
-> 
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
 
-It's difficult to write something below a missing subject line without
-top-posting. ;)
+I wrote "arm" in capital letters in the subject and pushed it to v5.6-next/dts32
 
-Sorry for forgetting to snip.
-
-Regards,
+Thanks!
 Matthias
+
+> ---
+> Used:
+> https://patchwork.kernel.org/patch/11160851/
+> 
+> Change since v2:
+> Updated bindings for MT7629 pwm controller.
+> 
+> ---
+>  arch/arm/boot/dts/mt7629.dtsi | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/mt7629.dtsi b/arch/arm/boot/dts/mt7629.dtsi
+> index 867b88103b9d..a2658fbadeca 100644
+> --- a/arch/arm/boot/dts/mt7629.dtsi
+> +++ b/arch/arm/boot/dts/mt7629.dtsi
+> @@ -241,6 +241,20 @@
+>  			status = "disabled";
+>  		};
+>  
+> +		pwm: pwm@11006000 {
+> +			compatible = "mediatek,mt7629-pwm";
+> +			reg = <0x11006000 0x1000>;
+> +			#pwm-cells = <2>;
+> +			clocks = <&topckgen CLK_TOP_PWM_SEL>,
+> +				 <&pericfg CLK_PERI_PWM_PD>,
+> +				 <&pericfg CLK_PERI_PWM1_PD>;
+> +			clock-names = "top", "main", "pwm1";
+> +			assigned-clocks = <&topckgen CLK_TOP_PWM_SEL>;
+> +			assigned-clock-parents =
+> +					<&topckgen CLK_TOP_UNIVPLL2_D4>;
+> +			status = "disabled";
+> +		};
+> +
+>  		i2c: i2c@11007000 {
+>  			compatible = "mediatek,mt7629-i2c",
+>  				     "mediatek,mt2712-i2c";
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
