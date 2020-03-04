@@ -2,77 +2,77 @@ Return-Path: <SRS0=cHEQ=4V=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BE1BAC3F2D1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 03:10:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5517C3F2CE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 03:10:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 90AB120866
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 03:10:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B90A420866
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 03:10:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ThMuwcRJ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ZoTYMeFC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 90AB120866
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MeczOfIC";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="R1m1Kaji"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B90A420866
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fA4Dw0u2zzoFM5e2wHJEq1V2IZRD5lwFMuADhr58npg=; b=ThMuwcRJr+XhK2
-	OMpuNLzDLZftpDYxcRrltUU/HETNbXtiSoB/Fh7k8jR23TZc8eAEEILEEXOFxk1YOIITd7I3RWjFe
-	MWTp6pm/mogEHi3g+DXPC+cWw80ujgxrWH0EhPGQ9wI3jAE9qrPjaPrSXT2Shimpnh6bY7okogpSU
-	QdOpkaDhMGr4uPFXRNBmfJh63upeGheK0Xdfgk3KLdrmRv9sGe7y2yu/CiYlh0x38CGJ4kP4QSexH
-	XJ2Sux1gkoE+1luJ1WYY/ZDugtrUKDucv6rGCg3E7gS2sQmRrp4Iv69WY2W+EswgBMr9pSGiasRDi
-	gmCPmyGTIa/WIrKD6u+Q==;
+	List-Owner; bh=h9FhZPeThIkFLHUoGBut+XmczzQT8Ly44/JpFlqsaEU=; b=MeczOfICOrDwbu
+	Hayo48a/p/v3btjxTfsgMUgLkhFE66hOnoSwBTygISfy+UH5Q4hE4uM+UQyMTjGIqU7t2e7qY3KRx
+	XbHcrkA1AEzEGwwXcKVEv5mY8pr3283z4v9aOHT2Nu+0opa8yVvySr8ilMKo/R+KK7ZfqwE7Tus8r
+	7W5AfhqhIIhhJFDLpP1WwV5ZgDTSJutNvjZn/ElKOtmCSUnnQpSSl/zt/q0pjG08V4TXw40IJAiGB
+	EnTW+g/ptLxLWCLFCt4bpulWgF3aDfof+/NSOYOQhszRxIrnw7deHr55mdfdONMuCNwgKhLRAfkaJ
+	NovxdaXQJO2Ys0WRM8Gg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9KQ3-0000uR-3e; Wed, 04 Mar 2020 03:09:59 +0000
+	id 1j9KQC-0001XC-2o; Wed, 04 Mar 2020 03:10:08 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9KPn-0000bn-Is
- for linux-mediatek@lists.infradead.org; Wed, 04 Mar 2020 03:09:45 +0000
-X-UUID: ac2fc67f7f6d4bbabc2bea7b27a5a6f6-20200303
+ id 1j9KPo-0000eF-MD; Wed, 04 Mar 2020 03:09:46 +0000
+X-UUID: 8f499e24a3934a1184a2606b8a481a0f-20200303
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=7FGKC2CL96iktvyoBP2vbwLVT6EXR3CbHjrpB2EcLgw=; 
- b=ZoTYMeFCW1Ub15ljdA3kljhK4tjsg3LR8zXHOIATtSvIfZ7RdwJWLie+LV8wdYifDuglqhwK7vKMCvY+c5toQ3Ab/zs4r3sk83ft369GE4SgJGlCiCqh31b1ljEo08IR4pT6sbwjClOWfOjY9I3u36q190Yx8I3v27IwADXbpQo=;
-X-UUID: ac2fc67f7f6d4bbabc2bea7b27a5a6f6-20200303
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=uV6XAfR45kceIz/xzf1Y2H5SW6enf8ExjM5OoLYTjuM=; 
+ b=R1m1Kaji0qro6LvyKkTo0iX3Zu3IK6TbdIOdIEPuHlaiIycUB8H4h9lhhkXJxTo6DEkrKGtLdyBp7YOC9DmRu8LDdi8vDSM944v7r9p/fm89cYFSTPTcinz9ug+tjiMmTHTLHb75gMgNjGTbGNbYiOAKdWxs0LQdIuR9pMWIV8s=;
+X-UUID: 8f499e24a3934a1184a2606b8a481a0f-20200303
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <light.hsieh@mediatek.com>)
+ (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 25260035; Tue, 03 Mar 2020 19:09:40 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ with ESMTP id 1755466338; Tue, 03 Mar 2020 19:09:40 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 3 Mar 2020 19:02:04 -0800
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 4 Mar 2020 10:59:56 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Wed, 4 Mar 2020 11:02:36 +0800
-From: <light.hsieh@mediatek.com>
-To: <ulf.hansson@linaro.org>
-Subject: [PATCH v1 3/3] block: set partition read/write policy according to
- write-protection status
-Date: Wed, 4 Mar 2020 11:01:55 +0800
-Message-ID: <1583290915-9858-4-git-send-email-light.hsieh@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1583290915-9858-1-git-send-email-light.hsieh@mediatek.com>
-References: <1583290915-9858-1-git-send-email-light.hsieh@mediatek.com>
+ 15.0.1395.4; Tue, 3 Mar 2020 19:05:27 -0800
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 4 Mar 2020 11:04:25 +0800
+Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Wed, 4 Mar 2020 11:02:54 +0800
+Message-ID: <1583291126.1062.7.camel@mtksdaap41>
+Subject: Re: [PATCH v4 12/13] soc: mediatek: cmdq: add clear option in
+ cmdq_pkt_wfe api
+From: CK Hu <ck.hu@mediatek.com>
+To: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
+Date: Wed, 4 Mar 2020 11:05:26 +0800
+In-Reply-To: <1583233125-7827-13-git-send-email-dennis-yc.hsieh@mediatek.com>
+References: <1583233125-7827-1-git-send-email-dennis-yc.hsieh@mediatek.com>
+ <1583233125-7827-13-git-send-email-dennis-yc.hsieh@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200303_190943_665291_00F7DA13 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20200303_190944_760005_AB98F96B 
+X-CRM114-Status: GOOD (  17.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,84 +84,113 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: axboe@kernel.dk, kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org,
- Light Hsieh <light.hsieh@mediatek.com>, linux-block@vger.kernel.org,
- linux-mediatek@lists.infradead.org, stanley.chu@mediatek.com
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Daniel Vetter <daniel@ffwll.ch>, wsd_upstream@mediatek.com, David
+ Airlie <airlied@linux.ie>, Jassi Brar <jassisinghbrar@gmail.com>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ HS Liao <hs.liao@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Houlong Wei <houlong.wei@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bibby Hsieh <bibby.hsieh@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Light Hsieh <light.hsieh@mediatek.com>
+Hi, Dennis:
 
-For storage device with write-protection support, e.g. eMMC, register
-check_disk_range_wp() in struct block_device_operations for checking
-write-protection status. When creating block device for a partition, set
-read/write policy according to result of check_disk_range_wp() operation
-(if registered).
+On Tue, 2020-03-03 at 18:58 +0800, Dennis YC Hsieh wrote:
+> Add clear parameter to let client decide if
+> event should be clear to 0 after GCE receive it.
+> 
+> Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c  | 2 +-
+>  drivers/soc/mediatek/mtk-cmdq-helper.c   | 5 +++--
+>  include/linux/mailbox/mtk-cmdq-mailbox.h | 3 +--
+>  include/linux/soc/mediatek/mtk-cmdq.h    | 5 +++--
+>  4 files changed, 8 insertions(+), 7 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> index 7daaabc26eb1..4916a7f75d23 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -488,7 +488,7 @@ static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
+>  	if (mtk_crtc->cmdq_client) {
+>  		cmdq_handle = cmdq_pkt_create(mtk_crtc->cmdq_client, PAGE_SIZE);
+>  		cmdq_pkt_clear_event(cmdq_handle, mtk_crtc->cmdq_event);
+> -		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event);
+> +		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event, true);
 
-Without this patch, ro attribute is not set for created block device of
-write-protected partition. User perform asynchronous buffered write to
-such partition won't get immediate error and therefore he won't be awared
-that write is not actually performed.
-With this patch, ro attribute is set for created block device of
-write-protected partition. User perform asynchronous buffered write to
-such partition will get immediate error and therefore he will be awared.
+There is always clear event before wait event, so there is no need to
+clear event after event is waited. So this should be
 
-Signed-off-by: Light Hsieh <light.hsieh@mediatek.com>
----
- block/partition-generic.c | 10 ++++++++++
- drivers/mmc/core/block.c  |  1 +
- include/linux/blkdev.h    |  1 +
- 3 files changed, 12 insertions(+)
+cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event, false);
 
-diff --git a/block/partition-generic.c b/block/partition-generic.c
-index 564fae7..69088e8 100644
---- a/block/partition-generic.c
-+++ b/block/partition-generic.c
-@@ -394,6 +394,16 @@ struct hd_struct *add_partition(struct gendisk *disk, int partno,
- 		goto out_free_info;
- 	pdev->devt = devt;
- 
-+	if (!p->policy) {
-+		if (disk->fops->check_disk_range_wp) {
-+			err = disk->fops->check_disk_range_wp(disk, start, len);
-+			if (err > 0)
-+				p->policy = 1;
-+			else if (err != 0)
-+				goto out_free_info;
-+		}
-+	}
-+
- 	/* delay uevent until 'holders' subdir is created */
- 	dev_set_uevent_suppress(pdev, 1);
- 	err = device_add(pdev);
-diff --git a/drivers/mmc/core/block.c b/drivers/mmc/core/block.c
-index ee85abf..af81311 100644
---- a/drivers/mmc/core/block.c
-+++ b/drivers/mmc/core/block.c
-@@ -1047,6 +1047,7 @@ static int mmc_blk_compat_ioctl(struct block_device *bdev, fmode_t mode,
- #ifdef CONFIG_COMPAT
- 	.compat_ioctl		= mmc_blk_compat_ioctl,
- #endif
-+	.check_disk_range_wp	= mmc_blk_check_disk_range_wp,
- };
- 
- static int mmc_blk_part_switch_pre(struct mmc_card *card,
-diff --git a/include/linux/blkdev.h b/include/linux/blkdev.h
-index 053ea4b..7814290 100644
---- a/include/linux/blkdev.h
-+++ b/include/linux/blkdev.h
-@@ -1707,6 +1707,7 @@ struct block_device_operations {
- 	void (*swap_slot_free_notify) (struct block_device *, unsigned long);
- 	int (*report_zones)(struct gendisk *, sector_t sector,
- 			unsigned int nr_zones, report_zones_cb cb, void *data);
-+	int (*check_disk_range_wp)(struct gendisk *d, sector_t s, sector_t l);
- 	struct module *owner;
- 	const struct pr_ops *pr_ops;
- };
--- 
-1.8.1.1.dirty
+Regards,
+CK
+
+>  		mtk_crtc_ddp_config(crtc, cmdq_handle);
+>  		cmdq_pkt_finalize(cmdq_handle);
+>  		cmdq_pkt_flush_async(cmdq_handle, ddp_cmdq_cb, cmdq_handle);
+> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> index f27c67034880..4f767198d0fc 100644
+> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
+> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+> @@ -295,15 +295,16 @@ int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
+>  }
+>  EXPORT_SYMBOL(cmdq_pkt_write_s_value);
+>  
+> -int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event)
+> +int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear)
+>  {
+>  	struct cmdq_instruction inst = { {0} };
+> +	u32 clear_option = clear ? CMDQ_WFE_UPDATE : 0;
+>  
+>  	if (event >= CMDQ_MAX_EVENT)
+>  		return -EINVAL;
+>  
+>  	inst.op = CMDQ_CODE_WFE;
+> -	inst.value = CMDQ_WFE_OPTION;
+> +	inst.value = CMDQ_WFE_OPTION | clear_option;
+>  	inst.event = event;
+>  
+>  	return cmdq_pkt_append_command(pkt, inst);
+> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+> index 3f6bc0dfd5da..42d2a30e6a70 100644
+> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
+> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+> @@ -27,8 +27,7 @@
+>   * bit 16-27: update value
+>   * bit 31: 1 - update, 0 - no update
+>   */
+> -#define CMDQ_WFE_OPTION			(CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | \
+> -					CMDQ_WFE_WAIT_VALUE)
+> +#define CMDQ_WFE_OPTION			(CMDQ_WFE_WAIT | CMDQ_WFE_WAIT_VALUE)
+>  
+>  /** cmdq event maximum */
+>  #define CMDQ_MAX_EVENT			0x3ff
+> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+> index 1a6c56f3bec1..d63749440697 100644
+> --- a/include/linux/soc/mediatek/mtk-cmdq.h
+> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
+> @@ -152,11 +152,12 @@ int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
+>  /**
+>   * cmdq_pkt_wfe() - append wait for event command to the CMDQ packet
+>   * @pkt:	the CMDQ packet
+> - * @event:	the desired event type to "wait and CLEAR"
+> + * @event:	the desired event type to wait
+> + * @clear:	clear event or not after event arrive
+>   *
+>   * Return: 0 for success; else the error code is returned
+>   */
+> -int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event);
+> +int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear);
+>  
+>  /**
+>   * cmdq_pkt_clear_event() - append clear event command to the CMDQ packet
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
