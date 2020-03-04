@@ -2,78 +2,77 @@ Return-Path: <SRS0=cHEQ=4V=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 79FE5C3F2D1
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DFAE7C3F2C6
 	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 03:01:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4BFEE208C3
+	by mail.kernel.org (Postfix) with ESMTPS id AF2F720838
 	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2020 03:01:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l3lbiIwB";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="tTCfhx/g"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4BFEE208C3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="m1ZavUjj";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bRdeliBM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF2F720838
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fA4Dw0u2zzoFM5e2wHJEq1V2IZRD5lwFMuADhr58npg=; b=l3lbiIwBr0h7/m
-	j2V0L3MWsq/6rTwvhxanxbShUwh0tyhbg6BzS7w4lqQSg7wBMhfHrM22M7e5wbKfrVWK5amYuCwsN
-	9rVBQeIMX8IjiUIWWU0A7wAoRBW3ixUsDSWehkn5rAnlUIxdLxkt7kAjXjJ4LiEUjRLE/8iu/4i4Y
-	dbiwKFXi6tKBcxaXj5LKF7JZx/Ghv3NdDy5hhKkeJoqMGwMijWzOCIPRYhum58iKNKK0oHugYbxba
-	GcqrqeZZkouC9qNugkV+pjjSy9Qrut5gnYAaUmpMUzxj8Yf3I0v4w4HcC+qeNIfg1kzOXMp+MxG/n
-	sKRJXrLqmSCYLm1zw5gA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4ex3Vz3Gy78impKlqYMqcBjKBHBFdaDBqFqJxh+12oY=; b=m1ZavUjjyhsQuq
+	m6aQyzxf/8xXKAP2MUR5pXCziG5xwQCaguH0msfcCkDKaaY05Nj4hsjobIHeNSRHTptFFAmHBUgm7
+	2M2ophS2NsJg7DcGkotAzNx5VXpTmvPo5gAdsFV15Gy3nJ/crgSZrpkTR6sit/raKiicvCjINJumP
+	jKP97qTa/7RIaSLdR4zVGcYhxtQNRdX4aFZQepKPiGc88Rnvt34z1FbXg7qN30qaNTI9G9M6zJrGf
+	ASz//CfVn6r1rTVf/MRP/IplQI/b8SFfXqSc9jUEfbJUfZAuMw8Jj3McH8VuRI9US1Hhxki62yFMR
+	Qa2gA67Xo8uvDMrACHVg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9KHm-0006gp-Th; Wed, 04 Mar 2020 03:01:26 +0000
+	id 1j9KHk-0006f0-ML; Wed, 04 Mar 2020 03:01:24 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9KHj-0006eM-6W
- for linux-mediatek@lists.infradead.org; Wed, 04 Mar 2020 03:01:24 +0000
-X-UUID: 1b19861de52145fbab974525d4caf0de-20200303
+ id 1j9KHi-0006e2-8M
+ for linux-mediatek@lists.infradead.org; Wed, 04 Mar 2020 03:01:23 +0000
+X-UUID: 4559999ba79d4deb8e64703e8de5d05e-20200303
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=7FGKC2CL96iktvyoBP2vbwLVT6EXR3CbHjrpB2EcLgw=; 
- b=tTCfhx/g1qhqKpevrkLgsvBeegIu1ks/WCTwPSKDnA8QTDnP0suLCet+eiC92Qs23Z07051doeyoV/PPwLn9xacyway3xcQgiN1NDNGamqKI+nviKDh21xmINSZtam7ikkMeG0sTOXx1z0vvTPsRNUmniC+7YiGGxDwfmwDi6eE=;
-X-UUID: 1b19861de52145fbab974525d4caf0de-20200303
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=4Tp8i81rBL0bV3dcOPyhC4/n91xDQC95NgC/GnLFqIE=; 
+ b=bRdeliBMsJYguedrqxZYnh7RXR6U15ACA4oD7raeOqem42as4vqXnGIny+kdUIm9mdVlIg5H1GYS2SYvDNOMywCSJsHWzNnEue/A2cVAsASg7ZLff8nfU/UNNXbkVxZq9cgLNHcx1GxCyOtvgE/7LcjCSMduX4v3IQFl8Rs0dC8=;
+X-UUID: 4559999ba79d4deb8e64703e8de5d05e-20200303
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <light.hsieh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1450887010; Tue, 03 Mar 2020 19:01:18 -0800
+ with ESMTP id 1190185211; Tue, 03 Mar 2020 19:01:18 -0800
 Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 3 Mar 2020 18:58:44 -0800
+ 15.0.1395.4; Tue, 3 Mar 2020 18:58:43 -0800
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 4 Mar 2020 10:56:29 +0800
+ 15.0.1395.4; Wed, 4 Mar 2020 10:56:28 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
  Frontend Transport; Wed, 4 Mar 2020 10:58:16 +0800
 From: <light.hsieh@mediatek.com>
 To: <ulf.hansson@linaro.org>
-Subject: [PATCH v1 3/3] block: set partition read/write policy according to
+Subject: [PATCH v1 0/3] set ro attribute of block device according to
  write-protection status
-Date: Wed, 4 Mar 2020 10:57:35 +0800
-Message-ID: <1583290655-7858-4-git-send-email-light.hsieh@mediatek.com>
+Date: Wed, 4 Mar 2020 10:57:32 +0800
+Message-ID: <1583290655-7858-1-git-send-email-light.hsieh@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1583290655-7858-1-git-send-email-light.hsieh@mediatek.com>
-References: <1583290655-7858-1-git-send-email-light.hsieh@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: AD653E083DF72116517A8B50D156A40CD7AB2538B191E5E1374BE5F9BE197B342000:8
+X-TM-SNTS-SMTP: E978A8E0381A4EFA74F0521E4BB358506639EA9010A2EA3F0FCB60A953564A212000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200303_190123_246768_0666714F 
-X-CRM114-Status: GOOD (  11.75  )
+X-CRM114-CacheID: sfid-20200303_190122_305657_5D8BB755 
+X-CRM114-Status: UNSURE (   6.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,72 +94,23 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Light Hsieh <light.hsieh@mediatek.com>
 
-For storage device with write-protection support, e.g. eMMC, register
-check_disk_range_wp() in struct block_device_operations for checking
-write-protection status. When creating block device for a partition, set
-read/write policy according to result of check_disk_range_wp() operation
-(if registered).
+*** BLURB HERE ***
 
-Without this patch, ro attribute is not set for created block device of
-write-protected partition. User perform asynchronous buffered write to
-such partition won't get immediate error and therefore he won't be awared
-that write is not actually performed.
-With this patch, ro attribute is set for created block device of
-write-protected partition. User perform asynchronous buffered write to
-such partition will get immediate error and therefore he will be awared.
+Light Hsieh (3):
+  mmc: record wp_grp_size and boot_wp_status
+  mmc: check write-protection status during BLKROSET ioctl
+  block: set partition read/write policy according to write-protection
+    status
 
-Signed-off-by: Light Hsieh <light.hsieh@mediatek.com>
----
- block/partition-generic.c | 10 ++++++++++
- drivers/mmc/core/block.c  |  1 +
- include/linux/blkdev.h    |  1 +
- 3 files changed, 12 insertions(+)
+ block/ioctl.c             |   2 +-
+ block/partition-generic.c |  10 +++
+ drivers/mmc/core/block.c  | 217 ++++++++++++++++++++++++++++++++++++++++++++++
+ drivers/mmc/core/mmc.c    |  16 ++++
+ include/linux/blkdev.h    |   1 +
+ include/linux/mmc/card.h  |   3 +
+ include/linux/mmc/mmc.h   |   2 +
+ 7 files changed, 250 insertions(+), 1 deletion(-)
 
-diff --git a/block/partition-generic.c b/block/partition-generic.c
-index 564fae7..69088e8 100644
---- a/block/partition-generic.c
-+++ b/block/partition-generic.c
-@@ -394,6 +394,16 @@ struct hd_struct *add_partition(struct gendisk *disk, int partno,
- 		goto out_free_info;
- 	pdev->devt = devt;
- 
-+	if (!p->policy) {
-+		if (disk->fops->check_disk_range_wp) {
-+			err = disk->fops->check_disk_range_wp(disk, start, len);
-+			if (err > 0)
-+				p->policy = 1;
-+			else if (err != 0)
-+				goto out_free_info;
-+		}
-+	}
-+
- 	/* delay uevent until 'holders' subdir is created */
- 	dev_set_uevent_suppress(pdev, 1);
- 	err = device_add(pdev);
-diff --git a/drivers/mmc/core/block.c b/drivers/mmc/core/block.c
-index ee85abf..af81311 100644
---- a/drivers/mmc/core/block.c
-+++ b/drivers/mmc/core/block.c
-@@ -1047,6 +1047,7 @@ static int mmc_blk_compat_ioctl(struct block_device *bdev, fmode_t mode,
- #ifdef CONFIG_COMPAT
- 	.compat_ioctl		= mmc_blk_compat_ioctl,
- #endif
-+	.check_disk_range_wp	= mmc_blk_check_disk_range_wp,
- };
- 
- static int mmc_blk_part_switch_pre(struct mmc_card *card,
-diff --git a/include/linux/blkdev.h b/include/linux/blkdev.h
-index 053ea4b..7814290 100644
---- a/include/linux/blkdev.h
-+++ b/include/linux/blkdev.h
-@@ -1707,6 +1707,7 @@ struct block_device_operations {
- 	void (*swap_slot_free_notify) (struct block_device *, unsigned long);
- 	int (*report_zones)(struct gendisk *, sector_t sector,
- 			unsigned int nr_zones, report_zones_cb cb, void *data);
-+	int (*check_disk_range_wp)(struct gendisk *d, sector_t s, sector_t l);
- 	struct module *owner;
- 	const struct pr_ops *pr_ops;
- };
 -- 
 1.8.1.1.dirty
 _______________________________________________
