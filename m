@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 61FB7C3F2D2
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:01:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 85C13C3F2D8
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:01:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3443020848
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:01:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1E12B2072D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:01:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aIPuuvY8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3443020848
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F2PELGym"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1E12B2072D
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,22 +25,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gRvugzKp/96HKr/1hE6Vo1/V3tIfBYGYXSDG81oi9/g=; b=aIPuuvY8BSb8tH
-	ydOs32lpes6/A7eT6UBauNdrvH6MKrRRnpCdFcZVLQKKPyBk071rMwtLKSbkH8zHxwddk0BouQWwI
-	1ILDRBq4mxk6rPhP702gka6DPiJKjOt13eX6vrh3bbSrBrdTSvjgLz0OhGi2WBkbbiXBmD1J52u4s
-	IXegrlOTEIRHa6MkR7qsawxKUuy+KwkkqxVOL308SWXNAguIP8tYM51hrvJ/I8+8XMSDQAXV1bCxa
-	p7bGbhjp3YJfwNTz+nbY/Xu5EgzohdsefxExtCvfMSctEoeyIm78APw8izHooYj5hOBXGl0RxQRaD
-	nF6ZUAqcLFdvQAd/PJZg==;
+	List-Owner; bh=o1Q2poQ5agwxpkiY+0GsWa8x+sBhphc9Ft6vXfkw2wU=; b=F2PELGymR/Z6i4
+	Xi/Hmo9ChbE3rw1fQwjYdEL99yiFT3SCgteJlxvn9TXkltHs3hqkc6CQtcM3CmN8d/equE33HoNVA
+	vr+bHFNlSORBmi+qINkzUvrtDWPB1oMPPcCclepcRcVvLbTR8KO29RMB2Jezl6cIuqGhqydMtBEl9
+	/yhAHycBwnGfFRyz3okJWFTAQvmIRsf8AvEH0EsFOGp22i9yEUUe9frnUZOHh8EuNSNuAfEhYKtTf
+	YyNwMtfUTg9lFOU8464wfRaO3DAbI0BFPg9Zl9F1uG2bnmkyUeDF2e3MuLYXbRl8nr0L+mxOKs8w7
+	DRy9laJk8y2GpeXO0vBA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9svq-0007q6-FL; Thu, 05 Mar 2020 16:01:06 +0000
+	id 1j9svs-0007sm-V7; Thu, 05 Mar 2020 16:01:08 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9suu-0006Mf-T3; Thu, 05 Mar 2020 16:00:16 +0000
+ id 1j9suy-0006an-43; Thu, 05 Mar 2020 16:00:16 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 0B720AC91;
- Thu,  5 Mar 2020 16:00:05 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 02B60B03E;
+ Thu,  5 Mar 2020 16:00:07 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: airlied@linux.ie, daniel@ffwll.ch, sam@ravnborg.org, abrodkin@synopsys.com,
  bbrezillon@kernel.org, nicolas.ferre@microchip.com,
@@ -62,16 +62,16 @@ To: airlied@linux.ie, daniel@ffwll.ch, sam@ravnborg.org, abrodkin@synopsys.com,
  tomi.valkeinen@ti.com, eric@anholt.net, kraxel@redhat.com,
  rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
  sebastian.reichel@collabora.com
-Subject: [PATCH 08/22] drm/imx: Use simple encoder
-Date: Thu,  5 Mar 2020 16:59:36 +0100
-Message-Id: <20200305155950.2705-9-tzimmermann@suse.de>
+Subject: [PATCH 10/22] drm/mediatek: Use simple encoder
+Date: Thu,  5 Mar 2020 16:59:38 +0100
+Message-Id: <20200305155950.2705-11-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200305155950.2705-1-tzimmermann@suse.de>
 References: <20200305155950.2705-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200305_080009_290981_7CD04B73 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20200305_080012_536702_9F5DC103 
+X-CRM114-Status: GOOD (  12.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,180 +92,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The imx driver uses empty implementations for its encoders. Replace
+The mediatak driver uses empty implementations for its encoders. Replace
 the code with the generic simple encoder.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/imx/dw_hdmi-imx.c      | 8 ++------
- drivers/gpu/drm/imx/imx-drm-core.c     | 6 ------
- drivers/gpu/drm/imx/imx-drm.h          | 1 -
- drivers/gpu/drm/imx/imx-ldb.c          | 8 ++------
- drivers/gpu/drm/imx/imx-tve.c          | 8 ++------
- drivers/gpu/drm/imx/parallel-display.c | 8 ++------
- 6 files changed, 8 insertions(+), 31 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 14 +++-----------
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 14 +++-----------
+ 2 files changed, 6 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/gpu/drm/imx/dw_hdmi-imx.c b/drivers/gpu/drm/imx/dw_hdmi-imx.c
-index f22cfbf9353e..ba4ca17fd4d8 100644
---- a/drivers/gpu/drm/imx/dw_hdmi-imx.c
-+++ b/drivers/gpu/drm/imx/dw_hdmi-imx.c
-@@ -18,6 +18,7 @@
- #include <drm/drm_edid.h>
- #include <drm/drm_encoder.h>
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 14fbe1c09ce9..9c90c58e5acd 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -20,6 +20,7 @@
+ #include <drm/drm_bridge.h>
+ #include <drm/drm_crtc.h>
  #include <drm/drm_of.h>
 +#include <drm/drm_simple_kms_helper.h>
  
- #include "imx-drm.h"
- 
-@@ -143,10 +144,6 @@ static const struct drm_encoder_helper_funcs dw_hdmi_imx_encoder_helper_funcs =
- 	.atomic_check = dw_hdmi_imx_atomic_check,
- };
- 
--static const struct drm_encoder_funcs dw_hdmi_imx_encoder_funcs = {
--	.destroy = drm_encoder_cleanup,
--};
--
- static enum drm_mode_status
- imx6q_hdmi_mode_valid(struct drm_connector *con,
- 		      const struct drm_display_mode *mode)
-@@ -236,8 +233,7 @@ static int dw_hdmi_imx_bind(struct device *dev, struct device *master,
- 		return ret;
- 
- 	drm_encoder_helper_add(encoder, &dw_hdmi_imx_encoder_helper_funcs);
--	drm_encoder_init(drm, encoder, &dw_hdmi_imx_encoder_funcs,
--			 DRM_MODE_ENCODER_TMDS, NULL);
-+	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
- 
- 	platform_set_drvdata(pdev, hdmi);
- 
-diff --git a/drivers/gpu/drm/imx/imx-drm-core.c b/drivers/gpu/drm/imx/imx-drm-core.c
-index da87c70e413b..9979547ca883 100644
---- a/drivers/gpu/drm/imx/imx-drm-core.c
-+++ b/drivers/gpu/drm/imx/imx-drm-core.c
-@@ -42,12 +42,6 @@ void imx_drm_connector_destroy(struct drm_connector *connector)
+ #include "mtk_dpi_regs.h"
+ #include "mtk_drm_ddp_comp.h"
+@@ -509,15 +510,6 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 	return 0;
  }
- EXPORT_SYMBOL_GPL(imx_drm_connector_destroy);
  
--void imx_drm_encoder_destroy(struct drm_encoder *encoder)
+-static void mtk_dpi_encoder_destroy(struct drm_encoder *encoder)
 -{
 -	drm_encoder_cleanup(encoder);
 -}
--EXPORT_SYMBOL_GPL(imx_drm_encoder_destroy);
 -
- static int imx_drm_atomic_check(struct drm_device *dev,
- 				struct drm_atomic_state *state)
- {
-diff --git a/drivers/gpu/drm/imx/imx-drm.h b/drivers/gpu/drm/imx/imx-drm.h
-index ab9c6f706eb3..c3e1a3f14d30 100644
---- a/drivers/gpu/drm/imx/imx-drm.h
-+++ b/drivers/gpu/drm/imx/imx-drm.h
-@@ -38,7 +38,6 @@ int imx_drm_encoder_parse_of(struct drm_device *drm,
- 	struct drm_encoder *encoder, struct device_node *np);
+-static const struct drm_encoder_funcs mtk_dpi_encoder_funcs = {
+-	.destroy = mtk_dpi_encoder_destroy,
+-};
+-
+ static bool mtk_dpi_encoder_mode_fixup(struct drm_encoder *encoder,
+ 				       const struct drm_display_mode *mode,
+ 				       struct drm_display_mode *adjusted_mode)
+@@ -596,8 +588,8 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
+ 		return ret;
+ 	}
  
- void imx_drm_connector_destroy(struct drm_connector *connector);
--void imx_drm_encoder_destroy(struct drm_encoder *encoder);
- 
- int ipu_planes_assign_pre(struct drm_device *dev,
- 			  struct drm_atomic_state *state);
-diff --git a/drivers/gpu/drm/imx/imx-ldb.c b/drivers/gpu/drm/imx/imx-ldb.c
-index 4da22a94790c..66ea68e8da87 100644
---- a/drivers/gpu/drm/imx/imx-ldb.c
-+++ b/drivers/gpu/drm/imx/imx-ldb.c
-@@ -26,6 +26,7 @@
+-	ret = drm_encoder_init(drm_dev, &dpi->encoder, &mtk_dpi_encoder_funcs,
+-			       DRM_MODE_ENCODER_TMDS, NULL);
++	ret = drm_simple_encoder_init(drm_dev, &dpi->encoder,
++				      DRM_MODE_ENCODER_TMDS);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to initialize decoder: %d\n", ret);
+ 		goto err_unregister;
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 0ede69830a9d..a9a25087112f 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -22,6 +22,7 @@
  #include <drm/drm_panel.h>
  #include <drm/drm_print.h>
  #include <drm/drm_probe_helper.h>
 +#include <drm/drm_simple_kms_helper.h>
  
- #include "imx-drm.h"
+ #include "mtk_drm_ddp_comp.h"
  
-@@ -393,10 +394,6 @@ static const struct drm_connector_helper_funcs imx_ldb_connector_helper_funcs =
- 	.best_encoder = imx_ldb_connector_best_encoder,
- };
+@@ -787,15 +788,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
+ 	dsi->enabled = false;
+ }
  
--static const struct drm_encoder_funcs imx_ldb_encoder_funcs = {
--	.destroy = imx_drm_encoder_destroy,
+-static void mtk_dsi_encoder_destroy(struct drm_encoder *encoder)
+-{
+-	drm_encoder_cleanup(encoder);
+-}
+-
+-static const struct drm_encoder_funcs mtk_dsi_encoder_funcs = {
+-	.destroy = mtk_dsi_encoder_destroy,
 -};
 -
- static const struct drm_encoder_helper_funcs imx_ldb_encoder_helper_funcs = {
- 	.atomic_mode_set = imx_ldb_encoder_atomic_mode_set,
- 	.enable = imx_ldb_encoder_enable,
-@@ -441,8 +438,7 @@ static int imx_ldb_register(struct drm_device *drm,
- 	}
+ static bool mtk_dsi_encoder_mode_fixup(struct drm_encoder *encoder,
+ 				       const struct drm_display_mode *mode,
+ 				       struct drm_display_mode *adjusted_mode)
+@@ -888,8 +880,8 @@ static int mtk_dsi_create_conn_enc(struct drm_device *drm, struct mtk_dsi *dsi)
+ {
+ 	int ret;
  
- 	drm_encoder_helper_add(encoder, &imx_ldb_encoder_helper_funcs);
--	drm_encoder_init(drm, encoder, &imx_ldb_encoder_funcs,
--			 DRM_MODE_ENCODER_LVDS, NULL);
-+	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_LVDS);
- 
- 	if (imx_ldb_ch->bridge) {
- 		ret = drm_bridge_attach(&imx_ldb_ch->encoder,
-diff --git a/drivers/gpu/drm/imx/imx-tve.c b/drivers/gpu/drm/imx/imx-tve.c
-index 5bbfaa2cd0f4..ee63782c77e9 100644
---- a/drivers/gpu/drm/imx/imx-tve.c
-+++ b/drivers/gpu/drm/imx/imx-tve.c
-@@ -21,6 +21,7 @@
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_fb_helper.h>
- #include <drm/drm_probe_helper.h>
-+#include <drm/drm_simple_kms_helper.h>
- 
- #include "imx-drm.h"
- 
-@@ -348,10 +349,6 @@ static const struct drm_connector_helper_funcs imx_tve_connector_helper_funcs =
- 	.mode_valid = imx_tve_connector_mode_valid,
- };
- 
--static const struct drm_encoder_funcs imx_tve_encoder_funcs = {
--	.destroy = imx_drm_encoder_destroy,
--};
--
- static const struct drm_encoder_helper_funcs imx_tve_encoder_helper_funcs = {
- 	.mode_set = imx_tve_encoder_mode_set,
- 	.enable = imx_tve_encoder_enable,
-@@ -479,8 +476,7 @@ static int imx_tve_register(struct drm_device *drm, struct imx_tve *tve)
+-	ret = drm_encoder_init(drm, &dsi->encoder, &mtk_dsi_encoder_funcs,
+-			       DRM_MODE_ENCODER_DSI, NULL);
++	ret = drm_simple_encoder_init(drm, &dsi->encoder,
++				      DRM_MODE_ENCODER_DSI);
+ 	if (ret) {
+ 		DRM_ERROR("Failed to encoder init to drm\n");
  		return ret;
- 
- 	drm_encoder_helper_add(&tve->encoder, &imx_tve_encoder_helper_funcs);
--	drm_encoder_init(drm, &tve->encoder, &imx_tve_encoder_funcs,
--			 encoder_type, NULL);
-+	drm_simple_encoder_init(drm, &tve->encoder, encoder_type);
- 
- 	drm_connector_helper_add(&tve->connector,
- 			&imx_tve_connector_helper_funcs);
-diff --git a/drivers/gpu/drm/imx/parallel-display.c b/drivers/gpu/drm/imx/parallel-display.c
-index 08fafa4bf8c2..ac916c84a631 100644
---- a/drivers/gpu/drm/imx/parallel-display.c
-+++ b/drivers/gpu/drm/imx/parallel-display.c
-@@ -18,6 +18,7 @@
- #include <drm/drm_of.h>
- #include <drm/drm_panel.h>
- #include <drm/drm_probe_helper.h>
-+#include <drm/drm_simple_kms_helper.h>
- 
- #include "imx-drm.h"
- 
-@@ -256,10 +257,6 @@ static const struct drm_connector_helper_funcs imx_pd_connector_helper_funcs = {
- 	.best_encoder = imx_pd_connector_best_encoder,
- };
- 
--static const struct drm_encoder_funcs imx_pd_encoder_funcs = {
--	.destroy = imx_drm_encoder_destroy,
--};
--
- static const struct drm_bridge_funcs imx_pd_bridge_funcs = {
- 	.enable = imx_pd_bridge_enable,
- 	.disable = imx_pd_bridge_disable,
-@@ -288,8 +285,7 @@ static int imx_pd_register(struct drm_device *drm,
- 	 */
- 	imxpd->connector.dpms = DRM_MODE_DPMS_OFF;
- 
--	drm_encoder_init(drm, encoder, &imx_pd_encoder_funcs,
--			 DRM_MODE_ENCODER_NONE, NULL);
-+	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_NONE);
- 
- 	imxpd->bridge.funcs = &imx_pd_bridge_funcs;
- 	drm_bridge_attach(encoder, &imxpd->bridge, NULL, 0);
 -- 
 2.25.1
 
