@@ -5,18 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 85C13C3F2D8
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:01:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 374C3C3F2D1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:01:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1E12B2072D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:01:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 09D1F2072D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:01:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F2PELGym"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1E12B2072D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FuQMJilQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 09D1F2072D
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,22 +25,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o1Q2poQ5agwxpkiY+0GsWa8x+sBhphc9Ft6vXfkw2wU=; b=F2PELGymR/Z6i4
-	Xi/Hmo9ChbE3rw1fQwjYdEL99yiFT3SCgteJlxvn9TXkltHs3hqkc6CQtcM3CmN8d/equE33HoNVA
-	vr+bHFNlSORBmi+qINkzUvrtDWPB1oMPPcCclepcRcVvLbTR8KO29RMB2Jezl6cIuqGhqydMtBEl9
-	/yhAHycBwnGfFRyz3okJWFTAQvmIRsf8AvEH0EsFOGp22i9yEUUe9frnUZOHh8EuNSNuAfEhYKtTf
-	YyNwMtfUTg9lFOU8464wfRaO3DAbI0BFPg9Zl9F1uG2bnmkyUeDF2e3MuLYXbRl8nr0L+mxOKs8w7
-	DRy9laJk8y2GpeXO0vBA==;
+	List-Owner; bh=PHV+bqr/fRvUhHbuhbFWQktyUknWUJitA8dMd/Jfkjo=; b=FuQMJilQOxF0aK
+	ucfgJ6i/+gNxKG11PmkQrrK5MEVwSIH/NDcwZke6S8NswCFqwVPM4HwONorePXKA6RnCRbOdWYV1q
+	kFxuoGdvg8ctCACswyS6OXyqWv4X5LmWPCEoSobh+H75Xqj7koDq5mWCiPhQK6QhwPd+i7xqFaFPh
+	B8FwyhFAHtukZXiCyRS6f0vxpq5cUIpDdF7Rtpvw7pmUvcdVGamXsFHy5T2mYDy37uldiGPsNbS1r
+	sbWRt4KUNc5miN4fIFPHX2ZKA1Nrbtwr2aM7zLa1qrZ8ldToNqVFcd2D71+q6zK3b8P92lhHKVPuQ
+	uGSXY7unfj/5kYE3EiKg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9svs-0007sm-V7; Thu, 05 Mar 2020 16:01:08 +0000
+	id 1j9sw1-000838-R6; Thu, 05 Mar 2020 16:01:17 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9suy-0006an-43; Thu, 05 Mar 2020 16:00:16 +0000
+ id 1j9suz-0006dd-4g; Thu, 05 Mar 2020 16:00:17 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 02B60B03E;
- Thu,  5 Mar 2020 16:00:07 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 6779BB066;
+ Thu,  5 Mar 2020 16:00:09 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: airlied@linux.ie, daniel@ffwll.ch, sam@ravnborg.org, abrodkin@synopsys.com,
  bbrezillon@kernel.org, nicolas.ferre@microchip.com,
@@ -62,16 +62,16 @@ To: airlied@linux.ie, daniel@ffwll.ch, sam@ravnborg.org, abrodkin@synopsys.com,
  tomi.valkeinen@ti.com, eric@anholt.net, kraxel@redhat.com,
  rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
  sebastian.reichel@collabora.com
-Subject: [PATCH 10/22] drm/mediatek: Use simple encoder
-Date: Thu,  5 Mar 2020 16:59:38 +0100
-Message-Id: <20200305155950.2705-11-tzimmermann@suse.de>
+Subject: [PATCH 11/22] drm/rcar-du: Use simple encoder
+Date: Thu,  5 Mar 2020 16:59:39 +0100
+Message-Id: <20200305155950.2705-12-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200305155950.2705-1-tzimmermann@suse.de>
 References: <20200305155950.2705-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200305_080012_536702_9F5DC103 
-X-CRM114-Status: GOOD (  12.81  )
+X-CRM114-CacheID: sfid-20200305_080013_369256_BC4F875D 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,93 +92,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mediatak driver uses empty implementations for its encoders. Replace
+The rcar-du driver uses an empty implementation for its encoder. Replace
 the code with the generic simple encoder.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c | 14 +++-----------
- drivers/gpu/drm/mediatek/mtk_dsi.c | 14 +++-----------
- 2 files changed, 6 insertions(+), 22 deletions(-)
+ drivers/gpu/drm/rcar-du/rcar_du_encoder.c | 14 +++-----------
+ 1 file changed, 3 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 14fbe1c09ce9..9c90c58e5acd 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -20,6 +20,7 @@
- #include <drm/drm_bridge.h>
+diff --git a/drivers/gpu/drm/rcar-du/rcar_du_encoder.c b/drivers/gpu/drm/rcar-du/rcar_du_encoder.c
+index c07c6a88aff0..b0335da0c161 100644
+--- a/drivers/gpu/drm/rcar-du/rcar_du_encoder.c
++++ b/drivers/gpu/drm/rcar-du/rcar_du_encoder.c
+@@ -13,6 +13,7 @@
  #include <drm/drm_crtc.h>
- #include <drm/drm_of.h>
+ #include <drm/drm_modeset_helper_vtables.h>
+ #include <drm/drm_panel.h>
 +#include <drm/drm_simple_kms_helper.h>
  
- #include "mtk_dpi_regs.h"
- #include "mtk_drm_ddp_comp.h"
-@@ -509,15 +510,6 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
- 	return 0;
- }
+ #include "rcar_du_drv.h"
+ #include "rcar_du_encoder.h"
+@@ -23,13 +24,6 @@
+  * Encoder
+  */
  
--static void mtk_dpi_encoder_destroy(struct drm_encoder *encoder)
--{
--	drm_encoder_cleanup(encoder);
--}
--
--static const struct drm_encoder_funcs mtk_dpi_encoder_funcs = {
--	.destroy = mtk_dpi_encoder_destroy,
+-static const struct drm_encoder_helper_funcs encoder_helper_funcs = {
 -};
 -
- static bool mtk_dpi_encoder_mode_fixup(struct drm_encoder *encoder,
- 				       const struct drm_display_mode *mode,
- 				       struct drm_display_mode *adjusted_mode)
-@@ -596,8 +588,8 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
- 		return ret;
+-static const struct drm_encoder_funcs encoder_funcs = {
+-	.destroy = drm_encoder_cleanup,
+-};
+-
+ static unsigned int rcar_du_encoder_count_ports(struct device_node *node)
+ {
+ 	struct device_node *ports;
+@@ -110,13 +104,11 @@ int rcar_du_encoder_init(struct rcar_du_device *rcdu,
+ 		}
  	}
  
--	ret = drm_encoder_init(drm_dev, &dpi->encoder, &mtk_dpi_encoder_funcs,
--			       DRM_MODE_ENCODER_TMDS, NULL);
-+	ret = drm_simple_encoder_init(drm_dev, &dpi->encoder,
-+				      DRM_MODE_ENCODER_TMDS);
- 	if (ret) {
- 		dev_err(dev, "Failed to initialize decoder: %d\n", ret);
- 		goto err_unregister;
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 0ede69830a9d..a9a25087112f 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -22,6 +22,7 @@
- #include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
-+#include <drm/drm_simple_kms_helper.h>
+-	ret = drm_encoder_init(rcdu->ddev, encoder, &encoder_funcs,
+-			       DRM_MODE_ENCODER_NONE, NULL);
++	ret = drm_simple_encoder_init(rcdu->ddev, encoder,
++				      DRM_MODE_ENCODER_NONE);
+ 	if (ret < 0)
+ 		goto done;
  
- #include "mtk_drm_ddp_comp.h"
- 
-@@ -787,15 +788,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
- 	dsi->enabled = false;
- }
- 
--static void mtk_dsi_encoder_destroy(struct drm_encoder *encoder)
--{
--	drm_encoder_cleanup(encoder);
--}
+-	drm_encoder_helper_add(encoder, &encoder_helper_funcs);
 -
--static const struct drm_encoder_funcs mtk_dsi_encoder_funcs = {
--	.destroy = mtk_dsi_encoder_destroy,
--};
--
- static bool mtk_dsi_encoder_mode_fixup(struct drm_encoder *encoder,
- 				       const struct drm_display_mode *mode,
- 				       struct drm_display_mode *adjusted_mode)
-@@ -888,8 +880,8 @@ static int mtk_dsi_create_conn_enc(struct drm_device *drm, struct mtk_dsi *dsi)
- {
- 	int ret;
- 
--	ret = drm_encoder_init(drm, &dsi->encoder, &mtk_dsi_encoder_funcs,
--			       DRM_MODE_ENCODER_DSI, NULL);
-+	ret = drm_simple_encoder_init(drm, &dsi->encoder,
-+				      DRM_MODE_ENCODER_DSI);
- 	if (ret) {
- 		DRM_ERROR("Failed to encoder init to drm\n");
- 		return ret;
+ 	/*
+ 	 * Attach the bridge to the encoder. The bridge will create the
+ 	 * connector.
 -- 
 2.25.1
 
