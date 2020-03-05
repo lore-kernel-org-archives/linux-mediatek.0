@@ -2,138 +2,77 @@ Return-Path: <SRS0=EkB4=4W=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 59F58C3F2CD
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 13:14:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9DEEBC3F2CD
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 13:31:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 261CF2073B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 13:14:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 70BAE20848
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 13:31:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sPa5PPCp";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="X2aem1+4";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="nTnG/ER4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 261CF2073B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KpfpRT5v";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Edejk94U"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 70BAE20848
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rKPmwvFLe8MAGJxJcF9EJf8VZ0+0Yyen8pXNZTK9yuA=; b=sPa5PPCpS7eJpb
-	qxQp32dk8lxczYJK+PRPKDp08pNEajpOY1XV/PpxGhSPZ+eaGi9sVnRZ1G/aNCxML+nUGHZMqtYnJ
-	H/R/FLn+oCBFbNtm7PvUrWeHVfcAYOdfJMjLYd0YQOGEM3XV4WdhUslzKm9kuJDlAn+dra057j2xZ
-	WEd8p0Jbp/olU4oTMtk5kIqeesMhcd2inbjz3Kns1OeHJpiBBA6X72mKG/rKdQ/Deu7gDChdrue63
-	ZnDodUxueozmnMJwj5K5mjgCE05K7uixsMDrgKJ0zvbRWd17756s2JKfkSZjMMNu5g7GH5/YWqasS
-	eD81sXPzvX+z0N/AltiA==;
+	List-Owner; bh=of2ECxeTRNasqMufyHq/Y1E1eaodr341qC7n75TUSuE=; b=KpfpRT5vlwGs9d
+	Q4v60l4mYUA/4vg0z0p1ibIrkbMESlmV4/n4nUg0sqKtLluivT/kwXkAgS3qpdMbSiOdUcwgdBnn7
+	wIN8Rb9T4OiVW1H2GR9M/iBmqvxVGmR6Wwlbw+YqdPEUtW24cOn8UCydC90+VIovKLXlZhghvOjkG
+	KHf0dIkxBBXJmDV3J9f4+DP8zf2mHCrNi3PWXJo2xFsq9Y3VLOwIdim4MclIAD8xS/5LWj5Sg6AH2
+	fLPRpNw6CpSPMbjkyU9OcsWzR/ypGG9bYOn4xsfT/MzkjeKyrJaIGftG5eAiAQ0KdYw3TKWqAc8/L
+	HwuYLuL66IS9sAap9aog==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9qKI-0002Lg-5v; Thu, 05 Mar 2020 13:14:10 +0000
-Received: from esa3.hgst.iphmx.com ([216.71.153.141])
+	id 1j9qaV-0000vv-6x; Thu, 05 Mar 2020 13:30:55 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9qKF-0002Kh-QN; Thu, 05 Mar 2020 13:14:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1583414047; x=1614950047;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=x9zGvDeOpV6YKeb9Xxm/GxjNUdXQBfik0BSRBvwZ+v4=;
- b=X2aem1+4PzySD6ivkPWxoUE/P6PTQM6vl0mPUpzzB8jSxKRF1AR8TqUG
- 0rY81qQZBF3wbCQ38PWSIXAFMCyPElXaiefApB4+GP12xGAv9tZpsTqYV
- 7iv7bWjUbq5c+TPNWDXNQfV+ocxL3FKWioSgfb1j0EWSUrYb7Q9FACwsP
- Z3MMlQ0NbSqMPOWYZ+HLGpEh9S6+b270SN0elBK9I8yI2SF2P5W2I4zIm
- V1aUX4jaH5La6DPi76J5tNQqBlQFOjOoiI06Qt7UG6+Uv+UGaK0T0x0uS
- A0Q5Lb+kl9L2Tq7DS0ovU2IdkMWXcornDwXZUQ3IYL0qq3CupkVm7/W4K g==;
-IronPort-SDR: xCiIAfIIVW1NWbpx+Ydj0fIUN7KAJM57jvx9Qsmre2wK18IrQz2Dk5BLgPTcViVrbPJF7ZAIFn
- H6Iv4LAPyvsS3cxfU4SWYHpak7Le9lr7vkjT2KnmSIkT3BE/pcrf6Jw5ud4P4BC842sq/H7ZK7
- m5FrgrZD47DvE2iNeqkayFtSQe/qLSIvhkuueR6CQNnbcrlmiN7Tl6aiWNfVkkdwq/DtEJGHcL
- c6GIbUB8MZuCITD+b96Xyxbthy8scl+hyUAkDPQYra1n+29qNpS9b83IhHPN2WnQ/JCOHKwBwe
- o9I=
-X-IronPort-AV: E=Sophos;i="5.70,518,1574092800"; d="scan'208";a="135970325"
-Received: from mail-mw2nam10lp2104.outbound.protection.outlook.com (HELO
- NAM10-MW2-obe.outbound.protection.outlook.com) ([104.47.55.104])
- by ob1.hgst.iphmx.com with ESMTP; 05 Mar 2020 21:14:03 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=nHVin89DqoW61pK2KBkppewgoD0wIneeIuxGqbjVs1+DaOJ629dZscqqMiQNFLsYxD7xuQPotpGINm7wAznPTcLH0pVJne88Fvl+M++3AmwgLzHN98ki0DQQnoq9KhZKcRc6vDoGLNj6ObhQvWUZxq26+xlkh2RXoexsjebyLKYoE93DbikJRU/O17TBg2j+yOS9ucvfvmnqfyVKV7qNeBoATvOmH47GHbf9BOTG1iXr40dtZz9/KAnBgpGVkWrNfjo2piPhUbJK+kQpDvnWqyeLanKnpuouUT6Z/56AenuCXCH6C04U6a+SyEwquCpBu2Y9tAVZfJ+koFsIqH8u+w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+gJ1IZk6gMA5g7dZREBXQN5OiOEbqyDrbb+DzYlj6o8=;
- b=nsnPprbXMVGTu6VZ9gPdRAAEEZf5xhQ6ljPoagrclhTh+fHOoFk9s5uDpuKTCix8RTuaFrOpj4Lo7bHP/7/J/XmJH5EFQxVxge2TsTKchav4wCRLT+A0kjLz9sTaY+ZUSFBMmGqz0/1zVtO9YN6Yptyu/eNvAqCvTOZTZgNnWGb2UEBNkvSUf15KTKdNhsUoGy6ZDY8azfrbMWomod6pNOxJv4E5/dRgWYioOZBREqZnJ1PDRGNTolehPU8VqAu089jr1ENnloYaKZpT/RffXEjeNztzzmwoEjEdI3eYUgnBLosNjHHCbgPIiyc47MTrb+jChIlNrYnXpM7t2Fz1JA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+gJ1IZk6gMA5g7dZREBXQN5OiOEbqyDrbb+DzYlj6o8=;
- b=nTnG/ER4/AUEBgKwT4mGyoXgsB2ov89aHrt1L9ZjmhzpBV6rPPT3zUfIgD6zgV57b3rpl4XM0sysG5oynA+fXoX0QVtdVp6gd+OOw9GQeRp34fuZvPKoaxt6aI3S6oNYnXw07Od6C/dKIyn4Ix4g8lTXBE7fJMa7GEjhPFyKzeo=
-Received: from MN2PR04MB6991.namprd04.prod.outlook.com (2603:10b6:208:1e1::17)
- by MN2PR04MB6800.namprd04.prod.outlook.com (2603:10b6:208:1e5::21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2772.14; Thu, 5 Mar
- 2020 13:14:01 +0000
-Received: from MN2PR04MB6991.namprd04.prod.outlook.com
- ([fe80::3885:5fac:44af:5de7]) by MN2PR04MB6991.namprd04.prod.outlook.com
- ([fe80::3885:5fac:44af:5de7%7]) with mapi id 15.20.2772.019; Thu, 5 Mar 2020
- 13:14:00 +0000
-From: Avri Altman <Avri.Altman@wdc.com>
-To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
- <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
- <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
- <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>
+ id 1j9qaN-0000n2-Fp; Thu, 05 Mar 2020 13:30:48 +0000
+X-UUID: 3e36fb96404d45f09e1041493798b962-20200305
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=vJUGDoFzTQdjcbPEZc20+na+H1fziGynCmehL0Gfwnk=; 
+ b=Edejk94UMt9bpOodRgLuaVcBa4S2X0Q+G3Pm6zylOtGdk37Kf36DvIY/Dz1aMXPkoGmDjCGn2RpKEGnN9btiYv9lu3P2J2e0jZoidPcutZT575g3CMQdFoYW4SW4IivKijgNmCcSqXyNhGSRrlDsRB4r5TiRu+vM9zdkf0yRY30=;
+X-UUID: 3e36fb96404d45f09e1041493798b962-20200305
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 2028000410; Thu, 05 Mar 2020 05:30:38 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 5 Mar 2020 05:26:18 -0800
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 5 Mar 2020 21:23:54 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Thu, 5 Mar 2020 21:25:10 +0800
+Message-ID: <1583414757.14250.7.camel@mtksdccf07>
 Subject: RE: [PATCH v1 4/4] scsi: ufs-mediatek: remove delay for host enabling
-Thread-Topic: [PATCH v1 4/4] scsi: ufs-mediatek: remove delay for host enabling
-Thread-Index: AQHV8qOOFwhGQ/NXrkqa0GY3KGA/B6g5+fjg
-Date: Thu, 5 Mar 2020 13:14:00 +0000
-Message-ID: <MN2PR04MB6991FAE18CCA3DACF2306E08FCE20@MN2PR04MB6991.namprd04.prod.outlook.com>
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: Avri Altman <Avri.Altman@wdc.com>
+Date: Thu, 5 Mar 2020 21:25:57 +0800
+In-Reply-To: <MN2PR04MB6991FAE18CCA3DACF2306E08FCE20@MN2PR04MB6991.namprd04.prod.outlook.com>
 References: <20200305040704.10645-1-stanley.chu@mediatek.com>
  <20200305040704.10645-5-stanley.chu@mediatek.com>
-In-Reply-To: <20200305040704.10645-5-stanley.chu@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Avri.Altman@wdc.com; 
-x-originating-ip: [77.138.4.172]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: a784fa61-0a70-48d7-e603-08d7c10711af
-x-ms-traffictypediagnostic: MN2PR04MB6800:
-x-microsoft-antispam-prvs: <MN2PR04MB68003A400B87D42A3C2013EFFCE20@MN2PR04MB6800.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:6108;
-x-forefront-prvs: 03333C607F
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(396003)(39860400002)(346002)(366004)(136003)(376002)(189003)(199004)(66946007)(55016002)(9686003)(66476007)(478600001)(66446008)(76116006)(4326008)(6506007)(64756008)(66556008)(5660300002)(316002)(7416002)(110136005)(26005)(81156014)(52536014)(54906003)(7696005)(86362001)(8676002)(4744005)(81166006)(2906002)(33656002)(8936002)(186003)(71200400001);
- DIR:OUT; SFP:1102; SCL:1; SRVR:MN2PR04MB6800;
- H:MN2PR04MB6991.namprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: rweqDiZf+fl8gaiJHGzJlgHOV6PjdU0ntziKw3n6J5h4cMxiWVL2WiofqHtfduwVc5+E2TSfklSN4F8BkhS+B33Vhm/oevILxxSYrqbat5wfp9ITcZIN5NKA73wfrY9k4sl0E2a8T/MtFFaSGIs4U72UgTvqqa0esWR3vbUTj63pqr+HZMOVCmp1ACvaF3X/Sxbvot7wLzhfrMVy+L2TJhP7G7D4YwRfK+X82jgspnp1cmCrqlk1RjRtksHzLf7+JzX0iwwlK7tpOJBJnR2MUOm8Nml0088WlW7dD6fnZjr47KFYFNFPdsb5KAgMHqUSJ9LgJi6A9EVfWpp8ShXC3zjJU9MBEEDy89Ll1s6gWO8ZUmpXr09Ov9p2Vp/ln2XcKcjvQLvOvBPveivhf1SXmZW/SOy0M0sCMsgi0cOImrx2Vf4+Dx5UD9+QoxL8cDia
-x-ms-exchange-antispam-messagedata: Cx+G9DPJKCE4T7PAoKSA1J4p2yxv6XhMb/Vdb4ZTBn5eSXOPiqQ2Gucb75ujdPb97/BuruObsHnxAzqEoaT7VG1+q19apdDZlyN+9Oalr03WNw+3j2Zr5feRLT7T38AuOHPiXV5wQh+2zE4OYuWaVA==
-x-ms-exchange-transport-forked: True
+ <MN2PR04MB6991FAE18CCA3DACF2306E08FCE20@MN2PR04MB6991.namprd04.prod.outlook.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a784fa61-0a70-48d7-e603-08d7c10711af
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Mar 2020 13:14:00.0393 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Y59bZ5xOdq3wbRc2ejWGEHZ0y+iUJRv5cPJLsBbI712Xy1bXMbDGWs216TOL8QZQslxEEpbJIrGAhC4FWmG78Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR04MB6800
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200305_051407_938547_E28616C4 
-X-CRM114-Status: GOOD (  13.89  )
+X-CRM114-CacheID: sfid-20200305_053047_534431_C1DDF8AC 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -145,16 +84,20 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "bvanassche@acm.org" <bvanassche@acm.org>,
+Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
  "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
  "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
  "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
  "cang@codeaurora.org" <cang@codeaurora.org>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
  "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
  "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
  "beanhuo@micron.com" <beanhuo@micron.com>,
+ "bvanassche@acm.org" <bvanassche@acm.org>,
  "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
  "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
 Content-Type: text/plain; charset="us-ascii"
@@ -162,39 +105,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Stanley,
+Hi Avri,
 
+On Thu, 2020-03-05 at 13:14 +0000, Avri Altman wrote:
+> Hi Stanley,
 > 
+> > 
+> > 
+> > MediaTek platform and UFS controller do not require the delay
+> > for host enabling, thus remove it.
+> > 
+> > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> > ---
+> >  drivers/scsi/ufs/ufs-mediatek.c | 2 ++
+> >  1 file changed, 2 insertions(+)
+> > 
+> > diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+> > index 3b0e575d7460..ea3b5fd62492 100644
+> > --- a/drivers/scsi/ufs/ufs-mediatek.c
+> > +++ b/drivers/scsi/ufs/ufs-mediatek.c
+> > @@ -258,6 +258,8 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+> I would expect to set whatever is needed for your host controller
+> In ufshcd_vops_hce_enable_notify(hba, PRE_CHANGE), and not here.
 > 
-> MediaTek platform and UFS controller do not require the delay
-> for host enabling, thus remove it.
-> 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> ---
->  drivers/scsi/ufs/ufs-mediatek.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-> index 3b0e575d7460..ea3b5fd62492 100644
-> --- a/drivers/scsi/ufs/ufs-mediatek.c
-> +++ b/drivers/scsi/ufs/ufs-mediatek.c
-> @@ -258,6 +258,8 @@ static int ufs_mtk_init(struct ufs_hba *hba)
-I would expect to set whatever is needed for your host controller
-In ufshcd_vops_hce_enable_notify(hba, PRE_CHANGE), and not here.
 
-Thanks,
-Avri
+I think this is a good suggestion! And thus we could have more
+flexibility to customize the value according to different scenarios.
 
->         if (err)
->                 goto out_variant_clear;
-> 
-> +       hba->hba_enable_delay_us = 0;
-> +
->         /* Enable runtime autosuspend */
->         hba->caps |= UFSHCD_CAP_RPM_AUTOSUSPEND;
-> 
-> --
-> 2.18.0
+I will consider this approach in next version.
+
+Thanks!
+Stanley Chu
 
 _______________________________________________
 Linux-mediatek mailing list
