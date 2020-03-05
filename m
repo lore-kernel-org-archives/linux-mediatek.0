@@ -5,18 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0A384C3F2D1
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9816BC3F2D2
 	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:00:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AAA7E20848
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:00:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4245D20848
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:00:48 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="n5A/zGo9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AAA7E20848
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TgLyRgzH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4245D20848
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,21 +25,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X+C6woKC92EKqzJLoaLVmfy9ynLtmRSezUdrDz36CF4=; b=n5A/zGo90aFvW0
-	ucgmLuoc7LHPIurThADAXmfmMYm45NTHnlYJUjYCn4kOeAY3I1Rv9CKgHQTQ6RFLl5UxBG0JtV7cT
-	KeHbZf8DIOKFKg3tsvbNtg/7WGTn7NgNMSGxeeYGryDujaq0ug347GRVZYTcd/A4MDYX1inBjGi9c
-	rXTrUOud8tnV6PH+DhivRSkcpxcpAPACfoLDribSMc7QUmWWeuWsVvB1+tEF7i6iwDUf6Y/gP/U8e
-	W/IfVgYtIbVCVFx0uaVWZLIdnv3GIKZmpX+yNcB2GH9WQmWOzypPFRMqywDyGUWPJuIMzLhMDS2oj
-	VCv3MTHov9p3OAjTDTag==;
+	List-Owner; bh=7aqvZimrvgSnjgkCZlEf5ljLH2XY5a8fdS95ljVSjVA=; b=TgLyRgzHkWa/0q
+	soV5uoFXbM03C8tc0g0BL5HqDOJgQJEzBSkoyMopme/y/ESfj/gPC3ag4O7aKZrm6ZAzIKbN5oJWi
+	v49sVEptKWauDvAi/aXRe4P7pKcBss69Wcx8KYGzIHsjKuPgCKde1RNIfOAIQzHKIAVpsT435gZ9T
+	I0hgpiqWwkDwbOiOPXsMAEdsgVGa87nBDUqweL0r3yzIsh09klONCj/GINbWljapOgPW69JOOOLaV
+	UcayJCN2zNBdRhHG0+K0pQ1KlYsFcibuC43s91jf321PR9KnjOeiycrrP86EVTBeR+uCu4Y10WE8e
+	kaadKZnTYEhBCX5TZYCw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9svR-0007Sj-5V; Thu, 05 Mar 2020 16:00:41 +0000
+	id 1j9svP-0007RR-K2; Thu, 05 Mar 2020 16:00:39 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9sur-0005re-57; Thu, 05 Mar 2020 16:00:10 +0000
+ id 1j9suq-0005rH-Uz; Thu, 05 Mar 2020 16:00:11 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 5DF08B00A;
+ by mx2.suse.de (Postfix) with ESMTP id 5C8EEADD7;
  Thu,  5 Mar 2020 15:59:59 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: airlied@linux.ie, daniel@ffwll.ch, sam@ravnborg.org, abrodkin@synopsys.com,
@@ -62,16 +62,16 @@ To: airlied@linux.ie, daniel@ffwll.ch, sam@ravnborg.org, abrodkin@synopsys.com,
  tomi.valkeinen@ti.com, eric@anholt.net, kraxel@redhat.com,
  rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
  sebastian.reichel@collabora.com
-Subject: [PATCH 04/22] drm/fsl-dcu: Use simple encoder
-Date: Thu,  5 Mar 2020 16:59:32 +0100
-Message-Id: <20200305155950.2705-5-tzimmermann@suse.de>
+Subject: [PATCH 03/22] drm/exynos: Use simple encoder
+Date: Thu,  5 Mar 2020 16:59:31 +0100
+Message-Id: <20200305155950.2705-4-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200305155950.2705-1-tzimmermann@suse.de>
 References: <20200305155950.2705-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200305_080005_410006_DED32D6C 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20200305_080005_350530_7805EF7C 
+X-CRM114-Status: GOOD (  12.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,49 +92,182 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The fsl-dcu driver uses an empty implementation for its encoder. Replace
+The exynos driver uses empty implementations for its encoders. Replace
 the code with the generic simple encoder.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_rgb.c | 14 +++-----------
- 1 file changed, 3 insertions(+), 11 deletions(-)
+ drivers/gpu/drm/exynos/exynos_dp.c       | 8 ++------
+ drivers/gpu/drm/exynos/exynos_drm_dpi.c  | 8 ++------
+ drivers/gpu/drm/exynos/exynos_drm_dsi.c  | 8 ++------
+ drivers/gpu/drm/exynos/exynos_drm_vidi.c | 8 ++------
+ drivers/gpu/drm/exynos/exynos_hdmi.c     | 8 ++------
+ 5 files changed, 10 insertions(+), 30 deletions(-)
 
-diff --git a/drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_rgb.c b/drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_rgb.c
-index cff344367f81..9b0c4736c21a 100644
---- a/drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_rgb.c
-+++ b/drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_rgb.c
-@@ -13,19 +13,11 @@
- #include <drm/drm_of.h>
+diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
+index d23d3502ca91..a61482af2998 100644
+--- a/drivers/gpu/drm/exynos/exynos_dp.c
++++ b/drivers/gpu/drm/exynos/exynos_dp.c
+@@ -25,6 +25,7 @@
  #include <drm/drm_panel.h>
+ #include <drm/drm_print.h>
+ #include <drm/drm_probe_helper.h>
++#include <drm/drm_simple_kms_helper.h>
+ #include <drm/exynos_drm.h>
+ 
+ #include "exynos_drm_crtc.h"
+@@ -135,10 +136,6 @@ static const struct drm_encoder_helper_funcs exynos_dp_encoder_helper_funcs = {
+ 	.disable = exynos_dp_nop,
+ };
+ 
+-static const struct drm_encoder_funcs exynos_dp_encoder_funcs = {
+-	.destroy = drm_encoder_cleanup,
+-};
+-
+ static int exynos_dp_dt_parse_panel(struct exynos_dp_device *dp)
+ {
+ 	int ret;
+@@ -174,8 +171,7 @@ static int exynos_dp_bind(struct device *dev, struct device *master, void *data)
+ 			return ret;
+ 	}
+ 
+-	drm_encoder_init(drm_dev, encoder, &exynos_dp_encoder_funcs,
+-			 DRM_MODE_ENCODER_TMDS, NULL);
++	drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_TMDS);
+ 
+ 	drm_encoder_helper_add(encoder, &exynos_dp_encoder_helper_funcs);
+ 
+diff --git a/drivers/gpu/drm/exynos/exynos_drm_dpi.c b/drivers/gpu/drm/exynos/exynos_drm_dpi.c
+index 43fa0f26c052..7ba5354e7d94 100644
+--- a/drivers/gpu/drm/exynos/exynos_drm_dpi.c
++++ b/drivers/gpu/drm/exynos/exynos_drm_dpi.c
+@@ -14,6 +14,7 @@
+ #include <drm/drm_panel.h>
+ #include <drm/drm_print.h>
  #include <drm/drm_probe_helper.h>
 +#include <drm/drm_simple_kms_helper.h>
  
- #include "fsl_dcu_drm_drv.h"
- #include "fsl_tcon.h"
+ #include <video/of_videomode.h>
+ #include <video/videomode.h>
+@@ -149,10 +150,6 @@ static const struct drm_encoder_helper_funcs exynos_dpi_encoder_helper_funcs = {
+ 	.disable = exynos_dpi_disable,
+ };
  
--static void fsl_dcu_drm_encoder_destroy(struct drm_encoder *encoder)
--{
--	drm_encoder_cleanup(encoder);
--}
--
--static const struct drm_encoder_funcs encoder_funcs = {
--	.destroy = fsl_dcu_drm_encoder_destroy,
+-static const struct drm_encoder_funcs exynos_dpi_encoder_funcs = {
+-	.destroy = drm_encoder_cleanup,
 -};
 -
- int fsl_dcu_drm_encoder_create(struct fsl_dcu_drm_device *fsl_dev,
- 			       struct drm_crtc *crtc)
+ enum {
+ 	FIMD_PORT_IN0,
+ 	FIMD_PORT_IN1,
+@@ -201,8 +198,7 @@ int exynos_dpi_bind(struct drm_device *dev, struct drm_encoder *encoder)
  {
-@@ -38,8 +30,8 @@ int fsl_dcu_drm_encoder_create(struct fsl_dcu_drm_device *fsl_dev,
- 	if (fsl_dev->tcon)
- 		fsl_tcon_bypass_enable(fsl_dev->tcon);
+ 	int ret;
  
--	ret = drm_encoder_init(fsl_dev->drm, encoder, &encoder_funcs,
--			       DRM_MODE_ENCODER_LVDS, NULL);
-+	ret = drm_simple_encoder_init(fsl_dev->drm, encoder,
-+				      DRM_MODE_ENCODER_LVDS);
- 	if (ret < 0)
- 		return ret;
+-	drm_encoder_init(dev, encoder, &exynos_dpi_encoder_funcs,
+-			 DRM_MODE_ENCODER_TMDS, NULL);
++	drm_simple_encoder_init(dev, encoder, DRM_MODE_ENCODER_TMDS);
+ 
+ 	drm_encoder_helper_add(encoder, &exynos_dpi_encoder_helper_funcs);
+ 
+diff --git a/drivers/gpu/drm/exynos/exynos_drm_dsi.c b/drivers/gpu/drm/exynos/exynos_drm_dsi.c
+index 669d3857502a..2986c93382e0 100644
+--- a/drivers/gpu/drm/exynos/exynos_drm_dsi.c
++++ b/drivers/gpu/drm/exynos/exynos_drm_dsi.c
+@@ -30,6 +30,7 @@
+ #include <drm/drm_panel.h>
+ #include <drm/drm_print.h>
+ #include <drm/drm_probe_helper.h>
++#include <drm/drm_simple_kms_helper.h>
+ 
+ #include "exynos_drm_crtc.h"
+ #include "exynos_drm_drv.h"
+@@ -1524,10 +1525,6 @@ static const struct drm_encoder_helper_funcs exynos_dsi_encoder_helper_funcs = {
+ 	.disable = exynos_dsi_disable,
+ };
+ 
+-static const struct drm_encoder_funcs exynos_dsi_encoder_funcs = {
+-	.destroy = drm_encoder_cleanup,
+-};
+-
+ MODULE_DEVICE_TABLE(of, exynos_dsi_of_match);
+ 
+ static int exynos_dsi_host_attach(struct mipi_dsi_host *host,
+@@ -1705,8 +1702,7 @@ static int exynos_dsi_bind(struct device *dev, struct device *master,
+ 	struct drm_bridge *in_bridge;
+ 	int ret;
+ 
+-	drm_encoder_init(drm_dev, encoder, &exynos_dsi_encoder_funcs,
+-			 DRM_MODE_ENCODER_TMDS, NULL);
++	drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_TMDS);
+ 
+ 	drm_encoder_helper_add(encoder, &exynos_dsi_encoder_helper_funcs);
+ 
+diff --git a/drivers/gpu/drm/exynos/exynos_drm_vidi.c b/drivers/gpu/drm/exynos/exynos_drm_vidi.c
+index b320b3a21ad4..282467121699 100644
+--- a/drivers/gpu/drm/exynos/exynos_drm_vidi.c
++++ b/drivers/gpu/drm/exynos/exynos_drm_vidi.c
+@@ -14,6 +14,7 @@
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_edid.h>
+ #include <drm/drm_probe_helper.h>
++#include <drm/drm_simple_kms_helper.h>
+ #include <drm/drm_vblank.h>
+ #include <drm/exynos_drm.h>
+ 
+@@ -369,10 +370,6 @@ static const struct drm_encoder_helper_funcs exynos_vidi_encoder_helper_funcs =
+ 	.disable = exynos_vidi_disable,
+ };
+ 
+-static const struct drm_encoder_funcs exynos_vidi_encoder_funcs = {
+-	.destroy = drm_encoder_cleanup,
+-};
+-
+ static int vidi_bind(struct device *dev, struct device *master, void *data)
+ {
+ 	struct vidi_context *ctx = dev_get_drvdata(dev);
+@@ -406,8 +403,7 @@ static int vidi_bind(struct device *dev, struct device *master, void *data)
+ 		return PTR_ERR(ctx->crtc);
+ 	}
+ 
+-	drm_encoder_init(drm_dev, encoder, &exynos_vidi_encoder_funcs,
+-			 DRM_MODE_ENCODER_TMDS, NULL);
++	drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_TMDS);
+ 
+ 	drm_encoder_helper_add(encoder, &exynos_vidi_encoder_helper_funcs);
+ 
+diff --git a/drivers/gpu/drm/exynos/exynos_hdmi.c b/drivers/gpu/drm/exynos/exynos_hdmi.c
+index 3e5f1a77286d..302ffda5f297 100644
+--- a/drivers/gpu/drm/exynos/exynos_hdmi.c
++++ b/drivers/gpu/drm/exynos/exynos_hdmi.c
+@@ -38,6 +38,7 @@
+ #include <drm/drm_edid.h>
+ #include <drm/drm_print.h>
+ #include <drm/drm_probe_helper.h>
++#include <drm/drm_simple_kms_helper.h>
+ 
+ #include "exynos_drm_crtc.h"
+ #include "regs-hdmi.h"
+@@ -1559,10 +1560,6 @@ static const struct drm_encoder_helper_funcs exynos_hdmi_encoder_helper_funcs =
+ 	.disable	= hdmi_disable,
+ };
+ 
+-static const struct drm_encoder_funcs exynos_hdmi_encoder_funcs = {
+-	.destroy = drm_encoder_cleanup,
+-};
+-
+ static void hdmi_audio_shutdown(struct device *dev, void *data)
+ {
+ 	struct hdmi_context *hdata = dev_get_drvdata(dev);
+@@ -1851,8 +1848,7 @@ static int hdmi_bind(struct device *dev, struct device *master, void *data)
+ 
+ 	hdata->phy_clk.enable = hdmiphy_clk_enable;
+ 
+-	drm_encoder_init(drm_dev, encoder, &exynos_hdmi_encoder_funcs,
+-			 DRM_MODE_ENCODER_TMDS, NULL);
++	drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_TMDS);
+ 
+ 	drm_encoder_helper_add(encoder, &exynos_hdmi_encoder_helper_funcs);
  
 -- 
 2.25.1
