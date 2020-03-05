@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 374C3C3F2D1
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:01:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C2C4EC3F2D2
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:01:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 09D1F2072D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:01:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 954702072D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:01:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FuQMJilQ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 09D1F2072D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UwF2WBWJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 954702072D
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,22 +25,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PHV+bqr/fRvUhHbuhbFWQktyUknWUJitA8dMd/Jfkjo=; b=FuQMJilQOxF0aK
-	ucfgJ6i/+gNxKG11PmkQrrK5MEVwSIH/NDcwZke6S8NswCFqwVPM4HwONorePXKA6RnCRbOdWYV1q
-	kFxuoGdvg8ctCACswyS6OXyqWv4X5LmWPCEoSobh+H75Xqj7koDq5mWCiPhQK6QhwPd+i7xqFaFPh
-	B8FwyhFAHtukZXiCyRS6f0vxpq5cUIpDdF7Rtpvw7pmUvcdVGamXsFHy5T2mYDy37uldiGPsNbS1r
-	sbWRt4KUNc5miN4fIFPHX2ZKA1Nrbtwr2aM7zLa1qrZ8ldToNqVFcd2D71+q6zK3b8P92lhHKVPuQ
-	uGSXY7unfj/5kYE3EiKg==;
+	List-Owner; bh=p/UHciaGxXvwFgXDU08rqbu/w1q0dpBfzU0CkD6ByGg=; b=UwF2WBWJZQs6WT
+	rb4mNi410d5EQtAnu6BnfQlrUssCl4aJMu0PfyaR8Hox9UcA6+qbXgSyb+54ZJZlsJ7HRKwShUFA/
+	4M7HTEb5cZC5b6OalyektJzFtdR4VD2WFQdLERCu9Uh8hxBx2imjz9dyhCoib0vwcFW+WkIxS0T1G
+	ibDuYsC7zeKsMNuIqw4VXat9vWutA6tOrT+PWxx4vOkWUdAaacVEAMuA+2OecSVcwxsOgI/gUWdIr
+	7nwwAuo94YCzT1ykCVmJbv+6164xy7Xo5fAmJ5ds/214DH2NgUfndUInIsXlRNN0kle0+OcdIBlAG
+	3zKO5IECOVEmt1BmpjvQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9sw1-000838-R6; Thu, 05 Mar 2020 16:01:17 +0000
+	id 1j9sw5-00087H-Qd; Thu, 05 Mar 2020 16:01:21 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9suz-0006dd-4g; Thu, 05 Mar 2020 16:00:17 +0000
+ id 1j9sv1-0006q0-D8; Thu, 05 Mar 2020 16:00:17 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 6779BB066;
- Thu,  5 Mar 2020 16:00:09 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 54872B08C;
+ Thu,  5 Mar 2020 16:00:12 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: airlied@linux.ie, daniel@ffwll.ch, sam@ravnborg.org, abrodkin@synopsys.com,
  bbrezillon@kernel.org, nicolas.ferre@microchip.com,
@@ -62,16 +62,16 @@ To: airlied@linux.ie, daniel@ffwll.ch, sam@ravnborg.org, abrodkin@synopsys.com,
  tomi.valkeinen@ti.com, eric@anholt.net, kraxel@redhat.com,
  rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
  sebastian.reichel@collabora.com
-Subject: [PATCH 11/22] drm/rcar-du: Use simple encoder
-Date: Thu,  5 Mar 2020 16:59:39 +0100
-Message-Id: <20200305155950.2705-12-tzimmermann@suse.de>
+Subject: [PATCH 13/22] drm/shmobile: Use simple encoder
+Date: Thu,  5 Mar 2020 16:59:41 +0100
+Message-Id: <20200305155950.2705-14-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200305155950.2705-1-tzimmermann@suse.de>
 References: <20200305155950.2705-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200305_080013_369256_BC4F875D 
-X-CRM114-Status: GOOD (  12.07  )
+X-CRM114-CacheID: sfid-20200305_080015_695858_BA13BDCC 
+X-CRM114-Status: GOOD (  11.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,56 +92,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The rcar-du driver uses an empty implementation for its encoder. Replace
+The shmobile driver uses empty implementations for its encoders. Replace
 the code with the generic simple encoder.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/rcar-du/rcar_du_encoder.c | 14 +++-----------
+ drivers/gpu/drm/shmobile/shmob_drm_crtc.c | 14 +++-----------
  1 file changed, 3 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/gpu/drm/rcar-du/rcar_du_encoder.c b/drivers/gpu/drm/rcar-du/rcar_du_encoder.c
-index c07c6a88aff0..b0335da0c161 100644
---- a/drivers/gpu/drm/rcar-du/rcar_du_encoder.c
-+++ b/drivers/gpu/drm/rcar-du/rcar_du_encoder.c
-@@ -13,6 +13,7 @@
- #include <drm/drm_crtc.h>
- #include <drm/drm_modeset_helper_vtables.h>
- #include <drm/drm_panel.h>
+diff --git a/drivers/gpu/drm/shmobile/shmob_drm_crtc.c b/drivers/gpu/drm/shmobile/shmob_drm_crtc.c
+index 75a752d59ef1..03556dbfcafb 100644
+--- a/drivers/gpu/drm/shmobile/shmob_drm_crtc.c
++++ b/drivers/gpu/drm/shmobile/shmob_drm_crtc.c
+@@ -17,6 +17,7 @@
+ #include <drm/drm_gem_cma_helper.h>
+ #include <drm/drm_plane_helper.h>
+ #include <drm/drm_probe_helper.h>
 +#include <drm/drm_simple_kms_helper.h>
+ #include <drm/drm_vblank.h>
  
- #include "rcar_du_drv.h"
- #include "rcar_du_encoder.h"
-@@ -23,13 +24,6 @@
-  * Encoder
-  */
+ #include "shmob_drm_backlight.h"
+@@ -558,15 +559,6 @@ static const struct drm_encoder_helper_funcs encoder_helper_funcs = {
+ 	.mode_set = shmob_drm_encoder_mode_set,
+ };
  
--static const struct drm_encoder_helper_funcs encoder_helper_funcs = {
--};
+-static void shmob_drm_encoder_destroy(struct drm_encoder *encoder)
+-{
+-	drm_encoder_cleanup(encoder);
+-}
 -
 -static const struct drm_encoder_funcs encoder_funcs = {
--	.destroy = drm_encoder_cleanup,
+-	.destroy = shmob_drm_encoder_destroy,
 -};
 -
- static unsigned int rcar_du_encoder_count_ports(struct device_node *node)
+ int shmob_drm_encoder_create(struct shmob_drm_device *sdev)
  {
- 	struct device_node *ports;
-@@ -110,13 +104,11 @@ int rcar_du_encoder_init(struct rcar_du_device *rcdu,
- 		}
- 	}
+ 	struct drm_encoder *encoder = &sdev->encoder.encoder;
+@@ -576,8 +568,8 @@ int shmob_drm_encoder_create(struct shmob_drm_device *sdev)
  
--	ret = drm_encoder_init(rcdu->ddev, encoder, &encoder_funcs,
--			       DRM_MODE_ENCODER_NONE, NULL);
-+	ret = drm_simple_encoder_init(rcdu->ddev, encoder,
-+				      DRM_MODE_ENCODER_NONE);
+ 	encoder->possible_crtcs = 1;
+ 
+-	ret = drm_encoder_init(sdev->ddev, encoder, &encoder_funcs,
+-			       DRM_MODE_ENCODER_LVDS, NULL);
++	ret = drm_simple_encoder_init(sdev->ddev, encoder,
++				      DRM_MODE_ENCODER_LVDS);
  	if (ret < 0)
- 		goto done;
+ 		return ret;
  
--	drm_encoder_helper_add(encoder, &encoder_helper_funcs);
--
- 	/*
- 	 * Attach the bridge to the encoder. The bridge will create the
- 	 * connector.
 -- 
 2.25.1
 
