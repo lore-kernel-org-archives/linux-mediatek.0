@@ -7,75 +7,73 @@ X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BB34EC3F2CD
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 05:14:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 679FEC3F2D1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 05:44:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8EF7D2146E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 05:14:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 39AE2208C3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 05:44:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JvL24t45";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="NrFhDK9B"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8EF7D2146E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WZaCpDzr";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="V6yyqpEe"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39AE2208C3
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8ZenYDGh8Am7wHifQzFYJIMUwN4HBC3SDr9exBZlGcY=; b=JvL24t45GEh93t
-	FSRyHwv+fNwV4iGDhXW0ymhvmrjLadAbAbQTVkPbmgXmZnmOBRtChLNOSoliYosqPqAkGnLalZuUl
-	FM7iJ4R8saglb+RduZ9xxuK/EeE/4pGyIM79uRumy0WxSXtDiKxG/mbBAib3NVxCT8KcqMobMk2x7
-	Xjk/hXOfKe1UGW3B29XSTw0xs/gd8c/UA8b0id4cpLmrQVdBB21kgrlJFtf5wg5W34Cl3Q4XNcgI+
-	afbp9zeFmOWVS5Ryoo/Oh7dFc7z/b1tdwcWbRtdMygf37KGn4fy4hEcSlV+DILfcpoZ2F0H8bSLXW
-	6ik/yvmoe3vLTd9a9L7w==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
+	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Ho64AY5vFdK1MUI51Eh0f3NtDUxBhsEPu9jhlHpavDM=; b=WZaCpDzrYhFrKYKXpmyNUmgLp
+	M6wuwnSBYz5u5cK6OX6uxonIEWN4AWAV23x+SsPGqHcP6G/kLwXkx2donwC1o9oBRrP8vMIPP+0hZ
+	NrXt2OLKEuVAj3e26MuG8Zqin9Fc4NDDu+Xkrhy7aj3U5G8LvEWeW4IlyvxBsCmF8kEsgeSgxgqS2
+	NTftZLfwCjZEsmCEgky6kNqfLIUBbQXTscqjB133lTfK4EYtdnO8DzlYIXBwAaHqW/5vJn4muBHbB
+	V8Bsj0oaki/AVD7Jy9wZ1gru5mah/FdC0OLYUxewkeCTC2fEylZ8cz3HZDQC/LQT0uhEh4tH6i4Fz
+	1lNA/xf5Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9iq6-0007oc-Ug; Thu, 05 Mar 2020 05:14:30 +0000
-Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
+	id 1j9jJQ-00010n-IH; Thu, 05 Mar 2020 05:44:48 +0000
+Received: from mail27.static.mailgun.info ([104.130.122.27])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9iq3-0007nC-T0
- for linux-mediatek@lists.infradead.org; Thu, 05 Mar 2020 05:14:29 +0000
-Received: by mail-qk1-x742.google.com with SMTP id z12so4109977qkg.12
- for <linux-mediatek@lists.infradead.org>; Wed, 04 Mar 2020 21:14:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=rTn3aZiOBdvpLaF9in60GflGuo7nuzt/CIGjImwtiUM=;
- b=NrFhDK9B12p+3RdamIUYum/ORdm0XLJgoFeESAo99664Tf9pb1E6TcqGodgrLcM5BU
- 6YUyipKpSxuCMqCS5XxgM87hpGBtG6kcUPm3Zq2El6LJ+BtsgCxRXTFOKSp/G+nfZOOI
- T1OpoH0qKLaMjQXRWCU3Yc3tRnguEKVaKs5oI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=rTn3aZiOBdvpLaF9in60GflGuo7nuzt/CIGjImwtiUM=;
- b=ezXMowKtXc6dAVzaGOuTCFCmOYyJ8weWxy91sHxqrHNPyeBFRJGYskIwFO8hah2297
- UqdeWg5wpH/dg1U/sMv0SxFnbPspwAV8y3D7uFDMxzQr83pjLtqPrOS+Xcdg264md+dD
- IcwZflyEEboXE8HsGhzbC2Lijqb/UZh1hxVnyx/cKAFQ+PAMKu3Ee0xKe1nRlsQfjzOp
- Z0NadEwUO2CLHw4E8cQARVcOiom7AJYCCLX5p5aaS+RlVIWOX+mRsGSj2FBEQ46K49ed
- GTag3F+d7N9FDKeBgVjoXJ28/qH33Zf+iOGftoV0TR6cjQljqJnHQh3qyeHkgwH3wo6j
- euhg==
-X-Gm-Message-State: ANhLgQ3reyFXwS0Q1uzkitPrF8hRp96tLkLJGMbEOejEpvwVh05x0il4
- VaXR2DFk+qP4S6e/q7Qlse5FE8EeCGERSyOyFktJlg==
-X-Google-Smtp-Source: ADFU+vsjlqRt25RAnjpqBwwBqr94htBKQelMZzFwJ5kzWW9Pubmn0eresOonSxZoZDexvuo0WFSMiY0iBLfQk0M8fiw=
-X-Received: by 2002:a37:c47:: with SMTP id 68mr996909qkm.144.1583385266606;
- Wed, 04 Mar 2020 21:14:26 -0800 (PST)
+ id 1j9jJN-00010A-HL
+ for linux-mediatek@lists.infradead.org; Thu, 05 Mar 2020 05:44:46 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1583387084; h=Message-ID: References: In-Reply-To: Subject:
+ Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
+ MIME-Version: Sender; bh=As7z+9RsocK5CQV9qlxwp3vbojEnbfUk/NP3ejBV3dc=;
+ b=V6yyqpEeGhjXBzHPiqJk2aFtDuK+RDojVipsiIk6nqCbn6am5VwdZ2J1CzOh9fS40o/1pzVF
+ xHI957itbSNzbMrk4o6PPUBl1CeM7ZXT67ukzUEV/eO3q4v5V7Y3LWcdQMoQWbqcLdlK+VSk
+ DyWcfVH8zw1tv6nFI99uJP7alRQ=
+X-Mailgun-Sending-Ip: 104.130.122.27
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
+ by mxa.mailgun.org with ESMTP id 5e6091ca.7f0d0ddcb960-smtp-out-n03;
+ Thu, 05 Mar 2020 05:44:42 -0000 (UTC)
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id EB9CAC4479C; Thu,  5 Mar 2020 05:44:40 +0000 (UTC)
+Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
+ (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+ (No client certificate requested) (Authenticated sender: cang)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id A1C56C43383;
+ Thu,  5 Mar 2020 05:44:39 +0000 (UTC)
 MIME-Version: 1.0
-References: <1567503456-24725-1-git-send-email-yong.wu@mediatek.com>
- <1567503456-24725-4-git-send-email-yong.wu@mediatek.com>
-In-Reply-To: <1567503456-24725-4-git-send-email-yong.wu@mediatek.com>
-From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Thu, 5 Mar 2020 13:14:14 +0800
-Message-ID: <CANMq1KAOHFF43708ktvhEU6EYZv_s7Wp+kUwFD7h0bwVrQpyqw@mail.gmail.com>
-Subject: Re: [PATCH v3 03/14] iommu/mediatek: Add device_link between the
- consumer and the larb devices
-To: Yong Wu <yong.wu@mediatek.com>
+Date: Thu, 05 Mar 2020 13:44:39 +0800
+From: Can Guo <cang@codeaurora.org>
+To: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH v1 2/4] scsi: ufs: use an enum for host capabilities
+In-Reply-To: <20200305040704.10645-3-stanley.chu@mediatek.com>
+References: <20200305040704.10645-1-stanley.chu@mediatek.com>
+ <20200305040704.10645-3-stanley.chu@mediatek.com>
+Message-ID: <2f7c30cab1abf458930ac4253ff17ee1@codeaurora.org>
+X-Sender: cang@codeaurora.org
+User-Agent: Roundcube Webmail/1.3.9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200304_211427_963140_F06E0535 
-X-CRM114-Status: GOOD (  25.46  )
+X-CRM114-CacheID: sfid-20200304_214445_640880_6001CFF9 
+X-CRM114-Status: GOOD (  17.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,185 +85,115 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: youlin.pei@mediatek.com, Devicetree List <devicetree@vger.kernel.org>,
- cui.zhang@mediatek.com, srv_heupstream <srv_heupstream@mediatek.com>,
- chao.hao@mediatek.com, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will.deacon@arm.com>, lkml <linux-kernel@vger.kernel.org>,
- Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>,
- iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, ming-fan.chen@mediatek.com,
- anan.sun@mediatek.com, Robin Murphy <robin.murphy@arm.com>,
- Matthias Kaehlcke <mka@chromium.org>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-scsi@vger.kernel.org, martin.petersen@oracle.com,
+ andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, avri.altman@wdc.com,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ alim.akhtar@samsung.com, matthias.bgg@gmail.com, asutoshd@codeaurora.org,
+ bvanassche@acm.org, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 3, 2019 at 5:38 PM Yong Wu <yong.wu@mediatek.com> wrote:
->
-> MediaTek IOMMU don't have its power-domain. all the consumer connect
-> with smi-larb, then connect with smi-common.
->
->         M4U
->          |
->     smi-common
->          |
->   -------------
->   |         |    ...
->   |         |
-> larb1     larb2
->   |         |
-> vdec       venc
->
-> When the consumer works, it should enable the smi-larb's power which
-> also need enable the smi-common's power firstly.
->
-> Thus, First of all, use the device link connect the consumer and the
-> smi-larbs. then add device link between the smi-larb and smi-common.
->
-> This patch adds device_link between the consumer and the larbs.
->
-> When device_link_add, I add the flag DL_FLAG_STATELESS to avoid calling
-> pm_runtime_xx to keep the original status of clocks. It can avoid two
-> issues:
-> 1) Display HW show fastlogo abnormally reported in [1]. At the beggining,
-> all the clocks are enabled before entering kernel, but the clocks for
-> display HW(always in larb0) will be gated after clk_enable and clk_disable
-> called from device_link_add(->pm_runtime_resume) and rpm_idle. The clock
-> operation happened before display driver probe. At that time, the display
-> HW will be abnormal.
->
-> 2) A deadlock issue reported in [2]. Use DL_FLAG_STATELESS to skip
-> pm_runtime_xx to avoid the deadlock.
->
-> Corresponding, DL_FLAG_AUTOREMOVE_CONSUMER can't be added, then
-> device_link_removed should be added explicitly.
->
-> [1] http://lists.infradead.org/pipermail/linux-mediatek/2019-July/
-> 021500.html
-> [2] https://lore.kernel.org/patchwork/patch/1086569/
->
-> Suggested-by: Tomasz Figa <tfiga@chromium.org>
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Hi Stanley,
+
+On 2020-03-05 12:07, Stanley Chu wrote:
+> Use an enum to specify the host capabilities instead of #defines inside 
+> the
+> structure definition.
+> 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+
+Reviewed-by: Can Guo <cang@codeaurora.org>
+
 > ---
->  drivers/iommu/mtk_iommu.c    | 17 +++++++++++++++++
->  drivers/iommu/mtk_iommu_v1.c | 18 +++++++++++++++++-
->  2 files changed, 34 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> index b138b94..2511b3c 100644
-> --- a/drivers/iommu/mtk_iommu.c
-> +++ b/drivers/iommu/mtk_iommu.c
-> @@ -450,6 +450,9 @@ static int mtk_iommu_add_device(struct device *dev)
->         struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
->         struct mtk_iommu_data *data;
->         struct iommu_group *group;
-> +       struct device_link *link;
-> +       struct device *larbdev;
-> +       unsigned int larbid;
->
->         if (!fwspec || fwspec->ops != &mtk_iommu_ops)
->                 return -ENODEV; /* Not a iommu client device */
-> @@ -461,6 +464,14 @@ static int mtk_iommu_add_device(struct device *dev)
->         if (IS_ERR(group))
->                 return PTR_ERR(group);
->
-> +       /* Link the consumer device with the smi-larb device(supplier) */
-> +       larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
-
-I'll mirror the comment I made on gerrit
-(https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/1361013):
-Maybe I'm missing something here, but for example, on MT8173,
-vcodec_enc: vcodec@18002000 needs to use both larb3 and larb5, isn't
-the code below just adding a link for larb3?
-
-Do we need to iterate over all fwspecs->ids to figure out which larbs
-we need to add links to each of them?
-
-> +       larbdev = data->larb_imu[larbid].dev;
-> +       link = device_link_add(dev, larbdev,
-> +                              DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
-> +       if (!link)
-> +               dev_err(dev, "Unable to link %s\n", dev_name(larbdev));
+>  drivers/scsi/ufs/ufshcd.h | 65 ++++++++++++++++++++++-----------------
+>  1 file changed, 37 insertions(+), 28 deletions(-)
+> 
+> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+> index 4e235cef99bc..49ade1bfd085 100644
+> --- a/drivers/scsi/ufs/ufshcd.h
+> +++ b/drivers/scsi/ufs/ufshcd.h
+> @@ -510,6 +510,43 @@ enum ufshcd_quirks {
+>  	UFSHCD_QUIRK_BROKEN_UFS_HCI_VERSION		= 1 << 5,
+>  };
+> 
+> +enum ufshcd_caps {
+> +	/* Allow dynamic clk gating */
+> +	UFSHCD_CAP_CLK_GATING				= 1 << 0,
 > +
->         iommu_group_put(group);
->         return 0;
->  }
-> @@ -469,6 +480,8 @@ static void mtk_iommu_remove_device(struct device *dev)
->  {
->         struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
->         struct mtk_iommu_data *data;
-> +       struct device *larbdev;
-> +       unsigned int larbid;
->
->         if (!fwspec || fwspec->ops != &mtk_iommu_ops)
->                 return;
-> @@ -476,6 +489,10 @@ static void mtk_iommu_remove_device(struct device *dev)
->         data = fwspec->iommu_priv;
->         iommu_device_unlink(&data->iommu, dev);
->
-> +       larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
-> +       larbdev = data->larb_imu[larbid].dev;
-> +       device_link_remove(dev, larbdev);
+> +	/* Allow hiberb8 with clk gating */
+> +	UFSHCD_CAP_HIBERN8_WITH_CLK_GATING		= 1 << 1,
 > +
->         iommu_group_remove_device(dev);
->         iommu_fwspec_free(dev);
->  }
-> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-> index 2034d72..a7f22a2 100644
-> --- a/drivers/iommu/mtk_iommu_v1.c
-> +++ b/drivers/iommu/mtk_iommu_v1.c
-> @@ -423,7 +423,9 @@ static int mtk_iommu_add_device(struct device *dev)
->         struct of_phandle_iterator it;
->         struct mtk_iommu_data *data;
->         struct iommu_group *group;
-> -       int err;
-> +       struct device_link *link;
-> +       struct device *larbdev;
-> +       int err, larbid;
->
->         of_for_each_phandle(&it, err, dev->of_node, "iommus",
->                         "#iommu-cells", 0) {
-> @@ -466,6 +468,14 @@ static int mtk_iommu_add_device(struct device *dev)
->                 return err;
->         }
->
-> +       /* Link the consumer device with the smi-larb device(supplier) */
-> +       larbid = mt2701_m4u_to_larb(fwspec->ids[0]);
-> +       larbdev = data->larb_imu[larbid].dev;
-> +       link = device_link_add(dev, larbdev,
-> +                              DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
-> +       if (!link)
-> +               dev_err(dev, "Unable to link %s\n", dev_name(larbdev));
+> +	/* Allow dynamic clk scaling */
+> +	UFSHCD_CAP_CLK_SCALING				= 1 << 2,
 > +
->         return iommu_device_link(&data->iommu, dev);
->  }
->
-> @@ -473,6 +483,8 @@ static void mtk_iommu_remove_device(struct device *dev)
->  {
->         struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
->         struct mtk_iommu_data *data;
-> +       struct device *larbdev;
-> +       unsigned int larbid;
->
->         if (!fwspec || fwspec->ops != &mtk_iommu_ops)
->                 return;
-> @@ -480,6 +492,10 @@ static void mtk_iommu_remove_device(struct device *dev)
->         data = fwspec->iommu_priv;
->         iommu_device_unlink(&data->iommu, dev);
->
-> +       larbid = mt2701_m4u_to_larb(fwspec->ids[0]);
-> +       larbdev = data->larb_imu[larbid].dev;
-> +       device_link_remove(dev, larbdev);
+> +	/* Allow auto bkops to enabled during runtime suspend */
+> +	UFSHCD_CAP_AUTO_BKOPS_SUSPEND			= 1 << 3,
 > +
->         iommu_group_remove_device(dev);
->         iommu_fwspec_free(dev);
->  }
-> --
-> 1.9.1
->
+> +	/*
+> +	 * This capability allows host controller driver to use the UFS HCI's
+> +	 * interrupt aggregation capability.
+> +	 * CAUTION: Enabling this might reduce overall UFS throughput.
+> +	 */
+> +	UFSHCD_CAP_INTR_AGGR				= 1 << 4,
+> +
+> +	/*
+> +	 * This capability allows the device auto-bkops to be always enabled
+> +	 * except during suspend (both runtime and suspend).
+> +	 * Enabling this capability means that device will always be allowed
+> +	 * to do background operation when it's active but it might degrade
+> +	 * the performance of ongoing read/write operations.
+> +	 */
+> +	UFSHCD_CAP_KEEP_AUTO_BKOPS_ENABLED_EXCEPT_SUSPEND = 1 << 5,
+> +
+> +	/*
+> +	 * This capability allows host controller driver to automatically
+> +	 * enable runtime power management by itself instead of waiting
+> +	 * for userspace to control the power management.
+> +	 */
+> +	UFSHCD_CAP_RPM_AUTOSUSPEND			= 1 << 6,
+> +};
+> +
+>  /**
+>   * struct ufs_hba - per adapter private structure
+>   * @mmio_base: UFSHCI base register address
+> @@ -662,34 +699,6 @@ struct ufs_hba {
+>  	struct ufs_clk_gating clk_gating;
+>  	/* Control to enable/disable host capabilities */
+>  	u32 caps;
+> -	/* Allow dynamic clk gating */
+> -#define UFSHCD_CAP_CLK_GATING	(1 << 0)
+> -	/* Allow hiberb8 with clk gating */
+> -#define UFSHCD_CAP_HIBERN8_WITH_CLK_GATING (1 << 1)
+> -	/* Allow dynamic clk scaling */
+> -#define UFSHCD_CAP_CLK_SCALING	(1 << 2)
+> -	/* Allow auto bkops to enabled during runtime suspend */
+> -#define UFSHCD_CAP_AUTO_BKOPS_SUSPEND (1 << 3)
+> -	/*
+> -	 * This capability allows host controller driver to use the UFS HCI's
+> -	 * interrupt aggregation capability.
+> -	 * CAUTION: Enabling this might reduce overall UFS throughput.
+> -	 */
+> -#define UFSHCD_CAP_INTR_AGGR (1 << 4)
+> -	/*
+> -	 * This capability allows the device auto-bkops to be always enabled
+> -	 * except during suspend (both runtime and suspend).
+> -	 * Enabling this capability means that device will always be allowed
+> -	 * to do background operation when it's active but it might degrade
+> -	 * the performance of ongoing read/write operations.
+> -	 */
+> -#define UFSHCD_CAP_KEEP_AUTO_BKOPS_ENABLED_EXCEPT_SUSPEND (1 << 5)
+> -	/*
+> -	 * This capability allows host controller driver to automatically
+> -	 * enable runtime power management by itself instead of waiting
+> -	 * for userspace to control the power management.
+> -	 */
+> -#define UFSHCD_CAP_RPM_AUTOSUSPEND (1 << 6)
+> 
+>  	struct devfreq *devfreq;
+>  	struct ufs_clk_scaling clk_scaling;
 
 _______________________________________________
 Linux-mediatek mailing list
