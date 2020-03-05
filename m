@@ -2,78 +2,80 @@ Return-Path: <SRS0=EkB4=4W=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A2E4C3F2D1
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 04:11:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BB34EC3F2CD
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 05:14:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EA06B20842
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 04:11:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8EF7D2146E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 05:14:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="owrJrYDa";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="YTBinTgg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA06B20842
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JvL24t45";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="NrFhDK9B"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8EF7D2146E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IWyQ1qUc6H9ngPYVfAmi0eD/rmbYYR/jhnfB9ci74fM=; b=owrJrYDaC6dGIK
-	bKg9rXIi6K0m+veUvf0urdbcJZzokv8Oq8Vv2nkfgGsh7VgwlJWfwwIo3jrXlKBNrufcU39sNdQ8u
-	qCbbbfo5uW9PB//665oPnGD3bGNdOuw+q+Rd4SIJVe/MrrY/YNnGnxt8a+8umCK8vWuf2NmEMzebT
-	fG4X2LvpnASHQ6X3L3NQMrDhSEwjz/9THWmeaEfz1TtmUolICWpTxpzWK8F7c13PW0PbpfObPd+JI
-	1PyK+jqFCllxsiMzrzjixd6iD3JUwweHmg8yow8BkEhZXaWg0lhmNx7fRSHIqPEIEvez7JNgJuLUJ
-	Rrz8IHm75iuw2Po2BdVA==;
+	List-Owner; bh=8ZenYDGh8Am7wHifQzFYJIMUwN4HBC3SDr9exBZlGcY=; b=JvL24t45GEh93t
+	FSRyHwv+fNwV4iGDhXW0ymhvmrjLadAbAbQTVkPbmgXmZnmOBRtChLNOSoliYosqPqAkGnLalZuUl
+	FM7iJ4R8saglb+RduZ9xxuK/EeE/4pGyIM79uRumy0WxSXtDiKxG/mbBAib3NVxCT8KcqMobMk2x7
+	Xjk/hXOfKe1UGW3B29XSTw0xs/gd8c/UA8b0id4cpLmrQVdBB21kgrlJFtf5wg5W34Cl3Q4XNcgI+
+	afbp9zeFmOWVS5Ryoo/Oh7dFc7z/b1tdwcWbRtdMygf37KGn4fy4hEcSlV+DILfcpoZ2F0H8bSLXW
+	6ik/yvmoe3vLTd9a9L7w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9hqx-0005LJ-U5; Thu, 05 Mar 2020 04:11:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1j9iq6-0007oc-Ug; Thu, 05 Mar 2020 05:14:30 +0000
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9hqJ-0004c1-4t; Thu, 05 Mar 2020 04:10:40 +0000
-X-UUID: c8c1f227464f4239910fc486e4bf776e-20200304
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=GviJRMcOaJl/gYdiZFpBqNHJakGWJUdloIyo32jmEI0=; 
- b=YTBinTggvMZ0JZ6e98U6bbeT1dn9NQImVyczQS4ja3blnVjkcGJia5/oyL3Q0uUGWBIRQBsXwCbITgUXf7MX/h14l9W1ZSmltPCK84cwKWHYZ8DoLX7QC90UiY9AAAflBpzRhDPU1X/fj1WQyay32lF/w1+8D986YryE+hAJpa0=;
-X-UUID: c8c1f227464f4239910fc486e4bf776e-20200304
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1888521819; Wed, 04 Mar 2020 20:10:33 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 4 Mar 2020 20:08:02 -0800
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 5 Mar 2020 12:04:23 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Thu, 5 Mar 2020 12:06:20 +0800
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
- <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v1 1/4] scsi: ufs: remove init_prefetch_data in struct ufs_hba
-Date: Thu, 5 Mar 2020 12:07:01 +0800
-Message-ID: <20200305040704.10645-2-stanley.chu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200305040704.10645-1-stanley.chu@mediatek.com>
-References: <20200305040704.10645-1-stanley.chu@mediatek.com>
+ id 1j9iq3-0007nC-T0
+ for linux-mediatek@lists.infradead.org; Thu, 05 Mar 2020 05:14:29 +0000
+Received: by mail-qk1-x742.google.com with SMTP id z12so4109977qkg.12
+ for <linux-mediatek@lists.infradead.org>; Wed, 04 Mar 2020 21:14:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=rTn3aZiOBdvpLaF9in60GflGuo7nuzt/CIGjImwtiUM=;
+ b=NrFhDK9B12p+3RdamIUYum/ORdm0XLJgoFeESAo99664Tf9pb1E6TcqGodgrLcM5BU
+ 6YUyipKpSxuCMqCS5XxgM87hpGBtG6kcUPm3Zq2El6LJ+BtsgCxRXTFOKSp/G+nfZOOI
+ T1OpoH0qKLaMjQXRWCU3Yc3tRnguEKVaKs5oI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=rTn3aZiOBdvpLaF9in60GflGuo7nuzt/CIGjImwtiUM=;
+ b=ezXMowKtXc6dAVzaGOuTCFCmOYyJ8weWxy91sHxqrHNPyeBFRJGYskIwFO8hah2297
+ UqdeWg5wpH/dg1U/sMv0SxFnbPspwAV8y3D7uFDMxzQr83pjLtqPrOS+Xcdg264md+dD
+ IcwZflyEEboXE8HsGhzbC2Lijqb/UZh1hxVnyx/cKAFQ+PAMKu3Ee0xKe1nRlsQfjzOp
+ Z0NadEwUO2CLHw4E8cQARVcOiom7AJYCCLX5p5aaS+RlVIWOX+mRsGSj2FBEQ46K49ed
+ GTag3F+d7N9FDKeBgVjoXJ28/qH33Zf+iOGftoV0TR6cjQljqJnHQh3qyeHkgwH3wo6j
+ euhg==
+X-Gm-Message-State: ANhLgQ3reyFXwS0Q1uzkitPrF8hRp96tLkLJGMbEOejEpvwVh05x0il4
+ VaXR2DFk+qP4S6e/q7Qlse5FE8EeCGERSyOyFktJlg==
+X-Google-Smtp-Source: ADFU+vsjlqRt25RAnjpqBwwBqr94htBKQelMZzFwJ5kzWW9Pubmn0eresOonSxZoZDexvuo0WFSMiY0iBLfQk0M8fiw=
+X-Received: by 2002:a37:c47:: with SMTP id 68mr996909qkm.144.1583385266606;
+ Wed, 04 Mar 2020 21:14:26 -0800 (PST)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 1BA22F773C9DEB48C50105DEBB776B0A9E3AD8977A4E010EFA5FEDB97C01BB6F2000:8
-X-MTK: N
+References: <1567503456-24725-1-git-send-email-yong.wu@mediatek.com>
+ <1567503456-24725-4-git-send-email-yong.wu@mediatek.com>
+In-Reply-To: <1567503456-24725-4-git-send-email-yong.wu@mediatek.com>
+From: Nicolas Boichat <drinkcat@chromium.org>
+Date: Thu, 5 Mar 2020 13:14:14 +0800
+Message-ID: <CANMq1KAOHFF43708ktvhEU6EYZv_s7Wp+kUwFD7h0bwVrQpyqw@mail.gmail.com>
+Subject: Re: [PATCH v3 03/14] iommu/mediatek: Add device_link between the
+ consumer and the larb devices
+To: Yong Wu <yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200304_201039_197105_B966AA81 
-X-CRM114-Status: UNSURE (   8.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200304_211427_963140_F06E0535 
+X-CRM114-Status: GOOD (  25.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,87 +87,186 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Stanley Chu <stanley.chu@mediatek.com>, bvanassche@acm.org,
- andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, beanhuo@micron.com,
- linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
+Cc: youlin.pei@mediatek.com, Devicetree List <devicetree@vger.kernel.org>,
+ cui.zhang@mediatek.com, srv_heupstream <srv_heupstream@mediatek.com>,
+ chao.hao@mediatek.com, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will.deacon@arm.com>, lkml <linux-kernel@vger.kernel.org>,
+ Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>,
+ iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, ming-fan.chen@mediatek.com,
+ anan.sun@mediatek.com, Robin Murphy <robin.murphy@arm.com>,
+ Matthias Kaehlcke <mka@chromium.org>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Struct init_prefetch_data currently is used privately in
-ufshcd_init_icc_levels(), thus it can be removed from struct ufs_hba.
+On Tue, Sep 3, 2019 at 5:38 PM Yong Wu <yong.wu@mediatek.com> wrote:
+>
+> MediaTek IOMMU don't have its power-domain. all the consumer connect
+> with smi-larb, then connect with smi-common.
+>
+>         M4U
+>          |
+>     smi-common
+>          |
+>   -------------
+>   |         |    ...
+>   |         |
+> larb1     larb2
+>   |         |
+> vdec       venc
+>
+> When the consumer works, it should enable the smi-larb's power which
+> also need enable the smi-common's power firstly.
+>
+> Thus, First of all, use the device link connect the consumer and the
+> smi-larbs. then add device link between the smi-larb and smi-common.
+>
+> This patch adds device_link between the consumer and the larbs.
+>
+> When device_link_add, I add the flag DL_FLAG_STATELESS to avoid calling
+> pm_runtime_xx to keep the original status of clocks. It can avoid two
+> issues:
+> 1) Display HW show fastlogo abnormally reported in [1]. At the beggining,
+> all the clocks are enabled before entering kernel, but the clocks for
+> display HW(always in larb0) will be gated after clk_enable and clk_disable
+> called from device_link_add(->pm_runtime_resume) and rpm_idle. The clock
+> operation happened before display driver probe. At that time, the display
+> HW will be abnormal.
+>
+> 2) A deadlock issue reported in [2]. Use DL_FLAG_STATELESS to skip
+> pm_runtime_xx to avoid the deadlock.
+>
+> Corresponding, DL_FLAG_AUTOREMOVE_CONSUMER can't be added, then
+> device_link_removed should be added explicitly.
+>
+> [1] http://lists.infradead.org/pipermail/linux-mediatek/2019-July/
+> 021500.html
+> [2] https://lore.kernel.org/patchwork/patch/1086569/
+>
+> Suggested-by: Tomasz Figa <tfiga@chromium.org>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>  drivers/iommu/mtk_iommu.c    | 17 +++++++++++++++++
+>  drivers/iommu/mtk_iommu_v1.c | 18 +++++++++++++++++-
+>  2 files changed, 34 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index b138b94..2511b3c 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -450,6 +450,9 @@ static int mtk_iommu_add_device(struct device *dev)
+>         struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+>         struct mtk_iommu_data *data;
+>         struct iommu_group *group;
+> +       struct device_link *link;
+> +       struct device *larbdev;
+> +       unsigned int larbid;
+>
+>         if (!fwspec || fwspec->ops != &mtk_iommu_ops)
+>                 return -ENODEV; /* Not a iommu client device */
+> @@ -461,6 +464,14 @@ static int mtk_iommu_add_device(struct device *dev)
+>         if (IS_ERR(group))
+>                 return PTR_ERR(group);
+>
+> +       /* Link the consumer device with the smi-larb device(supplier) */
+> +       larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
 
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/scsi/ufs/ufshcd.c | 15 ++++++---------
- drivers/scsi/ufs/ufshcd.h |  2 --
- 2 files changed, 6 insertions(+), 11 deletions(-)
+I'll mirror the comment I made on gerrit
+(https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/1361013):
+Maybe I'm missing something here, but for example, on MT8173,
+vcodec_enc: vcodec@18002000 needs to use both larb3 and larb5, isn't
+the code below just adding a link for larb3?
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index e987fa3a77c7..ed61ecb98b2d 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -6494,6 +6494,7 @@ static void ufshcd_init_icc_levels(struct ufs_hba *hba)
- {
- 	int ret;
- 	int buff_len = hba->desc_size.pwr_desc;
-+	u32 icc_level;
- 	u8 *desc_buf;
- 
- 	desc_buf = kmalloc(buff_len, GFP_KERNEL);
-@@ -6509,21 +6510,17 @@ static void ufshcd_init_icc_levels(struct ufs_hba *hba)
- 		goto out;
- 	}
- 
--	hba->init_prefetch_data.icc_level =
--			ufshcd_find_max_sup_active_icc_level(hba,
--			desc_buf, buff_len);
--	dev_dbg(hba->dev, "%s: setting icc_level 0x%x",
--			__func__, hba->init_prefetch_data.icc_level);
-+	icc_level =
-+		ufshcd_find_max_sup_active_icc_level(hba, desc_buf, buff_len);
-+	dev_dbg(hba->dev, "%s: setting icc_level 0x%x",	__func__, icc_level);
- 
- 	ret = ufshcd_query_attr_retry(hba, UPIU_QUERY_OPCODE_WRITE_ATTR,
--		QUERY_ATTR_IDN_ACTIVE_ICC_LVL, 0, 0,
--		&hba->init_prefetch_data.icc_level);
-+		QUERY_ATTR_IDN_ACTIVE_ICC_LVL, 0, 0, &icc_level);
- 
- 	if (ret)
- 		dev_err(hba->dev,
- 			"%s: Failed configuring bActiveICCLevel = %d ret = %d",
--			__func__, hba->init_prefetch_data.icc_level , ret);
--
-+			__func__, icc_level, ret);
- out:
- 	kfree(desc_buf);
- }
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index 5c10777154fc..4e235cef99bc 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -541,7 +541,6 @@ enum ufshcd_quirks {
-  * @intr_mask: Interrupt Mask Bits
-  * @ee_ctrl_mask: Exception event control mask
-  * @is_powered: flag to check if HBA is powered
-- * @init_prefetch_data: data pre-fetched during initialization
-  * @eh_work: Worker to handle UFS errors that require s/w attention
-  * @eeh_work: Worker to handle exception events
-  * @errors: HBA errors
-@@ -627,7 +626,6 @@ struct ufs_hba {
- 	u32 intr_mask;
- 	u16 ee_ctrl_mask;
- 	bool is_powered;
--	struct ufs_init_prefetch init_prefetch_data;
- 
- 	/* Work Queues */
- 	struct work_struct eh_work;
--- 
-2.18.0
+Do we need to iterate over all fwspecs->ids to figure out which larbs
+we need to add links to each of them?
+
+> +       larbdev = data->larb_imu[larbid].dev;
+> +       link = device_link_add(dev, larbdev,
+> +                              DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
+> +       if (!link)
+> +               dev_err(dev, "Unable to link %s\n", dev_name(larbdev));
+> +
+>         iommu_group_put(group);
+>         return 0;
+>  }
+> @@ -469,6 +480,8 @@ static void mtk_iommu_remove_device(struct device *dev)
+>  {
+>         struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+>         struct mtk_iommu_data *data;
+> +       struct device *larbdev;
+> +       unsigned int larbid;
+>
+>         if (!fwspec || fwspec->ops != &mtk_iommu_ops)
+>                 return;
+> @@ -476,6 +489,10 @@ static void mtk_iommu_remove_device(struct device *dev)
+>         data = fwspec->iommu_priv;
+>         iommu_device_unlink(&data->iommu, dev);
+>
+> +       larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
+> +       larbdev = data->larb_imu[larbid].dev;
+> +       device_link_remove(dev, larbdev);
+> +
+>         iommu_group_remove_device(dev);
+>         iommu_fwspec_free(dev);
+>  }
+> diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+> index 2034d72..a7f22a2 100644
+> --- a/drivers/iommu/mtk_iommu_v1.c
+> +++ b/drivers/iommu/mtk_iommu_v1.c
+> @@ -423,7 +423,9 @@ static int mtk_iommu_add_device(struct device *dev)
+>         struct of_phandle_iterator it;
+>         struct mtk_iommu_data *data;
+>         struct iommu_group *group;
+> -       int err;
+> +       struct device_link *link;
+> +       struct device *larbdev;
+> +       int err, larbid;
+>
+>         of_for_each_phandle(&it, err, dev->of_node, "iommus",
+>                         "#iommu-cells", 0) {
+> @@ -466,6 +468,14 @@ static int mtk_iommu_add_device(struct device *dev)
+>                 return err;
+>         }
+>
+> +       /* Link the consumer device with the smi-larb device(supplier) */
+> +       larbid = mt2701_m4u_to_larb(fwspec->ids[0]);
+> +       larbdev = data->larb_imu[larbid].dev;
+> +       link = device_link_add(dev, larbdev,
+> +                              DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
+> +       if (!link)
+> +               dev_err(dev, "Unable to link %s\n", dev_name(larbdev));
+> +
+>         return iommu_device_link(&data->iommu, dev);
+>  }
+>
+> @@ -473,6 +483,8 @@ static void mtk_iommu_remove_device(struct device *dev)
+>  {
+>         struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+>         struct mtk_iommu_data *data;
+> +       struct device *larbdev;
+> +       unsigned int larbid;
+>
+>         if (!fwspec || fwspec->ops != &mtk_iommu_ops)
+>                 return;
+> @@ -480,6 +492,10 @@ static void mtk_iommu_remove_device(struct device *dev)
+>         data = fwspec->iommu_priv;
+>         iommu_device_unlink(&data->iommu, dev);
+>
+> +       larbid = mt2701_m4u_to_larb(fwspec->ids[0]);
+> +       larbdev = data->larb_imu[larbid].dev;
+> +       device_link_remove(dev, larbdev);
+> +
+>         iommu_group_remove_device(dev);
+>         iommu_fwspec_free(dev);
+>  }
+> --
+> 1.9.1
+>
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
