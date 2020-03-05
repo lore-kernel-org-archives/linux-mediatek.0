@@ -2,45 +2,45 @@ Return-Path: <SRS0=EkB4=4W=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C5965C3F2D1
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:01:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 37DB9C3F2D1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:01:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9804B2072D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:01:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 038922072D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 16:01:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z194DvV7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9804B2072D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mE7E3OSN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 038922072D
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=QkBAziUYGhaCAz/z+Hqz0kuyvDABPYEBdU0OjVNYP7w=; b=Z194DvV7P0px6J
-	dW06meeHKFvPcNdSRjSpn+Kuvjr22c67ajV51qFliD6EnNGm3tOP1Gyu/B+moEQPZH16TKXKsj9uC
-	LlOUEHLgOllC0+kKMiCHTKJYYTDjoCd2ar/1+waLYHInJH5T5V37OKbwaQuZQFD4t8V9jjKJV2s4o
-	hvfx5Cghs156fSulOgB6H/XjxxmfOjTmHt5XjSlNwBKF6TnBnBI87CJ612SHDElfXlAebqZf+Cbdd
-	Jww5lYzyYzgtT4Xt0vD0Yh7LM08qfSl6iIP1/2B4dVpLo2koLVeDg8oEVSTy8GLf9k0KDNjsIPKiO
-	88TbJWIfso9IGPRL0oCA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=n2IQZWkxoqaleZcPuGOsZiq5hnKP070qURX6N9dLElQ=; b=mE7E3OSNvFzy6J
+	bMbf3IO0Bx/1AN5VnpTfZ2BltIGRjr/SVxgBtAyFLTmm5JURKwzSaR70S4ha/bJ0PvUt9f8sYI8Or
+	vWyOWfxx2ffXwbyIRrr9SVpfN9KZfZmlHb7Rc52JyiMd3dGSWFYWGLV8KnHAHYqXYlUZ7sSLaJs9w
+	mrBUNckA3xtbpoSb3HeM3WCaRqTtm4C+0Jj++5C02pD0pvN5y9CfYiSh95pCxvhIZhC44ggxOaams
+	S2puIKbVCktfhEm2RSZLLQzqcDTlrxWnLj1ZV7eAZeWNBBPpg0VkXuRaU9CmGF04HcXKjwC8IS2V7
+	a2oUAGqYJAft6WGGA8cg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9sw8-0008AA-16; Thu, 05 Mar 2020 16:01:24 +0000
+	id 1j9swC-0008EF-1v; Thu, 05 Mar 2020 16:01:28 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9suu-0006LG-MR; Thu, 05 Mar 2020 16:00:15 +0000
+ id 1j9suz-0006iH-LS; Thu, 05 Mar 2020 16:00:18 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 5CD7BAF9F;
- Thu,  5 Mar 2020 15:59:59 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id D8107B042;
+ Thu,  5 Mar 2020 16:00:10 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: airlied@linux.ie, daniel@ffwll.ch, sam@ravnborg.org, abrodkin@synopsys.com,
  bbrezillon@kernel.org, nicolas.ferre@microchip.com,
@@ -62,14 +62,16 @@ To: airlied@linux.ie, daniel@ffwll.ch, sam@ravnborg.org, abrodkin@synopsys.com,
  tomi.valkeinen@ti.com, eric@anholt.net, kraxel@redhat.com,
  rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
  sebastian.reichel@collabora.com
-Subject: [PATCH 00/22] drm: Convert drivers to drm_simple_encoder_init()
-Date: Thu,  5 Mar 2020 16:59:28 +0100
-Message-Id: <20200305155950.2705-1-tzimmermann@suse.de>
+Subject: [PATCH 12/22] drm/rockchip: Use simple encoder
+Date: Thu,  5 Mar 2020 16:59:40 +0100
+Message-Id: <20200305155950.2705-13-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20200305155950.2705-1-tzimmermann@suse.de>
+References: <20200305155950.2705-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200305_080009_101356_6A5A210A 
-X-CRM114-Status: GOOD (  12.56  )
+X-CRM114-CacheID: sfid-20200305_080014_072106_B227EF05 
+X-CRM114-Status: GOOD (  13.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,126 +92,296 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A call to drm_simple_encoder_init() initializes an encoder without
-further functionality. It only provides the destroy callback to
-cleanup the encoder's state. Only few drivers implement more
-sophisticated encoders than that. Most drivers implement such a
-simple encoder and can use drm_simple_encoder_init() instead.
+The rockchip driver uses empty implementations for its encoders. Replace
+the code with the generic simple encoder.
 
-The patchset converts drivers where the encoder's instance is
-embedded in a larger data structure. The driver releases the
-memory during cleanup. Each patch replaces drm_encoder_init() with
-drm_simple_encoder_init() and removes the (now unused) driver's
-encoder functions.
+Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+---
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c |  9 +++------
+ drivers/gpu/drm/rockchip/cdn-dp-core.c          |  9 +++------
+ drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c |  8 ++------
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c     |  8 ++------
+ drivers/gpu/drm/rockchip/inno_hdmi.c            |  8 ++------
+ drivers/gpu/drm/rockchip/rk3066_hdmi.c          |  8 ++------
+ drivers/gpu/drm/rockchip/rockchip_lvds.c        | 10 +++-------
+ drivers/gpu/drm/rockchip/rockchip_rgb.c         |  8 ++------
+ 8 files changed, 19 insertions(+), 49 deletions(-)
 
-While the patchset is fairly large, the indiviual patches are self-
-contained and can be merged independently from each other. The
-simple-encoder functionality is currently in drm-misc-next, where
-these patches could go as well.
-
-Future directions: There's another common case where the driver
-calls kzalloc() plus drm_encoder_init(). Such drivers are not
-handled by this patchset. The plan here is to use a simple encoder
-with either managed memory allocation (once it's merged), or embed
-the encoder in a larger data structure and drop kzalloc() entirely.
-
-The patchset has been compile-tested on x86-64, aarch64 and arm.
-
-Thomas Zimmermann (22):
-  drm/arc: Use simple encoder
-  drm/atmel-hlcdc: Use simple encoder
-  drm/exynos: Use simple encoder
-  drm/fsl-dcu: Use simple encoder
-  drm/gma500: Use simple encoder
-  drm/hisilicon/kirin: Use simple encoder
-  drm/i2c/tda998x: Use simple encoder
-  drm/imx: Use simple encoder
-  drm/ingenic: Use simple encoder
-  drm/mediatek: Use simple encoder
-  drm/rcar-du: Use simple encoder
-  drm/rockchip: Use simple encoder
-  drm/shmobile: Use simple encoder
-  drm/sun4i: Use simple encoder
-  drm/tegra: Use simple encoder
-  drm/tidss: Use simple encoder
-  drm/tilcdc: Use simple encoder
-  drm/vc4: Use simple encoder
-  drm/virtgpu: Use simple encoder
-  drm/vkms: Use simple encoder
-  drm/writeback: Use simple encoder
-  drm/zte: Use simple encoder
-
- drivers/gpu/drm/arc/arcpgu_hdmi.c              | 10 +++-------
- drivers/gpu/drm/arc/arcpgu_sim.c               |  8 ++------
- .../gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c   | 12 ++++--------
- drivers/gpu/drm/drm_writeback.c                | 10 +++-------
- drivers/gpu/drm/exynos/exynos_dp.c             |  8 ++------
- drivers/gpu/drm/exynos/exynos_drm_dpi.c        |  8 ++------
- drivers/gpu/drm/exynos/exynos_drm_dsi.c        |  8 ++------
- drivers/gpu/drm/exynos/exynos_drm_vidi.c       |  8 ++------
- drivers/gpu/drm/exynos/exynos_hdmi.c           |  8 ++------
- drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_rgb.c      | 14 +++-----------
- drivers/gpu/drm/gma500/cdv_intel_crt.c         | 14 +++-----------
- drivers/gpu/drm/gma500/cdv_intel_dp.c          | 16 +++-------------
- drivers/gpu/drm/gma500/cdv_intel_hdmi.c        |  4 ++--
- drivers/gpu/drm/gma500/cdv_intel_lvds.c        | 17 +++--------------
- drivers/gpu/drm/gma500/mdfld_dsi_dpi.c         |  7 +++----
- drivers/gpu/drm/gma500/mdfld_output.h          |  1 -
- drivers/gpu/drm/gma500/mdfld_tmd_vid.c         |  6 ------
- drivers/gpu/drm/gma500/mdfld_tpo_vid.c         |  6 ------
- drivers/gpu/drm/gma500/oaktrail_hdmi.c         | 14 ++------------
- drivers/gpu/drm/gma500/oaktrail_lvds.c         |  5 +++--
- drivers/gpu/drm/gma500/psb_intel_drv.h         |  1 -
- drivers/gpu/drm/gma500/psb_intel_lvds.c        | 18 +++---------------
- drivers/gpu/drm/gma500/tc35876x-dsi-lvds.c     |  5 -----
- drivers/gpu/drm/hisilicon/kirin/dw_drm_dsi.c   |  8 ++------
- drivers/gpu/drm/i2c/tda998x_drv.c              | 14 +++-----------
- drivers/gpu/drm/imx/dw_hdmi-imx.c              |  8 ++------
- drivers/gpu/drm/imx/imx-drm-core.c             |  6 ------
- drivers/gpu/drm/imx/imx-drm.h                  |  1 -
- drivers/gpu/drm/imx/imx-ldb.c                  |  8 ++------
- drivers/gpu/drm/imx/imx-tve.c                  |  8 ++------
- drivers/gpu/drm/imx/parallel-display.c         |  8 ++------
- drivers/gpu/drm/ingenic/ingenic-drm.c          |  9 +++------
- drivers/gpu/drm/mediatek/mtk_dpi.c             | 14 +++-----------
- drivers/gpu/drm/mediatek/mtk_dsi.c             | 14 +++-----------
- drivers/gpu/drm/rcar-du/rcar_du_encoder.c      | 14 +++-----------
- .../gpu/drm/rockchip/analogix_dp-rockchip.c    |  9 +++------
- drivers/gpu/drm/rockchip/cdn-dp-core.c         |  9 +++------
- .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c    |  8 ++------
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c    |  8 ++------
- drivers/gpu/drm/rockchip/inno_hdmi.c           |  8 ++------
- drivers/gpu/drm/rockchip/rk3066_hdmi.c         |  8 ++------
- drivers/gpu/drm/rockchip/rockchip_lvds.c       | 10 +++-------
- drivers/gpu/drm/rockchip/rockchip_rgb.c        |  8 ++------
- drivers/gpu/drm/shmobile/shmob_drm_crtc.c      | 14 +++-----------
- drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c         | 12 +++---------
- drivers/gpu/drm/sun4i/sun4i_lvds.c             | 12 +++---------
- drivers/gpu/drm/sun4i/sun4i_rgb.c              | 17 +++--------------
- drivers/gpu/drm/sun4i/sun4i_tv.c               | 17 +++--------------
- drivers/gpu/drm/sun4i/sun6i_mipi_dsi.c         | 12 +++---------
- drivers/gpu/drm/sun4i/sun8i_dw_hdmi.c          |  8 ++------
- drivers/gpu/drm/tegra/drm.h                    |  2 --
- drivers/gpu/drm/tegra/dsi.c                    | 10 +++-------
- drivers/gpu/drm/tegra/hdmi.c                   |  9 +++------
- drivers/gpu/drm/tegra/output.c                 |  6 +-----
- drivers/gpu/drm/tegra/rgb.c                    |  8 ++------
- drivers/gpu/drm/tegra/sor.c                    |  8 ++------
- drivers/gpu/drm/tidss/tidss_encoder.c          | 10 +++-------
- drivers/gpu/drm/tilcdc/tilcdc_external.c       | 10 +++-------
- drivers/gpu/drm/tilcdc/tilcdc_panel.c          |  8 ++------
- drivers/gpu/drm/vc4/vc4_dpi.c                  |  8 ++------
- drivers/gpu/drm/vc4/vc4_dsi.c                  | 15 +++------------
- drivers/gpu/drm/vc4/vc4_hdmi.c                 | 17 ++++-------------
- drivers/gpu/drm/vc4/vc4_vec.c                  |  8 ++------
- drivers/gpu/drm/virtio/virtgpu_display.c       |  8 ++------
- drivers/gpu/drm/vkms/vkms_output.c             |  8 ++------
- drivers/gpu/drm/zte/zx_hdmi.c                  |  8 ++------
- drivers/gpu/drm/zte/zx_tvenc.c                 |  8 ++------
- drivers/gpu/drm/zte/zx_vga.c                   |  8 ++------
- 68 files changed, 151 insertions(+), 488 deletions(-)
-
---
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index f38f5e113c6b..848522797314 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -26,6 +26,7 @@
+ #include <drm/drm_of.h>
+ #include <drm/drm_panel.h>
+ #include <drm/drm_probe_helper.h>
++#include <drm/drm_simple_kms_helper.h>
+ 
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_drm_vop.h"
+@@ -258,10 +259,6 @@ static struct drm_encoder_helper_funcs rockchip_dp_encoder_helper_funcs = {
+ 	.atomic_check = rockchip_dp_drm_encoder_atomic_check,
+ };
+ 
+-static struct drm_encoder_funcs rockchip_dp_encoder_funcs = {
+-	.destroy = drm_encoder_cleanup,
+-};
+-
+ static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
+ {
+ 	struct device *dev = dp->dev;
+@@ -309,8 +306,8 @@ static int rockchip_dp_drm_create_encoder(struct rockchip_dp_device *dp)
+ 							     dev->of_node);
+ 	DRM_DEBUG_KMS("possible_crtcs = 0x%x\n", encoder->possible_crtcs);
+ 
+-	ret = drm_encoder_init(drm_dev, encoder, &rockchip_dp_encoder_funcs,
+-			       DRM_MODE_ENCODER_TMDS, NULL);
++	ret = drm_simple_encoder_init(drm_dev, encoder,
++				      DRM_MODE_ENCODER_TMDS);
+ 	if (ret) {
+ 		DRM_ERROR("failed to initialize encoder with drm\n");
+ 		return ret;
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+index eed594bd38d3..06f85138b51b 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+@@ -20,6 +20,7 @@
+ #include <drm/drm_edid.h>
+ #include <drm/drm_of.h>
+ #include <drm/drm_probe_helper.h>
++#include <drm/drm_simple_kms_helper.h>
+ 
+ #include "cdn-dp-core.h"
+ #include "cdn-dp-reg.h"
+@@ -689,10 +690,6 @@ static const struct drm_encoder_helper_funcs cdn_dp_encoder_helper_funcs = {
+ 	.atomic_check = cdn_dp_encoder_atomic_check,
+ };
+ 
+-static const struct drm_encoder_funcs cdn_dp_encoder_funcs = {
+-	.destroy = drm_encoder_cleanup,
+-};
+-
+ static int cdn_dp_parse_dt(struct cdn_dp_device *dp)
+ {
+ 	struct device *dev = dp->dev;
+@@ -1030,8 +1027,8 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
+ 							     dev->of_node);
+ 	DRM_DEBUG_KMS("possible_crtcs = 0x%x\n", encoder->possible_crtcs);
+ 
+-	ret = drm_encoder_init(drm_dev, encoder, &cdn_dp_encoder_funcs,
+-			       DRM_MODE_ENCODER_TMDS, NULL);
++	ret = drm_simple_encoder_init(drm_dev, encoder,
++				      DRM_MODE_ENCODER_TMDS);
+ 	if (ret) {
+ 		DRM_ERROR("failed to initialize encoder with drm\n");
+ 		return ret;
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+index 6e1270e45f97..3feff0c45b3f 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+@@ -21,6 +21,7 @@
+ #include <drm/bridge/dw_mipi_dsi.h>
+ #include <drm/drm_mipi_dsi.h>
+ #include <drm/drm_of.h>
++#include <drm/drm_simple_kms_helper.h>
+ 
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_drm_vop.h"
+@@ -789,10 +790,6 @@ dw_mipi_dsi_encoder_helper_funcs = {
+ 	.disable = dw_mipi_dsi_encoder_disable,
+ };
+ 
+-static const struct drm_encoder_funcs dw_mipi_dsi_encoder_funcs = {
+-	.destroy = drm_encoder_cleanup,
+-};
+-
+ static int rockchip_dsi_drm_create_encoder(struct dw_mipi_dsi_rockchip *dsi,
+ 					   struct drm_device *drm_dev)
+ {
+@@ -802,8 +799,7 @@ static int rockchip_dsi_drm_create_encoder(struct dw_mipi_dsi_rockchip *dsi,
+ 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm_dev,
+ 							     dsi->dev->of_node);
+ 
+-	ret = drm_encoder_init(drm_dev, encoder, &dw_mipi_dsi_encoder_funcs,
+-			       DRM_MODE_ENCODER_DSI, NULL);
++	ret = drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_DSI);
+ 	if (ret) {
+ 		DRM_ERROR("Failed to initialize encoder with drm\n");
+ 		return ret;
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 7f56d8c3491d..121aa8a63a76 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -14,6 +14,7 @@
+ #include <drm/drm_edid.h>
+ #include <drm/drm_of.h>
+ #include <drm/drm_probe_helper.h>
++#include <drm/drm_simple_kms_helper.h>
+ 
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_drm_vop.h"
+@@ -237,10 +238,6 @@ dw_hdmi_rockchip_mode_valid(struct drm_connector *connector,
+ 	return (valid) ? MODE_OK : MODE_BAD;
+ }
+ 
+-static const struct drm_encoder_funcs dw_hdmi_rockchip_encoder_funcs = {
+-	.destroy = drm_encoder_cleanup,
+-};
+-
+ static void dw_hdmi_rockchip_encoder_disable(struct drm_encoder *encoder)
+ {
+ }
+@@ -546,8 +543,7 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 	}
+ 
+ 	drm_encoder_helper_add(encoder, &dw_hdmi_rockchip_encoder_helper_funcs);
+-	drm_encoder_init(drm, encoder, &dw_hdmi_rockchip_encoder_funcs,
+-			 DRM_MODE_ENCODER_TMDS, NULL);
++	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
+ 
+ 	platform_set_drvdata(pdev, hdmi);
+ 
+diff --git a/drivers/gpu/drm/rockchip/inno_hdmi.c b/drivers/gpu/drm/rockchip/inno_hdmi.c
+index e5864e823020..7afdc54eb3ec 100644
+--- a/drivers/gpu/drm/rockchip/inno_hdmi.c
++++ b/drivers/gpu/drm/rockchip/inno_hdmi.c
+@@ -19,6 +19,7 @@
+ #include <drm/drm_edid.h>
+ #include <drm/drm_of.h>
+ #include <drm/drm_probe_helper.h>
++#include <drm/drm_simple_kms_helper.h>
+ 
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_drm_vop.h"
+@@ -532,10 +533,6 @@ static struct drm_encoder_helper_funcs inno_hdmi_encoder_helper_funcs = {
+ 	.atomic_check = inno_hdmi_encoder_atomic_check,
+ };
+ 
+-static struct drm_encoder_funcs inno_hdmi_encoder_funcs = {
+-	.destroy = drm_encoder_cleanup,
+-};
+-
+ static enum drm_connector_status
+ inno_hdmi_connector_detect(struct drm_connector *connector, bool force)
+ {
+@@ -617,8 +614,7 @@ static int inno_hdmi_register(struct drm_device *drm, struct inno_hdmi *hdmi)
+ 		return -EPROBE_DEFER;
+ 
+ 	drm_encoder_helper_add(encoder, &inno_hdmi_encoder_helper_funcs);
+-	drm_encoder_init(drm, encoder, &inno_hdmi_encoder_funcs,
+-			 DRM_MODE_ENCODER_TMDS, NULL);
++	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
+ 
+ 	hdmi->connector.polled = DRM_CONNECTOR_POLL_HPD;
+ 
+diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+index fe203d38664e..1c546c3a8998 100644
+--- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
++++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+@@ -6,6 +6,7 @@
+ 
+ #include <drm/drm_of.h>
+ #include <drm/drm_probe_helper.h>
++#include <drm/drm_simple_kms_helper.h>
+ 
+ #include <linux/clk.h>
+ #include <linux/mfd/syscon.h>
+@@ -451,10 +452,6 @@ struct drm_encoder_helper_funcs rk3066_hdmi_encoder_helper_funcs = {
+ 	.atomic_check = rk3066_hdmi_encoder_atomic_check,
+ };
+ 
+-static const struct drm_encoder_funcs rk3066_hdmi_encoder_funcs = {
+-	.destroy = drm_encoder_cleanup,
+-};
+-
+ static enum drm_connector_status
+ rk3066_hdmi_connector_detect(struct drm_connector *connector, bool force)
+ {
+@@ -557,8 +554,7 @@ rk3066_hdmi_register(struct drm_device *drm, struct rk3066_hdmi *hdmi)
+ 		return -EPROBE_DEFER;
+ 
+ 	drm_encoder_helper_add(encoder, &rk3066_hdmi_encoder_helper_funcs);
+-	drm_encoder_init(drm, encoder, &rk3066_hdmi_encoder_funcs,
+-			 DRM_MODE_ENCODER_TMDS, NULL);
++	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
+ 
+ 	hdmi->connector.polled = DRM_CONNECTOR_POLL_HPD;
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+index 449a62908d21..63f967902c2d 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
++++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+@@ -16,13 +16,14 @@
+ #include <linux/pm_runtime.h>
+ #include <linux/regmap.h>
+ #include <linux/reset.h>
++
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_bridge.h>
+-
+ #include <drm/drm_dp_helper.h>
+ #include <drm/drm_of.h>
+ #include <drm/drm_panel.h>
+ #include <drm/drm_probe_helper.h>
++#include <drm/drm_simple_kms_helper.h>
+ 
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_drm_vop.h"
+@@ -435,10 +436,6 @@ struct drm_encoder_helper_funcs px30_lvds_encoder_helper_funcs = {
+ 	.atomic_check = rockchip_lvds_encoder_atomic_check,
+ };
+ 
+-static const struct drm_encoder_funcs rockchip_lvds_encoder_funcs = {
+-	.destroy = drm_encoder_cleanup,
+-};
+-
+ static int rk3288_lvds_probe(struct platform_device *pdev,
+ 			     struct rockchip_lvds *lvds)
+ {
+@@ -607,8 +604,7 @@ static int rockchip_lvds_bind(struct device *dev, struct device *master,
+ 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm_dev,
+ 							     dev->of_node);
+ 
+-	ret = drm_encoder_init(drm_dev, encoder, &rockchip_lvds_encoder_funcs,
+-			       DRM_MODE_ENCODER_LVDS, NULL);
++	ret = drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_LVDS);
+ 	if (ret < 0) {
+ 		DRM_DEV_ERROR(drm_dev->dev,
+ 			      "failed to initialize encoder: %d\n", ret);
+diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.c b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+index 3e2484985955..6c10caecd0db 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_rgb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+@@ -14,6 +14,7 @@
+ #include <drm/drm_of.h>
+ #include <drm/drm_panel.h>
+ #include <drm/drm_probe_helper.h>
++#include <drm/drm_simple_kms_helper.h>
+ 
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_drm_vop.h"
+@@ -67,10 +68,6 @@ struct drm_encoder_helper_funcs rockchip_rgb_encoder_helper_funcs = {
+ 	.atomic_check = rockchip_rgb_encoder_atomic_check,
+ };
+ 
+-static const struct drm_encoder_funcs rockchip_rgb_encoder_funcs = {
+-	.destroy = drm_encoder_cleanup,
+-};
+-
+ struct rockchip_rgb *rockchip_rgb_init(struct device *dev,
+ 				       struct drm_crtc *crtc,
+ 				       struct drm_device *drm_dev)
+@@ -125,8 +122,7 @@ struct rockchip_rgb *rockchip_rgb_init(struct device *dev,
+ 	encoder = &rgb->encoder;
+ 	encoder->possible_crtcs = drm_crtc_mask(crtc);
+ 
+-	ret = drm_encoder_init(drm_dev, encoder, &rockchip_rgb_encoder_funcs,
+-			       DRM_MODE_ENCODER_NONE, NULL);
++	ret = drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_NONE);
+ 	if (ret < 0) {
+ 		DRM_DEV_ERROR(drm_dev->dev,
+ 			      "failed to initialize encoder: %d\n", ret);
+-- 
 2.25.1
 
 
