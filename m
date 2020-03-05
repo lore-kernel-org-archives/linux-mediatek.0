@@ -2,77 +2,77 @@ Return-Path: <SRS0=EkB4=4W=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PULL_REQUEST,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A6CFC3F2D1
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 00:51:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C641C3F2CE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 01:51:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6141C20842
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 00:51:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6034920848
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2020 01:51:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JQKZzAxR";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Xwj1loR4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6141C20842
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bNfW20Ip";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="b4WhZ0c0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6034920848
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BTZlkQvZrIHyB3y05qntD4rG7dyiruGZQUZvgbKgNrk=; b=JQKZzAxRETGHJ0
-	lqfjmd9nsArIC5m/w9t+Y8zxjD7X/greo8sg0fbZUM5d6bDrQQ1E7KtCO0PzA7Yd5BHnV5cpY1Dix
-	DX9am5Rl3UFCRBK6cgo3Uu8wuipWYQcLMIdogZ+K8ezZvGr7U/QVq5iD3O49U1OQiPCmQR1Q7BdQq
-	H06wTH2CVAWDJKkYbpRjpEOPvSOoII9pGpS8VHePDk1A7qOGnrc/QvN1lfVNITnXR71qPRsd6YcLS
-	teqqtlkMIdmEV0LfO99xKZoKVDueu+iPO4JSt4YiVke6+3AKHSbkhKv5qj0mbcdaxCWDzJQmHUZoJ
-	6mtR5MnZL5wY7qNkmYWw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vzEjQVToH2VL7ztvZGZBtYuKFlCxpblgR7mderEMXkc=; b=bNfW20Ipxd8bHI
+	B9Cn6MHnQ6eKt3t6o571zh4D3fO2gYCOKoeTei3/lRA3l+xwP+j26K2J9NwQShnHCC0DvhTrlo9bE
+	RV5w4RhdNeoKF+p3dx74t21vyIbDrJd29qzt+poqx4onzwS8aJdm5/0IVTwd5h3LWf0u9B7ekSZK2
+	PIj65lnwWcGjtjVy/aiEoc+CeDarC++YWRWi5sS+dla10ciJksGH7vhBRDoO2mEJqwNe7enV10V1h
+	/VsR2DAneeIBp+PcG/Ar00k6ufvp0cMOo4HYjp4Y3k4fPnsidhmsEQAvCSmzf+GuC66JDm1xBQGxS
+	DEHJ3Y59B1i3UARfYDbg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1j9ejo-0003wi-8e; Thu, 05 Mar 2020 00:51:44 +0000
+	id 1j9ffW-00078i-Sy; Thu, 05 Mar 2020 01:51:22 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1j9ejl-0003wJ-Hd; Thu, 05 Mar 2020 00:51:42 +0000
-X-UUID: 1fcea33272864bf999b650ee934ed032-20200304
+ id 1j9ffT-00077h-AQ
+ for linux-mediatek@lists.infradead.org; Thu, 05 Mar 2020 01:51:21 +0000
+X-UUID: 549dacae66f6465894ce76bea5233b0e-20200304
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Dt+NjDKJnvFkl8R5AeUjlcgnglhu+f9HBOgNSX0bmEE=; 
- b=Xwj1loR4Nq+7Sw402bvRcCWVaxghwi193wHlRv+MIMIqTepRD0jaBRlF5spKuX1dfN/9eybs2Zq1+/B4xrizQ6FY0O+OqjuwxoBPWbgk3EMfUjbqM6NwzD1MNP/FICR1hPoVYC3lWMFV5jWpTsupB8G/AUN03rZz6F2+wxLuV70=;
-X-UUID: 1fcea33272864bf999b650ee934ed032-20200304
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:Date:CC:To:From:Subject:Message-ID;
+ bh=yNE8qYUfGn70ZBeOmt6HoS4PVXCpWIv9nVFD/rwaGU0=; 
+ b=b4WhZ0c0ndNVWVHCk/wbavoWsxpoQE4ejcWwQDgR6xOtiMfyWlA7ylfD4Lr84Stm+q7Ct/kW4VtPOdrMURHDmkZBnqvY6iaSVToilq1fWMnvy8zSOCgVmvTempBIyhx4Vtip3E2V6GqMF5Z4VNp5M+RWlMXNbmbrpUTMsEBqD9M=;
+X-UUID: 549dacae66f6465894ce76bea5233b0e-20200304
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <dennis-yc.hsieh@mediatek.com>)
+ (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 724649678; Wed, 04 Mar 2020 16:51:39 -0800
+ with ESMTP id 577685418; Wed, 04 Mar 2020 17:51:12 -0800
 Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 4 Mar 2020 16:49:03 -0800
+ 15.0.1395.4; Wed, 4 Mar 2020 17:51:09 -0800
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 5 Mar 2020 08:47:54 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
+ 15.0.1395.4; Thu, 5 Mar 2020 09:50:01 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Thu, 5 Mar 2020 08:48:18 +0800
-Message-ID: <1583369342.28558.0.camel@mtkswgap22>
-Subject: Re: [PATCH v4 11/13] soc: mediatek: cmdq: add jump function
-From: Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>
-Date: Thu, 5 Mar 2020 08:49:02 +0800
-In-Reply-To: <1583290652.1062.2.camel@mtksdaap41>
-References: <1583233125-7827-1-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1583233125-7827-12-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1583290652.1062.2.camel@mtksdaap41>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ Transport; Thu, 5 Mar 2020 09:50:25 +0800
+Message-ID: <1583373069.364.4.camel@mtksdaap41>
+Subject: [GIT PULL] mediatek drm fixes for 5.6
+From: CK Hu <ck.hu@mediatek.com>
+To: Dave Airlie <airlied@gmail.com>, Daniel Vetter <daniel.vetter@intel.com>, 
+ <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>
+Date: Thu, 5 Mar 2020 09:51:09 +0800
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200304_165141_592041_26AF7039 
-X-CRM114-Status: GOOD (  17.02  )
+X-CRM114-CacheID: sfid-20200304_175119_370991_41764775 
+X-CRM114-Status: UNSURE (   7.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,98 +84,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Daniel Vetter <daniel@ffwll.ch>, wsd_upstream@mediatek.com, David
- Airlie <airlied@linux.ie>, Jassi Brar <jassisinghbrar@gmail.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- HS Liao <hs.liao@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Houlong Wei <houlong.wei@mediatek.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Bibby Hsieh <bibby.hsieh@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Cc: Phong LE <ple@baylibre.com>, Sean Paul <seanpaul@chromium.org>,
+ Evan Benn <evanbenn@chromium.org>, Bibby Hsieh <bibby.hsieh@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi CK,
+Hi, Dave & Daniel:
 
-Thanks for your comment.
-
-On Wed, 2020-03-04 at 10:57 +0800, CK Hu wrote:
-> Hi, Dennis:
-> 
-> On Tue, 2020-03-03 at 18:58 +0800, Dennis YC Hsieh wrote:
-> > Add jump function so that client can jump to any address which
-> > contains instruction.
-> > 
-> > Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
-> > ---
-> >  drivers/soc/mediatek/mtk-cmdq-helper.c | 12 ++++++++++++
-> >  include/linux/soc/mediatek/mtk-cmdq.h  | 11 +++++++++++
-> >  2 files changed, 23 insertions(+)
-> > 
-> > diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> > index 59bc1164b411..f27c67034880 100644
-> > --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-> > +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> > @@ -372,6 +372,18 @@ int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value)
-> >  }
-> >  EXPORT_SYMBOL(cmdq_pkt_assign);
-> >  
-> > +int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr)
-> > +{
-> > +	struct cmdq_instruction inst = { {0} };
-> > +
-> > +	inst.op = CMDQ_CODE_JUMP;
-> > +	inst.offset = 1;
-> 
-> Symbolize the value '1'.
-
-miss in v4, will add in next version, thanks.
-
+This include OVL, cursor, and gce fixup.
 
 Regards,
-Dennis
+CK
 
+The following changes since commit
+bb6d3fb354c5ee8d6bde2d576eb7220ea09862b9:
 
-> 
-> Regards,
-> CK
-> 
-> > +	inst.value = addr >>
-> > +		cmdq_mbox_shift(((struct cmdq_client *)pkt->cl)->chan);
-> > +	return cmdq_pkt_append_command(pkt, inst);
-> > +}
-> > +EXPORT_SYMBOL(cmdq_pkt_jump);
-> > +
-> >  int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
-> >  {
-> >  	struct cmdq_instruction inst = { {0} };
-> > diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-> > index 99e77155f967..1a6c56f3bec1 100644
-> > --- a/include/linux/soc/mediatek/mtk-cmdq.h
-> > +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-> > @@ -213,6 +213,17 @@ int cmdq_pkt_poll_mask(struct cmdq_pkt *pkt, u8 subsys,
-> >   */
-> >  int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value);
-> >  
-> > +/**
-> > + * cmdq_pkt_jump() - Append jump command to the CMDQ packet, ask GCE
-> > + *		     to execute an instruction that change current thread PC to
-> > + *		     a physical address which should contains more instruction.
-> > + * @pkt:        the CMDQ packet
-> > + * @addr:       physical address of target instruction buffer
-> > + *
-> > + * Return: 0 for success; else the error code is returned
-> > + */
-> > +int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr);
-> > +
-> >  /**
-> >   * cmdq_pkt_finalize() - Append EOC and jump command to pkt.
-> >   * @pkt:	the CMDQ packet
-> 
-> 
+  Linux 5.6-rc1 (2020-02-09 16:08:48 -0800)
+
+are available in the Git repository at:
+
+  https://github.com/ckhu-mediatek/linux.git-tags.git
+tags/mediatek-drm-fixes-5.6
+
+for you to fetch changes up to 3d2ed431b8f39483477bc3c3a2aefbc9778ffe12:
+
+  drm/mediatek: Handle component type MTK_DISP_OVL_2L correctly
+(2020-02-25 13:02:22 +0800)
+
+----------------------------------------------------------------
+Mediatek DRM Fixes for Linux 5.6
+
+----------------------------------------------------------------
+Bibby Hsieh (4):
+      drm/mediatek: Add plane check in async_check function
+      drm/mediatek: Add fb swap in async_update
+      drm/mediatek: Move gce event property to mutex device node
+      drm/mediatek: Make sure previous message done or be aborted before
+send
+
+Evan Benn (1):
+      drm/mediatek: Find the cursor plane instead of hard coding it
+
+Phong LE (1):
+      drm/mediatek: Handle component type MTK_DISP_OVL_2L correctly
+
+Sean Paul (1):
+      drm/mediatek: Ensure the cursor plane is on top of other overlays
+
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 30
++++++++++++++++++++----------
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  1 +
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c    |  7 +++++++
+ 3 files changed, 28 insertions(+), 10 deletions(-)
+
 
 _______________________________________________
 Linux-mediatek mailing list
