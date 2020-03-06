@@ -4,21 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0126BC10F00
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2020 16:04:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A44DC10DCE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2020 16:30:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C8593217F4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2020 16:04:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3F21420658
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2020 16:30:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aWL4vwJj";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="W2pFEVlp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C8593217F4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s67l18II"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3F21420658
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -26,122 +25,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g62jHy8FtJ0CFvla1j9AT962yH4dIcC79CQbO/Q172k=; b=aWL4vwJj7cX1vu
-	6QdvMCr3wrNqINCzy3ylwWWLGhN6EYhGPWLLc+yGX2EXm9A6f0/bswUOpqODYVx90fV8wjImvTf2T
-	ehAsfmsqlntMCJYd6d9muNNyqfSXNgx+UeSa4pDvVn67ybLwiyIoa9W7adysMu5t4h2/3a9yryUEO
-	4Rat5j7NWjVZlsejYLaTD/ZPwjbDfVA5u8SmNOkk8gtWIU8BvO690rVo4eI5K5P3CIWkRmaGIkc6+
-	AXwdW5RRj10QBVlsgjWo2TkoKpv6C9Vm42dsgikYfjEKXv0DxatSTZSAAY8NVbJ0jlMQmu4oUbvm4
-	RYeGhVDU7bm/MHaVVWiw==;
+	List-Owner; bh=sVHfP/FblNDEgTWbpjpppb2xcOuZ9ZM66W9wGKL2OkU=; b=s67l18IIfVoyZi
+	zfIcAwNZpVfIhDliYvD25EzPzfknfkeALj+BHLVV4+ZbDZPJNa1FcjSFymubfptOdQQRTHTQ17Xo9
+	CwO6U+bLYUuEu+bfGt6/Y8xcPI3/8D3ujWk1XYyHA4JL4237HVE7ZhPavEAn4nAs0qsPKTJb6ZzXG
+	oym7QAKh6n7ysjUkf4tCmhsX/+0V9Jr5ipuV7zxY0Cw+5drZY9B+oOqe1e/O3P8lDXjbMHotcbPFu
+	2Z6Y+4GGQbfuMEVbmv6d77jKem93PzFnb4P1Hff8tZxdIl1qzCfrJJ3nqgO3Hen7xMwyCkzau9Dil
+	g7ijQ/VpyYT5/SxXRSCw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jAFSd-0003Bs-TA; Fri, 06 Mar 2020 16:04:27 +0000
-Received: from fllv0016.ext.ti.com ([198.47.19.142])
+	id 1jAFs0-0006Up-D4; Fri, 06 Mar 2020 16:30:40 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jAFSb-0003BO-Kr; Fri, 06 Mar 2020 16:04:27 +0000
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
- by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 026G3XiS123652;
- Fri, 6 Mar 2020 10:03:33 -0600
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1583510613;
- bh=F0zq4XKL8IcfIlkd0ZCG9r5itazNCHFXTC/e8qEav30=;
- h=Subject:To:CC:References:From:Date:In-Reply-To;
- b=W2pFEVlpGyjacU2G/NcNB0qfUKqcl0pU0f3k5dLwIkN8oybL680kQB93w6MdIRvNS
- XXS2ah+Pa4ym9qZVA59/tvUs7zMgMLT2zSJuY5rcevSwGOR3rqnIBNJdgX9hIGhoCG
- T+h8OLO+FO+sopsiYd2N8nYj5LhRU0BzhEIfmi2Q=
-Received: from DFLE100.ent.ti.com (dfle100.ent.ti.com [10.64.6.21])
- by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTP id 026G3W6h125657;
- Fri, 6 Mar 2020 10:03:32 -0600
-Received: from DFLE106.ent.ti.com (10.64.6.27) by DFLE100.ent.ti.com
- (10.64.6.21) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1847.3; Fri, 6 Mar
- 2020 10:03:32 -0600
-Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE106.ent.ti.com
- (10.64.6.27) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1847.3 via
- Frontend Transport; Fri, 6 Mar 2020 10:03:32 -0600
-Received: from [10.1.3.6] (ileax41-snat.itg.ti.com [10.172.224.153])
- by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 026G3I8l042449;
- Fri, 6 Mar 2020 10:03:19 -0600
-Subject: Re: [PATCH 17/22] drm/tilcdc: Use simple encoder
-To: Thomas Zimmermann <tzimmermann@suse.de>, <airlied@linux.ie>,
- <daniel@ffwll.ch>, <sam@ravnborg.org>, <abrodkin@synopsys.com>,
- <bbrezillon@kernel.org>, <nicolas.ferre@microchip.com>,
- <alexandre.belloni@bootlin.com>, <ludovic.desroches@microchip.com>,
- <maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
- <jingoohan1@gmail.com>, <inki.dae@samsung.com>,
- <jy0922.shim@samsung.com>, <sw0312.kim@samsung.com>,
- <kyungmin.park@samsung.com>, <kgene@kernel.org>, <krzk@kernel.org>,
- <stefan@agner.ch>, <alison.wang@nxp.com>,
- <patrik.r.jakobsson@gmail.com>, <xinliang.liu@linaro.org>,
- <zourongrong@gmail.com>, <john.stultz@linaro.org>,
- <kong.kongxinwei@hisilicon.com>, <puck.chen@hisilicon.com>,
- <linux@armlinux.org.uk>, <p.zabel@pengutronix.de>,
- <shawnguo@kernel.org>, <s.hauer@pengutronix.de>,
- <kernel@pengutronix.de>, <festevam@gmail.com>, <linux-imx@nxp.com>,
- <paul@crapouillou.net>, <ck.hu@mediatek.com>, <matthias.bgg@gmail.com>,
- <laurent.pinchart@ideasonboard.com>,
- <kieran.bingham+renesas@ideasonboard.com>, <hjc@rock-chips.com>,
- <heiko@sntech.de>, <wens@csie.org>, <jernej.skrabec@siol.net>,
- <thierry.reding@gmail.com>, <jonathanh@nvidia.com>,
- <tomi.valkeinen@ti.com>, <eric@anholt.net>, <kraxel@redhat.com>,
- <rodrigosiqueiramelo@gmail.com>, <hamohammed.sa@gmail.com>,
- <sebastian.reichel@collabora.com>
-References: <20200305155950.2705-1-tzimmermann@suse.de>
- <20200305155950.2705-18-tzimmermann@suse.de>
-From: Jyri Sarha <jsarha@ti.com>
-Autocrypt: addr=jsarha@ti.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <d4b7313e-3b5e-0659-fb2a-32a969a80081@ti.com>
-Date: Fri, 6 Mar 2020 18:03:18 +0200
+ id 1jAFrl-0006Jh-0F; Fri, 06 Mar 2020 16:30:27 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id 098DD29681D
+Subject: Re: [PATCH v11 3/5] soc: mediatek: Move mt8173 MMSYS to platform
+ driver
+To: Stephen Boyd <sboyd@kernel.org>, airlied@linux.ie, ck.hu@mediatek.com,
+ laurent.pinchart@ideasonboard.com, mark.rutland@arm.com,
+ mturquette@baylibre.com, p.zabel@pengutronix.de, robh+dt@kernel.org,
+ ulrich.hecht+renesas@gmail.com
+References: <20200302110128.2664251-1-enric.balletbo@collabora.com>
+ <20200302110128.2664251-4-enric.balletbo@collabora.com>
+ <158344207340.7173.8369925839829696256@swboyd.mtv.corp.google.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Message-ID: <8bfc4350-6e92-e657-18f2-3624a2558521@collabora.com>
+Date: Fri, 6 Mar 2020 17:30:16 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200305155950.2705-18-tzimmermann@suse.de>
-Content-Language: en-GB
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+In-Reply-To: <158344207340.7173.8369925839829696256@swboyd.mtv.corp.google.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200306_080425_762790_2B16C022 
-X-CRM114-Status: GOOD (  15.74  )
+X-CRM114-CacheID: sfid-20200306_083025_303488_A82D9781 
+X-CRM114-Status: GOOD (  22.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -153,101 +70,161 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-samsung-soc@vger.kernel.org, dri-devel@lists.freedesktop.org,
- virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org
+Cc: Kate Stewart <kstewart@linuxfoundation.org>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>, dri-devel@lists.freedesktop.org,
+ Richard Fontana <rfontana@redhat.com>,
+ Collabora Kernel ML <kernel@collabora.com>, linux-clk@vger.kernel.org,
+ Weiyi Lu <weiyi.lu@mediatek.com>, wens@csie.org,
+ linux-arm-kernel@lists.infradead.org, mtk01761 <wendell.lin@mediatek.com>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ frank-w@public-files.de, Seiya Wang <seiya.wang@mediatek.com>,
+ sean.wang@mediatek.com, Houlong Wei <houlong.wei@mediatek.com>,
+ linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Allison Randal <allison@lohutok.net>, Matthias Brugger <mbrugger@suse.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, rdunlap@infradead.org,
+ linux-kernel@vger.kernel.org, Daniel Vetter <daniel@ffwll.ch>,
+ matthias.bgg@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05/03/2020 17:59, Thomas Zimmermann wrote:
-> The tilcdc driver uses empty implementations for its encoders. Replace
-> the code with the generic simple encoder.
-> 
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+Hi Stephen,
 
-Acked-by: Jyri Sarha <jsarha@ti.com>
-
-> ---
->  drivers/gpu/drm/tilcdc/tilcdc_external.c | 10 +++-------
->  drivers/gpu/drm/tilcdc/tilcdc_panel.c    |  8 ++------
->  2 files changed, 5 insertions(+), 13 deletions(-)
+On 5/3/20 22:01, Stephen Boyd wrote:
+> Quoting Enric Balletbo i Serra (2020-03-02 03:01:26)
+>> From: Matthias Brugger <mbrugger@suse.com>
+>>
+>> There is no strong reason for this to use CLK_OF_DECLARE instead of
+>> being a platform driver.
 > 
-> diff --git a/drivers/gpu/drm/tilcdc/tilcdc_external.c b/drivers/gpu/drm/tilcdc/tilcdc_external.c
-> index 28b7f703236e..b177525588c1 100644
-> --- a/drivers/gpu/drm/tilcdc/tilcdc_external.c
-> +++ b/drivers/gpu/drm/tilcdc/tilcdc_external.c
-> @@ -10,6 +10,7 @@
->  #include <drm/drm_atomic_helper.h>
->  #include <drm/drm_bridge.h>
->  #include <drm/drm_of.h>
-> +#include <drm/drm_simple_kms_helper.h>
->  
->  #include "tilcdc_drv.h"
->  #include "tilcdc_external.h"
-> @@ -83,10 +84,6 @@ int tilcdc_add_component_encoder(struct drm_device *ddev)
->  	return 0;
->  }
->  
-> -static const struct drm_encoder_funcs tilcdc_external_encoder_funcs = {
-> -	.destroy	= drm_encoder_cleanup,
-> -};
-> -
->  static
->  int tilcdc_attach_bridge(struct drm_device *ddev, struct drm_bridge *bridge)
->  {
-> @@ -131,9 +128,8 @@ int tilcdc_attach_external_device(struct drm_device *ddev)
->  	if (!priv->external_encoder)
->  		return -ENOMEM;
->  
-> -	ret = drm_encoder_init(ddev, priv->external_encoder,
-> -			       &tilcdc_external_encoder_funcs,
-> -			       DRM_MODE_ENCODER_NONE, NULL);
-> +	ret = drm_simple_encoder_init(ddev, priv->external_encoder,
-> +				      DRM_MODE_ENCODER_NONE);
->  	if (ret) {
->  		dev_err(ddev->dev, "drm_encoder_init() failed %d\n", ret);
->  		return ret;
-> diff --git a/drivers/gpu/drm/tilcdc/tilcdc_panel.c b/drivers/gpu/drm/tilcdc/tilcdc_panel.c
-> index 5584e656b857..12823d60c4e8 100644
-> --- a/drivers/gpu/drm/tilcdc/tilcdc_panel.c
-> +++ b/drivers/gpu/drm/tilcdc/tilcdc_panel.c
-> @@ -16,6 +16,7 @@
->  #include <drm/drm_connector.h>
->  #include <drm/drm_modeset_helper_vtables.h>
->  #include <drm/drm_probe_helper.h>
-> +#include <drm/drm_simple_kms_helper.h>
->  
->  #include "tilcdc_drv.h"
->  #include "tilcdc_panel.h"
-> @@ -74,10 +75,6 @@ static void panel_encoder_mode_set(struct drm_encoder *encoder,
->  	/* nothing needed */
->  }
->  
-> -static const struct drm_encoder_funcs panel_encoder_funcs = {
-> -		.destroy        = drm_encoder_cleanup,
-> -};
-> -
->  static const struct drm_encoder_helper_funcs panel_encoder_helper_funcs = {
->  		.dpms           = panel_encoder_dpms,
->  		.prepare        = panel_encoder_prepare,
-> @@ -102,8 +99,7 @@ static struct drm_encoder *panel_encoder_create(struct drm_device *dev,
->  	encoder = &panel_encoder->base;
->  	encoder->possible_crtcs = 1;
->  
-> -	ret = drm_encoder_init(dev, encoder, &panel_encoder_funcs,
-> -			DRM_MODE_ENCODER_LVDS, NULL);
-> +	ret = drm_simple_encoder_init(dev, encoder, DRM_MODE_ENCODER_LVDS);
->  	if (ret < 0)
->  		goto fail;
->  
+> Cool.
+> 
+>> Plus, this driver provides clocks but also
+>> a shared register space for the mediatek-drm and the mediatek-mdp
+>> driver. So move to drivers/soc/mediatek as a platform driver.
+>>
+>> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+>> ---
+>>
+>> Changes in v11: None
+>> Changes in v10:
+>> - Renamed to be generic mtk-mmsys
+>> - Add driver data support to be able to support diferent SoCs
+>>
+>> Changes in v9:
+>> - Move mmsys to drivers/soc/mediatek (CK)
+>>
+>> Changes in v8:
+>> - Be a builtin_platform_driver like other mediatek mmsys drivers.
+>>
+>> Changes in v7:
+>> - Free clk_data->clks as well
+>> - Get rid of private data structure
+>>
+>>  drivers/clk/mediatek/clk-mt8173.c | 104 --------------------
+>>  drivers/soc/mediatek/Kconfig      |   7 ++
+>>  drivers/soc/mediatek/Makefile     |   1 +
+>>  drivers/soc/mediatek/mtk-mmsys.c  | 154 ++++++++++++++++++++++++++++++
+> 
+> Can you generate with -M so that we can see what has actually changed?
 > 
 
+Sure, sorry about that.
 
--- 
-Texas Instruments Finland Oy, Porkkalankatu 22, 00180 Helsinki.
-Y-tunnus/Business ID: 0615521-4. Kotipaikka/Domicile: Helsinki
+>>  4 files changed, 162 insertions(+), 104 deletions(-)
+>>  create mode 100644 drivers/soc/mediatek/mtk-mmsys.c
+>>
+>> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+>> index 2114b563478c..7a156944d50e 100644
+>> --- a/drivers/soc/mediatek/Kconfig
+>> +++ b/drivers/soc/mediatek/Kconfig
+>> @@ -44,4 +44,11 @@ config MTK_SCPSYS
+>>           Say yes here to add support for the MediaTek SCPSYS power domain
+>>           driver.
+>>  
+>> +config MTK_MMSYS
+>> +       bool "MediaTek MMSYS Support"
+>> +       depends on COMMON_CLK_MT8173
+> 
+> Does it need some default so that defconfig updates don't break things?
+> 
+
+Right.
+
+>> +       help
+>> +         Say yes here to add support for the MediaTek Multimedia
+>> +         Subsystem (MMSYS).
+>> +
+>>  endmenu
+>> diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
+>> index b01733074ad6..01f9f873634a 100644
+>> --- a/drivers/soc/mediatek/Makefile
+>> +++ b/drivers/soc/mediatek/Makefile
+>> @@ -3,3 +3,4 @@ obj-$(CONFIG_MTK_CMDQ) += mtk-cmdq-helper.o
+>>  obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
+>>  obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
+>>  obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
+>> +obj-$(CONFIG_MTK_MMSYS) += mtk-mmsys.o
+>> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+>> new file mode 100644
+>> index 000000000000..473cdf732fb5
+>> --- /dev/null
+>> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+>> @@ -0,0 +1,154 @@
+>> +// SPDX-License-Identifier: GPL-2.0-only
+>> +/*
+>> + * Copyright (c) 2014 MediaTek Inc.
+>> + * Author: James Liao <jamesjj.liao@mediatek.com>
+>> + */
+>> +
+>> +#include <linux/clk-provider.h>
+>> +#include <linux/of_device.h>
+>> +#include <linux/platform_device.h>
+>> +
+>> +#include "../../clk/mediatek/clk-gate.h"
+>> +#include "../../clk/mediatek/clk-mtk.h"
+> 
+> Why not use include/linux/clk/?
+> 
+
+I can move these files to include, this will impact a lot more of drivers but,
+yes, I think is the right way.
+
+> But I also don't understand why the clk driver is moved outside of
+> drivers/clk/ into drivers/soc/. Commit text saying that it has shared
+> registers doesn't mean it can't still keep the clk driver part in the
+> drivers/clk/ area.
+> 
+
+Actually moving this to the soc directory has been requested by CK (mediatek) as
+a change in v8. You can see the discussion in [1]
+
+Thanks,
+ Enric
+
+[1] https://patchwork.kernel.org/cover/11394709/
+
+>> +
+>> +#include <dt-bindings/clock/mt8173-clk.h>
+>> +
+>> +static const struct mtk_gate_regs mm0_cg_regs = {
+>> +       .set_ofs = 0x0104,
+>> +       .clr_ofs = 0x0108,
+>> +       .sta_ofs = 0x0100,
+>> +};
+>> +
+>> +static const struct mtk_gate_regs mm1_cg_regs = {
+>> +       .set_ofs = 0x0114,
+>> +       .clr_ofs = 0x0118,
+>> +       .sta_ofs = 0x0110,
+>> +};
 
 _______________________________________________
 Linux-mediatek mailing list
