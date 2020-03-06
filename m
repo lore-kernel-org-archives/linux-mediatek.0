@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-7.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5C5D7C10DCE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2020 12:39:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C1E9FC10DCE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2020 13:55:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2BE0820848
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2020 12:39:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8C4D32072A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2020 13:55:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e+3ZDAJ0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2BE0820848
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jvrCUgDP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C4D32072A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,47 +25,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/aaF7YE4n1zP2AvDLnd7WmvVtMBlDUN69T0WpZmaqQA=; b=e+3ZDAJ0K+oeJZrY6ePPctRzg
-	0zyU67tITCt2w5ejNJ2uDsv18ZqHpAk/7AFnORxeY7QlhOiSlWMe+u4XsJdzlVpA50+WA9mOA/Xl2
-	EmHWYMnVzkFVoUUVGcpuKYhIjxuHjEr8MlV5n5lvGm7qy9fAuYzQ9lm1/P2i9VJHxftVpmSf0aUNa
-	tg1K5nyX5D8isly6ZiBtOKMLDWOFsft9fgV0+1lSJiUs5SO7sURhZUj4DtCT7g1KbhtpSR/oRSGfM
-	0Uz3wiyDirccaci6nbp6LxaBqQEDQN7+g8Faq1XOuffkk9JiSWLG5eP7yAz5156tKypQF0GqIp4CN
-	Duquh2fyw==;
+	 bh=YnbJDx9yp1ahl90W6lWlkl8jSpewSd1wMpSlsjgfDys=; b=jvrCUgDP8yA1u5HdRpfkdT1YN
+	+Xgy6GcXV/lfUSx1SbHW7za9BJ9cenn/XrVNRazbPKSOTsBzt4TX0nCCtFFWLP9/ntY8fZNflhZfh
+	c00hbKo0W/ORXUFZS0N5A1sGd1UAH/2+5Q8FTOKQcIwg7uBpkbXecJY+YuiL0TomZfeMJ4JSI/rOw
+	xZez48X889c8YvJqGMet6HsyaiiWv0FYhUgRAioWVauCg7h4VENpnQrmpc6wBii23mm62+SKs5zT1
+	1kFNwcPCnCGCJdh0b8TwUHz5bIgDiurj0TBzcdmPRvvO/xow1OJCJMqQ6ocIwRcjOCmBYrQ/GrGrL
+	sK4B9S1dA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jACG4-00052b-J0; Fri, 06 Mar 2020 12:39:16 +0000
-Received: from mga03.intel.com ([134.134.136.65])
+	id 1jADRs-0002vR-78; Fri, 06 Mar 2020 13:55:32 +0000
+Received: from mga12.intel.com ([192.55.52.136])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jACG0-00051P-GX; Fri, 06 Mar 2020 12:39:14 +0000
+ id 1jADRo-0002uM-4u; Fri, 06 Mar 2020 13:55:29 +0000
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 06 Mar 2020 04:39:10 -0800
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 06 Mar 2020 05:55:26 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.70,522,1574150400"; 
- d="gz'50?scan'50,208,50";a="234792907"
+ d="gz'50?scan'50,208,50";a="241173229"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 06 Mar 2020 04:38:56 -0800
+ by orsmga003.jf.intel.com with ESMTP; 06 Mar 2020 05:55:12 -0800
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1jACFj-0002Bg-Ff; Fri, 06 Mar 2020 20:38:55 +0800
-Date: Fri, 6 Mar 2020 20:38:53 +0800
+ id 1jADRX-0009gs-U5; Fri, 06 Mar 2020 21:55:11 +0800
+Date: Fri, 6 Mar 2020 21:54:37 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH 15/22] drm/tegra: Use simple encoder
-Message-ID: <202003062053.isBJJQ7H%lkp@intel.com>
-References: <20200305155950.2705-16-tzimmermann@suse.de>
+Subject: Re: [PATCH 18/22] drm/vc4: Use simple encoder
+Message-ID: <202003062111.Q1W7Y5ZF%lkp@intel.com>
+References: <20200305155950.2705-19-tzimmermann@suse.de>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="6TrnltStXW4iwmi0"
+Content-Type: multipart/mixed; boundary="azLHFNyN32YCQGCU"
 Content-Disposition: inline
-In-Reply-To: <20200305155950.2705-16-tzimmermann@suse.de>
+In-Reply-To: <20200305155950.2705-19-tzimmermann@suse.de>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200306_043912_668281_01AFE613 
-X-CRM114-Status: UNSURE (   7.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200306_055528_231528_C7B7A7D0 
+X-CRM114-Status: GOOD (  11.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,7 +102,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---6TrnltStXW4iwmi0
+--azLHFNyN32YCQGCU
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
@@ -129,94 +128,131 @@ Reported-by: kbuild test robot <lkp@intel.com>
 
 All errors (new ones prefixed by >>):
 
->> drivers/gpu/drm/tegra/rgb.c:281:2: error: implicit declaration of function 'drm_simple_encoder_init' [-Werror,-Wimplicit-function-declaration]
-           drm_simple_encoder_init(drm, &output->encoder, DRM_MODE_ENCODER_LVDS);
+>> drivers/gpu//drm/vc4/vc4_dpi.c:309:2: error: implicit declaration of function 'drm_simple_encoder_init' [-Werror,-Wimplicit-function-declaration]
+           drm_simple_encoder_init(drm, dpi->encoder, DRM_MODE_ENCODER_DPI);
            ^
-   drivers/gpu/drm/tegra/rgb.c:281:2: note: did you mean 'drm_encoder_init'?
+   drivers/gpu//drm/vc4/vc4_dpi.c:309:2: note: did you mean 'drm_encoder_init'?
    include/drm/drm_encoder.h:189:5: note: 'drm_encoder_init' declared here
    int drm_encoder_init(struct drm_device *dev,
        ^
    1 error generated.
 --
->> drivers/gpu/drm/tegra/hdmi.c:1445:2: error: implicit declaration of function 'drm_simple_encoder_init' [-Werror,-Wimplicit-function-declaration]
-           drm_simple_encoder_init(drm, &hdmi->output.encoder,
+>> drivers/gpu//drm/vc4/vc4_dsi.c:1610:2: error: implicit declaration of function 'drm_simple_encoder_init' [-Werror,-Wimplicit-function-declaration]
+           drm_simple_encoder_init(drm, dsi->encoder, DRM_MODE_ENCODER_DSI);
            ^
-   drivers/gpu/drm/tegra/hdmi.c:1445:2: note: did you mean 'drm_encoder_init'?
+   drivers/gpu//drm/vc4/vc4_dsi.c:1610:2: note: did you mean 'drm_encoder_init'?
    include/drm/drm_encoder.h:189:5: note: 'drm_encoder_init' declared here
    int drm_encoder_init(struct drm_device *dev,
        ^
    1 error generated.
 --
->> drivers/gpu/drm/tegra/dsi.c:1058:3: error: implicit declaration of function 'drm_simple_encoder_init' [-Werror,-Wimplicit-function-declaration]
-                   drm_simple_encoder_init(drm, &dsi->output.encoder,
-                   ^
-   drivers/gpu/drm/tegra/dsi.c:1058:3: note: did you mean 'drm_encoder_init'?
+>> drivers/gpu//drm/vc4/vc4_hdmi.c:1389:2: error: implicit declaration of function 'drm_simple_encoder_init' [-Werror,-Wimplicit-function-declaration]
+           drm_simple_encoder_init(drm, hdmi->encoder, DRM_MODE_ENCODER_TMDS);
+           ^
+   drivers/gpu//drm/vc4/vc4_hdmi.c:1389:2: note: did you mean 'drm_encoder_init'?
    include/drm/drm_encoder.h:189:5: note: 'drm_encoder_init' declared here
    int drm_encoder_init(struct drm_device *dev,
        ^
    1 error generated.
 --
->> drivers/gpu/drm/tegra/sor.c:3102:2: error: implicit declaration of function 'drm_simple_encoder_init' [-Werror,-Wimplicit-function-declaration]
-           drm_simple_encoder_init(drm, &sor->output.encoder, encoder);
+>> drivers/gpu//drm/vc4/vc4_vec.c:566:2: error: implicit declaration of function 'drm_simple_encoder_init' [-Werror,-Wimplicit-function-declaration]
+           drm_simple_encoder_init(drm, vec->encoder, DRM_MODE_ENCODER_TVDAC);
            ^
-   drivers/gpu/drm/tegra/sor.c:3102:2: note: did you mean 'drm_encoder_init'?
+   drivers/gpu//drm/vc4/vc4_vec.c:566:2: note: did you mean 'drm_encoder_init'?
    include/drm/drm_encoder.h:189:5: note: 'drm_encoder_init' declared here
    int drm_encoder_init(struct drm_device *dev,
        ^
    1 error generated.
 
-vim +/drm_simple_encoder_init +281 drivers/gpu/drm/tegra/rgb.c
+vim +/drm_simple_encoder_init +309 drivers/gpu//drm/vc4/vc4_dpi.c
 
-   266	
-   267	int tegra_dc_rgb_init(struct drm_device *drm, struct tegra_dc *dc)
-   268	{
-   269		struct tegra_output *output = dc->rgb;
-   270		int err;
-   271	
-   272		if (!dc->rgb)
-   273			return -ENODEV;
-   274	
-   275		drm_connector_init(drm, &output->connector, &tegra_rgb_connector_funcs,
-   276				   DRM_MODE_CONNECTOR_LVDS);
-   277		drm_connector_helper_add(&output->connector,
-   278					 &tegra_rgb_connector_helper_funcs);
-   279		output->connector.dpms = DRM_MODE_DPMS_OFF;
-   280	
- > 281		drm_simple_encoder_init(drm, &output->encoder, DRM_MODE_ENCODER_LVDS);
-   282		drm_encoder_helper_add(&output->encoder,
-   283				       &tegra_rgb_encoder_helper_funcs);
-   284	
-   285		drm_connector_attach_encoder(&output->connector,
-   286						  &output->encoder);
-   287		drm_connector_register(&output->connector);
-   288	
-   289		err = tegra_output_init(drm, output);
-   290		if (err < 0) {
-   291			dev_err(output->dev, "failed to initialize output: %d\n", err);
-   292			return err;
-   293		}
-   294	
-   295		/*
-   296		 * Other outputs can be attached to either display controller. The RGB
-   297		 * outputs are an exception and work only with their parent display
-   298		 * controller.
-   299		 */
-   300		output->encoder.possible_crtcs = drm_crtc_mask(&dc->base);
-   301	
-   302		return 0;
-   303	}
+   254	
+   255	static int vc4_dpi_bind(struct device *dev, struct device *master, void *data)
+   256	{
+   257		struct platform_device *pdev = to_platform_device(dev);
+   258		struct drm_device *drm = dev_get_drvdata(master);
+   259		struct vc4_dev *vc4 = to_vc4_dev(drm);
+   260		struct vc4_dpi *dpi;
+   261		struct vc4_dpi_encoder *vc4_dpi_encoder;
+   262		int ret;
+   263	
+   264		dpi = devm_kzalloc(dev, sizeof(*dpi), GFP_KERNEL);
+   265		if (!dpi)
+   266			return -ENOMEM;
+   267	
+   268		vc4_dpi_encoder = devm_kzalloc(dev, sizeof(*vc4_dpi_encoder),
+   269					       GFP_KERNEL);
+   270		if (!vc4_dpi_encoder)
+   271			return -ENOMEM;
+   272		vc4_dpi_encoder->base.type = VC4_ENCODER_TYPE_DPI;
+   273		vc4_dpi_encoder->dpi = dpi;
+   274		dpi->encoder = &vc4_dpi_encoder->base.base;
+   275	
+   276		dpi->pdev = pdev;
+   277		dpi->regs = vc4_ioremap_regs(pdev, 0);
+   278		if (IS_ERR(dpi->regs))
+   279			return PTR_ERR(dpi->regs);
+   280		dpi->regset.base = dpi->regs;
+   281		dpi->regset.regs = dpi_regs;
+   282		dpi->regset.nregs = ARRAY_SIZE(dpi_regs);
+   283	
+   284		if (DPI_READ(DPI_ID) != DPI_ID_VALUE) {
+   285			dev_err(dev, "Port returned 0x%08x for ID instead of 0x%08x\n",
+   286				DPI_READ(DPI_ID), DPI_ID_VALUE);
+   287			return -ENODEV;
+   288		}
+   289	
+   290		dpi->core_clock = devm_clk_get(dev, "core");
+   291		if (IS_ERR(dpi->core_clock)) {
+   292			ret = PTR_ERR(dpi->core_clock);
+   293			if (ret != -EPROBE_DEFER)
+   294				DRM_ERROR("Failed to get core clock: %d\n", ret);
+   295			return ret;
+   296		}
+   297		dpi->pixel_clock = devm_clk_get(dev, "pixel");
+   298		if (IS_ERR(dpi->pixel_clock)) {
+   299			ret = PTR_ERR(dpi->pixel_clock);
+   300			if (ret != -EPROBE_DEFER)
+   301				DRM_ERROR("Failed to get pixel clock: %d\n", ret);
+   302			return ret;
+   303		}
    304	
+   305		ret = clk_prepare_enable(dpi->core_clock);
+   306		if (ret)
+   307			DRM_ERROR("Failed to turn on core clock: %d\n", ret);
+   308	
+ > 309		drm_simple_encoder_init(drm, dpi->encoder, DRM_MODE_ENCODER_DPI);
+   310		drm_encoder_helper_add(dpi->encoder, &vc4_dpi_encoder_helper_funcs);
+   311	
+   312		ret = vc4_dpi_init_bridge(dpi);
+   313		if (ret)
+   314			goto err_destroy_encoder;
+   315	
+   316		dev_set_drvdata(dev, dpi);
+   317	
+   318		vc4->dpi = dpi;
+   319	
+   320		vc4_debugfs_add_regset32(drm, "dpi_regs", &dpi->regset);
+   321	
+   322		return 0;
+   323	
+   324	err_destroy_encoder:
+   325		drm_encoder_cleanup(dpi->encoder);
+   326		clk_disable_unprepare(dpi->core_clock);
+   327		return ret;
+   328	}
+   329	
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
 https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
---6TrnltStXW4iwmi0
+--azLHFNyN32YCQGCU
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICOc/Yl4AAy5jb25maWcAnDzJdhu3svv7FTzJJlnE4SRKue9oAaLRJMKeDKBJSps+tEQ5
+H4sICPtNYl4AAy5jb25maWcAnDzJdhu3svv7FTzJJlnE4SRKue9oAaLRJMKeDKBJSps+tEQ5
 etHgS0lO/Pe3CugBQKMVv5eTOGZVYS7UjP7xXz+OyNvr8+Ph9f7m8PDwbfT5+HQ8HV6Pt6O7
 +4fj/4yifJTlasQirj4AcXL/9Pb3r4fT42I+Ovuw+DD+5XQzH22Op6fjw4g+P93df36D5vfP
 T//68V/w748AfPwCPZ3+Pbp5ODx9Hn09nl4APZpMPow/jEc/fb5//fevv8Kfj/en0/Pp14eH
@@ -1102,7 +1138,7 @@ wEsOxceLESa/id2aruo8uus6I6nVCGZjw48uHHM8QwbZzQuGMAlwFnpPC3dt0zCPQREdGSiV
 JnKkP+4j6IYhKfDbHY5PTBmnIxwBO5QvgDFHP4J2gUOstpUMAQ0ZKIjQj7lHJbkVu6suF/4H
 +SLxE204AwA=
 
---6TrnltStXW4iwmi0
+--azLHFNyN32YCQGCU
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -1113,5 +1149,5 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---6TrnltStXW4iwmi0--
+--azLHFNyN32YCQGCU--
 
