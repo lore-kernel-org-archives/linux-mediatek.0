@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C80E2C10F00
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Mar 2020 21:26:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 88385C10F25
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Mar 2020 21:28:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 959912070A
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Mar 2020 21:26:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 53AAB2073D
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Mar 2020 21:28:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gQsb2vCh";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="M71CdT3p"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 959912070A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KxKP7rEl";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="POwpoa6D"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 53AAB2073D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,73 +27,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/gUATgXvEm2TojI5TiMk8XCnoBj5PPKaONm+J8Gupz0=; b=gQsb2vChY+YazJ
-	kSVNxuATjf8hHHXzTZ1AzwvKizEqfuCEE+nBvAIoUiKROWKDZ/ce3q5Z88GvGcGI9sh2xNt69C+g5
-	0H+mdNFCHwCeiYoq4Zx3V/vav1GCDdqGgtoXZ95ZbvSA00s+gGwzP8/JXZVeC9BxxjAzyrQK2RRBP
-	ucUbOcYT9emI6ogiNTCFb/wf2s2femAUzHslI3Vbi7qp5qsO3Z5FRg5NM8XlEB9eAm92s9zWMDJtb
-	9tvhechVpSjePtcTPLT9WhqUK0ZeAfmt96v7LbUbjl+lvyrLiH9sKmccAhnF9DydrjwlUv8lpPdO+
-	tgGGaTEJVnvcUrESb3Qw==;
+	List-Owner; bh=GKWAjbuYovuri8stx4K8Ev1WlPhiM8Pu+P7vHQ7YJqU=; b=KxKP7rEl7hubzd
+	hVtJUQub6A7cErVS6Y00lIQ0W8TMIDHlWblwyFiLOLlzaoLCE5VWTJboFG1cDgydnnvQml8CNe0XB
+	LpIbcw5nXD3Tb4+cTA0kEmPRi5BWIjxEIOV9V4X7EhzZO8p+yk+n34h2KtT9URvM6rIhZV7EH6MdQ
+	BO3hlhifLIPNELx7MZkjkBq4C/HAFHbf0h6WXsxhh0fKxj4+OKogNSXKc+X7GZ4tlnI1BUYI5e3ws
+	h6Eo9/F0L/bhEpUvtp8Roxy5u6RRQF1aNnlkvmdKf4R67yAY9fQongbLPQ7xj5lD4B2ZkePaG4F43
+	Nv3lSTJiM9r+TC32m/3A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jAgy8-0007qt-7y; Sat, 07 Mar 2020 21:26:48 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1jAgzy-00082O-KJ; Sat, 07 Mar 2020 21:28:42 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jAgy3-0007pg-Pe; Sat, 07 Mar 2020 21:26:45 +0000
-Received: by mail-wm1-x342.google.com with SMTP id g134so6093324wme.3;
- Sat, 07 Mar 2020 13:26:41 -0800 (PST)
+ id 1jAgzw-00081P-7F; Sat, 07 Mar 2020 21:28:41 +0000
+Received: by mail-wr1-x444.google.com with SMTP id 6so6449259wre.4;
+ Sat, 07 Mar 2020 13:28:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=m54yusBm2cfQsoltNlzGG1VPYD+rTsr8fme02T2RWJo=;
- b=M71CdT3pKiL4MOUxpOTCC9cb5csI3HOZ8mgRcpGlMenO5UGzj9rMsZsQUDGINqN7ai
- qp/Ja8b4xD5XejP/PDULEeQ0c1tiKqaKvUrdzIwAhsFxW5y8JYlkqJnSDXf10hv1bTJ5
- JJYaRPIwJdyvDe/XlpWfYWtLp+rtvg8rVWnSWovr5qTDJ+fdOzmmzvqNHyxS3qIyfbvc
- nXuSBzmwqQ9RC2RLPTYQzXxah/e6Y2eiDFjaOz8BLm6x1OW4oSLKZmo3kWnUS43dDsK0
- hBJRQH8+2uYatuDwuvyuGuTMWz3JpLkb/Bbcit+80ODCMOT9orwHB9gz0kGorZSqKlFj
- fU3Q==
+ bh=ueTdXm38iULk42VR8rVExSQUffRrtj0Iz9PSB0/iBPw=;
+ b=POwpoa6DTHcAFg9bkriEfLwyjnxF+WNx4Bm27ekR8IuXAWPZmM2W/YdPr/ZI4Drpb3
+ uxq788hx6N+qxdHZrZEMkWWjG71Jlgl/UydUXO6JyVHNa3pXPW5K7ZHn30wQ7eZisQ4y
+ j3WQrpEucEbzSARLq7jyQICuzsmeVGCdl1VHfwtZqxHd2obQuRafAKjkBfmIGx+ZkvHB
+ //2cCq8+1rd6QFw4Dg9GWfPxOjxml5U0k85RPjy/gRPcO6wuwxzBp4ATwjaSw8u0mQjm
+ E1zPzXkeD3Oyb1Qs/OK/GpTCzSOEpK6c4Rbz3G5xFxbx1nzesNl5FyBLncZDs6AaMAtD
+ ZAlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=m54yusBm2cfQsoltNlzGG1VPYD+rTsr8fme02T2RWJo=;
- b=WeO2vkx/knkCDvKnlwFuGGAtbn4nOFk8HIxUOSMMkBbY6mZvRqW4iD6Rks7ywxy2O5
- WxdQvf74BoVHQGJ6NAj61PAVA3hIVbl4BdNMkjhg8IFaLOt17az0ne8Vx5+2/9Lh47DX
- qFAOY8w2KaXiKaNZp5NisX6mRkjRGoXVKOUi1K3dsn6zmhgBAUmK1BGrwJQQoCxMdIe5
- qMoIuETEyOMXtWaOXUKsFkjtYUJLLhGOS96XgyjPQYq9kzpzh/VS2ZSRrEQHEsoEYHj8
- OKI+p9ZzzQB+8q0j/3ZsHWxDo1rsLunsFnVt/bfeD9iSP/dq0gANGBduVdQIuS+nc8G3
- ZD/g==
-X-Gm-Message-State: ANhLgQ1vYoMy8uP7xWqRCH8nj2uEkWMj+gxTv2dfzwXeFdh4lkOKnplX
- saMxwgwODBKYPVJDLOl0rS0=
-X-Google-Smtp-Source: ADFU+vuFRDbTDEZuAuP/pYTCz4YndzHJ2xraWWIfqBFPUHje29O19k4OuY+NKvZGNki8YYnvjAmg6A==
-X-Received: by 2002:a7b:c082:: with SMTP id r2mr1205378wmh.177.1583616399836; 
- Sat, 07 Mar 2020 13:26:39 -0800 (PST)
+ bh=ueTdXm38iULk42VR8rVExSQUffRrtj0Iz9PSB0/iBPw=;
+ b=ClOzSkfpkVVYZKwg1ngD+gb1CZHdAtFB/2T6O9u2yf1Rz9p91dDKPtGLU/A2BWxnzu
+ H76gg930fWv0Z8iEe6s3sOY6n/GR5FC8Uqd8eJVZAIZbfs0AipV97uL9WiqJ6+wbAVqt
+ AF7J0vrMm3hwo1tFgvkv2RnyUx1GHsGY09K7qeKTou7aRLTtGM0WZCoZGTWkkos2mdnT
+ u3eBWWvZLN5sdJBDX44PRE/iK0hfvN5L7n6MlI5N64hj6nLIOkZX/HibQdV/ikO+JxrZ
+ VPM9+TCwCOoRJkUn8gRB38P+snNlaLoyQYZU1Y+1B6iDt0UkBYubAGP//jwcfoqFqeLC
+ 5JEw==
+X-Gm-Message-State: ANhLgQ3zNjJf3XYcdSs6RAIVg9f0ksSZqwLjWHk+cJukhTvQWSdd1fPD
+ h3MWbYoSLfsFZpZRHtFr6HhPJwVN
+X-Google-Smtp-Source: ADFU+vsSDPqUsCoGjmQ0pTrfSMijkI7I6/Hn681LImaNHg8v8HT+IXCeWe3DjhXOxEBvH5AJm61MyQ==
+X-Received: by 2002:a05:6000:1081:: with SMTP id
+ y1mr11121742wrw.52.1583616518396; 
+ Sat, 07 Mar 2020 13:28:38 -0800 (PST)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id a7sm18221033wmb.0.2020.03.07.13.26.33
+ by smtp.gmail.com with ESMTPSA id u1sm35669998wrt.78.2020.03.07.13.28.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 07 Mar 2020 13:26:38 -0800 (PST)
-Subject: Re: [PATCH 10/22] drm/mediatek: Use simple encoder
-To: Thomas Zimmermann <tzimmermann@suse.de>, airlied@linux.ie,
- daniel@ffwll.ch, sam@ravnborg.org, abrodkin@synopsys.com,
- bbrezillon@kernel.org, nicolas.ferre@microchip.com,
- alexandre.belloni@bootlin.com, ludovic.desroches@microchip.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, jingoohan1@gmail.com,
- inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
- stefan@agner.ch, alison.wang@nxp.com, patrik.r.jakobsson@gmail.com,
- xinliang.liu@linaro.org, zourongrong@gmail.com, john.stultz@linaro.org,
- kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
- linux@armlinux.org.uk, p.zabel@pengutronix.de, shawnguo@kernel.org,
- s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
- linux-imx@nxp.com, paul@crapouillou.net, ck.hu@mediatek.com,
- laurent.pinchart@ideasonboard.com, kieran.bingham+renesas@ideasonboard.com,
- hjc@rock-chips.com, heiko@sntech.de, wens@csie.org, jernej.skrabec@siol.net,
- thierry.reding@gmail.com, jonathanh@nvidia.com, jsarha@ti.com,
- tomi.valkeinen@ti.com, eric@anholt.net, kraxel@redhat.com,
- rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
- sebastian.reichel@collabora.com
-References: <20200305155950.2705-1-tzimmermann@suse.de>
- <20200305155950.2705-11-tzimmermann@suse.de>
+ Sat, 07 Mar 2020 13:28:37 -0800 (PST)
+Subject: Re: [PATCH v2 1/1] pwm: mediatek: add longer period support
+To: Sam Shih <sam.shih@mediatek.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>
+References: <1583230755-25986-1-git-send-email-sam.shih@mediatek.com>
+ <1583230755-25986-2-git-send-email-sam.shih@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -169,16 +154,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <31d07a60-e7fd-0631-5132-64609af5fcd8@gmail.com>
-Date: Sat, 7 Mar 2020 22:26:32 +0100
+Message-ID: <1a3a523e-62ff-e380-c67b-12f742d348ea@gmail.com>
+Date: Sat, 7 Mar 2020 22:28:36 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200305155950.2705-11-tzimmermann@suse.de>
+In-Reply-To: <1583230755-25986-2-git-send-email-sam.shih@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200307_132643_861662_F95C2163 
-X-CRM114-Status: GOOD (  17.61  )
+X-CRM114-CacheID: sfid-20200307_132840_268409_BD9F3965 
+X-CRM114-Status: GOOD (  22.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -190,9 +175,9 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-samsung-soc@vger.kernel.org, dri-devel@lists.freedesktop.org,
- virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org
+Cc: linux-pwm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ John Crispin <john@phrozen.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
@@ -200,97 +185,90 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 05/03/2020 16:59, Thomas Zimmermann wrote:
-> The mediatak driver uses empty implementations for its encoders. Replace
-> the code with the generic simple encoder.
+On 03/03/2020 11:19, Sam Shih wrote:
+> The pwm clock source could be divided by 1625 with PWM_CON
+> BIT(3) setting in mediatek hardware.
 > 
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> This patch add support for longer pwm period configuration,
+> which allowing blinking LEDs via pwm interface.
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Is this a fix? In this case please provide a Fixes tag with the commit ID which
+introduced the bug.
 
+Thanks
+Matthias
+
+> 
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
 > ---
->  drivers/gpu/drm/mediatek/mtk_dpi.c | 14 +++-----------
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 14 +++-----------
->  2 files changed, 6 insertions(+), 22 deletions(-)
+>  drivers/pwm/pwm-mediatek.c | 34 ++++++++++++++++++++++++++++++----
+>  1 file changed, 30 insertions(+), 4 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> index 14fbe1c09ce9..9c90c58e5acd 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -20,6 +20,7 @@
->  #include <drm/drm_bridge.h>
->  #include <drm/drm_crtc.h>
->  #include <drm/drm_of.h>
-> +#include <drm/drm_simple_kms_helper.h>
->  
->  #include "mtk_dpi_regs.h"
->  #include "mtk_drm_ddp_comp.h"
-> @@ -509,15 +510,6 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
->  	return 0;
->  }
->  
-> -static void mtk_dpi_encoder_destroy(struct drm_encoder *encoder)
-> -{
-> -	drm_encoder_cleanup(encoder);
-> -}
-> -
-> -static const struct drm_encoder_funcs mtk_dpi_encoder_funcs = {
-> -	.destroy = mtk_dpi_encoder_destroy,
-> -};
-> -
->  static bool mtk_dpi_encoder_mode_fixup(struct drm_encoder *encoder,
->  				       const struct drm_display_mode *mode,
->  				       struct drm_display_mode *adjusted_mode)
-> @@ -596,8 +588,8 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
->  		return ret;
->  	}
->  
-> -	ret = drm_encoder_init(drm_dev, &dpi->encoder, &mtk_dpi_encoder_funcs,
-> -			       DRM_MODE_ENCODER_TMDS, NULL);
-> +	ret = drm_simple_encoder_init(drm_dev, &dpi->encoder,
-> +				      DRM_MODE_ENCODER_TMDS);
->  	if (ret) {
->  		dev_err(dev, "Failed to initialize decoder: %d\n", ret);
->  		goto err_unregister;
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index 0ede69830a9d..a9a25087112f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -22,6 +22,7 @@
->  #include <drm/drm_panel.h>
->  #include <drm/drm_print.h>
->  #include <drm/drm_probe_helper.h>
-> +#include <drm/drm_simple_kms_helper.h>
->  
->  #include "mtk_drm_ddp_comp.h"
->  
-> @@ -787,15 +788,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
->  	dsi->enabled = false;
->  }
->  
-> -static void mtk_dsi_encoder_destroy(struct drm_encoder *encoder)
-> -{
-> -	drm_encoder_cleanup(encoder);
-> -}
-> -
-> -static const struct drm_encoder_funcs mtk_dsi_encoder_funcs = {
-> -	.destroy = mtk_dsi_encoder_destroy,
-> -};
-> -
->  static bool mtk_dsi_encoder_mode_fixup(struct drm_encoder *encoder,
->  				       const struct drm_display_mode *mode,
->  				       struct drm_display_mode *adjusted_mode)
-> @@ -888,8 +880,8 @@ static int mtk_dsi_create_conn_enc(struct drm_device *drm, struct mtk_dsi *dsi)
+> diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
+> index b94e0d09c300..c64ecff6c550 100644
+> --- a/drivers/pwm/pwm-mediatek.c
+> +++ b/drivers/pwm/pwm-mediatek.c
+> @@ -121,8 +121,11 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
+>  			       int duty_ns, int period_ns)
 >  {
+>  	struct pwm_mediatek_chip *pc = to_pwm_mediatek_chip(chip);
+> -	u32 clkdiv = 0, cnt_period, cnt_duty, reg_width = PWMDWIDTH,
+> -	    reg_thres = PWMTHRES;
+> +	/* The source clock is divided by 2^clkdiv or iff the clksel bit
+> +	 * is set by (2^clkdiv*1625)
+> +	 */
+> +	u32 clkdiv = 0, clksel = 0, cnt_period, cnt_duty,
+> +	    reg_width = PWMDWIDTH, reg_thres = PWMTHRES;
+>  	u64 resolution;
 >  	int ret;
 >  
-> -	ret = drm_encoder_init(drm, &dsi->encoder, &mtk_dsi_encoder_funcs,
-> -			       DRM_MODE_ENCODER_DSI, NULL);
-> +	ret = drm_simple_encoder_init(drm, &dsi->encoder,
-> +				      DRM_MODE_ENCODER_DSI);
->  	if (ret) {
->  		DRM_ERROR("Failed to encoder init to drm\n");
->  		return ret;
+> @@ -133,12 +136,30 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
+>  
+>  	/* Using resolution in picosecond gets accuracy higher */
+>  	resolution = (u64)NSEC_PER_SEC * 1000;
+> +	/* Calculate resolution based on current clock frequency */
+>  	do_div(resolution, clk_get_rate(pc->clk_pwms[pwm->hwpwm]));
+> -
+> +	/* Using resolution to calculate cnt_period which represents
+> +	 * the effective range of the PWM period counter
+> +	 */
+>  	cnt_period = DIV_ROUND_CLOSEST_ULL((u64)period_ns * 1000, resolution);
+>  	while (cnt_period > 8191) {
+> +		/* Using clkdiv to reduce clock frequency and calculate
+> +		 * new resolution based on new clock speed
+> +		 */
+>  		resolution *= 2;
+>  		clkdiv++;
+> +		if (clkdiv > PWM_CLK_DIV_MAX && !clksel) {
+> +			/* Using clksel to divide the pwm source clock by
+> +			 * an additional 1625, and recalculate new clkdiv
+> +			 * and resolution
+> +			 */
+> +			clksel = 1;
+> +			clkdiv = 0;
+> +			resolution = (u64)NSEC_PER_SEC * 1000 * 1625;
+> +			do_div(resolution,
+> +				clk_get_rate(pc->clk_pwms[pwm->hwpwm]));
+> +		}
+> +		/* Calculate cnt_period based on resolution */
+>  		cnt_period = DIV_ROUND_CLOSEST_ULL((u64)period_ns * 1000,
+>  						   resolution);
+>  	}
+> @@ -158,8 +179,13 @@ static int pwm_mediatek_config(struct pwm_chip *chip, struct pwm_device *pwm,
+>  		reg_thres = PWM45THRES_FIXUP;
+>  	}
+>  
+> +	/* Calculate cnt_duty based on resolution */
+>  	cnt_duty = DIV_ROUND_CLOSEST_ULL((u64)duty_ns * 1000, resolution);
+> -	pwm_mediatek_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
+> +	if (clksel)
+> +		pwm_mediatek_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | BIT(3) |
+> +				    clkdiv);
+> +	else
+> +		pwm_mediatek_writel(pc, pwm->hwpwm, PWMCON, BIT(15) | clkdiv);
+>  	pwm_mediatek_writel(pc, pwm->hwpwm, reg_width, cnt_period);
+>  	pwm_mediatek_writel(pc, pwm->hwpwm, reg_thres, cnt_duty);
+>  
 > 
 
 _______________________________________________
