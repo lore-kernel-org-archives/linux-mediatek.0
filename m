@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5AB2DC10F28
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2020 10:54:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5348CC10DCE
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2020 10:54:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2ADF1206D7
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2020 10:54:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 243E2206D7
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2020 10:54:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="apRJ5e1Y";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="W1QwKYRd"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2ADF1206D7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Xpqlh3Bd";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="KuXDlNax"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 243E2206D7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CVe4OCTW0L8y/DJ8TscjkbbULknUZaPQFUh+1TQ1VM8=; b=apRJ5e1Yo9pBB5
-	4tPHMKNZD48tDz/CDX33L/y2P4TPxfE5tJiB/e0iDKtRxh55rV9eGa83FEObiQDCam2fV8jou7agh
-	FNP40yM4Rs8xCVcz/Y0qs5UYlOvoor3txmG7ygL4QiAcSWh+/yd6kLC8za70JLquuSNlUx4Co9ryS
-	cxKUqAjWGFUGkZboM7cknaiPes8MNf0BK3H3egoQFpD180Rj4TE+DrYx2Xz14QpU4M2Ml7sFhXw5H
-	3tmmRJX3EzorSKUxDVroGQIuTfsSrv76qa79MpFwLL33WJuUbjsIk0QlZtik0YvYyKELd0b0anAD8
-	LMr2zh+lYQPY5lhn/Mlw==;
+	List-Owner; bh=uelb9Vc6k4TyRCOxNbUw98PeRA+g0E4QE2eaVHyO7F0=; b=Xpqlh3BdmPRxSy
+	tnDOPvuljFB7sB9mI7Z5+wA0cv7IRkZUA8NyAZxOaoCbommXqudTuzo7OpsyVjibCZqyBicYFwyZ6
+	ChIr8Ue4Mi+8l+2r+cfpGawSu8lcWM9VhEdGPtqhNvSMw4D54fLBXRBXVpVHXixST8wTVGeBcZn3r
+	tMUJz+JYhCB+GG1zXl998y/1yg8W/JeTVip+sSkaVlnkZzH6LnN9l3Qw/G4D5s1tP3qfJ04lmKO8B
+	c1EHuElrJDUEj9MtWHh7BI7aAwSkpbdP4Jjac9xg3hBJb8qNqbBjVYj26uxVIX9FcHC69jvf9mGyx
+	/1tMz8Dt4MeySAxlZbhg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jAtZE-0007Fu-TB; Sun, 08 Mar 2020 10:53:56 +0000
+	id 1jAtZI-0007JL-I4; Sun, 08 Mar 2020 10:54:00 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jAtYZ-0006Y3-GW; Sun, 08 Mar 2020 10:53:17 +0000
-X-UUID: 8dfa7130c216424b99f829cf429975f9-20200308
+ id 1jAtYW-0006YI-RM; Sun, 08 Mar 2020 10:53:17 +0000
+X-UUID: 9e0daaf999db41f28639cab657145939-20200308
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=D+dXiJm3APaX+tyDPhHiGjNPGNdy177jnTfCoMxdsUw=; 
- b=W1QwKYRdGTgQfTbSYntqJ4xmV9nPr+4bA8bj/yZdUlrbCiU64RkMcxdDOqJZHde/bj5X0Puzh1OzT++FNThJghbaPHbFCydA1yrsMm2WOwbZftHyXkCX8H4Zm+4Bub6fkOyoWo8P3zvjnyK9N6E0gocO1kjyac/X2IfUFKDS+0M=;
-X-UUID: 8dfa7130c216424b99f829cf429975f9-20200308
+ bh=MYH+JWtN3TW3+5HBk7PMR9MHuRJoGMcqVVaD9IZJVF0=; 
+ b=KuXDlNaxr+sKGKAPjmYTtquvXUwWVNb8qLmyGJsM5TWYIbsN/6tHsf8bBwO8JxQpIqwLFj26DyY8TaLmQT3Gm7dSvU2jK6sePxvHeJlOcoEDwc9oNvfr7Bbs7STq01Ocasgy+4H6DIWz+i6KQ5TcPV0FT7CO5jW/WEOdv7mfHNI=;
+X-UUID: 9e0daaf999db41f28639cab657145939-20200308
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <dennis-yc.hsieh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 6436876; Sun, 08 Mar 2020 02:53:02 -0800
+ with ESMTP id 1719487641; Sun, 08 Mar 2020 02:53:02 -0800
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 8 Mar 2020 03:52:59 -0700
+ 15.0.1395.4; Sun, 8 Mar 2020 03:53:00 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 8 Mar 2020 18:52:02 +0800
+ 15.0.1395.4; Sun, 8 Mar 2020 18:52:03 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Sun, 8 Mar 2020 18:52:58 +0800
+ Frontend Transport; Sun, 8 Mar 2020 18:52:59 +0800
 From: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Jassi Brar
  <jassisinghbrar@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, "David
  Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Subject: [PATCH v5 04/13] mailbox: mediatek: cmdq: clear task in channel
- before shutdown
-Date: Sun, 8 Mar 2020 18:52:46 +0800
-Message-ID: <1583664775-19382-5-git-send-email-dennis-yc.hsieh@mediatek.com>
+Subject: [PATCH v5 10/13] soc: mediatek: cmdq: export finalize function
+Date: Sun, 8 Mar 2020 18:52:52 +0800
+Message-ID: <1583664775-19382-11-git-send-email-dennis-yc.hsieh@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <1583664775-19382-1-git-send-email-dennis-yc.hsieh@mediatek.com>
 References: <1583664775-19382-1-git-send-email-dennis-yc.hsieh@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200308_035315_594926_F6E07AD2 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20200308_035312_886200_F5511D3D 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,71 +96,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Do success callback in channel when shutdown. For those task not finish,
-callback with error code thus client has chance to cleanup or reset.
+Export finalize function to client which helps append eoc and jump
+command to pkt. Let client decide call finalize or not.
 
 Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/mailbox/mtk-cmdq-mailbox.c | 38 ++++++++++++++++++++++++++++++
- 1 file changed, 38 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 1 +
+ drivers/soc/mediatek/mtk-cmdq-helper.c  | 7 ++-----
+ include/linux/soc/mediatek/mtk-cmdq.h   | 8 ++++++++
+ 3 files changed, 11 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 9994ac9426d6..b56d340c8982 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -387,6 +387,12 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
- 
- 	if (list_empty(&thread->task_busy_list)) {
- 		WARN_ON(clk_enable(cmdq->clock) < 0);
-+		/*
-+		 * The thread reset will clear thread related register to 0,
-+		 * including pc, end, priority, irq, suspend and enable. Thus
-+		 * set CMDQ_THR_ENABLED to CMDQ_THR_ENABLE_TASK will enable
-+		 * thread and make it running.
-+		 */
- 		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
- 
- 		writel(task->pa_base >> cmdq->shift_pa,
-@@ -450,6 +456,38 @@ static int cmdq_mbox_startup(struct mbox_chan *chan)
- 
- static void cmdq_mbox_shutdown(struct mbox_chan *chan)
- {
-+	struct cmdq_thread *thread = (struct cmdq_thread *)chan->con_priv;
-+	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
-+	struct cmdq_task *task, *tmp;
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&thread->chan->lock, flags);
-+	if (list_empty(&thread->task_busy_list))
-+		goto done;
-+
-+	WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
-+
-+	/* make sure executed tasks have success callback */
-+	cmdq_thread_irq_handler(cmdq, thread);
-+	if (list_empty(&thread->task_busy_list))
-+		goto done;
-+
-+	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
-+				 list_entry) {
-+		cmdq_task_exec_done(task, CMDQ_CB_ERROR);
-+		kfree(task);
-+	}
-+
-+	cmdq_thread_disable(cmdq, thread);
-+	clk_disable(cmdq->clock);
-+done:
-+	/*
-+	 * The thread->task_busy_list empty means thread already disable. The
-+	 * cmdq_mbox_send_data() always reset thread which clear disable and
-+	 * suspend statue when first pkt send to channel, so there is no need
-+	 * to do any operation here, only unlock and leave.
-+	 */
-+	spin_unlock_irqrestore(&thread->chan->lock, flags);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 0dfcd1787e65..7daaabc26eb1 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -490,6 +490,7 @@ static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
+ 		cmdq_pkt_clear_event(cmdq_handle, mtk_crtc->cmdq_event);
+ 		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event);
+ 		mtk_crtc_ddp_config(crtc, cmdq_handle);
++		cmdq_pkt_finalize(cmdq_handle);
+ 		cmdq_pkt_flush_async(cmdq_handle, ddp_cmdq_cb, cmdq_handle);
+ 	}
+ #endif
+diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+index a9ebbabb7439..59bc1164b411 100644
+--- a/drivers/soc/mediatek/mtk-cmdq-helper.c
++++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+@@ -372,7 +372,7 @@ int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value)
  }
+ EXPORT_SYMBOL(cmdq_pkt_assign);
  
- static const struct mbox_chan_ops cmdq_mbox_chan_ops = {
+-static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
++int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
+ {
+ 	struct cmdq_instruction inst = { {0} };
+ 	int err;
+@@ -392,6 +392,7 @@ static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
+ 
+ 	return err;
+ }
++EXPORT_SYMBOL(cmdq_pkt_finalize);
+ 
+ static void cmdq_pkt_flush_async_cb(struct cmdq_cb_data data)
+ {
+@@ -426,10 +427,6 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
+ 	unsigned long flags = 0;
+ 	struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
+ 
+-	err = cmdq_pkt_finalize(pkt);
+-	if (err < 0)
+-		return err;
+-
+ 	pkt->cb.cb = cb;
+ 	pkt->cb.data = data;
+ 	pkt->async_cb.cb = cmdq_pkt_flush_async_cb;
+diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+index fec292aac83c..99e77155f967 100644
+--- a/include/linux/soc/mediatek/mtk-cmdq.h
++++ b/include/linux/soc/mediatek/mtk-cmdq.h
+@@ -213,6 +213,14 @@ int cmdq_pkt_poll_mask(struct cmdq_pkt *pkt, u8 subsys,
+  */
+ int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value);
+ 
++/**
++ * cmdq_pkt_finalize() - Append EOC and jump command to pkt.
++ * @pkt:	the CMDQ packet
++ *
++ * Return: 0 for success; else the error code is returned
++ */
++int cmdq_pkt_finalize(struct cmdq_pkt *pkt);
++
+ /**
+  * cmdq_pkt_flush_async() - trigger CMDQ to asynchronously execute the CMDQ
+  *                          packet and call back at the end of done packet
 -- 
 2.18.0
 _______________________________________________
