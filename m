@@ -2,22 +2,22 @@ Return-Path: <SRS0=sXDt=4Z=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UPPERCASE_50_75,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 913EFC10DCE
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2020 10:56:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 85EB0C10DCE
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2020 11:03:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 45F4F206D7
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2020 10:56:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 55FB5206D7
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2020 11:03:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sTInJG2n";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ZM1N0veg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 45F4F206D7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IvxUElLC";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="V/tXy159"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55FB5206D7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rjSetoXVBFKcohpDZAf5g0Rckxm4PRHu2HC5Ara7TiE=; b=sTInJG2n2bNv6I
-	oRfRL4Zi+pbnV/5ZQBGKWQrMDhzcf4Yy2wnW81/O/D1kDurwZftEGGXOBNINI97siMLTh9PxRVtQU
-	GGCXbxs5+/CjO1FdYYqbJQ39wqViVwrpZ40byt9gZ1D6OXCnZaEnr8l/0TlqPi3T0fU0BpUWIPRMy
-	4iojLE1rLIoCJhDpXh5uW8Fd27tjJqPaDB4PYSLc1n0Te9bmeBcFkOvu+ua8UNJ1fNEHs7c/CkfRI
-	9Fxref53zowm30tlwNDW1en+FGcXlTSK2wZz1HMJxjLQ3q2FXlizkmYDg3DrmBcig1893AbdxUFh6
-	9BWlGPyzUANKl0106RFQ==;
+	List-Owner; bh=JsXUfVShgev0mePhLnv4xujE7BwqaUsxHSHUSyajo04=; b=IvxUElLCijQc0D
+	UgD5vD5H7Gb6+wl8qJluh7JWn6gI242vBPZ0T4/TCBUFegpYjRI5F7BbH6Rwvwvm7RL0Jh5aXfQ+c
+	qkdf9V5qakpvCqYzC5+TkszCRkrxX9M4A4jACzEI6GeDlCX/nA/RrUpOQWaAI0DxiTdgMajxJ3MUy
+	OZnJLIi1GEs+sxaZDg15s4CGbM7SBbkTHNGhgZGBA6taFY+Ar+Lho/gK7w/RVyNeQkLLYxS4Hpooh
+	SP5WqOfhID4kJQ6kf4enj4FRsadxm+CmXkrW+c2EqwjlVSAtaqFoH/BHB4zZZ1MmK41rtxgyQWw7V
+	0FfsyHZPtW10Thj8JYEA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jAtb7-0001kD-IR; Sun, 08 Mar 2020 10:55:53 +0000
+	id 1jAti9-0004xB-Jh; Sun, 08 Mar 2020 11:03:09 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jAtYd-0006YI-KJ; Sun, 08 Mar 2020 10:53:21 +0000
-X-UUID: 70ad3a0c02ec4f6ba461234f006025d9-20200308
+ id 1jAti6-0004wc-RM; Sun, 08 Mar 2020 11:03:08 +0000
+X-UUID: de2ef16046154aee9a81e240175a873b-20200308
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Xrwn2Nf5VE1A0V8H6tdgcbvBXDbJI4cjOq+ERDxyBvA=; 
- b=ZM1N0vegTsoaCqbTwnaC2ywL32JEqyI+umJNbrE9ovPJwAamZ3TGPoAITMbPQZfWqMLBvQlE/M6vZ6+9uLdLSp5YoJD3uarl+OqxeBdwTNII0pCiAzARJYQEbCwmM2lUyayOkqMd7p65NTjcx6fRZ8lpgA1Lqi9ldgjvGUGFH7s=;
-X-UUID: 70ad3a0c02ec4f6ba461234f006025d9-20200308
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ bh=1JNePjB6YqDB7fVq03Mwu2OpxYlWObOTYcRp1X0n4oQ=; 
+ b=V/tXy159lnDfYPyDJyPl3hAIQkyFHej1CxMw2U9xnhyL+l7b9ker1g2WQZt8YfLn4j0EoNvIaUXuKL68jEgv8WMeh9OYBPuk0bZSCgi9ojIkD8FepElWc2yncbTWX7eNpLjfvfVXTnGRz+zNSGV70m0NPAA2y8J8k2/kj89cAWE=;
+X-UUID: de2ef16046154aee9a81e240175a873b-20200308
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <dennis-yc.hsieh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1791068056; Sun, 08 Mar 2020 02:53:02 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 8 Mar 2020 03:53:25 -0700
+ with ESMTP id 751442353; Sun, 08 Mar 2020 03:03:03 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sun, 8 Mar 2020 03:53:02 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 8 Mar 2020 18:51:40 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sun, 8 Mar 2020 18:52:06 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Sun, 8 Mar 2020 18:52:58 +0800
+ Frontend Transport; Sun, 8 Mar 2020 18:52:59 +0800
 From: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Jassi Brar
  <jassisinghbrar@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, "David
  Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Subject: [PATCH v5 01/13] dt-binding: gce: add gce header file for mt6779
-Date: Sun, 8 Mar 2020 18:52:43 +0800
-Message-ID: <1583664775-19382-2-git-send-email-dennis-yc.hsieh@mediatek.com>
+Subject: [PATCH v5 11/13] soc: mediatek: cmdq: add jump function
+Date: Sun, 8 Mar 2020 18:52:53 +0800
+Message-ID: <1583664775-19382-12-git-send-email-dennis-yc.hsieh@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <1583664775-19382-1-git-send-email-dennis-yc.hsieh@mediatek.com>
 References: <1583664775-19382-1-git-send-email-dennis-yc.hsieh@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: B4E49C21432524F112583026C104BD6C1A699A4A4D1145A109EF3440DEEFFBED2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200308_035319_691297_1F5BEF6D 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20200308_040306_894110_F6C9C042 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,274 +96,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add documentation for the mt6779 gce.
-
-Add gce header file defined the gce hardware event,
-subsys number and constant for mt6779.
+Add jump function so that client can jump to any address which
+contains instruction.
 
 Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- .../devicetree/bindings/mailbox/mtk-gce.txt   |   8 +-
- include/dt-bindings/gce/mt6779-gce.h          | 222 ++++++++++++++++++
- 2 files changed, 227 insertions(+), 3 deletions(-)
- create mode 100644 include/dt-bindings/gce/mt6779-gce.h
+ drivers/soc/mediatek/mtk-cmdq-helper.c | 13 +++++++++++++
+ include/linux/soc/mediatek/mtk-cmdq.h  | 11 +++++++++++
+ 2 files changed, 24 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-index 7b13787ab13d..82c0a83fed09 100644
---- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-+++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-@@ -9,7 +9,8 @@ CMDQ driver uses mailbox framework for communication. Please refer to
- mailbox.txt for generic information about mailbox device-tree bindings.
+diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+index 59bc1164b411..bb5be20fc70a 100644
+--- a/drivers/soc/mediatek/mtk-cmdq-helper.c
++++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+@@ -13,6 +13,7 @@
+ #define CMDQ_POLL_ENABLE_MASK	BIT(0)
+ #define CMDQ_EOC_IRQ_EN		BIT(0)
+ #define CMDQ_REG_TYPE		1
++#define CMDQ_JUMP_RELATIVE	1
  
- Required properties:
--- compatible: can be "mediatek,mt8173-gce" or "mediatek,mt8183-gce"
-+- compatible: can be "mediatek,mt8173-gce", "mediatek,mt8183-gce" or
-+  "mediatek,mt6779-gce".
- - reg: Address range of the GCE unit
- - interrupts: The interrupt signal from the GCE block
- - clock: Clocks according to the common clock binding
-@@ -36,8 +37,9 @@ Optional properties for a client device:
-   start_offset: the start offset of register address that GCE can access.
-   size: the total size of register address that GCE can access.
+ struct cmdq_instruction {
+ 	union {
+@@ -372,6 +373,18 @@ int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value)
+ }
+ EXPORT_SYMBOL(cmdq_pkt_assign);
  
--Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h'
--or 'dt-binding/gce/mt8183-gce.h'. Such as sub-system ids, thread priority, event ids.
-+Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h',
-+'dt-binding/gce/mt8183-gce.h' or 'dt-bindings/gce/mt6779-gce.h'. Such as
-+sub-system ids, thread priority, event ids.
++int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr)
++{
++	struct cmdq_instruction inst = { {0} };
++
++	inst.op = CMDQ_CODE_JUMP;
++	inst.offset = CMDQ_JUMP_RELATIVE;
++	inst.value = addr >>
++		cmdq_mbox_shift(((struct cmdq_client *)pkt->cl)->chan);
++	return cmdq_pkt_append_command(pkt, inst);
++}
++EXPORT_SYMBOL(cmdq_pkt_jump);
++
+ int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
+ {
+ 	struct cmdq_instruction inst = { {0} };
+diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+index 99e77155f967..1a6c56f3bec1 100644
+--- a/include/linux/soc/mediatek/mtk-cmdq.h
++++ b/include/linux/soc/mediatek/mtk-cmdq.h
+@@ -213,6 +213,17 @@ int cmdq_pkt_poll_mask(struct cmdq_pkt *pkt, u8 subsys,
+  */
+ int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value);
  
- Example:
- 
-diff --git a/include/dt-bindings/gce/mt6779-gce.h b/include/dt-bindings/gce/mt6779-gce.h
-new file mode 100644
-index 000000000000..06101316ace4
---- /dev/null
-+++ b/include/dt-bindings/gce/mt6779-gce.h
-@@ -0,0 +1,222 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (c) 2019 MediaTek Inc.
-+ * Author: Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>
++/**
++ * cmdq_pkt_jump() - Append jump command to the CMDQ packet, ask GCE
++ *		     to execute an instruction that change current thread PC to
++ *		     a physical address which should contains more instruction.
++ * @pkt:        the CMDQ packet
++ * @addr:       physical address of target instruction buffer
++ *
++ * Return: 0 for success; else the error code is returned
 + */
++int cmdq_pkt_jump(struct cmdq_pkt *pkt, dma_addr_t addr);
 +
-+#ifndef _DT_BINDINGS_GCE_MT6779_H
-+#define _DT_BINDINGS_GCE_MT6779_H
-+
-+#define CMDQ_NO_TIMEOUT		0xffffffff
-+
-+/* GCE HW thread priority */
-+#define CMDQ_THR_PRIO_LOWEST	0
-+#define CMDQ_THR_PRIO_1		1
-+#define CMDQ_THR_PRIO_2		2
-+#define CMDQ_THR_PRIO_3		3
-+#define CMDQ_THR_PRIO_4		4
-+#define CMDQ_THR_PRIO_5		5
-+#define CMDQ_THR_PRIO_6		6
-+#define CMDQ_THR_PRIO_HIGHEST	7
-+
-+/* GCE subsys table */
-+#define SUBSYS_1300XXXX		0
-+#define SUBSYS_1400XXXX		1
-+#define SUBSYS_1401XXXX		2
-+#define SUBSYS_1402XXXX		3
-+#define SUBSYS_1502XXXX		4
-+#define SUBSYS_1880XXXX		5
-+#define SUBSYS_1881XXXX		6
-+#define SUBSYS_1882XXXX		7
-+#define SUBSYS_1883XXXX		8
-+#define SUBSYS_1884XXXX		9
-+#define SUBSYS_1000XXXX		10
-+#define SUBSYS_1001XXXX		11
-+#define SUBSYS_1002XXXX		12
-+#define SUBSYS_1003XXXX		13
-+#define SUBSYS_1004XXXX		14
-+#define SUBSYS_1005XXXX		15
-+#define SUBSYS_1020XXXX		16
-+#define SUBSYS_1028XXXX		17
-+#define SUBSYS_1700XXXX		18
-+#define SUBSYS_1701XXXX		19
-+#define SUBSYS_1702XXXX		20
-+#define SUBSYS_1703XXXX		21
-+#define SUBSYS_1800XXXX		22
-+#define SUBSYS_1801XXXX		23
-+#define SUBSYS_1802XXXX		24
-+#define SUBSYS_1804XXXX		25
-+#define SUBSYS_1805XXXX		26
-+#define SUBSYS_1808XXXX		27
-+#define SUBSYS_180aXXXX		28
-+#define SUBSYS_180bXXXX		29
-+#define CMDQ_SUBSYS_OFF		32
-+
-+/* GCE hardware events */
-+#define CMDQ_EVENT_DISP_RDMA0_SOF		0
-+#define CMDQ_EVENT_DISP_RDMA1_SOF		1
-+#define CMDQ_EVENT_MDP_RDMA0_SOF		2
-+#define CMDQ_EVENT_MDP_RDMA1_SOF		3
-+#define CMDQ_EVENT_MDP_RSZ0_SOF			4
-+#define CMDQ_EVENT_MDP_RSZ1_SOF			5
-+#define CMDQ_EVENT_MDP_TDSHP_SOF		6
-+#define CMDQ_EVENT_MDP_WROT0_SOF		7
-+#define CMDQ_EVENT_MDP_WROT1_SOF		8
-+#define CMDQ_EVENT_DISP_OVL0_SOF		9
-+#define CMDQ_EVENT_DISP_2L_OVL0_SOF		10
-+#define CMDQ_EVENT_DISP_2L_OVL1_SOF		11
-+#define CMDQ_EVENT_DISP_WDMA0_SOF		12
-+#define CMDQ_EVENT_DISP_COLOR0_SOF		13
-+#define CMDQ_EVENT_DISP_CCORR0_SOF		14
-+#define CMDQ_EVENT_DISP_AAL0_SOF		15
-+#define CMDQ_EVENT_DISP_GAMMA0_SOF		16
-+#define CMDQ_EVENT_DISP_DITHER0_SOF		17
-+#define CMDQ_EVENT_DISP_PWM0_SOF		18
-+#define CMDQ_EVENT_DISP_DSI0_SOF		19
-+#define CMDQ_EVENT_DISP_DPI0_SOF		20
-+#define CMDQ_EVENT_DISP_POSTMASK0_SOF		21
-+#define CMDQ_EVENT_DISP_RSZ0_SOF		22
-+#define CMDQ_EVENT_MDP_AAL_SOF			23
-+#define CMDQ_EVENT_MDP_CCORR_SOF		24
-+#define CMDQ_EVENT_DISP_DBI0_SOF		25
-+#define CMDQ_EVENT_ISP_RELAY_SOF		26
-+#define CMDQ_EVENT_IPU_RELAY_SOF		27
-+#define CMDQ_EVENT_DISP_RDMA0_EOF		28
-+#define CMDQ_EVENT_DISP_RDMA1_EOF		29
-+#define CMDQ_EVENT_MDP_RDMA0_EOF		30
-+#define CMDQ_EVENT_MDP_RDMA1_EOF		31
-+#define CMDQ_EVENT_MDP_RSZ0_EOF			32
-+#define CMDQ_EVENT_MDP_RSZ1_EOF			33
-+#define CMDQ_EVENT_MDP_TDSHP_EOF		34
-+#define CMDQ_EVENT_MDP_WROT0_W_EOF		35
-+#define CMDQ_EVENT_MDP_WROT1_W_EOF		36
-+#define CMDQ_EVENT_DISP_OVL0_EOF		37
-+#define CMDQ_EVENT_DISP_2L_OVL0_EOF		38
-+#define CMDQ_EVENT_DISP_2L_OVL1_EOF		39
-+#define CMDQ_EVENT_DISP_WDMA0_EOF		40
-+#define CMDQ_EVENT_DISP_COLOR0_EOF		41
-+#define CMDQ_EVENT_DISP_CCORR0_EOF		42
-+#define CMDQ_EVENT_DISP_AAL0_EOF		43
-+#define CMDQ_EVENT_DISP_GAMMA0_EOF		44
-+#define CMDQ_EVENT_DISP_DITHER0_EOF		45
-+#define CMDQ_EVENT_DISP_DSI0_EOF		46
-+#define CMDQ_EVENT_DISP_DPI0_EOF		47
-+#define CMDQ_EVENT_DISP_RSZ0_EOF		49
-+#define CMDQ_EVENT_MDP_AAL_FRAME_DONE		50
-+#define CMDQ_EVENT_MDP_CCORR_FRAME_DONE		51
-+#define CMDQ_EVENT_DISP_POSTMASK0_FRAME_DONE	52
-+#define CMDQ_EVENT_MUTEX0_STREAM_EOF		130
-+#define CMDQ_EVENT_MUTEX1_STREAM_EOF		131
-+#define CMDQ_EVENT_MUTEX2_STREAM_EOF		132
-+#define CMDQ_EVENT_MUTEX3_STREAM_EOF		133
-+#define CMDQ_EVENT_MUTEX4_STREAM_EOF		134
-+#define CMDQ_EVENT_MUTEX5_STREAM_EOF		135
-+#define CMDQ_EVENT_MUTEX6_STREAM_EOF		136
-+#define CMDQ_EVENT_MUTEX7_STREAM_EOF		137
-+#define CMDQ_EVENT_MUTEX8_STREAM_EOF		138
-+#define CMDQ_EVENT_MUTEX9_STREAM_EOF		139
-+#define CMDQ_EVENT_MUTEX10_STREAM_EOF		140
-+#define CMDQ_EVENT_MUTEX11_STREAM_EOF		141
-+#define CMDQ_EVENT_DISP_RDMA0_UNDERRUN		142
-+#define CMDQ_EVENT_DISP_RDMA1_UNDERRUN		143
-+#define CMDQ_EVENT_DISP_RDMA2_UNDERRUN		144
-+#define CMDQ_EVENT_DISP_RDMA3_UNDERRUN		145
-+#define CMDQ_EVENT_DSI0_TE			146
-+#define CMDQ_EVENT_DSI0_IRQ_EVENT		147
-+#define CMDQ_EVENT_DSI0_DONE_EVENT		148
-+#define CMDQ_EVENT_DISP_POSTMASK0_RST_DONE	150
-+#define CMDQ_EVENT_DISP_WDMA0_RST_DONE		151
-+#define CMDQ_EVENT_MDP_WROT0_RST_DONE		153
-+#define CMDQ_EVENT_MDP_RDMA0_RST_DONE		154
-+#define CMDQ_EVENT_DISP_OVL0_RST_DONE		155
-+#define CMDQ_EVENT_DISP_OVL0_2L_RST_DONE	156
-+#define CMDQ_EVENT_DISP_OVL1_2L_RST_DONE	157
-+#define CMDQ_EVENT_DIP_CQ_THREAD0_EOF		257
-+#define CMDQ_EVENT_DIP_CQ_THREAD1_EOF		258
-+#define CMDQ_EVENT_DIP_CQ_THREAD2_EOF		259
-+#define CMDQ_EVENT_DIP_CQ_THREAD3_EOF		260
-+#define CMDQ_EVENT_DIP_CQ_THREAD4_EOF		261
-+#define CMDQ_EVENT_DIP_CQ_THREAD5_EOF		262
-+#define CMDQ_EVENT_DIP_CQ_THREAD6_EOF		263
-+#define CMDQ_EVENT_DIP_CQ_THREAD7_EOF		264
-+#define CMDQ_EVENT_DIP_CQ_THREAD8_EOF		265
-+#define CMDQ_EVENT_DIP_CQ_THREAD9_EOF		266
-+#define CMDQ_EVENT_DIP_CQ_THREAD10_EOF		267
-+#define CMDQ_EVENT_DIP_CQ_THREAD11_EOF		268
-+#define CMDQ_EVENT_DIP_CQ_THREAD12_EOF		269
-+#define CMDQ_EVENT_DIP_CQ_THREAD13_EOF		270
-+#define CMDQ_EVENT_DIP_CQ_THREAD14_EOF		271
-+#define CMDQ_EVENT_DIP_CQ_THREAD15_EOF		272
-+#define CMDQ_EVENT_DIP_CQ_THREAD16_EOF		273
-+#define CMDQ_EVENT_DIP_CQ_THREAD17_EOF		274
-+#define CMDQ_EVENT_DIP_CQ_THREAD18_EOF		275
-+#define CMDQ_EVENT_DIP_DMA_ERR_EVENT		276
-+#define CMDQ_EVENT_AMD_FRAME_DONE		277
-+#define CMDQ_EVENT_MFB_DONE			278
-+#define CMDQ_EVENT_WPE_A_EOF			279
-+#define CMDQ_EVENT_VENC_EOF			289
-+#define CMDQ_EVENT_VENC_CMDQ_PAUSE_DONE		290
-+#define CMDQ_EVENT_JPEG_ENC_EOF			291
-+#define CMDQ_EVENT_VENC_MB_DONE			292
-+#define CMDQ_EVENT_VENC_128BYTE_CNT_DONE	293
-+#define CMDQ_EVENT_ISP_FRAME_DONE_A		321
-+#define CMDQ_EVENT_ISP_FRAME_DONE_B		322
-+#define CMDQ_EVENT_ISP_FRAME_DONE_C		323
-+#define CMDQ_EVENT_ISP_CAMSV_0_PASS1_DONE	324
-+#define CMDQ_EVENT_ISP_CAMSV_0_2_PASS1_DONE	325
-+#define CMDQ_EVENT_ISP_CAMSV_1_PASS1_DONE	326
-+#define CMDQ_EVENT_ISP_CAMSV_2_PASS1_DONE	327
-+#define CMDQ_EVENT_ISP_CAMSV_3_PASS1_DONE	328
-+#define CMDQ_EVENT_ISP_TSF_DONE			329
-+#define CMDQ_EVENT_SENINF_0_FIFO_FULL		330
-+#define CMDQ_EVENT_SENINF_1_FIFO_FULL		331
-+#define CMDQ_EVENT_SENINF_2_FIFO_FULL		332
-+#define CMDQ_EVENT_SENINF_3_FIFO_FULL		333
-+#define CMDQ_EVENT_SENINF_4_FIFO_FULL		334
-+#define CMDQ_EVENT_SENINF_5_FIFO_FULL		335
-+#define CMDQ_EVENT_SENINF_6_FIFO_FULL		336
-+#define CMDQ_EVENT_SENINF_7_FIFO_FULL		337
-+#define CMDQ_EVENT_TG_OVRUN_A_INT_DLY		338
-+#define CMDQ_EVENT_TG_OVRUN_B_INT_DLY		339
-+#define CMDQ_EVENT_TG_OVRUN_C_INT		340
-+#define CMDQ_EVENT_TG_GRABERR_A_INT_DLY		341
-+#define CMDQ_EVENT_TG_GRABERR_B_INT_DLY		342
-+#define CMDQ_EVENT_TG_GRABERR_C_INT		343
-+#define CMDQ_EVENT_CQ_VR_SNAP_A_INT_DLY		344
-+#define CMDQ_EVENT_CQ_VR_SNAP_B_INT_DLY		345
-+#define CMDQ_EVENT_CQ_VR_SNAP_C_INT		346
-+#define CMDQ_EVENT_DMA_R1_ERROR_A_INT_DLY	347
-+#define CMDQ_EVENT_DMA_R1_ERROR_B_INT_DLY	348
-+#define CMDQ_EVENT_DMA_R1_ERROR_C_INT		349
-+#define CMDQ_EVENT_APU_GCE_CORE0_EVENT_0	353
-+#define CMDQ_EVENT_APU_GCE_CORE0_EVENT_1	354
-+#define CMDQ_EVENT_APU_GCE_CORE0_EVENT_2	355
-+#define CMDQ_EVENT_APU_GCE_CORE0_EVENT_3	356
-+#define CMDQ_EVENT_APU_GCE_CORE1_EVENT_0	385
-+#define CMDQ_EVENT_APU_GCE_CORE1_EVENT_1	386
-+#define CMDQ_EVENT_APU_GCE_CORE1_EVENT_2	387
-+#define CMDQ_EVENT_APU_GCE_CORE1_EVENT_3	388
-+#define CMDQ_EVENT_VDEC_EVENT_0			416
-+#define CMDQ_EVENT_VDEC_EVENT_1			417
-+#define CMDQ_EVENT_VDEC_EVENT_2			418
-+#define CMDQ_EVENT_VDEC_EVENT_3			419
-+#define CMDQ_EVENT_VDEC_EVENT_4			420
-+#define CMDQ_EVENT_VDEC_EVENT_5			421
-+#define CMDQ_EVENT_VDEC_EVENT_6			422
-+#define CMDQ_EVENT_VDEC_EVENT_7			423
-+#define CMDQ_EVENT_VDEC_EVENT_8			424
-+#define CMDQ_EVENT_VDEC_EVENT_9			425
-+#define CMDQ_EVENT_VDEC_EVENT_10		426
-+#define CMDQ_EVENT_VDEC_EVENT_11		427
-+#define CMDQ_EVENT_VDEC_EVENT_12		428
-+#define CMDQ_EVENT_VDEC_EVENT_13		429
-+#define CMDQ_EVENT_VDEC_EVENT_14		430
-+#define CMDQ_EVENT_VDEC_EVENT_15		431
-+#define CMDQ_EVENT_FDVT_DONE			449
-+#define CMDQ_EVENT_FE_DONE			450
-+#define CMDQ_EVENT_RSC_EOF			451
-+#define CMDQ_EVENT_DVS_DONE_ASYNC_SHOT		452
-+#define CMDQ_EVENT_DVP_DONE_ASYNC_SHOT		453
-+#define CMDQ_EVENT_DSI0_TE_INFRA		898
-+
-+#endif
+ /**
+  * cmdq_pkt_finalize() - Append EOC and jump command to pkt.
+  * @pkt:	the CMDQ packet
 -- 
 2.18.0
 _______________________________________________
