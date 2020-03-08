@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 25E8AC10F28
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2020 11:03:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A83CC10F28
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2020 11:03:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F1A9E206D7
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2020 11:03:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4E5A0206D7
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2020 11:03:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LozXl7pE";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="rVFJaN2Z"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F1A9E206D7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DPkEbU4H";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="gDzej5CX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E5A0206D7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jwXvsWdpxwOkHzrFMELM+G4Z0g9edPFl0xImnx2w0jw=; b=LozXl7pEpVGNPT
-	MP6R1rxYYSwuP6HZMrX3vCVsh4Xff8FaFDPVP6Y1vm44e99G02R4xui4XH/HQy6MiTuV0/8nCDDGM
-	MMhtvtcaqEX7xU7bmc7rCh1c+MNJ1ayjAlPhIWY3yF6vAOjZGI+6gWteQB13VidX5xv5vU0FwK7HU
-	/2pmK0f49jMNrQ1Q3luHmO933rGdFsgHkM96KUCmkQwaoHVXvczfhUfpGzL9bp8FeUfTEeqE/84eY
-	VY5iyqQowvRGDT+nm0I84ravgeqD+WJBxGenBAULU2bXNA2s9MjtjE5Z/KHMsLKIzCeLdAvdYAFHN
-	cywIw+wkuNzJLWCXpExw==;
+	List-Owner; bh=yK9cTYBVcgbm2QBIaIadyOBzklI0PJG0nF76++wMP90=; b=DPkEbU4HEcITpg
+	yy9BNy3Tk7Khxy+O2/4LGRZsx11lOb+ggvC3mY1I27Rb5CJtiYNyNqtEhBzeAJme5Hgw2bC+xZzX7
+	A4bvm5LYjCzDlMZZFmOT8acKR6cbXdPx9aysny+pTKFbjd2HyQq9ehCzHJ7j4DsgNllZsMUKxKE+x
+	UQWAIkHOP99uGSz0gGdQ5EKlnffGsLeSTblA7wJeS7EHN18UqD77Ke7M+veHcebSPI46f1LG+UB8P
+	AbqHWQ56EgRAyq+QFZSQhOWc9p2v6hGz5UYdNtoWKnmE2J2kA8nwdrC9oNhFFKV07pSadoM3X+WA2
+	lDNnIrDZocYJy3KmHe9g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jAtiR-0005Gu-HZ; Sun, 08 Mar 2020 11:03:27 +0000
+	id 1jAtiT-0005JY-Fu; Sun, 08 Mar 2020 11:03:29 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jAtiE-00053d-OI; Sun, 08 Mar 2020 11:03:16 +0000
-X-UUID: f9fb7f088267406c8090326757122fca-20200308
+ id 1jAtiH-000554-0r; Sun, 08 Mar 2020 11:03:19 +0000
+X-UUID: 70fd1f6f8d68409bb8151eb5e108ed87-20200308
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=plPRMCv0gSjWkN3Yby1RX9eA2GpH1jcE9KjYJ51C3wA=; 
- b=rVFJaN2ZBxirFJyrpinAg0q5h6WN0v/LTb9jHlyeAe33y/7IyMKltGcdpNAHOeYf+X38GVSQxtuCPElH87GfVbLoNE1XMbREmmosQ3Me+3n7WHOa6JB2fk9VIltGJYVtyCZzLzPgutGgRJm5VH9xKd2E3utta3O3dmCBtKrHPsI=;
-X-UUID: f9fb7f088267406c8090326757122fca-20200308
+ bh=BCXL5tDvzkDDYvZAF6tXplZXEZt+EddIzFxmBA+lZ14=; 
+ b=gDzej5CX4kAUYuUuHUN9qM1FT4D3MWYcgl6quuCeA2ewt1kKZ+vqTimEctfsAefRvZAafTD0cVQ+naPJf/YoyAwLuuaavh+eyATxT76b1HaIa6gFNZkW3DkyiEMjdw3VBTECfIHDQKHPYxGotclkDiN5JcPdIZqQZRRpFuLSolE=;
+X-UUID: 70fd1f6f8d68409bb8151eb5e108ed87-20200308
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <dennis-yc.hsieh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1674077970; Sun, 08 Mar 2020 03:03:04 -0800
+ with ESMTP id 431213984; Sun, 08 Mar 2020 03:03:04 -0800
 Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 8 Mar 2020 03:53:39 -0700
+ 15.0.1395.4; Sun, 8 Mar 2020 03:53:37 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 8 Mar 2020 18:54:08 +0800
+ 15.0.1395.4; Sun, 8 Mar 2020 18:54:07 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Sun, 8 Mar 2020 18:52:59 +0800
+ Frontend Transport; Sun, 8 Mar 2020 18:52:58 +0800
 From: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Jassi Brar
  <jassisinghbrar@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, "David
  Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Subject: [PATCH v5 09/13] soc: mediatek: cmdq: add write_s value function
-Date: Sun, 8 Mar 2020 18:52:51 +0800
-Message-ID: <1583664775-19382-10-git-send-email-dennis-yc.hsieh@mediatek.com>
+Subject: [PATCH v5 02/13] mailbox: cmdq: variablize address shift in platform
+Date: Sun, 8 Mar 2020 18:52:44 +0800
+Message-ID: <1583664775-19382-3-git-send-email-dennis-yc.hsieh@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <1583664775-19382-1-git-send-email-dennis-yc.hsieh@mediatek.com>
 References: <1583664775-19382-1-git-send-email-dennis-yc.hsieh@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200308_040314_813199_6A598578 
-X-CRM114-Status: GOOD (  11.58  )
+X-CRM114-CacheID: sfid-20200308_040317_131357_894E4E1D 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,79 +96,198 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add write_s function in cmdq helper functions which
-writes a constant value to address with large dma
-access support.
+Some gce hardware shift pc and end address in register to support
+large dram addressing.
+Implement gce address shift when write or read pc and end register.
+And add shift bit in platform definition.
 
 Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-cmdq-helper.c | 26 ++++++++++++++++++++++++++
- include/linux/soc/mediatek/mtk-cmdq.h  | 14 ++++++++++++++
- 2 files changed, 40 insertions(+)
+ drivers/mailbox/mtk-cmdq-mailbox.c       | 61 ++++++++++++++++++------
+ drivers/soc/mediatek/mtk-cmdq-helper.c   |  3 +-
+ include/linux/mailbox/mtk-cmdq-mailbox.h |  2 +
+ 3 files changed, 50 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-index 03c129230cd7..a9ebbabb7439 100644
---- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-+++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-@@ -269,6 +269,32 @@ int cmdq_pkt_write_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
- }
- EXPORT_SYMBOL(cmdq_pkt_write_s);
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 9a6ce9f5a7db..4dbee9258127 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -76,8 +76,22 @@ struct cmdq {
+ 	struct cmdq_thread	*thread;
+ 	struct clk		*clock;
+ 	bool			suspended;
++	u8			shift_pa;
+ };
  
-+int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
-+			   u16 addr_low, u32 value, u32 mask)
++struct gce_plat {
++	u32 thread_nr;
++	u8 shift;
++};
++
++u8 cmdq_mbox_shift(struct mbox_chan *chan)
 +{
-+	struct cmdq_instruction inst = { {0} };
-+	int err;
++	struct cmdq *cmdq = container_of(chan->mbox, struct cmdq, mbox);
 +
-+	if (mask != U32_MAX) {
-+		inst.op = CMDQ_CODE_MASK;
-+		inst.mask = ~mask;
-+		err = cmdq_pkt_append_command(pkt, inst);
-+		if (err < 0)
-+			return err;
++	return cmdq->shift_pa;
++}
++EXPORT_SYMBOL(cmdq_mbox_shift);
 +
-+		inst.op = CMDQ_CODE_WRITE_S_MASK;
-+	} else {
-+		inst.op = CMDQ_CODE_WRITE_S;
+ static int cmdq_thread_suspend(struct cmdq *cmdq, struct cmdq_thread *thread)
+ {
+ 	u32 status;
+@@ -183,7 +197,7 @@ static void cmdq_task_remove_wfe(struct cmdq_task *task)
+ 	for (i = 0; i < CMDQ_NUM_CMD(task->pkt); i++)
+ 		if (cmdq_command_is_wfe(base[i]))
+ 			base[i] = (u64)CMDQ_JUMP_BY_OFFSET << 32 |
+-				  CMDQ_JUMP_PASS;
++				  CMDQ_JUMP_PASS >> task->cmdq->shift_pa;
+ 	dma_sync_single_for_device(dev, task->pa_base, task->pkt->cmd_buf_size,
+ 				   DMA_TO_DEVICE);
+ }
+@@ -221,13 +235,15 @@ static void cmdq_task_handle_error(struct cmdq_task *task)
+ {
+ 	struct cmdq_thread *thread = task->thread;
+ 	struct cmdq_task *next_task;
++	struct cmdq *cmdq = task->cmdq;
+ 
+-	dev_err(task->cmdq->mbox.dev, "task 0x%p error\n", task);
+-	WARN_ON(cmdq_thread_suspend(task->cmdq, thread) < 0);
++	dev_err(cmdq->mbox.dev, "task 0x%p error\n", task);
++	WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
+ 	next_task = list_first_entry_or_null(&thread->task_busy_list,
+ 			struct cmdq_task, list_entry);
+ 	if (next_task)
+-		writel(next_task->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
++		writel(next_task->pa_base >> cmdq->shift_pa,
++		       thread->base + CMDQ_THR_CURR_ADDR);
+ 	cmdq_thread_resume(thread);
+ }
+ 
+@@ -257,7 +273,7 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
+ 	else
+ 		return;
+ 
+-	curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR);
++	curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) << cmdq->shift_pa;
+ 
+ 	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
+ 				 list_entry) {
+@@ -373,16 +389,20 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+ 		WARN_ON(clk_enable(cmdq->clock) < 0);
+ 		WARN_ON(cmdq_thread_reset(cmdq, thread) < 0);
+ 
+-		writel(task->pa_base, thread->base + CMDQ_THR_CURR_ADDR);
+-		writel(task->pa_base + pkt->cmd_buf_size,
++		writel(task->pa_base >> cmdq->shift_pa,
++		       thread->base + CMDQ_THR_CURR_ADDR);
++		writel((task->pa_base + pkt->cmd_buf_size) >> cmdq->shift_pa,
+ 		       thread->base + CMDQ_THR_END_ADDR);
++
+ 		writel(thread->priority, thread->base + CMDQ_THR_PRIORITY);
+ 		writel(CMDQ_THR_IRQ_EN, thread->base + CMDQ_THR_IRQ_ENABLE);
+ 		writel(CMDQ_THR_ENABLED, thread->base + CMDQ_THR_ENABLE_TASK);
+ 	} else {
+ 		WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
+-		curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR);
+-		end_pa = readl(thread->base + CMDQ_THR_END_ADDR);
++		curr_pa = readl(thread->base + CMDQ_THR_CURR_ADDR) <<
++			cmdq->shift_pa;
++		end_pa = readl(thread->base + CMDQ_THR_END_ADDR) <<
++			cmdq->shift_pa;
+ 
+ 		/*
+ 		 * Atomic execution should remove the following wfe, i.e. only
+@@ -395,7 +415,7 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+ 				cmdq_thread_wait_end(thread, end_pa);
+ 				WARN_ON(cmdq_thread_suspend(cmdq, thread) < 0);
+ 				/* set to this task directly */
+-				writel(task->pa_base,
++				writel(task->pa_base >> cmdq->shift_pa,
+ 				       thread->base + CMDQ_THR_CURR_ADDR);
+ 			} else {
+ 				cmdq_task_insert_into_thread(task);
+@@ -407,14 +427,14 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
+ 			if (curr_pa == end_pa - CMDQ_INST_SIZE ||
+ 			    curr_pa == end_pa) {
+ 				/* set to this task directly */
+-				writel(task->pa_base,
++				writel(task->pa_base >> cmdq->shift_pa,
+ 				       thread->base + CMDQ_THR_CURR_ADDR);
+ 			} else {
+ 				cmdq_task_insert_into_thread(task);
+ 				smp_mb(); /* modify jump before enable thread */
+ 			}
+ 		}
+-		writel(task->pa_base + pkt->cmd_buf_size,
++		writel((task->pa_base + pkt->cmd_buf_size) >> cmdq->shift_pa,
+ 		       thread->base + CMDQ_THR_END_ADDR);
+ 		cmdq_thread_resume(thread);
+ 	}
+@@ -461,6 +481,7 @@ static int cmdq_probe(struct platform_device *pdev)
+ 	struct resource *res;
+ 	struct cmdq *cmdq;
+ 	int err, i;
++	struct gce_plat *plat_data;
+ 
+ 	cmdq = devm_kzalloc(dev, sizeof(*cmdq), GFP_KERNEL);
+ 	if (!cmdq)
+@@ -479,7 +500,14 @@ static int cmdq_probe(struct platform_device *pdev)
+ 		return -EINVAL;
+ 	}
+ 
+-	cmdq->thread_nr = (u32)(unsigned long)of_device_get_match_data(dev);
++	plat_data = (struct gce_plat *)of_device_get_match_data(dev);
++	if (!plat_data) {
++		dev_err(dev, "failed to get match data\n");
++		return -EINVAL;
 +	}
 +
-+	inst.sop = high_addr_reg_idx;
-+	inst.offset = addr_low;
-+	inst.value = value;
-+
-+	return cmdq_pkt_append_command(pkt, inst);
-+}
-+EXPORT_SYMBOL(cmdq_pkt_write_s_value);
-+
- int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event)
- {
- 	struct cmdq_instruction inst = { {0} };
-diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-index 01b4184af310..fec292aac83c 100644
---- a/include/linux/soc/mediatek/mtk-cmdq.h
-+++ b/include/linux/soc/mediatek/mtk-cmdq.h
-@@ -135,6 +135,20 @@ int cmdq_pkt_read_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx, u16 addr_low,
- int cmdq_pkt_write_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
- 		     u16 addr_low, u16 src_reg_idx, u32 mask);
++	cmdq->thread_nr = plat_data->thread_nr;
++	cmdq->shift_pa = plat_data->shift;
+ 	cmdq->irq_mask = GENMASK(cmdq->thread_nr - 1, 0);
+ 	err = devm_request_irq(dev, cmdq->irq, cmdq_irq_handler, IRQF_SHARED,
+ 			       "mtk_cmdq", cmdq);
+@@ -542,9 +570,12 @@ static const struct dev_pm_ops cmdq_pm_ops = {
+ 	.resume = cmdq_resume,
+ };
  
-+/**
-+ * cmdq_pkt_write_s_value() - append write_s command with mask to the CMDQ
-+ *			      packet which write value to a physical address
-+ * @pkt:	the CMDQ packet
-+ * @high_addr_reg_idx:	internal regisger ID which contains high address of pa
-+ * @addr_low:	low address of pa
-+ * @value:	the specified target value
-+ * @mask:	the specified target mask
-+ *
-+ * Return: 0 for success; else the error code is returned
-+ */
-+int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
-+			   u16 addr_low, u32 value, u32 mask);
++static const struct gce_plat gce_plat_v2 = {.thread_nr = 16};
++static const struct gce_plat gce_plat_v3 = {.thread_nr = 24};
 +
- /**
-  * cmdq_pkt_wfe() - append wait for event command to the CMDQ packet
-  * @pkt:	the CMDQ packet
+ static const struct of_device_id cmdq_of_ids[] = {
+-	{.compatible = "mediatek,mt8173-gce", .data = (void *)16},
+-	{.compatible = "mediatek,mt8183-gce", .data = (void *)24},
++	{.compatible = "mediatek,mt8173-gce", .data = (void *)&gce_plat_v2},
++	{.compatible = "mediatek,mt8183-gce", .data = (void *)&gce_plat_v3},
+ 	{}
+ };
+ 
+diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+index de20e6cba83b..2e1bc513569b 100644
+--- a/drivers/soc/mediatek/mtk-cmdq-helper.c
++++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+@@ -291,7 +291,8 @@ static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
+ 
+ 	/* JUMP to end */
+ 	inst.op = CMDQ_CODE_JUMP;
+-	inst.value = CMDQ_JUMP_PASS;
++	inst.value = CMDQ_JUMP_PASS >>
++		cmdq_mbox_shift(((struct cmdq_client *)pkt->cl)->chan);
+ 	err = cmdq_pkt_append_command(pkt, inst);
+ 
+ 	return err;
+diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
+index a4dc45fbec0a..dfe5b2eb85cc 100644
+--- a/include/linux/mailbox/mtk-cmdq-mailbox.h
++++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
+@@ -88,4 +88,6 @@ struct cmdq_pkt {
+ 	void			*cl;
+ };
+ 
++u8 cmdq_mbox_shift(struct mbox_chan *chan);
++
+ #endif /* __MTK_CMDQ_MAILBOX_H__ */
 -- 
 2.18.0
 _______________________________________________
