@@ -2,78 +2,77 @@ Return-Path: <SRS0=sXDt=4Z=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5348CC10DCE
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2020 10:54:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BE9A1C10DCE
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2020 10:54:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 243E2206D7
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2020 10:54:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 606B7206D7
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2020 10:54:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Xpqlh3Bd";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="KuXDlNax"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 243E2206D7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="L+FMl1aC";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dG5A6N4V"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 606B7206D7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uelb9Vc6k4TyRCOxNbUw98PeRA+g0E4QE2eaVHyO7F0=; b=Xpqlh3BdmPRxSy
-	tnDOPvuljFB7sB9mI7Z5+wA0cv7IRkZUA8NyAZxOaoCbommXqudTuzo7OpsyVjibCZqyBicYFwyZ6
-	ChIr8Ue4Mi+8l+2r+cfpGawSu8lcWM9VhEdGPtqhNvSMw4D54fLBXRBXVpVHXixST8wTVGeBcZn3r
-	tMUJz+JYhCB+GG1zXl998y/1yg8W/JeTVip+sSkaVlnkZzH6LnN9l3Qw/G4D5s1tP3qfJ04lmKO8B
-	c1EHuElrJDUEj9MtWHh7BI7aAwSkpbdP4Jjac9xg3hBJb8qNqbBjVYj26uxVIX9FcHC69jvf9mGyx
-	/1tMz8Dt4MeySAxlZbhg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7NJJARTJD94oMvhQpQ713O5OcwUyv7zaRXIsqXJHy9Y=; b=L+FMl1aCXj7XLh
+	mryu/+MQfr6DNfH7B4xeLIeK4+LS5k78GPmIS8PLNiqLS/qIbYiF3R1zVyAkZDHbvyjIKunGLUwkz
+	f5hoQO9DPqNMM3NxiHjAv1L6JZau9W1vPHpysPZBJthc8NSikeoAOxGtbyZn6sj/STx7UJX7aesl9
+	fa3RN0YzMLoEqoegngki4pk9MSo63QjuojmaXcbvdNvplXf4Do4xe/beXTtiN+UzZFiTUPjC+fCiK
+	BkaFa3XiXS8dns8EMiADazNoyqEVTAfOkiWLSHdkoLJi1ddN0lm2XIDukXhyg6JDTy7WqTI/Lj3P6
+	2f4Y/HfT11qfPTHWFpeA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jAtZI-0007JL-I4; Sun, 08 Mar 2020 10:54:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jAtZJ-0007LR-Lt; Sun, 08 Mar 2020 10:54:01 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jAtYW-0006YI-RM; Sun, 08 Mar 2020 10:53:17 +0000
-X-UUID: 9e0daaf999db41f28639cab657145939-20200308
+ id 1jAtYX-0006Y4-3N; Sun, 08 Mar 2020 10:53:17 +0000
+X-UUID: e119f701f6cd488c872aa35969c83cbd-20200308
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=MYH+JWtN3TW3+5HBk7PMR9MHuRJoGMcqVVaD9IZJVF0=; 
- b=KuXDlNaxr+sKGKAPjmYTtquvXUwWVNb8qLmyGJsM5TWYIbsN/6tHsf8bBwO8JxQpIqwLFj26DyY8TaLmQT3Gm7dSvU2jK6sePxvHeJlOcoEDwc9oNvfr7Bbs7STq01Ocasgy+4H6DIWz+i6KQ5TcPV0FT7CO5jW/WEOdv7mfHNI=;
-X-UUID: 9e0daaf999db41f28639cab657145939-20200308
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=GxTjmEm049B3GShhfkpoy+9dkylx+QGAxLN83d+jIDk=; 
+ b=dG5A6N4VprMwPggjgqUYJYQegrZKzv6IJp9Dl76oICqgRdCJ0jgoN7MAtPmBLbIc3rY0bQo/AK6FyNbre9dUPleeeZCNJ9cNUGtgmPpUdY4mafXgzMAscde3bOPS5LiC3/UGLhkaMm8F0PwSTyDFbwlmUM/6PZpVSrC4tqf9g60=;
+X-UUID: e119f701f6cd488c872aa35969c83cbd-20200308
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <dennis-yc.hsieh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1719487641; Sun, 08 Mar 2020 02:53:02 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 1481110567; Sun, 08 Mar 2020 02:53:01 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1395.4; Sun, 8 Mar 2020 03:53:00 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 8 Mar 2020 18:52:03 +0800
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sun, 8 Mar 2020 18:51:55 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Sun, 8 Mar 2020 18:52:59 +0800
+ Frontend Transport; Sun, 8 Mar 2020 18:52:58 +0800
 From: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Jassi Brar
  <jassisinghbrar@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, "David
  Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Subject: [PATCH v5 10/13] soc: mediatek: cmdq: export finalize function
-Date: Sun, 8 Mar 2020 18:52:52 +0800
-Message-ID: <1583664775-19382-11-git-send-email-dennis-yc.hsieh@mediatek.com>
+Subject: [PATCH v5 00/13] support gce on mt6779 platform 
+Date: Sun, 8 Mar 2020 18:52:42 +0800
+Message-ID: <1583664775-19382-1-git-send-email-dennis-yc.hsieh@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1583664775-19382-1-git-send-email-dennis-yc.hsieh@mediatek.com>
-References: <1583664775-19382-1-git-send-email-dennis-yc.hsieh@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200308_035312_886200_F5511D3D 
-X-CRM114-Status: GOOD (  12.34  )
+X-CRM114-CacheID: sfid-20200308_035313_149334_0638E146 
+X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,89 +86,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
  linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- HS Liao <hs.liao@mediatek.com>, Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>,
- linux-mediatek@lists.infradead.org, Houlong Wei <houlong.wei@mediatek.com>,
- Bibby Hsieh <bibby.hsieh@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
- linux-arm-kernel@lists.infradead.org
+ HS Liao <hs.liao@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Houlong Wei <houlong.wei@mediatek.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>,
+ CK Hu <ck.hu@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Export finalize function to client which helps append eoc and jump
-command to pkt. Let client decide call finalize or not.
+This patch support gce on mt6779 platform.
 
-Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 1 +
- drivers/soc/mediatek/mtk-cmdq-helper.c  | 7 ++-----
- include/linux/soc/mediatek/mtk-cmdq.h   | 8 ++++++++
- 3 files changed, 11 insertions(+), 5 deletions(-)
+Change since v4:
+- do not clear disp event again in drm driver
+- symbolize value 1 to jump relative
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 0dfcd1787e65..7daaabc26eb1 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -490,6 +490,7 @@ static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
- 		cmdq_pkt_clear_event(cmdq_handle, mtk_crtc->cmdq_event);
- 		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event);
- 		mtk_crtc_ddp_config(crtc, cmdq_handle);
-+		cmdq_pkt_finalize(cmdq_handle);
- 		cmdq_pkt_flush_async(cmdq_handle, ddp_cmdq_cb, cmdq_handle);
- 	}
- #endif
-diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-index a9ebbabb7439..59bc1164b411 100644
---- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-+++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-@@ -372,7 +372,7 @@ int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value)
- }
- EXPORT_SYMBOL(cmdq_pkt_assign);
- 
--static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
-+int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
- {
- 	struct cmdq_instruction inst = { {0} };
- 	int err;
-@@ -392,6 +392,7 @@ static int cmdq_pkt_finalize(struct cmdq_pkt *pkt)
- 
- 	return err;
- }
-+EXPORT_SYMBOL(cmdq_pkt_finalize);
- 
- static void cmdq_pkt_flush_async_cb(struct cmdq_cb_data data)
- {
-@@ -426,10 +427,6 @@ int cmdq_pkt_flush_async(struct cmdq_pkt *pkt, cmdq_async_flush_cb cb,
- 	unsigned long flags = 0;
- 	struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
- 
--	err = cmdq_pkt_finalize(pkt);
--	if (err < 0)
--		return err;
--
- 	pkt->cb.cb = cb;
- 	pkt->cb.data = data;
- 	pkt->async_cb.cb = cmdq_pkt_flush_async_cb;
-diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-index fec292aac83c..99e77155f967 100644
---- a/include/linux/soc/mediatek/mtk-cmdq.h
-+++ b/include/linux/soc/mediatek/mtk-cmdq.h
-@@ -213,6 +213,14 @@ int cmdq_pkt_poll_mask(struct cmdq_pkt *pkt, u8 subsys,
-  */
- int cmdq_pkt_assign(struct cmdq_pkt *pkt, u16 reg_idx, u32 value);
- 
-+/**
-+ * cmdq_pkt_finalize() - Append EOC and jump command to pkt.
-+ * @pkt:	the CMDQ packet
-+ *
-+ * Return: 0 for success; else the error code is returned
-+ */
-+int cmdq_pkt_finalize(struct cmdq_pkt *pkt);
-+
- /**
-  * cmdq_pkt_flush_async() - trigger CMDQ to asynchronously execute the CMDQ
-  *                          packet and call back at the end of done packet
+Change since v3:
+- refine code for local variable usage
+- use cmdq error code to consistent with current design
+- return error directly after send if error code return
+- also modify drm driver which uses cmdq_pkt_wfe api
+- add finalize in drm driver
+
+[... snip ...]
+
+
+
+Dennis YC Hsieh (13):
+  dt-binding: gce: add gce header file for mt6779
+  mailbox: cmdq: variablize address shift in platform
+  mailbox: cmdq: support mt6779 gce platform definition
+  mailbox: mediatek: cmdq: clear task in channel before shutdown
+  soc: mediatek: cmdq: return send msg error code
+  soc: mediatek: cmdq: add assign function
+  soc: mediatek: cmdq: add write_s function
+  soc: mediatek: cmdq: add read_s function
+  soc: mediatek: cmdq: add write_s value function
+  soc: mediatek: cmdq: export finalize function
+  soc: mediatek: cmdq: add jump function
+  soc: mediatek: cmdq: add clear option in cmdq_pkt_wfe api
+  soc: mediatek: cmdq: add set event function
+
+ .../devicetree/bindings/mailbox/mtk-gce.txt   |   8 +-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c       |   3 +-
+ drivers/mailbox/mtk-cmdq-mailbox.c            | 101 ++++++--
+ drivers/soc/mediatek/mtk-cmdq-helper.c        | 144 +++++++++++-
+ include/dt-bindings/gce/mt6779-gce.h          | 222 ++++++++++++++++++
+ include/linux/mailbox/mtk-cmdq-mailbox.h      |  10 +-
+ include/linux/soc/mediatek/mtk-cmdq.h         |  94 +++++++-
+ 7 files changed, 549 insertions(+), 33 deletions(-)
+ create mode 100644 include/dt-bindings/gce/mt6779-gce.h
+
 -- 
 2.18.0
 _______________________________________________
