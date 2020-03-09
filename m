@@ -2,81 +2,61 @@ Return-Path: <SRS0=iNWv=42=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4AA84C10F27
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 07:56:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 32532C10F27
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 12:10:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 18D6520663
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 07:56:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DA6B82146E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 12:10:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rIK4ulRz";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GqfUcdR9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 18D6520663
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Rm1DHYqp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DA6B82146E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EANZoh1ysAKr8VQYnlSPg2QrHJ5KHrLVfrsrfWiyQPM=; b=rIK4ulRzTXXCDJ
-	t9mlYLH9YCJE/3uk3BuV21MDxeotpgRuTVdiH4XsmiHo3M+6S5WugghMkzwxUGWRHCKAnRc/MuKW/
-	KmU/bNu1ZCC1ofIE7bi2wl+6Na1GhCTcWRbACNa/IFIYXejSQBjtxgiwUXAQa61L7fD2dTGefTWUa
-	dZVmoirnZbalyHS0aQ5dmAo/VNEy2LI/0y6OzrsW1q8oFPqGW8jI0Ql/W9P6iJM7uRcWDTcNSF8Sv
-	fhBJDWiRnHZHURu1r5iuDqsqf3h61UydvbmgiITy7CURkHCIA6GG2izSIJ/Zdkxq37eExQm3jB1qo
-	0FZ31yKccfmKIPf5N2Jg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=X55oxvtVGl3Ym1RIcFZnqO2O8is/zFN7+NJzC/LsrQA=; b=Rm1DHYqpALwSWzdJDdAmgxoss
+	+aBhw+7oIvkBaru0qfhawGtyGC/RJeaAfwnmm9Ut14fRWO6E7s9h0WgWiwMmavTsihHwKy/crUQg4
+	gSGpLxfi6jPMviBA0JPUAG1Ed4mwnf1ZNCH0imgGPO+YcGEVC5VHHLneenUAog96UZuEjV4pCWOX/
+	WnalYJ9Lww8uYwquUSsQHWf/FdNnKP1zWwLnd7Hhps1b/XkCmqX8zrdLAjw/cdlUrhrqyZzFR+zr9
+	BGNGc/E0S59GaE63AuzAtR+bIx/VfnDXjzSZCvLm3wBt3Jd3Wx0d5H/hrykMbJ3BzTkf5+v7GRgBR
+	gd/XJN4Ng==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBDGe-0005Cl-IA; Mon, 09 Mar 2020 07:56:04 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBDGV-00055O-DL; Mon, 09 Mar 2020 07:55:56 +0000
-X-UUID: cbb1a81486114dd8a3380419321c1c36-20200308
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=d0wnLlS3PKlRwicESnqS4F2qX7BxraxwO4F/6cuzvFM=; 
- b=GqfUcdR9MCWpnbgw4rLso8SUipYFib64zGOBH0bgByrx7i3JuVgRrZ1o87yYSKMA2JNeln/SsFZCHhy65EZakGf8pwVbTVcBifChPhkABtFrNFYOcwbTEyophI4NtNVV/fNkKy4Z4UtKSASNQRwzmRhyzmw/tgL53INdtdZ5c54=;
-X-UUID: cbb1a81486114dd8a3380419321c1c36-20200308
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <nick.fan@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1424799485; Sun, 08 Mar 2020 23:55:41 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 9 Mar 2020 00:55:39 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 9 Mar 2020 15:54:27 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Mon, 9 Mar 2020 15:55:55 +0800
-Message-ID: <1583740539.3995.15.camel@mtksdaap41>
-Subject: Re: [PATCH v4 1/7] dt-bindings: gpu: mali-bifrost: Add Mediatek MT8183
-From: Nick Fan <nick.fan@mediatek.com>
-To: Steven Price <steven.price@arm.com>
-Date: Mon, 9 Mar 2020 15:55:39 +0800
-In-Reply-To: <20200306144336.GA9234@arm.com>
-References: <20200207052627.130118-1-drinkcat@chromium.org>
- <20200207052627.130118-2-drinkcat@chromium.org>
- <20200225171613.GA7063@bogus>
- <CANMq1KAVX4o5yC7c_88Wq_O=F+MaSN_V4uNcs1nzS3wBS6A5AA@mail.gmail.com>
- <1583462055.4947.6.camel@mtksdaap41>
- <CAL_JsqLoUnxfrJh0WCs0jgro1KHAjWaYMsaKkKfAKA2KJ252_g@mail.gmail.com>
- <20200306144336.GA9234@arm.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+	id 1jBHEx-0006Pt-BN; Mon, 09 Mar 2020 12:10:35 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jBHEo-0006Im-La; Mon, 09 Mar 2020 12:10:27 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 116B530E;
+ Mon,  9 Mar 2020 05:10:22 -0700 (PDT)
+Received: from localhost (unknown [10.37.6.21])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 888603F6CF;
+ Mon,  9 Mar 2020 05:10:21 -0700 (PDT)
+Date: Mon, 9 Mar 2020 12:10:20 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Chuanhong Guo <gch981213@gmail.com>
+Subject: Re: [PATCH v3 4/4] mtd: spi-nor: remove mtk-quadspi driver
+Message-ID: <20200309121020.GD4101@sirena.org.uk>
+References: <20200306085052.28258-1-gch981213@gmail.com>
+ <20200306085052.28258-5-gch981213@gmail.com>
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20200306085052.28258-5-gch981213@gmail.com>
+X-Cookie: Above all things, reverence yourself.
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200309_005555_465998_006230F3 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20200309_051026_751653_D3FBD6FC 
+X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,80 +68,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <Mark.Rutland@arm.com>, Rob Herring <robh@kernel.org>,
- Ulf Hansson <ulf.hansson@linaro.org>, Nicolas Boichat <drinkcat@chromium.org>,
- Tomeu Vizoso <tomeu.vizoso@collabora.com>,
- Devicetree List <devicetree@vger.kernel.org>, David Airlie <airlied@linux.ie>,
- Liam Girdwood <lgirdwood@gmail.com>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- lkml <linux-kernel@vger.kernel.org>, Sj Huang <sj.huang@mediatek.com>,
- Mark Brown <broonie@kernel.org>, "moderated
- list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>, Daniel
- Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, linux-arm
- Mailing List <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devicetree@vger.kernel.org, Vignesh Raghavendra <vigneshr@ti.com>,
+ Tudor Ambarus <tudor.ambarus@microchip.com>,
+ Richard Weinberger <richard@nod.at>, open list <linux-kernel@vger.kernel.org>,
+ linux-spi@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mtd@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
+Content-Type: multipart/mixed; boundary="===============4046488053672634689=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-03-06 at 14:43 +0000, Steven Price wrote:
-> On Fri, Mar 06, 2020 at 02:13:08PM +0000, Rob Herring wrote:
-> > On Thu, Mar 5, 2020 at 8:34 PM Nick Fan <nick.fan@mediatek.com> wrote:
-> > >
-> > > Sorry for my late reply.
-> > > I have checked internally.
-> > > The MT8183_POWER_DOMAIN_MFG_2D is just a legacy name, not really 2D
-> > > domain.
-> > >
-> > > If the naming too confusing, we can change this name to
-> > > MT8183_POWER_DOMAIN_MFG_CORE2 for consistency.
-> > 
-> > Can you clarify what's in each domain? Are there actually 3 shader
-> > cores (IIRC, that should be discoverable)?
-> 
-> The cover letter from Nicolas includes:
-> 
-> > [  501.321752] panfrost 13040000.gpu: shader_present=0x7 l2_present=0x1
-> 
-> 0x7 is three bits set, so it certainly looks like there are 3 shader
-> cores. Of course I wouldn't guarantee that it is as simple as each power
-> domain has a shader core in. The job manager and tiler also need to be
-> powered somehow, so they are either sharing with a shader core or
-> there's something more complex going on.
-> 
-> Steve
-> 
-There are actually five power domains in total for MT8183 GPU.
 
-There are 3 shader cores in MT8183.
+--===============4046488053672634689==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="mSxgbZZZvrAyzONB"
+Content-Disposition: inline
 
-They can be listed as following for each power domain:
-1.MT8183_POWER_DOMAIN_MFG_ASYNC : SOC bus logic
-2.MT8183_POWER_DOMAIN_MFG : GPU job manager & tiler
-3.MT8183_POWER_DOMAIN_MFG_CORE0 : GPU shader core 0
-4.MT8183_POWER_DOMAIN_MFG_CORE1 : GPU shader core 1
-5.MT8183_POWER_DOMAIN_MFG_2D : GPU shader core 2
 
-There are other power domain dependency can be reference in the
-following link.
-https://lkml.org/lkml/2019/2/1/166
+--mSxgbZZZvrAyzONB
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-You can check the power domain dependencies as following
-==========================================================
-+static const struct scp_subdomain scp_subdomain_mt8183[] = {
-+	{MT8183_POWER_DOMAIN_MFG_ASYNC, MT8183_POWER_DOMAIN_MFG},
-+	{MT8183_POWER_DOMAIN_MFG, MT8183_POWER_DOMAIN_MFG_2D},
-+	{MT8183_POWER_DOMAIN_MFG, MT8183_POWER_DOMAIN_MFG_CORE0},
-+	{MT8183_POWER_DOMAIN_MFG, MT8183_POWER_DOMAIN_MFG_CORE1},
-==========================================================
+On Fri, Mar 06, 2020 at 04:50:52PM +0800, Chuanhong Guo wrote:
+> This driver is superseded by the new spi-mtk-nor driver.
+>=20
+> Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
 
-Thanks
+Is this move OK from a MTD point of view - should I apply this when the
+rest goes in?  The patch was in prior versions too and is obviously
+straightforward.
 
-Nick Fan
+--mSxgbZZZvrAyzONB
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl5mMisACgkQJNaLcl1U
+h9AW8wf/ZiBUrxNc95s6m0g5fMy2/cs3/LsPrWZSb3N2E1e27ymrx83CSPad45sg
+mGRE8ZNrAjJejZVzFdgOiQZQtKXKFVjY6HjAAatKDSNqcX+8k/VR6yCE/xQB36h/
+V+fLMlrzLx1nNEF3umZAmtdkQIQN8OuSTUbLAgAVe3bZVXWMQAZfcJrCy/FuidfY
+ZjU3+caJ3jC8rwDB6+1xVujEe3+eCz63rkOHoSGzqXBYI0OpQfOLd9M8fu77WW4U
+6RV5Z5lUl26EOpzOO2+FJKEdguXeXDguoAjKlqcc+CzhGBVdnRetzqf+LEujpAOd
+xU3eqFZzEBmUHpNr4i2GACoDY/MBSw==
+=H8Zm
+-----END PGP SIGNATURE-----
+
+--mSxgbZZZvrAyzONB--
+
+
+--===============4046488053672634689==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============4046488053672634689==--
+
