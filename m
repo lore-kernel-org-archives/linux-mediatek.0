@@ -2,22 +2,22 @@ Return-Path: <SRS0=iNWv=42=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D1297C10F25
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 23:13:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 112F3C10F25
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 23:16:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A15A72146E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 23:13:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D5B132146E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 23:16:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ckhk0yFR";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="sYQ33oHq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A15A72146E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VWFf6597";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="F+8FFpPD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D5B132146E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o/iC9eZXaoxnH+w9BczS6j1fSwZxNAgSpcchSP+Cons=; b=ckhk0yFRi9dXyr
-	uXorReHFqQAaQfoKuwMfmQA7EJ8qUHF2HGhEGZEbF2b2a0J5H24kTPnD2rpIs7fm5pkpTWrqa7yBh
-	RBVshVSIlHcc1zgVsXvcL0OfVuDsTf61di8FyOcQaT02fbAUWTqNCpeW032K6SC9PNNs6z1CI7nC0
-	scWJJ6sEYKzbKMamAM9tO8GdtOjDxEmMqmUYkpNRduJd/oCxAUcAAjNJpSQnA7U/bot5YsmLuLXrd
-	PW+FFcUURTiXHGUUTnGEv2TgBqoG6aEEzuQo1+o6MBTmrZQTMDMeLydVjIt7OXTxBaZBq1bKRRuVD
-	GoHTxiNBJ2NHhU4rKvuQ==;
+	List-Owner; bh=nLuoA8wpcH6EllM4TG+OHv42dOOpj/5G38zd/79Scdw=; b=VWFf65975vC3QP
+	SRezW+z5nKV/A6Rni0C4omYnZBTH4Jtur2qon/TZZq43BPBLJ5Cj63F+gGatSI3PpRfK4w+3omG6l
+	IFL8BkDroL5nC3tRD7X7AHlATMQxlcB/C6vKNZwimx2dl1utgV92ZN1b8KXREQW94bK4puAIefzNh
+	1PIeRY2plCO04D1nHaLO7CHVyFj+m/9J2fdKpraegvcysoK4pkq/Nnv4LNN46Eqc7/VeN2F5Iiaf4
+	3hLJS21ByPdtEVtH4f2/h20E1jLGHGbK0kWYMWAZ4qrk7DQ4tfN2ct2ZZpVQ9Myjzih1BK3G7XgC4
+	iXZE5U8DTluShzqR/enw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBRad-0000Gg-Fj; Mon, 09 Mar 2020 23:13:39 +0000
+	id 1jBRdI-0001zk-Cp; Mon, 09 Mar 2020 23:16:24 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBRaU-00008L-D7; Mon, 09 Mar 2020 23:13:32 +0000
-X-UUID: ca71ff1e4cd24a8b8cd3461cdad889db-20200309
+ id 1jBRd7-0001pU-8a; Mon, 09 Mar 2020 23:16:14 +0000
+X-UUID: b2a624b8065442e6a1fbf40a55f379c0-20200309
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=yigWAdDzv9r+S5GMZO74ScT7GTvj1to3DrOUWOXQiqM=; 
- b=sYQ33oHqL+8sQNFJNm2aT0ivB/fro+xlCj3aob444ty2uDKTB1hjrSqCrKzdD7xgPeLPVc2KOvDKOlGCNykEqDmBJgfDrIe0bcabLfi3pIUb4P58G83i63muK07LB+k/6CQdH5o6BsCtJEyLdtG2kUPLCqBWSBI5fFtKr+43+rA=;
-X-UUID: ca71ff1e4cd24a8b8cd3461cdad889db-20200309
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=lWnTG8Dlpfa7Gb5noWGxFDmhnIB+Ok5FYjYFtioW3kU=; 
+ b=F+8FFpPDXP8cA1BmgVWsKqvvSX5xcPZAMRHu4+O7xN3VXx/XbYxnIAu8Is9s0XrNLTv2sI3jauZzatayTyTCWxqXyLM0uOCpPGArh030on53EaYLOn8le9R9qfNphKXW2msCOr4bveZj7OSEeYx4sLqrWa/DDA6ymhB9RKjan9k=;
+X-UUID: b2a624b8065442e6a1fbf40a55f379c0-20200309
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chun-hung.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 248871745; Mon, 09 Mar 2020 15:13:22 -0800
+ with ESMTP id 865533897; Mon, 09 Mar 2020 15:16:11 -0800
 Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 9 Mar 2020 16:13:49 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 9 Mar 2020 16:16:13 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 10 Mar 2020 07:12:07 +0800
+ 15.0.1395.4; Tue, 10 Mar 2020 07:14:55 +0800
 Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 10 Mar 2020 07:10:36 +0800
-Message-ID: <1583795599.23665.4.camel@mtkswgap22>
-Subject: Re: [PATCH v3 1/4] mmc: core: expose MMC_CAP2_CQE* to dt
+ Transport; Tue, 10 Mar 2020 07:13:24 +0800
+Message-ID: <1583795768.23665.5.camel@mtkswgap22>
+Subject: Re: [PATCH v3 4/4] dt-bindings: mmc: mediatek: Add document for mt6779
 From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Tue, 10 Mar 2020 07:13:19 +0800
-In-Reply-To: <CAPDyKFpyah+oA-GtXNmdkrhwnGN_syU1JqRHn-9gk=HK0fV8EQ@mail.gmail.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Date: Tue, 10 Mar 2020 07:16:08 +0800
+In-Reply-To: <96e4df17-999e-2356-f203-4cef26a8d66d@gmail.com>
 References: <1581922564-24914-1-git-send-email-chun-hung.wu@mediatek.com>
- <1581922564-24914-2-git-send-email-chun-hung.wu@mediatek.com>
- <CAPDyKFpyah+oA-GtXNmdkrhwnGN_syU1JqRHn-9gk=HK0fV8EQ@mail.gmail.com>
+ <1581922564-24914-5-git-send-email-chun-hung.wu@mediatek.com>
+ <20200219030225.GA14824@bogus>
+ <96e4df17-999e-2356-f203-4cef26a8d66d@gmail.com>
 X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200309_161330_454566_37076C0F 
-X-CRM114-Status: GOOD (  19.02  )
+X-CRM114-CacheID: sfid-20200309_161613_309132_A78E5663 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,84 +85,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Kate Stewart <kstewart@linuxfoundation.org>, wsd_upstream@mediatek.com,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>, Pavel
- Machek <pavel@ucw.cz>, Chaotian Jing <chaotian.jing@mediatek.com>,
- Android Kernel Team <kernel-team@android.com>, Pan Bian <bianpan2016@163.com>,
- DTML <devicetree@vger.kernel.org>,
+Cc: Mark Rutland <mark.rutland@arm.com>, Kate
+ Stewart <kstewart@linuxfoundation.org>, Ulf Hansson <ulf.hansson@linaro.org>,
+ wsd_upstream@mediatek.com, linux-mmc@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>, Pavel Machek <pavel@ucw.cz>,
+ Rob Herring <robh@kernel.org>, Chaotian Jing <chaotian.jing@mediatek.com>,
+ kernel-team@android.com, Pan Bian <bianpan2016@163.com>,
+ devicetree@vger.kernel.org,
  Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Thomas
+ linux-mediatek@lists.infradead.org, Thomas
  Gleixner <tglx@linutronix.de>, Stanley Chu <stanley.chu@mediatek.com>,
- Allison Randal <allison@lohutok.net>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Mathieu Malaterre <malat@debian.org>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>,
- Kuohong Wang <kuohong.wang@mediatek.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+ Allison Randal <allison@lohutok.net>, linux-arm-kernel@lists.infradead.org,
+ Mathieu Malaterre <malat@debian.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Kuohong Wang <kuohong.wang@mediatek.com>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2020-03-04 at 14:04 +0100, Ulf Hansson wrote:
-> On Mon, 17 Feb 2020 at 07:56, Chun-Hung Wu <chun-hung.wu@mediatek.com> wrote:
-> >
-> > Expose MMC_CAP2_CQE and MMC_CAP2_CQE_DCMD
-> > to host->caps2 if
-> > 1. "supports-cqe" is defined in dt and
-> > 2. "disable-cqe-dcmd" is not defined in dt.
+On Thu, 2020-02-20 at 23:06 +0100, Matthias Brugger wrote:
 > 
-> Both of these DT properties are defined as common mmc DT properties,
-> so the above isn't really correct. Please clarify this.
-Yes, the properties is common. But I think the "supports-cqe" or
-"disable-cqe-dcmd" is defined in vendor's mmc dt, not common mmc dt?
-Don't know what's wrong with the above description, any suggestion?
+> On 19/02/2020 04:02, Rob Herring wrote:
+> > On Mon, 17 Feb 2020 14:56:04 +0800, Chun-Hung Wu wrote:
+> >> Add compatible node for mt6779 mmc
+> >>
+> >> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+> >> ---
+> >>  Documentation/devicetree/bindings/mmc/mtk-sd.txt | 1 +
+> >>  1 file changed, 1 insertion(+)
+> >>
+> > 
+> > Acked-by: Rob Herring <robh@kernel.org>
+> > 
 > 
-> Moreover, I suggest to update commit message header into "mmc: core:
-> Extend mmc_of_parse() to parse CQE bindings", as I think it better
-> describes the change.
-Thanks, I think the commit message you provide is better, will change it
-in v4.
+> With the commit from patch 3/4 the compatible should be:
+> "mediatek,mt6779-mmc", "mediatek,mt8183-mmc": for mmc host ip compatible with mt6779
+As I know mt8183 is mt6771 platform not mt6779.
+mt6771 does not support CQHCI.
 > 
-> >
-> > Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
-> > ---
-> >  drivers/mmc/core/host.c | 8 ++++++++
-> >  1 file changed, 8 insertions(+)
-> >
-> > diff --git a/drivers/mmc/core/host.c b/drivers/mmc/core/host.c
-> > index 105b7a7..efb0dbe 100644
-> > --- a/drivers/mmc/core/host.c
-> > +++ b/drivers/mmc/core/host.c
-> > @@ -319,6 +319,14 @@ int mmc_of_parse(struct mmc_host *host)
-> >                 host->caps2 |= MMC_CAP2_NO_SD;
-> >         if (device_property_read_bool(dev, "no-mmc"))
-> >                 host->caps2 |= MMC_CAP2_NO_MMC;
-> > +       if (device_property_read_bool(dev, "supports-cqe"))
-> > +               host->caps2 |= MMC_CAP2_CQE;
-> > +
-> > +       /* Must be after "supports-cqe" check */
-> > +       if (!device_property_read_bool(dev, "disable-cqe-dcmd")) {
-> > +               if (host->caps2 & MMC_CAP2_CQE)
-> 
-> Does it really doesn't matter if we set this cap, even if MMC_CAP2_CQE
-> isn't set? You can probably skip the check above.
-Will remove MMC_CAP2_CQE check here.
-> 
-> > +                       host->caps2 |= MMC_CAP2_CQE_DCMD;
-> > +       }
-> >
-> >         /* Must be after "non-removable" check */
-> >         if (device_property_read_u32(dev, "fixed-emmc-driver-type", &drv_type) == 0) {
-> > --
-> > 1.9.1
-> 
-> Kind regards
-> Uffe
+> Regards,
+> Matthias
 
 _______________________________________________
 Linux-mediatek mailing list
