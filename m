@@ -2,85 +2,80 @@ Return-Path: <SRS0=iNWv=42=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 14547C10F27
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 07:32:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 395B5C18E5A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 07:49:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D369220863
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 07:32:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0EFA420675
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 07:49:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VIWB4lFN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D369220863
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UCMjw5+G";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Jq7oN9z+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0EFA420675
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=POZ5wrU+OGnzxjf5zq/QtwYJs5HKpyssk9u/ykSbxpM=; b=VIWB4lFNverBu/ym6atKoqic3
-	s3zdTWAuwD3eQl5//tshWqDRP6YyMtYNPbFmVtv72GhacIb0OoEMro5nIn4uioXj8LEs73oSOGfUm
-	dWynYJNff0uSdpMBz+uxYWoEcxMNl9R48aa5pph00TD5sSVGCCu7hUeLY/wKxlvtkSouahQJdRuRc
-	OgPA2CXfMtUO6FFH2HbFjMsAix30fHs4dVJKlg7ptoS5tvSdXE0ycrGJOZ405ErekfyjPdtRVfp7h
-	2g7hr+IjGSUlHPvqNrTZRKkFrOt4dqqcSWCq+I8YyeBUwj35SeLZOUCEnLnY4K63IiS8dLAgx/IIK
-	3JmQWWnrw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ctu8L4vge/UGDk1o8Ki8EqtRAoGlVn0rNl5bHJpRaDM=; b=UCMjw5+GT/pkGD
+	SoO7m8F25XtL3S4Ql8V5BnagsJ/XZBz6DLXa7C5neMIG3yqz2SBLPgN6eW6XfzFLJH1ew8IU5LQbn
+	1npRhIUxPFXQYa5QKMJUPqXPvYO0ORLc32/Hq++gXnMCkQXNLhWL4cQdEnpSlQ9Zfhy4JKnPFPv89
+	6vXbrp/gozS7njbt6dbGLHQKpd+qH9tZEspFtU2EbkxDA4jJi8+18l6IXqKXEwd9P7y079RyRZ+Ti
+	joaXOEKaOfL25mimQTlbSh7PkKZg60PVln1IpDli/SAwR/BfbOLS4e+bHpePLQOq3pbpibtEIglvw
+	3LPVlLzUg+34s169MHdg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBCtf-0004GE-9k; Mon, 09 Mar 2020 07:32:19 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1jBDAb-0001ou-Rp; Mon, 09 Mar 2020 07:49:49 +0000
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBCtc-0004FZ-1h; Mon, 09 Mar 2020 07:32:18 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 088CAB1A2;
- Mon,  9 Mar 2020 07:32:12 +0000 (UTC)
-Subject: Re: [PATCH 05/22] drm/gma500: Use simple encoder
-To: Sam Ravnborg <sam@ravnborg.org>
-References: <20200305155950.2705-1-tzimmermann@suse.de>
- <20200305155950.2705-6-tzimmermann@suse.de>
- <20200306213519.GD17369@ravnborg.org>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- mQENBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAG0J1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPokBVAQTAQgAPhYh
- BHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJbOdLgAhsDBQkDwmcABQsJCAcCBhUKCQgLAgQWAgMB
- Ah4BAheAAAoJEGgNwR1TC3ojR80H/jH+vYavwQ+TvO8ksXL9JQWc3IFSiGpuSVXLCdg62AmR
- irxW+qCwNncNQyb9rd30gzdectSkPWL3KSqEResBe24IbA5/jSkPweJasgXtfhuyoeCJ6PXo
- clQQGKIoFIAEv1s8l0ggPZswvCinegl1diyJXUXmdEJRTWYAtxn/atut1o6Giv6D2qmYbXN7
- mneMC5MzlLaJKUtoH7U/IjVw1sx2qtxAZGKVm4RZxPnMCp9E1MAr5t4dP5gJCIiqsdrVqI6i
- KupZstMxstPU//azmz7ZWWxT0JzgJqZSvPYx/SATeexTYBP47YFyri4jnsty2ErS91E6H8os
- Bv6pnSn7eAq5AQ0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRH
- UE9eosYbT6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgT
- RjP+qbU63Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+R
- dhgATnWWGKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zb
- ehDda8lvhFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r
- 12+lqdsAEQEAAYkBPAQYAQgAJhYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJbOdLgAhsMBQkD
- wmcAAAoJEGgNwR1TC3ojpfcIAInwP5OlcEKokTnHCiDTz4Ony4GnHRP2fXATQZCKxmu4AJY2
- h9ifw9Nf2TjCZ6AMvC3thAN0rFDj55N9l4s1CpaDo4J+0fkrHuyNacnT206CeJV1E7NYntxU
- n+LSiRrOdywn6erjxRi9EYTVLCHcDhBEjKmFZfg4AM4GZMWX1lg0+eHbd5oL1as28WvvI/uI
- aMyV8RbyXot1r/8QLlWldU3NrTF5p7TMU2y3ZH2mf5suSKHAMtbE4jKJ8ZHFOo3GhLgjVrBW
- HE9JXO08xKkgD+w6v83+nomsEuf6C6LYrqY/tsZvyEX6zN8CtirPdPWu/VXNRYAl/lat7lSI
- 3H26qrE=
-Message-ID: <4ce9be7e-7b1d-c679-6dba-3f17dc2a7ebc@suse.de>
-Date: Mon, 9 Mar 2020 08:32:04 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ id 1jBDAZ-0001nU-G5
+ for linux-mediatek@lists.infradead.org; Mon, 09 Mar 2020 07:49:48 +0000
+Received: by mail-ed1-x544.google.com with SMTP id m25so10885647edq.8
+ for <linux-mediatek@lists.infradead.org>; Mon, 09 Mar 2020 00:49:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=tGvHVL+X8ENX8ZlFkJ4aTUiRtrm/fcY3/mfmmVzMIbM=;
+ b=Jq7oN9z+T3yHMHlBWmtg/oPw3NMpUuf+HHE/AEB6ve19jbPtvt5AEZ3WDPvkS0xNRJ
+ TxPi+1T+CforxzUbaOpceljyeEB1qThb+1+7Yv5FETpD/6MLNoUiLzGPTdjvfyt2N7yA
+ 204omxFy4IXZZH2/4KFT1X0Gv3NC+THh/SuOk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=tGvHVL+X8ENX8ZlFkJ4aTUiRtrm/fcY3/mfmmVzMIbM=;
+ b=tlrMIdHg4DY3qXbGHC4AbZdbRay2+fYMBE6EXd6iHfJTad2SaE5aEWh/NKv4LYwgjn
+ j/eNg1L8PQ+/zv7wUq0G7EbXW2+oTeA+TxWJoU6I2wqeyfzAARUT57Tf9EgQ1tULSX0U
+ 10LPo52e0jTYSyeHpU/DbACEQpNPaBkWRg4ggO4ge5NXHSSr0qP4kV6dblr2ZIRm7LAT
+ Wg2IYobBB6LKq9/egvuVKlYUd8SRNMA9v/1utMbzWni4F8diO9nUYYIw1r06tj8K2Cye
+ g/kAdnUuHAGWBjBH0PpiPRphdf8PTxxn99CB3hZLShpA4eG2ty6+3AQpcWzF7mkC5eKg
+ 8+uQ==
+X-Gm-Message-State: ANhLgQ2M6uWSnOaG7o+NGDWixrTrlJrSwZE1r3u4wSSFnOqTuMBUMuo9
+ R1ApsiA6pugWP5d4MKkxzM0cvO50CdCPgOgoguvAdA==
+X-Google-Smtp-Source: ADFU+vunIbfF7cF+cg/5HQCVkQIHDO6ScLBXRU/yTPevJyjOidbI5t2wOJVf0V1aAGYL0Qe0suR5rmu4QLvHq6Gpl3U=
+X-Received: by 2002:a17:907:2154:: with SMTP id
+ rk20mr13348435ejb.322.1583740177890; 
+ Mon, 09 Mar 2020 00:49:37 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200306213519.GD17369@ravnborg.org>
+References: <1583735298-19266-1-git-send-email-allen.chen@ite.com.tw>
+ <1583735298-19266-4-git-send-email-allen.chen@ite.com.tw>
+In-Reply-To: <1583735298-19266-4-git-send-email-allen.chen@ite.com.tw>
+From: Pi-Hsun Shih <pihsun@chromium.org>
+Date: Mon, 9 Mar 2020 15:49:01 +0800
+Message-ID: <CANdKZ0cB-nWR75RcpAet+UDj6t+QXi1rjF3jMiM6_+awhZzAOg@mail.gmail.com>
+Subject: Re: [PATCH v7 3/3] drm/bridge: add it6505 driver
+To: allen <allen.chen@ite.com.tw>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200309_003216_383734_DB10FABA 
-X-CRM114-Status: GOOD (  20.72  )
+X-CRM114-CacheID: sfid-20200309_004947_537398_0D88745B 
+X-CRM114-Status: GOOD (  14.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,565 +87,86 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: hamohammed.sa@gmail.com, alexandre.belloni@bootlin.com, heiko@sntech.de,
- airlied@linux.ie, stefan@agner.ch, linux@armlinux.org.uk, paul@crapouillou.net,
- eric@anholt.net, thierry.reding@gmail.com, krzk@kernel.org, festevam@gmail.com,
- sebastian.reichel@collabora.com, linux-samsung-soc@vger.kernel.org,
- jy0922.shim@samsung.com, hjc@rock-chips.com, tomi.valkeinen@ti.com,
- abrodkin@synopsys.com, kong.kongxinwei@hisilicon.com,
- patrik.r.jakobsson@gmail.com, jonathanh@nvidia.com, xinliang.liu@linaro.org,
- ludovic.desroches@microchip.com, kgene@kernel.org, linux-imx@nxp.com,
- ck.hu@mediatek.com, linux-rockchip@lists.infradead.org,
- virtualization@lists.linux-foundation.org, linux-tegra@vger.kernel.org,
- p.zabel@pengutronix.de, puck.chen@hisilicon.com, s.hauer@pengutronix.de,
- alison.wang@nxp.com, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
- inki.dae@samsung.com, john.stultz@linaro.org, jsarha@ti.com,
- matthias.bgg@gmail.com, wens@csie.org, kernel@pengutronix.de,
- jernej.skrabec@siol.net, kraxel@redhat.com, rodrigosiqueiramelo@gmail.com,
- bbrezillon@kernel.org, jingoohan1@gmail.com, dri-devel@lists.freedesktop.org,
- sw0312.kim@samsung.com, nicolas.ferre@microchip.com, kyungmin.park@samsung.com,
- kieran.bingham+renesas@ideasonboard.com, daniel@ffwll.ch,
- zourongrong@gmail.com, linux-mediatek@lists.infradead.org, shawnguo@kernel.org,
- laurent.pinchart@ideasonboard.com
-Content-Type: multipart/mixed; boundary="===============1726094688883999400=="
+Cc: Jernej Skrabec <jernej.skrabec@siol.net>,
+ Jitao Shi <jitao.shi@mediatek.com>, Neil Armstrong <narmstrong@baylibre.com>,
+ Yilun Lin <yllin@google.com>, David Airlie <airlied@linux.ie>,
+ Jau-Chih Tseng <Jau-Chih.Tseng@ite.com.tw>,
+ open list <linux-kernel@vger.kernel.org>,
+ "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>,
+ Andrzej Hajda <a.hajda@samsung.com>, Jonas Karlman <jonas@kwiboo.se>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============1726094688883999400==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="2CKpQBBJjLNlZfBAUkhK2Hrn2Oz1pgit2"
+Hi allen,
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---2CKpQBBJjLNlZfBAUkhK2Hrn2Oz1pgit2
-Content-Type: multipart/mixed; boundary="KG81PaEcZ9d020t5NFe2dKhwBZ7oRjdf5";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: Sam Ravnborg <sam@ravnborg.org>
-Cc: airlied@linux.ie, daniel@ffwll.ch, abrodkin@synopsys.com,
- bbrezillon@kernel.org, nicolas.ferre@microchip.com,
- alexandre.belloni@bootlin.com, ludovic.desroches@microchip.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, jingoohan1@gmail.com,
- inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
- stefan@agner.ch, alison.wang@nxp.com, patrik.r.jakobsson@gmail.com,
- xinliang.liu@linaro.org, zourongrong@gmail.com, john.stultz@linaro.org,
- kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
- linux@armlinux.org.uk, p.zabel@pengutronix.de, shawnguo@kernel.org,
- s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
- linux-imx@nxp.com, paul@crapouillou.net, ck.hu@mediatek.com,
- matthias.bgg@gmail.com, laurent.pinchart@ideasonboard.com,
- kieran.bingham+renesas@ideasonboard.com, hjc@rock-chips.com,
- heiko@sntech.de, wens@csie.org, jernej.skrabec@siol.net,
- thierry.reding@gmail.com, jonathanh@nvidia.com, jsarha@ti.com,
- tomi.valkeinen@ti.com, eric@anholt.net, kraxel@redhat.com,
- rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
- sebastian.reichel@collabora.com, dri-devel@lists.freedesktop.org,
- linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
- virtualization@lists.linux-foundation.org
-Message-ID: <4ce9be7e-7b1d-c679-6dba-3f17dc2a7ebc@suse.de>
-Subject: Re: [PATCH 05/22] drm/gma500: Use simple encoder
-References: <20200305155950.2705-1-tzimmermann@suse.de>
- <20200305155950.2705-6-tzimmermann@suse.de>
- <20200306213519.GD17369@ravnborg.org>
-In-Reply-To: <20200306213519.GD17369@ravnborg.org>
+On Mon, Mar 9, 2020 at 2:32 PM allen <allen.chen@ite.com.tw> wrote:
+>
+> From: Allen Chen <allen.chen@ite.com.tw>
+>
+> This adds support for the iTE IT6505.
+> This device can convert DPI signal to DP output.
+>
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Signed-off-by: Yilun Lin <yllin@google.com>
+> Signed-off-by: Allen Chen <allen.chen@ite.com.tw>
+> Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
+> ---
+>  drivers/gpu/drm/bridge/Kconfig      |   11 +-
+>  drivers/gpu/drm/bridge/Makefile     |    6 +-
+>  drivers/gpu/drm/bridge/ite-it6505.c | 3022 +++++++++++++++++++++++++++++++++++
+>  3 files changed, 3035 insertions(+), 4 deletions(-)
+>  create mode 100644 drivers/gpu/drm/bridge/ite-it6505.c
+>
+> diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
+> index aaed234..ff81681 100644
+> --- a/drivers/gpu/drm/bridge/Kconfig
+> +++ b/drivers/gpu/drm/bridge/Kconfig
+> @@ -38,8 +38,15 @@ config DRM_DISPLAY_CONNECTOR
+>           on ARM-based platforms. Saying Y here when this driver is not needed
+>           will not cause any issue.
+>
+> -config DRM_LVDS_CODEC
+> -       tristate "Transparent LVDS encoders and decoders support"
+> +config DRM_ITE_IT6505
+> +       tristate "ITE IT6505 DP bridge"
+> +       depends on OF
+> +       select DRM_KMS_HELPER
+> +       help
+> +         ITE IT6505 DP bridge chip driver.
+> +
+> +config DRM_LVDS_ENCODER
+> +       tristate "Transparent parallel to LVDS encoder support"
+>         depends on OF
+>         select DRM_KMS_HELPER
+>         select DRM_PANEL_BRIDGE
+> diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
+> index 6fb062b..e6c80ab 100644
+> --- a/drivers/gpu/drm/bridge/Makefile
+> +++ b/drivers/gpu/drm/bridge/Makefile
+> @@ -1,7 +1,9 @@
+>  # SPDX-License-Identifier: GPL-2.0
+>  obj-$(CONFIG_DRM_CDNS_DSI) += cdns-dsi.o
+> -obj-$(CONFIG_DRM_DISPLAY_CONNECTOR) += display-connector.o
+> -obj-$(CONFIG_DRM_LVDS_CODEC) += lvds-codec.o
+> +obj-$(CONFIG_DRM_DUMB_VGA_DAC) += dumb-vga-dac.o
+> +obj-$(CONFIG_DRM_GENERIC_GPIO_MUX) += generic-gpio-mux.o
+> +obj-$(CONFIG_DRM_ITE_IT6505) += ite-it6505.o
+> +obj-$(CONFIG_DRM_LVDS_ENCODER) += lvds-encoder.o
+>  obj-$(CONFIG_DRM_MEGACHIPS_STDPXXXX_GE_B850V3_FW) += megachips-stdpxxxx-ge-b850v3-fw.o
+>  obj-$(CONFIG_DRM_NXP_PTN3460) += nxp-ptn3460.o
+>  obj-$(CONFIG_DRM_PARADE_PS8622) += parade-ps8622.o
 
---KG81PaEcZ9d020t5NFe2dKhwBZ7oRjdf5
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-Hi Sam
-
-Am 06.03.20 um 22:35 schrieb Sam Ravnborg:
-> Hi Thomas.
->=20
-> On Thu, Mar 05, 2020 at 04:59:33PM +0100, Thomas Zimmermann wrote:
->> The gma500 driver uses empty implementations for some of its encoders.=
-
->> Replace the code with the generic simple encoder.
-> This parts looks good.
->=20
->=20
->> As a side effect, the
->> patch also removes an indirection in the encoder setup for Medfield.
->=20
-> I failed to see where this was done. Maybe too late for me to review
-> patches, so I will stop now.
-
-The indirection is in setting the encoder functions. Defined in
-drivers/gpu/drm/gma500/mdfld_output.h, struct panel_funcs.encoder_funcs
-is filled by various Medfield backends with encoder callbacks. But it's
-always the same and the encoder_funcs field can be removed. A call to
-drm_simple_encoder_init() works for all Medfield code.
-
-Best regards
-Thomas
-
->=20
->=20
-> No matter - patch is:
-> Acked-by: Sam Ravnborg <sam@ravnborg.org>
->=20
->>
->> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
->> ---
->>  drivers/gpu/drm/gma500/cdv_intel_crt.c     | 14 +++-----------
->>  drivers/gpu/drm/gma500/cdv_intel_dp.c      | 16 +++-------------
->>  drivers/gpu/drm/gma500/cdv_intel_hdmi.c    |  4 ++--
->>  drivers/gpu/drm/gma500/cdv_intel_lvds.c    | 17 +++--------------
->>  drivers/gpu/drm/gma500/mdfld_dsi_dpi.c     |  7 +++----
->>  drivers/gpu/drm/gma500/mdfld_output.h      |  1 -
->>  drivers/gpu/drm/gma500/mdfld_tmd_vid.c     |  6 ------
->>  drivers/gpu/drm/gma500/mdfld_tpo_vid.c     |  6 ------
->>  drivers/gpu/drm/gma500/oaktrail_hdmi.c     | 14 ++------------
->>  drivers/gpu/drm/gma500/oaktrail_lvds.c     |  5 +++--
->>  drivers/gpu/drm/gma500/psb_intel_drv.h     |  1 -
->>  drivers/gpu/drm/gma500/psb_intel_lvds.c    | 18 +++---------------
->>  drivers/gpu/drm/gma500/tc35876x-dsi-lvds.c |  5 -----
->>  13 files changed, 22 insertions(+), 92 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/gma500/cdv_intel_crt.c b/drivers/gpu/drm/=
-gma500/cdv_intel_crt.c
->> index 29c36d63b20e..88535f5aacc5 100644
->> --- a/drivers/gpu/drm/gma500/cdv_intel_crt.c
->> +++ b/drivers/gpu/drm/gma500/cdv_intel_crt.c
->> @@ -28,6 +28,8 @@
->>  #include <linux/i2c.h>
->>  #include <linux/pm_runtime.h>
->> =20
->> +#include <drm/drm_simple_kms_helper.h>
->> +
->>  #include "cdv_device.h"
->>  #include "intel_bios.h"
->>  #include "power.h"
->> @@ -237,15 +239,6 @@ static const struct drm_connector_helper_funcs
->>  	.best_encoder =3D gma_best_encoder,
->>  };
->> =20
->> -static void cdv_intel_crt_enc_destroy(struct drm_encoder *encoder)
->> -{
->> -	drm_encoder_cleanup(encoder);
->> -}
->> -
->> -static const struct drm_encoder_funcs cdv_intel_crt_enc_funcs =3D {
->> -	.destroy =3D cdv_intel_crt_enc_destroy,
->> -};
->> -
->>  void cdv_intel_crt_init(struct drm_device *dev,
->>  			struct psb_intel_mode_device *mode_dev)
->>  {
->> @@ -271,8 +264,7 @@ void cdv_intel_crt_init(struct drm_device *dev,
->>  		&cdv_intel_crt_connector_funcs, DRM_MODE_CONNECTOR_VGA);
->> =20
->>  	encoder =3D &gma_encoder->base;
->> -	drm_encoder_init(dev, encoder,
->> -		&cdv_intel_crt_enc_funcs, DRM_MODE_ENCODER_DAC, NULL);
->> +	drm_simple_encoder_init(dev, encoder, DRM_MODE_ENCODER_DAC);
->> =20
->>  	gma_connector_attach_encoder(gma_connector, gma_encoder);
->> =20
->> diff --git a/drivers/gpu/drm/gma500/cdv_intel_dp.c b/drivers/gpu/drm/g=
-ma500/cdv_intel_dp.c
->> index 5772b2dce0d6..13947ec06dbb 100644
->> --- a/drivers/gpu/drm/gma500/cdv_intel_dp.c
->> +++ b/drivers/gpu/drm/gma500/cdv_intel_dp.c
->> @@ -32,6 +32,7 @@
->>  #include <drm/drm_crtc.h>
->>  #include <drm/drm_crtc_helper.h>
->>  #include <drm/drm_dp_helper.h>
->> +#include <drm/drm_simple_kms_helper.h>
->> =20
->>  #include "gma_display.h"
->>  #include "psb_drv.h"
->> @@ -1908,11 +1909,6 @@ cdv_intel_dp_destroy(struct drm_connector *conn=
-ector)
->>  	kfree(connector);
->>  }
->> =20
->> -static void cdv_intel_dp_encoder_destroy(struct drm_encoder *encoder)=
-
->> -{
->> -	drm_encoder_cleanup(encoder);
->> -}
->> -
->>  static const struct drm_encoder_helper_funcs cdv_intel_dp_helper_func=
-s =3D {
->>  	.dpms =3D cdv_intel_dp_dpms,
->>  	.mode_fixup =3D cdv_intel_dp_mode_fixup,
->> @@ -1935,11 +1931,6 @@ static const struct drm_connector_helper_funcs =
-cdv_intel_dp_connector_helper_fun
->>  	.best_encoder =3D gma_best_encoder,
->>  };
->> =20
->> -static const struct drm_encoder_funcs cdv_intel_dp_enc_funcs =3D {
->> -	.destroy =3D cdv_intel_dp_encoder_destroy,
->> -};
->> -
->> -
->>  static void cdv_intel_dp_add_properties(struct drm_connector *connect=
-or)
->>  {
->>  	cdv_intel_attach_force_audio_property(connector);
->> @@ -2016,8 +2007,7 @@ cdv_intel_dp_init(struct drm_device *dev, struct=
- psb_intel_mode_device *mode_dev
->>  	encoder =3D &gma_encoder->base;
->> =20
->>  	drm_connector_init(dev, connector, &cdv_intel_dp_connector_funcs, ty=
-pe);
->> -	drm_encoder_init(dev, encoder, &cdv_intel_dp_enc_funcs,
->> -			 DRM_MODE_ENCODER_TMDS, NULL);
->> +	drm_simple_encoder_init(dev, encoder, DRM_MODE_ENCODER_TMDS);
->> =20
->>  	gma_connector_attach_encoder(gma_connector, gma_encoder);
->> =20
->> @@ -2120,7 +2110,7 @@ cdv_intel_dp_init(struct drm_device *dev, struct=
- psb_intel_mode_device *mode_dev
->>  		if (ret =3D=3D 0) {
->>  			/* if this fails, presume the device is a ghost */
->>  			DRM_INFO("failed to retrieve link info, disabling eDP\n");
->> -			cdv_intel_dp_encoder_destroy(encoder);
->> +			drm_encoder_cleanup(encoder);
->>  			cdv_intel_dp_destroy(connector);
->>  			goto err_priv;
->>  		} else {
->> diff --git a/drivers/gpu/drm/gma500/cdv_intel_hdmi.c b/drivers/gpu/drm=
-/gma500/cdv_intel_hdmi.c
->> index 1711a41acc16..0d12c6ffbc40 100644
->> --- a/drivers/gpu/drm/gma500/cdv_intel_hdmi.c
->> +++ b/drivers/gpu/drm/gma500/cdv_intel_hdmi.c
->> @@ -32,6 +32,7 @@
->>  #include <drm/drm.h>
->>  #include <drm/drm_crtc.h>
->>  #include <drm/drm_edid.h>
->> +#include <drm/drm_simple_kms_helper.h>
->> =20
->>  #include "cdv_device.h"
->>  #include "psb_drv.h"
->> @@ -311,8 +312,7 @@ void cdv_hdmi_init(struct drm_device *dev,
->>  			   &cdv_hdmi_connector_funcs,
->>  			   DRM_MODE_CONNECTOR_DVID);
->> =20
->> -	drm_encoder_init(dev, encoder, &psb_intel_lvds_enc_funcs,
->> -			 DRM_MODE_ENCODER_TMDS, NULL);
->> +	drm_simple_encoder_init(dev, encoder, DRM_MODE_ENCODER_TMDS);
->> =20
->>  	gma_connector_attach_encoder(gma_connector, gma_encoder);
->>  	gma_encoder->type =3D INTEL_OUTPUT_HDMI;
->> diff --git a/drivers/gpu/drm/gma500/cdv_intel_lvds.c b/drivers/gpu/drm=
-/gma500/cdv_intel_lvds.c
->> index ea0a5d9a0acc..18de10e9ff9a 100644
->> --- a/drivers/gpu/drm/gma500/cdv_intel_lvds.c
->> +++ b/drivers/gpu/drm/gma500/cdv_intel_lvds.c
->> @@ -12,6 +12,8 @@
->>  #include <linux/i2c.h>
->>  #include <linux/pm_runtime.h>
->> =20
->> +#include <drm/drm_simple_kms_helper.h>
->> +
->>  #include "cdv_device.h"
->>  #include "intel_bios.h"
->>  #include "power.h"
->> @@ -499,16 +501,6 @@ static const struct drm_connector_funcs cdv_intel=
-_lvds_connector_funcs =3D {
->>  	.destroy =3D cdv_intel_lvds_destroy,
->>  };
->> =20
->> -
->> -static void cdv_intel_lvds_enc_destroy(struct drm_encoder *encoder)
->> -{
->> -	drm_encoder_cleanup(encoder);
->> -}
->> -
->> -static const struct drm_encoder_funcs cdv_intel_lvds_enc_funcs =3D {
->> -	.destroy =3D cdv_intel_lvds_enc_destroy,
->> -};
->> -
->>  /*
->>   * Enumerate the child dev array parsed from VBT to check whether
->>   * the LVDS is present.
->> @@ -616,10 +608,7 @@ void cdv_intel_lvds_init(struct drm_device *dev,
->>  			   &cdv_intel_lvds_connector_funcs,
->>  			   DRM_MODE_CONNECTOR_LVDS);
->> =20
->> -	drm_encoder_init(dev, encoder,
->> -			 &cdv_intel_lvds_enc_funcs,
->> -			 DRM_MODE_ENCODER_LVDS, NULL);
->> -
->> +	drm_simple_encoder_init(dev, encoder, DRM_MODE_ENCODER_LVDS);
->> =20
->>  	gma_connector_attach_encoder(gma_connector, gma_encoder);
->>  	gma_encoder->type =3D INTEL_OUTPUT_LVDS;
->> diff --git a/drivers/gpu/drm/gma500/mdfld_dsi_dpi.c b/drivers/gpu/drm/=
-gma500/mdfld_dsi_dpi.c
->> index d4c65f268922..aa5aa293ddb6 100644
->> --- a/drivers/gpu/drm/gma500/mdfld_dsi_dpi.c
->> +++ b/drivers/gpu/drm/gma500/mdfld_dsi_dpi.c
->> @@ -27,6 +27,8 @@
->> =20
->>  #include <linux/delay.h>
->> =20
->> +#include <drm/drm_simple_kms_helper.h>
->> +
->>  #include "mdfld_dsi_dpi.h"
->>  #include "mdfld_dsi_pkg_sender.h"
->>  #include "mdfld_output.h"
->> @@ -993,10 +995,7 @@ struct mdfld_dsi_encoder *mdfld_dsi_dpi_init(stru=
-ct drm_device *dev,
->>  	/*create drm encoder object*/
->>  	connector =3D &dsi_connector->base.base;
->>  	encoder =3D &dpi_output->base.base.base;
->> -	drm_encoder_init(dev,
->> -			encoder,
->> -			p_funcs->encoder_funcs,
->> -			DRM_MODE_ENCODER_LVDS, NULL);
->> +	drm_simple_encoder_init(dev, encoder, DRM_MODE_ENCODER_LVDS);
->>  	drm_encoder_helper_add(encoder,
->>  				p_funcs->encoder_helper_funcs);
->> =20
->> diff --git a/drivers/gpu/drm/gma500/mdfld_output.h b/drivers/gpu/drm/g=
-ma500/mdfld_output.h
->> index ab2b27c0f037..17a944d70add 100644
->> --- a/drivers/gpu/drm/gma500/mdfld_output.h
->> +++ b/drivers/gpu/drm/gma500/mdfld_output.h
->> @@ -51,7 +51,6 @@ struct panel_info {
->>  };
->> =20
->>  struct panel_funcs {
->> -	const struct drm_encoder_funcs *encoder_funcs;
->>  	const struct drm_encoder_helper_funcs *encoder_helper_funcs;
->>  	struct drm_display_mode * (*get_config_mode)(struct drm_device *);
->>  	int (*get_panel_info)(struct drm_device *, int, struct panel_info *)=
-;
->> diff --git a/drivers/gpu/drm/gma500/mdfld_tmd_vid.c b/drivers/gpu/drm/=
-gma500/mdfld_tmd_vid.c
->> index 49c92debb7b2..25e897b98f86 100644
->> --- a/drivers/gpu/drm/gma500/mdfld_tmd_vid.c
->> +++ b/drivers/gpu/drm/gma500/mdfld_tmd_vid.c
->> @@ -188,13 +188,7 @@ static const struct drm_encoder_helper_funcs
->>  	.commit =3D mdfld_dsi_dpi_commit,
->>  };
->> =20
->> -/*TPO DPI encoder funcs*/
->> -static const struct drm_encoder_funcs mdfld_tpo_dpi_encoder_funcs =3D=
- {
->> -	.destroy =3D drm_encoder_cleanup,
->> -};
->> -
->>  const struct panel_funcs mdfld_tmd_vid_funcs =3D {
->> -	.encoder_funcs =3D &mdfld_tpo_dpi_encoder_funcs,
->>  	.encoder_helper_funcs =3D &mdfld_tpo_dpi_encoder_helper_funcs,
->>  	.get_config_mode =3D &tmd_vid_get_config_mode,
->>  	.get_panel_info =3D tmd_vid_get_panel_info,
->> diff --git a/drivers/gpu/drm/gma500/mdfld_tpo_vid.c b/drivers/gpu/drm/=
-gma500/mdfld_tpo_vid.c
->> index a9420bf9a419..11845978fb0a 100644
->> --- a/drivers/gpu/drm/gma500/mdfld_tpo_vid.c
->> +++ b/drivers/gpu/drm/gma500/mdfld_tpo_vid.c
->> @@ -76,13 +76,7 @@ static const struct drm_encoder_helper_funcs
->>  	.commit =3D mdfld_dsi_dpi_commit,
->>  };
->> =20
->> -/*TPO DPI encoder funcs*/
->> -static const struct drm_encoder_funcs mdfld_tpo_dpi_encoder_funcs =3D=
- {
->> -	.destroy =3D drm_encoder_cleanup,
->> -};
->> -
->>  const struct panel_funcs mdfld_tpo_vid_funcs =3D {
->> -	.encoder_funcs =3D &mdfld_tpo_dpi_encoder_funcs,
->>  	.encoder_helper_funcs =3D &mdfld_tpo_dpi_encoder_helper_funcs,
->>  	.get_config_mode =3D &tpo_vid_get_config_mode,
->>  	.get_panel_info =3D tpo_vid_get_panel_info,
->> diff --git a/drivers/gpu/drm/gma500/oaktrail_hdmi.c b/drivers/gpu/drm/=
-gma500/oaktrail_hdmi.c
->> index f4370232767d..b25086f252ae 100644
->> --- a/drivers/gpu/drm/gma500/oaktrail_hdmi.c
->> +++ b/drivers/gpu/drm/gma500/oaktrail_hdmi.c
->> @@ -27,6 +27,7 @@
->>  #include <linux/delay.h>
->> =20
->>  #include <drm/drm.h>
->> +#include <drm/drm_simple_kms_helper.h>
->> =20
->>  #include "psb_drv.h"
->>  #include "psb_intel_drv.h"
->> @@ -620,15 +621,6 @@ static const struct drm_connector_funcs oaktrail_=
-hdmi_connector_funcs =3D {
->>  	.destroy =3D oaktrail_hdmi_destroy,
->>  };
->> =20
->> -static void oaktrail_hdmi_enc_destroy(struct drm_encoder *encoder)
->> -{
->> -	drm_encoder_cleanup(encoder);
->> -}
->> -
->> -static const struct drm_encoder_funcs oaktrail_hdmi_enc_funcs =3D {
->> -	.destroy =3D oaktrail_hdmi_enc_destroy,
->> -};
->> -
->>  void oaktrail_hdmi_init(struct drm_device *dev,
->>  					struct psb_intel_mode_device *mode_dev)
->>  {
->> @@ -651,9 +643,7 @@ void oaktrail_hdmi_init(struct drm_device *dev,
->>  			   &oaktrail_hdmi_connector_funcs,
->>  			   DRM_MODE_CONNECTOR_DVID);
->> =20
->> -	drm_encoder_init(dev, encoder,
->> -			 &oaktrail_hdmi_enc_funcs,
->> -			 DRM_MODE_ENCODER_TMDS, NULL);
->> +	drm_simple_encoder_init(dev, encoder, DRM_MODE_ENCODER_TMDS);
->> =20
->>  	gma_connector_attach_encoder(gma_connector, gma_encoder);
->> =20
->> diff --git a/drivers/gpu/drm/gma500/oaktrail_lvds.c b/drivers/gpu/drm/=
-gma500/oaktrail_lvds.c
->> index 582e09597500..2828360153d1 100644
->> --- a/drivers/gpu/drm/gma500/oaktrail_lvds.c
->> +++ b/drivers/gpu/drm/gma500/oaktrail_lvds.c
->> @@ -13,6 +13,8 @@
->> =20
->>  #include <asm/intel-mid.h>
->> =20
->> +#include <drm/drm_simple_kms_helper.h>
->> +
->>  #include "intel_bios.h"
->>  #include "power.h"
->>  #include "psb_drv.h"
->> @@ -311,8 +313,7 @@ void oaktrail_lvds_init(struct drm_device *dev,
->>  			   &psb_intel_lvds_connector_funcs,
->>  			   DRM_MODE_CONNECTOR_LVDS);
->> =20
->> -	drm_encoder_init(dev, encoder, &psb_intel_lvds_enc_funcs,
->> -			 DRM_MODE_ENCODER_LVDS, NULL);
->> +	drm_simple_encoder_init(dev, encoder, DRM_MODE_ENCODER_LVDS);
->> =20
->>  	gma_connector_attach_encoder(gma_connector, gma_encoder);
->>  	gma_encoder->type =3D INTEL_OUTPUT_LVDS;
->> diff --git a/drivers/gpu/drm/gma500/psb_intel_drv.h b/drivers/gpu/drm/=
-gma500/psb_intel_drv.h
->> index 16c6136f778b..fb601983cef0 100644
->> --- a/drivers/gpu/drm/gma500/psb_intel_drv.h
->> +++ b/drivers/gpu/drm/gma500/psb_intel_drv.h
->> @@ -252,7 +252,6 @@ extern int psb_intel_lvds_set_property(struct drm_=
-connector *connector,
->>  					struct drm_property *property,
->>  					uint64_t value);
->>  extern void psb_intel_lvds_destroy(struct drm_connector *connector);
->> -extern const struct drm_encoder_funcs psb_intel_lvds_enc_funcs;
->> =20
->>  /* intel_gmbus.c */
->>  extern void gma_intel_i2c_reset(struct drm_device *dev);
->> diff --git a/drivers/gpu/drm/gma500/psb_intel_lvds.c b/drivers/gpu/drm=
-/gma500/psb_intel_lvds.c
->> index afaebab7bc17..063c66bb946d 100644
->> --- a/drivers/gpu/drm/gma500/psb_intel_lvds.c
->> +++ b/drivers/gpu/drm/gma500/psb_intel_lvds.c
->> @@ -11,6 +11,8 @@
->>  #include <linux/i2c.h>
->>  #include <linux/pm_runtime.h>
->> =20
->> +#include <drm/drm_simple_kms_helper.h>
->> +
->>  #include "intel_bios.h"
->>  #include "power.h"
->>  #include "psb_drv.h"
->> @@ -621,18 +623,6 @@ const struct drm_connector_funcs psb_intel_lvds_c=
-onnector_funcs =3D {
->>  	.destroy =3D psb_intel_lvds_destroy,
->>  };
->> =20
->> -
->> -static void psb_intel_lvds_enc_destroy(struct drm_encoder *encoder)
->> -{
->> -	drm_encoder_cleanup(encoder);
->> -}
->> -
->> -const struct drm_encoder_funcs psb_intel_lvds_enc_funcs =3D {
->> -	.destroy =3D psb_intel_lvds_enc_destroy,
->> -};
->> -
->> -
->> -
->>  /**
->>   * psb_intel_lvds_init - setup LVDS connectors on this device
->>   * @dev: drm device
->> @@ -683,9 +673,7 @@ void psb_intel_lvds_init(struct drm_device *dev,
->>  			   &psb_intel_lvds_connector_funcs,
->>  			   DRM_MODE_CONNECTOR_LVDS);
->> =20
->> -	drm_encoder_init(dev, encoder,
->> -			 &psb_intel_lvds_enc_funcs,
->> -			 DRM_MODE_ENCODER_LVDS, NULL);
->> +	drm_simple_encoder_init(dev, encoder, DRM_MODE_ENCODER_LVDS);
->> =20
->>  	gma_connector_attach_encoder(gma_connector, gma_encoder);
->>  	gma_encoder->type =3D INTEL_OUTPUT_LVDS;
->> diff --git a/drivers/gpu/drm/gma500/tc35876x-dsi-lvds.c b/drivers/gpu/=
-drm/gma500/tc35876x-dsi-lvds.c
->> index 9e8224456ea2..f7e121f4c609 100644
->> --- a/drivers/gpu/drm/gma500/tc35876x-dsi-lvds.c
->> +++ b/drivers/gpu/drm/gma500/tc35876x-dsi-lvds.c
->> @@ -765,12 +765,7 @@ static const struct drm_encoder_helper_funcs tc35=
-876x_encoder_helper_funcs =3D {
->>  	.commit =3D mdfld_dsi_dpi_commit,
->>  };
->> =20
->> -static const struct drm_encoder_funcs tc35876x_encoder_funcs =3D {
->> -	.destroy =3D drm_encoder_cleanup,
->> -};
->> -
->>  const struct panel_funcs mdfld_tc35876x_funcs =3D {
->> -	.encoder_funcs =3D &tc35876x_encoder_funcs,
->>  	.encoder_helper_funcs =3D &tc35876x_encoder_helper_funcs,
->>  	.get_config_mode =3D tc35876x_get_config_mode,
->>  	.get_panel_info =3D tc35876x_get_panel_info,
->> --=20
->> 2.25.1
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
-
-
---KG81PaEcZ9d020t5NFe2dKhwBZ7oRjdf5--
-
---2CKpQBBJjLNlZfBAUkhK2Hrn2Oz1pgit2
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl5l8PQACgkQaA3BHVML
-eiOgawgAn1Xz2m1ILaenfMDwzy4wCNFKGBwUM1NrJ+DUqX1a6OkQ0Bt7fxBXlsgw
-5OVrHHbgW1gVsVlMVDiU78RGcBHNLoMZgIqW3g7RjQvIDBL0cFmjnws92anzxXQB
-cHi9dBffLf0e2U3/SD5qkXdpCD913sa6eyMYFhIdy5i4KE93U6JlWcxHAjTAmwuT
-TZ8iE60frDVwlfDG4bIsPnNEszeNFW8sCtNFzocu4xO7oOhbFxpHWtZhep5C8ZLt
-YgsNIhDpSrPJusLYoXJBJjk2mGYTh7uxoJGrpB45dgJrOSfKiHLGEpF4E/mwXCnb
-Qdc8F27JWd1LMCnREq4Gu71qHiuMmQ==
-=3fID
------END PGP SIGNATURE-----
-
---2CKpQBBJjLNlZfBAUkhK2Hrn2Oz1pgit2--
-
-
---===============1726094688883999400==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+There are unrelated changes to it6505 in the Makefile and Kconfig,
+please remove them.
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============1726094688883999400==--
-
