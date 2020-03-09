@@ -2,22 +2,22 @@ Return-Path: <SRS0=iNWv=42=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AC3E2C10F28
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 02:08:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2F99CC10DCE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 02:33:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 838D720665
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 02:08:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 02BBC206D5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 02:33:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IUipvHjp";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GsbEro2Q"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 838D720665
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UBXuE6Y+";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="STFwxFTn"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 02BBC206D5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CZ3VyIwiTHzTW8dGNq3bTXctlCC1mtJMxfZt7PCVgmc=; b=IUipvHjpF3Aadu
-	zCmiaYNmE+GNITojz01EFb2MeQazKlP4fjm3XmG6rJhqAyaVeOwDbymCFZLX+lVhPwekJQ8Tjcn/v
-	lbZw8VKIXK7F7uuF0AYT4vEGafBoj9RaaMOp4NMDMRcgW6uq5AHaU5tqcAONQv+BCNEMKeiqcUK8m
-	28HoAzZLnhzgqNi4/6RlNvOILNE2RlyHLS/s6pRnPDi35QuodgGMsILKktQheKq6mqB7yvLaiI/NM
-	yz7+2XfAWTELEIeQon0aWMD8AJYxtdqv/XG8yyqvRxrx7IjtLEhzlbB9Gwz4mFikZAKpzTu6viadZ
-	UYwSdiKUgElShHxGmbwA==;
+	List-Owner; bh=0FXIdHWJeT8g4lHdU5KXt81LXFy86BzxVDW/7VDQOCs=; b=UBXuE6Y+tCwq/I
+	mDUJA2zIAIRpiN4YY1agr03YZ4OdyWVzlzwUGoJwO7hIRiD0oNH/C9rEgYsD7M+CcbYPOSwGjYPlo
+	gw50IQxKtW4adTwK1lILx+XPpwoPc3K3rr2sVj/Or7wmxKzv7UAdKUfD45eE9E3dh64E1ITozh20w
+	/C6JDWkjmqX1e3Cdvb4sSChjIdR8yKFYv7uwHKVg0SbjvrFpLZ8NDNmx5ewN4uKH5e8XQvidqk4zv
+	yFQOMytmQc+/2n1F7vRMWE0AAC/Nh7osMIU6O1vTWMxEgACiiEn/NnpG7LpYfxVcoCsaw7+ZRj9QB
+	9Shxlmy693sq6jeUYIEw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jB7pl-00071e-VD; Mon, 09 Mar 2020 02:07:57 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jB8Ee-000600-AX; Mon, 09 Mar 2020 02:33:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jB7ph-000719-M9; Mon, 09 Mar 2020 02:07:57 +0000
-X-UUID: 30491f7bb51e4adc93d01b5f7359216c-20200308
+ id 1jB8Eb-0005zE-GL; Mon, 09 Mar 2020 02:33:39 +0000
+X-UUID: 70422fe94b564a2298d9b4563711b189-20200308
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=17MyIh5es8+oWEfzyMzpzHwqTieeb22zUb4UUI66VDE=; 
- b=GsbEro2QROKwbTUJcqFz6G+vVTLniRBvF+e8J4Z9Qqk/BYiixF5YhWtxizwGfSMXOre02+Wh99mivEJB5iPmzRdP5Dr6kJ9r4bbuv6CMA4bEdilrsllEaj3bEzXIYippAVPJLht7V0yNK8bRg4fiQN09RvTWN5tBZEKjlAodfjA=;
-X-UUID: 30491f7bb51e4adc93d01b5f7359216c-20200308
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
+ bh=dVRMX7HzacB89Rfs5D6p0q4PZANziX89+dXutatF4V0=; 
+ b=STFwxFTnAkpf4VQdSYH4HmwkhTAq+Mez0yThP3MFHKgA25ufdUfper2JH0TcH7uX+7Ij2wpjxUFsWDSmlbLdGxtKz+aXXDiKMHS/tiCxYYyscvnUqKpV4cmpQknOu95qTPiatDY2/j/E5wxjVLlfQquYk5O4KKCxqrwL6mNn+Fo=;
+X-UUID: 70422fe94b564a2298d9b4563711b189-20200308
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <yingjoe.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 928221497; Sun, 08 Mar 2020 18:07:43 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ with ESMTP id 1449962774; Sun, 08 Mar 2020 18:33:32 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 8 Mar 2020 19:07:40 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 9 Mar 2020 10:08:45 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
+ 15.0.1395.4; Sun, 8 Mar 2020 19:33:29 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 9 Mar 2020 10:32:26 +0800
+Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Mon, 9 Mar 2020 10:07:36 +0800
-Message-ID: <1583719659.28331.1.camel@mtksdaap41>
-Subject: Re: [PATCH v5 12/13] soc: mediatek: cmdq: add clear option in
- cmdq_pkt_wfe api
-From: CK Hu <ck.hu@mediatek.com>
-To: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
-Date: Mon, 9 Mar 2020 10:07:39 +0800
-In-Reply-To: <1583664775-19382-13-git-send-email-dennis-yc.hsieh@mediatek.com>
-References: <1583664775-19382-1-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1583664775-19382-13-git-send-email-dennis-yc.hsieh@mediatek.com>
+ Transport; Mon, 9 Mar 2020 10:30:47 +0800
+Message-ID: <1583721209.28755.29.camel@mtksdaap41>
+Subject: Re: [PATCH v8 4/5] rtc: mt6397: Add support for the MediaTek MT6358
+ RTC
+From: Yingjoe Chen <yingjoe.chen@mediatek.com>
+To: Ran Bi <ran.bi@mediatek.com>
+Date: Mon, 9 Mar 2020 10:33:29 +0800
+In-Reply-To: <1583393876.8521.15.camel@mhfsdcap03>
+References: <1580730044-30501-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1580730044-30501-5-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1580748607.31376.3.camel@mtksdaap41>
+ <1581911502.20099.13.camel@mhfsdcap03>
+ <CANMq1KDTHcFV8Gue1PuOWkWXL20z_-j58u8JpwbBm_wUvLeqSg@mail.gmail.com>
+ <1583393876.8521.15.camel@mhfsdcap03>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200308_190753_988051_6013989B 
-X-CRM114-Status: GOOD (  16.32  )
+X-CRM114-CacheID: sfid-20200308_193337_556644_5EA20D52 
+X-CRM114-Status: GOOD (  28.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,106 +88,133 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Daniel Vetter <daniel@ffwll.ch>, wsd_upstream@mediatek.com, David
- Airlie <airlied@linux.ie>, Jassi Brar <jassisinghbrar@gmail.com>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- HS Liao <hs.liao@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Houlong Wei <houlong.wei@mediatek.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, Richard
+ Fontana <rfontana@redhat.com>, Lee Jones <lee.jones@linaro.org>,
+ Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, linux-rtc@vger.kernel.org,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Devicetree List <devicetree@vger.kernel.org>,
+ Frank Wunderlich <frank-w@public-files.de>, Sean Wang <sean.wang@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Bibby Hsieh <bibby.hsieh@mediatek.com>, linux-arm-kernel@lists.infradead.org
+ Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ Alessandro Zummo <a.zummo@towertech.it>, Josef Friedl <josef.friedl@speed.at>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ lkml <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dennis:
-
-On Sun, 2020-03-08 at 18:52 +0800, Dennis YC Hsieh wrote:
-> Add clear parameter to let client decide if
-> event should be clear to 0 after GCE receive it.
+On Thu, 2020-03-05 at 15:37 +0800, Ran Bi wrote:
+> Hi,
 > 
+> On Wed, 2020-03-04 at 20:59 +0800, Nicolas Boichat wrote:
+> > Hi,
+> > 
+> > On Mon, Feb 17, 2020 at 11:52 AM Ran Bi <ran.bi@mediatek.com> wrote:
+> > >
+> > > On Tue, 2020-02-04 at 00:50 +0800, Yingjoe Chen wrote:
 
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
+<....>
 
-> Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c  | 2 +-
->  drivers/soc/mediatek/mtk-cmdq-helper.c   | 5 +++--
->  include/linux/mailbox/mtk-cmdq-mailbox.h | 3 +--
->  include/linux/soc/mediatek/mtk-cmdq.h    | 5 +++--
->  4 files changed, 8 insertions(+), 7 deletions(-)
+> > > >
+> > > > Putting these in header file doesn't looks right to me.
+> > > > Who need this? can you move them back to rtc-mt6397.c?
+> > > > Joe.C
+> > > >
+> > >
+> > > This could also effect kernel/drivers/power/reset/mt6323-poweroff.c
+> > > which using same region of RTC registers.
+> > > There are 2 ways of modification:
+> > > 1. kernel/drivers/rtc/rtc-mt6397.c implement do_pwroff function and
+> > > export to mt6323-poweroff.c
+> > > 2. Just modify mt6323-poweroff.c file to compatible this patch. I mean
+> > > using RTC_WRTGR_MT6397 to replace RTC_WRTGR. Or modify mt6323-poweroff.c
+> > > like rtc-mt6397.c
+> > 
+> > Oh, I see, so basically both rtc-mt6397.c and mt6323-poweroff.c need
+> > to know at what offset RTC_WRTGR actually is. Correct?
+> > 
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> index 7daaabc26eb1..a065b3a412cf 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -488,7 +488,7 @@ static void mtk_drm_crtc_hw_config(struct mtk_drm_crtc *mtk_crtc)
->  	if (mtk_crtc->cmdq_client) {
->  		cmdq_handle = cmdq_pkt_create(mtk_crtc->cmdq_client, PAGE_SIZE);
->  		cmdq_pkt_clear_event(cmdq_handle, mtk_crtc->cmdq_event);
-> -		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event);
-> +		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event, false);
->  		mtk_crtc_ddp_config(crtc, cmdq_handle);
->  		cmdq_pkt_finalize(cmdq_handle);
->  		cmdq_pkt_flush_async(cmdq_handle, ddp_cmdq_cb, cmdq_handle);
-> diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> index bb5be20fc70a..ec5637d43254 100644
-> --- a/drivers/soc/mediatek/mtk-cmdq-helper.c
-> +++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
-> @@ -296,15 +296,16 @@ int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
->  }
->  EXPORT_SYMBOL(cmdq_pkt_write_s_value);
->  
-> -int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event)
-> +int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear)
->  {
->  	struct cmdq_instruction inst = { {0} };
-> +	u32 clear_option = clear ? CMDQ_WFE_UPDATE : 0;
->  
->  	if (event >= CMDQ_MAX_EVENT)
->  		return -EINVAL;
->  
->  	inst.op = CMDQ_CODE_WFE;
-> -	inst.value = CMDQ_WFE_OPTION;
-> +	inst.value = CMDQ_WFE_OPTION | clear_option;
->  	inst.event = event;
->  
->  	return cmdq_pkt_append_command(pkt, inst);
-> diff --git a/include/linux/mailbox/mtk-cmdq-mailbox.h b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> index 3f6bc0dfd5da..42d2a30e6a70 100644
-> --- a/include/linux/mailbox/mtk-cmdq-mailbox.h
-> +++ b/include/linux/mailbox/mtk-cmdq-mailbox.h
-> @@ -27,8 +27,7 @@
->   * bit 16-27: update value
->   * bit 31: 1 - update, 0 - no update
->   */
-> -#define CMDQ_WFE_OPTION			(CMDQ_WFE_UPDATE | CMDQ_WFE_WAIT | \
-> -					CMDQ_WFE_WAIT_VALUE)
-> +#define CMDQ_WFE_OPTION			(CMDQ_WFE_WAIT | CMDQ_WFE_WAIT_VALUE)
->  
->  /** cmdq event maximum */
->  #define CMDQ_MAX_EVENT			0x3ff
-> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
-> index 1a6c56f3bec1..d63749440697 100644
-> --- a/include/linux/soc/mediatek/mtk-cmdq.h
-> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
-> @@ -152,11 +152,12 @@ int cmdq_pkt_write_s_value(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
->  /**
->   * cmdq_pkt_wfe() - append wait for event command to the CMDQ packet
->   * @pkt:	the CMDQ packet
-> - * @event:	the desired event type to "wait and CLEAR"
-> + * @event:	the desired event type to wait
-> + * @clear:	clear event or not after event arrive
->   *
->   * Return: 0 for success; else the error code is returned
->   */
-> -int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event);
-> +int cmdq_pkt_wfe(struct cmdq_pkt *pkt, u16 event, bool clear);
->  
->  /**
->   * cmdq_pkt_clear_event() - append clear event command to the CMDQ packet
+> Yes, you are right both drivers need to know RTC_WRTGR offset. Offsets
+> of other registers are the same.
+> 
+> > Is there any plan to have mt6323-poweroff.c support any of the other
+> > PMICs (not just MT6323?)?
+> > 
+> 
+> Currently, we don't have a plan to let mt6323-poweroff.c support other
+> PMICs. Because other PMICs like mt6397 and mt6358 could using
+> arm-trust-firmware PSCI power off flow instead. mt6323-poweroff.c was
+> prepared for platform without arm-trust-firmware.
+
+This depends on SoC instead of PMIC.
+We will need mt6323-poweroff.c for soc with armv7 CPU, because we won't
+have ATF on them. I'm not aware of new plan for this.
+
+
+> > a. If not, I'd just add:
+> > #define RTC_WRTGR_MT6323 RTC_WRTGR_MT6397
+> > in rtc.h, for added clarity, use that in mt6323-poweroff.c
+> > (s/RTC_WRTGR/RTC_WRTGR_MT6323/), and be done with it.
+> > 
+> 
+> I would just change RTC_WRTGR to RTC_WRTGR_MT6397 in mt6323-poweroff.c
+> at next patchset.
+> 
+> > Actually, even if there's a plan, you can go ahead with this simpler
+> > solution for now, and fix later when the issue comes up.
+> > 
+> > b. If you ever want to support multiple PMICs with mt6323-poweroff.c,
+> > you'd need that offset for 2 different sub-devices under the same mfd,
+> > so the matching logic belongs in the main mfd device, not in
+> > rtc/poweroff driver.
+> > 
+> > So I'd move the matching logic in drivers/mfd/mt6397-core.c, and add
+> > rtc_wrtgr offset (or a full _data structure) to `struct mt6397_chip`,
+> > or, probably better, add a IORESOURCE_REG to the matching resources to
+> > specify the offset (that's what drivers/mfd/88pm860x-core.c seems to
+> > be doing, for example).
+> > 
+> > And then mt6323-poweroff.c should probably be renamed to mt6397-poweroff.c.
+> > 
+> > (actually, looking at this, I'm even questioning if mt6323-poweroff.c
+> > should even exist, and if you should just fold it into rtc-mt6397.c?
+> > Since they use the same registers?)
+> > 
+> 
+> mt6323-poweroff.c which hijack pm_power_off pointer is only for platform
+> without arm-trust-firmware. This is the reason I am considering
+> mt6323-poweroff.c should not be folded into rtc-mt6397.c.
+
+
+Using/sharing same set of registers from different drivers is not good: 
+
+- WRTGR is a special register to 'commit' previous changes. If 2 drivers
+are running at the same time, it is possible to commit incomplete update
+and cause unexpected result. It is easier to control this from same
+driver.
+
+- It is easy to overlook the register is access by others and lead to
+bugs/build fails when doing driver update, eg, this patchset.
+
+- The trigger code is duplicate in mt6323-poweroff.c, can just call
+mtk_rtc_write_trigger.
+
+
+So I agree with Nicolas, mt6323-poweroff should be folded into
+rtc-mt6397.c. We should be able to disable pm_power_off hijacking for
+platform with armV8 CPU. Maybe we can keep "mediatek,mt6323-pwrc"
+compatible in mt6323-poweroff.c for this.
+
+I'm ok with implement a. as suggested by Nicolas for now.
+
+Joe.C
 
 _______________________________________________
 Linux-mediatek mailing list
