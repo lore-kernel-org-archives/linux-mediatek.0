@@ -2,90 +2,77 @@ Return-Path: <SRS0=iNWv=42=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 267E3C10F27
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 17:20:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D1297C10F25
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 23:13:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EA85D20828
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 17:20:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A15A72146E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2020 23:13:48 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Kmb4fceE";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="VIDlz9gZ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA85D20828
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ckhk0yFR";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="sYQ33oHq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A15A72146E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=inerFlEwU1v+nbRluw/EZKtcXBTsJdSfBDgJrnJNNlc=; b=Kmb4fceEmp0/bE
-	Rv/mLQCnWZMFS7u/syiYbNtovGiBmddFA7Fmg3TsOPcAxJj4WWBTkfyNyj8F93i1HMpT4tUxXRzqY
-	SHLRmKTyfILvj6MmG38U+yG61/OkWLR0swQ4uX3/0T4XpNYQ+xlzwDhlUjPLWoBXZpKrwbD5XtoYk
-	pdULAhxqc6xveq0xCUKYfrh2S415x3yxpVjvCnhKZ7k6/tDaKYBGMXNSLQR+2QRJUnQee/az51bSv
-	X+J8NxjQhwjnPyRJzMjCjgzlyA7rC5vrGw569qNBoFLdoD0YX/uRMJR4n0ROp2s2xQOcEra4RgE39
-	6zE5H/JCtui1rPK/LSKw==;
+	List-Owner; bh=o/iC9eZXaoxnH+w9BczS6j1fSwZxNAgSpcchSP+Cons=; b=ckhk0yFRi9dXyr
+	uXorReHFqQAaQfoKuwMfmQA7EJ8qUHF2HGhEGZEbF2b2a0J5H24kTPnD2rpIs7fm5pkpTWrqa7yBh
+	RBVshVSIlHcc1zgVsXvcL0OfVuDsTf61di8FyOcQaT02fbAUWTqNCpeW032K6SC9PNNs6z1CI7nC0
+	scWJJ6sEYKzbKMamAM9tO8GdtOjDxEmMqmUYkpNRduJd/oCxAUcAAjNJpSQnA7U/bot5YsmLuLXrd
+	PW+FFcUURTiXHGUUTnGEv2TgBqoG6aEEzuQo1+o6MBTmrZQTMDMeLydVjIt7OXTxBaZBq1bKRRuVD
+	GoHTxiNBJ2NHhU4rKvuQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBM4u-00058Q-RK; Mon, 09 Mar 2020 17:20:32 +0000
-Received: from lelv0142.ext.ti.com ([198.47.23.249])
+	id 1jBRad-0000Gg-Fj; Mon, 09 Mar 2020 23:13:39 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBM4r-000579-Rl; Mon, 09 Mar 2020 17:20:31 +0000
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
- by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 029HKJhW081517;
- Mon, 9 Mar 2020 12:20:19 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
- s=ti-com-17Q1; t=1583774419;
- bh=9tqG8lsZxDbDWkjZmACtivY21dcKdEeq8w0vOUqH4wM=;
- h=Date:From:To:CC:Subject:References:In-Reply-To;
- b=VIDlz9gZSFX3vc5gnrDWmH9BzHO1hAaTY7kP7VJhbF0/J6Ei/Hg68fdhKNih8KbF2
- t6pZCiBmY+w9oLRjvEbPESi9UJHewOPo4bddYsBhyo/yDskkNi2wMjF+PnrwaMhCVS
- vv/Kx6Gb4pVV0CT3LCvFcnQpRJ7l2+dr/fON115g=
-Received: from DLEE104.ent.ti.com (dlee104.ent.ti.com [157.170.170.34])
- by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTP id 029HKJGN068509;
- Mon, 9 Mar 2020 12:20:19 -0500
-Received: from DLEE111.ent.ti.com (157.170.170.22) by DLEE104.ent.ti.com
- (157.170.170.34) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1847.3; Mon, 9 Mar
- 2020 12:20:19 -0500
-Received: from localhost.localdomain (10.64.41.19) by DLEE111.ent.ti.com
- (157.170.170.22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1847.3 via
- Frontend Transport; Mon, 9 Mar 2020 12:20:19 -0500
-Received: from localhost (ileax41-snat.itg.ti.com [10.172.224.153])
- by localhost.localdomain (8.15.2/8.15.2) with ESMTP id 029HKJUl079705;
- Mon, 9 Mar 2020 12:20:19 -0500
-Date: Mon, 9 Mar 2020 12:26:07 -0500
-From: Bin Liu <b-liu@ti.com>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Subject: Re: [PATCH] usb: musb: tusb6010: fix a possible missing data type
- replacement
-Message-ID: <20200309172607.GA3839@iaqt7>
-Mail-Followup-To: Bin Liu <b-liu@ti.com>,
- Macpaul Lin <macpaul.lin@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
- Min.Guo@mediatek.com, Chunfeng.Yun@mediatek.com,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <1579603670-10970-1-git-send-email-macpaul.lin@mediatek.com>
+ id 1jBRaU-00008L-D7; Mon, 09 Mar 2020 23:13:32 +0000
+X-UUID: ca71ff1e4cd24a8b8cd3461cdad889db-20200309
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=yigWAdDzv9r+S5GMZO74ScT7GTvj1to3DrOUWOXQiqM=; 
+ b=sYQ33oHqL+8sQNFJNm2aT0ivB/fro+xlCj3aob444ty2uDKTB1hjrSqCrKzdD7xgPeLPVc2KOvDKOlGCNykEqDmBJgfDrIe0bcabLfi3pIUb4P58G83i63muK07LB+k/6CQdH5o6BsCtJEyLdtG2kUPLCqBWSBI5fFtKr+43+rA=;
+X-UUID: ca71ff1e4cd24a8b8cd3461cdad889db-20200309
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <chun-hung.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 248871745; Mon, 09 Mar 2020 15:13:22 -0800
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 9 Mar 2020 16:13:49 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 10 Mar 2020 07:12:07 +0800
+Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Tue, 10 Mar 2020 07:10:36 +0800
+Message-ID: <1583795599.23665.4.camel@mtkswgap22>
+Subject: Re: [PATCH v3 1/4] mmc: core: expose MMC_CAP2_CQE* to dt
+From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 10 Mar 2020 07:13:19 +0800
+In-Reply-To: <CAPDyKFpyah+oA-GtXNmdkrhwnGN_syU1JqRHn-9gk=HK0fV8EQ@mail.gmail.com>
+References: <1581922564-24914-1-git-send-email-chun-hung.wu@mediatek.com>
+ <1581922564-24914-2-git-send-email-chun-hung.wu@mediatek.com>
+ <CAPDyKFpyah+oA-GtXNmdkrhwnGN_syU1JqRHn-9gk=HK0fV8EQ@mail.gmail.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1579603670-10970-1-git-send-email-macpaul.lin@mediatek.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200309_102029_989622_90F26C92 
-X-CRM114-Status: UNSURE (   7.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200309_161330_454566_37076C0F 
+X-CRM114-Status: GOOD (  19.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,23 +84,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Min.Guo@mediatek.com, Chunfeng.Yun@mediatek.com,
- linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Kate Stewart <kstewart@linuxfoundation.org>, wsd_upstream@mediatek.com,
+ "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Pavel
+ Machek <pavel@ucw.cz>, Chaotian Jing <chaotian.jing@mediatek.com>,
+ Android Kernel Team <kernel-team@android.com>, Pan Bian <bianpan2016@163.com>,
+ DTML <devicetree@vger.kernel.org>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Thomas
+ Gleixner <tglx@linutronix.de>, Stanley Chu <stanley.chu@mediatek.com>,
+ Allison Randal <allison@lohutok.net>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Mathieu Malaterre <malat@debian.org>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Kuohong Wang <kuohong.wang@mediatek.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 21, 2020 at 06:47:50PM +0800, Macpaul Lin wrote:
-> Replace "unsigned" to "u32" for checkpatch fix to tusb_writeb().
+On Wed, 2020-03-04 at 14:04 +0100, Ulf Hansson wrote:
+> On Mon, 17 Feb 2020 at 07:56, Chun-Hung Wu <chun-hung.wu@mediatek.com> wrote:
+> >
+> > Expose MMC_CAP2_CQE and MMC_CAP2_CQE_DCMD
+> > to host->caps2 if
+> > 1. "supports-cqe" is defined in dt and
+> > 2. "disable-cqe-dcmd" is not defined in dt.
 > 
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-
-Queued for v5.7. Thanks.
--Bin.
+> Both of these DT properties are defined as common mmc DT properties,
+> so the above isn't really correct. Please clarify this.
+Yes, the properties is common. But I think the "supports-cqe" or
+"disable-cqe-dcmd" is defined in vendor's mmc dt, not common mmc dt?
+Don't know what's wrong with the above description, any suggestion?
+> 
+> Moreover, I suggest to update commit message header into "mmc: core:
+> Extend mmc_of_parse() to parse CQE bindings", as I think it better
+> describes the change.
+Thanks, I think the commit message you provide is better, will change it
+in v4.
+> 
+> >
+> > Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+> > ---
+> >  drivers/mmc/core/host.c | 8 ++++++++
+> >  1 file changed, 8 insertions(+)
+> >
+> > diff --git a/drivers/mmc/core/host.c b/drivers/mmc/core/host.c
+> > index 105b7a7..efb0dbe 100644
+> > --- a/drivers/mmc/core/host.c
+> > +++ b/drivers/mmc/core/host.c
+> > @@ -319,6 +319,14 @@ int mmc_of_parse(struct mmc_host *host)
+> >                 host->caps2 |= MMC_CAP2_NO_SD;
+> >         if (device_property_read_bool(dev, "no-mmc"))
+> >                 host->caps2 |= MMC_CAP2_NO_MMC;
+> > +       if (device_property_read_bool(dev, "supports-cqe"))
+> > +               host->caps2 |= MMC_CAP2_CQE;
+> > +
+> > +       /* Must be after "supports-cqe" check */
+> > +       if (!device_property_read_bool(dev, "disable-cqe-dcmd")) {
+> > +               if (host->caps2 & MMC_CAP2_CQE)
+> 
+> Does it really doesn't matter if we set this cap, even if MMC_CAP2_CQE
+> isn't set? You can probably skip the check above.
+Will remove MMC_CAP2_CQE check here.
+> 
+> > +                       host->caps2 |= MMC_CAP2_CQE_DCMD;
+> > +       }
+> >
+> >         /* Must be after "non-removable" check */
+> >         if (device_property_read_u32(dev, "fixed-emmc-driver-type", &drv_type) == 0) {
+> > --
+> > 1.9.1
+> 
+> Kind regards
+> Uffe
 
 _______________________________________________
 Linux-mediatek mailing list
