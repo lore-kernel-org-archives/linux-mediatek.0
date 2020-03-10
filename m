@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 61818C18E5C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 09:13:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8027CC3F2C6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 09:13:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3548424682
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 09:13:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 426AF20674
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 09:13:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cN3cdU80"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3548424682
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Qd7F9hSU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 426AF20674
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,33 +26,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=wldUFTt+Ak0R64wBKLMudvlbyLsy/Xs9bahjq1beZ0I=; b=cN3cdU80jgjs6UinhSqaoOA3hD
-	3Hb7M/Ki7+S8r0U/8auWU1ecgvlUguNCBAY7uesvMH/pI9zBk2XA5qWKb6oqlxjgPPTqUSbBO35ua
-	r99T88nb+fubd2IxZRcDmHlkGcJnIym3VIavZxJABeu6T0hrRTfC8EtNZpudGNit4lMFkJnRPQaPW
-	ChsR66wWYgTaAa2r0zwZ6D664uKBY6NwHa0PRv2yRm6/AG2hy4yf2i4D/Cla3HOcAw+tdJZD4av1c
-	33ZY7XToqfyjY11xrhzlkj4S1KFSJq6JiUGoBGCKdU7cFePENmsyKqCzJTldfJKMdo1FBds8EInym
-	/KKh3etw==;
+	bh=mgooK5lvG1jC/D6yAyJoY/BBKT+OEAUwOuMwQ6PiDqc=; b=Qd7F9hSUSX1iIExpfhRmti51R0
+	K1Mh1mM6JTSXLVV+dFZ1M2bBnxoIuiPI1gSdcbZZcPnRoEF7Hy6tjEygbAyOf9jQCC0ve7LsnRwjN
+	cjGe+mLrrFuUcnv7x0lwgb0v2I7avk2wVgeitklcq2TykxY+xYHYPJK929L5BJzALsN4I30Uo+UUJ
+	xJO8U01xCjYG38VCBuGoRsQYlbvwB4OUsjGvRmbct8POyGZErLzfFT/JpFCaDkeD+6kpFlb+jIom4
+	+owegCpfjjBN2RwYT+OUTSgWDjfivOfaXPLex/IQqxhORSX6l6/Fya/NAHmVgl7rcg2ji0BiidPw4
+	1hwnjj3A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBawW-0006No-27; Tue, 10 Mar 2020 09:12:52 +0000
+	id 1jBawX-0006Pc-24; Tue, 10 Mar 2020 09:12:53 +0000
 Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBawN-0006F0-87
+ id 1jBawN-0006F2-8A
  for linux-mediatek@lists.infradead.org; Tue, 10 Mar 2020 09:12:46 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 6C468608; Tue, 10 Mar 2020 10:12:32 +0100 (CET)
+ id 24ECE396; Tue, 10 Mar 2020 10:12:32 +0100 (CET)
 From: Joerg Roedel <joro@8bytes.org>
 To: iommu@lists.linux-foundation.org
-Subject: [PATCH 04/15] iommu/tegra-gart: Remove direct access of
- dev->iommu_fwspec
-Date: Tue, 10 Mar 2020 10:12:18 +0100
-Message-Id: <20200310091229.29830-5-joro@8bytes.org>
+Subject: [PATCH 02/15] ACPI/IORT: Remove direct access of dev->iommu_fwspec
+Date: Tue, 10 Mar 2020 10:12:16 +0100
+Message-Id: <20200310091229.29830-3-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200310091229.29830-1-joro@8bytes.org>
 References: <20200310091229.29830-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200310_021243_472246_E082AD98 
-X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-CacheID: sfid-20200310_021243_473318_E1893454 
+X-CRM114-Status: UNSURE (   9.45  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -86,24 +85,36 @@ From: Joerg Roedel <jroedel@suse.de>
 Use the accessor functions instead of directly dereferencing
 dev->iommu_fwspec.
 
+Tested-by: Hanjun Guo <guohanjun@huawei.com>
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/tegra-gart.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/acpi/arm64/iort.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/iommu/tegra-gart.c b/drivers/iommu/tegra-gart.c
-index 3fb7ba72507d..db6559e8336f 100644
---- a/drivers/iommu/tegra-gart.c
-+++ b/drivers/iommu/tegra-gart.c
-@@ -247,7 +247,7 @@ static int gart_iommu_add_device(struct device *dev)
- {
- 	struct iommu_group *group;
+diff --git a/drivers/acpi/arm64/iort.c b/drivers/acpi/arm64/iort.c
+index ed3d2d1a7ae9..7d04424189df 100644
+--- a/drivers/acpi/arm64/iort.c
++++ b/drivers/acpi/arm64/iort.c
+@@ -1015,6 +1015,7 @@ const struct iommu_ops *iort_iommu_configure(struct device *dev)
+ 		return ops;
  
--	if (!dev->iommu_fwspec)
-+	if (!dev_iommu_fwspec_get(dev))
- 		return -ENODEV;
+ 	if (dev_is_pci(dev)) {
++		struct iommu_fwspec *fwspec;
+ 		struct pci_bus *bus = to_pci_dev(dev)->bus;
+ 		struct iort_pci_alias_info info = { .dev = dev };
  
- 	group = iommu_group_get_for_dev(dev);
+@@ -1027,8 +1028,9 @@ const struct iommu_ops *iort_iommu_configure(struct device *dev)
+ 		err = pci_for_each_dma_alias(to_pci_dev(dev),
+ 					     iort_pci_iommu_init, &info);
+ 
+-		if (!err && iort_pci_rc_supports_ats(node))
+-			dev->iommu_fwspec->flags |= IOMMU_FWSPEC_PCI_RC_ATS;
++		fwspec = dev_iommu_fwspec_get(dev);
++		if (fwspec && iort_pci_rc_supports_ats(node))
++			fwspec->flags |= IOMMU_FWSPEC_PCI_RC_ATS;
+ 	} else {
+ 		int i = 0;
+ 
 -- 
 2.17.1
 
