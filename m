@@ -2,68 +2,80 @@ Return-Path: <SRS0=h1kY=43=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C0541C18E5A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 18:36:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 30945C10F27
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 18:48:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8788321D7E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 18:36:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EC27A20873
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 18:48:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="U4XSjvfI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8788321D7E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bootlin.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VEma5eF0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EC27A20873
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7nACWrGpj6hrioimW0SMmIbe5Z8Nf9KvZMS2SdxIJ3U=; b=U4XSjvfI3i7cDb
-	t//YGdDZWLQchmOlDZE8iOPHtlxS66hT6AGMA2fuZgLx5ft/p+H4PWRgu0aM0pvjgqd93vQ2kky8v
-	RP7mqYH6bKvHEZeIq+3xc0KFp3h7QcTaqFOKworaRKe59p4d22Y44+icYVGOkRDU95sTVPkem4tl+
-	phRtfFNMXWLJaAtGTQE8R0d3gnqZwG21sfjZyqK7VVOmUFu1gXaSBq+iP53NpcE0Yzo62ipfqkYOw
-	aWB0N49VtYogSPHXmgceLv/OGb+AH0yCg2P0LceinWczjjA6BA36U3cuVuhCWSbCkRM28dlKE902+
-	4NPY/komtI8iBWxTUCeg==;
+	List-Owner; bh=4hrgsSE8gSUcDy8o6x2MRyxl7dZsTQtnciu8f3spkx8=; b=VEma5eF0PMBa4p
+	ds1W9H+GHuXZs8S23Foj2N+mLgnkkLtyNimxZqp5aA6gAp3yJfoIxNEdrehhc7kiwxhSFKH87sRjk
+	YmwRZfM49Bh+/WrGlJpfMkFMtstxdpoEuHm+GKIZz8DF7iLb/ggbREwsnRyLLTLQdaM8Z+lwZ3DAC
+	QTqF5wgKKAQG68JEfjVBORTLZp9WuBt36/yia6kZ1UMjzZZCMZjx/6o+2cU+V+KtAJF1j48ZdgL6F
+	JgZbnlIfWWcLIqO8SQCTfLypxcdfZl9ygyV+fIPYhtb2OoGYHdk2u2R+Gb/TUL0Nc7jweTE1mlRWw
+	qsYqO5kAao1mJRWPFLGg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBjjf-0001fc-3X; Tue, 10 Mar 2020 18:36:11 +0000
-Received: from relay1-d.mail.gandi.net ([217.70.183.193])
+	id 1jBjv3-0006bv-Gn; Tue, 10 Mar 2020 18:47:57 +0000
+Received: from mail-ot1-f51.google.com ([209.85.210.51])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBjew-0004DL-18; Tue, 10 Mar 2020 18:31:19 +0000
-X-Originating-IP: 91.224.148.103
-Received: from localhost.localdomain (unknown [91.224.148.103])
- (Authenticated sender: miquel.raynal@bootlin.com)
- by relay1-d.mail.gandi.net (Postfix) with ESMTPSA id C1BB4240008;
- Tue, 10 Mar 2020 18:31:13 +0000 (UTC)
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
- Masahiro Yamada <yamada.masahiro@socionext.com>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Liang Yang <liang.yang@amlogic.com>, Kevin Hilman <khilman@baylibre.com>,
- Xiaolei Li <xiaolei.li@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>
-Subject: Re: [PATCH] mtd: rawnand: Replace zero-length array with
- flexible-array member
-Date: Tue, 10 Mar 2020 19:31:12 +0100
-Message-Id: <20200310183112.18567-1-miquel.raynal@bootlin.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200226222722.GA18020@embeddedor>
-References: 
+ id 1jBjlZ-0003PC-TR; Tue, 10 Mar 2020 18:38:12 +0000
+Received: by mail-ot1-f51.google.com with SMTP id b3so14214241otp.4;
+ Tue, 10 Mar 2020 11:38:08 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=chsItn4WiJE7pzsGnhBJBMqcVhnfvQYQFixkTol5ZYk=;
+ b=DoaMkkWy4CTos3H0DwnFCo+p6h79waS/SnsIQGFjj888BhcBWPB2H+ZQCy56xopcQI
+ KDInXS3Eo3aSQ9eE8xJRqJvUcOAnuL5rOQGKVRw0slqgkb1dz5JRUcoyoRmsVwctSTlY
+ ILc/ZWpSIpDIxQCxwqm8VeqFBitKZyX9VjvULVBQgM7MWU2dQIxRSi/Ui56gOXWelYUG
+ 6yHcCKOfs2Mm1femU4EaQbwJLxud3bRfINyulsGMIDgPMZFhOAXLEbWnOWIdL1b3i9iG
+ fDjQRr/fKDIolAre7W041imoR1bdty+eUAgXffNTktD2/8ARqq5BXjtkpFnkMpNNemMd
+ jYEQ==
+X-Gm-Message-State: ANhLgQ3VNxXDXjDS0kprCcftXA7gheihrCb14AqtqJe6N3+eApGf7wsB
+ 1FEGQA6Vjo5j1dGIPoB/8g==
+X-Google-Smtp-Source: ADFU+vsSy3ToLL01JhINM1D/WNZOi2tkQmSVGZYt2683m4vdKUspzQPGZvwOiv6OZuKRB8eB55EM0g==
+X-Received: by 2002:a05:6830:1d6f:: with SMTP id
+ l15mr17301226oti.299.1583865488168; 
+ Tue, 10 Mar 2020 11:38:08 -0700 (PDT)
+Received: from rob-hp-laptop (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id s83sm4446188oif.33.2020.03.10.11.38.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Mar 2020 11:38:06 -0700 (PDT)
+Received: (nullmailer pid 25739 invoked by uid 1000);
+ Tue, 10 Mar 2020 18:38:05 -0000
+Date: Tue, 10 Mar 2020 13:38:05 -0500
+From: Rob Herring <robh@kernel.org>
+To: Robert Foss <robert.foss@linaro.org>
+Subject: Re: [v1 1/3] media: dt-bindings: ov8856: Document YAML bindings
+Message-ID: <20200310183805.GA24623@bogus>
+References: <20200310134603.30260-1-robert.foss@linaro.org>
+ <20200310134603.30260-2-robert.foss@linaro.org>
 MIME-Version: 1.0
-X-linux-mtd-patch-notification: thanks
-X-linux-mtd-patch-commit: 76d2f79cf5ae53bc5781903af98a1cb51ef12915
+Content-Disposition: inline
+In-Reply-To: <20200310134603.30260-2-robert.foss@linaro.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200310_113118_234034_CD1EB0F4 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20200310_113810_033270_2D71F620 
+X-CRM114-Status: GOOD (  10.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,49 +87,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mtd@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-amlogic@lists.infradead.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org,
+ andriy.shevchenko@linux.intel.com, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, Robert Foss <robert.foss@linaro.org>,
+ Tomasz Figa <tfiga@chromium.org>, ben.kao@intel.com, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, Dongchun Zhu <dongchun.zhu@mediatek.com>,
+ Jonathan.Cameron@huawei.com, matthias.bgg@gmail.com, mchehab@kernel.org,
+ davem@davemloft.net, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2020-02-26 at 22:27:22 UTC, "Gustavo A. R. Silva" wrote:
-> The current codebase makes use of the zero-length array language
-> extension to the C90 standard, but the preferred mechanism to declare
-> variable-length types such as these ones is a flexible array member[1][2],
-> introduced in C99:
+On Tue, 10 Mar 2020 14:46:01 +0100, Robert Foss wrote:
+> From: Dongchun Zhu <dongchun.zhu@mediatek.com>
 > 
-> struct foo {
->         int stuff;
->         struct boo array[];
-> };
+> This patch adds documentation of device tree in YAML schema for the
+> OV8856 CMOS image sensor.
 > 
-> By making use of the mechanism above, we will get a compiler warning
-> in case the flexible array does not occur last in the structure, which
-> will help us prevent some kind of undefined behavior bugs from being
-> inadvertently introduced[3] to the codebase from now on.
+> Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> Signed-off-by: Robert Foss <robert.foss@linaro.org>
+> ---
 > 
-> Also, notice that, dynamic memory allocations won't be affected by
-> this change:
+> - Changes since v3:
+>   * robher: Fix syntax error
+>   * robher: Removed maxItems
+>   * Fixes yaml 'make dt-binding-check' errors
 > 
-> "Flexible array members have incomplete type, and so the sizeof operator
-> may not be applied. As a quirk of the original implementation of
-> zero-length arrays, sizeof evaluates to zero."[1]
+> - Changes since v2:
+>   Fixes comments from from Andy, Tomasz, Sakari, Rob.
+>   * Convert text documentation to YAML schema.
 > 
-> This issue was found with the help of Coccinelle.
+> - Changes since v1:
+>   Fixes comments from Sakari, Tomasz
+>   * Add clock-frequency and link-frequencies in DT
 > 
-> [1] https://gcc.gnu.org/onlinedocs/gcc/Zero-Length.html
-> [2] https://github.com/KSPP/linux/issues/21
-> [3] commit 76497732932f ("cxgb3/l2t: Fix undefined behaviour")
+>  .../devicetree/bindings/media/i2c/ov8856.yaml | 129 ++++++++++++++++++
+>  MAINTAINERS                                   |   1 +
+>  2 files changed, 130 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/i2c/ov8856.yaml
 > 
-> Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
-> Acked-by: Masahiro Yamada <yamada.masahiro@socionext.com>
 
-Applied to https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git nand/next, thanks.
+My bot found errors running 'make dt_binding_check' on your patch:
 
-Miquel
+Error: Documentation/devicetree/bindings/media/i2c/ov8856.example.dts:26.28-29 syntax error
+FATAL ERROR: Unable to parse input tree
+scripts/Makefile.lib:311: recipe for target 'Documentation/devicetree/bindings/media/i2c/ov8856.example.dt.yaml' failed
+make[1]: *** [Documentation/devicetree/bindings/media/i2c/ov8856.example.dt.yaml] Error 1
+Makefile:1262: recipe for target 'dt_binding_check' failed
+make: *** [dt_binding_check] Error 2
+
+See https://patchwork.ozlabs.org/patch/1252173
+Please check and re-submit.
 
 _______________________________________________
 Linux-mediatek mailing list
