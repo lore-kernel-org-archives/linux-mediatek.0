@@ -2,78 +2,80 @@ Return-Path: <SRS0=h1kY=43=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIM_SIGNED,DKIM_VALID,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 744A7C10F27
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 07:50:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5355CC10F27
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 08:11:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4A89624677
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 07:50:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 27ECA2253D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 08:11:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Hxvdpr3A";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jSaN3hvw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4A89624677
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JDFOmzxT";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="gdNJjRmL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 27ECA2253D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EIk+ysdRov6CMhKNt6AGPuTvM6YXOshDVfXBsCRgFGU=; b=Hxvdpr3At9hU+i
-	gEHusTR/a8jvYyYexyRCpC4EKftQMO00i7j4kP0yKmx6yPho+REFkjUMcSoXh2pNb1BAmo1Ci6LNL
-	zoCY0Gh0Uj8oqK5VQ4GH3A/Zn2wDzHCpK+HkJg9v+0K5b+7F4ZoBNlHa/H9C11jk8fC60MXxvKQf7
-	G8yhyCn+5HlPKbEc2/y/viTCQ08KGoAxOV1wyj2xfQEZbMptAepvb4eLyEJ7Mdk7O8t7A8gkk3DIP
-	YEia/dQLBR0I6go1Eg1Xvj1G5DRnN8FwpTLCGyMQhjLJn9e9ZCs3rBjAJs0KwskqG8LvRIy6il6fF
-	qUNI4dhfPT4WI938bixQ==;
+	List-Owner; bh=F8QanwlVi20iOJw7RcgGgDmmJ4bAJDINFJYR0ZwzKgM=; b=JDFOmzxTWN+aY8
+	Qu2iJyGKyJH0mccXPAn4qPmZA8eD7IFXx/T8V4lh2krkcB8N9zR8EJA7CS/vNVAiHm7wAt+WmJMbI
+	ZnF7GpMF0N8nndTBamLETl0BjbsTR6STIkgBWZu2FDOxv9dC8WQHaQ4K4FsgTTMpvB4Yx6x9PX1I0
+	ePY2uTbL+JBFSP+PrdwBFBE5Ui3u+7eC8nnkVXBPq7DfVlDp0sYFv4uW8QBV+FTMYjK9/Hu+VBVGY
+	3TiLBzN1o5myxmEuWXXfzukFrrpAOlJEsf7V/8CtM+cTKANWQmyMYTBR3vTie97Up2IbybibyikQy
+	I37KBk+hVTpk/VA4vrsg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBZeR-0005Ku-Mq; Tue, 10 Mar 2020 07:50:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jBZyy-0005NQ-Sz; Tue, 10 Mar 2020 08:11:20 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBZeO-0004uH-Tg
- for linux-mediatek@lists.infradead.org; Tue, 10 Mar 2020 07:50:06 +0000
-X-UUID: 05f0ba1344274d2aa2272bec8d7d18d1-20200309
+ id 1jBZyr-0005MA-Au; Tue, 10 Mar 2020 08:11:19 +0000
+X-UUID: 88ea9678f4ab4eb883b45d0b20f3d044-20200310
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=B5BznUHUuKJwe4ePhTxbIRuKxxbW9yIzrNyklbjyAaU=; 
- b=jSaN3hvwD2lxCSDVg8/+5Nb9u3i2+o8ROdONRpICCsKO2lcSIfgiXaekgt72gdPpXsCkSga9MaabQgtc2mw6+YszIhpmHY7KIT5FaJz/b9OjcP9JaZj//Y7vQr4YdEgsGCEahS0U4whg0Vh7MVIyXa4REw0+ENdvsbKdHNSTT6c=;
-X-UUID: 05f0ba1344274d2aa2272bec8d7d18d1-20200309
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <light.hsieh@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=PVF960eiMhPIStyLRpGTvgu9m00ddP+xhq2FdRepCys=; 
+ b=gdNJjRmLVi8ErFl1FNvV1xub5w9HmJuJMtaVZK5Yr811gKDDzS7sL5TMlm0XxOU/4tUNALdmb/7uA8Rs4OsGvywjQGTKXH+NkU/RyApAon/7qKSj2INVTkaVVlOxBuafzD7ubMIAz8ciWFEgpQFhdd/ELXF5elpXxYHU/gp7Pzg=;
+X-UUID: 88ea9678f4ab4eb883b45d0b20f3d044-20200310
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <andrew-sh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1326411610; Mon, 09 Mar 2020 23:50:01 -0800
+ with ESMTP id 1674737675; Tue, 10 Mar 2020 00:11:09 -0800
 Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 10 Mar 2020 00:40:04 -0700
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 10 Mar 2020 01:11:06 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 10 Mar 2020 15:37:44 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Tue, 10 Mar 2020 15:40:05 +0800
-From: <light.hsieh@mediatek.com>
-To: <linus.walleij@linaro.org>
-Subject: [PATCH v4 2/2] pinctrl: make MediaTek MT6765 pinctrl ready for
- buidling loadable module
-Date: Tue, 10 Mar 2020 15:39:46 +0800
-Message-ID: <1583825986-8189-3-git-send-email-light.hsieh@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1583825986-8189-1-git-send-email-light.hsieh@mediatek.com>
-References: <1583825986-8189-1-git-send-email-light.hsieh@mediatek.com>
+ 15.0.1395.4; Tue, 10 Mar 2020 16:08:57 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Tue, 10 Mar 2020 16:11:18 +0800
+Message-ID: <1583827865.4840.1.camel@mtksdaap41>
+Subject: Re: [v5, PATCH 4/5] cpufreq: mediatek: add opp notification for SVS
+ support
+From: andrew-sh.cheng <andrew-sh.cheng@mediatek.com>
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Date: Tue, 10 Mar 2020 16:11:05 +0800
+In-Reply-To: <20191210064319.f4ksrxozp3gv4xry@vireshk-i7>
+References: <1574769046-28449-1-git-send-email-andrew-sh.cheng@mediatek.com>
+ <1574769046-28449-5-git-send-email-andrew-sh.cheng@mediatek.com>
+ <20191127083619.etocnhpyyut3hzwq@vireshk-i7>
+ <1575874588.13494.4.camel@mtksdaap41>
+ <20191210064319.f4ksrxozp3gv4xry@vireshk-i7>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200310_005004_972610_70FED37E 
-X-CRM114-Status: UNSURE (   8.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200310_011117_694249_DED97E6D 
+X-CRM114-Status: GOOD (  16.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,59 +87,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: sean.wang@kernel.org, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, Light Hsieh <light.hsieh@mediatek.com>,
- linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Chanwoo
+ Choi <cw00.choi@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Fan Chen =?UTF-8?Q?=28=E9=99=B3=E5=87=A1=29?= <fan.chen@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Light Hsieh <light.hsieh@mediatek.com>
+On Tue, 2019-12-10 at 14:43 +0800, Viresh Kumar wrote:
+> On 09-12-19, 14:56, andrew-sh.cheng wrote:
+> > On Wed, 2019-11-27 at 14:06 +0530, Viresh Kumar wrote:
+> > > On 26-11-19, 19:50, Andrew-sh.Cheng wrote:
+> > > > +		if (!IS_ERR(opp_item))
+> > > > +			dev_pm_opp_put(opp_item);
+> > > > +		else
+> > > > +			freq = 0;
+> > > > +
+> > > 
+> > > What is the purpose of the above code ?
+> > When dev_pm_opp_find_freq_ceil() doesn't find matching opp item, freq
+> > value won't be set.
+> > Set it as 0 for below checking
+> > > 
+> > > > +		/* case of current opp is disabled */
+> > > > +		if (freq == 0 || freq != info->opp_freq) {
+> > > > +			// find an enable opp item
+> > > > +			freq = 1;
+> > > > +			opp_item = dev_pm_opp_find_freq_ceil(info->cpu_dev,
+> > > > +							     &freq);
+> > > > +			if (!IS_ERR(opp_item)) {
+> > > > +				dev_pm_opp_put(opp_item);
+> > > > +				policy = cpufreq_cpu_get(info->opp_cpu);
+> > > > +				if (policy) {
+> > > > +					cpufreq_driver_target(policy,
+> > > > +						freq / 1000,
+> > > > +						CPUFREQ_RELATION_L);
+> > > 
+> > > Why don't you simply call this instead of all the code in the else
+> > > block ?
+> > These else code is used to check "current opp item is disabled or not".
+> > If not, do nothing.
+> > If current opp item is disabled, need to find an not-disabled opp item,
+> > and set frequency to it.
+> 
+> Right. So this notifier helper of yours receive the opp which is getting
+> disabled, why don't you compare its frequency directly to see if the current OPP
+> is getting disabled ?
+Sorry to overlook your question.
+This is because when the opp is disabled,
+we cannot use dev_pm_opp_get_freq() to get frequency of that opp.
+There is a check:
+	if (IS_ERR_OR_NULL(opp) || !opp->available) {
+		pr_err("%s: Invalid parameters\n", __func__);
+		return 0;
 
-This patch make pinctrl-mt6765 ready for building as loadable module.
+> 
 
-Signed-off-by: Light Hsieh <light.hsieh@mediatek.com>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
----
- drivers/pinctrl/mediatek/Kconfig          | 2 +-
- drivers/pinctrl/mediatek/pinctrl-mt6765.c | 4 ++++
- 2 files changed, 5 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-index 4cd1109..c645fdb 100644
---- a/drivers/pinctrl/mediatek/Kconfig
-+++ b/drivers/pinctrl/mediatek/Kconfig
-@@ -89,7 +89,7 @@ config PINCTRL_MT2712
- 	select PINCTRL_MTK
- 
- config PINCTRL_MT6765
--	bool "Mediatek MT6765 pin control"
-+	tristate "Mediatek MT6765 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
- 	default ARM64 && ARCH_MEDIATEK
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6765.c b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
-index 905dae8c..2c59d39 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt6765.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
-@@ -6,6 +6,7 @@
-  *
-  */
- 
-+#include <linux/module.h>
- #include "pinctrl-mtk-mt6765.h"
- #include "pinctrl-paris.h"
- 
-@@ -1103,3 +1104,6 @@ static int __init mt6765_pinctrl_init(void)
- 	return platform_driver_register(&mt6765_pinctrl_driver);
- }
- arch_initcall(mt6765_pinctrl_init);
-+
-+MODULE_LICENSE("GPL v2");
-+MODULE_DESCRIPTION("MediaTek MT6765 Pinctrl Driver");
--- 
-1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
