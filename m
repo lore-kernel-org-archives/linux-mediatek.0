@@ -2,76 +2,93 @@ Return-Path: <SRS0=h1kY=43=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ED9B8C10F25
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 02:37:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6EB54C10DCE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 04:18:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C1AD424649
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 02:37:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 42A542467C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 04:18:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OdqlULay";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="G4KZOYec"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C1AD424649
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CUUM1bTw";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="EtBK/yGy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 42A542467C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IvWFKbNSkOovS29wOXlR0/Zzu8CKEOag3Uv3HGKH5XM=; b=OdqlULayj/iIwm
-	6KUO/5tHhOEN64MxZQXYWg6zo/waOdCGDs0Rd/rO49xDPK7ktjQ2gw5Rk/h3/Yq31hZjktp9PbacR
-	nDAuzIilfJWrOvnRPr4LHBKnUwek7O4vPU1NN2bCVIEffDrsKogaBXfipXKeEndmlbZ9NJubOnQjO
-	Tg29w2f+DA3zE6B2f2CXYTNe5DpstdeF99klALIAt4S46dui4yOdNiXdw58N1Gk7i5b6XfoOTDjSj
-	8dJsQ685CEkSSUj08OPafeQKG220YYLady/kKYznPSUccEIhg7GXkV7v7sLT4zIIqVJpQStT2vryt
-	wIavs1ZfYhoCQ0pYhQyg==;
+	List-Owner; bh=medBYZr7LFVAWMa75eV4k9Ad8JcZRTs7C1Ia2Z7itDc=; b=CUUM1bTwnA6P1c
+	SpxrbbW9x00eBpLSmOGEn6HKDdQVYZ5nEBnlihwWCPasEONqV/41tXSgRmFCaxaJK9Agr5EUTiOF7
+	VUTJsPr4Rv6Z8UasJNju2cyChlwpkZ2GB1Q4ldmz7L6q7eCAbJCC1q8a3gnLN9w0/T9j3iPYsudRc
+	jv8NOwGOiUrbRLmsd4Yetj98wVBrWOav4rtaKwzVi1PFIDXWVXV3do8f2ttnrbrwM0e6539PaTs6P
+	/Bq/6jP8v3Cr1Z5fsx3UTgUqawXRLz1zZ3nEx66pvWA6JMmKVrDJpryYI+yjLgCx9nxLt4gzMJz62
+	uD/UheGZf+XHSeVUbuTQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBUm4-0003YY-Tc; Tue, 10 Mar 2020 02:37:40 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jBWL2-0003ei-Uq; Tue, 10 Mar 2020 04:17:52 +0000
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBUm1-0003Xm-CS; Tue, 10 Mar 2020 02:37:38 +0000
-X-UUID: 9b391288617f47d1b1a7a568dfb0cd4f-20200309
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=hLjlW65hQN7C6KTZ0z09rF1NUbZS3I5Rt9C9E6AC1dM=; 
- b=G4KZOYec4ghBtwfsRhvrArSWXtZAwYe4JjBpGHXb9+7rCrAdo9glAWfc+rs29ZiVD/VFgnBHP5+ZyGA5D5YH/qzIflNEDnMJiZqom53+YHdzLinubIkWdcK9EtM/HqZHjASUg19eGgFkpWhXt+M8gLjkwl1HyaMN2aF1avXJQpA=;
-X-UUID: 9b391288617f47d1b1a7a568dfb0cd4f-20200309
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1070353517; Mon, 09 Mar 2020 18:37:28 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 9 Mar 2020 19:37:54 -0700
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 10 Mar 2020 10:36:30 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 10 Mar 2020 10:36:31 +0800
-Message-ID: <1583807844.30143.0.camel@mtksdaap41>
-Subject: Re: [PATCH 10/22] drm/mediatek: Use simple encoder
-From: CK Hu <ck.hu@mediatek.com>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Date: Tue, 10 Mar 2020 10:37:24 +0800
-In-Reply-To: <20200305155950.2705-11-tzimmermann@suse.de>
-References: <20200305155950.2705-1-tzimmermann@suse.de>
- <20200305155950.2705-11-tzimmermann@suse.de>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jBWKz-0003dv-BL
+ for linux-mediatek@lists.infradead.org; Tue, 10 Mar 2020 04:17:51 +0000
+Received: by mail-ed1-x544.google.com with SMTP id a13so14678988edh.3
+ for <linux-mediatek@lists.infradead.org>; Mon, 09 Mar 2020 21:17:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ZHOqz7uUgecqsn6sFVAwqyMqbdPI7yrYTT8yXex9t5w=;
+ b=EtBK/yGyHQCBjHloNYBLMIse3X2DZZtmX7NQ+RDmqbfpLe7styYnpKwv5P43Fnerez
+ FSSAJ9KpQlJhVnCjfzMbK62QvbmoPDLev+QV2NkclTu7VFPRZ//6Ty7RQb+Cg14cV5s+
+ tS4/XUpgLz89SaCFZxUs2pWldTANuYRJN3d3c=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ZHOqz7uUgecqsn6sFVAwqyMqbdPI7yrYTT8yXex9t5w=;
+ b=LEZa743qkPOmZQ7OZqmbmzSlhofkQ4Gtq2IQ6BcgMcDaktjjkCGOwmBJwh7ACWsAPm
+ vEAkF7rJmysmR3QdODQlTJ9WSjiM93rSBc4EKjFdgsWbf6WSxNJXWuzs/VEowDPA9Nxh
+ +XJJKXnPKk1aPXyepIFmrwDexThplzWnkD56NpI8Y5QMaXiMWqBdZwqgxDHXquQKdv2i
+ ZuSfZOdq21FcxLLloeNny59s3wuJSDNZKR8YLkgbIp97rYp6t5TebNbPqo5OdiPrGfrm
+ 8crnGBTKgLciiGCcEjxKnTK7DuBdcFCg/JBPNEHu209cM0fjbf0bEKW40nIscrHeTrQy
+ 5zkA==
+X-Gm-Message-State: ANhLgQ2EpSsYuFAPWwPmvXG3J+M3m2L0XcHNeK2VTIvR8Ftonf7vuqq4
+ +WBFIXyQ/zgB0Nyg7EJiAU7SbZ+xNFKL7Q==
+X-Google-Smtp-Source: ADFU+vskyI9Q6vKvBcxirKEEsXOvPltMOCxUTvE8qZaGbvFWhTb1fxeWOi3AAqLy3v/495cTvp+gHA==
+X-Received: by 2002:a05:6402:204b:: with SMTP id
+ bc11mr6594779edb.115.1583813865936; 
+ Mon, 09 Mar 2020 21:17:45 -0700 (PDT)
+Received: from mail-wr1-f50.google.com (mail-wr1-f50.google.com.
+ [209.85.221.50])
+ by smtp.gmail.com with ESMTPSA id b15sm990312edn.69.2020.03.09.21.17.44
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 09 Mar 2020 21:17:44 -0700 (PDT)
+Received: by mail-wr1-f50.google.com with SMTP id a25so10244654wrd.0
+ for <linux-mediatek@lists.infradead.org>; Mon, 09 Mar 2020 21:17:44 -0700 (PDT)
+X-Received: by 2002:adf:e94d:: with SMTP id m13mr23865947wrn.415.1583813863598; 
+ Mon, 09 Mar 2020 21:17:43 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20191017084033.28299-1-xia.jiang@mediatek.com>
+ <20191017084033.28299-6-xia.jiang@mediatek.com>
+ <20191023103945.GA41089@chromium.org>
+ <1575626384.17879.81.camel@mhfsdcap03>
+In-Reply-To: <1575626384.17879.81.camel@mhfsdcap03>
+From: Tomasz Figa <tfiga@chromium.org>
+Date: Tue, 10 Mar 2020 13:17:31 +0900
+X-Gmail-Original-Message-ID: <CAAFQd5A8XAT-7kZgaKktbBk1ogdfY3LRsK0xapHps4VqCQ_BZA@mail.gmail.com>
+Message-ID: <CAAFQd5A8XAT-7kZgaKktbBk1ogdfY3LRsK0xapHps4VqCQ_BZA@mail.gmail.com>
+Subject: Re: [PATCH v4 5/5] media: platform: Add jpeg dec/enc feature
+To: Xia Jiang <xia.jiang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200309_193737_443045_982F6089 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20200309_211749_421710_83D2BE55 
+X-CRM114-Status: GOOD (  43.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,124 +100,432 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: hamohammed.sa@gmail.com, alexandre.belloni@bootlin.com, heiko@sntech.de,
- airlied@linux.ie, stefan@agner.ch, linux@armlinux.org.uk, paul@crapouillou.net,
- eric@anholt.net, thierry.reding@gmail.com, krzk@kernel.org, sam@ravnborg.org,
- sebastian.reichel@collabora.com, linux-samsung-soc@vger.kernel.org,
- jy0922.shim@samsung.com, hjc@rock-chips.com, festevam@gmail.com,
- abrodkin@synopsys.com, kong.kongxinwei@hisilicon.com,
- patrik.r.jakobsson@gmail.com, jonathanh@nvidia.com, xinliang.liu@linaro.org,
- ludovic.desroches@microchip.com, kgene@kernel.org, linux-imx@nxp.com,
- linux-rockchip@lists.infradead.org, virtualization@lists.linux-foundation.org,
- linux-tegra@vger.kernel.org, p.zabel@pengutronix.de, puck.chen@hisilicon.com,
- s.hauer@pengutronix.de, alison.wang@nxp.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, inki.dae@samsung.com, john.stultz@linaro.org,
- jsarha@ti.com, matthias.bgg@gmail.com, wens@csie.org, kernel@pengutronix.de,
- jernej.skrabec@siol.net, kraxel@redhat.com, rodrigosiqueiramelo@gmail.com,
- tomi.valkeinen@ti.com, bbrezillon@kernel.org, jingoohan1@gmail.com,
- dri-devel@lists.freedesktop.org, sw0312.kim@samsung.com,
- nicolas.ferre@microchip.com, kyungmin.park@samsung.com,
- kieran.bingham+renesas@ideasonboard.com, daniel@ffwll.ch,
- zourongrong@gmail.com, linux-mediatek@lists.infradead.org, shawnguo@kernel.org,
- laurent.pinchart@ideasonboard.com
+Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ Rick Chang <Rick.Chang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Thomas:
+Hi Xia,
 
-On Thu, 2020-03-05 at 16:59 +0100, Thomas Zimmermann wrote:
-> The mediatak driver uses empty implementations for its encoders. Replace
-> the code with the generic simple encoder.
-> 
+On Fri, Dec 6, 2019 at 6:59 PM Xia Jiang <xia.jiang@mediatek.com> wrote:
+>
+> On Wed, 2019-10-23 at 18:39 +0800, Tomasz Figa wrote:
+> > Hi Xia,
+> >
+> > On Thu, Oct 17, 2019 at 04:40:38PM +0800, Xia Jiang wrote:
+> > > Add mtk jpeg encode v4l2 driver based on jpeg decode, because that jpeg
+> > > decode and encode have great similarities with function operation.
+> > >
+> > > Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
+> > > ---
+> > > v4: split mtk_jpeg_try_fmt_mplane() to two functions, one for encoder,
+> > >     one for decoder.
+> > >     split mtk_jpeg_set_default_params() to two functions, one for
+> > >     encoder, one for decoder.
+> > >     add cropping support for encoder in g/s_selection ioctls.
+> > >     change exif mode support by using V4L2_JPEG_ACTIVE_MARKER_APP1.
+> > >     change MTK_JPEG_MAX_WIDTH/MTK_JPEG_MAX_HEIGH from 8192 to 65535 by
+> > >     specification.
+> > >     move width shifting operation behind aligning operation in
+> > >     mtk_jpeg_try_enc_fmt_mplane() for bug fix.
+> > >     fix user abuseing data_offset issue for DMABUF in
+> > >     mtk_jpeg_set_enc_src().
+> > >     fix kbuild warings: change MTK_JPEG_MIN_HEIGHT/MTK_JPEG_MAX_HEIGHT
+> > >                         and MTK_JPEG_MIN_WIDTH/MTK_JPEG_MAX_WIDTH from
+> > >                         'int' type to 'unsigned int' type.
+> > >                         fix msleadingly indented of 'else'.
+> > >
+> > > v3: delete Change-Id.
+> > >     only test once handler->error after the last v4l2_ctrl_new_std().
+> > >     seperate changes of v4l2-ctrls.c and v4l2-controls.h to new patch.
+> > >
+> > > v2: fix compliance test fail, check created buffer size in driver.
+> > > ---
+> > >  drivers/media/platform/mtk-jpeg/Makefile      |   5 +-
+> > >  .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 731 +++++++++++++++---
+> > >  .../media/platform/mtk-jpeg/mtk_jpeg_core.h   | 123 ++-
+> > >  .../media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h |   7 +-
+> > >  .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c | 175 +++++
+> > >  .../media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h |  60 ++
+> > >  .../platform/mtk-jpeg/mtk_jpeg_enc_reg.h      |  49 ++
+> > >  7 files changed, 1004 insertions(+), 146 deletions(-)
+> > >  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+> > >  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.h
+> > >  create mode 100644 drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_reg.h
+> > >
+> >
+> > First of all, thanks for the patch!
+> >
+> > Please check my comments below.
+> >
+> > My general feeling about this code is that the encoder hardware block is
+> > completely orthogonal from the decoder block and there is very little code
+> > reuse from the original decoder driver.
+> >
+> > Moreover, a lot of existing code now needs if (decoder) { ... } else {... }
+> > segments, which complicates the code.
+> >
+> > Would it perhaps make sense to instead create a separate mtk-jpeg-enc
+> > driver?
+> >
+> > It would also give us a fresh start in terms of code quality, as the
+> > existing mtk-jpeg driver has a lot of quality issues unfortunately. (Some
+> > of my comments to this patch actually relate to the issues with the
+> > original code, not introduced by this patch, but we need to fix them if
+> > changing this driver already.)
+> >
+> Dear Tomasz,
+>
+> I haved fixed the driver by following your advice in general.
+>
+> Please check my reply below.
 
-Acked-by: CK Hu <ck.hu@mediatek.com>
+Sorry, I missed this message originally. Replied below.
 
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> ---
->  drivers/gpu/drm/mediatek/mtk_dpi.c | 14 +++-----------
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 14 +++-----------
->  2 files changed, 6 insertions(+), 22 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> index 14fbe1c09ce9..9c90c58e5acd 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -20,6 +20,7 @@
->  #include <drm/drm_bridge.h>
->  #include <drm/drm_crtc.h>
->  #include <drm/drm_of.h>
-> +#include <drm/drm_simple_kms_helper.h>
->  
->  #include "mtk_dpi_regs.h"
->  #include "mtk_drm_ddp_comp.h"
-> @@ -509,15 +510,6 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
->  	return 0;
->  }
->  
-> -static void mtk_dpi_encoder_destroy(struct drm_encoder *encoder)
-> -{
-> -	drm_encoder_cleanup(encoder);
-> -}
-> -
-> -static const struct drm_encoder_funcs mtk_dpi_encoder_funcs = {
-> -	.destroy = mtk_dpi_encoder_destroy,
-> -};
-> -
->  static bool mtk_dpi_encoder_mode_fixup(struct drm_encoder *encoder,
->  				       const struct drm_display_mode *mode,
->  				       struct drm_display_mode *adjusted_mode)
-> @@ -596,8 +588,8 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
->  		return ret;
->  	}
->  
-> -	ret = drm_encoder_init(drm_dev, &dpi->encoder, &mtk_dpi_encoder_funcs,
-> -			       DRM_MODE_ENCODER_TMDS, NULL);
-> +	ret = drm_simple_encoder_init(drm_dev, &dpi->encoder,
-> +				      DRM_MODE_ENCODER_TMDS);
->  	if (ret) {
->  		dev_err(dev, "Failed to initialize decoder: %d\n", ret);
->  		goto err_unregister;
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index 0ede69830a9d..a9a25087112f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -22,6 +22,7 @@
->  #include <drm/drm_panel.h>
->  #include <drm/drm_print.h>
->  #include <drm/drm_probe_helper.h>
-> +#include <drm/drm_simple_kms_helper.h>
->  
->  #include "mtk_drm_ddp_comp.h"
->  
-> @@ -787,15 +788,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
->  	dsi->enabled = false;
->  }
->  
-> -static void mtk_dsi_encoder_destroy(struct drm_encoder *encoder)
-> -{
-> -	drm_encoder_cleanup(encoder);
-> -}
-> -
-> -static const struct drm_encoder_funcs mtk_dsi_encoder_funcs = {
-> -	.destroy = mtk_dsi_encoder_destroy,
-> -};
-> -
->  static bool mtk_dsi_encoder_mode_fixup(struct drm_encoder *encoder,
->  				       const struct drm_display_mode *mode,
->  				       struct drm_display_mode *adjusted_mode)
-> @@ -888,8 +880,8 @@ static int mtk_dsi_create_conn_enc(struct drm_device *drm, struct mtk_dsi *dsi)
->  {
->  	int ret;
->  
-> -	ret = drm_encoder_init(drm, &dsi->encoder, &mtk_dsi_encoder_funcs,
-> -			       DRM_MODE_ENCODER_DSI, NULL);
-> +	ret = drm_simple_encoder_init(drm, &dsi->encoder,
-> +				      DRM_MODE_ENCODER_DSI);
->  	if (ret) {
->  		DRM_ERROR("Failed to encoder init to drm\n");
->  		return ret;
+[snip]
+> > > +   }
+> > > +   param->enc_w = q_data_src->w;
+> > > +   param->enc_h = q_data_src->h;
+> > > +
+> > > +   if (jpeg_params->enc_quality >= 97)
+> > > +           param->enc_quality = JPEG_ENCODE_QUALITY_Q97;
+> > > +   else if (jpeg_params->enc_quality >= 95)
+> > > +           param->enc_quality = JPEG_ENCODE_QUALITY_Q95;
+> >
+> > I'm wondering if the application requests 96, it doesn't expect the quality to
+> > be _at_least_ 96.
+> our jpeg enc hw do not support quality 96,only support 15 kinds of quant
+> table listed here, so if the application requests 96,a nearest and
+> highest quality will be given.
+> >
+
+Just to clarify my comment, if I remember correctly, the JPEG standard
+defines the 100 levels, so if the application requests level 96, but
+the hardware provides only 95 and 97, the quality should be favored
+and 97 used.
+
+[snip]
+> >
+> > > +   param->mem_stride = mtk_jpeg_align(width_even, (is_420 ? 16 : 32));
+> >
+> > What's the difference between img_stride and mem_stride?
+>
+> In theory, mem_stride need >= img_stride,but we use the same is ok
+> >
+> > > +   param->total_encdu =
+> > > +           ((padding_width >> 4) * (padding_height >> (is_420 ? 4 : 3)) *
+> > > +           (is_420 ? 6 : 4)) - 1;
+> >
+> > The comment above the struct says this is the total number of 8x8 blocks.
+> > Why would it depend on whether the format is YUV 4:2:0? Since we should
+> > have already aligned the width and height in try_fmt, this should be as
+> > simple as (width / 8) * (height / 8).
+> becuase the image size is w*h*1.5 for yuv420 format, but w*h*2 for
+> yuv422,so for yuv420: w_16/8*h_16/8*1.5-1(because the hw will start at
+> number 0), yuv422: w_32/8*h_8/8*2-1,this number is equal to my code.
+
+Do you mean that this also includes the Cb and Cr 8x8 blocks separately?
+If so, could it be rewritten as below to improve the readability?
+
+luma_blocks = width / 8 * height / 8;
+if (is_420)
+    chroma_blocks = luma_blocks / 4;
+else
+    chroma_blocks = luma_blocks / 2;
+param->last_encdu = luma_blocks + 2 * chroma_blocks - 1;
+
+Also, does it mean that this number is actually the index of the last
+block, not the total number of blocks?
+If so, the field should be probably renamed to last_encdu and the
+description updated accordingly.
+
+[snip]
+> > Could we instead check the buffer address alignment in .buf_prepare and fail if
+> > it's not big enough?
+> >
+> > > +   bs->dma_addr_offset = p->enable_exif ? MTK_JPEG_DEFAULT_EXIF_SIZE : 0;
+> > > +   bs->dma_addr_offsetmask = bs->dma_addr & JPEG_ENC_DST_ADDR_OFFSET_MASK;
+> >
+> > What is the meaning of this offset mask?
+> our actual destination address = destination address + offset address+
+> destination address offset mask.The mask 0:No offset,1~15:offset byte
+> from the 16-byte aligned
+
+So we have dma_addr, dma_addr_offset and dma_addr_offsetmask. Why do
+we need dma_addr_offset? Would the same operation be achieved with the
+code below?
+
+dma_addr = vb2_dma_contig_plane_dma_addr(dst_buf, 0);
+if (p->enable_exif)
+    dma_addr += MTK_JPEG_DEFAULT_EXIF_SIZE;
+bs->dma_addr = dma_addr & ~JPEG_ENC_DST_ADDR_OFFSET_MASK;
+bs->dma_addr_offset = 0;
+bs->dma_addr_offsetmask = dma_addr & JPEG_ENC_DST_ADDR_OFFSET_MASK;
+
+Or does the hardware write something directly at bs->dma_addr (some
+tags?) and then the encoded image at the final desintation address?
+
+[snip]
+> > > -static void mtk_jpeg_set_default_params(struct mtk_jpeg_ctx *ctx)
+> > > +static void mtk_jpeg_set_enc_default_params(struct mtk_jpeg_ctx *ctx)
+> > > +{
+> > > +   struct mtk_jpeg_q_data *q = &ctx->out_q;
+> > > +   int align_w, align_h;
+> > > +
+> > > +   ctx->fh.ctrl_handler = &ctx->ctrl_hdl;
+> > > +
+> > > +   ctx->colorspace = V4L2_COLORSPACE_JPEG,
+> > > +   ctx->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
+> > > +   ctx->quantization = V4L2_QUANTIZATION_DEFAULT;
+> > > +   ctx->xfer_func = V4L2_XFER_FUNC_DEFAULT;
+> > > +
+> > > +   q->w = MTK_JPEG_MIN_WIDTH;
+> > > +   q->h = MTK_JPEG_MIN_HEIGHT;
+> > > +
+> > > +   q->fmt = mtk_jpeg_find_format(ctx, V4L2_PIX_FMT_YUYV,
+> > > +                                 MTK_JPEG_FMT_TYPE_OUTPUT);
+> > > +
+> > > +   align_w = q->w;
+> > > +   align_h = q->h;
+> > > +   align_w = round_up(align_w, 2);
+> > > +   v4l_bound_align_image(&align_w, MTK_JPEG_MIN_WIDTH, MTK_JPEG_MAX_WIDTH,
+> > > +                         5, &align_h, MTK_JPEG_MIN_HEIGHT,
+> > > +                         MTK_JPEG_MAX_HEIGHT, 3, 0);
+> > > +   align_w = align_w << 1;
+> > > +
+> > > +   if (align_w < MTK_JPEG_MIN_WIDTH &&
+> > > +       (align_w + 32) <= MTK_JPEG_MAX_WIDTH)
+> > > +           align_w += 32;
+> > > +   if (align_h < MTK_JPEG_MIN_HEIGHT &&
+> > > +       (align_h + 8) <= MTK_JPEG_MAX_HEIGHT)
+> > > +           align_h += 8;
+> > > +
+> > > +   q->sizeimage[0] = align_w * align_h;
+> > > +   q->bytesperline[0] = align_w;
+> > > +
+> > > +   q = &ctx->cap_q;
+> > > +   q->w = MTK_JPEG_MIN_WIDTH;
+> > > +   q->h = MTK_JPEG_MIN_HEIGHT;
+> > > +   q->fmt = mtk_jpeg_find_format(ctx, V4L2_PIX_FMT_JPEG,
+> > > +                                 MTK_JPEG_FMT_TYPE_CAPTURE);
+> > > +   q->bytesperline[0] = 0;
+> > > +   q->sizeimage[0] = MTK_JPEG_DEFAULT_SIZEIMAGE;
+> > > +}
+> >
+> > Could we just create an arbitrary v4l2_pix_format_mplane struct and call
+> > s_fmt instead? In general, all of the constant values and alignments should
+> > be already ensured by try_fmt, so this function should be redundant.
+> if cancel this function,the v4l2-compliance test will fail
+
+Sorry, I guess my comment was not clear. We need to initialize the
+default parameters. However, the contents of this function seem to
+heavily duplicate with the code that should be in try_fmt, so could we
+just call try_fmt from here instead of repeating the calculations?
+
+[snip]
+> > > -   ret = devm_request_irq(&pdev->dev, dec_irq, mtk_jpeg_dec_irq, 0,
+> > > +   ret = devm_request_irq(&pdev->dev, jpeg_irq, mtk_jpeg_irq, 0,
+> > >                            pdev->name, jpeg);
+> > >     if (ret) {
+> > > -           dev_err(&pdev->dev, "Failed to request dec_irq %d (%d)\n",
+> > > -                   dec_irq, ret);
+> > > -           ret = -EINVAL;
+> >
+> > This removal of ret assignment looks like a separate fix that should be
+> > done in its own patch.
+> this change is because of the adding of jpeg enc driver,not the orignal
+> driver' question, should I move it to the orignal driver's patch?
+
+Yes, please.
+
+> >
+> > > +           dev_err(&pdev->dev, "Failed to request jpeg_irq %d (%d)\n",
+> > > +                   jpeg_irq, ret);
+> > >             goto err_req_irq;
+> > >     }
+> > >
+> > > @@ -1140,33 +1602,35 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
+> > >             goto err_m2m_init;
+> > >     }
+> > >
+> > > -   jpeg->dec_vdev = video_device_alloc();
+> > > -   if (!jpeg->dec_vdev) {
+> > > +   jpeg->vfd_jpeg = video_device_alloc();
+> > > +   if (!jpeg->vfd_jpeg) {
+> > >             ret = -ENOMEM;
+> > > -           goto err_dec_vdev_alloc;
+> > > +           goto err_vfd_jpeg_alloc;
+> > >     }
+> > > -   snprintf(jpeg->dec_vdev->name, sizeof(jpeg->dec_vdev->name),
+> > > -            "%s-dec", MTK_JPEG_NAME);
+> > > -   jpeg->dec_vdev->fops = &mtk_jpeg_fops;
+> > > -   jpeg->dec_vdev->ioctl_ops = &mtk_jpeg_ioctl_ops;
+> > > -   jpeg->dec_vdev->minor = -1;
+> > > -   jpeg->dec_vdev->release = video_device_release;
+> > > -   jpeg->dec_vdev->lock = &jpeg->lock;
+> > > -   jpeg->dec_vdev->v4l2_dev = &jpeg->v4l2_dev;
+> > > -   jpeg->dec_vdev->vfl_dir = VFL_DIR_M2M;
+> > > -   jpeg->dec_vdev->device_caps = V4L2_CAP_STREAMING |
+> > > +   snprintf(jpeg->vfd_jpeg->name, sizeof(jpeg->vfd_jpeg->name),
+> > > +            "%s-%s", MTK_JPEG_NAME,
+> > > +            jpeg->mode == MTK_JPEG_ENC ? "enc" : "dec");
+> > > +   jpeg->vfd_jpeg->fops = &mtk_jpeg_fops;
+> > > +   jpeg->vfd_jpeg->ioctl_ops = &mtk_jpeg_ioctl_ops;
+> > > +   jpeg->vfd_jpeg->minor = -1;
+> > > +   jpeg->vfd_jpeg->release = video_device_release;
+> > > +   jpeg->vfd_jpeg->lock = &jpeg->lock;
+> > > +   jpeg->vfd_jpeg->v4l2_dev = &jpeg->v4l2_dev;
+> > > +   jpeg->vfd_jpeg->vfl_dir = VFL_DIR_M2M;
+> > > +   jpeg->vfd_jpeg->device_caps = V4L2_CAP_STREAMING |
+> > >                                   V4L2_CAP_VIDEO_M2M_MPLANE;
+> > >
+> > > -   ret = video_register_device(jpeg->dec_vdev, VFL_TYPE_GRABBER, 3);
+> > > +   ret = video_register_device(jpeg->vfd_jpeg, VFL_TYPE_GRABBER, -1);
+> >
+> > The change from 3 to -1 also looks like something for a separate patch.
+> same as the above reply
+
+Ditto.
+
+[snip]
+> > > @@ -17,23 +18,77 @@
+> > >
+> > >  #define MTK_JPEG_FMT_FLAG_DEC_OUTPUT       BIT(0)
+> > >  #define MTK_JPEG_FMT_FLAG_DEC_CAPTURE      BIT(1)
+> > > +#define MTK_JPEG_FMT_FLAG_ENC_OUTPUT       BIT(2)
+> > > +#define MTK_JPEG_FMT_FLAG_ENC_CAPTURE      BIT(3)
+> > >
+> > >  #define MTK_JPEG_FMT_TYPE_OUTPUT   1
+> > >  #define MTK_JPEG_FMT_TYPE_CAPTURE  2
+> > >
+> > > -#define MTK_JPEG_MIN_WIDTH 32
+> > > -#define MTK_JPEG_MIN_HEIGHT        32
+> > > -#define MTK_JPEG_MAX_WIDTH 8192
+> > > -#define MTK_JPEG_MAX_HEIGHT        8192
+> > > +#define MTK_JPEG_MIN_WIDTH 32U
+> > > +#define MTK_JPEG_MIN_HEIGHT        32U
+> > > +#define MTK_JPEG_MAX_WIDTH 65535U
+> > > +#define MTK_JPEG_MAX_HEIGHT        65535U
+> >
+> > Why is it okay to change this from 8192 to 65535?
+> our hw support max width/height to 65535
+
+Does this also apply to the JPEG decoder on MT8173 for which the
+driver was developed?
+
+[snip]
+> > > +/**
+> > > + * jpeg_enc_param - parameters of jpeg encode control
+> > > + * @enable_exif:   EXIF enable for jpeg encode mode
+> > > + * @enc_quality:   destination image quality in encode mode
+> > > + * @restart_interval:      JPEG restart interval for JPEG encoding
+> > > + */
+> > > +struct jpeg_enc_param {
+> > > +   u32 enable_exif;
+> >
+> > Shouldn't this be a bool?
+> this value is seted by V4L2_CID_JPEG_ACTIVE_MARKER control,its' value is
+> V4L2_JPEG_ACTIVE_MARKER_APP1(1<<1),not a bool
+
+In this case, please call it active_marker and also update the comment
+above accordingly.
+
+Still, if this driver only cares about V4L2_JPEG_ACTIVE_MARKER_APP1,
+bool enable_exif, assigned  by the code appropriately, would make more
+sense.
+
+[snip]
+> > > +
+> > > +static void mtk_jpeg_enc_set_encFormat(void __iomem *base, u32 enc_format)
+> > > +{
+> > > +   u32 value;
+> > > +
+> > > +   value = readl(base + JPGENC_CTRL);
+> > > +   value &= ~JPEG_ENC_CTRL_YUV_BIT;
+> > > +   value |= JPGENC_FORMAT(enc_format);
+> > > +   writel(value, base + JPGENC_CTRL);
+> >
+> > The model I suggested above also avoids this kind of read modify write
+> > operations, which just unnecessarily add synchronous MMIO round trips, which
+> > means more CPU overhead.
+> >
+> > Given that the full state is always known by the driver, it can just write
+> > all the register values without the need to read them back.
+> the JPGENC_CTRL register has 32 bits,different bits have different
+> meanings. encformat is bit 3~4,so we need ready before write to
+> guarantee other bits' value not be changed
+
+I explained this more in my review comments to the latest revision,
+but this is just solving a problem that is introduced by the design of
+the code. If the code was designed so that 1 register is only changed
+in 1 function, there would be no need to read back the registers,
+because the function would initialize the full register at a time.
+That's what most of the other drivers do.
+
+[snip]
+> > > +enum {
+> > > +   MTK_JPEG_ENC_RESULT_DONE                = 0,
+> > > +   MTK_JPEG_ENC_RESULT_STALL,
+> > > +   MTK_JPEG_ENC_RESULT_VCODEC_IRQ,
+> > > +   MTK_JPEG_ENC_RESULT_ERROR_UNKNOWN
+> > > +};
+> >
+> > Do we need these intermediate error codes? Could we just use errno values
+> > instead?
+> we can just use errno values,but our interrupt status have three
+> state,done/stall,vcodec irq,maybe listing them here makes more clarity
+
+I suggested another approach in my comments for the latest revision.
+Generally the interrupt handler is the only place where this error
+handling is done, so the intermediate error codes shouldn't be
+necessary, as the interrupt handler would directly signal any issues
+to V4L2.
+
+[snip]
+> > > +#define JPGENC_FORMAT(x)           (((x) & 3) << 3)
+> > > +#define JPGENC_WIDTH_HEIGHT(w, h)  (((w) << 16) | (h))
+> > > +#define JPGENC_INIT_OFFSET(x)              ((x) & (~0xF))
+> > > +#define JPGENC_OFFSET_MASK(x)              ((x) & 0xF)
+> > > +#define JPGENC_DST_ADDR(x)         ((x) & (~0xF))
+> > > +#define JPGENC_STALL_ADDR(x, y)            (((x) + (y)) & (~0xF))
+> > > +#define JPGENC_QUALITY_MASK                0xFFFF0000
+> > > +#define JPGENC_SET_QUALITY(x, y)   (((x) & JPGENC_QUALITY_MASK) | (y))
+> >
+> > JPGENC_QUALITY_MASK is only used here, so 0xffff0000 could be just used
+> > directly.
+> done
+> >
+> > > +
+> > > +#endif /* _MTK_JPEG_ENC_REG_H */
+> >
+> > I can see some bits defined in mtk_jpeg_enc_hw.h as well. Perhaps all these
+> > could be moved there too, which would make us have 1 file less?
+> moved bits defined  and register defined to mtk_jpeg_enc_reg.h, but the
+> functions declaration about jpeg enc hw were in mtk_jpeg_enc_hw.h, is
+> that ok?
+
+My suggestion was the other way around - have all the encoder-specific
+definitions in mtk_jpeg_enc_hw.h and remove mtk_jpeg_enc_reg.h.
+
+In general, this is a relatively simple hardware block and we should
+be able to just have one file that deals with hardware registers. Then
+there would be no need for headers, as the register definitions could
+be put directly in the source file. A rule of thumb is to use a header
+when something needs to be shared between multiple source files.
+
+Best regards,
+Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
