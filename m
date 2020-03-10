@@ -2,58 +2,140 @@ Return-Path: <SRS0=h1kY=43=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIM_SIGNED,DKIM_VALID,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B71AEC18E5B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 09:13:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 07250C10F27
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 09:40:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 82D5B2467F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 09:13:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CBBCB2465A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 09:40:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="A1es9J0b"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 82D5B2467F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uC+hTfvf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CBBCB2465A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=MO0MSDR/23SNqyNBltwoBQ+WBM6Ew4g1SrQzgIC3Ge0=; b=A1es9J0bMNOyP7MJiGHAPEXSQr
-	Gx0s41vaD3zIOizBUNi7YvZTMQx7VIVVaviFX14eFPIAGf5umy/d2xByXSx/4wBHJBKZASDiVFeu0
-	O/+Sdm2qwhANGseggJuH+CpnrCHzovWemkUCCJpR2DXUbUlBEGmJsjUgeezWck4bpQ7u8XpFDG6mO
-	rKtvuou0jbWPIhST+eXNyhtQjLVF4k+A6NUph5Ja1fWS4M5c/0v+3XX/lXHnV2kSRiUHDOtvfhv+I
-	fdGgd2I60OjI76VCA6O1o4142dZY+TMXtMrcxqEaaMQ5g9SvV+sQVkNFrtJKzglXxXzgU0Qjmjcwo
-	4ogA4wow==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=53GjZeBbYNEsLriR+GBVYTXjEcnExZG9elmLTZuGlrw=; b=uC+hTfvfP2iJLw
+	GnmVtT+Fnul5EmAo90dRIJW/OP2KbxHJ64zxDvUt3IPFcFoycJmQVrzaAHSgLMpgQb+2dwLOyjhsC
+	GIvbMgpGv5D+3zZ/jlPRc+nG6yFu0tB4/uDZE0i3wKxo3WiLc4DViiv/ac2V9yOZs4uoGaJCRdaOc
+	Mn9w6rJyx/Pn63RnWrs3aLBOVdrkU8O0Oob3j4XjGEe3fzcXSv4k3xAw1CxQAI2xJppcGGWr5wDEj
+	JquUuABRayDWwSaDHEWJirLwj/o2iav6o9A5rsiyhzuE342tyukxpjZZigag0Gl8ddfXs8ZNvefLv
+	HiAe9zPabLtPiSRrCtpw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBawo-0006xW-QX; Tue, 10 Mar 2020 09:13:10 +0000
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
- helo=theia.8bytes.org)
+	id 1jBbNL-0002om-Gu; Tue, 10 Mar 2020 09:40:35 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBawR-0006IO-Uv
- for linux-mediatek@lists.infradead.org; Tue, 10 Mar 2020 09:12:52 +0000
-Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 2EA32DB2; Tue, 10 Mar 2020 10:12:34 +0100 (CET)
-From: Joerg Roedel <joro@8bytes.org>
-To: iommu@lists.linux-foundation.org
-Subject: [PATCH 13/15] iommu/qcom: Use accessor functions for iommu private
- data
-Date: Tue, 10 Mar 2020 10:12:27 +0100
-Message-Id: <20200310091229.29830-14-joro@8bytes.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200310091229.29830-1-joro@8bytes.org>
-References: <20200310091229.29830-1-joro@8bytes.org>
+ id 1jBbN9-0002f1-UN; Tue, 10 Mar 2020 09:40:26 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx2.suse.de (Postfix) with ESMTP id 0A6ACAC37;
+ Tue, 10 Mar 2020 09:40:19 +0000 (UTC)
+Subject: Re: [PATCH v11 3/5] soc: mediatek: Move mt8173 MMSYS to platform
+ driver
+To: Stephen Boyd <sboyd@kernel.org>, Enric Balletbo Serra <eballetbo@gmail.com>
+References: <20200302110128.2664251-1-enric.balletbo@collabora.com>
+ <20200302110128.2664251-4-enric.balletbo@collabora.com>
+ <158344207340.7173.8369925839829696256@swboyd.mtv.corp.google.com>
+ <8bfc4350-6e92-e657-18f2-3624a2558521@collabora.com>
+ <158353062701.66766.10488072352849985568@swboyd.mtv.corp.google.com>
+ <CAFqH_51hL07c7z2mBSWMejKwZMkNHPVYiB7JpMPPgck0XycEug@mail.gmail.com>
+ <158379424337.149997.7454036134629466675@swboyd.mtv.corp.google.com>
+From: Matthias Brugger <mbrugger@suse.com>
+Autocrypt: addr=mbrugger@suse.com; prefer-encrypt=mutual; keydata=
+ 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
+ HxUCQ9Y1Y/Ct
+Message-ID: <21b43196-230c-5000-546e-b90d4b6b44a3@suse.com>
+Date: Tue, 10 Mar 2020 10:40:16 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
+MIME-Version: 1.0
+In-Reply-To: <158379424337.149997.7454036134629466675@swboyd.mtv.corp.google.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200310_021248_287225_C543B9E3 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20200310_024024_274642_E0E80254 
+X-CRM114-Status: GOOD (  22.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,229 +147,118 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Will Deacon <will@kernel.org>,
- linux-arm-msm@vger.kernel.org, Joerg Roedel <joro@8bytes.org>,
- Sudeep Holla <sudeep.holla@arm.com>, linux-kernel@vger.kernel.org,
- virtualization@lists.linux-foundation.org, Rob Clark <robdclark@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org,
- Andy Gross <agross@kernel.org>, Joerg Roedel <jroedel@suse.de>,
- Hanjun Guo <guohanjun@huawei.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, Sean Paul <sean@poorly.run>,
- Robin Murphy <robin.murphy@arm.com>
-MIME-Version: 1.0
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Kate Stewart <kstewart@linuxfoundation.org>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, David Airlie <airlied@linux.ie>,
+ Michael Turquette <mturquette@baylibre.com>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Richard Fontana <rfontana@redhat.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ ulrich.hecht+renesas@gmail.com, Collabora Kernel ML <kernel@collabora.com>,
+ linux-clk@vger.kernel.org, Weiyi Lu <weiyi.lu@mediatek.com>,
+ Chen-Yu Tsai <wens@csie.org>, Allison Randal <allison@lohutok.net>,
+ CK HU <ck.hu@mediatek.com>, mtk01761 <wendell.lin@mediatek.com>,
+ linux-media@vger.kernel.org,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ frank-w@public-files.de, Seiya Wang <seiya.wang@mediatek.com>,
+ sean.wang@mediatek.com, Rob Herring <robh+dt@kernel.org>,
+ ARM/Mediatek SoC support <linux-mediatek@lists.infradead.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, fwll.ch@freedesktop.org,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Randy Dunlap <rdunlap@infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Houlong Wei <"houlong.w ei"@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, matthias.bgg@kernel.org,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Joerg Roedel <jroedel@suse.de>
 
-Make use of dev_iommu_priv_set/get() functions.
 
-Signed-off-by: Joerg Roedel <jroedel@suse.de>
----
- drivers/iommu/qcom_iommu.c | 61 ++++++++++++++++++++++----------------
- 1 file changed, 36 insertions(+), 25 deletions(-)
+On 09/03/2020 23:50, Stephen Boyd wrote:
+> Quoting Enric Balletbo Serra (2020-03-06 14:09:50)
+>> Missatge de Stephen Boyd <sboyd@kernel.org> del dia dv., 6 de mar
+>> 2020 a les 22:37:
+>>>
+>>> Quoting Enric Balletbo i Serra (2020-03-06 08:30:16)
+>>>> On 5/3/20 22:01, Stephen Boyd wrote:
+>>>>> Quoting Enric Balletbo i Serra (2020-03-02 03:01:26)
+>>>>>> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+>>>>>> new file mode 100644
+>>>>>> index 000000000000..473cdf732fb5
+>>>>>> --- /dev/null
+>>>>>> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+>>>>>> @@ -0,0 +1,154 @@
+>>>>>> +// SPDX-License-Identifier: GPL-2.0-only
+>>>>>> +/*
+>>>>>> + * Copyright (c) 2014 MediaTek Inc.
+>>>>>> + * Author: James Liao <jamesjj.liao@mediatek.com>
+>>>>>> + */
+>>>>>> +
+>>>>>> +#include <linux/clk-provider.h>
+>>>>>> +#include <linux/of_device.h>
+>>>>>> +#include <linux/platform_device.h>
+>>>>>> +
+>>>>>> +#include "../../clk/mediatek/clk-gate.h"
+>>>>>> +#include "../../clk/mediatek/clk-mtk.h"
+>>>>>
+>>>>> Why not use include/linux/clk/?
+>>>>>
+>>>>
+>>>> I can move these files to include, this will impact a lot more of drivers but,
+>>>> yes, I think is the right way.
+>>>>
+>>>>> But I also don't understand why the clk driver is moved outside of
+>>>>> drivers/clk/ into drivers/soc/. Commit text saying that it has shared
+>>>>> registers doesn't mean it can't still keep the clk driver part in the
+>>>>> drivers/clk/ area.
+>>>>>
+>>>>
+>>>> Actually moving this to the soc directory has been requested by CK (mediatek) as
+>>>> a change in v8. You can see the discussion in [1]
+>>>>
+>>>
+>>> I can reply there in that thread if necessary, but we shouldn't need to
+>>> force simple-mfd into DT bindings to support this. Match the compatible
+>>> string in drivers/soc/ and register devices in software for the
+>>> different pieces of this overall hardware block. If necessary, pass down
+>>> the ioremapped addresss down through device data to each logical driver
+>>> in the respective subsystem.
+>>>
+>>> So yes, it looks like an MFD, but that doesn't mean we have to change
+>>> the DT binding or put it in drivers/mfd to support that. And we don't
+>>> have to fix any problems with allowing two drivers to probe the same
+>>> compatible string.
+>>>
+>>
+>> That thread maybe has too much information and things evolved since
+>> then. Note that the final solution is not an MFD neither we change the
+>> bindings. I pointed to that thread just because CK (CK please correct
+>> me if I'm wrong) thought that the driver is not a pure clock driver
+>> and he preferred to move to drivers/soc/mediatek (in that thread, he
+>> exposes his opinion on that).  Sorry to introduce more confusion.
+>>
+>> You seem to be fine with the approach (just minor changes), so it
+>> looks to me that the only problem is if this should be in drivers/clk
+>> or drivers/soc. Honestly, this is not something I can't decide and
+>> I'll let you (the soc and clk maintainers) decide. I don't really have
+>> a strong opinion here. I don't mind move again to drivers/clk if that
+>> is what we want but let's come to an agreement.
+>>
+> 
+> It's already in drivers/clk, so leave the clk part there and register
+> the clk device and any other devices by matching the compatible in
+> drivers/soc. That is my preferred solution. Can that be done?
+> 
 
-diff --git a/drivers/iommu/qcom_iommu.c b/drivers/iommu/qcom_iommu.c
-index 4328da0b0a9f..80147f82d427 100644
---- a/drivers/iommu/qcom_iommu.c
-+++ b/drivers/iommu/qcom_iommu.c
-@@ -74,16 +74,19 @@ static struct qcom_iommu_domain *to_qcom_iommu_domain(struct iommu_domain *dom)
- 
- static const struct iommu_ops qcom_iommu_ops;
- 
--static struct qcom_iommu_dev * to_iommu(struct iommu_fwspec *fwspec)
-+static struct qcom_iommu_dev * to_iommu(struct device *dev)
- {
-+	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-+
- 	if (!fwspec || fwspec->ops != &qcom_iommu_ops)
- 		return NULL;
--	return fwspec->iommu_priv;
-+
-+	return dev_iommu_priv_get(dev);
- }
- 
--static struct qcom_iommu_ctx * to_ctx(struct iommu_fwspec *fwspec, unsigned asid)
-+static struct qcom_iommu_ctx * to_ctx(struct device *dev, unsigned asid)
- {
--	struct qcom_iommu_dev *qcom_iommu = to_iommu(fwspec);
-+	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev);
- 	if (!qcom_iommu)
- 		return NULL;
- 	return qcom_iommu->ctxs[asid - 1];
-@@ -115,11 +118,14 @@ iommu_readq(struct qcom_iommu_ctx *ctx, unsigned reg)
- 
- static void qcom_iommu_tlb_sync(void *cookie)
- {
--	struct iommu_fwspec *fwspec = cookie;
-+	struct iommu_fwspec *fwspec;
-+	struct device *dev = cookie;
- 	unsigned i;
- 
-+	fwspec = dev_iommu_fwspec_get(dev);
-+
- 	for (i = 0; i < fwspec->num_ids; i++) {
--		struct qcom_iommu_ctx *ctx = to_ctx(fwspec, fwspec->ids[i]);
-+		struct qcom_iommu_ctx *ctx = to_ctx(dev, fwspec->ids[i]);
- 		unsigned int val, ret;
- 
- 		iommu_writel(ctx, ARM_SMMU_CB_TLBSYNC, 0);
-@@ -133,11 +139,14 @@ static void qcom_iommu_tlb_sync(void *cookie)
- 
- static void qcom_iommu_tlb_inv_context(void *cookie)
- {
--	struct iommu_fwspec *fwspec = cookie;
-+	struct device *dev = cookie;
-+	struct iommu_fwspec *fwspec;
- 	unsigned i;
- 
-+	fwspec = dev_iommu_fwspec_get(dev);
-+
- 	for (i = 0; i < fwspec->num_ids; i++) {
--		struct qcom_iommu_ctx *ctx = to_ctx(fwspec, fwspec->ids[i]);
-+		struct qcom_iommu_ctx *ctx = to_ctx(dev, fwspec->ids[i]);
- 		iommu_writel(ctx, ARM_SMMU_CB_S1_TLBIASID, ctx->asid);
- 	}
- 
-@@ -147,13 +156,16 @@ static void qcom_iommu_tlb_inv_context(void *cookie)
- static void qcom_iommu_tlb_inv_range_nosync(unsigned long iova, size_t size,
- 					    size_t granule, bool leaf, void *cookie)
- {
--	struct iommu_fwspec *fwspec = cookie;
-+	struct device *dev = cookie;
-+	struct iommu_fwspec *fwspec;
- 	unsigned i, reg;
- 
- 	reg = leaf ? ARM_SMMU_CB_S1_TLBIVAL : ARM_SMMU_CB_S1_TLBIVA;
- 
-+	fwspec = dev_iommu_fwspec_get(dev);
-+
- 	for (i = 0; i < fwspec->num_ids; i++) {
--		struct qcom_iommu_ctx *ctx = to_ctx(fwspec, fwspec->ids[i]);
-+		struct qcom_iommu_ctx *ctx = to_ctx(dev, fwspec->ids[i]);
- 		size_t s = size;
- 
- 		iova = (iova >> 12) << 12;
-@@ -222,9 +234,10 @@ static irqreturn_t qcom_iommu_fault(int irq, void *dev)
- 
- static int qcom_iommu_init_domain(struct iommu_domain *domain,
- 				  struct qcom_iommu_dev *qcom_iommu,
--				  struct iommu_fwspec *fwspec)
-+				  struct device *dev)
- {
- 	struct qcom_iommu_domain *qcom_domain = to_qcom_iommu_domain(domain);
-+	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
- 	struct io_pgtable_ops *pgtbl_ops;
- 	struct io_pgtable_cfg pgtbl_cfg;
- 	int i, ret = 0;
-@@ -243,7 +256,7 @@ static int qcom_iommu_init_domain(struct iommu_domain *domain,
- 	};
- 
- 	qcom_domain->iommu = qcom_iommu;
--	pgtbl_ops = alloc_io_pgtable_ops(ARM_32_LPAE_S1, &pgtbl_cfg, fwspec);
-+	pgtbl_ops = alloc_io_pgtable_ops(ARM_32_LPAE_S1, &pgtbl_cfg, dev);
- 	if (!pgtbl_ops) {
- 		dev_err(qcom_iommu->dev, "failed to allocate pagetable ops\n");
- 		ret = -ENOMEM;
-@@ -256,7 +269,7 @@ static int qcom_iommu_init_domain(struct iommu_domain *domain,
- 	domain->geometry.force_aperture = true;
- 
- 	for (i = 0; i < fwspec->num_ids; i++) {
--		struct qcom_iommu_ctx *ctx = to_ctx(fwspec, fwspec->ids[i]);
-+		struct qcom_iommu_ctx *ctx = to_ctx(dev, fwspec->ids[i]);
- 
- 		if (!ctx->secure_init) {
- 			ret = qcom_scm_restore_sec_cfg(qcom_iommu->sec_id, ctx->asid);
-@@ -363,8 +376,7 @@ static void qcom_iommu_domain_free(struct iommu_domain *domain)
- 
- static int qcom_iommu_attach_dev(struct iommu_domain *domain, struct device *dev)
- {
--	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
--	struct qcom_iommu_dev *qcom_iommu = to_iommu(fwspec);
-+	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev);
- 	struct qcom_iommu_domain *qcom_domain = to_qcom_iommu_domain(domain);
- 	int ret;
- 
-@@ -375,7 +387,7 @@ static int qcom_iommu_attach_dev(struct iommu_domain *domain, struct device *dev
- 
- 	/* Ensure that the domain is finalized */
- 	pm_runtime_get_sync(qcom_iommu->dev);
--	ret = qcom_iommu_init_domain(domain, qcom_iommu, fwspec);
-+	ret = qcom_iommu_init_domain(domain, qcom_iommu, dev);
- 	pm_runtime_put_sync(qcom_iommu->dev);
- 	if (ret < 0)
- 		return ret;
-@@ -397,9 +409,9 @@ static int qcom_iommu_attach_dev(struct iommu_domain *domain, struct device *dev
- 
- static void qcom_iommu_detach_dev(struct iommu_domain *domain, struct device *dev)
- {
--	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
--	struct qcom_iommu_dev *qcom_iommu = to_iommu(fwspec);
- 	struct qcom_iommu_domain *qcom_domain = to_qcom_iommu_domain(domain);
-+	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-+	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev);
- 	unsigned i;
- 
- 	if (WARN_ON(!qcom_domain->iommu))
-@@ -407,7 +419,7 @@ static void qcom_iommu_detach_dev(struct iommu_domain *domain, struct device *de
- 
- 	pm_runtime_get_sync(qcom_iommu->dev);
- 	for (i = 0; i < fwspec->num_ids; i++) {
--		struct qcom_iommu_ctx *ctx = to_ctx(fwspec, fwspec->ids[i]);
-+		struct qcom_iommu_ctx *ctx = to_ctx(dev, fwspec->ids[i]);
- 
- 		/* Disable the context bank: */
- 		iommu_writel(ctx, ARM_SMMU_CB_SCTLR, 0);
-@@ -514,7 +526,7 @@ static bool qcom_iommu_capable(enum iommu_cap cap)
- 
- static int qcom_iommu_add_device(struct device *dev)
- {
--	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev_iommu_fwspec_get(dev));
-+	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev);
- 	struct iommu_group *group;
- 	struct device_link *link;
- 
-@@ -545,7 +557,7 @@ static int qcom_iommu_add_device(struct device *dev)
- 
- static void qcom_iommu_remove_device(struct device *dev)
- {
--	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev_iommu_fwspec_get(dev));
-+	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev);
- 
- 	if (!qcom_iommu)
- 		return;
-@@ -557,7 +569,6 @@ static void qcom_iommu_remove_device(struct device *dev)
- 
- static int qcom_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
- {
--	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
- 	struct qcom_iommu_dev *qcom_iommu;
- 	struct platform_device *iommu_pdev;
- 	unsigned asid = args->args[0];
-@@ -583,14 +594,14 @@ static int qcom_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
- 	    WARN_ON(asid > qcom_iommu->num_ctxs))
- 		return -EINVAL;
- 
--	if (!fwspec->iommu_priv) {
--		fwspec->iommu_priv = qcom_iommu;
-+	if (dev_iommu_priv_get(dev)) {
-+		dev_iommu_priv_set(dev, qcom_iommu);
- 	} else {
- 		/* make sure devices iommus dt node isn't referring to
- 		 * multiple different iommu devices.  Multiple context
- 		 * banks are ok, but multiple devices are not:
- 		 */
--		if (WARN_ON(qcom_iommu != fwspec->iommu_priv))
-+		if (WARN_ON(qcom_iommu != dev_iommu_priv_get(dev)))
- 			return -EINVAL;
- 	}
- 
--- 
-2.17.1
-
+I think we can once again create a platform device in drivers/soc which matches
+the drivers/clk and then do the routing in drivers/soc. Enric any thoughts?
 
 _______________________________________________
 Linux-mediatek mailing list
