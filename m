@@ -3,75 +3,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 13BEEC18E5A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 07:40:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 99522C10F27
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 07:41:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DF83E2467C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 07:40:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6DCF524677
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 07:41:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="O+OCfK4J";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Ta1LeOoR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DF83E2467C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="caBtdTSv";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=microchiptechnology.onmicrosoft.com header.i=@microchiptechnology.onmicrosoft.com header.b="h+Y7E99s"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6DCF524677
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=microchip.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zd4ywcqnG2spdmsAj36ETZsqDN2GRhExqTLkkNx/dGM=; b=O+OCfK4Jk5ec6w
-	Cj5V/U/ofR3LI7S6LI6DpycJu7MVLe1r/77hKyANyJIa53+M/PuP/aaUFWfBcxWLjl+xZ2Ca6TgQe
-	B3SHNjxnY06TG9VW59roXCV3/6UtQuh5fqvCsUWrmpE+/Qct1AzmX0nkjSszmeAPz8FPngbpAzg/B
-	kkvsJLIUiqW13KFR8M8Uttwp4+p47li961P5FEqCgiOpqBSSNZkY9fk2gxgj+IKGXxpEssK06soQ9
-	NIpxk80G5QT+kZW+cemSnkELw6Fk/gAkwyTpqW4tFo+0m6f1EvQ7o0to8xsd71EVEbE98uGAHh+3p
-	gURhlvRkXuC4pyYuA1jw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=jQqwa88GrURYuR3/L+/BIOZYXiQKTuWAgcBHFmvuUw8=; b=caBtdTSvAes8gs
+	UqQmA3AVWMaVxo23OZmS7Gn4c71/Yh0poUgXoRf+/E+g36dR4HH9Du3g8zxyoh7Zos2VZdz+g9wbn
+	vlaamrRsDSfquQEc1Em4iAs0KLBevxyuJMdTE9ldPc7viPXRp1C1SxP02D6dbsRv3OwiTAM+efBeF
+	lk0TEg7re4mrj+Uj/E+ynSbGY7DOIEgYRG3KE5zC1WOYLKBTBbCAOLDbIQAPyDKKPshUnBOMS5x/K
+	WWmePB2eMvjwrUbrfGj0pkBD+iuIO5gkqH7lRc3eV04d58Nf8mKud7we66awIO+SGwxWB1MLc+6BP
+	iOw3+KiT03D5dIoLtOOA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBZUm-0000CU-VW; Tue, 10 Mar 2020 07:40:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jBZWC-0001cv-TD; Tue, 10 Mar 2020 07:41:36 +0000
+Received: from esa3.microchip.iphmx.com ([68.232.153.233])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBZUi-00006r-Bz
- for linux-mediatek@lists.infradead.org; Tue, 10 Mar 2020 07:40:06 +0000
-X-UUID: 65fbc026e77a40d1a81e23d1abef0778-20200309
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=NYAYLiqknTa8F+ltVJIHSI4VfwyoRZFMoaTE2/jt4QE=; 
- b=Ta1LeOoRKAQcjyBOsiUndEVSIzcXXOyYPEEjMx0E2NlQo4MfbxmBTOYgml3i8ueeWONY4MLlnzLgPA9qyLIsjYMej2t0g0gnOrIlSAfb12VOu4ukyrK9yAzLsz48MliPfYHRYh7LlZrLWvfdgb/yAVxMU2bSCwsMzq1fQie8ccw=;
-X-UUID: 65fbc026e77a40d1a81e23d1abef0778-20200309
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <light.hsieh@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1447582087; Mon, 09 Mar 2020 23:39:56 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 10 Mar 2020 00:39:54 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 10 Mar 2020 15:37:05 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Tue, 10 Mar 2020 15:40:05 +0800
-From: <light.hsieh@mediatek.com>
-To: <linus.walleij@linaro.org>
-Subject: [PATCH v4 0/2] pinctrl: make MediaTek pinctrl v2 driver and MT6765
- pinctrl driver ready for building loadable module
-Date: Tue, 10 Mar 2020 15:39:44 +0800
-Message-ID: <1583825986-8189-1-git-send-email-light.hsieh@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
+ id 1jBZW9-0001c0-0R; Tue, 10 Mar 2020 07:41:35 +0000
+Received-SPF: Pass (esa3.microchip.iphmx.com: domain of
+ Tudor.Ambarus@microchip.com designates 198.175.253.82 as
+ permitted sender) identity=mailfrom;
+ client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
+ envelope-from="Tudor.Ambarus@microchip.com";
+ x-sender="Tudor.Ambarus@microchip.com";
+ x-conformance=spf_only; x-record-type="v=spf1";
+ x-record-text="v=spf1 mx a:ushub1.microchip.com
+ a:smtpout.microchip.com -exists:%{i}.spf.microchip.iphmx.com
+ include:servers.mcsv.net include:mktomail.com
+ include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa3.microchip.iphmx.com: no sender
+ authenticity information available from domain of
+ postmaster@email.microchip.com) identity=helo;
+ client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
+ envelope-from="Tudor.Ambarus@microchip.com";
+ x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
+Authentication-Results: esa3.microchip.iphmx.com;
+ spf=Pass smtp.mailfrom=Tudor.Ambarus@microchip.com;
+ spf=None smtp.helo=postmaster@email.microchip.com;
+ dmarc=pass (p=none dis=none) d=microchip.com
+IronPort-SDR: iJdTnug9arpDX1SJTikIZyVhXjV07sIbkUMwnSzNSLgFI40HYO+kqs2zjL7pnvQVZfEtq+oDVq
+ Af6qwpvcofdz1ZRuyoYWgPc6F/79jbtHdMgl0FPAwDQ7iQci2dFCQ6ZNnEEi4+fGvObpU+/UdM
+ 3orQ99frzHMqCNLX/qm7Gjh/VsuRK6eY4lw7Esw6OZHufr5uMDNbJwnAYgnaVSC/YKYEOex/O1
+ owuYUl+PcytMVwIwH5jM+LEw5e6f7fcVo+6KR5ZodUClRwUMMhYHwXhf1CKKM5b4rCr2E82+Ue
+ ea8=
+X-IronPort-AV: E=Sophos;i="5.70,535,1574146800"; d="scan'208";a="69454650"
+Received: from smtpout.microchip.com (HELO email.microchip.com)
+ ([198.175.253.82])
+ by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
+ 10 Mar 2020 00:41:28 -0700
+Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
+ chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.1713.5; Tue, 10 Mar 2020 00:41:24 -0700
+Received: from NAM04-CO1-obe.outbound.protection.outlook.com (10.10.215.89) by
+ email.microchip.com (10.10.87.71) with Microsoft SMTP Server
+ (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5 via Frontend
+ Transport; Tue, 10 Mar 2020 00:41:24 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=UxjJ4OXVc6+4bHYjIaIhl4P8UgI0hw5U+ZLXWhfwTpaOVEaiQYxFhdBq5gyA2v32RWY49h2/e6/OxLMt2UxzMIF9NgtXnUC/TpJNgdpol22XBZW31qCdBvr9Gf0DCkQrKLmYsQtW1My5adhh4EhCYssRFMy8WRVIp+Jj2Dh7mjuaZMiqFA7kzGJ9FI/BKWDX9HUJ1d3sNlKW7sCocLZN9ctw733yEk5vYtPEy3FqJLoe8+kNHN6/yGbFHuAakzcdX5+3FozKqAVYZCXl72SRyGET3RI/j/ibiqc8sQBRWQAHTAIjmrGY6q7GiQBgnWe4cryzr93LZiL5Yqy3FJPK6w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=jE0CawRCXUSo0LXtr9OwRhxSC/uSBNYRJ5RCKOpapV4=;
+ b=IJ2tltq0KhO5qlNtUijDqwbbZFWKxQ9Hk1qhsOmyMo/1XP9Qgi3EQz4c+jYm4+BeuNiG6BqwAFIZNa4OWAsuOEURrIBFIb2iT6nHifs0Kd6zplIFp14JvztXJxdHd6C1oSvEUs1xQB+lC7tcvydijrGiTJSggAk0HnZOQACVzhKB0d9/Ve+MZ3nH+P36vwI/ILoff74bF7yjeC047EVWUfKH4Mmii13xqr2z9gyWXNenCajbiFk77B8YcxjRYk7LctE1XrV3Vlo/gdqjWJ9ld+KJI3duYXBAvo4sZYP3qDJFQbnrkF1F2wt2wQnS+q8fKeIY1f1SHvZet4q8fE9Obg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microchip.com; dmarc=pass action=none
+ header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=microchiptechnology.onmicrosoft.com;
+ s=selector2-microchiptechnology-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=jE0CawRCXUSo0LXtr9OwRhxSC/uSBNYRJ5RCKOpapV4=;
+ b=h+Y7E99sNPo9nrob7MvUeL72ElHFeY5osRqZ7yp5N0NBYJtBBu83GvOmyJpMTLve3gfBPwP5hHD2zAubrp6JI152Nk9fnxyASqrSu1hVduOT9iR3FnQZRL2SaxGpev6aenwTCk4qMK58+T1yp0Ojqr+RgP7Gg72J384MKJX8KbI=
+Received: from MN2PR11MB4448.namprd11.prod.outlook.com (2603:10b6:208:193::29)
+ by MN2PR11MB4600.namprd11.prod.outlook.com (2603:10b6:208:26e::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2793.17; Tue, 10 Mar
+ 2020 07:41:26 +0000
+Received: from MN2PR11MB4448.namprd11.prod.outlook.com
+ ([fe80::3c8f:7a55:cbd:adfb]) by MN2PR11MB4448.namprd11.prod.outlook.com
+ ([fe80::3c8f:7a55:cbd:adfb%5]) with mapi id 15.20.2793.013; Tue, 10 Mar 2020
+ 07:41:26 +0000
+From: <Tudor.Ambarus@microchip.com>
+To: <broonie@kernel.org>
+Subject: Re: [PATCH v3 4/4] mtd: spi-nor: remove mtk-quadspi driver
+Thread-Topic: [PATCH v3 4/4] mtd: spi-nor: remove mtk-quadspi driver
+Thread-Index: AQHV9q9NZuWbRCDn2EGRyTtBWaWZXw==
+Date: Tue, 10 Mar 2020 07:41:26 +0000
+Message-ID: <2471214.x7VzW1FXlQ@localhost.localdomain>
+References: <20200306085052.28258-1-gch981213@gmail.com>
+ <20200306085052.28258-5-gch981213@gmail.com>
+ <20200309121020.GD4101@sirena.org.uk>
+In-Reply-To: <20200309121020.GD4101@sirena.org.uk>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [94.177.32.156]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 72185611-e006-4c82-26d6-08d7c4c67056
+x-ms-traffictypediagnostic: MN2PR11MB4600:
+x-microsoft-antispam-prvs: <MN2PR11MB46004C074BECF2B36D91842CF0FF0@MN2PR11MB4600.namprd11.prod.outlook.com>
+x-bypassexternaltag: True
+x-ms-oob-tlc-oobclassifiers: OLM:8882;
+x-forefront-prvs: 033857D0BD
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10009020)(366004)(136003)(376002)(346002)(396003)(39860400002)(189003)(199004)(6916009)(5660300002)(9686003)(26005)(91956017)(86362001)(186003)(6486002)(7416002)(76116006)(66556008)(64756008)(66946007)(6512007)(66446008)(4326008)(66476007)(4744005)(966005)(54906003)(2906002)(478600001)(316002)(81156014)(8676002)(6506007)(53546011)(81166006)(8936002)(71200400001)(39026012);
+ DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR11MB4600;
+ H:MN2PR11MB4448.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: microchip.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: aa6ia4kd0da6uwxZWkBMIoYXLbU5H439Kv57STuKKh4wgKhfdg13nswxOEq2J0ovCOViYHfGukb4j9iwD3n/4VNacTpa/0YcyirkCU8+Dom47foJFHzfIeBbAh/27Z+laM98J/debjVwg3jixmwQIBI5j7fFQERGA+jVS6uIz5bVtPS3LFF3hY4xqyEh2w2wbXbZSlNVRn7Igw8XR4HL/zRHX8wRBn47rrm9K8NWDagIQajtvat2M9GmKp6e/cBUWIDIxEPYHwzfSlvozNxGFvmCydBVUdQQ7CqI0lj902wFfm5EIdVECOej0+9CF68zu8qWFTM0C5OG6kimom0QHS8dSyeH5XQqx1eksYcQcCUIFpM5s/YgQt9mWHOg+kch3oEwqQnunN/bKYqpfGJw3ZJIN54Pxq5GqC/z1WzrDQOJrGpDfQ4juxd9DEBBiiLoRDmUPeuWnnjGYQQo+0I7HaEG1hDJq5+b4o2vGDQiyLx0w4dJ/xV3ZGxFgb9Bj00V
+x-ms-exchange-antispam-messagedata: jQT4xqvvYYmPFVoKATacNduTqlP4otenqyCb0WNHAh2kFotkbqTCEIChE2xIVGV5Pqs001P68CQRYL5dvlggcPB4JjH2AqSRAiWrwtNuXfkB7layFN6jKnXalJWH6Czxx2lu71F3ZUVrb8xmfquJsw==
+x-ms-exchange-transport-forked: True
+Content-ID: <6A321634F4832945827FEDE57CD2E761@namprd11.prod.outlook.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 4F31806DE4A9A9017B0C66F63ACC6A2852320298527D30BE3BF7D8E1FC65B3552000:8
-X-MTK: N
+X-MS-Exchange-CrossTenant-Network-Message-Id: 72185611-e006-4c82-26d6-08d7c4c67056
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Mar 2020 07:41:26.1818 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: wiMLjwuB7SkVmsP7b/xLrJl9RM0hqkFUbD8ltI+60eMDUlKLbbDhu7nsCEHfAXnA8D3YStDba3WWWeskVyaz3lvsPvNgNoJoGJjBvsdzyKM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4600
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200310_004004_413844_91F98CB3 
-X-CRM114-Status: UNSURE (   9.09  )
+X-CRM114-CacheID: sfid-20200310_004133_125922_BD259AFD 
+X-CRM114-Status: UNSURE (   8.64  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -84,75 +162,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: sean.wang@kernel.org, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, Light Hsieh <light.hsieh@mediatek.com>,
- linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: devicetree@vger.kernel.org, vigneshr@ti.com, richard@nod.at,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, miquel.raynal@bootlin.com,
+ matthias.bgg@gmail.com, linux-mtd@lists.infradead.org, gch981213@gmail.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Light Hsieh <light.hsieh@mediatek.com>
+Hi, Mark,
 
-In the future we want to be able to build the MediaTek pinctrl driver, based on paris, as kernel module. This patch allows pinctrl-paris.c, the external interrupt controller mtk-eint.c, and pinctrl-mtk-common-v2.c to be loadable as module.
+On Monday, March 9, 2020 2:10:20 PM EET Mark Brown wrote:
+> > This driver is superseded by the new spi-mtk-nor driver.
+> > 
+> > Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
+> 
+> Is this move OK from a MTD point of view - should I apply this when the
+> rest goes in?  The patch was in prior versions too and is obviously
+> straightforward.
 
-The following is the rationale for determining whether mtk-eint.c, pinctrl-mtk-common-v2.c, and pinctrl-paris.c are built as loadable module:
+If you find the rest of the patches ok, this can go through the spi tree, feel 
+free to add my
+Acked-by: Tudor Ambarus <tudor.ambarus@microchip.com>
 
-1. drivers/pinctrl/mediatek/Kconfig:
-1.1 PINCTRL_MTXXXX: change from bool to tristate. It is specified in
-        defconfig file. MTXXXX can only be the user of pinctrl-paris,
-        which can MT6765 or MT8183. The patch for changing
-        PINCTRL_MT6765 from bool to tristate will be given as the next
-        patch of the patch series.
-1.2 PINCTRL_MTK_PARIS: change from bool to tristate and select
-        PINCTRL_MTK_V2. No need to specify in defconfig file.
-      * PINCTRL_MTK_PARIS will be y if any PINCTRL_MTXXXX selecting
-        PINCTRL_MTK_PARIS is y.
-      * PINCTRL_MTK_PARIS will be n if all PINCTRL_MTXXXX selecting
-        PINCTRL_MTK_PARIS is n.
-      * PINCTRL_MTK_PARIS will be m if some PINCTRL_MTXXXX selecting
-        PINCTRL_MTK_PARIS are m and other PINCTRL_MTXXXX selecting
-        PINCTRL_MTK_PARIS are n.
-1.3 PINCTRL_MTK_MOORE: select EINT_MTK and PINCTRL_MTK_V2. It is make
-        to be ready for building as loadable kernel module because it
-        is not used on Android kernel.        
-1.4 PINCTRL_MTK_V2: add this tristate config which depends on
-        PINCTRL_MTK_PARIS and PINCTRL_MTK_MOORE. No need to specify in 
-        defconfig file.
-      * PINCTRL_MTK_V2 will be y if either PINCTRL_MTK_PARIS or
-        PINCTRL_MTK_MOORE is y.
-      * PINCTRL_MTK_V2 will be n if both PINCTRL_MTK_PARIS and
-        PINCTRL_MTK_MOORE are n.
-      * PINCTRL_MTK_V2 will be m if PINCTRL_MTK_PARIS is m and
-        PINCTRL_MTK_MOORE is n.
-1.5 EINT_MTK: change from bool to tristate and add rule for default.
-        No need to specify in defconfig file.
-      * First rule: determine if EINT_MTK is y or n according to 
-        selection of PINCTRL_MTK or PINCTRL_MTK_MORE.
-      * Second rule: determine if EINT_MTK is y, m, or n according to
-        selection of PINCTRL_MTK_PARIS.
+There will be a conflict with the following patch https://
+patchwork.ozlabs.org/patch/1247791/, but nothing that we can't handle.
+I'll try to allocate time for reviewing the remaining patches in this set in 
+the following days.
 
-2. drivers/pinctrl/mediatek/Makefile: Use PINCTRL_MTK_V2 to determine
-        if pinctrl-mtk-common-v2.c is built as loadable module or
-        built-in.
+Cheers,
+ta
 
-Light Hsieh (2):
-  pinctrl: make MediaTek pinctrl v2 driver ready for buidling loadable
-    module
-  pinctrl: make MediaTek MT6765 pinctrl ready for buidling loadable
-    module
 
- drivers/pinctrl/mediatek/Kconfig                 | 15 ++++++++++++---
- drivers/pinctrl/mediatek/Makefile                |  5 +++--
- drivers/pinctrl/mediatek/mtk-eint.c              |  9 +++++++++
- drivers/pinctrl/mediatek/pinctrl-mt6765.c        |  4 ++++
- drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 24 ++++++++++++++++++++++++
- drivers/pinctrl/mediatek/pinctrl-paris.c         |  6 ++++++
- drivers/pinctrl/pinconf-generic.c                |  1 +
- 7 files changed, 59 insertions(+), 5 deletions(-)
-
--- 
-1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
