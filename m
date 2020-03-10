@@ -2,152 +2,87 @@ Return-Path: <SRS0=h1kY=43=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+X-Spam-Status: No, score=-14.7 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A3179C10DCE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 19:37:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E76C1C10DCE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 21:15:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C285208E4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 19:37:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A0E49222C3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 21:15:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sfSGXadN";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=embeddedor.com header.i=@embeddedor.com header.b="bKu+K1g/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C285208E4
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=embeddedor.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aIX13zmN";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="dN1DJyXu"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A0E49222C3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3m2n/44WcfgWVUubHGdzzjKRIcku1whkzLtAHtLMEZU=; b=sfSGXadNR5j6My
-	gtP44Ua9lDNJfxcds5poRx9YiYK+ECoPCtcLiBBZpeBdUR8oTPQt0l3zIQnPGru/iKLzeBoLH2Y2d
-	/Xv/RdZqX4ycbMukj7kVBDQ81+PswM6csA8SSgCbiotlTazQdnHWtkGpWIumrR++oyS262lQpORDa
-	kRVTf+M6wRumZdgZhb/+TsOlat5fDqFYB2/7aVkTpv+z24bz297XsZ2M3L0FiLxlPNd68CAE5dM+n
-	wXhgMNUMJ0xduET8QSbse41wtAWzzsCSo4NEZevxwlupXYn/HfN0iJ2XZl0Cfb4NuKDYQJpM5IV31
-	HPLTHkRaYvJG9ug+4YvQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zH1vFknY+yz7WyQy0r3odyFT37d5CJtAErqOHfxMVpg=; b=aIX13zmN2vKJTo
+	i01IJHPFDrFBdK9sSaR229K7FCXMeJdvqH2IsFTDfdg2waB/wxL5h6troLrVqmADaaXO2eGxufPp8
+	qf8AG7Nha9Rdqgu3bkHEW7n55aTNXqnjyk5CDs17g2045So9T8NAXjOcGt7FZYXEWjpinF3D4RiWj
+	FFt+sOC05npF+VacZ1K0UjIrmsUZXYsQZjNwKj7B2/Cj+eqGmqErgmDrFTpmDe2GexnVClMuUVDrJ
+	SHD8ThoFQeax59Mp3Hvr908M6d30NJWNclVoDSi37iCrSANJFJ3IbkRyETX4UOz6bpJtBgmphUMJ2
+	bVUce/TfNcAcrhhY0gLQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBkh7-0005Yn-3o; Tue, 10 Mar 2020 19:37:37 +0000
-Received: from gateway20.websitewelcome.com ([192.185.58.11])
+	id 1jBmDt-00040f-RQ; Tue, 10 Mar 2020 21:15:33 +0000
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBkgf-000530-He
- for linux-mediatek@lists.infradead.org; Tue, 10 Mar 2020 19:37:12 +0000
-Received: from cm12.websitewelcome.com (cm12.websitewelcome.com [100.42.49.8])
- by gateway20.websitewelcome.com (Postfix) with ESMTP id 64BBF400D1666
- for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2020 13:21:56 -0500 (CDT)
-Received: from gator4166.hostgator.com ([108.167.133.22]) by cmsmtp with SMTP
- id BkgSjEUTH1s2xBkgSjyVGf; Tue, 10 Mar 2020 14:36:56 -0500
-X-Authority-Reason: nr=8
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender
- :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=PoDUEKrfLvefyoroJeKBXR5BL0DzfZ5bKXNQlE95UNc=; b=bKu+K1g/o5HJKFOivWMfRnHe7A
- EamwnojjRE4V9uUp2TM/1kKgfs4nVPVD5bPJk1O9yjyUX34EztPce2OgcZVx6az+XITco74xT0Kfk
- V61fQBZ9kYdAa52tvYIBMCesco/hwz6q9SFDnEdVXuLjLD8c0q76a+CEWPe/R6a7k1gIjf66TmgS/
- lGM9LGByq1zAkoNCspex8yzOmwxehaUMqmZ94jQvUTUy14ekKB4rjNW7ClMAzuo9GvCnnEZ/X4o72
- 2RZ0VgS81U17NUAJdk/aOF/RGNr6lN7INjTzZch+MpNDncFWykVTdgJYUw7ZmNCO4J8dGOYWtHmMq
- hn/3MClw==;
-Received: from cablelink20-167.telefonia.intercable.net
- ([201.172.20.167]:42626 helo=[192.168.1.39])
- by gator4166.hostgator.com with esmtpsa
- (TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128) (Exim 4.92)
- (envelope-from <gustavo@embeddedor.com>)
- id 1jBkgR-00121I-OJ; Tue, 10 Mar 2020 14:36:56 -0500
-Subject: Re: [PATCH] mtd: rawnand: Replace zero-length array with
- flexible-array member
-To: Miquel Raynal <miquel.raynal@bootlin.com>,
- Masahiro Yamada <yamada.masahiro@socionext.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Liang Yang <liang.yang@amlogic.com>, Kevin Hilman <khilman@baylibre.com>,
- Xiaolei Li <xiaolei.li@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard
- <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>
-References: <20200310183112.18567-1-miquel.raynal@bootlin.com>
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=gustavo@embeddedor.com; keydata=
- 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
- VtSixD1uOgytAP7RWS474w==
-Message-ID: <1fd2eebe-761b-1b65-e1b7-672be39a3e69@embeddedor.com>
-Date: Tue, 10 Mar 2020 14:36:51 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ id 1jBmDl-0003qx-BW; Tue, 10 Mar 2020 21:15:26 +0000
+Received: by mail-ot1-x344.google.com with SMTP id s15so6444817otq.8;
+ Tue, 10 Mar 2020 14:15:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=7hNWBofucArT17MnCRXZQMQQdTzbenzVIK3M8zSgFrs=;
+ b=dN1DJyXu9qxAGT5sUE6ZtOnH6zUyhErKldhJDm/7WbWLTndvrlMjzXlxKt0BofnnWE
+ gH1NiZ39GxjP1zKwRIUjTFC78v6faijm/bXy1SykgDIiA9HQsxDhPDqfO0MbUk3w52cK
+ NAPx3NUnmyHQqMvrs7UO60oNGKIM7di5I/ovX860fDPPgCrG+QntBATS4ZeoB5joKLJx
+ VHIoh5WWDwrL+7hQIz6IlCuKhtLvjR66DH1AWCSMwwHVYrWSSThc/iQgU8Zsx5872Ouu
+ FePQ3k15JNhQTQGFroMnrQZ/39pHC+lZr07mZXoOxcdm/2FlRaK/bwLZxC1FMUEW+aky
+ 47Bw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=7hNWBofucArT17MnCRXZQMQQdTzbenzVIK3M8zSgFrs=;
+ b=pRiOszUpHHdGDslg7WJpRHbxs62faCztXYy0pBmTGlSqJ62RJ4QP5bDQlnKVT/tdgp
+ GU5v/f1S6vQaRqLVXC/dRK/JQLD7DSVgzA24cIJuTdMjemGFgrC07QAwPu0E+R3Pxvyl
+ /cKFW2tTdG9VwG1JJgbqPI4j+Sft+/DadGDQVdwyHW8jjerkXMp3Qau12yiMgq73Br/a
+ EaCVELgJA0HmhoenuCUZi2hOUi/syaMjiLdU9tXBnAsa8J3Af1DTaD62Nq5yV1AbscMJ
+ hgbQ5mu3NQwEASEes/bO1Ydkvis3ktN/azZ4OMoBfGmy59Ljj3IbL3RyH5Mdl5Olls8n
+ XtvQ==
+X-Gm-Message-State: ANhLgQ3smcZ/GBTSuQsx13oHoSmkgrIAOwxzbOFjpmWP7/8gJF2DzIMi
+ Ruhe4B0X40I1joItKMXxMeI=
+X-Google-Smtp-Source: ADFU+vvjtpN/bwJQkI2vcndXaZbxD8dD0mCBVB9RhSu8g5NE5E5B4HBs9qwmz9bvppBuPjIrS4onDw==
+X-Received: by 2002:a9d:6348:: with SMTP id y8mr687408otk.347.1583874924146;
+ Tue, 10 Mar 2020 14:15:24 -0700 (PDT)
+Received: from localhost.localdomain ([2604:1380:4111:8b00::1])
+ by smtp.gmail.com with ESMTPSA id j90sm205345otc.21.2020.03.10.14.15.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Mar 2020 14:15:23 -0700 (PDT)
+From: Nathan Chancellor <natechancellor@gmail.com>
+To: Ohad Ben-Cohen <ohad@wizery.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>
+Subject: [PATCH] remoteproc/mediatek: Use size_t type for len in scp_da_to_va
+Date: Tue, 10 Mar 2020 14:15:14 -0700
+Message-Id: <20200310211514.32288-1-natechancellor@gmail.com>
+X-Mailer: git-send-email 2.26.0.rc1
 MIME-Version: 1.0
-In-Reply-To: <20200310183112.18567-1-miquel.raynal@bootlin.com>
-Content-Language: en-US
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - embeddedor.com
-X-BWhitelist: no
-X-Source-IP: 201.172.20.167
-X-Source-L: No
-X-Exim-ID: 1jBkgR-00121I-OJ
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: cablelink20-167.telefonia.intercable.net ([192.168.1.39])
- [201.172.20.167]:42626
-X-Source-Auth: gustavo@embeddedor.com
-X-Email-Count: 12
-X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
-X-Local-Domain: yes
+X-Patchwork-Bot: notify
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200310_123709_697485_69FE8C11 
-X-CRM114-Status: UNSURE (   6.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200310_141525_396174_E539E574 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -159,32 +94,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mtd@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-amlogic@lists.infradead.org
+Cc: linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ clang-built-linux@googlegroups.com, linux-mediatek@lists.infradead.org,
+ Nathan Chancellor <natechancellor@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Clang errors:
 
+drivers/remoteproc/mtk_scp.c:364:14: error: incompatible function
+pointer types initializing 'void *(*)(struct rproc *, u64, size_t)' (aka
+'void *(*)(struct rproc *, unsigned long long, unsigned int)') with an
+expression of type 'void *(struct rproc *, u64, int)' (aka 'void
+*(struct rproc *, unsigned long long, int)')
+[-Werror,-Wincompatible-function-pointer-types]
+        .da_to_va       = scp_da_to_va,
+                          ^~~~~~~~~~~~
+1 error generated.
 
-On 3/10/20 1:31 PM, Miquel Raynal wrote:
+Make the same change as commit 0fcbb369f052 ("remoteproc: Use size_t
+type for len in da_to_va"), which was not updated for the acceptance of
+commit 63c13d61eafe ("remoteproc/mediatek: add SCP support for mt8183").
 
->>
->> [1] https://gcc.gnu.org/onlinedocs/gcc/Zero-Length.html
->> [2] https://github.com/KSPP/linux/issues/21
->> [3] commit 76497732932f ("cxgb3/l2t: Fix undefined behaviour")
->>
->> Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
->> Acked-by: Masahiro Yamada <yamada.masahiro@socionext.com>
-> 
-> Applied to https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git nand/next, thanks.
-> 
+Fixes: 0fcbb369f052 ("remoteproc: Use size_t type for len in da_to_va")
+Link: https://github.com/ClangBuiltLinux/linux/issues/927
+Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
+---
+ drivers/remoteproc/mtk_scp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks, Miquel.
---
-Gustavo
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index 7ccdf64ff3ea..ea3743e7e794 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -320,7 +320,7 @@ static int scp_start(struct rproc *rproc)
+ 	return ret;
+ }
+ 
+-static void *scp_da_to_va(struct rproc *rproc, u64 da, int len)
++static void *scp_da_to_va(struct rproc *rproc, u64 da, size_t len)
+ {
+ 	struct mtk_scp *scp = (struct mtk_scp *)rproc->priv;
+ 	int offset;
+-- 
+2.26.0.rc1
+
 
 _______________________________________________
 Linux-mediatek mailing list
