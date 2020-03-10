@@ -2,22 +2,22 @@ Return-Path: <SRS0=h1kY=43=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DABC9C10F27
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 13:46:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F0D02C10F27
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 13:47:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AD6A32464B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 13:46:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BBB8624649
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 13:47:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ftLKU3nO";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="rXeiEXfd"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD6A32464B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Zw8Wk8HY";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="O0Lf67OG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BBB8624649
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,51 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EWpfbF8sIvtwLxi2kWLZzLamkSTXSXuX/KDFn1rOYbU=; b=ftLKU3nOuDivms
-	R67Pl+57ZPUgnToIHLgCpE8ajbsYF/NepFIQtd9BlpFIlCmsRrzDYNdgdAyPaXDA8R8h7IEPfB918
-	cTyOjJDRnhjKC6HFBX8Rvq/eMCd5/lcN+3Lt8zGrh64Zvz1a/jrkYrbJJbDvfY3iTrYhsnY9nldEh
-	k3JnpiriB2g/JdwyMxGhX3NXffG12LQQWW1fZ2EA6cIG7CI7t0c1tDsXN7KatMamergw1dtu9eh83
-	WMT7Ju5WDIqMc/aUaGb/GCxEtdHKQb0qVznuVNSPBxowdNJFd4jmNQ37rVA7qBDQYrFCvOSW5/pdL
-	llGfsIBVYpdHxI3joiGg==;
+	List-Owner; bh=PmYneUot9taBKuYAlEMqRgHYsCRmg3mHxUMc+qaSalk=; b=Zw8Wk8HY2iuiga
+	9r1SvPEl1zQ1ks+vn0GhxPPhdvi1BuEXYwZba71ACcL3lXa7ueV4gRskdvB7pKhjPCcVI5ly6EPYy
+	MmdzpPAx5dBPCitaYxbrc5MrzWwWzKJw8Ps/LmPYPBQYxoc27gpBDwS8cyQ/YdXD7vZy2kqH2rl9N
+	hHvwzEmbDy8QbeyXxnKiFeJqrw/JXKGg5ejWfGPB0R9jP6OeMIUcheV4zlFmOAhypMqBEL+Y7yWwc
+	0ZgiHcmwqOCFKIbDpVibYB3jMLMWA/NLPvtB6EQ+L+NqILIFH8hZjEwhcIpnhRHwpUed96+OGjP+M
+	U/QK2JuShyUNu7VU6EEQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBfDa-0004hf-8H; Tue, 10 Mar 2020 13:46:46 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1jBfEF-0005J5-L7; Tue, 10 Mar 2020 13:47:27 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBfD0-00049l-Iq
- for linux-mediatek@lists.infradead.org; Tue, 10 Mar 2020 13:46:15 +0000
-Received: by mail-wm1-x344.google.com with SMTP id m3so1419950wmi.0
- for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2020 06:46:10 -0700 (PDT)
+ id 1jBfD2-0004BN-PS
+ for linux-mediatek@lists.infradead.org; Tue, 10 Mar 2020 13:46:16 +0000
+Received: by mail-wm1-x343.google.com with SMTP id a5so1480420wmb.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2020 06:46:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=5NwK13KieE3g1pIeISpKvFgafrteuLKq6QKuAvKr48w=;
- b=rXeiEXfdr7tjum0cLwUO3W6F2kslF/2sogUyrT2+BzLXOSZ5FDRTKKnUxD/2OnR4KU
- QhGF45RfRZrsJX3jzztasXZvdaRCYT7jXLEhYv0228ryhXtrVKPfEefIYRpee0hfwaSW
- 3zHp8m60zHbsae3fzH/X7rkoXOdHXwZ05Vvs3WJ38yuOruHMfb2JhQLoaIb17Ppxu/gX
- ZnTx2S9+esDpmKekZGJWHeR6tYipahZfAjzHWIIGfgOBlcH8aOeDfho3nenzVHF90NHM
- iQpyHOjQc7oQLYpAvRXAbKU/OQZDmzuTLgdbITfCUb0uIGHeOwo3g1OrsDjr6PXa1QkN
- TN8w==
+ bh=kcpWwT5ZMggrjSQT2EvWM0uaER77QpGrPnMzAFtSYRI=;
+ b=O0Lf67OGqFwaUzOUsqZhpfQommqipqakOP9ukqiFMtg84raIJ1xhcu/+IgDx8RPV4K
+ 8sGGmwfwEyYWBBoLnALcEFHKAsJlvAR8AUBpDDqc1Lm9EUF3aj8f7fJiWrR5gjg7/gOq
+ rdNrwGEwNZ8+iSNiWm7vrM5TV/rGUxpbIlBB19KI26agGyBQPCxL4shzzBLaVw8hvc6O
+ yn46Z2IoT5cJV5/IuNrLSFADdgk4BeMcIJ4nrD5ct0TQkHaaqBx2pUE5uUWDhhhqIQ+S
+ FZBv0A9zwwV1RIpj9EtiM8kK3u/WzWN55CqcszpUCNMng529s3Ad0kGSVdzklXIqn1VK
+ dfTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=5NwK13KieE3g1pIeISpKvFgafrteuLKq6QKuAvKr48w=;
- b=mhJTPknQQvfhj/OysY488qTNwDt87f83epSRB24q5Xb1ch6kjsQ3PCSZsAy1AD7Amu
- FNTMtAlzJJwgzxkpGa7kuO6PpqaPV5+7/ZbyBvJ1ysEJv36EIIOrG8mHF36w5g7dv04P
- sCRxvtB6EmJxbI7HN8dZexwqrq1ZL1cl0iellnxrHv7aIZeYIXH7AIIrlvyIludokag2
- JhQjw0B0OlwZf7nu/InHf5dt+lPNPfCZ1LrIQUL/daMNG2wYhmXyZ6n48+5zqw3lLimA
- RJw2bSUCyOWhyAVKs929CpArOOGPXUf9AeWC4uhss8najYVrfj8D2CONMEskBGxFoWnh
- OPtQ==
-X-Gm-Message-State: ANhLgQ2A3//mzT8d/rEn64bnkOTGlPfNlWXIIkia0siVC4jsp1BCcZq+
- BM8cQG5XVRZzL5xqC44d48SdbQ==
-X-Google-Smtp-Source: ADFU+vvWt6YpCG/aVLT7zR8itYjJEPxmlt7m0lDbV7z3qHBNn7BGYYp5d5wuRM+Dt+u1OBEAV74Yew==
-X-Received: by 2002:a1c:4d13:: with SMTP id o19mr2306219wmh.186.1583847968866; 
- Tue, 10 Mar 2020 06:46:08 -0700 (PDT)
+ bh=kcpWwT5ZMggrjSQT2EvWM0uaER77QpGrPnMzAFtSYRI=;
+ b=a2vAwk29ZJadQXjb1BjaZZEo2yZEt4CV145H5bQ1jSXAuQ7DjRLDqUg46VSS7YCT03
+ rq5G1jo3zemhbCeQXypPermyPws6+2boPYhkzQq6bo3QF2OXuVCCFFiYEApWfTy+4MoN
+ fAf3L5uzUjIoSBvu/dYqpr7uvEbU76VE3uDSnotCSRZGQfCdI2wD8p1fG0Gf3bfps1L5
+ qJLLeimXG+Q61KGSmLbCp35Fo7CaNHzs8k3cCEIvwDG+pfwPPAJhgG1wtGOKIFoZ2UVt
+ THUB7rxpp7DHH9qBD1wfTzjBLwrqzuWh5sCyzOUTjRQx/OT1fc7/isluabXl3Rc1OlIk
+ +9og==
+X-Gm-Message-State: ANhLgQ0s08Sm3e6Utny4hR1Fpf0B/KGiP7t6jXBcKezagGkzGjvTMbdj
+ T0r6XgazqFsfWuKmNtmb2iU+0Q==
+X-Google-Smtp-Source: ADFU+vstHBlerJtLLKmV0eIsOMnYH7m2KgACCake91JX7v1/q8QTpqLwfBfjOjRY02P/EWh99NEaCA==
+X-Received: by 2002:a05:600c:22cd:: with SMTP id
+ 13mr2257121wmg.186.1583847971629; 
+ Tue, 10 Mar 2020 06:46:11 -0700 (PDT)
 Received: from xps7590.local ([2a02:2450:102f:13b8:e50c:c780:9a1:8b61])
- by smtp.gmail.com with ESMTPSA id d63sm4074009wmd.44.2020.03.10.06.46.07
+ by smtp.gmail.com with ESMTPSA id d63sm4074009wmd.44.2020.03.10.06.46.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Mar 2020 06:46:08 -0700 (PDT)
+ Tue, 10 Mar 2020 06:46:11 -0700 (PDT)
 From: Robert Foss <robert.foss@linaro.org>
 To: ben.kao@intel.com, mchehab@kernel.org, robh+dt@kernel.org,
  mark.rutland@arm.com, matthias.bgg@gmail.com, davem@davemloft.net,
@@ -79,16 +80,17 @@ To: ben.kao@intel.com, mchehab@kernel.org, robh+dt@kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: [v1 1/3] media: dt-bindings: ov8856: Document YAML bindings
-Date: Tue, 10 Mar 2020 14:46:01 +0100
-Message-Id: <20200310134603.30260-2-robert.foss@linaro.org>
+Subject: [v1 3/3] media: ov8856: Implement sensor module revision
+ identification
+Date: Tue, 10 Mar 2020 14:46:03 +0100
+Message-Id: <20200310134603.30260-4-robert.foss@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200310134603.30260-1-robert.foss@linaro.org>
 References: <20200310134603.30260-1-robert.foss@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200310_064610_655262_9B396168 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20200310_064612_838028_D9F316C8 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,181 +108,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+Query the sensor for its module revision, and compare it
+to known revisions.
+Currently only the '1B' revision has been added.
 
-This patch adds documentation of device tree in YAML schema for the
-OV8856 CMOS image sensor.
-
-Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
 Signed-off-by: Robert Foss <robert.foss@linaro.org>
 ---
+ drivers/media/i2c/ov8856.c | 48 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 48 insertions(+)
 
-- Changes since v3:
-  * robher: Fix syntax error
-  * robher: Removed maxItems
-  * Fixes yaml 'make dt-binding-check' errors
-
-- Changes since v2:
-  Fixes comments from from Andy, Tomasz, Sakari, Rob.
-  * Convert text documentation to YAML schema.
-
-- Changes since v1:
-  Fixes comments from Sakari, Tomasz
-  * Add clock-frequency and link-frequencies in DT
-
- .../devicetree/bindings/media/i2c/ov8856.yaml | 129 ++++++++++++++++++
- MAINTAINERS                                   |   1 +
- 2 files changed, 130 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/i2c/ov8856.yaml
-
-diff --git a/Documentation/devicetree/bindings/media/i2c/ov8856.yaml b/Documentation/devicetree/bindings/media/i2c/ov8856.yaml
-new file mode 100644
-index 000000000000..c8099ccab1d9
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/i2c/ov8856.yaml
-@@ -0,0 +1,129 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+# Copyright (c) 2019 MediaTek Inc.
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/i2c/ov8856.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Omnivision OV8856 CMOS Sensor Device Tree Bindings
-+
-+maintainers:
-+  - Ben Kao <ben.kao@intel.com>
-+  - Dongchun Zhu <dongchun.zhu@mediatek.com>
-+
-+description: |-
-+  The Omnivision OV8856 is a high performance, 1/4-inch, 8 megapixel, CMOS
-+  image sensor that delivers 3264x2448 at 30fps. It provides full-frame,
-+  sub-sampled, and windowed 10-bit MIPI images in various formats via the
-+  Serial Camera Control Bus (SCCB) interface. This chip is programmable
-+  through I2C and two-wire SCCB. The sensor output is available via CSI-2
-+  serial data output (up to 4-lane).
-+
-+properties:
-+  compatible:
-+    const: ovti,ov8856
-+
-+  reg:
-+    maxItems: 1
-+
-+  clocks:
-+    maxItems: 1
-+
-+  clock-names:
-+    description:
-+      Input clock for the sensor.
-+    items:
-+      - const: xvclk
-+
-+  clock-frequency:
-+    description:
-+      Frequency of the xvclk clock in Hertz.
-+
-+  dovdd-supply:
-+    description:
-+      Definition of the regulator used as interface power supply.
-+
-+  avdd-supply:
-+    description:
-+      Definition of the regulator used as analog power supply.
-+
-+  dvdd-supply:
-+    description:
-+      Definition of the regulator used as digital power supply.
-+
-+  reset-gpios:
-+    description:
-+      The phandle and specifier for the GPIO that controls sensor reset.
-+
-+  port:
-+    type: object
-+    additionalProperties: false
-+    description:
-+      A node containing input and output port nodes with endpoint definitions
-+      as documented in
-+      Documentation/devicetree/bindings/media/video-interfaces.txt
-+
-+    properties:
-+      endpoint:
-+        type: object
-+
-+        properties:
-+          clock-lanes:
-+            maxItems: 1
-+
-+          data-lanes:
-+            maxItems: 1
-+
-+          remote-endpoint: true
-+
-+        required:
-+          - clock-lanes
-+          - data-lanes
-+          - remote-endpoint
-+
-+    required:
-+      - endpoint
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - clock-names
-+  - clock-frequency
-+  - dovdd-supply
-+  - avdd-supply
-+  - dvdd-supply
-+  - reset-gpios
-+  - port
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/gpio/gpio.h>
-+
-+    ov8856: camera-sensor@10 {
-+        compatible = "ovti,ov8856";
-+        reg = <0x10>;
-+        reset-gpios = <&pio 111 GPIO_ACTIVE_HIGH>;
-+        pinctrl-names = "default";
-+        pinctrl-0 = <&clk_24m_cam>;
-+
-+        clocks = <&cru SCLK_TESTCLKOUT1>;
-+        clock-names = "xvclk";
-+        clock-frequency = <19200000>;
-+
-+        avdd-supply = <&mt6358_vcama2_reg>;
-+        dvdd-supply = <&mt6358_vcamd_reg>;
-+        dovdd-supply = <&mt6358_vcamio_reg>;
-+
-+        port {
-+            wcam_out: endpoint {
-+                remote-endpoint = <&mipi_in_wcam>;
-+                data-lanes = <1 2 3 4>;
-+                link-frequencies = /bits/ 64 <360000000 180000000>;
-+            };
-+        };
-+    };
-+
-+...
-\ No newline at end of file
-diff --git a/MAINTAINERS b/MAINTAINERS
-index a6fbdf354d34..0f99e863978a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -12355,6 +12355,7 @@ L:	linux-media@vger.kernel.org
- T:	git git://linuxtv.org/media_tree.git
- S:	Maintained
- F:	drivers/media/i2c/ov8856.c
-+F:	Documentation/devicetree/bindings/media/i2c/ov8856.yaml
+diff --git a/drivers/media/i2c/ov8856.c b/drivers/media/i2c/ov8856.c
+index 1769acdfaa44..48e8f4b997d6 100644
+--- a/drivers/media/i2c/ov8856.c
++++ b/drivers/media/i2c/ov8856.c
+@@ -34,6 +34,18 @@
+ #define OV8856_MODE_STANDBY		0x00
+ #define OV8856_MODE_STREAMING		0x01
  
- OMNIVISION OV9650 SENSOR DRIVER
- M:	Sakari Ailus <sakari.ailus@linux.intel.com>
++/* define 1B module revision */
++#define OV8856_1B_MODULE		0x02
++
++/* the OTP read-out buffer is at 0x7000 and 0xf is the offset
++ * of the byte in the OTP that means the module revision
++ */
++#define OV8856_MODULE_REVISION		0x700f
++#define OV8856_OTP_MODE_CTRL		0x3d84
++#define OV8856_OTP_LOAD_CTRL		0x3d81
++#define OV8856_OTP_MODE_AUTO		0x00
++#define OV8856_OTP_LOAD_CTRL_ENABLE	BIT(0)
++
+ /* vertical-timings from sensor */
+ #define OV8856_REG_VTS			0x380e
+ #define OV8856_VTS_MAX			0x7fff
+@@ -713,6 +725,25 @@ static int ov8856_test_pattern(struct ov8856 *ov8856, u32 pattern)
+ 				OV8856_REG_VALUE_08BIT, pattern);
+ }
+ 
++static int ov8856_check_revision(struct ov8856 *ov8856)
++{
++	int ret;
++
++	ret = ov8856_write_reg(ov8856, OV8856_REG_MODE_SELECT,
++			       OV8856_REG_VALUE_08BIT, OV8856_MODE_STREAMING);
++	if (ret)
++		return ret;
++
++	ret = ov8856_write_reg(ov8856, OV8856_OTP_MODE_CTRL,
++			       OV8856_REG_VALUE_08BIT, OV8856_OTP_MODE_AUTO);
++	if (ret)
++		return ret;
++
++	return ov8856_write_reg(ov8856, OV8856_OTP_LOAD_CTRL,
++				OV8856_REG_VALUE_08BIT,
++				OV8856_OTP_LOAD_CTRL_ENABLE);
++}
++
+ static int ov8856_set_ctrl(struct v4l2_ctrl *ctrl)
+ {
+ 	struct ov8856 *ov8856 = container_of(ctrl->handler,
+@@ -1145,6 +1176,23 @@ static int ov8856_identify_module(struct ov8856 *ov8856)
+ 		return -ENXIO;
+ 	}
+ 
++	/* check sensor hardware revision */
++	ret = ov8856_check_revision(ov8856);
++	if (ret) {
++		dev_err(&client->dev, "failed to check sensor revision");
++		return ret;
++	}
++
++	ret = ov8856_read_reg(ov8856, OV8856_MODULE_REVISION,
++			      OV8856_REG_VALUE_08BIT, &val);
++	if (ret)
++		return ret;
++
++	dev_info(&client->dev, "OV8856 revision %x (%s) at address 0x%02x\n",
++		val,
++		val == OV8856_1B_MODULE ? "1B" : "unknown revision",
++		client->addr);
++
+ 	return 0;
+ }
+ 
 -- 
 2.20.1
 
