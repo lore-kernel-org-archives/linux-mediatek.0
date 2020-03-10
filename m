@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B601FC10F27
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 09:13:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6AB50C18E5C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 09:13:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8ECC524682
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 09:13:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3FB6524681
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2020 09:13:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Vsm17l9R"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8ECC524682
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DOfEc5sD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3FB6524681
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,33 +26,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=u9bskXaP6PAchYVwBHqJRNE+EIr+sACb3XeAYPGZ2rk=; b=Vsm17l9RYh0O52RTFdAXZ9Efnu
-	fbjVXgmCVsmP7ld8kBmGCWKE7utz0ze0SCwfcvh/5h8Ttc9pdYjo1nJVV6yyNRP9yfZ1oZNbJ89gZ
-	tr5VNlUbW0SLNNBBUeFyLuoIYhpGcH0FhDz44Nx+JESGheP27YmBnWNVi2jZeNGnUn4IwZSKnpnEA
-	ZyIse0zjbx4Mwj6tppLm8YYZwLx8WmdWCnWrIBISvPIrXAOJnOpnlh4bvqVtWfz1APsL/ytItqaPf
-	BK1EpzCq7be/zV6WChjbYxWqp2NY+mHR6Fsvb6LtN3ghkwQ7h/wYIZ/LFYZ8z+T0g20bwyisdJHOX
-	QGpNjz/g==;
+	bh=6CXIAwT8Mr5xscMZ9nrq2UMIPlzGMM6sa91tyLzlOXQ=; b=DOfEc5sDv4m+o5eVVN3d8PyPpq
+	GSYlLw6K3mRU2suREk9Qa+FjxiPSvVmR8J1V/LLBVSvkw327WJ/cXAizabUU6htJBzc309Dm3ifzt
+	I1KjIG3sWfcF3OnSIEYAc1oPKZ0fuVrQ84+xyp1i/J6z7iWFllNunyHDP+wgBt4OjjL3lkap0oK6u
+	VQmkVn59M5UaAmuMsQ3/lN2DGgctxgyWT86qXJR+z50GKbHvFAtv8R/awxlPMiH5ONuOg78MSDPGN
+	dAZnBbDAQPLryPy6ynlXJBshV0kG9Weu/eWnIct/XwAbUpLm8p/CZeUVlHN4Ki/zAmlJluiksI/YX
+	1wgnT/og==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBawg-0006bl-4b; Tue, 10 Mar 2020 09:13:02 +0000
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
- helo=theia.8bytes.org)
+	id 1jBawi-0006fo-5K; Tue, 10 Mar 2020 09:13:04 +0000
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBawR-0006Hn-Ka
+ id 1jBawR-0006IM-Rc
  for linux-mediatek@lists.infradead.org; Tue, 10 Mar 2020 09:12:49 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 019B87AB; Tue, 10 Mar 2020 10:12:32 +0100 (CET)
+ id C678FD42; Tue, 10 Mar 2020 10:12:33 +0100 (CET)
 From: Joerg Roedel <joro@8bytes.org>
 To: iommu@lists.linux-foundation.org
-Subject: [PATCH 07/15] iommu/arm-smmu: Fix uninitilized variable warning
-Date: Tue, 10 Mar 2020 10:12:21 +0100
-Message-Id: <20200310091229.29830-8-joro@8bytes.org>
+Subject: [PATCH 11/15] iommu/renesas: Use accessor functions for iommu private
+ data
+Date: Tue, 10 Mar 2020 10:12:25 +0100
+Message-Id: <20200310091229.29830-12-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200310091229.29830-1-joro@8bytes.org>
 References: <20200310091229.29830-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200310_021247_830584_D39E0EA4 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20200310_021248_049174_308920F9 
+X-CRM114-Status: UNSURE (   8.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,37 +83,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Some unrelated changes in the iommu code caused a new warning to
-appear in the arm-smmu driver:
+Make use of dev_iommu_priv_set/get() functions.
 
-  CC      drivers/iommu/arm-smmu.o
-drivers/iommu/arm-smmu.c: In function 'arm_smmu_add_device':
-drivers/iommu/arm-smmu.c:1441:2: warning: 'smmu' may be used uninitialized in this function [-Wmaybe-uninitialized]
-  arm_smmu_rpm_put(smmu);
-  ^~~~~~~~~~~~~~~~~~~~~~
-
-The warning is a false positive, but initialize the variable to NULL
-to get rid of it.
-
-Tested-by: Will Deacon <will@kernel.org> # arm-smmu
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/arm-smmu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/iommu/ipmmu-vmsa.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/iommu/arm-smmu.c b/drivers/iommu/arm-smmu.c
-index 16c4b87af42b..980aae73b45b 100644
---- a/drivers/iommu/arm-smmu.c
-+++ b/drivers/iommu/arm-smmu.c
-@@ -1383,7 +1383,7 @@ struct arm_smmu_device *arm_smmu_get_by_fwnode(struct fwnode_handle *fwnode)
+diff --git a/drivers/iommu/ipmmu-vmsa.c b/drivers/iommu/ipmmu-vmsa.c
+index ecb3f9464dd5..310cf09feea3 100644
+--- a/drivers/iommu/ipmmu-vmsa.c
++++ b/drivers/iommu/ipmmu-vmsa.c
+@@ -89,9 +89,7 @@ static struct ipmmu_vmsa_domain *to_vmsa_domain(struct iommu_domain *dom)
  
- static int arm_smmu_add_device(struct device *dev)
+ static struct ipmmu_vmsa_device *to_ipmmu(struct device *dev)
  {
--	struct arm_smmu_device *smmu;
-+	struct arm_smmu_device *smmu = NULL;
- 	struct arm_smmu_master_cfg *cfg;
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
- 	int i, ret;
+-	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+-
+-	return fwspec ? fwspec->iommu_priv : NULL;
++	return dev_iommu_priv_get(dev);
+ }
+ 
+ #define TLB_LOOP_TIMEOUT		100	/* 100us */
+@@ -727,14 +725,13 @@ static phys_addr_t ipmmu_iova_to_phys(struct iommu_domain *io_domain,
+ static int ipmmu_init_platform_device(struct device *dev,
+ 				      struct of_phandle_args *args)
+ {
+-	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+ 	struct platform_device *ipmmu_pdev;
+ 
+ 	ipmmu_pdev = of_find_device_by_node(args->np);
+ 	if (!ipmmu_pdev)
+ 		return -ENODEV;
+ 
+-	fwspec->iommu_priv = platform_get_drvdata(ipmmu_pdev);
++	dev_iommu_priv_set(dev, platform_get_drvdata(ipmmu_pdev));
+ 
+ 	return 0;
+ }
 -- 
 2.17.1
 
