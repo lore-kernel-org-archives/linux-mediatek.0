@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D72FEC0044D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 19:20:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DA60C0044D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 19:20:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BDAF520578
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 19:20:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 71EDA20691
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 19:20:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ABk/8IGw";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="G2+txh85"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BDAF520578
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RqxLsk2R";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="BfRQMt0i"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 71EDA20691
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,62 +27,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ny/v1lCe0b5Rw5c2IYiSu9VuPIJxsxCM8Lq1QYGJprU=; b=ABk/8IGwS2ytxK
-	gkfjpRCcxBCSeAtW3ginTn74zUGI7fNLnGhLqdhoLP52ktD2BB5faeWa+QYzaQN6/vLmBWbLtt5i7
-	fWZGHUANVUsopQWOpJksLGY5RHWzSjmBYF8GKqeEWgm8B+9tV+oeU3kCgxfRnwUl1H8Y1IU92giAw
-	fTbS/ITEpC4zXAZFzULuFBoALHdyM8+UT2Tl/DoAv1p9MunM/ZxuJTYxaXvtDFhrLR2ue5utdAGBo
-	DbIV5cB/gX1xmGOzpBrveS8NXHY84e0W8oV/GvUEsWcqT5gyEL55lFIuU1NEY2hpubhJ7dyuNKvsG
-	INT1Pnwda2QnRPj7YFSg==;
+	List-Owner; bh=AWdeDizMaHKOO70jgCZQK+IK4e9wXUDTMJXaJBEb2Gs=; b=RqxLsk2R12AlED
+	5N9Z8E5GmAdOp9aFHN18YDlLOXOkBYM7gokcExuE5FOyyhlTmWenpsfDlZ7QSad7S6uCkqVm7odV1
+	XAtSGcP2fz3pr+0a/DXS0PHhZ/zzVSBTSvcSo0DBSioRa1fRL3QMRbIKTfa5VRjR9oD3nVNVwZb0I
+	Y55yy8/p2SnqFuSF8j4ge2dgtmnIffWgFiHEQsS1K60WCiWCryvN0sqLnLNeGUt5DvVKMfIA3gyQO
+	hCWygIvV3p8XnfQuGy6yLulEgPqEaDBdBuHG/A1Oq/eGKd1pgTC1ZBUbg2dHAtHdpjT0HCywI9A37
+	OdMdotMpSVFcb6QD8gmQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jC6tX-0006TC-5W; Wed, 11 Mar 2020 19:19:55 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1jC6tw-0007xN-JA; Wed, 11 Mar 2020 19:20:20 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jC6sy-0005wB-Ey; Wed, 11 Mar 2020 19:19:21 +0000
-Received: by mail-pg1-x542.google.com with SMTP id m5so1731492pgg.0;
- Wed, 11 Mar 2020 12:19:20 -0700 (PDT)
+ id 1jC6t6-00063K-Rq; Wed, 11 Mar 2020 19:19:30 +0000
+Received: by mail-pl1-x641.google.com with SMTP id g12so1545765plo.3;
+ Wed, 11 Mar 2020 12:19:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=r42oaftrh5pHz14qU1GYkB0RQE5bj151KUZhP6WCLUU=;
- b=G2+txh85XP+S2jm9NSogjxqBUikS9Ngp6DtlfWcrAd9ufiH47Xb0eN1WLqYPThF/21
- 1CiU/fLxTDxovvO+tstyelBWaQNE54Cd9MaVw5sUNbbJll0t9oy6RoVBciTb1yx+p3n8
- SYMIbkSRuqEWGJPp9+ILBaLuPRjrhgatYgkP4uCMx2DpqGuBtdGqDm9bz7yvAOkct02H
- ymKsFcr0TFGylW3wkp6TPDnM7XYWoZVV1aaNU6yHrcziFZvZIJAKRJCwXzanVr0JxFdT
- eOoxecolqmumlXalOmw6vTiAKijvk0SgCuOyhL3gDgTTbUUoHdPR+r5SudaD3n/8pHnx
- JSmg==
+ bh=iN1lIy0/f67JfCi9KU7uh6n3lgkv7oAoZ5NZ3robPh0=;
+ b=BfRQMt0ipgIFCsbepxc9l/xVpH3h5JT7quohnIEoWdro74//CquJsdriyla9b7QShh
+ xdhsTWb+9hwl8ivWbbOHSq1aRRafUqRVsmh1R6Y0L5NZuukW/PvO/p81LYdadlpHmfPr
+ 3fnhkVIi6b5tCbqP534B/yAnACgpkdWA8GZpXzMMerkdn+wN1Cio3sYXjP3FwGj0mp9K
+ SfnpSzxn4zW1Mk5XGUvc3b+PWSrQOU2Ct2eQnaifytiDdyzu1F5MMTpbTMthiWYkF9ZR
+ hwXA0ViLm+Uw4fIAWd2KBIPc6SiX0DWe2CFpr9qpPwvViXhLGUlw3ZRRnXKWakd2PtCl
+ rzJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=r42oaftrh5pHz14qU1GYkB0RQE5bj151KUZhP6WCLUU=;
- b=RL7X3Tap/7GoNQRLJEAZMBM3bMNJxXuEspBYKcARA3cykSk9TCh9qNjrSeXaQAaGDv
- ACbSmoUnqum43ChrtdsVXJ5drbc5WzZQQ2X/EUx0fkideKENchtJMYoGpR5Xoqrq7LF/
- XwcP17hi3W9jVqz3XcBWU92gABSygoRbfPJw6F5fzJCg1s6MVtxHwHIZ8BdqIz4FGz0x
- WK5o4Ux04oZuTop0Fcx5939vyvUFz5Q5BLR5EjJuNfPp3jL2COB9387TZ9GOd3W8cy0O
- OtO1n0jJ9oZqnDGGOrdfCb9MgegMy/38NqtImYa3WRAsxFApdqYpTiVubGZoCRbB44MM
- v/KQ==
-X-Gm-Message-State: ANhLgQ0Bc8l2I8XY2k2Em7ZNTVqnrHxYRJ6M5wyVe0TBTTR0fbkZkJAL
- mIPGwuXcoEN4F0lj4uZDCgA=
-X-Google-Smtp-Source: ADFU+vtbPme6BTAJZmyevs7rgWm3h1iPQrP+b1siICnoXHB1UQz+utoRSjjlAt3zopkF2PlmJnFY3w==
-X-Received: by 2002:a62:ce48:: with SMTP id y69mr4249326pfg.178.1583954359553; 
- Wed, 11 Mar 2020 12:19:19 -0700 (PDT)
+ bh=iN1lIy0/f67JfCi9KU7uh6n3lgkv7oAoZ5NZ3robPh0=;
+ b=YY8blDgGWyY2WBjJgNSYlZHxDurPWMPCEQ88zWiHIIzZ3DODAcjDLr+3o90izESKQd
+ EetseEdgEJKDZKJ/KMQs9aGEiWe5kcCwQW80AzrYQZNVv9UhP+ct5GWTrTDPxvyp6BVd
+ o8hPyVvxZq/kUob/BZ+fZwcYpf35vbutpx9YimBGttPWJCjtuPCYE4EXTDPYzjuqLz82
+ L+DQB98i2oxHOZdw+YB1Gh8+KKhcQ/jB0tnsnxL6UGQGxImy6kRE1Jol/PAKEb6GqFNv
+ DgkHGLNw6cM+UOYT8RXDCNtVw3uxzhzGevQRIWbF5cL6+C/wBpvgWqhvvU3dRbjLM5RP
+ G6kA==
+X-Gm-Message-State: ANhLgQ1CyWRC5x4QFRVlNkmbp7yOi6jnrC6566iA7eT050s1HceRpXH5
+ sgx0rDP9vL8co66E3o2MS8I=
+X-Google-Smtp-Source: ADFU+vut3MyakqoUhMIetlzMKR/p4VXgaNSrjQMPOpcFkSKePWWm++E+Uy2ID9u1cYMxZFT24UeMyQ==
+X-Received: by 2002:a17:90a:d593:: with SMTP id
+ v19mr200036pju.177.1583954365043; 
+ Wed, 11 Mar 2020 12:19:25 -0700 (PDT)
 Received: from localhost.localdomain ([103.46.201.94])
- by smtp.gmail.com with ESMTPSA id z17sm3792673pff.12.2020.03.11.12.19.14
+ by smtp.gmail.com with ESMTPSA id z17sm3792673pff.12.2020.03.11.12.19.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Mar 2020 12:19:19 -0700 (PDT)
+ Wed, 11 Mar 2020 12:19:24 -0700 (PDT)
 From: Aman Sharma <amanharitsh123@gmail.com>
 To: 
-Subject: [PATCH 1/5] pci: handled return value of platform_get_irq correctly
-Date: Thu, 12 Mar 2020 00:49:02 +0530
-Message-Id: <d12a15f496ca472e100798ac2cd256fbfc1de15d.1583952276.git.amanharitsh123@gmail.com>
+Subject: [PATCH 2/5] pci: added check for return value of platform_get_irq
+Date: Thu, 12 Mar 2020 00:49:03 +0530
+Message-Id: <53b57606d7bc2615a43b1d5159200dba0435af6d.1583952276.git.amanharitsh123@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <cover.1583952275.git.amanharitsh123@gmail.com>
 References: <cover.1583952275.git.amanharitsh123@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200311_121920_523119_75DB32D0 
-X-CRM114-Status: GOOD (  10.81  )
+X-CRM114-CacheID: sfid-20200311_121928_939059_EA8AE0F1 
+X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,25 +113,23 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Signed-off-by: Aman Sharma <amanharitsh123@gmail.com>
 ---
- drivers/pci/controller/pci-v3-semi.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/pci/controller/pci-aardvark.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/pci/controller/pci-v3-semi.c b/drivers/pci/controller/pci-v3-semi.c
-index bd05221f5a22..a5bf945d2eda 100644
---- a/drivers/pci/controller/pci-v3-semi.c
-+++ b/drivers/pci/controller/pci-v3-semi.c
-@@ -777,9 +777,9 @@ static int v3_pci_probe(struct platform_device *pdev)
+diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
+index 2a20b649f40c..40a4257f0df1 100644
+--- a/drivers/pci/controller/pci-aardvark.c
++++ b/drivers/pci/controller/pci-aardvark.c
+@@ -973,6 +973,9 @@ static int advk_pcie_probe(struct platform_device *pdev)
+ 		return PTR_ERR(pcie->base);
  
- 	/* Get and request error IRQ resource */
  	irq = platform_get_irq(pdev, 0);
--	if (irq <= 0) {
-+	if (irq < 0) {
- 		dev_err(dev, "unable to obtain PCIv3 error IRQ\n");
--		return -ENODEV;
++	if (irq < 0)
 +		return irq;
- 	}
- 	ret = devm_request_irq(dev, irq, v3_irq, 0,
- 			"PCIv3 error", v3);
++
+ 	ret = devm_request_irq(dev, irq, advk_pcie_irq_handler,
+ 			       IRQF_SHARED | IRQF_NO_THREAD, "advk-pcie",
+ 			       pcie);
 -- 
 2.20.1
 
