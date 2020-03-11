@@ -2,88 +2,63 @@ Return-Path: <SRS0=ZThz=44=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+X-Spam-Status: No, score=-12.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F34D4C0044D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 19:21:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DD03DC0044D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 19:58:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BC64D20578
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 19:21:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E2B5120737
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 19:58:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fB6RthTc";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="CozuzMqF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC64D20578
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MD1ePdL3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E2B5120737
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eZGPMRk3UbyaHuDcYeSZ+txRWl5faDXGcoHMQOsa+iM=; b=fB6RthTcgYqUU6
-	5UqX1LT8ibPGBZqW32kIjAqIYJlRcMRJm6tsk3d3InTaZwzCpIeenUPn8DlbtSZFxwmhsHpcq3qHk
-	2wWOS8+50u4kgpE9O7KqTi+TP+4G1gRAPZdtcuvALIHzeWtPooGn7BDfYk7f5UQgd82NGy3hlYElw
-	i7d8BpmOmDmcL5vj0FevNTJobkOiwFenPjsPfIiXwNsvb51+7cbu1kldEvPbWkkNH2v9CDYMWJcAY
-	QUsik7bhVG8POMCeeXgj+H0s3BHDbhihxp4o/KW1CxDw7oIms/Bm4dIrmXjTd+k5ml+oiThGPGrqp
-	H6J7GoNFoaiaFm1Fgq5w==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=9iWbOq1r7ZSdY+NKwu23C4JMCzFddz6Iv40VVcYXBsQ=; b=MD1ePdL3GJj533JIPj/+AfYqe
+	3xdeQYc4eJsSMi3YuMmVLsLti7anE1nzbAvWS0XY5E3br6t+YSn6rGmRbBSvVjEKXFXWIpRsT9AiP
+	oAd1xmcDv3DJXObmLECQXf7+1aIrhyOGAatKAvwCSATnqdBXb+bcmKPGi/dQS/yWwUhSCbDYBvKlD
+	4zypl5PNcIz//7qf6SU0jNwTr89DdNASkudC+mRG0XQuEYvxATT3Cjz3rGU0t+d112oaWOSaTCJ7F
+	q4gSTSAIwO6eQLyVD4smEClwuGfD0lh++UymfLugfkUFC9Ee+PgZ8mzN84yISYLbavRx4QdSVm8tN
+	RnY1SO27A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jC6up-0000Qh-04; Wed, 11 Mar 2020 19:21:15 +0000
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jC6tK-0006L1-M9; Wed, 11 Mar 2020 19:19:44 +0000
-Received: by mail-pf1-x442.google.com with SMTP id u68so1885057pfb.2;
- Wed, 11 Mar 2020 12:19:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=6tx20opC58CZx8EHUzpcUW3v0td0yDhkgy01mmgvT1k=;
- b=CozuzMqFhVkFE6pdK3cIh6s0uXsG2lK7hYQy5IVZtcQmUzBEAvs4Pb139yfhgUcRa9
- N2kLzQ5SjJ4V/dJTw7i+GKo/N1pv+gZxM58WXszNGBoQKI+uMjTkQV8zbt4kF/2vH6H5
- NJvfcNhZFERyJC3It01naJmHSsln6g6kKl1vzNrulqq5LAHF4wgNhbVyandZgnizxIO/
- cJgnDsnDD40sItIySZNC+HviwpK2K4wwHsgCEN7CPG5wC+lgXKwLhWQretoqWOKfhmxk
- PpPlksn5E6jm5/jvgOte7D5wpDz3s+voxXT0SDhgnRs5al+E5xvjKdYFYNU988j+8gtz
- FAuA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=6tx20opC58CZx8EHUzpcUW3v0td0yDhkgy01mmgvT1k=;
- b=h8uazwxLNecGqdOuwbkdBprfKoiS4UmUAOT5Xh9MHdt2nJoW1dicUhrn+W88t2nEw1
- ygd6N4k4Ra9TfRkCFa1lm8WYkgu0ijIiTFB6Q2G6h+EnWjOCNHTJJW2UdjtoMTvF2WH3
- Rf/j/bP3if6QiDg+K2R2pTec3yczNgEHKfwwe3KwMr2oGsQIoOZ9K3MxSDuMMcVielDn
- Vxl0hRAAmCBoLSSKnZFyiMHV03g1GpVwIxH1/htPXnXmFWcQgCGMhCysuqJfQvAnzNrI
- KmWqMeou5f7XZT9MXgF2KG9hnTVQQz9ki3xgXiX4oQT46ox7bafcjZXbdY5HeEyEyYBu
- O6kA==
-X-Gm-Message-State: ANhLgQ0INnMmMIuWzWLTYM215//KTdGu9uDeE0gbkL5E5dLB9493OVue
- xv5tVRUg2eHKYrpEoAcKjjA=
-X-Google-Smtp-Source: ADFU+vuIATg8TgONqQwj07uaBbQTUtMOLI517xnn/BWXZKYW/0G/Tlqgwm379phb/QVQVuzVzgf6SQ==
-X-Received: by 2002:aa7:90cc:: with SMTP id k12mr2456493pfk.94.1583954381475; 
- Wed, 11 Mar 2020 12:19:41 -0700 (PDT)
-Received: from localhost.localdomain ([103.46.201.94])
- by smtp.gmail.com with ESMTPSA id z17sm3792673pff.12.2020.03.11.12.19.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Mar 2020 12:19:41 -0700 (PDT)
-From: Aman Sharma <amanharitsh123@gmail.com>
-To: 
-Subject: [PATCH 5/5] pci: added check for return value of platform_get_irq
-Date: Thu, 12 Mar 2020 00:49:06 +0530
-Message-Id: <a36999aa5c567c65ddfaf0b54406e8583343a510.1583952276.git.amanharitsh123@gmail.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <cover.1583952275.git.amanharitsh123@gmail.com>
-References: <cover.1583952275.git.amanharitsh123@gmail.com>
+	id 1jC7UY-0000gb-5a; Wed, 11 Mar 2020 19:58:10 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jC7UH-0000UG-Oh; Wed, 11 Mar 2020 19:57:55 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 199F71FB;
+ Wed, 11 Mar 2020 12:57:53 -0700 (PDT)
+Received: from localhost (unknown [10.37.6.21])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8EEF73F534;
+ Wed, 11 Mar 2020 12:57:52 -0700 (PDT)
+Date: Wed, 11 Mar 2020 19:57:50 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Tudor.Ambarus@microchip.com
+Subject: Re: [PATCH v3 4/4] mtd: spi-nor: remove mtk-quadspi driver
+Message-ID: <20200311195750.GL5411@sirena.org.uk>
+References: <20200306085052.28258-1-gch981213@gmail.com>
+ <20200309121020.GD4101@sirena.org.uk>
+ <2471214.x7VzW1FXlQ@localhost.localdomain>
+ <4427171.IzkiAjLLdB@localhost.localdomain>
 MIME-Version: 1.0
+In-Reply-To: <4427171.IzkiAjLLdB@localhost.localdomain>
+X-Cookie: I'm a Lisp variable -- bind me!
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200311_121942_748597_48F27260 
-X-CRM114-Status: UNSURE (   9.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200311_125753_891559_73AC4BC8 
+X-CRM114-Status: GOOD (  13.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,45 +70,104 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
- Marc Gonzalez <marc.w.gonzalez@free.fr>, linux-pci@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>, amanharitsh123@gmail.com,
- linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Mans Rullgard <mans@mansr.com>,
- Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, linux-arm-kernel@lists.infradead.org,
- Andrew Murray <amurray@thegoodpenguin.co.uk>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devicetree@vger.kernel.org, vigneshr@ti.com, richard@nod.at,
+ linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, robh+dt@kernel.org,
+ linux-mtd@lists.infradead.org, miquel.raynal@bootlin.com,
+ matthias.bgg@gmail.com, linux-mediatek@lists.infradead.org,
+ gch981213@gmail.com, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============5920775681583154835=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Signed-off-by: Aman Sharma <amanharitsh123@gmail.com>
----
- drivers/pci/controller/pcie-mediatek.c | 3 +++
- 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index cb982891b22b..ebfa7d5a4e2d 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -651,6 +651,9 @@ static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
- 	}
- 
- 	port->irq = platform_get_irq(pdev, port->slot);
-+	if (port->irq < 0)
-+		return port->irq;
-+
- 	irq_set_chained_handler_and_data(port->irq,
- 					 mtk_pcie_intr_handler, port);
- 
--- 
-2.20.1
+--===============5920775681583154835==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="TnYVF1hk1c8rpHiF"
+Content-Disposition: inline
 
+
+--TnYVF1hk1c8rpHiF
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Mar 10, 2020 at 09:11:29AM +0000, Tudor.Ambarus@microchip.com wrote:
+
+> You can also create an immutable tag that I can merge in my spi-nor/next=
+=20
+> branch, so that Linus doesn't have to deal with the conflict.
+
+The following changes since commit bb6d3fb354c5ee8d6bde2d576eb7220ea09862b9:
+
+  Linux 5.6-rc1 (2020-02-09 16:08:48 -0800)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git tags/mtk-=
+mtd-spi-move
+
+for you to fetch changes up to e11e8473bcec748c3820636f11b986f611c9309b:
+
+  mtd: spi-nor: remove mtk-quadspi driver (2020-03-11 19:56:08 +0000)
+
+----------------------------------------------------------------
+spi: Rewrite mtk-quadspi spi-nor driver with spi-mem
+
+This patchset from Chuanhong Guo <gch981213@gmail.com> adds a spi-mem
+driver for Mediatek SPI-NOR controller, which already has limited
+support by mtk-quadspi. This new driver can make use of full quadspi
+capability of this controller.
+
+----------------------------------------------------------------
+Chuanhong Guo (4):
+      spi: make spi-max-frequency optional
+      spi: add support for mediatek spi-nor controller
+      dt-bindings: convert mtk-quadspi binding doc for spi-mtk-nor
+      mtd: spi-nor: remove mtk-quadspi driver
+
+ .../{mtd/mtk-quadspi.txt =3D> spi/spi-mtk-nor.txt}   |  15 +-
+ drivers/mtd/spi-nor/Kconfig                        |   8 -
+ drivers/mtd/spi-nor/Makefile                       |   1 -
+ drivers/mtd/spi-nor/mtk-quadspi.c                  | 565 -----------------
+ drivers/spi/Kconfig                                |  10 +
+ drivers/spi/Makefile                               |   1 +
+ drivers/spi/spi-mtk-nor.c                          | 689 +++++++++++++++++=
+++++
+ drivers/spi/spi.c                                  |   9 +-
+ 8 files changed, 708 insertions(+), 590 deletions(-)
+ rename Documentation/devicetree/bindings/{mtd/mtk-quadspi.txt =3D> spi/spi=
+-mtk-nor.txt} (75%)
+ delete mode 100644 drivers/mtd/spi-nor/mtk-quadspi.c
+ create mode 100644 drivers/spi/spi-mtk-nor.c
+
+--TnYVF1hk1c8rpHiF
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl5pQr0ACgkQJNaLcl1U
+h9BuJgf+J4BVeDZ89cXm1ecHsmkFxwEbC3B2+ALUZTKsTZ4n5rM4aliKanEGJ5XX
+llfEUpxE7QAnZE9vv8yoKCfE8njVTTmyYi2TBJKg0hrcXb1Q3pvbsQJTO8uXm57g
+iajxxjrO0mdISzR0gErKYgJjdDyIUThSR89v5b7YXpWP4dHf7JSA4qwIWFhOLCZd
+fX3G8RIjqXkSJx2yKPjK7+xkA7u7GvP7U9kt1Nynt1NOlRtGyUywUZblL5MhZ2MG
+Bjln0lpBnhN285Mvntm49LmpoEnPdeHzbozsMVZHmD0+sdpGZ8PIQSiILb/mGCJf
+jpg/Q++KbM01LDw26eSGVIsnqAFBdA==
+=Neg9
+-----END PGP SIGNATURE-----
+
+--TnYVF1hk1c8rpHiF--
+
+
+--===============5920775681583154835==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============5920775681583154835==--
+
