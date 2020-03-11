@@ -2,69 +2,57 @@ Return-Path: <SRS0=ZThz=44=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1B1E7C10F27
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 09:06:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1CA1EC10F27
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 09:06:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DD96720848
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 09:06:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E724821D7E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 09:06:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eSrV0KT+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD96720848
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IV5LlSy5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E724821D7E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kNBNBtbVNwSd2B2xvuziLOBjToqOiJiTFM/KIHghzk4=; b=eSrV0KT+e4HnOt
-	teLY+ZLdPXeKueXcESQqI/af9nZ+Dos1h0SNFcoCV9CaylHjXGJVUygdTef+fb58kPkRx+Sf/IG0A
-	1XowKW/cojLcjLxps8/YgJTXtLQXzmO+N4UhIwWUOKRf1j7BydHh/rVQi5LpUhM4FLot256GrsD7a
-	Y0nmcPOg+lZRjvu0CAcCQJRIojewN5sCqqiA6mK5czFK9jWYyc4G+tw2Y3uCK/mUeJezziDp41i1+
-	l6Zjf7zyG2Y/74LFBdZfbuGNK8s27Bt+CE0MztfFZD5XeyBPreZm/jt8q9ccxbB5ANuft66aHsgpU
-	Udzlz0DD3VWYK8G/A/bg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=ujH9LBZZL642IhWIrLnPdkFqzVrM+yRkyxIUbh7qMKA=; b=IV5
+	LlSy5kqoQ7OF48hubKeAeyda9cBf/LJ/x1wIjcdZSFgVdJe37uLzkZATzeUCpNYf+QIbAulT7G6YG
+	Wj2kjJSAx9pMfqarZnNgpqw1h8zBepfT2jEGU0HPLLqMve0p2Ore+wyk28JZVKLpL7xCt4kCnlPgC
+	1VtQ6fIS2SwZshfelgJnUlQK8z8I1mEhLB/d8Tp/3nOi0M9ycBPxT+zmQR1nfBxaTR+R3AfEdYkgh
+	ceQB/LJtmnHI+jgB372DMmrzmvYfbdmdY5D7QMvk01uklQjIRY6BJjncRKES7uCB9nNn2oQIHJADz
+	l21j7aL6O32jBDaGg8oVKZEvJYWtGdw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBxJm-0004WM-5p; Wed, 11 Mar 2020 09:06:22 +0000
-Received: from mga04.intel.com ([192.55.52.120])
+	id 1jBxKD-0004fa-35; Wed, 11 Mar 2020 09:06:49 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBxJZ-0004GL-Bu; Wed, 11 Mar 2020 09:06:10 +0000
-X-Amp-Result: UNKNOWN
-X-Amp-Original-Verdict: FILE UNKNOWN
-X-Amp-File-Uploaded: False
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 11 Mar 2020 02:05:52 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.70,540,1574150400"; d="scan'208";a="234652853"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by fmsmga007.fm.intel.com with ESMTP; 11 Mar 2020 02:05:49 -0700
-Received: from andy by smile with local (Exim 4.93)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1jBxJG-008h6u-OT; Wed, 11 Mar 2020 11:05:50 +0200
-Date: Wed, 11 Mar 2020 11:05:50 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Robert Foss <robert.foss@linaro.org>
-Subject: Re: [v1 2/3] media: ov8856: Add devicetree support
-Message-ID: <20200311090550.GB1922688@smile.fi.intel.com>
-References: <20200310134603.30260-1-robert.foss@linaro.org>
- <20200310134603.30260-3-robert.foss@linaro.org>
- <20200310142652.GK1922688@smile.fi.intel.com>
- <CAG3jFyu5S1H=r6pV92tc_a2LoCUnhb0mDbOegP2BCO8a5C1nVg@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAG3jFyu5S1H=r6pV92tc_a2LoCUnhb0mDbOegP2BCO8a5C1nVg@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+ id 1jBxKA-0004f0-Bd
+ for linux-mediatek@lists.infradead.org; Wed, 11 Mar 2020 09:06:47 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx2.suse.de (Postfix) with ESMTP id 1C44AAF5B;
+ Wed, 11 Mar 2020 09:06:45 +0000 (UTC)
+From: Takashi Iwai <tiwai@suse.de>
+To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH] pinctrl: mediatek: Use scnprintf() for avoiding potential
+ buffer overflow
+Date: Wed, 11 Mar 2020 10:06:44 +0100
+Message-Id: <20200311090644.20287-1-tiwai@suse.de>
+X-Mailer: git-send-email 2.16.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200311_020609_416291_12E415F7 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20200311_020646_537330_5C5E8284 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,43 +64,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- Tomasz Figa <tfiga@chromium.org>, ben.kao@intel.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, Dongchun Zhu <dongchun.zhu@mediatek.com>,
- Jonathan.Cameron@huawei.com, matthias.bgg@gmail.com, mchehab@kernel.org,
- davem@davemloft.net, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 10, 2020 at 04:55:20PM +0100, Robert Foss wrote:
-> On Tue, 10 Mar 2020 at 15:26, Andy Shevchenko
-> <andriy.shevchenko@linux.intel.com> wrote:
-> > On Tue, Mar 10, 2020 at 02:46:02PM +0100, Robert Foss wrote:
+Since snprintf() returns the would-be-output size instead of the
+actual output size, the succeeding calls may go beyond the given
+buffer limit.  Fix it by replacing with scnprintf().
 
-...
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ drivers/pinctrl/mediatek/pinctrl-paris.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-> > > +     ov8856->xvclk = devm_clk_get(&client->dev, "xvclk");
-> > > +     if (IS_ERR(ov8856->xvclk)) {
-> > > +             dev_err(&client->dev, "failed to get xvclk\n");
-> > > +             return -EINVAL;
-> > > +     }
-> >
-> > Previously it worked without clock provider, now you make a dependency.
-> >
-> > This won't work.
-> 
-> So the ideal behavior would be to only use the xclk if it is provided?
-
-Yes, make it optional.
-
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index 3ee8086f5e55..3853ec3a2a8e 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -611,7 +611,7 @@ ssize_t mtk_pctrl_show_one_pin(struct mtk_pinctrl *hw,
+ 	} else if (pullen != MTK_DISABLE && pullen != MTK_ENABLE) {
+ 		pullen = 0;
+ 	}
+-	len += snprintf(buf + len, bufLen - len,
++	len += scnprintf(buf + len, bufLen - len,
+ 			"%03d: %1d%1d%1d%1d%02d%1d%1d%1d%1d",
+ 			gpio,
+ 			pinmux,
+@@ -625,10 +625,10 @@ ssize_t mtk_pctrl_show_one_pin(struct mtk_pinctrl *hw,
+ 			pullup);
+ 
+ 	if (r1 != -1) {
+-		len += snprintf(buf + len, bufLen - len, " (%1d %1d)\n",
++		len += scnprintf(buf + len, bufLen - len, " (%1d %1d)\n",
+ 			r1, r0);
+ 	} else {
+-		len += snprintf(buf + len, bufLen - len, "\n");
++		len += scnprintf(buf + len, bufLen - len, "\n");
+ 	}
+ 
+ 	return len;
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.16.4
 
 
 _______________________________________________
