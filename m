@@ -2,81 +2,69 @@ Return-Path: <SRS0=ZThz=44=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CE0BFC10F25
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 07:47:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1B1E7C10F27
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 09:06:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A0788206B7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 07:47:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DD96720848
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 09:06:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fZBwT3/j";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="fSMM/0ua"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A0788206B7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eSrV0KT+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD96720848
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AEBgJt/P2z0DFm2z+MPETh9T2lj542u0E6XNZ0sjY3Y=; b=fZBwT3/jGM6fWj
-	9ucO9jXJcuCGPTh2ukqmJh934QYc/2e8Sgzn9nZUwfTXIuSYUPJSocS/U5rrThtzCFV0VQRt+8awZ
-	e9EchEDn6KxAOGCg+zjYUYUvnrQDIvqNupRc+howKC3rSXPvqfDLNBXvqKiOjfJcWOaw1OX8CF3I9
-	JBG6hzD3vUQSg/DvO7QNCj7PrVpfi+t+9bCJy/SaRxjjB4wWZaS+V4J46ZSqPBJQvNL1kbSGkbNJu
-	KCgvbq6VE0K6VMothsTqgOvAD29Wc4HtGx2m9kgmmOMCGiSthc8dunVPWuNfdurtZ+Vfi9f9YS3oT
-	1ds6LyMk8r30FRP87POg==;
+	List-Owner; bh=kNBNBtbVNwSd2B2xvuziLOBjToqOiJiTFM/KIHghzk4=; b=eSrV0KT+e4HnOt
+	teLY+ZLdPXeKueXcESQqI/af9nZ+Dos1h0SNFcoCV9CaylHjXGJVUygdTef+fb58kPkRx+Sf/IG0A
+	1XowKW/cojLcjLxps8/YgJTXtLQXzmO+N4UhIwWUOKRf1j7BydHh/rVQi5LpUhM4FLot256GrsD7a
+	Y0nmcPOg+lZRjvu0CAcCQJRIojewN5sCqqiA6mK5czFK9jWYyc4G+tw2Y3uCK/mUeJezziDp41i1+
+	l6Zjf7zyG2Y/74LFBdZfbuGNK8s27Bt+CE0MztfFZD5XeyBPreZm/jt8q9ccxbB5ANuft66aHsgpU
+	Udzlz0DD3VWYK8G/A/bg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBw53-0007Rj-0a; Wed, 11 Mar 2020 07:47:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jBxJm-0004WM-5p; Wed, 11 Mar 2020 09:06:22 +0000
+Received: from mga04.intel.com ([192.55.52.120])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBw4c-000783-4l; Wed, 11 Mar 2020 07:46:41 +0000
-X-UUID: a543836c88154a209fc0af7fd48922f4-20200310
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ky4U2iOoR/7QiRcWdPirzV01VHNVyn80Ewfl4QlT/O8=; 
- b=fSMM/0ua2SbwT+3PcZr10JLvg37lDkVXfPrX/r3VOfFtYDaavpSYEwW9pVlV076V3LV2VqhZCpsUIjkQsNDjyDL2Oap8rqTHYIJ5CPMcNuLGA4YkEUOdQFMmlhtYqBIULCs7rrm3KIEy41SWcvPBNKj44cmoBnZ7j2Dr2da6bjM=;
-X-UUID: a543836c88154a209fc0af7fd48922f4-20200310
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jitao.shi@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 151119427; Tue, 10 Mar 2020 23:46:29 -0800
-Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 11 Mar 2020 00:41:26 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS33N2.mediatek.inc
- (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Wed, 11 Mar 2020 15:41:13 +0800
-Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
- MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1395.4 via Frontend Transport; Wed, 11 Mar 2020 15:42:03 +0800
-From: Jitao Shi <jitao.shi@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH v3 2/4] dt-bindings: display: mediatek: get mipitx calibration
- data from nvmem
-Date: Wed, 11 Mar 2020 15:40:30 +0800
-Message-ID: <20200311074032.119481-3-jitao.shi@mediatek.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20200311074032.119481-1-jitao.shi@mediatek.com>
-References: <20200311074032.119481-1-jitao.shi@mediatek.com>
+ id 1jBxJZ-0004GL-Bu; Wed, 11 Mar 2020 09:06:10 +0000
+X-Amp-Result: UNKNOWN
+X-Amp-Original-Verdict: FILE UNKNOWN
+X-Amp-File-Uploaded: False
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 11 Mar 2020 02:05:52 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.70,540,1574150400"; d="scan'208";a="234652853"
+Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
+ by fmsmga007.fm.intel.com with ESMTP; 11 Mar 2020 02:05:49 -0700
+Received: from andy by smile with local (Exim 4.93)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1jBxJG-008h6u-OT; Wed, 11 Mar 2020 11:05:50 +0200
+Date: Wed, 11 Mar 2020 11:05:50 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Robert Foss <robert.foss@linaro.org>
+Subject: Re: [v1 2/3] media: ov8856: Add devicetree support
+Message-ID: <20200311090550.GB1922688@smile.fi.intel.com>
+References: <20200310134603.30260-1-robert.foss@linaro.org>
+ <20200310134603.30260-3-robert.foss@linaro.org>
+ <20200310142652.GK1922688@smile.fi.intel.com>
+ <CAG3jFyu5S1H=r6pV92tc_a2LoCUnhb0mDbOegP2BCO8a5C1nVg@mail.gmail.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: E25E520462EF9651236524639997E14D57FB8F467C6CAC3B9008681332D7BE932000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <CAG3jFyu5S1H=r6pV92tc_a2LoCUnhb0mDbOegP2BCO8a5C1nVg@mail.gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200311_004638_239428_303CA849 
-X-CRM114-Status: UNSURE (   9.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200311_020609_416291_12E415F7 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,48 +76,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>,
- srv_heupstream@mediatek.com, huijuan.xie@mediatek.com, stonea168@163.com,
- cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org,
- bibby.hsieh@mediatek.com, ck.hu@mediatek.com, yingjoe.chen@mediatek.com,
- eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org,
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ Tomasz Figa <tfiga@chromium.org>, ben.kao@intel.com, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, Dongchun Zhu <dongchun.zhu@mediatek.com>,
+ Jonathan.Cameron@huawei.com, matthias.bgg@gmail.com, mchehab@kernel.org,
+ davem@davemloft.net, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add properties to get get mipitx calibration data.
+On Tue, Mar 10, 2020 at 04:55:20PM +0100, Robert Foss wrote:
+> On Tue, 10 Mar 2020 at 15:26, Andy Shevchenko
+> <andriy.shevchenko@linux.intel.com> wrote:
+> > On Tue, Mar 10, 2020 at 02:46:02PM +0100, Robert Foss wrote:
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
----
- .../devicetree/bindings/display/mediatek/mediatek,dsi.txt    | 5 +++++
- 1 file changed, 5 insertions(+)
+...
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
-index d501f9ff4b1f..b179293c43de 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
-@@ -34,6 +34,9 @@ Required properties:
- - #phy-cells: must be <0>.
- 
- Optional properties:
-+- nvmem-cells: A phandle to the calibration data provided by a nvmem device. If
-+               unspecified default values shall be used.
-+- nvmem-cell-names: Should be "calibration-data"
- - drive-strength-microamp: adjust driving current, should be 1 ~ 0xF
- 
- Example:
-@@ -45,6 +48,8 @@ mipi_tx0: mipi-dphy@10215000 {
- 	clock-output-names = "mipi_tx0_pll";
- 	#clock-cells = <0>;
- 	#phy-cells = <0>;
-+	nvmem-cells= <&mipi_tx_calibration>;
-+	nvmem-cell-names = "calibration-data";
- 	drive-strength-microamp = <0x8>;
- };
- 
+> > > +     ov8856->xvclk = devm_clk_get(&client->dev, "xvclk");
+> > > +     if (IS_ERR(ov8856->xvclk)) {
+> > > +             dev_err(&client->dev, "failed to get xvclk\n");
+> > > +             return -EINVAL;
+> > > +     }
+> >
+> > Previously it worked without clock provider, now you make a dependency.
+> >
+> > This won't work.
+> 
+> So the ideal behavior would be to only use the xclk if it is provided?
+
+Yes, make it optional.
+
 -- 
-2.21.0
+With Best Regards,
+Andy Shevchenko
+
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
