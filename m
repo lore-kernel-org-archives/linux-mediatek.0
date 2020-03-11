@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DA60C0044D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 19:20:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E27FEC0044D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 19:20:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 71EDA20691
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 19:20:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B41AB20578
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 19:20:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RqxLsk2R";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="BfRQMt0i"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 71EDA20691
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j2mmrU7m";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="avwLSbYP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B41AB20578
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,64 +27,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AWdeDizMaHKOO70jgCZQK+IK4e9wXUDTMJXaJBEb2Gs=; b=RqxLsk2R12AlED
-	5N9Z8E5GmAdOp9aFHN18YDlLOXOkBYM7gokcExuE5FOyyhlTmWenpsfDlZ7QSad7S6uCkqVm7odV1
-	XAtSGcP2fz3pr+0a/DXS0PHhZ/zzVSBTSvcSo0DBSioRa1fRL3QMRbIKTfa5VRjR9oD3nVNVwZb0I
-	Y55yy8/p2SnqFuSF8j4ge2dgtmnIffWgFiHEQsS1K60WCiWCryvN0sqLnLNeGUt5DvVKMfIA3gyQO
-	hCWygIvV3p8XnfQuGy6yLulEgPqEaDBdBuHG/A1Oq/eGKd1pgTC1ZBUbg2dHAtHdpjT0HCywI9A37
-	OdMdotMpSVFcb6QD8gmQ==;
+	List-Owner; bh=kDMIva+AVYNxZKZ5kbq6jGks2T/CAseg8rDIJoIpWQ8=; b=j2mmrU7m5MmZuQ
+	BQG/A7Ty7K7A94h8oo6Bw2rRkK+ZHoRsY+DQoXCz3TSRlg1W9gjjsg5x4YXD7+YjlleoIegA4dcww
+	V42hctAQHYIvlz5APchsbyv/Tzqsxmf5I+cN6MxxG95hoiE0PvjzdY7Zii74/XVR9m1FPltpNUV+5
+	TxtdcYDKBDvsuqMAPpghVvYW0xzHAEdLwTWlsK08N1+ina5nLXjem6ER+zCxSlCdLl+dDybhBwQlz
+	GtMkMMuj4ABtF2ViMbEfqU18nuNUKXYYPZ4CgjDcBP1BCzcQWn5OhXcctVPgBliLPZq6IF8sa24e0
+	j6BRHTyb9xTv1O4axCoA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jC6tw-0007xN-JA; Wed, 11 Mar 2020 19:20:20 +0000
+	id 1jC6uF-0008G3-Tr; Wed, 11 Mar 2020 19:20:39 +0000
 Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jC6t6-00063K-Rq; Wed, 11 Mar 2020 19:19:30 +0000
-Received: by mail-pl1-x641.google.com with SMTP id g12so1545765plo.3;
- Wed, 11 Mar 2020 12:19:26 -0700 (PDT)
+ id 1jC6t9-0006Aa-JK; Wed, 11 Mar 2020 19:19:32 +0000
+Received: by mail-pl1-x641.google.com with SMTP id j20so1538763pll.6;
+ Wed, 11 Mar 2020 12:19:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=iN1lIy0/f67JfCi9KU7uh6n3lgkv7oAoZ5NZ3robPh0=;
- b=BfRQMt0ipgIFCsbepxc9l/xVpH3h5JT7quohnIEoWdro74//CquJsdriyla9b7QShh
- xdhsTWb+9hwl8ivWbbOHSq1aRRafUqRVsmh1R6Y0L5NZuukW/PvO/p81LYdadlpHmfPr
- 3fnhkVIi6b5tCbqP534B/yAnACgpkdWA8GZpXzMMerkdn+wN1Cio3sYXjP3FwGj0mp9K
- SfnpSzxn4zW1Mk5XGUvc3b+PWSrQOU2Ct2eQnaifytiDdyzu1F5MMTpbTMthiWYkF9ZR
- hwXA0ViLm+Uw4fIAWd2KBIPc6SiX0DWe2CFpr9qpPwvViXhLGUlw3ZRRnXKWakd2PtCl
- rzJA==
+ bh=02Tw1k2Q38WueLNikGUX0EcXKDMIWen5M9i6gPM5Zj4=;
+ b=avwLSbYPrJFeGMWyeeJPgpyMc6eZIgulQvJJACFk8LWJ7HzV7HO8ikUbQSac0O2Soj
+ /RjNmGzqh3cSgVBNRF8SWz0kd1JNjiwKtfzfdTlHW6eG09Sf04ZE2X2+P2mBinSoSbEd
+ ZtbV8rrBa9wwNAw6uF+WKE5ZC5z+jqKmGAHILwskaowFvMVSkx5YuY+cGwn7VknnDL2a
+ JWrihz0fTOXoLdKzTc7yZvZ4/gbWPExseEhqgLuMa3bmlmkHOEe42v5iSpOwJoWoVo1k
+ CEbqUOOP4ESOlvpND9fptc3xDLYda6kFYg0dH4XM6NlQYMk5E8nYUFstmTKAQg84fTr4
+ BRhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=iN1lIy0/f67JfCi9KU7uh6n3lgkv7oAoZ5NZ3robPh0=;
- b=YY8blDgGWyY2WBjJgNSYlZHxDurPWMPCEQ88zWiHIIzZ3DODAcjDLr+3o90izESKQd
- EetseEdgEJKDZKJ/KMQs9aGEiWe5kcCwQW80AzrYQZNVv9UhP+ct5GWTrTDPxvyp6BVd
- o8hPyVvxZq/kUob/BZ+fZwcYpf35vbutpx9YimBGttPWJCjtuPCYE4EXTDPYzjuqLz82
- L+DQB98i2oxHOZdw+YB1Gh8+KKhcQ/jB0tnsnxL6UGQGxImy6kRE1Jol/PAKEb6GqFNv
- DgkHGLNw6cM+UOYT8RXDCNtVw3uxzhzGevQRIWbF5cL6+C/wBpvgWqhvvU3dRbjLM5RP
- G6kA==
-X-Gm-Message-State: ANhLgQ1CyWRC5x4QFRVlNkmbp7yOi6jnrC6566iA7eT050s1HceRpXH5
- sgx0rDP9vL8co66E3o2MS8I=
-X-Google-Smtp-Source: ADFU+vut3MyakqoUhMIetlzMKR/p4VXgaNSrjQMPOpcFkSKePWWm++E+Uy2ID9u1cYMxZFT24UeMyQ==
-X-Received: by 2002:a17:90a:d593:: with SMTP id
- v19mr200036pju.177.1583954365043; 
- Wed, 11 Mar 2020 12:19:25 -0700 (PDT)
+ bh=02Tw1k2Q38WueLNikGUX0EcXKDMIWen5M9i6gPM5Zj4=;
+ b=gRKYwjXn57h+t9s1/aO3IFayTWnYvNIdjpP/UH+r9uo9ebDPobONAzw8u6HWCc7jC2
+ UwisM5Bv7Tqpx4DPsAfQNFuLePtzyl/NMCBLY7ZrDBTN6V+4XqGZN4Qz/yII0n80GEIl
+ g9peIx98YNBGE8u9NfR6rRY9BNTIJGEzVC5e6QanGIlXkYl2Hd2f08byZ9HMKcpzyh98
+ hmnQbgUiVWdJzaPssnNnjZ7kVq2rR5xX45riaC3KyXBfea4XWUsHVK35xUHHguUyxaam
+ X+8wlrtjkKAOv/wt4TO7QKQDJF4LZACVuj+gujjBaG3j2mqKGHIdZ2hp37/S+FEet4ES
+ Volw==
+X-Gm-Message-State: ANhLgQ3H5ruTyQKjbGLbq55B7FuJrT/YB89pTZ9hXcvDbvySBaoQAEpn
+ A/j0Ack9OC7LynmBX7Z5Zjw=
+X-Google-Smtp-Source: ADFU+vtd+b65PXv741B2Xvl/VY102ZDKa3qJON+wOaBSCOeGYGNq4QbLyV54jjgen3Er7PN+hX2uRA==
+X-Received: by 2002:a17:902:ab95:: with SMTP id
+ f21mr4077798plr.188.1583954370555; 
+ Wed, 11 Mar 2020 12:19:30 -0700 (PDT)
 Received: from localhost.localdomain ([103.46.201.94])
- by smtp.gmail.com with ESMTPSA id z17sm3792673pff.12.2020.03.11.12.19.20
+ by smtp.gmail.com with ESMTPSA id z17sm3792673pff.12.2020.03.11.12.19.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Mar 2020 12:19:24 -0700 (PDT)
+ Wed, 11 Mar 2020 12:19:30 -0700 (PDT)
 From: Aman Sharma <amanharitsh123@gmail.com>
 To: 
-Subject: [PATCH 2/5] pci: added check for return value of platform_get_irq
-Date: Thu, 12 Mar 2020 00:49:03 +0530
-Message-Id: <53b57606d7bc2615a43b1d5159200dba0435af6d.1583952276.git.amanharitsh123@gmail.com>
+Subject: [PATCH 3/5] pci: handled return value of platform_get_irq correctly
+Date: Thu, 12 Mar 2020 00:49:04 +0530
+Message-Id: <9e2c5bf46fe04e27ead8d559425fb97231777ee1.1583952276.git.amanharitsh123@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <cover.1583952275.git.amanharitsh123@gmail.com>
 References: <cover.1583952275.git.amanharitsh123@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200311_121928_939059_EA8AE0F1 
-X-CRM114-Status: UNSURE (   9.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200311_121931_663361_6B48AB20 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,23 +112,25 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Signed-off-by: Aman Sharma <amanharitsh123@gmail.com>
 ---
- drivers/pci/controller/pci-aardvark.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/pci/controller/pcie-mobiveil.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/pci/controller/pci-aardvark.c b/drivers/pci/controller/pci-aardvark.c
-index 2a20b649f40c..40a4257f0df1 100644
---- a/drivers/pci/controller/pci-aardvark.c
-+++ b/drivers/pci/controller/pci-aardvark.c
-@@ -973,6 +973,9 @@ static int advk_pcie_probe(struct platform_device *pdev)
- 		return PTR_ERR(pcie->base);
+diff --git a/drivers/pci/controller/pcie-mobiveil.c b/drivers/pci/controller/pcie-mobiveil.c
+index 3a696ca45bfa..fe816a284dd4 100644
+--- a/drivers/pci/controller/pcie-mobiveil.c
++++ b/drivers/pci/controller/pcie-mobiveil.c
+@@ -456,9 +456,9 @@ static int mobiveil_pcie_parse_dt(struct mobiveil_pcie *pcie)
+ 		pcie->ppio_wins = MAX_PIO_WINDOWS;
  
- 	irq = platform_get_irq(pdev, 0);
-+	if (irq < 0)
-+		return irq;
-+
- 	ret = devm_request_irq(dev, irq, advk_pcie_irq_handler,
- 			       IRQF_SHARED | IRQF_NO_THREAD, "advk-pcie",
- 			       pcie);
+ 	pcie->irq = platform_get_irq(pdev, 0);
+-	if (pcie->irq <= 0) {
++	if (pcie->irq < 0) {
+ 		dev_err(dev, "failed to map IRQ: %d\n", pcie->irq);
+-		return -ENODEV;
++		return pcie->irq;
+ 	}
+ 
+ 	return 0;
 -- 
 2.20.1
 
