@@ -2,80 +2,85 @@ Return-Path: <SRS0=ZThz=44=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3A45DC10F25
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 07:29:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 185A8C10F29
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 07:32:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DE322208C4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 07:29:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E14DB208C3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 07:31:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="E7pX3fv3";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="rklOp7H7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DE322208C4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BdFqxHCR";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ha0QoGSg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E14DB208C3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=49i1CX3u3TMvB/cA42CgYoHSP+Kq6xG5k5DtG0qbVgU=; b=E7pX3fv3+Rg12L
-	RwEHXfUuNxm6BRtsetvhk95oeCYK5NL0hDRp7F0zwqlDuhn0XooMu78HN9xxMAA+ch0THc/dNS3X9
-	yxVVe0GSTL7GMs/h61WZWbQ7QnMtA0akQasnbzyhxJWc4bvxm1rJ3LwDZWviLxRpAF5d7cgCKvL7Q
-	yKrqHc2kPQfqHdlV4JBq2gN69kZAcOowIE7E78WxwuOU+i7rBLfjSjofVTkarWsrjAqvsTbpMNu5p
-	IEkMvNV6ZRJLvflshthbHvUjD6cRH/t0fFOa8sxAJVal7H+YpUfYbEnkNY6kx4Ah2Z0BrhsrWpTwr
-	NVj/QyJfJrM46W4EVUfg==;
+	List-Owner; bh=QB4PXUlQcByOnlX7rYJsRHQQ/lORXgrPEh9+pmdONr0=; b=BdFqxHCRxRbbmf
+	m9btrP7cseKaRy52RS7Ws8Me4JkEoK6E9bhzb7GwbDwhMAuOYYrcNae9tOAZni549TINiBMpl3ebU
+	HoiiufGyXAmMnLealiCUeDfkXwO7IVI2LuIPIL5jcPG61D1pIM6XiNwqZwc1RzJJJpk0Bm9eNpQF2
+	1hd9gkrRIyB+C7keh428SKGB4WflOYgsMIqlxOIEVPJ/1nVX8bDe5fcsU/eQ6fm+JFr1re3NWenm4
+	ZPJGrB6OK4wwO6NG4eNVn0vwgjbbd5d6jBlvmhbmCusa3m3fiTmVYOsfzYt+WKZIxN2sdRkl5rkMq
+	5WClEr4wG7fuPEug8VzA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBvng-00050b-4l; Wed, 11 Mar 2020 07:29:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jBvqK-00071a-Ig; Wed, 11 Mar 2020 07:31:52 +0000
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBvnS-0004ne-6D; Wed, 11 Mar 2020 07:28:55 +0000
-X-UUID: cd07b2314d0041d79eeb1f71ae12081f-20200310
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=//egP2daUjOgIwpeeyA91Ud79+Z1pS62TEhIP48EiB4=; 
- b=rklOp7H7FMh1EiFSYMb+wB4WxJK+/4Z05wood8CTO+v2ftkHmwrRqzPz5IFCOoVXroRjHHk9V2i1YxczhoQYIcP6Ug/MuPHDd+fPOTh6mgj6VA0ns6il24FbI1VoMfdpZC1TR8nvRkOFJ3qSmuUNzHivNRxPvhdHB3Tjc8/4Wag=;
-X-UUID: cd07b2314d0041d79eeb1f71ae12081f-20200310
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jitao.shi@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1647859692; Tue, 10 Mar 2020 23:28:50 -0800
-Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 11 Mar 2020 00:18:55 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N2.mediatek.inc
- (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Wed, 11 Mar 2020 15:19:09 +0800
-Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
- MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1395.4 via Frontend Transport; Wed, 11 Mar 2020 15:18:12 +0800
-From: Jitao Shi <jitao.shi@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH v13 6/6] drm/mediatek: set dpi pin mode to gpio low to avoid
- leakage current
-Date: Wed, 11 Mar 2020 15:18:23 +0800
-Message-ID: <20200311071823.117899-7-jitao.shi@mediatek.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20200311071823.117899-1-jitao.shi@mediatek.com>
-References: <20200311071823.117899-1-jitao.shi@mediatek.com>
+ id 1jBvqA-0006s2-Si; Wed, 11 Mar 2020 07:31:44 +0000
+Received: by mail-ot1-x341.google.com with SMTP id h17so924067otn.7;
+ Wed, 11 Mar 2020 00:31:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=XqjRh4XcbIeWg34nWgx/BvCMLg6ufHpF8wfPSvWuHz0=;
+ b=ha0QoGSg3KAv2R3HAXeMjIi1d2yifW/WkdBw5qGgsGm7I85pu+VvryoyW+Aixi5GgS
+ qBKwqs0T7EDZzEjVgZRIwAdwLj45t2CJMcEoL0xIZbpMtIvWYAAGV7be+q3GmnOyW8K5
+ QLSYJoGv+8aS2zAchGen7HEtn84ZcCGbGCNllJVOY9J0nMWntTKnlSDeiaT1OAcniVwM
+ cTo9eU1CwGZzm22dU1Dhny9fJ04ox9whJynLlSjGu1dznihaf3W0/+hdHyuF54rs6QKy
+ s6t+eLKwL0kzbjcE8i8UBesMf0/Jn/L3bsffHSqkwCHvOMZezEf+/mfkxQSIzS4WP8Rr
+ EYkQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=XqjRh4XcbIeWg34nWgx/BvCMLg6ufHpF8wfPSvWuHz0=;
+ b=CjIgBiYbARKRgujPD770E4WvxgGR1mhxJ/GIBsOExtcM48ZzLl1E6MueQcRzl49hbP
+ VX3FSYdYr4Ci2v53PMSSkvHUmtNVZS1L2yeTLujipP4+XkdaoDLgyOB0KBByRYV6rCX8
+ oiE/koM3AHbGBj8XPjbO+RQ1YaznAnLLLesnnEnnS7J6FR39opf+HMPjrXJhhUE13d04
+ HLXweZT9JJ+58tVNhXx/XHWMRAkMi/54IM7eIMwyslusEJeQszcW9fyJhpuHozL3cpNm
+ PxKD69EBKEcumeE6W5oJLpF/GVpLthMTLY/cWBTK06WgXqoNuH4EoRCDvhkJtdCseonX
+ bGqQ==
+X-Gm-Message-State: ANhLgQ0HuGqX1+z6ia0PJsUGJed8D/E0IQOxqvOsD0dVAMnbaFpguhOW
+ SRmeZfTcZvuJiooJo6K7Pz5F0uYJMMq8NGCMZnU=
+X-Google-Smtp-Source: ADFU+vvWMFP54lh2YUrErXGIZ9ola/n/+/kwLa2LvSYzQozOfvkatAweuBFXM5bgscaPALmt8YeGtDcj7RXgUFalloY=
+X-Received: by 2002:a05:6830:160c:: with SMTP id
+ g12mr1329009otr.86.1583911901252; 
+ Wed, 11 Mar 2020 00:31:41 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: F6443FB13F5E019EB639DC1C9F2F38ACAD898DE332AEB015D24A81251CC07F532000:8
-X-MTK: N
+References: <1536716612-24610-1-git-send-email-xiangsheng.hou@mediatek.com>
+ <1536716612-24610-4-git-send-email-xiangsheng.hou@mediatek.com>
+ <20181023075247.004982c9@bbrezillon> <1540532796.24602.11.camel@mhfsdcap03>
+ <20181026080833.2fedbd94@bbrezillon>
+In-Reply-To: <20181026080833.2fedbd94@bbrezillon>
+From: Chuanhong Guo <gch981213@gmail.com>
+Date: Wed, 11 Mar 2020 15:31:29 +0800
+Message-ID: <CAJsYDV+dAikBZ4gg_3u7z_jgV2ZehhyWyRQ709dNQV0XdDOUbQ@mail.gmail.com>
+Subject: Re: [PATCH 3/3] spi: spi-mem: MediaTek: Add SPI NAND Flash interface
+ driver for MediaTek MT7622
+To: Boris Brezillon <boris.brezillon@bootlin.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200311_002854_230511_3A649121 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20200311_003142_930784_83FA7A4E 
+X-CRM114-Status: GOOD (  22.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,97 +92,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>,
- srv_heupstream@mediatek.com, huijuan.xie@mediatek.com, stonea168@163.com,
- cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org,
- bibby.hsieh@mediatek.com, ck.hu@mediatek.com, yingjoe.chen@mediatek.com,
- eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Cc: ryder.lee@mediatek.com, srv_heupstream@mediatek.com, sean.wang@mediatek.com,
+ linux-mediatek@lists.infradead.org,
+ =?UTF-8?B?QmF5aSBDaGVuZyAo56iL5YWr5oSPKQ==?= <bayi.cheng@mediatek.com>,
+ linux-spi@vger.kernel.org, marek.vasut@gmail.com,
+ Mark Brown <broonie@kernel.org>, linux-mtd@lists.infradead.org,
+ honghui.zhang@mediatek.com,
+ =?UTF-8?B?QmVubGlhbmcgWmhhbyAo6LW15pys5LquKQ==?= <benliang.zhao@mediatek.com>,
+ xiaolei.li@mediatek.com, Xiangsheng Hou <xiangsheng.hou@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Config dpi pins mode to output and pull low when dpi is disabled.
-Aovid leakage current from some dpi pins (Hsync Vsync DE ... ).
+Hi Boris!
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_dpi.c | 31 ++++++++++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
+I'm about to pick this driver up and start upstream it in the future.
+So I'm answering
+your questions below and would like to get your further suggestions.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 2871e68e7767..b6359e979588 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -10,7 +10,9 @@
- #include <linux/kernel.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/of_gpio.h>
- #include <linux/of_graph.h>
-+#include <linux/pinctrl/consumer.h>
- #include <linux/platform_device.h>
- #include <linux/types.h>
- 
-@@ -74,6 +76,9 @@ struct mtk_dpi {
- 	enum mtk_dpi_out_yc_map yc_map;
- 	enum mtk_dpi_out_bit_num bit_num;
- 	enum mtk_dpi_out_channel_swap channel_swap;
-+	struct pinctrl *pinctrl;
-+	struct pinctrl_state *pins_gpio;
-+	struct pinctrl_state *pins_dpi;
- 	int refcount;
- 	u32 pclk_sample;
- };
-@@ -387,6 +392,9 @@ static void mtk_dpi_power_off(struct mtk_dpi *dpi)
- 	if (--dpi->refcount != 0)
- 		return;
- 
-+	if (dpi->pinctrl && dpi->pins_gpio)
-+		pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
-+
- 	mtk_dpi_disable(dpi);
- 	clk_disable_unprepare(dpi->pixel_clk);
- 	clk_disable_unprepare(dpi->engine_clk);
-@@ -411,6 +419,9 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
- 		goto err_pixel;
- 	}
- 
-+	if (dpi->pinctrl && dpi->pins_dpi)
-+		pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
-+
- 	mtk_dpi_enable(dpi);
- 	return 0;
- 
-@@ -728,6 +739,26 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- 	of_property_read_u32(ep, "pclk-sample", &dpi->pclk_sample);
- 	of_node_put(ep);
- 
-+	dpi->pinctrl = devm_pinctrl_get(&pdev->dev);
-+	if (IS_ERR(dpi->pinctrl)) {
-+		dpi->pinctrl = NULL;
-+		dev_dbg(&pdev->dev, "Cannot find pinctrl!\n");
-+	}
-+	if (dpi->pinctrl) {
-+		dpi->pins_gpio = pinctrl_lookup_state(dpi->pinctrl, "sleep");
-+		if (IS_ERR(dpi->pins_gpio)) {
-+			dpi->pins_gpio = NULL;
-+			dev_dbg(&pdev->dev, "Cannot find pinctrl idle!\n");
-+		}
-+		if (dpi->pins_gpio)
-+			pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
-+
-+		dpi->pins_dpi = pinctrl_lookup_state(dpi->pinctrl, "default");
-+		if (IS_ERR(dpi->pins_dpi)) {
-+			dpi->pins_dpi = NULL;
-+			dev_dbg(&pdev->dev, "Cannot find pinctrl active!\n");
-+		}
-+	}
- 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	dpi->regs = devm_ioremap_resource(dev, mem);
- 	if (IS_ERR(dpi->regs)) {
+On Fri, Oct 26, 2018 at 2:09 PM Boris Brezillon
+<boris.brezillon@bootlin.com> wrote:
+> > > There's a fundamental issue with this driver: spi-mem was designed to be
+> > > memory agnostic, and you seem to have a SPI controller that supports
+> > > only SPI NANDs. Is that correct, or is it just that you developed the
+> > > driver with SPI NANDs in  mind?
+> > >
+> > Yes, this driver supports only SPI NANDs.
+> > Actually, Mediatek's controller is designed for NAND specifically, which
+> > can support SPI NANDs and PARALLEL NANDs,and this driver is just for SPI
+> > NANDs.
+>
+> Hm, I'm not so sure about that (I might be wrong though), it seems you
+> can send any command you want, not only SPI NAND related ones. Maybe the
+> controller is optimized for SPI NANDs but can do all kind of SPI
+> transfers.
+
+You are correct here. This controller can perform generic spi-mem operations,
+and it has special routines for page cache R/W that utilize controller's ECC
+functionality. I think the purpose of this is to provide better ECC capability
+for some SPI NANDs with worse ECC algorithm on chip.
+
+> > > Don't know what's possible to do with your controller, and maybe it's
+> > > not able to execute random SPI memory operations, but in this case we
+> > > should consider a different solution to support this driver.
+> > >
+> > > Do you have a public datasheet I can look at?
+> > >
+> > We do not have a public datasheet for Mediatek controller currently.
+>
+> Unfortunately, there's not much I can do without a clear understanding
+> of how the controller works.
+>
+
+I found a public datasheet [0] on wiki page for Banana Pi R64 [1].
+Register description is available under "NAND flash interface" section
+starting at page 592.
+There's a hackier version of this driver in OpenWrt [2] which checks
+opcode and use controller routine for page cache R/W.
+
+ECC part of this controller can also be used as a standalone ECC
+algorithm and perform ECC operations on data provided by CPU.
+But I think if it's implement this way, we wasted the page cache
+R/W routines in this controller.
+
+I have two other initial thoughts:
+1. abstract some kind of ECC functionality in spi-mem interface
+    I haven't really learned ECC stuff so I don't know whether this is
+    possible and what kind of argument we needs for it.
+2. modify SPI-NAND core to add support for special SPI-NAND controller.
+    This limits controller's ability and adds extra burden for future extention
+    of SPI-NAND framework.
+
+Which way would you prefer and do you have other suggestions?
+
+[0] https://drive.google.com/file/d/1cW8KQmmVpwDGmBd48KNQes9CRn7FEgBb/view?usp=sharing
+[1] http://wiki.banana-pi.org/Banana_Pi_BPI-R64#Documents
+[2] https://git.openwrt.org/?p=openwrt/openwrt.git;a=blob;f=target/linux/mediatek/patches-4.19/0306-spi-spi-mem-MediaTek-Add-SPI-NAND-Flash-interface-dr.patch;h=2370925372f69aed0566339a4808056580e88837;hb=HEAD
 -- 
-2.21.0
+Regards,
+Chuanhong Guo
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
