@@ -2,75 +2,77 @@ Return-Path: <SRS0=ZThz=44=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D1927C10F27
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 09:20:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C10FBC18E5A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 09:20:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 785F92146E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 09:20:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7947E2146E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2020 09:20:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rAMxSXWo";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="M56im9O3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 785F92146E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="V2lCY2hx";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="OlEXVSTr"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7947E2146E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fjBBY8X5HLjIHPs4jMIyf/NK5GXBHrrOia6L0EIx6xc=; b=rAMxSXWoFdSkrK
-	zMREqjO9EJWgWBY5LjZl9ylHFQ48MQcjwCP7YfVGg/dBhNS/aQydS7bKxwrfGgFeGLhM3qOPElIuC
-	eB28qegLbk9aFg+sY5TtoAXItfb+b1zdotP1DokQFB8CoQhf4X8X7n/f+RLQbsNHXsZ68YagsOBce
-	12wPlXKyhDrP4qiChd+0APgdzentyUEwqzW042zbWvBb0yLCvAGyVsAl/64p0CTk0C1DWGKukSkLa
-	LJJlQLbeX56p6glgxb/zyhjpOywLi/P8cfcxYVxBiVrnnxW3qVMIX9fE+6LbKxjRwoTFSn9VuDJbb
-	7R9UILlQTKSoeUE2Pfhg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=76ijGeGJeU2SlV51coobID5O7+8uzuiDBd/5uRLiiQo=; b=V2lCY2hx8SfK7X
+	DCChCRvMYJWFlUI094NzfKZlJ7f9GFOBVv80ik9EhzxxauV0y+lIH7HXGb0MYWf9EdLDd7W0Kttvr
+	EtJQRrXHLsuaX9JAolBDpp4+eDm3XwPNUN275zGaDyjT2OWZlsDwgF3ZEyoqx2tE3AjBSJkRBNHB6
+	KSrS4pp6a1wsSGgnLKnOqVrS30ORKvotnmBwR5ZkxQ0YpZOBAnL1o43gPByfzoqkyHsTl6tgwG3pe
+	q8OOXzhvIpLLPx2a2ooDLf12uYi0NPikm0ebdhWxJpx9mAnUXqWxTBfJUuVB6K7HjMeVGpuKjk+YA
+	wzBTwxMl7Mk6ojDCnqrw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jBxXI-0004hP-0N; Wed, 11 Mar 2020 09:20:20 +0000
+	id 1jBxXL-0005DK-Eg; Wed, 11 Mar 2020 09:20:23 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jBxW7-0002vr-Us; Wed, 11 Mar 2020 09:19:09 +0000
-X-UUID: de3d4e2af0314e2bb807aa25fe03dcbb-20200311
+ id 1jBxW8-0002vu-4y; Wed, 11 Mar 2020 09:19:10 +0000
+X-UUID: 94880e4204fb498ea6635addce4ef210-20200311
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=w/OFvaAVqelVRqsmT335UVcjfyRxqRhg1qlxZpxXnpY=; 
- b=M56im9O3gMpK9T2JmCngoiZYscMXlR4BpT6C5tbfeOd32LrLxKi7PInM16+ItyscRh0xCoyMs+p0m3GQbvbL5z4uPiNR+XEWIkVMt6JkeoBlUfWXUJjh/6dVispN67R5AXBlEYcZTHvmoccDAdSD/zWnS2YHhuKC0TVZiEBvO24=;
-X-UUID: de3d4e2af0314e2bb807aa25fe03dcbb-20200311
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=bMAGFYIyebf4WTfeSqrPodJzjUX1SU+zN1FTUaXXPlA=; 
+ b=OlEXVSTrvoYLI+m4JV6NRrmsGa6U4q0psgCI0cgWgZZRBm8wH/moQQiF/CUMN2KpFKvJ/1G9mTAU7GUidwqnMNnaFSKe3KEG1fzg7gtC5sLWpEpgqfQqWtu5/A5Hx3Jk5mgx05MzveJ0MAeQmqrv+ljIM8ZjWKpMweGX4eX2lbI=;
+X-UUID: 94880e4204fb498ea6635addce4ef210-20200311
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <hsin-hsiung.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1145396469; Wed, 11 Mar 2020 01:18:58 -0800
+ with ESMTP id 1099580944; Wed, 11 Mar 2020 01:18:58 -0800
 Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 11 Mar 2020 02:17:06 -0700
+ 15.0.1395.4; Wed, 11 Mar 2020 02:17:08 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 11 Mar 2020 17:15:37 +0800
+ 15.0.1395.4; Wed, 11 Mar 2020 17:15:38 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Wed, 11 Mar 2020 17:17:12 +0800
+ Frontend Transport; Wed, 11 Mar 2020 17:17:13 +0800
 From: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 To: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>,
  Alexandre Belloni <alexandre.belloni@bootlin.com>, Matthias Brugger
  <matthias.bgg@gmail.com>
-Subject: [PATCH v10 0/5] Add Support for MediaTek PMIC MT6358
-Date: Wed, 11 Mar 2020 17:16:58 +0800
-Message-ID: <1583918223-22506-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+Subject: [PATCH v10 5/5] arm64: dts: mt6358: add PMIC MT6358 related nodes
+Date: Wed, 11 Mar 2020 17:17:03 +0800
+Message-ID: <1583918223-22506-6-git-send-email-hsin-hsiung.wang@mediatek.com>
 X-Mailer: git-send-email 2.6.4
+In-Reply-To: <1583918223-22506-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+References: <1583918223-22506-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200311_021908_008816_B36FD23F 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20200311_021908_223826_CBAED1C4 
+X-CRM114-Status: GOOD (  12.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,41 +99,391 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patchset including modifying suspend/resume behavior add support to MT6358 PMIC.
-MT6358 is the primary PMIC for MT8183 platform.
+add PMIC MT6358 related nodes which is for MT8183 platform
 
-changes since v9:
-- remove redundant loop in mfd driver.
-- move mtk_rtc_data from rtc.h to rtc-mt6397.c
-
-Hsin-Hsiung Wang (4):
-  mfd: mt6397: modify suspend/resume behavior
-  dt-bindings: mfd: Add compatible for the MediaTek MT6358 PMIC
-  mfd: Add support for the MediaTek MT6358 PMIC
-  arm64: dts: mt6358: add PMIC MT6358 related nodes
-
-Ran Bi (1):
-  rtc: mt6397: Add support for the MediaTek MT6358 RTC
-
- Documentation/devicetree/bindings/mfd/mt6397.txt |  14 +-
- arch/arm64/boot/dts/mediatek/mt6358.dtsi         | 358 +++++++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8183-evb.dts      |   1 +
- drivers/mfd/Makefile                             |   2 +-
- drivers/mfd/mt6358-irq.c                         | 236 +++++++++++++++
- drivers/mfd/mt6397-core.c                        |  85 +++---
- drivers/mfd/mt6397-irq.c                         |  33 +++
- drivers/power/reset/mt6323-poweroff.c            |   2 +-
- drivers/rtc/rtc-mt6397.c                         |  32 +-
- include/linux/mfd/mt6358/core.h                  | 158 ++++++++++
- include/linux/mfd/mt6358/registers.h             | 282 ++++++++++++++++++
- include/linux/mfd/mt6397/core.h                  |   5 +
- include/linux/mfd/mt6397/rtc.h                   |   9 +-
- 13 files changed, 1168 insertions(+), 49 deletions(-)
+Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt6358.dtsi    | 358 ++++++++++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts |   1 +
+ 2 files changed, 359 insertions(+)
  create mode 100644 arch/arm64/boot/dts/mediatek/mt6358.dtsi
- create mode 100644 drivers/mfd/mt6358-irq.c
- create mode 100644 include/linux/mfd/mt6358/core.h
- create mode 100644 include/linux/mfd/mt6358/registers.h
 
+diff --git a/arch/arm64/boot/dts/mediatek/mt6358.dtsi b/arch/arm64/boot/dts/mediatek/mt6358.dtsi
+new file mode 100644
+index 0000000..2afebd7
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt6358.dtsi
+@@ -0,0 +1,358 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright (c) 2019 MediaTek Inc.
++ */
++
++&pwrap {
++	pmic: mt6358 {
++		compatible = "mediatek,mt6358";
++		interrupt-controller;
++		interrupt-parent = <&pio>;
++		interrupts = <182 IRQ_TYPE_LEVEL_HIGH>;
++		#interrupt-cells = <2>;
++
++		mt6358codec: mt6358codec {
++			compatible = "mediatek,mt6358-sound";
++		};
++
++		mt6358regulator: mt6358regulator {
++			mt6358_vdram1_reg: buck_vdram1 {
++				regulator-name = "vdram1";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <2087500>;
++				regulator-ramp-delay = <12500>;
++				regulator-enable-ramp-delay = <0>;
++				regulator-always-on;
++				regulator-allowed-modes = <0 1>;
++			};
++
++			mt6358_vcore_reg: buck_vcore {
++				regulator-name = "vcore";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <200>;
++				regulator-always-on;
++				regulator-allowed-modes = <0 1>;
++			};
++
++			mt6358_vpa_reg: buck_vpa {
++				regulator-name = "vpa";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <3650000>;
++				regulator-ramp-delay = <50000>;
++				regulator-enable-ramp-delay = <250>;
++				regulator-allowed-modes = <0 1>;
++			};
++
++			mt6358_vproc11_reg: buck_vproc11 {
++				regulator-name = "vproc11";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <200>;
++				regulator-always-on;
++				regulator-allowed-modes = <0 1>;
++			};
++
++			mt6358_vproc12_reg: buck_vproc12 {
++				regulator-name = "vproc12";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <200>;
++				regulator-always-on;
++				regulator-allowed-modes = <0 1>;
++			};
++
++			mt6358_vgpu_reg: buck_vgpu {
++				regulator-name = "vgpu";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <200>;
++				regulator-allowed-modes = <0 1>;
++			};
++
++			mt6358_vs2_reg: buck_vs2 {
++				regulator-name = "vs2";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <2087500>;
++				regulator-ramp-delay = <12500>;
++				regulator-enable-ramp-delay = <0>;
++				regulator-always-on;
++			};
++
++			mt6358_vmodem_reg: buck_vmodem {
++				regulator-name = "vmodem";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <900>;
++				regulator-always-on;
++				regulator-allowed-modes = <0 1>;
++			};
++
++			mt6358_vs1_reg: buck_vs1 {
++				regulator-name = "vs1";
++				regulator-min-microvolt = <1000000>;
++				regulator-max-microvolt = <2587500>;
++				regulator-ramp-delay = <12500>;
++				regulator-enable-ramp-delay = <0>;
++				regulator-always-on;
++			};
++
++			mt6358_vdram2_reg: ldo_vdram2 {
++				regulator-name = "vdram2";
++				regulator-min-microvolt = <600000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <3300>;
++			};
++
++			mt6358_vsim1_reg: ldo_vsim1 {
++				regulator-name = "vsim1";
++				regulator-min-microvolt = <1700000>;
++				regulator-max-microvolt = <3100000>;
++				regulator-enable-ramp-delay = <540>;
++			};
++
++			mt6358_vibr_reg: ldo_vibr {
++				regulator-name = "vibr";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <60>;
++			};
++
++			mt6358_vrf12_reg: ldo_vrf12 {
++				compatible = "regulator-fixed";
++				regulator-name = "vrf12";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <1200000>;
++				regulator-enable-ramp-delay = <120>;
++			};
++
++			mt6358_vio18_reg: ldo_vio18 {
++				compatible = "regulator-fixed";
++				regulator-name = "vio18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <2700>;
++				regulator-always-on;
++			};
++
++			mt6358_vusb_reg: ldo_vusb {
++				regulator-name = "vusb";
++				regulator-min-microvolt = <3000000>;
++				regulator-max-microvolt = <3100000>;
++				regulator-enable-ramp-delay = <270>;
++				regulator-always-on;
++			};
++
++			mt6358_vcamio_reg: ldo_vcamio {
++				compatible = "regulator-fixed";
++				regulator-name = "vcamio";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <325>;
++			};
++
++			mt6358_vcamd_reg: ldo_vcamd {
++				regulator-name = "vcamd";
++				regulator-min-microvolt = <900000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <325>;
++			};
++
++			mt6358_vcn18_reg: ldo_vcn18 {
++				compatible = "regulator-fixed";
++				regulator-name = "vcn18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vfe28_reg: ldo_vfe28 {
++				compatible = "regulator-fixed";
++				regulator-name = "vfe28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vsram_proc11_reg: ldo_vsram_proc11 {
++				regulator-name = "vsram_proc11";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <240>;
++				regulator-always-on;
++			};
++
++			mt6358_vcn28_reg: ldo_vcn28 {
++				compatible = "regulator-fixed";
++				regulator-name = "vcn28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vsram_others_reg: ldo_vsram_others {
++				regulator-name = "vsram_others";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <240>;
++				regulator-always-on;
++			};
++
++			mt6358_vsram_gpu_reg: ldo_vsram_gpu {
++				regulator-name = "vsram_gpu";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <240>;
++			};
++
++			mt6358_vxo22_reg: ldo_vxo22 {
++				compatible = "regulator-fixed";
++				regulator-name = "vxo22";
++				regulator-min-microvolt = <2200000>;
++				regulator-max-microvolt = <2200000>;
++				regulator-enable-ramp-delay = <120>;
++				regulator-always-on;
++			};
++
++			mt6358_vefuse_reg: ldo_vefuse {
++				regulator-name = "vefuse";
++				regulator-min-microvolt = <1700000>;
++				regulator-max-microvolt = <1900000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vaux18_reg: ldo_vaux18 {
++				compatible = "regulator-fixed";
++				regulator-name = "vaux18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vmch_reg: ldo_vmch {
++				regulator-name = "vmch";
++				regulator-min-microvolt = <2900000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <60>;
++			};
++
++			mt6358_vbif28_reg: ldo_vbif28 {
++				compatible = "regulator-fixed";
++				regulator-name = "vbif28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vsram_proc12_reg: ldo_vsram_proc12 {
++				regulator-name = "vsram_proc12";
++				regulator-min-microvolt = <500000>;
++				regulator-max-microvolt = <1293750>;
++				regulator-ramp-delay = <6250>;
++				regulator-enable-ramp-delay = <240>;
++				regulator-always-on;
++			};
++
++			mt6358_vcama1_reg: ldo_vcama1 {
++				regulator-name = "vcama1";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-enable-ramp-delay = <325>;
++			};
++
++			mt6358_vemc_reg: ldo_vemc {
++				regulator-name = "vemc";
++				regulator-min-microvolt = <2900000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <60>;
++			};
++
++			mt6358_vio28_reg: ldo_vio28 {
++				compatible = "regulator-fixed";
++				regulator-name = "vio28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_va12_reg: ldo_va12 {
++				compatible = "regulator-fixed";
++				regulator-name = "va12";
++				regulator-min-microvolt = <1200000>;
++				regulator-max-microvolt = <1200000>;
++				regulator-enable-ramp-delay = <270>;
++				regulator-always-on;
++			};
++
++			mt6358_vrf18_reg: ldo_vrf18 {
++				compatible = "regulator-fixed";
++				regulator-name = "vrf18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-enable-ramp-delay = <120>;
++			};
++
++			mt6358_vcn33_bt_reg: ldo_vcn33_bt {
++				regulator-name = "vcn33_bt";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3500000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vcn33_wifi_reg: ldo_vcn33_wifi {
++				regulator-name = "vcn33_wifi";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3500000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vcama2_reg: ldo_vcama2 {
++				regulator-name = "vcama2";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-enable-ramp-delay = <325>;
++			};
++
++			mt6358_vmc_reg: ldo_vmc {
++				regulator-name = "vmc";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-enable-ramp-delay = <60>;
++			};
++
++			mt6358_vldo28_reg: ldo_vldo28 {
++				regulator-name = "vldo28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <3000000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vaud28_reg: ldo_vaud28 {
++				compatible = "regulator-fixed";
++				regulator-name = "vaud28";
++				regulator-min-microvolt = <2800000>;
++				regulator-max-microvolt = <2800000>;
++				regulator-enable-ramp-delay = <270>;
++			};
++
++			mt6358_vsim2_reg: ldo_vsim2 {
++				regulator-name = "vsim2";
++				regulator-min-microvolt = <1700000>;
++				regulator-max-microvolt = <3100000>;
++				regulator-enable-ramp-delay = <540>;
++			};
++		};
++
++		mt6358rtc: mt6358rtc {
++			compatible = "mediatek,mt6358-rtc";
++		};
++	};
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+index 1fb195c..9eb84d7 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8183-evb.dts
+@@ -7,6 +7,7 @@
+ 
+ /dts-v1/;
+ #include "mt8183.dtsi"
++#include "mt6358.dtsi"
+ 
+ / {
+ 	model = "MediaTek MT8183 evaluation board";
 -- 
 2.6.4
 _______________________________________________
