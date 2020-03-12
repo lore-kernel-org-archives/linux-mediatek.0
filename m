@@ -2,80 +2,80 @@ Return-Path: <SRS0=9ZOH=45=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0D10DC0044D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2020 01:47:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 48331C10DCE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2020 06:43:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0A82720746
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2020 01:47:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 342AA206F7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2020 06:43:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IGw5P/o4";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="JI0NdUuO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0A82720746
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j8gcrSnM";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qQCIngbE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 342AA206F7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nyq4IUrpVRvkXT2KUVa+mc2CRGSinm1W21paLfPdmDU=; b=IGw5P/o4p4Mp50
-	6pZNxPeMaWDu0Zxnpc0hy4OJi0P3YXx5xt+xj95oJYqDpd7GB6XFJNfOmrZ2BBX3i/v8L9EwddETu
-	pGw4Is1a7JgGiyx3pRwXnj81iKybRlsdToZFuCcKHYUjAXY3msREa0ulCt34JsqFzOgMfVo/kUkBt
-	4/3q5suKTtvNyiTFKpI+RCe0QC6d5qV/PzWcCXxBcSKmdCtRd3Lo3JpRkC+1YmD9sX8Kb571LWBIL
-	rVr2tcYrJMqJEL0aw+TMH7dvlhfGpbdaGb/MQvYrCxqexWzMCC0qbrA7DM/i3eac+a/yL05w+yZgD
-	KOmSF7ZV8/Il1lbQ8nlA==;
+	List-Owner; bh=hxrKmufdsYiP/425l4WySAlhIHScxcvYR930uX3JrEo=; b=j8gcrSnMhk8SYp
+	G5s+HNe9P7oeB/23Sv9eHjd7JL93nR/S727a+wYt22plHhv5c7j/ym60aGab4iT6X5XihFlhL6v2N
+	VuWKyQ8wIRsxaozjeiDBsHx1iDeHRxI52uKeTOgyg40UlnZsc/knf/Qnwu9PE+wbsh3k+eMGF4pQq
+	u3tASNdo7agZGmFMh45poxrCF7ofjOIrXq2aT/BXqN5xcgKF6FKIKyenqgUO65d9sSi807S+LcS+r
+	2WFaC1dsUjs19ePnniwq2RcQrIS7tR0HCg/WvMj0GCNby5fGBot34X9BsHTTNiESC/JQqHAF/3xdT
+	psXXHLMteKCUxx7NBgng==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCCwu-0006vI-Cd; Thu, 12 Mar 2020 01:47:48 +0000
-Received: from mail-ua1-x943.google.com ([2607:f8b0:4864:20::943])
+	id 1jCHZ8-0000a7-Oi; Thu, 12 Mar 2020 06:43:34 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCCwr-0006uf-IB
- for linux-mediatek@lists.infradead.org; Thu, 12 Mar 2020 01:47:47 +0000
-Received: by mail-ua1-x943.google.com with SMTP id t20so1515037uao.7
- for <linux-mediatek@lists.infradead.org>; Wed, 11 Mar 2020 18:47:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=PgMVUPr9CJB662kw0Etj9PzDmEhHdAooW8/c8EV2Xs4=;
- b=JI0NdUuOBJi8irQniAHDZus9gSxHFsPWYFnKXsiqwsOhKAbNzUqHq+VcEDM8T4TnEJ
- OGifAyneQ4sO654BJ/tCMwd7iiHnlmHuV7b42qkExDUAC0x85FWZUcqYT2EqaWfTVQ3c
- PY8jyoS8ygU8ctvk99m1zD0Sk/ux/dUV8qhvA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=PgMVUPr9CJB662kw0Etj9PzDmEhHdAooW8/c8EV2Xs4=;
- b=dvgl19E8XHApu8/r8hXtBG00C+bOPnrHx4KoEIGM6npFfI1VfB3JHOAdbTYk2cp0M3
- WgJMFPfoW1BwOktjzXLpQV3Aywl36j5u9OhPrqvoZZpHArYIGxXRrjgagp2FShheO1Uu
- UfoHnDjBiXs8rxTHuItwugo9kMA0Jm/TdpDRkE05Yw4SFWBX7uxse/9OsFfGN/oNsBsk
- ESbEDVBnjiXsAGzj8JeqQAiGylfsy0YkjSOYEe5TCU0WnbjLlQceYbfeh0StmZoqJGTy
- ptXeIRQDrkbLlh5Gfde0XOOXb4ZSE5AreNJizQEtW8HACga9/QQY5QS3ST4xQ3JTb2V1
- Z8Cw==
-X-Gm-Message-State: ANhLgQ2s/y/6+LhRzdfyyY0JRZZgqufq/fGF+K/y93j/X/JK3tbbj8Kc
- R7SkXrhhIKX24Mcktwpk5uZEph0fEpogeQkiveB55g==
-X-Google-Smtp-Source: ADFU+vsxe8uIFuMytA3ZTH+Dvv+Qm9+AJ1NhP8oHDjWpECQUTxgXsbkqu31HUYTB81OepoijiVoqI3hoMedJGeKGa20=
-X-Received: by 2002:a9f:32da:: with SMTP id f26mr3606235uac.40.1583977664301; 
- Wed, 11 Mar 2020 18:47:44 -0700 (PDT)
+ id 1jCHZ5-0000ZX-3w
+ for linux-mediatek@lists.infradead.org; Thu, 12 Mar 2020 06:43:32 +0000
+X-UUID: acb318589ef94900a4756dc6963ce96a-20200311
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=rinSa8EsJcmludQxreBMnGxS1wahGrKb0fmkSN6e91s=; 
+ b=qQCIngbEP27t/cdKWvdAfYYbGQIumJZv7qqqvK2Uba08IllSFfiq7p0w0Vg8KiIOW+5JJOwnY9CpEIKuSc6lGXnjW1eKBsIQ/FE33sqZ9hktWoYwuQCvbRnqn616XndYZrOU6LDrLFDKQrRGs9sYRpcnfyH6HkvNbJNG8DsFvE8=;
+X-UUID: acb318589ef94900a4756dc6963ce96a-20200311
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <eason.yen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 49166336; Wed, 11 Mar 2020 22:43:10 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 11 Mar 2020 23:43:18 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 12 Mar 2020 14:42:09 +0800
+Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Thu, 12 Mar 2020 14:43:12 +0800
+Message-ID: <1583995387.19248.93.camel@mtkswgap22>
+Subject: Re: [PATCH 2/2] ASoC: codec: mediatek: add mt6359 codec driver
+From: Eason Yen <eason.yen@mediatek.com>
+To: Mark Brown <broonie@kernel.org>
+Date: Thu, 12 Mar 2020 14:43:07 +0800
+In-Reply-To: <20200311121232.GB5411@sirena.org.uk>
+References: <1583465622-16628-1-git-send-email-eason.yen@mediatek.com>
+ <1583465622-16628-3-git-send-email-eason.yen@mediatek.com>
+ <20200309131346.GF4101@sirena.org.uk>
+ <1583918544.19248.69.camel@mtkswgap22>
+ <20200311121232.GB5411@sirena.org.uk>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-References: <1583918223-22506-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1583918223-22506-5-git-send-email-hsin-hsiung.wang@mediatek.com>
-In-Reply-To: <1583918223-22506-5-git-send-email-hsin-hsiung.wang@mediatek.com>
-From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Thu, 12 Mar 2020 09:47:33 +0800
-Message-ID: <CANMq1KDZeBOzVfWF0xjWpcLFDbO9WY7xRvzpGmtfePTOxVZpzg@mail.gmail.com>
-Subject: Re: [PATCH v10 4/5] rtc: mt6397: Add support for the MediaTek MT6358
- RTC
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200311_184745_623870_FB9A412C 
-X-CRM114-Status: GOOD (  21.53  )
+X-CRM114-CacheID: sfid-20200311_234331_175652_0AFA3E09 
+X-CRM114-Status: GOOD (  34.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,171 +87,275 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Alessandro Zummo <a.zummo@towertech.it>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- Josef Friedl <josef.friedl@speed.at>, Ran Bi <ran.bi@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Sebastian Reichel <sre@kernel.org>,
- lkml <linux-kernel@vger.kernel.org>, Richard Fontana <rfontana@redhat.com>,
- Devicetree List <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "open list:THERMAL" <linux-pm@vger.kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>,
- Lee Jones <lee.jones@linaro.org>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
- linux-rtc@vger.kernel.org
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ linux-kernel@vger.kernel.org, jiaxin.yu@mediatek.com,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 11, 2020 at 5:17 PM Hsin-Hsiung Wang
-<hsin-hsiung.wang@mediatek.com> wrote:
->
-> From: Ran Bi <ran.bi@mediatek.com>
->
-> This add support for the MediaTek MT6358 RTC. Driver using
-> compatible data to store different RTC_WRTGR address offset.
-> This replace RTC_WRTGR to RTC_WRTGR_MT6323 in mt6323-poweroff
-> driver which only needed by armv7 CPU without ATF.
->
-> Signed-off-by: Ran Bi <ran.bi@mediatek.com>
-> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> ---
->  drivers/power/reset/mt6323-poweroff.c |  2 +-
->  drivers/rtc/rtc-mt6397.c              | 32 ++++++++++++++++++++++++--------
->  include/linux/mfd/mt6397/rtc.h        |  9 ++++++++-
->  3 files changed, 33 insertions(+), 10 deletions(-)
->
-> diff --git a/drivers/power/reset/mt6323-poweroff.c b/drivers/power/reset/mt6323-poweroff.c
-> index 1caf43d..0532803 100644
-> --- a/drivers/power/reset/mt6323-poweroff.c
-> +++ b/drivers/power/reset/mt6323-poweroff.c
-> @@ -30,7 +30,7 @@ static void mt6323_do_pwroff(void)
->         int ret;
->
->         regmap_write(pwrc->regmap, pwrc->base + RTC_BBPU, RTC_BBPU_KEY);
-> -       regmap_write(pwrc->regmap, pwrc->base + RTC_WRTGR, 1);
-> +       regmap_write(pwrc->regmap, pwrc->base + RTC_WRTGR_MT6323, 1);
->
->         ret = regmap_read_poll_timeout(pwrc->regmap,
->                                         pwrc->base + RTC_BBPU, val,
-> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-> index cda238d..7a5a9e2 100644
-> --- a/drivers/rtc/rtc-mt6397.c
-> +++ b/drivers/rtc/rtc-mt6397.c
-> @@ -9,18 +9,38 @@
->  #include <linux/mfd/mt6397/core.h>
->  #include <linux/module.h>
->  #include <linux/mutex.h>
-> +#include <linux/of_device.h>
->  #include <linux/platform_device.h>
->  #include <linux/regmap.h>
->  #include <linux/rtc.h>
->  #include <linux/mfd/mt6397/rtc.h>
->  #include <linux/mod_devicetable.h>
->
-> +static const struct mtk_rtc_data mt6358_rtc_data = {
-> +       .wrtgr = RTC_WRTGR_MT6358,
-> +};
-> +
-> +static const struct mtk_rtc_data mt6397_rtc_data = {
-> +       .wrtgr = RTC_WRTGR_MT6397,
-> +};
-> +
-> +static const struct of_device_id mt6397_rtc_of_match[] = {
-> +       { .compatible = "mediatek,mt6323-rtc",
-> +               .data = (void *)&mt6397_rtc_data, },
-> +       { .compatible = "mediatek,mt6358-rtc",
-> +               .data = (void *)&mt6358_rtc_data, },
-> +       { .compatible = "mediatek,mt6397-rtc",
-> +               .data = (void *)&mt6397_rtc_data, },
-> +       {}
-> +};
-> +MODULE_DEVICE_TABLE(of, mt6397_rtc_of_match);
-> +
->  static int mtk_rtc_write_trigger(struct mt6397_rtc *rtc)
->  {
->         int ret;
->         u32 data;
->
-> -       ret = regmap_write(rtc->regmap, rtc->addr_base + RTC_WRTGR, 1);
-> +       ret = regmap_write(rtc->regmap, rtc->addr_base + rtc->data->wrtgr, 1);
->         if (ret < 0)
->                 return ret;
->
-> @@ -269,6 +289,9 @@ static int mtk_rtc_probe(struct platform_device *pdev)
->         res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->         rtc->addr_base = res->start;
->
-> +       rtc->data = (struct mtk_rtc_data *)
-> +                       of_device_get_match_data(&pdev->dev);
+Dear Mark,
 
-Sorry for not noticing earlier, the cast is not needed. (also, you
-cast a const pointer into a non-const, which doesn't matter anyway as
-rtc->data is const again, but still...).
+	Thanks for your viewing.
 
-> +
->         rtc->irq = platform_get_irq(pdev, 0);
->         if (rtc->irq < 0)
->                 return rtc->irq;
-> @@ -325,13 +348,6 @@ static int mt6397_rtc_resume(struct device *dev)
->  static SIMPLE_DEV_PM_OPS(mt6397_pm_ops, mt6397_rtc_suspend,
->                         mt6397_rtc_resume);
->
-> -static const struct of_device_id mt6397_rtc_of_match[] = {
-> -       { .compatible = "mediatek,mt6323-rtc", },
-> -       { .compatible = "mediatek,mt6397-rtc", },
-> -       { }
-> -};
-> -MODULE_DEVICE_TABLE(of, mt6397_rtc_of_match);
-> -
+On Wed, 2020-03-11 at 12:12 +0000, Mark Brown wrote:
+> On Wed, Mar 11, 2020 at 05:22:24PM +0800, Eason Yen wrote:
+> > On Mon, 2020-03-09 at 13:13 +0000, Mark Brown wrote:
+> > > On Fri, Mar 06, 2020 at 11:33:42AM +0800, Eason Yen wrote:
+> 
+> > > This looks like things that might be better exposed via pinctrl and
+> > > gpiolib for board specific configuration - what exactly are these GPIOs
+> > > doing?  A lot of this code looks like it might be board specific.
+> 
+> > MT6359 has some gpios (pad_aud_*) for downlink/uplink.
+> > And these pins is connected between AP part and PMIC part.
+> > (1) For AP part, user need to set gpio pinmux for these gpio using DT.
+> > (2) For pmic part, gpio are configured at codec driver by default.
+> 
+> > For PMIC part, user need to set in these register :
+> > GPIO_MODE1/GPIO_MODE2/GPIO_MODE3
+> 
+> > The following functions are used to set:
+> > - playback_gpio_set/playback_gpio_reset
+> > - capture_gpio_set/capture_gpio_reset
+> > - vow_gpio_set/vow_gpio_reset
+> 
+> This sounds like it should be handled at the machine driver level, it's
+> possible some system integrator will wire things up differently.
+> 
 
-Why are you moving the MODULE_DEVICE_TABLE to the top of the file? I
-think you can keep it here with the mt63xx_rtc_data structs?
+machine driver will set default at booting stage to execute
+mt6359_mtkaif_calibration_enable and mt6359_mtkaif_calibration_disable.
 
->  static struct platform_driver mtk_rtc_driver = {
->         .driver = {
->                 .name = "mt6397-rtc",
-> diff --git a/include/linux/mfd/mt6397/rtc.h b/include/linux/mfd/mt6397/rtc.h
-> index 7dfb63b..66534ed 100644
-> --- a/include/linux/mfd/mt6397/rtc.h
-> +++ b/include/linux/mfd/mt6397/rtc.h
-> @@ -18,7 +18,9 @@
->  #define RTC_BBPU_CBUSY         BIT(6)
->  #define RTC_BBPU_KEY            (0x43 << 8)
->
-> -#define RTC_WRTGR              0x003c
-> +#define RTC_WRTGR_MT6358       0x3a
-> +#define RTC_WRTGR_MT6397       0x3c
-> +#define RTC_WRTGR_MT6323       RTC_WRTGR_MT6397
->
->  #define RTC_IRQ_STA            0x0002
->  #define RTC_IRQ_STA_AL         BIT(0)
-> @@ -65,6 +67,10 @@
->  #define MTK_RTC_POLL_DELAY_US  10
->  #define MTK_RTC_POLL_TIMEOUT   (jiffies_to_usecs(HZ))
->
-> +struct mtk_rtc_data {
-> +       u32                     wrtgr;
-> +};
-> +
->  struct mt6397_rtc {
->         struct device           *dev;
->         struct rtc_device       *rtc_dev;
-> @@ -74,6 +80,7 @@ struct mt6397_rtc {
->         struct regmap           *regmap;
->         int                     irq;
->         u32                     addr_base;
-> +       const struct mtk_rtc_data *data;
->  };
->
->  #endif /* _LINUX_MFD_MT6397_RTC_H_ */
-> --
-> 2.6.4
+And at runtime stage, it is triggered by mt_dl_gpio_event and
+mt_ul_gpio_event while playback or capture.
+
+
+> > > > +/* use only when not govern by DAPM */
+> > > > +static int mt6359_set_dcxo(struct mt6359_priv *priv, bool enable)
+> > > > +{
+> 
+> > > Why might this sometimes be controlled outside of DAPM?
+> 
+> > mt6359_set_dcxo is used at mt6359_mtkaif_calibration_enable/disable.
+> 
+> > mtkaif_calibration process needs be completed at booting stage once.
+> > And it has a specific control sequence provided by codec designer.
+> > So it need to be controlled outside of DAPM.
+> 
+> OK, this should explicitly say that this is for use during calibration
+> then.
+> 
+> > > > +static const char *const mic_type_mux_map[] = {
+> > > > +	"Idle",
+> > > > +	"ACC",
+> > > > +	"DMIC",
+> > > > +	"DCC",
+> > > > +	"DCC_ECM_DIFF",
+> > > > +	"DCC_ECM_SINGLE",
+> > > > +	"VOW_ACC",
+> > > > +	"VOW_DMIC",
+> > > > +	"VOW_DMIC_LP",
+> > > > +	"VOW_DCC",
+> > > > +	"VOW_DCC_ECM_DIFF",
+> > > > +	"VOW_DCC_ECM_SINGLE"
+> > > > +};
+> 
+> > > This looks like something that should be being set by DT or other
+> > > platform data rather than at runtime - we're not likely to change from a
+> > > digital to analogue microphone at runtime for example.
+> 
+> > For mic1, it's mic_type can set one of mic_type_mux_map[] at different
+> > scenario.
+> > (1) When mic1 is not used, it should be set as "Idle"
+> > (2) When mic1 is ACC mode and used at normal capture scenario, it should
+> > be set as "ACC"
+> > (3) When mic1 is ACC mode and used at Voice Wakeup scenario, it should
+> > be set as "VOW_ACC"
+> 
+> That still doesn't mean you should have control over things like if the
+> microphone is single ended or differential at runtime.  This at least
+> needs to be a higher level control, it should be integrated with both
+> board data and DAPM.  You can at least select idle mode with DAPM, and
+> you may be able to select voice wakeup that way too (by looking at where
+> things are routed).
+> 
+
+OK. So it is better to fix mic_type (ACC/DMIC/DCC/DCC_*) at init stage
+because it will not be changed at runtime.
+
+And use another dpam mux or kcontrol to enable/disable vow for low power
+scenario.
+
+Is it right?
+
+> > > > +	SOC_SINGLE_EXT_TLV("LineoutR Volume",
+> > > > +			   MT6359_ZCD_CON1, 7, 0x12, 0,
+> > > > +			   snd_soc_get_volsw, mt6359_put_volsw, playback_tlv),
+> 
+> > > These should be stereo controls not pairs of mono controls.
+> 
+> > It is more flexible for customization.
+> 
+> > For example, customer may use lineout path for stereo speaker amp.
+> > And for specific amp, it need different gain on channel L and channel R.
+> 
+> You can set the gains of stereo pairs independently, that's not a
+> problem.
+> 
+> > > > +static const char * const lo_in_mux_map[] = {
+> > > > +	"Open", "Playback_L_DAC", "Playback", "Test Mode"
+> > > > +};
+> > > > +
+> > > > +static int lo_in_mux_map_value[] = {
+> > > > +	0x0, 0x1, 0x2, 0x3,
+> > > > +};
+> > > 
+> > > Why use a value enum here, a normal mux should be fine?
+> > > 
+> 
+> > Could I modify as follow:
+> 
+> > /* LOL MUX */
+> > enum {
+> > 	LO_MUX_OPEN = 0,
+> > 	LO_MUX_L_DAC,
+> > 	LO_MUX_3RD_DAC,
+> > 	LO_MUX_TEST_MODE,
+> > 	LO_MUX_MASK = 0x3,
+> > };
+> 
+> > static const char * const lo_in_mux_map[] = {
+> > 	"Open", "Playback_L_DAC", "Playback", "Test Mode"
+> > };
+> 
+> > static int lo_in_mux_map_value[] = {
+> > 	LO_MUX_OPEN,
+> > 	LO_MUX_L_DAC,
+> > 	LO_MUX_3RD_DAC,
+> > 	LO_MUX_TEST_MODE,
+> > };
+> 
+> Why bother with the value mapping at all?
+> 
+
+ok, I will refine it as follow. is it ok?
+
+And remove 
+/* remove it
+static int lo_in_mux_map_value[] = {
+	0x0, 0x1, 0x2, 0x3,
+};
+*/
+
+enum {
+	LO_MUX_OPEN = 0,
+	LO_MUX_L_DAC,
+	LO_MUX_3RD_DAC,
+	LO_MUX_TEST_MODE,
+	LO_MUX_MASK = 0x3,
+};
+
+static const char * const lo_in_mux_map[] = {
+	"Open", "Playback_L_DAC", "Playback", "Test Mode"
+};
+
+static SOC_ENUM_SINGLE_DECL(lo_in_mux_map_enum,
+			    SND_SOC_NOPM, 0, lo_in_mux_map);
+
+static const struct snd_kcontrol_new lo_in_mux_control =
+	SOC_DAPM_ENUM("LO Select", lo_in_mux_map_enum);
+
+
+The refine will apply on RCV MUX and HP MUX ,too.
+
+
+> > > > +static int mt_delay_250_event(struct snd_soc_dapm_widget *w,
+> > > > +			      struct snd_kcontrol *kcontrol,
+> > > > +			      int event)
+> > > > +{
+> > > > +	switch (event) {
+> > > > +	case SND_SOC_DAPM_POST_PMU:
+> > > > +	case SND_SOC_DAPM_PRE_PMD:
+> > > > +		usleep_range(250, 270);
+> 
+> > > Why would having a sleep before power down be useful?
+> 
+> > It is based on designer's control sequence to add some delay while
+> > PMU/PMD.
+> 
+> But how does the designer know when the sequence starts?  Don't they
+> mean to have a delay *after* power down?
+> 
+
+For PMU, designer think 
+"AUD_CK" --> wait at least 250ms --> "AUDIF_CK" --> next ...
+
+For PMD, designer think 
+"AUDIF_CK" --> wait at least 250ms --> "AUD_CK" --> next ...
+
+	SND_SOC_DAPM_SUPPLY_S("ZCD13M_CK", SUPPLY_SEQ_TOP_CK,
+			      MT6359_AUD_TOP_CKPDN_CON0,
+			      RG_ZCD13M_CK_PDN_SFT, 1, NULL, 0),
+
+	SND_SOC_DAPM_SUPPLY_S("AUD_CK", SUPPLY_SEQ_TOP_CK_LAST,
+			      MT6359_AUD_TOP_CKPDN_CON0,
+			      RG_AUD_CK_PDN_SFT, 1,
+			      mt_delay_250_event,
+			      SND_SOC_DAPM_POST_PMU | 	SND_SOC_DAPM_PRE_PMD),
+
+	SND_SOC_DAPM_SUPPLY_S("AUDIF_CK", SUPPLY_SEQ_TOP_CK,
+			      MT6359_AUD_TOP_CKPDN_CON0,
+			      RG_AUDIF_CK_PDN_SFT, 1, NULL, 0),
+
+So I add a mt_delay_250_event while "AUD_CK" POST_PMU and PRE_PMD.
+
+
+> > > > +static int mt6359_codec_probe(struct snd_soc_component *cmpnt)
+> > > > +{
+> > > > +	struct mt6359_priv *priv = snd_soc_component_get_drvdata(cmpnt);
+> > > > +	int ret;
+> > > > +
+> > > > +	snd_soc_component_init_regmap(cmpnt, priv->regmap);
+> > > > +
+> > > > +	snd_soc_add_component_controls(cmpnt,
+> > > > +				       mt6359_snd_vow_controls,
+> > > > +				       ARRAY_SIZE(mt6359_snd_vow_controls));
+> 
+> > > Use the controls member of the component driver struct.
+> 
+> > Do you mean that I should merge mt6359_snd_vow_controls into
+> > mt6359_snd_controls?
+> 
+> Yes, you're unconditionally registering these so there's no sense in
+> splitting them.
+> 
+> > > > +	priv->avdd_reg = devm_regulator_get(priv->dev, "vaud18");
+> > > > +	if (IS_ERR(priv->avdd_reg)) {
+> > > > +		dev_err(priv->dev, "%s(), have no vaud18 supply", __func__);
+> > > > +		return PTR_ERR(priv->avdd_reg);
+> > > > +	}
+> 
+> > > The driver should request resources during device model probe rather
+> > > than component probe.
+> 
+> > Do you mean that it need be requested at mt6359_platform_driver_probe()
+> > instead of mt6359_codec_probe() ?
+> 
+> Yes.
+> 
+> > > > +	ret = regulator_enable(priv->avdd_reg);
+> > > > +	if (ret)
+> > > > +		return ret;
+> > > > +
+> 
+> > > There's nothing to disable this on remove.
+> 
+> > Do you mean that I should add a remove function to execute
+> > regulator_disable()?
+> 
+> Yes.
 
 _______________________________________________
 Linux-mediatek mailing list
