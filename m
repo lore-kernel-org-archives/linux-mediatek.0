@@ -2,66 +2,84 @@ Return-Path: <SRS0=9ZOH=45=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=DKIM_SIGNED,DKIM_VALID,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B6F3AC10DCE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2020 15:53:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F2B37C1975A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2020 16:38:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 83D192067C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2020 15:53:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C4C832067C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2020 16:38:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qSEXO+MT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 83D192067C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=free.fr
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aPIBgKBZ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="K9wdZeHL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C4C832067C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n1An5Fdbw5BPvY60Eslv1T1YJfAYWeegInjDJZ+fv7U=; b=qSEXO+MTGA69K7
-	J0geaxWJSrdh2Wzp9utnpytzRzxkzbcBeQx8PMy6mq08sdqLpIu//irFY63cJod2r8JTgzsYwKqIY
-	XsloR+2KELSIdKZgBmBNAmABzT8LDRxDy1f39kG6kdsfLKr6zTanDcaWRg2fR+F8SaV1K/+xVPQQV
-	WlBg/duEwJZB7g29vIeOCtCN/7ghGcywnqR6pNRfIwFYvdeFid3ZdjAteUIrO4osKLgo7Ohy5JNtL
-	W49rLUVzL2d/HtK2x2XW/cteN7/upsa192lCZEVZqH15BbOuw/JRjDyb84L+7F2BJBh6HjoOqhNrZ
-	E1OUavb4BLZm1NXq9ekA==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FLt4UjYQmoy3W1rb9K6Pf3032xws3yDlQQo8Pbl3RN4=; b=aPIBgKBZDUweHG
+	uUo14HRXQp1qye2uFC0M4aCr/UAuEABwaB62qcoqWB6D4wKHBqOrqYw6wZI/P8GpXGU3vQHlljZ/j
+	Bf51RjA/v7BrBQDlA8EVHR8KX4MFjxU5kwzEbMTKAxXfu5Tlbnz+wHqEdGSxTSiYBtLWkqDDWT5dO
+	0myK3bHjR+j5KWsLpmoTY3OHlf7dI4VBDpEmw1edtEgHN1NPxq8eJsCctXgehF/LVFD7KieSdXpET
+	GeaZgLiLBvhYGKreux+t8+uOZT7NppKP2W3m75FOtB9r6AgZcYloddYa7ARNoHPy8XFbjk8hYx3RL
+	jwnxFMFmw5O3wSGbVzbw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCQ9H-0004mr-FR; Thu, 12 Mar 2020 15:53:27 +0000
-Received: from ns.iliad.fr ([212.27.33.1])
+	id 1jCQqJ-0005dz-1d; Thu, 12 Mar 2020 16:37:55 +0000
+Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCQ96-0004cn-Dr; Thu, 12 Mar 2020 15:53:18 +0000
-Received: from ns.iliad.fr (localhost [127.0.0.1])
- by ns.iliad.fr (Postfix) with ESMTP id 362C221081;
- Thu, 12 Mar 2020 16:53:12 +0100 (CET)
-Received: from [192.168.108.51] (freebox.vlq16.iliad.fr [213.36.7.13])
- by ns.iliad.fr (Postfix) with ESMTP id 1DD28208EC;
- Thu, 12 Mar 2020 16:53:12 +0100 (CET)
-Subject: Re: [PATCH 4/5] pci: handled return value of platform_get_irq
- correctly
-To: Bjorn Helgaas <helgaas@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Marc Zyngier
- <maz@kernel.org>, Thomas Gleixner <tglx@linutronix.de>
-References: <20200312141102.GA93224@google.com>
-From: Marc Gonzalez <marc.w.gonzalez@free.fr>
-Message-ID: <b145096e-8628-c551-4846-2eb5ce0334f6@free.fr>
-Date: Thu, 12 Mar 2020 16:53:12 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ id 1jCQq9-0005QZ-Ek
+ for linux-mediatek@lists.infradead.org; Thu, 12 Mar 2020 16:37:47 +0000
+Received: by mail-ot1-x331.google.com with SMTP id g15so6948905otr.0
+ for <linux-mediatek@lists.infradead.org>; Thu, 12 Mar 2020 09:37:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=MYtEPdrTksnGvDZU5deL4CbY9Pr9ioIV5tkxQ/zHu9E=;
+ b=K9wdZeHL5rkylrZz3QIeSH+2rSRaU/h8JfwlYHPQVkc1YTeX3aYZHzKozu1Uh9dGmW
+ al/g5ZOeGmatS1po/OOiwYPpVnuwgNjRDMnm37LUrARxdr2D7c+UQ8BfOm773vJ38KB4
+ WyJL6FoyqANhVa43OkIu37Qm+iMm4zKxaNoyM1dwCOxiTEHUeCvSpIqJa5SWrNPYI0mG
+ 7FEO4d6rMrB+CWnvO+a1xme3jdmlAWODxkI6xVbkFJ7KojYC/IAy1zx8BHJZZW4NU2XD
+ duN5csFpY+MN/H6Y4wwobhExb+fpRbdG/uyLFsrcm7iHlXNPYNlOPB4/MKHiQ8sgTL20
+ wivg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=MYtEPdrTksnGvDZU5deL4CbY9Pr9ioIV5tkxQ/zHu9E=;
+ b=gFbbZKfP5wxUYhTy5Sjv3yjYPPWZJIflincpKVpjQryPnDEPUTlYo+d34vSBuxPmxp
+ HlqvzUoKKM7jKQ8kVHO3Ly6BanZOkvbJ4/WE3tAFd/5Oo7q1b/TSSCHTYur/qsS9BXPj
+ n6paVh/3OcChG3itk8YITl0cq0CDBwEl1O6t23X1GUvf/tTRHTeIUUkQXpU5sm9B9Wqg
+ JGrqHiD1OiIxBtYfMnSaLLyRmpkVYN+8giSs6MSTiR5vlkDpR5927I/NFqNf/DpRFFcs
+ djEVXz6eqEC9eHUWImQHOHcXPcBMHoqX1iIcw68mp8M5w2uTVRqfYqqz1GhmjebeXPSG
+ DVtg==
+X-Gm-Message-State: ANhLgQ0+hs4ibn9cJTEpgd7CPkbPVBERPWtYkcVUqWWbgesVPkfHxqDq
+ n5h0OgZLywjpeuJdoFpNbdCbcQEC9DIr3tA1SqYzcw==
+X-Google-Smtp-Source: ADFU+vtZrRh7IowOp5OH0oSfDw8psJiJhEtJqqx6lihfLrI2TL2niHppJIGBv22OqVb3O+3TasH0O7liOBZUKkgfp2I=
+X-Received: by 2002:a9d:7756:: with SMTP id t22mr6718289otl.272.1584031064139; 
+ Thu, 12 Mar 2020 09:37:44 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200312141102.GA93224@google.com>
-Content-Language: en-US
-X-Virus-Scanned: ClamAV using ClamSMTP ; ns.iliad.fr ;
- Thu Mar 12 16:53:12 2020 +0100 (CET)
+References: <20200310134603.30260-1-robert.foss@linaro.org>
+ <20200310134603.30260-4-robert.foss@linaro.org>
+ <20200310143014.GL1922688@smile.fi.intel.com>
+In-Reply-To: <20200310143014.GL1922688@smile.fi.intel.com>
+From: Robert Foss <robert.foss@linaro.org>
+Date: Thu, 12 Mar 2020 17:37:33 +0100
+Message-ID: <CAG3jFyuSj4NRAPHk0qch4SXg3iS7zss6tbRuC3mBnVL=MsLwVw@mail.gmail.com>
+Subject: Re: [v1 3/3] media: ov8856: Implement sensor module revision
+ identification
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200312_085316_620464_34F4F3C0 
-X-CRM114-Status: GOOD (  22.22  )
+X-CRM114-CacheID: sfid-20200312_093745_546469_416E7206 
+X-CRM114-Status: GOOD (  12.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,130 +91,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
- Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, linux-pci@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>,
- Aman Sharma <amanharitsh123@gmail.com>, linux-kernel@vger.kernel.org,
- Mans Rullgard <mans@mansr.com>, linux-mediatek@lists.infradead.org,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
- linux-arm-kernel@lists.infradead.org,
- Andrew Murray <amurray@thegoodpenguin.co.uk>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>,
+ Tomasz Figa <tfiga@chromium.org>, ben.kao@intel.com,
+ linux-mediatek@lists.infradead.org, Dongchun Zhu <dongchun.zhu@mediatek.com>,
+ Sakari Ailus <sakari.ailus@iki.fi>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>,
+ linux-media <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/03/2020 15:11, Bjorn Helgaas wrote:
-
-> [+cc another Marc]
-
-Doh! I should indeed have CCed maz and tglx.
-
-> On Thu, Mar 12, 2020 at 10:53:06AM +0100, Marc Gonzalez wrote:
->
->> On 11/03/2020 20:19, Aman Sharma wrote:
->>
->>> diff --git a/drivers/pci/controller/pcie-tango.c b/drivers/pci/controller/pcie-tango.c
->>> index 21a208da3f59..18c2c4313eb5 100644
->>> --- a/drivers/pci/controller/pcie-tango.c
->>> +++ b/drivers/pci/controller/pcie-tango.c
->>> @@ -273,9 +273,9 @@ static int tango_pcie_probe(struct platform_device *pdev)
->>>  		writel_relaxed(0, pcie->base + SMP8759_ENABLE + offset);
->>>  
->>>  	virq = platform_get_irq(pdev, 1);
->>> -	if (virq <= 0) {
->>> +	if (virq < 0) {
->>>  		dev_err(dev, "Failed to map IRQ\n");
->>> -		return -ENXIO;
->>> +		return virq;
->>>  	}
->>>  
->>>  	irq_dom = irq_domain_create_linear(fwnode, MSI_MAX, &dom_ops, pcie);
->>
->> Weee, here we go again :-)
->>
->> https://patchwork.kernel.org/patch/11066455/
->> https://patchwork.kernel.org/patch/10006651/
->>
->> Last time around, my understanding was that, going forward,
->> the best solution was:
->>
->> 	virq = platform_get_irq(...)
->> 	if (virq <= 0)
->> 		return virq ? : -ENODEV;
->>
->> i.e. map 0 to -ENODEV, pass other errors as-is, remove the dev_err
->>
->> @Bjorn/Lorenzo did you have a change of heart?
-> 
-> Yes.  In 10006651 (Oct 20, 2017), I thought:
-> 
->   irq = platform_get_irq(pdev, 0);
->   if (irq <= 0)
->     return -ENODEV;
-> 
-> was fine.  In 11066455 (Aug 7, 2019), I said I thought I was wrong and
-> that:
-> 
->   platform_get_irq() is a generic interface and we have to be able to
->   interpret return values consistently.  The overwhelming consensus
->   among platform_get_irq() callers is to treat "irq < 0" as an error,
->   and I think we should follow suit.
->   ...
->   I think the best pattern is:
-> 
->     irq = platform_get_irq(pdev, i);
->     if (irq < 0)
->       return irq;
-> 
-> I still think what I said in 2019 is the right approach.  I do see
-> your comment in 10006651 about this pattern:
-> 
->   if (virq <= 0)
->     return virq ? : -ENODEV;
-> 
-> but IMHO it's too complicated for general use.  Admittedly, it's not
-> *very* complicated, but it's a relatively unusual C idiom and I
-> stumble over it every time I see it.
-
-FTR, omitting the middle operand is a GNU extension.
-https://gcc.gnu.org/onlinedocs/gcc/Conditionals.html
-The valid C idiom would be virq ? virq : -ENODEV
-
-> If 0 is a special case I think
-> it should be mapped to a negative error in arch-specific code, which I
-> think is what Linus T suggested in [1].
-
-Lorenzo, being both PCI maintainer and ARM employee should be in a
-good position to change the arch-specific code for arm and arm64?
-
-> I think there's still a large consensus that "irq < 0" is the error
-> case.  In the tree today we have about 1400 callers of
-> platform_get_irq() and platform_get_irq_byname() [2].  Of those,
-> almost 900 check for "irq < 0" [3], while only about 150 check for
-> "irq <= 0" [4] and about 15 use some variant of a "irq ? : -ENODEV"
-> pattern.
-> 
-> The bottom line is that in drivers/pci, I'd like to see either a
-> single style or a compelling argument for why some checks should be
-> "irq < 0" and others should be "irq <= 0".
-> 
-> [1] https://yarchive.net/comp/linux/zero.html
-> [2] $ git grep "=.*platform_get_irq" | wc -l
->     1422
-> [3] $ git grep -A4 "=.*platform_get_irq" | grep "<\s*0" | wc -l
->     894
-> [4] $ git grep -A4 "=.*platform_get_irq" | grep "<=\s*0" | wc -l
->     151
-> [5] $ git grep -A4 "=.*platform_get_irq" | grep "return.*?.*:.*;" | wc -l
->     15
-
-Interesting stats, thanks.
-
-Regards.
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGV5IEFuZHksCgpPbiBUdWUsIDEwIE1hciAyMDIwIGF0IDE1OjMwLCBBbmR5IFNoZXZjaGVua28K
+PGFuZHJpeS5zaGV2Y2hlbmtvQGxpbnV4LmludGVsLmNvbT4gd3JvdGU6Cj4KPiBPbiBUdWUsIE1h
+ciAxMCwgMjAyMCBhdCAwMjo0NjowM1BNICswMTAwLCBSb2JlcnQgRm9zcyB3cm90ZToKPiA+IFF1
+ZXJ5IHRoZSBzZW5zb3IgZm9yIGl0cyBtb2R1bGUgcmV2aXNpb24sIGFuZCBjb21wYXJlIGl0Cj4g
+PiB0byBrbm93biByZXZpc2lvbnMuCj4gPiBDdXJyZW50bHkgb25seSB0aGUgJzFCJyByZXZpc2lv
+biBoYXMgYmVlbiBhZGRlZC4KPgo+IEFyZSB5b3Ugc3VyZSB5b3Ugc2VuZCBsYXRlc3QgdmVyc2lv
+bj8KPgo+IEkgaGF2ZSBhIGTDqWrEhSB2dSB0aGF0IEkgaGF2ZSBzZWVuIHRoaXMgYWxyZWFkeSBh
+bmQgdGhpcyBvbmUgZG9lc24ndCBhZGRyZXNzIGFueQo+IGNvbW1lbnQgZ2l2ZW4uCgpJIHRoaW5r
+IHB1bGxlZCBhIHNlcmllcyBEb25nY2h1biBaaHVzIGVhcmxpZXIgc2VyaWVzIGFwYXJ0IGFuZCB1
+c2VkIHNvbWUgb2YgaXQsCkkgbWF5IGhhdmUgbWlzc2VkIHNvbWUgb2YgdGhlIGZlZWRiYWNrIGdp
+dmVuIHRvIGhpcyB2My4gU29ycnkgYWJvdXQgdGhhdC4KCj4KPiAuLi4KPgo+ID4gKyAgICAgZGV2
+X2luZm8oJmNsaWVudC0+ZGV2LCAiT1Y4ODU2IHJldmlzaW9uICV4ICglcykgYXQgYWRkcmVzcyAw
+eCUwMnhcbiIsCj4gPiArICAgICAgICAgICAgIHZhbCwKPgo+ID4gKyAgICAgICAgICAgICB2YWwg
+PT0gT1Y4ODU2XzFCX01PRFVMRSA/ICIxQiIgOiAidW5rbm93biByZXZpc2lvbiIsCj4KPiBUaGlz
+IGlzIHdlaXJkLiBDYW4geW91IGFkZCBhIGJpdCBtb3JlIGdlbmVyYWwgd2F5IG9mIHNob3dpbmcg
+cmV2aXNpb24/CgpUaGlzIGlzIG1vZGVsZWQgYWZ0ZXIgdGhlIG92NzI1MSBkcml2ZXIsIHNpbmNl
+IHRoYXQgb3V0cHV0IGNhbWUgaW4KaGFuZHkgZHVyaW5nIGJyaW5ndXAuCgogICAgZGV2X2luZm8o
+ZGV2LCAiT1Y3MjUxIHJldmlzaW9uICV4ICglcykgZGV0ZWN0ZWQgYXQgYWRkcmVzcyAweCUwMnhc
+biIsCiAgICAgICAgIGNoaXBfcmV2LAogICAgICAgICBjaGlwX3JldiA9PSAweDQgPyAiMUEgLyAx
+QiIgOgogICAgICAgICBjaGlwX3JldiA9PSAweDUgPyAiMUMgLyAxRCIgOgogICAgICAgICBjaGlw
+X3JldiA9PSAweDYgPyAiMUUiIDoKICAgICAgICAgY2hpcF9yZXYgPT0gMHg3ID8gIjFGIiA6ICJ1
+bmtub3duIiwKICAgICAgICAgY2xpZW50LT5hZGRyKTsKClRvIG1lIHRoaXMgaXMgcHJldHR5IGdl
+bmVyYWwgYXBwcm9hY2gsIGF0IGxlYXN0IHVudGlsIHRoaXMgcmV2aXNpb24KaW5mb3JtYXRpb24g
+aXMgdXNlZCBpbiBvdGhlciBwbGFjZXMuCkknbSBub3QgcXVpdGUgc3VyZSB3aGF0IHlvdSBoYWQg
+aW4gbWluZC4gTWF5YmUgdGhlIGN1cnJlbnQKaW1wbGVtZW50YXRpb24gaXMgYSBsaXR0bGUgYml0
+IGNsdW5reSBpbiB0aGUgY2FzZSBvZiBvdjg4NTYgc2luY2UKdGhlcmUncyBvbmx5IG9uZSByZXZp
+c2lvbiBudW1iZXIga25vd24gY3VycmVudGx5LgoKRWl0aGVyIHdheSwgSSdsbCBoYXBwaWx5IGNo
+YW5nZSBpdC4gQnV0IEkgZG9uJ3QgcXVpdGUga25vdyB3aGF0IHlvdQpoYXZlIGluIG1pbmQuCgo+
+Cj4gPiArICAgICAgICAgICAgIGNsaWVudC0+YWRkcik7Cj4KPiAtLQo+IFdpdGggQmVzdCBSZWdh
+cmRzLAo+IEFuZHkgU2hldmNoZW5rbwo+Cj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRp
+YXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
