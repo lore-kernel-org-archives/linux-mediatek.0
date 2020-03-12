@@ -2,78 +2,83 @@ Return-Path: <SRS0=9ZOH=45=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 00439C10DCE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2020 13:35:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D766AC10DCE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2020 14:08:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C6EA1206E7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2020 13:35:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A92F8206E7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2020 14:08:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hwdbarcl";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Jh6a//8x"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C6EA1206E7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="scdSsh7e";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="H7DN/hrX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A92F8206E7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E5xQ5i2elBNKxbDJERctPchnd65ygOLMuYiCb965t24=; b=hwdbarclLr3st4
-	Mp286S7cSX1ZYHJlbr73zn7C+NnPM8VEzYNK1e5qydzU9iPn8VQLvTU0KQl73iQimD3iSSO9AHwPW
-	6/gfnCwLP6Sf+Hiicr/vzQV+N6jzba2APFSq3gNOU2u19150QRsgSjqEZwR/j/ChU/C+jyDtd50Qz
-	UhNeMP6BVi4SrPjDwq4y+FQr3krUFrA9jPtj5YIICH+k8uAK9sJWI45KC/vcrRMdM5ulmXWYIZaB5
-	YqA50o8tZZsN8iyAvtv54yjZiN5pg+b70cSTKRnodSZw1WNWaQ4GZSK1BvUasrS3QsIn/BTzJRYRd
-	wTtns83PIAa4v2yu/lXw==;
+	List-Owner; bh=Vd5fBUsiyaqqFVmqDOVNH0vF3tOlSqdjU6bx3T5Hhik=; b=scdSsh7eH+qQem
+	/bexEZgGPlX/MWGA6eC/5/mhH4sl3ul+E7gCeyDH9jo2wxUS0JAT5Cg6SVVX2tVxIzc/AAAlYWli7
+	D16+RvEer6G2vmJbIg18+I+a/Iwb1DAM28soNV4joZh4BmGZZt00y1gpcIBelMQh4HowYXRAgr0rH
+	OmuvXucy6fRWdMnwITNp0/p3OmAqk1jPPzhTsprlGAkEh+GxfAiOvAHoX+nUou1fy1jaqTjmbWH9e
+	SR1seSPzNzqFLDyk7noZcKO3RnTuPIgxO0AauoxgZUUN/NSPF6jvGUO6UgtY5mspXtU4ED609fEYD
+	cU99GgdLi03YI2uxG16w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCNzH-0006t8-KP; Thu, 12 Mar 2020 13:34:59 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jCOVZ-0005xo-67; Thu, 12 Mar 2020 14:08:21 +0000
+Received: from mail-vk1-xa43.google.com ([2607:f8b0:4864:20::a43])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCNyW-00068k-Ft; Thu, 12 Mar 2020 13:34:14 +0000
-X-UUID: 35e2305d586549a8ac629e90b78f4014-20200312
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=TJOwfXCdxtKskhQqIq5Rx4gC5ikFILpJpMDFmmmJALg=; 
- b=Jh6a//8x1NoJLq+RiSEgiUaLsW2tYqhl+a9nJbxkxYOdtGhA/MraDQOeFjVhK0c1m9hSLadxi8D3GCAdL+YumjTEZL5aN/jyuj2J+IBfEH+N2IxUa4ePQiicV4csxvftQYj1Uk8yv+IbjY3n0j6u9fU2RVA5zGctXegmMe5VV70=;
-X-UUID: 35e2305d586549a8ac629e90b78f4014-20200312
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2105265368; Thu, 12 Mar 2020 05:34:08 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 12 Mar 2020 06:24:39 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 12 Mar 2020 21:21:03 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Thu, 12 Mar 2020 21:21:02 +0800
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
- <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v3 2/8] scsi: ufs: remove init_prefetch_data in struct ufs_hba
-Date: Thu, 12 Mar 2020 21:23:44 +0800
-Message-ID: <20200312132350.18061-3-stanley.chu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200312132350.18061-1-stanley.chu@mediatek.com>
-References: <20200312132350.18061-1-stanley.chu@mediatek.com>
+ id 1jCOVO-0005pP-WF
+ for linux-mediatek@lists.infradead.org; Thu, 12 Mar 2020 14:08:12 +0000
+Received: by mail-vk1-xa43.google.com with SMTP id w67so1600920vkf.1
+ for <linux-mediatek@lists.infradead.org>; Thu, 12 Mar 2020 07:08:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=6J9Ig2oz1bb7guvVXYyRNpRVz0RKMu9DYxVEd/SzgXI=;
+ b=H7DN/hrXC5SOfs2915ZbQulRR7iAHtt3uIi89leVhH11cRIYwJ9rIM5rrJTWqrQc9c
+ k6W4+S7mPhWQ2G271UpAF2UqqOBhfUyXVTTOQeRHxJK7VosV9dmfY0UvneGlfP+dqukd
+ ba3Z/Ki7tJ2JemSrkSaxjoOoJtCIg6pMKZ3j9UHyB38C1Ah7aqbxMCC2r+nHacnypqbc
+ r3A4lgiLdqxs92Kk3ltPbguQYkRSI1unHNO6GWPHWvlAERBw4nfA4AMns8o44eOr+zKm
+ BUJ0/BKeCLxznbuOfoSnK76G/tzMHiPgKc78DV+nGGwt69TptpgDvh0rOWdTy6i018Jm
+ ag0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=6J9Ig2oz1bb7guvVXYyRNpRVz0RKMu9DYxVEd/SzgXI=;
+ b=MjfJvzXPWH8eTpHX1rdqQHFjVcfMDjFzBqWrKBrN4juSJLITahHPrzjPvuSdNIyKpv
+ Le4LfjAvYUIJeEkD76TLyg987Yj+BFrlD2i4vS99VSqibqYTPziCLOvUwy5zzluSMOrz
+ U5sLGZY05ood173zzR9FJ2O+D7p65LS++zeqXR/9Z/qmiNZ0nm0opS16Ri1tt/rXJLp8
+ ptxpm701eI8KN19fG3MYKg3jCbkf2mLm/nRyeqiOUQeJWhg5xK7IktVGuoOrgAYpkZYS
+ DStaZAiyEMlB5Lpltn6nOhTB5dpksETzFSaLf/sEoE/Dcecrlw2OBGMboLzk4ytYFNXn
+ c5Bg==
+X-Gm-Message-State: ANhLgQ27IUAJgNuTXV2clV9JT94qFS2BdREWsvj+6IarO9rxKHisguSX
+ m6SnRXT9eyt3BR0vSGqNfGIGML2Co1RiHVeduD/ttg==
+X-Google-Smtp-Source: ADFU+vsGDaiiav8lo5THUgIDY0HPzi+5T5mlfmPdJyURWCmQInX4drk2MUTv+qfoecTOl54d4a4OmoBfL83ZlRl3Who=
+X-Received: by 2002:a1f:5c84:: with SMTP id q126mr5449459vkb.5.1584022089616; 
+ Thu, 12 Mar 2020 07:08:09 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 5B748EC8B741F4CA0DA94897A506B5A45813883239713FCE4DF844E1C7F2E27E2000:8
-X-MTK: N
+References: <cover.1583952275.git.amanharitsh123@gmail.com>
+ <d12a15f496ca472e100798ac2cd256fbfc1de15d.1583952276.git.amanharitsh123@gmail.com>
+In-Reply-To: <d12a15f496ca472e100798ac2cd256fbfc1de15d.1583952276.git.amanharitsh123@gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 12 Mar 2020 15:07:58 +0100
+Message-ID: <CACRpkdYv0U0RmT7snp+UejEXecq4wLkhc11DUniUfGYAgyXC=A@mail.gmail.com>
+Subject: Re: [PATCH 1/5] pci: handled return value of platform_get_irq
+ correctly
+To: Aman Sharma <amanharitsh123@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200312_063412_561707_04CDE7C5 
-X-CRM114-Status: UNSURE (   8.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200312_070811_039131_973F11D1 
+X-CRM114-Status: GOOD (  13.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,103 +90,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Stanley Chu <stanley.chu@mediatek.com>, bvanassche@acm.org,
- andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, beanhuo@micron.com,
- linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
+ Marc Gonzalez <marc.w.gonzalez@free.fr>, linux-pci <linux-pci@vger.kernel.org>,
+ Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Mans Rullgard <mans@mansr.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Andrew Murray <amurray@thegoodpenguin.co.uk>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Struct init_prefetch_data currently is used privately in
-ufshcd_init_icc_levels(), thus it can be removed from struct ufs_hba.
+On Wed, Mar 11, 2020 at 8:19 PM Aman Sharma <amanharitsh123@gmail.com> wrote:
 
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/scsi/ufs/ufshcd.c | 15 ++++++---------
- drivers/scsi/ufs/ufshcd.h | 11 -----------
- 2 files changed, 6 insertions(+), 20 deletions(-)
+> Signed-off-by: Aman Sharma <amanharitsh123@gmail.com>
+> ---
+>  drivers/pci/controller/pci-v3-semi.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/pci/controller/pci-v3-semi.c b/drivers/pci/controller/pci-v3-semi.c
+> index bd05221f5a22..a5bf945d2eda 100644
+> --- a/drivers/pci/controller/pci-v3-semi.c
+> +++ b/drivers/pci/controller/pci-v3-semi.c
+> @@ -777,9 +777,9 @@ static int v3_pci_probe(struct platform_device *pdev)
+>
+>         /* Get and request error IRQ resource */
+>         irq = platform_get_irq(pdev, 0);
+> -       if (irq <= 0) {
+> +       if (irq < 0) {
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 314e808b0d4e..b4988b9ee36c 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -6501,6 +6501,7 @@ static void ufshcd_init_icc_levels(struct ufs_hba *hba)
- {
- 	int ret;
- 	int buff_len = hba->desc_size.pwr_desc;
-+	u32 icc_level;
- 	u8 *desc_buf;
- 
- 	desc_buf = kmalloc(buff_len, GFP_KERNEL);
-@@ -6516,21 +6517,17 @@ static void ufshcd_init_icc_levels(struct ufs_hba *hba)
- 		goto out;
- 	}
- 
--	hba->init_prefetch_data.icc_level =
--			ufshcd_find_max_sup_active_icc_level(hba,
--			desc_buf, buff_len);
--	dev_dbg(hba->dev, "%s: setting icc_level 0x%x",
--			__func__, hba->init_prefetch_data.icc_level);
-+	icc_level =
-+		ufshcd_find_max_sup_active_icc_level(hba, desc_buf, buff_len);
-+	dev_dbg(hba->dev, "%s: setting icc_level 0x%x",	__func__, icc_level);
- 
- 	ret = ufshcd_query_attr_retry(hba, UPIU_QUERY_OPCODE_WRITE_ATTR,
--		QUERY_ATTR_IDN_ACTIVE_ICC_LVL, 0, 0,
--		&hba->init_prefetch_data.icc_level);
-+		QUERY_ATTR_IDN_ACTIVE_ICC_LVL, 0, 0, &icc_level);
- 
- 	if (ret)
- 		dev_err(hba->dev,
- 			"%s: Failed configuring bActiveICCLevel = %d ret = %d",
--			__func__, hba->init_prefetch_data.icc_level , ret);
--
-+			__func__, icc_level, ret);
- out:
- 	kfree(desc_buf);
- }
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index 5c10777154fc..5cf79d2319a6 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -402,15 +402,6 @@ struct ufs_clk_scaling {
- 	bool is_suspended;
- };
- 
--/**
-- * struct ufs_init_prefetch - contains data that is pre-fetched once during
-- * initialization
-- * @icc_level: icc level which was read during initialization
-- */
--struct ufs_init_prefetch {
--	u32 icc_level;
--};
--
- #define UFS_ERR_REG_HIST_LENGTH 8
- /**
-  * struct ufs_err_reg_hist - keeps history of errors
-@@ -541,7 +532,6 @@ enum ufshcd_quirks {
-  * @intr_mask: Interrupt Mask Bits
-  * @ee_ctrl_mask: Exception event control mask
-  * @is_powered: flag to check if HBA is powered
-- * @init_prefetch_data: data pre-fetched during initialization
-  * @eh_work: Worker to handle UFS errors that require s/w attention
-  * @eeh_work: Worker to handle exception events
-  * @errors: HBA errors
-@@ -627,7 +617,6 @@ struct ufs_hba {
- 	u32 intr_mask;
- 	u16 ee_ctrl_mask;
- 	bool is_powered;
--	struct ufs_init_prefetch init_prefetch_data;
- 
- 	/* Work Queues */
- 	struct work_struct eh_work;
--- 
-2.18.0
+Have you considered:
+https://lwn.net/Articles/470820/
+
+TL;DR Linus (both of them) are not with you on this.
+
+And that is why the code is written like this.
+
+Do you really have a platform that could return 0 as IRQ
+here? In that case, can we fix it?
+
+>                 dev_err(dev, "unable to obtain PCIv3 error IRQ\n");
+> -               return -ENODEV;
+> +               return irq;
+
+That's OK with me.
+
+Yours,
+Linus Walleij
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
