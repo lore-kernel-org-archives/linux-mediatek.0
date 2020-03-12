@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A066CC1975A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2020 13:26:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A8C5C1975A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2020 13:26:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 688C9206BE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2020 13:26:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EEEE1206BE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2020 13:26:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fKjd0xog";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="pcyN5pRH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 688C9206BE
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AcFKXpLx";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="kpXuA8hZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EEEE1206BE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wNPIuYEfgT3Hk5x3tZE8OVAl1UoTYG5OllQePpXg2Zc=; b=fKjd0xogRKXUq4
-	TJquX+cblI0xF299+ugbpVNmI/toxslsEKUConO0c9t1jVvxLaUosGdn8I8fT/ZBUXM8x3RCDbUm8
-	NI4VjK+gW+YO9sqMQlIzowmcEhHX9dy/dan+xiNBbU23TKpVw0731fzNEkti+EaUaauQMzymrQNXP
-	Is4eHv63aHTk+U8GPz4K7dSGq+Lio5uBBv7SS+CrTpj+JNrvkdFK1ekFzNuOLpM6tFDgKLjEnTTaZ
-	+LI84gsII9zEt+qKjEyHvkdzcY26fjDakVgOQkFocOl9OqejW0iLVPEGAciW9R0Eux5vnX7kbTiTq
-	dvqS1cczOrt/svNO6XHA==;
+	List-Owner; bh=7YVkkagmdl3aqlLNzoA+vFDpHaOyuJz+IQM9lD/S+vI=; b=AcFKXpLxXNVya5
+	BRB26eg6vxdqzbAfrzANCPCoJj43NrippV1EKLFUCSbNKpgRHshaaIA0a/THMmutIidpv5Vj2Ue0M
+	fWsch1YGq0pXv5EN+51O6jyWcdmTXn8Ybqpbshntts6pVMSKNTEKuZwyAo80sXHPOR/8KR0rIVMWL
+	es6xaHlYxo1DULa+nxZ975+G2mdjI2SUOLGc6C4B2mh6sxjfbdjAouW41DeauOvCuqM8NXo1xlu7f
+	UJqFtGMy5uW3D15L+0DxAADv9rhdhIbph4Af6WjT6T63MobhCL/w+s6g3uNeHGiuRLBqEf4+nQrYc
+	t8a9+vaW6DhiCXsLdF+Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCNqq-0000Rb-NP; Thu, 12 Mar 2020 13:26:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jCNr5-0000iD-PS; Thu, 12 Mar 2020 13:26:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCNoi-0005HA-UG; Thu, 12 Mar 2020 13:24:06 +0000
-X-UUID: df6e1840b5a3400eb4ea4d2f4c150a61-20200312
+ id 1jCNom-0005LU-NG; Thu, 12 Mar 2020 13:24:10 +0000
+X-UUID: 1bd37ccd79ec4094869c8bb0eaf49de5-20200312
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ssIHMZ3gzFIIN/d3N49O20oiYNm4fTdpyf9DffWHFP8=; 
- b=pcyN5pRH9SMaygnOI0ScQL2RvaG7HQtev4QnamSBZTxAboeamzEP8Z1zob2uWdn2jU+Y7i59LFYARh29FNBh4mfW6BJ1p+chgsioYrEGvI9PmvXSmTmEnbnoXxftKRoqeC4amKRTojMsYHJsZqhHPRWs8g3D0z7qCea7Df57PSg=;
-X-UUID: df6e1840b5a3400eb4ea4d2f4c150a61-20200312
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=4TIG4byHma4NOdZnY1tFZDNMEK8I4hnml0HdV5eY6KA=; 
+ b=kpXuA8hZknSf9NbNdxduDvPKzAkSnx4UolfspCZ2H+ZHAsXAuoCg7vD/OvP2mypTBehGTfu58SnJJOtHtuSZT2i200gcTObI3ILX02r2/c5qRONY1K2RlUEBl5hsOz87b3F4vjuyz6aOtOrBcooITeQHlr7Rb9gSXyrnBlF+kKE=;
+X-UUID: 1bd37ccd79ec4094869c8bb0eaf49de5-20200312
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 657788709; Thu, 12 Mar 2020 05:24:00 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ with ESMTP id 1887052764; Thu, 12 Mar 2020 05:24:07 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 12 Mar 2020 06:23:59 -0700
+ 15.0.1395.4; Thu, 12 Mar 2020 06:24:05 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 12 Mar 2020 21:21:41 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 12 Mar 2020 21:23:43 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Thu, 12 Mar 2020 21:21:03 +0800
+ Frontend Transport; Thu, 12 Mar 2020 21:21:02 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v3 7/8] scsi: ufs: make HCE polling more compact to improve
- initializatoin latency
-Date: Thu, 12 Mar 2020 21:23:49 +0800
-Message-ID: <20200312132350.18061-8-stanley.chu@mediatek.com>
+Subject: [PATCH v3 4/8] scsi: ufs: introduce common delay function
+Date: Thu, 12 Mar 2020 21:23:46 +0800
+Message-ID: <20200312132350.18061-5-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200312132350.18061-1-stanley.chu@mediatek.com>
 References: <20200312132350.18061-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200312_062405_060013_BCE64E3B 
-X-CRM114-Status: UNSURE (   9.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200312_062408_789824_40B3373F 
+X-CRM114-Status: GOOD (  12.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,40 +94,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reduce the waiting period between each HCE (Host Controller Enable)
-polling from 5 ms to 1 ms. In the same time, increase the maximum polling
-times to make "total polling time" unchanged approximately.
-
-This change could make HCE initializatoin faster to improve latency of
-ufshcd initialization, error recovery, and resume behaviors.
+Introduce common delay function to collect all delay requirements
+to simplify driver and take choices of udelay and usleep_range into
+consideration.
 
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
- drivers/scsi/ufs/ufshcd.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/scsi/ufs/ufshcd.c | 27 ++++++++++++++++++---------
+ drivers/scsi/ufs/ufshcd.h |  1 +
+ 2 files changed, 19 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index dcbf45d547d8..cd33d07c56cf 100644
+index b4988b9ee36c..ce65d321a73f 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -4301,7 +4301,7 @@ int ufshcd_hba_enable(struct ufs_hba *hba)
- 	ufshcd_wait_us(hba->hba_enable_delay_us, 100, true);
+@@ -597,6 +597,18 @@ static void ufshcd_print_pwr_info(struct ufs_hba *hba)
+ 		 hba->pwr_info.hs_rate);
+ }
+ 
++void ufshcd_wait_us(unsigned long us, unsigned long tolerance, bool can_sleep)
++{
++	if (!us)
++		return;
++
++	if (us < 10 || !can_sleep)
++		udelay(us);
++	else
++		usleep_range(us, us + tolerance);
++}
++EXPORT_SYMBOL_GPL(ufshcd_wait_us);
++
+ /*
+  * ufshcd_wait_for_register - wait for register value to change
+  * @hba - per-adapter interface
+@@ -620,10 +632,7 @@ int ufshcd_wait_for_register(struct ufs_hba *hba, u32 reg, u32 mask,
+ 	val = val & mask;
+ 
+ 	while ((ufshcd_readl(hba, reg) & mask) != val) {
+-		if (can_sleep)
+-			usleep_range(interval_us, interval_us + 50);
+-		else
+-			udelay(interval_us);
++		ufshcd_wait_us(interval_us, 50, can_sleep);
+ 		if (time_after(jiffies, timeout)) {
+ 			if ((ufshcd_readl(hba, reg) & mask) != val)
+ 				err = -ETIMEDOUT;
+@@ -3565,7 +3574,7 @@ static inline void ufshcd_add_delay_before_dme_cmd(struct ufs_hba *hba)
+ 	}
+ 
+ 	/* allow sleep for extra 50us if needed */
+-	usleep_range(min_sleep_time_us, min_sleep_time_us + 50);
++	ufshcd_wait_us(min_sleep_time_us, 50, true);
+ }
+ 
+ /**
+@@ -4289,7 +4298,7 @@ int ufshcd_hba_enable(struct ufs_hba *hba)
+ 	 * instruction might be read back.
+ 	 * This delay can be changed based on the controller.
+ 	 */
+-	usleep_range(1000, 1100);
++	ufshcd_wait_us(1000, 100, true);
  
  	/* wait for the host controller to complete initialization */
--	retry = 10;
-+	retry = 50;
- 	while (ufshcd_is_hba_active(hba)) {
- 		if (retry) {
- 			retry--;
-@@ -4310,7 +4310,7 @@ int ufshcd_hba_enable(struct ufs_hba *hba)
+ 	retry = 10;
+@@ -4301,7 +4310,7 @@ int ufshcd_hba_enable(struct ufs_hba *hba)
  				"Controller enable failed\n");
  			return -EIO;
  		}
--		ufshcd_wait_us(5000, 100, true);
-+		ufshcd_wait_us(1000, 100, true);
+-		usleep_range(5000, 5100);
++		ufshcd_wait_us(5000, 100, true);
  	}
  
  	/* enable UIC related interrupts */
+@@ -6224,7 +6233,7 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
+ 			reg = ufshcd_readl(hba, REG_UTP_TRANSFER_REQ_DOOR_BELL);
+ 			if (reg & (1 << tag)) {
+ 				/* sleep for max. 200us to stabilize */
+-				usleep_range(100, 200);
++				ufshcd_wait_us(100, 100, true);
+ 				continue;
+ 			}
+ 			/* command completed already */
+@@ -7783,7 +7792,7 @@ static void ufshcd_vreg_set_lpm(struct ufs_hba *hba)
+ 	 */
+ 	if (!ufshcd_is_link_active(hba) &&
+ 	    hba->dev_quirks & UFS_DEVICE_QUIRK_DELAY_BEFORE_LPM)
+-		usleep_range(2000, 2100);
++		ufshcd_wait_us(2000, 100, true);
+ 
+ 	/*
+ 	 * If UFS device is either in UFS_Sleep turn off VCC rail to save some
+diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+index fec004cd8054..4683e7bf6640 100644
+--- a/drivers/scsi/ufs/ufshcd.h
++++ b/drivers/scsi/ufs/ufshcd.h
+@@ -781,6 +781,7 @@ int ufshcd_init(struct ufs_hba * , void __iomem * , unsigned int);
+ int ufshcd_make_hba_operational(struct ufs_hba *hba);
+ void ufshcd_remove(struct ufs_hba *);
+ int ufshcd_uic_hibern8_exit(struct ufs_hba *hba);
++void ufshcd_wait_us(unsigned long us, unsigned long tolerance, bool can_sleep);
+ int ufshcd_wait_for_register(struct ufs_hba *hba, u32 reg, u32 mask,
+ 				u32 val, unsigned long interval_us,
+ 				unsigned long timeout_ms, bool can_sleep);
 -- 
 2.18.0
 _______________________________________________
