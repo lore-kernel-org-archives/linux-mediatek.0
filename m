@@ -2,59 +2,59 @@ Return-Path: <SRS0=2fV0=46=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6328EC2BB1D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:45:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2BD68C10DCE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:45:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 39BC120746
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:45:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 02A00206EB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:45:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FwgS7bfa";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="LJrzzNin"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39BC120746
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nSciFWit";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="nacHbsjX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 02A00206EB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=eTMFMrHx3O2UYe5EES9SWJiAb8etRQw+QPESuyxCnds=; b=FwgS7bfabXy61L
-	IynDHHaiUDAyT+l5bklfnDG0AGUnFxVlFftyXJlW/75/hB025/9sQgC8+ndP8G/CkUZ+Ys5YG7UPw
-	+4+XOkoUr87PyK/8J41ZUfPdrlKq2in+5ea4SsDtxwVFdZ5olVLWT1oalLhUf5HzXMTHgbVO94pib
-	Yft8MSQqvqUGniGzUH4lTeZ9iWybPXlpYIcId5FswW4QnWRJrpfkZr7RghwP6ONt04VWjKH+JtAI+
-	JDxJywXK3+6lKkXjpD6eKkDWvAqH9qU3KG2NHKLiTLWhxqYRwrt9m5KW4vNgEi5Mc+0GXXRHI98q0
-	pgv/U8f8MeutKuVk5eHA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aUzMHJMFwFyf8vzo1CGi7Y2gTUxRZW7aWMSuuf4XmmQ=; b=nSciFWitlkdYB9
+	Ryy8RjBqQYg8jx6WR1fqOvSsnHAYliucwofZML0IFzZVc+jrroAG12mnf8ONf7ZRohA8x2S5lbZzH
+	OsvmXnoh0lK5i57EAHqP4sQ7EK4uymDPzmyXhmPo+wjcn6SvVD5UL6HxWn1PnkAej4NIs8I+CR8mw
+	AS+oOgW30ZmR9xajHsgw8JtJoWCzfmPBhKiDQW20rrH1nJ9G9NZb3oyl0leefnkfEBEhxUfD7VFXr
+	YKQ0MHQgRk2Y2kZbcGtDTNoWexF1eAnSPQMqIWoPceQhqYm7BtTrRhNFqvbKbjFpPTL6tkErmPLZs
+	NDD4Id01/5kkJP2Kdydw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCgsp-0006VI-GQ; Fri, 13 Mar 2020 09:45:35 +0000
+	id 1jCgsn-0006T1-SO; Fri, 13 Mar 2020 09:45:33 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCgs9-0004g9-Nj; Fri, 13 Mar 2020 09:44:55 +0000
-X-UUID: 6a130229705b4ab1a02bfa7a6755b3bf-20200313
+ id 1jCgs9-0004gH-Oj; Fri, 13 Mar 2020 09:44:55 +0000
+X-UUID: d34073c3da044657a26417098835fbf9-20200313
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=MidtCNAIajigGXAw4rqwNT0zFAWiQXn5poURNmnBH+M=; 
- b=LJrzzNinhyuO6r/zTWKIZ+VCLmznN/9ccmyEtAL/9LAiShF2KCX4dz0TnLmXR/MgZX41UNgFVv2JVndyNdamKGc8XOy4jP9G3kBL8bEospvrxOKoi1XZppp5VzCHiyPplHHAOjYT7aSb5tKMU4FCOtK+kPLrUDB+90XLQLIbsTA=;
-X-UUID: 6a130229705b4ab1a02bfa7a6755b3bf-20200313
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=WAEDF3wVGcfjsbdKKEpfCJNHsy4ujyOaVE9TmeCQY2A=; 
+ b=nacHbsjXdJLlfaxTDRTb1OXzs03qnpmXZguBtmxNT4Gp4Ck6XYnTTrC2sND2OCaBGftdmeIkZX+xe6zmKA3RU3dg1XiSJ2vj4A8h+Mp7WkHQVGGxy1iJJ4N1FiFk5qbDkgosQzcEuU4HVgT0sg1e7vnoZdUT1wSdMjfi2xZG00I=;
+X-UUID: d34073c3da044657a26417098835fbf9-20200313
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <henryc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1427738893; Fri, 13 Mar 2020 01:44:44 -0800
+ with ESMTP id 813582274; Fri, 13 Mar 2020 01:44:44 -0800
 Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 13 Mar 2020 02:34:42 -0700
+ 15.0.1395.4; Fri, 13 Mar 2020 02:34:43 -0700
 Received: from mtkcas09.mediatek.inc (172.21.101.178) by
  mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 13 Mar 2020 17:32:16 +0800
+ 15.0.1395.4; Fri, 13 Mar 2020 17:32:17 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
  Frontend Transport; Fri, 13 Mar 2020 17:33:40 +0800
@@ -63,16 +63,17 @@ To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Viresh Kumar
  <vireshk@kernel.org>, Stephen Boyd <swboyd@chromium.org>, Ryan Case
  <ryandcase@chromium.org>, Mark Brown <broonie@kernel.org>
-Subject: [PATCH V4 00/13] Add driver for dvfsrc,
- support for active state of scpsys
-Date: Fri, 13 Mar 2020 17:34:13 +0800
-Message-ID: <1584092066-24425-1-git-send-email-henryc.chen@mediatek.com>
+Subject: [PATCH V4 03/13] soc: mediatek: add support for the performance state
+Date: Fri, 13 Mar 2020 17:34:16 +0800
+Message-ID: <1584092066-24425-4-git-send-email-henryc.chen@mediatek.com>
 X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1584092066-24425-1-git-send-email-henryc.chen@mediatek.com>
+References: <1584092066-24425-1-git-send-email-henryc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200313_024453_791338_BAC5C7F7 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20200313_024453_826343_915053E4 
+X-CRM114-Status: GOOD (  16.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,98 +88,153 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@google.com>,
  Mike Turquette <mturquette@linaro.org>, srv_heupstream@mediatek.com,
  James Liao <jamesjj.liao@mediatek.com>, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>,
- devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Arvin Wang <arvin.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org
+ linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>,
+ Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Arvin Wang <arvin.wang@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The patchsets add support for MediaTek hardware module named DVFSRC
-(dynamic voltage and frequency scaling resource collector). The DVFSRC is
-a HW module which is used to collect all the requests from both software
-and hardware and turn into the decision of minimum operating voltage and
-minimum DRAM frequency to fulfill those requests.
+Support power domain performance state, add header file for scp event.
 
-So, This series is to implement the dvfsrc driver to collect all the
-requests of operating voltage or DRAM bandwidth from other device drivers
-likes GPU/Camera through 3 frameworks basically:
+Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-scpsys.c | 58 +++++++++++++++++++++++++++++++++++++++
+ drivers/soc/mediatek/mtk-scpsys.h | 22 +++++++++++++++
+ 2 files changed, 80 insertions(+)
+ create mode 100644 drivers/soc/mediatek/mtk-scpsys.h
 
-1. interconnect framework: to aggregate the bandwidth
-   requirements from different clients
-
-[1] https://patchwork.kernel.org/cover/10766329/
-
-Below is the emi bandwidth map of mt8183. There has a hw module "DRAM scheduler"
-which used to control the throughput. The DVFSRC will collect forecast data
-of dram bandwidth from SW consumers(camera/gpu...), and according the forecast
-to change the DRAM frequency
-
-           ICC provider         ICC Nodes
-                            ----          ----
-           ---------       |CPU |   |--->|VPU |
-  -----   |         |-----> ----    |     ----
- |DRAM |--|DRAM     |       ----    |     ----
- |     |--|scheduler|----->|GPU |   |--->|DISP|
- |     |--|(EMI)    |       ----    |     ----
- |     |--|         |       -----   |     ----
-  -----   |         |----->|MMSYS|--|--->|VDEC|
-           ---------        -----   |     ----
-             /|\                    |     ----
-              |change DRAM freq     |--->|VENC|
-           ----------               |     ----
-          |  DVFSR   |              |
-          |          |              |     ----
-           ----------               |--->|IMG |
-                                    |     ----
-                                    |     ----
-                                    |--->|CAM |
-                                          ----
-
-2. Active state management of power domains[1]: to handle the operating
-   voltage/dram opp requirement from different power domains
-
-[2] https://lwn.net/Articles/744047/
-
-3. Regualtor framework: to handle the operating voltage requirement from user or
-   cosumer which not belong any power domain
-
-Changes in V4:
-* Add acked TAG on dt-bindings patches. (Rob)
-* Declaration of emi_icc_aggregate since the prototype of aggregate function
-has changed meanwhile. (Georgi)
-* Used emi_icc_remove instead of icc_provider_del on probe. (Georgi)
-* Add dvfsrc regulator driver into series.
-* Bug fixed of mt8183_get_current_level.
-* Add mutex protection for pstate operation on dvfsrc_set_performance.
-
-Changes in V3:
-* Remove RFC from the subject prefix of the series
-* Combine dt-binding patch and move interconnect dt-binding document into
-dvfsrc. (Rob)
-* Remove unused header, add unit descirption to the bandwidth, rename compatible
-name on interconnect driver. (Georgi)
-* Fixed some coding style: check flow, naming, used readx_poll_timeout
-on dvfsrc driver. (Ryan)
-* Rename interconnect driver mt8183.c to mtk-emi.c
-* Rename interconnect header mtk,mt8183.h to mtk,emi.h
-* mtk-scpsys.c: Add opp table check first to avoid OF runtime parse failed
-
-Changes in RFC V2:
-* Remove the DT property dram_type. (Rob)
-* Used generic dts property 'opp-level' to get the performace state. (Stephen)
-* Remove unecessary dependency config on Kconfig. (Stephen)
-* Remove unused header file, fixed some coding style issue, typo,
-error handling on dvfsrc driver. (Nicolas/Stephen)
-* Remove irq handler on dvfsrc driver. (Stephen)
-* Remove init table on dvfsrc driver, combine hw init on trustzone.
-* Add interconnect support of mt8183 to aggregate the emi bandwidth.
-(Georgi)
-
-V3: https://patchwork.kernel.org/cover/11118867/
-RFC V2: https://lore.kernel.org/patchwork/patch/1068113/
-RFC V1: https://lore.kernel.org/patchwork/cover/1028535/
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index 8538408..add75a5 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -10,8 +10,10 @@
+ #include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_domain.h>
++#include <linux/pm_opp.h>
+ #include <linux/regmap.h>
+ #include <linux/regulator/consumer.h>
++#include <linux/slab.h>
+ #include "scpsys.h"
+ 
+ #include <dt-bindings/power/mt2701-power.h>
+@@ -21,6 +23,7 @@
+ #include <dt-bindings/power/mt7623a-power.h>
+ #include <dt-bindings/power/mt8173-power.h>
+ #include <dt-bindings/power/mt8183-power.h>
++#include "mtk-scpsys.h"
+ 
+ #define MTK_POLL_DELAY_US   10
+ #define MTK_POLL_TIMEOUT    USEC_PER_SEC
+@@ -150,6 +153,18 @@ struct scp_soc_data {
+ 	const struct scp_ctrl_reg regs;
+ };
+ 
++static BLOCKING_NOTIFIER_HEAD(scpsys_notifier_list);
++
++int register_scpsys_notifier(struct notifier_block *nb)
++{
++	return blocking_notifier_chain_register(&scpsys_notifier_list, nb);
++}
++
++int unregister_scpsys_notifier(struct notifier_block *nb)
++{
++	return blocking_notifier_chain_unregister(&scpsys_notifier_list, nb);
++}
++
+ static int scpsys_domain_is_on(struct scp_domain *scpd)
+ {
+ 	struct scp *scp = scpd->scp;
+@@ -550,6 +565,41 @@ static int init_basic_clks(struct platform_device *pdev, struct clk **clk,
+ 	return 0;
+ }
+ 
++static int mtk_pd_set_performance(struct generic_pm_domain *genpd,
++				  unsigned int state)
++{
++	int i;
++	struct scp_domain *scpd =
++		container_of(genpd, struct scp_domain, genpd);
++	struct scp_event_data scpe;
++	struct scp *scp = scpd->scp;
++	struct genpd_onecell_data *pd_data = &scp->pd_data;
++
++	for (i = 0; i < pd_data->num_domains; i++) {
++		if (genpd == pd_data->domains[i]) {
++			dev_dbg(scp->dev, "%d. %s = %d\n",
++				i, genpd->name, state);
++			break;
++		}
++	}
++
++	if (i == pd_data->num_domains)
++		return 0;
++
++	scpe.event_type = MTK_SCPSYS_PSTATE;
++	scpe.genpd = genpd;
++	scpe.domain_id = i;
++	blocking_notifier_call_chain(&scpsys_notifier_list, state, &scpe);
++
++	return 0;
++}
++
++static unsigned int mtk_pd_get_performance(struct generic_pm_domain *genpd,
++					   struct dev_pm_opp *opp)
++{
++	return dev_pm_opp_get_level(opp);
++}
++
+ static struct scp *init_scp(struct platform_device *pdev,
+ 			const struct scp_domain_data *scp_domain_data, int num,
+ 			const struct scp_ctrl_reg *scp_ctrl_reg)
+@@ -650,6 +700,14 @@ static struct scp *init_scp(struct platform_device *pdev,
+ 		genpd->power_on = scpsys_power_on;
+ 		if (MTK_SCPD_CAPS(scpd, MTK_SCPD_ACTIVE_WAKEUP))
+ 			genpd->flags |= GENPD_FLAG_ACTIVE_WAKEUP;
++
++		/* Add opp table check first to avoid OF runtime parse failed */
++		if (of_count_phandle_with_args(pdev->dev.of_node,
++		    "operating-points-v2", NULL) > 0) {
++			genpd->set_performance_state = mtk_pd_set_performance;
++			genpd->opp_to_performance_state =
++				mtk_pd_get_performance;
++		}
+ 	}
+ 
+ 	return scp;
+diff --git a/drivers/soc/mediatek/mtk-scpsys.h b/drivers/soc/mediatek/mtk-scpsys.h
+new file mode 100644
+index 0000000..c1e8325
+--- /dev/null
++++ b/drivers/soc/mediatek/mtk-scpsys.h
+@@ -0,0 +1,22 @@
++/* SPDX-License-Identifier: GPL-2.0
++ *
++ * Copyright (c) 2018 MediaTek Inc.
++ */
++
++#ifndef __MTK_SCPSYS_H__
++#define __MTK_SCPSYS_H__
++
++struct scp_event_data {
++	int event_type;
++	int domain_id;
++	struct generic_pm_domain *genpd;
++};
++
++enum scp_event_type {
++	MTK_SCPSYS_PSTATE,
++};
++
++int register_scpsys_notifier(struct notifier_block *nb);
++int unregister_scpsys_notifier(struct notifier_block *nb);
++
++#endif /* __MTK_SCPSYS_H__ */
+-- 
+1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
