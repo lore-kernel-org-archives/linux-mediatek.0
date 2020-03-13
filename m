@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 57B3CC4CECE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:35:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B4316C2BB1D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:36:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 266BF2073E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:35:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 89ACA2073E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:36:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YnFIgwkJ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="SY3TsIPN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 266BF2073E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s+C7A271";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="HhCBFr7u"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 89ACA2073E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xz99NZJGejrVoeTu2qR+h+KlucfaIFVaLv5v2FnVMOQ=; b=YnFIgwkJdhTw2g
-	or+C8hKMPFL3FMIN8J+5KFP/pLz5GVpZTVaUq3dS/bUv34O4E8MD8mvOZbAC0VEUWMM9WmpLY4vVR
-	A70aus9N1OQcviMnPVciqndt1jwuKZuj4NWxjQP1h9QFM69muOJtVDt6fhHu8K2uddqBfZyN80YHA
-	xMRedpt4GiY653/JJAB2re9RH6Zu9qN7c0zHfO4FDzDZFerCXSnNUBQQoskPG9VUIYaAREOdK0aKe
-	w8iNC+hYMZbuwz8I8B4myoH/mgBMfb/erq/RJjtix4ot5ryE3EA/zB2aNYvOT9+htoNPy+vjEjqKO
-	eQqSAsPy8XbaeX48xZVg==;
+	List-Owner; bh=y36r+ngPwwYExCdFxdrqDeOXTHKngRpL3E0SPZFFvFY=; b=s+C7A271zfxNgR
+	2IgKLe/TmzPDM4UfmLprJCMOQ5LsbFEQtc/fjpNGTzvhKPTKVOOCKdco8FJWvEOfSl+muMFTo9arB
+	TA3KBO/ar9/0ld2AcdQeMp0lTHqR0Fw+Pc5VclnQu8E2hRUT/TJfXq1eWLG7N9OGI4QmslNxc+qDY
+	k4JDs5pXLQWVX4IyHzxaZdrhskaGmNU/nkADwOiZ+c9G42X+r32xZ4QWwi3gbueyVz8LhoIDr60+v
+	Dst6rMbhM5ek/6Cf0DqBNC80WZREwzNc+j7M+0eFurkb7ng7jzO+k0+brdbtOUNsEIdzvUVeCH+Hz
+	pe/UXCsZSKOkTwaAFh3Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCgjJ-0007vn-Bu; Fri, 13 Mar 2020 09:35:45 +0000
+	id 1jCgjb-0008DC-W4; Fri, 13 Mar 2020 09:36:03 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCgiE-0005hG-BX; Fri, 13 Mar 2020 09:34:40 +0000
-X-UUID: 11617e8bcef8404c803f09ddd13c197f-20200313
+ id 1jCgiE-0005h4-UE; Fri, 13 Mar 2020 09:34:40 +0000
+X-UUID: b7918b4a164b48e2861c9b5e3d0f2781-20200313
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=C2PWodz3tfyBIHdMG1iwzdeDsm+xbRlWsBEle44812Y=; 
- b=SY3TsIPNvy5AmYI+MsHWu6TD+mCLlSBG4+7Hd2cYpoWcEzbmuz41WE9Vu47B8cPDbMj10RIQtj5wKVK2cleKff4rRTF3Yn/TJAXB1UaxNplK4VtSBstUPIgNFghscCHSqyPWf2PsJlVCT70ondxniDISR1hiKLMKUe7qcVNFuiQ=;
-X-UUID: 11617e8bcef8404c803f09ddd13c197f-20200313
+ bh=nSetGGb2jD7H2Q1+b1MHx20VuqlBL37mjvVtdatOQl4=; 
+ b=HhCBFr7uTuiCtwbk4tyC9IakvBbu1exjsWb8YGt3jZVIQmsojH/nMgzg/Iy0efWFIo8QVHefq/CYnoNmyv4w/0dNdl+zsQldFPJD4wOYk3kB6r2fa1qBJh1oVVdZiDvb9EjNbt6unOTRPwPgKh4XwfN0QvW77hLE0JRrbfR5Reg=;
+X-UUID: b7918b4a164b48e2861c9b5e3d0f2781-20200313
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <henryc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1642439546; Fri, 13 Mar 2020 01:34:31 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 13 Mar 2020 02:35:05 -0700
+ with ESMTP id 1222113180; Fri, 13 Mar 2020 01:34:32 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 13 Mar 2020 02:34:42 -0700
 Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 13 Mar 2020 17:33:30 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 13 Mar 2020 17:33:33 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Fri, 13 Mar 2020 17:33:40 +0800
+ Frontend Transport; Fri, 13 Mar 2020 17:33:41 +0800
 From: Henry Chen <henryc.chen@mediatek.com>
 To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Viresh Kumar
  <vireshk@kernel.org>, Stephen Boyd <swboyd@chromium.org>, Ryan Case
  <ryandcase@chromium.org>, Mark Brown <broonie@kernel.org>
-Subject: [PATCH V4 02/13] dt-bindings: soc: Add opp table on scpsys bindings
-Date: Fri, 13 Mar 2020 17:34:15 +0800
-Message-ID: <1584092066-24425-3-git-send-email-henryc.chen@mediatek.com>
+Subject: [PATCH V4 09/13] interconnect: mediatek: Add mt8183 interconnect
+ provider driver
+Date: Fri, 13 Mar 2020 17:34:22 +0800
+Message-ID: <1584092066-24425-10-git-send-email-henryc.chen@mediatek.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1584092066-24425-1-git-send-email-henryc.chen@mediatek.com>
 References: <1584092066-24425-1-git-send-email-henryc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200313_023438_395184_A60382E8 
-X-CRM114-Status: UNSURE (   7.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200313_023438_992300_A8487D63 
+X-CRM114-Status: GOOD (  18.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,79 +98,318 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add opp table on scpsys dt-bindings for Mediatek SoC.
+Introduce Mediatek MT8183 specific provider driver using the
+interconnect framework.
 
 Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- .../devicetree/bindings/soc/mediatek/scpsys.txt    | 42 ++++++++++++++++++++++
- 1 file changed, 42 insertions(+)
+ drivers/interconnect/Kconfig            |   1 +
+ drivers/interconnect/Makefile           |   1 +
+ drivers/interconnect/mediatek/Kconfig   |  13 ++
+ drivers/interconnect/mediatek/Makefile  |   3 +
+ drivers/interconnect/mediatek/mtk-emi.c | 242 ++++++++++++++++++++++++++++++++
+ 5 files changed, 260 insertions(+)
+ create mode 100644 drivers/interconnect/mediatek/Kconfig
+ create mode 100644 drivers/interconnect/mediatek/Makefile
+ create mode 100644 drivers/interconnect/mediatek/mtk-emi.c
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-index 1baaa6f..d22f11d 100644
---- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-+++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-@@ -70,6 +70,10 @@ Optional properties:
- - mfg_2d-supply: Power supply for the mfg_2d power domain
- - mfg-supply: Power supply for the mfg power domain
+diff --git a/drivers/interconnect/Kconfig b/drivers/interconnect/Kconfig
+index bfa4ca3..dd9ecb6 100644
+--- a/drivers/interconnect/Kconfig
++++ b/drivers/interconnect/Kconfig
+@@ -12,5 +12,6 @@ menuconfig INTERCONNECT
+ if INTERCONNECT
  
-+- operating-points-v2: Phandle to the OPP table for the Power domain.
-+	Refer to Documentation/devicetree/bindings/power/power_domain.txt
-+	and Documentation/devicetree/bindings/opp/opp.txt for more details
-+
- Example:
+ source "drivers/interconnect/qcom/Kconfig"
++source "drivers/interconnect/mediatek/Kconfig"
  
- 	scpsys: scpsys@10006000 {
-@@ -82,6 +86,27 @@ Example:
- 			 <&topckgen CLK_TOP_VENC_SEL>,
- 			 <&topckgen CLK_TOP_VENC_LT_SEL>;
- 		clock-names = "mfg", "mm", "venc", "venc_lt";
-+		operating-points-v2 = <&dvfsrc_opp_table>;
-+
-+		dvfsrc_opp_table: opp-table {
-+			compatible = "operating-points-v2-level";
-+
-+			dvfsrc_vol_min: opp1 {
-+				opp,level = <MT8183_DVFSRC_LEVEL_1>;
-+			};
-+
-+			dvfsrc_freq_medium: opp2 {
-+				opp,level = <MT8183_DVFSRC_LEVEL_2>;
-+			};
-+
-+			dvfsrc_freq_max: opp3 {
-+				opp,level = <MT8183_DVFSRC_LEVEL_3>;
-+			};
-+
-+			dvfsrc_vol_max: opp4 {
-+				opp,level = <MT8183_DVFSRC_LEVEL_4>;
-+			};
-+		};
- 	};
+ endif
+diff --git a/drivers/interconnect/Makefile b/drivers/interconnect/Makefile
+index 725029a..330a108 100644
+--- a/drivers/interconnect/Makefile
++++ b/drivers/interconnect/Makefile
+@@ -5,3 +5,4 @@ icc-core-objs				:= core.o
  
- Example consumer:
-@@ -89,4 +114,21 @@ Example consumer:
- 	afe: mt8173-afe-pcm@11220000 {
- 		compatible = "mediatek,mt8173-afe-pcm";
- 		power-domains = <&scpsys MT8173_POWER_DOMAIN_AUDIO>;
-+		operating-points-v2 = <&aud_opp_table>;
-+	};
+ obj-$(CONFIG_INTERCONNECT)		+= icc-core.o
+ obj-$(CONFIG_INTERCONNECT_QCOM)		+= qcom/
++obj-$(CONFIG_INTERCONNECT_MTK)		+= mediatek/
+diff --git a/drivers/interconnect/mediatek/Kconfig b/drivers/interconnect/mediatek/Kconfig
+new file mode 100644
+index 0000000..972d3bb
+--- /dev/null
++++ b/drivers/interconnect/mediatek/Kconfig
+@@ -0,0 +1,13 @@
++config INTERCONNECT_MTK
++	bool "Mediatek Network-on-Chip interconnect drivers"
++	depends on ARCH_MEDIATEK
++	help
++	  Support for Mediatek's Network-on-Chip interconnect hardware.
 +
-+	aud_opp_table: aud-opp-table {
-+		compatible = "operating-points-v2";
-+		opp1 {
-+			opp-hz = /bits/ 64 <793000000>;
-+			required-opps = <&dvfsrc_vol_min>;
-+		};
-+		opp2 {
-+			opp-hz = /bits/ 64 <910000000>;
-+			required-opps = <&dvfsrc_vol_max>;
-+		};
-+		opp3 {
-+			opp-hz = /bits/ 64 <1014000000>;
-+			required-opps = <&dvfsrc_vol_max>;
-+		};
- 	};
++config INTERCONNECT_MTK_EMI
++	tristate "Mediatek EMI interconnect driver"
++	depends on INTERCONNECT_MTK
++	depends on (MTK_DVFSRC && OF)
++	help
++	  This is a driver for the Mediatek Network-on-Chip on DVFSRC-based
++	  platforms.
+diff --git a/drivers/interconnect/mediatek/Makefile b/drivers/interconnect/mediatek/Makefile
+new file mode 100644
+index 0000000..353842b
+--- /dev/null
++++ b/drivers/interconnect/mediatek/Makefile
+@@ -0,0 +1,3 @@
++# SPDX-License-Identifier: GPL-2.0
++
++obj-$(CONFIG_INTERCONNECT_MTK_EMI) += mtk-emi.o
+\ No newline at end of file
+diff --git a/drivers/interconnect/mediatek/mtk-emi.c b/drivers/interconnect/mediatek/mtk-emi.c
+new file mode 100644
+index 0000000..0a16992
+--- /dev/null
++++ b/drivers/interconnect/mediatek/mtk-emi.c
+@@ -0,0 +1,242 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2019, The Linux Foundation. All rights reserved.
++ *
++ */
++
++#include <dt-bindings/interconnect/mtk,mt8183-emi.h>
++#include <linux/device.h>
++#include <linux/interconnect-provider.h>
++#include <linux/module.h>
++#include <linux/of_device.h>
++#include <linux/of_platform.h>
++#include <linux/platform_device.h>
++#include <soc/mediatek/mtk_dvfsrc.h>
++
++enum mtk_icc_name {
++	SLAVE_DDR_EMI,
++	MASTER_MCUSYS,
++	MASTER_GPUSYS,
++	MASTER_MMSYS,
++	MASTER_MM_VPU,
++	MASTER_MM_DISP,
++	MASTER_MM_VDEC,
++	MASTER_MM_VENC,
++	MASTER_MM_CAM,
++	MASTER_MM_IMG,
++	MASTER_MM_MDP,
++};
++
++#define MT8183_MAX_LINKS	1
++
++/**
++ * struct mtk_icc_node - Mediatek specific interconnect nodes
++ * @name: the node name used in debugfs
++ * @ep: true if the node is an end point.
++ * @id: a unique node identifier
++ * @links: an array of nodes where we can go next while traversing
++ * @num_links: the total number of @links
++ * @buswidth: width of the interconnect between a node and the bus
++ * @sum_avg: current sum aggregate value of all avg bw kBps requests
++ * @max_peak: current max aggregate value of all peak bw kBps requests
++ */
++struct mtk_icc_node {
++	unsigned char *name;
++	bool ep;
++	u16 id;
++	u16 links[MT8183_MAX_LINKS];
++	u16 num_links;
++	u16 buswidth;
++	u64 sum_avg;
++	u64 max_peak;
++};
++
++struct mtk_icc_desc {
++	struct mtk_icc_node **nodes;
++	size_t num_nodes;
++};
++
++#define DEFINE_MNODE(_name, _id, _buswidth, _ep, ...)	\
++		static struct mtk_icc_node _name = {			\
++		.name = #_name,						\
++		.id = _id,						\
++		.buswidth = _buswidth,					\
++		.ep = _ep,						\
++		.num_links = ARRAY_SIZE(((int[]){ __VA_ARGS__ })),	\
++}
++
++DEFINE_MNODE(ddr_emi, SLAVE_DDR_EMI, 1024, 1, 0);
++DEFINE_MNODE(mcusys, MASTER_MCUSYS, 256, 0, SLAVE_DDR_EMI);
++DEFINE_MNODE(gpu, MASTER_GPUSYS, 256, 0, SLAVE_DDR_EMI);
++DEFINE_MNODE(mmsys, MASTER_MMSYS, 256, 0, SLAVE_DDR_EMI);
++DEFINE_MNODE(mm_vpu, MASTER_MM_VPU, 128, 0, MASTER_MMSYS);
++DEFINE_MNODE(mm_disp, MASTER_MM_DISP, 128, 0, MASTER_MMSYS);
++DEFINE_MNODE(mm_vdec, MASTER_MM_VDEC, 128, 0, MASTER_MMSYS);
++DEFINE_MNODE(mm_venc, MASTER_MM_VENC, 128, 0, MASTER_MMSYS);
++DEFINE_MNODE(mm_cam, MASTER_MM_CAM, 128, 0, MASTER_MMSYS);
++DEFINE_MNODE(mm_img, MASTER_MM_IMG, 128, 0, MASTER_MMSYS);
++DEFINE_MNODE(mm_mdp, MASTER_MM_MDP, 128, 0, MASTER_MMSYS);
++
++static struct mtk_icc_node *mt8183_icc_nodes[] = {
++	[MT8183_SLAVE_DDR_EMI] = &ddr_emi,
++	[MT8183_MASTER_MCUSYS] = &mcusys,
++	[MT8183_MASTER_GPU] = &gpu,
++	[MT8183_MASTER_MMSYS] = &mmsys,
++	[MT8183_MASTER_MM_VPU] = &mm_vpu,
++	[MT8183_MASTER_MM_DISP] = &mm_disp,
++	[MT8183_MASTER_MM_VDEC] = &mm_vdec,
++	[MT8183_MASTER_MM_VENC] = &mm_venc,
++	[MT8183_MASTER_MM_CAM] = &mm_cam,
++	[MT8183_MASTER_MM_IMG] = &mm_img,
++	[MT8183_MASTER_MM_MDP] = &mm_mdp,
++};
++
++static struct mtk_icc_desc mt8183_icc = {
++	.nodes = mt8183_icc_nodes,
++	.num_nodes = ARRAY_SIZE(mt8183_icc_nodes),
++};
++
++static int emi_icc_aggregate(struct icc_node *node, u32 tag, u32 avg_bw,
++			     u32 peak_bw, u32 *agg_avg, u32 *agg_peak)
++{
++	struct mtk_icc_node *in;
++
++	in = node->data;
++
++	*agg_avg += avg_bw;
++	*agg_peak += peak_bw;
++
++	in->sum_avg = *agg_avg;
++	in->max_peak = *agg_peak;
++
++	return 0;
++}
++
++static int emi_icc_set(struct icc_node *src, struct icc_node *dst)
++{
++	int ret = 0;
++	struct mtk_icc_node *node;
++
++	node = dst->data;
++	if (node->ep) {
++		pr_debug("sum_avg (%llu), max_peak (%llu)\n",
++			 node->sum_avg, node->max_peak);
++		mtk_dvfsrc_send_request(src->provider->dev->parent,
++					MTK_DVFSRC_CMD_BW_REQUEST,
++					node->max_peak);
++	}
++
++	return ret;
++}
++
++static int emi_icc_remove(struct platform_device *pdev);
++static int emi_icc_probe(struct platform_device *pdev)
++{
++	int ret;
++	const struct mtk_icc_desc *desc;
++	struct icc_node *node;
++	struct icc_onecell_data *data;
++	struct icc_provider *provider;
++	struct mtk_icc_node **mnodes;
++	size_t num_nodes, i, j;
++
++	desc = of_device_get_match_data(&pdev->dev);
++	if (!desc)
++		return -EINVAL;
++
++	mnodes = desc->nodes;
++	num_nodes = desc->num_nodes;
++
++	provider = devm_kzalloc(&pdev->dev, sizeof(*provider), GFP_KERNEL);
++	if (!provider)
++		return -ENOMEM;
++
++	data = devm_kcalloc(&pdev->dev, num_nodes, sizeof(*node), GFP_KERNEL);
++	if (!data)
++		return -ENOMEM;
++
++	provider->dev = &pdev->dev;
++	provider->set = emi_icc_set;
++	provider->aggregate = emi_icc_aggregate;
++	provider->xlate = of_icc_xlate_onecell;
++	INIT_LIST_HEAD(&provider->nodes);
++	provider->data = data;
++
++	ret = icc_provider_add(provider);
++	if (ret) {
++		dev_err(&pdev->dev, "error adding interconnect provider\n");
++		return ret;
++	}
++
++	for (i = 0; i < num_nodes; i++) {
++		node = icc_node_create(mnodes[i]->id);
++		if (IS_ERR(node)) {
++			ret = PTR_ERR(node);
++			goto err;
++		}
++
++		node->name = mnodes[i]->name;
++		node->data = mnodes[i];
++		icc_node_add(node, provider);
++
++		dev_dbg(&pdev->dev, "registered node %s, num link: %d\n",
++			mnodes[i]->name, mnodes[i]->num_links);
++
++		/* populate links */
++		for (j = 0; j < mnodes[i]->num_links; j++)
++			icc_link_create(node, mnodes[i]->links[j]);
++
++		data->nodes[i] = node;
++	}
++	data->num_nodes = num_nodes;
++
++	platform_set_drvdata(pdev, provider);
++
++	return 0;
++err:
++	emi_icc_remove(pdev);
++	return ret;
++}
++
++static int emi_icc_remove(struct platform_device *pdev)
++{
++	struct icc_provider *provider = platform_get_drvdata(pdev);
++	struct icc_node *n;
++
++	list_for_each_entry(n, &provider->nodes, node_list) {
++		icc_node_del(n);
++		icc_node_destroy(n->id);
++	}
++
++	return icc_provider_del(provider);
++}
++
++static const struct of_device_id emi_icc_of_match[] = {
++	{ .compatible = "mediatek,mt8183-emi", .data = &mt8183_icc },
++	{ },
++};
++MODULE_DEVICE_TABLE(of, emi_icc_of_match);
++
++static struct platform_driver emi_icc_driver = {
++	.probe = emi_icc_probe,
++	.remove = emi_icc_remove,
++	.driver = {
++		.name = "mediatek-emi-icc",
++		.of_match_table = emi_icc_of_match,
++	},
++};
++
++static int __init mtk_emi_icc_init(void)
++{
++	return platform_driver_register(&emi_icc_driver);
++}
++subsys_initcall(mtk_emi_icc_init);
++
++static void __exit mtk_emi_icc_exit(void)
++{
++	platform_driver_unregister(&emi_icc_driver);
++}
++module_exit(mtk_emi_icc_exit);
++
++MODULE_AUTHOR("Henry Chen <henryc.chen@mediatek.com>");
++MODULE_LICENSE("GPL v2");
 -- 
 1.9.1
 _______________________________________________
