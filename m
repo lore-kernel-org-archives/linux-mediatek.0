@@ -2,154 +2,63 @@ Return-Path: <SRS0=2fV0=46=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B79BC10DCE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 16:01:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ED2F7C10DCE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 16:49:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BAC6E206EB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 16:01:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BFDC7206B7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 16:49:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="a8DV85rV";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=microchiptechnology.onmicrosoft.com header.i=@microchiptechnology.onmicrosoft.com header.b="tJmoCOe4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BAC6E206EB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=microchip.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="L5gURSVj"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BFDC7206B7
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=scGh/p3rfXUssNaY3Uy/EsmjrpgEMvZ6HkhKqMqm/zc=; b=a8DV85rVG8Qwk/
-	szNEQ6NAw/p3cgcWPET9YRK4T/5/U4XQDiLYlidFwS3JLnKZBdZfDysK/UI2PDdJ5bqDaKv2F+zb0
-	BdTbmY+MxwHxqiSqDQ7ZMYCPPxz96WRbDXEwx5jZ4bAf3rV8XSElXezA7b78otCN3H2dtP9yZSWxm
-	Z91EWwaUjv2e0zsLNuEC3GZHll9SntuNyMVOxhkHZlsSlfsnEXrWR/Ti6ziluXYLb+bcCM2KreXbR
-	SlVDgHYHyn0aanvbvoLrT3sUFPUqF1y+nx4pzW0bmKkyplpaGdYsuQcnNiQB8AXpCRdBTusD0UHlv
-	1g6JDUFtljltnKoeUI7w==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=rmDGgG16+f9+s3kYxShnGUjDlcMIUQ4qvSkALajtIX8=; b=L5gURSVjGTFXz2NDXKsjcBTX9
+	Jr50ExMZ2RBKTe0+9ipY6DTTTppX/Zw8m2sPOOHKBKZdTm7zKcOiOFTfo3MwnHyDvKg/F2pgoCytz
+	d9jddSoAvxuiiVNysiQLnc0DAwyuC2d7QHTxHl20ofxbVDtv1kc3WvTLuPi8cSQDO6vgUvCodD5um
+	ktkaV9IZCbFks+ZCWbKGT7dRffsuCe6TivGPh92bEZKjpVcpwMgDBu5PIpWfQOgrMm/Qw8F3SwNWl
+	bhEevBZuZeoNLcmM+q2ee7NA15rgnw1kxQUSyOY3JPx9z+WiktbIOpYLebMgso1IkQ/ywzlTX5PZg
+	H3Etu9neg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCmku-0008Vq-RU; Fri, 13 Mar 2020 16:01:48 +0000
-Received: from esa3.microchip.iphmx.com ([68.232.153.233])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCmZl-00044E-KI; Fri, 13 Mar 2020 15:50:22 +0000
-Received-SPF: Pass (esa3.microchip.iphmx.com: domain of
- Tudor.Ambarus@microchip.com designates 198.175.253.82 as
- permitted sender) identity=mailfrom;
- client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
- envelope-from="Tudor.Ambarus@microchip.com";
- x-sender="Tudor.Ambarus@microchip.com";
- x-conformance=spf_only; x-record-type="v=spf1";
- x-record-text="v=spf1 mx a:ushub1.microchip.com
- a:smtpout.microchip.com -exists:%{i}.spf.microchip.iphmx.com
- include:servers.mcsv.net include:mktomail.com
- include:spf.protection.outlook.com ~all"
-Received-SPF: None (esa3.microchip.iphmx.com: no sender
- authenticity information available from domain of
- postmaster@email.microchip.com) identity=helo;
- client-ip=198.175.253.82; receiver=esa3.microchip.iphmx.com;
- envelope-from="Tudor.Ambarus@microchip.com";
- x-sender="postmaster@email.microchip.com"; x-conformance=spf_only
-Authentication-Results: esa3.microchip.iphmx.com;
- spf=Pass smtp.mailfrom=Tudor.Ambarus@microchip.com;
- spf=None smtp.helo=postmaster@email.microchip.com;
- dmarc=pass (p=none dis=none) d=microchip.com
-IronPort-SDR: cbKeo1Y8w1Ud7j5sRYEZd9a+ZDmCCEDO0aMazeh3KDe2VEyUjPrsikhNxCLBrHoiqdq0gQfv6i
- Uqe/OVuvb0HYlq3Uq4t9nwxoM8+uePj5pEfTFMcSrj2ZKlw0cMZbKVJBFqslzaj1GoaByp3kSl
- 5Qrtdb0OrHQ2X60ykISqC8oXQmW+tGIPR56tymm3Qm7BqS+/0Zmau5tMKQ0Z5HRje8bozCrQ/8
- PtL9MQjeB9UmtuXA7SfOuP4SFx9NilwHHW198y+KEKybWnMm01wwMZnwekGoT1wYEj4XH+glUn
- beA=
-X-IronPort-AV: E=Sophos;i="5.70,549,1574146800"; d="scan'208";a="69890320"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 13 Mar 2020 08:50:12 -0700
-Received: from chn-vm-ex01.mchp-main.com (10.10.85.143) by
- chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1713.5; Fri, 13 Mar 2020 08:50:07 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.71) with Microsoft SMTP Server
- (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5 via Frontend
- Transport; Fri, 13 Mar 2020 08:50:13 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=lb/nVK8zkSVqF+KFtaxLQbhSdqSZxplCYjT2CEmGA7rRQEhRTEdgrSS41dYd/+ciHg2GkxbQE1ciS3DNWVfr+dzryptucg1ol+oUiqRe1nP5kxzx2/vsnmRUCFKIiA7B0dveGaq+bGNmta4Z+qnzlbnCQC93eH3AO8yZtH1jKpd9qIUHloQGhqW8T5ABD3DP6uyXcxVL4cWk0ImMXMpwQrMgAK6vjEwGln5/Ejn+YzKdNTYxrTdjI1l6ZPfooXYPURuG1wHEBV0hanbnfUuAoUOfgvIIKNQs/nASQLMr9O92V2Pv7dXWsvG2lM0JL0hKkUnlNiqU8uJOkGzcW4XcPA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=jPmlBCq3srfYpkDt5yvbrsPLnxekGBYkIZrl+4OFc5c=;
- b=Z6NAjCnqZBIV+8Fn0VyTKEJgZEAIyLWdPLhqeRFmBI0ggolHEOEMyLJ3CEo3m406DPQd2RHwsimO7ubUt017UNlqapXkeHLxXwu1lGv7lw3tzeGq8aJGRyj2srZYepOw6ymRW05A+2KMydbXpy6g4cbbwopNzwXFyvElutilxJb/HomhAXCkMY/GYHhub+aLIz5X93XuJCtfF0uo2p72IVu74C7Lw6B88tup/qSce1HyzGBTPdt6cLZv0x+k+1i93y+gojlg2jvcH2z6/UZ//j5awUVmnCPejbjSunAcv/6Tn6C+GI0ZElNU9goOhnt+hIidGQML4cpxO7i1kZJtAw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=jPmlBCq3srfYpkDt5yvbrsPLnxekGBYkIZrl+4OFc5c=;
- b=tJmoCOe4BXcGCaNXfmDUT+8Mh9c4WD3zPimn3hEXkQJq9wrIdZAt9VA4L2p3h7XgImjcZ2jJ+Ehss++omAWFmb+WkDi4sHaTdNViXH3LNSPAdwm7Z2Xsn9aBXE6iEdcS77veA8RT1YJ9GtapGg2ZeV2JS1h/QXHi+QlpoKGAmzY=
-Received: from MN2PR11MB4448.namprd11.prod.outlook.com (2603:10b6:208:193::29)
- by MN2PR11MB4126.namprd11.prod.outlook.com (2603:10b6:208:136::31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2793.17; Fri, 13 Mar
- 2020 15:50:10 +0000
-Received: from MN2PR11MB4448.namprd11.prod.outlook.com
- ([fe80::3c8f:7a55:cbd:adfb]) by MN2PR11MB4448.namprd11.prod.outlook.com
- ([fe80::3c8f:7a55:cbd:adfb%5]) with mapi id 15.20.2793.018; Fri, 13 Mar 2020
- 15:50:10 +0000
-From: <Tudor.Ambarus@microchip.com>
-To: <linux-mtd@lists.infradead.org>
-Subject: Re: [PATCH 01/23] mtd: spi-nor: Stop prefixing generic functions with
- a manufacturer name
-Thread-Topic: [PATCH 01/23] mtd: spi-nor: Stop prefixing generic functions
- with a manufacturer name
-Thread-Index: AQHV+UP9aMq9KhVwKUKrK+Ih7RO/b6hGq5wA
-Date: Fri, 13 Mar 2020 15:50:10 +0000
-Message-ID: <16008638.kvcHKcsGDv@192.168.1.3>
-References: <20200302180730.1886678-1-tudor.ambarus@microchip.com>
- <20200313103007.7d7ea6af@collabora.com> <2838624.3XVpXx8FI0@192.168.1.3>
-In-Reply-To: <2838624.3XVpXx8FI0@192.168.1.3>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [94.177.32.156]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 101f555e-8f02-4a38-3139-08d7c7663666
-x-ms-traffictypediagnostic: MN2PR11MB4126:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MN2PR11MB4126CE5701C57D29EEBD10C7F0FA0@MN2PR11MB4126.namprd11.prod.outlook.com>
-x-bypassexternaltag: True
-x-ms-oob-tlc-oobclassifiers: OLM:4502;
-x-forefront-prvs: 034119E4F6
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(376002)(39860400002)(396003)(346002)(366004)(136003)(199004)(9686003)(6506007)(2906002)(64756008)(4326008)(81166006)(81156014)(8936002)(7416002)(53546011)(6916009)(6512007)(7406005)(86362001)(5660300002)(66446008)(66476007)(186003)(54906003)(91956017)(14286002)(76116006)(8676002)(66946007)(71200400001)(478600001)(316002)(6486002)(26005)(66556008)(41533002);
- DIR:OUT; SFP:1101; SCL:1; SRVR:MN2PR11MB4126;
- H:MN2PR11MB4448.namprd11.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; 
-received-spf: None (protection.outlook.com: microchip.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: XhhcrOcOhWrquR/SIR3WXQY0tfjEP2p/5vasdxc2YFSLgZAPVehovfM6NDvj2EbbZrUer6suknjLLLRXRtjGEFSamZ6Rw4upBC5iOxhy+AZLrdPU/TFYWkH0f+JekHMks9x/QEgkDK9taNfrIMbvhQ00/xLXNqDc25HxmZbbjRvQd+ROAtgnbjbm7bLsOOlMBUoLPapdr+IwHfw2tt7JNj47AsYjRiKITv5EzEiTUXtSJdCWMlehMbqJ8xG93IUQBUxi2Rqxuyv2ZcN9/5nPG1P75vXbNUwUft8TDlWii7IX8CeXIGxA2PMp4CM+dDbblelI80vefsE+8+KISURHWmEs9a8AStLcT6a/yVsM27PgXT7l61yoGKwbBUzfAU2Igk8C1BVPC8RjkVczfARKDhSqa+irBTn/FNRm2b28k+LejcvRxeY6HIkxMf5DXOZtCoCakdQCSxw7KOqP6qqVDXnu6iyFnyn9IFtSWQkXTVTxxrShF/52toztUCptY88k
-x-ms-exchange-antispam-messagedata: Uca3gAXglqRfETJ4cOmjenxQj8XQMLyShcBh1/HlfH+NHiaFvMXI5B3PX8tlXp2BzMlKyqgdpEuWiCyzARbOLivtAGSXUnpeku43NP18VUz8mAnwdqAMrJ0G/3wIMxgMMia2rKSlhpPwv9euhlq0+w==
-Content-ID: <4968D74D5D41C449BEF42DBDB71FD00B@namprd11.prod.outlook.com>
+	id 1jCnVS-0004fp-N6; Fri, 13 Mar 2020 16:49:54 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jCnVD-0004Tp-1k; Fri, 13 Mar 2020 16:49:40 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 79D8A31B;
+ Fri, 13 Mar 2020 09:49:36 -0700 (PDT)
+Received: from [10.37.12.40] (unknown [10.37.12.40])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 393343F534;
+ Fri, 13 Mar 2020 09:49:26 -0700 (PDT)
+Subject: Re: [PATCH v4 1/4] PM / EM: add devices to Energy Model
+To: Quentin Perret <qperret@google.com>
+References: <20200309134117.2331-1-lukasz.luba@arm.com>
+ <20200309134117.2331-2-lukasz.luba@arm.com>
+ <20200313100407.GA144499@google.com>
+From: Lukasz Luba <lukasz.luba@arm.com>
+Message-ID: <bd1233f4-6e8b-23d1-e5aa-7c904fbd1bb3@arm.com>
+Date: Fri, 13 Mar 2020 16:49:24 +0000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 101f555e-8f02-4a38-3139-08d7c7663666
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Mar 2020 15:50:10.7923 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: dFI0/8+UneYoZK/vraiXf+nKyKmQJWVCUYHO14qIR7jNnMN/QC7Ld8sy1PSGGFTYwvOuxGDBwIQ0G+CDviml/w/vH5rEuoUOA0/SZU2zk2k=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4126
+In-Reply-To: <20200313100407.GA144499@google.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200313_085017_772324_6A05F0FD 
-X-CRM114-Status: GOOD (  15.25  )
+X-CRM114-CacheID: sfid-20200313_094939_138095_0F57236C 
+X-CRM114-Status: GOOD (  28.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -161,84 +70,257 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: kstewart@linuxfoundation.org, alexandre.belloni@bootlin.com,
- vigneshr@ti.com, linux-aspeed@lists.ozlabs.org, thor.thayer@linux.intel.com,
- michal.simek@xilinx.com, rfontana@redhat.com, miquel.raynal@bootlin.com,
- opensource@jilayne.com, richard@nod.at, jethro@fortanix.com,
- Ludovic.Desroches@microchip.com, joel@jms.id.au, nishkadg.linux@gmail.com,
- john.garry@huawei.com, swboyd@chromium.org, alexander.sverdlin@nokia.com,
- matthias.bgg@gmail.com, tglx@linutronix.de, vz@mleia.com,
- mika.westerberg@linux.intel.com, allison@lohutok.net,
- linux-arm-kernel@lists.infradead.org, bbrezillon@kernel.org, andrew@aj.id.au,
- Nicolas.Ferre@microchip.com, linux-kernel@vger.kernel.org, dinguyen@kernel.org,
- michael@walle.cc, boris.brezillon@collabora.com, ludovic.barre@st.com,
- linux-mediatek@lists.infradead.org, info@metux.net
-Content-Type: text/plain; charset="us-ascii"
+Cc: nm@ti.com, juri.lelli@redhat.com, peterz@infradead.org,
+ viresh.kumar@linaro.org, liviu.dudau@arm.com, dri-devel@lists.freedesktop.org,
+ bjorn.andersson@linaro.org, bsegall@google.com,
+ alyssa.rosenzweig@collabora.com, festevam@gmail.com, Morten.Rasmussen@arm.com,
+ robh@kernel.org, amit.kucheria@verdurent.com, lorenzo.pieralisi@arm.com,
+ vincent.guittot@linaro.org, khilman@kernel.org, agross@kernel.org,
+ daniel.lezcano@linaro.org, steven.price@arm.com, cw00.choi@samsung.com,
+ mingo@redhat.com, linux-imx@nxp.com, rui.zhang@intel.com, mgorman@suse.de,
+ orjan.eide@arm.com, daniel@ffwll.ch, linux-pm@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, s.hauer@pengutronix.de, rostedt@goodmis.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ linux-omap@vger.kernel.org, Dietmar.Eggemann@arm.com,
+ linux-arm-kernel@lists.infradead.org, airlied@linux.ie, javi.merino@arm.com,
+ tomeu.vizoso@collabora.com, sboyd@kernel.org, rdunlap@infradead.org,
+ rjw@rjwysocki.net, linux-kernel@vger.kernel.org, b.zolnierkie@samsung.com,
+ kernel@pengutronix.de, sudeep.holla@arm.com, patrick.bellasi@matbug.net,
+ shawnguo@kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Friday, March 13, 2020 4:30:48 PM EET Tudor.Ambarus@microchip.com wrote:
-> > > > - * macronix_set_4byte() - Set 4-byte address mode for Macronix
-> > > > flashes.
-> > > > + * spi_nor_en4_ex4_set_4byte() - Enter/Exit 4-byte mode for Macronix
-> > > > like
-> > > > + * flashes.
-> > > > 
-> > > > * @nor:   pointer to 'struct spi_nor'.
-> > > > * @enable:        true to enter the 4-byte address mode, false to exit
-> > > > the 4-byte *         address mode.
-> > > > *
-> > > > * Return: 0 on success, -errno otherwise.
-> > > > */
-> > > > 
-> > > > -static int macronix_set_4byte(struct spi_nor *nor, bool enable)
-> > > > +static int spi_nor_en4_ex4_set_4byte(struct spi_nor *nor, bool
-> > > > enable)
-> > > 
-> > > Sounds a bit weird, how about simplifying this to:
-> > > spi_nor_set_4byte_addr_mode()
-> > > 
-> > > Or if you want to be specific:
-> > > spi_nor_en_ex_4byte_addr_mode()
-> > 
-> > You're right. Maybe we can simplify things by having a single function
-> > that does optional steps based on new flags
-> > 
-> > SPI_NOR_EN_EX_4B_NEEDS_WEN
-> > SPI_NOR_CLEAR_EAR_ON_4B_EXIT
-> > 
-> > This should probably be done in a separate patch though, so ack on the
-> > spi_nor_en_ex_4byte_addr_mode() rename, assuming we also change the
-> > bool argument name to enter.
-> 
-> A single big function will be ugly to handle because of the
-> spansion_set_4byte() -> it uses a different opcode.
-> 
-> I like the nor->params>set_4byte hook.
-> 
-> I think that spi_nor_en4_ex4_set_4byte() can be renamed to
-> spi_nor_set_4byte() and be the only set_4byte() method exposed to
-> manufacturers.
-> spansion_set_4byte() will be static in core.c and the rest will be private
-> in the manufacturer drivers.
-> 
-> Here's how the manufacturers enter and exit the 4 byte mode:
-> -> eon, gidadevice, issi, macronix, xmc use EN4B/EX4B
-> -> micron-st needs WEN -> private method as they are the only ones that
-> require this
-> -> newer spansion have a 4BAM opcode (new, public command), older spansion
-> flashes use BRWR (legacy in core.c, spansion_set_4byte())
-> -> winbond set_4byte method is hackish and may be reason for just a flash
-> fixup hook -> private method
+Hi Quentin,
 
-I'll drop the set_4byte changes from this patch. I'm adding a dedicated patch 
-immediately after this, to implement what I said above.
+On 3/13/20 10:04 AM, Quentin Perret wrote:
+> Hi Lukasz,
+> 
+> On Monday 09 Mar 2020 at 13:41:14 (+0000), Lukasz Luba wrote:
+> <snip>
+>> diff --git a/drivers/opp/of.c b/drivers/opp/of.c
+>> index 9cd8f0adacae..0efd6cf6d023 100644
+>> --- a/drivers/opp/of.c
+>> +++ b/drivers/opp/of.c
+>> @@ -1047,9 +1047,8 @@ EXPORT_SYMBOL_GPL(dev_pm_opp_get_of_node);
+>>    * calculation failed because of missing parameters, 0 otherwise.
+>>    */
+>>   static int __maybe_unused _get_cpu_power(unsigned long *mW, unsigned long *kHz,
+>> -					 int cpu)
+>> +					 struct device *cpu_dev)
+>>   {
+>> -	struct device *cpu_dev;
+>>   	struct dev_pm_opp *opp;
+>>   	struct device_node *np;
+>>   	unsigned long mV, Hz;
+>> @@ -1057,10 +1056,6 @@ static int __maybe_unused _get_cpu_power(unsigned long *mW, unsigned long *kHz,
+>>   	u64 tmp;
+>>   	int ret;
+>>   
+>> -	cpu_dev = get_cpu_device(cpu);
+>> -	if (!cpu_dev)
+>> -		return -ENODEV;
+>> -
+>>   	np = of_node_get(cpu_dev->of_node);
+>>   	if (!np)
+>>   		return -EINVAL;
+>> @@ -1128,6 +1123,6 @@ void dev_pm_opp_of_register_em(struct cpumask *cpus)
+>>   	if (ret || !cap)
+>>   		return;
+>>   
+>> -	em_register_perf_domain(cpus, nr_opp, &em_cb);
+>> +	em_register_perf_domain(cpu_dev, nr_opp, &em_cb, cpus);
+> 
+> Any reason for not checking the return value here ? You added a nice
+> check in scmi_get_cpu_power(), perhaps do the same thing here ?
 
-Cheers,
-ta
+I have tried to avoid changing the function to 'return int' in this
+patch. It is changed in the 2/4 where it gets the proper return.
+
+The 2/4 patch touches a few drivers which use the function
+dev_pm_opp_of_register_em(), mainly the new arguments, but also the
+return type in one patch (for consistency). It would need some ACKs
+from maintainers making sure to sync their trees with that patch
+(to avoid getting merge conflicts at some late stages).
+
+> 
+>>   }
+>>   EXPORT_SYMBOL_GPL(dev_pm_opp_of_register_em);
+>> diff --git a/drivers/thermal/cpufreq_cooling.c b/drivers/thermal/cpufreq_cooling.c
+>> index fe83d7a210d4..fcf2dab1b3b8 100644
+>> --- a/drivers/thermal/cpufreq_cooling.c
+>> +++ b/drivers/thermal/cpufreq_cooling.c
+>> @@ -333,18 +333,18 @@ static inline bool em_is_sane(struct cpufreq_cooling_device *cpufreq_cdev,
+>>   		return false;
+>>   
+>>   	policy = cpufreq_cdev->policy;
+>> -	if (!cpumask_equal(policy->related_cpus, to_cpumask(em->cpus))) {
+>> +	if (!cpumask_equal(policy->related_cpus, em_span_cpus(em))) {
+>>   		pr_err("The span of pd %*pbl is misaligned with cpufreq policy %*pbl\n",
+>> -			cpumask_pr_args(to_cpumask(em->cpus)),
+>> +			cpumask_pr_args(em_span_cpus(em)),
+>>   			cpumask_pr_args(policy->related_cpus));
+>>   		return false;
+>>   	}
+>>   
+>>   	nr_levels = cpufreq_cdev->max_level + 1;
+>> -	if (em->nr_cap_states != nr_levels) {
+>> +	if (em->nr_perf_states != nr_levels) {
+>>   		pr_err("The number of cap states in pd %*pbl (%u) doesn't match the number of cooling levels (%u)\n",
+> 
+> s/cap states/performance states
+
+missed it, thanks
+
+> 
+>> -			cpumask_pr_args(to_cpumask(em->cpus)),
+>> -			em->nr_cap_states, nr_levels);
+>> +			cpumask_pr_args(em_span_cpus(em)),
+>> +			em->nr_perf_states, nr_levels);
+>>   		return false;
+>>   	}
+> 
+> <snip>
+>> +static int em_create_perf_table(struct device *dev, struct em_perf_domain *pd,
+>> +				int nr_states, struct em_data_callback *cb)
+>>   {
+>>   	unsigned long opp_eff, prev_opp_eff = ULONG_MAX;
+>>   	unsigned long power, freq, prev_freq = 0;
+>> -	int i, ret, cpu = cpumask_first(span);
+>> -	struct em_cap_state *table;
+>> -	struct em_perf_domain *pd;
+>> +	struct em_perf_state *table;
+>> +	int i, ret;
+>>   	u64 fmax;
+>>   
+>> -	if (!cb->active_power)
+>> -		return NULL;
+>> -
+>> -	pd = kzalloc(sizeof(*pd) + cpumask_size(), GFP_KERNEL);
+>> -	if (!pd)
+>> -		return NULL;
+>> -
+>>   	table = kcalloc(nr_states, sizeof(*table), GFP_KERNEL);
+>>   	if (!table)
+>> -		goto free_pd;
+>> +		return -ENOMEM;
+>>   
+>> -	/* Build the list of capacity states for this performance domain */
+>> +	/* Build the list of performance states for this performance domain */
+>>   	for (i = 0, freq = 0; i < nr_states; i++, freq++) {
+>>   		/*
+>>   		 * active_power() is a driver callback which ceils 'freq' to
+>> -		 * lowest capacity state of 'cpu' above 'freq' and updates
+>> +		 * lowest performance state of 'dev' above 'freq' and updates
+>>   		 * 'power' and 'freq' accordingly.
+>>   		 */
+>> -		ret = cb->active_power(&power, &freq, cpu);
+>> +		ret = cb->active_power(&power, &freq, dev);
+>>   		if (ret) {
+>> -			pr_err("pd%d: invalid cap. state: %d\n", cpu, ret);
+>> +			dev_err(dev, "EM: invalid perf. state: %d\n",
+>> +				ret);
+> 
+> Not easy to figure out which device has a problem with this. I'm
+> guessing you went that way since this is called before ida_simple_get() ?
+
+Yes we now have pd0, for cpu0, but pd1 for i.e. cpu4
+
+> Could that be refactored to make the error message more useful ?
+
+So I have changed this in all palaces for consistency, not worrying
+about the 'pdID'. I thought getting ID earlier an then making cleanup
+code just for debug print purpose is probably not helping much in
+hunting the real problem if it occur, but cleaner code is better to
+maintain.
+
+We would have consistent information for which cpu device it occurred,
+all the logs look the same:
+
+[    5.391193] cpu cpu0: EM: hertz/watts ratio non-monotonically 
+decreasing: em_perf_state 11 >= em_perf_state10
+[    5.394230] cpu cpu0: EM: created perf domain pd0
+
+and this one would look like:
+
+[    5.391193] cpu cpu0: EM: invalid perf. state: -22
 
 
+> 
+>>   			goto free_cs_table;
+>>   		}
+> 
+> <snip>
+>> +/**
+>> + * em_unregister_perf_domain() - Unregister Energy Model (EM) for the device
+>> + * @dev		: Device for which the EM is registered
+>> + *
+>> + * Try to unregister the EM for the specified device (it checks current
+>> + * reference counter). The EM for CPUs will not be freed.
+>> + */
+>> +void em_unregister_perf_domain(struct device *dev)
+>> +{
+>> +	struct em_device *em_dev, *tmp;
+>> +
+>> +	if (IS_ERR_OR_NULL(dev))
+>> +		return;
+>> +
+>> +	/* We don't support freeing CPU structures in hotplug */
+>> +	if (_is_cpu_device(dev))
+>> +		return;
+> 
+> Can we WARN() here ?
+
+Well if someone would add EM to its platform and call this in
+hotplug, which is used as cooling method, will see a lot of warnings.
+I would rather avoid stressing people with this kind of warnings.
+This is under control and nothing really happens even when they
+do hotplug very often, like LTP stress tests.
+
+I agree to add a print there but warning for me is when something
+is not OK and should be investigated.
+I would prefer dev_dbg_once() to print thet the EM is not going to be
+removed. This will also not pollute dmesg in many logs.
+
+> 
+>> +
+>> +	mutex_lock(&em_pd_mutex);
+>> +
+>> +	if (list_empty(&em_pd_dev_list)) {
+>> +		mutex_unlock(&em_pd_mutex);
+>> +		return;
+>> +	}
+>> +
+>> +	list_for_each_entry_safe(em_dev, tmp, &em_pd_dev_list, em_dev_list) {
+>> +		if (em_dev->dev == dev) {
+>> +			kref_put(&em_dev->kref, _em_release);
+>> +			break;
+>> +		}
+>> +	}
+>> +
+>> +	mutex_unlock(&em_pd_mutex);
+>> +}
+>> +EXPORT_SYMBOL_GPL(em_unregister_perf_domain);
+> 
+> Otherwise this looks pretty good to me. So, with these small nits
+> addressed:
+> 
+>    Acked-by: Quentin Perret <qperret@google.com>
+
+Thank you for the ACK.
+
+> 
+> Thanks!
+> Quentin
+> 
+
+So these small changes will be present in v5. I have to wait a few
+days because there is one change to devfreq_cooling.c queuing and I will
+send v5 with updated patch 3/4 rebased on top.
+
+Regards,
+Lukasz
 
 _______________________________________________
 Linux-mediatek mailing list
