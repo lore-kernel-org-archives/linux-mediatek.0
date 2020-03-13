@@ -2,97 +2,77 @@ Return-Path: <SRS0=2fV0=46=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 22502C2BB1D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:12:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 46C09C10DCE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:13:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C3E0220746
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:12:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CEAC62073E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:13:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ai4gK3K5";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="R4Eg+CqT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C3E0220746
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s963Yaq9";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="leIgVGBJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CEAC62073E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hy3kCBucw6+tRwQ9MjD6nw49uS7TtKq9j7pwakkrduU=; b=Ai4gK3K52cKOEx
-	gJxpupuGPiiQNvMa618FgQ8m320BrqZqgbPJcEvqMpBGuw1EaW9OfwH3MDUyYAQSJA2C0UwfkHFaJ
-	golco/X1vpe3cOhvYgdy6iTtD7v1XdVZwOzM7CmDqAI4ihT6jBd79jlNO0ltVZbZHOD48JJBzT61U
-	UP8qORLoZZex3r6S96/7m88TSmry7Xf1VfoXoc7RK1A/3a3m4tq0CkxVx4vbab0UTO4hBw2y4fUG7
-	C7QAtXxyY37Z22iCxLt4jTpwVuHLlfKVBkRzwCUtb+vUYpxBlm6IzlakZufub8D2qIyIeTPkF9mYn
-	CtV0tBjp2UX1PDmVIxkA==;
+	List-Owner; bh=+55IHAAM1DC+/Ci1qkkXEQvOoNZrBMDSAAu7rdQUsQM=; b=s963Yaq9Rw6uSu
+	YA+sHgyw8cWFTgAfp7abuFkIhPg+B2Ogrv9ZXRJQkJthfi0dVi8CgH8CORV8i99CQx6A4CvOMHGCA
+	kQzjOXVcj6SvoLmz4pfya1v+3JddLnD3bcamr+ugTqJFCmMZb3LixNxRRMN86qrHcO3jdpImUeUZ9
+	Y/RBqpE+SOPtmToE6gRcyG1DeCdM40YyX3fOvRSKrY/sKa2DWwf1nbC9HKNCk81PmbWHXvSVHJAWZ
+	qI5cXq4WAKpm+h6WC5I8DbRc52EdaE+Koo3RQfV/ZRjPzVr2+1zt4HAgZsveP4sjIWNbEsCfhcddg
+	byVluEf5nIlBc2fXtcTA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCgMs-0001wt-9T; Fri, 13 Mar 2020 09:12:34 +0000
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
+	id 1jCgNj-0002mH-6U; Fri, 13 Mar 2020 09:13:27 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCgL3-00008K-O4
- for linux-mediatek@lists.infradead.org; Fri, 13 Mar 2020 09:10:43 +0000
-Received: by mail-pj1-x1043.google.com with SMTP id u10so3840739pjy.0
- for <linux-mediatek@lists.infradead.org>; Fri, 13 Mar 2020 02:10:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=JtkM+yZ5+lxvRbR9JLka9INk2b+8sAQT2vc0MdMcdF0=;
- b=R4Eg+CqTJ0CA4+mX+Q0HT1tcnR6NS4q4j5dn6d8VDy7Wz394wQUwvT/NaDJrrFoRkR
- O4/q4o8nR8aYr9LiZjCjS7mE1Zfot+KRD4H1e72uNXjMpENOJ3vSrzA5e/rgHS2aYJt/
- BaKX921yAoqhLuHWhyjVZwWDx6d1rQow8LiWogRoqoq5Ed1jrZ5gmHxTleTjyMQZ8CKs
- T+ypxEPiziHju+YAqbmPXZgW3yTKrcT7Suk/VWNVnzOZBXvpyetDTnzJ6oSWvSHDjPYA
- 8QMe+yOkIm+I3kT1Poq2VSQAD5vtvUNRuCXLrRBzA4wiXWN3t1vy/UNExwtyBq89ThAc
- hzzg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=JtkM+yZ5+lxvRbR9JLka9INk2b+8sAQT2vc0MdMcdF0=;
- b=bsyVB+ZJ2e2qsV0Uw9/2AlbUyi3MJ5F1N+PKwTw//OhTNRF9vWfGij2ge2rp6xxNn3
- Opg8bW4/wvnnJNghFSuATJYH5EDd89iCKguqYtcrZ+Kdllcv+oTsxe54z6dGjsD3JxJf
- o1K1pKgG2RkvQUrkmR5Ts/SNhe5New1oeYIeRbncaaDAbmFjni6h9MZFBJTIb5OdgLcj
- c3HGRoXdJXEwekMvdLHz1vqn5Mqr+LQwI+jat7aHrIEAYkUBG7122xN2dDW6aSCbYJ6w
- vL9/6ZcoDpd72EhavtA8rYKqYvGDDRuvwkWmtaivtbz168pxbxS7gw/KapYPxZxLTEw3
- Bg5w==
-X-Gm-Message-State: ANhLgQ1ioPJ8rZMLXdm2bSrSZgD/sEV/98jKLaTvZbknEZwmQCMi/1IV
- wKTef8zcGO9Rk+IVeQHS7X2hRQ==
-X-Google-Smtp-Source: ADFU+vueMkKxf9i4W6oJIJHRrSOEaNDdoKCVYBJIRGmkg6vmX/eRdo6zNqs5xJmNtBnSly4IqRo2Fg==
-X-Received: by 2002:a17:902:7485:: with SMTP id
- h5mr11624298pll.13.1584090640801; 
- Fri, 13 Mar 2020 02:10:40 -0700 (PDT)
-Received: from localhost ([122.171.122.128])
- by smtp.gmail.com with ESMTPSA id c8sm4233902pfj.108.2020.03.13.02.10.39
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 13 Mar 2020 02:10:39 -0700 (PDT)
-Date: Fri, 13 Mar 2020 14:40:38 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: "andrew-sh.cheng" <andrew-sh.cheng@mediatek.com>
-Subject: Re: [v5, PATCH 4/5] cpufreq: mediatek: add opp notification for SVS
- support
-Message-ID: <20200313091038.q7q7exiowoah4nk4@vireshk-i7>
-References: <1574769046-28449-1-git-send-email-andrew-sh.cheng@mediatek.com>
- <1574769046-28449-5-git-send-email-andrew-sh.cheng@mediatek.com>
- <20191127083619.etocnhpyyut3hzwq@vireshk-i7>
- <1575874588.13494.4.camel@mtksdaap41>
- <20191210064319.f4ksrxozp3gv4xry@vireshk-i7>
- <1583827865.4840.1.camel@mtksdaap41>
- <20200311060616.62nh7sfwtjwvrjfr@vireshk-i7>
- <1584084154.7753.3.camel@mtksdaap41>
+ id 1jCgLs-0000sz-Mx; Fri, 13 Mar 2020 09:11:34 +0000
+X-UUID: f994f9e6d51d4663b8d01304fe1a777f-20200313
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=gR230YLwB+6fqkFdpPZcSiLVAg6MrUrYhBNhkqyHJbI=; 
+ b=leIgVGBJwcVPZFgF9JggpdYg1T4o2D8u+zFCk13b08Y9pQ7lFDVxDAf2bobFMTQzuJQB0oOCr55b85EAsL62xbzNdM6y7xnYzdvCBiOHrACvlCK5+bYDh9LU0t99GKMJE2SZM8T4U5JeBLLhP8eXWzlWpuXsd72J1p5/J3ryVUI=;
+X-UUID: f994f9e6d51d4663b8d01304fe1a777f-20200313
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1704652453; Fri, 13 Mar 2020 01:11:24 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 13 Mar 2020 02:01:33 -0700
+Received: from mtkcas09.mediatek.inc (172.21.101.178) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 13 Mar 2020 16:59:08 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas09.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Fri, 13 Mar 2020 17:00:32 +0800
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+Subject: [PATCH v4 1/8] scsi: ufs: fix uninitialized tx_lanes in
+ ufshcd_disable_tx_lcc()
+Date: Fri, 13 Mar 2020 17:00:56 +0800
+Message-ID: <20200313090103.15390-2-stanley.chu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20200313090103.15390-1-stanley.chu@mediatek.com>
+References: <20200313090103.15390-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1584084154.7753.3.camel@mtksdaap41>
-User-Agent: NeoMutt/20180716-391-311a52
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200313_021041_842530_73453515 
-X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-CacheID: sfid-20200313_021132_793289_E3EEFA44 
+X-CRM114-Status: UNSURE (   9.16  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -105,44 +85,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
- Stephen Boyd <sboyd@kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Chanwoo Choi <cw00.choi@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Fan Chen =?utf-8?B?KOmZs+WHoSk=?= <fan.chen@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: Stanley Chu <stanley.chu@mediatek.com>, bvanassche@acm.org,
+ andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, beanhuo@micron.com,
+ linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13-03-20, 15:22, andrew-sh.cheng wrote:
-> I have something want to consult you.
-> For your previous comment, you suggest use read-write lock to replace
-> mutex lock.
-> Will it be more efficiently even when all are write lock?
-> (all lock region are "setting VProc voltage")
+In ufshcd_disable_tx_lcc(), if ufshcd_dme_get() or ufshcd_dme_peer_get()
+get fail, uninitialized variable "tx_lanes" may be used as unexpected lane
+ID for DME configuration.
 
-The data to be protected here isn't the VProc voltage but the list of
-valid OPPs. My idea was if we can make the target() routine run a bit
-faster as it really matters as it is called from scheduler hot path.
+Fix this issue by initializing "tx_lanes".
 
-It won't be wrong to use the mutex the way you have used it right now,
-but I think the read lock is much faster, though the read/write lock
-is more beneficial in case where there are multiple readers and fewer
-writers. The target() routine gets called multiple times here, not
-in parallel, and the OPP change notifier won't be called so often.
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Asutosh Das <asutoshd@codeaurora.org>
+---
+ drivers/scsi/ufs/ufshcd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 5698f1164a5e..314e808b0d4e 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -4315,7 +4315,7 @@ EXPORT_SYMBOL_GPL(ufshcd_hba_enable);
+ 
+ static int ufshcd_disable_tx_lcc(struct ufs_hba *hba, bool peer)
+ {
+-	int tx_lanes, i, err = 0;
++	int tx_lanes = 0, i, err = 0;
+ 
+ 	if (!peer)
+ 		ufshcd_dme_get(hba, UIC_ARG_MIB(PA_CONNECTEDTXDATALANES),
 -- 
-viresh
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
