@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 21317C4CECE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:36:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7817DC2BB1D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:37:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D4DFB2073E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:36:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 432B820746
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:37:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uMk4Ob9H";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="uvxBs7lA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D4DFB2073E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WiowDSVw";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="VHahNzYc"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 432B820746
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=18iLOUTn6QPfp15M93VkIeAYCgXo7HSHFHkvKFzNnWM=; b=uMk4Ob9Hg9Qybn
-	A3QQNJw5gxTvwqvWwqu4YWEVEz1tvN1ni9KMGuwSyAGPFdSc+F5pJL2cW52MF13Ak8XGHkICRLtUJ
-	hhbS4iMvHQbnhTAEZ7XBr9X6MVVMUoULw1ojWPLnqbYhe8GVyuZvoFQinf0A0ZishznUBCaj5j8+H
-	ZFEDlvfvEWHFPviZGRpuSo7sCeOkrdvNN3whMxumIljmbIM5PZw5kGh4zXmeD3ozqiqe54BGCoPil
-	wOZdpwi/iYo0aTioMRD781hF/zk4cclR9IpMqNIv4XSLQvE25PK7YjYX3Mez50haazE2qd5nvtc4T
-	b0LwFE8CVUk03xYzlRiQ==;
+	List-Owner; bh=2SB5YtAKObDNgF6bhy7awX7bw/oZ+BVpCMz62tB7WT0=; b=WiowDSVwPiUZPJ
+	Hr0SoLwdkWNe6gPAV7v+xVrGXWGCzc0zET/CL0e2xsHmQhAUeY6zQWo8WC0YsF8H34j250MmcjmAM
+	Y5YXaUUj9pJcAwd5RUaNigiv5nHp18ih7r03uET7pFM9hNDDwpPLgc/1mMOVUI2ueCRQnkvXX99A2
+	Ef22YPIbP5EmN/YrVdClK8CCDVRxNSszQbb1cwuD/B5dgXfQA9OfzAu2gg6qhRrB5OyXgk1Yzsb//
+	RBVF3SYkCi/rdM+r5VePVvelHhlrTdCUZ4DHfC4BAZk1v3tAQ0BEIFjY54J0v2Se0rzCFwrnYexys
+	ycuCZ6VCI/SoYi8zsIEw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCgk9-0000Me-8d; Fri, 13 Mar 2020 09:36:37 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jCgkW-0000fp-Hq; Fri, 13 Mar 2020 09:37:00 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCgiH-0005hG-R5; Fri, 13 Mar 2020 09:34:43 +0000
-X-UUID: bed0b56741e144c6b40fe0c054f459ff-20200313
+ id 1jCgiJ-0005nX-2L; Fri, 13 Mar 2020 09:34:44 +0000
+X-UUID: 1d54431539c64142be47ec2183ca8a71-20200313
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=urwiCCeBhATqzkJKTdVUJzgoPbW2D5JW1FSyfotRgVM=; 
- b=uvxBs7lAu6oHMWijecZKItrWEiljxY+KDttBfgVcDneCcAFpwW8dq3c567NawLlQBqgKW1Y0KPs/0ow7MbEp0tuYJWz9aqmDMlhQ1G8bdzUGYFXYCOiaJQsnZxt0q/A7Zq+Oir6i3h/uhsPUnr7559T7Kk8UTUjKXSu7D7yfgsg=;
-X-UUID: bed0b56741e144c6b40fe0c054f459ff-20200313
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=aITYrQM8eBrMvjNd8eDu54DSclnBOLlaOJBx16RosZM=; 
+ b=VHahNzYchtPE+IJGX2BE3P5wLQHgBa4+RH26nlZapRhrL3lIDUcnDg4cbg1OahQeu4MPfMKFR5PeZ+fuyC8+m5DsLO5B+m3vCo8+RtW/zA2a0d7ns/YohVprDPddH8fFe7OCbnv9aKWaFfXuShqJjqXgjoKSetpH85z5esXHqPQ=;
+X-UUID: 1d54431539c64142be47ec2183ca8a71-20200313
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <henryc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1490100700; Fri, 13 Mar 2020 01:34:38 -0800
+ with ESMTP id 1714172259; Fri, 13 Mar 2020 01:34:39 -0800
 Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 13 Mar 2020 02:34:36 -0700
+ 15.0.1395.4; Fri, 13 Mar 2020 02:34:38 -0700
 Received: from mtkcas09.mediatek.inc (172.21.101.178) by
  mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 13 Mar 2020 17:31:39 +0800
+ 15.0.1395.4; Fri, 13 Mar 2020 17:31:41 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Fri, 13 Mar 2020 17:33:40 +0800
+ Frontend Transport; Fri, 13 Mar 2020 17:33:42 +0800
 From: Henry Chen <henryc.chen@mediatek.com>
 To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Viresh Kumar
  <vireshk@kernel.org>, Stephen Boyd <swboyd@chromium.org>, Ryan Case
  <ryandcase@chromium.org>, Mark Brown <broonie@kernel.org>
-Subject: [PATCH V4 01/13] dt-bindings: soc: Add dvfsrc driver bindings
-Date: Fri, 13 Mar 2020 17:34:14 +0800
-Message-ID: <1584092066-24425-2-git-send-email-henryc.chen@mediatek.com>
+Subject: [PATCH V4 12/13] regulator: Regulator driver for the Mediatek DVFSRC
+Date: Fri, 13 Mar 2020 17:34:25 +0800
+Message-ID: <1584092066-24425-13-git-send-email-henryc.chen@mediatek.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1584092066-24425-1-git-send-email-henryc.chen@mediatek.com>
 References: <1584092066-24425-1-git-send-email-henryc.chen@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: A439D69B1AF57BF434D94321C469FB946C56643CA4E7071159E60B523D3951662000:8
+X-TM-SNTS-SMTP: 398644CFD6E0D511561E58E06D53C2F6CA69D2B5C4B9512B60C933BBE44515392000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200313_023441_895018_03678F09 
-X-CRM114-Status: GOOD (  12.36  )
+X-CRM114-CacheID: sfid-20200313_023443_171533_FCB0F036 
+X-CRM114-Status: GOOD (  15.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,7 +89,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@google.com>,
  Mike Turquette <mturquette@linaro.org>, srv_heupstream@mediatek.com,
  James Liao <jamesjj.liao@mediatek.com>, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>,
+ linux-kernel@vger.kernel.org, "henryc.chen" <henryc.chen@mediatek.com>,
  Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, Arvin Wang <arvin.wang@mediatek.com>,
  linux-arm-kernel@lists.infradead.org
@@ -98,66 +98,178 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the binding for enabling dvfsrc on MediaTek SoC.
+From: "henryc.chen" <henryc.chen@mediatek.com>
+
+Driver for regulators exposed by the DVFSRC (dynamic voltage and
+frequency scaling resource collector) found in devices based on
+mt8183 and newer platforms.
 
 Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- .../devicetree/bindings/soc/mediatek/dvfsrc.txt    | 23 ++++++++++++++++++++++
- include/dt-bindings/soc/mtk,dvfsrc.h               | 14 +++++++++++++
- 2 files changed, 37 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
- create mode 100644 include/dt-bindings/soc/mtk,dvfsrc.h
+ drivers/regulator/Kconfig                |  10 +++
+ drivers/regulator/Makefile               |   1 +
+ drivers/regulator/mtk-dvfsrc-regulator.c | 119 +++++++++++++++++++++++++++++++
+ 3 files changed, 130 insertions(+)
+ create mode 100644 drivers/regulator/mtk-dvfsrc-regulator.c
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
+diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
+index 074a2ef..3962180 100644
+--- a/drivers/regulator/Kconfig
++++ b/drivers/regulator/Kconfig
+@@ -680,6 +680,16 @@ config REGULATOR_MT6397
+ 	  This driver supports the control of different power rails of device
+ 	  through regulator interface.
+ 
++config REGULATOR_MTK_DVFSRC
++	tristate "MediaTek DVFSRC regulator driver"
++	depends on MTK_DVFSRC
++	help
++	  Say y here to control regulator by DVFSRC (dynamic voltage
++	  and frequency scaling resource collector).
++	  This driver supports to control regulators via the DVFSRC
++	  of Mediatek. It allows for voting on regulator state
++	  between multiple users.
++
+ config REGULATOR_PALMAS
+ 	tristate "TI Palmas PMIC Regulators"
+ 	depends on MFD_PALMAS
+diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
+index c0d6b96..c15c341 100644
+--- a/drivers/regulator/Makefile
++++ b/drivers/regulator/Makefile
+@@ -85,6 +85,7 @@ obj-$(CONFIG_REGULATOR_MT6323)	+= mt6323-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6358)	+= mt6358-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6380)	+= mt6380-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6397)	+= mt6397-regulator.o
++obj-$(CONFIG_REGULATOR_MTK_DVFSRC) += mtk-dvfsrc-regulator.o
+ obj-$(CONFIG_REGULATOR_QCOM_RPM) += qcom_rpm-regulator.o
+ obj-$(CONFIG_REGULATOR_QCOM_RPMH) += qcom-rpmh-regulator.o
+ obj-$(CONFIG_REGULATOR_QCOM_SMD_RPM) += qcom_smd-regulator.o
+diff --git a/drivers/regulator/mtk-dvfsrc-regulator.c b/drivers/regulator/mtk-dvfsrc-regulator.c
 new file mode 100644
-index 0000000..7f43499
+index 0000000..a7389d5
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.txt
-@@ -0,0 +1,23 @@
-+MediaTek DVFSRC
-+
-+The Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC) is a
-+HW module which is used to collect all the requests from both software and
-+hardware and turn into the decision of minimum operating voltage and minimum
-+DRAM frequency to fulfill those requests.
-+
-+Required Properties:
-+- compatible: Should be one of the following
-+	- "mediatek,mt8183-dvfsrc": For MT8183 SoC
-+- reg: Address range of the DVFSRC unit
-+- clock-names: Must include the following entries:
-+	"dvfsrc": DVFSRC module clock
-+- clocks: Must contain an entry for each entry in clock-names.
-+
-+Example:
-+
-+	dvfsrc@10012000 {
-+		compatible = "mediatek,mt8183-dvfsrc";
-+		reg = <0 0x10012000 0 0x1000>;
-+		clocks = <&infracfg CLK_INFRA_DVFSRC>;
-+		clock-names = "dvfsrc";
-+	};
-diff --git a/include/dt-bindings/soc/mtk,dvfsrc.h b/include/dt-bindings/soc/mtk,dvfsrc.h
-new file mode 100644
-index 0000000..a522488
---- /dev/null
-+++ b/include/dt-bindings/soc/mtk,dvfsrc.h
-@@ -0,0 +1,14 @@
-+/* SPDX-License-Identifier: GPL-2.0
-+ *
-+ * Copyright (c) 2018 MediaTek Inc.
++++ b/drivers/regulator/mtk-dvfsrc-regulator.c
+@@ -0,0 +1,119 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2019 MediaTek Inc.
 + */
 +
-+#ifndef _DT_BINDINGS_POWER_MTK_DVFSRC_H
-+#define _DT_BINDINGS_POWER_MTK_DVFSRC_H
++#include <linux/err.h>
++#include <linux/init.h>
++#include <linux/module.h>
++#include <linux/platform_device.h>
++#include <linux/of_device.h>
++#include <linux/of_platform.h>
++#include <linux/regulator/driver.h>
++#include <linux/regulator/of_regulator.h>
++#include <soc/mediatek/mtk_dvfsrc.h>
 +
-+#define MT8183_DVFSRC_LEVEL_1	1
-+#define MT8183_DVFSRC_LEVEL_2	2
-+#define MT8183_DVFSRC_LEVEL_3	3
-+#define MT8183_DVFSRC_LEVEL_4	4
++static inline struct device *to_dvfsrc_dev(struct regulator_dev *rdev)
++{
++	return rdev_get_dev(rdev)->parent->parent;
++}
 +
-+#endif /* _DT_BINDINGS_POWER_MTK_DVFSRC_H */
++static int dvfsrc_set_voltage_sel(struct regulator_dev *rdev,
++				   unsigned int selector)
++{
++	struct device *dvfsrc_dev = to_dvfsrc_dev(rdev);
++
++	mtk_dvfsrc_send_request(dvfsrc_dev, MTK_DVFSRC_CMD_VCORE_REQUEST,
++				selector);
++
++	return 0;
++}
++
++static int dvfsrc_get_voltage_sel(struct regulator_dev *rdev)
++{
++	struct device *dvfsrc_dev = to_dvfsrc_dev(rdev);
++	int val, ret;
++
++	ret = mtk_dvfsrc_query_info(dvfsrc_dev, MTK_DVFSRC_CMD_VCORE_QUERY,
++				    &val);
++
++	if (ret != 0)
++		return ret;
++
++	return val;
++}
++
++static struct regulator_ops dvfsrc_vcore_ops = {
++	.list_voltage = regulator_list_voltage_table,
++	.get_voltage_sel = dvfsrc_get_voltage_sel,
++	.set_voltage_sel = dvfsrc_set_voltage_sel,
++};
++
++static const unsigned int mt8183_voltages[] = {
++	725000,
++	800000,
++};
++
++static const struct regulator_desc regulator_mt8183_data = {
++	.name = "dvfsrc-vcore",				\
++	.of_match = of_match_ptr("dvfsrc-vcore"),	\
++	.ops = &dvfsrc_vcore_ops,			\
++	.type = REGULATOR_VOLTAGE,			\
++	.id = 0,					\
++	.owner = THIS_MODULE,				\
++	.n_voltages = ARRAY_SIZE(mt8183_voltages),	\
++	.volt_table = mt8183_voltages,			\
++};
++
++static int dvfsrc_vcore_regulator_probe(struct platform_device *pdev)
++{
++	struct regulator_config config = { };
++	struct regulator_dev *rdev;
++	const struct regulator_desc *init_data;
++
++	init_data = of_device_get_match_data(&pdev->dev);
++	if (!init_data)
++		return -EINVAL;
++
++	config.dev = &pdev->dev;
++	rdev = devm_regulator_register(&pdev->dev, init_data, &config);
++	if (IS_ERR(rdev)) {
++		dev_err(&pdev->dev, "failed to register %s\n",
++			init_data->name);
++		return PTR_ERR(rdev);
++	}
++
++	return 0;
++}
++
++static const struct of_device_id mtk_dvfsrc_regulator_match[] = {
++	{
++		.compatible = "mediatek,mt8183-dvfsrc-regulator",
++		.data = &regulator_mt8183_data,
++	}, {
++		/* sentinel */
++	},
++};
++
++static struct platform_driver mtk_dvfsrc_regulator_driver = {
++	.driver = {
++		.name  = "mtk-dvfsrc-regulator",
++		.of_match_table = mtk_dvfsrc_regulator_match,
++	},
++	.probe = dvfsrc_vcore_regulator_probe,
++};
++
++static int __init mtk_dvfsrc_regulator_init(void)
++{
++	return platform_driver_register(&mtk_dvfsrc_regulator_driver);
++}
++subsys_initcall(mtk_dvfsrc_regulator_init);
++
++static void __exit mtk_dvfsrc_regulator_exit(void)
++{
++	platform_driver_unregister(&mtk_dvfsrc_regulator_driver);
++}
++module_exit(mtk_dvfsrc_regulator_exit);
++
++MODULE_AUTHOR("Arvin wang <arvin.wang@mediatek.com>");
++MODULE_LICENSE("GPL v2");
 -- 
 1.9.1
 _______________________________________________
