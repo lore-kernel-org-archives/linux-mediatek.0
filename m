@@ -2,76 +2,63 @@ Return-Path: <SRS0=2fV0=46=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 56D97C10DCE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:14:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ACE4FC10DCE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:30:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 255F8206FA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:14:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 618162073E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 09:30:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mFduvpq2";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ClpMAfB/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 255F8206FA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iy3zwRbs"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 618162073E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7YVkkagmdl3aqlLNzoA+vFDpHaOyuJz+IQM9lD/S+vI=; b=mFduvpq2s/Yy/r
-	AmuPk40j9r9BctRGTk2t6cEFxmEdSttoZyW2KnySQn3v4Q8VPJg0A2a5m4Cz2P4lVusJzu9TF/ixh
-	qcIkZ9qe7dbuuSYWQ7xs5/MPqY0JIuJ87drr1ZrpJeQ1L85rRo4sBI066ibbQmkncP/sElL2W4Ov1
-	jHxV92PS6wuiwVVhEQ13lQZrZvuKxb+NyWyCdxoIJXxy4Ir8BYjKtK3J0thw6LKhaXaKd6kWlzG8s
-	U+WWfP8wbN+eZ39EjHEBDM2QkBNDwl9Qvy0h9nMgFq3rnPbcOqPHOxzl2wOZVoGB9VBjUEEwVWDgS
-	kzbFxwLWDlVmeRVyOVLw==;
+	List-Owner; bh=u5N88KEAzlBaLy4NrNaAkOOP9CNztzvOrv99HenC0so=; b=iy3zwRbscQwRtT
+	1L572uT2fF76ud+VhN9NGfgWCrqpDXY1k3ZTDYbn8wqbvGlLj1qIn+mpVqZdgpQowARBRzltKLC+v
+	saOmWWu9i87Oros8mrUxK037psO/yzZ0TdnJVIK+Gv/aem0ntq+SIA//FBkqyr2jtlMYYszF2RieN
+	162Q/VK9F8z3lBH9DL0WIas7eAcIohpS5DWCR3StVDpZDcEFmwXoCq9fycVEtPqScJVrXUfy88j1p
+	TTGtlSPYndNge4OtEnvM+T7mchcqFU6W3AMAJO23eJxjTVGzgBDyK1D+c4HdZdDIGiikQyvKBqrCN
+	7lHV5KBiLnilB5oepXUg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCgOP-0003VR-3q; Fri, 13 Mar 2020 09:14:09 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jCgeC-0004kn-WB; Fri, 13 Mar 2020 09:30:29 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCgLs-0000rT-Je; Fri, 13 Mar 2020 09:11:36 +0000
-X-UUID: f77c9d93318e4bc5a770609cf233d974-20200313
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=4TIG4byHma4NOdZnY1tFZDNMEK8I4hnml0HdV5eY6KA=; 
- b=ClpMAfB/gBcDhsDkzmpLOVnTNvNKDpLEiKAeIyD8/mkJlt6Ae4xB9dBoxovhKgXhTnb7akxqO4xB+RvboPbnALDhU0nMFqCswEWoVioJe6SJQs3GgJ4PQvf2yfRkZ9vFIFjEyHk98DNSeRY5aqX0cV0/wD1JU+NH6BUas7LIAi8=;
-X-UUID: f77c9d93318e4bc5a770609cf233d974-20200313
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1459981251; Fri, 13 Mar 2020 01:11:24 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 13 Mar 2020 02:01:33 -0700
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 13 Mar 2020 16:59:09 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas09.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Fri, 13 Mar 2020 17:00:33 +0800
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
- <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v4 4/8] scsi: ufs: introduce common delay function
-Date: Fri, 13 Mar 2020 17:00:59 +0800
-Message-ID: <20200313090103.15390-5-stanley.chu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200313090103.15390-1-stanley.chu@mediatek.com>
-References: <20200313090103.15390-1-stanley.chu@mediatek.com>
+ id 1jCgdz-0004bF-Uw; Fri, 13 Mar 2020 09:30:17 +0000
+Received: from localhost (unknown [IPv6:2a01:e0a:2c:6930:5cf4:84a1:2763:fe0d])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ (Authenticated sender: bbrezillon)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 83AF0295CF8;
+ Fri, 13 Mar 2020 09:30:11 +0000 (GMT)
+Date: Fri, 13 Mar 2020 10:30:07 +0100
+From: Boris Brezillon <boris.brezillon@collabora.com>
+To: Vignesh Raghavendra <vigneshr@ti.com>
+Subject: Re: [PATCH 01/23] mtd: spi-nor: Stop prefixing generic functions
+ with a manufacturer name
+Message-ID: <20200313103007.7d7ea6af@collabora.com>
+In-Reply-To: <91394111-cbd6-c24e-485d-88fcd6825dc7@ti.com>
+References: <20200302180730.1886678-1-tudor.ambarus@microchip.com>
+ <20200302180730.1886678-2-tudor.ambarus@microchip.com>
+ <91394111-cbd6-c24e-485d-88fcd6825dc7@ti.com>
+Organization: Collabora
+X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200313_021132_778284_DD09C4F6 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20200313_023016_128546_39F27EB3 
+X-CRM114-Status: GOOD (  19.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,121 +70,118 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Stanley Chu <stanley.chu@mediatek.com>, bvanassche@acm.org,
- andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, beanhuo@micron.com,
- linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
+Cc: kstewart@linuxfoundation.org, alexandre.belloni@bootlin.com,
+ linux-aspeed@lists.ozlabs.org, thor.thayer@linux.intel.com,
+ jethro@fortanix.com, rfontana@redhat.com, linux-mtd@lists.infradead.org,
+ miquel.raynal@bootlin.com, opensource@jilayne.com, richard@nod.at,
+ allison@lohutok.net, michal.simek@xilinx.com, Ludovic.Desroches@microchip.com,
+ joel@jms.id.au, nishkadg.linux@gmail.com, Tudor.Ambarus@microchip.com,
+ john.garry@huawei.com, vz@mleia.com, alexander.sverdlin@nokia.com,
+ matthias.bgg@gmail.com, tglx@linutronix.de, swboyd@chromium.org,
+ mika.westerberg@linux.intel.com, ludovic.barre@st.com,
+ linux-arm-kernel@lists.infradead.org, bbrezillon@kernel.org, andrew@aj.id.au,
+ Nicolas.Ferre@microchip.com, linux-kernel@vger.kernel.org, dinguyen@kernel.org,
+ michael@walle.cc, linux-mediatek@lists.infradead.org, info@metux.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce common delay function to collect all delay requirements
-to simplify driver and take choices of udelay and usleep_range into
-consideration.
+On Fri, 13 Mar 2020 11:34:55 +0530
+Vignesh Raghavendra <vigneshr@ti.com> wrote:
 
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/scsi/ufs/ufshcd.c | 27 ++++++++++++++++++---------
- drivers/scsi/ufs/ufshcd.h |  1 +
- 2 files changed, 19 insertions(+), 9 deletions(-)
+> On 02/03/20 11:37 pm, Tudor.Ambarus@microchip.com wrote:
+> > From: Boris Brezillon <bbrezillon@kernel.org>
+> > 
+> > Replace the manufacturer prefix by something describing more precisely
+> > what those functions do.
+> > 
+> > Signed-off-by: Boris Brezillon <bbrezillon@kernel.org>
+> > [tudor.ambarus@microchip.com: prepend spi_nor_ to all modified methods.]
+> > Signed-off-by: Tudor Ambarus <tudor.ambarus@microchip.com>
+> > ---
+> >  drivers/mtd/spi-nor/spi-nor.c | 88 ++++++++++++++++++-----------------
+> >  1 file changed, 45 insertions(+), 43 deletions(-)
+> > 
+> > diff --git a/drivers/mtd/spi-nor/spi-nor.c b/drivers/mtd/spi-nor/spi-nor.c
+> > index caf0c109cca0..b15e262765e1 100644
+> > --- a/drivers/mtd/spi-nor/spi-nor.c
+> > +++ b/drivers/mtd/spi-nor/spi-nor.c
+> > @@ -568,14 +568,15 @@ static int spi_nor_read_cr(struct spi_nor *nor, u8 *cr)
+> >  }
+> >  
+> >  /**
+> > - * macronix_set_4byte() - Set 4-byte address mode for Macronix flashes.
+> > + * spi_nor_en4_ex4_set_4byte() - Enter/Exit 4-byte mode for Macronix like
+> > + * flashes.
+> >   * @nor:	pointer to 'struct spi_nor'.
+> >   * @enable:	true to enter the 4-byte address mode, false to exit the 4-byte
+> >   *		address mode.
+> >   *
+> >   * Return: 0 on success, -errno otherwise.
+> >   */
+> > -static int macronix_set_4byte(struct spi_nor *nor, bool enable)
+> > +static int spi_nor_en4_ex4_set_4byte(struct spi_nor *nor, bool enable)  
+> 
+> 
+> Sounds a bit weird, how about simplifying this to:
+> 
+> 	spi_nor_set_4byte_addr_mode()
+> 
+> Or if you want to be specific:
+> 
+> 	spi_nor_en_ex_4byte_addr_mode()
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index b4988b9ee36c..ce65d321a73f 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -597,6 +597,18 @@ static void ufshcd_print_pwr_info(struct ufs_hba *hba)
- 		 hba->pwr_info.hs_rate);
- }
- 
-+void ufshcd_wait_us(unsigned long us, unsigned long tolerance, bool can_sleep)
-+{
-+	if (!us)
-+		return;
-+
-+	if (us < 10 || !can_sleep)
-+		udelay(us);
-+	else
-+		usleep_range(us, us + tolerance);
-+}
-+EXPORT_SYMBOL_GPL(ufshcd_wait_us);
-+
- /*
-  * ufshcd_wait_for_register - wait for register value to change
-  * @hba - per-adapter interface
-@@ -620,10 +632,7 @@ int ufshcd_wait_for_register(struct ufs_hba *hba, u32 reg, u32 mask,
- 	val = val & mask;
- 
- 	while ((ufshcd_readl(hba, reg) & mask) != val) {
--		if (can_sleep)
--			usleep_range(interval_us, interval_us + 50);
--		else
--			udelay(interval_us);
-+		ufshcd_wait_us(interval_us, 50, can_sleep);
- 		if (time_after(jiffies, timeout)) {
- 			if ((ufshcd_readl(hba, reg) & mask) != val)
- 				err = -ETIMEDOUT;
-@@ -3565,7 +3574,7 @@ static inline void ufshcd_add_delay_before_dme_cmd(struct ufs_hba *hba)
- 	}
- 
- 	/* allow sleep for extra 50us if needed */
--	usleep_range(min_sleep_time_us, min_sleep_time_us + 50);
-+	ufshcd_wait_us(min_sleep_time_us, 50, true);
- }
- 
- /**
-@@ -4289,7 +4298,7 @@ int ufshcd_hba_enable(struct ufs_hba *hba)
- 	 * instruction might be read back.
- 	 * This delay can be changed based on the controller.
- 	 */
--	usleep_range(1000, 1100);
-+	ufshcd_wait_us(1000, 100, true);
- 
- 	/* wait for the host controller to complete initialization */
- 	retry = 10;
-@@ -4301,7 +4310,7 @@ int ufshcd_hba_enable(struct ufs_hba *hba)
- 				"Controller enable failed\n");
- 			return -EIO;
- 		}
--		usleep_range(5000, 5100);
-+		ufshcd_wait_us(5000, 100, true);
- 	}
- 
- 	/* enable UIC related interrupts */
-@@ -6224,7 +6233,7 @@ static int ufshcd_abort(struct scsi_cmnd *cmd)
- 			reg = ufshcd_readl(hba, REG_UTP_TRANSFER_REQ_DOOR_BELL);
- 			if (reg & (1 << tag)) {
- 				/* sleep for max. 200us to stabilize */
--				usleep_range(100, 200);
-+				ufshcd_wait_us(100, 100, true);
- 				continue;
- 			}
- 			/* command completed already */
-@@ -7783,7 +7792,7 @@ static void ufshcd_vreg_set_lpm(struct ufs_hba *hba)
- 	 */
- 	if (!ufshcd_is_link_active(hba) &&
- 	    hba->dev_quirks & UFS_DEVICE_QUIRK_DELAY_BEFORE_LPM)
--		usleep_range(2000, 2100);
-+		ufshcd_wait_us(2000, 100, true);
- 
- 	/*
- 	 * If UFS device is either in UFS_Sleep turn off VCC rail to save some
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index fec004cd8054..4683e7bf6640 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -781,6 +781,7 @@ int ufshcd_init(struct ufs_hba * , void __iomem * , unsigned int);
- int ufshcd_make_hba_operational(struct ufs_hba *hba);
- void ufshcd_remove(struct ufs_hba *);
- int ufshcd_uic_hibern8_exit(struct ufs_hba *hba);
-+void ufshcd_wait_us(unsigned long us, unsigned long tolerance, bool can_sleep);
- int ufshcd_wait_for_register(struct ufs_hba *hba, u32 reg, u32 mask,
- 				u32 val, unsigned long interval_us,
- 				unsigned long timeout_ms, bool can_sleep);
--- 
-2.18.0
+You're right. Maybe we can simplify things by having a single function
+that does optional steps based on new flags
+
+SPI_NOR_EN_EX_4B_NEEDS_WEN
+SPI_NOR_CLEAR_EAR_ON_4B_EXIT
+
+This should probably be done in a separate patch though, so ack on the
+spi_nor_en_ex_4byte_addr_mode() rename, assuming we also change the
+bool argument name to enter.
+
+> 
+> >  {
+> >  	int ret;
+> >  
+> > @@ -604,14 +605,15 @@ static int macronix_set_4byte(struct spi_nor *nor, bool enable)
+> >  }
+> >  
+> >  /**
+> > - * st_micron_set_4byte() - Set 4-byte address mode for ST and Micron flashes.
+> > + * spi_nor_en4_ex4_wen_set_4byte() - Set 4-byte address mode for ST and Micron
+> > + * flashes.
+> >   * @nor:	pointer to 'struct spi_nor'.
+> >   * @enable:	true to enter the 4-byte address mode, false to exit the 4-byte
+> >   *		address mode.
+> >   *
+> >   * Return: 0 on success, -errno otherwise.
+> >   */
+> > -static int st_micron_set_4byte(struct spi_nor *nor, bool enable)
+> > +static int spi_nor_en4_ex4_wen_set_4byte(struct spi_nor *nor, bool enable)  
+> 
+> 
+> Unrelated to this patch itself, but can we just have one set_4byte
+> variant that uses WREN and drop the other one?
+
+Hm, not sure that's a good idea to insert WEN instructions for
+everyone, sounds like a recipe for regressions.
+
+> I expect sending WREN should be harmless even for cmds that don't expect
+> one.
+
+In theory yes, but you know flash chips are capricious, so let's not
+take the risk of breaking things :-).
+
+> 
+> Rest looks good to me.
+> 
+> Reviewed-by: Vignesh Raghavendra <vigneshr@ti.com>
+> 
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
