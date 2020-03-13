@@ -2,87 +2,89 @@ Return-Path: <SRS0=2fV0=46=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 071E2C10DCE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 20:18:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6BAF7C10DCE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 20:19:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B1C8E20637
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 20:18:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1FA6A20637
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2020 20:19:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RU9TBarD";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="a14X4w4d"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B1C8E20637
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OXt95//3";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="SFHap9SA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1FA6A20637
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=z1yU4mxjeizaWQSW+8eNwKR9hbYmUKSYbZF0EfsaCJ0=; b=RU9TBarD2h63tX
-	5aUj2RdiivF+MW0ugxn9uDpOT6CmWH1m+3oKloAXSX4j0zdzu6LU0ynBCZg/VJ0zuhdtf15L59/0r
-	2x7GhNvEi2nJi7M8xNXiqhR2JCX3aq1j+m2WRFnNxleN20nKTkZA7NLDNWN1egkXesqZUnAl1fxvP
-	mhbCZzKhWpIzWgZF8ytA1eaCZz9hUuht4lHDbYYuy1yoN7AgKKxCQp5G3CfF/lyFcdrRHKQ3tHvyD
-	lYQZHgqET/fTDC50+3a7lkNJjBVvBhZOOW4eKikIXCCvb2IKkTKurYZz02u9BAyQWnkcb0e4LyYrc
-	0bKUPGjMsZfdhQZCPxNA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=m6tc/LgbQMVHm5fIdhNAIJPQ0zIMLOozDabsuTMe8vs=; b=OXt95//33diWGh
+	+rJplni/QO0h/pFEwYqbCcRC3MuZcS9H3K051duTMLzrMNeO1s1jiNYdYSGgD1j82aMkfcZ09zggJ
+	m0Go/OJmwzjvOl4yLvIfETIRscVwD67x6akETSpNy9t1lhfgazk+kCR7jS217t8ejNZg2GzGyiMin
+	Hm8FAW0sQT2cX1jKRtN7EAuei2SWxiQuQsWKWbkIVXeKD5wrI/+9mwfDq/Vzp0c8ivEjxjhSoLRK4
+	eOdx/JnekMJslg6l2bs4aHz9ATW8PA0TyeMhTEyxuiK+UIWbfr1q4znIu5AypfM8gm2MxHoKf43Xp
+	L3Sbg+f2qJO0RjHEtMVw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jCqlF-0001De-Jl; Fri, 13 Mar 2020 20:18:25 +0000
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
+	id 1jCqmA-0002AG-J1; Fri, 13 Mar 2020 20:19:22 +0000
+Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jCqkp-0000ps-DR; Fri, 13 Mar 2020 20:18:02 +0000
-Received: by mail-lj1-x243.google.com with SMTP id q19so11915110ljp.9;
- Fri, 13 Mar 2020 13:17:58 -0700 (PDT)
+ id 1jCqkw-0000wd-Ib; Fri, 13 Mar 2020 20:18:08 +0000
+Received: by mail-lf1-x144.google.com with SMTP id 5so1810292lfr.2;
+ Fri, 13 Mar 2020 13:18:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Y58XOkdziIOagbDJXaKPopb+GQlU9fbifw4eoZN3YIE=;
- b=a14X4w4dS2yd7C/5VPno7i/nBzVNU5gbbv+Tld50flDKi1V2uj3T8h6/bqF56ixDIQ
- epKRKteT7A80miLVVtDJi3lvb36JcaGYtUskmmoOqNaKJ1NhtEhyu2O2EAotEBWp0vT9
- 9WxVBWDQZ3NOOOAnPnqFuwOoluVvfMrLSDkuPaw9WDbIK4blcU2ifQesuPyClX4FAKEs
- 20CzvQQtSPOunxFWzyZAUq7Nt6KJj/ysnwxZsxhMBttkKp2bVYBC7zh8lFkV6nWVsRnn
- cvQoH0PplvOPvD0k55tWiSo15BFZN0+ND6QYMNzWUr48SkzrTsb7gci8hvbjgK5znBXe
- sG+g==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=BOrKdqp0xX849tkbGYoL5GifZ0fJWuSnmKvneHoBEPI=;
+ b=SFHap9SA3MQWq/rDzTcpj95GukhT+WmakBXzY2/W/iVbaG3CYS78HgdDNCnklu2dLE
+ kFU0QDG9SImIs7hlVZiJyUAgm7YUizziMveCoCVIzJ9O8cqrKgolPpoV6am7DfhU89XJ
+ ltxCH8nvbIYs393MHpsDO6BhvtaKdvLKO1cCTYQMgnrpgZsHazgpH66LACi+70HhiJ6l
+ AJYv+s/W3gch6gNZXXxxbLFCll+TfRRcrcTxa5xQeHRhtYaQSbszeLTX6zP5G5Jz7Jm/
+ gUDVBMvSktGH2MZ2dnKv8dJAIQub63dYzfpzuua04+X6h9+JvUqOMVK/Ctt+DZXCV3Yi
+ OCig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=Y58XOkdziIOagbDJXaKPopb+GQlU9fbifw4eoZN3YIE=;
- b=GRJ526XHDOxup5Q0JzXH/4wnmUGHfIUu1nZng+r1CVTxwae94wZcTm/sH7xKQ19GsN
- H4Xj8LbSFckQJJkAtL8gmBX4mGCaF6qDOfz0SWWLRJN3eTaetm2XWT+2jebxMqZpbf7s
- URZyQStyUiTrupeUOw1KOAPPi8Nf7abMJ1ES5C35fmE1Xa3/ZPmbeLwCktSEFprXwHuT
- uU8A7UbLm3Xq3fTRqMt6En5pTGQj6GR6PMZrMh7/4AsPI8tCqgDP4NkaMX/Y9fkzGAKS
- 7CkHpaMOLjLFBBlSKstglEw7HRb0BEGaHN0zcK7PR/DZ0530F5nGt2ftZeBJ8mECKe6M
- 8d/Q==
-X-Gm-Message-State: ANhLgQ2p703MNISH34Fj82iUeFSNSBaKhuz5e163i1RNLSpUUVFmau0K
- 188pwvrteIAD+AiYVy20UbI=
-X-Google-Smtp-Source: ADFU+vuuP8eLGHs61Pn00F6kfLCzZYEGZpi+HoTitf53XYXkeT4pF7N73LFSnuUIomov7m47p3b2kA==
-X-Received: by 2002:a05:651c:1047:: with SMTP id
- x7mr6683206ljm.246.1584130676487; 
- Fri, 13 Mar 2020 13:17:56 -0700 (PDT)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=BOrKdqp0xX849tkbGYoL5GifZ0fJWuSnmKvneHoBEPI=;
+ b=Twzx7em6i2JFt89Mu/l6h9XaTie4JaxSUUxZyB4NYUt6GRm/zcElAegNSaWEJE7rdx
+ rRPVSXlwURA26mpnvjs3CcyqoNERxmoihk8dKP8f6/Or2l4vDy4rNzy0gWvlxSbqmCAf
+ Bi0laoQAYMAMLSomTIjgkGYsLFJwnJe0I2zB2cKdgnkrxKQLT2D2qSPc4nP94vAP9N6e
+ TfsiMT4/R9fmbZ2VK09jEtayav6w9Bs0+CKQ3NuMTv/saUoLCLEvK2weQkWcFPg/aK1q
+ 5Qbrw4KFZShaQ+e20WKTkI2qDLLke5ZBhAZDVprsIlyE4vHxZjZOp77EPwCmbob1M4HF
+ nlwA==
+X-Gm-Message-State: ANhLgQ3Nd8H3CoQRGdFIHdhokfUkzjZcoKr97a8/A9Id50kScW9kp8cQ
+ JxDKzzhxeT5tMuLb5GPiZvg=
+X-Google-Smtp-Source: ADFU+vuWMe8I2528Uyu2tKaIGPqCCGIWF6uu2OphKJd6rnCU8MYCRJ3bIyFwbbl07L6oMFBFxGQoig==
+X-Received: by 2002:a19:7d04:: with SMTP id y4mr9463704lfc.111.1584130682588; 
+ Fri, 13 Mar 2020 13:18:02 -0700 (PDT)
 Received: from saturn.lan (18.158-248-194.customer.lyse.net. [158.248.194.18])
  by smtp.gmail.com with ESMTPSA id
- v10sm30774074lfb.61.2020.03.13.13.17.54
+ v10sm30774074lfb.61.2020.03.13.13.18.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Mar 2020 13:17:55 -0700 (PDT)
+ Fri, 13 Mar 2020 13:18:01 -0700 (PDT)
 From: Sam Ravnborg <sam@ravnborg.org>
 To: Thomas Zimmermann <tzimmermann@suse.de>, Daniel Vetter <daniel@ffwll.ch>,
  Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
  dri-devel@lists.freedesktop.org
-Subject: [PATCH v1 0/3] drm: drm_encoder_init() => drm_encoder_init_funcs()
-Date: Fri, 13 Mar 2020 21:17:41 +0100
-Message-Id: <20200313201744.19773-1-sam@ravnborg.org>
+Subject: [PATCH v1 3/3] drm/atmel-hlcdc: Use drm_encoder_init()
+Date: Fri, 13 Mar 2020 21:17:44 +0100
+Message-Id: <20200313201744.19773-4-sam@ravnborg.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200313201744.19773-1-sam@ravnborg.org>
+References: <20200313201744.19773-1-sam@ravnborg.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200313_131759_530975_0DBC5A1F 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20200313_131806_666525_2B3C178C 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,162 +116,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thomas Zimmermann had made a nice patch-set that introduced
-drm_simple_encoder_init() which is already present in drm-misc-next.
+atmel-hlcdc has no need to extend the functionality of the
+encoder, so use drm_encoder_init().
 
-While looking at this it was suddenly obvious to me that
-this was functionalty that really should be included in drm_encoder.c
-The case where the core could handle the callback is pretty
-common and not part of the simple pipe line.
+Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
+Cc: Sam Ravnborg <sam@ravnborg.org>
+Cc: Boris Brezillon <bbrezillon@kernel.org>
+Cc: Nicolas Ferre <nicolas.ferre@microchip.com>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>
+Cc: Ludovic Desroches <ludovic.desroches@microchip.com>
+Cc: Thomas Zimmermann <tzimmermann@suse.de>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+---
+ drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
-So after some dialog on dri-devel the conclusion was to go for
-a change like this:
-
-    drm_encoder_init_funcs() for all users that specified a
-    drm_encoder_funcs to extend the functionality.
-
-    drm_encoder_init() for all users that did not
-    need to extend the basic functionality with
-    drm_encoder_funcs.
-
-A similar approach with a _funcs() prefix is used elsewhere in drm/
-
-This required a rename of the existing users, and
-a follow-up patch that moves drm_simple_encoder_init()
-to drm_encoder.c
-
-Patches 3 in this set demonstrate the use of drm_encoder_init().
-There are many more drivers that can be converted as Thomas
-has already demonstrated.
-
-This is all based on work done by Thomas Zimmermann,
-I just wanted to implement my suggestion so
-we could select the best way forward.
-
-Note: Daniel Vetter has hinted the approach implemented
-here smelled like middle-layer.
-IMO this is not so, it is just a way to handle cleanup
-for the simple cases.
-
-	Sam
-
-
-Sam Ravnborg (3):
-      drm: drm_encoder_init() => drm_encoder_init_funcs()
-      drm: drm_simple_encoder_init() => drm_encoder_init()
-      drm/atmel-hlcdc: Use drm_encoder_init()
-
- drivers/gpu/drm/amd/amdgpu/dce_v10_0.c             | 28 ++++++-------
- drivers/gpu/drm/amd/amdgpu/dce_v11_0.c             | 28 ++++++-------
- drivers/gpu/drm/amd/amdgpu/dce_v6_0.c              | 28 ++++++-------
- drivers/gpu/drm/amd/amdgpu/dce_v8_0.c              | 28 ++++++-------
- drivers/gpu/drm/amd/amdgpu/dce_virtual.c           |  4 +-
- drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c  | 10 ++---
- .../amd/display/amdgpu_dm/amdgpu_dm_mst_types.c    | 10 ++---
- drivers/gpu/drm/arc/arcpgu_hdmi.c                  |  4 +-
- drivers/gpu/drm/arc/arcpgu_sim.c                   |  4 +-
- drivers/gpu/drm/ast/ast_mode.c                     |  3 +-
- drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c   |  8 +---
- drivers/gpu/drm/drm_encoder.c                      | 49 +++++++++++++++++++---
- drivers/gpu/drm/drm_encoder_slave.c                |  2 +-
- drivers/gpu/drm/drm_simple_kms_helper.c            | 45 +-------------------
- drivers/gpu/drm/drm_writeback.c                    |  6 +--
- drivers/gpu/drm/exynos/exynos_dp.c                 |  4 +-
- drivers/gpu/drm/exynos/exynos_drm_dpi.c            |  4 +-
- drivers/gpu/drm/exynos/exynos_drm_dsi.c            |  4 +-
- drivers/gpu/drm/exynos/exynos_drm_vidi.c           |  4 +-
- drivers/gpu/drm/exynos/exynos_hdmi.c               |  4 +-
- drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_rgb.c          |  4 +-
- drivers/gpu/drm/gma500/cdv_intel_crt.c             |  5 ++-
- drivers/gpu/drm/gma500/cdv_intel_dp.c              |  4 +-
- drivers/gpu/drm/gma500/cdv_intel_hdmi.c            |  4 +-
- drivers/gpu/drm/gma500/cdv_intel_lvds.c            |  6 +--
- drivers/gpu/drm/gma500/mdfld_dsi_dpi.c             |  7 ++--
- drivers/gpu/drm/gma500/oaktrail_hdmi.c             |  6 +--
- drivers/gpu/drm/gma500/oaktrail_lvds.c             |  4 +-
- drivers/gpu/drm/gma500/psb_intel_lvds.c            |  6 +--
- drivers/gpu/drm/gma500/psb_intel_sdvo.c            |  4 +-
- drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_vdac.c   |  4 +-
- drivers/gpu/drm/hisilicon/kirin/dw_drm_dsi.c       |  4 +-
- drivers/gpu/drm/i2c/tda998x_drv.c                  |  5 ++-
- drivers/gpu/drm/i915/display/icl_dsi.c             |  4 +-
- drivers/gpu/drm/i915/display/intel_crt.c           |  5 ++-
- drivers/gpu/drm/i915/display/intel_ddi.c           |  6 ++-
- drivers/gpu/drm/i915/display/intel_dp.c            |  6 +--
- drivers/gpu/drm/i915/display/intel_dp_mst.c        |  6 ++-
- drivers/gpu/drm/i915/display/intel_dvo.c           |  6 +--
- drivers/gpu/drm/i915/display/intel_hdmi.c          |  6 +--
- drivers/gpu/drm/i915/display/intel_lvds.c          |  4 +-
- drivers/gpu/drm/i915/display/intel_sdvo.c          |  6 +--
- drivers/gpu/drm/i915/display/intel_tv.c            |  4 +-
- drivers/gpu/drm/i915/display/vlv_dsi.c             |  5 ++-
- drivers/gpu/drm/imx/dw_hdmi-imx.c                  |  4 +-
- drivers/gpu/drm/imx/imx-ldb.c                      |  4 +-
- drivers/gpu/drm/imx/imx-tve.c                      |  4 +-
- drivers/gpu/drm/imx/parallel-display.c             |  4 +-
- drivers/gpu/drm/ingenic/ingenic-drm.c              |  5 ++-
- drivers/gpu/drm/mediatek/mtk_dpi.c                 |  5 ++-
- drivers/gpu/drm/mediatek/mtk_dsi.c                 |  4 +-
- drivers/gpu/drm/meson/meson_dw_hdmi.c              |  5 ++-
- drivers/gpu/drm/meson/meson_venc_cvbs.c            |  5 ++-
- drivers/gpu/drm/mgag200/mgag200_mode.c             |  7 +---
- drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c        |  4 +-
- drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c   |  4 +-
- drivers/gpu/drm/msm/disp/mdp4/mdp4_dtv_encoder.c   |  4 +-
- drivers/gpu/drm/msm/disp/mdp4/mdp4_lcdc_encoder.c  |  4 +-
- drivers/gpu/drm/msm/disp/mdp5/mdp5_encoder.c       |  3 +-
- drivers/gpu/drm/nouveau/dispnv04/dac.c             |  4 +-
- drivers/gpu/drm/nouveau/dispnv04/dfp.c             |  3 +-
- drivers/gpu/drm/nouveau/dispnv04/tvnv04.c          |  4 +-
- drivers/gpu/drm/nouveau/dispnv04/tvnv17.c          |  4 +-
- drivers/gpu/drm/nouveau/dispnv50/disp.c            | 16 +++----
- drivers/gpu/drm/omapdrm/omap_encoder.c             |  4 +-
- drivers/gpu/drm/qxl/qxl_display.c                  |  7 +---
- drivers/gpu/drm/radeon/atombios_encoders.c         | 40 +++++++++---------
- drivers/gpu/drm/radeon/radeon_dp_mst.c             |  4 +-
- drivers/gpu/drm/radeon/radeon_legacy_encoders.c    | 20 ++++-----
- drivers/gpu/drm/rcar-du/rcar_du_encoder.c          |  4 +-
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    |  5 ++-
- drivers/gpu/drm/rockchip/cdn-dp-core.c             |  4 +-
- drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c    |  5 ++-
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c        |  4 +-
- drivers/gpu/drm/rockchip/inno_hdmi.c               |  4 +-
- drivers/gpu/drm/rockchip/rk3066_hdmi.c             |  4 +-
- drivers/gpu/drm/rockchip/rockchip_lvds.c           |  5 ++-
- drivers/gpu/drm/rockchip/rockchip_rgb.c            |  5 ++-
- drivers/gpu/drm/shmobile/shmob_drm_crtc.c          |  4 +-
- drivers/gpu/drm/sti/sti_tvout.c                    | 16 +++----
- drivers/gpu/drm/stm/ltdc.c                         |  4 +-
- drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c             | 10 ++---
- drivers/gpu/drm/sun4i/sun4i_lvds.c                 | 10 ++---
- drivers/gpu/drm/sun4i/sun4i_rgb.c                  | 10 ++---
- drivers/gpu/drm/sun4i/sun4i_tv.c                   | 10 ++---
- drivers/gpu/drm/sun4i/sun6i_mipi_dsi.c             | 10 ++---
- drivers/gpu/drm/sun4i/sun8i_dw_hdmi.c              |  4 +-
- drivers/gpu/drm/tegra/dsi.c                        |  6 +--
- drivers/gpu/drm/tegra/hdmi.c                       |  5 ++-
- drivers/gpu/drm/tegra/rgb.c                        |  4 +-
- drivers/gpu/drm/tegra/sor.c                        |  4 +-
- drivers/gpu/drm/tidss/tidss_encoder.c              |  4 +-
- drivers/gpu/drm/tilcdc/tilcdc_external.c           |  8 ++--
- drivers/gpu/drm/tilcdc/tilcdc_panel.c              |  4 +-
- drivers/gpu/drm/vboxvideo/vbox_mode.c              |  4 +-
- drivers/gpu/drm/vc4/vc4_dpi.c                      |  4 +-
- drivers/gpu/drm/vc4/vc4_dsi.c                      |  4 +-
- drivers/gpu/drm/vc4/vc4_hdmi.c                     |  4 +-
- drivers/gpu/drm/vc4/vc4_vec.c                      |  4 +-
- drivers/gpu/drm/virtio/virtgpu_display.c           |  4 +-
- drivers/gpu/drm/vkms/vkms_output.c                 |  4 +-
- drivers/gpu/drm/vmwgfx/vmwgfx_ldu.c                |  4 +-
- drivers/gpu/drm/vmwgfx/vmwgfx_scrn.c               |  5 ++-
- drivers/gpu/drm/vmwgfx/vmwgfx_stdu.c               |  4 +-
- drivers/gpu/drm/zte/zx_hdmi.c                      |  4 +-
- drivers/gpu/drm/zte/zx_tvenc.c                     |  4 +-
- drivers/gpu/drm/zte/zx_vga.c                       |  4 +-
- include/drm/drm_encoder.h                          |  9 ++--
- include/drm/drm_simple_kms_helper.h                |  4 --
- 109 files changed, 394 insertions(+), 395 deletions(-)
-
+diff --git a/drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c b/drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c
+index a845d587c315..96e0d85748d2 100644
+--- a/drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c
++++ b/drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c
+@@ -22,10 +22,6 @@ struct atmel_hlcdc_rgb_output {
+ 	int bus_fmt;
+ };
+ 
+-static const struct drm_encoder_funcs atmel_hlcdc_panel_encoder_funcs = {
+-	.destroy = drm_encoder_cleanup,
+-};
+-
+ static struct atmel_hlcdc_rgb_output *
+ atmel_hlcdc_encoder_to_rgb_output(struct drm_encoder *encoder)
+ {
+@@ -98,9 +94,7 @@ static int atmel_hlcdc_attach_endpoint(struct drm_device *dev, int endpoint)
+ 		return -EINVAL;
+ 	}
+ 
+-	ret = drm_encoder_init_funcs(dev, &output->encoder,
+-				     &atmel_hlcdc_panel_encoder_funcs,
+-				     DRM_MODE_ENCODER_NONE, NULL);
++	ret = drm_encoder_init(dev, &output->encoder, DRM_MODE_ENCODER_NONE);
+ 	if (ret)
+ 		return ret;
+ 
+-- 
+2.20.1
 
 
 _______________________________________________
