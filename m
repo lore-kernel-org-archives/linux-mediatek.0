@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D745C10DCE
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Mar 2020 18:45:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E1086C10F29
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Mar 2020 18:48:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4D45120575
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Mar 2020 18:45:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B0BF620575
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Mar 2020 18:48:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KTxwbW2V";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ik8+vL2l"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4D45120575
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DAEoR/5Y";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="YuD16aQP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B0BF620575
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,57 +27,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n49+nkstpmG6eRREWESMRIGz4PKUKqKbGnxD4HuuZF0=; b=KTxwbW2Vpd9+d4
-	TwxEjRv1S+iTKHksPXBX+hiWd75eBgW3Unihm0hju1cqsYmvyBlYP3w6QOfwO8Ggf6pU9U2oVy748
-	667EZJ7vjuU8VI6MTCvq8bM0kL59Y97FVUgHY7UQJ/MAmSmYKZXj0GitAsWqvlAxIB96byRjvhgGW
-	ApfYLMZC6xXk+xsrf+NCLGOG+GV7c5chorF99m7PFqViH94LmUtentpP+RuygRI4GbLQ2TRifAlIu
-	ems8mjJPp/vVUqo869g0/QIYKVJfKg7jvfZcjn6cBzQa8nq/LCHqAHIwLdhzIFySfpoTB8YbsCI0m
-	nMjpPXpqTAILjgI8fAWQ==;
+	List-Owner; bh=zCS0ylNj6egbAMaarn0hbMwin8tX7th0GAFxYtURiD8=; b=DAEoR/5Yi8ZmSf
+	W9ejxTQ2HPEcQAGMRF1dPgrC75QAuBKGFCWENse0BiOD2qIlruqbaRdBVwVx2WtjtVbqce3bIa6Am
+	yzYsJFQB7j/0kUrzJqqGHQ8tW8CZkyO+1GOGQnFEr1dLegiWdT9V338ebHkVHdq5bv5HkuLttWjcY
+	aKMRRD3L+S7/nRKzOI4IBv2r8R8p3YNvZ6mCyI2wPOtKnPVqHecDTCIfqNSGojpA+wT/wj8vsfFle
+	EUzWbSs1q1RuDKfJaLPx2kkPBAz81XNXTAgpQmEYTUdR2/qTWO/5p/SrBYkxNV0MfUcaJ/ufrxG4i
+	GDcj8Amv7wixMhROwp/g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jDYG3-0000Ht-1i; Sun, 15 Mar 2020 18:45:07 +0000
-Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544])
+	id 1jDYJ1-0000ng-ON; Sun, 15 Mar 2020 18:48:11 +0000
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jDYFz-0007sK-Lo
- for linux-mediatek@lists.infradead.org; Sun, 15 Mar 2020 18:45:04 +0000
-Received: by mail-ed1-x544.google.com with SMTP id d1so6093902edu.6
- for <linux-mediatek@lists.infradead.org>; Sun, 15 Mar 2020 11:45:01 -0700 (PDT)
+ id 1jDYIz-0000nH-8y; Sun, 15 Mar 2020 18:48:10 +0000
+Received: by mail-ed1-x542.google.com with SMTP id b23so19237035edx.4;
+ Sun, 15 Mar 2020 11:48:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=DV5BEbM3rTUALdhJ9An58mS3H5uNq7pBXvvBUltUgJ4=;
- b=ik8+vL2lKLCHqZgPWvDo/gQDeLyaKgbJISwD+bPXyAJ8IG3wg2k4bv7aDxNA8ZToxi
- XTKR73z035lglyqnsBe2NaHjQKRbDg8ZX9B/H0ixYctRaSIhNv0auz9Z6ofyiMgpl9Ee
- g/DAdxhjoYBJ5fq1ldopR/2oDPsFvKnM0cN+hJfL/abaXJG0I5k6oTcq03EXQhCnJzwC
- crrDk4508XyQlVn+0ETTRc3QR+WfvIT0ytnKLeSoibj4jTQExcXcLs/6qkTJDXgC33ph
- Hxe7hNFyzh0YeZ8+zUtN9/KlXO/tZy/UKf3imoRle0/p3dx8BdmJUHZggvu5KDTywK1X
- yNqA==
+ bh=G6L4EvN7lm7DYZ/YO34UEbURBIXNGU7BBcJMyT2iJ0g=;
+ b=YuD16aQPHLcB1g+JHpV2HSofbb0M4T2Gh2VdChud9ij53FcV9Wr6UhX/YqP3+CKuRa
+ Ya8fF300zL6ZJ91tN7l7sGP+UD5Ta6rIoyAHuY1YJyjeFB0sHJswwOyuwIFto9Op8XC1
+ ppzXJZ+pcUQpNHfgGMSLxx/kbtCVZf6oTDUYXQwSQUQz1MwZBQea5SbR26NYVllr7CFH
+ 43j7rIrjLm7zpf7EwZqrUAyJrWnWP+M3aqnZcUw1LyYH2W/VxNjgLwpE7aQgTIR+mtpR
+ rVZOZ/4ZCA63bfxFpvd1HuXnBIYIe2nKKtyJHswyVstmKpwZF9RZyzXJD84C+kVONgGL
+ j8xw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=DV5BEbM3rTUALdhJ9An58mS3H5uNq7pBXvvBUltUgJ4=;
- b=cFAIm3SawLYCdBl4l1yY3qW2qqhweXF1Vaa1rjIBUUC2PemW0/R5jYmMCv7NNHyutC
- NtHVmL2mmthIZF/nmMPFip+CzPOs5dEuiwrbvMbqiXt9YiL81dF4W98v53gNVeIElqDL
- g2dqnHA/TXCGz+4vAmXQCuwr9EcGfgxaChp9gu2N0P1ZO1vzKHftTTNNeVug5zi08h67
- bLvVG6kNTdYd9C8od/pm6PYNlSdhWwDuO7x4n8Vgvp8P7yINw4paeDTvXUhRagpFS36S
- l/emH4KVgGUANxhZ+w+IUfAVcnmh6L3M5D3HaNdO+yvasUlyEwmtP2zsxBYZt3A6cQRq
- LLzQ==
-X-Gm-Message-State: ANhLgQ0GcBqTIx6jj1CFqMoDWOvD7+nIgzxbYGXPU6N9Mj9DsCmw3m2C
- WrLcc+e0YQbpy+JFHj9ecGg=
-X-Google-Smtp-Source: ADFU+vsg+qu8jwpCx27SdoqzOEnc8R8j34mccTm3qWECMbyHeaJjqKmQRvF/RW7FJHOn7idAJ5WwsA==
-X-Received: by 2002:a17:906:16c2:: with SMTP id
- t2mr19714431ejd.256.1584297900418; 
- Sun, 15 Mar 2020 11:45:00 -0700 (PDT)
+ bh=G6L4EvN7lm7DYZ/YO34UEbURBIXNGU7BBcJMyT2iJ0g=;
+ b=KW5v4ut42cPuN2EpnIcB3Xn3RUYvcYSaLkVXnNeDI4xuhwXv5meuPOf//uvwCP35lq
+ 3Gd1aS1JJnPjiWx34eH/OkHeY2XvmQ+EaMfboJe5tz6GbGAqM022xx7PnAn/6/ywo521
+ aYSLS8CEexph58OMCQj7B9TjwLfm1SxW78DNOE1grwK38VGVMEiLWQmQJ82v/uCWyUnK
+ PgA+9wmARmZ/TxVZBxqjc5uiO/kIsV1kvwLdviGUVLpJ/y3D6zPQ3h2IWJQBgMfpjgZu
+ svTGSjJ5Y7LQ69fUHNMD0FezKebAMCgzGTnBksj0JnCsJbWNMXXl8YUy9soMAgUs+g80
+ lQZQ==
+X-Gm-Message-State: ANhLgQ2d+PBcAtVd/epIzJXElF3wosAzjgVHE2WWbZ91Irw9AhDE/ggh
+ l+XdW1HvREZx4Vd1Nz0GULE=
+X-Google-Smtp-Source: ADFU+vtP1YosyF+LTRKbGIgs5rzng+w8/ziq3PBGSYmK6s5kGkMdiiXqFsDXjGa49UWRRbqC6Di8qQ==
+X-Received: by 2002:a50:ce01:: with SMTP id y1mr4442030edi.47.1584298087756;
+ Sun, 15 Mar 2020 11:48:07 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.113.243])
- by smtp.gmail.com with ESMTPSA id s12sm340920ejm.73.2020.03.15.11.44.59
+ by smtp.gmail.com with ESMTPSA id l9sm1661803edt.93.2020.03.15.11.48.05
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 15 Mar 2020 11:44:59 -0700 (PDT)
-Subject: Re: [PATCH 1/1] dt-bindings: cpu: Add a support cpu type for
- cortex-a75
-To: Hanks Chen <hanks.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>
-References: <1584284885-20836-1-git-send-email-hanks.chen@mediatek.com>
+ Sun, 15 Mar 2020 11:48:07 -0700 (PDT)
+Subject: Re: [PATCH v3 3/4] arm64: dts: add RTC nodes for MT2712
+To: Ran Bi <ran.bi@mediatek.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Rob Herring <robh+dt@kernel.org>
+References: <20200226051303.22560-1-ran.bi@mediatek.com>
+ <20200226051303.22560-4-ran.bi@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
 Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -153,16 +153,16 @@ Autocrypt: addr=matthias.bgg@gmail.com; prefer-encrypt=mutual; keydata=
  jzi+DzD9cvj2K6eD5j5kcKJJQactXqfJvF1Eb+OnxlB1BCLE8D1rNkPO5O742Mq3MgDmq19l
  +abzEL6QDAAxn9md8KwrA3RtucNh87cHlDXfUBKa7SRvBjTczDg+HEPNk2u3hrz1j3l2rliQ
  y1UfYx7Vk/TrdwUIJgKS8QAr8Lw9WuvY2hSqL9vEjx8VAkPWNWPwrQ==
-Message-ID: <f1b8239a-a68f-bd50-585e-26109850a1fc@gmail.com>
-Date: Sun, 15 Mar 2020 19:44:58 +0100
+Message-ID: <af1a3c83-62e4-0ead-c942-786489bf3d56@gmail.com>
+Date: Sun, 15 Mar 2020 19:48:04 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <1584284885-20836-1-git-send-email-hanks.chen@mediatek.com>
+In-Reply-To: <20200226051303.22560-4-ran.bi@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200315_114503_743480_7BD82978 
-X-CRM114-Status: GOOD (  15.37  )
+X-CRM114-CacheID: sfid-20200315_114809_318276_D63728B6 
+X-CRM114-Status: GOOD (  17.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -174,43 +174,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Alessandro Zummo <a.zummo@towertech.it>, Flora Fu <flora.fu@mediatek.com>,
+ srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@mediatek.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Yingjoe Chen <yingjoe.chen@mediatek.com>,
+ Eddie Huang <eddie.huang@mediatek.com>,
+ "David S . Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org,
+ linux-rtc@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thanks for your patch.
 
-On 15/03/2020 16:08, Hanks Chen wrote:
-> [Detail]
 
-This line is not needed.
-
-> Add arm cpu type cortex-a75.
+On 26/02/2020 06:13, Ran Bi wrote:
+> This patch add device node for MT2712 RTC.
 > 
-> Change-Id: I2b05948915acfa6a04a0b8fa88684a12b6d5c2ca
+> Signed-off-by: Ran Bi <ran.bi@mediatek.com>
 
-No Change-Id in upstream kernel patches please.
+Applied to v5.6-next/dts64
 
-> Signed-off-by: Hanks Chen <hanks.chen@mediatek.com>
+Thanks!
+
 > ---
->  Documentation/devicetree/bindings/arm/cpus.yaml |    1 +
->  1 file changed, 1 insertion(+)
+>  arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 6 ++++++
+>  1 file changed, 6 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/cpus.yaml b/Documentation/devicetree/bindings/arm/cpus.yaml
-> index c23c24f..51b75f7 100644
-> --- a/Documentation/devicetree/bindings/arm/cpus.yaml
-> +++ b/Documentation/devicetree/bindings/arm/cpus.yaml
-> @@ -128,6 +128,7 @@ properties:
->        - arm,cortex-a57
->        - arm,cortex-a72
->        - arm,cortex-a73
-> +      - arm,cortex-a75
->        - arm,cortex-m0
->        - arm,cortex-m0+
->        - arm,cortex-m1
+> diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> index 43307bad3f0d..31166c17c39a 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> @@ -303,6 +303,12 @@ uart5: serial@1000f000 {
+>  		status = "disabled";
+>  	};
+>  
+> +	rtc: rtc@10011000 {
+> +		compatible = "mediatek,mt2712-rtc";
+> +		reg = <0 0x10011000 0 0x1000>;
+> +		interrupts = <GIC_SPI 239 IRQ_TYPE_LEVEL_LOW>;
+> +	};
+> +
+>  	spis1: spi@10013000 {
+>  		compatible = "mediatek,mt2712-spi-slave";
+>  		reg = <0 0x10013000 0 0x100>;
 > 
 
 _______________________________________________
