@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C27C5C18E5B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2020 03:53:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C91DC0044D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2020 03:54:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 840D520663
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2020 03:53:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D231820658
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2020 03:54:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GFisM4fW";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="nlpuXPN7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 840D520663
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YH9UohCC";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="VLEej7vn"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D231820658
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JizF75xL06KeK5asPwt6Zoxm64ftPzb9wvrhg+n3bj8=; b=GFisM4fWgyUzjo
-	mg/SDp9g+K75YZV0RDd9q8yypDUt3Jc0HgO8M+fNCULj60fW4CmQKhEcKbLJaqOyCnICRsDwqSvXS
-	m+RJSbhNDDJFXYAxjbmQpxUa/WTreaF/O3h1Wg9jczASsGfogqLT7pogA7RAzrp3zvNbmiLh5m+oW
-	1VcTrTFFhZz0Ve1byclMRwbaj5KUUjXoZ3t68As6mhqfXH6cIMvOpb1Wbh089yzTcDZxlMfSeLJWT
-	Jfb1He1cnwdH/xU8hFMK15aqAVcIwYeHcHgCLYkeD3ZFSwQNzkd7qcslYVlrgHWUozpCQd5tsL9+W
-	kyG1pVkRlnB57ormK8/g==;
+	List-Owner; bh=D2LMAaZmCjY0cZ8pcgs26C3Oykhcr8ZayUMJ0MLe8ag=; b=YH9UohCCi/q7De
+	2F7OzpBDpc+t75wyMi3rTfsOMOjAZtZbo3xwfkJxAh++W3qpwas2LxvaoNHCy9rM/C/u6UAwLBf6q
+	yoERPLOa+fsw3cPlxHmte7aq8L5wutGOgFmWtZS+2DHXNloIZ3IHGrdKasqSPAzGg83NhZaUA3ehR
+	Eaiw75jdCcFvpAaXWVqaIqh4Dd+17zA0uj3+RAelJc0EJskvdCwod6ayAirXxCiyo2uxuqPOkVTxl
+	WFT7enlPHPVyNUeDVXz9ENtMIG+f/BoxApHxLFFwf18/KFshExsF+1t9wWW5rmNtKf9++QDOqswBJ
+	rNBwLP2owEdJtkcDvU+g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jDgom-0007Ob-4U; Mon, 16 Mar 2020 03:53:32 +0000
+	id 1jDgpH-0007wi-GU; Mon, 16 Mar 2020 03:54:03 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jDgnj-0006DS-At; Mon, 16 Mar 2020 03:52:29 +0000
-X-UUID: 3c551a07256542d0aefec57db0da85e4-20200315
+ id 1jDgnl-0006DX-GM; Mon, 16 Mar 2020 03:52:31 +0000
+X-UUID: 316c0921202545188a25699ef032a2e9-20200315
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=7YpwD2GG32xhcNkZears5WlJqU2pNhGBUQ+n78Lc3nw=; 
- b=nlpuXPN7dly/LYxojhCWJlS1DimwRsV5FAG/PhtwdOavf87hSYy7cN3W4VMszo3vwhRTwfc7RkYEK3+ICnrCJ2odF07m5Kx1KZPtBR8TqDszDd+r3Um7fR0HB40T6EslvmuenenMbng2g38jDdzKNh8jt2UWAYHY6HGfTP4CQ1s=;
-X-UUID: 3c551a07256542d0aefec57db0da85e4-20200315
+ bh=comnSPzFToao8NwdqlqhLeyaZnCDbqkqIJ5WKJCYFU0=; 
+ b=VLEej7vnKCKKfWHm3V1ElQN64LaZkfbXUJAh3aHPkELmtdosOdfyHJS8xV+Bihj7xsuUNKFhzhJh+lLJfdMg3+kya6DW4mQuBSY372qp6WhvM8iZqB2lxTYxBmR5ZEF67umVhCBLm2cXEUpK9+ipXEDKsGmkiMEGcD0cSHL0rCI=;
+X-UUID: 316c0921202545188a25699ef032a2e9-20200315
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2031124511; Sun, 15 Mar 2020 19:52:24 -0800
+ with ESMTP id 1277610799; Sun, 15 Mar 2020 19:52:24 -0800
 Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 15 Mar 2020 20:43:08 -0700
+ 15.0.1395.4; Sun, 15 Mar 2020 20:43:06 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 16 Mar 2020 11:40:05 +0800
+ 15.0.1395.4; Mon, 16 Mar 2020 11:40:04 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Mon, 16 Mar 2020 11:39:23 +0800
+ Frontend Transport; Mon, 16 Mar 2020 11:39:22 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.peter~sen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v5 7/8] scsi: ufs: make HCE polling more compact to improve
- initialization latency
-Date: Mon, 16 Mar 2020 11:42:17 +0800
-Message-ID: <20200316034218.11914-8-stanley.chu@mediatek.com>
+Subject: [PATCH v5 3/8] scsi: ufs: use an enum for host capabilities
+Date: Mon, 16 Mar 2020 11:42:13 +0800
+Message-ID: <20200316034218.11914-4-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200316034218.11914-1-stanley.chu@mediatek.com>
 References: <20200316034218.11914-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200315_205227_377024_52D3A910 
-X-CRM114-Status: UNSURE (   8.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200315_205229_594320_A1D67EA5 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,41 +94,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reduce the waiting period between each HCE (Host Controller Enable)
-polling from 5 ms to 1 ms. In the same time, increase the maximum polling
-times to make "total polling time" unchanged approximately.
-
-This change could make HCE initializatoin faster to improve latency of
-ufshcd initialization, error recovery, and resume behaviors.
+Use an enum to specify the host capabilities instead of #defines inside the
+structure definition.
 
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Asutosh Das <asutoshd@codeaurora.org>
 Reviewed-by: Avri Altman <avri.altman@wdc.com>
+Reviewed-by: Can Guo <cang@codeaurora.org>
 ---
- drivers/scsi/ufs/ufshcd.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/scsi/ufs/ufshcd.h | 65 ++++++++++++++++++++++-----------------
+ 1 file changed, 37 insertions(+), 28 deletions(-)
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index dcbf45d547d8..cd33d07c56cf 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -4301,7 +4301,7 @@ int ufshcd_hba_enable(struct ufs_hba *hba)
- 	ufshcd_wait_us(hba->hba_enable_delay_us, 100, true);
+diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+index 5cf79d2319a6..fec004cd8054 100644
+--- a/drivers/scsi/ufs/ufshcd.h
++++ b/drivers/scsi/ufs/ufshcd.h
+@@ -501,6 +501,43 @@ enum ufshcd_quirks {
+ 	UFSHCD_QUIRK_BROKEN_UFS_HCI_VERSION		= 1 << 5,
+ };
  
- 	/* wait for the host controller to complete initialization */
--	retry = 10;
-+	retry = 50;
- 	while (ufshcd_is_hba_active(hba)) {
- 		if (retry) {
- 			retry--;
-@@ -4310,7 +4310,7 @@ int ufshcd_hba_enable(struct ufs_hba *hba)
- 				"Controller enable failed\n");
- 			return -EIO;
- 		}
--		ufshcd_wait_us(5000, 100, true);
-+		ufshcd_wait_us(1000, 100, true);
- 	}
++enum ufshcd_caps {
++	/* Allow dynamic clk gating */
++	UFSHCD_CAP_CLK_GATING				= 1 << 0,
++
++	/* Allow hiberb8 with clk gating */
++	UFSHCD_CAP_HIBERN8_WITH_CLK_GATING		= 1 << 1,
++
++	/* Allow dynamic clk scaling */
++	UFSHCD_CAP_CLK_SCALING				= 1 << 2,
++
++	/* Allow auto bkops to enabled during runtime suspend */
++	UFSHCD_CAP_AUTO_BKOPS_SUSPEND			= 1 << 3,
++
++	/*
++	 * This capability allows host controller driver to use the UFS HCI's
++	 * interrupt aggregation capability.
++	 * CAUTION: Enabling this might reduce overall UFS throughput.
++	 */
++	UFSHCD_CAP_INTR_AGGR				= 1 << 4,
++
++	/*
++	 * This capability allows the device auto-bkops to be always enabled
++	 * except during suspend (both runtime and suspend).
++	 * Enabling this capability means that device will always be allowed
++	 * to do background operation when it's active but it might degrade
++	 * the performance of ongoing read/write operations.
++	 */
++	UFSHCD_CAP_KEEP_AUTO_BKOPS_ENABLED_EXCEPT_SUSPEND = 1 << 5,
++
++	/*
++	 * This capability allows host controller driver to automatically
++	 * enable runtime power management by itself instead of waiting
++	 * for userspace to control the power management.
++	 */
++	UFSHCD_CAP_RPM_AUTOSUSPEND			= 1 << 6,
++};
++
+ /**
+  * struct ufs_hba - per adapter private structure
+  * @mmio_base: UFSHCI base register address
+@@ -653,34 +690,6 @@ struct ufs_hba {
+ 	struct ufs_clk_gating clk_gating;
+ 	/* Control to enable/disable host capabilities */
+ 	u32 caps;
+-	/* Allow dynamic clk gating */
+-#define UFSHCD_CAP_CLK_GATING	(1 << 0)
+-	/* Allow hiberb8 with clk gating */
+-#define UFSHCD_CAP_HIBERN8_WITH_CLK_GATING (1 << 1)
+-	/* Allow dynamic clk scaling */
+-#define UFSHCD_CAP_CLK_SCALING	(1 << 2)
+-	/* Allow auto bkops to enabled during runtime suspend */
+-#define UFSHCD_CAP_AUTO_BKOPS_SUSPEND (1 << 3)
+-	/*
+-	 * This capability allows host controller driver to use the UFS HCI's
+-	 * interrupt aggregation capability.
+-	 * CAUTION: Enabling this might reduce overall UFS throughput.
+-	 */
+-#define UFSHCD_CAP_INTR_AGGR (1 << 4)
+-	/*
+-	 * This capability allows the device auto-bkops to be always enabled
+-	 * except during suspend (both runtime and suspend).
+-	 * Enabling this capability means that device will always be allowed
+-	 * to do background operation when it's active but it might degrade
+-	 * the performance of ongoing read/write operations.
+-	 */
+-#define UFSHCD_CAP_KEEP_AUTO_BKOPS_ENABLED_EXCEPT_SUSPEND (1 << 5)
+-	/*
+-	 * This capability allows host controller driver to automatically
+-	 * enable runtime power management by itself instead of waiting
+-	 * for userspace to control the power management.
+-	 */
+-#define UFSHCD_CAP_RPM_AUTOSUSPEND (1 << 6)
  
- 	/* enable UIC related interrupts */
+ 	struct devfreq *devfreq;
+ 	struct ufs_clk_scaling clk_scaling;
 -- 
 2.18.0
 _______________________________________________
