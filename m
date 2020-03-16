@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BE2A7C18E5B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2020 08:54:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0491DC18E5B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2020 08:54:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8F563206B1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2020 08:54:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CD73F20663
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2020 08:54:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CT6Ucbg1";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GG06d5W7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8F563206B1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qs9ERisS";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="pMQsVMxd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD73F20663
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2Dh1qB5v06qkB7rUVqjEY1yx2fXe/PvGPJh6EHEtwOA=; b=CT6Ucbg175Rn37
-	m6FWnCJPoahl/9P0e7DURMlj7NNBJmKZ4JiVpUCotknwm8na+PRUnvuCygpgTODFLCGjzUZgF/o5O
-	E0K3AkNx9VZFNocJNA+7IEoUyeDpJTAcSD47QMEf9C9Jk+fQkO30EriingF9Itf16HRCgOFD4scx+
-	viLQnpCZmVv6DRsAOvuI4od4Xdu4+xXMCDm+EQIMssxoBWzzfjW2okvkSY6yLAgFpFJCcn9vVRfHw
-	BTgff4QIGsZz2xrVBum0kib9PQzC+OUDYNjisAMZn3j4jo68m8AMHB3TqJgzZsxgFKWjr1p3IVF+k
-	EIeCC4ryKP2nNS+JzNYw==;
+	List-Owner; bh=fAtYM8Y6aLBKhJaCfLQZ6bZXteHMvK3lpzpDiebKfcg=; b=qs9ERisSDlfcXx
+	fJtjS5bQyDhedC7Ucg2phno7AivzE3Fq89Q51W7Mqfw0sjeVqDIlt0G2oxd4HRQqN/SONgdhwvb/Y
+	SJeyi0ktBEa6sTya3yAIfsgxCAeEAiXQ6YwdgEOaqHER2WuJJ+tEqJebq5URy4aMIHFbgmBi6lk5q
+	CLuDHzmCL+cj9JjiV02UNlRSUtHxJEGkZ2/RSIdquQ8knal2zE89jVarXQZX04TP37ob+gGZdsmyn
+	FRWgsWTJ5kMZWfKvubQSgwmCe4fdJUyft6jDn5G2E+1/+n2sE1/FVZkg/ye2IYEJxs2aoZm72BIxi
+	zLVbQ2tJdoqkhLOuUSig==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jDlVc-0001hU-EG; Mon, 16 Mar 2020 08:54:04 +0000
+	id 1jDlW0-0002CD-PW; Mon, 16 Mar 2020 08:54:28 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jDlUn-0000Z2-CR; Mon, 16 Mar 2020 08:53:14 +0000
-X-UUID: 038587f29af9438b8fe7c894e1b17690-20200316
+ id 1jDlUn-0000Z3-CQ; Mon, 16 Mar 2020 08:53:14 +0000
+X-UUID: 38246ca2115e43e88b5ca7636f97f59c-20200316
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=X+DFchOZe2OpAsUM0+Gq6vu0pCSrT1gOAXXOi+6KyiQ=; 
- b=GG06d5W7kP/DOOu4Q1Ayy8OQzNsHunR+rMRV1ho4QSFGnA+a6ST3bhtNOfyGqgVzEYBuDEJPjSXuH+lVMdCT2pB/IhMRD/pQjGKkOoZtVdnMuXKbEE0+wva1lGO2XfdqgnlfYXmIPBqJTPWfactgSdu5pcf/5senNBMSwWHR8JU=;
-X-UUID: 038587f29af9438b8fe7c894e1b17690-20200316
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=dj5KB99V4jIFByooAmxz5JbekKkRboIPOi1U6PTrprM=; 
+ b=pMQsVMxdxXBoSGgsGifUgiyLVMSQJ5LXrM39gnvn0HNOwMd/53nGKIr7UZOWOH1iYrcjRskzssFerNy/IdI3Asebtqoof2wgGgXeZ1WAz/h4oZRNWKWsPYJ2Z0C4IbYb5g9UXShLW4F8rVgrr0xAXAOqLINoXEnls15Fqv5h3lY=;
+X-UUID: 38246ca2115e43e88b5ca7636f97f59c-20200316
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1606447681; Mon, 16 Mar 2020 00:53:07 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 16 Mar 2020 01:53:24 -0700
+ with ESMTP id 1527482196; Mon, 16 Mar 2020 00:53:09 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 16 Mar 2020 01:53:07 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 16 Mar 2020 16:50:50 +0800
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 16 Mar 2020 16:52:30 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
  Frontend Transport; Mon, 16 Mar 2020 16:53:53 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.peter~sen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v6 6/7] scsi: ufs: make HCE polling more compact to improve
- initialization latency
-Date: Mon, 16 Mar 2020 16:53:02 +0800
-Message-ID: <20200316085303.20350-7-stanley.chu@mediatek.com>
+Subject: [PATCH v6 7/7] scsi: ufs-mediatek: customize the delay for host
+ enabling
+Date: Mon, 16 Mar 2020 16:53:03 +0800
+Message-ID: <20200316085303.20350-8-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200316085303.20350-1-stanley.chu@mediatek.com>
 References: <20200316085303.20350-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 229F34FA95F0E0E18D30ACB4FEF427FDA1533AD8857E28584637E9A378D5A12D2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200316_015313_434379_06101EEF 
-X-CRM114-Status: UNSURE (   8.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200316_015313_434829_26DAEBE2 
+X-CRM114-Status: GOOD (  13.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,42 +96,127 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reduce the waiting period between each HCE (Host Controller Enable)
-polling from 5 ms to 1 ms. In the same time, increase the maximum polling
-times to make "total polling time" unchanged approximately.
+MediaTek platform and UFS controller can dynamically customize
+the delay for host enabling according to different scenarios.
 
-This change could make HCE initializatoin faster to improve latency of
-ufshcd initialization, error recovery, and resume behaviors.
+For example, if UniPro enters lower-power mode, such delay can
+be minimized, otherwise longer delay shall be expected.
 
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 Reviewed-by: Avri Altman <avri.altman@wdc.com>
-Reviewed-by: Can Guo <cang@codeaurora.org>
 ---
- drivers/scsi/ufs/ufshcd.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/scsi/ufs/ufs-mediatek.c | 43 ++++++++++++++++++++++++++-------
+ drivers/scsi/ufs/ufs-mediatek.h |  1 +
+ 2 files changed, 35 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 78b6ac6fcc4e..c06a15df2f40 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -4301,7 +4301,7 @@ int ufshcd_hba_enable(struct ufs_hba *hba)
- 	ufshcd_wait_us(hba->hba_enable_delay_us, 100, true);
+diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+index 0ff6781654fd..c0fd7d2e4d0d 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.c
++++ b/drivers/scsi/ufs/ufs-mediatek.c
+@@ -30,11 +30,6 @@
+ #define ufs_mtk_device_reset_ctrl(high, res) \
+ 	ufs_mtk_smc(UFS_MTK_SIP_DEVICE_RESET, high, res)
  
- 	/* wait for the host controller to complete initialization */
--	retry = 10;
-+	retry = 50;
- 	while (ufshcd_is_hba_active(hba)) {
- 		if (retry) {
- 			retry--;
-@@ -4310,7 +4310,7 @@ int ufshcd_hba_enable(struct ufs_hba *hba)
- 				"Controller enable failed\n");
- 			return -EIO;
- 		}
--		ufshcd_wait_us(5000, 100, true);
-+		ufshcd_wait_us(1000, 100, true);
+-#define ufs_mtk_unipro_powerdown(hba, powerdown) \
+-	ufshcd_dme_set(hba, \
+-		       UIC_ARG_MIB_SEL(VS_UNIPROPOWERDOWNCONTROL, 0), \
+-		       powerdown)
+-
+ static void ufs_mtk_cfg_unipro_cg(struct ufs_hba *hba, bool enable)
+ {
+ 	u32 tmp;
+@@ -71,6 +66,21 @@ static void ufs_mtk_cfg_unipro_cg(struct ufs_hba *hba, bool enable)
+ 	}
+ }
+ 
++static int ufs_mtk_hce_enable_notify(struct ufs_hba *hba,
++				     enum ufs_notify_change_status status)
++{
++	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
++
++	if (status == PRE_CHANGE) {
++		if (host->unipro_lpm)
++			hba->hba_enable_delay_us = 0;
++		else
++			hba->hba_enable_delay_us = 600;
++	}
++
++	return 0;
++}
++
+ static int ufs_mtk_bind_mphy(struct ufs_hba *hba)
+ {
+ 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+@@ -324,12 +334,26 @@ static int ufs_mtk_pwr_change_notify(struct ufs_hba *hba,
+ 	return ret;
+ }
+ 
++static int ufs_mtk_unipro_set_pm(struct ufs_hba *hba, u32 lpm)
++{
++	int ret;
++	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
++
++	ret = ufshcd_dme_set(hba,
++			     UIC_ARG_MIB_SEL(VS_UNIPROPOWERDOWNCONTROL, 0),
++			     lpm);
++	if (!ret)
++		host->unipro_lpm = lpm;
++
++	return ret;
++}
++
+ static int ufs_mtk_pre_link(struct ufs_hba *hba)
+ {
+ 	int ret;
+ 	u32 tmp;
+ 
+-	ufs_mtk_unipro_powerdown(hba, 0);
++	ufs_mtk_unipro_set_pm(hba, 0);
+ 
+ 	/*
+ 	 * Setting PA_Local_TX_LCC_Enable to 0 before link startup
+@@ -437,7 +461,7 @@ static int ufs_mtk_link_set_hpm(struct ufs_hba *hba)
+ 	if (err)
+ 		return err;
+ 
+-	err = ufs_mtk_unipro_powerdown(hba, 0);
++	err = ufs_mtk_unipro_set_pm(hba, 0);
+ 	if (err)
+ 		return err;
+ 
+@@ -458,10 +482,10 @@ static int ufs_mtk_link_set_lpm(struct ufs_hba *hba)
+ {
+ 	int err;
+ 
+-	err = ufs_mtk_unipro_powerdown(hba, 1);
++	err = ufs_mtk_unipro_set_pm(hba, 1);
+ 	if (err) {
+ 		/* Resume UniPro state for following error recovery */
+-		ufs_mtk_unipro_powerdown(hba, 0);
++		ufs_mtk_unipro_set_pm(hba, 0);
+ 		return err;
  	}
  
- 	/* enable UIC related interrupts */
+@@ -552,6 +576,7 @@ static struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
+ 	.name                = "mediatek.ufshci",
+ 	.init                = ufs_mtk_init,
+ 	.setup_clocks        = ufs_mtk_setup_clocks,
++	.hce_enable_notify   = ufs_mtk_hce_enable_notify,
+ 	.link_startup_notify = ufs_mtk_link_startup_notify,
+ 	.pwr_change_notify   = ufs_mtk_pwr_change_notify,
+ 	.apply_dev_quirks    = ufs_mtk_apply_dev_quirks,
+diff --git a/drivers/scsi/ufs/ufs-mediatek.h b/drivers/scsi/ufs/ufs-mediatek.h
+index 4c787b99fe41..5bbd3e9cbae2 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.h
++++ b/drivers/scsi/ufs/ufs-mediatek.h
+@@ -91,6 +91,7 @@ enum {
+ struct ufs_mtk_host {
+ 	struct ufs_hba *hba;
+ 	struct phy *mphy;
++	bool unipro_lpm;
+ 	bool ref_clk_enabled;
+ 	u16 ref_clk_ungating_wait_us;
+ 	u16 ref_clk_gating_wait_us;
 -- 
 2.18.0
 _______________________________________________
