@@ -2,76 +2,79 @@ Return-Path: <SRS0=xc+O=5B=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A33AC1975A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2020 03:54:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EB72DC0044D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2020 06:25:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DDDE920658
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2020 03:54:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9A42520575
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2020 06:25:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="k/nOaVod";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Sfoq77Gz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DDDE920658
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HNxQBpBN";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="LBdFzdHL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9A42520575
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j775MRsY79b/bjRitNxHoQ02qvyVdtgibqF7HF+fVUs=; b=k/nOaVodwpjdTP
-	syTRSctaRIukrALtKyM/5nPKHFa7PcSgiXN9jSiXP7JWiH34X1vAACdbENS6xmkWQmyJO9MzMuqPK
-	VBbGiqThpwD9E/Wba5rxuXlwIG3L7T96hBhA8wn1KmK0X78bBHq9FXEKRTB8JWPbA+9DbT6Jhm7SB
-	4XHGi//UhpLSDMNVTsW/kFEPqtDuRwn/E6u3D47eB3DR1klrfPWFUm6FHv7y+h9W69Kf34P0esxee
-	DDh7Rs/zLYPS4uSd02FWCuVbNPwuR0y9cXR1SNNUOVyDiDw28h4HIR1VC/HwLdDdm9LdTMt2d68eJ
-	RqiSv182sB0R/h2MCT+w==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
+	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=iNdQ8miZeVGztYs3jRGVtzqXy/2MIP2kboIznxMPcm0=; b=HNxQBpBNURvHocCopQ2r/JyIu
+	4WHTG1kg0iDy27bT48g281vWrdKywOdUTMU40MqkBXd65z79Bi3ZJMU8comJE7qAdUK8wQU0dHbGj
+	ptf24rxyUvVIYLLIoSsPdRAzWhwlnR5o+IfE+x3JeCyAcOkwClgfiyGZD7YF+kpa9lDyC9b3bLEGk
+	kL9JmJbsA7UV3DdbtV6mwmPe+nSSPdLAzrh+i32R8dV7X3R1T7gHJH0C0ny7yzvCF+5w1VzyhqTO0
+	LnVARbv1+FlODNET+xZee7PWUOlshKXIqeJBcf/wOukniIiKfF5EbunZwFAuwA21n/cFMrJ9OUN7L
+	PpKzGGxWw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jDgpK-0007zQ-0b; Mon, 16 Mar 2020 03:54:06 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jDjC7-0007pQ-7m; Mon, 16 Mar 2020 06:25:47 +0000
+Received: from mail27.static.mailgun.info ([104.130.122.27])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jDgnl-0006DS-Bv; Mon, 16 Mar 2020 03:52:31 +0000
-X-UUID: 6e67b35380d14f9e8a437afadb5c072d-20200315
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=BRn9NnqZ3MzE/akuLUo0HDeyKdjugwz7nkNYDj/5mmw=; 
- b=Sfoq77GzGA90VNjhb7lWXK/iPwbctW/hselRh+FxTUuj8tA6bHsEfsVevuS0Ll/AIaLGASNMOrIWBDHhKudFLFQQkvi1Xm3XQob53QdBpORStKENt7Z6Yv+vAPnhTteq41dddX8+ukUu0kS/dMV8tvwrQOlLz3TehBt95FZf9vA=;
-X-UUID: 6e67b35380d14f9e8a437afadb5c072d-20200315
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1834800290; Sun, 15 Mar 2020 19:52:24 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 15 Mar 2020 20:42:54 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 16 Mar 2020 11:41:03 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Mon, 16 Mar 2020 11:39:23 +0800
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.peter~sen@oracle.com>,
- <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-Subject: [PATCH v5 6/8] scsi: ufs: allow customized delay for host enabling
-Date: Mon, 16 Mar 2020 11:42:16 +0800
-Message-ID: <20200316034218.11914-7-stanley.chu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200316034218.11914-1-stanley.chu@mediatek.com>
-References: <20200316034218.11914-1-stanley.chu@mediatek.com>
+ id 1jDjC1-0007o3-Dt
+ for linux-mediatek@lists.infradead.org; Mon, 16 Mar 2020 06:25:46 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1584339945; h=Message-ID: References: In-Reply-To: Subject:
+ Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
+ MIME-Version: Sender; bh=UyuhZmeVdghEkFGq1LyGqfP9NwpUlzrusHvbYNXKk6I=;
+ b=LBdFzdHLODUgdiLy5tYApAdXjuOttGRYNUHpIcwkRPe3P+aF+We3SRNJV5LR3dqw4fV3UQz4
+ sV0dkulaMvql4JuqhVT319aH/zbw8LaGo8ueVe2LdHQM92JwpPgqvsfp4IcfnddblgywJ8kp
+ BGXCYH44n+wF19HIcmxld5nRM3E=
+X-Mailgun-Sending-Ip: 104.130.122.27
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
+ by mxa.mailgun.org with ESMTP id 5e6f1bdd.7f12f7d531b8-smtp-out-n02;
+ Mon, 16 Mar 2020 06:25:33 -0000 (UTC)
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id DFCA4C44788; Mon, 16 Mar 2020 06:25:32 +0000 (UTC)
+Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
+ (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+ (No client certificate requested) (Authenticated sender: cang)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 83A43C433CB;
+ Mon, 16 Mar 2020 06:25:31 +0000 (UTC)
 MIME-Version: 1.0
-X-MTK: N
+Date: Mon, 16 Mar 2020 14:25:31 +0800
+From: Can Guo <cang@codeaurora.org>
+To: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH v5 2/8] scsi: ufs: remove init_prefetch_data in struct
+ ufs_hba
+In-Reply-To: <20200316034218.11914-3-stanley.chu@mediatek.com>
+References: <20200316034218.11914-1-stanley.chu@mediatek.com>
+ <20200316034218.11914-3-stanley.chu@mediatek.com>
+Message-ID: <51fde835f4f03fcca6e83ba6d3579f2e@codeaurora.org>
+X-Sender: cang@codeaurora.org
+User-Agent: Roundcube Webmail/1.3.9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200315_205229_434727_CC3141C8 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20200315_232545_379219_9CABEA97 
+X-CRM114-Status: GOOD (  15.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,65 +86,117 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Stanley Chu <stanley.chu@mediatek.com>, bvanassche@acm.org,
- andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
- linux-kernel@vger.kernel.org, cang@codeaurora.org,
+Cc: bvanassche@acm.org, linux-scsi@vger.kernel.org, andy.teng@mediatek.com,
+ jejb@linux.ibm.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, avri.altman@wdc.com, martin.peter~sen@oracle.com,
  linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, beanhuo@micron.com,
- linux-arm-kernel@lists.infradead.org, asutoshd@codeaurora.org
-Content-Type: text/plain; charset="us-ascii"
+ alim.akhtar@samsung.com, matthias.bgg@gmail.com, asutoshd@codeaurora.org,
+ linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently a 1 ms delay is applied before polling CONTROLLER_ENABLE
-bit. This delay may not be required or can be changed in different
-controllers. Make the delay as a changeable value in struct ufs_hba to
-allow it customized by vendors.
+On 2020-03-16 11:42, Stanley Chu wrote:
+> Struct init_prefetch_data currently is used privately in
+> ufshcd_init_icc_levels(), thus it can be removed from struct ufs_hba.
+> 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> Reviewed-by: Asutosh Das <asutoshd@codeaurora.org>
+> Reviewed-by: Avri Altman <avri.altman@wdc.com>
 
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-Reviewed-by: Avri Altman <avri.altman@wdc.com>
-Reviewed-by: Can Guo <cang@codeaurora.org>
----
- drivers/scsi/ufs/ufshcd.c | 3 ++-
- drivers/scsi/ufs/ufshcd.h | 1 +
- 2 files changed, 3 insertions(+), 1 deletion(-)
+Hi Stanley,
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index ce65d321a73f..dcbf45d547d8 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -4298,7 +4298,7 @@ int ufshcd_hba_enable(struct ufs_hba *hba)
- 	 * instruction might be read back.
- 	 * This delay can be changed based on the controller.
- 	 */
--	ufshcd_wait_us(1000, 100, true);
-+	ufshcd_wait_us(hba->hba_enable_delay_us, 100, true);
- 
- 	/* wait for the host controller to complete initialization */
- 	retry = 10;
-@@ -8418,6 +8418,7 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
- 
- 	hba->mmio_base = mmio_base;
- 	hba->irq = irq;
-+	hba->hba_enable_delay_us = 1000;
- 
- 	err = ufshcd_hba_init(hba);
- 	if (err)
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index 4683e7bf6640..269ddb92bb55 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -653,6 +653,7 @@ struct ufs_hba {
- 	u32 eh_flags;
- 	u32 intr_mask;
- 	u16 ee_ctrl_mask;
-+	u16 hba_enable_delay_us;
- 	bool is_powered;
- 
- 	/* Work Queues */
--- 
-2.18.0
+Earlier, I have one similar patch for this, but it does more than this.
+Please check the mail I just sent.
+
+Thanks,
+Can Guo.
+
+> ---
+>  drivers/scsi/ufs/ufshcd.c | 15 ++++++---------
+>  drivers/scsi/ufs/ufshcd.h | 11 -----------
+>  2 files changed, 6 insertions(+), 20 deletions(-)
+> 
+> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+> index 314e808b0d4e..b4988b9ee36c 100644
+> --- a/drivers/scsi/ufs/ufshcd.c
+> +++ b/drivers/scsi/ufs/ufshcd.c
+> @@ -6501,6 +6501,7 @@ static void ufshcd_init_icc_levels(struct ufs_hba 
+> *hba)
+>  {
+>  	int ret;
+>  	int buff_len = hba->desc_size.pwr_desc;
+> +	u32 icc_level;
+>  	u8 *desc_buf;
+> 
+>  	desc_buf = kmalloc(buff_len, GFP_KERNEL);
+> @@ -6516,21 +6517,17 @@ static void ufshcd_init_icc_levels(struct 
+> ufs_hba *hba)
+>  		goto out;
+>  	}
+> 
+> -	hba->init_prefetch_data.icc_level =
+> -			ufshcd_find_max_sup_active_icc_level(hba,
+> -			desc_buf, buff_len);
+> -	dev_dbg(hba->dev, "%s: setting icc_level 0x%x",
+> -			__func__, hba->init_prefetch_data.icc_level);
+> +	icc_level =
+> +		ufshcd_find_max_sup_active_icc_level(hba, desc_buf, buff_len);
+> +	dev_dbg(hba->dev, "%s: setting icc_level 0x%x",	__func__, icc_level);
+> 
+>  	ret = ufshcd_query_attr_retry(hba, UPIU_QUERY_OPCODE_WRITE_ATTR,
+> -		QUERY_ATTR_IDN_ACTIVE_ICC_LVL, 0, 0,
+> -		&hba->init_prefetch_data.icc_level);
+> +		QUERY_ATTR_IDN_ACTIVE_ICC_LVL, 0, 0, &icc_level);
+> 
+>  	if (ret)
+>  		dev_err(hba->dev,
+>  			"%s: Failed configuring bActiveICCLevel = %d ret = %d",
+> -			__func__, hba->init_prefetch_data.icc_level , ret);
+> -
+> +			__func__, icc_level, ret);
+>  out:
+>  	kfree(desc_buf);
+>  }
+> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+> index 5c10777154fc..5cf79d2319a6 100644
+> --- a/drivers/scsi/ufs/ufshcd.h
+> +++ b/drivers/scsi/ufs/ufshcd.h
+> @@ -402,15 +402,6 @@ struct ufs_clk_scaling {
+>  	bool is_suspended;
+>  };
+> 
+> -/**
+> - * struct ufs_init_prefetch - contains data that is pre-fetched once 
+> during
+> - * initialization
+> - * @icc_level: icc level which was read during initialization
+> - */
+> -struct ufs_init_prefetch {
+> -	u32 icc_level;
+> -};
+> -
+>  #define UFS_ERR_REG_HIST_LENGTH 8
+>  /**
+>   * struct ufs_err_reg_hist - keeps history of errors
+> @@ -541,7 +532,6 @@ enum ufshcd_quirks {
+>   * @intr_mask: Interrupt Mask Bits
+>   * @ee_ctrl_mask: Exception event control mask
+>   * @is_powered: flag to check if HBA is powered
+> - * @init_prefetch_data: data pre-fetched during initialization
+>   * @eh_work: Worker to handle UFS errors that require s/w attention
+>   * @eeh_work: Worker to handle exception events
+>   * @errors: HBA errors
+> @@ -627,7 +617,6 @@ struct ufs_hba {
+>  	u32 intr_mask;
+>  	u16 ee_ctrl_mask;
+>  	bool is_powered;
+> -	struct ufs_init_prefetch init_prefetch_data;
+> 
+>  	/* Work Queues */
+>  	struct work_struct eh_work;
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
