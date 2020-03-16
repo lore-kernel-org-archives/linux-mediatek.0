@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 70783C0044D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2020 15:52:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A8954C18E5B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2020 15:57:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 424A72051A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2020 15:52:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7A4852071C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Mar 2020 15:57:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TCjmOHJE";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="yl6bstE+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 424A72051A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ao/E78Kn";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="uq3aC7rP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7A4852071C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,65 +26,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SSubOHgxJcJM0vROLhjdhCfgAH+5yE+Zjr/bJv9Wf/Q=; b=TCjmOHJEF3cwlA
-	P2mSFhwl99XJ6ag7BqUeeLh8BscIh0RlhacPirBNc1iR6dV9xetQpqpTniRQMDLUtL164D1loGutv
-	I2mcsDoMIQGqVrut6XIq/tb6HfY0suRQbGYT4y6EKAMxZ2J7zvspHO5c3oEty25NlH6owhx2uPAKg
-	c7TuGBlcaxVGtX7Xb8pO0h5gjH+IG5ity6CEQ0QLr4hX3PwqUw0MZL+lAgvBPaSPtd+gw1BMpzY2X
-	SfhoCRJs/9UyYZEO+70X71AnFhmgzYAtTrMtLGR0dlsnKdYeXNJl7fTdgnMy8g8ofi7JRKdcygtbW
-	TJo/fxYxdOP4HT/L63uw==;
+	List-Owner; bh=4d9J2yPa7+slD1fHfuLAqudpMa2uX39DyaiB4g0eys0=; b=ao/E78KnnDX7y1
+	NklQOTaExxk9IZXdUvx9DeumDnhpN6zlXeI6vqAgqIGizzGg4w/jr0sKTyb0Fc/p2k3I6/rVILgB/
+	KP+CGZXWEk9bP4lOteJqDEADzcCLf6gMZI3luLRadcdc55KyZdy0920vYHYQc8yVAcXMfKywrOJ/Z
+	HlBpudpnljfI0YY/ecRMAlvVQHne57nhTFfM7YRE7sElW1Fpz8tkXuwa6m6uO3G3kmAFD2Bnx/tT3
+	Tgt1AKLAn3AbCIUO7uBZV2fCHDQWoz6eBK/bA7cAZSqfkVy3w8DX48O9tTNmk2CMbDmnA4mm+HS9Z
+	9IjIMKILQzYoZRBiTRwA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jDs2d-00057c-G6; Mon, 16 Mar 2020 15:52:35 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1jDs6o-0007vX-6W; Mon, 16 Mar 2020 15:56:54 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jDs2a-00057B-Gf
- for linux-mediatek@lists.infradead.org; Mon, 16 Mar 2020 15:52:33 +0000
-Received: by mail-wr1-x441.google.com with SMTP id b2so15632746wrj.10
- for <linux-mediatek@lists.infradead.org>; Mon, 16 Mar 2020 08:52:32 -0700 (PDT)
+ id 1jDs6l-0007uq-DF
+ for linux-mediatek@lists.infradead.org; Mon, 16 Mar 2020 15:56:52 +0000
+Received: by mail-wm1-x343.google.com with SMTP id a132so18260011wme.1
+ for <linux-mediatek@lists.infradead.org>; Mon, 16 Mar 2020 08:56:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=CQWUEVlXfznSczAKyGpDi3T2t4zubClSxzSzuBgyOmY=;
- b=yl6bstE+aSegQ4PSIZwfpkI4xv5zEpFCHJTeJOmkwQSJ+I34mLp8AxYTWZ9rJT3sc2
- lfVn74R8N/A5/RlriKIwFzgnhIdRpYphZB/RGS2V7TiOu9jBnvyS/vVHkhpcG/UCkclI
- /Xe8pirR3stVSJMCZatixqgD5qeqsOrizxVPTp5NmPJGHiiNFTlr2SrOO2kgOC4/0W9m
- TaePqXQ0F0j8GjfwG6eC/pF625lANh0WVdHPpEVzOMwvBPZshj8wKu9LXxVj1/SPB9LL
- CEn13SHypRSkWd4ThtiGgPM4UZhcVfHP1IHQBtjQSqNt8bUgTV5XgO5/lnNRElqlP+4y
- Bdeg==
+ bh=xMvs0/HoidPNJcKREH4cxPQfySQhzOIJtF8I7+UM558=;
+ b=uq3aC7rP8Gi0hWD2k9GTvb304Urdg7HWJq+1GajWwKZFGsN2rAJMGURBxedQKUW4jd
+ asGhdTqUUsTBsHFqdt9E3rUbuOPH9LnplZyIROCXZts0Altk+BtOGfxVnQG2zCkEVKBq
+ NAuI2JAjicGhKKjGeoT4CC5ZB2QqLarkq2Zu2k9kjsXdW+uN+BMXxoUU5u4N96yU44fx
+ tCZDJoxX8PkOf/gkX0aCFzGDyygT+xsCtaCtEDXLQvT6XUdDgAn69Z6zXz1IbnDjfIOR
+ mq+n2Ab7QrOC31UPcgX0gGxqUx4OOFYTI0TN6BbHpW3S45c2GIHm7KEYESWZoQ3DPMJV
+ MY7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=CQWUEVlXfznSczAKyGpDi3T2t4zubClSxzSzuBgyOmY=;
- b=hYIL9aB09gC2a5PiTFPJDVjCkMktrPzbztTa1W2cVBy4M/AnxFPh8vvpJ75OGSFIUt
- YHyw6NWckoWt0f/ALPT78Tt6QKuCxRSi5OgMn/3fb2i6/wt2Jv67wmDKsc616aFwNGnl
- 4hGHfeo2qaZmFV126vwpCI3De79DTVXlWz98ieFVwlwPrJ8T4YjOn8nf11yKpMUrCCEP
- 2EQkbDv7Hz2y2MDG5ezcMGxm6MJGYXtns0QL3ctWyXRFSXEce7/funbiMQ2TVhR3pnoZ
- vVZ0zp3ymYbbDhxKtRqumUoS9Wunrt6A3Xm3Fdhc2Bl4EQjTmmi92hmUr985qTSAEVT6
- nM2Q==
-X-Gm-Message-State: ANhLgQ0v6YrmZYuG1h2oQMCs9Cixvv3P5GrTjFZOjKzEr791uCL4TMkN
- wr7P1zGWJFzZWohPsiNbXIQb8A==
-X-Google-Smtp-Source: ADFU+vttr8+4jXiTPQnlMs6N4KDj9oq3qIoO+BGp44KMN8sfSjRCTINbImPpFYK6LbM8TzaWqB/nSA==
-X-Received: by 2002:adf:f289:: with SMTP id k9mr37838wro.220.1584373951194;
- Mon, 16 Mar 2020 08:52:31 -0700 (PDT)
+ bh=xMvs0/HoidPNJcKREH4cxPQfySQhzOIJtF8I7+UM558=;
+ b=ghjTWxiMdC67jxKjzrk9Ax5jy1XEfS0ojw8v8zuBaNMboxsey8lAXPwM2r8ex84VM2
+ ooghrE41M6H7eLx1QOY8wUloNt5jle27gWPNPjQQYlY/8J5BvK7xVt6C4SCsnBeReiFL
+ hk/7SYVzJx581Mwcd+R95jrAAWF0tJNBWbEBjMsYxtoDrb+YIfETDdWxzxTUy1diqmAD
+ YtocMXsJmaVQjeMdyOXfZ9ajqPHpEYd1I0c81aa/dl+4FVgG48StOgCL+/UeqnNt1Qec
+ 1u+k2EZchj9vnNALB1PfYeYHcKWosgydB+1UPUId9PMd3KpL7IO56koSwn8rP3XEAkD/
+ 7V6w==
+X-Gm-Message-State: ANhLgQ3QZhz8ggO9b9SiXGVnwT0JMYkLGzDmFDs1H+6fyJ21XdUGW+5x
+ qxd/mWQP3d7M1idS63vhZYArfw==
+X-Google-Smtp-Source: ADFU+vtb9SuXzA1/Pyl3fT36qeOkgagpJNuCxgpPrVNo6inRK/YVmejfWVsaU34AB8eJFzzgsz2mCw==
+X-Received: by 2002:a1c:4d13:: with SMTP id o19mr28587408wmh.186.1584374209825; 
+ Mon, 16 Mar 2020 08:56:49 -0700 (PDT)
 Received: from myrica ([2001:171b:226b:54a0:116c:c27a:3e7f:5eaf])
- by smtp.gmail.com with ESMTPSA id t1sm509263wrq.36.2020.03.16.08.52.30
+ by smtp.gmail.com with ESMTPSA id w16sm531971wrp.8.2020.03.16.08.56.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Mar 2020 08:52:30 -0700 (PDT)
-Date: Mon, 16 Mar 2020 16:52:23 +0100
+ Mon, 16 Mar 2020 08:56:49 -0700 (PDT)
+Date: Mon, 16 Mar 2020 16:56:41 +0100
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: Joerg Roedel <joro@8bytes.org>
-Subject: Re: [PATCH 13/15] iommu/qcom: Use accessor functions for iommu
+Subject: Re: [PATCH 14/15] iommu/virtio: Use accessor functions for iommu
  private data
-Message-ID: <20200316155223.GM304669@myrica>
+Message-ID: <20200316155641.GN304669@myrica>
 References: <20200310091229.29830-1-joro@8bytes.org>
- <20200310091229.29830-14-joro@8bytes.org>
+ <20200310091229.29830-15-joro@8bytes.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200310091229.29830-14-joro@8bytes.org>
+In-Reply-To: <20200310091229.29830-15-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200316_085232_563068_1678B9E5 
-X-CRM114-Status: GOOD (  15.81  )
+X-CRM114-CacheID: sfid-20200316_085651_445577_6F7F9EC2 
+X-CRM114-Status: GOOD (  15.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,72 +111,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 10, 2020 at 10:12:27AM +0100, Joerg Roedel wrote:
+On Tue, Mar 10, 2020 at 10:12:28AM +0100, Joerg Roedel wrote:
 > From: Joerg Roedel <jroedel@suse.de>
 > 
 > Make use of dev_iommu_priv_set/get() functions.
 > 
 > Signed-off-by: Joerg Roedel <jroedel@suse.de>
+
+Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+
+And tested on QEMU
+
 > ---
->  drivers/iommu/qcom_iommu.c | 61 ++++++++++++++++++++++----------------
->  1 file changed, 36 insertions(+), 25 deletions(-)
+>  drivers/iommu/virtio-iommu.c | 11 +++++------
+>  1 file changed, 5 insertions(+), 6 deletions(-)
 > 
-> diff --git a/drivers/iommu/qcom_iommu.c b/drivers/iommu/qcom_iommu.c
-> index 4328da0b0a9f..80147f82d427 100644
-> --- a/drivers/iommu/qcom_iommu.c
-> +++ b/drivers/iommu/qcom_iommu.c
-> @@ -74,16 +74,19 @@ static struct qcom_iommu_domain *to_qcom_iommu_domain(struct iommu_domain *dom)
+> diff --git a/drivers/iommu/virtio-iommu.c b/drivers/iommu/virtio-iommu.c
+> index cce329d71fba..8ead57f031f5 100644
+> --- a/drivers/iommu/virtio-iommu.c
+> +++ b/drivers/iommu/virtio-iommu.c
+> @@ -466,7 +466,7 @@ static int viommu_probe_endpoint(struct viommu_dev *viommu, struct device *dev)
+>  	struct virtio_iommu_req_probe *probe;
+>  	struct virtio_iommu_probe_property *prop;
+>  	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+> -	struct viommu_endpoint *vdev = fwspec->iommu_priv;
+> +	struct viommu_endpoint *vdev = dev_iommu_priv_get(dev);
 >  
->  static const struct iommu_ops qcom_iommu_ops;
->  
-> -static struct qcom_iommu_dev * to_iommu(struct iommu_fwspec *fwspec)
-> +static struct qcom_iommu_dev * to_iommu(struct device *dev)
->  {
-> +	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-> +
->  	if (!fwspec || fwspec->ops != &qcom_iommu_ops)
->  		return NULL;
-
-Following other drivers, I think this test could move to add_device() (and
-remove_device()?), but this is probably good enough for now.
-
-> -	return fwspec->iommu_priv;
-> +
-> +	return dev_iommu_priv_get(dev);
->  }
-[...]
->  static int qcom_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
->  {
-> -	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
->  	struct qcom_iommu_dev *qcom_iommu;
->  	struct platform_device *iommu_pdev;
->  	unsigned asid = args->args[0];
-> @@ -583,14 +594,14 @@ static int qcom_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
->  	    WARN_ON(asid > qcom_iommu->num_ctxs))
+>  	if (!fwspec->num_ids)
 >  		return -EINVAL;
+> @@ -648,7 +648,7 @@ static int viommu_attach_dev(struct iommu_domain *domain, struct device *dev)
+>  	int ret = 0;
+>  	struct virtio_iommu_req_attach req;
+>  	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+> -	struct viommu_endpoint *vdev = fwspec->iommu_priv;
+> +	struct viommu_endpoint *vdev = dev_iommu_priv_get(dev);
+>  	struct viommu_domain *vdomain = to_viommu_domain(domain);
 >  
-> -	if (!fwspec->iommu_priv) {
-> -		fwspec->iommu_priv = qcom_iommu;
-> +	if (dev_iommu_priv_get(dev)) {
-
-Should be:
-
-	if (!dev_iommu_priv_set(dev))
-
-Thanks,
-Jean
-
-> +		dev_iommu_priv_set(dev, qcom_iommu);
->  	} else {
->  		/* make sure devices iommus dt node isn't referring to
->  		 * multiple different iommu devices.  Multiple context
->  		 * banks are ok, but multiple devices are not:
->  		 */
-> -		if (WARN_ON(qcom_iommu != fwspec->iommu_priv))
-> +		if (WARN_ON(qcom_iommu != dev_iommu_priv_get(dev)))
->  			return -EINVAL;
->  	}
+>  	mutex_lock(&vdomain->mutex);
+> @@ -807,8 +807,7 @@ static void viommu_iotlb_sync(struct iommu_domain *domain,
+>  static void viommu_get_resv_regions(struct device *dev, struct list_head *head)
+>  {
+>  	struct iommu_resv_region *entry, *new_entry, *msi = NULL;
+> -	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+> -	struct viommu_endpoint *vdev = fwspec->iommu_priv;
+> +	struct viommu_endpoint *vdev = dev_iommu_priv_get(dev);
+>  	int prot = IOMMU_WRITE | IOMMU_NOEXEC | IOMMU_MMIO;
 >  
+>  	list_for_each_entry(entry, &vdev->resv_regions, list) {
+> @@ -876,7 +875,7 @@ static int viommu_add_device(struct device *dev)
+>  	vdev->dev = dev;
+>  	vdev->viommu = viommu;
+>  	INIT_LIST_HEAD(&vdev->resv_regions);
+> -	fwspec->iommu_priv = vdev;
+> +	dev_iommu_priv_set(dev, vdev);
+>  
+>  	if (viommu->probe_size) {
+>  		/* Get additional information for this endpoint */
+> @@ -920,7 +919,7 @@ static void viommu_remove_device(struct device *dev)
+>  	if (!fwspec || fwspec->ops != &viommu_ops)
+>  		return;
+>  
+> -	vdev = fwspec->iommu_priv;
+> +	vdev = dev_iommu_priv_get(dev);
+>  
+>  	iommu_group_remove_device(dev);
+>  	iommu_device_unlink(&vdev->viommu->iommu, dev);
 > -- 
 > 2.17.1
 > 
