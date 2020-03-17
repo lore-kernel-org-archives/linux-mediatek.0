@@ -6,17 +6,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93F38C3F2CE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2020 16:42:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F3A70C4CECE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2020 16:42:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 656FF20752
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2020 16:42:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C02B920735
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2020 16:42:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DFYOzGiO";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="nmxcsTn2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 656FF20752
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="a85WjRTZ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="HYAh3bsh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C02B920735
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,43 +25,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u7RUwN9+h0MhtFPFVlaGfhr3gQiV0xDbx27HJzDBMMQ=; b=DFYOzGiOUWvihJ
-	Hbn8Va3QutAeuOK8s+oY9oBwXwdFS6722EIka1urN+0C+bpNJcqEDvQ9a687UeVMFbZB/CA/wfb09
-	34AN4ESP0PjnGgDGPp0+rTU0lvJ6F/1NvT0ekNvBZlXOOd/FVTdBJkmYh+Hcz+5CDFVD1/Kak/Mpl
-	jj0EXVj5I4WG6sIxre6wyeDc+JwhHPde3ZFRRT+m1aQH3DnXxagCZ95G3AC+NhwqhY1WdRa+5sp84
-	1uCzFcXz30fK9ewtQ9EpbUjQgf0hSbL4iL8fleg/2DqYLGdkGbjd0myC30Wvoc3kJn5BuL0Xg/CYo
-	kH+vEdebKtP+dORTL86Q==;
+	List-Owner; bh=WIwy4hifrRwzMh/sgg09M0artgGj5t/gbGgnJEzXqPg=; b=a85WjRTZ5o6+/Y
+	HPYBDEuTndV49P6EUogX60J7X/0NW7JeGtGm5CcnEDFIqEW20QPYuzc8H8REh5dHDpq2efKJTUgkj
+	DsSdnXoL9ZaeDAhPvHbpsF+IARj/+2EwRU3+gBv6QALZOXO/189JuaIginn+Wg1rUhcgMVCfVPiMN
+	LY3mjKIUyXDxCW5MUHN83trMZcyNmmp46ZUTGLuVNueeAG2QEY/wyh/vIwQ9I5QhICJnxQETVrKcT
+	JFgwVQY92VWqVKaTnswqU/uoe3yT1cje20JfntrZFH8tGkJ/s2dR1r+iiBKpjvhqNl5vvPb5V4WGf
+	kA1BrMX2Q6MeOmDI+iaw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEFIR-00074y-5Z; Tue, 17 Mar 2020 16:42:27 +0000
+	id 1jEFIM-0006xN-JP; Tue, 17 Mar 2020 16:42:22 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEFIJ-0006tk-7H
- for linux-mediatek@lists.infradead.org; Tue, 17 Mar 2020 16:42:21 +0000
+ id 1jEFIF-0006mo-FY
+ for linux-mediatek@lists.infradead.org; Tue, 17 Mar 2020 16:42:18 +0000
 Received: from lore-desk-wlan.redhat.com (unknown [151.48.128.122])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4CB0F20754;
- Tue, 17 Mar 2020 16:42:17 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8444320663;
+ Tue, 17 Mar 2020 16:42:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1584463338;
- bh=HO3zG6XaIXZeHAspbsrvN3fJKlyf1sWBMvHaRPJQT9E=;
+ s=default; t=1584463335;
+ bh=BX02kdo/ms9qQkbxYoL0GGHoGO1b/XdmmxerTii6ksk=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=nmxcsTn2qDUaZPTW9uCd8JWhgyyh4/YqtpwBnM+EYOoFso2r0oK3kcmLPp/jK2HME
- Tw4F58c1Z4XleRYGjiMD7TBn2rIpVCUjEmvScvfJrVjDKJcher8QmZE+mqIdrNEO2+
- R/rj2CK5AQNV9mKsWhlzq50vAIM6ktb6lOiNHpfI=
+ b=HYAh3bshBTQ7c0x0Frmki4Vgr/M2+ZUhd1pL4OIVtkvZZUWOx6rhkTRYn4XDlEaz4
+ Zs7E2OETUMEBwzWanzvzGBxD1g+CwGB768f/H141EBx+Z5hU0nlRZeTrZf+ufsvJQ9
+ hfrieADFaQX+xEUVUFYH41f+octTBEiQ01ofEgFs=
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name
-Subject: [PATCH v4 14/25] mt76: mt7615: introduce mt7615_register_map
-Date: Tue, 17 Mar 2020 17:41:21 +0100
-Message-Id: <aff134a807023fe6fafbc746a83f06773d8ac23e.1584463004.git.lorenzo@kernel.org>
+Subject: [PATCH v4 12/25] mt76: mt7615: move more mcu commands in
+ mt7615_mcu_ops data structure
+Date: Tue, 17 Mar 2020 17:41:19 +0100
+Message-Id: <065848ce224640933df767e7bbc2312e4af6f1c5.1584463004.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1584463004.git.lorenzo@kernel.org>
 References: <cover.1584463004.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200317_094219_422457_E99EAA10 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20200317_094215_620884_9A5BCDD0 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,381 +81,552 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to reuse mt7615 code adding support for mt7663e driver,
-introduce mt7615e_reg_map since mt7663e and mt7615 rely on a
-different base registers definitions.
+Move mt7615_mcu_set_beacon_offload, mt7615_mcu_set_dev and
+mt7615_mcu_set_bss routine in mt7615_mcu_ops data structure.
+This is a preliminary patch to support mt7663 firmware
 
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- .../net/wireless/mediatek/mt76/mt7615/mac.c   | 14 ++--
- .../net/wireless/mediatek/mt76/mt7615/mmio.c  | 27 ++++++-
- .../wireless/mediatek/mt76/mt7615/mt7615.h    |  5 +-
- .../net/wireless/mediatek/mt76/mt7615/pci.c   |  3 +-
- .../net/wireless/mediatek/mt76/mt7615/regs.h  | 72 +++++++++++++------
- .../net/wireless/mediatek/mt76/mt7615/soc.c   |  2 +-
- 6 files changed, 91 insertions(+), 32 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7615/mac.c   |   3 +-
+ .../net/wireless/mediatek/mt76/mt7615/main.c  |  20 +-
+ .../net/wireless/mediatek/mt76/mt7615/mcu.c   | 322 +++++++++---------
+ .../wireless/mediatek/mt76/mt7615/mt7615.h    |  19 +-
+ 4 files changed, 191 insertions(+), 173 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index 6c36585c3423..4d5171044b1e 100644
+index 1fbd240c2b47..6c36585c3423 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -703,9 +703,9 @@ void mt7615_txp_skb_unmap(struct mt76_dev *dev,
- 		mt7615_txp_skb_unmap_hw(dev, &txp->hw);
+@@ -1823,8 +1823,9 @@ static void
+ mt7615_update_vif_beacon(void *priv, u8 *mac, struct ieee80211_vif *vif)
+ {
+ 	struct ieee80211_hw *hw = priv;
++	struct mt7615_dev *dev = mt7615_hw_dev(hw);
+ 
+-	mt7615_mcu_set_bcn(hw, vif, vif->bss_conf.enable_beacon);
++	mt7615_mcu_add_beacon(dev, hw, vif, vif->bss_conf.enable_beacon);
  }
  
--static u32 mt7615_mac_wtbl_addr(int wcid)
-+static u32 mt7615_mac_wtbl_addr(struct mt7615_dev *dev, int wcid)
- {
--	return MT_WTBL_BASE + wcid * MT_WTBL_ENTRY_SIZE;
-+	return MT_WTBL_BASE(dev) + wcid * MT_WTBL_ENTRY_SIZE;
- }
+ static void
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+index 6ef1acc6531f..6586176c29af 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+@@ -39,13 +39,13 @@ static int mt7615_start(struct ieee80211_hw *hw)
+ 	running = mt7615_dev_running(dev);
  
- bool mt7615_mac_wtbl_update(struct mt7615_dev *dev, int idx, u32 mask)
-@@ -751,7 +751,7 @@ void mt7615_mac_sta_poll(struct mt7615_dev *dev)
- 		list_del_init(&msta->poll_list);
- 		spin_unlock_bh(&dev->sta_poll_lock);
- 
--		addr = mt7615_mac_wtbl_addr(msta->wcid.idx) + 19 * 4;
-+		addr = mt7615_mac_wtbl_addr(dev, msta->wcid.idx) + 19 * 4;
- 
- 		for (i = 0; i < 4; i++, addr += 8) {
- 			u32 tx_last = msta->airtime_ac[i];
-@@ -801,7 +801,7 @@ void mt7615_mac_set_rates(struct mt7615_phy *phy, struct mt7615_sta *sta,
- 	struct mt76_phy *mphy = phy->mt76;
- 	struct ieee80211_tx_rate *ref;
- 	int wcid = sta->wcid.idx;
--	u32 addr = mt7615_mac_wtbl_addr(wcid);
-+	u32 addr = mt7615_mac_wtbl_addr(dev, wcid);
- 	bool stbc = false;
- 	int n_rates = sta->n_rates;
- 	u8 bw, bw_prev, bw_idx = 0;
-@@ -966,7 +966,7 @@ mt7615_mac_wtbl_update_key(struct mt7615_dev *dev, struct mt76_wcid *wcid,
- 			   enum mt7615_cipher_type cipher,
- 			   enum set_key_cmd cmd)
- {
--	u32 addr = mt7615_mac_wtbl_addr(wcid->idx) + 30 * 4;
-+	u32 addr = mt7615_mac_wtbl_addr(dev, wcid->idx) + 30 * 4;
- 	u8 data[32] = {};
- 
- 	if (key->keylen > sizeof(data))
-@@ -1004,7 +1004,7 @@ mt7615_mac_wtbl_update_pk(struct mt7615_dev *dev, struct mt76_wcid *wcid,
- 			  enum mt7615_cipher_type cipher, int keyidx,
- 			  enum set_key_cmd cmd)
- {
--	u32 addr = mt7615_mac_wtbl_addr(wcid->idx), w0, w1;
-+	u32 addr = mt7615_mac_wtbl_addr(dev, wcid->idx), w0, w1;
- 
- 	if (!mt76_poll(dev, MT_WTBL_UPDATE, MT_WTBL_UPDATE_BUSY, 0, 5000))
- 		return -ETIMEDOUT;
-@@ -1040,7 +1040,7 @@ mt7615_mac_wtbl_update_cipher(struct mt7615_dev *dev, struct mt76_wcid *wcid,
- 			      enum mt7615_cipher_type cipher,
- 			      enum set_key_cmd cmd)
- {
--	u32 addr = mt7615_mac_wtbl_addr(wcid->idx);
-+	u32 addr = mt7615_mac_wtbl_addr(dev, wcid->idx);
- 
- 	if (cmd == SET_KEY) {
- 		if (cipher != MT_CIPHER_BIP_CMAC_128 || !wcid->cipher)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c
-index 0b445471b6e8..fb4a76270ad4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c
-@@ -2,9 +2,32 @@
- #include <linux/module.h>
- 
- #include "mt7615.h"
-+#include "regs.h"
- #include "mac.h"
- #include "../trace.h"
- 
-+const u32 mt7615e_reg_map[] = {
-+	[MT_TOP_CFG_BASE]	= 0x01000,
-+	[MT_HW_BASE]		= 0x01000,
-+	[MT_PCIE_REMAP_2]	= 0x02504,
-+	[MT_HIF_BASE]		= 0x04000,
-+	[MT_CSR_BASE]		= 0x07000,
-+	[MT_PHY_BASE]		= 0x10000,
-+	[MT_CFG_BASE]		= 0x20200,
-+	[MT_AGG_BASE]		= 0x20a00,
-+	[MT_TMAC_BASE]		= 0x21000,
-+	[MT_RMAC_BASE]		= 0x21200,
-+	[MT_DMA_BASE]		= 0x21800,
-+	[MT_WTBL_BASE_ON]	= 0x23000,
-+	[MT_WTBL_BASE_OFF]	= 0x23400,
-+	[MT_LPON_BASE]		= 0x24200,
-+	[MT_MIB_BASE]		= 0x24800,
-+	[MT_WTBL_BASE_ADDR]	= 0x30000,
-+	[MT_PCIE_REMAP_BASE2]	= 0x80000,
-+	[MT_TOP_MISC_BASE]	= 0xc0000,
-+	[MT_EFUSE_ADDR_BASE]	= 0x81070000,
-+};
-+
- u32 mt7615_reg_map(struct mt7615_dev *dev, u32 addr)
- {
- 	u32 base = addr & MT_MCU_PCIE_REMAP_2_BASE;
-@@ -66,7 +89,8 @@ static irqreturn_t mt7615_irq_handler(int irq, void *dev_instance)
- 	return IRQ_HANDLED;
- }
- 
--int mt7615_mmio_probe(struct device *pdev, void __iomem *mem_base, int irq)
-+int mt7615_mmio_probe(struct device *pdev, void __iomem *mem_base,
-+		      int irq, const u32 *map)
- {
- 	static const struct mt76_driver_ops drv_ops = {
- 		/* txwi_size = txd size + txp size */
-@@ -95,6 +119,7 @@ int mt7615_mmio_probe(struct device *pdev, void __iomem *mem_base, int irq)
- 	dev = container_of(mdev, struct mt7615_dev, mt76);
- 	mt76_mmio_init(&dev->mt76, mem_base);
- 
-+	dev->reg_map = map;
- 	mdev->rev = (mt76_rr(dev, MT_HW_CHIPID) << 16) |
- 		    (mt76_rr(dev, MT_HW_REV) & 0xff);
- 	dev_dbg(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-index e51b6ab6ebb8..c03ad0409f43 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-@@ -185,6 +185,7 @@ struct mt7615_dev {
- 
- 	const struct mt7615_mcu_ops *mcu_ops;
- 	struct regmap *infracfg;
-+	const u32 *reg_map;
- 
- 	struct work_struct mcu_work;
- 
-@@ -285,6 +286,7 @@ mt7615_ext_phy(struct mt7615_dev *dev)
- }
- 
- extern const struct ieee80211_ops mt7615_ops;
-+extern const u32 mt7615e_reg_map[__MT_BASE_MAX];
- extern struct pci_driver mt7615_pci_driver;
- extern struct platform_driver mt7622_wmac_driver;
- 
-@@ -297,7 +299,8 @@ static inline int mt7622_wmac_init(struct mt7615_dev *dev)
- }
- #endif
- 
--int mt7615_mmio_probe(struct device *pdev, void __iomem *mem_base, int irq);
-+int mt7615_mmio_probe(struct device *pdev, void __iomem *mem_base,
-+		      int irq, const u32 *map);
- u32 mt7615_reg_map(struct mt7615_dev *dev, u32 addr);
- 
- void mt7615_init_device(struct mt7615_dev *dev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
-index 43e02128cc48..d20db968c7ec 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
-@@ -35,7 +35,8 @@ static int mt7615_pci_probe(struct pci_dev *pdev,
- 	if (ret)
- 		return ret;
- 
--	return mt7615_mmio_probe(&pdev->dev, pcim_iomap_table(pdev)[0], pdev->irq);
-+	return mt7615_mmio_probe(&pdev->dev, pcim_iomap_table(pdev)[0],
-+				 pdev->irq, mt7615e_reg_map);
- }
- 
- static void mt7615_pci_remove(struct pci_dev *pdev)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
-index fe68f6b2cbf8..b422a9c71089 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
-@@ -4,15 +4,40 @@
- #ifndef __MT7615_REGS_H
- #define __MT7615_REGS_H
- 
--#define MT_HW_REV			0x1000
--#define MT_HW_CHIPID			0x1008
--#define MT_TOP_STRAP_STA		0x1010
-+enum mt7615_reg_base {
-+	MT_TOP_CFG_BASE,
-+	MT_HW_BASE,
-+	MT_PCIE_REMAP_2,
-+	MT_HIF_BASE,
-+	MT_CSR_BASE,
-+	MT_PHY_BASE,
-+	MT_CFG_BASE,
-+	MT_AGG_BASE,
-+	MT_TMAC_BASE,
-+	MT_RMAC_BASE,
-+	MT_DMA_BASE,
-+	MT_WTBL_BASE_ON,
-+	MT_WTBL_BASE_OFF,
-+	MT_LPON_BASE,
-+	MT_MIB_BASE,
-+	MT_WTBL_BASE_ADDR,
-+	MT_PCIE_REMAP_BASE2,
-+	MT_TOP_MISC_BASE,
-+	MT_EFUSE_ADDR_BASE,
-+	__MT_BASE_MAX,
-+};
-+
-+#define MT_HW_INFO_BASE			((dev)->reg_map[MT_HW_BASE])
-+#define MT_HW_INFO(ofs)			(MT_HW_INFO_BASE + (ofs))
-+#define MT_HW_REV			MT_HW_INFO(0x000)
-+#define MT_HW_CHIPID			MT_HW_INFO(0x008)
-+#define MT_TOP_STRAP_STA		MT_HW_INFO(0x010)
- #define MT_TOP_3NSS			BIT(24)
- 
- #define MT_TOP_OFF_RSV			0x1128
- #define MT_TOP_OFF_RSV_FW_STATE		GENMASK(18, 16)
- 
--#define MT_TOP_MISC2			0x1134
-+#define MT_TOP_MISC2			((dev)->reg_map[MT_TOP_CFG_BASE] + 0x134)
- #define MT_TOP_MISC2_FW_STATE		GENMASK(2, 0)
- 
- #define MT_MCU_BASE			0x2000
-@@ -23,13 +48,12 @@
- #define MT_MCU_PCIE_REMAP_1_BASE	GENMASK(31, 18)
- #define MT_PCIE_REMAP_BASE_1		0x40000
- 
--#define MT_MCU_PCIE_REMAP_2		MT_MCU(0x504)
-+#define MT_MCU_PCIE_REMAP_2		((dev)->reg_map[MT_PCIE_REMAP_2])
- #define MT_MCU_PCIE_REMAP_2_OFFSET	GENMASK(18, 0)
- #define MT_MCU_PCIE_REMAP_2_BASE	GENMASK(31, 19)
--#define MT_PCIE_REMAP_BASE_2		0x80000
-+#define MT_PCIE_REMAP_BASE_2		((dev)->reg_map[MT_PCIE_REMAP_BASE2])
- 
--#define MT_HIF_BASE			0x4000
--#define MT_HIF(ofs)			(MT_HIF_BASE + (ofs))
-+#define MT_HIF(ofs)			((dev)->reg_map[MT_HIF_BASE] + (ofs))
- 
- #define MT_CFG_LPCR_HOST		MT_HIF(0x1f0)
- #define MT_CFG_LPCR_HOST_FW_OWN		BIT(0)
-@@ -95,6 +119,9 @@
- #define MT_WPDMA_ABT_CFG		MT_HIF(0x530)
- #define MT_WPDMA_ABT_CFG1		MT_HIF(0x534)
- 
-+#define MT_CSR(ofs)			((dev)->reg_map[MT_CSR_BASE] + (ofs))
-+#define MT_CONN_HIF_ON_LPCTL		MT_CSR(0x000)
-+
- #define MT_PLE_BASE			0x8000
- #define MT_PLE(ofs)			(MT_PLE_BASE + (ofs))
- 
-@@ -106,7 +133,7 @@
- #define MT_PLE_AC_QEMPTY(ac, n)		MT_PLE(0x300 + 0x10 * (ac) + \
- 					       ((n) << 2))
- 
--#define MT_WF_PHY_BASE			0x10000
-+#define MT_WF_PHY_BASE			((dev)->reg_map[MT_PHY_BASE])
- #define MT_WF_PHY(ofs)			(MT_WF_PHY_BASE + (ofs))
- 
- #define MT_WF_PHY_WF2_RFCTRL0(n)	MT_WF_PHY(0x1900 + (n) * 0x400)
-@@ -139,7 +166,7 @@
- #define MT_WF_PHY_RXTD2_BASE		MT_WF_PHY(0x2a00)
- #define MT_WF_PHY_RXTD2(_n)		(MT_WF_PHY_RXTD2_BASE + ((_n) << 2))
- 
--#define MT_WF_CFG_BASE			0x20200
-+#define MT_WF_CFG_BASE			((dev)->reg_map[MT_CFG_BASE])
- #define MT_WF_CFG(ofs)			(MT_WF_CFG_BASE + (ofs))
- 
- #define MT_CFG_CCR			MT_WF_CFG(0x000)
-@@ -148,7 +175,7 @@
- #define MT_CFG_CCR_MAC_D1_2X_GC_EN	BIT(30)
- #define MT_CFG_CCR_MAC_D0_2X_GC_EN	BIT(31)
- 
--#define MT_WF_AGG_BASE			0x20a00
-+#define MT_WF_AGG_BASE			((dev)->reg_map[MT_AGG_BASE])
- #define MT_WF_AGG(ofs)			(MT_WF_AGG_BASE + (ofs))
- 
- #define MT_AGG_ARCR			MT_WF_AGG(0x010)
-@@ -188,7 +215,7 @@
- #define MT_ARB_SCR_TX1_DISABLE		BIT(10)
- #define MT_ARB_SCR_RX1_DISABLE		BIT(11)
- 
--#define MT_WF_TMAC_BASE			0x21000
-+#define MT_WF_TMAC_BASE			((dev)->reg_map[MT_TMAC_BASE])
- #define MT_WF_TMAC(ofs)			(MT_WF_TMAC_BASE + (ofs))
- 
- #define MT_TMAC_CDTR			MT_WF_TMAC(0x090)
-@@ -212,7 +239,7 @@
- #define MT_TMAC_CTCR0_INS_DDLMT_EN	BIT(17)
- #define MT_TMAC_CTCR0_INS_DDLMT_VHT_SMPDU_EN	BIT(18)
- 
--#define MT_WF_RMAC_BASE			0x21200
-+#define MT_WF_RMAC_BASE			((dev)->reg_map[MT_RMAC_BASE])
- #define MT_WF_RMAC(ofs)			(MT_WF_RMAC_BASE + (ofs))
- 
- #define MT_WF_RFCR(_band)		MT_WF_RMAC((_band) ? 0x100 : 0x000)
-@@ -257,7 +284,7 @@
- #define MT_WF_RMAC_MIB_TIME6		MT_WF_RMAC(0x03dc)
- #define MT_MIB_OBSSTIME_MASK		GENMASK(23, 0)
- 
--#define MT_WF_DMA_BASE			0x21800
-+#define MT_WF_DMA_BASE			((dev)->reg_map[MT_DMA_BASE])
- #define MT_WF_DMA(ofs)			(MT_WF_DMA_BASE + (ofs))
- 
- #define MT_DMA_DCR0			MT_WF_DMA(0x000)
-@@ -272,10 +299,10 @@
- #define MT_DMA_RCFR0_RX_DROPPED_UCAST	GENMASK(25, 24)
- #define MT_DMA_RCFR0_RX_DROPPED_MCAST	GENMASK(27, 26)
- 
--#define MT_WTBL_BASE			0x30000
-+#define MT_WTBL_BASE(dev)		((dev)->reg_map[MT_WTBL_BASE_ADDR])
- #define MT_WTBL_ENTRY_SIZE		256
- 
--#define MT_WTBL_OFF_BASE		0x23400
-+#define MT_WTBL_OFF_BASE		((dev)->reg_map[MT_WTBL_BASE_OFF])
- #define MT_WTBL_OFF(n)			(MT_WTBL_OFF_BASE + (n))
- 
- #define MT_WTBL_W0_KEY_IDX		GENMASK(24, 23)
-@@ -292,7 +319,11 @@
- #define MT_WTBL_UPDATE_TX_COUNT_CLEAR	BIT(14)
- #define MT_WTBL_UPDATE_BUSY		BIT(31)
- 
--#define MT_WTBL_ON_BASE			0x23000
-+#define MT_TOP_MISC(ofs)		((dev)->reg_map[MT_TOP_MISC_BASE] + (ofs))
-+#define MT_CONN_ON_MISC			MT_TOP_MISC(0x1140)
-+#define MT_TOP_MISC2_FW_N9_RDY		BIT(2)
-+
-+#define MT_WTBL_ON_BASE			((dev)->reg_map[MT_WTBL_BASE_ON])
- #define MT_WTBL_ON(_n)			(MT_WTBL_ON_BASE + (_n))
- 
- #define MT_WTBL_RICR0			MT_WTBL_ON(0x010)
-@@ -328,8 +359,7 @@
- 
- #define MT_WTBL_W27_CC_BW_SEL		GENMASK(6, 5)
- 
--#define MT_LPON_BASE			0x24200
--#define MT_LPON(_n)			(MT_LPON_BASE + (_n))
-+#define MT_LPON(_n)			((dev)->reg_map[MT_LPON_BASE] + (_n))
- 
- #define MT_LPON_T0CR			MT_LPON(0x010)
- #define MT_LPON_T0CR_MODE		GENMASK(1, 0)
-@@ -337,7 +367,7 @@
- #define MT_LPON_UTTR0			MT_LPON(0x018)
- #define MT_LPON_UTTR1			MT_LPON(0x01c)
- 
--#define MT_WF_MIB_BASE			0x24800
-+#define MT_WF_MIB_BASE			(dev->reg_map[MT_MIB_BASE])
- #define MT_WF_MIB(ofs)			(MT_WF_MIB_BASE + (ofs))
- 
- #define MT_MIB_M0_MISC_CR		MT_WF_MIB(0x00c)
-@@ -406,7 +436,7 @@
- #define MT_LED_STATUS_ON		GENMASK(23, 16)
- #define MT_LED_STATUS_DURATION		GENMASK(15, 0)
- 
--#define MT_EFUSE_BASE			0x81070000
-+#define MT_EFUSE_BASE			((dev)->reg_map[MT_EFUSE_ADDR_BASE])
- #define MT_EFUSE_BASE_CTRL		0x000
- #define MT_EFUSE_BASE_CTRL_EMPTY	BIT(30)
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/soc.c b/drivers/net/wireless/mediatek/mt76/mt7615/soc.c
-index 07ec9ec282f5..43aa49706c66 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/soc.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/soc.c
-@@ -47,7 +47,7 @@ static int mt7622_wmac_probe(struct platform_device *pdev)
- 		return PTR_ERR(mem_base);
+ 	if (!running) {
+-		mt7615_mcu_ctrl_pm_state(dev, 0, 0);
++		mt7615_mcu_set_pm(dev, 0, 0);
+ 		mt7615_mcu_set_mac_enable(dev, 0, true);
+ 		mt7615_mac_enable_nf(dev, 0);
  	}
  
--	return mt7615_mmio_probe(&pdev->dev, mem_base, irq);
-+	return mt7615_mmio_probe(&pdev->dev, mem_base, irq, mt7615e_reg_map);
+ 	if (phy != &dev->phy) {
+-		mt7615_mcu_ctrl_pm_state(dev, 1, 0);
++		mt7615_mcu_set_pm(dev, 1, 0);
+ 		mt7615_mcu_set_mac_enable(dev, 1, true);
+ 		mt7615_mac_enable_nf(dev, 1);
+ 	}
+@@ -78,14 +78,14 @@ static void mt7615_stop(struct ieee80211_hw *hw)
+ 	clear_bit(MT76_STATE_RUNNING, &phy->mt76->state);
+ 
+ 	if (phy != &dev->phy) {
+-		mt7615_mcu_ctrl_pm_state(dev, 1, 1);
++		mt7615_mcu_set_pm(dev, 1, 1);
+ 		mt7615_mcu_set_mac_enable(dev, 1, false);
+ 	}
+ 
+ 	if (!mt7615_dev_running(dev)) {
+ 		cancel_delayed_work_sync(&dev->mt76.mac_work);
+ 
+-		mt7615_mcu_ctrl_pm_state(dev, 0, 1);
++		mt7615_mcu_set_pm(dev, 0, 1);
+ 		mt7615_mcu_set_mac_enable(dev, 0, false);
+ 	}
+ 
+@@ -157,7 +157,7 @@ static int mt7615_add_interface(struct ieee80211_hw *hw,
+ 	else
+ 		mvif->wmm_idx = mvif->idx % MT7615_MAX_WMM_SETS;
+ 
+-	ret = mt7615_mcu_set_dev_info(dev, vif, 1);
++	ret = mt7615_mcu_add_dev_info(dev, vif, true);
+ 	if (ret)
+ 		goto out;
+ 
+@@ -200,7 +200,7 @@ static void mt7615_remove_interface(struct ieee80211_hw *hw,
+ 
+ 	/* TODO: disable beacon for the bss */
+ 
+-	mt7615_mcu_set_dev_info(dev, vif, 0);
++	mt7615_mcu_add_dev_info(dev, vif, false);
+ 
+ 	rcu_assign_pointer(dev->mt76.wcid[idx], NULL);
+ 	if (vif->txq)
+@@ -412,7 +412,7 @@ static void mt7615_bss_info_changed(struct ieee80211_hw *hw,
+ 	mutex_lock(&dev->mt76.mutex);
+ 
+ 	if (changed & BSS_CHANGED_ASSOC)
+-		mt7615_mcu_set_bss_info(dev, vif, info->assoc);
++		mt7615_mcu_add_bss_info(dev, vif, info->assoc);
+ 
+ 	if (changed & BSS_CHANGED_ERP_SLOT) {
+ 		int slottime = info->use_short_slot ? 9 : 20;
+@@ -425,13 +425,13 @@ static void mt7615_bss_info_changed(struct ieee80211_hw *hw,
+ 	}
+ 
+ 	if (changed & BSS_CHANGED_BEACON_ENABLED) {
+-		mt7615_mcu_set_bss_info(dev, vif, info->enable_beacon);
++		mt7615_mcu_add_bss_info(dev, vif, info->enable_beacon);
+ 		mt7615_mcu_sta_add(dev, vif, NULL, info->enable_beacon);
+ 	}
+ 
+ 	if (changed & (BSS_CHANGED_BEACON |
+ 		       BSS_CHANGED_BEACON_ENABLED))
+-		mt7615_mcu_set_bcn(hw, vif, info->enable_beacon);
++		mt7615_mcu_add_beacon(dev, hw, vif, info->enable_beacon);
+ 
+ 	mutex_unlock(&dev->mt76.mutex);
+ }
+@@ -444,7 +444,7 @@ mt7615_channel_switch_beacon(struct ieee80211_hw *hw,
+ 	struct mt7615_dev *dev = mt7615_hw_dev(hw);
+ 
+ 	mutex_lock(&dev->mt76.mutex);
+-	mt7615_mcu_set_bcn(hw, vif, true);
++	mt7615_mcu_add_beacon(dev, hw, vif, true);
+ 	mutex_unlock(&dev->mt76.mutex);
  }
  
- static int mt7622_wmac_remove(struct platform_device *pdev)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+index e5df46d7648a..1c26e2c3e476 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+@@ -312,6 +312,142 @@ static int mt7615_mcu_init_download(struct mt7615_dev *dev, u32 addr,
+ 				   &req, sizeof(req), true);
+ }
+ 
++static int
++mt7615_mcu_add_dev(struct mt7615_dev *dev, struct ieee80211_vif *vif,
++		   bool enable)
++{
++	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
++	struct {
++		struct req_hdr {
++			u8 omac_idx;
++			u8 band_idx;
++			__le16 tlv_num;
++			u8 is_tlv_append;
++			u8 rsv[3];
++		} __packed hdr;
++		struct req_tlv {
++			__le16 tag;
++			__le16 len;
++			u8 active;
++			u8 band_idx;
++			u8 omac_addr[ETH_ALEN];
++		} __packed tlv;
++	} data = {
++		.hdr = {
++			.omac_idx = mvif->omac_idx,
++			.band_idx = mvif->band_idx,
++			.tlv_num = cpu_to_le16(1),
++			.is_tlv_append = 1,
++		},
++		.tlv = {
++			.tag = cpu_to_le16(DEV_INFO_ACTIVE),
++			.len = cpu_to_le16(sizeof(struct req_tlv)),
++			.active = enable,
++			.band_idx = mvif->band_idx,
++		},
++	};
++
++	memcpy(data.tlv.omac_addr, vif->addr, ETH_ALEN);
++	return __mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_DEV_INFO_UPDATE,
++				   &data, sizeof(data), true);
++}
++
++static int
++mt7615_mcu_add_beacon_offload(struct mt7615_dev *dev,
++			      struct ieee80211_hw *hw,
++			      struct ieee80211_vif *vif, bool enable)
++{
++	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
++	struct mt76_wcid *wcid = &dev->mt76.global_wcid;
++	struct ieee80211_mutable_offsets offs;
++	struct ieee80211_tx_info *info;
++	struct req {
++		u8 omac_idx;
++		u8 enable;
++		u8 wlan_idx;
++		u8 band_idx;
++		u8 pkt_type;
++		u8 need_pre_tbtt_int;
++		__le16 csa_ie_pos;
++		__le16 pkt_len;
++		__le16 tim_ie_pos;
++		u8 pkt[512];
++		u8 csa_cnt;
++		/* bss color change */
++		u8 bcc_cnt;
++		__le16 bcc_ie_pos;
++	} __packed req = {
++		.omac_idx = mvif->omac_idx,
++		.enable = enable,
++		.wlan_idx = wcid->idx,
++		.band_idx = mvif->band_idx,
++	};
++	struct sk_buff *skb;
++
++	skb = ieee80211_beacon_get_template(hw, vif, &offs);
++	if (!skb)
++		return -EINVAL;
++
++	if (skb->len > 512 - MT_TXD_SIZE) {
++		dev_err(dev->mt76.dev, "Bcn size limit exceed\n");
++		dev_kfree_skb(skb);
++		return -EINVAL;
++	}
++
++	if (mvif->band_idx) {
++		info = IEEE80211_SKB_CB(skb);
++		info->hw_queue |= MT_TX_HW_QUEUE_EXT_PHY;
++	}
++
++	mt7615_mac_write_txwi(dev, (__le32 *)(req.pkt), skb, wcid, NULL,
++			      0, NULL, true);
++	memcpy(req.pkt + MT_TXD_SIZE, skb->data, skb->len);
++	req.pkt_len = cpu_to_le16(MT_TXD_SIZE + skb->len);
++	req.tim_ie_pos = cpu_to_le16(MT_TXD_SIZE + offs.tim_offset);
++	if (offs.csa_counter_offs[0]) {
++		u16 csa_offs;
++
++		csa_offs = MT_TXD_SIZE + offs.csa_counter_offs[0] - 4;
++		req.csa_ie_pos = cpu_to_le16(csa_offs);
++		req.csa_cnt = skb->data[offs.csa_counter_offs[0]];
++	}
++	dev_kfree_skb(skb);
++
++	return __mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_BCN_OFFLOAD,
++				   &req, sizeof(req), true);
++}
++
++static int
++mt7615_mcu_ctrl_pm_state(struct mt7615_dev *dev, int band, int state)
++{
++#define ENTER_PM_STATE	1
++#define EXIT_PM_STATE	2
++	struct {
++		u8 pm_number;
++		u8 pm_state;
++		u8 bssid[ETH_ALEN];
++		u8 dtim_period;
++		u8 wlan_idx;
++		__le16 bcn_interval;
++		__le32 aid;
++		__le32 rx_filter;
++		u8 band_idx;
++		u8 rsv[3];
++		__le32 feature;
++		u8 omac_idx;
++		u8 wmm_idx;
++		u8 bcn_loss_cnt;
++		u8 bcn_sp_duration;
++	} __packed req = {
++		.pm_number = 5,
++		.pm_state = state ? ENTER_PM_STATE : EXIT_PM_STATE,
++		.band_idx = band,
++	};
++
++	return __mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_PM_STATE_CTRL,
++				   &req, sizeof(req), true);
++}
++
+ static struct sk_buff *
+ mt7615_mcu_alloc_sta_req(struct mt7615_vif *mvif, struct mt7615_sta *msta)
+ {
+@@ -727,6 +863,29 @@ mt7615_mcu_wtbl_ht_tlv(struct sk_buff *skb, struct ieee80211_sta *sta,
+ 	}
+ }
+ 
++static int
++mt7615_mcu_add_bss(struct mt7615_dev *dev, struct ieee80211_vif *vif,
++		   bool enable)
++{
++	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
++	struct sk_buff *skb;
++
++	skb = mt7615_mcu_alloc_sta_req(mvif, NULL);
++	if (IS_ERR(skb))
++		return PTR_ERR(skb);
++
++	if (enable)
++		mt7615_mcu_bss_omac_tlv(skb, vif);
++
++	mt7615_mcu_bss_basic_tlv(skb, vif, enable);
++
++	if (enable && mvif->omac_idx > EXT_BSSID_START)
++		mt7615_mcu_bss_ext_tlv(skb, mvif);
++
++	return __mt76_mcu_skb_send_msg(&dev->mt76, skb,
++				       MCU_EXT_CMD_BSS_INFO_UPDATE, true);
++}
++
+ static int
+ mt7615_mcu_wtbl_tx_ba(struct mt7615_dev *dev,
+ 		      struct ieee80211_ampdu_params *params,
+@@ -837,6 +996,10 @@ mt7615_mcu_wtbl_sta_add(struct mt7615_dev *dev, struct ieee80211_vif *vif,
+ }
+ 
+ static const struct mt7615_mcu_ops wtbl_update_ops = {
++	.add_beacon_offload = mt7615_mcu_add_beacon_offload,
++	.set_pm_state = mt7615_mcu_ctrl_pm_state,
++	.add_dev_info = mt7615_mcu_add_dev,
++	.add_bss_info = mt7615_mcu_add_bss,
+ 	.add_tx_ba = mt7615_mcu_wtbl_tx_ba,
+ 	.add_rx_ba = mt7615_mcu_wtbl_rx_ba,
+ 	.sta_add = mt7615_mcu_wtbl_sta_add,
+@@ -920,6 +1083,10 @@ mt7615_mcu_add_sta(struct mt7615_dev *dev, struct ieee80211_vif *vif,
+ }
+ 
+ static const struct mt7615_mcu_ops sta_update_ops = {
++	.add_beacon_offload = mt7615_mcu_add_beacon_offload,
++	.set_pm_state = mt7615_mcu_ctrl_pm_state,
++	.add_dev_info = mt7615_mcu_add_dev,
++	.add_bss_info = mt7615_mcu_add_bss,
+ 	.add_tx_ba = mt7615_mcu_sta_tx_ba,
+ 	.add_rx_ba = mt7615_mcu_sta_rx_ba,
+ 	.sta_add = mt7615_mcu_add_sta,
+@@ -1465,36 +1632,6 @@ int mt7615_mcu_set_wmm(struct mt7615_dev *dev, u8 queue,
+ 				   &req, sizeof(req), true);
+ }
+ 
+-int mt7615_mcu_ctrl_pm_state(struct mt7615_dev *dev, int band, int enter)
+-{
+-#define ENTER_PM_STATE	1
+-#define EXIT_PM_STATE	2
+-	struct {
+-		u8 pm_number;
+-		u8 pm_state;
+-		u8 bssid[ETH_ALEN];
+-		u8 dtim_period;
+-		u8 wlan_idx;
+-		__le16 bcn_interval;
+-		__le32 aid;
+-		__le32 rx_filter;
+-		u8 band_idx;
+-		u8 rsv[3];
+-		__le32 feature;
+-		u8 omac_idx;
+-		u8 wmm_idx;
+-		u8 bcn_loss_cnt;
+-		u8 bcn_sp_duration;
+-	} __packed req = {
+-		.pm_number = 5,
+-		.pm_state = (enter) ? ENTER_PM_STATE : EXIT_PM_STATE,
+-		.band_idx = band,
+-	};
+-
+-	return __mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_PM_STATE_CTRL,
+-				   &req, sizeof(req), true);
+-}
+-
+ int mt7615_mcu_set_dbdc(struct mt7615_dev *dev)
+ {
+ 	struct mt7615_phy *ext_phy = mt7615_ext_phy(dev);
+@@ -1554,67 +1691,6 @@ int mt7615_mcu_set_dbdc(struct mt7615_dev *dev)
+ 				   &req, sizeof(req), true);
+ }
+ 
+-int mt7615_mcu_set_dev_info(struct mt7615_dev *dev,
+-			    struct ieee80211_vif *vif, bool enable)
+-{
+-	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
+-	struct {
+-		struct req_hdr {
+-			u8 omac_idx;
+-			u8 band_idx;
+-			__le16 tlv_num;
+-			u8 is_tlv_append;
+-			u8 rsv[3];
+-		} __packed hdr;
+-		struct req_tlv {
+-			__le16 tag;
+-			__le16 len;
+-			u8 active;
+-			u8 band_idx;
+-			u8 omac_addr[ETH_ALEN];
+-		} __packed tlv;
+-	} data = {
+-		.hdr = {
+-			.omac_idx = mvif->omac_idx,
+-			.band_idx = mvif->band_idx,
+-			.tlv_num = cpu_to_le16(1),
+-			.is_tlv_append = 1,
+-		},
+-		.tlv = {
+-			.tag = cpu_to_le16(DEV_INFO_ACTIVE),
+-			.len = cpu_to_le16(sizeof(struct req_tlv)),
+-			.active = enable,
+-			.band_idx = mvif->band_idx,
+-		},
+-	};
+-
+-	memcpy(data.tlv.omac_addr, vif->addr, ETH_ALEN);
+-	return __mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_DEV_INFO_UPDATE,
+-				   &data, sizeof(data), true);
+-}
+-
+-int mt7615_mcu_set_bss_info(struct mt7615_dev *dev, struct ieee80211_vif *vif,
+-			    bool enable)
+-{
+-	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
+-	struct sk_buff *skb;
+-
+-	skb = mt7615_mcu_alloc_sta_req(mvif, NULL);
+-	if (IS_ERR(skb))
+-		return PTR_ERR(skb);
+-
+-	if (enable)
+-		mt7615_mcu_bss_omac_tlv(skb, vif);
+-
+-	mt7615_mcu_bss_basic_tlv(skb, vif, enable);
+-
+-	if (enable && mvif->omac_idx > EXT_BSSID_START)
+-		mt7615_mcu_bss_ext_tlv(skb, mvif);
+-
+-	return __mt76_mcu_skb_send_msg(&dev->mt76, skb,
+-				       MCU_EXT_CMD_BSS_INFO_UPDATE, true);
+-}
+-
+ int mt7615_mcu_del_wtbl_all(struct mt7615_dev *dev)
+ {
+ 	struct wtbl_req_hdr req = {
+@@ -1625,70 +1701,6 @@ int mt7615_mcu_del_wtbl_all(struct mt7615_dev *dev)
+ 				   &req, sizeof(req), true);
+ }
+ 
+-int mt7615_mcu_set_bcn(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+-		       int en)
+-{
+-	struct mt7615_dev *dev = mt7615_hw_dev(hw);
+-	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
+-	struct mt76_wcid *wcid = &dev->mt76.global_wcid;
+-	struct ieee80211_mutable_offsets offs;
+-	struct ieee80211_tx_info *info;
+-	struct req {
+-		u8 omac_idx;
+-		u8 enable;
+-		u8 wlan_idx;
+-		u8 band_idx;
+-		u8 pkt_type;
+-		u8 need_pre_tbtt_int;
+-		__le16 csa_ie_pos;
+-		__le16 pkt_len;
+-		__le16 tim_ie_pos;
+-		u8 pkt[512];
+-		u8 csa_cnt;
+-		/* bss color change */
+-		u8 bcc_cnt;
+-		__le16 bcc_ie_pos;
+-	} __packed req = {
+-		.omac_idx = mvif->omac_idx,
+-		.enable = en,
+-		.wlan_idx = wcid->idx,
+-		.band_idx = mvif->band_idx,
+-	};
+-	struct sk_buff *skb;
+-
+-	skb = ieee80211_beacon_get_template(hw, vif, &offs);
+-	if (!skb)
+-		return -EINVAL;
+-
+-	if (skb->len > 512 - MT_TXD_SIZE) {
+-		dev_err(dev->mt76.dev, "Bcn size limit exceed\n");
+-		dev_kfree_skb(skb);
+-		return -EINVAL;
+-	}
+-
+-	if (mvif->band_idx) {
+-		info = IEEE80211_SKB_CB(skb);
+-		info->hw_queue |= MT_TX_HW_QUEUE_EXT_PHY;
+-	}
+-
+-	mt7615_mac_write_txwi(dev, (__le32 *)(req.pkt), skb, wcid, NULL,
+-			      0, NULL, true);
+-	memcpy(req.pkt + MT_TXD_SIZE, skb->data, skb->len);
+-	req.pkt_len = cpu_to_le16(MT_TXD_SIZE + skb->len);
+-	req.tim_ie_pos = cpu_to_le16(MT_TXD_SIZE + offs.tim_offset);
+-	if (offs.csa_counter_offs[0]) {
+-		u16 csa_offs;
+-
+-		csa_offs = MT_TXD_SIZE + offs.csa_counter_offs[0] - 4;
+-		req.csa_ie_pos = cpu_to_le16(csa_offs);
+-		req.csa_cnt = skb->data[offs.csa_counter_offs[0]];
+-	}
+-	dev_kfree_skb(skb);
+-
+-	return __mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_BCN_OFFLOAD,
+-				   &req, sizeof(req), true);
+-}
+-
+ int mt7615_mcu_rdd_cmd(struct mt7615_dev *dev,
+ 		       enum mt7615_rdd_cmd cmd, u8 index,
+ 		       u8 rx_sel, u8 val)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+index 66fb77e9c311..e51b6ab6ebb8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+@@ -147,6 +147,10 @@ struct mt7615_phy {
+ #define mt7615_mcu_add_tx_ba(dev, ...)	(dev)->mcu_ops->add_tx_ba((dev), __VA_ARGS__)
+ #define mt7615_mcu_add_rx_ba(dev, ...)	(dev)->mcu_ops->add_rx_ba((dev), __VA_ARGS__)
+ #define mt7615_mcu_sta_add(dev, ...)	(dev)->mcu_ops->sta_add((dev),  __VA_ARGS__)
++#define mt7615_mcu_add_dev_info(dev, ...) (dev)->mcu_ops->add_dev_info((dev),  __VA_ARGS__)
++#define mt7615_mcu_add_bss_info(dev, ...) (dev)->mcu_ops->add_bss_info((dev),  __VA_ARGS__)
++#define mt7615_mcu_add_beacon(dev, ...)	(dev)->mcu_ops->add_beacon_offload((dev),  __VA_ARGS__)
++#define mt7615_mcu_set_pm(dev, ...)	(dev)->mcu_ops->set_pm_state((dev),  __VA_ARGS__)
+ struct mt7615_mcu_ops {
+ 	int (*add_tx_ba)(struct mt7615_dev *dev,
+ 			 struct ieee80211_ampdu_params *params,
+@@ -157,6 +161,14 @@ struct mt7615_mcu_ops {
+ 	int (*sta_add)(struct mt7615_dev *dev,
+ 		       struct ieee80211_vif *vif,
+ 		       struct ieee80211_sta *sta, bool enable);
++	int (*add_dev_info)(struct mt7615_dev *dev,
++			    struct ieee80211_vif *vif, bool enable);
++	int (*add_bss_info)(struct mt7615_dev *dev, struct ieee80211_vif *vif,
++			    bool enable);
++	int (*add_beacon_offload)(struct mt7615_dev *dev,
++				  struct ieee80211_hw *hw,
++				  struct ieee80211_vif *vif, bool enable);
++	int (*set_pm_state)(struct mt7615_dev *dev, int band, int state);
+ };
+ 
+ struct mt7615_dev {
+@@ -301,16 +313,10 @@ int mt7615_dma_init(struct mt7615_dev *dev);
+ void mt7615_dma_cleanup(struct mt7615_dev *dev);
+ int mt7615_mcu_init(struct mt7615_dev *dev);
+ bool mt7615_wait_for_mcu_init(struct mt7615_dev *dev);
+-int mt7615_mcu_set_dev_info(struct mt7615_dev *dev,
+-			    struct ieee80211_vif *vif, bool enable);
+-int mt7615_mcu_set_bss_info(struct mt7615_dev *dev, struct ieee80211_vif *vif,
+-			    bool enable);
+ void mt7615_mac_set_rates(struct mt7615_phy *phy, struct mt7615_sta *sta,
+ 			  struct ieee80211_tx_rate *probe_rate,
+ 			  struct ieee80211_tx_rate *rates);
+ int mt7615_mcu_del_wtbl_all(struct mt7615_dev *dev);
+-int mt7615_mcu_set_bcn(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+-		       int en);
+ int mt7615_mcu_set_chan_info(struct mt7615_phy *phy, int cmd);
+ int mt7615_mcu_set_wmm(struct mt7615_dev *dev, u8 queue,
+ 		       const struct ieee80211_tx_queue_params *params);
+@@ -368,7 +374,6 @@ int mt7615_mcu_set_dbdc(struct mt7615_dev *dev);
+ int mt7615_mcu_set_eeprom(struct mt7615_dev *dev);
+ int mt7615_mcu_set_mac_enable(struct mt7615_dev *dev, int band, bool enable);
+ int mt7615_mcu_set_rts_thresh(struct mt7615_phy *phy, u32 val);
+-int mt7615_mcu_ctrl_pm_state(struct mt7615_dev *dev, int band, int enter);
+ int mt7615_mcu_get_temperature(struct mt7615_dev *dev, int index);
+ void mt7615_mcu_exit(struct mt7615_dev *dev);
+ void mt7615_mcu_fill_msg(struct mt7615_dev *dev, struct sk_buff *skb,
 -- 
 2.25.1
 
