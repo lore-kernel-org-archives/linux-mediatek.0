@@ -6,17 +6,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 23C2DC3F2CE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2020 16:42:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 71D65C2BB1D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2020 16:42:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EF20520738
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2020 16:42:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 480DD20735
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2020 16:42:53 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AN6zIvD2";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="gkSDtNo6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF20520738
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="maiQ6lmC";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="mLkhiKbH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 480DD20735
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,43 +25,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N39EGH4ojbv/4Hxu9iHoYOkszUUWzGAN2xD/huKubtE=; b=AN6zIvD2zhmFv5
-	GtdiUWMtdDEK1Q2i8h2Ubpi3zj8F5QKU6Em2CgxAVA5pkaJoGubQKwSm9uwLaYCO+H2D0pt+d4TB7
-	HR46dlbXUSQLUJ9A7JJoYHHtnxOvQmk6iBijmWO4DZiKJ8m5mjHf5h8AWPOzcUtkH1dadutW9Ikae
-	YGfZCPIFU6xmp43n2npt2M+u3ZFAjDoRJ+i34UVmi4T0TX/7s8SUs+PPHJ15MfAnXEu15xu5IHKF2
-	2sOfAWQsA3xJ1iObc5RWJh2tzNJ4peQTtK/4reel4EeIX/6oF4uUCuIVetFQ+VrAkjPg0Ih+Kpzu2
-	AI2pRMxTuCM/P9xfRwVQ==;
+	List-Owner; bh=oNc9CL69e/OsMVckbHlJPGFhV1NqJzfdO5ByOSdaiHE=; b=maiQ6lmCmzNXsJ
+	CtDkDPUTME4+A3EpNNKkDDhlgBIRBtLiUAuF9JGqWQbGwJC+BHQsLkVwlE94IdNmOZzHl9ZIft8Tb
+	3V0OROLmvFcWsR+4fUn0B/PI/4ko57YSZFoYPnsmEbIPyEdwfLCJiBvSaqqnrqirkNtatde5hs6F5
+	7dNN32+CZ1VrrrJwx/MqpaTP5RBnLA+MLv4yM0KX5+Z8OWSp847F0ApEZCLcnpKoVpKvN8ZrYgwEF
+	FPciZDljcbLtUQ/86zBbFWWqZ8b9jGBYpxzxvWxuQo2JYcBqrbff+XxEsnoFLcZtFvUJlMdkceJmK
+	LgQqHUO7U6wlV3mAefBA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEFIh-0007Qw-1y; Tue, 17 Mar 2020 16:42:43 +0000
+	id 1jEFIj-0007Vx-Mk; Tue, 17 Mar 2020 16:42:45 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEFIX-0007E4-UX
- for linux-mediatek@lists.infradead.org; Tue, 17 Mar 2020 16:42:36 +0000
+ id 1jEFIc-0007Jf-68
+ for linux-mediatek@lists.infradead.org; Tue, 17 Mar 2020 16:42:39 +0000
 Received: from lore-desk-wlan.redhat.com (unknown [151.48.128.122])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 3150D2073E;
- Tue, 17 Mar 2020 16:42:32 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 071C320663;
+ Tue, 17 Mar 2020 16:42:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1584463353;
- bh=E+FausOTa04jhInPcaWth1o5g+avAXa5NKjHpTPhpVg=;
+ s=default; t=1584463357;
+ bh=hTimax+oZjOzD9e1mB5+sI8iqyRbV+3ZpwnJohD8n/w=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=gkSDtNo6jm9pMRXSDw2WJPNi0aP5nMEmiDtaU2RMO7uIaMgRivdJ4qSdLhFVWdocH
- 7anOdCjBmLFj1qUrvDN1lQ+AU59mv7EjHiyxt6tfUT42EGuMWgsB+fp1aNYECvNd1d
- gKBsNGyA0eaTsF7sClsx8WoWVvdUyCbLJQec2sXE=
+ b=mLkhiKbH5cpqVOR6A2HRYCXaMbPkiFpKjDnknScy781x3/+S3mG8JSGA15GYY4jNU
+ Ae/Zvf8eOPLG2qJ14eeGR52wnE8C6L6H+chPkd62iEgNL8kiZ9v6TcX6XVXtLvwABa
+ YAKZAcpjqqOznRC3cWnVHB2B5pZHt9YNh3O9VlF0=
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name
-Subject: [PATCH v4 22/25] mt76: mt7615: add more uni mcu commands
-Date: Tue, 17 Mar 2020 17:41:29 +0100
-Message-Id: <9c06586b7beeaa1436039f419f5a93bd5f9827d7.1584463004.git.lorenzo@kernel.org>
+Subject: [PATCH v4 24/25] mt76: mt7615: get rid of sta_rec_wtbl data structure
+Date: Tue, 17 Mar 2020 17:41:31 +0100
+Message-Id: <02778e136c4b5d5bc5897ee19e8053686f3c6358.1584463004.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1584463004.git.lorenzo@kernel.org>
 References: <cover.1584463004.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200317_094234_053158_0F1F6E6E 
-X-CRM114-Status: GOOD (  11.75  )
+X-CRM114-CacheID: sfid-20200317_094238_309931_CCDEFAC3 
+X-CRM114-Status: UNSURE (   8.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,268 +81,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+Sobstitute sta_rec_wtbl data structure with tlv one
 
-Introduce mt7615_mcu_uni_set_bss, mt7615_mcu_uni_set_dev and
-mt7615_mcu_uni_set_beacon_offload uni mcu commands. This is a
-preliminary patch to add mt7663e support
-
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- .../net/wireless/mediatek/mt76/mt7615/mcu.c   | 205 ++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7615/mcu.h   |   7 +
- 2 files changed, 212 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 17 +++++++----------
+ drivers/net/wireless/mediatek/mt76/mt7615/mcu.h |  7 +------
+ 2 files changed, 8 insertions(+), 16 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index a72b65ebdffc..7dd5826be305 100644
+index 9840933211a4..8e0225e6cc72 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -1113,6 +1113,207 @@ static const struct mt7615_mcu_ops sta_update_ops = {
- 	.sta_add = mt7615_mcu_add_sta,
- };
+@@ -486,7 +486,7 @@ static struct wtbl_req_hdr *
+ mt7615_mcu_alloc_wtbl_req(struct mt7615_sta *msta, int cmd,
+ 			  void *sta_wtbl, struct sk_buff **skb)
+ {
+-	struct sta_rec_wtbl *sta_hdr = sta_wtbl;
++	struct tlv *sta_hdr = sta_wtbl;
+ 	struct wtbl_req_hdr hdr = {
+ 		.wlan_idx = msta->wcid.idx,
+ 		.operation = cmd,
+@@ -512,7 +512,7 @@ mt7615_mcu_add_nested_tlv(struct sk_buff *skb, int tag, int len,
+ 			  void *sta_ntlv, void *sta_wtbl)
+ {
+ 	struct sta_ntlv_hdr *ntlv_hdr = sta_ntlv;
+-	struct sta_rec_wtbl *sta_hdr = sta_wtbl;
++	struct tlv *sta_hdr = sta_wtbl;
+ 	struct tlv *ptlv, tlv = {
+ 		.tag = cpu_to_le16(tag),
+ 		.len = cpu_to_le16(len),
+@@ -1035,8 +1035,8 @@ mt7615_mcu_sta_ba(struct mt7615_dev *dev,
+ 		return PTR_ERR(skb);
  
-+static int
-+mt7615_mcu_uni_add_dev(struct mt7615_dev *dev,
-+		       struct ieee80211_vif *vif, bool enable)
-+{
-+	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
-+	struct {
-+		struct req_hdr {
-+			u8 omac_idx;
-+			u8 band_idx;
-+			__le16 pad;
-+		} __packed hdr;
-+		struct req_tlv {
-+			__le16 tag;
-+			__le16 len;
-+			u8 active;
-+			u8 pad;
-+			u8 omac_addr[ETH_ALEN];
-+		} __packed tlv;
-+	} data = {
-+		.hdr = {
-+			.omac_idx = mvif->omac_idx,
-+			.band_idx = mvif->band_idx,
-+		},
-+		.tlv = {
-+			.tag = cpu_to_le16(DEV_INFO_ACTIVE),
-+			.len = cpu_to_le16(sizeof(struct req_tlv)),
-+			.active = enable,
-+		},
-+	};
+ 	mt7615_mcu_sta_ba_tlv(skb, params, enable, tx);
+-	sta_wtbl = mt7615_mcu_add_tlv(skb, STA_REC_WTBL,
+-				      sizeof(struct sta_rec_wtbl));
 +
-+	memcpy(data.tlv.omac_addr, vif->addr, ETH_ALEN);
-+
-+	return __mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD_DEV_INFO_UPDATE,
-+				   &data, sizeof(data), true);
-+}
-+
-+static int
-+mt7615_mcu_uni_ctrl_pm_state(struct mt7615_dev *dev, int band, int state)
-+{
-+	return 0;
-+}
-+
-+static int
-+mt7615_mcu_uni_add_bss(struct mt7615_dev *dev,
-+		       struct ieee80211_vif *vif, bool enable)
-+{
-+	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
-+	struct {
-+		struct req_hdr {
-+			u8 bss_idx;
-+			u8 pad[3];
-+		} __packed hdr;
-+		struct basic_tlv {
-+			__le16 tag;
-+			__le16 len;
-+			u8 active;
-+			u8 omac_idx;
-+			u8 hw_bss_idx;
-+			u8 band_idx;
-+			__le32 conn_type;
-+			u8 conn_state;
-+			u8 wmm_idx;
-+			u8 bssid[ETH_ALEN];
-+			__le16 bmc_tx_wlan_idx;
-+			__le16 bcn_interval;
-+			u8 dtim_period;
-+			u8 phymode;
-+			__le16 sta_idx;
-+			u8 nonht_basic_phy;
-+			u8 pad[3];
-+		} __packed basic;
-+	} req = {
-+		.hdr = {
-+			.bss_idx = mvif->idx,
-+		},
-+		.basic = {
-+			.tag = cpu_to_le16(UNI_BSS_INFO_BASIC),
-+			.len = cpu_to_le16(sizeof(struct basic_tlv)),
-+			.bcn_interval = cpu_to_le16(vif->bss_conf.beacon_int),
-+			.dtim_period = vif->bss_conf.dtim_period,
-+			.omac_idx = mvif->omac_idx,
-+			.band_idx = mvif->band_idx,
-+			.wmm_idx = mvif->wmm_idx,
-+			.active = enable,
-+		},
-+	};
-+	u8 idx, tx_wlan_idx = 0;
-+
-+	idx = mvif->omac_idx > EXT_BSSID_START ? HW_BSSID_0 : mvif->omac_idx;
-+	req.basic.hw_bss_idx = idx;
-+
-+	switch (vif->type) {
-+	case NL80211_IFTYPE_MESH_POINT:
-+	case NL80211_IFTYPE_AP:
-+		req.basic.conn_type = cpu_to_le32(CONNECTION_INFRA_AP);
-+		tx_wlan_idx = mvif->sta.wcid.idx;
-+		break;
-+	case NL80211_IFTYPE_STATION:
-+		if (enable) {
-+			struct ieee80211_sta *sta;
-+			struct mt7615_sta *msta;
-+
-+			rcu_read_lock();
-+			sta = ieee80211_find_sta(vif, vif->bss_conf.bssid);
-+			if (!sta) {
-+				rcu_read_unlock();
-+				return -EINVAL;
-+			}
-+
-+			msta = (struct mt7615_sta *)sta->drv_priv;
-+			tx_wlan_idx = msta->wcid.idx;
-+			rcu_read_unlock();
-+		}
-+		req.basic.conn_type = cpu_to_le32(CONNECTION_INFRA_STA);
-+		break;
-+	default:
-+		WARN_ON(1);
-+		break;
-+	}
-+
-+	memcpy(req.basic.bssid, vif->bss_conf.bssid, ETH_ALEN);
-+	req.basic.bmc_tx_wlan_idx = cpu_to_le16(tx_wlan_idx);
-+	req.basic.sta_idx = cpu_to_le16(tx_wlan_idx);
-+	req.basic.conn_state = !enable;
-+
-+	return __mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD_BSS_INFO_UPDATE,
-+				   &req, sizeof(req), true);
-+}
-+
-+static int
-+mt7615_mcu_uni_add_beacon_offload(struct mt7615_dev *dev,
-+				  struct ieee80211_hw *hw,
-+				  struct ieee80211_vif *vif,
-+				  bool enable)
-+{
-+	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
-+	struct mt76_wcid *wcid = &dev->mt76.global_wcid;
-+	struct ieee80211_mutable_offsets offs;
-+	struct {
-+		struct req_hdr {
-+			u8 bss_idx;
-+			u8 pad[3];
-+		} __packed hdr;
-+		struct bcn_content_tlv {
-+			__le16 tag;
-+			__le16 len;
-+			__le16 tim_ie_pos;
-+			__le16 csa_ie_pos;
-+			__le16 bcc_ie_pos;
-+			/* 0: enable beacon offload
-+			 * 1: disable beacon offload
-+			 * 2: update probe respond offload
-+			 */
-+			u8 enable;
-+			/* 0: legacy format (TXD + payload)
-+			 * 1: only cap field IE
-+			 */
-+			u8 type;
-+			__le16 pkt_len;
-+			u8 pkt[512];
-+		} __packed beacon_tlv;
-+	} req = {
-+		.hdr = {
-+			.bss_idx = mvif->idx,
-+		},
-+		.beacon_tlv = {
-+			.tag = cpu_to_le16(UNI_BSS_INFO_BCN_CONTENT),
-+			.len = cpu_to_le16(sizeof(struct bcn_content_tlv)),
-+			.enable = enable,
-+		},
-+	};
-+	struct sk_buff *skb;
-+
-+	skb = ieee80211_beacon_get_template(mt76_hw(dev), vif, &offs);
-+	if (!skb)
-+		return -EINVAL;
-+
-+	if (skb->len > 512 - MT_TXD_SIZE) {
-+		dev_err(dev->mt76.dev, "beacon size limit exceed\n");
-+		dev_kfree_skb(skb);
-+		return -EINVAL;
-+	}
-+
-+	mt7615_mac_write_txwi(dev, (__le32 *)(req.beacon_tlv.pkt), skb,
-+			      wcid, NULL, 0, NULL, true);
-+	memcpy(req.beacon_tlv.pkt + MT_TXD_SIZE, skb->data, skb->len);
-+	req.beacon_tlv.pkt_len = cpu_to_le16(MT_TXD_SIZE + skb->len);
-+	req.beacon_tlv.tim_ie_pos = cpu_to_le16(MT_TXD_SIZE + offs.tim_offset);
-+
-+	if (offs.csa_counter_offs[0]) {
-+		u16 csa_offs;
-+
-+		csa_offs = MT_TXD_SIZE + offs.csa_counter_offs[0] - 4;
-+		req.beacon_tlv.csa_ie_pos = cpu_to_le16(csa_offs);
-+	}
-+	dev_kfree_skb(skb);
-+
-+	return __mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD_BSS_INFO_UPDATE,
-+				   &req, sizeof(req), true);
-+}
-+
- static int
- mt7615_mcu_uni_add_sta(struct mt7615_dev *dev, struct ieee80211_vif *vif,
- 		       struct ieee80211_sta *sta, bool enable)
-@@ -1122,6 +1323,10 @@ mt7615_mcu_uni_add_sta(struct mt7615_dev *dev, struct ieee80211_vif *vif,
- }
++	sta_wtbl = mt7615_mcu_add_tlv(skb, STA_REC_WTBL, sizeof(struct tlv));
  
- static const struct mt7615_mcu_ops uni_update_ops = {
-+	.add_beacon_offload = mt7615_mcu_uni_add_beacon_offload,
-+	.set_pm_state = mt7615_mcu_uni_ctrl_pm_state,
-+	.add_dev_info = mt7615_mcu_uni_add_dev,
-+	.add_bss_info = mt7615_mcu_uni_add_bss,
- 	.sta_add = mt7615_mcu_uni_add_sta,
- };
+ 	wtbl_hdr = mt7615_mcu_alloc_wtbl_req(msta, WTBL_SET, sta_wtbl, &skb);
+ 	mt7615_mcu_wtbl_ba_tlv(skb, params, enable, tx, sta_wtbl, wtbl_hdr);
+@@ -1081,8 +1081,7 @@ mt7615_mcu_add_sta_cmd(struct mt7615_dev *dev, struct ieee80211_vif *vif,
+ 	if (enable && sta)
+ 		mt7615_mcu_sta_ht_tlv(skb, sta);
  
+-	sta_wtbl = mt7615_mcu_add_tlv(skb, STA_REC_WTBL,
+-				      sizeof(struct sta_rec_wtbl));
++	sta_wtbl = mt7615_mcu_add_tlv(skb, STA_REC_WTBL, sizeof(struct tlv));
+ 
+ 	wtbl_hdr = mt7615_mcu_alloc_wtbl_req(msta, WTBL_RESET_AND_SET,
+ 					     sta_wtbl, &skb);
+@@ -1330,8 +1329,7 @@ mt7615_mcu_uni_tx_ba(struct mt7615_dev *dev,
+ 	if (IS_ERR(skb))
+ 		return PTR_ERR(skb);
+ 
+-	sta_wtbl = mt7615_mcu_add_tlv(skb, STA_REC_WTBL,
+-				      sizeof(struct sta_rec_wtbl));
++	sta_wtbl = mt7615_mcu_add_tlv(skb, STA_REC_WTBL, sizeof(struct tlv));
+ 
+ 	wtbl_hdr = mt7615_mcu_alloc_wtbl_req(msta, WTBL_SET, sta_wtbl, &skb);
+ 	if (IS_ERR(wtbl_hdr))
+@@ -1382,8 +1380,7 @@ mt7615_mcu_uni_rx_ba(struct mt7615_dev *dev,
+ 	if (IS_ERR(skb))
+ 		return PTR_ERR(skb);
+ 
+-	sta_wtbl = mt7615_mcu_add_tlv(skb, STA_REC_WTBL,
+-				      sizeof(struct sta_rec_wtbl));
++	sta_wtbl = mt7615_mcu_add_tlv(skb, STA_REC_WTBL, sizeof(struct tlv));
+ 
+ 	wtbl_hdr = mt7615_mcu_alloc_wtbl_req(msta, WTBL_SET, sta_wtbl, &skb);
+ 	if (IS_ERR(wtbl_hdr))
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
-index bc87cf0419d8..62a7b86f2a3b 100644
+index 62a7b86f2a3b..d1f7391472fc 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
-@@ -270,6 +270,8 @@ enum {
- };
+@@ -577,7 +577,7 @@ struct wtbl_raw {
+ 					 sizeof(struct sta_rec_basic) +	\
+ 					 sizeof(struct sta_rec_ht) +	\
+ 					 sizeof(struct sta_rec_vht) +	\
+-					 sizeof(struct sta_rec_wtbl) +	\
++					 sizeof(struct tlv) +	\
+ 					 MT7615_WTBL_UPDATE_MAX_SIZE)
  
+ #define MT7615_WTBL_UPDATE_BA_SIZE	(sizeof(struct wtbl_req_hdr) +	\
+@@ -666,11 +666,6 @@ struct sta_rec_ba {
+ 	__le16 winsize;
+ } __packed;
+ 
+-struct sta_rec_wtbl {
+-	__le16 tag;
+-	__le16 len;
+-} __packed;
+-
  enum {
-+	MCU_UNI_CMD_DEV_INFO_UPDATE = MCU_UNI_PREFIX | 0x01,
-+	MCU_UNI_CMD_BSS_INFO_UPDATE = MCU_UNI_PREFIX | 0x02,
- 	MCU_UNI_CMD_STA_REC_UPDATE = MCU_UNI_PREFIX | 0x03,
- };
- 
-@@ -279,6 +281,11 @@ enum {
- 
- #define MCU_CMD_UNI_EXT_ACK	(MCU_CMD_ACK | MCU_CMD_UNI | MCU_CMD_QUERY)
- 
-+enum {
-+	UNI_BSS_INFO_BASIC = 0,
-+	UNI_BSS_INFO_BCN_CONTENT = 7,
-+};
-+
- enum {
- 	PATCH_SEM_RELEASE = 0x0,
- 	PATCH_SEM_GET	  = 0x1
+ 	STA_REC_BASIC,
+ 	STA_REC_RA,
 -- 
 2.25.1
 
