@@ -2,78 +2,79 @@ Return-Path: <SRS0=yvcX=5C=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F888C10F29
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2020 13:34:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 268BFC18E5B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2020 14:07:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E6AA6205ED
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2020 13:34:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EDA10205ED
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Mar 2020 14:07:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ta27UtKI";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="g3CzeVFO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E6AA6205ED
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="X0ym1nx5";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="MyZFVhIG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EDA10205ED
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+atrciVDu1hHUtpveRfuzi+5QjT0ydSjF3g6TthF+ks=; b=Ta27UtKIDR08oK
-	llV3dNPpn7bch01RK2OiFm8Dk+R+TZJiDcB5Q4rPPcOQ4m+PX+8O9czAtH8QmUlq1YTfv0uXhcKRe
-	5ZayHR8EyLticBvZJXb0nTpPwCBn/dsQeAhrGnAJWhnHHcqs/UHB9TaH8ZyXV23g/LSlr5XLRmze4
-	4VzYuLUJdKC4ZTl0CnTbBX5TVmaCHozVa2dV+e/IZz+qm1OB0wao8LLtczYqV1ee9hGLLTOIwc33O
-	uJsUazuIeXwLsQg4ux5ET09YEeXzFnApc8qr1JWckCh/vWmbPlcaNT/FFW+ImdEScGYCbNZE3xWrK
-	RnafuHsLxJDuqPDecjiQ==;
+	List-Owner; bh=ZFCN9XbbhbDR0DsBwrmAw/RHhnOmZ/uyN6MXsPMWAqg=; b=X0ym1nx5pwMl9B
+	YnsGSS9QjsUPmv2uFAeQ+X2xr/Fug0ahXMYf01o56I0DP+MzJDmKdymv9/No1NMBGU7I3A9oIdL4Q
+	MAb6aasMVDMwtxPDnN4BcOKt01vGY8oR0ThbbWPiKXhl+yZfUOSwmdajhqWq620uPyUJO/X1dkPfU
+	yw0Fy77ZofM/SOm5SM4Gy/m34xn7txJWUcPcryEAgw6fpI/hpFdBJXeQ1/TGYkLhlcG6Otyw7hXd4
+	IUOHtzJKpltmhYwBMkekdQ93K908AeI2X/TBZHz7167ozhacQl2PEvd6zD5nZlR6Ty9fJccIuv/+1
+	g/vIUKyQIxWJGMlI/JEw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jECMG-0004dI-Fo; Tue, 17 Mar 2020 13:34:12 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jECs2-0006Wh-H7; Tue, 17 Mar 2020 14:07:02 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jECM4-0004UN-7X; Tue, 17 Mar 2020 13:34:04 +0000
-Received: from mail-ed1-f43.google.com (mail-ed1-f43.google.com
- [209.85.208.43])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4956A2076B;
- Tue, 17 Mar 2020 13:33:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1584452039;
- bh=ubR0JrKy3jQmSPnc1EN0k8pifk/MO4gNg2fiNHZs1bk=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=g3CzeVFOQaYZV9EheV69Kl+xkmd1VoLN2Wadwenh/r8KcYQ60hrSyk5Lbn1PK30sK
- Q4CytD2x0XH9MlGQyMissAw5uULD8w7X0phEjWX4dUJ3mwTh0hyJBtx8vSnjEQwCA+
- fIzjtRVSvLR0Q2zQu2wOaLp/d2c1uYoZYTgUNpwk=
-Received: by mail-ed1-f43.google.com with SMTP id i24so22625890eds.1;
- Tue, 17 Mar 2020 06:33:59 -0700 (PDT)
-X-Gm-Message-State: ANhLgQ3iXuY2r/c1zu7l7OD1MJs+3t157F+J6QO58ThuYQfO01BYZ/DS
- H20hDOY3C+AqytGOxpvjPX8i2Nx+l/NIHzMk0Q==
-X-Google-Smtp-Source: ADFU+vvl8fdjLZSjGkoy60pvuqiGdObvt/Ojt0xErZdZ41QZdboB+pIFrAwQ1zW7Jvg5alkgMZgvmRSvdeoEemfJOIo=
-X-Received: by 2002:a17:906:4bc3:: with SMTP id
- x3mr4209614ejv.38.1584452037617; 
- Tue, 17 Mar 2020 06:33:57 -0700 (PDT)
+ id 1jECry-0006U7-U0
+ for linux-mediatek@lists.infradead.org; Tue, 17 Mar 2020 14:07:00 +0000
+X-UUID: 7e09860ad0fe40ed8be4e428d0f685e5-20200317
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=dJ7gn4TdaczOjZjHPmp781H0hrs3QHnrPcfrTh+H9UM=; 
+ b=MyZFVhIGhp2C+YAQlq6W12tNfo7aYr7daMjMjQO0bfY1lIU1nJzNe8yjAl0NqdgHVFzj4OhiVJsYij2JUzNcpnOn6Z5T/o/6v1rk4Q8rb21lWn4A98uZwRGPOW3gQVNYAyfjUT6UN7FZTKAd8JPLV+ZP3FSFTSGenXKG9tbawTs=;
+X-UUID: 7e09860ad0fe40ed8be4e428d0f685e5-20200317
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <hanks.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 882869601; Tue, 17 Mar 2020 06:06:56 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 17 Mar 2020 07:06:54 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 17 Mar 2020 22:06:14 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Tue, 17 Mar 2020 22:06:07 +0800
+From: Hanks Chen <hanks.chen@mediatek.com>
+To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>
+Subject: [PATCH v3 3/6] pinctrl: mediatek: avoid virtual gpio trying to set reg
+Date: Tue, 17 Mar 2020 22:06:44 +0800
+Message-ID: <1584454007-2115-4-git-send-email-hanks.chen@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1584454007-2115-1-git-send-email-hanks.chen@mediatek.com>
+References: <1584454007-2115-1-git-send-email-hanks.chen@mediatek.com>
 MIME-Version: 1.0
-References: <20200311071823.117899-1-jitao.shi@mediatek.com>
- <20200311071823.117899-2-jitao.shi@mediatek.com>
- <c46e49e6-846f-4f41-a8e3-57d5503e1cd7@baylibre.com>
-In-Reply-To: <c46e49e6-846f-4f41-a8e3-57d5503e1cd7@baylibre.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 17 Mar 2020 21:33:46 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8B+AS9uUvazfg_OtvnaW8kJVbyNB-FVUYh5MPMuJnf8g@mail.gmail.com>
-Message-ID: <CAAOTY_8B+AS9uUvazfg_OtvnaW8kJVbyNB-FVUYh5MPMuJnf8g@mail.gmail.com>
-Subject: Re: [PATCH v13 1/6] dt-bindings: media: add pclk-sample dual edge
- property
-To: Neil Armstrong <narmstrong@baylibre.com>,
- Jitao Shi <jitao.shi@mediatek.com>
+X-TM-SNTS-SMTP: FDDBC871B4EAA0324395034B2F5104235B5519A7A8F0DCE7866260D532CFA4A62000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200317_063402_916981_6CA112B7 
-X-CRM114-Status: GOOD (  18.94  )
+X-CRM114-CacheID: sfid-20200317_070658_967541_D15F81BA 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,57 +86,104 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>,
- huijuan.xie@mediatek.com, stonea168@163.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, cawa.cheng@mediatek.com,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ Andy Teng <andy.teng@mediatek.com>, Hanks Chen <hanks.chen@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Mars Cheng <mars.cheng@mediatek.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEppdGFvOgoKSSBhZ3JlZSB3aXRoIE5laWwsIHNvIHBsZWFzZSBiYXNlIG9uIEJvcmlzJyBl
-ZmZvcnQgdG8gbmVnb3RpYXRlIHdpdGggYnJpZGdlLgoKUmVnYXJkcywKQ2h1bi1LdWFuZyBIdQoK
-TmVpbCBBcm1zdHJvbmcgPG5hcm1zdHJvbmdAYmF5bGlicmUuY29tPiDmlrwgMjAyMOW5tDPmnIgx
-MeaXpSDpgLHkuIkg5LiL5Y2IOTo1M+Wvq+mBk++8mgoKPgo+IEhpLAo+Cj4gT24gMTEvMDMvMjAy
-MCAwODoxOCwgSml0YW8gU2hpIHdyb3RlOgo+ID4gU29tZSBjaGlwcydzIHNhbXBsZSBtb2RlIGFy
-ZSByaXNpbmcsIGZhbGxpbmcgYW5kIGR1YWwgZWRnZSAoYm90aAo+ID4gZmFsbGluZyBhbmQgcmlz
-aW5nIGVkZ2UpLgo+ID4gRXh0ZXJuIHRoZSBwY2xrLXNhbXBsZSBwcm9wZXJ0eSB0byBzdXBwb3J0
-IGR1YWwgZWRnZS4KPiA+Cj4gPiBBY2tlZC1ieTogUm9iIEhlcnJpbmcgPHJvYmhAa2VybmVsLm9y
-Zz4KPiA+IFJldmlld2VkLWJ5OiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPgo+ID4gU2lnbmVk
-LW9mZi1ieTogSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPgo+ID4gLS0tCj4gPiAg
-RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL3ZpZGVvLWludGVyZmFjZXMu
-dHh0IHwgNCArKy0tCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxl
-dGlvbnMoLSkKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
-bmRpbmdzL21lZGlhL3ZpZGVvLWludGVyZmFjZXMudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
-cmVlL2JpbmRpbmdzL21lZGlhL3ZpZGVvLWludGVyZmFjZXMudHh0Cj4gPiBpbmRleCBmODg0YWRh
-MGJmZmMuLmRhOWFkMjQ5MzVkYiAxMDA2NDQKPiA+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNl
-dHJlZS9iaW5kaW5ncy9tZWRpYS92aWRlby1pbnRlcmZhY2VzLnR4dAo+ID4gKysrIGIvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL3ZpZGVvLWludGVyZmFjZXMudHh0Cj4g
-PiBAQCAtMTE4LDggKzExOCw4IEBAIE9wdGlvbmFsIGVuZHBvaW50IHByb3BlcnRpZXMKPiA+ICAt
-IGRhdGEtZW5hYmxlLWFjdGl2ZTogc2ltaWxhciB0byBIU1lOQyBhbmQgVlNZTkMsIHNwZWNpZmll
-cyB0aGUgZGF0YSBlbmFibGUKPiA+ICAgIHNpZ25hbCBwb2xhcml0eS4KPiA+ICAtIGZpZWxkLWV2
-ZW4tYWN0aXZlOiBmaWVsZCBzaWduYWwgbGV2ZWwgZHVyaW5nIHRoZSBldmVuIGZpZWxkIGRhdGEg
-dHJhbnNtaXNzaW9uLgo+ID4gLS0gcGNsay1zYW1wbGU6IHNhbXBsZSBkYXRhIG9uIHJpc2luZyAo
-MSkgb3IgZmFsbGluZyAoMCkgZWRnZSBvZiB0aGUgcGl4ZWwgY2xvY2sKPiA+IC0gIHNpZ25hbC4K
-PiA+ICstIHBjbGstc2FtcGxlOiBzYW1wbGUgZGF0YSBvbiByaXNpbmcgKDEpLCBmYWxsaW5nICgw
-KSBvciBib3RoIHJpc2luZyBhbmQKPiA+ICsgIGZhbGxpbmcgKDIpIGVkZ2Ugb2YgdGhlIHBpeGVs
-IGNsb2NrIHNpZ25hbC4KPiA+ICAtIHN5bmMtb24tZ3JlZW4tYWN0aXZlOiBhY3RpdmUgc3RhdGUg
-b2YgU3luYy1vbi1ncmVlbiAoU29HKSBzaWduYWwsIDAvMSBmb3IKPiA+ICAgIExPVy9ISUdIIHJl
-c3BlY3RpdmVseS4KPiA+ICAtIGRhdGEtbGFuZXM6IGFuIGFycmF5IG9mIHBoeXNpY2FsIGRhdGEg
-bGFuZSBpbmRleGVzLiBQb3NpdGlvbiBvZiBhbiBlbnRyeQo+ID4KPgo+IFRoaXMgY2hhbmdlcyB0
-aGUgYnVzIGZvcm1hdCwgYnV0IHdlIHJlY2VudGx5IGludHJvZHVjZWQgYSBidXMgZm9ybWF0IG5l
-Z29jaWF0aW9uCj4gYmV0d2VlbiBicmlkZ2VzIHRvIGF2b2lkIGFkZGluZyBzdWNoIHByb3BlcnRp
-ZXMgaW50byBEVCwgYW5kIG1ha2UgYnVzIGZvcm1hdCBzZXR1cAo+IGR5bmFtaWMgYmV0d2VlbiBh
-biBlbmNvZGVyIGFuZCBhIGJyaWRnZS4KPgo+IEl0IHdvdWxkIGJlIGdyZWF0IHRvIHVzZSB0aGF0
-IGluc3RlYWQuCj4KPiBOZWlsCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZy
-ZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlz
-dGluZm8vZHJpLWRldmVsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LW1lZGlhdGVrCg==
+for virtual gpios, they should not do reg setting and
+should behave as expected for eint function.
+
+Change-Id: I913501f21c841c2cb981530cd387395648f83984
+Signed-off-by: Hanks Chen <hanks.chen@mediatek.com>
+Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c |   28 ++++++++++++++++++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h |    1 +
+ drivers/pinctrl/mediatek/pinctrl-paris.c         |    7 ++++++
+ 3 files changed, 36 insertions(+)
+
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+index 20e1c89..087d233 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+@@ -226,6 +226,31 @@ static int mtk_xt_find_eint_num(struct mtk_pinctrl *hw, unsigned long eint_n)
+ 	return EINT_NA;
+ }
+ 
++/*
++ * Virtual GPIO only used inside SOC and not being exported to outside SOC.
++ * Some modules use virtual GPIO as eint (e.g. pmif or usb).
++ * In MTK platform, external interrupt (EINT) and GPIO is 1-1 mapping
++ * and we can set GPIO as eint.
++ * But some modules use specific eint which doesn't have real GPIO pin.
++ * So we use virtual GPIO to map it.
++ */
++
++bool mtk_is_virt_gpio(struct mtk_pinctrl *hw, unsigned int gpio_n)
++{
++	const struct mtk_pin_desc *desc;
++	bool virt_gpio = false;
++
++	if (gpio_n >= hw->soc->npins)
++		return virt_gpio;
++
++	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio_n];
++
++	if (desc->funcs && !desc->funcs[desc->eint.eint_m].name)
++		virt_gpio = true;
++
++	return virt_gpio;
++}
++
+ static int mtk_xt_get_gpio_n(void *data, unsigned long eint_n,
+ 			     unsigned int *gpio_n,
+ 			     struct gpio_chip **gpio_chip)
+@@ -278,6 +303,9 @@ static int mtk_xt_set_gpio_as_eint(void *data, unsigned long eint_n)
+ 	if (err)
+ 		return err;
+ 
++	if (mtk_is_virt_gpio(hw, gpio_n))
++		return 0;
++
+ 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio_n];
+ 
+ 	err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_MODE,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+index 1b7da42..cda1c7a0 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+@@ -299,4 +299,5 @@ int mtk_pinconf_adv_drive_set(struct mtk_pinctrl *hw,
+ int mtk_pinconf_adv_drive_get(struct mtk_pinctrl *hw,
+ 			      const struct mtk_pin_desc *desc, u32 *val);
+ 
++bool mtk_is_virt_gpio(struct mtk_pinctrl *hw, unsigned int gpio_n);
+ #endif /* __PINCTRL_MTK_COMMON_V2_H */
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index 923264d..7fba76d 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -693,6 +693,13 @@ static int mtk_gpio_get_direction(struct gpio_chip *chip, unsigned int gpio)
+ 	const struct mtk_pin_desc *desc;
+ 	int value, err;
+ 
++	/*
++	 * "Virtual" GPIOs are always and only used for interrupts
++	 * Since they are only used for interrupts, they are always inputs
++	 */
++	if (mtk_is_virt_gpio(hw, gpio))
++		return 1;
++
+ 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+ 
+ 	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &value);
+-- 
+1.7.9.5
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
