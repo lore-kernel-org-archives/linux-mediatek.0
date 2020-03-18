@@ -2,122 +2,67 @@ Return-Path: <SRS0=5sS2=5D=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,FAKE_REPLY_C,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 78E27C4332D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2020 22:11:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 10350C4332D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2020 22:23:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3698E20754
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2020 22:11:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D468C2076C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Mar 2020 22:23:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MClJV5Rs";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=micron.com header.i=@micron.com header.b="RvdYJOmQ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3698E20754
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=micron.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tCcMEpO5";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="TeaROXeq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D468C2076C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f9yDwlH3Wt7JlpNgWX8dHMEmYfNz/qHTkNvRNGaK+04=; b=MClJV5RseYdQcc
-	PNIj3gFrDsIuVgnsLJQ1zVwh1ARZanDejb8sexd9Vea9eYcMokGjT4YaucsjDLfZeNYbqdF4RtYyN
-	GG3QiBHeqwITIcv0emIkWl5ivefpPmGjjcTpCnT+NGsyxxW+/CaFVgdc7EiVAHAaigVz1RnJH5siB
-	qw+BS9hQM0btB6uMtAk7aNLdEhoUQZhjCStYXI0acY36lVIdwIAzS7HEsUIbr33kha66oDTL6glmg
-	zVtzBkv3q8cQI5XKO85OVqXKJRRwLWVlU7fMjpHTil0NwO3ahrse84W0Jf1cPMuhCq+f8lszrR9yG
-	xh1Qu/sAM2TuB8Pu93cw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=ttYoj338iMZPFkrJGL5OzqupWfZ/yp2kO+NEaDoNfO8=; b=tCcMEpO5cN3T3c
+	9DB9nScemybGKzU6Y6zJVp7z2Pz8z3oX+z8rlqCKp8ri3GsAW32RbP8kTAAciiU4V4nYhTYa99IoA
+	IYgRmhOJb63jWU0+d0aoWldtt7L7wGTAkStgSTgRbMOZt9Ci+uHkPp+Eq05vvGwCVnkB+tkka10QN
+	GH9qo6Vh9mwCnVHBmo+5gQI2CV1kuZHLMYpgOAHYgTIonVMVpKN71fMv/rnHv8k5nBE8pJqRIKjcg
+	c11veNu7/nChPPdsdbeoOluJWbXBcjIB1L//AAULnSjMmR5eWKUpSXiskNIJ6okpOGBUCP/IA624v
+	KJbCjbxvrWkUDKwFdS3Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEgu1-0008HP-MH; Wed, 18 Mar 2020 22:11:05 +0000
-Received: from mail-eopbgr750059.outbound.protection.outlook.com
- ([40.107.75.59] helo=NAM02-BL2-obe.outbound.protection.outlook.com)
+	id 1jEh5Q-0004cv-Rn; Wed, 18 Mar 2020 22:22:52 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEgtz-0008Gn-0m; Wed, 18 Mar 2020 22:11:04 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FC4I5stk2RLRZJQN2BLDlkx3J2COzWLsh0/pHgKxaryRFIm18d0cpzj7MHkOtnvVfFEiGkCs59kbmrU4zoc5x5vgPYPGrR6ehp+IR2sbXGRJa/lOdJ7Bcrb6ffWU9p3rMAFwWBG6IbZ4izZW+tY9NWIY8IRLGrBxHgTV/fxsMmySMAJiymC0lHvyXoKD74l1ckmRVjJmo81D2XEZw22MWaZq71AdW3Kqlu6MezWgR8p7eEdipELlsWzhvxA7c6NMj8L6qu+CwbxZY+E8W6HyQaO2wB4XqXEtGsDxrCmxxL+sWFNtYKNEwKMbFkcPDpw72LQc6choyWfRDXMxYIWkpg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=go/vcjLmvP1u+5ACtJC3EOXj+oGcQTyyQCblrOo76HU=;
- b=SOV3GaX4q1MwHo2xMpdvfcoInlinSWQQYLoC3isrDOdMrsRmkaym1Sqf2ucoXC4EAdoqwiR9XJTeldiTap8GOVQntjIiVbvhfLIttiMsh4Wi4wa/43MxbDX2dFpOH/MRmAZ/tledAw29k0TQ+APlhH+pd/fTMx/CwDP+c93gDq9rFJv/zeS5SCQGRncs0Zb9Q0uLVxT1BPqOzTjE75zNHdxAg90mqfIG44PLaQnnbpUlacKcFP1nbXCJgbfQWoqrt5fZm90EVaou/32v8El70t2t2x1wXF2PGEDuOtZ8J7EmaEyFWVKCWCwpacz81gz8Ejqt1ZG8pL6P6M+JNvxNqQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=micron.com; dmarc=pass action=none header.from=micron.com;
- dkim=pass header.d=micron.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=micron.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=go/vcjLmvP1u+5ACtJC3EOXj+oGcQTyyQCblrOo76HU=;
- b=RvdYJOmQYA+15kV1D5+5Liix1BkmvdDpBFijbAAidswc2oUPvfN35jvtGF5cL1bQbHKkoNmM1VPge5EuLCGK6Lw2zXd4yxRCcDucamdkBoSgyZz+GGCXsE4flLaOIGINBvueD4vk1ITG76nXCYgFgQpgMcEI1P2qP7/3h8UgUys=
-Received: from BN7PR08MB5684.namprd08.prod.outlook.com (2603:10b6:408:35::23)
- by BN7PR08MB6068.namprd08.prod.outlook.com (2603:10b6:408:36::25)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2814.16; Wed, 18 Mar
- 2020 22:10:58 +0000
-Received: from BN7PR08MB5684.namprd08.prod.outlook.com
- ([fe80::589d:e16:907b:5135]) by BN7PR08MB5684.namprd08.prod.outlook.com
- ([fe80::589d:e16:907b:5135%5]) with mapi id 15.20.2814.025; Wed, 18 Mar 2020
- 22:10:58 +0000
-From: "Bean Huo (beanhuo)" <beanhuo@micron.com>
-To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
- <linux-scsi@vger.kernel.org>, "martin.peter~sen@oracle.com"
- <martin.peter~sen@oracle.com>, "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "jejb@linux.ibm.com"
- <jejb@linux.ibm.com>, "bvanassche@acm.org" <bvanassche@acm.org>
-Subject: RE: [EXT] [PATCH v7 3/7] scsi: ufs: introduce common and flexible
- delay function
-Thread-Topic: [EXT] [PATCH v7 3/7] scsi: ufs: introduce common and flexible
- delay function
-Thread-Index: AQHV/RGnPsqiA4EvtEeou0tltjIAGahO6EyQ
-Date: Wed, 18 Mar 2020 22:10:58 +0000
-Message-ID: <BN7PR08MB5684DA8C4FB4304CDAE39440DBF70@BN7PR08MB5684.namprd08.prod.outlook.com>
-References: <20200318104016.28049-1-stanley.chu@mediatek.com>
- <20200318104016.28049-4-stanley.chu@mediatek.com>
-In-Reply-To: <20200318104016.28049-4-stanley.chu@mediatek.com>
-Accept-Language: en-150, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-dg-ref: PG1ldGE+PGF0IG5tPSJib2R5LnR4dCIgcD0iYzpcdXNlcnNcYmVhbmh1b1xhcHBkYXRhXHJvYW1pbmdcMDlkODQ5YjYtMzJkMy00YTQwLTg1ZWUtNmI4NGJhMjllMzViXG1zZ3NcbXNnLTU1ZTUwZTVhLTY5NjUtMTFlYS04YjhkLWRjNzE5NjFmOWRkM1xhbWUtdGVzdFw1NWU1MGU1Yy02OTY1LTExZWEtOGI4ZC1kYzcxOTYxZjlkZDNib2R5LnR4dCIgc3o9IjgyMCIgdD0iMTMyMjkwNDMwNTUyMzY1ODI1IiBoPSJEWDJGckVFYmpaRVV1RVFzY2s1cERYRVl0aHM9IiBpZD0iIiBibD0iMCIgYm89IjEiIGNpPSJjQUFBQUVSSFUxUlNSVUZOQ2dVQUFIQUFBQUFCMjBFWWN2M1ZBWGpSM0EwTWlBNHNlTkhjRFF5SURpd0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUJBQUFCQUFBQTlybW53UUFBQUFBQUFBQUFBQUFBQUE9PSIvPjwvbWV0YT4=
-x-dg-rorf: true
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=beanhuo@micron.com; 
-x-originating-ip: [165.225.86.143]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: cba44085-4b41-4600-d544-08d7cb893cb2
-x-ms-traffictypediagnostic: BN7PR08MB6068:|BN7PR08MB6068:|BN7PR08MB6068:
-x-microsoft-antispam-prvs: <BN7PR08MB60686D84E1CA98919A7C8CA1DBF70@BN7PR08MB6068.namprd08.prod.outlook.com>
-x-ms-exchange-transport-forked: True
-x-ms-oob-tlc-oobclassifiers: OLM:3173;
-x-forefront-prvs: 03468CBA43
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(376002)(396003)(39860400002)(136003)(346002)(366004)(199004)(7416002)(54906003)(86362001)(7696005)(8936002)(6506007)(316002)(33656002)(55236004)(110136005)(81166006)(81156014)(8676002)(4744005)(55016002)(9686003)(4326008)(71200400001)(478600001)(26005)(66476007)(5660300002)(66556008)(52536014)(64756008)(2906002)(66446008)(66946007)(76116006)(186003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:BN7PR08MB6068;
- H:BN7PR08MB5684.namprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; 
-received-spf: None (protection.outlook.com: micron.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: IIqAvuigpFmNvdL0ij2tUSPjCADACWDOu5XU7WW8eVsXw+oFRxlPooZ7vA5wwlkDzaPI5GaKgjwEFfIWHxRBQCNK0rUTyrDv6xTkxeTn7JQbgg0WyMbV38zKaa3cRnAvnAy7N2Mb5oBfZvqnVRUFN1/mBq4hqJ24fpfQISZJL/nkiKXigXBg3irqZJkT4YHBbOp4RdmDuVkEcaeJMswQT9cWqRp9mjdr6cUa+bY36HGLqM4bSpP07CIZx0YJzpuZmXucRJOfzpduuL+AP6BfFtxs1zxGP9FcLXjI2MiMzpr+AgAa48i1CNsQotLnyGRXFLEY7UZf+goSNbwtBz6YW+UDzOPVsSQNx7gcGAbYns81WY5o+2CotQVDG5J8mzShrL4d91WwNp2I5zNvyd2uauqKEzS1I5mSZ5RtaNBjj7x9w/vAVBj0TE/rH8fRyqxt
-x-ms-exchange-antispam-messagedata: OIe5Mtomfad8gWM8IcNIT832OfApL/tlGsdoPIKtm6Q1AgAlrTS1ymCVfehSxDxE7zzRYqh7sF2GpYUurlbpGVx4DU1hpmyGeDYmQTf57tkQAJCguUoluuDhFz0X4+U4yrua+vkB28SqJT+6k9LX9w==
+ id 1jEh5F-0004Rz-EY; Wed, 18 Mar 2020 22:22:42 +0000
+Received: from localhost (mobile-166-175-186-165.mycingular.net
+ [166.175.186.165])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6804D20714;
+ Wed, 18 Mar 2020 22:22:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1584570160;
+ bh=Xz/0EvZI1ZYMODHoYRMl9J+dOM/tsbfHznYvsE+DY4A=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=TeaROXeqtIiOuPZEJEeYWnIPHrh1Ask7srNIxIYhwTpKsUqP2jP8EVgIYJM33HfwF
+ 1jFMhhapjJedYXzGwqqv6NFwF3Nch7XWO1iNLYfMzXCjEK5TU34+g7gYssJdkFOM1b
+ DGF8UtEi5MxA8pPt6Acsc8nHRD8W/OlpKBw98Rb4=
+Date: Wed, 18 Mar 2020 17:22:38 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Thomas Gleixner <tglx@linutronix.de>
+Subject: Re: [PATCH 4/5] pci: handled return value of platform_get_irq
+ correctly
+Message-ID: <20200318222238.GA247500@google.com>
 MIME-Version: 1.0
-X-OriginatorOrg: micron.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cba44085-4b41-4600-d544-08d7cb893cb2
-X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Mar 2020 22:10:58.3886 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: f38a5ecd-2813-4862-b11b-ac1d563c806f
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: nI483cqyW9nl0yQ0mJobtnpRJTr2PZiQNx5vm1/XIQ9Jyerx5h3hT9BREhpq+rEIT34CH0YgySYK8qR/I1Q4eA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR08MB6068
+Content-Disposition: inline
+In-Reply-To: <874kulbwyv.fsf@nanos.tec.linutronix.de>
+User-Agent: Mutt/1.12.2 (2019-09-21)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200318_151103_137793_651EBEAA 
-X-CRM114-Status: UNSURE (   7.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200318_152241_531567_CF88EEF6 
+X-CRM114-Status: GOOD (  19.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -129,46 +74,169 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
- "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
- "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "cang@codeaurora.org" <cang@codeaurora.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
+ Marc Gonzalez <marc.w.gonzalez@free.fr>, linux-pci@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Aman Sharma <amanharitsh123@gmail.com>, linux-kernel@vger.kernel.org,
+ Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Marc Zyngier <maz@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Mans Rullgard <mans@mansr.com>,
+ Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, linux-arm-kernel@lists.infradead.org,
+ Andrew Murray <amurray@thegoodpenguin.co.uk>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Stanley
+On Wed, Mar 18, 2020 at 02:42:48PM +0100, Thomas Gleixner wrote:
+> Bjorn Helgaas <helgaas@kernel.org> writes:
+> > On Fri, Mar 13, 2020 at 04:56:42PM -0500, Bjorn Helgaas wrote:
+> >> On Fri, Mar 13, 2020 at 10:05:58PM +0100, Thomas Gleixner wrote:
+> >> > >   I think the best pattern is:
+> >> > >
+> >> > >     irq = platform_get_irq(pdev, i);
+> >> > >     if (irq < 0)
+> >> > >       return irq;
+> >> > 
+> >> > Careful. 0 is not a valid interrupt.
+> >> 
+> >> Should callers of platform_get_irq() check for a 0 return value?
+> >> About 900 of them do not.
 > 
-> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c index
-> 314e808b0d4e..a42a84164dec 100644
-> --- a/drivers/scsi/ufs/ufshcd.c
-> +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -597,6 +597,18 @@ static void ufshcd_print_pwr_info(struct ufs_hba *hba)
->  		 hba->pwr_info.hs_rate);
->  }
+> I don't know what I was looking at.
 > 
-> +void ufshcd_delay_us(unsigned long us, unsigned long tolerance) {
-> +	if (!us)
-> +		return;
-> +
-> +	if (us < 10)
-> +		udelay(us);
-> +	else
-> +		usleep_range(us, us + tolerance);
-> +}
-> +EXPORT_SYMBOL_GPL(ufshcd_delay_us);
-> +
-In this way, the callers of ufshcd_delay_us(), can directly call udelay() or usleep_range(), what is exist meaning of ufshcd_delay_us()?
+> platform_get_irq() does the right thing already, so checking for irq < 0
+> is sufficient.
+> 
+> Sorry for the confusion!
 
-//Bean
+Thanks, I was indeed confused!  Maybe we could reduce future confusion
+by strengthening the comments slightly, e.g.,
 
+  - * Return: IRQ number on success, negative error number on failure.
+  + * Return: non-zero IRQ number on success, negative error number on failure.
+
+I don't want to push my luck, but it's pretty hard to prove that
+platform_get_irq() never returns 0.  What would you think of something
+like the following?
+
+@@ -133,23 +133,24 @@ EXPORT_SYMBOL_GPL(devm_platform_ioremap_resource_byname);
+  *		if (irq < 0)
+  *			return irq;
+  *
+- * Return: IRQ number on success, negative error number on failure.
++ * Return: non-zero IRQ number on success, negative error number on failure.
+  */
+ int platform_get_irq_optional(struct platform_device *dev, unsigned int num)
+ {
++	int ret;
+ #ifdef CONFIG_SPARC
+ 	/* sparc does not have irqs represented as IORESOURCE_IRQ resources */
+ 	if (!dev || num >= dev->archdata.num_irqs)
+ 		return -ENXIO;
+-	return dev->archdata.irqs[num];
++	ret = dev->archdata.irqs[num];
++	goto out;
+ #else
+ 	struct resource *r;
+-	int ret;
+ 
+ 	if (IS_ENABLED(CONFIG_OF_IRQ) && dev->dev.of_node) {
+ 		ret = of_irq_get(dev->dev.of_node, num);
+ 		if (ret > 0 || ret == -EPROBE_DEFER)
+-			return ret;
++			goto out;
+ 	}
+ 
+ 	r = platform_get_resource(dev, IORESOURCE_IRQ, num);
+@@ -157,7 +158,7 @@ int platform_get_irq_optional(struct platform_device *dev, unsigned int num)
+ 		if (r && r->flags & IORESOURCE_DISABLED) {
+ 			ret = acpi_irq_get(ACPI_HANDLE(&dev->dev), num, r);
+ 			if (ret)
+-				return ret;
++				goto out;
+ 		}
+ 	}
+ 
+@@ -171,13 +172,17 @@ int platform_get_irq_optional(struct platform_device *dev, unsigned int num)
+ 		struct irq_data *irqd;
+ 
+ 		irqd = irq_get_irq_data(r->start);
+-		if (!irqd)
+-			return -ENXIO;
++		if (!irqd) {
++			ret = -ENXIO;
++			goto out;
++		}
+ 		irqd_set_trigger_type(irqd, r->flags & IORESOURCE_BITS);
+ 	}
+ 
+-	if (r)
+-		return r->start;
++	if (r) {
++		ret = r->start;
++		goto out;
++	}
+ 
+ 	/*
+ 	 * For the index 0 interrupt, allow falling back to GpioInt
+@@ -190,11 +195,14 @@ int platform_get_irq_optional(struct platform_device *dev, unsigned int num)
+ 		ret = acpi_dev_gpio_irq_get(ACPI_COMPANION(&dev->dev), num);
+ 		/* Our callers expect -ENXIO for missing IRQs. */
+ 		if (ret >= 0 || ret == -EPROBE_DEFER)
+-			return ret;
++			goto out;
+ 	}
+ 
+-	return -ENXIO;
++	ret = -ENXIO;
+ #endif
++out:
++	WARN(ret == 0, "0 is an invalid IRQ number\n");
++	return ret;
+ }
+ EXPORT_SYMBOL_GPL(platform_get_irq_optional);
+ 
+@@ -212,7 +220,7 @@ EXPORT_SYMBOL_GPL(platform_get_irq_optional);
+  *		if (irq < 0)
+  *			return irq;
+  *
+- * Return: IRQ number on success, negative error number on failure.
++ * Return: non-zero IRQ number on success, negative error number on failure.
+  */
+ int platform_get_irq(struct platform_device *dev, unsigned int num)
+ {
+@@ -284,8 +292,10 @@ static int __platform_get_irq_byname(struct platform_device *dev,
+ 	}
+ 
+ 	r = platform_get_resource_byname(dev, IORESOURCE_IRQ, name);
+-	if (r)
++	if (r) {
++		WARN(r->start == 0, "0 is an invalid IRQ number\n");
+ 		return r->start;
++	}
+ 
+ 	return -ENXIO;
+ }
+@@ -297,7 +307,7 @@ static int __platform_get_irq_byname(struct platform_device *dev,
+  *
+  * Get an IRQ like platform_get_irq(), but then by name rather then by index.
+  *
+- * Return: IRQ number on success, negative error number on failure.
++ * Return: non-zero IRQ number on success, negative error number on failure.
+  */
+ int platform_get_irq_byname(struct platform_device *dev, const char *name)
+ {
+@@ -319,7 +329,7 @@ EXPORT_SYMBOL_GPL(platform_get_irq_byname);
+  * Get an optional IRQ by name like platform_get_irq_byname(). Except that it
+  * does not print an error message if an IRQ can not be obtained.
+  *
+- * Return: IRQ number on success, negative error number on failure.
++ * Return: non-zero IRQ number on success, negative error number on failure.
+  */
+ int platform_get_irq_byname_optional(struct platform_device *dev,
+ 				     const char *name)
 
 _______________________________________________
 Linux-mediatek mailing list
