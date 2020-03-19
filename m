@@ -2,78 +2,67 @@ Return-Path: <SRS0=inF0=5E=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PULL_REQUEST,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 834FCC4332B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2020 01:18:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D922C4332D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2020 07:39:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5909120752
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2020 01:18:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6FD1620722
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2020 07:39:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kpt4DZT2";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="V+Z7V3jm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5909120752
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iiiTghyL";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="slBOoSo8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6FD1620722
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:To:From:Subject:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Nn7Fs+DsOHmYkOr37aNUji5ShimySLgedh5z9SKUR+Y=; b=kpt4DZT2WQOMRW
-	iAsoDynkhYgPpHF8Devi95JSeL9Y0laQCmLW8qcUzczh51Hxd8Nw0gDjZepzd35BF7EFl/Q0dfTg0
-	SlrGq3PpbbE2PhV8fVFRj7LoOKZfvjYfy9Dsxc0kTgt/d0gPxakcwJpAQGKYXgqWg1gqN5QEkimmj
-	qQPozpbAFYP4QtWrVPlLoY1djT6ElPkz7og/wX3BxhQDy1ZXsumIZiWp9opBC7eWQkDtBPs/+vhmE
-	v2afOrEu4ixKVAaptNFAnLjmq9G6GM16FMJOv004bS5jU8JO+3ax0DpcQsuwYm3ePRzyqebdyAxwm
-	YTRtH9zksCcv8Hbfjm5g==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GNJPvPLsJEaDHBo9VgyCKcPheci8rw38e6FyZfVLAAw=; b=iiiTghyLFWVxW1
+	pSWspmI1j7+aOYYvlHYQ14QYPXSJFCOzgDknOmh0oRg/T673ANFZ/dIwqZxVfL2oSIJ41uP3tQ0y8
+	VyjbEy1ETdRJ+AusURx1RFkyryybN4xZ661/jMguo9fwsco4haXMYMmxDpGjcwCRL92+6Ind/QxFe
+	Zg4L/vkMzC1UsmekgPKqN/BKz5ajXWOG+cmgS3nDDbhiM6ffPMVYUFv8YxrOu7254mfatFRBY4VWa
+	wbk+MMuvnHa5exPF2R1Qe05lwJLU8E3W/cKoHrO4UNm46xbIMzBUOGv+x7OLNN+YvkYWjiua8OkoH
+	rCTdsX6y1oms0THOKuDA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEjpC-0005wt-6c; Thu, 19 Mar 2020 01:18:18 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jEpmF-0002EJ-OV; Thu, 19 Mar 2020 07:39:39 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEjp9-0005wP-QM
- for linux-mediatek@lists.infradead.org; Thu, 19 Mar 2020 01:18:17 +0000
-X-UUID: c8c4d920ba5148b49e73974d50f34998-20200318
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:Date:CC:To:From:Subject:Message-ID;
- bh=ZjMX+7xVGwyxaN8g3c7u6vzV75JbHB1dkDLFcT9779A=; 
- b=V+Z7V3jmkIcDrqYwHlaH/0VUwIhntFNWs5QixLkcePUzOgPZVS80dujXDfpaIOCyq4e08cW5NC72T5nKWuvUtBMJFaz0k1MnBm4w+Xm9zrHbTAPnXi9FCESX2alSebsKVb2WC4FRa+H4PKVTkdSJsPeo+8HGmK8VvGjzWwGSuuU=;
-X-UUID: c8c4d920ba5148b49e73974d50f34998-20200318
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 658230409; Wed, 18 Mar 2020 17:18:08 -0800
-Received: from MTKMBS33DR.mediatek.inc (172.27.6.106) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 18 Mar 2020 18:18:05 -0700
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- MTKMBS33DR.mediatek.inc (172.27.6.106) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 19 Mar 2020 09:17:23 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Thu, 19 Mar 2020 09:17:23 +0800
-Message-ID: <1584580683.29614.5.camel@mtksdaap41>
-Subject: [GIT PULL] mediatek drm next for 5.7
-From: CK Hu <ck.hu@mediatek.com>
-To: Dave Airlie <airlied@gmail.com>, Daniel Vetter <daniel.vetter@intel.com>, 
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>
-Date: Thu, 19 Mar 2020 09:18:03 +0800
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jEpm6-00026q-P1; Thu, 19 Mar 2020 07:39:32 +0000
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id B2B2420722;
+ Thu, 19 Mar 2020 07:39:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1584603569;
+ bh=B+kuIQBeqbL5y1IBvD1kqR+vLTh4kU6kglLn21OfosA=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=slBOoSo8jU7XWJNyt9HMs/D7BU5N4d1RWZrIl/AtrtSC/WcoQIO4czzdaSRiPFznN
+ jR87nNzz6pcQWRv5f/53sFP9ybja1lCun4m25ZukioZGVcLoZgl07Ri1GbYQraNWtn
+ Jy6NBOaOFzZYF0WuHE0s2ki/s3IxdldCRotalTZw=
+Date: Thu, 19 Mar 2020 08:39:27 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Saravana Kannan <saravanak@google.com>
+Subject: Re: [PATCH v1 0/6] Fix device links functional breakage in 4.19.99
+Message-ID: <20200319073927.GA3442166@kroah.com>
+References: <20200317065452.236670-1-saravanak@google.com>
+ <CAGETcx-uZ3YJHCYqFm3so8-woTvL3SSDY2deNonthTetcE+mXQ@mail.gmail.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 0D2F63A9CFFBB744500B527E47EF66C1D04286D5F7550FC4B2C7A35BED8356EA2000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <CAGETcx-uZ3YJHCYqFm3so8-woTvL3SSDY2deNonthTetcE+mXQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200318_181815_862597_8FD7E0E7 
-X-CRM114-Status: UNSURE (   8.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200319_003930_835829_C483099E 
+X-CRM114-Status: GOOD (  21.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,53 +74,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Len Brown <len.brown@intel.com>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Linux PM <linux-pm@vger.kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+ Linux Doc Mailing List <linux-doc@vger.kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, stable <stable@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Pavel Machek <pavel@ucw.cz>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Android Kernel Team <kernel-team@android.com>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Daniel:
+On Wed, Mar 18, 2020 at 12:10:43PM -0700, Saravana Kannan wrote:
+> On Mon, Mar 16, 2020 at 11:54 PM Saravana Kannan <saravanak@google.com> wrote:
+> >
+> > As mentioned in an earlier email thread [1], 4.19.99 broke the ability
+> > to create stateful and stateless device links between the same set of
+> > devices when it pulled in a valid bug fix [2]. While the fix was valid,
+> > it removes a functionality that was present before the bug fix.
+> >
+> > This patch series attempts to fix that by pulling in more patches from
+> > upstream. I've just done compilation testing so far. But wanted to send
+> > out a v1 to see if this patch list was acceptable before I fixed up the
+> > commit text format to match what's needed for stable mailing list.
+> >
+> > Some of the patches are new functionality, but for a first pass, it was
+> > easier to pull these in than try and fix the conflicts. If these patches
+> > are okay to pull into stable, then all I need to do is fix the commit
+> > text.
+> 
+> I took a closer look at all the patches. Everyone of them is a bug fix
+> except Patch 4/6. But Patch 4/6 is a fairly minimal change and I think
+> it's easier/cleaner to just pick it up too instead of trying to
+> resolve merge conflicts in the stable branch.
+> 
+> 1/6 - Fixes what appears to be a memory leak bug in upstream.
+> 2/6 - Fixes error in initial state of the device link if it's created
+> under some circumstances.
+> 3/6 - Fixes a ref count bug in upstream. Looks like it can lead to memory leaks?
+> 4/6 - Adds a minor feature to kick off a probe attempt of a consumer
+> 5/6 - Fixes the break in functionality that happened in 4.19.99
+> 6/6 - Fixes bug in 5/6 (upstream bug)
+> 
+> Greg
+> 
+> Do these patches look okay for you to pull into 4.19 stable? If so,
+> please let me know if you need me to send v2 with commit fix up.
+> 
+> The only fix up needed is to these patches at this point is changing
+> "(cherry picked from commit ...)" with "[ Upstream commit ... ]". The
+> SHAs themselves are the correct SHAs from upstream.
 
-This include MT8183 DPI support.
-And I change my email address to "Chun-Kuang Hu
-<chunkuang.hu@kernel.org>", so I would use it afterward.
+These all look good to me, now all queued up, thanks.
 
-Regards,
-CK
+greg k-h
 
-
-The following changes since commit
-bb6d3fb354c5ee8d6bde2d576eb7220ea09862b9:
-
-  Linux 5.6-rc1 (2020-02-09 16:08:48 -0800)
-
-are available in the Git repository at:
-
-  https://github.com/ckhu-mediatek/linux.git-tags.git
-tags/mediatek-drm-next-5.7
-
-for you to fetch changes up to 93e97f715b24114169d18654e09c646fd9e14979:
-
-  MAINTAINERS: Update Chun-Kuang Hu's email address (2020-03-09 09:23:47
-+0800)
-
-----------------------------------------------------------------
-Mediatek DRM Next for Linux 5.7
-
-----------------------------------------------------------------
-Chun-Kuang Hu (1):
-      MAINTAINERS: Update Chun-Kuang Hu's email address
-
-Jitao Shi (2):
-      dt-bindings: display: mediatek: update dpi supported chips
-      drm/mediatek: add mt8183 dpi clock factor
-
- .../bindings/display/mediatek/mediatek,dpi.txt         |  1 +
- MAINTAINERS                                            |  2 +-
- drivers/gpu/drm/mediatek/mtk_dpi.c                     | 18
-++++++++++++++++++
- 3 files changed, 20 insertions(+), 1 deletion(-)
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
