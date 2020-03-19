@@ -4,18 +4,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 36973C4332B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2020 18:29:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7B767C4332B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2020 18:34:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 045A120724
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2020 18:29:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 40BEF20789
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2020 18:34:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YMQ3W7rP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 045A120724
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OOVtKhpR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 40BEF20789
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,57 +25,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6RJ1slzGhx6SiVKw3zUn7MRYCWyfblYWbuJnkE4LjJ4=; b=YMQ3W7rPxx+xGQ
-	PzkWtXaiglt/WmHevjIfWZox8LVjfkPxdtmNLqDQeFNsZyrcA3totXvYl7TG3RNAtvOMpVPRASpY6
-	QoybtHhAIK7NxFLJ1DX8bw0k2p2JR7VGy2+stCwIzUHlukeA+sp1JnmL4/H5Gchil6ecsZ/B2hk9s
-	FeGZDsP6td9PpXqlUDGlhRN8G/mNJns0ciReQ4Y8ZOIQVO4yFpLIEWz+8XZnbMgvC3pXblE4aCrqy
-	/z7trNx5IrXUppunGS4H+SG0Zq1Tua4f3Uo2DsBmJKrOPTmTjrmcyTKdDXdNf7lwgVbQUoi6yWHGf
-	oRHLaWbj6CxZ8G5oPPTg==;
+	List-Owner; bh=2wHQMLZVLWKkihzQCY1kOh7s2abpewosOjohlJbUTvE=; b=OOVtKhpRtph97N
+	/dhcAyh1c1N5ke0A197DArz3GE0H/qcKEvDJWLANcB0qhzoK1NefiCWXhhEHY1PRei4dMkewidKJA
+	KtVtWOUSuEVbvwtSn1cKWYjrvjuvcVPxDvB29oDdZ4c6cxlz0Ipc3PnkAs1+3ofGoYtEN05AKC5AI
+	Zl9kb0RRiYkmqbGfn1AcF46o7VtrvEtLCBHtqgHPw5+bv2PZa0zlo/sXlilVp21kBErQn9QZ5x528
+	fl4ryvjcjRzmaQ4ccvmiEheeEWMWUn94EKzJsbXAcOakXXIkbZzhb2upo0bBWgQqVjfoIfTWo9mSW
+	IkoRB9jkJkG469k+TOkA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEzvC-0001uX-0S; Thu, 19 Mar 2020 18:29:34 +0000
-Received: from mail-il1-f193.google.com ([209.85.166.193])
+	id 1jEzzZ-0004a3-TX; Thu, 19 Mar 2020 18:34:05 +0000
+Received: from mail-il1-f196.google.com ([209.85.166.196])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jEzv9-0001u0-TO; Thu, 19 Mar 2020 18:29:33 +0000
-Received: by mail-il1-f193.google.com with SMTP id p12so3210292ilm.7;
- Thu, 19 Mar 2020 11:29:30 -0700 (PDT)
+ id 1jEzzX-0004Zc-Fg; Thu, 19 Mar 2020 18:34:05 +0000
+Received: by mail-il1-f196.google.com with SMTP id a6so3225664ilc.4;
+ Thu, 19 Mar 2020 11:34:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=nuVG9R1fl5aV0113Wkqeyi+DwSUJE/i7o0mHYMU/pW0=;
- b=mHF00RS3+38YSt2n5Ax4Gxp/0b0kaRtIy2t/aiBWQufdyeRJmpbNymnqoXmCR5UtIw
- e3lK9Nw0mpPYMQSraGdcYCufsNdESyIp5OHAOBDzWhjqDoxxT4YVcrOhhqeH8Vqvvmbj
- tCjOfkGZZNvHfQcpX2eSGNlkY7vODzP4Szui9ysedNKK5JkM+K28jGraqt8qBpIFjc8L
- /nbQg4pFP6m2NT8DBnTeL17WhSttb5AjM2dvfk5AWUbVRH/oK9X27FTZeB7mymiV8gHs
- IdIM/ey+YA0HXeRyGF0iimhQdiKgqpO7jiDrOqLXMqDG4w5gQvq5pguztMw9U0sBKnWp
- eoXQ==
-X-Gm-Message-State: ANhLgQ0lZ/doNIzrZgOnt49IB53Qe4OZz4qR12Ur9p6a+208CqyH5XGw
- 3PB9mDZgbjBbJTN8b1EZxw==
-X-Google-Smtp-Source: ADFU+vuYRWENnnjTGXdM/3tIX9NPpmnsPCMZgoJW/FYaAg8G19QayHs3ZHRHOhNCbt+PxUpH9dpgjA==
-X-Received: by 2002:a92:9c54:: with SMTP id h81mr4599212ili.109.1584642569415; 
- Thu, 19 Mar 2020 11:29:29 -0700 (PDT)
+ bh=uPWry8RY6+hi4eAi0Y1bb3DGJuUvwAMEt6jfhx00FwM=;
+ b=rs0mflbuBWtgOZGd6XJlnx9kXOf03ZLlQdtcMLYLqPyPaS5YkJs0l0yyYHZEp7J1NH
+ O+wKumALX8sOA1yU3OOmd6hKlp1I5pnqW9JVYNBwPrsZlF0twNg2QDxd/mMiy7YlLDPD
+ o+o0RtZ7UKeYifFYSvuVfUhscYwVpp159CdXi7IaN/JywzP1uQ1KvyWnfEVZcQNcBJA+
+ skbjaf9Ao7jqElNVSqXeke56POfO/RBGB9HqgDuzNcRodo7FzmLk/x0m0c3AZjQBR1Xn
+ 6KfYowWCXKEEGrDLMDa71fKY3z6cWQ1JvhlvDxBVxUxDUe/vz84/uGKZdGZiJJyU5VLI
+ vlnQ==
+X-Gm-Message-State: ANhLgQ0N9kuCB4VADr6EA9V7Hq5uQc4zJ3hKd99CPvwqpsp5tsAU8YdP
+ eIWa1K0TuFVpwHs0PZHrXQ==
+X-Google-Smtp-Source: ADFU+vs1k4gpcdfKiMfAtAb7CaNrV8yNwy8ti//ggPn+OEJyJsCKN0w4f4f/ANYejiLSsUVzM5ackg==
+X-Received: by 2002:a92:9149:: with SMTP id t70mr4864882ild.114.1584642842382; 
+ Thu, 19 Mar 2020 11:34:02 -0700 (PDT)
 Received: from rob-hp-laptop ([64.188.179.250])
- by smtp.gmail.com with ESMTPSA id c28sm1144757ilf.26.2020.03.19.11.29.26
+ by smtp.gmail.com with ESMTPSA id z1sm1124712ilq.83.2020.03.19.11.34.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Mar 2020 11:29:28 -0700 (PDT)
-Received: (nullmailer pid 16853 invoked by uid 1000);
- Thu, 19 Mar 2020 18:29:25 -0000
-Date: Thu, 19 Mar 2020 12:29:25 -0600
+ Thu, 19 Mar 2020 11:34:01 -0700 (PDT)
+Received: (nullmailer pid 24310 invoked by uid 1000);
+ Thu, 19 Mar 2020 18:33:58 -0000
+Date: Thu, 19 Mar 2020 12:33:58 -0600
 From: Rob Herring <robh@kernel.org>
 To: Jitao Shi <jitao.shi@mediatek.com>
-Subject: Re: [PATCH v13 2/6] dt-bindings: display: mediatek: control dpi pins
- mode to avoid leakage
-Message-ID: <20200319182925.GA13920@bogus>
+Subject: Re: [PATCH v13 4/6] dt-bindings: display: mediatek: convert the
+ document format from txt to yaml
+Message-ID: <20200319183358.GA17237@bogus>
 References: <20200311071823.117899-1-jitao.shi@mediatek.com>
- <20200311071823.117899-3-jitao.shi@mediatek.com>
+ <20200311071823.117899-5-jitao.shi@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200311071823.117899-3-jitao.shi@mediatek.com>
+In-Reply-To: <20200311071823.117899-5-jitao.shi@mediatek.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200319_112931_950742_8D1D35FD 
-X-CRM114-Status: GOOD (  12.93  )
+X-CRM114-CacheID: sfid-20200319_113403_522638_8FFE2229 
+X-CRM114-Status: GOOD (  18.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,45 +100,181 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 11, 2020 at 03:18:19PM +0800, Jitao Shi wrote:
-> Add property "pinctrl-names" to swap pin mode between gpio and dpi mode. Set
-> the dpi pins to gpio mode and output-low to avoid leakage current when dpi
-> disabled.
-> 
+On Wed, Mar 11, 2020 at 03:18:21PM +0800, Jitao Shi wrote:
 > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 > ---
->  .../devicetree/bindings/display/mediatek/mediatek,dpi.txt  | 7 +++++++
->  1 file changed, 7 insertions(+)
+>  .../display/mediatek/mediatek,dpi.txt         |  45 --------
+>  .../display/mediatek/mediatek,dpi.yaml        | 103 ++++++++++++++++++
+>  2 files changed, 103 insertions(+), 45 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
 > 
 > diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
-> index 58914cf681b8..260ae75ac640 100644
+> deleted file mode 100644
+> index 2dfb50a7321e..000000000000
 > --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt
-> @@ -17,6 +17,10 @@ Required properties:
->    Documentation/devicetree/bindings/graph.txt. This port should be connected
->    to the input port of an attached HDMI or LVDS encoder chip.
->  
-> +Optional properties:
-> +- pinctrl-names: Contain "default" and "sleep".
+> +++ /dev/null
+> @@ -1,45 +0,0 @@
+> -Mediatek DPI Device
+> -===================
+> -
+> -The Mediatek DPI function block is a sink of the display subsystem and
+> -provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422 pixel data on a parallel
+> -output bus.
+> -
+> -Required properties:
+> -- compatible: "mediatek,<chip>-dpi"
+> -  the supported chips are mt2701 , mt8173 and mt8183.
+> -- reg: Physical base address and length of the controller's registers
+> -- interrupts: The interrupt signal from the function block.
+> -- clocks: device clocks
+> -  See Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
+> -- clock-names: must contain "pixel", "engine", and "pll"
+> -- port: Output port node with endpoint definitions as described in
+> -  Documentation/devicetree/bindings/graph.txt. This port should be connected
+> -  to the input port of an attached HDMI or LVDS encoder chip.
+> -
+> -Optional properties:
+> -- pinctrl-names: Contain "default" and "sleep".
+> -  pinctrl-names see Documentation/devicetree/bindings/pinctrlpinctrl-bindings.txt
+> -- pclk-sample: refer Documentation/devicetree/bindings/media/video-interfaces.txt.
+> -
+> -Example:
+> -
+> -dpi0: dpi@1401d000 {
+> -	compatible = "mediatek,mt8173-dpi";
+> -	reg = <0 0x1401d000 0 0x1000>;
+> -	interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
+> -	clocks = <&mmsys CLK_MM_DPI_PIXEL>,
+> -		 <&mmsys CLK_MM_DPI_ENGINE>,
+> -		 <&apmixedsys CLK_APMIXED_TVDPLL>;
+> -	clock-names = "pixel", "engine", "pll";
+> -	pinctrl-names = "default", "sleep";
+> -	pinctrl-0 = <&dpi_pin_func>;
+> -	pinctrl-1 = <&dpi_pin_idle>;
+> -
+> -	port {
+> -		dpi0_out: endpoint {
+> -			pclk-sample = <0>;
+> -			remote-endpoint = <&hdmi0_in>;
+> -		};
+> -	};
+> -};
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> new file mode 100644
+> index 000000000000..d65543e3bf8c
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> @@ -0,0 +1,103 @@
+> +# SPDX-License-Identifier: GPL-2.0
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/display/mediatek/mediatek,dpi.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: mediatek DPI Controller Device Tree Bindings
+> +
+> +maintainers:
+> +  - CK Hu <ck.hu@mediatek.com>
+> +  - Jitao shi <jitao.shi@mediatek.com>
+> +
+> +description: |
+> +  The Mediatek DPI function block is a sink of the display subsystem and
+> +  provides 8-bit RGB/YUV444 or 8/10/10-bit YUV422 pixel data on a parallel
+> +  output bus.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt2701-dpi
+> +      - mediatek,mt8173-dpi
+> +      - mediatek,mt8183-dpi
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: Pixel Clock
+> +      - description: Engine Clock
+> +      - description: DPI PLL
+> +
+> +  clock-names:
+> +    items:
+> +      - const: pixel
+> +      - const: engine
+> +      - const: pll
+> +
+> +  pinctrl-0: true
+> +  pinctrl-1: true
+> +
+> +  pinctrl-names:
+> +    items:
+> +      - const: default
+> +      - const: sleep
+> +
+> +  port@0:
+> +    type: object
+> +    description:
+> +      Output port node with endpoint definitions as described in
+> +      Documentation/devicetree/bindings/graph.txt. This port should be connected
+> +      to the input port of an attached HDMI or LVDS encoder chip.
+> +
+> +    properties:
+> +      endpoint:
+> +        type: object
+> +
+> +        properties:
+> +          pclk-sample:
+> +            items:
+> +            - description: refer Documentation/devicetree/bindings/media/video-interfaces.txt.
 
-> +  pinctrl-names see Documentation/devicetree/bindings/pinctrlpinctrl-bindings.txt
+This is not an array.
 
-Drop this line.
+Just 'pclk-sample: true' if both values are allowed or 'const: 0|1' if 
+only one value is allowed.
 
 > +
->  Example:
->  
->  dpi0: dpi@1401d000 {
-> @@ -27,6 +31,9 @@ dpi0: dpi@1401d000 {
->  		 <&mmsys CLK_MM_DPI_ENGINE>,
->  		 <&apmixedsys CLK_APMIXED_TVDPLL>;
->  	clock-names = "pixel", "engine", "pll";
-> +	pinctrl-names = "default", "sleep";
-> +	pinctrl-0 = <&dpi_pin_func>;
-> +	pinctrl-1 = <&dpi_pin_idle>;
->  
->  	port {
->  		dpi0_out: endpoint {
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +  - port@0
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/clock/mt8173-clk.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    dpi0: dpi@1401d000 {
+> +        compatible = "mediatek,mt8173-dpi";
+> +        reg = <0 0x1401d000 0 0x1000>;
+> +        interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_LOW>;
+> +        clocks = <&mmsys CLK_MM_DPI_PIXEL>,
+> +             <&mmsys CLK_MM_DPI_ENGINE>,
+> +             <&apmixedsys CLK_APMIXED_TVDPLL>;
+> +        clock-names = "pixel", "engine", "pll";
+> +        pinctrl-names = "default", "sleep";
+> +        pinctrl-0 = <&dpi_pin_func>;
+> +        pinctrl-1 = <&dpi_pin_idle>;
+> +
+> +        port@0 {
+> +            dpi0_out: endpoint {
+> +                pclk-sample = <0>;
+> +                remote-endpoint = <&hdmi0_in>;
+> +            };
+> +        };
+> +    };
+> +
+> +...
 > -- 
 > 2.21.0
 
