@@ -2,78 +2,80 @@ Return-Path: <SRS0=inF0=5E=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	UNWANTED_LANGUAGE_BODY,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CFB8AC4332B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2020 09:56:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D7DA2C4332B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2020 10:12:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A707E20722
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2020 09:56:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A8B6520724
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Mar 2020 10:12:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Lw3BPf7V";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="hDWyToAO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A707E20722
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Zbp46AXd";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="PzQZfb2q"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A8B6520724
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FfXO0q++Da13n3aEeV5bwYTswJCw2/TOhUj3BwrGaZ8=; b=Lw3BPf7Vx8KgiJ
-	i5hcUmcVnCb2ygXDqm9CkpMrey2B2SzieTG7Zb+HXzUro7N7WDB+o9o1BiIlx1EwP3wkO5GO6jqUS
-	7gEyozC7E6io5Nys0l1JdRRDCTRJuLxH8sUY7E+DNly0akTEKdD0ftfp3dn4uqSyqbieBssOzNfpL
-	lJuhkPyfuUD6xvv/jfM4ZnEauQ/rp3GX69ZPgA/rdK0APUzYf0OGFC8PAHdbReBjj1mQA/pHNOwzN
-	jK6A0zccnRuSiWqf25epz+dNqSR+3h9//FuscjRrJjP5F8KTZeMpkA8KuiqJwoL7iAdfdQve/PHAj
-	hLsbfTKflYVrmlOu3J/w==;
+	List-Owner; bh=JiLkP9dlB6CCKnXfNCLJuNbiBS5jF0B7RmcRKB2PCWU=; b=Zbp46AXdKaqekq
+	IkvSHs8hIi0rsrDweu+MXwuLHbrxpW8GxahdxF+she4JXJYe4dGClErrUDfarytZDhDVvjr4Hd+nQ
+	jD4UVb4l/68B0Z/j9XDRK0ghuT7MyAlxzygbUEntqPBE9Eq+qmsXqlEoiapH9qIVunrGGywK0gmjt
+	RPmF3bvHiv2wTiLH2vL23queWYiHGvkPA2t5rMHGCk6LcsuJAcd+bYwNNO3N9uokCZJbriN6ITaXK
+	k2Qj39tkBoYkA0PMdmfewdbB8mWVwuRD4t+e9wHyU1y/3eneKeKsVkHm83Ko+U1XFYR8TkECAxNAn
+	dN4v/wwYefTvc7KwPHFw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jEruc-00036S-Rm; Thu, 19 Mar 2020 09:56:26 +0000
+	id 1jEsAD-0000eW-Rb; Thu, 19 Mar 2020 10:12:33 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jErtx-0002OG-Mn; Thu, 19 Mar 2020 09:55:47 +0000
-X-UUID: a86a32e420554ac182796a11bc3f877b-20200319
+ id 1jEsAB-0000ZR-N0; Thu, 19 Mar 2020 10:12:33 +0000
+X-UUID: 020d3d86fb8c45adb1f4bb4880deaeb9-20200319
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=EgjJ4/ozN7amIJ2TNqfWpzKzRvybv6gnG75eeEAlrTA=; 
- b=hDWyToAOP+cLBPWrdgTVFUSXIVixELalE8FQAS8xj/Ov7TkSOWfr5eUc7g+QXlxiVxvXmgkRf5DCgN3+MdmOY/rJ699HqTcESMJNrpaBJWn9BasY9E0USy0iNfwAffc294xZ5cmQkU82Q029tv1FvkgUWzuwAI8jgWPt8R7dXfQ=;
-X-UUID: a86a32e420554ac182796a11bc3f877b-20200319
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <henry.yen@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=NQc97c+bFcajvwqMNAIU5Im4/Ht7RtZjA7gAha/i0is=; 
+ b=PzQZfb2qdoPZppyDhZw2qodlmIbRahFn37M/cZS+fJSV1IO6WkDJ4jmxpHehxJpkTEcT6QiJD5RQkKj4eH9n0wce63YBduPXBOLmEDsjFScNVeE/Cw/CRemAUyNOQBqiVnPKDlQUB3g1+/Y2WHa4i4irDIekYFfx2ZI8EYgb8V0=;
+X-UUID: 020d3d86fb8c45adb1f4bb4880deaeb9-20200319
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <dongchun.zhu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 274401742; Thu, 19 Mar 2020 01:55:41 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ with ESMTP id 1364288879; Thu, 19 Mar 2020 02:12:30 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 19 Mar 2020 02:56:12 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 19 Mar 2020 17:52:43 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Thu, 19 Mar 2020 17:52:33 +0800
-From: Henry Yen <henry.yen@mediatek.com>
-To: Zhang Rui <rui.zhang@intel.com>, Daniel Lezcano
- <daniel.lezcano@linaro.org>, Amit Kucheria <amit.kucheria@verdurent.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH 2/2] thermal: mediatek: add tsensor support for MT7622 SoC
-Date: Thu, 19 Mar 2020 17:54:53 +0800
-Message-ID: <1584611693-3553-3-git-send-email-henry.yen@mediatek.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1584611693-3553-1-git-send-email-henry.yen@mediatek.com>
-References: <1584611693-3553-1-git-send-email-henry.yen@mediatek.com>
+ 15.0.1395.4; Thu, 19 Mar 2020 03:04:09 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Thu, 19 Mar 2020 18:03:25 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Thu, 19 Mar 2020 18:03:24 +0800
+Message-ID: <1584612215.5781.62.camel@mhfsdcap03>
+Subject: Re: [V3, 2/2] media: i2c: Add DW9768 VCM driver
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Thu, 19 Mar 2020 18:03:35 +0800
+In-Reply-To: <CAHp75Vf5km-YitoTUAFkr8LZVq2QMep1rC19ZpR-YRbeXgJOVQ@mail.gmail.com>
+References: <20200228155958.20657-1-dongchun.zhu@mediatek.com>
+ <20200228155958.20657-3-dongchun.zhu@mediatek.com>
+ <20200305120516.GQ5379@paasikivi.fi.intel.com>
+ <CAHp75Vf5km-YitoTUAFkr8LZVq2QMep1rC19ZpR-YRbeXgJOVQ@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 3BE1D2BE5077A5896A53555467BB7CAAAF41036944F071EE7B81B4AA7364ADF02000:8
+X-TM-SNTS-SMTP: AAF735A607185470B296EBAC9A1830596A83AB95D1C73C00CFE0BC853D96BD352000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200319_025545_828633_EE25EE9C 
-X-CRM114-Status: GOOD (  15.44  )
+X-CRM114-CacheID: sfid-20200319_031231_760582_465C7132 
+X-CRM114-Status: GOOD (  10.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,218 +87,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Steven Liu <steven.liu@mediatek.com>, Henry Yen <henry.yen@mediatek.com>,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Michael
- Kao <michael.kao@mediatek.com>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, srv_heupstream@mediatek.com,
+ devicetree <devicetree@vger.kernel.org>, shengnan.wang@mediatek.com,
+ Tomasz Figa <tfiga@chromium.org>, louis.kuo@mediatek.com,
+ sj.huang@mediatek.com, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, bingbu.cao@intel.com,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, Linux Media
+ Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds the support for version 2 thermal system(e.g., MT7622 SoC).
-The changes include the way of reading calibration data, the way of
-converting temperature and hardware initialization specific for version 2
-thermal system.
+Hi Andy,
 
-Signed-off-by: Henry Yen <henry.yen@mediatek.com>
----
- drivers/thermal/mtk_thermal.c | 100 +++++++++++++++++++++++++++++++++-
- 1 file changed, 98 insertions(+), 2 deletions(-)
+On Tue, 2020-03-10 at 12:10 +0200, Andy Shevchenko wrote:
+> On Thu, Mar 5, 2020 at 2:07 PM Sakari Ailus
+> <sakari.ailus@linux.intel.com> wrote:
+> > On Fri, Feb 28, 2020 at 11:59:58PM +0800, Dongchun Zhu wrote:
+> > > This patch adds a V4L2 sub-device driver for DW9768 lens voice coil,
+> > > and provides control to set the desired focus via I2C serial interface.
+> 
+> ...
+> 
+> > > --- a/MAINTAINERS
+> > > +++ b/MAINTAINERS
+> > > @@ -5139,6 +5139,7 @@ M:      Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > >  L:   linux-media@vger.kernel.org
+> > >  T:   git git://linuxtv.org/media_tree.git
+> > >  S:   Maintained
+> > > +F:   drivers/media/i2c/dw9768.c
+> > >  F:   Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
+> 
+> This has ordering issues.
+> Run parse-maintainers.pl to fix.
+> 
 
-diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-index 13e17c31ba3b..9e6807f6abd4 100644
---- a/drivers/thermal/mtk_thermal.c
-+++ b/drivers/thermal/mtk_thermal.c
-@@ -38,6 +38,7 @@
- #define TEMP_MONIDET0		0x014
- #define TEMP_MONIDET1		0x018
- #define TEMP_MSRCTL0		0x038
-+#define TEMP_MSRCTL1		0x03c
- #define TEMP_AHBPOLL		0x040
- #define TEMP_AHBTO		0x044
- #define TEMP_ADCPNP0		0x048
-@@ -133,6 +134,20 @@
- #define CALIB_BUF0_O_SLOPE_SIGN_V1(x)	(((x) >> 7) & 0x1)
- #define CALIB_BUF1_ID_V1(x)		(((x) >> 9) & 0x1)
- 
-+/*
-+ * Layout of the fuses providing the calibration data
-+ * These macros could be used for MT7622.
-+ */
-+#define CALIB_BUF0_ADC_OE_V2(x)		(((x) >> 22) & 0x3ff)
-+#define CALIB_BUF0_ADC_GE_V2(x)		(((x) >> 12) & 0x3ff)
-+#define CALIB_BUF0_DEGC_CALI_V2(x)	(((x) >> 6) & 0x3f)
-+#define CALIB_BUF0_O_SLOPE_V2(x)	(((x) >> 0) & 0x3f)
-+#define CALIB_BUF1_VTS_TS1_V2(x)	(((x) >> 23) & 0x1ff)
-+#define CALIB_BUF1_VTS_TS2_V2(x)	(((x) >> 14) & 0x1ff)
-+#define CALIB_BUF1_VTS_TSABB_V2(x)	(((x) >> 5) & 0x1ff)
-+#define CALIB_BUF1_VALID_V2(x)		(((x) >> 4) & 0x1)
-+#define CALIB_BUF1_O_SLOPE_SIGN_V2(x)	(((x) >> 3) & 0x1)
-+
- enum {
- 	VTS1,
- 	VTS2,
-@@ -266,8 +281,10 @@ struct mtk_thermal {
- 
- 	/* Calibration values */
- 	s32 adc_ge;
-+	s32 adc_oe;
- 	s32 degc_cali;
- 	s32 o_slope;
-+	s32 o_slope_sign;
- 	s32 vts[MAX_NUM_VTS];
- 
- 	const struct mtk_thermal_data *conf;
-@@ -367,7 +384,9 @@ static const int mt7622_vts_index[MT7622_NUM_SENSORS] = { VTS1 };
- static const int mt7622_tc_offset[MT7622_NUM_CONTROLLER] = { 0x0, };
- 
- static int mtk_thermal_extract_efuse_v1(struct mtk_thermal *mt, u32 *buf);
-+static int mtk_thermal_extract_efuse_v2(struct mtk_thermal *mt, u32 *buf);
- static int raw_to_mcelsius_v1(struct mtk_thermal *mt, int sensno, s32 raw);
-+static int raw_to_mcelsius_v2(struct mtk_thermal *mt, int sensno, s32 raw);
- 
- /*
-  * The MT8173 thermal controller has four banks. Each bank can read up to
-@@ -503,8 +522,8 @@ static const struct mtk_thermal_data mt7622_thermal_data = {
- 	.adcpnp = mt7622_adcpnp,
- 	.sensor_mux_values = mt7622_mux_values,
- 	.version = MTK_THERMAL_V2,
--	.extract = mtk_thermal_extract_efuse_v1,
--	.convert = raw_to_mcelsius_v1,
-+	.extract = mtk_thermal_extract_efuse_v2,
-+	.convert = raw_to_mcelsius_v2,
- };
- 
- /*
-@@ -566,6 +585,36 @@ static int raw_to_mcelsius_v1(struct mtk_thermal *mt, int sensno, s32 raw)
- 	return mt->degc_cali * 500 - tmp;
- }
- 
-+static int raw_to_mcelsius_v2(struct mtk_thermal *mt, int sensno, s32 raw)
-+{
-+	s32 format_1 = 0;
-+	s32 format_2 = 0;
-+	s32 g_oe = 1;
-+	s32 g_gain = 1;
-+	s32 g_x_roomt = 0;
-+	s32 tmp = 0;
-+
-+	if (raw == 0)
-+		return 0;
-+
-+	raw &= 0xfff;
-+	g_gain = 10000 + (((mt->adc_ge - 512) * 10000) >> 12);
-+	g_oe = mt->adc_oe - 512;
-+	format_1 = mt->vts[VTS2] + 3105 - g_oe;
-+	format_2 = (mt->degc_cali * 10) >> 1;
-+	g_x_roomt = (((format_1 * 10000) >> 12) * 10000) / g_gain;
-+
-+	tmp = (((((raw - g_oe) * 10000) >> 12) * 10000) / g_gain) - g_x_roomt;
-+	tmp = tmp * 10 * 100 / 11;
-+
-+	if (mt->o_slope_sign == 0)
-+		tmp = tmp / (165 - mt->o_slope);
-+	else
-+		tmp = tmp / (165 + mt->o_slope);
-+
-+	return (format_2 - tmp) * 100;
-+}
-+
- /**
-  * mtk_thermal_get_bank - get bank
-  * @bank:	The bank
-@@ -831,6 +880,23 @@ static int mtk_thermal_extract_efuse_v1(struct mtk_thermal *mt, u32 *buf)
- 	return 0;
- }
- 
-+static int mtk_thermal_extract_efuse_v2(struct mtk_thermal *mt, u32 *buf)
-+{
-+	if (!CALIB_BUF1_VALID_V2(buf[1]))
-+		return -EINVAL;
-+
-+	mt->adc_oe = CALIB_BUF0_ADC_OE_V2(buf[0]);
-+	mt->adc_ge = CALIB_BUF0_ADC_GE_V2(buf[0]);
-+	mt->degc_cali = CALIB_BUF0_DEGC_CALI_V2(buf[0]);
-+	mt->o_slope = CALIB_BUF0_O_SLOPE_V2(buf[0]);
-+	mt->vts[VTS1] = CALIB_BUF1_VTS_TS1_V2(buf[1]);
-+	mt->vts[VTS2] = CALIB_BUF1_VTS_TS2_V2(buf[1]);
-+	mt->vts[VTSABB] = CALIB_BUF1_VTS_TSABB_V2(buf[1]);
-+	mt->o_slope_sign = CALIB_BUF1_O_SLOPE_SIGN_V2(buf[1]);
-+
-+	return 0;
-+}
-+
- static int mtk_thermal_get_calibration_data(struct device *dev,
- 					    struct mtk_thermal *mt)
- {
-@@ -900,6 +966,28 @@ static const struct of_device_id mtk_thermal_of_match[] = {
- };
- MODULE_DEVICE_TABLE(of, mtk_thermal_of_match);
- 
-+static void mtk_thermal_turn_on_buffer(void __iomem *apmixed_base)
-+{
-+	int tmp;
-+
-+	tmp = readl(apmixed_base + APMIXED_SYS_TS_CON1);
-+	tmp &= ~(0x37);
-+	tmp |= 0x1;
-+	writel(tmp, apmixed_base + APMIXED_SYS_TS_CON1);
-+	udelay(200);
-+}
-+
-+static void mtk_thermal_release_periodic_ts(struct mtk_thermal *mt,
-+					    void __iomem *auxadc_base)
-+{
-+	int tmp;
-+
-+	writel(0x800, auxadc_base + AUXADC_CON1_SET_V);
-+	writel(0x1, mt->thermal_base + TEMP_MONCTL0);
-+	tmp = readl(mt->thermal_base + TEMP_MSRCTL1);
-+	writel((tmp & (~0x10e)), mt->thermal_base + TEMP_MSRCTL1);
-+}
-+
- static int mtk_thermal_probe(struct platform_device *pdev)
- {
- 	int ret, i, ctrl_id;
-@@ -908,6 +996,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 	struct resource *res;
- 	u64 auxadc_phys_base, apmixed_phys_base;
- 	struct thermal_zone_device *tzdev;
-+	void __iomem *apmixed_base, *auxadc_base;
- 
- 	mt = devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
- 	if (!mt)
-@@ -942,6 +1031,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	}
- 
-+	auxadc_base = of_iomap(auxadc, 0);
- 	auxadc_phys_base = of_get_phys_base(auxadc);
- 
- 	of_node_put(auxadc);
-@@ -957,6 +1047,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	}
- 
-+	apmixed_base = of_iomap(apmixedsys, 0);
- 	apmixed_phys_base = of_get_phys_base(apmixedsys);
- 
- 	of_node_put(apmixedsys);
-@@ -982,6 +1073,11 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 		goto err_disable_clk_auxadc;
- 	}
- 
-+	if (mt->conf->version == MTK_THERMAL_V2) {
-+		mtk_thermal_turn_on_buffer(apmixed_base);
-+		mtk_thermal_release_periodic_ts(mt, auxadc_base);
-+	}
-+
- 	for (ctrl_id = 0; ctrl_id < mt->conf->num_controller ; ctrl_id++)
- 		for (i = 0; i < mt->conf->num_banks; i++)
- 			mtk_thermal_init_bank(mt, i, apmixed_phys_base,
--- 
-2.17.1
+Pardon, how to run parse-maintainers.pl?
+Locally I ran this script, it occurs some syntax as below.
+$./scripts/parse-maintainers.pl
+syntax error at ./scripts/parse-maintainers.pl line 108, near
+"$hashref{"
+Global symbol "$pattern" requires explicit package name
+at ./scripts/parse-maintainers.pl line 109.
+syntax error at ./scripts/parse-maintainers.pl line 112, near "}"
+Global symbol "$file" requires explicit package name
+at ./scripts/parse-maintainers.pl line 113.
+Can't use global @_ in "my" at ./scripts/parse-maintainers.pl line 117,
+near "(@_"
+syntax error at ./scripts/parse-maintainers.pl line 152, near "}"
+Execution of ./scripts/parse-maintainers.pl aborted due to compilation
+errors.
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
