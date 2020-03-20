@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2BA9BC4332E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 07:32:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EA00FC4332B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 07:33:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E83492051A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 07:32:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BF45F20789
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 07:33:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qBz/5+Xg";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ZpIJ7wUT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E83492051A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EItcYKp7";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="npDHTsLp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BF45F20789
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c+o//4L79rDIlGMqY4yv7qPWRThy1QncSABHiBaJGFA=; b=qBz/5+Xg7CZ782
-	ifSdhEm8LSS4KAlA6y7H7SQlaGwrkHEphjkGuRYrLIFdI9eo9bC0yNYhjFMFqXIGqzqBO49LfVmYS
-	QX2zaNNCf09y26YUSHgd8agzrrKWdL5a1IrMp3syzaWxvTXd33g7T373oCXQvy4gh66wfTqWI50PJ
-	3rw82eEoCRA6VuGaq6vPmdmFvMM0BgQHD/BZ+LYSoyakezq+ybhYBvP4d8vlr2ywVBUNLeYA1pyE/
-	FcK4nD9xpcax42I2t4ZfJdjvVVHXJ6mNUTEohpKguXyjbAQVQxj7oygEHFXfSKP8qMryhBz/AzVEi
-	gaAinbqLE5leWM2IOsiQ==;
+	List-Owner; bh=2fyhj7XySu6ApXfrIXjDHxdrIz2rz17K2or0jye7bA4=; b=EItcYKp79lNmvO
+	X5eLV3fBaReCrGOttO5xBiCAmPwroA5Db4j/EjLLjtAxCyxP5Q8iko7FJQenIsquhWLkLdvoCbOgE
+	Osb95OkbVCEGOU7QGA819jh7CsU6iMjgvFk7dD+9+dHpW8MRHyNEqqj6IO0OwBp47PymlDN5i6w4Y
+	tk3tcppoMiV7DYMk9PTZaqtrQeELHcQb56EOcgOg9u+WyqfEWLPPTvEIu9o1MgveuahWmMWJWHSvz
+	7h2/axU66R7nxsoQItVZFSdICRjUKRBUMroODcraShMWBmTTwFpAI1Y7O7x/ACEJwJhhSP9zLOCWx
+	c4oAdpkTVmIbtn8shJ0A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jFC8w-0002z9-8e; Fri, 20 Mar 2020 07:32:34 +0000
+	id 1jFC9C-0003CZ-I6; Fri, 20 Mar 2020 07:32:50 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jFC8u-0002xY-D4; Fri, 20 Mar 2020 07:32:33 +0000
-X-UUID: d627840389ad47d18b5d03ac12ad2d93-20200319
+ id 1jFC8u-0002xb-M7; Fri, 20 Mar 2020 07:32:34 +0000
+X-UUID: 540974b1a6944bf7a8840fbbe4439735-20200319
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Nfvzh3wqdzb1MJOk3oGDzEOqxNuPIr7A1JiQgdFIu8U=; 
- b=ZpIJ7wUTg2URO6MbDDZhVMsHgiLyj4L8e1kB5b1sxQKA/5v4hpGfBcmsguwrqjBcnQOFzefQKtwpzj1vyVWcwujYTowLriA6VG7g4l2BLI9DQpvYy4gGigIRoh8JZwlySVSZKb1YHe+G+lZqZ6aBWvwbSHU1Fq9bZjWBla7ks0o=;
-X-UUID: d627840389ad47d18b5d03ac12ad2d93-20200319
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ bh=9X5uWL1YgmrDZcTKHn0A/YVVUbEE9hPvqMSvyGyBAwc=; 
+ b=npDHTsLp09QKtFP8h7dJT5qeUz2rCZrCCV39Ft2OBQTp48hyXaCnSdwVl1JnRF1yyl47C0M4TFjK5B8qHXWIYdkIktNK7ebgEKxwOVnCt/7QnoWlHx+elgDne5A7mUojOmSYEdsmfIyZCECK63RbylVk/F7qazE7KSGdMomOMmM=;
+X-UUID: 540974b1a6944bf7a8840fbbe4439735-20200319
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1284167781; Thu, 19 Mar 2020 23:32:28 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 20 Mar 2020 00:33:01 -0700
+ with ESMTP id 722878272; Thu, 19 Mar 2020 23:32:28 -0800
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 20 Mar 2020 00:32:52 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 20 Mar 2020 15:31:25 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 20 Mar 2020 15:31:26 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Fri, 20 Mar 2020 15:29:20 +0800
+ Frontend Transport; Fri, 20 Mar 2020 15:29:19 +0800
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat
  <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>, Sascha Hauer
  <kernel@pengutronix.de>
-Subject: [PATCH v13 11/11] arm64: dts: Add power-domains property to mfgcfg
-Date: Fri, 20 Mar 2020 15:32:20 +0800
-Message-ID: <1584689540-5227-12-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v13 06/11] soc: mediatek: Add subsys clock control for bus
+ protection
+Date: Fri, 20 Mar 2020 15:32:15 +0800
+Message-ID: <1584689540-5227-7-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1584689540-5227-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1584689540-5227-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200320_003232_447554_3465572D 
-X-CRM114-Status: UNSURE (   8.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200320_003232_725375_710B5C17 
+X-CRM114-Status: GOOD (  16.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,25 +94,156 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mfgcfg clock is under MFG_ASYNC power domain
+For the bus protection operations, some subsys clocks need to be enabled
+before releasing the protection, and vise versa.
+But those subsys clocks could only be controlled once its corresponding
+power domain is turned on first.
+In this patch, we add the subsys clock control into its relavent steps.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/soc/mediatek/mtk-scpsys.c | 71 +++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 69 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 70f18b9..433c62e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -654,6 +654,7 @@
- 			compatible = "mediatek,mt8183-mfgcfg", "syscon";
- 			reg = <0 0x13000000 0 0x1000>;
- 			#clock-cells = <1>;
-+			power-domains = <&scpsys MT8183_POWER_DOMAIN_MFG_ASYNC>;
- 		};
+diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
+index a4fb0b23..2a9478f 100644
+--- a/drivers/soc/mediatek/mtk-scpsys.c
++++ b/drivers/soc/mediatek/mtk-scpsys.c
+@@ -80,6 +80,7 @@
+ #define PWR_STATUS_WB			BIT(27)	/* MT7622 */
  
- 		mmsys: syscon@14000000 {
+ #define MAX_CLKS	3
++#define MAX_SUBSYS_CLKS 10
+ 
+ /**
+  * struct scp_domain_data - scp domain data for power on/off flow
+@@ -89,6 +90,8 @@
+  * @sram_pdn_bits: The mask for sram power control bits.
+  * @sram_pdn_ack_bits: The mask for sram power control acked bits.
+  * @basic_clk_name: The basic clocks required by this power domain.
++ * @subsys_clk_prefix: The prefix name of the clocks need to be enabled
++ *                     before releasing bus protection.
+  * @caps: The flag for active wake-up action.
+  * @bp_table: The mask table for multiple step bus protection.
+  */
+@@ -99,6 +102,7 @@ struct scp_domain_data {
+ 	u32 sram_pdn_bits;
+ 	u32 sram_pdn_ack_bits;
+ 	const char *basic_clk_name[MAX_CLKS];
++	const char *subsys_clk_prefix;
+ 	u8 caps;
+ 	struct bus_prot bp_table[MAX_STEPS];
+ };
+@@ -109,6 +113,7 @@ struct scp_domain {
+ 	struct generic_pm_domain genpd;
+ 	struct scp *scp;
+ 	struct clk *clk[MAX_CLKS];
++	struct clk *subsys_clk[MAX_SUBSYS_CLKS];
+ 	const struct scp_domain_data *data;
+ 	struct regulator *supply;
+ };
+@@ -384,16 +389,22 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 	val |= PWR_RST_B_BIT;
+ 	writel(val, ctl_addr);
+ 
+-	ret = scpsys_sram_enable(scpd, ctl_addr);
++	ret = scpsys_clk_enable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
+ 	if (ret < 0)
+ 		goto err_pwr_ack;
+ 
++	ret = scpsys_sram_enable(scpd, ctl_addr);
++	if (ret < 0)
++		goto err_sram;
++
+ 	ret = scpsys_bus_protect_disable(scpd);
+ 	if (ret < 0)
+-		goto err_pwr_ack;
++		goto err_sram;
+ 
+ 	return 0;
+ 
++err_sram:
++	scpsys_clk_disable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
+ err_pwr_ack:
+ 	scpsys_clk_disable(scpd->clk, MAX_CLKS);
+ err_clk:
+@@ -420,6 +431,8 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ 	if (ret < 0)
+ 		goto out;
+ 
++	scpsys_clk_disable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
++
+ 	/* subsys power off */
+ 	val = readl(ctl_addr);
+ 	val |= PWR_ISO_BIT;
+@@ -457,6 +470,48 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ 	return ret;
+ }
+ 
++static int init_subsys_clks(struct platform_device *pdev,
++		const char *prefix, struct clk **clk)
++{
++	struct device_node *node = pdev->dev.of_node;
++	u32 prefix_len, sub_clk_cnt = 0;
++	struct property *prop;
++	const char *clk_name;
++
++	if (!node) {
++		dev_err(&pdev->dev, "Cannot find scpsys node: %ld\n",
++			PTR_ERR(node));
++		return PTR_ERR(node);
++	}
++
++	prefix_len = strlen(prefix);
++
++	of_property_for_each_string(node, "clock-names", prop, clk_name) {
++		if (!strncmp(clk_name, prefix, prefix_len) &&
++				(clk_name[prefix_len] == '-')) {
++			if (sub_clk_cnt >= MAX_SUBSYS_CLKS) {
++				dev_err(&pdev->dev,
++					"subsys clk out of range %d\n",
++					sub_clk_cnt);
++				return -EINVAL;
++			}
++
++			clk[sub_clk_cnt] = devm_clk_get(&pdev->dev,
++						clk_name);
++
++			if (IS_ERR(clk[sub_clk_cnt])) {
++				dev_err(&pdev->dev,
++					"Subsys clk get fail %ld\n",
++					PTR_ERR(clk[sub_clk_cnt]));
++				return PTR_ERR(clk[sub_clk_cnt]);
++			}
++			sub_clk_cnt++;
++		}
++	}
++
++	return sub_clk_cnt;
++}
++
+ static int init_basic_clks(struct platform_device *pdev, struct clk **clk,
+ 			const char * const *name)
+ {
+@@ -559,6 +614,18 @@ static struct scp *init_scp(struct platform_device *pdev,
+ 		if (ret)
+ 			return ERR_PTR(ret);
+ 
++		if (data->subsys_clk_prefix) {
++			ret = init_subsys_clks(pdev,
++					data->subsys_clk_prefix,
++					scpd->subsys_clk);
++			if (ret < 0) {
++				dev_err(&pdev->dev,
++					"%s: subsys clk unavailable\n",
++					data->name);
++				return ERR_PTR(ret);
++			}
++		}
++
+ 		genpd->name = data->name;
+ 		genpd->power_off = scpsys_power_off;
+ 		genpd->power_on = scpsys_power_on;
 -- 
 1.8.1.1.dirty
 _______________________________________________
