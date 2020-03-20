@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EA00FC4332B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 07:33:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 43170C4332D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 07:33:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BF45F20789
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 07:33:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 173162051A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 07:33:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EItcYKp7";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="npDHTsLp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BF45F20789
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VMB3ADv3";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ZRFWly7Z"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 173162051A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2fyhj7XySu6ApXfrIXjDHxdrIz2rz17K2or0jye7bA4=; b=EItcYKp79lNmvO
-	X5eLV3fBaReCrGOttO5xBiCAmPwroA5Db4j/EjLLjtAxCyxP5Q8iko7FJQenIsquhWLkLdvoCbOgE
-	Osb95OkbVCEGOU7QGA819jh7CsU6iMjgvFk7dD+9+dHpW8MRHyNEqqj6IO0OwBp47PymlDN5i6w4Y
-	tk3tcppoMiV7DYMk9PTZaqtrQeELHcQb56EOcgOg9u+WyqfEWLPPTvEIu9o1MgveuahWmMWJWHSvz
-	7h2/axU66R7nxsoQItVZFSdICRjUKRBUMroODcraShMWBmTTwFpAI1Y7O7x/ACEJwJhhSP9zLOCWx
-	c4oAdpkTVmIbtn8shJ0A==;
+	List-Owner; bh=6dvHtIvVBAbsJ8wYGwl09Lli6FBfyNuucGPSWaSLwoM=; b=VMB3ADv3/CoVOx
+	zQjDAgv6n+zOJyW9g/Xp+s6gQfzIfb6qH35aTyenmz0CWg370C8hkT98Ul85l2D7yQ/acXf6SwQbf
+	EO/Ydw6Nco4wtzQVRbvMZCFCKSUGZuv7LlX/bT07fMxD/Ob0tsjIasoEYcZr2Avm4b2Dd/QkSIKso
+	/ofrLe3LRC8ZscsboRDBpoCUsAoHEskljWAd/cQA6mg3Gqc6MXq/6DRhoIetq/2gOAzKAT5m26F9S
+	keJ6eV82pcMLs0ShGo5ATb6Te5RT8XnOYJHPs2gxBxBI5/qEtXg5NHEN1xwHbCKFwW7nLdzYoHFZP
+	Ti7DaZpLA+hWLZDWExMQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jFC9C-0003CZ-I6; Fri, 20 Mar 2020 07:32:50 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jFC9W-0003VM-Ht; Fri, 20 Mar 2020 07:33:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jFC8u-0002xb-M7; Fri, 20 Mar 2020 07:32:34 +0000
-X-UUID: 540974b1a6944bf7a8840fbbe4439735-20200319
+ id 1jFC8v-0002xa-EL; Fri, 20 Mar 2020 07:32:35 +0000
+X-UUID: e2279fdbddbe4e2fa5063f8df909e676-20200319
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=9X5uWL1YgmrDZcTKHn0A/YVVUbEE9hPvqMSvyGyBAwc=; 
- b=npDHTsLp09QKtFP8h7dJT5qeUz2rCZrCCV39Ft2OBQTp48hyXaCnSdwVl1JnRF1yyl47C0M4TFjK5B8qHXWIYdkIktNK7ebgEKxwOVnCt/7QnoWlHx+elgDne5A7mUojOmSYEdsmfIyZCECK63RbylVk/F7qazE7KSGdMomOMmM=;
-X-UUID: 540974b1a6944bf7a8840fbbe4439735-20200319
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=ZC2J6BbILzkt+Pj6lQ1euyr8SqmbBtkMhxwCjUic6jM=; 
+ b=ZRFWly7ZEKq/qfFUIgymQvkF+UV8mLPok2DQLQHjNV/GrMqZgrLFJNt07O7oEFm5xQ/gH9sZJij89l4mTlQPenlOxy01TKkm0z547HpQHGRUHUp5+J5aUA92o11oSo3hpsnIJDUgR6rE6WioIytielE+AnYRD9JorCkFIlF9L14=;
+X-UUID: e2279fdbddbe4e2fa5063f8df909e676-20200319
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <weiyi.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 722878272; Thu, 19 Mar 2020 23:32:28 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 20 Mar 2020 00:32:52 -0700
+ with ESMTP id 1586046676; Thu, 19 Mar 2020 23:32:27 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 20 Mar 2020 00:32:59 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 20 Mar 2020 15:31:26 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 20 Mar 2020 15:31:24 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Fri, 20 Mar 2020 15:29:19 +0800
+ Frontend Transport; Fri, 20 Mar 2020 15:29:18 +0800
 From: Weiyi Lu <weiyi.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat
  <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>, Sascha Hauer
  <kernel@pengutronix.de>
-Subject: [PATCH v13 06/11] soc: mediatek: Add subsys clock control for bus
- protection
-Date: Fri, 20 Mar 2020 15:32:15 +0800
-Message-ID: <1584689540-5227-7-git-send-email-weiyi.lu@mediatek.com>
+Subject: [PATCH v13 02/11] dt-bindings: soc: Add MT8183 power dt-bindings
+Date: Fri, 20 Mar 2020 15:32:11 +0800
+Message-ID: <1584689540-5227-3-git-send-email-weiyi.lu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1584689540-5227-1-git-send-email-weiyi.lu@mediatek.com>
 References: <1584689540-5227-1-git-send-email-weiyi.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200320_003232_725375_710B5C17 
-X-CRM114-Status: GOOD (  16.18  )
+X-CRM114-CacheID: sfid-20200320_003233_484277_E7CE766A 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,156 +93,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For the bus protection operations, some subsys clocks need to be enabled
-before releasing the protection, and vise versa.
-But those subsys clocks could only be controlled once its corresponding
-power domain is turned on first.
-In this patch, we add the subsys clock control into its relavent steps.
+Add power dt-bindings of MT8183 and introduces "BASIC" and
+"SUBSYS" clock types in binding document.
+The "BASIC" type is compatible to the original power control with
+clock name [a-z]+[0-9]*, e.g. mm, vpu1.
+The "SUBSYS" type is used for bus protection control with clock
+name [a-z]+-[0-9]+, e.g. isp-0, cam-1.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-scpsys.c | 71 +++++++++++++++++++++++++++++++++++++--
- 1 file changed, 69 insertions(+), 2 deletions(-)
+ .../devicetree/bindings/soc/mediatek/scpsys.txt    | 20 ++++++++++++++---
+ include/dt-bindings/power/mt8183-power.h           | 26 ++++++++++++++++++++++
+ 2 files changed, 43 insertions(+), 3 deletions(-)
+ create mode 100644 include/dt-bindings/power/mt8183-power.h
 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index a4fb0b23..2a9478f 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -80,6 +80,7 @@
- #define PWR_STATUS_WB			BIT(27)	/* MT7622 */
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+index 2bc3677..1baaa6f 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
++++ b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+@@ -15,6 +15,7 @@ power/power-domain.yaml. It provides the power domains defined in
+ - include/dt-bindings/power/mt2701-power.h
+ - include/dt-bindings/power/mt2712-power.h
+ - include/dt-bindings/power/mt7622-power.h
++- include/dt-bindings/power/mt8183-power.h
  
- #define MAX_CLKS	3
-+#define MAX_SUBSYS_CLKS 10
+ Required properties:
+ - compatible: Should be one of:
+@@ -27,12 +28,16 @@ Required properties:
+ 	- "mediatek,mt7623a-scpsys": For MT7623A SoC
+ 	- "mediatek,mt7629-scpsys", "mediatek,mt7622-scpsys": For MT7629 SoC
+ 	- "mediatek,mt8173-scpsys"
++	- "mediatek,mt8183-scpsys"
+ - #power-domain-cells: Must be 1
+ - reg: Address range of the SCPSYS unit
+ - infracfg: must contain a phandle to the infracfg controller
+-- clock, clock-names: clocks according to the common clock binding.
+-                      These are clocks which hardware needs to be
+-                      enabled before enabling certain power domains.
++- clock, clock-names: Clocks according to the common clock binding.
++                      Some SoCs have to groups of clocks.
++                      BASIC clocks need to be enabled before enabling the
++                      corresponding power domain.
++                      SUBSYS clocks need to be enabled before releasing the
++                      bus protection.
+ 	Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
+ 	Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
+ 	Required clocks for MT6765: MUX: "mm", "mfg"
+@@ -43,6 +48,15 @@ Required properties:
+ 	Required clocks for MT7622 or MT7629: "hif_sel"
+ 	Required clocks for MT7623A: "ethif"
+ 	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
++	Required clocks for MT8183: BASIC: "audio", "mfg", "mm", "cam", "isp",
++					   "vpu", "vpu1", "vpu2", "vpu3"
++				    SUBSYS: "mm-0", "mm-1", "mm-2", "mm-3",
++					    "mm-4", "mm-5", "mm-6", "mm-7",
++					    "mm-8", "mm-9", "isp-0", "isp-1",
++					    "cam-0", "cam-1", "cam-2", "cam-3",
++					    "cam-4", "cam-5", "cam-6", "vpu-0",
++					    "vpu-1", "vpu-2", "vpu-3", "vpu-4",
++					    "vpu-5"
  
- /**
-  * struct scp_domain_data - scp domain data for power on/off flow
-@@ -89,6 +90,8 @@
-  * @sram_pdn_bits: The mask for sram power control bits.
-  * @sram_pdn_ack_bits: The mask for sram power control acked bits.
-  * @basic_clk_name: The basic clocks required by this power domain.
-+ * @subsys_clk_prefix: The prefix name of the clocks need to be enabled
-+ *                     before releasing bus protection.
-  * @caps: The flag for active wake-up action.
-  * @bp_table: The mask table for multiple step bus protection.
-  */
-@@ -99,6 +102,7 @@ struct scp_domain_data {
- 	u32 sram_pdn_bits;
- 	u32 sram_pdn_ack_bits;
- 	const char *basic_clk_name[MAX_CLKS];
-+	const char *subsys_clk_prefix;
- 	u8 caps;
- 	struct bus_prot bp_table[MAX_STEPS];
- };
-@@ -109,6 +113,7 @@ struct scp_domain {
- 	struct generic_pm_domain genpd;
- 	struct scp *scp;
- 	struct clk *clk[MAX_CLKS];
-+	struct clk *subsys_clk[MAX_SUBSYS_CLKS];
- 	const struct scp_domain_data *data;
- 	struct regulator *supply;
- };
-@@ -384,16 +389,22 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	val |= PWR_RST_B_BIT;
- 	writel(val, ctl_addr);
- 
--	ret = scpsys_sram_enable(scpd, ctl_addr);
-+	ret = scpsys_clk_enable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
- 	if (ret < 0)
- 		goto err_pwr_ack;
- 
-+	ret = scpsys_sram_enable(scpd, ctl_addr);
-+	if (ret < 0)
-+		goto err_sram;
+ Optional properties:
+ - vdec-supply: Power supply for the vdec power domain
+diff --git a/include/dt-bindings/power/mt8183-power.h b/include/dt-bindings/power/mt8183-power.h
+new file mode 100644
+index 0000000..5c0c8c7
+--- /dev/null
++++ b/include/dt-bindings/power/mt8183-power.h
+@@ -0,0 +1,26 @@
++/* SPDX-License-Identifier: GPL-2.0
++ *
++ * Copyright (c) 2018 MediaTek Inc.
++ * Author: Weiyi Lu <weiyi.lu@mediatek.com>
++ */
 +
- 	ret = scpsys_bus_protect_disable(scpd);
- 	if (ret < 0)
--		goto err_pwr_ack;
-+		goto err_sram;
- 
- 	return 0;
- 
-+err_sram:
-+	scpsys_clk_disable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
- err_pwr_ack:
- 	scpsys_clk_disable(scpd->clk, MAX_CLKS);
- err_clk:
-@@ -420,6 +431,8 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	if (ret < 0)
- 		goto out;
- 
-+	scpsys_clk_disable(scpd->subsys_clk, MAX_SUBSYS_CLKS);
++#ifndef _DT_BINDINGS_POWER_MT8183_POWER_H
++#define _DT_BINDINGS_POWER_MT8183_POWER_H
 +
- 	/* subsys power off */
- 	val = readl(ctl_addr);
- 	val |= PWR_ISO_BIT;
-@@ -457,6 +470,48 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	return ret;
- }
- 
-+static int init_subsys_clks(struct platform_device *pdev,
-+		const char *prefix, struct clk **clk)
-+{
-+	struct device_node *node = pdev->dev.of_node;
-+	u32 prefix_len, sub_clk_cnt = 0;
-+	struct property *prop;
-+	const char *clk_name;
++#define MT8183_POWER_DOMAIN_AUDIO	0
++#define MT8183_POWER_DOMAIN_CONN	1
++#define MT8183_POWER_DOMAIN_MFG_ASYNC	2
++#define MT8183_POWER_DOMAIN_MFG		3
++#define MT8183_POWER_DOMAIN_MFG_CORE0	4
++#define MT8183_POWER_DOMAIN_MFG_CORE1	5
++#define MT8183_POWER_DOMAIN_MFG_2D	6
++#define MT8183_POWER_DOMAIN_DISP	7
++#define MT8183_POWER_DOMAIN_CAM		8
++#define MT8183_POWER_DOMAIN_ISP		9
++#define MT8183_POWER_DOMAIN_VDEC	10
++#define MT8183_POWER_DOMAIN_VENC	11
++#define MT8183_POWER_DOMAIN_VPU_TOP	12
++#define MT8183_POWER_DOMAIN_VPU_CORE0	13
++#define MT8183_POWER_DOMAIN_VPU_CORE1	14
 +
-+	if (!node) {
-+		dev_err(&pdev->dev, "Cannot find scpsys node: %ld\n",
-+			PTR_ERR(node));
-+		return PTR_ERR(node);
-+	}
-+
-+	prefix_len = strlen(prefix);
-+
-+	of_property_for_each_string(node, "clock-names", prop, clk_name) {
-+		if (!strncmp(clk_name, prefix, prefix_len) &&
-+				(clk_name[prefix_len] == '-')) {
-+			if (sub_clk_cnt >= MAX_SUBSYS_CLKS) {
-+				dev_err(&pdev->dev,
-+					"subsys clk out of range %d\n",
-+					sub_clk_cnt);
-+				return -EINVAL;
-+			}
-+
-+			clk[sub_clk_cnt] = devm_clk_get(&pdev->dev,
-+						clk_name);
-+
-+			if (IS_ERR(clk[sub_clk_cnt])) {
-+				dev_err(&pdev->dev,
-+					"Subsys clk get fail %ld\n",
-+					PTR_ERR(clk[sub_clk_cnt]));
-+				return PTR_ERR(clk[sub_clk_cnt]);
-+			}
-+			sub_clk_cnt++;
-+		}
-+	}
-+
-+	return sub_clk_cnt;
-+}
-+
- static int init_basic_clks(struct platform_device *pdev, struct clk **clk,
- 			const char * const *name)
- {
-@@ -559,6 +614,18 @@ static struct scp *init_scp(struct platform_device *pdev,
- 		if (ret)
- 			return ERR_PTR(ret);
- 
-+		if (data->subsys_clk_prefix) {
-+			ret = init_subsys_clks(pdev,
-+					data->subsys_clk_prefix,
-+					scpd->subsys_clk);
-+			if (ret < 0) {
-+				dev_err(&pdev->dev,
-+					"%s: subsys clk unavailable\n",
-+					data->name);
-+				return ERR_PTR(ret);
-+			}
-+		}
-+
- 		genpd->name = data->name;
- 		genpd->power_off = scpsys_power_off;
- 		genpd->power_on = scpsys_power_on;
++#endif /* _DT_BINDINGS_POWER_MT8183_POWER_H */
 -- 
 1.8.1.1.dirty
 _______________________________________________
