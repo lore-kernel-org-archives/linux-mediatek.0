@@ -2,57 +2,74 @@ Return-Path: <SRS0=3B0C=5F=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.8 required=3.0 tests=DKIM_INVALID,DKIM_SIGNED,
+	INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5D01C43332
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 09:15:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DF9D5C4332D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 11:40:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 67AD820782
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 09:15:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AF6FE20722
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 11:40:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LgWcMMvq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 67AD820782
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bv8EhU0i";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="ypLJA4Km"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF6FE20722
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=glSU7ashxITqRyCeJKYIHvSzGmlAoedbSIgLCVq1G9U=; b=LgWcMMvqGdTn0z4jGz3Yc7FpsW
-	h7a6JKoUQN7djCnFmaHnfrPT7iYvZzzBkOgFPvPdsXG0uTcqPisY8QMqJ6CqQl+QqSuDHpHtLRSUo
-	xHJEmooJcL9gy8bW72M1MGPgIix9Bc9WOcXeiLOhXBThTdB+X4ObLLGBSc3Ai8DYCfvLDxYVNqhi+
-	NRfBh9VC/NhOcEZMNXbGGe/WuOg2/W9g67dIPOumacBJ74/Gg4Bw85e4jG7YKYeGNkyDX26Tk5q8/
-	Ss1R0LJKfZZQB5T3KwuLybPeQ/NGLHmv3l80d4nYmOIdtuSGkfsnsXXJlifc+xln5qA8wet/sD1ZD
-	d8L2aU7A==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hucejPk8eyRtRG0336v6/Bf05ZxazwfqEag0BdxE4ow=; b=bv8EhU0iRSrMQv
+	d9nDAS1RydEAfV8rHPCmjGNfttOJ3Pk/5yvMzKIqPDXLSDHFeLft9drJNzxkOOgQle+kWHAug7vSp
+	Gv0uviXjOgu8yuYxhl0dhDjCGwaUjxxuPW0WvEbNou1UhwoVMprev4OZsfvsBvERLVHCKZZ+bUnn4
+	OURpAcB5MhcO18qIX9pDtBkBmVsi7W0orU4LaiuduTpNZIWSMowGRCH10XL6lAi/C4QajUWqLNMEy
+	aBNRJ446mplYv1s9P0uCmehr+5Mv0PRWgRcHkVYhBRKKIpwQLVQN08Doom5tGHsGO+xjEC6YPwsdX
+	EBFHZ8ZzDG9FMMjFrQew==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jFDk5-0000tc-4T; Fri, 20 Mar 2020 09:15:01 +0000
-Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
+	id 1jFG0f-0005af-UI; Fri, 20 Mar 2020 11:40:17 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jFDje-0000CU-Py
- for linux-mediatek@lists.infradead.org; Fri, 20 Mar 2020 09:14:40 +0000
-Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 23A9D46A; Fri, 20 Mar 2020 10:14:22 +0100 (CET)
-From: Joerg Roedel <joro@8bytes.org>
-To: iommu@lists.linux-foundation.org
-Subject: [PATCH v3 13/15] iommu/qcom: Use accessor functions for iommu private
- data
-Date: Fri, 20 Mar 2020 10:14:12 +0100
-Message-Id: <20200320091414.3941-14-joro@8bytes.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200320091414.3941-1-joro@8bytes.org>
-References: <20200320091414.3941-1-joro@8bytes.org>
+ id 1jFG0U-0004sZ-D3; Fri, 20 Mar 2020 11:40:07 +0000
+Received: from mail-il1-f182.google.com (mail-il1-f182.google.com
+ [209.85.166.182])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 9D4162076E;
+ Fri, 20 Mar 2020 11:40:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1584704405;
+ bh=iy0DPkUN8K/G9bJpje5gyRzlt0Krjnhy7Jq9VXkD4Zg=;
+ h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
+ b=ypLJA4KmidGx0Lf3/OGyq8WwqXPUqQp02gA6ofsognYX/c3pZCkXozDQg9kSEyy4m
+ FTHhPfGrroszbknTTIk/a/3GG67Tpfh78D5axGbPHvFom+NjNGz7sSvNbxIWhWNDNR
+ jrNTNt87SUb1Df+wR/UwtslkR7Tiolj4oXkXOp18=
+Received: by mail-il1-f182.google.com with SMTP id m7so1138641ilg.5;
+ Fri, 20 Mar 2020 04:40:05 -0700 (PDT)
+X-Gm-Message-State: ANhLgQ0IfgYaBWPfKbHSdhz+rS5C0hK2QKexw25kwt0gaLhn74/sE9We
+ nPLalwHQCuuAu2IXLkISwVi2HUio0xpMtE1uUKk=
+X-Google-Smtp-Source: ADFU+vuX46aMx1NbY1leqNBC7N7arF+J98DWHRgaTnF95AlB1R3flMuvkmnEcc2Li7GUFMMjhUk/R1ctAydOwUTuUh8=
+X-Received: by 2002:a92:1a53:: with SMTP id z19mr7767334ill.85.1584704405029; 
+ Fri, 20 Mar 2020 04:40:05 -0700 (PDT)
+MIME-Version: 1.0
+References: <20200320071143.4225-1-erin.lo@mediatek.com>
+In-Reply-To: <20200320071143.4225-1-erin.lo@mediatek.com>
+From: Josh Boyer <jwboyer@kernel.org>
+Date: Fri, 20 Mar 2020 07:39:54 -0400
+X-Gmail-Original-Message-ID: <CA+5PVA5pjvbJvMeKEARCAyztNAspqksfmCnV+ubO4OJnaQo5EA@mail.gmail.com>
+Message-ID: <CA+5PVA5pjvbJvMeKEARCAyztNAspqksfmCnV+ubO4OJnaQo5EA@mail.gmail.com>
+Subject: Re: pull request v2: linux-firmware: Create Mediatek MT8183 SCP
+ firmware
+To: Erin Lo <erin.lo@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200320_021435_055396_1FA8C19F 
-X-CRM114-Status: GOOD (  13.51  )
+X-CRM114-CacheID: sfid-20200320_044006_475619_0986FB59 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,228 +81,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Joerg Roedel <jroedel@suse.de>, Will Deacon <will@kernel.org>,
- linux-arm-msm@vger.kernel.org, Joerg Roedel <joro@8bytes.org>,
- guohanjun@huawei.com, linux-kernel@vger.kernel.org,
- Bjorn Andersson <bjorn.andersson@linaro.org>, Rob Clark <robdclark@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>, linux-mediatek@lists.infradead.org,
- Andy Gross <agross@kernel.org>, Sudeep Holla <sudeep.holla@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Paul <sean@poorly.run>,
- Robin Murphy <robin.murphy@arm.com>
-MIME-Version: 1.0
+List-Id: <linux-firmware.lore.kernel.org>
+Cc: menghui.lin@mediatek.com, Maoguang Meng <maoguang.meng@mediatek.com>,
+ srv_heupstream@mediatek.com, Nicolas Boichat <drinkcat@google.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>, linux-remoteproc@vger.kernel.org,
+ Linux Firmware <linux-firmware@kernel.org>, sj.huang@mediatek.com,
+ linux-mediatek@lists.infradead.org, Shawn Ku <shawnku@google.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Joerg Roedel <jroedel@suse.de>
+On Fri, Mar 20, 2020 at 3:13 AM Erin Lo <erin.lo@mediatek.com> wrote:
+>
+> Hi, maintainers,
+> Changes since v1:
+>  - Add information to WHENCE
+>
+> The following changes since commit 0148cfefcbf98898ca65bb26d9d7d638b30e211d:
+>
+>   Merge https://github.com/rjliao-qca/qca-btfw (2020-03-02 08:08:15 -0500)
+>
+> are available in the Git repository at:
+>
+>   https://github.com/erinlo/linux_fw_scp v12573.77
+>
+> for you to fetch changes up to 3c213aa59661c4641f0c2166a315140ac0445230:
+>
+>   mediatek: Add mt8183 SCP firmware (2020-03-20 14:37:49 +0800)
+>
+> ----------------------------------------------------------------
+> Erin Lo (1):
+>       mediatek: Add mt8183 SCP firmware
+>
+>  WHENCE                  |  18 ++++++++++++++++++
+>  mediatek/mt8183/scp.img | Bin 0 -> 1027104 bytes
+>  2 files changed, 18 insertions(+)
+>  create mode 100644 mediatek/mt8183/scp.img
 
-Make use of dev_iommu_priv_set/get() functions.
+Pulled and pushed out.
 
-Signed-off-by: Joerg Roedel <jroedel@suse.de>
----
- drivers/iommu/qcom_iommu.c | 61 ++++++++++++++++++++++----------------
- 1 file changed, 36 insertions(+), 25 deletions(-)
-
-diff --git a/drivers/iommu/qcom_iommu.c b/drivers/iommu/qcom_iommu.c
-index 4328da0b0a9f..824a9e85fac6 100644
---- a/drivers/iommu/qcom_iommu.c
-+++ b/drivers/iommu/qcom_iommu.c
-@@ -74,16 +74,19 @@ static struct qcom_iommu_domain *to_qcom_iommu_domain(struct iommu_domain *dom)
- 
- static const struct iommu_ops qcom_iommu_ops;
- 
--static struct qcom_iommu_dev * to_iommu(struct iommu_fwspec *fwspec)
-+static struct qcom_iommu_dev * to_iommu(struct device *dev)
- {
-+	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-+
- 	if (!fwspec || fwspec->ops != &qcom_iommu_ops)
- 		return NULL;
--	return fwspec->iommu_priv;
-+
-+	return dev_iommu_priv_get(dev);
- }
- 
--static struct qcom_iommu_ctx * to_ctx(struct iommu_fwspec *fwspec, unsigned asid)
-+static struct qcom_iommu_ctx * to_ctx(struct device *dev, unsigned asid)
- {
--	struct qcom_iommu_dev *qcom_iommu = to_iommu(fwspec);
-+	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev);
- 	if (!qcom_iommu)
- 		return NULL;
- 	return qcom_iommu->ctxs[asid - 1];
-@@ -115,11 +118,14 @@ iommu_readq(struct qcom_iommu_ctx *ctx, unsigned reg)
- 
- static void qcom_iommu_tlb_sync(void *cookie)
- {
--	struct iommu_fwspec *fwspec = cookie;
-+	struct iommu_fwspec *fwspec;
-+	struct device *dev = cookie;
- 	unsigned i;
- 
-+	fwspec = dev_iommu_fwspec_get(dev);
-+
- 	for (i = 0; i < fwspec->num_ids; i++) {
--		struct qcom_iommu_ctx *ctx = to_ctx(fwspec, fwspec->ids[i]);
-+		struct qcom_iommu_ctx *ctx = to_ctx(dev, fwspec->ids[i]);
- 		unsigned int val, ret;
- 
- 		iommu_writel(ctx, ARM_SMMU_CB_TLBSYNC, 0);
-@@ -133,11 +139,14 @@ static void qcom_iommu_tlb_sync(void *cookie)
- 
- static void qcom_iommu_tlb_inv_context(void *cookie)
- {
--	struct iommu_fwspec *fwspec = cookie;
-+	struct device *dev = cookie;
-+	struct iommu_fwspec *fwspec;
- 	unsigned i;
- 
-+	fwspec = dev_iommu_fwspec_get(dev);
-+
- 	for (i = 0; i < fwspec->num_ids; i++) {
--		struct qcom_iommu_ctx *ctx = to_ctx(fwspec, fwspec->ids[i]);
-+		struct qcom_iommu_ctx *ctx = to_ctx(dev, fwspec->ids[i]);
- 		iommu_writel(ctx, ARM_SMMU_CB_S1_TLBIASID, ctx->asid);
- 	}
- 
-@@ -147,13 +156,16 @@ static void qcom_iommu_tlb_inv_context(void *cookie)
- static void qcom_iommu_tlb_inv_range_nosync(unsigned long iova, size_t size,
- 					    size_t granule, bool leaf, void *cookie)
- {
--	struct iommu_fwspec *fwspec = cookie;
-+	struct device *dev = cookie;
-+	struct iommu_fwspec *fwspec;
- 	unsigned i, reg;
- 
- 	reg = leaf ? ARM_SMMU_CB_S1_TLBIVAL : ARM_SMMU_CB_S1_TLBIVA;
- 
-+	fwspec = dev_iommu_fwspec_get(dev);
-+
- 	for (i = 0; i < fwspec->num_ids; i++) {
--		struct qcom_iommu_ctx *ctx = to_ctx(fwspec, fwspec->ids[i]);
-+		struct qcom_iommu_ctx *ctx = to_ctx(dev, fwspec->ids[i]);
- 		size_t s = size;
- 
- 		iova = (iova >> 12) << 12;
-@@ -222,9 +234,10 @@ static irqreturn_t qcom_iommu_fault(int irq, void *dev)
- 
- static int qcom_iommu_init_domain(struct iommu_domain *domain,
- 				  struct qcom_iommu_dev *qcom_iommu,
--				  struct iommu_fwspec *fwspec)
-+				  struct device *dev)
- {
- 	struct qcom_iommu_domain *qcom_domain = to_qcom_iommu_domain(domain);
-+	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
- 	struct io_pgtable_ops *pgtbl_ops;
- 	struct io_pgtable_cfg pgtbl_cfg;
- 	int i, ret = 0;
-@@ -243,7 +256,7 @@ static int qcom_iommu_init_domain(struct iommu_domain *domain,
- 	};
- 
- 	qcom_domain->iommu = qcom_iommu;
--	pgtbl_ops = alloc_io_pgtable_ops(ARM_32_LPAE_S1, &pgtbl_cfg, fwspec);
-+	pgtbl_ops = alloc_io_pgtable_ops(ARM_32_LPAE_S1, &pgtbl_cfg, dev);
- 	if (!pgtbl_ops) {
- 		dev_err(qcom_iommu->dev, "failed to allocate pagetable ops\n");
- 		ret = -ENOMEM;
-@@ -256,7 +269,7 @@ static int qcom_iommu_init_domain(struct iommu_domain *domain,
- 	domain->geometry.force_aperture = true;
- 
- 	for (i = 0; i < fwspec->num_ids; i++) {
--		struct qcom_iommu_ctx *ctx = to_ctx(fwspec, fwspec->ids[i]);
-+		struct qcom_iommu_ctx *ctx = to_ctx(dev, fwspec->ids[i]);
- 
- 		if (!ctx->secure_init) {
- 			ret = qcom_scm_restore_sec_cfg(qcom_iommu->sec_id, ctx->asid);
-@@ -363,8 +376,7 @@ static void qcom_iommu_domain_free(struct iommu_domain *domain)
- 
- static int qcom_iommu_attach_dev(struct iommu_domain *domain, struct device *dev)
- {
--	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
--	struct qcom_iommu_dev *qcom_iommu = to_iommu(fwspec);
-+	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev);
- 	struct qcom_iommu_domain *qcom_domain = to_qcom_iommu_domain(domain);
- 	int ret;
- 
-@@ -375,7 +387,7 @@ static int qcom_iommu_attach_dev(struct iommu_domain *domain, struct device *dev
- 
- 	/* Ensure that the domain is finalized */
- 	pm_runtime_get_sync(qcom_iommu->dev);
--	ret = qcom_iommu_init_domain(domain, qcom_iommu, fwspec);
-+	ret = qcom_iommu_init_domain(domain, qcom_iommu, dev);
- 	pm_runtime_put_sync(qcom_iommu->dev);
- 	if (ret < 0)
- 		return ret;
-@@ -397,9 +409,9 @@ static int qcom_iommu_attach_dev(struct iommu_domain *domain, struct device *dev
- 
- static void qcom_iommu_detach_dev(struct iommu_domain *domain, struct device *dev)
- {
--	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
--	struct qcom_iommu_dev *qcom_iommu = to_iommu(fwspec);
- 	struct qcom_iommu_domain *qcom_domain = to_qcom_iommu_domain(domain);
-+	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
-+	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev);
- 	unsigned i;
- 
- 	if (WARN_ON(!qcom_domain->iommu))
-@@ -407,7 +419,7 @@ static void qcom_iommu_detach_dev(struct iommu_domain *domain, struct device *de
- 
- 	pm_runtime_get_sync(qcom_iommu->dev);
- 	for (i = 0; i < fwspec->num_ids; i++) {
--		struct qcom_iommu_ctx *ctx = to_ctx(fwspec, fwspec->ids[i]);
-+		struct qcom_iommu_ctx *ctx = to_ctx(dev, fwspec->ids[i]);
- 
- 		/* Disable the context bank: */
- 		iommu_writel(ctx, ARM_SMMU_CB_SCTLR, 0);
-@@ -514,7 +526,7 @@ static bool qcom_iommu_capable(enum iommu_cap cap)
- 
- static int qcom_iommu_add_device(struct device *dev)
- {
--	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev_iommu_fwspec_get(dev));
-+	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev);
- 	struct iommu_group *group;
- 	struct device_link *link;
- 
-@@ -545,7 +557,7 @@ static int qcom_iommu_add_device(struct device *dev)
- 
- static void qcom_iommu_remove_device(struct device *dev)
- {
--	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev_iommu_fwspec_get(dev));
-+	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev);
- 
- 	if (!qcom_iommu)
- 		return;
-@@ -557,7 +569,6 @@ static void qcom_iommu_remove_device(struct device *dev)
- 
- static int qcom_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
- {
--	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
- 	struct qcom_iommu_dev *qcom_iommu;
- 	struct platform_device *iommu_pdev;
- 	unsigned asid = args->args[0];
-@@ -583,14 +594,14 @@ static int qcom_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
- 	    WARN_ON(asid > qcom_iommu->num_ctxs))
- 		return -EINVAL;
- 
--	if (!fwspec->iommu_priv) {
--		fwspec->iommu_priv = qcom_iommu;
-+	if (!dev_iommu_priv_get(dev)) {
-+		dev_iommu_priv_set(dev, qcom_iommu);
- 	} else {
- 		/* make sure devices iommus dt node isn't referring to
- 		 * multiple different iommu devices.  Multiple context
- 		 * banks are ok, but multiple devices are not:
- 		 */
--		if (WARN_ON(qcom_iommu != fwspec->iommu_priv))
-+		if (WARN_ON(qcom_iommu != dev_iommu_priv_get(dev)))
- 			return -EINVAL;
- 	}
- 
--- 
-2.17.1
-
+josh
 
 _______________________________________________
 Linux-mediatek mailing list
