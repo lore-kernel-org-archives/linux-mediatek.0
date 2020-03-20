@@ -5,18 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 99E3FC41620
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 09:15:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D39BC4332D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 09:15:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6788F20784
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 09:15:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1715120782
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 09:15:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="c1q4mM69"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6788F20784
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VZ/ckq1t"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1715120782
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,33 +26,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=xBwt8k0Xh9GQZrxD317hvr+KG0VilQNQG1fo6getatk=; b=c1q4mM69BU5j/s0Zg24l5jFjs3
-	t06FVTopfOgb2JeLIrqkKX8MRTII2xq0YuXb12ysx0SQ6va+ZJmaVuM/Ab1YOViYDJqQtW6kHz5y8
-	DSMiZ7Yyo7WmKafueIw5WzE4gIodXk1OhUj5OEXdEL0xHPIwq0/5fWBp3zN3m3D+LpQAkdodc75EK
-	5g5JR5zP9nPLm8kBQKr0xg3qe6IaWn7jW984CHk5w60BPr7x76CTZD4lK4DeydzsM6mHsJV3EcMhp
-	epV55nfnt07GO/JwNKmNsJ33mZSSoAj38k+enXQsYJyGFQKxyH/OzdwoXQcISa64ZrgLyiF49jNd9
-	vbSDP5IA==;
+	bh=sh0g7jiLTnC7ywfB2GVhuXraiI5zHi+4ihowsAHwAow=; b=VZ/ckq1theudZNRlujqCMlwj6H
+	4fcIw/wQsdgno/SCX6VdR3YPOnjVOf6v/hKPypRUGcOp62qxcWou61AZ4oQNusCae/GxvO4+YnHBr
+	hyYO2oGv5h1lYeSHp1gxSnqiCrHyqJuRstjFv3iKZwf1XIdnv6MV50zm5cswXKtvAmq8AGWpzFYqr
+	mPoBJ+74qi8s+WnHWOxgRhtBVOGq8G/bVzJCW9ZMFpuL8reUp2cyAFTogpPeN4CsWy/ZkXQmwwO4e
+	h+WfONvP82M5mrOt72R1ind9M47RnhsiQVmL3evNuoUcI2hsBP078F2v2GmivImS847CMYzb+W0u/
+	55GuxGTA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jFDjy-0000hR-PB; Fri, 20 Mar 2020 09:14:54 +0000
-Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
+	id 1jFDk1-0000oI-UZ; Fri, 20 Mar 2020 09:14:57 +0000
+Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
+ helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jFDje-0000CO-Ly
- for linux-mediatek@lists.infradead.org; Fri, 20 Mar 2020 09:14:38 +0000
+ id 1jFDjh-0000Gl-7F
+ for linux-mediatek@lists.infradead.org; Fri, 20 Mar 2020 09:14:40 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 8BE26457; Fri, 20 Mar 2020 10:14:21 +0100 (CET)
+ id 89CDA49B; Fri, 20 Mar 2020 10:14:22 +0100 (CET)
 From: Joerg Roedel <joro@8bytes.org>
 To: iommu@lists.linux-foundation.org
-Subject: [PATCH v3 12/15] iommu/mediatek: Use accessor functions for iommu
- private data
-Date: Fri, 20 Mar 2020 10:14:11 +0100
-Message-Id: <20200320091414.3941-13-joro@8bytes.org>
+Subject: [PATCH v3 15/15] iommu: Move fwspec->iommu_priv to struct dev_iommu
+Date: Fri, 20 Mar 2020 10:14:14 +0100
+Message-Id: <20200320091414.3941-16-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200320091414.3941-1-joro@8bytes.org>
 References: <20200320091414.3941-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200320_021434_914044_3254F7E5 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20200320_021437_440959_216E059E 
+X-CRM114-Status: UNSURE (   9.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,145 +82,59 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Make use of dev_iommu_priv_set/get() functions.
+Move the pointer for iommu private data from struct iommu_fwspec to
+struct dev_iommu.
 
+Tested-by: Will Deacon <will@kernel.org> # arm-smmu
 Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/mtk_iommu.c    | 13 ++++++-------
- drivers/iommu/mtk_iommu_v1.c | 14 +++++++-------
- 2 files changed, 13 insertions(+), 14 deletions(-)
+ include/linux/iommu.h | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 95945f467c03..5f4d6df59cf6 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -358,8 +358,8 @@ static void mtk_iommu_domain_free(struct iommu_domain *domain)
- static int mtk_iommu_attach_device(struct iommu_domain *domain,
- 				   struct device *dev)
+diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+index 056900e75758..8c4d45fce042 100644
+--- a/include/linux/iommu.h
++++ b/include/linux/iommu.h
+@@ -369,6 +369,7 @@ struct iommu_fault_param {
+  *
+  * @fault_param: IOMMU detected device fault reporting data
+  * @fwspec:	 IOMMU fwspec data
++ * @priv:	 IOMMU Driver private data
+  *
+  * TODO: migrate other per device data pointers under iommu_dev_data, e.g.
+  *	struct iommu_group	*iommu_group;
+@@ -377,6 +378,7 @@ struct dev_iommu {
+ 	struct mutex lock;
+ 	struct iommu_fault_param	*fault_param;
+ 	struct iommu_fwspec		*fwspec;
++	void				*priv;
+ };
+ 
+ int  iommu_device_register(struct iommu_device *iommu);
+@@ -589,7 +591,6 @@ struct iommu_group *fsl_mc_device_group(struct device *dev);
+ struct iommu_fwspec {
+ 	const struct iommu_ops	*ops;
+ 	struct fwnode_handle	*iommu_fwnode;
+-	void			*iommu_priv;
+ 	u32			flags;
+ 	u32			num_pasid_bits;
+ 	unsigned int		num_ids;
+@@ -629,12 +630,12 @@ static inline void dev_iommu_fwspec_set(struct device *dev,
+ 
+ static inline void *dev_iommu_priv_get(struct device *dev)
  {
-+	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
- 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
--	struct mtk_iommu_data *data = dev_iommu_fwspec_get(dev)->iommu_priv;
+-	return dev->iommu->fwspec->iommu_priv;
++	return dev->iommu->priv;
+ }
  
- 	if (!data)
- 		return -ENODEV;
-@@ -378,7 +378,7 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- static void mtk_iommu_detach_device(struct iommu_domain *domain,
- 				    struct device *dev)
+ static inline void dev_iommu_priv_set(struct device *dev, void *priv)
  {
--	struct mtk_iommu_data *data = dev_iommu_fwspec_get(dev)->iommu_priv;
-+	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
+-	dev->iommu->fwspec->iommu_priv = priv;
++	dev->iommu->priv = priv;
+ }
  
- 	if (!data)
- 		return;
-@@ -450,7 +450,7 @@ static int mtk_iommu_add_device(struct device *dev)
- 	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
- 		return -ENODEV; /* Not a iommu client device */
- 
--	data = fwspec->iommu_priv;
-+	data = dev_iommu_priv_get(dev);
- 	iommu_device_link(&data->iommu, dev);
- 
- 	group = iommu_group_get_for_dev(dev);
-@@ -469,7 +469,7 @@ static void mtk_iommu_remove_device(struct device *dev)
- 	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
- 		return;
- 
--	data = fwspec->iommu_priv;
-+	data = dev_iommu_priv_get(dev);
- 	iommu_device_unlink(&data->iommu, dev);
- 
- 	iommu_group_remove_device(dev);
-@@ -496,7 +496,6 @@ static struct iommu_group *mtk_iommu_device_group(struct device *dev)
- 
- static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
- {
--	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
- 	struct platform_device *m4updev;
- 
- 	if (args->args_count != 1) {
-@@ -505,13 +504,13 @@ static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
- 		return -EINVAL;
- 	}
- 
--	if (!fwspec->iommu_priv) {
-+	if (!dev_iommu_priv_get(dev)) {
- 		/* Get the m4u device */
- 		m4updev = of_find_device_by_node(args->np);
- 		if (WARN_ON(!m4updev))
- 			return -EINVAL;
- 
--		fwspec->iommu_priv = platform_get_drvdata(m4updev);
-+		dev_iommu_priv_set(dev, platform_get_drvdata(m4updev));
- 	}
- 
- 	return iommu_fwspec_add_ids(dev, args->args, 1);
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index e93b94ecac45..a31be05601c9 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -263,8 +263,8 @@ static void mtk_iommu_domain_free(struct iommu_domain *domain)
- static int mtk_iommu_attach_device(struct iommu_domain *domain,
- 				   struct device *dev)
- {
-+	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
- 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
--	struct mtk_iommu_data *data = dev_iommu_fwspec_get(dev)->iommu_priv;
- 	int ret;
- 
- 	if (!data)
-@@ -286,7 +286,7 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- static void mtk_iommu_detach_device(struct iommu_domain *domain,
- 				    struct device *dev)
- {
--	struct mtk_iommu_data *data = dev_iommu_fwspec_get(dev)->iommu_priv;
-+	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
- 
- 	if (!data)
- 		return;
-@@ -387,20 +387,20 @@ static int mtk_iommu_create_mapping(struct device *dev,
- 		return -EINVAL;
- 	}
- 
--	if (!fwspec->iommu_priv) {
-+	if (!dev_iommu_priv_get(dev)) {
- 		/* Get the m4u device */
- 		m4updev = of_find_device_by_node(args->np);
- 		if (WARN_ON(!m4updev))
- 			return -EINVAL;
- 
--		fwspec->iommu_priv = platform_get_drvdata(m4updev);
-+		dev_iommu_priv_set(dev, platform_get_drvdata(m4updev));
- 	}
- 
- 	ret = iommu_fwspec_add_ids(dev, args->args, 1);
- 	if (ret)
- 		return ret;
- 
--	data = fwspec->iommu_priv;
-+	data = dev_iommu_priv_get(dev);
- 	m4udev = data->dev;
- 	mtk_mapping = m4udev->archdata.iommu;
- 	if (!mtk_mapping) {
-@@ -459,7 +459,7 @@ static int mtk_iommu_add_device(struct device *dev)
- 	if (err)
- 		return err;
- 
--	data = fwspec->iommu_priv;
-+	data = dev_iommu_priv_get(dev);
- 	mtk_mapping = data->dev->archdata.iommu;
- 	err = arm_iommu_attach_device(dev, mtk_mapping);
- 	if (err) {
-@@ -478,7 +478,7 @@ static void mtk_iommu_remove_device(struct device *dev)
- 	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
- 		return;
- 
--	data = fwspec->iommu_priv;
-+	data = dev_iommu_priv_get(dev);
- 	iommu_device_unlink(&data->iommu, dev);
- 
- 	iommu_group_remove_device(dev);
+ int iommu_probe_device(struct device *dev);
 -- 
 2.17.1
 
