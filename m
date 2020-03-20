@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2E2D2C43332
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D72FC43333
 	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 09:14:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0178D20752
+	by mail.kernel.org (Postfix) with ESMTPS id 2147820767
 	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Mar 2020 09:14:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VnZeFIMg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0178D20752
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iMoPqvcV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2147820767
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,33 +26,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=0GFgWLLgv8Mp5Qx3HaZ5JLG0LAh8pDym2idSOMRxf9A=; b=VnZeFIMgSrZVmh3cRxELLsosIH
-	yM31vUboZiEKA5pi4yvYSrWtjfjHKVblshwCdtW/thJjLZKmQN2b4QfeHbCRVyEhCS8FpdBT0z5vC
-	oOpbSpEoAMBOaWZC+Xe7xwvMQvwreRT/oVN6zq1TTsYksq2i/1IHUbuGZ2QTrM7sTUepWlsxFKEHc
-	Ho82e6NbtbcilMXqwibBcJ+QzzuRHJgi4NtL/bA/4WNXSNJUD/OLMDiobyoR8ZQM6dzgzk+tGB5Jw
-	cn/cEaN4mIw1ioQjffMXHMev+KI0k9PpMbuZf5WYm63Ttjt2FBSVv0JC8CdnWEgra/4gqHWdIIerN
-	0wEyQDsA==;
+	bh=KnEQXV/WlLaGPo+RnOF+uL8WTX+IXNEC2zf7b8hrEyM=; b=iMoPqvcVkmfwutAt+VS9qG7sat
+	MO93KgtPWuKEICNlbe6oGEErhsFrU2062dKDohkn0r+gTmtDOvIevTuNqf3UX3TEZPWg+01ROF+y3
+	ItFr3dn8PHEvOFbAnUS5IRIEnZt/VooNCDpMfpJo2R29t5zbt4KM82rIROanBW/A7CmjVLsvxlwiT
+	WWY9Uwl36GxwFKczrqOyCIjY3AiF6RuW7SIhMQAbchW6zneOQlic7Pjg/mzAelWbY0Kh+fH95wWSc
+	0X+QmyF1J3Qf8VnMQty2WMN4C+bSnRDBqerRs74Kn4g8TZKo0ruq6vfC9qb5vuY6JGbvHzYEGOxDa
+	Hc3saWJQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jFDjk-0000Lw-WC; Fri, 20 Mar 2020 09:14:41 +0000
-Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
+	id 1jFDjm-0000O5-36; Fri, 20 Mar 2020 09:14:42 +0000
+Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
+ helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jFDja-00009J-8w
+ id 1jFDja-00009F-AL
  for linux-mediatek@lists.infradead.org; Fri, 20 Mar 2020 09:14:33 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id DF2D0342; Fri, 20 Mar 2020 10:14:19 +0100 (CET)
+ id A96A133E; Fri, 20 Mar 2020 10:14:19 +0100 (CET)
 From: Joerg Roedel <joro@8bytes.org>
 To: iommu@lists.linux-foundation.org
-Subject: [PATCH v3 03/15] drm/msm/mdp5: Remove direct access of
- dev->iommu_fwspec
-Date: Fri, 20 Mar 2020 10:14:02 +0100
-Message-Id: <20200320091414.3941-4-joro@8bytes.org>
+Subject: [PATCH v3 02/15] ACPI/IORT: Remove direct access of dev->iommu_fwspec
+Date: Fri, 20 Mar 2020 10:14:01 +0100
+Message-Id: <20200320091414.3941-3-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200320091414.3941-1-joro@8bytes.org>
 References: <20200320091414.3941-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200320_021430_484445_399876CA 
-X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-CacheID: sfid-20200320_021430_522982_B128AB90 
+X-CRM114-Status: UNSURE (   9.11  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -85,25 +85,37 @@ From: Joerg Roedel <jroedel@suse.de>
 Use the accessor functions instead of directly dereferencing
 dev->iommu_fwspec.
 
+Tested-by: Hanjun Guo <guohanjun@huawei.com>
 Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/acpi/arm64/iort.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c b/drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c
-index e43ecd4be10a..1252e1d76340 100644
---- a/drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c
-+++ b/drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c
-@@ -725,7 +725,7 @@ struct msm_kms *mdp5_kms_init(struct drm_device *dev)
+diff --git a/drivers/acpi/arm64/iort.c b/drivers/acpi/arm64/iort.c
+index ed3d2d1a7ae9..7d04424189df 100644
+--- a/drivers/acpi/arm64/iort.c
++++ b/drivers/acpi/arm64/iort.c
+@@ -1015,6 +1015,7 @@ const struct iommu_ops *iort_iommu_configure(struct device *dev)
+ 		return ops;
  
- 	if (config->platform.iommu) {
- 		iommu_dev = &pdev->dev;
--		if (!iommu_dev->iommu_fwspec)
-+		if (!dev_iommu_fwspec_get(iommu_dev))
- 			iommu_dev = iommu_dev->parent;
+ 	if (dev_is_pci(dev)) {
++		struct iommu_fwspec *fwspec;
+ 		struct pci_bus *bus = to_pci_dev(dev)->bus;
+ 		struct iort_pci_alias_info info = { .dev = dev };
  
- 		aspace = msm_gem_address_space_create(iommu_dev,
+@@ -1027,8 +1028,9 @@ const struct iommu_ops *iort_iommu_configure(struct device *dev)
+ 		err = pci_for_each_dma_alias(to_pci_dev(dev),
+ 					     iort_pci_iommu_init, &info);
+ 
+-		if (!err && iort_pci_rc_supports_ats(node))
+-			dev->iommu_fwspec->flags |= IOMMU_FWSPEC_PCI_RC_ATS;
++		fwspec = dev_iommu_fwspec_get(dev);
++		if (fwspec && iort_pci_rc_supports_ats(node))
++			fwspec->flags |= IOMMU_FWSPEC_PCI_RC_ATS;
+ 	} else {
+ 		int i = 0;
+ 
 -- 
 2.17.1
 
