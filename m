@@ -1,86 +1,79 @@
-Return-Path: <SRS0=rKvN=5G=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=AdZ2=5H=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 41027C4332B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Mar 2020 11:40:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 35851C4332D
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Mar 2020 07:58:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1319520724
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Mar 2020 11:40:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 07A42206F8
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Mar 2020 07:58:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mCPJlgd6";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="LsLAT8+u"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1319520724
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RneTF4sZ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="kCX+VHSm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 07A42206F8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=zOxD5Z6CiEN3cdmwFAGjMkn4xZIL44y8Gy9T8tGEqvc=; b=mCP
-	Jlgd6H6PpGX+bSdHhs2FDgf94MtcN1EiKjPW6XoC57hN0Kcp2gIJi7cAtvjVpz1VWZ8+hU6R3PgKc
-	BL7ULxgcEr/RRY7d2PPwRU6K6WxzgM66rUw5uEEUje3tNA+QvqUZqSjOM3+IwYJkXSFielZyozXQ3
-	GbyqRLULfbjeSynD7pM4AoqWJAaaFnW64Vu0UhfgCC9eJymBXfD8yQfdYsD2CJkzv+zqgOjyIi3Gf
-	vG1dJVGrJ5NJ4XkMGnbnyULOXCn3TCEL5UFDKVRHQat/2cL8R3SLKb1v/DHSz99CzWUuPoVrtQ9ab
-	6iSXCpciTc2FGCCnFZdb1QS7nDFrIVA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fxh6+eSm4NslgXdUoEjPnUJJpAoBalbCmDNOl9GdxDE=; b=RneTF4sZeYastW
+	LD3/MdZDt2S9wk+BIpaARQtyVgxPVoaqvy0X20df2gcmN39km+FWOqE/QL6TT4cZfzPqoKNtpEba7
+	UNwWTV0Brtlm+gAqehqp/isOMkcCu7gapMr6LPASvsBk1lbXJNXAJkfOCmLwjWzKxlso2OL93xpPv
+	O5hNp16SAAfVRjclQflW1/fzHbG1Mtu74NZKatlEsbIxRr2D5kswPJzN40VmjO0+9BkXk56mBmsv8
+	Drd9qwj4+SGBuIyX9AANIXd8Xp/9CYEZRRijql0P4hAItxQEUeo5CmzFxniZJ6x3EH2s7N6JGmt9B
+	l+e5vnTHhUPYNTemMWTQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jFcUZ-0007IP-2H; Sat, 21 Mar 2020 11:40:39 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1jFvUw-00077O-Sk; Sun, 22 Mar 2020 07:58:18 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jFcUW-0007He-E9; Sat, 21 Mar 2020 11:40:37 +0000
-Received: by mail-wr1-x442.google.com with SMTP id h4so10627819wru.2;
- Sat, 21 Mar 2020 04:40:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=7jR/DJniamHEDhpAAfPOcbN20Xg7ftVEruh/hyhO0PE=;
- b=LsLAT8+uDmGSdQQJntAF8vnUqUnpGplRkCu3wIrpjOm72QwxiPSyucWszlZYxKozpk
- qp1vUdTtSmAetmlLU6jTQsYrGZZvda/aPVoulZxELtCJkR0Tsk815tDkL+3HK/YXbxmF
- jtLdYdPDUeiOXDU/BXFfAiZiw+i+o+K8v/k6ReFNHkMNTlclmAibR2TVRvpJfZhdkJjf
- PO6EcEnhKLmfdn1TCVDGkM0VDNM4QsMMh+da0N9WrkDmlYc+Nei1FaumMXpQqwIkgw4S
- CSLK6Su/ZLNqr4Y5WZVY9LyUUDLzSlUN8nngsIj++Gs1w7nQoRTiQsF98zCyGaGin7Oz
- uAYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=7jR/DJniamHEDhpAAfPOcbN20Xg7ftVEruh/hyhO0PE=;
- b=MN44luOnCYUoG1/KeortEgoKWaDFCRKaWHDDnTHitD+PIF70P8Mbc4olti27w13TuT
- dA9HW2kNnWSopKBuliXtz8Ua/KsXeTuU9OlSXauYZXgAjW21BMcNfPhNGH5MyOecIjvz
- 91SRQemmc0VMlQgOr4zqQabF1Aa//DQnbgLIjPtLKgkSYJdgyYPXyDKjc1oTTPfGsieK
- KjLq+/xB3f6ctcQFjAkxFol2x7WjXKH3jis6huWrhyoKtwv0ENuye6xklgrSHOqWYM2o
- /YV5LG7u2xl4oUE7Pt2ds5VlKzAuoCkacvz1bQKsACB3VWBdmRROS8/8yXwt009yX2MO
- ScPQ==
-X-Gm-Message-State: ANhLgQ0irQKg0JKE5P9XuZ5UN0axI7Kg7d8Wk47qa25pmm+J+f+JTV3r
- +dZ+6p3VxB4EEgqAjrG6ci8=
-X-Google-Smtp-Source: ADFU+vvxfx5Oi42isr8/wePrVDB2XPv0PjWByfMkPVW34u6Ng9Fb9YvXxU3xXUegrdwEReYm41u9Cg==
-X-Received: by 2002:a5d:6a4b:: with SMTP id t11mr17009174wrw.52.1584790834729; 
- Sat, 21 Mar 2020 04:40:34 -0700 (PDT)
-Received: from felia.fritz.box ([2001:16b8:2d49:b100:e503:a7c7:f4c6:1aab])
- by smtp.gmail.com with ESMTPSA id t16sm9533091wra.17.2020.03.21.04.40.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Mar 2020 04:40:34 -0700 (PDT)
-From: Lukas Bulwahn <lukas.bulwahn@gmail.com>
-To: Jeff Chang <jeff_chang@richtek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH] ASoC: MT6660: make spdxcheck.py happy
-Date: Sat, 21 Mar 2020 12:40:22 +0100
-Message-Id: <20200321114022.8545-1-lukas.bulwahn@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ id 1jFvUo-000718-7B; Sun, 22 Mar 2020 07:58:11 +0000
+X-UUID: 4d1a11276a3e4eb2af82efa8ad4a840d-20200321
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=0SlVnuKkPvNl1cm3aUi1MmMi33v297Tf8W2wHp9Pizo=; 
+ b=kCX+VHSmjz8Oheiluq9K3FRV4n8ws6KT9oEWXJIM7yKyOGUkPeZQRxVrhNLD5OnxV4ROy59Qcgij8wK0QkmwTIix3zIEIEcGOWnY9HIoN5VTsOOOvaqLVsUz0Y24h4t18UCwmFEqxf4zIK4sxIwJTjxicaZpls4HLkNx+iphPVQ=;
+X-UUID: 4d1a11276a3e4eb2af82efa8ad4a840d-20200321
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <gtk_ruiwang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1659629673; Sat, 21 Mar 2020 23:58:01 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sun, 22 Mar 2020 00:57:59 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Sun, 22 Mar 2020 15:55:24 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Sun, 22 Mar 2020 15:58:07 +0800
+From: <gtk_ruiwang@mediatek.com>
+To: Hans Verkuil <hverkuil@xs4all.nl>, Alexandre Courbot
+ <acourbot@chromium.org>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>, Tomasz Figa
+ <tfiga@chromium.org>, <linux-media@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>
+Subject: [PATCH] media: mtk-vpu: load vpu firmware from the new location
+Date: Sun, 22 Mar 2020 15:57:45 +0800
+Message-ID: <20200322075745.6133-1-gtk_ruiwang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200321_044036_500093_4A6E84D2 
-X-CRM114-Status: UNSURE (   8.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200322_005810_267395_44C71E65 
+X-CRM114-Status: GOOD (  10.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,41 +85,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org,
- Mark Brown <broonie@kernel.org>, Lukas Bulwahn <lukas.bulwahn@gmail.com>,
- linux-spdx@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Maoguang Meng <maoguang.meng@mediatek.com>, srv_heupstream@mediatek.com,
+ gtk_ruiwang@mediatek.com, Erin Lo <erin.lo@mediatek.com>, Houlong
+ Wei <houlong.wei@mediatek.com>, Sj Huang <sj.huang@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The SPDX-License-Identifier shall not be suffixed with anything further.
-This makes ./scripts/spdxcheck.py complain:
+From: gtk_ruiwang <gtk_ruiwang@mediatek.com>
 
-  sound/soc/codecs/mt6660.c: 1:36 Invalid token: //
+mt8173 VPU firmware has been moved to a sub-folder of
+linux-firmware, so load vpu-fw from the new location first,
+if it fails, then from the old one.
 
-Clean up SPDX-License-Identifier line to make spdxcheck.py happy.
-
-Signed-off-by: Lukas Bulwahn <lukas.bulwahn@gmail.com>
+Signed-off-by: Rui Wang <gtk_ruiwang@mediatek.com>
 ---
- sound/soc/codecs/mt6660.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/platform/mtk-vpu/mtk_vpu.c | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
 
-diff --git a/sound/soc/codecs/mt6660.c b/sound/soc/codecs/mt6660.c
-index a36c416caad4..06ab1d39d2c1 100644
---- a/sound/soc/codecs/mt6660.c
-+++ b/sound/soc/codecs/mt6660.c
-@@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0 //
-+// SPDX-License-Identifier: GPL-2.0
+diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+index a768707abb94..89274842e07b 100644
+--- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
++++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+@@ -46,6 +46,8 @@
+ /* binary firmware name */
+ #define VPU_P_FW		"vpu_p.bin"
+ #define VPU_D_FW		"vpu_d.bin"
++#define VPU_P_FW_NEW		"mediatek/mt8173/vpu_p.bin"
++#define VPU_D_FW_NEW		"mediatek/mt8173/vpu_d.bin"
  
- // Copyright (c) 2019 MediaTek Inc.
+ #define VPU_RESET		0x0
+ #define VPU_TCM_CFG		0x0008
+@@ -477,16 +479,24 @@ static int load_requested_vpu(struct mtk_vpu *vpu,
+ 	size_t tcm_size = fw_type ? VPU_DTCM_SIZE : VPU_PTCM_SIZE;
+ 	size_t fw_size = fw_type ? VPU_D_FW_SIZE : VPU_P_FW_SIZE;
+ 	char *fw_name = fw_type ? VPU_D_FW : VPU_P_FW;
++	char *fw_new_name = fw_type ? VPU_D_FW_NEW : VPU_P_FW_NEW;
+ 	const struct firmware *vpu_fw;
+ 	size_t dl_size = 0;
+ 	size_t extra_fw_size = 0;
+ 	void *dest;
+ 	int ret;
  
+-	ret = request_firmware(&vpu_fw, fw_name, vpu->dev);
++	ret = request_firmware(&vpu_fw, fw_new_name, vpu->dev);
+ 	if (ret < 0) {
+-		dev_err(vpu->dev, "Failed to load %s, %d\n", fw_name, ret);
+-		return ret;
++		dev_info(vpu->dev, "Failed to load %s, %d, retry\n",
++			 fw_new_name, ret);
++
++		ret = request_firmware(&vpu_fw, fw_name, vpu->dev);
++		if (ret < 0) {
++			dev_err(vpu->dev, "Failed to load %s, %d\n", fw_name,
++				ret);
++			return ret;
++		}
+ 	}
+ 	dl_size = vpu_fw->size;
+ 	if (dl_size > fw_size) {
 -- 
-2.17.1
-
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
