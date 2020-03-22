@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E2AB1C54FD1
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Mar 2020 15:35:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C8233C4332B
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Mar 2020 15:35:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 848AD2072E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Mar 2020 15:35:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9CE4120714
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Mar 2020 15:35:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uj68s6dM";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="eNMHYiNY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 848AD2072E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="do4ILECw";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="xU9fJF6g"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9CE4120714
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,47 +27,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=GOADgV5wUaYRQaJoAbejfSLaCIIRMl8UWnzut7Q3Cew=; b=uj68s6dMPkKNWHZPfH1H54qyzq
-	dvuQXGdHUcm+RqoFGW3jRg6rK8EirVGflJoj+dl14WhfnZWgMfFGe2vCXCZ7AnKvWYSXd8TIFnMzV
-	Fr0LgYM8VTaQow779hi+UNgE3d9ossNfkLLvWEGoAjvwGksyxsp9WtMWKXjSAGrwV8VYyeSn2UehG
-	nK7DRqZBmNv007+q8pNUmcqJAlCGRRDMSolduN8fHDA5TklspHs7whX58fuhTwsLWN1fgRrI1pHJ3
-	vWC5yoB2p80NeyypHM52VLERKYUWy4N4mrYPVh3kWixjS/F7yY9cGn3l6V/tthoxwc2cMeTM1fLPW
-	JC1G0xPA==;
+	bh=T3z7tpwEHENdtDrhMCJXzHc7Qwab5Yevg2jwmjsVylk=; b=do4ILECwy/tbamLi0lfMyeYcPn
+	cEboGVuCKCsh/XNUhlE689nNneyoEOhk+Hpctr3U0UWCsLAeovtwPkYbFLKEfuZuThDeHFWEszEDX
+	/Plb15Y5pUPSGQAOc3nLt7mOFCtBAL4uU2KJ9d9DuUj56GcivY3EW9iyI5xOR3Y4/cwVbR5vnQmLI
+	Jx5v/sVb9YHBEe7XL6G8mrrr+VIrtAzoIWAlw/0Rpa1G4JeVEYc0n3ilHejDtwSQrdWITAiswYxAD
+	0co08Mn5hRZSLDz51r0VZYWXCbaQQ5eCy20sLiHNZyS1tDOUZkXAe0lYtp3nGU9gPeLgN6WC9C5eo
+	beJtJDeA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jG2cn-0005bg-Pc; Sun, 22 Mar 2020 15:34:53 +0000
+	id 1jG2cq-0005dX-9d; Sun, 22 Mar 2020 15:34:56 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jG2ck-0005aM-Jq
- for linux-mediatek@lists.infradead.org; Sun, 22 Mar 2020 15:34:51 +0000
+ id 1jG2cm-0005b4-Rz
+ for linux-mediatek@lists.infradead.org; Sun, 22 Mar 2020 15:34:54 +0000
 Received: from DESKTOP-GFFITBK.localdomain (218-161-90-76.HINET-IP.hinet.net
  [218.161.90.76])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6A21220732;
- Sun, 22 Mar 2020 15:34:48 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id A888E2073C;
+ Sun, 22 Mar 2020 15:34:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1584891290;
- bh=Z34pspBhqMJqahd4MffOLhAEomB14DsGzR3OqdRcvaU=;
+ s=default; t=1584891292;
+ bh=ki4luHp0OQAeDhZgqPV1JFV+XVQvTAfNpxMgrkDTG88=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=eNMHYiNY2fogEai8orD56lv3eFRtp5SWl8AuDKHZrrKeptiHT1Js9bK/Ip3RrkXXb
- +zpEh2IRgmq2YsdcRUilrMWDlqJ1UDDlQbVK3BZfx3luZtnjSXSrSOAriJrPW1wyWc
- 6CA5+EKPK6woErTR6PeNw3gsfeabp322AeZMDvR4=
+ b=xU9fJF6gtSS5qtfDQ8hQKNNVOkimXGoFM8v439v3wMgDHakqgB0gsy3bbBonJEXEJ
+ fwuK9EfDB3mK1IaBIfqfmg7Kg3AiHIcgt6TRKoFi/vIPf3ycIU49kRFhCgD9zJiJMf
+ rPBOlYVrzpkDw81efw1y3teTT3iZdnlYo9AL+FuY=
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 To: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
  Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
  Chunfeng Yun <chunfeng.yun@mediatek.com>,
  Kishon Vijay Abraham I <kishon@ti.com>
-Subject: [PATCH 1/4] drm/mediatek: Move tz_disabled from mtk_hdmi_phy to
- mtk_hdmi driver
-Date: Sun, 22 Mar 2020 23:34:21 +0800
-Message-Id: <20200322153424.2447-2-chunkuang.hu@kernel.org>
+Subject: [PATCH 2/4] drm/mediatek: Separate mtk_hdmi_phy to an independent
+ module
+Date: Sun, 22 Mar 2020 23:34:22 +0800
+Message-Id: <20200322153424.2447-3-chunkuang.hu@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200322153424.2447-1-chunkuang.hu@kernel.org>
 References: <20200322153424.2447-1-chunkuang.hu@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200322_083450_688955_EED87FA9 
-X-CRM114-Status: GOOD (  14.94  )
+X-CRM114-CacheID: sfid-20200322_083452_945369_2445E482 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,109 +90,109 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: CK Hu <ck.hu@mediatek.com>
 
-tz_disabled is used to control mtk_hdmi output signal, but this variable
-is stored in mtk_hdmi_phy and mtk_hdmi_phy does not use it. So move
-tz_disabled to mtk_hdmi where it's used.
+mtk_hdmi_phy is a part of mtk_hdmi module, but phy driver should be an
+independent module rather than be part of drm module, so separate the phy
+driver to an independent module.
 
 Signed-off-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 ---
- drivers/gpu/drm/mediatek/mtk_hdmi.c           | 22 ++++++++++++++++---
- drivers/gpu/drm/mediatek/mtk_hdmi_phy.h       |  1 -
- .../gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c    |  1 -
- 3 files changed, 19 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/mediatek/Kconfig        |  9 ++++++++-
+ drivers/gpu/drm/mediatek/Makefile       | 11 +++++++----
+ drivers/gpu/drm/mediatek/mtk_hdmi.c     |  1 -
+ drivers/gpu/drm/mediatek/mtk_hdmi.h     |  1 -
+ drivers/gpu/drm/mediatek/mtk_hdmi_phy.c |  1 +
+ drivers/gpu/drm/mediatek/mtk_hdmi_phy.h |  1 -
+ 6 files changed, 16 insertions(+), 8 deletions(-)
 
+diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
+index fa5ffc4fe823..ff6a1eb4ae83 100644
+--- a/drivers/gpu/drm/mediatek/Kconfig
++++ b/drivers/gpu/drm/mediatek/Kconfig
+@@ -23,6 +23,13 @@ config DRM_MEDIATEK_HDMI
+ 	tristate "DRM HDMI Support for Mediatek SoCs"
+ 	depends on DRM_MEDIATEK
+ 	select SND_SOC_HDMI_CODEC if SND_SOC
+-	select GENERIC_PHY
++	select PHY_MTK_HDMI
+ 	help
+ 	  DRM/KMS HDMI driver for Mediatek SoCs
++
++config PHY_MTK_HDMI
++    tristate "MediaTek HDMI-PHY Driver"
++    depends on ARCH_MEDIATEK && OF
++    select GENERIC_PHY
++    help
++          Enable this to support HDMI-PHY
+diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
+index b7a82ed5788f..fcbef23aa6ce 100644
+--- a/drivers/gpu/drm/mediatek/Makefile
++++ b/drivers/gpu/drm/mediatek/Makefile
+@@ -19,9 +19,12 @@ obj-$(CONFIG_DRM_MEDIATEK) += mediatek-drm.o
+ 
+ mediatek-drm-hdmi-objs := mtk_cec.o \
+ 			  mtk_hdmi.o \
+-			  mtk_hdmi_ddc.o \
+-			  mtk_mt2701_hdmi_phy.o \
+-			  mtk_mt8173_hdmi_phy.o \
+-			  mtk_hdmi_phy.o
++			  mtk_hdmi_ddc.o
+ 
+ obj-$(CONFIG_DRM_MEDIATEK_HDMI) += mediatek-drm-hdmi.o
++
++phy-mtk-hdmi-drv-objs := mtk_hdmi_phy.o \
++			 mtk_mt2701_hdmi_phy.o \
++			 mtk_mt8173_hdmi_phy.o
++
++obj-$(CONFIG_PHY_MTK_HDMI) += phy-mtk-hdmi-drv.o
 diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 5e4a4dbda443..878433c09c9b 100644
+index 878433c09c9b..17399bdae22d 100644
 --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -144,11 +144,16 @@ struct hdmi_audio_param {
- 	struct hdmi_codec_params codec_params;
+@@ -1797,7 +1797,6 @@ static struct platform_driver mtk_hdmi_driver = {
  };
  
-+struct mtk_hdmi_conf {
-+	bool tz_disabled;
-+};
-+
- struct mtk_hdmi {
- 	struct drm_bridge bridge;
- 	struct drm_bridge *next_bridge;
- 	struct drm_connector conn;
- 	struct device *dev;
-+	const struct mtk_hdmi_conf *conf;
- 	struct phy *phy;
- 	struct device *cec_dev;
- 	struct i2c_adapter *ddc_adpt;
-@@ -230,7 +235,6 @@ static void mtk_hdmi_hw_vid_black(struct mtk_hdmi *hdmi, bool black)
- static void mtk_hdmi_hw_make_reg_writable(struct mtk_hdmi *hdmi, bool enable)
- {
- 	struct arm_smccc_res res;
--	struct mtk_hdmi_phy *hdmi_phy = phy_get_drvdata(hdmi->phy);
+ static struct platform_driver * const mtk_hdmi_drivers[] = {
+-	&mtk_hdmi_phy_driver,
+ 	&mtk_hdmi_ddc_driver,
+ 	&mtk_cec_driver,
+ 	&mtk_hdmi_driver,
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.h b/drivers/gpu/drm/mediatek/mtk_hdmi.h
+index bb3653de6bd1..472bf141c92b 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.h
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.h
+@@ -5,7 +5,6 @@
+  */
+ #ifndef _MTK_HDMI_CTRL_H
+ #define _MTK_HDMI_CTRL_H
+-#include "mtk_hdmi_phy.h"
  
- 	/*
- 	 * MT8173 HDMI hardware has an output control bit to enable/disable HDMI
-@@ -238,7 +242,7 @@ static void mtk_hdmi_hw_make_reg_writable(struct mtk_hdmi *hdmi, bool enable)
- 	 * The ARM trusted firmware provides an API for the HDMI driver to set
- 	 * this control bit to enable HDMI output in supervisor mode.
- 	 */
--	if (hdmi_phy->conf && hdmi_phy->conf->tz_disabled)
-+	if (hdmi->conf->tz_disabled)
- 		regmap_update_bits(hdmi->sys_regmap,
- 				   hdmi->sys_offset + HDMI_SYS_CFG20,
- 				   0x80008005, enable ? 0x80000005 : 0x8000);
-@@ -1688,6 +1692,7 @@ static int mtk_drm_hdmi_probe(struct platform_device *pdev)
- 		return -ENOMEM;
+ struct platform_driver;
  
- 	hdmi->dev = dev;
-+	hdmi->conf = of_device_get_match_data(dev);
- 
- 	ret = mtk_hdmi_dt_parse_pdata(hdmi, pdev);
- 	if (ret)
-@@ -1765,8 +1770,19 @@ static int mtk_hdmi_resume(struct device *dev)
- static SIMPLE_DEV_PM_OPS(mtk_hdmi_pm_ops,
- 			 mtk_hdmi_suspend, mtk_hdmi_resume);
- 
-+static const struct mtk_hdmi_conf mtk_hdmi_conf_mt2701 = {
-+	.tz_disabled = true,
-+};
-+
-+static const struct mtk_hdmi_conf mtk_hdmi_conf_mt8173;
-+
- static const struct of_device_id mtk_drm_hdmi_of_ids[] = {
--	{ .compatible = "mediatek,mt8173-hdmi", },
-+	{ .compatible = "mediatek,mt2701-hdmi",
-+	  .data = &mtk_hdmi_conf_mt2701,
-+	},
-+	{ .compatible = "mediatek,mt8173-hdmi",
-+	  .data = &mtk_hdmi_conf_mt8173,
-+	},
- 	{}
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
+index 5223498502c4..fe022acddbef 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.c
+@@ -205,6 +205,7 @@ struct platform_driver mtk_hdmi_phy_driver = {
+ 		.of_match_table = mtk_hdmi_phy_match,
+ 	},
  };
++module_platform_driver(mtk_hdmi_phy_driver);
  
+ MODULE_DESCRIPTION("MediaTek HDMI PHY Driver");
+ MODULE_LICENSE("GPL v2");
 diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-index 2d8b3182470d..fc1c2efd1128 100644
+index fc1c2efd1128..b13e1d5f8e78 100644
 --- a/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
 +++ b/drivers/gpu/drm/mediatek/mtk_hdmi_phy.h
-@@ -20,7 +20,6 @@
- struct mtk_hdmi_phy;
+@@ -49,7 +49,6 @@ void mtk_hdmi_phy_mask(struct mtk_hdmi_phy *hdmi_phy, u32 offset,
+ 		       u32 val, u32 mask);
+ struct mtk_hdmi_phy *to_mtk_hdmi_phy(struct clk_hw *hw);
  
- struct mtk_hdmi_phy_conf {
--	bool tz_disabled;
- 	unsigned long flags;
- 	const struct clk_ops *hdmi_phy_clk_ops;
- 	void (*hdmi_phy_enable_tmds)(struct mtk_hdmi_phy *hdmi_phy);
-diff --git a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-index d3cc4022e988..99fe05cd3598 100644
---- a/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mt2701_hdmi_phy.c
-@@ -237,7 +237,6 @@ static void mtk_hdmi_phy_disable_tmds(struct mtk_hdmi_phy *hdmi_phy)
- }
+-extern struct platform_driver mtk_hdmi_phy_driver;
+ extern struct mtk_hdmi_phy_conf mtk_hdmi_phy_8173_conf;
+ extern struct mtk_hdmi_phy_conf mtk_hdmi_phy_2701_conf;
  
- struct mtk_hdmi_phy_conf mtk_hdmi_phy_2701_conf = {
--	.tz_disabled = true,
- 	.flags = CLK_SET_RATE_GATE,
- 	.hdmi_phy_clk_ops = &mtk_hdmi_phy_pll_ops,
- 	.hdmi_phy_enable_tmds = mtk_hdmi_phy_enable_tmds,
 -- 
 2.17.1
 
