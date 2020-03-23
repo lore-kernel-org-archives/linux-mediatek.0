@@ -2,78 +2,69 @@ Return-Path: <SRS0=hrCJ=5I=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 485F1C4332E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Mar 2020 01:12:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DBF0BC10F26
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Mar 2020 05:29:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 16020206F8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Mar 2020 01:12:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AA68B206F9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Mar 2020 05:29:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hd21lb8C";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="fCIOZ+bW"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16020206F8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aIJ2YXWE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AA68B206F9
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ite.com.tw
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GJDmaf68VkVCAaSD4jQlSPcLXwh+AuEduCB+56lv9p8=; b=hd21lb8CCQy4ec
-	/s496K2bOVmlEAT1mNgMMOpni5AJM1zT3T91L7ln9mqRlp/L7Io5qj1ZGx++vagcPOvnOYlsCuYH9
-	XKcGhnG3PWD1szwV8Bisu4ZI0hSv2lGqb51jnANjwFM+FC+ICeviE3rJfeOBhcG6hic5oYZQnBZsI
-	hBE5mrYaq2hty7XGZ5j7VUIfAEJLDVZSu57iFdSbPEEBe0fZVt6N2AmSM+XTOrmRe46R5zcj3o5CO
-	0UCY4ONQf2By+jAC7EtDdjBVPCBlc8hDETCDekJ2FJ9EhqCb6xaQon+TkNIMjB4b4FZBxLZMt5ZDF
-	l/hXfiH2S4EDn6D+3mNA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EH76VRf9SfuC0UwABW/fJxQojPCqouFjfFHThXW3lgw=; b=aIJ2YXWEaYN4pb
+	8O6Y+bD4sRgnb015Xvqj+HjopV3ptS8oe/6RwR/WTyMTmM4vJ4yi3A4zXfSYH3jgwl/OgwCK82uPy
+	hQGAY4fPMx5wu3z7Czk7kv7XlKnfezvtWkMFrdXK1DrH/VJpCbD2pRNtNPT/2RwpzkRE4iYoh3OGp
+	GEmMDGSgo0FActj+5MyaMjSwVjmYHKagpztWEAxIzAoxnGxWOVv+H+VcXIws7Uzgut6n7QtYUI+ZH
+	BVZfjpUPgvjXF2UVXX9zJy/H7CJIc8Dqj4T4UuI6UFuk5BPbYpBpp3WXC6cVt6l5+KUapVW1q9PFm
+	P0JBb4tJsYtkMAaWDiSw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jGBdY-0002nv-C6; Mon, 23 Mar 2020 01:12:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jGFej-0003Rc-Kv; Mon, 23 Mar 2020 05:29:45 +0000
+Received: from 60-251-196-230.hinet-ip.hinet.net ([60.251.196.230]
+ helo=ironport.ite.com.tw)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jGBdT-0002mt-BO; Mon, 23 Mar 2020 01:12:14 +0000
-X-UUID: e84cfff42ba54b33b7932408f16c0e21-20200322
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Ej7b2xhDVPxexbXWATZXTqKZRMpmRwD04pT0SWLn2fk=; 
- b=fCIOZ+bWNom8QOBcauvYjY7vyph+pCXA1q4bc1Wd1qWLAI/bcnraokHPUBldFY3u+D6NQCQ03BpaRBQiPrVEKxahMNEXn5IkfZ/PTze118rifakZLoiCRwrbNui7FP+7D70UYRuEDzKEJguwIvNTLDrhy2/2kTB8PT035c/RRz4=;
-X-UUID: e84cfff42ba54b33b7932408f16c0e21-20200322
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <dennis-yc.hsieh@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 476863208; Sun, 22 Mar 2020 17:12:04 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sun, 22 Mar 2020 18:12:35 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Mon, 23 Mar 2020 09:11:00 +0800
-Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Mon, 23 Mar 2020 09:09:43 +0800
-Message-ID: <1584925915.16928.1.camel@mtkswgap22>
-Subject: Re: [PATCH v5 02/13] mailbox: cmdq: variablize address shift in
- platform
-From: Dennis-YC Hsieh <dennis-yc.hsieh@mediatek.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Mon, 23 Mar 2020 09:11:55 +0800
-In-Reply-To: <CABb+yY04NbSvHkQ0sVHd+KjU3ZFZSZD=H99OSNjoeu+Qpk7R8g@mail.gmail.com>
-References: <1583664775-19382-1-git-send-email-dennis-yc.hsieh@mediatek.com>
- <1583664775-19382-3-git-send-email-dennis-yc.hsieh@mediatek.com>
- <CABb+yY04NbSvHkQ0sVHd+KjU3ZFZSZD=H99OSNjoeu+Qpk7R8g@mail.gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1jGFea-0003M2-LG; Mon, 23 Mar 2020 05:29:38 +0000
+IronPort-SDR: TC41G8qcmLB2t+YaofzrywAsMyYWzny3D9QdH0/1AgCAvOvB5MAPyW7Ofimh5DBSGUgps69Xe8
+ KwW+DXV2ah4A==
+Received: from unknown (HELO mse.ite.com.tw) ([192.168.35.30])
+ by ironport.ite.com.tw with ESMTP; 23 Mar 2020 13:29:19 +0800
+Received: from CSBMAIL1.internal.ite.com.tw (csbmail1.internal.ite.com.tw
+ [192.168.65.58]) by mse.ite.com.tw with ESMTP id 02N5TG6j002878;
+ Mon, 23 Mar 2020 13:29:16 +0800 (GMT-8)
+ (envelope-from allen.chen@ite.com.tw)
+Received: from allen-VirtualBox.internal.ite.com.tw (192.168.70.14) by
+ CSBMAIL1.internal.ite.com.tw (192.168.65.58) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1713.5; Mon, 23 Mar 2020 13:29:15 +0800
+From: allen <allen.chen@ite.com.tw>
+To: 
+Subject: [PATCH v8 0/3] IT6505 cover letter
+Date: Mon, 23 Mar 2020 13:21:51 +0800
+Message-ID: <1584941015-20541-1-git-send-email-allen.chen@ite.com.tw>
+X-Mailer: git-send-email 1.9.1
 MIME-Version: 1.0
-X-MTK: N
+X-Originating-IP: [192.168.70.14]
+X-ClientProxiedBy: CSBMAIL1.internal.ite.com.tw (192.168.65.58) To
+ CSBMAIL1.internal.ite.com.tw (192.168.65.58)
+X-TM-SNTS-SMTP: 911E96001DC2B9A2A26B2875DB76AB159DBC622314FF6F08D4433F6B7BB342EC2000:8
+X-MAIL: mse.ite.com.tw 02N5TG6j002878
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200322_181211_400201_CEE2B511 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20200322_222936_951509_5FDE5890 
+X-CRM114-Status: UNSURE (   6.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,52 +76,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Devicetree List <devicetree@vger.kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, wsd_upstream@mediatek.com,
- David Airlie <airlied@linux.ie>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- dri-devel@lists.freedesktop.org, HS Liao <hs.liao@mediatek.com>,
- CK Hu <ck.hu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Houlong Wei <houlong.wei@mediatek.com>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- Bibby Hsieh <bibby.hsieh@mediatek.com>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Cc: Maxime Ripard <mripard@kernel.org>, "open list:OPEN FIRMWARE AND
+ FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Stephan Gerhold <stephan@gerhold.net>,
+ Jau-Chih Tseng <Jau-Chih.Tseng@ite.com.tw>,
+ Heiko Stuebner <heiko.stuebner@theobroma-systems.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Jonas Karlman <jonas@kwiboo.se>,
+ open list <linux-kernel@vger.kernel.org>, "open list:DRM
+ DRIVERS" <dri-devel@lists.freedesktop.org>, Mark Brown <broonie@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Pi-Hsun Shih <pihsun@chromium.org>, Allen Chen <allen.chen@ite.com.tw>,
+ Sam Ravnborg <sam@ravnborg.org>, Rob Herring <robh@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jassi,
+The IT6505 is a high-performance DisplayPort 1.1a transmitter, fully compliant with DisplayPort 1.1a, HDCP 1.3 specifications. The IT6505 supports color depth of up to 36 bits (12 bits/color) and ensures robust transmission of high-quality uncompressed video content, along with uncompressed and compressed digital audio content.
 
+This series contains document bindings, revert commit, add vendor prefix, Kconfig to control the function enable or not.
 
-On Thu, 2020-03-19 at 20:05 -0500, Jassi Brar wrote:
-> On Sun, Mar 8, 2020 at 5:53 AM Dennis YC Hsieh
-> <dennis-yc.hsieh@mediatek.com> wrote:
-> >
-> > Some gce hardware shift pc and end address in register to support
-> > large dram addressing.
-> > Implement gce address shift when write or read pc and end register.
-> > And add shift bit in platform definition.
-> >
-> > Signed-off-by: Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>
-> > Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> > ---
-> >  drivers/mailbox/mtk-cmdq-mailbox.c       | 61 ++++++++++++++++++------
-> >  drivers/soc/mediatek/mtk-cmdq-helper.c   |  3 +-
-> >  include/linux/mailbox/mtk-cmdq-mailbox.h |  2 +
-> >
-> Please segregate this patch, and any other if, into mailbox and
-> platform specific patchsets. Ideally soc/client specific changes later
-> on top of mailbox/provider changes.
-> 
-> Thanks
+Allen Chen (1):
+  WIP: drm/bridge: add it6505 driver
 
-Thanks for your comment. I'll separate mailbox and soc code.
+allen (2):
+  dt-bindings: Add vendor prefix for ITE Tech. Inc.
+  WIP: dt-bindings: Add binding for IT6505.
 
+ .../bindings/display/bridge/ite,it6505.yaml        |   91 +
+ .../devicetree/bindings/vendor-prefixes.yaml       |    2 +-
+ drivers/gpu/drm/bridge/Kconfig                     |    7 +
+ drivers/gpu/drm/bridge/Makefile                    |    1 +
+ drivers/gpu/drm/bridge/ite-it6505.c                | 3064 ++++++++++++++++++++
+ 5 files changed, 3164 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/ite,it6505.yaml
+ create mode 100644 drivers/gpu/drm/bridge/ite-it6505.c
 
-Regards,
-Dennis
+-- 
+1.9.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
