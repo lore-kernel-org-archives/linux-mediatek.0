@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-2.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
 	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 96D2DC43331
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2020 14:16:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0895BC54FCE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2020 14:24:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 96E8C20789
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2020 14:16:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9FDB4214D8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2020 14:24:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OsuZkJiC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 96E8C20789
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Hz7CF2cl"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9FDB4214D8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=hG22WATwAMXre8CowX06tFf0PS0W8/4/qmjzIFfNWbY=; b=OsuZkJiCfcaE41TIC8+uZPr2r
-	Et74qQYpsUijl1wBOfBBuH6iv4G03rsm028IdVO+ffEHzjd38KM52j7QTdqY2Mx6QdQheKjMyF7xH
-	ZilSk/4bRVBw0yxWAxGUgPFjwYNs69Uh9DkeLX8LCaPJ3Ov7kKPkdKdN9Z6Ny/gp33yOHuqAa7wFy
-	sUsTkeq8xbMcC49SreWlkRKO9PPqIUwPvl70yJc9msGRWQwKAAgWhoQWuthRzYDug+O3vGnAWLgx/
-	pAvd6Bt5KrIBKkAPoOVBgBk5fSZQ7zOxWRnGRQAwh2Ed1Z4g8yUIv8CWChm99icNZsIKf7r/3+K/W
-	goBCwkRBw==;
+	 bh=SwQ5SYlP0IvZp36wp3HcIzxj2fA4NGBTTW/Te9HHSFI=; b=Hz7CF2cl8C9C0Si8uzGZDNyiq
+	mV1PU4nmT0hlwlAELnGVuLNQ2AMCYIqSUN7tQx0zKaM/a3ivpiTfXxHmTHeEsXVVVmv4O0GQVsaBB
+	CsBgW9vNMdZEgd+fFNDT4HgAE/4MScc6qpeY/JQ1b+rzHbeSR9zBHd5GtSLJz+hm6u0A1DBb6ci4F
+	txAr1m2onJFx1XYItWKHNg28+KmPMbx4GnzcbycXi5mYyWkjuM0R+HLZYZ244mBj8KaGFf7KUkTaf
+	bYwWUCMQzlVx9xO8Xyeo0weyzk5DZR8izO5ND0svh90F6dzJAJmrJwM4SQMl4DOmKO+FKri+UUmW+
+	cfz3g2E+w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jGkM9-0004Ri-K2; Tue, 24 Mar 2020 14:16:37 +0000
+	id 1jGkU4-0001qD-Rx; Tue, 24 Mar 2020 14:24:48 +0000
 Received: from foss.arm.com ([217.140.110.172])
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jGkM6-0004RB-Rr; Tue, 24 Mar 2020 14:16:36 +0000
+ id 1jGkTo-0001c6-0u; Tue, 24 Mar 2020 14:24:37 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DA5A51FB;
- Tue, 24 Mar 2020 07:16:33 -0700 (PDT)
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DC9401FB;
+ Tue, 24 Mar 2020 07:24:29 -0700 (PDT)
 Received: from localhost (unknown [10.37.6.21])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 630563F52E;
- Tue, 24 Mar 2020 07:16:33 -0700 (PDT)
-Date: Tue, 24 Mar 2020 14:16:31 +0000
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 372A53F52E;
+ Tue, 24 Mar 2020 07:24:29 -0700 (PDT)
+Date: Tue, 24 Mar 2020 14:24:27 +0000
 From: Mark Brown <broonie@kernel.org>
 To: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
-Subject: Re: [PATCH v6 03/10] lib: add linear ranges helpers
-Message-ID: <20200324141631.GE7039@sirena.org.uk>
+Subject: Re: [PATCH v6 06/10] regulator: use linear_ranges helper
+Message-ID: <20200324142427.GF7039@sirena.org.uk>
 References: <cover.1584977512.git.matti.vaittinen@fi.rohmeurope.com>
- <c659a4627bc33b8a7d10e1af16e85edd0ff8637f.1584977512.git.matti.vaittinen@fi.rohmeurope.com>
+ <5522b2e03f77e1b7c93adf07b85747ea9ddfbf9b.1584977512.git.matti.vaittinen@fi.rohmeurope.com>
 MIME-Version: 1.0
-In-Reply-To: <c659a4627bc33b8a7d10e1af16e85edd0ff8637f.1584977512.git.matti.vaittinen@fi.rohmeurope.com>
+In-Reply-To: <5522b2e03f77e1b7c93adf07b85747ea9ddfbf9b.1584977512.git.matti.vaittinen@fi.rohmeurope.com>
 X-Cookie: I feel ... JUGULAR ...
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200324_071634_992134_2B7073FF 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20200324_072432_168079_3188E37E 
+X-CRM114-Status: GOOD (  11.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,52 +106,53 @@ Cc: Mark Rutland <mark.rutland@arm.com>, Milo Kim <milo.kim@ti.com>,
  Masami Hiramatsu <mhiramat@kernel.org>, patches@opensource.cirrus.com,
  Andrew Morton <akpm@linux-foundation.org>, Vladimir Oltean <olteanv@gmail.com>,
  "David S. Miller" <davem@davemloft.net>
-Content-Type: multipart/mixed; boundary="===============0605430446613083547=="
+Content-Type: multipart/mixed; boundary="===============9019065393513980571=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============0605430446613083547==
+--===============9019065393513980571==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="OZkY3AIuv2LYvjdk"
+	protocol="application/pgp-signature"; boundary="yRA+Bmk8aPhU85Qt"
 Content-Disposition: inline
 
 
---OZkY3AIuv2LYvjdk
+--yRA+Bmk8aPhU85Qt
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On Tue, Mar 24, 2020 at 10:29:09AM +0200, Matti Vaittinen wrote:
-> Many devices have control registers which control some measurable
-> property. Often a register contains control field so that change in
-> this field causes linear change in the controlled property. It is not
-> a rare case that user wants to give 'meaningful' control values and
-> driver needs to convert them to register field values. Even more
-> often user wants to 'see' the currently set value - again in
-> meaningful units - and driver needs to convert the values it reads
-> from register to these meaningful units. Examples of this include:
+On Tue, Mar 24, 2020 at 10:30:54AM +0200, Matti Vaittinen wrote:
 
-Reviwed-by: Mark Brown <broonie@kernel.org>
+> =20
+> -		if (!(min_uV <=3D linear_max_uV && max_uV >=3D range->min_uV))
+> +		ret =3D linear_range_get_selector_high(range, min_uV, &sel,
+> +						     &found);
+> +		if (ret)
+>  			continue;
 
---OZkY3AIuv2LYvjdk
+Why are these going for _get_selector_high()?  Usually we try to choose
+the lowest voltage we can.
+
+--yRA+Bmk8aPhU85Qt
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl56Fj8ACgkQJNaLcl1U
-h9Agjwf+Io/zV2QMzoU2EKs1sg15aBVtSYsYl6smy2i9XXr5Fi61Nt1MMI7OBocI
-fFjs642G2c66K25uiK4Ol9pTut6RFb4ToZgcZiGWCSLsfgiswPIIgIFMEVU6rNFG
-raSBgvSAkW7kPK0hnhQG+oOe5vlgivjoG8JqG0pUex682DmujBQXL7eZFkRl8Bak
-L/4AZ2d5e7cd0tMjwThOBkSD9s6zAakkEAEWXeb5buX0Ne3Pp6DXjvY0mBeBEtbF
-0faz2t2B5ixMQE2c9XkBIGhPTXeuXFmTjOP4CtnYnUcd4csREk37xwrliR2lZapt
-BUUQWoOV2y5hyQlTeqWg9cKven0cWw==
-=9zhx
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl56GBsACgkQJNaLcl1U
+h9CN2Qf/R3HW431olYvhFPNzcF/cfTxpUIKeXvCEaJZzRSz4PNUTk2n8PfjR8QJc
+r1rCNq6XHT3GvoIk4XgLxgDEBz/3tT0pwRBXe8qwCYzdWLisDN1jz1cjURObeaUV
+jIJMfhu2Q3BQEDdrRKnHdN7rFgzXMPW3tc4mxlitPQ2c/m2TAQKtXdx/D5ekGz2b
+Gi8r8r4mtZ4vf/DinqVNAFI01WKs7PaYM8NL/+CVpYQsUy2J1LHbbk6JAO+NMnLZ
+Baokwy5eIlpox1/TOqmFu1L39ZB7QgwYwEnDXlMjs30c8hGTWE5mdmjWlnQyH93M
+vO5v7AOkNChmCy/jeRykVY3AifrPxA==
+=FYhc
 -----END PGP SIGNATURE-----
 
---OZkY3AIuv2LYvjdk--
+--yRA+Bmk8aPhU85Qt--
 
 
---===============0605430446613083547==
+--===============9019065393513980571==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -162,5 +163,5 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---===============0605430446613083547==--
+--===============9019065393513980571==--
 
