@@ -2,77 +2,84 @@ Return-Path: <SRS0=XWkL=5J=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 310B7C4332B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2020 08:31:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AF0A6C4332B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2020 08:34:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 37B4D20724
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2020 08:31:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 815CF20724
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2020 08:34:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e3VmRAzY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 37B4D20724
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fi.rohmeurope.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Fqg2+Hts"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 815CF20724
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4iAs0Rj2RLxdAyATyiV0PInExo+oEswf3JPcGKONVTw=; b=e3VmRAzYwf2uO/
-	+5SS94WYDXeuBllqUNNGWCvfU/cqxPaaXAifRieFHWzdKpWgZwrm1iPuDYr2256KiuecUtAaUQkbV
-	/mdtuCgKCzna8BBK3Ia0YQS3DPaG//Yd0GG/YcfBoPc3EfAAYuq1joLwY1T8tne+zn2j4fBD38GlG
-	yN9o1JMCpd3P92hFWFWJNL6E3wv1aWTuYbwbMB3MRTmiMPJguzHyBMzb3Y+WZBjCqD8FGdjhwmGb9
-	j9jX4IuJFgJ3EtOCIlWsqD0OJxh+F/5SyzWtzmGoNjYSSreYoBo+Lg8fJR1pj4pfVJ53uSuyCURHa
-	vbiJKTvItsebNjtRRsjQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=GuSLa9vTUqS2UyPzpIBxBFyqHb+fJmgKGEKD0fzbLo4=; b=Fqg2+HtsFScrX1Q3xOHIsSWxf
+	kXCbnczhvKRTqTbtMHNvrN5UCWShocC1DwHstj6rRRXrd+fM/bFZvgQG0m2mmCce5auuZTisS+sEM
+	yyh8/SlUXhKGvLmeQM6N7hbDRIe/wyAdXUmu5JEr3U4oI2+wrXWU3OpW6a+KHTh/hGljjOP8TINAD
+	nK0prY+09jgTblHmojliPEVrg5aDEkYkikUSeQwDH4Zm+/uPhfMv6sLuRlmznAO9xYr7XQbiwol6c
+	tzeCsPr5gUSnTNt2lVNAbHVhqaR1W1amYXTRyQwRY8NTJZWHkx7oJ8UqMk2mXaN9/mbTfje1nPYbj
+	Lh1vyrkJg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jGexv-0008Bk-2l; Tue, 24 Mar 2020 08:31:15 +0000
-Received: from mail-lj1-f193.google.com ([209.85.208.193])
+	id 1jGf0Q-0008WN-9R; Tue, 24 Mar 2020 08:33:50 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jGexo-0008B4-G5; Tue, 24 Mar 2020 08:31:12 +0000
-Received: by mail-lj1-f193.google.com with SMTP id r24so17688937ljd.4;
- Tue, 24 Mar 2020 01:31:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=AVWCu1j4Qi/vGuP1FeVGth43ruzkJbsBTnDyUUVZXTg=;
- b=cTQTKHagZyaihY6notvVHawRG91YtKl9qDCVZR6lYPTyOF683bklzfjHD3YHpVCYoJ
- Ij8rUHhgBMm90mTxXiKVWSGkq7BsZS0QJWJAdMwflDwqwCINmDosw6A82urCpnJoz7NL
- QDipY0TBHFE5naivtqhs97ylqDXLPg5FI0ULkHzpfjbmmiRbfEFe1kMDm2aBNsmJLJVP
- 5JpNAGjLSg/uId4MEIjLG0QJ10MXDxAADXRnPBS2NsAtYTKTd/DGt4W53HechiYIVLkq
- fDhIQ5zcjmqvQ1BWe+DfzfER1gHI2cnZ5S3Pfm6NN6wTGxdazf2BJnJn4kdw2P7EeIKJ
- 7LKw==
-X-Gm-Message-State: ANhLgQ1s1p9zh5Jwk3LxNvEv8B66HWmRI0QtVcCC2MxTTAH2cyupXgcw
- a6zi7w2wckudcLYRKLmWXxY=
-X-Google-Smtp-Source: ADFU+vuGTJvfQkKV1oGoUiPZtmmUGtMRu0iKCcKHwNPJT/ft0AT6L9f7Vj40oLUXgCunwowT/EZ2zw==
-X-Received: by 2002:a2e:98da:: with SMTP id s26mr17082543ljj.155.1585038666073; 
- Tue, 24 Mar 2020 01:31:06 -0700 (PDT)
-Received: from localhost.localdomain
- (dc7t7ryyyyyyyyyyyyybt-3.rev.dnainternet.fi. [2001:14ba:16e1:b700::3])
- by smtp.gmail.com with ESMTPSA id b28sm6232359ljp.90.2020.03.24.01.31.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Mar 2020 01:31:05 -0700 (PDT)
-Date: Tue, 24 Mar 2020 10:30:54 +0200
-From: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
-To: matti.vaittinen@fi.rohmeurope.com, mazziesaccount@gmail.com
-Subject: [PATCH v6 06/10] regulator: use linear_ranges helper
-Message-ID: <5522b2e03f77e1b7c93adf07b85747ea9ddfbf9b.1584977512.git.matti.vaittinen@fi.rohmeurope.com>
-References: <cover.1584977512.git.matti.vaittinen@fi.rohmeurope.com>
+ id 1jGf0D-0008Nl-N5; Tue, 24 Mar 2020 08:33:41 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx2.suse.de (Postfix) with ESMTP id 9E62FACCE;
+ Tue, 24 Mar 2020 08:33:28 +0000 (UTC)
+Subject: Re: [PATCH v1 0/3] drm: drm_encoder_init() => drm_encoder_init_funcs()
+To: Sam Ravnborg <sam@ravnborg.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ dri-devel@lists.freedesktop.org
+References: <20200313201744.19773-1-sam@ravnborg.org>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Autocrypt: addr=tzimmermann@suse.de; keydata=
+ mQENBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
+ XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
+ BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
+ hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
+ 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
+ AAG0J1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPokBVAQTAQgAPhYh
+ BHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJbOdLgAhsDBQkDwmcABQsJCAcCBhUKCQgLAgQWAgMB
+ Ah4BAheAAAoJEGgNwR1TC3ojR80H/jH+vYavwQ+TvO8ksXL9JQWc3IFSiGpuSVXLCdg62AmR
+ irxW+qCwNncNQyb9rd30gzdectSkPWL3KSqEResBe24IbA5/jSkPweJasgXtfhuyoeCJ6PXo
+ clQQGKIoFIAEv1s8l0ggPZswvCinegl1diyJXUXmdEJRTWYAtxn/atut1o6Giv6D2qmYbXN7
+ mneMC5MzlLaJKUtoH7U/IjVw1sx2qtxAZGKVm4RZxPnMCp9E1MAr5t4dP5gJCIiqsdrVqI6i
+ KupZstMxstPU//azmz7ZWWxT0JzgJqZSvPYx/SATeexTYBP47YFyri4jnsty2ErS91E6H8os
+ Bv6pnSn7eAq5AQ0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRH
+ UE9eosYbT6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgT
+ RjP+qbU63Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+R
+ dhgATnWWGKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zb
+ ehDda8lvhFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r
+ 12+lqdsAEQEAAYkBPAQYAQgAJhYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJbOdLgAhsMBQkD
+ wmcAAAoJEGgNwR1TC3ojpfcIAInwP5OlcEKokTnHCiDTz4Ony4GnHRP2fXATQZCKxmu4AJY2
+ h9ifw9Nf2TjCZ6AMvC3thAN0rFDj55N9l4s1CpaDo4J+0fkrHuyNacnT206CeJV1E7NYntxU
+ n+LSiRrOdywn6erjxRi9EYTVLCHcDhBEjKmFZfg4AM4GZMWX1lg0+eHbd5oL1as28WvvI/uI
+ aMyV8RbyXot1r/8QLlWldU3NrTF5p7TMU2y3ZH2mf5suSKHAMtbE4jKJ8ZHFOo3GhLgjVrBW
+ HE9JXO08xKkgD+w6v83+nomsEuf6C6LYrqY/tsZvyEX6zN8CtirPdPWu/VXNRYAl/lat7lSI
+ 3H26qrE=
+Message-ID: <c93bb45d-7922-56dc-061f-6ef70493a358@suse.de>
+Date: Tue, 24 Mar 2020 09:33:23 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1584977512.git.matti.vaittinen@fi.rohmeurope.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+In-Reply-To: <20200313201744.19773-1-sam@ravnborg.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200324_013109_084897_58513CF6 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20200324_013339_046718_C5A8ED38 
+X-CRM114-Status: GOOD (  26.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,1924 +91,305 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Milo Kim <milo.kim@ti.com>,
- Andrei Stefanescu <andrei.stefanescu@microchip.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Tony Lindgren <tony@atomide.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Brendan Higgins <brendanhiggins@google.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Masahiro Yamada <yamada.masahiro@socionext.com>, devicetree@vger.kernel.org,
- mikko.mutanen@fi.rohmeurope.com, Vincenzo Frascino <vincenzo.frascino@arm.com>,
- Dan Williams <dan.j.williams@intel.com>, Gary Hook <Gary.Hook@amd.com>,
- linux-samsung-soc@vger.kernel.org, linux-omap@vger.kernel.org,
- Herbert Xu <herbert@gondor.apana.org.au>, linux-pm@vger.kernel.org,
- Chen-Yu Tsai <wens@csie.org>, Krzysztof Kozlowski <krzk@kernel.org>,
- Ard Biesheuvel <ardb@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Andy Shevchenko <andy.shevchenko@gmail.com>, Andy Gross <agross@kernel.org>,
- markus.laine@fi.rohmeurope.com, linux-arm-msm@vger.kernel.org,
- Borislav Petkov <bp@suse.de>, Petr Mladek <pmladek@suse.com>,
- Mikhail Zaslonko <zaslonko@linux.ibm.com>,
- Charles Keepax <ckeepax@opensource.cirrus.com>, Arnd Bergmann <arnd@arndb.de>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Richard Fitzgerald <rf@opensource.cirrus.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- David Gow <davidgow@google.com>, Shuah Khan <skhan@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- linux-arm-kernel@lists.infradead.org,
- Support Opensource <support.opensource@diasemi.com>,
- Sangbeom Kim <sbkim73@samsung.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Randy Dunlap <rdunlap@infradead.org>,
- "GitAuthor: Matti Vaittinen" <matti.vaittinen@fi.rohmeurope.com>,
- Sebastian Reichel <sre@kernel.org>, linux-kernel@vger.kernel.org,
- Tal Gilboa <talgi@mellanox.com>, Changbin Du <changbin.du@intel.com>,
- Mark Brown <broonie@kernel.org>,
- Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <uwe@kleine-koenig.org>,
- Masami Hiramatsu <mhiramat@kernel.org>, patches@opensource.cirrus.com,
- Andrew Morton <akpm@linux-foundation.org>, Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ linux-samsung-soc@vger.kernel.org, Boris Brezillon <bbrezillon@kernel.org>,
+ David Airlie <airlied@linux.ie>,
+ Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ NXP Linux Team <linux-imx@nxp.com>,
+ Jose Roberto de Souza <jose.souza@intel.com>,
+ virtualization@lists.linux-foundation.org, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ linux-mediatek@lists.infradead.org, Gerd Hoffmann <kraxel@redhat.com>,
+ linux-amlogic@lists.infradead.org, linux-tegra@vger.kernel.org,
+ Dave Airlie <airlied@redhat.com>, amd-gfx@lists.freedesktop.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org,
+ Emil Velikov <emil.velikov@collabora.com>
+Content-Type: multipart/mixed; boundary="===============0982754581665520220=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change the regulator helpers to use common linear_ranges code.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============0982754581665520220==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="Ufl74Lq2kLxag3rezk70YaJ2XyXJCpUyg"
 
-Signed-off-by: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
----
- drivers/regulator/88pg86x.c             |   4 +-
- drivers/regulator/88pm800-regulator.c   |   4 +-
- drivers/regulator/Kconfig               |   1 +
- drivers/regulator/act8865-regulator.c   |   4 +-
- drivers/regulator/act8945a-regulator.c  |   2 +-
- drivers/regulator/arizona-ldo1.c        |   2 +-
- drivers/regulator/arizona-micsupp.c     |   4 +-
- drivers/regulator/as3711-regulator.c    |   6 +-
- drivers/regulator/as3722-regulator.c    |   4 +-
- drivers/regulator/axp20x-regulator.c    |  16 +--
- drivers/regulator/bcm590xx-regulator.c  |   8 +-
- drivers/regulator/bd70528-regulator.c   |   8 +-
- drivers/regulator/bd71828-regulator.c   |  10 +-
- drivers/regulator/bd718x7-regulator.c   |  26 ++---
- drivers/regulator/da903x.c              |   2 +-
- drivers/regulator/helpers.c             | 130 +++++++++++-------------
- drivers/regulator/hi6421-regulator.c    |   4 +-
- drivers/regulator/lochnagar-regulator.c |   4 +-
- drivers/regulator/lp873x-regulator.c    |   4 +-
- drivers/regulator/lp87565-regulator.c   |   2 +-
- drivers/regulator/lp8788-buck.c         |   2 +-
- drivers/regulator/max77650-regulator.c  |   2 +-
- drivers/regulator/mcp16502.c            |   4 +-
- drivers/regulator/mp8859.c              |   2 +-
- drivers/regulator/mt6323-regulator.c    |   6 +-
- drivers/regulator/mt6358-regulator.c    |   8 +-
- drivers/regulator/mt6380-regulator.c    |   6 +-
- drivers/regulator/mt6397-regulator.c    |   6 +-
- drivers/regulator/palmas-regulator.c    |   4 +-
- drivers/regulator/qcom-rpmh-regulator.c |   2 +-
- drivers/regulator/qcom_rpm-regulator.c  |  14 +--
- drivers/regulator/qcom_smd-regulator.c  |  70 ++++++-------
- drivers/regulator/rk808-regulator.c     |  10 +-
- drivers/regulator/s2mps11.c             |  14 +--
- drivers/regulator/sky81452-regulator.c  |   2 +-
- drivers/regulator/stpmic1_regulator.c   |  18 ++--
- drivers/regulator/tps65086-regulator.c  |  10 +-
- drivers/regulator/tps65217-regulator.c  |   4 +-
- drivers/regulator/tps65218-regulator.c  |   6 +-
- drivers/regulator/tps65912-regulator.c  |   4 +-
- drivers/regulator/twl-regulator.c       |   4 +-
- drivers/regulator/twl6030-regulator.c   |   2 +-
- drivers/regulator/wm831x-dcdc.c         |   2 +-
- drivers/regulator/wm831x-ldo.c          |   4 +-
- drivers/regulator/wm8350-regulator.c    |   2 +-
- drivers/regulator/wm8400-regulator.c    |   2 +-
- include/linux/regulator/driver.h        |  27 +----
- 47 files changed, 225 insertions(+), 257 deletions(-)
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--Ufl74Lq2kLxag3rezk70YaJ2XyXJCpUyg
+Content-Type: multipart/mixed; boundary="De4ctwLgWXvPGwhVVivy7i6RNXKKkyzAV";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Sam Ravnborg <sam@ravnborg.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ dri-devel@lists.freedesktop.org
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ David Airlie <airlied@linux.ie>, Jose Roberto de Souza
+ <jose.souza@intel.com>, virtualization@lists.linux-foundation.org,
+ Gerd Hoffmann <kraxel@redhat.com>, linux-stm32@st-md-mailman.stormreply.com,
+ Emil Velikov <emil.velikov@collabora.com>,
+ linux-samsung-soc@vger.kernel.org, amd-gfx@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ NXP Linux Team <linux-imx@nxp.com>, Dave Airlie <airlied@redhat.com>,
+ linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Boris Brezillon <bbrezillon@kernel.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
+ linux-renesas-soc@vger.kernel.org
+Message-ID: <c93bb45d-7922-56dc-061f-6ef70493a358@suse.de>
+Subject: Re: [PATCH v1 0/3] drm: drm_encoder_init() =>
+ drm_encoder_init_funcs()
+References: <20200313201744.19773-1-sam@ravnborg.org>
+In-Reply-To: <20200313201744.19773-1-sam@ravnborg.org>
 
-diff --git a/drivers/regulator/88pg86x.c b/drivers/regulator/88pg86x.c
-index d5ef55c81185..71cfa2c5de5e 100644
---- a/drivers/regulator/88pg86x.c
-+++ b/drivers/regulator/88pg86x.c
-@@ -11,13 +11,13 @@ static const struct regulator_ops pg86x_ops = {
- 	.list_voltage = regulator_list_voltage_linear_range,
- };
- 
--static const struct regulator_linear_range pg86x_buck1_ranges[] = {
-+static const struct linear_range pg86x_buck1_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(      0,  0, 10,     0),
- 	REGULATOR_LINEAR_RANGE(1000000, 11, 34, 25000),
- 	REGULATOR_LINEAR_RANGE(1600000, 35, 47, 50000),
- };
- 
--static const struct regulator_linear_range pg86x_buck2_ranges[] = {
-+static const struct linear_range pg86x_buck2_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(      0,  0, 15,     0),
- 	REGULATOR_LINEAR_RANGE(1000000, 16, 39, 25000),
- 	REGULATOR_LINEAR_RANGE(1600000, 40, 52, 50000),
-diff --git a/drivers/regulator/88pm800-regulator.c b/drivers/regulator/88pm800-regulator.c
-index 69ae25886181..d08ee81ed1ac 100644
---- a/drivers/regulator/88pm800-regulator.c
-+++ b/drivers/regulator/88pm800-regulator.c
-@@ -134,13 +134,13 @@ struct pm800_regulator_info {
- }
- 
- /* Ranges are sorted in ascending order. */
--static const struct regulator_linear_range buck1_volt_range[] = {
-+static const struct linear_range buck1_volt_range[] = {
- 	REGULATOR_LINEAR_RANGE(600000, 0, 0x4f, 12500),
- 	REGULATOR_LINEAR_RANGE(1600000, 0x50, 0x54, 50000),
- };
- 
- /* BUCK 2~5 have same ranges. */
--static const struct regulator_linear_range buck2_5_volt_range[] = {
-+static const struct linear_range buck2_5_volt_range[] = {
- 	REGULATOR_LINEAR_RANGE(600000, 0, 0x4f, 12500),
- 	REGULATOR_LINEAR_RANGE(1600000, 0x50, 0x72, 50000),
- };
-diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
-index 074a2ef55943..1fd2fe2b0c7a 100644
---- a/drivers/regulator/Kconfig
-+++ b/drivers/regulator/Kconfig
-@@ -1,6 +1,7 @@
- # SPDX-License-Identifier: GPL-2.0-only
- menuconfig REGULATOR
- 	bool "Voltage and Current Regulator Support"
-+	select LINEAR_RANGES
- 	help
- 	  Generic Voltage and Current Regulator support.
- 
-diff --git a/drivers/regulator/act8865-regulator.c b/drivers/regulator/act8865-regulator.c
-index 0fa97f934df4..19b9742c9ecc 100644
---- a/drivers/regulator/act8865-regulator.c
-+++ b/drivers/regulator/act8865-regulator.c
-@@ -220,13 +220,13 @@ static const struct regmap_config act8865_regmap_config = {
- 	.val_bits = 8,
- };
- 
--static const struct regulator_linear_range act8865_voltage_ranges[] = {
-+static const struct linear_range act8865_voltage_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(600000, 0, 23, 25000),
- 	REGULATOR_LINEAR_RANGE(1200000, 24, 47, 50000),
- 	REGULATOR_LINEAR_RANGE(2400000, 48, 63, 100000),
- };
- 
--static const struct regulator_linear_range act8600_sudcdc_voltage_ranges[] = {
-+static const struct linear_range act8600_sudcdc_voltage_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(3000000, 0, 63, 0),
- 	REGULATOR_LINEAR_RANGE(3000000, 64, 159, 100000),
- 	REGULATOR_LINEAR_RANGE(12600000, 160, 191, 200000),
-diff --git a/drivers/regulator/act8945a-regulator.c b/drivers/regulator/act8945a-regulator.c
-index d2f804dbc785..6a62f946ccae 100644
---- a/drivers/regulator/act8945a-regulator.c
-+++ b/drivers/regulator/act8945a-regulator.c
-@@ -73,7 +73,7 @@ struct act8945a_pmic {
- 	u32 op_mode[ACT8945A_ID_MAX];
- };
- 
--static const struct regulator_linear_range act8945a_voltage_ranges[] = {
-+static const struct linear_range act8945a_voltage_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(600000, 0, 23, 25000),
- 	REGULATOR_LINEAR_RANGE(1200000, 24, 47, 50000),
- 	REGULATOR_LINEAR_RANGE(2400000, 48, 63, 100000),
-diff --git a/drivers/regulator/arizona-ldo1.c b/drivers/regulator/arizona-ldo1.c
-index 1a3d7b720f5e..ade0bef4569d 100644
---- a/drivers/regulator/arizona-ldo1.c
-+++ b/drivers/regulator/arizona-ldo1.c
-@@ -87,7 +87,7 @@ static const struct regulator_ops arizona_ldo1_hc_ops = {
- 	.set_bypass = regulator_set_bypass_regmap,
- };
- 
--static const struct regulator_linear_range arizona_ldo1_hc_ranges[] = {
-+static const struct linear_range arizona_ldo1_hc_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(900000, 0, 0x6, 50000),
- 	REGULATOR_LINEAR_RANGE(1800000, 0x7, 0x7, 0),
- };
-diff --git a/drivers/regulator/arizona-micsupp.c b/drivers/regulator/arizona-micsupp.c
-index ae1a5de3e57d..f6cfd3f6f0dd 100644
---- a/drivers/regulator/arizona-micsupp.c
-+++ b/drivers/regulator/arizona-micsupp.c
-@@ -125,7 +125,7 @@ static const struct regulator_ops arizona_micsupp_ops = {
- 	.set_bypass = arizona_micsupp_set_bypass,
- };
- 
--static const struct regulator_linear_range arizona_micsupp_ranges[] = {
-+static const struct linear_range arizona_micsupp_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1700000, 0,    0x1e, 50000),
- 	REGULATOR_LINEAR_RANGE(3300000, 0x1f, 0x1f, 0),
- };
-@@ -152,7 +152,7 @@ static const struct regulator_desc arizona_micsupp = {
- 	.owner = THIS_MODULE,
- };
- 
--static const struct regulator_linear_range arizona_micsupp_ext_ranges[] = {
-+static const struct linear_range arizona_micsupp_ext_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(900000,  0,    0x14, 25000),
- 	REGULATOR_LINEAR_RANGE(1500000, 0x15, 0x27, 100000),
- };
-diff --git a/drivers/regulator/as3711-regulator.c b/drivers/regulator/as3711-regulator.c
-index ece88103f2fd..b6b9206969ae 100644
---- a/drivers/regulator/as3711-regulator.c
-+++ b/drivers/regulator/as3711-regulator.c
-@@ -103,18 +103,18 @@ static const struct regulator_ops as3711_dldo_ops = {
- 	.map_voltage		= regulator_map_voltage_linear_range,
- };
- 
--static const struct regulator_linear_range as3711_sd_ranges[] = {
-+static const struct linear_range as3711_sd_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(612500, 0x1, 0x40, 12500),
- 	REGULATOR_LINEAR_RANGE(1425000, 0x41, 0x70, 25000),
- 	REGULATOR_LINEAR_RANGE(2650000, 0x71, 0x7f, 50000),
- };
- 
--static const struct regulator_linear_range as3711_aldo_ranges[] = {
-+static const struct linear_range as3711_aldo_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1200000, 0, 0xf, 50000),
- 	REGULATOR_LINEAR_RANGE(1800000, 0x10, 0x1f, 100000),
- };
- 
--static const struct regulator_linear_range as3711_dldo_ranges[] = {
-+static const struct linear_range as3711_dldo_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(900000, 0, 0x10, 50000),
- 	REGULATOR_LINEAR_RANGE(1750000, 0x20, 0x3f, 50000),
- };
-diff --git a/drivers/regulator/as3722-regulator.c b/drivers/regulator/as3722-regulator.c
-index bd5d0bacb08d..33ca197860b3 100644
---- a/drivers/regulator/as3722-regulator.c
-+++ b/drivers/regulator/as3722-regulator.c
-@@ -389,7 +389,7 @@ static const struct regulator_ops as3722_ldo6_extcntrl_ops = {
- 	.set_bypass = regulator_set_bypass_regmap,
- };
- 
--static const struct regulator_linear_range as3722_ldo_ranges[] = {
-+static const struct linear_range as3722_ldo_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(0, 0x00, 0x00, 0),
- 	REGULATOR_LINEAR_RANGE(825000, 0x01, 0x24, 25000),
- 	REGULATOR_LINEAR_RANGE(1725000, 0x40, 0x7F, 25000),
-@@ -487,7 +487,7 @@ static bool as3722_sd0_is_low_voltage(struct as3722_regulators *as3722_regs)
- 	return false;
- }
- 
--static const struct regulator_linear_range as3722_sd2345_ranges[] = {
-+static const struct linear_range as3722_sd2345_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(0, 0x00, 0x00, 0),
- 	REGULATOR_LINEAR_RANGE(612500, 0x01, 0x40, 12500),
- 	REGULATOR_LINEAR_RANGE(1425000, 0x41, 0x70, 25000),
-diff --git a/drivers/regulator/axp20x-regulator.c b/drivers/regulator/axp20x-regulator.c
-index 16f0c8570036..7b3dc37130f3 100644
---- a/drivers/regulator/axp20x-regulator.c
-+++ b/drivers/regulator/axp20x-regulator.c
-@@ -512,7 +512,7 @@ static const struct regulator_ops axp20x_ops_sw = {
- 	.is_enabled		= regulator_is_enabled_regmap,
- };
- 
--static const struct regulator_linear_range axp20x_ldo4_ranges[] = {
-+static const struct linear_range axp20x_ldo4_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1250000,
- 			       AXP20X_LDO4_V_OUT_1250mV_START,
- 			       AXP20X_LDO4_V_OUT_1250mV_END,
-@@ -640,7 +640,7 @@ static const struct regulator_desc axp22x_drivevbus_regulator = {
- };
- 
- /* DCDC ranges shared with AXP813 */
--static const struct regulator_linear_range axp803_dcdc234_ranges[] = {
-+static const struct linear_range axp803_dcdc234_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(500000,
- 			       AXP803_DCDC234_500mV_START,
- 			       AXP803_DCDC234_500mV_END,
-@@ -651,7 +651,7 @@ static const struct regulator_linear_range axp803_dcdc234_ranges[] = {
- 			       20000),
- };
- 
--static const struct regulator_linear_range axp803_dcdc5_ranges[] = {
-+static const struct linear_range axp803_dcdc5_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(800000,
- 			       AXP803_DCDC5_800mV_START,
- 			       AXP803_DCDC5_800mV_END,
-@@ -662,7 +662,7 @@ static const struct regulator_linear_range axp803_dcdc5_ranges[] = {
- 			       20000),
- };
- 
--static const struct regulator_linear_range axp803_dcdc6_ranges[] = {
-+static const struct linear_range axp803_dcdc6_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(600000,
- 			       AXP803_DCDC6_600mV_START,
- 			       AXP803_DCDC6_600mV_END,
-@@ -674,7 +674,7 @@ static const struct regulator_linear_range axp803_dcdc6_ranges[] = {
- };
- 
- /* AXP806's CLDO2 and AXP809's DLDO1 share the same range */
--static const struct regulator_linear_range axp803_dldo2_ranges[] = {
-+static const struct linear_range axp803_dldo2_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(700000,
- 			       AXP803_DLDO2_700mV_START,
- 			       AXP803_DLDO2_700mV_END,
-@@ -760,7 +760,7 @@ static const struct regulator_desc axp803_regulators[] = {
- 	AXP_DESC_FIXED(AXP803, RTC_LDO, "rtc-ldo", "ips", 3000),
- };
- 
--static const struct regulator_linear_range axp806_dcdca_ranges[] = {
-+static const struct linear_range axp806_dcdca_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(600000,
- 			       AXP806_DCDCA_600mV_START,
- 			       AXP806_DCDCA_600mV_END,
-@@ -771,7 +771,7 @@ static const struct regulator_linear_range axp806_dcdca_ranges[] = {
- 			       20000),
- };
- 
--static const struct regulator_linear_range axp806_dcdcd_ranges[] = {
-+static const struct linear_range axp806_dcdcd_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(600000,
- 			       AXP806_DCDCD_600mV_START,
- 			       AXP806_DCDCD_600mV_END,
-@@ -836,7 +836,7 @@ static const struct regulator_desc axp806_regulators[] = {
- 		    AXP806_PWR_OUT_CTRL2, AXP806_PWR_OUT_SW_MASK),
- };
- 
--static const struct regulator_linear_range axp809_dcdc4_ranges[] = {
-+static const struct linear_range axp809_dcdc4_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(600000,
- 			       AXP809_DCDC4_600mV_START,
- 			       AXP809_DCDC4_600mV_END,
-diff --git a/drivers/regulator/bcm590xx-regulator.c b/drivers/regulator/bcm590xx-regulator.c
-index 8c98c3f07660..65e23fc5f9c3 100644
---- a/drivers/regulator/bcm590xx-regulator.c
-+++ b/drivers/regulator/bcm590xx-regulator.c
-@@ -116,14 +116,14 @@ static const unsigned int ldo_vbus[] = {
- };
- 
- /* DCDC group CSR: supported voltages in microvolts */
--static const struct regulator_linear_range dcdc_csr_ranges[] = {
-+static const struct linear_range dcdc_csr_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(860000, 2, 50, 10000),
- 	REGULATOR_LINEAR_RANGE(1360000, 51, 55, 20000),
- 	REGULATOR_LINEAR_RANGE(900000, 56, 63, 0),
- };
- 
- /* DCDC group IOSR1: supported voltages in microvolts */
--static const struct regulator_linear_range dcdc_iosr1_ranges[] = {
-+static const struct linear_range dcdc_iosr1_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(860000, 2, 51, 10000),
- 	REGULATOR_LINEAR_RANGE(1500000, 52, 52, 0),
- 	REGULATOR_LINEAR_RANGE(1800000, 53, 53, 0),
-@@ -131,7 +131,7 @@ static const struct regulator_linear_range dcdc_iosr1_ranges[] = {
- };
- 
- /* DCDC group SDSR1: supported voltages in microvolts */
--static const struct regulator_linear_range dcdc_sdsr1_ranges[] = {
-+static const struct linear_range dcdc_sdsr1_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(860000, 2, 50, 10000),
- 	REGULATOR_LINEAR_RANGE(1340000, 51, 51, 0),
- 	REGULATOR_LINEAR_RANGE(900000, 52, 63, 0),
-@@ -143,7 +143,7 @@ struct bcm590xx_info {
- 	u8 n_voltages;
- 	const unsigned int *volt_table;
- 	u8 n_linear_ranges;
--	const struct regulator_linear_range *linear_ranges;
-+	const struct linear_range *linear_ranges;
- };
- 
- #define BCM590XX_REG_TABLE(_name, _table) \
-diff --git a/drivers/regulator/bd70528-regulator.c b/drivers/regulator/bd70528-regulator.c
-index 5bf8a2dc5fe7..d44adf7e875a 100644
---- a/drivers/regulator/bd70528-regulator.c
-+++ b/drivers/regulator/bd70528-regulator.c
-@@ -20,22 +20,22 @@
- #define BUCK_RAMPRATE_125MV 1
- #define BUCK_RAMP_MAX 250
- 
--static const struct regulator_linear_range bd70528_buck1_volts[] = {
-+static const struct linear_range bd70528_buck1_volts[] = {
- 	REGULATOR_LINEAR_RANGE(1200000, 0x00, 0x1, 600000),
- 	REGULATOR_LINEAR_RANGE(2750000, 0x2, 0xf, 50000),
- };
--static const struct regulator_linear_range bd70528_buck2_volts[] = {
-+static const struct linear_range bd70528_buck2_volts[] = {
- 	REGULATOR_LINEAR_RANGE(1200000, 0x00, 0x1, 300000),
- 	REGULATOR_LINEAR_RANGE(1550000, 0x2, 0xd, 50000),
- 	REGULATOR_LINEAR_RANGE(3000000, 0xe, 0xf, 300000),
- };
--static const struct regulator_linear_range bd70528_buck3_volts[] = {
-+static const struct linear_range bd70528_buck3_volts[] = {
- 	REGULATOR_LINEAR_RANGE(800000, 0x00, 0xd, 50000),
- 	REGULATOR_LINEAR_RANGE(1800000, 0xe, 0xf, 0),
- };
- 
- /* All LDOs have same voltage ranges */
--static const struct regulator_linear_range bd70528_ldo_volts[] = {
-+static const struct linear_range bd70528_ldo_volts[] = {
- 	REGULATOR_LINEAR_RANGE(1650000, 0x0, 0x07, 50000),
- 	REGULATOR_LINEAR_RANGE(2100000, 0x8, 0x0f, 100000),
- 	REGULATOR_LINEAR_RANGE(2850000, 0x10, 0x19, 50000),
-diff --git a/drivers/regulator/bd71828-regulator.c b/drivers/regulator/bd71828-regulator.c
-index b2fa17be4988..85c0b9000963 100644
---- a/drivers/regulator/bd71828-regulator.c
-+++ b/drivers/regulator/bd71828-regulator.c
-@@ -65,27 +65,27 @@ static const struct reg_init buck7_inits[] = {
- 	},
- };
- 
--static const struct regulator_linear_range bd71828_buck1267_volts[] = {
-+static const struct linear_range bd71828_buck1267_volts[] = {
- 	REGULATOR_LINEAR_RANGE(500000, 0x00, 0xef, 6250),
- 	REGULATOR_LINEAR_RANGE(2000000, 0xf0, 0xff, 0),
- };
- 
--static const struct regulator_linear_range bd71828_buck3_volts[] = {
-+static const struct linear_range bd71828_buck3_volts[] = {
- 	REGULATOR_LINEAR_RANGE(1200000, 0x00, 0x0f, 50000),
- 	REGULATOR_LINEAR_RANGE(2000000, 0x10, 0x1f, 0),
- };
- 
--static const struct regulator_linear_range bd71828_buck4_volts[] = {
-+static const struct linear_range bd71828_buck4_volts[] = {
- 	REGULATOR_LINEAR_RANGE(1000000, 0x00, 0x1f, 25000),
- 	REGULATOR_LINEAR_RANGE(1800000, 0x20, 0x3f, 0),
- };
- 
--static const struct regulator_linear_range bd71828_buck5_volts[] = {
-+static const struct linear_range bd71828_buck5_volts[] = {
- 	REGULATOR_LINEAR_RANGE(2500000, 0x00, 0x0f, 50000),
- 	REGULATOR_LINEAR_RANGE(3300000, 0x10, 0x1f, 0),
- };
- 
--static const struct regulator_linear_range bd71828_ldo_volts[] = {
-+static const struct linear_range bd71828_ldo_volts[] = {
- 	REGULATOR_LINEAR_RANGE(800000, 0x00, 0x31, 50000),
- 	REGULATOR_LINEAR_RANGE(3300000, 0x32, 0x3f, 0),
- };
-diff --git a/drivers/regulator/bd718x7-regulator.c b/drivers/regulator/bd718x7-regulator.c
-index cf3872837abc..819573610ee2 100644
---- a/drivers/regulator/bd718x7-regulator.c
-+++ b/drivers/regulator/bd718x7-regulator.c
-@@ -152,7 +152,7 @@ static const struct regulator_ops bd718xx_dvs_buck_regulator_ops = {
-  * BD71847 BUCK1/2
-  * 0.70 to 1.30V (10mV step)
-  */
--static const struct regulator_linear_range bd718xx_dvs_buck_volts[] = {
-+static const struct linear_range bd718xx_dvs_buck_volts[] = {
- 	REGULATOR_LINEAR_RANGE(700000, 0x00, 0x3C, 10000),
- 	REGULATOR_LINEAR_RANGE(1300000, 0x3D, 0x3F, 0),
- };
-@@ -163,7 +163,7 @@ static const struct regulator_linear_range bd718xx_dvs_buck_volts[] = {
-  * and
-  * 0.675 to 1.325 (range 1)
-  */
--static const struct regulator_linear_range bd71837_buck5_volts[] = {
-+static const struct linear_range bd71837_buck5_volts[] = {
- 	/* Ranges when VOLT_SEL bit is 0 */
- 	REGULATOR_LINEAR_RANGE(700000, 0x00, 0x03, 100000),
- 	REGULATOR_LINEAR_RANGE(1050000, 0x04, 0x05, 50000),
-@@ -185,7 +185,7 @@ static const unsigned int bd71837_buck5_volt_range_sel[] = {
- /*
-  * BD71847 BUCK3
-  */
--static const struct regulator_linear_range bd71847_buck3_volts[] = {
-+static const struct linear_range bd71847_buck3_volts[] = {
- 	/* Ranges when VOLT_SEL bits are 00 */
- 	REGULATOR_LINEAR_RANGE(700000, 0x00, 0x03, 100000),
- 	REGULATOR_LINEAR_RANGE(1050000, 0x04, 0x05, 50000),
-@@ -202,7 +202,7 @@ static const unsigned int bd71847_buck3_volt_range_sel[] = {
- 	0x0, 0x0, 0x0, 0x40, 0x80, 0x80, 0x80
- };
- 
--static const struct regulator_linear_range bd71847_buck4_volts[] = {
-+static const struct linear_range bd71847_buck4_volts[] = {
- 	REGULATOR_LINEAR_RANGE(3000000, 0x00, 0x03, 100000),
- 	REGULATOR_LINEAR_RANGE(2600000, 0x00, 0x03, 100000),
- };
-@@ -213,7 +213,7 @@ static const unsigned int bd71847_buck4_volt_range_sel[] = { 0x0, 0x40 };
-  * BUCK6
-  * 3.0V to 3.3V (step 100mV)
-  */
--static const struct regulator_linear_range bd71837_buck6_volts[] = {
-+static const struct linear_range bd71837_buck6_volts[] = {
- 	REGULATOR_LINEAR_RANGE(3000000, 0x00, 0x03, 100000),
- };
- 
-@@ -237,7 +237,7 @@ static const unsigned int bd718xx_3rd_nodvs_buck_volts[] = {
-  * BUCK8
-  * 0.8V to 1.40V (step 10mV)
-  */
--static const struct regulator_linear_range bd718xx_4th_nodvs_buck_volts[] = {
-+static const struct linear_range bd718xx_4th_nodvs_buck_volts[] = {
- 	REGULATOR_LINEAR_RANGE(800000, 0x00, 0x3C, 10000),
- };
- 
-@@ -245,7 +245,7 @@ static const struct regulator_linear_range bd718xx_4th_nodvs_buck_volts[] = {
-  * LDO1
-  * 3.0 to 3.3V (100mV step)
-  */
--static const struct regulator_linear_range bd718xx_ldo1_volts[] = {
-+static const struct linear_range bd718xx_ldo1_volts[] = {
- 	REGULATOR_LINEAR_RANGE(3000000, 0x00, 0x03, 100000),
- 	REGULATOR_LINEAR_RANGE(1600000, 0x00, 0x03, 100000),
- };
-@@ -264,7 +264,7 @@ static const unsigned int ldo_2_volts[] = {
-  * LDO3
-  * 1.8 to 3.3V (100mV step)
-  */
--static const struct regulator_linear_range bd718xx_ldo3_volts[] = {
-+static const struct linear_range bd718xx_ldo3_volts[] = {
- 	REGULATOR_LINEAR_RANGE(1800000, 0x00, 0x0F, 100000),
- };
- 
-@@ -272,7 +272,7 @@ static const struct regulator_linear_range bd718xx_ldo3_volts[] = {
-  * LDO4
-  * 0.9 to 1.8V (100mV step)
-  */
--static const struct regulator_linear_range bd718xx_ldo4_volts[] = {
-+static const struct linear_range bd718xx_ldo4_volts[] = {
- 	REGULATOR_LINEAR_RANGE(900000, 0x00, 0x09, 100000),
- };
- 
-@@ -280,7 +280,7 @@ static const struct regulator_linear_range bd718xx_ldo4_volts[] = {
-  * LDO5 for BD71837
-  * 1.8 to 3.3V (100mV step)
-  */
--static const struct regulator_linear_range bd71837_ldo5_volts[] = {
-+static const struct linear_range bd71837_ldo5_volts[] = {
- 	REGULATOR_LINEAR_RANGE(1800000, 0x00, 0x0F, 100000),
- };
- 
-@@ -288,7 +288,7 @@ static const struct regulator_linear_range bd71837_ldo5_volts[] = {
-  * LDO5 for BD71837
-  * 1.8 to 3.3V (100mV step)
-  */
--static const struct regulator_linear_range bd71847_ldo5_volts[] = {
-+static const struct linear_range bd71847_ldo5_volts[] = {
- 	REGULATOR_LINEAR_RANGE(1800000, 0x00, 0x0F, 100000),
- 	REGULATOR_LINEAR_RANGE(800000, 0x00, 0x0F, 100000),
- };
-@@ -299,7 +299,7 @@ static const unsigned int bd71847_ldo5_volt_range_sel[] = { 0x0, 0x20 };
-  * LDO6
-  * 0.9 to 1.8V (100mV step)
-  */
--static const struct regulator_linear_range bd718xx_ldo6_volts[] = {
-+static const struct linear_range bd718xx_ldo6_volts[] = {
- 	REGULATOR_LINEAR_RANGE(900000, 0x00, 0x09, 100000),
- };
- 
-@@ -307,7 +307,7 @@ static const struct regulator_linear_range bd718xx_ldo6_volts[] = {
-  * LDO7
-  * 1.8 to 3.3V (100mV step)
-  */
--static const struct regulator_linear_range bd71837_ldo7_volts[] = {
-+static const struct linear_range bd71837_ldo7_volts[] = {
- 	REGULATOR_LINEAR_RANGE(1800000, 0x00, 0x0F, 100000),
- };
- 
-diff --git a/drivers/regulator/da903x.c b/drivers/regulator/da903x.c
-index 5493c3a86426..770e694824ac 100644
---- a/drivers/regulator/da903x.c
-+++ b/drivers/regulator/da903x.c
-@@ -248,7 +248,7 @@ static int da9034_set_dvc_voltage_sel(struct regulator_dev *rdev,
- 	return ret;
- }
- 
--static const struct regulator_linear_range da9034_ldo12_ranges[] = {
-+static const struct linear_range da9034_ldo12_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1700000, 0, 7, 50000),
- 	REGULATOR_LINEAR_RANGE(2700000, 8, 15, 50000),
- };
-diff --git a/drivers/regulator/helpers.c b/drivers/regulator/helpers.c
-index bb16c465426e..e970e9d2f8be 100644
---- a/drivers/regulator/helpers.c
-+++ b/drivers/regulator/helpers.c
-@@ -131,10 +131,11 @@ int regulator_get_voltage_sel_pickable_regmap(struct regulator_dev *rdev)
- 	unsigned int r_val;
- 	int range;
- 	unsigned int val;
--	int ret, i;
--	unsigned int voltages_in_range = 0;
-+	int ret;
-+	unsigned int voltages = 0;
-+	const struct linear_range *r = rdev->desc->linear_ranges;
- 
--	if (!rdev->desc->linear_ranges)
-+	if (!r)
- 		return -EINVAL;
- 
- 	ret = regmap_read(rdev->regmap, rdev->desc->vsel_reg, &val);
-@@ -152,11 +153,9 @@ int regulator_get_voltage_sel_pickable_regmap(struct regulator_dev *rdev)
- 	if (range < 0)
- 		return -EINVAL;
- 
--	for (i = 0; i < range; i++)
--		voltages_in_range += (rdev->desc->linear_ranges[i].max_sel -
--				     rdev->desc->linear_ranges[i].min_sel) + 1;
-+	voltages = linear_range_values_in_range_array(r, range);
- 
--	return val + voltages_in_range;
-+	return val + voltages;
- }
- EXPORT_SYMBOL_GPL(regulator_get_voltage_sel_pickable_regmap);
- 
-@@ -179,8 +178,11 @@ int regulator_set_voltage_sel_pickable_regmap(struct regulator_dev *rdev,
- 	unsigned int voltages_in_range = 0;
- 
- 	for (i = 0; i < rdev->desc->n_linear_ranges; i++) {
--		voltages_in_range = (rdev->desc->linear_ranges[i].max_sel -
--				     rdev->desc->linear_ranges[i].min_sel) + 1;
-+		const struct linear_range *r;
-+
-+		r = &rdev->desc->linear_ranges[i];
-+		voltages_in_range = linear_range_values_in_range(r);
-+
- 		if (sel < voltages_in_range)
- 			break;
- 		sel -= voltages_in_range;
-@@ -405,8 +407,10 @@ EXPORT_SYMBOL_GPL(regulator_map_voltage_linear);
- int regulator_map_voltage_linear_range(struct regulator_dev *rdev,
- 				       int min_uV, int max_uV)
- {
--	const struct regulator_linear_range *range;
-+	const struct linear_range *range;
- 	int ret = -EINVAL;
-+	unsigned int sel;
-+	bool found;
- 	int voltage, i;
- 
- 	if (!rdev->desc->n_linear_ranges) {
-@@ -415,35 +419,19 @@ int regulator_map_voltage_linear_range(struct regulator_dev *rdev,
- 	}
- 
- 	for (i = 0; i < rdev->desc->n_linear_ranges; i++) {
--		int linear_max_uV;
--
- 		range = &rdev->desc->linear_ranges[i];
--		linear_max_uV = range->min_uV +
--			(range->max_sel - range->min_sel) * range->uV_step;
- 
--		if (!(min_uV <= linear_max_uV && max_uV >= range->min_uV))
-+		ret = linear_range_get_selector_high(range, min_uV, &sel,
-+						     &found);
-+		if (ret)
- 			continue;
--
--		if (min_uV <= range->min_uV)
--			min_uV = range->min_uV;
--
--		/* range->uV_step == 0 means fixed voltage range */
--		if (range->uV_step == 0) {
--			ret = 0;
--		} else {
--			ret = DIV_ROUND_UP(min_uV - range->min_uV,
--					   range->uV_step);
--			if (ret < 0)
--				return ret;
--		}
--
--		ret += range->min_sel;
-+		ret = sel;
- 
- 		/*
- 		 * Map back into a voltage to verify we're still in bounds.
- 		 * If we are not, then continue checking rest of the ranges.
- 		 */
--		voltage = rdev->desc->ops->list_voltage(rdev, ret);
-+		voltage = rdev->desc->ops->list_voltage(rdev, sel);
- 		if (voltage >= min_uV && voltage <= max_uV)
- 			break;
- 	}
-@@ -468,7 +456,7 @@ EXPORT_SYMBOL_GPL(regulator_map_voltage_linear_range);
- int regulator_map_voltage_pickable_linear_range(struct regulator_dev *rdev,
- 						int min_uV, int max_uV)
- {
--	const struct regulator_linear_range *range;
-+	const struct linear_range *range;
- 	int ret = -EINVAL;
- 	int voltage, i;
- 	unsigned int selector = 0;
-@@ -480,30 +468,25 @@ int regulator_map_voltage_pickable_linear_range(struct regulator_dev *rdev,
- 
- 	for (i = 0; i < rdev->desc->n_linear_ranges; i++) {
- 		int linear_max_uV;
-+		bool found;
-+		unsigned int sel;
- 
- 		range = &rdev->desc->linear_ranges[i];
--		linear_max_uV = range->min_uV +
--			(range->max_sel - range->min_sel) * range->uV_step;
-+		linear_max_uV = linear_range_get_max_value(range);
- 
--		if (!(min_uV <= linear_max_uV && max_uV >= range->min_uV)) {
--			selector += (range->max_sel - range->min_sel + 1);
-+		if (!(min_uV <= linear_max_uV && max_uV >= range->min)) {
-+			selector += linear_range_values_in_range(range);
- 			continue;
- 		}
- 
--		if (min_uV <= range->min_uV)
--			min_uV = range->min_uV;
--
--		/* range->uV_step == 0 means fixed voltage range */
--		if (range->uV_step == 0) {
--			ret = 0;
--		} else {
--			ret = DIV_ROUND_UP(min_uV - range->min_uV,
--					   range->uV_step);
--			if (ret < 0)
--				return ret;
-+		ret = linear_range_get_selector_high(range, min_uV, &sel,
-+						     &found);
-+		if (ret) {
-+			selector += linear_range_values_in_range(range);
-+			continue;
- 		}
- 
--		ret += selector;
-+		ret = selector + sel;
- 
- 		voltage = rdev->desc->ops->list_voltage(rdev, ret);
- 
-@@ -513,7 +496,7 @@ int regulator_map_voltage_pickable_linear_range(struct regulator_dev *rdev,
- 		 * exit but retry until we have checked all ranges.
- 		 */
- 		if (voltage < min_uV || voltage > max_uV)
--			selector += (range->max_sel - range->min_sel + 1);
-+			selector += linear_range_values_in_range(range);
- 		else
- 			break;
- 	}
-@@ -561,7 +544,7 @@ EXPORT_SYMBOL_GPL(regulator_list_voltage_linear);
- int regulator_list_voltage_pickable_linear_range(struct regulator_dev *rdev,
- 						 unsigned int selector)
- {
--	const struct regulator_linear_range *range;
-+	const struct linear_range *range;
- 	int i;
- 	unsigned int all_sels = 0;
- 
-@@ -571,18 +554,28 @@ int regulator_list_voltage_pickable_linear_range(struct regulator_dev *rdev,
- 	}
- 
- 	for (i = 0; i < rdev->desc->n_linear_ranges; i++) {
--		unsigned int sels_in_range;
-+		unsigned int sel_indexes;
- 
- 		range = &rdev->desc->linear_ranges[i];
- 
--		sels_in_range = range->max_sel - range->min_sel;
-+		sel_indexes = linear_range_values_in_range(range) - 1;
- 
--		if (all_sels + sels_in_range >= selector) {
-+		if (all_sels + sel_indexes >= selector) {
- 			selector -= all_sels;
--			return range->min_uV + (range->uV_step * selector);
-+			/*
-+			 * As we see here, pickable ranges work only as
-+			 * long as the first selector for each pickable
-+			 * range is 0, and the each subsequent range for
-+			 * this 'pick' follow immediately at next unused
-+			 * selector (Eg. there is no gaps between ranges).
-+			 * I think this is fine but it probably should be
-+			 * documented. OTOH, whole pickable range stuff
-+			 * might benefit from some documentation
-+			 */
-+			return range->min + (range->step * selector);
- 		}
- 
--		all_sels += (sels_in_range + 1);
-+		all_sels += (sel_indexes + 1);
- 	}
- 
- 	return -EINVAL;
-@@ -604,27 +597,18 @@ EXPORT_SYMBOL_GPL(regulator_list_voltage_pickable_linear_range);
- int regulator_desc_list_voltage_linear_range(const struct regulator_desc *desc,
- 					     unsigned int selector)
- {
--	const struct regulator_linear_range *range;
--	int i;
--
--	if (!desc->n_linear_ranges) {
--		BUG_ON(!desc->n_linear_ranges);
--		return -EINVAL;
--	}
--
--	for (i = 0; i < desc->n_linear_ranges; i++) {
--		range = &desc->linear_ranges[i];
--
--		if (!(selector >= range->min_sel &&
--		      selector <= range->max_sel))
--			continue;
-+	unsigned int val;
-+	int ret;
- 
--		selector -= range->min_sel;
-+	BUG_ON(!desc->n_linear_ranges);
- 
--		return range->min_uV + (range->uV_step * selector);
--	}
-+	ret = linear_range_get_value_array(desc->linear_ranges,
-+					   desc->n_linear_ranges, selector,
-+					   &val);
-+	if (ret)
-+		return ret;
- 
--	return -EINVAL;
-+	return val;
- }
- EXPORT_SYMBOL_GPL(regulator_desc_list_voltage_linear_range);
- 
-diff --git a/drivers/regulator/hi6421-regulator.c b/drivers/regulator/hi6421-regulator.c
-index 5ac3d7c29725..66219d8dfc1a 100644
---- a/drivers/regulator/hi6421-regulator.c
-+++ b/drivers/regulator/hi6421-regulator.c
-@@ -87,7 +87,7 @@ static const unsigned int ldo_8_voltages[] = {
- };
- 
- /* Ranges are sorted in ascending order. */
--static const struct regulator_linear_range ldo_audio_volt_range[] = {
-+static const struct linear_range ldo_audio_volt_range[] = {
- 	REGULATOR_LINEAR_RANGE(2800000, 0, 3, 50000),
- 	REGULATOR_LINEAR_RANGE(3000000, 4, 7, 100000),
- };
-@@ -195,7 +195,7 @@ static const struct regulator_ops hi6421_buck345_ops;
-  * _id - LDO id name string
-  * _match - of match name string
-  * n_volt - number of votages available
-- * volt_ranges - array of regulator_linear_range
-+ * volt_ranges - array of linear_range
-  * vstep - voltage increase in each linear step in uV
-  * vreg - voltage select register
-  * vmask - voltage select mask
-diff --git a/drivers/regulator/lochnagar-regulator.c b/drivers/regulator/lochnagar-regulator.c
-index 9b05e03ba830..5ea3e4141684 100644
---- a/drivers/regulator/lochnagar-regulator.c
-+++ b/drivers/regulator/lochnagar-regulator.c
-@@ -36,7 +36,7 @@ static const struct regulator_ops lochnagar_micvdd_ops = {
- 	.set_voltage_sel = regulator_set_voltage_sel_regmap,
- };
- 
--static const struct regulator_linear_range lochnagar_micvdd_ranges[] = {
-+static const struct linear_range lochnagar_micvdd_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1000000, 0,    0xC, 50000),
- 	REGULATOR_LINEAR_RANGE(1700000, 0xD, 0x1F, 100000),
- };
-@@ -97,7 +97,7 @@ static const struct regulator_ops lochnagar_vddcore_ops = {
- 	.set_voltage_sel = regulator_set_voltage_sel_regmap,
- };
- 
--static const struct regulator_linear_range lochnagar_vddcore_ranges[] = {
-+static const struct linear_range lochnagar_vddcore_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(600000, 0x8, 0x41, 12500),
- };
- 
-diff --git a/drivers/regulator/lp873x-regulator.c b/drivers/regulator/lp873x-regulator.c
-index b55de293ca7a..fe049b67e7d5 100644
---- a/drivers/regulator/lp873x-regulator.c
-+++ b/drivers/regulator/lp873x-regulator.c
-@@ -54,14 +54,14 @@ struct lp873x_regulator {
- 
- static const struct lp873x_regulator regulators[];
- 
--static const struct regulator_linear_range buck0_buck1_ranges[] = {
-+static const struct linear_range buck0_buck1_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(0, 0x0, 0x13, 0),
- 	REGULATOR_LINEAR_RANGE(700000, 0x14, 0x17, 10000),
- 	REGULATOR_LINEAR_RANGE(735000, 0x18, 0x9d, 5000),
- 	REGULATOR_LINEAR_RANGE(1420000, 0x9e, 0xff, 20000),
- };
- 
--static const struct regulator_linear_range ldo0_ldo1_ranges[] = {
-+static const struct linear_range ldo0_ldo1_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(800000, 0x0, 0x19, 100000),
- };
- 
-diff --git a/drivers/regulator/lp87565-regulator.c b/drivers/regulator/lp87565-regulator.c
-index 4ae12ac1f4c6..5d525dacf959 100644
---- a/drivers/regulator/lp87565-regulator.c
-+++ b/drivers/regulator/lp87565-regulator.c
-@@ -46,7 +46,7 @@ struct lp87565_regulator {
- 
- static const struct lp87565_regulator regulators[];
- 
--static const struct regulator_linear_range buck0_1_2_3_ranges[] = {
-+static const struct linear_range buck0_1_2_3_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(600000, 0xA, 0x17, 10000),
- 	REGULATOR_LINEAR_RANGE(735000, 0x18, 0x9d, 5000),
- 	REGULATOR_LINEAR_RANGE(1420000, 0x9e, 0xff, 20000),
-diff --git a/drivers/regulator/lp8788-buck.c b/drivers/regulator/lp8788-buck.c
-index 222502a29658..74b7b496b12d 100644
---- a/drivers/regulator/lp8788-buck.c
-+++ b/drivers/regulator/lp8788-buck.c
-@@ -92,7 +92,7 @@ struct lp8788_buck {
- };
- 
- /* BUCK 1 ~ 4 voltage ranges */
--static const struct regulator_linear_range buck_volt_ranges[] = {
-+static const struct linear_range buck_volt_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(500000, 0, 0, 0),
- 	REGULATOR_LINEAR_RANGE(800000, 1, 25, 50000),
- };
-diff --git a/drivers/regulator/max77650-regulator.c b/drivers/regulator/max77650-regulator.c
-index ac89a412f665..ca08f94a368d 100644
---- a/drivers/regulator/max77650-regulator.c
-+++ b/drivers/regulator/max77650-regulator.c
-@@ -49,7 +49,7 @@ static const unsigned int max77651_sbb1_volt_range_sel[] = {
- 	0x0, 0x1, 0x2, 0x3
- };
- 
--static const struct regulator_linear_range max77651_sbb1_volt_ranges[] = {
-+static const struct linear_range max77651_sbb1_volt_ranges[] = {
- 	/* range index 0 */
- 	REGULATOR_LINEAR_RANGE(2400000, 0x00, 0x0f, 50000),
- 	/* range index 1 */
-diff --git a/drivers/regulator/mcp16502.c b/drivers/regulator/mcp16502.c
-index e5a02711cb46..6d0ad74935b3 100644
---- a/drivers/regulator/mcp16502.c
-+++ b/drivers/regulator/mcp16502.c
-@@ -391,11 +391,11 @@ static const struct of_device_id mcp16502_ids[] = {
- };
- MODULE_DEVICE_TABLE(of, mcp16502_ids);
- 
--static const struct regulator_linear_range b1l12_ranges[] = {
-+static const struct linear_range b1l12_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1200000, VDD_LOW_SEL, VDD_HIGH_SEL, 50000),
- };
- 
--static const struct regulator_linear_range b234_ranges[] = {
-+static const struct linear_range b234_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(600000, VDD_LOW_SEL, VDD_HIGH_SEL, 25000),
- };
- 
-diff --git a/drivers/regulator/mp8859.c b/drivers/regulator/mp8859.c
-index 1d26b506ee5b..a9b9fc77cbc3 100644
---- a/drivers/regulator/mp8859.c
-+++ b/drivers/regulator/mp8859.c
-@@ -73,7 +73,7 @@ static int mp8859_get_voltage_sel(struct regulator_dev *rdev)
- 	return val;
- }
- 
--static const struct regulator_linear_range mp8859_dcdc_ranges[] = {
-+static const struct linear_range mp8859_dcdc_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(0, VOL_MIN_IDX, VOL_MAX_IDX, 10000),
- };
- 
-diff --git a/drivers/regulator/mt6323-regulator.c b/drivers/regulator/mt6323-regulator.c
-index 893ea190788a..ff9016170db3 100644
---- a/drivers/regulator/mt6323-regulator.c
-+++ b/drivers/regulator/mt6323-regulator.c
-@@ -102,15 +102,15 @@ struct mt6323_regulator_info {
- 	.modeset_mask = _modeset_mask,					\
- }
- 
--static const struct regulator_linear_range buck_volt_range1[] = {
-+static const struct linear_range buck_volt_range1[] = {
- 	REGULATOR_LINEAR_RANGE(700000, 0, 0x7f, 6250),
- };
- 
--static const struct regulator_linear_range buck_volt_range2[] = {
-+static const struct linear_range buck_volt_range2[] = {
- 	REGULATOR_LINEAR_RANGE(1400000, 0, 0x7f, 12500),
- };
- 
--static const struct regulator_linear_range buck_volt_range3[] = {
-+static const struct linear_range buck_volt_range3[] = {
- 	REGULATOR_LINEAR_RANGE(500000, 0, 0x3f, 50000),
- };
- 
-diff --git a/drivers/regulator/mt6358-regulator.c b/drivers/regulator/mt6358-regulator.c
-index ba42682e06f3..13cb6ac9a892 100644
---- a/drivers/regulator/mt6358-regulator.c
-+++ b/drivers/regulator/mt6358-regulator.c
-@@ -137,19 +137,19 @@ struct mt6358_regulator_info {
- 	.qi = BIT(15),							\
- }
- 
--static const struct regulator_linear_range buck_volt_range1[] = {
-+static const struct linear_range buck_volt_range1[] = {
- 	REGULATOR_LINEAR_RANGE(500000, 0, 0x7f, 6250),
- };
- 
--static const struct regulator_linear_range buck_volt_range2[] = {
-+static const struct linear_range buck_volt_range2[] = {
- 	REGULATOR_LINEAR_RANGE(500000, 0, 0x7f, 12500),
- };
- 
--static const struct regulator_linear_range buck_volt_range3[] = {
-+static const struct linear_range buck_volt_range3[] = {
- 	REGULATOR_LINEAR_RANGE(500000, 0, 0x3f, 50000),
- };
- 
--static const struct regulator_linear_range buck_volt_range4[] = {
-+static const struct linear_range buck_volt_range4[] = {
- 	REGULATOR_LINEAR_RANGE(1000000, 0, 0x7f, 12500),
- };
- 
-diff --git a/drivers/regulator/mt6380-regulator.c b/drivers/regulator/mt6380-regulator.c
-index b6aed090b5e0..9efd8710a6f3 100644
---- a/drivers/regulator/mt6380-regulator.c
-+++ b/drivers/regulator/mt6380-regulator.c
-@@ -152,15 +152,15 @@ struct mt6380_regulator_info {
- 	.modeset_mask = _modeset_mask,					\
- }
- 
--static const struct regulator_linear_range buck_volt_range1[] = {
-+static const struct linear_range buck_volt_range1[] = {
- 	REGULATOR_LINEAR_RANGE(600000, 0, 0xfe, 6250),
- };
- 
--static const struct regulator_linear_range buck_volt_range2[] = {
-+static const struct linear_range buck_volt_range2[] = {
- 	REGULATOR_LINEAR_RANGE(600000, 0, 0xfe, 6250),
- };
- 
--static const struct regulator_linear_range buck_volt_range3[] = {
-+static const struct linear_range buck_volt_range3[] = {
- 	REGULATOR_LINEAR_RANGE(1200000, 0, 0x3c, 25000),
- };
- 
-diff --git a/drivers/regulator/mt6397-regulator.c b/drivers/regulator/mt6397-regulator.c
-index fd9ed864a0c1..269c2a6028e8 100644
---- a/drivers/regulator/mt6397-regulator.c
-+++ b/drivers/regulator/mt6397-regulator.c
-@@ -102,15 +102,15 @@ struct mt6397_regulator_info {
- 	.qi = BIT(15),							\
- }
- 
--static const struct regulator_linear_range buck_volt_range1[] = {
-+static const struct linear_range buck_volt_range1[] = {
- 	REGULATOR_LINEAR_RANGE(700000, 0, 0x7f, 6250),
- };
- 
--static const struct regulator_linear_range buck_volt_range2[] = {
-+static const struct linear_range buck_volt_range2[] = {
- 	REGULATOR_LINEAR_RANGE(800000, 0, 0x7f, 6250),
- };
- 
--static const struct regulator_linear_range buck_volt_range3[] = {
-+static const struct linear_range buck_volt_range3[] = {
- 	REGULATOR_LINEAR_RANGE(1500000, 0, 0x1f, 20000),
- };
- 
-diff --git a/drivers/regulator/palmas-regulator.c b/drivers/regulator/palmas-regulator.c
-index 31325912d311..337dd614695e 100644
---- a/drivers/regulator/palmas-regulator.c
-+++ b/drivers/regulator/palmas-regulator.c
-@@ -22,14 +22,14 @@
- #include <linux/of_platform.h>
- #include <linux/regulator/of_regulator.h>
- 
--static const struct regulator_linear_range smps_low_ranges[] = {
-+static const struct linear_range smps_low_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(0, 0x0, 0x0, 0),
- 	REGULATOR_LINEAR_RANGE(500000, 0x1, 0x6, 0),
- 	REGULATOR_LINEAR_RANGE(510000, 0x7, 0x79, 10000),
- 	REGULATOR_LINEAR_RANGE(1650000, 0x7A, 0x7f, 0),
- };
- 
--static const struct regulator_linear_range smps_high_ranges[] = {
-+static const struct linear_range smps_high_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(0, 0x0, 0x0, 0),
- 	REGULATOR_LINEAR_RANGE(1000000, 0x1, 0x6, 0),
- 	REGULATOR_LINEAR_RANGE(1020000, 0x7, 0x79, 20000),
-diff --git a/drivers/regulator/qcom-rpmh-regulator.c b/drivers/regulator/qcom-rpmh-regulator.c
-index c86ad40015ce..953c7fba8d9d 100644
---- a/drivers/regulator/qcom-rpmh-regulator.c
-+++ b/drivers/regulator/qcom-rpmh-regulator.c
-@@ -86,7 +86,7 @@ enum rpmh_regulator_type {
- struct rpmh_vreg_hw_data {
- 	enum rpmh_regulator_type		regulator_type;
- 	const struct regulator_ops		*ops;
--	const struct regulator_linear_range	voltage_range;
-+	const struct linear_range	voltage_range;
- 	int					n_voltages;
- 	int					hpm_min_load_uA;
- 	const int				*pmic_mode_map;
-diff --git a/drivers/regulator/qcom_rpm-regulator.c b/drivers/regulator/qcom_rpm-regulator.c
-index 7407cd5a1b74..c15cceeebe45 100644
---- a/drivers/regulator/qcom_rpm-regulator.c
-+++ b/drivers/regulator/qcom_rpm-regulator.c
-@@ -148,41 +148,41 @@ static const struct rpm_reg_parts rpm8960_ncp_parts = {
- /*
-  * Physically available PMIC regulator voltage ranges
-  */
--static const struct regulator_linear_range pldo_ranges[] = {
-+static const struct linear_range pldo_ranges[] = {
- 	REGULATOR_LINEAR_RANGE( 750000,   0,  59, 12500),
- 	REGULATOR_LINEAR_RANGE(1500000,  60, 123, 25000),
- 	REGULATOR_LINEAR_RANGE(3100000, 124, 160, 50000),
- };
- 
--static const struct regulator_linear_range nldo_ranges[] = {
-+static const struct linear_range nldo_ranges[] = {
- 	REGULATOR_LINEAR_RANGE( 750000,   0,  63, 12500),
- };
- 
--static const struct regulator_linear_range nldo1200_ranges[] = {
-+static const struct linear_range nldo1200_ranges[] = {
- 	REGULATOR_LINEAR_RANGE( 375000,   0,  59,  6250),
- 	REGULATOR_LINEAR_RANGE( 750000,  60, 123, 12500),
- };
- 
--static const struct regulator_linear_range smps_ranges[] = {
-+static const struct linear_range smps_ranges[] = {
- 	REGULATOR_LINEAR_RANGE( 375000,   0,  29, 12500),
- 	REGULATOR_LINEAR_RANGE( 750000,  30,  89, 12500),
- 	REGULATOR_LINEAR_RANGE(1500000,  90, 153, 25000),
- };
- 
--static const struct regulator_linear_range ftsmps_ranges[] = {
-+static const struct linear_range ftsmps_ranges[] = {
- 	REGULATOR_LINEAR_RANGE( 350000,   0,   6, 50000),
- 	REGULATOR_LINEAR_RANGE( 700000,   7,  63, 12500),
- 	REGULATOR_LINEAR_RANGE(1500000,  64, 100, 50000),
- };
- 
--static const struct regulator_linear_range smb208_ranges[] = {
-+static const struct linear_range smb208_ranges[] = {
- 	REGULATOR_LINEAR_RANGE( 375000,   0,  29, 12500),
- 	REGULATOR_LINEAR_RANGE( 750000,  30,  89, 12500),
- 	REGULATOR_LINEAR_RANGE(1500000,  90, 153, 25000),
- 	REGULATOR_LINEAR_RANGE(3100000, 154, 234, 25000),
- };
- 
--static const struct regulator_linear_range ncp_ranges[] = {
-+static const struct linear_range ncp_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1500000,   0,  31, 50000),
- };
- 
-diff --git a/drivers/regulator/qcom_smd-regulator.c b/drivers/regulator/qcom_smd-regulator.c
-index fff8d5fdef6a..34b5c62265a9 100644
---- a/drivers/regulator/qcom_smd-regulator.c
-+++ b/drivers/regulator/qcom_smd-regulator.c
-@@ -199,7 +199,7 @@ static const struct regulator_ops rpm_bob_ops = {
- };
- 
- static const struct regulator_desc pma8084_hfsmps = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(375000,  0,  95, 12500),
- 		REGULATOR_LINEAR_RANGE(1550000, 96, 158, 25000),
- 	},
-@@ -209,7 +209,7 @@ static const struct regulator_desc pma8084_hfsmps = {
- };
- 
- static const struct regulator_desc pma8084_ftsmps = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(350000,  0, 184, 5000),
- 		REGULATOR_LINEAR_RANGE(1280000, 185, 261, 10000),
- 	},
-@@ -219,7 +219,7 @@ static const struct regulator_desc pma8084_ftsmps = {
- };
- 
- static const struct regulator_desc pma8084_pldo = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE( 750000,  0,  63, 12500),
- 		REGULATOR_LINEAR_RANGE(1550000, 64, 126, 25000),
- 		REGULATOR_LINEAR_RANGE(3100000, 127, 163, 50000),
-@@ -230,7 +230,7 @@ static const struct regulator_desc pma8084_pldo = {
- };
- 
- static const struct regulator_desc pma8084_nldo = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(750000, 0, 63, 12500),
- 	},
- 	.n_linear_ranges = 1,
-@@ -243,7 +243,7 @@ static const struct regulator_desc pma8084_switch = {
- };
- 
- static const struct regulator_desc pm8x41_hfsmps = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE( 375000,  0,  95, 12500),
- 		REGULATOR_LINEAR_RANGE(1575000, 96, 158, 25000),
- 	},
-@@ -253,7 +253,7 @@ static const struct regulator_desc pm8x41_hfsmps = {
- };
- 
- static const struct regulator_desc pm8841_ftsmps = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(350000,  0, 184, 5000),
- 		REGULATOR_LINEAR_RANGE(1280000, 185, 261, 10000),
- 	},
-@@ -263,7 +263,7 @@ static const struct regulator_desc pm8841_ftsmps = {
- };
- 
- static const struct regulator_desc pm8941_boost = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(4000000, 0, 30, 50000),
- 	},
- 	.n_linear_ranges = 1,
-@@ -272,7 +272,7 @@ static const struct regulator_desc pm8941_boost = {
- };
- 
- static const struct regulator_desc pm8941_pldo = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE( 750000,  0,  63, 12500),
- 		REGULATOR_LINEAR_RANGE(1550000, 64, 126, 25000),
- 		REGULATOR_LINEAR_RANGE(3100000, 127, 163, 50000),
-@@ -283,7 +283,7 @@ static const struct regulator_desc pm8941_pldo = {
- };
- 
- static const struct regulator_desc pm8941_nldo = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(750000, 0, 63, 12500),
- 	},
- 	.n_linear_ranges = 1,
-@@ -302,7 +302,7 @@ static const struct regulator_desc pm8941_switch = {
- };
- 
- static const struct regulator_desc pm8916_pldo = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(750000, 0, 208, 12500),
- 	},
- 	.n_linear_ranges = 1,
-@@ -311,7 +311,7 @@ static const struct regulator_desc pm8916_pldo = {
- };
- 
- static const struct regulator_desc pm8916_nldo = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(375000, 0, 93, 12500),
- 	},
- 	.n_linear_ranges = 1,
-@@ -320,7 +320,7 @@ static const struct regulator_desc pm8916_nldo = {
- };
- 
- static const struct regulator_desc pm8916_buck_lvo_smps = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(375000, 0, 95, 12500),
- 		REGULATOR_LINEAR_RANGE(750000, 96, 127, 25000),
- 	},
-@@ -330,7 +330,7 @@ static const struct regulator_desc pm8916_buck_lvo_smps = {
- };
- 
- static const struct regulator_desc pm8916_buck_hvo_smps = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(1550000, 0, 31, 25000),
- 	},
- 	.n_linear_ranges = 1,
-@@ -339,7 +339,7 @@ static const struct regulator_desc pm8916_buck_hvo_smps = {
- };
- 
- static const struct regulator_desc pm8950_hfsmps = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(375000, 0, 95, 12500),
- 		REGULATOR_LINEAR_RANGE(1550000, 96, 127, 25000),
- 	},
-@@ -349,7 +349,7 @@ static const struct regulator_desc pm8950_hfsmps = {
- };
- 
- static const struct regulator_desc pm8950_ftsmps2p5 = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(80000, 0, 255, 5000),
- 		REGULATOR_LINEAR_RANGE(160000, 256, 460, 10000),
- 	},
-@@ -359,7 +359,7 @@ static const struct regulator_desc pm8950_ftsmps2p5 = {
- };
- 
- static const struct regulator_desc pm8950_ult_nldo = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(375000, 0, 202, 12500),
- 	},
- 	.n_linear_ranges = 1,
-@@ -368,7 +368,7 @@ static const struct regulator_desc pm8950_ult_nldo = {
- };
- 
- static const struct regulator_desc pm8950_ult_pldo = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(1750000, 0, 127, 12500),
- 	},
- 	.n_linear_ranges = 1,
-@@ -377,7 +377,7 @@ static const struct regulator_desc pm8950_ult_pldo = {
- };
- 
- static const struct regulator_desc pm8950_pldo_lv = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(1500000, 0, 16, 25000),
- 	},
- 	.n_linear_ranges = 1,
-@@ -386,7 +386,7 @@ static const struct regulator_desc pm8950_pldo_lv = {
- };
- 
- static const struct regulator_desc pm8950_pldo = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(975000, 0, 164, 12500),
- 	},
- 	.n_linear_ranges = 1,
-@@ -396,7 +396,7 @@ static const struct regulator_desc pm8950_pldo = {
- 
- 
- static const struct regulator_desc pm8994_hfsmps = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE( 375000,  0,  95, 12500),
- 		REGULATOR_LINEAR_RANGE(1550000, 96, 158, 25000),
- 	},
-@@ -406,7 +406,7 @@ static const struct regulator_desc pm8994_hfsmps = {
- };
- 
- static const struct regulator_desc pm8994_ftsmps = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(350000,  0, 199, 5000),
- 		REGULATOR_LINEAR_RANGE(700000, 200, 349, 10000),
- 	},
-@@ -416,7 +416,7 @@ static const struct regulator_desc pm8994_ftsmps = {
- };
- 
- static const struct regulator_desc pm8994_nldo = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(750000, 0, 63, 12500),
- 	},
- 	.n_linear_ranges = 1,
-@@ -425,7 +425,7 @@ static const struct regulator_desc pm8994_nldo = {
- };
- 
- static const struct regulator_desc pm8994_pldo = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE( 750000,  0,  63, 12500),
- 		REGULATOR_LINEAR_RANGE(1550000, 64, 126, 25000),
- 		REGULATOR_LINEAR_RANGE(3100000, 127, 163, 50000),
-@@ -446,7 +446,7 @@ static const struct regulator_desc pm8994_lnldo = {
- };
- 
- static const struct regulator_desc pm8998_ftsmps = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(320000, 0, 258, 4000),
- 	},
- 	.n_linear_ranges = 1,
-@@ -455,7 +455,7 @@ static const struct regulator_desc pm8998_ftsmps = {
- };
- 
- static const struct regulator_desc pm8998_hfsmps = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(320000, 0, 215, 8000),
- 	},
- 	.n_linear_ranges = 1,
-@@ -464,7 +464,7 @@ static const struct regulator_desc pm8998_hfsmps = {
- };
- 
- static const struct regulator_desc pm8998_nldo = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(312000, 0, 127, 8000),
- 	},
- 	.n_linear_ranges = 1,
-@@ -473,7 +473,7 @@ static const struct regulator_desc pm8998_nldo = {
- };
- 
- static const struct regulator_desc pm8998_pldo = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(1664000, 0, 255, 8000),
- 	},
- 	.n_linear_ranges = 1,
-@@ -482,7 +482,7 @@ static const struct regulator_desc pm8998_pldo = {
- };
- 
- static const struct regulator_desc pm8998_pldo_lv = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(1256000, 0, 127, 8000),
- 	},
- 	.n_linear_ranges = 1,
-@@ -495,7 +495,7 @@ static const struct regulator_desc pm8998_switch = {
- };
- 
- static const struct regulator_desc pmi8998_bob = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(1824000, 0, 83, 32000),
- 	},
- 	.n_linear_ranges = 1,
-@@ -504,7 +504,7 @@ static const struct regulator_desc pmi8998_bob = {
- };
- 
- static const struct regulator_desc pms405_hfsmps3 = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(320000, 0, 215, 8000),
- 	},
- 	.n_linear_ranges = 1,
-@@ -513,7 +513,7 @@ static const struct regulator_desc pms405_hfsmps3 = {
- };
- 
- static const struct regulator_desc pms405_nldo300 = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(312000, 0, 127, 8000),
- 	},
- 	.n_linear_ranges = 1,
-@@ -522,7 +522,7 @@ static const struct regulator_desc pms405_nldo300 = {
- };
- 
- static const struct regulator_desc pms405_nldo1200 = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(312000, 0, 127, 8000),
- 	},
- 	.n_linear_ranges = 1,
-@@ -531,7 +531,7 @@ static const struct regulator_desc pms405_nldo1200 = {
- };
- 
- static const struct regulator_desc pms405_pldo50 = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(1664000, 0, 128, 16000),
- 	},
- 	.n_linear_ranges = 1,
-@@ -540,7 +540,7 @@ static const struct regulator_desc pms405_pldo50 = {
- };
- 
- static const struct regulator_desc pms405_pldo150 = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(1664000, 0, 128, 16000),
- 	},
- 	.n_linear_ranges = 1,
-@@ -549,7 +549,7 @@ static const struct regulator_desc pms405_pldo150 = {
- };
- 
- static const struct regulator_desc pms405_pldo600 = {
--	.linear_ranges = (struct regulator_linear_range[]) {
-+	.linear_ranges = (struct linear_range[]) {
- 		REGULATOR_LINEAR_RANGE(1256000, 0, 98, 8000),
- 	},
- 	.n_linear_ranges = 1,
-diff --git a/drivers/regulator/rk808-regulator.c b/drivers/regulator/rk808-regulator.c
-index 31f79fda3238..e926c1a85846 100644
---- a/drivers/regulator/rk808-regulator.c
-+++ b/drivers/regulator/rk808-regulator.c
-@@ -165,14 +165,14 @@ static const int rk808_buck_config_regs[] = {
- 	RK808_BUCK4_CONFIG_REG,
- };
- 
--static const struct regulator_linear_range rk808_ldo3_voltage_ranges[] = {
-+static const struct linear_range rk808_ldo3_voltage_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(800000, 0, 13, 100000),
- 	REGULATOR_LINEAR_RANGE(2500000, 15, 15, 0),
- };
- 
- #define RK809_BUCK5_SEL_CNT		(8)
- 
--static const struct regulator_linear_range rk809_buck5_voltage_ranges[] = {
-+static const struct linear_range rk809_buck5_voltage_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1500000, 0, 0, 0),
- 	REGULATOR_LINEAR_RANGE(1800000, 1, 3, 200000),
- 	REGULATOR_LINEAR_RANGE(2800000, 4, 5, 200000),
-@@ -201,14 +201,14 @@ static const struct regulator_linear_range rk809_buck5_voltage_ranges[] = {
- #define RK817_BUCK1_SEL_CNT (RK817_BUCK1_SEL0 + RK817_BUCK1_SEL1 + 1)
- #define RK817_BUCK3_SEL_CNT (RK817_BUCK1_SEL0 + RK817_BUCK3_SEL1 + 1)
- 
--static const struct regulator_linear_range rk817_buck1_voltage_ranges[] = {
-+static const struct linear_range rk817_buck1_voltage_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(RK817_BUCK1_MIN0, 0,
- 			       RK817_BUCK1_SEL0, RK817_BUCK1_STP0),
- 	REGULATOR_LINEAR_RANGE(RK817_BUCK1_MIN1, RK817_BUCK1_SEL0 + 1,
- 			       RK817_BUCK1_SEL_CNT, RK817_BUCK1_STP1),
- };
- 
--static const struct regulator_linear_range rk817_buck3_voltage_ranges[] = {
-+static const struct linear_range rk817_buck3_voltage_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(RK817_BUCK1_MIN0, 0,
- 			       RK817_BUCK1_SEL0, RK817_BUCK1_STP0),
- 	REGULATOR_LINEAR_RANGE(RK817_BUCK1_MIN1, RK817_BUCK1_SEL0 + 1,
-@@ -665,7 +665,7 @@ static const struct regulator_ops rk808_switch_ops = {
- 	.set_suspend_disable	= rk808_set_suspend_disable,
- };
- 
--static const struct regulator_linear_range rk805_buck_1_2_voltage_ranges[] = {
-+static const struct linear_range rk805_buck_1_2_voltage_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(712500, 0, 59, 12500),
- 	REGULATOR_LINEAR_RANGE(1800000, 60, 62, 200000),
- 	REGULATOR_LINEAR_RANGE(2300000, 63, 63, 0),
-diff --git a/drivers/regulator/s2mps11.c b/drivers/regulator/s2mps11.c
-index 23d288278957..33cf84bce05a 100644
---- a/drivers/regulator/s2mps11.c
-+++ b/drivers/regulator/s2mps11.c
-@@ -749,37 +749,37 @@ static const struct regulator_ops s2mps15_reg_buck_ops = {
- }
- 
- /* voltage range for s2mps15 LDO 3, 5, 15, 16, 18, 20, 23 and 27 */
--static const struct regulator_linear_range s2mps15_ldo_voltage_ranges1[] = {
-+static const struct linear_range s2mps15_ldo_voltage_ranges1[] = {
- 	REGULATOR_LINEAR_RANGE(1000000, 0xc, 0x38, 25000),
- };
- 
- /* voltage range for s2mps15 LDO 2, 6, 14, 17, 19, 21, 24 and 25 */
--static const struct regulator_linear_range s2mps15_ldo_voltage_ranges2[] = {
-+static const struct linear_range s2mps15_ldo_voltage_ranges2[] = {
- 	REGULATOR_LINEAR_RANGE(1800000, 0x0, 0x3f, 25000),
- };
- 
- /* voltage range for s2mps15 LDO 4, 11, 12, 13, 22 and 26 */
--static const struct regulator_linear_range s2mps15_ldo_voltage_ranges3[] = {
-+static const struct linear_range s2mps15_ldo_voltage_ranges3[] = {
- 	REGULATOR_LINEAR_RANGE(700000, 0x0, 0x34, 12500),
- };
- 
- /* voltage range for s2mps15 LDO 7, 8, 9 and 10 */
--static const struct regulator_linear_range s2mps15_ldo_voltage_ranges4[] = {
-+static const struct linear_range s2mps15_ldo_voltage_ranges4[] = {
- 	REGULATOR_LINEAR_RANGE(700000, 0x10, 0x20, 25000),
- };
- 
- /* voltage range for s2mps15 LDO 1 */
--static const struct regulator_linear_range s2mps15_ldo_voltage_ranges5[] = {
-+static const struct linear_range s2mps15_ldo_voltage_ranges5[] = {
- 	REGULATOR_LINEAR_RANGE(500000, 0x0, 0x20, 12500),
- };
- 
- /* voltage range for s2mps15 BUCK 1, 2, 3, 4, 5, 6 and 7 */
--static const struct regulator_linear_range s2mps15_buck_voltage_ranges1[] = {
-+static const struct linear_range s2mps15_buck_voltage_ranges1[] = {
- 	REGULATOR_LINEAR_RANGE(500000, 0x20, 0xc0, 6250),
- };
- 
- /* voltage range for s2mps15 BUCK 8, 9 and 10 */
--static const struct regulator_linear_range s2mps15_buck_voltage_ranges2[] = {
-+static const struct linear_range s2mps15_buck_voltage_ranges2[] = {
- 	REGULATOR_LINEAR_RANGE(1000000, 0x20, 0x78, 12500),
- };
- 
-diff --git a/drivers/regulator/sky81452-regulator.c b/drivers/regulator/sky81452-regulator.c
-index 177dede82a61..37658affe072 100644
---- a/drivers/regulator/sky81452-regulator.c
-+++ b/drivers/regulator/sky81452-regulator.c
-@@ -32,7 +32,7 @@ static const struct regulator_ops sky81452_reg_ops = {
- 	.is_enabled = regulator_is_enabled_regmap,
- };
- 
--static const struct regulator_linear_range sky81452_reg_ranges[] = {
-+static const struct linear_range sky81452_reg_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(4500000, 0, 14, 250000),
- 	REGULATOR_LINEAR_RANGE(9000000, 15, 31, 1000000),
- };
-diff --git a/drivers/regulator/stpmic1_regulator.c b/drivers/regulator/stpmic1_regulator.c
-index f3d7d007ecbb..adc9973d1b2f 100644
---- a/drivers/regulator/stpmic1_regulator.c
-+++ b/drivers/regulator/stpmic1_regulator.c
-@@ -57,13 +57,13 @@ enum {
- /* Ramp delay worst case is (2250uV/uS) */
- #define PMIC_RAMP_DELAY 2200
- 
--static const struct regulator_linear_range buck1_ranges[] = {
-+static const struct linear_range buck1_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(725000, 0, 4, 0),
- 	REGULATOR_LINEAR_RANGE(725000, 5, 36, 25000),
- 	REGULATOR_LINEAR_RANGE(1500000, 37, 63, 0),
- };
- 
--static const struct regulator_linear_range buck2_ranges[] = {
-+static const struct linear_range buck2_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1000000, 0, 17, 0),
- 	REGULATOR_LINEAR_RANGE(1050000, 18, 19, 0),
- 	REGULATOR_LINEAR_RANGE(1100000, 20, 21, 0),
-@@ -77,7 +77,7 @@ static const struct regulator_linear_range buck2_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1500000, 36, 63, 0),
- };
- 
--static const struct regulator_linear_range buck3_ranges[] = {
-+static const struct linear_range buck3_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1000000, 0, 19, 0),
- 	REGULATOR_LINEAR_RANGE(1100000, 20, 23, 0),
- 	REGULATOR_LINEAR_RANGE(1200000, 24, 27, 0),
-@@ -87,7 +87,7 @@ static const struct regulator_linear_range buck3_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(3400000, 56, 63, 0),
- };
- 
--static const struct regulator_linear_range buck4_ranges[] = {
-+static const struct linear_range buck4_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(600000, 0, 27, 25000),
- 	REGULATOR_LINEAR_RANGE(1300000, 28, 29, 0),
- 	REGULATOR_LINEAR_RANGE(1350000, 30, 31, 0),
-@@ -97,19 +97,19 @@ static const struct regulator_linear_range buck4_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(3900000, 61, 63, 0),
- };
- 
--static const struct regulator_linear_range ldo1_ranges[] = {
-+static const struct linear_range ldo1_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1700000, 0, 7, 0),
- 	REGULATOR_LINEAR_RANGE(1700000, 8, 24, 100000),
- 	REGULATOR_LINEAR_RANGE(3300000, 25, 31, 0),
- };
- 
--static const struct regulator_linear_range ldo2_ranges[] = {
-+static const struct linear_range ldo2_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1700000, 0, 7, 0),
- 	REGULATOR_LINEAR_RANGE(1700000, 8, 24, 100000),
- 	REGULATOR_LINEAR_RANGE(3300000, 25, 30, 0),
- };
- 
--static const struct regulator_linear_range ldo3_ranges[] = {
-+static const struct linear_range ldo3_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1700000, 0, 7, 0),
- 	REGULATOR_LINEAR_RANGE(1700000, 8, 24, 100000),
- 	REGULATOR_LINEAR_RANGE(3300000, 25, 30, 0),
-@@ -117,13 +117,13 @@ static const struct regulator_linear_range ldo3_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(500000, 31, 31, 0),
- };
- 
--static const struct regulator_linear_range ldo5_ranges[] = {
-+static const struct linear_range ldo5_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1700000, 0, 7, 0),
- 	REGULATOR_LINEAR_RANGE(1700000, 8, 30, 100000),
- 	REGULATOR_LINEAR_RANGE(3900000, 31, 31, 0),
- };
- 
--static const struct regulator_linear_range ldo6_ranges[] = {
-+static const struct linear_range ldo6_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(900000, 0, 24, 100000),
- 	REGULATOR_LINEAR_RANGE(3300000, 25, 31, 0),
- };
-diff --git a/drivers/regulator/tps65086-regulator.c b/drivers/regulator/tps65086-regulator.c
-index 5a5e9b5bf4be..9910e949373c 100644
---- a/drivers/regulator/tps65086-regulator.c
-+++ b/drivers/regulator/tps65086-regulator.c
-@@ -71,23 +71,23 @@ struct tps65086_regulator {
- 	unsigned int decay_mask;
- };
- 
--static const struct regulator_linear_range tps65086_10mv_ranges[] = {
-+static const struct linear_range tps65086_10mv_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(0, 0x0, 0x0, 0),
- 	REGULATOR_LINEAR_RANGE(410000, 0x1, 0x7F, 10000),
- };
- 
--static const struct regulator_linear_range tps65086_buck126_25mv_ranges[] = {
-+static const struct linear_range tps65086_buck126_25mv_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(0, 0x0, 0x0, 0),
- 	REGULATOR_LINEAR_RANGE(1000000, 0x1, 0x18, 0),
- 	REGULATOR_LINEAR_RANGE(1025000, 0x19, 0x7F, 25000),
- };
- 
--static const struct regulator_linear_range tps65086_buck345_25mv_ranges[] = {
-+static const struct linear_range tps65086_buck345_25mv_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(0, 0x0, 0x0, 0),
- 	REGULATOR_LINEAR_RANGE(425000, 0x1, 0x7F, 25000),
- };
- 
--static const struct regulator_linear_range tps65086_ldoa1_ranges[] = {
-+static const struct linear_range tps65086_ldoa1_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1350000, 0x0, 0x0, 0),
- 	REGULATOR_LINEAR_RANGE(1500000, 0x1, 0x7, 100000),
- 	REGULATOR_LINEAR_RANGE(2300000, 0x8, 0xB, 100000),
-@@ -95,7 +95,7 @@ static const struct regulator_linear_range tps65086_ldoa1_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(3300000, 0xE, 0xE, 0),
- };
- 
--static const struct regulator_linear_range tps65086_ldoa23_ranges[] = {
-+static const struct linear_range tps65086_ldoa23_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(700000, 0x0, 0xD, 50000),
- 	REGULATOR_LINEAR_RANGE(1400000, 0xE, 0xF, 100000),
- };
-diff --git a/drivers/regulator/tps65217-regulator.c b/drivers/regulator/tps65217-regulator.c
-index 67ba78da77ec..d27dbbafcf72 100644
---- a/drivers/regulator/tps65217-regulator.c
-+++ b/drivers/regulator/tps65217-regulator.c
-@@ -56,14 +56,14 @@ static const unsigned int LDO1_VSEL_table[] = {
- 	2800000, 3000000, 3100000, 3300000,
- };
- 
--static const struct regulator_linear_range tps65217_uv1_ranges[] = {
-+static const struct linear_range tps65217_uv1_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(900000, 0, 24, 25000),
- 	REGULATOR_LINEAR_RANGE(1550000, 25, 52, 50000),
- 	REGULATOR_LINEAR_RANGE(3000000, 53, 55, 100000),
- 	REGULATOR_LINEAR_RANGE(3300000, 56, 63, 0),
- };
- 
--static const struct regulator_linear_range tps65217_uv2_ranges[] = {
-+static const struct linear_range tps65217_uv2_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1500000, 0, 8, 50000),
- 	REGULATOR_LINEAR_RANGE(2000000, 9, 13, 100000),
- 	REGULATOR_LINEAR_RANGE(2450000, 14, 31, 50000),
-diff --git a/drivers/regulator/tps65218-regulator.c b/drivers/regulator/tps65218-regulator.c
-index b72035610013..05d13f807918 100644
---- a/drivers/regulator/tps65218-regulator.c
-+++ b/drivers/regulator/tps65218-regulator.c
-@@ -56,17 +56,17 @@
- 		.bypass_mask	= _sm,				\
- 	}							\
- 
--static const struct regulator_linear_range dcdc1_dcdc2_ranges[] = {
-+static const struct linear_range dcdc1_dcdc2_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(850000, 0x0, 0x32, 10000),
- 	REGULATOR_LINEAR_RANGE(1375000, 0x33, 0x3f, 25000),
- };
- 
--static const struct regulator_linear_range ldo1_dcdc3_ranges[] = {
-+static const struct linear_range ldo1_dcdc3_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(900000, 0x0, 0x1a, 25000),
- 	REGULATOR_LINEAR_RANGE(1600000, 0x1b, 0x3f, 50000),
- };
- 
--static const struct regulator_linear_range dcdc4_ranges[] = {
-+static const struct linear_range dcdc4_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1175000, 0x0, 0xf, 25000),
- 	REGULATOR_LINEAR_RANGE(1600000, 0x10, 0x34, 50000),
- };
-diff --git a/drivers/regulator/tps65912-regulator.c b/drivers/regulator/tps65912-regulator.c
-index 276faeddc370..15c79931ea89 100644
---- a/drivers/regulator/tps65912-regulator.c
-+++ b/drivers/regulator/tps65912-regulator.c
-@@ -46,11 +46,11 @@ enum tps65912_regulators { DCDC1, DCDC2, DCDC3, DCDC4, LDO1, LDO2, LDO3,
- 		.n_linear_ranges	= ARRAY_SIZE(_lr),		\
- 	}
- 
--static const struct regulator_linear_range tps65912_dcdc_ranges[] = {
-+static const struct linear_range tps65912_dcdc_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(500000, 0x0, 0x3f, 50000),
- };
- 
--static const struct regulator_linear_range tps65912_ldo_ranges[] = {
-+static const struct linear_range tps65912_ldo_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(800000, 0x0, 0x20, 25000),
- 	REGULATOR_LINEAR_RANGE(1650000, 0x21, 0x3c, 50000),
- 	REGULATOR_LINEAR_RANGE(3100000, 0x3d, 0x3f, 100000),
-diff --git a/drivers/regulator/twl-regulator.c b/drivers/regulator/twl-regulator.c
-index 866b4dd01da9..4a51cfea45ac 100644
---- a/drivers/regulator/twl-regulator.c
-+++ b/drivers/regulator/twl-regulator.c
-@@ -360,12 +360,12 @@ static const u16 VINTANA2_VSEL_table[] = {
- };
- 
- /* 600mV to 1450mV in 12.5 mV steps */
--static const struct regulator_linear_range VDD1_ranges[] = {
-+static const struct linear_range VDD1_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(600000, 0, 68, 12500)
- };
- 
- /* 600mV to 1450mV in 12.5 mV steps, everything above = 1500mV */
--static const struct regulator_linear_range VDD2_ranges[] = {
-+static const struct linear_range VDD2_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(600000, 0, 68, 12500),
- 	REGULATOR_LINEAR_RANGE(1500000, 69, 69, 12500)
- };
-diff --git a/drivers/regulator/twl6030-regulator.c b/drivers/regulator/twl6030-regulator.c
-index b8100c3cedad..f7db250a7583 100644
---- a/drivers/regulator/twl6030-regulator.c
-+++ b/drivers/regulator/twl6030-regulator.c
-@@ -495,7 +495,7 @@ static const struct regulator_ops twlsmps_ops = {
- };
- 
- /*----------------------------------------------------------------------*/
--static const struct regulator_linear_range twl6030ldo_linear_range[] = {
-+static const struct linear_range twl6030ldo_linear_range[] = {
- 	REGULATOR_LINEAR_RANGE(0, 0, 0, 0),
- 	REGULATOR_LINEAR_RANGE(1000000, 1, 24, 100000),
- 	REGULATOR_LINEAR_RANGE(2750000, 31, 31, 0),
-diff --git a/drivers/regulator/wm831x-dcdc.c b/drivers/regulator/wm831x-dcdc.c
-index 018dbbd96771..ad2203d11a88 100644
---- a/drivers/regulator/wm831x-dcdc.c
-+++ b/drivers/regulator/wm831x-dcdc.c
-@@ -204,7 +204,7 @@ static irqreturn_t wm831x_dcdc_oc_irq(int irq, void *data)
-  * BUCKV specifics
-  */
- 
--static const struct regulator_linear_range wm831x_buckv_ranges[] = {
-+static const struct linear_range wm831x_buckv_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(600000, 0, 0x7, 0),
- 	REGULATOR_LINEAR_RANGE(600000, 0x8, 0x68, 12500),
- };
-diff --git a/drivers/regulator/wm831x-ldo.c b/drivers/regulator/wm831x-ldo.c
-index 56754686c982..7b6cf4810cb7 100644
---- a/drivers/regulator/wm831x-ldo.c
-+++ b/drivers/regulator/wm831x-ldo.c
-@@ -59,7 +59,7 @@ static irqreturn_t wm831x_ldo_uv_irq(int irq, void *data)
-  * General purpose LDOs
-  */
- 
--static const struct regulator_linear_range wm831x_gp_ldo_ranges[] = {
-+static const struct linear_range wm831x_gp_ldo_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(900000, 0, 14, 50000),
- 	REGULATOR_LINEAR_RANGE(1700000, 15, 31, 100000),
- };
-@@ -312,7 +312,7 @@ static struct platform_driver wm831x_gp_ldo_driver = {
-  * Analogue LDOs
-  */
- 
--static const struct regulator_linear_range wm831x_aldo_ranges[] = {
-+static const struct linear_range wm831x_aldo_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(1000000, 0, 12, 50000),
- 	REGULATOR_LINEAR_RANGE(1700000, 13, 31, 100000),
- };
-diff --git a/drivers/regulator/wm8350-regulator.c b/drivers/regulator/wm8350-regulator.c
-index 56d6168a888d..ae5f0e7fce8b 100644
---- a/drivers/regulator/wm8350-regulator.c
-+++ b/drivers/regulator/wm8350-regulator.c
-@@ -470,7 +470,7 @@ static int wm8350_dcdc_set_suspend_mode(struct regulator_dev *rdev,
- 	return 0;
- }
- 
--static const struct regulator_linear_range wm8350_ldo_ranges[] = {
-+static const struct linear_range wm8350_ldo_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(900000, 0, 15, 50000),
- 	REGULATOR_LINEAR_RANGE(1800000, 16, 31, 100000),
- };
-diff --git a/drivers/regulator/wm8400-regulator.c b/drivers/regulator/wm8400-regulator.c
-index 6f331b51e479..4cb1fbb59722 100644
---- a/drivers/regulator/wm8400-regulator.c
-+++ b/drivers/regulator/wm8400-regulator.c
-@@ -13,7 +13,7 @@
- #include <linux/regulator/driver.h>
- #include <linux/mfd/wm8400-private.h>
- 
--static const struct regulator_linear_range wm8400_ldo_ranges[] = {
-+static const struct linear_range wm8400_ldo_ranges[] = {
- 	REGULATOR_LINEAR_RANGE(900000, 0, 14, 50000),
- 	REGULATOR_LINEAR_RANGE(1700000, 15, 31, 100000),
- };
-diff --git a/include/linux/regulator/driver.h b/include/linux/regulator/driver.h
-index 9a911bb5fb61..7a3982da8868 100644
---- a/include/linux/regulator/driver.h
-+++ b/include/linux/regulator/driver.h
-@@ -13,6 +13,7 @@
- #define __LINUX_REGULATOR_DRIVER_H_
- 
- #include <linux/device.h>
-+#include <linux/linear_range.h>
- #include <linux/notifier.h>
- #include <linux/regulator/consumer.h>
- #include <linux/ww_mutex.h>
-@@ -39,31 +40,13 @@ enum regulator_status {
- 	REGULATOR_STATUS_UNDEFINED,
- };
- 
--/**
-- * struct regulator_linear_range - specify linear voltage ranges
-- *
-- * Specify a range of voltages for regulator_map_linear_range() and
-- * regulator_list_linear_range().
-- *
-- * @min_uV:  Lowest voltage in range
-- * @min_sel: Lowest selector for range
-- * @max_sel: Highest selector for range
-- * @uV_step: Step size
-- */
--struct regulator_linear_range {
--	unsigned int min_uV;
--	unsigned int min_sel;
--	unsigned int max_sel;
--	unsigned int uV_step;
--};
--
--/* Initialize struct regulator_linear_range */
-+/* Initialize struct linear_range for regulators */
- #define REGULATOR_LINEAR_RANGE(_min_uV, _min_sel, _max_sel, _step_uV)	\
- {									\
--	.min_uV		= _min_uV,					\
-+	.min		= _min_uV,					\
- 	.min_sel	= _min_sel,					\
- 	.max_sel	= _max_sel,					\
--	.uV_step	= _step_uV,					\
-+	.step		= _step_uV,					\
- }
- 
- /**
-@@ -348,7 +331,7 @@ struct regulator_desc {
- 	unsigned int ramp_delay;
- 	int min_dropout_uV;
- 
--	const struct regulator_linear_range *linear_ranges;
-+	const struct linear_range *linear_ranges;
- 	const unsigned int *linear_range_selectors;
- 
- 	int n_linear_ranges;
--- 
-2.21.0
+--De4ctwLgWXvPGwhVVivy7i6RNXKKkyzAV
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+Hi Sam
+
+Am 13.03.20 um 21:17 schrieb Sam Ravnborg:
+> Thomas Zimmermann had made a nice patch-set that introduced
+> drm_simple_encoder_init() which is already present in drm-misc-next.
+>=20
+> While looking at this it was suddenly obvious to me that
+> this was functionalty that really should be included in drm_encoder.c
+> The case where the core could handle the callback is pretty
+> common and not part of the simple pipe line.
+
+The original patchset put the new function into the core implementation
+and was shot down for this. So it ended up in the simple-KMS helpers.
+
+>=20
+> So after some dialog on dri-devel the conclusion was to go for
+> a change like this:
+>=20
+>     drm_encoder_init_funcs() for all users that specified a
+>     drm_encoder_funcs to extend the functionality.
+>=20
+>     drm_encoder_init() for all users that did not
+>     need to extend the basic functionality with
+>     drm_encoder_funcs.
+
+TBH, my take-away was to keep the core as it is ans maybe rename
+drm_simple_encoder_init() to some better name.
+
+>=20
+> A similar approach with a _funcs() prefix is used elsewhere in drm/
+
+IMHO, there are a few things to consider:
+
+=46rom grepping, I could only find drm_gem_fb_create_with_funcs(). And th=
+e
+proposed change would make the encoder's function name inconsistent with
+drm_connector_init(), drm_crtc_init(), and others. Finally,
+drm_connector_init_with_ddc() was criticiced for being mid-layerish and
+could lead to many combinations of postfixes (e.g., _with_funcs(),
+with_ddc(), _with_ddc_and_funcs(), etc).
+
+If there is consent that the drm_simple_encoder_init() should go away,
+I'd propose to change drm_encoder_init(). It could use a default
+implementation for funcs, if no funcs argument has been specified. We
+already have such behavior for some GEM callbacks. In later patches,
+drm_gem_fb_create_with_funcs() and drm_connector_init_with_ddc() could
+go away as well.
+
+Best regards
+Thomas
 
 
--- 
-Matti Vaittinen, Linux device drivers
-ROHM Semiconductors, Finland SWDC
-Kiviharjunlenkki 1E
-90220 OULU
-FINLAND
+>=20
+> This required a rename of the existing users, and
+> a follow-up patch that moves drm_simple_encoder_init()
+> to drm_encoder.c
+>=20
+> Patches 3 in this set demonstrate the use of drm_encoder_init().
+> There are many more drivers that can be converted as Thomas
+> has already demonstrated.
+>=20
+> This is all based on work done by Thomas Zimmermann,
+> I just wanted to implement my suggestion so
+> we could select the best way forward.
+>=20
+> Note: Daniel Vetter has hinted the approach implemented
+> here smelled like middle-layer.
+> IMO this is not so, it is just a way to handle cleanup
+> for the simple cases.
+>=20
+> 	Sam
+>=20
+>=20
+> Sam Ravnborg (3):
+>       drm: drm_encoder_init() =3D> drm_encoder_init_funcs()
+>       drm: drm_simple_encoder_init() =3D> drm_encoder_init()
+>       drm/atmel-hlcdc: Use drm_encoder_init()
+>=20
+>  drivers/gpu/drm/amd/amdgpu/dce_v10_0.c             | 28 ++++++-------
+>  drivers/gpu/drm/amd/amdgpu/dce_v11_0.c             | 28 ++++++-------
+>  drivers/gpu/drm/amd/amdgpu/dce_v6_0.c              | 28 ++++++-------
+>  drivers/gpu/drm/amd/amdgpu/dce_v8_0.c              | 28 ++++++-------
+>  drivers/gpu/drm/amd/amdgpu/dce_virtual.c           |  4 +-
+>  drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c  | 10 ++---
+>  .../amd/display/amdgpu_dm/amdgpu_dm_mst_types.c    | 10 ++---
+>  drivers/gpu/drm/arc/arcpgu_hdmi.c                  |  4 +-
+>  drivers/gpu/drm/arc/arcpgu_sim.c                   |  4 +-
+>  drivers/gpu/drm/ast/ast_mode.c                     |  3 +-
+>  drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c   |  8 +---
+>  drivers/gpu/drm/drm_encoder.c                      | 49 ++++++++++++++=
++++++---
+>  drivers/gpu/drm/drm_encoder_slave.c                |  2 +-
+>  drivers/gpu/drm/drm_simple_kms_helper.c            | 45 +-------------=
+------
+>  drivers/gpu/drm/drm_writeback.c                    |  6 +--
+>  drivers/gpu/drm/exynos/exynos_dp.c                 |  4 +-
+>  drivers/gpu/drm/exynos/exynos_drm_dpi.c            |  4 +-
+>  drivers/gpu/drm/exynos/exynos_drm_dsi.c            |  4 +-
+>  drivers/gpu/drm/exynos/exynos_drm_vidi.c           |  4 +-
+>  drivers/gpu/drm/exynos/exynos_hdmi.c               |  4 +-
+>  drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_rgb.c          |  4 +-
+>  drivers/gpu/drm/gma500/cdv_intel_crt.c             |  5 ++-
+>  drivers/gpu/drm/gma500/cdv_intel_dp.c              |  4 +-
+>  drivers/gpu/drm/gma500/cdv_intel_hdmi.c            |  4 +-
+>  drivers/gpu/drm/gma500/cdv_intel_lvds.c            |  6 +--
+>  drivers/gpu/drm/gma500/mdfld_dsi_dpi.c             |  7 ++--
+>  drivers/gpu/drm/gma500/oaktrail_hdmi.c             |  6 +--
+>  drivers/gpu/drm/gma500/oaktrail_lvds.c             |  4 +-
+>  drivers/gpu/drm/gma500/psb_intel_lvds.c            |  6 +--
+>  drivers/gpu/drm/gma500/psb_intel_sdvo.c            |  4 +-
+>  drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_vdac.c   |  4 +-
+>  drivers/gpu/drm/hisilicon/kirin/dw_drm_dsi.c       |  4 +-
+>  drivers/gpu/drm/i2c/tda998x_drv.c                  |  5 ++-
+>  drivers/gpu/drm/i915/display/icl_dsi.c             |  4 +-
+>  drivers/gpu/drm/i915/display/intel_crt.c           |  5 ++-
+>  drivers/gpu/drm/i915/display/intel_ddi.c           |  6 ++-
+>  drivers/gpu/drm/i915/display/intel_dp.c            |  6 +--
+>  drivers/gpu/drm/i915/display/intel_dp_mst.c        |  6 ++-
+>  drivers/gpu/drm/i915/display/intel_dvo.c           |  6 +--
+>  drivers/gpu/drm/i915/display/intel_hdmi.c          |  6 +--
+>  drivers/gpu/drm/i915/display/intel_lvds.c          |  4 +-
+>  drivers/gpu/drm/i915/display/intel_sdvo.c          |  6 +--
+>  drivers/gpu/drm/i915/display/intel_tv.c            |  4 +-
+>  drivers/gpu/drm/i915/display/vlv_dsi.c             |  5 ++-
+>  drivers/gpu/drm/imx/dw_hdmi-imx.c                  |  4 +-
+>  drivers/gpu/drm/imx/imx-ldb.c                      |  4 +-
+>  drivers/gpu/drm/imx/imx-tve.c                      |  4 +-
+>  drivers/gpu/drm/imx/parallel-display.c             |  4 +-
+>  drivers/gpu/drm/ingenic/ingenic-drm.c              |  5 ++-
+>  drivers/gpu/drm/mediatek/mtk_dpi.c                 |  5 ++-
+>  drivers/gpu/drm/mediatek/mtk_dsi.c                 |  4 +-
+>  drivers/gpu/drm/meson/meson_dw_hdmi.c              |  5 ++-
+>  drivers/gpu/drm/meson/meson_venc_cvbs.c            |  5 ++-
+>  drivers/gpu/drm/mgag200/mgag200_mode.c             |  7 +---
+>  drivers/gpu/drm/msm/disp/dpu1/dpu_encoder.c        |  4 +-
+>  drivers/gpu/drm/msm/disp/mdp4/mdp4_dsi_encoder.c   |  4 +-
+>  drivers/gpu/drm/msm/disp/mdp4/mdp4_dtv_encoder.c   |  4 +-
+>  drivers/gpu/drm/msm/disp/mdp4/mdp4_lcdc_encoder.c  |  4 +-
+>  drivers/gpu/drm/msm/disp/mdp5/mdp5_encoder.c       |  3 +-
+>  drivers/gpu/drm/nouveau/dispnv04/dac.c             |  4 +-
+>  drivers/gpu/drm/nouveau/dispnv04/dfp.c             |  3 +-
+>  drivers/gpu/drm/nouveau/dispnv04/tvnv04.c          |  4 +-
+>  drivers/gpu/drm/nouveau/dispnv04/tvnv17.c          |  4 +-
+>  drivers/gpu/drm/nouveau/dispnv50/disp.c            | 16 +++----
+>  drivers/gpu/drm/omapdrm/omap_encoder.c             |  4 +-
+>  drivers/gpu/drm/qxl/qxl_display.c                  |  7 +---
+>  drivers/gpu/drm/radeon/atombios_encoders.c         | 40 +++++++++-----=
+----
+>  drivers/gpu/drm/radeon/radeon_dp_mst.c             |  4 +-
+>  drivers/gpu/drm/radeon/radeon_legacy_encoders.c    | 20 ++++-----
+>  drivers/gpu/drm/rcar-du/rcar_du_encoder.c          |  4 +-
+>  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    |  5 ++-
+>  drivers/gpu/drm/rockchip/cdn-dp-core.c             |  4 +-
+>  drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c    |  5 ++-
+>  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c        |  4 +-
+>  drivers/gpu/drm/rockchip/inno_hdmi.c               |  4 +-
+>  drivers/gpu/drm/rockchip/rk3066_hdmi.c             |  4 +-
+>  drivers/gpu/drm/rockchip/rockchip_lvds.c           |  5 ++-
+>  drivers/gpu/drm/rockchip/rockchip_rgb.c            |  5 ++-
+>  drivers/gpu/drm/shmobile/shmob_drm_crtc.c          |  4 +-
+>  drivers/gpu/drm/sti/sti_tvout.c                    | 16 +++----
+>  drivers/gpu/drm/stm/ltdc.c                         |  4 +-
+>  drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c             | 10 ++---
+>  drivers/gpu/drm/sun4i/sun4i_lvds.c                 | 10 ++---
+>  drivers/gpu/drm/sun4i/sun4i_rgb.c                  | 10 ++---
+>  drivers/gpu/drm/sun4i/sun4i_tv.c                   | 10 ++---
+>  drivers/gpu/drm/sun4i/sun6i_mipi_dsi.c             | 10 ++---
+>  drivers/gpu/drm/sun4i/sun8i_dw_hdmi.c              |  4 +-
+>  drivers/gpu/drm/tegra/dsi.c                        |  6 +--
+>  drivers/gpu/drm/tegra/hdmi.c                       |  5 ++-
+>  drivers/gpu/drm/tegra/rgb.c                        |  4 +-
+>  drivers/gpu/drm/tegra/sor.c                        |  4 +-
+>  drivers/gpu/drm/tidss/tidss_encoder.c              |  4 +-
+>  drivers/gpu/drm/tilcdc/tilcdc_external.c           |  8 ++--
+>  drivers/gpu/drm/tilcdc/tilcdc_panel.c              |  4 +-
+>  drivers/gpu/drm/vboxvideo/vbox_mode.c              |  4 +-
+>  drivers/gpu/drm/vc4/vc4_dpi.c                      |  4 +-
+>  drivers/gpu/drm/vc4/vc4_dsi.c                      |  4 +-
+>  drivers/gpu/drm/vc4/vc4_hdmi.c                     |  4 +-
+>  drivers/gpu/drm/vc4/vc4_vec.c                      |  4 +-
+>  drivers/gpu/drm/virtio/virtgpu_display.c           |  4 +-
+>  drivers/gpu/drm/vkms/vkms_output.c                 |  4 +-
+>  drivers/gpu/drm/vmwgfx/vmwgfx_ldu.c                |  4 +-
+>  drivers/gpu/drm/vmwgfx/vmwgfx_scrn.c               |  5 ++-
+>  drivers/gpu/drm/vmwgfx/vmwgfx_stdu.c               |  4 +-
+>  drivers/gpu/drm/zte/zx_hdmi.c                      |  4 +-
+>  drivers/gpu/drm/zte/zx_tvenc.c                     |  4 +-
+>  drivers/gpu/drm/zte/zx_vga.c                       |  4 +-
+>  include/drm/drm_encoder.h                          |  9 ++--
+>  include/drm/drm_simple_kms_helper.h                |  4 --
+>  109 files changed, 394 insertions(+), 395 deletions(-)
+>=20
+>=20
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+>=20
 
-~~~ "I don't think so," said Rene Descartes. Just then he vanished ~~~
-Simon says - in Latin please.
-~~~ "non cogito me" dixit Rene Descarte, deinde evanescavit ~~~
-Thanks to Simon Glass for the translation =] 
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+(HRB 36809, AG N=C3=BCrnberg)
+Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
+
+
+--De4ctwLgWXvPGwhVVivy7i6RNXKKkyzAV--
+
+--Ufl74Lq2kLxag3rezk70YaJ2XyXJCpUyg
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl55xdYACgkQaA3BHVML
+eiNJUgf+LxlsmFqczF3bmdnqDSQXVB5DSYpT/HzisNKZmH17VGhSjbA3cP6Y+MqX
+r8dHz/QG6y6SoIMm1lhQ4I8uGA3Swmf+Iaod60POAoD4mzFwTfXiI29WEYQ3Qhd2
+sH8DzeBhnTyCt5aUBHxlPkhY4tuF7rfNHwyc1lTAweYfWoy+yMDgWTOQG8ZON7vT
+LScFm4Y78iS3XrmPMMjgZnckvzUrexf7AILZ5zJovktYC1HQVbimK2UY/HxwXmc5
+oiKOttFDWLE9zM4jv7xTzDJ+17ERSiLuHiPcnMU3O3MQmwfWLVY5j5uPF7vhsLw/
+WxudAVCiFE1ukZUitIL3GVyYKuoKNw==
+=3HjZ
+-----END PGP SIGNATURE-----
+
+--Ufl74Lq2kLxag3rezk70YaJ2XyXJCpUyg--
+
+
+--===============0982754581665520220==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============0982754581665520220==--
+
