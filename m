@@ -2,77 +2,60 @@ Return-Path: <SRS0=XWkL=5J=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 29768C4332B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2020 12:56:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 96D2DC43331
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2020 14:16:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EDD2C207FF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2020 12:56:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 96E8C20789
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2020 14:16:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PEuSKO2N";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="fu+Yy7CI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EDD2C207FF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OsuZkJiC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 96E8C20789
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=POyfQlL8VNTfqHNbFbR/T0DkGdM2bZxWUV4goAbkqac=; b=PEuSKO2NQ9wwHz
-	FNsUS90LznkQvHmQ71SXoG1mLmY9UXC5zp63n2cSXM49AoBzMF6DnWE3QWS5s4k1MnrX0q5Eidpzb
-	EB8y2w2F3FpvAV6JLOdHcPqPyjioDrR89xco5Vj6UN4ao4lVIYefKN3SYYoOPfgoYumrAjjA0LmeU
-	OMP7A/zP1MlVgP+p+QV7oVZNPWB0HBb6RRtwf6fHZ4QWMPrXnZN/cZh4yMLKv7/JiSvKA7PFCYdHZ
-	MjKR4KMs54hOXBbjXwRAAn6q8/EpMfG+UCn7NvaN9Vf9QyGnYo72gBuagUfY8wX7t1IEF21R+1eI3
-	YfeABV5Pw0VbAO5plM1A==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=hG22WATwAMXre8CowX06tFf0PS0W8/4/qmjzIFfNWbY=; b=OsuZkJiCfcaE41TIC8+uZPr2r
+	Et74qQYpsUijl1wBOfBBuH6iv4G03rsm028IdVO+ffEHzjd38KM52j7QTdqY2Mx6QdQheKjMyF7xH
+	ZilSk/4bRVBw0yxWAxGUgPFjwYNs69Uh9DkeLX8LCaPJ3Ov7kKPkdKdN9Z6Ny/gp33yOHuqAa7wFy
+	sUsTkeq8xbMcC49SreWlkRKO9PPqIUwPvl70yJc9msGRWQwKAAgWhoQWuthRzYDug+O3vGnAWLgx/
+	pAvd6Bt5KrIBKkAPoOVBgBk5fSZQ7zOxWRnGRQAwh2Ed1Z4g8yUIv8CWChm99icNZsIKf7r/3+K/W
+	goBCwkRBw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jGj6h-0006AH-Bx; Tue, 24 Mar 2020 12:56:35 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jGj6W-0005y1-4e; Tue, 24 Mar 2020 12:56:25 +0000
-X-UUID: 9afae080985e435ea3294473d703d4d7-20200324
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=ik4urh0s9/sTZNn7i7tAqN7eathzuR+7EqLI9vueugY=; 
- b=fu+Yy7CI4h1f5rxfvRKCQ5QJ5dfNiAccwbs5lldVLq3gsoF3Cs3kXaTjE/w5ViQnMQFA8jYCnYMGqX6DpKAgJjtuATgFiewPB3wbxu/QogHhJmSGXom7fTSPGM0qlJjGAOHd1urNQJrgPA1YnZikwpj5qs2k9hqMPS7G8vWbh9w=;
-X-UUID: 9afae080985e435ea3294473d703d4d7-20200324
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <gtk_ruiwang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 671653240; Tue, 24 Mar 2020 04:56:22 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 24 Mar 2020 05:56:20 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Tue, 24 Mar 2020 20:56:16 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 24 Mar 2020 20:56:16 +0800
-Message-ID: <1585054582.6276.24.camel@mhfsdcap03>
-Subject: Re: [PATCH] media: mtk-vpu: load vpu firmware from the new location
-From: gtk_ruiwang <gtk_ruiwang@mediatek.com>
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Date: Tue, 24 Mar 2020 20:56:22 +0800
-In-Reply-To: <396021fd-ec2e-1ec1-602e-08b9393c5ae9@xs4all.nl>
-References: <20200322075745.6133-1-gtk_ruiwang@mediatek.com>
- <396021fd-ec2e-1ec1-602e-08b9393c5ae9@xs4all.nl>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+	id 1jGkM9-0004Ri-K2; Tue, 24 Mar 2020 14:16:37 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jGkM6-0004RB-Rr; Tue, 24 Mar 2020 14:16:36 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DA5A51FB;
+ Tue, 24 Mar 2020 07:16:33 -0700 (PDT)
+Received: from localhost (unknown [10.37.6.21])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 630563F52E;
+ Tue, 24 Mar 2020 07:16:33 -0700 (PDT)
+Date: Tue, 24 Mar 2020 14:16:31 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
+Subject: Re: [PATCH v6 03/10] lib: add linear ranges helpers
+Message-ID: <20200324141631.GE7039@sirena.org.uk>
+References: <cover.1584977512.git.matti.vaittinen@fi.rohmeurope.com>
+ <c659a4627bc33b8a7d10e1af16e85edd0ff8637f.1584977512.git.matti.vaittinen@fi.rohmeurope.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: C39E2D690E3AA5905C6E84713D6ABD87D4D1C41A2322D8E148CE3102567C89072000:8
-X-MTK: N
+In-Reply-To: <c659a4627bc33b8a7d10e1af16e85edd0ff8637f.1584977512.git.matti.vaittinen@fi.rohmeurope.com>
+X-Cookie: I feel ... JUGULAR ...
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200324_055624_192112_31E026AB 
-X-CRM114-Status: GOOD (  18.50  )
+X-CRM114-CacheID: sfid-20200324_071634_992134_2B7073FF 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,98 +67,100 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew-CT
- Chen <andrew-ct.chen@mediatek.com>, Maoguang Meng <maoguang.meng@mediatek.com>,
- srv_heupstream@mediatek.com, Alexandre Courbot <acourbot@chromium.org>,
- Erin Lo <erin.lo@mediatek.com>, linux-kernel@vger.kernel.org,
- Houlong Wei <houlong.wei@mediatek.com>, Tomasz
- Figa <tfiga@chromium.org>, Sj Huang <sj.huang@mediatek.com>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Mark Rutland <mark.rutland@arm.com>, Milo Kim <milo.kim@ti.com>,
+ Andrei Stefanescu <andrei.stefanescu@microchip.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Tony Lindgren <tony@atomide.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Brendan Higgins <brendanhiggins@google.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Masahiro Yamada <yamada.masahiro@socionext.com>, devicetree@vger.kernel.org,
+ linux-omap@vger.kernel.org, mikko.mutanen@fi.rohmeurope.com,
+ Vincenzo Frascino <vincenzo.frascino@arm.com>,
+ Dan Williams <dan.j.williams@intel.com>, linux-samsung-soc@vger.kernel.org,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ Chen-Yu Tsai <wens@csie.org>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Ard Biesheuvel <ardb@kernel.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Andy Shevchenko <andy.shevchenko@gmail.com>, Andy Gross <agross@kernel.org>,
+ markus.laine@fi.rohmeurope.com, linux-arm-msm@vger.kernel.org,
+ Borislav Petkov <bp@suse.de>, Petr Mladek <pmladek@suse.com>,
+ Mikhail Zaslonko <zaslonko@linux.ibm.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>, Arnd Bergmann <arnd@arndb.de>,
+ mazziesaccount@gmail.com, Gary Hook <Gary.Hook@amd.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ David Gow <davidgow@google.com>, Shuah Khan <skhan@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ linux-arm-kernel@lists.infradead.org,
+ Support Opensource <support.opensource@diasemi.com>,
+ Sangbeom Kim <sbkim73@samsung.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-pm@vger.kernel.org,
+ Randy Dunlap <rdunlap@infradead.org>, Sebastian Reichel <sre@kernel.org>,
+ linux-kernel@vger.kernel.org, Tal Gilboa <talgi@mellanox.com>,
+ Changbin Du <changbin.du@intel.com>,
+ Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <uwe@kleine-koenig.org>,
+ Masami Hiramatsu <mhiramat@kernel.org>, patches@opensource.cirrus.com,
+ Andrew Morton <akpm@linux-foundation.org>, Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: multipart/mixed; boundary="===============0605430446613083547=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Hans,
 
-Patch V2 has sent, thanks a lot.
+--===============0605430446613083547==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="OZkY3AIuv2LYvjdk"
+Content-Disposition: inline
 
-Sincerely Regards
 
-On Tue, 2020-03-24 at 13:20 +0100, Hans Verkuil wrote:
-> On 3/22/20 8:57 AM, gtk_ruiwang@mediatek.com wrote:
-> > From: gtk_ruiwang <gtk_ruiwang@mediatek.com>
-> > 
-> > mt8173 VPU firmware has been moved to a sub-folder of
-> > linux-firmware, so load vpu-fw from the new location first,
-> > if it fails, then from the old one.
-> > 
-> > Signed-off-by: Rui Wang <gtk_ruiwang@mediatek.com>
-> 
-> Hmm, I'm getting this from checkpatch.pl --strict:
-> 
-> WARNING: Missing Signed-off-by: line by nominal patch author 'gtk_ruiwang <gtk_ruiwang@mediatek.com>'
-> 
-> Rather than sending this from 'gtk_ruiwang@mediatek.com', can you send this from
-> 'Rui Wang <gtk_ruiwang@mediatek.com>'?
-> 
-> Then the two are the same.
-> 
-> Regards,
-> 
-> 	Hans
-> 
-> > ---
-> >  drivers/media/platform/mtk-vpu/mtk_vpu.c | 16 +++++++++++++---
-> >  1 file changed, 13 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> > index a768707abb94..89274842e07b 100644
-> > --- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> > +++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> > @@ -46,6 +46,8 @@
-> >  /* binary firmware name */
-> >  #define VPU_P_FW		"vpu_p.bin"
-> >  #define VPU_D_FW		"vpu_d.bin"
-> > +#define VPU_P_FW_NEW		"mediatek/mt8173/vpu_p.bin"
-> > +#define VPU_D_FW_NEW		"mediatek/mt8173/vpu_d.bin"
-> >  
-> >  #define VPU_RESET		0x0
-> >  #define VPU_TCM_CFG		0x0008
-> > @@ -477,16 +479,24 @@ static int load_requested_vpu(struct mtk_vpu *vpu,
-> >  	size_t tcm_size = fw_type ? VPU_DTCM_SIZE : VPU_PTCM_SIZE;
-> >  	size_t fw_size = fw_type ? VPU_D_FW_SIZE : VPU_P_FW_SIZE;
-> >  	char *fw_name = fw_type ? VPU_D_FW : VPU_P_FW;
-> > +	char *fw_new_name = fw_type ? VPU_D_FW_NEW : VPU_P_FW_NEW;
-> >  	const struct firmware *vpu_fw;
-> >  	size_t dl_size = 0;
-> >  	size_t extra_fw_size = 0;
-> >  	void *dest;
-> >  	int ret;
-> >  
-> > -	ret = request_firmware(&vpu_fw, fw_name, vpu->dev);
-> > +	ret = request_firmware(&vpu_fw, fw_new_name, vpu->dev);
-> >  	if (ret < 0) {
-> > -		dev_err(vpu->dev, "Failed to load %s, %d\n", fw_name, ret);
-> > -		return ret;
-> > +		dev_info(vpu->dev, "Failed to load %s, %d, retry\n",
-> > +			 fw_new_name, ret);
-> > +
-> > +		ret = request_firmware(&vpu_fw, fw_name, vpu->dev);
-> > +		if (ret < 0) {
-> > +			dev_err(vpu->dev, "Failed to load %s, %d\n", fw_name,
-> > +				ret);
-> > +			return ret;
-> > +		}
-> >  	}
-> >  	dl_size = vpu_fw->size;
-> >  	if (dl_size > fw_size) {
-> > 
-> 
+--OZkY3AIuv2LYvjdk
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Tue, Mar 24, 2020 at 10:29:09AM +0200, Matti Vaittinen wrote:
+> Many devices have control registers which control some measurable
+> property. Often a register contains control field so that change in
+> this field causes linear change in the controlled property. It is not
+> a rare case that user wants to give 'meaningful' control values and
+> driver needs to convert them to register field values. Even more
+> often user wants to 'see' the currently set value - again in
+> meaningful units - and driver needs to convert the values it reads
+> from register to these meaningful units. Examples of this include:
+
+Reviwed-by: Mark Brown <broonie@kernel.org>
+
+--OZkY3AIuv2LYvjdk
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl56Fj8ACgkQJNaLcl1U
+h9Agjwf+Io/zV2QMzoU2EKs1sg15aBVtSYsYl6smy2i9XXr5Fi61Nt1MMI7OBocI
+fFjs642G2c66K25uiK4Ol9pTut6RFb4ToZgcZiGWCSLsfgiswPIIgIFMEVU6rNFG
+raSBgvSAkW7kPK0hnhQG+oOe5vlgivjoG8JqG0pUex682DmujBQXL7eZFkRl8Bak
+L/4AZ2d5e7cd0tMjwThOBkSD9s6zAakkEAEWXeb5buX0Ne3Pp6DXjvY0mBeBEtbF
+0faz2t2B5ixMQE2c9XkBIGhPTXeuXFmTjOP4CtnYnUcd4csREk37xwrliR2lZapt
+BUUQWoOV2y5hyQlTeqWg9cKven0cWw==
+=9zhx
+-----END PGP SIGNATURE-----
+
+--OZkY3AIuv2LYvjdk--
+
+
+--===============0605430446613083547==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============0605430446613083547==--
+
