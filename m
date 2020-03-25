@@ -4,65 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B3FA1C18E5B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2020 09:31:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CA4B8C1975A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2020 09:32:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 84C5320714
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2020 09:31:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9CF352078D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2020 09:32:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="g+b+LlAc"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 84C5320714
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bjeFt9WD";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jGoMo7Mp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9CF352078D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=13lf2lfaGtE8p81fhSmyAEOhOsQCR0EjWU1l0RGpHNc=; b=g+b+LlAcWPySIaqvisDOX6OHxY
-	7dq854nHOWd8rgPqla5hYzfvv8nQ69kgJyk9rWhcJgQS7bs54MiqBP2VPVlwRJD43RjlGn8hbW4NT
-	vPy4R2svWXvm2CHodFp+SqsEVgnVOOTRJMmV6av1vaNykAkM4Ha+scrnFQq2Nw4gZaUriTVpG+e22
-	VxWMjzh3kEb/8Q4qk+CxLcGbPwY679tn7nuglPMNFjKOstJAwWvV3zc83FSmoyUar8ObEEr+X+huz
-	6zmrx+nAVdPPP+yKixUFQkdIbVS1BoWhAQ3QGwMOhch41Q93WhxooMv3fitPoZLzcSHbbNcQxZAYq
-	3PbtSrRA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=IXpQ4LPL/5tyShH/IIebk4yZGn986OPFKcuckq5OOqI=; b=bjeFt9WDFMg9H4
+	V1k/+GcWzAdO4v8Qx5ygzajdbW1jsUg/sBfN8Yr4Kp5CSDSWC1aho7F6WRiqtQhC6SjI2RkQj7yJK
+	TU0hPYEehRlIQ76Yl3flXS2Nzp1F4kpFStXAz7gMj54NFj3P/samUSdPDTJ8N1pdN+rNRmJWd3E+l
+	m7ULfrYCdAkmRiYMbhkgp+ANs8E2ZcfJ6a7EMcZ5YFUQaYed1j6lNpzwam+U3bMep3uBU0D4GThlX
+	A9eWMeq0U/qeR7PbFbuFqpaZpKdssPY1SKZxxtVOIRDEnuJlNTvzmXf6jOvi5atGm6tlhJIEru7k6
+	ush4qU4STajsWtHLzOqg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jH2NZ-0006Yj-N5; Wed, 25 Mar 2020 09:31:17 +0000
-Received: from labrats.qualcomm.com ([199.106.110.90])
+	id 1jH2O6-0006mu-Ol; Wed, 25 Mar 2020 09:31:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jH2NQ-0006RU-DJ; Wed, 25 Mar 2020 09:31:09 +0000
-IronPort-SDR: yZMJ6JjWQeGjfBCABy+Mg6DVJ764FG52ODPBJkbYnHraKNtEFvS856oOvJZjeH2dcWncTAr2Ep
- GTZ6cjf7NqfdT3wvzW8ZtkkUgC/sAFNoo/pdj6QwbakHh94+gF6oo/5Lvxb8J0O/RrXL5jqKAq
- 4lU/7nXepRcyFB37dofXjLc2egmEUxP+wu54a2gQIf3mzTZJ6r0t1YbRWSNfPiGBroXK/wdN5F
- 7QX4Rc7ld2tRUxzCXcYavUsz1lpjWwERRiG493Pwi3f8YBe7tRjMuMTu9KCLX284WWqgWJGaM4
- 0Sc=
-X-IronPort-AV: E=Sophos;i="5.72,303,1580803200"; d="scan'208";a="28615552"
-Received: from unknown (HELO ironmsg05-sd.qualcomm.com) ([10.53.140.145])
- by labrats.qualcomm.com with ESMTP; 25 Mar 2020 02:25:00 -0700
-Received: from pacamara-linux.qualcomm.com ([192.168.140.135])
- by ironmsg05-sd.qualcomm.com with ESMTP; 25 Mar 2020 02:24:59 -0700
-Received: by pacamara-linux.qualcomm.com (Postfix, from userid 359480)
- id A873A3A9C; Wed, 25 Mar 2020 02:24:59 -0700 (PDT)
-From: Can Guo <cang@codeaurora.org>
-To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
- rnayak@codeaurora.org, linux-scsi@vger.kernel.org, kernel-team@android.com,
- saravanak@google.com, salyzyn@google.com, cang@codeaurora.org
-Subject: [PATCH v5 2/2] scsi: ufs: Do not rely on prefetched data
-Date: Wed, 25 Mar 2020 02:23:39 -0700
-Message-Id: <1585128220-26128-3-git-send-email-cang@codeaurora.org>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1585128220-26128-1-git-send-email-cang@codeaurora.org>
-References: <1585128220-26128-1-git-send-email-cang@codeaurora.org>
+ id 1jH2O3-0006ky-RZ
+ for linux-mediatek@lists.infradead.org; Wed, 25 Mar 2020 09:31:49 +0000
+X-UUID: 5aa807e283f045259712cdd7c3213dca-20200325
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=gcuqKepqLmO7eC+NcTPbHcySQGXOAWJEpP27E4J/m1c=; 
+ b=jGoMo7MpjbBWTE/eXg0TbDj92WynBlndgVkx5hqaLizPVEWO+sEJtrAs/yBc8qrVh63lJu5HFRi+HZ9Ftdomk4kLsK1CBb0ZD7QfxbC4MFdbgfHmsaGZ1nzlByShDlOUmE0DfD6iQGqw7P8LLQu4+i9OhQ0ECoj6HAFHnPI1U4w=;
+X-UUID: 5aa807e283f045259712cdd7c3213dca-20200325
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <hanks.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 67594278; Wed, 25 Mar 2020 01:31:46 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 25 Mar 2020 02:31:43 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 25 Mar 2020 17:31:41 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
+ Frontend Transport; Wed, 25 Mar 2020 17:31:41 +0800
+From: Hanks Chen <hanks.chen@mediatek.com>
+To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>
+Subject: [PATCH v5 3/6] pinctrl: mediatek: avoid virtual gpio trying to set reg
+Date: Wed, 25 Mar 2020 17:31:31 +0800
+Message-ID: <1585128694-13881-4-git-send-email-hanks.chen@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1585128694-13881-1-git-send-email-hanks.chen@mediatek.com>
+References: <1585128694-13881-1-git-send-email-hanks.chen@mediatek.com>
+MIME-Version: 1.0
+X-TM-SNTS-SMTP: 4FA0E5F8D5EAAEC00D93A7DE47850028B31962D46D1324751148755D0B91662E2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200325_023108_473757_0367429A 
-X-CRM114-Status: GOOD (  14.01  )
+X-CRM114-CacheID: sfid-20200325_023147_902899_6157107C 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,151 +86,102 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Bart Van Assche <bvanassche@acm.org>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Venkat Gopalakrishnan <venkatg@codeaurora.org>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- open list <linux-kernel@vger.kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Avri Altman <avri.altman@wdc.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Tomas Winkler <tomas.winkler@intel.com>,
- Stanley Chu <stanley.chu@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>
-MIME-Version: 1.0
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ Andy Teng <andy.teng@mediatek.com>, Hanks Chen <hanks.chen@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Mars Cheng <mars.cheng@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-We were setting bActiveICCLevel attribute for UFS device only once but
-type of this attribute has changed from persistent to volatile since UFS
-device specification v2.1. This attribute is set to the default value after
-power cycle or hardware reset event. It isn't safe to rely on prefetched
-data (only used for bActiveICCLevel attribute now). Hence this change
-removes the code related to data prefetching and set this parameter on
-every attempt to probe the UFS device.
+for virtual gpios, they should not do reg setting and
+should behave as expected for eint function.
 
-Signed-off-by: Can Guo <cang@codeaurora.org>
-Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
-Tested-by: Stanley Chu <stanley.chu@mediatek.com>
-Reviewed-by: Avri Altman <avri.altman@wdc.com>
+Signed-off-by: Hanks Chen <hanks.chen@mediatek.com>
+Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
 ---
- drivers/scsi/ufs/ufshcd.c | 26 +++++++++++++++-----------
- drivers/scsi/ufs/ufshcd.h | 11 -----------
- 2 files changed, 15 insertions(+), 22 deletions(-)
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c |   28 ++++++++++++++++++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h |    1 +
+ drivers/pinctrl/mediatek/pinctrl-paris.c         |    7 ++++++
+ 3 files changed, 36 insertions(+)
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 9c26f82..b747c17 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -6458,11 +6458,12 @@ static u32 ufshcd_find_max_sup_active_icc_level(struct ufs_hba *hba,
- 	return icc_level;
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+index 20e1c89..087d233 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+@@ -226,6 +226,31 @@ static int mtk_xt_find_eint_num(struct mtk_pinctrl *hw, unsigned long eint_n)
+ 	return EINT_NA;
  }
  
--static void ufshcd_init_icc_levels(struct ufs_hba *hba)
-+static void ufshcd_set_active_icc_lvl(struct ufs_hba *hba)
- {
- 	int ret;
- 	int buff_len = hba->desc_size.pwr_desc;
- 	u8 *desc_buf;
-+	u32 icc_level;
++/*
++ * Virtual GPIO only used inside SOC and not being exported to outside SOC.
++ * Some modules use virtual GPIO as eint (e.g. pmif or usb).
++ * In MTK platform, external interrupt (EINT) and GPIO is 1-1 mapping
++ * and we can set GPIO as eint.
++ * But some modules use specific eint which doesn't have real GPIO pin.
++ * So we use virtual GPIO to map it.
++ */
++
++bool mtk_is_virt_gpio(struct mtk_pinctrl *hw, unsigned int gpio_n)
++{
++	const struct mtk_pin_desc *desc;
++	bool virt_gpio = false;
++
++	if (gpio_n >= hw->soc->npins)
++		return virt_gpio;
++
++	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio_n];
++
++	if (desc->funcs && !desc->funcs[desc->eint.eint_m].name)
++		virt_gpio = true;
++
++	return virt_gpio;
++}
++
+ static int mtk_xt_get_gpio_n(void *data, unsigned long eint_n,
+ 			     unsigned int *gpio_n,
+ 			     struct gpio_chip **gpio_chip)
+@@ -278,6 +303,9 @@ static int mtk_xt_set_gpio_as_eint(void *data, unsigned long eint_n)
+ 	if (err)
+ 		return err;
  
- 	desc_buf = kmalloc(buff_len, GFP_KERNEL);
- 	if (!desc_buf)
-@@ -6477,20 +6478,17 @@ static void ufshcd_init_icc_levels(struct ufs_hba *hba)
- 		goto out;
- 	}
++	if (mtk_is_virt_gpio(hw, gpio_n))
++		return 0;
++
+ 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio_n];
  
--	hba->init_prefetch_data.icc_level =
--			ufshcd_find_max_sup_active_icc_level(hba,
--			desc_buf, buff_len);
--	dev_dbg(hba->dev, "%s: setting icc_level 0x%x",
--			__func__, hba->init_prefetch_data.icc_level);
-+	icc_level = ufshcd_find_max_sup_active_icc_level(hba, desc_buf,
-+							 buff_len);
-+	dev_dbg(hba->dev, "%s: setting icc_level 0x%x", __func__, icc_level);
+ 	err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_MODE,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+index 1b7da42..cda1c7a0 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+@@ -299,4 +299,5 @@ int mtk_pinconf_adv_drive_set(struct mtk_pinctrl *hw,
+ int mtk_pinconf_adv_drive_get(struct mtk_pinctrl *hw,
+ 			      const struct mtk_pin_desc *desc, u32 *val);
  
- 	ret = ufshcd_query_attr_retry(hba, UPIU_QUERY_OPCODE_WRITE_ATTR,
--		QUERY_ATTR_IDN_ACTIVE_ICC_LVL, 0, 0,
--		&hba->init_prefetch_data.icc_level);
-+		QUERY_ATTR_IDN_ACTIVE_ICC_LVL, 0, 0, &icc_level);
- 
- 	if (ret)
- 		dev_err(hba->dev,
- 			"%s: Failed configuring bActiveICCLevel = %d ret = %d",
--			__func__, hba->init_prefetch_data.icc_level , ret);
-+			__func__, icc_level, ret);
- 
- out:
- 	kfree(desc_buf);
-@@ -6996,8 +6994,6 @@ static int ufshcd_add_lus(struct ufs_hba *hba)
- {
- 	int ret;
- 
--	ufshcd_init_icc_levels(hba);
--
- 	/* Add required well known logical units to scsi mid layer */
- 	ret = ufshcd_scsi_add_wlus(hba);
- 	if (ret)
-@@ -7095,6 +7091,14 @@ static int ufshcd_probe_hba(struct ufs_hba *hba, bool async)
- 		}
- 	}
++bool mtk_is_virt_gpio(struct mtk_pinctrl *hw, unsigned int gpio_n);
+ #endif /* __PINCTRL_MTK_COMMON_V2_H */
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index 923264d..7fba76d 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -693,6 +693,13 @@ static int mtk_gpio_get_direction(struct gpio_chip *chip, unsigned int gpio)
+ 	const struct mtk_pin_desc *desc;
+ 	int value, err;
  
 +	/*
-+	 * bActiveICCLevel is volatile for UFS device (as per latest v2.1 spec)
-+	 * and for removable UFS card as well, hence always set the parameter.
-+	 * Note: Error handler may issue the device reset hence resetting
-+	 * bActiveICCLevel as well so it is always safe to set this here.
++	 * "Virtual" GPIOs are always and only used for interrupts
++	 * Since they are only used for interrupts, they are always inputs
 +	 */
-+	ufshcd_set_active_icc_lvl(hba);
++	if (mtk_is_virt_gpio(hw, gpio))
++		return 1;
 +
- 	/* set the state as operational after switching to desired gear */
- 	hba->ufshcd_state = UFSHCD_STATE_OPERATIONAL;
+ 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
  
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index d45a044..5652d39 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -404,15 +404,6 @@ struct ufs_clk_scaling {
- 	bool is_suspended;
- };
- 
--/**
-- * struct ufs_init_prefetch - contains data that is pre-fetched once during
-- * initialization
-- * @icc_level: icc level which was read during initialization
-- */
--struct ufs_init_prefetch {
--	u32 icc_level;
--};
--
- #define UFS_ERR_REG_HIST_LENGTH 8
- /**
-  * struct ufs_err_reg_hist - keeps history of errors
-@@ -544,7 +535,6 @@ enum ufshcd_quirks {
-  * @intr_mask: Interrupt Mask Bits
-  * @ee_ctrl_mask: Exception event control mask
-  * @is_powered: flag to check if HBA is powered
-- * @init_prefetch_data: data pre-fetched during initialization
-  * @eh_work: Worker to handle UFS errors that require s/w attention
-  * @eeh_work: Worker to handle exception events
-  * @errors: HBA errors
-@@ -632,7 +622,6 @@ struct ufs_hba {
- 	u32 intr_mask;
- 	u16 ee_ctrl_mask;
- 	bool is_powered;
--	struct ufs_init_prefetch init_prefetch_data;
- 
- 	/* Work Queues */
- 	struct work_struct eh_work;
+ 	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &value);
 -- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
-
-
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
