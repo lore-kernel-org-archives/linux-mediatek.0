@@ -1,63 +1,66 @@
-Return-Path: <SRS0=XWkL=5J=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=43xy=5K=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B2F79C43331
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2020 20:38:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 143BDC54FCF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2020 02:33:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 850A52070A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Mar 2020 20:38:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DB35520714
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2020 02:33:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lYG4hxgZ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 850A52070A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZxfCRkG2";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=flygoat.com header.i=jiaxun.yang@flygoat.com header.b="W/jVXBb3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DB35520714
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=flygoat.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=sm/p5yQgj2Zc/Hv82N5e0/OlqP90JdJWgMttyg/h+d8=; b=lYG4hxgZ6NnaJ8mPM+FXkQB/m
-	9V5kMyai4Bqzvsifx9kbBFIRyxZyLm4KbouojZJ+H6z3sAKlhNvVKB6kTj7AHAfWW/rV2v8b3WmU4
-	iNAZ6Le+iVXlQy2F7fwqx44I5dQJzYpJu2KzlxIcY1S3L9JeIVj5kzNgaAHVnsQsx1y+0ipF5pReR
-	X6q/G/QjYNEvckTpvYJ+v2siVKlIn+G3aCUeu1Tf9ihTH7h74zitVo+CGZx/SVMsAU6+9MxtsaYy5
-	+uZ3qVrALHEeXpkoQ4ja9RoHzb8mn5LClD5PEdUzRhIot7pxD8mkIIeIA8176KD/gz9d62C4YPni7
-	zoR+oPYMw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Subject:Message-ID:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vJ7O9EdpArCxFv3IL62ZgfyX7j/cI/PcA/I3ElDpz+A=; b=ZxfCRkG2hoSSEa
+	zF68NSM0fjFhzX9h+DfuRMTj113D8ta/mT2KzIt0XCQmLrbb+2z7JPvIjGNwlica33+wxUpIm+CIg
+	y0c0s78JPAApgKCmqWAvu3nwyoncieKl6GgwPBqbu98eme3NTHG+YcEysrw3DMf3QEFlzFCvPImJ9
+	LkExjHSpvecwe7Lq6XLvrjgU3wvjcVoLpVNtXGqiAZOezeM9E9kOARyJwvyt5LnMU9VXluI5U6gK+
+	w9SlkFho8Rq9eEIuwMtn1AjDoWfTuJSqxj9ipyYLZ3xoCihozPKRZZvmJ8u7c6VJEzgdb5p5aIbsf
+	1e35vqQYe6Xth71Yk/1g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jGqJz-0006Eb-EN; Tue, 24 Mar 2020 20:38:47 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jGqJo-00061e-Sc; Tue, 24 Mar 2020 20:38:38 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0F36731B;
- Tue, 24 Mar 2020 13:38:36 -0700 (PDT)
-Received: from localhost (unknown [10.37.6.21])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5FE7A3F71F;
- Tue, 24 Mar 2020 13:38:35 -0700 (PDT)
-Date: Tue, 24 Mar 2020 20:38:34 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Henry Chen <henryc.chen@mediatek.com>
-Subject: Re: [PATCH V4 11/13] dt-bindings: regulator: add DVFSRC regulator
- dt-bindings
-Message-ID: <20200324203833.GL7039@sirena.org.uk>
-References: <1584092066-24425-1-git-send-email-henryc.chen@mediatek.com>
- <1584092066-24425-12-git-send-email-henryc.chen@mediatek.com>
+	id 1jGvrY-0004M8-88; Wed, 25 Mar 2020 02:33:48 +0000
+Received: from sender3-op-o12.zoho.com.cn ([124.251.121.243])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jGvr6-0003wK-RE; Wed, 25 Mar 2020 02:33:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1585103391; 
+ s=mail; d=flygoat.com; i=jiaxun.yang@flygoat.com;
+ h=From:To:Cc:Message-ID:Subject:Date:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type;
+ bh=RoTb4kC5GgUMShP6k070ckUx+pQjKkreZ+DIkNKvl5E=;
+ b=W/jVXBb3rU1ZixAei7Ey/PGfP3D3ZbRAMq0Kzen1ORcgwH16AkbkgMf9YShmMIt+
+ 8k712+8guc5+r6nQ5v6VZ5gikbL5izqhsmrdtQKH3jGDpVTxcKyQsZgykrnieTexuLl
+ r9/0C/bSWCtLhZkcmR1DGdV0AQ35RmgTIvqejpCI=
+Received: from localhost.localdomain (39.155.141.144 [39.155.141.144]) by
+ mx.zoho.com.cn with SMTPS id 1585103387861247.16580834429317;
+ Wed, 25 Mar 2020 10:29:47 +0800 (CST)
+From: Jiaxun Yang <jiaxun.yang@flygoat.com>
+To: linux-mips@vger.kernel.org
+Message-ID: <20200325022916.106641-1-jiaxun.yang@flygoat.com>
+Subject: [PATCH v7 00/12] Modernize Loongson64 Machine v6
+Date: Wed, 25 Mar 2020 10:28:16 +0800
+X-Mailer: git-send-email 2.26.0.rc2
+In-Reply-To: <20190827085302.5197-1-jiaxun.yang@flygoat.com>
+References: 
 MIME-Version: 1.0
-In-Reply-To: <1584092066-24425-12-git-send-email-henryc.chen@mediatek.com>
-X-Cookie: I feel ... JUGULAR ...
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ZohoCNMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200324_133836_969445_A8780987 
-X-CRM114-Status: UNSURE (   9.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200324_193321_352510_DA6CAD15 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,75 +72,142 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@google.com>,
- Mike Turquette <mturquette@linaro.org>, srv_heupstream@mediatek.com,
- James Liao <jamesjj.liao@mediatek.com>, Viresh Kumar <vireshk@kernel.org>,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- Stephen Boyd <swboyd@chromium.org>, Fan Chen <fan.chen@mediatek.com>,
- devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Ryan Case <ryandcase@chromium.org>, Arvin Wang <arvin.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- Georgi Djakov <georgi.djakov@linaro.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============1120042092321438839=="
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>, linux-doc@vger.kernel.org,
+ "H. Nikolaus Schaller" <hns@goldelico.com>, John Crispin <john@phrozen.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Paul Cercueil <paul@crapouillou.net>,
+ linux-ide@vger.kernel.org, Miquel Raynal <miquel.raynal@bootlin.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Huacai Chen <chenhc@lemote.com>, Tiezhu Yang <yangtiezhu@loongson.cn>,
+ Andi Kleen <ak@linux.intel.com>, Paul Burton <paulburton@kernel.org>,
+ Jonathan Corbet <corbet@lwn.net>, Marc Zyngier <maz@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Yinglu Yang <yangyinglu@loongson.cn>,
+ devicetree@vger.kernel.org, Jean Delvare <jdelvare@suse.com>,
+ Jason Cooper <jason@lakedaemon.net>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Allison Randal <allison@lohutok.net>, linux-arm-kernel@lists.infradead.org,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Matt Redfearn <matt.redfearn@mips.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ Serge Semin <fancer.lancer@gmail.com>,
+ "Eric W. Biederman" <ebiederm@xmission.com>,
+ Manuel Lauss <manuel.lauss@gmail.com>, "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Loongson have a long history of contributing their code to mainline kernel.
+However, it seems like recent years, they are focusing on maintain a kernel by themselves
+rather than contribute there code to the community.
 
---===============1120042092321438839==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="1hKfHPzOXWu1rh0v"
-Content-Disposition: inline
+Kernel is progress rapidly too. Their code slept in mainline for a long peroid without proper
+maintainance and became outdated.
+
+This patchset brings modern DeviceTree and irqchip support to the Loongson64 machine, and leaves
+Loongson 2e/f alone since they are too legacy to touch.
+
+PCI and some legacy I/O device will be converted later, together with LS7A PCH support.
+
+v1:
+- dt-bindings fixup according to Rob's comments
+- irqchip fixup according to Marc's comments
+- ls3-iointc: Make Core&IP map per-IRQ
+- Regenerate kconfigs
+- Typo & style improvements
+
+v2:
+- dt-bindings: Fix IOINTC, collect Rob's review tag
+- dtbs: Drop CPU Node, merge different ways according to Huacai and Paul's comments
+
+v3:
+- Split code have been merged
+- Fix IOINTC binding to allow map any child IRQ to and parent
+- Convert "HTINTC" into "HTPIC", which mixed HT vectors processing and i8259
+- Naming style fix according to Huacai's suggestions
+
+v4:
+- More naming related fixes
+
+v5:
+- irqchip fixes thanks to maz (see per file changelog)
+- Remove unnecessary details in dt-bindings
+- Credit Huacai with Co-developed-by
+
+v6:
+- HTPIC minor fix
+- device binding naming fix 
+
+v7:
+- Add Huacai's sign-off
+- Fix all reasonable checkpatch warnings
+
+Jiaxun Yang (12):
+  irqchip: Add driver for Loongson I/O Local Interrupt Controller
+  irqchip: loongson-liointc: Workaround LPC IRQ Errata
+  dt-bindings: interrupt-controller: Add Loongson LIOINTC
+  irqchip: Add driver for Loongson-3 HyperTransport PIC controller
+  dt-bindings: interrupt-controller: Add Loongson-3 HTPIC
+  irqchip: mips-cpu: Convert to simple domain
+  MIPS: Loongson64: Drop legacy IRQ code
+  dt-bindings: mips: Add loongson boards
+  MIPS: Loongson64: Add generic dts
+  MIPS: Loongson64: Load built-in dtbs
+  MIPS: Loongson64: Move MIPS_CPU_IRQ_BASE
+  MAINTAINERS: Update Loongson64 entry
+
+ .../interrupt-controller/loongson,htpic.yaml  |  59 ++++
+ .../loongson,liointc.yaml                     |  93 ++++++
+ .../bindings/mips/loongson/devices.yaml       |  27 ++
+ MAINTAINERS                                   |   1 +
+ arch/mips/Kconfig                             |   6 +-
+ arch/mips/boot/dts/Makefile                   |   1 +
+ arch/mips/boot/dts/loongson/Makefile          |   4 +
+ .../boot/dts/loongson/loongson3-package.dtsi  |  64 +++++
+ .../dts/loongson/loongson3_4core_rs780e.dts   |  25 ++
+ .../dts/loongson/loongson3_8core_rs780e.dts   |  25 ++
+ arch/mips/boot/dts/loongson/rs780e-pch.dtsi   |  26 ++
+ arch/mips/include/asm/i8259.h                 |   1 +
+ .../include/asm/mach-loongson64/boot_param.h  |   2 +
+ .../asm/mach-loongson64/builtin_dtbs.h        |  13 +
+ arch/mips/include/asm/mach-loongson64/irq.h   |  32 +--
+ .../include/asm/mach-loongson64/loongson.h    |   1 +
+ arch/mips/loongson64/Makefile                 |   2 +-
+ arch/mips/loongson64/env.c                    |  23 ++
+ arch/mips/loongson64/init.c                   |   6 +
+ arch/mips/loongson64/irq.c                    | 162 -----------
+ arch/mips/loongson64/setup.c                  |  16 ++
+ arch/mips/loongson64/smp.c                    |  28 +-
+ drivers/irqchip/Kconfig                       |  19 ++
+ drivers/irqchip/Makefile                      |   2 +
+ drivers/irqchip/irq-loongson-htpic.c          | 149 ++++++++++
+ drivers/irqchip/irq-loongson-liointc.c        | 270 ++++++++++++++++++
+ drivers/irqchip/irq-mips-cpu.c                |   2 +-
+ 27 files changed, 846 insertions(+), 213 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/interrupt-controller/loongson,htpic.yaml
+ create mode 100644 Documentation/devicetree/bindings/interrupt-controller/loongson,liointc.yaml
+ create mode 100644 Documentation/devicetree/bindings/mips/loongson/devices.yaml
+ create mode 100644 arch/mips/boot/dts/loongson/Makefile
+ create mode 100644 arch/mips/boot/dts/loongson/loongson3-package.dtsi
+ create mode 100644 arch/mips/boot/dts/loongson/loongson3_4core_rs780e.dts
+ create mode 100644 arch/mips/boot/dts/loongson/loongson3_8core_rs780e.dts
+ create mode 100644 arch/mips/boot/dts/loongson/rs780e-pch.dtsi
+ create mode 100644 arch/mips/include/asm/mach-loongson64/builtin_dtbs.h
+ delete mode 100644 arch/mips/loongson64/irq.c
+ create mode 100644 drivers/irqchip/irq-loongson-htpic.c
+ create mode 100644 drivers/irqchip/irq-loongson-liointc.c
+
+-- 
+2.26.0.rc2
 
 
---1hKfHPzOXWu1rh0v
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Fri, Mar 13, 2020 at 05:34:24PM +0800, Henry Chen wrote:
-
-> +- regulator : The DVFSRC regulator is modelled as a subdevice of the DVFSRC.
-> +	Because DVFSRC can request power directly via register read/write, likes
-> +	vcore which is a core power of mt8183. As such, the DVFSRC regulator
-> +	requires that DVFSRC nodes be present. shall contain only one of the
-> +	following: "mediatek,mt8183-dvfsrc-regulator"
-
-Why do we even need a compatible here - it's not adding any new
-information to the parent mt8183 node, the compatible is mainly for the
-way Linux divides things up rather than a description of the hardware.
-We could just say that the regulator node always has a particular name
-instead.
-
-It's also not quite true that it contains "only" the compatible - it
-also allows the regulator constraints to be defined.
-
---1hKfHPzOXWu1rh0v
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl56b8kACgkQJNaLcl1U
-h9BVDwf/RAYKDpswM9LzY+qhfj6MLLg7KpdzLRHMUjmy5/LLU1HpBEtu8YhHSzBX
-/+V7JmuFIoswcuE1W6nL9Rvtxp5cNAFwUbWyHKeP+wKCRrMRy3BCwICR/CqLTt4i
-aloftUH1AythmDbWKFeMF47RRo5cqaEklU5MW4MK+b+mGluEyvX2AEiqvIwgEyi3
-+a5P7KtSH22jRWOx5z7B5/zMRIrG3kSReLWh3nTeRX7ky5tV/sKVW/2Z1MgRyxyF
-VReF9OlRZyAvNJ6IqfjjOXwroaJs0nTWR3MXRFd5xf+RTIdvkvU+YH6nvrIwxpqi
-gU0MdPkAAbq4e7HzdchQ/hsXz16mOw==
-=f2rY
------END PGP SIGNATURE-----
-
---1hKfHPzOXWu1rh0v--
-
-
---===============1120042092321438839==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============1120042092321438839==--
-
