@@ -2,94 +2,91 @@ Return-Path: <SRS0=43xy=5K=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E74A9C43331
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2020 11:35:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BBD0AC43331
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2020 11:47:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B98FE20772
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2020 11:35:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8B3F320714
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2020 11:47:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MAJPGC9c";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Q7GoJqpp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B98FE20772
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="i/l0Gvtm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8B3F320714
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fi.rohmeurope.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
-	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=QU45YGoX6QMo/HsHw1QtWIf1CIaefxUR/MgmoLUtQCU=; b=MAJPGC9cfcYV7niQInzSGN/RU
-	5ZijV0AiNjZPGye7YGG1TPq5qwLUSAVSggyoOoZb+xO9hQh2njnGLQwl8D6XjZAkOQRRqyNQ/VTc3
-	kiLsccHAcZz+LkUCA+/ih7YYwybeMcy7c2GxdFiYpiZnULNOQwWk1kSEZLg7XqzNlChH7NRLFjg/R
-	caY9sqByP5eH/kdexteH/bm0wBOC0b7XafRIS2IYzG9GmLLizTUlBwK5yLksP8ChxqmUM0xTdCXJH
-	W8eKZm8b7jcVVOs+8H1tZgm9z0X8i9J5Wf3D/rpxZ+Lfyw4ZW9VMPzv9Vlb2pFXRQmMjSm6JtcT+Q
-	GOVKA0d7w==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5mb82X3Z06A81947s0NeJIeUxwA2X1VYIYmJMG7rVrA=; b=i/l0GvtmG8+vwc
+	AHsOK56vhkXzMLbYCJLzwMZAVInacQTcFAyeqQjb+59xy0/rvzv/6GQLiYBZc3ZuB3ogMzxxYxzJw
+	o78z89MNVC6CnT6w/BR20a0nIBI4pqecDs1j/qWi8cOzRwFeLVkuIJrNUydafSrbsdm8Aqh9PAVpA
+	JWAFWcV8xV3TOu4A6+6utiGE5hHUUoR2NAXwy6vHlwbGJHqoBKS0760gYMG7JUl7IgHrCY2EQ58GI
+	A3eklz71P+oTtZ0EMBAXb3Py9ncvIZequaSk600EMnq4INWg0tj2+MfvGu1f8w7C2NLBvi7u7wONF
+	ENRaJJlghDtbG+wn2Yow==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jH4K2-00085q-IT; Wed, 25 Mar 2020 11:35:46 +0000
-Received: from mail.kernel.org ([198.145.29.99])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jH4Js-0007wP-Ep; Wed, 25 Mar 2020 11:35:37 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id EA7AF20722;
- Wed, 25 Mar 2020 11:35:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1585136136;
- bh=hDdH6NzW082kdtiNJh6NcBX/8zpFKDBtBCPyNFL3akc=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=Q7GoJqppdtvNHQJdM0XE9y8P+ki1AutLvirfSEQTn6FrAdVzJZHPIwqIDKhFlg2Q0
- Tkrvk1QDhThLTbgftm+MddcYEzlZs3PpQ+Y2cnZ+0BK9mRoxAcy45dF3s/9fBv6nq4
- 7736pvMud3vI8wyuEoiF/EqEkM+W6ffESuahi3Lw=
-Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
- by disco-boy.misterjones.org with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <maz@kernel.org>)
- id 1jH4Jq-00FYG3-87; Wed, 25 Mar 2020 11:35:34 +0000
+	id 1jH4V5-0004jQ-G7; Wed, 25 Mar 2020 11:47:11 +0000
+Received: from mailgate1.rohmeurope.com ([87.129.152.131])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jH4V2-0004iu-OI; Wed, 25 Mar 2020 11:47:10 +0000
+X-AuditID: c0a8fbf4-489ff70000004419-7c-5e7b44b8af81
+Received: from smtp.reu.rohmeu.com (will-cas002.reu.rohmeu.com
+ [192.168.251.178])
+ by mailgate1.rohmeurope.com (Symantec Messaging Gateway) with SMTP id
+ 6B.E1.17433.8B44B7E5; Wed, 25 Mar 2020 12:47:04 +0100 (CET)
+Received: from WILL-MAIL001.REu.RohmEu.com ([fe80::2915:304f:d22c:c6ba]) by
+ WILL-CAS002.REu.RohmEu.com ([fe80::fc24:4cbc:e287:8659%12]) with mapi id
+ 14.03.0487.000; Wed, 25 Mar 2020 12:46:58 +0100
+From: "Vaittinen, Matti" <Matti.Vaittinen@fi.rohmeurope.com>
+To: "broonie@kernel.org" <broonie@kernel.org>
+Subject: Re: [PATCH v6 06/10] regulator: use linear_ranges helper
+Thread-Topic: [PATCH v6 06/10] regulator: use linear_ranges helper
+Thread-Index: AQHWAbaPCcyAOxMqz0a76vzAO0GO3KhXu6iAgAEV4ACAAEzzgIAAA4eA
+Date: Wed, 25 Mar 2020 11:46:58 +0000
+Message-ID: <6305832490e27343f4a01a926ed11a4a5c2aae90.camel@fi.rohmeurope.com>
+References: <cover.1584977512.git.matti.vaittinen@fi.rohmeurope.com>
+ <5522b2e03f77e1b7c93adf07b85747ea9ddfbf9b.1584977512.git.matti.vaittinen@fi.rohmeurope.com>
+ <20200324142427.GF7039@sirena.org.uk>
+ <739a01454410a5d7acf231c92e5b3ffcae49d84c.camel@fi.rohmeurope.com>
+ <20200325113425.GC4346@sirena.org.uk>
+In-Reply-To: <20200325113425.GC4346@sirena.org.uk>
+Accept-Language: en-US, de-DE
+Content-Language: de-DE
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [62.78.225.252]
+Content-ID: <5354D7E5FBF5A94EBB9DE96A773193A2@de.rohmeurope.com>
 MIME-Version: 1.0
-Date: Wed, 25 Mar 2020 11:35:34 +0000
-From: Marc Zyngier <maz@kernel.org>
-To: Paul Cercueil <paul@crapouillou.net>
-Subject: Re: [PATCH v7 01/12] irqchip: Add driver for Loongson I/O Local
- Interrupt Controller
-In-Reply-To: <AFYQ7Q.2LEJN3L8ZS5J3@crapouillou.net>
-References: <20200325022916.106641-1-jiaxun.yang@flygoat.com>
- <20200325022916.106641-2-jiaxun.yang@flygoat.com>
- <AFYQ7Q.2LEJN3L8ZS5J3@crapouillou.net>
-Message-ID: <30bbde289a0cc4c1bfc0d3f6475f8f3e@kernel.org>
-X-Sender: maz@kernel.org
-User-Agent: Roundcube Webmail/1.3.10
-X-SA-Exim-Connect-IP: 51.254.78.96
-X-SA-Exim-Rcpt-To: paul@crapouillou.net, jiaxun.yang@flygoat.com,
- linux-mips@vger.kernel.org, chenhc@lemote.com, tglx@linutronix.de,
- jason@lakedaemon.net, robh+dt@kernel.org, mark.rutland@arm.com,
- tsbogend@alpha.franken.de, corbet@lwn.net, john@phrozen.org,
- matthias.bgg@gmail.com, jdelvare@suse.com, davem@davemloft.net,
- mchehab+samsung@kernel.org, Jonathan.Cameron@huawei.com,
- gregkh@linuxfoundation.org, andriy.shevchenko@linux.intel.com,
- geert+renesas@glider.be, krzk@kernel.org, miquel.raynal@bootlin.com,
- ak@linux.intel.com, hns@goldelico.com, ebiederm@xmission.com,
- yangtiezhu@loongson.cn, yangyinglu@loongson.cn, allison@lohutok.net,
- b.zolnierkie@samsung.com, paulburton@kernel.org, manuel.lauss@gmail.com,
- fancer.lancer@gmail.com, matt.redfearn@mips.com, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-doc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-ide@vger.kernel.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+X-Brightmail-Tracker: H4sIAAAAAAAAA01Ta0wUZxTNNzM7M4DbjMvrK0Kqa6yRFvHV9LZBgtY0Y38Qbf+1ETqUKUsK
+ u2QfLWBsKEpUqPKShysoBVFKCY9FlLogdksoaMt2AyhakOCSRrYVKixQRKEzbBV+fee755x7
+ 7o97WVJVygaxiVqjqNcKSWram7pZs2AJa913OGbbUkUw9DoXKChrqKPh9FQlCacySwgYz/sZ
+ wbx7EsHzgi4GmkobFOAuv0XB7Y4JCvJzt4BjsJCEotExGvqzLAhKin5HUGY/RkF3UyMFFzp7
+ FXC0qoGGHFcw2O2NDMz2nyDgzLPLBFicdxSQ3/EbA33Xy2joO+pAcO5iLgXTpzoRlNpvEFB9
+ 10FA5rGdUFbdTUHV5dehsXmOgOnJDgUsOWcUUO4uIuHxUAkFjlI7CVntnQw4atwEtJdcUsBt
+ qxHasxwkFJe3M9BskbQd/R/A3an7kmBxnoJ5m11CD6YRdD2ZR1Fv8XXn6xC/8LQA8bMzBRQ/
+ OZjF8I0Pf1DwV76/R/A1U+H8j+Zhhr96cxNfYTHxzTWhfFXbOMFbak/SfMGlSgU/dKeN5id6
+ e5kDIR/7RMQJxi8/SkzQhkd+6qPpeJhLp5T5pX6Tnc9koEHfbMSymNuFe24EZCNvVsUNIJw7
+ 2Md4Pt0IDz1eYmQRzUXg7HsS9GL9uDBc9LSKljUk93cAnmnNIWTCl9uDzYVOwiPaizMb/iI9
+ +H3cNXIByZjiNuFFu1UhYyUXje/nzhKeMCuBu/89uyzy4nbg4rErlIwRF4JPZkwsNyW5QGz5
+ c27ZjDkOX2yzkx7sj8edi//XN+Brc/WUPDTJbcEN18M91ijcPNxCefAGfCZnlPHMsBb3nB2j
+ 8lCAeVWCecVtXuU2r3KbV7krkKIW4WQhMSlBMIrbt+pF01a9TpMsPZ/pki3Is+nuVrRk229D
+ BIts6FWWUPsrN759OEb1SpwuPk0jGDSxelOSaLAhzJJqP2WzmBqjUsYLaemiXveCWsdS6kDl
+ 5tH8QypOzvpCFFNE/Qs2mGXVWLlNuifVWr2YIKZ+nphkXKEJ1ktu7h3kZxC18aJeMBk1sfJ+
+ xBqkBZGpNVKu8z3JrjSkCMlS1WO9hd5g88bLK0m2s7y6klRRWp1WDApUfihLOVmqMWlfBrlQ
+ IIvUvsqKvRK7Rjr3l31cUgQhRSSYv5IjjMIKFZSB0qLZ4oNp1j3fHnzwtY3euCMxKnLd6eLC
+ 9Jg/JqPdiy0j1yKOuCzZu3T9+x8NG0IyH23+dbBWt/uEa+zJm0VNV3t2Bo0/jzZPjKhQ+j9x
+ oQNJ+1p+iTyQ/m6/6Tur+x1T2HnVBmbGqq1fn/Zaq9b1ycB6lU/OT9H+ycePHF94dmi3rbZe
+ TRk0wvZQUm8Q/gP5xf8YqwQAAA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200325_043536_536968_171077A2 
-X-CRM114-Status: GOOD (  19.08  )
+X-CRM114-CacheID: sfid-20200325_044708_947918_75624AE6 
+X-CRM114-Status: GOOD (  17.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,115 +98,111 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>, linux-doc@vger.kernel.org, "H.
- Nikolaus Schaller" <hns@goldelico.com>, John Crispin <john@phrozen.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, linux-kernel@vger.kernel.org,
- linux-ide@vger.kernel.org, Miquel Raynal <miquel.raynal@bootlin.com>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- Huacai Chen <chenhc@lemote.com>, Tiezhu Yang <yangtiezhu@loongson.cn>,
- Andi Kleen <ak@linux.intel.com>, Paul Burton <paulburton@kernel.org>,
- Jonathan Corbet <corbet@lwn.net>, Krzysztof Kozlowski <krzk@kernel.org>,
- Yinglu Yang <yangyinglu@loongson.cn>, devicetree@vger.kernel.org,
- Jean Delvare <jdelvare@suse.com>, Jason Cooper <jason@lakedaemon.net>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Allison Randal <allison@lohutok.net>, linux-arm-kernel@lists.infradead.org,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Matt Redfearn <matt.redfearn@mips.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mips@vger.kernel.org,
- Serge Semin <fancer.lancer@gmail.com>,
- "Eric W. Biederman" <ebiederm@xmission.com>,
- Manuel Lauss <manuel.lauss@gmail.com>, "David S. Miller" <davem@davemloft.net>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
+ "andrei.stefanescu@microchip.com" <andrei.stefanescu@microchip.com>,
+ "rafael@kernel.org" <rafael@kernel.org>, "tony@atomide.com" <tony@atomide.com>,
+ "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
+ "brendanhiggins@google.com" <brendanhiggins@google.com>,
+ "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+ "yamada.masahiro@socionext.com" <yamada.masahiro@socionext.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>,
+ "uwe@kleine-koenig.org" <uwe@kleine-koenig.org>,
+ "vincenzo.frascino@arm.com" <vincenzo.frascino@arm.com>,
+ "dan.j.williams@intel.com" <dan.j.williams@intel.com>,
+ "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+ "herbert@gondor.apana.org.au" <herbert@gondor.apana.org.au>,
+ "b.zolnierkie@samsung.com" <b.zolnierkie@samsung.com>,
+ "andy.shevchenko@gmail.com" <andy.shevchenko@gmail.com>,
+ "krzk@kernel.org" <krzk@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
+ "bgolaszewski@baylibre.com" <bgolaszewski@baylibre.com>,
+ "wens@csie.org" <wens@csie.org>, "agross@kernel.org" <agross@kernel.org>,
+ "Laine, Markus" <Markus.Laine@fi.rohmeurope.com>, "bp@suse.de" <bp@suse.de>,
+ "pmladek@suse.com" <pmladek@suse.com>,
+ "zaslonko@linux.ibm.com" <zaslonko@linux.ibm.com>,
+ "ckeepax@opensource.cirrus.com" <ckeepax@opensource.cirrus.com>,
+ "arnd@arndb.de" <arnd@arndb.de>,
+ "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+ "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+ "rf@opensource.cirrus.com" <rf@opensource.cirrus.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "sre@kernel.org" <sre@kernel.org>, "davidgow@google.com" <davidgow@google.com>,
+ "skhan@linuxfoundation.org" <skhan@linuxfoundation.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "tglx@linutronix.de" <tglx@linutronix.de>,
+ "andriy.shevchenko@linux.intel.com" <andriy.shevchenko@linux.intel.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "support.opensource@diasemi.com" <support.opensource@diasemi.com>,
+ "sbkim73@samsung.com" <sbkim73@samsung.com>,
+ "patches@opensource.cirrus.com" <patches@opensource.cirrus.com>,
+ "rdunlap@infradead.org" <rdunlap@infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "talgi@mellanox.com" <talgi@mellanox.com>, "Mutanen,
+ Mikko" <Mikko.Mutanen@fi.rohmeurope.com>,
+ "bjorn.andersson@linaro.org" <bjorn.andersson@linaro.org>,
+ "mhiramat@kernel.org" <mhiramat@kernel.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "akpm@linux-foundation.org" <akpm@linux-foundation.org>,
+ "olteanv@gmail.com" <olteanv@gmail.com>,
+ "davem@davemloft.net" <davem@davemloft.net>,
+ "mazziesaccount@gmail.com" <mazziesaccount@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyMC0wMy0yNSAxMToyNSwgUGF1bCBDZXJjdWVpbCB3cm90ZToKPiBIaSBKaWF4dW4sCj4g
-Cj4gCj4gTGUgbWVyLiAyNSBtYXJzIDIwMjAgw6AgMTA6MjgsIEppYXh1biBZYW5nIDxqaWF4dW4u
-eWFuZ0BmbHlnb2F0LmNvbT4gYSAKPiDDqWNyaXQgOgo+PiBUaGlzIGNvbnRyb2xsZXIgYXBwZWFy
-ZWQgb24gTG9vbmdzb24gZmFtaWx5IG9mIGNoaXBzIGFzIHRoZSBwcmltYXJ5Cj4+IHBhY2thZ2Ug
-aW50ZXJydXB0IHNvdXJjZS4KPj4gCj4+IFNpZ25lZC1vZmYtYnk6IEppYXh1biBZYW5nIDxqaWF4
-dW4ueWFuZ0BmbHlnb2F0LmNvbT4KPj4gQ28tZGV2ZWxvcGVkLWJ5OiBIdWFjYWkgQ2hlbiA8Y2hl
-bmhjQGxlbW90ZS5jb20+Cj4+IFNpZ25lZC1vZmYtYnk6IEh1YWNhaSBDaGVuIDxjaGVuaGNAbGVt
-b3RlLmNvbT4KPj4gUmV2aWV3ZWQtYnk6IE1hcmMgWnluZ2llciA8bWF6QGtlcm5lbC5vcmc+Cj4+
-IC0tLQo+PiB2NC12NToKPj4gCVJlc29sdmUgc3VnZ2VzdGlvbnMgZnJvbSBtYXo6Cj4+IAkJLSBS
-ZW1vdmUgRFQgdmFsaWRhdGlvbgo+PiAJCS0gU2ltcGxpZnkgdW5udWNlc3NhcnkgZnVuY3Rpb25z
-ICYgdmFyaWFibGVzCj4+IC0tLQo+PiAgZHJpdmVycy9pcnFjaGlwL0tjb25maWcgICAgICAgICAg
-ICAgICAgfCAgIDkgKwo+PiAgZHJpdmVycy9pcnFjaGlwL01ha2VmaWxlICAgICAgICAgICAgICAg
-fCAgIDEgKwo+PiAgZHJpdmVycy9pcnFjaGlwL2lycS1sb29uZ3Nvbi1saW9pbnRjLmMgfCAyNjEg
-Cj4+ICsrKysrKysrKysrKysrKysrKysrKysrKysKPj4gIDMgZmlsZXMgY2hhbmdlZCwgMjcxIGlu
-c2VydGlvbnMoKykKPj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2lycWNoaXAvaXJxLWxv
-b25nc29uLWxpb2ludGMuYwo+PiAKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvaXJxY2hpcC9LY29u
-ZmlnIGIvZHJpdmVycy9pcnFjaGlwL0tjb25maWcKPj4gaW5kZXggNmQzOTc3MzIxMzhkLi5jNjA5
-ZWFhMzE5ZDIgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvaXJxY2hpcC9LY29uZmlnCj4+ICsrKyBi
-L2RyaXZlcnMvaXJxY2hpcC9LY29uZmlnCj4+IEBAIC01MTMsNCArNTEzLDEzIEBAIGNvbmZpZyBF
-WFlOT1NfSVJRX0NPTUJJTkVSCj4+ICAJICBTYXkgeWVzIGhlcmUgdG8gYWRkIHN1cHBvcnQgZm9y
-IHRoZSBJUlEgY29tYmluZXIgZGV2aWNlcyBlbWJlZGRlZAo+PiAgCSAgaW4gU2Ftc3VuZyBFeHlu
-b3MgY2hpcHMuCj4+IAo+PiArY29uZmlnIExPT05HU09OX0xJT0lOVEMKPj4gKwlib29sICJMb29u
-Z3NvbiBMb2NhbCBJL08gSW50ZXJydXB0IENvbnRyb2xsZXIiCj4+ICsJZGVwZW5kcyBvbiBNQUNI
-X0xPT05HU09ONjQKPj4gKwlkZWZhdWx0IHkKPj4gKwlzZWxlY3QgSVJRX0RPTUFJTgo+PiArCXNl
-bGVjdCBHRU5FUklDX0lSUV9DSElQCj4+ICsJaGVscAo+PiArCSAgU3VwcG9ydCBmb3IgdGhlIExv
-b25nc29uIExvY2FsIEkvTyBJbnRlcnJ1cHQgQ29udHJvbGxlci4KPj4gKwo+PiAgZW5kbWVudQo+
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9pcnFjaGlwL01ha2VmaWxlIGIvZHJpdmVycy9pcnFjaGlw
-L01ha2VmaWxlCj4+IGluZGV4IGVhZTBkNzhjYmYyMi4uNWU3Njc4ZWZkZmU2IDEwMDY0NAo+PiAt
-LS0gYS9kcml2ZXJzL2lycWNoaXAvTWFrZWZpbGUKPj4gKysrIGIvZHJpdmVycy9pcnFjaGlwL01h
-a2VmaWxlCj4+IEBAIC0xMDUsMyArMTA1LDQgQEAgb2JqLSQoQ09ORklHX01BREVSQV9JUlEpCQkr
-PSBpcnEtbWFkZXJhLm8KPj4gIG9iai0kKENPTkZJR19MUzFYX0lSUSkJCQkrPSBpcnEtbHMxeC5v
-Cj4+ICBvYmotJChDT05GSUdfVElfU0NJX0lOVFJfSVJRQ0hJUCkJKz0gaXJxLXRpLXNjaS1pbnRy
-Lm8KPj4gIG9iai0kKENPTkZJR19USV9TQ0lfSU5UQV9JUlFDSElQKQkrPSBpcnEtdGktc2NpLWlu
-dGEubwo+PiArb2JqLSQoQ09ORklHX0xPT05HU09OX0xJT0lOVEMpCQkrPSBpcnEtbG9vbmdzb24t
-bGlvaW50Yy5vCj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2lycWNoaXAvaXJxLWxvb25nc29uLWxp
-b2ludGMuYyAKPj4gYi9kcml2ZXJzL2lycWNoaXAvaXJxLWxvb25nc29uLWxpb2ludGMuYwo+PiBu
-ZXcgZmlsZSBtb2RlIDEwMDY0NAo+PiBpbmRleCAwMDAwMDAwMDAwMDAuLjE4ZGUyYzA5ZWNlNAo+
-PiAtLS0gL2Rldi9udWxsCj4+ICsrKyBiL2RyaXZlcnMvaXJxY2hpcC9pcnEtbG9vbmdzb24tbGlv
-aW50Yy5jCj4+IEBAIC0wLDAgKzEsMjYxIEBACj4+ICsvLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmll
-cjogR1BMLTIuMAo+PiArLyoKPj4gKyAqICBDb3B5cmlnaHQgKEMpIDIwMjAsIEppYXh1biBZYW5n
-IDxqaWF4dW4ueWFuZ0BmbHlnb2F0LmNvbT4KPj4gKyAqICBMb29uZ3NvbiBMb2NhbCBJTyBJbnRl
-cnJ1cHQgQ29udHJvbGxlciBzdXBwb3J0Cj4+ICsgKi8KPj4gKwo+PiArI2luY2x1ZGUgPGxpbnV4
-L2Vycm5vLmg+Cj4+ICsjaW5jbHVkZSA8bGludXgvaW5pdC5oPgo+PiArI2luY2x1ZGUgPGxpbnV4
-L3R5cGVzLmg+Cj4+ICsjaW5jbHVkZSA8bGludXgvaW50ZXJydXB0Lmg+Cj4+ICsjaW5jbHVkZSA8
-bGludXgvaW9wb3J0Lmg+Cj4+ICsjaW5jbHVkZSA8bGludXgvaXJxY2hpcC5oPgo+PiArI2luY2x1
-ZGUgPGxpbnV4L29mX2FkZHJlc3MuaD4KPj4gKyNpbmNsdWRlIDxsaW51eC9vZl9pcnEuaD4KPj4g
-KyNpbmNsdWRlIDxsaW51eC9pby5oPgo+PiArI2luY2x1ZGUgPGxpbnV4L3NtcC5oPgo+PiArI2lu
-Y2x1ZGUgPGxpbnV4L2lycWNoaXAvY2hhaW5lZF9pcnEuaD4KPj4gKwo+PiArI2luY2x1ZGUgPGJv
-b3RfcGFyYW0uaD4KPj4gKwo+PiArI2RlZmluZSBMSU9JTlRDX0NISVBfSVJRCTMyCj4+ICsjZGVm
-aW5lIExJT0lOVENfTlVNX1BBUkVOVCA0Cj4+ICsKPj4gKyNkZWZpbmUgTElPSU5UQ19JTlRDX0NI
-SVBfU1RBUlQJMHgyMAo+PiArCj4+ICsjZGVmaW5lIExJT0lOVENfUkVHX0lOVENfU1RBVFVTCShM
-SU9JTlRDX0lOVENfQ0hJUF9TVEFSVCArIDB4MjApCj4+ICsjZGVmaW5lIExJT0lOVENfUkVHX0lO
-VENfRU5fU1RBVFVTCShMSU9JTlRDX0lOVENfQ0hJUF9TVEFSVCArIDB4MDQpCj4+ICsjZGVmaW5l
-IExJT0lOVENfUkVHX0lOVENfRU5BQkxFCShMSU9JTlRDX0lOVENfQ0hJUF9TVEFSVCArIDB4MDgp
-Cj4+ICsjZGVmaW5lIExJT0lOVENfUkVHX0lOVENfRElTQUJMRQkoTElPSU5UQ19JTlRDX0NISVBf
-U1RBUlQgKyAweDBjKQo+PiArI2RlZmluZSBMSU9JTlRDX1JFR19JTlRDX1BPTAkoTElPSU5UQ19J
-TlRDX0NISVBfU1RBUlQgKyAweDEwKQo+PiArI2RlZmluZSBMSU9JTlRDX1JFR19JTlRDX0VER0UJ
-KExJT0lOVENfSU5UQ19DSElQX1NUQVJUICsgMHgxNCkKPj4gKwo+PiArI2RlZmluZSBMSU9JTlRD
-X1NISUZUX0lOVHgJNAo+PiArCj4+ICtzdHJ1Y3QgbGlvaW50Y19oYW5kbGVyX2RhdGEgewo+PiAr
-CXN0cnVjdCBsaW9pbnRjX3ByaXYJKnByaXY7Cj4+ICsJdTMyCQkJcGFyZW50X2ludF9tYXA7Cj4+
-ICt9Owo+PiArCj4+ICtzdHJ1Y3QgbGlvaW50Y19wcml2IHsKPj4gKwlzdHJ1Y3QgaXJxX2NoaXBf
-Z2VuZXJpYwkJKmdjOwo+PiArCXN0cnVjdCBsaW9pbnRjX2hhbmRsZXJfZGF0YQloYW5kbGVyW0xJ
-T0lOVENfTlVNX1BBUkVOVF07Cj4+ICsJdTgJCQkJbWFwX2NhY2hlW0xJT0lOVENfQ0hJUF9JUlFd
-Owo+PiArfTsKPj4gKwo+PiArc3RhdGljIHZvaWQgbGlvaW50Y19jaGFpbmVkX2hhbmRsZV9pcnEo
-c3RydWN0IGlycV9kZXNjICpkZXNjKQo+PiArewo+PiArCXN0cnVjdCBsaW9pbnRjX2hhbmRsZXJf
-ZGF0YSAqaGFuZGxlciA9IAo+PiBpcnFfZGVzY19nZXRfaGFuZGxlcl9kYXRhKGRlc2MpOwo+PiAr
-CXN0cnVjdCBpcnFfY2hpcCAqY2hpcCA9IGlycV9kZXNjX2dldF9jaGlwKGRlc2MpOwo+PiArCXN0
-cnVjdCBpcnFfY2hpcF9nZW5lcmljICpnYyA9IGhhbmRsZXItPnByaXYtPmdjOwo+PiArCXUzMiBw
-ZW5kaW5nOwo+PiArCj4+ICsJY2hhaW5lZF9pcnFfZW50ZXIoY2hpcCwgZGVzYyk7Cj4+ICsKPj4g
-KwlwZW5kaW5nID0gcmVhZGwoZ2MtPnJlZ19iYXNlICsgTElPSU5UQ19SRUdfSU5UQ19TVEFUVVMp
-Owo+PiArCj4+ICsJaWYgKCFwZW5kaW5nKQo+PiArCQlzcHVyaW91c19pbnRlcnJ1cHQoKTsKPj4g
-Kwo+PiArCXdoaWxlIChwZW5kaW5nKSB7Cj4+ICsJCWludCBiaXQgPSBfX2ZmcyhwZW5kaW5nKTsK
-Pj4gKwo+PiArCQlnZW5lcmljX2hhbmRsZV9pcnEoaXJxX2ZpbmRfbWFwcGluZyhnYy0+ZG9tYWlu
-LCBiaXQpKTsKPj4gKwkJcGVuZGluZyAmPSB+QklUKGJpdCk7Cj4+ICsJfQo+IAo+IENvbnNpZGVy
-IHVzaW5nIHRoZSBmb3JfZWFjaF9zZXRfYml0KCkgbWFjcm8gZnJvbSA8bGludXgvYml0b3BzLmg+
-Lgo+IFNlZSBkcml2ZXJzL2lycWNoaXAvaXJxLWluZ2VuaWMtdGN1LmMgZm9yIGluc3RhbmNlLgoK
-d2hpY2ggd291bGQgcmVxdWlyZSBjaGFuZ2luZyB0aGUgcGVuZGluZyB0eXBlIHRvIGJlIHVuc2ln
-bmVkIGxvbmcuCk9wZW4tY29kaW5nIHRoZXNlIGlmIGZpbmUgaWYgaXQgaGVscHMga2VlcGluZyB0
-aGUgdHlwZSBzeXN0ZW0gCmNvbnNpc3RlbnQuCgogICAgICAgICBNLgotLSAKSmF6eiBpcyBub3Qg
-ZGVhZC4gSXQganVzdCBzbWVsbHMgZnVubnkuLi4KCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1t
-ZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+Hello Mark,
+
+On Wed, 2020-03-25 at 11:34 +0000, Mark Brown wrote:
+> On Wed, Mar 25, 2020 at 06:58:56AM +0000, Vaittinen, Matti wrote:
+> > On Tue, 2020-03-24 at 14:24 +0000, Mark Brown wrote:
+> > > On Tue, Mar 24, 2020 at 10:30:54AM +0200, Matti Vaittinen wrote:
+> > > >  
+> > > > -		if (!(min_uV <= linear_max_uV && max_uV >=
+> > > > range-
+> > > > > min_uV))
+> > > > +		ret = linear_range_get_selector_high(range,
+> > > > min_uV,
+> > > > &sel,
+> > > > +						     &found);
+> > > > +		if (ret)
+> > > >  			continue;
+> > > Why are these going for _get_selector_high()?  Usually we try to
+> > > choose
+> > > the lowest voltage we can.
+> > I tried to maintain the existing logic - which is (if I am not
+> > mistaken) to search for first value which is equal or higher than
+> > the
+> > minimum. Hence we use the linear_range_get_selector_high() - which
+> > does
+> > not return selector for voltage smaller than given value (minimum).
+> 
+> OK, that's a bit confusingly named then - I'd read that as finding
+> the
+> highest value within the range without registering that the function
+> only takes a single value so can't verify if the selector is in range
+> or
+> not.  I'll also need to check that the modified code verifies that
+> the
+> selector returned is within range.
+
+In this API the boolan "found" reflects whether the value referred by
+the selector is in range. I didn't check the "found" here because the
+returned sel is in any case passed to rdev->desc->ops-
+>list_voltage(rdev, sel) - and returned voltage is checked to be in
+valid range.
+
+And Rob once wrote to me that "naming is hard" :) And I do agree. I
+selected this name because API returns value which is equal or higher
+than given. _low variant returns value which is lower or equal.
+
+Just a note - Dropped some email from CC as I keep getting delivery
+failures.
+
+Br,
+	Matti
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
