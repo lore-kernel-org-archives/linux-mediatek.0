@@ -2,65 +2,85 @@ Return-Path: <SRS0=43xy=5K=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 69012C54FD2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2020 02:36:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 94B4EC1975A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2020 05:56:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3DE4720714
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2020 02:36:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6189E20714
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Mar 2020 05:56:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="W+WgM9Ru";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=flygoat.com header.i=jiaxun.yang@flygoat.com header.b="DjuCOQ4e"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3DE4720714
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=flygoat.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ClHUXrNb";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="pZR9ei1v"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6189E20714
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Subject:Message-ID:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lyDr1mZY15UCPGGbrWonAGMR/xl01ol/jaEwEJi1Yq0=; b=W+WgM9Rup48bw1
-	xooHa5ZN1VUseynZrpRYDpbvUVVbshC5RcDhTFE2sv+Jf+pcOk3w+1IqUCmt9B4jTuC5pR18miWQy
-	1PsjoJ1zyM5UxDA5WBwbIsBLDqDO6UuHFFP/1I818MppkDqSc/GV3EU40meuNpjOCl3ubeHMBN0me
-	9GPCcf9H7SzWA42y5XytsXCe0Hj3sOdgxYo/JH9wxnN6+cBv8AdOVbBx/d57SVEl7SzJZLKNNUntb
-	RhCpxZoVoEGHsOvEdIJG0y9YI0C/l9CNd01Uo/sdBFdLnrTcbSxtb7W5GNZRaRMtKmJkqxbrnro0K
-	aQV2Ff0FVk+9+iMd1GRA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=03uYPwVM1g4XQUdr9YCkIpE4GajRaSIMQUbmaPwrtGM=; b=ClHUXrNbzDxS37
+	PHBBGg4Okekdw7CwW7YShLJhTZCEoOYwbWfHr4zKCeeF+OSHGFsyzB2gc7cCUA4b9lP7BW4Dz3afR
+	nXSHkMiZw6MSwuguoryHQZc52odHREhNlB7pUqmKcc+tC/V9gy5cfcQX1piWfaS+Y/Fp9K6xpxHC+
+	5dkfaL0TpnYDxsJzJ5K0phCVbQH8Drqtlkh/DXOEVMrgXz1qVa0pNMhI5XVDBCqGz7IdL92HrdUck
+	CE41Q6uY1X8+Pvin0h794oUVejJly3KH7etdPWb0ggD6WpeHpGZ3hJcVkWh85UjcJ239/JKr8wZcD
+	mNd/S769cvf5Bu8QpUEA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jGvtZ-0007Ac-JY; Wed, 25 Mar 2020 02:35:53 +0000
-Received: from sender3-op-o12.zoho.com.cn ([124.251.121.243])
+	id 1jGz23-0006O3-30; Wed, 25 Mar 2020 05:56:51 +0000
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jGvt6-0006eY-2G; Wed, 25 Mar 2020 02:35:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1585103557; 
- s=mail; d=flygoat.com; i=jiaxun.yang@flygoat.com;
- h=From:To:Cc:Message-ID:Subject:Date:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type;
- bh=npt681j7OlP7ZSLk8k6P4PyWCdxxnt6o5Olle4tXENs=;
- b=DjuCOQ4erRnLLiXGEbfrRUs43h9P4HLYMuXPb1FGlzWCV8FKI6xsFeYRowUydzRf
- Xb2WgmTQxWLp+zfflNUpcgcdszYSnrytwSiCiYncfWEOQ5cl+G2Vzq/FLc38H9f+3DC
- 8mr5kZ6sQsEP3dfCmRLc/5b4lZNDXSJ3n83EOHkk=
-Received: from localhost.localdomain (39.155.141.144 [39.155.141.144]) by
- mx.zoho.com.cn with SMTPS id 1585103555009451.3472600108754;
- Wed, 25 Mar 2020 10:32:35 +0800 (CST)
-From: Jiaxun Yang <jiaxun.yang@flygoat.com>
-To: linux-mips@vger.kernel.org
-Message-ID: <20200325022916.106641-5-jiaxun.yang@flygoat.com>
-Subject: [PATCH v7 02/12] MIPS: DTS: CI20: add DT node for IR sensor
-Date: Wed, 25 Mar 2020 10:28:20 +0800
-X-Mailer: git-send-email 2.26.0.rc2
-In-Reply-To: <20200325022916.106641-1-jiaxun.yang@flygoat.com>
-References: <20200325022916.106641-1-jiaxun.yang@flygoat.com>
+ id 1jGz1p-00068Y-77; Wed, 25 Mar 2020 05:56:38 +0000
+Received: by mail-lj1-x242.google.com with SMTP id k21so1180907ljh.2;
+ Tue, 24 Mar 2020 22:56:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KXLP0/H62Iyak+HWMvNxv2asCanHU5NDryMupzQljyQ=;
+ b=pZR9ei1vxMr3u8y5qL+mLZGwU/2WSStdK5WDY0E67329D/GFURPI717SH1LJJ8Pjl7
+ wUdOM8f3RY5tMwLxdZsfS2NcnGAlpDtHxYI0uxbPL6F9TO7dGiB4hByqOrnYTrxKfmTo
+ A9UGNoNuiQS8omgDrK2UzlP1gAqF/MB49ucMu7uZDJnyngiYbvPjENn2qXW3Rvwl/ggV
+ 7Nsvzpj0Rsp1IIXZDXTPcAhvp88VuGFAb6uU8X7xM4ZAtLdxAZJUVQaP9mjst3dNvyH6
+ zUEeJAmo1krCrnnxTFUZrv9Vlh7c7wpu+5450YoGJZ1wXhHlZZaBDIF8ZrAWkm9SL/jK
+ 8qWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KXLP0/H62Iyak+HWMvNxv2asCanHU5NDryMupzQljyQ=;
+ b=VNFZ7sAVE1ldW0YdoRpPvbC4bkQ/Uy1zVejGhL+uhaGH1umKXl/xCZrVIEBKAvIGwZ
+ kleVrkUL2zQsOlGeCNWaKCEnJpV4DaZ8wv46gYsOqkeQLyTVKBVcdi7pfzOF5CFB2gr/
+ POlL04xR9ODOn77CxPjgqX8nQb84NZoFC5NYSptopgKx6whwOMkj9x0FWiSXCFi3V39q
+ 4FnDaAfwu7VaUzeIrFCiUTxZlZokHtwKpa7RG+vV1atfszAGRH5A9f/PdUrWEBovDjnh
+ 6yUntZTk/aIO3MriLigSdeu2qx4LP6uJjKSfaPYN/KTL568imDXBAS7Z2jbcCQ+HkzQP
+ GuJA==
+X-Gm-Message-State: AGi0PubB0JUvqahkMUSd6T/PXkPFEr/d+6ORJ++EW2BgegqrB/QlJ39o
+ ALgTx4wFun/rVYupzc3qCTQ=
+X-Google-Smtp-Source: ADFU+vu3fs9td+AZg+GfH8KE6sCDA0t03LRyFkKaskNvANi2tSXlhNrCU5zMzOlFPRoZLQ/GPlGnQg==
+X-Received: by 2002:a2e:878a:: with SMTP id n10mr885894lji.130.1585115794908; 
+ Tue, 24 Mar 2020 22:56:34 -0700 (PDT)
+Received: from localhost.localdomain ([185.188.71.122])
+ by smtp.gmail.com with ESMTPSA id y20sm3453692ljy.100.2020.03.24.22.56.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 24 Mar 2020 22:56:34 -0700 (PDT)
+From: Pawel Dembicki <paweldembicki@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>
+Subject: [PATCH] mt76: mt76x0: pci: add mt7610 PCI ID
+Date: Wed, 25 Mar 2020 06:55:23 +0100
+Message-Id: <20200325055525.20279-1-paweldembicki@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-ZohoCNMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200324_193524_641091_BCB414A9 
-X-CRM114-Status: UNSURE (   9.37  )
+X-CRM114-CacheID: sfid-20200324_225637_262255_04D8AC2E 
+X-CRM114-Status: UNSURE (   9.26  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -73,69 +93,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, linux-doc@vger.kernel.org,
- "H . Nikolaus Schaller" <hns@goldelico.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Paul Cercueil <paul@crapouillou.net>,
- linux-ide@vger.kernel.org, Miquel Raynal <miquel.raynal@bootlin.com>,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- Huacai Chen <chenhc@lemote.com>, Tiezhu Yang <yangtiezhu@loongson.cn>,
- Kees Cook <keescook@chromium.org>, Andi Kleen <ak@linux.intel.com>,
- Paul Burton <paulburton@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
- Marc Zyngier <maz@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>,
- Alex Smith <alex.smith@imgtec.com>, Yinglu Yang <yangyinglu@loongson.cn>,
- devicetree@vger.kernel.org, Jean Delvare <jdelvare@suse.com>,
- Jason Cooper <jason@lakedaemon.net>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Allison Randal <allison@lohutok.net>, linux-arm-kernel@lists.infradead.org,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Matt Redfearn <matt.redfearn@mips.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Serge Semin <fancer.lancer@gmail.com>,
- "Eric W. Biederman" <ebiederm@xmission.com>,
- Manuel Lauss <manuel.lauss@gmail.com>, "David S. Miller" <davem@davemloft.net>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Stanislaw Gruszka <sgruszka@redhat.com>,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Pawel Dembicki <paweldembicki@gmail.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Roy Luo <royluo@google.com>,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Alex Smith <alex.smith@imgtec.com>
+Add mt7610 PCI id found on D-Link DWR-960 to pci_device_id table.
 
-The infrared sensor on the CI20 board is connected to a GPIO and can
-be operated by using the gpio-ir-recv driver. Add a DT node for the
-sensor to allow that driver to be used.
+Run-tested on D-Link DWR-960 with no-name half-size mPCIE card
+with mt7610e.
 
-Signed-off-by: Alex Smith <alex.smith@imgtec.com>
-Signed-off-by: H. Nikolaus Schaller <hns@goldelico.com>
-Reviewed-by: Paul Cercueil <paul@crapouillou.net>
-Signed-off-by: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
+Signed-off-by: Pawel Dembicki <paweldembicki@gmail.com>
 ---
- arch/mips/boot/dts/ingenic/ci20.dts | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt76x0/pci.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/mips/boot/dts/ingenic/ci20.dts b/arch/mips/boot/dts/ingenic/ci20.dts
-index c340f947baa0..fc4e64200c3d 100644
---- a/arch/mips/boot/dts/ingenic/ci20.dts
-+++ b/arch/mips/boot/dts/ingenic/ci20.dts
-@@ -62,6 +62,11 @@ eth0_power: fixedregulator@0 {
- 		enable-active-high;
- 	};
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
+index e2974e0ae1fc..3bd753cda190 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
+@@ -215,6 +215,7 @@ mt76x0e_remove(struct pci_dev *pdev)
+ }
  
-+	ir: ir {
-+		compatible = "gpio-ir-receiver";
-+		gpios = <&gpe 3 GPIO_ACTIVE_LOW>;
-+	};
-+
- 	wlan0_power: fixedregulator@1 {
- 		compatible = "regulator-fixed";
- 		regulator-name = "wlan0_power";
+ static const struct pci_device_id mt76x0e_device_table[] = {
++	{ PCI_DEVICE(0x14c3, 0x7610) },
+ 	{ PCI_DEVICE(0x14c3, 0x7630) },
+ 	{ PCI_DEVICE(0x14c3, 0x7650) },
+ 	{ },
 -- 
-2.26.0.rc2
-
+2.20.1
 
 
 _______________________________________________
