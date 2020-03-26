@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 98D95C2D0ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2020 04:49:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2FFC0C43331
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2020 09:26:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C80A20772
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2020 04:49:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F2A8C20719
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2020 09:26:48 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MiNxBZTr";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=flygoat.com header.i=jiaxun.yang@flygoat.com header.b="JktAJCvf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C80A20772
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=flygoat.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eRi6EjYu"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F2A8C20719
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:Message-ID:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6unLsrPvEKhGgJHJJAz+1PagzLtkJOORf3f2bm3YAkY=; b=MiNxBZTrNRfyVQ
-	YShHK/FOsf5DAMMe7/pr8pcSQ/tsl1iVlcfauC9zJyzy+Dyr/eqko0EhmCyBa7DGB7YTwHklP4cc5
-	rSeQRWIDq+6vVFEjbvvzBhgsKa3vUbp9rP4qJhGfPwFXEsGb23SUrABYM4D15ngu0tcHrhDtD/GVb
-	VbfHQHWUyxPRA50HEXwhGdzFfkzdebWwcYFB3HHEubZFbV1+cw7Xw3bUOA4rraxtP9gp0JzANX6a2
-	+vrnZyhfX39JzX2senvCsn+2AS7lpnoT+EGPgXysxL/op13YP8tzatuBJDGAkrGl1DaMBpSa0QI4V
-	AX/4Bj+N7er/EdpnlOxQ==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=lHc9Lrvc0ZtJvotckiNV11ZZ5n797JrxvF/VRGx93gg=; b=eRi6EjYuFvUdfpV+QkwrlYsJFf
+	huqTIbZqaSKb8rm3lGAA0n4zlikikh7wnnnf184dHuSX0Df2vk4/XMSask+dDyx5w9M84Sc2ZWFOj
+	Wo1cumjESoDuVMA6DnmfXvwTK90c56yqKfCp1TbjXq82rJndwgOhRCWa445Oy+rHlXIqb44yZprTt
+	crC3v8aFC5CxbVnm7EQ52tAkZgHG9Plnd6rTaQjzqDaDjQyZa0IdmH38vmVCBJVSv4KnC+HUYQRlo
+	dCheKTZHpQDkIZJmEEkEpZYCN+3oAK9cFObihrvNrZLl1r+vFkEDfH3pWtrSjaIT9jJOpVsgFJO/r
+	iU/9rOPw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHKSY-0002Yu-SB; Thu, 26 Mar 2020 04:49:38 +0000
-Received: from sender3-op-o12.zoho.com.cn ([124.251.121.243])
+	id 1jHOmS-0001Qk-L4; Thu, 26 Mar 2020 09:26:28 +0000
+Received: from labrats.qualcomm.com ([199.106.110.90])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHKSV-0002Xe-PA
- for linux-mediatek@lists.infradead.org; Thu, 26 Mar 2020 04:49:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1585198133; 
- s=mail; d=flygoat.com; i=jiaxun.yang@flygoat.com;
- h=From:To:Cc:Message-ID:Subject:Date:MIME-Version:Content-Transfer-Encoding:Content-Type;
- bh=l2PNpR2Rc6LMbAWYXl8TckJ3AJ68KwDurPM44WgWOeQ=;
- b=JktAJCvfbErbaXFiovxaNBK1nkVnA/v8QmlERPL5f4nE/J0LBVIusx9+rYAecu7W
- mMZlfGsaO1mhB3nedStqoCwWyHD3gVrLomDwltPx09oTwa6Jjo6OAsc1nDQpo8zIraV
- wyR9z3b36PLOpiQOwSUG2uW92Sp0oZcL19WxDjiY=
-Received: from localhost.localdomain (39.155.141.144 [39.155.141.144]) by
- mx.zoho.com.cn with SMTPS id 1585198130690885.1881599862174;
- Thu, 26 Mar 2020 12:48:50 +0800 (CST)
-From: Jiaxun Yang <jiaxun.yang@flygoat.com>
-To: linux-mips@vger.kernel.org
-Message-ID: <20200326044804.382981-1-jiaxun.yang@flygoat.com>
-Subject: [PATCH 1/2] MIPS: Kill MIPS_GIC_IRQ_BASE
-Date: Thu, 26 Mar 2020 12:48:03 +0800
-X-Mailer: git-send-email 2.26.0.rc2
-MIME-Version: 1.0
-X-ZohoCNMailClient: External
+ id 1jHOmJ-0001JY-RI; Thu, 26 Mar 2020 09:26:21 +0000
+IronPort-SDR: BrctfGvM7wry5GhQTcDsQnJ6qNiFTR9y1lWL190mWOcSgMmvwOuI4xOlqslgIeidEmxjYIecOq
+ Uyh37cn+PDMAocZeOQovJSoo9qRmffuBXb+3yGoMPxJ45qmbzM6RNU7xstgTY/8bKPocW8cDrI
+ OXn1ePb+CJo3nFQtvCB8YxHwzDM8jvt+/5Co7YX1xLAmI3tL9gJsHwqCR/iKMelh3qKPDpELgK
+ xjUXr+1STd8ZZRPZlUH0ojsK0DBBVn38ugBOpmTzM1DtuAOzXkB+TIL6ViOmVYeFrgMyxdebiM
+ a5E=
+X-IronPort-AV: E=Sophos;i="5.72,307,1580803200"; d="scan'208";a="28616319"
+Received: from unknown (HELO ironmsg01-sd.qualcomm.com) ([10.53.140.141])
+ by labrats.qualcomm.com with ESMTP; 26 Mar 2020 02:26:18 -0700
+Received: from pacamara-linux.qualcomm.com ([192.168.140.135])
+ by ironmsg01-sd.qualcomm.com with ESMTP; 26 Mar 2020 02:26:16 -0700
+Received: by pacamara-linux.qualcomm.com (Postfix, from userid 359480)
+ id 888803AA6; Thu, 26 Mar 2020 02:26:16 -0700 (PDT)
+From: Can Guo <cang@codeaurora.org>
+To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
+ rnayak@codeaurora.org, linux-scsi@vger.kernel.org, kernel-team@android.com,
+ saravanak@google.com, salyzyn@google.com, cang@codeaurora.org
+Subject: [PATCH v6 2/2] scsi: ufs: Do not rely on prefetched data
+Date: Thu, 26 Mar 2020 02:25:41 -0700
+Message-Id: <1585214742-5466-3-git-send-email-cang@codeaurora.org>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1585214742-5466-1-git-send-email-cang@codeaurora.org>
+References: <1585214742-5466-1-git-send-email-cang@codeaurora.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200325_214936_295941_74BA2BC2 
-X-CRM114-Status: UNSURE (   3.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200326_022619_911648_A281D4B7 
+X-CRM114-Status: GOOD (  13.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,50 +74,149 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, tsbogend@alpha.franken.de,
- gch981213@gmail.com, Jiaxun Yang <jiaxun.yang@flygoat.com>
+Cc: Bart Van Assche <bvanassche@acm.org>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Venkat Gopalakrishnan <venkatg@codeaurora.org>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ open list <linux-kernel@vger.kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Avri Altman <avri.altman@wdc.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomas Winkler <tomas.winkler@intel.com>,
+ Stanley Chu <stanley.chu@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It never got used by any driver.
+We were setting bActiveICCLevel attribute for UFS device only once but
+type of this attribute has changed from persistent to volatile since UFS
+device specification v2.1. This attribute is set to the default value after
+power cycle or hardware reset event. It isn't safe to rely on prefetched
+data (only used for bActiveICCLevel attribute now). Hence this change
+removes the code related to data prefetching and set this parameter on
+every attempt to probe the UFS device.
 
-Signed-off-by: Jiaxun Yang <jiaxun.yang@flygoat.com>
+Signed-off-by: Can Guo <cang@codeaurora.org>
+Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+Tested-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Avri Altman <avri.altman@wdc.com>
 ---
- arch/mips/include/asm/mach-generic/irq.h   | 6 ------
- arch/mips/include/asm/mach-ralink/mt7621.h | 2 --
- 2 files changed, 8 deletions(-)
+ drivers/scsi/ufs/ufshcd.c | 26 +++++++++++++++-----------
+ drivers/scsi/ufs/ufshcd.h | 11 -----------
+ 2 files changed, 15 insertions(+), 22 deletions(-)
 
-diff --git a/arch/mips/include/asm/mach-generic/irq.h b/arch/mips/include/asm/mach-generic/irq.h
-index be546a0f65fa..72ac2c202c55 100644
---- a/arch/mips/include/asm/mach-generic/irq.h
-+++ b/arch/mips/include/asm/mach-generic/irq.h
-@@ -36,10 +36,4 @@
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 148e73a..f19a11e 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -6457,11 +6457,12 @@ static u32 ufshcd_find_max_sup_active_icc_level(struct ufs_hba *hba,
+ 	return icc_level;
+ }
  
- #endif /* CONFIG_IRQ_MIPS_CPU */
+-static void ufshcd_init_icc_levels(struct ufs_hba *hba)
++static void ufshcd_set_active_icc_lvl(struct ufs_hba *hba)
+ {
+ 	int ret;
+ 	int buff_len = hba->desc_size.pwr_desc;
+ 	u8 *desc_buf;
++	u32 icc_level;
  
--#ifdef CONFIG_MIPS_GIC
--#ifndef MIPS_GIC_IRQ_BASE
--#define MIPS_GIC_IRQ_BASE (MIPS_CPU_IRQ_BASE + 8)
--#endif
--#endif /* CONFIG_MIPS_GIC */
+ 	desc_buf = kmalloc(buff_len, GFP_KERNEL);
+ 	if (!desc_buf)
+@@ -6476,20 +6477,17 @@ static void ufshcd_init_icc_levels(struct ufs_hba *hba)
+ 		goto out;
+ 	}
+ 
+-	hba->init_prefetch_data.icc_level =
+-			ufshcd_find_max_sup_active_icc_level(hba,
+-			desc_buf, buff_len);
+-	dev_dbg(hba->dev, "%s: setting icc_level 0x%x",
+-			__func__, hba->init_prefetch_data.icc_level);
++	icc_level = ufshcd_find_max_sup_active_icc_level(hba, desc_buf,
++							 buff_len);
++	dev_dbg(hba->dev, "%s: setting icc_level 0x%x", __func__, icc_level);
+ 
+ 	ret = ufshcd_query_attr_retry(hba, UPIU_QUERY_OPCODE_WRITE_ATTR,
+-		QUERY_ATTR_IDN_ACTIVE_ICC_LVL, 0, 0,
+-		&hba->init_prefetch_data.icc_level);
++		QUERY_ATTR_IDN_ACTIVE_ICC_LVL, 0, 0, &icc_level);
+ 
+ 	if (ret)
+ 		dev_err(hba->dev,
+ 			"%s: Failed configuring bActiveICCLevel = %d ret = %d",
+-			__func__, hba->init_prefetch_data.icc_level , ret);
++			__func__, icc_level, ret);
+ 
+ out:
+ 	kfree(desc_buf);
+@@ -6995,8 +6993,6 @@ static int ufshcd_add_lus(struct ufs_hba *hba)
+ {
+ 	int ret;
+ 
+-	ufshcd_init_icc_levels(hba);
 -
- #endif /* __ASM_MACH_GENERIC_IRQ_H */
-diff --git a/arch/mips/include/asm/mach-ralink/mt7621.h b/arch/mips/include/asm/mach-ralink/mt7621.h
-index 65483a4681ab..e1af1ba50bd8 100644
---- a/arch/mips/include/asm/mach-ralink/mt7621.h
-+++ b/arch/mips/include/asm/mach-ralink/mt7621.h
-@@ -31,6 +31,4 @@
- #define MT7621_CHIP_NAME0		0x3637544D
- #define MT7621_CHIP_NAME1		0x20203132
+ 	/* Add required well known logical units to scsi mid layer */
+ 	ret = ufshcd_scsi_add_wlus(hba);
+ 	if (ret)
+@@ -7094,6 +7090,14 @@ static int ufshcd_probe_hba(struct ufs_hba *hba, bool async)
+ 		}
+ 	}
  
--#define MIPS_GIC_IRQ_BASE           (MIPS_CPU_IRQ_BASE + 8)
++	/*
++	 * bActiveICCLevel is volatile for UFS device (as per latest v2.1 spec)
++	 * and for removable UFS card as well, hence always set the parameter.
++	 * Note: Error handler may issue the device reset hence resetting
++	 * bActiveICCLevel as well so it is always safe to set this here.
++	 */
++	ufshcd_set_active_icc_lvl(hba);
++
+ 	/* set the state as operational after switching to desired gear */
+ 	hba->ufshcd_state = UFSHCD_STATE_OPERATIONAL;
+ 
+diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+index d45a044..5652d39 100644
+--- a/drivers/scsi/ufs/ufshcd.h
++++ b/drivers/scsi/ufs/ufshcd.h
+@@ -404,15 +404,6 @@ struct ufs_clk_scaling {
+ 	bool is_suspended;
+ };
+ 
+-/**
+- * struct ufs_init_prefetch - contains data that is pre-fetched once during
+- * initialization
+- * @icc_level: icc level which was read during initialization
+- */
+-struct ufs_init_prefetch {
+-	u32 icc_level;
+-};
 -
- #endif
+ #define UFS_ERR_REG_HIST_LENGTH 8
+ /**
+  * struct ufs_err_reg_hist - keeps history of errors
+@@ -544,7 +535,6 @@ enum ufshcd_quirks {
+  * @intr_mask: Interrupt Mask Bits
+  * @ee_ctrl_mask: Exception event control mask
+  * @is_powered: flag to check if HBA is powered
+- * @init_prefetch_data: data pre-fetched during initialization
+  * @eh_work: Worker to handle UFS errors that require s/w attention
+  * @eeh_work: Worker to handle exception events
+  * @errors: HBA errors
+@@ -632,7 +622,6 @@ struct ufs_hba {
+ 	u32 intr_mask;
+ 	u16 ee_ctrl_mask;
+ 	bool is_powered;
+-	struct ufs_init_prefetch init_prefetch_data;
+ 
+ 	/* Work Queues */
+ 	struct work_struct eh_work;
 -- 
-2.26.0.rc2
-
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
 
 
 _______________________________________________
