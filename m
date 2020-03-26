@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7BF80C2D0EC
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CC12FC2D0E5
 	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2020 15:09:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4EA052076A
+	by mail.kernel.org (Postfix) with ESMTPS id A2E6D20775
 	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2020 15:09:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dygh9bDo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4EA052076A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bFav5GpR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A2E6D20775
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,34 +26,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=pmXtsQj8nCdl5PIGodf5GTwouWvEEPnbQp95FT1J0EU=; b=dygh9bDo57GE97hCq+x9UjVobQ
-	Agqgy7XzRsrOLvaKyTKQgYA6cyO58ZjrHdRjaJQBZwGit5sreVGrvF8x1a6DQXQ8kZZ/bQNYuZTo0
-	Jc+fvIpemQXascoRvqN13KFkVPEeDpTbXk7UnK4bnJvElz3R3XJxIthSitG4lcPpMUGOqrn8+oyDm
-	y0AqFzEGaes0QV/f+W1PApgQlXuZxe2rWLXt73zXAc3RfZSXT+snncCIEoU7HIiNjyLyRwIaN4MrO
-	mVkm0jy/Jh6yuFEYOGgJFdjTqY5oQj8RMJVqBtfdqKyIdfNPQVZIIuW4Ew7QzQNbQS0DiiSO9LN9m
-	lRc4uelA==;
+	bh=0GFgWLLgv8Mp5Qx3HaZ5JLG0LAh8pDym2idSOMRxf9A=; b=bFav5GpRx1F+adVCjcWgqwCJqT
+	b9XkGT2WdPKe95nAF2lekGNWPJda73UNlvhzvJG7sE1Tg65iiK/CnSZjfzk5upz5QdIHeBLioT1Dc
+	1A6Gw1AKvxKEfR4qCmKWH56W7QyxMfW0ewlKWYpGhZ2uP75ibfUYgD/D/6S7LH40pFs0Z53TjZJkN
+	xoUba6db6o3XbJ+To2zmEv08zIxjzXJj+V/mIxmIS+p6xw91mKP7yCt//blxuRUEiss6S8ATK5uBE
+	E7kCIvHQuvsKf8StVcfusKoYGvbKf5iTJ+qPgAQmwFNJ7X9CEEedvIgD+FqydE1jDVILgxZY1G5fz
+	nshflODA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHU7x-0004B6-Hw; Thu, 26 Mar 2020 15:09:01 +0000
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
- helo=theia.8bytes.org)
+	id 1jHU80-0004EW-2R; Thu, 26 Mar 2020 15:09:04 +0000
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHU7n-0003zg-1h
+ id 1jHU7m-0003zk-7L
  for linux-mediatek@lists.infradead.org; Thu, 26 Mar 2020 15:08:52 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id A256357; Thu, 26 Mar 2020 16:08:45 +0100 (CET)
+ id 17BCA4F0; Thu, 26 Mar 2020 16:08:45 +0100 (CET)
 From: Joerg Roedel <joro@8bytes.org>
 To: iommu@lists.linux-foundation.org
-Subject: [PATCH v4 01/16] iommu: Define dev_iommu_fwspec_get() for
- !CONFIG_IOMMU_API
-Date: Thu, 26 Mar 2020 16:08:26 +0100
-Message-Id: <20200326150841.10083-2-joro@8bytes.org>
+Subject: [PATCH v4 03/16] drm/msm/mdp5: Remove direct access of
+ dev->iommu_fwspec
+Date: Thu, 26 Mar 2020 16:08:28 +0100
+Message-Id: <20200326150841.10083-4-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200326150841.10083-1-joro@8bytes.org>
 References: <20200326150841.10083-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200326_080851_230467_609F23C7 
-X-CRM114-Status: UNSURE (   7.44  )
+X-CRM114-CacheID: sfid-20200326_080850_409079_736F76A8 
+X-CRM114-Status: UNSURE (   9.42  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -83,32 +82,28 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-There are users outside of the IOMMU code that need to call that
-function. Define it for !CONFIG_IOMMU_API too so that compilation does
-not break.
+Use the accessor functions instead of directly dereferencing
+dev->iommu_fwspec.
 
-Reported-by: kbuild test robot <lkp@intel.com>
 Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- include/linux/iommu.h | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/linux/iommu.h b/include/linux/iommu.h
-index d1b5f4d98569..3c4ca041d7a2 100644
---- a/include/linux/iommu.h
-+++ b/include/linux/iommu.h
-@@ -1073,6 +1073,10 @@ static inline int iommu_sva_unbind_gpasid(struct iommu_domain *domain,
- 	return -ENODEV;
- }
+diff --git a/drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c b/drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c
+index e43ecd4be10a..1252e1d76340 100644
+--- a/drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c
++++ b/drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c
+@@ -725,7 +725,7 @@ struct msm_kms *mdp5_kms_init(struct drm_device *dev)
  
-+static inline struct iommu_fwspec *dev_iommu_fwspec_get(struct device *dev)
-+{
-+	return NULL;
-+}
- #endif /* CONFIG_IOMMU_API */
+ 	if (config->platform.iommu) {
+ 		iommu_dev = &pdev->dev;
+-		if (!iommu_dev->iommu_fwspec)
++		if (!dev_iommu_fwspec_get(iommu_dev))
+ 			iommu_dev = iommu_dev->parent;
  
- #ifdef CONFIG_IOMMU_DEBUGFS
+ 		aspace = msm_gem_address_space_create(iommu_dev,
 -- 
 2.17.1
 
