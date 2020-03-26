@@ -2,21 +2,21 @@ Return-Path: <SRS0=woo5=5L=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4DDD8C2D0E5
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6365AC2D0E8
 	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2020 15:09:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1FC202077D
+	by mail.kernel.org (Postfix) with ESMTPS id 3A79921707
 	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2020 15:09:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KEi671bk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1FC202077D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XWwTevPm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3A79921707
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,33 +26,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=BYijA7g9xNv7V0GyB2eM6NdtdjMEo2utQoTnQH2N7h8=; b=KEi671bkt7Jvn6V41dfVNKdFG2
-	Ubs5CwSgbiKEIIsEH16EykiqarAwDv1r4URT74YNqui13pd7+XWBc+5BPmDLNGQKoym8p6tR6Ao0d
-	zh7Jo/RWAjgIbMq7xfUWGs8yDrRY/QwhBscq8poh6YeBKvDTVS3AK2wzujm8tI8rje3/3Dx+JZ7Hm
-	T7jFvEjM2TA516jN8VrzU5bGZNq4iEzqnqMXmIcnogxibPVcDq4ELG13f3WvmXMWbhMUCbTWDUOjR
-	265F51gmSZBYSFHBM96J9FP+9Sy2XTbDT0kei0qu+3V58CapcKLFhQMq1/TKpnPeQrXcA3FMH03qu
-	IupIxqQw==;
+	bh=sh0g7jiLTnC7ywfB2GVhuXraiI5zHi+4ihowsAHwAow=; b=XWwTevPmcCQhLMnx34J7YUR9tG
+	bjI7rtf9RRz7Ekmu1fyukl/mN4oj3gq+aLQp3JNKOa3UAiLBXHQ1+YdmCeyZ990pXq4WLmi0TkpnQ
+	Mny3Ah5juEAJ8w7l7iM8YyvBThC839IyBknnzhj/sMERVjp01rX/H1/jTsSQoZxi6TM2Ztg4N3SP0
+	eXRWK026nJRmTM6XCP93R5sjn3iGmVukrlmLcOPNueaBWE/5VET7TXjuHycn70tD5/aXW9qacmknT
+	jhBrPz6TrejZx1z+1Pw0qXIOIZdpYgUXT97oinrjFTUJU7eudhcx0+PUuWJJqBTJzPCpuhvGdDSmq
+	jYMNTQIA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHU8K-0004q8-Eo; Thu, 26 Mar 2020 15:09:24 +0000
+	id 1jHU8I-0004lf-6b; Thu, 26 Mar 2020 15:09:22 +0000
 Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHU7q-00041x-OG
+ id 1jHU7s-00045o-Ff
  for linux-mediatek@lists.infradead.org; Thu, 26 Mar 2020 15:08:59 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 7D7407E6; Thu, 26 Mar 2020 16:08:47 +0100 (CET)
+ id 1F478B9D; Thu, 26 Mar 2020 16:08:49 +0100 (CET)
 From: Joerg Roedel <joro@8bytes.org>
 To: iommu@lists.linux-foundation.org
-Subject: [PATCH v4 09/16] iommu/arm-smmu-v3: Use accessor functions for iommu
- private data
-Date: Thu, 26 Mar 2020 16:08:34 +0100
-Message-Id: <20200326150841.10083-10-joro@8bytes.org>
+Subject: [PATCH v4 16/16] iommu: Move fwspec->iommu_priv to struct dev_iommu
+Date: Thu, 26 Mar 2020 16:08:41 +0100
+Message-Id: <20200326150841.10083-17-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200326150841.10083-1-joro@8bytes.org>
 References: <20200326150841.10083-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200326_080855_016965_FB35812B 
-X-CRM114-Status: GOOD (  10.70  )
+X-CRM114-CacheID: sfid-20200326_080856_702712_8EC8AB44 
+X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,64 +81,59 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Make use of dev_iommu_priv_set/get() functions in the code.
+Move the pointer for iommu private data from struct iommu_fwspec to
+struct dev_iommu.
 
-Tested-by: Hanjun Guo <guohanjun@huawei.com>
+Tested-by: Will Deacon <will@kernel.org> # arm-smmu
 Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/arm-smmu-v3.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ include/linux/iommu.h | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/iommu/arm-smmu-v3.c b/drivers/iommu/arm-smmu-v3.c
-index aa3ac2a03807..2b68498dfb66 100644
---- a/drivers/iommu/arm-smmu-v3.c
-+++ b/drivers/iommu/arm-smmu-v3.c
-@@ -2659,7 +2659,7 @@ static int arm_smmu_attach_dev(struct iommu_domain *domain, struct device *dev)
- 	if (!fwspec)
- 		return -ENOENT;
+diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+index 056900e75758..8c4d45fce042 100644
+--- a/include/linux/iommu.h
++++ b/include/linux/iommu.h
+@@ -369,6 +369,7 @@ struct iommu_fault_param {
+  *
+  * @fault_param: IOMMU detected device fault reporting data
+  * @fwspec:	 IOMMU fwspec data
++ * @priv:	 IOMMU Driver private data
+  *
+  * TODO: migrate other per device data pointers under iommu_dev_data, e.g.
+  *	struct iommu_group	*iommu_group;
+@@ -377,6 +378,7 @@ struct dev_iommu {
+ 	struct mutex lock;
+ 	struct iommu_fault_param	*fault_param;
+ 	struct iommu_fwspec		*fwspec;
++	void				*priv;
+ };
  
--	master = fwspec->iommu_priv;
-+	master = dev_iommu_priv_get(dev);
- 	smmu = master->smmu;
+ int  iommu_device_register(struct iommu_device *iommu);
+@@ -589,7 +591,6 @@ struct iommu_group *fsl_mc_device_group(struct device *dev);
+ struct iommu_fwspec {
+ 	const struct iommu_ops	*ops;
+ 	struct fwnode_handle	*iommu_fwnode;
+-	void			*iommu_priv;
+ 	u32			flags;
+ 	u32			num_pasid_bits;
+ 	unsigned int		num_ids;
+@@ -629,12 +630,12 @@ static inline void dev_iommu_fwspec_set(struct device *dev,
  
- 	arm_smmu_detach_dev(master);
-@@ -2795,7 +2795,7 @@ static int arm_smmu_add_device(struct device *dev)
- 	if (!fwspec || fwspec->ops != &arm_smmu_ops)
- 		return -ENODEV;
- 
--	if (WARN_ON_ONCE(fwspec->iommu_priv))
-+	if (WARN_ON_ONCE(dev_iommu_priv_get(dev)))
- 		return -EBUSY;
- 
- 	smmu = arm_smmu_get_by_fwnode(fwspec->iommu_fwnode);
-@@ -2810,7 +2810,7 @@ static int arm_smmu_add_device(struct device *dev)
- 	master->smmu = smmu;
- 	master->sids = fwspec->ids;
- 	master->num_sids = fwspec->num_ids;
--	fwspec->iommu_priv = master;
-+	dev_iommu_priv_set(dev, master);
- 
- 	/* Check the SIDs are in range of the SMMU and our stream table */
- 	for (i = 0; i < master->num_sids; i++) {
-@@ -2852,7 +2852,7 @@ static int arm_smmu_add_device(struct device *dev)
- 	iommu_device_unlink(&smmu->iommu, dev);
- err_free_master:
- 	kfree(master);
--	fwspec->iommu_priv = NULL;
-+	dev_iommu_priv_set(dev, NULL);
- 	return ret;
+ static inline void *dev_iommu_priv_get(struct device *dev)
+ {
+-	return dev->iommu->fwspec->iommu_priv;
++	return dev->iommu->priv;
  }
  
-@@ -2865,7 +2865,7 @@ static void arm_smmu_remove_device(struct device *dev)
- 	if (!fwspec || fwspec->ops != &arm_smmu_ops)
- 		return;
+ static inline void dev_iommu_priv_set(struct device *dev, void *priv)
+ {
+-	dev->iommu->fwspec->iommu_priv = priv;
++	dev->iommu->priv = priv;
+ }
  
--	master = fwspec->iommu_priv;
-+	master = dev_iommu_priv_get(dev);
- 	smmu = master->smmu;
- 	arm_smmu_detach_dev(master);
- 	iommu_group_remove_device(dev);
+ int iommu_probe_device(struct device *dev);
 -- 
 2.17.1
 
