@@ -2,21 +2,21 @@ Return-Path: <SRS0=woo5=5L=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 80AA0C43331
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2020 15:09:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1EEDEC2D0EE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2020 15:09:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 519AE20775
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2020 15:09:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E3BF420787
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2020 15:09:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gY3Olts3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 519AE20775
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uE6EMS0U"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E3BF420787
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,33 +26,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=Wf4dpnk8R7ndeY9p2CozGIkG4HTyfkFI7nEBANurGRI=; b=gY3Olts3aQVabzlcTp8RmuLSc2
-	oneK8HiFhG3ndXtwPWSC8OSGzew9FVnYZarsY1OUNowBlaCS1jsZPRpbtvetnM3bXOjxousUsjqQH
-	jUO6Cm5WD/PzV1WCHcDOIqXc8sHTlAnEhlCFDjMj25IrjSD95VCQLfno1Mj4guqsctNYtv0SHpDbo
-	aE/u53iQg8/w4Jmvjm9bMdjhlxmpuRKijPmipbPD94cl8JM3zgs3eCjcy5WRubiDTkx42gGGXtyRJ
-	tQ+NuIp23aIm6NBU5aqyPpcHv6/Id1FEGFunEJ4hxaE1XplUxagPlIw9kTEfzXw83pzF4v2RDz16x
-	WXztFqiQ==;
+	bh=xBwt8k0Xh9GQZrxD317hvr+KG0VilQNQG1fo6getatk=; b=uE6EMS0URwBuZ4cAq7uzWK1Q8Q
+	TbIjm7zIfeqRvLd0+NeN4EbreZsRX5DSedLO27dlF4np2kcZCbdI1mV8qhSwtrDZyHxmqQ4sTzqbo
+	R+HD3qpuOc+rwHI9z05QgIqpG3gug2gPAyOknwks3SnL7ofex6akFolcXRsNrcKfy8xVQkna8/+tA
+	lKs2HN+k9GPQdEMs7cADR7tYgvCd/LxmlpfPWpMikx9l3JI+UIKztC/cl9XgOmCCtcM/HGlTU/AKy
+	40K1PST01o2Y02XVVRaEqxVhuOMrK/jE0AmrOSedNrp1+G2QIr7cISQHEd54dT/VryEd6F+c0M1gZ
+	al4qxBlQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHU87-0004QC-7a; Thu, 26 Mar 2020 15:09:11 +0000
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
- helo=theia.8bytes.org)
+	id 1jHU88-0004SO-IP; Thu, 26 Mar 2020 15:09:12 +0000
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHU7p-00041Q-HC
- for linux-mediatek@lists.infradead.org; Thu, 26 Mar 2020 15:08:56 +0000
+ id 1jHU7q-000425-I2
+ for linux-mediatek@lists.infradead.org; Thu, 26 Mar 2020 15:08:57 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 1D83375B; Thu, 26 Mar 2020 16:08:46 +0100 (CET)
+ id 68E209B2; Thu, 26 Mar 2020 16:08:48 +0100 (CET)
 From: Joerg Roedel <joro@8bytes.org>
 To: iommu@lists.linux-foundation.org
-Subject: [PATCH v4 07/16] iommu/arm-smmu: Fix uninitilized variable warning
-Date: Thu, 26 Mar 2020 16:08:32 +0100
-Message-Id: <20200326150841.10083-8-joro@8bytes.org>
+Subject: [PATCH v4 13/16] iommu/mediatek: Use accessor functions for iommu
+ private data
+Date: Thu, 26 Mar 2020 16:08:38 +0100
+Message-Id: <20200326150841.10083-14-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200326150841.10083-1-joro@8bytes.org>
 References: <20200326150841.10083-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200326_080853_758444_77D6B609 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20200326_080854_777311_C5CB8C1A 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,38 +81,145 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Some unrelated changes in the iommu code caused a new warning to
-appear in the arm-smmu driver:
+Make use of dev_iommu_priv_set/get() functions.
 
-  CC      drivers/iommu/arm-smmu.o
-drivers/iommu/arm-smmu.c: In function 'arm_smmu_add_device':
-drivers/iommu/arm-smmu.c:1441:2: warning: 'smmu' may be used uninitialized in this function [-Wmaybe-uninitialized]
-  arm_smmu_rpm_put(smmu);
-  ^~~~~~~~~~~~~~~~~~~~~~
-
-The warning is a false positive, but initialize the variable to NULL
-to get rid of it.
-
-Tested-by: Will Deacon <will@kernel.org> # arm-smmu
 Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/arm-smmu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/iommu/mtk_iommu.c    | 13 ++++++-------
+ drivers/iommu/mtk_iommu_v1.c | 14 +++++++-------
+ 2 files changed, 13 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/iommu/arm-smmu.c b/drivers/iommu/arm-smmu.c
-index 16c4b87af42b..980aae73b45b 100644
---- a/drivers/iommu/arm-smmu.c
-+++ b/drivers/iommu/arm-smmu.c
-@@ -1383,7 +1383,7 @@ struct arm_smmu_device *arm_smmu_get_by_fwnode(struct fwnode_handle *fwnode)
- 
- static int arm_smmu_add_device(struct device *dev)
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 95945f467c03..5f4d6df59cf6 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -358,8 +358,8 @@ static void mtk_iommu_domain_free(struct iommu_domain *domain)
+ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ 				   struct device *dev)
  {
--	struct arm_smmu_device *smmu;
-+	struct arm_smmu_device *smmu = NULL;
- 	struct arm_smmu_master_cfg *cfg;
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
- 	int i, ret;
++	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+-	struct mtk_iommu_data *data = dev_iommu_fwspec_get(dev)->iommu_priv;
+ 
+ 	if (!data)
+ 		return -ENODEV;
+@@ -378,7 +378,7 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ static void mtk_iommu_detach_device(struct iommu_domain *domain,
+ 				    struct device *dev)
+ {
+-	struct mtk_iommu_data *data = dev_iommu_fwspec_get(dev)->iommu_priv;
++	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
+ 
+ 	if (!data)
+ 		return;
+@@ -450,7 +450,7 @@ static int mtk_iommu_add_device(struct device *dev)
+ 	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
+ 		return -ENODEV; /* Not a iommu client device */
+ 
+-	data = fwspec->iommu_priv;
++	data = dev_iommu_priv_get(dev);
+ 	iommu_device_link(&data->iommu, dev);
+ 
+ 	group = iommu_group_get_for_dev(dev);
+@@ -469,7 +469,7 @@ static void mtk_iommu_remove_device(struct device *dev)
+ 	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
+ 		return;
+ 
+-	data = fwspec->iommu_priv;
++	data = dev_iommu_priv_get(dev);
+ 	iommu_device_unlink(&data->iommu, dev);
+ 
+ 	iommu_group_remove_device(dev);
+@@ -496,7 +496,6 @@ static struct iommu_group *mtk_iommu_device_group(struct device *dev)
+ 
+ static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
+ {
+-	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+ 	struct platform_device *m4updev;
+ 
+ 	if (args->args_count != 1) {
+@@ -505,13 +504,13 @@ static int mtk_iommu_of_xlate(struct device *dev, struct of_phandle_args *args)
+ 		return -EINVAL;
+ 	}
+ 
+-	if (!fwspec->iommu_priv) {
++	if (!dev_iommu_priv_get(dev)) {
+ 		/* Get the m4u device */
+ 		m4updev = of_find_device_by_node(args->np);
+ 		if (WARN_ON(!m4updev))
+ 			return -EINVAL;
+ 
+-		fwspec->iommu_priv = platform_get_drvdata(m4updev);
++		dev_iommu_priv_set(dev, platform_get_drvdata(m4updev));
+ 	}
+ 
+ 	return iommu_fwspec_add_ids(dev, args->args, 1);
+diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+index e93b94ecac45..a31be05601c9 100644
+--- a/drivers/iommu/mtk_iommu_v1.c
++++ b/drivers/iommu/mtk_iommu_v1.c
+@@ -263,8 +263,8 @@ static void mtk_iommu_domain_free(struct iommu_domain *domain)
+ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ 				   struct device *dev)
+ {
++	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
+ 	struct mtk_iommu_domain *dom = to_mtk_domain(domain);
+-	struct mtk_iommu_data *data = dev_iommu_fwspec_get(dev)->iommu_priv;
+ 	int ret;
+ 
+ 	if (!data)
+@@ -286,7 +286,7 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
+ static void mtk_iommu_detach_device(struct iommu_domain *domain,
+ 				    struct device *dev)
+ {
+-	struct mtk_iommu_data *data = dev_iommu_fwspec_get(dev)->iommu_priv;
++	struct mtk_iommu_data *data = dev_iommu_priv_get(dev);
+ 
+ 	if (!data)
+ 		return;
+@@ -387,20 +387,20 @@ static int mtk_iommu_create_mapping(struct device *dev,
+ 		return -EINVAL;
+ 	}
+ 
+-	if (!fwspec->iommu_priv) {
++	if (!dev_iommu_priv_get(dev)) {
+ 		/* Get the m4u device */
+ 		m4updev = of_find_device_by_node(args->np);
+ 		if (WARN_ON(!m4updev))
+ 			return -EINVAL;
+ 
+-		fwspec->iommu_priv = platform_get_drvdata(m4updev);
++		dev_iommu_priv_set(dev, platform_get_drvdata(m4updev));
+ 	}
+ 
+ 	ret = iommu_fwspec_add_ids(dev, args->args, 1);
+ 	if (ret)
+ 		return ret;
+ 
+-	data = fwspec->iommu_priv;
++	data = dev_iommu_priv_get(dev);
+ 	m4udev = data->dev;
+ 	mtk_mapping = m4udev->archdata.iommu;
+ 	if (!mtk_mapping) {
+@@ -459,7 +459,7 @@ static int mtk_iommu_add_device(struct device *dev)
+ 	if (err)
+ 		return err;
+ 
+-	data = fwspec->iommu_priv;
++	data = dev_iommu_priv_get(dev);
+ 	mtk_mapping = data->dev->archdata.iommu;
+ 	err = arm_iommu_attach_device(dev, mtk_mapping);
+ 	if (err) {
+@@ -478,7 +478,7 @@ static void mtk_iommu_remove_device(struct device *dev)
+ 	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
+ 		return;
+ 
+-	data = fwspec->iommu_priv;
++	data = dev_iommu_priv_get(dev);
+ 	iommu_device_unlink(&data->iommu, dev);
+ 
+ 	iommu_group_remove_device(dev);
 -- 
 2.17.1
 
