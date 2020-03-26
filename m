@@ -4,19 +4,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CC12FC2D0E5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2020 15:09:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8251C2D0EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2020 15:09:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A2E6D20775
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2020 15:09:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AD10C207FF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Mar 2020 15:09:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bFav5GpR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A2E6D20775
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kUzc2pD1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD10C207FF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,33 +26,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=0GFgWLLgv8Mp5Qx3HaZ5JLG0LAh8pDym2idSOMRxf9A=; b=bFav5GpRx1F+adVCjcWgqwCJqT
-	b9XkGT2WdPKe95nAF2lekGNWPJda73UNlvhzvJG7sE1Tg65iiK/CnSZjfzk5upz5QdIHeBLioT1Dc
-	1A6Gw1AKvxKEfR4qCmKWH56W7QyxMfW0ewlKWYpGhZ2uP75ibfUYgD/D/6S7LH40pFs0Z53TjZJkN
-	xoUba6db6o3XbJ+To2zmEv08zIxjzXJj+V/mIxmIS+p6xw91mKP7yCt//blxuRUEiss6S8ATK5uBE
-	E7kCIvHQuvsKf8StVcfusKoYGvbKf5iTJ+qPgAQmwFNJ7X9CEEedvIgD+FqydE1jDVILgxZY1G5fz
-	nshflODA==;
+	bh=bE6niYG87KZb6DXUTwo19dJM1/TiPCLCTeAGG+b/V0A=; b=kUzc2pD15gV+CWfFtr6J7DBV20
+	6VoFEhBPTMe0jOMeCfyIx+GzLq66zc0RxtYgcI5M4JYtXiyICZCoEB9cKS1bxp6bmYsUdNjNLvXXC
+	nZn90G0cKtDXElCYkBezpIhhukZR6u9np3h0gyM3xg9fvpb/A55yAPYOrFZDOKVyS3+IZ/hj2RmG2
+	a1Q0LiPMDN+znKC0sWVvVgQq5Ra8aLCb8SyKnVJzkpP2NxgANcaVqxchuhqRDs7/6XxSCkjagZeAI
+	XsISFjBStTsHYENTCVLD2KXkHKmZsbdpRGCzdjT1u3vtbuvtyEn8pleWaLUXuAg01R3CM3SBrx3l8
+	t0XZPd9Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHU80-0004EW-2R; Thu, 26 Mar 2020 15:09:04 +0000
+	id 1jHU82-0004Ge-15; Thu, 26 Mar 2020 15:09:06 +0000
 Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHU7m-0003zk-7L
- for linux-mediatek@lists.infradead.org; Thu, 26 Mar 2020 15:08:52 +0000
+ id 1jHU7p-00041N-1A
+ for linux-mediatek@lists.infradead.org; Thu, 26 Mar 2020 15:08:54 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 17BCA4F0; Thu, 26 Mar 2020 16:08:45 +0100 (CET)
+ id 498025ED; Thu, 26 Mar 2020 16:08:46 +0100 (CET)
 From: Joerg Roedel <joro@8bytes.org>
 To: iommu@lists.linux-foundation.org
-Subject: [PATCH v4 03/16] drm/msm/mdp5: Remove direct access of
+Subject: [PATCH v4 04/16] iommu/tegra-gart: Remove direct access of
  dev->iommu_fwspec
-Date: Thu, 26 Mar 2020 16:08:28 +0100
-Message-Id: <20200326150841.10083-4-joro@8bytes.org>
+Date: Thu, 26 Mar 2020 16:08:29 +0100
+Message-Id: <20200326150841.10083-5-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200326150841.10083-1-joro@8bytes.org>
 References: <20200326150841.10083-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200326_080850_409079_736F76A8 
-X-CRM114-Status: UNSURE (   9.42  )
+X-CRM114-CacheID: sfid-20200326_080853_275210_83B9222D 
+X-CRM114-Status: UNSURE (   9.81  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -88,22 +88,22 @@ dev->iommu_fwspec.
 Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c | 2 +-
+ drivers/iommu/tegra-gart.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c b/drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c
-index e43ecd4be10a..1252e1d76340 100644
---- a/drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c
-+++ b/drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c
-@@ -725,7 +725,7 @@ struct msm_kms *mdp5_kms_init(struct drm_device *dev)
+diff --git a/drivers/iommu/tegra-gart.c b/drivers/iommu/tegra-gart.c
+index 3fb7ba72507d..db6559e8336f 100644
+--- a/drivers/iommu/tegra-gart.c
++++ b/drivers/iommu/tegra-gart.c
+@@ -247,7 +247,7 @@ static int gart_iommu_add_device(struct device *dev)
+ {
+ 	struct iommu_group *group;
  
- 	if (config->platform.iommu) {
- 		iommu_dev = &pdev->dev;
--		if (!iommu_dev->iommu_fwspec)
-+		if (!dev_iommu_fwspec_get(iommu_dev))
- 			iommu_dev = iommu_dev->parent;
+-	if (!dev->iommu_fwspec)
++	if (!dev_iommu_fwspec_get(dev))
+ 		return -ENODEV;
  
- 		aspace = msm_gem_address_space_create(iommu_dev,
+ 	group = iommu_group_get_for_dev(dev);
 -- 
 2.17.1
 
