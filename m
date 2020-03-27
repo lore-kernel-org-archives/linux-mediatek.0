@@ -2,103 +2,83 @@ Return-Path: <SRS0=6DyL=5M=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5AEBCC43331
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2020 17:07:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DAD68C43331
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2020 19:35:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 31F99206F2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2020 17:07:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A804D20663
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2020 19:35:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aNhyjsP1";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="lodNl1uk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 31F99206F2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="i6rbM4Kf";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="IKQVqDOb"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A804D20663
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:From:Subject:To:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tPVWdyIERlxxnYyC+KgurOgYBxMH1U/wTwIgJ+65Gb4=; b=aNhyjsP1Y7U6J1
-	fv4RIKcOJA1XrzrexiVhmuyjd+Ew7Xg/FavD8hTfQcVNf2lIu1X3pfEOBu0bZjB0ECwU/eesj/CRC
-	wvAvafkz3me9okdX0jUGhNYlYaSVQCU+r1wKt/FJPlCTOtw2pWewkfVPP+EbG9FPecFlFDasEIq/j
-	qQzqTYkLr3VtLItjaU3EmBYUMLglKCng8/E5tJbw6yy6mSxYflLfwh2FPxxwNMsX8W5Uq1Sc49iwC
-	JNxFx5/cCilheBr22/iZSuo0D7DuB7CMzHfbw/Xscy3nWNLRhch9NJzY8xGAcsgaGxRZs03hwxdc4
-	sqzaGLuGTqfBtum94lzQ==;
+	List-Owner; bh=VKN+3cteauJkG0Urr8+NXk3DcPRDc3qcnTMAXLgITnI=; b=i6rbM4Kf7HTlGK
+	YZaxJ5xfx7vR+5YeHwRu7DEXtBihKKz3CiIVa/7IA+rFN7PO6GMySvwCacw03YGi386X2XuYLW36f
+	gOouyYaYfM7YSrEc/3XF0V7wBXooPdNo3OJFVwqq0iMUVaE2HQVu2ux0z4CGIRN+zcmkjAJKTgjUY
+	kBG9mBl0FwPnfbP9SMdVHDK4hNS5k4jmtmzMYgLOsWKcQGz1gL07IOPHSwGgtpvJ/UTqu0ra7DyN3
+	gtMyaQG5YFwjeMeZIS1Ksu+BeDl8W+D7WtM+1ZYLOISN9YmlFof80P7nlRjPJGzfLViTu4eMgBA3+
+	maDbXHNielVTnre7yp9w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHsRf-00035u-4P; Fri, 27 Mar 2020 17:06:59 +0000
-Received: from aserp2120.oracle.com ([141.146.126.78])
+	id 1jHukt-0007V4-EW; Fri, 27 Mar 2020 19:34:59 +0000
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHsRb-00034F-H9; Fri, 27 Mar 2020 17:06:57 +0000
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02RGrO9E016710;
- Fri, 27 Mar 2020 17:06:43 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=to : cc : subject :
- from : references : date : in-reply-to : message-id : mime-version :
- content-type; s=corp-2020-01-29;
- bh=SN3O4Y5dG042zQht3ivK30o8UVK/pwtZpWfdz47WMlU=;
- b=lodNl1ukohVFLHlaRbyhRAkdEF9FlwV8CMo3re0LETjsKo0wWJRT8ygG+lVG9psHlkGJ
- ym8EY2/4xWFnCYVyJxECcmTnoHzmIwIHRC4Mh15iWHfNPiej162SEsyC0AA7SzU8szGn
- y+uWa4AdkJUmW3q9wDF+FFWUax6gxnYTSiHWp/N2Obc1skla/iIvvazJh1XZpe6oZHSy
- 1bHN80KvbqwosbGS5KIDxSIaQTIphVHSDG1FXitDvHqrH1I4NNA6v26A569jsBE1y9ea
- 8izAUw4YohVyBNRQnExfLZ7w4z+CD99gyGPH3vEpcclZsoojFewptsuaepAVlNiZi/cE 7A== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
- by aserp2120.oracle.com with ESMTP id 301m49gh3h-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 27 Mar 2020 17:06:43 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
- by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 02RGqt4B072701;
- Fri, 27 Mar 2020 17:06:43 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by userp3030.oracle.com with ESMTP id 2yxw4w7trh-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 27 Mar 2020 17:06:42 +0000
-Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 02RH6dBD009423;
- Fri, 27 Mar 2020 17:06:39 GMT
-Received: from ca-mkp.ca.oracle.com (/10.159.214.123)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Fri, 27 Mar 2020 10:06:38 -0700
-To: Stanley Chu <stanley.chu@mediatek.com>
-Subject: Re: [PATCH v3 0/2] scsi: ufs: add error recovery for suspend and
- resume in ufs-mediatek
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Organization: Oracle Corporation
-References: <20200327095329.10083-1-stanley.chu@mediatek.com>
-Date: Fri, 27 Mar 2020 13:06:35 -0400
-In-Reply-To: <20200327095329.10083-1-stanley.chu@mediatek.com> (Stanley Chu's
- message of "Fri, 27 Mar 2020 17:53:27 +0800")
-Message-ID: <yq1eetdbuck.fsf@oracle.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1.92 (gnu/linux)
+ id 1jHukp-0007UM-VV
+ for linux-mediatek@lists.infradead.org; Fri, 27 Mar 2020 19:34:58 +0000
+Received: by mail-lj1-x244.google.com with SMTP id k21so11465249ljh.2
+ for <linux-mediatek@lists.infradead.org>; Fri, 27 Mar 2020 12:34:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=SMj8T6qrJVrCsvRvnMqHKkx/zEjw5/o3jySet/s/9RY=;
+ b=IKQVqDObYWwt6diGnBoZbSN0g1fZpjZsX+tPBQ7n+JUB6ZtMHDV/yAp5S520sz1hQu
+ RWPJ4RCCadtZEJxqMlJlrUrFt6OMRkJ64s7SINwxGHV/YaVZkem+8WaGfCBe2rAGAr0A
+ FRDGvKLcrO8YUegjSzNsZaA2O2d4C1gmE1V9Q/u136ROtCUodXyukRcOE7faj1tt5ZHM
+ vTdR1DdMBTrfzcbFt2w8N67m1wGB9AM6IqgX0/tgjthV/k5J6Gz5SIKRAgpiXFL7aw1Y
+ 6fmhMAiJ65vF3LDJSIqgaXXKh84O5vwCAh7DtSazxoHKK0196Q0fxLoTrCgsNsH170BY
+ z7fA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=SMj8T6qrJVrCsvRvnMqHKkx/zEjw5/o3jySet/s/9RY=;
+ b=ha1AlFg5IZOmO7sm/YAVj7dn3VtL7MDss+xTtQYspzQkkT1BEB/KPIPk+dRCPm1bpt
+ OMHRk1XeehdDNsS3F3tzs6MnqSthHelcAh9Cmv44fCNT1JnVNAdzpSIjUT8Wj4vMiNHZ
+ 7qHkVkA73mCAQuNpPwNxXrfT12w8RitcWlKRAwhU3ISpSAL8e6pBAgfMdJ8IVcZej5Q3
+ VkDB/efT1wqMICturaOzcStQ9/9YoB6rrzeIkQMnV9Uh3y3K6ufuGHUb7fBHdpS0pEEx
+ nWHN0z5bqk1tv0IvLNoBIxgNvZ4mKcqE5VcYoRL2tj12JiWZihgq0Hjl7p9dVmT1DGFF
+ wovA==
+X-Gm-Message-State: AGi0PubOO7J9/qh8AgbjwinxgvaEYk4Kn5xPYnOYsX9qY6lSczNmp4g3
+ cHS7BaOi9N1EJxDXI0EDn2xq43L08xoDmPQ8osaU/w==
+X-Google-Smtp-Source: APiQypKQ99E5Hx71aoAtOmel0/W4RsYE6iKctEclwRXPuUqbHFZcrTSAUoDASIRznidz45mNGspx3gCRhXSIB8CeVGg=
+X-Received: by 2002:a05:651c:445:: with SMTP id
+ g5mr294507ljg.125.1585337693948; 
+ Fri, 27 Mar 2020 12:34:53 -0700 (PDT)
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9573
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- suspectscore=0
- spamscore=0 mlxlogscore=999 adultscore=0 phishscore=0 mlxscore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2003020000 definitions=main-2003270146
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9573
- signatures=668685
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- clxscore=1015 bulkscore=0
- impostorscore=0 suspectscore=0 spamscore=0 adultscore=0 phishscore=0
- malwarescore=0 mlxlogscore=999 lowpriorityscore=0 priorityscore=1501
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
- definitions=main-2003270146
+References: <cover.1584977512.git.matti.vaittinen@fi.rohmeurope.com>
+ <c659a4627bc33b8a7d10e1af16e85edd0ff8637f.1584977512.git.matti.vaittinen@fi.rohmeurope.com>
+In-Reply-To: <c659a4627bc33b8a7d10e1af16e85edd0ff8637f.1584977512.git.matti.vaittinen@fi.rohmeurope.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Fri, 27 Mar 2020 20:34:42 +0100
+Message-ID: <CACRpkdYSEVycRn-8br-o8F9nKYvTa9dgSS5uuubEFsiKMCfR=w@mail.gmail.com>
+Subject: Re: [PATCH v6 03/10] lib: add linear ranges helpers
+To: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200327_100655_702489_130E5B67 
-X-CRM114-Status: UNSURE (   9.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200327_123456_158424_6BC5B616 
+X-CRM114-Status: GOOD (  15.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,28 +90,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-scsi@vger.kernel.org, martin.petersen@oracle.com,
- andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, avri.altman@wdc.com,
- cang@codeaurora.org, linux-mediatek@lists.infradead.org,
- peter.wang@mediatek.com, alim.akhtar@samsung.com, matthias.bgg@gmail.com,
- asutoshd@codeaurora.org, bvanassche@acm.org,
- linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Cc: Mark Rutland <mark.rutland@arm.com>, Milo Kim <milo.kim@ti.com>,
+ Andrei Stefanescu <andrei.stefanescu@microchip.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Tony Lindgren <tony@atomide.com>,
+ Linux-OMAP <linux-omap@vger.kernel.org>,
+ Brendan Higgins <brendanhiggins@google.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Masahiro Yamada <yamada.masahiro@socionext.com>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, mikko.mutanen@fi.rohmeurope.com,
+ Vincenzo Frascino <vincenzo.frascino@arm.com>,
+ Dan Williams <dan.j.williams@intel.com>,
+ linux-samsung-soc <linux-samsung-soc@vger.kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ Chen-Yu Tsai <wens@csie.org>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Ard Biesheuvel <ardb@kernel.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Andy Shevchenko <andy.shevchenko@gmail.com>, Andy Gross <agross@kernel.org>,
+ markus.laine@fi.rohmeurope.com, MSM <linux-arm-msm@vger.kernel.org>,
+ Borislav Petkov <bp@suse.de>, Petr Mladek <pmladek@suse.com>,
+ Mikhail Zaslonko <zaslonko@linux.ibm.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>, Arnd Bergmann <arnd@arndb.de>,
+ Matti Vaittinen <mazziesaccount@gmail.com>, Gary Hook <Gary.Hook@amd.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>, Mark Brown <broonie@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ David Gow <davidgow@google.com>, Shuah Khan <skhan@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Support Opensource <support.opensource@diasemi.com>,
+ Sangbeom Kim <sbkim73@samsung.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linux PM list <linux-pm@vger.kernel.org>, Randy Dunlap <rdunlap@infradead.org>,
+ Sebastian Reichel <sre@kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Tal Gilboa <talgi@mellanox.com>, Changbin Du <changbin.du@intel.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <uwe@kleine-koenig.org>,
+ Masami Hiramatsu <mhiramat@kernel.org>, patches@opensource.cirrus.com,
+ Andrew Morton <akpm@linux-foundation.org>, Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Mar 24, 2020 at 9:29 AM Matti Vaittinen
+<matti.vaittinen@fi.rohmeurope.com> wrote:
 
-Stanley,
+> Many devices have control registers which control some measurable
+> property. Often a register contains control field so that change in
+> this field causes linear change in the controlled property. It is not
+> a rare case that user wants to give 'meaningful' control values and
+> driver needs to convert them to register field values. Even more
+> often user wants to 'see' the currently set value - again in
+> meaningful units - and driver needs to convert the values it reads
+> from register to these meaningful units. Examples of this include:
+>
+> - regulators, voltage/current configurations
+> - power, voltage/current configurations
+> - clk(?) NCOs
+>
+> and maybe others I can't think of right now.
+>
+> Provide a linear_range helper which can do conversion from user value
+> to register value 'selector'.
+>
+> The idea here is stolen from regulator framework and patches refactoring
+> the regulator helpers to use this are following.
+>
+> Signed-off-by: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
 
-> This patchset adds error recovery flow for suspend and resume in
-> ufs-mediatek driver.
+This looks really helpful and just generally like the kind of stuff
+we should absolutely have in lib/
 
-Applied to 5.7/scsi-queue. Thanks!
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 
--- 
-Martin K. Petersen	Oracle Linux Engineering
+One day we'll add interpolated a.k.a. non-linear ranges
+too, I bet.
+
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-mediatek mailing list
