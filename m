@@ -2,136 +2,90 @@ Return-Path: <SRS0=6DyL=5M=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C48EC43331
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2020 07:49:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 39183C2D0E7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2020 08:46:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D1F9720705
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2020 07:49:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0E48A20714
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2020 08:46:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RGl/qNeV";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="mT1Odfd2";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="J2ihjdL7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D1F9720705
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FaVpBi8k";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="LA9Fq6az"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E48A20714
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u5wsOVuE+QJqM3nNfeoqPBUN6aFp+tIxbRZRw8fnRU4=; b=RGl/qNeVNYAVng
-	JqIQJc4qOVk0DDLPD9ol5N8LDtwNYaf+2g9wA+2Jwo5eE6ulCoEmpCiJ4yTg7BLi0C0k9RCxH8MYX
-	xO3pghKfWlLGN48HdwQt1PAxUhaz5yzbakQQLITGrkMbjXyBXpTcIXmKIqJKMKpG8pRqAwdRskxde
-	yaJOqh/2XT1CQ7QTZSGJe62MOEwYgCQXCu5+7OYm8w7Af5K82tuFp7ch7MaiR7baxZSQn7UWLNZzU
-	ZNVOOJrAShAdbkv/+HeatKtJ7S1ccckkBgUtjvZRc5ezz0Qhfw/nLZsIaiHSCG38x2uQb8aEKBowK
-	c2QbKhOUU33cbRp48l7w==;
+	List-Owner; bh=Ty5umsRUjevLDQqXhgXx4akHyZH7MkVxNLfde8p714o=; b=FaVpBi8k3mqj95
+	KYF0BGWSPl1HRKOkFDBPK8HxS+nU0/zo9PSxsifF2y5JBWCtLIOg8UV2dJYNJ3AQlQ+xXn28bwlbN
+	NWKGp4oG1C3KNT2sg4aRfR6O+IWl4LmNMGJ/i7COUf7uqaoGLoA1B3+B+omXmuSr6cWDt9kTlJILH
+	lSxqcLS35t55LZUkYsQxY+BSuLJmoGdRLY7tuIuv2O9PrfJAYzJYKcTcMs7lsZs3DtiR6rW+or43S
+	GqWUPtISdfh1Kg+2byLY5tNTXmax2upOvqHX/Ysp0LxDITg8Wo6SYSq3zPBsqYEkLb1zJaE9KvGx/
+	HLzN2+/eH2anYDDJWhgg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHjk6-0007lb-AH; Fri, 27 Mar 2020 07:49:26 +0000
-Received: from esa4.hgst.iphmx.com ([216.71.154.42])
+	id 1jHkcq-00051i-Ps; Fri, 27 Mar 2020 08:46:00 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHjju-0007c9-OT; Fri, 27 Mar 2020 07:49:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1585295354; x=1616831354;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=3So4KQElf8n6iZiDQZl0yB+pEwm0dJL4dFu3ybCXiHc=;
- b=mT1Odfd2vGcHA9Es6RRb/nhbq4/EC6XWsSct69JyiY7qkTXE6n4A/Rwy
- r4GPYlvXBZ4dUn6OQ8njq5T67Hoj4laHyh9HX7irmrnslHX3QG/o61EvP
- sHfrtrK6R61PhE5NzdGgKxCNLEgC9A5N7e33+UAwaIMxn5FOlJKA9+Kn2
- lKquxmxcSFJ/AIigTCYVpJOuCxo2BcYxXt8kbQ4dgiEysuyFs5Sx0CNe9
- VG2XEO0yHM5GvH4PRE4x2GXNQRS6L8CvPBla5zblXzOcVCc2NCApT1s2/
- m2XZvVFURRFSfwwMW7Z074fMwJ9SXMKrdrt5GXBEqHfs9+AocMv+gbz1B A==;
-IronPort-SDR: vCJzssId70WsgZUQRz4GGkFsBDr2OGOIqee/oFsSrIUXqYyGt7jl8nccCOal88pnils4ExUTyS
- Y4g9B/z174BMfbyDiyjFpBbFSNXBpIYmKYdmPjKPwzl1+ro7NRNtqNlfoky72+LVGqoX54iJil
- GnXeCnOoB4xLDOhKitB/ss/yg0Npy2s6Rku5eTUtUtRrfD0kW3RL+RaURhYyJduqnIu3vF0o2F
- SKyk08pMoZN0xJXB27RmJ/GvT/rfbCHN2pG2zKgcyT2bi+niSR5jtUupFRqcTr0xD2C5QCR/g9
- uJ0=
-X-IronPort-AV: E=Sophos;i="5.72,311,1580745600"; d="scan'208";a="133661378"
-Received: from mail-dm6nam10lp2106.outbound.protection.outlook.com (HELO
- NAM10-DM6-obe.outbound.protection.outlook.com) ([104.47.58.106])
- by ob1.hgst.iphmx.com with ESMTP; 27 Mar 2020 15:49:07 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jaY2ERPWZhRYodwlNIviTx9OF4pSLI4Pu9B/gh98LA53aNAkdtkShNhzD13BstHP56+SgDXUFSndq5COD5SzNMzJX17LoUDmF9jtMpxp2ik1hfMN1bAXp0pDIWR7lqryQNwBOvt/yliLltyTaae6bdMMFmvIaASgiiW2LYlYeJMURZMziyuEYBSmJ2Xvylo7ijcqtiZxwNjz6AI74x6FA2pbATRXEqHZWPPLRL7Weq/Bkb7BSule4V1esov9D5Ma0KWaELQNplIb3nz9PVWoHe7kovfEX4BoEehiqJb39d9q8wsbpGT93mcqUGFZ7e4vTHLqJn5eRblmO0iWSpJ+xA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JaVdG8BfpUVk+asPQi8jPX6PCq6mY33ZMSKuN47pNOw=;
- b=jUA++6EY2i8VIJ/bPfBK7Q0tVT8U/aQLc4gakORB1kvScfxo+eZ0d+aoCi0sEJgpcztG9QdPM5Vxd5kDuZmu5YVw0WQ7lXsB3yOkR3Fes+Ftre1h3CcPE9ZxZHxt2mN3TX/UPVGqmKZzzR4lTmQbr/EmVk8Tn1yQc799JYSwcJWHzrl/2hu+QoYG1zpkFYXJcPrmji6erkfAgVQYUZMQY++tRAAGcNt1LM+lYLLu2XWBiJeZsB7yh/pwfKzSD3sW6Y4x1dYGIyqyG6rCDD5h/Rsm4UcotWGUAR+ntsRHcdKvxX00A+galMNN+JvdO7s2Iq4p7/Ykwy+f7iEfULwodA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JaVdG8BfpUVk+asPQi8jPX6PCq6mY33ZMSKuN47pNOw=;
- b=J2ihjdL7T/zsUzH9OA9wDREtaXsUoBoB1NnpBMFR5VQSqPTufy29WH2UPUM3WDrNldIdzpo4+Ob5YHz1MEHXO8aHxeXFYdWCGCrUA5YEcRHhKDXD75bNJfUc+HMM2P54imNRjLal+L/+s7ujhcuaP0yIgeiG0mLnj14im6dSyo4=
-Received: from SN6PR04MB4640.namprd04.prod.outlook.com (2603:10b6:805:a4::19)
- by SN6PR04MB4656.namprd04.prod.outlook.com (2603:10b6:805:aa::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2835.20; Fri, 27 Mar
- 2020 07:49:04 +0000
-Received: from SN6PR04MB4640.namprd04.prod.outlook.com
- ([fe80::3877:5e49:6cdd:c8b]) by SN6PR04MB4640.namprd04.prod.outlook.com
- ([fe80::3877:5e49:6cdd:c8b%5]) with mapi id 15.20.2856.019; Fri, 27 Mar 2020
- 07:49:04 +0000
-From: Avri Altman <Avri.Altman@wdc.com>
-To: "Martin K. Petersen" <martin.petersen@oracle.com>, Can Guo
- <cang@codeaurora.org>
-Subject: RE: [PATCH v6 2/2] scsi: ufs: Do not rely on prefetched data
-Thread-Topic: [PATCH v6 2/2] scsi: ufs: Do not rely on prefetched data
-Thread-Index: AQHWA+Pw3UJgJmAzSE+5Ajw5XEBLVqhcEGrw
-Date: Fri, 27 Mar 2020 07:49:04 +0000
-Message-ID: <SN6PR04MB46402B83E0E69E2309A9EDA8FCCC0@SN6PR04MB4640.namprd04.prod.outlook.com>
-References: <1585214742-5466-1-git-send-email-cang@codeaurora.org>
- <1585214742-5466-3-git-send-email-cang@codeaurora.org>
- <yq1lfnmcxmc.fsf@oracle.com>
-In-Reply-To: <yq1lfnmcxmc.fsf@oracle.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=Avri.Altman@wdc.com; 
-x-originating-ip: [2a00:a040:188:9054:1046:30ec:e40a:caed]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 4d4d0431-8c08-4baa-7fdb-08d7d22352b7
-x-ms-traffictypediagnostic: SN6PR04MB4656:
-x-microsoft-antispam-prvs: <SN6PR04MB46567256E7C05186E66119FFFCCC0@SN6PR04MB4656.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:8882;
-x-forefront-prvs: 0355F3A3AE
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR04MB4640.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(10019020)(4636009)(136003)(366004)(396003)(346002)(39860400002)(376002)(478600001)(86362001)(66446008)(52536014)(186003)(33656002)(64756008)(4326008)(8936002)(55016002)(9686003)(66556008)(66476007)(2906002)(76116006)(316002)(4744005)(7696005)(7416002)(81156014)(6506007)(66946007)(110136005)(8676002)(5660300002)(81166006)(71200400001)(54906003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: NTvsK5IfrDzvWu5TNzsmykLGuO0p7tSTmDBd1f4o3ikhT0t9hDLbi0uB5YwACOiBQaS9mQe9ZMil6PyQaCAA/bhrmJCZtBnedHwnyr5ieo5+1Y5RapZybNvMka/8fcaN/R+fi3ME4iJyRPqdf/2j/zm4x3R69UofYTT+eibqpCOCyDuFZi5ih6JE3PRNUqzAy7i5BLhMphT9y7aifOhgZMd9AwLuGFbX3kQlMCNZmxAVcYpwBMGp9nGrYqWkhs/gr/qhyCenxEbdharh3lPAjl9ujq8KXQL0kCTrYsxiZZ2OwdcSilmRLCFSimclKfxMDucRcEf5rsVkxrgdAABzY3427iBHXVtYZpnOVFveTLHxhuIxTQwrN8SAVcxCZOS9syeas8QNko4jTjzItU+SznPMeOW5FY285YIq9K0bnuXr2U0d6Lq/faFO82nhsoIf
-x-ms-exchange-antispam-messagedata: 7f+PGzVqIQ7xkTOc9KTpRNUcRGY5PgRKbiz7xRqEIJW2oOgUIM9VEV08Od2XOzYJ19VUZmpCIBEbbZEtJl8DtFhxMoscUuZ4UubtdnIk66cNZlhgUsAy1hEwJkie9Qk6LEYtsx5xlAqMZezPqDDuJRnlQkBaka4n6g/9XkH4R57GvY8ODA61CJYAbj77I9qc6RNgFsmo2a4yqrUIk+rgEA==
-x-ms-exchange-transport-forked: True
+ id 1jHkcn-000513-NM
+ for linux-mediatek@lists.infradead.org; Fri, 27 Mar 2020 08:45:59 +0000
+Received: by mail-wm1-x344.google.com with SMTP id d1so11384567wmb.2
+ for <linux-mediatek@lists.infradead.org>; Fri, 27 Mar 2020 01:45:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=TNtHMrBw1/kFRLyWRQzpEzTGkiODbvLoqCcIATUetSQ=;
+ b=LA9Fq6azF2+zSralszTxVY7JqxhxxsiaZb2AoDbfkRN0R3N0rkQgFTS6aGvtGchHSq
+ rGvKFw+0Zf8fHrmkahk4/6T3g1thDq3mnNR/aO4WyAvZYh3EhZOwiAs8p3je9NR8FqeH
+ eugcdMHplFlkKr3XiGbHLTK0T3hIfOEt+M/NTlQcdTGw8Rk0VoMHKlmiiWpqbHbPcwXo
+ /ZOo3it+BOseqw84us4p+ubVuYX1XIJtpj38y1kZV/AK6AlqlYX+UUjX4wUuMn0B1uTO
+ jAxY7u+cIYL8ahbK3hSj8z04XrUqEAxtSPl8sMDrkuj2AVpubAi9PzGk62rHm7z/KdgE
+ QErA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=TNtHMrBw1/kFRLyWRQzpEzTGkiODbvLoqCcIATUetSQ=;
+ b=Ymo8rXHI20e7C2KIFiQ6QX48wHsNV6eR134o0wXj+qPFv2V8SNyYoyGM0Dm0uP0UAA
+ fYF//jsYavjRI8WI19enqH+5B+FVkPcvexvgxlbY2Dyq4x3v+EuSnGSm5iNRgTj4FKOO
+ R5bn7wlwD8KGI5e9sHdNa1t0vfrK9l3dGtFQscOZG2z/JJdgvv9NDS+UjJLvCkD+Rdrr
+ crXlq+0QtQBn7Bz1QyMUFuwk0Gjdw6Adqolu0AqZjc/YmJDlB1heuPIu/i6abH/NLj44
+ eD3qd6jZDhf69d0kjXvGthPXIgpTxhwpmgLi5sM4ta9r8BxH/dOHNnXwFAgLvlUdh6Yy
+ kXtQ==
+X-Gm-Message-State: ANhLgQ2vafqJHqchf2hz3kHy95umjOyG9Wq2w5ghp5sRmjY2aP3fhbGh
+ PAoWX+WwN79CZha7ignpglxK6Q==
+X-Google-Smtp-Source: ADFU+vsEaMqgmcJTryYU53r8BbWXb0EA3wBlWHalOBre6t/JUxmyfZ0AnP1+VitjwwucuGEimHxOZQ==
+X-Received: by 2002:a1c:4987:: with SMTP id w129mr4498312wma.168.1585298755090; 
+ Fri, 27 Mar 2020 01:45:55 -0700 (PDT)
+Received: from myrica ([2001:171b:226b:54a0:116c:c27a:3e7f:5eaf])
+ by smtp.gmail.com with ESMTPSA id y187sm7437237wmd.0.2020.03.27.01.45.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 27 Mar 2020 01:45:54 -0700 (PDT)
+Date: Fri, 27 Mar 2020 09:45:46 +0100
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Hanjun Guo <guohanjun@huawei.com>
+Subject: Re: [PATCH v4 02/16] ACPI/IORT: Remove direct access of
+ dev->iommu_fwspec
+Message-ID: <20200327084546.GA4083132@myrica>
+References: <20200326150841.10083-1-joro@8bytes.org>
+ <20200326150841.10083-3-joro@8bytes.org>
+ <82dea1be-4a2e-e914-c607-8aeb924eb36f@huawei.com>
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4d4d0431-8c08-4baa-7fdb-08d7d22352b7
-X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Mar 2020 07:49:04.7661 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: KxJMQGJiTGeW8tlZpMMi7ea7/Gq/gbGothmX58lPz5WT1kQrv36xb/lpV7YcDKXFlCxSbPORbsxpkDrRBe7tYQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB4656
+Content-Disposition: inline
+In-Reply-To: <82dea1be-4a2e-e914-c607-8aeb924eb36f@huawei.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200327_004914_861831_C9340F0B 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20200327_014557_783848_93292261 
+X-CRM114-Status: GOOD (  14.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -143,53 +97,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>,
- "rnayak@codeaurora.org" <rnayak@codeaurora.org>,
- "saravanak@google.com" <saravanak@google.com>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- Venkat Gopalakrishnan <venkatg@codeaurora.org>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- open list <linux-kernel@vger.kernel.org>,
- "nguyenb@codeaurora.org" <nguyenb@codeaurora.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>,
- "salyzyn@google.com" <salyzyn@google.com>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Tomas Winkler <tomas.winkler@intel.com>,
- Stanley Chu <stanley.chu@mediatek.com>,
- "kernel-team@android.com" <kernel-team@android.com>,
- Bart Van Assche <bvanassche@acm.org>,
- "hongwus@codeaurora.org" <hongwus@codeaurora.org>,
- "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
+Cc: Rob Clark <robdclark@gmail.com>, Joerg Roedel <jroedel@suse.de>,
+ Will Deacon <will@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-arm-msm@vger.kernel.org, Joerg Roedel <joro@8bytes.org>,
+ linux-kernel@vger.kernel.org, Bjorn Andersson <bjorn.andersson@linaro.org>,
+ iommu@lists.linux-foundation.org, Thierry Reding <thierry.reding@gmail.com>,
+ linux-mediatek@lists.infradead.org, Andy Gross <agross@kernel.org>,
+ Sudeep Holla <sudeep.holla@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Paul <sean@poorly.run>, Robin Murphy <robin.murphy@arm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Mar 27, 2020 at 11:30:53AM +0800, Hanjun Guo wrote:
+> On 2020/3/26 23:08, Joerg Roedel wrote:
+> > From: Joerg Roedel <jroedel@suse.de>
+> > 
+> > Use the accessor functions instead of directly dereferencing
+> > dev->iommu_fwspec.
+> > 
+> > Tested-by: Hanjun Guo <guohanjun@huawei.com>
+> > Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> > Signed-off-by: Joerg Roedel <jroedel@suse.de>
+> > ---
+> >  drivers/acpi/arm64/iort.c | 6 ++++--
+> >  1 file changed, 4 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/acpi/arm64/iort.c b/drivers/acpi/arm64/iort.c
+> > index ed3d2d1a7ae9..7d04424189df 100644
+> > --- a/drivers/acpi/arm64/iort.c
+> > +++ b/drivers/acpi/arm64/iort.c
+> > @@ -1015,6 +1015,7 @@ const struct iommu_ops *iort_iommu_configure(struct device *dev)
+> >  		return ops;
+> >  
+> >  	if (dev_is_pci(dev)) {
+> > +		struct iommu_fwspec *fwspec;
+> >  		struct pci_bus *bus = to_pci_dev(dev)->bus;
+> >  		struct iort_pci_alias_info info = { .dev = dev };
+> >  
+> > @@ -1027,8 +1028,9 @@ const struct iommu_ops *iort_iommu_configure(struct device *dev)
+> >  		err = pci_for_each_dma_alias(to_pci_dev(dev),
+> >  					     iort_pci_iommu_init, &info);
+> 
+> ...
+> 
+> >  
+> > -		if (!err && iort_pci_rc_supports_ats(node))
+> > -			dev->iommu_fwspec->flags |= IOMMU_FWSPEC_PCI_RC_ATS;
+> > +		fwspec = dev_iommu_fwspec_get(dev);
+> > +		if (fwspec && iort_pci_rc_supports_ats(node))
+> 
+> Should we check !err as well?
 
+No need, the check should have been on fwspec from the beginning. Checking
+err was just a lazy shortcut on my part, as we're really just making sure
+that we can dereference fwspec->flags here.
 
-> 
-> Can,
-> 
-> > We were setting bActiveICCLevel attribute for UFS device only once but
-> > type of this attribute has changed from persistent to volatile since
-> > UFS device specification v2.1. This attribute is set to the default
-> > value after power cycle or hardware reset event. It isn't safe to rely
-> > on prefetched data (only used for bActiveICCLevel attribute
-> > now). Hence this change removes the code related to data prefetching
-> > and set this parameter on every attempt to probe the UFS device.
-> 
-> Applied patch #2 to 5.7/scsi-queue. Awaiting Avri's feedback on patch
-> #1. Thanks!
-It looks fine.
 Thanks,
-Avri
+Jean
 
 > 
-> --
-> Martin K. Petersen      Oracle Linux Engineering
+> Thanks
+> Hanjun
+> 
+> > +			fwspec->flags |= IOMMU_FWSPEC_PCI_RC_ATS;
+> >  	} else {
+> >  		int i = 0;
+> >  
+> > 
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
