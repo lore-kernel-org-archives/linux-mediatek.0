@@ -1,78 +1,79 @@
-Return-Path: <SRS0=6DyL=5M=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=Wwml=5N=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 360C9C43331
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2020 20:25:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5908AC43331
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Mar 2020 02:15:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0B9FC20716
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Mar 2020 20:25:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2AF7C2073B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Mar 2020 02:15:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iMu2zV0H";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="IThb/2dX"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0B9FC20716
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nbG4W4O9";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="LtQbJpuw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2AF7C2073B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4KvsgQORUayGylBELCHz2E3QIjOe4oWR1vEdPf+qyVo=; b=iMu2zV0HsCrjYD
-	KYt0ab3cnpNJCUzCFCL3w8V8BN06pEneSo1m5j7JCnTrMOgtlWzHFJjeZxD3/SrfM+VEb+mSvTJqK
-	93V0QIs4AZqky44Iaa00iK286VgyRtJDOjQuA50onQV1LcUlGLMj0gGNC0ewr8b5jtGF/j1TrzopI
-	FYkWt+zlE3U6ULo1LFzYAg4RIoOR2OLE52nF3qWPFmMQtEGuWT5wdyIjnYkyZfhBqxtHF2n8CMva+
-	CAIm7CGhG2uMBhBQfeMcsrceKAnajeIbAUdsmYTfXhlxTQonigQHPyzT5RpZsxduRk+T6DNkmI5yh
-	/Misf3fUGmdzG9sWZl8A==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
+	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=eeW02+JeINSZ3uZQZ9YcgJGInQFCkcDIWA19kK+jIAs=; b=nbG4W4O9KUwtQ8DdpgIvaGED1
+	25Kb78Qxgxyq+PMYk+zrvFoGXqWKEm8c2Se1yq5J++qwVNJ50j+UTfYLfAoAnTT2LaQtbCOSJg9ps
+	k9Lf3ICOfPlugcHorMt2aGsEHDGMlXUu/cSryidzShMeE4l2MeXa6kHdphKEhMNSgutGxaEPZT5f8
+	vPsn7sYQwKT+/FxjRnm7RxIvzjBCi23L02sHT/if0emskxleRS5/s0ptgYAEs8ddUALtNMhOvTPV3
+	r82QbANXbAGDZRU08egYnN8Njw61saN5mk7sL7ijcMwtyGVxYu9wkplNQUU8qaIKh56mKmzAH2Xbu
+	XE0tMn4Sg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jHvXl-0001YN-My; Fri, 27 Mar 2020 20:25:29 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jI0zo-00042Q-E2; Sat, 28 Mar 2020 02:14:48 +0000
+Received: from mail26.static.mailgun.info ([104.130.122.26])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jHvXi-0001XS-EO
- for linux-mediatek@lists.infradead.org; Fri, 27 Mar 2020 20:25:27 +0000
-X-UUID: 4194b85bdf2b4d049f401abec9c1f6f1-20200327
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Srf3BRn2UUVY4cXD1Kv+sL+AswQnzJsHnmQNVtOozvY=; 
- b=IThb/2dXv2ASi0QKA6TjB9GbJT6/Uy/2tv1gbXF2mWgRPS36RGnKo3uEJn08mZdX08GcoXXyHpqnkY6eXFIvbMAMy937hn5gMM707G9YJ1Dvts3sQjY9ZkX+jNnY7eyHaq+6YzHwYTsOEsERv5aW5Jeftr2JO4C2bU3Qet3fGVM=;
-X-UUID: 4194b85bdf2b4d049f401abec9c1f6f1-20200327
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1352211736; Fri, 27 Mar 2020 12:25:19 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 27 Mar 2020 13:25:17 -0700
-Received: from mtkcas09.mediatek.inc (172.21.101.178) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Sat, 28 Mar 2020 04:25:16 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas09.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via
- Frontend Transport; Sat, 28 Mar 2020 04:25:15 +0800
-From: <sean.wang@mediatek.com>
-To: <netdev@vger.kernel.org>
-Subject: =?UTF-8?q?Re=3A=20=5BPATCH=20net-next=5D=20net=3A=20dsa=3A=20mt7530=3A=20use=20resolved=20link=20config=20in=20mac=5Flink=5Fup=28=29?=
-Date: Sat, 28 Mar 2020 04:25:14 +0800
-Message-ID: <1585340714-9932-1-git-send-email-sean.wang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <20200327144412.100913-1-opensource@vdorst.com>
-References: <20200327144412.100913-1-opensource@vdorst.com>
+ id 1jI0ze-0003tq-T7
+ for linux-mediatek@lists.infradead.org; Sat, 28 Mar 2020 02:14:41 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1585361680; h=Message-ID: References: In-Reply-To: Subject:
+ Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
+ MIME-Version: Sender; bh=pjqoOw4JJUHMqq1BpJRNs2QP7YFv72GeeTwA5RNFhyQ=;
+ b=LtQbJpuwnfcmHNM7u38pkFzh46mBTGhgsoFvDm6E6i5CxurcQfDTsyUqgbPd79xiZks5gubB
+ TPHvOrFrBaZOTG3M8l8wXegZPzC76Jc201weNyNKgaiRInktDo92IaMpKtWO/F84JiV674ii
+ kegmw5KdNGlRJD0wne7EF4OMAbw=
+X-Mailgun-Sending-Ip: 104.130.122.26
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
+ by mxa.mailgun.org with ESMTP id 5e7eb306.7f053c0531b8-smtp-out-n03;
+ Sat, 28 Mar 2020 02:14:30 -0000 (UTC)
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id BDD3CC433BA; Sat, 28 Mar 2020 02:14:30 +0000 (UTC)
+Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
+ (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
+ (No client certificate requested) (Authenticated sender: cang)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 7CF97C433F2;
+ Sat, 28 Mar 2020 02:14:29 +0000 (UTC)
 MIME-Version: 1.0
-X-MTK: N
+Date: Sat, 28 Mar 2020 10:14:29 +0800
+From: Can Guo <cang@codeaurora.org>
+To: Stanley Chu <stanley.chu@mediatek.com>
+Subject: Re: [PATCH v1 1/1] scsi: ufs: set device as active power mode after
+ resetting device
+In-Reply-To: <20200327095835.10293-1-stanley.chu@mediatek.com>
+References: <20200327095835.10293-1-stanley.chu@mediatek.com>
+Message-ID: <d5096a58cce94669fef459834134ffab@codeaurora.org>
+X-Sender: cang@codeaurora.org
+User-Agent: Roundcube Webmail/1.3.9
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200327_132526_496687_6B3C6FE3 
-X-CRM114-Status: UNSURE (   5.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200327_191440_712404_A667E4A0 
+X-CRM114-Status: GOOD (  14.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,35 +85,98 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: andrew@lunn.ch, landen.chao@mediatek.com, f.fainelli@gmail.com,
- frank-w@public-files.de, sean.wang@mediatek.com, linux@armlinux.org.uk,
- davem@davemloft.net, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, vivien.didelot@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-scsi@vger.kernel.org, martin.petersen@oracle.com,
+ andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, avri.altman@wdc.com,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ alim.akhtar@samsung.com, matthias.bgg@gmail.com, asutoshd@codeaurora.org,
+ bvanassche@acm.org, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogU2VhbiBXYW5nIDxzZWFuLndhbmdAbWVkaWF0ZWsuY29tPg0KDQo+Q29udmVydCB0aGUg
-bXQ3NTMwIHN3aXRjaCBkcml2ZXIgdG8gdXNlIHRoZSBmaW5hbGlzZWQgbGluayBwYXJhbWV0ZXJz
-IGluIG1hY19saW5rX3VwKCkgcmF0aGVyIHRoYW4gdGhlIHBhcmFtZXRlcnMgaW4gbWFjX2NvbmZp
-ZygpLg0KPg0KPlNpZ25lZC1vZmYtYnk6IFJlbsOpIHZhbiBEb3JzdCA8b3BlbnNvdXJjZUB2ZG9y
-c3QuY29tPg0KDQpUaGF0IHBhdGNoIHdvcmtzIHdlbGwgd2l0aCBlaXRoZXIgVFJHTUkgb24gUkdN
-SUkgbW9kZSBvbiBNVDc2MjMgcmVmZXJlbmNlIGJvYXJkLg0KDQpUZXN0ZWQtYnk6IFNlYW4gV2Fu
-ZyA8c2Vhbi53YW5nQG1lZGlhdGVrLmNvbT4NCg0KPi0tLQ0KPiBkcml2ZXJzL25ldC9kc2EvbXQ3
-NTMwLmMgfCA1NyArKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQo+IGRy
-aXZlcnMvbmV0L2RzYS9tdDc1MzAuaCB8ICA0ICsrKw0KPiAyIGZpbGVzIGNoYW5nZWQsIDI4IGlu
-c2VydGlvbnMoKyksIDMzIGRlbGV0aW9ucygtKQ0KPg0KPmRpZmYgLS1naXQgYS9kcml2ZXJzL25l
-dC9kc2EvbXQ3NTMwLmMgYi9kcml2ZXJzL25ldC9kc2EvbXQ3NTMwLmMgaW5kZXggNmU5MWZlMmY0
-YjlhLi5lZjU3NTUyZGIyNjAgMTAwNjQ0DQo+LS0tIGEvZHJpdmVycy9uZXQvZHNhL210NzUzMC5j
-DQo+KysrIGIvZHJpdmVycy9uZXQvZHNhL210NzUzMC5jDQo+QEAgLTU2MywxNyArNTYzLDYgQEAg
-bXQ3NTMwX21pYl9yZXNldChzdHJ1Y3QgZHNhX3N3aXRjaCAqZHMpDQo+IAltdDc1MzBfd3JpdGUo
-cHJpdiwgTVQ3NTMwX01JQl9DQ1IsIENDUl9NSUJfQUNUSVZBVEUpOyAgfQ0KPiANCj4tc3RhdGlj
-IHZvaWQNCj4tbXQ3NTMwX3BvcnRfc2V0X3N0YXR1cyhzdHJ1Y3QgbXQ3NTMwX3ByaXYgKnByaXYs
-IGludCBwb3J0LCBpbnQgZW5hYmxlKSAtew0KPi0JdTMyIG1hc2sgPSBQTUNSX1RYX0VOIHwgUE1D
-Ul9SWF9FTiB8IFBNQ1JfRk9SQ0VfTE5LOw0KPi0NCj4tCWlmIChlbmFibGUpDQo+LQkJbXQ3NTMw
-X3NldChwcml2LCBNVDc1MzBfUE1DUl9QKHBvcnQpLCBtYXNrKTsNCj4tCWVsc2UNCj4tCQltdDc1
-MzBfY2xlYXIocHJpdiwgTVQ3NTMwX1BNQ1JfUChwb3J0KSwgbWFzayk7DQo+LX0NCj4tDQo+Cl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlh
-dGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On 2020-03-27 17:58, Stanley Chu wrote:
+> Currently ufshcd driver assumes that bInitPowerMode parameter
+> is not changed by any vendors thus device power mode can be set as
+> "Active" during initialization.
+> 
+> According to UFS JEDEC specification, device power mode shall be
+> "Active" after HW Reset is triggered if the bInitPowerMode parameter
+> in Device Descriptor is default value.
+> 
+> By above description, we can set device power mode as "Active" after
+> device reset is triggered by vendor's callback. With this change,
+> the link startup performance can be improved in some cases
+> by not setting link_startup_again as true in ufshcd_link_startup().
+> 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> ---
+>  drivers/scsi/ufs/ufshcd.c | 13 -------------
+>  drivers/scsi/ufs/ufshcd.h | 14 ++++++++++++++
+>  2 files changed, 14 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+> index 227660a1a446..f0a35b289b7c 100644
+> --- a/drivers/scsi/ufs/ufshcd.c
+> +++ b/drivers/scsi/ufs/ufshcd.c
+> @@ -171,19 +171,6 @@ enum {
+>  #define ufshcd_clear_eh_in_progress(h) \
+>  	((h)->eh_flags &= ~UFSHCD_EH_IN_PROGRESS)
+> 
+> -#define ufshcd_set_ufs_dev_active(h) \
+> -	((h)->curr_dev_pwr_mode = UFS_ACTIVE_PWR_MODE)
+> -#define ufshcd_set_ufs_dev_sleep(h) \
+> -	((h)->curr_dev_pwr_mode = UFS_SLEEP_PWR_MODE)
+> -#define ufshcd_set_ufs_dev_poweroff(h) \
+> -	((h)->curr_dev_pwr_mode = UFS_POWERDOWN_PWR_MODE)
+> -#define ufshcd_is_ufs_dev_active(h) \
+> -	((h)->curr_dev_pwr_mode == UFS_ACTIVE_PWR_MODE)
+> -#define ufshcd_is_ufs_dev_sleep(h) \
+> -	((h)->curr_dev_pwr_mode == UFS_SLEEP_PWR_MODE)
+> -#define ufshcd_is_ufs_dev_poweroff(h) \
+> -	((h)->curr_dev_pwr_mode == UFS_POWERDOWN_PWR_MODE)
+> -
+>  struct ufs_pm_lvl_states ufs_pm_lvl_states[] = {
+>  	{UFS_ACTIVE_PWR_MODE, UIC_LINK_ACTIVE_STATE},
+>  	{UFS_ACTIVE_PWR_MODE, UIC_LINK_HIBERN8_STATE},
+> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+> index b7bd81795c24..7a9d1d170719 100644
+> --- a/drivers/scsi/ufs/ufshcd.h
+> +++ b/drivers/scsi/ufs/ufshcd.h
+> @@ -129,6 +129,19 @@ enum uic_link_state {
+>  #define ufshcd_set_link_hibern8(hba) ((hba)->uic_link_state = \
+>  				    UIC_LINK_HIBERN8_STATE)
+> 
+> +#define ufshcd_set_ufs_dev_active(h) \
+> +	((h)->curr_dev_pwr_mode = UFS_ACTIVE_PWR_MODE)
+> +#define ufshcd_set_ufs_dev_sleep(h) \
+> +	((h)->curr_dev_pwr_mode = UFS_SLEEP_PWR_MODE)
+> +#define ufshcd_set_ufs_dev_poweroff(h) \
+> +	((h)->curr_dev_pwr_mode = UFS_POWERDOWN_PWR_MODE)
+> +#define ufshcd_is_ufs_dev_active(h) \
+> +	((h)->curr_dev_pwr_mode == UFS_ACTIVE_PWR_MODE)
+> +#define ufshcd_is_ufs_dev_sleep(h) \
+> +	((h)->curr_dev_pwr_mode == UFS_SLEEP_PWR_MODE)
+> +#define ufshcd_is_ufs_dev_poweroff(h) \
+> +	((h)->curr_dev_pwr_mode == UFS_POWERDOWN_PWR_MODE)
+> +
+>  /*
+>   * UFS Power management levels.
+>   * Each level is in increasing order of power savings.
+> @@ -1091,6 +1104,7 @@ static inline void
+> ufshcd_vops_device_reset(struct ufs_hba *hba)
+>  {
+>  	if (hba->vops && hba->vops->device_reset) {
+>  		hba->vops->device_reset(hba);
+> +		ufshcd_set_ufs_dev_active(hba);
+>  		ufshcd_update_reg_hist(&hba->ufs_stats.dev_reset, 0);
+>  	}
+>  }
+
+Reviewed-by: Can Guo <cang@codeaurora.org>
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
