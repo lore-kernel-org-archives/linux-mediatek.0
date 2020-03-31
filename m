@@ -2,79 +2,78 @@ Return-Path: <SRS0=zTQl=5Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 780E1C43331
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 08:29:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 37CE2C43331
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 08:39:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4F05B20787
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 08:29:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 088FE20787
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 08:39:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BzL6l5R4";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="exqZv8Zb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4F05B20787
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KtHeNSXa";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="JaRiIpDi"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 088FE20787
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uyA4VVim77jcybI5LsZnRl8Txt3V8yb/kfO1CfKCTnQ=; b=BzL6l5R4mdyC0Q
-	ts6vGH//mnXLkTM/zQOz+W0pf8f0iQVGNLyMWkcQ/vvnDORYTGyyZ2V9zzJY7y4pQmpI5XjOLR6Q3
-	20m8ueKhl/0jmZq9lqdj5Vz55l1G1mVLeFgk1X2gPtdvt6HYzFSNBRAvceily6E+Nb3hSa7TRJV8o
-	cUKGvPeSS+49QgppCnLRICUfKAVQZMvnjzK2Mdw92KO12BOWEnObLd7ZFLEJhHdrvq98KoXN1qyL6
-	GI6B0/v46K2jgg6rIHHKGzvs9CEgUwGCgBDyJRjWyIJpt1mzWM6cY0t0eEWFAQrGE+rxPyvK3TDxB
-	dC1P2O56/agHQcKZpobQ==;
+	List-Owner; bh=YP4g0qSHVpT1u75CFQtb1rPUdF53gtjQMtAjY+Ly2fk=; b=KtHeNSXap50Sia
+	t3mfytY4u9L/sIKqa5472uHiirJD0wyEtSofv0THrADXu0S42rTX6OwDDST+oqRohPDof68JwzNqH
+	sBC/i6wwafgqH52T6pGK7IN0B/XsgRb7kCEw1DFs2F+LnV6mvFak8wH/XeNDukSd5B2274FD/9D8s
+	1DUmhMUKplr5NVKDSRCqFwhb77wjhyV6V9HBdCs0uWRxmCW+Yysa/9ef95MorVgz6En+1r6DMfq4t
+	ZrVaM1rGay9WuZlRUUa6UbWFLAZFOQXACxGP+m0nngSBSMOYXi/VHVt8dhZ7q+5pdWfljuCf01yod
+	5YQ3jl7nXGXJTJoj5oSQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJCGe-0006pi-OH; Tue, 31 Mar 2020 08:29:04 +0000
+	id 1jJCQK-0004iZ-9I; Tue, 31 Mar 2020 08:39:04 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJCFl-0005xT-8g; Tue, 31 Mar 2020 08:28:10 +0000
-X-UUID: 7390cc9a90f94b81bc123806ccdbc5b9-20200331
+ id 1jJCQA-0004aN-0w; Tue, 31 Mar 2020 08:38:55 +0000
+X-UUID: 4d79a4d49900408097338868bdf78403-20200331
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=rciAlFaUJxmJYeohlOVBqQpG4bjwObp3/2jJtpkx6Pc=; 
- b=exqZv8ZbSWE8wbJq5lV8qXOiCE/z8SWcY8gdzE07NG9kknApdvjh7H+Ej67YpoUXRRA2bl3Zi1dRfbdx6NgY764qtUT7Xi8DisP1AL+fAHxlojdFlQ0ajSaNVeC5DK04FSjr4uvAkXgHusa/mgA9GRsJ9B60GZ4YNCfYZZQjZ6k=;
-X-UUID: 7390cc9a90f94b81bc123806ccdbc5b9-20200331
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <jitao.shi@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=lct8ONGAtomUDA235lfpqdPWwE+ccWyMYtlhfefuNEw=; 
+ b=JaRiIpDi9s8Qv/D8OtHQr/Y4VYttUuzZSOYfwrALm5A8nj7KFOzrSYUQ/K8DMP73XwTvjMRMWo6+Vpq00R8HY+ZKYWVtZhO7GYW0FyseJXW2LXH/6VvQe+gwP8pE0dzTAoac9WGO3eBmsWbyWK/2HhHa3MsoyKALLoMNyndzhDA=;
+X-UUID: 4d79a4d49900408097338868bdf78403-20200331
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <hsin-hsiung.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2117643188; Tue, 31 Mar 2020 00:27:45 -0800
-Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 31 Mar 2020 01:28:00 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS33N2.mediatek.inc
- (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
- Tue, 31 Mar 2020 16:27:58 +0800
-Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
- MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1395.4 via Frontend Transport; Tue, 31 Mar 2020 16:27:55 +0800
-From: Jitao Shi <jitao.shi@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH v4 3/4] drm/mediatek: add the mipitx driving control
-Date: Tue, 31 Mar 2020 16:27:24 +0800
-Message-ID: <20200331082725.81048-4-jitao.shi@mediatek.com>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20200331082725.81048-1-jitao.shi@mediatek.com>
-References: <20200331082725.81048-1-jitao.shi@mediatek.com>
+ with ESMTP id 2034879984; Tue, 31 Mar 2020 00:38:32 -0800
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 31 Mar 2020 01:28:45 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Tue, 31 Mar 2020 16:28:41 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Tue, 31 Mar 2020 16:28:40 +0800
+Message-ID: <1585643322.27082.3.camel@mtksdaap41>
+Subject: Re: [PATCH v11 3/5] mfd: Add support for the MediaTek MT6358 PMIC
+From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
+To: Nicolas Boichat <drinkcat@chromium.org>, Lee Jones <lee.jones@linaro.org>
+Date: Tue, 31 Mar 2020 16:28:42 +0800
+In-Reply-To: <CANMq1KBqeUHj0gKcknPDvgzRzGMt26pq-_rt_ZM89phCHO9jqQ@mail.gmail.com>
+References: <1585627657-3265-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1585627657-3265-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <CANMq1KBqeUHj0gKcknPDvgzRzGMt26pq-_rt_ZM89phCHO9jqQ@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: CDD238A934F4566BB8936801F8D4F688F9A8C445ACBA109B34F45B0AA54C47932000:8
+X-TM-SNTS-SMTP: 66156411AC7C6987A565DE837C979D90C593ABB3BD713E9063DE777D8BE22B722000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200331_012809_348145_2D711BBD 
-X-CRM114-Status: GOOD (  12.32  )
+X-CRM114-CacheID: sfid-20200331_013854_086410_EE26A3ED 
+X-CRM114-Status: GOOD (  25.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,91 +85,237 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>,
- srv_heupstream@mediatek.com, huijuan.xie@mediatek.com, stonea168@163.com,
- cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org,
- bibby.hsieh@mediatek.com, ck.hu@mediatek.com, yingjoe.chen@mediatek.com,
- eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Alessandro Zummo <a.zummo@towertech.it>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>, Frank
+ Wunderlich <frank-w@public-files.de>, Josef Friedl <josef.friedl@speed.at>,
+ Ran Bi <ran.bi@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Sebastian Reichel <sre@kernel.org>, lkml <linux-kernel@vger.kernel.org>,
+ Richard Fontana <rfontana@redhat.com>,
+ Devicetree List <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ "open list:THERMAL" <linux-pm@vger.kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>,
+ Kate Stewart <kstewart@linuxfoundation.org>, linux-rtc@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a property in device tree to control the driving by different
-board.
+Hi, Sirs
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_mipi_tx.c        | 14 ++++++++++++++
- drivers/gpu/drm/mediatek/mtk_mipi_tx.h        |  1 +
- drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c |  7 +++++++
- 3 files changed, 22 insertions(+)
+On Tue, 2020-03-31 at 15:36 +0800, Nicolas Boichat wrote:
+> On Tue, Mar 31, 2020 at 12:07 PM Hsin-Hsiung Wang
+> <hsin-hsiung.wang@mediatek.com> wrote:
+> >
+> > This adds support for the MediaTek MT6358 PMIC. This is a
+> > multifunction device with the following sub modules:
+> >
+> > - Regulator
+> > - RTC
+> > - Codec
+> > - Interrupt
+> >
+> > It is interfaced to the host controller using SPI interface
+> > by a proprietary hardware called PMIC wrapper or pwrap.
+> > MT6358 MFD is a child device of the pwrap.
+> >
+> > Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> > Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
+> 
+> This is missing a few comments from Lee Jones on v10, actually, repeated below:
+> https://patchwork.kernel.org/patch/11431239/#23244041
+> 
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-index e4d34484ecc8..e301af64809e 100644
---- a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-@@ -125,6 +125,20 @@ static int mtk_mipi_tx_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
-+	ret = of_property_read_u32(dev->of_node, "drive-strength-microamp",
-+				   &mipi_tx->mipitx_drive);
-+	/* If can't get the "mipi_tx->mipitx_drive", set it default 0x8 */
-+	if (ret < 0)
-+		mipi_tx->mipitx_drive = 4600;
-+
-+	/* check the mipitx_drive valid */
-+	if (mipi_tx->mipitx_drive > 6000 || mipi_tx->mipitx_drive < 3000) {
-+		dev_warn(dev, "drive-strength-microamp is invalid %d, not in 3000 ~ 6000\n",
-+			 mipi_tx->mipitx_drive);
-+		mipi_tx->mipitx_drive = clamp_val(mipi_tx->mipitx_drive, 3000,
-+						  6000);
-+	}
-+
- 	ref_clk_name = __clk_get_name(ref_clk);
- 
- 	ret = of_property_read_string(dev->of_node, "clock-output-names",
-diff --git a/drivers/gpu/drm/mediatek/mtk_mipi_tx.h b/drivers/gpu/drm/mediatek/mtk_mipi_tx.h
-index 413f35d86219..eea44327fe9f 100644
---- a/drivers/gpu/drm/mediatek/mtk_mipi_tx.h
-+++ b/drivers/gpu/drm/mediatek/mtk_mipi_tx.h
-@@ -27,6 +27,7 @@ struct mtk_mipi_tx {
- 	struct device *dev;
- 	void __iomem *regs;
- 	u32 data_rate;
-+	u32 mipitx_drive;
- 	const struct mtk_mipitx_data *driver_data;
- 	struct clk_hw pll_hw;
- 	struct clk *pll;
-diff --git a/drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c b/drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c
-index 91f08a351fd0..e4cc967750cb 100644
---- a/drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c
-@@ -17,6 +17,9 @@
- #define RG_DSI_BG_CORE_EN		BIT(7)
- #define RG_DSI_PAD_TIEL_SEL		BIT(8)
- 
-+#define MIPITX_VOLTAGE_SEL	0x0010
-+#define RG_DSI_HSTX_LDO_REF_SEL		(0xf << 6)
-+
- #define MIPITX_PLL_PWR		0x0028
- #define MIPITX_PLL_CON0		0x002c
- #define MIPITX_PLL_CON1		0x0030
-@@ -123,6 +126,10 @@ static void mtk_mipi_tx_power_on_signal(struct phy *phy)
- 	mtk_mipi_tx_clear_bits(mipi_tx, MIPITX_D3_SW_CTL_EN, DSI_SW_CTL_EN);
- 	mtk_mipi_tx_clear_bits(mipi_tx, MIPITX_CK_SW_CTL_EN, DSI_SW_CTL_EN);
- 
-+	mtk_mipi_tx_update_bits(mipi_tx, MIPITX_VOLTAGE_SEL,
-+				RG_DSI_HSTX_LDO_REF_SEL,
-+				(mipi_tx->mipitx_drive - 3000) / 200 << 6);
-+
- 	mtk_mipi_tx_set_bits(mipi_tx, MIPITX_CK_CKMODE_EN, DSI_CK_CKMODE_EN);
- }
- 
--- 
-2.21.0
+So sorry for missing this comment.I will reply it later.
+Thanks a lot.
+
+> > ---
+> >  drivers/mfd/Makefile                 |   2 +-
+> >  drivers/mfd/mt6358-irq.c             | 236 +++++++++++++++++++++++++++++
+> >  drivers/mfd/mt6397-core.c            |  55 ++++++-
+> >  include/linux/mfd/mt6358/core.h      | 158 ++++++++++++++++++++
+> >  include/linux/mfd/mt6358/registers.h | 282 +++++++++++++++++++++++++++++++++++
+> >  include/linux/mfd/mt6397/core.h      |   3 +
+> >  6 files changed, 731 insertions(+), 5 deletions(-)
+> >  create mode 100644 drivers/mfd/mt6358-irq.c
+> >  create mode 100644 include/linux/mfd/mt6358/core.h
+> >  create mode 100644 include/linux/mfd/mt6358/registers.h
+> >
+> > diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
+> > index b83f172..9af1414 100644
+> > --- a/drivers/mfd/Makefile
+> > +++ b/drivers/mfd/Makefile
+> > @@ -238,7 +238,7 @@ obj-$(CONFIG_INTEL_SOC_PMIC)        += intel-soc-pmic.o
+> >  obj-$(CONFIG_INTEL_SOC_PMIC_BXTWC)     += intel_soc_pmic_bxtwc.o
+> >  obj-$(CONFIG_INTEL_SOC_PMIC_CHTWC)     += intel_soc_pmic_chtwc.o
+> >  obj-$(CONFIG_INTEL_SOC_PMIC_CHTDC_TI)  += intel_soc_pmic_chtdc_ti.o
+> > -mt6397-objs    := mt6397-core.o mt6397-irq.o
+> > +mt6397-objs                    := mt6397-core.o mt6397-irq.o mt6358-irq.o
+> >  obj-$(CONFIG_MFD_MT6397)       += mt6397.o
+> >  obj-$(CONFIG_INTEL_SOC_PMIC_MRFLD)     += intel_soc_pmic_mrfld.o
+> >
+> > diff --git a/drivers/mfd/mt6358-irq.c b/drivers/mfd/mt6358-irq.c
+> > new file mode 100644
+> > index 0000000..022e5f5
+> > --- /dev/null
+> > +++ b/drivers/mfd/mt6358-irq.c
+> > @@ -0,0 +1,236 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +//
+> > +// Copyright (c) 2019 MediaTek Inc.
+> 
+> 2020
+> 
+> > +
+> > +#include <linux/interrupt.h>
+> > +#include <linux/mfd/mt6358/core.h>
+> > +#include <linux/mfd/mt6358/registers.h>
+> > +#include <linux/mfd/mt6397/core.h>
+> > +#include <linux/module.h>
+> > +#include <linux/of.h>
+> > +#include <linux/of_device.h>
+> > +#include <linux/of_irq.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/regmap.h>
+> > +
+> > +static struct irq_top_t mt6358_ints[] = {
+> > +       MT6358_TOP_GEN(BUCK),
+> > +       MT6358_TOP_GEN(LDO),
+> > +       MT6358_TOP_GEN(PSC),
+> > +       MT6358_TOP_GEN(SCK),
+> > +       MT6358_TOP_GEN(BM),
+> > +       MT6358_TOP_GEN(HK),
+> > +       MT6358_TOP_GEN(AUD),
+> > +       MT6358_TOP_GEN(MISC),
+> > +};
+> > +
+> > +static void pmic_irq_enable(struct irq_data *data)
+> > +{
+> > +       unsigned int hwirq = irqd_to_hwirq(data);
+> > +       struct mt6397_chip *chip = irq_data_get_irq_chip_data(data);
+> > +       struct pmic_irq_data *irqd = chip->irq_data;
+> > +
+> > +       irqd->enable_hwirq[hwirq] = true;
+> > +}
+> > +
+> > +static void pmic_irq_disable(struct irq_data *data)
+> > +{
+> > +       unsigned int hwirq = irqd_to_hwirq(data);
+> > +       struct mt6397_chip *chip = irq_data_get_irq_chip_data(data);
+> > +       struct pmic_irq_data *irqd = chip->irq_data;
+> > +
+> > +       irqd->enable_hwirq[hwirq] = false;
+> > +}
+> > +
+> > +static void pmic_irq_lock(struct irq_data *data)
+> > +{
+> > +       struct mt6397_chip *chip = irq_data_get_irq_chip_data(data);
+> > +
+> > +       mutex_lock(&chip->irqlock);
+> > +}
+> > +
+> > +static void pmic_irq_sync_unlock(struct irq_data *data)
+> > +{
+> > +       unsigned int i, top_gp, gp_offset, en_reg, int_regs, shift;
+> > +       struct mt6397_chip *chip = irq_data_get_irq_chip_data(data);
+> > +       struct pmic_irq_data *irqd = chip->irq_data;
+> > +
+> > +       for (i = 0; i < irqd->num_pmic_irqs; i++) {
+> > +               if (irqd->enable_hwirq[i] == irqd->cache_hwirq[i])
+> > +                       continue;
+> > +
+> > +               /* Find out the IRQ group */
+> > +               top_gp = 0;
+> > +               while ((top_gp + 1) < irqd->num_top &&
+> > +                      i >= mt6358_ints[top_gp + 1].hwirq_base)
+> > +                       top_gp++;
+> > +
+> > +               /* Find the irq registers */
+> 
+> From Lee Jones: 'Nit: "IRQ"'
+> 
+> > +               gp_offset = i - mt6358_ints[top_gp].hwirq_base;
+> > +               int_regs = gp_offset / MT6358_REG_WIDTH;
+> > +               shift = gp_offset % MT6358_REG_WIDTH;
+> > +               en_reg = mt6358_ints[top_gp].en_reg +
+> > +                        (mt6358_ints[top_gp].en_reg_shift * int_regs);
+> > +
+> [...]
+> > +static const struct irq_domain_ops mt6358_irq_domain_ops = {
+> > +       .map = pmic_irq_domain_map,
+> > +       .xlate = irq_domain_xlate_twocell,
+> > +};
+> > +
+> > +int mt6358_irq_init(struct mt6397_chip *chip)
+> > +{
+> > +       int i, j, ret;
+> > +       struct pmic_irq_data *irqd;
+> > +
+> > +       irqd = devm_kzalloc(chip->dev, sizeof(struct pmic_irq_data *),
+> 
+> From Lee Jones: 'sizeof(*irqd)'
+> 
+> > +                           GFP_KERNEL);
+> > +       if (!irqd)
+> > +               return -ENOMEM;
+> > +
+> > +       chip->irq_data = irqd;
+> > +
+> [...]
+> > @@ -154,19 +184,33 @@ static int mt6397_probe(struct platform_device *pdev)
+> >         if (pmic->irq <= 0)
+> >                 return pmic->irq;
+> >
+> > -       ret = mt6397_irq_init(pmic);
+> > -       if (ret)
+> > -               return ret;
+> > -
+> >         switch (pmic->chip_id) {
+> >         case MT6323_CHIP_ID:
+> > +               ret = mt6397_irq_init(pmic);
+> > +               if (ret)
+> > +                       return ret;
+> > +
+> >                 ret = devm_mfd_add_devices(&pdev->dev, PLATFORM_DEVID_NONE,
+> >                                            mt6323_devs, ARRAY_SIZE(mt6323_devs),
+> >                                            NULL, 0, pmic->irq_domain);
+> >                 break;
+> >
+> > +       case MT6358_CHIP_ID:
+> > +               ret = mt6358_irq_init(pmic);
+> > +               if (ret)
+> > +                       return ret;
+> > +
+> > +               ret = devm_mfd_add_devices(&pdev->dev, PLATFORM_DEVID_NONE,
+> > +                                          mt6358_devs, ARRAY_SIZE(mt6358_devs),
+> > +                                          NULL, 0, pmic->irq_domain);
+> > +               break;
+> 
+> From Lee Jones: "In a subsequent patch you can choose the correct
+> mtXXXX_devs structure to pass and call devm_mfd_add_devices() only
+> once below the switch()."
+> 
+> Can you look into that as a follow-up patch?
+> 
+> 
+> > +
+> >         case MT6391_CHIP_ID:
+> >         case MT6397_CHIP_ID:
+> > +               ret = mt6397_irq_init(pmic);
+> > +               if (ret)
+> > +                       return ret;
+> > +
+> >                 ret = devm_mfd_add_devices(&pdev->dev, PLATFORM_DEVID_NONE,
+> >                                            mt6397_devs, ARRAY_SIZE(mt6397_devs),
+> >                                            NULL, 0, pmic->irq_domain);
+> 
+> [snip]
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
