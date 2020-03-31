@@ -1,87 +1,79 @@
-Return-Path: <SRS0=Fjxk=5P=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=zTQl=5Q=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 96E16C2D0E5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Mar 2020 17:01:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 02BDCC43331
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 02:22:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 678AF20781
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Mar 2020 17:01:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C772320732
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 02:22:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Fq5H7n6n";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="se+q/q5Z"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 678AF20781
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OgYXxRKi";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GMdHIBZw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C772320732
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vKwYifI1m45wee6s7/8tTnCy2nMyjC1rCdep+sqSFjg=; b=Fq5H7n6nhgkVRImRMOo8f6snJ
-	BolAeW4Q5QqlJSrM+TxAd3JY6D+j3sL5ccOwNV0iX4q4jN5OMk0BdgSytSTS/pbS5yG4bWRBHU++G
-	W8fORAeZzF40go1/nqDvLVL5uuzuuX+wm/6swWFtbY9MBQOwTh9OomODpV5bvW5jvRZT5jmzycmV3
-	szXwN1GAlKMXCycN4zKfVyRGUXQ11+oroxzkK5wTx5/NyoivK0/oJQiVKa1BluF1NZ0ZZU+7g04c2
-	/mUg/Yve+cG2jMm2WpXo+SCZu+fl1DDvo0hD//hujayE6/F7Wpq2Z0ddUHNJ4FFjcF3ZLD86aAIVQ
-	cjUunHcCQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=OmTGAyGuFf6Qr00oWrzZRh7/fUW0fw32z6OH0Zk/ECw=; b=OgYXxRKiStmWpy
+	OICgWhhVut90h8az261SOXbcCSyoKtOwmLz0DI8nkw0McjMV/jO/JcywbUqsX8h0d9ja1x52MKv4w
+	In2buOleWDbqxjVUYk1pS/WBPxOeVVkwwG5Kk2ThNH9CjCOoLPD4LFDs4tNI9WqcABgKUekyOZulA
+	lLInLqLLAZdidyU0cjT/frCWJcotWoxr6Qd9hss0bRM9Tq8YlI9Er3617H6Hk+sO2+9cuqPH/w5uE
+	4zfERRXG/uaSq0Hh8Lv5Kvs9+y4z4qwDgVvBgZIcH07CIM+r4Qrdr1XPD1ksyelEMM8EsPA0+vmZ0
+	y4p/hRUcwzQ5vHgjwBZQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jIxmN-00064l-W9; Mon, 30 Mar 2020 17:00:51 +0000
-Received: from mail27.static.mailgun.info ([104.130.122.27])
+	id 1jJ6Xa-0001p2-FE; Tue, 31 Mar 2020 02:22:10 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jIxmK-000643-Kw
- for linux-mediatek@lists.infradead.org; Mon, 30 Mar 2020 17:00:50 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1585587647; h=Content-Transfer-Encoding: Content-Type:
- In-Reply-To: MIME-Version: Date: Message-ID: From: References: Cc: To:
- Subject: Sender; bh=1d8KTbgt/iCLQW3VVzDGNmfmBuqcJpPIW3cjwTeucPA=;
- b=se+q/q5ZLbeTGYLY5rY/52UEXdxsA7pLfJoTLUCZLx58/W05RNb4rpWY8aSoIvUH3IUAOa/e
- khPSA2xinhcbRdc+PHObP/IiUhv3sKcI5mYwecMFxPfVCYb/DmHI/aXmaS39DWfea5GKBpQ8
- 47XoU+MeM5yf6nRDz/bqLgltZ7I=
-X-Mailgun-Sending-Ip: 104.130.122.27
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
- by mxa.mailgun.org with ESMTP id 5e8225b3.7f577fd473b0-smtp-out-n02;
- Mon, 30 Mar 2020 17:00:35 -0000 (UTC)
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id B2F23C4478C; Mon, 30 Mar 2020 17:00:35 +0000 (UTC)
-Received: from [192.168.8.111] (cpe-70-95-153-89.san.res.rr.com [70.95.153.89])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: asutoshd)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 795AAC433D2;
- Mon, 30 Mar 2020 17:00:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 795AAC433D2
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=none smtp.mailfrom=asutoshd@codeaurora.org
-Subject: Re: [PATCH v1 1/1] scsi: ufs: set device as active power mode after
- resetting device
-To: Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-References: <20200327095835.10293-1-stanley.chu@mediatek.com>
-From: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
-Message-ID: <ae5747c1-fd33-2588-b838-d88d21bcb267@codeaurora.org>
-Date: Mon, 30 Mar 2020 10:00:32 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ id 1jJ6XX-0001ob-Tk; Tue, 31 Mar 2020 02:22:09 +0000
+X-UUID: b8824937dcbf4c9d8adb35e561586801-20200330
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Pi2gmU7gUHGbZuSoj+0wP9cb73MBtHR0fEjpiake8os=; 
+ b=GMdHIBZw5IMWn6sQD7pbCNChTp5zKhE7hbHaMyfK8fyV/GrD3w+7aIfGZRqQN7ouclwJCGnCqdKXDEH8ZG04TdBss9yFTzgCYEyvxNMqzDgCcpHblbuJQ2U+zAi5X5mJgEttueYPwKWXsI4sHzEsAnqt1J+MlVzrOOoAbwF3lGk=;
+X-UUID: b8824937dcbf4c9d8adb35e561586801-20200330
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <dongchun.zhu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1962512452; Mon, 30 Mar 2020 18:21:52 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Mon, 30 Mar 2020 19:16:15 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31DR.mediatek.inc
+ (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Tue, 31 Mar 2020 10:16:12 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Tue, 31 Mar 2020 10:16:10 +0800
+Message-ID: <1585620980.5781.80.camel@mhfsdcap03>
+Subject: Re: [V4, 2/2] media: i2c: Add DW9768 VCM driver
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Date: Tue, 31 Mar 2020 10:16:20 +0800
+In-Reply-To: <20200330135751.GQ1922688@smile.fi.intel.com>
+References: <20200330123634.363-1-dongchun.zhu@mediatek.com>
+ <20200330123634.363-3-dongchun.zhu@mediatek.com>
+ <20200330135751.GQ1922688@smile.fi.intel.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <20200327095835.10293-1-stanley.chu@mediatek.com>
-Content-Language: en-US
+X-TM-SNTS-SMTP: B146E5EF035629031CDCFBF9CF89F0AFC588A22BD4E14778C43D5F924A3AA11C2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200330_100048_750287_7508C2FA 
-X-CRM114-Status: GOOD (  20.34  )
+X-CRM114-CacheID: sfid-20200330_192207_988577_8F09FD04 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,103 +85,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: bvanassche@acm.org, andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
- beanhuo@micron.com
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org,
+ srv_heupstream@mediatek.com, shengnan.wang@mediatek.com, tfiga@chromium.org,
+ louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, sakari.ailus@linux.intel.com,
+ matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Andy,
 
-On 3/27/2020 2:58 AM, Stanley Chu wrote:
-> Currently ufshcd driver assumes that bInitPowerMode parameter
-> is not changed by any vendors thus device power mode can be set as
-> "Active" during initialization.
-> 
-> According to UFS JEDEC specification, device power mode shall be
-> "Active" after HW Reset is triggered if the bInitPowerMode parameter
-> in Device Descriptor is default value.
-> 
-> By above description, we can set device power mode as "Active" after
-> device reset is triggered by vendor's callback. With this change,
-> the link startup performance can be improved in some cases
-> by not setting link_startup_again as true in ufshcd_link_startup().
-> 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> ---
+Thanks for the review.
 
-Reviewed-by: Asutosh Das <asutoshd@codeaurora.org>
-
->   drivers/scsi/ufs/ufshcd.c | 13 -------------
->   drivers/scsi/ufs/ufshcd.h | 14 ++++++++++++++
->   2 files changed, 14 insertions(+), 13 deletions(-)
+On Mon, 2020-03-30 at 16:57 +0300, Andy Shevchenko wrote:
+> On Mon, Mar 30, 2020 at 08:36:34PM +0800, Dongchun Zhu wrote:
+> > This patch adds a V4L2 sub-device driver for DW9768 voice coil moter,
+> > providing control to set the desired focus via I2C serial interface.
 > 
-> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> index 227660a1a446..f0a35b289b7c 100644
-> --- a/drivers/scsi/ufs/ufshcd.c
-> +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -171,19 +171,6 @@ enum {
->   #define ufshcd_clear_eh_in_progress(h) \
->   	((h)->eh_flags &= ~UFSHCD_EH_IN_PROGRESS)
->   
-> -#define ufshcd_set_ufs_dev_active(h) \
-> -	((h)->curr_dev_pwr_mode = UFS_ACTIVE_PWR_MODE)
-> -#define ufshcd_set_ufs_dev_sleep(h) \
-> -	((h)->curr_dev_pwr_mode = UFS_SLEEP_PWR_MODE)
-> -#define ufshcd_set_ufs_dev_poweroff(h) \
-> -	((h)->curr_dev_pwr_mode = UFS_POWERDOWN_PWR_MODE)
-> -#define ufshcd_is_ufs_dev_active(h) \
-> -	((h)->curr_dev_pwr_mode == UFS_ACTIVE_PWR_MODE)
-> -#define ufshcd_is_ufs_dev_sleep(h) \
-> -	((h)->curr_dev_pwr_mode == UFS_SLEEP_PWR_MODE)
-> -#define ufshcd_is_ufs_dev_poweroff(h) \
-> -	((h)->curr_dev_pwr_mode == UFS_POWERDOWN_PWR_MODE)
-> -
->   struct ufs_pm_lvl_states ufs_pm_lvl_states[] = {
->   	{UFS_ACTIVE_PWR_MODE, UIC_LINK_ACTIVE_STATE},
->   	{UFS_ACTIVE_PWR_MODE, UIC_LINK_HIBERN8_STATE},
-> diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-> index b7bd81795c24..7a9d1d170719 100644
-> --- a/drivers/scsi/ufs/ufshcd.h
-> +++ b/drivers/scsi/ufs/ufshcd.h
-> @@ -129,6 +129,19 @@ enum uic_link_state {
->   #define ufshcd_set_link_hibern8(hba) ((hba)->uic_link_state = \
->   				    UIC_LINK_HIBERN8_STATE)
->   
-> +#define ufshcd_set_ufs_dev_active(h) \
-> +	((h)->curr_dev_pwr_mode = UFS_ACTIVE_PWR_MODE)
-> +#define ufshcd_set_ufs_dev_sleep(h) \
-> +	((h)->curr_dev_pwr_mode = UFS_SLEEP_PWR_MODE)
-> +#define ufshcd_set_ufs_dev_poweroff(h) \
-> +	((h)->curr_dev_pwr_mode = UFS_POWERDOWN_PWR_MODE)
-> +#define ufshcd_is_ufs_dev_active(h) \
-> +	((h)->curr_dev_pwr_mode == UFS_ACTIVE_PWR_MODE)
-> +#define ufshcd_is_ufs_dev_sleep(h) \
-> +	((h)->curr_dev_pwr_mode == UFS_SLEEP_PWR_MODE)
-> +#define ufshcd_is_ufs_dev_poweroff(h) \
-> +	((h)->curr_dev_pwr_mode == UFS_POWERDOWN_PWR_MODE)
-> +
->   /*
->    * UFS Power management levels.
->    * Each level is in increasing order of power savings.
-> @@ -1091,6 +1104,7 @@ static inline void ufshcd_vops_device_reset(struct ufs_hba *hba)
->   {
->   	if (hba->vops && hba->vops->device_reset) {
->   		hba->vops->device_reset(hba);
-> +		ufshcd_set_ufs_dev_active(hba);
->   		ufshcd_update_reg_hist(&hba->ufs_stats.dev_reset, 0);
->   	}
->   }
+> ...
+> 
+> > +static const struct dev_pm_ops dw9768_pm_ops = {
+> > +	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
+> > +				pm_runtime_force_resume)
+> > +	SET_RUNTIME_PM_OPS(dw9768_runtime_suspend, dw9768_runtime_resume, NULL)
+> > +};
+> > +
+> > +static struct i2c_driver dw9768_i2c_driver = {
+> > +	.driver = {
+> > +		.name = DW9768_NAME,
+> 
+> > +		.pm = IS_ENABLED(CONFIG_PM) ? &dw9768_pm_ops : NULL,
+> 
+> What is this conditional for?
 > 
 
+For the dw9768_pm_ops, here my idea is to use an IS_ENABLED() check to
+avoid defining the structure when CONFIG_PM is not set.
 
--- 
-The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
-Linux Foundation Collaborative Project
+> > +		.of_match_table = dw9768_of_table,
+> > +	},
+> > +	.probe_new  = dw9768_probe,
+> > +	.remove = dw9768_remove,
+> > +};
+> 
+> > +
+> 
+> Extra blank line.
+> 
+
+Weird, most V4L2 driver(I2C client) seems to keep this blank line.
+Sakari, is it still the case or am I mistaken?
+
+> > +module_i2c_driver(dw9768_i2c_driver);
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
