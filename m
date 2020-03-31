@@ -2,85 +2,71 @@ Return-Path: <SRS0=zTQl=5Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-1.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 556C4C43331
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 16:17:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA28AC43331
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 16:24:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0CDB320786
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 16:17:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AE5D920784
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 16:24:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Nq2ZG9QW";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="IB3jtMla";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="hu+r+Ecp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0CDB320786
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VaQPmeGQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AE5D920784
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=obuRrp0aZBrhXHMuteTkgjmizOIrB952F/bwdsfnCWg=; b=Nq2ZG9QWtuquvj
-	QaruVC+lIUWqoZu7SBKcqyo9TX3F4xrUYahbHP+aYuU1gTouE2CLcF/4g2Q1TUX6OjwNv1oIch9La
-	7dhutgltHhFh6mKsR6P/63HOT+qp6fLCtbtOujYiCLAdIZ3uFe4MyQmAfOBuSZnBlCpfIT9qCfFTy
-	C/+xJJbOra4QdAHK/wAUKqUO9EmBBXUr50QWdPE6D/NUXI0P/0NVGvtZ4U8fwr4HjOocaS4qne3MD
-	reN+0diQOz+3ki5E/DYQLBwTBgOXRUfuItOy5PI6km7kzwzK7wwcGwunN44BN7OQonenDiZ+Q6ajs
-	jMlZTTiDDAXb8ybsvV9A==;
+	List-Owner; bh=IzLJJBGafX56j02d6B6u7r8wAcSH69uSEHflus8pIOQ=; b=VaQPmeGQLEHcOC
+	AtWhnt8SiET8OraRFQr1vDnd7TUFlmcBCy+9/ua2gEJWwPEkUKVGO4kewtnsZ+F43sIxSFNAYgdB9
+	3EtO5lFl7DPJhJq91ZL0lFXBCRzDNIgAaDUr2O2++733Dbmu28CjoCT/hRPHa7PnCCpfeQDrvQUCs
+	fAXvS8vY73VF5XUHCEU6JVX08IHPbzF9kRMj/B/AmffHA2E0F0B5z8akcmsZr+4ObVM+OYBdiCmf4
+	DIFmOlPtxyVBiVXVnjKjL0AqsQAbz4Ag7M2A2IAqpjH09qPQy/EUIG4pTzqUU115V1+O6vy8LWhH3
+	ViTI61qBMNzqc2YBLeGA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJJa3-0004PY-9w; Tue, 31 Mar 2020 16:17:35 +0000
-Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
+	id 1jJJh2-0003Rl-Ht; Tue, 31 Mar 2020 16:24:48 +0000
+Received: from mga12.intel.com ([192.55.52.136])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJJZL-0003kP-CE; Tue, 31 Mar 2020 16:16:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Content-Type:Cc:To:Subject:Message-ID:
- Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=fcDugmez7F6MrOwyPLO/XrjYFDSuI09NY2nDArTEAvg=; b=IB3jtMlaWlZ8y04dluix7YPfzo
- xsOJTRPfiet17UvGinUhjA4PwLpbl/0g59hJyxbSzSgp1Vry7oku9RA2lMIb6XjG2dzsFrQ5+nlas
- 2pUDmNRbXgMeuVohI/10BAIsutdYm+UFcCi+bZy+hnFd0ijNQEeOHtlYllpWmejVk8TTt8fbtc8sF
- pVp4npTr804ngZlVnMyQ9IIuJmb4Y8drWRvDXxDpbkVA1yX8I9qu3WseWbl9M741I/n74k6K2y1uO
- 3jJv+d6GY81m2ba7Oez58vtMLn7RKRclK/k1a9A2cbOGkZ/plUzUygBRLX6blHD1eG/6QixgBasG6
- +T0YhXBA==;
-Received: from mail.kernel.org ([198.145.29.99])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJFwh-0000XO-46; Tue, 31 Mar 2020 12:24:44 +0000
-Received: from mail-pg1-f173.google.com (mail-pg1-f173.google.com
- [209.85.215.173])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8A9DF21707;
- Tue, 31 Mar 2020 12:24:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1585657481;
- bh=SlDP4sMftxLy1f3sSKNmvyVHPB99D/sLxwSfT22UqCo=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=hu+r+EcpSAzJeVjqvtdksiNchXYtO7gWeK/5FSVSatLCNfB1Onton3/RnWVAonWKx
- zyQX0UW7Vn50eXF7erUf7lfYDRTXfmPGmJHXNhk8LTyQWEO5UQ7pabJ4TZhDzrr47J
- XIEznv2Jj89Ij7JJhyxTAPVhfniu4zXPDiY3aBUE=
-Received: by mail-pg1-f173.google.com with SMTP id b1so10259189pgm.8;
- Tue, 31 Mar 2020 05:24:41 -0700 (PDT)
-X-Gm-Message-State: ANhLgQ3euqBwVRzawW0zQkh4ZEwVZkZZbSnrI/i164SYTG9j7ffOuqW3
- xD17AGUyv1H/nU/34h/f0NP7VaesWdBNIwESaKY=
-X-Google-Smtp-Source: ADFU+vv8nsroUvNz9mzcqH+sJYV0TRy7NUjlM1NPPnKI2dx7O/QGrICt49VJW5dc3UJowDAuRblaboSCROVLg91IBwo=
-X-Received: by 2002:a05:6e02:4c:: with SMTP id
- i12mr6178445ilr.211.1585657479762; 
- Tue, 31 Mar 2020 05:24:39 -0700 (PDT)
-MIME-Version: 1.0
-References: <cover.1585656143.git.matti.vaittinen@fi.rohmeurope.com>
-In-Reply-To: <cover.1585656143.git.matti.vaittinen@fi.rohmeurope.com>
-From: Ard Biesheuvel <ardb@kernel.org>
-Date: Tue, 31 Mar 2020 14:24:28 +0200
-X-Gmail-Original-Message-ID: <CAMj1kXGUJpBnLUX0J-cHCMrYzvoPB38O42_WB58Z6jtnT7XZUQ@mail.gmail.com>
-Message-ID: <CAMj1kXGUJpBnLUX0J-cHCMrYzvoPB38O42_WB58Z6jtnT7XZUQ@mail.gmail.com>
+ id 1jJJgv-0003PR-S4; Tue, 31 Mar 2020 16:24:46 +0000
+IronPort-SDR: NtVZUr5HNkWRFfS4DNlJTSmMmp8F33rhkvX4EiLf+dpLfso/AXOGfzC1uAB0t+IKK0t7qdyf+W
+ 9CYiZIhCuA7A==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Mar 2020 07:21:28 -0700
+IronPort-SDR: sdD6GgxeRL8Ps3R76lYFgQENIIr/nUulSPpqBkmBlF2QxdA1PYfxR9lYbKWOdVtEbSPjj2FdCE
+ x6r1ZBRfi/3A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,328,1580803200"; d="scan'208";a="267296473"
+Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
+ by orsmga002.jf.intel.com with ESMTP; 31 Mar 2020 07:21:14 -0700
+Received: from andy by smile with local (Exim 4.93)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1jJHlS-00EWMm-GN; Tue, 31 Mar 2020 17:21:14 +0300
+Date: Tue, 31 Mar 2020 17:21:14 +0300
+From: "andriy.shevchenko@linux.intel.com" <andriy.shevchenko@linux.intel.com>
+To: "Vaittinen, Matti" <Matti.Vaittinen@fi.rohmeurope.com>
 Subject: Re: [PATCH v7 00/10] Support ROHM BD99954 charger IC
-To: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
+Message-ID: <20200331142114.GL1922688@smile.fi.intel.com>
+References: <cover.1585656143.git.matti.vaittinen@fi.rohmeurope.com>
+ <CAMj1kXGUJpBnLUX0J-cHCMrYzvoPB38O42_WB58Z6jtnT7XZUQ@mail.gmail.com>
+ <168c9184cd4781f27a3d53339610849894263800.camel@fi.rohmeurope.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <168c9184cd4781f27a3d53339610849894263800.camel@fi.rohmeurope.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200331_092441_929872_E135E760 
+X-CRM114-Status: GOOD (  16.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,275 +78,104 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Milo Kim <milo.kim@ti.com>,
- Andrei Stefanescu <andrei.stefanescu@microchip.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Tony Lindgren <tony@atomide.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Brendan Higgins <brendanhiggins@google.com>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Masahiro Yamada <yamada.masahiro@socionext.com>, devicetree@vger.kernel.org,
- linux-omap@vger.kernel.org, mikko.mutanen@fi.rohmeurope.com,
- Vincenzo Frascino <vincenzo.frascino@arm.com>,
- Dan Williams <dan.j.williams@intel.com>, linux-samsung-soc@vger.kernel.org,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <uwe@kleine-koenig.org>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>, Chen-Yu Tsai <wens@csie.org>,
- Andy Gross <agross@kernel.org>, markus.laine@fi.rohmeurope.com,
- linux-arm-msm@vger.kernel.org, Borislav Petkov <bp@suse.de>,
- Petr Mladek <pmladek@suse.com>, Mikhail Zaslonko <zaslonko@linux.ibm.com>,
- Charles Keepax <ckeepax@opensource.cirrus.com>, Arnd Bergmann <arnd@arndb.de>,
- mazziesaccount@gmail.com, Gary Hook <Gary.Hook@amd.com>,
- Richard Fitzgerald <rf@opensource.cirrus.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- David Gow <davidgow@google.com>, Shuah Khan <skhan@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Support Opensource <support.opensource@diasemi.com>,
- Sangbeom Kim <sbkim73@samsung.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-pm@vger.kernel.org,
- Randy Dunlap <rdunlap@infradead.org>, Sebastian Reichel <sre@kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Tal Gilboa <talgi@mellanox.com>, Changbin Du <changbin.du@intel.com>,
- Mark Brown <broonie@kernel.org>, Masami Hiramatsu <mhiramat@kernel.org>,
- patches@opensource.cirrus.com, Andrew Morton <akpm@linux-foundation.org>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
+ "milo.kim@ti.com" <milo.kim@ti.com>,
+ "andrei.stefanescu@microchip.com" <andrei.stefanescu@microchip.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "tony@atomide.com" <tony@atomide.com>,
+ "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
+ "Gary.Hook@amd.com" <Gary.Hook@amd.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "yamada.masahiro@socionext.com" <yamada.masahiro@socionext.com>,
+ "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>, "Mutanen,
+ Mikko" <Mikko.Mutanen@fi.rohmeurope.com>,
+ "vincenzo.frascino@arm.com" <vincenzo.frascino@arm.com>,
+ "ardb@kernel.org" <ardb@kernel.org>,
+ "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+ "uwe@kleine-koenig.org" <uwe@kleine-koenig.org>,
+ "rafael@kernel.org" <rafael@kernel.org>, "krzk@kernel.org" <krzk@kernel.org>,
+ "bgolaszewski@baylibre.com" <bgolaszewski@baylibre.com>,
+ "wens@csie.org" <wens@csie.org>, "agross@kernel.org" <agross@kernel.org>,
+ "Laine, Markus" <Markus.Laine@fi.rohmeurope.com>,
+ "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+ "bp@suse.de" <bp@suse.de>, "pmladek@suse.com" <pmladek@suse.com>,
+ "zaslonko@linux.ibm.com" <zaslonko@linux.ibm.com>,
+ "ckeepax@opensource.cirrus.com" <ckeepax@opensource.cirrus.com>,
+ "arnd@arndb.de" <arnd@arndb.de>,
+ "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+ "brendanhiggins@google.com" <brendanhiggins@google.com>,
+ "dan.j.williams@intel.com" <dan.j.williams@intel.com>,
+ "rf@opensource.cirrus.com" <rf@opensource.cirrus.com>,
+ "broonie@kernel.org" <broonie@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "sre@kernel.org" <sre@kernel.org>, "davidgow@google.com" <davidgow@google.com>,
+ "skhan@linuxfoundation.org" <skhan@linuxfoundation.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "tglx@linutronix.de" <tglx@linutronix.de>,
+ "bjorn.andersson@linaro.org" <bjorn.andersson@linaro.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "support.opensource@diasemi.com" <support.opensource@diasemi.com>,
+ "sbkim73@samsung.com" <sbkim73@samsung.com>,
+ "patches@opensource.cirrus.com" <patches@opensource.cirrus.com>,
+ "rdunlap@infradead.org" <rdunlap@infradead.org>,
+ "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+ "talgi@mellanox.com" <talgi@mellanox.com>,
+ "changbin.du@intel.com" <changbin.du@intel.com>,
+ "b.zolnierkie@samsung.com" <b.zolnierkie@samsung.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "mhiramat@kernel.org" <mhiramat@kernel.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "akpm@linux-foundation.org" <akpm@linux-foundation.org>,
+ "olteanv@gmail.com" <olteanv@gmail.com>,
+ "davem@davemloft.net" <davem@davemloft.net>,
+ "mazziesaccount@gmail.com" <mazziesaccount@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Matti,
+On Tue, Mar 31, 2020 at 02:02:55PM +0000, Vaittinen, Matti wrote:
+> 
+> On Tue, 2020-03-31 at 14:24 +0200, Ard Biesheuvel wrote:
+> > Hello Matti,
+> > 
+> > On Tue, 31 Mar 2020 at 14:20, Matti Vaittinen
+> > <matti.vaittinen@fi.rohmeurope.com> wrote:
+> > > Support ROHM BD99954 Battery Management IC
+> > > 
+> > > ROHM BD99954 is a Battery Management IC for 1-4 cell Lithium-Ion
+> > > secondary battery. BD99954 is intended to be used in space-
+> > > constraint
+> > > equipment such as Low profile Notebook PC, Tablets and other
+> > > applications.
+> > > 
+> > 
+> > Is it *really* necessary to cc this to 50 different people?
+> > 
+> > In the future, please trim down the cc list and keep it to the
+> > mailing
+> > list, maintainers and reviewers of the affected subsystem.
+> 
+> Sorry Ard (and others). This is the list get_maintainers.pl gave for
+> the series. Partially the large amount of receivers is caused by the
+> regulator framework change which impacted bunch of individual drivers.
+> Please, see the amount changed files from summary below. In addition to
+> that the linear_range code has been drifting from one place to other
+> during the review iterations until it settled to /lib. For example Greg
+> gave me some comments while linear_ranges was still heading to
+> drivers/base - so I did not drop Greg off from new revisions of the
+> series even if it was no longer changing drivers/base
 
-On Tue, 31 Mar 2020 at 14:20, Matti Vaittinen
-<matti.vaittinen@fi.rohmeurope.com> wrote:
->
-> Support ROHM BD99954 Battery Management IC
->
-> ROHM BD99954 is a Battery Management IC for 1-4 cell Lithium-Ion
-> secondary battery. BD99954 is intended to be used in space-constraint
-> equipment such as Low profile Notebook PC, Tablets and other
-> applications.
->
+I'm wondering if the command line I usually use gives you such amount of recipients.
 
-Is it *really* necessary to cc this to 50 different people?
-
-In the future, please trim down the cc list and keep it to the mailing
-list, maintainers and reviewers of the affected subsystem.
+	scripts/get_maintainer.pl --git --git-min-percent=67 ...
 
 
-> Series extracts a "linear ranges" helper out of the regulator
-> framework. Linear ranges helper is intended to help converting
-> real-world values to register values when conversion is linear. I
-> suspect this is useful also for power subsystem and possibly for clk.
->
-> This version of series introduces new battry DT binding entries and
-> adds the parsing in power_supply_get_battery_info().
->
-> Changelog v7:
->  General:
->    - rebased on top of v5.6
->  bd99954 driver:
->    - fixed bunch of styling issues spotted by Andy Shevchenko
->    - dropped ACPI table as ACPI properties are not supported at this
->      version of driver.
->    - added few acks
->
-> Changelog v6:
->  generic:
->    - rebased on top of 5.6-rc7.
->  linear ranges:
->    - moved to lib as requested by Greg KH
->    - EXPORT_SYMBOL => EXPORT_SYMBOL_GPL
->    - licence GPL-2.0, not later
->    - added KUnit test for linear ranges
->
-> Changelog v5:
->  generic:
->    - rebased on top of 5.6-rc6.
->  DT-bindings:
->    - Dropped -charger extension from compatible and removed wildcard x.
->  regulators:
->    - squashed the regulator changes in one patch.
->  power-supply KConfig:
->    - fixed indentiation
->    - dropped unnecessary 'default N' from BD99954.
->
-> Changelog v4:
->  generic:
->    - rebase and drop RFC.
->  DT-bindings:
->    - add I2C node address-cells and size-cells to fix yaml check errors
->    - uncomment multipleOf:
->  bd70528:
->    - add patch which renames driver internal linear_range struct to
->      avoid collision when regulator/driver.h (which gets included from
->      rohm generic header) introduces the linear_range struct.
->  regulators:
->    - rebase to v5.6-rc2 and convert also the two newly introduced
->      drivers to use linear_range struct instead of
->      regulator_linear_range.
->  linear_ranges:
->    - Fix kerneldoc.
->
-> Changelog RFC-v3:
->  DT-bindings:
->    - fix the BD99954 binding (the *-microvolt Vs. *-microvolts issue is
->      still there. Not sure which one is correct)
->    - renabe tricklecharge-* binding to trickle-charge-* as suggested by
->      Rob.
->  - drop the linear-ranges helper which was written for BD70528 and
->    extract the linear-range code from regulator framework instead.
->  - refactor regulator framework to utilize extracted linear-ranges
->    code.
->  - change the struct regulator_linear_range to linear_range from
->    regulator drivers.
->  - refactor BD70528 to use regulator framework originated
->    linear-ranges code.
->  - change BD99954 to use linear-ranges code from regulator framework
->
-> Changelog RFC-v2:
->  DT-bindings:
->    - Used the battery parameters described in battery.txt
->    - Added few new parameters to battery.txt
->    - Added ASCII art charging profile chart for BD99954 to explain
->      states and limits.
->  Linear ranges:
->    - Fixed division by zero error from linear-ranges code if step 0 is
->      used.
->  Power-supply core:
->    - Added parsing of new battery parameters.
->  BD99954 driver:
->    - converted to use battery parameters from battery node
->    - Added step 0 ranges for reg values which do not change voltage
->    - added dt-node to psy-config
->
-> Patch 1:
->         DT binding docs for the new battery parameters
-> Patch 2:
->         BD99954 charger DT binding docs
-> Patch 3:
->         Linear ranges helpers
-> Patch 4:
->         Test for linear ranges helpers
-> Patch 5:
->         Rename driver internal struct linear_range from bd70528-power
-> Patch 6:
->         Use linear-ranges helpers in regulator framework and
->         convert regulator drivers to use new linear_range struct.
-> Patch 7:
->         Use linear-ranges helpers in bd70528 driver
-> Patch 8:
->         Parsing of new battery parameters
-> Patch 9:
->         ROHM BD99954 charger IC driver
-> Patch 10:
->         Fix Kconfig help text indentiation for other entries as well.
->
-> ---
->
-> Matti Vaittinen (10):
->   dt-bindings: battery: add new battery parameters
->   dt_bindings: ROHM BD99954 Charger
->   lib: add linear ranges helpers
->   lib/test_linear_ranges: add a test for the 'linear_ranges'
->   power: supply: bd70528: rename linear_range to avoid collision
->   regulator: use linear_ranges helper
->   power: supply: bd70528: use linear ranges
->   power: supply: add battery parameters
->   power: supply: Support ROHM bd99954 charger
->   power: supply: Fix Kconfig help text indentiation
->
->  .../bindings/power/supply/battery.txt         |    6 +
->  .../bindings/power/supply/rohm,bd99954.yaml   |  155 +++
->  drivers/power/supply/Kconfig                  |   34 +-
->  drivers/power/supply/Makefile                 |    1 +
->  drivers/power/supply/bd70528-charger.c        |  140 +-
->  drivers/power/supply/bd99954-charger.c        | 1149 +++++++++++++++++
->  drivers/power/supply/power_supply_core.c      |    8 +
->  drivers/regulator/88pg86x.c                   |    4 +-
->  drivers/regulator/88pm800-regulator.c         |    4 +-
->  drivers/regulator/Kconfig                     |    1 +
->  drivers/regulator/act8865-regulator.c         |    4 +-
->  drivers/regulator/act8945a-regulator.c        |    2 +-
->  drivers/regulator/arizona-ldo1.c              |    2 +-
->  drivers/regulator/arizona-micsupp.c           |    4 +-
->  drivers/regulator/as3711-regulator.c          |    6 +-
->  drivers/regulator/as3722-regulator.c          |    4 +-
->  drivers/regulator/axp20x-regulator.c          |   16 +-
->  drivers/regulator/bcm590xx-regulator.c        |    8 +-
->  drivers/regulator/bd70528-regulator.c         |    8 +-
->  drivers/regulator/bd71828-regulator.c         |   10 +-
->  drivers/regulator/bd718x7-regulator.c         |   26 +-
->  drivers/regulator/da903x.c                    |    2 +-
->  drivers/regulator/helpers.c                   |  130 +-
->  drivers/regulator/hi6421-regulator.c          |    4 +-
->  drivers/regulator/lochnagar-regulator.c       |    4 +-
->  drivers/regulator/lp873x-regulator.c          |    4 +-
->  drivers/regulator/lp87565-regulator.c         |    2 +-
->  drivers/regulator/lp8788-buck.c               |    2 +-
->  drivers/regulator/max77650-regulator.c        |    2 +-
->  drivers/regulator/mcp16502.c                  |    4 +-
->  drivers/regulator/mp8859.c                    |    2 +-
->  drivers/regulator/mt6323-regulator.c          |    6 +-
->  drivers/regulator/mt6358-regulator.c          |    8 +-
->  drivers/regulator/mt6380-regulator.c          |    6 +-
->  drivers/regulator/mt6397-regulator.c          |    6 +-
->  drivers/regulator/palmas-regulator.c          |    4 +-
->  drivers/regulator/qcom-rpmh-regulator.c       |    2 +-
->  drivers/regulator/qcom_rpm-regulator.c        |   14 +-
->  drivers/regulator/qcom_smd-regulator.c        |   70 +-
->  drivers/regulator/rk808-regulator.c           |   10 +-
->  drivers/regulator/s2mps11.c                   |   14 +-
->  drivers/regulator/sky81452-regulator.c        |    2 +-
->  drivers/regulator/stpmic1_regulator.c         |   18 +-
->  drivers/regulator/tps65086-regulator.c        |   10 +-
->  drivers/regulator/tps65217-regulator.c        |    4 +-
->  drivers/regulator/tps65218-regulator.c        |    6 +-
->  drivers/regulator/tps65912-regulator.c        |    4 +-
->  drivers/regulator/twl-regulator.c             |    4 +-
->  drivers/regulator/twl6030-regulator.c         |    2 +-
->  drivers/regulator/wm831x-dcdc.c               |    2 +-
->  drivers/regulator/wm831x-ldo.c                |    4 +-
->  drivers/regulator/wm8350-regulator.c          |    2 +-
->  drivers/regulator/wm8400-regulator.c          |    2 +-
->  include/linux/linear_range.h                  |   48 +
->  include/linux/power/bd99954-charger.h         | 1075 +++++++++++++++
->  include/linux/power_supply.h                  |    4 +
->  include/linux/regulator/driver.h              |   27 +-
->  lib/Kconfig                                   |    3 +
->  lib/Kconfig.debug                             |   11 +
->  lib/Makefile                                  |    2 +
->  lib/linear_ranges.c                           |  246 ++++
->  lib/test_linear_ranges.c                      |  228 ++++
->  62 files changed, 3236 insertions(+), 356 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/power/supply/rohm,bd99954.yaml
->  create mode 100644 drivers/power/supply/bd99954-charger.c
->  create mode 100644 include/linux/linear_range.h
->  create mode 100644 include/linux/power/bd99954-charger.h
->  create mode 100644 lib/linear_ranges.c
->  create mode 100644 lib/test_linear_ranges.c
->
->
-> base-commit: 7111951b8d4973bda27ff663f2cf18b663d15b48
-> --
-> 2.21.0
->
->
-> --
-> Matti Vaittinen, Linux device drivers
-> ROHM Semiconductors, Finland SWDC
-> Kiviharjunlenkki 1E
-> 90220 OULU
-> FINLAND
->
-> ~~~ "I don't think so," said Rene Descartes. Just then he vanished ~~~
-> Simon says - in Latin please.
-> ~~~ "non cogito me" dixit Rene Descarte, deinde evanescavit ~~~
-> Thanks to Simon Glass for the translation =]
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
