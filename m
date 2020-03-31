@@ -4,76 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-8.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 37CE2C43331
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 08:39:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3904AC2D0F3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 09:21:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 088FE20787
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 08:39:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 109EA2145D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 09:21:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KtHeNSXa";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="JaRiIpDi"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 088FE20787
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KSf8fUuV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 109EA2145D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YP4g0qSHVpT1u75CFQtb1rPUdF53gtjQMtAjY+Ly2fk=; b=KtHeNSXap50Sia
-	t3mfytY4u9L/sIKqa5472uHiirJD0wyEtSofv0THrADXu0S42rTX6OwDDST+oqRohPDof68JwzNqH
-	sBC/i6wwafgqH52T6pGK7IN0B/XsgRb7kCEw1DFs2F+LnV6mvFak8wH/XeNDukSd5B2274FD/9D8s
-	1DUmhMUKplr5NVKDSRCqFwhb77wjhyV6V9HBdCs0uWRxmCW+Yysa/9ef95MorVgz6En+1r6DMfq4t
-	ZrVaM1rGay9WuZlRUUa6UbWFLAZFOQXACxGP+m0nngSBSMOYXi/VHVt8dhZ7q+5pdWfljuCf01yod
-	5YQ3jl7nXGXJTJoj5oSQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=DtTKVNLQbBG3LZlKpHrxl4zeKd2JwMoI8Bp/H2A/X0c=; b=KSf8fUuVzRN6of0WGlOJHgpyv
+	nZ7P2gWhl1MNfT1fRKAvu2ygN9bVDG8NpyHbb+5Cj8s95OUepCiXxFutE2YtnsvBeaCHpVOv15ZPz
+	bHiy8pXJ6IEpkOdYeLmcdpip8fOU6PJvwDLRE+toTb3LRxdFGNXhSTIxYQNWxwPiop5z5hTVSzG+j
+	TCgHMnl1HywXj/r2+SzOgyoouEBxk7MVbGJmgcivA4uhAjD9AfFelZKD+d1HgN5juJNV6vJGnXOvd
+	yn+5AE02x7AyV6X04p8ptBk9E5bOfOooxQKCQI+u9vDpFJ/74/AgChLlGeSMGmZs+Lroq/JMa50AM
+	99efc5G2A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJCQK-0004iZ-9I; Tue, 31 Mar 2020 08:39:04 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jJD50-0006YH-3Y; Tue, 31 Mar 2020 09:21:06 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJCQA-0004aN-0w; Tue, 31 Mar 2020 08:38:55 +0000
-X-UUID: 4d79a4d49900408097338868bdf78403-20200331
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=lct8ONGAtomUDA235lfpqdPWwE+ccWyMYtlhfefuNEw=; 
- b=JaRiIpDi9s8Qv/D8OtHQr/Y4VYttUuzZSOYfwrALm5A8nj7KFOzrSYUQ/K8DMP73XwTvjMRMWo6+Vpq00R8HY+ZKYWVtZhO7GYW0FyseJXW2LXH/6VvQe+gwP8pE0dzTAoac9WGO3eBmsWbyWK/2HhHa3MsoyKALLoMNyndzhDA=;
-X-UUID: 4d79a4d49900408097338868bdf78403-20200331
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <hsin-hsiung.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2034879984; Tue, 31 Mar 2020 00:38:32 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 31 Mar 2020 01:28:45 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Tue, 31 Mar 2020 16:28:41 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Tue, 31 Mar 2020 16:28:40 +0800
-Message-ID: <1585643322.27082.3.camel@mtksdaap41>
-Subject: Re: [PATCH v11 3/5] mfd: Add support for the MediaTek MT6358 PMIC
-From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
-To: Nicolas Boichat <drinkcat@chromium.org>, Lee Jones <lee.jones@linaro.org>
-Date: Tue, 31 Mar 2020 16:28:42 +0800
-In-Reply-To: <CANMq1KBqeUHj0gKcknPDvgzRzGMt26pq-_rt_ZM89phCHO9jqQ@mail.gmail.com>
-References: <1585627657-3265-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1585627657-3265-4-git-send-email-hsin-hsiung.wang@mediatek.com>
- <CANMq1KBqeUHj0gKcknPDvgzRzGMt26pq-_rt_ZM89phCHO9jqQ@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jJD4w-0006Q5-9z; Tue, 31 Mar 2020 09:21:05 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx2.suse.de (Postfix) with ESMTP id 30DBEAED5;
+ Tue, 31 Mar 2020 09:20:38 +0000 (UTC)
+Subject: Re: [PATCH 20/22] drm/vkms: Use simple encoder
+To: Rodrigo Siqueira <rodrigosiqueiramelo@gmail.com>
+References: <20200305155950.2705-1-tzimmermann@suse.de>
+ <20200305155950.2705-21-tzimmermann@suse.de>
+ <20200324115905.dp5jqzbmvhbmk2rn@smtp.gmail.com>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Autocrypt: addr=tzimmermann@suse.de; keydata=
+ mQENBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
+ XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
+ BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
+ hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
+ 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
+ AAG0J1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPokBVAQTAQgAPhYh
+ BHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJbOdLgAhsDBQkDwmcABQsJCAcCBhUKCQgLAgQWAgMB
+ Ah4BAheAAAoJEGgNwR1TC3ojR80H/jH+vYavwQ+TvO8ksXL9JQWc3IFSiGpuSVXLCdg62AmR
+ irxW+qCwNncNQyb9rd30gzdectSkPWL3KSqEResBe24IbA5/jSkPweJasgXtfhuyoeCJ6PXo
+ clQQGKIoFIAEv1s8l0ggPZswvCinegl1diyJXUXmdEJRTWYAtxn/atut1o6Giv6D2qmYbXN7
+ mneMC5MzlLaJKUtoH7U/IjVw1sx2qtxAZGKVm4RZxPnMCp9E1MAr5t4dP5gJCIiqsdrVqI6i
+ KupZstMxstPU//azmz7ZWWxT0JzgJqZSvPYx/SATeexTYBP47YFyri4jnsty2ErS91E6H8os
+ Bv6pnSn7eAq5AQ0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRH
+ UE9eosYbT6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgT
+ RjP+qbU63Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+R
+ dhgATnWWGKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zb
+ ehDda8lvhFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r
+ 12+lqdsAEQEAAYkBPAQYAQgAJhYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJbOdLgAhsMBQkD
+ wmcAAAoJEGgNwR1TC3ojpfcIAInwP5OlcEKokTnHCiDTz4Ony4GnHRP2fXATQZCKxmu4AJY2
+ h9ifw9Nf2TjCZ6AMvC3thAN0rFDj55N9l4s1CpaDo4J+0fkrHuyNacnT206CeJV1E7NYntxU
+ n+LSiRrOdywn6erjxRi9EYTVLCHcDhBEjKmFZfg4AM4GZMWX1lg0+eHbd5oL1as28WvvI/uI
+ aMyV8RbyXot1r/8QLlWldU3NrTF5p7TMU2y3ZH2mf5suSKHAMtbE4jKJ8ZHFOo3GhLgjVrBW
+ HE9JXO08xKkgD+w6v83+nomsEuf6C6LYrqY/tsZvyEX6zN8CtirPdPWu/VXNRYAl/lat7lSI
+ 3H26qrE=
+Message-ID: <eef912e5-7ab4-f8bb-6ea9-47db1c05312b@suse.de>
+Date: Tue, 31 Mar 2020 11:20:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 66156411AC7C6987A565DE837C979D90C593ABB3BD713E9063DE777D8BE22B722000:8
-X-MTK: N
+In-Reply-To: <20200324115905.dp5jqzbmvhbmk2rn@smtp.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200331_013854_086410_EE26A3ED 
-X-CRM114-Status: GOOD (  25.28  )
+X-CRM114-CacheID: sfid-20200331_022102_636793_B2E8152E 
+X-CRM114-Status: GOOD (  21.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,238 +92,197 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Alessandro Zummo <a.zummo@towertech.it>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- srv_heupstream <srv_heupstream@mediatek.com>, Frank
- Wunderlich <frank-w@public-files.de>, Josef Friedl <josef.friedl@speed.at>,
- Ran Bi <ran.bi@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Sebastian Reichel <sre@kernel.org>, lkml <linux-kernel@vger.kernel.org>,
- Richard Fontana <rfontana@redhat.com>,
- Devicetree List <devicetree@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
- "open list:THERMAL" <linux-pm@vger.kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>,
- Kate Stewart <kstewart@linuxfoundation.org>, linux-rtc@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: hamohammed.sa@gmail.com, alexandre.belloni@bootlin.com, heiko@sntech.de,
+ airlied@linux.ie, stefan@agner.ch, linux@armlinux.org.uk, paul@crapouillou.net,
+ eric@anholt.net, thierry.reding@gmail.com, krzk@kernel.org, sam@ravnborg.org,
+ sebastian.reichel@collabora.com, linux-samsung-soc@vger.kernel.org,
+ jy0922.shim@samsung.com, hjc@rock-chips.com, festevam@gmail.com,
+ abrodkin@synopsys.com, kong.kongxinwei@hisilicon.com,
+ patrik.r.jakobsson@gmail.com, jonathanh@nvidia.com, xinliang.liu@linaro.org,
+ ludovic.desroches@microchip.com, kgene@kernel.org, linux-imx@nxp.com,
+ ck.hu@mediatek.com, linux-rockchip@lists.infradead.org,
+ virtualization@lists.linux-foundation.org, linux-tegra@vger.kernel.org,
+ p.zabel@pengutronix.de, puck.chen@hisilicon.com, s.hauer@pengutronix.de,
+ alison.wang@nxp.com, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ inki.dae@samsung.com, john.stultz@linaro.org, jsarha@ti.com,
+ matthias.bgg@gmail.com, wens@csie.org, kernel@pengutronix.de,
+ jernej.skrabec@siol.net, kraxel@redhat.com, tomi.valkeinen@ti.com,
+ bbrezillon@kernel.org, jingoohan1@gmail.com, dri-devel@lists.freedesktop.org,
+ sw0312.kim@samsung.com, nicolas.ferre@microchip.com, kyungmin.park@samsung.com,
+ kieran.bingham+renesas@ideasonboard.com, daniel@ffwll.ch,
+ zourongrong@gmail.com, linux-mediatek@lists.infradead.org, shawnguo@kernel.org,
+ laurent.pinchart@ideasonboard.com
+Content-Type: multipart/mixed; boundary="===============7447465797386231523=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Sirs
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============7447465797386231523==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="7lVXjZmTpLLkTKch5Y4I1GCt7Pec0fulW"
 
-On Tue, 2020-03-31 at 15:36 +0800, Nicolas Boichat wrote:
-> On Tue, Mar 31, 2020 at 12:07 PM Hsin-Hsiung Wang
-> <hsin-hsiung.wang@mediatek.com> wrote:
-> >
-> > This adds support for the MediaTek MT6358 PMIC. This is a
-> > multifunction device with the following sub modules:
-> >
-> > - Regulator
-> > - RTC
-> > - Codec
-> > - Interrupt
-> >
-> > It is interfaced to the host controller using SPI interface
-> > by a proprietary hardware called PMIC wrapper or pwrap.
-> > MT6358 MFD is a child device of the pwrap.
-> >
-> > Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> > Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
-> 
-> This is missing a few comments from Lee Jones on v10, actually, repeated below:
-> https://patchwork.kernel.org/patch/11431239/#23244041
-> 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--7lVXjZmTpLLkTKch5Y4I1GCt7Pec0fulW
+Content-Type: multipart/mixed; boundary="q11qeQog61ztY5ZBs8aYmUz8BfkF0OSCB";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Rodrigo Siqueira <rodrigosiqueiramelo@gmail.com>
+Cc: airlied@linux.ie, daniel@ffwll.ch, sam@ravnborg.org,
+ abrodkin@synopsys.com, bbrezillon@kernel.org, nicolas.ferre@microchip.com,
+ alexandre.belloni@bootlin.com, ludovic.desroches@microchip.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, jingoohan1@gmail.com,
+ inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
+ stefan@agner.ch, alison.wang@nxp.com, patrik.r.jakobsson@gmail.com,
+ xinliang.liu@linaro.org, zourongrong@gmail.com, john.stultz@linaro.org,
+ kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
+ linux@armlinux.org.uk, p.zabel@pengutronix.de, shawnguo@kernel.org,
+ s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
+ linux-imx@nxp.com, paul@crapouillou.net, ck.hu@mediatek.com,
+ matthias.bgg@gmail.com, laurent.pinchart@ideasonboard.com,
+ kieran.bingham+renesas@ideasonboard.com, hjc@rock-chips.com,
+ heiko@sntech.de, wens@csie.org, jernej.skrabec@siol.net,
+ thierry.reding@gmail.com, jonathanh@nvidia.com, jsarha@ti.com,
+ tomi.valkeinen@ti.com, eric@anholt.net, kraxel@redhat.com,
+ hamohammed.sa@gmail.com, sebastian.reichel@collabora.com,
+ dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-tegra@vger.kernel.org, virtualization@lists.linux-foundation.org
+Message-ID: <eef912e5-7ab4-f8bb-6ea9-47db1c05312b@suse.de>
+Subject: Re: [PATCH 20/22] drm/vkms: Use simple encoder
+References: <20200305155950.2705-1-tzimmermann@suse.de>
+ <20200305155950.2705-21-tzimmermann@suse.de>
+ <20200324115905.dp5jqzbmvhbmk2rn@smtp.gmail.com>
+In-Reply-To: <20200324115905.dp5jqzbmvhbmk2rn@smtp.gmail.com>
 
-So sorry for missing this comment.I will reply it later.
-Thanks a lot.
+--q11qeQog61ztY5ZBs8aYmUz8BfkF0OSCB
+Content-Type: text/plain; charset=windows-1252
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-> > ---
-> >  drivers/mfd/Makefile                 |   2 +-
-> >  drivers/mfd/mt6358-irq.c             | 236 +++++++++++++++++++++++++++++
-> >  drivers/mfd/mt6397-core.c            |  55 ++++++-
-> >  include/linux/mfd/mt6358/core.h      | 158 ++++++++++++++++++++
-> >  include/linux/mfd/mt6358/registers.h | 282 +++++++++++++++++++++++++++++++++++
-> >  include/linux/mfd/mt6397/core.h      |   3 +
-> >  6 files changed, 731 insertions(+), 5 deletions(-)
-> >  create mode 100644 drivers/mfd/mt6358-irq.c
-> >  create mode 100644 include/linux/mfd/mt6358/core.h
-> >  create mode 100644 include/linux/mfd/mt6358/registers.h
-> >
-> > diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
-> > index b83f172..9af1414 100644
-> > --- a/drivers/mfd/Makefile
-> > +++ b/drivers/mfd/Makefile
-> > @@ -238,7 +238,7 @@ obj-$(CONFIG_INTEL_SOC_PMIC)        += intel-soc-pmic.o
-> >  obj-$(CONFIG_INTEL_SOC_PMIC_BXTWC)     += intel_soc_pmic_bxtwc.o
-> >  obj-$(CONFIG_INTEL_SOC_PMIC_CHTWC)     += intel_soc_pmic_chtwc.o
-> >  obj-$(CONFIG_INTEL_SOC_PMIC_CHTDC_TI)  += intel_soc_pmic_chtdc_ti.o
-> > -mt6397-objs    := mt6397-core.o mt6397-irq.o
-> > +mt6397-objs                    := mt6397-core.o mt6397-irq.o mt6358-irq.o
-> >  obj-$(CONFIG_MFD_MT6397)       += mt6397.o
-> >  obj-$(CONFIG_INTEL_SOC_PMIC_MRFLD)     += intel_soc_pmic_mrfld.o
-> >
-> > diff --git a/drivers/mfd/mt6358-irq.c b/drivers/mfd/mt6358-irq.c
-> > new file mode 100644
-> > index 0000000..022e5f5
-> > --- /dev/null
-> > +++ b/drivers/mfd/mt6358-irq.c
-> > @@ -0,0 +1,236 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +//
-> > +// Copyright (c) 2019 MediaTek Inc.
-> 
-> 2020
-> 
-> > +
-> > +#include <linux/interrupt.h>
-> > +#include <linux/mfd/mt6358/core.h>
-> > +#include <linux/mfd/mt6358/registers.h>
-> > +#include <linux/mfd/mt6397/core.h>
-> > +#include <linux/module.h>
-> > +#include <linux/of.h>
-> > +#include <linux/of_device.h>
-> > +#include <linux/of_irq.h>
-> > +#include <linux/platform_device.h>
-> > +#include <linux/regmap.h>
-> > +
-> > +static struct irq_top_t mt6358_ints[] = {
-> > +       MT6358_TOP_GEN(BUCK),
-> > +       MT6358_TOP_GEN(LDO),
-> > +       MT6358_TOP_GEN(PSC),
-> > +       MT6358_TOP_GEN(SCK),
-> > +       MT6358_TOP_GEN(BM),
-> > +       MT6358_TOP_GEN(HK),
-> > +       MT6358_TOP_GEN(AUD),
-> > +       MT6358_TOP_GEN(MISC),
-> > +};
-> > +
-> > +static void pmic_irq_enable(struct irq_data *data)
-> > +{
-> > +       unsigned int hwirq = irqd_to_hwirq(data);
-> > +       struct mt6397_chip *chip = irq_data_get_irq_chip_data(data);
-> > +       struct pmic_irq_data *irqd = chip->irq_data;
-> > +
-> > +       irqd->enable_hwirq[hwirq] = true;
-> > +}
-> > +
-> > +static void pmic_irq_disable(struct irq_data *data)
-> > +{
-> > +       unsigned int hwirq = irqd_to_hwirq(data);
-> > +       struct mt6397_chip *chip = irq_data_get_irq_chip_data(data);
-> > +       struct pmic_irq_data *irqd = chip->irq_data;
-> > +
-> > +       irqd->enable_hwirq[hwirq] = false;
-> > +}
-> > +
-> > +static void pmic_irq_lock(struct irq_data *data)
-> > +{
-> > +       struct mt6397_chip *chip = irq_data_get_irq_chip_data(data);
-> > +
-> > +       mutex_lock(&chip->irqlock);
-> > +}
-> > +
-> > +static void pmic_irq_sync_unlock(struct irq_data *data)
-> > +{
-> > +       unsigned int i, top_gp, gp_offset, en_reg, int_regs, shift;
-> > +       struct mt6397_chip *chip = irq_data_get_irq_chip_data(data);
-> > +       struct pmic_irq_data *irqd = chip->irq_data;
-> > +
-> > +       for (i = 0; i < irqd->num_pmic_irqs; i++) {
-> > +               if (irqd->enable_hwirq[i] == irqd->cache_hwirq[i])
-> > +                       continue;
-> > +
-> > +               /* Find out the IRQ group */
-> > +               top_gp = 0;
-> > +               while ((top_gp + 1) < irqd->num_top &&
-> > +                      i >= mt6358_ints[top_gp + 1].hwirq_base)
-> > +                       top_gp++;
-> > +
-> > +               /* Find the irq registers */
-> 
-> From Lee Jones: 'Nit: "IRQ"'
-> 
-> > +               gp_offset = i - mt6358_ints[top_gp].hwirq_base;
-> > +               int_regs = gp_offset / MT6358_REG_WIDTH;
-> > +               shift = gp_offset % MT6358_REG_WIDTH;
-> > +               en_reg = mt6358_ints[top_gp].en_reg +
-> > +                        (mt6358_ints[top_gp].en_reg_shift * int_regs);
-> > +
-> [...]
-> > +static const struct irq_domain_ops mt6358_irq_domain_ops = {
-> > +       .map = pmic_irq_domain_map,
-> > +       .xlate = irq_domain_xlate_twocell,
-> > +};
-> > +
-> > +int mt6358_irq_init(struct mt6397_chip *chip)
-> > +{
-> > +       int i, j, ret;
-> > +       struct pmic_irq_data *irqd;
-> > +
-> > +       irqd = devm_kzalloc(chip->dev, sizeof(struct pmic_irq_data *),
-> 
-> From Lee Jones: 'sizeof(*irqd)'
-> 
-> > +                           GFP_KERNEL);
-> > +       if (!irqd)
-> > +               return -ENOMEM;
-> > +
-> > +       chip->irq_data = irqd;
-> > +
-> [...]
-> > @@ -154,19 +184,33 @@ static int mt6397_probe(struct platform_device *pdev)
-> >         if (pmic->irq <= 0)
-> >                 return pmic->irq;
-> >
-> > -       ret = mt6397_irq_init(pmic);
-> > -       if (ret)
-> > -               return ret;
-> > -
-> >         switch (pmic->chip_id) {
-> >         case MT6323_CHIP_ID:
-> > +               ret = mt6397_irq_init(pmic);
-> > +               if (ret)
-> > +                       return ret;
-> > +
-> >                 ret = devm_mfd_add_devices(&pdev->dev, PLATFORM_DEVID_NONE,
-> >                                            mt6323_devs, ARRAY_SIZE(mt6323_devs),
-> >                                            NULL, 0, pmic->irq_domain);
-> >                 break;
-> >
-> > +       case MT6358_CHIP_ID:
-> > +               ret = mt6358_irq_init(pmic);
-> > +               if (ret)
-> > +                       return ret;
-> > +
-> > +               ret = devm_mfd_add_devices(&pdev->dev, PLATFORM_DEVID_NONE,
-> > +                                          mt6358_devs, ARRAY_SIZE(mt6358_devs),
-> > +                                          NULL, 0, pmic->irq_domain);
-> > +               break;
-> 
-> From Lee Jones: "In a subsequent patch you can choose the correct
-> mtXXXX_devs structure to pass and call devm_mfd_add_devices() only
-> once below the switch()."
-> 
-> Can you look into that as a follow-up patch?
-> 
-> 
-> > +
-> >         case MT6391_CHIP_ID:
-> >         case MT6397_CHIP_ID:
-> > +               ret = mt6397_irq_init(pmic);
-> > +               if (ret)
-> > +                       return ret;
-> > +
-> >                 ret = devm_mfd_add_devices(&pdev->dev, PLATFORM_DEVID_NONE,
-> >                                            mt6397_devs, ARRAY_SIZE(mt6397_devs),
-> >                                            NULL, 0, pmic->irq_domain);
-> 
-> [snip]
+Hi
+
+Am 24.03.20 um 12:59 schrieb Rodrigo Siqueira:
+> Hi Thomas,
+>=20
+> First of all, thanks for your patch!
+>=20
+> I applied all your series, compiled it, and when I tried
+> `make INSTALL_MOD_PATH=3D/PATH/ modules_instal` I got the following
+> message:
+>=20
+>  depmod: ERROR: Cycle detected: drm_kms_helper -> drm -> drm_kms_helper=
+
+>  depmod: ERROR: Found 2 modules in dependency cycles!
+>  make: *** [Makefile:1317: _modinst_post] Error 1
+>=20
+> I cleaned up my local files and tried again, but I got the same error;
+> If I just use `drm-misc-next` everything is fine.  Did I miss something=
+?
+
+I didn't change any module dependencies. Does it happen without this
+patches?
+
+Best regards
+Thomas
+
+>=20
+> Thanks
+>=20
+> On 03/05, Thomas Zimmermann wrote:
+>> The vkms driver uses an empty implementation for its encoder. Replace
+>> the code with the generic simple encoder.
+>>
+>> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+>> ---
+>>  drivers/gpu/drm/vkms/vkms_output.c | 8 ++------
+>>  1 file changed, 2 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/vkms/vkms_output.c b/drivers/gpu/drm/vkms=
+/vkms_output.c
+>> index fb1941a6522c..85afb77e97f0 100644
+>> --- a/drivers/gpu/drm/vkms/vkms_output.c
+>> +++ b/drivers/gpu/drm/vkms/vkms_output.c
+>> @@ -3,6 +3,7 @@
+>>  #include "vkms_drv.h"
+>>  #include <drm/drm_atomic_helper.h>
+>>  #include <drm/drm_probe_helper.h>
+>> +#include <drm/drm_simple_kms_helper.h>
+>> =20
+>>  static void vkms_connector_destroy(struct drm_connector *connector)
+>>  {
+>> @@ -17,10 +18,6 @@ static const struct drm_connector_funcs vkms_connec=
+tor_funcs =3D {
+>>  	.atomic_destroy_state =3D drm_atomic_helper_connector_destroy_state,=
+
+>>  };
+>> =20
+>> -static const struct drm_encoder_funcs vkms_encoder_funcs =3D {
+>> -	.destroy =3D drm_encoder_cleanup,
+>> -};
+>> -
+>>  static int vkms_conn_get_modes(struct drm_connector *connector)
+>>  {
+>>  	int count;
+>> @@ -70,8 +67,7 @@ int vkms_output_init(struct vkms_device *vkmsdev, in=
+t index)
+>> =20
+>>  	drm_connector_helper_add(connector, &vkms_conn_helper_funcs);
+>> =20
+>> -	ret =3D drm_encoder_init(dev, encoder, &vkms_encoder_funcs,
+>> -			       DRM_MODE_ENCODER_VIRTUAL, NULL);
+>> +	ret =3D drm_simple_encoder_init(dev, encoder, DRM_MODE_ENCODER_VIRTU=
+AL);
+>>  	if (ret) {
+>>  		DRM_ERROR("Failed to init encoder\n");
+>>  		goto err_encoder;
+>> --=20
+>> 2.25.1
+>>
+>=20
+
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=FCrnberg, Germany
+(HRB 36809, AG N=FCrnberg)
+Gesch=E4ftsf=FChrer: Felix Imend=F6rffer
+
+
+--q11qeQog61ztY5ZBs8aYmUz8BfkF0OSCB--
+
+--7lVXjZmTpLLkTKch5Y4I1GCt7Pec0fulW
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl6DC2IACgkQaA3BHVML
+eiPLVgf/ZsAHhwHhc6AopeQ3Jo5QFB+n+OZPi4AH9wfFrisYkvbEt6RhbDd4VCb0
+mvTi97EzYLGovrH11SYIE+INA07OTuQbKOKVxoB9UfXzFRuD8OeK3l0yHmVCKZzv
+/vU4cB7QBbS4dt//B9KlgxfQvq1T/bTPfZZbmf6ozduo9I3bR8xOj2V433wGdkQi
+0fjSzQ4WuFrfLv2Zn/D70oxZbm81vsBMWkq1jy/b/5iUDU6W7uHxQemiYMvtMBO2
+XwtBSX2PWyAaG43mW0QcdvhLOEgnNc62t5v78P9MRFsC7Fd/F7PkahlwCkPSFEgx
+71iw2TEYpRvkMO33t6TI5x6xofZO9g==
+=Yoq6
+-----END PGP SIGNATURE-----
+
+--7lVXjZmTpLLkTKch5Y4I1GCt7Pec0fulW--
+
+
+--===============7447465797386231523==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============7447465797386231523==--
+
