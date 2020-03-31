@@ -2,90 +2,75 @@ Return-Path: <SRS0=zTQl=5Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3EC3CC43331
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 16:25:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 09318C2D0EE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 16:45:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0E34B20CC7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 16:25:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CDC2F20784
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 16:45:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fbiQCwRB";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="Legx0+Xa";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="X0AIOsd7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E34B20CC7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="S6V8Afyf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CDC2F20784
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fi.rohmeurope.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LS7H0TTJjCfBrfM2VUqww87FNmZC0dXx4lnAyhOBB5o=; b=fbiQCwRBG9FcU9
-	x4TvlgGYw/oRdCiyrEeqGq+25tVLVLuxOD2TD2PLKrQfLDmvWzI23aEQj6ju3LhQQTY9YlPymI1Yx
-	nRzf1oIK+uNBGRJ1ZmeXBSh4CfEVAAULTxfKvNx0P6yNsaXsujKR4YaTXdPLxnIw3lOS6aQc3JQw5
-	IiSkyJm3WEoM1CNrNYY6w3NpjipvruEeQS4O9/cnFh6COQmh/pgvbK2BQ6X8+SmzpERRmJbu3fSxT
-	hWIroEIY9e7KtL2mUNebxpPEEcv12QNtG9GNcO+l88+qXML6LOpqntokn2PTzN7kiQUmMSPmGGCAY
-	vuezeh+OMnME4TemEuwg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=6Tf3LjWPX/YRTMn01aL85crcH5VsEYigNTHAWjfpoig=; b=S6V8AfyfrRFx9i
+	wPDSaxnL2sVuzgKRCUW4rvwTvzAlqG/MaE0+QjbOihVHGXjSR6Lq87TeP44xOOYNePcfs6ALlsmBY
+	sMLKToLiE9ghs6NDH9PenDs3Wfv94bwlRkqkXrMgkKTSSMmz75z3QElN0nJh8UREzNZSqlydYHP0n
+	6HLsUW4bAjzTcpoeZ49lfmrpqfH5lZS6BIcFCusvrjVro6GDbEv1VMCmK1Y+E+9xsTKtsLBBvw/9a
+	2DRfY9vMZKUPR18fOa3fHhf+gEGaSlubvZUS6H0vnBRdqAjXprN8phDTePJiyDK2h0PCOsmrhNNiC
+	XV719OkODL+d0CuyZzWQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJJhI-0003uN-3l; Tue, 31 Mar 2020 16:25:04 +0000
-Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
+	id 1jJK0v-00017A-Lq; Tue, 31 Mar 2020 16:45:21 +0000
+Received: from mail-lj1-f193.google.com ([209.85.208.193])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJJhG-0003Y5-Nz
- for linux-mediatek@bombadil.infradead.org; Tue, 31 Mar 2020 16:25:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=Content-Transfer-Encoding:Content-Type:
- Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Sender
- :Reply-To:Content-ID:Content-Description;
- bh=LYJQtMRkgSd+78FfcAxPcF+aCr4UeK5hP0LJ9oRCLxA=; b=Legx0+XaYgE9C4pnLovrIIKVpy
- tfOpWNjbDaObx+02v0jThCpQwH6WrD2HHSHVTnQog1qGKCdMsh+njX18dw/TFgo1KSIz2P4Xd+8Kv
- gx8dS2nNza4RxhHiPcijaeBOvOlPD0D9sveWEApM/Ad7nW4P5dXMWR27egRPy+bveQNa22OesReb3
- Ho1TXKNxV9SlRAVLbAFUDqbDkSW5uEd7dhuHXrHBb0YfnThusrIyIrmhIwOFqJOJWdI4AOxXIhtMB
- 9E76nq5eB5zrVpb+dAApb+ljU+NDdXLxekP59RV4yvRNvBJS+0xQE9p7ex73zIFDJWon+7MpBigfm
- Ye0Xv0+w==;
-Received: from mail.kernel.org ([198.145.29.99])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJGW2-0001Nr-Li
- for linux-mediatek@lists.infradead.org; Tue, 31 Mar 2020 13:01:16 +0000
-Received: from mail-ed1-f42.google.com (mail-ed1-f42.google.com
- [209.85.208.42])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 62FB221473
- for <linux-mediatek@lists.infradead.org>; Tue, 31 Mar 2020 13:01:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1585659672;
- bh=Nfl47u1xeUXnlgIrfnkPwm3bagj8NSOXldMy+Hhzr9U=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=X0AIOsd7Ku5rH7Viok3BWEgppCqjy1GotNuHRAwUI1Dyv5ZVPM1j7dYTppECIsjY6
- ZXRwvnwzU93+AM630g/qZBS29+wf+LnELs7b4/3FrcKOe4q5Xrm5NZ+ahlY3KebpUJ
- LvZWi8+bLVz7KISdL9DP3IZtGV8TAjLIvEWN/w7s=
-Received: by mail-ed1-f42.google.com with SMTP id a20so25053848edj.2
- for <linux-mediatek@lists.infradead.org>; Tue, 31 Mar 2020 06:01:12 -0700 (PDT)
-X-Gm-Message-State: ANhLgQ1aCpxr58mJRVDMgZ6obhniYV9ua2a/phkAcF8pAw4F9tgxNg2g
- 2St0vJNeUQhauc3/a5PK8Sf6Se8WdEEzGd4Dmg==
-X-Google-Smtp-Source: ADFU+vtG0HzoHGEJZdc4SeIl3MerLvRzg5Qp69UHJ0ZuDqDUN2AbQDJIziXDYXzOE0H28L1yL+HwWbiBMAHeVls5qjQ=
-X-Received: by 2002:a17:906:4bc3:: with SMTP id
- x3mr3719882ejv.38.1585659670641; 
- Tue, 31 Mar 2020 06:01:10 -0700 (PDT)
+ id 1jJK0d-0006vY-DH; Tue, 31 Mar 2020 16:45:05 +0000
+Received: by mail-lj1-f193.google.com with SMTP id p14so22716612lji.11;
+ Tue, 31 Mar 2020 09:45:02 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-disposition:user-agent;
+ bh=/vSuGnmrrGeIUoH6AoRSurgIle90vcl4Ilte618e9r8=;
+ b=oOhBVjQ7D5zEkxf03m/McmegpAQ5b7q229wvgyhxdAj9EaSKqX6vqWtT0PkTTT1LJp
+ aRlZ2zKtkTBgZ7i1J8gsB+rjt5M7Wqv7Wbe7UYj/mfkPmc/o0f4rNvGF7jziSYdZVd4N
+ x6AsV9B2K8L872E04Save6ZL0WrWaIkcCixXsiD9H5SBy1L7wVB1itF+xNNfZ3f5Almz
+ JKn3EvKkes3M9/ZTLxyIWEqmgY66dzjg05HyLSKTMtQdhJ7/cvF9fB5iIrUvJG32KZaK
+ BTtnyJoCahzgdz9WENCNZGn6t6SLEO085l4L8HXjN5Iz7KhZmAm57XH0Dqpx5OGiWFL2
+ DvtQ==
+X-Gm-Message-State: AGi0PuYpEsU0h0PovqIAOzbsPOjsv+uD1r/+ome8IDO807r+Fvb13oY+
+ sR8tJmrUfAsFzpMuP0pczhJHn0b6iFs=
+X-Google-Smtp-Source: APiQypL0PnLMulYujW4uQnTkqXCDz3vTuV1qPue+MHfJU372626AjFfaHgsmhecbhMryanfZOTjpsg==
+X-Received: by 2002:a2e:9605:: with SMTP id v5mr9675212ljh.258.1585657255812; 
+ Tue, 31 Mar 2020 05:20:55 -0700 (PDT)
+Received: from localhost.localdomain
+ (dc7t7ryyyyyyyyyyyyybt-3.rev.dnainternet.fi. [2001:14ba:16e1:b700::3])
+ by smtp.gmail.com with ESMTPSA id d27sm6346704lfq.73.2020.03.31.05.20.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 31 Mar 2020 05:20:55 -0700 (PDT)
+Date: Tue, 31 Mar 2020 15:20:42 +0300
+From: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
+To: matti.vaittinen@fi.rohmeurope.com, mazziesaccount@gmail.com
+Subject: [PATCH v7 00/10] Support ROHM BD99954 charger IC
+Message-ID: <cover.1585656143.git.matti.vaittinen@fi.rohmeurope.com>
 MIME-Version: 1.0
-References: <20200330141222.17529-1-chunkuang.hu@kernel.org>
- <20200330141222.17529-4-chunkuang.hu@kernel.org>
- <b1c22917-76b4-2de9-3f0a-0d7736dae94f@baylibre.com>
-In-Reply-To: <b1c22917-76b4-2de9-3f0a-0d7736dae94f@baylibre.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 31 Mar 2020 21:00:59 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_88=yo1P9F-hEbpsOjqPpRCLnE71fT+Jgts8ifxaH1xGw@mail.gmail.com>
-Message-ID: <CAAOTY_88=yo1P9F-hEbpsOjqPpRCLnE71fT+Jgts8ifxaH1xGw@mail.gmail.com>
-Subject: Re: [PATCH v2 3/4] drm/mediatek: Move mtk_hdmi_phy driver into
- drivers/phy/mediatek folder
-To: Neil Armstrong <narmstrong@baylibre.com>
+Content-Disposition: inline
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200331_094503_465922_5FB0CAB7 
+X-CRM114-Status: GOOD (  18.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,129 +82,266 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org,
- DRI Development <dri-devel@lists.freedesktop.org>,
- Kishon Vijay Abraham I <kishon@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, Chunfeng Yun <chunfeng.yun@mediatek.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Mark Rutland <mark.rutland@arm.com>, Milo Kim <milo.kim@ti.com>,
+ Andrei Stefanescu <andrei.stefanescu@microchip.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Tony Lindgren <tony@atomide.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Brendan Higgins <brendanhiggins@google.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Masahiro Yamada <yamada.masahiro@socionext.com>, devicetree@vger.kernel.org,
+ linux-omap@vger.kernel.org, mikko.mutanen@fi.rohmeurope.com,
+ Vincenzo Frascino <vincenzo.frascino@arm.com>,
+ Dan Williams <dan.j.williams@intel.com>, linux-samsung-soc@vger.kernel.org,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <uwe@kleine-koenig.org>,
+ linux-pm@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>,
+ Ard Biesheuvel <ardb@kernel.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>, Chen-Yu Tsai <wens@csie.org>,
+ Andy Gross <agross@kernel.org>, markus.laine@fi.rohmeurope.com,
+ linux-arm-msm@vger.kernel.org, Borislav Petkov <bp@suse.de>,
+ Petr Mladek <pmladek@suse.com>, Mikhail Zaslonko <zaslonko@linux.ibm.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>, Arnd Bergmann <arnd@arndb.de>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ Gary Hook <Gary.Hook@amd.com>, Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ David Gow <davidgow@google.com>, Shuah Khan <skhan@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ linux-arm-kernel@lists.infradead.org,
+ Support Opensource <support.opensource@diasemi.com>,
+ Sangbeom Kim <sbkim73@samsung.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Randy Dunlap <rdunlap@infradead.org>,
+ "GitAuthor: Matti Vaittinen" <matti.vaittinen@fi.rohmeurope.com>,
+ Sebastian Reichel <sre@kernel.org>, linux-kernel@vger.kernel.org,
+ Tal Gilboa <talgi@mellanox.com>, Changbin Du <changbin.du@intel.com>,
+ Mark Brown <broonie@kernel.org>, Masami Hiramatsu <mhiramat@kernel.org>,
+ patches@opensource.cirrus.com, Andrew Morton <akpm@linux-foundation.org>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIE5laWw6CgpOZWlsIEFybXN0cm9uZyA8bmFybXN0cm9uZ0BiYXlsaWJyZS5jb20+IOaWvCAy
-MDIw5bm0M+aciDMx5pelIOmAseS6jCDkuIvljYg0OjA15a+r6YGT77yaCj4KPiBIaSwKPgo+IE9u
-IDMwLzAzLzIwMjAgMTY6MTIsIENodW4tS3VhbmcgSHUgd3JvdGU6Cj4gPiBGcm9tOiBDSyBIdSA8
-Y2suaHVAbWVkaWF0ZWsuY29tPgo+ID4KPiA+IG10a19oZG1pX3BoeSBpcyBjdXJyZW50bHkgcGxh
-Y2VkIGluc2lkZSBtZWRpYXRlayBkcm0gZHJpdmVyLCBidXQgaXQncwo+ID4gbW9yZSBzdWl0YWJs
-ZSB0byBwbGFjZSBhIHBoeSBkcml2ZXIgaW50byBwaHkgZHJpdmVyIGZvbGRlciwgc28gbW92ZQo+
-ID4gbXRrX2hkbWlfcGh5IGRyaXZlciBpbnRvIHBoeSBkcml2ZXIgZm9sZGVyLgo+Cj4gUHJldHR5
-IHN1cmUgdGhlIHN1YmplY3Qgc2hvdWxkIHN0YXJ0IHdpdGggInBoeTogIiBhbmQgaGF2ZSBhbiBh
-Y2sgZnJvbSBLaXNob24uCgpJIHdvdWxkIG1vZGlmeSB0aGUgc3ViamVjdCBpbiBuZXh0IHZlcnNp
-b24gYW5kIHdhaXQgZm9yIEtpc2hvbidzIGFjay4KClJlZ2FyZHMsCkNodW4tS3VhbmcuCgo+Cj4g
-TmVpbAo+Cj4gPgo+ID4gU2lnbmVkLW9mZi1ieTogQ0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4K
-PiA+IFNpZ25lZC1vZmYtYnk6IENodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3Jn
-Pgo+ID4gLS0tCj4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tjb25maWcgICAgICAgICAg
-ICAgICAgICAgICAgICAgICB8IDcgLS0tLS0tLQo+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9NYWtlZmlsZSAgICAgICAgICAgICAgICAgICAgICAgICAgfCA2IC0tLS0tLQo+ID4gIGRyaXZl
-cnMvcGh5L21lZGlhdGVrL0tjb25maWcgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCA3
-ICsrKysrKysKPiA+ICBkcml2ZXJzL3BoeS9tZWRpYXRlay9NYWtlZmlsZSAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIHwgNyArKysrKysrCj4gPiAgLi4uL21lZGlhdGVrL3BoeS1tdGstaGRt
-aS1tdDI3MDEuY30gICAgICAgICAgICAgICAgICAgICAgICB8IDIgKy0KPiA+ICAuLi4vbWVkaWF0
-ZWsvcGh5LW10ay1oZG1pLW10ODE3My5jfSAgICAgICAgICAgICAgICAgICAgICAgIHwgMiArLQo+
-ID4gIC4uLi9tdGtfaGRtaV9waHkuYyA9PiBwaHkvbWVkaWF0ZWsvcGh5LW10ay1oZG1pLmN9ICAg
-ICAgICAgfCAyICstCj4gPiAgLi4uL210a19oZG1pX3BoeS5oID0+IHBoeS9tZWRpYXRlay9waHkt
-bXRrLWhkbWkuaH0gICAgICAgICB8IDAKPiA+ICA4IGZpbGVzIGNoYW5nZWQsIDE3IGluc2VydGlv
-bnMoKyksIDE2IGRlbGV0aW9ucygtKQo+ID4gIHJlbmFtZSBkcml2ZXJzL3tncHUvZHJtL21lZGlh
-dGVrL210a19tdDI3MDFfaGRtaV9waHkuYyA9PiBwaHkvbWVkaWF0ZWsvcGh5LW10ay1oZG1pLW10
-MjcwMS5jfSAoOTklKQo+ID4gIHJlbmFtZSBkcml2ZXJzL3tncHUvZHJtL21lZGlhdGVrL210a19t
-dDgxNzNfaGRtaV9waHkuYyA9PiBwaHkvbWVkaWF0ZWsvcGh5LW10ay1oZG1pLW10ODE3My5jfSAo
-OTklKQo+ID4gIHJlbmFtZSBkcml2ZXJzL3tncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5j
-ID0+IHBoeS9tZWRpYXRlay9waHktbXRrLWhkbWkuY30gKDk5JSkKPiA+ICByZW5hbWUgZHJpdmVy
-cy97Z3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuaCA9PiBwaHkvbWVkaWF0ZWsvcGh5LW10
-ay1oZG1pLmh9ICgxMDAlKQo+ID4KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvS2NvbmZpZyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9LY29uZmlnCj4gPiBpbmRl
-eCBmZjZhMWViNGFlODMuLjI0MjdkNWJmNjk5ZCAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9LY29uZmlnCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-S2NvbmZpZwo+ID4gQEAgLTI2LDEwICsyNiwzIEBAIGNvbmZpZyBEUk1fTUVESUFURUtfSERNSQo+
-ID4gICAgICAgc2VsZWN0IFBIWV9NVEtfSERNSQo+ID4gICAgICAgaGVscAo+ID4gICAgICAgICBE
-Uk0vS01TIEhETUkgZHJpdmVyIGZvciBNZWRpYXRlayBTb0NzCj4gPiAtCj4gPiAtY29uZmlnIFBI
-WV9NVEtfSERNSQo+ID4gLSAgICB0cmlzdGF0ZSAiTWVkaWFUZWsgSERNSS1QSFkgRHJpdmVyIgo+
-ID4gLSAgICBkZXBlbmRzIG9uIEFSQ0hfTUVESUFURUsgJiYgT0YKPiA+IC0gICAgc2VsZWN0IEdF
-TkVSSUNfUEhZCj4gPiAtICAgIGhlbHAKPiA+IC0gICAgICAgICAgRW5hYmxlIHRoaXMgdG8gc3Vw
-cG9ydCBIRE1JLVBIWQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9N
-YWtlZmlsZSBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmlsZQo+ID4gaW5kZXggZmNi
-ZWYyM2FhNmNlLi43N2IwZmQ4NjA2M2QgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvTWFrZWZpbGUKPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtl
-ZmlsZQo+ID4gQEAgLTIyLDkgKzIyLDMgQEAgbWVkaWF0ZWstZHJtLWhkbWktb2JqcyA6PSBtdGtf
-Y2VjLm8gXAo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgbXRrX2hkbWlfZGRjLm8KPiA+Cj4g
-PiAgb2JqLSQoQ09ORklHX0RSTV9NRURJQVRFS19IRE1JKSArPSBtZWRpYXRlay1kcm0taGRtaS5v
-Cj4gPiAtCj4gPiAtcGh5LW10ay1oZG1pLWRydi1vYmpzIDo9IG10a19oZG1pX3BoeS5vIFwKPiA+
-IC0gICAgICAgICAgICAgICAgICAgICAgbXRrX210MjcwMV9oZG1pX3BoeS5vIFwKPiA+IC0gICAg
-ICAgICAgICAgICAgICAgICAgbXRrX210ODE3M19oZG1pX3BoeS5vCj4gPiAtCj4gPiAtb2JqLSQo
-Q09ORklHX1BIWV9NVEtfSERNSSkgKz0gcGh5LW10ay1oZG1pLWRydi5vCj4gPiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9waHkvbWVkaWF0ZWsvS2NvbmZpZyBiL2RyaXZlcnMvcGh5L21lZGlhdGVrL0tj
-b25maWcKPiA+IGluZGV4IGRlZTc1N2M5NTdmMi4uMTBmMGVjMmQ1YjU0IDEwMDY0NAo+ID4gLS0t
-IGEvZHJpdmVycy9waHkvbWVkaWF0ZWsvS2NvbmZpZwo+ID4gKysrIGIvZHJpdmVycy9waHkvbWVk
-aWF0ZWsvS2NvbmZpZwo+ID4gQEAgLTM1LDMgKzM1LDEwIEBAIGNvbmZpZyBQSFlfTVRLX1hTUEhZ
-Cj4gPiAgICAgICAgIEVuYWJsZSB0aGlzIHRvIHN1cHBvcnQgdGhlIFN1cGVyU3BlZWRQbHVzIFhT
-LVBIWSB0cmFuc2NlaXZlciBmb3IKPiA+ICAgICAgICAgVVNCMy4xIEdFTjIgY29udHJvbGxlcnMg
-b24gTWVkaWFUZWsgY2hpcHMuIFRoZSBkcml2ZXIgc3VwcG9ydHMKPiA+ICAgICAgICAgbXVsdGlw
-bGUgVVNCMi4wLCBVU0IzLjEgR0VOMiBwb3J0cy4KPiA+ICsKPiA+ICtjb25maWcgUEhZX01US19I
-RE1JCj4gPiArICAgIHRyaXN0YXRlICJNZWRpYVRlayBIRE1JLVBIWSBEcml2ZXIiCj4gPiArICAg
-IGRlcGVuZHMgb24gQVJDSF9NRURJQVRFSyAmJiBPRgo+ID4gKyAgICBzZWxlY3QgR0VORVJJQ19Q
-SFkKPiA+ICsgICAgaGVscAo+ID4gKyAgICAgICAgICBFbmFibGUgdGhpcyB0byBzdXBwb3J0IEhE
-TUktUEhZCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9waHkvbWVkaWF0ZWsvTWFrZWZpbGUgYi9k
-cml2ZXJzL3BoeS9tZWRpYXRlay9NYWtlZmlsZQo+ID4gaW5kZXggMDhhOGU2YTk3YjFlLi5jZGEw
-NzRjNTMyMzUgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL3BoeS9tZWRpYXRlay9NYWtlZmlsZQo+
-ID4gKysrIGIvZHJpdmVycy9waHkvbWVkaWF0ZWsvTWFrZWZpbGUKPiA+IEBAIC02LDMgKzYsMTAg
-QEAKPiA+ICBvYmotJChDT05GSUdfUEhZX01US19UUEhZKSAgICAgICAgICAgKz0gcGh5LW10ay10
-cGh5Lm8KPiA+ICBvYmotJChDT05GSUdfUEhZX01US19VRlMpICAgICAgICAgICAgKz0gcGh5LW10
-ay11ZnMubwo+ID4gIG9iai0kKENPTkZJR19QSFlfTVRLX1hTUEhZKSAgICAgICAgICArPSBwaHkt
-bXRrLXhzcGh5Lm8KPiA+ICsKPiA+ICtwaHktbXRrLWhkbWktZHJ2LW9ianMgOj0gcGh5LW10ay1o
-ZG1pLm8gXAo+ID4gKyAgICAgICAgICAgICAgICAgICAgICBwaHktbXRrLWhkbWktbXQyNzAxLm8g
-XAo+ID4gKyAgICAgICAgICAgICAgICAgICAgICBwaHktbXRrLWhkbWktbXQ4MTczLm8KPiA+ICsK
-PiA+ICtvYmotJChDT05GSUdfUEhZX01US19IRE1JKSArPSBwaHktbXRrLWhkbWktZHJ2Lm8KPiA+
-ICsKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210MjcwMV9o
-ZG1pX3BoeS5jIGIvZHJpdmVycy9waHkvbWVkaWF0ZWsvcGh5LW10ay1oZG1pLW10MjcwMS5jCj4g
-PiBzaW1pbGFyaXR5IGluZGV4IDk5JQo+ID4gcmVuYW1lIGZyb20gZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHkuYwo+ID4gcmVuYW1lIHRvIGRyaXZlcnMvcGh5L21l
-ZGlhdGVrL3BoeS1tdGstaGRtaS1tdDI3MDEuYwo+ID4gaW5kZXggOTlmZTA1Y2QzNTk4Li5hNmNi
-MWRlYTNkMGMgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX210
-MjcwMV9oZG1pX3BoeS5jCj4gPiArKysgYi9kcml2ZXJzL3BoeS9tZWRpYXRlay9waHktbXRrLWhk
-bWktbXQyNzAxLmMKPiA+IEBAIC00LDcgKzQsNyBAQAo+ID4gICAqIEF1dGhvcjogQ2h1bmh1aSBE
-YWkgPGNodW5odWkuZGFpQG1lZGlhdGVrLmNvbT4KPiA+ICAgKi8KPiA+Cj4gPiAtI2luY2x1ZGUg
-Im10a19oZG1pX3BoeS5oIgo+ID4gKyNpbmNsdWRlICJwaHktbXRrLWhkbWkuaCIKPiA+Cj4gPiAg
-I2RlZmluZSBIRE1JX0NPTjAgICAgMHgwMAo+ID4gICNkZWZpbmUgUkdfSERNSVRYX0RSVl9JQklB
-UyAgICAgICAgICAwCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19tdDgxNzNfaGRtaV9waHkuYyBiL2RyaXZlcnMvcGh5L21lZGlhdGVrL3BoeS1tdGstaGRtaS1t
-dDgxNzMuYwo+ID4gc2ltaWxhcml0eSBpbmRleCA5OSUKPiA+IHJlbmFtZSBmcm9tIGRyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTczX2hkbWlfcGh5LmMKPiA+IHJlbmFtZSB0byBkcml2
-ZXJzL3BoeS9tZWRpYXRlay9waHktbXRrLWhkbWktbXQ4MTczLmMKPiA+IGluZGV4IGI1NWY1MTY3
-NTIwNS4uMzUyMWM0ODkzYzUzIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19tdDgxNzNfaGRtaV9waHkuYwo+ID4gKysrIGIvZHJpdmVycy9waHkvbWVkaWF0ZWsv
-cGh5LW10ay1oZG1pLW10ODE3My5jCj4gPiBAQCAtNCw3ICs0LDcgQEAKPiA+ICAgKiBBdXRob3I6
-IEppZSBRaXUgPGppZS5xaXVAbWVkaWF0ZWsuY29tPgo+ID4gICAqLwo+ID4KPiA+IC0jaW5jbHVk
-ZSAibXRrX2hkbWlfcGh5LmgiCj4gPiArI2luY2x1ZGUgInBoeS1tdGstaGRtaS5oIgo+ID4KPiA+
-ICAjZGVmaW5lIEhETUlfQ09OMCAgICAgICAgICAgIDB4MDAKPiA+ICAjZGVmaW5lIFJHX0hETUlU
-WF9QTExfRU4gICAgICAgICAgICAgQklUKDMxKQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9tZWRpYXRlay9tdGtfaGRtaV9waHkuYyBiL2RyaXZlcnMvcGh5L21lZGlhdGVrL3BoeS1t
-dGstaGRtaS5jCj4gPiBzaW1pbGFyaXR5IGluZGV4IDk5JQo+ID4gcmVuYW1lIGZyb20gZHJpdmVy
-cy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pX3BoeS5jCj4gPiByZW5hbWUgdG8gZHJpdmVycy9w
-aHkvbWVkaWF0ZWsvcGh5LW10ay1oZG1pLmMKPiA+IGluZGV4IGZlMDIyYWNkZGJlZi4uOGZjODNm
-MDFhNzIwIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1p
-X3BoeS5jCj4gPiArKysgYi9kcml2ZXJzL3BoeS9tZWRpYXRlay9waHktbXRrLWhkbWkuYwo+ID4g
-QEAgLTQsNyArNCw3IEBACj4gPiAgICogQXV0aG9yOiBKaWUgUWl1IDxqaWUucWl1QG1lZGlhdGVr
-LmNvbT4KPiA+ICAgKi8KPiA+Cj4gPiAtI2luY2x1ZGUgIm10a19oZG1pX3BoeS5oIgo+ID4gKyNp
-bmNsdWRlICJwaHktbXRrLWhkbWkuaCIKPiA+Cj4gPiAgc3RhdGljIGludCBtdGtfaGRtaV9waHlf
-cG93ZXJfb24oc3RydWN0IHBoeSAqcGh5KTsKPiA+ICBzdGF0aWMgaW50IG10a19oZG1pX3BoeV9w
-b3dlcl9vZmYoc3RydWN0IHBoeSAqcGh5KTsKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9k
-cm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmggYi9kcml2ZXJzL3BoeS9tZWRpYXRlay9waHktbXRr
-LWhkbWkuaAo+ID4gc2ltaWxhcml0eSBpbmRleCAxMDAlCj4gPiByZW5hbWUgZnJvbSBkcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmgKPiA+IHJlbmFtZSB0byBkcml2ZXJzL3Bo
-eS9tZWRpYXRlay9waHktbXRrLWhkbWkuaAo+ID4KPgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4
-LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Support ROHM BD99954 Battery Management IC
+
+ROHM BD99954 is a Battery Management IC for 1-4 cell Lithium-Ion
+secondary battery. BD99954 is intended to be used in space-constraint
+equipment such as Low profile Notebook PC, Tablets and other
+applications.
+
+Series extracts a "linear ranges" helper out of the regulator
+framework. Linear ranges helper is intended to help converting
+real-world values to register values when conversion is linear. I
+suspect this is useful also for power subsystem and possibly for clk.
+
+This version of series introduces new battry DT binding entries and
+adds the parsing in power_supply_get_battery_info().
+
+Changelog v7:
+ General:
+   - rebased on top of v5.6
+ bd99954 driver:
+   - fixed bunch of styling issues spotted by Andy Shevchenko
+   - dropped ACPI table as ACPI properties are not supported at this
+     version of driver.
+   - added few acks
+
+Changelog v6:
+ generic:
+   - rebased on top of 5.6-rc7.
+ linear ranges:
+   - moved to lib as requested by Greg KH
+   - EXPORT_SYMBOL => EXPORT_SYMBOL_GPL
+   - licence GPL-2.0, not later
+   - added KUnit test for linear ranges
+
+Changelog v5:
+ generic:
+   - rebased on top of 5.6-rc6.
+ DT-bindings:
+   - Dropped -charger extension from compatible and removed wildcard x.
+ regulators:
+   - squashed the regulator changes in one patch.
+ power-supply KConfig:
+   - fixed indentiation
+   - dropped unnecessary 'default N' from BD99954.
+
+Changelog v4:
+ generic:
+   - rebase and drop RFC.
+ DT-bindings:
+   - add I2C node address-cells and size-cells to fix yaml check errors
+   - uncomment multipleOf:
+ bd70528:
+   - add patch which renames driver internal linear_range struct to
+     avoid collision when regulator/driver.h (which gets included from
+     rohm generic header) introduces the linear_range struct.
+ regulators:
+   - rebase to v5.6-rc2 and convert also the two newly introduced
+     drivers to use linear_range struct instead of
+     regulator_linear_range.
+ linear_ranges:
+   - Fix kerneldoc.
+
+Changelog RFC-v3:
+ DT-bindings:
+   - fix the BD99954 binding (the *-microvolt Vs. *-microvolts issue is
+     still there. Not sure which one is correct)
+   - renabe tricklecharge-* binding to trickle-charge-* as suggested by
+     Rob.
+ - drop the linear-ranges helper which was written for BD70528 and
+   extract the linear-range code from regulator framework instead.
+ - refactor regulator framework to utilize extracted linear-ranges
+   code.
+ - change the struct regulator_linear_range to linear_range from
+   regulator drivers.
+ - refactor BD70528 to use regulator framework originated
+   linear-ranges code.
+ - change BD99954 to use linear-ranges code from regulator framework
+
+Changelog RFC-v2:
+ DT-bindings:
+   - Used the battery parameters described in battery.txt
+   - Added few new parameters to battery.txt
+   - Added ASCII art charging profile chart for BD99954 to explain
+     states and limits.
+ Linear ranges:
+   - Fixed division by zero error from linear-ranges code if step 0 is
+     used.
+ Power-supply core:
+   - Added parsing of new battery parameters.
+ BD99954 driver:
+   - converted to use battery parameters from battery node
+   - Added step 0 ranges for reg values which do not change voltage
+   - added dt-node to psy-config
+
+Patch 1:
+	DT binding docs for the new battery parameters
+Patch 2:
+	BD99954 charger DT binding docs
+Patch 3:
+	Linear ranges helpers
+Patch 4:
+	Test for linear ranges helpers
+Patch 5:
+	Rename driver internal struct linear_range from bd70528-power
+Patch 6:
+	Use linear-ranges helpers in regulator framework and
+	convert regulator drivers to use new linear_range struct.
+Patch 7:
+	Use linear-ranges helpers in bd70528 driver
+Patch 8:
+	Parsing of new battery parameters
+Patch 9:
+	ROHM BD99954 charger IC driver
+Patch 10:
+	Fix Kconfig help text indentiation for other entries as well.
+
+---
+
+Matti Vaittinen (10):
+  dt-bindings: battery: add new battery parameters
+  dt_bindings: ROHM BD99954 Charger
+  lib: add linear ranges helpers
+  lib/test_linear_ranges: add a test for the 'linear_ranges'
+  power: supply: bd70528: rename linear_range to avoid collision
+  regulator: use linear_ranges helper
+  power: supply: bd70528: use linear ranges
+  power: supply: add battery parameters
+  power: supply: Support ROHM bd99954 charger
+  power: supply: Fix Kconfig help text indentiation
+
+ .../bindings/power/supply/battery.txt         |    6 +
+ .../bindings/power/supply/rohm,bd99954.yaml   |  155 +++
+ drivers/power/supply/Kconfig                  |   34 +-
+ drivers/power/supply/Makefile                 |    1 +
+ drivers/power/supply/bd70528-charger.c        |  140 +-
+ drivers/power/supply/bd99954-charger.c        | 1149 +++++++++++++++++
+ drivers/power/supply/power_supply_core.c      |    8 +
+ drivers/regulator/88pg86x.c                   |    4 +-
+ drivers/regulator/88pm800-regulator.c         |    4 +-
+ drivers/regulator/Kconfig                     |    1 +
+ drivers/regulator/act8865-regulator.c         |    4 +-
+ drivers/regulator/act8945a-regulator.c        |    2 +-
+ drivers/regulator/arizona-ldo1.c              |    2 +-
+ drivers/regulator/arizona-micsupp.c           |    4 +-
+ drivers/regulator/as3711-regulator.c          |    6 +-
+ drivers/regulator/as3722-regulator.c          |    4 +-
+ drivers/regulator/axp20x-regulator.c          |   16 +-
+ drivers/regulator/bcm590xx-regulator.c        |    8 +-
+ drivers/regulator/bd70528-regulator.c         |    8 +-
+ drivers/regulator/bd71828-regulator.c         |   10 +-
+ drivers/regulator/bd718x7-regulator.c         |   26 +-
+ drivers/regulator/da903x.c                    |    2 +-
+ drivers/regulator/helpers.c                   |  130 +-
+ drivers/regulator/hi6421-regulator.c          |    4 +-
+ drivers/regulator/lochnagar-regulator.c       |    4 +-
+ drivers/regulator/lp873x-regulator.c          |    4 +-
+ drivers/regulator/lp87565-regulator.c         |    2 +-
+ drivers/regulator/lp8788-buck.c               |    2 +-
+ drivers/regulator/max77650-regulator.c        |    2 +-
+ drivers/regulator/mcp16502.c                  |    4 +-
+ drivers/regulator/mp8859.c                    |    2 +-
+ drivers/regulator/mt6323-regulator.c          |    6 +-
+ drivers/regulator/mt6358-regulator.c          |    8 +-
+ drivers/regulator/mt6380-regulator.c          |    6 +-
+ drivers/regulator/mt6397-regulator.c          |    6 +-
+ drivers/regulator/palmas-regulator.c          |    4 +-
+ drivers/regulator/qcom-rpmh-regulator.c       |    2 +-
+ drivers/regulator/qcom_rpm-regulator.c        |   14 +-
+ drivers/regulator/qcom_smd-regulator.c        |   70 +-
+ drivers/regulator/rk808-regulator.c           |   10 +-
+ drivers/regulator/s2mps11.c                   |   14 +-
+ drivers/regulator/sky81452-regulator.c        |    2 +-
+ drivers/regulator/stpmic1_regulator.c         |   18 +-
+ drivers/regulator/tps65086-regulator.c        |   10 +-
+ drivers/regulator/tps65217-regulator.c        |    4 +-
+ drivers/regulator/tps65218-regulator.c        |    6 +-
+ drivers/regulator/tps65912-regulator.c        |    4 +-
+ drivers/regulator/twl-regulator.c             |    4 +-
+ drivers/regulator/twl6030-regulator.c         |    2 +-
+ drivers/regulator/wm831x-dcdc.c               |    2 +-
+ drivers/regulator/wm831x-ldo.c                |    4 +-
+ drivers/regulator/wm8350-regulator.c          |    2 +-
+ drivers/regulator/wm8400-regulator.c          |    2 +-
+ include/linux/linear_range.h                  |   48 +
+ include/linux/power/bd99954-charger.h         | 1075 +++++++++++++++
+ include/linux/power_supply.h                  |    4 +
+ include/linux/regulator/driver.h              |   27 +-
+ lib/Kconfig                                   |    3 +
+ lib/Kconfig.debug                             |   11 +
+ lib/Makefile                                  |    2 +
+ lib/linear_ranges.c                           |  246 ++++
+ lib/test_linear_ranges.c                      |  228 ++++
+ 62 files changed, 3236 insertions(+), 356 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/power/supply/rohm,bd99954.yaml
+ create mode 100644 drivers/power/supply/bd99954-charger.c
+ create mode 100644 include/linux/linear_range.h
+ create mode 100644 include/linux/power/bd99954-charger.h
+ create mode 100644 lib/linear_ranges.c
+ create mode 100644 lib/test_linear_ranges.c
+
+
+base-commit: 7111951b8d4973bda27ff663f2cf18b663d15b48
+-- 
+2.21.0
+
+
+-- 
+Matti Vaittinen, Linux device drivers
+ROHM Semiconductors, Finland SWDC
+Kiviharjunlenkki 1E
+90220 OULU
+FINLAND
+
+~~~ "I don't think so," said Rene Descartes. Just then he vanished ~~~
+Simon says - in Latin please.
+~~~ "non cogito me" dixit Rene Descarte, deinde evanescavit ~~~
+Thanks to Simon Glass for the translation =] 
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
