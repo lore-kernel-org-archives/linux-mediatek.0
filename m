@@ -2,72 +2,61 @@ Return-Path: <SRS0=zTQl=5Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1BACFC43331
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 10:15:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E622C43331
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 15:35:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E005B20848
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 10:15:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3053920848
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 15:35:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cQkyvdnJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E005B20848
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PKHCjM5o"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3053920848
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tNA7OoQeC4GxmJNJJIZC8KUKnGpKts1c/eFFYLKb+VM=; b=cQkyvdnJXINyWw
-	9w9BCkiKnGj8PWJ1nGigIgStqowZHP8Tk2t63iJkZyWl1xJCxU+U2+bMgm4wDIbKKyg6MHTLyZJ13
-	IQQVI7CnDkA3IXRsGZPw76pahd9MOiHiL9HJilSZJXXjVLQCM7ibswRt/vNJ7VwFytFPf6qb2VEqw
-	y/7IGdJKRkjOHIi2WX2pRTfsmfbMxQLTLoc0hsnfHgp/O5CU1kRfnFLrDgrMispz+tHF0TE08KTmc
-	1ScgywZ50gTj1uTHv/sFIa8S2poSkmyjpElseqvQfQq0C9ei6TuKYAVTzZtG31OLLtEIgB/VbKXb4
-	IP483Iha4frCK5G58INQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ej1AvLdU6vO+Sq+RAPB4b0nkU2c6HoAbpnI2H6Uk15I=; b=PKHCjM5o4xxUg0
+	UMe8KJsj+rUHzJ2ZnXmFcvZwDZyod/hmzIsxGRy4OzmZIg3R7LFdunjIhZG5DX4z9F/UUyUqg1M8E
+	ZRdPDJfnEXHWcZZhrxt/coa/h3eG0vKDKPtjYQjYziq1mG6O7DT7vaM163vSdBktDYGoqlOec7qKp
+	GPvroBB0zEX3l9PPkf8ywiLv/SiTUk3ncEBAZpb+fpdCwiqYq0M/MoypKwmJX19xMy/aTHxE1s2Su
+	T5c7KkkZVhzkPuHKBIt0lanfXv1dBlNrTlJNLijTPpmjFcEHeReqefD4i/lEGdgJ1lErtJkTeOB+l
+	LBaI81/9dVNZja9i6Dyw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJDvQ-0005Ej-0z; Tue, 31 Mar 2020 10:15:16 +0000
-Received: from mga04.intel.com ([192.55.52.120])
+	id 1jJIvB-0001ny-2M; Tue, 31 Mar 2020 15:35:21 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJDv7-0003sy-VJ; Tue, 31 Mar 2020 10:14:59 +0000
-IronPort-SDR: PDuqrSpYaQHsSUb7M7jHTmu6WD3lFVx1Gf1ZiYYFa41SDwBlBFqAKitb0zuqh4zbFuggH2JIJy
- NlMKKtpg6Cyg==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Mar 2020 03:14:57 -0700
-IronPort-SDR: xPCffzS9PbMWyCOuBM5F+UBfUSZP3WxETeayPQ8cYvYjCbEKXZqAJcpvXtk/wk5/CqL85my64e
- SlhEiGKl3dZg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,327,1580803200"; d="scan'208";a="241873299"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by fmsmga008.fm.intel.com with ESMTP; 31 Mar 2020 03:14:54 -0700
-Received: from andy by smile with local (Exim 4.93)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1jJDv6-00ESFD-3H; Tue, 31 Mar 2020 13:14:56 +0300
-Date: Tue, 31 Mar 2020 13:14:56 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: Re: [V4, 2/2] media: i2c: Add DW9768 VCM driver
-Message-ID: <20200331101456.GG1922688@smile.fi.intel.com>
-References: <20200330123634.363-1-dongchun.zhu@mediatek.com>
- <20200330123634.363-3-dongchun.zhu@mediatek.com>
- <20200330135751.GQ1922688@smile.fi.intel.com>
- <1585620980.5781.80.camel@mhfsdcap03>
+ id 1jJIux-0000MG-JE; Tue, 31 Mar 2020 15:35:09 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: koike) with ESMTPSA id 217F12980F2
+Subject: Re: [v6, 1/5] media: dt-bindings: mt8183: Added camera ISP Pass 1
+To: Jungo Lin <jungo.lin@mediatek.com>, tfiga@chromium.org,
+ hverkuil-cisco@xs4all.nl, laurent.pinchart@ideasonboard.com,
+ matthias.bgg@gmail.com, mchehab@kernel.org
+References: <Jungo Lin <jungo.lin@mediatek.com>
+ <20191219054930.29513-1-jungo.lin@mediatek.com>
+ <20191219054930.29513-2-jungo.lin@mediatek.com>
+From: Helen Koike <helen.koike@collabora.com>
+Message-ID: <77afc8e7-26b8-471d-0ec0-c77a9c379433@collabora.com>
+Date: Tue, 31 Mar 2020 12:34:51 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.4.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1585620980.5781.80.camel@mhfsdcap03>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <20191219054930.29513-2-jungo.lin@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200331_031458_017092_34316798 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20200331_083507_925648_F2FE6520 
+X-CRM114-Status: GOOD (  21.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,53 +68,134 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org,
- srv_heupstream@mediatek.com, shengnan.wang@mediatek.com, tfiga@chromium.org,
- louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, sakari.ailus@linux.intel.com,
- matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
+Cc: shik@chromium.org, devicetree@vger.kernel.org, Sean.Cheng@mediatek.com,
+ suleiman@chromium.org, Rynn.Wu@mediatek.com, srv_heupstream@mediatek.com,
+ robh@kernel.org, ryan.yu@mediatek.com, Jerry-ch.Chen@mediatek.com,
+ frankie.chiu@mediatek.com, sj.huang@mediatek.com, yuzhao@chromium.org,
+ linux-mediatek@lists.infradead.org, zwisler@chromium.org,
+ ddavenport@chromium.org, frederic.chen@mediatek.com,
  linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 31, 2020 at 10:16:20AM +0800, Dongchun Zhu wrote:
-> On Mon, 2020-03-30 at 16:57 +0300, Andy Shevchenko wrote:
-> > On Mon, Mar 30, 2020 at 08:36:34PM +0800, Dongchun Zhu wrote:
-> > > This patch adds a V4L2 sub-device driver for DW9768 voice coil moter,
-> > > providing control to set the desired focus via I2C serial interface.
-> > 
-> > ...
-> > 
-> > > +static const struct dev_pm_ops dw9768_pm_ops = {
-> > > +	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
-> > > +				pm_runtime_force_resume)
-> > > +	SET_RUNTIME_PM_OPS(dw9768_runtime_suspend, dw9768_runtime_resume, NULL)
-> > > +};
-> > > +
-> > > +static struct i2c_driver dw9768_i2c_driver = {
-> > > +	.driver = {
-> > > +		.name = DW9768_NAME,
-> > 
-> > > +		.pm = IS_ENABLED(CONFIG_PM) ? &dw9768_pm_ops : NULL,
-> > 
-> > What is this conditional for?
-> > 
+Hi Jungo,
+
+On 12/19/19 3:49 AM, Jungo Lin wrote:
+> This patch adds DT binding document for the Pass 1 (P1) unit
+> in Mediatek's camera ISP system. The Pass 1 unit grabs the sensor
+> data out from the sensor interface, applies ISP image effects
+> from tuning data and outputs the image data or statistics data to DRAM.
 > 
-> For the dw9768_pm_ops, here my idea is to use an IS_ENABLED() check to
-> avoid defining the structure when CONFIG_PM is not set.
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> Signed-off-by: Jungo Lin <jungo.lin@mediatek.com>
+> ---
+> Changes from v6:
+>  - Add port node description in the dt-binding document.
+> ---
+>  .../bindings/media/mediatek,camisp.txt        | 83 +++++++++++++++++++
 
-Have you looked at the implementation of SET_SYSTEM_SLEEP_OPS() and another one?
+It would be really nice to convert this to yaml.
 
-Have you tried to actually compile with !CONFIG_PM? In your case the warning
-should be issued.
+For reference: https://lwn.net/Articles/771621/
 
--- 
-With Best Regards,
-Andy Shevchenko
+Regards,
+Helen
 
-
+>  1 file changed, 83 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,camisp.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,camisp.txt b/Documentation/devicetree/bindings/media/mediatek,camisp.txt
+> new file mode 100644
+> index 000000000000..a85f37c0b87d
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek,camisp.txt
+> @@ -0,0 +1,83 @@
+> +* Mediatek Image Signal Processor Pass 1 (ISP P1)
+> +
+> +The Pass 1 unit of Mediatek's camera ISP system grabs the sensor data out
+> +from the sensor interface, applies ISP effects from tuning data and outputs
+> +the image data and statistics data to DRAM. Furthermore, Pass 1 unit has
+> +the ability to output two different resolutions frames at the same time to
+> +increase the performance of the camera application.
+> +
+> +Required properties:
+> +- compatible: Must be "mediatek,mt8183-camisp" for MT8183.
+> +- reg: Physical base address of the camera function block register and
+> +  length of memory mapped region. Must contain an entry for each entry
+> +  in reg-names.
+> +- reg-names: Must include the following entries:
+> +  "cam_sys": Camera base function block
+> +  "cam_uni": Camera UNI function block
+> +  "cam_a": Camera ISP P1 hardware unit A
+> +  "cam_b": Camera ISP P1 hardware unit B
+> +  "cam_c": Camera ISP P1 hardware unit C
+> +- interrupts: Must contain an entry for each entry in interrupt-names.
+> +- interrupt-names : Must include the following entries:
+> +  "cam_uni": Camera UNI interrupt
+> +  "cam_a": Camera unit A interrupt
+> +  "cam_b": Camera unit B interrupt
+> +  "cam_c": Camera unit C interrupt
+> +- iommus: Shall point to the respective IOMMU block with master port
+> +  as argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+> +  for details.
+> +- clocks: A list of phandle and clock specifier pairs as listed
+> +  in clock-names property, see
+> +  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
+> +- clock-names: Must be "camsys_cam_cgpdn" and "camsys_camtg_cgpdn".
+> +- mediatek,larb: Must contain the local arbiters in the current SoCs, see
+> +  Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
+> +  for details.
+> +- power-domains: a phandle to the power domain, see
+> +  Documentation/devicetree/bindings/power/power_domain.txt for details.
+> +- mediatek,scp: The node of system control processor (SCP), see
+> +  Documentation/devicetree/bindings/remoteproc/mtk,scp.txt for details.
+> +- port: child port node corresponding to the data input, in accordance with
+> +  the video interface bindings defined in
+> +  Documentation/devicetree/bindings/media/video-interfaces.txt. The port
+> +  node must contain at least one endpoint.
+> +
+> +Example:
+> +SoC specific DT entry:
+> +
+> +	camisp: camisp@1a000000 {
+> +		compatible = "mediatek,mt8183-camisp";
+> +		reg = <0 0x1a000000 0 0x1000>,
+> +				<0 0x1a003000 0 0x1000>,
+> +				<0 0x1a004000 0 0x2000>,
+> +				<0 0x1a006000 0 0x2000>,
+> +				<0 0x1a008000 0 0x2000>;
+> +		reg-names = "cam_sys",
+> +				"cam_uni",
+> +				"cam_a",
+> +				"cam_b",
+> +				"cam_c";
+> +		interrupts = <GIC_SPI 253 IRQ_TYPE_LEVEL_LOW>,
+> +				<GIC_SPI 254 IRQ_TYPE_LEVEL_LOW>,
+> +				<GIC_SPI 255 IRQ_TYPE_LEVEL_LOW>,
+> +				<GIC_SPI 256 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupt-names = "cam_uni",
+> +				"cam_a",
+> +				"cam_b",
+> +				"cam_c";
+> +		iommus = <&iommu M4U_PORT_CAM_IMGO>;
+> +		clocks = <&camsys CLK_CAM_CAM>,
+> +				<&camsys CLK_CAM_CAMTG>;
+> +		clock-names = "camsys_cam_cgpdn",
+> +				"camsys_camtg_cgpdn";
+> +		mediatek,larb = <&larb3>,
+> +				<&larb6>;
+> +		power-domains = <&scpsys MT8183_POWER_DOMAIN_CAM>;
+> +		mediatek,scp = <&scp>;
+> +
+> +		port {
+> +			camisp_endpoint: endpoint {
+> +				remote-endpoint = <&seninf_camisp_endpoint>;
+> +			};
+> +		};
+> +	};
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
