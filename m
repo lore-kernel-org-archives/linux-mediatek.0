@@ -2,56 +2,79 @@ Return-Path: <SRS0=zTQl=5Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 38E3FC43331
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 21:47:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 506E6C43331
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 22:01:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0DEF72080C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 21:47:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 21D482080C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 22:01:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="C/fMH3s9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0DEF72080C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ekSv+3dK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 21D482080C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=thofNp4+iCx5A/5oN2z+E0wf2Z8vi7kAb7mpkOV7iu4=; b=C/fMH3s9WLM8ev
-	/Ug+DKQ7s0vH3t3FCsM1kw4XmYKVMGk+zamHTAR7yhyQkl2q6YOMLHxJX6H6RFZXofo+BcciPeOBg
-	p0On4WEO88NjuiyQxAAN8+8wfEbxVNWArO9u76gNMQn0i/8dv+xUfoKivjDJMz2eAbZDaCTpTI8zy
-	hxoDUjYQV0VV+BN2Qfvj6P4LkI/+BlzPZECZFCyygh13TiqGWz4ALmxMssJ1ZfTMyRVHTISI6jKt/
-	dH+/RZbZirVvEIVFOKdAAC6rd1yyX5MghfnMQvaiZLnAaNYh6bhA0hhDpLXHoKW/LoaahrHYNSjRf
-	mOyqo+S2CDbZwp4h3oBA==;
+	List-Owner; bh=pRViUSIrGtkOSfNJ4+vxWGEj9RDXavEnnsoGlC/nZyc=; b=ekSv+3dKn6YLbm
+	61PNYYlInSv4/YRqTPOqXXm1jtP3F8HCbcyz3uoMU1Lf/gD0xtd/Z+NJVLHQVVxSFynzZMflD9dc1
+	/PZWgXUJtQiNAPyefEAwh4wuNlf0+DCyoDP4yLT/gOLc7mdGYXjH+29GIHE3zSOdTzG1CaTmsDqIl
+	3Dg+wSuaRxJOKa1dNd7Fy8AvC7owl/33oELvDoh0fWMHLBKQ8XFsWcu8Hj5msyah99Q9ol5Rr9J06
+	0hhtXoFqS2CYQQNIlxaZXNOA8M/3uThe8JQ4OH84r/YWRmNdQzJl9uIjDkAHzG4/QGCLELTEPzYyI
+	IHWLC7ekzYMhkZXPLO5A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJOjI-00028t-8l; Tue, 31 Mar 2020 21:47:28 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1jJOwV-0004cZ-Mo; Tue, 31 Mar 2020 22:01:07 +0000
+Received: from mail-il1-f194.google.com ([209.85.166.194])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJOiG-00012w-Fu; Tue, 31 Mar 2020 21:46:26 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 015C3297173
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-To: mark.rutland@arm.com, ck.hu@mediatek.com, sboyd@kernel.org,
- ulrich.hecht+renesas@gmail.com
-Subject: [PATCH 3/4] clk / soc: mediatek: Bind clock and gpu driver for mt2701
-Date: Tue, 31 Mar 2020 23:46:08 +0200
-Message-Id: <20200331214609.1742152-3-enric.balletbo@collabora.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200331214609.1742152-1-enric.balletbo@collabora.com>
-References: <20200331214609.1742152-1-enric.balletbo@collabora.com>
+ id 1jJOwL-0004S8-Pz; Tue, 31 Mar 2020 22:00:59 +0000
+Received: by mail-il1-f194.google.com with SMTP id p13so21013580ilp.3;
+ Tue, 31 Mar 2020 15:00:54 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=lc33E5Df9rZgd4qmK0wjmDHg2/VwMCkladXOyRxwDEQ=;
+ b=Bv/b8oDPsmRhhEE+CPMm7YL8/1k09JzfpgSwmgyOQQc0NLPW+pojBmu+Qeuhd3Ciu9
+ 4FZwU7NgZ3BlK+YqkSUFVhDJrsr0sFEyDrlPQbjUA5UbDA+6ybdFg2DVQRLUU7+oTYrI
+ z09paMWqmJSnNw38V1qDo7btswuR9zte0/wxwPPlgqTqPdUmFld4f/sQWvd/OCVotJO+
+ W4oAxF/0Dc+L42mI9YPI6rCtxKOsjLXqSAWFOi2zV6NAEC2jKBNHIbfE7jW7HZg+g5UO
+ Ejasd/BanuxojdaOwlpTnG5kdNNElu92MJzRSPPVxJB5g1aCPdkXDnLJcHqqamwKCmWL
+ CniA==
+X-Gm-Message-State: ANhLgQ1oOrQaAF0t3q+1uVy0FIa8JszA1JgBxN98unqnSNQZVOYaOc0V
+ DaqpwXFlu8T85FwO/Fc8Gw==
+X-Google-Smtp-Source: ADFU+vt2obj9Pp0WVbC2XhGR8Zra56tn+jusDQkYJG1LqYScGnHUFR99v3w+nmrFf44+CRhVQro3Zw==
+X-Received: by 2002:a92:1d4b:: with SMTP id d72mr18236810ild.14.1585692053642; 
+ Tue, 31 Mar 2020 15:00:53 -0700 (PDT)
+Received: from rob-hp-laptop ([64.188.179.250])
+ by smtp.gmail.com with ESMTPSA id n6sm43408iod.9.2020.03.31.15.00.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 31 Mar 2020 15:00:52 -0700 (PDT)
+Received: (nullmailer pid 19586 invoked by uid 1000);
+ Tue, 31 Mar 2020 22:00:51 -0000
+Date: Tue, 31 Mar 2020 16:00:51 -0600
+From: Rob Herring <robh@kernel.org>
+To: Weijie Gao <weijie.gao@mediatek.com>
+Subject: Re: [PATCH 2/2] dt-bindings: add documentation for mt7621-nand driver
+Message-ID: <20200331220051.GA18084@bogus>
+References: <1585678079-5999-1-git-send-email-weijie.gao@mediatek.com>
+ <1585678079-5999-2-git-send-email-weijie.gao@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1585678079-5999-2-git-send-email-weijie.gao@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200331_144624_664794_AA7E8723 
-X-CRM114-Status: GOOD (  13.05  )
+X-CRM114-CacheID: sfid-20200331_150057_845674_D12F1DCF 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,87 +86,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Kate Stewart <kstewart@linuxfoundation.org>,
- Matthias Brugger <mbrugger@suse.com>,
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ Anders Roxell <anders.roxell@linaro.org>,
+ Vignesh Raghavendra <vigneshr@ti.com>, Arnd Bergmann <arnd@arndb.de>,
+ Boris Brezillon <bbrezillon@kernel.org>, Richard Weinberger <richard@nod.at>,
+ Brendan Higgins <brendanhiggins@google.com>, linux-kernel@vger.kernel.org,
+ Frieder Schrempf <frieder.schrempf@kontron.de>, linux-mips@vger.kernel.org,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Michael Turquette <mturquette@baylibre.com>, hsinyi@chromium.org,
- linux-kernel@vger.kernel.org, Richard Fontana <rfontana@redhat.com>,
- drinkcat@chromium.org, linux-mediatek@lists.infradead.org,
- Allison Randal <allison@lohutok.net>, matthias.bgg@kernel.org,
- matthias.bgg@gmail.com, Thomas Gleixner <tglx@linutronix.de>,
- Collabora Kernel ML <kernel@collabora.com>, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
+ linux-mediatek@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org,
+ Mason Yang <masonccyang@mxic.com.tw>, Weijie Gao <weijie.gao@mediatek.com>,
+ Piotr Sroka <piotrs@cadence.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Now that the mmsys driver is the top-level entry point for the
-multimedia subsystem, we could bind the clock and the gpu driver on
-those devices that is expected to work, so the drm driver is
-intantiated by the mmsys driver and display, hopefully, working again.
+On Wed, 1 Apr 2020 02:07:59 +0800, Weijie Gao wrote:
+> This patch adds documentation for MediaTek MT7621 NAND flash controller
+> driver.
+> 
+> Signed-off-by: Weijie Gao <weijie.gao@mediatek.com>
+> ---
+>  .../bindings/mtd/mediatek,mt7621-nfc.yaml     | 68 +++++++++++++++++++
+>  1 file changed, 68 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mtd/mediatek,mt7621-nfc.yaml
+> 
 
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
-If you have this hardware, please kindly provide your tested tag. Only
-build tested.
+My bot found errors running 'make dt_binding_check' on your patch:
 
- drivers/clk/mediatek/clk-mt2701-mm.c | 8 ++------
- drivers/soc/mediatek/mtk-mmsys.c     | 8 ++++++++
- 2 files changed, 10 insertions(+), 6 deletions(-)
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mtd/mediatek,mt7621-nfc.example.dt.yaml: nand@1e003000: reg: [[503328768, 2048, 503330816, 2048]] is too short
 
-diff --git a/drivers/clk/mediatek/clk-mt2701-mm.c b/drivers/clk/mediatek/clk-mt2701-mm.c
-index 054b597d4a73..3a4e895a3d0f 100644
---- a/drivers/clk/mediatek/clk-mt2701-mm.c
-+++ b/drivers/clk/mediatek/clk-mt2701-mm.c
-@@ -79,16 +79,12 @@ static const struct mtk_gate mm_clks[] = {
- 	GATE_DISP1(CLK_MM_TVE_FMM, "mm_tve_fmm", "mm_sel", 14),
- };
- 
--static const struct of_device_id of_match_clk_mt2701_mm[] = {
--	{ .compatible = "mediatek,mt2701-mmsys", },
--	{}
--};
--
- static int clk_mt2701_mm_probe(struct platform_device *pdev)
- {
-+	struct device *dev = &pdev->dev;
-+	struct device_node *node = dev->parent->of_node;
- 	struct clk_onecell_data *clk_data;
- 	int r;
--	struct device_node *node = pdev->dev.of_node;
- 
- 	clk_data = mtk_alloc_clk_data(CLK_MM_NR);
- 
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index c7d3b7bcfa32..cacafe23c823 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -80,6 +80,10 @@ struct mtk_mmsys_driver_data {
- 	const char *clk_driver;
- };
- 
-+static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
-+	.clk_driver = "clk-mt2701-mm",
-+};
-+
- static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
- 	.clk_driver = "clk-mt2712-mm",
- };
-@@ -323,6 +327,10 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
- }
- 
- static const struct of_device_id of_match_mtk_mmsys[] = {
-+	{
-+		.compatible = "mediatek,mt2701-mmsys",
-+		.data = &mt2701_mmsys_driver_data,
-+	},
- 	{
- 		.compatible = "mediatek,mt2712-mmsys",
- 		.data = &mt2712_mmsys_driver_data,
--- 
-2.25.1
+See https://patchwork.ozlabs.org/patch/1264888
 
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure dt-schema is up to date:
+
+pip3 install git+https://github.com/devicetree-org/dt-schema.git@master --upgrade
+
+Please check and re-submit.
 
 _______________________________________________
 Linux-mediatek mailing list
