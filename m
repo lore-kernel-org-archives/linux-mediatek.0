@@ -2,79 +2,74 @@ Return-Path: <SRS0=zTQl=5Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 506E6C43331
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 22:01:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BD68FC43331
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 23:13:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 21D482080C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 22:01:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7892F20658
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Mar 2020 23:13:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ekSv+3dK"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 21D482080C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QxKwovWe";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="J7zqVWd/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7892F20658
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pRViUSIrGtkOSfNJ4+vxWGEj9RDXavEnnsoGlC/nZyc=; b=ekSv+3dKn6YLbm
-	61PNYYlInSv4/YRqTPOqXXm1jtP3F8HCbcyz3uoMU1Lf/gD0xtd/Z+NJVLHQVVxSFynzZMflD9dc1
-	/PZWgXUJtQiNAPyefEAwh4wuNlf0+DCyoDP4yLT/gOLc7mdGYXjH+29GIHE3zSOdTzG1CaTmsDqIl
-	3Dg+wSuaRxJOKa1dNd7Fy8AvC7owl/33oELvDoh0fWMHLBKQ8XFsWcu8Hj5msyah99Q9ol5Rr9J06
-	0hhtXoFqS2CYQQNIlxaZXNOA8M/3uThe8JQ4OH84r/YWRmNdQzJl9uIjDkAHzG4/QGCLELTEPzYyI
-	IHWLC7ekzYMhkZXPLO5A==;
+	List-Owner; bh=/fX5UhGYebLGN+FSo7Erj3nnIiUd6no/bShL7fB/zN0=; b=QxKwovWeUAVvbs
+	OYmW3BInE/3Loe/OviepCLKUJz8xeVdG+1X+bvZtQb8kNKKi+va4WEXIYfyDWaIam8KUH2SSCd6vo
+	zuX5OkP+frsR532cInBSt+ckBZaqRZi2PGqlSu0O1tzxQ9XxDzDvH19xOUZzg1+8U248T8KaCmiKf
+	/TClH8NHz9MzI/el+NNW/13k82s6q+OuTUvQ5abx4g0rood5Z8k7IHQc1qSchO5NxqDF+e51MEe5t
+	vYYZEXFl8sXBnFrU/qy/KGwhJFUmSr0NnowxgIwWKL2bf7czhcJvJrvGR2kXWOPOKERCWckfFG5LG
+	NSOIWAwO4L6MqLz7YZOw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJOwV-0004cZ-Mo; Tue, 31 Mar 2020 22:01:07 +0000
-Received: from mail-il1-f194.google.com ([209.85.166.194])
+	id 1jJQ4n-0002bi-Gn; Tue, 31 Mar 2020 23:13:45 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJOwL-0004S8-Pz; Tue, 31 Mar 2020 22:00:59 +0000
-Received: by mail-il1-f194.google.com with SMTP id p13so21013580ilp.3;
- Tue, 31 Mar 2020 15:00:54 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=lc33E5Df9rZgd4qmK0wjmDHg2/VwMCkladXOyRxwDEQ=;
- b=Bv/b8oDPsmRhhEE+CPMm7YL8/1k09JzfpgSwmgyOQQc0NLPW+pojBmu+Qeuhd3Ciu9
- 4FZwU7NgZ3BlK+YqkSUFVhDJrsr0sFEyDrlPQbjUA5UbDA+6ybdFg2DVQRLUU7+oTYrI
- z09paMWqmJSnNw38V1qDo7btswuR9zte0/wxwPPlgqTqPdUmFld4f/sQWvd/OCVotJO+
- W4oAxF/0Dc+L42mI9YPI6rCtxKOsjLXqSAWFOi2zV6NAEC2jKBNHIbfE7jW7HZg+g5UO
- Ejasd/BanuxojdaOwlpTnG5kdNNElu92MJzRSPPVxJB5g1aCPdkXDnLJcHqqamwKCmWL
- CniA==
-X-Gm-Message-State: ANhLgQ1oOrQaAF0t3q+1uVy0FIa8JszA1JgBxN98unqnSNQZVOYaOc0V
- DaqpwXFlu8T85FwO/Fc8Gw==
-X-Google-Smtp-Source: ADFU+vt2obj9Pp0WVbC2XhGR8Zra56tn+jusDQkYJG1LqYScGnHUFR99v3w+nmrFf44+CRhVQro3Zw==
-X-Received: by 2002:a92:1d4b:: with SMTP id d72mr18236810ild.14.1585692053642; 
- Tue, 31 Mar 2020 15:00:53 -0700 (PDT)
-Received: from rob-hp-laptop ([64.188.179.250])
- by smtp.gmail.com with ESMTPSA id n6sm43408iod.9.2020.03.31.15.00.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 Mar 2020 15:00:52 -0700 (PDT)
-Received: (nullmailer pid 19586 invoked by uid 1000);
- Tue, 31 Mar 2020 22:00:51 -0000
-Date: Tue, 31 Mar 2020 16:00:51 -0600
-From: Rob Herring <robh@kernel.org>
-To: Weijie Gao <weijie.gao@mediatek.com>
-Subject: Re: [PATCH 2/2] dt-bindings: add documentation for mt7621-nand driver
-Message-ID: <20200331220051.GA18084@bogus>
-References: <1585678079-5999-1-git-send-email-weijie.gao@mediatek.com>
- <1585678079-5999-2-git-send-email-weijie.gao@mediatek.com>
+ id 1jJQ4c-0002SA-3D; Tue, 31 Mar 2020 23:13:35 +0000
+Received: from mail-ed1-f49.google.com (mail-ed1-f49.google.com
+ [209.85.208.49])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id E44D82166E;
+ Tue, 31 Mar 2020 23:13:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1585696413;
+ bh=9XnDVeLNtXBo+7A+ymbQWmYaZXP1cYS2bkQlhtc03pg=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=J7zqVWd/5lRSv44OmqCPe15cyMfA4cypk3PPuwEoI45tJ1YAoTl5Ju1ma924UCJl6
+ Z6ky4U99dLrxKDMwa+PTXGoIyPPfnsUb6LRM8u/KABhxK6I52Zyo/oUkrVgFeiVNOT
+ ND0IQRvtzFnmuXNaM15v5te9g0dWSmNYMudOjc6w=
+Received: by mail-ed1-f49.google.com with SMTP id e5so27413245edq.5;
+ Tue, 31 Mar 2020 16:13:32 -0700 (PDT)
+X-Gm-Message-State: ANhLgQ25ilQcju9N1YJSQ73a092oLSr8agA8UOxme25YYLrPM0qWSe0M
+ mq4tSdE5/DOmJ4wGHQsg0mM9Bh5rEuwiGN1CRA==
+X-Google-Smtp-Source: ADFU+vsI2at//4iAqFj3XbOPyjbjd8Ju2JHJo+yfvuPMtXyncAneKqKuJ3LsmHFRegjrJGdHpUpM711na8maETHC9Bs=
+X-Received: by 2002:a50:ce01:: with SMTP id y1mr18621985edi.47.1585696411284; 
+ Tue, 31 Mar 2020 16:13:31 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1585678079-5999-2-git-send-email-weijie.gao@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20200331214609.1742152-1-enric.balletbo@collabora.com>
+ <20200331214609.1742152-4-enric.balletbo@collabora.com>
+In-Reply-To: <20200331214609.1742152-4-enric.balletbo@collabora.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Wed, 1 Apr 2020 07:13:20 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__9rrC3o9sTYKgSZi8n0xHdtSFoNMHOqLfQF6B_4BAGww@mail.gmail.com>
+Message-ID: <CAAOTY__9rrC3o9sTYKgSZi8n0xHdtSFoNMHOqLfQF6B_4BAGww@mail.gmail.com>
+Subject: Re: [PATCH 4/4] arm64: dts: mt8173: Fix mmsys node name
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200331_150057_845674_D12F1DCF 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20200331_161334_155198_06CD4C67 
+X-CRM114-Status: GOOD (  14.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,46 +82,42 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Anders Roxell <anders.roxell@linaro.org>,
- Vignesh Raghavendra <vigneshr@ti.com>, Arnd Bergmann <arnd@arndb.de>,
- Boris Brezillon <bbrezillon@kernel.org>, Richard Weinberger <richard@nod.at>,
- Brendan Higgins <brendanhiggins@google.com>, linux-kernel@vger.kernel.org,
- Frieder Schrempf <frieder.schrempf@kontron.de>, linux-mips@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-mediatek@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org,
- Mason Yang <masonccyang@mxic.com.tw>, Weijie Gao <weijie.gao@mediatek.com>,
- Piotr Sroka <piotrs@cadence.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ Matthias Brugger <mbrugger@suse.com>, Stephen Boyd <sboyd@kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>, linux-kernel@vger.kernel.org,
+ ulrich.hecht+renesas@gmail.com, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ hsinyi@chromium.org, CK Hu <ck.hu@mediatek.com>,
+ Collabora Kernel ML <kernel@collabora.com>, linux-clk@vger.kernel.org,
+ matthias.bgg@kernel.org, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 1 Apr 2020 02:07:59 +0800, Weijie Gao wrote:
-> This patch adds documentation for MediaTek MT7621 NAND flash controller
-> driver.
-> 
-> Signed-off-by: Weijie Gao <weijie.gao@mediatek.com>
-> ---
->  .../bindings/mtd/mediatek,mt7621-nfc.yaml     | 68 +++++++++++++++++++
->  1 file changed, 68 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mtd/mediatek,mt7621-nfc.yaml
-> 
-
-My bot found errors running 'make dt_binding_check' on your patch:
-
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mtd/mediatek,mt7621-nfc.example.dt.yaml: nand@1e003000: reg: [[503328768, 2048, 503330816, 2048]] is too short
-
-See https://patchwork.ozlabs.org/patch/1264888
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure dt-schema is up to date:
-
-pip3 install git+https://github.com/devicetree-org/dt-schema.git@master --upgrade
-
-Please check and re-submit.
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEVucmljOgoKRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFi
+b3JhLmNvbT4g5pa8IDIwMjDlubQ05pyIMeaXpSDpgLHkuIkg5LiK5Y2INTo0N+Wvq+mBk++8mgo+
+Cj4gTm9kZSBuYW1lcyBhcmUgc3VwcG9zZWQgdG8gbWF0Y2ggdGhlIGNsYXNzIG9mIHRoZSBkZXZp
+Y2UsIG1tc3lzIGlzIGEKPiBzeXN0ZW0gY29udHJvbGxlciAoc3lzY29uKSBub3QgYSBjbG9jayBj
+b250cm9sbGVyLCBzbyBjaGFuZ2UgdGhlIG5vZGUKPiBuYW1lIGFjY29yZGluZ2x5LgoKUmV2aWV3
+ZWQtYnk6IENodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgoKPgo+IFNpZ25l
+ZC1vZmYtYnk6IEVucmljIEJhbGxldGJvIGkgU2VycmEgPGVucmljLmJhbGxldGJvQGNvbGxhYm9y
+YS5jb20+Cj4gLS0tCj4KPiAgYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxNzMuZHRz
+aSB8IDIgKy0KPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0p
+Cj4KPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxNzMuZHRz
+aSBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTczLmR0c2kKPiBpbmRleCA4YjRl
+ODA2ZDUxMTkuLmE1NWU4YzE3NzgzMiAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRz
+L21lZGlhdGVrL210ODE3My5kdHNpCj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRl
+ay9tdDgxNzMuZHRzaQo+IEBAIC05MDgsNyArOTA4LDcgQEAgdTJwb3J0MTogdXNiLXBoeUAxMTI5
+MTAwMCB7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgfTsKPiAgICAgICAgICAgICAgICAgfTsK
+Pgo+IC0gICAgICAgICAgICAgICBtbXN5czogY2xvY2stY29udHJvbGxlckAxNDAwMDAwMCB7Cj4g
+KyAgICAgICAgICAgICAgIG1tc3lzOiBzeXNjb25AMTQwMDAwMDAgewo+ICAgICAgICAgICAgICAg
+ICAgICAgICAgIGNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLW1tc3lzIiwgInN5c2NvbiI7
+Cj4gICAgICAgICAgICAgICAgICAgICAgICAgcmVnID0gPDAgMHgxNDAwMDAwMCAwIDB4MTAwMD47
+Cj4gICAgICAgICAgICAgICAgICAgICAgICAgcG93ZXItZG9tYWlucyA9IDwmc2Nwc3lzIE1UODE3
+M19QT1dFUl9ET01BSU5fTU0+Owo+IC0tCj4gMi4yNS4xCj4KPgo+IF9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtbWVkaWF0ZWsgbWFpbGluZyBs
+aXN0Cj4gTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxp
+bmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
