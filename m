@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 131ABC43331
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2020 08:25:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 45187C43331
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2020 08:26:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D447F20719
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2020 08:25:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 18A7620719
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2020 08:26:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KohekgEt";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="k51DVMXg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D447F20719
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="L0lM3lb8";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="a1l0Kn60"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 18A7620719
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=huuzxXYZS5WfXrPF1usSm8Y2b/TTziGrw/XcPcupLD4=; b=KohekgEtogmCM9
-	WBY+/rvcuVF8nAToJHJI+mQjMxy7YJQHuhN3LtTfRXOMPTJcWSDkvxEEhNBYa/N5Rfu9229fYedVG
-	P2U0zeif5/QgEYAGpPL8APJolEJHH6oFrK/wxa7UUHNmPnmOypKWBar2hCbQ0M32Rvk4XYrIivyKO
-	iS7dtv+e2XLv8jfNj9ssC/m+70LbAlGgZyGSjXn6w2UHk5LOt1+NeTZlRAhL40nNgepOfs6D19lS2
-	73wsdHXsB773/Kl8wS7KNitD4hQLo0U8SFAVBx2mU1YNc/jCV6u7Rj93OnEH5rDrtUPwGiiA2GPlC
-	Vroo7z8FF67GVN2q7JMg==;
+	List-Owner; bh=viYEX05DJSA7MKAQ6oTFQ+2BularSU3CV8Pg5XOQNcs=; b=L0lM3lb8oaUIYj
+	ep5nLVckaYkOEwEp1DG+GHPpUjjBwSmd2dfj+8AjOrbGV345TDdWUXl/4cZ5D2nUo+7OdoIUnQB40
+	iVBnfnjIbf971PhikBmu10Nf+A1asfV36gGqXsr1ZWVOzJWSSyllczVmIwd1+dZbjeMJmvgLWSmRy
+	yk49aLrNOPU+z31GlXuJyTGkFoYkcEgYPJWsE6HYIT6QmT9y/TWkWrDKP+rYw2Bxxu4L8k7pwtS7U
+	3VphVUJCXuPDMmglc1Ou+Cf4nOkWHURaToKB2UeXK+U+UY2kfDhmLaNR6U5xXixCOFOPAJ0DE1+/G
+	j2+R53C/h8B0Gc9NgMoA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJYgm-0006IK-Qp; Wed, 01 Apr 2020 08:25:32 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jJYhm-0006sk-6d; Wed, 01 Apr 2020 08:26:34 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJYgd-00069U-Dw; Wed, 01 Apr 2020 08:25:25 +0000
-X-UUID: 70965124f3c8402784c6adb18eabf0e6-20200401
+ id 1jJYhf-0006lW-1O; Wed, 01 Apr 2020 08:26:28 +0000
+X-UUID: 1aba86798d5a48c6897f4a718828a260-20200401
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=EUSbiZ5r21/VYhtoXigszZHmGB4861uUEJICZijPPz8=; 
- b=k51DVMXg8o/achHWnhA5eJ6fk1JRrZwhZnQP3Ol31EZRw94MsKi+m7ZdX+6HewLkJn99S4ErUGm4GVv2qE1897UgjLXEB9cXl6rnKBEDTcCtxS5fr78eXNIzYFJSIILfhG4ZOdyNjYEMyWQuzkb4iDxFXqzZF/HGKl5XZz1SMCY=;
-X-UUID: 70965124f3c8402784c6adb18eabf0e6-20200401
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=KAc2JVwQuKcaNBn24f4yGzswCmaLnRG+W1Uvy/qyynU=; 
+ b=a1l0Kn60T951eePkQkVfwHCdndZk0Mqx1kqtdJJKYulkQ6UYDie0B87rdD/3hRIHzIfUHU7zhLxWCLL9ztfMSGeLlYs7uhaiWrIjOi6vvqRzqw1Ze8dGjLvT8Y9ii4EhO9cpM79P1wd6glknZyhstmLOqaMpRhduqgHVFXp8xZA=;
+X-UUID: 1aba86798d5a48c6897f4a718828a260-20200401
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <hsin-hsiung.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 691201799; Wed, 01 Apr 2020 00:25:12 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ with ESMTP id 1769463170; Wed, 01 Apr 2020 00:26:19 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 1 Apr 2020 01:15:14 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 1 Apr 2020 16:15:10 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
+ 15.0.1395.4; Wed, 1 Apr 2020 01:26:22 -0700
+Received: from mtkcas09.mediatek.inc (172.21.101.178) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Wed, 1 Apr 2020 16:26:19 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas09.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
- Transport; Wed, 1 Apr 2020 16:15:10 +0800
-Message-ID: <1585728912.29188.5.camel@mtksdaap41>
+ Transport; Wed, 1 Apr 2020 16:26:20 +0800
+Message-ID: <1585729581.2029.2.camel@mtksdaap41>
 Subject: Re: [PATCH v10 3/5] mfd: Add support for the MediaTek MT6358 PMIC
 From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
 To: Lee Jones <lee.jones@linaro.org>
-Date: Wed, 1 Apr 2020 16:15:12 +0800
+Date: Wed, 1 Apr 2020 16:26:21 +0800
 In-Reply-To: <20200325094326.GH442973@dell>
 References: <1583918223-22506-1-git-send-email-hsin-hsiung.wang@mediatek.com>
  <1583918223-22506-4-git-send-email-hsin-hsiung.wang@mediatek.com>
  <20200325094326.GH442973@dell>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 06D9F1349F844C3C636E8A872788F7EFF171DBA945BD46709F6C7CC20C761D822000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200401_012523_478436_4DD48AB7 
-X-CRM114-Status: GOOD (  27.83  )
+X-CRM114-CacheID: sfid-20200401_012627_087658_3E9C916C 
+X-CRM114-Status: GOOD (  28.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,6 +103,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Hi,
+
 On Wed, 2020-03-25 at 09:43 +0000, Lee Jones wrote:
 > On Wed, 11 Mar 2020, Hsin-Hsiung Wang wrote:
 > 
@@ -128,9 +128,23 @@ On Wed, 2020-03-25 at 09:43 +0000, Lee Jones wrote:
 > >  include/linux/mfd/mt6358/registers.h | 282 +++++++++++++++++++++++++++++++++++
 > >  include/linux/mfd/mt6397/core.h      |   3 +
 > >  6 files changed, 731 insertions(+), 5 deletions(-)
-
-[...]
-
+> >  create mode 100644 drivers/mfd/mt6358-irq.c
+> >  create mode 100644 include/linux/mfd/mt6358/core.h
+> >  create mode 100644 include/linux/mfd/mt6358/registers.h
+> > 
+> > diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
+> > index b83f172..9af1414 100644
+> > --- a/drivers/mfd/Makefile
+> > +++ b/drivers/mfd/Makefile
+> > @@ -238,7 +238,7 @@ obj-$(CONFIG_INTEL_SOC_PMIC)	+= intel-soc-pmic.o
+> >  obj-$(CONFIG_INTEL_SOC_PMIC_BXTWC)	+= intel_soc_pmic_bxtwc.o
+> >  obj-$(CONFIG_INTEL_SOC_PMIC_CHTWC)	+= intel_soc_pmic_chtwc.o
+> >  obj-$(CONFIG_INTEL_SOC_PMIC_CHTDC_TI)	+= intel_soc_pmic_chtdc_ti.o
+> > -mt6397-objs	:= mt6397-core.o mt6397-irq.o
+> > +mt6397-objs			:= mt6397-core.o mt6397-irq.o mt6358-irq.o
+> >  obj-$(CONFIG_MFD_MT6397)	+= mt6397.o
+> >  obj-$(CONFIG_INTEL_SOC_PMIC_MRFLD)	+= intel_soc_pmic_mrfld.o
+> >  
 > > diff --git a/drivers/mfd/mt6358-irq.c b/drivers/mfd/mt6358-irq.c
 > > new file mode 100644
 > > index 0000000..022e5f5
@@ -182,7 +196,7 @@ Thanks. I will update it in the next patch.
 
 MT6358 is similar to MT6397 for mfd driver except the hardware design of
 interrupt which provides more interrupts than MT6397.
-I think MT6358 can reuse the other parts of MT6397 mfd driver, so I only
+I think MT6358 can reuse the other part of MT6397 mfd driver, so I only
 add the interrupt part of MT6358.
 
 > > +	struct pmic_irq_data *irqd = chip->irq_data;
@@ -294,7 +308,7 @@ Thanks. I will update it in the next patch.
 > to pass and call devm_mfd_add_devices() only once below the switch().
 > 
 
-Thanks for your comment. I will update it in the next patch.
+Thanks for your comment. I will rewrite this in the next patch.
 
 > > +		break;
 > > +
