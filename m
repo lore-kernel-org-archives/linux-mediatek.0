@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-7.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8EA89C43331
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2020 00:57:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F296EC43331
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2020 01:17:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4E099208FE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2020 00:57:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B3D02206EB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Apr 2020 01:17:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GfzsXiF5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E099208FE
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cCd0wCqZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B3D02206EB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,47 +25,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OrqmYaRFqyHG9a7GT+7WEr9AxWxwApKyKqKbdATjS5Q=; b=GfzsXiF5M2KyA1F3X+sqVIa6X
-	pGlpfCNpS/BygEDMho3pNvMtDuq3lDoqzmGWuXP0C391H3hIC7RwTRV1QL4TO7XLjrsoUVlAFgObU
-	JvFpzSMkn/fOMabArXxb9bqsEoOu+RxjTfKBO6LGtmHeDSv0Lys4GlEedsldXrCtVlbFNwudaUWVQ
-	97Su88cwuFUMWrvIYX85wyZ/mTnfmeHvkKk8Dg3yKEEXJG6l45s72bK46qpEB2tMsVVAdF7Z+IIET
-	ea+TfsOAGRMOBBAGg+38rfhCE8xOmcNjtat5q79lMPfO/65OVNEgv6f/CgSbY+Qb3Fk5YAV+DWSER
-	P2HFjbxHg==;
+	 bh=Dgx31ukyAF5EpFSyA4BR/7dJ94PKHbcf2pLZkHa7aMo=; b=cCd0wCqZGmcHhXabhoRe0u1x2
+	TWBZgSxtRaMUzca0sN5diew+oSBcyYpM9pG/JUCa+qSBgYrAbYx67WrdMqBKYGb0DLOpTuQnaabyK
+	0699J49gBLzVADx3YyIGzBk6WKior6yg8/5shZOFKPIse6LChV8fjQXQvjUXYz3Z9toGNF1gz73OJ
+	wE7sVEEKph7epBCJdWV3Czz29J7OSZ3IJgh4juAcC6o6rHHGWRJ/1HDebK0YR+MVbnYriTEOZSv+G
+	vH/q2Z4egxidKkKbo7rj+veg7Au7aVw2fpvTO8MmGR7gekN97XiwFLnN7LGKGtgmbSzf2o9dobEKs
+	bCRbswEeg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJRgf-0004eg-M3; Wed, 01 Apr 2020 00:56:57 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1jJS0Q-0000qr-AY; Wed, 01 Apr 2020 01:17:22 +0000
+Received: from mga07.intel.com ([134.134.136.100])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJRgT-0004Ts-Sj; Wed, 01 Apr 2020 00:56:47 +0000
-IronPort-SDR: W/d0H6R1hYq7ZMYzZblhwYnwZMD314grb1gj5lFpzVmiQ5pNOVRLYCBryGkOhEWC7S7SjOyFaR
- NrB8yhMSlXJA==
+ id 1jJS0D-0000Ss-9D; Wed, 01 Apr 2020 01:17:10 +0000
+IronPort-SDR: NvKl58/BCch3nAesYi+t67vBdxEJ7RNY/1ocZQX78HRDWn4eu3MyZgz5MI112WxHg83tmj42Fy
+ E/DjyRYs83tw==
 X-Amp-Result: UNKNOWN
 X-Amp-Original-Verdict: FILE UNKNOWN
 X-Amp-File-Uploaded: False
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Mar 2020 17:56:42 -0700
-IronPort-SDR: 8pt7vAI+EPlY3h4VydakNGr0B/J1rdIa6M+d0Ik4fONXgMmSSdw9Q7DxtA7CXxE2fd22SHJo3O
- jMhxK7SsLyEA==
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Mar 2020 18:17:08 -0700
+IronPort-SDR: d1y4NnoyRnyo8aJaoPfZ5zsEX4X15qE1JJee8/BipXIGFQlxxoqi5eAciqOK9mEfFrk6X+MI74
+ H2ry7BZ3wTPA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.72,329,1580803200"; 
- d="gz'50?scan'50,208,50";a="395730598"
+ d="gz'50?scan'50,208,50";a="237891714"
 Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga004.jf.intel.com with ESMTP; 31 Mar 2020 17:56:35 -0700
+ by orsmga007.jf.intel.com with ESMTP; 31 Mar 2020 18:17:01 -0700
 Received: from kbuild by lkp-server01 with local (Exim 4.89)
  (envelope-from <lkp@intel.com>)
- id 1jJRgJ-00029j-5H; Wed, 01 Apr 2020 08:56:35 +0800
-Date: Wed, 1 Apr 2020 08:34:08 +0800
+ id 1jJS05-0002lW-7p; Wed, 01 Apr 2020 09:17:01 +0800
+Date: Wed, 1 Apr 2020 09:16:49 +0800
 From: kbuild test robot <lkp@intel.com>
 To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: Re: [PATCH 2/4] clk / soc: mediatek: Bind clock and gpu driver for
- mt2712
-Message-ID: <202004010828.iCkMrCXf%lkp@intel.com>
-References: <20200331214609.1742152-2-enric.balletbo@collabora.com>
+Subject: Re: [PATCH 3/4] clk / soc: mediatek: Bind clock and gpu driver for
+ mt2701
+Message-ID: <202004010921.RGsY6Why%lkp@intel.com>
+References: <20200331214609.1742152-3-enric.balletbo@collabora.com>
 MIME-Version: 1.0
 Content-Type: multipart/mixed; boundary="uAKRQypu60I7Lcqm"
 Content-Disposition: inline
-In-Reply-To: <20200331214609.1742152-2-enric.balletbo@collabora.com>
+In-Reply-To: <20200331214609.1742152-3-enric.balletbo@collabora.com>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -121,26 +121,26 @@ Reported-by: kbuild test robot <lkp@intel.com>
 
 All errors (new ones prefixed by >>):
 
->> drivers/clk/mediatek/clk-mt2712-mm.c:154:21: error: 'of_match_clk_mt2712_mm' undeclared here (not in a function)
-      .of_match_table = of_match_clk_mt2712_mm,
+>> drivers/clk/mediatek/clk-mt2701-mm.c:107:21: error: 'of_match_clk_mt2701_mm' undeclared here (not in a function)
+      .of_match_table = of_match_clk_mt2701_mm,
                         ^~~~~~~~~~~~~~~~~~~~~~
 
-vim +/of_match_clk_mt2712_mm +154 drivers/clk/mediatek/clk-mt2712-mm.c
+vim +/of_match_clk_mt2701_mm +107 drivers/clk/mediatek/clk-mt2701-mm.c
 
-e2f744a82d725a weiyi.lu@mediatek.com 2017-10-23  149  
-e2f744a82d725a weiyi.lu@mediatek.com 2017-10-23  150  static struct platform_driver clk_mt2712_mm_drv = {
-e2f744a82d725a weiyi.lu@mediatek.com 2017-10-23  151  	.probe = clk_mt2712_mm_probe,
-e2f744a82d725a weiyi.lu@mediatek.com 2017-10-23  152  	.driver = {
-e2f744a82d725a weiyi.lu@mediatek.com 2017-10-23  153  		.name = "clk-mt2712-mm",
-e2f744a82d725a weiyi.lu@mediatek.com 2017-10-23 @154  		.of_match_table = of_match_clk_mt2712_mm,
-e2f744a82d725a weiyi.lu@mediatek.com 2017-10-23  155  	},
-e2f744a82d725a weiyi.lu@mediatek.com 2017-10-23  156  };
-e2f744a82d725a weiyi.lu@mediatek.com 2017-10-23  157  
+e9862118272aa5 Shunli Wang 2016-11-04  102  
+e9862118272aa5 Shunli Wang 2016-11-04  103  static struct platform_driver clk_mt2701_mm_drv = {
+e9862118272aa5 Shunli Wang 2016-11-04  104  	.probe = clk_mt2701_mm_probe,
+e9862118272aa5 Shunli Wang 2016-11-04  105  	.driver = {
+e9862118272aa5 Shunli Wang 2016-11-04  106  		.name = "clk-mt2701-mm",
+e9862118272aa5 Shunli Wang 2016-11-04 @107  		.of_match_table = of_match_clk_mt2701_mm,
+e9862118272aa5 Shunli Wang 2016-11-04  108  	},
+e9862118272aa5 Shunli Wang 2016-11-04  109  };
+e9862118272aa5 Shunli Wang 2016-11-04  110  
 
-:::::: The code at line 154 was first introduced by commit
-:::::: e2f744a82d725ab55091cccfb8e527b4220471f0 clk: mediatek: Add MT2712 clock support
+:::::: The code at line 107 was first introduced by commit
+:::::: e9862118272aa528e35e54ef9f1e35c217870fd7 clk: mediatek: Add MT2701 clock support
 
-:::::: TO: weiyi.lu@mediatek.com <weiyi.lu@mediatek.com>
+:::::: TO: Shunli Wang <shunli.wang@mediatek.com>
 :::::: CC: Stephen Boyd <sboyd@codeaurora.org>
 
 ---
@@ -152,7 +152,7 @@ Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICLzdg14AAy5jb25maWcAlDxLc9w20vf8iqnkkhzi1cuy69vyASRBDjIkwQDgaMYXlCKP
+H4sICC3og14AAy5jb25maWcAlDxLc9w20vf8iqnkkhzi1cuy69vyASRBDjIkwQDgaMYXlCKP
 HdXakleP3fjff90AOWyAoJzd2orFbjwb/UZjfvrhpxV7frr/cv10e3P9+fO31afD3eHh+unw
 YfXx9vPhn6tCrlppVrwQ5hU0rm/vnv/6x+3528vV61eXr05Wm8PD3eHzKr+/+3j76Rl63t7f
 /fDTD/D/nwD45SsM8vB/q083N7++Wf1cHP64vb5bvXl18erk18tf/B/QNJdtKSqb51ZoW+X5
