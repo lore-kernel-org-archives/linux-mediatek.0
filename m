@@ -6,17 +6,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B2F5C43331
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 13:07:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A33C0C43331
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 13:07:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D34BC206F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 13:07:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7A44B20757
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 13:07:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NtUYTKys";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="VzWsWUxn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D34BC206F5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tvI0vWWp";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="kqW8h7t9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7A44B20757
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,44 +25,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8EUpzPkNedw3LyaP6AWY4eP6TideTGGFGWhMx6bnNSs=; b=NtUYTKysL2jvtb
-	wvyi1lfIAN8IuQbKMPFgT1ps/n+ce121yYOYPknb33ye0zKlA8RzKWgT2M4xWHH26hKaYLSX3+7ou
-	YwjisvTrGwp1V9OL098LV8rR5E264xwGGYKd90df4R7wgQPMcmN3p5qM9kbRrsfKNmMayAH5I+0+C
-	wqj0pLm/Q+uu13OUbXVKvKVsbhCGLrkbJ9izQ58iRR5rrvplpgnmdkmK2VDX2Dn0RMlLGIhteaAp1
-	ZumvU858JBh81lVYNj2JDcdAnP5FKwLddnNgwnnlEtaVStGY9oG/J7X8sDEGmda2SknlbVI4SGvyR
-	EGskxGiWfUUdH79Na+YQ==;
+	List-Owner; bh=FUmVg0iAm8XEVtg9S8Y+WZ2al4zQmxFm93Xe4Y+ERKU=; b=tvI0vWWp1UeZeA
+	MSmtWukzyJ610uTMfAyyCN3Conm/2G1jEWeuvmrtaovh1/AmX4Nm/92p7OufIVyYDtYQK1xA7lyY6
+	2x+Xgp4DTQasUzfWCQzJt7mfd+4BXiDXo2YU/iWp1tih6FxuhoxqcL2ubTcX8BuWnrAJ/wFyJuPYN
+	EPZx5QUgePk96+2rn0L61bwRjPtCs/r6h2Ws8T8rBg2B/mfHPmrMUXiXXPkUpToXSzHFK164POsFU
+	AoZ9DQNzFv5ZylJFmrWrHnQR/cRM3sedpInrJG5YPgYxVP25gS+D2e193xoRPsQK3R2+ZRC4FvgPv
+	3umIUr8MtvrKv3HxspTA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJzZK-0004nh-Cr; Thu, 02 Apr 2020 13:07:38 +0000
+	id 1jJzZP-0004qT-5F; Thu, 02 Apr 2020 13:07:43 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJzZI-0004n2-Nt
- for linux-mediatek@lists.infradead.org; Thu, 02 Apr 2020 13:07:37 +0000
+ id 1jJzZL-0004oy-U8
+ for linux-mediatek@lists.infradead.org; Thu, 02 Apr 2020 13:07:41 +0000
 Received: from localhost.localdomain.com (unknown [151.48.151.50])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 16E37206F5;
- Thu,  2 Apr 2020 13:07:34 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 440EA20678;
+ Thu,  2 Apr 2020 13:07:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1585832856;
- bh=Bi6G1MBCsKgox0GNF9MhtgVmuYfRFKSdL7Jv3Cl+e0A=;
+ s=default; t=1585832859;
+ bh=UTW0fIL3PmD5qdCsaKP4Xi6QcmBAT452bcTt2j/RXq0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=VzWsWUxnUs1AVF7Z7EyPsUd2rIyR/b1wZU1i+iy1eGMXCnRfKGGcYttSM6HSeclW2
- h9Mh5agUdYVgXn65xKRUJoiFMVSj0AssgtLtsn2KThPyRS8dhurywXpvzhe4OcP40G
- rxCp+kTioE/WLQ0FcgBDF7IoZKMUSWPYb+LqxCUo=
+ b=kqW8h7t9wAE+pbWHaDta1jHu85pTUwsGdU869doer/T1EqAr43aKCWf0fs20V2qfS
+ LHTQm8RWd/wT//4v+EuDN6nZvRGuml5Y/hgHwuGynsFoV+nDolO72q828ooW9ItSnn
+ 5ojxKTGEvlz/Ys+6PyWv8Uicu2jgfmZc8RXBjy8M=
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name
-Subject: [PATCH 02/12] mt76: mt7663: enable nf estimation
-Date: Thu,  2 Apr 2020 15:06:32 +0200
-Message-Id: <8a0475040d343dd94b0f6ffc8ec343b8df63985c.1585832458.git.lorenzo@kernel.org>
+Subject: [PATCH 03/12] mt76: mt7615: make scs configurable per chain
+Date: Thu,  2 Apr 2020 15:06:33 +0200
+Message-Id: <04f19f7fcb125423d1090098c6b8034470b4b87e.1585832458.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1585832458.git.lorenzo@kernel.org>
 References: <cover.1585832458.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200402_060736_797672_08B57AB3 
-X-CRM114-Status: UNSURE (   9.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200402_060740_024595_30999062 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,74 +80,163 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable Noise floor estimation for mt7663 driver
+Make scs configurable per chain since most of the chipsets do not
+support dbdc
 
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7615/mac.c  | 16 +++++++++++-----
- drivers/net/wireless/mediatek/mt76/mt7615/regs.h |  2 ++
- 2 files changed, 13 insertions(+), 5 deletions(-)
+ .../wireless/mediatek/mt76/mt7615/debugfs.c   |  8 +++--
+ .../net/wireless/mediatek/mt76/mt7615/init.c  |  4 ++-
+ .../net/wireless/mediatek/mt76/mt7615/mac.c   | 29 +++++++------------
+ .../wireless/mediatek/mt76/mt7615/mt7615.h    |  5 ++--
+ 4 files changed, 23 insertions(+), 23 deletions(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
+index b4d0795154e3..18f58706822b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
+@@ -20,11 +20,15 @@ static int
+ mt7615_scs_set(void *data, u64 val)
+ {
+ 	struct mt7615_dev *dev = data;
++	struct mt7615_phy *ext_phy;
+ 
+ 	if (!mt7615_wait_for_mcu_init(dev))
+ 		return 0;
+ 
+-	mt7615_mac_set_scs(dev, val);
++	mt7615_mac_set_scs(&dev->phy, val);
++	ext_phy = mt7615_ext_phy(dev);
++	if (ext_phy)
++		mt7615_mac_set_scs(ext_phy, val);
+ 
+ 	return 0;
+ }
+@@ -34,7 +38,7 @@ mt7615_scs_get(void *data, u64 *val)
+ {
+ 	struct mt7615_dev *dev = data;
+ 
+-	*val = dev->scs_en;
++	*val = dev->phy.scs_en;
+ 
+ 	return 0;
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+index 03b1e56534d6..8b7d8118d9ab 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+@@ -90,7 +90,7 @@ static void mt7615_mac_init(struct mt7615_dev *dev)
+ 		 MT_TMAC_CTCR0_INS_DDLMT_EN);
+ 
+ 	mt7615_mcu_set_rts_thresh(&dev->phy, 0x92b);
+-	mt7615_mac_set_scs(dev, true);
++	mt7615_mac_set_scs(&dev->phy, true);
+ 
+ 	mt76_rmw(dev, MT_AGG_SCR, MT_AGG_SCR_NLNAV_MID_PTEC_DIS,
+ 		 MT_AGG_SCR_NLNAV_MID_PTEC_DIS);
+@@ -411,6 +411,8 @@ int mt7615_register_ext_phy(struct mt7615_dev *dev)
+ 	mphy->antenna_mask = BIT(hweight8(phy->chainmask)) - 1;
+ 	mt7615_init_wiphy(mphy->hw);
+ 
++	mt7615_mac_set_scs(phy, true);
++
+ 	/*
+ 	 * Make the secondary PHY MAC address local without overlapping with
+ 	 * the usual MAC address allocation scheme on multiple virtual interfaces
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index 656231786d55..5961650e7245 100644
+index 5961650e7245..ec6ef6c3478e 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -1556,10 +1556,12 @@ void mt7615_mac_set_scs(struct mt7615_dev *dev, bool enable)
- 
- void mt7615_mac_enable_nf(struct mt7615_dev *dev, bool ext_phy)
- {
--	u32 rxtd;
-+	u32 rxtd, reg;
- 
- 	if (is_mt7663(&dev->mt76))
--		return;
-+		reg = MT7663_WF_PHY_R0_PHYMUX_5;
-+	else
-+		reg = MT_WF_PHY_R0_PHYMUX_5(ext_phy);
- 
- 	if (ext_phy)
- 		rxtd = MT_WF_PHY_RXTD2(10);
-@@ -1567,7 +1569,7 @@ void mt7615_mac_enable_nf(struct mt7615_dev *dev, bool ext_phy)
- 		rxtd = MT_WF_PHY_RXTD(12);
- 
- 	mt76_set(dev, rxtd, BIT(18) | BIT(29));
--	mt76_set(dev, MT_WF_PHY_R0_PHYMUX_5(ext_phy), 0x5 << 12);
-+	mt76_set(dev, reg, 0x5 << 12);
+@@ -1515,40 +1515,33 @@ mt7615_mac_set_default_sensitivity(struct mt7615_phy *phy)
+ 	phy->last_cca_adj = jiffies;
  }
  
- void mt7615_mac_cca_stats_reset(struct mt7615_phy *phy)
-@@ -1691,10 +1693,14 @@ static u8
- mt7615_phy_get_nf(struct mt7615_dev *dev, int idx)
+-void mt7615_mac_set_scs(struct mt7615_dev *dev, bool enable)
++void mt7615_mac_set_scs(struct mt7615_phy *phy, bool enable)
  {
- 	static const u8 nf_power[] = { 92, 89, 86, 83, 80, 75, 70, 65, 60, 55, 52 };
--	u32 reg = idx ? MT_WF_PHY_RXTD2(17) : MT_WF_PHY_RXTD(20);
--	u32 val, sum = 0, n = 0;
-+	u32 reg, val, sum = 0, n = 0;
- 	int i;
+-	struct mt7615_phy *ext_phy;
++	struct mt7615_dev *dev = phy->dev;
++	bool ext_phy = phy != &dev->phy;
  
-+	if (is_mt7663(&dev->mt76))
-+		reg = MT7663_WF_PHY_RXTD(20);
-+	else
-+		reg = idx ? MT_WF_PHY_RXTD2(17) : MT_WF_PHY_RXTD(20);
-+
- 	for (i = 0; i < ARRAY_SIZE(nf_power); i++, reg += 4) {
- 		val = mt76_rr(dev, reg);
- 		sum += val * nf_power[i];
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
-index f7c2a633841c..b7e25b91733a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
-@@ -170,6 +170,8 @@ enum mt7615_reg_base {
- #define MT_WF_PHY_RXTD_BASE		MT_WF_PHY(0x2200)
- #define MT_WF_PHY_RXTD(_n)		(MT_WF_PHY_RXTD_BASE + ((_n) << 2))
+ 	mutex_lock(&dev->mt76.mutex);
  
-+#define MT7663_WF_PHY_RXTD(_n)		(MT_WF_PHY(0x25b0) + ((_n) << 2))
+-	if (dev->scs_en == enable)
++	if (phy->scs_en == enable)
+ 		goto out;
+ 
+ 	if (is_mt7663(&dev->mt76))
+ 		goto out;
+ 
+ 	if (enable) {
+-		mt76_set(dev, MT_WF_PHY_MIN_PRI_PWR(0),
+-			 MT_WF_PHY_PD_BLK(0));
+-		mt76_set(dev, MT_WF_PHY_MIN_PRI_PWR(1),
+-			 MT_WF_PHY_PD_BLK(1));
++		mt76_set(dev, MT_WF_PHY_MIN_PRI_PWR(ext_phy),
++			 MT_WF_PHY_PD_BLK(ext_phy));
+ 		if (is_mt7622(&dev->mt76)) {
+ 			mt76_set(dev, MT_MIB_M0_MISC_CR, 0x7 << 8);
+ 			mt76_set(dev, MT_MIB_M0_MISC_CR, 0x7);
+ 		}
+ 	} else {
+-		mt76_clear(dev, MT_WF_PHY_MIN_PRI_PWR(0),
+-			   MT_WF_PHY_PD_BLK(0));
+-		mt76_clear(dev, MT_WF_PHY_MIN_PRI_PWR(1),
+-			   MT_WF_PHY_PD_BLK(1));
++		mt76_clear(dev, MT_WF_PHY_MIN_PRI_PWR(ext_phy),
++			   MT_WF_PHY_PD_BLK(ext_phy));
+ 	}
+ 
+-	mt7615_mac_set_default_sensitivity(&dev->phy);
+-	ext_phy = mt7615_ext_phy(dev);
+-	if (ext_phy)
+-		mt7615_mac_set_default_sensitivity(ext_phy);
+-
+-	dev->scs_en = enable;
++	mt7615_mac_set_default_sensitivity(phy);
++	phy->scs_en = enable;
+ 
+ out:
+ 	mutex_unlock(&dev->mt76.mutex);
+@@ -1661,7 +1654,7 @@ mt7615_mac_scs_check(struct mt7615_phy *phy)
+ 	u32 mdrdy_cck, mdrdy_ofdm, pd_cck, pd_ofdm;
+ 	bool ext_phy = phy != &dev->phy;
+ 
+-	if (!dev->scs_en)
++	if (!phy->scs_en)
+ 		return;
+ 
+ 	val = mt76_rr(dev, MT_WF_PHY_R0_PHYCTRL_STS0(ext_phy));
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+index 676ca622c35a..dfc60d3ff836 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+@@ -128,6 +128,8 @@ struct mt7615_phy {
+ 
+ 	u16 noise;
+ 
++	bool scs_en;
 +
- #define MT_WF_PHY_RXTD_CCK_PD(_phy)	MT_WF_PHY((_phy) ? 0x2314 : 0x2310)
- #define MT_WF_PHY_PD_CCK_MASK(_phy)	(_phy) ? GENMASK(31, 24) : \
- 					 GENMASK(8, 1)
+ 	unsigned long last_cca_adj;
+ 	int false_cca_ofdm, false_cca_cck;
+ 	s8 ofdm_sensitivity;
+@@ -209,7 +211,6 @@ struct mt7615_dev {
+ 	u32 hw_pattern;
+ 
+ 	u8 mac_work_count;
+-	bool scs_en;
+ 	bool fw_debug;
+ 
+ 	spinlock_t token_lock;
+@@ -367,7 +368,7 @@ void mt7615_update_channel(struct mt76_dev *mdev);
+ bool mt7615_mac_wtbl_update(struct mt7615_dev *dev, int idx, u32 mask);
+ void mt7615_mac_reset_counters(struct mt7615_dev *dev);
+ void mt7615_mac_cca_stats_reset(struct mt7615_phy *phy);
+-void mt7615_mac_set_scs(struct mt7615_dev *dev, bool enable);
++void mt7615_mac_set_scs(struct mt7615_phy *phy, bool enable);
+ void mt7615_mac_enable_nf(struct mt7615_dev *dev, bool ext_phy);
+ void mt7615_mac_sta_poll(struct mt7615_dev *dev);
+ int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
 -- 
 2.25.1
 
