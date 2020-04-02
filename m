@@ -2,78 +2,94 @@ Return-Path: <SRS0=GVU/=5S=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B3C43C43331
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 02:50:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E70C2C2D0F4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 04:03:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2B7DA20719
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 02:50:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B733820757
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 04:03:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BnQCKjUt";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="J61Fw/AV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2B7DA20719
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jv13Kma6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B733820757
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fi.rohmeurope.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v4IvwiAwib4Mr5Kw8n82tkoWCE1fx+UU7qwXtAXxN1U=; b=BnQCKjUtyLu6f+
-	TCMfd+pLkbeUZ5R9dFuX+Rw57eXLbJPLArgRmd0MQh09XVgI/RtLJsQuPjcTYl5xNxDdaO0eaU6RB
-	uvWD05r9KfvnojPQQKH5yXqFkn3bwLiZOXvLWRKwknqrEPFISsC/QfJY00eeidq4sjBeyCaaQMj3M
-	WPF3EozrWG6vnYyeA2UbSm43JRqYak0GC4EBsbihe++Nb99sYVjZw0wC+9wqDIXkXusM7Ych2lQbp
-	96OVkn3n6J6Ueja08tZBb9da6UNM3aJyT0qWOxfpR4WK4eCgCm0zON3u1J7FPxEg3WqXp8UvRiUlc
-	p6n7AVnBCsAH47TK6BoA==;
+	List-Owner; bh=SCEqdey4FlWuc6Mxu+Zxbu/jLQE/LvlNcpm06jj1w4k=; b=jv13Kma66mbRE9
+	qE9AqG6uGLdKKrtIfhwo/l0FyyxjSmJtLiyi/3/VG7C3GM4fbX1wdVtHgEYDOvyvFTkEH14RNbm9B
+	yUQnO65HrzV7ugpyykSbr94XAF5085vLdCjZrYQidWwnhPHRDK/GERh7X45nq6V1wKT+nqVcv9Iif
+	1glxROo3yCjz/uSUlEn75ZoRPLwAiniqCoR/Fwi1XqYz7zbeT/oO2dDZHNF993A2fIq3YiVylyQVi
+	Y0rIAu+C90Fvql7HnGjY9UfQAN9FrJR4PytnQ1/YTUE0fTB21tLKUys/AhRLuxX7xB1x2LylbqLIp
+	Rb83TacG0cs2Q5GUwIaQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJpw3-0000rk-L3; Thu, 02 Apr 2020 02:50:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJpvm-00006x-PG; Thu, 02 Apr 2020 02:50:13 +0000
-X-UUID: 487fd15d47774cd0a5836d1f97aa3761-20200401
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=q5OcvTavleQ4cdKM7PmbLnQcICB4TAgz/7dlDG7XNLo=; 
- b=J61Fw/AV3xHB+rHftvgHnAyoQPbGW1HHBKWhsZ1C+kdF3IaIEOVtX/aPmVtycSxGE3YVD5Zubpx2QyQmtxmfHrzohR+LxgbU1KkhSS7itHwo3ifQYdRqVN53ZI89qOKlD8qt4D92fNfKR4AVZsOQyxgG2YWy2Vsdyu2WHhk2RxU=;
-X-UUID: 487fd15d47774cd0a5836d1f97aa3761-20200401
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <henryc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1215556861; Wed, 01 Apr 2020 18:50:04 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Wed, 1 Apr 2020 19:48:08 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Thu, 2 Apr 2020 10:48:06 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 2 Apr 2020 10:48:06 +0800
-Message-ID: <1585795687.27527.13.camel@mtksdaap41>
-Subject: Re: [PATCH V4 09/13] interconnect: mediatek: Add mt8183
- interconnect provider driver
-From: Henry Chen <henryc.chen@mediatek.com>
-To: Georgi Djakov <georgi.djakov@linaro.org>
-Date: Thu, 2 Apr 2020 10:48:07 +0800
-In-Reply-To: <2007da85-6ab8-225b-0ac7-b38bc9a590d2@linaro.org>
-References: <1584092066-24425-1-git-send-email-henryc.chen@mediatek.com>
- <1584092066-24425-10-git-send-email-henryc.chen@mediatek.com>
- <2007da85-6ab8-225b-0ac7-b38bc9a590d2@linaro.org>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+	id 1jJr4Y-0008FM-3C; Thu, 02 Apr 2020 04:03:18 +0000
+Received: from mailgate1.rohmeurope.com ([87.129.152.131])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jJr4U-0008E2-Fz; Thu, 02 Apr 2020 04:03:16 +0000
+X-AuditID: c0a8fbf4-489ff70000004419-ea-5e8563fdb129
+Received: from smtp.reu.rohmeu.com (will-cas002.reu.rohmeu.com
+ [192.168.251.178])
+ by mailgate1.rohmeurope.com (Symantec Messaging Gateway) with SMTP id
+ 18.A4.17433.DF3658E5; Thu,  2 Apr 2020 06:03:09 +0200 (CEST)
+Received: from WILL-MAIL001.REu.RohmEu.com ([fe80::2915:304f:d22c:c6ba]) by
+ WILL-CAS002.REu.RohmEu.com ([fe80::fc24:4cbc:e287:8659%12]) with mapi id
+ 14.03.0487.000; Thu, 2 Apr 2020 06:03:05 +0200
+From: "Vaittinen, Matti" <Matti.Vaittinen@fi.rohmeurope.com>
+To: "andy.shevchenko@gmail.com" <andy.shevchenko@gmail.com>
+Subject: Re: [SPF Softfail] Re: [PATCH v7 03/10] lib: add linear ranges helpers
+Thread-Topic: [SPF Softfail] Re: [PATCH v7 03/10] lib: add linear ranges
+ helpers
+Thread-Index: AQHWB1cj+aMIIRocXUeZN2Io9Ehlr6himqGAgAFQhQCAACnkAIAACuYAgAAXZoCAAN+uAA==
+Date: Thu, 2 Apr 2020 04:03:03 +0000
+Message-ID: <bbdf3a3e12bd2ba11a019192e492d135f92634cc.camel@fi.rohmeurope.com>
+References: <cover.1585656143.git.matti.vaittinen@fi.rohmeurope.com>
+ <c4cd52979ec187c942fa5794aab11e6c7f944cbb.1585656143.git.matti.vaittinen@fi.rohmeurope.com>
+ <20200331140523.GJ1922688@smile.fi.intel.com>
+ <4e75e0fcc9782220798c90eee5e41788fe277cc1.camel@fi.rohmeurope.com>
+ <CAHp75VcnK2A_qjBo3FEz-XC6Y=3z7ssSgT6AS-P_9EPyRXsFXQ@mail.gmail.com>
+ <e2391c0749478d42ac7e2db4981b9d373a160323.camel@fi.rohmeurope.com>
+ <CAHp75Vd24w6dqqCYH46GKnJ5Nzase6LdVgSSVwQ3FEzMd5gsYA@mail.gmail.com>
+In-Reply-To: <CAHp75Vd24w6dqqCYH46GKnJ5Nzase6LdVgSSVwQ3FEzMd5gsYA@mail.gmail.com>
+Accept-Language: en-US, de-DE
+Content-Language: de-DE
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [62.78.225.252]
+Content-ID: <3D13BA28F4027B4DB279FD920FA6548A@de.rohmeurope.com>
 MIME-Version: 1.0
-X-MTK: N
+X-Brightmail-Tracker: H4sIAAAAAAAAA02TfUwTdxjH87u7tgfS5SgwfivMadUtYCaiZnmSmUWTxd0W4tsStpCMWuSg
+ zNKyvhgwWUKEbgoZAuNtBeRNXnQESnE6kFLTMecgUDs6kM2ZIcgEJ2zQQYDBdkdV+Ofue8/3
+ +Tzf54/naFJWRMvpFK2R02tVGoXYn7rZtGx7feWkOX63Z2IPDIwtU1DR2iyGvNlaEibzv0Ow
+ UnhLAm1lrSLwVvZS0OeYpqDgQgS4735JQvHouBg8ZhuC0uI7CCpc2RTcbrNSUNUzIIKsulYx
+ 5E6Fg8tllcC85xwBRf82EmAbGxJBgaNfAoOdFWIYzHIjKL90gYK5L3oQlLm6CagfdhNwNnsv
+ VNTfpqCu8VVoXGqhwNq+QMDcjEMEld5iEp7cK6XAXeYiwWzvkYC7yUuAvbRBBH03jGA3u0ko
+ qbRLoN3G9zo878Hw7C98w+oiBYtOF6/uzyG49fciOrCXbb7YjNjlpULEzv9TSLEzd80S1vrg
+ axF79fIIwTbNRrEdlt8k7LWbO9hqm4ltb4pk67omCdZ25byYLWyoFbH3hrrE7PTAgORoeNym
+ /Qkq4+n3U5K1UW+d2KSeaWok0+5Eprd6FiWZqCciB/nRmNmH8/p7RTnIn5YxQwjn3195+vED
+ wlOf1UhyEE2Lmf04Z0QiAMHMm7j2+2pS6CGZRyH4xuMSsWAEMcfw564Bwtd0HHf/aUU+HYsb
+ urxrMMVsxzXVuWt1KXMYO7xtIkHLmL9IfPWPg4L24+dcHC5bqyPmZXw+c3ptJsmEYtvEgsi3
+ NYMvdblInw7Bk2OrT+tb8fWFFkrYmWQicGtnlA89gLNqpsQ+vRUX5Y5KfCsE4h+/Gqfy0YuW
+ DQmWddqygbZsoC0b6GokuoJwqipFk6wyctG79Jxpl16nTuVfJ3WpNuS7b++36D/nu05E0MiJ
+ XqIJRYg0K94cL3shQZeYoVYZ1Eq9ScMZnAjTpCJYWv52drxMmqjKOMPpdc+sMJpShEpfGy34
+ SMYIWac4Lo3TP3PDaVqBpUEJ/NBAPZfMpSelaIzrNkH7CcP95cEGTpvI6VUmo1op3IfSwB+I
+ YAXwuasqHpca0lSpfNWH9qJoOn+yspakeyrr+efwjL2elFFanZaTh0p7BYARALVJ+zxuCoXS
+ SBEkbVHybgD/qz+fNsUHEXzQz+lZQpBRtW7JM1F42okdMyXFcY/Yh2rY+cmZmN2pR96R2TPK
+ t4svD5nmf9/TkXlKWXVoXKY5cvaVQeWnHYf6d/46ts2dmWR9LJZvPvwgivvmA2PgltifhsKu
+ beuLNXk+1p12PTwmHzHvCzie9KQ7Jc9Zoj4X5ohb6pyv2rxl0po4MR2jOfhG7vWY7oIP+xWU
+ Qa2KjiT1BtX/6kwhg6cEAAA=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200401_195010_860206_DB450679 
-X-CRM114-Status: GOOD (  25.85  )
+X-CRM114-CacheID: sfid-20200401_210314_685516_F5DE5002 
+X-CRM114-Status: GOOD (  21.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,352 +101,191 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat <drinkcat@google.com>,
- Mike Turquette <mturquette@linaro.org>, srv_heupstream@mediatek.com,
- James Liao <jamesjj.liao@mediatek.com>, Viresh Kumar <vireshk@kernel.org>,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, Stephen Boyd <swboyd@chromium.org>,
- Fan Chen <fan.chen@mediatek.com>, devicetree@vger.kernel.org,
- Mark Brown <broonie@kernel.org>, Ryan Case <ryandcase@chromium.org>,
- Arvin Wang <arvin.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
+ "milo.kim@ti.com" <milo.kim@ti.com>,
+ "andrei.stefanescu@microchip.com" <andrei.stefanescu@microchip.com>,
+ "rafael@kernel.org" <rafael@kernel.org>, "tony@atomide.com" <tony@atomide.com>,
+ "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
+ "brendanhiggins@google.com" <brendanhiggins@google.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "yamada.masahiro@socionext.com" <yamada.masahiro@socionext.com>,
+ "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>,
+ "vincenzo.frascino@arm.com" <vincenzo.frascino@arm.com>,
+ "tglx@linutronix.de" <tglx@linutronix.de>,
+ "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+ "herbert@gondor.apana.org.au" <herbert@gondor.apana.org.au>,
+ "b.zolnierkie@samsung.com" <b.zolnierkie@samsung.com>,
+ "krzk@kernel.org" <krzk@kernel.org>,
+ "bgolaszewski@baylibre.com" <bgolaszewski@baylibre.com>,
+ "wens@csie.org" <wens@csie.org>, "agross@kernel.org" <agross@kernel.org>,
+ "Laine, Markus" <Markus.Laine@fi.rohmeurope.com>, "bp@suse.de" <bp@suse.de>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "zaslonko@linux.ibm.com" <zaslonko@linux.ibm.com>,
+ "ckeepax@opensource.cirrus.com" <ckeepax@opensource.cirrus.com>,
+ "arnd@arndb.de" <arnd@arndb.de>,
+ "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+ "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+ "rf@opensource.cirrus.com" <rf@opensource.cirrus.com>,
+ "broonie@kernel.org" <broonie@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "sre@kernel.org" <sre@kernel.org>, "davidgow@google.com" <davidgow@google.com>,
+ "skhan@linuxfoundation.org" <skhan@linuxfoundation.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "dan.j.williams@intel.com" <dan.j.williams@intel.com>,
+ "bjorn.andersson@linaro.org" <bjorn.andersson@linaro.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "support.opensource@diasemi.com" <support.opensource@diasemi.com>,
+ "sbkim73@samsung.com" <sbkim73@samsung.com>,
+ "patches@opensource.cirrus.com" <patches@opensource.cirrus.com>,
+ "rdunlap@infradead.org" <rdunlap@infradead.org>,
+ "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+ "talgi@mellanox.com" <talgi@mellanox.com>, "Mutanen,
+ Mikko" <Mikko.Mutanen@fi.rohmeurope.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "uwe@kleine-koenig.org" <uwe@kleine-koenig.org>,
+ "mhiramat@kernel.org" <mhiramat@kernel.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "akpm@linux-foundation.org" <akpm@linux-foundation.org>,
+ "olteanv@gmail.com" <olteanv@gmail.com>,
+ "davem@davemloft.net" <davem@davemloft.net>,
+ "mazziesaccount@gmail.com" <mazziesaccount@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Georgi,
+Hello Andy,
 
-On Wed, 2020-04-01 at 17:55 +0300, Georgi Djakov wrote:
-> Hi Henry,
+On Wed, 2020-04-01 at 17:42 +0300, Andy Shevchenko wrote:
+> On Wed, Apr 1, 2020 at 4:18 PM Vaittinen, Matti
+> <Matti.Vaittinen@fi.rohmeurope.com> wrote:
+> > On Wed, 2020-04-01 at 15:39 +0300, Andy Shevchenko wrote:
+> > > On Wed, Apr 1, 2020 at 1:09 PM Vaittinen, Matti
+> > > <Matti.Vaittinen@fi.rohmeurope.com> wrote:
+> > > > On Tue, 2020-03-31 at 17:05 +0300, Andy Shevchenko wrote:
+> > > > > On Tue, Mar 31, 2020 at 03:23:03PM +0300, Matti Vaittinen
+> > > > > wrote:
+> > > > > > +int linear_range_get_selector_low_array(const struct
+> > > > > > linear_range
+> > > > > > *r,
+> > > > > > +                                   int ranges, unsigned
+> > > > > > int
+> > > > > > val,
+> > > > > > +                                   unsigned int *selector,
+> > > > > > bool
+> > > > > > *found)
+> > > > > > +{
+> > > > > > +   int i;
+> > > > > > +   int ret = -EINVAL;
+> > > > > > +
+> > > > > > +   for (i = 0; i < ranges; i++) {
+> > > > > > +           int tmpret;
+> > > > > > +
+> > > > > > +           tmpret = linear_range_get_selector_low(&r[i],
+> > > > > > val,
+> > > > > > selector,
+> > > > > > +                                                  found);
+> > > > > > +
+> > > > > > +           if (!tmpret)
+> > > > > > +                   ret = 0;
+> > > > > > +
+> > > > > > +           if (*found)
+> > > > > > +                   break;
+> > > > > > +   }
+> > > > > > +
+> > > > > > +   return ret;
+> > > > > > +}
 > 
-> Thanks for the patch!
+> Looked again at the code of the callee.
+> So, *found becomes true if and only if the return is 0
+
+Yes. If found is true, then ret is 0.
+
+>  (or other way
+> around if you prefer).
+
+No. Not other way around. Ret can be 0 and found false. This is what we
+need to handle. Ret means we found range value smaller than given
+input. Found means also the given input was in range.
+
+> Now I'm wondering why you need 'found' at all?
+
+To separate case where given input was in range.
+
+> It means above may be as simple as
 > 
-> On 3/13/20 11:34, Henry Chen wrote:
-> > Introduce Mediatek MT8183 specific provider driver using the
-> > interconnect framework.
+>       int i;
+>       int ret = -EINVAL;
+> 
+>       for (i = 0; i < ranges; i++) {
+>                ret = linear_range_get_selector_low(&r[i], val,
+> selector, found);
+>                if (*found)
+>                        break;
+>       }
+
+No. It can't. Here we get wrong return value if one of the calls to
+linear_range_get_selector_low() return zero with found being false and
+subsequent calls return non zero ret. Then we actually found lower-
+than-given-input value from one of the ranges and updated the selector
+(that would be usable for example for regulator voltage control) but
+end up returning non zero ret as the subsequent calls to
+linear_range_get_selector_low() do overwrite the ret.
+
+OTOH, we should not stop for first range having zero ret if found is
+false because some of the ranges may have range where given input is
+in-range (and this is considered better value).
+
+> 
+>       return ret;
+> 
+> or assuming 'found' will gone
+
+No. We should not drop the 'found'.
+
+> 
+>   int i
+>   int ret = -EINVAL;
+> 
+>   for (i = 0; i < ranges && ret; i++) {
+>       ret = linear_range_get_selector_low(&r[i], val, selector);
+>   }
+>   return ret;
+> 
+> ...
+> 
+> >  * value. If given value is found to be in a range scannins is
+> > I think it is but I am open to all suggestions how to improve doc!
+> 
+> Thanks. At least fix a typo: scannins -> scannings
+> 
+
+Thanks :) I'll fix it
+
+> ...
+> 
+> > Compared to:
+> > for (i = 0; i < ranges; i++) {
+> >         ret = ...
+> > }
 > > 
-> > Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-> > ---
-> >  drivers/interconnect/Kconfig            |   1 +
-> >  drivers/interconnect/Makefile           |   1 +
-> >  drivers/interconnect/mediatek/Kconfig   |  13 ++
-> >  drivers/interconnect/mediatek/Makefile  |   3 +
-> >  drivers/interconnect/mediatek/mtk-emi.c | 242 ++++++++++++++++++++++++++++++++
-> >  5 files changed, 260 insertions(+)
-> >  create mode 100644 drivers/interconnect/mediatek/Kconfig
-> >  create mode 100644 drivers/interconnect/mediatek/Makefile
-> >  create mode 100644 drivers/interconnect/mediatek/mtk-emi.c
+> > I wouldn't say so.
 > > 
-> > diff --git a/drivers/interconnect/Kconfig b/drivers/interconnect/Kconfig
-> > index bfa4ca3..dd9ecb6 100644
-> > --- a/drivers/interconnect/Kconfig
-> > +++ b/drivers/interconnect/Kconfig
-> > @@ -12,5 +12,6 @@ menuconfig INTERCONNECT
-> >  if INTERCONNECT
-> >  
-> >  source "drivers/interconnect/qcom/Kconfig"
-> > +source "drivers/interconnect/mediatek/Kconfig"
-> >  
-> >  endif
-> > diff --git a/drivers/interconnect/Makefile b/drivers/interconnect/Makefile
-> > index 725029a..330a108 100644
-> > --- a/drivers/interconnect/Makefile
-> > +++ b/drivers/interconnect/Makefile
-> > @@ -5,3 +5,4 @@ icc-core-objs				:= core.o
-> >  
-> >  obj-$(CONFIG_INTERCONNECT)		+= icc-core.o
-> >  obj-$(CONFIG_INTERCONNECT_QCOM)		+= qcom/
-> > +obj-$(CONFIG_INTERCONNECT_MTK)		+= mediatek/
-> > diff --git a/drivers/interconnect/mediatek/Kconfig b/drivers/interconnect/mediatek/Kconfig
-> > new file mode 100644
-> > index 0000000..972d3bb
-> > --- /dev/null
-> > +++ b/drivers/interconnect/mediatek/Kconfig
-> > @@ -0,0 +1,13 @@
-> > +config INTERCONNECT_MTK
-> > +	bool "Mediatek Network-on-Chip interconnect drivers"
-> > +	depends on ARCH_MEDIATEK
-> > +	help
-> > +	  Support for Mediatek's Network-on-Chip interconnect hardware.
-> > +
-> > +config INTERCONNECT_MTK_EMI
-> > +	tristate "Mediatek EMI interconnect driver"
-> > +	depends on INTERCONNECT_MTK
-> > +	depends on (MTK_DVFSRC && OF)
-> > +	help
-> > +	  This is a driver for the Mediatek Network-on-Chip on DVFSRC-based
-> > +	  platforms.
-> > diff --git a/drivers/interconnect/mediatek/Makefile b/drivers/interconnect/mediatek/Makefile
-> > new file mode 100644
-> > index 0000000..353842b
-> > --- /dev/null
-> > +++ b/drivers/interconnect/mediatek/Makefile
-> > @@ -0,0 +1,3 @@
-> > +# SPDX-License-Identifier: GPL-2.0
-> > +
-> > +obj-$(CONFIG_INTERCONNECT_MTK_EMI) += mtk-emi.o
-> > \ No newline at end of file
-> > diff --git a/drivers/interconnect/mediatek/mtk-emi.c b/drivers/interconnect/mediatek/mtk-emi.c
-> > new file mode 100644
-> > index 0000000..0a16992
-> > --- /dev/null
-> > +++ b/drivers/interconnect/mediatek/mtk-emi.c
-> > @@ -0,0 +1,242 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +/*
-> > + * Copyright (c) 2019, The Linux Foundation. All rights reserved.
+> > As I explained, we need to have "temporary" return value in any
+> > case
+> > because we need to return 0 if any of the calls to
+> > linear_range_get_selector_low() returned 0. Return value 0 from
+> > linear_range_get_selector_low() means we found "matching" value
+> > (lower
+> > than input) and selector was updated (although input value was not
+> > in
+> > range).
 > 
-> Nit: Maybe 2020?
-Yes, will change to 2020
-> 
-> > + *
-> > + */
-> > +
-> > +#include <dt-bindings/interconnect/mtk,mt8183-emi.h>
-> 
-> Please move this below the all other linux/ headers
-OK
-> 
-> > +#include <linux/device.h>
-> > +#include <linux/interconnect-provider.h>
-> > +#include <linux/module.h>
-> > +#include <linux/of_device.h>
-> > +#include <linux/of_platform.h>
-> 
-> Is this needed?
-You're right, it not necessary and I will remove this.
-> 
-> > +#include <linux/platform_device.h>
-> > +#include <soc/mediatek/mtk_dvfsrc.h>
-> > +
-> > +enum mtk_icc_name {
-> > +	SLAVE_DDR_EMI,
-> > +	MASTER_MCUSYS,
-> > +	MASTER_GPUSYS,
-> > +	MASTER_MMSYS,
-> > +	MASTER_MM_VPU,
-> > +	MASTER_MM_DISP,
-> > +	MASTER_MM_VDEC,
-> > +	MASTER_MM_VENC,
-> > +	MASTER_MM_CAM,
-> > +	MASTER_MM_IMG,
-> > +	MASTER_MM_MDP,
-> > +};
-> > +
-> > +#define MT8183_MAX_LINKS	1
-> > +
-> > +/**
-> > + * struct mtk_icc_node - Mediatek specific interconnect nodes
-> > + * @name: the node name used in debugfs
-> > + * @ep: true if the node is an end point.
-> > + * @id: a unique node identifier
-> > + * @links: an array of nodes where we can go next while traversing
-> > + * @num_links: the total number of @links
-> > + * @buswidth: width of the interconnect between a node and the bus
-> > + * @sum_avg: current sum aggregate value of all avg bw kBps requests
-> > + * @max_peak: current max aggregate value of all peak bw kBps requests
-> > + */
-> > +struct mtk_icc_node {
-> > +	unsigned char *name;
-> > +	bool ep;
-> > +	u16 id;
-> > +	u16 links[MT8183_MAX_LINKS];
-> > +	u16 num_links;
-> > +	u16 buswidth;
-> > +	u64 sum_avg;
-> > +	u64 max_peak;
-> > +};
-> > +
-> > +struct mtk_icc_desc {
-> > +	struct mtk_icc_node **nodes;
-> > +	size_t num_nodes;
-> > +};
-> > +
-> > +#define DEFINE_MNODE(_name, _id, _buswidth, _ep, ...)	\
-> > +		static struct mtk_icc_node _name = {			\
-> > +		.name = #_name,						\
-> > +		.id = _id,						\
-> > +		.buswidth = _buswidth,					\
-> > +		.ep = _ep,						\
-> > +		.num_links = ARRAY_SIZE(((int[]){ __VA_ARGS__ })),	\
-> > +}
-> > +
-> > +DEFINE_MNODE(ddr_emi, SLAVE_DDR_EMI, 1024, 1, 0);
-> > +DEFINE_MNODE(mcusys, MASTER_MCUSYS, 256, 0, SLAVE_DDR_EMI);
-> > +DEFINE_MNODE(gpu, MASTER_GPUSYS, 256, 0, SLAVE_DDR_EMI);
-> > +DEFINE_MNODE(mmsys, MASTER_MMSYS, 256, 0, SLAVE_DDR_EMI);
-> > +DEFINE_MNODE(mm_vpu, MASTER_MM_VPU, 128, 0, MASTER_MMSYS);
-> > +DEFINE_MNODE(mm_disp, MASTER_MM_DISP, 128, 0, MASTER_MMSYS);
-> > +DEFINE_MNODE(mm_vdec, MASTER_MM_VDEC, 128, 0, MASTER_MMSYS);
-> > +DEFINE_MNODE(mm_venc, MASTER_MM_VENC, 128, 0, MASTER_MMSYS);
-> > +DEFINE_MNODE(mm_cam, MASTER_MM_CAM, 128, 0, MASTER_MMSYS);
-> > +DEFINE_MNODE(mm_img, MASTER_MM_IMG, 128, 0, MASTER_MMSYS);
-> > +DEFINE_MNODE(mm_mdp, MASTER_MM_MDP, 128, 0, MASTER_MMSYS);
-> > +
-> > +static struct mtk_icc_node *mt8183_icc_nodes[] = {
-> > +	[MT8183_SLAVE_DDR_EMI] = &ddr_emi,
-> > +	[MT8183_MASTER_MCUSYS] = &mcusys,
-> > +	[MT8183_MASTER_GPU] = &gpu,
-> > +	[MT8183_MASTER_MMSYS] = &mmsys,
-> > +	[MT8183_MASTER_MM_VPU] = &mm_vpu,
-> > +	[MT8183_MASTER_MM_DISP] = &mm_disp,
-> > +	[MT8183_MASTER_MM_VDEC] = &mm_vdec,
-> > +	[MT8183_MASTER_MM_VENC] = &mm_venc,
-> > +	[MT8183_MASTER_MM_CAM] = &mm_cam,
-> > +	[MT8183_MASTER_MM_IMG] = &mm_img,
-> > +	[MT8183_MASTER_MM_MDP] = &mm_mdp,
-> > +};
-> > +
-> > +static struct mtk_icc_desc mt8183_icc = {
-> 
-> const?
-ok
-> 
-> > +	.nodes = mt8183_icc_nodes,
-> > +	.num_nodes = ARRAY_SIZE(mt8183_icc_nodes),
-> > +};
-> > +
-> > +static int emi_icc_aggregate(struct icc_node *node, u32 tag, u32 avg_bw,
-> > +			     u32 peak_bw, u32 *agg_avg, u32 *agg_peak)
-> > +{
-> > +	struct mtk_icc_node *in;
-> > +
-> > +	in = node->data;
-> > +
-> > +	*agg_avg += avg_bw;
-> > +	*agg_peak += peak_bw;
-> > +
-> > +	in->sum_avg = *agg_avg;
-> > +	in->max_peak = *agg_peak;
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int emi_icc_set(struct icc_node *src, struct icc_node *dst)
-> > +{
-> > +	int ret = 0;
-> > +	struct mtk_icc_node *node;
-> > +
-> > +	node = dst->data;
-> > +	if (node->ep) {
-> > +		pr_debug("sum_avg (%llu), max_peak (%llu)\n",
-> > +			 node->sum_avg, node->max_peak);
-> > +		mtk_dvfsrc_send_request(src->provider->dev->parent,
-> > +					MTK_DVFSRC_CMD_BW_REQUEST,
-> > +					node->max_peak);
-> > +	}
-> > +
-> > +	return ret;
-> > +}
-> > +
-> > +static int emi_icc_remove(struct platform_device *pdev);
-> > +static int emi_icc_probe(struct platform_device *pdev)
-> > +{
-> > +	int ret;
-> > +	const struct mtk_icc_desc *desc;
-> > +	struct icc_node *node;
-> > +	struct icc_onecell_data *data;
-> > +	struct icc_provider *provider;
-> > +	struct mtk_icc_node **mnodes;
-> > +	size_t num_nodes, i, j;
-> > +
-> > +	desc = of_device_get_match_data(&pdev->dev);
-> > +	if (!desc)
-> > +		return -EINVAL;
-> > +
-> > +	mnodes = desc->nodes;
-> > +	num_nodes = desc->num_nodes;
-> > +
-> > +	provider = devm_kzalloc(&pdev->dev, sizeof(*provider), GFP_KERNEL);
-> > +	if (!provider)
-> > +		return -ENOMEM;
-> > +
-> > +	data = devm_kcalloc(&pdev->dev, num_nodes, sizeof(*node), GFP_KERNEL);
-> 
-> This should be:
-> devm_kzalloc(&pdev->dev, struct_size(data, nodes, num_nodes), GFP_KERNEL);
-thanks, will fix this.
-> 
-> > +	if (!data)
-> > +		return -ENOMEM;
-> > +
-> > +	provider->dev = &pdev->dev;
-> > +	provider->set = emi_icc_set;
-> > +	provider->aggregate = emi_icc_aggregate;
-> > +	provider->xlate = of_icc_xlate_onecell;
-> > +	INIT_LIST_HEAD(&provider->nodes);
-> > +	provider->data = data;
-> > +
-> > +	ret = icc_provider_add(provider);
-> > +	if (ret) {
-> > +		dev_err(&pdev->dev, "error adding interconnect provider\n");
-> > +		return ret;
-> > +	}
-> > +
-> > +	for (i = 0; i < num_nodes; i++) {
-> > +		node = icc_node_create(mnodes[i]->id);
-> > +		if (IS_ERR(node)) {
-> > +			ret = PTR_ERR(node);
-> > +			goto err;
-> > +		}
-> > +
-> > +		node->name = mnodes[i]->name;
-> > +		node->data = mnodes[i];
-> > +		icc_node_add(node, provider);
-> > +
-> > +		dev_dbg(&pdev->dev, "registered node %s, num link: %d\n",
-> > +			mnodes[i]->name, mnodes[i]->num_links);
-> 
-> Please remove this.
-ok
-> 
-> > +
-> > +		/* populate links */
-> 
-> Please remove the comment too.
-ok
-> 
-> > +		for (j = 0; j < mnodes[i]->num_links; j++)
-> > +			icc_link_create(node, mnodes[i]->links[j]);
-> > +
-> > +		data->nodes[i] = node;
-> > +	}
-> > +	data->num_nodes = num_nodes;
-> > +
-> > +	platform_set_drvdata(pdev, provider);
-> > +
-> > +	return 0;
-> > +err:
-> > +	emi_icc_remove(pdev);
-> 
-> This will not work because platform_set_drvdata() is called only when the
-> probe function completes successfully. So platform_get_drvdata() in
-> emi_icc_remove() will return NULL.
-> 
-> > +	return ret;
-> > +}
-> > +
-> > +static int emi_icc_remove(struct platform_device *pdev)
-> > +{
-> > +	struct icc_provider *provider = platform_get_drvdata(pdev);
-> > +	struct icc_node *n;
-> > +
-> > +	list_for_each_entry(n, &provider->nodes, node_list) {
-> > +		icc_node_del(n);
-> > +		icc_node_destroy(n->id);
-> > +	}
-> 
-> You can use icc_nodes_remove() instead of the above.
-Got it, thanks for advise.
-> 
-> Thanks,
-> Georgi
+> See above.
 
-Thanks for the review.
 
-Henry
+Best Regards
+	--Matti
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
