@@ -6,17 +6,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E838FC2BA15
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 13:08:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 49D7EC2BA15
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 13:08:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BF4F520678
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 13:08:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 20D7320678
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 13:08:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SIH1iikQ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="LIgdbEU7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BF4F520678
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ODOOp3/s";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="qZ0L0PG+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 20D7320678
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,44 +25,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R+J9yIL/VZUKD9pU612bOOdSjnAkcLQt+VE+eruq+78=; b=SIH1iikQ4zLGoK
-	XeL2U4Jhf93IXykySNLBlS7rkg0PUBl/dk9i3aH1bwsL8F3nJ09EncXXwnROHXCE2U8FVMrqPlN6a
-	bx87AF+GTwVVVp9FAIB4gaMGQFfF5xKUKYUL5kw8LU7WK8eVGjZ3cFHIuVFnB9bi+hKefCve0Pef9
-	PonhyL8G1joVIWxTgHsr8O8ZtcAqlWtEJRAYexku3TWTfBJPWukAgfbUpPZH0w7m3jvLYsxcU/XW0
-	2o/zn7TLMsxwS2F5/LTURRrPNkl++WxlnDfqb6sy9RS68q2rrvAQ4mC8R3HnxNZJBERe1xokvTxw0
-	n6B+ZYngMF8mPO2DIwIg==;
+	List-Owner; bh=Z/lHMdjYU9MKdIiQkeOccm27xEJfztQ+6J16hmwZ9bE=; b=ODOOp3/skwExSe
+	5XzvnT80C4py03G68+A8aS39z0eTuZxK+0CR0zDu6RxNueNU/CHJcGCn01eh+aNIdsf1BPZFyOTzh
+	ibsJuqjI6ERtm2t0TelQxFLUA/KpabuJR4bAL0zk1zLg10P+4YCwudscL80LN8FjNHWr6BuchtMQQ
+	MeOQG9LPGAy6sa15yUMCX7gYgYeONbArSCK6fT376uzFPpjb4Ez+VD9YH5S7vMVNwUxW/BQLlspgZ
+	Ob1Q79eA9/E8P7CBJ0H58VpxRSwdZxIi4Yh9tTeS1peJ1ihYeYXjbhSawk8Omm2/G6D7Gtv2/ZJCg
+	8ZA6lBe32TFTt+zBf+9Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJzZa-0004y7-BI; Thu, 02 Apr 2020 13:07:54 +0000
+	id 1jJzZq-0005Au-Tr; Thu, 02 Apr 2020 13:08:10 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJzZW-0004w6-Vh
- for linux-mediatek@lists.infradead.org; Thu, 02 Apr 2020 13:07:52 +0000
+ id 1jJzZo-00056C-1c
+ for linux-mediatek@lists.infradead.org; Thu, 02 Apr 2020 13:08:09 +0000
 Received: from localhost.localdomain.com (unknown [151.48.151.50])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 45ED12078C;
- Thu,  2 Apr 2020 13:07:49 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 612DA20757;
+ Thu,  2 Apr 2020 13:08:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1585832870;
- bh=cnI3Kg/a0oHMxhqHmpBnTSiQLrhR+l7f5r1yCv1/7HU=;
+ s=default; t=1585832887;
+ bh=qY1kduqfBx12lV0XczVCmm5xVfKRUZ4bGDEtw6uGdgE=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=LIgdbEU77MWcJ+3DM1STcUM+n0RFTOf/ksA1j8sZ9uORJ9Bib17ItrbIC/o+hXPZI
- OBLA07Vkf96VfzJn20igAY1WL9f+uMvoME89jQ2UF1CyAptpXUHK3zsX98BBKQK/iG
- W7HhmWGds6JTFnllT8w+tR2er4r+s8h9ItmU2BLI=
+ b=qZ0L0PG+LC/OxsFgOrhikRphaXRrQaBY2KGdQ9tyxGQ9pc0nkLdd4XQ/29/jh+D2l
+ pdMhwtgVW+b0G8rJQa0NSTEUrNcxVQwHoSWCWDg+NULHyAT4DMCQlQdh7RMQby8NHo
+ nrqsYs5abgqaYKL8O5OJLYQqyk22ArPmohgEAx5Q=
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name
-Subject: [PATCH 06/12] mt76: mt7615: introduce mt7615_mcu_set_channel_domain
- mcu command
-Date: Thu,  2 Apr 2020 15:06:36 +0200
-Message-Id: <904338962304250b456ec9aa09a5e7197cd98344.1585832458.git.lorenzo@kernel.org>
+Subject: [PATCH 10/12] mt76: mt7615: introduce BSS absence event
+Date: Thu,  2 Apr 2020 15:06:40 +0200
+Message-Id: <87d37ce29bebfaa89aba0609cc0c07b0b514f785.1585832459.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1585832458.git.lorenzo@kernel.org>
 References: <cover.1585832458.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200402_060751_065620_8BC99631 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20200402_060808_139295_5BFEEA24 
+X-CRM114-Status: UNSURE (   9.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,176 +81,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce mt7615_mcu_set_channel_domain routines in order to instruct
-the mcu about supported band/channels. This is a preliminary patch to
-add hw scan support to mt7663e driver
+From: Sean Wang <sean.wang@mediatek.com>
 
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+Introduce BSS absence event that is reported when the fw
+is leaving or entering current operational channel.
+
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- .../net/wireless/mediatek/mt76/mt7615/main.c  |  1 +
- .../net/wireless/mediatek/mt76/mt7615/mcu.c   | 72 ++++++++++++++++++-
- .../net/wireless/mediatek/mt76/mt7615/mcu.h   |  9 ++-
- .../wireless/mediatek/mt76/mt7615/mt7615.h    |  6 ++
- 4 files changed, 85 insertions(+), 3 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7615/mcu.c   | 24 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7615/mcu.h   |  8 +++++++
+ 2 files changed, 32 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index 6586176c29af..20f6e31a017d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -50,6 +50,7 @@ static int mt7615_start(struct ieee80211_hw *hw)
- 		mt7615_mac_enable_nf(dev, 1);
- 	}
- 
-+	mt7615_mcu_set_channel_domain(phy);
- 	mt7615_mcu_set_chan_info(phy, MCU_EXT_CMD_SET_RX_PATH);
- 
- 	set_bit(MT76_STATE_RUNNING, &phy->mt76->state);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 32e3e4219076..9ce08be2f7c7 100644
+index 193808cca905..5385d16e435d 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -135,14 +135,21 @@ void mt7615_mcu_fill_msg(struct mt7615_dev *dev, struct sk_buff *skb,
- 	mcu_txd->pkt_type = MCU_PKT_ID;
- 	mcu_txd->seq = seq;
- 
--	if (cmd & MCU_FW_PREFIX) {
-+	switch (cmd & ~MCU_CMD_MASK) {
-+	case MCU_FW_PREFIX:
- 		mcu_txd->set_query = MCU_Q_NA;
- 		mcu_txd->cid = mcu_cmd;
--	} else {
-+		break;
-+	case MCU_CE_PREFIX:
-+		mcu_txd->set_query = MCU_Q_SET;
-+		mcu_txd->cid = mcu_cmd;
-+		break;
-+	default:
- 		mcu_txd->cid = MCU_CMD_EXT_CID;
- 		mcu_txd->set_query = MCU_Q_SET;
- 		mcu_txd->ext_cid = cmd;
- 		mcu_txd->ext_cid_ack = 1;
-+		break;
- 	}
+@@ -339,6 +339,26 @@ mt7615_mcu_scan_event(struct mt7615_dev *dev, struct sk_buff *skb)
+ 				     MT7615_HW_SCAN_TIMEOUT);
  }
  
-@@ -2421,3 +2428,64 @@ int mt7615_mcu_set_sku_en(struct mt7615_phy *phy, bool enable)
- 	return __mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_TX_POWER_FEATURE_CTRL, &req,
- 				   sizeof(req), true);
- }
-+
-+int mt7615_mcu_set_channel_domain(struct mt7615_phy *phy)
++static void
++mt7615_mcu_bss_event(struct mt7615_dev *dev, struct sk_buff *skb)
 +{
-+	struct mt76_phy *mphy = phy->mt76;
-+	struct mt7615_dev *dev = phy->dev;
-+	struct mt7615_mcu_channel_domain {
-+		__le32 country_code; /* regulatory_request.alpha2 */
-+		u8 bw_2g; /* BW_20_40M		0
-+			   * BW_20M		1
-+			   * BW_20_40_80M	2
-+			   * BW_20_40_80_160M	3
-+			   * BW_20_40_80_8080M	4
-+			   */
-+		u8 bw_5g;
-+		__le16 pad;
-+		u8 n_2ch;
-+		u8 n_5ch;
-+		__le16 pad2;
-+	} __packed hdr = {
-+		.bw_2g = 0,
-+		.bw_5g = 3,
-+		.n_2ch = mphy->sband_2g.sband.n_channels,
-+		.n_5ch = mphy->sband_5g.sband.n_channels,
-+	};
-+	struct mt7615_mcu_chan {
-+		__le16 hw_value;
-+		__le16 pad;
-+		__le32 flags;
-+	} __packed;
-+	int i, n_channels = hdr.n_2ch + hdr.n_5ch;
-+	int len = sizeof(hdr) + n_channels * sizeof(struct mt7615_mcu_chan);
-+	struct sk_buff *skb;
++	struct mt7615_mcu_bss_event *event;
++	struct mt76_phy *mphy;
 +
-+	if (!mt7615_firmware_offload(dev))
-+		return 0;
++	event = (struct mt7615_mcu_bss_event *)(skb->data +
++						sizeof(struct mt7615_mcu_rxd));
 +
-+	skb = mt7615_mcu_msg_alloc(NULL, len);
-+	if (!skb)
-+		return -ENOMEM;
++	if (event->bss_idx && dev->mt76.phy2)
++		mphy = dev->mt76.phy2;
++	else
++		mphy = &dev->mt76.phy;
 +
-+	skb_put_data(skb, &hdr, sizeof(hdr));
-+
-+	for (i = 0; i < n_channels; i++) {
-+		struct ieee80211_channel *chan;
-+		struct mt7615_mcu_chan channel;
-+
-+		if (i < hdr.n_2ch)
-+			chan = &mphy->sband_2g.sband.channels[i];
-+		else
-+			chan = &mphy->sband_5g.sband.channels[i - hdr.n_2ch];
-+
-+		channel.hw_value = cpu_to_le16(chan->hw_value);
-+		channel.flags = cpu_to_le32(chan->flags);
-+		channel.pad = 0;
-+
-+		skb_put_data(skb, &channel, sizeof(channel));
-+	}
-+
-+	return __mt76_mcu_skb_send_msg(&dev->mt76, skb,
-+				       MCU_CMD_SET_CHAN_DOMAIN, false);
++	if (event->is_absent)
++		ieee80211_stop_queues(mphy->hw);
++	else
++		ieee80211_wake_queues(mphy->hw);
 +}
++
+ static void
+ mt7615_mcu_rx_unsolicited_event(struct mt7615_dev *dev, struct sk_buff *skb)
+ {
+@@ -352,6 +372,9 @@ mt7615_mcu_rx_unsolicited_event(struct mt7615_dev *dev, struct sk_buff *skb)
+ 	case MCU_EVENT_SCAN_DONE:
+ 		mt7615_mcu_scan_event(dev, skb);
+ 		return;
++	case MCU_EVENT_BSS_ABSENCE:
++		mt7615_mcu_bss_event(dev, skb);
++		break;
+ 	default:
+ 		break;
+ 	}
+@@ -367,6 +390,7 @@ void mt7615_mcu_rx_event(struct mt7615_dev *dev, struct sk_buff *skb)
+ 	    rxd->ext_eid == MCU_EXT_EVENT_ASSERT_DUMP ||
+ 	    rxd->ext_eid == MCU_EXT_EVENT_PS_SYNC ||
+ 	    rxd->eid == MCU_EVENT_SCHED_SCAN_DONE ||
++	    rxd->eid == MCU_EVENT_BSS_ABSENCE ||
+ 	    rxd->eid == MCU_EVENT_SCAN_DONE ||
+ 	    !rxd->seq)
+ 		mt7615_mcu_rx_unsolicited_event(dev, skb);
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
-index d1f7391472fc..c03541328ad7 100644
+index 7e55da2b6573..e6a927fd209f 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
-@@ -232,7 +232,9 @@ enum {
+@@ -82,6 +82,7 @@ enum {
+ 	MCU_EVENT_ACCESS_REG = 0x02,
+ 	MCU_EVENT_MT_PATCH_SEM = 0x04,
+ 	MCU_EVENT_SCAN_DONE = 0x0d,
++	MCU_EVENT_BSS_ABSENCE  = 0x11,
+ 	MCU_EVENT_CH_PRIVILEGE = 0x18,
+ 	MCU_EVENT_SCHED_SCAN_DONE = 0x23,
+ 	MCU_EVENT_EXT = 0xed,
+@@ -398,6 +399,13 @@ struct nt7615_sched_scan_done {
+ 	__le16 pad;
+ } __packed;
  
- #define MCU_FW_PREFIX		BIT(31)
- #define MCU_UNI_PREFIX		BIT(30)
--#define MCU_CMD_MASK		~(MCU_FW_PREFIX | MCU_UNI_PREFIX)
-+#define MCU_CE_PREFIX		BIT(29)
-+#define MCU_CMD_MASK		~(MCU_FW_PREFIX | MCU_UNI_PREFIX |	\
-+				  MCU_CE_PREFIX)
- 
++struct mt7615_mcu_bss_event {
++	u8 bss_idx;
++	u8 is_absent;
++	u8 free_quota;
++	u8 pad;
++} __packed;
++
+ /* offload mcu commands */
  enum {
- 	MCU_CMD_TARGET_ADDRESS_LEN_REQ = MCU_FW_PREFIX | 0x01,
-@@ -275,6 +277,11 @@ enum {
- 	MCU_UNI_CMD_STA_REC_UPDATE = MCU_UNI_PREFIX | 0x03,
- };
- 
-+/* offload mcu commands */
-+enum {
-+	MCU_CMD_SET_CHAN_DOMAIN = MCU_CE_PREFIX | 0x0f,
-+};
-+
- #define MCU_CMD_ACK		BIT(0)
- #define MCU_CMD_UNI		BIT(1)
- #define MCU_CMD_QUERY		BIT(2)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-index dfc60d3ff836..c4aff5f4c89b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-@@ -364,6 +364,11 @@ static inline void mt7615_irq_disable(struct mt7615_dev *dev, u32 mask)
- 	mt76_set_irq_mask(&dev->mt76, MT_INT_MASK_CSR, mask, 0);
- }
- 
-+static inline bool mt7615_firmware_offload(struct mt7615_dev *dev)
-+{
-+	return dev->fw_ver > MT7615_FIRMWARE_V2;
-+}
-+
- void mt7615_update_channel(struct mt76_dev *mdev);
- bool mt7615_mac_wtbl_update(struct mt7615_dev *dev, int idx, u32 mask);
- void mt7615_mac_reset_counters(struct mt7615_dev *dev);
-@@ -393,6 +398,7 @@ int mt7615_mcu_get_temperature(struct mt7615_dev *dev, int index);
- void mt7615_mcu_exit(struct mt7615_dev *dev);
- void mt7615_mcu_fill_msg(struct mt7615_dev *dev, struct sk_buff *skb,
- 			 int cmd, int *wait_seq);
-+int mt7615_mcu_set_channel_domain(struct mt7615_phy *phy);
- 
- int mt7615_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
- 			  enum mt76_txq_id qid, struct mt76_wcid *wcid,
+ 	MCU_CMD_START_HW_SCAN = MCU_CE_PREFIX | 0x03,
 -- 
 2.25.1
 
