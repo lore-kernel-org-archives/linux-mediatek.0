@@ -2,94 +2,71 @@ Return-Path: <SRS0=GVU/=5S=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E70C2C2D0F4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 04:03:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 82119C43331
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 12:32:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B733820757
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 04:03:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 547882078B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 12:32:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jv13Kma6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B733820757
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fi.rohmeurope.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uAaC9xgG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 547882078B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SCEqdey4FlWuc6Mxu+Zxbu/jLQE/LvlNcpm06jj1w4k=; b=jv13Kma66mbRE9
-	qE9AqG6uGLdKKrtIfhwo/l0FyyxjSmJtLiyi/3/VG7C3GM4fbX1wdVtHgEYDOvyvFTkEH14RNbm9B
-	yUQnO65HrzV7ugpyykSbr94XAF5085vLdCjZrYQidWwnhPHRDK/GERh7X45nq6V1wKT+nqVcv9Iif
-	1glxROo3yCjz/uSUlEn75ZoRPLwAiniqCoR/Fwi1XqYz7zbeT/oO2dDZHNF993A2fIq3YiVylyQVi
-	Y0rIAu+C90Fvql7HnGjY9UfQAN9FrJR4PytnQ1/YTUE0fTB21tLKUys/AhRLuxX7xB1x2LylbqLIp
-	Rb83TacG0cs2Q5GUwIaQ==;
+	List-Owner; bh=C6qZcyBitpH7vPDphbOA+EJloVH3/jijEyI1sEviw+8=; b=uAaC9xgG0TwxXM
+	H1fEeOlMmNvrW3m5CED9AZmCYkNX5qhcPVEQQo8xlB7HipAOD3f/o4GqzNu6UbN4yvaY4jBa5F7Vx
+	N6VWsMmNP/mZyUWbcbU+W4ny1754tXg28TAIOhCB4L0ry6JGf7b2N1xHRXY35BB3mkB0ENQ9Xi3M6
+	CCLu4RC5gh7CmB1YUNOR1vB18d/undulebhwKbA5Ofm9eCJ5rSH7yGNwSm+3IhmQWxCRKFJ8BnIfJ
+	QFjxxS+sip1kl6hvLdlLnVqZyEHee6KBH/C1vuVUxpgruAkdzTIbgN6Ec0UkeEiTofoLXHvvduVqu
+	YVXGNgWIDmfBg1SOoseA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jJr4Y-0008FM-3C; Thu, 02 Apr 2020 04:03:18 +0000
-Received: from mailgate1.rohmeurope.com ([87.129.152.131])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jJr4U-0008E2-Fz; Thu, 02 Apr 2020 04:03:16 +0000
-X-AuditID: c0a8fbf4-489ff70000004419-ea-5e8563fdb129
-Received: from smtp.reu.rohmeu.com (will-cas002.reu.rohmeu.com
- [192.168.251.178])
- by mailgate1.rohmeurope.com (Symantec Messaging Gateway) with SMTP id
- 18.A4.17433.DF3658E5; Thu,  2 Apr 2020 06:03:09 +0200 (CEST)
-Received: from WILL-MAIL001.REu.RohmEu.com ([fe80::2915:304f:d22c:c6ba]) by
- WILL-CAS002.REu.RohmEu.com ([fe80::fc24:4cbc:e287:8659%12]) with mapi id
- 14.03.0487.000; Thu, 2 Apr 2020 06:03:05 +0200
-From: "Vaittinen, Matti" <Matti.Vaittinen@fi.rohmeurope.com>
-To: "andy.shevchenko@gmail.com" <andy.shevchenko@gmail.com>
-Subject: Re: [SPF Softfail] Re: [PATCH v7 03/10] lib: add linear ranges helpers
-Thread-Topic: [SPF Softfail] Re: [PATCH v7 03/10] lib: add linear ranges
- helpers
-Thread-Index: AQHWB1cj+aMIIRocXUeZN2Io9Ehlr6himqGAgAFQhQCAACnkAIAACuYAgAAXZoCAAN+uAA==
-Date: Thu, 2 Apr 2020 04:03:03 +0000
-Message-ID: <bbdf3a3e12bd2ba11a019192e492d135f92634cc.camel@fi.rohmeurope.com>
-References: <cover.1585656143.git.matti.vaittinen@fi.rohmeurope.com>
- <c4cd52979ec187c942fa5794aab11e6c7f944cbb.1585656143.git.matti.vaittinen@fi.rohmeurope.com>
- <20200331140523.GJ1922688@smile.fi.intel.com>
- <4e75e0fcc9782220798c90eee5e41788fe277cc1.camel@fi.rohmeurope.com>
- <CAHp75VcnK2A_qjBo3FEz-XC6Y=3z7ssSgT6AS-P_9EPyRXsFXQ@mail.gmail.com>
- <e2391c0749478d42ac7e2db4981b9d373a160323.camel@fi.rohmeurope.com>
- <CAHp75Vd24w6dqqCYH46GKnJ5Nzase6LdVgSSVwQ3FEzMd5gsYA@mail.gmail.com>
-In-Reply-To: <CAHp75Vd24w6dqqCYH46GKnJ5Nzase6LdVgSSVwQ3FEzMd5gsYA@mail.gmail.com>
-Accept-Language: en-US, de-DE
-Content-Language: de-DE
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [62.78.225.252]
-Content-ID: <3D13BA28F4027B4DB279FD920FA6548A@de.rohmeurope.com>
+	id 1jJz1S-00010h-DO; Thu, 02 Apr 2020 12:32:38 +0000
+Received: from mga07.intel.com ([134.134.136.100])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jJz1L-0000v6-M1; Thu, 02 Apr 2020 12:32:33 +0000
+IronPort-SDR: SznG5lcpDJMpXv04flKLnGZ81zscd0Gg/tZmopu17x368rLBup9zwWnhISaWs1+5I4dtU6Nhb9
+ ra4pIVD7GXyA==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Apr 2020 05:32:28 -0700
+IronPort-SDR: 0wKmngTrlTAMHbswWxHUlQGw5JvSNQhUjHBpjO+TbTHHHGAETFbrGm8TTOwEz1gau3qQbJ3rJt
+ jnR8AyJTVc+w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,335,1580803200"; d="scan'208";a="268010707"
+Received: from tronach-mobl1.ger.corp.intel.com (HELO kekkonen.fi.intel.com)
+ ([10.252.38.191])
+ by orsmga002.jf.intel.com with ESMTP; 02 Apr 2020 05:32:23 -0700
+Received: by kekkonen.fi.intel.com (Postfix, from userid 1000)
+ id C40CB21F19; Thu,  2 Apr 2020 15:32:17 +0300 (EEST)
+Date: Thu, 2 Apr 2020 15:32:17 +0300
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Dongchun Zhu <dongchun.zhu@mediatek.com>
+Subject: Re: [V4, 2/2] media: i2c: Add DW9768 VCM driver
+Message-ID: <20200402123217.GD1522@kekkonen.localdomain>
+References: <20200330123634.363-1-dongchun.zhu@mediatek.com>
+ <20200330123634.363-3-dongchun.zhu@mediatek.com>
 MIME-Version: 1.0
-X-Brightmail-Tracker: H4sIAAAAAAAAA02TfUwTdxjH87u7tgfS5SgwfivMadUtYCaiZnmSmUWTxd0W4tsStpCMWuSg
- zNKyvhgwWUKEbgoZAuNtBeRNXnQESnE6kFLTMecgUDs6kM2ZIcgEJ2zQQYDBdkdV+Ofue8/3
- +Tzf54/naFJWRMvpFK2R02tVGoXYn7rZtGx7feWkOX63Z2IPDIwtU1DR2iyGvNlaEibzv0Ow
- UnhLAm1lrSLwVvZS0OeYpqDgQgS4735JQvHouBg8ZhuC0uI7CCpc2RTcbrNSUNUzIIKsulYx
- 5E6Fg8tllcC85xwBRf82EmAbGxJBgaNfAoOdFWIYzHIjKL90gYK5L3oQlLm6CagfdhNwNnsv
- VNTfpqCu8VVoXGqhwNq+QMDcjEMEld5iEp7cK6XAXeYiwWzvkYC7yUuAvbRBBH03jGA3u0ko
- qbRLoN3G9zo878Hw7C98w+oiBYtOF6/uzyG49fciOrCXbb7YjNjlpULEzv9TSLEzd80S1vrg
- axF79fIIwTbNRrEdlt8k7LWbO9hqm4ltb4pk67omCdZ25byYLWyoFbH3hrrE7PTAgORoeNym
- /Qkq4+n3U5K1UW+d2KSeaWok0+5Eprd6FiWZqCciB/nRmNmH8/p7RTnIn5YxQwjn3195+vED
- wlOf1UhyEE2Lmf04Z0QiAMHMm7j2+2pS6CGZRyH4xuMSsWAEMcfw564Bwtd0HHf/aUU+HYsb
- urxrMMVsxzXVuWt1KXMYO7xtIkHLmL9IfPWPg4L24+dcHC5bqyPmZXw+c3ptJsmEYtvEgsi3
- NYMvdblInw7Bk2OrT+tb8fWFFkrYmWQicGtnlA89gLNqpsQ+vRUX5Y5KfCsE4h+/Gqfy0YuW
- DQmWddqygbZsoC0b6GokuoJwqipFk6wyctG79Jxpl16nTuVfJ3WpNuS7b++36D/nu05E0MiJ
- XqIJRYg0K94cL3shQZeYoVYZ1Eq9ScMZnAjTpCJYWv52drxMmqjKOMPpdc+sMJpShEpfGy34
- SMYIWac4Lo3TP3PDaVqBpUEJ/NBAPZfMpSelaIzrNkH7CcP95cEGTpvI6VUmo1op3IfSwB+I
- YAXwuasqHpca0lSpfNWH9qJoOn+yspakeyrr+efwjL2elFFanZaTh0p7BYARALVJ+zxuCoXS
- SBEkbVHybgD/qz+fNsUHEXzQz+lZQpBRtW7JM1F42okdMyXFcY/Yh2rY+cmZmN2pR96R2TPK
- t4svD5nmf9/TkXlKWXVoXKY5cvaVQeWnHYf6d/46ts2dmWR9LJZvPvwgivvmA2PgltifhsKu
- beuLNXk+1p12PTwmHzHvCzie9KQ7Jc9Zoj4X5ohb6pyv2rxl0po4MR2jOfhG7vWY7oIP+xWU
- Qa2KjiT1BtX/6kwhg6cEAAA=
+Content-Disposition: inline
+In-Reply-To: <20200330123634.363-3-dongchun.zhu@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200401_210314_685516_F5DE5002 
-X-CRM114-Status: GOOD (  21.94  )
+X-CRM114-CacheID: sfid-20200402_053231_792610_51E662DB 
+X-CRM114-Status: GOOD (  29.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,191 +78,541 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
- "milo.kim@ti.com" <milo.kim@ti.com>,
- "andrei.stefanescu@microchip.com" <andrei.stefanescu@microchip.com>,
- "rafael@kernel.org" <rafael@kernel.org>, "tony@atomide.com" <tony@atomide.com>,
- "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
- "brendanhiggins@google.com" <brendanhiggins@google.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "yamada.masahiro@socionext.com" <yamada.masahiro@socionext.com>,
- "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>,
- "vincenzo.frascino@arm.com" <vincenzo.frascino@arm.com>,
- "tglx@linutronix.de" <tglx@linutronix.de>,
- "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
- "herbert@gondor.apana.org.au" <herbert@gondor.apana.org.au>,
- "b.zolnierkie@samsung.com" <b.zolnierkie@samsung.com>,
- "krzk@kernel.org" <krzk@kernel.org>,
- "bgolaszewski@baylibre.com" <bgolaszewski@baylibre.com>,
- "wens@csie.org" <wens@csie.org>, "agross@kernel.org" <agross@kernel.org>,
- "Laine, Markus" <Markus.Laine@fi.rohmeurope.com>, "bp@suse.de" <bp@suse.de>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "zaslonko@linux.ibm.com" <zaslonko@linux.ibm.com>,
- "ckeepax@opensource.cirrus.com" <ckeepax@opensource.cirrus.com>,
- "arnd@arndb.de" <arnd@arndb.de>,
- "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "rf@opensource.cirrus.com" <rf@opensource.cirrus.com>,
- "broonie@kernel.org" <broonie@kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "sre@kernel.org" <sre@kernel.org>, "davidgow@google.com" <davidgow@google.com>,
- "skhan@linuxfoundation.org" <skhan@linuxfoundation.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "dan.j.williams@intel.com" <dan.j.williams@intel.com>,
- "bjorn.andersson@linaro.org" <bjorn.andersson@linaro.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "support.opensource@diasemi.com" <support.opensource@diasemi.com>,
- "sbkim73@samsung.com" <sbkim73@samsung.com>,
- "patches@opensource.cirrus.com" <patches@opensource.cirrus.com>,
- "rdunlap@infradead.org" <rdunlap@infradead.org>,
- "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
- "talgi@mellanox.com" <talgi@mellanox.com>, "Mutanen,
- Mikko" <Mikko.Mutanen@fi.rohmeurope.com>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "uwe@kleine-koenig.org" <uwe@kleine-koenig.org>,
- "mhiramat@kernel.org" <mhiramat@kernel.org>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "akpm@linux-foundation.org" <akpm@linux-foundation.org>,
- "olteanv@gmail.com" <olteanv@gmail.com>,
- "davem@davemloft.net" <davem@davemloft.net>,
- "mazziesaccount@gmail.com" <mazziesaccount@gmail.com>
+Cc: mark.rutland@arm.com, drinkcat@chromium.org,
+ andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
+ devicetree@vger.kernel.org, shengnan.wang@mediatek.com, tfiga@chromium.org,
+ louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Andy,
+Hi Dongchun,
 
-On Wed, 2020-04-01 at 17:42 +0300, Andy Shevchenko wrote:
-> On Wed, Apr 1, 2020 at 4:18 PM Vaittinen, Matti
-> <Matti.Vaittinen@fi.rohmeurope.com> wrote:
-> > On Wed, 2020-04-01 at 15:39 +0300, Andy Shevchenko wrote:
-> > > On Wed, Apr 1, 2020 at 1:09 PM Vaittinen, Matti
-> > > <Matti.Vaittinen@fi.rohmeurope.com> wrote:
-> > > > On Tue, 2020-03-31 at 17:05 +0300, Andy Shevchenko wrote:
-> > > > > On Tue, Mar 31, 2020 at 03:23:03PM +0300, Matti Vaittinen
-> > > > > wrote:
-> > > > > > +int linear_range_get_selector_low_array(const struct
-> > > > > > linear_range
-> > > > > > *r,
-> > > > > > +                                   int ranges, unsigned
-> > > > > > int
-> > > > > > val,
-> > > > > > +                                   unsigned int *selector,
-> > > > > > bool
-> > > > > > *found)
-> > > > > > +{
-> > > > > > +   int i;
-> > > > > > +   int ret = -EINVAL;
-> > > > > > +
-> > > > > > +   for (i = 0; i < ranges; i++) {
-> > > > > > +           int tmpret;
-> > > > > > +
-> > > > > > +           tmpret = linear_range_get_selector_low(&r[i],
-> > > > > > val,
-> > > > > > selector,
-> > > > > > +                                                  found);
-> > > > > > +
-> > > > > > +           if (!tmpret)
-> > > > > > +                   ret = 0;
-> > > > > > +
-> > > > > > +           if (*found)
-> > > > > > +                   break;
-> > > > > > +   }
-> > > > > > +
-> > > > > > +   return ret;
-> > > > > > +}
+On Mon, Mar 30, 2020 at 08:36:34PM +0800, Dongchun Zhu wrote:
+> This patch adds a V4L2 sub-device driver for DW9768 voice coil moter,
+> providing control to set the desired focus via I2C serial interface.
 > 
-> Looked again at the code of the callee.
-> So, *found becomes true if and only if the return is 0
-
-Yes. If found is true, then ret is 0.
-
->  (or other way
-> around if you prefer).
-
-No. Not other way around. Ret can be 0 and found false. This is what we
-need to handle. Ret means we found range value smaller than given
-input. Found means also the given input was in range.
-
-> Now I'm wondering why you need 'found' at all?
-
-To separate case where given input was in range.
-
-> It means above may be as simple as
+> Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> ---
+>  MAINTAINERS                |   1 +
+>  drivers/media/i2c/Kconfig  |  11 ++
+>  drivers/media/i2c/Makefile |   1 +
+>  drivers/media/i2c/dw9768.c | 432 +++++++++++++++++++++++++++++++++++++++++++++
+>  4 files changed, 445 insertions(+)
+>  create mode 100644 drivers/media/i2c/dw9768.c
 > 
->       int i;
->       int ret = -EINVAL;
-> 
->       for (i = 0; i < ranges; i++) {
->                ret = linear_range_get_selector_low(&r[i], val,
-> selector, found);
->                if (*found)
->                        break;
->       }
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 5e124d2..e007a1b 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -5140,6 +5140,7 @@ L:	linux-media@vger.kernel.org
+>  S:	Maintained
+>  T:	git git://linuxtv.org/media_tree.git
+>  F:	Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
+> +F:	drivers/media/i2c/dw9768.c
+>  
+>  DONGWOON DW9807 LENS VOICE COIL DRIVER
+>  M:	Sakari Ailus <sakari.ailus@linux.intel.com>
+> diff --git a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig
+> index c68e002..b759d3d 100644
+> --- a/drivers/media/i2c/Kconfig
+> +++ b/drivers/media/i2c/Kconfig
+> @@ -1024,6 +1024,17 @@ config VIDEO_DW9714
+>  	  capability. This is designed for linear control of
+>  	  voice coil motors, controlled via I2C serial interface.
+>  
+> +config VIDEO_DW9768
+> +	tristate "DW9768 lens voice coil support"
+> +	depends on I2C && VIDEO_V4L2 && MEDIA_CONTROLLER
+> +	depends on VIDEO_V4L2_SUBDEV_API
+> +	depends on PM
+> +	help
+> +	  This is a driver for the DW9768 camera lens voice coil.
+> +	  DW9768 is a 10 bit DAC with 100mA output current sink
+> +	  capability. This is designed for linear control of
+> +	  voice coil motors, controlled via I2C serial interface.
+> +
+>  config VIDEO_DW9807_VCM
+>  	tristate "DW9807 lens voice coil support"
+>  	depends on I2C && VIDEO_V4L2 && MEDIA_CONTROLLER
+> diff --git a/drivers/media/i2c/Makefile b/drivers/media/i2c/Makefile
+> index c147bb9..ec94434 100644
+> --- a/drivers/media/i2c/Makefile
+> +++ b/drivers/media/i2c/Makefile
+> @@ -24,6 +24,7 @@ obj-$(CONFIG_VIDEO_SAA6752HS) += saa6752hs.o
+>  obj-$(CONFIG_VIDEO_AD5820)  += ad5820.o
+>  obj-$(CONFIG_VIDEO_AK7375)  += ak7375.o
+>  obj-$(CONFIG_VIDEO_DW9714)  += dw9714.o
+> +obj-$(CONFIG_VIDEO_DW9768)  += dw9768.o
+>  obj-$(CONFIG_VIDEO_DW9807_VCM)  += dw9807-vcm.o
+>  obj-$(CONFIG_VIDEO_ADV7170) += adv7170.o
+>  obj-$(CONFIG_VIDEO_ADV7175) += adv7175.o
+> diff --git a/drivers/media/i2c/dw9768.c b/drivers/media/i2c/dw9768.c
+> new file mode 100644
+> index 0000000..f63afa1
+> --- /dev/null
+> +++ b/drivers/media/i2c/dw9768.c
+> @@ -0,0 +1,432 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +// Copyright (c) 2020 MediaTek Inc.
+> +
+> +#include <linux/delay.h>
+> +#include <linux/i2c.h>
+> +#include <linux/module.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/regulator/consumer.h>
+> +#include <media/v4l2-async.h>
+> +#include <media/v4l2-ctrls.h>
+> +#include <media/v4l2-device.h>
+> +#include <media/v4l2-subdev.h>
+> +
+> +#define DW9768_NAME				"dw9768"
+> +#define DW9768_MAX_FOCUS_POS			(1024 - 1)
+> +/*
+> + * This sets the minimum granularity for the focus positions.
+> + * A value of 1 gives maximum accuracy for a desired focus position
+> + */
+> +#define DW9768_FOCUS_STEPS			1
+> +
+> +/*
+> + * Ring control and Power control register
+> + * Bit[1] RING_EN
+> + * 0: Direct mode
+> + * 1: AAC mode (ringing control mode)
+> + * Bit[0] PD
+> + * 0: Normal operation mode
+> + * 1: Power down mode
+> + * DW9768 requires waiting time of Topr after PD reset takes place.
+> + */
+> +#define DW9768_RING_PD_CONTROL_REG		0x02
+> +#define DW9768_PD_MODE_OFF			0x00
+> +#define DW9768_PD_MODE_EN			BIT(0)
+> +#define DW9768_AAC_MODE_EN			BIT(1)
+> +
+> +/*
+> + * DW9768 separates two registers to control the VCM position.
+> + * One for MSB value, another is LSB value.
+> + * DAC_MSB: D[9:8] (ADD: 0x03)
+> + * DAC_LSB: D[7:0] (ADD: 0x04)
+> + * D[9:0] DAC data input: positive output current = D[9:0] / 1023 * 100[mA]
+> + */
+> +#define DW9768_MSB_ADDR				0x03
+> +#define DW9768_LSB_ADDR				0x04
+> +#define DW9768_STATUS_ADDR			0x05
+> +
+> +/*
+> + * AAC mode control & prescale register
+> + * Bit[7:5] Namely AC[2:0], decide the VCM mode and operation time.
+> + * 000 Direct(default)
+> + * 001 AAC2 0.48xTvib
+> + * 010 AAC3 0.70xTvib
+> + * 011 AAC4 0.75xTvib
+> + * 100 Reserved
+> + * 101 AAC8 1.13xTvib
+> + * 110 Reserved
+> + * 111 Reserved
+> + * Bit[2:0] Namely PRESC[2:0], set the internal clock dividing rate as follow.
+> + * 000 2
+> + * 001 1(default)
+> + * 010 1/2
+> + * 011 1/4
+> + * 100 8
+> + * 101 4
+> + * 110 Reserved
+> + * 111 Reserved
+> + */
+> +#define DW9768_AAC_PRESC_REG			0x06
+> +#define DW9768_AAC3_SELECT_DIVIDING_RATE_1	0x41
+> +
+> +/*
+> + * VCM period of vibration register
+> + * Bit[5:0] Defined as VCM rising periodic time (Tvib) together with PRESC[2:0]
+> + * Tvib = (6.3ms + AACT[5:0] * 0.1ms) * Dividing Rate
+> + * Dividing Rate is the internal clock dividing rate that is defined at
+> + * PRESCALE register (ADD: 0x06)
+> + */
+> +#define DW9768_AAC_TIME_REG			0x07
+> +#define DW9768_AACT_CNT				0x39
+> +
+> +/*
+> + * DW9768 requires waiting time (delay time) of t_OPR after power-up,
+> + * or in the case of PD reset taking place.
+> + */
+> +#define DW9768_T_OPR_US				1000
+> +
+> +/*
+> + * This acts as the minimum granularity of lens movement.
+> + * Keep this value power of 2, so the control steps can be
+> + * uniformly adjusted for gradual lens movement, with desired
+> + * number of control steps.
+> + */
+> +#define DW9768_MOVE_STEPS			16
+> +
+> +/*
+> + * DW9768_AAC_PRESC_REG & DW9768_AAC_TIME_REG determine VCM operation time.
+> + * If DW9768_AAC_PRESC_REG is 0x41, and DW9768_AAC_TIME_REG is 0x39, VCM mode
+> + * would be AAC3, Operation Time would be 0.70xTvib, that is 8.40ms.
+> + */
+> +#define DW9768_MOVE_DELAY_US			8400
+> +#define DW9768_STABLE_TIME_US			20000
+> +
+> +static const char * const dw9768_supply_names[] = {
+> +	"vin",	/* I2C I/O interface power */
+> +	"vdd",	/* VCM power */
+> +};
+> +
+> +/* dw9768 device structure */
+> +struct dw9768 {
+> +	struct regulator_bulk_data supplies[ARRAY_SIZE(dw9768_supply_names)];
+> +	struct v4l2_ctrl_handler ctrls;
+> +	struct v4l2_ctrl *focus;
+> +	struct v4l2_subdev sd;
+> +};
+> +
+> +static inline struct dw9768 *to_dw9768(struct v4l2_ctrl *ctrl)
+> +{
+> +	return container_of(ctrl->handler, struct dw9768, ctrls);
+> +}
+> +
+> +static inline struct dw9768 *sd_to_dw9768(struct v4l2_subdev *subdev)
+> +{
+> +	return container_of(subdev, struct dw9768, sd);
+> +}
+> +
+> +struct regval_list {
+> +	u8 reg_num;
+> +	u8 value;
+> +};
+> +
+> +static const struct regval_list dw9768_init_regs[] = {
+> +	{DW9768_RING_PD_CONTROL_REG, DW9768_AAC_MODE_EN},
+> +	{DW9768_AAC_PRESC_REG, DW9768_AAC3_SELECT_DIVIDING_RATE_1},
+> +	{DW9768_AAC_TIME_REG, DW9768_AACT_CNT},
 
-No. It can't. Here we get wrong return value if one of the calls to
-linear_range_get_selector_low() return zero with found being false and
-subsequent calls return non zero ret. Then we actually found lower-
-than-given-input value from one of the ranges and updated the selector
-(that would be usable for example for regulator voltage control) but
-end up returning non zero ret as the subsequent calls to
-linear_range_get_selector_low() do overwrite the ret.
+Apologies for missing to follow the earlier discussion related to this.
 
-OTOH, we should not stop for first range having zero ret if found is
-false because some of the ranges may have range where given input is
-in-range (and this is considered better value).
+I wonder if these values are specific to a given lens or a module.
+Presumably so, as they're changed from the defaults.
 
-> 
->       return ret;
-> 
-> or assuming 'found' will gone
+In that case I'd put them to DT.
 
-No. We should not drop the 'found'.
+> +};
+> +
+> +static int dw9768_write_array(struct dw9768 *dw9768,
+> +			      const struct regval_list *vals, size_t len)
+> +{
+> +	struct i2c_client *client = v4l2_get_subdevdata(&dw9768->sd);
+> +	unsigned int i;
+> +	int ret;
+> +
+> +	for (i = 0; i < len; i++) {
+> +		ret = i2c_smbus_write_byte_data(client, vals[i].reg_num,
+> +						vals[i].value);
+> +		if (ret < 0)
+> +			return ret;
+> +	}
+> +	return 0;
+> +}
+> +
+> +static int dw9768_set_dac(struct dw9768 *dw9768, u16 val)
+> +{
+> +	struct i2c_client *client = v4l2_get_subdevdata(&dw9768->sd);
+> +
+> +	/* Write VCM position to registers */
+> +	return i2c_smbus_write_word_swapped(client, DW9768_MSB_ADDR, val);
+> +}
+> +
+> +static int dw9768_init(struct dw9768 *dw9768)
+> +{
+> +	struct i2c_client *client = v4l2_get_subdevdata(&dw9768->sd);
+> +	int ret, val;
+> +
+> +	/* Reset DW9768_RING_PD_CONTROL_REG to default status 0x00 */
+> +	ret = i2c_smbus_write_byte_data(client, DW9768_RING_PD_CONTROL_REG,
+> +					DW9768_PD_MODE_OFF);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	/*
+> +	 * DW9769 requires waiting delay time of t_OPR
+> +	 * after PD reset takes place.
+> +	 */
+> +	usleep_range(DW9768_T_OPR_US, DW9768_T_OPR_US + 100);
+> +
+> +	ret = dw9768_write_array(dw9768, dw9768_init_regs,
+> +				 ARRAY_SIZE(dw9768_init_regs));
+> +	if (ret)
+> +		return ret;
+> +
+> +	for (val = dw9768->focus->val % DW9768_MOVE_STEPS;
+> +	     val <= dw9768->focus->val;
+> +	     val += DW9768_MOVE_STEPS) {
+> +		ret = dw9768_set_dac(dw9768, val);
+> +		if (ret) {
+> +			dev_err(&client->dev, "I2C write fail: %d", ret);
+> +			return ret;
+> +		}
+> +		usleep_range(DW9768_MOVE_DELAY_US, DW9768_MOVE_DELAY_US + 1000);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int dw9768_release(struct dw9768 *dw9768)
+> +{
+> +	struct i2c_client *client = v4l2_get_subdevdata(&dw9768->sd);
+> +	int ret, val;
+> +
+> +	val = round_down(dw9768->focus->val, DW9768_MOVE_STEPS);
+> +	for ( ; val >= 0; val -= DW9768_MOVE_STEPS) {
+> +		ret = dw9768_set_dac(dw9768, val);
+> +		if (ret) {
+> +			dev_err(&client->dev, "I2C write fail: %d", ret);
+> +			return ret;
+> +		}
+> +		usleep_range(DW9768_MOVE_DELAY_US, DW9768_MOVE_DELAY_US + 1000);
+> +	}
+> +
+> +	/*
+> +	 * Wait for the motor to stabilize after the last movement
+> +	 * to prevent the motor from shaking.
+> +	 */
+> +	usleep_range(DW9768_STABLE_TIME_US - DW9768_MOVE_DELAY_US,
+> +		     DW9768_STABLE_TIME_US - DW9768_MOVE_DELAY_US + 1000);
+> +
+> +	ret = i2c_smbus_write_byte_data(client, DW9768_RING_PD_CONTROL_REG,
+> +					DW9768_PD_MODE_EN);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	/*
+> +	 * DW9769 requires waiting delay time of t_OPR
+> +	 * after PD reset takes place.
+> +	 */
+> +	usleep_range(DW9768_T_OPR_US, DW9768_T_OPR_US + 100);
+> +
+> +	return 0;
+> +}
+> +
+> +static int __maybe_unused dw9768_runtime_suspend(struct device *dev)
+> +{
+> +	struct i2c_client *client = to_i2c_client(dev);
+> +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> +	struct dw9768 *dw9768 = sd_to_dw9768(sd);
+> +
+> +	dw9768_release(dw9768);
+> +	regulator_bulk_disable(ARRAY_SIZE(dw9768_supply_names),
+> +			       dw9768->supplies);
+> +
+> +	return 0;
+> +}
+> +
+> +static int __maybe_unused dw9768_runtime_resume(struct device *dev)
+> +{
+> +	struct i2c_client *client = to_i2c_client(dev);
+> +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> +	struct dw9768 *dw9768 = sd_to_dw9768(sd);
+> +	int ret;
+> +
+> +	ret = regulator_bulk_enable(ARRAY_SIZE(dw9768_supply_names),
+> +				    dw9768->supplies);
+> +	if (ret < 0) {
+> +		dev_err(dev, "failed to enable regulators\n");
+> +		return ret;
+> +	}
+> +
+> +	/*
+> +	 * The datasheet refers to t_OPR that needs to be waited before sending
+> +	 * I2C commands after power-up.
+> +	 */
+> +	usleep_range(DW9768_T_OPR_US, DW9768_T_OPR_US + 100);
+> +
+> +	ret = dw9768_init(dw9768);
+> +	if (ret < 0)
+> +		goto disable_regulator;
+> +
+> +	return 0;
+> +
+> +disable_regulator:
+> +	regulator_bulk_disable(ARRAY_SIZE(dw9768_supply_names),
+> +			       dw9768->supplies);
+> +
+> +	return ret;
+> +}
+> +
+> +static int dw9768_set_ctrl(struct v4l2_ctrl *ctrl)
+> +{
+> +	struct dw9768 *dw9768 = to_dw9768(ctrl);
+> +
+> +	if (ctrl->id == V4L2_CID_FOCUS_ABSOLUTE)
+> +		return dw9768_set_dac(dw9768, ctrl->val);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct v4l2_ctrl_ops dw9768_ctrl_ops = {
+> +	.s_ctrl = dw9768_set_ctrl,
+> +};
+> +
+> +static int dw9768_open(struct v4l2_subdev *sd, struct v4l2_subdev_fh *fh)
+> +{
+> +	int ret;
+> +
+> +	ret = pm_runtime_get_sync(sd->dev);
+> +	if (ret < 0) {
+> +		pm_runtime_put_noidle(sd->dev);
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int dw9768_close(struct v4l2_subdev *sd, struct v4l2_subdev_fh *fh)
+> +{
+> +	pm_runtime_put(sd->dev);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct v4l2_subdev_internal_ops dw9768_int_ops = {
+> +	.open = dw9768_open,
+> +	.close = dw9768_close,
+> +};
+> +
+> +static const struct v4l2_subdev_ops dw9768_ops = { };
+> +
+> +static int dw9768_init_controls(struct dw9768 *dw9768)
+> +{
+> +	struct v4l2_ctrl_handler *hdl = &dw9768->ctrls;
+> +	const struct v4l2_ctrl_ops *ops = &dw9768_ctrl_ops;
+> +
+> +	v4l2_ctrl_handler_init(hdl, 1);
+> +
+> +	dw9768->focus = v4l2_ctrl_new_std(hdl, ops, V4L2_CID_FOCUS_ABSOLUTE, 0,
+> +					  DW9768_MAX_FOCUS_POS,
+> +					  DW9768_FOCUS_STEPS, 0);
+> +
+> +	if (hdl->error)
+> +		return hdl->error;
+> +
+> +	dw9768->sd.ctrl_handler = hdl;
+> +
+> +	return 0;
+> +}
+> +
+> +static int dw9768_probe(struct i2c_client *client)
+> +{
+> +	struct device *dev = &client->dev;
+> +	struct dw9768 *dw9768;
+> +	unsigned int i;
+> +	int ret;
+> +
+> +	dw9768 = devm_kzalloc(dev, sizeof(*dw9768), GFP_KERNEL);
+> +	if (!dw9768)
+> +		return -ENOMEM;
+> +
+> +	v4l2_i2c_subdev_init(&dw9768->sd, client, &dw9768_ops);
+> +
+> +	for (i = 0; i < ARRAY_SIZE(dw9768_supply_names); i++)
+> +		dw9768->supplies[i].supply = dw9768_supply_names[i];
+> +
+> +	ret = devm_regulator_bulk_get(dev, ARRAY_SIZE(dw9768_supply_names),
+> +				      dw9768->supplies);
+> +	if (ret) {
+> +		dev_err(dev, "failed to get regulators\n");
+> +		return ret;
+> +	}
+> +
+> +	ret = dw9768_init_controls(dw9768);
+> +	if (ret)
+> +		goto entity_cleanup;
+> +
+> +	dw9768->sd.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
+> +	dw9768->sd.internal_ops = &dw9768_int_ops;
+> +
+> +	ret = media_entity_pads_init(&dw9768->sd.entity, 0, NULL);
+> +	if (ret < 0)
+> +		goto entity_cleanup;
+> +
+> +	dw9768->sd.entity.function = MEDIA_ENT_F_LENS;
+> +
+> +	ret = v4l2_async_register_subdev(&dw9768->sd);
+> +	if (ret < 0)
+> +		goto entity_cleanup;
+> +
+> +	pm_runtime_enable(dev);
 
-> 
->   int i
->   int ret = -EINVAL;
-> 
->   for (i = 0; i < ranges && ret; i++) {
->       ret = linear_range_get_selector_low(&r[i], val, selector);
->   }
->   return ret;
-> 
-> ...
-> 
-> >  * value. If given value is found to be in a range scannins is
-> > I think it is but I am open to all suggestions how to improve doc!
-> 
-> Thanks. At least fix a typo: scannins -> scannings
-> 
+Note that here, the device node may be already created before runtime PM is
+enabled.
 
-Thanks :) I'll fix it
+Could you reverse order of enabling runtime PM and registering the async
+subdev to fix that?
 
-> ...
-> 
-> > Compared to:
-> > for (i = 0; i < ranges; i++) {
-> >         ret = ...
-> > }
-> > 
-> > I wouldn't say so.
-> > 
-> > As I explained, we need to have "temporary" return value in any
-> > case
-> > because we need to return 0 if any of the calls to
-> > linear_range_get_selector_low() returned 0. Return value 0 from
-> > linear_range_get_selector_low() means we found "matching" value
-> > (lower
-> > than input) and selector was updated (although input value was not
-> > in
-> > range).
-> 
-> See above.
+> +
+> +	return 0;
+> +
+> +entity_cleanup:
+> +	v4l2_ctrl_handler_free(&dw9768->ctrls);
+> +	media_entity_cleanup(&dw9768->sd.entity);
+> +	return ret;
+> +}
+> +
+> +static int dw9768_remove(struct i2c_client *client)
+> +{
+> +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
+> +	struct dw9768 *dw9768 = sd_to_dw9768(sd);
+> +
+> +	pm_runtime_disable(&client->dev);
+> +	v4l2_async_unregister_subdev(&dw9768->sd);
+> +	v4l2_ctrl_handler_free(&dw9768->ctrls);
+> +	media_entity_cleanup(&dw9768->sd.entity);
+> +	if (!pm_runtime_status_suspended(&client->dev))
+> +		dw9768_runtime_suspend(&client->dev);
+> +	pm_runtime_set_suspended(&client->dev);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct of_device_id dw9768_of_table[] = {
+> +	{ .compatible = "dongwoon,dw9768" },
+> +	{}
+> +};
+> +MODULE_DEVICE_TABLE(of, dw9768_of_table);
+> +
+> +static const struct dev_pm_ops dw9768_pm_ops = {
+> +	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
+> +				pm_runtime_force_resume)
+> +	SET_RUNTIME_PM_OPS(dw9768_runtime_suspend, dw9768_runtime_resume, NULL)
+> +};
+> +
+> +static struct i2c_driver dw9768_i2c_driver = {
+> +	.driver = {
+> +		.name = DW9768_NAME,
+> +		.pm = IS_ENABLED(CONFIG_PM) ? &dw9768_pm_ops : NULL,
 
+You can drop the condition as the driver depends on CONFIG_PM.
 
-Best Regards
-	--Matti
+> +		.of_match_table = dw9768_of_table,
+> +	},
+> +	.probe_new  = dw9768_probe,
+> +	.remove = dw9768_remove,
+> +};
+> +
+> +module_i2c_driver(dw9768_i2c_driver);
+> +
+> +MODULE_AUTHOR("Dongchun Zhu <dongchun.zhu@mediatek.com>");
+> +MODULE_DESCRIPTION("DW9768 VCM driver");
+> +MODULE_LICENSE("GPL v2");
+
+-- 
+Regards,
+
+Sakari Ailus
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
