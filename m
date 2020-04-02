@@ -6,17 +6,17 @@ X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
 	SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0A292C43331
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 21:33:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B49D8C43331
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 21:46:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CA29E2078B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 21:33:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8272420737
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 21:46:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RCc80rrF";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="auTMkc/6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA29E2078B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FMdA9ME3";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Az1kFmsC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8272420737
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,53 +25,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZAboMXOoAYL1dVImn8WQJVgSH8uD6d33cVW6HBMAvJ0=; b=RCc80rrF4+gP+i
-	57r1Y9AiBqm1bklk3nxTI8Mj5r0IR1wZZYJ6CVtu3uYINqWrRdcyIk0PsdV5GiobGBq4tP1OSMZjf
-	pPEdPTHLFGswzQrtywlic2QSRpcnOjj9GqHSyE2FAll8HBD0ubj5gDKTZY8+LhRySSe6hUoeywB03
-	saF4tz/3NsrejcsiVqv0a24/eLm3sqs6ovXSgZDK2Ib6N34rfDpkXOb5VnQamTrHHe3ZeGl8h1WI0
-	v5oLYhVtGDi/7f3uhvd/jI3rK6HFImIRRxekvDSN2ycyyrnHGI6JGVWB5IuIAYY1Oij9zZY6eMrjc
-	Q1Bcpvo9VT+iMobRx99Q==;
+	List-Owner; bh=CLtTPxH1LjMjkgu9cl2y0HfIBqpxSU9elw0D7EZHA6w=; b=FMdA9ME3LOyHig
+	JTrmzuyAD1TWNzpTH/oRTZvcfynwM/4RekJKbKjYmE6dhCxXm4056hGYA7yk3g9X7qaEc5fD/brBH
+	s3LJN+lI37Hfhk5Bv+7fGat/ulZPUWQmjgRI9Y1YfnYCyeUp6G6YqAdPOCz/7z3hpmhK9ar6O2C/T
+	IOg3Mfuz/hNGlyWc9MJiw1R6H3AM9GmyUreDKYYb3PgGSLZmzsds1hesHxXyOtpZUeKUHUi+aaLgR
+	V90645RIo/90iMf2v8C+iKZNoU5Y45t12k/vUDylqfFA8J/Qq8J6sd/Dbh1qvXb0EmNTjI6IYbZc3
+	1gG4WW7aQ0M910z3VdfQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jK7Sf-0003Wp-CZ; Thu, 02 Apr 2020 21:33:17 +0000
+	id 1jK7fL-0004K2-O1; Thu, 02 Apr 2020 21:46:23 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jK7Sc-0003WN-IT
- for linux-mediatek@lists.infradead.org; Thu, 02 Apr 2020 21:33:15 +0000
-Received: from mail-io1-f47.google.com (mail-io1-f47.google.com
- [209.85.166.47])
+ id 1jK7fJ-0004Ja-Km
+ for linux-mediatek@lists.infradead.org; Thu, 02 Apr 2020 21:46:22 +0000
+Received: from mail-io1-f52.google.com (mail-io1-f52.google.com
+ [209.85.166.52])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8080D2080C
- for <linux-mediatek@lists.infradead.org>; Thu,  2 Apr 2020 21:33:13 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 29D04208E0
+ for <linux-mediatek@lists.infradead.org>; Thu,  2 Apr 2020 21:46:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1585863193;
- bh=sEbEJDY3uNsFFQnIzWiH4TyvsZPJRza9p71kK+FQIQs=;
+ s=default; t=1585863981;
+ bh=jjK1H/hAvk5yQ4FEwfBH7ucz1rxv/FjvZrwzR0iLZno=;
  h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=auTMkc/6TL7cwsVXVtygaZtVE/9AzLt81Z/XNW07UPnrdMbVjTiL7U0M76RnFoOvX
- wzlk5B3vIBkru25w47rgFhHhba5hb5bfo3PFYA4NlbbpkxF3/XKI7wACPLPYTIeYzB
- nCf1vrK6BtDg4hGPROfuKSOBxnAeUFnPPqE/7NrE=
-Received: by mail-io1-f47.google.com with SMTP id s15so5280215ioj.7
- for <linux-mediatek@lists.infradead.org>; Thu, 02 Apr 2020 14:33:13 -0700 (PDT)
-X-Gm-Message-State: AGi0Pua+qhlNiwA9uy3uczR+wI4zmYI1pRgnRHGwSIs+JblOTq0BjUSP
- s8MZ3j7aDzxlNyZ9fyjdxMTviggpEXT6BflBDro=
-X-Google-Smtp-Source: APiQypLHI870DXnGi+SPCNcNnoFCTVHDyToeM11A/grJamJ4IqpuKrPjOk9kN49V1aXouUC4oxxy05Hry8/NW4pm25o=
-X-Received: by 2002:a02:a785:: with SMTP id e5mr5232296jaj.97.1585863192871;
- Thu, 02 Apr 2020 14:33:12 -0700 (PDT)
+ b=Az1kFmsCyVVEKiSnVTQCQbb7LpDlfNCNq0XOZUq06hOENuK2uipb8iz/cwEEF2XfB
+ GKPFw0HWQugSY5NCifihDntuIBEMJq80Obt62Apd9AZCvKDfy3TB2+jPMyE2FiUEZ7
+ lqlXr1EpKgaKctxdS8jdZHRbCLaV/NPTjWlUDEig=
+Received: by mail-io1-f52.google.com with SMTP id o127so5368882iof.0
+ for <linux-mediatek@lists.infradead.org>; Thu, 02 Apr 2020 14:46:21 -0700 (PDT)
+X-Gm-Message-State: AGi0PubPFj4I+4igQaI7FOmQ8Qz33GB2OljeqNRdH8IkQAodUzb5RutP
+ ug+55bs90kMvddImqrHW63Cl+on9B3Y+G4/CL2g=
+X-Google-Smtp-Source: APiQypLC6ryaAD8pUnhVXj/E/W7ovtmW8rrj1k7DAualWv4qMHv6pcGlDQqkDbuw1rs+o3K6zcRDIVNKkrssYo0BkUE=
+X-Received: by 2002:a02:c792:: with SMTP id n18mr5501365jao.5.1585863980559;
+ Thu, 02 Apr 2020 14:46:20 -0700 (PDT)
 MIME-Version: 1.0
 References: <1585128694-13881-1-git-send-email-hanks.chen@mediatek.com>
- <1585128694-13881-4-git-send-email-hanks.chen@mediatek.com>
-In-Reply-To: <1585128694-13881-4-git-send-email-hanks.chen@mediatek.com>
+ <1585128694-13881-5-git-send-email-hanks.chen@mediatek.com>
+In-Reply-To: <1585128694-13881-5-git-send-email-hanks.chen@mediatek.com>
 From: Sean Wang <sean.wang@kernel.org>
-Date: Thu, 2 Apr 2020 14:33:01 -0700
-X-Gmail-Original-Message-ID: <CAGp9LzpaC5opt9=BDUbR6tdr75F8cUxZc9nydJmNwoyq15x7hg@mail.gmail.com>
-Message-ID: <CAGp9LzpaC5opt9=BDUbR6tdr75F8cUxZc9nydJmNwoyq15x7hg@mail.gmail.com>
-Subject: Re: [PATCH v5 3/6] pinctrl: mediatek: avoid virtual gpio trying to
- set reg
+Date: Thu, 2 Apr 2020 14:46:10 -0700
+X-Gmail-Original-Message-ID: <CAGp9Lzrci=qhU6QXPfGg=-dGtKNq1Xn-rhYWvPp-8Wj6v6oJwA@mail.gmail.com>
+Message-ID: <CAGp9Lzrci=qhU6QXPfGg=-dGtKNq1Xn-rhYWvPp-8Wj6v6oJwA@mail.gmail.com>
+Subject: Re: [PATCH v5 4/6] pinctrl: mediatek: add pinctrl support for MT6779
+ SoC
 To: Hanks Chen <hanks.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200402_143314_653921_8B19DE82 
-X-CRM114-Status: GOOD (  19.47  )
+X-CRM114-CacheID: sfid-20200402_144621_725540_772DBA0A 
+X-CRM114-Status: GOOD (  17.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,97 +99,84 @@ Hi Hanks,
 
 On Wed, Mar 25, 2020 at 2:31 AM Hanks Chen <hanks.chen@mediatek.com> wrote:
 >
-> for virtual gpios, they should not do reg setting and
-> should behave as expected for eint function.
+> This adds MT6779 pinctrl driver based on MediaTek pinctrl-paris core.
 >
+
+We can add some useful help text about MT6779 pinctrl, especially
+about specific parts like virtual gpio and its attributes
+Then Acked-by: Sean Wang <sean.wang@kernel.org>
+
 > Signed-off-by: Hanks Chen <hanks.chen@mediatek.com>
 > Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+> Signed-off-by: Andy Teng <andy.teng@mediatek.com>
 > ---
->  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c |   28 ++++++++++++++++++++++
->  drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h |    1 +
->  drivers/pinctrl/mediatek/pinctrl-paris.c         |    7 ++++++
->  3 files changed, 36 insertions(+)
+>  drivers/pinctrl/mediatek/Kconfig              |    7 +
+>  drivers/pinctrl/mediatek/Makefile             |    1 +
+>  drivers/pinctrl/mediatek/pinctrl-mt6779.c     |  775 +++++++++
+>  drivers/pinctrl/mediatek/pinctrl-mtk-mt6779.h | 2085 +++++++++++++++++++++++++
+>  4 files changed, 2868 insertions(+)
+>  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt6779.c
+>  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt6779.h
 >
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> index 20e1c89..087d233 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-> @@ -226,6 +226,31 @@ static int mtk_xt_find_eint_num(struct mtk_pinctrl *hw, unsigned long eint_n)
->         return EINT_NA;
->  }
+> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+> index 701f9af..f628d01 100644
+> --- a/drivers/pinctrl/mediatek/Kconfig
+> +++ b/drivers/pinctrl/mediatek/Kconfig
+> @@ -86,6 +86,13 @@ config PINCTRL_MT6765
+>         default ARM64 && ARCH_MEDIATEK
+>         select PINCTRL_MTK_PARIS
 >
+> +config PINCTRL_MT6779
+> +       bool "Mediatek MT6779 pin control"
+> +       depends on OF
+> +       depends on ARM64 || COMPILE_TEST
+> +       default ARM64 && ARCH_MEDIATEK
+> +       select PINCTRL_MTK_PARIS
+> +
+>  config PINCTRL_MT6797
+>         bool "Mediatek MT6797 pin control"
+>         depends on OF
+> diff --git a/drivers/pinctrl/mediatek/Makefile b/drivers/pinctrl/mediatek/Makefile
+> index a74325a..59c1c60 100644
+> --- a/drivers/pinctrl/mediatek/Makefile
+> +++ b/drivers/pinctrl/mediatek/Makefile
+> @@ -11,6 +11,7 @@ obj-$(CONFIG_PINCTRL_MT2712)  += pinctrl-mt2712.o
+>  obj-$(CONFIG_PINCTRL_MT8135)   += pinctrl-mt8135.o
+>  obj-$(CONFIG_PINCTRL_MT8127)   += pinctrl-mt8127.o
+>  obj-$(CONFIG_PINCTRL_MT6765)   += pinctrl-mt6765.o
+> +obj-$(CONFIG_PINCTRL_MT6779)   += pinctrl-mt6779.o
+>  obj-$(CONFIG_PINCTRL_MT6797)   += pinctrl-mt6797.o
+>  obj-$(CONFIG_PINCTRL_MT7622)   += pinctrl-mt7622.o
+>  obj-$(CONFIG_PINCTRL_MT7623)   += pinctrl-mt7623.o
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6779.c b/drivers/pinctrl/mediatek/pinctrl-mt6779.c
+> new file mode 100644
+> index 0000000..145bf22
+> --- /dev/null
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mt6779.c
+> @@ -0,0 +1,775 @@
+> +// SPDX-License-Identifier: GPL-2.0
 > +/*
-> + * Virtual GPIO only used inside SOC and not being exported to outside SOC.
-> + * Some modules use virtual GPIO as eint (e.g. pmif or usb).
-> + * In MTK platform, external interrupt (EINT) and GPIO is 1-1 mapping
-> + * and we can set GPIO as eint.
-> + * But some modules use specific eint which doesn't have real GPIO pin.
-> + * So we use virtual GPIO to map it.
+> + * Copyright (C) 2019 MediaTek Inc.
+> + * Author: Andy Teng <andy.teng@mediatek.com>
+> + *
 > + */
 > +
-> +bool mtk_is_virt_gpio(struct mtk_pinctrl *hw, unsigned int gpio_n)
-> +{
-> +       const struct mtk_pin_desc *desc;
-> +       bool virt_gpio = false;
+> +#include "pinctrl-mtk-mt6779.h"
+> +#include "pinctrl-paris.h"
 > +
-> +       if (gpio_n >= hw->soc->npins)
-> +               return virt_gpio;
+> +/* MT6779 have multiple bases to program pin configuration listed as the below:
+> + * gpio:0x10005000,     iocfg_rm:0x11C20000, iocfg_br:0x11D10000,
+> + * iocfg_lm:0x11E20000, iocfg_lb:0x11E70000, iocfg_rt:0x11EA0000,
+> + * iocfg_lt:0x11F20000, iocfg_tl:0x11F30000
+> + * _i_based could be used to indicate what base the pin should be mapped into.
+> + */
+> +
+> +#define PIN_FIELD_BASE(s_pin, e_pin, i_base, s_addr, x_addrs, s_bit, x_bits) \
+> +       PIN_FIELD_CALC(s_pin, e_pin, i_base, s_addr, x_addrs, s_bit, x_bits, \
+> +                      32, 0)
+> +
 
-gpio_n should always be less than hw-> soc-> npins, right? If so, we
-can delete the condition from here.
-
-> +
-> +       desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio_n];
-> +
-> +       if (desc->funcs && !desc->funcs[desc->eint.eint_m].name)
-> +               virt_gpio = true;
-> +
-> +       return virt_gpio;
-> +}
-> +
->  static int mtk_xt_get_gpio_n(void *data, unsigned long eint_n,
->                              unsigned int *gpio_n,
->                              struct gpio_chip **gpio_chip)
-> @@ -278,6 +303,9 @@ static int mtk_xt_set_gpio_as_eint(void *data, unsigned long eint_n)
->         if (err)
->                 return err;
->
-> +       if (mtk_is_virt_gpio(hw, gpio_n))
-> +               return 0;
-> +
->         desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio_n];
->
->         err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_MODE,
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-> index 1b7da42..cda1c7a0 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-> @@ -299,4 +299,5 @@ int mtk_pinconf_adv_drive_set(struct mtk_pinctrl *hw,
->  int mtk_pinconf_adv_drive_get(struct mtk_pinctrl *hw,
->                               const struct mtk_pin_desc *desc, u32 *val);
->
-> +bool mtk_is_virt_gpio(struct mtk_pinctrl *hw, unsigned int gpio_n);
->  #endif /* __PINCTRL_MTK_COMMON_V2_H */
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> index 923264d..7fba76d 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> @@ -693,6 +693,13 @@ static int mtk_gpio_get_direction(struct gpio_chip *chip, unsigned int gpio)
->         const struct mtk_pin_desc *desc;
->         int value, err;
->
-> +       /*
-> +        * "Virtual" GPIOs are always and only used for interrupts
-> +        * Since they are only used for interrupts, they are always inputs
-> +        */
-> +       if (mtk_is_virt_gpio(hw, gpio))
-> +               return 1;
-> +
->         desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
->
->         err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DIR, &value);
-> --
-> 1.7.9.5
+<snip>
 
 _______________________________________________
 Linux-mediatek mailing list
