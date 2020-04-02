@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27F5AC2BA16
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 08200C43331
 	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 18:19:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 00119208E0
+	by mail.kernel.org (Postfix) with ESMTPS id CF92520675
 	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 18:19:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YSj6qsAj";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="B0lpHmD3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 00119208E0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cYIBXaBz";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="kY5mHJQS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CF92520675
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,44 +26,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tw9BsyHtGL20OAPWMz5d26r/XyIw6iIhfpu3xUdxoh4=; b=YSj6qsAjZwxOTT
-	0SM4lYRrCRcFJnoQIXXP/CUV8BoiFbbGVj+6KfEnxDllwGpT/R9FwDt7EUZwYvQtDrG6QPABV4WZ5
-	UPNmJ2VAvbUIVTRl2mbZDMFi9O+ZvdEeWx7iupzmDrK+pdFIpj5NuBcuJ610D1dGz5omeAvZ2Cvuk
-	SCjPDDzkLAsVo9SOubhG501NSEIMeQ8htSj1+jauTkGVJU/dc2SQJYc1f/0hyvcI28uNTM6kTRdbp
-	oI0TJJpGFjRydaMs/Joy+s827xHW6njP08v22sILbNTWw2YFKhtzKLkTf4e4R0qkiE+um1VDB0GJ9
-	v+e+mtx43JfI3/pceMdw==;
+	List-Owner; bh=zGdgBH2pEg5fBZq+GT94Xd5Jh6PufNHb32PGKryZoME=; b=cYIBXaBzflQWXZ
+	nb6s+1mUxoEYdWFqd+48+t1IeVokayuh+mtMlEpb7XKT+//VNvD2f1B11SQs50OQwo6/c3kCModpi
+	iZkQDV5TCXUrjhHQi/KQImiWljw2IzsYmYmHELRTk8Cl8LhLgfQ3gRc8R0gxvphfDxghA+KvH1Rg7
+	i/R23XjzG/M2H0lMus1AoAvm6wH4tRJrpsaj4p+wqdvb2TEdH4ntcJjJMZpbkBjDfgMrH/ukwsS8B
+	/knXl6r41VU0hY2YRy23mG/2BWvUqYBTWg8a+wBhFRI700k7GWMl2nHfoLw2fWVfvoRKqjmc0Re4m
+	0PQSafJUETQLLv36omJw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jK4RB-0000va-Bi; Thu, 02 Apr 2020 18:19:33 +0000
+	id 1jK4R9-0000tP-TW; Thu, 02 Apr 2020 18:19:31 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jK4R5-0000nq-Mt
- for linux-mediatek@lists.infradead.org; Thu, 02 Apr 2020 18:19:29 +0000
+ id 1jK4R3-0000lo-PU
+ for linux-mediatek@lists.infradead.org; Thu, 02 Apr 2020 18:19:27 +0000
 Received: from localhost.localdomain.com (unknown [151.48.151.50])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0324020BED;
- Thu,  2 Apr 2020 18:19:25 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id D642A20675;
+ Thu,  2 Apr 2020 18:19:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1585851567;
- bh=cgadFpj6F9DWfBCLRSNBDY3c5hZQkzUcEfymNRsHvJw=;
+ s=default; t=1585851565;
+ bh=MyidAqoRVNnI3DmpagOAqQhZ8n5iKDZELVXxUzmSnGY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=B0lpHmD3pGbolkzx/ebfMXGZfm7fCkek1Q365PLS3UoC6i6phFWBuPzNqRKL2tiqg
- eOs40bJW+If1stxWLTXVKk4xKT9FB9NMqzDep0yiBhU2MnXHeiieG4+3FdUCzKQNoc
- pQ1AC2joI3maTDr+06lhDximbo5eMZvSi9mlBP+w=
+ b=kY5mHJQSpo62fEeuQot7lE/n0NxeewbIWDmiXCWIFYmnQxyJBXH78BsvlH4F7gm/9
+ 5/m8VC6qrzs5DUKUAuJaKYupSMQBLUm+tPBDFh6W4U8Q0s19f9Bzopc1fpMtJcWl7b
+ n7bxSUKjrJDuUlxO8tJjCoRog3XgFE2+FYbWfVeg=
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name
-Subject: [PATCH 8/9] mt76: mt7615: introduce mt7615_wtbl_desc data structure
-Date: Thu,  2 Apr 2020 20:18:55 +0200
-Message-Id: <caec62c349f28d5aa6ce7925666c29e3be513e26.1585851049.git.lorenzo@kernel.org>
+Subject: [PATCH 7/9] mt76: mt7615: rework wtbl key configuration
+Date: Thu,  2 Apr 2020 20:18:54 +0200
+Message-Id: <52827c44ed0250148748d403dd6f5fbaddaa4e0f.1585851049.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1585851049.git.lorenzo@kernel.org>
 References: <cover.1585851049.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200402_111927_809914_A3C4B0FA 
-X-CRM114-Status: UNSURE (   9.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200402_111925_875037_A8D23E7A 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,75 +81,213 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Generalize mt7615_rate_desc introducing mt7615_wtbl_desc and
-mt7615_key_desc data structures in order to configure the hw wtbl
-in a non-atomic context for usb devices
+Remove key dependency from mt7615_mac_wtbl_update_key and export
+mt7615_mac_wtbl_update_key, mt7615_mac_wtbl_update_pk and
+mt7615_mac_wtbl_update_cipher in order to reuse them in usb code.
+Move mt7615_mac_get_cipher in mac.h
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- .../net/wireless/mediatek/mt76/mt7615/mac.c   |  1 -
- .../wireless/mediatek/mt76/mt7615/mt7615.h    | 29 ++++++++++++++++---
- 2 files changed, 25 insertions(+), 5 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7615/mac.c   | 69 +++++++------------
+ .../net/wireless/mediatek/mt76/mt7615/mac.h   | 27 ++++++++
+ .../wireless/mediatek/mt76/mt7615/mt7615.h    | 14 ++++
+ 3 files changed, 64 insertions(+), 46 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index 86e7c1c1b61e..7b8873002441 100644
+index e6e5c02da4fb..86e7c1c1b61e 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -893,7 +893,6 @@ mt7615_mac_update_rate_desc(struct mt7615_phy *phy, struct mt7615_sta *sta,
- 		rd->bw_idx = 7;
- 
- 	rd->rateset = rateset;
--	rd->sta = sta;
- 	rd->bw = bw;
+@@ -962,58 +962,31 @@ void mt7615_mac_set_rates(struct mt7615_phy *phy, struct mt7615_sta *sta,
+ 	sta->wcid.tx_info |= MT_WCID_TX_INFO_SET;
  }
  
+-static enum mt7615_cipher_type
+-mt7615_mac_get_cipher(int cipher)
+-{
+-	switch (cipher) {
+-	case WLAN_CIPHER_SUITE_WEP40:
+-		return MT_CIPHER_WEP40;
+-	case WLAN_CIPHER_SUITE_WEP104:
+-		return MT_CIPHER_WEP104;
+-	case WLAN_CIPHER_SUITE_TKIP:
+-		return MT_CIPHER_TKIP;
+-	case WLAN_CIPHER_SUITE_AES_CMAC:
+-		return MT_CIPHER_BIP_CMAC_128;
+-	case WLAN_CIPHER_SUITE_CCMP:
+-		return MT_CIPHER_AES_CCMP;
+-	case WLAN_CIPHER_SUITE_CCMP_256:
+-		return MT_CIPHER_CCMP_256;
+-	case WLAN_CIPHER_SUITE_GCMP:
+-		return MT_CIPHER_GCMP;
+-	case WLAN_CIPHER_SUITE_GCMP_256:
+-		return MT_CIPHER_GCMP_256;
+-	case WLAN_CIPHER_SUITE_SMS4:
+-		return MT_CIPHER_WAPI;
+-	default:
+-		return MT_CIPHER_NONE;
+-	}
+-}
+-
+-static int
+-mt7615_mac_wtbl_update_key(struct mt7615_dev *dev, struct mt76_wcid *wcid,
+-			   struct ieee80211_key_conf *key,
+-			   enum mt7615_cipher_type cipher,
+-			   enum set_key_cmd cmd)
++int mt7615_mac_wtbl_update_key(struct mt7615_dev *dev,
++			       struct mt76_wcid *wcid,
++			       u8 *key, u8 keylen,
++			       enum mt7615_cipher_type cipher,
++			       enum set_key_cmd cmd)
+ {
+ 	u32 addr = mt7615_mac_wtbl_addr(dev, wcid->idx) + 30 * 4;
+ 	u8 data[32] = {};
+ 
+-	if (key->keylen > sizeof(data))
++	if (keylen > sizeof(data))
+ 		return -EINVAL;
+ 
+ 	mt76_rr_copy(dev, addr, data, sizeof(data));
+ 	if (cmd == SET_KEY) {
+ 		if (cipher == MT_CIPHER_TKIP) {
+ 			/* Rx/Tx MIC keys are swapped */
+-			memcpy(data + 16, key->key + 24, 8);
+-			memcpy(data + 24, key->key + 16, 8);
++			memcpy(data + 16, key + 24, 8);
++			memcpy(data + 24, key + 16, 8);
+ 		}
+ 		if (cipher != MT_CIPHER_BIP_CMAC_128 && wcid->cipher)
+ 			memmove(data + 16, data, 16);
+ 		if (cipher != MT_CIPHER_BIP_CMAC_128 || !wcid->cipher)
+-			memcpy(data, key->key, key->keylen);
++			memcpy(data, key, keylen);
+ 		else if (cipher == MT_CIPHER_BIP_CMAC_128)
+-			memcpy(data + 16, key->key, 16);
++			memcpy(data + 16, key, 16);
+ 	} else {
+ 		if (wcid->cipher & ~BIT(cipher)) {
+ 			if (cipher != MT_CIPHER_BIP_CMAC_128)
+@@ -1027,11 +1000,12 @@ mt7615_mac_wtbl_update_key(struct mt7615_dev *dev, struct mt76_wcid *wcid,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mt7615_mac_wtbl_update_key);
+ 
+-static int
+-mt7615_mac_wtbl_update_pk(struct mt7615_dev *dev, struct mt76_wcid *wcid,
+-			  enum mt7615_cipher_type cipher, int keyidx,
+-			  enum set_key_cmd cmd)
++int mt7615_mac_wtbl_update_pk(struct mt7615_dev *dev,
++			      struct mt76_wcid *wcid,
++			      enum mt7615_cipher_type cipher,
++			      int keyidx, enum set_key_cmd cmd)
+ {
+ 	u32 addr = mt7615_mac_wtbl_addr(dev, wcid->idx), w0, w1;
+ 
+@@ -1063,11 +1037,12 @@ mt7615_mac_wtbl_update_pk(struct mt7615_dev *dev, struct mt76_wcid *wcid,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mt7615_mac_wtbl_update_pk);
+ 
+-static void
+-mt7615_mac_wtbl_update_cipher(struct mt7615_dev *dev, struct mt76_wcid *wcid,
+-			      enum mt7615_cipher_type cipher,
+-			      enum set_key_cmd cmd)
++void mt7615_mac_wtbl_update_cipher(struct mt7615_dev *dev,
++				   struct mt76_wcid *wcid,
++				   enum mt7615_cipher_type cipher,
++				   enum set_key_cmd cmd)
+ {
+ 	u32 addr = mt7615_mac_wtbl_addr(dev, wcid->idx);
+ 
+@@ -1085,6 +1060,7 @@ mt7615_mac_wtbl_update_cipher(struct mt7615_dev *dev, struct mt76_wcid *wcid,
+ 			mt76_clear(dev, addr + 2 * 4, MT_WTBL_W2_KEY_TYPE);
+ 	}
+ }
++EXPORT_SYMBOL_GPL(mt7615_mac_wtbl_update_cipher);
+ 
+ int mt7615_mac_wtbl_set_key(struct mt7615_dev *dev,
+ 			    struct mt76_wcid *wcid,
+@@ -1101,7 +1077,8 @@ int mt7615_mac_wtbl_set_key(struct mt7615_dev *dev,
+ 	spin_lock_bh(&dev->mt76.lock);
+ 
+ 	mt7615_mac_wtbl_update_cipher(dev, wcid, cipher, cmd);
+-	err = mt7615_mac_wtbl_update_key(dev, wcid, key, cipher, cmd);
++	err = mt7615_mac_wtbl_update_key(dev, wcid, key->key, key->keylen,
++					 cipher, cmd);
+ 	if (err < 0)
+ 		goto out;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.h b/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
+index 2c368b99cc0c..f3e0070896a1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
+@@ -394,6 +394,33 @@ enum mt7615_cipher_type {
+ 	MT_CIPHER_GCMP_256,
+ };
+ 
++static inline enum mt7615_cipher_type
++mt7615_mac_get_cipher(int cipher)
++{
++	switch (cipher) {
++	case WLAN_CIPHER_SUITE_WEP40:
++		return MT_CIPHER_WEP40;
++	case WLAN_CIPHER_SUITE_WEP104:
++		return MT_CIPHER_WEP104;
++	case WLAN_CIPHER_SUITE_TKIP:
++		return MT_CIPHER_TKIP;
++	case WLAN_CIPHER_SUITE_AES_CMAC:
++		return MT_CIPHER_BIP_CMAC_128;
++	case WLAN_CIPHER_SUITE_CCMP:
++		return MT_CIPHER_AES_CCMP;
++	case WLAN_CIPHER_SUITE_CCMP_256:
++		return MT_CIPHER_CCMP_256;
++	case WLAN_CIPHER_SUITE_GCMP:
++		return MT_CIPHER_GCMP;
++	case WLAN_CIPHER_SUITE_GCMP_256:
++		return MT_CIPHER_GCMP_256;
++	case WLAN_CIPHER_SUITE_SMS4:
++		return MT_CIPHER_WAPI;
++	default:
++		return MT_CIPHER_NONE;
++	}
++}
++
+ static inline struct mt7615_txp_common *
+ mt7615_txwi_to_txp(struct mt76_dev *dev, struct mt76_txwi_cache *t)
+ {
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-index 588cc38bfac0..bd5967f5b4b7 100644
+index c0bc4913eec4..588cc38bfac0 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-@@ -92,10 +92,6 @@ struct mt7615_rate_set {
- };
+@@ -67,6 +67,7 @@ struct mt7615_vif;
+ struct mt7615_sta;
+ struct mt7615_dfs_pulse;
+ struct mt7615_dfs_pattern;
++enum mt7615_cipher_type;
  
- struct mt7615_rate_desc {
--	struct list_head node;
--
--	struct mt7615_sta *sta;
--
- 	bool rateset;
- 	u16 probe_val;
- 	u16 val[4];
-@@ -103,6 +99,31 @@ struct mt7615_rate_desc {
- 	u8 bw;
- };
+ enum mt7615_hw_txq_id {
+ 	MT7615_TXQ_MAIN,
+@@ -410,6 +411,19 @@ void mt7615_mac_tx_free(struct mt7615_dev *dev, struct sk_buff *skb);
+ int mt7615_mac_wtbl_set_key(struct mt7615_dev *dev, struct mt76_wcid *wcid,
+ 			    struct ieee80211_key_conf *key,
+ 			    enum set_key_cmd cmd);
++int mt7615_mac_wtbl_update_pk(struct mt7615_dev *dev,
++			      struct mt76_wcid *wcid,
++			      enum mt7615_cipher_type cipher,
++			      int keyidx, enum set_key_cmd cmd);
++void mt7615_mac_wtbl_update_cipher(struct mt7615_dev *dev,
++				   struct mt76_wcid *wcid,
++				   enum mt7615_cipher_type cipher,
++				   enum set_key_cmd cmd);
++int mt7615_mac_wtbl_update_key(struct mt7615_dev *dev,
++			       struct mt76_wcid *wcid,
++			       u8 *key, u8 keylen,
++			       enum mt7615_cipher_type cipher,
++			       enum set_key_cmd cmd);
+ void mt7615_mac_reset_work(struct work_struct *work);
  
-+enum mt7615_wtbl_desc_type {
-+	MT7615_WTBL_RATE_DESC,
-+	MT7615_WTBL_KEY_DESC
-+};
-+
-+struct mt7615_key_desc {
-+	enum set_key_cmd cmd;
-+	u32 cipher;
-+	s8 keyidx;
-+	u8 keylen;
-+	u8 *key;
-+};
-+
-+struct mt7615_wtbl_desc {
-+	struct list_head node;
-+
-+	enum mt7615_wtbl_desc_type type;
-+	struct mt7615_sta *sta;
-+
-+	union {
-+		struct mt7615_rate_desc rate;
-+		struct mt7615_key_desc key;
-+	};
-+};
-+
- struct mt7615_sta {
- 	struct mt76_wcid wcid; /* must be first */
- 
+ int mt7615_mcu_wait_response(struct mt7615_dev *dev, int cmd, int seq);
 -- 
 2.25.1
 
