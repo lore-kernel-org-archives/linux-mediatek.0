@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 94BFCC43331
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 18:19:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 27F5AC2BA16
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 18:19:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C3DC20675
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 18:19:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 00119208E0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 18:19:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QkT9Yjdh";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="x/ttmdlj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C3DC20675
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YSj6qsAj";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="B0lpHmD3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 00119208E0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,43 +26,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6+WrebN4zIyUkWnQ2pBY6P780/dnyHaXG8swQlcn/d4=; b=QkT9YjdhK3j3+8
-	Jeqo26TaFZsWOu25E6iiwCoxQqV8iUupt//QLmm9PboHPAepm1lTda6F/PthA8UKKar5nSczzYfi8
-	CDyU5A3HP+XF6z5iTQ9rn8hsYrzDyfkJoWPXb0CfouooKzw2v3U9lNCnWO/QkDs+lkrHQiQMdpVAn
-	b5MPAmff9n58mZtNfgBPiQX+cLw12zvK9pWE52vVDPirXciGYg58vl/K0AHKcMltyLI1tMfIB6lXf
-	9TfRw6Aq8ftZG9GwzHZAUo4DKB3fEPeDOhT4VLzZbOfdFTLALfO6vSJu4TLqwW4vrWzSDcttDBl18
-	G/omQ0a5XxkWUgHXdi7Q==;
+	List-Owner; bh=tw9BsyHtGL20OAPWMz5d26r/XyIw6iIhfpu3xUdxoh4=; b=YSj6qsAjZwxOTT
+	0SM4lYRrCRcFJnoQIXXP/CUV8BoiFbbGVj+6KfEnxDllwGpT/R9FwDt7EUZwYvQtDrG6QPABV4WZ5
+	UPNmJ2VAvbUIVTRl2mbZDMFi9O+ZvdEeWx7iupzmDrK+pdFIpj5NuBcuJ610D1dGz5omeAvZ2Cvuk
+	SCjPDDzkLAsVo9SOubhG501NSEIMeQ8htSj1+jauTkGVJU/dc2SQJYc1f/0hyvcI28uNTM6kTRdbp
+	oI0TJJpGFjRydaMs/Joy+s827xHW6njP08v22sILbNTWw2YFKhtzKLkTf4e4R0qkiE+um1VDB0GJ9
+	v+e+mtx43JfI3/pceMdw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jK4R2-0000kg-SO; Thu, 02 Apr 2020 18:19:24 +0000
+	id 1jK4RB-0000va-Bi; Thu, 02 Apr 2020 18:19:33 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jK4Qz-0000hN-LT
- for linux-mediatek@lists.infradead.org; Thu, 02 Apr 2020 18:19:23 +0000
+ id 1jK4R5-0000nq-Mt
+ for linux-mediatek@lists.infradead.org; Thu, 02 Apr 2020 18:19:29 +0000
 Received: from localhost.localdomain.com (unknown [151.48.151.50])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id D01B5215A4;
- Thu,  2 Apr 2020 18:19:19 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0324020BED;
+ Thu,  2 Apr 2020 18:19:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1585851561;
- bh=KjppzVDV4ZXKFstxVUXkmnuy1kl9/6VwhwlFAYkoy2Y=;
+ s=default; t=1585851567;
+ bh=cgadFpj6F9DWfBCLRSNBDY3c5hZQkzUcEfymNRsHvJw=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=x/ttmdljUoAZUkbtMDs17Ix2SbfxyaUhD+wWOKz50/m0wkK8x4TvzCCcbS7lYGtTy
- 3zm7D/QvuHTcB9A7TzUbyFOqqeW/lohkSgkaoyc7ktxsgVZaPaZMyVne3hDKiatlxg
- Wi/dl4qh+0/T2IO2BRPcF40ZXcWyqpcJf+qVmqQY=
+ b=B0lpHmD3pGbolkzx/ebfMXGZfm7fCkek1Q365PLS3UoC6i6phFWBuPzNqRKL2tiqg
+ eOs40bJW+If1stxWLTXVKk4xKT9FB9NMqzDep0yiBhU2MnXHeiieG4+3FdUCzKQNoc
+ pQ1AC2joI3maTDr+06lhDximbo5eMZvSi9mlBP+w=
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name
-Subject: [PATCH 5/9] mt76: mt7615: move mt7615_mac_wtbl_addr in mac.h
-Date: Thu,  2 Apr 2020 20:18:52 +0200
-Message-Id: <e1da450929d881718cfbbad2ef5da94abea34dcb.1585851049.git.lorenzo@kernel.org>
+Subject: [PATCH 8/9] mt76: mt7615: introduce mt7615_wtbl_desc data structure
+Date: Thu,  2 Apr 2020 20:18:55 +0200
+Message-Id: <caec62c349f28d5aa6ce7925666c29e3be513e26.1585851049.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1585851049.git.lorenzo@kernel.org>
 References: <cover.1585851049.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200402_111921_757179_B103B98F 
-X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-CacheID: sfid-20200402_111927_809914_A3C4B0FA 
+X-CRM114-Status: UNSURE (   9.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -82,45 +82,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Move mt7615_mac_wtbl_addr in mac.h and add inline qualifier in order to
-be reused adding usb support to mt7615 driver
+Generalize mt7615_rate_desc introducing mt7615_wtbl_desc and
+mt7615_key_desc data structures in order to configure the hw wtbl
+in a non-atomic context for usb devices
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 5 -----
- drivers/net/wireless/mediatek/mt76/mt7615/mac.h | 5 +++++
- 2 files changed, 5 insertions(+), 5 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7615/mac.c   |  1 -
+ .../wireless/mediatek/mt76/mt7615/mt7615.h    | 29 ++++++++++++++++---
+ 2 files changed, 25 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index f68fa82ef5b0..e6e5c02da4fb 100644
+index 86e7c1c1b61e..7b8873002441 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -721,11 +721,6 @@ void mt7615_txp_skb_unmap(struct mt76_dev *dev,
- 		mt7615_txp_skb_unmap_hw(dev, &txp->hw);
+@@ -893,7 +893,6 @@ mt7615_mac_update_rate_desc(struct mt7615_phy *phy, struct mt7615_sta *sta,
+ 		rd->bw_idx = 7;
+ 
+ 	rd->rateset = rateset;
+-	rd->sta = sta;
+ 	rd->bw = bw;
  }
  
--static u32 mt7615_mac_wtbl_addr(struct mt7615_dev *dev, int wcid)
--{
--	return MT_WTBL_BASE(dev) + wcid * MT_WTBL_ENTRY_SIZE;
--}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+index 588cc38bfac0..bd5967f5b4b7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+@@ -92,10 +92,6 @@ struct mt7615_rate_set {
+ };
+ 
+ struct mt7615_rate_desc {
+-	struct list_head node;
 -
- bool mt7615_mac_wtbl_update(struct mt7615_dev *dev, int idx, u32 mask)
- {
- 	mt76_rmw(dev, MT_WTBL_UPDATE, MT_WTBL_UPDATE_WLAN_IDX,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.h b/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
-index 422a140fd812..2c368b99cc0c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
-@@ -407,4 +407,9 @@ mt7615_txwi_to_txp(struct mt76_dev *dev, struct mt76_txwi_cache *t)
- 	return (struct mt7615_txp_common *)(txwi + MT_TXD_SIZE);
- }
+-	struct mt7615_sta *sta;
+-
+ 	bool rateset;
+ 	u16 probe_val;
+ 	u16 val[4];
+@@ -103,6 +99,31 @@ struct mt7615_rate_desc {
+ 	u8 bw;
+ };
  
-+static inline u32 mt7615_mac_wtbl_addr(struct mt7615_dev *dev, int wcid)
-+{
-+	return MT_WTBL_BASE(dev) + wcid * MT_WTBL_ENTRY_SIZE;
-+}
++enum mt7615_wtbl_desc_type {
++	MT7615_WTBL_RATE_DESC,
++	MT7615_WTBL_KEY_DESC
++};
 +
- #endif
++struct mt7615_key_desc {
++	enum set_key_cmd cmd;
++	u32 cipher;
++	s8 keyidx;
++	u8 keylen;
++	u8 *key;
++};
++
++struct mt7615_wtbl_desc {
++	struct list_head node;
++
++	enum mt7615_wtbl_desc_type type;
++	struct mt7615_sta *sta;
++
++	union {
++		struct mt7615_rate_desc rate;
++		struct mt7615_key_desc key;
++	};
++};
++
+ struct mt7615_sta {
+ 	struct mt76_wcid wcid; /* must be first */
+ 
 -- 
 2.25.1
 
