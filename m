@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7BEE8C43331
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 18:19:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 198F3C2BA16
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 18:19:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 53A2B20675
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 18:19:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E277820675
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Apr 2020 18:19:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Via1L92i";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="jNTwI+T9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 53A2B20675
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="r++4Sw6m";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="a1rdQz4u"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E277820675
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,44 +26,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WrCpIITfrVbMDlOr6FXpT6sSpcOuaKy54rhkcTrjpik=; b=Via1L92ihMw9MO
-	yzAdqO0nZ+nPM2Gwa4jaJI6IRAWXOX54sNBEheUDXkTsABV/REuhMSF8LzEIJA0T+b8i2RbV8c3j7
-	eQZvcrRlhnoMe9ZE6ylgx97zCrUvNHqqnYgPnDSk5f1Cge5oyQluN3hEuJrM2rASQUsksBw9AYeBI
-	mg6x2VkFfSopGuA0cqmVJiVgYP6p+4ZjIrq1J0NZ0u5EhnTsF25A+K27w74KWQmG2beRusyMDl+Su
-	BbniGHz7aH6RLwIMR7O6Jq0j5yKxUDcPSZJsdbOq2K8x6nzRGsUb9GfobwagnKcyN2IKJMjEVey2C
-	3JyX1lkJvGzVbr/unWVg==;
+	List-Owner; bh=ggvI05lCyBmPVd0dUa6EzYXFxdrpaJmRbRkcC1/1Lyc=; b=r++4Sw6m+23pjU
+	Z3ykFSzVCZrRNwZMIcrAQvWpoGQ/e20wtiC2IVi1//wqpXGwWVxKc0GhWdfFjBcQPQdhl7Djh4BL7
+	6s8atsmhyx+hZswoX3YNgTFXjX1bCi+yxdEYI3Z5zS9e/nqjFWVbpObPM1iCL2Ni2wxltWqfYRttr
+	p5MjeiqJY1230y7HXGsXS7LZWvgyQ1JTvh2Wsppq73UsT4YsEyqF4fOnRR1XpRUUoSrc0dcYlmKB8
+	coQS8Sltwb0iyNenT5fkQV3vscvE3HKQu1+wberT4W7hMZgMinOORA5bXqsFcfvbSo+ltnqMsePPG
+	635Qs6MfMVBZP30M050w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jK4Qx-0000eS-5B; Thu, 02 Apr 2020 18:19:19 +0000
+	id 1jK4R5-0000n2-0C; Thu, 02 Apr 2020 18:19:27 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jK4Qu-0000cz-3t
- for linux-mediatek@lists.infradead.org; Thu, 02 Apr 2020 18:19:17 +0000
+ id 1jK4R1-0000jV-RD
+ for linux-mediatek@lists.infradead.org; Thu, 02 Apr 2020 18:19:25 +0000
 Received: from localhost.localdomain.com (unknown [151.48.151.50])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5F8E720BED;
- Thu,  2 Apr 2020 18:19:14 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id B1277208E0;
+ Thu,  2 Apr 2020 18:19:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1585851555;
- bh=KjgJPaETZxp1kZfdNo/7sMHsHLl7eVpB6vRIBWMpiz0=;
+ s=default; t=1585851563;
+ bh=vzaViAtUmAV7N15ae5o71qDlMqQiH1rYvo2bCHDWI1s=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=jNTwI+T9mcZEDeXPDaDu3AE75BdUKZRwrQBHS4q+T+8y1GLT3OQi+1YogUIC0iB31
- aavFW72LnKKctg7QhgLAJrUj6rhrRfdwvs2hL6xZWtGHw4t5Dxx429YDFPziEyMUqn
- DTs5yD/yDX3eJumjzfAzyDnA2hy0VYeNBqd6xtvw=
+ b=a1rdQz4ugvkntZPua7+2sY6iIpQzVnueV5NOdnRLxICUkj5Ng2+eIpZAQ80LBWant
+ aI2D7u0UkoHskaph0yFADzSj3ZgxJJCV8vUOwehrTjfN4ZeeaMCIQ6iuj4OtZJrFzJ
+ QW/tKrdGGPMQbamAIj5O7klheEsOhVgTeIoY0eyw=
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name
-Subject: [PATCH 2/9] mt76: mt7615: introduce mt7663u support to
- mt7615_write_txwi
-Date: Thu,  2 Apr 2020 20:18:49 +0200
-Message-Id: <342c53e345ef63211943a00a46ba183f538b2ae4.1585851049.git.lorenzo@kernel.org>
+Subject: [PATCH 6/9] mt76: mt76u: rely on mt7622 queue scheme for mt7663u
+Date: Thu,  2 Apr 2020 20:18:53 +0200
+Message-Id: <ea99d9b8bc10f202614c249038a707a8d7b45212.1585851049.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1585851049.git.lorenzo@kernel.org>
 References: <cover.1585851049.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200402_111916_196388_88EFD7C0 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20200402_111923_904764_439630A3 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,78 +81,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Extend mt7615_write_txwi routine to support usb txwi configuration
+Rely on the mt7622 endpoint definitions for mt7663u
 
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 12 ++++++++----
- drivers/net/wireless/mediatek/mt76/mt7615/mac.h |  1 +
- 2 files changed, 9 insertions(+), 4 deletions(-)
+ drivers/net/wireless/mediatek/mt76/usb.c | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index c988a104f911..285d3af621ba 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -526,11 +526,12 @@ int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
- 	struct ieee80211_vif *vif = info->control.vif;
- 	struct mt76_phy *mphy = &dev->mphy;
- 	bool ext_phy = info->hw_queue & MT_TX_HW_QUEUE_EXT_PHY;
-+	bool is_usb = mt76_is_usb(&dev->mt76);
- 	int tx_count = 8;
- 	u8 fc_type, fc_stype, p_fmt, q_idx, omac_idx = 0, wmm_idx = 0;
- 	__le16 fc = hdr->frame_control;
-+	u32 val, sz_txd = is_usb ? MT_USB_TXD_SIZE : MT_TXD_SIZE;
- 	u16 seqno = 0;
--	u32 val;
+diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
+index a981da6c35a5..fb97ea25b4d4 100644
+--- a/drivers/net/wireless/mediatek/mt76/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/usb.c
+@@ -1009,8 +1009,19 @@ static void mt76u_tx_kick(struct mt76_dev *dev, struct mt76_queue *q)
  
- 	if (vif) {
- 		struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
-@@ -554,7 +555,7 @@ int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
- 	if (ieee80211_is_data(fc) || ieee80211_is_bufferable_mmpdu(fc)) {
- 		q_idx = wmm_idx * MT7615_MAX_WMM_SETS +
- 			skb_get_queue_mapping(skb);
--		p_fmt = MT_TX_TYPE_CT;
-+		p_fmt = is_usb ? MT_TX_TYPE_SF : MT_TX_TYPE_CT;
- 	} else if (beacon) {
- 		if (ext_phy)
- 			q_idx = MT_LMAC_BCN1;
-@@ -566,10 +567,10 @@ int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
- 			q_idx = MT_LMAC_ALTX1;
- 		else
- 			q_idx = MT_LMAC_ALTX0;
--		p_fmt = MT_TX_TYPE_CT;
-+		p_fmt = is_usb ? MT_TX_TYPE_SF : MT_TX_TYPE_CT;
- 	}
+ static u8 mt76u_ac_to_hwq(struct mt76_dev *dev, u8 ac)
+ {
+-	if (mt76_chip(dev) == 0x7663)
+-		return ac ^ 0x3;
++	if (mt76_chip(dev) == 0x7663) {
++		static const u8 wmm_queue_map[] = {
++			[IEEE80211_AC_VO] = 0,
++			[IEEE80211_AC_VI] = 1,
++			[IEEE80211_AC_BE] = 2,
++			[IEEE80211_AC_BK] = 4,
++		};
++
++		if (WARN_ON(ac >= ARRAY_SIZE(wmm_queue_map)))
++			return 2; /* BE */
++
++		return wmm_queue_map[ac];
++	}
  
--	val = FIELD_PREP(MT_TXD0_TX_BYTES, skb->len + MT_TXD_SIZE) |
-+	val = FIELD_PREP(MT_TXD0_TX_BYTES, skb->len + sz_txd) |
- 	      FIELD_PREP(MT_TXD0_P_IDX, MT_TX_PORT_IDX_LMAC) |
- 	      FIELD_PREP(MT_TXD0_Q_IDX, q_idx);
- 	txwi[0] = cpu_to_le32(val);
-@@ -663,6 +664,9 @@ int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
- 
- 	txwi[7] = FIELD_PREP(MT_TXD7_TYPE, fc_type) |
- 		  FIELD_PREP(MT_TXD7_SUB_TYPE, fc_stype);
-+	if (is_usb)
-+		txwi[8] = FIELD_PREP(MT_TXD8_L_TYPE, fc_type) |
-+			  FIELD_PREP(MT_TXD8_L_SUB_TYPE, fc_stype);
- 
- 	return 0;
+ 	return mt76_ac_to_hwq(ac);
  }
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.h b/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
-index e0b89257db90..422a140fd812 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
-@@ -165,6 +165,7 @@ enum tx_phy_bandwidth {
- #define MT_CT_INFO_NONE_CIPHER_FRAME	BIT(3)
- #define MT_CT_INFO_HSR2_TX		BIT(4)
- 
-+#define MT_USB_TXD_SIZE			(MT_TXD_SIZE + 8 * 4)
- #define MT_TXD_SIZE			(8 * 4)
- 
- #define MT_TXD0_P_IDX			BIT(31)
 -- 
 2.25.1
 
