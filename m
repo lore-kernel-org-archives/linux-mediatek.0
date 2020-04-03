@@ -2,90 +2,81 @@ Return-Path: <SRS0=YIXp=5T=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E423C43331
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 06:17:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B96F3C43331
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 08:04:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DF9DE206E9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 06:17:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8A95320B1F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 08:04:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CASM9mNV";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="DtAiTGcq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DF9DE206E9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bvGgUuQr";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ocEDhnna"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8A95320B1F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h4VtXhSKuRwW5x/nNfsRIq+tjvLFLVgz9rLw5kQeIsI=; b=CASM9mNVKHZjrM
-	+k75JsBUATJEEziVOL6hPkE+OQjXCMwrCFqz9jiaIlbPDPoQYoP9cfrEc0iKrHtUuMMXWnvKdITD2
-	Hwl/kg1Cfv0X00u4GMtDxPPkZVpPxRg/IbCxMouPWWHkSow2XacKCcYGqJWqIDIfjd2PP8wy64B85
-	bHkIGJXT52GjQODS6oby70pRxfIRvS4+0nAPddD2SGjvNoLxerSK4BtAABOVI9f+J568hWu1bplhA
-	RatBRpB2hlSlXpQTqww25cTiVGbb70rQZlVl8DfjdoxYckyJx68cimtOckVV3uKo+R39zBjdm0bJN
-	W+6yRmMQAZflSAh9unQw==;
+	List-Owner; bh=YumjHXLVsRJjDFXADp3+J6BYmqHFZx0yIy1fQytHfBs=; b=bvGgUuQrsGNBqc
+	XzZPCFPMBT4KQgX3wjVfOlKG0INyA2miBOA7F98JcfVxtpWvcu7sN6NqHNP/kg9yzKq+d5Y1XTNZk
+	KsnkCet9rsQj2DBTB/vuuUWCqU1GWhs+yDhraKveVHmcnCWK7rwnro3Cl2tF3T0DnxWbHns4MDQXk
+	tagFqv/xi4iWmO6kVRF/0gB/2OPnC03HXaQPRy9AC4aN8bcoy9psCIARj6zcxFmw3+/MHI1WMPa/o
+	4lM7nzFr8SeAJ9+7yEZlA5VkLeW8Gc+4l+L16uFryrYbyFS/pl8xE1BMBvmdcuj7CTNnLD/e6Susy
+	EU903vH/d9L4TcFRtjyA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKFdb-0003K4-6Z; Fri, 03 Apr 2020 06:17:07 +0000
-Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
+	id 1jKHJG-0003ib-1P; Fri, 03 Apr 2020 08:04:14 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKFdY-0003JY-TD
- for linux-mediatek@lists.infradead.org; Fri, 03 Apr 2020 06:17:06 +0000
-Received: by mail-pj1-x1042.google.com with SMTP id nu11so2515087pjb.1
- for <linux-mediatek@lists.infradead.org>; Thu, 02 Apr 2020 23:17:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=V3yS2lItqVOfGsXBFcK1Q03oHDR0TygtC5pNqATurHQ=;
- b=DtAiTGcqQSpV/avwmNRjvHO1qDLd3tZsNHf3k+C+AgpkKHnLK0/VqwekGEJ4JQQ0uq
- wXTt47KxFzE5AetYqr4lZNkUqqQvCxPwyDnzOdlwb2XRAY3sI63HyI8fCcfwegKRCIJx
- Wr/jdxxl1E+403E/ErpRJFCWlSoK8AeJ20XUk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=V3yS2lItqVOfGsXBFcK1Q03oHDR0TygtC5pNqATurHQ=;
- b=Vr0GJztbouoZTFK11rSIAEKfrLyVuCmG66JbTmGEc7mgTJFbRjo6QKXrJHJwLMRwGp
- rENkJWEnYYqRU1HG0qPFvUc2YG/Hm7Z8JY/5Itr8SIr4qGDLY1WD69faEhZW5Np6Zo/g
- n/yZ5yGRttcAhyp6mPAw1lzAYOy9q2UFrQxbJvvcj3x/SxhvnXtgyGoMCYJ0xhisJL8s
- gGTXl4gOihvwDbnO9l3qqznkLvdv09HjBi2eup57WtB5qDAi9U3/K84ec3CljL0192JZ
- R/AYhKHzHKaf2liCI/+LIfD70TnlwYOXWhaEOH0av1kOVSWmJxKijHS6FAo9NQKJ9r0G
- riMg==
-X-Gm-Message-State: AGi0PuY4eRx15DdUt0/dav8tMbthPZS1ljfhOtF+4eIFKesxmIMRZS9s
- zGoliP+G9YjXaLb2+hVBGFuE3L4pz1Q=
-X-Google-Smtp-Source: APiQypIfdvNECIvPqpS9j1Je0/VhoIp1fwuOxvcOdFCpTdrAuJom39k4dRyIAdcEib9WicDh48gCcQ==
-X-Received: by 2002:a17:902:5a44:: with SMTP id
- f4mr6388995plm.306.1585894623979; 
- Thu, 02 Apr 2020 23:17:03 -0700 (PDT)
-Received: from mail-pl1-f181.google.com (mail-pl1-f181.google.com.
- [209.85.214.181])
- by smtp.gmail.com with ESMTPSA id a71sm5173715pfa.162.2020.04.02.23.17.03
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 02 Apr 2020 23:17:03 -0700 (PDT)
-Received: by mail-pl1-f181.google.com with SMTP id k18so2317578pll.6
- for <linux-mediatek@lists.infradead.org>; Thu, 02 Apr 2020 23:17:03 -0700 (PDT)
-X-Received: by 2002:a1f:1846:: with SMTP id 67mr5194780vky.32.1585894163062;
- Thu, 02 Apr 2020 23:09:23 -0700 (PDT)
+ id 1jKHJB-0003cC-MD; Fri, 03 Apr 2020 08:04:11 +0000
+X-UUID: efab2031cd2b4b40af4bb46591fdf716-20200403
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=SXMSLBQsSUZgUuEZUoBkJ70NApTii4m2ZG6S3nFKqQw=; 
+ b=ocEDhnna7MEmJFSM1HpX3cO5awiWG52jGjOfBbtvblABStTwQ/Z0Nfwy6vDGSG1gIZ2/AGYB/AC9Gkd0eW93mTcxGWFlA9b88jmVm7pOqatBRzz+V/eECnCXTTnp3Sa968z3EL5yT2ldkT7EGqpqqHW2+iVxMBRrT+62QuwSLbc=;
+X-UUID: efab2031cd2b4b40af4bb46591fdf716-20200403
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <jitao.shi@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 63590112; Fri, 03 Apr 2020 00:04:01 -0800
+Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Fri, 3 Apr 2020 01:04:01 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N2.mediatek.inc
+ (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1395.4;
+ Fri, 3 Apr 2020 16:03:59 +0800
+Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
+ MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1395.4 via Frontend Transport; Fri, 3 Apr 2020 16:03:57 +0800
+From: Jitao Shi <jitao.shi@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
+ <linux-kernel@vger.kernel.org>
+Subject: [PATCH v14 3/3] drm/mediatek: set dpi pin mode to gpio low to avoid
+ leakage current
+Date: Fri, 3 Apr 2020 16:03:50 +0800
+Message-ID: <20200403080350.95826-4-jitao.shi@mediatek.com>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20200403080350.95826-1-jitao.shi@mediatek.com>
+References: <20200403080350.95826-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-References: <20200403052900.258855-1-evanbenn@chromium.org>
-In-Reply-To: <20200403052900.258855-1-evanbenn@chromium.org>
-From: Evan Benn <evanbenn@chromium.org>
-Date: Fri, 3 Apr 2020 17:08:52 +1100
-X-Gmail-Original-Message-ID: <CAKz_xw1w=uKEV_p94cT8uL-4WN9mRkQE47N=4QdE+_NOFQ-2kg@mail.gmail.com>
-Message-ID: <CAKz_xw1w=uKEV_p94cT8uL-4WN9mRkQE47N=4QdE+_NOFQ-2kg@mail.gmail.com>
-Subject: Re: [PATCH v2 0/2] Add a watchdog driver that uses ARM Secure Monitor
- Calls.
-To: LKML <linux-kernel@vger.kernel.org>
+X-TM-SNTS-SMTP: 1F8009A16C3C12A076DB5621D0BD997557D38E7207AD03FA9FD39F901D19D8562000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200402_231704_955167_92F3FA7A 
-X-CRM114-Status: GOOD (  19.19  )
+X-CRM114-CacheID: sfid-20200403_010409_730661_703821A4 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,89 +88,97 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
- Leonard Crestez <leonard.crestez@nxp.com>, Will Deacon <will@kernel.org>,
- Xingyu Chen <xingyu.chen@amlogic.com>, Rob Herring <robh@kernel.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Anson Huang <Anson.Huang@nxp.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Valentin Schneider <valentin.schneider@arm.com>,
- Guenter Roeck <linux@roeck-us.net>, devicetree@vger.kernel.org,
- LINUX-WATCHDOG <linux-watchdog@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Vinod Koul <vkoul@kernel.org>,
- Olof Johansson <olof@lixom.net>, Julius Werner <jwerner@chromium.org>,
- Shawn Guo <shawnguo@kernel.org>, "David S. Miller" <davem@davemloft.net>
+Cc: devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>,
+ srv_heupstream@mediatek.com, huijuan.xie@mediatek.com, stonea168@163.com,
+ cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org,
+ bibby.hsieh@mediatek.com, ck.hu@mediatek.com, yingjoe.chen@mediatek.com,
+ eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Apologies I forgot to add this note to my cover letter.
+Config dpi pins mode to output and pull low when dpi is disabled.
+Aovid leakage current from some dpi pins (Hsync Vsync DE ... ).
 
-Xingyu do you mind seeing if you can modify your ATF firmware to match
-this driver?
-We can add a compatible or make other changes to suit you.
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 31 ++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
 
-Thanks
-
-
-On Fri, Apr 3, 2020 at 4:29 PM Evan Benn <evanbenn@chromium.org> wrote:
->
-> This is currently supported in firmware deployed on oak, hana and elm mt8173
-> chromebook devices. The kernel driver is written to be a generic SMC
-> watchdog driver.
->
-> Arm Trusted Firmware upstreaming review:
->     https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/3405
->
-> Patch to add oak, hana, elm device tree:
->     https://lore.kernel.org/linux-arm-kernel/20200110073730.213789-1-hsinyi@chromium.org/
-> I would like to add the device tree support after the above patch is
-> accepted.
->
-> Changes in v3:
-> - Change name back to arm
-> - Add optional get_timeleft op
-> - change name to arm_smc_wdt
->
-> Changes in v2:
-> - Change name arm > mt8173
-> - use watchdog_stop_on_reboot
-> - use watchdog_stop_on_unregister
-> - use devm_watchdog_register_device
-> - remove smcwd_shutdown, smcwd_remove
-> - change error codes
->
-> Evan Benn (1):
->   dt-bindings: watchdog: Add ARM smc wdt for mt8173 watchdog
->
-> Julius Werner (1):
->   watchdog: Add new arm_smd_wdt watchdog driver
->
->  .../bindings/watchdog/arm-smc-wdt.yaml        |  30 +++
->  MAINTAINERS                                   |   7 +
->  arch/arm64/configs/defconfig                  |   1 +
->  drivers/watchdog/Kconfig                      |  13 ++
->  drivers/watchdog/Makefile                     |   1 +
->  drivers/watchdog/arm_smc_wdt.c                | 181 ++++++++++++++++++
->  6 files changed, 233 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/watchdog/arm-smc-wdt.yaml
->  create mode 100644 drivers/watchdog/arm_smc_wdt.c
->
-> --
-> 2.26.0.292.g33ef6b2f38-goog
->
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 087f5ce732e1..1e01254788d9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -10,7 +10,9 @@
+ #include <linux/kernel.h>
+ #include <linux/of.h>
+ #include <linux/of_device.h>
++#include <linux/of_gpio.h>
+ #include <linux/of_graph.h>
++#include <linux/pinctrl/consumer.h>
+ #include <linux/platform_device.h>
+ #include <linux/types.h>
+ 
+@@ -74,6 +76,9 @@ struct mtk_dpi {
+ 	enum mtk_dpi_out_yc_map yc_map;
+ 	enum mtk_dpi_out_bit_num bit_num;
+ 	enum mtk_dpi_out_channel_swap channel_swap;
++	struct pinctrl *pinctrl;
++	struct pinctrl_state *pins_gpio;
++	struct pinctrl_state *pins_dpi;
+ 	int refcount;
+ };
+ 
+@@ -379,6 +384,9 @@ static void mtk_dpi_power_off(struct mtk_dpi *dpi)
+ 	if (--dpi->refcount != 0)
+ 		return;
+ 
++	if (dpi->pinctrl && dpi->pins_gpio)
++		pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
++
+ 	mtk_dpi_disable(dpi);
+ 	clk_disable_unprepare(dpi->pixel_clk);
+ 	clk_disable_unprepare(dpi->engine_clk);
+@@ -403,6 +411,9 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
+ 		goto err_pixel;
+ 	}
+ 
++	if (dpi->pinctrl && dpi->pins_dpi)
++		pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
++
+ 	mtk_dpi_enable(dpi);
+ 	return 0;
+ 
+@@ -705,6 +716,26 @@ static int mtk_dpi_probe(struct platform_device *pdev)
+ 	dpi->dev = dev;
+ 	dpi->conf = (struct mtk_dpi_conf *)of_device_get_match_data(dev);
+ 
++	dpi->pinctrl = devm_pinctrl_get(&pdev->dev);
++	if (IS_ERR(dpi->pinctrl)) {
++		dpi->pinctrl = NULL;
++		dev_dbg(&pdev->dev, "Cannot find pinctrl!\n");
++	}
++	if (dpi->pinctrl) {
++		dpi->pins_gpio = pinctrl_lookup_state(dpi->pinctrl, "sleep");
++		if (IS_ERR(dpi->pins_gpio)) {
++			dpi->pins_gpio = NULL;
++			dev_dbg(&pdev->dev, "Cannot find pinctrl idle!\n");
++		}
++		if (dpi->pins_gpio)
++			pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
++
++		dpi->pins_dpi = pinctrl_lookup_state(dpi->pinctrl, "default");
++		if (IS_ERR(dpi->pins_dpi)) {
++			dpi->pins_dpi = NULL;
++			dev_dbg(&pdev->dev, "Cannot find pinctrl active!\n");
++		}
++	}
+ 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	dpi->regs = devm_ioremap_resource(dev, mem);
+ 	if (IS_ERR(dpi->regs)) {
+-- 
+2.21.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
