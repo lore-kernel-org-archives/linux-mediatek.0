@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 98C6EC43331
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 08:48:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 482ADC2BA15
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 08:49:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6D430206E9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 08:48:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 016FF206E9
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 08:49:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="k27eZ8YH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D430206E9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tUdarjwa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 016FF206E9
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fi.rohmeurope.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,54 +25,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TlG6Cs8XO5SdSSt5GM9nbyTzc6Pb7xVfIMfxTGN7ePc=; b=k27eZ8YHyLXtRW
-	HVEeYoTzWVPccscpslmgTwVhi1zbPnQCW5ePfnrMW/PQpiZqkjrPBPMAFkcM/5X65E28t0aI0f3s2
-	zuiaHp0kjmQ77cmoALCoXgzIE9NTpEBnZwMXeQatWFF/S2O2f2NNgnP8Oiom9ydd9pUY2dIFcC1/Q
-	GsnGFjF0oWm5wxBCsGRFOpQdTYsRAulxSM1oMmX82rYlu/XO3+WXiDkg7n1SyV7OjMmv5jbxoo5Wr
-	uxlygKceh9se5rJ6LohWZND7EpA4WbZpzAMLm2XfItpZb3YHmVCQwwnKrGLN2liP2LswEP0yelxGq
-	vgoO4kVqRhzcWAeIzhDA==;
+	List-Owner; bh=1KF2lypv0c7/GpSFu7Ah92p6FdSicUXf10blYKGoykw=; b=tUdarjwa3qILkZ
+	Con9sxSty0xnKmDc1kgfqsmvehsvRzC2Gzjh1z4uzZUhBEJhsSm4XHKO6Ecc845I6IrLx3dD1ZW9n
+	fL3VV4zX3qEYKgwghxvoRO8Tk52zjcDRngP8LHuXfviPhnCR9zPtagh4Gqmu5dX28h4WapaIUrBzS
+	v8QkekMuvSgc1cjABJZERoLXrojkw5A+uLamFR4ygmAX1l1TbWFncWpgGnvYTgphYxYcv5ybRaZpa
+	EaiFUaRYu+7q9imll+LE9BDYI8P4pnKUz0tbT85UdC70QXEYbD+Q2Uky849j/CEzGc038MT4hV8W4
+	H26jjCsVgGcZN2g/H5ng==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKI07-0002Z1-NQ; Fri, 03 Apr 2020 08:48:31 +0000
-Received: from mail-lj1-f195.google.com ([209.85.208.195])
+	id 1jKI0c-0002y8-QH; Fri, 03 Apr 2020 08:49:02 +0000
+Received: from mail-lj1-f193.google.com ([209.85.208.193])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKHz9-0001d0-Pe; Fri, 03 Apr 2020 08:47:34 +0000
-Received: by mail-lj1-f195.google.com with SMTP id f20so6171649ljm.0;
- Fri, 03 Apr 2020 01:47:30 -0700 (PDT)
+ id 1jKHzW-00020l-E3; Fri, 03 Apr 2020 08:47:56 +0000
+Received: by mail-lj1-f193.google.com with SMTP id n17so6118812lji.8;
+ Fri, 03 Apr 2020 01:47:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=Xkr591ifnpDArEm22HgvML9AW3onTIbe/CGh8sS5ILg=;
- b=REHu/7cWVER2iP62wAeNAfk01dDbTfjYN+La8Op/VLT8u4a4PYGpuZZvfPc6+KjNPU
- xpY8wGlrpARybw8EmDE2PHjTQTn7NtJW6ZsC5LZaast2BrJ7tbiHIctfkaMqdOB5zUUe
- 04ejL5zEo/wUZg1hbSPchppO3dsQGxqE4HZxebPjMEMu71NM9ItBicz2rA7x3lSumh0V
- fpPL9XvR466RtpvQePmM2ldBu+Wl9YnLa1cJByQAKvkp+HakPghxMlG+CRz5QQke8yk2
- mXtQGSl0vMQZiNMSRmcLBJrX2yFmktAzdOCWzhP72jIfIpowTL4H2LhYr+DAQVwLJeEU
- mvZw==
-X-Gm-Message-State: AGi0PubOpeOohxFyFCT+whJAxT/ZdfNHzeVdnXqk6a1P62mu6vgMsbuC
- wPoDzWDAw1dRPa0knwTohRs=
-X-Google-Smtp-Source: APiQypJTP+V5gtJDfQzyQQ1gRemd8GDOaUaga7HFn7379Nhp7NP1lvHxp+JFAkv0C1/7diRM0W9uaw==
-X-Received: by 2002:a2e:854e:: with SMTP id u14mr4235268ljj.95.1585903649302; 
- Fri, 03 Apr 2020 01:47:29 -0700 (PDT)
+ bh=ulevoqefVf2yycDgxYFFdsJLYQsiBe600G16ZBILiDA=;
+ b=VMfspz7iwhjEUgs6HAtA9A2lZD2k4MJNrse8cWFnkzsNZxuZUZ11RR7Ay20olKV/pX
+ MmJrf9vd50I3SGgSC+35MDTNYidESDmZMeMj1Ok8Pm4uLvOTgWjIzVUSKjFhLENqRVh7
+ wgM7bzvOGVDb2p+Gw9m+hBh/5ruUMXC5ozbVvfVCd40pvHt6ZPDYwhxihg0fuyCbGuFe
+ jbbjvG1L+Q6FmpLmy/x7Cugzh+N0rx7/SS7J1Hpyp8f/u9AsWEJXei8DvIaDuKK7ObOv
+ 0XVriuPb5L3aooJ+sC/vNJOeplzeIYzOeleB97z/f8kmImR/8xZ5rrECznejJXDYjG1I
+ RCkw==
+X-Gm-Message-State: AGi0PuaYq3LQYu8BCuk/NXNw2RQdTG/dklKyoNDKVK7/wkA11aoyghyA
+ T6/QlwFeTa5Li5dtzqgrtXw=
+X-Google-Smtp-Source: APiQypJ+EsUI3VZbF2XmukjnX9P4hA4FJqu4rs8IiSPRYnYJjtz6NxSmyA1AQqr5z486brP8Ckw3fw==
+X-Received: by 2002:a05:651c:96:: with SMTP id 22mr4395817ljq.27.1585903672034; 
+ Fri, 03 Apr 2020 01:47:52 -0700 (PDT)
 Received: from localhost.localdomain
  (dc7t7ryyyyyyyyyyyyybt-3.rev.dnainternet.fi. [2001:14ba:16e1:b700::3])
- by smtp.gmail.com with ESMTPSA id s6sm4652396ljm.58.2020.04.03.01.47.26
+ by smtp.gmail.com with ESMTPSA id n24sm4608769lji.19.2020.04.03.01.47.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Apr 2020 01:47:28 -0700 (PDT)
-Date: Fri, 3 Apr 2020 11:47:21 +0300
+ Fri, 03 Apr 2020 01:47:51 -0700 (PDT)
+Date: Fri, 3 Apr 2020 11:47:43 +0300
 From: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
 To: matti.vaittinen@fi.rohmeurope.com, mazziesaccount@gmail.com
-Subject: [PATCH v8 07/10] power: supply: bd70528: use linear ranges
-Message-ID: <4a70a243cc169ddb2c2ea3a78a4550a51dadd8fd.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
+Subject: [PATCH v8 08/10] power: supply: add battery parameters
+Message-ID: <48f250bf6928929f60764c4334c60611b46233c4.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
 References: <cover.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <cover.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200403_014731_868212_EC75C071 
-X-CRM114-Status: GOOD (  22.79  )
+X-CRM114-CacheID: sfid-20200403_014754_503884_99F234C5 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,266 +121,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change the bd70528 to use common linear_range code instead of
-implementing a copy of it in this driver.
+Add parsing of new device-tree battery bindings.
+
+     - trickle-charge-current-microamp
+     - precharge-upper-limit-microvolt
+     - re-charge-voltage-microvolt
+     - over-voltage-threshold-microvolt
 
 Signed-off-by: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
 ---
 
 No changes since v7
 
- drivers/power/supply/Kconfig           |   1 +
- drivers/power/supply/bd70528-charger.c | 144 ++++++++++---------------
- 2 files changed, 56 insertions(+), 89 deletions(-)
+ drivers/power/supply/power_supply_core.c | 8 ++++++++
+ include/linux/power_supply.h             | 4 ++++
+ 2 files changed, 12 insertions(+)
 
-diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
-index 9a5591ab90d0..8781c674ed07 100644
---- a/drivers/power/supply/Kconfig
-+++ b/drivers/power/supply/Kconfig
-@@ -695,6 +695,7 @@ config CHARGER_UCS1002
- config CHARGER_BD70528
- 	tristate "ROHM bd70528 charger driver"
- 	depends on MFD_ROHM_BD70528
-+	select LINEAR_RANGES
- 	default n
- 	help
- 	 Say Y here to enable support for getting battery status
-diff --git a/drivers/power/supply/bd70528-charger.c b/drivers/power/supply/bd70528-charger.c
-index 3b820110ecfa..7a805faeee83 100644
---- a/drivers/power/supply/bd70528-charger.c
-+++ b/drivers/power/supply/bd70528-charger.c
-@@ -72,6 +72,7 @@
- #include <linux/module.h>
- #include <linux/platform_device.h>
- #include <linux/power_supply.h>
-+#include <linux/linear_range.h>
- 
- #define CHG_STAT_SUSPEND	0x0
- #define CHG_STAT_TRICKLE	0x1
-@@ -335,38 +336,37 @@ static int bd70528_get_present(struct bd70528_psy *bdpsy, int *val)
- 	return 0;
- }
- 
--struct bd70528_linear_range {
--	int min;
--	int step;
--	int vals;
--	int low_sel;
--};
--
--static const struct bd70528_linear_range current_limit_ranges[] = {
-+static const struct linear_range current_limit_ranges[] = {
- 	{
- 		.min = 5,
- 		.step = 1,
--		.vals = 36,
--		.low_sel = 0,
-+		.min_sel = 0,
-+		.max_sel = 0x22,
- 	},
- 	{
- 		.min = 40,
- 		.step = 5,
--		.vals = 5,
--		.low_sel = 0x23,
-+		.min_sel = 0x23,
-+		.max_sel = 0x26,
- 	},
- 	{
- 		.min = 60,
- 		.step = 20,
--		.vals = 8,
--		.low_sel = 0x27,
-+		.min_sel = 0x27,
-+		.max_sel = 0x2d,
- 	},
- 	{
- 		.min = 200,
- 		.step = 50,
--		.vals = 7,
--		.low_sel = 0x2e,
--	}
-+		.min_sel = 0x2e,
-+		.max_sel = 0x34,
-+	},
-+	{
-+		.min = 500,
-+		.step = 0,
-+		.min_sel = 0x35,
-+		.max_sel = 0x3f,
-+	},
- };
- 
- /*
-@@ -374,18 +374,18 @@ static const struct bd70528_linear_range current_limit_ranges[] = {
-  * voltage for low temperatures. The driver currently only reads
-  * the charge current at room temperature. We do set both though.
-  */
--static const struct bd70528_linear_range warm_charge_curr[] = {
-+static const struct linear_range warm_charge_curr[] = {
- 	{
- 		.min = 10,
- 		.step = 10,
--		.vals = 20,
--		.low_sel = 0,
-+		.min_sel = 0,
-+		.max_sel = 0x12
- 	},
- 	{
- 		.min = 200,
- 		.step = 25,
--		.vals = 13,
--		.low_sel = 0x13,
-+		.min_sel = 0x13,
-+		.max_sel = 0x1f
- 	},
- };
- 
-@@ -398,56 +398,6 @@ static const struct bd70528_linear_range warm_charge_curr[] = {
- #define MAX_WARM_CHG_CURR_SEL 0x1f
- #define MIN_CHG_CURR_SEL 0x0
- 
--static int find_value_for_selector_low(const struct bd70528_linear_range *r,
--				       int selectors, unsigned int sel,
--				       unsigned int *val)
--{
--	int i;
--
--	for (i = 0; i < selectors; i++) {
--		if (r[i].low_sel <= sel && r[i].low_sel + r[i].vals >= sel) {
--			*val = r[i].min + (sel - r[i].low_sel) * r[i].step;
--			return 0;
--		}
--	}
--	return -EINVAL;
--}
--
--/*
-- * For BD70528 voltage/current limits we happily accept any value which
-- * belongs the range. We could check if value matching the selector is
-- * desired by computing the range min + (sel - sel_low) * range step - but
-- * I guess it is enough if we use voltage/current which is closest (below)
-- * the requested?
-- */
--static int find_selector_for_value_low(const struct bd70528_linear_range *r,
--				       int selectors, unsigned int val,
--				       unsigned int *sel, bool *found)
--{
--	int i;
--	int ret = -EINVAL;
--
--	*found = false;
--	for (i = 0; i < selectors; i++) {
--		if (r[i].min <= val) {
--			if (r[i].min + r[i].step * r[i].vals >= val) {
--				*found = true;
--				*sel = r[i].low_sel + (val - r[i].min) /
--				       r[i].step;
--				ret = 0;
--				break;
--			}
--			/*
--			 * If the range max is smaller than requested
--			 * we can set the max supported value from range
--			 */
--			*sel = r[i].low_sel + r[i].vals;
--			ret = 0;
--		}
--	}
--	return ret;
--}
--
- static int get_charge_current(struct bd70528_psy *bdpsy, int *ma)
- {
- 	unsigned int sel;
-@@ -463,9 +413,9 @@ static int get_charge_current(struct bd70528_psy *bdpsy, int *ma)
- 
- 	sel &= BD70528_MASK_CHG_CHG_CURR;
- 
--	ret = find_value_for_selector_low(&warm_charge_curr[0],
--					  ARRAY_SIZE(warm_charge_curr), sel,
--					  ma);
-+	ret = linear_range_get_value_array(&warm_charge_curr[0],
-+					   ARRAY_SIZE(warm_charge_curr),
-+					   sel, ma);
- 	if (ret) {
- 		dev_err(bdpsy->dev,
- 			"Unknown charge current value 0x%x\n",
-@@ -491,10 +441,9 @@ static int get_current_limit(struct bd70528_psy *bdpsy, int *ma)
- 
- 	sel &= BD70528_MASK_CHG_DCIN_ILIM;
- 
--	ret = find_value_for_selector_low(&current_limit_ranges[0],
--					  ARRAY_SIZE(current_limit_ranges), sel,
--					  ma);
--
-+	ret = linear_range_get_value_array(&current_limit_ranges[0],
-+					   ARRAY_SIZE(current_limit_ranges),
-+					   sel, ma);
- 	if (ret) {
- 		/* Unspecified values mean 500 mA */
- 		*ma = 500;
-@@ -588,15 +537,28 @@ static int set_charge_current(struct bd70528_psy *bdpsy, int ma)
- 		goto set;
- 	}
- 
--	ret = find_selector_for_value_low(&warm_charge_curr[0],
--					  ARRAY_SIZE(warm_charge_curr), ma,
--					  &reg, &found);
-+/*
-+ * For BD70528 voltage/current limits we happily accept any value which
-+ * belongs the range. We could check if value matching the selector is
-+ * desired by computing the range min + (sel - sel_low) * range step - but
-+ * I guess it is enough if we use voltage/current which is closest (below)
-+ * the requested?
-+ */
-+
-+	ret = linear_range_get_selector_low_array(warm_charge_curr,
-+						  ARRAY_SIZE(warm_charge_curr),
-+						  ma, &reg, &found);
- 	if (ret) {
-+		dev_err(bdpsy->dev,
-+			 "Unsupported charge current %u mA\n", ma);
- 		reg = MIN_CHG_CURR_SEL;
- 		goto set;
- 	}
- 	if (!found) {
--		/* There was a gap in supported values and we hit it */
-+		/*
-+		 * There was a gap in supported values and we hit it.
-+		 * Yet a smaller value was found so we use it.
-+		 */
- 		dev_warn(bdpsy->dev,
- 			 "Unsupported charge current %u mA\n", ma);
- 	}
-@@ -648,17 +610,21 @@ static int set_current_limit(struct bd70528_psy *bdpsy, int ma)
- 		goto set;
- 	}
- 
--	ret = find_selector_for_value_low(&current_limit_ranges[0],
--					  ARRAY_SIZE(current_limit_ranges), ma,
--					  &reg, &found);
-+	ret = linear_range_get_selector_low_array(current_limit_ranges,
-+					ARRAY_SIZE(current_limit_ranges),
-+					ma, &reg, &found);
- 	if (ret) {
-+		dev_err(bdpsy->dev, "Unsupported current limit %umA\n", ma);
- 		reg = MIN_CURR_LIMIT_SEL;
- 		goto set;
- 	}
- 	if (!found) {
--		/* There was a gap in supported values and we hit it ?*/
--		dev_warn(bdpsy->dev, "Unsupported current limit %umA\n",
--			 ma);
-+		/*
-+		 * There was a gap in supported values and we hit it.
-+		 * We found a smaller value from ranges and use it.
-+		 * Warn user though.
-+		 */
-+		dev_warn(bdpsy->dev, "Unsupported current limit %umA\n", ma);
- 	}
- 
- set:
+diff --git a/drivers/power/supply/power_supply_core.c b/drivers/power/supply/power_supply_core.c
+index 1a9a9fae73d3..02b37fe6061c 100644
+--- a/drivers/power/supply/power_supply_core.c
++++ b/drivers/power/supply/power_supply_core.c
+@@ -620,10 +620,18 @@ int power_supply_get_battery_info(struct power_supply *psy,
+ 			     &info->voltage_min_design_uv);
+ 	of_property_read_u32(battery_np, "voltage-max-design-microvolt",
+ 			     &info->voltage_max_design_uv);
++	of_property_read_u32(battery_np, "trickle-charge-current-microamp",
++			     &info->tricklecharge_current_ua);
+ 	of_property_read_u32(battery_np, "precharge-current-microamp",
+ 			     &info->precharge_current_ua);
++	of_property_read_u32(battery_np, "precharge-upper-limit-microvolt",
++			     &info->precharge_voltage_max_uv);
+ 	of_property_read_u32(battery_np, "charge-term-current-microamp",
+ 			     &info->charge_term_current_ua);
++	of_property_read_u32(battery_np, "re-charge-voltage-microvolt",
++			     &info->charge_restart_voltage_uv);
++	of_property_read_u32(battery_np, "over-voltage-threshold-microvolt",
++			     &info->overvoltage_limit_uv);
+ 	of_property_read_u32(battery_np, "constant-charge-current-max-microamp",
+ 			     &info->constant_charge_current_max_ua);
+ 	of_property_read_u32(battery_np, "constant-charge-voltage-max-microvolt",
+diff --git a/include/linux/power_supply.h b/include/linux/power_supply.h
+index dcd5a71e6c67..d01322d1ab52 100644
+--- a/include/linux/power_supply.h
++++ b/include/linux/power_supply.h
+@@ -346,8 +346,12 @@ struct power_supply_battery_info {
+ 	int charge_full_design_uah;	    /* microAmp-hours */
+ 	int voltage_min_design_uv;	    /* microVolts */
+ 	int voltage_max_design_uv;	    /* microVolts */
++	int tricklecharge_current_ua;	    /* microAmps */
+ 	int precharge_current_ua;	    /* microAmps */
++	int precharge_voltage_max_uv;	    /* microVolts */
+ 	int charge_term_current_ua;	    /* microAmps */
++	int charge_restart_voltage_uv;	    /* microVolts */
++	int overvoltage_limit_uv;	    /* microVolts */
+ 	int constant_charge_current_max_ua; /* microAmps */
+ 	int constant_charge_voltage_max_uv; /* microVolts */
+ 	int factory_internal_resistance_uohm;   /* microOhms */
 -- 
 2.21.0
 
