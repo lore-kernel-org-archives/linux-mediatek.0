@@ -2,73 +2,62 @@ Return-Path: <SRS0=YIXp=5T=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DEDFC43331
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 11:51:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F2802C43331
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 12:01:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 50AED2082F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 11:51:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C4D7820737
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 12:01:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Yhu77OF6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 50AED2082F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JtxDjEaU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C4D7820737
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cHZHuKvqyafQIANTEBvV3BVjMuyFoB0hT0iYdr0AwVk=; b=Yhu77OF6SdzrjO
-	jqHS8mAvXmCnVKXeqL4bHm0QqmXkTbjzFPUTXXXLDKgPmvJ7Sz4+VF8BKJNfu33obYWib/AEUn59C
-	VmZrjjaDALeQkE96yOA4Sn0DAHbrmwskbD/tla2mReLzPV3/e5Vg7yYWzASzZkNwETP6JFr7xHfNm
-	nYso/usyKsUHyyFE3EwRVXP51HMNmIqmWJlQYjXjP9EQ4mgbIMw1JhnFEqOgMRyCtUg229pKq+cLY
-	ViwFD+S3cwfZtqscdZO4K/F++ZiE537TlEPKV8a3HclgX2AobaBDjWi+SuzUQmdRSKBu/8vCGyLJ0
-	KsCPBdV5J+EIgB05fCag==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=EKLo7QB6WDFQGwL19qSipjVsD0tKIf36R22HYCqEsA8=; b=JtxDjEaUoZeO8Fs9nqMim+iF0
+	0nl0VciAMWYR7otIjY3u/9FASNBfvz319jt2wrR11sK0ogOa58OPVzLG2qI1/F/w8Ny7oM/2aFJU5
+	ws+BEYHsL66eEzbR8kGBPIwlS1m6rQdTf7i+g7c9jD+6GBOFsQbCSv43dRSxSXqA95s0OFaj7+nuC
+	+V3LzdqasFj/KCK4iLLyd9CpSJJkLSxw9dzKom7FCPx3+BT8Av3ZJR45dT5gVHEkQyxGUM+RpBOdX
+	aqmudXqnrbnl6B7q0HfN1LrkfalFZbbOf73lW9GR8wQIwD8JPt081vS5uHIZumq83cHL7fjBhYUtw
+	6xt9l1GVA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKKr6-00052w-6l; Fri, 03 Apr 2020 11:51:24 +0000
-Received: from mga07.intel.com ([134.134.136.100])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKKr3-00052P-HK; Fri, 03 Apr 2020 11:51:22 +0000
-IronPort-SDR: 8wz3hEErgBObpGWyXsqvSkZOChl88728Qbj+J9S9XTKznLHymadlSdNfqs/on/fkn/iMq3nEHF
- JoADuhWIoLgA==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Apr 2020 04:51:18 -0700
-IronPort-SDR: TWrbSbCFDjIQwYAdP91BTNgBx/UU4Q79gmoYhmJ4QZRpOiv5dueLdZ7ioHSWnn57wMs5F925U7
- rnoxQbgpkGnA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,339,1580803200"; d="scan'208";a="329143239"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by orsmga001.jf.intel.com with ESMTP; 03 Apr 2020 04:51:07 -0700
-Received: from andy by smile with local (Exim 4.93)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1jKKqp-00FQBf-N3; Fri, 03 Apr 2020 14:51:07 +0300
-Date: Fri, 3 Apr 2020 14:51:07 +0300
-From: "andriy.shevchenko@linux.intel.com" <andriy.shevchenko@linux.intel.com>
+	id 1jKL1B-0003J6-Ka; Fri, 03 Apr 2020 12:01:49 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jKL14-0003BC-Hc; Fri, 03 Apr 2020 12:01:43 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8E9B930E;
+ Fri,  3 Apr 2020 05:01:37 -0700 (PDT)
+Received: from localhost (unknown [10.37.6.21])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id E9D6A3F68F;
+ Fri,  3 Apr 2020 05:01:36 -0700 (PDT)
+Date: Fri, 3 Apr 2020 13:01:35 +0100
+From: Mark Brown <broonie@kernel.org>
 To: "Vaittinen, Matti" <Matti.Vaittinen@fi.rohmeurope.com>
 Subject: Re: [PATCH v8 00/10] Support ROHM BD99954 charger IC
-Message-ID: <20200403115107.GX1922688@smile.fi.intel.com>
+Message-ID: <20200403120135.GE4286@sirena.org.uk>
 References: <cover.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
  <50797a6ac6cda4647f9a396dab0ad08017e3138b.camel@fi.rohmeurope.com>
  <20200403110210.GO1922688@smile.fi.intel.com>
  <8007dadb0b3a13934f2a950204506a156cb2e65e.camel@fi.rohmeurope.com>
- <20200403115016.GW1922688@smile.fi.intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200403115016.GW1922688@smile.fi.intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <8007dadb0b3a13934f2a950204506a156cb2e65e.camel@fi.rohmeurope.com>
+X-Cookie: Use other side for additional listings.
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200403_045121_624744_2230011E 
-X-CRM114-Status: GOOD (  18.03  )
+X-CRM114-CacheID: sfid-20200403_050142_669060_9B067FFA 
+X-CRM114-Status: GOOD (  16.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,12 +95,12 @@ Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
  "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
  "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
  "rf@opensource.cirrus.com" <rf@opensource.cirrus.com>,
- "broonie@kernel.org" <broonie@kernel.org>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
  "sre@kernel.org" <sre@kernel.org>,
  "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
  "tglx@linutronix.de" <tglx@linutronix.de>,
- "bjorn.andersson@linaro.org" <bjorn.andersson@linaro.org>,
+ "andriy.shevchenko@linux.intel.com" <andriy.shevchenko@linux.intel.com>,
  "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
  "support.opensource@diasemi.com" <support.opensource@diasemi.com>,
  "baolin.wang@linaro.org" <baolin.wang@linaro.org>,
@@ -121,55 +110,81 @@ Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Mutanen,
  Mikko" <Mikko.Mutanen@fi.rohmeurope.com>,
  "vkoul@kernel.org" <vkoul@kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "bjorn.andersson@linaro.org" <bjorn.andersson@linaro.org>,
  "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
  "mazziesaccount@gmail.com" <mazziesaccount@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2415055719600439123=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 03, 2020 at 02:50:16PM +0300, andriy.shevchenko@linux.intel.com wrote:
-> On Fri, Apr 03, 2020 at 11:13:54AM +0000, Vaittinen, Matti wrote:
-> > On Fri, 2020-04-03 at 14:02 +0300, andriy.shevchenko@linux.intel.com
-> > wrote:
-> > > On Fri, Apr 03, 2020 at 10:07:41AM +0000, Vaittinen, Matti wrote:
-> > > > On Fri, 2020-04-03 at 11:36 +0300, Matti Vaittinen wrote:
-> 
-> ...
-> 
-> > > From my point of view, you need to wait till rc1 is out and rebase
-> > > the series.
-> > 
-> > Does this mean that there is no new regulator drivers expected to be
-> > added after rc1 is out? If this is the case, the rebasing this series
-> > on top of rc1 should work as then I get all new drivers (for a release)
-> > converted. This is of course fine by me - but again we will risk of
-> > breaking regulators if the series slips to next release. Thus I thought
-> > that perhaps we should try getting the regulators stuff in Marks tree
-> > so that further reguator drivers wouldn't be broken.
-> 
-> We already almost in the middle of merge window. With such a change I believe
-> there is no room for testing it, so, it will be quite unlikely it makes v5.7
-> release.
-> 
-> That is, you have approximately 6 more weeks to polish this code.
 
-(If you need so, of course)
-
-> > But as I said, my intention is not to claim I know how to do this. On
-> > the contrary - I have _never_ participated in maintaining a tree that
-> > will be merged by others. So, please just let me know what you see the
-> > best. I can do splitting the series or rebasing to regulator tree or
-> > rebase to rc1 when it is out if required :)
-
--- 
-With Best Regards,
-Andy Shevchenko
+--===============2415055719600439123==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="5oH/S/bF6lOfqCQb"
+Content-Disposition: inline
 
 
+--5oH/S/bF6lOfqCQb
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Fri, Apr 03, 2020 at 11:13:54AM +0000, Vaittinen, Matti wrote:
+> On Fri, 2020-04-03 at 14:02 +0300, andriy.shevchenko@linux.intel.com
+
+> > From my point of view, you need to wait till rc1 is out and rebase
+> > the series.
+> > The cross-subsystem changes can be handled by maintainers in a form
+> > of
+> > immutable branches / tags. On your side you may recommend them how to
+> > proceed,
+> > but the final decision is by them.
+
+> Thanks Andy. I re-read what I wrote and I see it can be interpreted as
+> if I was trying to tell how things should be done. That was my
+> intention. My intention was to point out that my patches will break
+> regulator tree builds if new drivers are added.
+
+> > From my point of view, you need to wait till rc1 is out and rebase
+> > the series.
+
+> Does this mean that there is no new regulator drivers expected to be
+> added after rc1 is out? If this is the case, the rebasing this series
+> on top of rc1 should work as then I get all new drivers (for a release)
+
+During the merge window no new anything except bug fixes is expected to
+be applied.  Like Andy says we'll share a branch for any dependencies,
+nobody in particular seems to apply code for lib so I guess I'll take
+that patch and the regulator one and share it but not until after the
+merge window.
+
+--5oH/S/bF6lOfqCQb
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl6HJZ4ACgkQJNaLcl1U
+h9CXgQgAgxrovJmZiPhrTGdELR86BEph9nb5krfh6pe5Dn/d6jhLf/UMoNR3qdps
+HDcyU1zU4TZF5QG/pXKPgXG20D1i8yet/5kCq9Czz9xfetTHelZPOXbHKsYyGXWf
+iPkhT0Da1pEYWcb7K1iTcXRsmK7wrzEquXzBNK6pI3GbBbeYQ5Os0m6rwckhvewJ
+kGUI3VcNI5YWY+VqGPut1jeuQ+KtsJtNwLeyRGRWAkwW0NF2KmH+hE3725HtP6E7
+lO47x0KclhTzNeFd73YdrFPIs0G7g3ChJdykDdiIfvnG5yjTWfocKRVLI06r/fnT
+Deqy7IF/qHtwDAXo0odFULF4NvQhgA==
+=IFlK
+-----END PGP SIGNATURE-----
+
+--5oH/S/bF6lOfqCQb--
+
+
+--===============2415055719600439123==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============2415055719600439123==--
+
