@@ -4,68 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0C2FC43331
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 11:02:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B6E9C43331
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 11:14:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C1F1C2078C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 11:02:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 59E4C2064A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 11:14:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="o8nI7Gew"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C1F1C2078C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fH7yRWaf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 59E4C2064A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fi.rohmeurope.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aPxv1jve4yOtliESe9YbZii2/vJvcU0LcHEhkQUCVZU=; b=o8nI7GewqmOlxV
-	LbUFQ0dr6HgiuMEu4Uk0pIApGsNOzdP5zA7cq4syHJGbzCbXhuPux8XizfIiThF8/8qqE5IyrrBTr
-	ne4tMYTyUYKRbQpFzdDmsmJ5tA5w69+9xskENRBuYcr35MGV6ubnIajaEBYyXaA8H2w+8E3f2/QZz
-	csh2SjsP0orYzkClvI+6QQmElxOhi7rVjd/HL3RotGCrVDJLRk229O5wle2iqcm7ML3T09ePkYijo
-	Ku4ZjMVLdDBR5kCoaAuTWTmrPFBp4hI/3Z71xWvomsM3ZAa/OUuv/m+Uz6MrqtHlMkD0i7kjdfSNK
-	fLTRspe3s+NH9O0X0fqQ==;
+	List-Owner; bh=2OwOmwkMiOp9me/Wber76eZd6xECCu4RfunZEw+BbwQ=; b=fH7yRWafZIf7iz
+	A7Xt3oHh/+f/hoCmKP13NxzSHVQBbb3VzApvuK2U13upWLS174RcnhCrQhAENm9d2RSU+OUjA6IXj
+	4Qp4W9fMfRAXglO0tfMyu4NozwicTKzi6Co9+DMK86H0sV/uSI7XqZVK9uDELh/7DX0RtXkiUe3ud
+	T2ScOPL+1ZLxx1xRVyFeZSit8NalFxZtrTbkO6gjYgCnv+3LBjmtV9ED5QKKbgBXWAEwcny0ilod6
+	CyB2QpUPrPexi79xViV5F+NVdttDBIa6hWUD7fKJbIjZMgVsLkkZrnc6q1kjV1NitXA5wfsQfScsR
+	9wSOIrqekm/VBWbF7I7w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKK5h-00069S-0x; Fri, 03 Apr 2020 11:02:25 +0000
-Received: from mga02.intel.com ([134.134.136.20])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKK5e-00068u-5r; Fri, 03 Apr 2020 11:02:23 +0000
-IronPort-SDR: OJ0hXsPasudUa58ohP1CzSjph7gqi8efePegcCmqhYKRXDJmN03sYgDSnWd9hLDaRheQVwMFOU
- 9kbyrwBlovfA==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Apr 2020 04:02:21 -0700
-IronPort-SDR: 5a/olc0ACQqahkFQkQxRyVBNsCA4xCic/xEhfND7MJmYVdslUpbDkdLtGefMcO/KHcxgKc3A9/
- kvDVjv3BeWPA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,339,1580803200"; d="scan'208";a="268327035"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by orsmga002.jf.intel.com with ESMTP; 03 Apr 2020 04:02:10 -0700
-Received: from andy by smile with local (Exim 4.93)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1jKK5S-00FPZD-Th; Fri, 03 Apr 2020 14:02:10 +0300
-Date: Fri, 3 Apr 2020 14:02:10 +0300
-From: "andriy.shevchenko@linux.intel.com" <andriy.shevchenko@linux.intel.com>
-To: "Vaittinen, Matti" <Matti.Vaittinen@fi.rohmeurope.com>
+	id 1jKKH7-0004kQ-AV; Fri, 03 Apr 2020 11:14:13 +0000
+Received: from mailgate1.rohmeurope.com ([87.129.152.131])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jKKGz-0004c8-1w; Fri, 03 Apr 2020 11:14:06 +0000
+X-AuditID: c0a8fbf4-473ff70000004419-62-5e871a786b18
+Received: from smtp.reu.rohmeu.com (will-cas001.reu.rohmeu.com
+ [192.168.251.177])
+ by mailgate1.rohmeurope.com (Symantec Messaging Gateway) with SMTP id
+ 8B.C9.17433.87A178E5; Fri,  3 Apr 2020 13:14:01 +0200 (CEST)
+Received: from WILL-MAIL001.REu.RohmEu.com ([fe80::2915:304f:d22c:c6ba]) by
+ WILL-CAS001.REu.RohmEu.com ([fe80::d57e:33d0:7a5d:f0a6%16]) with mapi id
+ 14.03.0487.000; Fri, 3 Apr 2020 13:13:55 +0200
+From: "Vaittinen, Matti" <Matti.Vaittinen@fi.rohmeurope.com>
+To: "andriy.shevchenko@linux.intel.com" <andriy.shevchenko@linux.intel.com>
 Subject: Re: [PATCH v8 00/10] Support ROHM BD99954 charger IC
-Message-ID: <20200403110210.GO1922688@smile.fi.intel.com>
+Thread-Topic: [PATCH v8 00/10] Support ROHM BD99954 charger IC
+Thread-Index: AQHWCZNurrjQpdjIqkyw5OgYXk7rkqhnCsKAgAAPNACAAANNgA==
+Date: Fri, 3 Apr 2020 11:13:54 +0000
+Message-ID: <8007dadb0b3a13934f2a950204506a156cb2e65e.camel@fi.rohmeurope.com>
 References: <cover.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
  <50797a6ac6cda4647f9a396dab0ad08017e3138b.camel@fi.rohmeurope.com>
+ <20200403110210.GO1922688@smile.fi.intel.com>
+In-Reply-To: <20200403110210.GO1922688@smile.fi.intel.com>
+Accept-Language: en-US, de-DE
+Content-Language: de-DE
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [62.78.225.252]
+Content-ID: <CA804C40FABB9248AC03DE48631B5E4D@de.rohmeurope.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <50797a6ac6cda4647f9a396dab0ad08017e3138b.camel@fi.rohmeurope.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+X-Brightmail-Tracker: H4sIAAAAAAAAA02TbVBUVRjHO/dl7wXcvCwIx42acbVppBFicppnGkDqi9eacWSaaRqboIvc
+ WAoWunsxyGncgTaBxDQFlhWIyNUNCWRxlDeDmJ0EBTbGbaXCUcBpAmpRXiSipHtdFT6d/3n+
+ z//5nQ/PYUndNKNnM02yKJmELIMmmOpxLrdsK9AfSnlhxUuDY8ZBwtDEMgX2AQcFR2brSSgr
+ rCTAXb1AQoutmYZZi5eE+ZorFFzt9lMwPHKchPKx2xrwWl0IvnIP0VD0TbMGqp0FsDI+TUNV
+ 8UHonG4gwOM5x8A9bzEBJ/49Q4BrwkfDse5BBq51VGvgWtEwgpOnvqBgrsyNwOb5noBJ998I
+ HNeHCSj89EWodvQp5kw3DTXz5ST8NVqp4G0eEqyX3AwMO+cJuNopwyXrMAmtLqWj2/satI/2
+ kbDU6yGStvGNtY2Iv7fwJcXPjFgZvrbxAH9u/CzNO2dj+V9HD/Lt9hsMX+fK41ud0fxnS/v5
+ PxpdDO9qKNHwo74uDe8fGlJS/cl78N6Q+DRB3v9GZoYpNvHdEKPtO68m17Il/3i9j7Gg4s2l
+ KIjF3Hbc4L5Ll6JgVsf5EO6yNj28XEb4wrejTCliWQ0Xj0t/YdRAOPc6/sc/glRNcuNhuKRP
+ UHUYl4D9rRVkoCcRW+/MadRoOPcqbrCZ1TLFbcF3Kq8/iGq53fh+3TgRQHUi7J1ueWAEcS9j
+ V4+FVjXinsYlFj8RYEVi1++LdODRHD7V5SEDegOenLj/sL4JX1xsolQuyW3FzR2xAZmE6/7k
+ A1M24ROfjzGBJ4Ti/qrb1FEUYV8DsK+G7ath+5qwfU24DtENCGcLmVkZgizGxUhiXoyUY8xW
+ jn052S4UWN75NrTSu6sXESzqRRtZwrBB+2H4oRTdk2k56QVGwWxMlfKyRHMvwixpCNe+YrOm
+ 6LTpQsHHopTzyHqKpQyR2ufGjr2j41TWB6KYK0qP3CiWNWAtvVEZGiqJGWL+e5lZ8qpNsEHq
+ 8GB9uFk0pYuSkCcbU9XlSDUr26Fa6xRuW6QS15pzhWylGoheQc+zRydr6knWXeOoJ3WUKcck
+ 6iO1ezmllVNbjXmmx6ApFMkiQ5g2LUJx1yk/+PGcKQVBKIif84tUhCysWnoL2j0V1za+PTox
+ rOujA4U/SvtmQm9+kqTJOBtR40t46cbOgfM7OrJP73lia0zPMxMV/62/WfX1+hD/b/1lg3Nn
+ 7p4/HbZ4uNYptLYvlF2+teNCcsIyz5+smEmLlkxv4aryjiV7sixz7w8OxP9w8QixS27avLNf
+ /inqWfvbh29FtaT69H1vGiizUYiLJiWz8D9/oO1IfgQAAA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200403_040222_267495_E7B6A6A3 
-X-CRM114-Status: GOOD (  17.64  )
+X-CRM114-CacheID: sfid-20200403_041405_250395_1480E560 
+X-CRM114-Status: GOOD (  23.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,8 +107,8 @@ Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
  "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
  "axel.lin@ingics.com" <axel.lin@ingics.com>,
  "gregory.clement@bootlin.com" <gregory.clement@bootlin.com>,
- "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
- "vkoul@kernel.org" <vkoul@kernel.org>, "krzk@kernel.org" <krzk@kernel.org>,
+ "b.zolnierkie@samsung.com" <b.zolnierkie@samsung.com>,
+ "krzk@kernel.org" <krzk@kernel.org>,
  "m.reichl@fivetechno.de" <m.reichl@fivetechno.de>,
  "bgolaszewski@baylibre.com" <bgolaszewski@baylibre.com>,
  "wens@csie.org" <wens@csie.org>, "andreas@kemnade.info" <andreas@kemnade.info>,
@@ -100,7 +118,7 @@ Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
  "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
  "ckeepax@opensource.cirrus.com" <ckeepax@opensource.cirrus.com>,
  "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>,
- "mazziesaccount@gmail.com" <mazziesaccount@gmail.com>,
+ "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
  "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
  "rf@opensource.cirrus.com" <rf@opensource.cirrus.com>,
  "broonie@kernel.org" <broonie@kernel.org>,
@@ -115,57 +133,93 @@ Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
  "sbkim73@samsung.com" <sbkim73@samsung.com>,
  "patches@opensource.cirrus.com" <patches@opensource.cirrus.com>,
  "rdunlap@infradead.org" <rdunlap@infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Mutanen,
- Mikko" <Mikko.Mutanen@fi.rohmeurope.com>,
- "b.zolnierkie@samsung.com" <b.zolnierkie@samsung.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Mutanen, 
+ Mikko" <Mikko.Mutanen@fi.rohmeurope.com>, "vkoul@kernel.org" <vkoul@kernel.org>,
  "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "mazziesaccount@gmail.com" <mazziesaccount@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 03, 2020 at 10:07:41AM +0000, Vaittinen, Matti wrote:
-> On Fri, 2020-04-03 at 11:36 +0300, Matti Vaittinen wrote:
-> > Support ROHM BD99954 Battery Management IC
+Hello Andy & All,
+
+On Fri, 2020-04-03 at 14:02 +0300, andriy.shevchenko@linux.intel.com
+wrote:
+> On Fri, Apr 03, 2020 at 10:07:41AM +0000, Vaittinen, Matti wrote:
+> > On Fri, 2020-04-03 at 11:36 +0300, Matti Vaittinen wrote:
+> > > Support ROHM BD99954 Battery Management IC
+> > > 
+> > > ROHM BD99954 is a Battery Management IC for 1-4 cell Lithium-Ion
+> > > secondary battery. BD99954 is intended to be used in space-
+> > > constraint
+> > > equipment such as Low profile Notebook PC, Tablets and other
+> > > applications.
+> > > 
+> > > Series extracts a "linear ranges" helper out of the regulator
+> > > framework. Linear ranges helper is intended to help converting
+> > > real-world values to register values when conversion is linear. I
+> > > suspect this is useful also for power subsystem and possibly for
+> > > clk.
 > > 
-> > ROHM BD99954 is a Battery Management IC for 1-4 cell Lithium-Ion
-> > secondary battery. BD99954 is intended to be used in space-constraint
-> > equipment such as Low profile Notebook PC, Tablets and other
-> > applications.
+> > I see Mark has acked/reviewed both the regulator changes and
+> > linear_ranges code. Do you think Mark should take the linear_ranges
+> > and
+> > regulator changes in his tree? I don't know Sebastian's schedule or
+> > when the charger portion is good to go - but I know that each new
+> > regulator driver which is added to regulator tree has a chance of
+> > using
+> > the struct regulator_linear_range - which will break when this
+> > series
+> > is applied. Or what would be the best way to avoid breaking
+> > regulators?
 > > 
-> > Series extracts a "linear ranges" helper out of the regulator
-> > framework. Linear ranges helper is intended to help converting
-> > real-world values to register values when conversion is linear. I
-> > suspect this is useful also for power subsystem and possibly for clk.
+> > OTOH, if Mark takes linear_ranges in his tree, then this power
+> > portion
+> > of the series will depend on linear_ranges stuff that is in
+> > regulator
+> > tree. I guess this must be pretty standard stuff for you and you
+> > probably know how to handle it but I just wanted to point out the
+> > risk
+> > of breaking regulator build without visible merge conflicts.
+> > 
+> > Please let me know if I should split the series and rebase
+> > linear_ranges / regulator stuff on top of regulator tree.
 > 
-> I see Mark has acked/reviewed both the regulator changes and
-> linear_ranges code. Do you think Mark should take the linear_ranges and
-> regulator changes in his tree? I don't know Sebastian's schedule or
-> when the charger portion is good to go - but I know that each new
-> regulator driver which is added to regulator tree has a chance of using
-> the struct regulator_linear_range - which will break when this series
-> is applied. Or what would be the best way to avoid breaking regulators?
+> From my point of view, you need to wait till rc1 is out and rebase
+> the series.
+> The cross-subsystem changes can be handled by maintainers in a form
+> of
+> immutable branches / tags. On your side you may recommend them how to
+> proceed,
+> but the final decision is by them.
 > 
-> OTOH, if Mark takes linear_ranges in his tree, then this power portion
-> of the series will depend on linear_ranges stuff that is in regulator
-> tree. I guess this must be pretty standard stuff for you and you
-> probably know how to handle it but I just wanted to point out the risk
-> of breaking regulator build without visible merge conflicts.
-> 
-> Please let me know if I should split the series and rebase
-> linear_ranges / regulator stuff on top of regulator tree.
 
-From my point of view, you need to wait till rc1 is out and rebase the series.
-The cross-subsystem changes can be handled by maintainers in a form of
-immutable branches / tags. On your side you may recommend them how to proceed,
-but the final decision is by them.
+Thanks Andy. I re-read what I wrote and I see it can be interpreted as
+if I was trying to tell how things should be done. That was my
+intention. My intention was to point out that my patches will break
+regulator tree builds if new drivers are added.
 
--- 
-With Best Regards,
-Andy Shevchenko
+> From my point of view, you need to wait till rc1 is out and rebase
+> the series.
 
+Does this mean that there is no new regulator drivers expected to be
+added after rc1 is out? If this is the case, the rebasing this series
+on top of rc1 should work as then I get all new drivers (for a release)
+converted. This is of course fine by me - but again we will risk of
+breaking regulators if the series slips to next release. Thus I thought
+that perhaps we should try getting the regulators stuff in Marks tree
+so that further reguator drivers wouldn't be broken.
 
+But as I said, my intention is not to claim I know how to do this. On
+the contrary - I have _never_ participated in maintaining a tree that
+will be merged by others. So, please just let me know what you see the
+best. I can do splitting the series or rebasing to regulator tree or
+rebase to rc1 when it is out if required :)
+
+Br,
+	Matti
 
 _______________________________________________
 Linux-mediatek mailing list
