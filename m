@@ -2,69 +2,81 @@ Return-Path: <SRS0=YIXp=5T=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BE7AC43331
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 02:38:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4C2C7C43331
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 03:09:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 518262077D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 02:38:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1A71F2077D
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 03:09:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uNekkb/H";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.b="prf1xcN+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 518262077D
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FPD9odmh";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Yi0OTTmW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1A71F2077D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g9g41u5LFM8HN2zHi8Y22CVrnsgFKlzuJB8fh5c4e7w=; b=uNekkb/HSdn+Zf
-	TWuICfCBba15+GL6R/376VVpSPEkP1hBL365xb+niuGVSrzWZlJeBC2YFNN2uOhZaXUHA64+sXwGJ
-	RWpe0DFK2ofXjYapF6Gc/bfg3GgQfw/qdijUpDLZzieTWRiqEHm0LboyXkvr7ydhzgyIzl4gnV1ZG
-	0coQ2I0V62LtImu7TRmMYtK3CiMXo/GIKB6RD91SpqPz/np3gb9+x5mqATY5fshiZGmWYqq3O3zMU
-	wkRxiEY44flacnQeUx6JXMQAU17cU+iWjoIzmdN62lhYJy4iD+QsEKsoc2E2A0mkf5u1r8k1OScIB
-	zRfcV2YvwfDb7fK/7SMg==;
+	List-Owner; bh=janJHlNQaLsHx/t9rpUcd1Lj0Ijz6GBxQ1IDWZqQaxA=; b=FPD9odmhGnviMk
+	Kwg0RfG9viiwR9Ar8pLqoxnvH+4wX0fNhTWZI66dXhcOM/PH+kusYdl0EZn9jRG3vu6TcMytNns65
+	+cADt2DUshVxUwT1xos8S3tocOw3TILCHhZbUnMhnd6t7JckjbXaeenQYtyF+ECiNS0F2xq7UA83X
+	rHi6rvPF5sC4vl1mQaB2i+cLbgSTzAcb8+NlUBMOBxDPdhbOOp9s7m1H55cGkvDZMUyV7/IRC3Vwf
+	FeC5FWB2rkd0E6P1FJJyFBdJKpcG3triGITJbyfJKW+G03C8aVcdhVrJXClWQ6q0Ll1xzeb9V4bpt
+	WeacMlSigpjfDcheXCHg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKCDk-0002pA-5L; Fri, 03 Apr 2020 02:38:12 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1jKCiH-0004ym-4x; Fri, 03 Apr 2020 03:09:45 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKCDY-0002fa-O5; Fri, 03 Apr 2020 02:38:04 +0000
-Received: from pendragon.ideasonboard.com (81-175-216-236.bb.dnainternet.fi
- [81.175.216.236])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 2F540321;
- Fri,  3 Apr 2020 04:30:40 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1585881040;
- bh=8BJM7Wys9lLMiCKsR5805vsMfJl091suSwtJh5ReDw8=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=prf1xcN+fNoqwvAVu5ocr8/WPWFvXOorCMYCo55RE/GXLrByObRL1tzSKFj1ooctr
- oP9CaYQUr9iXtAAG9jvPvDzt+nQh5BkxJ31LTXRV8YMoMv3yWOETVJumRvin2eKRpU
- AMxaf6z4ekoVT2nypICLpmr1K44EoAYdBbJks3mM=
-Date: Fri, 3 Apr 2020 05:30:31 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Jungo Lin <jungo.lin@mediatek.com>
-Subject: Re: [v6, 4/5] media: platform: Add Mediatek ISP P1 image & meta
- formats
-Message-ID: <20200403023031.GH4745@pendragon.ideasonboard.com>
-References: <jungo.lin@mediatek.com>
- <20191219054930.29513-1-jungo.lin@mediatek.com>
- <20191219054930.29513-5-jungo.lin@mediatek.com>
+ id 1jKCiD-0004gI-GA
+ for linux-mediatek@lists.infradead.org; Fri, 03 Apr 2020 03:09:43 +0000
+X-UUID: 1c98a34804904c33a71fb6078b4b28e7-20200402
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=DJTWNCanyhjtJLd8oMpwvSiCfRyj+EyKiHaVDaZuJyA=; 
+ b=Yi0OTTmWapulmmDw+dfs1fj56GM77Px+FM+B1SKsVVyyNsufAzDUbIspripSJzXjjouvLXYQQMA0V4PktIb3fBDQvkztXxkpKxlyroigcj3/2ZftrjoSS1EksTehpUt2YuevYUx7KQLbeOOWGtkyDyoHPHpREHVN0JFSDWzmStU=;
+X-UUID: 1c98a34804904c33a71fb6078b4b28e7-20200402
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1140337050; Thu, 02 Apr 2020 19:09:32 -0800
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1395.4; Thu, 2 Apr 2020 19:59:32 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs05n2.mediatek.inc
+ (172.21.101.140) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 3 Apr 2020 10:59:31 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1395.4 via Frontend
+ Transport; Fri, 3 Apr 2020 10:59:29 +0800
+Message-ID: <1585882773.28772.7.camel@mhfsdcap03>
+Subject: Re: [PATCH v3 1/4] drm/mediatek: Move tz_disabled from mtk_hdmi_phy
+ to mtk_hdmi driver
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Fri, 3 Apr 2020 10:59:33 +0800
+In-Reply-To: <CAAOTY_8EScidYVri=fn+sdteyD1TGSZ4AnYkp7kz2RozriSk=A@mail.gmail.com>
+References: <20200331155728.18032-1-chunkuang.hu@kernel.org>
+ <20200331155728.18032-2-chunkuang.hu@kernel.org>
+ <1585707361.28859.19.camel@mhfsdcap03>
+ <ceae861b-b5ee-1d33-67dd-0a2ff4af2816@gmail.com>
+ <CAAOTY_8EScidYVri=fn+sdteyD1TGSZ4AnYkp7kz2RozriSk=A@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20191219054930.29513-5-jungo.lin@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200402_193801_090024_5BE3C3F1 
-X-CRM114-Status: GOOD (  15.65  )
+X-CRM114-CacheID: sfid-20200402_200941_552677_9F53F52D 
+X-CRM114-Status: GOOD (  23.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,770 +88,116 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: ryan.yu@mediatek.com, frankie.chiu@mediatek.com, robh@kernel.org,
- Rynn.Wu@mediatek.com, suleiman@chromium.org, Jerry-ch.Chen@mediatek.com,
- frederic.chen@mediatek.com, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, hverkuil-cisco@xs4all.nl, shik@chromium.org,
- yuzhao@chromium.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, Sean.Cheng@mediatek.com,
- srv_heupstream@mediatek.com, sj.huang@mediatek.com, tfiga@chromium.org,
- zwisler@chromium.org, ddavenport@chromium.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>, CK
+ Hu <ck.hu@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jungo,
-
-Thank you for the patch.
-
-On Thu, Dec 19, 2019 at 01:49:29PM +0800, Jungo Lin wrote:
-> Add packed/full-g bayer formats with 8/10/12/14 bit
-> for image output. Add Pass 1 (P1) specific meta formats for
-> parameter processing and 3A/other statistics.
-> 
-> (The current metadata format used in meta input and partial
-> meta nodes is only a temporary solution to kick off the driver
-> development and is not ready to be reviewed yet.)
-> 
-> Signed-off-by: Jungo Lin <jungo.lin@mediatek.com>
-> ---
-> Changes from v6:
->  - Remove RGB format definitions in pixfmt-rgb.rst for kernel
->    v5.5-rc1 version.
-> ---
->  .../media/uapi/v4l/pixfmt-mtisp-sbggr10.rst   |  65 +++++++++++
->  .../media/uapi/v4l/pixfmt-mtisp-sbggr10f.rst  |  90 ++++++++++++++
->  .../media/uapi/v4l/pixfmt-mtisp-sbggr12.rst   |  61 ++++++++++
->  .../media/uapi/v4l/pixfmt-mtisp-sbggr12f.rst  | 110 ++++++++++++++++++
->  .../media/uapi/v4l/pixfmt-mtisp-sbggr14.rst   |  73 ++++++++++++
->  .../media/uapi/v4l/pixfmt-mtisp-sbggr14f.rst  | 110 ++++++++++++++++++
->  .../media/uapi/v4l/pixfmt-mtisp-sbggr8.rst    |  51 ++++++++
->  .../media/uapi/v4l/pixfmt-mtisp-sbggr8f.rst   |  78 +++++++++++++
->  8 files changed, 638 insertions(+)
->  create mode 100644 Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr10.rst
->  create mode 100644 Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr10f.rst
->  create mode 100644 Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr12.rst
->  create mode 100644 Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr12f.rst
->  create mode 100644 Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr14.rst
->  create mode 100644 Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr14f.rst
->  create mode 100644 Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr8.rst
->  create mode 100644 Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr8f.rst
-> 
-> diff --git a/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr10.rst b/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr10.rst
-> new file mode 100644
-> index 000000000000..534edb4f0fd4
-> --- /dev/null
-> +++ b/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr10.rst
-> @@ -0,0 +1,65 @@
-> +.. -*- coding: utf-8; mode: rst -*-
-> +
-> +.. _v4l2-pix-fmt-mtisp-sbggr10:
-> +.. _v4l2-pix-fmt-mtisp-sgbrg10:
-> +.. _v4l2-pix-fmt-mtisp-sgrbg10:
-> +.. _v4l2-pix-fmt-mtisp-srggb10:
-> +
-> +*******************************
-> +V4L2_PIX_FMT_MTISP_SBGGR10 ('MBBA'), V4L2_PIX_FMT_MTISP_SGBRG10('MBGA'), V4L2_PIX_FMT_MTISP_SGRBG10('MBgA'), V4L2_PIX_FMT_MTISP_SRGGB10('MBRA')
-> +*******************************
-> +
-> +10-bit Packed Bayer formats.
-> +
-> +Description
-> +===========
-> +
-> +These four pixel formats are used by Mediatek ISP P1.
-> +This is a packed format, meaning all the data bits for a pixel lying
-> +next to each other with no padding in memory, with a depth of 10 bits per pixel.
-> +The least significant byte is stored at lower memory addresses (little-endian).
-> +The RGB byte order follows raw sRGB / Bayer format from sensor.
-> +They are conventionally described as GRGR... BGBG..., RGRG... GBGB..., etc.
-> +Below is an example of conventional RGB byte order BGGR.
-> +
-> +**Byte Order.**
-> +Each cell is one byte.
-> +
-> +pixels cross the byte boundary and have a ratio of 5 bytes for each 4 pixels.
-> +
-> +.. flat-table::
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +
-> +    * - start + 0:
-> +      - B\ :sub:`00low bits 7--0`
-> +      - G\ :sub:`01low bits 5--0` (bits 7--2) B\ :sub:`00high bits 9--8`\ (bits 1--0)
-> +    * - start + 2:
-> +      - B\ :sub:`02low bits 3--0`\ (bits 7--4) G\ :sub:`01high bits 9--6`\ (bits 3--0)
-> +      - G\ :sub:`03low bits 1--0`\ (bits 7--6) B\ :sub:`02high bits 9--4`\ (bits 5--0)
-> +    * - start + 4:
-> +      - G\ :sub:`03high bits 9--2`
-
-This contradicts the description above, where you mention there's no
-padding, and here only 8 bits are used for the two bytes. Which one is
-correct ?
-
-> +    * - start + 6:
-> +      - G\ :sub:`10low bits 7--0`
-> +      - R\ :sub:`11low bits 5--0`\ (bits 7--2) G\ :sub:`10high bits 9--8`\ (bits 1--0)
-> +    * - start + 8:
-> +      - G\ :sub:`12low bits 3--0`\ (bits 7--4) R\ :sub:`11high bits 9--6`\ (bits 3--0)
-> +      - R\ :sub:`13low bits 1--0`\ (bits 7--6) G\ :sub:`12high bits 9--4`\ (bits 5--0)
-> +    * - start + 10:
-> +      - R\ :sub:`13high bits 9--2`
-> +    * - start + 12:
-> +      - B\ :sub:`20low bits 7--0`
-> +      - G\ :sub:`21low bits 5--0`\ (bits 7--2) B\ :sub:`20high bits 9--8`\ (bits 1--0)
-> +    * - start + 14:
-> +      - B\ :sub:`22low bits 3--0`\ (bits 7--4) G\ :sub:`21high bits 9--6`\ (bits 3--0)
-> +      - G\ :sub:`23low bits 1--0`\ (bits 7--6) B\ :sub:`22high bits 9--4`\ (bits 5--0)
-> +    * - start + 16:
-> +      - G\ :sub:`23high bits 9--2`
-> +    * - start + 18:
-> +      - G\ :sub:`30low bits 7--0`
-> +      - R\ :sub:`31low bits 5--0`\ (bits 7--2) G\ :sub:`30high bits 9--8`\ (bits 1--0)
-> +    * - start + 20:
-> +      - G\ :sub:`32low bits 3--0`\ (bits 7--4) R\ :sub:`31high bits 9--6`\ (bits 3--0)
-> +      - R\ :sub:`33low bits 1--0`\ (bits 7--6) G\ :sub:`32high bits 9--4`\ (bits 5--0)
-> +    * - start + 22:
-> +      - R\ :sub:`33high bits 9--2` (bits 7--0)
-> \ No newline at end of file
-> diff --git a/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr10f.rst b/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr10f.rst
-> new file mode 100644
-> index 000000000000..7be527711602
-> --- /dev/null
-> +++ b/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr10f.rst
-> @@ -0,0 +1,90 @@
-> +.. -*- coding: utf-8; mode: rst -*-
-> +
-> +.. _v4l2-pix-fmt-mtisp-sbggr10f:
-> +.. _v4l2-pix-fmt-mtisp-sgbrg10f:
-> +.. _v4l2-pix-fmt-mtisp-sgrbg10f:
-> +.. _v4l2-pix-fmt-mtisp-srggb10f:
-> +
-> +*******************************
-> +V4L2_PIX_FMT_MTISP_SBGGR10F ('MFBA'), V4L2_PIX_FMT_MTISP_SGBRG10F('MFGA'), V4L2_PIX_FMT_MTISP_SGRBG10F('MFgA'), V4L2_PIX_FMT_MTISP_SRGGB10F('MFRA')
-> +*******************************
-> +
-> +10-bit Packed Full-G Bayer formats.
-> +
-> +Description
-> +===========
-> +
-> +These four pixel formats are used by Mediatek ISP P1.
-> +This is a packed format with a depth of 10 bits per sample with every 4 pixels.
-> +Full-G means 1 more pixel for green channel every 2 pixels.
-
-I think this should describe where the additional green pixel comes
-from.
-
-> +The least significant byte is stored at lower memory addresses (little-endian).
-> +The RGB byte order follows raw sRGB / Bayer format from sensor. They are conventionally
-> +described as GRGR... BGBG..., RGRG... GBGB..., etc. Below is an example of conventional
-> +RGB byte order BGGR.
-> +
-> +**Bit-packed representation.**
-> +
-> +.. flat-table::
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +
-> +    * - B\ :sub:`00`
-> +      - FG\ :sub:`01`
-> +      - G\ :sub:`02`
-> +      - B\ :sub:`03`
-> +      - FG\ :sub:`04`
-> +      - G\ :sub:`05`
-> +    * - G\ :sub:`10`
-> +      - R\ :sub:`11`
-> +      - FG\ :sub:`12`
-> +      - G\ :sub:`13`
-> +      - R\ :sub:`14`
-> +      - FG\ :sub:`15`
-> +
-> +**Byte Order.**
-> +Each cell is one byte.
-> +
-> +.. flat-table::
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +
-> +    * - start + 0:
-> +      - B\ :sub:`00low bits 7--0`
-> +      - FG\ :sub:`01low bits 5--0`\ (bits 7--2) B\ :sub:`00high bits 9--8`\ (bits 1--0)
-> +      - G\ :sub:`02low bits 3--0`\ (bits 7--4) FG\ :sub:`01high bits 9--6`\ (bits 3--0)
-> +      - B\ :sub:`03low bits 1--0`\ (bits 7--6) G\ :sub:`02high bits 9--4`\ (bits 5--0)
-> +    * - start + 4:
-> +      - B\ :sub:`03high bits 9--2`
-> +      - FG\ :sub:`04low bits 7--0`
-> +      - G\ :sub:`05low bits 5--0`\ (bits 7--2) FG\ :sub:`04high bits 9--8`\ (bits 1--0)
-> +      - G\ :sub:`05high bits 3--0`
-> +    * - start + 8:
-> +      - G\ :sub:`10low bits 7--0`
-> +      - R\ :sub:`11low bits 5--0`\ (bits 7--2) G\ :sub:`10high bits 9--8`\ (bits 1--0)
-> +      - FG\ :sub:`12low bits 3--0`\ (bits 7--4) R\ :sub:`11high bits 9--6`\ (bits 3--0)
-> +      - G\ :sub:`13low bits 1--0`\ (bits 7--6) FG\ :sub:`12high bits 9--4`\ (bits 5--0)
-> +    * - start + 12:
-> +      - G\ :sub:`13high bits 9--2`
-> +      - R\ :sub:`14low bits 7--0`
-> +      - FG\ :sub:`15low bits 5--0`\ (bits 7--2) R\ :sub:`14high bits 9--8`\ (bits 1--0)
-> +      - FG\ :sub:`15high bits 3--0`
-> +    * - start + 16:
-> +      - B\ :sub:`20low bits 7--0`
-> +      - FG\ :sub:`21low bits 5--0`\ (bits 7--2) B\ :sub:`20high bits 9--8`\ (bits 1--0)
-> +      - G\ :sub:`22low bits 3--0`\ (bits 7--4) FG\ :sub:`21high bits 9--6`\ (bits 3--0)
-> +      - B\ :sub:`23low bits 1--0`\ (bits 7--6) G\ :sub:`22high bits 9--4`\ (bits 5--0)
-> +    * - start + 20:
-> +      - B\ :sub:`23high bits 9--2`
-> +      - FG\ :sub:`24low bits 7--0`
-> +      - G\ :sub:`25low bits 5--0`\ (bits 7--2) FG\ :sub:`24high bits 9--8`\ (bits 1--0)
-> +      - G\ :sub:`25high bits 3--0`
-> +    * - start + 24:
-> +      - G\ :sub:`30low bits 7--0`
-> +      - R\ :sub:`31low bits 5--0`\ (bits 7--2) G\ :sub:`30high bits 9--8`\ (bits 1--0)
-> +      - FG\ :sub:`32low bits 3--0`\ (bits 7--4) R\ :sub:`31high bits 9--6`\ (bits 3--0)
-> +      - G\ :sub:`33low bits 1--0`\ (bits 7--6) FG\ :sub:`32high bits 9--4`\ (bits 5--0)
-> +    * - start + 28:
-> +      - G\ :sub:`33high bits 9--2`
-> +      - R\ :sub:`34low bits 7--0`
-> +      - FG\ :sub:`35low bits 5--0`\ (bits 7--2) R\ :sub:`34high bits 9--8`\ (bits 1--0)
-> +      - FG\ :sub:`35high bits 3--0`
-> \ No newline at end of file
-> diff --git a/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr12.rst b/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr12.rst
-> new file mode 100644
-> index 000000000000..cc888aac42c2
-> --- /dev/null
-> +++ b/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr12.rst
-> @@ -0,0 +1,61 @@
-> +.. -*- coding: utf-8; mode: rst -*-
-> +
-> +.. _v4l2-pix-fmt-mtisp-sbggr12:
-> +.. _v4l2-pix-fmt-mtisp-sgbrg12:
-> +.. _v4l2-pix-fmt-mtisp-sgrbg12:
-> +.. _v4l2-pix-fmt-mtisp-srggb12:
-> +
-> +*******************************
-> +V4L2_PIX_FMT_MTISP_SBGGR12 ('MBBC'), V4L2_PIX_FMT_MTISP_SGBRG12('MBGC'), V4L2_PIX_FMT_MTISP_SGRBG12('MBgC'), V4L2_PIX_FMT_MTISP_SRGGB12('MBRC')
-> +*******************************
-> +
-> +12-bit Packed Bayer formats.
-> +
-> +Description
-> +===========
-> +
-> +These four pixel formats are used by Mediatek ISP P1.
-> +This is a packed format, meaning all the data bits for a pixel lying
-> +next to each other with no padding in memory, with a depth of 12 bits per pixel.
-> +The least significant byte is stored at lower memory addresses (little-endian).
-> +The RGB byte order follows raw sRGB / Bayer format from sensor.
-> +They are conventionally described as GRGR... BGBG..., RGRG... GBGB..., etc.
-> +Below is an example of conventional RGB byte order BGGR.
-> +
-> +**Byte Order.**
-> +Each cell is one byte.
-> +
-> +pixels cross the byte boundary and have a ratio of 6 bytes for each 4 pixels.
-> +
-> +.. flat-table::
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +
-> +    * - start + 0:
-> +      - B\ :sub:`00lowbits 7--0`
-> +      - G\ :sub:`01lowbits 3--0`\ (bits 7--4) B\ :sub:`00highbits 11--8`\ (bits 3--0)
-> +      - G\ :sub:`01highbits 7--0`
-> +      - B\ :sub:`02lowbits 7--0`
-> +      - G\ :sub:`03lowbits 3--0`\ (bits 7--4) B\ :sub:`02highbits 11--8`\ (bits 3--0)
-> +      - G\ :sub:`03highbits 7--0`
-> +    * - start + 6:
-> +      - G\ :sub:`10lowbits 7--0`
-> +      - R\ :sub:`11lowbits 3--0`\ (bits 7--4) G\ :sub:`10highbits 11--8`\ (bits 3--0)
-> +      - R\ :sub:`11highbits 7--0`
-> +      - G\ :sub:`12lowbits 7--0`
-> +      - R\ :sub:`13lowbits 3--0`\ (bits 7--4) G\ :sub:`12highbits 11--8`\ (bits 3--0)
-> +      - R\ :sub:`13highbits 7--0`
-> +    * - start + 12:
-> +      - B\ :sub:`20lowbits 7--0`
-> +      - G\ :sub:`21lowbits 3--0`\ (bits 7--4) B\ :sub:`20highbits 11--8`\ (bits 3--0)
-> +      - G\ :sub:`21highbits 7--0`
-> +      - B\ :sub:`22lowbits 7--0`
-> +      - G\ :sub:`23lowbits 3--0`\ (bits 7--4) B\ :sub:`22highbits 11--8`\ (bits 3--0)
-> +      - G\ :sub:`23highbits 7--0`
-> +    * - start + 18:
-> +      - G\ :sub:`30lowbits 7--0`
-> +      - R\ :sub:`31lowbits 3--0`\ (bits 7--4) G\ :sub:`30highbits 11--8`\ (bits 3--0)
-> +      - R\ :sub:`31highbits 7--0`
-> +      - G\ :sub:`32lowbits 7--0`
-> +      - R\ :sub:`33lowbits 3--0`\ (bits 7--4) G\ :sub:`32highbits 11--8`\ (bits 3--0)
-> +      - R\ :sub:`33highbits 7--0`
-> diff --git a/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr12f.rst b/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr12f.rst
-> new file mode 100644
-> index 000000000000..c063de9f9ad8
-> --- /dev/null
-> +++ b/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr12f.rst
-> @@ -0,0 +1,110 @@
-> +.. -*- coding: utf-8; mode: rst -*-
-> +
-> +.. _v4l2-pix-fmt-mtisp-sbggr12f:
-> +.. _v4l2-pix-fmt-mtisp-sgbrg12f:
-> +.. _v4l2-pix-fmt-mtisp-sgrbg12f:
-> +.. _v4l2-pix-fmt-mtisp-srggb12f:
-> +
-> +*******************************
-> +V4L2_PIX_FMT_MTISP_SBGGR12F ('MFBC'), V4L2_PIX_FMT_MTISP_SGBRG12F('MFGC'), V4L2_PIX_FMT_MTISP_SGRBG12F('MFgC'), V4L2_PIX_FMT_MTISP_SRGGB12F('MFRC')
-> +*******************************
-> +
-> +12-bit Packed Full-G Bayer formats.
-> +
-> +Description
-> +===========
-> +
-> +These four pixel formats are used by Mediatek ISP P1.
-> +This is a packed format with a depth of 12 bits per sample with every 4 pixels.
-> +Full-G means 1 more pixel for green channel every 2 pixels.
-> +The least significant byte is stored at lower memory addresses (little-endian).
-> +The RGB byte order follows raw sRGB / Bayer format from sensor. They are conventionally
-> +described as GRGR... BGBG..., RGRG... GBGB..., etc. Below is an example of conventional
-> +RGB byte order BGGR.
-> +
-> +**Bit-packed representation.**
-> +
-> +.. flat-table::
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +
-> +    * - B\ :sub:`00`
-> +      - FG\ :sub:`01`
-> +      - G\ :sub:`02`
-> +      - B\ :sub:`03`
-> +      - FG\ :sub:`04`
-> +      - G\ :sub:`05`
-> +    * - G\ :sub:`10`
-> +      - R\ :sub:`11`
-> +      - FG\ :sub:`12`
-> +      - G\ :sub:`13`
-> +      - R\ :sub:`14`
-> +      - FG\ :sub:`15`
-> +
-> +**Byte Order.**
-> +Each cell is one byte.
-> +
-> +.. flat-table::
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +
-> +    * - start + 0:
-> +      - B\ :sub:`00low bits 7--0`
-> +      - FG\ :sub:`01low bits 3--0`\ (bits 7--4) B\ :sub:`00high bits 11--8`\ (bits 3--0)
-> +    * - start + 2:
-> +      - FG\ :sub:`01high bits 7--0`
-> +      - G\ :sub:`02low bits 7--0`
-> +    * - start + 4:
-> +      - B\ :sub:`03low bits 3--0`\ (bits 7--4) G\ :sub:`02high bits 11--8`\ (bits 3--0)
-> +      - B\ :sub:`03high bits 7--0`
-> +    * - start + 6:
-> +      - FG\ :sub:`04low bits 7--0`
-> +      - G\ :sub:`05low bits 3--0`\ (bits 7--4) FG\ :sub:`04high bits 11--8`\ (bits 3--0)
-> +    * - start + 8:
-> +      - G\ :sub:`05high bits 7--0`
-> +      -
-> +    * - start + 10:
-> +      - G\ :sub:`10low bits 7--0`
-> +      - R\ :sub:`11low bits 3--0`\ (bits 7--4) G\ :sub:`10high bits 11--8`\ (bits 3--0)
-> +    * - start + 12:
-> +      - R\ :sub:`11high bits 7--0`
-> +      - FG\ :sub:`12low bits 7--0`
-> +    * - start + 14:
-> +      - G\ :sub:`13low bits 3--0`\ (bits 7--4) FG\ :sub:`12high bits 11--8`\ (bits 3--0)
-> +      - G\ :sub:`13high bits 7--0`
-> +    * - start + 16:
-> +      - R\ :sub:`14low bits 7--0`
-> +      - FG\ :sub:`15low bits 3--0`\ (bits 7--4) R\ :sub:`14high bits 11--8`\ (bits 3--0)
-> +    * - start + 18:
-> +      - FG\ :sub:`15high bits 7--0`
-> +      -
-> +    * - start + 20:
-> +      - B\ :sub:`20low bits 7--0`
-> +      - FG\ :sub:`21low bits 3--0`\ (bits 7--4) B\ :sub:`20high bits 11--8`\ (bits 3--0)
-> +    * - start + 22:
-> +      - FG\ :sub:`21high bits 7--0`
-> +      - G\ :sub:`22low bits 7--0`
-> +    * - start + 24:
-> +      - B\ :sub:`23low bits 3--0`\ (bits 7--4) G\ :sub:`22high bits 11--8`\ (bits 3--0)
-> +      - B\ :sub:`23high bits 7--0`
-> +    * - start + 26:
-> +      - FG\ :sub:`24low bits 7--0`
-> +      - G\ :sub:`25low bits 3--0`\ (bits 7--4) FG\ :sub:`24high bits 11--8`\ (bits 3--0)
-> +    * - start + 28:
-> +      - G\ :sub:`25high bits 7--0`
-> +      -
-> +    * - start + 30:
-> +      - G\ :sub:`30low bits 7--0`
-> +      - R\ :sub:`31low bits 3--0`\ (bits 7--4) G\ :sub:`30high bits 11--8`\ (bits 3--0)
-> +    * - start + 32:
-> +      - R\ :sub:`31high bits 7--0`
-> +      - FG\ :sub:`32low bits 7--0`
-> +    * - start + 34:
-> +      - G\ :sub:`33low bits 3--0`\ (bits 7--4) FG\ :sub:`32high bits 11--8`\ (bits 3--0)
-> +      - G\ :sub:`33high bits 7--0`
-> +    * - start + 36:
-> +      - R\ :sub:`34low bits 7--0`
-> +      - FG\ :sub:`35low bits 3--0`\ (bits 7--4) R\ :sub:`34high bits 11--8`\ (bits 3--0)
-> +    * - start + 38:
-> +      - FG\ :sub:`35high bits 7--0`
-> +      -
-> \ No newline at end of file
-> diff --git a/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr14.rst b/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr14.rst
-> new file mode 100644
-> index 000000000000..39ea9882a792
-> --- /dev/null
-> +++ b/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr14.rst
-> @@ -0,0 +1,73 @@
-> +.. -*- coding: utf-8; mode: rst -*-
-> +
-> +.. _v4l2-pix-fmt-mtisp-sbggr14:
-> +.. _v4l2-pix-fmt-mtisp-sgbrg14:
-> +.. _v4l2-pix-fmt-mtisp-sgrbg14:
-> +.. _v4l2-pix-fmt-mtisp-srggb14:
-> +
-> +*******************************
-> +V4L2_PIX_FMT_MTISP_SBGGR14 ('MBBE'), V4L2_PIX_FMT_MTISP_SGBRG14('MBGE'), V4L2_PIX_FMT_MTISP_SGRBG14('MBgE'), V4L2_PIX_FMT_MTISP_SRGGB14('MBRE')
-> +*******************************
-> +
-> +14-bit Packed Bayer formats.
-> +
-> +Description
-> +===========
-> +
-> +These four pixel formats are used by Mediatek ISP P1.
-> +This is a packed format, meaning all the data bits for a pixel lying
-> +next to each other with no padding in memory, with a depth of 14 bits per pixel.
-> +The least significant byte is stored at lower memory addresses (little-endian).
-> +The RGB byte order follows raw sRGB / Bayer format from sensor.
-> +They are conventionally described as GRGR... BGBG..., RGRG... GBGB..., etc.
-> +Below is an example of conventional RGB byte order BGGR.
-> +
-> +**Byte Order.**
-> +Each cell is one byte.
-> +
-> +pixels cross the byte boundary and have a ratio of 7 bytes for each 4 pixels.
-> +
-> +.. flat-table::
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +
-> +    * - start + 0:
-> +      - B\ :sub:`00low bits 7--0`
-> +      - G\ :sub:`01low bits 1--0`\ (bits 7--6) B\ :sub:`00high bits 13--8`\ (bits 5--0)
-> +      - G\ :sub:`01low bits 9--2`\
-> +      - B\ :sub:`02low bits 3--0`\ (bits 7--4) G\ :sub:`01high bits 13--10`\ (bits 3--0)
-> +    * - start + 4:
-> +      - B\ :sub:`02low bits 11--4`\
-> +      - G\ :sub:`03low bits 5--0`\ (bits 7--2) B\ :sub:`02high bits 13--12`\ (bits 1--0)
-> +      - G\ :sub:`03high bits 13--6`\
-> +      -
-> +    * - start + 8:
-> +      - G\ :sub:`10low bits 7--0`
-> +      - R\ :sub:`11low bits 1--0`\ (bits 7--6) G\ :sub:`10high bits 13--8`\ (bits 5--0)
-> +      - R\ :sub:`11low bits 9--2`\
-> +      - G\ :sub:`12low bits 3--0`\ (bits 7--4) R\ :sub:`11high bits 13--10`\ (bits 3--0)
-> +    * - start + 12:
-> +      - G\ :sub:`12low bits 11--4`\
-> +      - R\ :sub:`13low bits 5--0`\ (bits 7--2) G\ :sub:`12high bits 13--12`\ (bits 1--0)
-> +      - R\ :sub:`13high bits 13--6`\
-> +      -
-> +    * - start + 16:
-> +      - B\ :sub:`20low bits 7--0`
-> +      - G\ :sub:`21low bits 1--0`\ (bits 7--6) B\ :sub:`20high bits 13--8`\ (bits 5--0)
-> +      - G\ :sub:`21low bits 9--2`\
-> +      - B\ :sub:`22low bits 3--0`\ (bits 7--4) G\ :sub:`21high bits 13--10`\ (bits 3--0)
-> +    * - start + 20:
-> +      - B\ :sub:`22low bits 11--4`\
-> +      - G\ :sub:`23low bits 5--0`\ (bits 7--2) B\ :sub:`22high bits 13--12`\ (bits 1--0)
-> +      - G\ :sub:`23high bits 13--6`\
-> +      -
-> +    * - start + 24:
-> +      - G\ :sub:`30low bits 7--0`
-> +      - R\ :sub:`31low bits 1--0`\ (bits 7--6) G\ :sub:`30high bits 13--8`\ (bits 5--0)
-> +      - R\ :sub:`31low bits 9--2`\
-> +      - G\ :sub:`32low bits 3--0`\ (bits 7--4) R\ :sub:`31high bits 13--10`\ (bits 3--0)
-> +    * - start + 28:
-> +      - G\ :sub:`32low bits 11--4`\
-> +      - R\ :sub:`33low bits 5--0`\ (bits 7--2) G\ :sub:`32high bits 13--12`\ (bits 1--0)
-> +      - R\ :sub:`33high bits 13--6`\
-> +      -
-> \ No newline at end of file
-> diff --git a/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr14f.rst b/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr14f.rst
-> new file mode 100644
-> index 000000000000..010b1c190c60
-> --- /dev/null
-> +++ b/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr14f.rst
-> @@ -0,0 +1,110 @@
-> +.. -*- coding: utf-8; mode: rst -*-
-> +
-> +.. _v4l2-pix-fmt-mtisp-sbggr14f:
-> +.. _v4l2-pix-fmt-mtisp-sgbrg14f:
-> +.. _v4l2-pix-fmt-mtisp-sgrbg14f:
-> +.. _v4l2-pix-fmt-mtisp-srggb14f:
-> +
-> +*******************************
-> +V4L2_PIX_FMT_MTISP_SBGGR14F ('MFBE'), V4L2_PIX_FMT_MTISP_SGBRG14F('MFGE'), V4L2_PIX_FMT_MTISP_SGRBG14F('MFgE'), V4L2_PIX_FMT_MTISP_SRGGB14F('MFRE')
-> +*******************************
-> +
-> +14-bit Packed Full-G Bayer formats.
-> +
-> +Description
-> +===========
-> +
-> +These four pixel formats are used by Mediatek ISP P1.
-> +This is a packed format with a depth of 14 bits per sample with every 4 pixels.
-> +Full-G means 1 more pixel for green channel every 2 pixels.
-> +The least significant byte is stored at lower memory addresses (little-endian).
-> +The RGB byte order follows raw sRGB / Bayer format from sensor. They are conventionally
-> +described as GRGR... BGBG..., RGRG... GBGB..., etc. Below is an example of conventional
-> +RGB byte order BGGR.
-> +
-> +**Bit-packed representation.**
-> +
-> +.. flat-table::
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +
-> +    * - B\ :sub:`00`
-> +      - FG\ :sub:`01`
-> +      - G\ :sub:`02`
-> +      - B\ :sub:`03`
-> +      - FG\ :sub:`04`
-> +      - G\ :sub:`05`
-> +    * - G\ :sub:`10`
-> +      - R\ :sub:`11`
-> +      - FG\ :sub:`12`
-> +      - G\ :sub:`13`
-> +      - R\ :sub:`14`
-> +      - FG\ :sub:`15`
-> +
-> +**Byte Order.**
-> +Each cell is one byte.
-> +
-> +.. flat-table::
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +
-> +    * - start + 0:
-> +      - B\ :sub:`00low bits 7--0`
-> +      - FG\ :sub:`01low bits 1--0`\ (bits 7--6) B\ :sub:`00high bits 13--8`\ (bits 5--0)
-> +      - FG\ :sub:`01low bits 9--2`
-> +      - G\ :sub:`02low bits 3--0`\ (bits 7--4) FG\ :sub:`01high bits 13--10`\ (bits 3--0)
-> +    * - start + 4:
-> +      - G\ :sub:`02low bits 11--4`
-> +      - B\ :sub:`03low bits 5--0`\ (bits 7--2) G\ :sub:`02high bits 13--12`\ (bits 1--0)
-> +      - B\ :sub:`03high bits 13--6`
-> +      - FG\ :sub:`04low bits 7--0`
-> +    * - start + 8:
-> +      - G\ :sub:`05low bits 1--0`\ (bits 7--6) FG\ :sub:`04high bits 13--8`\ (bits 5--0)
-> +      - G\ :sub:`05high bits 9--2`
-> +      - G\ :sub:`05high bits 13--10`
-> +      -
-> +    * - start + 12:
-> +      - G\ :sub:`10low bits 7--0`
-> +      - R\ :sub:`11low bits 1--0`\ (bits 7--6) G\ :sub:`10high bits 13--8`\ (bits 5--0)
-> +      - R\ :sub:`11low bits 9--2`
-> +      - FG\ :sub:`12low bits 3--0`\ (bits 7--4) R\ :sub:`11high bits 13--10`\ (bits 3--0)
-> +    * - start + 16:
-> +      - FG\ :sub:`12low bits 11--4`
-> +      - G\ :sub:`13low bits 5--0`\ (bits 7--2) FG\ :sub:`12high bits 13--12`\ (bits 1--0)
-> +      - G\ :sub:`13high bits 13--6`
-> +      - R\ :sub:`14low bits 7--0`
-> +    * - start + 20:
-> +      - FG\ :sub:`15low bits 1--0`\ (bits 7--6) R\ :sub:`14high bits 13--8`\ (bits 5--0)
-> +      - FG\ :sub:`15high bits 9--2`
-> +      - FG\ :sub:`15high bits 13--10`
-> +      -
-> +    * - start + 24:
-> +      - B\ :sub:`20low bits 7--0`
-> +      - FG\ :sub:`21low bits 1--0`\ (bits 7--6) B\ :sub:`20high bits 13--8`\ (bits 5--0)
-> +      - FG\ :sub:`21low bits 9--2`
-> +      - G\ :sub:`22low bits 3--0`\ (bits 7--4) FG\ :sub:`21high bits 13--10`\ (bits 3--0)
-> +    * - start + 28:
-> +      - G\ :sub:`22low bits 11--4`
-> +      - B\ :sub:`23low bits 5--0`\ (bits 7--2) G\ :sub:`22high bits 13--12`\ (bits 1--0)
-> +      - B\ :sub:`23high bits 13--6`
-> +      - FG\ :sub:`24low bits 7--0`
-> +    * - start + 32:
-> +      - G\ :sub:`25low bits 1--0`\ (bits 7--6) FG\ :sub:`24high bits 13--8`\ (bits 5--0)
-> +      - G\ :sub:`25high bits 9--2`
-> +      - G\ :sub:`25high bits 13--10`
-> +      -
-> +    * - start + 36:
-> +      - G\ :sub:`30low bits 7--0`
-> +      - R\ :sub:`31low bits 1--0`\ (bits 7--6) G\ :sub:`30high bits 13--8`\ (bits 5--0)
-> +      - R\ :sub:`31low bits 9--2`
-> +      - FG\ :sub:`32low bits 3--0`\ (bits 7--4) R\ :sub:`31high bits 13--10`\ (bits 3--0)
-> +    * - start + 40:
-> +      - FG\ :sub:`32low bits 11--4`
-> +      - G\ :sub:`33low bits 5--0`\ (bits 7--2) FG\ :sub:`32high bits 13--12`\ (bits 1--0)
-> +      - G\ :sub:`33high bits 13--6`
-> +      - R\ :sub:`34low bits 7--0`
-> +    * - start + 44:
-> +      - FG\ :sub:`35low bits 1--0`\ (bits 7--6) R\ :sub:`34high bits 13--8`\ (bits 5--0)
-> +      - FG\ :sub:`35high bits 9--2`
-> +      - FG\ :sub:`35high bits 13--10`
-> +      -
-> \ No newline at end of file
-> diff --git a/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr8.rst b/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr8.rst
-> new file mode 100644
-> index 000000000000..86cadbf38175
-> --- /dev/null
-> +++ b/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr8.rst
-> @@ -0,0 +1,51 @@
-> +.. -*- coding: utf-8; mode: rst -*-
-> +
-> +.. _v4l2-pix-fmt-mtisp-sbggr8:
-> +.. _v4l2-pix-fmt-mtisp-sgbrg8:
-> +.. _v4l2-pix-fmt-mtisp-sgrbg8:
-> +.. _v4l2-pix-fmt-mtisp-srggb8:
-> +
-> +*******************************
-> +V4L2_PIX_FMT_MTISP_SBGGR8 ('MBB8'), V4L2_PIX_FMT_MTISP_SGBRG8('MBG8'), V4L2_PIX_FMT_MTISP_SGRBG8('MBg8'), V4L2_PIX_FMT_MTISP_SRGGB8('MBR8')
-> +*******************************
-> +
-> +8-bit Packed Bayer formats.
-> +
-> +Description
-> +===========
-> +
-> +These four pixel formats are used by Mediatek ISP P1.
-> +This is a packed format, meaning all the data bits for a pixel lying
-> +next to each other with no padding in memory, with a depth of 8 bits per pixel.
-> +The least significant byte is stored at lower memory addresses (little-endian).
-> +The RGB byte order follows raw sRGB / Bayer format from sensor.
-> +They are conventionally described as GRGR... BGBG..., RGRG... GBGB..., etc.
-> +Below is an example of conventional RGB byte order BGGR.
-
-How do these 8-bit formats differ from the V4L2_PIX_FMT_SGBRG8 (and
-other variants) ? They seem identical based on the description.
-
-> +
-> +**Byte Order.**
-> +Each cell is one byte.
-> +
-> +.. flat-table::
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +
-> +    * - start + 0:
-> +      - B\ :sub:`00`
-> +      - G\ :sub:`01`
-> +      - B\ :sub:`02`
-> +      - G\ :sub:`03`
-> +    * - start + 4:
-> +      - G\ :sub:`10`
-> +      - R\ :sub:`11`
-> +      - G\ :sub:`12`
-> +      - R\ :sub:`13`
-> +    * - start + 8:
-> +      - B\ :sub:`20`
-> +      - G\ :sub:`21`
-> +      - B\ :sub:`22`
-> +      - G\ :sub:`23`
-> +    * - start + 12:
-> +      - G\ :sub:`30`
-> +      - R\ :sub:`31`
-> +      - G\ :sub:`32`
-> +      - R\ :sub:`33`
-> \ No newline at end of file
-> diff --git a/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr8f.rst b/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr8f.rst
-> new file mode 100644
-> index 000000000000..ca5151312bca
-> --- /dev/null
-> +++ b/Documentation/media/uapi/v4l/pixfmt-mtisp-sbggr8f.rst
-> @@ -0,0 +1,78 @@
-> +.. -*- coding: utf-8; mode: rst -*-
-> +
-> +.. _v4l2-pix-fmt-mtisp-sbggr8f:
-> +.. _v4l2-pix-fmt-mtisp-sgbrg8f:
-> +.. _v4l2-pix-fmt-mtisp-sgrbg8f:
-> +.. _v4l2-pix-fmt-mtisp-srggb8f:
-> +
-> +*******************************
-> +V4L2_PIX_FMT_MTISP_SBGGR8F ('MFB8'), V4L2_PIX_FMT_MTISP_SGBRG8F('MFG8'), V4L2_PIX_FMT_MTISP_SGRBG8F('MFg8'), V4L2_PIX_FMT_MTISP_SRGGB8F('MFR8')
-> +*******************************
-> +
-> +8-bit Packed Full-G Bayer formats.
-> +
-> +Description
-> +===========
-> +
-> +These four pixel formats are used by Mediatek ISP P1.
-> +This is a packed format with a depth of 8 bits per sample with every 4 pixels.
-> +Full-G means 1 more pixel for green channel every 2 pixels.
-> +The least significant byte is stored at lower memory addresses (little-endian).
-> +The RGB byte order follows raw sRGB / Bayer format from sensor. They are conventionally
-> +described as GRGR... BGBG..., RGRG... GBGB..., etc. Below is an example of conventional
-> +RGB byte order BGGR.
-> +
-> +**Bit-packed representation.**
-> +
-> +.. flat-table::
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +
-> +    * - B\ :sub:`00`
-> +      - FG\ :sub:`01`
-> +      - G\ :sub:`02`
-> +      - B\ :sub:`03`
-> +      - FG\ :sub:`04`
-> +      - G\ :sub:`05`
-> +    * - G\ :sub:`10`
-> +      - R\ :sub:`11`
-> +      - FG\ :sub:`12`
-> +      - G\ :sub:`13`
-> +      - R\ :sub:`14`
-> +      - FG\ :sub:`15`
-> +
-> +**Byte Order.**
-> +Each cell is one byte.
-> +
-> +.. flat-table::
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +
-> +    * - start + 0:
-> +      - B\ :sub:`00`
-> +      - FG\ :sub:`01`
-> +      - G\ :sub:`02`
-> +      - B\ :sub:`03`
-> +      - FG\ :sub:`04`
-> +      - G\ :sub:`05`
-> +    * - start + 6:
-> +      - G\ :sub:`10`
-> +      - R\ :sub:`11`
-> +      - FG\ :sub:`12`
-> +      - G\ :sub:`13`
-> +      - R\ :sub:`14`
-> +      - FG\ :sub:`15`
-> +    * - start + 12:
-> +      - B\ :sub:`20`
-> +      - FG\ :sub:`21`
-> +      - G\ :sub:`22`
-> +      - B\ :sub:`23`
-> +      - FG\ :sub:`24`
-> +      - G\ :sub:`25`
-> +    * - start + 18:
-> +      - G\ :sub:`30`
-> +      - R\ :sub:`31`
-> +      - FG\ :sub:`32`
-> +      - G\ :sub:`33`
-> +      - R\ :sub:`34`
-> +      - FG\ :sub:`35`
-> \ No newline at end of file
-
--- 
-Regards,
-
-Laurent Pinchart
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gVGh1LCAyMDIwLTA0LTAyIGF0IDIwOjQ5ICswODAwLCBDaHVuLUt1YW5nIEh1IHdyb3RlOg0K
+PiBIaSwgTWF0dGhpYXM6DQo+IA0KPiBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlhcy5iZ2dAZ21h
+aWwuY29tPiDmlrwgMjAyMOW5tDTmnIgx5pelIOmAseS4iSDkuIvljYgxMTo1M+Wvq+mBk++8mg0K
+PiA+DQo+ID4NCj4gPg0KPiA+IE9uIDAxLzA0LzIwMjAgMDQ6MTYsIENodW5mZW5nIFl1biB3cm90
+ZToNCj4gPiA+IE9uIFR1ZSwgMjAyMC0wMy0zMSBhdCAyMzo1NyArMDgwMCwgQ2h1bi1LdWFuZyBI
+dSB3cm90ZToNCj4gPiA+PiBGcm9tOiBDSyBIdSA8Y2suaHVAbWVkaWF0ZWsuY29tPg0KPiA+ID4+
+DQo+ID4gPj4gdHpfZGlzYWJsZWQgaXMgdXNlZCB0byBjb250cm9sIG10a19oZG1pIG91dHB1dCBz
+aWduYWwsIGJ1dCB0aGlzIHZhcmlhYmxlDQo+ID4gPj4gaXMgc3RvcmVkIGluIG10a19oZG1pX3Bo
+eSBhbmQgbXRrX2hkbWlfcGh5IGRvZXMgbm90IHVzZSBpdC4gU28gbW92ZQ0KPiA+ID4+IHR6X2Rp
+c2FibGVkIHRvIG10a19oZG1pIHdoZXJlIGl0J3MgdXNlZC4NCj4gPiA+Pg0KPiA+ID4+IFNpZ25l
+ZC1vZmYtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+DQo+ID4gPj4gU2lnbmVkLW9mZi1i
+eTogQ2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5vcmc+DQo+ID4gPj4gLS0tDQo+
+ID4gPj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jICAgICAgICAgICB8IDIy
+ICsrKysrKysrKysrKysrKystLS0NCj4gPiA+PiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19oZG1pX3BoeS5oICAgICAgIHwgIDEgLQ0KPiA+ID4+ICAuLi4vZ3B1L2RybS9tZWRpYXRlay9t
+dGtfbXQyNzAxX2hkbWlfcGh5LmMgICAgfCAgMSAtDQo+ID4gPj4gIDMgZmlsZXMgY2hhbmdlZCwg
+MTkgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlvbnMoLSkNCj4gPiA+Pg0KPiA+ID4+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfaGRtaS5jDQo+ID4gPj4gaW5kZXggNWU0YTRkYmRhNDQzLi44Nzg0MzNj
+MDljOWIgMTAwNjQ0DQo+ID4gPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19o
+ZG1pLmMNCj4gPiA+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYw0K
+PiA+ID4+IEBAIC0xNDQsMTEgKzE0NCwxNiBAQCBzdHJ1Y3QgaGRtaV9hdWRpb19wYXJhbSB7DQo+
+ID4gPj4gICAgICBzdHJ1Y3QgaGRtaV9jb2RlY19wYXJhbXMgY29kZWNfcGFyYW1zOw0KPiA+ID4+
+ICB9Ow0KPiA+ID4+DQo+ID4gPj4gK3N0cnVjdCBtdGtfaGRtaV9jb25mIHsNCj4gPiA+PiArICAg
+IGJvb2wgdHpfZGlzYWJsZWQ7DQo+ID4gPj4gK307DQo+ID4gPj4gKw0KPiA+ID4+ICBzdHJ1Y3Qg
+bXRrX2hkbWkgew0KPiA+ID4+ICAgICAgc3RydWN0IGRybV9icmlkZ2UgYnJpZGdlOw0KPiA+ID4+
+ICAgICAgc3RydWN0IGRybV9icmlkZ2UgKm5leHRfYnJpZGdlOw0KPiA+ID4+ICAgICAgc3RydWN0
+IGRybV9jb25uZWN0b3IgY29ubjsNCj4gPiA+PiAgICAgIHN0cnVjdCBkZXZpY2UgKmRldjsNCj4g
+PiA+PiArICAgIGNvbnN0IHN0cnVjdCBtdGtfaGRtaV9jb25mICpjb25mOw0KPiA+ID4+ICAgICAg
+c3RydWN0IHBoeSAqcGh5Ow0KPiA+ID4+ICAgICAgc3RydWN0IGRldmljZSAqY2VjX2RldjsNCj4g
+PiA+PiAgICAgIHN0cnVjdCBpMmNfYWRhcHRlciAqZGRjX2FkcHQ7DQo+ID4gPj4gQEAgLTIzMCw3
+ICsyMzUsNiBAQCBzdGF0aWMgdm9pZCBtdGtfaGRtaV9od192aWRfYmxhY2soc3RydWN0IG10a19o
+ZG1pICpoZG1pLCBib29sIGJsYWNrKQ0KPiA+ID4+ICBzdGF0aWMgdm9pZCBtdGtfaGRtaV9od19t
+YWtlX3JlZ193cml0YWJsZShzdHJ1Y3QgbXRrX2hkbWkgKmhkbWksIGJvb2wgZW5hYmxlKQ0KPiA+
+ID4+ICB7DQo+ID4gPj4gICAgICBzdHJ1Y3QgYXJtX3NtY2NjX3JlcyByZXM7DQo+ID4gPj4gLSAg
+ICBzdHJ1Y3QgbXRrX2hkbWlfcGh5ICpoZG1pX3BoeSA9IHBoeV9nZXRfZHJ2ZGF0YShoZG1pLT5w
+aHkpOw0KPiA+ID4+DQo+ID4gPj4gICAgICAvKg0KPiA+ID4+ICAgICAgICogTVQ4MTczIEhETUkg
+aGFyZHdhcmUgaGFzIGFuIG91dHB1dCBjb250cm9sIGJpdCB0byBlbmFibGUvZGlzYWJsZSBIRE1J
+DQo+ID4gPj4gQEAgLTIzOCw3ICsyNDIsNyBAQCBzdGF0aWMgdm9pZCBtdGtfaGRtaV9od19tYWtl
+X3JlZ193cml0YWJsZShzdHJ1Y3QgbXRrX2hkbWkgKmhkbWksIGJvb2wgZW5hYmxlKQ0KPiA+ID4+
+ICAgICAgICogVGhlIEFSTSB0cnVzdGVkIGZpcm13YXJlIHByb3ZpZGVzIGFuIEFQSSBmb3IgdGhl
+IEhETUkgZHJpdmVyIHRvIHNldA0KPiA+ID4+ICAgICAgICogdGhpcyBjb250cm9sIGJpdCB0byBl
+bmFibGUgSERNSSBvdXRwdXQgaW4gc3VwZXJ2aXNvciBtb2RlLg0KPiA+ID4+ICAgICAgICovDQo+
+ID4gPj4gLSAgICBpZiAoaGRtaV9waHktPmNvbmYgJiYgaGRtaV9waHktPmNvbmYtPnR6X2Rpc2Fi
+bGVkKQ0KPiA+ID4+ICsgICAgaWYgKGhkbWktPmNvbmYtPnR6X2Rpc2FibGVkKQ0KPiA+DQo+ID4g
+V291bGRuJ3Qgd2UgbmVlZCB0byBjaGVjazoNCj4gPiBpZiAoaGRtaS0+Y29uZiAmJiBoZG1pLT5j
+b25mLT50el9kaXNhYmxlZCkNCj4gDQo+IE15IGRlc2lnbiBpczogaGRtaS0+Y29uZiB3b3VsZCBu
+b3QgYmUgTlVMTC4NCj4gDQo+ID4NCj4gPiA+PiAgICAgICAgICAgICAgcmVnbWFwX3VwZGF0ZV9i
+aXRzKGhkbWktPnN5c19yZWdtYXAsDQo+ID4gPj4gICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICBoZG1pLT5zeXNfb2Zmc2V0ICsgSERNSV9TWVNfQ0ZHMjAsDQo+ID4gPj4gICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAweDgwMDA4MDA1LCBlbmFibGUgPyAweDgwMDAwMDA1IDog
+MHg4MDAwKTsNCj4gPiA+PiBAQCAtMTY4OCw2ICsxNjkyLDcgQEAgc3RhdGljIGludCBtdGtfZHJt
+X2hkbWlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikNCj4gPiA+PiAgICAgICAg
+ICAgICAgcmV0dXJuIC1FTk9NRU07DQo+ID4gPj4NCj4gPiA+PiAgICAgIGhkbWktPmRldiA9IGRl
+djsNCj4gPiA+PiArICAgIGhkbWktPmNvbmYgPSBvZl9kZXZpY2VfZ2V0X21hdGNoX2RhdGEoZGV2
+KTsNCj4gPiA+Pg0KPiA+ID4+ICAgICAgcmV0ID0gbXRrX2hkbWlfZHRfcGFyc2VfcGRhdGEoaGRt
+aSwgcGRldik7DQo+ID4gPj4gICAgICBpZiAocmV0KQ0KPiA+ID4+IEBAIC0xNzY1LDggKzE3NzAs
+MTkgQEAgc3RhdGljIGludCBtdGtfaGRtaV9yZXN1bWUoc3RydWN0IGRldmljZSAqZGV2KQ0KPiA+
+ID4+ICBzdGF0aWMgU0lNUExFX0RFVl9QTV9PUFMobXRrX2hkbWlfcG1fb3BzLA0KPiA+ID4+ICAg
+ICAgICAgICAgICAgICAgICAgICBtdGtfaGRtaV9zdXNwZW5kLCBtdGtfaGRtaV9yZXN1bWUpOw0K
+PiA+ID4+DQo+ID4gPj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2hkbWlfY29uZiBtdGtfaGRt
+aV9jb25mX210MjcwMSA9IHsNCj4gPiA+PiArICAgIC50el9kaXNhYmxlZCA9IHRydWUsDQo+ID4g
+Pj4gK307DQo+ID4gPj4gKw0KPiA+ID4+ICtzdGF0aWMgY29uc3Qgc3RydWN0IG10a19oZG1pX2Nv
+bmYgbXRrX2hkbWlfY29uZl9tdDgxNzM7DQo+ID4gPj4gKw0KPiA+ID4+ICBzdGF0aWMgY29uc3Qg
+c3RydWN0IG9mX2RldmljZV9pZCBtdGtfZHJtX2hkbWlfb2ZfaWRzW10gPSB7DQo+ID4gPj4gLSAg
+ICB7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1oZG1pIiwgfSwNCj4gPiA+PiArICAg
+IHsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLWhkbWkiLA0KPiA+ID4+ICsgICAgICAu
+ZGF0YSA9ICZtdGtfaGRtaV9jb25mX210MjcwMSwNCj4gPiA+PiArICAgIH0sDQo+ID4gPj4gKyAg
+ICB7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1oZG1pIiwNCj4gPiA+PiArICAgICAg
+LmRhdGEgPSAmbXRrX2hkbWlfY29uZl9tdDgxNzMsDQo+ID4NCj4gPiBXZSBkb24ndCBoYXZlIGFu
+eSBkYXRhPyBUaGVuIHdlIHNob3VsZCBzZXQgZGF0YSB0byBOVUxMIGluc3RlYWQuDQo+IA0KPiBN
+eSBkZXNpZ24gaXMgZGF0YSB3b3VsZCBub3QgYmUgTlVMTCwgc28gSSBuZWVkIG5vdCB0byBjaGVj
+ayB3aGV0aGVyIGl0DQo+IGlzIE5VTEwgaW4gZHJpdmVyLg0KQnV0IHdlIGRvbid0IG5lZWQgLmRh
+dGEgZm9yIG10ODE3MywgaXQncyBiZXR0ZXIgdG8gc2V0IGl0IHRvIE5VTEwuDQoNCj4gDQo+IFJl
+Z2FyZHMsDQo+IENLDQo+IA0KPiA+DQo+ID4gUmVnYXJkcywNCj4gPiBNYXR0aGlhcw0KPiA+DQo+
+ID4gPj4gKyAgICB9LA0KPiA+ID4+ICAgICAge30NCj4gPiA+PiAgfTsNCj4gPiA+Pg0KPiA+ID4+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmggYi9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmgNCj4gPiA+PiBpbmRleCAyZDhi
+MzE4MjQ3MGQuLmZjMWMyZWZkMTEyOCAxMDA2NDQNCj4gPiA+PiAtLS0gYS9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmgNCj4gPiA+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2hkbWlfcGh5LmgNCj4gPiA+PiBAQCAtMjAsNyArMjAsNiBAQA0KPiA+ID4+
+ICBzdHJ1Y3QgbXRrX2hkbWlfcGh5Ow0KPiA+ID4+DQo+ID4gPj4gIHN0cnVjdCBtdGtfaGRtaV9w
+aHlfY29uZiB7DQo+ID4gPj4gLSAgICBib29sIHR6X2Rpc2FibGVkOw0KPiA+ID4+ICAgICAgdW5z
+aWduZWQgbG9uZyBmbGFnczsNCj4gPiA+PiAgICAgIGNvbnN0IHN0cnVjdCBjbGtfb3BzICpoZG1p
+X3BoeV9jbGtfb3BzOw0KPiA+ID4+ICAgICAgdm9pZCAoKmhkbWlfcGh5X2VuYWJsZV90bWRzKShz
+dHJ1Y3QgbXRrX2hkbWlfcGh5ICpoZG1pX3BoeSk7DQo+ID4gPj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQyNzAxX2hkbWlfcGh5LmMgYi9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX210MjcwMV9oZG1pX3BoeS5jDQo+ID4gPj4gaW5kZXggZDNjYzQwMjJl
+OTg4Li45OWZlMDVjZDM1OTggMTAwNjQ0DQo+ID4gPj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19tdDI3MDFfaGRtaV9waHkuYw0KPiA+ID4+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfbXQyNzAxX2hkbWlfcGh5LmMNCj4gPiA+PiBAQCAtMjM3LDcgKzIzNyw2
+IEBAIHN0YXRpYyB2b2lkIG10a19oZG1pX3BoeV9kaXNhYmxlX3RtZHMoc3RydWN0IG10a19oZG1p
+X3BoeSAqaGRtaV9waHkpDQo+ID4gPj4gIH0NCj4gPiA+Pg0KPiA+ID4+ICBzdHJ1Y3QgbXRrX2hk
+bWlfcGh5X2NvbmYgbXRrX2hkbWlfcGh5XzI3MDFfY29uZiA9IHsNCj4gPiA+PiAtICAgIC50el9k
+aXNhYmxlZCA9IHRydWUsDQo+ID4gPj4gICAgICAuZmxhZ3MgPSBDTEtfU0VUX1JBVEVfR0FURSwN
+Cj4gPiA+PiAgICAgIC5oZG1pX3BoeV9jbGtfb3BzID0gJm10a19oZG1pX3BoeV9wbGxfb3BzLA0K
+PiA+ID4+ICAgICAgLmhkbWlfcGh5X2VuYWJsZV90bWRzID0gbXRrX2hkbWlfcGh5X2VuYWJsZV90
+bWRzLA0KPiA+ID4NCj4gPiA+IFJldmlld2VkLWJ5OiBDaHVuZmVuZyBZdW4gPGNodW5mZW5nLnl1
+bkBtZWRpYXRlay5jb20+DQo+ID4gPg0KDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0
+ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
