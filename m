@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 482ADC2BA15
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 08:49:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D50DC43331
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 08:50:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 016FF206E9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 08:49:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 46BF420675
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 08:50:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tUdarjwa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 016FF206E9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dn618IhL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 46BF420675
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fi.rohmeurope.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,54 +25,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1KF2lypv0c7/GpSFu7Ah92p6FdSicUXf10blYKGoykw=; b=tUdarjwa3qILkZ
-	Con9sxSty0xnKmDc1kgfqsmvehsvRzC2Gzjh1z4uzZUhBEJhsSm4XHKO6Ecc845I6IrLx3dD1ZW9n
-	fL3VV4zX3qEYKgwghxvoRO8Tk52zjcDRngP8LHuXfviPhnCR9zPtagh4Gqmu5dX28h4WapaIUrBzS
-	v8QkekMuvSgc1cjABJZERoLXrojkw5A+uLamFR4ygmAX1l1TbWFncWpgGnvYTgphYxYcv5ybRaZpa
-	EaiFUaRYu+7q9imll+LE9BDYI8P4pnKUz0tbT85UdC70QXEYbD+Q2Uky849j/CEzGc038MT4hV8W4
-	H26jjCsVgGcZN2g/H5ng==;
+	List-Owner; bh=ed0x2+8gPFJ0pXC4hiW22J9lJbytD6nxbMWGTn2ADzw=; b=dn618IhLTiPtRC
+	F1p7jGpd0DeKcQHVdjgUiUSXkdrbaYwnoroWg3DBfpQ4wN7O2Fbi224e11KxVbXNRIvHsGS/GuKNA
+	U8ra4ifRxtcJijf7cugjA1QEGbpmQNDWHyo9S6X1Gv4VEMRH4g+3D5KXIC9e+LUTYodTNGDDe2X4t
+	cF8WUBeIJ+Vzv6W40ubdVEJPRXeXGQNAmShckW87S+WWzlTa3tyzkyESdL6wokU9Fr0yAwQPGaMDy
+	+BYh+vbAHHs1apULM7Uo0hPh3M+/t25L/Rl9F3QCWnTOUCd1j2rm27f7QOJ4SKQX+tRoMudiwluEf
+	pv3fsEmc+NeCnfhkZVQw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKI0c-0002y8-QH; Fri, 03 Apr 2020 08:49:02 +0000
-Received: from mail-lj1-f193.google.com ([209.85.208.193])
+	id 1jKI1N-0003cj-T7; Fri, 03 Apr 2020 08:49:49 +0000
+Received: from mail-lf1-f68.google.com ([209.85.167.68])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKHzW-00020l-E3; Fri, 03 Apr 2020 08:47:56 +0000
-Received: by mail-lj1-f193.google.com with SMTP id n17so6118812lji.8;
- Fri, 03 Apr 2020 01:47:53 -0700 (PDT)
+ id 1jKI0E-0002e6-Fw; Fri, 03 Apr 2020 08:48:44 +0000
+Received: by mail-lf1-f68.google.com with SMTP id q5so5081805lfb.13;
+ Fri, 03 Apr 2020 01:48:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=ulevoqefVf2yycDgxYFFdsJLYQsiBe600G16ZBILiDA=;
- b=VMfspz7iwhjEUgs6HAtA9A2lZD2k4MJNrse8cWFnkzsNZxuZUZ11RR7Ay20olKV/pX
- MmJrf9vd50I3SGgSC+35MDTNYidESDmZMeMj1Ok8Pm4uLvOTgWjIzVUSKjFhLENqRVh7
- wgM7bzvOGVDb2p+Gw9m+hBh/5ruUMXC5ozbVvfVCd40pvHt6ZPDYwhxihg0fuyCbGuFe
- jbbjvG1L+Q6FmpLmy/x7Cugzh+N0rx7/SS7J1Hpyp8f/u9AsWEJXei8DvIaDuKK7ObOv
- 0XVriuPb5L3aooJ+sC/vNJOeplzeIYzOeleB97z/f8kmImR/8xZ5rrECznejJXDYjG1I
- RCkw==
-X-Gm-Message-State: AGi0PuaYq3LQYu8BCuk/NXNw2RQdTG/dklKyoNDKVK7/wkA11aoyghyA
- T6/QlwFeTa5Li5dtzqgrtXw=
-X-Google-Smtp-Source: APiQypJ+EsUI3VZbF2XmukjnX9P4hA4FJqu4rs8IiSPRYnYJjtz6NxSmyA1AQqr5z486brP8Ckw3fw==
-X-Received: by 2002:a05:651c:96:: with SMTP id 22mr4395817ljq.27.1585903672034; 
- Fri, 03 Apr 2020 01:47:52 -0700 (PDT)
+ bh=gzfKSjnXqc4wJpLbDrR2fQHTuXHpbdii2oUy9JVLW5U=;
+ b=S4LdPsUz6Hvocn4WPk9vAqU1MVxnMo9js02NFJg2caVBxk5R1nH8WO7VFk2FegN0wU
+ EYRTmcHxjTJoKK/b24H834rfcb9eil7tO4VeiwVE5DZBDr2tTUjVhU1vaiYeFOuNItGz
+ TRy5i0g8j98JN8LAAwfi6vopAUMtAGY+QjSUhh7yNpTxIpaJrVU+uGBXy7gEdECcGOUY
+ Gm3GcvsdAt7Ego8lsu5Og3zvl4sSjtKnAQzup4XRyIFjZ+KS8TNjiB/nnmb8SsxiZmxA
+ xs2Xmd1IadZ4r6CMlKHCwuKjMVlJCy89WXBzKvA7Rg1fnzafdXkk4/P4JvJ6slQRrgkm
+ qOSg==
+X-Gm-Message-State: AGi0PuZjbiOdOVbIQaY+k20D/xss6PF9QYfbWrJ8iyXwSOz/l/io0B06
+ xt4Df/6bGAgHMNBQO8HQVV4=
+X-Google-Smtp-Source: APiQypJalw6zIVY08a+G4MsAoTU8wvRc8cUWZcbKLXz1vtzS3UZ2eP/3MaEOgqq1FCDg0tUSRHXXvA==
+X-Received: by 2002:a19:6144:: with SMTP id m4mr4557411lfk.192.1585903716362; 
+ Fri, 03 Apr 2020 01:48:36 -0700 (PDT)
 Received: from localhost.localdomain
  (dc7t7ryyyyyyyyyyyyybt-3.rev.dnainternet.fi. [2001:14ba:16e1:b700::3])
- by smtp.gmail.com with ESMTPSA id n24sm4608769lji.19.2020.04.03.01.47.49
+ by smtp.gmail.com with ESMTPSA id c4sm5580377lfg.82.2020.04.03.01.48.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Apr 2020 01:47:51 -0700 (PDT)
-Date: Fri, 3 Apr 2020 11:47:43 +0300
+ Fri, 03 Apr 2020 01:48:35 -0700 (PDT)
+Date: Fri, 3 Apr 2020 11:48:28 +0300
 From: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
 To: matti.vaittinen@fi.rohmeurope.com, mazziesaccount@gmail.com
-Subject: [PATCH v8 08/10] power: supply: add battery parameters
-Message-ID: <48f250bf6928929f60764c4334c60611b46233c4.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
+Subject: [PATCH v8 10/10] power: supply: Fix Kconfig help text indentiation
+Message-ID: <43077ce36099b3c381817b63c20ba29eef912456.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
 References: <cover.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <cover.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200403_014754_503884_99F234C5 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20200403_014838_579656_98A4D4C8 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,62 +121,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add parsing of new device-tree battery bindings.
-
-     - trickle-charge-current-microamp
-     - precharge-upper-limit-microvolt
-     - re-charge-voltage-microvolt
-     - over-voltage-threshold-microvolt
+Indent the help text as explained in
+Documentation/process/coding-style.rst
 
 Signed-off-by: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
 ---
 
 No changes since v7
 
- drivers/power/supply/power_supply_core.c | 8 ++++++++
- include/linux/power_supply.h             | 4 ++++
- 2 files changed, 12 insertions(+)
+I just learned the help text in Kconfigs should be indented by two
+spaces. I fixed this for BD99954 as suggested by Randy and decided
+that I could do this for few other entries as well while I was at
+it anyways.
 
-diff --git a/drivers/power/supply/power_supply_core.c b/drivers/power/supply/power_supply_core.c
-index 1a9a9fae73d3..02b37fe6061c 100644
---- a/drivers/power/supply/power_supply_core.c
-+++ b/drivers/power/supply/power_supply_core.c
-@@ -620,10 +620,18 @@ int power_supply_get_battery_info(struct power_supply *psy,
- 			     &info->voltage_min_design_uv);
- 	of_property_read_u32(battery_np, "voltage-max-design-microvolt",
- 			     &info->voltage_max_design_uv);
-+	of_property_read_u32(battery_np, "trickle-charge-current-microamp",
-+			     &info->tricklecharge_current_ua);
- 	of_property_read_u32(battery_np, "precharge-current-microamp",
- 			     &info->precharge_current_ua);
-+	of_property_read_u32(battery_np, "precharge-upper-limit-microvolt",
-+			     &info->precharge_voltage_max_uv);
- 	of_property_read_u32(battery_np, "charge-term-current-microamp",
- 			     &info->charge_term_current_ua);
-+	of_property_read_u32(battery_np, "re-charge-voltage-microvolt",
-+			     &info->charge_restart_voltage_uv);
-+	of_property_read_u32(battery_np, "over-voltage-threshold-microvolt",
-+			     &info->overvoltage_limit_uv);
- 	of_property_read_u32(battery_np, "constant-charge-current-max-microamp",
- 			     &info->constant_charge_current_max_ua);
- 	of_property_read_u32(battery_np, "constant-charge-voltage-max-microvolt",
-diff --git a/include/linux/power_supply.h b/include/linux/power_supply.h
-index dcd5a71e6c67..d01322d1ab52 100644
---- a/include/linux/power_supply.h
-+++ b/include/linux/power_supply.h
-@@ -346,8 +346,12 @@ struct power_supply_battery_info {
- 	int charge_full_design_uah;	    /* microAmp-hours */
- 	int voltage_min_design_uv;	    /* microVolts */
- 	int voltage_max_design_uv;	    /* microVolts */
-+	int tricklecharge_current_ua;	    /* microAmps */
- 	int precharge_current_ua;	    /* microAmps */
-+	int precharge_voltage_max_uv;	    /* microVolts */
- 	int charge_term_current_ua;	    /* microAmps */
-+	int charge_restart_voltage_uv;	    /* microVolts */
-+	int overvoltage_limit_uv;	    /* microVolts */
- 	int constant_charge_current_max_ua; /* microAmps */
- 	int constant_charge_voltage_max_uv; /* microVolts */
- 	int factory_internal_resistance_uohm;   /* microOhms */
+ drivers/power/supply/Kconfig | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
+index af96d7fa56b1..f606ba069e4e 100644
+--- a/drivers/power/supply/Kconfig
++++ b/drivers/power/supply/Kconfig
+@@ -415,7 +415,7 @@ config CHARGER_PCF50633
+ 	tristate "NXP PCF50633 MBC"
+ 	depends on MFD_PCF50633
+ 	help
+-	 Say Y to include support for NXP PCF50633 Main Battery Charger.
++	  Say Y to include support for NXP PCF50633 Main Battery Charger.
+ 
+ config BATTERY_RX51
+ 	tristate "Nokia RX-51 (N900) battery driver"
+@@ -609,15 +609,15 @@ config CHARGER_TPS65090
+ 	tristate "TPS65090 battery charger driver"
+ 	depends on MFD_TPS65090
+ 	help
+-	 Say Y here to enable support for battery charging with TPS65090
+-	 PMIC chips.
++	  Say Y here to enable support for battery charging with TPS65090
++	  PMIC chips.
+ 
+ config CHARGER_TPS65217
+ 	tristate "TPS65217 battery charger driver"
+ 	depends on MFD_TPS65217
+ 	help
+-	 Say Y here to enable support for battery charging with TPS65217
+-	 PMIC chips.
++	  Say Y here to enable support for battery charging with TPS65217
++	  PMIC chips.
+ 
+ config BATTERY_GAUGE_LTC2941
+ 	tristate "LTC2941/LTC2943 Battery Gauge Driver"
+@@ -671,16 +671,16 @@ config CHARGER_SC2731
+ 	tristate "Spreadtrum SC2731 charger driver"
+ 	depends on MFD_SC27XX_PMIC || COMPILE_TEST
+ 	help
+-	 Say Y here to enable support for battery charging with SC2731
+-	 PMIC chips.
++	  Say Y here to enable support for battery charging with SC2731
++	  PMIC chips.
+ 
+ config FUEL_GAUGE_SC27XX
+ 	tristate "Spreadtrum SC27XX fuel gauge driver"
+ 	depends on MFD_SC27XX_PMIC || COMPILE_TEST
+ 	depends on IIO
+ 	help
+-	 Say Y here to enable support for fuel gauge with SC27XX
+-	 PMIC chips.
++	  Say Y here to enable support for fuel gauge with SC27XX
++	  PMIC chips.
+ 
+ config CHARGER_UCS1002
+ 	tristate "Microchip UCS1002 USB Port Power Controller"
+@@ -698,9 +698,9 @@ config CHARGER_BD70528
+ 	select LINEAR_RANGES
+ 	default n
+ 	help
+-	 Say Y here to enable support for getting battery status
+-	 information and altering charger configurations from charger
+-	 block of the ROHM BD70528 Power Management IC.
++	  Say Y here to enable support for getting battery status
++	  information and altering charger configurations from charger
++	  block of the ROHM BD70528 Power Management IC.
+ 
+ config CHARGER_BD99954
+ 	tristate "ROHM bd99954 charger driver"
 -- 
 2.21.0
 
