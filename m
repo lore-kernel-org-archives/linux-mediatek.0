@@ -2,78 +2,86 @@ Return-Path: <SRS0=YIXp=5T=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 94468C43331
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 09:54:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A29E2C43331
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 10:08:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 637DD20737
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 09:54:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 760EB20757
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 10:08:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JLqlglcL";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="uEav5dOt"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 637DD20737
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hOiIZbQ0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 760EB20757
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fi.rohmeurope.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nqJZw68MAQBygxHZBEya9kMUl63vyPF5vT/Ha/VECgY=; b=JLqlglcLOzCxRy
-	Nw7rgtFzat0d0QAPW4d7exBk1C68CSpMxE+DDAqvZGiFK6j4Hd82zrc4u9p2LdGPoPeji5XdS3dr4
-	do263E+L9z8YIY7cu1ZoigiBv9f2syGgSMLMSQV2D88f/rk8KwLd0PZtmcow1Pd8kOjsnqOihUeXD
-	V6clbjINoxNFoYkYf3OQVofUOQ1Z/9tx2LCvzeGMj/kEiiT/YH8DsgcGyALYJEn5aygAemJmyOU7K
-	w0zIDkK0K1f+MZul9MPW89uMMIf6ED9yVnHlF9jfcDi/uBInVbOP1Ojz+16awCy5BmDLJHplVg5KD
-	PmaDKahg22NAldsfdkWg==;
+	List-Owner; bh=5qwNpbh0fgtaSkDMkh/7KTLLOzLc35qwCZNHTF8dbJM=; b=hOiIZbQ0Zl3cgq
+	hexD0YjAXUX5xCz2PjMJZ1DCSavUvU8TowMVnCB5qJtEmv+X14ajbKtiF/e/eYuWJhmljUun/TRpU
+	MpT17sq19FT8ySkutiEFuh/dFjg7JtGnL2XiK2h2NY0e4/fjfwXIC+KLp32FBxfbR+29S8v/KNZj7
+	GznhS7Z22nRE9CbcvFPoE7TzNon2jl1ujsuVBgRbxmtPq52D2eUC/i43cfstRBUAnGhBOiYMorAai
+	ryC2e4QD0qXwt/olcdBuSXzyKclJR30J4X07tJLE//tPW96X75h5ELsBmKiM+Kv2qlFEq7nCY1t8Q
+	3cz5RwnrDs8owkk5zx4g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKJ1K-0002zq-39; Fri, 03 Apr 2020 09:53:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKIya-0000Uk-39; Fri, 03 Apr 2020 09:51:01 +0000
-X-UUID: 6b7f855cb9c8450eb887aade4efabeed-20200403
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Lprj+ufCYbzLwTfc1XoNnGUMFca4BTukbE1k5gVfSdE=; 
- b=uEav5dOtyWLt1KR0e0l2J+ZeHZAPj1xviuawl415pp0I2bucwoF4NGLPEAQcIn9KT4i6RPNmEORK+UZDdoun6Gz2tmomuzIR3rjX6U/P33wwiw1zuY/7UeMJn06o4HD0hTA+LIx4EnG1gkQmDr5wWRzHddIS9KMSzUiRyPgArC8=;
-X-UUID: 6b7f855cb9c8450eb887aade4efabeed-20200403
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <xia.jiang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 198267025; Fri, 03 Apr 2020 01:50:42 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1395.4; Fri, 3 Apr 2020 02:40:46 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 3 Apr 2020 17:40:43 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 3 Apr 2020 17:40:43 +0800
-From: Xia Jiang <xia.jiang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
- <mchehab+samsung@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, Rick Chang <rick.chang@mediatek.com>
-Subject: [PATCH v8 10/14] media: platform: Delete redundant code for improving
- code quality
-Date: Fri, 3 Apr 2020 17:40:29 +0800
-Message-ID: <20200403094033.8288-11-xia.jiang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200403094033.8288-1-xia.jiang@mediatek.com>
-References: <20200403094033.8288-1-xia.jiang@mediatek.com>
+	id 1jKJEx-0004Vu-Q5; Fri, 03 Apr 2020 10:07:55 +0000
+Received: from mailgate1.rohmeurope.com ([87.129.152.131])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jKJEu-0004VL-DY; Fri, 03 Apr 2020 10:07:54 +0000
+X-AuditID: c0a8fbf4-473ff70000004419-a9-5e870af26a1f
+Received: from smtp.reu.rohmeu.com (will-cas001.reu.rohmeu.com
+ [192.168.251.177])
+ by mailgate1.rohmeurope.com (Symantec Messaging Gateway) with SMTP id
+ F4.89.17433.2FA078E5; Fri,  3 Apr 2020 12:07:46 +0200 (CEST)
+Received: from WILL-MAIL001.REu.RohmEu.com ([fe80::2915:304f:d22c:c6ba]) by
+ WILL-CAS001.REu.RohmEu.com ([fe80::d57e:33d0:7a5d:f0a6%16]) with mapi id
+ 14.03.0487.000; Fri, 3 Apr 2020 12:07:41 +0200
+From: "Vaittinen, Matti" <Matti.Vaittinen@fi.rohmeurope.com>
+To: "mazziesaccount@gmail.com" <mazziesaccount@gmail.com>
+Subject: Re: [PATCH v8 00/10] Support ROHM BD99954 charger IC
+Thread-Topic: [PATCH v8 00/10] Support ROHM BD99954 charger IC
+Thread-Index: AQHWCZNurrjQpdjIqkyw5OgYXk7rkqhnCsKA
+Date: Fri, 3 Apr 2020 10:07:41 +0000
+Message-ID: <50797a6ac6cda4647f9a396dab0ad08017e3138b.camel@fi.rohmeurope.com>
+References: <cover.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
+In-Reply-To: <cover.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
+Accept-Language: en-US, de-DE
+Content-Language: de-DE
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [62.78.225.252]
+Content-ID: <10842057F286414A8DA405585B16E10C@de.rohmeurope.com>
 MIME-Version: 1.0
-X-MTK: N
+X-Brightmail-Tracker: H4sIAAAAAAAAA02Tf1CTdRzH7/s8z/Y8gKuHge0b1R/sKi4LCfG6j3dKeFk+ZHZ5XX9oBT6L
+ R0bCRtswqLtcoyniYZAYsAYZulqwwI3LVCRstwg1t9uxQLp1J6BeYDKa/Miw6HlYCv98v+/v
+ 9/15fd7fPz5fhlT+SacwRTqTYNDxxWp5PHXOOe9Oj8bvz3u6e2EtOCIOEvxj8xTYfnZQcCja
+ SkKNpYEAn32GBHdjpwyi5hAJ080XKLjYO0lB8PJhEo6MXJVDyOpB8LnPL4PKY51ysDsrYGH0
+ hgyaqvZC9402AgKBEzTMhqoIqL/zFQGesUEZ1PVeomHgjF0OA5VBBJ8d/5iCWzU+BI2B7wkY
+ 9/2FwDEUJMDyURbYHf2iGemVQfP0ERJuhhvE+MYACdYeHw1B5zQBF7tN0GMNktDlESt6Qy/C
+ 6XA/Cbe9ASInnXO1uBA3O/MJxUUuW2muxfU+d2K0XcY5oxncr+G93GnbbzR31FPGdTlXcftu
+ 7+F+d3loztN2QM6FB8/KuUm/X6TOb3sF70hYr+FNe14tKtRlZO9M0FqiFrq0LbH85MIfcjOa
+ YqsRw2B2LW45l1qN4hklO4iwN9JHxw4/ITw3doWWiuTselw9vCiT2XXYHUysRnEMyc4m4aZ5
+ RtJJ7AY82fUpKelkNhtbp27JY3oNvhauR5Km2Efxh319lKQV7Mu4/9K+xRoluwlHqtyLbBz7
+ PPaH79CSRuwj+IB5kohlqbDn+pxM0phl8fGzATKmV+LxsX//v0/F3811UNIzSfYJ3HkmI4bm
+ 4FZ3Fx3Tqbj+4Agde0IiPt90lapFD9iWJdiWaNsy2raMti2jjyJZG8IlfFFxIW8SMlcbhLLV
+ Br22RNze0pd4UGx4p0+hBW+uFxEM8qIHGUK9UvENsz9PeZ9GX1Ch5Y3afENZsWD0IsyQ6mTF
+ xkZrnlJRwFe8Jxj0d62HGEqtUqSN1L2pZKWs3YJQKhjuug8zjBornhW/iDLRIBQK5buKik1L
+ NsHESc3jU5KNgq5AMPBlJm2+NBz5RnE6JGuFmPtanIgrjKV8iXgbQy+gTKZ2vLmVZHzNDnEd
+ ivQ4SCWl0+uEFJWiQwJYCdCW6e7FTSAVg9RJCo3krhD/8b1uE2IQIQb9Ul4pBZn4JSvFjN54
+ qeNdd/tTkWcK75ePeks39dcOa6gtV3bd/OH69vr2LG2C5lhBrnddqPOD9G1TO0NtJ6dyaiuH
+ iLQdXz+++cl+TdWa58ZT/FvTDlqorTPvRDnXhhd6c1Nlm9WPZR1K2gK73x7YGJf3Zd3gtR/9
+ X7w+/Pep7No8zl6zfbThn29V7foJxqymjFo+cxVpMPL/AaeUx0+EBAAA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200403_025100_270979_7E9C9F7B 
-X-CRM114-Status: GOOD (  11.74  )
+X-CRM114-CacheID: sfid-20200403_030752_608802_26ED4C4E 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,107 +93,89 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: maoguang.meng@mediatek.com, devicetree@vger.kernel.org,
- mojahsu@chromium.org, srv_heupstream@mediatek.com,
- linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
- senozhatsky@chromium.org, sj.huang@mediatek.com, drinkcat@chromium.org,
- linux-mediatek@lists.infradead.org, Xia Jiang <xia.jiang@mediatek.com>,
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
+ "andrei.stefanescu@microchip.com" <andrei.stefanescu@microchip.com>,
+ "heiko@sntech.de" <heiko@sntech.de>, "rafael@kernel.org" <rafael@kernel.org>,
+ "tony@atomide.com" <tony@atomide.com>,
+ "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
+ "brendanhiggins@google.com" <brendanhiggins@google.com>,
+ "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+ "kholk11@gmail.com" <kholk11@gmail.com>,
+ "hsin-hsiung.wang@mediatek.com" <hsin-hsiung.wang@mediatek.com>,
+ "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+ "axel.lin@ingics.com" <axel.lin@ingics.com>,
+ "gregory.clement@bootlin.com" <gregory.clement@bootlin.com>,
+ "b.zolnierkie@samsung.com" <b.zolnierkie@samsung.com>,
+ "krzk@kernel.org" <krzk@kernel.org>,
+ "m.reichl@fivetechno.de" <m.reichl@fivetechno.de>,
+ "bgolaszewski@baylibre.com" <bgolaszewski@baylibre.com>,
+ "wens@csie.org" <wens@csie.org>, "andreas@kemnade.info" <andreas@kemnade.info>,
+ "agross@kernel.org" <agross@kernel.org>, "Laine,
+ Markus" <Markus.Laine@fi.rohmeurope.com>,
+ "Adam.Thomson.Opensource@diasemi.com" <Adam.Thomson.Opensource@diasemi.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "ckeepax@opensource.cirrus.com" <ckeepax@opensource.cirrus.com>,
+ "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>,
+ "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+ "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+ "rf@opensource.cirrus.com" <rf@opensource.cirrus.com>,
+ "broonie@kernel.org" <broonie@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "sre@kernel.org" <sre@kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "tglx@linutronix.de" <tglx@linutronix.de>,
+ "andriy.shevchenko@linux.intel.com" <andriy.shevchenko@linux.intel.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "support.opensource@diasemi.com" <support.opensource@diasemi.com>,
+ "baolin.wang@linaro.org" <baolin.wang@linaro.org>,
+ "sbkim73@samsung.com" <sbkim73@samsung.com>,
+ "patches@opensource.cirrus.com" <patches@opensource.cirrus.com>,
+ "rdunlap@infradead.org" <rdunlap@infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Mutanen,
+ Mikko" <Mikko.Mutanen@fi.rohmeurope.com>,
+ "vkoul@kernel.org" <vkoul@kernel.org>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "bjorn.andersson@linaro.org" <bjorn.andersson@linaro.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Delete unused member variables annotation.
-Delete unused variable definition.
-Delete redundant log print, because V4L2 debug logs already print it.
+Hello Mark, Sebastian, All,
 
-Signed-off-by: Xia Jiang <xia.jiang@mediatek.com>
----
-v8: no changes
----
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 16 ++--------------
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h |  5 +++--
- 2 files changed, 5 insertions(+), 16 deletions(-)
+On Fri, 2020-04-03 at 11:36 +0300, Matti Vaittinen wrote:
+> Support ROHM BD99954 Battery Management IC
+> 
+> ROHM BD99954 is a Battery Management IC for 1-4 cell Lithium-Ion
+> secondary battery. BD99954 is intended to be used in space-constraint
+> equipment such as Low profile Notebook PC, Tablets and other
+> applications.
+> 
+> Series extracts a "linear ranges" helper out of the regulator
+> framework. Linear ranges helper is intended to help converting
+> real-world values to register values when conversion is linear. I
+> suspect this is useful also for power subsystem and possibly for clk.
 
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index 4e64046a6854..9e59b9a51ef0 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -182,7 +182,6 @@ static int mtk_jpeg_try_fmt_mplane(struct v4l2_format *f,
- 				   struct mtk_jpeg_ctx *ctx, int q_type)
- {
- 	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
--	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
- 	int i;
- 
- 	memset(pix_mp->reserved, 0, sizeof(pix_mp->reserved));
-@@ -190,7 +189,7 @@ static int mtk_jpeg_try_fmt_mplane(struct v4l2_format *f,
- 
- 	if (ctx->state != MTK_JPEG_INIT) {
- 		mtk_jpeg_adjust_fmt_mplane(ctx, f);
--		goto end;
-+		return 0;
- 	}
- 
- 	pix_mp->num_planes = fmt->colplanes;
-@@ -210,7 +209,7 @@ static int mtk_jpeg_try_fmt_mplane(struct v4l2_format *f,
- 		pfmt->sizeimage = round_up(pfmt->sizeimage, 128);
- 		if (pfmt->sizeimage == 0)
- 			pfmt->sizeimage = MTK_JPEG_DEFAULT_SIZEIMAGE;
--		goto end;
-+		return 0;
- 	}
- 
- 	/* type is MTK_JPEG_FMT_TYPE_CAPTURE */
-@@ -224,20 +223,9 @@ static int mtk_jpeg_try_fmt_mplane(struct v4l2_format *f,
- 		u32 stride = pix_mp->width * fmt->h_sample[i] / 4;
- 		u32 h = pix_mp->height * fmt->v_sample[i] / 4;
- 
--		memset(pfmt->reserved, 0, sizeof(pfmt->reserved));
- 		pfmt->bytesperline = stride;
- 		pfmt->sizeimage = stride * h;
- 	}
--end:
--	v4l2_dbg(2, debug, &jpeg->v4l2_dev, "wxh:%ux%u\n",
--		 pix_mp->width, pix_mp->height);
--	for (i = 0; i < pix_mp->num_planes; i++) {
--		v4l2_dbg(2, debug, &jpeg->v4l2_dev,
--			 "plane[%d] bpl=%u, size=%u\n",
--			 i,
--			 pix_mp->plane_fmt[i].bytesperline,
--			 pix_mp->plane_fmt[i].sizeimage);
--	}
- 	return 0;
- }
- 
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-index 64a731261214..9bbd615b1067 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-@@ -30,6 +30,9 @@
- 
- #define MTK_JPEG_DEFAULT_SIZEIMAGE	(1 * 1024 * 1024)
- 
-+/**
-+ * enum mtk_jpeg_ctx_state - contex state of jpeg
-+ */
- enum mtk_jpeg_ctx_state {
- 	MTK_JPEG_INIT = 0,
- 	MTK_JPEG_RUNNING,
-@@ -109,9 +112,7 @@ struct mtk_jpeg_q_data {
-  * @out_q:		source (output) queue information
-  * @cap_q:		destination (capture) queue queue information
-  * @fh:			V4L2 file handle
-- * @dec_param		parameters for HW decoding
-  * @state:		state of the context
-- * @header_valid:	set if header has been parsed and valid
-  * @colorspace: enum v4l2_colorspace; supplemental to pixelformat
-  * @ycbcr_enc: enum v4l2_ycbcr_encoding, Y'CbCr encoding
-  * @quantization: enum v4l2_quantization, colorspace quantization
--- 
-2.18.0
+I see Mark has acked/reviewed both the regulator changes and
+linear_ranges code. Do you think Mark should take the linear_ranges and
+regulator changes in his tree? I don't know Sebastian's schedule or
+when the charger portion is good to go - but I know that each new
+regulator driver which is added to regulator tree has a chance of using
+the struct regulator_linear_range - which will break when this series
+is applied. Or what would be the best way to avoid breaking regulators?
+
+OTOH, if Mark takes linear_ranges in his tree, then this power portion
+of the series will depend on linear_ranges stuff that is in regulator
+tree. I guess this must be pretty standard stuff for you and you
+probably know how to handle it but I just wanted to point out the risk
+of breaking regulator build without visible merge conflicts.
+
+Please let me know if I should split the series and rebase
+linear_ranges / regulator stuff on top of regulator tree.
+
+Br,
+	Matti Vaittinen
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
