@@ -2,88 +2,87 @@ Return-Path: <SRS0=YIXp=5T=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B6E9C43331
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 11:14:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 82E90C2D0E8
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 11:30:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 59E4C2064A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 11:14:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 55F9D20CC7
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Apr 2020 11:30:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fH7yRWaf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 59E4C2064A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fi.rohmeurope.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="P5joeXuD";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="iegDoB1I"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55F9D20CC7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2OwOmwkMiOp9me/Wber76eZd6xECCu4RfunZEw+BbwQ=; b=fH7yRWafZIf7iz
-	A7Xt3oHh/+f/hoCmKP13NxzSHVQBbb3VzApvuK2U13upWLS174RcnhCrQhAENm9d2RSU+OUjA6IXj
-	4Qp4W9fMfRAXglO0tfMyu4NozwicTKzi6Co9+DMK86H0sV/uSI7XqZVK9uDELh/7DX0RtXkiUe3ud
-	T2ScOPL+1ZLxx1xRVyFeZSit8NalFxZtrTbkO6gjYgCnv+3LBjmtV9ED5QKKbgBXWAEwcny0ilod6
-	CyB2QpUPrPexi79xViV5F+NVdttDBIa6hWUD7fKJbIjZMgVsLkkZrnc6q1kjV1NitXA5wfsQfScsR
-	9wSOIrqekm/VBWbF7I7w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Jj0AzObAdmRAvegyaj5KK2V1abIFyzgxNqiBKC/A6KU=; b=P5joeXuDy5ybn9
+	HDXa/ooieFuwvSqwv7XyjPYD5FaDMtdhlIR34AZCn53/PsCYa1+1NPRQjRXeYrstv8lFkjO5SX8nL
+	S+OwriyjdVweQahopJJCn7rsQ86Tg3WVmSPwW0JeIjvRZtGlYqzkg8sQCU1DWIPzvilrzZIxiNIaU
+	EP7nkS3EojO6UH4OJ55OpRzt0AIKTNvNTcTLRCuRvxddAVF/IBsaX/2+9qsbdNR+xk7XbGHKIDbxx
+	QKfn2JXkW31d1XvfDtZd+fUDYDHMYaYLBo2CloAF7UAQuvxidU9BRoiAo9CTZE/JE8HAHj171QNgQ
+	GWrmNVd9zkuqXfVRmqhA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKKH7-0004kQ-AV; Fri, 03 Apr 2020 11:14:13 +0000
-Received: from mailgate1.rohmeurope.com ([87.129.152.131])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKKGz-0004c8-1w; Fri, 03 Apr 2020 11:14:06 +0000
-X-AuditID: c0a8fbf4-473ff70000004419-62-5e871a786b18
-Received: from smtp.reu.rohmeu.com (will-cas001.reu.rohmeu.com
- [192.168.251.177])
- by mailgate1.rohmeurope.com (Symantec Messaging Gateway) with SMTP id
- 8B.C9.17433.87A178E5; Fri,  3 Apr 2020 13:14:01 +0200 (CEST)
-Received: from WILL-MAIL001.REu.RohmEu.com ([fe80::2915:304f:d22c:c6ba]) by
- WILL-CAS001.REu.RohmEu.com ([fe80::d57e:33d0:7a5d:f0a6%16]) with mapi id
- 14.03.0487.000; Fri, 3 Apr 2020 13:13:55 +0200
-From: "Vaittinen, Matti" <Matti.Vaittinen@fi.rohmeurope.com>
-To: "andriy.shevchenko@linux.intel.com" <andriy.shevchenko@linux.intel.com>
-Subject: Re: [PATCH v8 00/10] Support ROHM BD99954 charger IC
-Thread-Topic: [PATCH v8 00/10] Support ROHM BD99954 charger IC
-Thread-Index: AQHWCZNurrjQpdjIqkyw5OgYXk7rkqhnCsKAgAAPNACAAANNgA==
-Date: Fri, 3 Apr 2020 11:13:54 +0000
-Message-ID: <8007dadb0b3a13934f2a950204506a156cb2e65e.camel@fi.rohmeurope.com>
-References: <cover.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
- <50797a6ac6cda4647f9a396dab0ad08017e3138b.camel@fi.rohmeurope.com>
- <20200403110210.GO1922688@smile.fi.intel.com>
-In-Reply-To: <20200403110210.GO1922688@smile.fi.intel.com>
-Accept-Language: en-US, de-DE
-Content-Language: de-DE
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [62.78.225.252]
-Content-ID: <CA804C40FABB9248AC03DE48631B5E4D@de.rohmeurope.com>
+	id 1jKKWI-00069k-Ef; Fri, 03 Apr 2020 11:29:54 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jKKWB-00060G-16; Fri, 03 Apr 2020 11:29:48 +0000
+Received: by mail-pl1-x642.google.com with SMTP id t4so2577890plq.12;
+ Fri, 03 Apr 2020 04:29:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=8rXpdWw7x9PpBvoBR/qm/XcVJsNWHJ1tSvQ9UIVcPLA=;
+ b=iegDoB1IxCA4quOPEOuEst/h/o+3lRJuFDKhH/u9bys+FKqKdgPy8zwo7dxJoU2DwR
+ OqDJQKEkNLhlMWWPZ065eDbOe6Eo4ZD2JqnLMoX4sksEkxM3ZDYy5kzvKC2zOoRSXSix
+ t4aCJWtpQqSvrC2solgN22MI9dJUgkfeMjY9mCzCjV3+JrCclicKu8HBvSumuae23O0f
+ YKuek9MktR7z3Pa6J8hUkwLCmerbyvtBYv3ux2yPUeMxkyXQt8qVyoEDBorLtSBfEd5K
+ OyxNXrHVYivJX0Up0fRhONeNVQ+BFkAj2kkYUT2zWAdglRTaY2wwTkrVVQKGMJYZypuJ
+ v5YA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=8rXpdWw7x9PpBvoBR/qm/XcVJsNWHJ1tSvQ9UIVcPLA=;
+ b=P4O/phCyGE1efGT64CFKHH4YjGsoUGXPS9xcdLIJAetCWzHM7t1TBQtdXs0h4wZwlk
+ 0ZlDn8xHSJSWUTzgyUn3jxQRzQfTy+bmlIG8bhELPX6pb89KCuPrIuf4GjtMn/yID1AJ
+ Sg5KiYNRox9/ND5YnXLJcnk6FvItl0TpSGsmrksoTheIop6Svgh3ovATSOpbrhQ+/yq2
+ yMJiK2fDcNZ2bK9kzFu5XuB0Ww80bYqEdJw/c6Vwe8o55n4sIAKyjvXcdBCHY6YWkuV/
+ iOUr7D5eko9eDguyKAuMEWPZpDAD4GjepbMJnrl85MSucsVkIlAZ2xcQYgq07pMw8BIu
+ jU7g==
+X-Gm-Message-State: AGi0PubDM4fJatKyGGS2Q+JANCSHtXvuUv003C0ReFleZ1fvbVU1HeIw
+ gVkJHRck8W5IHi4lsMxXgQwLOn/ha9Q=
+X-Google-Smtp-Source: APiQypJ73aRw0jbyNSgssLXyjPahMN2KTO/im/OozAk2AXrhtWeGe0HEMNdi7dRewEFL4MTJbkL6Mg==
+X-Received: by 2002:a17:90a:37ea:: with SMTP id
+ v97mr9591002pjb.26.1585913384901; 
+ Fri, 03 Apr 2020 04:29:44 -0700 (PDT)
+Received: from guoguo-omen.lan ([240e:379:95c:7214:abe6:11ff:840d:b9a7])
+ by smtp.gmail.com with ESMTPSA id g18sm5034114pgh.42.2020.04.03.04.29.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 03 Apr 2020 04:29:44 -0700 (PDT)
+From: Chuanhong Guo <gch981213@gmail.com>
+To: netdev@vger.kernel.org
+Subject: [PATCH] net: dsa: mt7530: fix null pointer dereferencing in port5
+ setup
+Date: Fri,  3 Apr 2020 19:28:24 +0800
+Message-Id: <20200403112830.505720-1-gch981213@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-Brightmail-Tracker: H4sIAAAAAAAAA02TbVBUVRjHO/dl7wXcvCwIx42acbVppBFicppnGkDqi9eacWSaaRqboIvc
- WAoWunsxyGncgTaBxDQFlhWIyNUNCWRxlDeDmJ0EBTbGbaXCUcBpAmpRXiSipHtdFT6d/3n+
- z//5nQ/PYUndNKNnM02yKJmELIMmmOpxLrdsK9AfSnlhxUuDY8ZBwtDEMgX2AQcFR2brSSgr
- rCTAXb1AQoutmYZZi5eE+ZorFFzt9lMwPHKchPKx2xrwWl0IvnIP0VD0TbMGqp0FsDI+TUNV
- 8UHonG4gwOM5x8A9bzEBJ/49Q4BrwkfDse5BBq51VGvgWtEwgpOnvqBgrsyNwOb5noBJ998I
- HNeHCSj89EWodvQp5kw3DTXz5ST8NVqp4G0eEqyX3AwMO+cJuNopwyXrMAmtLqWj2/satI/2
- kbDU6yGStvGNtY2Iv7fwJcXPjFgZvrbxAH9u/CzNO2dj+V9HD/Lt9hsMX+fK41ud0fxnS/v5
- PxpdDO9qKNHwo74uDe8fGlJS/cl78N6Q+DRB3v9GZoYpNvHdEKPtO68m17Il/3i9j7Gg4s2l
- KIjF3Hbc4L5Ll6JgVsf5EO6yNj28XEb4wrejTCliWQ0Xj0t/YdRAOPc6/sc/glRNcuNhuKRP
- UHUYl4D9rRVkoCcRW+/MadRoOPcqbrCZ1TLFbcF3Kq8/iGq53fh+3TgRQHUi7J1ueWAEcS9j
- V4+FVjXinsYlFj8RYEVi1++LdODRHD7V5SEDegOenLj/sL4JX1xsolQuyW3FzR2xAZmE6/7k
- A1M24ROfjzGBJ4Ti/qrb1FEUYV8DsK+G7ath+5qwfU24DtENCGcLmVkZgizGxUhiXoyUY8xW
- jn052S4UWN75NrTSu6sXESzqRRtZwrBB+2H4oRTdk2k56QVGwWxMlfKyRHMvwixpCNe+YrOm
- 6LTpQsHHopTzyHqKpQyR2ufGjr2j41TWB6KYK0qP3CiWNWAtvVEZGiqJGWL+e5lZ8qpNsEHq
- 8GB9uFk0pYuSkCcbU9XlSDUr26Fa6xRuW6QS15pzhWylGoheQc+zRydr6knWXeOoJ3WUKcck
- 6iO1ezmllVNbjXmmx6ApFMkiQ5g2LUJx1yk/+PGcKQVBKIif84tUhCysWnoL2j0V1za+PTox
- rOujA4U/SvtmQm9+kqTJOBtR40t46cbOgfM7OrJP73lia0zPMxMV/62/WfX1+hD/b/1lg3Nn
- 7p4/HbZ4uNYptLYvlF2+teNCcsIyz5+smEmLlkxv4aryjiV7sixz7w8OxP9w8QixS27avLNf
- /inqWfvbh29FtaT69H1vGiizUYiLJiWz8D9/oO1IfgQAAA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200403_041405_250395_1480E560 
-X-CRM114-Status: GOOD (  23.31  )
+X-CRM114-CacheID: sfid-20200403_042947_076556_0BDD7D9F 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,131 +94,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
- "andrei.stefanescu@microchip.com" <andrei.stefanescu@microchip.com>,
- "heiko@sntech.de" <heiko@sntech.de>, "rafael@kernel.org" <rafael@kernel.org>,
- "tony@atomide.com" <tony@atomide.com>,
- "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
- "brendanhiggins@google.com" <brendanhiggins@google.com>,
- "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
- "kholk11@gmail.com" <kholk11@gmail.com>,
- "hsin-hsiung.wang@mediatek.com" <hsin-hsiung.wang@mediatek.com>,
- "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
- "axel.lin@ingics.com" <axel.lin@ingics.com>,
- "gregory.clement@bootlin.com" <gregory.clement@bootlin.com>,
- "b.zolnierkie@samsung.com" <b.zolnierkie@samsung.com>,
- "krzk@kernel.org" <krzk@kernel.org>,
- "m.reichl@fivetechno.de" <m.reichl@fivetechno.de>,
- "bgolaszewski@baylibre.com" <bgolaszewski@baylibre.com>,
- "wens@csie.org" <wens@csie.org>, "andreas@kemnade.info" <andreas@kemnade.info>,
- "agross@kernel.org" <agross@kernel.org>, "Laine,
- Markus" <Markus.Laine@fi.rohmeurope.com>,
- "Adam.Thomson.Opensource@diasemi.com" <Adam.Thomson.Opensource@diasemi.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "ckeepax@opensource.cirrus.com" <ckeepax@opensource.cirrus.com>,
- "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>,
- "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "rf@opensource.cirrus.com" <rf@opensource.cirrus.com>,
- "broonie@kernel.org" <broonie@kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "sre@kernel.org" <sre@kernel.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "tglx@linutronix.de" <tglx@linutronix.de>,
- "bjorn.andersson@linaro.org" <bjorn.andersson@linaro.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "support.opensource@diasemi.com" <support.opensource@diasemi.com>,
- "baolin.wang@linaro.org" <baolin.wang@linaro.org>,
- "sbkim73@samsung.com" <sbkim73@samsung.com>,
- "patches@opensource.cirrus.com" <patches@opensource.cirrus.com>,
- "rdunlap@infradead.org" <rdunlap@infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Mutanen, 
- Mikko" <Mikko.Mutanen@fi.rohmeurope.com>, "vkoul@kernel.org" <vkoul@kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>,
- "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
- "mazziesaccount@gmail.com" <mazziesaccount@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
+ =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
+ Russell King <rmk+kernel@armlinux.org.uk>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Chuanhong Guo <gch981213@gmail.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Andy & All,
+The 2nd gmac of mediatek soc ethernet may not be connected to a PHY
+and a phy-handle isn't always available.
+Unfortunately, mt7530 dsa driver assumes that the 2nd gmac is always
+connected to switch port 5 and setup mt7530 according to phy address
+of 2nd gmac node, causing null pointer dereferencing when phy-handle
+isn't defined in dts.
+This commit fix this setup code by checking return value of
+of_parse_phandle before using it.
 
-On Fri, 2020-04-03 at 14:02 +0300, andriy.shevchenko@linux.intel.com
-wrote:
-> On Fri, Apr 03, 2020 at 10:07:41AM +0000, Vaittinen, Matti wrote:
-> > On Fri, 2020-04-03 at 11:36 +0300, Matti Vaittinen wrote:
-> > > Support ROHM BD99954 Battery Management IC
-> > > 
-> > > ROHM BD99954 is a Battery Management IC for 1-4 cell Lithium-Ion
-> > > secondary battery. BD99954 is intended to be used in space-
-> > > constraint
-> > > equipment such as Low profile Notebook PC, Tablets and other
-> > > applications.
-> > > 
-> > > Series extracts a "linear ranges" helper out of the regulator
-> > > framework. Linear ranges helper is intended to help converting
-> > > real-world values to register values when conversion is linear. I
-> > > suspect this is useful also for power subsystem and possibly for
-> > > clk.
-> > 
-> > I see Mark has acked/reviewed both the regulator changes and
-> > linear_ranges code. Do you think Mark should take the linear_ranges
-> > and
-> > regulator changes in his tree? I don't know Sebastian's schedule or
-> > when the charger portion is good to go - but I know that each new
-> > regulator driver which is added to regulator tree has a chance of
-> > using
-> > the struct regulator_linear_range - which will break when this
-> > series
-> > is applied. Or what would be the best way to avoid breaking
-> > regulators?
-> > 
-> > OTOH, if Mark takes linear_ranges in his tree, then this power
-> > portion
-> > of the series will depend on linear_ranges stuff that is in
-> > regulator
-> > tree. I guess this must be pretty standard stuff for you and you
-> > probably know how to handle it but I just wanted to point out the
-> > risk
-> > of breaking regulator build without visible merge conflicts.
-> > 
-> > Please let me know if I should split the series and rebase
-> > linear_ranges / regulator stuff on top of regulator tree.
-> 
-> From my point of view, you need to wait till rc1 is out and rebase
-> the series.
-> The cross-subsystem changes can be handled by maintainers in a form
-> of
-> immutable branches / tags. On your side you may recommend them how to
-> proceed,
-> but the final decision is by them.
-> 
+Fixes: 38f790a80560 ("net: dsa: mt7530: Add support for port 5")
+Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
+Cc: stable@vger.kernel.org
+---
 
-Thanks Andy. I re-read what I wrote and I see it can be interpreted as
-if I was trying to tell how things should be done. That was my
-intention. My intention was to point out that my patches will break
-regulator tree builds if new drivers are added.
+mt7530 is available as a standalone chip and we should not make it
+tightly coupled with a specific type of ethernet dt binding in the
+first place.
+A proper fix is to replace this port detection logic with a dt
+property under mt7530 node, but that's too much for linux-stable.
 
-> From my point of view, you need to wait till rc1 is out and rebase
-> the series.
+ drivers/net/dsa/mt7530.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Does this mean that there is no new regulator drivers expected to be
-added after rc1 is out? If this is the case, the rebasing this series
-on top of rc1 should work as then I get all new drivers (for a release)
-converted. This is of course fine by me - but again we will risk of
-breaking regulators if the series slips to next release. Thus I thought
-that perhaps we should try getting the regulators stuff in Marks tree
-so that further reguator drivers wouldn't be broken.
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 6e91fe2f4b9a..1d53a4ebcd5a 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -1414,6 +1414,9 @@ mt7530_setup(struct dsa_switch *ds)
+ 				continue;
+ 
+ 			phy_node = of_parse_phandle(mac_np, "phy-handle", 0);
++			if (!phy_node)
++				continue;
++
+ 			if (phy_node->parent == priv->dev->of_node->parent) {
+ 				ret = of_get_phy_mode(mac_np, &interface);
+ 				if (ret && ret != -ENODEV)
+-- 
+2.25.1
 
-But as I said, my intention is not to claim I know how to do this. On
-the contrary - I have _never_ participated in maintaining a tree that
-will be merged by others. So, please just let me know what you see the
-best. I can do splitting the series or rebasing to regulator tree or
-rebase to rc1 when it is out if required :)
-
-Br,
-	Matti
 
 _______________________________________________
 Linux-mediatek mailing list
