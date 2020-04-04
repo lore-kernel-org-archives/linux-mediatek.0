@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-8.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 072C9C2BA16
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Apr 2020 09:19:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1011FC2BA16
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Apr 2020 09:22:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CE79D206E9
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Apr 2020 09:19:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CCA40206E9
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Apr 2020 09:22:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UeOhWgr1";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Nprn8Ox4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CE79D206E9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GZNV1DXO";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="aoxYQ38P"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CCA40206E9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,50 +27,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
 	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4EXMUCbTDC08OxtTg7m9wtG7fJkZtO/coygWCN9IDpY=; b=UeOhWgr1+jrLee
-	kA+lWtAfls6NoISM1qRBVdeh+J0GiEZQfrMv9/oKwpujWuIO8yORr85ycYvg3VfQ4sUmzPeQ6lIa6
-	iiD88iSh7KCCNODRbTxSwzDAcELBzn0Q1JnR9+WKaRcSikZUnKp0FVYMd4+9l7UvzgaJBgp/5tXkM
-	jyW8+ZBToN6LAoXOkWeht6t3QH/0nQKafy5hTW8eQw2vi6HCyouSIM+b1MJvjeTU3u5yf3U+BzTgk
-	6WuDOesbd+W1MpTiySUcrohrpbiqp9x14oA0YtpPuDc3CouB8DKDfSM0Q0+9pbsfh72vv493epFxC
-	M1FsU2BQSPNTWPtj7TYQ==;
+	List-Owner; bh=4EXMUCbTDC08OxtTg7m9wtG7fJkZtO/coygWCN9IDpY=; b=GZNV1DXOofr/zc
+	H824H5j2lfmdeZAhcsQ9DSw5GY7BNgFAHqs0ENEx3uzM9sF67jzjVUDSHGfW8D81gKcrgTItS5q7g
+	LT5xwRD0gKktZuAVSLEsONd5OC/5aEtMcR1mWufHSmQTE9grynyAg7gtgL8Z0gz/DG80h9b3gYmqq
+	WUTkcvCliA4cRzCg42WKeObO57kIqhukxwLviFZd6QyjdPLngVdfSNV/xXW+WvspGJq3ztPyRjNFW
+	8IGdO6CIhc87YDzNIwR8VU7vpxec+CRjhIYnkXHjQvVXJQFExyl1sm/qdivvVEBn2sTLm4WGa6iao
+	hD+gNde37NarvT0kfbmQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKexr-00058o-IK; Sat, 04 Apr 2020 09:19:43 +0000
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
+	id 1jKf03-0007ux-00; Sat, 04 Apr 2020 09:21:59 +0000
+Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKexl-000540-Ip; Sat, 04 Apr 2020 09:19:39 +0000
-Received: by mail-pf1-x443.google.com with SMTP id r14so4873659pfl.12;
- Sat, 04 Apr 2020 02:19:35 -0700 (PDT)
+ id 1jKezv-0007na-Q2; Sat, 04 Apr 2020 09:21:53 +0000
+Received: by mail-pj1-x1044.google.com with SMTP id k3so4163196pjj.2;
+ Sat, 04 Apr 2020 02:21:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:mime-version:content-disposition
  :user-agent; bh=NGWjop58dXG4vxvIdRNaBQN9RGU+nV2F4sGHS4krjUo=;
- b=Nprn8Ox4v6ELxRx0uvCCnpujI8wwKNUsM+6HRs7+1Lye6LpbA17bgc65vM72VA6nIY
- 2BpFPqOzXpFBEp2SUgiYnh9l4z/sERklNKhOb+sYqX30nbOkZ0sBnf7EVpFcRSUfvYq9
- iQqLEG0iI6YFiGJEBQxDMoOy0pN6VcoMPVKCU0lrhBPukCkHI+e2tDH1232xxaFNVenx
- XIRY48YU2a74hyzAGGz0lFULb8MYSfm+Df3kXdtMrd8t7LOQnYRrztDV8dZTkW/YfeRO
- G6A7SLbEJNC5lApPyQuV1RXGs80URygT0Bz3DMLbe7HEonbTpHKr97+4oEssnL2cB7Eq
- uYXA==
+ b=aoxYQ38PiYhTd+Dz1M1BjQDqvxcAfcndhj7HICuNEpV9z4uSvebaYJ5wAW/b/9YgAx
+ 49+GSxdhFfaR2oLyCt83fpzwsuZT1EPmUDLfC2LdAdAJsu0AfL/HAHH1LFdspdtJBgf6
+ O9BT9reeHvTpZDIdPF7ba08EMb8Tu+M+Cy8ZoPavS/9ghMlxCR8bhTxRdiSpbaHlNit8
+ ZUkbxO69Azcqf+y8PXIZ/SJ+u0ZgOJ0mShekcuf3hn/mb56ktAyXhZSn/uYj560rIlC8
+ R1l1tblnVxeNfGd5nYY9fk3PQwbXJiB0j5ZB2frsIa65FyUnQRBqDZHTUXL7KixjqB8Z
+ i6Ow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
  :content-disposition:user-agent;
  bh=NGWjop58dXG4vxvIdRNaBQN9RGU+nV2F4sGHS4krjUo=;
- b=tby73QObJTYGHi829z6WWoC12FwYwV71ABjhsx8MrvU637es6Rj2O/5K6cNZ/toCB8
- 9CfeLv+L5TNjBln3F3oEw9wxcmOfM3risKXLY/0w772JssnLDkkUE4X1XTo6iMpiqOh5
- arq6P9NGT2BMVC9P+xj24K8SlHsuNeUq6jCTkfdoGjLybkB0LZJBpNdgqlntT3r+rwJE
- vgFyw3pXyJA9sWOMNEHjRUx+1EnbvxTvZ/qk2OK18DfyrxiBralSXAWGbIXQk/EXBmCM
- rGFeb5DlWbvU2lYsd5JSYVM5eCQcOUh1/2Gkjp0nbO1gwdU7F9Ly26srIP8Zi+KUoDqO
- GEog==
-X-Gm-Message-State: AGi0PuaYBr6Tp2ASleys90pmS96JkEuXTbkldy7sxKOfdKoQDqMFHNId
- uO8NfLPyKVX6Ozju9vb9N10=
-X-Google-Smtp-Source: APiQypKCYCka40/AuhMUFmyg+se9cHrBZC6b2n6BbAgRxBMoLZzUIJhfIT34BWH+s+H9QjCcVF1Kxg==
-X-Received: by 2002:a63:4b53:: with SMTP id k19mr11878880pgl.91.1585991975371; 
- Sat, 04 Apr 2020 02:19:35 -0700 (PDT)
+ b=svFIhN43S0p7gaKBu3lKWLKh3Ndz5OoCjkktRow3U3tKR5G511tqPgIWF06r1urn03
+ pow0PMcP3EI3k92Ij1OU2OA7ulxT0RBaTovzsRnqr9ASakgE+KTjmZjw79lNF9fdpvuw
+ XR0xOoUfTidmgo8hiRwBsHGITulTlQlGSDqAnzzjRyIscFxH1lwvgHX8255wbZtz1K8l
+ oVzhzKp8V8ssi/U1UC0XjyB6cAJHnHGNhkTafv1OJ7CelEdXR/bltHdOBzrhoEiBezNi
+ CT0sJ94SAeo9Y3k7rZG5paj3AfWBktV9R+7acNJTgUgCsdrnWAfN631zmjUNergYj/O6
+ 0BIg==
+X-Gm-Message-State: AGi0Puaw/a6kmDWuwTKTmcmYb6Wd6BAvEGyZGtd9lVBO4NfkuJD8X3r4
+ zTwAXB0mb9NQiY84am5VDkViVJvIqiM=
+X-Google-Smtp-Source: APiQypIh6/tBvi/I+KrSy5FN/7eVkcMYHZrfKkGYY0tvSU7vJ/rf7VYnpdxdwhHlE47Fga+c5RJHsQ==
+X-Received: by 2002:a17:902:c595:: with SMTP id
+ p21mr11756123plx.17.1585992110608; 
+ Sat, 04 Apr 2020 02:21:50 -0700 (PDT)
 Received: from nishad ([106.51.232.103])
- by smtp.gmail.com with ESMTPSA id y15sm7331482pfc.206.2020.04.04.02.19.29
+ by smtp.gmail.com with ESMTPSA id a2sm7550506pja.44.2020.04.04.02.21.44
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Sat, 04 Apr 2020 02:19:34 -0700 (PDT)
-Date: Sat, 4 Apr 2020 14:49:25 +0530
+ Sat, 04 Apr 2020 02:21:50 -0700 (PDT)
+Date: Sat, 4 Apr 2020 14:51:40 +0530
 From: Nishad Kamdar <nishadkamdar@gmail.com>
 To: Alan Stern <stern@rowland.harvard.edu>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -82,12 +83,12 @@ To: Alan Stern <stern@rowland.harvard.edu>,
  Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
  Joe Perches <joe@perches.com>
 Subject: [PATCH] USB: host: Use the correct style for SPDX License Identifier
-Message-ID: <20200404091921.GA4485@nishad>
+Message-ID: <20200404092135.GA4522@nishad>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200404_021937_646547_82ADC8CD 
+X-CRM114-CacheID: sfid-20200404_022151_847204_7395DF72 
 X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -100,8 +101,8 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, inux-usb@vger.kernel.org
+Cc: linux-usb@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
