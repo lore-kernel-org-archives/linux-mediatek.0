@@ -2,23 +2,22 @@ Return-Path: <SRS0=WnB0=5U=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CB9CFC2BA15
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Apr 2020 15:34:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0264DC2BA15
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Apr 2020 15:46:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9DCF420644
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Apr 2020 15:34:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C8668206F8
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Apr 2020 15:46:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cY6DD4O2";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="rvWQiF5F"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9DCF420644
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NUesPE/h";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="QnkVdp/g"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C8668206F8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -26,60 +25,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VYxZ+OTvEkIKhz/LCnk9XIOPonlO4QLekMs6yVuEBFs=; b=cY6DD4O25e7BfF
-	GMUJdIjIB7YQ2/lm2LvNPW/YSsYpAP2T4M6qcwKuxEkhhNHfE5PeehTI/OjjOFdF/SaNCeXPBLuYd
-	F/7RpHWgblyuHbcODB2jh41YDhC6eDP5FqFFuneVEC1L7qMntgAylx+iasXXfhMUAZ2i1aegVS8Wy
-	5bnJmhnoqhbBwGE/scM4EZip4HPJb4jxT/Hna+NHfvDd+0F3t02Pi3AAcaFtz+/FaQ48mSYjV9ffx
-	t+1U+iaorOo0psVU1Yk+ObO+XwNenZ11rR0jraCwn7f0CQqOCDeUvcBDt57gxz4pv6zFKkWokMH+g
-	hewiFGeDASHHZ4Yk23Pg==;
+	List-Owner; bh=MCyKRXZPeU/IQGFTMFiZNeqKGSxgJsxfckkrV4caLPM=; b=NUesPE/h0HbG7a
+	KPTHvVyzTW11qMrmMIdAP4fi+Gek+GZVE4kTFpwqCiw6B42hiJn5KESMJ9+B7r7COVhRfror8b5IE
+	+i9Q67qTi6omrnPDIeRcQoJ37Necd6zP/CH30T7Ln/9/TlFDTROSoKcIagwCCmVgwP7MLqNg6EJqT
+	z7lw4isQdLUsv/nammjNaqfSDWQRnDPCTdvowBn3UQglLl+R5bt3tlblF+7E+K/bdvy4KWShpdysd
+	u/+y2+4fQFm+JAu51P4T05aYYaB+N4UDzHZWfZZ95HCMaTRNMotKqULYK7ce+qr63MEX0zRK8YjwS
+	hIa76alCM83RXDbkk/SQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKkot-0000cy-39; Sat, 04 Apr 2020 15:34:51 +0000
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
+	id 1jKkzp-0004XO-IF; Sat, 04 Apr 2020 15:46:09 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKkom-0000HK-Ml; Sat, 04 Apr 2020 15:34:45 +0000
-Received: by mail-ot1-x344.google.com with SMTP id t28so10586139ott.5;
- Sat, 04 Apr 2020 08:34:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=wJJHt0CSx4rCuEsqr8ESfPqtz2SvcHs+oQjfrjV6kEc=;
- b=rvWQiF5F8bJnmlWbMT7R49NetVKvTAdp4EJoY3L86knHIuMiThiWt9GN38kOhTFKJh
- R/puK9Sr3rH99oncCgmc1eK4NIkt+fy8pJp82Uj0vAMSBEQnbAGzU5HSBYLjcU31y0Hq
- 4yaatE2LPEJ5lgaSEd+1NuCPVvtORn+cSTnedW8fICKr4mMw9NT+KjMSLPPB7sN4dlZC
- dLsMVRtTOT7xshyqN4Uaiqm3NnxvOoKvRkQmkMqQn3LongPZHMloOdNa73uECn/jAC9x
- dkVQTIIDejHXp9ieN+gkTLpU7d54CHS/0Ks69XfSwNU+pS+nL+vefjtCj7Al4RwaRHRj
- jSGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=wJJHt0CSx4rCuEsqr8ESfPqtz2SvcHs+oQjfrjV6kEc=;
- b=kDkVZTgJZycb55OWoZUUTlGxXmebYkRs8fwTuszuxMR7Rdr61H445ZUGQFUhYnvj/y
- t6xTzRi6yaGy5rXbjszYFf3QA4Oi6jgxCIi0uzaQPlZTacg5ZJBApmDiHNp5z4VgG8s+
- F7Vidx93lX3C5opmWFbScg8qcPrRt/zKJXW4LmhgVjvJY2C01AjsePf4oBk6eij0ZXbl
- +c4tCBuvH1cQdWNFH175WpYO9J/V5pEOMhamHFzGgus3/qp2mYPbVURi1MgXAsVwZw5U
- ZVU0Ynm3q8Md0NuirCQNurlkM1TWtr1PX2StdGmqXlEqDXDF5j9snVMSzySijL+jzqnX
- N/Ag==
-X-Gm-Message-State: AGi0PuZJQJuZv/PjmG7AXjYsrEpD92ekNCFMOqQwZ7Hh5uxyEKgv/U5q
- Qw+ag6fRAis3L+Aoc2d7DpRpGx4LGJhJoNKKJcw=
-X-Google-Smtp-Source: APiQypJurN6kKeueDqM6o5vZ2pCFzzx2u9sVqqily6xPz9KLmAwCuSMsRcuswvGToxGksPlnBUBs6hgZxPamk8aeaiQ=
-X-Received: by 2002:a9d:7a45:: with SMTP id z5mr10438979otm.181.1586014481828; 
- Sat, 04 Apr 2020 08:34:41 -0700 (PDT)
+ id 1jKkzf-0004Q3-TY; Sat, 04 Apr 2020 15:46:01 +0000
+Received: from mail-ed1-f50.google.com (mail-ed1-f50.google.com
+ [209.85.208.50])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id B09F72076C;
+ Sat,  4 Apr 2020 15:45:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1586015159;
+ bh=GMu0zk+p8QMuMWjCbtVqePXwGuMgSxIWxR0r1z6lvyU=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=QnkVdp/gyG8TvuSAYeRWfvp6TyOcb4HR3RmfcuKqMH+f51o15YIulJtAIOimkVXun
+ lAkaRQGi24mhZheUSivFH7sPHMPFRyCwRPc6V5Sc4XQQ/dSbFnV/ak09dKTThtR2JU
+ 8FXui4qMBZLm8E/PiEFXSePCnrYYtPldWwwD1+Js=
+Received: by mail-ed1-f50.google.com with SMTP id v1so13089597edq.8;
+ Sat, 04 Apr 2020 08:45:58 -0700 (PDT)
+X-Gm-Message-State: AGi0PubOaQvcXN6/pDR+WpUnMSM0NR768bLkxs2zjnbQVG/eGvzQzDH3
+ 5yQR72Y/t68B0VvehOKYXu1x/idRLjG7zjh9iQ==
+X-Google-Smtp-Source: APiQypKX48tTaJ6RxCfGLNPptu/cJWdbVnwRtToRHot3QHJ2YgdHABiYCkH652IzhRi38qOA2XH03CE7gPBlBXCImT4=
+X-Received: by 2002:a50:af85:: with SMTP id h5mr12733695edd.300.1586015157107; 
+ Sat, 04 Apr 2020 08:45:57 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200403112830.505720-1-gch981213@gmail.com>
- <20200403180911.Horde.9xqnJvjcRDe-ttshlJbG6WE@www.vdorst.com>
- <CAJsYDVJj1JajVxeGifaOprXYstG-gC_OYwd5LrALUY_4BdtR3A@mail.gmail.com>
- <20200404150810.GA161768@lunn.ch>
-In-Reply-To: <20200404150810.GA161768@lunn.ch>
-From: Chuanhong Guo <gch981213@gmail.com>
-Date: Sat, 4 Apr 2020 23:34:30 +0800
-Message-ID: <CAJsYDV+NY90r=PV0dYRRaTEuxQAMTbakLvguX-1jOu3OQwYfSQ@mail.gmail.com>
-Subject: Re: [PATCH] net: dsa: mt7530: fix null pointer dereferencing in port5
- setup
-To: Andrew Lunn <andrew@lunn.ch>
+References: <20200331082725.81048-1-jitao.shi@mediatek.com>
+ <20200331082725.81048-2-jitao.shi@mediatek.com>
+In-Reply-To: <20200331082725.81048-2-jitao.shi@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Sat, 4 Apr 2020 23:45:45 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-77zLp1W=29oxdFbPWzdiUbk-dJfEmUU16CJoLxC8FMg@mail.gmail.com>
+Message-ID: <CAAOTY_-77zLp1W=29oxdFbPWzdiUbk-dJfEmUU16CJoLxC8FMg@mail.gmail.com>
+Subject: Re: [PATCH v4 1/4] dt-bindings: display: mediatek: add property to
+ control mipi tx drive current
+To: Jitao Shi <jitao.shi@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200404_083444_778821_F3C9915F 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20200404_084559_978623_07D51416 
+X-CRM114-Status: GOOD (  13.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,43 +82,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Florian Fainelli <f.fainelli@gmail.com>, netdev@vger.kernel.org,
- Sean Wang <sean.wang@mediatek.com>, open list <linux-kernel@vger.kernel.org>,
- stable@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
- =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>,
- Russell King <rmk+kernel@armlinux.org.uk>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>,
+ huijuan.xie@mediatek.com, stonea168@163.com, linux-kernel@vger.kernel.org,
+ DRI Development <dri-devel@lists.freedesktop.org>, cawa.cheng@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi!
-
-On Sat, Apr 4, 2020 at 11:08 PM Andrew Lunn <andrew@lunn.ch> wrote:
-> > > MT7530 tries to detect if 2nd GMAC is using a phy with phy-address 0 or 4.
-> >
-> > What if the 2nd GMAC connects to an external PHY on address 0 on a
-> > different mdio-bus?
->
-> In general, you using a phy-handle to cover such a situation. If there
-> is a phy-handle, just use it.
-
-If it's determining where switch mac5 is wired, a phy-handle is fine.
-Here we are determining where exposed rgmii2 pins are wired.
-It can be wired to switch mac5 or skip the switch mac completely
-and connected to phy0/phy4.
-Current driver is determining rgmii2 wiring on mt7530 using phy-handle
-on *another unrelated ethernet node* which doesn't sound right.
-
--- 
-Regards,
-Chuanhong Guo
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEppdGFvOgoKSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5
+tDPmnIgzMeaXpSDpgLHkuowg5LiL5Y2INDoyOOWvq+mBk++8mgo+Cj4gQWRkIGEgcHJvcGVydHkg
+dG8gY29udHJvbCBtaXBpIHR4IGRyaXZlIGN1cnJlbnQ6Cj4gImRyaXZlLXN0cmVuZ3RoLW1pY3Jv
+YW1wIgoKUmV2aWV3ZWQtYnk6IENodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3Jn
+PgoKPgo+IFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlhdGVrLmNvbT4K
+PiAtLS0KPiAgLi4uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRl
+ayxkc2kudHh0ICAgIHwgNSArKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCsp
+Cj4KPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3Bs
+YXkvbWVkaWF0ZWsvbWVkaWF0ZWssZHNpLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRzaS50eHQKPiBpbmRleCBhMTlhNmNj
+Mzc1ZWQuLmQ3OGI2ZDZkOGZhYiAxMDA2NDQKPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRy
+ZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkc2kudHh0Cj4gKysrIGIvRG9j
+dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWss
+ZHNpLnR4dAo+IEBAIC0zMyw2ICszMywxMCBAQCBSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+ICAtICNj
+bG9jay1jZWxsczogbXVzdCBiZSA8MD47Cj4gIC0gI3BoeS1jZWxsczogbXVzdCBiZSA8MD4uCj4K
+PiArT3B0aW9uYWwgcHJvcGVydGllczoKPiArLSBkcml2ZS1zdHJlbmd0aC1taWNyb2FtcDogYWRq
+dXN0IGRyaXZpbmcgY3VycmVudCwgc2hvdWxkIGJlIDMwMDAgfiA2MDAwLiBBbmQKPiArICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0aGUgc3RlcCBpcyAy
+MDAuCj4gKwo+ICBFeGFtcGxlOgo+Cj4gIG1pcGlfdHgwOiBtaXBpLWRwaHlAMTAyMTUwMDAgewo+
+IEBAIC00Miw2ICs0Niw3IEBAIG1pcGlfdHgwOiBtaXBpLWRwaHlAMTAyMTUwMDAgewo+ICAgICAg
+ICAgY2xvY2stb3V0cHV0LW5hbWVzID0gIm1pcGlfdHgwX3BsbCI7Cj4gICAgICAgICAjY2xvY2st
+Y2VsbHMgPSA8MD47Cj4gICAgICAgICAjcGh5LWNlbGxzID0gPDA+Owo+ICsgICAgICAgZHJpdmUt
+c3RyZW5ndGgtbWljcm9hbXAgPSA8NDYwMD47Cj4gIH07Cj4KPiAgZHNpMDogZHNpQDE0MDFiMDAw
+IHsKPiAtLQo+IDIuMjEuMAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVl
+ZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2RyaS1kZXZlbAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1tZWRpYXRlawo=
