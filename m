@@ -1,76 +1,70 @@
-Return-Path: <SRS0=WnB0=5U=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=YyAn=5V=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CBFFBC2BA15
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Apr 2020 15:47:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EFD66C2BA15
+	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Apr 2020 00:43:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A058E206C3
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Apr 2020 15:47:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C488E206C3
+	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Apr 2020 00:43:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Gle4DS27";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="JmO/Vfwu"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A058E206C3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BQOqzcfs";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Htgg3Gnc"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C488E206C3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3IMfDR3c+DumhkGK1ATfSCyV92kWAUv4dBg9flnHlnc=; b=Gle4DS27+mCzlB
-	yft0P4Cuf7IbuE5GEIwVvmI/MoXJaDZyNaw73cjF4mC0Tog+i9jHypaZ2UZVoDK/vQGu11tgaMsCE
-	dU+unjylNdbU572t4ff0lkrF/0qGgi5SJ4G9KIY6+y2aEj7OUvxnpoJqQGRc3HhBDFm405EpK2jD4
-	6Jq6VcIIH1uitmVznn7+8A+e78vZXLSxOpxWg3dupTMoksHy/1gjPUq5Yo+FS8QxD9YXofCKnTtl0
-	qEM4dDwvYkShEea7IvgaDQ/iYw+DmSrRb7ZmMZdBKsft6QBlC+oioLg7Dkpz9ViWokU9tYB46wk+r
-	RivdYibzCZSzj6IET5vg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=W8zOS1yYEDxnfr8rrYHHLY9YD7aOQ1bhE+q6qhEfK0Q=; b=BQOqzcfsToWS+HS5X8FGREZIj
+	h4tBSZQ8JIAKMG0iyWNhbhLN11s+LMLl6SLdmBtk+LcwHEuYvoYXj+5UbOFOnb4NZdhad8NYJ3K1K
+	w5YCL5ZxMhJuFTaCjCtF86fNUMEGgVxYQqYR+fMlYCbT5tzwY+eqhjMqaz2+srlQjz4AtoB7SmI4D
+	dKlJjpCa21L9q5HsqvB16VQvrSuNfbYn/BFwEUpNHgIHvhNPVCd9viMtLC7WvUwYWzEZbDwD8ODSW
+	1tNkBwkuIo8z9zZrGSuZwLdt/rpRLNGg8wG0Kf3t2mOG7kjSjauM9vc/KbpI6fFHNmSl/ANgy5Hq5
+	IJUREgO7A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKl0g-0005Qe-Gg; Sat, 04 Apr 2020 15:47:02 +0000
+	id 1jKtO1-0006FB-8R; Sun, 05 Apr 2020 00:43:41 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKl0Y-0005Hn-9o; Sat, 04 Apr 2020 15:46:55 +0000
-Received: from mail-ed1-f50.google.com (mail-ed1-f50.google.com
- [209.85.208.50])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ id 1jKtNu-0006AP-Nu; Sun, 05 Apr 2020 00:43:36 +0000
+Received: from earth.universe (dyndsl-095-033-168-093.ewe-ip-backbone.de
+ [95.33.168.93])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B0C9220787;
- Sat,  4 Apr 2020 15:46:53 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 006D9206C3;
+ Sun,  5 Apr 2020 00:43:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1586015214;
- bh=WJRemwJCqzpDcI6pJ9JuFYK2/3qEZkXB/hThgp1+WDs=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=JmO/Vfwule7YlfedMUk0yMIkxxFIk36ZVfPzmmujhVE1MYQ5BkNLuSjR0x3466YVX
- CyFZlVgMrzNnlpdne2s0Mamh/wVfndPpFEJG7FpNx1c/VMPbPTqU2SL3oEkyda8MO3
- V1CcxEhS1uZ+eGOQuYhnc86uFNBh3gqOLcePHh+c=
-Received: by mail-ed1-f50.google.com with SMTP id z65so13168777ede.0;
- Sat, 04 Apr 2020 08:46:53 -0700 (PDT)
-X-Gm-Message-State: AGi0PuY8s/eAtcnm7ELmmfgeoSNA9NxmHUhaD15nRDFVOMp7OWlqcvxx
- GWPcR57zHkvO2Z0OIePCvHmDf7bD3JGL2RkZkQ==
-X-Google-Smtp-Source: APiQypK7z+HsfAmBbW8fRL2j4biTCkMbLc7PDBmY54QJwJhjpBtAQh3RlWcMHGlQ9VeMeZHePyRCYJTqhyjeIPOpuk0=
-X-Received: by 2002:a05:6402:335:: with SMTP id
- q21mr3140080edw.47.1586015212120; 
- Sat, 04 Apr 2020 08:46:52 -0700 (PDT)
+ s=default; t=1586047413;
+ bh=zJ2PFpEYB9JE8j9pPZ9xRtBENIAE4PP4mrsX1laAi0c=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Htgg3Gnc/7wV1P1qXpt8Tw4WpHHXo6EPJQM14fi6qFri62INtV7b2hOvfJXkxrsEt
+ Cd/UWVa9ZgyaRw3FaKL1w6v+aKcIzdzvJ0/5emB/ExlcLli4kHahUmoxE30Ea9R6C/
+ dijN2pHPWYvmMSkk18V72eQ8sPXyczWFL+h/EinQ=
+Received: by earth.universe (Postfix, from userid 1000)
+ id 39F4D3C082A; Sun,  5 Apr 2020 02:43:31 +0200 (CEST)
+Date: Sun, 5 Apr 2020 02:43:31 +0200
+From: Sebastian Reichel <sre@kernel.org>
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Subject: Re: [PATCH v11 4/5] rtc: mt6397: Add support for the MediaTek MT6358
+ RTC
+Message-ID: <20200405004331.e55z5gobskjerz5f@earth.universe>
+References: <1585627657-3265-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1585627657-3265-5-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
-References: <20200331082725.81048-1-jitao.shi@mediatek.com>
- <20200331082725.81048-4-jitao.shi@mediatek.com>
-In-Reply-To: <20200331082725.81048-4-jitao.shi@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Sat, 4 Apr 2020 23:46:40 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9=uyfSYms_F=T8guvB9Bx9V=Pjo1TtmmfihMgSj1dt9Q@mail.gmail.com>
-Message-ID: <CAAOTY_9=uyfSYms_F=T8guvB9Bx9V=Pjo1TtmmfihMgSj1dt9Q@mail.gmail.com>
-Subject: Re: [PATCH v4 3/4] drm/mediatek: add the mipitx driving control
-To: Jitao Shi <jitao.shi@mediatek.com>
+In-Reply-To: <1585627657-3265-5-git-send-email-hsin-hsiung.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200404_084654_374108_523D27BD 
-X-CRM114-Status: GOOD (  18.05  )
+X-CRM114-CacheID: sfid-20200404_174334_819396_7B3D5CD4 
+X-CRM114-Status: GOOD (  21.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,83 +76,202 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>,
- huijuan.xie@mediatek.com, stonea168@163.com, linux-kernel@vger.kernel.org,
- DRI Development <dri-devel@lists.freedesktop.org>, cawa.cheng@mediatek.com,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Kate Stewart <kstewart@linuxfoundation.org>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Richard Fontana <rfontana@redhat.com>, Lee Jones <lee.jones@linaro.org>,
+ linux-rtc@vger.kernel.org, Nicolas Boichat <drinkcat@chromium.org>,
+ linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ Frank Wunderlich <frank-w@public-files.de>, Ran Bi <ran.bi@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, Alessandro Zummo <a.zummo@towertech.it>,
+ Josef Friedl <josef.friedl@speed.at>, srv_heupstream@mediatek.com,
+ linux-kernel@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============5862545830090862528=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEppdGFvOgoKSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5
-tDPmnIgzMeaXpSDpgLHkuowg5LiL5Y2INDoyOOWvq+mBk++8mgo+Cj4gQWRkIGEgcHJvcGVydHkg
-aW4gZGV2aWNlIHRyZWUgdG8gY29udHJvbCB0aGUgZHJpdmluZyBieSBkaWZmZXJlbnQKPiBib2Fy
-ZC4KClJldmlld2VkLWJ5OiBDaHVuLUt1YW5nIEh1IDxjaHVua3VhbmcuaHVAa2VybmVsLm9yZz4K
-Cj4KPiBSZXZpZXdlZC1ieTogTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNv
-bT4KPiBTaWduZWQtb2ZmLWJ5OiBKaXRhbyBTaGkgPGppdGFvLnNoaUBtZWRpYXRlay5jb20+Cj4g
-LS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5jICAgICAgICB8IDE0
-ICsrKysrKysrKysrKysrCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5o
-ICAgICAgICB8ICAxICsKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxODNfbWlw
-aV90eC5jIHwgIDcgKysrKysrKwo+ICAzIGZpbGVzIGNoYW5nZWQsIDIyIGluc2VydGlvbnMoKykK
-Pgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX21pcGlfdHguYyBi
-L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5jCj4gaW5kZXggZTRkMzQ0ODRl
-Y2M4Li5lMzAxYWY2NDgwOWUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19taXBpX3R4LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX21pcGlf
-dHguYwo+IEBAIC0xMjUsNiArMTI1LDIwIEBAIHN0YXRpYyBpbnQgbXRrX21pcGlfdHhfcHJvYmUo
-c3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgICAgICAgICAgICAgICAgcmV0dXJuIHJl
-dDsKPiAgICAgICAgIH0KPgo+ICsgICAgICAgcmV0ID0gb2ZfcHJvcGVydHlfcmVhZF91MzIoZGV2
-LT5vZl9ub2RlLCAiZHJpdmUtc3RyZW5ndGgtbWljcm9hbXAiLAo+ICsgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgJm1pcGlfdHgtPm1pcGl0eF9kcml2ZSk7Cj4gKyAgICAgICAvKiBJ
-ZiBjYW4ndCBnZXQgdGhlICJtaXBpX3R4LT5taXBpdHhfZHJpdmUiLCBzZXQgaXQgZGVmYXVsdCAw
-eDggKi8KPiArICAgICAgIGlmIChyZXQgPCAwKQo+ICsgICAgICAgICAgICAgICBtaXBpX3R4LT5t
-aXBpdHhfZHJpdmUgPSA0NjAwOwo+ICsKPiArICAgICAgIC8qIGNoZWNrIHRoZSBtaXBpdHhfZHJp
-dmUgdmFsaWQgKi8KPiArICAgICAgIGlmIChtaXBpX3R4LT5taXBpdHhfZHJpdmUgPiA2MDAwIHx8
-IG1pcGlfdHgtPm1pcGl0eF9kcml2ZSA8IDMwMDApIHsKPiArICAgICAgICAgICAgICAgZGV2X3dh
-cm4oZGV2LCAiZHJpdmUtc3RyZW5ndGgtbWljcm9hbXAgaXMgaW52YWxpZCAlZCwgbm90IGluIDMw
-MDAgfiA2MDAwXG4iLAo+ICsgICAgICAgICAgICAgICAgICAgICAgICBtaXBpX3R4LT5taXBpdHhf
-ZHJpdmUpOwo+ICsgICAgICAgICAgICAgICBtaXBpX3R4LT5taXBpdHhfZHJpdmUgPSBjbGFtcF92
-YWwobWlwaV90eC0+bWlwaXR4X2RyaXZlLCAzMDAwLAo+ICsgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgNjAwMCk7Cj4gKyAgICAgICB9Cj4gKwo+ICAgICAg
-ICAgcmVmX2Nsa19uYW1lID0gX19jbGtfZ2V0X25hbWUocmVmX2Nsayk7Cj4KPiAgICAgICAgIHJl
-dCA9IG9mX3Byb3BlcnR5X3JlYWRfc3RyaW5nKGRldi0+b2Zfbm9kZSwgImNsb2NrLW91dHB1dC1u
-YW1lcyIsCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90
-eC5oIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBpX3R4LmgKPiBpbmRleCA0MTNm
-MzVkODYyMTkuLmVlYTQ0MzI3ZmU5ZiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX21pcGlfdHguaAo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
-bWlwaV90eC5oCj4gQEAgLTI3LDYgKzI3LDcgQEAgc3RydWN0IG10a19taXBpX3R4IHsKPiAgICAg
-ICAgIHN0cnVjdCBkZXZpY2UgKmRldjsKPiAgICAgICAgIHZvaWQgX19pb21lbSAqcmVnczsKPiAg
-ICAgICAgIHUzMiBkYXRhX3JhdGU7Cj4gKyAgICAgICB1MzIgbWlwaXR4X2RyaXZlOwo+ICAgICAg
-ICAgY29uc3Qgc3RydWN0IG10a19taXBpdHhfZGF0YSAqZHJpdmVyX2RhdGE7Cj4gICAgICAgICBz
-dHJ1Y3QgY2xrX2h3IHBsbF9odzsKPiAgICAgICAgIHN0cnVjdCBjbGsgKnBsbDsKPiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxODNfbWlwaV90eC5jIGIvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxODNfbWlwaV90eC5jCj4gaW5kZXggOTFmMDhh
-MzUxZmQwLi5lNGNjOTY3NzUwY2IgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19tdDgxODNfbWlwaV90eC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19tdDgxODNfbWlwaV90eC5jCj4gQEAgLTE3LDYgKzE3LDkgQEAKPiAgI2RlZmluZSBSR19E
-U0lfQkdfQ09SRV9FTiAgICAgICAgICAgICAgQklUKDcpCj4gICNkZWZpbmUgUkdfRFNJX1BBRF9U
-SUVMX1NFTCAgICAgICAgICAgIEJJVCg4KQo+Cj4gKyNkZWZpbmUgTUlQSVRYX1ZPTFRBR0VfU0VM
-ICAgICAweDAwMTAKPiArI2RlZmluZSBSR19EU0lfSFNUWF9MRE9fUkVGX1NFTCAgICAgICAgICAg
-ICAgICAoMHhmIDw8IDYpCj4gKwo+ICAjZGVmaW5lIE1JUElUWF9QTExfUFdSICAgICAgICAgMHgw
-MDI4Cj4gICNkZWZpbmUgTUlQSVRYX1BMTF9DT04wICAgICAgICAgICAgICAgIDB4MDAyYwo+ICAj
-ZGVmaW5lIE1JUElUWF9QTExfQ09OMSAgICAgICAgICAgICAgICAweDAwMzAKPiBAQCAtMTIzLDYg
-KzEyNiwxMCBAQCBzdGF0aWMgdm9pZCBtdGtfbWlwaV90eF9wb3dlcl9vbl9zaWduYWwoc3RydWN0
-IHBoeSAqcGh5KQo+ICAgICAgICAgbXRrX21pcGlfdHhfY2xlYXJfYml0cyhtaXBpX3R4LCBNSVBJ
-VFhfRDNfU1dfQ1RMX0VOLCBEU0lfU1dfQ1RMX0VOKTsKPiAgICAgICAgIG10a19taXBpX3R4X2Ns
-ZWFyX2JpdHMobWlwaV90eCwgTUlQSVRYX0NLX1NXX0NUTF9FTiwgRFNJX1NXX0NUTF9FTik7Cj4K
-PiArICAgICAgIG10a19taXBpX3R4X3VwZGF0ZV9iaXRzKG1pcGlfdHgsIE1JUElUWF9WT0xUQUdF
-X1NFTCwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFJHX0RTSV9IU1RYX0xET19S
-RUZfU0VMLAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKG1pcGlfdHgtPm1pcGl0
-eF9kcml2ZSAtIDMwMDApIC8gMjAwIDw8IDYpOwo+ICsKPiAgICAgICAgIG10a19taXBpX3R4X3Nl
-dF9iaXRzKG1pcGlfdHgsIE1JUElUWF9DS19DS01PREVfRU4sIERTSV9DS19DS01PREVfRU4pOwo+
-ICB9Cj4KPiAtLQo+IDIuMjEuMAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+IGRyaS1kZXZlbEBsaXN0cy5m
-cmVlZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaS1kZXZlbAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1tZWRpYXRlawo=
+
+--===============5862545830090862528==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="2bxduq5dd7on66yi"
+Content-Disposition: inline
+
+
+--2bxduq5dd7on66yi
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Tue, Mar 31, 2020 at 12:07:36PM +0800, Hsin-Hsiung Wang wrote:
+> From: Ran Bi <ran.bi@mediatek.com>
+>=20
+> This add support for the MediaTek MT6358 RTC. Driver using
+> compatible data to store different RTC_WRTGR address offset.
+> This replace RTC_WRTGR to RTC_WRTGR_MT6323 in mt6323-poweroff
+> driver which only needed by armv7 CPU without ATF.
+>=20
+> Signed-off-by: Ran Bi <ran.bi@mediatek.com>
+> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> ---
+
+I expect this will not be merged through power-supply. No need to
+provide an immutable branch for this trivial change.
+
+Acked-by: Sebastian Reichel <sre@kernel.org>
+
+-- Sebastian
+
+>  drivers/power/reset/mt6323-poweroff.c |  2 +-
+>  drivers/rtc/rtc-mt6397.c              | 23 +++++++++++++++++++----
+>  include/linux/mfd/mt6397/rtc.h        |  9 ++++++++-
+>  3 files changed, 28 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/drivers/power/reset/mt6323-poweroff.c b/drivers/power/reset/=
+mt6323-poweroff.c
+> index 1caf43d..0532803 100644
+> --- a/drivers/power/reset/mt6323-poweroff.c
+> +++ b/drivers/power/reset/mt6323-poweroff.c
+> @@ -30,7 +30,7 @@ static void mt6323_do_pwroff(void)
+>  	int ret;
+> =20
+>  	regmap_write(pwrc->regmap, pwrc->base + RTC_BBPU, RTC_BBPU_KEY);
+> -	regmap_write(pwrc->regmap, pwrc->base + RTC_WRTGR, 1);
+> +	regmap_write(pwrc->regmap, pwrc->base + RTC_WRTGR_MT6323, 1);
+> =20
+>  	ret =3D regmap_read_poll_timeout(pwrc->regmap,
+>  					pwrc->base + RTC_BBPU, val,
+> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+> index cda238d..7f3dfd2 100644
+> --- a/drivers/rtc/rtc-mt6397.c
+> +++ b/drivers/rtc/rtc-mt6397.c
+> @@ -9,6 +9,7 @@
+>  #include <linux/mfd/mt6397/core.h>
+>  #include <linux/module.h>
+>  #include <linux/mutex.h>
+> +#include <linux/of_device.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/regmap.h>
+>  #include <linux/rtc.h>
+> @@ -20,7 +21,7 @@ static int mtk_rtc_write_trigger(struct mt6397_rtc *rtc)
+>  	int ret;
+>  	u32 data;
+> =20
+> -	ret =3D regmap_write(rtc->regmap, rtc->addr_base + RTC_WRTGR, 1);
+> +	ret =3D regmap_write(rtc->regmap, rtc->addr_base + rtc->data->wrtgr, 1);
+>  	if (ret < 0)
+>  		return ret;
+> =20
+> @@ -269,6 +270,8 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+>  	res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>  	rtc->addr_base =3D res->start;
+> =20
+> +	rtc->data =3D of_device_get_match_data(&pdev->dev);
+> +
+>  	rtc->irq =3D platform_get_irq(pdev, 0);
+>  	if (rtc->irq < 0)
+>  		return rtc->irq;
+> @@ -325,10 +328,22 @@ static int mt6397_rtc_resume(struct device *dev)
+>  static SIMPLE_DEV_PM_OPS(mt6397_pm_ops, mt6397_rtc_suspend,
+>  			mt6397_rtc_resume);
+> =20
+> +static const struct mtk_rtc_data mt6358_rtc_data =3D {
+> +	.wrtgr =3D RTC_WRTGR_MT6358,
+> +};
+> +
+> +static const struct mtk_rtc_data mt6397_rtc_data =3D {
+> +	.wrtgr =3D RTC_WRTGR_MT6397,
+> +};
+> +
+>  static const struct of_device_id mt6397_rtc_of_match[] =3D {
+> -	{ .compatible =3D "mediatek,mt6323-rtc", },
+> -	{ .compatible =3D "mediatek,mt6397-rtc", },
+> -	{ }
+> +	{ .compatible =3D "mediatek,mt6323-rtc",
+> +		.data =3D &mt6397_rtc_data, },
+> +	{ .compatible =3D "mediatek,mt6358-rtc",
+> +		.data =3D &mt6358_rtc_data, },
+> +	{ .compatible =3D "mediatek,mt6397-rtc",
+> +		.data =3D &mt6397_rtc_data, },
+> +	{}
+>  };
+>  MODULE_DEVICE_TABLE(of, mt6397_rtc_of_match);
+> =20
+> diff --git a/include/linux/mfd/mt6397/rtc.h b/include/linux/mfd/mt6397/rt=
+c.h
+> index 7dfb63b..6200f3b 100644
+> --- a/include/linux/mfd/mt6397/rtc.h
+> +++ b/include/linux/mfd/mt6397/rtc.h
+> @@ -18,7 +18,9 @@
+>  #define RTC_BBPU_CBUSY         BIT(6)
+>  #define RTC_BBPU_KEY            (0x43 << 8)
+> =20
+> -#define RTC_WRTGR              0x003c
+> +#define RTC_WRTGR_MT6358       0x3a
+> +#define RTC_WRTGR_MT6397       0x3c
+> +#define RTC_WRTGR_MT6323       RTC_WRTGR_MT6397
+> =20
+>  #define RTC_IRQ_STA            0x0002
+>  #define RTC_IRQ_STA_AL         BIT(0)
+> @@ -65,6 +67,10 @@
+>  #define MTK_RTC_POLL_DELAY_US  10
+>  #define MTK_RTC_POLL_TIMEOUT   (jiffies_to_usecs(HZ))
+> =20
+> +struct mtk_rtc_data {
+> +	u32                     wrtgr;
+> +};
+> +
+>  struct mt6397_rtc {
+>  	struct device           *dev;
+>  	struct rtc_device       *rtc_dev;
+> @@ -74,6 +80,7 @@ struct mt6397_rtc {
+>  	struct regmap           *regmap;
+>  	int                     irq;
+>  	u32                     addr_base;
+> +	const struct mtk_rtc_data *data;
+>  };
+> =20
+>  #endif /* _LINUX_MFD_MT6397_RTC_H_ */
+> --=20
+> 2.6.4
+
+--2bxduq5dd7on66yi
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAl6JKaMACgkQ2O7X88g7
++poXSw/6A/hFwFRpm7tI04tkDezVAWK+d2kPK2/7BIIqjbwpXbI1fVn9z58XVYI5
+NJVAgFjdCS8sfwl2cTTynfCm7Vk64a9kyUacYLNvfufgCEg6M0EeRNeZ3s6AU6s6
+YyE5+X0mV/ioZh2hDLghQBvd6Re/qletLi/Ku8R99s/aqmLp00FklHWN1gXMnWsv
+sKj7gQkPqw1bGW31QQWJKs2cotojGscMfI4g2ncXguz7jLa8zohgP4T85fm5i3Ik
+ute+YbwbgoCoXWGbgJ8JrbMnfP/FreiZ0DsuyQNlbi8oA1Sr1adwUg11PB/E+wU1
+YPBQ4qfGitvXtoQ8nml8am+0+rr4WKdzGJ92aio5DBYD0amVbFTV86zk1CSU1J8o
+2n678g2xYyw9ZLmjP0G+Qy5pVBVP7jBd65WEPPQZYBwTSdUxOwXMcl9rxYyqY5bt
+GzK7NbqjDUQJJtMi9VU4kqkTF0ZjO54h0i/eMOSXyM3hS2CB59EGZABsRQG7WcO9
+b6VAAM/WHuDmg+oW1QNt9wn6CaRoxS3FFePo+J2rXejzHqpTOrnw99Mn9LmVZLZE
+plxt+XcsN1o+TOm6AmSB6OEi2sMCl/22ApUMyrV+2J0DUVJqCDpW1jXP+ol/RH1u
+bC5+zJNxe1OSesRx/Ia7rl3RpmP9wQC1UQAX/HDBuyWmdikiXTQ=
+=c+EE
+-----END PGP SIGNATURE-----
+
+--2bxduq5dd7on66yi--
+
+
+--===============5862545830090862528==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============5862545830090862528==--
+
