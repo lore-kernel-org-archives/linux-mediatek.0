@@ -2,78 +2,57 @@ Return-Path: <SRS0=YyAn=5V=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BBD13C2BA15
-	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Apr 2020 02:15:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A66C0C2BA16
+	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Apr 2020 03:28:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7FBAD2064A
-	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Apr 2020 02:15:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1C2742078A
+	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Apr 2020 03:28:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bSgNAYI8";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ogBXc76W"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7FBAD2064A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LGBXBdp4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1C2742078A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wXII2ygsEV7Y5OmBdRcjAVafDa46mEtSOcoXPSvzzZ4=; b=bSgNAYI8a2VzN9
-	DjYRGsmycOSpctUHEy4j17NvnHJBPF5wAmPCJEchXd6PVZOXVg709+ojhN90pSteetOO5q/xWvB+5
-	gVSHNRsK4yxk7K9KL7s3HdFR+MjweUyToHHvEuUqJOVuGu2aGQS3UBA9H1y4R3pePXomUQvXf3SWg
-	xyw/MmEyhvLKGa9GcvNYe1sHipLpw4D+tsWJX9srp0CXpRMQyw/K8Ked3G5/2Iin9xvUImv9lz5vm
-	vvykAENI3U5KaY9NcD/+DBHxFgdczU1Gscktztxzqg91yEzNra4PNjA+znPVzLVCVCJX0YKDwMRN1
-	ZcpnEnWHtaL81PCqbWxg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Q9Zai5ms2SqxgooYtmR9VydNVG6gtaSYEle89OJ8qeg=; b=LGBXBdp4JdvLdvAskOCaRWRiH
+	GhNQRWKsX7nkEDO3uLY7/lrKTrACovAEXjq9wNfMLhXvqz6xFF4PRGh43M7yv3UVXd2v9zox0cmJd
+	0uYnmk3LcK0sVoqAGqi53mmqgbd0PdbqIXOyRjvrrAD7Kc+jtPDskufasZhOafMAcxgf0/PirluQh
+	dxUsvtetBb89JMgSsTL2BESbVbOka03rQ9NTQRrmbhEO/yb7D14Rz0JKsl3fcZuNNK3NjkPtoRTWF
+	/IN1puK4yvevEKEHFxRKSt8vxTE2okIjk7wXX3qOP7k4qGqmOKZxHuABzkSlMBCn1W06ZNU7QsNbN
+	tS0sAe71A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKuop-0003on-4B; Sun, 05 Apr 2020 02:15:27 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jKvxb-0002Hu-Mk; Sun, 05 Apr 2020 03:28:35 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKuol-0003oC-Pr
- for linux-mediatek@lists.infradead.org; Sun, 05 Apr 2020 02:15:25 +0000
-X-UUID: 9c0ab3e7efb74d31b9461ba6712599d0-20200404
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=llhQA1K6I1tPay0PbSEnayOn0ITylWJT4Yry8b8ARfM=; 
- b=ogBXc76W/nyJWkjdXWGjh+gjR7fIDH9IdY0F+t25qy/r37EldqR2MiDMeAbdvqJC9gAoTNICrbhowiwUSbZ+WHp6wusxGdYD7y7iNRClUa3fmQtN7kWsvjlnD/aqBGDzwyZZwYryG8EMYxH3n+fRKe06PesSkxuMf036LqBzT30=;
-X-UUID: 9c0ab3e7efb74d31b9461ba6712599d0-20200404
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <fengping.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1669946434; Sat, 04 Apr 2020 18:15:18 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 4 Apr 2020 19:05:16 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 5 Apr 2020 10:04:58 +0800
-Received: from localhost.localdomain (10.15.20.246) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sun, 5 Apr 2020 10:04:57 +0800
-From: Fengping yu <fengping.yu@mediatek.com>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Andy Shevchenko
- <andriy.shevchenko@linux.intel.com>, Yingjoe Chen <yingjoe.chen@mediatek.com>
-Subject: [PATCH v3 2/2] add MediaTek keypad driver
-Date: Sun, 5 Apr 2020 10:01:18 +0800
-Message-ID: <20200405020114.14787-3-fengping.yu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200405020114.14787-1-fengping.yu@mediatek.com>
-References: <20200405020114.14787-1-fengping.yu@mediatek.com>
+ id 1jKvxS-00029m-V7; Sun, 05 Apr 2020 03:28:28 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) (Authenticated sender: sre)
+ with ESMTPSA id D4D2D296765
+Received: by earth.universe (Postfix, from userid 1000)
+ id 1A3C13C082A; Sun,  5 Apr 2020 05:28:23 +0200 (CEST)
+Date: Sun, 5 Apr 2020 05:28:23 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
+Subject: Re: [PATCH v8 01/10] dt-bindings: battery: add new battery parameters
+Message-ID: <20200405032823.bje2tnk7fbaem3jr@earth.universe>
+References: <cover.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
+ <8827238b51029886dea56ce3141b216361a3f299.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: EA6AA74A798C0D1E571C802D75556B2CBB722044213DE4A86418C06A39CFB6C62000:8
-X-MTK: N
+In-Reply-To: <8827238b51029886dea56ce3141b216361a3f299.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200404_191523_855800_EE2A6600 
-X-CRM114-Status: GOOD (  15.38  )
+X-CRM114-CacheID: sfid-20200404_202827_267063_CD50FBF3 
+X-CRM114-Status: GOOD (  18.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,334 +64,179 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "fengping.yu" <fengping.yu@mediatek.com>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- wsd_upstream@mediatek.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Andrei Stefanescu <andrei.stefanescu@microchip.com>,
+ Heiko Stuebner <heiko@sntech.de>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Tony Lindgren <tony@atomide.com>, Linus Walleij <linus.walleij@linaro.org>,
+ Brendan Higgins <brendanhiggins@google.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Andreas Kemnade <andreas@kemnade.info>,
+ "Angelo G. Del Regno" <kholk11@gmail.com>,
+ Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+ linux-samsung-soc@vger.kernel.org, linux-omap@vger.kernel.org,
+ Axel Lin <axel.lin@ingics.com>, Gregory CLEMENT <gregory.clement@bootlin.com>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Markus Reichl <m.reichl@fivetechno.de>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>, Chen-Yu Tsai <wens@csie.org>,
+ Andy Gross <agross@kernel.org>, markus.laine@fi.rohmeurope.com,
+ Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, devicetree@vger.kernel.org,
+ Charles Keepax <ckeepax@opensource.cirrus.com>, mazziesaccount@gmail.com,
+ linux-arm-msm@vger.kernel.org, Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ linux-arm-kernel@lists.infradead.org,
+ Support Opensource <support.opensource@diasemi.com>,
+ Baolin Wang <baolin.wang@linaro.org>, Sangbeom Kim <sbkim73@samsung.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-pm@vger.kernel.org,
+ Randy Dunlap <rdunlap@infradead.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ linux-kernel@vger.kernel.org, mikko.mutanen@fi.rohmeurope.com,
+ Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ patches@opensource.cirrus.com
+Content-Type: multipart/mixed; boundary="===============4092610724290288462=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "fengping.yu" <fengping.yu@mediatek.com>
 
-Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
----
- arch/arm64/configs/defconfig     |   1 +
- drivers/input/keyboard/Kconfig   |   7 +
- drivers/input/keyboard/Makefile  |   1 +
- drivers/input/keyboard/mtk-kpd.c | 258 +++++++++++++++++++++++++++++++
- 4 files changed, 267 insertions(+)
- create mode 100644 drivers/input/keyboard/mtk-kpd.c
+--===============4092610724290288462==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="qh6djbuvpcbq2w5m"
+Content-Disposition: inline
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 0f212889c931..7863352521e5 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -316,6 +316,7 @@ CONFIG_KEYBOARD_GPIO=y
- CONFIG_KEYBOARD_SNVS_PWRKEY=m
- CONFIG_KEYBOARD_IMX_SC_KEY=m
- CONFIG_KEYBOARD_CROS_EC=y
-+CONFIG_KEYBOARD_MTK_KPD=y
- CONFIG_INPUT_TOUCHSCREEN=y
- CONFIG_TOUCHSCREEN_ATMEL_MXT=m
- CONFIG_INPUT_MISC=y
-diff --git a/drivers/input/keyboard/Kconfig b/drivers/input/keyboard/Kconfig
-index 4706ff09f0e8..0ddb753f7d7e 100644
---- a/drivers/input/keyboard/Kconfig
-+++ b/drivers/input/keyboard/Kconfig
-@@ -772,6 +772,13 @@ config KEYBOARD_BCM
- 	  To compile this driver as a module, choose M here: the
- 	  module will be called bcm-keypad.
- 
-+config KEYBOARD_MTK_KPD
-+	tristate "MediaTek Keypad Support"
-+	help
-+	  Say Y here if you want to use the keypad.
-+	  If unuse, say N.
-+	  To compile this driver as a module, choose M here: the
-+	  module will be called mtk-kpd.
- config KEYBOARD_MTK_PMIC
- 	tristate "MediaTek PMIC keys support"
- 	depends on MFD_MT6397
-diff --git a/drivers/input/keyboard/Makefile b/drivers/input/keyboard/Makefile
-index f5b17524adf2..63324d3e36c5 100644
---- a/drivers/input/keyboard/Makefile
-+++ b/drivers/input/keyboard/Makefile
-@@ -42,6 +42,7 @@ obj-$(CONFIG_KEYBOARD_MATRIX)		+= matrix_keypad.o
- obj-$(CONFIG_KEYBOARD_MAX7359)		+= max7359_keypad.o
- obj-$(CONFIG_KEYBOARD_MCS)		+= mcs_touchkey.o
- obj-$(CONFIG_KEYBOARD_MPR121)		+= mpr121_touchkey.o
-+obj-$(CONFIG_KEYBOARD_MTK_KPD)		+= mtk-kpd.o
- obj-$(CONFIG_KEYBOARD_MTK_PMIC) 	+= mtk-pmic-keys.o
- obj-$(CONFIG_KEYBOARD_NEWTON)		+= newtonkbd.o
- obj-$(CONFIG_KEYBOARD_NOMADIK)		+= nomadik-ske-keypad.o
-diff --git a/drivers/input/keyboard/mtk-kpd.c b/drivers/input/keyboard/mtk-kpd.c
-new file mode 100644
-index 000000000000..8c27d07c9e7f
---- /dev/null
-+++ b/drivers/input/keyboard/mtk-kpd.c
-@@ -0,0 +1,258 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (C) 2019 MediaTek Inc.
-+ * Author Terry Chang <terry.chang@mediatek.com>
-+ */
-+#include <linux/clk.h>
-+#include <linux/fs.h>
-+#include <linux/gpio.h>
-+#include <linux/init.h>
-+#include <linux/input/matrix_keypad.h>
-+#include <linux/interrupt.h>
-+#include <linux/io.h>
-+#include <linux/module.h>
-+#include <linux/of_address.h>
-+#include <linux/of_irq.h>
-+#include <linux/pinctrl/consumer.h>
-+#include <linux/platform_device.h>
-+
-+#define KPD_NAME	"mtk-kpd"
-+
-+#define KP_STA		0x0000
-+#define KP_MEM		0x0004
-+#define KP_DEBOUNCE	0x0018
-+
-+#define KPD_DEBOUNCE_MASK	GENMASK(13, 0)
-+#define KPD_DEBOUNCE_MAX	256000
-+#define KPD_NUM_MEMS	5
-+#define KPD_NUM_BITS	136	/* 4 * 32 + 8 MEM5 only use 8 BITS */
-+#define BITS_TO_U32(nr)	DIV_ROUND_UP(nr, BITS_PER_BYTE * sizeof(u32))
-+
-+struct mtk_keypad {
-+	struct input_dev *input_dev;
-+	struct clk *clk;
-+	void __iomem *base;
-+	unsigned int irqnr;
-+	bool wakeup;
-+	u32 key_debounce;
-+	u32 n_rows;
-+	u32 n_cols;
-+	DECLARE_BITMAP(keymap_state, KPD_NUM_BITS);
-+};
-+
-+static irqreturn_t kpd_irq_handler(int irq, void *dev_id)
-+{
-+	/* use _nosync to avoid deadlock */
-+	struct mtk_keypad *keypad = dev_id;
-+	unsigned short *keycode = keypad->input_dev->keycode;
-+	DECLARE_BITMAP(new_state, KPD_NUM_BITS);
-+	DECLARE_BITMAP(change, KPD_NUM_BITS);
-+	int bit_nr;
-+	int pressed;
-+	unsigned short code;
-+
-+	disable_irq_nosync(keypad->irqnr);
-+
-+	memcpy_fromio(new_state, keypad->base + KP_MEM, KPD_NUM_MEMS);
-+
-+	bitmap_xor(change, new_state, keypad->keymap_state, KPD_NUM_BITS);
-+
-+	for_each_set_bit(bit_nr, change, KPD_NUM_BITS) {
-+		pressed = test_bit(bit_nr, new_state) == 0U;
-+		dev_dbg(&keypad->input_dev->dev, "%s",
-+			pressed ? "pressed" : "released");
-+
-+	/* per 32bit register only use low 16bit as keypad mem register */
-+		code = keycode[bit_nr - 16 * (BITS_TO_U32(bit_nr) - 1)];
-+
-+		input_report_key(keypad->input_dev, code, pressed);
-+		input_sync(keypad->input_dev);
-+
-+		dev_dbg(&keypad->input_dev->dev,
-+			"report Linux keycode = %d\n", code);
-+	}
-+
-+	bitmap_copy(keypad->keymap_state, new_state, KPD_NUM_BITS);
-+
-+	enable_irq(keypad->irqnr);
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static int kpd_get_dts_info(struct mtk_keypad *keypad)
-+{
-+	int ret;
-+	struct device *dev = keypad->input_dev->dev.parent;
-+	struct device_node *node = dev->of_node;
-+
-+	ret = matrix_keypad_parse_properties(dev, &keypad->n_rows,
-+					     &keypad->n_cols);
-+
-+	if (ret) {
-+		dev_err(dev, "failed to parse keypad params.\n");
-+		return ret;
-+	}
-+
-+	ret = of_property_read_u32(node, "mediatek,debounce-us",
-+				   &keypad->key_debounce);
-+	if (ret) {
-+		dev_err(dev, "read mediatek,debounce-us error.\n");
-+		return ret;
-+	}
-+
-+	if (keypad->key_debounce > KPD_DEBOUNCE_MAX) {
-+		dev_err(dev, "debounce time exceeds the maximum allowed time 256ms.\n");
-+		return -EINVAL;
-+	}
-+
-+	keypad->wakeup = of_property_read_bool(node, "wakeup-source");
-+
-+	dev_dbg(dev, "n_row=%d n_col=%d debounce=%d.\n",
-+		keypad->n_rows, keypad->n_cols,
-+		keypad->key_debounce);
-+
-+	return 0;
-+}
-+
-+static int kpd_gpio_init(struct device *dev)
-+{
-+	struct pinctrl *keypad_pinctrl;
-+	struct pinctrl_state *kpd_default;
-+
-+	keypad_pinctrl = devm_pinctrl_get(dev);
-+	if (IS_ERR(keypad_pinctrl)) {
-+		dev_err(dev, "Cannot find keypad_pinctrl!\n");
-+		return PTR_ERR(keypad_pinctrl);
-+	}
-+
-+	kpd_default = pinctrl_lookup_state(keypad_pinctrl, "default");
-+	if (IS_ERR(kpd_default)) {
-+		dev_err(dev, "Cannot find ecall_state!\n");
-+		return PTR_ERR(kpd_default);
-+	}
-+
-+	return pinctrl_select_state(keypad_pinctrl,	kpd_default);
-+}
-+
-+static int kpd_pdrv_probe(struct platform_device *pdev)
-+{
-+	struct mtk_keypad *keypad;
-+	int ret;
-+
-+	keypad = devm_kzalloc(&pdev->dev, sizeof(*keypad), GFP_KERNEL);
-+	if (!keypad)
-+		return -ENOMEM;
-+
-+	bitmap_fill(keypad->keymap_state, KPD_NUM_BITS);
-+
-+	keypad->input_dev = devm_input_allocate_device(&pdev->dev);
-+	if (!keypad->input_dev) {
-+		dev_err(&pdev->dev, "input allocate device fail.\n");
-+		return -ENOMEM;
-+	}
-+
-+	keypad->input_dev->name = KPD_NAME;
-+	keypad->input_dev->id.bustype = BUS_HOST;
-+	keypad->input_dev->dev.parent = &pdev->dev;
-+
-+	ret = kpd_get_dts_info(keypad);
-+	if (ret) {
-+		dev_err(&pdev->dev, "get dts info failed.\n");
-+		return ret;
-+	}
-+
-+	ret = matrix_keypad_build_keymap(NULL, NULL,
-+					keypad->n_rows,
-+					keypad->n_cols,
-+					NULL,
-+					keypad->input_dev);
-+
-+	if (ret) {
-+		dev_err(&pdev->dev, "build keymap failed.\n");
-+		return ret;
-+	}
-+
-+	input_set_drvdata(keypad->input_dev, keypad);
-+
-+	keypad->base = devm_platform_ioremap_resource(pdev, 0);
-+	if (IS_ERR(keypad->base)) {
-+		dev_err(&pdev->dev, "KP iomap failed\n");
-+		return PTR_ERR(keypad->base);
-+	}
-+
-+	if (keypad->key_debounce > KPD_DEBOUNCE_MAX) {
-+		dev_err(&pdev->dev, "invalid debounce time value.\n");
-+		return -EINVAL;
-+	}
-+
-+	writew(keypad->key_debounce * 32 / 1000 & KPD_DEBOUNCE_MASK,
-+		keypad->base + KP_DEBOUNCE);
-+
-+	keypad->clk = devm_clk_get(&pdev->dev, "kpd");
-+	if (IS_ERR(keypad->clk)) {
-+		dev_err(&pdev->dev, "get kpd-clk fail.\n");
-+		return PTR_ERR(keypad->clk);
-+	}
-+
-+	ret = clk_prepare_enable(keypad->clk);
-+	if (ret) {
-+		dev_err(&pdev->dev, "kpd-clk enable failed.\n");
-+		return ret;
-+	}
-+
-+	ret = kpd_gpio_init(&pdev->dev);
-+	if (ret) {
-+		dev_err(&pdev->dev, "gpio init failed\n");
-+		goto disable_kpd_clk;
-+	}
-+
-+	keypad->irqnr = platform_get_irq(pdev, 0);
-+	if (keypad->irqnr < 0) {
-+		dev_err(&pdev->dev, "KP get irqnr failed\n");
-+		ret = -keypad->irqnr;
-+		goto disable_kpd_clk;
-+	}
-+
-+	ret = devm_request_irq(&pdev->dev, keypad->irqnr,
-+				kpd_irq_handler, 0,
-+				KPD_NAME, keypad);
-+	if (ret) {
-+		dev_err(&pdev->dev, "register IRQ failed.\n");
-+		goto disable_kpd_clk;
-+	}
-+
-+	ret = input_register_device(keypad->input_dev);
-+	if (ret) {
-+		dev_err(&pdev->dev, "register input device failed.\n");
-+		goto disable_kpd_clk;
-+	}
-+
-+	device_init_wakeup(&pdev->dev, keypad->wakeup);
-+
-+	platform_set_drvdata(pdev, keypad);
-+
-+	return 0;
-+
-+disable_kpd_clk:
-+	clk_disable_unprepare(keypad->clk);
-+	return ret;
-+}
-+
-+static const struct of_device_id kpd_of_match[] = {
-+	{.compatible = "mediatek,kp"},
-+	{}
-+};
-+
-+static struct platform_driver kpd_pdrv = {
-+	.probe = kpd_pdrv_probe,
-+	.driver = {
-+		   .name = KPD_NAME,
-+		   .of_match_table = kpd_of_match,
-+	},
-+};
-+
-+module_platform_driver(kpd_pdrv);
-+
-+MODULE_AUTHOR("Mediatek Corporation");
-+MODULE_DESCRIPTION("MTK Keypad (KPD) Driver");
-+MODULE_LICENSE("GPL");
--- 
-2.18.0
+
+--qh6djbuvpcbq2w5m
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Fri, Apr 03, 2020 at 11:41:11AM +0300, Matti Vaittinen wrote:
+> Add:
+>=20
+>  - trickle-charge-current-microamp:
+>=20
+> Some chargers have 3 charging stages. First one when battery is almost
+> empty is often called as trickle-charge. Last state when battery has been
+> "woken up" is usually called as fast-charge. In addition to this some
+> chargers have a 'middle state' which ROHM BD99954 data-sheet describes as
+> pre-charge. Some batteries can benefit from this 3-phase charging
+> [citation needed].
+>=20
+> Introduce trickle-charge-current-microamp so that batteries can give
+> charging current limit for all three states.
+>=20
+>  - precharge-upper-limit-microvolt:
+>=20
+> When battery voltage has reached certain limit we change from
+> trickle-charge to next charging state (pre-charge for BD99954). Allow
+> battery to specify this limit.
+>=20
+>  - re-charge-voltage-microvolt:
+>=20
+> Allow giving a battery specific voltage limit for chargers which can
+> automatically re-start charging when battery has discharghed down to
+> this limit.
+>=20
+> - over-voltage-threshold-microvolt
+>=20
+> Allow specifying voltage threshold after which the battery is assumed to
+> be faulty.
+>=20
+> Signed-off-by: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> ---
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+-- Sebastian
+
+>=20
+> No changes since v7
+>=20
+>  Documentation/devicetree/bindings/power/supply/battery.txt | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/power/supply/battery.txt b=
+/Documentation/devicetree/bindings/power/supply/battery.txt
+> index 3049cf88bdcf..5e29595edd74 100644
+> --- a/Documentation/devicetree/bindings/power/supply/battery.txt
+> +++ b/Documentation/devicetree/bindings/power/supply/battery.txt
+> @@ -11,15 +11,21 @@ different type. This prevents unpredictable, potentia=
+lly harmful,
+>  behavior should a replacement that changes the battery type occur
+>  without a corresponding update to the dtb.
+> =20
+> +Please note that not all charger drivers respect all of the properties.
+> +
+>  Required Properties:
+>   - compatible: Must be "simple-battery"
+> =20
+>  Optional Properties:
+> + - over-voltage-threshold-microvolt: battery over-voltage limit
+> + - re-charge-voltage-microvolt: limit to automatically start charging ag=
+ain
+>   - voltage-min-design-microvolt: drained battery voltage
+>   - voltage-max-design-microvolt: fully charged battery voltage
+>   - energy-full-design-microwatt-hours: battery design energy
+>   - charge-full-design-microamp-hours: battery design capacity
+> + - trickle-charge-current-microamp: current for trickle-charge phase
+>   - precharge-current-microamp: current for pre-charge phase
+> + - precharge-upper-limit-microvolt: limit when to change to constant cha=
+rging
+>   - charge-term-current-microamp: current for charge termination phase
+>   - constant-charge-current-max-microamp: maximum constant input current
+>   - constant-charge-voltage-max-microvolt: maximum constant input voltage
+> --=20
+> 2.21.0
+>=20
+>=20
+> --=20
+> Matti Vaittinen, Linux device drivers
+> ROHM Semiconductors, Finland SWDC
+> Kiviharjunlenkki 1E
+> 90220 OULU
+> FINLAND
+>=20
+> ~~~ "I don't think so," said Rene Descartes. Just then he vanished ~~~
+> Simon says - in Latin please.
+> ~~~ "non cogito me" dixit Rene Descarte, deinde evanescavit ~~~
+> Thanks to Simon Glass for the translation =3D]=20
+
+--qh6djbuvpcbq2w5m
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAl6JUFYACgkQ2O7X88g7
++poZrRAAjjnAXCTT9TeHNtk89vi+gUGZY9aNBAXKiAU9n8mE5QAdmour8g/7CMNc
+BiZOIemjSVp+ro7ZFioRHyIxNQgJ3BsjmnsjRyflRS4c/x5r21ozUJVistzPt3Gi
+345IP/Gs8mcJFyHZL6Wdu/zfPfcwZkT7JpVJTSzZHQWKOZw6Gg0zkIo9Bgua9/Mc
+gZ1l2aooi+X6rIsor/2OBU1dMRT+05kvGNxAg3RQEdD5BDX5199OEz5jaxbLyVEn
+RSK1tQNZfpZMamk8MQzlAAn2Tq2qNApTOwz6VAd7F0qPYE1NujDgqwRHz6Qnbj7/
+LcBEarKGmlQ+lH6CE9fQPEla0aViuTIK77hWalERGO01z5FcH5HeCWyjfVScuM/1
+t7ezLQC9tYYjZ0VJld16IGkq71lcqmY5hMca/H4s6vlKr40u5n2cz9gKCydPOfcr
+Omwojhhh7+zR2jsBYbTDB8D/uTJaA3D/OwQZ6BSRwpKyz9UEQa75cPhKEM58RaWx
+5U/SFkdhZ0dqKJVvhGYEiCl/SJAtw8AkYL3QIz9Q5nZb+V5hvWETgdEkErRpSTkt
+Wa82G3fx4Hzpk6K/QaehNDNiye2MeH0mTp994Og3yMEx77X6P8ldH5BS15U7IqAs
+743zK4ru7Fw70H6JgqzT4OdW0nFwv7RCGMD7HSR6HlSBycc2dCw=
+=ZaOK
+-----END PGP SIGNATURE-----
+
+--qh6djbuvpcbq2w5m--
+
+
+--===============4092610724290288462==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============4092610724290288462==--
+
