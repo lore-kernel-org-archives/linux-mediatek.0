@@ -2,57 +2,80 @@ Return-Path: <SRS0=YyAn=5V=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY autolearn=ham
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,UNWANTED_LANGUAGE_BODY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B1DEC2BA16
-	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Apr 2020 03:37:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1FFF4C2BA17
+	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Apr 2020 13:49:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1828C206D4
-	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Apr 2020 03:37:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E6C8420672
+	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Apr 2020 13:49:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oTYZUzs+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1828C206D4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hH3T/J14";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="jYry63Kb"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E6C8420672
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vke89LGAIl/4Q9nKwlLFIMmIhtZIUE+BxqnsxxcY2kY=; b=oTYZUzs+rofZsHxtMXX+fu6Ia
-	NEHgTEWGmh5zljaXN95kd64UXLA0hSd9H06YpPjk+ddXHttw1sxxEm2oMIA3Fr5mxrifvmxn+ogNl
-	38eL7WyJ6vuW6aMaEg874tmpnrvVsxL1+b1wvivOTb6b81ttUsc7/xqIzl1fI/8CXZDLXXLdGIuly
-	5uxPhq7LpN8TMn2QhZEfczZYQqzYRL5SaV7/2v34CMagEbQVAV0i1xYoEAVaHmrEeYUaYgUXiAl/u
-	kZfKL5zYasOOC31mLNXUAY7lSVsP1V1qkPiYo6u8quIbWanvBRfTdKMf81tOsfmGos4RYak3rH0zt
-	1CgZT1pJw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=oLpUS0scmxNOF5L0X5e5Xt6l/EB5jaooRqOsQY2ya7o=; b=hH3T/J14VD47kk
+	SUT4bf8GJSDqZxipDBHhcWdGiISGuPCZJCl6CDNpDqHlH8BvHHomyUG+yHTVWRZMxj47n010kpguc
+	8BnFaFjM2/jH7/TfrsXkO9omxRTus/dn/rBpMGz4nkyBwkRWblY6a90cKABwoMNLYISbuUxWl/RLM
+	Tb80kGJZeCl2P7rn/n9BWxif+DA95z3o8/SeJ2O9SWluQStYyOy561efniWodxc0Mp2TIOpLzYtHr
+	lUb9tHxyJ73HEi2Px5uBrsYvnBt0Yw/KAV0tMnh0Ga2Cm3qjfBwZLnUcMl69XjfHo37/UasL6qtLo
+	p1FpDk4Lep/khsdZQClA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jKw6I-0000tP-Ux; Sun, 05 Apr 2020 03:37:34 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1jL5ea-00006c-IW; Sun, 05 Apr 2020 13:49:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jKw6A-0000lv-AY; Sun, 05 Apr 2020 03:37:28 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) (Authenticated sender: sre)
- with ESMTPSA id D83CF28DFDA
-Received: by earth.universe (Postfix, from userid 1000)
- id E36E23C082A; Sun,  5 Apr 2020 05:37:22 +0200 (CEST)
-Date: Sun, 5 Apr 2020 05:37:22 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
-Subject: Re: [PATCH v8 07/10] power: supply: bd70528: use linear ranges
-Message-ID: <20200405033722.4co4bnrz5whykrrq@earth.universe>
-References: <cover.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
- <4a70a243cc169ddb2c2ea3a78a4550a51dadd8fd.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
+ id 1jL5eT-0008S2-Dl; Sun, 05 Apr 2020 13:49:31 +0000
+X-UUID: 54950bae89a040ee9687fa25e2762151-20200405
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=UbTwFkXlKvsh7AL8yRvXou4qBQc6I/nzGcy+Hyh3Skw=; 
+ b=jYry63KbM4o57brsLB2iD5/qb64G1u2dfWaTRrlKXNMVJ7o7RlURl9jJ/22FGh/6+TTcIygejwUZUvNQNl5+GPhIJrm9BGjt7h2HjdPIPywiHNTsRcBYaAn4VOedUDum1QTDEIsgj8z1IdHt5/Fl1J48ylwYsetpqE1nCQEjgBM=;
+X-UUID: 54950bae89a040ee9687fa25e2762151-20200405
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <jitao.shi@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 289421431; Sun, 05 Apr 2020 05:49:16 -0800
+Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 5 Apr 2020 06:39:16 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
+ (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sun, 5 Apr 2020 21:39:12 +0800
+Received: from [10.16.6.141] (10.16.6.141) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sun, 5 Apr 2020 21:39:11 +0800
+Message-ID: <1586093949.10544.4.camel@mszsdaap41>
+Subject: Re: [PATCH v4 4/4] drm/mediatek: config mipitx impedance with
+ calibration data
+From: Jitao Shi <jitao.shi@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Sun, 5 Apr 2020 21:39:09 +0800
+In-Reply-To: <CAAOTY_8vpzfKeyxVxXOVC7mDpw+QGGOX+8fJaQg5WduvndEmoA@mail.gmail.com>
+References: <20200331082725.81048-1-jitao.shi@mediatek.com>
+ <20200331082725.81048-5-jitao.shi@mediatek.com>
+ <CAAOTY_8vpzfKeyxVxXOVC7mDpw+QGGOX+8fJaQg5WduvndEmoA@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <4a70a243cc169ddb2c2ea3a78a4550a51dadd8fd.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
+X-TM-SNTS-SMTP: 3590BF9D5BA1AE18EC2E1E20178B6904B8159592795221EED6053E89AE35411F2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200404_203726_628869_9A906328 
-X-CRM114-Status: GOOD (  27.92  )
+X-CRM114-CacheID: sfid-20200405_064929_477179_E1CB6D44 
+X-CRM114-Status: GOOD (  16.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,383 +87,97 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Andrei Stefanescu <andrei.stefanescu@microchip.com>,
- Heiko Stuebner <heiko@sntech.de>, "Rafael J. Wysocki" <rafael@kernel.org>,
- Tony Lindgren <tony@atomide.com>, Linus Walleij <linus.walleij@linaro.org>,
- Brendan Higgins <brendanhiggins@google.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Andreas Kemnade <andreas@kemnade.info>,
- "Angelo G. Del Regno" <kholk11@gmail.com>,
- Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
- linux-samsung-soc@vger.kernel.org, linux-omap@vger.kernel.org,
- Axel Lin <axel.lin@ingics.com>, Gregory CLEMENT <gregory.clement@bootlin.com>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Markus Reichl <m.reichl@fivetechno.de>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>, Chen-Yu Tsai <wens@csie.org>,
- Andy Gross <agross@kernel.org>, markus.laine@fi.rohmeurope.com,
- Adam Thomson <Adam.Thomson.Opensource@diasemi.com>, devicetree@vger.kernel.org,
- Charles Keepax <ckeepax@opensource.cirrus.com>, mazziesaccount@gmail.com,
- linux-arm-msm@vger.kernel.org, Richard Fitzgerald <rf@opensource.cirrus.com>,
- Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- linux-arm-kernel@lists.infradead.org,
- Support Opensource <support.opensource@diasemi.com>,
- Baolin Wang <baolin.wang@linaro.org>, Sangbeom Kim <sbkim73@samsung.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-pm@vger.kernel.org,
- Randy Dunlap <rdunlap@infradead.org>, Liam Girdwood <lgirdwood@gmail.com>,
- linux-kernel@vger.kernel.org, mikko.mutanen@fi.rohmeurope.com,
- Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- patches@opensource.cirrus.com
-Content-Type: multipart/mixed; boundary="===============7042894032079994643=="
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>,
+ huijuan.xie@mediatek.com, stonea168@163.com, linux-kernel@vger.kernel.org,
+ DRI Development <dri-devel@lists.freedesktop.org>, cawa.cheng@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---===============7042894032079994643==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4zf5onz7zh65aeis"
-Content-Disposition: inline
-
-
---4zf5onz7zh65aeis
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-On Fri, Apr 03, 2020 at 11:47:21AM +0300, Matti Vaittinen wrote:
-> Change the bd70528 to use common linear_range code instead of
-> implementing a copy of it in this driver.
->=20
-> Signed-off-by: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
-> ---
-
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
--- Sebastian
-
->=20
-> No changes since v7
->=20
->  drivers/power/supply/Kconfig           |   1 +
->  drivers/power/supply/bd70528-charger.c | 144 ++++++++++---------------
->  2 files changed, 56 insertions(+), 89 deletions(-)
->=20
-> diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
-> index 9a5591ab90d0..8781c674ed07 100644
-> --- a/drivers/power/supply/Kconfig
-> +++ b/drivers/power/supply/Kconfig
-> @@ -695,6 +695,7 @@ config CHARGER_UCS1002
->  config CHARGER_BD70528
->  	tristate "ROHM bd70528 charger driver"
->  	depends on MFD_ROHM_BD70528
-> +	select LINEAR_RANGES
->  	default n
->  	help
->  	 Say Y here to enable support for getting battery status
-> diff --git a/drivers/power/supply/bd70528-charger.c b/drivers/power/suppl=
-y/bd70528-charger.c
-> index 3b820110ecfa..7a805faeee83 100644
-> --- a/drivers/power/supply/bd70528-charger.c
-> +++ b/drivers/power/supply/bd70528-charger.c
-> @@ -72,6 +72,7 @@
->  #include <linux/module.h>
->  #include <linux/platform_device.h>
->  #include <linux/power_supply.h>
-> +#include <linux/linear_range.h>
-> =20
->  #define CHG_STAT_SUSPEND	0x0
->  #define CHG_STAT_TRICKLE	0x1
-> @@ -335,38 +336,37 @@ static int bd70528_get_present(struct bd70528_psy *=
-bdpsy, int *val)
->  	return 0;
->  }
-> =20
-> -struct bd70528_linear_range {
-> -	int min;
-> -	int step;
-> -	int vals;
-> -	int low_sel;
-> -};
-> -
-> -static const struct bd70528_linear_range current_limit_ranges[] =3D {
-> +static const struct linear_range current_limit_ranges[] =3D {
->  	{
->  		.min =3D 5,
->  		.step =3D 1,
-> -		.vals =3D 36,
-> -		.low_sel =3D 0,
-> +		.min_sel =3D 0,
-> +		.max_sel =3D 0x22,
->  	},
->  	{
->  		.min =3D 40,
->  		.step =3D 5,
-> -		.vals =3D 5,
-> -		.low_sel =3D 0x23,
-> +		.min_sel =3D 0x23,
-> +		.max_sel =3D 0x26,
->  	},
->  	{
->  		.min =3D 60,
->  		.step =3D 20,
-> -		.vals =3D 8,
-> -		.low_sel =3D 0x27,
-> +		.min_sel =3D 0x27,
-> +		.max_sel =3D 0x2d,
->  	},
->  	{
->  		.min =3D 200,
->  		.step =3D 50,
-> -		.vals =3D 7,
-> -		.low_sel =3D 0x2e,
-> -	}
-> +		.min_sel =3D 0x2e,
-> +		.max_sel =3D 0x34,
-> +	},
-> +	{
-> +		.min =3D 500,
-> +		.step =3D 0,
-> +		.min_sel =3D 0x35,
-> +		.max_sel =3D 0x3f,
-> +	},
->  };
-> =20
->  /*
-> @@ -374,18 +374,18 @@ static const struct bd70528_linear_range current_li=
-mit_ranges[] =3D {
->   * voltage for low temperatures. The driver currently only reads
->   * the charge current at room temperature. We do set both though.
->   */
-> -static const struct bd70528_linear_range warm_charge_curr[] =3D {
-> +static const struct linear_range warm_charge_curr[] =3D {
->  	{
->  		.min =3D 10,
->  		.step =3D 10,
-> -		.vals =3D 20,
-> -		.low_sel =3D 0,
-> +		.min_sel =3D 0,
-> +		.max_sel =3D 0x12
->  	},
->  	{
->  		.min =3D 200,
->  		.step =3D 25,
-> -		.vals =3D 13,
-> -		.low_sel =3D 0x13,
-> +		.min_sel =3D 0x13,
-> +		.max_sel =3D 0x1f
->  	},
->  };
-> =20
-> @@ -398,56 +398,6 @@ static const struct bd70528_linear_range warm_charge=
-_curr[] =3D {
->  #define MAX_WARM_CHG_CURR_SEL 0x1f
->  #define MIN_CHG_CURR_SEL 0x0
-> =20
-> -static int find_value_for_selector_low(const struct bd70528_linear_range=
- *r,
-> -				       int selectors, unsigned int sel,
-> -				       unsigned int *val)
-> -{
-> -	int i;
-> -
-> -	for (i =3D 0; i < selectors; i++) {
-> -		if (r[i].low_sel <=3D sel && r[i].low_sel + r[i].vals >=3D sel) {
-> -			*val =3D r[i].min + (sel - r[i].low_sel) * r[i].step;
-> -			return 0;
-> -		}
-> -	}
-> -	return -EINVAL;
-> -}
-> -
-> -/*
-> - * For BD70528 voltage/current limits we happily accept any value which
-> - * belongs the range. We could check if value matching the selector is
-> - * desired by computing the range min + (sel - sel_low) * range step - b=
-ut
-> - * I guess it is enough if we use voltage/current which is closest (belo=
-w)
-> - * the requested?
-> - */
-> -static int find_selector_for_value_low(const struct bd70528_linear_range=
- *r,
-> -				       int selectors, unsigned int val,
-> -				       unsigned int *sel, bool *found)
-> -{
-> -	int i;
-> -	int ret =3D -EINVAL;
-> -
-> -	*found =3D false;
-> -	for (i =3D 0; i < selectors; i++) {
-> -		if (r[i].min <=3D val) {
-> -			if (r[i].min + r[i].step * r[i].vals >=3D val) {
-> -				*found =3D true;
-> -				*sel =3D r[i].low_sel + (val - r[i].min) /
-> -				       r[i].step;
-> -				ret =3D 0;
-> -				break;
-> -			}
-> -			/*
-> -			 * If the range max is smaller than requested
-> -			 * we can set the max supported value from range
-> -			 */
-> -			*sel =3D r[i].low_sel + r[i].vals;
-> -			ret =3D 0;
-> -		}
-> -	}
-> -	return ret;
-> -}
-> -
->  static int get_charge_current(struct bd70528_psy *bdpsy, int *ma)
->  {
->  	unsigned int sel;
-> @@ -463,9 +413,9 @@ static int get_charge_current(struct bd70528_psy *bdp=
-sy, int *ma)
-> =20
->  	sel &=3D BD70528_MASK_CHG_CHG_CURR;
-> =20
-> -	ret =3D find_value_for_selector_low(&warm_charge_curr[0],
-> -					  ARRAY_SIZE(warm_charge_curr), sel,
-> -					  ma);
-> +	ret =3D linear_range_get_value_array(&warm_charge_curr[0],
-> +					   ARRAY_SIZE(warm_charge_curr),
-> +					   sel, ma);
->  	if (ret) {
->  		dev_err(bdpsy->dev,
->  			"Unknown charge current value 0x%x\n",
-> @@ -491,10 +441,9 @@ static int get_current_limit(struct bd70528_psy *bdp=
-sy, int *ma)
-> =20
->  	sel &=3D BD70528_MASK_CHG_DCIN_ILIM;
-> =20
-> -	ret =3D find_value_for_selector_low(&current_limit_ranges[0],
-> -					  ARRAY_SIZE(current_limit_ranges), sel,
-> -					  ma);
-> -
-> +	ret =3D linear_range_get_value_array(&current_limit_ranges[0],
-> +					   ARRAY_SIZE(current_limit_ranges),
-> +					   sel, ma);
->  	if (ret) {
->  		/* Unspecified values mean 500 mA */
->  		*ma =3D 500;
-> @@ -588,15 +537,28 @@ static int set_charge_current(struct bd70528_psy *b=
-dpsy, int ma)
->  		goto set;
->  	}
-> =20
-> -	ret =3D find_selector_for_value_low(&warm_charge_curr[0],
-> -					  ARRAY_SIZE(warm_charge_curr), ma,
-> -					  &reg, &found);
-> +/*
-> + * For BD70528 voltage/current limits we happily accept any value which
-> + * belongs the range. We could check if value matching the selector is
-> + * desired by computing the range min + (sel - sel_low) * range step - b=
-ut
-> + * I guess it is enough if we use voltage/current which is closest (belo=
-w)
-> + * the requested?
-> + */
-> +
-> +	ret =3D linear_range_get_selector_low_array(warm_charge_curr,
-> +						  ARRAY_SIZE(warm_charge_curr),
-> +						  ma, &reg, &found);
->  	if (ret) {
-> +		dev_err(bdpsy->dev,
-> +			 "Unsupported charge current %u mA\n", ma);
->  		reg =3D MIN_CHG_CURR_SEL;
->  		goto set;
->  	}
->  	if (!found) {
-> -		/* There was a gap in supported values and we hit it */
-> +		/*
-> +		 * There was a gap in supported values and we hit it.
-> +		 * Yet a smaller value was found so we use it.
-> +		 */
->  		dev_warn(bdpsy->dev,
->  			 "Unsupported charge current %u mA\n", ma);
->  	}
-> @@ -648,17 +610,21 @@ static int set_current_limit(struct bd70528_psy *bd=
-psy, int ma)
->  		goto set;
->  	}
-> =20
-> -	ret =3D find_selector_for_value_low(&current_limit_ranges[0],
-> -					  ARRAY_SIZE(current_limit_ranges), ma,
-> -					  &reg, &found);
-> +	ret =3D linear_range_get_selector_low_array(current_limit_ranges,
-> +					ARRAY_SIZE(current_limit_ranges),
-> +					ma, &reg, &found);
->  	if (ret) {
-> +		dev_err(bdpsy->dev, "Unsupported current limit %umA\n", ma);
->  		reg =3D MIN_CURR_LIMIT_SEL;
->  		goto set;
->  	}
->  	if (!found) {
-> -		/* There was a gap in supported values and we hit it ?*/
-> -		dev_warn(bdpsy->dev, "Unsupported current limit %umA\n",
-> -			 ma);
-> +		/*
-> +		 * There was a gap in supported values and we hit it.
-> +		 * We found a smaller value from ranges and use it.
-> +		 * Warn user though.
-> +		 */
-> +		dev_warn(bdpsy->dev, "Unsupported current limit %umA\n", ma);
->  	}
-> =20
->  set:
-> --=20
-> 2.21.0
->=20
->=20
-> --=20
-> Matti Vaittinen, Linux device drivers
-> ROHM Semiconductors, Finland SWDC
-> Kiviharjunlenkki 1E
-> 90220 OULU
-> FINLAND
->=20
-> ~~~ "I don't think so," said Rene Descartes. Just then he vanished ~~~
-> Simon says - in Latin please.
-> ~~~ "non cogito me" dixit Rene Descarte, deinde evanescavit ~~~
-> Thanks to Simon Glass for the translation =3D]=20
-
---4zf5onz7zh65aeis
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAl6JUnIACgkQ2O7X88g7
-+prcERAAlURR92Ar+SO4+R/CiOU4lJpcZfw4c7v0gLYkD1GU65G+0b4vQJk9zNBX
-TfqCkGDxYVo7XCvzMW3Zt4mlv6MjYGJw5XYEywgmBpRSnl+iYHnGUNezMAkhX5ux
-wzn2JBv4Zs9xPyQYXsKenRAfFkt9lUGZYXXp+WX47v3kOrK/2kbHYa9H2z339GD8
-cpiVPVegEHIZErP1CNqlmN3xj+hdwOixfo4Fm7NSFfw+gmGSqyH14yTc5e4fwhFU
-dn+0aPVh8uUkZ2opjaer2khzy6AI2yDsAAXzZjedgMwtVPq/gJuFSwQ6wx/1ZdLe
-uvaDw+9LY1YAXGLAwsIFgwajIrW4qi3L+LH807hx0sFD/+qBRcrj+sdEpA8izM/B
-8zrgH3cpezv+8jxygSIqUvox1QztpF5LAlI7cyMtAWkVnnNyF2ca+RYZ/460IW1i
-ClG1JK6QukRdheUbIl5qpuAVoYlfjZxm0K0/2kSAkI6NLO8lOetkydyPiurKHjYr
-eUO07Gs8KkcRXtOiHW10tFyvLcn7inDITTwHBWo29GoccZfpOTH1P/VG7v91Y8aj
-Hn5vVyqm29vAu6EyaeLGltR38U2LXWcPAlexUqhTwUaxldjFImmCrbdm1e7Jk47X
-bPjjcWTODpbHOMXtt++kwABiEHTj5pjqYWMCBCmlEOVoEXZkOno=
-=iFaH
------END PGP SIGNATURE-----
-
---4zf5onz7zh65aeis--
-
-
---===============7042894032079994643==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============7042894032079994643==--
-
+DQpPbiBTYXQsIDIwMjAtMDQtMDQgYXQgMjI6MjYgKzA4MDAsIENodW4tS3VhbmcgSHUgd3JvdGU6
+DQo+IEhpLCBKaXRhbzoNCj4gDQo+IEppdGFvIFNoaSA8aml0YW8uc2hpQG1lZGlhdGVrLmNvbT4g
+5pa8IDIwMjDlubQz5pyIMzHml6Ug6YCx5LqMIOS4i+WNiDQ6Mjjlr6vpgZPvvJoNCj4gPg0KPiA+
+IFJlYWQgY2FsaWJyYXRpb24gZGF0YSBmcm9tIG52bWVtLCBhbmQgY29uZmlnIG1pcGl0eCBpbXBl
+ZGFuY2Ugd2l0aA0KPiA+IGNhbGlicmF0aW9uIGRhdGEgdG8gbWFrZSBzdXJlIHRoZWlyIGltcGVk
+YW5jZSBhcmUgMTAwb2htLg0KPiA+DQo+ID4gU2lnbmVkLW9mZi1ieTogSml0YW8gU2hpIDxqaXRh
+by5zaGlAbWVkaWF0ZWsuY29tPg0KPiA+IC0tLQ0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX210ODE4M19taXBpX3R4LmMgfCA1NyArKysrKysrKysrKysrKysrKysrDQo+ID4gIDEg
+ZmlsZSBjaGFuZ2VkLCA1NyBpbnNlcnRpb25zKCspDQo+ID4NCj4gPiBkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxODNfbWlwaV90eC5jIGIvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19tdDgxODNfbWlwaV90eC5jDQo+ID4gaW5kZXggZTRjYzk2Nzc1MGNi
+Li4wZjg3Y2QzZDFkN2QgMTAwNjQ0DQo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19tdDgxODNfbWlwaV90eC5jDQo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19tdDgxODNfbWlwaV90eC5jDQo+ID4gQEAgLTUsNiArNSw4IEBADQo+ID4gICAqLw0KPiA+
+DQo+ID4gICNpbmNsdWRlICJtdGtfbWlwaV90eC5oIg0KPiA+ICsjaW5jbHVkZSA8bGludXgvbnZt
+ZW0tY29uc3VtZXIuaD4NCj4gPiArI2luY2x1ZGUgPGxpbnV4L3NsYWIuaD4NCj4gPg0KPiA+ICAj
+ZGVmaW5lIE1JUElUWF9MQU5FX0NPTiAgICAgICAgICAgICAgICAweDAwMGMNCj4gPiAgI2RlZmlu
+ZSBSR19EU0lfQ1BIWV9UMURSVl9FTiAgICAgICAgICAgQklUKDApDQo+ID4gQEAgLTI4LDYgKzMw
+LDcgQEANCj4gPiAgI2RlZmluZSBNSVBJVFhfUExMX0NPTjQgICAgICAgICAgICAgICAgMHgwMDNj
+DQo+ID4gICNkZWZpbmUgUkdfRFNJX1BMTF9JQklBUyAgICAgICAgICAgICAgICgzIDw8IDEwKQ0K
+PiA+DQo+ID4gKyNkZWZpbmUgTUlQSVRYX0QyUF9SVENPREUgICAgICAweDAxMDANCj4gPiAgI2Rl
+ZmluZSBNSVBJVFhfRDJfU1dfQ1RMX0VOICAgIDB4MDE0NA0KPiA+ICAjZGVmaW5lIE1JUElUWF9E
+MF9TV19DVExfRU4gICAgMHgwMjQ0DQo+ID4gICNkZWZpbmUgTUlQSVRYX0NLX0NLTU9ERV9FTiAg
+ICAweDAzMjgNCj4gPiBAQCAtMTA4LDYgKzExMSw1OCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGNs
+a19vcHMgbXRrX21pcGlfdHhfcGxsX29wcyA9IHsNCj4gPiAgICAgICAgIC5yZWNhbGNfcmF0ZSA9
+IG10a19taXBpX3R4X3BsbF9yZWNhbGNfcmF0ZSwNCj4gPiAgfTsNCj4gPg0KPiA+ICtzdGF0aWMg
+dm9pZCBtdGtfbWlwaV90eF9jb25maWdfY2FsaWJyYXRpb25fZGF0YShzdHJ1Y3QgbXRrX21pcGlf
+dHggKm1pcGlfdHgpDQo+ID4gK3sNCj4gPiArICAgICAgIHUzMiAqYnVmOw0KPiA+ICsgICAgICAg
+dTMyIHJ0X2NvZGVbNV07DQo+ID4gKyAgICAgICBpbnQgaSwgajsNCj4gPiArICAgICAgIHN0cnVj
+dCBudm1lbV9jZWxsICpjZWxsOw0KPiA+ICsgICAgICAgc3RydWN0IGRldmljZSAqZGV2ID0gbWlw
+aV90eC0+ZGV2Ow0KPiA+ICsgICAgICAgc2l6ZV90IGxlbjsNCj4gPiArDQo+ID4gKyAgICAgICBj
+ZWxsID0gbnZtZW1fY2VsbF9nZXQoZGV2LCAiY2FsaWJyYXRpb24tZGF0YSIpOw0KPiA+ICsgICAg
+ICAgaWYgKElTX0VSUihjZWxsKSkgew0KPiA+ICsgICAgICAgICAgICAgICBkZXZfaW5mbyhkZXYs
+ICJudm1lbV9jZWxsX2dldCBmYWlsXG4iKTsNCj4gPiArICAgICAgICAgICAgICAgcmV0dXJuOw0K
+PiA+ICsgICAgICAgfQ0KPiA+ICsNCj4gPiArICAgICAgIGJ1ZiA9ICh1MzIgKiludm1lbV9jZWxs
+X3JlYWQoY2VsbCwgJmxlbik7DQo+ID4gKw0KPiA+ICsgICAgICAgbnZtZW1fY2VsbF9wdXQoY2Vs
+bCk7DQo+ID4gKw0KPiA+ICsgICAgICAgaWYgKElTX0VSUihidWYpKSB7DQo+ID4gKyAgICAgICAg
+ICAgICAgIGRldl9pbmZvKGRldiwgImNhbid0IGdldCBkYXRhXG4iKTsNCj4gPiArICAgICAgICAg
+ICAgICAgcmV0dXJuOw0KPiA+ICsgICAgICAgfQ0KPiA+ICsNCj4gPiArICAgICAgIGlmIChsZW4g
+PCAzICogc2l6ZW9mKHUzMikpIHsNCj4gPiArICAgICAgICAgICAgICAgZGV2X2luZm8oZGV2LCAi
+aW52YWxpZCBjYWxpYnJhdGlvbiBkYXRhXG4iKTsNCj4gPiArICAgICAgICAgICAgICAga2ZyZWUo
+YnVmKTsNCj4gPiArICAgICAgICAgICAgICAgcmV0dXJuOw0KPiA+ICsgICAgICAgfQ0KPiA+ICsN
+Cj4gPiArICAgICAgIHJ0X2NvZGVbMF0gPSAoKGJ1ZlswXSA+PiA2ICYgMHgxZikgPDwgNSkgfCAo
+YnVmWzBdID4+IDExICYgMHgxZik7DQo+ID4gKyAgICAgICBydF9jb2RlWzFdID0gKChidWZbMV0g
+Pj4gMjcgJiAweDFmKSA8PCA1KSB8IChidWZbMF0gPj4gMSAmIDB4MWYpOw0KPiA+ICsgICAgICAg
+cnRfY29kZVsyXSA9ICgoYnVmWzFdID4+IDE3ICYgMHgxZikgPDwgNSkgfCAoYnVmWzFdID4+IDIy
+ICYgMHgxZik7DQo+ID4gKyAgICAgICBydF9jb2RlWzNdID0gKChidWZbMV0gPj4gNyAmIDB4MWYp
+IDw8IDUpIHwgKGJ1ZlsxXSA+PiAxMiAmIDB4MWYpOw0KPiA+ICsgICAgICAgcnRfY29kZVs0XSA9
+ICgoYnVmWzJdID4+IDI3ICYgMHgxZikgPDwgNSkgfCAoYnVmWzFdID4+IDIgJiAweDFmKTsNCj4g
+DQo+IFdoeSBub3QganVzdCBzYXZlIHJ0X2NvZGUgaW4gbnZtZW0gYW5kIHlvdSBkb24ndCBuZWVk
+IHRvIHRyYW5zbGF0ZSBoZXJlPw0KPiBJZiB5b3UgbmVlZCB0byBkbyBzbywgcGxlYXNlIGFkZCBk
+ZXNjcmlwdGlvbiBmb3IgdGhpcy4NCj4gDQo+IFJlZ2FyZHMsDQo+IENodW4tS3VhbmcuDQo+IA0K
+DQpIaSBDaHVuLUt1YW5nLA0KDQpUaGUgY2FsaWJyYXRpb24gZGF0YSBpcyBmbGFzaGVkIGluIHJv
+bSB3aGVuIHRoZSBJQyBGVCB0ZXN0DQpBbmQgdGhlIGRhdGEgc3RydWN0IGNhbid0IGJlIHN0b3Jl
+ZCBhZ2Fpbg0KDQpCZXN0IFJlZ2FyZHMNCkpJdGFvDQo+IA0KPiA+ICsNCj4gPiArICAgICAgIGZv
+ciAoaSA9IDA7IGkgPCA1OyBpKyspIHsNCj4gPiArICAgICAgICAgICAgICAgaWYgKChydF9jb2Rl
+W2ldICYgMHgxZikgPT0gMCkNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICBydF9jb2RlW2ld
+IHw9IDB4MTA7DQo+ID4gKw0KPiA+ICsgICAgICAgICAgICAgICBpZiAoKHJ0X2NvZGVbaV0gPj4g
+NSAmIDB4MWYpID09IDApDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgcnRfY29kZVtpXSB8
+PSAweDEwIDw8IDU7DQo+ID4gKw0KPiA+ICsgICAgICAgICAgICAgICBmb3IgKGogPSAwOyBqIDwg
+MTA7IGorKykNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICBtdGtfbWlwaV90eF91cGRhdGVf
+Yml0cyhtaXBpX3R4LA0KPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgTUlQSVRY
+X0QyUF9SVENPREUgKiAoaSArIDEpICsgaiAqIDQsDQo+ID4gKyAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAxLCBydF9jb2RlW2ldID4+IGogJiAxKTsNCj4gPiArICAgICAgIH0NCj4gPiAr
+DQo+ID4gKyAgICAgICBrZnJlZShidWYpOw0KPiA+ICt9DQo+ID4gKw0KPiA+ICBzdGF0aWMgdm9p
+ZCBtdGtfbWlwaV90eF9wb3dlcl9vbl9zaWduYWwoc3RydWN0IHBoeSAqcGh5KQ0KPiA+ICB7DQo+
+ID4gICAgICAgICBzdHJ1Y3QgbXRrX21pcGlfdHggKm1pcGlfdHggPSBwaHlfZ2V0X2RydmRhdGEo
+cGh5KTsNCj4gPiBAQCAtMTMwLDYgKzE4NSw4IEBAIHN0YXRpYyB2b2lkIG10a19taXBpX3R4X3Bv
+d2VyX29uX3NpZ25hbChzdHJ1Y3QgcGh5ICpwaHkpDQo+ID4gICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICBSR19EU0lfSFNUWF9MRE9fUkVGX1NFTCwNCj4gPiAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIChtaXBpX3R4LT5taXBpdHhfZHJpdmUgLSAzMDAwKSAvIDIwMCA8PCA2
+KTsNCj4gPg0KPiA+ICsgICAgICAgbXRrX21pcGlfdHhfY29uZmlnX2NhbGlicmF0aW9uX2RhdGEo
+bWlwaV90eCk7DQo+ID4gKw0KPiA+ICAgICAgICAgbXRrX21pcGlfdHhfc2V0X2JpdHMobWlwaV90
+eCwgTUlQSVRYX0NLX0NLTU9ERV9FTiwgRFNJX0NLX0NLTU9ERV9FTik7DQo+ID4gIH0NCj4gPg0K
+PiA+IC0tDQo+ID4gMi4yMS4wDQo+ID4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18NCj4gPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0DQo+ID4gZHJpLWRldmVs
+QGxpc3RzLmZyZWVkZXNrdG9wLm9yZw0KPiA+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+L21haWxtYW4vbGlzdGluZm8vZHJpLWRldmVsDQoNCg0KX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4
+LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
