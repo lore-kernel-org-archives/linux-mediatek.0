@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-8.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F2591C2BA19
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 09:27:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 70573C2BA19
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 09:27:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BFCEF20644
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 09:27:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 428C620644
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 09:27:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pRatdlVH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BFCEF20644
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KflqFBJk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 428C620644
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,29 +25,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
 	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DKb+zqAJfRsr0+0PtAzfZk1b+ATBeb0rL7PKtyCYuXQ=; b=pRatdlVH5c95Tb
-	lC4+Zh/8205VuudT44zVWhXk5pKWmeQKZ9sHNOoK2L5NNLSuIHNWA8SJeKuy1rVXQ2otjg6EXKzoT
-	kfaD07uLkefN5/0KYpYCs0JJUOm5OQSjyAYMbaPke//WR/HKYeot07v0vRPpo4qqNjwftlbqbKyZL
-	b72iqgA0UeddqxL2wCDefcgLQ/r+657MZSX1axiN1GmUUaQdrDyDF6R7oK6aqg/srFCqhfRk+VA7U
-	sSjzKzb/O0/RRVsyPp0+bLhBNY8/kYzKEGwSsaID0ivvSw3EO3jTTns6GD+6LXZCfdSehJj3CPL70
-	dnA8tcwhCIo4TUN6ccZQ==;
+	List-Owner; bh=/DXOOzTI6vGiNnvPftanKSb2FX+lx5tC7EnkdDPr7vM=; b=KflqFBJkT7QmM/
+	mRaFFhf1ZTMqckfXbDWh25L6DE1i98XyG0Opc6h4PSIoD/EZJazCMW9LayZfwvCdhA1jTtQcitaeW
+	Bogyt+byzq7rw/MV8oYLM0QlRYB8mqQM+5SC1QhCgc2A02FHns0FPiX+VHIDtCtx3UP0dlY9r6zKR
+	xrN6W5pK3xzZ9V6KaBGz8fqbTJtWW0EGi2Q/MFhmXBve4jxlkAD/6XLH/9fdRtRs4PH5AYFCHkVSA
+	n6CRAdQv23zxSpVrsiatSAmsXpol0weYdpgESdmuSdcNKdTa3vOeXCAqK+FKfZNIiO2xKPHKy9A0d
+	MbNsqJpVUQzu4QhSLJzQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLO1z-0000Xl-QU; Mon, 06 Apr 2020 09:26:59 +0000
+	id 1jLO2O-0000vi-6y; Mon, 06 Apr 2020 09:27:24 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLO1r-0000Os-8T; Mon, 06 Apr 2020 09:26:52 +0000
+ id 1jLO2B-0000km-D5; Mon, 06 Apr 2020 09:27:14 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.220.254])
- by mx2.suse.de (Postfix) with ESMTP id 49363AE1C;
- Mon,  6 Apr 2020 09:26:45 +0000 (UTC)
-Subject: Re: [PATCH v2 2/4] clk / soc: mediatek: Bind clock and gpu driver for
- mt2712
+ by mx2.suse.de (Postfix) with ESMTP id 8C1E8AE1C;
+ Mon,  6 Apr 2020 09:27:09 +0000 (UTC)
+Subject: Re: [PATCH v2 3/4] clk / soc: mediatek: Bind clock and gpu driver for
+ mt2701
 To: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
  mark.rutland@arm.com, ck.hu@mediatek.com, sboyd@kernel.org,
  ulrich.hecht+renesas@gmail.com
 References: <20200401201736.2980433-1-enric.balletbo@collabora.com>
- <20200401201736.2980433-2-enric.balletbo@collabora.com>
+ <20200401201736.2980433-3-enric.balletbo@collabora.com>
 From: Matthias Brugger <mbrugger@suse.com>
 Autocrypt: addr=mbrugger@suse.com; prefer-encrypt=mutual; keydata=
  mQINBFP1zgUBEAC21D6hk7//0kOmsUrE3eZ55kjc9DmFPKIz6l4NggqwQjBNRHIMh04BbCMY
@@ -123,16 +123,16 @@ Autocrypt: addr=mbrugger@suse.com; prefer-encrypt=mutual; keydata=
  UHUEIsTwPWs2Q87k7vjYyrcyAOarX2X5pvMQvpAMADGf2Z3wrCsDdG25w2HztweUNd9QEprt
  JG8GNNzMOD4cQ82Ta7eGvPWPeXauWJDLVR9jHtWT9Ot3BQgmApLxACvwvD1a69jaFKov28SP
  HxUCQ9Y1Y/Ct
-Message-ID: <b2b3168f-8b73-28da-94e4-38a6f7998bac@suse.com>
-Date: Mon, 6 Apr 2020 11:26:43 +0200
+Message-ID: <718ec9a7-1a3c-4233-cdd1-b243874b37d5@suse.com>
+Date: Mon, 6 Apr 2020 11:27:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200401201736.2980433-2-enric.balletbo@collabora.com>
+In-Reply-To: <20200401201736.2980433-3-enric.balletbo@collabora.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200406_022651_590906_104637B4 
-X-CRM114-Status: GOOD (  21.70  )
+X-CRM114-CacheID: sfid-20200406_022711_738257_8E729CB8 
+X-CRM114-Status: GOOD (  21.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -144,8 +144,8 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, drinkcat@chromium.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+Cc: Kate Stewart <kstewart@linuxfoundation.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, drinkcat@chromium.org,
  Michael Turquette <mturquette@baylibre.com>, matthias.bgg@kernel.org,
  linux-kernel@vger.kernel.org, Richard Fontana <rfontana@redhat.com>,
  linux-mediatek@lists.infradead.org, Allison Randal <allison@lohutok.net>,
@@ -164,8 +164,7 @@ On 01/04/2020 22:17, Enric Balletbo i Serra wrote:
 > Now that the mmsys driver is the top-level entry point for the
 > multimedia subsystem, we could bind the clock and the gpu driver on
 > those devices that is expected to work, so the drm driver is
-> intantiated by the mmsys driver and display, hopefully, working again on
-> those devices.
+> intantiated by the mmsys driver and display, hopefully, working again.
 > 
 > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 > Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
@@ -184,17 +183,24 @@ Matthias
 > Changes in v2:
 > - Remove of_match_table
 > 
->  drivers/clk/mediatek/clk-mt2712-mm.c | 9 ++-------
+>  drivers/clk/mediatek/clk-mt2701-mm.c | 9 ++-------
 >  drivers/soc/mediatek/mtk-mmsys.c     | 8 ++++++++
 >  2 files changed, 10 insertions(+), 7 deletions(-)
 > 
-> diff --git a/drivers/clk/mediatek/clk-mt2712-mm.c b/drivers/clk/mediatek/clk-mt2712-mm.c
-> index 1c5948be35f3..5519c3d68c1f 100644
-> --- a/drivers/clk/mediatek/clk-mt2712-mm.c
-> +++ b/drivers/clk/mediatek/clk-mt2712-mm.c
-> @@ -128,9 +128,10 @@ static const struct mtk_gate mm_clks[] = {
+> diff --git a/drivers/clk/mediatek/clk-mt2701-mm.c b/drivers/clk/mediatek/clk-mt2701-mm.c
+> index 054b597d4a73..cb18e1849492 100644
+> --- a/drivers/clk/mediatek/clk-mt2701-mm.c
+> +++ b/drivers/clk/mediatek/clk-mt2701-mm.c
+> @@ -79,16 +79,12 @@ static const struct mtk_gate mm_clks[] = {
+>  	GATE_DISP1(CLK_MM_TVE_FMM, "mm_tve_fmm", "mm_sel", 14),
+>  };
 >  
->  static int clk_mt2712_mm_probe(struct platform_device *pdev)
+> -static const struct of_device_id of_match_clk_mt2701_mm[] = {
+> -	{ .compatible = "mediatek,mt2701-mmsys", },
+> -	{}
+> -};
+> -
+>  static int clk_mt2701_mm_probe(struct platform_device *pdev)
 >  {
 > +	struct device *dev = &pdev->dev;
 > +	struct device_node *node = dev->parent->of_node;
@@ -202,51 +208,42 @@ Matthias
 >  	int r;
 > -	struct device_node *node = pdev->dev.of_node;
 >  
->  	clk_data = mtk_alloc_clk_data(CLK_MM_NR_CLK);
+>  	clk_data = mtk_alloc_clk_data(CLK_MM_NR);
 >  
-> @@ -146,16 +147,10 @@ static int clk_mt2712_mm_probe(struct platform_device *pdev)
->  	return r;
->  }
->  
-> -static const struct of_device_id of_match_clk_mt2712_mm[] = {
-> -	{ .compatible = "mediatek,mt2712-mmsys", },
-> -	{}
-> -};
-> -
->  static struct platform_driver clk_mt2712_mm_drv = {
->  	.probe = clk_mt2712_mm_probe,
+> @@ -108,7 +104,6 @@ static struct platform_driver clk_mt2701_mm_drv = {
+>  	.probe = clk_mt2701_mm_probe,
 >  	.driver = {
->  		.name = "clk-mt2712-mm",
-> -		.of_match_table = of_match_clk_mt2712_mm,
+>  		.name = "clk-mt2701-mm",
+> -		.of_match_table = of_match_clk_mt2701_mm,
 >  	},
 >  };
 >  
 > diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-> index 05e322c9c301..c7d3b7bcfa32 100644
+> index c7d3b7bcfa32..cacafe23c823 100644
 > --- a/drivers/soc/mediatek/mtk-mmsys.c
 > +++ b/drivers/soc/mediatek/mtk-mmsys.c
 > @@ -80,6 +80,10 @@ struct mtk_mmsys_driver_data {
 >  	const char *clk_driver;
 >  };
 >  
-> +static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
-> +	.clk_driver = "clk-mt2712-mm",
+> +static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+> +	.clk_driver = "clk-mt2701-mm",
 > +};
 > +
->  static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
->  	.clk_driver = "clk-mt8173-mm",
+>  static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
+>  	.clk_driver = "clk-mt2712-mm",
 >  };
-> @@ -319,6 +323,10 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+> @@ -323,6 +327,10 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
 >  }
 >  
 >  static const struct of_device_id of_match_mtk_mmsys[] = {
 > +	{
-> +		.compatible = "mediatek,mt2712-mmsys",
-> +		.data = &mt2712_mmsys_driver_data,
+> +		.compatible = "mediatek,mt2701-mmsys",
+> +		.data = &mt2701_mmsys_driver_data,
 > +	},
 >  	{
->  		.compatible = "mediatek,mt8173-mmsys",
->  		.data = &mt8173_mmsys_driver_data,
+>  		.compatible = "mediatek,mt2712-mmsys",
+>  		.data = &mt2712_mmsys_driver_data,
 > 
 
 _______________________________________________
