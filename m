@@ -2,154 +2,75 @@ Return-Path: <SRS0=dAcd=5W=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+X-Spam-Status: No, score=-0.5 required=3.0 tests=DKIM_SIGNED,DKIM_VALID,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 568EFC2BA1A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 21:17:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1FD12C2BA1A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 21:25:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 19C6D2072A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 21:17:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E61622072A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 21:25:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JnZ/adZh";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="gdF534dd"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 19C6D2072A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hUplQ5ng";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=yandex.ru header.i=@yandex.ru header.b="q5DsCVxa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E61622072A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=yandex.ru
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cnoiRZUaVBN0QxU+sDLPbvrzhyRnXyou61nWQgGCDcM=; b=JnZ/adZhsGH5Zz
-	slqAZtRze2oilJSponZ0cbf7U8ZNiIxJcCHylVuqy16pGDO1eDzXD88x0E3lB5SyutLGrNynBT4Lw
-	k+3hw9C32aVe7x/XPC86qz4Yq5DyNGViKX2oBCj7Suvft0lA9qZ+vkTsry2zUspsMsvFbXXhh1Mib
-	nKgM2fxrtPMRBugbWkh1zTD3CMo46KwBj72ZTlCIiPs2THlanmPRJeh7cIEnCg+DrJvJq+NrdvCjJ
-	WV+I3xm1Laz2YADCrJfjYBy66h2UFt0Lj9eG7+9aBSYFQ4nReR3D9v50hlMgHbYACD8cKGJPf+uEC
-	9q0iIrRve7ZtxnknRERA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Q7Rdkjpf3SOO2/vh6DamyZ7bB1pcWaeTWQKepMS9XMI=; b=hUplQ5ngUWay5o
+	2cTZrS8lDUVDqkukPFq28sX0DQzo/bsvc64KtbJs3qeWyLk4f0rakV1EGdlVtLsJ7EA8+4fVP/wJP
+	LjzBJukE/iiaVD+xhp8RncqZ0m6kdonQYk8f0cqws1I/y5PuG2D4ZHY7RaV9O8zotOBa3+yajrEIm
+	WNWNv76u42MwAbwiAJ1h2l6Up2w/vGrN2wgyATKLPQiEubMCxy6ORQ9aETqHn+kRz3mydsIjDTqgE
+	gvc1jTD6CQB+72cwhmmg+jNf906Bz980afqvmTZdyjPUEQGSmrLT00qNlQ3EVJfAt2ZVclIau5D+5
+	twXAFeRYg7ZIcdEjz7EA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLZ7i-0001Mu-Pq; Mon, 06 Apr 2020 21:17:38 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1jLZF7-0007AB-0b; Mon, 06 Apr 2020 21:25:17 +0000
+Received: from forward105o.mail.yandex.net ([37.140.190.183])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLZ7Z-0001GU-QC
- for linux-mediatek@lists.infradead.org; Mon, 06 Apr 2020 21:17:32 +0000
-Received: by mail-wr1-x443.google.com with SMTP id c15so1225241wro.11
- for <linux-mediatek@lists.infradead.org>; Mon, 06 Apr 2020 14:17:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=dd6BqHd1u7xbQgsrts2ztR8U4QU0nrn833OxpCYuajE=;
- b=gdF534ddiA7swSSZ0lK+MkQ8WFIBr/tTboA6TxrJ1xqcPgc18lNxDyq+CH7jO6Cdvy
- DlTf0wpWphvPAvwTEklSa5E+yNZrjiDVMm/crLJpWCyP8QPzCOIQimJtYMXHv76Feb5v
- tvvMaqRpNX6DfSO+Iy9K2z8YC3JMP48i4ZzzhI/a9BHbwCU7DkKqsU37Hp4vw3ENd7F2
- hpRkwZz+ulO9Zghh4AtHzQDTCK/Ks0SmIy5Cc+Du5YPwO5WOzuKH7qz7FcHkNdDJ/Sf+
- xgIjhwpXbKBztpqTmioR8ll9JUVnZ7z4E/gdyNK0qV03ge2vpxm+DX1u7kfzZ9n0NpwV
- bdmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=dd6BqHd1u7xbQgsrts2ztR8U4QU0nrn833OxpCYuajE=;
- b=qojRBvyb+B4sBX0bL+R5Fc+i4gEHC2z7bkgp4NgOzcyh31MsrwdkeG8maR4kLMmez2
- SXQzG6sCc117hA+LaIPprRlfLhDZhv1yHDILjS/hOdJYcdUc0UWD9e16n6loe8gkMZfz
- D+aaFeli6DCL7Vwa4kUd1O4ygsxlDTR+9Ao1I62ZNlY/B1lw5uWdRDKHvF+OqYjn8KJh
- MBXNqQZMgbCzHHbU8tj4FUXeQwBqjJGFDUzOlUlX8EX/7IRpRbq/YJXUvOkazQwbHx+F
- 8b9GaTH23YUn0T9C+INXxZb0isHn6GG27uDpSS3YUBsKP/Tg7PV7TQg0UfbpyGpCk2vS
- o2vA==
-X-Gm-Message-State: AGi0PuZsW/BIULsdWw1VDF54bS3hCcqitEqRYxEPm1dBiGDWTjQM0IvG
- UjdIhCFeY/9tM9Kr76ftM03R8A==
-X-Google-Smtp-Source: APiQypI8eUAb2yFVFjfZBDxJtENyxrtQ3mA79hFrt6jqDkB7Rx6yGyMvlLNKGRgdGVUbMKGFF+XPWQ==
-X-Received: by 2002:a5d:604a:: with SMTP id j10mr1242279wrt.126.1586207845347; 
- Mon, 06 Apr 2020 14:17:25 -0700 (PDT)
-Received: from ?IPv6:2a01:e34:ed2f:f020:b51c:42dc:1499:2880?
- ([2a01:e34:ed2f:f020:b51c:42dc:1499:2880])
- by smtp.googlemail.com with ESMTPSA id d6sm28140465wrw.10.2020.04.06.14.17.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Apr 2020 14:17:24 -0700 (PDT)
-Subject: Re: [PATCH v5 1/5] PM / EM: add devices to Energy Model
-To: Lukasz Luba <lukasz.luba@arm.com>, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- dri-devel@lists.freedesktop.org, linux-omap@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-imx@nxp.com
-References: <20200318114548.19916-1-lukasz.luba@arm.com>
- <20200318114548.19916-2-lukasz.luba@arm.com>
- <09b680a5-a118-8c6e-0ae1-03ab5f10c573@linaro.org>
- <cb7f670a-a04f-ba6f-1486-0421f3cce2e9@arm.com>
- <6b980e2a-c15c-0718-14b8-e8aa7510c832@linaro.org>
- <2a70b4ed-f18f-c1e6-1e8c-e4747807f276@arm.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Autocrypt: addr=daniel.lezcano@linaro.org; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <4cee98ce-62a6-7448-a99c-3a1af6c87cf4@linaro.org>
-Date: Mon, 6 Apr 2020 23:17:21 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.4.1
+ id 1jLZEq-0004ea-MM; Mon, 06 Apr 2020 21:25:06 +0000
+Received: from mxback4g.mail.yandex.net (mxback4g.mail.yandex.net
+ [IPv6:2a02:6b8:0:1472:2741:0:8b7:165])
+ by forward105o.mail.yandex.net (Yandex) with ESMTP id 8EE32420056F;
+ Tue,  7 Apr 2020 00:24:55 +0300 (MSK)
+Received: from sas8-6bf5c5d991b2.qloud-c.yandex.net
+ (sas8-6bf5c5d991b2.qloud-c.yandex.net [2a02:6b8:c1b:2a1f:0:640:6bf5:c5d9])
+ by mxback4g.mail.yandex.net (mxback/Yandex) with ESMTP id rZ0X9GBYNE-Or8uJu58; 
+ Tue, 07 Apr 2020 00:24:55 +0300
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
+ t=1586208295; bh=ylo4x/Q6roQpWhci6FeEVGlLIJ9AseZrMZBQ8493un8=;
+ h=In-Reply-To:Cc:To:From:Subject:References:Date:Message-ID;
+ b=q5DsCVxa3kgJ5LTNKC9BjvDoavjElVw+QAjQKBpRX3fvf98fGvCawyC1qxrI8bp72
+ bExX/RRhxZYjW6rJtsxITX/NCavsnOxIJd1HRjepJYfl5Mm4t6BWjqlFLNt+EbNKsD
+ LCoIixSv+H6fy6hAEPAi3+yfVMezeMUlwFOVey38=
+Authentication-Results: mxback4g.mail.yandex.net; dkim=pass header.i=@yandex.ru
+Received: by sas8-6bf5c5d991b2.qloud-c.yandex.net (smtp/Yandex) with ESMTPSA
+ id 1RRGL8wSk2-Op2OUFOY; Tue, 07 Apr 2020 00:24:52 +0300
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
+ (Client certificate not present)
+Message-ID: <82d244d47e0f0ddaa0a9aee4620fa9fc31fe98f7.camel@yandex.ru>
+Subject: Re: [PATCH net-next] net: dsa: add GRO support via gro_cells
+From: Alexander Lobakin <bloodyreaper@yandex.ru>
+To: Florian Fainelli <f.fainelli@gmail.com>
+Date: Tue, 07 Apr 2020 00:24:18 +0300
+In-Reply-To: <c362ec65-ec84-52bb-a06e-d2ffad8bf52d@gmail.com>
+References: <97a880e4-de7d-1f94-d35b-2635fbd8237e@gmail.com>
+ <20200406191113.5983-1-bloodyreaper@yandex.ru>
+ <c362ec65-ec84-52bb-a06e-d2ffad8bf52d@gmail.com>
+User-Agent: Evolution 3.36.1 
 MIME-Version: 1.0
-In-Reply-To: <2a70b4ed-f18f-c1e6-1e8c-e4747807f276@arm.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200406_141730_024564_3C58D2DD 
-X-CRM114-Status: GOOD (  23.91  )
+X-CRM114-CacheID: sfid-20200406_142502_120454_4D91AE9F 
+X-CRM114-Status: GOOD (  36.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -161,108 +82,281 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: nm@ti.com, juri.lelli@redhat.com, peterz@infradead.org,
- viresh.kumar@linaro.org, liviu.dudau@arm.com, bjorn.andersson@linaro.org,
- bsegall@google.com, festevam@gmail.com, Morten.Rasmussen@arm.com,
- robh@kernel.org, amit.kucheria@verdurent.com, lorenzo.pieralisi@arm.com,
- vincent.guittot@linaro.org, khilman@kernel.org, steven.price@arm.com,
- cw00.choi@samsung.com, mingo@redhat.com, mgorman@suse.de, rui.zhang@intel.com,
- alyssa.rosenzweig@collabora.com, orjan.eide@arm.com, daniel@ffwll.ch,
- b.zolnierkie@samsung.com, s.hauer@pengutronix.de, rostedt@goodmis.org,
- matthias.bgg@gmail.com, Dietmar.Eggemann@arm.com, airlied@linux.ie,
- javi.merino@arm.com, tomeu.vizoso@collabora.com, qperret@google.com,
- sboyd@kernel.org, mka@chromium.org, rdunlap@infradead.org, rjw@rjwysocki.net,
- agross@kernel.org, kernel@pengutronix.de, sudeep.holla@arm.com,
- patrick.bellasi@matbug.net, shawnguo@kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Woojung Huh <woojung.huh@microchip.com>, Andrew Lunn <andrew@lunn.ch>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Hauke Mehrtens <hauke@hauke-m.de>, Linus Walleij <linus.walleij@linaro.org>,
+ Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Microchip Linux Driver Support <unglinuxdriver@microchip.com>,
+ Vladimir Oltean <vladimir.oltean@nxp.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Oleksij Rempel <linux@rempel-privat.de>,
+ "David S. Miller" <davem@davemloft.net>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ Mao Wenan <maowenan@huawei.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMDYvMDQvMjAyMCAxODowNywgTHVrYXN6IEx1YmEgd3JvdGU6Cj4gCj4gCj4gT24gNC82LzIw
-IDM6NTggUE0sIERhbmllbCBMZXpjYW5vIHdyb3RlOgo+Pgo+PiBIaSBMdWthc3osCj4+Cj4+Cj4+
-IE9uIDA2LzA0LzIwMjAgMTU6MjksIEx1a2FzeiBMdWJhIHdyb3RlOgo+Pj4gSGkgRGFuaWVsLAo+
-Pj4KPj4+IFRoYW5rIHlvdSBmb3IgdGhlIHJldmlldy4KPj4+Cj4+PiBPbiA0LzMvMjAgNTowNSBQ
-TSwgRGFuaWVsIExlemNhbm8gd3JvdGU6Cj4+Pj4KPj4+PiBIaSBMdWthc3osCj4+Pj4KPj4+Pgo+
-Pj4+IE9uIDE4LzAzLzIwMjAgMTI6NDUsIEx1a2FzeiBMdWJhIHdyb3RlOgo+Pj4+PiBBZGQgc3Vw
-cG9ydCBvZiBvdGhlciBkZXZpY2VzIGludG8gdGhlIEVuZXJneSBNb2RlbCBmcmFtZXdvcmsgbm90
-IG9ubHkKPj4+Pj4gdGhlCj4+Pj4+IENQVXMuIENoYW5nZSB0aGUgaW50ZXJmYWNlIHRvIGJlIG1v
-cmUgdW5pZmllZCB3aGljaCBjYW4gaGFuZGxlIG90aGVyCj4+Pj4+IGRldmljZXMgYXMgd2VsbC4K
-Pj4+Pgo+Pj4+IHRoYW5rcyBmb3IgdGFraW5nIGNhcmUgb2YgdGhhdC4gT3ZlcmFsbCBJIGxpa2Ug
-dGhlIGNoYW5nZXMgaW4gdGhpcwo+Pj4+IHBhdGNoCj4+Pj4gYnV0IGl0IGhhcmQgdG8gcmV2aWV3
-IGluIGRldGFpbHMgYmVjYXVzZSB0aGUgcGF0Y2ggaXMgdG9vIGJpZyA6Lwo+Pj4+Cj4+Pj4gQ291
-bGQgeW91IHNwbGl0IHRoaXMgcGF0Y2ggaW50byBzbWFsbGVyIG9uZXM/Cj4+Pj4KPj4+PiBlZy4g
-KGF0IHlvdXIgY29udmVuaWVuY2UpCj4+Pj4KPj4+PiDCoMKgIC0gT25lIHBhdGNoIHJlbmFtaW5n
-IHMvY2FwL3BlcmYvCj4+Pj4KPj4+PiDCoMKgIC0gT25lIHBhdGNoIGFkZGluZyBhIG5ldyBmdW5j
-dGlvbjoKPj4+Pgo+Pj4+IMKgwqDCoMKgwqAgZW1fZGV2X3JlZ2lzdGVyX3BlcmZfZG9tYWluKHN0
-cnVjdCBkZXZpY2UgKmRldiwKPj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB1
-bnNpZ25lZCBpbnQgbnJfc3RhdGVzLAo+Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIHN0cnVjdCBlbV9kYXRhX2NhbGxiYWNrICpjYik7Cj4+Pj4KPj4+PiDCoMKgwqDCoCAoKyBF
-WFBPUlRfU1lNQk9MX0dQTCkKPj4+Pgo+Pj4+IMKgwqDCoMKgwqAgQW5kIGVtX3JlZ2lzdGVyX3Bl
-cmZfZG9tYWluKCkgdXNpbmcgaXQuCj4+Pj4KPj4+PiDCoMKgIC0gT25lIGNvbnZlcnRpbmcgdGhl
-IGVtX3JlZ2lzdGVyX3BlcmZfZG9tYWluKCkgdXNlciB0bwo+Pj4+IMKgwqDCoMKgwqBlbV9kZXZf
-cmVnaXN0ZXJfcGVyZl9kb21haW4KPj4+Pgo+Pj4+IMKgwqAgLSBPbmUgYWRkaW5nIHRoZSBkaWZm
-ZXJlbnQgbmV3ICdlbScgZnVuY3Rpb25zCj4+Pj4KPj4+PiDCoMKgIC0gQW5kIGZpbmFsbHkgb25l
-IHJlbW92aW5nIGVtX3JlZ2lzdGVyX3BlcmZfZG9tYWluKCkuCj4+Pgo+Pj4gSSBhZ3JlZSBhbmQg
-d2lsbCBkbyB0aGUgc3BsaXQuIEkgY291bGQgYWxzbyBicmVhayB0aGUgZGVwZW5kZW5jaWVzCj4+
-PiBmb3IgZnV0dXJlIGVhc2llciBtZXJnZS4KPj4+Cj4+Pj4KPj4+Pgo+Pj4+PiBBY2tlZC1ieTog
-UXVlbnRpbiBQZXJyZXQgPHFwZXJyZXRAZ29vZ2xlLmNvbT4KPj4+Pj4gU2lnbmVkLW9mZi1ieTog
-THVrYXN6IEx1YmEgPGx1a2Fzei5sdWJhQGFybS5jb20+Cj4+Pj4+IC0tLQo+Pj4+Cj4+Pj4gWyAu
-Li4gXQo+Pj4+Cj4+Pj4+IMKgwqAgMi4gQ29yZSBBUElzCj4+Pj4+IEBAIC03MCwxNCArNzIsMTYg
-QEAgQ09ORklHX0VORVJHWV9NT0RFTCBtdXN0IGJlIGVuYWJsZWQgdG8gdXNlIHRoZSBFTQo+Pj4+
-PiBmcmFtZXdvcmsuCj4+Pj4+IMKgwqAgRHJpdmVycyBhcmUgZXhwZWN0ZWQgdG8gcmVnaXN0ZXIg
-cGVyZm9ybWFuY2UgZG9tYWlucyBpbnRvIHRoZSBFTQo+Pj4+PiBmcmFtZXdvcmsgYnkKPj4+Pj4g
-wqDCoCBjYWxsaW5nIHRoZSBmb2xsb3dpbmcgQVBJOjoKPj4+Pj4gwqDCoCAtwqAgaW50IGVtX3Jl
-Z2lzdGVyX3BlcmZfZG9tYWluKGNwdW1hc2tfdCAqc3BhbiwgdW5zaWduZWQgaW50Cj4+Pj4+IG5y
-X3N0YXRlcywKPj4+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgc3RydWN0
-IGVtX2RhdGFfY2FsbGJhY2sgKmNiKTsKPj4+Pj4gK8KgIGludCBlbV9yZWdpc3Rlcl9wZXJmX2Rv
-bWFpbihzdHJ1Y3QgZGV2aWNlICpkZXYsIHVuc2lnbmVkIGludAo+Pj4+PiBucl9zdGF0ZXMsCj4+
-Pj4+ICvCoMKgwqDCoMKgwqDCoCBzdHJ1Y3QgZW1fZGF0YV9jYWxsYmFjayAqY2IsIGNwdW1hc2tf
-dCAqY3B1cyk7Cj4+Pj4KPj4+PiBJc24ndCBwb3NzaWJsZSB0byBnZXQgcmlkIG9mIHRoaXMgY3B1
-bWFzayBieSB1c2luZwo+Pj4+IGNwdWZyZXFfY3B1X2dldCgpIHdoaWNoIHJldHVybnMgdGhlIGNw
-dWZyZXEncyBwb2xpY3kgYW5kIGZyb20gdGhlaXIgZ2V0Cj4+Pj4gdGhlIHJlbGF0ZWQgY3B1cyA/
-Cj4+Pgo+Pj4gV2UgaGFkIHNpbWlsYXIgdGhvdWdodHMgd2l0aCBRdWVudGluIGFuZCBJJ3ZlIGNo
-ZWNrZWQgdGhpcy4KPj4KPj4gWWVhaCwgSSBzdXNwZWN0ZWQgeW91IGFscmVhZHkgdGhpbmsgYWJv
-dXQgdGhhdCA6KQo+Pgo+Pj4gVW5mb3J0dW5hdGVseSwgaWYgdGhlIHBvbGljeSBpcyBhICduZXcg
-cG9saWN5JyBbMV0gaXQgZ2V0cwo+Pj4gYWxsb2NhdGVkIGFuZCBwYXNzZWQgaW50byBjcHVmcmVx
-IGRyaXZlciAtPmluaXQocG9saWN5KSBbMl0uCj4+PiBUaGVuIHRoYXQgcG9saWN5IGlzIHNldCBp
-bnRvIHBlcl9jcHUgcG9pbnRlciBmb3IgZWFjaCByZWxhdGVkX2NwdSBbM106Cj4+Pgo+Pj4gZm9y
-X2VhY2hfY3B1KGosIHBvbGljeS0+cmVsYXRlZF9jcHVzKQo+Pj4gwqDCoMKgwqDCoHBlcl9jcHUo
-Y3B1ZnJlcV9jcHVfZGF0YSwgaikgPSBwb2xpY3k7Cj4+Pgo+Pj4gwqAgVGh1cywgYW55IGNhbGxz
-IG9mIGZ1bmN0aW9ucyAoaS5lLiBjcHVmcmVxX2NwdV9nZXQoKSkgd2hpY2ggdHJ5IHRvCj4+PiB0
-YWtlIHRoaXMgcHRyIGJlZm9yZSBbM10gd29uJ3Qgd29yay4KPj4+Cj4+PiBXZSBhcmUgdHJ5aW5n
-IHRvIHJlZ2lzdGVyIEVNIGZyb20gY3B1ZnJlcV9kcml2ZXItPmluaXQocG9saWN5KSBhbmQgdGhl
-Cj4+PiBwZXJfY3B1IHBvbGljeSBpcyBsaWtlbHkgdG8gYmUgbm90IHBvcHVsYXRlZCBhdCB0aGF0
-IHBoYXNlLgo+Pgo+PiBXaGF0IGlzIHRoZSBwcm9ibGVtIG9mIHJlZ2lzdGVyaW5nIGF0IHRoZSBl
-bmQgb2YgdGhlIGNwdWZyZXFfb25saW5lID8KPiAKPiBXZSB3YW50IHRvIGVuYWJsZSBkcml2ZXIg
-ZGV2ZWxvcGVycyB0byBjaG9vc2Ugb25lIG9mIHR3byBvcHRpb25zIGZvciB0aGUKPiByZWdpc3Ry
-YXRpb24gb2YgRW5lcmd5IE1vZGVsOgo+IDEuIGEgc2ltcGxlIG9uZSB2aWEgZGV2X3BtX29wcF9v
-Zl9yZWdpc3Rlcl9lbSgpLCB3aGljaCB1c2VzIGRlZmF1bHQKPiDCoMKgIGNhbGxiYWNrIGZ1bmN0
-aW9uIGNhbGN1bGF0aW5nIHBvd2VyIGJhc2VkIG9uOiB2b2x0YWdlLCBmcmVxCj4gwqDCoCBhbmQg
-RFQgZW50cnkgJ2R5bmFtaWMtcG93ZXItY29lZmZpY2llbnQnIGZvciBlYWNoIE9QUAo+IDIuIGEg
-bW9yZSBzb3BoaXN0aWNhdGVkLCB3aGVuIGRyaXZlciBwcm92aWRlcyBjYWxsYmFjayBmdW5jdGlv
-biwgd2hpY2gKPiDCoCB3aWxsIGJlIGNhbGxlZCBmcm9tIEVNIGZvciBlYWNoIE9QUCB0byBhc2sg
-Zm9yIHJlbGF0ZWQgcG93ZXI7Cj4gwqAgVGhpcyBpbnRlcmZhY2UgY291bGQgYWxzbyBiZSB1c2Vk
-IGJ5IGRldmljZXMgd2hpY2ggcmVsYXkgbm90IG9ubHkKPiDCoCBvbiBvbmUgc291cmNlIG9mICd2
-b2x0YWdlJywgaS5lLiBtYW5pcHVsYXRlIGJvZHkgYmlhcyBvciBoYXZlCj4gwqAgb3RoZXIgY29u
-dHJvbGxpbmcgdm9sdGFnZSBmb3IgZ2F0ZXMgaW4gdGhlIG5ldyAzRCB0cmFuc2lzdG9ycy4gVGhl
-eQo+IMKgIG1pZ2h0IHByb3ZpZGUgY3VzdG9tIGNhbGxiYWNrIGZ1bmN0aW9uIGluIHRoZWlyIGNw
-dWZyZXEgZHJpdmVyLgo+IMKgIFRoaXMgaXMgdXNlZCBpLmUuIGluIGNwdWZyZXEgZHJpdmVycyB3
-aGljaCB1c2UgZmlybXdhcmUgdG8gZ2V0IHBvd2VyLAo+IMKgIGxpa2Ugc2NtaS1jcHVmcmVxLmM7
-Cj4gCj4gVG8gbWVldCB0aGlzIHJlcXVpcmVtZW50IHRoZSByZWdpc3RyYXRpb24gb2YgRU0gaXMg
-bW92ZWQgaW50byBjcHVmcmVxCj4gZHJpdmVycywgbm90IGluIHRoZSBmcmFtZXdvcmsgaS5lIGNw
-dWZyZXFfb25saW5lKCkuIElmIHdlIGNvdWxkIGxpbWl0Cj4gdGhlIHN1cHBvcnQgZm9yIG9ubHkg
-b3B0aW9uIDEuIHRoZW4gd2UgY291bGQgbW92ZSB0aGUgcmVnaXN0cmF0aW9uCj4gY2FsbCBpbnRv
-IGNwdWZyZXEgZnJhbWV3b3JrIGFuZCBjbGVhbiB0aGUgY3B1ZnJlcSBkcml2ZXJzLgoKSSdtIG5v
-dCBzdXJlIHRvIGdldCB5b3VyIHBvaW50IGJ1dCBJIHRoaW5rIGEgc2VyaWVzIHNldHRpbmcgdGhl
-IHNjZW5lIGJ5Cm1vdmluZyB0aGUgZGV2X3BtX29wcF9vZl9yZWdpc3Rlcl9lbSgpIHRvIGNwdWZy
-ZXFfb25saW5lKCkgYW5kIHJlbW92ZQp0aGUgY3B1bWFzayBtYXkgbWFrZSBzZW5zZS4KCkNhbiB5
-b3Ugc2VuZCB0aGUgc3BsaXQgdmVyc2lvbiBvZiBwYXRjaCAxLzUgYXMgYSBzZXJpZXMgd2l0aG91
-dCB0aGUKb3RoZXIgY2hhbmdlcyA/IFNvIHdlIGNhbiBmb2N1cyBvbiBmaXJzdCA/CgoKLS0gCjxo
-dHRwOi8vd3d3LmxpbmFyby5vcmcvPiBMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2Fy
-ZSBmb3IgQVJNIFNvQ3MKCkZvbGxvdyBMaW5hcm86ICA8aHR0cDovL3d3dy5mYWNlYm9vay5jb20v
-cGFnZXMvTGluYXJvPiBGYWNlYm9vayB8CjxodHRwOi8vdHdpdHRlci5jb20vIyEvbGluYXJvb3Jn
-PiBUd2l0dGVyIHwKPGh0dHA6Ly93d3cubGluYXJvLm9yZy9saW5hcm8tYmxvZy8+IEJsb2cKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlh
-dGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Mon, 04/06/2020 at 13:16 -0700, Florian Fainelli wrote:
+> On 4/6/2020 12:11 PM, Alexander Lobakin wrote:
+> > 06.04.2020, 20:57, "Florian Fainelli" <f.fainelli@gmail.com>:
+> > > On 4/6/2020 10:34 AM, Alexander Lobakin wrote:
+> > > >  06.04.2020, 18:21, "Alexander Lobakin" <bloodyreaper@yandex.ru>:
+> > > > >  06.04.2020, 17:48, "Andrew Lunn" <andrew@lunn.ch>:
+> > > > > >   On Mon, Apr 06, 2020 at 01:59:10PM +0300, Alexander Lobakin wrote:
+> > > > > > >    gro_cells lib is used by different encapsulating netdevices, such as
+> > > > > > >    geneve, macsec, vxlan etc. to speed up decapsulated traffic processing.
+> > > > > > >    CPU tag is a sort of "encapsulation", and we can use the same mechs to
+> > > > > > >    greatly improve overall DSA performance.
+> > > > > > >    skbs are passed to the GRO layer after removing CPU tags, so we don't
+> > > > > > >    need any new packet offload types as it was firstly proposed by me in
+> > > > > > >    the first GRO-over-DSA variant [1].
+> > > > > > > 
+> > > > > > >    The size of struct gro_cells is sizeof(void *), so hot struct
+> > > > > > >    dsa_slave_priv becomes only 4/8 bytes bigger, and all critical fields
+> > > > > > >    remain in one 32-byte cacheline.
+> > > > > > >    The other positive side effect is that drivers for network devices
+> > > > > > >    that can be shipped as CPU ports of DSA-driven switches can now use
+> > > > > > >    napi_gro_frags() to pass skbs to kernel. Packets built that way are
+> > > > > > >    completely non-linear and are likely being dropped without GRO.
+> > > > > > > 
+> > > > > > >    This was tested on to-be-mainlined-soon Ethernet driver that uses
+> > > > > > >    napi_gro_frags(), and the overall performance was on par with the
+> > > > > > >    variant from [1], sometimes even better due to minimal overhead.
+> > > > > > >    net.core.gro_normal_batch tuning may help to push it to the limit
+> > > > > > >    on particular setups and platforms.
+> > > > > > > 
+> > > > > > >    [1] https://lore.kernel.org/netdev/20191230143028.27313-1-alobakin@dlink.ru/
+> > > > > > 
+> > > > > >   Hi Alexander
+> > > > > 
+> > > > >  Hi Andrew!
+> > > > > 
+> > > > > >   net-next is closed at the moment. So you should of posted this with an
+> > > > > >   RFC prefix.
+> > > > > 
+> > > > >  I saw that it's closed, but didn't knew about "RFC" tags for that period,
+> > > > >  sorry.
+> > > > > 
+> > > > > >   The implementation looks nice and simple. But it would be nice to have
+> > > > > >   some performance figures.
+> > > > > 
+> > > > >  I'll do, sure. I think I'll collect the stats with various main receiving
+> > > > >  functions in Ethernet driver (napi_gro_frags(), napi_gro_receive(),
+> > > > >  netif_receive_skb(), netif_receive_skb_list()), and with and without this
+> > > > >  patch to make them as complete as possible.
+> > > > 
+> > > >  OK, so here we go.
+> > > > 
+> > > >  My device is 1.2 GHz 4-core MIPS32 R2. Ethernet controller representing
+> > > >  the CPU port is capable of S/G, fraglists S/G, TSO4/6 and GSO UDP L4.
+> > > >  Tests are performed through simple IPoE VLAN NAT forwarding setup
+> > > >  (port0 <-> port1.218) with iperf3 in TCP mode.
+> > > >  net.core.gro_normal_batch is always set to 16 as that value seems to be
+> > > >  the most effective for that particular hardware and drivers.
+> > > > 
+> > > >  Packet counters on eth0 are the real numbers of ongoing frames. Counters
+> > > >  on portX are pure-software and are updated inside networking stack.
+> > > > 
+> > > >  ---------------------------------------------------------------------
+> > > > 
+> > > >  netif_receive_skb() in Eth driver, no patch:
+> > > > 
+> > > >  [ ID] Interval Transfer Bitrate Retr
+> > > >  [ 5] 0.00-120.01 sec 9.00 GBytes 644 Mbits/sec 413 sender
+> > > >  [ 5] 0.00-120.00 sec 8.99 GBytes 644 Mbits/sec receiver
+> > > > 
+> > > >  eth0
+> > > >  RX packets:7097731 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:7097702 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port0
+> > > >  RX packets:426050 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:6671829 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port1
+> > > >  RX packets:6671681 errors:0 dropped:0 overruns:0 carrier:0
+> > > >  TX packets:425862 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port1.218
+> > > >  RX packets:6671677 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:425851 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  ---------------------------------------------------------------------
+> > > > 
+> > > >  netif_receive_skb_list() in Eth driver, no patch:
+> > > > 
+> > > >  [ ID] Interval Transfer Bitrate Retr
+> > > >  [ 5] 0.00-120.01 sec 9.48 GBytes 679 Mbits/sec 129 sender
+> > > >  [ 5] 0.00-120.00 sec 9.48 GBytes 679 Mbits/sec receiver
+> > > > 
+> > > >  eth0
+> > > >  RX packets:7448098 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:7448073 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port0
+> > > >  RX packets:416115 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:7032121 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port1
+> > > >  RX packets:7031983 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:415941 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port1.218
+> > > >  RX packets:7031978 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:415930 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  ---------------------------------------------------------------------
+> > > > 
+> > > >  napi_gro_receive() in Eth driver, no patch:
+> > > > 
+> > > >  [ ID] Interval Transfer Bitrate Retr
+> > > >  [ 5] 0.00-120.01 sec 10.0 GBytes 718 Mbits/sec 107 sender
+> > > >  [ 5] 0.00-120.00 sec 10.0 GBytes 718 Mbits/sec receiver
+> > > > 
+> > > >  eth0
+> > > >  RX packets:7868281 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:7868267 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port0
+> > > >  RX packets:429082 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:7439343 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port1
+> > > >  RX packets:7439199 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:428913 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port1.218
+> > > >  RX packets:7439195 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:428902 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  =====================================================================
+> > > > 
+> > > >  netif_receive_skb() in Eth driver + patch:
+> > > > 
+> > > >  [ ID] Interval Transfer Bitrate Retr
+> > > >  [ 5] 0.00-120.01 sec 12.2 GBytes 870 Mbits/sec 2267 sender
+> > > >  [ 5] 0.00-120.00 sec 12.2 GBytes 870 Mbits/sec receiver
+> > > > 
+> > > >  eth0
+> > > >  RX packets:9474792 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:9474777 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port0
+> > > >  RX packets:455200 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:353288 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port1
+> > > >  RX packets:9019592 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:455035 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port1.218
+> > > >  RX packets:353144 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:455024 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  ---------------------------------------------------------------------
+> > > > 
+> > > >  netif_receive_skb_list() in Eth driver + patch:
+> > > > 
+> > > >  [ ID] Interval Transfer Bitrate Retr
+> > > >  [ 5] 0.00-120.01 sec 11.6 GBytes 827 Mbits/sec 2224 sender
+> > > >  [ 5] 0.00-120.00 sec 11.5 GBytes 827 Mbits/sec receiver
+> > > > 
+> > > >  eth0
+> > > >  RX packets:8981651 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:898187 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port0
+> > > >  RX packets:436159 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:335665 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port1
+> > > >  RX packets:8545492 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:436071 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port1.218
+> > > >  RX packets:335593 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:436065 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  -----------------------------------------------------------
+> > > > 
+> > > >  napi_gro_receive() in Eth driver + patch:
+> > > > 
+> > > >  [ ID] Interval Transfer Bitrate Retr
+> > > >  [ 5] 0.00-120.01 sec 11.8 GBytes 855 Mbits/sec 122 sender
+> > > >  [ 5] 0.00-120.00 sec 11.8 GBytes 855 Mbits/sec receiver
+> > > > 
+> > > >  eth0
+> > > >  RX packets:9292214 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:9292190 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port0
+> > > >  RX packets:438516 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:347236 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port1
+> > > >  RX packets:8853698 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:438331 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  port1.218
+> > > >  RX packets:347082 errors:0 dropped:0 overruns:0 frame:0
+> > > >  TX packets:438320 errors:0 dropped:0 overruns:0 carrier:0
+> > > > 
+> > > >  -----------------------------------------------------------
+> > > > 
+> > > >  The main goal is achieved: we have about 100-200 Mbps of performance
+> > > >  boost while in-stack skbs are greatly reduced from ~8-9 millions to
+> > > >  ~350000 (compare port0 TX and port1 RX without patch and with it).
+> > > 
+> > > And the number of TCP retries is also lower, which likely means that we
+> > > are making better use of the flow control built into the hardware/driver
+> > > here?
+> > > 
+> > > BTW do you know why you have so many retries though? It sounds like your
+> > > flow control is missing a few edge cases, or that you have an incorrect
+> > > configuration of your TX admission queue.
+> > 
+> > Well, I have the same question TBH. All these ~1.5 years that I'm
+> > working on these switches I have pretty chaotic number of TCP
+> > retransmissions each time I change something in the code. They are
+> > less likely to happen when the average CPU load is lower, but ~100
+> > is the best result I ever got.
+> > Seems like I should stop trying to push software throughput to
+> > the max for a while and pay more attention to this and to hardware
+> > configuration instead and check if I miss something :) 
+> 
+> I have had to debug such a problem on some of our systems recently and
+> it came down to being a couple of things for those systems:
+> 
+> - as a receiver, we could create fast re-transmissions on the sender
+> side because of packet loss which was because the switch is able to push
+> packets faster than the DSA master being able to write them to DRAM. One
+> way to work around this is to clock the Ethernet MAC higher, at the cost
+> of power consumption.
+> 
+> - as a sender, we could have fast re-transmissions when we were
+> ourselves a "fast" CPU (1.7GHz or higher for Gigabit throughput), that
+> part is still being root caused, but I think it comes down to flow
+> control being incorrectly set-up in hardware, which means you could lose
+> packets between your ndo_start_xmit() and not having the software TXQ
+> assert XON/XOFF properly
+> 
+> So in both cases, packet loss is responsible for those fast
+> re-transmissions, but they are barely observable (case #1 was, since the
+> switch port counter did not match the Ethernet MAC MIB counters) since
+> you have a black hole effect.
+
+Thank you for so detailed response! I suppose there might be both of
+these on my system, I'll have a look at this soon.
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
