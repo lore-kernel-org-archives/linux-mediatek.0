@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 43761C2BA19
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 09:38:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 97817C2BA19
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 09:39:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F0C80206F8
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 09:38:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 633AE206F8
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 09:39:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XzjSFz0J";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="W+L+/C5P"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F0C80206F8
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="M23ZeSSd";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="nAWsZPrD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 633AE206F8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,38 +26,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ezuEXXE4pNjCpZmK5TrBwqE0R9YB4epD46qEMJ8eJhQ=; b=XzjSFz0JflP5Px
-	xd7AJVbZ3lXlxb0V9qxN+hyQR5lkK658iAHBhiOXigW4m1NoeFu9r8r+uE1tuDlFt6QlvC5CyiY++
-	4k/q742eLlQoYIy/Erl/roHNFB5WilFZjrFeD94BvPjyIQI5qI3JToz0FH5/1xxv4OEpiMb5McL8i
-	aDEo+CER3LfGL43T/Sdr8ayuuwq7gR6z7cNJHCcsxIhx4zfZxpygjyWIe7XuAQubVrNkHFLic8hq+
-	OS47Y6YDslyLDuQeM410A8tvX1lU58djhzStjT+EaJx2L2bKkZlZ5Qm16bpi8o6pg55ampaFFx02l
-	Zyz0gleN5wCy01bobdkg==;
+	List-Owner; bh=ZzZ9jC4yC86ObBweMuUlsE8RtHU58EGm+3w8Nu2aP44=; b=M23ZeSSd9xj7xT
+	F78oH4ggEvvMDWqXsmWJP+IV5phrDZleZlyPWJl6qLC5rLjzMprNV8JTCDF+HkiW1a2oFZ4wJ6WDz
+	aCq5Jeezp6CIwEtLsPI5tbLif+gGW2ccTPXMCfLlFPncvzVw1rjVf+octk9XNVFqcwOo+SDTk1gwB
+	x5/cDHZsxTkNxIJyULk6RSwM5P8ZQIJTkYR+d+6ziNSy4gvP4GlUYiLgaTA462qw+N7mxe91qtPyf
+	jpwu7/VMvwAcfTc3Ou4qfuWixI5lqJqNA0wBtS8zxM8Qkf6u5lVXbXgRzmJboygfYOBB2DOi+jxUh
+	3TJCdL6t02C75i8ndYXg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLODJ-0000Dd-JV; Mon, 06 Apr 2020 09:38:41 +0000
+	id 1jLODY-0000T6-GU; Mon, 06 Apr 2020 09:38:56 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLOCq-0008BL-Lz; Mon, 06 Apr 2020 09:38:15 +0000
-X-UUID: 1f97dbfe1f86481fb30d55b58f288500-20200406
+ id 1jLOCt-0008Ax-8f; Mon, 06 Apr 2020 09:38:16 +0000
+X-UUID: c07a8b1fecf74ff083fd755005dfafd3-20200406
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=srrLwmXWOsczNhYEI0r57sCOdKX0qiPArgR8S/J7H+U=; 
- b=W+L+/C5PkGRf7uZRsoTQC/+4qJtHYBe79MofbuvBNEqVEeYycNDvs8EIlUiareaKUvWQSdSi/fdoZuYwsZ4FWTA1fdCc4MZhVcYa7D6ogi5rN1N5tbHCpUmShOkUHkBMS3dD1vFL6nXLvPCaPxfR9opqJVwmE4vIUVnsvv0dB0k=;
-X-UUID: 1f97dbfe1f86481fb30d55b58f288500-20200406
+ bh=AwwsjmBhPYU6ROoZPvj0twrtbVT8+nH58GyVf5fw804=; 
+ b=nAWsZPrDGEAVJxeOcjuVNL0A54uzVmo2xLuEXJxky1Utorh65BbOIigjKGWa0S3cScJvssEVh5WpUESHa/lrh3okOce9n1MBOFWuJUxPrvRmCFXTQQ+9gTHR5ttTBA6G2MxvNgq0gnGEdxXynziFbEwddcnyjffi0g514t5AzjY=;
+X-UUID: c07a8b1fecf74ff083fd755005dfafd3-20200406
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chun-hung.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 650944091; Mon, 06 Apr 2020 01:38:10 -0800
+ with ESMTP id 432689357; Mon, 06 Apr 2020 01:38:10 -0800
 Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Mon, 6 Apr 2020 02:28:05 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
  MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 6 Apr 2020 17:28:02 +0800
+ 15.0.1497.2; Mon, 6 Apr 2020 17:28:05 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 6 Apr 2020 17:28:01 +0800
+ Frontend Transport; Mon, 6 Apr 2020 17:28:04 +0800
 From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
 To: <mirq-linux@rere.qmqm.pl>, Jonathan Hunter <jonathanh@nvidia.com>, "Al
  Cooper" <alcooperx@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>,
@@ -75,19 +75,18 @@ To: <mirq-linux@rere.qmqm.pl>, Jonathan Hunter <jonathanh@nvidia.com>, "Al
  Gleixner" <tglx@linutronix.de>, Allison Randal <allison@lohutok.net>,
  "Mathieu Malaterre" <malat@debian.org>, Stanley Chu
  <stanley.chu@mediatek.com>, "Kuohong Wang" <kuohong.wang@mediatek.com>
-Subject: [PATCH 1/5] [1/5] mmc: core: Extend mmc_of_parse() to parse CQE
- bindings
-Date: Mon, 6 Apr 2020 17:27:57 +0800
-Message-ID: <1586165281-11888-2-git-send-email-chun-hung.wu@mediatek.com>
+Subject: [PATCH 5/5] [5/5] dt-bindings: mmc: mediatek: Add document for mt6779
+Date: Mon, 6 Apr 2020 17:28:01 +0800
+Message-ID: <1586165281-11888-6-git-send-email-chun-hung.wu@mediatek.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1586165281-11888-1-git-send-email-chun-hung.wu@mediatek.com>
 References: <1586165281-11888-1-git-send-email-chun-hung.wu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 31970E197ED6CDA124A0AA6672FCC67F20B8B96C7BEB98C749FB250F256067A82000:8
+X-TM-SNTS-SMTP: 8B6ED226D887333A20D37789CC4E855045383E3B61A17AF6877632A640788D142000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200406_023812_719606_12E5411A 
-X-CRM114-Status: UNSURE (   8.21  )
+X-CRM114-CacheID: sfid-20200406_023815_313589_00C733CE 
+X-CRM114-Status: UNSURE (   9.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -110,30 +109,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Parse CQE bindings "supports-cqe" and "disable-cqe-dcmd"
-in mmc_of_parse().
+Add compatible node for mt6779 mmc
 
 Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
 ---
- drivers/mmc/core/host.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ Documentation/devicetree/bindings/mmc/mtk-sd.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/mmc/core/host.c b/drivers/mmc/core/host.c
-index c876872..47521c6 100644
---- a/drivers/mmc/core/host.c
-+++ b/drivers/mmc/core/host.c
-@@ -302,6 +302,11 @@ int mmc_of_parse(struct mmc_host *host)
- 		host->caps2 |= MMC_CAP2_NO_SD;
- 	if (device_property_read_bool(dev, "no-mmc"))
- 		host->caps2 |= MMC_CAP2_NO_MMC;
-+	if (device_property_read_bool(dev, "supports-cqe"))
-+		host->caps2 |= MMC_CAP2_CQE;
-+	if (!device_property_read_bool(dev, "disable-cqe-dcmd")) {
-+		host->caps2 |= MMC_CAP2_CQE_DCMD;
-+	}
- 
- 	/* Must be after "non-removable" check */
- 	if (device_property_read_u32(dev, "fixed-emmc-driver-type", &drv_type) == 0) {
+diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.txt b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+index 8a532f4..0c9cf6a 100644
+--- a/Documentation/devicetree/bindings/mmc/mtk-sd.txt
++++ b/Documentation/devicetree/bindings/mmc/mtk-sd.txt
+@@ -12,6 +12,7 @@ Required properties:
+ 	"mediatek,mt8173-mmc": for mmc host ip compatible with mt8173
+ 	"mediatek,mt8183-mmc": for mmc host ip compatible with mt8183
+ 	"mediatek,mt8516-mmc": for mmc host ip compatible with mt8516
++	"mediatek,mt6779-mmc": for mmc host ip compatible with mt6779
+ 	"mediatek,mt2701-mmc": for mmc host ip compatible with mt2701
+ 	"mediatek,mt2712-mmc": for mmc host ip compatible with mt2712
+ 	"mediatek,mt7622-mmc": for MT7622 SoC
 -- 
 1.9.1
 _______________________________________________
