@@ -2,85 +2,91 @@ Return-Path: <SRS0=dAcd=5W=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 070ACC2BA80
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 09:13:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E809CC2BA19
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 09:22:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D2BA220781
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 09:13:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BB1A320644
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 09:22:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F/bVdBKM";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="WbmuFdQF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D2BA220781
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pIt4qCeC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BB1A320644
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fi.rohmeurope.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W2jmlYrD2pjtLeNssXandiR0n+NiHrfaQceW3AG4OLI=; b=F/bVdBKMUCeUkD
-	PhResUlrdOzmIHw1YTTiW43CjHkBtmqC5IMQRnYdiMvxcy6iYu4xFG0Tn0v2V2UniyfEP9HWQLVCW
-	nt/6vl9YJ9XlJDjkKNcm4LyiT0HrDYNue/M7TB9GnIikYsIwp2WP9SK7I6At130sHgaKH543ksaZ8
-	aelY1t0lXSKBDtgSLTCJhrHVj4fgj7767R1+MFgXFtgmHXksxlYFtvGvymltfV92xFKSY5RGENrWG
-	LSYMJgdu7ZHXu1sIPNPw47NmJKB/xDuU5LlQwJCsOUAs55R2SJs2ERnNHdWC0j10/6LhlIM5uVtRl
-	b46fl87JqIaoFLyflDmA==;
+	List-Owner; bh=We2tDbhvwB7gJPD981YRhaJqaW7NaEZTI+/pEOdDT3M=; b=pIt4qCeChQf7gq
+	y1JOgxpCvhoPIkVVKS9WkOO8y21gYfLXNFQfSL85C0KDQoEvnrI8V2Lrp2T0G8sopu73MdUMWOgO/
+	Fa+sbd0X6LopVbr7WWBWiEGO4XDsszvXj5+JTPfR3z0uvOmsmmnmLihetY7B6fyWM20pXvmeNU4IO
+	Bvvf+BK1Hv7QOQ+qr2fNxVgOnSPKJ7L74eRvaSWGNVje67reK0sypWjJYDCXSuduNpJPXySR3n3Iz
+	GT8EagGZjyrJHfTlgo63TtB/KPR+jP9+iP7Krvq6vClWbULvjxcZXYjEJKzyI7uNOEK5aP3l9nqRK
+	hTec0HTdiQ1dtU4aqGKA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLNoP-00072N-IR; Mon, 06 Apr 2020 09:12:57 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLNoN-00071y-C7; Mon, 06 Apr 2020 09:12:56 +0000
-X-UUID: 52699fc215cb48768708dacf3125b146-20200406
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=clVE+7JOIo3PBS3e/XDVaE20LgQxAZYkiBOn5CGZopM=; 
- b=WbmuFdQFPQ9M9LQBYItoJVqk6cWwQHgWlfvmEDuw0UqHNcbWnFw+wkQe6EvFYJSYQjy4ksBBzG+3zZRUPrlYarjDQwLR1ZMO3+8Uqwo57fIO49eH8k18mSb5vuE4IyTk4LhIUNlK5bwvqCGpLMkmnw80eavpwN59/4CNRMYIUx0=;
-X-UUID: 52699fc215cb48768708dacf3125b146-20200406
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <andrew-sh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1168555970; Mon, 06 Apr 2020 01:12:52 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 6 Apr 2020 02:12:46 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 6 Apr 2020 17:12:46 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 6 Apr 2020 17:12:44 +0800
-Message-ID: <1586164366.5015.6.camel@mtksdaap41>
-Subject: Re: [v5, PATCH 4/5] cpufreq: mediatek: add opp notification for SVS
- support
-From: andrew-sh.cheng <andrew-sh.cheng@mediatek.com>
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Date: Mon, 6 Apr 2020 17:12:46 +0800
-In-Reply-To: <20200313091038.q7q7exiowoah4nk4@vireshk-i7>
-References: <1574769046-28449-1-git-send-email-andrew-sh.cheng@mediatek.com>
- <1574769046-28449-5-git-send-email-andrew-sh.cheng@mediatek.com>
- <20191127083619.etocnhpyyut3hzwq@vireshk-i7>
- <1575874588.13494.4.camel@mtksdaap41>
- <20191210064319.f4ksrxozp3gv4xry@vireshk-i7>
- <1583827865.4840.1.camel@mtksdaap41>
- <20200311060616.62nh7sfwtjwvrjfr@vireshk-i7>
- <1584084154.7753.3.camel@mtksdaap41>
- <20200313091038.q7q7exiowoah4nk4@vireshk-i7>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+	id 1jLNxI-0005fX-Nw; Mon, 06 Apr 2020 09:22:08 +0000
+Received: from mailgate1.rohmeurope.com ([87.129.152.131])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jLNxF-0005eR-FL; Mon, 06 Apr 2020 09:22:06 +0000
+X-AuditID: c0a8fbf4-489ff70000004419-ce-5e8af4b822d0
+Received: from smtp.reu.rohmeu.com (will-cas001.reu.rohmeu.com
+ [192.168.251.177])
+ by mailgate1.rohmeurope.com (Symantec Messaging Gateway) with SMTP id
+ 0A.0D.17433.8B4FA8E5; Mon,  6 Apr 2020 11:22:01 +0200 (CEST)
+Received: from WILL-MAIL001.REu.RohmEu.com ([fe80::2915:304f:d22c:c6ba]) by
+ WILL-CAS001.REu.RohmEu.com ([fe80::d57e:33d0:7a5d:f0a6%16]) with mapi id
+ 14.03.0487.000; Mon, 6 Apr 2020 11:21:49 +0200
+From: "Vaittinen, Matti" <Matti.Vaittinen@fi.rohmeurope.com>
+To: "sebastian.reichel@collabora.com" <sebastian.reichel@collabora.com>
+Subject: Re: [PATCH v8 05/10] power: supply: bd70528: rename linear_range to
+ avoid collision
+Thread-Topic: [PATCH v8 05/10] power: supply: bd70528: rename linear_range
+ to avoid collision
+Thread-Index: AQHWCZRhRl8G/gTlrkKi+UdcJY9RU6hpwTIAgAHzw4A=
+Date: Mon, 6 Apr 2020 09:21:48 +0000
+Message-ID: <cff0cda33a8ab5c2633b05dec7dbe3d548af0fa9.camel@fi.rohmeurope.com>
+References: <cover.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
+ <7a6727838bcc93f443c993d91d21d9306dee22be.1585902279.git.matti.vaittinen@fi.rohmeurope.com>
+ <20200405033316.bhafrtorxzwev24z@earth.universe>
+In-Reply-To: <20200405033316.bhafrtorxzwev24z@earth.universe>
+Accept-Language: en-US, de-DE
+Content-Language: de-DE
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [62.78.225.252]
+Content-ID: <338742FC545A6B4AB29D6F20A7FC04D0@de.rohmeurope.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: B4990598AEB233FDEC0585B013D8D27A16190BD69A58CD56856C23922C3611EF2000:8
-X-MTK: N
+X-Brightmail-Tracker: H4sIAAAAAAAAA02TbUxTVxjHc+47lLJrRTh044ONySJOmZnZnhi3uSWLdyZzLu7DYjbYBa6U
+ DAppi8pIJkProAaHDiIUyggDrawRaJcMGK6O1OBwo1bet5KMlyy8bECw4JS33UtV+HT+5/yf
+ //N7PjyHIzUzrJZLN5glo0HM0DHh1C3HUvPu1qA18WVHP4L62XoSuseWKLD9Vk/BxflaEooL
+ rhDgrVogobm8kYb5/F4SgvYuCu56ZijwD35DQtnIOAO9FheCb73dNJz9rpGBKkcurI1O01BR
+ eAZ+mm4gwOdrYmGxt5CA0uVrBLjG+mm45PmdhZ62KgZ6zvoRVNZ9TcGDYi+Cct/PBEx6/5Nn
+ GvATUHDuFaiqvyObsx4a7MEyEv4NXJHx5T4SLDe9LPgdQQKGp4/ATYufBLdLrvD0HobWwB0S
+ HnX4iIO7BWe1EwmLC5cpYXbQwgrVzjyhZbgOCU2j39OCYz5B+CNwRmi1DbNCjStHcDvihfOP
+ TgoTThcruBqKGCHQ384IM93d7NHY46oDyaL55LH0NEPCG5+q9O66V7PLI04H24NEPppTWVEY
+ h/l9eKjuBmFF4ZyG70d45ep9FLp0Ilw4Uc1YEccx/AFsHWIVGcUfwhWlglJC8tYo3DLeRyiN
+ tvKJ2P/PHKPoKD4J9y3+Qob0fuwacrOKpvgd+Nzji7Si1fwR/Phe6xPwAMKVy33rRhj/Ou5p
+ WllvhPg4XJQ/sw4g+Rjs+vshHZqax3XtPjKkt+HJsdUn79vxjw9vUMqgJL8TN7YlhKIH8XhX
+ IR3S23HphRE2NMMW/GvFOFWCom2bCLaNtG1T2rYpbduUrkF0A8KZYnpGmmiW9u4xSjl7jFn6
+ TPlIycp0odD+BlvQWse7HYjgUAeK5QjdNnXZhDVRE5mclZqrF036JGNOhmTqQJgjdVFqbXFR
+ okadKuZ+LhmznlrPc5QuRv3iyKVPNLzC+kySsiXjU/cFjtNhdfy83HSLUUqTTp9IzzBv2AQX
+ pjQP10aZJEOqZBRzzPokZT2STPJ+KFaEzK2ZkeNqU7aYKb+Gol1oF1cyaa8lOa+9vpbUUIYs
+ g6SNUS88kEt5pVSfY3gGmkIxHNJtVX+puBHyJ37WZ0pGEDKCMXylIMzihqXNR0eJQMHO27Gd
+ U0O3Pequ93orB1adk553Po6J+2J6cfnER42X37pnf63z7UM+C3Hq2L62476rFDH/YYr+gx+i
+ n3OvHd7hW3Fb80ucqpQLsZH2/bfim9uduXE1FUvRc94/zyenDSa+NPr+X3Tk3SCrsTS8KTWf
+ slzPU90v2pXHrTLaMJWOMunFvfGk0ST+DxZr4U2BBAAA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200406_021255_417477_F9C5978B 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20200406_022205_660625_FB44EA7B 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,74 +98,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>,
+ "andrei.stefanescu@microchip.com" <andrei.stefanescu@microchip.com>,
+ "heiko@sntech.de" <heiko@sntech.de>, "rafael@kernel.org" <rafael@kernel.org>,
+ "tony@atomide.com" <tony@atomide.com>,
+ "linus.walleij@linaro.org" <linus.walleij@linaro.org>,
+ "brendanhiggins@google.com" <brendanhiggins@google.com>,
+ "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+ "kholk11@gmail.com" <kholk11@gmail.com>,
+ "hsin-hsiung.wang@mediatek.com" <hsin-hsiung.wang@mediatek.com>,
+ "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+ "axel.lin@ingics.com" <axel.lin@ingics.com>,
+ "gregory.clement@bootlin.com" <gregory.clement@bootlin.com>,
+ "b.zolnierkie@samsung.com" <b.zolnierkie@samsung.com>,
+ "krzk@kernel.org" <krzk@kernel.org>,
+ "m.reichl@fivetechno.de" <m.reichl@fivetechno.de>,
+ "bgolaszewski@baylibre.com" <bgolaszewski@baylibre.com>,
+ "wens@csie.org" <wens@csie.org>, "andreas@kemnade.info" <andreas@kemnade.info>,
+ "agross@kernel.org" <agross@kernel.org>, "Laine,
+ Markus" <Markus.Laine@fi.rohmeurope.com>,
+ "Adam.Thomson.Opensource@diasemi.com" <Adam.Thomson.Opensource@diasemi.com>,
  "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- srv_heupstream <srv_heupstream@mediatek.com>,
+ "ckeepax@opensource.cirrus.com" <ckeepax@opensource.cirrus.com>,
+ "linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>,
  "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
- Stephen Boyd <sboyd@kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Chanwoo
- Choi <cw00.choi@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>,
- Rob Herring <robh+dt@kernel.org>,
+ "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+ "rf@opensource.cirrus.com" <rf@opensource.cirrus.com>,
+ "broonie@kernel.org" <broonie@kernel.org>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Fan Chen =?UTF-8?Q?=28=E9=99=B3=E5=87=A1=29?= <fan.chen@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "tglx@linutronix.de" <tglx@linutronix.de>,
+ "andriy.shevchenko@linux.intel.com" <andriy.shevchenko@linux.intel.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "support.opensource@diasemi.com" <support.opensource@diasemi.com>,
+ "baolin.wang@linaro.org" <baolin.wang@linaro.org>,
+ "sbkim73@samsung.com" <sbkim73@samsung.com>,
+ "patches@opensource.cirrus.com" <patches@opensource.cirrus.com>,
+ "rdunlap@infradead.org" <rdunlap@infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Mutanen,
+ Mikko" <Mikko.Mutanen@fi.rohmeurope.com>,
+ "vkoul@kernel.org" <vkoul@kernel.org>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ "bjorn.andersson@linaro.org" <bjorn.andersson@linaro.org>,
+ "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+ "mazziesaccount@gmail.com" <mazziesaccount@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-03-13 at 14:40 +0530, Viresh Kumar wrote:
-> On 13-03-20, 15:22, andrew-sh.cheng wrote:
-> > I have something want to consult you.
-> > For your previous comment, you suggest use read-write lock to replace
-> > mutex lock.
-> > Will it be more efficiently even when all are write lock?
-> > (all lock region are "setting VProc voltage")
+Hello Sebastian,
+
+Thanks for all the reviews :)
+
+On Sun, 2020-04-05 at 05:33 +0200, Sebastian Reichel wrote:
+> Hi,
 > 
-> The data to be protected here isn't the VProc voltage but the list of
-> valid OPPs. My idea was if we can make the target() routine run a bit
-> faster as it really matters as it is called from scheduler hot path.
+> On Fri, Apr 03, 2020 at 11:46:30AM +0300, Matti Vaittinen wrote:
+> > Follow-up patches in this series will add a generic struct
+> > linear_range. Rename bd70528 internal struct to avoid collision.
+> > 
+> > Signed-off-by: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
+> > ---
 > 
-> It won't be wrong to use the mutex the way you have used it right now,
-> but I think the read lock is much faster, though the read/write lock
-> is more beneficial in case where there are multiple readers and fewer
-> writers. The target() routine gets called multiple times here, not
-> in parallel, and the OPP change notifier won't be called so often.
-> 
-Hi Viresh,
+> Actually the patch is before this one. But since the include is not
+> yet used in the bd70528 charger driver, it should be ok to do it in
+> this order.
 
-I will use regulator in the locked region.
-And regulator will use mutex_lock.
+You are correct. Just a thing to note (you suggested rebasing the
+regulator stuff and linear ranges to be first patches in the series):
+This patch still needs to be applied before
+[PATCH v8 06/10] regulator: use linear_ranges helper
 
-I use read_lock/write_lock, and there will be below run time error,
-Is it due to read_lock/write_lock using spin lock?
-write_lock() => _raw_write_lock() @ spinlock.c
-Please give me some advices.
-Thank you.
+because the regulator header definitions get included via MFD headers:
 
+linux/mfd/rohm-bd70528.h => linux/mfd/rohm-generic.h =>
+linux/regulator/driver.h
 
-[   28.109082] BUG: sleeping function called from invalid context at
-kernel/locking/mutex.c:254
-[   28.117710] in_atomic(): 1, irqs_disabled(): 0, pid: 1855, name:
-sugov:0
-[   28.124788] CPU: 0 PID: 1855 Comm: sugov:0 Tainted: G        W
-4.19.107 #51
-[   28.132440] Hardware name: MediaTek krane sku176 board (DT)
-[   28.138006] Call trace:
-[   28.140461]  dump_backtrace+0x0/0x17c
-[   28.144121]  show_stack+0x20/0x2c
-[   28.147432]  dump_stack+0xd4/0x10c
-[   28.150831]  ___might_sleep+0x108/0x118
-[   28.154659]  __might_sleep+0x50/0x84
-[   28.158230]  mutex_lock+0x28/0x60
-[   28.161541]  regulator_lock_dependent+0x3c/0x10c
-[   28.166152]  regulator_set_voltage+0x48/0xa0
-[   28.170417]  mtk_cpufreq_set_voltage+0x16c/0x324
-[   28.175046]  mtk_cpufreq_set_target+0x13c/0x2c8
-[   28.179574]  __cpufreq_driver_target+0x424/0x4c4
+And linux/regulator/driver.h will be including the linear_range
+definitions when "regulator: use linear_ranges helper" gets included.
 
+Br,
+	Matti Vaittinen
 
 _______________________________________________
 Linux-mediatek mailing list
