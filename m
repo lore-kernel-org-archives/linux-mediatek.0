@@ -2,79 +2,85 @@ Return-Path: <SRS0=dAcd=5W=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 975DBC2BA18
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 07:18:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 070ACC2BA80
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 09:13:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 65FC220719
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 07:18:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D2BA220781
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 09:13:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SNHdarc7";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="bX8Cj6PI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 65FC220719
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F/bVdBKM";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="WbmuFdQF"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D2BA220781
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KqmjqoVm9gZhwkGhVeUlxwjy9BN5tO+HQs9qpFfzJOg=; b=SNHdarc71VZG34
-	q7KO7XXmB+UmrQFawdaJj24FFXAzg72qYMC34zQiLlus6yJH/pfa8Ai8PajbtiK1rXQ0VIyOX7Z3q
-	jBtfCyL+ZJyp8ZqWoHvWu2rT8UB0++aYW/TBks2ik86DQaoKXRDKYmjdeYQ2RobG6HGg1Tm9dRWJW
-	6X+lXabn1jh2y54CiCXuwsEH25EAm325h5OVG4iHQj4GISxOMyOtwztUz38vq1ANIbY0WMGG/SwfI
-	9wGYgs+Xt+U0bCHoiiP/g49EG1EHk465C3TxjJEGVMNLABLw//kbhFB81FNNEVzJv7ftSAls7fDgj
-	ASUxymE4Wksf1JOI4VHA==;
+	List-Owner; bh=W2jmlYrD2pjtLeNssXandiR0n+NiHrfaQceW3AG4OLI=; b=F/bVdBKMUCeUkD
+	PhResUlrdOzmIHw1YTTiW43CjHkBtmqC5IMQRnYdiMvxcy6iYu4xFG0Tn0v2V2UniyfEP9HWQLVCW
+	nt/6vl9YJ9XlJDjkKNcm4LyiT0HrDYNue/M7TB9GnIikYsIwp2WP9SK7I6At130sHgaKH543ksaZ8
+	aelY1t0lXSKBDtgSLTCJhrHVj4fgj7767R1+MFgXFtgmHXksxlYFtvGvymltfV92xFKSY5RGENrWG
+	LSYMJgdu7ZHXu1sIPNPw47NmJKB/xDuU5LlQwJCsOUAs55R2SJs2ERnNHdWC0j10/6LhlIM5uVtRl
+	b46fl87JqIaoFLyflDmA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLM18-0000sL-Qq; Mon, 06 Apr 2020 07:17:58 +0000
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
+	id 1jLNoP-00072N-IR; Mon, 06 Apr 2020 09:12:57 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLM15-0000rt-Nd
- for linux-mediatek@lists.infradead.org; Mon, 06 Apr 2020 07:17:57 +0000
-Received: by mail-io1-xd41.google.com with SMTP id u2so1189416iop.10
- for <linux-mediatek@lists.infradead.org>; Mon, 06 Apr 2020 00:17:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Db2gy0KwxZU6sZXsS+kywahq01i5euHIqRm2wacWELU=;
- b=bX8Cj6PIjykCfub7TcZYiQOt5ySTtCwdZUbZ633ovn2CvaO5FXWlClGVfqUjQOMlj4
- J+vh7kwySoGNg8ndT3TbkaSRCDeNtJYuK72xM+V8Nywkf+zjJnOENhFbtKuhtKYqGnzk
- Y4eDL7B4vptrlD4wfMFW+tkqcu0SUO7x4fYZM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Db2gy0KwxZU6sZXsS+kywahq01i5euHIqRm2wacWELU=;
- b=dHhmDTjHaUjfFdZUNZcI5fO2N+JPeHrnlpM16m0WTVbAiPKYx2zfOXSIS5Ev7jgIoX
- KlCpz3ab0w5RQXYZs5jqsafeyBasOMFssQi7H6AyptJ+7kp8O8HAI3xtgrV6vOPVAo02
- ZjWS1de7A6eMOeDmTK/v6ZYDdMekb3upYi4ft1S43kyicZsAARIZQrs1phR7GrLMOjA3
- wI8x77ikWRCt0sFgdhVKTFDOBj6Kqa9prSENo5nN08cfkIS15khGMi1xsCLJ+foNde/G
- ROI37kOQf9RMO6lfULz8rXi513b9wZOw65xvTd6poHLWwT+04v3cfCRtUb9nY5CevXNg
- JbLg==
-X-Gm-Message-State: AGi0Pua60ZS0PWiVS+8qAV5p5n/4BKqCRDYhtp3j9BoEADuw59UzzgGd
- DSgPvVp9AEyOcb7j+viB9yXUm0KyNB9sB5+pB6PPng==
-X-Google-Smtp-Source: APiQypLuUn0LSyK8CCfaiS+KVBTl8I/x4LHlAvyF6y60LcZDxFlbQ4ZBQoOkRGvl73rolvlaiznrylL0WtJiMWVcamk=
-X-Received: by 2002:a5d:944c:: with SMTP id x12mr18334175ior.100.1586157474266; 
- Mon, 06 Apr 2020 00:17:54 -0700 (PDT)
+ id 1jLNoN-00071y-C7; Mon, 06 Apr 2020 09:12:56 +0000
+X-UUID: 52699fc215cb48768708dacf3125b146-20200406
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=clVE+7JOIo3PBS3e/XDVaE20LgQxAZYkiBOn5CGZopM=; 
+ b=WbmuFdQFPQ9M9LQBYItoJVqk6cWwQHgWlfvmEDuw0UqHNcbWnFw+wkQe6EvFYJSYQjy4ksBBzG+3zZRUPrlYarjDQwLR1ZMO3+8Uqwo57fIO49eH8k18mSb5vuE4IyTk4LhIUNlK5bwvqCGpLMkmnw80eavpwN59/4CNRMYIUx0=;
+X-UUID: 52699fc215cb48768708dacf3125b146-20200406
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <andrew-sh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1168555970; Mon, 06 Apr 2020 01:12:52 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 6 Apr 2020 02:12:46 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 6 Apr 2020 17:12:46 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 6 Apr 2020 17:12:44 +0800
+Message-ID: <1586164366.5015.6.camel@mtksdaap41>
+Subject: Re: [v5, PATCH 4/5] cpufreq: mediatek: add opp notification for SVS
+ support
+From: andrew-sh.cheng <andrew-sh.cheng@mediatek.com>
+To: Viresh Kumar <viresh.kumar@linaro.org>
+Date: Mon, 6 Apr 2020 17:12:46 +0800
+In-Reply-To: <20200313091038.q7q7exiowoah4nk4@vireshk-i7>
+References: <1574769046-28449-1-git-send-email-andrew-sh.cheng@mediatek.com>
+ <1574769046-28449-5-git-send-email-andrew-sh.cheng@mediatek.com>
+ <20191127083619.etocnhpyyut3hzwq@vireshk-i7>
+ <1575874588.13494.4.camel@mtksdaap41>
+ <20191210064319.f4ksrxozp3gv4xry@vireshk-i7>
+ <1583827865.4840.1.camel@mtksdaap41>
+ <20200311060616.62nh7sfwtjwvrjfr@vireshk-i7>
+ <1584084154.7753.3.camel@mtksdaap41>
+ <20200313091038.q7q7exiowoah4nk4@vireshk-i7>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-References: <20200406051131.225748-1-hsinyi@chromium.org>
- <202004061558.qA9rRKbq%lkp@intel.com>
-In-Reply-To: <202004061558.qA9rRKbq%lkp@intel.com>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Mon, 6 Apr 2020 15:17:28 +0800
-Message-ID: <CAJMQK-ibjjMx0oNN1M8bg9+MxocdJP4zfcSojWQZJsGvnRh-7g@mail.gmail.com>
-Subject: Re: [PATCH] drm: mediatek: fix device passed to cmdq
-To: kbuild test robot <lkp@intel.com>
+X-TM-SNTS-SMTP: B4990598AEB233FDEC0585B013D8D27A16190BD69A58CD56856C23922C3611EF2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200406_001755_795421_4D624E9C 
-X-CRM114-Status: GOOD (  15.09  )
+X-CRM114-CacheID: sfid-20200406_021255_417477_F9C5978B 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,164 +92,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- kbuild-all@lists.01.org, Philipp Zabel <p.zabel@pengutronix.de>,
- lkml <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, "linux-arm-kernel@lists.infradead.org,
- CK Hu" <ck.hu@mediatek.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+ Stephen Boyd <sboyd@kernel.org>, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Chanwoo
+ Choi <cw00.choi@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Fan Chen =?UTF-8?Q?=28=E9=99=B3=E5=87=A1=29?= <fan.chen@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The patch depends on
-https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git
-branch v5.6-next/soc
+On Fri, 2020-03-13 at 14:40 +0530, Viresh Kumar wrote:
+> On 13-03-20, 15:22, andrew-sh.cheng wrote:
+> > I have something want to consult you.
+> > For your previous comment, you suggest use read-write lock to replace
+> > mutex lock.
+> > Will it be more efficiently even when all are write lock?
+> > (all lock region are "setting VProc voltage")
+> 
+> The data to be protected here isn't the VProc voltage but the list of
+> valid OPPs. My idea was if we can make the target() routine run a bit
+> faster as it really matters as it is called from scheduler hot path.
+> 
+> It won't be wrong to use the mutex the way you have used it right now,
+> but I think the read lock is much faster, though the read/write lock
+> is more beneficial in case where there are multiple readers and fewer
+> writers. The target() routine gets called multiple times here, not
+> in parallel, and the OPP change notifier won't be called so often.
+> 
+Hi Viresh,
 
-On Mon, Apr 6, 2020 at 3:12 PM kbuild test robot <lkp@intel.com> wrote:
->
-> Hi Hsin-Yi,
->
-> Thank you for the patch! Yet something to improve:
->
-> [auto build test ERROR on clk/clk-next]
-> [cannot apply to arm-soc/for-next xlnx/master linus/master v5.6 next-20200405]
-> [if your patch is applied to the wrong git tree, please drop us a note to help
-> improve the system. BTW, we also suggest to use '--base' option to specify the
-> base tree in git format-patch, please see https://stackoverflow.com/a/37406982]
->
-> url:    https://github.com/0day-ci/linux/commits/Hsin-Yi-Wang/drm-mediatek-fix-device-passed-to-cmdq/20200406-132804
-> base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
-> config: arm64-randconfig-a001-20200406 (attached as .config)
-> compiler: aarch64-linux-gcc (GCC) 9.3.0
-> reproduce:
->         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
->         chmod +x ~/bin/make.cross
->         # save the attached .config to linux build tree
->         GCC_VERSION=9.3.0 make.cross ARCH=arm64
->
-> If you fix the issue, kindly add following tag as appropriate
-> Reported-by: kbuild test robot <lkp@intel.com>
->
-> All errors (new ones prefixed by >>):
->
->    drivers/gpu/drm/mediatek/mtk_drm_crtc.c: In function 'mtk_drm_crtc_create':
-> >> drivers/gpu/drm/mediatek/mtk_drm_crtc.c:824:29: error: 'struct mtk_drm_crtc' has no member named 'mmsys_dev'
->      824 |    cmdq_mbox_create(mtk_crtc->mmsys_dev,
->          |                             ^~
->    drivers/gpu/drm/mediatek/mtk_drm_crtc.c:832:43: error: 'struct mtk_drm_crtc' has no member named 'mmsys_dev'
->      832 |  ret = of_property_read_u32_index(mtk_crtc->mmsys_dev->of_node,
->          |                                           ^~
->
-> vim +824 drivers/gpu/drm/mediatek/mtk_drm_crtc.c
->
->    724
->    725  int mtk_drm_crtc_create(struct drm_device *drm_dev,
->    726                          const enum mtk_ddp_comp_id *path, unsigned int path_len)
->    727  {
->    728          struct mtk_drm_private *priv = drm_dev->dev_private;
->    729          struct device *dev = drm_dev->dev;
->    730          struct mtk_drm_crtc *mtk_crtc;
->    731          unsigned int num_comp_planes = 0;
->    732          int pipe = priv->num_pipes;
->    733          int ret;
->    734          int i;
->    735          bool has_ctm = false;
->    736          uint gamma_lut_size = 0;
->    737
->    738          if (!path)
->    739                  return 0;
->    740
->    741          for (i = 0; i < path_len; i++) {
->    742                  enum mtk_ddp_comp_id comp_id = path[i];
->    743                  struct device_node *node;
->    744
->    745                  node = priv->comp_node[comp_id];
->    746                  if (!node) {
->    747                          dev_info(dev,
->    748                                   "Not creating crtc %d because component %d is disabled or missing\n",
->    749                                   pipe, comp_id);
->    750                          return 0;
->    751                  }
->    752          }
->    753
->    754          mtk_crtc = devm_kzalloc(dev, sizeof(*mtk_crtc), GFP_KERNEL);
->    755          if (!mtk_crtc)
->    756                  return -ENOMEM;
->    757
->    758          mtk_crtc->config_regs = priv->config_regs;
->    759          mtk_crtc->ddp_comp_nr = path_len;
->    760          mtk_crtc->ddp_comp = devm_kmalloc_array(dev, mtk_crtc->ddp_comp_nr,
->    761                                                  sizeof(*mtk_crtc->ddp_comp),
->    762                                                  GFP_KERNEL);
->    763          if (!mtk_crtc->ddp_comp)
->    764                  return -ENOMEM;
->    765
->    766          mtk_crtc->mutex = mtk_disp_mutex_get(priv->mutex_dev, pipe);
->    767          if (IS_ERR(mtk_crtc->mutex)) {
->    768                  ret = PTR_ERR(mtk_crtc->mutex);
->    769                  dev_err(dev, "Failed to get mutex: %d\n", ret);
->    770                  return ret;
->    771          }
->    772
->    773          for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
->    774                  enum mtk_ddp_comp_id comp_id = path[i];
->    775                  struct mtk_ddp_comp *comp;
->    776                  struct device_node *node;
->    777
->    778                  node = priv->comp_node[comp_id];
->    779                  comp = priv->ddp_comp[comp_id];
->    780                  if (!comp) {
->    781                          dev_err(dev, "Component %pOF not initialized\n", node);
->    782                          ret = -ENODEV;
->    783                          return ret;
->    784                  }
->    785
->    786                  mtk_crtc->ddp_comp[i] = comp;
->    787
->    788                  if (comp->funcs) {
->    789                          if (comp->funcs->gamma_set)
->    790                                  gamma_lut_size = MTK_LUT_SIZE;
->    791
->    792                          if (comp->funcs->ctm_set)
->    793                                  has_ctm = true;
->    794                  }
->    795          }
->    796
->    797          for (i = 0; i < mtk_crtc->ddp_comp_nr; i++)
->    798                  num_comp_planes += mtk_drm_crtc_num_comp_planes(mtk_crtc, i);
->    799
->    800          mtk_crtc->planes = devm_kcalloc(dev, num_comp_planes,
->    801                                          sizeof(struct drm_plane), GFP_KERNEL);
->    802
->    803          for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
->    804                  ret = mtk_drm_crtc_init_comp_planes(drm_dev, mtk_crtc, i,
->    805                                                      pipe);
->    806                  if (ret)
->    807                          return ret;
->    808          }
->    809
->    810          ret = mtk_drm_crtc_init(drm_dev, mtk_crtc, &mtk_crtc->planes[0],
->    811                                  mtk_crtc->layer_nr > 1 ? &mtk_crtc->planes[1] :
->    812                                  NULL, pipe);
->    813          if (ret < 0)
->    814                  return ret;
->    815
->    816          if (gamma_lut_size)
->    817                  drm_mode_crtc_set_gamma_size(&mtk_crtc->base, gamma_lut_size);
->    818          drm_crtc_enable_color_mgmt(&mtk_crtc->base, 0, has_ctm, gamma_lut_size);
->    819          priv->num_pipes++;
->    820          mutex_init(&mtk_crtc->hw_lock);
->    821
->    822  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
->    823          mtk_crtc->cmdq_client =
->  > 824                          cmdq_mbox_create(mtk_crtc->mmsys_dev,
->
-> ---
-> 0-DAY CI Kernel Test Service, Intel Corporation
-> https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+I will use regulator in the locked region.
+And regulator will use mutex_lock.
+
+I use read_lock/write_lock, and there will be below run time error,
+Is it due to read_lock/write_lock using spin lock?
+write_lock() => _raw_write_lock() @ spinlock.c
+Please give me some advices.
+Thank you.
+
+
+[   28.109082] BUG: sleeping function called from invalid context at
+kernel/locking/mutex.c:254
+[   28.117710] in_atomic(): 1, irqs_disabled(): 0, pid: 1855, name:
+sugov:0
+[   28.124788] CPU: 0 PID: 1855 Comm: sugov:0 Tainted: G        W
+4.19.107 #51
+[   28.132440] Hardware name: MediaTek krane sku176 board (DT)
+[   28.138006] Call trace:
+[   28.140461]  dump_backtrace+0x0/0x17c
+[   28.144121]  show_stack+0x20/0x2c
+[   28.147432]  dump_stack+0xd4/0x10c
+[   28.150831]  ___might_sleep+0x108/0x118
+[   28.154659]  __might_sleep+0x50/0x84
+[   28.158230]  mutex_lock+0x28/0x60
+[   28.161541]  regulator_lock_dependent+0x3c/0x10c
+[   28.166152]  regulator_set_voltage+0x48/0xa0
+[   28.170417]  mtk_cpufreq_set_voltage+0x16c/0x324
+[   28.175046]  mtk_cpufreq_set_target+0x13c/0x2c8
+[   28.179574]  __cpufreq_driver_target+0x424/0x4c4
+
 
 _______________________________________________
 Linux-mediatek mailing list
