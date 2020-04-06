@@ -2,68 +2,65 @@ Return-Path: <SRS0=dAcd=5W=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-0.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D5460C2BA19
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 14:06:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8B6AC2BA1E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 14:48:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9075C23433
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 14:06:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A584B2470A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 14:48:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s8e3ot3Q"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9075C23433
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Tw2CZgKm";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=lunn.ch header.i=@lunn.ch header.b="uenn7vmk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A584B2470A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lunn.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=P0bB1CEQBxPQO4qNmw6aF5r8AnAl8A1YWNT+leafcMM=; b=s8e3ot3QpPHBFsSyC3bekc6Ln
-	/FjbHf3FnsHFt2bHS9j4CCPY0C1D5oNWt2bUIigxIGo2KlpzcRtdioOJbGiIVvfXpOapf6/2P1pAz
-	iC6X0uRk7hV7FFSCAyVzUj5vOpYR9xRnys/mywp8Rs9lmvL+YZ2Pe/mc7f9NflxBwS0wlBgy75ib5
-	2Ku+g5UKKQ9t2nAhDu6XIZqKLd0aDUDE/UIiQ+kyjtrnkv6yu0NFvMNq1FoBoPqRsIn2uSjWu+m1J
-	gZjCT4SJtA9R3hbjLdhw3OMbOXX94XTVMRX8isxsIGScvS616qIeMPglStCHTx+eQO5DJtg+7ShHT
-	KKY8cU+0A==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6xQpcTNfEpggXcs4+i9xswPHuOziTeni7Gs6tlNyPZ0=; b=Tw2CZgKmc1v/qY
+	YaG5jLYUJD9U/UmVuRmPHo7w/foQk/gu+SX5QbPMfxT0l7zVu4E/gX5u9M1vKHWVvcPNMAed+pdFY
+	1SJsVHBcyrMFeA3lqaasXFqGkR0f5CVOksMiC0z7vfZcmqDEgLKbSb4Rm5nnxlmIg8eHFHdRb58jT
+	PaPsDOMUZe+EP1dS3ZzgMvpsuhClR05HaTQzssI2mAt3N5aOPGxG9dPnDJX3k/uwVTGvGAxWsQxN4
+	fKlYRTRAjH7KGQ2dBREOysvopnV8LYMdHJvdCcl9k0hWFOdgsWG3FyhyPeM1TXZlFCwEBh0H5p87a
+	gUsfiVHoM+7MQP9YWquQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLSO4-0000rq-0K; Mon, 06 Apr 2020 14:06:04 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLSNu-0000jH-PF; Mon, 06 Apr 2020 14:05:56 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 1F809106F;
- Mon,  6 Apr 2020 07:05:53 -0700 (PDT)
-Received: from [10.37.12.4] (unknown [10.37.12.4])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id EA1043F73D;
- Mon,  6 Apr 2020 07:05:42 -0700 (PDT)
-Subject: Re: [PATCH v5 2/5] OPP: refactor dev_pm_opp_of_register_em() and
- update related drivers
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org, 
- linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- dri-devel@lists.freedesktop.org, linux-omap@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-imx@nxp.com
-References: <20200318114548.19916-1-lukasz.luba@arm.com>
- <20200318114548.19916-3-lukasz.luba@arm.com>
- <3ee5dc1a-fdfe-da17-9a62-a5182c1f4d3e@linaro.org>
-From: Lukasz Luba <lukasz.luba@arm.com>
-Message-ID: <00c839d1-2f03-2d3b-5746-95deae30bee3@arm.com>
-Date: Mon, 6 Apr 2020 15:05:41 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+	id 1jLT33-0003qF-Q4; Mon, 06 Apr 2020 14:48:25 +0000
+Received: from vps0.lunn.ch ([185.16.172.187])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jLT30-0003pD-Tc; Mon, 06 Apr 2020 14:48:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+ s=20171124; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
+ Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=jndYh7GlwNS3Suqwh3rj4zu5D8kBRWnhUuUbjJc1gaY=; b=uenn7vmk6Yn/aMdzsb5yOlZEQg
+ lmUvAB9L8kZcEAW7MJWAVVXcYp1+GBAIwLi8LhwAV/FaBpePG5WM97NOX9y6nSyonXUXC6+NHwot1
+ dmw7unMoScx35Irnh5jLDmwtEB9ck2xeUJPQP0Y6+rmARhSanowU7kPspgLzREWlV5oQ=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.93)
+ (envelope-from <andrew@lunn.ch>)
+ id 1jLT2c-001HDo-6R; Mon, 06 Apr 2020 16:47:58 +0200
+Date: Mon, 6 Apr 2020 16:47:58 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Alexander Lobakin <79537434260@yandex.com>
+Subject: Re: [PATCH net-next] net: dsa: add GRO support via gro_cells
+Message-ID: <20200406144758.GC301483@lunn.ch>
+References: <20200406105910.32339-1-79537434260@yandex.com>
 MIME-Version: 1.0
-In-Reply-To: <3ee5dc1a-fdfe-da17-9a62-a5182c1f4d3e@linaro.org>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20200406105910.32339-1-79537434260@yandex.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200406_070554_865608_A266B20A 
-X-CRM114-Status: GOOD (  15.28  )
+X-CRM114-CacheID: sfid-20200406_074822_955848_2D95D23B 
+X-CRM114-Status: GOOD (  14.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,63 +72,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: nm@ti.com, juri.lelli@redhat.com, peterz@infradead.org,
- viresh.kumar@linaro.org, liviu.dudau@arm.com, bjorn.andersson@linaro.org,
- bsegall@google.com, festevam@gmail.com, Morten.Rasmussen@arm.com,
- robh@kernel.org, amit.kucheria@verdurent.com, lorenzo.pieralisi@arm.com,
- vincent.guittot@linaro.org, khilman@kernel.org, steven.price@arm.com,
- cw00.choi@samsung.com, mingo@redhat.com, mgorman@suse.de, rui.zhang@intel.com,
- alyssa.rosenzweig@collabora.com, orjan.eide@arm.com, daniel@ffwll.ch,
- b.zolnierkie@samsung.com, s.hauer@pengutronix.de, rostedt@goodmis.org,
- matthias.bgg@gmail.com, Dietmar.Eggemann@arm.com, airlied@linux.ie,
- javi.merino@arm.com, tomeu.vizoso@collabora.com, qperret@google.com,
- sboyd@kernel.org, mka@chromium.org, rdunlap@infradead.org, rjw@rjwysocki.net,
- agross@kernel.org, kernel@pengutronix.de, sudeep.holla@arm.com,
- patrick.bellasi@matbug.net, shawnguo@kernel.org
+Cc: Woojung Huh <woojung.huh@microchip.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, linux-kernel@vger.kernel.org,
+ Hauke Mehrtens <hauke@hauke-m.de>, Linus Walleij <linus.walleij@linaro.org>,
+ Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
+ Vladimir Oltean <vladimir.oltean@nxp.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, linux-mediatek@lists.infradead.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, netdev@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Oleksij Rempel <linux@rempel-privat.de>,
+ "David S. Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org,
+ Mao Wenan <maowenan@huawei.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
-
-Thank you for your comments.
-
-On 4/3/20 5:21 PM, Daniel Lezcano wrote:
-> On 18/03/2020 12:45, Lukasz Luba wrote:
->> The Energy Model framework supports both: CPUs and devfreq devices. Drop
->> the CPU specific interface with cpumask and add struct device. Add also a
->> return value. This new interface provides easy way to create a simple
->> Energy Model, which then might be used in i.e. thermal subsystem.
+On Mon, Apr 06, 2020 at 01:59:10PM +0300, Alexander Lobakin wrote:
+> gro_cells lib is used by different encapsulating netdevices, such as
+> geneve, macsec, vxlan etc. to speed up decapsulated traffic processing.
+> CPU tag is a sort of "encapsulation", and we can use the same mechs to
+> greatly improve overall DSA performance.
+> skbs are passed to the GRO layer after removing CPU tags, so we don't
+> need any new packet offload types as it was firstly proposed by me in
+> the first GRO-over-DSA variant [1].
 > 
-> This patch contains too many different changes.
-
-OK, I will create 4 patches:
-1) change with new argument in API function:
-    void dev_pm_opp_of_register_em(dev, cpumask)
-   and updated drivers
-2) changes with _get_cpu_power --> _get_power
-3) changes adding int return in dev_pm_opp_of_register_em()
-    and updating error handling path inside
-4) header changes with new dev_pm_opp_of_unregister_em()
-
+> The size of struct gro_cells is sizeof(void *), so hot struct
+> dsa_slave_priv becomes only 4/8 bytes bigger, and all critical fields
+> remain in one 32-byte cacheline.
+> The other positive side effect is that drivers for network devices
+> that can be shipped as CPU ports of DSA-driven switches can now use
+> napi_gro_frags() to pass skbs to kernel. Packets built that way are
+> completely non-linear and are likely being dropped without GRO.
 > 
-> There are fixes and traces added in addition to a function prototype change. >
-> Please provide patches separated by logical changes.
-
-I will try to make this API change in a safe way, which
-won't break cpufreq drivers compilation.
-
+> This was tested on to-be-mainlined-soon Ethernet driver that uses
+> napi_gro_frags(), and the overall performance was on par with the
+> variant from [1], sometimes even better due to minimal overhead.
+> net.core.gro_normal_batch tuning may help to push it to the limit
+> on particular setups and platforms.
 > 
-> If the cpumask is extracted in the underlying function
-> em_register_perf_domain() as suggested in the previous patch 1/5,
-> dev_pm_opp_of_register_em() can be struct device centric only.
+> [1] https://lore.kernel.org/netdev/20191230143028.27313-1-alobakin@dlink.ru/
 
-That would be ideal situation but unfortunately not possible to
-implement (as responded in 1/5).
+Hi Alexander
 
-Regards,
-Lukasz
+net-next is closed at the moment. So you should of posted this with an
+RFC prefix.
+
+The implementation looks nice and simple. But it would be nice to have
+some performance figures.
+
+     Andrew
 
 _______________________________________________
 Linux-mediatek mailing list
