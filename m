@@ -1,24 +1,24 @@
-Return-Path: <SRS0=dAcd=5W=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=UhTi=5X=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.5 required=3.0 tests=DKIM_SIGNED,DKIM_VALID,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1FD12C2BA1A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 21:25:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B2B76C2BA19
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 03:37:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E61622072A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Apr 2020 21:25:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 859B420748
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 03:37:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hUplQ5ng";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=yandex.ru header.i=@yandex.ru header.b="q5DsCVxa"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E61622072A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=yandex.ru
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QTyYqjv0";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="YXE3wXjp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 859B420748
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -26,51 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q7Rdkjpf3SOO2/vh6DamyZ7bB1pcWaeTWQKepMS9XMI=; b=hUplQ5ngUWay5o
-	2cTZrS8lDUVDqkukPFq28sX0DQzo/bsvc64KtbJs3qeWyLk4f0rakV1EGdlVtLsJ7EA8+4fVP/wJP
-	LjzBJukE/iiaVD+xhp8RncqZ0m6kdonQYk8f0cqws1I/y5PuG2D4ZHY7RaV9O8zotOBa3+yajrEIm
-	WNWNv76u42MwAbwiAJ1h2l6Up2w/vGrN2wgyATKLPQiEubMCxy6ORQ9aETqHn+kRz3mydsIjDTqgE
-	gvc1jTD6CQB+72cwhmmg+jNf906Bz980afqvmTZdyjPUEQGSmrLT00qNlQ3EVJfAt2ZVclIau5D+5
-	twXAFeRYg7ZIcdEjz7EA==;
+	List-Owner; bh=hzMVTo+kTKsQ08EsJtWqNIQLHLNjyR1xw4a3eHHqSqs=; b=QTyYqjv00+1LsC
+	R2B3vDc2S0SoS7tBSnpdc99BmR2E/PXyk3SfjhUvHGsMuiqtyhJ+b2VCWQDdngpNCW3wNOZajs7pG
+	fwNDOcvGxw54SoYoVRplRqT9/PAHfxHHB427WFmp6hFRLh2anuBF6M84dGzt6wZ3EDW3N91dnTaLR
+	vot8tR6CuwH4JNHwPKSE5aRng1BCmWAO0zCUu+dgyAS2DchGfml90TGze3IcJEJinGvwpb2IRbr0d
+	xRdeIwOz2xJkFY1j0RTkUE7PYKSKpPFv9ox60jXsi9TrfviwkuRaDyA4/xDBfYgD9P81jM1i2qrTe
+	isPcIkGoaoAhi/S2/TMg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLZF7-0007AB-0b; Mon, 06 Apr 2020 21:25:17 +0000
-Received: from forward105o.mail.yandex.net ([37.140.190.183])
+	id 1jLf3b-0004V4-Nh; Tue, 07 Apr 2020 03:37:47 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLZEq-0004ea-MM; Mon, 06 Apr 2020 21:25:06 +0000
-Received: from mxback4g.mail.yandex.net (mxback4g.mail.yandex.net
- [IPv6:2a02:6b8:0:1472:2741:0:8b7:165])
- by forward105o.mail.yandex.net (Yandex) with ESMTP id 8EE32420056F;
- Tue,  7 Apr 2020 00:24:55 +0300 (MSK)
-Received: from sas8-6bf5c5d991b2.qloud-c.yandex.net
- (sas8-6bf5c5d991b2.qloud-c.yandex.net [2a02:6b8:c1b:2a1f:0:640:6bf5:c5d9])
- by mxback4g.mail.yandex.net (mxback/Yandex) with ESMTP id rZ0X9GBYNE-Or8uJu58; 
- Tue, 07 Apr 2020 00:24:55 +0300
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
- t=1586208295; bh=ylo4x/Q6roQpWhci6FeEVGlLIJ9AseZrMZBQ8493un8=;
- h=In-Reply-To:Cc:To:From:Subject:References:Date:Message-ID;
- b=q5DsCVxa3kgJ5LTNKC9BjvDoavjElVw+QAjQKBpRX3fvf98fGvCawyC1qxrI8bp72
- bExX/RRhxZYjW6rJtsxITX/NCavsnOxIJd1HRjepJYfl5Mm4t6BWjqlFLNt+EbNKsD
- LCoIixSv+H6fy6hAEPAi3+yfVMezeMUlwFOVey38=
-Authentication-Results: mxback4g.mail.yandex.net; dkim=pass header.i=@yandex.ru
-Received: by sas8-6bf5c5d991b2.qloud-c.yandex.net (smtp/Yandex) with ESMTPSA
- id 1RRGL8wSk2-Op2OUFOY; Tue, 07 Apr 2020 00:24:52 +0300
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
- (Client certificate not present)
-Message-ID: <82d244d47e0f0ddaa0a9aee4620fa9fc31fe98f7.camel@yandex.ru>
-Subject: Re: [PATCH net-next] net: dsa: add GRO support via gro_cells
-From: Alexander Lobakin <bloodyreaper@yandex.ru>
-To: Florian Fainelli <f.fainelli@gmail.com>
-Date: Tue, 07 Apr 2020 00:24:18 +0300
-In-Reply-To: <c362ec65-ec84-52bb-a06e-d2ffad8bf52d@gmail.com>
-References: <97a880e4-de7d-1f94-d35b-2635fbd8237e@gmail.com>
- <20200406191113.5983-1-bloodyreaper@yandex.ru>
- <c362ec65-ec84-52bb-a06e-d2ffad8bf52d@gmail.com>
-User-Agent: Evolution 3.36.1 
+ id 1jLf3V-0004Qa-UU; Tue, 07 Apr 2020 03:37:43 +0000
+X-UUID: fcd245c14967473eb239ed9c9819860b-20200406
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=xMyvElthjOstM9PdI/6GoHMLeRrsFL8BjfQEJHhLRDw=; 
+ b=YXE3wXjpJWQYVGq1HVhR5nrZD+KFQL5wIhzLSw9wjnfIO0EN4WDZe66fBVCy5ZpJfnMSeyr36/Zf2syRUlQyPh+l8KfdJx05OPiI68Phil+DWQYsDo4xkHF79LCrzFdXIZAv5Y9BNnZbTsXqV7AZxLleOMVgtWxB9QAcatcWtL8=;
+X-UUID: fcd245c14967473eb239ed9c9819860b-20200406
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 616529763; Mon, 06 Apr 2020 19:37:20 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 6 Apr 2020 20:37:17 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 7 Apr 2020 11:37:14 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 7 Apr 2020 11:37:13 +0800
+Message-ID: <1586230628.28772.8.camel@mhfsdcap03>
+Subject: Re: [PATCH] USB: mtu3: Use the correct style for SPDX License
+ Identifier
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Nishad Kamdar <nishadkamdar@gmail.com>
+Date: Tue, 7 Apr 2020 11:37:08 +0800
+In-Reply-To: <20200404103728.GA6011@nishad>
+References: <20200404103728.GA6011@nishad>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 455CD0340B1F1D8F978B7CFC18F4BFDB3E82DE13CD7AB8C93EAFAC02F918BEEB2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200406_142502_120454_4D91AE9F 
-X-CRM114-Status: GOOD (  36.39  )
+X-CRM114-CacheID: sfid-20200406_203741_985850_4622FA16 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,279 +84,101 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Woojung Huh <woojung.huh@microchip.com>, Andrew Lunn <andrew@lunn.ch>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Hauke Mehrtens <hauke@hauke-m.de>, Linus Walleij <linus.walleij@linaro.org>,
- Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Microchip Linux Driver Support <unglinuxdriver@microchip.com>,
- Vladimir Oltean <vladimir.oltean@nxp.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Oleksij Rempel <linux@rempel-privat.de>,
- "David S. Miller" <davem@davemloft.net>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- Mao Wenan <maowenan@huawei.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+ Joe Perches <joe@perches.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 04/06/2020 at 13:16 -0700, Florian Fainelli wrote:
-> On 4/6/2020 12:11 PM, Alexander Lobakin wrote:
-> > 06.04.2020, 20:57, "Florian Fainelli" <f.fainelli@gmail.com>:
-> > > On 4/6/2020 10:34 AM, Alexander Lobakin wrote:
-> > > >  06.04.2020, 18:21, "Alexander Lobakin" <bloodyreaper@yandex.ru>:
-> > > > >  06.04.2020, 17:48, "Andrew Lunn" <andrew@lunn.ch>:
-> > > > > >   On Mon, Apr 06, 2020 at 01:59:10PM +0300, Alexander Lobakin wrote:
-> > > > > > >    gro_cells lib is used by different encapsulating netdevices, such as
-> > > > > > >    geneve, macsec, vxlan etc. to speed up decapsulated traffic processing.
-> > > > > > >    CPU tag is a sort of "encapsulation", and we can use the same mechs to
-> > > > > > >    greatly improve overall DSA performance.
-> > > > > > >    skbs are passed to the GRO layer after removing CPU tags, so we don't
-> > > > > > >    need any new packet offload types as it was firstly proposed by me in
-> > > > > > >    the first GRO-over-DSA variant [1].
-> > > > > > > 
-> > > > > > >    The size of struct gro_cells is sizeof(void *), so hot struct
-> > > > > > >    dsa_slave_priv becomes only 4/8 bytes bigger, and all critical fields
-> > > > > > >    remain in one 32-byte cacheline.
-> > > > > > >    The other positive side effect is that drivers for network devices
-> > > > > > >    that can be shipped as CPU ports of DSA-driven switches can now use
-> > > > > > >    napi_gro_frags() to pass skbs to kernel. Packets built that way are
-> > > > > > >    completely non-linear and are likely being dropped without GRO.
-> > > > > > > 
-> > > > > > >    This was tested on to-be-mainlined-soon Ethernet driver that uses
-> > > > > > >    napi_gro_frags(), and the overall performance was on par with the
-> > > > > > >    variant from [1], sometimes even better due to minimal overhead.
-> > > > > > >    net.core.gro_normal_batch tuning may help to push it to the limit
-> > > > > > >    on particular setups and platforms.
-> > > > > > > 
-> > > > > > >    [1] https://lore.kernel.org/netdev/20191230143028.27313-1-alobakin@dlink.ru/
-> > > > > > 
-> > > > > >   Hi Alexander
-> > > > > 
-> > > > >  Hi Andrew!
-> > > > > 
-> > > > > >   net-next is closed at the moment. So you should of posted this with an
-> > > > > >   RFC prefix.
-> > > > > 
-> > > > >  I saw that it's closed, but didn't knew about "RFC" tags for that period,
-> > > > >  sorry.
-> > > > > 
-> > > > > >   The implementation looks nice and simple. But it would be nice to have
-> > > > > >   some performance figures.
-> > > > > 
-> > > > >  I'll do, sure. I think I'll collect the stats with various main receiving
-> > > > >  functions in Ethernet driver (napi_gro_frags(), napi_gro_receive(),
-> > > > >  netif_receive_skb(), netif_receive_skb_list()), and with and without this
-> > > > >  patch to make them as complete as possible.
-> > > > 
-> > > >  OK, so here we go.
-> > > > 
-> > > >  My device is 1.2 GHz 4-core MIPS32 R2. Ethernet controller representing
-> > > >  the CPU port is capable of S/G, fraglists S/G, TSO4/6 and GSO UDP L4.
-> > > >  Tests are performed through simple IPoE VLAN NAT forwarding setup
-> > > >  (port0 <-> port1.218) with iperf3 in TCP mode.
-> > > >  net.core.gro_normal_batch is always set to 16 as that value seems to be
-> > > >  the most effective for that particular hardware and drivers.
-> > > > 
-> > > >  Packet counters on eth0 are the real numbers of ongoing frames. Counters
-> > > >  on portX are pure-software and are updated inside networking stack.
-> > > > 
-> > > >  ---------------------------------------------------------------------
-> > > > 
-> > > >  netif_receive_skb() in Eth driver, no patch:
-> > > > 
-> > > >  [ ID] Interval Transfer Bitrate Retr
-> > > >  [ 5] 0.00-120.01 sec 9.00 GBytes 644 Mbits/sec 413 sender
-> > > >  [ 5] 0.00-120.00 sec 8.99 GBytes 644 Mbits/sec receiver
-> > > > 
-> > > >  eth0
-> > > >  RX packets:7097731 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:7097702 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port0
-> > > >  RX packets:426050 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:6671829 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port1
-> > > >  RX packets:6671681 errors:0 dropped:0 overruns:0 carrier:0
-> > > >  TX packets:425862 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port1.218
-> > > >  RX packets:6671677 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:425851 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  ---------------------------------------------------------------------
-> > > > 
-> > > >  netif_receive_skb_list() in Eth driver, no patch:
-> > > > 
-> > > >  [ ID] Interval Transfer Bitrate Retr
-> > > >  [ 5] 0.00-120.01 sec 9.48 GBytes 679 Mbits/sec 129 sender
-> > > >  [ 5] 0.00-120.00 sec 9.48 GBytes 679 Mbits/sec receiver
-> > > > 
-> > > >  eth0
-> > > >  RX packets:7448098 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:7448073 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port0
-> > > >  RX packets:416115 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:7032121 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port1
-> > > >  RX packets:7031983 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:415941 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port1.218
-> > > >  RX packets:7031978 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:415930 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  ---------------------------------------------------------------------
-> > > > 
-> > > >  napi_gro_receive() in Eth driver, no patch:
-> > > > 
-> > > >  [ ID] Interval Transfer Bitrate Retr
-> > > >  [ 5] 0.00-120.01 sec 10.0 GBytes 718 Mbits/sec 107 sender
-> > > >  [ 5] 0.00-120.00 sec 10.0 GBytes 718 Mbits/sec receiver
-> > > > 
-> > > >  eth0
-> > > >  RX packets:7868281 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:7868267 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port0
-> > > >  RX packets:429082 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:7439343 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port1
-> > > >  RX packets:7439199 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:428913 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port1.218
-> > > >  RX packets:7439195 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:428902 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  =====================================================================
-> > > > 
-> > > >  netif_receive_skb() in Eth driver + patch:
-> > > > 
-> > > >  [ ID] Interval Transfer Bitrate Retr
-> > > >  [ 5] 0.00-120.01 sec 12.2 GBytes 870 Mbits/sec 2267 sender
-> > > >  [ 5] 0.00-120.00 sec 12.2 GBytes 870 Mbits/sec receiver
-> > > > 
-> > > >  eth0
-> > > >  RX packets:9474792 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:9474777 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port0
-> > > >  RX packets:455200 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:353288 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port1
-> > > >  RX packets:9019592 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:455035 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port1.218
-> > > >  RX packets:353144 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:455024 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  ---------------------------------------------------------------------
-> > > > 
-> > > >  netif_receive_skb_list() in Eth driver + patch:
-> > > > 
-> > > >  [ ID] Interval Transfer Bitrate Retr
-> > > >  [ 5] 0.00-120.01 sec 11.6 GBytes 827 Mbits/sec 2224 sender
-> > > >  [ 5] 0.00-120.00 sec 11.5 GBytes 827 Mbits/sec receiver
-> > > > 
-> > > >  eth0
-> > > >  RX packets:8981651 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:898187 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port0
-> > > >  RX packets:436159 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:335665 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port1
-> > > >  RX packets:8545492 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:436071 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port1.218
-> > > >  RX packets:335593 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:436065 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  -----------------------------------------------------------
-> > > > 
-> > > >  napi_gro_receive() in Eth driver + patch:
-> > > > 
-> > > >  [ ID] Interval Transfer Bitrate Retr
-> > > >  [ 5] 0.00-120.01 sec 11.8 GBytes 855 Mbits/sec 122 sender
-> > > >  [ 5] 0.00-120.00 sec 11.8 GBytes 855 Mbits/sec receiver
-> > > > 
-> > > >  eth0
-> > > >  RX packets:9292214 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:9292190 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port0
-> > > >  RX packets:438516 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:347236 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port1
-> > > >  RX packets:8853698 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:438331 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  port1.218
-> > > >  RX packets:347082 errors:0 dropped:0 overruns:0 frame:0
-> > > >  TX packets:438320 errors:0 dropped:0 overruns:0 carrier:0
-> > > > 
-> > > >  -----------------------------------------------------------
-> > > > 
-> > > >  The main goal is achieved: we have about 100-200 Mbps of performance
-> > > >  boost while in-stack skbs are greatly reduced from ~8-9 millions to
-> > > >  ~350000 (compare port0 TX and port1 RX without patch and with it).
-> > > 
-> > > And the number of TCP retries is also lower, which likely means that we
-> > > are making better use of the flow control built into the hardware/driver
-> > > here?
-> > > 
-> > > BTW do you know why you have so many retries though? It sounds like your
-> > > flow control is missing a few edge cases, or that you have an incorrect
-> > > configuration of your TX admission queue.
-> > 
-> > Well, I have the same question TBH. All these ~1.5 years that I'm
-> > working on these switches I have pretty chaotic number of TCP
-> > retransmissions each time I change something in the code. They are
-> > less likely to happen when the average CPU load is lower, but ~100
-> > is the best result I ever got.
-> > Seems like I should stop trying to push software throughput to
-> > the max for a while and pay more attention to this and to hardware
-> > configuration instead and check if I miss something :) 
+On Sat, 2020-04-04 at 16:07 +0530, Nishad Kamdar wrote:
+> This patch corrects the SPDX License Identifier style in
+> header files related to MediaTek USB3 Dual Role controller.
+> For C header files Documentation/process/license-rules.rst
+> mandates C-like comments (opposed to C source files where
+> C++ style should be used).
 > 
-> I have had to debug such a problem on some of our systems recently and
-> it came down to being a couple of things for those systems:
+> Changes made by using a script provided by Joe Perches here:
+> https://lkml.org/lkml/2019/2/7/46.
 > 
-> - as a receiver, we could create fast re-transmissions on the sender
-> side because of packet loss which was because the switch is able to push
-> packets faster than the DSA master being able to write them to DRAM. One
-> way to work around this is to clock the Ethernet MAC higher, at the cost
-> of power consumption.
+> Suggested-by: Joe Perches <joe@perches.com>
+> Signed-off-by: Nishad Kamdar <nishadkamdar@gmail.com>
+> ---
+>  drivers/usb/mtu3/mtu3.h         | 2 +-
+>  drivers/usb/mtu3/mtu3_debug.h   | 2 +-
+>  drivers/usb/mtu3/mtu3_dr.h      | 2 +-
+>  drivers/usb/mtu3/mtu3_hw_regs.h | 2 +-
+>  drivers/usb/mtu3/mtu3_qmu.h     | 2 +-
+>  drivers/usb/mtu3/mtu3_trace.h   | 2 +-
+>  6 files changed, 6 insertions(+), 6 deletions(-)
 > 
-> - as a sender, we could have fast re-transmissions when we were
-> ourselves a "fast" CPU (1.7GHz or higher for Gigabit throughput), that
-> part is still being root caused, but I think it comes down to flow
-> control being incorrectly set-up in hardware, which means you could lose
-> packets between your ndo_start_xmit() and not having the software TXQ
-> assert XON/XOFF properly
-> 
-> So in both cases, packet loss is responsible for those fast
-> re-transmissions, but they are barely observable (case #1 was, since the
-> switch port counter did not match the Ethernet MAC MIB counters) since
-> you have a black hole effect.
+> diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
+> index 6087be236a35..d49db92ab26c 100644
+> --- a/drivers/usb/mtu3/mtu3.h
+> +++ b/drivers/usb/mtu3/mtu3.h
+> @@ -1,4 +1,4 @@
+> -// SPDX-License-Identifier: GPL-2.0
+> +/* SPDX-License-Identifier: GPL-2.0 */
+>  /*
+>   * mtu3.h - MediaTek USB3 DRD header
+>   *
+> diff --git a/drivers/usb/mtu3/mtu3_debug.h b/drivers/usb/mtu3/mtu3_debug.h
+> index e96a69234d05..fb6b28277c9b 100644
+> --- a/drivers/usb/mtu3/mtu3_debug.h
+> +++ b/drivers/usb/mtu3/mtu3_debug.h
+> @@ -1,4 +1,4 @@
+> -// SPDX-License-Identifier: GPL-2.0
+> +/* SPDX-License-Identifier: GPL-2.0 */
+>  /*
+>   * mtu3_debug.h - debug header
+>   *
+> diff --git a/drivers/usb/mtu3/mtu3_dr.h b/drivers/usb/mtu3/mtu3_dr.h
+> index 5e58c4dbd54a..760fe7d69c6b 100644
+> --- a/drivers/usb/mtu3/mtu3_dr.h
+> +++ b/drivers/usb/mtu3/mtu3_dr.h
+> @@ -1,4 +1,4 @@
+> -// SPDX-License-Identifier: GPL-2.0
+> +/* SPDX-License-Identifier: GPL-2.0 */
+>  /*
+>   * mtu3_dr.h - dual role switch and host glue layer header
+>   *
+> diff --git a/drivers/usb/mtu3/mtu3_hw_regs.h b/drivers/usb/mtu3/mtu3_hw_regs.h
+> index 8382d066749e..bf34f784f84b 100644
+> --- a/drivers/usb/mtu3/mtu3_hw_regs.h
+> +++ b/drivers/usb/mtu3/mtu3_hw_regs.h
+> @@ -1,4 +1,4 @@
+> -// SPDX-License-Identifier: GPL-2.0
+> +/* SPDX-License-Identifier: GPL-2.0 */
+>  /*
+>   * mtu3_hw_regs.h - MediaTek USB3 DRD register and field definitions
+>   *
+> diff --git a/drivers/usb/mtu3/mtu3_qmu.h b/drivers/usb/mtu3/mtu3_qmu.h
+> index 9cfde201db63..66e1c0ab5a99 100644
+> --- a/drivers/usb/mtu3/mtu3_qmu.h
+> +++ b/drivers/usb/mtu3/mtu3_qmu.h
+> @@ -1,4 +1,4 @@
+> -// SPDX-License-Identifier: GPL-2.0
+> +/* SPDX-License-Identifier: GPL-2.0 */
+>  /*
+>   * mtu3_qmu.h - Queue Management Unit driver header
+>   *
+> diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
+> index 050e30f0fbd4..1b897636daf2 100644
+> --- a/drivers/usb/mtu3/mtu3_trace.h
+> +++ b/drivers/usb/mtu3/mtu3_trace.h
+> @@ -1,4 +1,4 @@
+> -// SPDX-License-Identifier: GPL-2.0
+> +/* SPDX-License-Identifier: GPL-2.0 */
+>  /**
+>   * mtu3_trace.h - trace support
+>   *
 
-Thank you for so detailed response! I suppose there might be both of
-these on my system, I'll have a look at this soon.
+Reviewed-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
+Thanks
 
 _______________________________________________
 Linux-mediatek mailing list
