@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D09DCC38A24
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7404BC352BE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 98B3D2076E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 409E62082F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="prUacVJ8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 98B3D2076E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KJFB8YWw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 409E62082F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,20 +26,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=TDlWDWq+xZZBeSASt6oCwSmU87vJuB5tNQlsXJfxmO0=; b=prUacVJ8OYTmSaI2GxnKWTc8wE
-	TQRnsxokImJ78cbbOAIcRKIf9qWDaVsKBbZmllbLToEF0hj0eqPDweL1TrNsJfjpdGTa+FUgZ/9Rq
-	p7dQBFK7N0KpJjdSaWQc2P5OI2+sSUpR2AT2pA47DgLKyw6nn2jlBF4MhKrNkLGDY3iGej82+OSfY
-	SuhHGVEOdKRDeoXvdt048RgKhkjo5wZyn0RMweJj7GxsKd9AMa/Y1oaWZDTgLw0oElAF3AuBZxldC
-	Wcf7XjO8rRSKDY09g1F/5Y2RM8jmD1pKa7cvuMsA8DgS8/iW8U0fBeE2SiDkG1tWRfHRiYOW5vt5c
-	yC+YSnUg==;
+	bh=c2f2nQL5eeq4eHnYmBGjHVwVMmze1svHErmmhKB9uV4=; b=KJFB8YWwOB8CJH8U+khMH76pSX
+	Pi/Y1V2er967fKHc4i19e14sidnEo28ZRJltGFbsy3ltkJJSueTVcBq8rUPbXReS8eRCzAytJQQwR
+	ALsAKX2mtpR5bQ5qe/qtgbqEV41Gr3LuqIZAS2ojwYPAUdq9aLTB6NNClpNf10aM9S8YYYOZKWx6o
+	sZ5Rw0FXjXUYDAHSgx8ynj9ieU3Sn5IopeC674G2utWeKkflhdFoKLVgzPXJaoDVREfi6GHgZTKeR
+	hpBPGKp48urQevs45PXcZ5jMmrmOLLLA8wSeWTU6nCwpQcifR4ajbU11Xd6QdQ1G8yVAlPOkLTzjF
+	FW5zE8gA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLt7u-00085A-IB; Tue, 07 Apr 2020 18:39:10 +0000
-Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
+	id 1jLt88-0008ML-Bs; Tue, 07 Apr 2020 18:39:24 +0000
+Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
+ helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLt6w-0006ru-Hz; Tue, 07 Apr 2020 18:38:14 +0000
+ id 1jLt70-0006uq-1X; Tue, 07 Apr 2020 18:38:16 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 9C8DB5BB; Tue,  7 Apr 2020 20:37:52 +0200 (CEST)
+ id A01776A7; Tue,  7 Apr 2020 20:37:54 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -54,16 +55,16 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [RFC PATCH 23/34] iommu/mediatek: Convert to probe/release_device()
+Subject: [RFC PATCH 32/34] iommu/exynos: Convert to probe/release_device()
  call-backs
-Date: Tue,  7 Apr 2020 20:37:31 +0200
-Message-Id: <20200407183742.4344-24-joro@8bytes.org>
+Date: Tue,  7 Apr 2020 20:37:40 +0200
+Message-Id: <20200407183742.4344-33-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200407183742.4344-1-joro@8bytes.org>
 References: <20200407183742.4344-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200407_113810_778848_9E18A697 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20200407_113814_245493_40C9F715 
+X-CRM114-Status: GOOD (  12.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,73 +89,78 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Convert the Mediatek IOMMU driver to use the probe_device() and
+Convert the Exynos IOMMU drivers to use the probe_device() and
 release_device() call-backs of iommu_ops, so that the iommu core code
 does the group and sysfs setup.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/mtk_iommu.c | 24 ++++++------------------
- 1 file changed, 6 insertions(+), 18 deletions(-)
+ drivers/iommu/exynos-iommu.c | 23 ++++++-----------------
+ 1 file changed, 6 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 5f4d6df59cf6..2be96f1cdbd2 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -441,38 +441,26 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
- 	return pa;
+diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
+index 86ecccbf0438..f865c9093722 100644
+--- a/drivers/iommu/exynos-iommu.c
++++ b/drivers/iommu/exynos-iommu.c
+@@ -1223,19 +1223,13 @@ static phys_addr_t exynos_iommu_iova_to_phys(struct iommu_domain *iommu_domain,
+ 	return phys;
  }
  
--static int mtk_iommu_add_device(struct device *dev)
-+static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
+-static int exynos_iommu_add_device(struct device *dev)
++static struct iommu_device *exynos_iommu_probe_device(struct device *dev)
  {
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
- 	struct mtk_iommu_data *data;
+ 	struct exynos_iommu_owner *owner = dev->archdata.iommu;
+ 	struct sysmmu_drvdata *data;
 -	struct iommu_group *group;
  
- 	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
--		return -ENODEV; /* Not a iommu client device */
-+		return ERR_PTR(-ENODEV); /* Not a iommu client device */
- 
- 	data = dev_iommu_priv_get(dev);
--	iommu_device_link(&data->iommu, dev);
- 
+ 	if (!has_sysmmu(dev))
+-		return -ENODEV;
+-
 -	group = iommu_group_get_for_dev(dev);
+-
 -	if (IS_ERR(group))
 -		return PTR_ERR(group);
--
++		return ERR_PTR(-ENODEV);
+ 
+ 	list_for_each_entry(data, &owner->controllers, owner_node) {
+ 		/*
+@@ -1247,14 +1241,11 @@ static int exynos_iommu_add_device(struct device *dev)
+ 					     DL_FLAG_STATELESS |
+ 					     DL_FLAG_PM_RUNTIME);
+ 	}
 -	iommu_group_put(group);
--	return 0;
-+	return &data->iommu;
- }
  
--static void mtk_iommu_remove_device(struct device *dev)
-+static void mtk_iommu_release_device(struct device *dev)
- {
- 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
--	struct mtk_iommu_data *data;
- 
- 	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
- 		return;
- 
--	data = dev_iommu_priv_get(dev);
--	iommu_device_unlink(&data->iommu, dev);
+-	iommu_device_link(&owner->iommu, dev);
 -
--	iommu_group_remove_device(dev);
- 	iommu_fwspec_free(dev);
+-	return 0;
++	return &owner->iommu;
  }
  
-@@ -526,8 +514,8 @@ static const struct iommu_ops mtk_iommu_ops = {
- 	.flush_iotlb_all = mtk_iommu_flush_iotlb_all,
- 	.iotlb_sync	= mtk_iommu_iotlb_sync,
- 	.iova_to_phys	= mtk_iommu_iova_to_phys,
--	.add_device	= mtk_iommu_add_device,
--	.remove_device	= mtk_iommu_remove_device,
-+	.probe_device	= mtk_iommu_probe_device,
-+	.release_device	= mtk_iommu_release_device,
- 	.device_group	= mtk_iommu_device_group,
- 	.of_xlate	= mtk_iommu_of_xlate,
- 	.pgsize_bitmap	= SZ_4K | SZ_64K | SZ_1M | SZ_16M,
+-static void exynos_iommu_remove_device(struct device *dev)
++static void exynos_iommu_release_device(struct device *dev)
+ {
+ 	struct exynos_iommu_owner *owner = dev->archdata.iommu;
+ 	struct sysmmu_drvdata *data;
+@@ -1272,8 +1263,6 @@ static void exynos_iommu_remove_device(struct device *dev)
+ 			iommu_group_put(group);
+ 		}
+ 	}
+-	iommu_device_unlink(&owner->iommu, dev);
+-	iommu_group_remove_device(dev);
+ 
+ 	list_for_each_entry(data, &owner->controllers, owner_node)
+ 		device_link_del(data->link);
+@@ -1381,8 +1370,8 @@ static const struct iommu_ops exynos_iommu_ops = {
+ 	.unmap = exynos_iommu_unmap,
+ 	.iova_to_phys = exynos_iommu_iova_to_phys,
+ 	.device_group = generic_device_group,
+-	.add_device = exynos_iommu_add_device,
+-	.remove_device = exynos_iommu_remove_device,
++	.probe_device = exynos_iommu_probe_device,
++	.release_device = exynos_iommu_release_device,
+ 	.pgsize_bitmap = SECT_SIZE | LPAGE_SIZE | SPAGE_SIZE,
+ 	.of_xlate = exynos_iommu_of_xlate,
+ };
 -- 
 2.17.1
 
