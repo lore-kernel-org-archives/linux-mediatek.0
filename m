@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8598DC2BB55
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A80CC2BA80
 	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:55:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4C97B20730
+	by mail.kernel.org (Postfix) with ESMTPS id 244EB20768
 	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:55:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Rogi3leL";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="JgdaaN8c"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4C97B20730
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kzbBYuI7";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="g5mIuHXO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 244EB20768
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,33 +27,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=GgRvJakt6doscvL+lccOiejK5G+S+kKbppqt7r0bmu8=; b=Rogi3leL6ojoaxT7xiGfmV68Y+
-	gva6b+pDaScrPw4n4ko2DBgTfBThICRzTlSD7ApD1apjFY/A18VdwkulVwOm3NYZrxltwPVCaONMW
-	7n0xOQ36FcenrnbetiEPz1UxNOrLdMrQ/+dK6JEfKqhF05sj/lGNj369bHN64u82Pavv/iDEfHdkb
-	x4HUsGVY9JR6hB5ZRUvqyhQCiU+2Hj1x48pgcMw0ZQyv+EhzQtOVJ1oXfdVTFlkXyoQTQWriSFd04
-	x2YqZ9W/3gVVkmeW10eLNaywT8N+0hOQj/JCPoA2q8DsCH1F+SSJQssZ/mo0guZHIJ9hYz6yTzT9Z
-	+fn1Qx0Q==;
+	bh=umbjWUJuwpTYdWQsgMjGXAn8WrPaNYxjqfc0NVNm1nY=; b=kzbBYuI7KMOGdvo1p6o4wB69b4
+	3MnnufEY8y+fFX6bQ/9Rhot4f3ytzPMvvgkYQMJzw8cxH/TkfdW+H1YmzXm4mxF1V+kWx93QkYh5I
+	qxERgnggXQeA9Rb93zLH15bk8FyQr3Lxos7OADKwj6yQsZo8jKzOmI4mf/TCwZzmPVBkFflgIg4lL
+	OrcP2a3nspLhG7O2FX0a+v87aTiahWemxjICur9UYC7HMXizK7RcB+3TfR8NSLUXO7ExiBosLqo/j
+	Z61iQsBc2bS+8CcSRKH4P/ycI4KdZweXinnYHGbkRzm6ml1YvGwyzm9L8hdJl97MkJBB49rpSqPhC
+	q88Mlhrg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLtNS-0006FV-GC; Tue, 07 Apr 2020 18:55:14 +0000
+	id 1jLtNN-0005SI-69; Tue, 07 Apr 2020 18:55:09 +0000
 Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLtNN-0003Zl-5D; Tue, 07 Apr 2020 18:55:09 +0000
+ id 1jLtNL-0003P1-Nj; Tue, 07 Apr 2020 18:55:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=merlin.20170209; h=References:In-Reply-To:Message-Id:Date:
  Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=tBM90ug8dReFUk/0mF17YDyp6x5pBNMkMLHmgIm7lsg=; b=JgdaaN8cTc84YGotQILWBuIgnI
- 2TRx5duAvnb+82EkLTlp+s8jIKeKd/2JyKnUb1u3ruCCkRSM9GsH86VnfByOd2FGpr1wxFd919MB4
- ylUuyxVGA4vM1yAj1Eu/L9lmiCoFXhmP84tMOtR2mBSjjpmwxfoMXCy6QnOv3buFpAnz//ACy3JFU
- QDtDXfHV18gLPU/Ber3aAyH5zxHbj/qS5qEQFmAtmgR1DT/raMBTjnl4FY4FDXfEnJtUlKI851QYM
- 5JByguQbve5qgqnktiztyVZkqUqH0orpNhRRzzODqu4f0AodglgWSCeKfrdCPSX6xKkOeovN8Mu4Y
- kRdzoyQA==;
-Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
+ bh=Ar1U0V/3iON9de4nRBlduHz+Yx6CPxUrDV1O1yhujL8=; b=g5mIuHXObFQGM5Y7+O/SMGnFPn
+ QBcKTmtECBxeWcbMU7YcYmMdCBmys270s1rS/uYirG+qvH0M7fJMGslBzX2IcmzYfoCSqXHpkaDr6
+ Pd9/aGbyHyWjb+F5DpWmE59cY+tMWYYdWjJ5gO7MS6gfGuJz0GhpJzysDmoB33Vv5TzXt3dLTVuai
+ cAs9eZBqOuPylyVOvOxK0JHVGd6xY5+OcgOVrUvY24cU075qfxwA4zr7nt0QdRazA3FsgHtpKdyZg
+ epfxeMq3uuSlBRdny36pFzV+gAUaHu7JrgRwH9Qz6NLGs4dKBqnmv2Os2pwnupPiBGtL575VD83hy
+ ol4YTYyw==;
+Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
+ helo=theia.8bytes.org)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLt6x-0007fM-3b; Tue, 07 Apr 2020 18:38:15 +0000
+ id 1jLt6z-0007g0-Nb; Tue, 07 Apr 2020 18:38:16 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 3549360C; Tue,  7 Apr 2020 20:37:53 +0200 (CEST)
+ id 12C8A70B; Tue,  7 Apr 2020 20:37:54 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -68,10 +69,9 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [RFC PATCH 26/34] iommu/rockchip: Convert to probe/release_device()
- call-backs
-Date: Tue,  7 Apr 2020 20:37:34 +0200
-Message-Id: <20200407183742.4344-27-joro@8bytes.org>
+Subject: [RFC PATCH 34/34] iommu: Unexport iommu_group_get_for_dev()
+Date: Tue,  7 Apr 2020 20:37:42 +0200
+Message-Id: <20200407183742.4344-35-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200407183742.4344-1-joro@8bytes.org>
 References: <20200407183742.4344-1-joro@8bytes.org>
@@ -99,76 +99,56 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Convert the Rockchip IOMMU driver to use the probe_device() and
-release_device() call-backs of iommu_ops, so that the iommu core code
-does the group and sysfs setup.
+The function is now only used in IOMMU core code and shouldn't be used
+outside of it anyway, so remove the export for it.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/rockchip-iommu.c | 26 +++++++-------------------
- 1 file changed, 7 insertions(+), 19 deletions(-)
+ drivers/iommu/iommu.c | 4 ++--
+ include/linux/iommu.h | 1 -
+ 2 files changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index b33cdd5aad81..d25c2486ca07 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -1054,40 +1054,28 @@ static void rk_iommu_domain_free(struct iommu_domain *domain)
- 	kfree(rk_domain);
- }
+diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+index d9032f9d597c..8a5e1ac328dd 100644
+--- a/drivers/iommu/iommu.c
++++ b/drivers/iommu/iommu.c
+@@ -91,6 +91,7 @@ static void __iommu_detach_group(struct iommu_domain *domain,
+ 				 struct iommu_group *group);
+ static int iommu_create_device_direct_mappings(struct iommu_group *group,
+ 					       struct device *dev);
++static struct iommu_group *iommu_group_get_for_dev(struct device *dev);
  
--static int rk_iommu_add_device(struct device *dev)
-+static struct iommu_device *rk_iommu_probe_device(struct device *dev)
+ #define IOMMU_GROUP_ATTR(_name, _mode, _show, _store)		\
+ struct iommu_group_attribute iommu_group_attr_##_name =		\
+@@ -1483,7 +1484,7 @@ static int iommu_alloc_default_domain(struct device *dev)
+  * to the returned IOMMU group, which will already include the provided
+  * device.  The reference should be released with iommu_group_put().
+  */
+-struct iommu_group *iommu_group_get_for_dev(struct device *dev)
++static struct iommu_group *iommu_group_get_for_dev(struct device *dev)
  {
--	struct iommu_group *group;
--	struct rk_iommu *iommu;
- 	struct rk_iommudata *data;
-+	struct rk_iommu *iommu;
+ 	const struct iommu_ops *ops = dev->bus->iommu_ops;
+ 	struct iommu_group *group;
+@@ -1514,7 +1515,6 @@ struct iommu_group *iommu_group_get_for_dev(struct device *dev)
  
- 	data = dev->archdata.iommu;
- 	if (!data)
--		return -ENODEV;
-+		return ERR_PTR(-ENODEV);
- 
- 	iommu = rk_iommu_from_dev(dev);
- 
--	group = iommu_group_get_for_dev(dev);
--	if (IS_ERR(group))
--		return PTR_ERR(group);
--	iommu_group_put(group);
--
--	iommu_device_link(&iommu->iommu, dev);
- 	data->link = device_link_add(dev, iommu->dev,
- 				     DL_FLAG_STATELESS | DL_FLAG_PM_RUNTIME);
- 
--	return 0;
-+	return &iommu->iommu;
+ 	return ERR_PTR(ret);
  }
+-EXPORT_SYMBOL(iommu_group_get_for_dev);
  
--static void rk_iommu_remove_device(struct device *dev)
-+static void rk_iommu_release_device(struct device *dev)
+ struct iommu_domain *iommu_group_default_domain(struct iommu_group *group)
  {
--	struct rk_iommu *iommu;
- 	struct rk_iommudata *data = dev->archdata.iommu;
+diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+index dd076366383f..7cfd2dddb49d 100644
+--- a/include/linux/iommu.h
++++ b/include/linux/iommu.h
+@@ -527,7 +527,6 @@ extern int iommu_page_response(struct device *dev,
+ 			       struct iommu_page_response *msg);
  
--	iommu = rk_iommu_from_dev(dev);
--
- 	device_link_del(data->link);
--	iommu_device_unlink(&iommu->iommu, dev);
--	iommu_group_remove_device(dev);
- }
+ extern int iommu_group_id(struct iommu_group *group);
+-extern struct iommu_group *iommu_group_get_for_dev(struct device *dev);
+ extern struct iommu_domain *iommu_group_default_domain(struct iommu_group *);
  
- static struct iommu_group *rk_iommu_device_group(struct device *dev)
-@@ -1126,8 +1114,8 @@ static const struct iommu_ops rk_iommu_ops = {
- 	.detach_dev = rk_iommu_detach_device,
- 	.map = rk_iommu_map,
- 	.unmap = rk_iommu_unmap,
--	.add_device = rk_iommu_add_device,
--	.remove_device = rk_iommu_remove_device,
-+	.probe_device = rk_iommu_probe_device,
-+	.release_device = rk_iommu_release_device,
- 	.iova_to_phys = rk_iommu_iova_to_phys,
- 	.device_group = rk_iommu_device_group,
- 	.pgsize_bitmap = RK_IOMMU_PGSIZE_BITMAP,
+ extern int iommu_domain_get_attr(struct iommu_domain *domain, enum iommu_attr,
 -- 
 2.17.1
 
