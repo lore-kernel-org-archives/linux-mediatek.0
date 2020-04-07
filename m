@@ -4,19 +4,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 68026C38A24
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6705EC38A2F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 33F8A206BE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 33F41206BE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Q3iMLnQN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 33F8A206BE
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="W/lPF93R"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 33F41206BE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,21 +26,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=OCZXrEJwnPo/EEMN0KvMVd9CAlyGHswq1GUMMp7f0Dk=; b=Q3iMLnQNtjUtZeqGC9FTUGQ+5n
-	t6l2ne0Hv4/qXdlfB4Aqe+WQhFyVYR23QyDbTkGNVsNIxBy775IU+OvcD9i/XlyIwGjIjNQrCVeeW
-	a/RYP6DhALffNigZbQqv3j9Wy/tU/d1PgVIeli5wgGaNRGaM9lTiKJ10kFUM5Fqy+FceKqhtlLwXX
-	NzrjSROHKsCUaEbP4WkklV7454DFO3tmBUIYWlH17zl8OJr615Rg64Ki52pYa/1uXsGpAlrSedoKh
-	0GKdN/Rm8q0ir43dPjWxnrwena7CUzFqu28UrLV3tZkTcKDIbKqmmmlQYJT+emY9F/0jskZUtAXSA
-	VMWXkfyQ==;
+	bh=B00YyYGIfSceGkJwxEWGZD0Ig8W6a/xlCMneIiFhvBY=; b=W/lPF93RSmG+NiG8PMZIDfnBEu
+	d63wkiN+z4lu+lbEOKzE3UuSVGOezinnOVdhA1BOovWAknGOL5k8OJtXvJdQbvm4srH0N41n/vI7m
+	DNZ1sO8WDoG/HHLD5+4r+rKc4Y2ybuc9vRp2salRPmA5hT2ZsVPajw4solmdMKnJ+bnFd+VGN64NJ
+	2ZoKGyJBZU4DfcQ+UxqKZ/Q56AGJf9kAcxWrwPf66Uwr+CdN+TQ+d/jdUooLLC8hP7UHOlskUtP/a
+	h/UkbwywnaC8Kr0efPSmM7ca2hfZziHK7F4Kl/66tHYIpCNnh8UkZfn/KWprvprXQAeJ56kvujyUR
+	3aYTGlAg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLt8B-0008Tp-TK; Tue, 07 Apr 2020 18:39:27 +0000
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
- helo=theia.8bytes.org)
+	id 1jLt7y-00088p-An; Tue, 07 Apr 2020 18:39:14 +0000
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLt6y-0006tw-Dh; Tue, 07 Apr 2020 18:38:15 +0000
+ id 1jLt6t-0006of-Pe; Tue, 07 Apr 2020 18:38:12 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id CF58C694; Tue,  7 Apr 2020 20:37:53 +0200 (CEST)
+ id 5DAF6475; Tue,  7 Apr 2020 20:37:51 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -55,15 +54,16 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [RFC PATCH 29/34] iommu/omap: Remove orphan_dev tracking
-Date: Tue,  7 Apr 2020 20:37:37 +0200
-Message-Id: <20200407183742.4344-30-joro@8bytes.org>
+Subject: [RFC PATCH 17/34] iommu/arm-smmu: Store device instead of group in
+ arm_smmu_s2cr
+Date: Tue,  7 Apr 2020 20:37:25 +0200
+Message-Id: <20200407183742.4344-18-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200407183742.4344-1-joro@8bytes.org>
 References: <20200407183742.4344-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200407_113812_763731_1BE9A6DC 
-X-CRM114-Status: GOOD (  14.11  )
+X-CRM114-CacheID: sfid-20200407_113808_026567_36208C1F 
+X-CRM114-Status: GOOD (  13.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,129 +88,55 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Remove the tracking of device which could not be probed because
-their IOMMU is not probed yet. Replace it with a call to
-bus_iommu_probe() when a new IOMMU is probed.
+This is required to convert the arm-smmu driver to the
+probe/release_device() interface.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/omap-iommu.c | 54 +++-----------------------------------
- 1 file changed, 4 insertions(+), 50 deletions(-)
+ drivers/iommu/arm-smmu.c | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
-index 887fefcb03b4..ecc9d0829a91 100644
---- a/drivers/iommu/omap-iommu.c
-+++ b/drivers/iommu/omap-iommu.c
-@@ -35,15 +35,6 @@
+diff --git a/drivers/iommu/arm-smmu.c b/drivers/iommu/arm-smmu.c
+index a6a5796e9c41..3493501d8b2c 100644
+--- a/drivers/iommu/arm-smmu.c
++++ b/drivers/iommu/arm-smmu.c
+@@ -69,7 +69,7 @@ MODULE_PARM_DESC(disable_bypass,
+ 	"Disable bypass streams such that incoming transactions from devices that are not attached to an iommu domain will report an abort back to the device and will not be allowed to pass through the SMMU.");
  
- static const struct iommu_ops omap_iommu_ops;
+ struct arm_smmu_s2cr {
+-	struct iommu_group		*group;
++	struct device			*dev;
+ 	int				count;
+ 	enum arm_smmu_s2cr_type		type;
+ 	enum arm_smmu_s2cr_privcfg	privcfg;
+@@ -1100,7 +1100,7 @@ static int arm_smmu_master_alloc_smes(struct device *dev)
+ 	/* It worked! Now, poke the actual hardware */
+ 	for_each_cfg_sme(cfg, fwspec, i, idx) {
+ 		arm_smmu_write_sme(smmu, idx);
+-		smmu->s2crs[idx].group = group;
++		smmu->s2crs[idx].dev = dev;
+ 	}
  
--struct orphan_dev {
--	struct device *dev;
--	struct list_head node;
--};
--
--static LIST_HEAD(orphan_dev_list);
--
--static DEFINE_SPINLOCK(orphan_lock);
--
- #define to_iommu(dev)	((struct omap_iommu *)dev_get_drvdata(dev))
+ 	mutex_unlock(&smmu->stream_map_mutex);
+@@ -1495,11 +1495,15 @@ static struct iommu_group *arm_smmu_device_group(struct device *dev)
+ 	int i, idx;
  
- /* bitmap of the page sizes currently supported */
-@@ -62,8 +53,6 @@ static DEFINE_SPINLOCK(orphan_lock);
- static struct platform_driver omap_iommu_driver;
- static struct kmem_cache *iopte_cachep;
+ 	for_each_cfg_sme(cfg, fwspec, i, idx) {
+-		if (group && smmu->s2crs[idx].group &&
+-		    group != smmu->s2crs[idx].group)
++		struct iommu_group *idx_grp = NULL;
++
++		if (smmu->s2crs[idx].dev)
++			idx_grp = smmu->s2crs[idx].dev->iommu_group;
++
++		if (group && idx_grp && group != idx_grp)
+ 			return ERR_PTR(-EINVAL);
  
--static int _omap_iommu_add_device(struct device *dev);
--
- /**
-  * to_omap_domain - Get struct omap_iommu_domain from generic iommu_domain
-  * @dom:	generic iommu domain handle
-@@ -1177,7 +1166,6 @@ static int omap_iommu_probe(struct platform_device *pdev)
- 	struct omap_iommu *obj;
- 	struct resource *res;
- 	struct device_node *of = pdev->dev.of_node;
--	struct orphan_dev *orphan_dev, *tmp;
+-		group = smmu->s2crs[idx].group;
++		group = idx_grp;
+ 	}
  
- 	if (!of) {
- 		pr_err("%s: only DT-based devices are supported\n", __func__);
-@@ -1260,13 +1248,8 @@ static int omap_iommu_probe(struct platform_device *pdev)
- 
- 	dev_info(&pdev->dev, "%s registered\n", obj->name);
- 
--	list_for_each_entry_safe(orphan_dev, tmp, &orphan_dev_list, node) {
--		err = _omap_iommu_add_device(orphan_dev->dev);
--		if (!err) {
--			list_del(&orphan_dev->node);
--			kfree(orphan_dev);
--		}
--	}
-+	/* Re-probe bus to probe device attached to this IOMMU */
-+	bus_iommu_probe(&platform_bus_type);
- 
- 	return 0;
- 
-@@ -1657,7 +1640,7 @@ static phys_addr_t omap_iommu_iova_to_phys(struct iommu_domain *domain,
- 	return ret;
- }
- 
--static int _omap_iommu_add_device(struct device *dev)
-+static int omap_iommu_add_device(struct device *dev)
- {
- 	struct omap_iommu_arch_data *arch_data, *tmp;
- 	struct omap_iommu *oiommu;
-@@ -1666,8 +1649,6 @@ static int _omap_iommu_add_device(struct device *dev)
- 	struct platform_device *pdev;
- 	int num_iommus, i;
- 	int ret;
--	struct orphan_dev *orphan_dev;
--	unsigned long flags;
- 
- 	/*
- 	 * Allocate the archdata iommu structure for DT-based devices.
-@@ -1702,23 +1683,7 @@ static int _omap_iommu_add_device(struct device *dev)
- 		if (!pdev) {
- 			of_node_put(np);
- 			kfree(arch_data);
--			spin_lock_irqsave(&orphan_lock, flags);
--			list_for_each_entry(orphan_dev, &orphan_dev_list,
--					    node) {
--				if (orphan_dev->dev == dev)
--					break;
--			}
--			spin_unlock_irqrestore(&orphan_lock, flags);
--
--			if (orphan_dev && orphan_dev->dev == dev)
--				return -EPROBE_DEFER;
--
--			orphan_dev = kzalloc(sizeof(*orphan_dev), GFP_KERNEL);
--			orphan_dev->dev = dev;
--			spin_lock_irqsave(&orphan_lock, flags);
--			list_add(&orphan_dev->node, &orphan_dev_list);
--			spin_unlock_irqrestore(&orphan_lock, flags);
--			return -EPROBE_DEFER;
-+			return -ENODEV;
- 		}
- 
- 		oiommu = platform_get_drvdata(pdev);
-@@ -1764,17 +1729,6 @@ static int _omap_iommu_add_device(struct device *dev)
- 	return 0;
- }
- 
--static int omap_iommu_add_device(struct device *dev)
--{
--	int ret;
--
--	ret = _omap_iommu_add_device(dev);
--	if (ret == -EPROBE_DEFER)
--		return 0;
--
--	return ret;
--}
--
- static void omap_iommu_remove_device(struct device *dev)
- {
- 	struct omap_iommu_arch_data *arch_data = dev->archdata.iommu;
+ 	if (group)
 -- 
 2.17.1
 
