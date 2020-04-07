@@ -4,78 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2F4FEC2D0EC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:55:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BC61BC2D0EC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 20:09:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EE3012075E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:55:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6E48D2063A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 20:09:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bCeiguGK";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="k5ACFGdo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EE3012075E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Tvyf2ZrF";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="VIrPD6Ib"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6E48D2063A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=VU574OgUrpsIA39sRGE89Jp6rgw63WY/y5kYSkwA28o=; b=bCeiguGKPd54RpJGmbGr27luv1
-	own/UJFY3WzbWG96Hey2FGbSz2IALZz/mtblMe9iC02qlu9HX8xgBXYjbJQGeXSKc3u/vISVi2aia
-	b6K+GWEqZbfhZj28uyUYAeFUpZgc7dExvEIjEGX1tNq73AVj/ECvRPjZIJKRF/I7ko7Zzh9Bk//5u
-	6sZvvOnXh+V1ekn68bV0jGJgaNYY9iQYi0eH6YAToaPvTzUBzY/G3Q4gQJdISwgEHbts+KYQ1/DXm
-	riI+WlbP+DRbil1p1GRUHEBM+FghyQhWYAGRzUpTe7jXGmQYHtnXjMr1tAbvggBO+QRzxJiTOkayf
-	TiVLGXjA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=e5ZKBzX4ntMgILmKyMXoKDbbZP358SAI085Ayb/9pno=; b=Tvyf2ZrFpiy4KE
+	IhDBORha2KHoE6kmlO6mudOHKdELb4U0iorwYbYMw4Lqr5ovbVLmMBn0f2ffCn4cosP8hsykgRvg/
+	+bb6wcM0N/0DWMBBSyY+hZr+zZCU2BzULwcjutwJREl8c8l0rk4bVFS9bToWjB/ZouaGA6BWXmr7k
+	nLfj38Fqqe5z8sR1TiSAknrNmleV4caDf3QU6WRJcKF56iQU+0d4u+yOLaHaWlxY+0U7cQYeJvGnn
+	ycy2ZtCw0W/hRzf9jJaT8ogN39SGGk9u9a89qQibrLEXD5GCFE01TaYrUxrOSBjOzW3grI3tLUWHa
+	OA6v4rN8fDzc1uid5XiQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLtNT-0006Gl-AG; Tue, 07 Apr 2020 18:55:15 +0000
-Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
+	id 1jLuXJ-0000D0-QW; Tue, 07 Apr 2020 20:09:29 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLtNN-0003P1-56; Tue, 07 Apr 2020 18:55:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=References:In-Reply-To:Message-Id:Date:
- Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=Oi81xzj4r2wdTTCMSVqguO6olLR/Hdu0O0I/uW6hOrg=; b=k5ACFGdouEUiYNQ4ofAgZ6yscv
- vIj6qQWxsx4Sx2N4lQwFMIHTr8HdbrCcefHTh09AUNlQMIIaT5ZT3HkxXroOQKqILt8ni847ARh+M
- c+r5C4/7ar5JclpbpArNbc7XpmV6LqT+NejFKQm8/xA/l2xLcWTkVNNRyJJei5Qwey7RNofTTZnPt
- NxTb3Unn4EeXK+iZxehpDKngLxtHzdvChEQfT/uoTkeLK3NCus0gwU/vXXM5Vf7txD90lCuHQu7YA
- 8EsAR/fYeN5n4L2WuA5H97zr7zLLv3Y/8bA2RaLBBEffUbWBg9akNT6ZmkMUi/RH8Rj6no/tGxh6C
- 5hcj0YDQ==;
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
- helo=theia.8bytes.org)
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLt6x-0007fd-Cr; Tue, 07 Apr 2020 18:38:15 +0000
-Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 16E6C5ED; Tue,  7 Apr 2020 20:37:53 +0200 (CEST)
-From: Joerg Roedel <joro@8bytes.org>
-To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- David Woodhouse <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>,
- Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [RFC PATCH 25/34] iommu/qcom: Convert to probe/release_device()
- call-backs
-Date: Tue,  7 Apr 2020 20:37:33 +0200
-Message-Id: <20200407183742.4344-26-joro@8bytes.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200407183742.4344-1-joro@8bytes.org>
-References: <20200407183742.4344-1-joro@8bytes.org>
+ id 1jLuWX-0007iV-B2; Tue, 07 Apr 2020 20:08:42 +0000
+X-UUID: 62792cb4768345788716ac3109d3e479-20200407
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=WqSU90W8BDFuk3y8S58rG8mKm4Tc9B0etHGPGZwhauc=; 
+ b=VIrPD6IbFsRe4pfhEhTAZ9yt4BF4dxJrs5TpK/k29rd/1KEXHh+OEoq9YAsacxT7TANsVhEOrj1vCVmB54FbwARK3Xs6CXK9imAjc7d0uBWC3/ZV+pwyyrK9km7CUxaefVq6m95KmF16YXFsNLmH47F5ja4odOD+y45W+vlSYVs=;
+X-UUID: 62792cb4768345788716ac3109d3e479-20200407
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1148776233; Tue, 07 Apr 2020 12:08:29 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 7 Apr 2020 13:08:25 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 8 Apr 2020 04:08:17 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 8 Apr 2020 04:08:18 +0800
+From: <sean.wang@mediatek.com>
+To: <linus.walleij@linaro.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v7 2/2] pinctrl: mediatek: make MediaTek MT6765 pinctrl ready
+ for buiding loadable module
+Date: Wed, 8 Apr 2020 04:08:17 +0800
+Message-ID: <42100afe6f97d28447c153bea6b54ea556cf95ca.1586289920.git.sean.wang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <9feeb04805e5a406fe22a92e3f280abda39ddda4.1586289920.git.sean.wang@mediatek.com>
+References: <9feeb04805e5a406fe22a92e3f280abda39ddda4.1586289920.git.sean.wang@mediatek.com>
+MIME-Version: 1.0
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200407_130841_394008_358E627E 
+X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,96 +84,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
- virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org,
- iommu@lists.linux-foundation.org, Joerg Roedel <jroedel@suse.de>,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org
-MIME-Version: 1.0
+Cc: linux-gpio@vger.kernel.org, Sean
+ Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Light Hsieh <light.hsieh@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Joerg Roedel <jroedel@suse.de>
+From: Light Hsieh <light.hsieh@mediatek.com>
 
-Convert the QCOM IOMMU driver to use the probe_device() and
-release_device() call-backs of iommu_ops, so that the iommu core code
-does the group and sysfs setup.
+This patch make pinctrl-mt6765 ready for building as loadable module.
 
-Signed-off-by: Joerg Roedel <jroedel@suse.de>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Light Hsieh <light.hsieh@mediatek.com>
 ---
- drivers/iommu/qcom_iommu.c | 24 +++++++-----------------
- 1 file changed, 7 insertions(+), 17 deletions(-)
+v6->v7: remove change-id
+---
+ drivers/pinctrl/mediatek/Kconfig          | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt6765.c | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/iommu/qcom_iommu.c b/drivers/iommu/qcom_iommu.c
-index 0e2a96467767..054e476ebd49 100644
---- a/drivers/iommu/qcom_iommu.c
-+++ b/drivers/iommu/qcom_iommu.c
-@@ -524,14 +524,13 @@ static bool qcom_iommu_capable(enum iommu_cap cap)
- 	}
+diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+index 551ac716b10c..f32d3644c509 100644
+--- a/drivers/pinctrl/mediatek/Kconfig
++++ b/drivers/pinctrl/mediatek/Kconfig
+@@ -87,7 +87,7 @@ config PINCTRL_MT2712
+ 	select PINCTRL_MTK
+ 
+ config PINCTRL_MT6765
+-	bool "Mediatek MT6765 pin control"
++	tristate "Mediatek MT6765 pin control"
+ 	depends on OF
+ 	depends on ARM64 || COMPILE_TEST
+ 	default ARM64 && ARCH_MEDIATEK
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6765.c b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
+index 905dae8c3fd8..2c59d3936256 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt6765.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
+@@ -6,6 +6,7 @@
+  *
+  */
+ 
++#include <linux/module.h>
+ #include "pinctrl-mtk-mt6765.h"
+ #include "pinctrl-paris.h"
+ 
+@@ -1103,3 +1104,6 @@ static int __init mt6765_pinctrl_init(void)
+ 	return platform_driver_register(&mt6765_pinctrl_driver);
  }
- 
--static int qcom_iommu_add_device(struct device *dev)
-+static struct iommu_device *qcom_iommu_probe_device(struct device *dev)
- {
- 	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev);
--	struct iommu_group *group;
- 	struct device_link *link;
- 
- 	if (!qcom_iommu)
--		return -ENODEV;
-+		return ERR_PTR(-ENODEV);
- 
- 	/*
- 	 * Establish the link between iommu and master, so that the
-@@ -542,28 +541,19 @@ static int qcom_iommu_add_device(struct device *dev)
- 	if (!link) {
- 		dev_err(qcom_iommu->dev, "Unable to create device link between %s and %s\n",
- 			dev_name(qcom_iommu->dev), dev_name(dev));
--		return -ENODEV;
-+		return ERR_PTR(-ENODEV);
- 	}
- 
--	group = iommu_group_get_for_dev(dev);
--	if (IS_ERR(group))
--		return PTR_ERR(group);
--
--	iommu_group_put(group);
--	iommu_device_link(&qcom_iommu->iommu, dev);
--
--	return 0;
-+	return &qcom_iommu->iommu;
- }
- 
--static void qcom_iommu_remove_device(struct device *dev)
-+static void qcom_iommu_release_device(struct device *dev)
- {
- 	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev);
- 
- 	if (!qcom_iommu)
- 		return;
- 
--	iommu_device_unlink(&qcom_iommu->iommu, dev);
--	iommu_group_remove_device(dev);
- 	iommu_fwspec_free(dev);
- }
- 
-@@ -619,8 +609,8 @@ static const struct iommu_ops qcom_iommu_ops = {
- 	.flush_iotlb_all = qcom_iommu_flush_iotlb_all,
- 	.iotlb_sync	= qcom_iommu_iotlb_sync,
- 	.iova_to_phys	= qcom_iommu_iova_to_phys,
--	.add_device	= qcom_iommu_add_device,
--	.remove_device	= qcom_iommu_remove_device,
-+	.probe_device	= qcom_iommu_probe_device,
-+	.release_device	= qcom_iommu_release_device,
- 	.device_group	= generic_device_group,
- 	.of_xlate	= qcom_iommu_of_xlate,
- 	.pgsize_bitmap	= SZ_4K | SZ_64K | SZ_1M | SZ_16M,
+ arch_initcall(mt6765_pinctrl_init);
++
++MODULE_LICENSE("GPL v2");
++MODULE_DESCRIPTION("MediaTek MT6765 Pinctrl Driver");
 -- 
-2.17.1
-
-
+2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
