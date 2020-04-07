@@ -4,19 +4,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 07B07C352BE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BC536C38A2A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C8CC42078C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 884BF2083E
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZBYB9IhX"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C8CC42078C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bIZt9OzM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 884BF2083E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,20 +26,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=IxQuH351XsZ0LC9aZFKz8KMSea4W9ho4QcAHSJUeB/Y=; b=ZBYB9IhX4HqZYl/vupybdPuFxR
-	NxmDFMuHp33UygCCwkslGLwsOXqyjlSGYspCbGeTr8QSdNMaBXIwZG73vnESbb8iyy0dYYJjfSGFg
-	NNLRhzhUUVie8bWIUTIaVL7UOaV4A/a/Phcc8plhcAsHwi0uomgOwPk+XWXaKH8IksE+Zm5otCIfb
-	s4buEN/Jb6rfhRkNHVtvU2FaIZG2aDStjkay8uW6+VHENUqxq+No66mvGof599feozzT4cQEtSnze
-	v7l4L92MvMEQpQRavh12zpZh49nhP//zoHt4zhfox/jCVXPlKI3U1jA4zdN1jN5jIqUjKBhCZHMDo
-	3zN9kgRQ==;
+	bh=pknPsRXaZxGfaAWh96vMlGJk26c2Xx9/ZoH8G7Q18IY=; b=bIZt9OzMjN7LxvwXmZHRhui0S1
+	h1EbcJChYyyXqc5IVHngg030JH9cPa6g7bKNsYVKtL6hcPT7jyxhqDheO2Y2mejOCcvHv2VXhnzLs
+	Km3w8OCmq53Xqv1WYlmJEaWM1CyzFoKc0hOfI3h2gVjzD0VxS0OpY54aDDo+MgAVd9rlhsoRlLdeO
+	SMxInHne/4L4nfIXfV/FG1s7whK5qRI8ypT1x60Qga9XYq+mny9ee3MDiSHiIAu2ugFxYviu8HQQf
+	nW66KGs6/KhlUtJvAYAsD1uyFPbYoaLSsgfTw5GFERiW1tYqQQ3JPEShiMXDDc9bm3i3kr3z7ZUDC
+	kfFeyXSQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLt8F-00008m-D9; Tue, 07 Apr 2020 18:39:31 +0000
+	id 1jLt86-0008JV-6U; Tue, 07 Apr 2020 18:39:22 +0000
 Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLt6z-0006tx-B0; Tue, 07 Apr 2020 18:38:16 +0000
+ id 1jLt6w-0006rB-0E; Tue, 07 Apr 2020 18:38:13 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 51AD96A1; Tue,  7 Apr 2020 20:37:54 +0200 (CEST)
+ id E4DB248C; Tue,  7 Apr 2020 20:37:51 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -54,16 +54,16 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [RFC PATCH 30/34] iommu/omap: Convert to probe/release_device()
+Subject: [RFC PATCH 19/34] iommu/pamu: Convert to probe/release_device()
  call-backs
-Date: Tue,  7 Apr 2020 20:37:38 +0200
-Message-Id: <20200407183742.4344-31-joro@8bytes.org>
+Date: Tue,  7 Apr 2020 20:37:27 +0200
+Message-Id: <20200407183742.4344-20-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200407183742.4344-1-joro@8bytes.org>
 References: <20200407183742.4344-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200407_113813_572544_942E9617 
-X-CRM114-Status: GOOD (  15.18  )
+X-CRM114-CacheID: sfid-20200407_113810_227922_1ACAE628 
+X-CRM114-Status: GOOD (  12.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,140 +88,59 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Convert the OMAP IOMMU driver to use the probe_device() and
+Convert the PAMU IOMMU driver to use the probe_device() and
 release_device() call-backs of iommu_ops, so that the iommu core code
 does the group and sysfs setup.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/omap-iommu.c | 49 ++++++++++----------------------------
- 1 file changed, 13 insertions(+), 36 deletions(-)
+ drivers/iommu/fsl_pamu_domain.c | 22 +++++-----------------
+ 1 file changed, 5 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
-index ecc9d0829a91..6699fe6d9e06 100644
---- a/drivers/iommu/omap-iommu.c
-+++ b/drivers/iommu/omap-iommu.c
-@@ -1640,15 +1640,13 @@ static phys_addr_t omap_iommu_iova_to_phys(struct iommu_domain *domain,
- 	return ret;
+diff --git a/drivers/iommu/fsl_pamu_domain.c b/drivers/iommu/fsl_pamu_domain.c
+index 06828e2698d5..928d37771ece 100644
+--- a/drivers/iommu/fsl_pamu_domain.c
++++ b/drivers/iommu/fsl_pamu_domain.c
+@@ -1016,25 +1016,13 @@ static struct iommu_group *fsl_pamu_device_group(struct device *dev)
+ 	return group;
  }
  
--static int omap_iommu_add_device(struct device *dev)
-+static struct iommu_device *omap_iommu_probe_device(struct device *dev)
+-static int fsl_pamu_add_device(struct device *dev)
++static struct iommu_device *fsl_pamu_probe_device(struct device *dev)
  {
- 	struct omap_iommu_arch_data *arch_data, *tmp;
-+	struct platform_device *pdev;
- 	struct omap_iommu *oiommu;
 -	struct iommu_group *group;
- 	struct device_node *np;
--	struct platform_device *pdev;
- 	int num_iommus, i;
--	int ret;
- 
- 	/*
- 	 * Allocate the archdata iommu structure for DT-based devices.
-@@ -1657,7 +1655,7 @@ static int omap_iommu_add_device(struct device *dev)
- 	 * IOMMU users.
- 	 */
- 	if (!dev->of_node)
--		return 0;
-+		return ERR_PTR(-ENODEV);
- 
- 	/*
- 	 * retrieve the count of IOMMU nodes using phandle size as element size
-@@ -1670,27 +1668,27 @@ static int omap_iommu_add_device(struct device *dev)
- 
- 	arch_data = kcalloc(num_iommus + 1, sizeof(*arch_data), GFP_KERNEL);
- 	if (!arch_data)
--		return -ENOMEM;
-+		return ERR_PTR(-ENOMEM);
- 
- 	for (i = 0, tmp = arch_data; i < num_iommus; i++, tmp++) {
- 		np = of_parse_phandle(dev->of_node, "iommus", i);
- 		if (!np) {
- 			kfree(arch_data);
--			return -EINVAL;
-+			return ERR_PTR(-EINVAL);
- 		}
- 
- 		pdev = of_find_device_by_node(np);
- 		if (!pdev) {
- 			of_node_put(np);
- 			kfree(arch_data);
--			return -ENODEV;
-+			return ERR_PTR(-ENODEV);
- 		}
- 
- 		oiommu = platform_get_drvdata(pdev);
- 		if (!oiommu) {
- 			of_node_put(np);
- 			kfree(arch_data);
--			return -EINVAL;
-+			return ERR_PTR(-EINVAL);
- 		}
- 
- 		tmp->iommu_dev = oiommu;
-@@ -1699,46 +1697,25 @@ static int omap_iommu_add_device(struct device *dev)
- 		of_node_put(np);
- 	}
- 
-+	dev->archdata.iommu = arch_data;
-+
- 	/*
- 	 * use the first IOMMU alone for the sysfs device linking.
- 	 * TODO: Evaluate if a single iommu_group needs to be
- 	 * maintained for both IOMMUs
- 	 */
- 	oiommu = arch_data->iommu_dev;
--	ret = iommu_device_link(&oiommu->iommu, dev);
--	if (ret) {
--		kfree(arch_data);
--		return ret;
--	}
 -
--	dev->archdata.iommu = arch_data;
--
--	/*
--	 * IOMMU group initialization calls into omap_iommu_device_group, which
--	 * needs a valid dev->archdata.iommu pointer
--	 */
 -	group = iommu_group_get_for_dev(dev);
--	if (IS_ERR(group)) {
--		iommu_device_unlink(&oiommu->iommu, dev);
--		dev->archdata.iommu = NULL;
--		kfree(arch_data);
+-	if (IS_ERR(group))
 -		return PTR_ERR(group);
--	}
+-
 -	iommu_group_put(group);
- 
+-
+-	iommu_device_link(&pamu_iommu, dev);
+-
 -	return 0;
-+	return &oiommu->iommu;
++	return &pamu_iommu;
  }
  
--static void omap_iommu_remove_device(struct device *dev)
-+static void omap_iommu_release_device(struct device *dev)
+-static void fsl_pamu_remove_device(struct device *dev)
++static void fsl_pamu_release_device(struct device *dev)
  {
- 	struct omap_iommu_arch_data *arch_data = dev->archdata.iommu;
- 
- 	if (!dev->of_node || !arch_data)
- 		return;
- 
--	iommu_device_unlink(&arch_data->iommu_dev->iommu, dev);
+-	iommu_device_unlink(&pamu_iommu, dev);
 -	iommu_group_remove_device(dev);
--
- 	dev->archdata.iommu = NULL;
- 	kfree(arch_data);
+ }
  
-@@ -1763,8 +1740,8 @@ static const struct iommu_ops omap_iommu_ops = {
- 	.map		= omap_iommu_map,
- 	.unmap		= omap_iommu_unmap,
- 	.iova_to_phys	= omap_iommu_iova_to_phys,
--	.add_device	= omap_iommu_add_device,
--	.remove_device	= omap_iommu_remove_device,
-+	.probe_device	= omap_iommu_probe_device,
-+	.release_device	= omap_iommu_release_device,
- 	.device_group	= omap_iommu_device_group,
- 	.pgsize_bitmap	= OMAP_IOMMU_PGSIZES,
+ static const struct iommu_ops fsl_pamu_ops = {
+@@ -1048,8 +1036,8 @@ static const struct iommu_ops fsl_pamu_ops = {
+ 	.iova_to_phys	= fsl_pamu_iova_to_phys,
+ 	.domain_set_attr = fsl_pamu_set_domain_attr,
+ 	.domain_get_attr = fsl_pamu_get_domain_attr,
+-	.add_device	= fsl_pamu_add_device,
+-	.remove_device	= fsl_pamu_remove_device,
++	.probe_device	= fsl_pamu_probe_device,
++	.release_device	= fsl_pamu_release_device,
+ 	.device_group   = fsl_pamu_device_group,
  };
+ 
 -- 
 2.17.1
 
