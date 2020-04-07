@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A046C2D0EC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:40:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 80494C2BA80
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:40:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 24C7F20730
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:40:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4705F20730
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:40:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZQRXAcEX";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="WtorbJH/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 24C7F20730
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UCTymC3+";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="iOoRchJw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4705F20730
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,34 +27,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=psk5MJpYUgq5XyRzpgPnzEplU3i7JqI0nUUHbDiAfhw=; b=ZQRXAcEXpSdPcXroXxF3Gb/ypE
-	234rbYxZFL2LZMSAQalf6X+WzH6zXs3BwGT2Eh1N4zCbs8uXgCg0TWe2lRoLUxJ7dNam1wlpN+4sO
-	M9gHlc/RCZbRg3uxDqzg4UB/DVsMYjqY1zyA11i/7ea2jo7x2ZoCqV8SXcH59/OJGoX5CI9MOZHpZ
-	TSDMBhzN0jwBZbUkJuexyHJ/Gqu7KmBgEKhvJgHosLDutEXXXCbgJql/rfQAbjBCH17qw8n9zKo0Q
-	tCFxL/EzbVU/o3W5REVp1r0HLJS56aoeeCYE3Y5htyZ/z7IS/ls7ZUOONglI+7FRAI8jdAdI2cO5k
-	6LW3RefQ==;
+	bh=MO/w+e9w7nA7zOEo3es39ZE4hglyZ3ZehH2bvAcGAM4=; b=UCTymC3+sU0s4sSk6F4PjRl0Yx
+	iG3NcjZW/aWW3nQIbffG9f+C1O4gKHP2fXbjO5gSC6XicHJuyJnORcPqCx0HiUFEhOouPc9N8kXnP
+	zChXJ8BH+wfcAgEAfSNPylwPOGplCsWtRMLW63mWLHBXjFF4rBUbBo7BAGUCSgM5RaqiX2uunLOuG
+	U1xQA946ZLfANjlAz9YwEaVKmYMIgGYOLrQ8r7upAgXLbWMA79a8JczPeH43ZgDowosrKXPCLCam7
+	Whc/VwEIx/e7e92iWQ80YC4zaG/KhGdODQ82ZlI3Wm4dfOoW5SWzr76nNBrOv2ryNTrrzw4m8+ID7
+	/V6nPgsw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLt9I-0003sZ-C1; Tue, 07 Apr 2020 18:40:36 +0000
+	id 1jLt9L-0003xb-GK; Tue, 07 Apr 2020 18:40:39 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLt7H-0007Db-4h; Tue, 07 Apr 2020 18:38:31 +0000
+ id 1jLt7M-0007JC-Mo; Tue, 07 Apr 2020 18:38:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=References:In-Reply-To:Message-Id:Date:
  Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=R14dpopxU1+71l9KPXA8mEnokBzhrXW/HtbqMpv1HZk=; b=WtorbJH/DlZEOwUxKvYT35nx8Y
- oKDZpzLAFhp7YuCEJyRyp9FgiGEYjCMVShJc4BgcnUSBEGDidRDcvBgw5RAN1PV/KUkesz3EWehIs
- iWQ7tacsjoQD0RZ7I0vkaiEWYg3e82+AcfHx1OHaQ29g9myrotlmxvFzgloiDLR1vulpLOQrpuf60
- 5DlK81u+Db4zPdSJ2wOjVmnlZZl1fecUYU9spjkVCXGiNVhkYB324X8TG90M32pELA/o3/iXkngUM
- 2dPXIBO9oyE6FTxCsodlQLj+PRXSRSOfrBDAmv3cPFGhGh9g7jB02Moa6bfT4vTDYbo7vyImSJSuN
- ICt5eQIQ==;
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
- helo=theia.8bytes.org)
+ bh=G3ouBcVxGm0cXMOB5g0I5uMTw8BFLiPMZLpR/oT5y8s=; b=iOoRchJwCHWwCLEItYviZhpPKg
+ npbxMe/v3Lc1/N/twRfPLRwcwvsDlxmxYM/iCmNKrO3rQtVjiGTnaRq93/4QZcNYu8ozsOEi6PLQs
+ 7OiBpKojLW0fGQCgyoyukR6O57kebWc0SNeVSsNRKmhs5u8hQ4gSNBYJJ28pnsNSyOBe3RtdVITdW
+ 5GcHEyzPtbaR2evFzhDF/IZSJmnXrBikpE+eCwKhYZf3g2FGwQRK/sCVlAuyoyCUGK24+BhQaw0P7
+ FlmJJP1eSvxug9JYEbiOYEiV0KKUS7IH9O00wEcmqhMmE5aKDdjlJlYwAX08G5p9JgAjdhbXpPvFM
+ VX/Sd9Hg==;
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLt78-0004pk-21; Tue, 07 Apr 2020 18:38:29 +0000
+ id 1jLt78-0004pb-22; Tue, 07 Apr 2020 18:38:35 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id A693A65F; Tue,  7 Apr 2020 20:37:53 +0200 (CEST)
+ id 1BABB50C; Tue,  7 Apr 2020 20:37:51 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -69,16 +68,16 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [RFC PATCH 28/34] iommu/renesas: Convert to probe/release_device()
+Subject: [RFC PATCH 20/34] iommu/s390: Convert to probe/release_device()
  call-backs
-Date: Tue,  7 Apr 2020 20:37:36 +0200
-Message-Id: <20200407183742.4344-29-joro@8bytes.org>
+Date: Tue,  7 Apr 2020 20:37:28 +0200
+Message-Id: <20200407183742.4344-21-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200407183742.4344-1-joro@8bytes.org>
 References: <20200407183742.4344-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200407_193823_131381_09B44ECE 
-X-CRM114-Status: GOOD (  19.01  )
+X-CRM114-CacheID: sfid-20200407_193823_421020_2CAD6772 
+X-CRM114-Status: GOOD (  15.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,122 +102,73 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Convert the Renesas IOMMU driver to use the probe_device() and
+Convert the S390 IOMMU driver to use the probe_device() and
 release_device() call-backs of iommu_ops, so that the iommu core code
 does the group and sysfs setup.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/ipmmu-vmsa.c | 60 +++++++++++++-------------------------
- 1 file changed, 20 insertions(+), 40 deletions(-)
+ drivers/iommu/s390-iommu.c | 22 ++++++----------------
+ 1 file changed, 6 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/iommu/ipmmu-vmsa.c b/drivers/iommu/ipmmu-vmsa.c
-index 310cf09feea3..fb7e702dee23 100644
---- a/drivers/iommu/ipmmu-vmsa.c
-+++ b/drivers/iommu/ipmmu-vmsa.c
-@@ -805,24 +805,8 @@ static int ipmmu_of_xlate(struct device *dev,
- static int ipmmu_init_arm_mapping(struct device *dev)
- {
- 	struct ipmmu_vmsa_device *mmu = to_ipmmu(dev);
--	struct iommu_group *group;
- 	int ret;
+diff --git a/drivers/iommu/s390-iommu.c b/drivers/iommu/s390-iommu.c
+index 1137f3ddcb85..610f0828f22d 100644
+--- a/drivers/iommu/s390-iommu.c
++++ b/drivers/iommu/s390-iommu.c
+@@ -166,21 +166,14 @@ static void s390_iommu_detach_device(struct iommu_domain *domain,
+ 	}
+ }
  
--	/* Create a device group and add the device to it. */
--	group = iommu_group_alloc();
--	if (IS_ERR(group)) {
--		dev_err(dev, "Failed to allocate IOMMU group\n");
+-static int s390_iommu_add_device(struct device *dev)
++static struct iommu_device *s390_iommu_probe_device(struct device *dev)
+ {
+-	struct iommu_group *group = iommu_group_get_for_dev(dev);
+ 	struct zpci_dev *zdev = to_pci_dev(dev)->sysdata;
+ 
+-	if (IS_ERR(group))
 -		return PTR_ERR(group);
--	}
 -
--	ret = iommu_group_add_device(group, dev);
 -	iommu_group_put(group);
+-	iommu_device_link(&zdev->iommu_dev, dev);
 -
--	if (ret < 0) {
--		dev_err(dev, "Failed to add device to IPMMU group\n");
--		return ret;
--	}
--
- 	/*
- 	 * Create the ARM mapping, used by the ARM DMA mapping core to allocate
- 	 * VAs. This will allocate a corresponding IOMMU domain.
-@@ -856,48 +840,39 @@ static int ipmmu_init_arm_mapping(struct device *dev)
- 	return 0;
- 
- error:
--	iommu_group_remove_device(dev);
- 	if (mmu->mapping)
- 		arm_iommu_release_mapping(mmu->mapping);
- 
- 	return ret;
- }
- 
--static int ipmmu_add_device(struct device *dev)
-+static struct iommu_device *ipmmu_probe_device(struct device *dev)
- {
- 	struct ipmmu_vmsa_device *mmu = to_ipmmu(dev);
--	struct iommu_group *group;
--	int ret;
- 
- 	/*
- 	 * Only let through devices that have been verified in xlate()
- 	 */
- 	if (!mmu)
--		return -ENODEV;
-+		return ERR_PTR(-ENODEV);
- 
--	if (IS_ENABLED(CONFIG_ARM) && !IS_ENABLED(CONFIG_IOMMU_DMA)) {
--		ret = ipmmu_init_arm_mapping(dev);
--		if (ret)
--			return ret;
--	} else {
--		group = iommu_group_get_for_dev(dev);
--		if (IS_ERR(group))
--			return PTR_ERR(group);
-+	return &mmu->iommu;
-+}
- 
--		iommu_group_put(group);
--	}
-+static void ipmmu_probe_finalize(struct device *dev)
-+{
-+	int ret = 0;
- 
--	iommu_device_link(&mmu->iommu, dev);
 -	return 0;
-+	if (IS_ENABLED(CONFIG_ARM) && !IS_ENABLED(CONFIG_IOMMU_DMA))
-+		ret = ipmmu_init_arm_mapping(dev);
-+
-+	if (ret)
-+		dev_err(dev, "Can't create IOMMU mapping - DMA-OPS will not work\n");
++	return &zdev->iommu_dev;
  }
  
--static void ipmmu_remove_device(struct device *dev)
-+static void ipmmu_release_device(struct device *dev)
+-static void s390_iommu_remove_device(struct device *dev)
++static void s390_iommu_release_device(struct device *dev)
  {
--	struct ipmmu_vmsa_device *mmu = to_ipmmu(dev);
+ 	struct zpci_dev *zdev = to_pci_dev(dev)->sysdata;
+ 	struct iommu_domain *domain;
+@@ -191,7 +184,7 @@ static void s390_iommu_remove_device(struct device *dev)
+ 	 * to vfio-pci and completing the VFIO_SET_IOMMU ioctl (which triggers
+ 	 * the attach_dev), removing the device via
+ 	 * "echo 1 > /sys/bus/pci/devices/.../remove" won't trigger detach_dev,
+-	 * only remove_device will be called via the BUS_NOTIFY_REMOVED_DEVICE
++	 * only release_device will be called via the BUS_NOTIFY_REMOVED_DEVICE
+ 	 * notifier.
+ 	 *
+ 	 * So let's call detach_dev from here if it hasn't been called before.
+@@ -201,9 +194,6 @@ static void s390_iommu_remove_device(struct device *dev)
+ 		if (domain)
+ 			s390_iommu_detach_device(domain, dev);
+ 	}
 -
--	iommu_device_unlink(&mmu->iommu, dev);
- 	arm_iommu_detach_device(dev);
+-	iommu_device_unlink(&zdev->iommu_dev, dev);
 -	iommu_group_remove_device(dev);
  }
  
- static struct iommu_group *ipmmu_find_group(struct device *dev)
-@@ -925,9 +900,14 @@ static const struct iommu_ops ipmmu_ops = {
- 	.flush_iotlb_all = ipmmu_flush_iotlb_all,
- 	.iotlb_sync = ipmmu_iotlb_sync,
- 	.iova_to_phys = ipmmu_iova_to_phys,
--	.add_device = ipmmu_add_device,
--	.remove_device = ipmmu_remove_device,
-+	.probe_device = ipmmu_probe_device,
-+	.release_device = ipmmu_release_device,
-+	.probe_finalize = ipmmu_probe_finalize,
-+#if defined(CONFIG_ARM) && !defined(CONFIG_IOMMU_DMA)
-+	.device_group = generic_device_group,
-+#else
- 	.device_group = ipmmu_find_group,
-+#endif
- 	.pgsize_bitmap = SZ_1G | SZ_2M | SZ_4K,
- 	.of_xlate = ipmmu_of_xlate,
+ static int s390_iommu_update_trans(struct s390_domain *s390_domain,
+@@ -373,8 +363,8 @@ static const struct iommu_ops s390_iommu_ops = {
+ 	.map = s390_iommu_map,
+ 	.unmap = s390_iommu_unmap,
+ 	.iova_to_phys = s390_iommu_iova_to_phys,
+-	.add_device = s390_iommu_add_device,
+-	.remove_device = s390_iommu_remove_device,
++	.probe_device = s390_iommu_probe_device,
++	.release_device = s390_iommu_release_device,
+ 	.device_group = generic_device_group,
+ 	.pgsize_bitmap = S390_IOMMU_PGSIZES,
  };
 -- 
 2.17.1
