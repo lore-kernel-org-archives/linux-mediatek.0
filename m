@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D00AC38A2A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 28665C2BBC7
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 148612076E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EA79C20768
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:38:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RUEtVuvY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 148612076E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="h6Nw6KTG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA79C20768
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,21 +26,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=yhxgycWBlOZzKwUtac+f1k3u0cMgg5ONvEW1HHG17EM=; b=RUEtVuvYCLVKkiCOLczkVln44Y
-	6PYZ4NS34sciKxckHe0Z+xGY+HojIwI7DtgGHBn0vNdSU8m02W0CnpntZd8APOTq0MGtC3BDUyTic
-	8VUveHA7O4ZjndlVc4ZU0htVVKLYh7oUP5CtxtrF48ISuREQsY0Y++yX9t6Coo+elpf0jxA6uXOw3
-	7w9i2BNMpMOMtb2bck0BnJb9cQfa1xQvyBhkUydNhbvlyPt5VMbq1UO8SfwM6+xZkPOrzLqEgWY88
-	2efzvrweScF833ShHs9M0l+HcBm20UTKT9zm7QNhyiKYCgJj3MDmMj8JQBdydhzkC8y5fHaf6Ddo0
-	cBk4MClg==;
+	bh=30PO0ccsp2yHnWoweG/JVMZ5zj2Bbz2gPi3vDU9PqzE=; b=h6Nw6KTGZw97zbYD61DxrOBi2u
+	2tE8r8J6V5dEHLMSZOjf+Lcbcy7lcmo4OHtfPh6rkdKVziFw937xIxDYgynDZXBd70cjb7H9S6tKf
+	1DK4tquRPwH/bYq/XhMJhLrF35wwNIsfZbOHEF0oUPEqztVEMgqufkVJYbJ3X5eg75rJUZnEVR9lR
+	k/meqPyPdCSc+ZxgDTrVZoZSWYfV2neHelA2JgEJg8iaVwXXfUAR6I6Akl0P97gBwP7gekx6I1dvO
+	0i1LZLSe66JCcublowZHxWN4BHuOozrY/CCYKF83cORnKoo7Sm1SXNjq5GIxQMnzchwVqC8DR0fh1
+	CXR3EWcg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLt7d-0007bt-6X; Tue, 07 Apr 2020 18:38:53 +0000
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
- helo=theia.8bytes.org)
+	id 1jLt7a-0007Yb-Qu; Tue, 07 Apr 2020 18:38:50 +0000
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLt6q-0006iW-CH; Tue, 07 Apr 2020 18:38:05 +0000
+ id 1jLt6q-0006ie-CI; Tue, 07 Apr 2020 18:38:06 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 359A91D4; Tue,  7 Apr 2020 20:37:49 +0200 (CEST)
+ id 8C8F9273; Tue,  7 Apr 2020 20:37:49 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -55,15 +54,16 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [RFC PATCH 05/34] iommu/amd: Remove dma_mask check from check_device()
-Date: Tue,  7 Apr 2020 20:37:13 +0200
-Message-Id: <20200407183742.4344-6-joro@8bytes.org>
+Subject: [RFC PATCH 06/34] iommu/amd: Return -ENODEV in add_device when device
+ is not handled by IOMMU
+Date: Tue,  7 Apr 2020 20:37:14 +0200
+Message-Id: <20200407183742.4344-7-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200407183742.4344-1-joro@8bytes.org>
 References: <20200407183742.4344-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200407_113804_647043_36052879 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20200407_113804_647532_B9344440 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,27 +88,32 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-The check was only needed for the DMA-API implementation in the AMD
-IOMMU driver, which no longer exists.
+When check_device() fails on the device, it is not handled by the
+IOMMU and amd_iommu_add_device() needs to return -ENODEV.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/amd_iommu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/iommu/amd_iommu.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/iommu/amd_iommu.c b/drivers/iommu/amd_iommu.c
-index 73b4f84cf449..504f2db75eda 100644
+index 504f2db75eda..3e0d27f7622e 100644
 --- a/drivers/iommu/amd_iommu.c
 +++ b/drivers/iommu/amd_iommu.c
-@@ -326,7 +326,7 @@ static bool check_device(struct device *dev)
- {
- 	int devid;
+@@ -2157,9 +2157,12 @@ static int amd_iommu_add_device(struct device *dev)
+ 	struct amd_iommu *iommu;
+ 	int ret, devid;
  
--	if (!dev || !dev->dma_mask)
-+	if (!dev)
- 		return false;
+-	if (!check_device(dev) || get_dev_data(dev))
++	if (get_dev_data(dev))
+ 		return 0;
  
++	if (!check_device(dev))
++		return -ENODEV;
++
  	devid = get_device_id(dev);
+ 	if (devid < 0)
+ 		return devid;
 -- 
 2.17.1
 
