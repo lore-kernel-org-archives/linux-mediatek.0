@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 62503C2D0EC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:40:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D418BC2D0EC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:41:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 28A3B20771
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:40:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9206F20730
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:41:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WLChu4/h";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="q1O8U7T4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 28A3B20771
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s7o9OyrC";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="S6G0unIv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9206F20730
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,34 +27,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=SH+infWgwFIoPydpZud0vmQvSAxfJSl7Gv7sODmY39w=; b=WLChu4/hyL7LV9UA+jQOJDyIct
-	ayNI4Nik++4GwLz9RX6wVbkMVRezBFG9DEOQ70pQBSqc5pmxQOSYhCzWylXs7fHr4YxhikgP1XDpu
-	ruHthRvpPf9Phgqs8yvNAzVpSFavZvH0V69XVlNeUqxLkM2kGwtFkxTo793EjsIR3w4qyUE92cshq
-	pqRgvA4hEpAHEXnf5cRa9awz+SGg8UvJXIgWr+PiZ/W/raBB2Mo6quaQ9Lqq3EMWAvgHyiJs7LbF/
-	2hg4GD6GPQ2mkNFNrBql89QuHPaPZwpYECndzsjMeH0A4Ux4PSLBRSc5lwI1gskfdoYljaqPMdf2v
-	R09yDV5A==;
+	bh=DzHux1yc6kbt1q1noOGtFaf65SAEdiC3g0m4maXP5Ds=; b=s7o9OyrCViJmO+qSSz3p7dEdNe
+	wAoyl02RSHIFL9yc3bnkhcE7trBiPQpRnztfJFnkyD/fAMZvwDJ/bD6YGI+x9upA/MLg3tDyOAbt/
+	3Py2mZSUBHlpT/Sc8eNCtfmvYhKtLfh+H1fvle9Gd22NN0CWOrFQ7/Kr2d4IgReeojooY2Yom3Qtq
+	pRTVTSACeom0nt8yS3EuZYQiIWUZb0RVUuzcwWNT5G4aPg4ysqvwPUFHzvknRGBc+ms9hIrA6icQH
+	GvI1aOQwq2jeI7r9K6m8G68QmdyK1p7XU+eiJwp/qjoMtkE0e1dt9KUJyahuSPbeJPRI3ElkNDGEZ
+	jIAvUerg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLt9N-00040Q-Ea; Tue, 07 Apr 2020 18:40:41 +0000
+	id 1jLt9Y-0004CR-DM; Tue, 07 Apr 2020 18:40:52 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLt7L-0007IV-Lq; Tue, 07 Apr 2020 18:38:35 +0000
+ id 1jLt7S-0007QK-QB; Tue, 07 Apr 2020 18:38:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=References:In-Reply-To:Message-Id:Date:
  Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=3Opj20+5HPpld2ndbb8aFFbwgRbbaS/xoYgURzJujyE=; b=q1O8U7T4uOW4yknHAEXRnPS4M8
- 9ZuxZn4bJ9Cv5D/yf9APId7mn45f5yNuIa8j7Gd2Ac/oMNmAi2XpBTzYPKp7OQG0hFvxynhil59F4
- nFFptVQoq1oOpuY/75dpJxcqd9ETert1KI2B8U2St64VhaUOPCvWxqcRnnUbIwvWlVu8lA+16S9jo
- gjqGJDSsv4UjFnJA/W33moojPa9y8NSusw41DvLfZ6AyL1yiCKrO75Z7YdMCr06l999Xre0gXaFC9
- HJ9UOyjHJUb/Q96dsBPX/d8mirWVWcCFXHlF2un/ItFK1nCp3s/oQTHXRAPTdveC8nZnLiTC+G6LV
- /P/2nDOQ==;
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
- helo=theia.8bytes.org)
+ bh=WqzNdBJqYcA6yrtHpffvmfnUkZuNrXxFlMU+5xZLHc4=; b=S6G0unIvQis21CFpWF9TsoDmSL
+ JFdYzX2cPBd+3SI4E3x4mcY7PqzXKX5EhrQmv1+XaWWHLuiX/WSmGpbCmntsqvTTo8wVGisJaaDf9
+ eUxCeSQNsZa2v2pJi47WItxiRigIxUdPV0eRiYoFVtK6SQlXfn4lzL/X53Yqj+fAWbFJp5dgsRSED
+ STvOnDTVOdH8nWWYUDzFaiCcduj7gtQjW9IJwuSwe8HLmRl2+s38DYHC8L1tHk1eBV9QV3MXKA1tQ
+ cYaEu9qFmBNE9w/KEgKk2nPAX1fGYR0tdwKDqNOTXg/svFRMPl07ji8oipRciKPVMD9POEMz5H2lx
+ /Ik9oBLw==;
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLt78-0004pl-24; Tue, 07 Apr 2020 18:38:32 +0000
+ id 1jLt78-0004pr-21; Tue, 07 Apr 2020 18:38:41 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 6667D642; Tue,  7 Apr 2020 20:37:53 +0200 (CEST)
+ id 667F868C; Tue,  7 Apr 2020 20:37:54 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -69,16 +68,16 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [RFC PATCH 27/34] iommu/tegra: Convert to probe/release_device()
- call-backs
-Date: Tue,  7 Apr 2020 20:37:35 +0200
-Message-Id: <20200407183742.4344-28-joro@8bytes.org>
+Subject: [RFC PATCH 31/34] iommu/exynos: Create iommu_device in struct
+ exynos_iommu_owner
+Date: Tue,  7 Apr 2020 20:37:39 +0200
+Message-Id: <20200407183742.4344-32-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200407183742.4344-1-joro@8bytes.org>
 References: <20200407183742.4344-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200407_193823_123627_999160EB 
-X-CRM114-Status: GOOD (  18.67  )
+X-CRM114-CacheID: sfid-20200407_193823_685281_0C3681DB 
+X-CRM114-Status: GOOD (  22.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,149 +102,174 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Convert the Tegra IOMMU drivers to use the probe_device() and
-release_device() call-backs of iommu_ops, so that the iommu core code
-does the group and sysfs setup.
+The 'struct exynos_iommu_owner' is an umbrella for multiple SYSMMU
+instances attached to one master. As such all these instances are
+handled the same, they are all configured with the same iommu_domain,
+for example.
+
+The IOMMU core code expects each device to have only one IOMMU
+attached, so create the IOMMU-device for the umbrella instead of each
+hardware SYSMMU.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/tegra-gart.c | 24 ++++++------------------
- drivers/iommu/tegra-smmu.c | 31 ++++++++-----------------------
- 2 files changed, 14 insertions(+), 41 deletions(-)
+ drivers/iommu/exynos-iommu.c | 96 +++++++++++++++++++++++++++---------
+ 1 file changed, 73 insertions(+), 23 deletions(-)
 
-diff --git a/drivers/iommu/tegra-gart.c b/drivers/iommu/tegra-gart.c
-index db6559e8336f..5fbdff6ff41a 100644
---- a/drivers/iommu/tegra-gart.c
-+++ b/drivers/iommu/tegra-gart.c
-@@ -243,28 +243,16 @@ static bool gart_iommu_capable(enum iommu_cap cap)
- 	return false;
- }
+diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
+index 186ff5cc975c..86ecccbf0438 100644
+--- a/drivers/iommu/exynos-iommu.c
++++ b/drivers/iommu/exynos-iommu.c
+@@ -235,6 +235,8 @@ struct exynos_iommu_owner {
+ 	struct list_head controllers;	/* list of sysmmu_drvdata.owner_node */
+ 	struct iommu_domain *domain;	/* domain this device is attached */
+ 	struct mutex rpm_lock;		/* for runtime pm of all sysmmus */
++
++	struct iommu_device iommu;	/* IOMMU core handle */
+ };
  
--static int gart_iommu_add_device(struct device *dev)
-+static struct iommu_device *gart_iommu_probe_device(struct device *dev)
- {
--	struct iommu_group *group;
+ /*
+@@ -274,8 +276,6 @@ struct sysmmu_drvdata {
+ 	struct list_head owner_node;	/* node for owner controllers list */
+ 	phys_addr_t pgtable;		/* assigned page table structure */
+ 	unsigned int version;		/* our version */
 -
- 	if (!dev_iommu_fwspec_get(dev))
--		return -ENODEV;
--
--	group = iommu_group_get_for_dev(dev);
--	if (IS_ERR(group))
--		return PTR_ERR(group);
--
--	iommu_group_put(group);
-+		return ERR_PTR(-ENODEV);
+-	struct iommu_device iommu;	/* IOMMU core handle */
+ };
  
--	iommu_device_link(&gart_handle->iommu, dev);
+ static struct exynos_iommu_domain *to_exynos_domain(struct iommu_domain *dom)
+@@ -625,18 +625,6 @@ static int exynos_sysmmu_probe(struct platform_device *pdev)
+ 	data->sysmmu = dev;
+ 	spin_lock_init(&data->lock);
+ 
+-	ret = iommu_device_sysfs_add(&data->iommu, &pdev->dev, NULL,
+-				     dev_name(data->sysmmu));
+-	if (ret)
+-		return ret;
 -
--	return 0;
-+	return &gart_handle->iommu;
- }
+-	iommu_device_set_ops(&data->iommu, &exynos_iommu_ops);
+-	iommu_device_set_fwnode(&data->iommu, &dev->of_node->fwnode);
+-
+-	ret = iommu_device_register(&data->iommu);
+-	if (ret)
+-		return ret;
+-
+ 	platform_set_drvdata(pdev, data);
  
--static void gart_iommu_remove_device(struct device *dev)
-+static void gart_iommu_release_device(struct device *dev)
- {
--	iommu_group_remove_device(dev);
--	iommu_device_unlink(&gart_handle->iommu, dev);
- }
+ 	__sysmmu_get_version(data);
+@@ -1261,6 +1249,8 @@ static int exynos_iommu_add_device(struct device *dev)
+ 	}
+ 	iommu_group_put(group);
  
- static int gart_iommu_of_xlate(struct device *dev,
-@@ -290,8 +278,8 @@ static const struct iommu_ops gart_iommu_ops = {
- 	.domain_free	= gart_iommu_domain_free,
- 	.attach_dev	= gart_iommu_attach_dev,
- 	.detach_dev	= gart_iommu_detach_dev,
--	.add_device	= gart_iommu_add_device,
--	.remove_device	= gart_iommu_remove_device,
-+	.probe_device	= gart_iommu_probe_device,
-+	.release_device	= gart_iommu_release_device,
- 	.device_group	= generic_device_group,
- 	.map		= gart_iommu_map,
- 	.unmap		= gart_iommu_unmap,
-diff --git a/drivers/iommu/tegra-smmu.c b/drivers/iommu/tegra-smmu.c
-index 63a147b623e6..7426b7666e2b 100644
---- a/drivers/iommu/tegra-smmu.c
-+++ b/drivers/iommu/tegra-smmu.c
-@@ -757,11 +757,10 @@ static int tegra_smmu_configure(struct tegra_smmu *smmu, struct device *dev,
++	iommu_device_link(&owner->iommu, dev);
++
  	return 0;
  }
  
--static int tegra_smmu_add_device(struct device *dev)
-+static struct iommu_device *tegra_smmu_probe_device(struct device *dev)
- {
- 	struct device_node *np = dev->of_node;
- 	struct tegra_smmu *smmu = NULL;
--	struct iommu_group *group;
- 	struct of_phandle_args args;
- 	unsigned int index = 0;
- 	int err;
-@@ -774,7 +773,7 @@ static int tegra_smmu_add_device(struct device *dev)
- 			of_node_put(args.np);
- 
- 			if (err < 0)
--				return err;
-+				return ERR_PTR(err);
- 
- 			/*
- 			 * Only a single IOMMU master interface is currently
-@@ -783,8 +782,6 @@ static int tegra_smmu_add_device(struct device *dev)
- 			 */
- 			dev->archdata.iommu = smmu;
- 
--			iommu_device_link(&smmu->iommu, dev);
--
- 			break;
+@@ -1282,18 +1272,82 @@ static void exynos_iommu_remove_device(struct device *dev)
+ 			iommu_group_put(group);
  		}
- 
-@@ -793,26 +790,14 @@ static int tegra_smmu_add_device(struct device *dev)
  	}
++	iommu_device_unlink(&owner->iommu, dev);
+ 	iommu_group_remove_device(dev);
  
- 	if (!smmu)
--		return -ENODEV;
--
--	group = iommu_group_get_for_dev(dev);
--	if (IS_ERR(group))
--		return PTR_ERR(group);
--
--	iommu_group_put(group);
-+		return ERR_PTR(-ENODEV);
- 
--	return 0;
-+	return &smmu->iommu;
+ 	list_for_each_entry(data, &owner->controllers, owner_node)
+ 		device_link_del(data->link);
  }
  
--static void tegra_smmu_remove_device(struct device *dev)
-+static void tegra_smmu_release_device(struct device *dev)
++static int exynos_iommu_device_init(struct exynos_iommu_owner *owner)
++{
++	static u32 counter = 0;
++	int ret;
++
++	/*
++	 * Create a virtual IOMMU device. In reality it is an umbrella for a
++	 * number of SYSMMU platform devices, but that also means that any
++	 * master can have more than one real IOMMU device. This drivers handles
++	 * all the real devices for one master synchronously, so they appear as
++	 * one anyway.
++	 */
++	ret = iommu_device_sysfs_add(&owner->iommu, NULL, NULL,
++				     "sysmmu-owner-%d", counter++);
++	if (ret)
++		return ret;
++
++	iommu_device_set_ops(&owner->iommu, &exynos_iommu_ops);
++
++	return 0;
++}
++
++static void exynos_iommu_device_remove(struct exynos_iommu_owner *owner)
++{
++	iommu_device_set_ops(&owner->iommu, NULL);
++	iommu_device_sysfs_remove(&owner->iommu);
++}
++
++static int exynos_owner_init(struct device *dev)
++{
++	struct exynos_iommu_owner *owner = dev->archdata.iommu;
++	int ret;
++
++	if (owner)
++		return 0;
++
++	owner = kzalloc(sizeof(*owner), GFP_KERNEL);
++	if (!owner)
++		return -ENOMEM;
++
++	ret = exynos_iommu_device_init(owner);
++	if (ret)
++		goto out_free_owner;
++
++	ret = iommu_device_register(&owner->iommu);
++	if (ret)
++		goto out_remove_iommu_device;
++
++	INIT_LIST_HEAD(&owner->controllers);
++	mutex_init(&owner->rpm_lock);
++	dev->archdata.iommu = owner;
++
++	return 0;
++
++out_remove_iommu_device:
++	exynos_iommu_device_remove(owner);
++out_free_owner:
++	kfree(owner);
++
++	return ret;
++}
++
+ static int exynos_iommu_of_xlate(struct device *dev,
+ 				 struct of_phandle_args *spec)
  {
--	struct tegra_smmu *smmu = dev->archdata.iommu;
--
--	if (smmu)
--		iommu_device_unlink(&smmu->iommu, dev);
--
- 	dev->archdata.iommu = NULL;
--	iommu_group_remove_device(dev);
- }
+-	struct exynos_iommu_owner *owner = dev->archdata.iommu;
+ 	struct platform_device *sysmmu = of_find_device_by_node(spec->np);
+ 	struct sysmmu_drvdata *data, *entry;
++	struct exynos_iommu_owner *owner;
++	int ret;
  
- static const struct tegra_smmu_group_soc *
-@@ -895,8 +880,8 @@ static const struct iommu_ops tegra_smmu_ops = {
- 	.domain_free = tegra_smmu_domain_free,
- 	.attach_dev = tegra_smmu_attach_dev,
- 	.detach_dev = tegra_smmu_detach_dev,
--	.add_device = tegra_smmu_add_device,
--	.remove_device = tegra_smmu_remove_device,
-+	.probe_device = tegra_smmu_probe_device,
-+	.release_device = tegra_smmu_release_device,
- 	.device_group = tegra_smmu_device_group,
- 	.map = tegra_smmu_map,
- 	.unmap = tegra_smmu_unmap,
-@@ -1015,7 +1000,7 @@ struct tegra_smmu *tegra_smmu_probe(struct device *dev,
- 	 * value. However the IOMMU registration process will attempt to add
- 	 * all devices to the IOMMU when bus_set_iommu() is called. In order
- 	 * not to rely on global variables to track the IOMMU instance, we
--	 * set it here so that it can be looked up from the .add_device()
-+	 * set it here so that it can be looked up from the .probe_device()
- 	 * callback via the IOMMU device's .drvdata field.
- 	 */
- 	mc->smmu = smmu;
+ 	if (!sysmmu)
+ 		return -ENODEV;
+@@ -1302,15 +1356,11 @@ static int exynos_iommu_of_xlate(struct device *dev,
+ 	if (!data)
+ 		return -ENODEV;
+ 
+-	if (!owner) {
+-		owner = kzalloc(sizeof(*owner), GFP_KERNEL);
+-		if (!owner)
+-			return -ENOMEM;
++	ret = exynos_owner_init(dev);
++	if (ret)
++		return ret;
+ 
+-		INIT_LIST_HEAD(&owner->controllers);
+-		mutex_init(&owner->rpm_lock);
+-		dev->archdata.iommu = owner;
+-	}
++	owner = dev->archdata.iommu;
+ 
+ 	list_for_each_entry(entry, &owner->controllers, owner_node)
+ 		if (entry == data)
 -- 
 2.17.1
 
