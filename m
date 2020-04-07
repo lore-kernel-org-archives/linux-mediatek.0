@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F28C3C2BB55
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 186E0C3815B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BE11A20730
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D8D0C206BE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="g9xaOkaM"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE11A20730
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lrgtI5RS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D8D0C206BE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,20 +26,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=4nV2colmK0JOpzMeX8cZYZN/u67ByDOjkE41A01xFlM=; b=g9xaOkaMYPCUEtsgv/S5mqNDx1
-	QPzXuit07PYnX6Tw/V6SzQy5O5xZQ2gPSfm07ZQSj1CKDAtIUWYdLKfeVwaArU/j+TcfAIjrGSzwN
-	EsXSNLb3GcVleuVhlHZugRcO/8LjqxJcqxKxNbrg6x8p7F5JTYAkfKV1PN7yStWW1qxbrEg6lRSkd
-	WZclVmFbT2IbbcKilM2D3Gmo8XiaL/kYUnSylo5n8xA0s5LrxtasvJYNBuNHVU4aVo07XQwd+5NjC
-	6VcCTFU9DsNaqWp5VytUOk5sYkEC0nBsH9r41QhoydQ1eqjZfhp/xEcYa+Ajbcx23ZxFg9VjPdEqT
-	jYnOtcaA==;
+	bh=4ekgPUb4us0D6UE2nXb6O5G8BaPHKF3fxNLA2jeE7WY=; b=lrgtI5RSaJ+cCb6eWdtJHingu3
+	gaRDHtgOdtDL+VKXPv9w+ADxBZMWb6lZhjX9h4+GMx527CK6mlNvJ5BSJ1oYYwv4BV00ecdZzb4YV
+	mbmAHr1Ili4NLQKbY4ExOKI1MMl3tvxENKC5vj/kyXCywI1Pvf6+fLsYcKFBO6QA0oR7l3m+Sff8g
+	/yotqkQwRb3h/thiZsiAH1ZLGcm2mZ/nq5H3j+xeS7itwlebeFjv2C5J+6DqAhgvZGT+bdaOzG+sH
+	9PCLrAUhC7EYJ5FjQEB5wZj8pNJ+LPqoe42gZSjpPfEjoi/H8gvsy9Cu0wxVa3inhVRNun6DJHyz2
+	bmelPhdA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLt7m-0007qT-Sl; Tue, 07 Apr 2020 18:39:02 +0000
-Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
+	id 1jLt8G-0000B7-Ul; Tue, 07 Apr 2020 18:39:32 +0000
+Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
+ helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLt6q-0006ib-DO; Tue, 07 Apr 2020 18:38:09 +0000
+ id 1jLt6w-0006rp-Fp; Tue, 07 Apr 2020 18:38:15 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 9FE71261; Tue,  7 Apr 2020 20:37:49 +0200 (CEST)
+ id 45F6455F; Tue,  7 Apr 2020 20:37:52 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -54,16 +55,16 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [RFC PATCH 07/34] iommu: Add probe_device() and remove_device()
+Subject: [RFC PATCH 21/34] iommu/virtio: Convert to probe/release_device()
  call-backs
-Date: Tue,  7 Apr 2020 20:37:15 +0200
-Message-Id: <20200407183742.4344-8-joro@8bytes.org>
+Date: Tue,  7 Apr 2020 20:37:29 +0200
+Message-Id: <20200407183742.4344-22-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200407183742.4344-1-joro@8bytes.org>
 References: <20200407183742.4344-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200407_113804_648291_D3A67BA8 
-X-CRM114-Status: GOOD (  16.93  )
+X-CRM114-CacheID: sfid-20200407_113810_888106_60483566 
+X-CRM114-Status: GOOD (  14.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,159 +89,109 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Add call-backs to 'struct iommu_ops' as an alternative to the
-add_device() and remove_device() call-backs, which will be removed when
-all drivers are converted.
-
-The new call-backs will not setupt IOMMU groups and domains anymore,
-so also add a probe_finalize() call-back where the IOMMU driver can do
-per-device setup work which require the device to be set up with a
-group and a domain.
+Convert the VirtIO IOMMU driver to use the probe_device() and
+release_device() call-backs of iommu_ops, so that the iommu core code
+does the group and sysfs setup.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/iommu.c | 63 ++++++++++++++++++++++++++++++++++++++-----
- include/linux/iommu.h |  9 +++++++
- 2 files changed, 66 insertions(+), 6 deletions(-)
+ drivers/iommu/virtio-iommu.c | 41 +++++++++---------------------------
+ 1 file changed, 10 insertions(+), 31 deletions(-)
 
-diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-index 5877abd9b693..6cfe7799dc8c 100644
---- a/drivers/iommu/iommu.c
-+++ b/drivers/iommu/iommu.c
-@@ -174,6 +174,36 @@ static void dev_iommu_free(struct device *dev)
- 	dev->iommu = NULL;
+diff --git a/drivers/iommu/virtio-iommu.c b/drivers/iommu/virtio-iommu.c
+index d5cac4f46ca5..bda300c2a438 100644
+--- a/drivers/iommu/virtio-iommu.c
++++ b/drivers/iommu/virtio-iommu.c
+@@ -865,24 +865,23 @@ static struct viommu_dev *viommu_get_by_fwnode(struct fwnode_handle *fwnode)
+ 	return dev ? dev_to_virtio(dev)->priv : NULL;
  }
  
-+static int __iommu_probe_device(struct device *dev)
-+{
-+	const struct iommu_ops *ops = dev->bus->iommu_ops;
-+	struct iommu_device *iommu_dev;
-+	struct iommu_group *group;
-+	int ret;
-+
-+	iommu_dev = ops->probe_device(dev);
-+	if (IS_ERR(iommu_dev))
-+		return PTR_ERR(iommu_dev);
-+
-+	dev->iommu->iommu_dev = iommu_dev;
-+
-+	group = iommu_group_get_for_dev(dev);
-+	if (!IS_ERR(group)) {
-+		ret = PTR_ERR(group);
-+		goto out_release;
-+	}
-+	iommu_group_put(group);
-+
-+	iommu_device_link(iommu_dev, dev);
-+
-+	return 0;
-+
-+out_release:
-+	ops->release_device(dev);
-+
-+	return ret;
-+}
-+
- int iommu_probe_device(struct device *dev)
+-static int viommu_add_device(struct device *dev)
++static struct iommu_device *viommu_probe_device(struct device *dev)
  {
- 	const struct iommu_ops *ops = dev->bus->iommu_ops;
-@@ -191,10 +221,17 @@ int iommu_probe_device(struct device *dev)
- 		goto err_free_dev_param;
+ 	int ret;
+-	struct iommu_group *group;
+ 	struct viommu_endpoint *vdev;
+ 	struct viommu_dev *viommu = NULL;
+ 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+ 
+ 	if (!fwspec || fwspec->ops != &viommu_ops)
+-		return -ENODEV;
++		return ERR_PTR(-ENODEV);
+ 
+ 	viommu = viommu_get_by_fwnode(fwspec->iommu_fwnode);
+ 	if (!viommu)
+-		return -ENODEV;
++		return ERR_PTR(-ENODEV);
+ 
+ 	vdev = kzalloc(sizeof(*vdev), GFP_KERNEL);
+ 	if (!vdev)
+-		return -ENOMEM;
++		return ERR_PTR(-ENOMEM);
+ 
+ 	vdev->dev = dev;
+ 	vdev->viommu = viommu;
+@@ -896,45 +895,25 @@ static int viommu_add_device(struct device *dev)
+ 			goto err_free_dev;
  	}
  
--	ret = ops->add_device(dev);
-+	if (ops->probe_device)
-+		ret = __iommu_probe_device(dev);
-+	else
-+		ret = ops->add_device(dev);
-+
- 	if (ret)
- 		goto err_module_put;
+-	ret = iommu_device_link(&viommu->iommu, dev);
+-	if (ret)
+-		goto err_free_dev;
++	return &viommu->iommu;
  
-+	if (ops->probe_finalize)
-+		ops->probe_finalize(dev);
-+
- 	return 0;
- 
- err_module_put:
-@@ -204,17 +241,31 @@ int iommu_probe_device(struct device *dev)
- 	return ret;
- }
- 
-+static void __iommu_release_device(struct device *dev)
-+{
-+	const struct iommu_ops *ops = dev->bus->iommu_ops;
-+
-+	iommu_device_unlink(dev->iommu->iommu_dev, dev);
-+
-+	iommu_group_remove_device(dev);
-+
-+	ops->release_device(dev);
-+}
-+
- void iommu_release_device(struct device *dev)
- {
- 	const struct iommu_ops *ops = dev->bus->iommu_ops;
- 
--	if (dev->iommu_group)
-+	if (!dev->iommu)
-+		return;
-+
-+	if (ops->release_device)
-+		__iommu_release_device(dev);
-+	else if (dev->iommu_group)
- 		ops->remove_device(dev);
- 
--	if (dev->iommu) {
--		module_put(ops->owner);
--		dev_iommu_free(dev);
+-	/*
+-	 * Last step creates a default domain and attaches to it. Everything
+-	 * must be ready.
+-	 */
+-	group = iommu_group_get_for_dev(dev);
+-	if (IS_ERR(group)) {
+-		ret = PTR_ERR(group);
+-		goto err_unlink_dev;
 -	}
-+	module_put(ops->owner);
-+	dev_iommu_free(dev);
+-
+-	iommu_group_put(group);
+-
+-	return PTR_ERR_OR_ZERO(group);
+-
+-err_unlink_dev:
+-	iommu_device_unlink(&viommu->iommu, dev);
+ err_free_dev:
+ 	generic_iommu_put_resv_regions(dev, &vdev->resv_regions);
+ 	kfree(vdev);
+ 
+-	return ret;
++	return ERR_PTR(ret);
  }
  
- static struct iommu_domain *__iommu_domain_alloc(struct bus_type *bus,
-diff --git a/include/linux/iommu.h b/include/linux/iommu.h
-index 1f027b07e499..30170d191e5e 100644
---- a/include/linux/iommu.h
-+++ b/include/linux/iommu.h
-@@ -225,6 +225,10 @@ struct iommu_iotlb_gather {
-  * @iova_to_phys: translate iova to physical address
-  * @add_device: add device to iommu grouping
-  * @remove_device: remove device from iommu grouping
-+ * @probe_device: Add device to iommu driver handling
-+ * @release_device: Remove device from iommu driver handling
-+ * @probe_finalize: Do final setup work after the device is added to an IOMMU
-+ *                  group and attached to the groups domain
-  * @device_group: find iommu group for a particular device
-  * @domain_get_attr: Query domain attributes
-  * @domain_set_attr: Change domain attributes
-@@ -275,6 +279,9 @@ struct iommu_ops {
- 	phys_addr_t (*iova_to_phys)(struct iommu_domain *domain, dma_addr_t iova);
- 	int (*add_device)(struct device *dev);
- 	void (*remove_device)(struct device *dev);
-+	struct iommu_device *(*probe_device)(struct device *dev);
-+	void (*release_device)(struct device *dev);
-+	void (*probe_finalize)(struct device *dev);
- 	struct iommu_group *(*device_group)(struct device *dev);
- 	int (*domain_get_attr)(struct iommu_domain *domain,
- 			       enum iommu_attr attr, void *data);
-@@ -375,6 +382,7 @@ struct iommu_fault_param {
-  *
-  * @fault_param: IOMMU detected device fault reporting data
-  * @fwspec:	 IOMMU fwspec data
-+ * @iommu_dev:	 IOMMU device this device is linked to
-  * @priv:	 IOMMU Driver private data
-  *
-  * TODO: migrate other per device data pointers under iommu_dev_data, e.g.
-@@ -384,6 +392,7 @@ struct dev_iommu {
- 	struct mutex lock;
- 	struct iommu_fault_param	*fault_param;
- 	struct iommu_fwspec		*fwspec;
-+	struct iommu_device		*iommu_dev;
- 	void				*priv;
- };
+-static void viommu_remove_device(struct device *dev)
++static void viommu_release_device(struct device *dev)
+ {
+-	struct viommu_endpoint *vdev;
+ 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
++	struct viommu_endpoint *vdev;
  
+ 	if (!fwspec || fwspec->ops != &viommu_ops)
+ 		return;
+ 
+ 	vdev = dev_iommu_priv_get(dev);
+ 
+-	iommu_group_remove_device(dev);
+-	iommu_device_unlink(&vdev->viommu->iommu, dev);
+ 	generic_iommu_put_resv_regions(dev, &vdev->resv_regions);
+ 	kfree(vdev);
+ }
+@@ -960,8 +939,8 @@ static struct iommu_ops viommu_ops = {
+ 	.unmap			= viommu_unmap,
+ 	.iova_to_phys		= viommu_iova_to_phys,
+ 	.iotlb_sync		= viommu_iotlb_sync,
+-	.add_device		= viommu_add_device,
+-	.remove_device		= viommu_remove_device,
++	.probe_device		= viommu_probe_device,
++	.release_device		= viommu_release_device,
+ 	.device_group		= viommu_device_group,
+ 	.get_resv_regions	= viommu_get_resv_regions,
+ 	.put_resv_regions	= generic_iommu_put_resv_regions,
 -- 
 2.17.1
 
