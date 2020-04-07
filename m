@@ -2,77 +2,79 @@ Return-Path: <SRS0=UhTi=5X=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5AF11C2BABC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 04:01:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 90FBCC2BA16
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 05:39:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2A35C206BE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 04:01:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 64169206F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 05:39:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hSdQHcne";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Q6VjkvOn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A35C206BE
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rYec6yfe";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="GgR9B7y9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 64169206F5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xTreFr6GIz2KsivN9dQbIUXq9mX4aqFJ86DtCanl2Go=; b=hSdQHcneIOjpLH
-	1NPBxj6Y5qFc5GIgZ9AgSFnMGEH0X0HmsXuC5ZikFdWojcy3gnN9VSTO/V+boTpcXFnc31xmRXIU9
-	LmvVgGYJCcSOqB9+LGnzT+nCyL6ZtarZ8bqTlDVWrz07rVbWnSQsSwEd/KapYbayvPcbe+GmMqvlD
-	Kl+U42zsVGibQPT0zxu0g7KBkbsNnJQs/oMOpePCJnBhhmRP6eBNKGjNjaoCpoNfuwy+r6/kRL41W
-	89pcvaOMYMphyZHmmmHfYdrbgArxeHby2Sesj0aBnMkMdfjcszxni8qpg/CpYDYSAq9a8dn5l2F3Q
-	z2GiTATUktNXCUEkIvmQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bjYV836dsntWXlnNPVNimjCn2WLtTK9x3Vag0sr7JWE=; b=rYec6yfes5dRa9
+	dIbx9WkM88H/2c2JMwmceDEtrma+Dsnfb97lBI/OYqdkHqa5eh+ElqOgRlQgVGF5/fscJpSt95yHk
+	zvVwgAwP4Q+urEWJMFMQ/rloG2nK6WGfkaJMq16603RUJXh8drzUOti/exfoy+1MDuugsb+PkPDi0
+	74tvFai0YGPx6bSIPAaImKMwZDEXpkbfmj9w3nX2rE/9Jg/+YabSXoiLkRaMcfOXLSaPeDwu8o87P
+	aMVLNqB6yTiCsbNEZP5UNIeU0dBEAN+vjJendhdheIIWF7qjve6dsGsbyDJuNUbctB9LSjO9//zZG
+	mfdYFvFF4850QqOwy+BQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLfQG-0002Lt-8G; Tue, 07 Apr 2020 04:01:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jLgxk-0007dl-3g; Tue, 07 Apr 2020 05:39:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLfQD-0002LP-AU; Tue, 07 Apr 2020 04:01:11 +0000
-X-UUID: 1593cf157076450b9b1133d2045d7e39-20200406
+ id 1jLgxf-0007d7-PX
+ for linux-mediatek@lists.infradead.org; Tue, 07 Apr 2020 05:39:49 +0000
+X-UUID: 68396cd29f084d6eb7a8a769f8f39bf3-20200406
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=tDfNg15w+Ek3LL7rOou7wOOIqGnTslzbpPXl9hJyd+0=; 
- b=Q6VjkvOnS8xSsd7Yb90johBvvQVleE/Z7yyQ8y8gZn9YdLTQkCDvFvaW9TECp6w0c9oO5Yte8zsKWfe8eesrqFoV5TKKfdDGYDzmvgHPJAOAc6r/zVpxEhqv20hiPrPTw5Qs9Cze1rdXNCArf/j/zL2fy4A9nXS66LzKay177gs=;
-X-UUID: 1593cf157076450b9b1133d2045d7e39-20200406
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <yingjoe.chen@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=O2o43k14xlejaS3ceaxlrwDivs/SbOA913cIeBStoZE=; 
+ b=GgR9B7y9G/54eiYxNuvAZG0SVfoHzp+PkU24GooowJRj05LBGwnfLyNpBpobxIq7YEH51UF3hzXLMjpfg7S5VxeL4G3oi7Z/BPyLT0KI/KtfgJuPnTL3zob6Wm3hTL5cGoA8a2CTjJJ/bUFIGjlMrxWIWG1SARw5AoIM12X83WA=;
+X-UUID: 68396cd29f084d6eb7a8a769f8f39bf3-20200406
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <fengping.yu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 222806842; Mon, 06 Apr 2020 20:01:06 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ with ESMTP id 1490518270; Mon, 06 Apr 2020 21:39:42 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 6 Apr 2020 21:01:03 -0700
+ 15.0.1497.2; Mon, 6 Apr 2020 22:39:38 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 7 Apr 2020 12:01:02 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 7 Apr 2020 13:39:28 +0800
+Received: from localhost.localdomain (10.15.20.246) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 7 Apr 2020 12:01:03 +0800
-Message-ID: <1586232063.17821.2.camel@mtksdaap41>
-Subject: Re: [PATCH v11 4/5] rtc: mt6397: Add support for the MediaTek
- MT6358 RTC
-From: Yingjoe Chen <yingjoe.chen@mediatek.com>
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Date: Tue, 7 Apr 2020 12:01:03 +0800
-In-Reply-To: <1585627657-3265-5-git-send-email-hsin-hsiung.wang@mediatek.com>
-References: <1585627657-3265-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1585627657-3265-5-git-send-email-hsin-hsiung.wang@mediatek.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ Transport; Tue, 7 Apr 2020 13:39:30 +0800
+From: Fengping yu <fengping.yu@mediatek.com>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Andy Shevchenko
+ <andriy.shevchenko@linux.intel.com>, Yingjoe Chen
+ <yingjoe.chen@mediatek.com>, Rob Herring <robh+dt@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>
+Subject: [PATCH v3] drivers:input:keyboard: add mtk keypad driver 
+Date: Tue, 7 Apr 2020 13:36:09 +0800
+Message-ID: <20200407053610.20996-1-fengping.yu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 9C2F0DBEA935612CFC96B21F5282E409AABF91147DF33EF885EB4B82EDEFAFE82000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200406_210109_372153_5986284F 
-X-CRM114-Status: GOOD (  18.35  )
+X-CRM114-CacheID: sfid-20200406_223947_830711_0941FBDA 
+X-CRM114-Status: UNSURE (   7.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,153 +86,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Kate Stewart <kstewart@linuxfoundation.org>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Sebastian Reichel <sre@kernel.org>, Richard Fontana <rfontana@redhat.com>,
- Lee Jones <lee.jones@linaro.org>, linux-rtc@vger.kernel.org,
- Nicolas Boichat <drinkcat@chromium.org>, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, Frank Wunderlich <frank-w@public-files.de>,
- Ran Bi <ran.bi@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, Alessandro Zummo <a.zummo@towertech.it>,
- Josef Friedl <josef.friedl@speed.at>, srv_heupstream@mediatek.com,
- linux-kernel@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ wsd_upstream@mediatek.com, linux-input@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2020-03-31 at 12:07 +0800, Hsin-Hsiung Wang wrote:
-> From: Ran Bi <ran.bi@mediatek.com>
-> 
-> This add support for the MediaTek MT6358 RTC. Driver using
-> compatible data to store different RTC_WRTGR address offset.
-> This replace RTC_WRTGR to RTC_WRTGR_MT6323 in mt6323-poweroff
-> driver which only needed by armv7 CPU without ATF.
-> 
-> Signed-off-by: Ran Bi <ran.bi@mediatek.com>
-> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 
+This patchset add support to MediaTek matrix keypad.
 
-Looks good to me, thanks.
+Change since v2:
+- remove extra space and redundant lines
+- remove useless code
+- update keypad devicetree document debounce time unit
+- change to use devm_platform_ioremap_resource() to simplify resource management
+- use bitmap to store and check keypad state
 
-Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
+fengping.yu (2):
+  add dt-binding document for MediaTek Keypad
+  add MediaTek keypad driver
 
+ .../devicetree/bindings/input/mtk-kpd.txt     |  61 +++++
+ arch/arm64/configs/defconfig                  |   1 +
+ drivers/input/keyboard/Kconfig                |   7 +
+ drivers/input/keyboard/Makefile               |   1 +
+ drivers/input/keyboard/mtk-kpd.c              | 258 ++++++++++++++++++
+ 5 files changed, 328 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/input/mtk-kpd.txt
+ create mode 100644 drivers/input/keyboard/mtk-kpd.c
 
-Joe.C
-
-> ---
->  drivers/power/reset/mt6323-poweroff.c |  2 +-
->  drivers/rtc/rtc-mt6397.c              | 23 +++++++++++++++++++----
->  include/linux/mfd/mt6397/rtc.h        |  9 ++++++++-
->  3 files changed, 28 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/power/reset/mt6323-poweroff.c b/drivers/power/reset/mt6323-poweroff.c
-> index 1caf43d..0532803 100644
-> --- a/drivers/power/reset/mt6323-poweroff.c
-> +++ b/drivers/power/reset/mt6323-poweroff.c
-> @@ -30,7 +30,7 @@ static void mt6323_do_pwroff(void)
->  	int ret;
->  
->  	regmap_write(pwrc->regmap, pwrc->base + RTC_BBPU, RTC_BBPU_KEY);
-> -	regmap_write(pwrc->regmap, pwrc->base + RTC_WRTGR, 1);
-> +	regmap_write(pwrc->regmap, pwrc->base + RTC_WRTGR_MT6323, 1);
->  
->  	ret = regmap_read_poll_timeout(pwrc->regmap,
->  					pwrc->base + RTC_BBPU, val,
-> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-> index cda238d..7f3dfd2 100644
-> --- a/drivers/rtc/rtc-mt6397.c
-> +++ b/drivers/rtc/rtc-mt6397.c
-> @@ -9,6 +9,7 @@
->  #include <linux/mfd/mt6397/core.h>
->  #include <linux/module.h>
->  #include <linux/mutex.h>
-> +#include <linux/of_device.h>
->  #include <linux/platform_device.h>
->  #include <linux/regmap.h>
->  #include <linux/rtc.h>
-> @@ -20,7 +21,7 @@ static int mtk_rtc_write_trigger(struct mt6397_rtc *rtc)
->  	int ret;
->  	u32 data;
->  
-> -	ret = regmap_write(rtc->regmap, rtc->addr_base + RTC_WRTGR, 1);
-> +	ret = regmap_write(rtc->regmap, rtc->addr_base + rtc->data->wrtgr, 1);
->  	if (ret < 0)
->  		return ret;
->  
-> @@ -269,6 +270,8 @@ static int mtk_rtc_probe(struct platform_device *pdev)
->  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->  	rtc->addr_base = res->start;
->  
-> +	rtc->data = of_device_get_match_data(&pdev->dev);
-> +
->  	rtc->irq = platform_get_irq(pdev, 0);
->  	if (rtc->irq < 0)
->  		return rtc->irq;
-> @@ -325,10 +328,22 @@ static int mt6397_rtc_resume(struct device *dev)
->  static SIMPLE_DEV_PM_OPS(mt6397_pm_ops, mt6397_rtc_suspend,
->  			mt6397_rtc_resume);
->  
-> +static const struct mtk_rtc_data mt6358_rtc_data = {
-> +	.wrtgr = RTC_WRTGR_MT6358,
-> +};
-> +
-> +static const struct mtk_rtc_data mt6397_rtc_data = {
-> +	.wrtgr = RTC_WRTGR_MT6397,
-> +};
-> +
->  static const struct of_device_id mt6397_rtc_of_match[] = {
-> -	{ .compatible = "mediatek,mt6323-rtc", },
-> -	{ .compatible = "mediatek,mt6397-rtc", },
-> -	{ }
-> +	{ .compatible = "mediatek,mt6323-rtc",
-> +		.data = &mt6397_rtc_data, },
-> +	{ .compatible = "mediatek,mt6358-rtc",
-> +		.data = &mt6358_rtc_data, },
-> +	{ .compatible = "mediatek,mt6397-rtc",
-> +		.data = &mt6397_rtc_data, },
-> +	{}
->  };
->  MODULE_DEVICE_TABLE(of, mt6397_rtc_of_match);
->  
-> diff --git a/include/linux/mfd/mt6397/rtc.h b/include/linux/mfd/mt6397/rtc.h
-> index 7dfb63b..6200f3b 100644
-> --- a/include/linux/mfd/mt6397/rtc.h
-> +++ b/include/linux/mfd/mt6397/rtc.h
-> @@ -18,7 +18,9 @@
->  #define RTC_BBPU_CBUSY         BIT(6)
->  #define RTC_BBPU_KEY            (0x43 << 8)
->  
-> -#define RTC_WRTGR              0x003c
-> +#define RTC_WRTGR_MT6358       0x3a
-> +#define RTC_WRTGR_MT6397       0x3c
-> +#define RTC_WRTGR_MT6323       RTC_WRTGR_MT6397
->  
->  #define RTC_IRQ_STA            0x0002
->  #define RTC_IRQ_STA_AL         BIT(0)
-> @@ -65,6 +67,10 @@
->  #define MTK_RTC_POLL_DELAY_US  10
->  #define MTK_RTC_POLL_TIMEOUT   (jiffies_to_usecs(HZ))
->  
-> +struct mtk_rtc_data {
-> +	u32                     wrtgr;
-> +};
-> +
->  struct mt6397_rtc {
->  	struct device           *dev;
->  	struct rtc_device       *rtc_dev;
-> @@ -74,6 +80,7 @@ struct mt6397_rtc {
->  	struct regmap           *regmap;
->  	int                     irq;
->  	u32                     addr_base;
-> +	const struct mtk_rtc_data *data;
->  };
->  
->  #endif /* _LINUX_MFD_MT6397_RTC_H_ */
+--
+2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
