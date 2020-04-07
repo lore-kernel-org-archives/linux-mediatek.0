@@ -2,76 +2,78 @@ Return-Path: <SRS0=UhTi=5X=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 75DE2C2BA16
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 07:32:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 609F5C2BA16
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 07:32:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4CF2A2072A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 07:32:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 310A3206F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 07:32:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GK6W6fwy";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="KRbxMquy"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CF2A2072A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nPKUKUvV";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="l+Tkv/u3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 310A3206F5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0O0+t2RzX4aiHzeYKjcEsR7cl20mT7EiJxxzKwCY7L8=; b=GK6W6fwyjTQfPV
-	rOUu9gSLTxinjEQRGEdzll8xIYQ8kLBvYCN9lXivfdjfSt+Cu82gaSPFWtmGRgDhFPMBuxkcGzfQq
-	VGUow4b+7WMz2iytSiiuTq5l0CJsUDPxWR0Eg7Llf0UtOX5tQvlmaUOBLXo0GpKbABkhsMHqA5a99
-	cRbcamoM0QbxlepyYgVD1ScH/lnEzdoIjfRwyBmHaa++0bRkK6hndoKY0C8JBo/4BiDkmucScEIVr
-	E3BQlI7OMvGBXAFHkESh/vaN5qQ8agzDeflGSbuOmeAjRQzHXI4nESC+Thozosoe/Sa7IL9V6J9mQ
-	PsAvQy3jejeL0/46n2bQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wxQyGeHpY89zF3Of0jVoALl0nwld+29Omf2LEHk/Ag0=; b=nPKUKUvVQjynJ1
+	IPJOBtBsF705IvhWQJitfBvwvt33bbMEy0QRqqYv/i09zPJwsRlZC+mMqHcaGFw9HvrjbsRHvSatO
+	q07p543MHIdXocnkC4b9ynOkujm2I1OVoJGt1F3PmH2rlDGfYL1L0DHQqAP48+s0P6ETvxXwSzwPK
+	V4y917FZe+xOpPWHTAP/qMsF2xQd1/Ml7Clv3UZ8rfL2GfA/3DFRhJ5nkmeb36nP1uoYv9w/NfrEJ
+	4AlIFDPWIKm6mfKvB8uUORpb5cdcqrGEKomI0EaT+s9ktjtsih0nfKJySEctl50roAZ+EtCP9CcTb
+	rNBJPZ4uT3FjHFwT/9MQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLiig-0006U8-KO; Tue, 07 Apr 2020 07:32:26 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jLiii-0006VC-AD; Tue, 07 Apr 2020 07:32:28 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLiie-0006T8-14
- for linux-mediatek@lists.infradead.org; Tue, 07 Apr 2020 07:32:25 +0000
-X-UUID: ef32164804bb42df87bcb407a7c11cd8-20200406
+ id 1jLiig-0006TA-DN
+ for linux-mediatek@lists.infradead.org; Tue, 07 Apr 2020 07:32:27 +0000
+X-UUID: 198b8ba709af404c8942abafe4a55907-20200406
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=LcKOflwcAVgIoKzi1ClTy0WXvLpBoUICseaOM3oRllU=; 
- b=KRbxMquyngabsCPIGMTanlXxqnSmUixsb+4xphBX8TaNZSGs/o8nCTx/n6shfAYZbgqYSs5UTtX7AELPatHv9TCcX5LYQeCTNlsvZ4V6c5GQ0jXSuOm8gXv8hK3rSe5BRL6jYB1KF+bUSv6i/8G7gO9S7Z5i6E7LohwOQsgbQU4=;
-X-UUID: ef32164804bb42df87bcb407a7c11cd8-20200406
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=utm8widddof+A3OuVYBrYQZC1E2LozvtM6pEaLDQE04=; 
+ b=l+Tkv/u3YSCBtrGh7uPYiTdVmdda1Tyk8GNp7RAOmm2qARCJg+1S7wUC2itLV9TVy/Do5edBEtXIrlxmpNUkMhUdbizVtajpzTjH9AyqCDoegeNz6QK98lTKJl60J02neBfUK09/P8UGthsUErGdtk6dvj7+fvtjIPwlcWkdmWA=;
+X-UUID: 198b8ba709af404c8942abafe4a55907-20200406
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <light.hsieh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 267524526; Mon, 06 Apr 2020 23:32:32 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 7 Apr 2020 00:22:18 -0700
+ with ESMTP id 1035530472; Mon, 06 Apr 2020 23:32:31 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 7 Apr 2020 00:22:17 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 7 Apr 2020 15:22:15 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 7 Apr 2020 15:22:09 +0800
+ Frontend Transport; Tue, 7 Apr 2020 15:22:15 +0800
 From: <light.hsieh@mediatek.com>
 To: <linus.walleij@linaro.org>
-Subject: [PATCH v6 0/2] pinctr: mediatek: make MediaTek pinctrl-paris and
- related driver ready for buidling loadable module
-Date: Tue, 7 Apr 2020 15:22:08 +0800
-Message-ID: <1586244130-21523-1-git-send-email-light.hsieh@mediatek.com>
+Subject: [PATCH v6 2/2] pinctrl: mediatek: make MediaTek MT6765 pinctrl ready
+ for buiding loadable module
+Date: Tue, 7 Apr 2020 15:22:10 +0800
+Message-ID: <1586244130-21523-3-git-send-email-light.hsieh@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1586244130-21523-1-git-send-email-light.hsieh@mediatek.com>
+References: <1586244130-21523-1-git-send-email-light.hsieh@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 439E575EA29836A477196E91C88EBF3671BF192137C8D0A792237965C856E59B2000:8
+X-TM-SNTS-SMTP: AFE7326EF84B9D724EA3663D065E6C8B4AF86494C553AB547ADC88E30E0CF6152000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200407_003224_076253_7B140336 
-X-CRM114-Status: UNSURE (   8.15  )
+X-CRM114-CacheID: sfid-20200407_003226_452521_E8C2CFB6 
+X-CRM114-Status: UNSURE (   8.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -94,69 +96,47 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Light Hsieh <light.hsieh@mediatek.com>
 
-pinctrl: mediatek: make MediaTek pinctrl v2 driver ready for buidling loadable module
+This patch make pinctrl-mt6765 ready for building as loadable module.
 
-In the future we want to be able to build the MediaTek pinctrl driver,
-based on paris, as kernel module. This patch allows pinctrl-paris.c, the
-external interrupt controller mtk-eint.c, and pinctrl-mtk-common-v2.c to
-be loadable as module.
+Change-Id: I7231ef1ef30e935fc08e049b2c8cbab6a19c66f5
+Signed-off-by: Light Hsieh <light.hsieh@mediatek.com>
+---
+ drivers/pinctrl/mediatek/Kconfig          | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mt6765.c | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
-The following is the rationale for determining whether mtk-eint.c,
-pinctrl-mtk-common-v2.c, and pinctrl-paris.c are built as loadable module:
-
-1. drivers/pinctrl/mediatek/Kconfig:
-1.1 PINCTRL_MTXXXX: change from bool to tristate. It is specified in
-        defconfig file. MTXXXX can only be the user of pinctrl-paris,
-        which can MT6765 or MT8183. The patch for changing
-        PINCTRL_MT6765 from bool to tristate will be given as the next
-        patch of the patch series.
-1.2 PINCTRL_MTK_PARIS: change from bool to tristate and select
-        PINCTRL_MTK_V2. No need to specify in defconfig file.
-      * PINCTRL_MTK_PARIS will be y if any PINCTRL_MTXXXX selecting
-        PINCTRL_MTK_PARIS is y.
-      * PINCTRL_MTK_PARIS will be n if all PINCTRL_MTXXXX selecting
-        PINCTRL_MTK_PARIS is n.
-      * PINCTRL_MTK_PARIS will be m if some PINCTRL_MTXXXX selecting
-        PINCTRL_MTK_PARIS are m and other PINCTRL_MTXXXX selecting
-        PINCTRL_MTK_PARIS are n.
-1.3 PINCTRL_MTK_MOORE: select EINT_MTK and PINCTRL_MTK_V2. It is make
-        to be ready for building as loadable kernel module because it
-        is not used on Android kernel.        
-1.4 PINCTRL_MTK_V2: add this tristate config which depends on
-        PINCTRL_MTK_PARIS and PINCTRL_MTK_MOORE. No need to specify in 
-        defconfig file.
-      * PINCTRL_MTK_V2 will be y if either PINCTRL_MTK_PARIS or
-        PINCTRL_MTK_MOORE is y.
-      * PINCTRL_MTK_V2 will be n if both PINCTRL_MTK_PARIS and
-        PINCTRL_MTK_MOORE are n.
-      * PINCTRL_MTK_V2 will be m if PINCTRL_MTK_PARIS is m and
-        PINCTRL_MTK_MOORE is n.
-1.5 EINT_MTK: change from bool to tristate and add rule for default.
-        No need to specify in defconfig file.
-      * First rule: determine if EINT_MTK is y or n according to 
-        selection of PINCTRL_MTK or PINCTRL_MTK_MORE.
-      * Second rule: determine if EINT_MTK is y, m, or n according to
-        selection of PINCTRL_MTK_PARIS.
-
-2. drivers/pinctrl/mediatek/Makefile: Use PINCTRL_MTK_V2 to determine
-        if pinctrl-mtk-common-v2.c is built as loadable module or
-        built-in.
-
-
-Light Hsieh (2):
-  pinctrl: mediatek: make MediaTek pinctrl v2 driver ready for buidling
-    loadable module
-  pinctrl: mediatek: make MediaTek MT6765 pinctrl ready for buiding
-    loadable module
-
- drivers/pinctrl/mediatek/Kconfig                 | 13 ++++++++++---
- drivers/pinctrl/mediatek/Makefile                |  5 +++--
- drivers/pinctrl/mediatek/mtk-eint.c              |  9 +++++++++
- drivers/pinctrl/mediatek/pinctrl-mt6765.c        |  4 ++++
- drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 24 ++++++++++++++++++++++++
- drivers/pinctrl/mediatek/pinctrl-paris.c         |  6 ++++++
- 6 files changed, 56 insertions(+), 5 deletions(-)
-
+diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+index 551ac71..f32d364 100644
+--- a/drivers/pinctrl/mediatek/Kconfig
++++ b/drivers/pinctrl/mediatek/Kconfig
+@@ -87,7 +87,7 @@ config PINCTRL_MT2712
+ 	select PINCTRL_MTK
+ 
+ config PINCTRL_MT6765
+-	bool "Mediatek MT6765 pin control"
++	tristate "Mediatek MT6765 pin control"
+ 	depends on OF
+ 	depends on ARM64 || COMPILE_TEST
+ 	default ARM64 && ARCH_MEDIATEK
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6765.c b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
+index 905dae8c..2c59d39 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt6765.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt6765.c
+@@ -6,6 +6,7 @@
+  *
+  */
+ 
++#include <linux/module.h>
+ #include "pinctrl-mtk-mt6765.h"
+ #include "pinctrl-paris.h"
+ 
+@@ -1103,3 +1104,6 @@ static int __init mt6765_pinctrl_init(void)
+ 	return platform_driver_register(&mt6765_pinctrl_driver);
+ }
+ arch_initcall(mt6765_pinctrl_init);
++
++MODULE_LICENSE("GPL v2");
++MODULE_DESCRIPTION("MediaTek MT6765 Pinctrl Driver");
 -- 
 1.8.1.1.dirty
 _______________________________________________
