@@ -4,19 +4,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BC536C38A2A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F28C3C2BB55
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 884BF2083E
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BE11A20730
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Apr 2020 18:39:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bIZt9OzM"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 884BF2083E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="g9xaOkaM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE11A20730
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,20 +26,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=pknPsRXaZxGfaAWh96vMlGJk26c2Xx9/ZoH8G7Q18IY=; b=bIZt9OzMjN7LxvwXmZHRhui0S1
-	h1EbcJChYyyXqc5IVHngg030JH9cPa6g7bKNsYVKtL6hcPT7jyxhqDheO2Y2mejOCcvHv2VXhnzLs
-	Km3w8OCmq53Xqv1WYlmJEaWM1CyzFoKc0hOfI3h2gVjzD0VxS0OpY54aDDo+MgAVd9rlhsoRlLdeO
-	SMxInHne/4L4nfIXfV/FG1s7whK5qRI8ypT1x60Qga9XYq+mny9ee3MDiSHiIAu2ugFxYviu8HQQf
-	nW66KGs6/KhlUtJvAYAsD1uyFPbYoaLSsgfTw5GFERiW1tYqQQ3JPEShiMXDDc9bm3i3kr3z7ZUDC
-	kfFeyXSQ==;
+	bh=4nV2colmK0JOpzMeX8cZYZN/u67ByDOjkE41A01xFlM=; b=g9xaOkaMYPCUEtsgv/S5mqNDx1
+	QPzXuit07PYnX6Tw/V6SzQy5O5xZQ2gPSfm07ZQSj1CKDAtIUWYdLKfeVwaArU/j+TcfAIjrGSzwN
+	EsXSNLb3GcVleuVhlHZugRcO/8LjqxJcqxKxNbrg6x8p7F5JTYAkfKV1PN7yStWW1qxbrEg6lRSkd
+	WZclVmFbT2IbbcKilM2D3Gmo8XiaL/kYUnSylo5n8xA0s5LrxtasvJYNBuNHVU4aVo07XQwd+5NjC
+	6VcCTFU9DsNaqWp5VytUOk5sYkEC0nBsH9r41QhoydQ1eqjZfhp/xEcYa+Ajbcx23ZxFg9VjPdEqT
+	jYnOtcaA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLt86-0008JV-6U; Tue, 07 Apr 2020 18:39:22 +0000
+	id 1jLt7m-0007qT-Sl; Tue, 07 Apr 2020 18:39:02 +0000
 Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLt6w-0006rB-0E; Tue, 07 Apr 2020 18:38:13 +0000
+ id 1jLt6q-0006ib-DO; Tue, 07 Apr 2020 18:38:09 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id E4DB248C; Tue,  7 Apr 2020 20:37:51 +0200 (CEST)
+ id 9FE71261; Tue,  7 Apr 2020 20:37:49 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -54,16 +54,16 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [RFC PATCH 19/34] iommu/pamu: Convert to probe/release_device()
+Subject: [RFC PATCH 07/34] iommu: Add probe_device() and remove_device()
  call-backs
-Date: Tue,  7 Apr 2020 20:37:27 +0200
-Message-Id: <20200407183742.4344-20-joro@8bytes.org>
+Date: Tue,  7 Apr 2020 20:37:15 +0200
+Message-Id: <20200407183742.4344-8-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200407183742.4344-1-joro@8bytes.org>
 References: <20200407183742.4344-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200407_113810_227922_1ACAE628 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20200407_113804_648291_D3A67BA8 
+X-CRM114-Status: GOOD (  16.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,57 +88,157 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Convert the PAMU IOMMU driver to use the probe_device() and
-release_device() call-backs of iommu_ops, so that the iommu core code
-does the group and sysfs setup.
+Add call-backs to 'struct iommu_ops' as an alternative to the
+add_device() and remove_device() call-backs, which will be removed when
+all drivers are converted.
+
+The new call-backs will not setupt IOMMU groups and domains anymore,
+so also add a probe_finalize() call-back where the IOMMU driver can do
+per-device setup work which require the device to be set up with a
+group and a domain.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/fsl_pamu_domain.c | 22 +++++-----------------
- 1 file changed, 5 insertions(+), 17 deletions(-)
+ drivers/iommu/iommu.c | 63 ++++++++++++++++++++++++++++++++++++++-----
+ include/linux/iommu.h |  9 +++++++
+ 2 files changed, 66 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/iommu/fsl_pamu_domain.c b/drivers/iommu/fsl_pamu_domain.c
-index 06828e2698d5..928d37771ece 100644
---- a/drivers/iommu/fsl_pamu_domain.c
-+++ b/drivers/iommu/fsl_pamu_domain.c
-@@ -1016,25 +1016,13 @@ static struct iommu_group *fsl_pamu_device_group(struct device *dev)
- 	return group;
+diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+index 5877abd9b693..6cfe7799dc8c 100644
+--- a/drivers/iommu/iommu.c
++++ b/drivers/iommu/iommu.c
+@@ -174,6 +174,36 @@ static void dev_iommu_free(struct device *dev)
+ 	dev->iommu = NULL;
  }
  
--static int fsl_pamu_add_device(struct device *dev)
-+static struct iommu_device *fsl_pamu_probe_device(struct device *dev)
++static int __iommu_probe_device(struct device *dev)
++{
++	const struct iommu_ops *ops = dev->bus->iommu_ops;
++	struct iommu_device *iommu_dev;
++	struct iommu_group *group;
++	int ret;
++
++	iommu_dev = ops->probe_device(dev);
++	if (IS_ERR(iommu_dev))
++		return PTR_ERR(iommu_dev);
++
++	dev->iommu->iommu_dev = iommu_dev;
++
++	group = iommu_group_get_for_dev(dev);
++	if (!IS_ERR(group)) {
++		ret = PTR_ERR(group);
++		goto out_release;
++	}
++	iommu_group_put(group);
++
++	iommu_device_link(iommu_dev, dev);
++
++	return 0;
++
++out_release:
++	ops->release_device(dev);
++
++	return ret;
++}
++
+ int iommu_probe_device(struct device *dev)
  {
--	struct iommu_group *group;
--
--	group = iommu_group_get_for_dev(dev);
--	if (IS_ERR(group))
--		return PTR_ERR(group);
--
--	iommu_group_put(group);
--
--	iommu_device_link(&pamu_iommu, dev);
--
--	return 0;
-+	return &pamu_iommu;
+ 	const struct iommu_ops *ops = dev->bus->iommu_ops;
+@@ -191,10 +221,17 @@ int iommu_probe_device(struct device *dev)
+ 		goto err_free_dev_param;
+ 	}
+ 
+-	ret = ops->add_device(dev);
++	if (ops->probe_device)
++		ret = __iommu_probe_device(dev);
++	else
++		ret = ops->add_device(dev);
++
+ 	if (ret)
+ 		goto err_module_put;
+ 
++	if (ops->probe_finalize)
++		ops->probe_finalize(dev);
++
+ 	return 0;
+ 
+ err_module_put:
+@@ -204,17 +241,31 @@ int iommu_probe_device(struct device *dev)
+ 	return ret;
  }
  
--static void fsl_pamu_remove_device(struct device *dev)
-+static void fsl_pamu_release_device(struct device *dev)
++static void __iommu_release_device(struct device *dev)
++{
++	const struct iommu_ops *ops = dev->bus->iommu_ops;
++
++	iommu_device_unlink(dev->iommu->iommu_dev, dev);
++
++	iommu_group_remove_device(dev);
++
++	ops->release_device(dev);
++}
++
+ void iommu_release_device(struct device *dev)
  {
--	iommu_device_unlink(&pamu_iommu, dev);
--	iommu_group_remove_device(dev);
+ 	const struct iommu_ops *ops = dev->bus->iommu_ops;
+ 
+-	if (dev->iommu_group)
++	if (!dev->iommu)
++		return;
++
++	if (ops->release_device)
++		__iommu_release_device(dev);
++	else if (dev->iommu_group)
+ 		ops->remove_device(dev);
+ 
+-	if (dev->iommu) {
+-		module_put(ops->owner);
+-		dev_iommu_free(dev);
+-	}
++	module_put(ops->owner);
++	dev_iommu_free(dev);
  }
  
- static const struct iommu_ops fsl_pamu_ops = {
-@@ -1048,8 +1036,8 @@ static const struct iommu_ops fsl_pamu_ops = {
- 	.iova_to_phys	= fsl_pamu_iova_to_phys,
- 	.domain_set_attr = fsl_pamu_set_domain_attr,
- 	.domain_get_attr = fsl_pamu_get_domain_attr,
--	.add_device	= fsl_pamu_add_device,
--	.remove_device	= fsl_pamu_remove_device,
-+	.probe_device	= fsl_pamu_probe_device,
-+	.release_device	= fsl_pamu_release_device,
- 	.device_group   = fsl_pamu_device_group,
+ static struct iommu_domain *__iommu_domain_alloc(struct bus_type *bus,
+diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+index 1f027b07e499..30170d191e5e 100644
+--- a/include/linux/iommu.h
++++ b/include/linux/iommu.h
+@@ -225,6 +225,10 @@ struct iommu_iotlb_gather {
+  * @iova_to_phys: translate iova to physical address
+  * @add_device: add device to iommu grouping
+  * @remove_device: remove device from iommu grouping
++ * @probe_device: Add device to iommu driver handling
++ * @release_device: Remove device from iommu driver handling
++ * @probe_finalize: Do final setup work after the device is added to an IOMMU
++ *                  group and attached to the groups domain
+  * @device_group: find iommu group for a particular device
+  * @domain_get_attr: Query domain attributes
+  * @domain_set_attr: Change domain attributes
+@@ -275,6 +279,9 @@ struct iommu_ops {
+ 	phys_addr_t (*iova_to_phys)(struct iommu_domain *domain, dma_addr_t iova);
+ 	int (*add_device)(struct device *dev);
+ 	void (*remove_device)(struct device *dev);
++	struct iommu_device *(*probe_device)(struct device *dev);
++	void (*release_device)(struct device *dev);
++	void (*probe_finalize)(struct device *dev);
+ 	struct iommu_group *(*device_group)(struct device *dev);
+ 	int (*domain_get_attr)(struct iommu_domain *domain,
+ 			       enum iommu_attr attr, void *data);
+@@ -375,6 +382,7 @@ struct iommu_fault_param {
+  *
+  * @fault_param: IOMMU detected device fault reporting data
+  * @fwspec:	 IOMMU fwspec data
++ * @iommu_dev:	 IOMMU device this device is linked to
+  * @priv:	 IOMMU Driver private data
+  *
+  * TODO: migrate other per device data pointers under iommu_dev_data, e.g.
+@@ -384,6 +392,7 @@ struct dev_iommu {
+ 	struct mutex lock;
+ 	struct iommu_fault_param	*fault_param;
+ 	struct iommu_fwspec		*fwspec;
++	struct iommu_device		*iommu_dev;
+ 	void				*priv;
  };
  
 -- 
