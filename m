@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-3.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9F968C2D0EC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 01:29:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7734FC2BB1D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 01:29:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6A4A4206F7
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 01:29:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4C48C20747
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 01:29:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="A9qdvfC7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6A4A4206F7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HtWyofd5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4C48C20747
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=davemloft.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,41 +25,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
 	From:Subject:To:Message-Id:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZAMWZ3QfZjPRhZtRbLSrGgKjeWCCaImMPqwaolMpULA=; b=A9qdvfC7jCcZhc
-	w1fIDBbfFurL7CdkXVk/2vVCON/MhuCXR30OuVxVweA3yIQFhBNwvuMGsc0tGBpgxu8tRWcDHDu0P
-	sknllIJa24rAs++y9bnhveQsmOF6AC7I+cw9I09FIz1FAcJpnTep9iNtoFkrtBLIErqEzKFZ4icY5
-	/+oF/yprwHL11jCXsLywqDzrRyYQN/G6ZS0A+YYSDRb1SyN7IZqFv8LcxFqifMbf+IdKQSmJ7pZEl
-	SpU8Gdguhqui5i/iB0m4qzvXz+pdlOLdPAaNZcEjrxjCw79YfUlAbRCnUiBHuxMQwFzR0qGYISOuq
-	VqH/YV+mfwnhMN8OtOGA==;
+	List-Owner; bh=ZvUlyKBtKQUMoPGP3uEWzwb8X+tz82tpxCqYB7LHsYM=; b=HtWyofd5XmQjPK
+	U4tJKPaFRLHJn1N0Rjqkb33sZDK9/fORz7eswvlcDxC7ztVHT4GRVT1svUT41LbOcwsU48exKibL5
+	DXdyW/zIziYa2BoKTcbVnzFBUVCrq8L/LEHW1Twrn8YvTqNvEHbW1Lwwelp2g60aNPy0JPvRVBMRZ
+	oGoB+/5YfW2BwwJTcMZOWz3YDhLHDsyusZjcez7EPhd8HcTiTX6lV5aaTeHcSWDiNyAI5HjU8OOOQ
+	AEqBAd4ROdD84Qd/UzV+WVEoJtOVqx8nbEtm/4Dob5ry+PFvkP7A6ILUg37qJjj95b3bZ5AcA6osw
+	mODN6FwsZCsA3JK14fsw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jLzX7-00074O-99; Wed, 08 Apr 2020 01:29:37 +0000
+	id 1jLzX9-00075r-Q2; Wed, 08 Apr 2020 01:29:39 +0000
 Received: from shards.monkeyblade.net ([2620:137:e000::1:9])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jLzX4-00073a-Py
- for linux-mediatek@lists.infradead.org; Wed, 08 Apr 2020 01:29:35 +0000
+ id 1jLzX7-00074a-JJ
+ for linux-mediatek@lists.infradead.org; Wed, 08 Apr 2020 01:29:38 +0000
 Received: from localhost (unknown [IPv6:2601:601:9f00:477::3d5])
  (using TLSv1 with cipher AES256-SHA (256/256 bits))
  (Client did not present a certificate)
  (Authenticated sender: davem-davemloft)
- by shards.monkeyblade.net (Postfix) with ESMTPSA id 0E9141210A3E3;
- Tue,  7 Apr 2020 18:29:32 -0700 (PDT)
-Date: Tue, 07 Apr 2020 18:29:31 -0700 (PDT)
-Message-Id: <20200407.182931.890813308824136193.davem@davemloft.net>
+ by shards.monkeyblade.net (Postfix) with ESMTPSA id CC4AA1210A3E5;
+ Tue,  7 Apr 2020 18:29:36 -0700 (PDT)
+Date: Tue, 07 Apr 2020 18:29:36 -0700 (PDT)
+Message-Id: <20200407.182936.1103575868210940131.davem@davemloft.net>
 To: sean.wang@mediatek.com
-Subject: Re: [PATCH v2 net 1/2] net: dsa: mt7530: move mt7623 settings out
- off the mt7530
+Subject: Re: [PATCH v2 net 2/2] net: ethernet: mediatek: move mt7623
+ settings out off the mt7530
 From: David Miller <davem@davemloft.net>
-In-Reply-To: <1586122974-22125-1-git-send-email-sean.wang@mediatek.com>
+In-Reply-To: <1586122974-22125-2-git-send-email-sean.wang@mediatek.com>
 References: <1586122974-22125-1-git-send-email-sean.wang@mediatek.com>
+ <1586122974-22125-2-git-send-email-sean.wang@mediatek.com>
 X-Mailer: Mew version 6.8 on Emacs 26.1
 Mime-Version: 1.0
 X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.5.12
  (shards.monkeyblade.net [149.20.54.216]);
- Tue, 07 Apr 2020 18:29:32 -0700 (PDT)
+ Tue, 07 Apr 2020 18:29:37 -0700 (PDT)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200407_182934_841546_08493FEF 
-X-CRM114-Status: UNSURE (   3.51  )
+X-CRM114-CacheID: sfid-20200407_182937_643849_4A56D696 
+X-CRM114-Status: UNSURE (   3.57  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -82,7 +83,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 From: <sean.wang@mediatek.com>
-Date: Mon, 6 Apr 2020 05:42:53 +0800
+Date: Mon, 6 Apr 2020 05:42:54 +0800
 
 > From: Ren=E9 van Dorst <opensource@vdorst.com>
 > =
@@ -91,10 +92,13 @@ Date: Mon, 6 Apr 2020 05:42:53 +0800
 > consistent after we introduce phylink to mtk driver.
 > =
 
-> Fixes: ca366d6c889b ("net: dsa: mt7530: Convert to PHYLINK API")
+> Fixes: b8fc9f30821e ("net: ethernet: mediatek: Add basic PHYLINK support")
 > Reviewed-by: Sean Wang <sean.wang@mediatek.com>
 > Tested-by: Sean Wang <sean.wang@mediatek.com>
 > Signed-off-by: Ren=E9 van Dorst <opensource@vdorst.com>
+> ---
+> v1 -> v2: split out logic changing mtk_gmac0_rgmii_adjust that should be
+> 	  refined further and actualy belonged to separate patch.
 
 Applied.
 
