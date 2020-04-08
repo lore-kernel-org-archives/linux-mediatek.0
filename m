@@ -2,84 +2,68 @@ Return-Path: <SRS0=Kof6=5Y=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A90F5C2D0EA
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 05:59:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D63AC2D0EA
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 07:34:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7936B20747
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 05:59:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 333F3206A1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 07:34:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ps3kg2VV";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="hEmTMlb4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7936B20747
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ufTcwSii";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="NSUEB3vt"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 333F3206A1
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dzfRU+AvZF1wVRn/HTQjU9QTZZ/hB4Q2Xf8XOerKWg4=; b=Ps3kg2VVmV6QOW
-	0whTDSxxfcI28F3ueRAKlbJeJoxFqh/trVLUQKoM4NR9fvvKx38oMPrSCkAX9qtj795GDdQ+lLIqN
-	LQsOoiUbGgwK8K+ke6axk7c/JdtXb3JxoW/RCzuRg5RZcgb0fgVp1/wHpwdRAlvZ5CR2RR5ZRyPIf
-	QFlqIaGcDW+Xpzzeb9wYMfylU6hl9Ik0SwRcMA3pwepRtgTFlCRra905E5WpxXG3la4e9+J1JWAYa
-	Q/J0NKOqWJoet7FOtZ+BIUVOSRvquCjX7opZ1O+scjBWk8hEKE3f4HtvcHMaUhhVGL1IRQa0iGAod
-	2RWil0uxbZH/T5StNqSw==;
+	List-Owner; bh=QfXK9CwJNdvazkSY//AWwrGfwvIfp7RGPv/cbqf2RPw=; b=ufTcwSiinhosP6
+	BQiPTZFvKl64V3Bo272e88zfFnu0DkKN1igAcMOQzSPJ9HOBfew/KsBuE62FPYXcexEaHhtTYU2iT
+	mrJ0LSJZSMjm96r0hBhcRb4hbdfy710cpK+qLL0/D6OzrpRCM47TnvoXnvSPUbWueC5IVGEe4Yf3d
+	xtHu5qhR/xzi8IpJIsS7ETRaMMNuQvLc7op0EA09U0s+XUgTkMD7cTYVLSt3zX9QgwM8srxzrdJIO
+	Z4sfVKIwU3NDr1RMYoHLhvmVx4EFUdxwtS0OYur+mZeHvfsaRoxKQ+ALJbblMY30kV8Eek+6Vil22
+	tg6acoSqSG9KQX+jGB+Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jM3jt-0000MR-Ab; Wed, 08 Apr 2020 05:59:05 +0000
-Received: from mail-ua1-x941.google.com ([2607:f8b0:4864:20::941])
+	id 1jM5Dw-0000B7-63; Wed, 08 Apr 2020 07:34:12 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jM3jq-0000LP-1S
- for linux-mediatek@lists.infradead.org; Wed, 08 Apr 2020 05:59:03 +0000
-Received: by mail-ua1-x941.google.com with SMTP id f9so2264445uaq.8
- for <linux-mediatek@lists.infradead.org>; Tue, 07 Apr 2020 22:59:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=JuRf6yJbWtYxlK9MiLbnHNoPgySrKime7soo03XHwg8=;
- b=hEmTMlb4G0P+2aogFyGWc7pbqPwOB9J/CxeELOvBgHigymKo71VkQZw/1AwPY8mWut
- hwlP4KtfBta/VQNebJf0HYnPZQVMVG+j5hXWeIOv+KLCeReFxuiDGM5foKGDa6dufKMS
- yCVPYX7Cm/1qWuKhZsuJ9KARUZM1CExEo8TFU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=JuRf6yJbWtYxlK9MiLbnHNoPgySrKime7soo03XHwg8=;
- b=b3Lmq2pS9MRrfQH21f7fKj4VLW49jRCpRcJnrgWePsBcSfqIldIzWKVdjjfCGxPjKO
- Q3j26Pag/G1Jd1UV+arLF2RDIjmDznWU6AnwHj6myj9+hajSoqW/UchDr+YkWCCSk0fV
- zinO2jG+A1gu4AlN+CWzag9OeOXr2j0VH3E6eblUxXtIwhrUx4jxJokE5jki8wUVY3bE
- TKZuqFMX9jy3hhKE4eZIllyemGTXUw4jWd2mA3gntxurNngiRe6lzaZnHF3Q1CyG7ksO
- YNO62UjSwSYyhos6PAzQSyS+/cjXflR6s3Q/jQCwVFu8aQHNnHd72GGoyi1xyfX0+WCs
- bwDg==
-X-Gm-Message-State: AGi0PuYNmM3MXKEVaNyUB86mS3vQBDigUetJrA5cAXE5+owZ32Qtn1Lq
- AjDvpq8QIdAzX30ccIpjXVvbxFa70rvM6z2OKJEumA==
-X-Google-Smtp-Source: APiQypKMQ51JKxh8oiu6lK7kqI3wqi5K92W9MpE8rI9SPxjpQoT14gqiJBH6/yay/Jqgt97yU6ykLrh500/nJv1Ksio=
-X-Received: by 2002:a9f:3770:: with SMTP id a45mr4294126uae.117.1586325539503; 
- Tue, 07 Apr 2020 22:58:59 -0700 (PDT)
+ id 1jM5Do-0008Ui-QG; Wed, 08 Apr 2020 07:34:06 +0000
+Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
+ [83.86.89.107])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 5244C206A1;
+ Wed,  8 Apr 2020 07:34:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1586331240;
+ bh=c2Uzl2X79AqNfnzfAf4v+3E5WKLVF38m2BfHhrwAzsQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=NSUEB3vtoZWkAeQTUpXcWLGRaK8ZRAf4wWtQRCR/j1teZSyvXav3xE9oGRyMv3Xoh
+ TuMbnqpXiq0T76nkf1EnokINRz+DPCL2YOUz0JpruI+WwgdFmCFNA0r4hJX8b3lEN7
+ zsI/YcvOOu8aisPjg1DrS7ZWl3bpvP5WeGfQj2Yk=
+Date: Wed, 8 Apr 2020 09:33:58 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: R Veera Kumar <vkor@vkten.in>
+Subject: Re: [PATCH] staging: mt7621-pinctrl: Use correct pointer type
+ argument for sizeof
+Message-ID: <20200408073358.GA1033546@kroah.com>
+References: <20200408071112.11578-1-vkor@vkten.in>
 MIME-Version: 1.0
-References: <20200107070154.1574-1-roger.lu@mediatek.com>
- <20200107070154.1574-2-roger.lu@mediatek.com>
- <20200108203829.GA18987@bogus>
- <CANMq1KBu-gFy701BgFcjEwyhV9GgCCU2mkT9c8LviOJKBF30UA@mail.gmail.com>
- <CAL_JsqLnVEhvAh_8DfGWRZa+MdPRpXc9sWEQ6-3HQAeUfvkOSg@mail.gmail.com>
- <1581406566.14120.46.camel@mtksdaap41>
- <CANMq1KBVs7ZucNu9pTxXGZ0__E6tyxd1+mm2Zui81G=xQNtShA@mail.gmail.com>
-In-Reply-To: <CANMq1KBVs7ZucNu9pTxXGZ0__E6tyxd1+mm2Zui81G=xQNtShA@mail.gmail.com>
-From: Nicolas Boichat <drinkcat@chromium.org>
-Date: Wed, 8 Apr 2020 13:58:48 +0800
-Message-ID: <CANMq1KBcV_7O-_XQxk+6LTWywVoPW1U5BjYRG=-ojih9DOK-Wg@mail.gmail.com>
-Subject: Re: [PATCH v6 1/3] dt-bindings: soc: add mtk svs dt-bindings
-To: Roger Lu <roger.lu@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20200408071112.11578-1-vkor@vkten.in>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200407_225902_112851_E214C245 
-X-CRM114-Status: GOOD (  39.07  )
+X-CRM114-CacheID: sfid-20200408_003404_870443_F539BC8C 
+X-CRM114-Status: GOOD (  12.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,191 +75,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Rob Herring <robh@kernel.org>,
- =?UTF-8?B?QW5ndXMgTGluICjmnpfnkZvosaop?= <Angus.Lin@mediatek.com>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Nicolas Boichat <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>,
- "open list:THERMAL" <linux-pm@vger.kernel.org>,
- Kevin Hilman <khilman@kernel.org>, lkml <linux-kernel@vger.kernel.org>,
- =?UTF-8?B?SGVucnlDIENoZW4gKOmZs+W7uuixqik=?= <HenryC.Chen@mediatek.com>,
- =?UTF-8?B?WVQgTGVlICjmnY7ku7Dlk7Ip?= <yt.lee@mediatek.com>,
- =?UTF-8?B?RmFuIENoZW4gKOmZs+WHoSk=?= <fan.chen@mediatek.com>,
- Devicetree List <devicetree@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?WGlhb3FpbmcgTGl1ICjliJjmmZPluoYp?= <Xiaoqing.Liu@mediatek.com>,
- =?UTF-8?B?Q2hhcmxlcyBZYW5nICjmpYrkuo7pgLIp?= <Charles.Yang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Nishanth Menon <nm@ti.com>,
- James Liao <jamesjj.liao@mediatek.com>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, devel@driverdev.osuosl.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 27, 2020 at 11:55 AM Nicolas Boichat <drinkcat@chromium.org> wrote:
->
-> Hi Rob,
->
-> On Tue, Feb 11, 2020 at 3:36 PM Roger Lu <roger.lu@mediatek.com> wrote:
-> >
-> > Hi Rob & Nicolas,
-> >
-> > Sorry for the late reply.
-> >
-> > On Mon, 2020-01-13 at 23:50 +0800, Rob Herring wrote:
-> > > On Mon, Jan 13, 2020 at 12:44 AM Nicolas Boichat <drinkcat@chromium.org> wrote:
-> > > >
-> > > > On Thu, Jan 9, 2020 at 4:38 AM Rob Herring <robh@kernel.org> wrote:
-> > > > >
-> > > > > On Tue, Jan 07, 2020 at 03:01:52PM +0800, Roger Lu wrote:
-> > > > > > Document the binding for enabling mtk svs on MediaTek SoC.
-> > > > > >
-> > > > > > Signed-off-by: Roger Lu <roger.lu@mediatek.com>
-> > > > > > ---
-> > > > > >  .../devicetree/bindings/power/mtk-svs.txt     | 76 +++++++++++++++++++
-> > > > > >  1 file changed, 76 insertions(+)
-> > > > > >  create mode 100644 Documentation/devicetree/bindings/power/mtk-svs.txt
-> > > > > >
-> > > > > > diff --git a/Documentation/devicetree/bindings/power/mtk-svs.txt b/Documentation/devicetree/bindings/power/mtk-svs.txt
-> > > > > > new file mode 100644
-> > > > > > index 000000000000..9a3e81b9e1d2
-> > > > > > --- /dev/null
-> > > > > > +++ b/Documentation/devicetree/bindings/power/mtk-svs.txt
-> > > > > > @@ -0,0 +1,76 @@
-> > > > > > +* Mediatek Smart Voltage Scaling (MTK SVS)
-> > > > > > +
-> > > > > > +This describes the device tree binding for the MTK SVS controller (bank)
-> > > > > > +which helps provide the optimized CPU/GPU/CCI voltages. This device also
-> > > > > > +needs thermal data to calculate thermal slope for accurately compensate
-> > > > > > +the voltages when temperature change.
-> > > > > > +
-> > > > > > +Required properties:
-> > > > > > +- compatible:
-> > > > > > +  - "mediatek,mt8183-svs" : For MT8183 family of SoCs
-> > > > > > +- reg: Address range of the MTK SVS controller.
-> > > > > > +- interrupts: IRQ for the MTK SVS controller.
-> > > > > > +- clocks, clock-names: Clocks needed for the svs hardware. required
-> > > > > > +                       clocks are:
-> > > > > > +                    "main": Main clock for svs controller to work.
-> > > > > > +- nvmem-cells: Phandle to the calibration data provided by a nvmem device.
-> > > > > > +- nvmem-cell-names: Should be "svs-calibration-data" and "calibration-data"
-> > > > > > +
-> > > > > > +Subnodes:
-> > > > > > +- svs-cpu-little: SVS bank device node of little CPU
-> > > > > > +  compatible: "mediatek,mt8183-svs-cpu-little"
-> > > > > > +  operating-points-v2: OPP table hooked by SVS little CPU bank.
-> > > > > > +                    SVS will optimze this OPP table voltage part.
-> > > > > > +  vcpu-little-supply: PMIC buck of little CPU
-> > > > > > +- svs-cpu-big: SVS bank device node of big CPU
-> > > > > > +  compatible: "mediatek,mt8183-svs-cpu-big"
-> > > > > > +  operating-points-v2: OPP table hooked by SVS big CPU bank.
-> > > > > > +                    SVS will optimze this OPP table voltage part.
-> > > > > > +  vcpu-big-supply: PMIC buck of big CPU
-> > > > > > +- svs-cci: SVS bank device node of CCI
-> > > > > > +  compatible: "mediatek,mt8183-svs-cci"
-> > > > > > +  operating-points-v2: OPP table hooked by SVS CCI bank.
-> > > > > > +                    SVS will optimze this OPP table voltage part.
-> > > > > > +  vcci-supply: PMIC buck of CCI
-> > > > > > +- svs-gpu: SVS bank device node of GPU
-> > > > > > +  compatible: "mediatek,mt8183-svs-gpu"
-> > > > > > +  operating-points-v2: OPP table hooked by SVS GPU bank.
-> > > > > > +                    SVS will optimze this OPP table voltage part.
-> > > > > > +  vgpu-supply: PMIC buck of GPU
-> > > > > > +
-> > > > > > +Example:
-> > > > > > +
-> > > > > > +     svs: svs@1100b000 {
-> > > > > > +             compatible = "mediatek,mt8183-svs";
-> > > > > > +             reg = <0 0x1100b000 0 0x1000>;
-> > > > > > +             interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
-> > > > > > +             clocks = <&infracfg CLK_INFRA_THERM>;
-> > > > > > +             clock-names = "main_clk";
-> > > > > > +             nvmem-cells = <&svs_calibration>, <&thermal_calibration>;
-> > > > > > +             nvmem-cell-names = "svs-calibration-data", "calibration-data";
-> > > > > > +
-> > > > > > +             svs_cpu_little: svs-cpu-little {
-> > > > > > +                     compatible = "mediatek,mt8183-svs-cpu-little";
-> > > > > > +                     operating-points-v2 = <&cluster0_opp>;
-> > > > > > +                     vcpu-little-supply = <&mt6358_vproc12_reg>;
-> > > > > > +             };
-> > > > >
-> > > > > I don't think this is a good binding. This information already exists
-> > > > > elsewhere in the DT, so your driver should just look in those nodes.
-> > > > > For example the regulator can be in the cpu nodes or the OPP table
-> > > > > itself.
-> > > >
-> > > > Roger, if that helps, without changing any other binding, on 8183,
-> > > > basically you could have:
-> > > >  - svs-cpu-little: Add a handle to &cpu0 and get the regulator/opp
-> > > > table from it.
-> > > >  - svs-cpu-big: Handle to &cpu4
-> > >
-> > > Why do you need those? Use the compatible of the cpus to determine big
-> > > and little cores. Or there's the cpu capacity property that could be
-> > > used instead.
-> > >
-> > > >  - svs-cci: Handle to &cci
-> > >
-> > > Is there more than 1 CCI? Just retrieve the node by the compatible.
-> > > There's no need to have nodes that simply serve as a collection of
-> > > data for some driver.
-> > >
-> > > >  - svs-gpu: Handle to &gpu (BTW, it is expected that SVS would only
-> > > > apply to vgpu/mali regulator, and not vsram regulator?)
-> >
-> > svs-gpu depends on vgpu power on for init (don't care vgpu_sram). After
-> > svs-gpu init is done, it doesn't need vgpu power on anymore. (vgpu can
-> > be turned off)
-> >
-> > Please allows me to introduce more about what svs-gpu device needs.
-> > 1. It needs gpu opp table from "gpu node" and gpu_core2 power-domains
-> > from "gpu_core2 node". When svs-gpu has those resources, it turns on
-> > gpu_core2 power-domain for svs-gpu-hw to have power (for calculating)
-> > and svs-gpu-sw will update gpu opp table voltages' part.
-> > 2. Therefore, if I retrieve gpu-related node from phandle or compatible,
-> > it means svs-gpu device in driver needs to attach two different gpu
-> > nodes for attaining gpu opp table and gpu_core2 power-domains. I think
-> > this architecture of svs-gpu confuses maintainer why it attaches two
-> > different nodes instead of having a device to describe what it needs.
->
-> > 3. Is it acceptable to have a Linux device attaching two different
-> > nodes? If yes, could you guide us some APIs for one device to attach two
-> > nodes? I don't know how to implement it. Thanks.
->
-> I'm also trying to understand how that would work. The way the code
-> works now (https://chromium.googlesource.com/chromiumos/third_party/kernel/+/refs/heads/chromeos-4.19/drivers/power/avs/mtk_svs.c#1388):
->
-> The SVS driver creates a platform device for each sub-node, find the
-> sub-node that matches the compatible (pdev->dev.of_node):
-> for_each_child_of_node(svs->dev->of_node, np) {
->   if (of_device_is_compatible(np, svsb->of_compatible)) {
->     pdev->dev.of_node = np;
->     break;
->   }
-> }
->
-> Then, thanks to that, the 2 functions dev_pm_opp_of_add_table and
-> devm_regulator_get_optional "just work", as the get the opp table and
-> regulator from the device tree node.
->
-> So what you suggest is basically something like this:
-> pdev->dev.of_node = of_find_compatible_node(NULL, NULL, "mediatek,mt8183-cci");
->
-> I came up with a (very dirty) prototype here:
-> https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2076718
-> ... and it doesn't really work
-> (https://gist.github.com/drinkcat/61e50eedbdc301d418c9cee3ee5b6b06, I
-> think the kernel is probing more than it should, like the DMA mask
-> errors should not happen...)
->
-> Before I dig further... I have the same concern as Roger, is it ok to
-> have 2 devices bound to the same device tree node/compatible? My
-> understanding was also that it's not.
+On Wed, Apr 08, 2020 at 12:41:12PM +0530, R Veera Kumar wrote:
+> Use correct pointer type argument for sizeof.
+> Found using coccinelle.
+> 
+> Signed-off-by: R Veera Kumar <vkor@vkten.in>
+> ---
+>  drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c b/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
+> index d0f06790d38f..62babad5ee0b 100644
+> --- a/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
+> +++ b/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
+> @@ -220,7 +220,7 @@ static int rt2880_pinmux_index(struct rt2880_priv *p)
+>  	/* allocate our function and group mapping index buffers */
+>  	f = p->func = devm_kcalloc(p->dev,
+>  				   p->func_count,
+> -				   sizeof(struct rt2880_pmx_func),
+> +				   sizeof(rt2880_pmx_func),
 
-Rob: It seems like this conversation died here. Do you have any
-suggestions for the above?
+Did you build this change?
 
-Thanks,
+Always do so.
+
+Also, nothing is really wrong with the existing code, remember,
+checkpatch is a hint, telling you that maybe something is odd with this
+line.  It is not always correct.
+
+thanks,
+
+greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
