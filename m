@@ -2,141 +2,95 @@ Return-Path: <SRS0=Kof6=5Y=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-11.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C1312C2D0EA
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 12:23:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ECF00C2D0EA
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 12:56:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7E630206F7
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 12:23:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BA4B72074F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 12:56:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="smiuYLiN";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="eq7YTdEj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7E630206F7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JAJwTI7m";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="iuHWZKg+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BA4B72074F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
-	Date:Message-ID:From:To:Subject:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2SySQMrHoK6tp11xUqWWG30HYlG0DeTTcxTkWycWQB8=; b=smiuYLiNIfcei7
-	V061tVF41UBH+QxUBnNd/GJXhkoUsfV5KL1AGxAUX6re9cRkHqf8jQR158JNfnG+nFi+TseWjJry5
-	aKhIg1wWpZRHRo0uBFgAcmrs6oy4GTqg6+ONqrEOtv3ZlT4GLF6tLhOPAGGA/wSIjR0ArExSrVdPy
-	s98HXIjUgPz6Poo/eaZX5g+y4bIEOlelVjf+T8sylZhTJ5a87b93VFwx7v1PtP9779kijVNKKDsOw
-	W/jgFCoLuD1UILW9vh/tzA94fK7+SgklN8X2pg1WDLdvEKPGx3ptOCTiDsldLnp67LVYQqGETB7Xt
-	Hx4XOypV3jaBLZgZRRyQ==;
+	List-Owner; bh=hp3uKw9hLVDrJswREcD/dnkopfn33wqzfqJlQditlA8=; b=JAJwTI7mN908ud
+	bLDm6cBBma4VkyBN4De4e+05jkhkUeG8OY2gf+2+g1a+sWC4F5wQoZ+coNf/dxPa8F6GOpKrXv1eg
+	FeLIOxl4KYuk2opnXN8rrVv6n5/QxEZlDk0+i+e5Q9tYGdEejJAsiHJkttTOE0bs+0m/oG+q0efZ4
+	iBZ/MO2Z3dZKqOluluTli22C/+Woft3HjEEY7H5mYvh2tkEyyRbd4KP3wYFt5DX3rsCNN6NSG1cgv
+	DPIU4ot67RJZJniyXO9ZqEbOJt335LLi4qzX1TWjKRysonaGTKzu7kFdpoKEbS2rR41RjkhSXVe4o
+	4ABwKxpSqBNSI76ZkMEQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jM9jo-0000Sn-85; Wed, 08 Apr 2020 12:23:24 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	id 1jMAFo-0007B7-Nl; Wed, 08 Apr 2020 12:56:28 +0000
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jM9jk-0000SE-Ii
- for linux-mediatek@lists.infradead.org; Wed, 08 Apr 2020 12:23:22 +0000
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
- by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id
- 20200408122317euoutp021c3e29e40e9a642f6dad8767ff11483d~D16UhHNQz2570625706euoutp02L
- for <linux-mediatek@lists.infradead.org>; Wed,  8 Apr 2020 12:23:17 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com
- 20200408122317euoutp021c3e29e40e9a642f6dad8767ff11483d~D16UhHNQz2570625706euoutp02L
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1586348598;
- bh=C6hOGADV2N8VHfBhoqvkcY7aLHRGpJSRBFxTuaQ0adc=;
- h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
- b=eq7YTdEjrPoV1qaEHG3N0Y3STIRTSncARtOyUtO/9JzD+X0KfqPx1deMcS1ku4Vff
- a8Paw9xH5FcpZsscY9L1Qd1KuynvNkDzJjQy2Vx0oeqIfg64pLwDYlx1dLq/nDSNl3
- dX9HHrf3q2lqywK9fiU+ciWroqbteuj4wmzt7yGs=
-Received: from eusmges3new.samsung.com (unknown [203.254.199.245]) by
- eucas1p1.samsung.com (KnoxPortal) with ESMTP id
- 20200408122317eucas1p131bb3e9be76ee1155b4bea50e76fba0c~D16UH4SK20693706937eucas1p1d;
- Wed,  8 Apr 2020 12:23:17 +0000 (GMT)
-Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
- eusmges3new.samsung.com (EUCPMTA) with SMTP id EC.B6.60698.532CD8E5; Wed,  8
- Apr 2020 13:23:17 +0100 (BST)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
- eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
- 20200408122316eucas1p14d6cdb0b7291316c7825fc6d4373d43e~D16Tl4ECL1118111181eucas1p1V;
- Wed,  8 Apr 2020 12:23:16 +0000 (GMT)
-Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
- eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
- 20200408122316eusmtrp16a34672cfea082ba29cf649d44fce50b~D16Tk1AYA2798627986eusmtrp1M;
- Wed,  8 Apr 2020 12:23:16 +0000 (GMT)
-X-AuditID: cbfec7f5-a0fff7000001ed1a-11-5e8dc235c4f6
-Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
- eusmgms2.samsung.com (EUCPMTA) with SMTP id B7.E3.07950.432CD8E5; Wed,  8
- Apr 2020 13:23:16 +0100 (BST)
-Received: from [106.210.88.143] (unknown [106.210.88.143]) by
- eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20200408122315eusmtip1e5b8980e40ac1be62aedae60a4eacaed~D16SVJetc3016230162eusmtip10;
- Wed,  8 Apr 2020 12:23:15 +0000 (GMT)
-Subject: Re: [RFC PATCH 31/34] iommu/exynos: Create iommu_device in struct
- exynos_iommu_owner
-To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin
- Murphy <robin.murphy@arm.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof
- Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Lu Baolu
- <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson
- <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob
- Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald
- Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding
- <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-Message-ID: <449e7f16-e719-9617-ec92-63b82c0bc33f@samsung.com>
-Date: Wed, 8 Apr 2020 14:23:16 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ id 1jMAFl-0007Ac-Ih
+ for linux-mediatek@lists.infradead.org; Wed, 08 Apr 2020 12:56:27 +0000
+Received: by mail-ed1-x544.google.com with SMTP id e5so8440113edq.5
+ for <linux-mediatek@lists.infradead.org>; Wed, 08 Apr 2020 05:56:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ImZqh6xFyWTP+hCLRseUGFfjvuATFwSzoN2jRckYzSk=;
+ b=iuHWZKg+pIWEBlsACAQ4YXH2mS3QrCGDdCd463hpF4FaNiGuk9aFm0zDBV3zdeafgR
+ 3ZnImtuZ+wyMDDvmkR249YelH0aLXKbisp8ztrr4A0fBNyuZV+ObuE3T8OiMRRi340IU
+ wd7vqFZZ9kxtDpuz9bj10oUv10rucFw5JlYIg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ImZqh6xFyWTP+hCLRseUGFfjvuATFwSzoN2jRckYzSk=;
+ b=JMW6CB+UvAreMhXvOD/+/Bkrj3StpYbWAORHzrNiUodHqhPAmeAV2/RCGxu+AzJQTG
+ a3MnfYHSe+2/B19lQwXVfoztYMgQLPJT3zyWJvzVM7OEAObmOohuY1pam25F47/Nm9Bg
+ U6oESc03Er5i2/5YD4z5V3vGnsVPTLmQGuANpB/+oJnupb+2DxEUEK/OYwWuF84a1Tss
+ 9h+VCXbrPW5neo3QqjHhlbOIJYMYZ7rCoPEA9l31oLHqiCtAvuIpj+0yfuAd5elycd/N
+ dpQRXoWvrtB8c8hejrDCSk64ybavhXtoZJfu7L1AWFC78KJCMI91eSk/3ImgmW/dZ+WE
+ uErw==
+X-Gm-Message-State: AGi0PuY9qKGoquLvgAfGZPXvaSSe951FxuGI4qlEzV3rjk35rQpjzzf7
+ FGMuoSO3RvMbITr1SYwqKY+ywOJR9TvBIQ==
+X-Google-Smtp-Source: APiQypIMFm2ri8oA+C9F+M8FOZr5yjzliom3SNbgrJor0mIWB1ENucCwW2HVephOUbdPUt6bzvan1A==
+X-Received: by 2002:aa7:c74a:: with SMTP id c10mr2182466eds.210.1586350583350; 
+ Wed, 08 Apr 2020 05:56:23 -0700 (PDT)
+Received: from mail-wm1-f49.google.com (mail-wm1-f49.google.com.
+ [209.85.128.49])
+ by smtp.gmail.com with ESMTPSA id i3sm3441892ejr.19.2020.04.08.05.56.22
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 08 Apr 2020 05:56:23 -0700 (PDT)
+Received: by mail-wm1-f49.google.com with SMTP id v8so11790wma.0
+ for <linux-mediatek@lists.infradead.org>; Wed, 08 Apr 2020 05:56:22 -0700 (PDT)
+X-Received: by 2002:a7b:c38b:: with SMTP id s11mr4529806wmj.55.1586350155398; 
+ Wed, 08 Apr 2020 05:49:15 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200407183742.4344-32-joro@8bytes.org>
-Content-Language: en-US
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Sa0gUURTHuXtnZ0ZrZVwtDxYVWwQF+cisCxti0Yehgh7Ul0Brq8k0d5Xd
- tNeH1JVIUdLs5aSbiqmZlbppKlvqopktrqYlW1j4It9amZQVmuv08Nv5/8/v3HP+cFmsLKO9
- 2XDdaUGv00SqaFeq8vm0fUOgNTXU77plGbH3/aSIOb2CJrbacYqk38vApHp0kCazvSNyklOr
- JnH32+QkUcyjSNLtUoZkvMyWkSt9I5i0ts7J9NoWhnTUZNGkw/gKkS/ds5ik5RoxudX6TEaS
- voo0SUgMIAO53zGp/9QvJ9M1JooUtphoktgVGOzN99ebZHyJqQTx9b1Wmq8W3zO8uWg9X16c
- RPNdnRaaNzXv4835F/kMRyHiU43jNP+k04R5s+0CP1m+Yq/bIdetx4XI8FhB7xt0xPXkW1Md
- ijb6nK2zDDJxqHFNMnJhgdsE8eK4LBm5skquCMFMpw1J4iuCj5mzlCQmEVSOXKP/jlT0fPlD
- FSIwP+hmJDGB4HnxO7mT8uAOw1jeDHY2PLlvFOQ0VswLzDlkUDBRzjgpmvOH5LHk+XcVXBC8
- v1E19y7LUtwa6KvUOu0lXAjYex1yCXGH5sx+yom4cIFwuX0ewdxKeDKWhaXaC97135kPBNwo
- C9P5w4x09g4QWzpkUu0Bw02P//jLwZaRQkkDRgQ99geMJFIQdCTcQhKlhi77D9q5GXPr4FGN
- r2RvgyZ7LuO0gXMDx5i7dIQbXK28iSVbAZcvKSV6LYhND/+trW9rx2lIJS5IJi6IIy6II/7f
- m4OoYuQlxBi0YYIhQCec8TFotIYYXZjPsShtOZr7yLaZpqkq9OzXUSviWKRarKizpIYq5ZpY
- wzmtFQGLVZ6KXQlzluK45tx5QR91WB8TKRisaBlLqbwUAXlDIUouTHNaOCUI0YL+b1fGunjH
- oVrH8oLAg1PhtqSU3dca9jd6qyyrTryJVQdnZ01lF+c3H4gw6hqCVjkOjW6Obm9+unTSduam
- 3stPGx01NOF/e9CjKH6PZXvpx8LMjREf1mrz2reE+KZbE16n7RbvqvHwTvWO/LOLgg8M7Xvh
- 9nlAYFsLyn7cKTm63x5ydfWR1ajNZ1ZFGU5q/NdjvUHzG9B810LEAwAA
-X-Brightmail-Tracker: H4sIAAAAAAAAA02SbUhTYRTHeXbvrtfR4jrfnsyyLn6Smk2deyyTyIJLQZRSH8yXhl7Ucpvs
- bpJFpE5CB5ZipU5baoZlWrFl5kvqBiomunIgVgq+UYYpZYKp5dpagd/+5/z/v8M5cEhMZOUH
- kJlKDatWyrNoQoAPbQ5M7o+wliQfqLYiNDK7gSNzWSuBhnqWcFT2uBxD7V/nCeSYWeCj2p5D
- KO/JWz4qNNTjqLj6uQcqf3OPh27NLmDIZnOWZT3DHsjeUUMgu+4dQMtTDgyV1ukwVGnr5qHi
- FQOBCgrD0ee6nxiyfJvjo7UOI44ah40EKpyQHglg5ixGHtNsbAaMZcZKMO2GSQ/G/CiEMTUV
- E8zEWBfBGAfPMOaG60z5eCNgSnRLBNM2ZsQY89BV5odp9+ntCeJotUqrYfdkqDjNYfq8BIWJ
- JVFIHBYRJZaEy5IOhknp0JjoNDYrM4dVh8ZcEGe8N/aCbJ34cm/XvEce6AvWA08SUhGwdXoZ
- 6IGAFFEPAez/ts5zG4Fw8G4e36294a8xPeEOLQJoXykFLsObSoGL9ZuYy/ChNnDYMN5JuAyM
- GufBvkY/N2EC8EHJa8xlEJQE6hf1f0NCKgZO3n3lnESSOBUMZ18qXG1fKgne0nUCd8QLDlbN
- 4a6IJyWFRaMK9/hIaDRPY24dBNsWa/5pf/hh7j6vFIgMW2jDFsSwBTFsQWoB3gR8WC2nSFdw
- YWJOruC0ynRxqkphAs7/edm/9sK56VK8FVAkoLcJe7tKkkV8eQ6Xq7ACSGK0j/BkgbMlTJPn
- XmHVqhS1NovlrEDqPK0MC/BNVTm/UalJkUglMhQlkYXLwiMR7S8soiyJIipdrmEvsWw2q/7P
- 8UjPgDxganY0dser76zVjS4n2LpjfsevVkyZKgcdF+njx6r2HfdsWT600FmkjB1p0D71PZuf
- dq2mdafAz2wnHHGCo8E7vJJORHxUZd4GQW0D8EaDvCJ7dv2T//DEzQt0rFkQWie1FPBO5ez6
- BUHgmt22MW4Zzk9c/f7lasveadszZdw5Gucy5JIQTM3J/wCebPzxVQMAAA==
-X-CMS-MailID: 20200408122316eucas1p14d6cdb0b7291316c7825fc6d4373d43e
-X-Msg-Generator: CA
-X-RootMTR: 20200407184501eucas1p25407bc96e4345df406cf6ba061ae6a82
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20200407184501eucas1p25407bc96e4345df406cf6ba061ae6a82
-References: <20200407183742.4344-1-joro@8bytes.org>
- <CGME20200407184501eucas1p25407bc96e4345df406cf6ba061ae6a82@eucas1p2.samsung.com>
- <20200407183742.4344-32-joro@8bytes.org>
+References: <20191211112849.16705-1-dongchun.zhu@mediatek.com>
+ <20191211112849.16705-2-dongchun.zhu@mediatek.com>
+ <CAAFQd5AnWZqjQEVvw8gv7JzOBHxJvsOWaGrbY8CXQ_87ap-ahA@mail.gmail.com>
+In-Reply-To: <CAAFQd5AnWZqjQEVvw8gv7JzOBHxJvsOWaGrbY8CXQ_87ap-ahA@mail.gmail.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Date: Wed, 8 Apr 2020 14:49:04 +0200
+X-Gmail-Original-Message-ID: <CAAFQd5DHL3mXZGHW+XWMXTVfekamEvaEv3bLZt4Bg2UpKPohmA@mail.gmail.com>
+Message-ID: <CAAFQd5DHL3mXZGHW+XWMXTVfekamEvaEv3bLZt4Bg2UpKPohmA@mail.gmail.com>
+Subject: Re: [V6,
+ 1/2] media: dt-bindings: media: i2c: Document OV02A10 bindings
+To: Rob Herring <robh+dt@kernel.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, 
+ Linus Walleij <linus.walleij@linaro.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200408_052320_818865_4920582D 
-X-CRM114-Status: GOOD (  26.00  )
+X-CRM114-CacheID: sfid-20200408_055625_641281_B7E0CD80 
+X-CRM114-Status: GOOD (  26.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -148,198 +102,164 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
- virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org,
- iommu@lists.linux-foundation.org, Joerg Roedel <jroedel@suse.de>,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ linux-devicetree <devicetree@vger.kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, linux-gpio@vger.kernel.org,
+ =?UTF-8?B?U2hlbmduYW4gV2FuZyAo546L5Zyj55S3KQ==?= <shengnan.wang@mediatek.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Louis Kuo <louis.kuo@mediatek.com>, Sj Huang <sj.huang@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Dongchun Zhu <dongchun.zhu@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
+ Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Joerg,
-
-On 07.04.2020 20:37, Joerg Roedel wrote:
-> From: Joerg Roedel <jroedel@suse.de>
+On Tue, Dec 17, 2019 at 4:15 AM Tomasz Figa <tfiga@chromium.org> wrote:
 >
-> The 'struct exynos_iommu_owner' is an umbrella for multiple SYSMMU
-> instances attached to one master. As such all these instances are
-> handled the same, they are all configured with the same iommu_domain,
-> for example.
+> Hi Rob, Dongchun,
 >
-> The IOMMU core code expects each device to have only one IOMMU
-> attached, so create the IOMMU-device for the umbrella instead of each
-> hardware SYSMMU.
+> On Wed, Dec 11, 2019 at 8:29 PM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
+> >
+> > Add DT bindings documentation for Omnivision OV02A10 image sensor.
+> >
+> > Reviewed-by: Rob Herring <robh@kernel.org>
+> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/media/i2c/ov02a10.txt      | 54 ++++++++++++++++++++++
+> >  MAINTAINERS                                        |  7 +++
+> >  2 files changed, 61 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> >
+> > diff --git a/Documentation/devicetree/bindings/media/i2c/ov02a10.txt b/Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> > new file mode 100644
+> > index 0000000..18acc4f
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> > @@ -0,0 +1,54 @@
+> > +* Omnivision OV02A10 MIPI CSI-2 sensor
+> > +
+> > +Required Properties:
+> > +- compatible: shall be "ovti,ov02a10"
+> > +- clocks: reference to the eclk input clock
+> > +- clock-names: shall be "eclk"
+> > +- dovdd-supply: Digital I/O voltage supply, 1.8 volts
+> > +- avdd-supply: Analog voltage supply, 2.8 volts
+> > +- dvdd-supply: Digital core voltage supply, 1.8 volts
+> > +- powerdown-gpios: reference to the GPIO connected to the powerdown pin,
+> > +                  if any. This is an active low signal to the OV02A10.
 >
-> Signed-off-by: Joerg Roedel <jroedel@suse.de>
-> ---
->   drivers/iommu/exynos-iommu.c | 96 +++++++++++++++++++++++++++---------
->   1 file changed, 73 insertions(+), 23 deletions(-)
+> On the hardware level this pin is active high, i.e. the device is
+> powered down when the signal is high.
 >
-> diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
-> index 186ff5cc975c..86ecccbf0438 100644
-> --- a/drivers/iommu/exynos-iommu.c
-> +++ b/drivers/iommu/exynos-iommu.c
-> @@ -235,6 +235,8 @@ struct exynos_iommu_owner {
->   	struct list_head controllers;	/* list of sysmmu_drvdata.owner_node */
->   	struct iommu_domain *domain;	/* domain this device is attached */
->   	struct mutex rpm_lock;		/* for runtime pm of all sysmmus */
-> +
-> +	struct iommu_device iommu;	/* IOMMU core handle */
->   };
->   
->   /*
-> @@ -274,8 +276,6 @@ struct sysmmu_drvdata {
->   	struct list_head owner_node;	/* node for owner controllers list */
->   	phys_addr_t pgtable;		/* assigned page table structure */
->   	unsigned int version;		/* our version */
-> -
-> -	struct iommu_device iommu;	/* IOMMU core handle */
->   };
->   
->   static struct exynos_iommu_domain *to_exynos_domain(struct iommu_domain *dom)
-> @@ -625,18 +625,6 @@ static int exynos_sysmmu_probe(struct platform_device *pdev)
->   	data->sysmmu = dev;
->   	spin_lock_init(&data->lock);
->   
-> -	ret = iommu_device_sysfs_add(&data->iommu, &pdev->dev, NULL,
-> -				     dev_name(data->sysmmu));
-> -	if (ret)
-> -		return ret;
-> -
-> -	iommu_device_set_ops(&data->iommu, &exynos_iommu_ops);
-> -	iommu_device_set_fwnode(&data->iommu, &dev->of_node->fwnode);
+> > +- reset-gpios: reference to the GPIO connected to the reset pin, if any.
+> > +              This is an active high signal to the OV02A10.
+>
+> On the hardware level this pin is active low, i.e. the device is held
+> in reset when the signal is low.
+>
+> However, there is some confusion around how the polarity flag in the
+> GPIO specifier is supposed to be used.
+>
+> As per [1],
+>
+> "The gpio-specifier's polarity flag should represent the physical
+> level at the GPIO controller that achieves (or represents, for inputs)
+> a logically asserted value at the device. The exact definition of
+> logically asserted should be defined by the binding for the device."
+>
+> In this case it sounds like "logically asserted" means the device is
+> powered down or held in reset, respectively, which would suggest that
+> the specifiers should have GPIO_ACTIVE_HIGH and GPIO_ACTIVE_LOW
+> respectively. The latter would cause the GPIO subsystem to invert the
+> values set by the consumers, which would then be confusing from the
+> driver implementation point of view.
+>
+> Should the pin be renamed to "nreset"? It would change the meaning of
+> "logically asserted" to "device is not held in reset" and so
+> GPIO_ACTIVE_HIGH (or 0) would be the right value to use.
+>
+> [1] https://elixir.bootlin.com/linux/latest/source/Documentation/devicetree/bindings/gpio/gpio.txt#L83
 
-The iommu_device_set_fwnode() call is lost during this conversion, what breaks driver operation. Most of the above IOMMU fw calls you have moved to xlate function. I've checked briefly but it looks that there is a chicken-egg problem here. The owner structure is allocated and initialized from of_xlate(), which won't be called without linking the problem iommu structure with the fwnode first, what might be done only in sysmmu_probe(). I will check how to handle this in a different way.
++ Bartosz, Linus, Sakari and the linux-gpio ML for a broader audience.
 
-> -
-> -	ret = iommu_device_register(&data->iommu);
-> -	if (ret)
-> -		return ret;
-> -
->   	platform_set_drvdata(pdev, data);
->   
->   	__sysmmu_get_version(data);
-> @@ -1261,6 +1249,8 @@ static int exynos_iommu_add_device(struct device *dev)
->   	}
->   	iommu_group_put(group);
->   
-> +	iommu_device_link(&owner->iommu, dev);
-> +
->   	return 0;
->   }
->   
-> @@ -1282,18 +1272,82 @@ static void exynos_iommu_remove_device(struct device *dev)
->   			iommu_group_put(group);
->   		}
->   	}
-> +	iommu_device_unlink(&owner->iommu, dev);
->   	iommu_group_remove_device(dev);
->   
->   	list_for_each_entry(data, &owner->controllers, owner_node)
->   		device_link_del(data->link);
->   }
->   
-> +static int exynos_iommu_device_init(struct exynos_iommu_owner *owner)
-> +{
-> +	static u32 counter = 0;
-> +	int ret;
-> +
-> +	/*
-> +	 * Create a virtual IOMMU device. In reality it is an umbrella for a
-> +	 * number of SYSMMU platform devices, but that also means that any
-> +	 * master can have more than one real IOMMU device. This drivers handles
-> +	 * all the real devices for one master synchronously, so they appear as
-> +	 * one anyway.
-> +	 */
-> +	ret = iommu_device_sysfs_add(&owner->iommu, NULL, NULL,
-> +				     "sysmmu-owner-%d", counter++);
-> +	if (ret)
-> +		return ret;
-> +
-> +	iommu_device_set_ops(&owner->iommu, &exynos_iommu_ops);
-> +
-> +	return 0;
-> +}
-> +
-> +static void exynos_iommu_device_remove(struct exynos_iommu_owner *owner)
-> +{
-> +	iommu_device_set_ops(&owner->iommu, NULL);
-> +	iommu_device_sysfs_remove(&owner->iommu);
-> +}
-> +
-> +static int exynos_owner_init(struct device *dev)
-> +{
-> +	struct exynos_iommu_owner *owner = dev->archdata.iommu;
-> +	int ret;
-> +
-> +	if (owner)
-> +		return 0;
-> +
-> +	owner = kzalloc(sizeof(*owner), GFP_KERNEL);
-> +	if (!owner)
-> +		return -ENOMEM;
-> +
-> +	ret = exynos_iommu_device_init(owner);
-> +	if (ret)
-> +		goto out_free_owner;
-> +
-> +	ret = iommu_device_register(&owner->iommu);
-> +	if (ret)
-> +		goto out_remove_iommu_device;
-> +
-> +	INIT_LIST_HEAD(&owner->controllers);
-> +	mutex_init(&owner->rpm_lock);
-> +	dev->archdata.iommu = owner;
-> +
-> +	return 0;
-> +
-> +out_remove_iommu_device:
-> +	exynos_iommu_device_remove(owner);
-> +out_free_owner:
-> +	kfree(owner);
-> +
-> +	return ret;
-> +}
-> +
->   static int exynos_iommu_of_xlate(struct device *dev,
->   				 struct of_phandle_args *spec)
->   {
-> -	struct exynos_iommu_owner *owner = dev->archdata.iommu;
->   	struct platform_device *sysmmu = of_find_device_by_node(spec->np);
->   	struct sysmmu_drvdata *data, *entry;
-> +	struct exynos_iommu_owner *owner;
-> +	int ret;
->   
->   	if (!sysmmu)
->   		return -ENODEV;
-> @@ -1302,15 +1356,11 @@ static int exynos_iommu_of_xlate(struct device *dev,
->   	if (!data)
->   		return -ENODEV;
->   
-> -	if (!owner) {
-> -		owner = kzalloc(sizeof(*owner), GFP_KERNEL);
-> -		if (!owner)
-> -			return -ENOMEM;
-> +	ret = exynos_owner_init(dev);
-> +	if (ret)
-> +		return ret;
->   
-> -		INIT_LIST_HEAD(&owner->controllers);
-> -		mutex_init(&owner->rpm_lock);
-> -		dev->archdata.iommu = owner;
-> -	}
-> +	owner = dev->archdata.iommu;
->   
->   	list_for_each_entry(entry, &owner->controllers, owner_node)
->   		if (entry == data)
+Would appreciate some feedback on what's the proper way of defining
+GPIO polarity. Thanks!
 
-Best regards
--- 
-Marek Szyprowski, PhD
-Samsung R&D Institute Poland
+Best regards,
+Tomasz
 
+>
+> Best regards,
+> Tomasz
+>
+> > +
+> > +Optional Properties:
+> > +- rotation: as defined in
+> > +           Documentation/devicetree/bindings/media/video-interfaces.txt,
+> > +           valid values are 0 (sensor mounted upright) and 180 (sensor
+> > +           mounted upside down).
+> > +
+> > +The device node shall contain one 'port' child node with an
+> > +'endpoint' subnode for its digital output video port,
+> > +in accordance with the video interface bindings defined in
+> > +Documentation/devicetree/bindings/media/video-interfaces.txt.
+> > +
+> > +Example:
+> > +&i2c4 {
+> > +       ov02a10: camera-sensor@3d {
+> > +               compatible = "ovti,ov02a10";
+> > +               reg = <0x3d>;
+> > +               pinctrl-names = "default";
+> > +               pinctrl-0 = <&camera_pins_cam1_mclk_on>;
+> > +
+> > +               clocks = <&topckgen CLK_TOP_MUX_CAMTG2>,
+> > +                       <&topckgen CLK_TOP_UNIVP_192M_D8>;
+> > +               clock-names = "eclk", "freq_mux";
+> > +               clock-frequency = <24000000>;
+> > +
+> > +               dovdd-supply = <&mt6358_vcamio_reg>;
+> > +               avdd-supply = <&mt6358_vcama1_reg>;
+> > +               dvdd-supply = <&mt6358_vcn18_reg>;
+> > +               powerdown-gpios = <&pio 107 GPIO_ACTIVE_LOW>;
+> > +               reset-gpios = <&pio 109 GPIO_ACTIVE_HIGH>;
+> > +               rotation = <180>;
+> > +
+> > +               port {
+> > +                       /* MIPI CSI-2 bus endpoint */
+> > +                       ov02a10_core: endpoint {
+> > +                               remote-endpoint = <&ov02a10_0>;
+> > +                               link-frequencies = /bits/ 64 <390000000>;
+> > +                       };
+> > +               };
+> > +       };
+> > +};
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index bd5847e..92a868c 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -12130,6 +12130,13 @@ T:     git git://linuxtv.org/media_tree.git
+> >  S:     Maintained
+> >  F:     drivers/media/i2c/ov13858.c
+> >
+> > +OMNIVISION OV02A10 SENSOR DRIVER
+> > +M:     Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > +L:     linux-media@vger.kernel.org
+> > +T:     git git://linuxtv.org/media_tree.git
+> > +S:     Maintained
+> > +F:     Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> > +
+> >  OMNIVISION OV2680 SENSOR DRIVER
+> >  M:     Rui Miguel Silva <rmfrfs@gmail.com>
+> >  L:     linux-media@vger.kernel.org
+> > --
+> > 2.9.2
 
 _______________________________________________
 Linux-mediatek mailing list
