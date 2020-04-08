@@ -2,73 +2,65 @@ Return-Path: <SRS0=Kof6=5Y=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BF755C2D0EA
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 12:21:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CEB6FC2BA2B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 12:21:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9058F2083E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 12:21:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9BD972076D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 12:21:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Co/fC8xT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9058F2083E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CidUSH8h";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="vVz0CgiD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9BD972076D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OZYNuDabWPOhJcjimYrjX/SWhOZMGWfA0J06P6W/uiQ=; b=Co/fC8xTQk4PAS
-	X3qXbSIpTohCXCtQXD7R3O+9fsGCWMNb7+YulakIedhRCwo2VjllExcNa69JY8/UKnGH8cg1vkUCe
-	k273Ct/wN4sfzVmiiU7T3LIsUs89djMLJpXSEKsZXH8ZXVi8M/5mBoUdV0Ufw3Csr6ZqOudrglkKy
-	NeqsW/0UFiZ0ouyGHrZkoCgGOx18E1OZHjmUaX9eJbPS0RqgYQuw+PnNZXtWn0lNYSVjRV3QZSivw
-	ry/tGJEPbDtyWgvO9PgHnHcJry5OsQc+BKNKIJKeVlvt2yQh69nWbKAXqj16Qo3jK41F/xjHif/Cw
-	BEbQZHYwCD8X0Kjv7F4g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=T6+AlFRJIzLdlpP9t+glAesoMPcqYaDkTC4MBIHdJ78=; b=CidUSH8hc8pXq9
+	GjzK7SRxcAMkK9loFWcT4IA7/dWul+xzhjajb4OhQTo2OysSUyYCdjlIAJiDVi6pfIJSXofRQvRab
+	nZS06kBjJxW7mKdKURwj74ZgRXXV4GMfu2Uj9i3dQvfwIWwankpxoXuAXQ5zHVu00BVCdj6lpk4S+
+	rjKgmFnBDjn7ACF4lze5VFbtbGajU2IrJ5SqYdkmAUmWm3E4uxF9VoLuf8dVEkHACXWb/yv32SKHC
+	7WaEHQjg1AOIfCd0Zpg39ViUTxWan3Apg9J1Zeaq+ljpPgI5lgGsTVu/+e+FLGb3iHwocu2PuAvfT
+	gAR7XkjvEL8rKcqoo3eg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jM9hP-00085d-Jp; Wed, 08 Apr 2020 12:20:55 +0000
-Received: from mga06.intel.com ([134.134.136.31])
+	id 1jM9hV-0008B6-Gu; Wed, 08 Apr 2020 12:21:01 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jM9hE-0007wb-7B; Wed, 08 Apr 2020 12:20:46 +0000
-IronPort-SDR: 81eDbrSa99I9C8mL+KHRMBvrGcW606iAk73pO3P/Qcoq9q3lcFxb5vjZqd+pEwudi0QPx0pTwD
- n7S2KxvmFVjQ==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2020 05:20:43 -0700
-IronPort-SDR: EsGpVrBICzA9yNIzcqsXym6EkBtvPGS4UmV6Eypp1AhLxdwvFieP3v3RbENjyQF/kaPW5r+tIe
- 4ict1+hzKhdg==
-X-IronPort-AV: E=Sophos;i="5.72,358,1580803200"; d="scan'208";a="425120463"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2020 05:20:39 -0700
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id 45DDC20364; Wed,  8 Apr 2020 15:20:37 +0300 (EEST)
-Date: Wed, 8 Apr 2020 15:20:37 +0300
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: Re: [V6, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
-Message-ID: <20200408122037.GG5206@paasikivi.fi.intel.com>
-References: <20191211112849.16705-1-dongchun.zhu@mediatek.com>
- <20191211112849.16705-3-dongchun.zhu@mediatek.com>
- <20191211143640.GU32742@smile.fi.intel.com>
- <faf3482d4127464195d04a17cae446b7@mtkmbs05n1.mediatek.inc>
- <1586346824.8804.12.camel@mhfsdcap03>
+ id 1jM9hL-00081B-UW
+ for linux-mediatek@lists.infradead.org; Wed, 08 Apr 2020 12:20:53 +0000
+Received: from lore-desk-wlan.redhat.com (unknown [151.48.151.50])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 48BDD206F7;
+ Wed,  8 Apr 2020 12:20:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1586348450;
+ bh=4ESBG9SkgQkFponzawGQ7aor+asTMiiGcIRnIU6gIiI=;
+ h=From:To:Cc:Subject:Date:From;
+ b=vVz0CgiDeZO+mnulwuYl9rOZo9aiNKHzhwIDt+lD1E70cXwqdAhva5HEdM9kxZJVQ
+ 6e1tjqgkW9Rog5MS/JbwhqP76BNaAYL9EZONuHL9/6NfxVzCJ72yu6VUjqj5g3oMmq
+ AnMO+PVJDYrxDWISpzXxLiBI095aeYXmJYbSOH2E=
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: nbd@nbd.name
+Subject: [PATCH] mt76: mt7663: fix aggr range entry in debugfs
+Date: Wed,  8 Apr 2020 14:20:39 +0200
+Message-Id: <3b86a23c5ad6348cab3500935c619fba74db08ec.1586348345.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.25.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1586346824.8804.12.camel@mhfsdcap03>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200408_052044_306994_72911118 
-X-CRM114-Status: GOOD (  24.31  )
+X-CRM114-CacheID: sfid-20200408_052052_049949_D90349EC 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,268 +72,87 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org,
- andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
- shengnan.wang@mediatek.com, louis.kuo@mediatek.com, sj.huang@mediatek.com,
- robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- bingbu.cao@intel.com, mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
+ sean.wang@mediatek.com, linux-wireless@vger.kernel.org, ryder.lee@mediatek.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dongchun,
+Fix register definitions for aggr range counter registers for mt7663
+chipset
 
-On Wed, Apr 08, 2020 at 07:53:44PM +0800, Dongchun Zhu wrote:
-> Hello Andy,
-> 
-> Thanks for the review. Sorry for the late reply.
-> 
-> On Mon, 2019-12-11 at 16:36 +0200, Andy Shevchenko wrote:
-> > On Wed, Dec 11, 2019 at 07:28:49PM +0800, Dongchun Zhu wrote:
-> > > Add a V4L2 sub-device driver for OV02A10 image sensor. The OV02A10 is
-> > > a 1/5" CMOS sensor from Omnivision, asupporting output format: 10-bit Raw.
-> > >
-> > > This chip has a single MIPI lane interface and use the I2C bus for
-> > > control and the CSI-2 bus for data.
-> > 
-> > ...
-> > 
-> > > +#define OV02A10_MASK_8_BITS                            0xff
-> > 
-> > Besides GENMASK() why do you need a definition here? What's the point?
-> > 
-> 
-> Fixed in next release.
-> 
-> > ...
-> > 
-> > > +static int ov02a10_entity_init_cfg(struct v4l2_subdev *sd,
-> > > +   struct v4l2_subdev_pad_config *cfg) {
-> > > +struct v4l2_subdev_format fmt = {
-> > > +.which = cfg ? V4L2_SUBDEV_FORMAT_TRY
-> > > +     : V4L2_SUBDEV_FORMAT_ACTIVE,
-> > > +.format = {
-> > > +.width = 1600,
-> > 
-> > > +.height = 1200
-> > 
-> > Leave comma here.
-> > 
-> 
-> Fixed in next release.
-> 
-> > > +}
-> > > +};
-> > > +
-> > > +ov02a10_set_fmt(sd, cfg, &fmt);
-> > > +
-> > > +return 0;
-> > > +}
-> > 
-> > ...
-> > 
-> > > +ret = i2c_smbus_write_byte_data(client, OV02A10_REG_GAIN,
-> > > +(val & OV02A10_MASK_8_BITS));
-> > 
-> > Too many parentheses.
-> > 
-> 
-> Fixed in next release.
-> 
-> > > +if (ret < 0)
-> > > +return ret;
-> > 
-> > ...
-> > 
-> > > +static int ov02a10_set_vblank(struct ov02a10 *ov02a10, int val) {
-> > > +struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
-> > 
-> > if you do
-> > 
-> > int vts = val + ov02a10->cur_mode->height - OV02A10_BASIC_LINE;
-> > 
-> > you may increase readability below...
-> > 
-> 
-> Thanks for the suggestion.
-> It seems better now.
-> 
-> > > +int ret;
-> > > +
-> > > +ret = i2c_smbus_write_byte_data(client, REG_PAGE_SWITCH, REG_ENABLE);
-> > > +if (ret < 0)
-> > > +return ret;
-> > > +
-> > > +ret = i2c_smbus_write_byte_data(client, OV02A10_REG_VTS_H,
-> > > +(((val + ov02a10->cur_mode->height -
-> > > +OV02A10_BASIC_LINE) >>
-> > > +OV02A10_VTS_SHIFT) &
-> > > +OV02A10_MASK_8_BITS));
-> > 
-> > ret = i2c_smbus_write_byte_data(client, OV02A10_REG_VTS_H,
-> > (vts >> OV02A10_VTS_SHIFT) &
-> > OV02A10_MASK_8_BITS));
-> > 
-> > And actually why do you need this mask here? Isn't enough to call
-> > 
-> > ret = i2c_smbus_write_byte_data(client, OV02A10_REG_VTS_H,
-> > vts >> OV02A10_VTS_SHIFT);
-> > 
-> > here...
-> > 
-> > 
-> 
-> Yes. Now we code like this.
-> 
-> > > +if (ret < 0)
-> > > +return ret;
-> > > +
-> > > +ret = i2c_smbus_write_byte_data(client, OV02A10_REG_VTS_L,
-> > > +((val + ov02a10->cur_mode->height -
-> > > +OV02A10_BASIC_LINE) &
-> > > +OV02A10_MASK_8_BITS));
-> > 
-> > ...and
-> > 
-> > ret = i2c_smbus_write_byte_data(client, OV02A10_REG_VTS_L, vts);
-> > 
-> > here?
-> > 
-> 
-> Yes. Fixed in next release.
-> 
-> > > +if (ret < 0)
-> > > +return ret;
-> > > +
-> > > +return i2c_smbus_write_byte_data(client, REG_GLOBAL_EFFECTIVE,
-> > > + REG_ENABLE);
-> > > +}
-> > 
-> > ...
-> > 
-> > > +static int ov02a10_check_hwcfg(struct device *dev, struct ov02a10
-> > > +*ov02a10) {
-> > > +struct fwnode_handle *ep;
-> > > +struct fwnode_handle *fwnode = dev_fwnode(dev);
-> > > +struct v4l2_fwnode_endpoint bus_cfg = {
-> > 
-> > > +.bus_type = V4L2_MBUS_CSI2_DPHY
-> > 
-> > Leave comma here.
-> > 
-> 
-> Fixed in next release.
-> 
-> > > +};
-> > > +unsigned int i, j;
-> > > +int ret;
-> > 
-> > > +if (!fwnode)
-> > > +return -ENXIO;
-> > 
-> > A bit strange error code here.
-> > 
-> 
-> This should be reported as -EINVAL.
-> Fixed in next release.
-> 
-> > > +
-> > > +ep = fwnode_graph_get_next_endpoint(fwnode, NULL);
-> > > +if (!ep)
-> > > +return -ENXIO;
-> > > +
-> > > +ret = v4l2_fwnode_endpoint_alloc_parse(ep, &bus_cfg);
-> > > +fwnode_handle_put(ep);
-> > > +if (ret)
-> > > +return ret;
-> > 
-> > > +if (!bus_cfg.nr_of_link_frequencies) {
-> > > +dev_err(dev, "no link frequencies defined");
-> > > +ret = -EINVAL;
-> > > +goto check_hwcfg_error;
-> > > +}
-> > 
-> > I still think it's redundant check, though it's up to maintainers.
-> > 
-> 
-> We still wanna keep this check.
-> Keep same as ov2659 and ov8856.
-> 
-> > > +
-> > > +for (i = 0; i < ARRAY_SIZE(link_freq_menu_items); i++) {
-> > > +for (j = 0; j < bus_cfg.nr_of_link_frequencies; j++) {
-> > > +if (link_freq_menu_items[i] ==
-> > > +bus_cfg.link_frequencies[j])
-> > > +break;
-> > > +}
-> > > +
-> > > +if (j == bus_cfg.nr_of_link_frequencies) {
-> > > +dev_err(dev, "no link frequency %lld supported",
-> > > +link_freq_menu_items[i]);
-> > > +ret = -EINVAL;
-> > > +goto check_hwcfg_error;
-> > > +}
-> > > +}
-> > > +
-> > > +check_hwcfg_error:
-> > > +v4l2_fwnode_endpoint_free(&bus_cfg);
-> > > +
-> > > +return ret;
-> > > +}
-> > 
-> > ...
-> > 
-> > > +static int ov02a10_probe(struct i2c_client *client) {
-> > 
-> > > +/* Optional indication of physical rotation of sensor */
-> > > +ret = fwnode_property_read_u32(dev_fwnode(dev), "rotation",
-> > > +&rotation);
-> > 
-> > > +if (!ret) {
-> > 
-> > Why not positive conditional?
-> > 
-> 
-> Okay. Fixed in next release.
-> 
-> > > +ov02a10->upside_down = rotation == 180;
-> > > +if (rotation == 180) {
-> > > +ov02a10->upside_down = true;
-> > > +ov02a10->fmt.code = MEDIA_BUS_FMT_SRGGB10_1X10;
-> > > +}
-> > > +} else {
-> > > +dev_warn(dev, "failed to get rotation\n");
-> > > +}
-> > > +
-> > > +/* Optional indication of mipi TX speed */
-> > > +ret = fwnode_property_read_u32(dev_fwnode(dev), "ovti,mipi-tx-speed",
-> > > +       &clock_lane_tx_speed);
-> > > +
-> > 
-> > > +if (!ret)
-> > 
-> > Ditto.
-> > 
-> 
-> As Sakari mentioned earlier, the property "ovti,mipi-tx-speed" is
-> optional that shouldn't warn it's missing when ret is 0.
-> So we would keep the condition like that, just removing else case.
+Fixes: f40ac0f3d3c0 ("mt76: mt7615: introduce mt7663e support")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c | 6 ++++--
+ drivers/net/wireless/mediatek/mt76/mt7615/init.c    | 1 +
+ drivers/net/wireless/mediatek/mt76/mt7615/regs.h    | 5 +++++
+ 3 files changed, 10 insertions(+), 2 deletions(-)
 
-I don't remember discussing this, but could be because it was quite some
-time ago.
-
-It doesn't seem to be documented. What is it for?
-
-> > *********************MEDIATEK Confidential/Internal Use*********************
-
-Is this intentional?
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
+index 777c7f9bd760..2163a22967c7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
+@@ -129,16 +129,18 @@ mt7615_ampdu_stat_read_phy(struct mt7615_phy *phy,
+ 			   struct seq_file *file)
+ {
+ 	struct mt7615_dev *dev = file->private;
++	u32 reg = is_mt7663(&dev->mt76) ? MT_MIB_ARNG(0) : MT_AGG_ASRCR0;
+ 	bool ext_phy = phy != &dev->phy;
+ 	int bound[7], i, range;
+ 
+ 	if (!phy)
+ 		return;
+ 
+-	range = mt76_rr(dev, MT_AGG_ASRCR0);
++	range = mt76_rr(dev, reg);
+ 	for (i = 0; i < 4; i++)
+ 		bound[i] = MT_AGG_ASRCR_RANGE(range, i) + 1;
+-	range = mt76_rr(dev, MT_AGG_ASRCR1);
++
++	range = mt76_rr(dev, reg + 4);
+ 	for (i = 0; i < 3; i++)
+ 		bound[i + 4] = MT_AGG_ASRCR_RANGE(range, i) + 1;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+index 6acaaf2732df..07d4b259fe8a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+@@ -116,6 +116,7 @@ static void mt7615_mac_init(struct mt7615_dev *dev)
+ 	mt76_wr(dev, MT_DMA_DCR0,
+ 		FIELD_PREP(MT_DMA_DCR0_MAX_RX_LEN, 3072) |
+ 		MT_DMA_DCR0_RX_VEC_DROP);
++	mt76_set(dev, MT_WF_MIB_SCR0, MT_MIB_SCR0_AGG_CNT_RANGE_EN);
+ 	if (is_mt7663(&dev->mt76)) {
+ 		mt76_wr(dev, MT_WF_AGG(0x160), 0x5c341c02);
+ 		mt76_wr(dev, MT_WF_AGG(0x164), 0x70708040);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
+index 481e4d941e72..a3333f382350 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
+@@ -384,6 +384,9 @@ enum mt7615_reg_base {
+ #define MT_WF_MIB_BASE			(dev->reg_map[MT_MIB_BASE])
+ #define MT_WF_MIB(_band, ofs)		(MT_WF_MIB_BASE + (ofs) + (_band) * 0x200)
+ 
++#define MT_WF_MIB_SCR0			MT_WF_MIB(0, 0)
++#define MT_MIB_SCR0_AGG_CNT_RANGE_EN	BIT(21)
++
+ #define MT_MIB_M0_MISC_CR(_band)	MT_WF_MIB(_band, 0x00c)
+ 
+ #define MT_MIB_SDR3(_band)		MT_WF_MIB(_band, 0x014)
+@@ -414,6 +417,8 @@ enum mt7615_reg_base {
+ #define MT_MIB_BA_MISS_COUNT_MASK	GENMASK(15, 0)
+ #define MT_MIB_ACK_FAIL_COUNT_MASK	GENMASK(31, 16)
+ 
++#define MT_MIB_ARNG(n)			MT_WF_MIB(0, 0x4b8 + ((n) << 2))
++
+ #define MT_TX_AGG_CNT(_band, n)		MT_WF_MIB(_band, 0xa8 + ((n) << 2))
+ 
+ #define MT_DMA_SHDL(ofs)		(dev->reg_map[MT_DMA_SHDL_BASE] + (ofs))
 -- 
-Regards,
+2.25.2
 
-Sakari Ailus
 
 _______________________________________________
 Linux-mediatek mailing list
