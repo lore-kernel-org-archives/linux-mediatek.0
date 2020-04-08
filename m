@@ -2,79 +2,73 @@ Return-Path: <SRS0=Kof6=5Y=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DF661C2D0EA
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 12:07:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C627C2D0EA
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 12:10:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9AA7D20753
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 12:07:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 08DCB20747
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 12:10:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oahyFPVv";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="RTVhrK4e"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9AA7D20753
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Vfojd6fc"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 08DCB20747
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UPxrIH0Qc2V8ZTt8WqsvhLkBqtig9MERnsKML9XyhOA=; b=oahyFPVvUxFXyx
-	q7PG6oWZSyYLL6CN4hiOSFosTzV0MtfcOLrEWCzTJIntJxkyxPaHBPu6ueA+0GgLxmVd64A92tAvN
-	z/j6B1mY673XVuXWtoUloGRi7f/REFPgwsIkUraeCKpaJc0X1syvVu1DoyPCCD0xB10Uo32YwgAnp
-	8Rv0BMa0tGGN2RruES0r9KZSX0FVdrw2S+nXub6yQuZVoaBE9hXqZjielQAYLaP0bC6osQtJSTsi2
-	ZGo+olBsDdHVyWOKhy9GUyk9qqMvhjvK3gWMteHyZyHy2UTexgRO9kTHDHXksMH0qdeVcdURP/6RF
-	dkBOtqTSscqssc2W7fEw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=ejUe071RwlDoakuKDx2Pzo2Bvl1ZomCCYN+dW6r/o7A=; b=Vfojd6fcQLcdH9SqDkDfsSbEa
+	GBGvM0Rsnz/+FZvfPHx5qMuv8ovQNsRef5P3Y+OlgNhX0ubkr9mOvRhC5L6fuX4Fy9jRG4mdW2Qt/
+	8kcZ4zhsOUNRLSA543pvQj9+fedqlKUR51J2kDhOuL7yey9MSwXxot4700zm3kowGnL/h4VhwaJYG
+	gm33MK93zwDncLnYxbwLUmJAA/lb89FOJXqfOgMGAhQBl7MNAnTTDuuFzEEEluC9WoX5kTtJGY2W3
+	indqm96kc0NPvnVZXcVkiKjrWavrrP5y1h5oo3tquYWT4y8LS7GrGl4AqMrjooqR/Nbnsxk6pImiO
+	iPJ0GSyvg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jM9UG-0006KP-JV; Wed, 08 Apr 2020 12:07:20 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jM9R6-0000YQ-D1; Wed, 08 Apr 2020 12:04:06 +0000
-X-UUID: 0010bb0e81f14cb1b7f83c81a08f1d8e-20200408
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=8H+hhyZ1P440Ay/us/xwFYEH2bp7WNz3JoXb3I9h0TA=; 
- b=RTVhrK4esHy0n1HPNZ2m/7kytI9VtzXxz1dVvzUe2UxvYEhmT11bpW9cgeTAaO0C7pr9rXjVJGgaImePqAqs6VFLxirvDMDjKuZuYnEJeRJVolWBZJMcZOzfmPgvps2wCAwuEK9wjAVDiebEnUPYS0sc491gRxvP38U7x2R1lg8=;
-X-UUID: 0010bb0e81f14cb1b7f83c81a08f1d8e-20200408
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1892152378; Wed, 08 Apr 2020 04:03:26 -0800
-Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 8 Apr 2020 04:53:55 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31DR.mediatek.inc
- (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 8 Apr 2020 19:53:51 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 8 Apr 2020 19:53:51 +0800
-Message-ID: <1586346824.8804.12.camel@mhfsdcap03>
-Subject: Re: [V6, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: <andriy.shevchenko@linux.intel.com>
-Date: Wed, 8 Apr 2020 19:53:44 +0800
-In-Reply-To: <faf3482d4127464195d04a17cae446b7@mtkmbs05n1.mediatek.inc>
-References: <20191211112849.16705-1-dongchun.zhu@mediatek.com>
- <20191211112849.16705-3-dongchun.zhu@mediatek.com>
- <20191211143640.GU32742@smile.fi.intel.com>
- <faf3482d4127464195d04a17cae446b7@mtkmbs05n1.mediatek.inc>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+	id 1jM9Wj-00071d-RM; Wed, 08 Apr 2020 12:09:53 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jM9Wg-00070j-Cn; Wed, 08 Apr 2020 12:09:51 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 5703C31B;
+ Wed,  8 Apr 2020 05:09:47 -0700 (PDT)
+Received: from [10.57.55.221] (unknown [10.57.55.221])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id AA7BA3F73D;
+ Wed,  8 Apr 2020 05:09:43 -0700 (PDT)
+Subject: Re: [RFC PATCH 17/34] iommu/arm-smmu: Store device instead of group
+ in arm_smmu_s2cr
+To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse
+ <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson
+ <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>
+References: <20200407183742.4344-1-joro@8bytes.org>
+ <20200407183742.4344-18-joro@8bytes.org>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <98c10a41-d223-e375-9742-b6471c3dc33c@arm.com>
+Date: Wed, 8 Apr 2020 13:09:40 +0100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 3ED9436ACB4E83CE8ADF739028FE7CD851C9C35EF66199FC17C0DF124C6D651C2000:8
-X-MTK: N
+In-Reply-To: <20200407183742.4344-18-joro@8bytes.org>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200408_050404_462936_A4852D60 
-X-CRM114-Status: GOOD (  16.91  )
+X-CRM114-CacheID: sfid-20200408_050950_477074_043AA882 
+X-CRM114-Status: GOOD (  24.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,266 +80,120 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org,
- srv_heupstream@mediatek.com, shengnan.wang@mediatek.com,
- louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, sakari.ailus@linux.intel.com,
- matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org,
+ iommu@lists.linux-foundation.org, Joerg Roedel <jroedel@suse.de>,
+ linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Andy,
+On 2020-04-07 7:37 pm, Joerg Roedel wrote:
+> From: Joerg Roedel <jroedel@suse.de>
+> 
+> This is required to convert the arm-smmu driver to the
+> probe/release_device() interface.
+> 
+> Signed-off-by: Joerg Roedel <jroedel@suse.de>
+> ---
+>   drivers/iommu/arm-smmu.c | 14 +++++++++-----
+>   1 file changed, 9 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/iommu/arm-smmu.c b/drivers/iommu/arm-smmu.c
+> index a6a5796e9c41..3493501d8b2c 100644
+> --- a/drivers/iommu/arm-smmu.c
+> +++ b/drivers/iommu/arm-smmu.c
+> @@ -69,7 +69,7 @@ MODULE_PARM_DESC(disable_bypass,
+>   	"Disable bypass streams such that incoming transactions from devices that are not attached to an iommu domain will report an abort back to the device and will not be allowed to pass through the SMMU.");
+>   
+>   struct arm_smmu_s2cr {
+> -	struct iommu_group		*group;
+> +	struct device			*dev;
+>   	int				count;
+>   	enum arm_smmu_s2cr_type		type;
+>   	enum arm_smmu_s2cr_privcfg	privcfg;
+> @@ -1100,7 +1100,7 @@ static int arm_smmu_master_alloc_smes(struct device *dev)
+>   	/* It worked! Now, poke the actual hardware */
+>   	for_each_cfg_sme(cfg, fwspec, i, idx) {
+>   		arm_smmu_write_sme(smmu, idx);
+> -		smmu->s2crs[idx].group = group;
+> +		smmu->s2crs[idx].dev = dev;
+>   	}
+>   
+>   	mutex_unlock(&smmu->stream_map_mutex);
+> @@ -1495,11 +1495,15 @@ static struct iommu_group *arm_smmu_device_group(struct device *dev)
+>   	int i, idx;
+>   
+>   	for_each_cfg_sme(cfg, fwspec, i, idx) {
+> -		if (group && smmu->s2crs[idx].group &&
+> -		    group != smmu->s2crs[idx].group)
+> +		struct iommu_group *idx_grp = NULL;
+> +
+> +		if (smmu->s2crs[idx].dev)
+> +			idx_grp = smmu->s2crs[idx].dev->iommu_group;
 
-Thanks for the review. Sorry for the late reply.
+For a hot-pluggable bus where logical devices may share Stream IDs (like 
+fsl-mc), this could happen:
 
-On Mon, 2019-12-11 at 16:36 +0200, Andy Shevchenko wrote:
-> On Wed, Dec 11, 2019 at 07:28:49PM +0800, Dongchun Zhu wrote:
-> > Add a V4L2 sub-device driver for OV02A10 image sensor. The OV02A10 is
-> > a 1/5" CMOS sensor from Omnivision, asupporting output format: 10-bit Raw.
-> >
-> > This chip has a single MIPI lane interface and use the I2C bus for
-> > control and the CSI-2 bus for data.
-> 
-> ...
-> 
-> > +#define OV02A10_MASK_8_BITS                            0xff
-> 
-> Besides GENMASK() why do you need a definition here? What's the point?
-> 
+   create device A
+   iommu_probe_device(A)
+     iommu_device_group(A) -> alloc group X
+   create device B
+   iommu_probe_device(B)
+     iommu_device_group(A) -> lookup returns group X
+   ...
+   iommu_remove_device(A)
+   delete device A
+   create device C
+   iommu_probe_device(C)
+     iommu_device_group(C) -> use-after-free of A
 
-Fixed in next release.
+Preserving the logical behaviour here would probably look *something* 
+like the mangled diff below, but I haven't thought it through 100%.
 
-> ...
-> 
-> > +static int ov02a10_entity_init_cfg(struct v4l2_subdev *sd,
-> > +   struct v4l2_subdev_pad_config *cfg) {
-> > +struct v4l2_subdev_format fmt = {
-> > +.which = cfg ? V4L2_SUBDEV_FORMAT_TRY
-> > +     : V4L2_SUBDEV_FORMAT_ACTIVE,
-> > +.format = {
-> > +.width = 1600,
-> 
-> > +.height = 1200
-> 
-> Leave comma here.
-> 
+Robin.
 
-Fixed in next release.
+----->8-----
+diff --git a/drivers/iommu/arm-smmu.c b/drivers/iommu/arm-smmu.c
+index 16c4b87af42b..e88612ee47fe 100644
+--- a/drivers/iommu/arm-smmu.c
++++ b/drivers/iommu/arm-smmu.c
+@@ -1100,10 +1100,8 @@ static int arm_smmu_master_alloc_smes(struct 
+device *dev)
+         iommu_group_put(group);
 
-> > +}
-> > +};
-> > +
-> > +ov02a10_set_fmt(sd, cfg, &fmt);
-> > +
-> > +return 0;
-> > +}
-> 
-> ...
-> 
-> > +ret = i2c_smbus_write_byte_data(client, OV02A10_REG_GAIN,
-> > +(val & OV02A10_MASK_8_BITS));
-> 
-> Too many parentheses.
-> 
+         /* It worked! Now, poke the actual hardware */
+-       for_each_cfg_sme(fwspec, i, idx) {
++       for_each_cfg_sme(fwspec, i, idx)
+                 arm_smmu_write_sme(smmu, idx);
+-               smmu->s2crs[idx].group = group;
+-       }
 
-Fixed in next release.
+         mutex_unlock(&smmu->stream_map_mutex);
+         return 0;
+@@ -1500,15 +1498,17 @@ static struct iommu_group 
+*arm_smmu_device_group(struct device *dev)
+         }
 
-> > +if (ret < 0)
-> > +return ret;
-> 
-> ...
-> 
-> > +static int ov02a10_set_vblank(struct ov02a10 *ov02a10, int val) {
-> > +struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
-> 
-> if you do
-> 
-> int vts = val + ov02a10->cur_mode->height - OV02A10_BASIC_LINE;
-> 
-> you may increase readability below...
-> 
+         if (group)
+-               return iommu_group_ref_get(group);
+-
+-       if (dev_is_pci(dev))
++               iommu_group_ref_get(group);
++       else if (dev_is_pci(dev))
+                 group = pci_device_group(dev);
+         else if (dev_is_fsl_mc(dev))
+                 group = fsl_mc_device_group(dev);
+         else
+                 group = generic_device_group(dev);
 
-Thanks for the suggestion.
-It seems better now.
-
-> > +int ret;
-> > +
-> > +ret = i2c_smbus_write_byte_data(client, REG_PAGE_SWITCH, REG_ENABLE);
-> > +if (ret < 0)
-> > +return ret;
-> > +
-> > +ret = i2c_smbus_write_byte_data(client, OV02A10_REG_VTS_H,
-> > +(((val + ov02a10->cur_mode->height -
-> > +OV02A10_BASIC_LINE) >>
-> > +OV02A10_VTS_SHIFT) &
-> > +OV02A10_MASK_8_BITS));
-> 
-> ret = i2c_smbus_write_byte_data(client, OV02A10_REG_VTS_H,
-> (vts >> OV02A10_VTS_SHIFT) &
-> OV02A10_MASK_8_BITS));
-> 
-> And actually why do you need this mask here? Isn't enough to call
-> 
-> ret = i2c_smbus_write_byte_data(client, OV02A10_REG_VTS_H,
-> vts >> OV02A10_VTS_SHIFT);
-> 
-> here...
-> 
-> 
-
-Yes. Now we code like this.
-
-> > +if (ret < 0)
-> > +return ret;
-> > +
-> > +ret = i2c_smbus_write_byte_data(client, OV02A10_REG_VTS_L,
-> > +((val + ov02a10->cur_mode->height -
-> > +OV02A10_BASIC_LINE) &
-> > +OV02A10_MASK_8_BITS));
-> 
-> ...and
-> 
-> ret = i2c_smbus_write_byte_data(client, OV02A10_REG_VTS_L, vts);
-> 
-> here?
-> 
-
-Yes. Fixed in next release.
-
-> > +if (ret < 0)
-> > +return ret;
-> > +
-> > +return i2c_smbus_write_byte_data(client, REG_GLOBAL_EFFECTIVE,
-> > + REG_ENABLE);
-> > +}
-> 
-> ...
-> 
-> > +static int ov02a10_check_hwcfg(struct device *dev, struct ov02a10
-> > +*ov02a10) {
-> > +struct fwnode_handle *ep;
-> > +struct fwnode_handle *fwnode = dev_fwnode(dev);
-> > +struct v4l2_fwnode_endpoint bus_cfg = {
-> 
-> > +.bus_type = V4L2_MBUS_CSI2_DPHY
-> 
-> Leave comma here.
-> 
-
-Fixed in next release.
-
-> > +};
-> > +unsigned int i, j;
-> > +int ret;
-> 
-> > +if (!fwnode)
-> > +return -ENXIO;
-> 
-> A bit strange error code here.
-> 
-
-This should be reported as -EINVAL.
-Fixed in next release.
-
-> > +
-> > +ep = fwnode_graph_get_next_endpoint(fwnode, NULL);
-> > +if (!ep)
-> > +return -ENXIO;
-> > +
-> > +ret = v4l2_fwnode_endpoint_alloc_parse(ep, &bus_cfg);
-> > +fwnode_handle_put(ep);
-> > +if (ret)
-> > +return ret;
-> 
-> > +if (!bus_cfg.nr_of_link_frequencies) {
-> > +dev_err(dev, "no link frequencies defined");
-> > +ret = -EINVAL;
-> > +goto check_hwcfg_error;
-> > +}
-> 
-> I still think it's redundant check, though it's up to maintainers.
-> 
-
-We still wanna keep this check.
-Keep same as ov2659 and ov8856.
-
-> > +
-> > +for (i = 0; i < ARRAY_SIZE(link_freq_menu_items); i++) {
-> > +for (j = 0; j < bus_cfg.nr_of_link_frequencies; j++) {
-> > +if (link_freq_menu_items[i] ==
-> > +bus_cfg.link_frequencies[j])
-> > +break;
-> > +}
-> > +
-> > +if (j == bus_cfg.nr_of_link_frequencies) {
-> > +dev_err(dev, "no link frequency %lld supported",
-> > +link_freq_menu_items[i]);
-> > +ret = -EINVAL;
-> > +goto check_hwcfg_error;
-> > +}
-> > +}
-> > +
-> > +check_hwcfg_error:
-> > +v4l2_fwnode_endpoint_free(&bus_cfg);
-> > +
-> > +return ret;
-> > +}
-> 
-> ...
-> 
-> > +static int ov02a10_probe(struct i2c_client *client) {
-> 
-> > +/* Optional indication of physical rotation of sensor */
-> > +ret = fwnode_property_read_u32(dev_fwnode(dev), "rotation",
-> > +&rotation);
-> 
-> > +if (!ret) {
-> 
-> Why not positive conditional?
-> 
-
-Okay. Fixed in next release.
-
-> > +ov02a10->upside_down = rotation == 180;
-> > +if (rotation == 180) {
-> > +ov02a10->upside_down = true;
-> > +ov02a10->fmt.code = MEDIA_BUS_FMT_SRGGB10_1X10;
-> > +}
-> > +} else {
-> > +dev_warn(dev, "failed to get rotation\n");
-> > +}
-> > +
-> > +/* Optional indication of mipi TX speed */
-> > +ret = fwnode_property_read_u32(dev_fwnode(dev), "ovti,mipi-tx-speed",
-> > +       &clock_lane_tx_speed);
-> > +
-> 
-> > +if (!ret)
-> 
-> Ditto.
-> 
-
-As Sakari mentioned earlier, the property "ovti,mipi-tx-speed" is
-optional that shouldn't warn it's missing when ret is 0.
-So we would keep the condition like that, just removing else case.
-
-> > +ov02a10->mipi_clock_tx_speed = clock_lane_tx_speed;
-> > +else
-> > +dev_warn(dev, "failed to get mipi tx speed, using default...\n");
-> > +
-> 
-> > +return ret;
-> > +}
-> 
-> --
-> With Best Regards,
-> Andy Shevchenko
-> 
-> 
-> *********************MEDIATEK Confidential/Internal Use*********************
++       for_each_cfg_sme(fwspec, i, idx)
++               smmu->s2crs[idx].group = group;
++
+         return group;
+  }
 
 _______________________________________________
 Linux-mediatek mailing list
