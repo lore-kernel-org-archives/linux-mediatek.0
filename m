@@ -2,61 +2,61 @@ Return-Path: <SRS0=Kof6=5Y=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A51F2C2D0F4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 16:47:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2CE62C2D0F4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 19:11:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 76A9220730
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 16:47:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F07FD2075E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Apr 2020 19:11:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lxKu+cZN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 76A9220730
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Qfru/n5C"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F07FD2075E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9iaaw9F8fNST4qGlQBtkG5io2fsrjP5fqhN2p4OzZkk=; b=lxKu+cZNDMux1n
-	Q5862OulqagiGxw8b64OEs+Nup87/PCw/7ynKOOWaqsdGuirAq4udJ0bXtoqKuX6ww5jf2JUd+nyP
-	ndeznpjZE0MysBle5hnHUEeFs7kwF3VdCT1D+uB7uZ/OobgcPJ30I+33xR91dc9aaNSov4iQxUkQW
-	Pv2vqr7LQx2SyUd2kZFXEKCQ4gJt/2Qi3x6EbiomatPL56Vz7NSv6oC+HU+0u6YPvenFw3Mm+txHV
-	NTInLKwKQdSHR1e5+yLEGBg3enUpgjiE/8kuQHjjX9tIvG4WjNSBIObw337/Bb62AYSooxbqs/y0N
-	dTkap5OXJ7wg+r6YOwAQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Jh1az5MCGruBaJMTRLpbGrnShfmbE3vK31MSJghqb+s=; b=Qfru/n5CaW5zP9
+	cXxQCQsw2YnOuyMVrUOoYehIN0W4iDXZLqCUZc85lkMrSjXgyRjNpO+m1MZeuRALLBRAuMHrqIBts
+	g9yYzcuoJRezZMudXDzjUWP+TwkUIcYLtfqWj+P7U+lKvk0vBEChXjCwdhMPc95I7y2xBzKLqgW+K
+	xIHQkqd8FN4i0snSSuTOD/e61L/M0UzDNwSD+V2lFr1isUH7LOrRLzw05AVRC3peTwK+OjCrErbYA
+	SoJByG75Ua44tC8F3WuPOEIJRt+yzvWdqXvDSLZo+JMGO6CEYf9q3NmMhl0MCIA+LwHkAbcSVEppD
+	XbVwG4lVlOlyyjUiKm+A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMDr9-0005LJ-2e; Wed, 08 Apr 2020 16:47:15 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1jMG6i-0002NJ-Ts; Wed, 08 Apr 2020 19:11:28 +0000
+Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
+ helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMDr0-0005Ez-Ix; Wed, 08 Apr 2020 16:47:08 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 535B328CC6F
-Subject: Re: [PATCH] arm64: dts: mt8173: Add gce setting in mmsys and display
- node
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Enric Balletbo Serra <eballetbo@gmail.com>
-References: <20191118104252.228406-1-hsinyi@chromium.org>
- <CAFqH_528vidMhTFxNZ=b7SFD2K12UwtdX3uTUzW4YUgeDWkg5A@mail.gmail.com>
- <CAAOTY_8RMboOuKVKPANZ1QN+mt0jvOr13o84VhWKGY1QZqbPDg@mail.gmail.com>
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <e22e0400-56e0-2ff4-72d8-5231b7fa58fc@collabora.com>
-Date: Wed, 8 Apr 2020 18:46:58 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ id 1jMG6f-0002Lf-07; Wed, 08 Apr 2020 19:11:27 +0000
+Received: by theia.8bytes.org (Postfix, from userid 1000)
+ id 2738E2B6; Wed,  8 Apr 2020 21:11:13 +0200 (CEST)
+Date: Wed, 8 Apr 2020 21:11:11 +0200
+From: Joerg Roedel <joro@8bytes.org>
+To: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [RFC PATCH 17/34] iommu/arm-smmu: Store device instead of group
+ in arm_smmu_s2cr
+Message-ID: <20200408191111.GA6342@8bytes.org>
+References: <20200407183742.4344-1-joro@8bytes.org>
+ <20200407183742.4344-18-joro@8bytes.org>
+ <98c10a41-d223-e375-9742-b6471c3dc33c@arm.com>
+ <20200408143707.GK3103@8bytes.org>
+ <f8b541c2-9271-fc48-dde6-166a2ed6679f@arm.com>
 MIME-Version: 1.0
-In-Reply-To: <CAAOTY_8RMboOuKVKPANZ1QN+mt0jvOr13o84VhWKGY1QZqbPDg@mail.gmail.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <f8b541c2-9271-fc48-dde6-166a2ed6679f@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200408_094706_882907_A180AF55 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20200408_121125_342490_B25CC557 
+X-CRM114-Status: GOOD (  23.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,159 +68,282 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Bibby Hsieh <bibby.hsieh@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, linux-tegra@vger.kernel.org,
+ Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ linux-samsung-soc@vger.kernel.org, Rob Clark <robdclark@gmail.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>,
+ Joerg Roedel <jroedel@suse.de>, linux-s390@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ virtualization@lists.linux-foundation.org,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>, linux-kernel@vger.kernel.org,
+ iommu@lists.linux-foundation.org, Kukjin Kim <kgene@kernel.org>,
+ David Woodhouse <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQ2h1bi1LdWFuZwoKTWFueSB0aGFua3MgdG8gbGV0IHVzIGtub3cgdGhpcywgSSBjb21wbGV0
-ZWx5IG1pc3NlZC4KCk9uIDgvNC8yMCAxODowOSwgQ2h1bi1LdWFuZyBIdSB3cm90ZToKPiBIaSwg
-SHNpbi1ZaToKPiAKPiBFbnJpYyBCYWxsZXRibyBTZXJyYSA8ZWJhbGxldGJvQGdtYWlsLmNvbT4g
-5pa8IDIwMjDlubQ05pyIOOaXpSDpgLHkuIkg5LiL5Y2IMTE6NDjlr6vpgZPvvJoKPj4KPj4gTWlz
-c2F0Z2UgZGUgSHNpbi1ZaSBXYW5nIDxoc2lueWlAY2hyb21pdW0ub3JnPiBkZWwgZGlhIGRsLiwg
-MTggZGUgbm92Lgo+PiAyMDE5IGEgbGVzIDExOjQzOgo+Pj4KPj4+IEluIG9yZGVyIHRvIHVzZSBH
-Q0UgZnVuY3Rpb24sIHdlIG5lZWQgYWRkIHNvbWUgaW5mb3JtYXRpb25zCj4+PiBpbnRvIGRpc3Bs
-YXkgbm9kZSAobWJveGVzLCBtZWRpYXRlayxnY2UtY2xpZW50LXJlZywgbWVkaWF0ZWssZ2NlLWV2
-ZW50cykuCj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogSHNpbi1ZaSBXYW5nIDxoc2lueWlAY2hyb21p
-dW0ub3JnPgo+Pgo+PiBXaXRoIHRoZSBmaXggcHJvdmlkZWQgYnkgSHNpbi1ZaSBbMV0gYW5kIGFm
-dGVyIHRoZSBtbXN5cyBwYXRjaGVzCj4+IGxhbmRlZCBJIGdldCBHQ0UgZnVuY3Rpb24gd29ya2lu
-ZyBvbiBtdDgxNzMsIHNvCj4+Cj4+IFRlc3RlZC1ieTogRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8
-ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4KPj4KPj4gWzFdIGh0dHBzOi8vbG9yZS5rZXJu
-ZWwub3JnL2xrbWwvMjAyMDA0MDYwNTExMzEuMjI1NzQ4LTEtaHNpbnlpQGNocm9taXVtLm9yZy8K
-Pj4KPj4gVGhhbmtzLAo+PiAgRW5yaWMKPj4KPj4+IC0tLQo+Pj4gLSBUaGlzIGlzIGJhc2VkIG9u
-IHNlcmllcyAic3VwcG9ydCBnY2Ugb24gbXQ4MTgzIHBsYXRmb3JtIgo+Pj4gICBodHRwczovL3Bh
-dGNod29yay5rZXJuZWwub3JnL2NvdmVyLzExMjA4MzA5Lwo+Pj4gLSBnY2Ugc2V0dGluZyBpbiA4
-MTgzOgo+Pj4gICBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzExMTI3MTA1Lwo+
-Pj4gLS0tCj4+PiAgYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxNzMuZHRzaSB8IDE2
-ICsrKysrKysrKysrKysrKysKPj4+ICAxIGZpbGUgY2hhbmdlZCwgMTYgaW5zZXJ0aW9ucygrKQo+
-Pj4KPj4+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE3My5k
-dHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxNzMuZHRzaQo+Pj4gaW5kZXgg
-MTVmMTg0MmY2ZGYzLi5lODRlYzNmOTVkODEgMTAwNjQ0Cj4+PiAtLS0gYS9hcmNoL2FybTY0L2Jv
-b3QvZHRzL21lZGlhdGVrL210ODE3My5kdHNpCj4+PiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRz
-L21lZGlhdGVrL210ODE3My5kdHNpCj4+PiBAQCAtOTExLDYgKzkxMSwxMSBAQCBtbXN5czogY2xv
-Y2stY29udHJvbGxlckAxNDAwMDAwMCB7Cj4+PiAgICAgICAgICAgICAgICAgICAgICAgICBhc3Np
-Z25lZC1jbG9ja3MgPSA8JnRvcGNrZ2VuIENMS19UT1BfTU1fU0VMPjsKPj4+ICAgICAgICAgICAg
-ICAgICAgICAgICAgIGFzc2lnbmVkLWNsb2NrLXJhdGVzID0gPDQwMDAwMDAwMD47Cj4+PiAgICAg
-ICAgICAgICAgICAgICAgICAgICAjY2xvY2stY2VsbHMgPSA8MT47Cj4+PiArICAgICAgICAgICAg
-ICAgICAgICAgICBtYm94ZXMgPSA8JmdjZSAwIENNRFFfVEhSX1BSSU9fSElHSEVTVCAxPiwKPj4+
-ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwmZ2NlIDEgQ01EUV9USFJfUFJJT19I
-SUdIRVNUIDE+Owo+IAo+IEJlY2F1c2Ugb2YgcGF0Y2ggWzFdLCBhdG9taWNfZXhlYyBwYXJhbWV0
-ZXIgc2hvdWxkIGJlIHJlbW92ZWQuCj4gCj4gWzFdIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHVi
-L3NjbS9saW51eC9rZXJuZWwvZ2l0L25leHQvbGludXgtbmV4dC5naXQvY29tbWl0Lz9oPW5leHQt
-MjAyMDA0MDgmaWQ9MTlkOGUzMzVkNThhOTYxYTdlZDM3N2U1ZTJlNjM2NjRiOTJjMGI5Ywo+IAoK
-TWFueSB0aGFua3MgdG8gcG9pbnQgdGhpcy4gSHNpbi1ZaSwgYXMgdGhlIG10ODE3MyBkZXZpY2Ut
-dHJlZSB3aWxsIG5vdCBsYW5kIGluCmN1cnJlbnQgbWVyZ2Ugd2luZG93IChNYXR0aGlhcyBjb3Jy
-ZWN0IG1lIGlmIEkgYW0gIHdyb25nKSBtYXliZSB5b3UgY291bGQgc2VuZCBhCm5ldyB2ZXJzaW9u
-IG9mIHRoZSBkZXZpY2UtdHJlZSBpbmNsdWRpbmcgdGhlc2UgY2hhbmdlcz8KCgo+Pj4gKyAgICAg
-ICAgICAgICAgICAgICAgICAgbWVkaWF0ZWssZ2NlLWNsaWVudC1yZWcgPSA8JmdjZSBTVUJTWVNf
-MTQwMFhYWFggMCAweDEwMDA+Owo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgbWVkaWF0ZWss
-Z2NlLWV2ZW50cyA9IDxDTURRX0VWRU5UX01VVEVYMF9TVFJFQU1fRU9GPiwKPj4+ICsgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8Q01EUV9FVkVOVF9NVVRFWDFf
-U1RSRUFNX0VPRj47Cj4gCj4gQmVjYXVzZSBvZiBwYXRjaCBbMl0sIHRoZXNlIGV2ZW50cyBzaG91
-bGQgYmUgbW92ZWQgdG8gbXV0ZXggbm9kZS4KPiAKPiBbMl0gaHR0cHM6Ly9naXQua2VybmVsLm9y
-Zy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG9ydmFsZHMvbGludXguZ2l0L2NvbW1pdC8/aD12
-NS42JmlkPTYwZmE4YzEzYWIxYTMzYjhiOTU4ZWZiMTUxMGVjMmZkOGEwNjRiY2MKPiAKCkhzaW4t
-WWksIG5vdGUgdGhpcyB3aWxsIGFsc28gaW1wYWN0IHlvdXIgZml4ZXMgcGF0Y2ggWzFdLgoKWzFd
-IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xrbWwvMjAyMDA0MDYwNTExMzEuMjI1NzQ4LTEtaHNp
-bnlpQGNocm9taXVtLm9yZy8KClRoYW5rcywKIEVucmljCgo+IFJlZ2FyZHMsCj4gQ2h1bi1LdWFu
-Zy4KPiAKPj4+ICAgICAgICAgICAgICAgICB9Owo+Pj4KPj4+ICAgICAgICAgICAgICAgICBtZHBf
-cmRtYTA6IHJkbWFAMTQwMDEwMDAgewo+Pj4gQEAgLTk5MSw2ICs5OTYsNyBAQCBvdmwwOiBvdmxA
-MTQwMGMwMDAgewo+Pj4gICAgICAgICAgICAgICAgICAgICAgICAgY2xvY2tzID0gPCZtbXN5cyBD
-TEtfTU1fRElTUF9PVkwwPjsKPj4+ICAgICAgICAgICAgICAgICAgICAgICAgIGlvbW11cyA9IDwm
-aW9tbXUgTTRVX1BPUlRfRElTUF9PVkwwPjsKPj4+ICAgICAgICAgICAgICAgICAgICAgICAgIG1l
-ZGlhdGVrLGxhcmIgPSA8JmxhcmIwPjsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgIG1lZGlh
-dGVrLGdjZS1jbGllbnQtcmVnID0gPCZnY2UgU1VCU1lTXzE0MDBYWFhYIDB4YzAwMCAweDEwMDA+
-Owo+Pj4gICAgICAgICAgICAgICAgIH07Cj4+Pgo+Pj4gICAgICAgICAgICAgICAgIG92bDE6IG92
-bEAxNDAwZDAwMCB7Cj4+PiBAQCAtMTAwMSw2ICsxMDA3LDcgQEAgb3ZsMTogb3ZsQDE0MDBkMDAw
-IHsKPj4+ICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJ
-U1BfT1ZMMT47Cj4+PiAgICAgICAgICAgICAgICAgICAgICAgICBpb21tdXMgPSA8JmlvbW11IE00
-VV9QT1JUX0RJU1BfT1ZMMT47Cj4+PiAgICAgICAgICAgICAgICAgICAgICAgICBtZWRpYXRlayxs
-YXJiID0gPCZsYXJiND47Cj4+PiArICAgICAgICAgICAgICAgICAgICAgICBtZWRpYXRlayxnY2Ut
-Y2xpZW50LXJlZyA9IDwmZ2NlIFNVQlNZU18xNDAwWFhYWCAweGQwMDAgMHgxMDAwPjsKPj4+ICAg
-ICAgICAgICAgICAgICB9Owo+Pj4KPj4+ICAgICAgICAgICAgICAgICByZG1hMDogcmRtYUAxNDAw
-ZTAwMCB7Cj4+PiBAQCAtMTAxMSw2ICsxMDE4LDcgQEAgcmRtYTA6IHJkbWFAMTQwMGUwMDAgewo+
-Pj4gICAgICAgICAgICAgICAgICAgICAgICAgY2xvY2tzID0gPCZtbXN5cyBDTEtfTU1fRElTUF9S
-RE1BMD47Cj4+PiAgICAgICAgICAgICAgICAgICAgICAgICBpb21tdXMgPSA8JmlvbW11IE00VV9Q
-T1JUX0RJU1BfUkRNQTA+Owo+Pj4gICAgICAgICAgICAgICAgICAgICAgICAgbWVkaWF0ZWssbGFy
-YiA9IDwmbGFyYjA+Owo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgbWVkaWF0ZWssZ2NlLWNs
-aWVudC1yZWcgPSA8JmdjZSBTVUJTWVNfMTQwMFhYWFggMHhlMDAwIDB4MTAwMD47Cj4+PiAgICAg
-ICAgICAgICAgICAgfTsKPj4+Cj4+PiAgICAgICAgICAgICAgICAgcmRtYTE6IHJkbWFAMTQwMGYw
-MDAgewo+Pj4gQEAgLTEwMjEsNiArMTAyOSw3IEBAIHJkbWExOiByZG1hQDE0MDBmMDAwIHsKPj4+
-ICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJU1BfUkRN
-QTE+Owo+Pj4gICAgICAgICAgICAgICAgICAgICAgICAgaW9tbXVzID0gPCZpb21tdSBNNFVfUE9S
-VF9ESVNQX1JETUExPjsKPj4+ICAgICAgICAgICAgICAgICAgICAgICAgIG1lZGlhdGVrLGxhcmIg
-PSA8JmxhcmI0PjsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgIG1lZGlhdGVrLGdjZS1jbGll
-bnQtcmVnID0gPCZnY2UgU1VCU1lTXzE0MDBYWFhYIDB4ZjAwMCAweDEwMDA+Owo+Pj4gICAgICAg
-ICAgICAgICAgIH07Cj4+Pgo+Pj4gICAgICAgICAgICAgICAgIHJkbWEyOiByZG1hQDE0MDEwMDAw
-IHsKPj4+IEBAIC0xMDMxLDYgKzEwNDAsNyBAQCByZG1hMjogcmRtYUAxNDAxMDAwMCB7Cj4+PiAg
-ICAgICAgICAgICAgICAgICAgICAgICBjbG9ja3MgPSA8Jm1tc3lzIENMS19NTV9ESVNQX1JETUEy
-PjsKPj4+ICAgICAgICAgICAgICAgICAgICAgICAgIGlvbW11cyA9IDwmaW9tbXUgTTRVX1BPUlRf
-RElTUF9SRE1BMj47Cj4+PiAgICAgICAgICAgICAgICAgICAgICAgICBtZWRpYXRlayxsYXJiID0g
-PCZsYXJiND47Cj4+PiArICAgICAgICAgICAgICAgICAgICAgICBtZWRpYXRlayxnY2UtY2xpZW50
-LXJlZyA9IDwmZ2NlIFNVQlNZU18xNDAxWFhYWCAwIDB4MTAwMD47Cj4+PiAgICAgICAgICAgICAg
-ICAgfTsKPj4+Cj4+PiAgICAgICAgICAgICAgICAgd2RtYTA6IHdkbWFAMTQwMTEwMDAgewo+Pj4g
-QEAgLTEwNDEsNiArMTA1MSw3IEBAIHdkbWEwOiB3ZG1hQDE0MDExMDAwIHsKPj4+ICAgICAgICAg
-ICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJU1BfV0RNQTA+Owo+Pj4g
-ICAgICAgICAgICAgICAgICAgICAgICAgaW9tbXVzID0gPCZpb21tdSBNNFVfUE9SVF9ESVNQX1dE
-TUEwPjsKPj4+ICAgICAgICAgICAgICAgICAgICAgICAgIG1lZGlhdGVrLGxhcmIgPSA8JmxhcmIw
-PjsKPj4+ICsgICAgICAgICAgICAgICAgICAgICAgIG1lZGlhdGVrLGdjZS1jbGllbnQtcmVnID0g
-PCZnY2UgU1VCU1lTXzE0MDFYWFhYIDB4MTAwMCAweDEwMDA+Owo+Pj4gICAgICAgICAgICAgICAg
-IH07Cj4+Pgo+Pj4gICAgICAgICAgICAgICAgIHdkbWExOiB3ZG1hQDE0MDEyMDAwIHsKPj4+IEBA
-IC0xMDUxLDYgKzEwNjIsNyBAQCB3ZG1hMTogd2RtYUAxNDAxMjAwMCB7Cj4+PiAgICAgICAgICAg
-ICAgICAgICAgICAgICBjbG9ja3MgPSA8Jm1tc3lzIENMS19NTV9ESVNQX1dETUExPjsKPj4+ICAg
-ICAgICAgICAgICAgICAgICAgICAgIGlvbW11cyA9IDwmaW9tbXUgTTRVX1BPUlRfRElTUF9XRE1B
-MT47Cj4+PiAgICAgICAgICAgICAgICAgICAgICAgICBtZWRpYXRlayxsYXJiID0gPCZsYXJiND47
-Cj4+PiArICAgICAgICAgICAgICAgICAgICAgICBtZWRpYXRlayxnY2UtY2xpZW50LXJlZyA9IDwm
-Z2NlIFNVQlNZU18xNDAxWFhYWCAweDIwMDAgMHgxMDAwPjsKPj4+ICAgICAgICAgICAgICAgICB9
-Owo+Pj4KPj4+ICAgICAgICAgICAgICAgICBjb2xvcjA6IGNvbG9yQDE0MDEzMDAwIHsKPj4+IEBA
-IC0xMDU5LDYgKzEwNzEsNyBAQCBjb2xvcjA6IGNvbG9yQDE0MDEzMDAwIHsKPj4+ICAgICAgICAg
-ICAgICAgICAgICAgICAgIGludGVycnVwdHMgPSA8R0lDX1NQSSAxODcgSVJRX1RZUEVfTEVWRUxf
-TE9XPjsKPj4+ICAgICAgICAgICAgICAgICAgICAgICAgIHBvd2VyLWRvbWFpbnMgPSA8JnNjcHN5
-cyBNVDgxNzNfUE9XRVJfRE9NQUlOX01NPjsKPj4+ICAgICAgICAgICAgICAgICAgICAgICAgIGNs
-b2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJU1BfQ09MT1IwPjsKPj4+ICsgICAgICAgICAgICAgICAg
-ICAgICAgIG1lZGlhdGVrLGdjZS1jbGllbnQtcmVnID0gPCZnY2UgU1VCU1lTXzE0MDFYWFhYIDB4
-MzAwMCAweDEwMDA+Owo+Pj4gICAgICAgICAgICAgICAgIH07Cj4+Pgo+Pj4gICAgICAgICAgICAg
-ICAgIGNvbG9yMTogY29sb3JAMTQwMTQwMDAgewo+Pj4gQEAgLTEwNjcsNiArMTA4MCw3IEBAIGNv
-bG9yMTogY29sb3JAMTQwMTQwMDAgewo+Pj4gICAgICAgICAgICAgICAgICAgICAgICAgaW50ZXJy
-dXB0cyA9IDxHSUNfU1BJIDE4OCBJUlFfVFlQRV9MRVZFTF9MT1c+Owo+Pj4gICAgICAgICAgICAg
-ICAgICAgICAgICAgcG93ZXItZG9tYWlucyA9IDwmc2Nwc3lzIE1UODE3M19QT1dFUl9ET01BSU5f
-TU0+Owo+Pj4gICAgICAgICAgICAgICAgICAgICAgICAgY2xvY2tzID0gPCZtbXN5cyBDTEtfTU1f
-RElTUF9DT0xPUjE+Owo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgbWVkaWF0ZWssZ2NlLWNs
-aWVudC1yZWcgPSA8JmdjZSBTVUJTWVNfMTQwMVhYWFggMHg0MDAwIDB4MTAwMD47Cj4+PiAgICAg
-ICAgICAgICAgICAgfTsKPj4+Cj4+PiAgICAgICAgICAgICAgICAgYWFsQDE0MDE1MDAwIHsKPj4+
-IEBAIC0xMDc1LDYgKzEwODksNyBAQCBhYWxAMTQwMTUwMDAgewo+Pj4gICAgICAgICAgICAgICAg
-ICAgICAgICAgaW50ZXJydXB0cyA9IDxHSUNfU1BJIDE4OSBJUlFfVFlQRV9MRVZFTF9MT1c+Owo+
-Pj4gICAgICAgICAgICAgICAgICAgICAgICAgcG93ZXItZG9tYWlucyA9IDwmc2Nwc3lzIE1UODE3
-M19QT1dFUl9ET01BSU5fTU0+Owo+Pj4gICAgICAgICAgICAgICAgICAgICAgICAgY2xvY2tzID0g
-PCZtbXN5cyBDTEtfTU1fRElTUF9BQUw+Owo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgbWVk
-aWF0ZWssZ2NlLWNsaWVudC1yZWcgPSA8JmdjZSBTVUJTWVNfMTQwMVhYWFggMHg1MDAwIDB4MTAw
-MD47Cj4+PiAgICAgICAgICAgICAgICAgfTsKPj4+Cj4+PiAgICAgICAgICAgICAgICAgZ2FtbWFA
-MTQwMTYwMDAgewo+Pj4gQEAgLTEwODMsNiArMTA5OCw3IEBAIGdhbW1hQDE0MDE2MDAwIHsKPj4+
-ICAgICAgICAgICAgICAgICAgICAgICAgIGludGVycnVwdHMgPSA8R0lDX1NQSSAxOTAgSVJRX1RZ
-UEVfTEVWRUxfTE9XPjsKPj4+ICAgICAgICAgICAgICAgICAgICAgICAgIHBvd2VyLWRvbWFpbnMg
-PSA8JnNjcHN5cyBNVDgxNzNfUE9XRVJfRE9NQUlOX01NPjsKPj4+ICAgICAgICAgICAgICAgICAg
-ICAgICAgIGNsb2NrcyA9IDwmbW1zeXMgQ0xLX01NX0RJU1BfR0FNTUE+Owo+Pj4gKyAgICAgICAg
-ICAgICAgICAgICAgICAgbWVkaWF0ZWssZ2NlLWNsaWVudC1yZWcgPSA8JmdjZSBTVUJTWVNfMTQw
-MVhYWFggMHg2MDAwIDB4MTAwMD47Cj4+PiAgICAgICAgICAgICAgICAgfTsKPj4+Cj4+PiAgICAg
-ICAgICAgICAgICAgbWVyZ2VAMTQwMTcwMDAgewo+Pj4gLS0KPj4+IDIuMjQuMC40MzIuZzlkM2Y1
-ZjViNjMtZ29vZwo+Pj4KPj4+Cj4+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwo+Pj4gTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Cj4+PiBMaW51eC1t
-ZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCj4+PiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCj4+Cj4+IF9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4+IExpbnV4LW1lZGlhdGVrIG1haWxpbmcg
-bGlzdAo+PiBMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCj4+IGh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsKPiAKPiBfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IGxpbnV4LWFybS1r
-ZXJuZWwgbWFpbGluZyBsaXN0Cj4gbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0t
-a2VybmVsCj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LW1lZGlhdGVrCg==
+On Wed, Apr 08, 2020 at 04:07:33PM +0100, Robin Murphy wrote:
+> On 2020-04-08 3:37 pm, Joerg Roedel wrote:
+> Isn't that exactly what I suggested? :)
+
+Okay, I dropped this patch and updated the next one.
+
+> I don't recall for sure, but knowing me, that bit of group bookkeeping is
+> only where it currently is because it cheekily saves iterating the IDs a
+> second time. I don't think there's any technical reason.
+
+I leave it up to you to make any changes on that :)
+
+Updated patch below. I also noticed that I deleted too much from
+arm-smmu-v3 in the previous version, fixed that too.
+
+From a1d2821235a6c26b668b47ec0e84ad0316524406 Mon Sep 17 00:00:00 2001
+From: Joerg Roedel <jroedel@suse.de>
+Date: Mon, 30 Mar 2020 17:39:04 +0200
+Subject: [PATCH] iommu/arm-smmu: Convert to probe/release_device() call-backs
+
+Convert the arm-smmu and arm-smmu-v3 drivers to use the probe_device() and
+release_device() call-backs of iommu_ops, so that the iommu core code does the
+group and sysfs setup.
+
+Signed-off-by: Joerg Roedel <jroedel@suse.de>
+---
+ drivers/iommu/arm-smmu-v3.c | 38 ++++++++++--------------------------
+ drivers/iommu/arm-smmu.c    | 39 ++++++++++++++-----------------------
+ 2 files changed, 25 insertions(+), 52 deletions(-)
+
+diff --git a/drivers/iommu/arm-smmu-v3.c b/drivers/iommu/arm-smmu-v3.c
+index 82508730feb7..42e1ee7e5197 100644
+--- a/drivers/iommu/arm-smmu-v3.c
++++ b/drivers/iommu/arm-smmu-v3.c
+@@ -2914,27 +2914,26 @@ static bool arm_smmu_sid_in_range(struct arm_smmu_device *smmu, u32 sid)
+ 
+ static struct iommu_ops arm_smmu_ops;
+ 
+-static int arm_smmu_add_device(struct device *dev)
++static struct iommu_device *arm_smmu_probe_device(struct device *dev)
+ {
+ 	int i, ret;
+ 	struct arm_smmu_device *smmu;
+ 	struct arm_smmu_master *master;
+ 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+-	struct iommu_group *group;
+ 
+ 	if (!fwspec || fwspec->ops != &arm_smmu_ops)
+-		return -ENODEV;
++		return ERR_PTR(-ENODEV);
+ 
+ 	if (WARN_ON_ONCE(dev_iommu_priv_get(dev)))
+-		return -EBUSY;
++		return ERR_PTR(-EBUSY);
+ 
+ 	smmu = arm_smmu_get_by_fwnode(fwspec->iommu_fwnode);
+ 	if (!smmu)
+-		return -ENODEV;
++		return ERR_PTR(-ENODEV);
+ 
+ 	master = kzalloc(sizeof(*master), GFP_KERNEL);
+ 	if (!master)
+-		return -ENOMEM;
++		return ERR_PTR(-ENOMEM);
+ 
+ 	master->dev = dev;
+ 	master->smmu = smmu;
+@@ -2975,30 +2974,15 @@ static int arm_smmu_add_device(struct device *dev)
+ 		master->ssid_bits = min_t(u8, master->ssid_bits,
+ 					  CTXDESC_LINEAR_CDMAX);
+ 
+-	ret = iommu_device_link(&smmu->iommu, dev);
+-	if (ret)
+-		goto err_disable_pasid;
++	return &smmu->iommu;
+ 
+-	group = iommu_group_get_for_dev(dev);
+-	if (IS_ERR(group)) {
+-		ret = PTR_ERR(group);
+-		goto err_unlink;
+-	}
+-
+-	iommu_group_put(group);
+-	return 0;
+-
+-err_unlink:
+-	iommu_device_unlink(&smmu->iommu, dev);
+-err_disable_pasid:
+-	arm_smmu_disable_pasid(master);
+ err_free_master:
+ 	kfree(master);
+ 	dev_iommu_priv_set(dev, NULL);
+-	return ret;
++	return ERR_PTR(ret);
+ }
+ 
+-static void arm_smmu_remove_device(struct device *dev)
++static void arm_smmu_release_device(struct device *dev)
+ {
+ 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+ 	struct arm_smmu_master *master;
+@@ -3010,8 +2994,6 @@ static void arm_smmu_remove_device(struct device *dev)
+ 	master = dev_iommu_priv_get(dev);
+ 	smmu = master->smmu;
+ 	arm_smmu_detach_dev(master);
+-	iommu_group_remove_device(dev);
+-	iommu_device_unlink(&smmu->iommu, dev);
+ 	arm_smmu_disable_pasid(master);
+ 	kfree(master);
+ 	iommu_fwspec_free(dev);
+@@ -3138,8 +3120,8 @@ static struct iommu_ops arm_smmu_ops = {
+ 	.flush_iotlb_all	= arm_smmu_flush_iotlb_all,
+ 	.iotlb_sync		= arm_smmu_iotlb_sync,
+ 	.iova_to_phys		= arm_smmu_iova_to_phys,
+-	.add_device		= arm_smmu_add_device,
+-	.remove_device		= arm_smmu_remove_device,
++	.probe_device		= arm_smmu_probe_device,
++	.release_device		= arm_smmu_release_device,
+ 	.device_group		= arm_smmu_device_group,
+ 	.domain_get_attr	= arm_smmu_domain_get_attr,
+ 	.domain_set_attr	= arm_smmu_domain_set_attr,
+diff --git a/drivers/iommu/arm-smmu.c b/drivers/iommu/arm-smmu.c
+index a6a5796e9c41..e622f4e33379 100644
+--- a/drivers/iommu/arm-smmu.c
++++ b/drivers/iommu/arm-smmu.c
+@@ -220,7 +220,7 @@ static int arm_smmu_register_legacy_master(struct device *dev,
+  * With the legacy DT binding in play, we have no guarantees about
+  * probe order, but then we're also not doing default domains, so we can
+  * delay setting bus ops until we're sure every possible SMMU is ready,
+- * and that way ensure that no add_device() calls get missed.
++ * and that way ensure that no probe_device() calls get missed.
+  */
+ static int arm_smmu_legacy_bus_init(void)
+ {
+@@ -1062,7 +1062,6 @@ static int arm_smmu_master_alloc_smes(struct device *dev)
+ 	struct arm_smmu_master_cfg *cfg = dev_iommu_priv_get(dev);
+ 	struct arm_smmu_device *smmu = cfg->smmu;
+ 	struct arm_smmu_smr *smrs = smmu->smrs;
+-	struct iommu_group *group;
+ 	int i, idx, ret;
+ 
+ 	mutex_lock(&smmu->stream_map_mutex);
+@@ -1090,18 +1089,9 @@ static int arm_smmu_master_alloc_smes(struct device *dev)
+ 		cfg->smendx[i] = (s16)idx;
+ 	}
+ 
+-	group = iommu_group_get_for_dev(dev);
+-	if (IS_ERR(group)) {
+-		ret = PTR_ERR(group);
+-		goto out_err;
+-	}
+-	iommu_group_put(group);
+-
+ 	/* It worked! Now, poke the actual hardware */
+-	for_each_cfg_sme(cfg, fwspec, i, idx) {
++	for_each_cfg_sme(cfg, fwspec, i, idx)
+ 		arm_smmu_write_sme(smmu, idx);
+-		smmu->s2crs[idx].group = group;
+-	}
+ 
+ 	mutex_unlock(&smmu->stream_map_mutex);
+ 	return 0;
+@@ -1172,7 +1162,7 @@ static int arm_smmu_attach_dev(struct iommu_domain *domain, struct device *dev)
+ 
+ 	/*
+ 	 * FIXME: The arch/arm DMA API code tries to attach devices to its own
+-	 * domains between of_xlate() and add_device() - we have no way to cope
++	 * domains between of_xlate() and probe_device() - we have no way to cope
+ 	 * with that, so until ARM gets converted to rely on groups and default
+ 	 * domains, just say no (but more politely than by dereferencing NULL).
+ 	 * This should be at least a WARN_ON once that's sorted.
+@@ -1382,7 +1372,7 @@ struct arm_smmu_device *arm_smmu_get_by_fwnode(struct fwnode_handle *fwnode)
+ 	return dev ? dev_get_drvdata(dev) : NULL;
+ }
+ 
+-static int arm_smmu_add_device(struct device *dev)
++static struct iommu_device *arm_smmu_probe_device(struct device *dev)
+ {
+ 	struct arm_smmu_device *smmu = NULL;
+ 	struct arm_smmu_master_cfg *cfg;
+@@ -1403,7 +1393,7 @@ static int arm_smmu_add_device(struct device *dev)
+ 	} else if (fwspec && fwspec->ops == &arm_smmu_ops) {
+ 		smmu = arm_smmu_get_by_fwnode(fwspec->iommu_fwnode);
+ 	} else {
+-		return -ENODEV;
++		return ERR_PTR(-ENODEV);
+ 	}
+ 
+ 	ret = -EINVAL;
+@@ -1444,21 +1434,19 @@ static int arm_smmu_add_device(struct device *dev)
+ 	if (ret)
+ 		goto out_cfg_free;
+ 
+-	iommu_device_link(&smmu->iommu, dev);
+-
+ 	device_link_add(dev, smmu->dev,
+ 			DL_FLAG_PM_RUNTIME | DL_FLAG_AUTOREMOVE_SUPPLIER);
+ 
+-	return 0;
++	return &smmu->iommu;
+ 
+ out_cfg_free:
+ 	kfree(cfg);
+ out_free:
+ 	iommu_fwspec_free(dev);
+-	return ret;
++	return ERR_PTR(ret);
+ }
+ 
+-static void arm_smmu_remove_device(struct device *dev)
++static void arm_smmu_release_device(struct device *dev)
+ {
+ 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+ 	struct arm_smmu_master_cfg *cfg;
+@@ -1475,13 +1463,11 @@ static void arm_smmu_remove_device(struct device *dev)
+ 	if (ret < 0)
+ 		return;
+ 
+-	iommu_device_unlink(&smmu->iommu, dev);
+ 	arm_smmu_master_free_smes(cfg, fwspec);
+ 
+ 	arm_smmu_rpm_put(smmu);
+ 
+ 	dev_iommu_priv_set(dev, NULL);
+-	iommu_group_remove_device(dev);
+ 	kfree(cfg);
+ 	iommu_fwspec_free(dev);
+ }
+@@ -1512,6 +1498,11 @@ static struct iommu_group *arm_smmu_device_group(struct device *dev)
+ 	else
+ 		group = generic_device_group(dev);
+ 
++	/* Remember group for faster lookups */
++	if (!IS_ERR(group))
++		for_each_cfg_sme(cfg, fwspec, i, idx)
++			smmu->s2crs[idx].group = group;
++
+ 	return group;
+ }
+ 
+@@ -1628,8 +1619,8 @@ static struct iommu_ops arm_smmu_ops = {
+ 	.flush_iotlb_all	= arm_smmu_flush_iotlb_all,
+ 	.iotlb_sync		= arm_smmu_iotlb_sync,
+ 	.iova_to_phys		= arm_smmu_iova_to_phys,
+-	.add_device		= arm_smmu_add_device,
+-	.remove_device		= arm_smmu_remove_device,
++	.probe_device		= arm_smmu_probe_device,
++	.release_device		= arm_smmu_release_device,
+ 	.device_group		= arm_smmu_device_group,
+ 	.domain_get_attr	= arm_smmu_domain_get_attr,
+ 	.domain_set_attr	= arm_smmu_domain_set_attr,
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
