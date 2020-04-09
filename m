@@ -2,60 +2,84 @@ Return-Path: <SRS0=2GrF=5Z=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-13.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 74859C2BA2B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2020 11:46:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A901EC2BA2B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2020 13:04:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 41B9A20757
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2020 11:46:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 79D5920B1F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2020 13:04:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UDkCObgp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 41B9A20757
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WplwxkzI";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="ObAiM6H2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 79D5920B1F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Tmd9fSc7KTkNWVhS1nIEpGdn0lsn3xO2crnBc6gYo/Q=; b=UDkCObgpQB8ITC
-	O+OldP8bF6f2JOm5e/OpFllH08IV+Op0T3WNefKWU8lnv9InvkkP3zIDDyvqH6SEA4RteKvVL5hof
-	kGxhbs67o5P8TU6FNShb0J6PqeS3YxZfp8ZUCuRF+7RjSljf+SPDblzb3YwnpODJ2X/Swn+guMkYI
-	Z7b4RyHuA6UE/LVs/4fnnqKK5m3ctSureybVTIBLGlv19J2PFhEsyD9936dWZFYtobQPXnx/+gAI9
-	NWzcgopsPtOPRKaXqeuxrnXjWXs5R57I/sh0shr9Wwdi9CNaQIU8pnK0y6WMLavT03V6P8Hg2I41/
-	Ba07jKs/Wb1TMxrR1z/w==;
+	List-Owner; bh=indYlSSBcZZgedDpaHc1glebeKjfQXL+hataoYW7iF8=; b=WplwxkzIkkEA37
+	qrlBhCnmN0HwiGYYKd7h+VsS3mfbUfwvAou2lnqdCq0CVYDjxySeO2jjhWkFd7TFJFBjcXpxJR+6j
+	+7cUS2OhWR5lrmBK+aj2k/iQ/Hajt1Vy4ZnXWrP4aXpbXh47tIgf1vG+Srd/yjyr3QkBJ+A9VxCgY
+	eV9eSBLw/qCQCprAWAWoEti6l72642tRZIeqNnVGR5BF0+W1jcIL4pRrvFfKaBtbnBIrjSiZBQwHo
+	KiU9rCdAzEVkE1XTxBuWs/Fl3lOmlv49yDp70vGQItWZ+O05XYB7/oH9wNnAfYUu5qR/AG1n2Q3Cz
+	9Yls4DhuNTCHgk42wvjA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMVdo-0005Zg-PF; Thu, 09 Apr 2020 11:46:40 +0000
-Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
+	id 1jMWqa-00005O-PT; Thu, 09 Apr 2020 13:03:56 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMVdi-0005Yr-MW; Thu, 09 Apr 2020 11:46:39 +0000
-Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 60A51398; Thu,  9 Apr 2020 13:46:25 +0200 (CEST)
-Date: Thu, 9 Apr 2020 13:46:20 +0200
-From: Joerg Roedel <joro@8bytes.org>
-To: Marek Szyprowski <m.szyprowski@samsung.com>
-Subject: [PATCH] iommu/exynos: Get rid of 'struct exynos_iommu_owner'
- exynos_iommu_owner
-Message-ID: <20200409114620.GA16298@8bytes.org>
-References: <20200407183742.4344-1-joro@8bytes.org>
- <CGME20200407184501eucas1p25407bc96e4345df406cf6ba061ae6a82@eucas1p2.samsung.com>
- <20200407183742.4344-32-joro@8bytes.org>
- <449e7f16-e719-9617-ec92-63b82c0bc33f@samsung.com>
- <f59b0bb3-8c08-9cc9-bb1a-e69b7b226f60@samsung.com>
+ id 1jMWqW-0008WF-I7; Thu, 09 Apr 2020 13:03:55 +0000
+X-UUID: 84f59fdee31e4b8d81642e588f6f738b-20200409
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=toLJInywXK6opnZ9NQoaexPTPfGfMFROYJqBdUiWjVU=; 
+ b=ObAiM6H2A3KbPYrKpHKsdxNiO1NIGi7CFBtud+OyGe0JmryAtxAqiGx8Op4jsuFhF7GObjzV1tpeUkt1A7MU9ppNKhlXA/qiod7hAWk7xCIzRNdFh1f1DGW5DZdD6EwMIrYOJR16RAhIgRc3erLt/leKOWUbNj+Y+wGULb8s2Nc=;
+X-UUID: 84f59fdee31e4b8d81642e588f6f738b-20200409
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <dongchun.zhu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1639735493; Thu, 09 Apr 2020 05:03:19 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 9 Apr 2020 06:03:40 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31DR.mediatek.inc
+ (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 9 Apr 2020 21:03:37 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 9 Apr 2020 21:03:37 +0800
+Message-ID: <1586437408.8804.62.camel@mhfsdcap03>
+Subject: Re: [V6, 1/2] media: dt-bindings: media: i2c: Document OV02A10
+ bindings
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+To: Tomasz Figa <tfiga@chromium.org>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Bartosz Golaszewski <bgolaszewski@baylibre.com>, "Rob
+ Herring" <robh+dt@kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ <broonie@kernel.org>
+Date: Thu, 9 Apr 2020 21:03:28 +0800
+In-Reply-To: <CAAFQd5DHL3mXZGHW+XWMXTVfekamEvaEv3bLZt4Bg2UpKPohmA@mail.gmail.com>
+References: <20191211112849.16705-1-dongchun.zhu@mediatek.com>
+ <20191211112849.16705-2-dongchun.zhu@mediatek.com>
+ <CAAFQd5AnWZqjQEVvw8gv7JzOBHxJvsOWaGrbY8CXQ_87ap-ahA@mail.gmail.com>
+ <CAAFQd5DHL3mXZGHW+XWMXTVfekamEvaEv3bLZt4Bg2UpKPohmA@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <f59b0bb3-8c08-9cc9-bb1a-e69b7b226f60@samsung.com>
+X-TM-SNTS-SMTP: BB954F30AA652C663C9BBEEA6647A034795B55269FF6686A12EE0CB199AD81932000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200409_044635_038663_B3F03898 
-X-CRM114-Status: GOOD (  22.41  )
+X-CRM114-CacheID: sfid-20200409_060352_608717_6344BB25 
+X-CRM114-Status: GOOD (  29.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,371 +91,197 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, linux-tegra@vger.kernel.org,
- Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- linux-samsung-soc@vger.kernel.org, Rob Clark <robdclark@gmail.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
- linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>,
- Joerg Roedel <jroedel@suse.de>, linux-s390@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- virtualization@lists.linux-foundation.org,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- David Woodhouse <dwmw2@infradead.org>, linux-kernel@vger.kernel.org,
- iommu@lists.linux-foundation.org, Kukjin Kim <kgene@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, Lu Baolu <baolu.lu@linux.intel.com>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ linux-devicetree <devicetree@vger.kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, linux-gpio@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>, Shengnan
+ Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=A3=E7=94=B7=29?=
+ <shengnan.wang@mediatek.com>, Louis Kuo <louis.kuo@mediatek.com>,
+ Sj Huang <sj.huang@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ "list@263.net:IOMMU DRIVERS
+ <iommu@lists.linux-foundation.org>, Joerg  Roedel <joro@8bytes.org>,
+ " <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Marek,
+Hi Mauro, Sakari, Rob,
 
-I had some more thoughts and discussions with Robin about how to make
-this work with the Exynos driver. The result is the patch below, can you
-please test it and report back? Even better if you can fix up any
-breakage it might cause :)
+On Wed, 2020-04-08 at 14:49 +0200, Tomasz Figa wrote:
+> On Tue, Dec 17, 2019 at 4:15 AM Tomasz Figa <tfiga@chromium.org> wrote:
+> >
+> > Hi Rob, Dongchun,
+> >
+> > On Wed, Dec 11, 2019 at 8:29 PM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
+> > >
+> > > Add DT bindings documentation for Omnivision OV02A10 image sensor.
+> > >
+> > > Reviewed-by: Rob Herring <robh@kernel.org>
+> > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > > ---
+> > >  .../devicetree/bindings/media/i2c/ov02a10.txt      | 54 ++++++++++++++++++++++
+> > >  MAINTAINERS                                        |  7 +++
+> > >  2 files changed, 61 insertions(+)
+> > >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> > >
+> > > diff --git a/Documentation/devicetree/bindings/media/i2c/ov02a10.txt b/Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> > > new file mode 100644
+> > > index 0000000..18acc4f
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> > > @@ -0,0 +1,54 @@
+> > > +* Omnivision OV02A10 MIPI CSI-2 sensor
+> > > +
+> > > +Required Properties:
+> > > +- compatible: shall be "ovti,ov02a10"
+> > > +- clocks: reference to the eclk input clock
+> > > +- clock-names: shall be "eclk"
+> > > +- dovdd-supply: Digital I/O voltage supply, 1.8 volts
+> > > +- avdd-supply: Analog voltage supply, 2.8 volts
+> > > +- dvdd-supply: Digital core voltage supply, 1.8 volts
+> > > +- powerdown-gpios: reference to the GPIO connected to the powerdown pin,
+> > > +                  if any. This is an active low signal to the OV02A10.
+> >
+> > On the hardware level this pin is active high, i.e. the device is
+> > powered down when the signal is high.
+> >
+> > > +- reset-gpios: reference to the GPIO connected to the reset pin, if any.
+> > > +              This is an active high signal to the OV02A10.
+> >
+> > On the hardware level this pin is active low, i.e. the device is held
+> > in reset when the signal is low.
+> >
+> > However, there is some confusion around how the polarity flag in the
+> > GPIO specifier is supposed to be used.
+> >
+> > As per [1],
+> >
+> > "The gpio-specifier's polarity flag should represent the physical
+> > level at the GPIO controller that achieves (or represents, for inputs)
+> > a logically asserted value at the device. The exact definition of
+> > logically asserted should be defined by the binding for the device."
+> >
+> > In this case it sounds like "logically asserted" means the device is
+> > powered down or held in reset, respectively, which would suggest that
+> > the specifiers should have GPIO_ACTIVE_HIGH and GPIO_ACTIVE_LOW
+> > respectively. The latter would cause the GPIO subsystem to invert the
+> > values set by the consumers, which would then be confusing from the
+> > driver implementation point of view.
+> >
+> > Should the pin be renamed to "nreset"? It would change the meaning of
+> > "logically asserted" to "device is not held in reset" and so
+> > GPIO_ACTIVE_HIGH (or 0) would be the right value to use.
+> >
+> > [1] https://elixir.bootlin.com/linux/latest/source/Documentation/devicetree/bindings/gpio/gpio.txt#L83
+> 
+> + Bartosz, Linus, Sakari and the linux-gpio ML for a broader audience.
+> 
+> Would appreciate some feedback on what's the proper way of defining
+> GPIO polarity. Thanks!
+> 
+> Best regards,
+> Tomasz
+> 
 
-From 60a288509baa34df6a0bf437c977925a0a617c72 Mon Sep 17 00:00:00 2001
-From: Joerg Roedel <jroedel@suse.de>
-Date: Thu, 9 Apr 2020 13:38:18 +0200
-Subject: [PATCH] iommu/exynos: Get rid of 'struct exynos_iommu_owner'
+I have another question about OV02A10 CMOS sensor dt-binding.
+As its text documentation was already reviewed by Rob on earlier
+version:
+https://patchwork.linuxtv.org/patch/59787/
+I wonder whether we need to convert it to DT in YAML.
+In fact, I just submitted one conversion version.
+https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2143922
 
-Remove 'struct exynos_iommu_owner' and replace it with a single-linked
-list of 'struct sysmmu_drvdata'. The first item in the list acts as a
-replacement for the previous exynos_iommu_owner structure. The
-iommu_device member of the first list item is reported to the IOMMU
-core code for the master device.
+Unluckily make dt_binding_check still report errors temporarily.
+It seems there is something wrong with the port property in DT.
+Could anyone help provide some tips?
+$make dt_binding_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+  SCHEMA  Documentation/devicetree/bindings/processed-schema.yaml
+Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml: ignoring,
+error in schema: properties: port: patternProperties: endpoint
+warning: no schema found in file:
+Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+make[2]: *** [Documentation/devicetree/bindings/processed-schema.yaml]
+Error 255
+make[1]: *** [dt_binding_check] Error 2
+make: *** [sub-make] Error 2
 
-Signed-off-by: Joerg Roedel <jroedel@suse.de>
----
- drivers/iommu/exynos-iommu.c | 155 ++++++++++++++++++++---------------
- 1 file changed, 88 insertions(+), 67 deletions(-)
+In addition, as OV02A10 use one private property to distinguish
+different projects that adopting different register settings,
+I would appreciate the feedback on how to add private property to DT in
+YAML.
 
-diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
-index 186ff5cc975c..e70eb360093f 100644
---- a/drivers/iommu/exynos-iommu.c
-+++ b/drivers/iommu/exynos-iommu.c
-@@ -225,18 +225,6 @@ static const struct sysmmu_fault_info sysmmu_v5_faults[] = {
- 	{ 20, REG_V5_FAULT_AW_VA, "AW SECURITY PROTECTION", IOMMU_FAULT_WRITE },
- };
- 
--/*
-- * This structure is attached to dev.archdata.iommu of the master device
-- * on device add, contains a list of SYSMMU controllers defined by device tree,
-- * which are bound to given master device. It is usually referenced by 'owner'
-- * pointer.
--*/
--struct exynos_iommu_owner {
--	struct list_head controllers;	/* list of sysmmu_drvdata.owner_node */
--	struct iommu_domain *domain;	/* domain this device is attached */
--	struct mutex rpm_lock;		/* for runtime pm of all sysmmus */
--};
--
- /*
-  * This structure exynos specific generalization of struct iommu_domain.
-  * It contains list of SYSMMU controllers from all master devices, which has
-@@ -271,13 +259,23 @@ struct sysmmu_drvdata {
- 	bool active;			/* current status */
- 	struct exynos_iommu_domain *domain; /* domain we belong to */
- 	struct list_head domain_node;	/* node for domain clients list */
--	struct list_head owner_node;	/* node for owner controllers list */
-+	struct sysmmu_drvdata *next;	/* Single-linked list to group SMMUs for
-+					   one master. NULL means not in any
-+					   list, ERR_PTR(-ENODEV) means end of
-+					   list */
-+	struct mutex rpm_lock;		/* for runtime pm of all sysmmus */
- 	phys_addr_t pgtable;		/* assigned page table structure */
- 	unsigned int version;		/* our version */
- 
- 	struct iommu_device iommu;	/* IOMMU core handle */
- };
- 
-+/* Helper to iterate over all SYSMMUs for a given platform device */
-+#define for_each_sysmmu(dev, drvdata)			\
-+	for (drvdata = (dev)->archdata.iommu;		\
-+	     drvdata != ERR_PTR(-ENODEV);		\
-+	     drvdata = drvdata->next)
-+
- static struct exynos_iommu_domain *to_exynos_domain(struct iommu_domain *dom)
- {
- 	return container_of(dom, struct exynos_iommu_domain, domain);
-@@ -624,6 +622,8 @@ static int exynos_sysmmu_probe(struct platform_device *pdev)
- 
- 	data->sysmmu = dev;
- 	spin_lock_init(&data->lock);
-+	data->next = NULL;
-+	mutex_init(&data->rpm_lock);
- 
- 	ret = iommu_device_sysfs_add(&data->iommu, &pdev->dev, NULL,
- 				     dev_name(data->sysmmu));
-@@ -668,17 +668,20 @@ static int __maybe_unused exynos_sysmmu_suspend(struct device *dev)
- {
- 	struct sysmmu_drvdata *data = dev_get_drvdata(dev);
- 	struct device *master = data->master;
-+	struct sysmmu_drvdata *master_data;
- 
--	if (master) {
--		struct exynos_iommu_owner *owner = master->archdata.iommu;
-+	if (!master)
-+		return 0;
- 
--		mutex_lock(&owner->rpm_lock);
--		if (data->domain) {
--			dev_dbg(data->sysmmu, "saving state\n");
--			__sysmmu_disable(data);
--		}
--		mutex_unlock(&owner->rpm_lock);
-+	master_data = master->archdata.iommu;
-+
-+	mutex_lock(&master_data->rpm_lock);
-+	if (data->domain) {
-+		dev_dbg(data->sysmmu, "saving state\n");
-+		__sysmmu_disable(data);
- 	}
-+	mutex_unlock(&master_data->rpm_lock);
-+
- 	return 0;
- }
- 
-@@ -686,17 +689,20 @@ static int __maybe_unused exynos_sysmmu_resume(struct device *dev)
- {
- 	struct sysmmu_drvdata *data = dev_get_drvdata(dev);
- 	struct device *master = data->master;
-+	struct sysmmu_drvdata *master_data;
- 
--	if (master) {
--		struct exynos_iommu_owner *owner = master->archdata.iommu;
-+	if (!master)
-+		return 0;
- 
--		mutex_lock(&owner->rpm_lock);
--		if (data->domain) {
--			dev_dbg(data->sysmmu, "restoring state\n");
--			__sysmmu_enable(data);
--		}
--		mutex_unlock(&owner->rpm_lock);
-+	master_data = master->archdata.iommu;
-+
-+	mutex_lock(&master_data->rpm_lock);
-+	if (data->domain) {
-+		dev_dbg(data->sysmmu, "restoring state\n");
-+		__sysmmu_enable(data);
- 	}
-+	mutex_unlock(&master_data->rpm_lock);
-+
- 	return 0;
- }
- 
-@@ -834,21 +840,21 @@ static void exynos_iommu_domain_free(struct iommu_domain *iommu_domain)
- 	kfree(domain);
- }
- 
--static void exynos_iommu_detach_device(struct iommu_domain *iommu_domain,
--				    struct device *dev)
-+static void __exynos_iommu_detach_device(struct exynos_iommu_domain *domain,
-+					 struct device *dev)
- {
--	struct exynos_iommu_owner *owner = dev->archdata.iommu;
--	struct exynos_iommu_domain *domain = to_exynos_domain(iommu_domain);
- 	phys_addr_t pagetable = virt_to_phys(domain->pgtable);
--	struct sysmmu_drvdata *data, *next;
-+	struct sysmmu_drvdata *dev_data, *data, *next;
- 	unsigned long flags;
- 
--	if (!has_sysmmu(dev) || owner->domain != iommu_domain)
-+	dev_data = dev->archdata.iommu;
-+
-+	if (!has_sysmmu(dev) || dev_data->domain != domain)
- 		return;
- 
--	mutex_lock(&owner->rpm_lock);
-+	mutex_lock(&dev_data->rpm_lock);
- 
--	list_for_each_entry(data, &owner->controllers, owner_node) {
-+	for_each_sysmmu(dev, data) {
- 		pm_runtime_get_noresume(data->sysmmu);
- 		if (pm_runtime_active(data->sysmmu))
- 			__sysmmu_disable(data);
-@@ -863,51 +869,59 @@ static void exynos_iommu_detach_device(struct iommu_domain *iommu_domain,
- 		list_del_init(&data->domain_node);
- 		spin_unlock(&data->lock);
- 	}
--	owner->domain = NULL;
- 	spin_unlock_irqrestore(&domain->lock, flags);
- 
--	mutex_unlock(&owner->rpm_lock);
-+	mutex_unlock(&dev_data->rpm_lock);
- 
- 	dev_dbg(dev, "%s: Detached IOMMU with pgtable %pa\n", __func__,
- 		&pagetable);
- }
- 
-+static void exynos_iommu_detach_device(struct iommu_domain *iommu_domain,
-+				       struct device *dev)
-+{
-+	struct exynos_iommu_domain *domain = to_exynos_domain(iommu_domain);
-+
-+	__exynos_iommu_detach_device(domain, dev);
-+}
-+
- static int exynos_iommu_attach_device(struct iommu_domain *iommu_domain,
- 				   struct device *dev)
- {
--	struct exynos_iommu_owner *owner = dev->archdata.iommu;
- 	struct exynos_iommu_domain *domain = to_exynos_domain(iommu_domain);
--	struct sysmmu_drvdata *data;
-+	struct sysmmu_drvdata *dev_data, *data;
- 	phys_addr_t pagetable = virt_to_phys(domain->pgtable);
- 	unsigned long flags;
- 
- 	if (!has_sysmmu(dev))
- 		return -ENODEV;
- 
--	if (owner->domain)
--		exynos_iommu_detach_device(owner->domain, dev);
-+	dev_data = dev->archdata.iommu;
- 
--	mutex_lock(&owner->rpm_lock);
-+	if (dev_data->domain)
-+		__exynos_iommu_detach_device(dev_data->domain, dev);
-+
-+	mutex_lock(&dev_data->rpm_lock);
- 
- 	spin_lock_irqsave(&domain->lock, flags);
--	list_for_each_entry(data, &owner->controllers, owner_node) {
-+	for_each_sysmmu(dev, data) {
- 		spin_lock(&data->lock);
- 		data->pgtable = pagetable;
- 		data->domain = domain;
- 		list_add_tail(&data->domain_node, &domain->clients);
- 		spin_unlock(&data->lock);
- 	}
--	owner->domain = iommu_domain;
- 	spin_unlock_irqrestore(&domain->lock, flags);
- 
--	list_for_each_entry(data, &owner->controllers, owner_node) {
-+
-+	for_each_sysmmu(dev, data) {
- 		pm_runtime_get_noresume(data->sysmmu);
- 		if (pm_runtime_active(data->sysmmu))
- 			__sysmmu_enable(data);
- 		pm_runtime_put(data->sysmmu);
- 	}
- 
--	mutex_unlock(&owner->rpm_lock);
-+	mutex_unlock(&dev_data->rpm_lock);
- 
- 	dev_dbg(dev, "%s: Attached IOMMU with pgtable %pa\n", __func__,
- 		&pagetable);
-@@ -1237,7 +1251,6 @@ static phys_addr_t exynos_iommu_iova_to_phys(struct iommu_domain *iommu_domain,
- 
- static int exynos_iommu_add_device(struct device *dev)
- {
--	struct exynos_iommu_owner *owner = dev->archdata.iommu;
- 	struct sysmmu_drvdata *data;
- 	struct iommu_group *group;
- 
-@@ -1249,7 +1262,7 @@ static int exynos_iommu_add_device(struct device *dev)
- 	if (IS_ERR(group))
- 		return PTR_ERR(group);
- 
--	list_for_each_entry(data, &owner->controllers, owner_node) {
-+	for_each_sysmmu(dev, data) {
- 		/*
- 		 * SYSMMU will be runtime activated via device link
- 		 * (dependency) to its master device, so there are no
-@@ -1261,37 +1274,39 @@ static int exynos_iommu_add_device(struct device *dev)
- 	}
- 	iommu_group_put(group);
- 
-+	data = dev->archdata.iommu;
-+	iommu_device_link(&data->iommu, dev);
-+
- 	return 0;
- }
- 
- static void exynos_iommu_remove_device(struct device *dev)
- {
--	struct exynos_iommu_owner *owner = dev->archdata.iommu;
--	struct sysmmu_drvdata *data;
-+	struct sysmmu_drvdata *data = dev->archdata.iommu;
- 
- 	if (!has_sysmmu(dev))
- 		return;
- 
--	if (owner->domain) {
-+	if (data->domain) {
- 		struct iommu_group *group = iommu_group_get(dev);
- 
- 		if (group) {
--			WARN_ON(owner->domain !=
-+			WARN_ON(&data->domain->domain !=
- 				iommu_group_default_domain(group));
--			exynos_iommu_detach_device(owner->domain, dev);
-+			__exynos_iommu_detach_device(data->domain, dev);
- 			iommu_group_put(group);
- 		}
- 	}
-+	iommu_device_unlink(&data->iommu, dev);
- 	iommu_group_remove_device(dev);
- 
--	list_for_each_entry(data, &owner->controllers, owner_node)
-+	for_each_sysmmu(dev, data)
- 		device_link_del(data->link);
- }
- 
- static int exynos_iommu_of_xlate(struct device *dev,
- 				 struct of_phandle_args *spec)
- {
--	struct exynos_iommu_owner *owner = dev->archdata.iommu;
- 	struct platform_device *sysmmu = of_find_device_by_node(spec->np);
- 	struct sysmmu_drvdata *data, *entry;
- 
-@@ -1302,22 +1317,28 @@ static int exynos_iommu_of_xlate(struct device *dev,
- 	if (!data)
- 		return -ENODEV;
- 
--	if (!owner) {
--		owner = kzalloc(sizeof(*owner), GFP_KERNEL);
--		if (!owner)
--			return -ENOMEM;
-+	data->master = dev;
- 
--		INIT_LIST_HEAD(&owner->controllers);
--		mutex_init(&owner->rpm_lock);
--		dev->archdata.iommu = owner;
-+	if (!dev->archdata.iommu) {
-+		WARN_ON(data->next != NULL);
-+
-+		/* SYSMMU list is empty - add drvdata and return */
-+		data->next = ERR_PTR(-ENODEV);
-+		dev->archdata.iommu = data;
-+
-+		return 0;
- 	}
- 
--	list_for_each_entry(entry, &owner->controllers, owner_node)
-+	/* Check if SYSMMU is already in the list */
-+	for_each_sysmmu(dev, entry)
- 		if (entry == data)
- 			return 0;
- 
--	list_add_tail(&data->owner_node, &owner->controllers);
--	data->master = dev;
-+	/* Not in the list yet */
-+	WARN_ON(data->next != NULL);
-+	entry = dev->archdata.iommu;
-+	data->next  = entry->next;
-+	entry->next = data;
- 
- 	return 0;
- }
--- 
-2.25.1
-
+> >
+> > Best regards,
+> > Tomasz
+> >
+> > > +
+> > > +Optional Properties:
+> > > +- rotation: as defined in
+> > > +           Documentation/devicetree/bindings/media/video-interfaces.txt,
+> > > +           valid values are 0 (sensor mounted upright) and 180 (sensor
+> > > +           mounted upside down).
+> > > +
+> > > +The device node shall contain one 'port' child node with an
+> > > +'endpoint' subnode for its digital output video port,
+> > > +in accordance with the video interface bindings defined in
+> > > +Documentation/devicetree/bindings/media/video-interfaces.txt.
+> > > +
+> > > +Example:
+> > > +&i2c4 {
+> > > +       ov02a10: camera-sensor@3d {
+> > > +               compatible = "ovti,ov02a10";
+> > > +               reg = <0x3d>;
+> > > +               pinctrl-names = "default";
+> > > +               pinctrl-0 = <&camera_pins_cam1_mclk_on>;
+> > > +
+> > > +               clocks = <&topckgen CLK_TOP_MUX_CAMTG2>,
+> > > +                       <&topckgen CLK_TOP_UNIVP_192M_D8>;
+> > > +               clock-names = "eclk", "freq_mux";
+> > > +               clock-frequency = <24000000>;
+> > > +
+> > > +               dovdd-supply = <&mt6358_vcamio_reg>;
+> > > +               avdd-supply = <&mt6358_vcama1_reg>;
+> > > +               dvdd-supply = <&mt6358_vcn18_reg>;
+> > > +               powerdown-gpios = <&pio 107 GPIO_ACTIVE_LOW>;
+> > > +               reset-gpios = <&pio 109 GPIO_ACTIVE_HIGH>;
+> > > +               rotation = <180>;
+> > > +
+> > > +               port {
+> > > +                       /* MIPI CSI-2 bus endpoint */
+> > > +                       ov02a10_core: endpoint {
+> > > +                               remote-endpoint = <&ov02a10_0>;
+> > > +                               link-frequencies = /bits/ 64 <390000000>;
+> > > +                       };
+> > > +               };
+> > > +       };
+> > > +};
+> > > diff --git a/MAINTAINERS b/MAINTAINERS
+> > > index bd5847e..92a868c 100644
+> > > --- a/MAINTAINERS
+> > > +++ b/MAINTAINERS
+> > > @@ -12130,6 +12130,13 @@ T:     git git://linuxtv.org/media_tree.git
+> > >  S:     Maintained
+> > >  F:     drivers/media/i2c/ov13858.c
+> > >
+> > > +OMNIVISION OV02A10 SENSOR DRIVER
+> > > +M:     Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > > +L:     linux-media@vger.kernel.org
+> > > +T:     git git://linuxtv.org/media_tree.git
+> > > +S:     Maintained
+> > > +F:     Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> > > +
+> > >  OMNIVISION OV2680 SENSOR DRIVER
+> > >  M:     Rui Miguel Silva <rmfrfs@gmail.com>
+> > >  L:     linux-media@vger.kernel.org
+> > > --
+> > > 2.9.2
 
 _______________________________________________
 Linux-mediatek mailing list
