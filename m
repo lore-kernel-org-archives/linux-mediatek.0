@@ -2,129 +2,64 @@ Return-Path: <SRS0=2GrF=5Z=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A4616C2BA2B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2020 14:09:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 05F39C2BA2B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2020 14:31:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6F5C3208FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2020 14:09:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CCD932078E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2020 14:31:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KYw96A3y";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="Ss/rI+6N"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6F5C3208FE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WuWhA40u"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CCD932078E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=AuRy3YD7RgMqMpJmGYHuCTRVtsruxktJUb0b8mX6r4g=; b=KYw96A3yNXIjQdfJh7MvJysLNn
-	0Tlp9vvo702kK4nqdajP5AQTTtWUQCJEZ43wEYZ1UiHA8sCWfa5ihR/5595qPmFKkKNYsuhVG8QE/
-	p3iecKyYbtbbz4OKUTc2vMtuVGVR8pLZVcGNB/Tf2P33aV1IfhCnScHvR5StNMcfB8GyRKVwd/c9G
-	Kgp82PKrFL/YOaYHlPs3ws4QD7rddf+iynWHaOnr2sY1aET78Wdl5wuI0uV/6Tqm67gRwVnmrrvxG
-	JDFevEzTo5pcNbT/vSfo/ye5VHsvlrMr2pBuwI307OIHFs8KyMnCifyC697qvBzG02vsY4JOgG5zZ
-	HLDspWJg==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5jK+eo3v6pu784MvhxTBX7zoOL7IkP/Wvx5oCXnZ4Gs=; b=WuWhA40uDqz4oG
+	cIOEfiMCLN9+MNUvuGyEtp4ZBqpxrONYTG3i79nQ9DVGMHuCTiFBHf4opXWmNT8z/8YnOuqKV+iKm
+	PugAA5uw79K2hU3JcQs+95tDtK+MKUg5n2NxGmBT1MTgNzBNaFZCNOpz12POJYYRRFn7K+h7tws70
+	4xdHO52Oy0w1hJukrXbsFxyV2fAWs4ChQ5+e3iEd7FKqSDhMq2kowBZLlEdLec34TIcE1YUQAZhaC
+	0atTVHYOGGyJbRStU2kBX2Avy4gPi/i6uikmh9SHexemb6e8G2kZd3aFewPGkmgG73s1IqlqxRB+B
+	JyNKX2R6M+8gmuPKrgHQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMXsH-0007JH-Lo; Thu, 09 Apr 2020 14:09:45 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	id 1jMYD1-00087O-Vy; Thu, 09 Apr 2020 14:31:11 +0000
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMXsE-0007Hi-8C
- for linux-mediatek@lists.infradead.org; Thu, 09 Apr 2020 14:09:44 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
- by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id
- 20200409140940euoutp021d44c030f707780d449629844ca29215~ELAe3s-NJ0505905059euoutp029
- for <linux-mediatek@lists.infradead.org>; Thu,  9 Apr 2020 14:09:40 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com
- 20200409140940euoutp021d44c030f707780d449629844ca29215~ELAe3s-NJ0505905059euoutp029
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1586441380;
- bh=uOPOsjDBeoOPh/LWEsOhJf6fcYgFmHlbGZ8c2IaZow8=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Ss/rI+6NlyU3oEvmTa4XmrEG+8okyYAoMJCMGnHj7bBPUJbItptqJs7eL+ZclycFW
- qNPPpcbbyJYm/6tUzbTUgmDIz5eTJygGGL2Gfhpoyfk+6OJ3taOZAJPzf4Fn6iQbjD
- TDz84m2jcnqsPQVV0gax9Vu6eK3ZtTiOWkF5NIeA=
-Received: from eusmges3new.samsung.com (unknown [203.254.199.245]) by
- eucas1p1.samsung.com (KnoxPortal) with ESMTP id
- 20200409140939eucas1p1fd05eadd1ffe536c1416de7d8ab426ea~ELAedSvQg1667416674eucas1p18;
- Thu,  9 Apr 2020 14:09:39 +0000 (GMT)
-Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
- eusmges3new.samsung.com (EUCPMTA) with SMTP id AC.CD.60698.3AC2F8E5; Thu,  9
- Apr 2020 15:09:39 +0100 (BST)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
- eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
- 20200409140939eucas1p190daac74c0d5dda4627314c49c1a5b50~ELAdsr7MZ1667916679eucas1p1_;
- Thu,  9 Apr 2020 14:09:39 +0000 (GMT)
-Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
- eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
- 20200409140939eusmtrp1ca40318d7b5d19361604d60509ea60fa~ELAdrogZI2358223582eusmtrp1R;
- Thu,  9 Apr 2020 14:09:39 +0000 (GMT)
-X-AuditID: cbfec7f5-a0fff7000001ed1a-16-5e8f2ca3fdfe
-Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
- eusmgms2.samsung.com (EUCPMTA) with SMTP id A6.A6.07950.2AC2F8E5; Thu,  9
- Apr 2020 15:09:39 +0100 (BST)
-Received: from AMDC2765.digital.local (unknown [106.120.51.73]) by
- eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20200409140938eusmtip13f3b3d64a3bf6142809d9900bb2f4a50~ELAcr5K9K1665516655eusmtip1O;
- Thu,  9 Apr 2020 14:09:38 +0000 (GMT)
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-To: Joerg Roedel <joro@8bytes.org>
-Subject: [PATCH] iommu/exynos: Rework intialization
-Date: Thu,  9 Apr 2020 16:09:28 +0200
-Message-Id: <20200409140928.1403-1-m.szyprowski@samsung.com>
-X-Mailer: git-send-email 2.17.1
+ id 1jMYCy-00086S-Vu; Thu, 09 Apr 2020 14:31:10 +0000
+Received: by theia.8bytes.org (Postfix, from userid 1000)
+ id 40578391; Thu,  9 Apr 2020 16:31:01 +0200 (CEST)
+Date: Thu, 9 Apr 2020 16:30:59 +0200
+From: Joerg Roedel <joro@8bytes.org>
+To: Marek Szyprowski <m.szyprowski@samsung.com>
+Subject: Re: [PATCH] iommu/exynos: Get rid of 'struct exynos_iommu_owner'
+ exynos_iommu_owner
+Message-ID: <20200409143059.GP3103@8bytes.org>
+References: <20200407183742.4344-1-joro@8bytes.org>
+ <CGME20200407184501eucas1p25407bc96e4345df406cf6ba061ae6a82@eucas1p2.samsung.com>
+ <20200407183742.4344-32-joro@8bytes.org>
+ <449e7f16-e719-9617-ec92-63b82c0bc33f@samsung.com>
+ <f59b0bb3-8c08-9cc9-bb1a-e69b7b226f60@samsung.com>
+ <20200409114620.GA16298@8bytes.org>
+ <40af831b-d00c-0cf9-0a06-e60c048a9ab8@samsung.com>
+MIME-Version: 1.0
+Content-Disposition: inline
 In-Reply-To: <40af831b-d00c-0cf9-0a06-e60c048a9ab8@samsung.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA0WSeUwTQRTGM93t7hYsroXECRjRegSJilg0Q7yPPzYSjUc84oFW3ACRK62g
- eDblCFSgQEkgBYuggqKCUkBEBFqVqo0UJAGCJWJVRCtqBA2Iim0X9b/f+973zXszGQoTnSe8
- qciYY6wsRholJtzwutYxy6JLC9WhS6pMy1Hb63Ec6XNqCWRu/oSjnGsaDN39OEigCZudjy42
- r0CK6+18lKwtxVF64S0SaZ5e4CH1azuGLBZHmdP8jESdDUUE6kzqAOhr/wSGskuSMFRgaeKh
- 9BEtgW4+7CORMlmC3pWMYsjw5Q0fjTXocFT+TEegZOuytT7MG4OOx9zQ3QCMwWYkmLvaPpLR
- X/VnqivSCcba1UgwuifbGP3lc4ympxwwmUmfCCarpgIwd7p0GKM3n2KGq2dunbrXbeURNioy
- gZUFrD7kFmFLeUXG2fxOZKvfEgpQNlsFBBSkg6CisR04WURfBbD2diTHIwBW20JUwM3BwwB2
- dlt5fwP55n6Sa5QDOPYoBXCFIzHQUu9yEXQgVA2pCCd70WLYPZzCd5ow2krCovu/+c6GJy2B
- D4qVLsbpefBxXpMrLKRXwr7eDowb5wuv32pxsYBeAy2pma6DIN1CQX2NYtK0EX5X90yyJ/xg
- qiE5ngHNmgycCyQB+KrtJskVGY4bKQsA51oBrW0/HLtSjv0WwKqGAE5eB4u+XHHJkPaAPUPT
- nDLmwNy6fIyThTAtVcS550OtqfLfWEP788l1GDj+QsvnXigXwNGSbjIb+Gr/D7sIQAWYzsbL
- o8NZuSSGPb5YLo2Wx8eELw6Lja4Gji9q/m36Vg+afh42ApoC4inCNJ46VMSXJsgTo40AUpjY
- SxiizAwVCY9IE0+ystiDsvgoVm4EPhQuni6UlL4/IKLDpcfYoywbx8r+dnmUwFsBgpfWzlHN
- 8vB4fGZcktdj8sULA1DxLkPFzgC74JdXKaKJLUG9qWdlAnpg9/G4XN2qPjRxarPnk30qwv/e
- 3In9Waas1uWDzZ+3G6dtCHEPlLxM0aYVa9rq24Uh6zFBwj73TX6nlT6mKKDb21Jm3/GjMiNV
- kx28Z+6FsTC9PSOPJ8blEdJAf0wml/4BxxsZz54DAAA=
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFnrDIsWRmVeSWpSXmKPExsVy+t/xu7qLdfrjDBreMFqce/ybxWLzxK1s
- Fqf3v2OxmLhyMrPFzjcv2Cz+P3rNarFgv7VFw+oLrBYtsxaxWHTO3sBuMfnUXCaL/sevmS3O
- nwdyJ+4/y25xedccNovLzRcZLT49+M9sMWFhM7PFjPP7mCw6v8xis1h75C67RVOLscXzhT+Y
- LQ5+eMJq8XPXPBaL5WfnsVm03DF1kPZ4cnAek8eaeWsYPQ4+OsTmsXPWXXaPzSu0PDat6mTz
- uHNtD5vHvJOBHpuX1HtMvrGc0aO3+R2bR9+WVYwe26/NY/bYfLra4/MmuQD+KD2bovzSklSF
- jPziElulaEMLIz1DSws9IxNLPUNj81grI1MlfTublNSczLLUIn27BL2MR60P2QseaVRM6H/K
- 1sC4TLGLkZNDQsBEYvrpB+xdjFwcQgJLGSVO///NBJGQkTg5rYEVwhaW+HOtiw2i6BOjxM9X
- L5hBEmwChhJdb0ESnBwiAkoS1z+3gjUwC3xhl7hwxBDEFhYwljg8vwksziKgKnFiyj6wBbwC
- NhJ3b11khlggL7F6wwEwm1PAXuJ8Wy9YvZCAnUTL3unMExj5FjAyrGIUSS0tzk3PLTbSK07M
- LS7NS9dLzs/dxAiM6W3Hfm7Zwdj1LvgQowAHoxIPrwFDf5wQa2JZcWXuIUYJDmYlEV7vpt44
- Id6UxMqq1KL8+KLSnNTiQ4ymQEdNZJYSTc4Hppu8knhDU0NzC0tDc2NzYzMLJXHeDoGDMUIC
- 6YklqdmpqQWpRTB9TBycUg2My7cIu7D09V49ePWsjfuqpbcsrDIvbZiZllKyhifw0+Xik3VL
- g3pf3Gu/qbr7oipP47+s69miW93cGObodsQ9U25Wlo6QUA6bEHtRujiz5oqnLIvWTOUZd+eu
- nc/l3elyjDnPtddinvCOafyxTLOCRJfHVX29tXmr0K+ICs64X64dZxQn1zxUYinOSDTUYi4q
- TgQAbHx3Hv8CAAA=
-X-CMS-MailID: 20200409140939eucas1p190daac74c0d5dda4627314c49c1a5b50
-X-Msg-Generator: CA
-X-RootMTR: 20200409140939eucas1p190daac74c0d5dda4627314c49c1a5b50
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20200409140939eucas1p190daac74c0d5dda4627314c49c1a5b50
-References: <40af831b-d00c-0cf9-0a06-e60c048a9ab8@samsung.com>
- <CGME20200409140939eucas1p190daac74c0d5dda4627314c49c1a5b50@eucas1p1.samsung.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200409_070942_496226_E84AB111 
-X-CRM114-Status: GOOD (  19.90  )
+X-CRM114-CacheID: sfid-20200409_073109_179010_4E58A081 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -139,7 +74,6 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: Heiko Stuebner <heiko@sntech.de>,
  Bjorn Andersson <bjorn.andersson@linaro.org>, linux-tegra@vger.kernel.org,
  Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>,
  linux-samsung-soc@vger.kernel.org, Rob Clark <robdclark@gmail.com>,
  Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
@@ -152,186 +86,31 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
  David Woodhouse <dwmw2@infradead.org>, linux-kernel@vger.kernel.org,
  iommu@lists.linux-foundation.org, Kukjin Kim <kgene@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>, Lu Baolu <baolu.lu@linux.intel.com>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix initialization after driver conversion to
-probe_device()/release_device(). Prepared on top of:
-https://git.kernel.org/pub/scm/linux/kernel/git/joro/linux.git/log/?h=iommu-probe-device
+Hi Marek,
 
-Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
----
- drivers/iommu/exynos-iommu.c | 80 +++++++++++++++++++++++++-------------------
- 1 file changed, 46 insertions(+), 34 deletions(-)
+On Thu, Apr 09, 2020 at 03:58:00PM +0200, Marek Szyprowski wrote:
+> The main problem after your conversion is the fact that ->probe_device() 
+> is called very early, before any other platform device (thus IOMMU 
+> controller) is is probed. It doesn't handle EPROBE_DEFER too.
 
-diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
-index f865c90..53c784f 100644
---- a/drivers/iommu/exynos-iommu.c
-+++ b/drivers/iommu/exynos-iommu.c
-@@ -565,6 +565,7 @@ static void sysmmu_tlb_invalidate_entry(struct sysmmu_drvdata *data,
- }
- 
- static const struct iommu_ops exynos_iommu_ops;
-+static int exynos_iommu_initialize_owner(struct device *sysmmu);
- 
- static int exynos_sysmmu_probe(struct platform_device *pdev)
- {
-@@ -573,6 +574,8 @@ static int exynos_sysmmu_probe(struct platform_device *pdev)
- 	struct sysmmu_drvdata *data;
- 	struct resource *res;
- 
-+	dev_info(dev, "%s %d\n", __func__, __LINE__);
-+
- 	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
- 	if (!data)
- 		return -ENOMEM;
-@@ -649,6 +652,8 @@ static int exynos_sysmmu_probe(struct platform_device *pdev)
- 
- 	pm_runtime_enable(dev);
- 
-+	exynos_iommu_initialize_owner(dev);
-+
- 	return 0;
- }
- 
-@@ -1225,24 +1230,8 @@ static phys_addr_t exynos_iommu_iova_to_phys(struct iommu_domain *iommu_domain,
- 
- static struct iommu_device *exynos_iommu_probe_device(struct device *dev)
- {
--	struct exynos_iommu_owner *owner = dev->archdata.iommu;
--	struct sysmmu_drvdata *data;
--
--	if (!has_sysmmu(dev))
--		return ERR_PTR(-ENODEV);
--
--	list_for_each_entry(data, &owner->controllers, owner_node) {
--		/*
--		 * SYSMMU will be runtime activated via device link
--		 * (dependency) to its master device, so there are no
--		 * direct calls to pm_runtime_get/put in this driver.
--		 */
--		data->link = device_link_add(dev, data->sysmmu,
--					     DL_FLAG_STATELESS |
--					     DL_FLAG_PM_RUNTIME);
--	}
--
--	return &owner->iommu;
-+	/* this is called too early on ARM 32bit to do anything usefull */
-+	return ERR_PTR(-ENODEV);
- }
- 
- static void exynos_iommu_release_device(struct device *dev)
-@@ -1268,7 +1257,8 @@ static void exynos_iommu_release_device(struct device *dev)
- 		device_link_del(data->link);
- }
- 
--static int exynos_iommu_device_init(struct exynos_iommu_owner *owner)
-+static int exynos_iommu_device_init(struct device *dev,
-+				    struct exynos_iommu_owner *owner)
- {
- 	static u32 counter = 0;
- 	int ret;
-@@ -1287,6 +1277,12 @@ static int exynos_iommu_device_init(struct exynos_iommu_owner *owner)
- 
- 	iommu_device_set_ops(&owner->iommu, &exynos_iommu_ops);
- 
-+	/*
-+	 * the above iommu_device_set_ops is not enough, initializing fwspec
-+	 * is also required
-+	 */
-+	iommu_fwspec_init(dev, &dev->of_node->fwnode, &exynos_iommu_ops);
-+
- 	return 0;
- }
- 
-@@ -1308,7 +1304,7 @@ static int exynos_owner_init(struct device *dev)
- 	if (!owner)
- 		return -ENOMEM;
- 
--	ret = exynos_iommu_device_init(owner);
-+	ret = exynos_iommu_device_init(dev, owner);
- 	if (ret)
- 		goto out_free_owner;
- 
-@@ -1330,34 +1326,51 @@ static int exynos_owner_init(struct device *dev)
- 	return ret;
- }
- 
--static int exynos_iommu_of_xlate(struct device *dev,
--				 struct of_phandle_args *spec)
-+static int exynos_iommu_dev_match_owner(struct device *dev, const void *data)
-+{
-+	const struct device *sysmmu = data;
-+	struct device_node *np;
-+	int idx = 0;
-+
-+	do {
-+		np = of_parse_phandle(dev->of_node, "iommus", idx++);
-+		if (np == sysmmu->of_node)
-+			return true;
-+	} while (np);
-+
-+	return false;
-+}
-+
-+static int exynos_iommu_initialize_owner(struct device *sysmmu)
- {
--	struct platform_device *sysmmu = of_find_device_by_node(spec->np);
--	struct sysmmu_drvdata *data, *entry;
-+	struct sysmmu_drvdata *data = dev_get_drvdata(sysmmu);
- 	struct exynos_iommu_owner *owner;
-+	struct device *dev;
- 	int ret;
- 
--	if (!sysmmu)
-+	dev = bus_find_device(&platform_bus_type, NULL, sysmmu,
-+			      exynos_iommu_dev_match_owner);
-+	if (!dev)
- 		return -ENODEV;
- 
--	data = platform_get_drvdata(sysmmu);
--	if (!data)
--		return -ENODEV;
-+	dev_info(sysmmu, "found master device %s\n", dev_name(dev));
- 
- 	ret = exynos_owner_init(dev);
- 	if (ret)
- 		return ret;
- 
- 	owner = dev->archdata.iommu;
--
--	list_for_each_entry(entry, &owner->controllers, owner_node)
--		if (entry == data)
--			return 0;
--
- 	list_add_tail(&data->owner_node, &owner->controllers);
- 	data->master = dev;
- 
-+	/*
-+	 * SYSMMU will be runtime activated via device link
-+	 * (dependency) to its master device, so there are no
-+	 * direct calls to pm_runtime_get/put in this driver.
-+	 */
-+	data->link = device_link_add(dev, data->sysmmu,
-+				     DL_FLAG_STATELESS |
-+				     DL_FLAG_PM_RUNTIME);
- 	return 0;
- }
- 
-@@ -1373,7 +1386,6 @@ static int exynos_iommu_of_xlate(struct device *dev,
- 	.probe_device = exynos_iommu_probe_device,
- 	.release_device = exynos_iommu_release_device,
- 	.pgsize_bitmap = SECT_SIZE | LPAGE_SIZE | SPAGE_SIZE,
--	.of_xlate = exynos_iommu_of_xlate,
- };
- 
- static int __init exynos_iommu_init(void)
--- 
-1.9.1
+I don't quite understand why probe_device() is called too early, as it
+is called at the same time add_device() was called before. But anyway,
+I have seen a similar problem on OMAP. If the SYSMMU for a master is not
+probed yet when probe_device() is called, it can just return -ENODEV and
+in your driver you just call but_iommu_probe() when a new SYSMMU got
+initialized to re-probe uninitialized masters on the bus. This patch-set
+contains a change to export bus_iommu_probe() for exactly that reason.
 
+What do you think?
+
+Regards,
+
+	Joerg
 
 _______________________________________________
 Linux-mediatek mailing list
