@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 25C0EC2BA2B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2020 02:06:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E663C2BA2B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2020 03:00:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C5A6B2084D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2020 02:06:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 47FE420730
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Apr 2020 03:00:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ljqFqeLJ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="DX1YaUNA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C5A6B2084D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SL1nK/Yp";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="DbepZAp1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 47FE420730
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,51 +26,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Rj2id+uLCMKJf7tiLLKAE+dsfkFKvt8ctZahucAwshw=; b=ljqFqeLJHsGUBa
-	X6XsSQ3wU/QmH/Yzy5y+lMvqijftLubdOxT2InP+yt2CBBDpif6X5B7Z7mA7MzoJQQCrC0nTI9CUs
-	kw3lg+ft8zqf4PWqDCziWCJaYBz/Ae4jmybZPjgSslje/3HN8cXfJ8RvTA597iBby/AKpngc27Scx
-	FI9H8dp5R0vA1JMrr87fVLUfR4W9mfMVjXcXGX5vAsHRvgC5c8J+OVfO9wyJPS/3DrEa02UNkQF8Y
-	IprJ2jwanB1AIhKmitRSARttFD5zDMiYW9U2RDTdw77CpbG9zc27rfE3rgrIG6bsj02ji8u7PCHyu
-	pRAn42CSbbeR1Vyk27PQ==;
+	List-Owner; bh=F5GU1JKvxuSskKpW0RNnHaNaousBrYMYnVTTBXrY1hA=; b=SL1nK/YpJBpduJ
+	kcFd1jI2d6bRHU+nrye8oAYOSaiISnch5tqIzEPv1hbP9N26jqfFM/1xuOpBIqMZYkwsptCawEXMU
+	b/c2whGVRsDViEEZQXrQ7nK1Wxf/IcO78i4mPhMBaryg3g3E9gAQQZs/okzB1wPmnS9TeswZg2O5T
+	edaofZbqgvY6Jtv25MAJUjbRHwk41m7mw6M8iKcsJ4EYhI/y8GyskZ1T/cdHeGMdK2QnTYKxMdz8n
+	8+/frmySM7DbsXcUxyQDLgDIo7orkk3lGOhQvVZDHqzLFgI2JA9rPDJKG5uk3NPFL6nHykfgiN9pS
+	xrciP4dOVH7DVvF6iLxA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMMZh-0002xv-M2; Thu, 09 Apr 2020 02:05:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jMNPu-0005za-O3; Thu, 09 Apr 2020 02:59:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMMZa-0002xM-VE; Thu, 09 Apr 2020 02:05:46 +0000
-X-UUID: d6aea85172a2495ea1478810bc71d6d4-20200408
+ id 1jMNPp-0005y8-Gm; Thu, 09 Apr 2020 02:59:45 +0000
+X-UUID: d2578c696d9d45ec86e86b0bd01cd0f3-20200408
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=N4BHJkfgb2NG7TqXytkbwGJ7xKCtAcShB1S8zEkrxYw=; 
- b=DX1YaUNA/JMTb5OLBmuLANiVXjXKG7+9hs3B33mKMStcj0CeFzlw+so0ipcrME9U1LKEzlwVqHWxpUZjhnRpAclditmj/gISB+KFQ5M8pR2SyxbOl9YtigMfkhlFDm9yBCqpEzwO3Z07FwWNzaa2Go/LnTW5MHTvNSUQdouVfjY=;
-X-UUID: d6aea85172a2495ea1478810bc71d6d4-20200408
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=Fusn7+SqpvbI1DscbYxHx41zYWHRTLYrZmwYicK/xuY=; 
+ b=DbepZAp1YjVk1EztdVk+xW9NDZ4yIkqvjDQiwdAcYEIgS9M00+Rt1EtkUOjpuNc8vTZopnyrsAocyRvDyoE+DeMQQlfgr+B1Rgq6oiLqQAbjpTNuuzVJly4Zjk6fCdpLF3YY1eam7lPhhVM7ptDjNxdNxRQqiAwmePlwmpAPQzc=;
+X-UUID: d2578c696d9d45ec86e86b0bd01cd0f3-20200408
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jungo.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 29781192; Wed, 08 Apr 2020 18:05:35 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ with ESMTP id 1942689736; Wed, 08 Apr 2020 18:59:40 -0800
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 8 Apr 2020 19:05:30 -0700
+ 15.0.1497.2; Wed, 8 Apr 2020 19:49:34 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 9 Apr 2020 10:05:24 +0800
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 9 Apr 2020 10:49:11 +0800
 Received: from [172.21.84.99] (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 9 Apr 2020 10:05:27 +0800
-Message-ID: <1586397928.8406.66.camel@mtksdccf07>
+ Transport; Thu, 9 Apr 2020 10:49:32 +0800
+Message-ID: <1586400573.8406.80.camel@mtksdccf07>
 Subject: Re: [v6, 5/5] media: platform: Add Mediatek ISP P1 V4L2 device driver
 From: Jungo Lin <jungo.lin@mediatek.com>
-To: Helen Koike <helen.koike@collabora.com>
-Date: Thu, 9 Apr 2020 10:05:28 +0800
-In-Reply-To: <6cd0b8e9-2914-9440-b9ec-dbc7e01de5a1@collabora.com>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Date: Thu, 9 Apr 2020 10:49:33 +0800
+In-Reply-To: <e9236355-53a4-4ef5-38cd-778a114b7d3c@collabora.com>
 References: <Jungo Lin <jungo.lin@mediatek.com>
  <20191219054930.29513-1-jungo.lin@mediatek.com>
  <20191219054930.29513-6-jungo.lin@mediatek.com>
- <6cd0b8e9-2914-9440-b9ec-dbc7e01de5a1@collabora.com>
+ <e9236355-53a4-4ef5-38cd-778a114b7d3c@collabora.com>
 X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 406B4C37B047C3FE289E0D54AC96B2299E065749275A417EA97331CA9A92B2312000:8
 X-MTK: N
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -98,18 +97,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Helen:
+Hi, Dafna:
 
 Thanks for your comments.
 
-On Tue, 2020-03-31 at 12:34 -0300, Helen Koike wrote:
-> Hello Jungo,
+On Thu, 2020-04-02 at 18:45 +0200, Dafna Hirschfeld wrote:
 > 
-> I was taking a look at this patch (thanks for the work),
-> I didn't look in deep details, but I have some comments, please see
-> below. I hope it helps.
-> 
-> On 12/19/19 3:49 AM, Jungo Lin wrote:
+> On 19.12.19 06:49, Jungo Lin wrote:
 > > This patch adds the Mediatek ISP P1 HW control device driver.
 > > It handles the ISP HW configuration, provides interrupt handling and
 > > initializes the V4L2 device nodes and other V4L2 functions. Moreover,
@@ -129,64 +123,31 @@ On Tue, 2020-03-31 at 12:34 -0300, Helen Koike wrote:
 > > Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
 > > ---
 > > Changes from v6:
-> >  - Revise help description for VIDEO_MEDIATEK_ISP_PASS1
-> >  - Apply SCP v21 change in P1 driver by Pi-Hsun Shih
-> >  - Correct auto suspend timer value for suspend/resume issue
-> >  - Increase IPI guard timer to 1 second to avoid false alarm command timeout event
-> >  - Fix KE due to no sen-inf sub-device
+> >   - Revise help description for VIDEO_MEDIATEK_ISP_PASS1
+> >   - Apply SCP v21 change in P1 driver by Pi-Hsun Shih
+> >   - Correct auto suspend timer value for suspend/resume issue
+> >   - Increase IPI guard timer to 1 second to avoid false alarm command timeout event
+> >   - Fix KE due to no sen-inf sub-device
 > > ---
-> >  drivers/media/platform/mtk-isp/Kconfig        |   20 +
-> >  .../media/platform/mtk-isp/isp_50/Makefile    |    3 +
-> >  .../platform/mtk-isp/isp_50/cam/Makefile      |    6 +
-> >  .../platform/mtk-isp/isp_50/cam/mtk_cam-hw.c  |  636 +++++
-> >  .../platform/mtk-isp/isp_50/cam/mtk_cam-hw.h  |   64 +
-> >  .../platform/mtk-isp/isp_50/cam/mtk_cam-ipi.h |  222 ++
-> >  .../mtk-isp/isp_50/cam/mtk_cam-regs.h         |   95 +
-> >  .../platform/mtk-isp/isp_50/cam/mtk_cam.c     | 2087 +++++++++++++++++
-> 
-> I think I would split this file a bit, to separate which code is being used for the subdevice, which for
-> capture, which for metadata, and what is being used to deal with requests.
-> 
-> It would make it easier to review imho.
-> 
-
-For file structure design, it was reviewed in the previous patch
-serials.
-e.g.
-https://patchwork.kernel.org/patch/10938137/
-If you think it is better, I will modify it.
-
-> >  .../platform/mtk-isp/isp_50/cam/mtk_cam.h     |  244 ++
-> 
-> It would be nice to chose beween mtk_cam or mtk-isp for naming functions, files and configs, and keep consistency.
-> 
-> Or maybe something like:
-> 
-> mtkisp_p1_core.c (with probe, who creates all the media entities, deals with fwnodes, etc)
-> mtkisp_p1_capture.c
-> mtkisp_p1_meta.c
-> mtkisp_p1_isp.c
-> mtkisp_p1_hw.c (or maybe split this between the other files)
-> mtkisp_p1_request.c
-> mtkisp_p1_common.c (?)
-> 
-> or s/mtkisp_p1/mtk_cam/
-> 
-> what do you think?
-> 
-
-Ok, I will revise our naming issue for consistency reason.
-
-> >  9 files changed, 3377 insertions(+)
-> >  create mode 100644 drivers/media/platform/mtk-isp/Kconfig
-> >  create mode 100644 drivers/media/platform/mtk-isp/isp_50/Makefile
-> >  create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/Makefile
-> >  create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-hw.c
-> >  create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-hw.h
-> >  create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-ipi.h
-> >  create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-regs.h
-> >  create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam.c
-> >  create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam.h
+> >   drivers/media/platform/mtk-isp/Kconfig        |   20 +
+> >   .../media/platform/mtk-isp/isp_50/Makefile    |    3 +
+> >   .../platform/mtk-isp/isp_50/cam/Makefile      |    6 +
+> >   .../platform/mtk-isp/isp_50/cam/mtk_cam-hw.c  |  636 +++++
+> >   .../platform/mtk-isp/isp_50/cam/mtk_cam-hw.h  |   64 +
+> >   .../platform/mtk-isp/isp_50/cam/mtk_cam-ipi.h |  222 ++
+> >   .../mtk-isp/isp_50/cam/mtk_cam-regs.h         |   95 +
+> >   .../platform/mtk-isp/isp_50/cam/mtk_cam.c     | 2087 +++++++++++++++++
+> >   .../platform/mtk-isp/isp_50/cam/mtk_cam.h     |  244 ++
+> >   9 files changed, 3377 insertions(+)
+> >   create mode 100644 drivers/media/platform/mtk-isp/Kconfig
+> >   create mode 100644 drivers/media/platform/mtk-isp/isp_50/Makefile
+> >   create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/Makefile
+> >   create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-hw.c
+> >   create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-hw.h
+> >   create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-ipi.h
+> >   create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-regs.h
+> >   create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam.c
+> >   create mode 100644 drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam.h
 > > 
 > > diff --git a/drivers/media/platform/mtk-isp/Kconfig b/drivers/media/platform/mtk-isp/Kconfig
 > > new file mode 100644
@@ -197,18 +158,7 @@ Ok, I will revise our naming issue for consistency reason.
 > > +config VIDEO_MEDIATEK_ISP_PASS1
 > > +	tristate "Mediatek ISP Pass 1 driver"
 > > +	depends on VIDEO_V4L2 && VIDEO_V4L2_SUBDEV_API
-> 
-> I think you need OF as well
-> 
-> depends on VIDEO_V4L2 && VIDEO_V4L2_SUBDEV_API && OF
-> 
 > > +	depends on ARCH_MEDIATEK
-> 
-> depends on ARCH_MEDIATEK || COMPILE_TEST
-> 
-
-Ok, we will fix this in next patch.
-
 > > +	select V4L2_FWNODE
 > > +	select VIDEOBUF2_VMALLOC
 > > +	select VIDEOBUF2_DMA_CONTIG
@@ -222,14 +172,6 @@ Ok, we will fix this in next patch.
 > > +		Choose Y if you want to use Mediatek SoCs to create image
 > > +		captured application such as video recording and still image
 > > +		capturing.
-> 
-> I would re-word this a bit, since people can use a captured application (and not create one) :)
-> 
-
-Ok, I will re-word as "if you want to use image captured application
-based on Mediatek SoCs for video recording and still image capturing
-functions"
-
 > > +
 > > +		To compile this driver as a module, choose M here; the module
 > > +		will be called mtk-cam-isp.
@@ -283,12 +225,6 @@ functions"
 > > +#include <linux/vmalloc.h>
 > > +
 > > +#include <media/v4l2-event.h>
-> 
-> Please sort headers alphabetically.
-> 
-
-Will fix in next patch.
-
 > > +
 > > +#include "mtk_cam.h"
 > > +#include "mtk_cam-hw.h"
@@ -312,13 +248,6 @@ Will fix in next patch.
 > > +#define MTK_ISP_STOP_HW_TIMEOUT			(33 * USEC_PER_MSEC)
 > > +
 > > +static void isp_tx_frame_worker(struct work_struct *work)
-> 
-> I suggest prefixing all the function and macros with mtk_isp_, it is easier to know they are not
-> an external function.
-> 
-
-Fix in next patch.
-
 > > +{
 > > +	struct mtk_cam_dev_request *req =
 > > +		container_of(work, struct mtk_cam_dev_request, frame_work);
@@ -426,14 +355,6 @@ Fix in next patch.
 > > +		     sizeof(composer_tx_cmd), MTK_ISP_IPI_SEND_TIMEOUT);
 > > +
 > > +	isp_composer_uninit(p1_dev);
-> 
-> I think you can copy the 3 lines of this isp_composer_uninit() function here, since
-> this seems the only place it is being used, and having a deinit and uninit function is
-> a bit confusing.
-> 
-
-Fix in next patch.
-
 > > +}
 > > +
 > > +void mtk_isp_hw_config(struct mtk_cam_dev *cam,
@@ -452,27 +373,6 @@ Fix in next patch.
 > > +}
 > > +
 > > +void mtk_isp_stream(struct mtk_cam_dev *cam, int on)
-> 
-> I prefer not having a int parameter, this is easier to read:
-> 
-> mtk_isp_stream_on(cam);
-> mtk_isp_stream_off(cam);
-> 
-> or
-> 
-> mtk_isp_stream(cam, MTK_ISP_STREAM_ON);
-> mtk_isp_stream(cam, MTK_ISP_STREAM_OFF);
-> 
-> instead of:
-> 
-> mtk_isp_stream(cam, 1);
-> mtk_isp_stream(cam, 0);
-> 
-> You can add wrappers to this function, and leave this one (that receives the boolean parameter) internal.
-> 
-
-Ok, I will choose the method 2.
-
 > > +{
 > > +	struct mtk_isp_scp_p1_cmd composer_tx_cmd;
 > > +	struct mtk_isp_p1_device *p1_dev = dev_get_drvdata(cam->dev);
@@ -480,12 +380,6 @@ Ok, I will choose the method 2.
 > > +	memset(&composer_tx_cmd, 0, sizeof(composer_tx_cmd));
 > > +	composer_tx_cmd.cmd_id = ISP_CMD_STREAM;
 > > +	composer_tx_cmd.is_stream_on = on;
-> 
-> s/is_stream_on/is_streaming
-> 
-
-Fix in next patch.
-
 > > +
 > > +	scp_ipi_send(p1_dev->scp, SCP_IPI_ISP_CMD, &composer_tx_cmd,
 > > +		     sizeof(composer_tx_cmd), MTK_ISP_IPI_SEND_TIMEOUT);
@@ -500,36 +394,14 @@ Fix in next patch.
 > > +	ret = rproc_boot(p1_dev->rproc_handle);
 > > +	if (ret) {
 > > +		dev_err(dev, "failed to rproc_boot\n");
-> 
-> It would be nice to improve this error message for users, how about:
-> 
-> dev_err(dev, "Initialization of remote processor %s failed", p1_dev->rproc_handle);
-> 
-> Or maybe even remove this message, since rproc_boot() already have several error messages.
-> 
-
-Ok, we will remove the error message.
-
 > > +		return ret;
 > > +	}
 > > +
 > > +	ret = isp_composer_init(p1_dev);
 > > +	if (ret)
-> 
-> should rproc_shutdown() be called here?
-> 
-
-Yes, we will fix it.
-
 > > +		return ret;
 > > +
 > > +	pm_runtime_get_sync(dev);
-> 
-> You should check return value here.
-> 
-
-Fix in next patch.
-
 > > +	isp_composer_hw_init(p1_dev);
 > > +
 > > +	p1_dev->enqueued_frame_seq_no = 0;
@@ -625,18 +497,6 @@ Fix in next patch.
 > > +		readl(p1_dev->regs + REG_FLKO_ERR_STAT),
 > > +		readl(p1_dev->regs + REG_BPCI_ERR_STAT),
 > > +		readl(p1_dev->regs + REG_LSCI_ERR_STAT));
-> 
-> I think if would be better to transfor those into dev_dbg and add a counter
-> in debugfs.
-> 
-
-These error messages are important for debugging.
-I suggest to keep in dev_err.
-
-Moreover, could you give more information about debug counter?
-I don't get your point.
-Do you suggest to accumulate the total count of DMA errors?
-
 > > +
 > > +	/* Disable DMA error mask to avoid too much error log */
 > > +	val = readl(p1_dev->regs + REG_CTL_RAW_INT_EN);
@@ -668,12 +528,6 @@ Do you suggest to accumulate the total count of DMA errors?
 > > +
 > > +	/* De-queue frame */
 > > +	if (irq_status & SW_PASS1_DON_ST) {
-> 
-> I suppose this means "done streaming"?
-> 
-
-Yes, it means the frame buffer is outputed done.
-
 > > +		mtk_cam_dev_dequeue_req_frame(&p1_dev->cam_dev,
 > > +					      p1_dev->dequeued_frame_seq_no);
 > > +		mtk_cam_dev_req_try_queue(&p1_dev->cam_dev);
@@ -704,14 +558,6 @@ Yes, it means the frame buffer is outputed done.
 > > +	struct device *dev = p1_dev->dev;
 > > +	dma_addr_t addr;
 > > +	void *ptr;
-> 
-> Maybe "composer_buffer" would be a better name.
-> 
-> But is this variable required at all? Can't it be allocated directly to p1_dev->composer_virt_addr ?
-> 
-
-Ok, I will use p1_dev->composer_virt_addr directly.
-
 > > +	int ret;
 > > +
 > > +	p1_dev->scp = scp_get(pdev);
@@ -723,13 +569,6 @@ Ok, I will use p1_dev->composer_virt_addr directly.
 > > +	p1_dev->rproc_handle = scp_get_rproc(p1_dev->scp);
 > > +	dev_dbg(dev, "p1 rproc_phandle: 0x%pK\n", p1_dev->rproc_handle);
 > > +	p1_dev->cam_dev.smem_dev = scp_get_device(p1_dev->scp);
-> 
-> I would rename smem_dev to scp_dev, this helps making it clear when allocating dma buffers
-> which mapping we are refering to.
-> 
-
-Fix in next patch.
-
 > > +
 > > +	/*
 > > +	 * Allocate coherent reserved memory for SCP firmware usage.
@@ -759,17 +598,6 @@ Fix in next patch.
 > > +		goto fail_free_mem;
 > > +	}
 > > +	p1_dev->composer_iova = addr;
-> 
-> why not rename this to composer_isp_addr ?
-> Since, afaik, composer_scp_addr is also iova.
-> 
-> At least my concept of iova (IO virtual address), are an address behind an IOMMU (or bus address to be given to a device).
-> 
-
-Ok, we will rename composer_iova to composer_isp_addr.
-Basically, scp_addr is reserved physical address and it is not behind an
-IOMMU.
-
 > > +	dev_dbg(dev, "scp iova addr:%pad\n", &addr);
 > > +
 > > +	return 0;
@@ -915,12 +743,6 @@ IOMMU.
 > > +	p1_dev->regs = devm_ioremap_resource(dev, res);
 > > +	if (IS_ERR(p1_dev->regs)) {
 > > +		dev_err(dev, "failed to map reister base\n");
-> 
-> s/reister/register
-> 
-
-Fix in next patch.
-
 > > +		return PTR_ERR(p1_dev->regs);
 > > +	}
 > > +	dev_dbg(dev, "cam, map_addr=0x%pK\n", p1_dev->regs);
@@ -1023,12 +845,6 @@ Fix in next patch.
 > > index 000000000000..837662f92a5e
 > > --- /dev/null
 > > +++ b/drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-hw.h
-> 
-> This header file is really short, why not merge it with mtk_cam.h (that is small too) and call it mtk_isp_common.h or mtk_cam_common?
-> 
-
-Ok, revise in next patch.
-
 > > @@ -0,0 +1,64 @@
 > > +/* SPDX-License-Identifier: GPL-2.0 */
 > > +/*
@@ -1092,12 +908,6 @@ Ok, revise in next patch.
 > > +void mtk_isp_stream(struct mtk_cam_dev *cam_dev, int on);
 > > +void mtk_isp_req_enqueue(struct mtk_cam_dev *cam_dev,
 > > +			 struct mtk_cam_dev_request *req);
-> 
-> It would be nice to have docs for these too.
-> 
-
-Ok, add in next patch.
-
 > > +
 > > +#endif /* __MTK_CAM_HW_H__ */
 > > diff --git a/drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-ipi.h b/drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-ipi.h
@@ -1105,13 +915,6 @@ Ok, add in next patch.
 > > index 000000000000..981b634dd91f
 > > --- /dev/null
 > > +++ b/drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam-ipi.h
-> 
-> I'm skipping this file, since, if I understand correctly, this is not ready for review right?
-> 
-
-I think this file is ready for review.
-
-
 > > @@ -0,0 +1,222 @@
 > > +/* SPDX-License-Identifier: GPL-2.0 */
 > > +/*
@@ -1165,12 +968,6 @@ I think this file is ready for review.
 > > + */
 > > +struct dma_buffer {
 > > +	u32 iova;
-> 
-> I would rename this to isp_addr, since scp_addr is also iova (at least this is the way I understand).
-> 
-
-Ok, revise in next patch.
-
 > > +	u32 scp_addr;
 > > +} __packed;
 > > +
@@ -1441,15 +1238,6 @@ Ok, revise in next patch.
 > > +					LSCI_ERR_ST |\
 > > +					DMA_ERR_ST)
 > > +
-> 
-> I would add a common prefix all the registers in the file.
-> 
-> Also, add some docs to know what those acronyms means would be nice.
-> 
-
-Ok, add this in next patch.
-
-
 > > +#endif	/* __MTK_CAM_REGS_H__ */
 > > diff --git a/drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam.c b/drivers/media/platform/mtk-isp/isp_50/cam/mtk_cam.c
 > > new file mode 100644
@@ -1478,12 +1266,6 @@ Ok, add this in next patch.
 > > +#include <media/v4l2-mc.h>
 > > +#include <media/v4l2-subdev.h>
 > > +#include <media/videobuf2-dma-contig.h>
-> 
-> Please sort in alphabetical order.
-> 
-
-Fix in next patch
-
 > > +
 > > +#include "mtk_cam.h"
 > > +#include "mtk_cam-hw.h"
@@ -1496,12 +1278,6 @@ Fix in next patch
 > > +#define R_LMVO		BIT(7)
 > > +#define R_FLKO		BIT(8)
 > > +#define R_PSO		BIT(10)
-> 
-> It would be nice to have better names of docs of what these means.
-> 
-
-Add in next patch
-
 > > +
 > > +#define MTK_ISP_ONE_PIXEL_MODE		1
 > > +#define MTK_ISP_MIN_RESIZE_RATIO	6
@@ -1519,12 +1295,6 @@ Add in next patch
 > > +
 > > +static inline struct mtk_cam_video_device *
 > > +mtk_cam_vbq_to_vdev(struct vb2_queue *__vq)
-> 
-> no need for the underscore in __vq
-> 
-
-Revise in next patch
-
 > > +{
 > > +	return container_of(__vq, struct mtk_cam_video_device, vbq);
 > > +}
@@ -1550,14 +1320,6 @@ Revise in next patch
 > > +	u64 ts_eof = ktime_get_boottime_ns();
 > > +
 > > +	if (!cam->streaming)
-> 
-> s/streaming/is_streaming
-> 
-> this makes a bit more intuitive of what the the boolean means.
-> 
-
-Revise in next patch
-
 > > +		return;
 > > +
 > > +	dev_dbg(cam->dev, "job done request:%s frame_seq:%d state:%d\n",
@@ -1629,18 +1391,47 @@ Revise in next patch
 > > +			cam->running_job_count--;
 > > +			/* Pass to user space for frame drop */
 > > +			mtk_cam_dev_job_done(cam, req, VB2_BUF_STATE_ERROR);
+> Hi, I see that frame_params.frame_seq_no is incremented when a request is queued
+> and frame_seq_no is read from a register, so if the first is lower than the latter
+> it means userspace was queueing request too slowly and missed frames right?
+> So userspace will have to catch up in order not to get "ERROR" buffers.
+> Maybe the driver can just skip lost frames. In the rkisp1 for example,
+> if there is no buffer available, the driver just write to a dummy buffer that is
+> never sent to userspace. This way userspace always get valid buffers back when
+> dequeueing.
+> 
+
+Q1. We will update frame_params.frame_seq_no into HW per frame.
+So the frame_seq_no is read from HW register should not be large than
+frame_params.frame_seq_no. If userspace was queueing request too slowly,
+ISP HW just skip frame output due to no available buffers.
+
+Q2. For this code block, it handles the heavy system loading. e.g
+abnormal ISR execution. In this scenario, ISP HW will keep output frame
+buffers and update frame_seq_no into HW. So ISP P1 driver miss some
+interrupt timing and just got the latest frame_seq_no from HW.
+With this check, we will return all frame buffers which have be proceed
+by HW. Otherwise, userspace may not en-queue any frame buffers due to
+some frame buffers are not returned from kernel driver.
+
 > > +			dev_warn(cam->dev, "frame_seq:%d drop\n",
 > > +				 req->frame_params.frame_seq_no);
-> 
-> maybe a counter in debugfs instead of the warning.
-> 
-
-Do you mean to add counter to accumulate the total count of drop frames?
-Could we add this and also keep this warning message?
-
 > > +			list_del(&req->list);
 > > +		} else {
 > > +			break;
+> Does this case can ever occur?
+> 
+> Thanks,
+> Dafna
+> 
+
+To be honest, it never happened.
+I will remove this.
+
+Best regards,
+
+Jungo
+
 > > +		}
 > > +	}
 > > +	spin_unlock_irqrestore(&cam->running_job_lock, flags);
@@ -1684,12 +1475,6 @@ Could we add this and also keep this warning message?
 > > +		cam->running_job_count++;
 > > +		list_del(&req->list);
 > > +		list_add_tail(&req->list, &cam->running_job_list);
-> 
-> list_move_tail() can be used.
-> 
-
-Revised in this patch.
-
 > > +		mtk_isp_req_enqueue(cam, req);
 > > +	}
 > > +	spin_unlock_irqrestore(&cam->running_job_lock, flags);
@@ -1773,39 +1558,12 @@ Revised in this patch.
 > > +		return 0;
 > > +	}
 > > +}
-> 
-> which patchset are these pixel formats defined?
-> I couldn't find them in the ones you pointed.
-> 
-> I also wonder if all of them need to be defined, or if the pre-defined ones can be used,
-> so you can use v4l2_format_info() to get the number of bytes.
-> 
-
-I miss some files related to pixel format definition in this patch set.
-You could refer the old patch set for pixel format definition.
-https://patchwork.kernel.org/patch/11126055/
-
 > > +
 > > +static void cal_image_pix_mp(struct mtk_cam_dev *cam, unsigned int node_id,
 > > +			     struct v4l2_pix_format_mplane *mp)
 > > +{
 > > +	unsigned int bpl, ppl;
-> 
-> bytes per line and pixels per line right?
-> 
-
-Yes.
-
 > > +	unsigned int pixel_bits = get_pixel_bits(mp->pixelformat);
-> 
-> wouldn't be easier a get_pixel_bytes() function instead of bits?
-> 
-
-Sorry. I didn't get the point.
-The unit of return value is bits, not bytes.
-Do you suggest move bpl & ppl calculation into get_pixel_bits() and
-rename to get_pixel_bytes()?
-
 > > +	unsigned int width = mp->width;
 > > +
 > > +	bpl = 0;
@@ -1846,12 +1604,6 @@ rename to get_pixel_bytes()?
 > > +mtk_cam_dev_find_fmt(struct mtk_cam_dev_node_desc *desc, u32 format)
 > > +{
 > > +	int i;
-> 
-> unsigned
-> 
-
-Revised in next patch.
-
 > > +	const struct v4l2_format *dev_fmt;
 > > +
 > > +	for (i = 0; i < desc->num_fmts; i++) {
@@ -1951,13 +1703,6 @@ Revised in next patch.
 > > +		return MTK_CAM_IMG_FMT_UNKNOWN;
 > > +	}
 > > +}
-> 
-> I was wondering if it is not better to save all the media bus format
-> into a table, instead of having several swtch case statements.
-> 
-
-Ok, revise in next patch.
-
 > > +
 > > +static unsigned int get_img_fmt(unsigned int fourcc)
 > > +{
@@ -2004,15 +1749,8 @@ Ok, revise in next patch.
 > > +		return MTK_CAM_IMG_FMT_FG_BAYER14;
 > > +	default:
 > > +		return MTK_CAM_IMG_FMT_UNKNOWN;
-> > +	}> +}
-> 
-> same for the pixelformat.
-> 
-> Then you can cache object with the pixelformat in the main struct.
-> 
-
-Ok, revise in next patch.
-
+> > +	}
+> > +}
 > > +
 > > +static int config_img_fmt(struct mtk_cam_dev *cam, unsigned int node_id,
 > > +			  struct p1_img_output *out_fmt, int sd_width,
@@ -2096,12 +1834,6 @@ Ok, revise in next patch.
 > > +	struct cfg_in_param *cfg_in_param;
 > > +	struct v4l2_subdev_format sd_fmt;
 > > +	int sd_width, sd_height, sd_code;
-> 
-> are this sd_* variables required? Can't sd_fmt be directly accessed?
-> 
-
-Ok, revised in next patch set.
-
 > > +	unsigned int enabled_dma_ports = cam->enabled_dmas;
 > > +	int ret;
 > > +
@@ -2117,14 +1849,6 @@ Ok, revised in next patch set.
 > > +	sd_code = sd_fmt.format.code;
 > > +	dev_dbg(dev, "sd fmt w*h=%d*%d, code=0x%x\n", sd_width, sd_height,
 > > +		sd_code);
-> 
-> If V4L2_SUBDEV_FL_HAS_DEVNODE is used, then format shouldn't propagate from one node to the other,
-> it should be configured from userspace.
-> 
-
-Could you explain why?
-Moreover, how does configuration from user space?
-
 > > +
 > > +	memset(&config_param, 0, sizeof(config_param));
 > > +
@@ -2267,12 +1991,6 @@ Moreover, how does configuration from user space?
 > > +		dev_err(dev, "failed to stream off %s:%d\n",
 > > +			cam->sensor->entity.name, ret);
 > > +		return -EPERM;
-> 
-> Why -EPERM ?
-> 
-
-Ok, we will return ret directly.
-
 > > +	}
 > > +
 > > +	ret = v4l2_subdev_call(cam->seninf, video, s_stream, 0);
@@ -2299,12 +2017,6 @@ Ok, we will return ret directly.
 > > +		/* Align vb2_core_streamon design */
 > > +		if (cam->streaming) {
 > > +			dev_warn(cam->dev, "already streaming on\n");
-> 
-> I think just dev_dbg is enough.
-> 
-
-Fix in next patch.
-
 > > +			return 0;
 > > +		}
 > > +		return mtk_cam_cio_stream_on(cam);
@@ -2312,12 +2024,6 @@ Fix in next patch.
 > > +
 > > +	if (!cam->streaming) {
 > > +		dev_warn(cam->dev, "already streaming off\n");
-> 
-> same here
-> 
-
-Fix in next patch.
-
 > > +		return 0;
 > > +	}
 > > +	return mtk_cam_cio_stream_off(cam);
@@ -2351,14 +2057,8 @@ Fix in next patch.
 > > +	 * from 0 to MTK_CAM_P1_TOTAL_NODES - 1.
 > > +	 */
 > > +	if (pad < MTK_CAM_P1_TOTAL_NODES)
-> > +		cam->dev_nodes[pad].enabled =
+> > +		cam->vdev_nodes[pad].enabled =
 > > +			!!(flags & MEDIA_LNK_FL_ENABLED);
-> 
-> Can't you just check the state of the link in the pad instead of saving it in cam->vdev_nodes[pad].enabled ?
-> 
-
-Ok, revised in next patch.
-
 > > +
 > > +	return 0;
 > > +}
@@ -2383,29 +2083,6 @@ Ok, revised in next patch.
 > > +	/* update buffer internal address */
 > > +	req->frame_params.dma_bufs[buf->node_id].iova = buf->daddr;
 > > +	req->frame_params.dma_bufs[buf->node_id].scp_addr = buf->scp_addr;
-> 
-> isn't it an issue if userspace queue two buffers for the same video device in the same request?
-> 
-> vb2_request_queue(req) will call all the .buf_queue() callbacks, and only the last buffer in the list
-> will be at req->frame_params.dma_bufs[buf->node_id], no?
-> 
-> Also, what happens if a request doesn't contain buffers for all node_ids ? Will it put data in the previous programmed
-> buffer?
-> 
-> Please, let me know if these questions doesn't make sense, I'm not that familiar with the request API internals.
-> 
-
-1. yes, it is a issue if userspace queues two buffers for the same video
-device with the same request FD.
-
-2. All buffers which are belonged different to different video devices
-in the request list will be updated to req->frame_params.dma_bufs by
-buf->node_id.
-
-3. It is not allowed for userspace to queue partial buffers for all
-enabled video devices. If it happens, it may trigger DMA errors for this
-request.
-
 > > +}
 > > +
 > > +static int mtk_cam_vb2_buf_init(struct vb2_buffer *vb)
@@ -2428,7 +2105,8 @@ request.
 > > +	buf = mtk_cam_vb2_buf_to_dev_buf(vb);
 > > +	/* Use coherent address to get iova address */
 > > +	addr = dma_map_resource(dev, buf->daddr, vb->planes[0].length,
-> > +				DMA_BIDIRECTIONAL, DMA_ATTR_SKIP_CPU_SYNC);> +	if (dma_mapping_error(dev, addr)) {
+> > +				DMA_BIDIRECTIONAL, DMA_ATTR_SKIP_CPU_SYNC);
+> > +	if (dma_mapping_error(dev, addr)) {
 > > +		dev_err(dev, "failed to map meta addr:%pad\n", &buf->daddr);
 > > +		return -EFAULT;
 > > +	}
@@ -2565,16 +2243,6 @@ request.
 > > +	mutex_lock(&cam->op_lock);
 > > +	/* Start streaming of the whole pipeline now*/
 > > +	if (!cam->pipeline.streaming_count) {
-> 
-> No need for this check, vb2 won't call .start_streaming() twice without stop_streaming() in between.
-> 
-
-The check is designed to start the media pipeline when we start
-streaming on the first node. You could refer the detail in below link.
-
-https://patchwork.kernel.org/patch/10985819/
-
-
 > > +		ret = media_pipeline_start(&node->vdev.entity, &cam->pipeline);
 > > +		if (ret) {
 > > +			dev_err(dev, "failed to start pipeline:%d\n", ret);
@@ -2802,13 +2470,6 @@ https://patchwork.kernel.org/patch/10985819/
 > > +	.core = &mtk_cam_subdev_core_ops,
 > > +	.video = &mtk_cam_subdev_video_ops,
 > > +};
-> 
-> hmm, since this subdevice is exposed with V4L2_SUBDEV_FL_HAS_DEVNODE,
-> I wonder if pad ops shouldn't be implemented too (to be verified).
-> 
-
-Ok, I will investigate this.
-
 > > +
 > > +static const struct media_entity_operations mtk_cam_media_entity_ops = {
 > > +	.link_setup = mtk_cam_media_link_setup,
@@ -2826,7 +2487,8 @@ Ok, I will investigate this.
 > > +	.buf_queue = mtk_cam_vb2_buf_queue,
 > > +	.buf_cleanup = mtk_cam_vb2_buf_cleanup,
 > > +	.buf_request_complete = mtk_cam_vb2_request_complete,
-> > +};> +
+> > +};
+> > +
 > > +static const struct v4l2_file_operations mtk_cam_v4l2_fops = {
 > > +	.unlocked_ioctl = video_ioctl2,
 > > +	.open = v4l2_fh_open,
@@ -3002,12 +2664,6 @@ Ok, I will investigate this.
 > > +					    node->id, &vdev->entity, 0,
 > > +					    link_flags);
 > > +	}
-> 
-> No need for the curly braces.
-> 
-
-Revised in next patch.
-
 > > +	if (ret)
 > > +		goto fail_vdev_ureg;
 > > +
@@ -3188,15 +2844,6 @@ Revised in next patch.
 > > +	v4l2_async_notifier_init(&cam->notifier);
 > > +	ret = v4l2_async_notifier_parse_fwnode_endpoints(dev,
 > > +		&cam->notifier, sizeof(struct v4l2_async_subdev), NULL);
-> 
-> It seems we shouldn't be using this function, please see comments at https://patchwork.kernel.org/patch/11066527/
-> 
-> Regards,
-> Helen
-> 
-
-Ok, we will investigate how to do.
-
 > > +	if (ret) {
 > > +		dev_err(dev, "failed to parse fwnode endpoints:%d\n", ret);
 > > +		return ret;
@@ -3271,7 +2918,8 @@ Ok, we will investigate how to do.
 > > +	.vidioc_streamon = vb2_ioctl_streamon,
 > > +	.vidioc_streamoff = vb2_ioctl_streamoff,
 > > +	.vidioc_expbuf = vb2_ioctl_expbuf,
-> > +};> +
+> > +};
+> > +
 > > +static const struct v4l2_format meta_fmts[] = {
 > > +	{
 > > +		.fmt.meta = {
