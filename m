@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 088E6C2BB55
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 09:03:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6DD16C2BA2B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 09:03:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CEDE520801
+	by mail.kernel.org (Postfix) with ESMTPS id 354EA2084D
 	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 09:03:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HPN2wTF9";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="U0HAeiyO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CEDE520801
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="urJwCRGA";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="twjdjrGY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 354EA2084D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4eZWSDW4kx3W6v0KSco6KHTaWqBjOqc3WpHyYfiVuN0=; b=HPN2wTF9tAWH1y
-	mz4yj/ha48oJC2bFEUWPZNnyJ9fUn51JsMsI5SPAyVqewzKpNp1Lx/veWbMHIvU86DXvjrz7bIQWh
-	r0wvWym3X1q84n8HVdgTcVPHgvmhU9Rds4c7SOlr+dhIkBUyLvpByLlvpNQ9rPX32tl0gmfGc+1Be
-	vRFGLPtYZB8/Wzdp4cZhLxK3CTkTlO7vg/arEphVYk8wa4cMmMfGOCK4fDfxve+az0p09EF21FLUA
-	X0DQXru1n1nAxNHL7t6KPUf8qj33LUgly8HehpGtpiWM8yNitdS4ozsJdDro8VghgOJTp2w/1cnOH
-	MH0AryMRNjKC0Prnhhqw==;
+	List-Owner; bh=VKZBkJm0QE6eTL/32YUj5dkAN3eQ1aLscGaF1avh1Tk=; b=urJwCRGAnE4dz/
+	JW4cRtuen+QdOyOE0pC52coki0W2lcxy77/9D9lokhWq5HO2paUqqb1ogViycVKxRHT2ySwcCPfnd
+	LS3Hb2aTa6/emasOCjumOoqnHBIR7ciNJMGZvNqnNjYPIw6v284Bg1Tdyurg9xmuFEFsG512A8Rz3
+	954gP7qBOPTgVbQTn60uYRu+JmpVMn7Hg0zyMX2rQO52J4kx9tUH4iukq/AZccia4EIQJ+GRylDxY
+	6zhjnNU1xmw7/joHVYV/aQ7k9D+NxQiszy5l1pbH994h/TiUKxu85quFNNqTH/eAMlxKJsZmCtMoY
+	98hAladFAzUpwWxD2KAQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMpYu-0004v7-5Z; Fri, 10 Apr 2020 09:02:56 +0000
+	id 1jMpYt-0004ti-5a; Fri, 10 Apr 2020 09:02:55 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMpYr-0004sa-9Q
- for linux-mediatek@lists.infradead.org; Fri, 10 Apr 2020 09:02:54 +0000
-X-UUID: de35ca502a514728a48aef217976a242-20200410
+ id 1jMpYq-0004sI-El
+ for linux-mediatek@lists.infradead.org; Fri, 10 Apr 2020 09:02:53 +0000
+X-UUID: 15866a25956740b1a53c2c3cea2962b5-20200410
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=w7xtRv8vlqO5EQ+J2L0Cx4x5jxri0BXKTgW3PSYCHdw=; 
- b=U0HAeiyOGWLZYdprUl7aLxDrabNbarNgu6tMN7PKs9osMXSaSE3LVRRAaHxng8a4fX+jjQqLlQCM44YB7HWbB4BlqziRWyGnZk42Bguwt8gRktnvKWbIw84Vflo9DWPJDJqmUM5EtBtJU/eatw7O/C9y3H4vPABm6836TcSKHaU=;
-X-UUID: de35ca502a514728a48aef217976a242-20200410
+ bh=R4UNxlS3PDE1UfNxbLRmAkrZkGkj9T94n61g04lPjas=; 
+ b=twjdjrGYMzYI/8YB182adA6XoLx3ev+YLYxYczONoBr+ZjMCZizpxfKXJTERWcApqGpfMBkwSvalJ1SPGKmHX2yDRelqQ8nkydQ0coK91RphCVIUWOVeYFS8rayAzv6719Inu4UWY9sDGneSp0gKQ7BChRonMI+u/MlpAGDHEIU=;
+X-UUID: 15866a25956740b1a53c2c3cea2962b5-20200410
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1327481941; Fri, 10 Apr 2020 01:02:47 -0800
+ with ESMTP id 1883436679; Fri, 10 Apr 2020 01:02:47 -0800
 Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Apr 2020 01:55:00 -0700
+ 15.0.1497.2; Fri, 10 Apr 2020 01:55:01 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Apr 2020 16:54:52 +0800
+ 15.0.1497.2; Fri, 10 Apr 2020 16:54:54 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 10 Apr 2020 16:54:52 +0800
+ Frontend Transport; Fri, 10 Apr 2020 16:54:54 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>
-Subject: [PATCH 01/16] mt76: avoid rx reorder buffer overflow
-Date: Fri, 10 Apr 2020 16:54:38 +0800
-Message-ID: <749e0b262ffe77a854d9d78b6eb833db77c96541.1586507878.git.ryder.lee@mediatek.com>
+Subject: [PATCH 03/16] mt76: add Rx stats support for radiotap
+Date: Fri, 10 Apr 2020 16:54:40 +0800
+Message-ID: <03f4b34864472f86aa5608fe08b4ca493e436140.1586507878.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <cover.1586507878.git.ryder.lee@mediatek.com>
 References: <cover.1586507878.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200410_020253_328877_4599F884 
-X-CRM114-Status: UNSURE (   7.22  )
+X-CRM114-CacheID: sfid-20200410_020252_502239_070AA34E 
+X-CRM114-Status: UNSURE (   9.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -95,72 +95,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enlarge slot to support 11ax 256 BA (256 MPDUs in an AMPDU)
+HE deivces need to add Rx radiotap header.
 
-Signed-off-by: Chih-Min Chen <chih-min.chen@mediatek.com>
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/agg-rx.c | 8 ++++----
- drivers/net/wireless/mediatek/mt76/mt76.h   | 6 +++---
- 2 files changed, 7 insertions(+), 7 deletions(-)
+ drivers/net/wireless/mediatek/mt76/agg-rx.c   |  4 ++--
+ drivers/net/wireless/mediatek/mt76/mac80211.c |  6 +++---
+ drivers/net/wireless/mediatek/mt76/mt76.h     | 19 +++++++++++++++++++
+ 3 files changed, 24 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/agg-rx.c b/drivers/net/wireless/mediatek/mt76/agg-rx.c
-index f77f03530259..acdbe6f8248d 100644
+index acdbe6f8248d..df25c00d9e06 100644
 --- a/drivers/net/wireless/mediatek/mt76/agg-rx.c
 +++ b/drivers/net/wireless/mediatek/mt76/agg-rx.c
-@@ -152,8 +152,8 @@ void mt76_rx_aggr_reorder(struct sk_buff *skb, struct sk_buff_head *frames)
+@@ -119,7 +119,7 @@ static void
+ mt76_rx_aggr_check_ctl(struct sk_buff *skb, struct sk_buff_head *frames)
+ {
+ 	struct mt76_rx_status *status = (struct mt76_rx_status *)skb->cb;
+-	struct ieee80211_bar *bar = (struct ieee80211_bar *)skb->data;
++	struct ieee80211_bar *bar = mt76_skb_get_hdr(skb);
+ 	struct mt76_wcid *wcid = status->wcid;
+ 	struct mt76_rx_tid *tid;
+ 	u16 seqno;
+@@ -147,7 +147,7 @@ mt76_rx_aggr_check_ctl(struct sk_buff *skb, struct sk_buff_head *frames)
+ void mt76_rx_aggr_reorder(struct sk_buff *skb, struct sk_buff_head *frames)
+ {
+ 	struct mt76_rx_status *status = (struct mt76_rx_status *)skb->cb;
+-	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
++	struct ieee80211_hdr *hdr = mt76_skb_get_hdr(skb);
+ 	struct mt76_wcid *wcid = status->wcid;
  	struct ieee80211_sta *sta;
  	struct mt76_rx_tid *tid;
- 	bool sn_less;
--	u16 seqno, head, size;
--	u8 ackp, idx;
-+	u16 seqno, head, size, idx;
-+	u8 ackp;
- 
- 	__skb_queue_tail(frames, skb);
- 
-@@ -239,7 +239,7 @@ void mt76_rx_aggr_reorder(struct sk_buff *skb, struct sk_buff_head *frames)
- }
- 
- int mt76_rx_aggr_start(struct mt76_dev *dev, struct mt76_wcid *wcid, u8 tidno,
--		       u16 ssn, u8 size)
-+		       u16 ssn, u16 size)
+diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
+index 5e795e849990..b76dee2c9632 100644
+--- a/drivers/net/wireless/mediatek/mt76/mac80211.c
++++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+@@ -727,7 +727,7 @@ mt76_check_ccmp_pn(struct sk_buff *skb)
+ 		 * Validate the first fragment both here and in mac80211
+ 		 * All further fragments will be validated by mac80211 only.
+ 		 */
+-		hdr = (struct ieee80211_hdr *)skb->data;
++		hdr = mt76_skb_get_hdr(skb);
+ 		if (ieee80211_is_frag(hdr) &&
+ 		    !ieee80211_is_first_frag(hdr->frame_control))
+ 			return 0;
+@@ -800,7 +800,7 @@ mt76_airtime_flush_ampdu(struct mt76_dev *dev)
+ static void
+ mt76_airtime_check(struct mt76_dev *dev, struct sk_buff *skb)
  {
- 	struct mt76_rx_tid *tid;
+-	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
++	struct ieee80211_hdr *hdr = mt76_skb_get_hdr(skb);
+ 	struct mt76_rx_status *status = (struct mt76_rx_status *)skb->cb;
+ 	struct mt76_wcid *wcid = status->wcid;
  
-@@ -264,7 +264,7 @@ EXPORT_SYMBOL_GPL(mt76_rx_aggr_start);
- 
- static void mt76_rx_aggr_shutdown(struct mt76_dev *dev, struct mt76_rx_tid *tid)
+@@ -837,7 +837,7 @@ static void
+ mt76_check_sta(struct mt76_dev *dev, struct sk_buff *skb)
  {
--	u8 size = tid->size;
-+	u16 size = tid->size;
- 	int i;
- 
- 	spin_lock_bh(&tid->lock);
+ 	struct mt76_rx_status *status = (struct mt76_rx_status *)skb->cb;
+-	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
++	struct ieee80211_hdr *hdr = mt76_skb_get_hdr(skb);
+ 	struct ieee80211_sta *sta;
+ 	struct ieee80211_hw *hw;
+ 	struct mt76_wcid *wcid = status->wcid;
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index e31d98a4f88f..36fe163889b8 100644
+index 4f99804ff902..8d27af61b62e 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -244,8 +244,8 @@ struct mt76_rx_tid {
- 	struct delayed_work reorder_work;
+@@ -742,6 +742,25 @@ static inline struct mt76_tx_cb *mt76_tx_skb_cb(struct sk_buff *skb)
+ 	return ((void *)IEEE80211_SKB_CB(skb)->status.status_driver_data);
+ }
  
- 	u16 head;
--	u8 size;
--	u8 nframes;
-+	u16 size;
-+	u16 nframes;
- 
- 	u8 num;
- 
-@@ -794,7 +794,7 @@ int mt76_get_survey(struct ieee80211_hw *hw, int idx,
- void mt76_set_stream_caps(struct mt76_dev *dev, bool vht);
- 
- int mt76_rx_aggr_start(struct mt76_dev *dev, struct mt76_wcid *wcid, u8 tid,
--		       u16 ssn, u8 size);
-+		       u16 ssn, u16 size);
- void mt76_rx_aggr_stop(struct mt76_dev *dev, struct mt76_wcid *wcid, u8 tid);
- 
- void mt76_wcid_key_setup(struct mt76_dev *dev, struct mt76_wcid *wcid,
++static inline void *mt76_skb_get_hdr(struct sk_buff *skb)
++{
++	struct mt76_rx_status mstat;
++	u8 *data = skb->data;
++
++	/* Alignment concerns */
++	BUILD_BUG_ON(sizeof(struct ieee80211_radiotap_he) % 4);
++	BUILD_BUG_ON(sizeof(struct ieee80211_radiotap_he_mu) % 4);
++
++	mstat = *((struct mt76_rx_status *)skb->cb);
++
++	if (mstat.flag & RX_FLAG_RADIOTAP_HE)
++		data += sizeof(struct ieee80211_radiotap_he);
++	if (mstat.flag & RX_FLAG_RADIOTAP_HE_MU)
++		data += sizeof(struct ieee80211_radiotap_he_mu);
++
++	return data;
++}
++
+ static inline void mt76_insert_hdr_pad(struct sk_buff *skb)
+ {
+ 	int len = ieee80211_get_hdrlen_from_skb(skb);
 -- 
 2.18.0
 _______________________________________________
