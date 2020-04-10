@@ -2,84 +2,75 @@ Return-Path: <SRS0=hvzu=52=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 960A0C2BA19
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 02:49:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC0DAC2D0EC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 03:29:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 674CD20730
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 02:49:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 97A3E20730
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 03:29:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="p2GUqGrs";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="R1myvxuC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 674CD20730
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qLlSZMBQ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="mT+9dbCE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 97A3E20730
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Atj2P0PnerBENLHiMaMR927J8SVW+Zygng9vbmdWRVA=; b=p2GUqGrs04+AXE
-	RpuV8eK5456jbW6flZ96OxHfrNqrJ1z5LWSWNd6OylmcosYiRSk77B6PFJV4F9HB+TGHyzLsxEzQ5
-	YIwt7RvYO/Kds8l/UHVCIujHrSLbrPcPR52zjzxsJfXlBpYWlsOvPVMsOjOeFcyB30QauD0q6ir15
-	CfhtAysLgLoNloxEZgSbh5WGy7ow5JuM9jNEHh+QX2JHs659cvxtvz0stQEoyplwPRSzWR26MeMhh
-	WpVu2RPdjTU5u/BQ6Zr21AlLqGrzRQymShEYf6pDMe2i9m75IriyelR5TVbQdvQ508tUAeUZ9/OuI
-	g0nRrkKzN8tT9HFLhkBA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=49VgY9mgfd/5ftAkQ+SklRpQHSnNnPs22pgxglY7PUw=; b=qLlSZMBQ9n8mUQ
+	843ltXuBCKGk0tEg/a3aFUlVjNSWDIH+d9F248NdYf1a+1TBhl3AVa5rhnppMfNlYMCPTmI7vXif7
+	zHZFxQhlU8pR7rdAj9Felqy4PA3eAMOAAFOXrPWeMVmTRWRb5tgwcKRINugl8Ht2E8f3vdr4rMkkZ
+	8pyK8lTSCy2jF7qhR9S0uwYHymSHzEm5Zm7mhZOxtF1KPZmf/AfiCwQQJVDpdaYtxpuYCzV8TEeMQ
+	t1ZmFB5/mjdmCXa/kEFaMAPSsVDwcefSjg5bVdF4Bz7o8e9erqHJYKtJS2ZGzqVT4xrM/d6H0kHNP
+	axSF4aDsssaAMtgc+cEQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMjjV-00009h-SV; Fri, 10 Apr 2020 02:49:29 +0000
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143])
+	id 1jMkLx-0006DH-V3; Fri, 10 Apr 2020 03:29:13 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMjjT-00009D-0M
- for linux-mediatek@lists.infradead.org; Fri, 10 Apr 2020 02:49:28 +0000
-Received: by mail-il1-x143.google.com with SMTP id f16so689981ilj.9
- for <linux-mediatek@lists.infradead.org>; Thu, 09 Apr 2020 19:49:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/sfn69J/dohNo9kDpfzOv7dy0VahZspr69zJfNmiPP8=;
- b=R1myvxuC7fVf2LJwDDU+mjofJvqlMbT52v2NhLrdiadNJ8ldFLSr5pBRsKT7xxjDSZ
- F7+nKp4G4CbP37vAd3ubrquuG+i3jwouORiZ02jQ3/RZVAYxjY8sMUjki1GDyLJcnN7p
- NQgnbxR/lqwkvF0M7WgPmHl4VY9UpPrE+bVwfLk2UqxdcsTKN2ZmUnT1nt+WljVZva+p
- tW8BINv5Ctm4r/4PjqwASpPW/g1DGdHIznrohjn0pU5XxG0pBTjlmdSiZJk9YS3oSKq9
- 1dmEaaC0lFZCj4VvnKQ7gGwJBiB8GDukBejfJZX0i9vikpe98KUuOn11TMF3jeb03++V
- PZMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/sfn69J/dohNo9kDpfzOv7dy0VahZspr69zJfNmiPP8=;
- b=s7CZqYljkge8j1sHWd+f+MJbiVhUVjxp/UGGfRrlpezc8U7KB0+JUKGNZJKDKMZ2eA
- 6Dzr0zZzhuITufLY7qVGgLFyg4EeF06DeEw4brkz1gxGxVYFeSfrVumQK4yRF1koGcug
- XVvztlN48ptegXHvJtS5XgAQI0ZVWwB4kzusoN4B9bxbiGSVqsNpy410hQ/7G1/aAzkH
- I+iwyr3FjrOdbJHImrEPJBGrFzJdxd7DhrgYITUfqInhulJ2FopZx6X0+7MbAZbBfSqq
- VzAPBlLF2hMd5EvAaGRhjtXO6Cy/KIg0cxZ25vsSC1MQC54sZYnwTwRCWNKJcBPPbaDV
- OGwQ==
-X-Gm-Message-State: AGi0Pub9Plg1+2VkGfIKrEjLPF23k354jMvuZmzRX+JxKtw2JiRedCh5
- xSMoayLIQvpmZ91Ys422sj6J7gUrdUXSG0JnbKg=
-X-Google-Smtp-Source: APiQypKJqA2Yk1dt33hG2du26+gxJQz8kWBqwdXmIWt37zo5U96ahHd4TtOPvnVKjvFJKkDiVic0hFNFMZ2ab3GPoB4=
-X-Received: by 2002:a92:8c08:: with SMTP id o8mr2872774ild.123.1586486965715; 
- Thu, 09 Apr 2020 19:49:25 -0700 (PDT)
+ id 1jMkLv-0006Bu-3I; Fri, 10 Apr 2020 03:29:12 +0000
+X-UUID: 25187aa067414c19b60b5a32603391aa-20200409
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=8OzjROGkHfg1CooU6NBX4B+qS/5k+TWJfoCWP6Iz6tc=; 
+ b=mT+9dbCEciYUnrQn2Ayc2mon+XhMNQJxbGhGiOcTSVTI4aXWUDhuVY6Md84XsuAx76Zfhx4mD5VLNYxKtF9bT/47isqWsRXdbA+gqDLCym9a092VZfWveUisXgH3DVhAkAw7XNzfN3RH2t0VrURbAjF/EmAD6ovdzRnKHhtrX7k=;
+X-UUID: 25187aa067414c19b60b5a32603391aa-20200409
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <jitao.shi@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1387699924; Thu, 09 Apr 2020 19:28:58 -0800
+Received: from MTKMBS33DR.mediatek.inc (172.27.6.106) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 9 Apr 2020 20:20:04 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33DR.mediatek.inc
+ (172.27.6.106) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 10 Apr 2020 11:20:03 +0800
+Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
+ MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Fri, 10 Apr 2020 11:19:58 +0800
+From: Jitao Shi <jitao.shi@mediatek.com>
+To: Thierry Reding <thierry.reding@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>
+Subject: [PATCH 1/1] pwm: mtk_disp: implement .apply()
+Date: Fri, 10 Apr 2020 11:19:55 +0800
+Message-ID: <20200410031955.111392-1-jitao.shi@mediatek.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-References: <20200409155409.12043-1-dqfext@gmail.com>
- <20200409.102035.13094168508101122.davem@davemloft.net>
- <CALW65jbrg1doaRBPdGQkQ-PG6dnh_L4va7RxcMxyKKMqasN7bQ@mail.gmail.com>
- <c7da2de5-5e25-6284-0b35-fd2dbceb9c4f@gmail.com>
-In-Reply-To: <c7da2de5-5e25-6284-0b35-fd2dbceb9c4f@gmail.com>
-From: DENG Qingfang <dqfext@gmail.com>
-Date: Fri, 10 Apr 2020 10:49:15 +0800
-Message-ID: <CALW65jZAdFFNfGioAFWPwYN+F4baL0Z-+FX_pAte97uxNK3T6g@mail.gmail.com>
-Subject: Re: [PATCH net-next] net: dsa: mt7530: enable jumbo frame
-To: Florian Fainelli <f.fainelli@gmail.com>
+X-TM-SNTS-SMTP: 1D83F094F6E15C6AE36EBCFB8D0EB957F322BB0E739695B42E2692AAB36440532000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200409_194927_071395_4D7BC07D 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20200409_202911_169236_4CE71029 
+X-CRM114-Status: GOOD (  16.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,66 +82,307 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, netdev@vger.kernel.org,
- Sean Wang <sean.wang@mediatek.com>, Weijie Gao <weijie.gao@mediatek.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>,
- linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>,
- David Miller <davem@davemloft.net>
+Cc: linux-pwm@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>,
+ srv_heupstream@mediatek.com, huijuan.xie@mediatek.com, stonea168@163.com,
+ linux-kernel@vger.kernel.org, cawa.cheng@mediatek.com,
+ linux-mediatek@lists.infradead.org, bibby.hsieh@mediatek.com,
+ ck.hu@mediatek.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 10, 2020 at 10:27 AM Florian Fainelli <f.fainelli@gmail.com> wrote:
->
->
->
-> On 4/9/2020 7:19 PM, DENG Qingfang wrote:
-> > So, since nothing else uses the mt7530_set_jumbo function, should I
-> > remove the function and just add a single rmw to mt7530_setup?
->
-> (please do not top-post on netdev)
->
-> There is a proper way to support the MTU configuration for DSA switch
-> drivers which is:
->
->         /*
->          * MTU change functionality. Switches can also adjust their MRU
-> through
->          * this method. By MTU, one understands the SDU (L2 payload) length.
->          * If the switch needs to account for the DSA tag on the CPU
-> port, this
->          * method needs to to do so privately.
->          */
->         int     (*port_change_mtu)(struct dsa_switch *ds, int port,
->                                    int new_mtu);
->         int     (*port_max_mtu)(struct dsa_switch *ds, int port);
+implement the apply() for pwm.
 
-MT7530 does not support configuring jumbo frame per-port
-The register affects globally
+Fix the clock clk_prepare_enable and clk_disable_unprepare mismatch,
+switch the driver to support the ->apply() method.
 
->
-> >
-> > On Fri, Apr 10, 2020 at 1:20 AM David Miller <davem@davemloft.net> wrote:
-> >>
-> >> From: DENG Qingfang <dqfext@gmail.com>
-> >> Date: Thu,  9 Apr 2020 23:54:09 +0800
-> >>
-> >>> +static void
-> >>> +mt7530_set_jumbo(struct mt7530_priv *priv, u8 kilobytes)
-> >>> +{
-> >>> +     if (kilobytes > 15)
-> >>> +             kilobytes = 15;
-> >>  ...
-> >>> +     /* Enable jumbo frame up to 15 KB */
-> >>> +     mt7530_set_jumbo(priv, 15);
-> >>
-> >> You've made the test quite pointless, honestly.
->
-> --
-> Florian
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+---
+ drivers/pwm/pwm-mtk-disp.c | 179 +++++++++++++++++++++----------------
+ 1 file changed, 104 insertions(+), 75 deletions(-)
 
+diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
+index 83b8be0209b7..c1b0ed27f278 100644
+--- a/drivers/pwm/pwm-mtk-disp.c
++++ b/drivers/pwm/pwm-mtk-disp.c
+@@ -20,6 +20,7 @@
+ #define PWM_CLKDIV_SHIFT	16
+ #define PWM_CLKDIV_MAX		0x3ff
+ #define PWM_CLKDIV_MASK		(PWM_CLKDIV_MAX << PWM_CLKDIV_SHIFT)
++#define PWM_POLARITY	BIT(2)
+ 
+ #define PWM_PERIOD_BIT_WIDTH	12
+ #define PWM_PERIOD_MASK		((1 << PWM_PERIOD_BIT_WIDTH) - 1)
+@@ -47,6 +48,7 @@ struct mtk_disp_pwm {
+ 	struct clk *clk_main;
+ 	struct clk *clk_mm;
+ 	void __iomem *base;
++	bool enabled;
+ };
+ 
+ static inline struct mtk_disp_pwm *to_mtk_disp_pwm(struct pwm_chip *chip)
+@@ -66,11 +68,11 @@ static void mtk_disp_pwm_update_bits(struct mtk_disp_pwm *mdp, u32 offset,
+ 	writel(value, address);
+ }
+ 
+-static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+-			       int duty_ns, int period_ns)
++static int mtk_disp_pwm_enable(struct pwm_chip *chip,
++			       const struct pwm_state *state)
+ {
+ 	struct mtk_disp_pwm *mdp = to_mtk_disp_pwm(chip);
+-	u32 clk_div, period, high_width, value;
++	u32 clk_div, period, high_width, value, polarity;
+ 	u64 div, rate;
+ 	int err;
+ 
+@@ -84,33 +86,47 @@ static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 	 * period = (PWM_CLK_RATE * period_ns) / (10^9 * (clk_div + 1)) - 1
+ 	 * high_width = (PWM_CLK_RATE * duty_ns) / (10^9 * (clk_div + 1))
+ 	 */
++	if (!mdp->enabled) {
++		err = clk_prepare_enable(mdp->clk_main);
++		if (err < 0) {
++			dev_err(chip->dev, "Can't enable mdp->clk_main: %d\n",
++				err);
++			return err;
++		}
++		err = clk_prepare_enable(mdp->clk_mm);
++		if (err < 0) {
++			dev_err(chip->dev, "Can't enable mdp->clk_mm: %d\n",
++				err);
++			clk_disable_unprepare(mdp->clk_main);
++			return err;
++		}
++	}
+ 	rate = clk_get_rate(mdp->clk_main);
+-	clk_div = div_u64(rate * period_ns, NSEC_PER_SEC) >>
++	clk_div = div_u64(rate * state->period, NSEC_PER_SEC) >>
+ 			  PWM_PERIOD_BIT_WIDTH;
+-	if (clk_div > PWM_CLKDIV_MAX)
++	if (clk_div > PWM_CLKDIV_MAX) {
++		dev_err(chip->dev, "clock rate is too high: rate = %d Hz\n",
++			rate);
++		clk_disable_unprepare(mdp->clk_mm);
++		clk_disable_unprepare(mdp->clk_main);
+ 		return -EINVAL;
+-
++	}
+ 	div = NSEC_PER_SEC * (clk_div + 1);
+-	period = div64_u64(rate * period_ns, div);
++	period = div64_u64(rate * state->period, div);
+ 	if (period > 0)
+ 		period--;
+ 
+-	high_width = div64_u64(rate * duty_ns, div);
++	high_width = div64_u64(rate * state->duty_cycle, div);
+ 	value = period | (high_width << PWM_HIGH_WIDTH_SHIFT);
+-
+-	err = clk_enable(mdp->clk_main);
+-	if (err < 0)
+-		return err;
+-
+-	err = clk_enable(mdp->clk_mm);
+-	if (err < 0) {
+-		clk_disable(mdp->clk_main);
+-		return err;
+-	}
++	polarity = 0;
++	if (state->polarity == PWM_POLARITY_INVERSED)
++		polarity = PWM_POLARITY;
+ 
+ 	mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
+ 				 PWM_CLKDIV_MASK,
+ 				 clk_div << PWM_CLKDIV_SHIFT);
++	mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
++				 PWM_POLARITY, polarity);
+ 	mtk_disp_pwm_update_bits(mdp, mdp->data->con1,
+ 				 PWM_PERIOD_MASK | PWM_HIGH_WIDTH_MASK,
+ 				 value);
+@@ -122,50 +138,95 @@ static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+ 		mtk_disp_pwm_update_bits(mdp, mdp->data->commit,
+ 					 mdp->data->commit_mask,
+ 					 0x0);
++	} else {
++		mtk_disp_pwm_update_bits(mdp, mdp->data->bls_debug,
++					 mdp->data->bls_debug_mask,
++					 mdp->data->bls_debug_mask);
++		mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
++					 mdp->data->con0_sel,
++					 mdp->data->con0_sel);
+ 	}
+ 
+-	clk_disable(mdp->clk_mm);
+-	clk_disable(mdp->clk_main);
+-
++	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, mdp->data->enable_mask,
++				 mdp->data->enable_mask);
++	mdp->enabled = true;
+ 	return 0;
+ }
+ 
+-static int mtk_disp_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
++static int mtk_disp_pwm_disable(struct pwm_chip *chip,
++				const struct pwm_state *state)
+ {
+ 	struct mtk_disp_pwm *mdp = to_mtk_disp_pwm(chip);
+-	int err;
+-
+-	err = clk_enable(mdp->clk_main);
+-	if (err < 0)
+-		return err;
+ 
+-	err = clk_enable(mdp->clk_mm);
+-	if (err < 0) {
+-		clk_disable(mdp->clk_main);
+-		return err;
++	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, mdp->data->enable_mask,
++				 0x0);
++	if (mdp->enabled) {
++		clk_disable_unprepare(mdp->clk_mm);
++		clk_disable_unprepare(mdp->clk_main);
+ 	}
+ 
+-	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, mdp->data->enable_mask,
+-				 mdp->data->enable_mask);
++	mdp->enabled = false;
+ 
+ 	return 0;
+ }
+ 
+-static void mtk_disp_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
++static int mtk_disp_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
++			      const struct pwm_state *state)
++{
++	if (!state->enabled)
++		return mtk_disp_pwm_disable(chip, state);
++
++	return mtk_disp_pwm_enable(chip, state);
++}
++
++static void mtk_disp_pwm_get_state(struct pwm_chip *chip,
++				   struct pwm_device *pwm,
++				   struct pwm_state *state)
+ {
+ 	struct mtk_disp_pwm *mdp = to_mtk_disp_pwm(chip);
++	u32 clk_div, period, high_width, con0, con1;
++	u64 rate;
++	int err;
+ 
+-	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, mdp->data->enable_mask,
+-				 0x0);
++	err = clk_prepare_enable(mdp->clk_main);
++	if (err < 0) {
++		dev_err(chip->dev, "Can't enable mdp->clk_main: %d\n", err);
++		return;
++	}
++	err = clk_prepare_enable(mdp->clk_mm);
++	if (err < 0) {
++		dev_err(chip->dev, "Can't enable mdp->clk_mm: %d\n", err);
++		clk_disable_unprepare(mdp->clk_main);
++		return;
++	}
++
++	rate = clk_get_rate(mdp->clk_main);
++
++	con0 = readl(mdp->base + mdp->data->con0);
++	con1 = readl(mdp->base + mdp->data->con1);
+ 
+-	clk_disable(mdp->clk_mm);
+-	clk_disable(mdp->clk_main);
++	state->polarity = con0 & PWM_POLARITY ?
++			  PWM_POLARITY_INVERSED : PWM_POLARITY_NORMAL;
++	state->enabled = !!(con0 & BIT(0));
++
++	clk_div = (con0 & PWM_CLKDIV_MASK) >> PWM_CLKDIV_SHIFT;
++	period = con1 & PWM_PERIOD_MASK;
++	state->period = div_u64(period * (clk_div + 1) * NSEC_PER_SEC, rate);
++	high_width = (con1 & PWM_HIGH_WIDTH_MASK) >> PWM_HIGH_WIDTH_SHIFT;
++	state->duty_cycle = div_u64(high_width * (clk_div + 1) * NSEC_PER_SEC,
++				    rate);
++
++	if (!state->enabled) {
++		clk_disable_unprepare(mdp->clk_mm);
++		clk_disable_unprepare(mdp->clk_main);
++	}
++
++	mdp->enabled = state->enabled;
+ }
+ 
+ static const struct pwm_ops mtk_disp_pwm_ops = {
+-	.config = mtk_disp_pwm_config,
+-	.enable = mtk_disp_pwm_enable,
+-	.disable = mtk_disp_pwm_disable,
++	.apply = mtk_disp_pwm_apply,
++	.get_state = mtk_disp_pwm_get_state,
+ 	.owner = THIS_MODULE,
+ };
+ 
+@@ -194,14 +255,6 @@ static int mtk_disp_pwm_probe(struct platform_device *pdev)
+ 	if (IS_ERR(mdp->clk_mm))
+ 		return PTR_ERR(mdp->clk_mm);
+ 
+-	ret = clk_prepare(mdp->clk_main);
+-	if (ret < 0)
+-		return ret;
+-
+-	ret = clk_prepare(mdp->clk_mm);
+-	if (ret < 0)
+-		goto disable_clk_main;
+-
+ 	mdp->chip.dev = &pdev->dev;
+ 	mdp->chip.ops = &mtk_disp_pwm_ops;
+ 	mdp->chip.base = -1;
+@@ -210,43 +263,19 @@ static int mtk_disp_pwm_probe(struct platform_device *pdev)
+ 	ret = pwmchip_add(&mdp->chip);
+ 	if (ret < 0) {
+ 		dev_err(&pdev->dev, "pwmchip_add() failed: %d\n", ret);
+-		goto disable_clk_mm;
++		return ret;
+ 	}
+ 
+ 	platform_set_drvdata(pdev, mdp);
+ 
+-	/*
+-	 * For MT2701, disable double buffer before writing register
+-	 * and select manual mode and use PWM_PERIOD/PWM_HIGH_WIDTH.
+-	 */
+-	if (!mdp->data->has_commit) {
+-		mtk_disp_pwm_update_bits(mdp, mdp->data->bls_debug,
+-					 mdp->data->bls_debug_mask,
+-					 mdp->data->bls_debug_mask);
+-		mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
+-					 mdp->data->con0_sel,
+-					 mdp->data->con0_sel);
+-	}
+-
+ 	return 0;
+-
+-disable_clk_mm:
+-	clk_unprepare(mdp->clk_mm);
+-disable_clk_main:
+-	clk_unprepare(mdp->clk_main);
+-	return ret;
+ }
+ 
+ static int mtk_disp_pwm_remove(struct platform_device *pdev)
+ {
+ 	struct mtk_disp_pwm *mdp = platform_get_drvdata(pdev);
+-	int ret;
+-
+-	ret = pwmchip_remove(&mdp->chip);
+-	clk_unprepare(mdp->clk_mm);
+-	clk_unprepare(mdp->clk_main);
+ 
+-	return ret;
++	return pwmchip_remove(&mdp->chip);
+ }
+ 
+ static const struct mtk_pwm_data mt2701_pwm_data = {
+-- 
+2.21.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
