@@ -2,80 +2,78 @@ Return-Path: <SRS0=hvzu=52=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F8A8C2D0EC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 17:37:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E45ADC2D0EC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 22:51:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DA5F42078E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 17:37:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B26C22084D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 22:51:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nlypWVh5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DA5F42078E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XOR4J/SZ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Q6tpyfkY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B26C22084D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4SeW/KatPuR04aHDmJ141Z5QoyZ55jyuMAqSn8OpV4c=; b=nlypWVh5SYpfXz
-	ePiP/OWxkxIgTjrJdOan0xwZih+1PLo6A5hgrdxJiw7iewImnXOeDw1VActFaabknQBGo6D4J9HOn
-	2Kay7CARCxYIH1246vKOfXOHZ/1qxzJd+ss3UUWQZDCxkCvGkp53hskTXVPiYvMNAtGa12ablhg9R
-	mCZI7PTT/HbVYHCwUEUmgNIiKVL0UQpPVpA92DZm+4U9hj4ZSXQnCfieGQNtniiCbZ9e6kJ8/0HiQ
-	LsTA2B0VSbJ2983rpDPIQMPrECuMNKUw0T7/rppsLm5lE4yMVlbQq97A+Oq6TZ5IbHqVS+baRMbDx
-	0cqKMwN3UeYKyu2owT2Q==;
+	List-Owner; bh=4eZWSDW4kx3W6v0KSco6KHTaWqBjOqc3WpHyYfiVuN0=; b=XOR4J/SZuEjrkG
+	UIMSiBKXhtQbnnFC2HAuvQS9FV2Tcj61svlW0SZME6lWTKFVdHpUENYT3DGtm40Jco+Kz/MXkuR45
+	129SyDtqXG3x7pqLjk36AfaROOHcDTZ9n/uDEWwBEe/dqOzA4BF7xraOEDo33cPNIBholsYOuVd3i
+	iSu1NTKwZmuwUXKeKxOgbXxU2t4HGUs75/Nu3q0mMro5/ipNDCamn/oFBmwABmxNYsFAtsva+ZmwB
+	lKYLfdMsTYAaWvtmUlZApEzEZsp0xHySm4d60eh1FlurtI4xk1SwJ/btE11eyHqRwtZeaGn2HBl8a
+	lfPHcB4BefpB/2yavF6g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMxaJ-00062b-V4; Fri, 10 Apr 2020 17:36:55 +0000
-Received: from mail-oi1-f193.google.com ([209.85.167.193])
+	id 1jN2V4-0002sm-Dl; Fri, 10 Apr 2020 22:51:50 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMxaG-00061C-Oi; Fri, 10 Apr 2020 17:36:54 +0000
-Received: by mail-oi1-f193.google.com with SMTP id k133so1241817oih.12;
- Fri, 10 Apr 2020 10:36:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=QBEtm9wj9+GCsvuO7AqmsQRpKjkshfnjy93bDn3pJjg=;
- b=mrKwzGO4zR4LmE3PcVo4aUvamCnjP1rJHqjjVMyBBZ+WQ9vluI9a2adBdf8IbcM33J
- awQCGIJ2ayP1ubiiYw+syfp0UtyFNfdnrdbCzR6gEY7VyAeuXMwV8NcDTImVFNh6ruGD
- 23DM1g1k5KXTO9DWOqT4HgtstyjoCxOrc9DhKXMd5+ibFyRlufQuV827EczC+ak9wIlh
- qXpudfGdixJbT4Ko9khJQe5QGiI3rMsBlVqM14YU8evFzOjKssG5T7dImW5DBzQguexU
- CcWf9oxD6jv2cowaAf+pN+okBWIyDYEtFtddZgI1O3IIQOTz8hXhCZSBdtezkykP0FM3
- O49g==
-X-Gm-Message-State: AGi0Pub56CdbrTbL/jprHipwm5uSk9R6NIwgnsBvN4fHL16gfGZLvifB
- t19XgRe9psqpwBXQ9mvoyQ==
-X-Google-Smtp-Source: APiQypJvIzXiGQUkFI9BjUhby/lCJa4wLGEtjD/gV8K12mkSAWYPQSvkgPt6INjIArj9sD7aK4V+Kg==
-X-Received: by 2002:aca:34c6:: with SMTP id b189mr4027120oia.63.1586540208773; 
- Fri, 10 Apr 2020 10:36:48 -0700 (PDT)
-Received: from rob-hp-laptop (ip-99-203-29-27.pools.cgn.spcsdns.net.
- [99.203.29.27])
- by smtp.gmail.com with ESMTPSA id q187sm1541807oih.48.2020.04.10.10.36.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Apr 2020 10:36:47 -0700 (PDT)
-Received: (nullmailer pid 27880 invoked by uid 1000);
- Fri, 10 Apr 2020 17:25:27 -0000
-Date: Fri, 10 Apr 2020 12:25:27 -0500
-From: Rob Herring <robh@kernel.org>
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: Re: [V4, 1/2] media: i2c: dw9768: Add DT support and MAINTAINERS entry
-Message-ID: <20200410172527.GA24529@bogus>
-References: <20200330123634.363-1-dongchun.zhu@mediatek.com>
- <20200330123634.363-2-dongchun.zhu@mediatek.com>
+ id 1jN2V0-0002s2-Qs
+ for linux-mediatek@lists.infradead.org; Fri, 10 Apr 2020 22:51:48 +0000
+X-UUID: bc2d36a3aadf4c85b8f471190723904f-20200410
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=w7xtRv8vlqO5EQ+J2L0Cx4x5jxri0BXKTgW3PSYCHdw=; 
+ b=Q6tpyfkYQbzG18trtRMiWzJzreDjcR8PUV9NBp0YyDCxMsVcBMzvIsaLkP0K9+4uYpt2L+KNgN2KQJwFTE/HJd+Fn1TshckQkW3RkxoupTCQGEAUX1oXfzzWs1lfHfCEvgBjESKLpX7lHHAJn6A/jRHSdThdfTplM/jFZsD/uWQ=;
+X-UUID: bc2d36a3aadf4c85b8f471190723904f-20200410
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1320509772; Fri, 10 Apr 2020 14:51:41 -0800
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 10 Apr 2020 15:51:39 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 11 Apr 2020 06:51:37 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sat, 11 Apr 2020 06:51:33 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+Subject: [PATCH v1 01/16] mt76: avoid rx reorder buffer overflow
+Date: Sat, 11 Apr 2020 06:51:16 +0800
+Message-ID: <749e0b262ffe77a854d9d78b6eb833db77c96541.1586558901.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <cover.1586558901.git.ryder.lee@mediatek.com>
+References: <cover.1586558901.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200330123634.363-2-dongchun.zhu@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200410_103652_801476_1AB72802 
-X-CRM114-Status: GOOD (  16.46  )
+X-CRM114-CacheID: sfid-20200410_155146_882178_A26E4366 
+X-CRM114-Status: UNSURE (   7.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,127 +85,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org,
- srv_heupstream@mediatek.com, shengnan.wang@mediatek.com,
- andriy.shevchenko@linux.intel.com, tfiga@chromium.org, louis.kuo@mediatek.com,
- sj.huang@mediatek.com, linux-mediatek@lists.infradead.org,
- sakari.ailus@linux.intel.com, matthias.bgg@gmail.com, bingbu.cao@intel.com,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: YF Luo <yf.luo@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ linux-wireless@vger.kernel.org, Sean
+ Wang <sean.wang@mediatek.com>, Chih-Min Chen <chih-min.chen@mediatek.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Yiwei Chung <yiwei.chung@mediatek.com>,
+ linux-mediatek@lists.infradead.org, Shayne Chen <shayne.chen@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 30, 2020 at 08:36:33PM +0800, Dongchun Zhu wrote:
-> This patch is to add the Devicetreee binding documentation and
-> MAINTAINERS entry for dw9768 actuator.
-> 
-> Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> ---
->  .../bindings/media/i2c/dongwoon,dw9768.yaml        | 62 ++++++++++++++++++++++
->  MAINTAINERS                                        |  7 +++
->  2 files changed, 69 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml b/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
-> new file mode 100644
-> index 0000000..8a353dc
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
-> @@ -0,0 +1,62 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +# Copyright (c) 2020 MediaTek Inc.
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/i2c/dongwoon,dw9768.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Dongwoon Anatech DW9768 Voice Coil Motor (VCM) Device Tree Bindings
-> +
-> +maintainers:
-> +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
-> +
-> +description: |-
-> +  The Dongwoon DW9768 is a single 10-bit digital-to-analog (DAC) converter
-> +  with 100 mA output current sink capability. VCM current is controlled with
-> +  a linear mode driver. The DAC is controlled via a 2-wire (I2C-compatible)
-> +  serial interface that operates at clock rates up to 1MHz. This chip
-> +  integrates Advanced Actuator Control (AAC) technology and is intended for
-> +  driving voice coil lenses in camera modules.
-> +
-> +properties:
-> +  compatible:
-> +    const: dongwoon,dw9768
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  vin-supply:
-> +    description:
-> +      Definition of the regulator used as I2C I/O interface power supply.
-> +    maxItems: 1
+Enlarge slot to support 11ax 256 BA (256 MPDUs in an AMPDU)
 
-You can drop this. *-supply is always a single entry.
+Signed-off-by: Chih-Min Chen <chih-min.chen@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/agg-rx.c | 8 ++++----
+ drivers/net/wireless/mediatek/mt76/mt76.h   | 6 +++---
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
-> +
-> +  vdd-supply:
-> +    description:
-> +      Definition of the regulator used as VCM chip power supply.
-> +    maxItems: 1
-
-Same here.
-
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - vin-supply
-> +  - vdd-supply
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    i2c2: i2c@11009000 {
-
-i2c {
-
-> +        clock-frequency = <400000>;
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
-> +
-> +        dw9768: camera-lens@c {
-> +            compatible = "dongwoon,dw9768";
-> +            reg = <0x0c>;
-> +
-> +            vin-supply = <&mt6358_vcamio_reg>;
-> +            vdd-supply = <&mt6358_vcama2_reg>;
-> +        };
-> +    };
-> +
-> +...
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 38fe2f3..5e124d2 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -5134,6 +5134,13 @@ S:	Maintained
->  F:	drivers/media/i2c/dw9714.c
->  F:	Documentation/devicetree/bindings/media/i2c/dongwoon,dw9714.txt
->  
-> +DONGWOON DW9768 LENS VOICE COIL DRIVER
-> +M:	Dongchun Zhu <dongchun.zhu@mediatek.com>
-> +L:	linux-media@vger.kernel.org
-> +S:	Maintained
-> +T:	git git://linuxtv.org/media_tree.git
-> +F:	Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
-> +
->  DONGWOON DW9807 LENS VOICE COIL DRIVER
->  M:	Sakari Ailus <sakari.ailus@linux.intel.com>
->  L:	linux-media@vger.kernel.org
-> -- 
-> 2.9.2
-
+diff --git a/drivers/net/wireless/mediatek/mt76/agg-rx.c b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+index f77f03530259..acdbe6f8248d 100644
+--- a/drivers/net/wireless/mediatek/mt76/agg-rx.c
++++ b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+@@ -152,8 +152,8 @@ void mt76_rx_aggr_reorder(struct sk_buff *skb, struct sk_buff_head *frames)
+ 	struct ieee80211_sta *sta;
+ 	struct mt76_rx_tid *tid;
+ 	bool sn_less;
+-	u16 seqno, head, size;
+-	u8 ackp, idx;
++	u16 seqno, head, size, idx;
++	u8 ackp;
+ 
+ 	__skb_queue_tail(frames, skb);
+ 
+@@ -239,7 +239,7 @@ void mt76_rx_aggr_reorder(struct sk_buff *skb, struct sk_buff_head *frames)
+ }
+ 
+ int mt76_rx_aggr_start(struct mt76_dev *dev, struct mt76_wcid *wcid, u8 tidno,
+-		       u16 ssn, u8 size)
++		       u16 ssn, u16 size)
+ {
+ 	struct mt76_rx_tid *tid;
+ 
+@@ -264,7 +264,7 @@ EXPORT_SYMBOL_GPL(mt76_rx_aggr_start);
+ 
+ static void mt76_rx_aggr_shutdown(struct mt76_dev *dev, struct mt76_rx_tid *tid)
+ {
+-	u8 size = tid->size;
++	u16 size = tid->size;
+ 	int i;
+ 
+ 	spin_lock_bh(&tid->lock);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index e31d98a4f88f..36fe163889b8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -244,8 +244,8 @@ struct mt76_rx_tid {
+ 	struct delayed_work reorder_work;
+ 
+ 	u16 head;
+-	u8 size;
+-	u8 nframes;
++	u16 size;
++	u16 nframes;
+ 
+ 	u8 num;
+ 
+@@ -794,7 +794,7 @@ int mt76_get_survey(struct ieee80211_hw *hw, int idx,
+ void mt76_set_stream_caps(struct mt76_dev *dev, bool vht);
+ 
+ int mt76_rx_aggr_start(struct mt76_dev *dev, struct mt76_wcid *wcid, u8 tid,
+-		       u16 ssn, u8 size);
++		       u16 ssn, u16 size);
+ void mt76_rx_aggr_stop(struct mt76_dev *dev, struct mt76_wcid *wcid, u8 tid);
+ 
+ void mt76_wcid_key_setup(struct mt76_dev *dev, struct mt76_wcid *wcid,
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
