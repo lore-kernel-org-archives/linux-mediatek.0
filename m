@@ -4,76 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 79C16C2BA2B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 10:04:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B9FFAC2BA2B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 10:40:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 496B320678
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 10:04:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 89FAA20673
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 10:40:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iKKeSluY";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="B0kuxl4R"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 496B320678
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HrBYlL30";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="XDdH6luN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 89FAA20673
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
+	Date:Message-ID:From:To:Subject:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nEeuZWCXh5UVPh1Z0Te1dFYYoPGys+t5MHJ46dDyRds=; b=iKKeSluYjv0bV4
-	uDloJRNqXBtMxH6vZlIft9ECCm9EAjJuJeIoiYIG4vl0FRJz7U2kE+8TGmEmGMRxSbi/vAy6sOzm5
-	5D6oQ+enjmKiOd/n7PaNt/fg9myAfNbzlqAQAF5XjBlRhGrdRLOGz2BRuRFYOXPFZ4Yl1ucTI+yKY
-	H4+Gex4tNINRVmUXUG3a3imKT43q6U2RwMBaEYL/QARaw2g4OD+/dpA+3cV0kCErGuVJIUe2NULYo
-	FiIxJuDjhkE3YwBmH8bc5gtHc/hu44K1cttxSSdnnD5WiRgRbTjjHG+9vumfAaIox6kvObbNoOc8Y
-	frJRO4lxUtMkbao4jFsw==;
+	List-Owner; bh=ahD4up/YZNLMhsJwyOgqb5Dj8qcdvAW6YnZnegNEy2c=; b=HrBYlL30t1bNAC
+	eovg9OfX0+3W1o65ImyEjya9t9e8sSXTUgRr2hdWuIKVaXh0VKB9LTOtPlCTPcPLvjs9FV2KOf4ik
+	BLz//b/NGpcAvbgNjXL8XFjSffGvHfh/Yw6v7LhyEo3moqUakcB49b6jG2KpQnbjMivBT/bP29SRP
+	2Wktr2//s88Q+T0tjthgxa7T2WGtSJvQeoYjpvTlFKm3SnmsUe2lohuH9i6p6IImHhFvs3epXOWuq
+	XfHlSiYyKw/jINu6u02JPn659ebxTOJyUrZDCXh0GO+9TsUJ0HJONOlU/rZRwybQcJw4ySBKVymj5
+	lMXcJSIKT3hGMRp8D9VA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMqWc-0001BD-2s; Fri, 10 Apr 2020 10:04:38 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jMr4i-00069g-K5; Fri, 10 Apr 2020 10:39:52 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMqWU-000142-4n; Fri, 10 Apr 2020 10:04:31 +0000
-X-UUID: fdc4bdce13624c07a238dab9f1b508fe-20200410
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=LeSP52FTso2EkwLO6QyHaBzAPIfPN+/Ucz6epX0Z0us=; 
- b=B0kuxl4RBQLZM50E9DWv8vwfSIwW4Xm8b5HYUtNwuNGD+LL1x9IhXmmA6yL2u42TfNEDQ3YBXmM9Y+DRcoJ/o3dRYo/ZpAUuiUjhI6x3hsXjTUyTXk+TtKzCDOkGOhDOduShZpkhXImZqnYuo0wQlC4eXwMiAecvNAyDqPm3JB0=;
-X-UUID: fdc4bdce13624c07a238dab9f1b508fe-20200410
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <jungo.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1783671136; Fri, 10 Apr 2020 02:04:11 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Apr 2020 03:04:17 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Apr 2020 18:04:15 +0800
-Received: from [172.21.84.99] (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 10 Apr 2020 18:04:14 +0800
-Message-ID: <1586513057.8406.101.camel@mtksdccf07>
-Subject: Re: [v6, 1/5] media: dt-bindings: mt8183: Added camera ISP Pass 1
-From: Jungo Lin <jungo.lin@mediatek.com>
-To: Helen Koike <helen.koike@collabora.com>
-Date: Fri, 10 Apr 2020 18:04:17 +0800
-In-Reply-To: <77afc8e7-26b8-471d-0ec0-c77a9c379433@collabora.com>
-References: <Jungo Lin <jungo.lin@mediatek.com>
- <20191219054930.29513-1-jungo.lin@mediatek.com>
- <20191219054930.29513-2-jungo.lin@mediatek.com>
- <77afc8e7-26b8-471d-0ec0-c77a9c379433@collabora.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1jMr4e-000683-1e
+ for linux-mediatek@lists.infradead.org; Fri, 10 Apr 2020 10:39:50 +0000
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+ by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id
+ 20200410103941euoutp0262c83710015ffb6c70d8a873752b7f5e~Ebyb6pd1-1261912619euoutp02y
+ for <linux-mediatek@lists.infradead.org>; Fri, 10 Apr 2020 10:39:41 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com
+ 20200410103941euoutp0262c83710015ffb6c70d8a873752b7f5e~Ebyb6pd1-1261912619euoutp02y
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1586515181;
+ bh=thvDiT/eQi5V7MIlmJv3g6iQX+aqMmt4n/u9ZPubS4c=;
+ h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
+ b=XDdH6luNiLQsWlkkhL2LWYmfxTHqNRsR82yyHxoIWwUGFVjEGuVEibAvCs880Bi0K
+ 5r6YBXm1D+SLGygHyjCMYD4/3/CGIZskb0OBRaiuzUn/22A4FpH30xcJUGkKJybJ6S
+ SRoKQS+M5ZbJ2S7D3Oq/K6ypGATBV06YW8V5PjKs=
+Received: from eusmges3new.samsung.com (unknown [203.254.199.245]) by
+ eucas1p1.samsung.com (KnoxPortal) with ESMTP id
+ 20200410103940eucas1p1d1dab09988aaf6dca4cb656f4f51a88e~EbybAcSSv1417814178eucas1p1J;
+ Fri, 10 Apr 2020 10:39:40 +0000 (GMT)
+Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
+ eusmges3new.samsung.com (EUCPMTA) with SMTP id 57.5D.60698.CEC409E5; Fri, 10
+ Apr 2020 11:39:40 +0100 (BST)
+Received: from eusmtrp2.samsung.com (unknown [182.198.249.139]) by
+ eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+ 20200410103940eucas1p19192e0681adebd0f5fa447146af93c09~EbyafAxHX3201932019eucas1p10;
+ Fri, 10 Apr 2020 10:39:40 +0000 (GMT)
+Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
+ eusmtrp2.samsung.com (KnoxPortal) with ESMTP id
+ 20200410103940eusmtrp2e107babbe90369aaa7156b0ba01f2c38~EbyaeDJzm1000210002eusmtrp2I;
+ Fri, 10 Apr 2020 10:39:40 +0000 (GMT)
+X-AuditID: cbfec7f5-a29ff7000001ed1a-ea-5e904cec0dfd
+Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
+ eusmgms1.samsung.com (EUCPMTA) with SMTP id 34.23.08375.CEC409E5; Fri, 10
+ Apr 2020 11:39:40 +0100 (BST)
+Received: from [106.210.88.143] (unknown [106.210.88.143]) by
+ eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
+ 20200410103939eusmtip1661ef8561a6aa99d569da66438857c18~EbyZRbR__2130221302eusmtip1D;
+ Fri, 10 Apr 2020 10:39:39 +0000 (GMT)
+Subject: Re: [RFC PATCH 33/34] iommu: Remove add_device()/remove_device()
+ code-paths
+To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin
+ Murphy <robin.murphy@arm.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof
+ Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Lu Baolu
+ <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson
+ <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob
+ Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald
+ Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding
+ <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+Message-ID: <1a88547f-ac90-825e-e529-a56c2c4e0391@samsung.com>
+Date: Fri, 10 Apr 2020 12:39:38 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20200407183742.4344-34-joro@8bytes.org>
+Content-Language: en-US
+X-Brightmail-Tracker: H4sIAAAAAAAAA01Se0hTcRjtt9/d3XU0u83KD4uKRUFFpizhBwupKLpQfxj0hqyVN4t81Ka9
+ obFZqKXOZKm3Wlsvyx6aq0wJbVqJSmoaskQz08pyaj6i1MqcV8v/zjnfOXzng4/Bylzaj9kf
+ FcProrQRKlpOPX45ULXEvd4cGpCTH0SqWoco4kh9RJPK4i6KpN5Ow6TA3U6T4Q8dUmIr1hDD
+ nRopiROuUiThYq6MpFVclpCU1g5MqqtHaGrxKxmpK7xEkzrTa0R63w9jYrabMMmoLpKQhH6B
+ JsY4Nfls/4mJ81ublAwUWimS9cpKk7jGoBV+XJvTKuHuWu8izvmhhOYKhCYZ57i1iMvLTqC5
+ xvqnNGct38A5rp/i0lxZiEsyddFcfr0Vc47KE1xf3uwQ7+3y5WF8xP7DvG5p8C75vm8Nvfig
+ TXP0t+s0MqBC/0TkxQC7DOyWIWkikjNK9haChB6jRCT9CIrSW8YmfQgaPw+h8UjF2wtIHGQh
+ MGdnjkW6EViEGtrj8mE3g7nVNeqaxv6gwPbiEfYQzLokcLM7T+Zx0WwgJHYmjiYUbDBkNn8c
+ MTEMxc6HJNMKD5zO7oD0+o2iYyqUZ7ZRHtmLDYKO95RHxuwcyO+8hEXsCw1tV0b7AOtmwNlj
+ lIqtV8P1P6WUiH3ga9lDmYhnwXDBeMCEoKXqnkwk5xDUGTPGbtZAY9Ug7dmM2YWQU7hUlFfC
+ +Rb7aCFgvcHVOVUs4Q3nH6djUVZA/Bml6F4AQtn9f2udNbXYjFTChMuECecIE84R/u+1ISob
+ +fKx+shwXq+O4o/467WR+tiocP890ZF5aOSPK/+UfX+Cin7tLkEsg1STFfGSlFClVHtYfyyy
+ BAGDVdMU64xJoUpFmPbYcV4XvVMXG8HrS9BMhlL5KtRXv+xQsuHaGP4Azx/kdeNTCePlZ0Db
+ ZvgsLvWqtiQfHd71ybaGP9M8sLF9uazUZfnY9E713DnXp72nIuak2iTETDlr3vR666QAi3xV
+ WPxWe3nYpJTaT5NvP7M942y+xr0GQ78mMEjHyN7UHXogj84ouhHgSO8dDJmnHlzgnrK4b21z
+ /IN26Ra7u1aq7DpwWbO2pyX59zUVpd+nDVyEdXrtX2r/zjjDAwAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA02Se0hTYRjG+3bOjkdrcZqaH2YXBv2R1Ow45z7LTCLoRBGaUJDpnHpQyW2y
+ s3UlWqmRE3OysFq1lilesrKN8kqyQRddZprJiqTljAq1e9DoYtMV7L/n5Xl+78sLD4kJHfxo
+ skilZTUqRbGICMNdfx6MrZnabsxe21weiR57f+LIXnObQK7eDziqaTZhqHPqHYFmxif5yNq7
+ HumvPeGjMnMdjioutIUgU/8lHqr2TmJocNA/1vQOhKCnXRcJ9LR0CKAvnhkMGa+UYujc4F0e
+ qvhmJtCJMgl6e+UHhhyfJvjI12XBUeOAhUBlL6Wp0cyEw8JjWi2tgHGMOwmm0zwWwtibYhlb
+ SwXBvBztIRhLXzpjrz/GmNyNgKkq/UAw7aMWjLG7jjBfbcvSFu4RJ2vUOi27olDNaTeIMmkU
+ L6aTkDg+IUlMS2RZ6+KloriU5Hy2uGg/q4lLyREXfnrxBSuxrj/4210O9KBLbAChJKQSYP/z
+ WmAAYaSQagDwwkcbL2DEwL5aPT+gw+GvUQMRCE0DaHg0gc8a4dQuaPS65+gI6icO693dxKyB
+ UW4evNe4OEDYALz6vGKOICgaGqYNcyEBlQLPv3qDGQBJ4tRKWFWaOisjqSxYNrQqkFgE+87P
+ 3iLJUEoKJz14YHsitNhfYwG9HLZPX/yno+CLics8IxCag2hzEGIOQsxBiBXgLSCC1XHKAiVH
+ izmFktOpCsR5aqUN+Otz577P3gGGb2U4AUUC0QLB2nnV2UK+Yj93SOkEkMREEYJtJ6qyhYJ8
+ xaHDrEYt1+iKWc4JpP7ParDoyDy1v4wqrZyW0jKURMskMkkiEkUJTlGOvUKqQKFl97FsCav5
+ z/HI0Gg9qE5THGh7OONTmeWflw5KC1VncjZddzfdLMm2vz9Zb/MlblQuyR1uO+n53uE4Wq9f
+ kL56pHaTq7KoPyO8Af2qs9uKz/Yk9t3Y1i1/sFtobNv4FjelTFU+03u2do+fzk/bMpJbNSTf
+ kdkTY5gnSUgu2tmw2bpqRHPcd8A53zuW5eJEOFeooGMxDaf4C7eSUfRUAwAA
+X-CMS-MailID: 20200410103940eucas1p19192e0681adebd0f5fa447146af93c09
+X-Msg-Generator: CA
+X-RootMTR: 20200407183806eucas1p2cf45fbce5a43a6b4fe3a623b28da0606
+X-EPHeader: CA
+CMS-TYPE: 201P
+X-CMS-RootMailID: 20200407183806eucas1p2cf45fbce5a43a6b4fe3a623b28da0606
+References: <20200407183742.4344-1-joro@8bytes.org>
+ <CGME20200407183806eucas1p2cf45fbce5a43a6b4fe3a623b28da0606@eucas1p2.samsung.com>
+ <20200407183742.4344-34-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200410_030430_188894_EDCE3850 
-X-CRM114-Status: GOOD (  22.82  )
+X-CRM114-CacheID: sfid-20200410_033948_284260_3F1DA49F 
+X-CRM114-Status: GOOD (  28.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,154 +148,265 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: ryan.yu@mediatek.com, frankie.chiu@mediatek.com,
- laurent.pinchart@ideasonboard.com, robh@kernel.org, Rynn.Wu@mediatek.com,
- suleiman@chromium.org, Jerry-ch.Chen@mediatek.com, frederic.chen@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- hverkuil-cisco@xs4all.nl, sj.huang@mediatek.com, yuzhao@chromium.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, Sean.Cheng@mediatek.com,
- srv_heupstream@mediatek.com, shik@chromium.org, tfiga@chromium.org,
- zwisler@chromium.org, ddavenport@chromium.org
+Cc: linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org,
+ iommu@lists.linux-foundation.org, Joerg Roedel <jroedel@suse.de>,
+ linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Helen:
+Hi Joerg
 
-Thanks for your comment.
+On 07.04.2020 20:37, Joerg Roedel wrote:
+> From: Joerg Roedel <jroedel@suse.de>
+>
+> All drivers are converted to use the probe/release_device()
+> call-backs, so the add_device/remove_device() pointers are unused and
+> the code using them can be removed.
+>
+> Signed-off-by: Joerg Roedel <jroedel@suse.de>
+> ---
+>   drivers/iommu/iommu.c | 145 ++++++++----------------------------------
+>   include/linux/iommu.h |   4 --
+>   2 files changed, 27 insertions(+), 122 deletions(-)
+>
+> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+> index cf25c1e48830..d9032f9d597c 100644
+> --- a/drivers/iommu/iommu.c
+> +++ b/drivers/iommu/iommu.c
+> @@ -220,7 +220,7 @@ static int __iommu_probe_device(struct device *dev, struct list_head *group_list
+>   	return ret;
+>   }
+>   
+> -static int __iommu_probe_device_helper(struct device *dev)
+> +int iommu_probe_device(struct device *dev)
+>   {
+>   	const struct iommu_ops *ops = dev->bus->iommu_ops;
+>   	struct iommu_group *group;
+> @@ -264,70 +264,17 @@ static int __iommu_probe_device_helper(struct device *dev)
+>   
+>   }
+>   
+> -int iommu_probe_device(struct device *dev)
+> +void iommu_release_device(struct device *dev)
+>   {
+>   	const struct iommu_ops *ops = dev->bus->iommu_ops;
+> -	struct iommu_group *group;
+> -	int ret;
+> -
+> -	WARN_ON(dev->iommu_group);
+> -
+> -	if (!ops)
+> -		return -EINVAL;
+> -
+> -	if (!dev_iommu_get(dev))
+> -		return -ENOMEM;
+> -
+> -	if (!try_module_get(ops->owner)) {
+> -		ret = -EINVAL;
+> -		goto err_free_dev_param;
+> -	}
+> -
+> -	if (ops->probe_device)
+> -		return __iommu_probe_device_helper(dev);
+> -
+> -	ret = ops->add_device(dev);
+> -	if (ret)
+> -		goto err_module_put;
+>   
+> -	group = iommu_group_get(dev);
+> -	iommu_create_device_direct_mappings(group, dev);
+> -	iommu_group_put(group);
+> -
+> -	if (ops->probe_finalize)
+> -		ops->probe_finalize(dev);
+> -
+> -	return 0;
+> -
+> -err_module_put:
+> -	module_put(ops->owner);
+> -err_free_dev_param:
+> -	dev_iommu_free(dev);
+> -	return ret;
+> -}
+> -
+> -static void __iommu_release_device(struct device *dev)
+> -{
+> -	const struct iommu_ops *ops = dev->bus->iommu_ops;
+> +	if (!dev->iommu)
+> +		return;
+>   
+>   	iommu_device_unlink(dev->iommu->iommu_dev, dev);
+> -
+>   	iommu_group_remove_device(dev);
+>   
+>   	ops->release_device(dev);
+> -}
+> -
+> -void iommu_release_device(struct device *dev)
+> -{
+> -	const struct iommu_ops *ops = dev->bus->iommu_ops;
+> -
+> -	if (!dev->iommu)
+> -		return;
+> -
+> -	if (ops->release_device)
+> -		__iommu_release_device(dev);
+> -	else if (dev->iommu_group)
+> -		ops->remove_device(dev);
+>   
+>   	module_put(ops->owner);
+>   	dev_iommu_free(dev);
+> @@ -1560,23 +1507,6 @@ struct iommu_group *iommu_group_get_for_dev(struct device *dev)
+>   	if (ret)
+>   		goto out_put_group;
+>   
+> -	/*
+> -	 * Try to allocate a default domain - needs support from the
+> -	 * IOMMU driver. There are still some drivers which don't support
+> -	 * default domains, so the return value is not yet checked. Only
+> -	 * allocate the domain here when the driver still has the
+> -	 * add_device/remove_device call-backs implemented.
+> -	 */
+> -	if (!ops->probe_device) {
+> -		iommu_alloc_default_domain(dev);
+> -
+> -		if (group->default_domain)
+> -			ret = __iommu_attach_device(group->default_domain, dev);
+> -
+> -		if (ret)
+> -			goto out_put_group;
+> -	}
+> -
+>   	return group;
+>   
+>   out_put_group:
+> @@ -1591,21 +1521,6 @@ struct iommu_domain *iommu_group_default_domain(struct iommu_group *group)
+>   	return group->default_domain;
+>   }
+>   
+> -static int add_iommu_group(struct device *dev, void *data)
+> -{
+> -	int ret = iommu_probe_device(dev);
+> -
+> -	/*
+> -	 * We ignore -ENODEV errors for now, as they just mean that the
+> -	 * device is not translated by an IOMMU. We still care about
+> -	 * other errors and fail to initialize when they happen.
+> -	 */
+> -	if (ret == -ENODEV)
+> -		ret = 0;
+> -
+> -	return ret;
+> -}
+> -
+>   static int probe_iommu_group(struct device *dev, void *data)
+>   {
+>   	const struct iommu_ops *ops = dev->bus->iommu_ops;
+> @@ -1789,45 +1704,39 @@ static int iommu_group_create_direct_mappings(struct iommu_group *group)
+>   
+>   int bus_iommu_probe(struct bus_type *bus)
+>   {
+> -	const struct iommu_ops *ops = bus->iommu_ops;
+> +	struct iommu_group *group, *next;
+> +	LIST_HEAD(group_list);
+>   	int ret;
+>   
+> -	if (ops->probe_device) {
+> -		struct iommu_group *group, *next;
+> -		LIST_HEAD(group_list);
+> -
+> -		/*
+> -		 * This code-path does not allocate the default domain when
+> -		 * creating the iommu group, so do it after the groups are
+> -		 * created.
+> -		 */
+> -		ret = bus_for_each_dev(bus, NULL, &group_list, probe_iommu_group);
+> -		if (ret)
+> -			return ret;
+> +	/*
+> +	 * This code-path does not allocate the default domain when
+> +	 * creating the iommu group, so do it after the groups are
+> +	 * created.
+> +	 */
+> +	ret = bus_for_each_dev(bus, NULL, &group_list, probe_iommu_group);
+> +	if (ret)
+> +		return ret;
+>   
+> -		list_for_each_entry_safe(group, next, &group_list, entry) {
+> -			/* Remove item from the list */
+> -			list_del_init(&group->entry);
+> +	list_for_each_entry_safe(group, next, &group_list, entry) {
+> +		/* Remove item from the list */
+> +		list_del_init(&group->entry);
+>   
+> -			mutex_lock(&group->mutex);
+> +		mutex_lock(&group->mutex);
+>   
+> -			/* Try to allocate default domain */
+> -			probe_alloc_default_domain(bus, group);
+> +		/* Try to allocate default domain */
+> +		probe_alloc_default_domain(bus, group);
+>   
+> -			if (!group->default_domain)
+> -				continue;
+> +		if (!group->default_domain)
+> +			continue;
 
-On Tue, 2020-03-31 at 12:34 -0300, Helen Koike wrote:
-> Hi Jungo,
-> 
-> On 12/19/19 3:49 AM, Jungo Lin wrote:
-> > This patch adds DT binding document for the Pass 1 (P1) unit
-> > in Mediatek's camera ISP system. The Pass 1 unit grabs the sensor
-> > data out from the sensor interface, applies ISP image effects
-> > from tuning data and outputs the image data or statistics data to DRAM.
-> > 
-> > Reviewed-by: Rob Herring <robh@kernel.org>
-> > Signed-off-by: Jungo Lin <jungo.lin@mediatek.com>
-> > ---
-> > Changes from v6:
-> >  - Add port node description in the dt-binding document.
-> > ---
-> >  .../bindings/media/mediatek,camisp.txt        | 83 +++++++++++++++++++
-> 
-> It would be really nice to convert this to yaml.
-> 
-> For reference: https://lwn.net/Articles/771621/
-> 
-> Regards,
-> Helen
-> 
+It doesn't look straight from the above diff, but this continue leaks 
+group->lock taken.
 
-We will plan to covert txt to yaml.
-Hopefully, we could overcome the learning cue of yaml.
+>   
+> -			iommu_group_create_direct_mappings(group);
+> +		iommu_group_create_direct_mappings(group);
+>   
+> -			ret = __iommu_group_dma_attach(group);
+> +		ret = __iommu_group_dma_attach(group);
+>   
+> -			mutex_unlock(&group->mutex);
+> +		mutex_unlock(&group->mutex);
+>   
+> -			if (ret)
+> -				break;
+> -		}
+> -	} else {
+> -		ret = bus_for_each_dev(bus, NULL, NULL, add_iommu_group);
+> +		if (ret)
+> +			break;
+>   	}
+>   
+>   	return ret;
+> diff --git a/include/linux/iommu.h b/include/linux/iommu.h
+> index fea1622408ad..dd076366383f 100644
+> --- a/include/linux/iommu.h
+> +++ b/include/linux/iommu.h
+> @@ -223,8 +223,6 @@ struct iommu_iotlb_gather {
+>    * @iotlb_sync: Flush all queued ranges from the hardware TLBs and empty flush
+>    *            queue
+>    * @iova_to_phys: translate iova to physical address
+> - * @add_device: add device to iommu grouping
+> - * @remove_device: remove device from iommu grouping
+>    * @probe_device: Add device to iommu driver handling
+>    * @release_device: Remove device from iommu driver handling
+>    * @probe_finalize: Do final setup work after the device is added to an IOMMU
+> @@ -277,8 +275,6 @@ struct iommu_ops {
+>   	void (*iotlb_sync)(struct iommu_domain *domain,
+>   			   struct iommu_iotlb_gather *iotlb_gather);
+>   	phys_addr_t (*iova_to_phys)(struct iommu_domain *domain, dma_addr_t iova);
+> -	int (*add_device)(struct device *dev);
+> -	void (*remove_device)(struct device *dev);
+>   	struct iommu_device *(*probe_device)(struct device *dev);
+>   	void (*release_device)(struct device *dev);
+>   	void (*probe_finalize)(struct device *dev);
 
-Thanks,
+Best regards
+-- 
+Marek Szyprowski, PhD
+Samsung R&D Institute Poland
 
-Jungo
-
-> >  1 file changed, 83 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/media/mediatek,camisp.txt
-> > 
-> > diff --git a/Documentation/devicetree/bindings/media/mediatek,camisp.txt b/Documentation/devicetree/bindings/media/mediatek,camisp.txt
-> > new file mode 100644
-> > index 000000000000..a85f37c0b87d
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/mediatek,camisp.txt
-> > @@ -0,0 +1,83 @@
-> > +* Mediatek Image Signal Processor Pass 1 (ISP P1)
-> > +
-> > +The Pass 1 unit of Mediatek's camera ISP system grabs the sensor data out
-> > +from the sensor interface, applies ISP effects from tuning data and outputs
-> > +the image data and statistics data to DRAM. Furthermore, Pass 1 unit has
-> > +the ability to output two different resolutions frames at the same time to
-> > +increase the performance of the camera application.
-> > +
-> > +Required properties:
-> > +- compatible: Must be "mediatek,mt8183-camisp" for MT8183.
-> > +- reg: Physical base address of the camera function block register and
-> > +  length of memory mapped region. Must contain an entry for each entry
-> > +  in reg-names.
-> > +- reg-names: Must include the following entries:
-> > +  "cam_sys": Camera base function block
-> > +  "cam_uni": Camera UNI function block
-> > +  "cam_a": Camera ISP P1 hardware unit A
-> > +  "cam_b": Camera ISP P1 hardware unit B
-> > +  "cam_c": Camera ISP P1 hardware unit C
-> > +- interrupts: Must contain an entry for each entry in interrupt-names.
-> > +- interrupt-names : Must include the following entries:
-> > +  "cam_uni": Camera UNI interrupt
-> > +  "cam_a": Camera unit A interrupt
-> > +  "cam_b": Camera unit B interrupt
-> > +  "cam_c": Camera unit C interrupt
-> > +- iommus: Shall point to the respective IOMMU block with master port
-> > +  as argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
-> > +  for details.
-> > +- clocks: A list of phandle and clock specifier pairs as listed
-> > +  in clock-names property, see
-> > +  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
-> > +- clock-names: Must be "camsys_cam_cgpdn" and "camsys_camtg_cgpdn".
-> > +- mediatek,larb: Must contain the local arbiters in the current SoCs, see
-> > +  Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.txt
-> > +  for details.
-> > +- power-domains: a phandle to the power domain, see
-> > +  Documentation/devicetree/bindings/power/power_domain.txt for details.
-> > +- mediatek,scp: The node of system control processor (SCP), see
-> > +  Documentation/devicetree/bindings/remoteproc/mtk,scp.txt for details.
-> > +- port: child port node corresponding to the data input, in accordance with
-> > +  the video interface bindings defined in
-> > +  Documentation/devicetree/bindings/media/video-interfaces.txt. The port
-> > +  node must contain at least one endpoint.
-> > +
-> > +Example:
-> > +SoC specific DT entry:
-> > +
-> > +	camisp: camisp@1a000000 {
-> > +		compatible = "mediatek,mt8183-camisp";
-> > +		reg = <0 0x1a000000 0 0x1000>,
-> > +				<0 0x1a003000 0 0x1000>,
-> > +				<0 0x1a004000 0 0x2000>,
-> > +				<0 0x1a006000 0 0x2000>,
-> > +				<0 0x1a008000 0 0x2000>;
-> > +		reg-names = "cam_sys",
-> > +				"cam_uni",
-> > +				"cam_a",
-> > +				"cam_b",
-> > +				"cam_c";
-> > +		interrupts = <GIC_SPI 253 IRQ_TYPE_LEVEL_LOW>,
-> > +				<GIC_SPI 254 IRQ_TYPE_LEVEL_LOW>,
-> > +				<GIC_SPI 255 IRQ_TYPE_LEVEL_LOW>,
-> > +				<GIC_SPI 256 IRQ_TYPE_LEVEL_LOW>;
-> > +		interrupt-names = "cam_uni",
-> > +				"cam_a",
-> > +				"cam_b",
-> > +				"cam_c";
-> > +		iommus = <&iommu M4U_PORT_CAM_IMGO>;
-> > +		clocks = <&camsys CLK_CAM_CAM>,
-> > +				<&camsys CLK_CAM_CAMTG>;
-> > +		clock-names = "camsys_cam_cgpdn",
-> > +				"camsys_camtg_cgpdn";
-> > +		mediatek,larb = <&larb3>,
-> > +				<&larb6>;
-> > +		power-domains = <&scpsys MT8183_POWER_DOMAIN_CAM>;
-> > +		mediatek,scp = <&scp>;
-> > +
-> > +		port {
-> > +			camisp_endpoint: endpoint {
-> > +				remote-endpoint = <&seninf_camisp_endpoint>;
-> > +			};
-> > +		};
-> > +	};
-> > 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
