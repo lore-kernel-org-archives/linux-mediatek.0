@@ -2,71 +2,81 @@ Return-Path: <SRS0=hvzu=52=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 30FBEC2D0EC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 03:56:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E6CC1C352B6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 04:33:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E2B262137B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 03:56:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AD76520B1F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 04:33:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RNMcpJx6";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="jpSvAEwh"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E2B262137B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ug1/dNN4";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="fNbaJMpF"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD76520B1F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O9+JCdIC3dLXXKCPAR7oD/ROE/VHASAq32Pt7YCXnGc=; b=RNMcpJx6RWX0oX
-	nGT30O41pfjCJtLAvtZGJzQPppscbatZm+31GjEkstjq4orytQzyUlyCGp/TnisEETjmQgnk6Azs3
-	TOITBkB8m97Ons/HkS1F+02mzBZKzF9LCin0ox5EpiFPl2DGgdlWU4emb0BDoextcqqLMR15+QlFT
-	jlxuRKMPbzCk+4zPEN3XLePZMKo3IdjPsUq6/wMPedWh4FYr1SR05y8VSrkiAX7iEA/pc1vjJ+FGm
-	eSstdjBe4nd6r6e1y1oEAgVrIStvjEC5KZTsoDne3cxJD3c/X3RIZK7HRtlL9Wym8XyjWdZCB2die
-	fzv6veA7nckzkZ/njfrA==;
+	List-Owner; bh=RPFgLlT7TiKJoYGeKFeUJbSERWiIhaj3svvt3tGrAa4=; b=Ug1/dNN4rE5pXJ
+	zo+3lZvhxu8/++79st/j+egOmCnp7uXdhGvwdjUw5VsHMeKzzmQcp7v80KYgurTGbQQN20KmwpQF1
+	VJL4KsZSbJwuCld7VYRmQ4OqmvuVfsl04Tg+y/WzHdgqoLqESHzN72kt+QqpsM9aWpuqo6g19o2/l
+	Hr8VmC7VMkZUCO5tQsPbL1yLK31eYwSjN2xdjwALR0yhv8ZT8j8Q7Nc3P1UKUq5BzBuxum3ToRDKK
+	PQI8gB88xfj37PTX+LwogYHeGY/2vsKfJuSB1M2GPHgGcIie312/dmFwiF4vofB6j6wM2zyDnkFjf
+	XOzByvRGSklFRVGLRvqg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMkm2-0007ck-5Z; Fri, 10 Apr 2020 03:56:10 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jMlLq-0004Qi-NE; Fri, 10 Apr 2020 04:33:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMkgZ-0008II-V2; Fri, 10 Apr 2020 03:50:34 +0000
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
- [73.47.72.35])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6361B20B1F;
- Fri, 10 Apr 2020 03:50:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1586490631;
- bh=T1GNoPyTHZ1PaVzQb4ooxNBlzo/+yHyLeyswMPyouKg=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=jpSvAEwh7IX3Y4i180XoUZ4JptpEib2j1oHqTYScgY5YB6yUZn6NXdmthhUleEl4M
- C2T1CZ7srsyiet/QfW6CHTYwrUquZ0x3vazcuYrXdUnqAMpkycou+AQNaNtqptcQZT
- JmlDsawPTCGurbYOMDpDycuU4+xmqOW0mKTG2szM=
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.19 22/32] media: i2c: ov5695: Fix power on and off
- sequences
-Date: Thu,  9 Apr 2020 23:49:55 -0400
-Message-Id: <20200410035005.9371-22-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200410035005.9371-1-sashal@kernel.org>
-References: <20200410035005.9371-1-sashal@kernel.org>
+ id 1jMlLn-0004P5-CE; Fri, 10 Apr 2020 04:33:09 +0000
+X-UUID: 07320ecd776e4157963cb64e3c706d2e-20200409
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=oXyxi7IUgBNHR+VYtiCeIx+6ezK7zPDvVd2okeNBTBs=; 
+ b=fNbaJMpFO/cnuCk/GkyGsyGISC98jzF228UYLBiRljwq00+vnhPW/4UrBpLv5iheq3yBmWst6DRnSV0Ax774YsGgTX4nGozF729mq1J5kfuEBgkBxVdw7H8SjivcvUImlWIsAdpFeo6vZxx94pnp7d35YGZ2WSSfkxzEeDCQeAs=;
+X-UUID: 07320ecd776e4157963cb64e3c706d2e-20200409
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <jitao.shi@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1660490301; Thu, 09 Apr 2020 20:32:58 -0800
+Received: from MTKMBS33DR.mediatek.inc (172.27.6.106) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 9 Apr 2020 21:32:57 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33DR.mediatek.inc
+ (172.27.6.106) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 10 Apr 2020 12:32:53 +0800
+Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
+ MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Fri, 10 Apr 2020 12:32:50 +0800
+From: Jitao Shi <jitao.shi@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
+ <linux-kernel@vger.kernel.org>
+Subject: [PATCH v5 1/4] dt-bindings: display: mediatek: add property to
+ control mipi tx drive current
+Date: Fri, 10 Apr 2020 12:32:45 +0800
+Message-ID: <20200410043248.114384-2-jitao.shi@mediatek.com>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20200410043248.114384-1-jitao.shi@mediatek.com>
+References: <20200410043248.114384-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+X-TM-SNTS-SMTP: 2F6DC314AAFFE7325705D7A5029BA7AB77B87FFA4ED9EE4DC05F3445E42225E72000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200409_205032_060140_FB696B09 
-X-CRM114-Status: GOOD (  18.26  )
+X-CRM114-CacheID: sfid-20200409_213307_426135_785FFC90 
+X-CRM114-Status: UNSURE (   7.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,147 +88,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
- Dongchun Zhu <dongchun.zhu@mediatek.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>,
+ srv_heupstream@mediatek.com, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ huijuan.xie@mediatek.com, stonea168@163.com, cawa.cheng@mediatek.com,
+ linux-mediatek@lists.infradead.org, bibby.hsieh@mediatek.com,
+ ck.hu@mediatek.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+Add a property to control mipi tx drive current:
+"drive-strength-microamp"
 
-[ Upstream commit f1a64f56663e9d03e509439016dcbddd0166b2da ]
-
-From the measured hardware signal, OV5695 reset pin goes high for a
-short period of time during boot-up. From the sensor specification, the
-reset pin is active low and the DT binding defines the pin as active
-low, which means that the values set by the driver are inverted and thus
-the value requested in probe ends up high.
-
-Fix it by changing probe to request the reset GPIO initialized to high,
-which makes the initial state of the physical signal low.
-
-In addition, DOVDD rising must occur before DVDD rising from spec., but
-regulator_bulk_enable() API enables all the regulators asynchronously.
-Use an explicit loops of regulator_enable() instead.
-
-For power off sequence, it is required that DVDD falls first. Given the
-bulk API does not give any guarantee about the order of regulators,
-change the driver to use regulator_disable() instead.
-
-The sensor also requires a delay between reset high and first I2C
-transaction, which was assumed to be 8192 XVCLK cycles, but 1ms is
-recommended by the vendor. Fix this as well.
-
-Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Signed-off-by: Tomasz Figa <tfiga@chromium.org>
-Signed-off-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 ---
- drivers/media/i2c/ov5695.c | 49 ++++++++++++++++++++++++--------------
- 1 file changed, 31 insertions(+), 18 deletions(-)
+ .../devicetree/bindings/display/mediatek/mediatek,dsi.txt    | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/media/i2c/ov5695.c b/drivers/media/i2c/ov5695.c
-index 5d107c53364d6..be242bb8fefcd 100644
---- a/drivers/media/i2c/ov5695.c
-+++ b/drivers/media/i2c/ov5695.c
-@@ -974,16 +974,9 @@ static int ov5695_s_stream(struct v4l2_subdev *sd, int on)
- 	return ret;
- }
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
+index a19a6cc375ed..d78b6d6d8fab 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
+@@ -33,6 +33,10 @@ Required properties:
+ - #clock-cells: must be <0>;
+ - #phy-cells: must be <0>.
  
--/* Calculate the delay in us by clock rate and clock cycles */
--static inline u32 ov5695_cal_delay(u32 cycles)
--{
--	return DIV_ROUND_UP(cycles, OV5695_XVCLK_FREQ / 1000 / 1000);
--}
--
- static int __ov5695_power_on(struct ov5695 *ov5695)
- {
--	int ret;
--	u32 delay_us;
-+	int i, ret;
- 	struct device *dev = &ov5695->client->dev;
- 
- 	ret = clk_prepare_enable(ov5695->xvclk);
-@@ -994,21 +987,28 @@ static int __ov5695_power_on(struct ov5695 *ov5695)
- 
- 	gpiod_set_value_cansleep(ov5695->reset_gpio, 1);
- 
--	ret = regulator_bulk_enable(OV5695_NUM_SUPPLIES, ov5695->supplies);
--	if (ret < 0) {
--		dev_err(dev, "Failed to enable regulators\n");
--		goto disable_clk;
-+	/*
-+	 * The hardware requires the regulators to be powered on in order,
-+	 * so enable them one by one.
-+	 */
-+	for (i = 0; i < OV5695_NUM_SUPPLIES; i++) {
-+		ret = regulator_enable(ov5695->supplies[i].consumer);
-+		if (ret) {
-+			dev_err(dev, "Failed to enable %s: %d\n",
-+				ov5695->supplies[i].supply, ret);
-+			goto disable_reg_clk;
-+		}
- 	}
- 
- 	gpiod_set_value_cansleep(ov5695->reset_gpio, 0);
- 
--	/* 8192 cycles prior to first SCCB transaction */
--	delay_us = ov5695_cal_delay(8192);
--	usleep_range(delay_us, delay_us * 2);
-+	usleep_range(1000, 1200);
- 
- 	return 0;
- 
--disable_clk:
-+disable_reg_clk:
-+	for (--i; i >= 0; i--)
-+		regulator_disable(ov5695->supplies[i].consumer);
- 	clk_disable_unprepare(ov5695->xvclk);
- 
- 	return ret;
-@@ -1016,9 +1016,22 @@ static int __ov5695_power_on(struct ov5695 *ov5695)
- 
- static void __ov5695_power_off(struct ov5695 *ov5695)
- {
-+	struct device *dev = &ov5695->client->dev;
-+	int i, ret;
++Optional properties:
++- drive-strength-microamp: adjust driving current, should be 3000 ~ 6000. And
++						   the step is 200.
 +
- 	clk_disable_unprepare(ov5695->xvclk);
- 	gpiod_set_value_cansleep(ov5695->reset_gpio, 1);
--	regulator_bulk_disable(OV5695_NUM_SUPPLIES, ov5695->supplies);
-+
-+	/*
-+	 * The hardware requires the regulators to be powered off in order,
-+	 * so disable them one by one.
-+	 */
-+	for (i = OV5695_NUM_SUPPLIES - 1; i >= 0; i--) {
-+		ret = regulator_disable(ov5695->supplies[i].consumer);
-+		if (ret)
-+			dev_err(dev, "Failed to disable %s: %d\n",
-+				ov5695->supplies[i].supply, ret);
-+	}
- }
+ Example:
  
- static int __maybe_unused ov5695_runtime_resume(struct device *dev)
-@@ -1288,7 +1301,7 @@ static int ov5695_probe(struct i2c_client *client,
- 	if (clk_get_rate(ov5695->xvclk) != OV5695_XVCLK_FREQ)
- 		dev_warn(dev, "xvclk mismatched, modes are based on 24MHz\n");
+ mipi_tx0: mipi-dphy@10215000 {
+@@ -42,6 +46,7 @@ mipi_tx0: mipi-dphy@10215000 {
+ 	clock-output-names = "mipi_tx0_pll";
+ 	#clock-cells = <0>;
+ 	#phy-cells = <0>;
++	drive-strength-microamp = <4600>;
+ };
  
--	ov5695->reset_gpio = devm_gpiod_get(dev, "reset", GPIOD_OUT_LOW);
-+	ov5695->reset_gpio = devm_gpiod_get(dev, "reset", GPIOD_OUT_HIGH);
- 	if (IS_ERR(ov5695->reset_gpio)) {
- 		dev_err(dev, "Failed to get reset-gpios\n");
- 		return -EINVAL;
+ dsi0: dsi@1401b000 {
 -- 
-2.20.1
-
-
+2.21.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
