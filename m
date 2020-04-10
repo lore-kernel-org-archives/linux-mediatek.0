@@ -2,79 +2,78 @@ Return-Path: <SRS0=hvzu=52=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 88F10C352B6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 04:33:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 07CD3C2BB1D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 04:39:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 56D1A2082D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 04:33:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CE35120CC7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 04:39:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nykv3UGp";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="P681Josp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 56D1A2082D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PMEaEB6j";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="sNdv4wqF"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CE35120CC7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rhNEBpc+3yfhtANC0Evplqmq9097omcq3moQxA4l3l4=; b=nykv3UGpPmzBMV
-	QJstGhymkcadmwIlWPPZpUCh2jtDeul5KR8OBD+EmZMOuMvC65DUwb+7aiMDSzx9FgVfrnS0z9I++
-	shzcGcD5vYEpWHImCh/D1a7uuuAVk5bxdkHN8QiGqKCsuF80HB5umVAtEYq4MzHubl1ZK1j3zx4ut
-	KuyCzNZ+UI2UXDvnCDcDDJ3LiE2GuY0/juYwD/blAw3NdztnxAZ1Uu/BwAeJ0t5CZlD4Nr1Y9C9uW
-	H+R1Qbp1Z3qkeGD89bZFdai/iutS3lwWlQ6vZ6ReTM4LGk3uiJ2Dz1Mvetz2fiXIUelxqeYZCySEG
-	nnS23n1Pp70nyzx2gInA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=nKvDZBhpryV7BPy5Wc+vUC1Ma4egrTdJQIU8pCUcmTc=; b=PMEaEB6jV4KR31
+	cPmDZPcSyYzc84bRcbBKGZQK9kjFIAF6llfw1zP0bra0STLcOWYCz8Rcl7d7WFUv12GBVptu/XMBH
+	SWmOuKWIuQNX5n5yQZQZLInahlv2RCZI3Q8w3tHMSc4nzrUYGSKdnvhbLxxJP/IoJqy7MSeyeSHPq
+	vNuyQNZ35V8ibMnEnk1eC/9SfcBYRtPcMRtQVRv4wfN9QyWXG06QMe2r2DD/554Sk7QmXwJPJeCi1
+	Ay2Z66SrynZFtaK0G78gU0ocDfafjjJfOdgG+JntyyGTeZfqz8eFRvdj6UBEZtslKdtCI22RKptHh
+	mwi/G2dhmlfkKUlV6wuA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMlMM-0004vS-Fc; Fri, 10 Apr 2020 04:33:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jMlRq-00086t-W6; Fri, 10 Apr 2020 04:39:22 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMlLn-0004P2-NB; Fri, 10 Apr 2020 04:33:10 +0000
-X-UUID: 7b523ee2679f4a29806cf1c801a125ba-20200409
+ id 1jMlRp-00086Q-71; Fri, 10 Apr 2020 04:39:22 +0000
+X-UUID: e54c17b7e0c44ebaa46b4dd3df0df440-20200409
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=AHxhUn2kmmaiTpuNqyuJ91haPBs27z9l86TI6FY89lo=; 
- b=P681JospeW7clmufrEnhNdQjB1QVmpndyiiLLC8Nb5emFRpWoJyRctIZJifd5j7dVRWbRsNW/f2D7e5gXeD8jjF09HGsNoLH7MI6/YCWT8dAPnu1sp73j76ZdREwLAKCrvBVx98qjbgkUcepEi7RUNyAN7aQv9VvRr+i2npv3rI=;
-X-UUID: 7b523ee2679f4a29806cf1c801a125ba-20200409
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=C7sVVd26PpyUXemamJ7aJZN4l0qAkmHAAOQgcekYw+c=; 
+ b=sNdv4wqFg9uhOd0lEcLXpPid8yDYhkgrvc/vBjRULoRMnIRb2h9DhooJiZTEPQiluh/T43lHBB6uxMe4oyqjkSnv7gQ7L8lsoSX2R+NLASAaxKu8avDe6vWvHvrEEBHnjWzs1uLbzRezId24rghlmAnYJqtlOoxBm4Xs22ESCwU=;
+X-UUID: e54c17b7e0c44ebaa46b4dd3df0df440-20200409
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jitao.shi@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 53839258; Thu, 09 Apr 2020 20:33:00 -0800
+ with ESMTP id 616712334; Thu, 09 Apr 2020 20:39:15 -0800
 Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 9 Apr 2020 21:32:58 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 9 Apr 2020 21:32:54 -0700
 Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
  (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 10 Apr 2020 12:32:55 +0800
+ Fri, 10 Apr 2020 12:32:50 +0800
 Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
  MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Fri, 10 Apr 2020 12:32:53 +0800
+ 15.0.1497.2 via Frontend Transport; Fri, 10 Apr 2020 12:32:49 +0800
 From: Jitao Shi <jitao.shi@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
  David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
  <linux-kernel@vger.kernel.org>
-Subject: [PATCH v5 3/4] drm/mediatek: add the mipitx driving control
-Date: Fri, 10 Apr 2020 12:32:47 +0800
-Message-ID: <20200410043248.114384-4-jitao.shi@mediatek.com>
+Subject: [PATCH v5 0/4] Config mipi tx current and impedance
+Date: Fri, 10 Apr 2020 12:32:44 +0800
+Message-ID: <20200410043248.114384-1-jitao.shi@mediatek.com>
 X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20200410043248.114384-1-jitao.shi@mediatek.com>
-References: <20200410043248.114384-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 9A5E095EBF718CF57F55493196C241806DF8C8BD009F0C431C325DABC9C882DF2000:8
+X-TM-SNTS-SMTP: 0F6119A2BA4805AE6F0F6CED4E26971655287E7DC5310E7440F285811C225A4C2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200409_213307_756572_095DF9CD 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20200409_213921_263029_CD9B0A61 
+X-CRM114-Status: UNSURE (   7.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,90 +86,43 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>,
- srv_heupstream@mediatek.com, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- huijuan.xie@mediatek.com, stonea168@163.com, cawa.cheng@mediatek.com,
- linux-mediatek@lists.infradead.org, bibby.hsieh@mediatek.com,
- ck.hu@mediatek.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
- linux-arm-kernel@lists.infradead.org
+ srv_heupstream@mediatek.com, huijuan.xie@mediatek.com, stonea168@163.com,
+ cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org,
+ bibby.hsieh@mediatek.com, ck.hu@mediatek.com, yingjoe.chen@mediatek.com,
+ eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a property in device tree to control the driving by different
-board.
+Changes since v4:
+ - add Reviewed-by:
+ - move the get the calibration data code to probe.
 
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_mipi_tx.c        | 14 ++++++++++++++
- drivers/gpu/drm/mediatek/mtk_mipi_tx.h        |  1 +
- drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c |  7 +++++++
- 3 files changed, 22 insertions(+)
+Changes since v3:
+ - refine drive-strength-microamp as from 3000 to 6000.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-index e4d34484ecc8..e301af64809e 100644
---- a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
-@@ -125,6 +125,20 @@ static int mtk_mipi_tx_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
-+	ret = of_property_read_u32(dev->of_node, "drive-strength-microamp",
-+				   &mipi_tx->mipitx_drive);
-+	/* If can't get the "mipi_tx->mipitx_drive", set it default 0x8 */
-+	if (ret < 0)
-+		mipi_tx->mipitx_drive = 4600;
-+
-+	/* check the mipitx_drive valid */
-+	if (mipi_tx->mipitx_drive > 6000 || mipi_tx->mipitx_drive < 3000) {
-+		dev_warn(dev, "drive-strength-microamp is invalid %d, not in 3000 ~ 6000\n",
-+			 mipi_tx->mipitx_drive);
-+		mipi_tx->mipitx_drive = clamp_val(mipi_tx->mipitx_drive, 3000,
-+						  6000);
-+	}
-+
- 	ref_clk_name = __clk_get_name(ref_clk);
- 
- 	ret = of_property_read_string(dev->of_node, "clock-output-names",
-diff --git a/drivers/gpu/drm/mediatek/mtk_mipi_tx.h b/drivers/gpu/drm/mediatek/mtk_mipi_tx.h
-index 413f35d86219..eea44327fe9f 100644
---- a/drivers/gpu/drm/mediatek/mtk_mipi_tx.h
-+++ b/drivers/gpu/drm/mediatek/mtk_mipi_tx.h
-@@ -27,6 +27,7 @@ struct mtk_mipi_tx {
- 	struct device *dev;
- 	void __iomem *regs;
- 	u32 data_rate;
-+	u32 mipitx_drive;
- 	const struct mtk_mipitx_data *driver_data;
- 	struct clk_hw pll_hw;
- 	struct clk *pll;
-diff --git a/drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c b/drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c
-index 91f08a351fd0..e4cc967750cb 100644
---- a/drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c
-+++ b/drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c
-@@ -17,6 +17,9 @@
- #define RG_DSI_BG_CORE_EN		BIT(7)
- #define RG_DSI_PAD_TIEL_SEL		BIT(8)
- 
-+#define MIPITX_VOLTAGE_SEL	0x0010
-+#define RG_DSI_HSTX_LDO_REF_SEL		(0xf << 6)
-+
- #define MIPITX_PLL_PWR		0x0028
- #define MIPITX_PLL_CON0		0x002c
- #define MIPITX_PLL_CON1		0x0030
-@@ -123,6 +126,10 @@ static void mtk_mipi_tx_power_on_signal(struct phy *phy)
- 	mtk_mipi_tx_clear_bits(mipi_tx, MIPITX_D3_SW_CTL_EN, DSI_SW_CTL_EN);
- 	mtk_mipi_tx_clear_bits(mipi_tx, MIPITX_CK_SW_CTL_EN, DSI_SW_CTL_EN);
- 
-+	mtk_mipi_tx_update_bits(mipi_tx, MIPITX_VOLTAGE_SEL,
-+				RG_DSI_HSTX_LDO_REF_SEL,
-+				(mipi_tx->mipitx_drive - 3000) / 200 << 6);
-+
- 	mtk_mipi_tx_set_bits(mipi_tx, MIPITX_CK_CKMODE_EN, DSI_CK_CKMODE_EN);
- }
- 
+Changes since v2:
+ - fix the title of commit message.
+ - rename mipitx-current-drive to drive-strength-microamp
+
+Changes since v1:
+ - fix coding style.
+ - change mtk_mipi_tx_config_calibration_data() to void
+
+Jitao Shi (4):
+  dt-bindings: display: mediatek: add property to control mipi tx drive
+    current
+  dt-bindings: display: mediatek: get mipitx calibration data from nvmem
+  drm/mediatek: add the mipitx driving control
+  drm/mediatek: config mipitx impedance with calibration data
+
+ .../display/mediatek/mediatek,dsi.txt         | 10 ++++
+ drivers/gpu/drm/mediatek/mtk_mipi_tx.c        | 54 +++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_mipi_tx.h        |  4 ++
+ drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c | 28 ++++++++++
+ 4 files changed, 96 insertions(+)
+
 -- 
 2.21.0
 _______________________________________________
