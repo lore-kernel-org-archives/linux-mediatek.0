@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D418AC2BB86
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 09:03:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F3194C2BB55
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 09:03:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A7BA7206F7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 09:03:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C3831206F7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 09:03:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Tnf70m/k";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="S2UIgwnv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A7BA7206F7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="I5xP7Fl3";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="i7RW9n3E"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C3831206F7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,56 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0APMorKiYGLz2eLMj0kir7fncmzYDvTwImeB9pXDrAY=; b=Tnf70m/kDOozId
-	hKG52ZNX+sJD1zurBkiruQQ6GD4Eu1n6oXIx4hCbflhJ4tOGGnj7VApjuaO0PoFK5H5nSaYHVz8f4
-	sdyauiq4rKX7rrXv/o2igI8drpzfjeZy5TsS4Fo3w3ER1avLNNkhQvdXgPQUlU2C7a7JhodwCMESe
-	0ydahADFJo2XgxNHrkEqUs0ToSe7/iYC2DuUKxdJfz7zGuQsGznEve5iRX/UhAeqR3O10XlUj4iZL
-	885czXNlxNXdwYIaz/NqsFaRnwxWC4vFc6dYfYq1z6M2ZZREMFbfZ7R5FZ0HeQMlKCXHnZW3wytOz
-	YWYGFZK04BBaLqMNtmPA==;
+	List-Owner; bh=HaFO24qdgtge8n2DTmaLatpPBKRiOyf1XU/nsRBTXqg=; b=I5xP7Fl3BTB5Pu
+	w/hZzHc7QkCqsmAo52Yg7aYO5LNoVoq1w0YQUz6861NenwlIc/QXbktEvcg3y+jY3eCoEa7mnYApv
+	kY5gvRISuZKt14+Kub4FeD7j2yH1WjwTngzRWxVkrjFPfNPZV8naz1P1fOR+aG2f0F7HHQ+41uGye
+	/o34QRBZsJw3g3Ivxv6pEmkNyw0B60ZrqS50TJom4Lan84lMvgOfmaSoMDTHlEPdm6+oXo6wu+P5b
+	cbBiZRDC3m2hYgLuJPJBmojESwxTkxuRJvIfK4Ybg7iSbDADFjtxSCoAdts6Ino45Xco96Os/yIG5
+	z5bcFVa8mYC56HASxpZA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMpYx-0004yu-2V; Fri, 10 Apr 2020 09:02:59 +0000
+	id 1jMpYw-0004y1-CE; Fri, 10 Apr 2020 09:02:58 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMpYs-0004sa-KL
+ id 1jMpYr-0004sI-Sm
  for linux-mediatek@lists.infradead.org; Fri, 10 Apr 2020 09:02:55 +0000
-X-UUID: 1065ef6e2d8a4488ade0e7224fbd9c14-20200410
+X-UUID: 2a034d08d9fa4a028901a596ba8c6520-20200410
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Q7vYceF8wcaJFxEzBhMAy15i6reVJ7NOYyhn/fL7Dc0=; 
- b=S2UIgwnvVA1xJiU9+/kXMA6X0udXPpFeR0eODi7cPuRCCIE1gsuTQ8JFJTAiVgcJOega7O5jGh8M1Cg7QHgTzizbbQueIxr1FFsasf5vAmDSTSFPMZtY2w27XjoGp5c7CzgGs0BeOoswD+L6tJ2c/a+4pfAfYH9D3RtHKtqI/W0=;
-X-UUID: 1065ef6e2d8a4488ade0e7224fbd9c14-20200410
+ bh=AC/2zCkdulGB75Nmrt0AqeQETE4fZ3CMa6Mi4b3Ulo0=; 
+ b=i7RW9n3Es7NSabWG43LAqZta49thYpqrDhkhW0MhRDqPPkv2sxkphgvIhJIdYpxg2sBfetBfb1AVmkNEpQlFRY1IKJuw5A85XqgKK/6Sjw6J9/pu/MjZCQv8cgep2EpXDz00c4cIS1xX6e44/KAD+6I85JxWEEozdcFO8XKscd4=;
+X-UUID: 2a034d08d9fa4a028901a596ba8c6520-20200410
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2097266369; Fri, 10 Apr 2020 01:02:47 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ with ESMTP id 731635736; Fri, 10 Apr 2020 01:02:47 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Apr 2020 01:55:03 -0700
+ 15.0.1497.2; Fri, 10 Apr 2020 01:55:02 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Apr 2020 16:54:55 +0800
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 10 Apr 2020 16:54:58 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 10 Apr 2020 16:54:55 +0800
+ Frontend Transport; Fri, 10 Apr 2020 16:54:58 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>
-Subject: [PATCH 04/16] mt76: adjust wcid size to support new 802.11ax
- generation
-Date: Fri, 10 Apr 2020 16:54:41 +0800
-Message-ID: <85bc522a5cd6239c03d249dfba88d4523e95178f.1586507878.git.ryder.lee@mediatek.com>
+Subject: [PATCH 08/16] mt76: mt7915: add offloading Tx AMSDU support
+Date: Fri, 10 Apr 2020 16:54:45 +0800
+Message-ID: <0cf99a5f317b0d41cd4832b14c99b6b9b8e5fefc.1586507878.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <cover.1586507878.git.ryder.lee@mediatek.com>
 References: <cover.1586507878.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 223F172043F60E650D16C8AA02142F0696146296BD88C483A8714D477CF3D0722000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200410_020254_683333_51FCF8C1 
-X-CRM114-Status: UNSURE (   7.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200410_020253_935070_72EF75B6 
+X-CRM114-Status: GOOD (  12.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,54 +94,209 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The newer 802.11ax devices (i.e. MT7915E) can connect to much more
-peers than previous generations.
+Add module parameter to enable hw_tx_amsdu.
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Tested-by: Chih-Min Chen <chih-min.chen@mediatek.com>
+Tested-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
+Suggested-by: Yiwei Chung <yiwei.chung@mediatek.com>
+Suggested-by: YF Luo <yf.luo@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt76.h | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7915/init.c  |  5 ++-
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   |  4 +-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 40 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   | 20 ++++++++++
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |  1 +
+ .../net/wireless/mediatek/mt76/mt7915/pci.c   |  8 ++++
+ 6 files changed, 76 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 8d27af61b62e..97882b9306a2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -181,7 +181,7 @@ enum mt76_wcid_flags {
- 	MT_WCID_FLAG_PS,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index cba9dfb83e19..59b3ffae7917 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -236,7 +236,10 @@ mt7915_init_wiphy(struct ieee80211_hw *hw)
+ 
+ 	ieee80211_hw_set(hw, HAS_RATE_CONTROL);
+ 
+-	hw->max_tx_fragments = 4;
++	if (phy->dev->hw_tx_amsdu)
++		hw->max_tx_fragments = 1;
++	else
++		hw->max_tx_fragments = 4;
+ }
+ 
+ static void
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 349215dd417c..f0604bb6d644 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -524,7 +524,9 @@ void mt7915_mac_write_txwi(struct mt7915_dev *dev, __le32 *txwi,
+ 	txwi[7] = cpu_to_le32(val);
+ 
+ 	val = FIELD_PREP(MT_TXD3_REM_TX_COUNT, tx_count);
+-	if (ieee80211_is_data_qos(fc)) {
++	if (dev->hw_tx_amsdu && ieee80211_is_data_qos(fc)) {
++		txwi[7] |= MT_TXD7_HW_AMSDU;
++	} else if (ieee80211_is_data_qos(fc)) {
+ 		seqno = IEEE80211_SEQ_TO_SN(le16_to_cpu(hdr->seq_ctrl));
+ 		val |= MT_TXD3_SN_VALID;
+ 	} else if (ieee80211_is_back_req(fc)) {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 59cd50db2ecf..5e70f7f24fb7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -85,6 +85,8 @@ struct mt7915_fw_region {
+ #define to_wcid_lo(id)			FIELD_GET(GENMASK(7, 0), (u16)id)
+ #define to_wcid_hi(id)			FIELD_GET(GENMASK(9, 8), (u16)id)
+ 
++#define HW_TX_AMSDU_MAX_NUM		8
++
+ static enum mt7915_cipher_type
+ mt7915_mcu_get_cipher(int cipher)
+ {
+@@ -786,6 +788,23 @@ mt7915_mcu_bss_ra_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
+ 	ra->fast_interval = cpu_to_le32(100);
+ }
+ 
++static void
++mt7915_mcu_bss_hw_amsdu_tlv(struct sk_buff *skb)
++{
++#define TXD_CMP_MAP1		GENMASK(15, 0)
++#define TXD_CMP_MAP2		(GENMASK(31, 0) & ~BIT(23))
++	struct bss_info_hw_amsdu *amsdu;
++	struct tlv *tlv;
++
++	tlv = mt7915_mcu_add_tlv(skb, BSS_INFO_HW_AMSDU, sizeof(*amsdu));
++
++	amsdu = (struct bss_info_hw_amsdu *)tlv;
++	amsdu->cmp_bitmap_0 = cpu_to_le32(TXD_CMP_MAP1);
++	amsdu->cmp_bitmap_1 = cpu_to_le32(TXD_CMP_MAP2);
++	amsdu->trig_thres = cpu_to_le16(2);
++	amsdu->enable = true;
++}
++
+ static void
+ mt7915_mcu_bss_ext_tlv(struct sk_buff *skb, struct mt7915_vif *mvif)
+ {
+@@ -861,6 +880,9 @@ int mt7915_mcu_add_bss_info(struct mt7915_phy *phy,
+ 		mt7915_mcu_bss_bmc_tlv(skb, phy);
+ 		mt7915_mcu_bss_ra_tlv(skb, vif, phy);
+ 
++		if (phy->dev->hw_tx_amsdu)
++			mt7915_mcu_bss_hw_amsdu_tlv(skb);
++
+ 		if (mvif->omac_idx > HW_BSSID_MAX)
+ 			mt7915_mcu_bss_ext_tlv(skb, mvif);
+ 		else
+@@ -1145,6 +1167,24 @@ mt7915_mcu_sta_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
+ 		tlv = mt7915_mcu_add_tlv(skb, STA_REC_HT, sizeof(*ht));
+ 		ht = (struct sta_rec_ht *)tlv;
+ 		ht->ht_cap = cpu_to_le16(sta->ht_cap.cap);
++
++		/* starec hw amsdu */
++		if (dev->hw_tx_amsdu) {
++			struct sta_rec_amsdu *amsdu;
++			int max_amsdu_len = sta->max_amsdu_len;
++
++			tlv = mt7915_mcu_add_tlv(skb, STA_REC_HW_AMSDU,
++						 sizeof(*amsdu));
++			amsdu = (struct sta_rec_amsdu *)tlv;
++			amsdu->max_amsdu_num = HW_TX_AMSDU_MAX_NUM;
++			amsdu->amsdu_en = true;
++
++			if (sta->max_rc_amsdu_len)
++				max_amsdu_len = min_t(int, max_amsdu_len,
++						      sta->max_rc_amsdu_len);
++
++			amsdu->max_mpdu_size = max_amsdu_len;
++		}
+ 	}
+ 
+ 	/* starec vht */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index d9c9aab7e6dc..867cab7cf145 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -396,6 +396,16 @@ struct bss_info_ra {
+ 	__le32 fast_interval;
+ } __packed;
+ 
++struct bss_info_hw_amsdu {
++	__le16 tag;
++	__le16 len;
++	__le32 cmp_bitmap_0;
++	__le32 cmp_bitmap_1;
++	__le16 trig_thres;
++	u8 enable;
++	u8 rsv;
++} __packed;
++
+ struct bss_info_bcn {
+ 	__le16 tag;
+ 	__le16 len;
+@@ -659,6 +669,15 @@ struct sta_rec_ba {
+ 	__le16 winsize;
+ } __packed;
+ 
++struct sta_rec_amsdu {
++	__le16 tag;
++	__le16 len;
++	u8 max_amsdu_num;
++	u8 max_mpdu_size;
++	u8 amsdu_en;
++	u8 rsv;
++} __packed;
++
+ struct sec_key {
+ 	u8 cipher_id;
+ 	u8 cipher_len;
+@@ -796,6 +815,7 @@ enum {
+ 					 sizeof(struct sta_rec_ba) +	\
+ 					 sizeof(struct sta_rec_vht) +	\
+ 					 sizeof(struct tlv) +		\
++					 sizeof(struct sta_rec_amsdu) +	\
+ 					 sizeof(struct sta_rec_sec) +	\
+ 					 sizeof(struct sta_rec_ra) +	\
+ 					 MT7915_WTBL_UPDATE_MAX_SIZE)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index b502bcc985ec..7f569a7a0c9b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -167,6 +167,7 @@ struct mt7915_dev {
+ 
+ 	u8 mac_work_count;
+ 	bool fw_debug;
++	bool hw_tx_amsdu;
  };
  
--#define MT76_N_WCIDS 128
-+#define MT76_N_WCIDS 288
+ enum {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
+index d349561e4598..75f72ae104db 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
+@@ -12,6 +12,10 @@
+ #include "mac.h"
+ #include "../trace.h"
  
- /* stored in ieee80211_tx_info::hw_queue */
- #define MT_TX_HW_QUEUE_EXT_PHY		BIT(3)
-@@ -201,7 +201,7 @@ struct mt76_wcid {
- 	struct ewma_signal rssi;
- 	int inactive_count;
++static bool hw_tx_amsdu;
++module_param_named(enable_hw_tx_amsdu, hw_tx_amsdu, bool, 0644);
++MODULE_PARM_DESC(enable_hw_tx_amsdu, "enable Hardware Tx AMSDU");
++
+ static const struct pci_device_id mt7915_pci_device_table[] = {
+ 	{ PCI_DEVICE(0x14c3, 0x7915) },
+ 	{ },
+@@ -149,6 +153,10 @@ static int mt7915_pci_probe(struct pci_dev *pdev,
+ 		    (mt7915_l1_rr(dev, MT_HW_REV) & 0xff);
+ 	dev_dbg(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
  
--	u8 idx;
-+	u16 idx;
- 	u8 hw_key_idx;
++	/* TODO: more hw capabilities */
++	if (hw_tx_amsdu)
++		dev->hw_tx_amsdu = true;
++
+ 	/* master switch of PCIe tnterrupt enable */
+ 	mt7915_l1_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
  
- 	u8 sta:1;
-@@ -268,7 +268,7 @@ struct mt76_rx_tid {
- 
- struct mt76_tx_cb {
- 	unsigned long jiffies;
--	u8 wcid;
-+	u16 wcid;
- 	u8 pktid;
- 	u8 flags;
- };
-@@ -441,7 +441,7 @@ struct mt76_mmio {
- struct mt76_rx_status {
- 	union {
- 		struct mt76_wcid *wcid;
--		u8 wcid_idx;
-+		u16 wcid_idx;
- 	};
- 
- 	unsigned long reorder_time;
 -- 
 2.18.0
 _______________________________________________
