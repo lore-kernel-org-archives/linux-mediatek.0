@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4C425C2BB55
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 09:05:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D85E4C2BB85
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 09:05:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2072E206F7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 09:05:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A1246206F7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 09:05:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VqsiLjnq";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="HCqn7IaA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2072E206F7
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bLJYg6U0";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="BJLB1ReM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A1246206F7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pAwQyaAr8Jib88YeMWvUJ5bO6U3EC4oF8xia0MNkY+g=; b=VqsiLjnqD7mtkH
-	h/r4om2sE7d4FXACRG497WXo14x9HuSDt/yXqJ48g8FeYQWPwVqKrpriMAiPra8tEyU4Yi02F5okq
-	D5KOqDzRNehiDQYg38fYXuRuQ2Uy1u5xq6F3V7LcUWdtpDwmSR6oUJsMVnqgTmfmW53TvDyGW1u8A
-	MFFDOHHis7nwvhcLbG7l18tJQ+Zxen3Hm+gQc6mrcAELlcJDvlCW+IhQZqQB+M7VDzjd8fp3g2Bq+
-	7gu28lQ+hJerAQZMh/HC2z9BFDTKETh27/KFZBM2EKT2EY5G6zupXvgObkp+ICko9eEa9eclnqu3L
-	eRta0+XCLOizhhXMMhpA==;
+	List-Owner; bh=Tw1z/VNNuuk4EMUqiJhTSlWia1NGETrjRxM1V+kkitI=; b=bLJYg6U09I5EgJ
+	DMZFjWjHeF33EfVzO3+d4xUcB+qF+2cR/fIuut1w7dRyQ59d0z0XE9eD0T/a5YdFRzNjNXagZs1Lb
+	lwoumNe6B27pROmk4TTe6dkmv0rtvxpax2pORAiHbPvbm7g+aIYOMX/4tWn/kOPbgiOJ4wVzjQUh1
+	Ss8lmpE+LkpltieEAU+/f61uMOKKaEQRm7we92Ids2pXgpAkmZ2k65+nHtuuRv9xR5fT0qmDtQcem
+	yziORgRApHDEGC1FtwP6Lx3kswfP4ERCCkipDu4TYcYhluFJHW9auGR7t9pe54y/RME5UVwZAH2PD
+	ajP0V6H5bpoxkR45koYA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMpb7-0007zr-Vy; Fri, 10 Apr 2020 09:05:13 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jMpbB-00083S-JU; Fri, 10 Apr 2020 09:05:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMpb5-0007Rt-5s
- for linux-mediatek@lists.infradead.org; Fri, 10 Apr 2020 09:05:12 +0000
-X-UUID: 697f014d5ac346cd9bc1f3569b2b8651-20200410
+ id 1jMpb8-000808-J8
+ for linux-mediatek@lists.infradead.org; Fri, 10 Apr 2020 09:05:16 +0000
+X-UUID: efc81f369fef48c495f471d04fb12b04-20200410
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=qyWS56ORXuKTFt6R9fhAFtlmWFnqzyRElQ9sqHDEES4=; 
- b=HCqn7IaApwqct99UL5IiyjsjdGIoDpqMfS4xIZB5zlsaqvelEqU01GRhhW5tMyFos5sX595ObGtQDtvZXGO6moCn/TXrJD6zwgTjwqFTJMDpXPu61yFip0AH1HqhhNmGPNV9O5ARq9PUuZaK5iqPxE2i2zDKeGW4HOpCJvu3s1w=;
-X-UUID: 697f014d5ac346cd9bc1f3569b2b8651-20200410
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=Ule6ZRnhMKPLo6FIhuNTylSpJjFPBks7O1Nokyid12g=; 
+ b=BJLB1ReM3iU5AIToF/kR5Y0nqq5J08twkeEN+usjBKi5vh9+dcrAjBkHmIYBFn/ZDMNgHsBvkhlt5kwL0FxVVa73Pkq8qRffb082y2WjL2YDDFtfK01VE7B6HbPJ6Qlv4cSFStZHM+Z1iH7DnNLBSVoy/wsPlk/1oosH0cYTgdw=;
+X-UUID: efc81f369fef48c495f471d04fb12b04-20200410
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1458590175; Fri, 10 Apr 2020 01:05:07 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 1655350806; Fri, 10 Apr 2020 01:05:06 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 10 Apr 2020 01:55:05 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Apr 2020 16:55:03 +0800
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 10 Apr 2020 16:54:55 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 10 Apr 2020 16:55:03 +0800
+ Frontend Transport; Fri, 10 Apr 2020 16:54:55 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>
-Subject: [PATCH 13/16] mt76: mt7915: add .sta_add_debugfs support
-Date: Fri, 10 Apr 2020 16:54:50 +0800
-Message-ID: <ac3d5091e6333bfad7d3fd9556e58902bdcd4a42.1586507878.git.ryder.lee@mediatek.com>
+Subject: [PATCH 05/16] mt76: add HE phy modes and hardware queue
+Date: Fri, 10 Apr 2020 16:54:42 +0800
+Message-ID: <06ea71e149abb759dba19370591d313a8fd0021d.1586507878.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <cover.1586507878.git.ryder.lee@mediatek.com>
 References: <cover.1586507878.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: F75D78E250F33A7F3C578D9689882F6ABDDA2236168E85009C32C6F6C073B0942000:8
+X-TM-SNTS-SMTP: 85DADBE71E5E5566FB558A100B56833FFB7180E6982677C15F0FFA369E4ECF7D2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200410_020511_248790_41F2B6E7 
-X-CRM114-Status: UNSURE (   8.54  )
+X-CRM114-CacheID: sfid-20200410_020514_696737_F3721639 
+X-CRM114-Status: UNSURE (   6.91  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -96,117 +96,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This generation supports much more per-peer statistics than legacy ones,
-so add .sta_add_debugfs accordingly.
-
-This is convenient to set/get more settings/counters in the long run.
+This is a preliminary patch to support 11ax deivces.
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt7915/debugfs.c   | 65 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7915/main.c  |  3 +
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  4 ++
- 3 files changed, 72 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt76.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index 34df2d8cdb8f..27f523d69618 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -299,3 +299,68 @@ int mt7915_init_debugfs(struct mt7915_dev *dev)
- 
- 	return 0;
- }
-+
-+/** per-station debugfs **/
-+
-+static int
-+mt7915_sta_stats_read(struct seq_file *s, void *data)
-+{
-+	struct ieee80211_sta *sta = s->private;
-+	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
-+	struct mt7915_sta_stats *stats = &msta->stats;
-+	struct rate_info *rate = &stats->prob_rate;
-+	static const char * const bw[] = {
-+		"BW20", "BW5", "BW10", "BW40",
-+		"BW80", "BW160", "BW_HE_RU"
-+	};
-+
-+	if (!rate->legacy && !rate->flags)
-+		return 0;
-+
-+	seq_puts(s, "Probing rate - ");
-+	if (rate->flags & RATE_INFO_FLAGS_MCS)
-+		seq_puts(s, "HT ");
-+	else if (rate->flags & RATE_INFO_FLAGS_VHT_MCS)
-+		seq_puts(s, "VHT ");
-+	else if (rate->flags & RATE_INFO_FLAGS_HE_MCS)
-+		seq_puts(s, "HE ");
-+	else
-+		seq_printf(s, "Bitrate %d\n", rate->legacy);
-+
-+	if (rate->flags) {
-+		seq_printf(s, "%s NSS%d MCS%d ",
-+			   bw[rate->bw], rate->nss, rate->mcs);
-+
-+		if (rate->flags & RATE_INFO_FLAGS_SHORT_GI)
-+			seq_puts(s, "SGI ");
-+		else if (rate->he_gi)
-+			seq_puts(s, "HE GI ");
-+
-+		if (rate->he_dcm)
-+			seq_puts(s, "DCM ");
-+	}
-+
-+	seq_printf(s, "\nPPDU PER: %ld.%1ld%%\n",
-+		   stats->per / 10, stats->per % 10);
-+
-+	return 0;
-+}
-+
-+static int
-+mt7915_sta_stats_open(struct inode *inode, struct file *f)
-+{
-+	return single_open(f, mt7915_sta_stats_read, inode->i_private);
-+}
-+
-+static const struct file_operations fops_sta_stats = {
-+	.open = mt7915_sta_stats_open,
-+	.read = seq_read,
-+	.llseek = seq_lseek,
-+	.release = single_release,
-+};
-+
-+void mt7915_sta_add_debugfs(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-+			    struct ieee80211_sta *sta, struct dentry *dir)
-+{
-+	debugfs_create_file("stats", 0400, dir, sta, &fops_sta_stats);
-+}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 78e792ad782e..801c93aa0bd8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -748,4 +748,7 @@ const struct ieee80211_ops mt7915_ops = {
- 	.get_antenna = mt76_get_antenna,
- 	.set_antenna = mt7915_set_antenna,
- 	.set_coverage_class = mt7915_set_coverage_class,
-+#ifdef CONFIG_MAC80211_DEBUGFS
-+	.sta_add_debugfs = mt7915_sta_add_debugfs,
-+#endif
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 97882b9306a2..68bacca4fae5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -60,6 +60,7 @@ enum mt76_txq_id {
+ 	MT_TXQ_BK = IEEE80211_AC_BK,
+ 	MT_TXQ_PSD,
+ 	MT_TXQ_MCU,
++	MT_TXQ_MCU_WA,
+ 	MT_TXQ_BEACON,
+ 	MT_TXQ_CAB,
+ 	MT_TXQ_FWDL,
+@@ -69,6 +70,7 @@ enum mt76_txq_id {
+ enum mt76_rxq_id {
+ 	MT_RXQ_MAIN,
+ 	MT_RXQ_MCU,
++	MT_RXQ_MCU_WA,
+ 	__MT_RXQ_MAX
  };
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 694519836014..ae3866d0a47a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -447,5 +447,9 @@ int mt7915_dfs_init_radar_detector(struct mt7915_phy *phy);
- void mt7915_set_stream_he_caps(struct mt7915_dev *dev);
- void mt7915_update_channel(struct mt76_dev *mdev);
- int mt7915_init_debugfs(struct mt7915_dev *dev);
-+#ifdef CONFIG_MAC80211_DEBUGFS
-+void mt7915_sta_add_debugfs(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-+			    struct ieee80211_sta *sta, struct dentry *dir);
-+#endif
  
- #endif
+@@ -577,6 +579,10 @@ enum mt76_phy_type {
+ 	MT_PHY_TYPE_HT,
+ 	MT_PHY_TYPE_HT_GF,
+ 	MT_PHY_TYPE_VHT,
++	MT_PHY_TYPE_HE_SU = 8,
++	MT_PHY_TYPE_HE_EXT_SU,
++	MT_PHY_TYPE_HE_TB,
++	MT_PHY_TYPE_HE_MU,
+ };
+ 
+ #define __mt76_rr(dev, ...)	(dev)->bus->rr((dev), __VA_ARGS__)
 -- 
 2.18.0
 _______________________________________________
