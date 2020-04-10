@@ -2,71 +2,76 @@ Return-Path: <SRS0=hvzu=52=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93EEEC2BA2B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 14:35:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B0606C2BA2B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 16:12:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5F682206C1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 14:35:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7DD19214D8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Apr 2020 16:12:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ORHJYMeg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5F682206C1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="He5vsBrT";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="W5wYd2Eu"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7DD19214D8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ohsl9+eAUOKNhy8BAVari7hRcN/r+tTxHgvg9gx8bSI=; b=ORHJYMegAr7DN/
-	lg1MgRG4p0VJiN5t2H7Ek94Iuv0VvszQ3OnM823Z93gxdGdVp0vZfUomrW+eDjPZ1KPIJPhXBLusC
-	vChve4nWroafqWUkhsg/WfbOl4vqo+xa9I9stGSqqfNLxL5f+zjRs5v4CV6GBhNGuW/a1J0GUUUrQ
-	bgmHgJKob+EFIOM9T44MhV2RTp2UBhiS9SJ+q31QB7Prn5lOw6uNaTH6WUGx5QwP2HLAaLyDN+h6M
-	B/j7Uy2HF4hsi5y+cRzey2sVh4+s8f+P6TuQ9wC8FhHH7R1jYkQj+6aN/ndTyaM2wx+d36acRP321
-	rGW5k34bYLCBSnY1Rziw==;
+	List-Owner; bh=1tNEYGiNPps80yebeWiqkbVa43ho+XIYCTfdWMH8LmA=; b=He5vsBrTP+9HCC
+	RSQ8/VStQcbMG0sEE9RCh+zBHp7n+zqLdU0mJFbGZch8ORUsQrXcfxzaoe7LwuJdaNk0f/ZjfLli4
+	07rn1CL+KGemvCxBBH5dfqE5AQwTJ1uXVhy4hMmdUTqRbh8F9GkJgFjzq+JVsM1ZP6ijx7xNGqmny
+	pdsnCMRL8OzMH7+/PkMCm2/yJFA3n+6H6+VrU45vWcsE7My4ALW4Xexx5gFuptng8UwUD/41B0KzI
+	RimjNaex+HrmBkuD4f3v3qE2PromNiTpGltcLUYUcsL7+90XiQXiYnTMOys5TXCddCXzzqixBYNMX
+	WJXp9I0BDByV3bJQsVNQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jMul6-0005zh-2X; Fri, 10 Apr 2020 14:35:52 +0000
-Received: from mga06.intel.com ([134.134.136.31])
+	id 1jMwGj-0003L1-Go; Fri, 10 Apr 2020 16:12:37 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jMul2-0005yu-AY; Fri, 10 Apr 2020 14:35:50 +0000
-IronPort-SDR: bnhzqzE9lVa59gIAb/Abw5TE/KMvdsplrUnw1Svv7ffa4+vZkVnCVinU8H6LtCspK8aVmgBV8j
- SStlJ3EORuVQ==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Apr 2020 07:35:47 -0700
-IronPort-SDR: zbr0ICL8riBJrAXbriEa/9w1ujdIoqqgAGMjnLyN9w4Nec3cKPTFsGtKgxVvoM//J3X4m11JrW
- N6k7oPxJliCw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.72,367,1580803200"; d="scan'208";a="260698530"
-Received: from lkp-server01.sh.intel.com (HELO lkp-server01) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 10 Apr 2020 07:35:36 -0700
-Received: from kbuild by lkp-server01 with local (Exim 4.89)
- (envelope-from <lkp@intel.com>)
- id 1jMukq-000Dv4-1O; Fri, 10 Apr 2020 22:35:36 +0800
-Date: Fri, 10 Apr 2020 22:35:28 +0800
-From: kbuild test robot <lkp@intel.com>
-To: Lukasz Luba <lukasz.luba@arm.com>
-Subject: Re: [PATCH v6 04/10] PM / EM: add support for other devices than
- CPUs in Energy Model
-Message-ID: <202004102201.DHeSXu2d%lkp@intel.com>
-References: <20200410084210.24932-5-lukasz.luba@arm.com>
+ id 1jMwGc-0003F6-54; Fri, 10 Apr 2020 16:12:31 +0000
+Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com
+ [209.85.208.46])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id D171420CC7;
+ Fri, 10 Apr 2020 16:12:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1586535149;
+ bh=160JUGp3x1fpb1yme+uQZZt6RXsBzoX4rWwBvTmptUk=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=W5wYd2EuxFFOf5RELEUzJliKZesmTsdbiM43S8uvK0l++0HiMbTrQt6XsIAGL4Wns
+ y5YgMtu5OtZuC8hYq66rdGRTGWADpy/5wnBH0STWqvG+EhEbo54Rmbhq57vNgA9HDU
+ l8ZFGOzumzy1DTerTfgkolsxj0YgGOA/Su1sveIQ=
+Received: by mail-ed1-f46.google.com with SMTP id e5so2993304edq.5;
+ Fri, 10 Apr 2020 09:12:28 -0700 (PDT)
+X-Gm-Message-State: AGi0PuYxkvurnkXonG0wRgHEtmOkbDdxQQh7CBQfMgiOiF6tHyGLlgMA
+ eFWITyWf30Fb5fp1925QM19CeXrgWW2qDAuWRg==
+X-Google-Smtp-Source: APiQypKcvCktS/0AVOVss/azeh/f4lcTILgqeqaAL4onaaElSMhRA6mYYv8/89RCCzeYggvhT45miRzpgBtQ4McZm4g=
+X-Received: by 2002:a05:6402:335:: with SMTP id
+ q21mr5420732edw.47.1586535147130; 
+ Fri, 10 Apr 2020 09:12:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200410084210.24932-5-lukasz.luba@arm.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20200410043248.114384-1-jitao.shi@mediatek.com>
+ <20200410043248.114384-5-jitao.shi@mediatek.com>
+In-Reply-To: <20200410043248.114384-5-jitao.shi@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Sat, 11 Apr 2020 00:12:16 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-ZiMKn5wVuhECnL4E6BM_=QoF9goorHB-GK-hRL40gyA@mail.gmail.com>
+Message-ID: <CAAOTY_-ZiMKn5wVuhECnL4E6BM_=QoF9goorHB-GK-hRL40gyA@mail.gmail.com>
+Subject: Re: [PATCH v5 4/4] drm/mediatek: config mipitx impedance with
+ calibration data
+To: Jitao Shi <jitao.shi@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200410_073548_404610_73C6AC43 
-X-CRM114-Status: GOOD (  14.08  )
+X-CRM114-CacheID: sfid-20200410_091230_232881_CCD4D1E1 
+X-CRM114-Status: GOOD (  19.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,180 +83,129 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: nm@ti.com, juri.lelli@redhat.com, peterz@infradead.org,
- viresh.kumar@linaro.org, liviu.dudau@arm.com, dri-devel@lists.freedesktop.org,
- bjorn.andersson@linaro.org, bsegall@google.com,
- alyssa.rosenzweig@collabora.com, festevam@gmail.com, mka@chromium.org,
- robh@kernel.org, amit.kucheria@verdurent.com, lorenzo.pieralisi@arm.com,
- vincent.guittot@linaro.org, khilman@kernel.org, agross@kernel.org,
- daniel.lezcano@linaro.org, steven.price@arm.com, cw00.choi@samsung.com,
- mingo@redhat.com, linux-imx@nxp.com, rui.zhang@intel.com, mgorman@suse.de,
- orjan.eide@arm.com, daniel@ffwll.ch, linux-pm@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, s.hauer@pengutronix.de, rostedt@goodmis.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- linux-omap@vger.kernel.org, Dietmar.Eggemann@arm.com,
- linux-arm-kernel@lists.infradead.org, airlied@linux.ie,
- kbuild-all@lists.01.org, tomeu.vizoso@collabora.com, qperret@google.com,
- sboyd@kernel.org, rdunlap@infradead.org, rjw@rjwysocki.net,
- linux-kernel@vger.kernel.org, b.zolnierkie@samsung.com, kernel@pengutronix.de,
- sudeep.holla@arm.com, patrick.bellasi@matbug.net, shawnguo@kernel.org,
- lukasz.luba@arm.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
+ srv_heupstream@mediatek.com, David Airlie <airlied@linux.ie>,
+ huijuan.xie@mediatek.com, stonea168@163.com,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>, cawa.cheng@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Lukasz,
-
-I love your patch! Perhaps something to improve:
-
-[auto build test WARNING on next-20200409]
-[cannot apply to pm/linux-next tip/sched/core linus/master linux/master v5.6 v5.6-rc7 v5.6-rc6 v5.6]
-[if your patch is applied to the wrong git tree, please drop us a note to help
-improve the system. BTW, we also suggest to use '--base' option to specify the
-base tree in git format-patch, please see https://stackoverflow.com/a/37406982]
-
-url:    https://github.com/0day-ci/linux/commits/Lukasz-Luba/Add-support-for-devices-in-the-Energy-Model/20200410-172456
-base:    873e37a44b1ee8ad4628ca257dc51c0c7c654326
-
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kbuild test robot <lkp@intel.com>
-
-
-cppcheck warnings: (new ones prefixed by >>)
-
->> kernel/power/energy_model.c:394:15: warning: Variable 'ret' is assigned a value that is never used. [unreadVariable]
-    int cpu, ret = 0;
-                 ^
-
-vim +/ret +394 kernel/power/energy_model.c
-
-27871f7a8a341e Quentin Perret  2018-12-03  370  
-27871f7a8a341e Quentin Perret  2018-12-03  371  /**
-b4dc5cca354b8a Lukasz Luba     2020-04-10  372   * em_dev_register_perf_domain() - Register the Energy Model (EM) for a device
-b4dc5cca354b8a Lukasz Luba     2020-04-10  373   * @dev		: Device for which the EM is to register
-1ccc27ced21bf5 Lukasz Luba     2020-04-10  374   * @nr_states	: Number of performance states to register
-27871f7a8a341e Quentin Perret  2018-12-03  375   * @cb		: Callback functions providing the data of the Energy Model
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  376   * @cpus	: Pointer to cpumask_t, which in case of a CPU device is
-b4dc5cca354b8a Lukasz Luba     2020-04-10  377   *		obligatory. It can be taken from i.e. 'policy->cpus'. For other
-b4dc5cca354b8a Lukasz Luba     2020-04-10  378   *		type of devices this should be set to NULL.
-27871f7a8a341e Quentin Perret  2018-12-03  379   *
-27871f7a8a341e Quentin Perret  2018-12-03  380   * Create Energy Model tables for a performance domain using the callbacks
-27871f7a8a341e Quentin Perret  2018-12-03  381   * defined in cb.
-27871f7a8a341e Quentin Perret  2018-12-03  382   *
-27871f7a8a341e Quentin Perret  2018-12-03  383   * If multiple clients register the same performance domain, all but the first
-27871f7a8a341e Quentin Perret  2018-12-03  384   * registration will be ignored.
-27871f7a8a341e Quentin Perret  2018-12-03  385   *
-27871f7a8a341e Quentin Perret  2018-12-03  386   * Return 0 on success
-27871f7a8a341e Quentin Perret  2018-12-03  387   */
-b4dc5cca354b8a Lukasz Luba     2020-04-10  388  int em_dev_register_perf_domain(struct device *dev, unsigned int nr_states,
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  389  				struct em_data_callback *cb, cpumask_t *cpus)
-27871f7a8a341e Quentin Perret  2018-12-03  390  {
-27871f7a8a341e Quentin Perret  2018-12-03  391  	unsigned long cap, prev_cap = 0;
-27871f7a8a341e Quentin Perret  2018-12-03  392  	struct em_perf_domain *pd;
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  393  	struct em_device *em_dev;
-27871f7a8a341e Quentin Perret  2018-12-03 @394  	int cpu, ret = 0;
-27871f7a8a341e Quentin Perret  2018-12-03  395  
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  396  	if (!dev || !nr_states || !cb)
-27871f7a8a341e Quentin Perret  2018-12-03  397  		return -EINVAL;
-27871f7a8a341e Quentin Perret  2018-12-03  398  
-27871f7a8a341e Quentin Perret  2018-12-03  399  	/*
-27871f7a8a341e Quentin Perret  2018-12-03  400  	 * Use a mutex to serialize the registration of performance domains and
-27871f7a8a341e Quentin Perret  2018-12-03  401  	 * let the driver-defined callback functions sleep.
-27871f7a8a341e Quentin Perret  2018-12-03  402  	 */
-27871f7a8a341e Quentin Perret  2018-12-03  403  	mutex_lock(&em_pd_mutex);
-27871f7a8a341e Quentin Perret  2018-12-03  404  
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  405  	em_dev = _em_dev_find_existing(dev);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  406  	if (em_dev) {
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  407  		mutex_unlock(&em_pd_mutex);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  408  		dev_dbg(dev, "EM: found exisiting pd%d\n", em_dev->id);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  409  		return -EEXIST;
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  410  	}
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  411  
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  412  	if (_is_cpu_device(dev)) {
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  413  		if (!cpus) {
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  414  			mutex_unlock(&em_pd_mutex);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  415  			dev_err(dev, "EM: invalid CPU mask\n");
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  416  			return -EINVAL;
-27871f7a8a341e Quentin Perret  2018-12-03  417  		}
-27871f7a8a341e Quentin Perret  2018-12-03  418  
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  419  		/* Make sure we don't register domain for existing CPUs */
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  420  		if (em_cpus_pd_exist(cpus)) {
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  421  			mutex_unlock(&em_pd_mutex);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  422  			return -EEXIST;
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  423  		}
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  424  
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  425  		for_each_cpu(cpu, cpus) {
-27871f7a8a341e Quentin Perret  2018-12-03  426  			/*
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  427  			 * All CPUs of a domain must have the same
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  428  			 * micro-architecture since they all share the same
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  429  			 * table.
-27871f7a8a341e Quentin Perret  2018-12-03  430  			 */
-8ec59c0f5f4966 Vincent Guittot 2019-06-17  431  			cap = arch_scale_cpu_capacity(cpu);
-27871f7a8a341e Quentin Perret  2018-12-03  432  			if (prev_cap && prev_cap != cap) {
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  433  				dev_err(dev, "EM: CPUs of %*pbl must have the same capacity\n",
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  434  					cpumask_pr_args(cpus));
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  435  
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  436  				mutex_unlock(&em_pd_mutex);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  437  				return -EINVAL;
-27871f7a8a341e Quentin Perret  2018-12-03  438  			}
-27871f7a8a341e Quentin Perret  2018-12-03  439  			prev_cap = cap;
-27871f7a8a341e Quentin Perret  2018-12-03  440  		}
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  441  	}
-27871f7a8a341e Quentin Perret  2018-12-03  442  
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  443  	pd = em_create_pd(dev, nr_states, cb, cpus);
-27871f7a8a341e Quentin Perret  2018-12-03  444  	if (!pd) {
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  445  		mutex_unlock(&em_pd_mutex);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  446  		return -EINVAL;
-27871f7a8a341e Quentin Perret  2018-12-03  447  	}
-27871f7a8a341e Quentin Perret  2018-12-03  448  
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  449  	em_dev = kzalloc(sizeof(struct em_device), GFP_KERNEL);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  450  	if (!em_dev) {
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  451  		ret = -ENOMEM;
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  452  		goto free_pd;
-27871f7a8a341e Quentin Perret  2018-12-03  453  	}
-27871f7a8a341e Quentin Perret  2018-12-03  454  
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  455  	em_dev->id = ida_simple_get(&em_dev_ida, 0, 0, GFP_KERNEL);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  456  	if (em_dev->id < 0) {
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  457  		ret = em_dev->id;
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  458  		goto free_em_dev;
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  459  	}
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  460  
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  461  	em_dev->em_pd = pd;
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  462  	em_dev->dev = dev;
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  463  
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  464  	kref_init(&em_dev->kref);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  465  	list_add(&em_dev->em_dev_list, &em_pd_dev_list);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  466  
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  467  	em_debug_create_pd(em_dev);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  468  	dev_dbg(dev, "EM: created perf domain pd%d\n", em_dev->id);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  469  
-27871f7a8a341e Quentin Perret  2018-12-03  470  	mutex_unlock(&em_pd_mutex);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  471  	return 0;
-27871f7a8a341e Quentin Perret  2018-12-03  472  
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  473  free_em_dev:
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  474  	kfree(em_dev);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  475  free_pd:
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  476  	kfree(pd->table);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  477  	kfree(pd);
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  478  
-9cf8494b5f4eb8 Lukasz Luba     2020-04-10  479  	mutex_unlock(&em_pd_mutex);
-27871f7a8a341e Quentin Perret  2018-12-03  480  	return ret;
-27871f7a8a341e Quentin Perret  2018-12-03  481  }
-b4dc5cca354b8a Lukasz Luba     2020-04-10  482  EXPORT_SYMBOL_GPL(em_dev_register_perf_domain);
-b4dc5cca354b8a Lukasz Luba     2020-04-10  483  
-
-:::::: The code at line 394 was first introduced by commit
-:::::: 27871f7a8a341ef5c636a337856369acf8013e4e PM: Introduce an Energy Model management framework
-
-:::::: TO: Quentin Perret <quentin.perret@arm.com>
-:::::: CC: Ingo Molnar <mingo@kernel.org>
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEppdGFvOgoKSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMOW5
+tDTmnIgxMOaXpSDpgLHkupQg5LiL5Y2IMTI6MzPlr6vpgZPvvJoKPgo+IFJlYWQgY2FsaWJyYXRp
+b24gZGF0YSBmcm9tIG52bWVtLCBhbmQgY29uZmlnIG1pcGl0eCBpbXBlZGFuY2Ugd2l0aAo+IGNh
+bGlicmF0aW9uIGRhdGEgdG8gbWFrZSBzdXJlIHRoZWlyIGltcGVkYW5jZSBhcmUgMTAwb2htLgo+
+Cj4gU2lnbmVkLW9mZi1ieTogSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPgo+IC0t
+LQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX21pcGlfdHguYyAgICAgICAgfCA0MCAr
+KysrKysrKysrKysrKysrKysrCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90
+eC5oICAgICAgICB8ICAzICsrCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbXQ4MTgz
+X21pcGlfdHguYyB8IDIxICsrKysrKysrKysKPiAgMyBmaWxlcyBjaGFuZ2VkLCA2NCBpbnNlcnRp
+b25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19taXBp
+X3R4LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX21pcGlfdHguYwo+IGluZGV4IGUz
+MDFhZjY0ODA5ZS4uNWU5MWZjMmMxMzE4IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfbWlwaV90eC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19taXBpX3R4LmMKPiBAQCAtODgsNiArODgsNDQgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBwaHlf
+b3BzIG10a19taXBpX3R4X29wcyA9IHsKPiAgICAgICAgIC5vd25lciA9IFRISVNfTU9EVUxFLAo+
+ICB9Owo+Cj4gK3N0YXRpYyB2b2lkIG10a19taXBpX3R4X2dldF9jYWxpYnJhdGlvbl9kYXRhbChz
+dHJ1Y3QgbXRrX21pcGlfdHggKm1pcGlfdHgpCj4gK3sKPiArICAgICAgIHN0cnVjdCBudm1lbV9j
+ZWxsICpjZWxsOwo+ICsgICAgICAgc2l6ZV90IGxlbjsKPiArICAgICAgIHUzMiAqYnVmOwo+ICsK
+PiArICAgICAgIG1lbXNldChtaXBpX3R4LT5ydF9jb2RlLCAwLCBzaXplb2YobWlwaV90eC0+cnRf
+Y29kZSkpOwoKWW91IHVzZSBremFsbG9jKCkgdG8gYWxsb2NhdGUgbWlwaV90eCwgc28gdGhpcyBp
+cyBhbHJlYWR5IHplcm8taW5pdGlhbGl6ZWQuCgo+ICsgICAgICAgY2VsbCA9IG52bWVtX2NlbGxf
+Z2V0KG1pcGlfdHgtPmRldiwgImNhbGlicmF0aW9uLWRhdGEiKTsKPiArICAgICAgIGlmIChJU19F
+UlIoY2VsbCkpIHsKPiArICAgICAgICAgICAgICAgZGV2X2luZm8obWlwaV90eC0+ZGV2LCAiY2Fu
+J3QgZ2V0IG52bWVtX2NlbGxfZ2V0LCBpZ25vcmUgaXRcbiIpOwo+ICsgICAgICAgfSBlbHNlIHsK
+CklmIHlvdSByZXR1cm4gd2hlbiBlcnJvciwgeW91IGNvdWxkIGdldCByaWQgb2YgdGhlICdlbHNl
+Jywgc28geW91CmNvdWxkIHJlZHVjZSBtYW55ICd0YWInIGFuZCByZWR1Y2UgdGhlIHByb2JhYmls
+aXR5IG9mIG9uZSBsaW5lIG92ZXIgODAKY2hhcmFjdGVyLgoKPiArICAgICAgICAgICAgICAgYnVm
+ID0gKHUzMiAqKW52bWVtX2NlbGxfcmVhZChjZWxsLCAmbGVuKTsKPiArICAgICAgICAgICAgICAg
+bnZtZW1fY2VsbF9wdXQoY2VsbCk7Cj4gKwo+ICsgICAgICAgICAgICAgICBpZiAoSVNfRVJSKGJ1
+ZikpIHsKPiArICAgICAgICAgICAgICAgICAgICAgICBkZXZfaW5mbyhtaXBpX3R4LT5kZXYsICJj
+YW4ndCBnZXQgZGF0YSwgaWdub3JlIGl0XG4iKTsKPiArICAgICAgICAgICAgICAgfSBlbHNlIHsK
+CkRpdHRvLgoKUmVnYXJkcywKQ2h1bi1LdWFuZy4KCj4gKyAgICAgICAgICAgICAgICAgICAgICAg
+aWYgKGxlbiA8IDMgKiBzaXplb2YodTMyKSkgewo+ICsgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgZGV2X2luZm8obWlwaV90eC0+ZGV2LCAiaW52YWxpZCBjYWxpYnJhdGlvbiBkYXRhXG4i
+KTsKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGtmcmVlKGJ1Zik7Cj4gKyAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICByZXR1cm47Cj4gKyAgICAgICAgICAgICAgICAgICAg
+ICAgfQo+ICsKPiArICAgICAgICAgICAgICAgICAgICAgICBtaXBpX3R4LT5ydF9jb2RlWzBdID0g
+KChidWZbMF0gPj4gNiAmIDB4MWYpIDw8IDUpIHwKPiArICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIChidWZbMF0gPj4gMTEgJiAweDFmKTsKPiArICAgICAgICAg
+ICAgICAgICAgICAgICBtaXBpX3R4LT5ydF9jb2RlWzFdID0gKChidWZbMV0gPj4gMjcgJiAweDFm
+KSA8PCA1KSB8Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAoYnVmWzBdID4+IDEgJiAweDFmKTsKPiArICAgICAgICAgICAgICAgICAgICAgICBtaXBpX3R4
+LT5ydF9jb2RlWzJdID0gKChidWZbMV0gPj4gMTcgJiAweDFmKSA8PCA1KSB8Cj4gKyAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAoYnVmWzFdID4+IDIyICYgMHgx
+Zik7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgbWlwaV90eC0+cnRfY29kZVszXSA9ICgoYnVm
+WzFdID4+IDcgJiAweDFmKSA8PCA1KSB8Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAoYnVmWzFdID4+IDEyICYgMHgxZik7Cj4gKyAgICAgICAgICAgICAg
+ICAgICAgICAgbWlwaV90eC0+cnRfY29kZVs0XSA9ICgoYnVmWzJdID4+IDI3ICYgMHgxZikgPDwg
+NSkgfAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKGJ1
+ZlsxXSA+PiAyICYgMHgxZik7Cj4gKyAgICAgICAgICAgICAgICAgICAgICAga2ZyZWUoYnVmKTsK
+PiArICAgICAgICAgICAgICAgfQo+ICsgICAgICAgfQo+ICt9Cj4gKwo+ICBzdGF0aWMgaW50IG10
+a19taXBpX3R4X3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIHsKPiAgICAg
+ICAgIHN0cnVjdCBkZXZpY2UgKmRldiA9ICZwZGV2LT5kZXY7Cj4gQEAgLTE3NCw2ICsyMTIsOCBA
+QCBzdGF0aWMgaW50IG10a19taXBpX3R4X3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBk
+ZXYpCj4KPiAgICAgICAgIG1pcGlfdHgtPmRldiA9IGRldjsKPgo+ICsgICAgICAgbXRrX21pcGlf
+dHhfZ2V0X2NhbGlicmF0aW9uX2RhdGFsKG1pcGlfdHgpOwo+ICsKPiAgICAgICAgIHJldHVybiBv
+Zl9jbGtfYWRkX3Byb3ZpZGVyKGRldi0+b2Zfbm9kZSwgb2ZfY2xrX3NyY19zaW1wbGVfZ2V0LAo+
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbWlwaV90eC0+cGxsKTsKPiAgfQo+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX21pcGlfdHguaCBiL2Ry
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5oCj4gaW5kZXggZWVhNDQzMjdmZTlm
+Li5jNzZmMDdjM2ZkZWIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19taXBpX3R4LmgKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX21pcGlfdHgu
+aAo+IEBAIC0xMiw5ICsxMiwxMSBAQAo+ICAjaW5jbHVkZSA8bGludXgvZGVsYXkuaD4KPiAgI2lu
+Y2x1ZGUgPGxpbnV4L2lvLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KPiArI2luY2x1
+ZGUgPGxpbnV4L252bWVtLWNvbnN1bWVyLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9vZl9kZXZpY2Uu
+aD4KPiAgI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+ICAjaW5jbHVkZSA8bGlu
+dXgvcGh5L3BoeS5oPgo+ICsjaW5jbHVkZSA8bGludXgvc2xhYi5oPgo+Cj4gIHN0cnVjdCBtdGtf
+bWlwaXR4X2RhdGEgewo+ICAgICAgICAgY29uc3QgdTMyIG1wcGxsX3ByZXNlcnZlOwo+IEBAIC0y
+OCw2ICszMCw3IEBAIHN0cnVjdCBtdGtfbWlwaV90eCB7Cj4gICAgICAgICB2b2lkIF9faW9tZW0g
+KnJlZ3M7Cj4gICAgICAgICB1MzIgZGF0YV9yYXRlOwo+ICAgICAgICAgdTMyIG1pcGl0eF9kcml2
+ZTsKPiArICAgICAgIHUzMiBydF9jb2RlWzVdOwo+ICAgICAgICAgY29uc3Qgc3RydWN0IG10a19t
+aXBpdHhfZGF0YSAqZHJpdmVyX2RhdGE7Cj4gICAgICAgICBzdHJ1Y3QgY2xrX2h3IHBsbF9odzsK
+PiAgICAgICAgIHN0cnVjdCBjbGsgKnBsbDsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19tdDgxODNfbWlwaV90eC5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19tdDgxODNfbWlwaV90eC5jCj4gaW5kZXggZTRjYzk2Nzc1MGNiLi45ZjNlNTVhZWViYjIg
+MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxODNfbWlwaV90
+eC5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19tdDgxODNfbWlwaV90eC5j
+Cj4gQEAgLTI4LDYgKzI4LDcgQEAKPiAgI2RlZmluZSBNSVBJVFhfUExMX0NPTjQgICAgICAgICAg
+ICAgICAgMHgwMDNjCj4gICNkZWZpbmUgUkdfRFNJX1BMTF9JQklBUyAgICAgICAgICAgICAgICgz
+IDw8IDEwKQo+Cj4gKyNkZWZpbmUgTUlQSVRYX0QyUF9SVENPREUgICAgICAweDAxMDAKPiAgI2Rl
+ZmluZSBNSVBJVFhfRDJfU1dfQ1RMX0VOICAgIDB4MDE0NAo+ICAjZGVmaW5lIE1JUElUWF9EMF9T
+V19DVExfRU4gICAgMHgwMjQ0Cj4gICNkZWZpbmUgTUlQSVRYX0NLX0NLTU9ERV9FTiAgICAweDAz
+MjgKPiBAQCAtMTA4LDYgKzEwOSwyNCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGNsa19vcHMgbXRr
+X21pcGlfdHhfcGxsX29wcyA9IHsKPiAgICAgICAgIC5yZWNhbGNfcmF0ZSA9IG10a19taXBpX3R4
+X3BsbF9yZWNhbGNfcmF0ZSwKPiAgfTsKPgo+ICtzdGF0aWMgdm9pZCBtdGtfbWlwaV90eF9jb25m
+aWdfY2FsaWJyYXRpb25fZGF0YShzdHJ1Y3QgbXRrX21pcGlfdHggKm1pcGlfdHgpCj4gK3sKPiAr
+ICAgICAgIGludCBpLCBqOwo+ICsKPiArICAgICAgIGZvciAoaSA9IDA7IGkgPCA1OyBpKyspIHsK
+PiArICAgICAgICAgICAgICAgaWYgKChtaXBpX3R4LT5ydF9jb2RlW2ldICYgMHgxZikgPT0gMCkK
+PiArICAgICAgICAgICAgICAgICAgICAgICBtaXBpX3R4LT5ydF9jb2RlW2ldIHw9IDB4MTA7Cj4g
+Kwo+ICsgICAgICAgICAgICAgICBpZiAoKG1pcGlfdHgtPnJ0X2NvZGVbaV0gPj4gNSAmIDB4MWYp
+ID09IDApCj4gKyAgICAgICAgICAgICAgICAgICAgICAgbWlwaV90eC0+cnRfY29kZVtpXSB8PSAw
+eDEwIDw8IDU7Cj4gKwo+ICsgICAgICAgICAgICAgICBmb3IgKGogPSAwOyBqIDwgMTA7IGorKykK
+PiArICAgICAgICAgICAgICAgICAgICAgICBtdGtfbWlwaV90eF91cGRhdGVfYml0cyhtaXBpX3R4
+LAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgTUlQSVRYX0QyUF9SVENPREUgKiAo
+aSArIDEpICsgaiAqIDQsCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAxLCBtaXBp
+X3R4LT5ydF9jb2RlW2ldID4+IGogJiAxKTsKPiArICAgICAgIH0KPiArfQo+ICsKPiAgc3RhdGlj
+IHZvaWQgbXRrX21pcGlfdHhfcG93ZXJfb25fc2lnbmFsKHN0cnVjdCBwaHkgKnBoeSkKPiAgewo+
+ICAgICAgICAgc3RydWN0IG10a19taXBpX3R4ICptaXBpX3R4ID0gcGh5X2dldF9kcnZkYXRhKHBo
+eSk7Cj4gQEAgLTEzMCw2ICsxNDksOCBAQCBzdGF0aWMgdm9pZCBtdGtfbWlwaV90eF9wb3dlcl9v
+bl9zaWduYWwoc3RydWN0IHBoeSAqcGh5KQo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgUkdfRFNJX0hTVFhfTERPX1JFRl9TRUwsCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAobWlwaV90eC0+bWlwaXR4X2RyaXZlIC0gMzAwMCkgLyAyMDAgPDwgNik7Cj4KPiArICAg
+ICAgIG10a19taXBpX3R4X2NvbmZpZ19jYWxpYnJhdGlvbl9kYXRhKG1pcGlfdHgpOwo+ICsKPiAg
+ICAgICAgIG10a19taXBpX3R4X3NldF9iaXRzKG1pcGlfdHgsIE1JUElUWF9DS19DS01PREVfRU4s
+IERTSV9DS19DS01PREVfRU4pOwo+ICB9Cj4KPiAtLQo+IDIuMjEuMAo+IF9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gZHJpLWRldmVsIG1haWxpbmcgbGlz
+dAo+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3RvcC5vcmcKPiBodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0
+CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
