@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 42A19C2BB86
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Apr 2020 23:23:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CF914C2BBC7
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Apr 2020 23:23:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CD79B20787
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Apr 2020 23:23:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A486220769
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Apr 2020 23:23:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nzmmCeOg";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="SpJ5EB6S"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD79B20787
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hwlLphKG";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="VzyWtJKL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A486220769
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,46 +26,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RkhVUuu1HM8QNizRV+X+uVGoM+ooW0R8nG04/+iOqgQ=; b=nzmmCeOgInW9ye
-	u5Gvx1pR1jZx9szJ5tPQC1dj++cNcjtot7CMu/EO20ZVusBfNl+/5RLMvXBwn8Zi8wsvlZT75LrJd
-	57WBDawZpaU3fQW/aZbbpH+zFg+vdj+Ep+XhwNlQLDrHa64OemaGTcfPQs0Tp/EkKTTyzS8oc+7HX
-	pEc9Duyu2Pn1zmvhwA33S2fi6/PBjD7oCc4gUijIcQjeHPjA1Mk0fsMR9EATKEJd3+8pu7Qyx0q4T
-	Ha7zjDVu1lHh8MFJjLjuZyvwG2pG8m+2YYyC6T8oIEmf8ZMFnfl1HshyAi+xNpzlZQ8/xpkkF5wl1
-	AK+H9iJkEo/3HPrskj5w==;
+	List-Owner; bh=MbQmFmO8BUZ0m5ML4Ku2053vBsAbD0rnYxzGDeVvFyo=; b=hwlLphKG/vf0Gb
+	a8W1Ayow9r9x1UFLao+8DruZowl1eJ7UBAe5sbtX0lxTjFSV5/osTjFh8yL50hqRfKk2X3jBMQ+EZ
+	k8ON6WKATE5c9mPNS+EMFijBko0jjZ5FIoq9eqChQzuNjaLu2Hw9oHZe0ny++NByqVR3jTfSqsDpp
+	zc0tlZtSdDG0hrP7rdkZNxLHgwWm3CGsLkJGw96CgR+O9nCGcWsJrDnte++FnbPHHNF7pbhj2Oi4n
+	g83VxrWjVrCBvsaJE2H89BSKsNz7Oqwx8DqTwGyFFsNNKtVphHaalLEAFeIBbWph8V/gefQO51U1y
+	3tbOBg5O/dOf/1iEkSvA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jNPSs-0006Lj-Oc; Sat, 11 Apr 2020 23:23:06 +0000
+	id 1jNPTa-0006zf-Ex; Sat, 11 Apr 2020 23:23:50 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jNPKC-0001OT-T7; Sat, 11 Apr 2020 23:14:13 +0000
+ id 1jNPKl-0002Au-OU; Sat, 11 Apr 2020 23:14:45 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 3A17621744;
- Sat, 11 Apr 2020 23:14:07 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 455D820708;
+ Sat, 11 Apr 2020 23:14:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1586646848;
- bh=hFHx6RqkUyo6iXHb3PvAoIlELuZY+iXvlUN9yOBwKZU=;
+ s=default; t=1586646883;
+ bh=ywdHHF/v2TaGRn3tam7MmQpVBcv4oTWikAk47HfYV/Q=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=SpJ5EB6SyS68xvPahWfcs3BKDNC4v5pp9RsH+2ihakzMsq0RjdnrO/Fky8yUQDLBH
- vnfdbRm25BW9+eLSWvNi1rVeHD/keJm5l2hcDPO2GEEfLhwtxxGPoXTKDBNbLstBHl
- iuA1TODlpbgLmYADse4OzkcjKnMajpz02KUhuWck=
+ b=VzyWtJKL+MCb0e0EHdQZfkmf6LVLwOpgToCBr35ehK5LUN42P7DnCcRmZedxCiV7Y
+ xLbOlPvgTzkje46mAHI1ss8dNqCrmTsUirp05+JJRLfpUrE/wtwf0Jq6h30znzNe/o
+ m+5avuiv3lon7tVAB+luO5nNstCJQ6Q80gGn0Wl0=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.14 34/37] scsi: ufs: Fix ufshcd_hold() caused
+Subject: [PATCH AUTOSEL 4.9 24/26] scsi: ufs: Fix ufshcd_hold() caused
  scheduling while atomic
-Date: Sat, 11 Apr 2020 19:13:23 -0400
-Message-Id: <20200411231327.26550-34-sashal@kernel.org>
+Date: Sat, 11 Apr 2020 19:14:11 -0400
+Message-Id: <20200411231413.26911-24-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200411231327.26550-1-sashal@kernel.org>
-References: <20200411231327.26550-1-sashal@kernel.org>
+In-Reply-To: <20200411231413.26911-1-sashal@kernel.org>
+References: <20200411231413.26911-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200411_161408_982929_3649FA2B 
+X-CRM114-CacheID: sfid-20200411_161443_825914_45845EBF 
 X-CRM114-Status: UNSURE (   9.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -114,10 +114,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 5 insertions(+)
 
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index c350453246952..6dbdddffa0b31 100644
+index 394df57894e6b..9bd26efcc1a10 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -1448,6 +1448,11 @@ int ufshcd_hold(struct ufs_hba *hba, bool async)
+@@ -682,6 +682,11 @@ int ufshcd_hold(struct ufs_hba *hba, bool async)
  		 */
  		if (ufshcd_can_hibern8_during_gating(hba) &&
  		    ufshcd_is_link_hibern8(hba)) {
