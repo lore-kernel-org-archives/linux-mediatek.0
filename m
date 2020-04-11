@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 23E3AC2BA19
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Apr 2020 23:14:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E9CD4C2BA19
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Apr 2020 23:14:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BDB4D21744
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Apr 2020 23:14:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BC05C20CC7
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Apr 2020 23:14:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="g+TLNuvd";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="N6QS8Tvn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BDB4D21744
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="c5PNIJsI";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="lutHJVOl"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC05C20CC7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,38 +26,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yq8TbVUe7dNk0LgcPMtqhTZntIemQlcgRKu+1RBep0k=; b=g+TLNuvdjD44lq
-	fOx6Tskgxh1y8vRfAY7t82cnu4pS9KFCKld4DhE1u5TVt9hc1+wUDnpc7ZkzxlbNPWnVrmuf6Wgvb
-	SrTXEQSfIPK6chHi6sxUW+Lq6S1orYuojdKN2eUtSU1+SkeiUcxJqUuwjslSmKloAxR3E7plGPZuX
-	Ojfqx2kh0KMsVpGgxTmRsEeMKdS9+6cZj+gCOtNzio0cQC+FpVktr+nXfoYWoo6MNrtcLixBAtRhA
-	LzQwhh9hRg7kwEmGEtUtP9btXfRAfJGYkhx55tsrm9+QhBi2NkHxxNPT4KNrdqy/RrzlACslSHjrA
-	iLbx/8QmS6kCBAp00pMg==;
+	List-Owner; bh=yRG/ap4ppSq0ZBF1aOoalM0KukOfV6oTrbHXK0qJT6Q=; b=c5PNIJsIMzaLEM
+	NWew0jLbhLND8U3pWnl+UtJ4HP+JD8iJp2xyT0iwlp0cU0DVg+szuo2sSEUxz2lgj9FLxqXDcPR9f
+	XOj+rBY5+zrJvtRV7hN+sPYDGgEm3Awoo6Mxp3+tRcQ/F40byXUiKNFxIUX3hCX2OQZzW6Z5O5a5/
+	vE5XDWEnMNqWCkoTGW8exIqSCbqJZnYZqF1O/bAX0gTex1suo77QoOoPe00iqGhsEq2GerSkFA7uE
+	RJQRmqz9OXFRFM/I2FsaeD0N+6s3F+54q1jpqKAoCjyxH8A8MLGEw19gwfoZ6tLPZ/8woqmmr4txf
+	ueaAXdSb1S2qJV+l7bRw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jNPJu-00015i-Dx; Sat, 11 Apr 2020 23:13:50 +0000
+	id 1jNPJx-00018W-7A; Sat, 11 Apr 2020 23:13:53 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jNPEj-0002Yt-Ry; Sat, 11 Apr 2020 23:08:35 +0000
+ id 1jNPEh-0002WN-DS; Sat, 11 Apr 2020 23:08:35 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5AAD021835;
- Sat, 11 Apr 2020 23:08:28 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id DCADD20708;
+ Sat, 11 Apr 2020 23:08:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1586646509;
- bh=s4vRQIJwcxkL6l2FldF0HlhnWS37JsVCYYVOD5lTqjw=;
+ s=default; t=1586646506;
+ bh=BxXLBpgwH6EXg66oe1ub4AhqhGU8Fy3XgguV6DuFB0c=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=N6QS8TvnS9OwRHruvz1jucCejeZVVfT5XzVdxONzKn2LYtJYnAWWo5ql/AFtcLaN1
- +jVi3wxGev2iaa7PVd5Mqm5SLRZcro1D4hawq0outzVT5ggGJHYNmp7FR2WeolPolU
- oGIzRZ38Mn8xlLFYt0ZnzKdAx2MjiRGUQwNeagVA=
+ b=lutHJVOlJbff/jfxV86Jx/HQBNAYe25y+bgVGVx3AuXo1rBa6/O9y+/VoOHepXWcm
+ Z7Mo/Q7WXDnYadX3dggugckeaP6pJujOGmxx10c+X87pBYIyfBrjqeYrVFpWW28lA6
+ hiky0AZzJkYzHSwYJHX9m7gl7IkbIiE2Op4KLcy4=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.5 068/121] mt76: mt7603: fix input validation issues
- for powersave-filtered frames
-Date: Sat, 11 Apr 2020 19:06:13 -0400
-Message-Id: <20200411230706.23855-68-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.5 066/121] ASoC: mediatek: mt8183-da7219: pull TDM
+ GPIO pins down when probed
+Date: Sat, 11 Apr 2020 19:06:11 -0400
+Message-Id: <20200411230706.23855-66-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200411230706.23855-1-sashal@kernel.org>
 References: <20200411230706.23855-1-sashal@kernel.org>
@@ -65,8 +65,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200411_160830_005581_ADFF4976 
-X-CRM114-Status: GOOD (  10.79  )
+X-CRM114-CacheID: sfid-20200411_160827_558750_6097742D 
+X-CRM114-Status: GOOD (  12.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,81 +78,173 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Felix Fietkau <nbd@nbd.name>
+Cc: Sasha Levin <sashal@kernel.org>, alsa-devel@alsa-project.org,
+ Tzung-Bi Shih <tzungbi@google.com>, Mark Brown <broonie@kernel.org>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Felix Fietkau <nbd@nbd.name>
+From: Tzung-Bi Shih <tzungbi@google.com>
 
-[ Upstream commit d55aa5e17461b8b423adae376978032c4a10a1d8 ]
+[ Upstream commit 8726ee6148fe24e2b29d4a961ad95c4ff8025d1d ]
 
-Before extracting the tid out of the packet, check if it was qos-data.
-Only accept tid values 0-7
-Also, avoid accepting the hardware queue as skb queue mapping, it could
-lead to an overrun. Instead, derive the hardware queue from the tid number,
-in order to avoid issues with packets being filtered multiple times.
-This also fixes a mismatch between hardware and software queue indexes.
+1. Switch TDM GPIO pins according to playback on or off.
+2. Pull TDM GPIO pins down when probed to avoid current leakage.
 
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
+Link: https://lore.kernel.org/r/20200213112003.2.I1d568b0c99742c6e755d051aadfd52e4be3cc0a5@changeid
+Signed-off-by: Mark Brown <broonie@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- .../net/wireless/mediatek/mt76/mt7603/dma.c   | 19 +++++++++++++++----
- 1 file changed, 15 insertions(+), 4 deletions(-)
+ .../mediatek/mt8183/mt8183-da7219-max98357.c  | 104 +++++++++++++++++-
+ 1 file changed, 98 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/dma.c b/drivers/net/wireless/mediatek/mt76/mt7603/dma.c
-index a6ab73060aada..57428467fe967 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/dma.c
-@@ -30,6 +30,16 @@ mt7603_init_tx_queue(struct mt7603_dev *dev, struct mt76_sw_queue *q,
- static void
- mt7603_rx_loopback_skb(struct mt7603_dev *dev, struct sk_buff *skb)
+diff --git a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
+index 43f99e59a0786..897a7bc4d3f3f 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
++++ b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
+@@ -18,6 +18,22 @@
+ 
+ static struct snd_soc_jack headset_jack;
+ 
++enum PINCTRL_PIN_STATE {
++	PIN_STATE_DEFAULT = 0,
++	PIN_TDM_OUT_ON,
++	PIN_TDM_OUT_OFF,
++	PIN_STATE_MAX
++};
++
++static const char * const mt8183_pin_str[PIN_STATE_MAX] = {
++	"default", "aud_tdm_out_on", "aud_tdm_out_off",
++};
++
++struct mt8183_da7219_max98357_priv {
++	struct pinctrl *pinctrl;
++	struct pinctrl_state *pin_states[PIN_STATE_MAX];
++};
++
+ static int mt8183_mt6358_i2s_hw_params(struct snd_pcm_substream *substream,
+ 				       struct snd_pcm_hw_params *params)
  {
-+	static const u8 tid_to_ac[8] = {
-+		IEEE80211_AC_BE,
-+		IEEE80211_AC_BK,
-+		IEEE80211_AC_BK,
-+		IEEE80211_AC_BE,
-+		IEEE80211_AC_VI,
-+		IEEE80211_AC_VI,
-+		IEEE80211_AC_VO,
-+		IEEE80211_AC_VO
-+	};
- 	__le32 *txd = (__le32 *)skb->data;
- 	struct ieee80211_hdr *hdr;
- 	struct ieee80211_sta *sta;
-@@ -38,7 +48,7 @@ mt7603_rx_loopback_skb(struct mt7603_dev *dev, struct sk_buff *skb)
- 	void *priv;
- 	int idx;
- 	u32 val;
--	u8 tid;
-+	u8 tid = 0;
+@@ -204,6 +220,47 @@ SND_SOC_DAILINK_DEFS(tdm,
+ 	DAILINK_COMP_ARRAY(COMP_DUMMY()),
+ 	DAILINK_COMP_ARRAY(COMP_EMPTY()));
  
- 	if (skb->len < MT_TXD_SIZE + sizeof(struct ieee80211_hdr))
- 		goto free;
-@@ -56,15 +66,16 @@ mt7603_rx_loopback_skb(struct mt7603_dev *dev, struct sk_buff *skb)
++static int mt8183_da7219_tdm_startup(struct snd_pcm_substream *substream)
++{
++	struct snd_soc_pcm_runtime *rtd = substream->private_data;
++	struct mt8183_da7219_max98357_priv *priv =
++		snd_soc_card_get_drvdata(rtd->card);
++	int ret;
++
++	if (IS_ERR(priv->pin_states[PIN_TDM_OUT_ON]))
++		return PTR_ERR(priv->pin_states[PIN_TDM_OUT_ON]);
++
++	ret = pinctrl_select_state(priv->pinctrl,
++				   priv->pin_states[PIN_TDM_OUT_ON]);
++	if (ret)
++		dev_err(rtd->card->dev, "%s failed to select state %d\n",
++			__func__, ret);
++
++	return ret;
++}
++
++static void mt8183_da7219_tdm_shutdown(struct snd_pcm_substream *substream)
++{
++	struct snd_soc_pcm_runtime *rtd = substream->private_data;
++	struct mt8183_da7219_max98357_priv *priv =
++		snd_soc_card_get_drvdata(rtd->card);
++	int ret;
++
++	if (IS_ERR(priv->pin_states[PIN_TDM_OUT_OFF]))
++		return;
++
++	ret = pinctrl_select_state(priv->pinctrl,
++				   priv->pin_states[PIN_TDM_OUT_OFF]);
++	if (ret)
++		dev_err(rtd->card->dev, "%s failed to select state %d\n",
++			__func__, ret);
++}
++
++static struct snd_soc_ops mt8183_da7219_tdm_ops = {
++	.startup = mt8183_da7219_tdm_startup,
++	.shutdown = mt8183_da7219_tdm_shutdown,
++};
++
+ static struct snd_soc_dai_link mt8183_da7219_max98357_dai_links[] = {
+ 	/* FE */
+ 	{
+@@ -353,6 +410,8 @@ static struct snd_soc_dai_link mt8183_da7219_max98357_dai_links[] = {
+ 		.no_pcm = 1,
+ 		.dpcm_playback = 1,
+ 		.ignore_suspend = 1,
++		.be_hw_params_fixup = mt8183_i2s_hw_params_fixup,
++		.ops = &mt8183_da7219_tdm_ops,
+ 		SND_SOC_DAILINK_REG(tdm),
+ 	},
+ };
+@@ -409,7 +468,7 @@ static int mt8183_da7219_max98357_dev_probe(struct platform_device *pdev)
+ 	struct snd_soc_card *card = &mt8183_da7219_max98357_card;
+ 	struct device_node *platform_node;
+ 	struct snd_soc_dai_link *dai_link;
+-	struct pinctrl *default_pins;
++	struct mt8183_da7219_max98357_priv *priv;
+ 	int ret, i;
  
- 	priv = msta = container_of(wcid, struct mt7603_sta, wcid);
- 	val = le32_to_cpu(txd[0]);
--	skb_set_queue_mapping(skb, FIELD_GET(MT_TXD0_Q_IDX, val));
--
- 	val &= ~(MT_TXD0_P_IDX | MT_TXD0_Q_IDX);
- 	val |= FIELD_PREP(MT_TXD0_Q_IDX, MT_TX_HW_QUEUE_MGMT);
- 	txd[0] = cpu_to_le32(val);
+ 	card->dev = &pdev->dev;
+@@ -443,12 +502,45 @@ static int mt8183_da7219_max98357_dev_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
  
- 	sta = container_of(priv, struct ieee80211_sta, drv_priv);
- 	hdr = (struct ieee80211_hdr *)&skb->data[MT_TXD_SIZE];
--	tid = *ieee80211_get_qos_ctl(hdr) & IEEE80211_QOS_CTL_TID_MASK;
-+	if (ieee80211_is_data_qos(hdr->frame_control))
-+		tid = *ieee80211_get_qos_ctl(hdr) &
-+		      IEEE80211_QOS_CTL_TAG1D_MASK;
-+	skb_set_queue_mapping(skb, tid_to_ac[tid]);
- 	ieee80211_sta_set_buffered(sta, tid, true);
+-	default_pins =
+-		devm_pinctrl_get_select(&pdev->dev, PINCTRL_STATE_DEFAULT);
+-	if (IS_ERR(default_pins)) {
+-		dev_err(&pdev->dev, "%s set pins failed\n",
++	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	snd_soc_card_set_drvdata(card, priv);
++
++	priv->pinctrl = devm_pinctrl_get(&pdev->dev);
++	if (IS_ERR(priv->pinctrl)) {
++		dev_err(&pdev->dev, "%s devm_pinctrl_get failed\n",
+ 			__func__);
+-		return PTR_ERR(default_pins);
++		return PTR_ERR(priv->pinctrl);
++	}
++
++	for (i = 0; i < PIN_STATE_MAX; i++) {
++		priv->pin_states[i] = pinctrl_lookup_state(priv->pinctrl,
++							   mt8183_pin_str[i]);
++		if (IS_ERR(priv->pin_states[i])) {
++			ret = PTR_ERR(priv->pin_states[i]);
++			dev_info(&pdev->dev, "%s Can't find pin state %s %d\n",
++				 __func__, mt8183_pin_str[i], ret);
++		}
++	}
++
++	if (!IS_ERR(priv->pin_states[PIN_TDM_OUT_OFF])) {
++		ret = pinctrl_select_state(priv->pinctrl,
++					   priv->pin_states[PIN_TDM_OUT_OFF]);
++		if (ret)
++			dev_info(&pdev->dev,
++				 "%s failed to select state %d\n",
++				 __func__, ret);
++	}
++
++	if (!IS_ERR(priv->pin_states[PIN_STATE_DEFAULT])) {
++		ret = pinctrl_select_state(priv->pinctrl,
++					   priv->pin_states[PIN_STATE_DEFAULT]);
++		if (ret)
++			dev_info(&pdev->dev,
++				 "%s failed to select state %d\n",
++				 __func__, ret);
+ 	}
  
- 	spin_lock_bh(&dev->ps_lock);
+ 	return ret;
 -- 
 2.20.1
 
