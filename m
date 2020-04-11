@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B174C2BA2B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Apr 2020 07:45:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 985B2C2BBC7
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Apr 2020 07:45:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4075620732
-	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Apr 2020 07:45:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5D39E20732
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Apr 2020 07:45:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PTBmXdV7";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="rBI0rBbb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4075620732
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UMuotwwo";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="mL+jfjih"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5D39E20732
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,57 +26,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UtTjKvqF8bYhyAnl7443JuYViN0wGMuuPpZKLKDhmx4=; b=PTBmXdV7Zt9BnW
-	yb94YsO35MSgNPZTwMky1gCWjOLiFg0hZilTSpeqFmFZcXZTAXCFmXCTlbHENLyvQPbKopVGd0eAt
-	lIR00/96SvwBQcNTivVQI8LFZJNlpXVt/T1fjg/wzU76/i7jBP80M3spcMlR1xWb4e3NOlkG6j4V4
-	2uuzNReJ21Yhm6istTSgTs5EZWbbtqHUXYSZzNfpugN7VS3IUcXQfTBovmuuOnPKpH0/3afsNsRs/
-	JvhUQ5ejojNvBopPIcbcD/bw2GJ0ArtbCMaDrQNG8XWcZI8mT93BquJ5yY9IQH+BaLWeJXjDOpE/9
-	XNUdFPa82vjV/waoUx8g==;
+	List-Owner; bh=IJDlp5J5DvUJ9jTLMLP0pGTYcjM906c9ae6T2D4Ex6A=; b=UMuotwwoES2Ksa
+	w8b3XejSmIGa3tEjO6wrK7qrlWSiTkzOZDkLXp/HqNAeAurX5GUs7fC3rmaiUnXAwK/BeHYKvlRsQ
+	4Q2yWjIjcJVxFUgf9GlTONGPq8tKlfswZOyzVlf/Ii0eAr0zkfEuXbtT36YZgVGw7CRyz9rIQBN3J
+	ti1swIM5RJ8ENkXSq1A5loyFJ/8he9DyOe/aZvB41kDeui+wlz4lGSS+BKetupW1wACecDz3sFaLK
+	qy6Kd+vdak5oie6lkrRpgjiWyx9ORpd3B2Oaej/eAeL3rZBIbB/HHgcBnz4pvWoFZim5oseSWktRf
+	w0jvM552AKyVJz+Wj+Ww==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jNApM-0002hz-64; Sat, 11 Apr 2020 07:45:20 +0000
+	id 1jNApP-0002mO-BG; Sat, 11 Apr 2020 07:45:23 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jNAog-00086p-Mv; Sat, 11 Apr 2020 07:44:40 +0000
-X-UUID: 4fb5f90a952e4e1482dd177e76a1263a-20200410
+ id 1jNAoi-00086o-6b; Sat, 11 Apr 2020 07:44:41 +0000
+X-UUID: 6a765e40f207461b85d19bf70777564d-20200410
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=iR0rPL64FU19qOW727A31bTZVI8PeoEj1NeCit81CAU=; 
- b=rBI0rBbbrgS5oZTIk478/NoGMQpWw1FTo0Jm9EeHGxFaMXvD5IW1JLYK7PZYgS+zh63Nn7dsxZpJw1jwl3Brp324WcO+9vcEkVKBQrCm7ZSpO0UKgRmnLTQouV+Fel0yoO+EqIOwE8qAC3Y5LY5xcuhnLGXVw6OZwSpb2VKWkXA=;
-X-UUID: 4fb5f90a952e4e1482dd177e76a1263a-20200410
+ bh=GY6kkVqQdoO6pb5HRhb6+TbQErdD2FZ5VWwTRBcTUlY=; 
+ b=mL+jfjiho+ZbId8z+3DJ3Hy0SXHhfmso+RWzUGhHubKEFfdozV5tC7TTuE1TyStWiVKtynSjloaOKFdOLPB1BpYn9R8dYFqrgQqdVeH1R+U/buV/4Iye3HDfucW9+CCkSKXGFPXASsQ/RnTv8JKfz9X708EXkgbvBLOLES8PK84=;
+X-UUID: 6a765e40f207461b85d19bf70777564d-20200410
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <jitao.shi@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 92068835; Fri, 10 Apr 2020 23:44:33 -0800
-Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
+ with ESMTP id 933355641; Fri, 10 Apr 2020 23:44:33 -0800
+Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Sat, 11 Apr 2020 00:44:32 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
- (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 11 Apr 2020 15:44:26 +0800
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N2.mediatek.inc
+ (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sat, 11 Apr 2020 15:44:29 +0800
 Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
  MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Sat, 11 Apr 2020 15:44:24 +0800
+ 15.0.1497.2 via Frontend Transport; Sat, 11 Apr 2020 15:44:27 +0800
 From: Jitao Shi <jitao.shi@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
  David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
  <linux-kernel@vger.kernel.org>
-Subject: [PATCH v6 2/4] dt-bindings: display: mediatek: get mipitx calibration
- data from nvmem
-Date: Sat, 11 Apr 2020 15:44:06 +0800
-Message-ID: <20200411074408.38090-3-jitao.shi@mediatek.com>
+Subject: [PATCH v6 4/4] drm/mediatek: config mipitx impedance with calibration
+ data
+Date: Sat, 11 Apr 2020 15:44:08 +0800
+Message-ID: <20200411074408.38090-5-jitao.shi@mediatek.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20200411074408.38090-1-jitao.shi@mediatek.com>
 References: <20200411074408.38090-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 3F5C87B68CD97C73DA1F90AAF118FD8FA8B79DD9371F8F179B5BB437835841A32000:8
+X-TM-SNTS-SMTP: AFB922CAAE16CBA39DB068B9B2C548EFCE1B0533F1A41542C3961D0FDA54E06B2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200411_004438_759437_91E75191 
-X-CRM114-Status: UNSURE (   7.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200411_004440_259643_BEEFC13C 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,48 +88,153 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: devicetree@vger.kernel.org, Jitao Shi <jitao.shi@mediatek.com>,
- srv_heupstream@mediatek.com, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- huijuan.xie@mediatek.com, stonea168@163.com, cawa.cheng@mediatek.com,
- linux-mediatek@lists.infradead.org, bibby.hsieh@mediatek.com,
- ck.hu@mediatek.com, yingjoe.chen@mediatek.com, eddie.huang@mediatek.com, Rob
- Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org
+ srv_heupstream@mediatek.com, huijuan.xie@mediatek.com, stonea168@163.com,
+ cawa.cheng@mediatek.com, linux-mediatek@lists.infradead.org,
+ bibby.hsieh@mediatek.com, ck.hu@mediatek.com, yingjoe.chen@mediatek.com,
+ eddie.huang@mediatek.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add properties to get get mipitx calibration data.
+Read calibration data from nvmem, and config mipitx impedance with
+calibration data to make sure their impedance are 100ohm.
 
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Reviewed-by: Rob Herring <robh@kernel.org>
 Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 ---
- .../devicetree/bindings/display/mediatek/mediatek,dsi.txt    | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_mipi_tx.c        | 40 +++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_mipi_tx.h        |  3 ++
+ drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c | 21 ++++++++++
+ 3 files changed, 64 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
-index d78b6d6d8fab..8e4729de8c85 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
-@@ -36,6 +36,9 @@ Required properties:
- Optional properties:
- - drive-strength-microamp: adjust driving current, should be 3000 ~ 6000. And
- 						   the step is 200.
-+- nvmem-cells: A phandle to the calibration data provided by a nvmem device. If
-+               unspecified default values shall be used.
-+- nvmem-cell-names: Should be "calibration-data"
- 
- Example:
- 
-@@ -47,6 +50,8 @@ mipi_tx0: mipi-dphy@10215000 {
- 	#clock-cells = <0>;
- 	#phy-cells = <0>;
- 	drive-strength-microamp = <4600>;
-+	nvmem-cells= <&mipi_tx_calibration>;
-+	nvmem-cell-names = "calibration-data";
+diff --git a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
+index e301af64809e..8cee2591e728 100644
+--- a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
++++ b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
+@@ -88,6 +88,44 @@ static const struct phy_ops mtk_mipi_tx_ops = {
+ 	.owner = THIS_MODULE,
  };
  
- dsi0: dsi@1401b000 {
++static void mtk_mipi_tx_get_calibration_datal(struct mtk_mipi_tx *mipi_tx)
++{
++	struct nvmem_cell *cell;
++	size_t len;
++	u32 *buf;
++
++	cell = nvmem_cell_get(mipi_tx->dev, "calibration-data");
++	if (IS_ERR(cell)) {
++		dev_info(mipi_tx->dev, "can't get nvmem_cell_get, ignore it\n");
++		return;
++	}
++	buf = (u32 *)nvmem_cell_read(cell, &len);
++	nvmem_cell_put(cell);
++
++	if (IS_ERR(buf)) {
++		dev_info(mipi_tx->dev, "can't get data, ignore it\n");
++		return;
++	}
++
++	if (len < 3 * sizeof(u32)) {
++		dev_info(mipi_tx->dev, "invalid calibration data\n");
++		kfree(buf);
++		return;
++	}
++
++	mipi_tx->rt_code[0] = ((buf[0] >> 6 & 0x1f) << 5) |
++			       (buf[0] >> 11 & 0x1f);
++	mipi_tx->rt_code[1] = ((buf[1] >> 27 & 0x1f) << 5) |
++			       (buf[0] >> 1 & 0x1f);
++	mipi_tx->rt_code[2] = ((buf[1] >> 17 & 0x1f) << 5) |
++			       (buf[1] >> 22 & 0x1f);
++	mipi_tx->rt_code[3] = ((buf[1] >> 7 & 0x1f) << 5) |
++			       (buf[1] >> 12 & 0x1f);
++	mipi_tx->rt_code[4] = ((buf[2] >> 27 & 0x1f) << 5) |
++			       (buf[1] >> 2 & 0x1f);
++	kfree(buf);
++}
++
+ static int mtk_mipi_tx_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -174,6 +212,8 @@ static int mtk_mipi_tx_probe(struct platform_device *pdev)
+ 
+ 	mipi_tx->dev = dev;
+ 
++	mtk_mipi_tx_get_calibration_datal(mipi_tx);
++
+ 	return of_clk_add_provider(dev->of_node, of_clk_src_simple_get,
+ 				   mipi_tx->pll);
+ }
+diff --git a/drivers/gpu/drm/mediatek/mtk_mipi_tx.h b/drivers/gpu/drm/mediatek/mtk_mipi_tx.h
+index eea44327fe9f..c76f07c3fdeb 100644
+--- a/drivers/gpu/drm/mediatek/mtk_mipi_tx.h
++++ b/drivers/gpu/drm/mediatek/mtk_mipi_tx.h
+@@ -12,9 +12,11 @@
+ #include <linux/delay.h>
+ #include <linux/io.h>
+ #include <linux/module.h>
++#include <linux/nvmem-consumer.h>
+ #include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/phy/phy.h>
++#include <linux/slab.h>
+ 
+ struct mtk_mipitx_data {
+ 	const u32 mppll_preserve;
+@@ -28,6 +30,7 @@ struct mtk_mipi_tx {
+ 	void __iomem *regs;
+ 	u32 data_rate;
+ 	u32 mipitx_drive;
++	u32 rt_code[5];
+ 	const struct mtk_mipitx_data *driver_data;
+ 	struct clk_hw pll_hw;
+ 	struct clk *pll;
+diff --git a/drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c b/drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c
+index e4cc967750cb..9f3e55aeebb2 100644
+--- a/drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c
++++ b/drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c
+@@ -28,6 +28,7 @@
+ #define MIPITX_PLL_CON4		0x003c
+ #define RG_DSI_PLL_IBIAS		(3 << 10)
+ 
++#define MIPITX_D2P_RTCODE	0x0100
+ #define MIPITX_D2_SW_CTL_EN	0x0144
+ #define MIPITX_D0_SW_CTL_EN	0x0244
+ #define MIPITX_CK_CKMODE_EN	0x0328
+@@ -108,6 +109,24 @@ static const struct clk_ops mtk_mipi_tx_pll_ops = {
+ 	.recalc_rate = mtk_mipi_tx_pll_recalc_rate,
+ };
+ 
++static void mtk_mipi_tx_config_calibration_data(struct mtk_mipi_tx *mipi_tx)
++{
++	int i, j;
++
++	for (i = 0; i < 5; i++) {
++		if ((mipi_tx->rt_code[i] & 0x1f) == 0)
++			mipi_tx->rt_code[i] |= 0x10;
++
++		if ((mipi_tx->rt_code[i] >> 5 & 0x1f) == 0)
++			mipi_tx->rt_code[i] |= 0x10 << 5;
++
++		for (j = 0; j < 10; j++)
++			mtk_mipi_tx_update_bits(mipi_tx,
++				MIPITX_D2P_RTCODE * (i + 1) + j * 4,
++				1, mipi_tx->rt_code[i] >> j & 1);
++	}
++}
++
+ static void mtk_mipi_tx_power_on_signal(struct phy *phy)
+ {
+ 	struct mtk_mipi_tx *mipi_tx = phy_get_drvdata(phy);
+@@ -130,6 +149,8 @@ static void mtk_mipi_tx_power_on_signal(struct phy *phy)
+ 				RG_DSI_HSTX_LDO_REF_SEL,
+ 				(mipi_tx->mipitx_drive - 3000) / 200 << 6);
+ 
++	mtk_mipi_tx_config_calibration_data(mipi_tx);
++
+ 	mtk_mipi_tx_set_bits(mipi_tx, MIPITX_CK_CKMODE_EN, DSI_CK_CKMODE_EN);
+ }
+ 
 -- 
 2.21.0
 _______________________________________________
