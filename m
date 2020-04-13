@@ -2,90 +2,91 @@ Return-Path: <SRS0=tzuU=55=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 02343C2BA2B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2020 21:53:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 45CF3C2BA2B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2020 22:11:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C77F520644
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2020 21:53:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 150B320735
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Apr 2020 22:11:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QlEwRgRH";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="ZtXlUR+j"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C77F520644
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tLljlxcF"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 150B320735
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R0qqn/tymOz9CXkG9fvJ7NHtDvz9nky3Lz66z5nLnwY=; b=QlEwRgRHOT1WVA
-	3MmZ05J+VWRcLOhLdUPYmVJLIVSdeL5Yea2terTNl19kK7seqkG0kdY2LW7P0UmbSDDIOwzqDTIxY
-	2EvP/TJ2Ac+l8Dy1rpDF5CmEpVaR9wKs57KKIdqHr5X3V7Qhfr3e7KnLF0+ixPHdzS2XvncQSsNed
-	TFFLoGC8tAi9fe5PMi6fuyCvVmQRj/HSVtYXhD/f6L1FNbJBjbez2jPHe3V43idIjdApW51z/SO1n
-	M5sm4p/6gaandqoywa2erTSZuCE3Pp3ye6k0pnPgQaFKelOGGyOGaZmGQ8j1fKU/FupMpz3D8OrIA
-	qc1x0aHuNsW98+7csHcg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fD3rap6e4y7QASSgKx9FUBKNsqMUijLuzqdIG5CGMwU=; b=tLljlxcFNCAnTW
+	QyoQFxKgskjAextHppz4lD1Slnq39Ae97ETnoEq+//gXlYG0Tbm1xL7prsoS45VO7+25cN9/vEYVw
+	tUvDmeuLnxGjKUdT8dxJILASZFxINzgDKfGdhwosbtO2ckRpG4mXEimdibrE0SplU/M/BPMHUE6BX
+	pqBHOJzKfrN+mNo4D+rt8PFbyv03l0B36KkhjgHoHL1PSqRViCNXOS1wb3wy827NuY66RuTINQvvH
+	4TSc5RCYyX9JONUFowRlxsofy88us1kq6v3+BbomcaOrItbosiwcl+QMyqxC+4zG9r/OMiR9xBlHA
+	Xp3EzVWf8Yu8EBbVMPQg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jO70j-0007nj-8a; Mon, 13 Apr 2020 21:52:57 +0000
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]
- helo=us-smtp-1.mimecast.com)
+	id 1jO7I6-000338-SJ; Mon, 13 Apr 2020 22:10:54 +0000
+Received: from mga06.intel.com ([134.134.136.31])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jO70X-0007cz-AE
- for linux-mediatek@lists.infradead.org; Mon, 13 Apr 2020 21:52:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1586814764;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wxqewLP4iDn0WQn56N4JoZnVO/VnkSCHun6WFS8TA58=;
- b=ZtXlUR+jTPnPN3iCA/WKmMCiPRo/hAbmohSMyJGHGYT5o6A8cEKHi7627TDTDbNJ1TeeIo
- p8bBsVkbQlAOOZyLatf6AQfHgPPE8r3rc+shdpzSFQy3NMuUjhIpz78Cva0U8Z66l77Jjy
- UVK9pTbtiTQkMRsi9aA4mLn8axE6Yp8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-238-R_QYnAHVPD67nMQL-Amo0w-1; Mon, 13 Apr 2020 17:52:38 -0400
-X-MC-Unique: R_QYnAHVPD67nMQL-Amo0w-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F1B928018AA;
- Mon, 13 Apr 2020 21:52:32 +0000 (UTC)
-Received: from llong.remote.csb (ovpn-115-28.rdu2.redhat.com [10.10.115.28])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AB5E15C1B2;
- Mon, 13 Apr 2020 21:52:24 +0000 (UTC)
-Subject: Re: [PATCH 2/2] crypto: Remove unnecessary memzero_explicit()
-To: Joe Perches <joe@perches.com>, Andrew Morton <akpm@linux-foundation.org>, 
- David Howells <dhowells@redhat.com>,
- Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
- James Morris <jmorris@namei.org>, "Serge E. Hallyn" <serge@hallyn.com>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- Matthew Wilcox <willy@infradead.org>, David Rientjes <rientjes@google.com>
-References: <20200413211550.8307-1-longman@redhat.com>
- <20200413211550.8307-3-longman@redhat.com>
- <efd6ceb1f182aa7364e9706422768a1c1335aee4.camel@perches.com>
-From: Waiman Long <longman@redhat.com>
-Organization: Red Hat
-Message-ID: <7e13a94b-2e92-850f-33f7-0f42cfcd9009@redhat.com>
-Date: Mon, 13 Apr 2020 17:52:24 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
-MIME-Version: 1.0
-In-Reply-To: <efd6ceb1f182aa7364e9706422768a1c1335aee4.camel@perches.com>
+ id 1jO7I4-00031h-Gg; Mon, 13 Apr 2020 22:10:53 +0000
+IronPort-SDR: JUJEjoZ95zIj4x6aQdcX10xKmIQOdTiD3onrhcOyR13mpCscjlI3V03eZkPMPVHeXcM7C1Xxut
+ kaTvjGYxXmNA==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Apr 2020 15:10:51 -0700
+IronPort-SDR: JDDj75TY0RQWmARuE0Xi/GlC0/H86xFO5b0ySd1j8fwE8sDPolTRHc1UN0cL/FNVTr9odVA0lc
+ CPOqlLX5jQDA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,380,1580803200"; d="scan'208";a="268335512"
+Received: from orsmsx104.amr.corp.intel.com ([10.22.225.131])
+ by orsmga008.jf.intel.com with ESMTP; 13 Apr 2020 15:10:51 -0700
+Received: from orsmsx101.amr.corp.intel.com ([169.254.8.204]) by
+ ORSMSX104.amr.corp.intel.com ([169.254.4.76]) with mapi id 14.03.0439.000;
+ Mon, 13 Apr 2020 15:10:51 -0700
+From: "Derrick, Jonathan" <jonathan.derrick@intel.com>
+To: "heiko@sntech.de" <heiko@sntech.de>, "kgene@kernel.org"
+ <kgene@kernel.org>, "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>, "baolu.lu@linux.intel.com"
+ <baolu.lu@linux.intel.com>, "thierry.reding@gmail.com"
+ <thierry.reding@gmail.com>, "bjorn.andersson@linaro.org"
+ <bjorn.andersson@linaro.org>, "dwmw2@infradead.org" <dwmw2@infradead.org>,
+ "m.szyprowski@samsung.com" <m.szyprowski@samsung.com>, "joro@8bytes.org"
+ <joro@8bytes.org>, "will@kernel.org" <will@kernel.org>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>, "krzk@kernel.org"
+ <krzk@kernel.org>, "robdclark@gmail.com" <robdclark@gmail.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "gerald.schaefer@de.ibm.com" <gerald.schaefer@de.ibm.com>,
+ "agross@kernel.org" <agross@kernel.org>
+Subject: Re: [RFC PATCH 11/34] iommu: Split off default domain allocation
+ from group assignment
+Thread-Topic: [RFC PATCH 11/34] iommu: Split off default domain allocation
+ from group assignment
+Thread-Index: AQHWDQv5OT53tBkslE6hk6FAwlK+4qh4HAeA
+Date: Mon, 13 Apr 2020 22:10:50 +0000
+Message-ID: <6a801ff9e6471bda7c6f510dfa2ba7e7c35cb559.camel@intel.com>
+References: <20200407183742.4344-1-joro@8bytes.org>
+ <20200407183742.4344-12-joro@8bytes.org>
+In-Reply-To: <20200407183742.4344-12-joro@8bytes.org>
+Accept-Language: en-US
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.255.0.111]
+Content-ID: <32CCA6BEC8F53949916D97ED0C44AA2D@intel.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200413_145245_433244_561841C6 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20200413_151052_592350_284DA2F3 
+X-CRM114-Status: GOOD (  16.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,73 +98,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: samba-technical@lists.samba.org, virtualization@lists.linux-foundation.org,
- linux-mm@kvack.org, linux-sctp@vger.kernel.org, target-devel@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, devel@driverdev.osuosl.org,
- linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org, x86@kernel.org,
- kasan-dev@googlegroups.com, cocci@systeme.lip6.fr, linux-wpan@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-crypto@vger.kernel.org,
- linux-pm@vger.kernel.org, ecryptfs@vger.kernel.org, linux-nfs@vger.kernel.org,
- linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-cifs@vger.kernel.org, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-bluetooth@vger.kernel.org, linux-security-module@vger.kernel.org,
- keyrings@vger.kernel.org, tipc-discussion@lists.sourceforge.net,
- wireguard@lists.zx2c4.com, linux-ppp@vger.kernel.org,
- linux-integrity@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- linux-btrfs@vger.kernel.org
+Cc: "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+ "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "virtualization@lists.linux-foundation.org"
+ <virtualization@lists.linux-foundation.org>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>,
+ "jroedel@suse.de" <jroedel@suse.de>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/13/20 5:31 PM, Joe Perches wrote:
-> On Mon, 2020-04-13 at 17:15 -0400, Waiman Long wrote:
->> Since kfree_sensitive() will do an implicit memzero_explicit(), there
->> is no need to call memzero_explicit() before it. Eliminate those
->> memzero_explicit() and simplify the call sites.
-> 2 bits of trivia:
->
->> diff --git a/drivers/crypto/allwinner/sun8i-ce/sun8i-ce-cipher.c b/drivers/crypto/allwinner/sun8i-ce/sun8i-ce-cipher.c
-> []
->> @@ -391,10 +388,7 @@ int sun8i_ce_aes_setkey(struct crypto_skcipher *tfm, const u8 *key,
->>  		dev_dbg(ce->dev, "ERROR: Invalid keylen %u\n", keylen);
->>  		return -EINVAL;
->>  	}
->> -	if (op->key) {
->> -		memzero_explicit(op->key, op->keylen);
->> -		kfree(op->key);
->> -	}
->> +	kfree_sensitive(op->key);
->>  	op->keylen = keylen;
->>  	op->key = kmemdup(key, keylen, GFP_KERNEL | GFP_DMA);
->>  	if (!op->key)
-> It might be a defect to set op->keylen before the kmemdup succeeds.
-It could be. I can move it down after the op->key check.
->> @@ -416,10 +410,7 @@ int sun8i_ce_des3_setkey(struct crypto_skcipher *tfm, const u8 *key,
->>  	if (err)
->>  		return err;
->>  
->> -	if (op->key) {
->> -		memzero_explicit(op->key, op->keylen);
->> -		kfree(op->key);
->> -	}
->> +	free_sensitive(op->key, op->keylen);
-> Why not kfree_sensitive(op->key) ?
+Hi Joerg,
 
-Oh, it is a bug. I will send out v2 to fix that.
-
-Thanks for spotting it.
-
-Cheers,
-Longman
+On Tue, 2020-04-07 at 20:37 +0200, Joerg Roedel wrote:
+> From: Joerg Roedel <jroedel@suse.de>
+> 
+> When a bus is initialized with iommu-ops, all devices on the bus are
+> scanned and iommu-groups are allocated for them, and each groups will
+> also get a default domain allocated.
+> 
+> Until now this happened as soon as the group was created and the first
+> device added to it. When other devices with different default domain
+> requirements were added to the group later on, the default domain was
+> re-allocated, if possible.
+> 
+> This resulted in some back and forth and unnecessary allocations, so
+> change the flow to defer default domain allocation until all devices
+> have been added to their respective IOMMU groups.
+> 
+> The default domains are allocated for newly allocated groups after
+> each device on the bus is handled and was probed by the IOMMU driver.
+> 
+> Signed-off-by: Joerg Roedel <jroedel@suse.de>
+> ---
+[snip]
 
 
->
->
+I had to add the following for initial VMD support. The new PCIe domain
+added on VMD endpoint probe didn't have the dev_iommu member set on the
+VMD subdevices, which I'm guessing is due to probe_iommu_group already
+having been run on the VMD endpoint's group prior to those subdevices
+being added.
 
-
+diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+index 8a5e1ac328dd..ac1e4fb9bf48 100644
+--- a/drivers/iommu/iommu.c
++++ b/drivers/iommu/iommu.c
+@@ -1577,6 +1577,9 @@ static int iommu_bus_notifier(struct notifier_block *nb,
+        if (action == BUS_NOTIFY_ADD_DEVICE) {
+                int ret;
+ 
++               if (!dev_iommu_get(dev))
++                       return -ENOMEM;
++
+                ret = iommu_probe_device(dev);
+                return (ret) ? NOTIFY_DONE : NOTIFY_OK;
+        } else if (action == BUS_NOTIFY_REMOVED_DEVICE) {
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
