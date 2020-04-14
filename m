@@ -2,64 +2,83 @@ Return-Path: <SRS0=jJra=56=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 955FFC2BB1D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 06:17:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7030AC2BB1D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 06:32:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5A2C42072D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 06:17:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4000F20678
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 06:32:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TMM/YdZD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5A2C42072D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZWXL8rmJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="xY5lbxNe"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4000F20678
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=0lp5HKUjzQlAIzWpnrw+dnrMrvH/5pss5Cai1dRsWWo=; b=TMM
-	/YdZD0Gnb1872UqAz5IxisM3kAWO40OkYOEBg0KCLu+VfBqTwdf1OglTcdNzXdrY4a98a0cb/RxDr
-	XJ9urhxlGy6/H2lknaiuZbFeeIkUoTLRAV7BFmISL+5kFjCOR2wsBffC0DXSGW6+qXCyYQ7ZoOZGJ
-	peravtLk3s80QcsDrzCS0wDXQXU6POrnfWmQbjySCf2n0Ag9hganWbIa4JpUEFx/QgowGGfVrVuPl
-	b644qfhjj4uruG/ELd14y0q8MsN7QqVQnYyx94khcf7jQIm2MNNjSJG2Z6nwrNPbkir+7+VoRBEUt
-	IPPikB+Ti0p/9+eLbTcDSEg0WyoK/+A==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
+	Date:References:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=s8mKN1A8XBJ+GlWKcYS6RVfRs+79CCDARJYigVLtAic=; b=ZWXL8rmJKnXv6Y
+	XTmRD6IBvMATguOQ5Lt7PMHe7tFNb8NDkSYomkBnPYwDdyRAbdaJLlQaZQU73ntLWPpYExR7sHgrW
+	HbnyzI4JdsAbbQciZ0A6y/Yx4stdpP2I2C7QdOGt6+jE3FreSAcSVFaP6TAwZOVsPm9mqjbgGEFps
+	bUSbkC4GeoAjXlHxiA3steHoK1BtwgWu+YMHZllkruvYK5jv+LOku9gdcuGhdjRm6Lg1YRu6X3kkp
+	sIFFu5Tqzf0oynBXcwMlOWJq8SDFiMn2/AU5I0MVD289/tVIQTajXy0i5XgMtHSjE4ew7qkObTBmP
+	/ALDYtlTnlJ+rKUORhqQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOEsw-0003eV-Bf; Tue, 14 Apr 2020 06:17:26 +0000
-Received: from labrats.qualcomm.com ([199.106.110.90])
+	id 1jOF7H-0004bG-Fj; Tue, 14 Apr 2020 06:32:15 +0000
+Received: from mail26.static.mailgun.info ([104.130.122.26])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOEsS-0003CP-Em; Tue, 14 Apr 2020 06:16:57 +0000
-IronPort-SDR: GF+nhx7pQG5Eg2UGkLUudbnUbCQzLoEq+k3j4XEYypW5RCLFBgcA1kgW9dhsR/G1jrHiUQ2pfu
- y4tcVGbk6/oBJWG/HWuxHpiLGKh9Ujh2QzIpFKwO4FTUc9if6Jr1WeBNWUL8yJBUeC7UTcoM4I
- EU3QbUOhpMpT4IGo408k+3dMtD18YNm202DnGiZZMz/bjvXUZXWPNiP6Af9mYJeKv8p8sA8IAg
- RkJvlbQEnfZRQhOTMM1/o3dSLhfBAtguxNZPkYk9V2FZOW2VIEAUIFEJj87g44rsDN4GvnGP68
- L2Y=
-X-IronPort-AV: E=Sophos;i="5.72,381,1580803200"; d="scan'208";a="46834943"
-Received: from unknown (HELO ironmsg03-sd.qualcomm.com) ([10.53.140.143])
- by labrats.qualcomm.com with ESMTP; 13 Apr 2020 23:14:56 -0700
-Received: from pacamara-linux.qualcomm.com ([192.168.140.135])
- by ironmsg03-sd.qualcomm.com with ESMTP; 13 Apr 2020 23:14:54 -0700
-Received: by pacamara-linux.qualcomm.com (Postfix, from userid 359480)
- id CE87E3B21; Mon, 13 Apr 2020 23:14:54 -0700 (PDT)
-From: Can Guo <cang@codeaurora.org>
-To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
- rnayak@codeaurora.org, linux-scsi@vger.kernel.org, kernel-team@android.com,
- saravanak@google.com, salyzyn@google.com, cang@codeaurora.org
-Subject: [PATCH v2 1/1] scsi: ufs: full reinit upon resume if link was off
-Date: Mon, 13 Apr 2020 23:14:48 -0700
-Message-Id: <1586844892-22720-1-git-send-email-cang@codeaurora.org>
-X-Mailer: git-send-email 1.9.1
+ id 1jOF7E-0004au-Uc
+ for linux-mediatek@lists.infradead.org; Tue, 14 Apr 2020 06:32:14 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1586845932; h=Content-Type: MIME-Version: Message-ID:
+ In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
+ bh=ob+tAqQqPFUftyV/IRMjatbp23VWl19cMrBGgD5tvHo=;
+ b=xY5lbxNei0cybfiR4LF9VJhlZrFA/xCBwo165ECxHmCjWvxHDI6lBGypTIaN+kU5JDnJ2Pe1
+ qBzZj3/+jlNFzlq/cIHYvDW4EWsLbmtj2ufZogOWlhAZI+7SSBmF74FI51Rj1XEbRP6ZGnjC
+ WrONEtCPxSL6qwHKOoeByNK0iBA=
+X-Mailgun-Sending-Ip: 104.130.122.26
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
+ by mxa.mailgun.org with ESMTP id 5e9558e7.7f7ee0204340-smtp-out-n01;
+ Tue, 14 Apr 2020 06:32:07 -0000 (UTC)
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 179FAC433F2; Tue, 14 Apr 2020 06:32:06 +0000 (UTC)
+Received: from tynnyri.adurom.net (tynnyri.adurom.net [51.15.11.48])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested) (Authenticated sender: kvalo)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id E60EAC433CB;
+ Tue, 14 Apr 2020 06:32:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org E60EAC433CB
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=none smtp.mailfrom=kvalo@codeaurora.org
+From: Kalle Valo <kvalo@codeaurora.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: Re: [PATCH v2 2/2] mt76: mt7615: introduce mt7663u support
+References: <cover.1586451954.git.lorenzo@kernel.org>
+ <464261d4bc9d28c220cc2bc13244f99709949359.1586451954.git.lorenzo@kernel.org>
+Date: Tue, 14 Apr 2020 09:32:01 +0300
+In-Reply-To: <464261d4bc9d28c220cc2bc13244f99709949359.1586451954.git.lorenzo@kernel.org>
+ (Lorenzo Bianconi's message of "Thu, 9 Apr 2020 19:09:42 +0200")
+Message-ID: <87zhbelgri.fsf@tynnyri.adurom.net>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200413_231656_536438_8C03D31E 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20200413_233213_049047_4DA91702 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,67 +90,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Bart Van Assche <bvanassche@acm.org>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Venkat Gopalakrishnan <venkatg@codeaurora.org>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- open list <linux-kernel@vger.kernel.org>, Avri Altman <avri.altman@wdc.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Alim Akhtar <alim.akhtar@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Tomas Winkler <tomas.winkler@intel.com>,
- Stanley Chu <stanley.chu@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, Bean Huo <beanhuo@micron.com>
-MIME-Version: 1.0
+Cc: ryder.lee@mediatek.com, sean.wang@mediatek.com,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ lorenzo.bianconi@redhat.com, nbd@nbd.name
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Asutosh Das <asutoshd@codeaurora.org>
+Lorenzo Bianconi <lorenzo@kernel.org> writes:
 
-During suspend, if the link is put to off, it would require
-a full initialization during resume. This patch resets and
-restores both the host and the card during initialization,
-otherwise, host only reset and restore may fail occasionally.
+> Introduce support for mt7663u 802.11ac 2x2:2 chipset to mt7615 driver.
+> Main difference respect to pcie code base is the usb code needs to
+> configure wtbl from non-atomic context
+>
+> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Signed-off-by: Asutosh Das <asutoshd@codeaurora.org>
-Signed-off-by: Can Guo <cang@codeaurora.org>
-Reviewed-by: Bean Huo <beanhuo@micron.com>
-Reviewed-by: Alim Akhtar <alim.akhtar@samsung.com>
-Acked-by: Stanley Chu <stanley.chu@mediatek.com>
+[...]
 
-Change since v1:
-- Incorporated Alim's comments.
+> --- /dev/null
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
+> @@ -0,0 +1,396 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/* Copyright (C) 2019 MediaTek Inc.
 
----
- drivers/scsi/ufs/ufshcd.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+mt76 is ISC, why are you using GPL? I would like to avoid using
+different licenses in the same driver.
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 64e42ef..90313c8 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -8048,9 +8048,13 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 		else
- 			goto vendor_suspend;
- 	} else if (ufshcd_is_link_off(hba)) {
--		ret = ufshcd_host_reset_and_restore(hba);
- 		/*
--		 * ufshcd_host_reset_and_restore() should have already
-+		 * A full initialization of the host and the device is
-+		 * required since the link was put to off during suspend.
-+		 */
-+		ret = ufshcd_reset_and_restore(hba);
-+		/*
-+		 * ufshcd_reset_and_restore() should have already
- 		 * set the link state as active
- 		 */
- 		if (ret || !ufshcd_is_link_active(hba))
+While invistigating more I noticed other files using GPL:
+
+Kconfig:# SPDX-License-Identifier: GPL-2.0-only
+Makefile:# SPDX-License-Identifier: GPL-2.0-only
+mt7603/Kconfig:# SPDX-License-Identifier: GPL-2.0-only
+mt7603/Makefile:# SPDX-License-Identifier: GPL-2.0-only
+mt7615/Kconfig:# SPDX-License-Identifier: GPL-2.0-only
+mt76x0/Kconfig:# SPDX-License-Identifier: GPL-2.0-only
+mt76x0/Makefile:# SPDX-License-Identifier: GPL-2.0-only
+mt76x0/eeprom.c:// SPDX-License-Identifier: GPL-2.0-only
+mt76x0/eeprom.h:/* SPDX-License-Identifier: GPL-2.0-only */
+mt76x0/init.c:// SPDX-License-Identifier: GPL-2.0-only
+mt76x0/initvals.h:/* SPDX-License-Identifier: GPL-2.0-only */
+mt76x0/initvals_phy.h:/* SPDX-License-Identifier: GPL-2.0-only */
+mt76x0/main.c:// SPDX-License-Identifier: GPL-2.0-only
+mt76x0/mcu.h:/* SPDX-License-Identifier: GPL-2.0-only */
+mt76x0/mt76x0.h:/* SPDX-License-Identifier: GPL-2.0-only */
+mt76x0/phy.c:// SPDX-License-Identifier: GPL-2.0-only
+mt76x0/phy.h:/* SPDX-License-Identifier: GPL-2.0-only */
+mt76x0/usb.c:// SPDX-License-Identifier: GPL-2.0-only
+mt76x2/Kconfig:# SPDX-License-Identifier: GPL-2.0-only
+mt76x2/Makefile:# SPDX-License-Identifier: GPL-2.0-only
+util.h:/* SPDX-License-Identifier: GPL-2.0-only */
+
+Is there a reason for this? Can this be fixed?
+
 -- 
-Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
-
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
 _______________________________________________
 Linux-mediatek mailing list
