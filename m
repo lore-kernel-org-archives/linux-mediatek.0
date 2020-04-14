@@ -7,17 +7,16 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E685C2BBC7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:24:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A08ADC352B6
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:24:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2B3E52064A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:24:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 71FB720732
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:24:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JLSRMu8D";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="rJTBK+Tj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2B3E52064A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="csoo7HRE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 71FB720732
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,34 +26,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=VZxQP8Lr82mRWps992Pe+uZmGt9luJCdRNbde5j8FiA=; b=JLSRMu8DmSXQJd8ucodq92XxzM
-	EMkfcTgt5F8jVyojp+aLNW99jYonL2QBpmpTzLGU9Z1nSUbqZY8uScGIzqMPeZLlTLMLD1N6Ei8ei
-	W0AG6/KOv7ASF6xpVI1fwPKOnf0fK0uD+G95jHF83JFhlppEvv+1lEWAywlqla7WqAs2tENwlfNqi
-	+/3TlaGyrO15OrFrklf9/yCQ5jYajvC3JCRSaixgc659kh8FHHUIpi5QGg9bx/aZAKDP5EUoxybB/
-	aAq+k4NcHeG39ndZ3cf05sYtSEDGqweQFMyNp9D+Bdnm3FVvB3n/8vSZy54rQv45G55fXft7vbvLu
-	fzOH1QIg==;
+	bh=GgRvJakt6doscvL+lccOiejK5G+S+kKbppqt7r0bmu8=; b=csoo7HREom3uS4yjlC+vvJdFTn
+	zhJMtfj75N18cTYeXO4rM9W9TXkRguqWVhX7Xu0YP9NYF61VSHy5fZc0YVB7FBUHMOSBTL77Dw9RP
+	2JSEEVn78IEvfNd1+FQ5wVYLjXPwRxyO0Gu2CjmIMCHGAqVly/D8TIm4nV9mAyzoXdgqSByuTTi51
+	Bm0YbiWV4J/g+9AYxDshJRO5H3TGqoU+X0NWnOUmXM55xkHMWWen08L+sOFqmhZmM9/7sdU/RJ4UB
+	oue0ipL8x9TU5TiBSjSG8wiLWhrsy2OD5JTEPN+9egAe6+rfEv6Ka0ZzciNZXhVpkyjj3CCuYqluK
+	jcyxndQA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOLYJ-0005L3-0F; Tue, 14 Apr 2020 13:24:35 +0000
-Received: from merlin.infradead.org ([2001:8b0:10b:1231::1])
+	id 1jOLYK-0005NI-44; Tue, 14 Apr 2020 13:24:36 +0000
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOLQK-0002qr-Te; Tue, 14 Apr 2020 13:16:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=merlin.20170209; h=References:In-Reply-To:Message-Id:Date:
- Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=ezIcyRMiPGZm7PvEZbHm5gxVf6Pdmy4EhVwWSrt2Oa4=; b=rJTBK+TjnrVO/kI5aXKW2rbmk2
- 0umiqzu/t7pWZfnH+eEPyYQZTwkNkCRXBV7I0chclV7wixxslQ0JhAqghM6HHwLxIVCEewEAFzdL7
- 3nixjtaWTXTffQe6F7arf9emxKJSXBRU6u9BrhtFXwNLGeF85jU8k/Dg4kXWos5G+EmHgUu1xhJzB
- rLbIBdmWZY5sHqTX/40LVp4+DQC3vO1E6tnypLdhC9heUPwo7so1dvX5Yq43CL3wARb2CiUmQdHd1
- PU6gbgbREtxtFMeJF3QKGxWLwYd+gNG7J7NUmCMj8hZm6Y9PwXl3Vg+RoNRgjRdUzJk/bLgDkximY
- RfSX9DVA==;
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
- helo=theia.8bytes.org)
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOLQI-0007xq-5i; Tue, 14 Apr 2020 13:16:19 +0000
+ id 1jOLQF-0002kI-HP; Tue, 14 Apr 2020 13:16:21 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 701C280A; Tue, 14 Apr 2020 15:15:57 +0200 (CEST)
+ id 3FB4A736; Tue, 14 Apr 2020 15:15:56 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -69,13 +54,16 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v2 31/33] iommu/exynos: Convert to probe/release_device()
+Subject: [PATCH v2 25/33] iommu/rockchip: Convert to probe/release_device()
  call-backs
-Date: Tue, 14 Apr 2020 15:15:40 +0200
-Message-Id: <20200414131542.25608-32-joro@8bytes.org>
+Date: Tue, 14 Apr 2020 15:15:34 +0200
+Message-Id: <20200414131542.25608-26-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200414131542.25608-1-joro@8bytes.org>
 References: <20200414131542.25608-1-joro@8bytes.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200414_061615_897979_C509B411 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,88 +88,76 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Convert the Exynos IOMMU driver to use the probe_device() and
+Convert the Rockchip IOMMU driver to use the probe_device() and
 release_device() call-backs of iommu_ops, so that the iommu core code
 does the group and sysfs setup.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/exynos-iommu.c | 26 ++++++--------------------
- 1 file changed, 6 insertions(+), 20 deletions(-)
+ drivers/iommu/rockchip-iommu.c | 26 +++++++-------------------
+ 1 file changed, 7 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
-index 09cdd163560a..60c8a56e4a3f 100644
---- a/drivers/iommu/exynos-iommu.c
-+++ b/drivers/iommu/exynos-iommu.c
-@@ -1235,19 +1235,13 @@ static phys_addr_t exynos_iommu_iova_to_phys(struct iommu_domain *iommu_domain,
- 	return phys;
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index b33cdd5aad81..d25c2486ca07 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -1054,40 +1054,28 @@ static void rk_iommu_domain_free(struct iommu_domain *domain)
+ 	kfree(rk_domain);
  }
  
--static int exynos_iommu_add_device(struct device *dev)
-+static struct iommu_device *exynos_iommu_probe_device(struct device *dev)
+-static int rk_iommu_add_device(struct device *dev)
++static struct iommu_device *rk_iommu_probe_device(struct device *dev)
  {
- 	struct exynos_iommu_owner *owner = dev->archdata.iommu;
- 	struct sysmmu_drvdata *data;
 -	struct iommu_group *group;
+-	struct rk_iommu *iommu;
+ 	struct rk_iommudata *data;
++	struct rk_iommu *iommu;
  
- 	if (!has_sysmmu(dev))
+ 	data = dev->archdata.iommu;
+ 	if (!data)
 -		return -ENODEV;
--
--	group = iommu_group_get_for_dev(dev);
--
--	if (IS_ERR(group))
--		return PTR_ERR(group);
 +		return ERR_PTR(-ENODEV);
  
- 	list_for_each_entry(data, &owner->controllers, owner_node) {
- 		/*
-@@ -1259,17 +1253,15 @@ static int exynos_iommu_add_device(struct device *dev)
- 					     DL_FLAG_STATELESS |
- 					     DL_FLAG_PM_RUNTIME);
- 	}
--	iommu_group_put(group);
+ 	iommu = rk_iommu_from_dev(dev);
  
- 	/* There is always at least one entry, see exynos_iommu_of_xlate() */
- 	data = list_first_entry(&owner->controllers,
- 				struct sysmmu_drvdata, owner_node);
--	iommu_device_link(&data->iommu, dev);
+-	group = iommu_group_get_for_dev(dev);
+-	if (IS_ERR(group))
+-		return PTR_ERR(group);
+-	iommu_group_put(group);
+-
+-	iommu_device_link(&iommu->iommu, dev);
+ 	data->link = device_link_add(dev, iommu->dev,
+ 				     DL_FLAG_STATELESS | DL_FLAG_PM_RUNTIME);
  
 -	return 0;
-+	return &data->iommu;
++	return &iommu->iommu;
  }
  
--static void exynos_iommu_remove_device(struct device *dev)
-+static void exynos_iommu_release_device(struct device *dev)
+-static void rk_iommu_remove_device(struct device *dev)
++static void rk_iommu_release_device(struct device *dev)
  {
- 	struct exynos_iommu_owner *owner = dev->archdata.iommu;
- 	struct sysmmu_drvdata *data;
-@@ -1287,15 +1279,9 @@ static void exynos_iommu_remove_device(struct device *dev)
- 			iommu_group_put(group);
- 		}
- 	}
--	iommu_group_remove_device(dev);
+-	struct rk_iommu *iommu;
+ 	struct rk_iommudata *data = dev->archdata.iommu;
  
- 	list_for_each_entry(data, &owner->controllers, owner_node)
- 		device_link_del(data->link);
+-	iommu = rk_iommu_from_dev(dev);
 -
--	/* There is always at least one entry, see exynos_iommu_of_xlate() */
--	data = list_first_entry(&owner->controllers,
--				struct sysmmu_drvdata, owner_node);
--	iommu_device_unlink(&data->iommu, dev);
+ 	device_link_del(data->link);
+-	iommu_device_unlink(&iommu->iommu, dev);
+-	iommu_group_remove_device(dev);
  }
  
- static int exynos_iommu_of_xlate(struct device *dev,
-@@ -1341,8 +1327,8 @@ static const struct iommu_ops exynos_iommu_ops = {
- 	.unmap = exynos_iommu_unmap,
- 	.iova_to_phys = exynos_iommu_iova_to_phys,
- 	.device_group = generic_device_group,
--	.add_device = exynos_iommu_add_device,
--	.remove_device = exynos_iommu_remove_device,
-+	.probe_device = exynos_iommu_probe_device,
-+	.release_device = exynos_iommu_release_device,
- 	.pgsize_bitmap = SECT_SIZE | LPAGE_SIZE | SPAGE_SIZE,
- 	.of_xlate = exynos_iommu_of_xlate,
- };
+ static struct iommu_group *rk_iommu_device_group(struct device *dev)
+@@ -1126,8 +1114,8 @@ static const struct iommu_ops rk_iommu_ops = {
+ 	.detach_dev = rk_iommu_detach_device,
+ 	.map = rk_iommu_map,
+ 	.unmap = rk_iommu_unmap,
+-	.add_device = rk_iommu_add_device,
+-	.remove_device = rk_iommu_remove_device,
++	.probe_device = rk_iommu_probe_device,
++	.release_device = rk_iommu_release_device,
+ 	.iova_to_phys = rk_iommu_iova_to_phys,
+ 	.device_group = rk_iommu_device_group,
+ 	.pgsize_bitmap = RK_IOMMU_PGSIZE_BITMAP,
 -- 
 2.17.1
 
