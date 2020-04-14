@@ -5,18 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 957E9C2BA19
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:24:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BA9B5C2BB86
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:24:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C0D52063A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:24:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 836BF2064A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:24:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BCCEvxDJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C0D52063A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jDAbx1ya"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 836BF2064A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,21 +26,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=IxQuH351XsZ0LC9aZFKz8KMSea4W9ho4QcAHSJUeB/Y=; b=BCCEvxDJxV82OMtLJtNSk3GaJR
-	HC/5gBf8JBP2sSrRnmVci+KPLvhTggM5BNrbAArtgZTGTxtwpxj63oUUzbS0EFMYf6r3G8Sd4AxBW
-	kxg4m0gPNJRvC9l6Er+60FW0R9wvNo+TR4o1l/AWkccZsKB2AkOsDm9i1eiH7l6LaVtQP+jbdbljJ
-	dt5qDTFZ1IAp2YHS+QK2bStWrDEq/rEo+4wCVOUzzqePMpVNW5+/ONlvMmXg4ZZ/ancqNKfV6CaAW
-	LoD2v8BPAsK0qZXoiJ2MacpzxNsdOESpMjlT8vU1EB7fU5ofWHTms9v8Bl2XfUiByz8D43kBWURmG
-	7LE8CcGg==;
+	bh=H8iXsRbaRnajDfpGwopYxNyq08gmkR1aTuHBr9F0abU=; b=jDAbx1yag6YbgBJz9pCdm55LGB
+	1d/tHunJy/mAX1SjREvtHSbDr1w+HML5rHf0cHJDASnB+hU6LepDXpkLPD4tpmKtHsB3HDRuhZNzB
+	85CNFsCIE6rDHDj/dV/7SAbDqBmLtU9REomM38qaRISD8VFf8nvYDtZ7gXi3CDErK/Vg/lADq2xYq
+	dWCDFRmYW+AlZSwHCtY0JEmGkAKzYRwjfErIyiY4WNmLiUCNetK8gVGUxarLTi6KvO/VTn+/WQrq+
+	0m0bnz/ydofIlq7DBPzzUmLbK0qgQL66P5HV97+0Qc4642tLpDM1uVNcL3BpoGvVQviXmhvufMiv0
+	d4cuyHMw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOLYR-0005aA-VK; Tue, 14 Apr 2020 13:24:43 +0000
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
- helo=theia.8bytes.org)
+	id 1jOLYO-0005VY-RN; Tue, 14 Apr 2020 13:24:40 +0000
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOLQH-0002nR-Cx; Tue, 14 Apr 2020 13:16:22 +0000
+ id 1jOLQH-0002nS-Hi; Tue, 14 Apr 2020 13:16:22 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 076337BA; Tue, 14 Apr 2020 15:15:56 +0200 (CEST)
+ id 470097E3; Tue, 14 Apr 2020 15:15:57 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -55,16 +54,16 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v2 29/33] iommu/omap: Convert to probe/release_device()
- call-backs
-Date: Tue, 14 Apr 2020 15:15:38 +0200
-Message-Id: <20200414131542.25608-30-joro@8bytes.org>
+Subject: [PATCH v2 30/33] iommu/exynos: Use first SYSMMU in controllers list
+ for IOMMU core
+Date: Tue, 14 Apr 2020 15:15:39 +0200
+Message-Id: <20200414131542.25608-31-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200414131542.25608-1-joro@8bytes.org>
 References: <20200414131542.25608-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200414_061617_774990_DCE1BBF5 
-X-CRM114-Status: GOOD (  15.16  )
+X-CRM114-CacheID: sfid-20200414_061617_901652_2E5728C1 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,140 +88,43 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Convert the OMAP IOMMU driver to use the probe_device() and
-release_device() call-backs of iommu_ops, so that the iommu core code
-does the group and sysfs setup.
+On Exynos platforms there can be more than one SYSMMU (IOMMU) for one
+DMA master device. Since the IOMMU core code expects only one hardware
+IOMMU, use the first SYSMMU in the list.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/omap-iommu.c | 49 ++++++++++----------------------------
- 1 file changed, 13 insertions(+), 36 deletions(-)
+ drivers/iommu/exynos-iommu.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
-index ecc9d0829a91..6699fe6d9e06 100644
---- a/drivers/iommu/omap-iommu.c
-+++ b/drivers/iommu/omap-iommu.c
-@@ -1640,15 +1640,13 @@ static phys_addr_t omap_iommu_iova_to_phys(struct iommu_domain *domain,
- 	return ret;
- }
- 
--static int omap_iommu_add_device(struct device *dev)
-+static struct iommu_device *omap_iommu_probe_device(struct device *dev)
- {
- 	struct omap_iommu_arch_data *arch_data, *tmp;
-+	struct platform_device *pdev;
- 	struct omap_iommu *oiommu;
--	struct iommu_group *group;
- 	struct device_node *np;
--	struct platform_device *pdev;
- 	int num_iommus, i;
--	int ret;
- 
- 	/*
- 	 * Allocate the archdata iommu structure for DT-based devices.
-@@ -1657,7 +1655,7 @@ static int omap_iommu_add_device(struct device *dev)
- 	 * IOMMU users.
- 	 */
- 	if (!dev->of_node)
--		return 0;
-+		return ERR_PTR(-ENODEV);
- 
- 	/*
- 	 * retrieve the count of IOMMU nodes using phandle size as element size
-@@ -1670,27 +1668,27 @@ static int omap_iommu_add_device(struct device *dev)
- 
- 	arch_data = kcalloc(num_iommus + 1, sizeof(*arch_data), GFP_KERNEL);
- 	if (!arch_data)
--		return -ENOMEM;
-+		return ERR_PTR(-ENOMEM);
- 
- 	for (i = 0, tmp = arch_data; i < num_iommus; i++, tmp++) {
- 		np = of_parse_phandle(dev->of_node, "iommus", i);
- 		if (!np) {
- 			kfree(arch_data);
--			return -EINVAL;
-+			return ERR_PTR(-EINVAL);
- 		}
- 
- 		pdev = of_find_device_by_node(np);
- 		if (!pdev) {
- 			of_node_put(np);
- 			kfree(arch_data);
--			return -ENODEV;
-+			return ERR_PTR(-ENODEV);
- 		}
- 
- 		oiommu = platform_get_drvdata(pdev);
- 		if (!oiommu) {
- 			of_node_put(np);
- 			kfree(arch_data);
--			return -EINVAL;
-+			return ERR_PTR(-EINVAL);
- 		}
- 
- 		tmp->iommu_dev = oiommu;
-@@ -1699,46 +1697,25 @@ static int omap_iommu_add_device(struct device *dev)
- 		of_node_put(np);
+diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
+index 186ff5cc975c..09cdd163560a 100644
+--- a/drivers/iommu/exynos-iommu.c
++++ b/drivers/iommu/exynos-iommu.c
+@@ -1261,6 +1261,11 @@ static int exynos_iommu_add_device(struct device *dev)
  	}
+ 	iommu_group_put(group);
  
-+	dev->archdata.iommu = arch_data;
++	/* There is always at least one entry, see exynos_iommu_of_xlate() */
++	data = list_first_entry(&owner->controllers,
++				struct sysmmu_drvdata, owner_node);
++	iommu_device_link(&data->iommu, dev);
 +
- 	/*
- 	 * use the first IOMMU alone for the sysfs device linking.
- 	 * TODO: Evaluate if a single iommu_group needs to be
- 	 * maintained for both IOMMUs
- 	 */
- 	oiommu = arch_data->iommu_dev;
--	ret = iommu_device_link(&oiommu->iommu, dev);
--	if (ret) {
--		kfree(arch_data);
--		return ret;
--	}
--
--	dev->archdata.iommu = arch_data;
--
--	/*
--	 * IOMMU group initialization calls into omap_iommu_device_group, which
--	 * needs a valid dev->archdata.iommu pointer
--	 */
--	group = iommu_group_get_for_dev(dev);
--	if (IS_ERR(group)) {
--		iommu_device_unlink(&oiommu->iommu, dev);
--		dev->archdata.iommu = NULL;
--		kfree(arch_data);
--		return PTR_ERR(group);
--	}
--	iommu_group_put(group);
- 
--	return 0;
-+	return &oiommu->iommu;
+ 	return 0;
  }
  
--static void omap_iommu_remove_device(struct device *dev)
-+static void omap_iommu_release_device(struct device *dev)
- {
- 	struct omap_iommu_arch_data *arch_data = dev->archdata.iommu;
+@@ -1286,6 +1291,11 @@ static void exynos_iommu_remove_device(struct device *dev)
  
- 	if (!dev->of_node || !arch_data)
- 		return;
+ 	list_for_each_entry(data, &owner->controllers, owner_node)
+ 		device_link_del(data->link);
++
++	/* There is always at least one entry, see exynos_iommu_of_xlate() */
++	data = list_first_entry(&owner->controllers,
++				struct sysmmu_drvdata, owner_node);
++	iommu_device_unlink(&data->iommu, dev);
+ }
  
--	iommu_device_unlink(&arch_data->iommu_dev->iommu, dev);
--	iommu_group_remove_device(dev);
--
- 	dev->archdata.iommu = NULL;
- 	kfree(arch_data);
- 
-@@ -1763,8 +1740,8 @@ static const struct iommu_ops omap_iommu_ops = {
- 	.map		= omap_iommu_map,
- 	.unmap		= omap_iommu_unmap,
- 	.iova_to_phys	= omap_iommu_iova_to_phys,
--	.add_device	= omap_iommu_add_device,
--	.remove_device	= omap_iommu_remove_device,
-+	.probe_device	= omap_iommu_probe_device,
-+	.release_device	= omap_iommu_release_device,
- 	.device_group	= omap_iommu_device_group,
- 	.pgsize_bitmap	= OMAP_IOMMU_PGSIZES,
- };
+ static int exynos_iommu_of_xlate(struct device *dev,
 -- 
 2.17.1
 
