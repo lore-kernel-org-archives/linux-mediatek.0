@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C8FF4C2BB86
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:23:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 20959C2BA19
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:23:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 83FC52063A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:23:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E4F2C2063A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:23:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Do3dgRf8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 83FC52063A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pArlo2f+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E4F2C2063A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,21 +26,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=ckxmVyusM9oi4ezVrzrPXx53VoujgMWhfK/IbsVHD24=; b=Do3dgRf8SAROePxnh6u36GUwti
-	L3zQyx+bec3z2iGsJ00K2BHUzznf9Wlgc4TEWcUm13NOgOdbe45408v/JMQ3mZbCbpTo/mMqK2z3p
-	7JPPfCzkzAf83qjsxScIaawMjripbS5mOzf0foI4Beedarm0BGBihlNxmoA8KcwUJ/WQXbIzHSDTr
-	W5mRRO29wBgmkTfDPWrLD4wLAzATNvQwAGRo2y7q6ac0JjQrthZRZlSvP6/M0FSY3teDh2DsScPq6
-	GAKoJKOtmt9/FzT03iHfeNaZ4cYAfJ2JTatHUtn2sqd47wFoUs5SFZ7Y7itzXw7zNpan1R6GzsT+h
-	jmYF1ojQ==;
+	bh=30PO0ccsp2yHnWoweG/JVMZ5zj2Bbz2gPi3vDU9PqzE=; b=pArlo2f+hT4Etfi3oh3hqCHRAH
+	IBqHW4TenyGlpMz1no6p+4FgLjgZ3p6UKdmR9PxE+niPyxhLSqiV8KxUNS8MJ1dn1jnTOHuW6Fpaj
+	V3DF6ikaNNwt3h3gDm7mCmS/Ri7EcSuudrdrgPf/js1jdsYBxwmSOO2IKvV6fJMBqtoX/MWredx/f
+	TaM/UQsDbZ0bnhcTPjZGyjT5/a5W9mYG5vP5vROID15mAxhtNqLZPEyoT22H3LmP6ltaYk3oaeLuM
+	peh2oYFc5o+3kWvgqa/FXcGU1uD57E7ISws67pJGtob2akJAM6t53xNeTIT1qjFQQWUdjKLb1Ug3q
+	jrgd81gQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOLXH-0003u0-Rh; Tue, 14 Apr 2020 13:23:31 +0000
+	id 1jOLXM-0003xh-0F; Tue, 14 Apr 2020 13:23:36 +0000
 Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
  helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOLQ0-0002HG-PL; Tue, 14 Apr 2020 13:16:05 +0000
+ id 1jOLQ2-0002O4-Rg; Tue, 14 Apr 2020 13:16:07 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 362B2485; Tue, 14 Apr 2020 15:15:52 +0200 (CEST)
+ id 6FC18495; Tue, 14 Apr 2020 15:15:52 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -55,15 +55,16 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v2 04/33] iommu/vt-d: Wire up iommu_ops->def_domain_type
-Date: Tue, 14 Apr 2020 15:15:13 +0200
-Message-Id: <20200414131542.25608-5-joro@8bytes.org>
+Subject: [PATCH v2 06/33] iommu/amd: Return -ENODEV in add_device when device
+ is not handled by IOMMU
+Date: Tue, 14 Apr 2020 15:15:15 +0200
+Message-Id: <20200414131542.25608-7-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200414131542.25608-1-joro@8bytes.org>
 References: <20200414131542.25608-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200414_061601_006665_61EA1C87 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20200414_061603_062631_F2C73998 
+X-CRM114-Status: GOOD (  11.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,26 +89,32 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-The Intel VT-d driver already has a matching function to determine the
-default domain type for a device. Wire it up in intel_iommu_ops.
+When check_device() fails on the device, it is not handled by the
+IOMMU and amd_iommu_add_device() needs to return -ENODEV.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/intel-iommu.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/iommu/amd_iommu.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/iommu/intel-iommu.c b/drivers/iommu/intel-iommu.c
-index ef0a5246700e..b9f905a55dda 100644
---- a/drivers/iommu/intel-iommu.c
-+++ b/drivers/iommu/intel-iommu.c
-@@ -6209,6 +6209,7 @@ const struct iommu_ops intel_iommu_ops = {
- 	.dev_enable_feat	= intel_iommu_dev_enable_feat,
- 	.dev_disable_feat	= intel_iommu_dev_disable_feat,
- 	.is_attach_deferred	= intel_iommu_is_attach_deferred,
-+	.def_domain_type	= device_def_domain_type,
- 	.pgsize_bitmap		= INTEL_IOMMU_PGSIZES,
- };
+diff --git a/drivers/iommu/amd_iommu.c b/drivers/iommu/amd_iommu.c
+index 504f2db75eda..3e0d27f7622e 100644
+--- a/drivers/iommu/amd_iommu.c
++++ b/drivers/iommu/amd_iommu.c
+@@ -2157,9 +2157,12 @@ static int amd_iommu_add_device(struct device *dev)
+ 	struct amd_iommu *iommu;
+ 	int ret, devid;
  
+-	if (!check_device(dev) || get_dev_data(dev))
++	if (get_dev_data(dev))
+ 		return 0;
+ 
++	if (!check_device(dev))
++		return -ENODEV;
++
+ 	devid = get_device_id(dev);
+ 	if (devid < 0)
+ 		return devid;
 -- 
 2.17.1
 
