@@ -2,82 +2,60 @@ Return-Path: <SRS0=jJra=56=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ADA0CC2BB86
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:25:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C4B5CC2BB86
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:25:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8452B2063A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:25:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 99A392064A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:25:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fX5yyhdT";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="ZYTfGr8K"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8452B2063A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qISleDpd"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 99A392064A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=VU574OgUrpsIA39sRGE89Jp6rgw63WY/y5kYSkwA28o=; b=fX5yyhdTXZNzV1HGTZTGU/sN6u
-	Z2SR5CahfErGp1G2dM52th223AxZ7YViLXwas9tpgh9bCaYZ+nmBWEIpZaGkUSNMHYElm7vxCTfwT
-	bPlklQ0XyJdk9hd8Y0Bz8knEvIUQQhE+IaR9IZkUs14i2fiVpJ7X1uVKl3lOaOeRJNwwXyEeaXzHZ
-	5DLgl3yhKl/6oXpvggYlcbC6iW8ZfYK21VOwED1XfL7iibaHLTABl3SkWN++IQwNskrjo+N0y7TiM
-	C83CGUTVO8t57jZVYhntlvUFAZbHaBO53VW1EbT5tVlA7d0t1IPKekTaknvf8Sus8UeWSUrubGmBe
-	r35i5tYA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=N3xUzto5V4gsHZTJxbVblkkZGfjWH7njpa6a0p9K8nA=; b=qISleDpd0v7eYj
+	p+pWqaE1AmuY3R3X2Xxrva7Joh+F3xOkcvnUNHWJgKe6At8+ZqStwuSl32/TauH4XfBJmSs1HAjne
+	3jWmAW3A1+aNap8Wo3dtXeNn+hgscdgRzYaRWR//mASoxoiMnqAyaf+c4zLrdhTJG7wcmGBQcs6/f
+	NmM91+98D2QzMFAy2OnXN03W/TPT9xWncb4x1ayRXZsj+o3Tp8iSiAd+hMv5XTZBd3oA/JbH11Qcd
+	ENFRTge5gh+D26Ie5dEde+qNshL1oXpEk6Rjm4mXqZoU4uXVptDrbAHb2t5jqQXB4P453Q0nLJzgi
+	lficKQP4ddoJw41P46iA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOLYa-0005nW-OZ; Tue, 14 Apr 2020 13:24:52 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1jOLZB-0008Q9-Sj; Tue, 14 Apr 2020 13:25:29 +0000
+Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
+ helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOLQS-0002wT-3G; Tue, 14 Apr 2020 13:16:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=References:In-Reply-To:Message-Id:Date:
- Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=Oi81xzj4r2wdTTCMSVqguO6olLR/Hdu0O0I/uW6hOrg=; b=ZYTfGr8KB2nbFuiocB4KRQyakz
- Ei+RpYOCxdVtBMTr8BapRhTQtwCboQZ+v68h3t0sf6jzuJYWQAdDovwXzdnLf8+1o1b4BPEWBoOMl
- eN31hg6QzdtjrwE9dlvfiwtR/j0tYsKVowTOU/4VJwHgLvhuu1W2deSxzb7EbDNaBdnOsYUdoq24G
- KVQtHDaU2DVjNRYr97mM8r6sEk3wL+jFDwLYvA5z8nmHBXuySFq9kqcRwxrD/05F1WA9X1pP4Mmnd
- sq5W/Av3o+wZrZ9lSROKQiEuA6arze/xg1ZWYKRNoyDJ45gTlgCH7gA8wmulscz+cjTY3Ny+ytuos
- U3dKSYsQ==;
-Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOLQL-0003J8-8W; Tue, 14 Apr 2020 13:16:26 +0000
+ id 1jOLRP-0003xL-PZ; Tue, 14 Apr 2020 13:17:29 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 12DC670B; Tue, 14 Apr 2020 15:15:55 +0200 (CEST)
+ id 7CE0145B; Tue, 14 Apr 2020 15:17:26 +0200 (CEST)
+Date: Tue, 14 Apr 2020 15:17:24 +0200
 From: Joerg Roedel <joro@8bytes.org>
-To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- David Woodhouse <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>,
- Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v2 24/33] iommu/qcom: Convert to probe/release_device()
- call-backs
-Date: Tue, 14 Apr 2020 15:15:33 +0200
-Message-Id: <20200414131542.25608-25-joro@8bytes.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200414131542.25608-1-joro@8bytes.org>
-References: <20200414131542.25608-1-joro@8bytes.org>
+To: Marek Szyprowski <m.szyprowski@samsung.com>
+Subject: Re: [RFC PATCH 33/34] iommu: Remove add_device()/remove_device()
+ code-paths
+Message-ID: <20200414131724.GA14731@8bytes.org>
+References: <20200407183742.4344-1-joro@8bytes.org>
+ <CGME20200407183806eucas1p2cf45fbce5a43a6b4fe3a623b28da0606@eucas1p2.samsung.com>
+ <20200407183742.4344-34-joro@8bytes.org>
+ <1a88547f-ac90-825e-e529-a56c2c4e0391@samsung.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1a88547f-ac90-825e-e529-a56c2c4e0391@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200414_141621_749373_DDCC6AA5 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20200414_061727_993929_F03D7019 
+X-CRM114-Status: UNSURE (   8.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,94 +67,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
- virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org,
- iommu@lists.linux-foundation.org, Joerg Roedel <jroedel@suse.de>,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org
-MIME-Version: 1.0
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, linux-tegra@vger.kernel.org,
+ Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ linux-samsung-soc@vger.kernel.org, Rob Clark <robdclark@gmail.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>,
+ Joerg Roedel <jroedel@suse.de>, linux-s390@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ virtualization@lists.linux-foundation.org,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ David Woodhouse <dwmw2@infradead.org>, linux-kernel@vger.kernel.org,
+ iommu@lists.linux-foundation.org, Kukjin Kim <kgene@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>, Lu Baolu <baolu.lu@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Joerg Roedel <jroedel@suse.de>
+Hi Marek,
 
-Convert the QCOM IOMMU driver to use the probe_device() and
-release_device() call-backs of iommu_ops, so that the iommu core code
-does the group and sysfs setup.
+On Fri, Apr 10, 2020 at 12:39:38PM +0200, Marek Szyprowski wrote:
+> > +		if (!group->default_domain)
+> > +			continue;
+> 
+> It doesn't look straight from the above diff, but this continue leaks 
+> group->lock taken.
 
-Signed-off-by: Joerg Roedel <jroedel@suse.de>
----
- drivers/iommu/qcom_iommu.c | 24 +++++++-----------------
- 1 file changed, 7 insertions(+), 17 deletions(-)
+You are right, thanks for the review! I fixed it in v2.
 
-diff --git a/drivers/iommu/qcom_iommu.c b/drivers/iommu/qcom_iommu.c
-index 0e2a96467767..054e476ebd49 100644
---- a/drivers/iommu/qcom_iommu.c
-+++ b/drivers/iommu/qcom_iommu.c
-@@ -524,14 +524,13 @@ static bool qcom_iommu_capable(enum iommu_cap cap)
- 	}
- }
- 
--static int qcom_iommu_add_device(struct device *dev)
-+static struct iommu_device *qcom_iommu_probe_device(struct device *dev)
- {
- 	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev);
--	struct iommu_group *group;
- 	struct device_link *link;
- 
- 	if (!qcom_iommu)
--		return -ENODEV;
-+		return ERR_PTR(-ENODEV);
- 
- 	/*
- 	 * Establish the link between iommu and master, so that the
-@@ -542,28 +541,19 @@ static int qcom_iommu_add_device(struct device *dev)
- 	if (!link) {
- 		dev_err(qcom_iommu->dev, "Unable to create device link between %s and %s\n",
- 			dev_name(qcom_iommu->dev), dev_name(dev));
--		return -ENODEV;
-+		return ERR_PTR(-ENODEV);
- 	}
- 
--	group = iommu_group_get_for_dev(dev);
--	if (IS_ERR(group))
--		return PTR_ERR(group);
--
--	iommu_group_put(group);
--	iommu_device_link(&qcom_iommu->iommu, dev);
--
--	return 0;
-+	return &qcom_iommu->iommu;
- }
- 
--static void qcom_iommu_remove_device(struct device *dev)
-+static void qcom_iommu_release_device(struct device *dev)
- {
- 	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev);
- 
- 	if (!qcom_iommu)
- 		return;
- 
--	iommu_device_unlink(&qcom_iommu->iommu, dev);
--	iommu_group_remove_device(dev);
- 	iommu_fwspec_free(dev);
- }
- 
-@@ -619,8 +609,8 @@ static const struct iommu_ops qcom_iommu_ops = {
- 	.flush_iotlb_all = qcom_iommu_flush_iotlb_all,
- 	.iotlb_sync	= qcom_iommu_iotlb_sync,
- 	.iova_to_phys	= qcom_iommu_iova_to_phys,
--	.add_device	= qcom_iommu_add_device,
--	.remove_device	= qcom_iommu_remove_device,
-+	.probe_device	= qcom_iommu_probe_device,
-+	.release_device	= qcom_iommu_release_device,
- 	.device_group	= generic_device_group,
- 	.of_xlate	= qcom_iommu_of_xlate,
- 	.pgsize_bitmap	= SZ_4K | SZ_64K | SZ_1M | SZ_16M,
--- 
-2.17.1
+Regards,
+
+	Joerg
 
 
 _______________________________________________
