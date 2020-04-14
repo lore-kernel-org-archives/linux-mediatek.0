@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 75491C2BB1D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 21:12:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AE805C2BB85
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 21:12:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4A9422076A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 21:12:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7AA752074D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 21:12:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Xn7OhvEF";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="LiJr+PXo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4A9422076A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ORZODNhU";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="kbkDsSoE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7AA752074D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,54 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uw9c9JErbP19cZvzuy/RBLDgv39j1to9Lt3avs+QJPQ=; b=Xn7OhvEFqiRi0a
-	Gqvpd6KQ98bvKBaYQKvJFUWgNPFoyAdXbKpezKmPyC2ixzy6JRzRGsZ/igdDuMIeJ4CD7IBdbhDB9
-	KXHPhhl0DSKwlkdho5LL1ZBWrFFiOEQumqY2CqQY2IDH49CK+6py5yzHEvyjDE+kT8keCmHBrJByO
-	GS4W3jPSc9APSTSComRVZRGS7zp0SolcYuroTS1xio6E9DGHrrYBddy8T47JxnKxa756y1B4zuT/v
-	yAIg0hbHYckOd5uUXknzth7bEbmlor28216UKQ7kgfX16h2rCk7FJp2MWwp0uIIvMbxLRHB/Akg5Z
-	qkFoTI83nC1MdSD0Jj9Q==;
+	List-Owner; bh=8rWzHjnqZJfuVJ+AsTB+Dex1bMQx4bb1m503pjzgLUc=; b=ORZODNhUg9fr2N
+	NLwyzWimkDAda1U3RTkrWvB6nXIga9emwg6FeEj+e0EgtIQSVS4qA/9KEqLT6Nmv8mMAbGr/xjj9a
+	JwnSoILTIzp+L0VV7Zf2tjM8v5M88JFoJ9YiW+beUq1SvxqGnMQQIXFfLVuWhfboYqHS7WGeZlxgl
+	9tnCyCWDYeSsJVgVPyiCF3Y2T4JBxWm3QaQc/Pd2AoAULlCIUaRJ/oZmXNLjpZKcoaOYRJCftJGiY
+	2F39OF+EMlpOGEL+VsJ0RLxasHfgldo/YE2wfurOdxSnnu4wKK4GG7/rNQBDQmOIjcV3LDY5hhCAD
+	H1t5YOk1wtE2ZeYYKFYw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOSqd-0005jb-Lr; Tue, 14 Apr 2020 21:11:59 +0000
+	id 1jOSqg-0005ok-B9; Tue, 14 Apr 2020 21:12:02 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOSqT-0005GL-MO
- for linux-mediatek@lists.infradead.org; Tue, 14 Apr 2020 21:11:51 +0000
-X-UUID: 1a070d38f2f0452ba61b99a21aa2308a-20200414
+ id 1jOSqV-0005Gb-8O
+ for linux-mediatek@lists.infradead.org; Tue, 14 Apr 2020 21:11:54 +0000
+X-UUID: 76f106a07a9f4f2fbad44e29ec300045-20200414
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=XaaKZN9d4Z70hCuMtI7McsI/cjlmwE5uORGPyktd7Dk=; 
- b=LiJr+PXomqSBC8KGwLjbtCnuBF7gfSmDTPwphANSnmgPzADmH2Y30lGs8rtYTMzKEhMM8dtsqaJJUkIcehILGVH6c/JE9mdcDF1DzsSAtdO/JIjbi3kxtDRKVdjQhbMByD6cUg/KXGxA0Tpcggxs+idT1/ylXxs4eEwTxQyRbks=;
-X-UUID: 1a070d38f2f0452ba61b99a21aa2308a-20200414
+ bh=YJoiPmA/XtxnEu5157ASSB7WKmR2A9Yoz73nkh5jgPg=; 
+ b=kbkDsSoEjbIq2LLinw09xuHFvZxheXQAX8GmbKi42Y63L9okBLX5MZMSWPAUqQvWYAkrKXzsupwmceN2sznDY53lpO8k9lcl8r0zUwfbQETGGNLw+XNJDNUoKPvIE+ZwdPLavX9I+Uwvg2JuByidW9RSaxdHS3SEaRveBkH5SDE=;
+X-UUID: 76f106a07a9f4f2fbad44e29ec300045-20200414
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1916497637; Tue, 14 Apr 2020 13:11:43 -0800
+ with ESMTP id 360552315; Tue, 14 Apr 2020 13:11:43 -0800
 Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Apr 2020 14:01:40 -0700
+ 15.0.1497.2; Tue, 14 Apr 2020 14:01:39 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 15 Apr 2020 05:01:40 +0800
+ 15.0.1497.2; Wed, 15 Apr 2020 05:01:32 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 15 Apr 2020 05:01:39 +0800
+ Frontend Transport; Wed, 15 Apr 2020 05:01:30 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>
-Subject: [PATCH v2 18/18] mt76: set runtime stream caps by mt76_phy
-Date: Wed, 15 Apr 2020 05:01:16 +0800
-Message-ID: <1c12eebe5f97f3f6d04d8da0481d49b827ef8559.1586895593.git.ryder.lee@mediatek.com>
+Subject: [PATCH v2 11/18] mt76: mt7915: add HE capabilities support for peers
+Date: Wed, 15 Apr 2020 05:01:09 +0800
+Message-ID: <cc604a767c966c76dee92f4960cb32c7c72953af.1586895593.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <cover.1586895593.git.ryder.lee@mediatek.com>
 References: <cover.1586895593.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: E85A5CD85A55805BEDD5BB331F1224A12AC9FD202CA41A2BC4A44B8667CB52CF2000:8
+X-TM-SNTS-SMTP: 39A99E82BC2614AB1E0F2EA5289078CE600204031E007E30EA9CE0361CAFEA6E2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200414_141149_799433_DFBDAFD2 
-X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-CacheID: sfid-20200414_141151_323398_03A6E5DA 
+X-CRM114-Status: UNSURE (   9.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -96,161 +96,383 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch can support concurrent dual-band operation.
+Set peer's bsic HE capabilities through starec.
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Suggested-by: Shihwei Lin <shihwei.lin@mediatek.com>
+Tested-by: Shayne Chen <shayne.chen@mediatek.com>
+Tested-by: Chih-Min Chen <chih-min.chen@mediatek.com>
+Tested-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
+Acked-by: Yiwei Chung <yiwei.chung@mediatek.com>
+Acked-by: YF Luo <yf.luo@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mac80211.c    | 16 ++++++++--------
- drivers/net/wireless/mediatek/mt76/mt76.h        |  2 +-
- drivers/net/wireless/mediatek/mt76/mt7615/init.c |  4 ++--
- drivers/net/wireless/mediatek/mt76/mt7615/main.c |  2 +-
- .../net/wireless/mediatek/mt76/mt76x2/pci_main.c |  2 +-
- drivers/net/wireless/mediatek/mt76/mt7915/init.c |  4 ++--
- drivers/net/wireless/mediatek/mt76/mt7915/main.c |  2 +-
- 7 files changed, 16 insertions(+), 16 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 197 ++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   | 100 +++++++++
+ 2 files changed, 297 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index b76dee2c9632..2175b5c50751 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -116,12 +116,12 @@ static void mt76_led_cleanup(struct mt76_dev *dev)
- 	led_classdev_unregister(&dev->led_cdev);
- }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 7831d4f700d0..e191c79c250e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -85,6 +85,9 @@ struct mt7915_fw_region {
+ #define to_wcid_lo(id)			FIELD_GET(GENMASK(7, 0), (u16)id)
+ #define to_wcid_hi(id)			FIELD_GET(GENMASK(9, 8), (u16)id)
  
--static void mt76_init_stream_cap(struct mt76_dev *dev,
-+static void mt76_init_stream_cap(struct mt76_phy *phy,
- 				 struct ieee80211_supported_band *sband,
- 				 bool vht)
++#define HE_PHY(p, c)			u8_get_bits(c, IEEE80211_HE_PHY_##p)
++#define HE_MAC(m, c)			u8_get_bits(c, IEEE80211_HE_MAC_##m)
++
+ static enum mt7915_cipher_type
+ mt7915_mcu_get_cipher(int cipher)
  {
- 	struct ieee80211_sta_ht_cap *ht_cap = &sband->ht_cap;
--	int i, nstream = hweight8(dev->phy.antenna_mask);
-+	int i, nstream = hweight8(phy->antenna_mask);
- 	struct ieee80211_sta_vht_cap *vht_cap;
- 	u16 mcs_map = 0;
- 
-@@ -153,12 +153,12 @@ static void mt76_init_stream_cap(struct mt76_dev *dev,
- 	vht_cap->vht_mcs.tx_mcs_map = cpu_to_le16(mcs_map);
+@@ -1234,6 +1237,187 @@ mt7915_mcu_sta_basic_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
+ 	basic->qos = sta->wme;
  }
  
--void mt76_set_stream_caps(struct mt76_dev *dev, bool vht)
-+void mt76_set_stream_caps(struct mt76_phy *phy, bool vht)
- {
--	if (dev->cap.has_2ghz)
--		mt76_init_stream_cap(dev, &dev->phy.sband_2g.sband, false);
--	if (dev->cap.has_5ghz)
--		mt76_init_stream_cap(dev, &dev->phy.sband_5g.sband, vht);
-+	if (phy->dev->cap.has_2ghz)
-+		mt76_init_stream_cap(phy, &phy->sband_2g.sband, false);
-+	if (phy->dev->cap.has_5ghz)
-+		mt76_init_stream_cap(phy, &phy->sband_5g.sband, vht);
- }
- EXPORT_SYMBOL_GPL(mt76_set_stream_caps);
- 
-@@ -200,7 +200,7 @@ mt76_init_sband(struct mt76_dev *dev, struct mt76_sband *msband,
- 	ht_cap->ampdu_factor = IEEE80211_HT_MAX_AMPDU_64K;
- 	ht_cap->ampdu_density = IEEE80211_HT_MPDU_DENSITY_4;
- 
--	mt76_init_stream_cap(dev, sband, vht);
-+	mt76_init_stream_cap(&dev->phy, sband, vht);
- 
- 	if (!vht)
- 		return 0;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index d1ad1f035426..6a497789fc50 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -817,7 +817,7 @@ void mt76_set_channel(struct mt76_phy *phy);
- void mt76_update_survey(struct mt76_dev *dev);
- int mt76_get_survey(struct ieee80211_hw *hw, int idx,
- 		    struct survey_info *survey);
--void mt76_set_stream_caps(struct mt76_dev *dev, bool vht);
-+void mt76_set_stream_caps(struct mt76_phy *phy, bool vht);
- 
- int mt76_rx_aggr_start(struct mt76_dev *dev, struct mt76_wcid *wcid, u8 tid,
- 		       u16 ssn, u16 size);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-index cb626a2d9197..98e5d360f53d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-@@ -398,7 +398,7 @@ mt7615_cap_dbdc_enable(struct mt7615_dev *dev)
- 	dev->phy.chainmask = dev->mphy.antenna_mask;
- 	dev->mphy.hw->wiphy->available_antennas_rx = dev->phy.chainmask;
- 	dev->mphy.hw->wiphy->available_antennas_tx = dev->phy.chainmask;
--	mt76_set_stream_caps(&dev->mt76, true);
-+	mt76_set_stream_caps(&dev->mphy, true);
++static void
++mt7915_mcu_sta_he_tlv(struct sk_buff *skb, struct ieee80211_sta *sta)
++{
++	struct ieee80211_sta_he_cap *he_cap = &sta->he_cap;
++	struct ieee80211_he_cap_elem *elem = &he_cap->he_cap_elem;
++	struct sta_rec_he *he;
++	struct tlv *tlv;
++	u32 cap = 0;
++
++	tlv = mt7915_mcu_add_tlv(skb, STA_REC_HE, sizeof(*he));
++
++	he = (struct sta_rec_he *)tlv;
++
++	if (elem->mac_cap_info[0] & IEEE80211_HE_MAC_CAP0_HTC_HE)
++		cap |= STA_REC_HE_CAP_HTC;
++
++	if (elem->mac_cap_info[2] & IEEE80211_HE_MAC_CAP2_BSR)
++		cap |= STA_REC_HE_CAP_BSR;
++
++	if (elem->mac_cap_info[3] & IEEE80211_HE_MAC_CAP3_OMI_CONTROL)
++		cap |= STA_REC_HE_CAP_OM;
++
++	if (elem->mac_cap_info[4] & IEEE80211_HE_MAC_CAP4_AMDSU_IN_AMPDU)
++		cap |= STA_REC_HE_CAP_AMSDU_IN_AMPDU;
++
++	if (elem->mac_cap_info[4] & IEEE80211_HE_MAC_CAP4_BQR)
++		cap |= STA_REC_HE_CAP_BQR;
++
++	if (elem->phy_cap_info[0] &
++	    (IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_RU_MAPPING_IN_2G |
++	     IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_RU_MAPPING_IN_5G))
++		cap |= STA_REC_HE_CAP_BW20_RU242_SUPPORT;
++
++	if (elem->phy_cap_info[1] &
++	    IEEE80211_HE_PHY_CAP1_LDPC_CODING_IN_PAYLOAD)
++		cap |= STA_REC_HE_CAP_LDPC;
++
++	if (elem->phy_cap_info[1] &
++	    IEEE80211_HE_PHY_CAP1_HE_LTF_AND_GI_FOR_HE_PPDUS_0_8US)
++		cap |= STA_REC_HE_CAP_SU_PPDU_1LTF_8US_GI;
++
++	if (elem->phy_cap_info[2] &
++	    IEEE80211_HE_PHY_CAP2_NDP_4x_LTF_AND_3_2US)
++		cap |= STA_REC_HE_CAP_NDP_4LTF_3DOT2MS_GI;
++
++	if (elem->phy_cap_info[2] &
++	    IEEE80211_HE_PHY_CAP2_STBC_TX_UNDER_80MHZ)
++		cap |= STA_REC_HE_CAP_LE_EQ_80M_TX_STBC;
++
++	if (elem->phy_cap_info[2] &
++	    IEEE80211_HE_PHY_CAP2_STBC_RX_UNDER_80MHZ)
++		cap |= STA_REC_HE_CAP_LE_EQ_80M_RX_STBC;
++
++	if (elem->phy_cap_info[6] &
++	    IEEE80211_HE_PHY_CAP6_PARTIAL_BW_EXT_RANGE)
++		cap |= STA_REC_HE_CAP_PARTIAL_BW_EXT_RANGE;
++
++	if (elem->phy_cap_info[7] &
++	    IEEE80211_HE_PHY_CAP7_HE_SU_MU_PPDU_4XLTF_AND_08_US_GI)
++		cap |= STA_REC_HE_CAP_SU_MU_PPDU_4LTF_8US_GI;
++
++	if (elem->phy_cap_info[7] &
++	    IEEE80211_HE_PHY_CAP7_STBC_TX_ABOVE_80MHZ)
++		cap |= STA_REC_HE_CAP_GT_80M_TX_STBC;
++
++	if (elem->phy_cap_info[7] &
++	    IEEE80211_HE_PHY_CAP7_STBC_RX_ABOVE_80MHZ)
++		cap |= STA_REC_HE_CAP_GT_80M_RX_STBC;
++
++	if (elem->phy_cap_info[8] &
++	    IEEE80211_HE_PHY_CAP8_HE_ER_SU_PPDU_4XLTF_AND_08_US_GI)
++		cap |= STA_REC_HE_CAP_ER_SU_PPDU_4LTF_8US_GI;
++
++	if (elem->phy_cap_info[8] &
++	    IEEE80211_HE_PHY_CAP8_HE_ER_SU_1XLTF_AND_08_US_GI)
++		cap |= STA_REC_HE_CAP_ER_SU_PPDU_1LTF_8US_GI;
++
++	if (elem->phy_cap_info[9] &
++	    IEEE80211_HE_PHY_CAP9_NON_TRIGGERED_CQI_FEEDBACK)
++		cap |= STA_REC_HE_CAP_TRIG_CQI_FK;
++
++	if (elem->phy_cap_info[9] &
++	    IEEE80211_HE_PHY_CAP9_TX_1024_QAM_LESS_THAN_242_TONE_RU)
++		cap |= STA_REC_HE_CAP_TX_1024QAM_UNDER_RU242;
++
++	if (elem->phy_cap_info[9] &
++	    IEEE80211_HE_PHY_CAP9_RX_1024_QAM_LESS_THAN_242_TONE_RU)
++		cap |= STA_REC_HE_CAP_RX_1024QAM_UNDER_RU242;
++
++	he->he_cap = cpu_to_le32(cap);
++
++	switch (sta->bandwidth) {
++	case IEEE80211_STA_RX_BW_160:
++		if (elem->phy_cap_info[0] &
++		    IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_80PLUS80_MHZ_IN_5G)
++			he->max_nss_mcs[CMD_HE_MCS_BW8080] =
++				he_cap->he_mcs_nss_supp.rx_mcs_80p80;
++
++		he->max_nss_mcs[CMD_HE_MCS_BW160] =
++				he_cap->he_mcs_nss_supp.rx_mcs_160;
++		/* fall through */
++	default:
++		he->max_nss_mcs[CMD_HE_MCS_BW80] =
++				he_cap->he_mcs_nss_supp.rx_mcs_80;
++		break;
++	}
++
++	he->t_frame_dur =
++		HE_MAC(CAP1_TF_MAC_PAD_DUR_MASK, elem->mac_cap_info[1]);
++	he->max_ampdu_exp =
++		HE_MAC(CAP3_MAX_AMPDU_LEN_EXP_MASK, elem->mac_cap_info[3]);
++
++	he->bw_set =
++		HE_PHY(CAP0_CHANNEL_WIDTH_SET_MASK, elem->phy_cap_info[0]);
++	he->device_class =
++		HE_PHY(CAP1_DEVICE_CLASS_A, elem->phy_cap_info[1]);
++	he->punc_pream_rx =
++		HE_PHY(CAP1_PREAMBLE_PUNC_RX_MASK, elem->phy_cap_info[1]);
++
++	he->dcm_tx_mode =
++		HE_PHY(CAP3_DCM_MAX_CONST_TX_MASK, elem->phy_cap_info[3]);
++	he->dcm_tx_max_nss =
++		HE_PHY(CAP3_DCM_MAX_TX_NSS_2, elem->phy_cap_info[3]);
++	he->dcm_rx_mode =
++		HE_PHY(CAP3_DCM_MAX_CONST_RX_MASK, elem->phy_cap_info[3]);
++	he->dcm_rx_max_nss =
++		HE_PHY(CAP3_DCM_MAX_RX_NSS_2, elem->phy_cap_info[3]);
++	he->dcm_rx_max_nss =
++		HE_PHY(CAP8_DCM_MAX_RU_MASK, elem->phy_cap_info[8]);
++
++	he->pkt_ext = 2;
++}
++
++static void
++mt7915_mcu_sta_muru_tlv(struct sk_buff *skb, struct ieee80211_sta *sta)
++{
++	struct ieee80211_sta_he_cap *he_cap = &sta->he_cap;
++	struct ieee80211_he_cap_elem *elem = &he_cap->he_cap_elem;
++	struct sta_rec_muru *muru;
++	struct tlv *tlv;
++
++	tlv = mt7915_mcu_add_tlv(skb, STA_REC_MURU, sizeof(*muru));
++
++	muru = (struct sta_rec_muru *)tlv;
++	muru->cfg.ofdma_dl_en = true;
++	muru->cfg.ofdma_ul_en = true;
++	muru->cfg.mimo_dl_en = true;
++	muru->cfg.mimo_ul_en = true;
++
++	muru->ofdma_dl.punc_pream_rx =
++		HE_PHY(CAP1_PREAMBLE_PUNC_RX_MASK, elem->phy_cap_info[1]);
++	muru->ofdma_dl.he_20m_in_40m_2g =
++		HE_PHY(CAP8_20MHZ_IN_40MHZ_HE_PPDU_IN_2G, elem->phy_cap_info[8]);
++	muru->ofdma_dl.he_20m_in_160m =
++		HE_PHY(CAP8_20MHZ_IN_160MHZ_HE_PPDU, elem->phy_cap_info[8]);
++	muru->ofdma_dl.he_80m_in_160m =
++		HE_PHY(CAP8_80MHZ_IN_160MHZ_HE_PPDU, elem->phy_cap_info[8]);
++	muru->ofdma_dl.lt16_sigb = 0;
++	muru->ofdma_dl.rx_su_comp_sigb = 0;
++	muru->ofdma_dl.rx_su_non_comp_sigb = 0;
++
++	muru->ofdma_ul.t_frame_dur =
++		HE_MAC(CAP1_TF_MAC_PAD_DUR_MASK, elem->mac_cap_info[1]);
++	muru->ofdma_ul.mu_cascading =
++		HE_MAC(CAP2_MU_CASCADING, elem->mac_cap_info[2]);
++	muru->ofdma_ul.uo_ra =
++		HE_MAC(CAP3_OFDMA_RA, elem->mac_cap_info[3]);
++	muru->ofdma_ul.he_2x996_tone = 0;
++	muru->ofdma_ul.rx_t_frame_11ac = 0;
++
++	muru->mimo_dl.vht_mu_bfee =
++		!!(sta->vht_cap.cap & IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE);
++	muru->mimo_dl.partial_bw_dl_mimo =
++		HE_PHY(CAP6_PARTIAL_BANDWIDTH_DL_MUMIMO, elem->phy_cap_info[6]);
++
++	muru->mimo_ul.full_ul_mimo =
++		HE_PHY(CAP2_UL_MU_FULL_MU_MIMO, elem->phy_cap_info[2]);
++	muru->mimo_ul.partial_ul_mimo =
++		HE_PHY(CAP2_UL_MU_PARTIAL_MU_MIMO, elem->phy_cap_info[2]);
++}
++
+ static void
+ mt7915_mcu_sta_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
+ 		   struct ieee80211_sta *sta)
+@@ -1259,6 +1443,14 @@ mt7915_mcu_sta_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
+ 		vht->vht_rx_mcs_map = sta->vht_cap.vht_mcs.rx_mcs_map;
+ 		vht->vht_tx_mcs_map = sta->vht_cap.vht_mcs.tx_mcs_map;
+ 	}
++
++	/* starec he */
++	if (sta->he_cap.has_he)
++		mt7915_mcu_sta_he_tlv(skb, sta);
++
++	/* starec muru */
++	if (sta->he_cap.has_he || sta->vht_cap.vht_supported)
++		mt7915_mcu_sta_muru_tlv(skb, sta);
  }
  
  static void
-@@ -411,7 +411,7 @@ mt7615_cap_dbdc_disable(struct mt7615_dev *dev)
- 	dev->phy.chainmask = dev->chainmask;
- 	dev->mphy.hw->wiphy->available_antennas_rx = dev->chainmask;
- 	dev->mphy.hw->wiphy->available_antennas_tx = dev->chainmask;
--	mt76_set_stream_caps(&dev->mt76, true);
-+	mt76_set_stream_caps(&dev->mphy, true);
- }
- 
- int mt7615_register_ext_phy(struct mt7615_dev *dev)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index b346080458bc..b96514bb76b6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -720,7 +720,7 @@ mt7615_set_antenna(struct ieee80211_hw *hw, u32 tx_ant, u32 rx_ant)
+@@ -1460,6 +1652,11 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 		}
  	}
- 	phy->chainmask = tx_ant;
  
--	mt76_set_stream_caps(&dev->mt76, true);
-+	mt76_set_stream_caps(phy->mt76, true);
++	if (sta->he_cap.has_he) {
++		ra->supp_mode |= MODE_HE;
++		cap |= STA_CAP_HE;
++	}
++
+ 	ra->sta_status = cpu_to_le32(cap);
  
- 	mutex_unlock(&dev->mt76.mutex);
+ 	switch (BIT(fls(ra->supp_mode) - 1)) {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index 85ef1b35b265..cc0e27730aab 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -658,6 +658,75 @@ struct sta_rec_vht {
+ 	u8 rsv[3];
+ } __packed;
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/pci_main.c b/drivers/net/wireless/mediatek/mt76/mt76x2/pci_main.c
-index a74599f7f729..98f4cf398320 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2/pci_main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2/pci_main.c
-@@ -119,7 +119,7 @@ static int mt76x2_set_antenna(struct ieee80211_hw *hw, u32 tx_ant,
- 	dev->chainmask = (tx_ant == 3) ? 0x202 : 0x101;
- 	dev->mphy.antenna_mask = tx_ant;
++struct sta_rec_muru {
++	__le16 tag;
++	__le16 len;
++
++	struct {
++		bool ofdma_dl_en;
++		bool ofdma_ul_en;
++		bool mimo_dl_en;
++		bool mimo_ul_en;
++		bool rsv[4];
++	} cfg;
++
++	struct {
++		u8 punc_pream_rx;
++		bool he_20m_in_40m_2g;
++		bool he_20m_in_160m;
++		bool he_80m_in_160m;
++		bool lt16_sigb;
++		bool rx_su_comp_sigb;
++		bool rx_su_non_comp_sigb;
++		bool rsv;
++	} ofdma_dl;
++
++	struct {
++		u8 t_frame_dur;
++		u8 mu_cascading;
++		u8 uo_ra;
++		u8 he_2x996_tone;
++		u8 rx_t_frame_11ac;
++		u8 rsv[3];
++	} ofdma_ul;
++
++	struct {
++		bool vht_mu_bfee;
++		bool partial_bw_dl_mimo;
++		u8 rsv[2];
++	} mimo_dl;
++
++	struct {
++		bool full_ul_mimo;
++		bool partial_ul_mimo;
++		u8 rsv[2];
++	} mimo_ul;
++} __packed;
++
++struct sta_rec_he {
++	__le16 tag;
++	__le16 len;
++
++	__le32 he_cap;
++
++	u8 t_frame_dur;
++	u8 max_ampdu_exp;
++	u8 bw_set;
++	u8 device_class;
++	u8 dcm_tx_mode;
++	u8 dcm_tx_max_nss;
++	u8 dcm_rx_mode;
++	u8 dcm_rx_max_nss;
++	u8 dcm_max_ru;
++	u8 punc_pream_rx;
++	u8 pkt_ext;
++	u8 rsv1;
++
++	__le16 max_nss_mcs[CMD_HE_MCS_BW_NUM];
++
++	u8 rsv2[2];
++} __packed;
++
+ struct sta_rec_ba {
+ 	__le16 tag;
+ 	__le16 len;
+@@ -803,9 +872,11 @@ enum {
+ #define MT7915_STA_UPDATE_MAX_SIZE	(sizeof(struct sta_req_hdr) +	\
+ 					 sizeof(struct sta_rec_basic) +	\
+ 					 sizeof(struct sta_rec_ht) +	\
++					 sizeof(struct sta_rec_he) +	\
+ 					 sizeof(struct sta_rec_ba) +	\
+ 					 sizeof(struct sta_rec_vht) +	\
+ 					 sizeof(struct tlv) +		\
++					 sizeof(struct sta_rec_muru) +	\
+ 					 sizeof(struct sta_rec_sec) +	\
+ 					 sizeof(struct sta_rec_ra) +	\
+ 					 MT7915_WTBL_UPDATE_MAX_SIZE)
+@@ -833,6 +904,7 @@ enum {
+ #define MODE_OFDM			BIT(1)
+ #define MODE_HT				BIT(2)
+ #define MODE_VHT			BIT(3)
++#define MODE_HE				BIT(4)
  
--	mt76_set_stream_caps(&dev->mt76, true);
-+	mt76_set_stream_caps(&dev->mphy, true);
- 	mt76x2_phy_set_antenna(dev);
+ #define STA_CAP_WMM			BIT(0)
+ #define STA_CAP_SGI_20			BIT(4)
+@@ -847,5 +919,33 @@ enum {
+ #define STA_CAP_LDPC			BIT(24)
+ #define STA_CAP_HT			BIT(26)
+ #define STA_CAP_VHT			BIT(27)
++#define STA_CAP_HE			BIT(28)
++
++/* HE MAC */
++#define STA_REC_HE_CAP_HTC			BIT(0)
++#define STA_REC_HE_CAP_BQR			BIT(1)
++#define STA_REC_HE_CAP_BSR			BIT(2)
++#define STA_REC_HE_CAP_OM			BIT(3)
++#define STA_REC_HE_CAP_AMSDU_IN_AMPDU		BIT(4)
++/* HE PHY */
++#define STA_REC_HE_CAP_DUAL_BAND		BIT(5)
++#define STA_REC_HE_CAP_LDPC			BIT(6)
++#define STA_REC_HE_CAP_TRIG_CQI_FK		BIT(7)
++#define STA_REC_HE_CAP_PARTIAL_BW_EXT_RANGE	BIT(8)
++/* STBC */
++#define STA_REC_HE_CAP_LE_EQ_80M_TX_STBC	BIT(9)
++#define STA_REC_HE_CAP_LE_EQ_80M_RX_STBC	BIT(10)
++#define STA_REC_HE_CAP_GT_80M_TX_STBC		BIT(11)
++#define STA_REC_HE_CAP_GT_80M_RX_STBC		BIT(12)
++/* GI */
++#define STA_REC_HE_CAP_SU_PPDU_1LTF_8US_GI	BIT(13)
++#define STA_REC_HE_CAP_SU_MU_PPDU_4LTF_8US_GI	BIT(14)
++#define STA_REC_HE_CAP_ER_SU_PPDU_1LTF_8US_GI	BIT(15)
++#define STA_REC_HE_CAP_ER_SU_PPDU_4LTF_8US_GI	BIT(16)
++#define STA_REC_HE_CAP_NDP_4LTF_3DOT2MS_GI	BIT(17)
++/* 242 TONE */
++#define STA_REC_HE_CAP_BW20_RU242_SUPPORT	BIT(18)
++#define STA_REC_HE_CAP_TX_1024QAM_UNDER_RU242	BIT(19)
++#define STA_REC_HE_CAP_RX_1024QAM_UNDER_RU242	BIT(20)
  
- 	mutex_unlock(&dev->mt76.mutex);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index bb8325e2edbd..7d59571216e3 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -443,7 +443,7 @@ mt7915_cap_dbdc_enable(struct mt7915_dev *dev)
- 	dev->mphy.hw->wiphy->available_antennas_rx = dev->phy.chainmask;
- 	dev->mphy.hw->wiphy->available_antennas_tx = dev->phy.chainmask;
- 
--	mt76_set_stream_caps(&dev->mt76, true);
-+	mt76_set_stream_caps(&dev->mphy, true);
- 	mt7915_set_stream_he_caps(&dev->phy);
- }
- 
-@@ -459,7 +459,7 @@ mt7915_cap_dbdc_disable(struct mt7915_dev *dev)
- 	dev->mphy.hw->wiphy->available_antennas_rx = dev->chainmask;
- 	dev->mphy.hw->wiphy->available_antennas_tx = dev->chainmask;
- 
--	mt76_set_stream_caps(&dev->mt76, true);
-+	mt76_set_stream_caps(&dev->mphy, true);
- 	mt7915_set_stream_he_caps(&dev->phy);
- }
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index ef0c91990b49..697045e65b24 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -741,7 +741,7 @@ mt7915_set_antenna(struct ieee80211_hw *hw, u32 tx_ant, u32 rx_ant)
- 	}
- 	phy->chainmask = tx_ant;
- 
--	mt76_set_stream_caps(&dev->mt76, true);
-+	mt76_set_stream_caps(phy->mt76, true);
- 	mt7915_set_stream_he_caps(phy);
- 
- 	mutex_unlock(&dev->mt76.mutex);
+ #endif
 -- 
 2.18.0
 _______________________________________________
