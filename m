@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C4B5CC2BB86
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:25:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D38BC2BBC7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:25:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 99A392064A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:25:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 69DA12063A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:25:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qISleDpd"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 99A392064A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TYTpc9II"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 69DA12063A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +24,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N3xUzto5V4gsHZTJxbVblkkZGfjWH7njpa6a0p9K8nA=; b=qISleDpd0v7eYj
-	p+pWqaE1AmuY3R3X2Xxrva7Joh+F3xOkcvnUNHWJgKe6At8+ZqStwuSl32/TauH4XfBJmSs1HAjne
-	3jWmAW3A1+aNap8Wo3dtXeNn+hgscdgRzYaRWR//mASoxoiMnqAyaf+c4zLrdhTJG7wcmGBQcs6/f
-	NmM91+98D2QzMFAy2OnXN03W/TPT9xWncb4x1ayRXZsj+o3Tp8iSiAd+hMv5XTZBd3oA/JbH11Qcd
-	ENFRTge5gh+D26Ie5dEde+qNshL1oXpEk6Rjm4mXqZoU4uXVptDrbAHb2t5jqQXB4P453Q0nLJzgi
-	lficKQP4ddoJw41P46iA==;
+	List-Owner; bh=vSHmG/AucwwTxggKFJISa9/iSzicRlwVsd0PLIO5kYY=; b=TYTpc9IIOlj4Js
+	WHVZrbJehb4U3cikRtm9nExCa4isF5Bhz2OuY7zmIAQ8pbCgMFX2hyJe1ScH+JipX1JUQVdFFkmqk
+	Ly2myLQqGOr4xnBezJJfDkU72RUlZyPfmV6+zlxi9+4fsGsK7pDVR6jKKabl5IT1ygYIH0ntZospg
+	C1Gt76cp/bk35C1CjU1WxrC3mC/NaMTagXM4q1cRWkbhVQEuh6GR78/uoU2v3UfKKxDE2vkEFL7+7
+	uW2juGYkoHbJBXI68WSsMMoTzQrNUrMWDvMiZeM/CNHI7Iw5pumc+PcT6dkibQn/40t1GksR9jQiS
+	uERalSdLOmI71w7uRj+g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOLZB-0008Q9-Sj; Tue, 14 Apr 2020 13:25:29 +0000
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
- helo=theia.8bytes.org)
+	id 1jOLZM-0000wq-LU; Tue, 14 Apr 2020 13:25:40 +0000
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOLRP-0003xL-PZ; Tue, 14 Apr 2020 13:17:29 +0000
+ id 1jOLUP-00012o-2q; Tue, 14 Apr 2020 13:20:39 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 7CE0145B; Tue, 14 Apr 2020 15:17:26 +0200 (CEST)
-Date: Tue, 14 Apr 2020 15:17:24 +0200
+ id 340BE45B; Tue, 14 Apr 2020 15:20:31 +0200 (CEST)
+Date: Tue, 14 Apr 2020 15:20:29 +0200
 From: Joerg Roedel <joro@8bytes.org>
 To: Marek Szyprowski <m.szyprowski@samsung.com>
-Subject: Re: [RFC PATCH 33/34] iommu: Remove add_device()/remove_device()
- code-paths
-Message-ID: <20200414131724.GA14731@8bytes.org>
+Subject: Re: [PATCH] iommu/exynos: Get rid of 'struct exynos_iommu_owner'
+ exynos_iommu_owner
+Message-ID: <20200414132029.GB14731@8bytes.org>
 References: <20200407183742.4344-1-joro@8bytes.org>
- <CGME20200407183806eucas1p2cf45fbce5a43a6b4fe3a623b28da0606@eucas1p2.samsung.com>
- <20200407183742.4344-34-joro@8bytes.org>
- <1a88547f-ac90-825e-e529-a56c2c4e0391@samsung.com>
+ <CGME20200407184501eucas1p25407bc96e4345df406cf6ba061ae6a82@eucas1p2.samsung.com>
+ <20200407183742.4344-32-joro@8bytes.org>
+ <449e7f16-e719-9617-ec92-63b82c0bc33f@samsung.com>
+ <f59b0bb3-8c08-9cc9-bb1a-e69b7b226f60@samsung.com>
+ <20200409114620.GA16298@8bytes.org>
+ <40af831b-d00c-0cf9-0a06-e60c048a9ab8@samsung.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1a88547f-ac90-825e-e529-a56c2c4e0391@samsung.com>
+In-Reply-To: <40af831b-d00c-0cf9-0a06-e60c048a9ab8@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200414_061727_993929_F03D7019 
-X-CRM114-Status: UNSURE (   8.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200414_062033_316131_9C9A1D4B 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,16 +88,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Marek,
+On Thu, Apr 09, 2020 at 03:58:00PM +0200, Marek Szyprowski wrote:
+> I've checked and it works fine on top of 
+> ff68eb23308e6538ec7864c83d39540f423bbe90. However I'm not a fan of 
+> removing this 'owner' structure. It gave a nice abstraction for the all 
+> SYSMMU controllers for the given device (although most devices in the 
+> system have only one SYSMMU). Why this structure is a problem for your 
+> rework?
 
-On Fri, Apr 10, 2020 at 12:39:38PM +0200, Marek Szyprowski wrote:
-> > +		if (!group->default_domain)
-> > +			continue;
-> 
-> It doesn't look straight from the above diff, but this continue leaks 
-> group->lock taken.
-
-You are right, thanks for the review! I fixed it in v2.
+Okay, the structure itself is not a problem, I just thought it is not
+really necessary. But to keep things simple I've taken another approach
+for v2 of this series: Just use the first SYSMMU of the controllers list
+to link the device and the IOMMU. When the owner structure exists there
+is always one entry in this list, so that should work fine.
 
 Regards,
 
