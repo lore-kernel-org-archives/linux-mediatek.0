@@ -2,59 +2,92 @@ Return-Path: <SRS0=jJra=56=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C86F7C2BA19
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 15:28:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 46DD0C2BA19
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 16:25:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 97880206A2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 15:28:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0D27D2075E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 16:25:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Y25zjQTo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 97880206A2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dkIszrch";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="FjbGTECJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0D27D2075E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0Hofi79CJ6wq/2EGTiyPBvkaerdmotEaaC/I5igmWYA=; b=Y25zjQToCk2qKS
-	MFpbFWRzGE3kD4Us1+r2hfQDlWCYQx5xI++RTw+dLIMcFXxU3k5euSaET4m/uKjymZUUWJcLHNdDm
-	cwUZVIvV2UHwgwOvlpdksLeJ7PK20/iHrCEABeMJzicupWjTq3uVCyMPejLqwtEhaVPCw7ozNDh6E
-	1DSAAUhRhxcEeyg+KqWjO72DfUOWop4WdbjZQ02rKhYr85Ykdw6Z4kCSSOeZ9btkgfczd+vtGhkwm
-	UA+94Kt6omBqfuyjnQ/uOmO120Vn0IMMmVrDw9H6w4hWXJ1+MS+6rNqjWdBH9EIsE7DLTs7xud+EU
-	mwP65Z/rGcQ2wK8zMyXw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2wB/foEus8nGn+74KJS0WHHqkhxLDu4PX3Gr0zMnZts=; b=dkIszrchbPaYsp
+	AeSk9fAlk7HPQcjNZqwpESDyXV+l3R3KDXF1x7C7V3Buye2rLXHdilMH1Ql82v452H1h+dwldNKeW
+	Fz8px0tW/mA3pGkNonzLcfYeDl6r9ACaAOxwSK9qf7fbUYm7VZz1XM7FQejUNbJBAof6uDPnTBZR7
+	hYI5AkD0Fq2tgraVpihgK46eW3Qkiz7uUKX14O5KuEVPgJVCDiIVBaQS+RrPDDH1DOkzA0D48p+11
+	hbagQPVQq6g/3S3k1BTynn+YTHPJ99opXU4rclPNep+vodXeV1o8w8KrW6QE7EhGtn+kPlx1DXlua
+	3/s12PwyfpkukL1EGoeg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jONTl-0002st-D3; Tue, 14 Apr 2020 15:28:01 +0000
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
- helo=theia.8bytes.org)
+	id 1jOONC-0007sQ-Df; Tue, 14 Apr 2020 16:25:18 +0000
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]
+ helo=us-smtp-1.mimecast.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jONTi-0002rb-EZ; Tue, 14 Apr 2020 15:28:00 +0000
-Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 3493E2A4; Tue, 14 Apr 2020 17:27:54 +0200 (CEST)
-Date: Tue, 14 Apr 2020 17:27:52 +0200
-From: "joro@8bytes.org" <joro@8bytes.org>
-To: "Derrick, Jonathan" <jonathan.derrick@intel.com>
-Subject: Re: [RFC PATCH 11/34] iommu: Split off default domain allocation
- from group assignment
-Message-ID: <20200414152752.GC14731@8bytes.org>
-References: <20200407183742.4344-1-joro@8bytes.org>
- <20200407183742.4344-12-joro@8bytes.org>
- <6a801ff9e6471bda7c6f510dfa2ba7e7c35cb559.camel@intel.com>
+ id 1jOOMw-00058J-Aa
+ for linux-mediatek@lists.infradead.org; Tue, 14 Apr 2020 16:25:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1586881500;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=yW8t58m2bp1NhazlqC7/k8J+nPWsrZBYDWUsjTyk2qQ=;
+ b=FjbGTECJfZsMnE9+A9oMfnoEDVqb3ysBa861htGWRU+yidk9RoBOD7o2an4hkB7oIpWOgU
+ vVbUHCEpGia52lD8Kq9lm1U1hWrXd6qGyBfR3aQofT39nCULd18fees8sV9+P645czW0dp
+ ksD6uFV6/0qe4NYZLXR8UuNcX844jPg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-87-m_CJjLwlPvyXxruKyZ4cKA-1; Tue, 14 Apr 2020 12:24:56 -0400
+X-MC-Unique: m_CJjLwlPvyXxruKyZ4cKA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 12123107ACC4;
+ Tue, 14 Apr 2020 16:24:50 +0000 (UTC)
+Received: from llong.remote.csb (ovpn-118-173.rdu2.redhat.com [10.10.118.173])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0E02D118DEE;
+ Tue, 14 Apr 2020 16:24:36 +0000 (UTC)
+Subject: Re: [PATCH v2 2/2] crypto: Remove unnecessary memzero_explicit()
+To: Christophe Leroy <christophe.leroy@c-s.fr>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ David Howells <dhowells@redhat.com>,
+ Jarkko Sakkinen <jarkko.sakkinen@linux.intel.com>,
+ James Morris <jmorris@namei.org>, "Serge E. Hallyn" <serge@hallyn.com>,
+ Linus Torvalds <torvalds@linux-foundation.org>, Joe Perches
+ <joe@perches.com>, Matthew Wilcox <willy@infradead.org>,
+ David Rientjes <rientjes@google.com>
+References: <20200413211550.8307-1-longman@redhat.com>
+ <20200413222846.24240-1-longman@redhat.com>
+ <eca85e0b-0af3-c43a-31e4-bd5c3f519798@c-s.fr>
+From: Waiman Long <longman@redhat.com>
+Organization: Red Hat
+Message-ID: <e194a51f-a5e5-a557-c008-b08cac558572@redhat.com>
+Date: Tue, 14 Apr 2020 12:24:36 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <6a801ff9e6471bda7c6f510dfa2ba7e7c35cb559.camel@intel.com>
+In-Reply-To: <eca85e0b-0af3-c43a-31e4-bd5c3f519798@c-s.fr>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200414_082758_639277_7CE31C12 
-X-CRM114-Status: GOOD (  13.75  )
+X-CRM114-CacheID: sfid-20200414_092502_504385_D73527F1 
+X-CRM114-Status: GOOD (  16.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,70 +99,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "heiko@sntech.de" <heiko@sntech.de>,
- "virtualization@lists.linux-foundation.org"
- <virtualization@lists.linux-foundation.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "thierry.reding@gmail.com" <thierry.reding@gmail.com>,
- "will@kernel.org" <will@kernel.org>,
- "m.szyprowski@samsung.com" <m.szyprowski@samsung.com>,
- "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
- "iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>,
- "krzk@kernel.org" <krzk@kernel.org>,
- "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "agross@kernel.org" <agross@kernel.org>, "jroedel@suse.de" <jroedel@suse.de>,
- "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
- "bjorn.andersson@linaro.org" <bjorn.andersson@linaro.org>,
- "gerald.schaefer@de.ibm.com" <gerald.schaefer@de.ibm.com>,
- "robin.murphy@arm.com" <robin.murphy@arm.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "robdclark@gmail.com" <robdclark@gmail.com>,
- "kgene@kernel.org" <kgene@kernel.org>,
- "dwmw2@infradead.org" <dwmw2@infradead.org>,
- "baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: samba-technical@lists.samba.org, virtualization@lists.linux-foundation.org,
+ linux-mm@kvack.org, linux-sctp@vger.kernel.org, target-devel@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, devel@driverdev.osuosl.org,
+ linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org, x86@kernel.org,
+ kasan-dev@googlegroups.com, cocci@systeme.lip6.fr, linux-wpan@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-crypto@vger.kernel.org,
+ linux-pm@vger.kernel.org, ecryptfs@vger.kernel.org, linux-nfs@vger.kernel.org,
+ linux-fscrypt@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-cifs@vger.kernel.org, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-bluetooth@vger.kernel.org, linux-security-module@vger.kernel.org,
+ keyrings@vger.kernel.org, tipc-discussion@lists.sourceforge.net,
+ wireguard@lists.zx2c4.com, linux-ppp@vger.kernel.org,
+ linux-integrity@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ linux-btrfs@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jonathan,
-
-On Mon, Apr 13, 2020 at 10:10:50PM +0000, Derrick, Jonathan wrote:
-> I had to add the following for initial VMD support. The new PCIe domain
-> added on VMD endpoint probe didn't have the dev_iommu member set on the
-> VMD subdevices, which I'm guessing is due to probe_iommu_group already
-> having been run on the VMD endpoint's group prior to those subdevices
-> being added.
-> 
-> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-> index 8a5e1ac328dd..ac1e4fb9bf48 100644
-> --- a/drivers/iommu/iommu.c
-> +++ b/drivers/iommu/iommu.c
-> @@ -1577,6 +1577,9 @@ static int iommu_bus_notifier(struct notifier_block *nb,
->         if (action == BUS_NOTIFY_ADD_DEVICE) {
->                 int ret;
->  
-> +               if (!dev_iommu_get(dev))
-> +                       return -ENOMEM;
-> +
->                 ret = iommu_probe_device(dev);
->                 return (ret) ? NOTIFY_DONE : NOTIFY_OK;
->         } else if (action == BUS_NOTIFY_REMOVED_DEVICE) {
-
-Right, thanks for catching this. The hotplug path does not allocate the
-dev->iommu structure yet. I'll have to figure out if the above patch
-adds it at the right place, but I'll fix it in the next version.
-
-Thanks again,
-
-	Joerg
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gNC8xNC8yMCAyOjA4IEFNLCBDaHJpc3RvcGhlIExlcm95IHdyb3RlOgo+Cj4KPiBMZSAxNC8w
+NC8yMDIwIMOgIDAwOjI4LCBXYWltYW4gTG9uZyBhIMOpY3JpdMKgOgo+PiBTaW5jZSBrZnJlZV9z
+ZW5zaXRpdmUoKSB3aWxsIGRvIGFuIGltcGxpY2l0IG1lbXplcm9fZXhwbGljaXQoKSwgdGhlcmUK
+Pj4gaXMgbm8gbmVlZCB0byBjYWxsIG1lbXplcm9fZXhwbGljaXQoKSBiZWZvcmUgaXQuIEVsaW1p
+bmF0ZSB0aG9zZQo+PiBtZW16ZXJvX2V4cGxpY2l0KCkgYW5kIHNpbXBsaWZ5IHRoZSBjYWxsIHNp
+dGVzLiBGb3IgYmV0dGVyIGNvcnJlY3RuZXNzLAo+PiB0aGUgc2V0dGluZyBvZiBrZXlsZW4gaXMg
+YWxzbyBtb3ZlZCBkb3duIGFmdGVyIHRoZSBrZXkgcG9pbnRlciBjaGVjay4KPj4KPj4gU2lnbmVk
+LW9mZi1ieTogV2FpbWFuIExvbmcgPGxvbmdtYW5AcmVkaGF0LmNvbT4KPj4gLS0tCj4+IMKgIC4u
+Li9hbGx3aW5uZXIvc3VuOGktY2Uvc3VuOGktY2UtY2lwaGVyLmPCoMKgwqDCoMKgIHwgMTkgKysr
+KystLS0tLS0tLS0tLS0tCj4+IMKgIC4uLi9hbGx3aW5uZXIvc3VuOGktc3Mvc3VuOGktc3MtY2lw
+aGVyLmPCoMKgwqDCoMKgIHwgMjAgKysrKystLS0tLS0tLS0tLS0tLQo+PiDCoCBkcml2ZXJzL2Ny
+eXB0by9hbWxvZ2ljL2FtbG9naWMtZ3hsLWNpcGhlci5jwqDCoCB8IDEyICsrKy0tLS0tLS0tCj4+
+IMKgIGRyaXZlcnMvY3J5cHRvL2luc2lkZS1zZWN1cmUvc2FmZXhjZWxfaGFzaC5jwqAgfMKgIDMg
+Ky0tCj4+IMKgIDQgZmlsZXMgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgNDAgZGVsZXRpb25z
+KC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2NyeXB0by9hbGx3aW5uZXIvc3VuOGktY2Uv
+c3VuOGktY2UtY2lwaGVyLmMKPj4gYi9kcml2ZXJzL2NyeXB0by9hbGx3aW5uZXIvc3VuOGktY2Uv
+c3VuOGktY2UtY2lwaGVyLmMKPj4gaW5kZXggYWE0ZThmZGMyYjMyLi44MzU4ZmFjOTg3MTkgMTAw
+NjQ0Cj4+IC0tLSBhL2RyaXZlcnMvY3J5cHRvL2FsbHdpbm5lci9zdW44aS1jZS9zdW44aS1jZS1j
+aXBoZXIuYwo+PiArKysgYi9kcml2ZXJzL2NyeXB0by9hbGx3aW5uZXIvc3VuOGktY2Uvc3VuOGkt
+Y2UtY2lwaGVyLmMKPj4gQEAgLTM2NiwxMCArMzY2LDcgQEAgdm9pZCBzdW44aV9jZV9jaXBoZXJf
+ZXhpdChzdHJ1Y3QgY3J5cHRvX3RmbSAqdGZtKQo+PiDCoCB7Cj4+IMKgwqDCoMKgwqAgc3RydWN0
+IHN1bjhpX2NpcGhlcl90Zm1fY3R4ICpvcCA9IGNyeXB0b190Zm1fY3R4KHRmbSk7Cj4+IMKgIC3C
+oMKgwqAgaWYgKG9wLT5rZXkpIHsKPj4gLcKgwqDCoMKgwqDCoMKgIG1lbXplcm9fZXhwbGljaXQo
+b3AtPmtleSwgb3AtPmtleWxlbik7Cj4+IC3CoMKgwqDCoMKgwqDCoCBrZnJlZShvcC0+a2V5KTsK
+Pj4gLcKgwqDCoCB9Cj4+ICvCoMKgwqAga2ZyZWVfc2Vuc2l0aXZlKG9wLT5rZXkpOwo+PiDCoMKg
+wqDCoMKgIGNyeXB0b19mcmVlX3N5bmNfc2tjaXBoZXIob3AtPmZhbGxiYWNrX3RmbSk7Cj4+IMKg
+wqDCoMKgwqAgcG1fcnVudGltZV9wdXRfc3luY19zdXNwZW5kKG9wLT5jZS0+ZGV2KTsKPj4gwqAg
+fQo+PiBAQCAtMzkxLDE0ICszODgsMTEgQEAgaW50IHN1bjhpX2NlX2Flc19zZXRrZXkoc3RydWN0
+IGNyeXB0b19za2NpcGhlcgo+PiAqdGZtLCBjb25zdCB1OCAqa2V5LAo+PiDCoMKgwqDCoMKgwqDC
+oMKgwqAgZGV2X2RiZyhjZS0+ZGV2LCAiRVJST1I6IEludmFsaWQga2V5bGVuICV1XG4iLCBrZXls
+ZW4pOwo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0dXJuIC1FSU5WQUw7Cj4+IMKgwqDCoMKgwqAg
+fQo+PiAtwqDCoMKgIGlmIChvcC0+a2V5KSB7Cj4+IC3CoMKgwqDCoMKgwqDCoCBtZW16ZXJvX2V4
+cGxpY2l0KG9wLT5rZXksIG9wLT5rZXlsZW4pOwo+PiAtwqDCoMKgwqDCoMKgwqAga2ZyZWUob3At
+PmtleSk7Cj4+IC3CoMKgwqAgfQo+PiAtwqDCoMKgIG9wLT5rZXlsZW4gPSBrZXlsZW47Cj4+ICvC
+oMKgwqAga2ZyZWVfc2Vuc2l0aXZlKG9wLT5rZXkpOwo+PiDCoMKgwqDCoMKgIG9wLT5rZXkgPSBr
+bWVtZHVwKGtleSwga2V5bGVuLCBHRlBfS0VSTkVMIHwgR0ZQX0RNQSk7Cj4+IMKgwqDCoMKgwqAg
+aWYgKCFvcC0+a2V5KQo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0dXJuIC1FTk9NRU07Cj4+ICvC
+oMKgwqAgb3AtPmtleWxlbiA9IGtleWxlbjsKPgo+IERvZXMgaXQgbWF0dGVyIGF0IGFsbCB0byBl
+bnN1cmUgb3AtPmtleWxlbiBpcyBub3Qgc2V0IHdoZW4gb2YtPmtleSBpcwo+IE5VTEwgPyBJJ20g
+bm90IHN1cmUuCj4KPiBCdXQgaWYgaXQgZG9lcywgdGhlbiBvcC0+a2V5bGVuIHNob3VsZCBiZSBz
+ZXQgdG8gMCB3aGVuIGZyZWVpbmcgb3AtPmtleS4gCgpNeSB0aGlua2luZyBpcyB0aGF0IGlmIG1l
+bW9yeSBhbGxvY2F0aW9uIGZhaWxzLCB3ZSBqdXN0IGRvbid0IHRvdWNoCmFueXRoaW5nIGFuZCBy
+ZXR1cm4gYW4gZXJyb3IgY29kZS4gSSB3aWxsIG5vdCBleHBsaWNpdGx5IHNldCBrZXlsZW4gdG8g
+MAppbiB0aGlzIGNhc2UgdW5sZXNzIGl0IGlzIHNwZWNpZmllZCBpbiB0aGUgQVBJIGRvY3VtZW50
+YXRpb24uCgpDaGVlcnMsCkxvbmdtYW4KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0
+ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
