@@ -2,87 +2,71 @@ Return-Path: <SRS0=jJra=56=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B893CC352BE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 19:38:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 13A8BC2BB85
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 19:47:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 903D1206E9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 19:38:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DE43E206E9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 19:47:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Pw6Wjvqt";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="RUtwHLrS"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 903D1206E9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KjydOVBz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DE43E206E9
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=perches.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zpekPo8whO1rIkcaCtQtzp9NjlznOt80PWRBok1TOKA=; b=Pw6Wjvqt5xyxXC
-	75BiqcVvPnfTLQJN95yNnBguaLMICswyczSpDjMMwkO1KrLvrlJ8LeckmXPEY5A0l5qs/daioFxUu
-	GwlGimb+dSr1t5rJN1+OC5qiMvn6faRDOwTYyEP+VdKC2Nb+GksPpTt90q6xzy7xRDuI41a6NlnYP
-	q6fU4OVKZa/kBbZIzxVMNbRZOi6UF72AHKxlmbUerSMQLWVw9l33S1gpYMTEuzoU40akJb9fx/nai
-	j8Y4FSHavbpQAIuZK+6MbtE62TeBh16FsJVTqYuA+4oeJt3SUR5gHR7Gf8tvrttv1+XdxIU/sQyTr
-	KzUZoZx/CCBAZaOULCgw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DZp6sJieTjqQTFQ3oqw5vVYqf2nPFDVjDz2vxJcHZVE=; b=KjydOVBzSjey3/
+	9Bg7cbjdebtlh9POHejoq1T84sLpCeURXt/zY9PfD8ffhT+r1+SDqkbElH1yvDlB2X9h9iifBJcDn
+	gBhBdPAgwP2GzbEinxu2DOlmkvTyvGx/WjHy8jNf8KpJM7n71l9yCYlj50AdPNb+ueQMNqd+GRYc5
+	jyLKvSQb9aPYaEzhOUAGaiC9p9wyPncUT3mOOI3Rs581wfpELQtGD1zuaIy82YrNTRTCDuOUgpZIT
+	6W9XDAjDopm83RwDHMPmv6H1gGc+9ENsA5Gj1zW2jAI7kLDa5jgwgVu/jcmZKKWe6Asr7wUQw8QX1
+	zsSkxMiWoS/Wvf7u7EvA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jORNu-00050p-Mu; Tue, 14 Apr 2020 19:38:14 +0000
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]
- helo=us-smtp-1.mimecast.com)
+	id 1jORWi-0003Pu-W4; Tue, 14 Apr 2020 19:47:20 +0000
+Received: from smtprelay0189.hostedemail.com ([216.40.44.189]
+ helo=smtprelay.hostedemail.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jORNs-0004ze-79
- for linux-mediatek@lists.infradead.org; Tue, 14 Apr 2020 19:38:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1586893088;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=K7rEujuH9mCHHkQNQF3bIC7vs8ss/qE9yTiJvgoWENY=;
- b=RUtwHLrSbkaJMm0IrMRS9rm0IZmdDO3dP2/xxkZGnWHf/t7JN2MxaoW4q5N/mb6RPBFLLy
- P947ZeFYc1NGC7YZYlO7Mw3aqTJi1Hqp7+A3wGm8Zn3fqfDRZznd1zIsAv1KIqCY5KfpPZ
- cSeVgzUqVzTuzDNClrQrNJ8UGRg4zNQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-139-BEtuMjG3PL-f8LyKeyu6gQ-1; Tue, 14 Apr 2020 15:38:03 -0400
-X-MC-Unique: BEtuMjG3PL-f8LyKeyu6gQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7A5A58017F3;
- Tue, 14 Apr 2020 19:37:58 +0000 (UTC)
-Received: from llong.remote.csb (ovpn-118-173.rdu2.redhat.com [10.10.118.173])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0277F100E7E3;
- Tue, 14 Apr 2020 19:37:51 +0000 (UTC)
+ id 1jORWY-0003FT-Km; Tue, 14 Apr 2020 19:47:11 +0000
+Received: from filter.hostedemail.com (clb03-v110.bra.tucows.net
+ [216.40.38.60])
+ by smtprelay06.hostedemail.com (Postfix) with ESMTP id 9E3611802B57F;
+ Tue, 14 Apr 2020 19:47:05 +0000 (UTC)
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-HE-Tag: coal59_5a1e7cc02a463
+X-Filterd-Recvd-Size: 2796
+Received: from XPS-9350.home (unknown [47.151.136.130])
+ (Authenticated sender: joe@perches.com)
+ by omf07.hostedemail.com (Postfix) with ESMTPA;
+ Tue, 14 Apr 2020 19:46:59 +0000 (UTC)
+Message-ID: <2a58f592879cf67b4c6b8e859ce87e1f9652902a.camel@perches.com>
 Subject: Re: [PATCH v2 2/2] crypto: Remove unnecessary memzero_explicit()
-To: =?UTF-8?Q?Michal_Such=c3=a1nek?= <msuchanek@suse.de>
+From: Joe Perches <joe@perches.com>
+To: Waiman Long <longman@redhat.com>, Michal =?ISO-8859-1?Q?Such=E1nek?=
+ <msuchanek@suse.de>
+Date: Tue, 14 Apr 2020 12:44:49 -0700
+In-Reply-To: <578fe9b6-1ccd-2698-60aa-96c3f2dd2c31@redhat.com>
 References: <20200413211550.8307-1-longman@redhat.com>
  <20200413222846.24240-1-longman@redhat.com>
  <eca85e0b-0af3-c43a-31e4-bd5c3f519798@c-s.fr>
  <e194a51f-a5e5-a557-c008-b08cac558572@redhat.com>
  <20200414191601.GZ25468@kitsune.suse.cz>
-From: Waiman Long <longman@redhat.com>
-Organization: Red Hat
-Message-ID: <578fe9b6-1ccd-2698-60aa-96c3f2dd2c31@redhat.com>
-Date: Tue, 14 Apr 2020 15:37:51 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ <578fe9b6-1ccd-2698-60aa-96c3f2dd2c31@redhat.com>
+User-Agent: Evolution 3.34.1-2 
 MIME-Version: 1.0
-In-Reply-To: <20200414191601.GZ25468@kitsune.suse.cz>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200414_123812_350882_DD9BEB55 
-X-CRM114-Status: GOOD (  17.84  )
+X-CRM114-CacheID: sfid-20200414_124710_739707_D24F4316 
+X-CRM114-Status: UNSURE (   6.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,87 +98,26 @@ Cc: linux-btrfs@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-bluetooth@vger.kernel.org,
  linux-security-module@vger.kernel.org, target-devel@vger.kernel.org,
  tipc-discussion@lists.sourceforge.net, linux-crypto@vger.kernel.org,
- netdev@vger.kernel.org, Joe Perches <joe@perches.com>,
- Andrew Morton <akpm@linux-foundation.org>, linuxppc-dev@lists.ozlabs.org,
- wireguard@lists.zx2c4.com, linux-ppp@vger.kernel.org
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: quoted-printable
+ netdev@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
+ linuxppc-dev@lists.ozlabs.org, wireguard@lists.zx2c4.com,
+ linux-ppp@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/14/20 3:16 PM, Michal Such=E1nek wrote:
-> On Tue, Apr 14, 2020 at 12:24:36PM -0400, Waiman Long wrote:
->> On 4/14/20 2:08 AM, Christophe Leroy wrote:
->>>
->>> Le 14/04/2020 =E0 00:28, Waiman Long a =E9crit=A0:
->>>> Since kfree_sensitive() will do an implicit memzero_explicit(), there
->>>> is no need to call memzero_explicit() before it. Eliminate those
->>>> memzero_explicit() and simplify the call sites. For better correctness,
->>>> the setting of keylen is also moved down after the key pointer check.
->>>>
->>>> Signed-off-by: Waiman Long <longman@redhat.com>
->>>> ---
->>>> =A0 .../allwinner/sun8i-ce/sun8i-ce-cipher.c=A0=A0=A0=A0=A0 | 19 +++++=
--------------
->>>> =A0 .../allwinner/sun8i-ss/sun8i-ss-cipher.c=A0=A0=A0=A0=A0 | 20 +++++=
---------------
->>>> =A0 drivers/crypto/amlogic/amlogic-gxl-cipher.c=A0=A0 | 12 +++--------
->>>> =A0 drivers/crypto/inside-secure/safexcel_hash.c=A0 |=A0 3 +--
->>>> =A0 4 files changed, 14 insertions(+), 40 deletions(-)
->>>>
->>>> diff --git a/drivers/crypto/allwinner/sun8i-ce/sun8i-ce-cipher.c
->>>> b/drivers/crypto/allwinner/sun8i-ce/sun8i-ce-cipher.c
->>>> index aa4e8fdc2b32..8358fac98719 100644
->>>> --- a/drivers/crypto/allwinner/sun8i-ce/sun8i-ce-cipher.c
->>>> +++ b/drivers/crypto/allwinner/sun8i-ce/sun8i-ce-cipher.c
->>>> @@ -366,10 +366,7 @@ void sun8i_ce_cipher_exit(struct crypto_tfm *tfm)
->>>> =A0 {
->>>> =A0=A0=A0=A0=A0 struct sun8i_cipher_tfm_ctx *op =3D crypto_tfm_ctx(tfm=
-);
->>>> =A0 -=A0=A0=A0 if (op->key) {
->>>> -=A0=A0=A0=A0=A0=A0=A0 memzero_explicit(op->key, op->keylen);
->>>> -=A0=A0=A0=A0=A0=A0=A0 kfree(op->key);
->>>> -=A0=A0=A0 }
->>>> +=A0=A0=A0 kfree_sensitive(op->key);
->>>> =A0=A0=A0=A0=A0 crypto_free_sync_skcipher(op->fallback_tfm);
->>>> =A0=A0=A0=A0=A0 pm_runtime_put_sync_suspend(op->ce->dev);
->>>> =A0 }
->>>> @@ -391,14 +388,11 @@ int sun8i_ce_aes_setkey(struct crypto_skcipher
->>>> *tfm, const u8 *key,
->>>> =A0=A0=A0=A0=A0=A0=A0=A0=A0 dev_dbg(ce->dev, "ERROR: Invalid keylen %u=
-\n", keylen);
->>>> =A0=A0=A0=A0=A0=A0=A0=A0=A0 return -EINVAL;
->>>> =A0=A0=A0=A0=A0 }
->>>> -=A0=A0=A0 if (op->key) {
->>>> -=A0=A0=A0=A0=A0=A0=A0 memzero_explicit(op->key, op->keylen);
->>>> -=A0=A0=A0=A0=A0=A0=A0 kfree(op->key);
->>>> -=A0=A0=A0 }
->>>> -=A0=A0=A0 op->keylen =3D keylen;
->>>> +=A0=A0=A0 kfree_sensitive(op->key);
->>>> =A0=A0=A0=A0=A0 op->key =3D kmemdup(key, keylen, GFP_KERNEL | GFP_DMA);
->>>> =A0=A0=A0=A0=A0 if (!op->key)
->>>> =A0=A0=A0=A0=A0=A0=A0=A0=A0 return -ENOMEM;
->>>> +=A0=A0=A0 op->keylen =3D keylen;
->>> Does it matter at all to ensure op->keylen is not set when of->key is
->>> NULL ? I'm not sure.
->>>
->>> But if it does, then op->keylen should be set to 0 when freeing op->key=
-. =
+On Tue, 2020-04-14 at 15:37 -0400, Waiman Long wrote:
+> OK, I can change it to clear the key length when the allocation failed
+> which isn't likely.
 
->> My thinking is that if memory allocation fails, we just don't touch
->> anything and return an error code. I will not explicitly set keylen to 0
->> in this case unless it is specified in the API documentation.
-> You already freed the key by now so not touching anything is not
-> possible. The key is set to NULL on allocation failure so setting keylen
-> to 0 should be redundant. However, setting keylen to 0 is consisent with
-> not having a key, and it avoids the possibility of leaking the length
-> later should that ever cause any problem.
 
-OK, I can change it to clear the key length when the allocation failed
-which isn't likely.
+Perhaps:
 
-Cheers,
-Longman
+	kfree_sensitive(op->key);
+	op->key = NULL;
+	op->keylen = 0;
+
+but I don't know that it impacts any possible state.
 
 
 
