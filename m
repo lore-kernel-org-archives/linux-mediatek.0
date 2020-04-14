@@ -2,45 +2,44 @@ Return-Path: <SRS0=jJra=56=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+X-Spam-Status: No, score=-8.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4406DC2BA19
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:23:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0BB5CC2BA19
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:23:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0D4252063A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:23:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CDD392063A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 13:23:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="T5NMi5fi"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0D4252063A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="idiMkrRU"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CDD392063A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=shJRxoMQnIT8ftMAxHjgEuZx5c4aLh8q+c6FgIXIDLg=; b=T5NMi5fi0ffuTANZmjT34baDmw
-	hxNgKTbxHQkDyQr9bRHDP0h/vAV5tL4mE1gllIr9jtq21vrzvYx+UVSEEe35XZpwwrPTPghuUciML
-	iHgzIZxbhla9cOuRm281tHQS1o43SSkCNzm1YC6h3MNchcD8C2s6Tr31eyl0rhJdTcdaDQManYyQh
-	VlCtGw4b7Q9GbWkbHnqb3O1MJbY3FL4xchwPnNPXhtGM6RjzTYHtpu6Y7LWbN+nQjBpSp37x0kyEM
-	0Ly8EuR202wTvo9+yXJFGzcG3nVi5jlSId8BWgOTDu7Iv7MZlUKsYynZqKy3wFfKDcM8S3J8FcSlw
-	nDHaI6HA==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=o6mn9bOj/k/qts3CLKitWwmLiZZelK0BZPZ5A7wgtdw=; b=idi
+	MkrRUQYB0/O2duagP/y2WYc9dgnTe9a1opuLR7sM8ybWAGG75qUv7JrugDtEtHfSbHWtwmDMvhesc
+	ad7H42OoPc21vYMwp5k/g6+D8rep/nQDhKbJSHR+dFE2mqZ6elcfejt21jtBjvMs0QSP/YhnpTZwv
+	oIFl9A4hWjsuCqBNJNoZPCz4ZSt+sKbHKVHx5zEw36tghIDJ/oizxkfJniZcbnwPX0FlUXf/SIBfx
+	vKosFlG921HXVYqVu8vsIujyzEB/3K/4NybbsN+Efh3+lJfeh2TYNXZ5lXZ4GKX4UW3+YC8OLvq5f
+	Xvqk/1Stx2E01NAu6+EK9VEqmfAeCXg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOLX8-0003m0-J1; Tue, 14 Apr 2020 13:23:22 +0000
+	id 1jOLXB-0003oN-Fw; Tue, 14 Apr 2020 13:23:25 +0000
 Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
  helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOLPy-0002Cv-WD; Tue, 14 Apr 2020 13:16:03 +0000
+ id 1jOLPy-0002Cr-Ua; Tue, 14 Apr 2020 13:16:03 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 71CA32A5; Tue, 14 Apr 2020 15:15:51 +0200 (CEST)
+ id 6821A2B0; Tue, 14 Apr 2020 15:15:51 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -55,16 +54,13 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v2 01/33] iommu: Move default domain allocation to separate
- function
-Date: Tue, 14 Apr 2020 15:15:10 +0200
-Message-Id: <20200414131542.25608-2-joro@8bytes.org>
+Subject: [PATCH v2 00/33] iommu: Move iommu_group setup to IOMMU core code
+Date: Tue, 14 Apr 2020 15:15:09 +0200
+Message-Id: <20200414131542.25608-1-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200414131542.25608-1-joro@8bytes.org>
-References: <20200414131542.25608-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200414_061559_387257_A487C60C 
-X-CRM114-Status: GOOD (  14.55  )
+X-CRM114-CacheID: sfid-20200414_061559_296226_0A0E8607 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,121 +75,104 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
  virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org,
- iommu@lists.linux-foundation.org, Joerg Roedel <jroedel@suse.de>,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org
+ iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ linux-tegra@vger.kernel.org
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Joerg Roedel <jroedel@suse.de>
+Hi,
 
-Move the code out of iommu_group_get_for_dev() into a separate
-function.
+here is the second version of this patch-set. The first version with
+some more introductory text can be found here:
 
-Signed-off-by: Joerg Roedel <jroedel@suse.de>
----
- drivers/iommu/iommu.c | 74 ++++++++++++++++++++++++++-----------------
- 1 file changed, 45 insertions(+), 29 deletions(-)
+	https://lore.kernel.org/lkml/20200407183742.4344-1-joro@8bytes.org/
 
-diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-index 2b471419e26c..bfe011760ed1 100644
---- a/drivers/iommu/iommu.c
-+++ b/drivers/iommu/iommu.c
-@@ -1361,6 +1361,41 @@ struct iommu_group *fsl_mc_device_group(struct device *dev)
- }
- EXPORT_SYMBOL_GPL(fsl_mc_device_group);
- 
-+static int iommu_alloc_default_domain(struct device *dev,
-+				      struct iommu_group *group)
-+{
-+	struct iommu_domain *dom;
-+
-+	if (group->default_domain)
-+		return 0;
-+
-+	dom = __iommu_domain_alloc(dev->bus, iommu_def_domain_type);
-+	if (!dom && iommu_def_domain_type != IOMMU_DOMAIN_DMA) {
-+		dom = __iommu_domain_alloc(dev->bus, IOMMU_DOMAIN_DMA);
-+		if (dom) {
-+			dev_warn(dev,
-+				 "failed to allocate default IOMMU domain of type %u; falling back to IOMMU_DOMAIN_DMA",
-+				 iommu_def_domain_type);
-+		}
-+	}
-+
-+	if (!dom)
-+		return -ENOMEM;
-+
-+	group->default_domain = dom;
-+	if (!group->domain)
-+		group->domain = dom;
-+
-+	if (!iommu_dma_strict) {
-+		int attr = 1;
-+		iommu_domain_set_attr(dom,
-+				      DOMAIN_ATTR_DMA_USE_FLUSH_QUEUE,
-+				      &attr);
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * iommu_group_get_for_dev - Find or create the IOMMU group for a device
-  * @dev: target device
-@@ -1393,40 +1428,21 @@ struct iommu_group *iommu_group_get_for_dev(struct device *dev)
- 
- 	/*
- 	 * Try to allocate a default domain - needs support from the
--	 * IOMMU driver.
-+	 * IOMMU driver. There are still some drivers which don't support
-+	 * default domains, so the return value is not yet checked.
- 	 */
--	if (!group->default_domain) {
--		struct iommu_domain *dom;
--
--		dom = __iommu_domain_alloc(dev->bus, iommu_def_domain_type);
--		if (!dom && iommu_def_domain_type != IOMMU_DOMAIN_DMA) {
--			dom = __iommu_domain_alloc(dev->bus, IOMMU_DOMAIN_DMA);
--			if (dom) {
--				dev_warn(dev,
--					 "failed to allocate default IOMMU domain of type %u; falling back to IOMMU_DOMAIN_DMA",
--					 iommu_def_domain_type);
--			}
--		}
--
--		group->default_domain = dom;
--		if (!group->domain)
--			group->domain = dom;
--
--		if (dom && !iommu_dma_strict) {
--			int attr = 1;
--			iommu_domain_set_attr(dom,
--					      DOMAIN_ATTR_DMA_USE_FLUSH_QUEUE,
--					      &attr);
--		}
--	}
-+	iommu_alloc_default_domain(dev, group);
- 
- 	ret = iommu_group_add_device(group, dev);
--	if (ret) {
--		iommu_group_put(group);
--		return ERR_PTR(ret);
--	}
-+	if (ret)
-+		goto out_put_group;
- 
- 	return group;
-+
-+out_put_group:
-+	iommu_group_put(group);
-+
-+	return ERR_PTR(ret);
- }
- EXPORT_SYMBOL(iommu_group_get_for_dev);
- 
+Changes v1->v2:
+
+	* Rebased to v5.7-rc1
+
+	* Re-wrote the arm-smmu changes as suggested by Robin Murphy
+
+	* Re-worked the Exynos patches to hopefully not break the
+	  driver anymore
+
+	* Fixed a missing mutex_unlock() reported by Marek Szyprowski,
+	  thanks for that.
+
+There is also a git-branch available with these patches applied:
+
+	https://git.kernel.org/pub/scm/linux/kernel/git/joro/linux.git/log/?h=iommu-probe-device-v2
+
+Please review.
+
+Thanks,
+
+	Joerg
+
+Joerg Roedel (32):
+  iommu: Move default domain allocation to separate function
+  iommu/amd: Implement iommu_ops->def_domain_type call-back
+  iommu/vt-d: Wire up iommu_ops->def_domain_type
+  iommu/amd: Remove dma_mask check from check_device()
+  iommu/amd: Return -ENODEV in add_device when device is not handled by
+    IOMMU
+  iommu: Add probe_device() and remove_device() call-backs
+  iommu: Move default domain allocation to iommu_probe_device()
+  iommu: Keep a list of allocated groups in __iommu_probe_device()
+  iommu: Move new probe_device path to separate function
+  iommu: Split off default domain allocation from group assignment
+  iommu: Move iommu_group_create_direct_mappings() out of
+    iommu_group_add_device()
+  iommu: Export bus_iommu_probe() and make is safe for re-probing
+  iommu/amd: Remove dev_data->passthrough
+  iommu/amd: Convert to probe/release_device() call-backs
+  iommu/vt-d: Convert to probe/release_device() call-backs
+  iommu/arm-smmu: Convert to probe/release_device() call-backs
+  iommu/pamu: Convert to probe/release_device() call-backs
+  iommu/s390: Convert to probe/release_device() call-backs
+  iommu/virtio: Convert to probe/release_device() call-backs
+  iommu/msm: Convert to probe/release_device() call-backs
+  iommu/mediatek: Convert to probe/release_device() call-backs
+  iommu/mediatek-v1 Convert to probe/release_device() call-backs
+  iommu/qcom: Convert to probe/release_device() call-backs
+  iommu/rockchip: Convert to probe/release_device() call-backs
+  iommu/tegra: Convert to probe/release_device() call-backs
+  iommu/renesas: Convert to probe/release_device() call-backs
+  iommu/omap: Remove orphan_dev tracking
+  iommu/omap: Convert to probe/release_device() call-backs
+  iommu/exynos: Use first SYSMMU in controllers list for IOMMU core
+  iommu/exynos: Convert to probe/release_device() call-backs
+  iommu: Remove add_device()/remove_device() code-paths
+  iommu: Unexport iommu_group_get_for_dev()
+
+Sai Praneeth Prakhya (1):
+  iommu: Add def_domain_type() callback in iommu_ops
+
+ drivers/iommu/amd_iommu.c       |  97 ++++----
+ drivers/iommu/amd_iommu_types.h |   1 -
+ drivers/iommu/arm-smmu-v3.c     |  38 +--
+ drivers/iommu/arm-smmu.c        |  39 ++--
+ drivers/iommu/exynos-iommu.c    |  24 +-
+ drivers/iommu/fsl_pamu_domain.c |  22 +-
+ drivers/iommu/intel-iommu.c     |  68 +-----
+ drivers/iommu/iommu.c           | 393 +++++++++++++++++++++++++-------
+ drivers/iommu/ipmmu-vmsa.c      |  60 ++---
+ drivers/iommu/msm_iommu.c       |  34 +--
+ drivers/iommu/mtk_iommu.c       |  24 +-
+ drivers/iommu/mtk_iommu_v1.c    |  50 ++--
+ drivers/iommu/omap-iommu.c      |  99 ++------
+ drivers/iommu/qcom_iommu.c      |  24 +-
+ drivers/iommu/rockchip-iommu.c  |  26 +--
+ drivers/iommu/s390-iommu.c      |  22 +-
+ drivers/iommu/tegra-gart.c      |  24 +-
+ drivers/iommu/tegra-smmu.c      |  31 +--
+ drivers/iommu/virtio-iommu.c    |  41 +---
+ include/linux/iommu.h           |  21 +-
+ 20 files changed, 533 insertions(+), 605 deletions(-)
+
 -- 
 2.17.1
 
