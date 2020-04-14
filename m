@@ -2,86 +2,86 @@ Return-Path: <SRS0=jJra=56=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B4BE5C2BA2B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 03:03:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F1C85C2BB1D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 03:08:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 872722072D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 03:03:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B5B8C20732
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Apr 2020 03:08:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TEQ4Hnvi";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="lsxWeaXi"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 872722072D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KNWEgwVG";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="LSXUefaf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B5B8C20732
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zr9q7QVkOnQyh+Y6Au9AZMNebKqMcyyQxAxOyZSL8/Y=; b=TEQ4HnviPzNRaX
-	2A0usxrd0j48IAABxWO+9H7HR+HVf44rj1GNa87ZoH6OUFzIWyv01khoCTDgVvzxnYTM0NWku0oon
-	voFp8FWfxZlYEPsx677zL3T3uuFvOcn7LlLOwTrOSDYVCN/BIawgmQaPsrPM9AQvQ1cPy9PKiDaG4
-	PSULSWaTu9Kcqf/dQ25wLburzVp/o86hxiMPdWjjXUvb1oDx8d2LhPDFwWkzo0afYzjNZqplqeplG
-	ZlBolCGKCn1OD0N1pL5EGmlKPnW5PAoH/s1iXX7N9AaL82DSJwvUBslOdMhzWBeBsIG/gTKduk9Gm
-	137WtxEfMuEwt6nOgJsQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8TebRX49PPu4ytpYaQvL6HYyJXqRmmO4V8EA+u5puGM=; b=KNWEgwVGS8Ih48
+	xuYcqGyurPYXzSKSd2lpuse29j67iM5bgUC0P/pyXLM1HWQM+DNWFbgUbGrFad+ViFhzjjG3TjGXt
+	Sdkqpy8qrJPdluvtytddr3RtbYzoFQjDdGxnTe6HaDtMEGt1ATUHPjDVWCs3H28fIWIswTh0AmdxI
+	Ykdbe69sq5Ov7Y1mKqulsnlDSc3i5Ht1mQ16JwMFBpTavBFZDZUPV2XZL3sZSHFTyKQWdzGKfh70K
+	n6yNblX6zapglgbayaYgpypazizUnAqixDdIdJonur1oJAd+uk3/htHIDaAVC7FaFpgoN6ScRmOWI
+	5fW+pag/F6vSUZkajokg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOBr3-0004Iz-9J; Tue, 14 Apr 2020 03:03:17 +0000
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143])
+	id 1jOBw1-0008PL-Ml; Tue, 14 Apr 2020 03:08:25 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOBr0-0004IM-It
- for linux-mediatek@lists.infradead.org; Tue, 14 Apr 2020 03:03:15 +0000
-Received: by mail-il1-x143.google.com with SMTP id i2so9759122ils.12
- for <linux-mediatek@lists.infradead.org>; Mon, 13 Apr 2020 20:03:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=MvvX428jhA03WN2yaKHPbkqaFaksfSra1Adu8XMIvnk=;
- b=lsxWeaXi7KzM9AHRz9I3JGG6nz3zZugSUkekvKuK+DbygExzEtKRUvMtby+huNU2aA
- 5TmBsboQd/Nosp2M44QZfFkSrPTiuXYBE32zZdQUyoxi0WIkSbIU6LwlqypQSPCRboZW
- l5rhNUrPpFwa1dW9233XjtmeODqwSj6Y4ZoxPZ5tM+3TBqg+kdGYqAVVm3pjlNIwiKsW
- vY6dYz3ae12FKAuPJM6v8ZDGaB648qnI03GpkXHf8C7KGRutPeZ5fW49tFykS9j80Qmg
- w/D7AEXamHkAotXZIzomuXjDJ/HiGpuksmffIfy5OpR3yrl2Yru3EagATt219x95K1iM
- Oejw==
+ id 1jOBvz-0008Oi-Ha
+ for linux-mediatek@lists.infradead.org; Tue, 14 Apr 2020 03:08:24 +0000
+Received: by mail-pf1-x443.google.com with SMTP id x3so5193610pfp.7
+ for <linux-mediatek@lists.infradead.org>; Mon, 13 Apr 2020 20:08:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=sK5J9WWtksNX77+NYMwDl6iDZ21wbSLhPOx9BD2BM8M=;
+ b=LSXUefafyRPCK1BKfVXiyl8L6XfmghKkzW97uJsOEM4gDKMgCfDopHvzMyxX9Myj88
+ Gl5rTEhzpS1OYgiBDgymvERjRoXimxL5xwpDoZPX/ySaHiEso7gshkntX1zU3eV/rMje
+ P7odV0SrY0XzqZfAZFoea4TeBlA+Wp45m+108=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=MvvX428jhA03WN2yaKHPbkqaFaksfSra1Adu8XMIvnk=;
- b=e0WRR7/f+WtGvagotTNMqsKfpvxHy0MdtrpnS/cnNkRce4bCYX+F5LlN1UWy/oxgCS
- D5VnTnJ3NhTUOTBZ84BCk1k6ciW0EnxANtQQ2k2qTpt7V0wF+fMcI2PlFtP+1BpRtwmt
- tmk++F7yzvJkVmH3nw+5GHfQ9flEUNuMH50v3yrI+g0EYu2Rdn8rqE4cWoS/gTxh4qr0
- jSV23bjws35UAIWUQkhh+ARi7dw+v2/DmR0H3T5OxsTv5/VJCW2ctLcfgV1Hx4UWXcAE
- rX6b6SrhglTnsAxKiQiFbVuiKsWht5CxV2/XhL8GhOzs+qGMdk9j2dmAqghEt9FLTqXr
- P9pA==
-X-Gm-Message-State: AGi0Puabkqg4WDCyTWp2AcwUd18GV8/+4nTecjsU6mIsXewQbuQ8VKxu
- kBLDlIDEt+HDiJsPCFr7wo+OSMXI2uPAOqYstaQ=
-X-Google-Smtp-Source: APiQypJdxOiHOVepSY+VJkvtNtZWPvs+Ogm/uxPCVhz3OiBFQ0RTo9yglWG4d2rrW8/Lzr5mGBOtamSbDoyYatU0RkI=
-X-Received: by 2002:a92:c991:: with SMTP id y17mr20440596iln.239.1586833393592; 
- Mon, 13 Apr 2020 20:03:13 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=sK5J9WWtksNX77+NYMwDl6iDZ21wbSLhPOx9BD2BM8M=;
+ b=VyWDM3K8LRfhVq/oru2F8qZxQzA0TvTDTmDP+lHbO0JFkKS7pj49HqjHhWhO4Ck74k
+ G+Fqj9YOoDGFzYjdE+IAssg5Cbd3zBTei55Z44+HAyfB1mpxEpOHNTFeHsWA7nilPRyP
+ 8yoX8V2ovOqSclkpGn7/MBxK5BRjkHTGJ7LcPW8dUwHSCYrNEtOqg73r/k2fvuc9uCy7
+ HYW5xd+bA53MhrA3oOiR3s5gqTmR67jDVNji7zuTaLTOoaLnYnOUVxjl1LagsGGdGDQI
+ SHVxHXwftnT6/rT6XdhV4MrxlJRn2xCDj8bFmCis/cSM0hicKfEeaTsUx6GBN/vi1Fmt
+ pnVQ==
+X-Gm-Message-State: AGi0Pua/lnw/3Rw1ayYMkuUZtD1999w2GTuciEPFa1/KzVegIskg8ckk
+ zqDP/AU8gYQtZ0sBYE2h8tPq7g==
+X-Google-Smtp-Source: APiQypJQpaS0PH8YnPtS/hZHhI9tNItaYB2TAmhKVyqtt1h2PIezqUr6JFZ0U4VOiU7IsrqBf+3Iqg==
+X-Received: by 2002:a63:6287:: with SMTP id
+ w129mr10337254pgb.410.1586833702123; 
+ Mon, 13 Apr 2020 20:08:22 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:b852:bd51:9305:4261])
+ by smtp.gmail.com with ESMTPSA id z23sm3610897pfr.136.2020.04.13.20.08.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 13 Apr 2020 20:08:21 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 1/2] arm64: dts: mt8173: fix mdp aliases property name
+Date: Tue, 14 Apr 2020 11:08:14 +0800
+Message-Id: <20200414030815.192104-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.26.0.110.g2183baf09c-goog
 MIME-Version: 1.0
-References: <20200409155409.12043-1-dqfext@gmail.com>
- <20200409.102035.13094168508101122.davem@davemloft.net>
- <CALW65jbrg1doaRBPdGQkQ-PG6dnh_L4va7RxcMxyKKMqasN7bQ@mail.gmail.com>
- <c7da2de5-5e25-6284-0b35-fd2dbceb9c4f@gmail.com>
- <CALW65jZAdFFNfGioAFWPwYN+F4baL0Z-+FX_pAte97uxNK3T6g@mail.gmail.com>
- <CA+h21hp8LueSfh+Z8f0-Y7dTPB50d+3E3K9n6R5MwNzA3Dh1Lw@mail.gmail.com>
-In-Reply-To: <CA+h21hp8LueSfh+Z8f0-Y7dTPB50d+3E3K9n6R5MwNzA3Dh1Lw@mail.gmail.com>
-From: DENG Qingfang <dqfext@gmail.com>
-Date: Tue, 14 Apr 2020 11:03:02 +0800
-Message-ID: <CALW65jYodd=GoWrGTcAWEO6wNQdvSQjgO=4tmNYNnmbCh7n8sg@mail.gmail.com>
-Subject: Re: [PATCH net-next] net: dsa: mt7530: enable jumbo frame
-To: Vladimir Oltean <olteanv@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200413_200314_643116_3A9153B7 
-X-CRM114-Status: GOOD (  19.97  )
+X-CRM114-CacheID: sfid-20200413_200823_604148_73B3788E 
+X-CRM114-Status: UNSURE (   8.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,78 +93,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- netdev <netdev@vger.kernel.org>, Sean Wang <sean.wang@mediatek.com>,
- Weijie Gao <weijie.gao@mediatek.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- John Crispin <john@phrozen.org>, David Miller <davem@davemloft.net>
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Houlong Wei <houlong.wei@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 10, 2020 at 6:46 PM Vladimir Oltean <olteanv@gmail.com> wrote:
->
-> Hi Qingfang,
->
-> On Fri, 10 Apr 2020 at 05:51, DENG Qingfang <dqfext@gmail.com> wrote:
-> >
-> > On Fri, Apr 10, 2020 at 10:27 AM Florian Fainelli <f.fainelli@gmail.com> wrote:
-> > >
-> > >
-> > >
-> > > On 4/9/2020 7:19 PM, DENG Qingfang wrote:
-> > > > So, since nothing else uses the mt7530_set_jumbo function, should I
-> > > > remove the function and just add a single rmw to mt7530_setup?
-> > >
-> > > (please do not top-post on netdev)
-> > >
-> > > There is a proper way to support the MTU configuration for DSA switch
-> > > drivers which is:
-> > >
-> > >         /*
-> > >          * MTU change functionality. Switches can also adjust their MRU
-> > > through
-> > >          * this method. By MTU, one understands the SDU (L2 payload) length.
-> > >          * If the switch needs to account for the DSA tag on the CPU
-> > > port, this
-> > >          * method needs to to do so privately.
-> > >          */
-> > >         int     (*port_change_mtu)(struct dsa_switch *ds, int port,
-> > >                                    int new_mtu);
-> > >         int     (*port_max_mtu)(struct dsa_switch *ds, int port);
-> >
-> > MT7530 does not support configuring jumbo frame per-port
-> > The register affects globally
-> >
-> > >
-> > > --
-> > > Florian
->
-> This is a bit more tricky, but I think you can still deal with it
-> using the port_change_mtu functionality. Basically it is only a
-> problem when the other ports are standalone - otherwise the
-> dsa_bridge_mtu_normalization function should kick in.
-> So if you implement port_change_mtu, you should do something along the lines of:
->
-> for (i = 0; i < MT7530_NUM_PORTS; i++) {
->     struct net_device *slave;
->
->     if (!dsa_is_user_port(ds, i))
->         continue;
->
->     slave = ds->ports[i].slave;
->
->     slave->mtu = new_mtu;
-> }
->
-> to update the MTU known by the stack for all net devices.
-Should we warn users that all ports will be affected?
->
-> Hope this helps,
-> -Vladimir
+Fix warning:
+Warning (alias_paths): /aliases: aliases property name must include only lowercase and '-'
+
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index a212bf124e81..d1e9c41004b4 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -42,14 +42,14 @@ aliases {
+ 		dpi0 = &dpi0;
+ 		dsi0 = &dsi0;
+ 		dsi1 = &dsi1;
+-		mdp_rdma0 = &mdp_rdma0;
+-		mdp_rdma1 = &mdp_rdma1;
+-		mdp_rsz0 = &mdp_rsz0;
+-		mdp_rsz1 = &mdp_rsz1;
+-		mdp_rsz2 = &mdp_rsz2;
+-		mdp_wdma0 = &mdp_wdma0;
+-		mdp_wrot0 = &mdp_wrot0;
+-		mdp_wrot1 = &mdp_wrot1;
++		mdp-rdma0 = &mdp_rdma0;
++		mdp-rdma1 = &mdp_rdma1;
++		mdp-rsz0 = &mdp_rsz0;
++		mdp-rsz1 = &mdp_rsz1;
++		mdp-rsz2 = &mdp_rsz2;
++		mdp-wdma0 = &mdp_wdma0;
++		mdp-wrot0 = &mdp_wrot0;
++		mdp-wrot1 = &mdp_wrot1;
+ 		serial0 = &uart0;
+ 		serial1 = &uart1;
+ 		serial2 = &uart2;
+-- 
+2.26.0.110.g2183baf09c-goog
+
 
 _______________________________________________
 Linux-mediatek mailing list
