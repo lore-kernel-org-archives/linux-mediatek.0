@@ -6,17 +6,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 25AF5C38A29
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 11:47:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A711C38A29
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 11:50:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C859E216FD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 11:47:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 019FD20732
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 11:50:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nvb7Raoz";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="H2x8BKWl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C859E216FD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Gh6u7gLa";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="GcATTDqV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 019FD20732
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,47 +25,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jND52+P8bOE/V3ixllyCgIbU9IchM6K97ityxZkLd3M=; b=nvb7RaozFePdt4
-	9yZctF+GiKIZqxapT+pqTyP553I3Rkg4NAKEQ7OsXXuaX5XrUsIFoPb28wL+S9odkdrb1tOLa6YWE
-	Z/Het5IXB2a8M9/rTqWC+t7sAWxW3dizbedyIXD32A42vtdd29VPz+Wqc+B2LumF9w2wdkjNi9xgl
-	yBG76WcNWNlQKgkGX21W6FR21h7vSlp9PUS6hZhazokaZ3WoZAW7sQbw/pUNGe1lH+/QjCr2clkr0
-	w0x912A1o7P9HOA94TDxhhnqbcZwuDw9Vyr+EI3qUQht3fq/lb3QAEzojrjxvZwp9NaM5plh2MEWV
-	LgV5BB+kLsI269fS/UQg==;
+	List-Owner; bh=Q7bwl1DFQ54wzpWHdebW/miIL7GZgAGEhzqvVhJq1VQ=; b=Gh6u7gLaPjc6Rr
+	QG/TWljsKezXWv1FhlNuAbSAcOMPeNXRncyEtFcqWNGTcLpacfOZTMiKV8adacPo901V5SJUiyCCA
+	qXPbpjTxQOuSp5wZek9V0cREOFrmS2DxZblM7GWF3Qd5a5wvNmbYk6xTxAfdU7jLN+LSlEos+Fi6h
+	14JsnUZ8xiFSbOILVf/Z2ZkB4L3zFXBe+Z9WraZxN9E84nctOJPwFg6dJT6PJLLhQBFSF+ypaBTWg
+	LeNuH0AO3J6CddhWDT98Dv/qWb3nV2dJsmUQUIHc9fiCwob61nRsEAMD30zoc+xKxCetW6d3QtFqA
+	yOCR/Dl9SDdyNURONXYQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOgVM-0005WQ-W2; Wed, 15 Apr 2020 11:46:56 +0000
+	id 1jOgYf-0001aU-Em; Wed, 15 Apr 2020 11:50:21 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOgSE-0000I7-6z; Wed, 15 Apr 2020 11:43:44 +0000
+ id 1jOgU2-0004J3-HH; Wed, 15 Apr 2020 11:45:36 +0000
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net
  [73.47.72.35])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A24A42078A;
- Wed, 15 Apr 2020 11:43:39 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 89DDE20768;
+ Wed, 15 Apr 2020 11:45:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1586951020;
- bh=nN+IJegSL42QeskS1HcfIWBL6TRx5iItWQggENvdjR8=;
+ s=default; t=1586951133;
+ bh=ZdQpdMXAuKXWa7gWPIpjYwpVyeQdiVktFAnHfPKPAMU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=H2x8BKWl+ub0Z+bOXDfSzIi+UQQmhoMDEEsc8Vm9MA9lp5jPjsOlIoh5G3oifC2ty
- +E5tsJAbYoP8UQPgeTED0OnvT18zaHGGkftTz6yVyiNTK9mRg832ZhD/pPM85oGpRW
- fCOYz7OfOzYbXPzZz359JEbyv2Nn4i8MilBC9TDU=
+ b=GcATTDqVReMMCGAKNSShEXVojRmSdAHa/S4R+atCH0YTNtLwjndPj+/FSu+IXVvkx
+ LN/xS3e5jlU5kBIgyXAVyg6YDG7mBkqabMDlN0IuO5Ar9XU6Wp8jYsAoO52BGgwaOW
+ UbfvPWozIQi8X9X9vsmDfiLl5NnDEy600sMlgUOA=
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.5 061/106] net: dsa: mt7530: fix null pointer
+Subject: [PATCH AUTOSEL 5.4 44/84] net: dsa: mt7530: fix null pointer
  dereferencing in port5 setup
-Date: Wed, 15 Apr 2020 07:41:41 -0400
-Message-Id: <20200415114226.13103-61-sashal@kernel.org>
+Date: Wed, 15 Apr 2020 07:44:01 -0400
+Message-Id: <20200415114442.14166-44-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200415114226.13103-1-sashal@kernel.org>
-References: <20200415114226.13103-1-sashal@kernel.org>
+In-Reply-To: <20200415114442.14166-1-sashal@kernel.org>
+References: <20200415114442.14166-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200415_044342_329184_8D098773 
-X-CRM114-Status: GOOD (  10.95  )
+X-CRM114-CacheID: sfid-20200415_044534_637842_5CF1DA70 
+X-CRM114-Status: GOOD (  10.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,14 +106,15 @@ Y2VAdmRvcnN0LmNvbT4KU2lnbmVkLW9mZi1ieTogRGF2aWQgUy4gTWlsbGVyIDxkYXZlbUBkYXZl
 bWxvZnQubmV0PgpTaWduZWQtb2ZmLWJ5OiBTYXNoYSBMZXZpbiA8c2FzaGFsQGtlcm5lbC5vcmc+
 Ci0tLQogZHJpdmVycy9uZXQvZHNhL210NzUzMC5jIHwgMyArKysKIDEgZmlsZSBjaGFuZ2VkLCAz
 IGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9kc2EvbXQ3NTMwLmMgYi9k
-cml2ZXJzL25ldC9kc2EvbXQ3NTMwLmMKaW5kZXggNjBhOGE2ODU2N2JhYS4uOTM2YjliNjVhY2Nh
-YiAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvZHNhL210NzUzMC5jCisrKyBiL2RyaXZlcnMvbmV0
-L2RzYS9tdDc1MzAuYwpAQCAtMTM1NSw2ICsxMzU1LDkgQEAgbXQ3NTMwX3NldHVwKHN0cnVjdCBk
+cml2ZXJzL25ldC9kc2EvbXQ3NTMwLmMKaW5kZXggZTBlOTMyZjBhZWQxZS4uODA3MWMzZmEzZmI3
+YyAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvZHNhL210NzUzMC5jCisrKyBiL2RyaXZlcnMvbmV0
+L2RzYS9tdDc1MzAuYwpAQCAtMTM1Myw2ICsxMzUzLDkgQEAgbXQ3NTMwX3NldHVwKHN0cnVjdCBk
 c2Ffc3dpdGNoICpkcykKIAkJCQljb250aW51ZTsKIAogCQkJcGh5X25vZGUgPSBvZl9wYXJzZV9w
 aGFuZGxlKG1hY19ucCwgInBoeS1oYW5kbGUiLCAwKTsKKwkJCWlmICghcGh5X25vZGUpCisJCQkJ
 Y29udGludWU7CisKIAkJCWlmIChwaHlfbm9kZS0+cGFyZW50ID09IHByaXYtPmRldi0+b2Zfbm9k
-ZS0+cGFyZW50KSB7CiAJCQkJcmV0ID0gb2ZfZ2V0X3BoeV9tb2RlKG1hY19ucCwgJmludGVyZmFj
-ZSk7CiAJCQkJaWYgKHJldCAmJiByZXQgIT0gLUVOT0RFVikKLS0gCjIuMjAuMQoKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1h
-aWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+ZS0+cGFyZW50KSB7CiAJCQkJaW50ZXJmYWNlID0gb2ZfZ2V0X3BoeV9tb2RlKG1hY19ucCk7CiAJ
+CQkJaWQgPSBvZl9tZGlvX3BhcnNlX2FkZHIoZHMtPmRldiwgcGh5X25vZGUpOwotLSAKMi4yMC4x
+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+bWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRl
+awo=
