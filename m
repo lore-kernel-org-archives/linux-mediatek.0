@@ -2,54 +2,84 @@ Return-Path: <SRS0=9LKV=57=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C8CF5C2BB55
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 15:25:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BC23BC2BB85
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 16:15:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9C2A72076A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 15:25:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 925BB20656
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 16:15:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="M2Ysa2xC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9C2A72076A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=infradead.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SuHQotZ6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 925BB20656
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=reHF+bx5fTHFSDniJiKzCndktYZ4oTeYEo7LX0fFDJs=; b=M2Ysa2xCknd17g
-	rYzjirSHLVuHxNA+6z0/rKYgdUbokRA0BitR34eU3Z/XMSowqD+Y7n42xcBECCbXnf7ksFwIKzzxX
-	6a9f/FY2NPCiMt5fPclsL42Rm0ctmlyBnP5RlK+51o+BTf9nsV4rf73pDClkBtVwzc2OodwQQvGJZ
-	BuYg1/indjHTXAVSYytBHbtmoaJBXPX+88pca8kPsI0354v8Bu4zaRlX3iWcmAMJPWs/4dqWSP0JF
-	vZH0xv9AJDf8Myq/mjvIaWXTtf7N/YVNfK4QgXGDNMFzNcK3pgAWBe7hUecbyBkPDVTi3DkvJxjPp
-	ilZjyVRIf5nSPX/YSP3w==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uDoeb/6XUIz94fNO02MhyjS856PN/JNN2+FX/45u/LM=; b=SuHQotZ63Lkm/A
+	kIEV3LD6OMLIx2U8aOtehrHq3E5gVj3L96Sqk4jnMqseF58LnHvtSLe4X6fWJDaKfLynE5FV/XEm3
+	a28FNBpL+Vr+n2fW34i0rZ26BZ2gMH3dLQbCWS03i5TjRUXEe1a+Cbp9cSZrlHLYPEQKhFb5GHhjV
+	3IxM5rSi6MLPMPAQ+xxwGhitYKeidGEeWZSDhUL8L+W3gm8LflqVDk1ojElPWCSrIAu23raZxTX9t
+	Aj2poGWu2bRkyNcz/9CS9a478J8T2WVZtZfVNvYan5zEVOXSc2paHJ3WRXI7euSTyWhu4wRTBrUT/
+	aIJicGcPJ5uS7pA0yCGw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOjuy-0006aR-Pj; Wed, 15 Apr 2020 15:25:36 +0000
-Received: from [2601:1c0:6280:3f0::19c2]
- by bombadil.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOjuw-0006aD-Ab; Wed, 15 Apr 2020 15:25:35 +0000
-Subject: Re: [PATCH 2/2] soc: mediatek: Add mtk-mmdvfs driver
-To: Anthony Huang <anthony.huang@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-References: <1586949506-22990-1-git-send-email-anthony.huang@mediatek.com>
- <1586949506-22990-3-git-send-email-anthony.huang@mediatek.com>
-From: Randy Dunlap <rdunlap@infradead.org>
-Message-ID: <1296cbb7-c470-4169-8499-89f723308f85@infradead.org>
-Date: Wed, 15 Apr 2020 08:25:32 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+	id 1jOkh9-0002uJ-2m; Wed, 15 Apr 2020 16:15:23 +0000
+Received: from mail-ot1-f68.google.com ([209.85.210.68])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jOkgj-0000IB-8o; Wed, 15 Apr 2020 16:14:59 +0000
+Received: by mail-ot1-f68.google.com with SMTP id k21so458113otl.5;
+ Wed, 15 Apr 2020 09:14:54 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=bg5RVnsOH1/BYZ54TEf38AsDwolBNR2BfaTkytyS7Z8=;
+ b=hiqaqjSo0oTWs3Xk8mpjThVQstkprVR10p0G6703mRyM3MAyPX7y5tsksOofTzIud4
+ mgx0NvsbuZ67mhbu8lM36NSjXNvY110ODn6bj1S0KxQVOvpFNw8jhnoHvJO+4nz9Lcco
+ uDaSrBlcuOVqxDG3cVsLhG2CIug3pKVe97sdXbMG4a3T/BV9lZ3Zu1xeYRHfy9Ns5z7z
+ u0zeYl4hhyDdJg1fbmAV5AWEtL/4eXb4lM4G7dQADfxXNzhEWETeDl/0gAbWD1SmRO7w
+ 23wILMZ8JYQOf/bCsUIRuA+Ek7E6GsmhgzqrgXLqOqJeAVxWhK8kqsTE+twcXgwtra/W
+ TTAg==
+X-Gm-Message-State: AGi0PuZt285kMaEkLgDy+pQwuwM6UIbaRjNnbkLP1dBqYv0b4GTDqlu9
+ LmgVWpTSVOx40fif2RoKIg==
+X-Google-Smtp-Source: APiQypIlx96HhaaXRfiiMSUdYVxp6kZM1e7hlq3zvdmUNi2vlLOj0GAbBkzuY8DROgSdeQjlY4JIjg==
+X-Received: by 2002:a9d:5545:: with SMTP id h5mr23831959oti.323.1586967293897; 
+ Wed, 15 Apr 2020 09:14:53 -0700 (PDT)
+Received: from rob-hp-laptop (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id 13sm2701531oiq.3.2020.04.15.09.14.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 15 Apr 2020 09:14:53 -0700 (PDT)
+Received: (nullmailer pid 19968 invoked by uid 1000);
+ Wed, 15 Apr 2020 16:14:52 -0000
+Date: Wed, 15 Apr 2020 11:14:51 -0500
+From: Rob Herring <robh@kernel.org>
+To: Dongchun Zhu <dongchun.zhu@mediatek.com>
+Subject: Re: [V6, 1/2] media: dt-bindings: media: i2c: Document OV02A10
+ bindings
+Message-ID: <20200415161451.GB4438@bogus>
+References: <20191211112849.16705-1-dongchun.zhu@mediatek.com>
+ <20191211112849.16705-2-dongchun.zhu@mediatek.com>
+ <CAAFQd5AnWZqjQEVvw8gv7JzOBHxJvsOWaGrbY8CXQ_87ap-ahA@mail.gmail.com>
+ <CAAFQd5DHL3mXZGHW+XWMXTVfekamEvaEv3bLZt4Bg2UpKPohmA@mail.gmail.com>
+ <1586437408.8804.62.camel@mhfsdcap03>
 MIME-Version: 1.0
-In-Reply-To: <1586949506-22990-3-git-send-email-anthony.huang@mediatek.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1586437408.8804.62.camel@mhfsdcap03>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20200415_091457_313373_7AB86535 
+X-CRM114-Status: GOOD (  29.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,76 +91,152 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- wsd_upstream@mediatek.com
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Louis Kuo <louis.kuo@mediatek.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ linux-devicetree <devicetree@vger.kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Shengnan Wang =?utf-8?B?KOeOi+Wco+eUtyk=?= <shengnan.wang@mediatek.com>,
+ Tomasz Figa <tfiga@chromium.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Sj Huang <sj.huang@mediatek.com>, broonie@kernel.org,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, linux-gpio@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
+ Joerg  Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi--
-
-
-On 4/15/20 4:18 AM, Anthony Huang wrote:
-> Mediatek MMDVFS driver is used to set clk for Mediatek multimedia
-> hardwares. The MMDVFS registers a regulator callback and multimedia
-
-  hardware.
-
-> hardwares set voltage by regulator API and then this callback will be
-
-  hardware
-
-> triggered. The MMDVFS will get current opp level from opp table according
-> to the voltage, and then the MMDVFS sets all the clock MUXs to the clock
-> sources according to the opp level.
+On Thu, Apr 09, 2020 at 09:03:28PM +0800, Dongchun Zhu wrote:
+> Hi Mauro, Sakari, Rob,
 > 
-> On some platforms, both clock MUX and frequency hopping need to be used
-> together. The MMDVFS supports these two clock setting methods and the
-> execution sequence of them can be configured in DTS.
+> On Wed, 2020-04-08 at 14:49 +0200, Tomasz Figa wrote:
+> > On Tue, Dec 17, 2019 at 4:15 AM Tomasz Figa <tfiga@chromium.org> wrote:
+> > >
+> > > Hi Rob, Dongchun,
+> > >
+> > > On Wed, Dec 11, 2019 at 8:29 PM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
+> > > >
+> > > > Add DT bindings documentation for Omnivision OV02A10 image sensor.
+> > > >
+> > > > Reviewed-by: Rob Herring <robh@kernel.org>
+> > > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > > > ---
+> > > >  .../devicetree/bindings/media/i2c/ov02a10.txt      | 54 ++++++++++++++++++++++
+> > > >  MAINTAINERS                                        |  7 +++
+> > > >  2 files changed, 61 insertions(+)
+> > > >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> > > >
+> > > > diff --git a/Documentation/devicetree/bindings/media/i2c/ov02a10.txt b/Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> > > > new file mode 100644
+> > > > index 0000000..18acc4f
+> > > > --- /dev/null
+> > > > +++ b/Documentation/devicetree/bindings/media/i2c/ov02a10.txt
+> > > > @@ -0,0 +1,54 @@
+> > > > +* Omnivision OV02A10 MIPI CSI-2 sensor
+> > > > +
+> > > > +Required Properties:
+> > > > +- compatible: shall be "ovti,ov02a10"
+> > > > +- clocks: reference to the eclk input clock
+> > > > +- clock-names: shall be "eclk"
+> > > > +- dovdd-supply: Digital I/O voltage supply, 1.8 volts
+> > > > +- avdd-supply: Analog voltage supply, 2.8 volts
+> > > > +- dvdd-supply: Digital core voltage supply, 1.8 volts
+> > > > +- powerdown-gpios: reference to the GPIO connected to the powerdown pin,
+> > > > +                  if any. This is an active low signal to the OV02A10.
+> > >
+> > > On the hardware level this pin is active high, i.e. the device is
+> > > powered down when the signal is high.
+> > >
+> > > > +- reset-gpios: reference to the GPIO connected to the reset pin, if any.
+> > > > +              This is an active high signal to the OV02A10.
+> > >
+> > > On the hardware level this pin is active low, i.e. the device is held
+> > > in reset when the signal is low.
+> > >
+> > > However, there is some confusion around how the polarity flag in the
+> > > GPIO specifier is supposed to be used.
+> > >
+> > > As per [1],
+> > >
+> > > "The gpio-specifier's polarity flag should represent the physical
+> > > level at the GPIO controller that achieves (or represents, for inputs)
+> > > a logically asserted value at the device. The exact definition of
+> > > logically asserted should be defined by the binding for the device."
+> > >
+> > > In this case it sounds like "logically asserted" means the device is
+> > > powered down or held in reset, respectively, which would suggest that
+> > > the specifiers should have GPIO_ACTIVE_HIGH and GPIO_ACTIVE_LOW
+> > > respectively. The latter would cause the GPIO subsystem to invert the
+> > > values set by the consumers, which would then be confusing from the
+> > > driver implementation point of view.
+> > >
+> > > Should the pin be renamed to "nreset"? It would change the meaning of
+> > > "logically asserted" to "device is not held in reset" and so
+> > > GPIO_ACTIVE_HIGH (or 0) would be the right value to use.
+> > >
+> > > [1] https://elixir.bootlin.com/linux/latest/source/Documentation/devicetree/bindings/gpio/gpio.txt#L83
+> > 
+> > + Bartosz, Linus, Sakari and the linux-gpio ML for a broader audience.
+> > 
+> > Would appreciate some feedback on what's the proper way of defining
+> > GPIO polarity. Thanks!
+> > 
+> > Best regards,
+> > Tomasz
+> > 
 > 
-> Signed-off-by: Anthony Huang <anthony.huang@mediatek.com>
-> ---
->  drivers/soc/mediatek/Kconfig      |    9 ++
->  drivers/soc/mediatek/Makefile     |    1 +
->  drivers/soc/mediatek/mtk-mmdvfs.c |  312 +++++++++++++++++++++++++++++++++++++
->  3 files changed, 322 insertions(+)
->  create mode 100644 drivers/soc/mediatek/mtk-mmdvfs.c
+> I have another question about OV02A10 CMOS sensor dt-binding.
+> As its text documentation was already reviewed by Rob on earlier
+> version:
+> https://patchwork.linuxtv.org/patch/59787/
+> I wonder whether we need to convert it to DT in YAML.
+
+Yes.
+
+> In fact, I just submitted one conversion version.
+> https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2143922
 > 
-> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-> index 2114b56..e92762b 100644
-> --- a/drivers/soc/mediatek/Kconfig
-> +++ b/drivers/soc/mediatek/Kconfig
-> @@ -44,4 +44,13 @@ config MTK_SCPSYS
->  	  Say yes here to add support for the MediaTek SCPSYS power domain
->  	  driver.
->  
-> +config MTK_MMDVFS
-> +	tristate "MediaTek MMDVFS Support"
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	help
-> +	  Say yes here to add support for the MediaTek Multimedia DVFS (MMDVFS)
-> +	  driver. The MMDVFS is used to set clk for Mediatek multimedia hardwares
+> Unluckily make dt_binding_check still report errors temporarily.
+> It seems there is something wrong with the port property in DT.
+> Could anyone help provide some tips?
+> $make dt_binding_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+>   SCHEMA  Documentation/devicetree/bindings/processed-schema.yaml
+> Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml: ignoring,
+> error in schema: properties: port: patternProperties: endpoint
+> warning: no schema found in file:
+> Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> make[2]: *** [Documentation/devicetree/bindings/processed-schema.yaml]
+> Error 255
+> make[1]: *** [dt_binding_check] Error 2
+> make: *** [sub-make] Error 2
 
-	                                                                hardware,
+    patternProperties:
+      endpoint:
+      type: object
+      additionalProperties: false
 
-> +	  , such as display, camera, mdp and video codec. Say no if your device
-
-	  ^drop that comma.
-
-> +	  does not need to do DVFS for Multimedia hardwares.
-
-	                                          hardware.
-
-> +
->  endmenu
+You need more indentation under 'endpoint'. Also, 'endpoint' is a fixed 
+string, so it should be under 'properties' rather than 'patternProperties'.
 
 
-thanks.
--- 
-~Randy
+> 
+> In addition, as OV02A10 use one private property to distinguish
+> different projects that adopting different register settings,
+> I would appreciate the feedback on how to add private property to DT in
+> YAML.
 
+Like any other property. Submit something for review.
+
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
