@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DFBBC3815B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 11:19:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A140C3815B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 11:19:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2FD2220575
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 11:19:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 707B920768
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 11:19:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JwoaOH7I";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="nvIzJXr3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2FD2220575
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="M/HkGlpk";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="nZjtaCi1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 707B920768
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,51 +26,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hsGZys37H3JBw3Z0IL4xgig4ZIaZyafG8n8PVGtOZnU=; b=JwoaOH7Iz3Poah
-	STvKYEKOXKRG1Z75bZ5ATVrGviLze+sDoWTCopAYQHoVxw6W3dJGQTYXAgUAsjXd2jncDJxB9Wt7R
-	eB1vt8wfHQNi1I3tqP0tuRwsgSyysAOFg62sHpB5tmPDrk9N2pwN+k7rUTRq0nXUHewcFrjsxOZgA
-	B0+m6p5i7cS94NJOybIsLRMri9m6R8Z1qYC3VkhehbPqhFB9p9tDOjXMaijK3liyh7Q1+peSRcWBi
-	bfxzRzGDswnQL/tFFR6tTzQ/ZeDTtxf1cPLB4h+DK/+JfeYhrRQnfrMyrLDlO/4kj7AZDces/eQDp
-	iEMSGudDORjowZGJ0pUA==;
+	List-Owner; bh=kezl0RA6oHpuVjEDJe+1NIka6YfFj4g7yb3cofw14FA=; b=M/HkGlpk9GZjUs
+	UHHdWpIyIS4/JzcGBma+yZA6cvSUF5BTlZfwh1KjXP7nUfiE6EdNk1cetlBNTfGCWuXScCzUw6LDj
+	QEhuoiVx4bNqQrK0EMlh0Jl10uTJhnkZE7tJjwN4I8bm+gD5FcFyTM5o5CTJbXnb5Dwc/TmwOOHLd
+	J4eZUTPKuAR4s3bnOcCs7ZqGvGPMk33MczMVwl7OB2YcgOplAkwHuYn86ekp0NUAdFOLFvBOJfECz
+	4gorSF4d8Bc7bN+ux8e5gQHaBwSX+0h70A3ISecIn6eEqwfnDNziV/6bB0otnAl7koP3T3ZPFczce
+	3NRbmu6RqEdEEjvGI+WQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOg4l-0001Uu-Dx; Wed, 15 Apr 2020 11:19:27 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jOg54-0001mk-Ra; Wed, 15 Apr 2020 11:19:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOg4U-0001KO-O9; Wed, 15 Apr 2020 11:19:13 +0000
-X-UUID: 874d4cef8d8e420c9d94f768649899bc-20200415
+ id 1jOg4U-0001KL-CI; Wed, 15 Apr 2020 11:19:13 +0000
+X-UUID: b5cbb68887254f039c0b712dae06208c-20200415
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=s8GgCZPCh7kWb4VzWAwJtZCWmv2Jo3zNL+utsDUlB6c=; 
- b=nvIzJXr3E9DX/YXit1LLKx4KgkMtUPaB8HL4KNvy7De/VY+u33Y5J554VDsRURsRQ+KvUwTvGuh9Lm8kTBZwpiesiG8gp80cdc3SO1Gy/dLbM38c2W/ebmDMLIAg9UqNNxsF2BTW/i2sUb5Xa4pqJF31tV3jZ+3KikR65pWHbxI=;
-X-UUID: 874d4cef8d8e420c9d94f768649899bc-20200415
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=WnKlsLhJX74YWfoFdl9oaQ0btahiulghMcD1I/yVavU=; 
+ b=nZjtaCi1meAdYaffwGqz32mxfL5Fl0K/uVStM+X+K+8b6TZDsAp8GA2lrKm8XEHQNudNOdK1NGqmnYS/wpri6DWm7r/YspRVbhh2SASwENguGU6kep5BH0RUq/8g1cg5NuBOYJcCbT44zMExSEUJF0MGzjIbthY2q5sH7QemBJ8=;
+X-UUID: b5cbb68887254f039c0b712dae06208c-20200415
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <anthony.huang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 535057142; Wed, 15 Apr 2020 03:18:50 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ with ESMTP id 18302227; Wed, 15 Apr 2020 03:18:54 -0800
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 15 Apr 2020 04:18:57 -0700
+ 15.0.1497.2; Wed, 15 Apr 2020 04:19:01 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 15 Apr 2020 19:18:55 +0800
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 15 Apr 2020 19:18:58 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Wed, 15 Apr 2020 19:18:56 +0800
 From: Anthony Huang <anthony.huang@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH 2/2] soc: mediatek: Add mtk-mmdvfs driver
-Date: Wed, 15 Apr 2020 19:18:26 +0800
-Message-ID: <1586949506-22990-3-git-send-email-anthony.huang@mediatek.com>
+Subject: [PATCH 1/2] dt-bindings: soc: mediatek: Add document for mmdvfs driver
+Date: Wed, 15 Apr 2020 19:18:25 +0800
+Message-ID: <1586949506-22990-2-git-send-email-anthony.huang@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <1586949506-22990-1-git-send-email-anthony.huang@mediatek.com>
 References: <1586949506-22990-1-git-send-email-anthony.huang@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 6E8016FB62832FDC77AFD38C32ECD32F9BA2BAC1C9D6B2D6531A95EF5A3DC4142000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200415_041911_735403_0BDBC24F 
-X-CRM114-Status: GOOD (  19.73  )
+X-CRM114-CacheID: sfid-20200415_041911_735063_0EBE6BB9 
+X-CRM114-Status: GOOD (  15.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,372 +92,219 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Mediatek MMDVFS driver is used to set clk for Mediatek multimedia
-hardwares. The MMDVFS registers a regulator callback and multimedia
-hardwares set voltage by regulator API and then this callback will be
-triggered. The MMDVFS will get current opp level from opp table according
-to the voltage, and then the MMDVFS sets all the clock MUXs to the clock
-sources according to the opp level.
-
-On some platforms, both clock MUX and frequency hopping need to be used
-together. The MMDVFS supports these two clock setting methods and the
-execution sequence of them can be configured in DTS.
+This document describes the properties what mtk mmdvfs
+device node support.
 
 Signed-off-by: Anthony Huang <anthony.huang@mediatek.com>
 ---
- drivers/soc/mediatek/Kconfig      |    9 ++
- drivers/soc/mediatek/Makefile     |    1 +
- drivers/soc/mediatek/mtk-mmdvfs.c |  312 +++++++++++++++++++++++++++++++++++++
- 3 files changed, 322 insertions(+)
- create mode 100644 drivers/soc/mediatek/mtk-mmdvfs.c
+ .../devicetree/bindings/soc/mediatek/mmdvfs.yaml   |  198 ++++++++++++++++++++
+ 1 file changed, 198 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mmdvfs.yaml
 
-diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-index 2114b56..e92762b 100644
---- a/drivers/soc/mediatek/Kconfig
-+++ b/drivers/soc/mediatek/Kconfig
-@@ -44,4 +44,13 @@ config MTK_SCPSYS
- 	  Say yes here to add support for the MediaTek SCPSYS power domain
- 	  driver.
- 
-+config MTK_MMDVFS
-+	tristate "MediaTek MMDVFS Support"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	help
-+	  Say yes here to add support for the MediaTek Multimedia DVFS (MMDVFS)
-+	  driver. The MMDVFS is used to set clk for Mediatek multimedia hardwares
-+	  , such as display, camera, mdp and video codec. Say no if your device
-+	  does not need to do DVFS for Multimedia hardwares.
-+
- endmenu
-diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
-index b017330..faf52944 100644
---- a/drivers/soc/mediatek/Makefile
-+++ b/drivers/soc/mediatek/Makefile
-@@ -1,5 +1,6 @@
- # SPDX-License-Identifier: GPL-2.0-only
- obj-$(CONFIG_MTK_CMDQ) += mtk-cmdq-helper.o
- obj-$(CONFIG_MTK_INFRACFG) += mtk-infracfg.o
-+obj-$(CONFIG_MTK_MMDVFS) += mtk-mmdvfs.o
- obj-$(CONFIG_MTK_PMIC_WRAP) += mtk-pmic-wrap.o
- obj-$(CONFIG_MTK_SCPSYS) += mtk-scpsys.o
-diff --git a/drivers/soc/mediatek/mtk-mmdvfs.c b/drivers/soc/mediatek/mtk-mmdvfs.c
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mmdvfs.yaml b/Documentation/devicetree/bindings/soc/mediatek/mmdvfs.yaml
 new file mode 100644
-index 0000000..466d266
+index 0000000..9ef1833
 --- /dev/null
-+++ b/drivers/soc/mediatek/mtk-mmdvfs.c
-@@ -0,0 +1,312 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (C) 2019 MediaTek Inc.
-+ */
-+#include <linux/clk.h>
-+#include <linux/device.h>
-+#include <linux/err.h>
-+#include <linux/module.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
-+#include <linux/pm_opp.h>
-+#include <linux/regulator/consumer.h>
++++ b/Documentation/devicetree/bindings/soc/mediatek/mmdvfs.yaml
+@@ -0,0 +1,198 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/soc/mediatek/mmdvfs.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+#define MAX_OPP_NUM (6)
-+#define MAX_MUX_NUM (10)
-+#define MAX_HOPPING_CLK_NUM (2)
++title: Mediatek MMDVFS driver binding
 +
-+enum {
-+	ACTION_DEFAULT,
-+	ACTION_IHDM, /* Voltage Increase: Hopping First, Decrease: MUX First*/
-+};
++maintainers:
++  - Rob Herring <robh+dt@kernel.org>
++  - Mark Rutland <mark.rutland@arm.com>
 +
-+struct mmdvfs_mux_data {
-+	const char *mux_name;
-+	struct clk *mux;
-+	struct clk *clk_src[MAX_OPP_NUM];
-+};
++description: |
++  The Mediatek MMDVFS(Multimedia Dynamic Voltage and Frequency Scaling) driver
++  is used to set clk for Mediatek multimedia hardwares, such as display,
++  camera, mdp and video codec. MMDVFS driver reads which clock muxes and clock
++  sources are used on this platform from DTS, and sets current clock according
++  to current voltage informed by regulator callback.
 +
-+struct mmdvfs_hopping_data {
-+	const char *hopping_name;
-+	struct clk *hopping_clk;
-+	u32 hopping_rate[MAX_OPP_NUM];
-+};
++properties:
++  compatible:
++    items:
++      - const: mediatek,mmdvfs
 +
-+struct mmdvfs_drv_data {
-+	bool need_change_voltage;
-+	u32 request_voltage;
-+	u32 num_muxes;
-+	struct mmdvfs_mux_data muxes[MAX_MUX_NUM];
-+	u32 num_hoppings;
-+	struct mmdvfs_hopping_data hoppings[MAX_HOPPING_CLK_NUM];
-+	u32 action;
-+	struct notifier_block nb;
-+	u32 voltages[MAX_OPP_NUM];
-+};
++  operating-points-v2:
++    description:
++      Contains any one of opp tables for multimedia modules.
++      MMDVFS uses it to get voltage setting on this platform.
 +
-+static void set_all_muxes(struct mmdvfs_drv_data *drv_data, u32 opp_level)
-+{
-+	u32 num_muxes = drv_data->num_muxes;
-+	u32 i;
-+	struct clk *mux, *clk_src;
-+	s32 err;
++  mediatek,support_mux:
++    description: A list of clock mux names defined in clock-names.
++    allOf:
++      - $ref: /schemas/types.yaml#/definitions/string-array
 +
-+	for (i = 0; i < num_muxes; i++) {
-+		mux = drv_data->muxes[i].mux;
-+		clk_src = drv_data->muxes[i].clk_src[opp_level];
-+		err = clk_prepare_enable(mux);
++  clocks:
++    description:
++      A list of phandles of clock muxes and clock sources for
++      multimedia hardwares.
 +
-+		if (err) {
-+			pr_notice("prepare mux(%s) fail:%d opp_level:%d\n",
-+				  drv_data->muxes[i].mux_name, err, opp_level);
-+			continue;
-+		}
-+		err = clk_set_parent(mux, clk_src);
-+		if (err)
-+			pr_notice("set parent(%s) fail:%d opp_level:%d\n",
-+				  drv_data->muxes[i].mux_name, err, opp_level);
-+		clk_disable_unprepare(mux);
-+	}
-+}
++  clock-names:
++    description:
++      A list of name strings of clock muxes and clock sources for
++      multimedia hardwares.
 +
-+static void set_all_hoppings(struct mmdvfs_drv_data *drv_data, u32 opp_level)
-+{
-+	u32 num_hoppings = drv_data->num_hoppings;
-+	u32 i, hopping_rate;
-+	struct clk *hopping;
-+	s32 err;
++  # If the platform needs frequency hopping for some clock sources, these
++  # following properties should be set.
 +
-+	for (i = 0; i < num_hoppings; i++) {
-+		hopping = drv_data->hoppings[i].hopping_clk;
-+		hopping_rate = drv_data->hoppings[i].hopping_rate[opp_level];
-+		err = clk_prepare_enable(hopping);
++  mediatek,support_hopping:
++    description: a list of clock names supporting frequency hopping.
++    allOf:
++      - $ref: /schemas/types.yaml#/definitions/string-array
 +
-+		if (err) {
-+			pr_notice("prepare hopping(%s) fail:%d opp_level:%d\n",
-+				  drv_data->hoppings[i].hopping_name,
-+				  err, opp_level);
-+			continue;
-+		}
-+		err = clk_set_rate(hopping, hopping_rate);
-+		if (err)
-+			pr_notice("set %s rate(%u) fail:%d opp_level:%d\n",
-+				  drv_data->hoppings[i].hopping_name,
-+				  hopping_rate, err, opp_level);
-+		clk_disable_unprepare(hopping);
-+	}
-+}
++  mediatek,action:
++    description:
++      A cell with one entry.
++      It represents the action taken when setting clocks.
++      0 means not setting frequency hopping and just set clock mux.
++      1 means setting frequency hopping first if the voltage is increasing, but
++      setting clock mux first if the voltage is decreasing.
++    allOf:
++      - $ref: "/schemas/types.yaml#/definitions/uint32"
++      - enum: [0, 1]
++    maxItems: 1
 +
-+static void set_all_clk(struct mmdvfs_drv_data *drv_data,
-+			u32 voltage, bool vol_inc)
-+{
-+	u32 i;
-+	u32 opp_level;
++patternProperties:
++  "^mediatek,mux_+$":
++    description:
++      A series of properties with "mediatek,mux_" prefix.
++      Each property represents one clock mux, and its value is a list of all
++      the clock sources for it. The postfix and every item in the property
++      must be from the clock-names.
 +
-+	for (i = 0; i < MAX_OPP_NUM; i++) {
-+		if (drv_data->voltages[i] == voltage) {
-+			opp_level = i;
-+			break;
-+		}
-+	}
-+	if (i == MAX_OPP_NUM) {
-+		pr_notice("voltage(%d) is not found\n", voltage);
-+		return;
-+	}
++  "^mediatek,hopping_+$":
++    description:
++      A cell with the same size as opp numbers of an opp table for any MM module
++      and each entry represents the clock rate for each opp. For example, the
++      first entry is the clock rate set in opp-0, and the second entry is the
++      clock rate set in opp-1.
 +
-+	switch (drv_data->action) {
-+	/* Voltage Increase: Hopping First, Decrease: MUX First*/
-+	case ACTION_IHDM:
-+		if (vol_inc) {
-+			set_all_hoppings(drv_data, opp_level);
-+			set_all_muxes(drv_data, opp_level);
-+		} else {
-+			set_all_muxes(drv_data, opp_level);
-+			set_all_hoppings(drv_data, opp_level);
-+		}
-+		break;
-+	default:
-+		set_all_muxes(drv_data, opp_level);
-+		break;
-+	}
-+	pr_debug("set clk to opp level:%d\n", opp_level);
-+}
++required:
++  - compatible
++  - operating-points-v2
++  - mediatek,support_mux
++  - clock
++  - clock-names
 +
-+static int regulator_event_notify(struct notifier_block *nb,
-+				  unsigned long event, void *data)
-+{
-+	unsigned long uV;
-+	struct mmdvfs_drv_data *drv_data;
-+	struct pre_voltage_change_data *pvc_data;
++examples:
++  - |
++    #include <dt-bindings/clock/mt6779-clk.h>
 +
-+	drv_data = container_of(nb, struct mmdvfs_drv_data, nb);
++    opp_table_mm: opp-table-mm {
++        compatible = "operating-points-v2";
 +
-+	if (event == REGULATOR_EVENT_PRE_VOLTAGE_CHANGE) {
-+		pvc_data = data;
-+		uV = pvc_data->min_uV;
++        opp-0 {
++            opp-hz = /bits/ 64 <315000000>;
++            opp-microvolt = <650000>;
++        };
++        opp-1 {
++            opp-hz = /bits/ 64 <450000000>;
++            opp-microvolt = <725000>;
++        };
++        opp-2 {
++            opp-hz = /bits/ 64 <606000000>;
++            opp-microvolt = <825000>;
++        };
++    };
 +
-+		if (uV < pvc_data->old_uV) {
-+			set_all_clk(drv_data, uV, false);
-+			drv_data->request_voltage = uV;
-+		} else if (uV > pvc_data->old_uV) {
-+			drv_data->need_change_voltage = true;
-+		}
-+		pr_debug("regulator event=PRE_VOLTAGE_CHANGE old=%lu new=%lu\n",
-+			 pvc_data->old_uV, pvc_data->min_uV);
-+	} else if (event == REGULATOR_EVENT_VOLTAGE_CHANGE) {
-+		uV = (unsigned long)data;
-+		if (drv_data->need_change_voltage) {
-+			set_all_clk(drv_data, uV, true);
-+			drv_data->need_change_voltage = false;
-+			drv_data->request_voltage = uV;
-+		}
-+		pr_debug("regulator event=VOLTAGE_CHANGE voltage=%lu\n", uV);
-+	} else if (event == REGULATOR_EVENT_ABORT_VOLTAGE_CHANGE) {
-+		uV = (unsigned long)data;
-+		/* If clk was changed, restore to previous setting */
-+		if (uV != drv_data->request_voltage) {
-+			set_all_clk(drv_data, uV,
-+				    uV > drv_data->request_voltage);
-+			drv_data->need_change_voltage = false;
-+			drv_data->request_voltage = uV;
-+		}
-+		pr_info("regulator event=ABORT_VOLTAGE_CHANGE voltage=%lu\n",
-+			uV);
-+	}
-+	return 0;
-+}
++    opp_table_cam: opp-table-cam {
++        compatible = "operating-points-v2";
 +
-+static const struct of_device_id of_mmdvfs_match_tbl[] = {
-+	{
-+		.compatible = "mediatek,mmdvfs",
-+	},
-+	{}
-+};
++        opp-0 {
++            opp-hz = /bits/ 64 <315000000>;
++            opp-microvolt = <650000>;
++        };
++        opp-1 {
++            opp-hz = /bits/ 64 <416000000>;
++            opp-microvolt = <725000>;
++        };
++        opp-2 {
++            opp-hz = /bits/ 64 <560000000>;
++            opp-microvolt = <825000>;
++        };
++    };
 +
-+static int mmdvfs_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct mmdvfs_drv_data *drv_data;
-+	struct regulator *reg;
-+	u32 num_mux = 0, num_hopping = 0;
-+	u32 num_clksrc, index, hopping_rate, num_hopping_rate;
-+	struct property *mux_prop, *clksrc_prop;
-+	struct property *hopping_prop, *hopping_rate_prop;
-+	const char *mux_name, *clksrc_name, *hopping_name;
-+	char prop_name[32];
-+	const __be32 *p;
-+	s32 ret;
-+	unsigned long freq;
-+	struct dev_pm_opp *opp;
++    /* Other opp tables for multimedia modules */
 +
-+	drv_data = devm_kzalloc(dev, sizeof(*drv_data), GFP_KERNEL);
-+	if (!drv_data)
-+		return -ENOMEM;
++    mmdvfs {
++        compatible = "mediatek,mmdvfs";
 +
-+	of_property_for_each_string(dev->of_node, "mediatek,support_mux",
-+				    mux_prop, mux_name) {
-+		if (num_mux >= MAX_MUX_NUM) {
-+			pr_notice("Too many items in support_mux\n");
-+			return -EINVAL;
-+		}
-+		drv_data->muxes[num_mux].mux = devm_clk_get(dev, mux_name);
-+		drv_data->muxes[num_mux].mux_name = mux_name;
-+		snprintf(prop_name, sizeof(prop_name) - 1,
-+			 "mediatek,mux_%s", mux_name);
-+		num_clksrc = 0;
-+		of_property_for_each_string(dev->of_node, prop_name,
-+					    clksrc_prop, clksrc_name) {
-+			if (num_clksrc >= MAX_OPP_NUM) {
-+				pr_notice("Too many items in %s\n", prop_name);
-+				return -EINVAL;
-+			}
-+			drv_data->muxes[num_mux].clk_src[num_clksrc] =
-+				devm_clk_get(dev, clksrc_name);
-+			num_clksrc++;
-+		}
-+		num_mux++;
-+	}
-+	drv_data->num_muxes = num_mux;
++        operating-points-v2 = <&opp_table_mm>;
 +
-+	of_property_for_each_string(dev->of_node, "mediatek,support_hopping",
-+				    hopping_prop, hopping_name) {
-+		if (num_hopping >= MAX_HOPPING_CLK_NUM) {
-+			pr_notice("Too many items in support_hopping\n");
-+			return -EINVAL;
-+		}
-+		drv_data->hoppings[num_hopping].hopping_clk =
-+					devm_clk_get(dev, hopping_name);
-+		drv_data->hoppings[num_hopping].hopping_name = hopping_name;
-+		snprintf(prop_name, sizeof(prop_name) - 1,
-+			 "mediatek,hopping_%s", hopping_name);
-+		num_hopping_rate = 0;
-+		of_property_for_each_u32(dev->of_node, prop_name,
-+					 hopping_rate_prop, p, hopping_rate) {
-+			if (num_hopping_rate >= MAX_OPP_NUM) {
-+				pr_notice("Too many items in %s\n", prop_name);
-+				return -EINVAL;
-+			}
-+			drv_data->hoppings[num_hopping].hopping_rate
-+					[num_hopping_rate] = hopping_rate;
-+			num_hopping_rate++;
-+		}
-+		num_hopping++;
-+	}
-+	drv_data->num_hoppings = num_hopping;
++        mediatek,support_mux = "mm", "cam", "img", "ipe",
++            "venc", "vdec", "dpe", "ccu";
 +
-+	of_property_read_u32(dev->of_node,
-+			     "mediatek,action", &drv_data->action);
++        mediatek,mux_mm = "clk_mmpll_d5_d2",
++            "clk_mmpll_d7", "clk_tvdpll_mainpll_d2_ck";
++        mediatek,mux_cam = "clk_mmpll_d5_d2",
++            "clk_univpll_d3", "clk_adsppll_d5";
++        mediatek,mux_img = "clk_mmpll_d5_d2",
++            "clk_univpll_d3", "clk_tvdpll_mainpll_d2_ck";
++        mediatek,mux_ipe = "clk_mmpll_d5_d2",
++            "clk_univpll_d3", "clk_mainpll_d2";
++        mediatek,mux_venc = "clk_mainpll_d3",
++            "clk_mmpll_d7", "clk_mmpll_d5";
++        mediatek,mux_vdec = "clk_univpll_d2_d2",
++            "clk_univpll_d3", "clk_univpll_d2";
++        mediatek,mux_dpe = "clk_mainpll_d3",
++            "clk_mmpll_d7", "clk_mainpll_d2";
++        mediatek,mux_ccu = "clk_mmpll_d5_d2",
++            "clk_univpll_d3", "clk_adsppll_d5";
 +
-+	/* Get voltage info from opp table */
-+	dev_pm_opp_of_add_table(dev);
-+	freq = 0;
-+	index = 0;
-+	while (!IS_ERR(opp = dev_pm_opp_find_freq_ceil(dev, &freq))) {
-+		drv_data->voltages[index] = dev_pm_opp_get_voltage(opp);
-+		freq++;
-+		index++;
-+		dev_pm_opp_put(opp);
-+	}
++        mediatek,support_hopping = "clk_mmpll_ck";
++        mediatek,hopping_clk_mmpll_ck = <630000000 630000000 650000000>;
++        mediatek,action = <1>;
 +
-+	reg = devm_regulator_get(dev, "dvfsrc-vcore");
-+	if (IS_ERR(reg))
-+		return PTR_ERR(reg);
 +
-+	drv_data->nb.notifier_call = regulator_event_notify;
-+	ret = devm_regulator_register_notifier(reg, &drv_data->nb);
-+	if (ret)
-+		pr_notice("Failed to register notifier: %d\n", ret);
-+
-+	return ret;
-+}
-+
-+static struct platform_driver mmdvfs_drv = {
-+	.probe = mmdvfs_probe,
-+	.driver = {
-+		.name = "mtk-mmdvfs",
-+		.of_match_table = of_mmdvfs_match_tbl,
-+	},
-+};
-+
-+static int __init mtk_mmdvfs_init(void)
-+{
-+	s32 status;
-+
-+	status = platform_driver_register(&mmdvfs_drv);
-+	if (status) {
-+		pr_notice("Failed to register MMDVFS driver(%d)\n", status);
-+		return -ENODEV;
-+	}
-+	return 0;
-+}
-+
-+static void __exit mtk_mmdvfs_exit(void)
-+{
-+	platform_driver_unregister(&mmdvfs_drv);
-+}
-+
-+module_init(mtk_mmdvfs_init);
-+module_exit(mtk_mmdvfs_exit);
-+
-+MODULE_DESCRIPTION("MTK MMDVFS driver");
-+MODULE_AUTHOR("Anthony Huang<anthony.huang@mediatek.com>");
-+MODULE_LICENSE("GPL");
++        clocks = <&topckgen CLK_TOP_MM>,
++                <&topckgen CLK_TOP_CAM>,
++                <&topckgen CLK_TOP_IMG>,
++                <&topckgen CLK_TOP_IPE>,
++                <&topckgen CLK_TOP_VENC>,
++                <&topckgen CLK_TOP_VDEC>,
++                <&topckgen CLK_TOP_DPE>,
++                <&topckgen CLK_TOP_CCU>,
++                <&topckgen CLK_TOP_MMPLL_D5>,
++                <&topckgen CLK_TOP_UNIVPLL_D2>,
++                <&topckgen CLK_TOP_TVDPLL_MAINPLL_D2_CK>,
++                <&topckgen CLK_TOP_ADSPPLL_D5>,
++                <&topckgen CLK_TOP_MAINPLL_D2>,
++                <&topckgen CLK_TOP_MMPLL_D6>,
++                <&topckgen CLK_TOP_MMPLL_D7>,
++                <&topckgen CLK_TOP_UNIVPLL_D3>,
++                <&topckgen CLK_TOP_MAINPLL_D3>,
++                <&topckgen CLK_TOP_MMPLL_D5_D2>,
++                <&topckgen CLK_TOP_UNIVPLL_D2_D2>,
++                <&topckgen CLK_TOP_MMPLL_CK>;
++        clock-names = "mm",
++                "cam",
++                "img",
++                "ipe",
++                "venc",
++                "vdec",
++                "dpe",
++                "ccu",
++                "clk_mmpll_d5",
++                "clk_univpll_d2",
++                "clk_tvdpll_mainpll_d2_ck",
++                "clk_adsppll_d5",
++                "clk_mainpll_d2",
++                "clk_mmpll_d6",
++                "clk_mmpll_d7",
++                "clk_univpll_d3",
++                "clk_mainpll_d3",
++                "clk_mmpll_d5_d2",
++                "clk_univpll_d2_d2",
++                "clk_mmpll_ck";
++    };
++...
 -- 
 1.7.9.5
 _______________________________________________
