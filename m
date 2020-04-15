@@ -2,79 +2,82 @@ Return-Path: <SRS0=9LKV=57=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BC0FEC2BA2B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 05:48:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A3D5DC2BA2B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 06:10:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8CDA320767
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 05:48:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 723C420737
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 06:10:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EGhYZ5O5";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="TRrLOpkA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8CDA320767
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e3DOKh6k"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 723C420737
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TT8RBg9Sjw7jBL4g58DCh1Webe0lEoKxv0rJplpFpkE=; b=EGhYZ5O5BrIt99
-	1okdW+i5MoMCXmweOHwgBTz7TgXaEtoLT/c1K5wrMhaqx5giHNNCCZYBTV6BUW21ahx//h3soX04S
-	v/53Xdo9bURFyS4ejceAqwRQIwTE1usj89deY4Zc7rkUn4lH4Yd7esoROfHK2v3kg3BgQu28cdglR
-	GOkl8Z69n0uvTK4GV4iC4JrbwfFcaOyYig9sPdEKbCHZM9xFvSUlkrXTwJAfKNXbMo8+a+1/6QnsZ
-	I3+d/QFkcmQJholJFzooLuRsCF/FBqnDCJrWHfoqubn5VaSXyqKSzmUX21J+Wuq/dL6UJAhCNgmhw
-	boHGHzQw/8ibolOjdFig==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=sMrU3rUBfqnmd983EzQQfNsCth2eKNlkTcmwArhrZ7A=; b=e3DOKh6kQaB32m4HUSYcwQa2p
+	ziOTRTvd0IBWrlj1y5kixRCrsdsvMWRdvGW10gCZCSuZzuaX+c1ZiqtizgH5XiX7LdtKwBmmHr1vy
+	/TaLuJ1dobolqre5R6CPDvgINPOLG7rQMy/C1iHnsz6OQtA+KSeHOfQRl6MqBjEM0JMRnsRHAhN+6
+	8EdfqStdCkE7nV9lAIPr2qRB8suj0pKVGN/eWLw5TcSsTrGJ/gMQ1bEe8MvoNEndc4fDbi7UCbNAV
+	0Ap0aCalRG6S15aMXixFCWpyDL9P+8EaRqn7tzepztif7NDd7DHg7MO8cbtM4xoCsyC3kYqTTCKq/
+	ak9wOpq/g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOauJ-0005f2-1f; Wed, 15 Apr 2020 05:48:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jObFW-0004zB-PB; Wed, 15 Apr 2020 06:10:14 +0000
+Received: from mga18.intel.com ([134.134.136.126])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOauF-0005eO-TS
- for linux-mediatek@lists.infradead.org; Wed, 15 Apr 2020 05:48:17 +0000
-X-UUID: 79b61033359f4575a5a003e04b7dcad7-20200414
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=rFdJukqMuiVvbS0r8hyuDecUDe2evDV8QeEr8RT3h0Q=; 
- b=TRrLOpkAoduvtnqjlBfPwHAblb5Dt5M/fslX4D6CWV/7V6ESh8JRsWJ9KREZtNhNTgK/O9NcDNVkTa2pNY3bl7Lc72g0G1LSeTw7P0cNsr9vpLHJJ4Qr8122HrKYgdeFNzdeMhTp+SbIKNby98ywvKo2Xsl9UjsYb5rkN6ZlSN4=;
-X-UUID: 79b61033359f4575a5a003e04b7dcad7-20200414
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <frankie.chang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 68107602; Tue, 14 Apr 2020 21:48:07 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Apr 2020 22:38:07 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 15 Apr 2020 13:37:57 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 15 Apr 2020 13:37:58 +0800
-From: Frankie Chang <Frankie.Chang@mediatek.com>
-To: Joel Fernandes <joel@joelfernandes.org>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>
-Subject: [PATCH v2] binder: transaction latency tracking for user build
-Date: Wed, 15 Apr 2020 13:37:23 +0800
-Message-ID: <1586929044-12708-1-git-send-email-Frankie.Chang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1586759071.9539.15.camel@mtkswgap22>
-References: <1586759071.9539.15.camel@mtkswgap22>
+ id 1jObFU-0004we-5g; Wed, 15 Apr 2020 06:10:13 +0000
+IronPort-SDR: aZxUC6ZJV7DL7w9SljH2XD0Dio9z89PrLYrJzU3WIVwUpe6kSFyFuLeb/eBamqK/+JsgaHZmKU
+ rcybm8VYJjVQ==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Apr 2020 23:10:11 -0700
+IronPort-SDR: Xrzeker15iDL0GxYgNylnyNCcgOHg/5LrDmSleRIXI69KwIrj67IOyQN42jm1/hyg4yAT+vZ4w
+ my6GtVMJbzjQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,385,1580803200"; d="scan'208";a="363586963"
+Received: from blu2-mobl3.ccr.corp.intel.com (HELO [10.254.210.208])
+ ([10.254.210.208])
+ by fmsmga001.fm.intel.com with ESMTP; 14 Apr 2020 23:10:04 -0700
+Subject: Re: [PATCH v2 13/33] iommu: Export bus_iommu_probe() and make is safe
+ for re-probing
+To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse
+ <dwmw2@infradead.org>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>
+References: <20200414131542.25608-1-joro@8bytes.org>
+ <20200414131542.25608-14-joro@8bytes.org>
+From: Lu Baolu <baolu.lu@linux.intel.com>
+Message-ID: <1853992c-47a6-3724-812c-a52558c13732@linux.intel.com>
+Date: Wed, 15 Apr 2020 14:10:03 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: C5AE700466C623C56760133233788485E16B151CBF877C57B456D6F564DA69D72000:8
-X-MTK: N
+In-Reply-To: <20200414131542.25608-14-joro@8bytes.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200414_224815_955647_0D7C3F1F 
-X-CRM114-Status: UNSURE (   5.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200414_231012_267714_EAEA1545 
+X-CRM114-Status: GOOD (  20.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,28 +89,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Todd Kjos <tkjos@android.com>, wsd_upstream <wsd_upstream@mediatek.com>,
- linux-kernel@vger.kernel.org,
- =?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?= <arve@android.com>,
- Jian-Min Liu <Jian-Min.Liu@mediatek.com>, linux-mediatek@lists.infradead.org,
- Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ virtualization@lists.linux-foundation.org, linux-rockchip@lists.infradead.org,
+ iommu@lists.linux-foundation.org, Joerg Roedel <jroedel@suse.de>,
+ linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
+ baolu.lu@linux.intel.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 2020/4/14 21:15, Joerg Roedel wrote:
+> From: Joerg Roedel <jroedel@suse.de>
+> 
+> Add a check to the bus_iommu_probe() call-path to make sure it ignores
+> devices which have already been successfully probed. Then export the
+> bus_iommu_probe() function so it can be used by IOMMU drivers.
+> 
+> Signed-off-by: Joerg Roedel <jroedel@suse.de>
+> ---
+>   drivers/iommu/iommu.c | 6 +++++-
+>   include/linux/iommu.h | 1 +
+>   2 files changed, 6 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+> index 834a45da0ed0..a2ff95424044 100644
+> --- a/drivers/iommu/iommu.c
+> +++ b/drivers/iommu/iommu.c
+> @@ -1615,6 +1615,10 @@ static int probe_iommu_group(struct device *dev, void *data)
+>   	if (!dev_iommu_get(dev))
+>   		return -ENOMEM;
+>   
+> +	/* Device is probed already if in a group */
+> +	if (iommu_group_get(dev) != NULL)
 
-Frankie Chang (1):
-  binder: transaction latency tracking for user build
+Same as
+	if (iommu_group_get(dev))
+?
 
- drivers/android/Kconfig                 |    8 ++
- drivers/android/Makefile                |    1 +
- drivers/android/binder.c                |  237 ++++---------------------------
- drivers/android/binder_internal.h       |  227 +++++++++++++++++++++++++++++
- drivers/android/binder_latency_tracer.c |  100 +++++++++++++
- drivers/android/binder_trace.h          |   36 +++++
- 6 files changed, 400 insertions(+), 209 deletions(-)
- create mode 100644 drivers/android/binder_latency_tracer.c
+By the way, do we need to put the group if device has already been
+probed?
+
+Best regards,
+baolu
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
