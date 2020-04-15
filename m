@@ -5,18 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 956A9C2BA2B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 05:24:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D7A8C2BA2B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 05:24:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 43AEB2063A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 05:24:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2FFD42063A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Apr 2020 05:24:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VOJidK72"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43AEB2063A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UJ1Yc2mJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2FFD42063A
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fi.rohmeurope.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,54 +25,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=klLXcM734UUzS/Mquf1q47j4WaoZBUnTpEol0TPQQ30=; b=VOJidK72Co0X+K
-	MZOuSSvRTahwDkffZ+ve4OR9j+4JZxQzuzi5cp3CNge+7wtLvs4hqQgHpA84Mt0TG6k6sEIRR7LpB
-	h/C9j2ji7cMhoR8tof/fVSWuhuPeAqNEn0Adh3XbYV0Ap5a6xIB/TM44luzwPAgiVojd3HOc3qAKW
-	JIxLo78fqXejEkCD+kBMUz8C7Sg+oiVEwSCKa4Oq3yRPJfuNlx/SZ86eD9b9bKZhia2z/gUkq1VI3
-	ubQ+CmqCb8SzS4kWfoiCm0Rd6LIs+BXdoFpGo3iVgu8V50zYPfP1wcih0pHwug2DvZR8NvVlK84Nv
-	raLlw6z7vQuP6RsaJmnA==;
+	List-Owner; bh=Fiv4b3We5ZwkA9eaGx2g07rxMg3thHBjIsA6Ix+oaeo=; b=UJ1Yc2mJ733dPL
+	xrmu3WUrNgeb51FjPxFWDVNbRFlqZFJbAEZq/N7u3RI3FAjSn2idBbSr1IHJvKtC3L4CUYzKzDnVG
+	Vgn9Y7+HwPPQ+uCmFmrblPz55YUqJpBYqi7fqNQs2/09yJ7s9+IJ0n1zrs6aTuYIkN/yhNzk1k3OD
+	LCnWTPzpmFuvbND1RyDlXosjBSENECKPDT2y60cSIFrWVFIvInhqxSTf8BfElSNLQyZbGpt3EOU9S
+	5ZP2+nu70IaKGIpu8BZBZxWjQ0RcoQWq6btNGLalaKYbhPVIScAD/qw8El9BpYXmspYcRSGS3gaGU
+	AcqyFQc5sFi/wcEyHsFA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOaWv-00057B-Pm; Wed, 15 Apr 2020 05:24:09 +0000
+	id 1jOaXL-0005OQ-9B; Wed, 15 Apr 2020 05:24:35 +0000
 Received: from mail-lj1-f196.google.com ([209.85.208.196])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOaWh-0004ly-2L; Wed, 15 Apr 2020 05:23:56 +0000
-Received: by mail-lj1-f196.google.com with SMTP id r7so2215236ljg.13;
- Tue, 14 Apr 2020 22:23:54 -0700 (PDT)
+ id 1jOaXA-0005F2-AK; Wed, 15 Apr 2020 05:24:25 +0000
+Received: by mail-lj1-f196.google.com with SMTP id u15so2295430ljd.3;
+ Tue, 14 Apr 2020 22:24:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=Xn9Q8ChOHkxUVnDeeTwgLZBFu3TEywEF5Z2h0O3M1C0=;
- b=GIg7d9t+GmiHKf+OdKeviTNjxM+hjR1d1EprTszvwr6XXFihQ3E6G11QjBI/2825KX
- cWiNrQlfQw8ujt2zE3DJVzxxJOF6ViSW6R6ahZpni/OTzg2GZr/2ytq5tyjQyWfvd9wU
- 7sL0nLcYx3q278fnT1hsgm/uWpgwX976HuBJt/hMUby1aWwAOkyncyXUsyCovhNDT2BL
- yofvJ9wEqTpR4x7icY4sTpbjiu2NiIsp6aeFdq+4T6cjNyDkc32ti6Ztg8jotjjqtfh+
- uxvCsg7pDf9c3eRhXZ6Ecswau6ycGFKfSdXe0AbAP4vTtIcQDzZkT0Z/USjpyK40uW+Y
- r6SA==
-X-Gm-Message-State: AGi0PuZHAAE/91uQuaD7PvcazwyDwyCSCxphercGCsuGJy37zq05K8iY
- LeXpravSma3PkOiou5Gfroc=
-X-Google-Smtp-Source: APiQypIfDzBniZFbyisLp4Pq8zJBJItdtrZHPhml/j/D03MYAHGrLz8PFQ6no6EUS7HP3RRXobtT1Q==
-X-Received: by 2002:a2e:84c4:: with SMTP id q4mr2027173ljh.206.1586928233640; 
- Tue, 14 Apr 2020 22:23:53 -0700 (PDT)
+ bh=GPA/i1MeghluzvwK9kprDNBofjBWC5kulY4z+64/X/w=;
+ b=J3d9fC8JjOEDJlUx69hsxEzrBDMrwhor1mBZXoubThXN0r8aBuH6+CQl13qArgnsgZ
+ RQv+lQsHdH0RtXDLRAbjFGmJF0D8gGOSrdvReXr27oKiJEZoCk6buwTRDjOKASg4NStI
+ z5eqPtGqb+p3ev2crjRe/mU4BDnyQhdCnmqe/wiEeaHPBzkxkvbsWsMsAvmqA2wywoxX
+ PxLKaajbYXECXkBVTY1Hh7QT+H5Ycx5hyMd1qo5/Jhmg+MszyNby9CCHVJSGEyFH+Cx/
+ fAKTqQ4FQ0K3yw/PfbO6yN7MvYfHDz0t3ITgauby9dSCOdmbnl7VzwOHMf5E4v2kqE2T
+ vzsg==
+X-Gm-Message-State: AGi0PuaYoCkSvkwkKzjH0GYmaXklB7QrLe/Hw1VX99kkJLdmpzzZ8EDE
+ Byo7wOT8NNzRb+4cY0xf0aQ=
+X-Google-Smtp-Source: APiQypLA31EOzlOHPxf1H/TUzrY5NG3O7VPp4LVyf1EzSxdMwl2/OQdmDNbjvIJ9c3eld69hMjQqiw==
+X-Received: by 2002:a2e:9013:: with SMTP id h19mr2148903ljg.277.1586928262986; 
+ Tue, 14 Apr 2020 22:24:22 -0700 (PDT)
 Received: from localhost.localdomain
  (dc7t7ryyyyyyyyyyyyybt-3.rev.dnainternet.fi. [2001:14ba:16e1:b700::3])
- by smtp.gmail.com with ESMTPSA id q129sm5166921ljb.50.2020.04.14.22.23.51
+ by smtp.gmail.com with ESMTPSA id m12sm2722572ljc.81.2020.04.14.22.24.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Apr 2020 22:23:53 -0700 (PDT)
-Date: Wed, 15 Apr 2020 08:23:40 +0300
+ Tue, 14 Apr 2020 22:24:22 -0700 (PDT)
+Date: Wed, 15 Apr 2020 08:24:14 +0300
 From: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
 To: matti.vaittinen@fi.rohmeurope.com, mazziesaccount@gmail.com
-Subject: [PATCH v10 10/11] power: supply: Fix Kconfig help text indentiation
-Message-ID: <23314fb63b66f5f4816e052f0d7ff0e7927c0e78.1586925868.git.matti.vaittinen@fi.rohmeurope.com>
+Subject: [PATCH v10 11/11] power: supply: KConfig cleanup default n
+Message-ID: <b893d0449886a8ffed00bbcc1fcbe34d83b833d3.1586925868.git.matti.vaittinen@fi.rohmeurope.com>
 References: <cover.1586925868.git.matti.vaittinen@fi.rohmeurope.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <cover.1586925868.git.matti.vaittinen@fi.rohmeurope.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200414_222355_107080_F0955379 
-X-CRM114-Status: GOOD (  12.51  )
+X-CRM114-CacheID: sfid-20200414_222424_357049_69B0827C 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,90 +121,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Indent the help text as explained in
-Documentation/process/coding-style.rst
+The "default n" is not needed. Clean the KConfig by removing
+"default n".
 
 Signed-off-by: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
 
-No changes since v9
+This was pointed to me first by Randy Dunlap during v4 review.
+I cleaned the BD99954 back then.
 
-I just learned the help text in Kconfigs should be indented by two
-spaces. I fixed this for BD99954 as suggested by Randy and decided
-that I could do this for few other entries as well while I was at
-it anyways.
+Also Andy Shevchenko mentioned this to me. So as I was
+changing the file anyways... Please just drop this patch out
+of the series if you're not Ok with this.
 
- drivers/power/supply/Kconfig | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ drivers/power/supply/Kconfig | 2 --
+ 1 file changed, 2 deletions(-)
 
 diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
-index 436680ee8523..ec028e47c3c2 100644
+index ec028e47c3c2..04821d8c9e43 100644
 --- a/drivers/power/supply/Kconfig
 +++ b/drivers/power/supply/Kconfig
-@@ -415,7 +415,7 @@ config CHARGER_PCF50633
- 	tristate "NXP PCF50633 MBC"
- 	depends on MFD_PCF50633
+@@ -660,7 +660,6 @@ config CHARGER_RT9455
+ config CHARGER_CROS_USBPD
+ 	tristate "ChromeOS EC based USBPD charger"
+ 	depends on CROS_USBPD_NOTIFY
+-	default n
  	help
--	 Say Y to include support for NXP PCF50633 Main Battery Charger.
-+	  Say Y to include support for NXP PCF50633 Main Battery Charger.
- 
- config BATTERY_RX51
- 	tristate "Nokia RX-51 (N900) battery driver"
-@@ -609,15 +609,15 @@ config CHARGER_TPS65090
- 	tristate "TPS65090 battery charger driver"
- 	depends on MFD_TPS65090
- 	help
--	 Say Y here to enable support for battery charging with TPS65090
--	 PMIC chips.
-+	  Say Y here to enable support for battery charging with TPS65090
-+	  PMIC chips.
- 
- config CHARGER_TPS65217
- 	tristate "TPS65217 battery charger driver"
- 	depends on MFD_TPS65217
- 	help
--	 Say Y here to enable support for battery charging with TPS65217
--	 PMIC chips.
-+	  Say Y here to enable support for battery charging with TPS65217
-+	  PMIC chips.
- 
- config BATTERY_GAUGE_LTC2941
- 	tristate "LTC2941/LTC2943 Battery Gauge Driver"
-@@ -671,16 +671,16 @@ config CHARGER_SC2731
- 	tristate "Spreadtrum SC2731 charger driver"
- 	depends on MFD_SC27XX_PMIC || COMPILE_TEST
- 	help
--	 Say Y here to enable support for battery charging with SC2731
--	 PMIC chips.
-+	  Say Y here to enable support for battery charging with SC2731
-+	  PMIC chips.
- 
- config FUEL_GAUGE_SC27XX
- 	tristate "Spreadtrum SC27XX fuel gauge driver"
- 	depends on MFD_SC27XX_PMIC || COMPILE_TEST
- 	depends on IIO
- 	help
--	 Say Y here to enable support for fuel gauge with SC27XX
--	 PMIC chips.
-+	  Say Y here to enable support for fuel gauge with SC27XX
-+	  PMIC chips.
- 
- config CHARGER_UCS1002
- 	tristate "Microchip UCS1002 USB Port Power Controller"
-@@ -698,9 +698,9 @@ config CHARGER_BD70528
+ 	  Say Y here to enable ChromeOS EC based USBPD charger
+ 	  driver. This driver gets various bits of information about
+@@ -696,7 +695,6 @@ config CHARGER_BD70528
+ 	tristate "ROHM bd70528 charger driver"
+ 	depends on MFD_ROHM_BD70528
  	select LINEAR_RANGES
- 	default n
+-	default n
  	help
--	 Say Y here to enable support for getting battery status
--	 information and altering charger configurations from charger
--	 block of the ROHM BD70528 Power Management IC.
-+	  Say Y here to enable support for getting battery status
-+	  information and altering charger configurations from charger
-+	  block of the ROHM BD70528 Power Management IC.
- 
- config CHARGER_BD99954
- 	tristate "ROHM bd99954 charger driver"
+ 	  Say Y here to enable support for getting battery status
+ 	  information and altering charger configurations from charger
 -- 
 2.21.0
 
