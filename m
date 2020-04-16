@@ -6,17 +6,17 @@ X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B1095C2BA19
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2020 00:55:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 64B00C2BB55
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2020 00:57:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 83892208E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2020 00:55:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3602C208E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Apr 2020 00:57:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="t6Hf0mE2";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="a2XbOiwl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 83892208E0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WBsr10Kd";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Zxz39exV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3602C208E0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,54 +25,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZJq8eEDMmPIWiC/wYKb4x7RGnuv5aklv2hgGQfO3kxM=; b=t6Hf0mE2fMdj4o
-	Bw7f3hdsSR7jyq1Lz/l98EeYQv97iCYyqYcz26NB/Y0DIa3/Pv2cmG5iRKqdYX2gLgDOPQtQXI4WK
-	RF0ZzjtWOcq5j4ROlYcdh/HC9llu4wJIR5JezRtFao6WSQsbkK8TOwL499w79g0BBqo0rLH3HJG9B
-	I9vQ/z89asQ8Zfg2J7S8yGZosxAovVQi5QxDJlpWggoKdI0uD5l9D1aKE3Z7fypq0cUDnUPxsIlqB
-	kebj+++QRQwDF/wItHQILRG20VuOIKXlln10OzeqcbeyUV2lTsmqiKEURmgGA1TQsVxsN65m77+8j
-	Dk4OX1zqsxecz9o8fSPg==;
+	List-Owner; bh=+9w3Jg7GLoBhy+mWTZYoeOULrn1Ok3QiBNgfP31A0uc=; b=WBsr10KdWElMFm
+	Y0lVxGL3azgDvuBmKyQiveVhfoJgosWu9APtUlGZouV1fWIL1MA6pVGULoLNciqhIxuXPF6HeJ6fB
+	mLQ7pTOlfOQhgsBT6G87QSrZFNR1d0XutbUOF67Vk22mge1Zs4ds2U5/sE6kOWAP6MeKvHK7uUsZt
+	S0JO7/0n/rFWiSakW4RcOaqgysc0nnziV3txk3rZXmu1JApKuq5mlwKZnrHbHz8F7j2+ryRw5q2EU
+	x5j+aPgms6vje4IUz1kkgYV4jGlUo/yIOewBJdDqxwqJW84QZcDpADRYyZzuYj5eO3XGRwH0B9cWy
+	/gO7HnEie2dNRoK3KaBA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jOsoL-0000Th-M0; Thu, 16 Apr 2020 00:55:21 +0000
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342])
+	id 1jOsps-0001FH-S0; Thu, 16 Apr 2020 00:56:56 +0000
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jOsoJ-0000T9-EQ
- for linux-mediatek@lists.infradead.org; Thu, 16 Apr 2020 00:55:20 +0000
-Received: by mail-ot1-x342.google.com with SMTP id j26so1751908ots.0
- for <linux-mediatek@lists.infradead.org>; Wed, 15 Apr 2020 17:55:19 -0700 (PDT)
+ id 1jOspo-0001Cl-P4
+ for linux-mediatek@lists.infradead.org; Thu, 16 Apr 2020 00:56:55 +0000
+Received: by mail-io1-xd44.google.com with SMTP id w1so19270018iot.7
+ for <linux-mediatek@lists.infradead.org>; Wed, 15 Apr 2020 17:56:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=oymDymDSGwWgVl7PdrWgMeH1mdt9MH+svEJHIh9ofYo=;
- b=a2XbOiwlAAQzxczt4QF4WPs7900EFsrLVOxWmAfWFDrYlbOxFqFleRRIhOr+uI8M5f
- M2cwVJ40d4uDtjkefb7KmLLsMXHjL/sGzNwIx0DMzOlXnR5mb/1snHQ+m68Q4OvzwI+F
- RFsl2ztnRLmbC/I9LzD4UKpcjD3O1jAdNfCXg=
+ :cc; bh=0pi57Yw1CcnU/t5xDRYzAtYW33asqFUBaWgZbJ3tOfE=;
+ b=Zxz39exVNPQUoC5oC7KxutI6O9HlznMuRYa653fUmfYsyaTRiTIZKuc9pujiaQLdn/
+ 6CTSitD7ypenyMARA3xWa1qvKF/8ZZRmHFyZAj3U7hHkFWoLTv1Vjvem8/AWPxPWGYRd
+ 9YsDvAZ0l32UROX6xPE8XcQ0FNYxiVvtWNDvI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=oymDymDSGwWgVl7PdrWgMeH1mdt9MH+svEJHIh9ofYo=;
- b=C76t1rbBW3dInE1FDVB4/6KLutC2dVfkAoQZ6WFyD+pMVAgn3+g5OcINOAgeeXqKgr
- fMF1d4bflT/Ox+sge0s2hrpYcAFWjhE/quNFuDdCFN/y3H4jWbg/7OL6/TZUstDrWqAr
- quEGU6Z6I5ukRMzpDBNoVXlv8Zm97DsJU4VV7a7kkZCnnORQJ/cD7QfqjSh74mPKBdd7
- 1CCrxxFWbYJM7qR5Qi4+83gGLuUHQB3Wwbo2+WvfjnBTXtmv9zG95NW1XMUzY8RFgIxf
- oZomSsDf62VD6C8jT4gAf7A2FPEK7K1Ypf68921y+x56fD4GZaF7Ax3n7YpDgvB2D3fG
- /uxA==
-X-Gm-Message-State: AGi0Pub9w3Sucl+z4rrz8/vBE16nvVX59bcCLnFxKKXHWwyC1q87kmVW
- 8MK8TZu3RR8Qdfr+lLXvEjk0zPuLohM=
-X-Google-Smtp-Source: APiQypJPU6xWz6FjmJbBm+4vOVwD6RgZyMiXkB7sItAl4Hq3o/l0wEGSiPJ3BoJQMjasFGEjESFtvg==
-X-Received: by 2002:a05:6830:1:: with SMTP id
- c1mr24134885otp.200.1586998518539; 
- Wed, 15 Apr 2020 17:55:18 -0700 (PDT)
-Received: from mail-ot1-f48.google.com (mail-ot1-f48.google.com.
- [209.85.210.48])
- by smtp.gmail.com with ESMTPSA id n23sm7350621ooe.44.2020.04.15.17.55.18
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 15 Apr 2020 17:55:18 -0700 (PDT)
-Received: by mail-ot1-f48.google.com with SMTP id f52so1700471otf.8
- for <linux-mediatek@lists.infradead.org>; Wed, 15 Apr 2020 17:55:18 -0700 (PDT)
-X-Received: by 2002:ab0:592c:: with SMTP id n41mr1543975uad.73.1586998027359; 
- Wed, 15 Apr 2020 17:47:07 -0700 (PDT)
+ bh=0pi57Yw1CcnU/t5xDRYzAtYW33asqFUBaWgZbJ3tOfE=;
+ b=b5dHaVKvsQ2Jaj6zjChWO9+mRLVida+3NF4Ol/p2Xf1M7cBjBZjwnO5dZbmscb74Fn
+ FnWGmqIVkf2IiMieY7Wj3t+7L98A3RvyPnhIc0rpIJjZ+3u6/dYezaOSTaD21UGSCoLS
+ oxPBTbm2EkNGU9dylOhm47qrnE6Sa2a8LP9YcwI62YZt0IJVjNLVWawwXQerF1S0EwAB
+ Tq2gv/josNN2rQ+/bTAsZqO6XI49Ninq+JBoSJ2s8HcWnnlp9e7okmu40J1/VApW82P7
+ UnMMhEEZC4B+UcLBSE4Hl/vv0MXvneat+9qiylCGzahCU7CjdZiNvQliuRO+5kxU2X18
+ AtAA==
+X-Gm-Message-State: AGi0Pua0RBC/KAVn001R7PFf+tqKEZB+MxHPS52Nr3JQgg4J4FaCDi3V
+ 6Ca+tOYO/S/yA7YgDkeqx2p5+yP1btFOAjzP6U06Jg==
+X-Google-Smtp-Source: APiQypLaV14jW6zqGw/DJyeFplem0IPQuVzPs6SMj5UQP5j6yl5Y9t8lEAsFhz+mS6nRLGgdHeSVWyjl3NF1UNgldr0=
+X-Received: by 2002:a6b:491a:: with SMTP id u26mr28900283iob.30.1586998611518; 
+ Wed, 15 Apr 2020 17:56:51 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200403052900.258855-1-evanbenn@chromium.org>
  <CAKz_xw0gV+w_gMkLfB4qUBdULLfFoiv1TBWp9_PHy33wP_XWyA@mail.gmail.com>
@@ -80,17 +69,18 @@ References: <20200403052900.258855-1-evanbenn@chromium.org>
  <243e107c-35c1-2d14-5285-c9e13744963c@amlogic.com>
  <CAODwPW9RSB37+4EJ2QXAwz=ShFB23L1GKC2mLYE5L5JuQR2tPw@mail.gmail.com>
  <20200415231215.GA182398@roeck-us.net>
-In-Reply-To: <20200415231215.GA182398@roeck-us.net>
-From: Evan Benn <evanbenn@chromium.org>
-Date: Thu, 16 Apr 2020 10:46:39 +1000
-X-Gmail-Original-Message-ID: <CAKz_xw0+gKBM1jp-Avnd+4j9vSxUix67RZBX-NNbStb0+ri4+Q@mail.gmail.com>
-Message-ID: <CAKz_xw0+gKBM1jp-Avnd+4j9vSxUix67RZBX-NNbStb0+ri4+Q@mail.gmail.com>
+ <CAKz_xw0+gKBM1jp-Avnd+4j9vSxUix67RZBX-NNbStb0+ri4+Q@mail.gmail.com>
+In-Reply-To: <CAKz_xw0+gKBM1jp-Avnd+4j9vSxUix67RZBX-NNbStb0+ri4+Q@mail.gmail.com>
+From: Julius Werner <jwerner@chromium.org>
+Date: Wed, 15 Apr 2020 17:56:39 -0700
+Message-ID: <CAODwPW9Vt7TcWfKYDmRgLndb2-+5HoNvA6XMJJznXCudQDngqw@mail.gmail.com>
 Subject: Re: [PATCH v2 0/2] Add a watchdog driver that uses ARM Secure Monitor
  Calls.
-To: Guenter Roeck <linux@roeck-us.net>
+To: Evan Benn <evanbenn@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200415_175519_488969_825751CA 
-X-CRM114-Status: GOOD (  22.58  )
+X-CRM114-CacheID: sfid-20200415_175652_834531_F357F61F 
+X-CRM114-Status: UNSURE (   7.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,7 +102,8 @@ Cc: Mark Rutland <mark.rutland@arm.com>,
  Anson Huang <Anson.Huang@nxp.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Valentin Schneider <valentin.schneider@arm.com>, devicetree@vger.kernel.org,
+ Valentin Schneider <valentin.schneider@arm.com>,
+ Guenter Roeck <linux@roeck-us.net>, devicetree@vger.kernel.org,
  LINUX-WATCHDOG <linux-watchdog@vger.kernel.org>,
  Rob Herring <robh+dt@kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
@@ -131,52 +122,11 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thanks Xingyu,
+> Can anyone provide advice about making SMCWD_FUNC_ID a device tree
+> param directly, vs using the compatible to select from a table.
 
-Can anyone provide advice about making SMCWD_FUNC_ID a device tree
-param directly, vs using the compatible to select from a table.
-
-Please note get_timeleft erroneously returns res.a0 instead of res.a1
-in this version.
-
-Evan
-
-On Thu, Apr 16, 2020 at 9:12 AM Guenter Roeck <linux@roeck-us.net> wrote:
->
-> On Wed, Apr 15, 2020 at 03:29:29PM -0700, Julius Werner wrote:
-> > > In addition, It looks more reasonable to use the "msec" as the unit of
-> > > timeout parameter for the ATF fw interface with SMCWD_SET_TIMEOUT:
-> > >
-> > > - The fw interface will compatible with the uboot generic watchdog
-> > > interface at [0], and there is no need to convert timeout from msec
-> > > to sec.
-> >
-> > I think we're trying hard to keep this compatible to a Trusted
-> > Firmware counterpart that we have already shipped, so we would prefer
-> > to keep it at seconds if possible. That's what the Linux watchdog core
-> > uses as well after all, so it just seems natural. I don't really see
-> > how what U-Boot does would have anything to do with this.
-> >
-> > > - Some vendor's watchdog may be not support the "wdt_trigger_reset"
-> > > reset operation, but they can use the method below to reset the system
-> > > by the watchdog right now.
-> > >
-> > > watchdog_set_time(1);  //1ms
-> > > watchdog_enable();
-> >
-> > They can still do that but they should do that on the Trusted Firmware
-> > side. Emulating a missing reset functionality should be handled by the
-> > hardware abstraction layer (in this case Trusted Firmware), not at the
-> > Linux API level. So Linux would still send a PSCI_SYSTEM_RESET SMC,
-> > but then Trusted Firmware can choose to implement that by setting the
-> > watchdog to the smallest possible timeout (which it can because it's
-> > accessing it directly, not through this SMC interface) and letting it
-> > expire.
->
-> I agree. Using a watchdog to implement reset functionality is always a
-> means of last resort and should be avoided if possible.
->
-> Guenter
+Sounds like most people prefer the way with using different compatible
+strings? (Personally I don't really care either way.)
 
 _______________________________________________
 Linux-mediatek mailing list
