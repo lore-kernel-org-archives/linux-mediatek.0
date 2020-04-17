@@ -2,90 +2,77 @@ Return-Path: <SRS0=UdZw=6B=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E185EC2BA2B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2020 01:03:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 34289C2BA2B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2020 01:14:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B37B820776
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2020 01:03:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 07D8120780
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2020 01:14:48 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Oh77UogK";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=endlessm-com.20150623.gappssmtp.com header.i=@endlessm-com.20150623.gappssmtp.com header.b="FrdtkA3N"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B37B820776
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=endlessm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UydmrDRN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 07D8120780
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YscoIJdVwIrbKjH32O+wF4YJimlQ/pIa/00gjfMvo/4=; b=Oh77UogKmJpxSG
-	voDZITfhR3kqHWlNendjG4IsjkJ1Q/oK8BPFcc79vaWnReOC9C4Tce3XZ/qKMNqPvKyWZuADJYmFn
-	B4Szer9qs8ClxhfrMFSP58Z2hdryGDljzr1YKdbU7JxOwo1eSIzl5/vwanMQkLGGfnjTogoMBsyxY
-	TBJheqtcolN754/MpELgljNrsdbFwVR1GDxxwVH98re77RuDi4Bh3uLGh5fYA0ZcAb7snoPTX2ve3
-	e508pvKH1NUA7FPrIxOL4OyZ+pEx4dHZ1dHjCt24P7wpP8qH/gklO1bLhnlHM7ZOjNnFcPwp5u3iZ
-	4LXMZGXM5yasX+G8dWxw==;
+	List-Owner; bh=XIUApDYiaPHoaFLzwBMXCA6SOZnps4zYQKumGtlXFeo=; b=UydmrDRNQi8SB0
+	OSzjpiFXELzET76s4Lti0wtXZPdpfVKGlmvumWO5UounbtWF7Y6uLp4sCA+70ZQbBYJxNcxJEDmTH
+	/cewN051Rn0p8UZVE62w1daUx/Z8hz/Bg82br3iPJxzUFSqqEZv9640/fk5ISR4206OKR+Lbg+vNc
+	vIvlcNsmUgOBuazNrQdYcl1DRaPx8px8lYQlnfdhw4SRKvTWXn9yu3Dh5bsFX1NWTTXjX2U7voMeD
+	hb5QGu4+ljAewAcJJer5+Uunx+CDYaw8hxAu8zQmWlWsnCiXBHcMXYLrBNCzOHhYgNz6nTccg/pv6
+	x2AnuHyDBzFHoXEstQ0w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jPFQ5-0004vO-3v; Fri, 17 Apr 2020 01:03:49 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1jPFaY-0002cy-8U; Fri, 17 Apr 2020 01:14:38 +0000
+Received: from mga04.intel.com ([192.55.52.120])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jPFQ1-0004ue-Gh
- for linux-mediatek@lists.infradead.org; Fri, 17 Apr 2020 01:03:48 +0000
-Received: by mail-pl1-x643.google.com with SMTP id t4so308549plq.12
- for <linux-mediatek@lists.infradead.org>; Thu, 16 Apr 2020 18:03:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=endlessm-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=0ZL5DKQEN5tIRYMA9bsAF7qYyxlNKGNuVSjiADQ9SPk=;
- b=FrdtkA3N/A0B10cQBR1BRxqf+/pg1uBkd6DO7lHtdKgOqGpk1/7USrxTk4rdlzJ0Pn
- oQGe7ba6HSEplsOy6ec3K4H8Fpx1j9/0meJ+gk7xvdUqFq7CDtsNxsMJzjX3kGdDbbz8
- GCSySEUU8oXzqHDM2sby4knjcPLSSaIgNvaO9PtWZWWefGILL8HPrNXdIlKHYq2YILWZ
- AMHiZb/IAXXMBCtRYZZ2S6R7t7InyUg113cLru837l9P5It247de3hDzpXYYYkdzsiNW
- l3eKB2Wxab5vn9CTNWz5BkklF52xIUVdN24g+AL8C9OhFHLjLh5Ls1ropaQnpLD31b3o
- DqaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=0ZL5DKQEN5tIRYMA9bsAF7qYyxlNKGNuVSjiADQ9SPk=;
- b=NZxfoFOeU5q+wGBrMVcoO/h4rogoUCpAkxIkxdEX6+UJW0tBk8OoypbPFDbmX6xk9h
- QDSNZFJjhtfyuSayFchFFOYC6gAabLNjEN4d8VB+eDu/WlBKbgwzKnOecQGEwnlSw0Gy
- OJXYgqpo71C/oZTsteWtA89tZ9U95c9Nin+TPPMCj/N/WdOoUZUqNsLb/9+oAL9o/svD
- Xi3zpcSx2NFe9ifL7Bx/Xhh8pLo9OHFTN7gLw/UuA6E/yAgIMCguEKZ29Rvj/WOLj+PC
- sJOtTdNoiOGW38J3x5S6BIybvj+pv/Bfs9T5vrHvo2KOc1SNXPlTBjFtjxO/QrVYLANF
- /J4A==
-X-Gm-Message-State: AGi0PuYO75saWAkMoZjbB/25OL9CG0UQ2KaYZu1WKiIQ+r9xvPZOBDRg
- DPJtGI4z19omcjzuJfF8WyiufQ==
-X-Google-Smtp-Source: APiQypKfJXVVs8nt0ABNaLviRVVB2FF8oWh5BJ43V1JXuqqLWnC3nHs+J6exlmUfG8/Dws2LqNNTtg==
-X-Received: by 2002:a17:902:fe09:: with SMTP id
- g9mr366208plj.171.1587085424144; 
- Thu, 16 Apr 2020 18:03:44 -0700 (PDT)
-Received: from limbo.local (host-160.218-14-119.dynamic.totalbb.net.tw.
- [119.14.218.160])
- by smtp.gmail.com with ESMTPSA id u8sm16518026pgl.19.2020.04.16.18.03.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Apr 2020 18:03:43 -0700 (PDT)
-From: Daniel Drake <drake@endlessm.com>
-To: joro@8bytes.org
+ id 1jPFaU-0002bQ-3R; Fri, 17 Apr 2020 01:14:36 +0000
+IronPort-SDR: +Y/7tyBOk0v3raFHhcX/9NiCYfLP6Q+cNQvPLHqlnDxMuDE70xkP0ZXZeLoIJmys5R1aIXEPNX
+ 6NAqdn/dmQ3Q==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Apr 2020 18:14:32 -0700
+IronPort-SDR: sZlVw/7cjCHq0F1EFVv0TW8FklMi9s4vHlLYLRHCGjn12jklAHdg6QlmB19PsSs7PeDXqv0gk5
+ UINIzZVqpibg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.72,393,1580803200"; d="scan'208";a="272262073"
+Received: from orsmsx103.amr.corp.intel.com ([10.22.225.130])
+ by orsmga002.jf.intel.com with ESMTP; 16 Apr 2020 18:14:32 -0700
+Received: from orsmsx101.amr.corp.intel.com ([169.254.8.204]) by
+ ORSMSX103.amr.corp.intel.com ([169.254.5.143]) with mapi id 14.03.0439.000;
+ Thu, 16 Apr 2020 18:14:32 -0700
+From: "Derrick, Jonathan" <jonathan.derrick@intel.com>
+To: "joro@8bytes.org" <joro@8bytes.org>, "drake@endlessm.com"
+ <drake@endlessm.com>
 Subject: Re: [PATCH v2 00/33] iommu: Move iommu_group setup to IOMMU core code
-Date: Fri, 17 Apr 2020 09:03:35 +0800
-Message-Id: <20200417010335.31739-1-drake@endlessm.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200414131542.25608-1-joro@8bytes.org>
+Thread-Topic: [PATCH v2 00/33] iommu: Move iommu_group setup to IOMMU core code
+Thread-Index: AQHWEmDrg4k1XREwpUada/q2n6OD7qh8+KGAgAADDAA=
+Date: Fri, 17 Apr 2020 01:14:30 +0000
+Message-ID: <aafed865c0254934986528b3ce9c4d34ff2fccad.camel@intel.com>
 References: <20200414131542.25608-1-joro@8bytes.org>
+ <20200417010335.31739-1-drake@endlessm.com>
+In-Reply-To: <20200417010335.31739-1-drake@endlessm.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.255.0.232]
+Content-ID: <B8851D46B4E5F2468CD8AA858DAC2199@intel.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200416_180345_606711_C6BA07F7 
-X-CRM114-Status: UNSURE (   8.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200416_181434_154853_8C2B8D9F 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,55 +84,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: heiko@sntech.de, bjorn.andersson@linaro.org, linux-tegra@vger.kernel.org,
- thierry.reding@gmail.com, will@kernel.org, m.szyprowski@samsung.com,
- jean-philippe@linaro.org, linux-samsung-soc@vger.kernel.org,
- robdclark@gmail.com, krzk@kernel.org, jonathanh@nvidia.com,
- linux-rockchip@lists.infradead.org, agross@kernel.org,
- jonathan.derrick@intel.com, linux-s390@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, virtualization@lists.linux-foundation.org,
- gerald.schaefer@de.ibm.com, dwmw2@infradead.org, linux-kernel@vger.kernel.org,
- iommu@lists.linux-foundation.org, kgene@kernel.org, robin.murphy@arm.com,
- baolu.lu@linux.intel.com
+Cc: "heiko@sntech.de" <heiko@sntech.de>,
+ "bjorn.andersson@linaro.org" <bjorn.andersson@linaro.org>,
+ "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
+ "thierry.reding@gmail.com" <thierry.reding@gmail.com>,
+ "will@kernel.org" <will@kernel.org>,
+ "m.szyprowski@samsung.com" <m.szyprowski@samsung.com>,
+ "linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+ "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+ "robdclark@gmail.com" <robdclark@gmail.com>,
+ "krzk@kernel.org" <krzk@kernel.org>,
+ "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "kgene@kernel.org" <kgene@kernel.org>, "agross@kernel.org" <agross@kernel.org>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "virtualization@lists.linux-foundation.org"
+ <virtualization@lists.linux-foundation.org>,
+ "gerald.schaefer@de.ibm.com" <gerald.schaefer@de.ibm.com>,
+ "dwmw2@infradead.org" <dwmw2@infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>,
+ "robin.murphy@arm.com" <robin.murphy@arm.com>,
+ "baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Joerg,
+Hi Daniel,
 
-> Hi,
+On Fri, 2020-04-17 at 09:03 +0800, Daniel Drake wrote:
+> Hi Joerg,
 > 
-> here is the second version of this patch-set. The first version with
-> some more introductory text can be found here:
+> > Hi,
+> > 
+> > here is the second version of this patch-set. The first version with
+> > some more introductory text can be found here:
+> > 
+> > 	https://lore.kernel.org/lkml/20200407183742.4344-1-joro@8bytes.org/
 > 
-> 	https://lore.kernel.org/lkml/20200407183742.4344-1-joro@8bytes.org/
+> Thanks for the continued improvements in this area!
+> 
+> I may have spotted a problem with setups like VMD.
+> 
+> The core PCI bus is set up during early boot.
+> Then, for the PCI bus, we reach iommu_bus_init() -> bus_iommu_probe().
+> In there, we call probe_iommu_group() -> dev_iommu_get() for each PCI
+> device, which allocates dev->iommu in each case. So far so good.
+> 
+> The problem is that this is the last time that we'll call dev_iommu_get().
+> If any PCI bus devices get added after this point, they do not get passed
+> to dev_iommu_get().
+> 
+> So when the vmd module gets loaded later, and creates more PCI devices,
+> we end up in iommu_bus_notifier() -> iommu_probe_device()
+> -> __iommu_probe_device() which does:
+> 
+> 	dev->iommu->iommu_dev = iommu_dev;
+> 
+> dev->iommu-> is a NULL dereference because dev_iommu_get() was never
+> called for this new device.
+> 
+> Daniel
+> 
 
-Thanks for the continued improvements in this area!
-
-I may have spotted a problem with setups like VMD.
-
-The core PCI bus is set up during early boot.
-Then, for the PCI bus, we reach iommu_bus_init() -> bus_iommu_probe().
-In there, we call probe_iommu_group() -> dev_iommu_get() for each PCI
-device, which allocates dev->iommu in each case. So far so good.
-
-The problem is that this is the last time that we'll call dev_iommu_get().
-If any PCI bus devices get added after this point, they do not get passed
-to dev_iommu_get().
-
-So when the vmd module gets loaded later, and creates more PCI devices,
-we end up in iommu_bus_notifier() -> iommu_probe_device()
--> __iommu_probe_device() which does:
-
-	dev->iommu->iommu_dev = iommu_dev;
-
-dev->iommu-> is a NULL dereference because dev_iommu_get() was never
-called for this new device.
-
-Daniel
-
+I should have CCed you on this, but it should temporarily resolve that
+issue:
+https://lists.linuxfoundation.org/pipermail/iommu/2020-April/043253.html
 
 _______________________________________________
 Linux-mediatek mailing list
