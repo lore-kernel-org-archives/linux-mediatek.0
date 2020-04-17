@@ -2,78 +2,92 @@ Return-Path: <SRS0=UdZw=6B=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F39BAC38A29
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2020 08:50:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4BC4CC352BE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2020 09:39:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 95FA322201
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2020 08:50:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1ABDA21D91
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Apr 2020 09:39:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uie7DXx1";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="dWjdb0Qq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 95FA322201
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FTmVRtDT";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=nbd.name header.i=@nbd.name header.b="jzKnREUX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1ABDA21D91
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=nbd.name
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2m2vsdHhcsPe8MnatorF/pMWmODw+V05cQYYB4yeVM8=; b=uie7DXx1M6mu60
-	GtOFR1474GjpONpsl4aXjEKvLYvGkcVU2yn8L8sLjhoMadHm1qYXOq0I0KpUExdkVo5KOJWIT1EZf
-	Lm5FgKFzWaL/MosA618e6sEc/KJcZaPa7TbmGiGwxU53OlhViTC/k3G4qCChBugpuQG9KHPzV25ND
-	fsiJjIFqZ/TePgU49FX5uK7RPd726sh0PlbTPmHMZIMbFTYVrDAIluic0IqX84nMbeHoTn8LEMASL
-	d+Tvnmn4lYZM+O3DmUQZvSUuRtxpBvItWDUneD5eyEZ1cqeENdQUeMyd1Ys7YOH67BgvwyOjPnJO1
-	1MW7C2UMVSa+cEoNDtMQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+npHHXySZCadGp7DAiM2bO8yRrcpBDRJnFJ1TQaTgUs=; b=FTmVRtDTgfdxlh
+	j9by30RQf076RTanJkg2z7vDS8Jg/X1hq6kg3aqeL5kcNOrZuGm2erAURDMlyiCJ+RDBIt37NlKbo
+	arCxF8Lb4xOCmO0zavJDi39LtICRzYM0s69CYu7xW03b3hzbpCimVxmknENIFa0fZDbNd0tbe5Em2
+	ZPTZlYX9XVnIvfT20orha6IvQ0TQ6qn4AI+0eo15RZlglxCVbZ7mFbPDlBBgJMQedwUqoNfpNqWqp
+	9JsiKjxV8so5K3eRL3ND01PsuuAJiNOv4xdIm7Vujs/4i4MBJuL17AJEI8FfFyNk4W1H+1nvVhiFN
+	ib1ICokYDSrIRMNzA7Wg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jPMhm-0007RP-H6; Fri, 17 Apr 2020 08:50:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jPNTH-00050T-J9; Fri, 17 Apr 2020 09:39:39 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jPMhd-0007JO-G1; Fri, 17 Apr 2020 08:50:26 +0000
-X-UUID: aa163e5ede1946888b43677e2d2c2bfa-20200417
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=CvLwXNbZt4YLZj84U8Z1qWNABI7ku9CPPMrN1RBYWo4=; 
- b=dWjdb0Qq2FqWB9CgJutYv88Jk3cuRB6e7sGPsY1SmMa/L7HZ0B096+OwuUx1o+YirKE6alxIjAWXolVuUSYA3ZQ9EbzTXX5cjHVKXRwehlTq4cIHZTnxIyKBvdN2KghdETXHmmleq3bjuMUY6iPMfYLnbYUrZxvW2pQGWhyNoOU=;
-X-UUID: aa163e5ede1946888b43677e2d2c2bfa-20200417
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <ran.bi@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1499942287; Fri, 17 Apr 2020 00:50:17 -0800
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 17 Apr 2020 01:50:19 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs05n1.mediatek.inc
- (172.21.101.15) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 17 Apr 2020 16:50:19 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 17 Apr 2020 16:50:16 +0800
-Message-ID: <1587113392.13323.3.camel@mhfsdcap03>
-Subject: Re: [PATCH v12 5/6] rtc: mt6397: Add support for the MediaTek
- MT6358 RTC
-From: Ran Bi <ran.bi@mediatek.com>
-To: Lee Jones <lee.jones@linaro.org>
-Date: Fri, 17 Apr 2020 16:49:52 +0800
-In-Reply-To: <1587112169.12875.2.camel@mhfsdcap03>
-References: <1586333531-21641-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1586333531-21641-6-git-send-email-hsin-hsiung.wang@mediatek.com>
- <20200416091438.GA2167633@dell> <1587112169.12875.2.camel@mhfsdcap03>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jPNT1-0004oE-3u; Fri, 17 Apr 2020 09:39:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=++83K8n12UE1elxj3tvC65gLwZIqFvSTwUtiFliGXuQ=; b=jzKnREUXO8m3gI6JMiGSZ0cKs5
+ c17vX21fb+mbrZf2xSvRMVHhcacj0XKm9rrFVSEXCxNLZa7lsq3/olBAwgHIfR8ZPVb/tBxzp51cS
+ kjPvk5NOUD+rX58TGZdKcfKIfA/IRWEbSeHpO6K9a56nk1QeaHnA/YtkKYWztWWxRoiM=;
+Received: from p54ae965b.dip0.t-ipconnect.de ([84.174.150.91] helo=nf.local)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1jPNSw-0002Wg-IO; Fri, 17 Apr 2020 11:39:18 +0200
+Subject: Re: [PATCH] mt76: mt7615: add support for MT7611N
+To: DENG Qingfang <dqfext@gmail.com>, linux-wireless@vger.kernel.org
+References: <20200412155848.15506-1-dqfext@gmail.com>
+From: Felix Fietkau <nbd@nbd.name>
+Autocrypt: addr=nbd@nbd.name; prefer-encrypt=mutual; keydata=
+ xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
+ ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
+ Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
+ AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
+ vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
+ wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
+ TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
+ l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
+ dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
+ HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
+ VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
+ CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
+ VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
+ Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
+ DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
+ wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
+ f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
+ aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
+ FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
+ TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
+ GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCfTKx80VvCR/PvsUlrvdOLsIgeRGAAn1ee
+ RjMaxwtSdaCKMw3j33ZbsWS4
+Message-ID: <5e02cb52-09fd-f57d-9ba4-8402d76b2d08@nbd.name>
+Date: Fri, 17 Apr 2020 11:39:17 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:68.0)
+ Gecko/20100101 Thunderbird/68.7.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20200412155848.15506-1-dqfext@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200417_015025_545986_E73937BB 
-X-CRM114-Status: GOOD (  20.92  )
+X-CRM114-CacheID: sfid-20200417_023923_464220_E15C7DD0 
+X-CRM114-Status: GOOD (  15.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,118 +99,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, Kate
- Stewart <kstewart@linuxfoundation.org>, Alexandre
- Belloni <alexandre.belloni@bootlin.com>, linux-kernel@vger.kernel.org,
- Richard Fontana <rfontana@redhat.com>,
- Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, linux-rtc@vger.kernel.org,
- Nicolas Boichat <drinkcat@chromium.org>, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, Frank Wunderlich <frank-w@public-files.de>,
- Sean Wang <sean.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Eddie Huang <eddie.huang@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, Alessandro Zummo <a.zummo@towertech.it>,
- Josef Friedl <josef.friedl@speed.at>, srv_heupstream@mediatek.com,
- Sebastian Reichel <sre@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Roy Luo <royluo@google.com>,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Kalle Valo <kvalo@codeaurora.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-04-17 at 16:29 +0800, Ran Bi wrote:
-> On Thu, 2020-04-16 at 10:14 +0100, Lee Jones wrote:
-> > On Wed, 08 Apr 2020, Hsin-Hsiung Wang wrote:
-> > 
-> > > From: Ran Bi <ran.bi@mediatek.com>
-> > > 
-> > > This add support for the MediaTek MT6358 RTC. Driver using
-> > > compatible data to store different RTC_WRTGR address offset.
-> > > This replace RTC_WRTGR to RTC_WRTGR_MT6323 in mt6323-poweroff
-> > > driver which only needed by armv7 CPU without ATF.
-> > > 
-> > > Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
-> > > Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
-> > > Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
-> > > Acked-by: Sebastian Reichel <sre@kernel.org>
-> > > Signed-off-by: Ran Bi <ran.bi@mediatek.com>
-> > > Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> > 
-> > Please place these in chronological order.  They should provide some
-> > history, rather than a unordered slab list of random sign-offs.
-> > 
+On 2020-04-12 17:58, DENG Qingfang wrote:
+> MT7611N is basically the same as MT7615N, except it only supports 5 GHz
+> It is used by some TP-Link and Mercury wireless routers
 > 
-> I suppose that you mean the order should be like below, right?
-> Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
-> Acked-by: Sebastian Reichel <sre@kernel.org>
-> Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
-> Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
-> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> Signed-off-by: Ran Bi <ran.bi@mediatek.com>
+> Signed-off-by: DENG Qingfang <dqfext@gmail.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c | 2 +-
+>  drivers/net/wireless/mediatek/mt76/mt7615/dma.c     | 8 ++++----
+>  drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c  | 7 +++++++
+>  drivers/net/wireless/mediatek/mt76/mt7615/init.c    | 2 +-
+>  drivers/net/wireless/mediatek/mt76/mt7615/mac.c     | 8 ++++----
+>  drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h  | 5 +++++
+>  drivers/net/wireless/mediatek/mt76/mt7615/pci.c     | 1 +
+>  7 files changed, 23 insertions(+), 10 deletions(-)
 > 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
+> index b4d0795154e3..fac705e1621f 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
+> @@ -264,7 +264,7 @@ int mt7615_init_debugfs(struct mt7615_dev *dev)
+>  	if (!dir)
+>  		return -ENOMEM;
+>  
+> -	if (is_mt7615(&dev->mt76))
+> +	if (is_mt7615(&dev->mt76) || is_mt7611(&dev->mt76))
+>  		debugfs_create_devm_seqfile(dev->mt76.dev, "queues", dir,
+>  					    mt7615_queues_read);
+>  	else
+I think it would simplify the patch and driver code if you make
+is_mt7615(&dev->mt76) return true for mt7611 as well.
 
-Correction, I think following is the correct chronological order:
-Signed-off-by: Ran Bi <ran.bi@mediatek.com>
-Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Reviewed-by: Nicolas Boichat <drinkcat@chromium.org>
-Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
-Acked-by: Sebastian Reichel <sre@kernel.org>
-Reviewed-by: Yingjoe Chen <yingjoe.chen@mediatek.com>
-
-> > > ---
-> > >  drivers/power/reset/mt6323-poweroff.c |  2 +-
-> > >  drivers/rtc/rtc-mt6397.c              | 18 +++++++++++++++---
-> > >  include/linux/mfd/mt6397/rtc.h        |  9 ++++++++-
-> > >  3 files changed, 24 insertions(+), 5 deletions(-)
-> > 
-> > [...]
-> > 
-> > > diff --git a/include/linux/mfd/mt6397/rtc.h b/include/linux/mfd/mt6397/rtc.h
-> > > index 7dfb63b..6200f3b 100644
-> > > --- a/include/linux/mfd/mt6397/rtc.h
-> > > +++ b/include/linux/mfd/mt6397/rtc.h
-> > > @@ -18,7 +18,9 @@
-> > >  #define RTC_BBPU_CBUSY         BIT(6)
-> > >  #define RTC_BBPU_KEY            (0x43 << 8)
-> > >  
-> > > -#define RTC_WRTGR              0x003c
-> > > +#define RTC_WRTGR_MT6358       0x3a
-> > > +#define RTC_WRTGR_MT6397       0x3c
-> > 
-> > Why remove the leading 00's?
-> > 
-> > These are now different to the other regs defined in this header.
-> > 
-> 
-> I will fix this at next patch.
-> 
-> > > +#define RTC_WRTGR_MT6323       RTC_WRTGR_MT6397
-> > >  
-> > >  #define RTC_IRQ_STA            0x0002
-> > 
-> > Like here for instance  --^
-> > 
-> > >  #define RTC_IRQ_STA_AL         BIT(0)
-> > > @@ -65,6 +67,10 @@
-> > >  #define MTK_RTC_POLL_DELAY_US  10
-> > >  #define MTK_RTC_POLL_TIMEOUT   (jiffies_to_usecs(HZ))
-> > >  
-> > > +struct mtk_rtc_data {
-> > > +	u32                     wrtgr;
-> > > +};
-> > > +
-> > >  struct mt6397_rtc {
-> > >  	struct device           *dev;
-> > >  	struct rtc_device       *rtc_dev;
-> > > @@ -74,6 +80,7 @@ struct mt6397_rtc {
-> > >  	struct regmap           *regmap;
-> > >  	int                     irq;
-> > >  	u32                     addr_base;
-> > > +	const struct mtk_rtc_data *data;
-> > >  };
-> > >  
-> > >  #endif /* _LINUX_MFD_MT6397_RTC_H_ */
-> > 
-> 
+- Felix
 
 _______________________________________________
 Linux-mediatek mailing list
