@@ -4,76 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BDA74C54FC9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2020 02:09:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E9DECC3815B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2020 06:09:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8FEDC20936
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2020 02:09:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BE666206F6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2020 06:09:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z8N8JlFO";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="s1bMKML7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8FEDC20936
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ee5hBmC4";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="mh7u/Nzr"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE666206F6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Z472nmaxv692Mt2hpVf2pz/N6yAIAYHIO2rPSJQaEhY=; b=Z8N8JlFOR1HdeA
-	Ssw2WowU+Qvr8chiB1/BmkHjGPHX9opng/HJeGUYY0SYE5gjGAwv0wGitGXqAyhdNi4VmqKEQex+K
-	qSXCLDzLenrrt0rSQOBqsHpWpsMv8UIe0gXCgDtKkkM3y05aaaxiYm91EzxwmNhoJxbdIhGJsDZsq
-	VDmTCMhQ1HzyGB47hkiEzxqcHTr8zheI6zfRtwfFn4xndxnrUpLb2lfwtX5qZf5Nnlm5tw1TWdJQs
-	ClGlzrB8Vc/POo5FF95gfk34CmvKa6InEp8YbodnnZz+NZcbyUkn+MtHHsUKLkxtSypL6Dme56fqu
-	PtzwSZCrfHVsl8ZQIQBw==;
+	List-Owner; bh=ZineSiLzGLsGieX/VJu1GOyFgilARbRVtvGrOBAdqN4=; b=ee5hBmC4abGye5
+	kU0iWI6xc2AabkEnXEq+7LUUciJYPKQKX1QmqYGyYecpWS6qS8tMCTrofKknf8a9o3/sISuMozijX
+	IkumTSRUj6OJ4raPO5bMOcYnmZpz9To4O3HdOFzxUH0qnvoswRjeEx5hu9spk2qGJ20Uj2kfOw9vv
+	BBiYIcHFYMiL4kGF9BVMALwookUyMNcozgIzAjkU+fF5tKagUp47MdgXWyNHVUJciW7MvlTTbeFRz
+	aGCIv8EjMaoE6rBlh75P/4HnyBAOYD5PoggV5ih8OqWlug07psAi1sKIIHLa42AkEntfU9GxBx8qm
+	1ilgk6x3cP4jZTkBy2yQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQLsZ-0004p3-V3; Mon, 20 Apr 2020 02:09:47 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jQPc1-0000ww-9X; Mon, 20 Apr 2020 06:08:57 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQLsQ-0004iz-QP; Mon, 20 Apr 2020 02:09:41 +0000
-X-UUID: 1373a8ac47c44c0b81864da0824c36c8-20200419
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=apeKneLMG1hzTxdpFAt2JSCjXRLNOpzDMxDOJ9dHZ7A=; 
- b=s1bMKML7bwap4y5xn210AEGCmusoHvGrubKCwaqsMpzZZCddl1IM/z1/DL6YAmbt7QgbA/VHALkV9SJiLQ/DdM+HoG4SpngDGq2LVpN8wUcAY+4Z/yrxKU8f1r2PeGqYp0PgZOmclGSFRx84elGwdE9ueZHH7UCw4jnDSFtWD2Q=;
-X-UUID: 1373a8ac47c44c0b81864da0824c36c8-20200419
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 505292043; Sun, 19 Apr 2020 18:09:32 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 19 Apr 2020 19:06:40 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 20 Apr 2020 10:06:34 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 20 Apr 2020 10:06:39 +0800
-From: <sean.wang@mediatek.com>
-To: <gregkh@linuxfoundation.org>, <jslaby@suse.com>,
- <andriy.shevchenko@linux.intel.com>, <robert.jarzmik@free.fr>,
- <arnd@arndb.de>, <p.zabel@pengutronix.de>, <joel@jms.id.au>,
- <david@lechnology.com>, <jan.kiszka@siemens.com>,
- <heikki.krogerus@linux.intel.com>, <hpeter@gmail.com>, <vigneshr@ti.com>,
- <matthias.bgg@gmail.com>, <tthayer@opensource.altera.com>
-Subject: [PATCH v2] tty: serial: don't do termios for BTIF
-Date: Mon, 20 Apr 2020 10:06:38 +0800
-Message-ID: <8c47aea3aa3cce4d7484b840ddb117cd16bcf1cc.1587347988.git.sean.wang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
+ id 1jQPbq-0000ok-PD
+ for linux-mediatek@lists.infradead.org; Mon, 20 Apr 2020 06:08:50 +0000
+Received: by mail-pl1-x641.google.com with SMTP id t16so3557618plo.7
+ for <linux-mediatek@lists.infradead.org>; Sun, 19 Apr 2020 23:08:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=SezQvaqjYLbKiOOQWAcX/3BNfbHbuPlMP92AcIlOvpA=;
+ b=mh7u/Nzr3V0kjSRxTO0mKkatpJU809OLSLJJlsFt2qqISf72DiGj5xWDQAEvljElfV
+ FeYKApqTjmmOh8eLf4oP5EPyFuKRdTWijq0Bt4MVVh7MOdqoryB1MbCic8WbRgfkq6eg
+ E9a9BiB+TFtHM9d/GUjKY4K1Jx3aDv8xSb9Lk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=SezQvaqjYLbKiOOQWAcX/3BNfbHbuPlMP92AcIlOvpA=;
+ b=CLpgodiMhgbTnmQERzmqFEp2AE87aMGmCdVA6M8GaKi0Ep4xj/skEeZTY2eAJA7aA5
+ h1EtXYlR3iPib5tGTloIiMcdxiuWtNKUX+r23pEfa8k36YaM19p/ODNXh/ejc3ivKUYL
+ RSqXgGcMUlhxH81gpq3JveosPOSeFA2N584YkWaZPJkzX7QT4qlzn+KaniQbl1svTPfa
+ RjQbnbytswVSYUf1uMVjQESY04B2YMKFLVRtZiPhqcGj2IFqBpgT7LVTdfK3GN+XYBI3
+ DmDNDn+HCqBcpD6Eer7FSpbWHuSOAiPp4P49OspnIALnP5CIWOjOgQeX27kJFHDclCLH
+ Uy4A==
+X-Gm-Message-State: AGi0Pub0jcO7A+mxu8fRA/GHwITMrp4c9Y5H6ywOFUNwdap/g64Kskmp
+ 3JTVopT1uirv6HhOEoJEak5q4mlOrb4=
+X-Google-Smtp-Source: APiQypJ7/kohKua8cbRIlf5c1h2ySfX9UyLVzIyb/i9csqaqSHKdHfXhwGV1/987z+JuCjIkPug5+Q==
+X-Received: by 2002:a17:90a:340c:: with SMTP id
+ o12mr20794100pjb.22.1587362925217; 
+ Sun, 19 Apr 2020 23:08:45 -0700 (PDT)
+Received: from localhost ([2401:fa00:9:14:a274:40bd:f640:b6c6])
+ by smtp.gmail.com with ESMTPSA id t188sm21384pfb.102.2020.04.19.23.08.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 19 Apr 2020 23:08:44 -0700 (PDT)
+From: Anand K Mistry <amistry@chromium.org>
+X-Google-Original-From: Anand K Mistry <amistry@google.com>
+To: linux-mediatek@lists.infradead.org
+Subject: [PATCH] drm/mediatek: stop iterating dma addresses when sg_dma_len()
+ == 0
+Date: Mon, 20 Apr 2020 16:08:34 +1000
+Message-Id: <20200420060834.44461-1-amistry@google.com>
+X-Mailer: git-send-email 2.26.1.301.g55bc3eb7cb9-goog
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200419_190938_858273_AB8B16A6 
-X-CRM114-Status: GOOD (  10.96  )
+X-CRM114-CacheID: sfid-20200419_230846_815098_EE83BBCD 
+X-CRM114-Status: UNSURE (   7.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,86 +93,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ryder
- Lee <ryder.lee@mediatek.com>, Steven Liu <steven.liu@mediatek.com>, Sean
- Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
+Cc: matthias.bgg@gmail.com, ck.hu@mediatek.com, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, Anand K Mistry <amistry@google.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+If dma_map_sg() merges pages when creating the mapping, only the first
+entries will have a valid sg_dma_address() and sg_dma_len(), followed by
+entries with sg_dma_len() == 0.
 
-Bluetooth Interface (BTIF) is designed dedicatedly for MediaTek SOC with
-BT in order to be instead of the UART interface between BT module and Host
-CPU, and not exported to user space to access.
-
-As the UART design, BTIF will be an APB slave and can transmit or receive
-data by MCU access, but doesn't provide termios function like baudrate and
-flow control setup.
-
-Even LCR on offset 0xC that is just a FAKELCR
-a. If FAKELCR[7] is equaled to 1, RBR(0x00), THR(0x00), IER(0x04)
-   will not be readable/writable.
-
-b. If FAKELCR is equaled to 0xBF, RBR(0x00), THR(0x00), IER(0x04),
-   IIR(0x08), and LSR(0x14) will not be readable/writable.
-
-So adding a new capability 'UART_CAP_NMOD' for the unusual unsupported
-case.
-
-Fixes: 1c16ae65e250 ("serial: 8250: of: Add new port type for MediaTek BTIF controller on MT7622/23 SoC")
-Cc: Steven Liu <steven.liu@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-
---
-v1->v2:
-no change on termios->c_cflag and refine commit message
+Signed-off-by: Anand K Mistry <amistry@google.com>
 ---
- drivers/tty/serial/8250/8250.h      | 1 +
- drivers/tty/serial/8250/8250_port.c | 5 ++++-
- 2 files changed, 5 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/tty/serial/8250/8250.h b/drivers/tty/serial/8250/8250.h
-index 33ad9d6de532..250337e4e7c8 100644
---- a/drivers/tty/serial/8250/8250.h
-+++ b/drivers/tty/serial/8250/8250.h
-@@ -82,6 +82,7 @@ struct serial8250_config {
- #define UART_CAP_MINI	(1 << 17)	/* Mini UART on BCM283X family lacks:
- 					 * STOP PARITY EPAR SPAR WLEN5 WLEN6
- 					 */
-+#define UART_CAP_NMOD	(1 << 18)	/* UART doesn't do termios */
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index b04a3c2b111e09..f8fd8b98c30e3d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -224,6 +224,9 @@ struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_device *dev,
  
- #define UART_BUG_QUOT	(1 << 0)	/* UART has buggy quot LSB */
- #define UART_BUG_TXEN	(1 << 1)	/* UART has buggy TX IIR status */
-diff --git a/drivers/tty/serial/8250/8250_port.c b/drivers/tty/serial/8250/8250_port.c
-index 0325f2e53b74..da0a8711ee3d 100644
---- a/drivers/tty/serial/8250/8250_port.c
-+++ b/drivers/tty/serial/8250/8250_port.c
-@@ -286,7 +286,7 @@ static const struct serial8250_config uart_config[] = {
- 		.tx_loadsz	= 16,
- 		.fcr		= UART_FCR_ENABLE_FIFO |
- 				  UART_FCR_CLEAR_RCVR | UART_FCR_CLEAR_XMIT,
--		.flags		= UART_CAP_FIFO,
-+		.flags		= UART_CAP_FIFO | UART_CAP_NMOD,
- 	},
- 	[PORT_NPCM] = {
- 		.name		= "Nuvoton 16550",
-@@ -2544,6 +2544,9 @@ serial8250_do_set_termios(struct uart_port *port, struct ktermios *termios,
- 	unsigned long flags;
- 	unsigned int baud, quot, frac = 0;
- 
-+	if (up->capabilities & UART_CAP_NMOD)
-+		return;
+ 	expected = sg_dma_address(sg->sgl);
+ 	for_each_sg(sg->sgl, s, sg->nents, i) {
++		if (!sg_dma_len(s))
++			break;
 +
- 	if (up->capabilities & UART_CAP_MINI) {
- 		termios->c_cflag &= ~(CSTOPB | PARENB | PARODD | CMSPAR);
- 		if ((termios->c_cflag & CSIZE) == CS5 ||
+ 		if (sg_dma_address(s) != expected) {
+ 			DRM_ERROR("sg_table is not contiguous");
+ 			ret = -EINVAL;
 -- 
-2.25.1
+2.26.1.301.g55bc3eb7cb9-goog
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
