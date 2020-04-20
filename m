@@ -2,87 +2,65 @@ Return-Path: <SRS0=eXAR=6E=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BAE39C54FD0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2020 19:15:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0EBAEC55181
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2020 20:41:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 90971208FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2020 19:15:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C7984206E9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Apr 2020 20:41:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OvoRs5x0";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="jkUCF9b3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 90971208FE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Y0pazg2T";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="mZGpqWAj"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C7984206E9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2YDcYu8NxuRLOd9UNGt8Eaz1hTWvvdhOm/5TPjjIRp8=; b=OvoRs5x0sUA2Ha
-	Sk416dbuxjeoKrmdIk1ycbIvAo+2XDFGv9Q8ju5pp2mTglW/TFgeHXiAvesY3Q2Klx+zo1sZS9Aec
-	rdfFpvke2xxI6YID7DUE6GotnmGPfGWLBe6ycOgfuAXrDLa7KoBirSfoK7QvA/2csvqzy4KldVT0j
-	f61M4ikMI1QCbSC5efcgJPUSzsPXMbCZGD3/9zB5MiPLeGE+yRnXdzhu85U2uxF+lscRxnWeM8jS7
-	0trbv8n8BLmaOKYlFQ9ZG92/c/ZpgviCXoPHCQ+Dbp4fTlG2906fxAKZc4TM768z2/X2uS3OaUhCl
-	eoTwegWS8tBF4IeEKrOQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=RuGx4Smr6kpYGag7chxBPH5K2sC09WxKA1iDPyYWJtA=; b=Y0pazg2TVALe02
+	N0pLltLaDrSmzxoIsq6t90pMoG/pxBAfZVqgN6UXIIbZsg4LG6+8lyYBb8/aZgF7y8w0irQ592/KO
+	/alEDoFu9ZGleRY2PGIr9kaVl/+yHfUUtmLlDpcs4jG6aCQM3JoeYhPHfaln+VApNbX1tK8eI54z4
+	CxCnnrdkIjdEQMExqkTUK8/n7L/2wobnC+3+mxC53GmWdMq9ab9Az2TmaaTCDwOSV8wQkHseVIE/v
+	zU6M8lSusO+6kCjU6gA5NgBJ/4Z1TZkm9ptP+kRFULirbvkqICkpePhvtDH4vysdjVLW6ck8rUOS4
+	rR68dQRhHBRV2bkoRrhg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQbt6-0006fN-Gv; Mon, 20 Apr 2020 19:15:24 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1jQdE5-0006VP-Hk; Mon, 20 Apr 2020 20:41:09 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQbt4-0006d8-FI
- for linux-mediatek@lists.infradead.org; Mon, 20 Apr 2020 19:15:23 +0000
-Received: by mail-pg1-x544.google.com with SMTP id g6so5534100pgs.9
- for <linux-mediatek@lists.infradead.org>; Mon, 20 Apr 2020 12:15:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=s4hrruIEfeHbnCer3L7xymo3BPcqZk1wOgCil6L4gXc=;
- b=jkUCF9b3xkKwajGHRP14VA5YPuTR0uv9ThYOOWUiuSrrcX8fguG/qXV/ZrUEnsXGQ0
- ve3D9RcEwHxcP8Rds85FUEIPAZPk/ZJ4MA3JL1eWCckkp9eUNXyoHxJAzOCLC0l7hJU4
- tjDvPbpkU78tKvlJsgegIpmgqf0kxXn83VDBA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=s4hrruIEfeHbnCer3L7xymo3BPcqZk1wOgCil6L4gXc=;
- b=KNtoAjFFwAwfyKO3oq1qYuUWYBC/ChC7a3hV7P/PoJR5K8NGU3PyqVP/DyQ91ufcYF
- IlRrsyvSeQpqAuVdEPJgsBmxKM11HghyApeZizDZ4LIpYhPlUggYDdGJ7f8d7Z5AoWwL
- 3ISPAsn3qRF6+Yx1tQFdf+rpg+IwzjbcVwUokpT5qtQP25BM1pGrJ500VT5dJ9UWFQwu
- D1f+heTMxSgYxYvhYhQQtM/foPRqSz8nSYMor5iMgpwjOIO++DLeyYaPn1fjbKDNgISN
- BXmNwGIYduWqTGzOhsY5jUPgENm2HrbLqX7vOBAxB82ZCK3yG2/jIj6FLlSwXx7/E0Hh
- p8qQ==
-X-Gm-Message-State: AGi0PuZBLMLaHUo8UzUqiXnhpXWWT/EMg3GPc6/P1KICCEd11OhJuq/J
- yFNRQKqmp5lrzLibWoS7mbDQjg==
-X-Google-Smtp-Source: APiQypJCgAQPRawkGIDVIK1DeGjLm/plSOv3ZpQojggeG3wLIJkbLMEB6AvcO7FMJg7kHrvwF6uHlg==
-X-Received: by 2002:a63:d90c:: with SMTP id r12mr17745526pgg.158.1587410121447; 
- Mon, 20 Apr 2020 12:15:21 -0700 (PDT)
-Received: from localhost ([2620:15c:202:1:4fff:7a6b:a335:8fde])
- by smtp.gmail.com with ESMTPSA id l15sm96958pgk.59.2020.04.20.12.15.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 Apr 2020 12:15:20 -0700 (PDT)
-Date: Mon, 20 Apr 2020 12:15:18 -0700
-From: Matthias Kaehlcke <mka@chromium.org>
-To: Yong Mao <yong.mao@mediatek.com>
-Subject: Re: [PATCH 1/3] mmc: core: need do mmc_power_cycle in
- mmc_sdio_resend_if_cond
-Message-ID: <20200420191518.GG199755@google.com>
-References: <1586835611-13857-1-git-send-email-yong.mao@mediatek.com>
- <1586835611-13857-2-git-send-email-yong.mao@mediatek.com>
+ id 1jQdE3-0006U7-0V
+ for linux-mediatek@lists.infradead.org; Mon, 20 Apr 2020 20:41:08 +0000
+Received: from localhost.localdomain.com (unknown [151.48.159.126])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id E476920782;
+ Mon, 20 Apr 2020 20:41:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1587415266;
+ bh=GLxEuUpZmPKLyF7Fii7QgCUvp5vaU8CMWydqEtmidRg=;
+ h=From:To:Cc:Subject:Date:From;
+ b=mZGpqWAjNORBSQX+UZhS2xAHYaW6sa2pF8ghKvGRoP4RSH/hGuqFPduVMlJ5qZ6y/
+ t9SkQQOuCUOoBSJxW8mbeDEY6cN4wMNDURFkJLocL2VasZQKjo0EW6mopmTbpuzIoV
+ xVwgKOP1yhcYjWeXCnNCnehNV75Y9Id1fQ+oox4c=
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: nbd@nbd.name
+Subject: [PATCH] mt76: mt7615: fix mt7615_driver_own routine
+Date: Mon, 20 Apr 2020 22:40:55 +0200
+Message-Id: <f2010f464d9927ecb1e43c727f50de968f714a6a.1587414726.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.25.3
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1586835611-13857-2-git-send-email-yong.mao@mediatek.com>
-User-Agent: Mutt/1.12.2 (2019-09-21)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200420_121522_536330_D3DA7F4D 
-X-CRM114-Status: GOOD (  16.87  )
+X-CRM114-CacheID: sfid-20200420_134107_074124_99FB8538 
+X-CRM114-Status: UNSURE (   9.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,53 +72,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, srv_heupstream@mediatek.com,
- linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Chaotian Jing <chaotian.jing@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
+ sean.wang@mediatek.com, linux-wireless@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Introduce MT_PCIE_DOORBELL_PUSH register to fix mt7615_driver_own
+routine for mt7663e
 
-On Tue, Apr 14, 2020 at 11:40:09AM +0800, Yong Mao wrote:
-> From: yong mao <yong.mao@mediatek.com>
-> 
-> When mmc_sdio_resned_if_cond is invoked, it indicates the SDIO
-> device is not in the right state. In this condition, the previous
-> implementation of mmc_sdio_resend_if_cond can't make sure SDIO
-> device be back to idle state. mmc_power_cycle can reset the SDIO
-> device by HW and also make sure SDIO device enter to idle state
-> correctly.
-> 
-> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-> ---
->  drivers/mmc/core/sdio.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/mmc/core/sdio.c b/drivers/mmc/core/sdio.c
-> index ebb387a..ada0a80 100644
-> --- a/drivers/mmc/core/sdio.c
-> +++ b/drivers/mmc/core/sdio.c
-> @@ -546,6 +546,7 @@ static int mmc_sdio_init_uhs_card(struct mmc_card *card)
->  static void mmc_sdio_resend_if_cond(struct mmc_host *host,
->  				    struct mmc_card *card)
->  {
-> +	mmc_power_cycle(host, host->card->ocr);
+Fixes: f40ac0f3d3c0 ("mt76: mt7615: introduce mt7663e support")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/mcu.c  | 6 +++++-
+ drivers/net/wireless/mediatek/mt76/mt7615/regs.h | 1 +
+ 2 files changed, 6 insertions(+), 1 deletion(-)
 
-My MMC/SDIO background is limited, but it seems this isn't needed for the
-vast majority of SDIO devices, otherwise it probably would have been added
-earlier. I wonder if it would make sense to make the power cycle
-conditional through a quirk, to limit it to the devices that need it.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+index 7081bc4723ee..b3cc04ce84be 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+@@ -1686,16 +1686,20 @@ static void mt7622_trigger_hif_int(struct mt7615_dev *dev, bool en)
+ 
+ static int mt7615_driver_own(struct mt7615_dev *dev)
+ {
++	struct mt76_dev *mdev = &dev->mt76;
+ 	u32 addr;
+ 
+-	addr = is_mt7663(&dev->mt76) ? MT_CONN_HIF_ON_LPCTL : MT_CFG_LPCR_HOST;
++	addr = is_mt7663(mdev) ? MT_PCIE_DOORBELL_PUSH : MT_CFG_LPCR_HOST;
+ 	mt76_wr(dev, addr, MT_CFG_LPCR_HOST_DRV_OWN);
+ 
+ 	mt7622_trigger_hif_int(dev, true);
++
++	addr = is_mt7663(mdev) ? MT_CONN_HIF_ON_LPCTL : MT_CFG_LPCR_HOST;
+ 	if (!mt76_poll_msec(dev, addr, MT_CFG_LPCR_HOST_FW_OWN, 0, 3000)) {
+ 		dev_err(dev->mt76.dev, "Timeout for driver own\n");
+ 		return -EIO;
+ 	}
++
+ 	mt7622_trigger_hif_int(dev, false);
+ 
+ 	return 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
+index ab3c6b77df07..054831ecad68 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
+@@ -68,6 +68,7 @@ enum mt7615_reg_base {
+ #define MT_HIF2_BASE			0xf0000
+ #define MT_HIF2(ofs)			(MT_HIF2_BASE + (ofs))
+ #define MT_PCIE_IRQ_ENABLE		MT_HIF2(0x188)
++#define MT_PCIE_DOORBELL_PUSH		MT_HIF2(0x1484)
+ 
+ #define MT_CFG_LPCR_HOST		MT_HIF(0x1f0)
+ #define MT_CFG_LPCR_HOST_FW_OWN		BIT(0)
+-- 
+2.25.3
 
->  	sdio_reset(host);
->  	mmc_go_idle(host);
->  	mmc_send_if_cond(host, host->ocr_avail);
-> -- 
-> 1.9.1
 
 _______________________________________________
 Linux-mediatek mailing list
