@@ -2,95 +2,70 @@ Return-Path: <SRS0=9cIZ=6F=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PULL_REQUEST,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DE60AC54FC9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2020 09:20:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 48AE5C2BA19
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2020 09:32:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AD96C20857
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2020 09:20:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1A4D3206E9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2020 09:32:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ST3Q09NE";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=nbd.name header.i=@nbd.name header.b="IPX7UwZP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD96C20857
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=nbd.name
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="foVeJ+OR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1A4D3206E9
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iCyK/71hRZlM9wVfwG0q6K1PiMYYCDfZYKXddeFWtiQ=; b=ST3Q09NE86vdIT
-	h8iLxsSsuVxsQTKeuzomB+z0f9Kiv22kAU/YPCuz9xSrAdCkYxIhCm0zbJUg2OrDDf0nJ/MWOTDzd
-	Fnd+dXzo0jSJYQj+f/TcN4ijDRG+XUK9PVG0kzRBSA6ED3SN/S7t0DUfODR7TG3UhXbREF6Vn4ow3
-	yIrZ+uaONDZhLmQN+2XiuEfqdQadHIeBKxdB+IU1KQXbMyw1ga70+U1povVDM4iVViGEvJenpKGNk
-	RuZCBgiaT03Q+U1QFE80hFdRYOitBJJrOFWDAeXxMm9kkMQmDdXAZu4U4xj6WqYMQxn7AH0ig3D3X
-	uu36YmQZvtfTQBwdniwg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=GBY/dHVaeeQjteldIjU8Di2luK7tDFVFiCzO/p+nKSE=; b=foVeJ+OR/ZIP4fZ0l94jklys2
+	AOZU7v9CrIKwl+0p96hiFqAMbjPKtpKG/hR5HBLOH/AdQWWJjgy5wXetOxfizgRc91MJ9hoCNnbKA
+	RXVRGI5PhWYVf1kr8OIDOMYJRnKEh3+haGz1+3XCV7FHTUeTcZlU7X6SR7qW3Ro4ZPp2gA38SDQTr
+	0ux7UkmFUWYOb493mkO//AK9HKCs+iiuhboJdRIQGdlxHMVqUr1YhiXTZ36Jlu7IT2ElMrW4aCVDy
+	VVpNsvsS3Zj5l0t062yW6qyD/ht5bg/ug6BeLmq6e3+7OajZ2sX6czSpkRocGc4pRy5EQKZuLaLc/
+	a+hCOJwEA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQp4Q-0005gV-FG; Tue, 21 Apr 2020 09:19:58 +0000
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+	id 1jQpGD-0007KF-G1; Tue, 21 Apr 2020 09:32:09 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQp4N-0005f2-DY
- for linux-mediatek@lists.infradead.org; Tue, 21 Apr 2020 09:19:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
- MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=Agu+e59UTJ1eH7kgr9QshH1Ld07sqWMnOvlVMqaeCE4=; b=IPX7UwZPYR6MenvL6wSpufxVCj
- 4C0vbz9sEY52k+cmM3qFD6OPOpZW7PALVQYH/Fw0JerTuzUHeQWNgXJCy0BYEtXVimRPc7wnj1cFt
- BXni30E234FK5ryIoBfRzrS7aZI/n2m1IlUSd6ulFz1ecVQOJUNzF62DnNyrK0AQvVdw=;
-Received: from p54ae965b.dip0.t-ipconnect.de ([84.174.150.91] helo=nf.local)
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1jQp4J-0003UW-Io; Tue, 21 Apr 2020 11:19:51 +0200
-Subject: Re: [PATCH 3/3] mt76: mt7663: fix up BMC entry indicated to unicmd
- firmware
-To: sean.wang@mediatek.com, lorenzo.bianconi@redhat.com
-References: <1467d47fd111b5711fa74410833153bdc9e01b72.1587445885.git.sean.wang@mediatek.com>
- <99b919b29ad60437749d5f30dc8c68ccb3df89f3.1587445885.git.sean.wang@mediatek.com>
-From: Felix Fietkau <nbd@nbd.name>
-Autocrypt: addr=nbd@nbd.name; prefer-encrypt=mutual; keydata=
- xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
- ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
- Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
- AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
- vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
- wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
- TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
- l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
- dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
- HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
- VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
- CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
- VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
- Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
- DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
- wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
- f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
- aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
- FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
- TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
- GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCfTKx80VvCR/PvsUlrvdOLsIgeRGAAn1ee
- RjMaxwtSdaCKMw3j33ZbsWS4
-Message-ID: <5fe74f29-caa7-7e0e-3f31-f9d464397123@nbd.name>
-Date: Tue, 21 Apr 2020 11:19:50 +0200
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:68.0)
- Gecko/20100101 Thunderbird/68.7.0
+ id 1jQpG1-00079g-FH; Tue, 21 Apr 2020 09:32:00 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.220.254])
+ by mx2.suse.de (Postfix) with ESMTP id DBF64AE53;
+ Tue, 21 Apr 2020 09:31:51 +0000 (UTC)
+Subject: Re: [PATCH v12 4/5] soc / drm: mediatek: Move routing control to
+ mmsys device
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+References: <20200311165322.1594233-1-enric.balletbo@collabora.com>
+ <20200311165322.1594233-5-enric.balletbo@collabora.com>
+ <02290a21-7392-a2cf-576c-215091ec05e8@suse.com>
+ <1585177534.26117.4.camel@mtksdaap41>
+ <f3c2926a-ef92-b004-9786-5be1645af497@suse.com>
+ <1585234277.12089.3.camel@mtksdaap41>
+ <73ef0b8e-2802-a047-2a56-936b63d264cb@suse.com>
+ <CAAOTY__EV8PHau9CzSiA8up1QAmZxfK2QnaTid0WrNOsn2Xcag@mail.gmail.com>
+From: Matthias Brugger <mbrugger@suse.com>
+X-Pep-Version: 2.0
+Message-ID: <c809233f-6d96-8871-e6a4-b66ed5cc535f@suse.com>
+Date: Tue, 21 Apr 2020 11:31:50 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <99b919b29ad60437749d5f30dc8c68ccb3df89f3.1587445885.git.sean.wang@mediatek.com>
+In-Reply-To: <CAAOTY__EV8PHau9CzSiA8up1QAmZxfK2QnaTid0WrNOsn2Xcag@mail.gmail.com>
+Content-Type: multipart/mixed; boundary="------------4BB1865ABCAB0DB18962FA15"
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200421_021956_000954_FA001786 
-X-CRM114-Status: GOOD (  14.20  )
+X-CRM114-CacheID: sfid-20200421_023157_799727_C5C585F5 
+X-CRM114-Status: GOOD (  21.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,57 +77,263 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, Soul Huang <Soul.Huang@mediatek.com>,
- ryder.lee@mediatek.com, linux-wireless@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>, matthias.bgg@kernel.org,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>,
+ devicetree@vger.kernel.org, Seiya Wang <seiya.wang@mediatek.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>, sean.wang@mediatek.com,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Houlong Wei <houlong.wei@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ CK Hu <ck.hu@mediatek.com>, mtk01761 <wendell.lin@mediatek.com>,
+ Collabora Kernel ML <kernel@collabora.com>, linux-clk@vger.kernel.org,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020-04-21 07:20, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> BMC entry for MT7663 unicmd firmware should be a broadcast/multicast entry,
-> not a unicast entry, that is GTK rekey offload would rely on.
-> 
-> Fixes: 138860679b2a ("mt76: mt7615: add more uni mcu commands")
-> Cc: Soul Huang <Soul.Huang@mediatek.com>
-> Suggested-by: YF Luo <Yf.Luo@mediatek.com>
-> Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-> index 045bde7f554d..e8caa2c7981e 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-> @@ -1339,7 +1339,7 @@ mt7615_mcu_uni_add_bss(struct mt7615_phy *phy,
->  			.short_st = true,
->  		},
->  	};
-> -	u8 idx, tx_wlan_idx = 0;
-> +	u8 idx, tx_wlan_idx = mvif->sta.wcid.idx;
->  	int err;
->  
->  	idx = mvif->omac_idx > EXT_BSSID_START ? HW_BSSID_0 : mvif->omac_idx;
-> @@ -1349,10 +1349,9 @@ mt7615_mcu_uni_add_bss(struct mt7615_phy *phy,
->  	case NL80211_IFTYPE_MESH_POINT:
->  	case NL80211_IFTYPE_AP:
->  		basic_req.basic.conn_type = cpu_to_le32(CONNECTION_INFRA_AP);
-> -		tx_wlan_idx = mvif->sta.wcid.idx;
->  		break;
->  	case NL80211_IFTYPE_STATION:
-> -		if (enable) {
-> +		if (enable && !is_mt7663(&dev->mt76)) {
-mt7615_mcu_uni_add_bss is only called on mt7663 with offload firmware,
-so you can simply delete the entire if (enable) { ... } code section.
+This is a multi-part message in MIME format.
+--------------4BB1865ABCAB0DB18962FA15
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-- Felix
+
+
+On 4/16/20 6:22 PM, Chun-Kuang Hu wrote:
+> Hi, Matthias:
+>=20
+> Matthias Brugger <mbrugger@suse.com> =E6=96=BC 2020=E5=B9=B43=E6=9C=882=
+6=E6=97=A5 =E9=80=B1=E5=9B=9B =E4=B8=8B=E5=8D=8811:45=E5=AF=AB=E9=81=93=EF=
+=BC=9A
+>>
+>>
+>>
+>> On 26/03/2020 15:51, CK Hu wrote:
+>>> Hi, Matthias:
+>>>
+>>> On Thu, 2020-03-26 at 12:54 +0100, Matthias Brugger wrote:
+>>>> Hi CK,
+>>>>
+>>>> On 26/03/2020 00:05, CK Hu wrote:
+>>>>> Hi, Matthias:
+>>>>>
+>>>>> On Wed, 2020-03-25 at 17:16 +0100, Matthias Brugger wrote:
+>>>>>>
+>>>>>> On 11/03/2020 17:53, Enric Balletbo i Serra wrote:
+>>>>>>> Provide a mtk_mmsys_ddp_connect() and mtk_mmsys_disconnect() func=
+tions to
+>>>>>>> replace mtk_ddp_add_comp_to_path() and mtk_ddp_remove_comp_from_p=
+ath().
+>>>>>>> Those functions will allow DRM driver and others to control the d=
+ata
+>>>>>>> path routing.
+>>>>>>>
+>>>>>>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.c=
+om>
+>>>>>>> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+>>>>>>> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+>>>>>>> Acked-by: CK Hu <ck.hu@mediatek.com>
+>>>>>>
+>>>>>> This patch does not apply against v5.6-rc1.
+>>>>>> Please rebase as this is a quite big patch and it won't be easy to=
+ do that by hand.
+>>>>>
+>>>>> I think this patch depends on [1] which has been acked by me and I =
+have
+>>>>> not picked it. The simple way is that you pick [1] first and then p=
+ick
+>>>>> this series.
+>>>>>
+>>>>> [1]
+>>>>> https://patchwork.kernel.org/patch/11406227/
+>>>>>
+>>>>
+>>>> You would need to provide a stable tag for me that I can merge into =
+my tree. You
+>>>> can also try to merge my for-next [1] which has the newest version f=
+rom Enric.
+>>>> If you see any merge conflict, then we have to do something about it=
+ :)
+>>>>
+>>>> Regards,
+>>>> Matthias
+>>>>
+>>>> [1]
+>>>> https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.g=
+it/log/?h=3Dfor-next
+>>>>
+>>>
+>>> You have applied this series, so I would not apply other patches whic=
+h
+>>> would conflict with this series. After this series land on main strea=
+m
+>>> (wish it happen in this merge window), I would rebase other patch on
+>>> main stream.
+>>>
+>>
+>> I haven't (yet) send the pull request. If you want to bring in your pa=
+tches in
+>> v5.7 as well we can find a solution to that. Shall I provide you with =
+a stable
+>> branch which you can merge? This way you can add all your patches in t=
+he pull
+>> request as well and we don't have to wait for v5.8 to get things into =
+mainline.
+>>
+>> Let me know and I'll provide you with a stable branch.
+>=20
+> This series is in linux-next but does not in main stream. So would you
+> please provide a stable branch so I could pull this series?
+>=20
+
+Please find the pull request below:
+
+The following changes since commit 8f3d9f354286745c751374f5f1fcafee6b3f31=
+36:
+
+  Linux 5.7-rc1 (2020-04-12 12:35:55 -0700)
+
+are available in the Git repository at:
+
+
+https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
+tags/v5.7-next-drm-stable
+
+for you to fetch changes up to 667c769246b01c53ad0925d603d2a2531abd3ef2:
+
+  soc / drm: mediatek: Fix mediatek-drm device probing (2020-04-13
+13:01:16 +0200)
+
+----------------------------------------------------------------
+Enric Balletbo i Serra (3):
+      dt-bindings: mediatek: Update mmsys binding to reflect it is a
+system controller
+      soc / drm: mediatek: Move routing control to mmsys device
+      soc / drm: mediatek: Fix mediatek-drm device probing
+
+Matthias Brugger (2):
+      drm/mediatek: Omit warning on probe defers
+      clk / soc: mediatek: Move mt8173 MMSYS to platform driver
+
+ Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt |   7 =
++--
+ drivers/clk/mediatek/Kconfig                                      |   7 =
++++
+ drivers/clk/mediatek/Makefile                                     |   1 =
++
+ drivers/clk/mediatek/clk-mt8173-mm.c                              | 146
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ drivers/clk/mediatek/clk-mt8173.c                                 | 104
+------------------------------------------
+ drivers/gpu/drm/mediatek/Kconfig                                  |   1 =
++
+ drivers/gpu/drm/mediatek/mtk_disp_color.c                         |   5 =
+++-
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c                           |   5 =
+++-
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c                          |   5 =
+++-
+ drivers/gpu/drm/mediatek/mtk_dpi.c                                |  12
++++--
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c                           |  19
+++++----
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.c                            | 259
++------------------------------------------------------------------------=
+--------------------------------
+ drivers/gpu/drm/mediatek/mtk_drm_ddp.h                            |   7 =
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c                            |  45
+++++++++++---------
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h                            |   2 =
++-
+ drivers/gpu/drm/mediatek/mtk_dsi.c                                |   8
++++-
+ drivers/gpu/drm/mediatek/mtk_hdmi.c                               |   4 =
++-
+ drivers/soc/mediatek/Kconfig                                      |   8
+++++
+ drivers/soc/mediatek/Makefile                                     |   1 =
++
+ drivers/soc/mediatek/mtk-mmsys.c                                  | 337
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ include/linux/soc/mediatek/mtk-mmsys.h                            |  20
++++++++++
+ 21 files changed, 592 insertions(+), 411 deletions(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8173-mm.c
+ create mode 100644 drivers/soc/mediatek/mtk-mmsys.c
+ create mode 100644 include/linux/soc/mediatek/mtk-mmsys.h
+
+
+
+> Regards,
+> Chun-Kuang.
+>=20
+>>
+>> Regards,
+>> Matthias
+>>
+>>> Regards,
+>>> CK
+>>>
+>>>>> Regards,
+>>>>> CK
+>>>>>
+>>>>>>
+>>>>>> Regards,
+>>>>>> Matthias
+>>>>>>
+>>>>>>> ---
+>>>>>>>
+
+--------------4BB1865ABCAB0DB18962FA15
+Content-Type: application/pgp-keys;
+ name="pEpkey.asc"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment;
+ filename="pEpkey.asc"
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQENBFuECLQBCAD66PIehgR5YGIOhLIDfubGmBbktra7Ix4c0uMShRkv05ZfJmPK
+N50OrIm4gaQ25RMDrZd6X3RU35IsoflqTSBGoiMQmC9TklVsAfIObuNkvDMJEDXd
+pvbIuYyj9QcSysHvTW9GrU/hF3uFqoPlaDmQy9TBMDDtJu8CPYVpyVnmXJvyoYa2
+KE77LYXORs+eArKR8dqOK/z3zzHWMq8IieiASRcFfDZBx4fPHRZaOYkFGaLpQPfF
+/bCwWWX6O6bRvx5KOWTQzt2Hp/6ZzHX+A7XY6yLY9bM18/70NICZNF8oaDN6/i/K
+nMoGcugqE2Kk66hLeybFWVmFjppRt7zh6GaVABEBAAG0JE1hdHRoaWFzIEJydWdn
+ZXIgPG1icnVnZ2VyQHN1c2UuY29tPokBVAQTAQgAPgIbAwULCQgHAgYVCgkICwIE
+FgIDAQIeAQIXgBYhBA1mtM782M72qvgLxkP54a369LqrBQJdZ/80BQkDxMzsAAoJ
+EEP54a369LqrBxsH/jOEmKlthbUCWFmvNZyPl8VCqVNRQdVOBlg7JzjYtGPMukdv
+aGMFDTbn9f7RpVdVasnjwta2rAuPxYGT2SajccSqIUnjlyxOXjdWgahfvS1bLfIh
+QW3F3r5P6Sc1hVkSAYB+IKgEHoRl09fcVfxDR4i7xuGP8lvaG5087u7hHiqAXAmL
+gInuY2QA8MkgxLOie6HOavSEG58Car5EBOZOuIzg7lnL0cyYv/nx6kopNuJXAaum
+tsk2xwuNqz8Ny5AYTowyuasaZchEeJpc3su+yoZvOrc/UVgcCmcT7GUnMaTQGc4I
+bVWWK7762RB++hLaDiFVXRJZr6jfIU2X3VrsxOO5AQ0EW4QItQEIAMrwGOUXVhVE
+kl6+IXCnD2TPqdGiuv/aKZ8yIvvD1VPw8j0kRdbsha1sIxE7cKvHcnRqKuLW6w9s
+FCNaXoJBPysVDWhVdT4drpr8WtwZQG4Lqa86t5Ndz14lG3Vr/lFs07BpVbxZj2/k
+RqXNZbAmCmZfZbtR55XyUz20uJxoQ0ckXOUxLA2ye0bF9DOt4SwgNgSdp668YFep
+sTBPR0wRLQQpL/00z+S7fiULzUqzUq4cQPpZt7YALJ2iQoUQ93G3t95DMwdt5/tT
+mnFMt8ruyP45oHO+8X6RDRSR31G34YzLWGinXPMDYZ+kjhFg3yv5m5+V6Lc2+APN
+PbouD/9LEXUAEQEAAYkBPAQYAQgAJgIbDBYhBA1mtM782M72qvgLxkP54a369Lqr
+BQJdZ/80BQkDxMzrAAoJEEP54a369LqrjYAH/iSIrw1ROtd+uPupqwttF9IfG3Na
+O1u/6Sk9nKRa2P0SaxYh7ZF8foUs5m0M9mPrAQwAFMRSuu3KQPKQM6vIJR2dRmET
+G9zkyV6FBfoPaodSo8ovv8qi3XCoJxuaF3/+Fes6DPGjk8zCyCy7h+te06s5H8w1
+HZc7YepyOrgdaVMqG6j4c44epLHQ/xtbHQ6Y4Zbb43RBeyYhcRpBgkB/LWuKCbqm
+3AcVMmhcgns86U8jI1VkYzjuvwt9DNJgFgPpyynqfWKl9N0u7aik7ByYYUeK8tZI
+1rwTZ+CdzOq4YRIVWqoG6eLHd1qf2mCuCqiz9TZnDWXPad5ghdzWiX1Mg44=3D
+=3D3czs
+-----END PGP PUBLIC KEY BLOCK-----
+
+--------------4BB1865ABCAB0DB18962FA15
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--------------4BB1865ABCAB0DB18962FA15--
+
