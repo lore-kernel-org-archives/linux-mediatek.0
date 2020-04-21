@@ -2,79 +2,77 @@ Return-Path: <SRS0=9cIZ=6F=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.5 required=3.0 tests=DKIM_SIGNED,DKIM_VALID,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CC1C9C54FCC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2020 13:38:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 11932C54FCC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2020 13:41:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9AA94206F4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2020 13:38:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D7B7B206A5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2020 13:41:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FcY3MsTp";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="UTEX4+n2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9AA94206F4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RT7ngba6";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=yandex.ru header.i=@yandex.ru header.b="h8iyN+76"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D7B7B206A5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=yandex.ru
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NOS3ypGemefi8sWLNDw/7229nv9MmOTBQ/b8dbGWH1U=; b=FcY3MsTpyAwVHZ
-	oiweP8DxnOgG7U+Ns++DxnzVy0/sBEvm1LgQ79CsheyY9HvoQYxqjXo1GJZ+ePVZAU8aWZYqhRg0j
-	cpHN++2vdbM0TD1TTyfVXgz/fnIOzmT8+RlFus3AAqnpQxsaiERk4b6AeiRQv8yWtWstHvsdLJj+B
-	H93iegGCuB9M2RljDbphutmxsupnxZIcP/jv+XtfrAbdF3G6CrzoN9oHxLvZHC8Tt+7Q9SU1jiy5Y
-	42p8ePZSwZNj9rxZediRVfd2D3G5wxWD4AubeuS6FOlr0k9LoPqWZ+Ln0edVWvT7iMfCT5VLah3tK
-	6xonWsyOFBTAi95pLMzA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=GLcv1ZiYb5ibOWuwzyKUJa1k5YiX35PyrM+W9qcQwh0=; b=RT7ngba6hXobt7
+	QtfGMT7q9IYjpcTk6vsxHGgUxvjhmfEWRkZNTKQkkWlYsP82fFoblz9q1psD612XbEMF9ORZDR1+B
+	lowpiMqUEEkU85nAJDIJTtog9OwEFu+obpmCEhR1mQUSn2lmUApsQWdswBr1qxS5pO0Ri5XVT6RUE
+	/s+tJVhR/8ueTfOh9mdZsUjtyLoE0zX1EYW1ccZupyc5jwIoCbuJogavTsCH57yqtQOYhCMkmGOwc
+	nGdGjnySNg+B+Lv/5CHxok+fCPDBuHEC/uO8j+/7hgJrq9XODF6TITHpjJ5HpFF0/NDNBlrH/vEYb
+	GK7GyUG4kXhV1axNfDug==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQt6B-0002aD-7Z; Tue, 21 Apr 2020 13:38:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jQt9k-0006D5-92; Tue, 21 Apr 2020 13:41:44 +0000
+Received: from forward104j.mail.yandex.net ([2a02:6b8:0:801:2::107])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQt67-0002Yl-Kn; Tue, 21 Apr 2020 13:38:01 +0000
-X-UUID: 7aef3cae0bc74e8ebfbf641041b22f82-20200421
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=JX00X8S2zWSDA5/Zsgs0O/ncM6aJvIG88Eh4mjiOiX4=; 
- b=UTEX4+n2pZQ0fF+O3YomMJTx5Chv4HrzbCXIH4djX0EtxWKEH0nnrPg/PkrPU8ht/SwiJIT0MmGZOUCbWQ8AD6mWxzrKWYedkpsHU7aQ3379tWU/sEGWrq8fmCOriTi+NVUEhlPVEuNzrPbOM7j7+msHHJjlTzkh/nctkzOcvLs=;
-X-UUID: 7aef3cae0bc74e8ebfbf641041b22f82-20200421
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <walter-zh.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 473077511; Tue, 21 Apr 2020 05:37:33 -0800
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 21 Apr 2020 06:37:51 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 21 Apr 2020 21:37:52 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 21 Apr 2020 21:37:48 +0800
-Message-ID: <1587476272.5870.15.camel@mtksdccf07>
-Subject: Re: [PATCH] kasan: fix KASAN unit tests for tag-based KASAN
-From: Walter Wu <walter-zh.wu@mediatek.com>
-To: Dmitry Vyukov <dvyukov@google.com>
-Date: Tue, 21 Apr 2020 21:37:52 +0800
-In-Reply-To: <CACT4Y+avYV1xoqB6V5XrQSs-p2s3mKKu+LZQc4EzPaW-jV+KaA@mail.gmail.com>
-References: <20200421014007.6012-1-walter-zh.wu@mediatek.com>
- <CACT4Y+af5fegnN9XOUSkf_B62J5sf2ZZbUwYk=GxtSmAhF3ryQ@mail.gmail.com>
- <1587472005.5870.7.camel@mtksdccf07>
- <CACT4Y+avYV1xoqB6V5XrQSs-p2s3mKKu+LZQc4EzPaW-jV+KaA@mail.gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1jQt9Y-000623-J8; Tue, 21 Apr 2020 13:41:36 +0000
+Received: from forward101q.mail.yandex.net (forward101q.mail.yandex.net
+ [IPv6:2a02:6b8:c0e:4b:0:640:4012:bb98])
+ by forward104j.mail.yandex.net (Yandex) with ESMTP id 4E4314A20FC;
+ Tue, 21 Apr 2020 16:41:21 +0300 (MSK)
+Received: from mxback12q.mail.yandex.net (mxback12q.mail.yandex.net
+ [IPv6:2a02:6b8:c0e:1b3:0:640:3818:d096])
+ by forward101q.mail.yandex.net (Yandex) with ESMTP id 460A9CF40002;
+ Tue, 21 Apr 2020 16:41:21 +0300 (MSK)
+Received: from vla4-d1b041059520.qloud-c.yandex.net
+ (vla4-d1b041059520.qloud-c.yandex.net [2a02:6b8:c17:914:0:640:d1b0:4105])
+ by mxback12q.mail.yandex.net (mxback/Yandex) with ESMTP id 93xlLFHrpE-fIB0fnjQ;
+ Tue, 21 Apr 2020 16:41:21 +0300
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
+ t=1587476481; bh=xCogxVJggB4U0WxqK21fNHt81GXV7XMyn6/5t3LcMbA=;
+ h=Subject:To:From:Cc:Date:Message-Id;
+ b=h8iyN+76zznVlaSgkJSHKBzd+V/7zOQG160+7quNxObd2jljOUq6wQchjPfcyKg0K
+ thZ5XwDNLtpkM4Md/ngAUb5yr4YWuraTezhtDrcr2yzM3Gf+apfwx80soLY+5PacVo
+ zC8b3m2igt0SSBbBj4jIojJ1w5FqtG9xXL0ulWEc=
+Authentication-Results: mxback12q.mail.yandex.net;
+ dkim=pass header.i=@yandex.ru
+Received: by vla4-d1b041059520.qloud-c.yandex.net (smtp/Yandex) with ESMTPSA
+ id X5d09Yh5QJ-fG2W9Rr2; Tue, 21 Apr 2020 16:41:17 +0300
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
+ (Client certificate not present)
+From: Alexander Lobakin <bloodyreaper@yandex.ru>
+To: "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
+Subject: [PATCH v2 net-next] net: dsa: add GRO support via gro_cells
+Date: Tue, 21 Apr 2020 16:41:08 +0300
+Message-Id: <20200421134108.167646-1-bloodyreaper@yandex.ru>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: BC3A44A52E9D8AE093BF388FD62DAE971AB1F492889557179C30B461B1F267482000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200421_063759_856973_E9EF013A 
-X-CRM114-Status: GOOD (  30.21  )
+X-CRM114-CacheID: sfid-20200421_064133_169172_C1AEB4AD 
+X-CRM114-Status: GOOD (  17.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,276 +84,179 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream <wsd_upstream@mediatek.com>,
- Patricia Alfonso <trishalfonso@google.com>, Andrey
- Konovalov <andreyknvl@google.com>, Brendan Higgins <brendanhiggins@google.com>,
- LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>,
- Linux-MM <linux-mm@kvack.org>, linux-mediatek@lists.infradead.org,
- Alexander Potapenko <glider@google.com>, David Gow <davidgow@google.com>,
+Cc: Woojung Huh <woojung.huh@microchip.com>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Alexander Lobakin <bloodyreaper@yandex.ru>, Hauke Mehrtens <hauke@hauke-m.de>,
+ Linus Walleij <linus.walleij@linaro.org>, Sean Wang <sean.wang@mediatek.com>,
+ Russell King <linux@armlinux.org.uk>,
+ Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, netdev@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Vladimir Oltean <vladimir.oltean@nxp.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+ Oleksij Rempel <linux@rempel-privat.de>,
+ Vivien Didelot <vivien.didelot@gmail.com>, linux-kernel@vger.kernel.org,
+ Mao Wenan <maowenan@huawei.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2020-04-21 at 15:01 +0200, 'Dmitry Vyukov' via kasan-dev wrote:
-> On Tue, Apr 21, 2020 at 2:26 PM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> >
-> > Hi Dmitry,
-> >
-> > On Tue, 2020-04-21 at 13:56 +0200, Dmitry Vyukov wrote:
-> > > On Tue, Apr 21, 2020 at 3:40 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> > > >
-> > > > When we use tag-based KASAN, then KASAN unit tests don't detect
-> > > > out-of-bounds memory access. Because with tag-based KASAN the state
-> > > > of each 16 aligned bytes of memory is encoded in one shadow byte
-> > > > and the shadow value is tag of pointer, so we need to read next
-> > > > shadow byte, the shadow value is not equal to tag of pointer,
-> > > > then tag-based KASAN will detect out-of-bounds memory access.
-> > > >
-> > > > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> > > > Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
-> > > > Cc: Dmitry Vyukov <dvyukov@google.com>
-> > > > Cc: Alexander Potapenko <glider@google.com>
-> > > > Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> > > > Cc: Andrey Konovalov <andreyknvl@google.com>
-> > > > Cc: Andrew Morton <akpm@linux-foundation.org>
-> > > > ---
-> > > >  lib/test_kasan.c | 62 ++++++++++++++++++++++++++++++++++++++++++------
-> > > >  1 file changed, 55 insertions(+), 7 deletions(-)
-> > > >
-> > > > diff --git a/lib/test_kasan.c b/lib/test_kasan.c
-> > > > index e3087d90e00d..a164f6b47fe5 100644
-> > > > --- a/lib/test_kasan.c
-> > > > +++ b/lib/test_kasan.c
-> > > > @@ -40,7 +40,12 @@ static noinline void __init kmalloc_oob_right(void)
-> > > >                 return;
-> > > >         }
-> > >
-> > > Hi Walter,
-> > >
-> > > This would be great to have!
-> > > But I am concerned about these series that port KASAN tests to KUNIT:
-> > > https://lkml.org/lkml/2020/4/17/1144
-> > > I suspect it will be one large merge conflict. Not sure what is the
-> > > proper way to resovle this. I've added authors to CC.
-> > >
-> > Yes, it should have conflicts. Thanks for your reminder.
-> > >
-> > > > +#ifdef CONFIG_KASAN_GENERIC
-> > > >         ptr[size] = 'x';
-> > > > +#else
-> > > > +       ptr[size + 5] = 'x';
-> > > > +#endif
-> > > > +
-> > >
-> > > For this particular snippet I think we can reduce amount of idef'ery
-> > > and amount of non-compiled code in each configuration with something
-> > > like:
-> > >
-> > >   ptr[size + 5] = 'x';
-> > >   if (ENABLED(CONFIG_KASAN_GENERIC))
-> > >       ptr[size] = 'x';
-> > >
-> > > One check runs always (it should pass in both configs, right?). The
-> >
-> > There is a problem, With generic KASAN it may trigger two KASAN reports.
-> 
-> Why is this a problem? If there are 2, fine. KUNIT can check that if
-> we expect 2, there are indeed 2.
-> 
-Sorry, I originally assume my patch doesn't include in KUNIT. so I think
-there is a problem. but I know your meaning. Can my patch upstream
-first?
+gro_cells lib is used by different encapsulating netdevices, such as
+geneve, macsec, vxlan etc. to speed up decapsulated traffic processing.
+CPU tag is a sort of "encapsulation", and we can use the same mechs to
+greatly improve overall DSA performance.
+skbs are passed to the GRO layer after removing CPU tags, so we don't
+need any new packet offload types as it was firstly proposed by me in
+the first GRO-over-DSA variant [1].
 
-> > if we change it like:
-> >
-> > if (ENABLED(CONFIG_KASAN_GENERIC))
-> >     ptr[size] = 'x';
-> > else
-> >     ptr[size + 5] = 'x';
-> >
-> > > only only in GENERIC, but it's C-level if rather than preprocessor.
-> > > KUNIT should make 2 bugs per test easily expressable (and testable).
-> > >
-> >
-> > >
-> > >
-> > >
-> > > >         kfree(ptr);
-> > > >  }
-> > > >
-> > > > @@ -92,7 +97,12 @@ static noinline void __init kmalloc_pagealloc_oob_right(void)
-> > > >                 return;
-> > > >         }
-> > > >
-> > > > +#ifdef CONFIG_KASAN_GENERIC
-> > > >         ptr[size] = 0;
-> > > > +#else
-> > > > +       ptr[size + 6] = 0;
-> > > > +#endif
-> > > > +
-> > > >         kfree(ptr);
-> > > >  }
-> > > >
-> > > > @@ -162,7 +172,11 @@ static noinline void __init kmalloc_oob_krealloc_more(void)
-> > > >                 return;
-> > > >         }
-> > > >
-> > > > +#ifdef CONFIG_KASAN_GENERIC
-> > > >         ptr2[size2] = 'x';
-> > > > +#else
-> > > > +       ptr2[size2 + 13] = 'x';
-> > > > +#endif
-> > > >         kfree(ptr2);
-> > > >  }
-> > > >
-> > > > @@ -180,7 +194,12 @@ static noinline void __init kmalloc_oob_krealloc_less(void)
-> > > >                 kfree(ptr1);
-> > > >                 return;
-> > > >         }
-> > > > +
-> > > > +#ifdef CONFIG_KASAN_GENERIC
-> > > >         ptr2[size2] = 'x';
-> > > > +#else
-> > > > +       ptr2[size2 + 2] = 'x';
-> > > > +#endif
-> > > >         kfree(ptr2);
-> > > >  }
-> > > >
-> > > > @@ -216,7 +235,11 @@ static noinline void __init kmalloc_oob_memset_2(void)
-> > > >                 return;
-> > > >         }
-> > > >
-> > > > +#ifdef CONFIG_KASAN_GENERIC
-> > > >         memset(ptr+7, 0, 2);
-> > > > +#else
-> > > > +       memset(ptr+15, 0, 2);
-> > > > +#endif
-> > > >         kfree(ptr);
-> > > >  }
-> > > >
-> > > > @@ -232,7 +255,11 @@ static noinline void __init kmalloc_oob_memset_4(void)
-> > > >                 return;
-> > > >         }
-> > > >
-> > > > +#ifdef CONFIG_KASAN_GENERIC
-> > > >         memset(ptr+5, 0, 4);
-> > > > +#else
-> > > > +       memset(ptr+15, 0, 4);
-> > > > +#endif
-> > > >         kfree(ptr);
-> > > >  }
-> > > >
-> > > > @@ -249,7 +276,11 @@ static noinline void __init kmalloc_oob_memset_8(void)
-> > > >                 return;
-> > > >         }
-> > > >
-> > > > +#ifdef CONFIG_KASAN_GENERIC
-> > > >         memset(ptr+1, 0, 8);
-> > > > +#else
-> > > > +       memset(ptr+15, 0, 8);
-> > > > +#endif
-> > > >         kfree(ptr);
-> > > >  }
-> > > >
-> > > > @@ -265,7 +296,11 @@ static noinline void __init kmalloc_oob_memset_16(void)
-> > > >                 return;
-> > > >         }
-> > > >
-> > > > +#ifdef CONFIG_KASAN_GENERIC
-> > > >         memset(ptr+1, 0, 16);
-> > > > +#else
-> > > > +       memset(ptr+15, 0, 16);
-> > > > +#endif
-> > > >         kfree(ptr);
-> > > >  }
-> > > >
-> > > > @@ -281,7 +316,11 @@ static noinline void __init kmalloc_oob_in_memset(void)
-> > > >                 return;
-> > > >         }
-> > > >
-> > > > +#ifdef CONFIG_KASAN_GENERIC
-> > > >         memset(ptr, 0, size+5);
-> > > > +#else
-> > > > +       memset(ptr, 0, size+7);
-> > > > +#endif
-> > > >         kfree(ptr);
-> > > >  }
-> > > >
-> > > > @@ -415,7 +454,11 @@ static noinline void __init kmem_cache_oob(void)
-> > > >                 return;
-> > > >         }
-> > > >
-> > > > +#ifdef CONFIG_KASAN_GENERIC
-> > > >         *p = p[size];
-> > > > +#else
-> > > > +       *p = p[size + 8];
-> > > > +#endif
-> > > >         kmem_cache_free(cache, p);
-> > > >         kmem_cache_destroy(cache);
-> > > >  }
-> > > > @@ -497,6 +540,11 @@ static noinline void __init copy_user_test(void)
-> > > >         char __user *usermem;
-> > > >         size_t size = 10;
-> > > >         int unused;
-> > > > +#ifdef CONFIG_KASAN_GENERIC
-> > > > +       size_t oob_size = 1;
-> > > > +#else
-> > > > +       size_t oob_size = 7;
-> > > > +#endif
-> > > >
-> > > >         kmem = kmalloc(size, GFP_KERNEL);
-> > > >         if (!kmem)
-> > > > @@ -512,25 +560,25 @@ static noinline void __init copy_user_test(void)
-> > > >         }
-> > > >
-> > > >         pr_info("out-of-bounds in copy_from_user()\n");
-> > > > -       unused = copy_from_user(kmem, usermem, size + 1);
-> > > > +       unused = copy_from_user(kmem, usermem, size + oob_size);
-> > > >
-> > > >         pr_info("out-of-bounds in copy_to_user()\n");
-> > > > -       unused = copy_to_user(usermem, kmem, size + 1);
-> > > > +       unused = copy_to_user(usermem, kmem, size + oob_size);
-> > > >
-> > > >         pr_info("out-of-bounds in __copy_from_user()\n");
-> > > > -       unused = __copy_from_user(kmem, usermem, size + 1);
-> > > > +       unused = __copy_from_user(kmem, usermem, size + oob_size);
-> > > >
-> > > >         pr_info("out-of-bounds in __copy_to_user()\n");
-> > > > -       unused = __copy_to_user(usermem, kmem, size + 1);
-> > > > +       unused = __copy_to_user(usermem, kmem, size + oob_size);
-> > > >
-> > > >         pr_info("out-of-bounds in __copy_from_user_inatomic()\n");
-> > > > -       unused = __copy_from_user_inatomic(kmem, usermem, size + 1);
-> > > > +       unused = __copy_from_user_inatomic(kmem, usermem, size + oob_size);
-> > > >
-> > > >         pr_info("out-of-bounds in __copy_to_user_inatomic()\n");
-> > > > -       unused = __copy_to_user_inatomic(usermem, kmem, size + 1);
-> > > > +       unused = __copy_to_user_inatomic(usermem, kmem, size + oob_size);
-> > > >
-> > > >         pr_info("out-of-bounds in strncpy_from_user()\n");
-> > > > -       unused = strncpy_from_user(kmem, usermem, size + 1);
-> > > > +       unused = strncpy_from_user(kmem, usermem, size + oob_size);
-> > > >
-> > > >         vm_munmap((unsigned long)usermem, PAGE_SIZE);
-> > > >         kfree(kmem);
-> > > > --
-> > > > 2.18.0
-> > > >
-> > > > --
-> > > > You received this message because you are subscribed to the Google Groups "kasan-dev" group.
-> > > > To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
-> > > > To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20200421014007.6012-1-walter-zh.wu%40mediatek.com.
-> >
-> > --
-> > You received this message because you are subscribed to the Google Groups "kasan-dev" group.
-> > To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
-> > To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/1587472005.5870.7.camel%40mtksdccf07.
-> 
+The size of struct gro_cells is sizeof(void *), so hot struct
+dsa_slave_priv becomes only 4/8 bytes bigger, and all critical fields
+remain in one 32-byte cacheline.
+The other positive side effect is that drivers for network devices
+that can be shipped as CPU ports of DSA-driven switches can now use
+napi_gro_frags() to pass skbs to kernel. Packets built that way are
+completely non-linear and are likely being dropped without GRO.
+
+This was tested on to-be-mainlined-soon Ethernet driver that uses
+napi_gro_frags(), and the overall performance was on par with the
+variant from [1], sometimes even better due to minimal overhead.
+net.core.gro_normal_batch tuning may help to push it to the limit
+on particular setups and platforms.
+
+iperf3 IPoE VLAN NAT TCP forwarding (port1.218 -> port0) setup
+on 1.2 GHz MIPS board:
+
+5.7-rc2 baseline:
+
+[ID]  Interval         Transfer     Bitrate        Retr
+[ 5]  0.00-120.01 sec  9.00 GBytes  644 Mbits/sec  413  sender
+[ 5]  0.00-120.00 sec  8.99 GBytes  644 Mbits/sec       receiver
+
+Iface      RX packets  TX packets
+eth0       7097731     7097702
+port0      426050      6671829
+port1      6671681     425862
+port1.218  6671677     425851
+
+With this patch:
+
+[ID]  Interval         Transfer     Bitrate        Retr
+[ 5]  0.00-120.01 sec  12.2 GBytes  870 Mbits/sec  122  sender
+[ 5]  0.00-120.00 sec  12.2 GBytes  870 Mbits/sec       receiver
+
+Iface      RX packets  TX packets
+eth0       9474792     9474777
+port0      455200      353288
+port1      9019592     455035
+port1.218  353144      455024
+
+v2:
+ - Add some performance examples in the commit message;
+ - No functional changes.
+
+[1] https://lore.kernel.org/netdev/20191230143028.27313-1-alobakin@dlink.ru/
+
+Signed-off-by: Alexander Lobakin <bloodyreaper@yandex.ru>
+---
+ net/dsa/Kconfig    |  1 +
+ net/dsa/dsa.c      |  2 +-
+ net/dsa/dsa_priv.h |  3 +++
+ net/dsa/slave.c    | 10 +++++++++-
+ 4 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/net/dsa/Kconfig b/net/dsa/Kconfig
+index 92663dcb3aa2..739613070d07 100644
+--- a/net/dsa/Kconfig
++++ b/net/dsa/Kconfig
+@@ -9,6 +9,7 @@ menuconfig NET_DSA
+ 	tristate "Distributed Switch Architecture"
+ 	depends on HAVE_NET_DSA
+ 	depends on BRIDGE || BRIDGE=n
++	select GRO_CELLS
+ 	select NET_SWITCHDEV
+ 	select PHYLINK
+ 	select NET_DEVLINK
+diff --git a/net/dsa/dsa.c b/net/dsa/dsa.c
+index ee2610c4d46a..0384a911779e 100644
+--- a/net/dsa/dsa.c
++++ b/net/dsa/dsa.c
+@@ -234,7 +234,7 @@ static int dsa_switch_rcv(struct sk_buff *skb, struct net_device *dev,
+ 	if (dsa_skb_defer_rx_timestamp(p, skb))
+ 		return 0;
+ 
+-	netif_receive_skb(skb);
++	gro_cells_receive(&p->gcells, skb);
+ 
+ 	return 0;
+ }
+diff --git a/net/dsa/dsa_priv.h b/net/dsa/dsa_priv.h
+index 904cc7c9b882..6d9a1ef65fa0 100644
+--- a/net/dsa/dsa_priv.h
++++ b/net/dsa/dsa_priv.h
+@@ -11,6 +11,7 @@
+ #include <linux/netdevice.h>
+ #include <linux/netpoll.h>
+ #include <net/dsa.h>
++#include <net/gro_cells.h>
+ 
+ enum {
+ 	DSA_NOTIFIER_AGEING_TIME,
+@@ -77,6 +78,8 @@ struct dsa_slave_priv {
+ 
+ 	struct pcpu_sw_netstats	*stats64;
+ 
++	struct gro_cells	gcells;
++
+ 	/* DSA port data, such as switch, port index, etc. */
+ 	struct dsa_port		*dp;
+ 
+diff --git a/net/dsa/slave.c b/net/dsa/slave.c
+index 5390ff541658..36c7491e8e5f 100644
+--- a/net/dsa/slave.c
++++ b/net/dsa/slave.c
+@@ -1762,6 +1762,11 @@ int dsa_slave_create(struct dsa_port *port)
+ 		free_netdev(slave_dev);
+ 		return -ENOMEM;
+ 	}
++
++	ret = gro_cells_init(&p->gcells, slave_dev);
++	if (ret)
++		goto out_free;
++
+ 	p->dp = port;
+ 	INIT_LIST_HEAD(&p->mall_tc_list);
+ 	p->xmit = cpu_dp->tag_ops->xmit;
+@@ -1781,7 +1786,7 @@ int dsa_slave_create(struct dsa_port *port)
+ 	ret = dsa_slave_phy_setup(slave_dev);
+ 	if (ret) {
+ 		netdev_err(master, "error %d setting up slave phy\n", ret);
+-		goto out_free;
++		goto out_gcells;
+ 	}
+ 
+ 	dsa_slave_notify(slave_dev, DSA_PORT_REGISTER);
+@@ -1800,6 +1805,8 @@ int dsa_slave_create(struct dsa_port *port)
+ 	phylink_disconnect_phy(p->dp->pl);
+ 	rtnl_unlock();
+ 	phylink_destroy(p->dp->pl);
++out_gcells:
++	gro_cells_destroy(&p->gcells);
+ out_free:
+ 	free_percpu(p->stats64);
+ 	free_netdev(slave_dev);
+@@ -1820,6 +1827,7 @@ void dsa_slave_destroy(struct net_device *slave_dev)
+ 	dsa_slave_notify(slave_dev, DSA_PORT_UNREGISTER);
+ 	unregister_netdev(slave_dev);
+ 	phylink_destroy(dp->pl);
++	gro_cells_destroy(&p->gcells);
+ 	free_percpu(p->stats64);
+ 	free_netdev(slave_dev);
+ }
+-- 
+2.26.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
