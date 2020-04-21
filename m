@@ -2,84 +2,83 @@ Return-Path: <SRS0=9cIZ=6F=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D485C54FD0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2020 11:06:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ACE4FC54FC9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2020 11:56:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1E350206E9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2020 11:06:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7C7E12070B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Apr 2020 11:56:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tWvei6Kt";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="goAporC6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1E350206E9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="i8wGeZ0y";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="aCc5+8+A"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7C7E12070B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Am0kuihwMXzC2KALgi9vUwFerXa806hm30NNC5r5YB0=; b=tWvei6Kt8Zs23J
-	wZqN7DKJxD1str2br/QPpdgDGGpVSxt/0eQ2q9MdJR2NawfAZ5KJej1LovSsC4Xj0ARpND5krdyjf
-	gXne+ZYDEEsDfFPdG+JdiIPxJL0nVgKK+f7XHWeSEfmMSCMZd3a0Uj2Yi01jI/y//vtjxSF47l8WV
-	kVlJB0EumdFWcohRZgnnivgtgSPzK245TE3+TAJhrQDX19RAWdl0VpqF3j3mOqBoegMw2+hiWvGex
-	mmucq0K+QkCwS88V0OaMBt6SdfOghVXFUhmy6s2jsQ2JnIjBeEVQ8poXVc5i0g11emL/5PV2AGxBO
-	vxsn4PhM/06LecEv7zgw==;
+	List-Owner; bh=aKpC5Wl4BImWi2Dy/edUeQdP4Xux5l/wHltdRk+hxUk=; b=i8wGeZ0yor5gUC
+	OOEE/X7iJHs/uVmDpUkaJBEqLzNUCMHdCzeVVBDDjDxSjWsWLWJKX1C5NtN6dKK6t7k0xo/p/nEW4
+	tUB1s2bA91rcER/PJkWX/+zKk/CKmoftrnup7kOy2KmKZ0rGgmkTjGjOXCmKv/DZLkyIAPljMduDn
+	QpkUFlVMgO8jN/0ipHg9kZUXfazTrpLcxPm75mBVkQaCQht7oezUOgzfLHjLgdcAAV20dmKZya1P9
+	qDUDgPST5IIdPS10Cxc9A0M9SOn3Q+x2hX1P9KvCxb7nPNsr/9j0pu2hbhOZCXO9M8WvaHGVeZyZK
+	rRFDKMSLzgUvHJN6L3zA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jQqjk-0002c0-6a; Tue, 21 Apr 2020 11:06:44 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1jQrVw-0006PK-03; Tue, 21 Apr 2020 11:56:32 +0000
+Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jQqj2-0001vo-E8
- for linux-mediatek@lists.infradead.org; Tue, 21 Apr 2020 11:06:04 +0000
-Received: by mail-pg1-x542.google.com with SMTP id o185so6075419pgo.3
- for <linux-mediatek@lists.infradead.org>; Tue, 21 Apr 2020 04:06:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=z6/8C4oa9QlfkP6T/TF0bK1AUsLOdimzyYALyY4eY0M=;
- b=goAporC6/Dil0Et77TDr7GRh+FrIXEoN1OWLehzLNZQ9KmBbj0XuFzaeVGtcjIZPRe
- upEXXhrIiHjADUNeXquZW2pCvPUUDNx14BRbhDHoehW0Ma6hvrAhVMCZzZPAC1+NmQ2B
- JlzCvo0klC2W2GSPbOFnxmW+FqQmAngxczZ9c=
+ id 1jQrVs-0006Ld-Kh
+ for linux-mediatek@lists.infradead.org; Tue, 21 Apr 2020 11:56:30 +0000
+Received: by mail-qk1-x744.google.com with SMTP id v7so14180215qkc.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 21 Apr 2020 04:56:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Gy/qiieN90UJKr/c+cYCi+ub2I5kQwPARkN3XL1JRak=;
+ b=aCc5+8+A8yLcK/QqnugFhTCfuQH8ZptGrOL5KoB4qPjfHfg455c5bxR2ErMEoPapf5
+ uswTC5LyF+tq3Acydm/mOkThdTzi4W6FFRu209tSF2BEofynt+8R7+A4/fZHeT6zhJzm
+ ckM5RBxLwpV7Q3sk4bicpgtLknywP1ick8tWtuQkvzjoON229ZmaaSlmzEBc6wXUJvCo
+ 5SROV55sCPT1NhDKKKVvb9+y64jLWx4R8VRDsSi0+KWkDukc9Z8u3dZhUm6Xmob2XhaT
+ eYr5kOqL+dl22xCD4d68H+iRq1GB4bxtUOqvdo63JvGbIc52n7b78xxmC7J3+1INySvY
+ h7Aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=z6/8C4oa9QlfkP6T/TF0bK1AUsLOdimzyYALyY4eY0M=;
- b=sDLFyDabFWQRSQkUEJCJit5QClGNMs+YcoxLagHZ9cVA0gKWf9Y+QE1w/pvhmEAbjK
- cPhTWk0nkW8MrfeEA+tR2GxzPYlKn0nUdHoTn8sOyU4HXz6RetL/6OX3E8ZdUSz1G43m
- vUYR3IzAUnr6qo+Huza1Ba+M4/AGHtSPCDM2vHFVBio/x4L+tv0Df7jVjc+HJXyGKDQE
- GgSS2aNywRXO0B+D4KqLe3hbZk6iX+EK1/ua87WlxbkNZt5G0sDFKF3y9KskEvD9xnOU
- bo0NgEMYa+VzN56mNEYYjvdczs3QKNdAPLG7VBO/+1KlQ8W3cCLkJRIVK6p09iQgmhh9
- hx5g==
-X-Gm-Message-State: AGi0PuaG3O0+MsWppmMowICOS8gEOuz1BOW+NJNzlJ86EXxE1nTIlKU8
- i23NRrR/ismO/tIY/njiZmwZzw==
-X-Google-Smtp-Source: APiQypKXU6B+lNxTQ6z+mmlmD+azeUp0c6GJsncfRgZv3gPxv15vR/XFlyx5vIh1kCmNOHZG4GtG/A==
-X-Received: by 2002:a63:5d7:: with SMTP id 206mr19924816pgf.136.1587467159847; 
- Tue, 21 Apr 2020 04:05:59 -0700 (PDT)
-Received: from localhost ([2401:fa00:9:14:1105:3e8a:838d:e326])
- by smtp.gmail.com with ESMTPSA id f3sm2209809pfd.144.2020.04.21.04.05.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Apr 2020 04:05:59 -0700 (PDT)
-From: Evan Benn <evanbenn@chromium.org>
-To: LKML <linux-kernel@vger.kernel.org>
-Subject: [PATCH v2 2/2] watchdog: Add new arm_smc_wdt watchdog driver
-Date: Tue, 21 Apr 2020 21:05:20 +1000
-Message-Id: <20200421210403.v2.2.Ia92bb4d4ce84bcefeba1d00aaa1c1e919b6164ef@changeid>
-X-Mailer: git-send-email 2.26.1.301.g55bc3eb7cb9-goog
-In-Reply-To: <20200421110520.197930-1-evanbenn@chromium.org>
-References: <20200421110520.197930-1-evanbenn@chromium.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Gy/qiieN90UJKr/c+cYCi+ub2I5kQwPARkN3XL1JRak=;
+ b=oiql3qSK/PvsTeLn+9uAv8Z2xiUMc0nJhBihN2nkbMzbwwcfOmj+KlSLZgk3aAk0aU
+ IucenlU0ndVE9K6ZnAL+xwru4QrkhQAwQ40kTM9BD6ISR2cavVxr5XVfwCb3rFAHB456
+ TRjO5ZfZXeppgeY/kFCQI76vNQNvp7W4E9NK8wdN+Ltr9nJe5/vmnq/RtLM0dQj0N32q
+ wlVasBqx5PJR7aQ4tIwM9+YL9qhh+xTWB/p/ZBRiCUnH8ghu71WqTJHKhqCcm8cxbQAf
+ vNVjxS8UOPIzoK4Iu1pRQis7FyCeB3P2rpFAGYW9wKwbPN9X2F4ZBqKs4JndQj8Uwx+A
+ 4Bgw==
+X-Gm-Message-State: AGi0PubaULgBEYbwbaGCE/vd9eOSIQDhIf6ZpYNiOaurRV26b6k/uDqQ
+ zsae9gbwTV6mKFseQSkSW5IBhDN/eOIsykl7QOj22A==
+X-Google-Smtp-Source: APiQypKqjymosGnZ/N8Uq74IFcEJwadIEWE1MVkKNbYIrF4e7ou27CEFF7xzARDGcWKlsTpg5CkwsUAkLDtYop4F7a4=
+X-Received: by 2002:a37:bc47:: with SMTP id m68mr21780368qkf.8.1587470184030; 
+ Tue, 21 Apr 2020 04:56:24 -0700 (PDT)
 MIME-Version: 1.0
+References: <20200421014007.6012-1-walter-zh.wu@mediatek.com>
+In-Reply-To: <20200421014007.6012-1-walter-zh.wu@mediatek.com>
+From: Dmitry Vyukov <dvyukov@google.com>
+Date: Tue, 21 Apr 2020 13:56:12 +0200
+Message-ID: <CACT4Y+af5fegnN9XOUSkf_B62J5sf2ZZbUwYk=GxtSmAhF3ryQ@mail.gmail.com>
+Subject: Re: [PATCH] kasan: fix KASAN unit tests for tag-based KASAN
+To: Walter Wu <walter-zh.wu@mediatek.com>, David Gow <davidgow@google.com>, 
+ Brendan Higgins <brendanhiggins@google.com>,
+ Patricia Alfonso <trishalfonso@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200421_040600_477560_77981A9F 
-X-CRM114-Status: GOOD (  18.66  )
+X-CRM114-CacheID: sfid-20200421_045628_701811_92B76115 
+X-CRM114-Status: GOOD (  23.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,331 +90,243 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Geert Uytterhoeven <geert+renesas@glider.be>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Leonard Crestez <leonard.crestez@nxp.com>, Will Deacon <will@kernel.org>,
- xingyu.chen@amlogic.com, Rob Herring <robh@kernel.org>,
- Anson Huang <Anson.Huang@nxp.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Evan Benn <evanbenn@chromium.org>,
- Valentin Schneider <valentin.schneider@arm.com>,
- Guenter Roeck <linux@roeck-us.net>, linux-watchdog@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
- linux-arm-kernel@lists.infradead.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Li Yang <leoyang.li@nxp.com>,
- Olof Johansson <olof@lixom.net>, jwerner@chromium.org,
- Shawn Guo <shawnguo@kernel.org>, "David S. Miller" <davem@davemloft.net>
+Cc: wsd_upstream <wsd_upstream@mediatek.com>,
+ Andrey Konovalov <andreyknvl@google.com>, linux-mediatek@lists.infradead.org,
+ LKML <linux-kernel@vger.kernel.org>, kasan-dev <kasan-dev@googlegroups.com>,
+ Linux-MM <linux-mm@kvack.org>, Alexander Potapenko <glider@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Andrey Ryabinin <aryabinin@virtuozzo.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Julius Werner <jwerner@chromium.org>
+On Tue, Apr 21, 2020 at 3:40 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+>
+> When we use tag-based KASAN, then KASAN unit tests don't detect
+> out-of-bounds memory access. Because with tag-based KASAN the state
+> of each 16 aligned bytes of memory is encoded in one shadow byte
+> and the shadow value is tag of pointer, so we need to read next
+> shadow byte, the shadow value is not equal to tag of pointer,
+> then tag-based KASAN will detect out-of-bounds memory access.
+>
+> Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
+> Cc: Dmitry Vyukov <dvyukov@google.com>
+> Cc: Alexander Potapenko <glider@google.com>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Andrey Konovalov <andreyknvl@google.com>
+> Cc: Andrew Morton <akpm@linux-foundation.org>
+> ---
+>  lib/test_kasan.c | 62 ++++++++++++++++++++++++++++++++++++++++++------
+>  1 file changed, 55 insertions(+), 7 deletions(-)
+>
+> diff --git a/lib/test_kasan.c b/lib/test_kasan.c
+> index e3087d90e00d..a164f6b47fe5 100644
+> --- a/lib/test_kasan.c
+> +++ b/lib/test_kasan.c
+> @@ -40,7 +40,12 @@ static noinline void __init kmalloc_oob_right(void)
+>                 return;
+>         }
 
-This patch adds a watchdog driver that can be used on ARM systems
-with the appropriate watchdog implemented in Secure Monitor firmware.
-The driver communicates with firmware via a Secure Monitor Call.
-This may be useful for platforms using TrustZone that want
-the Secure Monitor firmware to have the final control over the watchdog.
+Hi Walter,
 
-This is implemented on mt8173 chromebook devices oak, elm and hana in
-arm trusted firmware file plat/mediatek/mt8173/drivers/wdt/wdt.c.
+This would be great to have!
+But I am concerned about these series that port KASAN tests to KUNIT:
+https://lkml.org/lkml/2020/4/17/1144
+I suspect it will be one large merge conflict. Not sure what is the
+proper way to resovle this. I've added authors to CC.
 
-Signed-off-by: Julius Werner <jwerner@chromium.org>
-Signed-off-by: Evan Benn <evanbenn@chromium.org>
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 
----
+> +#ifdef CONFIG_KASAN_GENERIC
+>         ptr[size] = 'x';
+> +#else
+> +       ptr[size + 5] = 'x';
+> +#endif
+> +
 
-Changes in v4:
-- Get smc-id from of property
-- Return a1 instead of a0 in timeleft
+For this particular snippet I think we can reduce amount of idef'ery
+and amount of non-compiled code in each configuration with something
+like:
 
-Changes in v3:
-- Add optional get_timeleft op
-- change name to arm_smc_wdt
+  ptr[size + 5] = 'x';
+  if (ENABLED(CONFIG_KASAN_GENERIC))
+      ptr[size] = 'x';
 
-Changes in v2:
-- use watchdog_stop_on_reboot
-- use watchdog_stop_on_unregister
-- use devm_watchdog_register_device
-- remove smcwd_shutdown, smcwd_remove
-- change error codes
+One check runs always (it should pass in both configs, right?). The
+only only in GENERIC, but it's C-level if rather than preprocessor.
+KUNIT should make 2 bugs per test easily expressable (and testable).
 
- MAINTAINERS                    |   1 +
- arch/arm64/configs/defconfig   |   1 +
- drivers/watchdog/Kconfig       |  13 +++
- drivers/watchdog/Makefile      |   1 +
- drivers/watchdog/arm_smc_wdt.c | 194 +++++++++++++++++++++++++++++++++
- 5 files changed, 210 insertions(+)
- create mode 100644 drivers/watchdog/arm_smc_wdt.c
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 0f2b39767bfa9..2b782bbff200a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1462,6 +1462,7 @@ M:	Julius Werner <jwerner@chromium.org>
- R:	Evan Benn <evanbenn@chromium.org>
- S:	Maintained
- F:	devicetree/bindings/watchdog/arm-smc-wdt.yaml
-+F:	drivers/watchdog/arm_smc_wdt.c
- 
- ARM SMMU DRIVERS
- M:	Will Deacon <will@kernel.org>
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 24e534d850454..0619df80f7575 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -513,6 +513,7 @@ CONFIG_UNIPHIER_THERMAL=y
- CONFIG_WATCHDOG=y
- CONFIG_ARM_SP805_WATCHDOG=y
- CONFIG_ARM_SBSA_WATCHDOG=y
-+CONFIG_ARM_SMC_WATCHDOG=y
- CONFIG_S3C2410_WATCHDOG=y
- CONFIG_DW_WATCHDOG=y
- CONFIG_SUNXI_WATCHDOG=m
-diff --git a/drivers/watchdog/Kconfig b/drivers/watchdog/Kconfig
-index 0663c604bd642..c440b576d23bf 100644
---- a/drivers/watchdog/Kconfig
-+++ b/drivers/watchdog/Kconfig
-@@ -867,6 +867,19 @@ config DIGICOLOR_WATCHDOG
- 	  To compile this driver as a module, choose M here: the
- 	  module will be called digicolor_wdt.
- 
-+config ARM_SMC_WATCHDOG
-+	tristate "ARM Secure Monitor Call based watchdog support"
-+	depends on ARM || ARM64
-+	depends on OF
-+	depends on HAVE_ARM_SMCCC
-+	select WATCHDOG_CORE
-+	help
-+	  Say Y here to include support for a watchdog timer
-+	  implemented by the EL3 Secure Monitor on ARM platforms.
-+	  Requires firmware support.
-+	  To compile this driver as a module, choose M here: the
-+	  module will be called arm_smc_wdt.
-+
- config LPC18XX_WATCHDOG
- 	tristate "LPC18xx/43xx Watchdog"
- 	depends on ARCH_LPC18XX || COMPILE_TEST
-diff --git a/drivers/watchdog/Makefile b/drivers/watchdog/Makefile
-index 6de2e4ceef190..97bed1d3d97cb 100644
---- a/drivers/watchdog/Makefile
-+++ b/drivers/watchdog/Makefile
-@@ -94,6 +94,7 @@ obj-$(CONFIG_UNIPHIER_WATCHDOG) += uniphier_wdt.o
- obj-$(CONFIG_RTD119X_WATCHDOG) += rtd119x_wdt.o
- obj-$(CONFIG_SPRD_WATCHDOG) += sprd_wdt.o
- obj-$(CONFIG_PM8916_WATCHDOG) += pm8916_wdt.o
-+obj-$(CONFIG_ARM_SMC_WATCHDOG) += arm_smc_wdt.o
- 
- # X86 (i386 + ia64 + x86_64) Architecture
- obj-$(CONFIG_ACQUIRE_WDT) += acquirewdt.o
-diff --git a/drivers/watchdog/arm_smc_wdt.c b/drivers/watchdog/arm_smc_wdt.c
-new file mode 100644
-index 0000000000000..29d2573b2ca11
---- /dev/null
-+++ b/drivers/watchdog/arm_smc_wdt.c
-@@ -0,0 +1,194 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * ARM Secure Monitor Call watchdog driver
-+ *
-+ * Copyright 2020 Google LLC.
-+ * Julius Werner <jwerner@chromium.org>
-+ * Based on mtk_wdt.c
-+ */
-+
-+#include <linux/arm-smccc.h>
-+#include <linux/err.h>
-+#include <linux/module.h>
-+#include <linux/moduleparam.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/types.h>
-+#include <linux/watchdog.h>
-+#include <uapi/linux/psci.h>
-+
-+#define DRV_NAME		"arm_smc_wdt"
-+#define DRV_VERSION		"1.0"
-+
-+#define get_smc_func_id(wdd) (*(u32 *)watchdog_get_drvdata(wdd))
-+enum smcwd_call {
-+	SMCWD_INIT		= 0,
-+	SMCWD_SET_TIMEOUT	= 1,
-+	SMCWD_ENABLE		= 2,
-+	SMCWD_PET		= 3,
-+	SMCWD_GET_TIMELEFT	= 4,
-+};
-+
-+static bool nowayout = WATCHDOG_NOWAYOUT;
-+static unsigned int timeout;
-+
-+static int smcwd_call(unsigned long smc_func_id, enum smcwd_call call,
-+		      unsigned long arg, struct arm_smccc_res *res)
-+{
-+	struct arm_smccc_res local_res;
-+
-+	if (!res)
-+		res = &local_res;
-+
-+	arm_smccc_smc(smc_func_id, call, arg, 0, 0, 0, 0, 0, res);
-+
-+	if (res->a0 == PSCI_RET_NOT_SUPPORTED)
-+		return -ENODEV;
-+	if (res->a0 == PSCI_RET_INVALID_PARAMS)
-+		return -EINVAL;
-+	if (res->a0 != PSCI_RET_SUCCESS)
-+		return -EIO;
-+	return 0;
-+}
-+
-+static int smcwd_ping(struct watchdog_device *wdd)
-+{
-+	return smcwd_call(get_smc_func_id(wdd), SMCWD_PET, 0, NULL);
-+}
-+
-+static unsigned int smcwd_get_timeleft(struct watchdog_device *wdd)
-+{
-+	struct arm_smccc_res res;
-+
-+	smcwd_call(get_smc_func_id(wdd), SMCWD_GET_TIMELEFT, 0, &res);
-+	return res.a1;
-+}
-+
-+static int smcwd_set_timeout(struct watchdog_device *wdd, unsigned int timeout)
-+{
-+	int res;
-+
-+	res = smcwd_call(get_smc_func_id(wdd), SMCWD_SET_TIMEOUT, timeout,
-+			 NULL);
-+	if (!res)
-+		wdd->timeout = timeout;
-+	return res;
-+}
-+
-+static int smcwd_stop(struct watchdog_device *wdd)
-+{
-+	return smcwd_call(get_smc_func_id(wdd), SMCWD_ENABLE, 0, NULL);
-+}
-+
-+static int smcwd_start(struct watchdog_device *wdd)
-+{
-+	return smcwd_call(get_smc_func_id(wdd), SMCWD_ENABLE, 1, NULL);
-+}
-+
-+static const struct watchdog_info smcwd_info = {
-+	.identity	= DRV_NAME,
-+	.options	= WDIOF_SETTIMEOUT |
-+			  WDIOF_KEEPALIVEPING |
-+			  WDIOF_MAGICCLOSE,
-+};
-+
-+static const struct watchdog_ops smcwd_ops = {
-+	.start		= smcwd_start,
-+	.stop		= smcwd_stop,
-+	.ping		= smcwd_ping,
-+	.set_timeout	= smcwd_set_timeout,
-+};
-+
-+static const struct watchdog_ops smcwd_timeleft_ops = {
-+	.start		= smcwd_start,
-+	.stop		= smcwd_stop,
-+	.ping		= smcwd_ping,
-+	.set_timeout	= smcwd_set_timeout,
-+	.get_timeleft	= smcwd_get_timeleft,
-+};
-+
-+static int smcwd_probe(struct platform_device *pdev)
-+{
-+	struct watchdog_device *wdd;
-+	int err;
-+	struct arm_smccc_res res;
-+	u32 *smc_func_id;
-+
-+	smc_func_id =
-+		devm_kzalloc(&pdev->dev, sizeof(*smc_func_id), GFP_KERNEL);
-+	if (!smc_func_id)
-+		return -ENOMEM;
-+
-+	err = of_property_read_u32(pdev->dev.of_node, "arm,smc-id",
-+				   smc_func_id);
-+	if (err < 0)
-+		return err;
-+
-+	err = smcwd_call(*smc_func_id, SMCWD_INIT, 0, &res);
-+	if (err < 0)
-+		return err;
-+
-+	wdd = devm_kzalloc(&pdev->dev, sizeof(*wdd), GFP_KERNEL);
-+	if (!wdd)
-+		return -ENOMEM;
-+
-+	platform_set_drvdata(pdev, wdd);
-+	watchdog_set_drvdata(wdd, smc_func_id);
-+
-+	wdd->info = &smcwd_info;
-+	/* get_timeleft is optional */
-+	if (smcwd_call(*smc_func_id, SMCWD_GET_TIMELEFT, 0, NULL))
-+		wdd->ops = &smcwd_ops;
-+	else
-+		wdd->ops = &smcwd_timeleft_ops;
-+	wdd->timeout = res.a2;
-+	wdd->max_timeout = res.a2;
-+	wdd->min_timeout = res.a1;
-+	wdd->parent = &pdev->dev;
-+
-+	watchdog_stop_on_reboot(wdd);
-+	watchdog_stop_on_unregister(wdd);
-+	watchdog_set_nowayout(wdd, nowayout);
-+	watchdog_init_timeout(wdd, timeout, &pdev->dev);
-+	err = smcwd_set_timeout(wdd, wdd->timeout);
-+	if (err)
-+		return err;
-+
-+	err = devm_watchdog_register_device(&pdev->dev, wdd);
-+	if (err)
-+		return err;
-+
-+	dev_info(&pdev->dev,
-+		 "Watchdog registered (timeout=%d sec, nowayout=%d)\n",
-+		 wdd->timeout, nowayout);
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id smcwd_dt_ids[] = {
-+	{ .compatible = "mediatek,mt8173-smc-wdt" },
-+	{}
-+};
-+MODULE_DEVICE_TABLE(of, smcwd_dt_ids);
-+
-+static struct platform_driver smcwd_driver = {
-+	.probe		= smcwd_probe,
-+	.driver		= {
-+		.name		= DRV_NAME,
-+		.of_match_table	= smcwd_dt_ids,
-+	},
-+};
-+
-+module_platform_driver(smcwd_driver);
-+
-+module_param(timeout, uint, 0);
-+MODULE_PARM_DESC(timeout, "Watchdog heartbeat in seconds");
-+
-+module_param(nowayout, bool, 0);
-+MODULE_PARM_DESC(nowayout, "Watchdog cannot be stopped once started (default="
-+			__MODULE_STRING(WATCHDOG_NOWAYOUT) ")");
-+
-+MODULE_LICENSE("GPL");
-+MODULE_AUTHOR("Julius Werner <jwerner@chromium.org>");
-+MODULE_DESCRIPTION("ARM Secure Monitor Call Watchdog Driver");
-+MODULE_VERSION(DRV_VERSION);
--- 
-2.26.1.301.g55bc3eb7cb9-goog
 
+
+>         kfree(ptr);
+>  }
+>
+> @@ -92,7 +97,12 @@ static noinline void __init kmalloc_pagealloc_oob_right(void)
+>                 return;
+>         }
+>
+> +#ifdef CONFIG_KASAN_GENERIC
+>         ptr[size] = 0;
+> +#else
+> +       ptr[size + 6] = 0;
+> +#endif
+> +
+>         kfree(ptr);
+>  }
+>
+> @@ -162,7 +172,11 @@ static noinline void __init kmalloc_oob_krealloc_more(void)
+>                 return;
+>         }
+>
+> +#ifdef CONFIG_KASAN_GENERIC
+>         ptr2[size2] = 'x';
+> +#else
+> +       ptr2[size2 + 13] = 'x';
+> +#endif
+>         kfree(ptr2);
+>  }
+>
+> @@ -180,7 +194,12 @@ static noinline void __init kmalloc_oob_krealloc_less(void)
+>                 kfree(ptr1);
+>                 return;
+>         }
+> +
+> +#ifdef CONFIG_KASAN_GENERIC
+>         ptr2[size2] = 'x';
+> +#else
+> +       ptr2[size2 + 2] = 'x';
+> +#endif
+>         kfree(ptr2);
+>  }
+>
+> @@ -216,7 +235,11 @@ static noinline void __init kmalloc_oob_memset_2(void)
+>                 return;
+>         }
+>
+> +#ifdef CONFIG_KASAN_GENERIC
+>         memset(ptr+7, 0, 2);
+> +#else
+> +       memset(ptr+15, 0, 2);
+> +#endif
+>         kfree(ptr);
+>  }
+>
+> @@ -232,7 +255,11 @@ static noinline void __init kmalloc_oob_memset_4(void)
+>                 return;
+>         }
+>
+> +#ifdef CONFIG_KASAN_GENERIC
+>         memset(ptr+5, 0, 4);
+> +#else
+> +       memset(ptr+15, 0, 4);
+> +#endif
+>         kfree(ptr);
+>  }
+>
+> @@ -249,7 +276,11 @@ static noinline void __init kmalloc_oob_memset_8(void)
+>                 return;
+>         }
+>
+> +#ifdef CONFIG_KASAN_GENERIC
+>         memset(ptr+1, 0, 8);
+> +#else
+> +       memset(ptr+15, 0, 8);
+> +#endif
+>         kfree(ptr);
+>  }
+>
+> @@ -265,7 +296,11 @@ static noinline void __init kmalloc_oob_memset_16(void)
+>                 return;
+>         }
+>
+> +#ifdef CONFIG_KASAN_GENERIC
+>         memset(ptr+1, 0, 16);
+> +#else
+> +       memset(ptr+15, 0, 16);
+> +#endif
+>         kfree(ptr);
+>  }
+>
+> @@ -281,7 +316,11 @@ static noinline void __init kmalloc_oob_in_memset(void)
+>                 return;
+>         }
+>
+> +#ifdef CONFIG_KASAN_GENERIC
+>         memset(ptr, 0, size+5);
+> +#else
+> +       memset(ptr, 0, size+7);
+> +#endif
+>         kfree(ptr);
+>  }
+>
+> @@ -415,7 +454,11 @@ static noinline void __init kmem_cache_oob(void)
+>                 return;
+>         }
+>
+> +#ifdef CONFIG_KASAN_GENERIC
+>         *p = p[size];
+> +#else
+> +       *p = p[size + 8];
+> +#endif
+>         kmem_cache_free(cache, p);
+>         kmem_cache_destroy(cache);
+>  }
+> @@ -497,6 +540,11 @@ static noinline void __init copy_user_test(void)
+>         char __user *usermem;
+>         size_t size = 10;
+>         int unused;
+> +#ifdef CONFIG_KASAN_GENERIC
+> +       size_t oob_size = 1;
+> +#else
+> +       size_t oob_size = 7;
+> +#endif
+>
+>         kmem = kmalloc(size, GFP_KERNEL);
+>         if (!kmem)
+> @@ -512,25 +560,25 @@ static noinline void __init copy_user_test(void)
+>         }
+>
+>         pr_info("out-of-bounds in copy_from_user()\n");
+> -       unused = copy_from_user(kmem, usermem, size + 1);
+> +       unused = copy_from_user(kmem, usermem, size + oob_size);
+>
+>         pr_info("out-of-bounds in copy_to_user()\n");
+> -       unused = copy_to_user(usermem, kmem, size + 1);
+> +       unused = copy_to_user(usermem, kmem, size + oob_size);
+>
+>         pr_info("out-of-bounds in __copy_from_user()\n");
+> -       unused = __copy_from_user(kmem, usermem, size + 1);
+> +       unused = __copy_from_user(kmem, usermem, size + oob_size);
+>
+>         pr_info("out-of-bounds in __copy_to_user()\n");
+> -       unused = __copy_to_user(usermem, kmem, size + 1);
+> +       unused = __copy_to_user(usermem, kmem, size + oob_size);
+>
+>         pr_info("out-of-bounds in __copy_from_user_inatomic()\n");
+> -       unused = __copy_from_user_inatomic(kmem, usermem, size + 1);
+> +       unused = __copy_from_user_inatomic(kmem, usermem, size + oob_size);
+>
+>         pr_info("out-of-bounds in __copy_to_user_inatomic()\n");
+> -       unused = __copy_to_user_inatomic(usermem, kmem, size + 1);
+> +       unused = __copy_to_user_inatomic(usermem, kmem, size + oob_size);
+>
+>         pr_info("out-of-bounds in strncpy_from_user()\n");
+> -       unused = strncpy_from_user(kmem, usermem, size + 1);
+> +       unused = strncpy_from_user(kmem, usermem, size + oob_size);
+>
+>         vm_munmap((unsigned long)usermem, PAGE_SIZE);
+>         kfree(kmem);
+> --
+> 2.18.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20200421014007.6012-1-walter-zh.wu%40mediatek.com.
 
 _______________________________________________
 Linux-mediatek mailing list
