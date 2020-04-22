@@ -2,58 +2,60 @@ Return-Path: <SRS0=Y6KA=6G=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E5A68C54FCB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 04:46:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 014E4C38A30
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 04:48:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AC78F2072D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 04:46:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B169F20747
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 04:48:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FRvm5iht"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC78F2072D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tDhDPuAc"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B169F20747
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=renesas.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:To:Subject:From:Message-ID
-	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=cTvsY63ONeEEN05piL01oklaqap6ySf58M7LDR0NMUA=; b=FRvm5iht5NMAUd
-	dddYhCsVcqNKVcLPVfzr5GJBio4RKTUtjBIhlA4Yh7wJWAKoT6aUdm3Yl+dmAm7WfDuQSJUHOs4a2
-	z2K+GmajGzao7OjutUZJXZiB3TVgFGd7LqWxblozCMA+IQnU6KUiOoURkmtxSDBxFdkjxdGF9kq+7
-	H7Jq62QVTx/1fY87vO583IjzUPKaVMry99+fQMl2I3boxpz8hgSGlIljs9nMNWn4kb8ue7lk+BSMJ
-	I4AkKzLtwQOG6I+RP0bI1RecRA7IpxcGw+wrIL8nSimv8PXhs33EfQarlzXFZYxiw/iZaSqAkf1nr
-	Z+gwN/imyX/CiPTfUShA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:To:
+	Subject:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6QSlU0tWhNzs7GvDKzxrnx3rxsfKxAaJG6xnH+XhAOE=; b=tDhDPuAcnjtD1v
+	+z4Z4KaGxICAUmOr8ubEnGTF4a0eVg/aACFa+NmU+t8KNPoupw8yjPxdPcpwXIhKX/AHdxr+r5qQS
+	37iOitflCRzBb6sPIslDACmwv0Z+9XAuW4+v+AiQXLH9+3cuLbtBKgyVLqtcRw3fMjqpKuqAo6P3d
+	MMCoaDcaFxBaCTKfAp7Sa9rHMaaScykVO3mZl1xHzTVA96zWFNNTjhlccIE8/res/5WwF1h1tFkIH
+	PQC/yD0rdC/+CKmpD4zocV8lE5L/WE+sZVDHSiWXbJUKDw6WEF2dyiVoIOtL7q3RZHH0hPyy0UWrj
+	kQa5cpmZ8wa/Wu0pX5NA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jR7HX-0006Co-82; Wed, 22 Apr 2020 04:46:43 +0000
-Received: from relmlor1.renesas.com ([210.160.252.171]
- helo=relmlie5.idc.renesas.com)
+	id 1jR7JA-0006k4-0N; Wed, 22 Apr 2020 04:48:24 +0000
+Received: from relmlor2.renesas.com ([210.160.252.172]
+ helo=relmlie6.idc.renesas.com)
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jR7HO-00066E-Cs; Wed, 22 Apr 2020 04:46:36 +0000
-Date: 22 Apr 2020 13:46:30 +0900
-X-IronPort-AV: E=Sophos;i="5.72,412,1580742000"; d="scan'208";a="45382248"
+ id 1jR7Iu-0006Xl-2v; Wed, 22 Apr 2020 04:48:10 +0000
+Date: 22 Apr 2020 13:48:06 +0900
+X-IronPort-AV: E=Sophos;i="5.72,412,1580742000"; d="scan'208";a="45169016"
 Received: from unknown (HELO relmlir6.idc.renesas.com) ([10.200.68.152])
- by relmlie5.idc.renesas.com with ESMTP; 22 Apr 2020 13:46:30 +0900
+ by relmlie6.idc.renesas.com with ESMTP; 22 Apr 2020 13:48:06 +0900
 Received: from mercury.renesas.com (unknown [10.166.252.133])
- by relmlir6.idc.renesas.com (Postfix) with ESMTP id 10BF341C17D7;
- Wed, 22 Apr 2020 13:46:30 +0900 (JST)
-Message-ID: <87d080unyx.wl-kuninori.morimoto.gx@renesas.com>
+ by relmlir6.idc.renesas.com (Postfix) with ESMTP id F3EEA41C1DAA;
+ Wed, 22 Apr 2020 13:48:05 +0900 (JST)
+Message-ID: <87blnkunw9.wl-kuninori.morimoto.gx@renesas.com>
 From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
-Subject: [PATCH 0/4] ASoC:: don't use snd_soc_rtdcom_lookup()
+Subject: [PATCH 1/4] ASoC: mediatek: don't use snd_soc_rtdcom_lookup()
 User-Agent: Wanderlust/2.15.9 Emacs/25.2 Mule/6.0
 To: Mark Brown <broonie@kernel.org>
+In-Reply-To: <87d080unyx.wl-kuninori.morimoto.gx@renesas.com>
+References: <87d080unyx.wl-kuninori.morimoto.gx@renesas.com>
 MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200421_214634_548867_BF2EC2C0 
-X-CRM114-Status: UNSURE (   8.21  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200421_214808_478806_4693D042 
+X-CRM114-Status: GOOD (  11.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,43 +89,224 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-Hi Mark
-Cc related engineer
+From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
 
-These patches are tring to not to use snd_soc_rtdcom_lookup() function
-on each drivers as much as possible,  because we might have same name
-component under multi component situation.
-It can't find correct component in such case.
+We shouldn't use snd_soc_rtdcom_lookup() as much as possible.
+It works today, but, will not work in the future if we support multi
+CPU/Codec/Platform, because 1 rtd might have multiple same driver
+named component.
 
-I tried to add new feature on each drivers to not to use it,
-but I can't test.
-Thus, these patches should get Acked-by or Tested-by from each drivers
-user/maintenor. Please test these.
+mediatek drivers are using snd_soc_rtdcom_lookup() at
+afe->memif_fs and/or afe->irq_fs to get component.
+But, caller knows it via dai->component.
+We don't need to use snd_soc_rtdcom_lookup().
+This patch fixup it.
 
-After these patches, Intel / SOF drivers are still using
-snd_soc_rtdcom_lookup(). Because it is very complex, I couldn't try
-not to use it.
-If possible, each drivers should try to not use it,
-and it should be removed from ASoC.
+Signed-off-by: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
+---
+ sound/soc/mediatek/common/mtk-afe-fe-dai.c | 12 +++++-------
+ sound/soc/mediatek/common/mtk-afe-fe-dai.h |  3 ++-
+ sound/soc/mediatek/common/mtk-base-afe.h   |  6 ++++--
+ sound/soc/mediatek/mt2701/mt2701-afe-pcm.c |  6 ++++--
+ sound/soc/mediatek/mt6797/mt6797-afe-pcm.c | 11 ++++-------
+ sound/soc/mediatek/mt8173/mt8173-afe-pcm.c |  7 ++++---
+ sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 11 ++++-------
+ 7 files changed, 27 insertions(+), 29 deletions(-)
 
-Kuninori Morimoto (4):
-  ASoC: mediatek: don't use snd_soc_rtdcom_lookup()
-  ASoC: intel: baytrail: don't use snd_soc_rtdcom_lookup()
-  ASoC: intel: haswell: don't use snd_soc_rtdcom_lookup()
-  ASoC: amd: don't use snd_soc_rtdcom_lookup()
-
- sound/soc/amd/raven/acp3x-pcm-dma.c         |  6 ------
- sound/soc/intel/baytrail/sst-baytrail-pcm.c | 13 +++++++------
- sound/soc/intel/haswell/sst-haswell-pcm.c   |  4 +++-
- sound/soc/mediatek/common/mtk-afe-fe-dai.c  | 12 +++++-------
- sound/soc/mediatek/common/mtk-afe-fe-dai.h  |  3 ++-
- sound/soc/mediatek/common/mtk-base-afe.h    |  6 ++++--
- sound/soc/mediatek/mt2701/mt2701-afe-pcm.c  |  6 ++++--
- sound/soc/mediatek/mt6797/mt6797-afe-pcm.c  | 11 ++++-------
- sound/soc/mediatek/mt8173/mt8173-afe-pcm.c  |  7 ++++---
- sound/soc/mediatek/mt8183/mt8183-afe-pcm.c  | 11 ++++-------
- 10 files changed, 37 insertions(+), 42 deletions(-)
-
+diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.c b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
+index 375e3b492922..8ee7206aa63d 100644
+--- a/sound/soc/mediatek/common/mtk-afe-fe-dai.c
++++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
+@@ -162,7 +162,7 @@ int mtk_afe_fe_hw_params(struct snd_pcm_substream *substream,
+ 	}
+ 
+ 	/* set rate */
+-	ret = mtk_memif_set_rate_substream(substream, id, rate);
++	ret = mtk_memif_set_rate_substream(dai->component, substream, id, rate);
+ 	if (ret) {
+ 		dev_err(afe->dev, "%s(), error, id %d, set rate %d, ret %d\n",
+ 			__func__, id, rate, ret);
+@@ -225,7 +225,7 @@ int mtk_afe_fe_trigger(struct snd_pcm_substream *substream, int cmd,
+ 				       irq_data->irq_cnt_shift);
+ 
+ 		/* set irq fs */
+-		fs = afe->irq_fs(substream, runtime->rate);
++		fs = afe->irq_fs(dai->component, substream, runtime->rate);
+ 
+ 		if (fs < 0)
+ 			return -EINVAL;
+@@ -502,12 +502,10 @@ int mtk_memif_set_rate(struct mtk_base_afe *afe,
+ }
+ EXPORT_SYMBOL_GPL(mtk_memif_set_rate);
+ 
+-int mtk_memif_set_rate_substream(struct snd_pcm_substream *substream,
++int mtk_memif_set_rate_substream(struct snd_soc_component *component,
++				 struct snd_pcm_substream *substream,
+ 				 int id, unsigned int rate)
+ {
+-	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+-	struct snd_soc_component *component =
+-		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
+ 	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
+ 
+ 	int fs = 0;
+@@ -518,7 +516,7 @@ int mtk_memif_set_rate_substream(struct snd_pcm_substream *substream,
+ 		return -EINVAL;
+ 	}
+ 
+-	fs = afe->memif_fs(substream, rate);
++	fs = afe->memif_fs(component, substream, rate);
+ 
+ 	if (fs < 0)
+ 		return -EINVAL;
+diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.h b/sound/soc/mediatek/common/mtk-afe-fe-dai.h
+index 8cec90671827..d8fab806dbd0 100644
+--- a/sound/soc/mediatek/common/mtk-afe-fe-dai.h
++++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.h
+@@ -44,7 +44,8 @@ int mtk_memif_set_channel(struct mtk_base_afe *afe,
+ 			  int id, unsigned int channel);
+ int mtk_memif_set_rate(struct mtk_base_afe *afe,
+ 		       int id, unsigned int rate);
+-int mtk_memif_set_rate_substream(struct snd_pcm_substream *substream,
++int mtk_memif_set_rate_substream(struct snd_soc_component *component,
++				 struct snd_pcm_substream *substream,
+ 				 int id, unsigned int rate);
+ int mtk_memif_set_format(struct mtk_base_afe *afe,
+ 			 int id, snd_pcm_format_t format);
+diff --git a/sound/soc/mediatek/common/mtk-base-afe.h b/sound/soc/mediatek/common/mtk-base-afe.h
+index a8cf44d98244..c5e3c680332d 100644
+--- a/sound/soc/mediatek/common/mtk-base-afe.h
++++ b/sound/soc/mediatek/common/mtk-base-afe.h
+@@ -97,9 +97,11 @@ struct mtk_base_afe {
+ 	unsigned int num_dai_drivers;
+ 
+ 	const struct snd_pcm_hardware *mtk_afe_hardware;
+-	int (*memif_fs)(struct snd_pcm_substream *substream,
++	int (*memif_fs)(struct snd_soc_component *component,
++			struct snd_pcm_substream *substream,
+ 			unsigned int rate);
+-	int (*irq_fs)(struct snd_pcm_substream *substream,
++	int (*irq_fs)(struct snd_soc_component *component,
++		      struct snd_pcm_substream *substream,
+ 		      unsigned int rate);
+ 	int (*get_dai_fs)(struct mtk_base_afe *afe,
+ 			  int dai_id, unsigned int rate);
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+index f0250b0dd734..456f3a0b98f9 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+@@ -491,7 +491,8 @@ static int mt2701_dlm_fe_trigger(struct snd_pcm_substream *substream,
+ 	}
+ }
+ 
+-static int mt2701_memif_fs(struct snd_pcm_substream *substream,
++static int mt2701_memif_fs(struct snd_soc_component *component,
++			   struct snd_pcm_substream *substream,
+ 			   unsigned int rate)
+ {
+ 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+@@ -505,7 +506,8 @@ static int mt2701_memif_fs(struct snd_pcm_substream *substream,
+ 	return fs;
+ }
+ 
+-static int mt2701_irq_fs(struct snd_pcm_substream *substream, unsigned int rate)
++static int mt2701_irq_fs(struct snd_soc_component *component,
++			 struct snd_pcm_substream *substream, unsigned int rate)
+ {
+ 	return mt2701_afe_i2s_fs(rate);
+ }
+diff --git a/sound/soc/mediatek/mt6797/mt6797-afe-pcm.c b/sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
+index 7f930556d961..7a0bbaaad677 100644
+--- a/sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
++++ b/sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
+@@ -136,23 +136,20 @@ static const struct snd_pcm_hardware mt6797_afe_hardware = {
+ 	.fifo_size = 0,
+ };
+ 
+-static int mt6797_memif_fs(struct snd_pcm_substream *substream,
++static int mt6797_memif_fs(struct snd_soc_component *component,
++			   struct snd_pcm_substream *substream,
+ 			   unsigned int rate)
+ {
+ 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+-	struct snd_soc_component *component =
+-		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
+ 	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
+ 	int id = asoc_rtd_to_cpu(rtd, 0)->id;
+ 
+ 	return mt6797_rate_transform(afe->dev, rate, id);
+ }
+ 
+-static int mt6797_irq_fs(struct snd_pcm_substream *substream, unsigned int rate)
++static int mt6797_irq_fs(struct snd_soc_component *component,
++			 struct snd_pcm_substream *substream, unsigned int rate)
+ {
+-	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+-	struct snd_soc_component *component =
+-		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
+ 	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
+ 
+ 	return mt6797_general_rate_transform(afe->dev, rate);
+diff --git a/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c b/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
+index 1e3f2d786066..6262e2c69107 100644
+--- a/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
++++ b/sound/soc/mediatek/mt8173/mt8173-afe-pcm.c
+@@ -479,11 +479,11 @@ static int mt8173_afe_hdmi_trigger(struct snd_pcm_substream *substream, int cmd,
+ 	}
+ }
+ 
+-static int mt8173_memif_fs(struct snd_pcm_substream *substream,
++static int mt8173_memif_fs(struct snd_soc_component *component,
++			   struct snd_pcm_substream *substream,
+ 			   unsigned int rate)
+ {
+ 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+-	struct snd_soc_component *component = snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
+ 	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
+ 	struct mtk_base_afe_memif *memif = &afe->memif[asoc_rtd_to_cpu(rtd, 0)->id];
+ 	int fs;
+@@ -509,7 +509,8 @@ static int mt8173_memif_fs(struct snd_pcm_substream *substream,
+ 	return fs;
+ }
+ 
+-static int mt8173_irq_fs(struct snd_pcm_substream *substream, unsigned int rate)
++static int mt8173_irq_fs(struct snd_soc_component *component,
++			 struct snd_pcm_substream *substream, unsigned int rate)
+ {
+ 	return mt8173_afe_i2s_fs(rate);
+ }
+diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+index c8ded53bde1d..5071f38fba29 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
++++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+@@ -139,23 +139,20 @@ static const struct snd_pcm_hardware mt8183_afe_hardware = {
+ 	.fifo_size = 0,
+ };
+ 
+-static int mt8183_memif_fs(struct snd_pcm_substream *substream,
++static int mt8183_memif_fs(struct snd_soc_component *component,
++			   struct snd_pcm_substream *substream,
+ 			   unsigned int rate)
+ {
+ 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+-	struct snd_soc_component *component =
+-		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
+ 	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
+ 	int id = asoc_rtd_to_cpu(rtd, 0)->id;
+ 
+ 	return mt8183_rate_transform(afe->dev, rate, id);
+ }
+ 
+-static int mt8183_irq_fs(struct snd_pcm_substream *substream, unsigned int rate)
++static int mt8183_irq_fs(struct snd_soc_component *component,
++			 struct snd_pcm_substream *substream, unsigned int rate)
+ {
+-	struct snd_soc_pcm_runtime *rtd = substream->private_data;
+-	struct snd_soc_component *component =
+-		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
+ 	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
+ 
+ 	return mt8183_general_rate_transform(afe->dev, rate);
 -- 
 2.17.1
 
