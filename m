@@ -2,76 +2,81 @@ Return-Path: <SRS0=Y6KA=6G=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D668BC55185
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 18:39:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 00C5EC54FCB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 19:20:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A87902075A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 18:39:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BB98B2098B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 19:20:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nQopsNlg";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Dxwnld5P"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A87902075A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pmRnbXjF";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="uhT1tnQf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BB98B2098B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Zk9G0DAVIjhv26NNyPaW7FNb1LGcoFNh8i96xP28VWY=; b=nQopsNlgtGoNuz
-	t+piNw8fbAROwRIfm3k7FT6vgGinh3FsVsLIHBDHtZ5RwANWHOG4qUrTzXcbd3ys2OZZCdbZgbRDg
-	u1vxl4rUG8RvnHjT42VZq3zk/YPyenj+yNV++2ufP2Gz6E+SDLwIhnBTp04YCeHOoK24ShBL3B6V8
-	dcUjmZ7jptOOh5nxRvL3KdSZEeMGgl0EWmqE8D1PsPV/b/SjguTPw7Cu9cu//EgovL+tgXneezDtj
-	2Xd3SdYUMLgoFw3LL0GuXISvoFkZO4toUw5vyhAW4ZGvK/RcHDpIVJrczYPnMPzeo56V08OPsVQeE
-	GPex66jkyo5qd6K2LoFA==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=O6b/C6t4l+vQhhdAFqKAoQtkONRW6ZDstWXxXTz6XUA=; b=pmRnbXjFxdVtd8
+	80ajZXHaSAt1woHz1yZBIU1g17cZun1GBjMU7Gg10FTtDpI5PxzbyJEvqybTF0YrJAKL1N5xt2aR6
+	V+P+EoaQRO3rbObu6JebCChORbVJSbo3F5kACu1MB6ZS4gK5xwo4E2RT7PXuTK/1DEDuBJkqOj/T1
+	cETJI74Qta4rzkZafmYhpe1H7lIADe/E79Kysgrt8tUJdNj1XlZhh0Wn1hTu85CBDTUorcZ/AtENH
+	du4B6J6VmFDokJeyJ3uOm10H4ZQb+vzS4AKMpZaGW1UVtdjygHx4HAcBbwmvlyGNIYnrCAuL/UFyO
+	UElb+s8sK0wt8px+KkUg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jRKHb-00019b-GC; Wed, 22 Apr 2020 18:39:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jRKvS-0007oC-Hg; Wed, 22 Apr 2020 19:20:50 +0000
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jRKHZ-000196-CC
- for linux-mediatek@lists.infradead.org; Wed, 22 Apr 2020 18:39:38 +0000
-X-UUID: fcc79a46b44c4229a72ac6d3c263d2e2-20200422
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=23cwNfaGhhqL+PnOh1YFT8tP/y0EhVeeizW0SlUrSJo=; 
- b=Dxwnld5PQATzjPd7ttvmlOYnFDVtuA4FLaA+9DUMedl+Q4LHFYgErAUqkyYekXAOLurMjXawJsrMGzz2j0kIOl1Cf+b5VQ+PuYR0KxoD6gEzYegQXfDYdK7gbm8FTvJcm8xLuhStVBSGtigqrwe44uuCZ+p6PL/iCrMG9Aoap4E=;
-X-UUID: fcc79a46b44c4229a72ac6d3c263d2e2-20200422
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 170434089; Wed, 22 Apr 2020 10:39:19 -0800
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 22 Apr 2020 11:39:28 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Apr 2020 02:39:27 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 23 Apr 2020 02:39:20 +0800
-From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-Subject: [PATCH v2] mt76: mt7663: fix up BMC entry indicated to unicmd firmware
-Date: Thu, 23 Apr 2020 02:39:20 +0800
-Message-ID: <71a5733885991a8211104b616d2f51d120efccb9.1587580510.git.sean.wang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
+ id 1jRKvQ-0007mh-7e; Wed, 22 Apr 2020 19:20:49 +0000
+Received: by mail-pf1-x443.google.com with SMTP id v63so1601572pfb.10;
+ Wed, 22 Apr 2020 12:20:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KtmFmWbQrY8pc1EpVQXZVMz+o7YgDf3mMA7eDgpe41c=;
+ b=uhT1tnQfPSj/TjtZ3wZw+so7Z0Vt7cA+7T6xXaEseKDmfs5FBjyrvrTomdpZvQDiY2
+ 2k5+TnTWWIoEE8Acv1BllsIWWxWBlBAcIqY4aYLDMMMYGCq2FM+9mKXgjzqBDTt8pqMC
+ oNbP3xVPWlH15/zlEZOQTawwTnBtbtNgjGJIxDlJlY0ETcRFB3H59NFbDMKKvi+PYdlF
+ P9XmiAm9GYIflk6+mwaBhQviWGrRoBjEM6x1PIPNbs5d04JFOQ4gfn6liDfD+LG8wOKn
+ 3aFUdAl0kNG+iGbWf5QmqIkoszQHtXkfvo2qM3zaqtCD0YV82j+Q21XA6mhylE7eaIem
+ tXRg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=KtmFmWbQrY8pc1EpVQXZVMz+o7YgDf3mMA7eDgpe41c=;
+ b=mGVNfw3RhwNbitNcqUV4xuBAzzMhp05X6BUAZ8nXLQ3UoWOUPjolFzjmK7xrUieg4q
+ q+lArSGl68nfkHU+Rdjjx4W3O9timECncyp0DoYWcXN4+3ZepUODZEkDHm4kwBhvaCW0
+ BQM/NUcNkCgbohFgZ8pb9DQjBvKVGDJYRPsXD4JE00KQDCB0Czd/xMazrfGfqTLAoBM5
+ CB84Eo7hxhnsyJYvdr80ZFWLR7YmU6dDk228wexxRN0DjQQ5v33ahbNIkSArBr8pxcoX
+ tnNSVkvriZ3BJIDkmzfyv6Ju8+UPKC0pX324EzSlzu42ulbbW0cNkyHKZ4lGOw3L0sI4
+ whSw==
+X-Gm-Message-State: AGi0PuYR2Uq+Z1I+yQXASliwpHlqN4oujUFukF8BdE/oAI89fpE2ruqs
+ dOSj1/H1ifpu77Xr8ZGFI0kao3NJ54IKj5mtFVQ=
+X-Google-Smtp-Source: APiQypITCf2xMd3UMkVUBCj0ZbhYW1/aHWeFytRZabsdA3yMLAvCt9JL2QIHRkyc3NlzpGV3HtiJhypU95zkkNQfOWE=
+X-Received: by 2002:a63:5511:: with SMTP id j17mr576026pgb.4.1587583245100;
+ Wed, 22 Apr 2020 12:20:45 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 3C479BEA1633D2955B3668A86E7F39C6192C47299CC315A46AF21B248DC1B4242000:8
-X-MTK: N
+References: <cc41ea10be9ab96568f0371784e3b9f8d9f434b9.1587577548.git.sean.wang@mediatek.com>
+In-Reply-To: <cc41ea10be9ab96568f0371784e3b9f8d9f434b9.1587577548.git.sean.wang@mediatek.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Wed, 22 Apr 2020 22:20:33 +0300
+Message-ID: <CAHp75VdSvE9RPq3V8LTVX7OjaYs1PThVi2f1roh3p5EY_k0ANA@mail.gmail.com>
+Subject: Re: [PATCH v3] tty: serial: don't do termios for BTIF
+To: Sean Wang <sean.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200422_113937_416185_62A21AF1 
-X-CRM114-Status: UNSURE (   7.02  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200422_122048_294197_A2CB640C 
+X-CRM114-Status: GOOD (  22.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,75 +88,110 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: ryder.lee@mediatek.com, sean.wang@mediatek.com,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, Soul
- Huang <Soul.Huang@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Steven Liu <steven.liu@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ tthayer <tthayer@opensource.altera.com>,
+ "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
+ Jiri Slaby <jslaby@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Stefan Roese <sr@denx.de>, Mika Westerberg <mika.westerberg@linux.intel.com>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On Wed, Apr 22, 2020 at 9:05 PM <sean.wang@mediatek.com> wrote:
+>
+> From: Sean Wang <sean.wang@mediatek.com>
+>
+> Bluetooth Interface (BTIF) is designed dedicatedly for MediaTek SOC with
+> BT in order to be instead of the UART interface between BT module and Host
+> CPU, and not exported to user space to access.
+>
+> As the UART design, BTIF will be an APB slave and can transmit or receive
+> data by MCU access, but doesn't provide termios function like baudrate and
+> flow control setup.
+>
+> Even LCR on offset 0xC that is just a FAKELCR
+> a. If FAKELCR[7] is equaled to 1, RBR(0x00), THR(0x00), IER(0x04)
+>    will not be readable/writable.
+>
+> b. If FAKELCR is equaled to 0xBF, RBR(0x00), THR(0x00), IER(0x04),
+>    IIR(0x08), and LSR(0x14) will not be readable/writable.
+>
+> So adding a new capability 'UART_CAP_NTIO' for the unusual unsupported
+> case.
+>
+> Fixes: 1c16ae65e250 ("serial: 8250: of: Add new port type for MediaTek BTIF controller on MT7622/23 SoC")
+> Cc: Steven Liu <steven.liu@mediatek.com>
 
-BMC entry for MT7663 unicmd firmware should be a broadcast/multicast entry,
-not a unicast entry, that is GTK rekey offload would rely on.
+> Suggested-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-Fixes: 138860679b2a ("mt76: mt7615: add more uni mcu commands")
-Cc: Soul Huang <Soul.Huang@mediatek.com>
-Suggested-by: YF Luo <Yf.Luo@mediatek.com>
-Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
---
-v1->v2:
-mt7615_mcu_uni_add_bss is only called on mt7663 with the offload firmware,
-so remove the entire unnecessary if code section.
----
- .../net/wireless/mediatek/mt76/mt7615/mcu.c    | 18 +-----------------
- 1 file changed, 1 insertion(+), 17 deletions(-)
+I didn't suggest this change. I only commented on the name of the macro.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 24b78d10d7f7..994446b1baba 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -1359,7 +1359,7 @@ mt7615_mcu_uni_add_bss(struct mt7615_phy *phy,
- 			.short_st = true,
- 		},
- 	};
--	u8 idx, tx_wlan_idx = 0;
-+	u8 idx, tx_wlan_idx = mvif->sta.wcid.idx;
- 	int err;
- 
- 	idx = mvif->omac_idx > EXT_BSSID_START ? HW_BSSID_0 : mvif->omac_idx;
-@@ -1369,24 +1369,8 @@ mt7615_mcu_uni_add_bss(struct mt7615_phy *phy,
- 	case NL80211_IFTYPE_MESH_POINT:
- 	case NL80211_IFTYPE_AP:
- 		basic_req.basic.conn_type = cpu_to_le32(CONNECTION_INFRA_AP);
--		tx_wlan_idx = mvif->sta.wcid.idx;
- 		break;
- 	case NL80211_IFTYPE_STATION:
--		if (enable) {
--			struct ieee80211_sta *sta;
--			struct mt7615_sta *msta;
--
--			rcu_read_lock();
--			sta = ieee80211_find_sta(vif, vif->bss_conf.bssid);
--			if (!sta) {
--				rcu_read_unlock();
--				return -EINVAL;
--			}
--
--			msta = (struct mt7615_sta *)sta->drv_priv;
--			tx_wlan_idx = msta->wcid.idx;
--			rcu_read_unlock();
--		}
- 		basic_req.basic.conn_type = cpu_to_le32(CONNECTION_INFRA_STA);
- 		break;
- 	default:
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+>
+> --
+> v1->v2:
+> no change on termios->c_cflag and refine commit message
+>
+> v2->v3:
+> change the naming from NMOD to NTIO as TIO is a well established prefix
+> for termios IOCTLs.
+> ---
+>  drivers/tty/serial/8250/8250.h      | 1 +
+>  drivers/tty/serial/8250/8250_port.c | 5 ++++-
+>  2 files changed, 5 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/tty/serial/8250/8250.h b/drivers/tty/serial/8250/8250.h
+> index 33ad9d6de532..234d8db470c0 100644
+> --- a/drivers/tty/serial/8250/8250.h
+> +++ b/drivers/tty/serial/8250/8250.h
+> @@ -82,6 +82,7 @@ struct serial8250_config {
+>  #define UART_CAP_MINI  (1 << 17)       /* Mini UART on BCM283X family lacks:
+>                                          * STOP PARITY EPAR SPAR WLEN5 WLEN6
+>                                          */
+> +#define UART_CAP_NTIO  (1 << 18)       /* UART doesn't do termios */
+>
+>  #define UART_BUG_QUOT  (1 << 0)        /* UART has buggy quot LSB */
+>  #define UART_BUG_TXEN  (1 << 1)        /* UART has buggy TX IIR status */
+> diff --git a/drivers/tty/serial/8250/8250_port.c b/drivers/tty/serial/8250/8250_port.c
+> index 0325f2e53b74..abc974b4113f 100644
+> --- a/drivers/tty/serial/8250/8250_port.c
+> +++ b/drivers/tty/serial/8250/8250_port.c
+> @@ -286,7 +286,7 @@ static const struct serial8250_config uart_config[] = {
+>                 .tx_loadsz      = 16,
+>                 .fcr            = UART_FCR_ENABLE_FIFO |
+>                                   UART_FCR_CLEAR_RCVR | UART_FCR_CLEAR_XMIT,
+> -               .flags          = UART_CAP_FIFO,
+> +               .flags          = UART_CAP_FIFO | UART_CAP_NTIO,
+>         },
+>         [PORT_NPCM] = {
+>                 .name           = "Nuvoton 16550",
+> @@ -2544,6 +2544,9 @@ serial8250_do_set_termios(struct uart_port *port, struct ktermios *termios,
+>         unsigned long flags;
+>         unsigned int baud, quot, frac = 0;
+>
+> +       if (up->capabilities & UART_CAP_NTIO)
+> +               return;
+> +
+>         if (up->capabilities & UART_CAP_MINI) {
+>                 termios->c_cflag &= ~(CSTOPB | PARENB | PARODD | CMSPAR);
+>                 if ((termios->c_cflag & CSIZE) == CS5 ||
+> --
+> 2.25.1
+
+
+
 -- 
-2.25.1
+With Best Regards,
+Andy Shevchenko
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
