@@ -2,64 +2,76 @@ Return-Path: <SRS0=Y6KA=6G=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AC58AC54FCB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 16:29:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 77F0DC55185
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 18:02:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7B19A20767
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 16:29:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 50FCB2076E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 18:02:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="W4v9JaBl";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="C0qWIYaL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B19A20767
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j7Rq2Xe0";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="QWRiLzip"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 50FCB2076E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=2lwmu/7CqfobVlas+hJEbjpI26lopsE4ICbC1kwsPik=; b=W4v9JaBlfME/Ce
-	vhc+7Ns/DIAOqTAyfTexL+hGOcfo0+3qdph097oQrEiU9TjN/g3NSQtr2dZmmSyMtkcQQJue5L4za
-	6JmdraIzZnlyoNAC2IM0Kb2Tc46MMbioXMxPh3727OAskRqxmBU7jr57qnS1gJht5nzkdBbG2Wixv
-	F8NHX7awWfBStg0rCxHiMQ2TjvmGgDSDr4ap08IkBm8zH5lXXxCK5zMCT8bDCvpWite2f19/kjAvK
-	lfFnOyIIXMNhm9pNaeKn95cUnQLmcMUyS6DjkBcBrlGSjtxUBOYyY/DPb2gkljlvcDugV6Fqtj/kT
-	iHrWCrzI1aahfbNhIzTA==;
+	List-Owner; bh=+yerc2iULG0Zd3SzNeAQEhDG7zEbsx9oKGbuU3ZMtHo=; b=j7Rq2Xe0Jd96+8
+	Sqq05g/BI9c9C0OHUJrps769CU9RyA16mufwfTij2MTVM5pyw+76zkC/XyZN2WC4E5PDHX7qypgr7
+	NHS+9874qV3Kmj0cdtva33oU6o8r3wOCK/Ny1n1gHvGWOmVhDLeX4xKRvywbrn1ftVYGEGOa2GqLP
+	0eBL+fT7lV7POv2tSmK2oQ7841Br+jJYPR6rWBEzoAvEYZ5EVKJQLZtgCQ7/lAsiqF69rVVh7sXoS
+	O4EsnIoA2ZTgxz1v8DapAA0KCjEgs6zf4WoeHqTFuYHnT+0d6quo03WJ9oWsS+d8BVaEDo/RyhUQ6
+	qpJLjXve9MPw6DvLzRQw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jRIFy-0004rt-7c; Wed, 22 Apr 2020 16:29:50 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jRJha-0008NW-7W; Wed, 22 Apr 2020 18:02:26 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jRIFv-0004qR-HS
- for linux-mediatek@lists.infradead.org; Wed, 22 Apr 2020 16:29:48 +0000
-Received: from lore-desk-wlan.redhat.com (unknown [151.66.196.206])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B812720767;
- Wed, 22 Apr 2020 16:29:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1587572983;
- bh=Ooc8+iitGuGTvPIZhXQ6/DoHM2Ft979BZxMBSa2TmJU=;
- h=From:To:Cc:Subject:Date:From;
- b=C0qWIYaLmUCSBzwq+Bp8LNI3mJcxEzElYh9KbaXfzkHH+k7bEJDxpY6AhA2gx/tHc
- qar/05evk+0ki7D49loFFzDh9FSG/CTwt8rO6LYc6w1s1oPxZEMOQeRhr6rWCu8Esb
- MPRKX0Am/cdKNEaytlwU+TcPKf9oo/gZhPa6vkGs=
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: nbd@nbd.name
-Subject: [PATCH] mt76: enable TDLS support
-Date: Wed, 22 Apr 2020 18:29:32 +0200
-Message-Id: <8915f055d3a78e0a27946ad2f5f8feef854fea39.1587572853.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.25.3
+ id 1jRJhX-0008Km-Q6; Wed, 22 Apr 2020 18:02:25 +0000
+X-UUID: 6c98df8fdb7c440ab0b1c0199661244b-20200422
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=Wd/MOGLi3v8IcIouicrcERfGp8lHo02kJWYXWlv+S1A=; 
+ b=QWRiLzipAoLjhsTOI/5Zdc5Pr6jnvLdu0murOZ8eSYQzZFdk4RewKgOwZ16sfh0i6YDrgkyJKaziX5CsijX0RQx3KLcnKcWL0yCrgfxfydfLl7T2myS481mccOaveytrkbhOFAjN6b0yEK7JBcw6by6mQQjYwoIggQythrBRhuk=;
+X-UUID: 6c98df8fdb7c440ab0b1c0199661244b-20200422
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 875353991; Wed, 22 Apr 2020 10:02:03 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Apr 2020 11:02:12 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Apr 2020 02:02:06 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 23 Apr 2020 02:02:05 +0800
+From: <sean.wang@mediatek.com>
+To: <gregkh@linuxfoundation.org>, <jslaby@suse.com>,
+ <andriy.shevchenko@linux.intel.com>, <mika.westerberg@linux.intel.com>,
+ <sr@denx.de>, <arnd@arndb.de>, <matthias.bgg@gmail.com>,
+ <tthayer@opensource.altera.com>
+Subject: [PATCH v3] tty: serial: don't do termios for BTIF
+Date: Thu, 23 Apr 2020 02:02:08 +0800
+Message-ID: <cc41ea10be9ab96568f0371784e3b9f8d9f434b9.1587577548.git.sean.wang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200422_092947_619964_8CFCFAFD 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20200422_110223_879480_B7A1B4FA 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,149 +83,91 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
- sean.wang@mediatek.com, linux-wireless@vger.kernel.org
+Cc: Ryder
+ Lee <ryder.lee@mediatek.com>, Steven Liu <steven.liu@mediatek.com>, Sean
+ Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable mac80211 TDLS support by default. Disable TDLS hw filtering for
-mt7615 devices
+From: Sean Wang <sean.wang@mediatek.com>
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Bluetooth Interface (BTIF) is designed dedicatedly for MediaTek SOC with
+BT in order to be instead of the UART interface between BT module and Host
+CPU, and not exported to user space to access.
+
+As the UART design, BTIF will be an APB slave and can transmit or receive
+data by MCU access, but doesn't provide termios function like baudrate and
+flow control setup.
+
+Even LCR on offset 0xC that is just a FAKELCR
+a. If FAKELCR[7] is equaled to 1, RBR(0x00), THR(0x00), IER(0x04)
+   will not be readable/writable.
+
+b. If FAKELCR is equaled to 0xBF, RBR(0x00), THR(0x00), IER(0x04),
+   IIR(0x08), and LSR(0x14) will not be readable/writable.
+
+So adding a new capability 'UART_CAP_NTIO' for the unusual unsupported
+case.
+
+Fixes: 1c16ae65e250 ("serial: 8250: of: Add new port type for MediaTek BTIF controller on MT7622/23 SoC")
+Cc: Steven Liu <steven.liu@mediatek.com>
+Suggested-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+
+--
+v1->v2:
+no change on termios->c_cflag and refine commit message
+
+v2->v3:
+change the naming from NMOD to NTIO as TIO is a well established prefix
+for termios IOCTLs.
 ---
- drivers/net/wireless/mediatek/mt76/mac80211.c    | 3 ++-
- drivers/net/wireless/mediatek/mt76/mt7615/init.c | 3 +++
- drivers/net/wireless/mediatek/mt76/mt7615/main.c | 4 ++--
- drivers/net/wireless/mediatek/mt76/mt7615/mmio.c | 2 ++
- drivers/net/wireless/mediatek/mt76/mt7615/regs.h | 8 ++++++++
- drivers/net/wireless/mediatek/mt76/mt7615/usb.c  | 1 +
- 6 files changed, 18 insertions(+), 3 deletions(-)
+ drivers/tty/serial/8250/8250.h      | 1 +
+ drivers/tty/serial/8250/8250_port.c | 5 ++++-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index 39abedc45e4a..0e26f5dac8e8 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -279,7 +279,8 @@ mt76_phy_init(struct mt76_dev *dev, struct ieee80211_hw *hw)
- 	SET_IEEE80211_PERM_ADDR(hw, dev->macaddr);
+diff --git a/drivers/tty/serial/8250/8250.h b/drivers/tty/serial/8250/8250.h
+index 33ad9d6de532..234d8db470c0 100644
+--- a/drivers/tty/serial/8250/8250.h
++++ b/drivers/tty/serial/8250/8250.h
+@@ -82,6 +82,7 @@ struct serial8250_config {
+ #define UART_CAP_MINI	(1 << 17)	/* Mini UART on BCM283X family lacks:
+ 					 * STOP PARITY EPAR SPAR WLEN5 WLEN6
+ 					 */
++#define UART_CAP_NTIO	(1 << 18)	/* UART doesn't do termios */
  
- 	wiphy->features |= NL80211_FEATURE_ACTIVE_MONITOR;
--	wiphy->flags |= WIPHY_FLAG_HAS_CHANNEL_SWITCH;
-+	wiphy->flags |= WIPHY_FLAG_HAS_CHANNEL_SWITCH |
-+			WIPHY_FLAG_SUPPORTS_TDLS;
+ #define UART_BUG_QUOT	(1 << 0)	/* UART has buggy quot LSB */
+ #define UART_BUG_TXEN	(1 << 1)	/* UART has buggy TX IIR status */
+diff --git a/drivers/tty/serial/8250/8250_port.c b/drivers/tty/serial/8250/8250_port.c
+index 0325f2e53b74..abc974b4113f 100644
+--- a/drivers/tty/serial/8250/8250_port.c
++++ b/drivers/tty/serial/8250/8250_port.c
+@@ -286,7 +286,7 @@ static const struct serial8250_config uart_config[] = {
+ 		.tx_loadsz	= 16,
+ 		.fcr		= UART_FCR_ENABLE_FIFO |
+ 				  UART_FCR_CLEAR_RCVR | UART_FCR_CLEAR_XMIT,
+-		.flags		= UART_CAP_FIFO,
++		.flags		= UART_CAP_FIFO | UART_CAP_NTIO,
+ 	},
+ 	[PORT_NPCM] = {
+ 		.name		= "Nuvoton 16550",
+@@ -2544,6 +2544,9 @@ serial8250_do_set_termios(struct uart_port *port, struct ktermios *termios,
+ 	unsigned long flags;
+ 	unsigned int baud, quot, frac = 0;
  
- 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_CQM_RSSI_LIST);
- 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_AIRTIME_FAIRNESS);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-index 6fc3f5aa94c0..9880643888ba 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-@@ -63,6 +63,7 @@ mt7615_init_mac_chain(struct mt7615_dev *dev, int chain)
- 		FIELD_PREP(MT_AGG_ARxCR_LIMIT(6), MT7615_RATE_RETRY - 1) |
- 		FIELD_PREP(MT_AGG_ARxCR_LIMIT(7), MT7615_RATE_RETRY - 1));
- 
-+	mt76_clear(dev, MT_DMA_RCFR0(chain), MT_DMA_RCFR0_MCU_RX_TDLS);
- 	if (!mt7615_firmware_offload(dev)) {
- 		u32 mask, set;
- 
-@@ -117,6 +118,8 @@ void mt7615_mac_init(struct mt7615_dev *dev)
- 	mt76_wr(dev, MT_DMA_DCR0,
- 		FIELD_PREP(MT_DMA_DCR0_MAX_RX_LEN, 3072) |
- 		MT_DMA_DCR0_RX_VEC_DROP);
-+	/* disable TDLS filtering */
-+	mt76_clear(dev, MT_WF_PFCR, MT_WF_PFCR_TDLS_EN);
- 	mt76_set(dev, MT_WF_MIB_SCR0, MT_MIB_SCR0_AGG_CNT_RANGE_EN);
- 	if (is_mt7663(&dev->mt76)) {
- 		mt76_wr(dev, MT_WF_AGG(0x160), 0x5c341c02);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index 3c35b8d0489c..4e1d162b2664 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -542,7 +542,7 @@ int mt7615_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	msta->wcid.idx = idx;
- 	msta->wcid.ext_phy = mvif->band_idx;
- 
--	if (vif->type == NL80211_IFTYPE_STATION) {
-+	if (vif->type == NL80211_IFTYPE_STATION && !sta->tdls) {
- 		struct mt7615_phy *phy;
- 
- 		phy = mvif->band_idx ? mt7615_ext_phy(dev) : &dev->phy;
-@@ -565,7 +565,7 @@ void mt7615_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	mt7615_mcu_sta_add(dev, vif, sta, false);
- 	mt7615_mac_wtbl_update(dev, msta->wcid.idx,
- 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
--	if (vif->type == NL80211_IFTYPE_STATION) {
-+	if (vif->type == NL80211_IFTYPE_STATION && !sta->tdls) {
- 		struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
- 		struct mt7615_phy *phy;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c
-index 26a297893da6..12bca2dee781 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c
-@@ -21,6 +21,7 @@ const u32 mt7615e_reg_map[] = {
- 	[MT_TMAC_BASE]		= 0x21000,
- 	[MT_RMAC_BASE]		= 0x21200,
- 	[MT_DMA_BASE]		= 0x21800,
-+	[MT_PF_BASE]		= 0x22000,
- 	[MT_WTBL_BASE_ON]	= 0x23000,
- 	[MT_WTBL_BASE_OFF]	= 0x23400,
- 	[MT_LPON_BASE]		= 0x24200,
-@@ -45,6 +46,7 @@ const u32 mt7663e_reg_map[] = {
- 	[MT_TMAC_BASE]		= 0x24000,
- 	[MT_RMAC_BASE]		= 0x25000,
- 	[MT_DMA_BASE]		= 0x27000,
-+	[MT_PF_BASE]		= 0x28000,
- 	[MT_WTBL_BASE_ON]	= 0x29000,
- 	[MT_WTBL_BASE_OFF]	= 0x29800,
- 	[MT_LPON_BASE]		= 0x2b000,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
-index 054831ecad68..68d30bcc087a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
-@@ -18,6 +18,7 @@ enum mt7615_reg_base {
- 	MT_TMAC_BASE,
- 	MT_RMAC_BASE,
- 	MT_DMA_BASE,
-+	MT_PF_BASE,
- 	MT_WTBL_BASE_ON,
- 	MT_WTBL_BASE_OFF,
- 	MT_LPON_BASE,
-@@ -321,10 +322,17 @@ enum mt7615_reg_base {
- #define MT_DMA_RCFR0_MCU_RX_MGMT	BIT(2)
- #define MT_DMA_RCFR0_MCU_RX_CTL_NON_BAR	BIT(3)
- #define MT_DMA_RCFR0_MCU_RX_CTL_BAR	BIT(4)
-+#define MT_DMA_RCFR0_MCU_RX_TDLS	BIT(19)
- #define MT_DMA_RCFR0_MCU_RX_BYPASS	BIT(21)
- #define MT_DMA_RCFR0_RX_DROPPED_UCAST	GENMASK(25, 24)
- #define MT_DMA_RCFR0_RX_DROPPED_MCAST	GENMASK(27, 26)
- 
-+#define MT_WF_PF_BASE			((dev)->reg_map[MT_PF_BASE])
-+#define MT_WF_PF(ofs)			(MT_WF_PF_BASE + (ofs))
++	if (up->capabilities & UART_CAP_NTIO)
++		return;
 +
-+#define MT_WF_PFCR			MT_WF_PF(0x000)
-+#define MT_WF_PFCR_TDLS_EN		BIT(9)
-+
- #define MT_WTBL_BASE(dev)		((dev)->reg_map[MT_WTBL_BASE_ADDR])
- #define MT_WTBL_ENTRY_SIZE		256
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/usb.c b/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
-index eee6f820959f..bcd131969923 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
-@@ -31,6 +31,7 @@ static const u32 mt7663u_reg_map[] = {
- 	[MT_TMAC_BASE]		= 0x820f4000,
- 	[MT_RMAC_BASE]		= 0x820f5000,
- 	[MT_DMA_BASE]		= 0x820f7000,
-+	[MT_PF_BASE]		= 0x820f8000,
- 	[MT_WTBL_BASE_ON]	= 0x820f9000,
- 	[MT_WTBL_BASE_OFF]	= 0x820f9800,
- 	[MT_LPON_BASE]		= 0x820fb000,
+ 	if (up->capabilities & UART_CAP_MINI) {
+ 		termios->c_cflag &= ~(CSTOPB | PARENB | PARODD | CMSPAR);
+ 		if ((termios->c_cflag & CSIZE) == CS5 ||
 -- 
-2.25.3
-
-
+2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
