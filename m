@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C760DC55186
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 08:48:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E99BDC55185
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 11:08:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9ACB820656
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 08:48:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BB39F2076E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 11:08:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iWYqRW6C";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="uYz+bT9x"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9ACB820656
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OZt7KQcO";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="WwD1fE0Q"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BB39F2076E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F3mdycTSMb+e3G6XeioOB9ipWloc26WABf74LI+o8lI=; b=iWYqRW6C8p+Zpu
-	E2dEXZctOgcmDczMGe2L9fKdB+t7L28drt0DjPw3u68CX1LMnz7cWWzDdFAIxkq5SESv5RsGq/sZ+
-	zwakh5GpbQBZvX9YAu+S2lJCz5EjhgAvCI0aL/ZpJaPzUiD2b8Mhk1yFiYXjhAKQzcPWZPIrzkgB1
-	JCCMh/9PL2bv1g23Ks0yShoAM14EEjpBRLqFPcwE0aWDOGYwjkJawiuGbr1egjXWFZ3tektggiAho
-	gXTrlA6rT9bzv0sPYZbSus1Skq5yzvn+oDryk3gw0/zlfvDzs+GTORgv2EVkTFaBUGqTis+BKo/1i
-	X0zzZSV7eBVKLpfaBgXg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Gg2obYBFNPV16qrmI98GNo/ZfOMsY98JPuw1qat4DvQ=; b=OZt7KQcOcDGA2h
+	iuXyxO8sa5xlYrh9rtoIH6Nvfn2iWmiyxyMKohc1JwI7yNOzV/0NcoxBl/rrbDGWDZ3a5gT+Uef1i
+	SKbY/+k8ZU3bD1/06OsTFaPt3PkDMlFvbiW0zh5/VMCxsNUTA5ljE9XyKVB5roejljtQ6aWZXUmYK
+	QA8XcYHPmowT2No/gB1K1xDmppNfR7PAJPyVdkt9SAQLc5Om3Trd03noujjzRNBCO6rX3+xtl/aDB
+	az4QDxnOtQw+DDYBsNnmvrNnIfjm2pIDQqk0R75YO0U06Zcr4aftxXbyQHdytC3EKLGHMqmRqVbpO
+	U/s3AyVF1DoBl/gvkR+w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jRB2q-0000ox-9y; Wed, 22 Apr 2020 08:47:48 +0000
+	id 1jRDEX-0004fT-LZ; Wed, 22 Apr 2020 11:08:01 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jRB2n-0000ml-5i
- for linux-mediatek@lists.infradead.org; Wed, 22 Apr 2020 08:47:46 +0000
+ id 1jRDEV-0004ee-88
+ for linux-mediatek@lists.infradead.org; Wed, 22 Apr 2020 11:08:00 +0000
 Received: from lore-desk-wlan.redhat.com (unknown [151.66.196.206])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C25CF206E9;
- Wed, 22 Apr 2020 08:47:43 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8962B2076E;
+ Wed, 22 Apr 2020 11:07:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1587545264;
- bh=VD/d7xnxoigicRP8uPAQVI4GjINnObaSoIi01c0lugM=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=uYz+bT9xgyZAle/c0iUTrWPa7wUEh9Ki+9uaftmlrM3rM6acqdjlko72JjkVglf1X
- 6cNxqcYhl1dC3tynwPTM/fHnBAbppj7/syoVC/2FJ6WER0Zm/oz53Vf4+3SZ4M3XCM
- BklYbHmlb9rzD2RlhtEW5+XercFiMskqLvRJBX3c=
+ s=default; t=1587553678;
+ bh=ZEPR/VQvyg7OiZedkRLfWOrSsyS7UfjXMLTZZoPa4zA=;
+ h=From:To:Cc:Subject:Date:From;
+ b=WwD1fE0QKC9LcCn6dMDR/WMmsm9EZzObNRi5HV//paumvNGR8vSPrVdSnlc+lJGtA
+ 2tbMHUuJpqM84UQi9B79Xm/jHfqvYZIuAD5bj0na5iX2eec7uCXDvUNRuVYH0t5WcW
+ 6Q8fdsTpcy910/bYmWPAJkszmL2E01zNa/yICcec=
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name
-Subject: [PATCH 1/2] mt76: mt7615: rework mt7615_mac_sta_poll for usb code
-Date: Wed, 22 Apr 2020 10:47:23 +0200
-Message-Id: <0b853a4e075d4308fc4e0cf6193a7c6c7fae4c3c.1587545092.git.lorenzo@kernel.org>
+Subject: [PATCH] mt76: mt7615: move mcu bss upload before creating the sta
+Date: Wed, 22 Apr 2020 13:07:44 +0200
+Message-Id: <5b69c9f19314643eeb6e0ac061af4ca21aab9802.1587551460.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.25.3
-In-Reply-To: <cover.1587545092.git.lorenzo@kernel.org>
-References: <cover.1587545092.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200422_014745_234036_E266BF2B 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20200422_040759_309765_BCC39413 
+X-CRM114-Status: UNSURE (   8.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,76 +80,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since usb code can't access device registers in interrupt context, move
-rcu_read_lock/rcu_read_unlock in mt7615_poll_tx routine. Moreover loop
-over a local msta list in mt7615_mac_sta_poll since mt7663u driver will
-not be able to complete the inner while loop before sta_poll_list list
-is refilled by mt7615_mac_add_txs/mt7615_mac_fill_rx
+Run mt7615_mcu_add_bss_info routine before mt7615_mcu_sta_add since
+the firmware requires the bss is created before the relative sta
 
+Tested-by: Sean Wang <sean.wang@mediatek.com>
+Suggested-by: YF Luo <yf.luo@mediatek.com>
+Suggested-by: Lucy Hsu <lucy.hsu@mediatek.com>
+Co-developed-by: Soul Huang <soul.huang@mediatek.com>
+Signed-off-by: Soul Huang <soul.huang@mediatek.com>
+Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- .../net/wireless/mediatek/mt76/mt7615/dma.c   |  2 ++
- .../net/wireless/mediatek/mt76/mt7615/mac.c   | 20 ++++++++-----------
- 2 files changed, 10 insertions(+), 12 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7615/main.c    | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/dma.c b/drivers/net/wireless/mediatek/mt76/mt7615/dma.c
-index b0ba0e7807bf..5cdbe3747901 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/dma.c
-@@ -121,7 +121,9 @@ static int mt7615_poll_tx(struct napi_struct *napi, int budget)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+index 8f8ad632d6ba..3c35b8d0489c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+@@ -491,9 +491,6 @@ static void mt7615_bss_info_changed(struct ieee80211_hw *hw,
  
- 	mt7615_tx_cleanup(dev);
+ 	mutex_lock(&dev->mt76.mutex);
  
-+	rcu_read_lock();
- 	mt7615_mac_sta_poll(dev);
-+	rcu_read_unlock();
- 
- 	tasklet_schedule(&dev->mt76.tx_tasklet);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index 3dab07d3eb1d..396f11e1bbf6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -724,22 +724,20 @@ void mt7615_mac_sta_poll(struct mt7615_dev *dev)
- 	struct ieee80211_sta *sta;
- 	struct mt7615_sta *msta;
- 	u32 addr, tx_time[4], rx_time[4];
-+	struct list_head sta_poll_list;
- 	int i;
- 
--	rcu_read_lock();
-+	INIT_LIST_HEAD(&sta_poll_list);
-+	spin_lock_bh(&dev->sta_poll_lock);
-+	list_splice_init(&dev->sta_poll_list, &sta_poll_list);
-+	spin_unlock_bh(&dev->sta_poll_lock);
- 
--	while (true) {
-+	while (!list_empty(&sta_poll_list)) {
- 		bool clear = false;
- 
--		spin_lock_bh(&dev->sta_poll_lock);
--		if (list_empty(&dev->sta_poll_list)) {
--			spin_unlock_bh(&dev->sta_poll_lock);
--			break;
--		}
--		msta = list_first_entry(&dev->sta_poll_list,
--					struct mt7615_sta, poll_list);
-+		msta = list_first_entry(&sta_poll_list, struct mt7615_sta,
-+					poll_list);
- 		list_del_init(&msta->poll_list);
--		spin_unlock_bh(&dev->sta_poll_lock);
- 
- 		addr = mt7615_mac_wtbl_addr(dev, msta->wcid.idx) + 19 * 4;
- 
-@@ -779,8 +777,6 @@ void mt7615_mac_sta_poll(struct mt7615_dev *dev)
- 						       rx_cur);
- 		}
- 	}
+-	if (changed & BSS_CHANGED_ASSOC)
+-		mt7615_mcu_add_bss_info(phy, vif, info->assoc);
 -
--	rcu_read_unlock();
- }
- EXPORT_SYMBOL_GPL(mt7615_mac_sta_poll);
+ 	if (changed & BSS_CHANGED_ERP_SLOT) {
+ 		int slottime = info->use_short_slot ? 9 : 20;
  
+@@ -545,9 +542,14 @@ int mt7615_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	msta->wcid.idx = idx;
+ 	msta->wcid.ext_phy = mvif->band_idx;
+ 
++	if (vif->type == NL80211_IFTYPE_STATION) {
++		struct mt7615_phy *phy;
++
++		phy = mvif->band_idx ? mt7615_ext_phy(dev) : &dev->phy;
++		mt7615_mcu_add_bss_info(phy, vif, true);
++	}
+ 	mt7615_mac_wtbl_update(dev, idx,
+ 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
+-
+ 	mt7615_mcu_sta_add(dev, vif, sta, true);
+ 
+ 	return 0;
+@@ -563,6 +565,13 @@ void mt7615_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	mt7615_mcu_sta_add(dev, vif, sta, false);
+ 	mt7615_mac_wtbl_update(dev, msta->wcid.idx,
+ 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
++	if (vif->type == NL80211_IFTYPE_STATION) {
++		struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
++		struct mt7615_phy *phy;
++
++		phy = mvif->band_idx ? mt7615_ext_phy(dev) : &dev->phy;
++		mt7615_mcu_add_bss_info(phy, vif, false);
++	}
+ 
+ 	spin_lock_bh(&dev->sta_poll_lock);
+ 	if (!list_empty(&msta->poll_list))
 -- 
 2.25.3
 
