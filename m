@@ -2,21 +2,21 @@ Return-Path: <SRS0=Y6KA=6G=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 595F3C54FCB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 04:49:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D0A1DC54FCB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 04:49:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2EB0D2072D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 04:49:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A45242072D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Apr 2020 04:49:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tUjTNWA5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2EB0D2072D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jWWcXRC9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A45242072D
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=renesas.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,37 +25,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:To:
 	Subject:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QyCF0Fd6jsWszdXy4PwWgQKq2rg08KR86l/JE6kGB84=; b=tUjTNWA5H/741/
-	JX7zjETxvEkZGTb31QgbeyRngNrweCJyjNTAd7idb/WNsPqIHTNuyYTq09S+LvBiTE2rkWJjGn4Zs
-	hIffOXIfFAt6iOOcFdQmMGt/76JyDMrUGKRHP4fG42avmn19YEDhRolLZ3KLBKA//GARWQPROqGl6
-	PGiNyVSc4QAI/EdmsLFwKUJ+D1GbADEbw1qSQoSVDJjt5JBCVODAD3gt6HsL1Vv/np80HPPdXuh5v
-	BEFysV3FIYKk+Q98heuzjlJpNPor11K4oN31YmWxZ8JP+ZZ1QhrQaDb8/Cb7soIgsb1mrdgx2dp0Y
-	X+JPuhc91h7s/J18pM+w==;
+	List-Owner; bh=qth0gch3fQmA4xIQpUTcy6+iZp4RGn3F0ST8/YpqeGg=; b=jWWcXRC9IWOxzO
+	3vLps10zXe6dzgk/Fr+f82bhPRRD1OCISAEYavZomZGJu6BmoGEvmOBXRZEZyrn7FQ0nZRPiz6T13
+	DRRZOHbNOCp42LEBNvbzn856xrqyMUdQ58ldRTDXhMSNvRYrLI7nY8G1OubaHojy1viq6Z6jo5Vay
+	DYBUzsBqIdQM0JeNDy4O4jCzzBFFKJokyJAeyn6ppgs7+1hnSYH0goU5JdgQUy/pzNhO6ObD/3ODC
+	/9sFebLsOQ3aF2t1esbQn5DFukY6Zqpo2DFE8CAbpsRF/w5AmolbCmOPg1XIqOX2wme6fxtn6SFUp
+	I3sKfHmEQrV8Fwb+a+OQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jR7K8-0007dh-SN; Wed, 22 Apr 2020 04:49:24 +0000
+	id 1jR7KB-0007gv-9O; Wed, 22 Apr 2020 04:49:27 +0000
 Received: from relmlor1.renesas.com ([210.160.252.171]
  helo=relmlie5.idc.renesas.com)
  by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jR7J3-0006ep-MD; Wed, 22 Apr 2020 04:48:20 +0000
-Date: 22 Apr 2020 13:48:16 +0900
-X-IronPort-AV: E=Sophos;i="5.72,412,1580742000"; d="scan'208";a="45382387"
+ id 1jR7J8-0006ep-It; Wed, 22 Apr 2020 04:48:24 +0000
+Date: 22 Apr 2020 13:48:22 +0900
+X-IronPort-AV: E=Sophos;i="5.72,412,1580742000"; d="scan'208";a="45382396"
 Received: from unknown (HELO relmlir6.idc.renesas.com) ([10.200.68.152])
- by relmlie5.idc.renesas.com with ESMTP; 22 Apr 2020 13:48:16 +0900
+ by relmlie5.idc.renesas.com with ESMTP; 22 Apr 2020 13:48:22 +0900
 Received: from mercury.renesas.com (unknown [10.166.252.133])
- by relmlir6.idc.renesas.com (Postfix) with ESMTP id 78D7841C00DA;
- Wed, 22 Apr 2020 13:48:16 +0900 (JST)
-Message-ID: <878siounvz.wl-kuninori.morimoto.gx@renesas.com>
+ by relmlir6.idc.renesas.com (Postfix) with ESMTP id D985541C1DB1;
+ Wed, 22 Apr 2020 13:48:21 +0900 (JST)
+Message-ID: <877dy8unvu.wl-kuninori.morimoto.gx@renesas.com>
 From: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
-Subject: [PATCH 3/4] ASoC: intel: haswell: don't use snd_soc_rtdcom_lookup()
+Subject: [PATCH 4/4] ASoC: amd: don't use snd_soc_rtdcom_lookup()
 User-Agent: Wanderlust/2.15.9 Emacs/25.2 Mule/6.0
 To: Mark Brown <broonie@kernel.org>
 In-Reply-To: <87d080unyx.wl-kuninori.morimoto.gx@renesas.com>
 References: <87d080unyx.wl-kuninori.morimoto.gx@renesas.com>
 MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200421_214817_848050_899F25EA 
-X-CRM114-Status: UNSURE (   9.11  )
+X-CRM114-CacheID: sfid-20200421_214822_761469_C1870A1F 
+X-CRM114-Status: UNSURE (   7.80  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -97,43 +97,48 @@ It works today, but, will not work in the future if we support multi
 CPU/Codec/Platform, because 1 rtd might have multiple same driver
 named component.
 
-intel haswell driver is using it, but we can avoid it easily
-by having component pointer at hsw_pcm_data.
-This patch removes snd_soc_rtdcom_lookup() from this driver.
+acp3x-pcm-dma driver is using snd_soc_rtdcom_lookup() at
+open/close() to get component by using DRV_NAME.
+
+But, lookuped "component" and function parameter "component"
+are same. We don't need to use snd_soc_rtdcom_lookup().
+This patch fixup it.
 
 Signed-off-by: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
 ---
- sound/soc/intel/haswell/sst-haswell-pcm.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ sound/soc/amd/raven/acp3x-pcm-dma.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
-diff --git a/sound/soc/intel/haswell/sst-haswell-pcm.c b/sound/soc/intel/haswell/sst-haswell-pcm.c
-index c183f8e94ee4..15e94dae45de 100644
---- a/sound/soc/intel/haswell/sst-haswell-pcm.c
-+++ b/sound/soc/intel/haswell/sst-haswell-pcm.c
-@@ -108,6 +108,7 @@ struct hsw_pcm_data {
- 	struct snd_pcm *hsw_pcm;
- 	u32 volume[2];
- 	struct snd_pcm_substream *substream;
-+	struct snd_soc_component *component;
- 	struct snd_compr_stream *cstream;
- 	unsigned int wpos;
- 	struct mutex mutex;
-@@ -696,7 +697,7 @@ static u32 hsw_notify_pointer(struct sst_hsw_stream *stream, void *data)
- 	struct snd_pcm_substream *substream = pcm_data->substream;
- 	struct snd_pcm_runtime *runtime = substream->runtime;
- 	struct snd_soc_pcm_runtime *rtd = substream->private_data;
--	struct snd_soc_component *component = snd_soc_rtdcom_lookup(rtd, DRV_NAME);
-+	struct snd_soc_component *component = pcm_data->component;
- 	struct hsw_priv_data *pdata = snd_soc_component_get_drvdata(component);
- 	struct sst_hsw *hsw = pdata->hsw;
- 	u32 pos;
-@@ -798,6 +799,7 @@ static int hsw_pcm_open(struct snd_soc_component *component,
- 	pm_runtime_get_sync(pdata->dev);
+diff --git a/sound/soc/amd/raven/acp3x-pcm-dma.c b/sound/soc/amd/raven/acp3x-pcm-dma.c
+index e362f0bc9e46..8a892ade1f40 100644
+--- a/sound/soc/amd/raven/acp3x-pcm-dma.c
++++ b/sound/soc/amd/raven/acp3x-pcm-dma.c
+@@ -211,14 +211,11 @@ static int acp3x_dma_open(struct snd_soc_component *component,
+ 			  struct snd_pcm_substream *substream)
+ {
+ 	struct snd_pcm_runtime *runtime;
+-	struct snd_soc_pcm_runtime *prtd;
+ 	struct i2s_dev_data *adata;
+ 	struct i2s_stream_instance *i2s_data;
+ 	int ret;
  
- 	pcm_data->substream = substream;
-+	pcm_data->component = component;
+ 	runtime = substream->runtime;
+-	prtd = substream->private_data;
+-	component = snd_soc_rtdcom_lookup(prtd, DRV_NAME);
+ 	adata = dev_get_drvdata(component->dev);
+ 	i2s_data = kzalloc(sizeof(*i2s_data), GFP_KERNEL);
+ 	if (!i2s_data)
+@@ -337,11 +334,8 @@ static int acp3x_dma_mmap(struct snd_soc_component *component,
+ static int acp3x_dma_close(struct snd_soc_component *component,
+ 			   struct snd_pcm_substream *substream)
+ {
+-	struct snd_soc_pcm_runtime *prtd;
+ 	struct i2s_dev_data *adata;
  
- 	snd_soc_set_runtime_hwparams(substream, &hsw_pcm_hardware);
+-	prtd = substream->private_data;
+-	component = snd_soc_rtdcom_lookup(prtd, DRV_NAME);
+ 	adata = dev_get_drvdata(component->dev);
+ 
  
 -- 
 2.17.1
