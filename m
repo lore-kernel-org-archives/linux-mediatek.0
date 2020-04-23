@@ -2,89 +2,64 @@ Return-Path: <SRS0=CwkH=6H=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E4728C54FCB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 15:15:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DEBB5C55191
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 15:29:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B532B206EC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 15:15:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A7A772071E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 15:29:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jzNNGeyB";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="MIWxKE/q"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B532B206EC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kRvU1RIS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A7A772071E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YwAC4kSJQnIJtRVSXZS/ogD+kSy5Pd9/qOMrkxaM/T4=; b=jzNNGeyB+h0AU7
-	F2is+LhWdOm7sBWIGyR2lkEooNIOOsXDFitA7hU4DiOGDEK79RHujd0gTWL8q28E9w2VQI7eRdbVq
-	4Wv5xsAQMeVWHE77BODJhl2SuMUnkfBR6LobAReKjVL5ExI1rusE5yoeBvA0spxrOm9CCW9SUEsMs
-	Yrzr06Fy9G/WRmlIEivtf9fNqCDXWJdBWwu4kNb7vz8SwGNJDtqQfbk6veapJz4fgqavN8GcqbATW
-	yEHKVBRdolSxiF51DDtJFj9hEVwbKcIXvuasOZNqlzLeB7pmSu/McQz6f86fESqHdYkg/pRO3VweB
-	0Zz8fpPfP/l4rzeMj7MQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=owCRgFaKQbuM9zOupQidiI4DUSnvrzOMr9E7PPDUpSQ=; b=kRvU1RISAcYuA1aF6h9uV6S6n
+	Jv+cZ/KntURmMabr0xjzTvyrep0daQ8mihqn2CYkRTlDtcxqs2bPV+U/DW60krs06JqxCXFfcbutm
+	gmX051BrRSnLIpK6lmplDOhRmdAvSjUP2HTOrRdf074/9p+PhqIcW20HEZjTV1gYiFNxB+2KSj7Fz
+	dSpJIzW7AHPAyQQJHeIUhMo94WtLEsKYGzogbcFEQqC2Hvhlqg3fGVtHAbZ0Yqugji86tFry2BFxB
+	g4+UmRUkbOH9mTyRJGozWJFA6A8BwCC2wgMHnV+fTVSh1Kn59i5K0pl+0DdRaQXdNHtK+eYCf86Qm
+	R/oR8kRpw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jRdYo-0007un-NQ; Thu, 23 Apr 2020 15:14:42 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jRdYG-0007XZ-QY
- for linux-mediatek@lists.infradead.org; Thu, 23 Apr 2020 15:14:10 +0000
-Received: by mail-wm1-x342.google.com with SMTP id e26so6812243wmk.5
- for <linux-mediatek@lists.infradead.org>; Thu, 23 Apr 2020 08:14:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=v46Ikk3Jz0r+b0XX/bOEpsMp0yxP+bghxd3vH+HYhPc=;
- b=MIWxKE/qjLCX/xGHYA9pPPU0BNfKH43CNGFsg6DeK/Mru9tvWVDKwiaZOn1XHjMoVE
- i4PYlH8O7bplYaTQeMICT+fzY8fnWvVzPWCE5yQuez2xPFjAeqSQYiNf0Uh7R/Wo38Lg
- Z6hX1p59FRmd8cXRcaKNBTpSFrbXarSJk9IonBz+osP259UyeH0oOSynqm+2NZi2Ahkn
- mHD1tRQfsYU56pVs27oV5Y7kgyFt8LHsXNWTr7pGFlFyAJIxKMc0HJpPsylF6zrtlQY4
- 5pwVLUZ8W5eDfGynjFnJROYgC6aT3odwPB41c02RsLfkH8QAoKuW6rYRcLWEg9G1cGkc
- OQaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=v46Ikk3Jz0r+b0XX/bOEpsMp0yxP+bghxd3vH+HYhPc=;
- b=tY5jyN1hZ7e8rXwbZ1V6/FrwBflsjU3qvpXjK/PIp8jny/q/XTcdhgsB7cBiWmYlQQ
- U7rz5EnudSTwWOX9ppH2YENzXyCaIzLY0fA9Vk8dpVwQ/DeBbz9xM83QqDfSOdiTLfPW
- uljV9BWYKgo1evND/kFtw6ZZChDf991Jjw7e7WewsBobeoa/p9jb3p8OKMD/N8OfXkFi
- WDRlKMo9a5ezsz0kK+vBwRpFUl9vzB8+QPGzmSNa3rG1Z1p8+kIfzYQwdM3FP+4DqmXP
- w+I514baFNqFFjUsHUsk0QGxP+4toTPmCU5phURxCWCAwjdwgKP1gUwegGshwkM4EPJv
- i+Uw==
-X-Gm-Message-State: AGi0PuYGxKdYzT10ZqzgQ5jdnCyAV7EshMVdWVXgN9b6oj1FS9WpEyHJ
- BLA+hOPESzLg3HAmTNZzCDkcjA==
-X-Google-Smtp-Source: APiQypKEu5s0OhD4gtUwKlNwoPw/ork7gNul9QoWfqC2s5n+wpnmvRh1OKW8lXO0WhhFY70e5NcqhA==
-X-Received: by 2002:a1c:64c5:: with SMTP id y188mr4587343wmb.130.1587654846044; 
- Thu, 23 Apr 2020 08:14:06 -0700 (PDT)
-Received: from linaro.org ([37.167.216.250])
- by smtp.gmail.com with ESMTPSA id x18sm4083518wrs.11.2020.04.23.08.14.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Apr 2020 08:14:05 -0700 (PDT)
-Date: Thu, 23 Apr 2020 17:14:00 +0200
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-To: Lukasz Luba <lukasz.luba@arm.com>
-Subject: Re: [PATCH v6 05/10] PM / EM: remove em_register_perf_domain
-Message-ID: <20200423151400.GC65632@linaro.org>
+	id 1jRdmh-0002zw-09; Thu, 23 Apr 2020 15:29:03 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jRdmS-0002p2-P2; Thu, 23 Apr 2020 15:28:50 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 3B5E031B;
+ Thu, 23 Apr 2020 08:28:46 -0700 (PDT)
+Received: from [10.37.12.89] (unknown [10.37.12.89])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 7E87B3F6CF;
+ Thu, 23 Apr 2020 08:28:21 -0700 (PDT)
+Subject: Re: [PATCH v6 03/10] PM / EM: update callback structure and add
+ device pointer
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
 References: <20200410084210.24932-1-lukasz.luba@arm.com>
- <20200410084210.24932-6-lukasz.luba@arm.com>
+ <20200410084210.24932-4-lukasz.luba@arm.com>
+ <20200423132243.GA65632@linaro.org>
+From: Lukasz Luba <lukasz.luba@arm.com>
+Message-ID: <245720a0-c812-ccc8-235e-6eed6f216e4b@arm.com>
+Date: Thu, 23 Apr 2020 16:28:18 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200410084210.24932-6-lukasz.luba@arm.com>
+In-Reply-To: <20200423132243.GA65632@linaro.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200423_081408_901332_61C421EB 
-X-CRM114-Status: UNSURE (   6.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200423_082848_898511_4D9420AC 
+X-CRM114-Status: GOOD (  17.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,19 +88,73 @@ Cc: nm@ti.com, juri.lelli@redhat.com, peterz@infradead.org,
  rdunlap@infradead.org, rjw@rjwysocki.net, linux-kernel@vger.kernel.org,
  kernel@pengutronix.de, sudeep.holla@arm.com, patrick.bellasi@matbug.net,
  shawnguo@kernel.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 10, 2020 at 09:42:05AM +0100, Lukasz Luba wrote:
-> Remove old function em_register_perf_domain which is no longer needed.
-> There is em_dev_register_perf_domain that covers old use cases and new as
-> well.
-> 
-> Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
+Hi Daniel,
 
-Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+On 4/23/20 2:22 PM, Daniel Lezcano wrote:
+> On Fri, Apr 10, 2020 at 09:42:03AM +0100, Lukasz Luba wrote:
+>> The Energy Model framework is going to support devices other that CPUs. In
+>> order to make this happen change the callback function and add pointer to
+>> a device as an argument.
+>>
+>> Update the related users to use new function and new callback from the
+>> Energy Model.
+>>
+>> Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
+>> ---
+> 
+> [ ... ]
+> 
+>> +static struct em_perf_domain *
+>> +em_create_pd(struct device *dev, int nr_states, struct em_data_callback *cb,
+>> +	     cpumask_t *span)
+>>   {
+>>   	unsigned long opp_eff, prev_opp_eff = ULONG_MAX;
+>>   	unsigned long power, freq, prev_freq = 0;
+>> @@ -106,7 +107,7 @@ static struct em_perf_domain *em_create_pd(cpumask_t *span, int nr_states,
+>>   		 * lowest performance state of 'cpu' above 'freq' and updates
+>>   		 * 'power' and 'freq' accordingly.
+>>   		 */
+>> -		ret = cb->active_power(&power, &freq, cpu);
+>> +		ret = cb->active_power(&power, &freq, dev);
+>>   		if (ret) {
+>>   			pr_err("pd%d: invalid perf. state: %d\n", cpu, ret);
+>>   			goto free_ps_table;
+> 
+> Why are the changes 'cpu' to 'dev' in the patch 4/10 instead of this one ?
+
+The patch 4/10 is quite big and I didn't want to put also this change in
+there. I thought for readability it would be better to have a separate
+patch with self-contained change (or I got your suggestion too strict).
+
+In this patch I just wanted to show more precisely that this function
+callback 'active_power' which is used by 2 users (currently):
+cpufreq/scmi-cpufreq.c and opp/of.c
+is going to change an argument and these files are affected.
+
+The 4/10 changes a lot lines, while first 3 patches can be treated as
+a preparation for the upcoming major change (4/10).
+
+Thank you for the review.
+
+Regards,
+Lukasz
+
+> 
+>> @@ -237,7 +238,7 @@ int em_dev_register_perf_domain(struct device *dev, unsigned int nr_states,
+>>   	}
+>>   
+>>   	/* Create the performance domain and add it to the Energy Model. */
+>> -	pd = em_create_pd(span, nr_states, cb);
+>> +	pd = em_create_pd(dev, nr_states, cb, span);
+>>   	if (!pd) {
+>>   		ret = -EINVAL;
+>>   		goto unlock;
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
