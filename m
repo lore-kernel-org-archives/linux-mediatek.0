@@ -2,68 +2,89 @@ Return-Path: <SRS0=CwkH=6H=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C448C54FCB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 13:48:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B2628C54FD0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 15:13:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0ED4720728
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 13:48:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8662220857
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 15:13:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="P+7B0StG";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="qL+VPjE1"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0ED4720728
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="T+0I+4gZ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="iw5Pumrk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8662220857
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B++4hs3mzHmqzLMX2tNxmz6naW+n4h8rvL3hYcMX+nA=; b=P+7B0StGKRbirD
-	BE3TH4PGP/bpnFUljSK/cghMj7EuQrY3VNAkksKLnIBp0iXttbvExn+6Th4C9VgrvuXjNMOBg2sus
-	18+MhGBludlvjRxjrizXSnKDvfbEbs2jJ41iY/pP2QG4L/+V0QTi9qMyymHCDhansJntzIkuCYSZS
-	duZep/FNH+oaxkvD+F1nLb0dw+z2zVFgLhRv9eczc3C9ZIFVucmAMn+qfqd4ZT7R+j7Oerlsi4PSm
-	SeEoN4ScG6mBFOK/VR2SSRRLFviwnuSCGAAdp13ibTPMF7NQCYMmfN68zRLzkDS0RPSjmHehMoMAV
-	BsWYHio7nNgLTfftSbxQ==;
+	List-Owner; bh=CWC8Qp03DAYQIsDKiuB93FTbnTSYebBj3BaSizhXdnc=; b=T+0I+4gZqYGflf
+	NGkbJnOcOHBNFeGiVGNm9typ37iLUfkpOKTjRNq0+vJIe3y0pwafcbtgbI01XdsZZxPdaCP6SpE4r
+	tZK+61AqJrjbZ58e1U2ZnkmNSECjA65lZJKWNqPwpJW7NYh7XM1Y/DCNbe5nei23FyKDt2/IQ11Lf
+	15WI9NzcEK7VoqSQaCpPBE6KW+NS6mqbV8b8zvIFSYihy6hR5Fwlonf6a6UHdOdrVzZF08hGOFV3r
+	qLOSX6XYqZ1ZOoTeR1HHoq7KC3yoaSHhoell3b0n0pPE1jlHRz7CkCIYw4G7ENTAkLhZ6u2OGa0l+
+	mevm57AXtCsCByF+ChwQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jRcDB-0005w9-BX; Thu, 23 Apr 2020 13:48:17 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jRdXC-0006cO-0R; Thu, 23 Apr 2020 15:13:02 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jRcD8-0005t1-4H
- for linux-mediatek@lists.infradead.org; Thu, 23 Apr 2020 13:48:15 +0000
-Received: from localhost.localdomain.com (unknown [151.66.196.206])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B34192076C;
- Thu, 23 Apr 2020 13:48:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1587649693;
- bh=iw8EfmZBWazAatB2Y0n5f947DJsp8BlS3zq6mPbpOQs=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=qL+VPjE1ecAXt1WLEtIFd6vQZaLz/c+I6YzDY/eP6Nk3rK8XJYWLO1AgpVpxmg+DZ
- qx6k1RI2tjCl/9vPt/KOqZ83saQ0nEyxiPTtlzPgeJyfVRlA2UItAcbceRZN9Cog6l
- IN6ycfN6OcG1aYA3lYDUC5iMyD4yPigOcHuGH0p8=
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: nbd@nbd.name
-Subject: [PATCH 2/2] mt76: mt7615: add sta pointer to mt7615_mcu_add_bss_info
- signature
-Date: Thu, 23 Apr 2020 15:47:55 +0200
-Message-Id: <2212261065eabbfae60d9c50e4ade0f3649d171b.1587649519.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.25.3
-In-Reply-To: <cover.1587649519.git.lorenzo@kernel.org>
-References: <cover.1587649519.git.lorenzo@kernel.org>
+ id 1jRdX8-0006bG-M3
+ for linux-mediatek@lists.infradead.org; Thu, 23 Apr 2020 15:13:00 +0000
+Received: by mail-wm1-x344.google.com with SMTP id z6so6957613wml.2
+ for <linux-mediatek@lists.infradead.org>; Thu, 23 Apr 2020 08:12:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=UTeQeyto1m9v5SuM5s4edMyeNen1x/MgttTL6x5XBaI=;
+ b=iw5PumrkE5tqjlzCsaMqI20CHiXkIq28cZxQKuxfCha3jMxVbtGl6SD5je3Nz0E4bV
+ cqmjnLcMA2tqqU8+zI3/jNhwckZtEBWsz/83I1YLcPij7OdReAARgFEvOCsQfvSg2Hue
+ CV+ej96HusLzaqZEYHGcQItEgti4huE+fBPOnCnmhtMwrLqS6xDGdq2YwK6kpsPcAgPK
+ 9/kZwf+6oOTKdSytvqn7NUBtlDJQzxJbbRstoM5Rn9Td82mHmVtiPUaOf9mlba3BR9X9
+ WqihTMlRXZYAEeGiEiTm/kkDgR2NEXT+s/pOJLW5xVi4Jy50tC67SaICig75NffChPdy
+ GP7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=UTeQeyto1m9v5SuM5s4edMyeNen1x/MgttTL6x5XBaI=;
+ b=I1HNQIibs7b9Zs90v1LKjZSZ3cWHFN29rmcmgHrpX6v0LhqwBRoz9Cf7KrcYiHQ6cN
+ 2vqETFQGkPQO6e4P4Q/J7NO0deliIkOASVJoPj+OiS6jJM/XP7irq4/MIKR6Li7VJkvC
+ rcD8l9nnPmKhhAk0vfTavcC3vyH7XpRUxG4hGj5SVfv8ZPGFEMiWWJqFU21N9tuH7yQA
+ lY8T56mpvXuW9ifQkjGMqrZxBQX6NeC3073nUpvTny5jXzQuRPsl2AHSdp4JzdXyoBjo
+ TGZ7sglfXqYunEruvuCNOL7xYtiFqQVNtygELQzrRjpX4ftxHrXtuHW4K8uf6wwSkmps
+ X7OA==
+X-Gm-Message-State: AGi0PuZLgyrOX0Y2U6bqkwykhHYamgxGTu1Q4ovsDmGZeC9UKFnzvNaM
+ FSRXCF2PGXz+RUPzUtfEx3sbcQ==
+X-Google-Smtp-Source: APiQypJEQibO8s5dDdPKk1vNMfNrO+DNEUITlcbdqfwFUErA7buEWgNGHo8cuZ6SAl0DQrcK5ToIww==
+X-Received: by 2002:a1c:1d84:: with SMTP id d126mr4597986wmd.119.1587654776840; 
+ Thu, 23 Apr 2020 08:12:56 -0700 (PDT)
+Received: from linaro.org ([37.167.216.250])
+ by smtp.gmail.com with ESMTPSA id l16sm4161477wrp.91.2020.04.23.08.12.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 23 Apr 2020 08:12:56 -0700 (PDT)
+Date: Thu, 23 Apr 2020 17:12:50 +0200
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+To: Lukasz Luba <lukasz.luba@arm.com>
+Subject: Re: [PATCH v6 04/10] PM / EM: add support for other devices than
+ CPUs in Energy Model
+Message-ID: <20200423151250.GB65632@linaro.org>
+References: <20200410084210.24932-1-lukasz.luba@arm.com>
+ <20200410084210.24932-5-lukasz.luba@arm.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200410084210.24932-5-lukasz.luba@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200423_064814_204074_BE1D66D0 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20200423_081259_245221_B70DE440 
+X-CRM114-Status: UNSURE (   8.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,134 +96,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
- sean.wang@mediatek.com, linux-wireless@vger.kernel.org
+Cc: nm@ti.com, juri.lelli@redhat.com, peterz@infradead.org,
+ viresh.kumar@linaro.org, liviu.dudau@arm.com, dri-devel@lists.freedesktop.org,
+ bjorn.andersson@linaro.org, bsegall@google.com,
+ alyssa.rosenzweig@collabora.com, festevam@gmail.com, mka@chromium.org,
+ robh@kernel.org, amit.kucheria@verdurent.com, lorenzo.pieralisi@arm.com,
+ vincent.guittot@linaro.org, khilman@kernel.org, agross@kernel.org,
+ b.zolnierkie@samsung.com, steven.price@arm.com, cw00.choi@samsung.com,
+ mingo@redhat.com, linux-imx@nxp.com, rui.zhang@intel.com, mgorman@suse.de,
+ orjan.eide@arm.com, daniel@ffwll.ch, linux-pm@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, s.hauer@pengutronix.de, rostedt@goodmis.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ linux-omap@vger.kernel.org, Dietmar.Eggemann@arm.com,
+ linux-arm-kernel@lists.infradead.org, airlied@linux.ie,
+ tomeu.vizoso@collabora.com, qperret@google.com, sboyd@kernel.org,
+ rdunlap@infradead.org, rjw@rjwysocki.net, linux-kernel@vger.kernel.org,
+ kernel@pengutronix.de, sudeep.holla@arm.com, patrick.bellasi@matbug.net,
+ shawnguo@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce sta pointer to mt7615_mcu_add_bss_info signature in order to
-avoid sta lookup in mt7615_mcu_bss_basic_tlv routine
+On Fri, Apr 10, 2020 at 09:42:04AM +0100, Lukasz Luba wrote:
+> Add support for other devices that CPUs. The registration function
+> does not require a valid cpumask pointer and is ready to handle new
+> devices. Some of the internal structures has been reorganized in order to
+> keep consistent view (like removing per_cpu pd pointers). To track usage
+> of the Energy Model structures, they are protected with kref.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- .../net/wireless/mediatek/mt76/mt7615/main.c  |  6 +++---
- .../net/wireless/mediatek/mt76/mt7615/mcu.c   | 21 ++++++-------------
- .../wireless/mediatek/mt76/mt7615/mt7615.h    |  2 +-
- 3 files changed, 10 insertions(+), 19 deletions(-)
+Why not add the energy model structure in the struct device directly?
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index c69d73bb0065..ccc52626da80 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -501,7 +501,7 @@ static void mt7615_bss_info_changed(struct ieee80211_hw *hw,
- 	}
- 
- 	if (changed & BSS_CHANGED_BEACON_ENABLED) {
--		mt7615_mcu_add_bss_info(phy, vif, info->enable_beacon);
-+		mt7615_mcu_add_bss_info(phy, vif, NULL, info->enable_beacon);
- 		mt7615_mcu_sta_add(dev, vif, NULL, info->enable_beacon);
- 	}
- 
-@@ -546,7 +546,7 @@ int mt7615_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 		struct mt7615_phy *phy;
- 
- 		phy = mvif->band_idx ? mt7615_ext_phy(dev) : &dev->phy;
--		mt7615_mcu_add_bss_info(phy, vif, true);
-+		mt7615_mcu_add_bss_info(phy, vif, sta, true);
- 	}
- 	mt7615_mac_wtbl_update(dev, idx,
- 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
-@@ -570,7 +570,7 @@ void mt7615_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 		struct mt7615_phy *phy;
- 
- 		phy = mvif->band_idx ? mt7615_ext_phy(dev) : &dev->phy;
--		mt7615_mcu_add_bss_info(phy, vif, false);
-+		mt7615_mcu_add_bss_info(phy, vif, sta, false);
- 	}
- 
- 	spin_lock_bh(&dev->sta_poll_lock);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 5064f7c45a44..386488f007f4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -689,7 +689,7 @@ mt7615_mcu_add_tlv(struct sk_buff *skb, int tag, int len)
- 
- static int
- mt7615_mcu_bss_basic_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
--			 bool enable)
-+			 struct ieee80211_sta *sta, bool enable)
- {
- 	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
- 	struct bss_info_basic *bss;
-@@ -705,20 +705,11 @@ mt7615_mcu_bss_basic_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
- 		break;
- 	case NL80211_IFTYPE_STATION:
- 		/* TODO: enable BSS_INFO_UAPSD & BSS_INFO_PM */
--		if (enable) {
--			struct ieee80211_sta *sta;
-+		if (enable && sta) {
- 			struct mt7615_sta *msta;
- 
--			rcu_read_lock();
--			sta = ieee80211_find_sta(vif, vif->bss_conf.bssid);
--			if (!sta) {
--				rcu_read_unlock();
--				return -EINVAL;
--			}
--
- 			msta = (struct mt7615_sta *)sta->drv_priv;
- 			wlan_idx = msta->wcid.idx;
--			rcu_read_unlock();
- 		}
- 		break;
- 	case NL80211_IFTYPE_ADHOC:
-@@ -1038,7 +1029,7 @@ mt7615_mcu_wtbl_ht_tlv(struct sk_buff *skb, struct ieee80211_sta *sta,
- 
- static int
- mt7615_mcu_add_bss(struct mt7615_phy *phy, struct ieee80211_vif *vif,
--		   bool enable)
-+		   struct ieee80211_sta *sta, bool enable)
- {
- 	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
- 	struct mt7615_dev *dev = phy->dev;
-@@ -1051,7 +1042,7 @@ mt7615_mcu_add_bss(struct mt7615_phy *phy, struct ieee80211_vif *vif,
- 	if (enable)
- 		mt7615_mcu_bss_omac_tlv(skb, vif);
- 
--	mt7615_mcu_bss_basic_tlv(skb, vif, enable);
-+	mt7615_mcu_bss_basic_tlv(skb, vif, sta, enable);
- 
- 	if (enable && mvif->omac_idx > EXT_BSSID_START)
- 		mt7615_mcu_bss_ext_tlv(skb, mvif);
-@@ -1316,8 +1307,8 @@ mt7615_mcu_uni_ctrl_pm_state(struct mt7615_dev *dev, int band, int state)
- }
- 
- static int
--mt7615_mcu_uni_add_bss(struct mt7615_phy *phy,
--		       struct ieee80211_vif *vif, bool enable)
-+mt7615_mcu_uni_add_bss(struct mt7615_phy *phy, struct ieee80211_vif *vif,
-+		       struct ieee80211_sta *sta, bool enable)
- {
- 	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
- 	struct cfg80211_chan_def *chandef = &phy->mt76->chandef;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-index a8393cd3c0b2..0ed80b31e4e7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-@@ -222,7 +222,7 @@ struct mt7615_mcu_ops {
- 	int (*add_dev_info)(struct mt7615_dev *dev,
- 			    struct ieee80211_vif *vif, bool enable);
- 	int (*add_bss_info)(struct mt7615_phy *phy, struct ieee80211_vif *vif,
--			    bool enable);
-+			    struct ieee80211_sta *sta, bool enable);
- 	int (*add_beacon_offload)(struct mt7615_dev *dev,
- 				  struct ieee80211_hw *hw,
- 				  struct ieee80211_vif *vif, bool enable);
--- 
-2.25.3
+For instance for the em_cpu_get() function, the cpu id allows to retrieve the
+cpu device and then from there, the energy model instead of browsing another
+list. The em_device life cycle will be tied to the struct device.
 
+Then when the struct device and the em_device are connected, add the debugfs
+with a struct device list for those which are energy aware, so you end up with
+a structure:
+
+struct em_device {
+	struct device *dev;
+	struct list_head em_dev_list;
+};
+
+(a global single dentry for debugfs to do a recursive delete is enough).
+
+Locks when inspecting and add/removal called from the struct device release
+function. So no need of an extra refcounting.
+
+Does it make sense?
 
 _______________________________________________
 Linux-mediatek mailing list
