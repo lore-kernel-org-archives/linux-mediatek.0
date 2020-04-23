@@ -2,82 +2,77 @@ Return-Path: <SRS0=CwkH=6H=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C627AC55186
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 01:21:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 296EDC55186
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 01:24:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 92A8E2075A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 01:21:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EFBEA2075A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 01:24:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AN0tLy/5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 92A8E2075A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=acm.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="VlrDl5UR";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="sODo5jYW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EFBEA2075A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=pZen7Pfm2vQoWVPhxudiOR86UYZ5iFVVEYg973n8xl8=; b=AN0tLy/5OP+zjjhngz/1V4ZQV
-	wMSRSLkP+/lLhRaNzT1nqoEExg+itIqhwYXle6HCFtqq/wyaDeFQKKpbT1gK6Z4ahJuUawCkJ1tpj
-	BU28EXxKDTLCxEb39P1OIz05qzWbeO7YZfGWa97723iczufpCfXXYPMD+JiwJP8zOhm36EdFZ+v5V
-	kljEeLmYEhulL/XYhsQUhnT4A9ys5hYG8B6pYXGFkrzNCDaawInBDBjLQNfe8eU6usF7rAESd+fdy
-	Tmvh17R63ls5eZysXI9jjWr/YipHwOslzNMAxhJBqAQEZnBynMSFwEto8T0PjwA8k2FIRWMIxtESt
-	Ia6h95l7Q==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=p1hIXEF0V8FoVj9i1qbphmq5jAvISV0KJW1PS5+ccws=; b=VlrDl5URP0vbw6
+	JJb2oZCGA+rR/kOzKodOlNz4Fdi4YI0QsR80PZR/wQAIbCYdF3WBv1CVgIjB2CI1JlQwlOvRlb7bC
+	xmyMLtOc2Dd++GZQJNVzin8/UQsTZRwXuQXqNC8GR7xJGxAJnRYhlelchWQ1Zj8M/X/jnlL/MFmuR
+	i61E6UWNaWy6tJVpisv+D7nXopDkyRY3UQ7PSTcq0N5CNdXQXo6t/J16/YnBKRpjCa55gcDHqB5E3
+	wdBONnZUIwLOfRdwwErEuvYOR8DKV55b7OMgydePOOKV7OAjT0nrRlhM9+PHd5/IrB+QSPiMCEio3
+	GB6ukw/xM+2hGwURwl7Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jRQYL-0007Cz-4N; Thu, 23 Apr 2020 01:21:21 +0000
-Received: from mail-pg1-f194.google.com ([209.85.215.194])
+	id 1jRQbJ-00080w-5u; Thu, 23 Apr 2020 01:24:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jRQYI-0007BL-CE; Thu, 23 Apr 2020 01:21:19 +0000
-Received: by mail-pg1-f194.google.com with SMTP id x26so2030042pgc.10;
- Wed, 22 Apr 2020 18:21:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=HuA0hxQTe90PJtZs9WSSy8kDWUbxSlnvi9VsPza7S2Y=;
- b=ZDTujw6fZ5jY3XQ65wjFG3v3OifNL8dO72xLpax9866UPGEHX+COqqw8MbkahcsvKK
- +YsqnpA8Ehg+MZn+MG5eYsYvN5OsFOBCjiedGHVCXf4UKWL5NxqksXplCpV3Zc5x7OMa
- NRONt1Ytv3x8F4tiCbsBGVvEDTdGr4+iS2c7Fu+HkLzQzARQCTzqcjsXaXRvbmAoRajw
- ITyL8J4FoZ6XgaTCUKjOEkCmIOoHocqNy6GAYEdz3atKIJxKKM7ZzdbQFOtaa7U+acbB
- UUe2UZwurfNkZ35YUBl9Y6Vw9p7kGHy3h26j7F0bm9fKXT8cZWwxE4/HdhLvtamz5qBq
- Y0Hw==
-X-Gm-Message-State: AGi0PuZrSeekER0SbnDA//1TTcYQFU/GcTgR55vmu4fibCDU12yAJpJu
- j+1X7JfhuGmqtyIMIzspyxs=
-X-Google-Smtp-Source: APiQypKxBlGRT0F6vEFPhi5oneOUM697xMXU65q00ggKMra7UIbFqy/Kx++vjPJ34SrVHIxn8OpClA==
-X-Received: by 2002:aa7:80cf:: with SMTP id a15mr1441540pfn.124.1587604876968; 
- Wed, 22 Apr 2020 18:21:16 -0700 (PDT)
-Received: from [100.124.12.67] ([104.129.198.222])
- by smtp.gmail.com with ESMTPSA id n23sm471545pjq.18.2020.04.22.18.21.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 22 Apr 2020 18:21:16 -0700 (PDT)
-Subject: Re: [PATCH v2] stacktrace: cleanup inconsistent variable type
-To: Walter Wu <walter-zh.wu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Peter Zijlstra <peterz@infradead.org>,
- Ingo Molnar <mingo@kernel.org>, Josh Poimboeuf <jpoimboe@redhat.com>,
- Andrew Morton <akpm@linux-foundation.org>
-References: <20200421013511.5960-1-walter-zh.wu@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-Message-ID: <d2a9f155-f309-0182-73c9-5c02d7014574@acm.org>
-Date: Wed, 22 Apr 2020 18:21:13 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ id 1jRQbG-0007zR-4w; Thu, 23 Apr 2020 01:24:23 +0000
+X-UUID: 6290a55347df446bb5094e6942bd0e9b-20200422
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=n69err7fZ+dUEdayQQ/ds4lOY0vJ/aaYZuP0ALEneYI=; 
+ b=sODo5jYW1KGP42KOk/BcU5+1EADLT/hogKmhIwSI4FCuzLtVEy33o+xsJy8dI42hnYpPl5gP8+pnvbHB6UUhaiSLvILJBMii1ByJh3QFXwPqMynC2F7dviDxKfMX84nd6vfqoiF2DkUFHPRyEtKQ8j5vDYPLksEogftU2laF2lw=;
+X-UUID: 6290a55347df446bb5094e6942bd0e9b-20200422
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <fengping.yu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 947653832; Wed, 22 Apr 2020 17:24:06 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Apr 2020 18:24:11 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Apr 2020 09:24:05 +0800
+Received: from localhost.localdomain (10.15.20.246) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 23 Apr 2020 09:24:09 +0800
+From: Fengping yu <fengping.yu@mediatek.com>
+To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, Andy Shevchenko
+ <andriy.shevchenko@linux.intel.com>, Marco Felsch <m.felsch@pengutronix.de>,
+ Yingjoe Chen <yingjoe.chen@mediatek.com>
+Subject: [PATCH v5] add mtk matrix keypad driver for keypad on MTK SoC 
+Date: Thu, 23 Apr 2020 09:19:56 +0800
+Message-ID: <20200423011958.30521-1-fengping.yu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <20200421013511.5960-1-walter-zh.wu@mediatek.com>
-Content-Language: en-US
+X-TM-SNTS-SMTP: C4F198DFD9281E00ED4062512287613C53AF1CF5D317FAAF98071E88C786B0462000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200422_182118_418106_091EF4D1 
-X-CRM114-Status: GOOD (  11.39  )
+X-CRM114-CacheID: sfid-20200422_182422_197004_BC0F2510 
+X-CRM114-Status: UNSURE (   6.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,24 +84,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mm@kvack.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- wsd_upstream <wsd_upstream@mediatek.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com,
+ linux-input@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/20/20 6:35 PM, Walter Wu wrote:
-> Modify the variable type of 'skip' member of struct stack_trace.
-> In theory, the 'skip' variable type should be unsigned int.
-> There are two reasons:
-> - The 'skip' only has two situation, 1)Positive value, 2)Zero
-> - The 'skip' of struct stack_trace has inconsistent type with struct
->    stack_trace_data, it makes a bit confusion in the relationship between
->    struct stack_trace and stack_trace_data.
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Change since v4:
+- remove extra space and redundant lines
+- remove disable_irq_nosync and enable_irq in irq handler
+- put defconfig as a single patch
+- unified device properties interface for ACPI and device trees
+- fixed other issue according reviewer comments
+
+fengping.yu (3):
+  dt-bindings: add matrix keypad documentation
+  arm64: configs: defconfig: enable mtk keypad config
+  drivers: input: keyboard: add mtk keypad driver
+
+ .../devicetree/bindings/input/mtk-kpd.txt     |  61 +++++
+ arch/arm64/configs/defconfig                  |   1 +
+ drivers/input/keyboard/Kconfig                |   9 +
+ drivers/input/keyboard/Makefile               |   1 +
+ drivers/input/keyboard/mtk-kpd.c              | 242 ++++++++++++++++++
+ 5 files changed, 314 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/input/mtk-kpd.txt
+ create mode 100644 drivers/input/keyboard/mtk-kpd.c
+
+--
+2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
