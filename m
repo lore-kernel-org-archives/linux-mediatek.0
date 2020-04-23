@@ -2,89 +2,63 @@ Return-Path: <SRS0=CwkH=6H=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BB74C54FCB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 16:48:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 60A4AC54FD0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 16:59:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6CCBD20706
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 16:48:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 088CA20781
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 16:59:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="P0Z2XSAH";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="BZAU2ZE5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CCBD20706
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NJ0fz7bG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 088CA20781
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/9JIhqA1S8WCea8pCSffbpIWzIjPqE6+q9/XEe64ssM=; b=P0Z2XSAH2pW1JY
-	tIIYLSEY5ETbm8mmFKLEEZRpsSOcP8L+p8MZGkhtQfvtheDTpGNkQ6XAXR3i+mbshS4+d6CAws0Pw
-	gG1u5sy+KPdS2IUzdL9SezwC1NLvEWUf6t8ur+W7liEg4hGmWbP4rVOgD73DgnvJ2TGfSb2Pye/z9
-	lho1xLmAl7yHSo+esDauF7qibQ00dWDS/4bXhe6u3I2ZC0L52NMPy+PNW58w7gC5gglqVvQ/liIgE
-	9Fd5Y4OpjsdIAW6m9GXRwRz9urF/ZV/+qcAuQcQahQWlftHbYhPQyuDwtTXFkjPeOheWOsCW1s+Qn
-	S1ZDiXckq7b6y8jaGxLw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=co1RbUu/IfuquxAzghXOwl495lyBR0g7ZQF1XQfNTaU=; b=NJ0fz7bGt+FvKPNtU0H6Ibwrd
+	93a+yQFEga6Z2S1oJMhc7djfvZL5u2N4xKVCRJ4iIk1RPN+fJdPHpFn+PpcRsLp7n1shFWxCvrr7S
+	HvA2m7njHq7nhaneXUjjrdEnpNSB9umxh8CUg3a9K5XYfWEChzz+BIo5+GtS5CUUVUQIST1pFMRr+
+	scYhUoDrjKrEVTOq7Elo2R0k+Msc4z+5IZlqkJyxEG/JDO5UY9YTQCkieL55UqC0Q8fQBaSqrR3nN
+	etYCdcpKrcp8w6NKKP5kuec7jvUyTf7IaASble6IqhzMVjH5ujaNKaPoF+n3GzaXUc1GybTbyICx+
+	/OrgHwNjQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jRf1F-0007CN-Vo; Thu, 23 Apr 2020 16:48:09 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jRf1D-0007Ax-2E
- for linux-mediatek@lists.infradead.org; Thu, 23 Apr 2020 16:48:08 +0000
-Received: by mail-wm1-x342.google.com with SMTP id u127so7298490wmg.1
- for <linux-mediatek@lists.infradead.org>; Thu, 23 Apr 2020 09:48:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=oeW7DpwK6OFjCBKNQLrqnMbfGJLDE0OYjEBqgEog0ow=;
- b=BZAU2ZE5Ne/lQJ9uzrq8Y6uSMWk2RcQiCd+b+CVY3yzxGoOUoDmU1pFRzaKcLc3JOA
- hb9PbGSk3EG61c2VuKMh6n9nVdeCeKdREDewxGx/cfMu7d/fdgQ5NJjOQfO8cyEYmuWy
- Ck60HvH+uctNWqEGuN32PGsDQZnbPrP5HSsiWC+kJeuFNkdgdMmQ3iqrZGNADnBi2Mo8
- MfqCco6iumadOLg9jIS/GhZufVO/mUhu+P3cgkrAhO/w96tB6Yvmf7fIEbLSelHxAs4q
- RM24gcZ/PnV/LQr9mWTKhfYKOuDyTFtT3m0wjORsqAndwMtN7yTnUaW/M18X37gEhghl
- oEGQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=oeW7DpwK6OFjCBKNQLrqnMbfGJLDE0OYjEBqgEog0ow=;
- b=Zav2CsP3pu/Ki/dLzYv2He/PScQlFeFGEBpoXbSArmQMqxPXiBF+wkgj3UEzYExhKV
- 9CZmtAB908EonQmuNNi+nFmB7lTcnrt7HMsiDuGN3MVJr9S0vDcOgdHOXzw7RHwDKMhs
- Vp8FlsUgv18NkP95+lnyZDZ9bS9FMEm85irYSYAqxPrdj03K61RUjzuTgQh5zal7T0rS
- B95etkD+M1RemBjAaaWLnTfoG584kpWdF3pwdfd3TAZUCYjosfQiPHQA6EPfsCRvgvvi
- RED4HYTIA0F9CuXYBlpsW9apCejFXL7wCpWVTS9JsXaIaqqkO6cRDICFkYJZLjweWoj0
- racA==
-X-Gm-Message-State: AGi0Pub7Goq95AW0slGa9gsGuAdJVTKJfgvqrrV/1+r00TjlTNBqH3US
- cDaSJ47Lp9JyDYfsFQ0UWhzfwg==
-X-Google-Smtp-Source: APiQypL1N3VJZzRRWP+PtS/fdnZb1T66+D/zjqtbVIUR8pO7XtbEvjwXmID9KnBgg0fgEaDYfwzw+Q==
-X-Received: by 2002:a1c:ac44:: with SMTP id v65mr5176929wme.33.1587660485234; 
- Thu, 23 Apr 2020 09:48:05 -0700 (PDT)
-Received: from linaro.org ([37.167.216.250])
- by smtp.gmail.com with ESMTPSA id a20sm4857880wra.26.2020.04.23.09.48.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Apr 2020 09:48:04 -0700 (PDT)
-Date: Thu, 23 Apr 2020 18:47:59 +0200
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-To: Lukasz Luba <lukasz.luba@arm.com>
-Subject: Re: [PATCH v6 08/10] OPP: refactor dev_pm_opp_of_register_em() and
- update related drivers
-Message-ID: <20200423164759.GF65632@linaro.org>
+	id 1jRfBa-0006IW-LO; Thu, 23 Apr 2020 16:58:50 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jRfB9-00063b-Su; Thu, 23 Apr 2020 16:58:28 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 85EE330E;
+ Thu, 23 Apr 2020 09:58:22 -0700 (PDT)
+Received: from [10.37.12.89] (unknown [10.37.12.89])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8B9B73F68F;
+ Thu, 23 Apr 2020 09:57:48 -0700 (PDT)
+Subject: Re: [PATCH v6 04/10] PM / EM: add support for other devices than CPUs
+ in Energy Model
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
 References: <20200410084210.24932-1-lukasz.luba@arm.com>
- <20200410084210.24932-9-lukasz.luba@arm.com>
+ <20200410084210.24932-5-lukasz.luba@arm.com>
+ <20200423151250.GB65632@linaro.org>
+From: Lukasz Luba <lukasz.luba@arm.com>
+Message-ID: <ff1c8cc5-f64d-6156-7d30-97b8426c6f99@arm.com>
+Date: Thu, 23 Apr 2020 17:57:45 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200410084210.24932-9-lukasz.luba@arm.com>
+In-Reply-To: <20200423151250.GB65632@linaro.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200423_094807_138468_ADF17FAF 
-X-CRM114-Status: UNSURE (   6.35  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200423_095823_996280_1582ACBD 
+X-CRM114-Status: GOOD (  17.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,20 +87,72 @@ Cc: nm@ti.com, juri.lelli@redhat.com, peterz@infradead.org,
  rdunlap@infradead.org, rjw@rjwysocki.net, linux-kernel@vger.kernel.org,
  kernel@pengutronix.de, sudeep.holla@arm.com, patrick.bellasi@matbug.net,
  shawnguo@kernel.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 10, 2020 at 09:42:08AM +0100, Lukasz Luba wrote:
-> The Energy Model framework supports not only CPU devices. Drop the CPU
-> specific interface with cpumask and add struct device. Add also a return
-> value, user might use it. This new interface provides easy way to create
-> a simple Energy Model, which then might be used by e.g. thermal subsystem.
->
-> Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
 
-Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+
+On 4/23/20 4:12 PM, Daniel Lezcano wrote:
+> On Fri, Apr 10, 2020 at 09:42:04AM +0100, Lukasz Luba wrote:
+>> Add support for other devices that CPUs. The registration function
+>> does not require a valid cpumask pointer and is ready to handle new
+>> devices. Some of the internal structures has been reorganized in order to
+>> keep consistent view (like removing per_cpu pd pointers). To track usage
+>> of the Energy Model structures, they are protected with kref.
+> 
+> Why not add the energy model structure in the struct device directly?
+
+Do you mean this structure?
+https://elixir.bootlin.com/linux/latest/source/include/linux/device.h#L537
+
+and to put something like:
+struct device {
+...
+	struct dev_pm_domain	*pm_domain;
+#ifdef CONFIG_ENERGY_MODEL
+	struct em_perf_domain	*em_pd;
+#endif
+...
+};
+
+> 
+> For instance for the em_cpu_get() function, the cpu id allows to retrieve the
+> cpu device and then from there, the energy model instead of browsing another
+> list. The em_device life cycle will be tied to the struct device.
+
+That would be perfect.
+
+> 
+> Then when the struct device and the em_device are connected, add the debugfs
+> with a struct device list for those which are energy aware, so you end up with
+> a structure:
+> 
+> struct em_device {
+> 	struct device *dev;
+> 	struct list_head em_dev_list;
+> };
+> 
+> (a global single dentry for debugfs to do a recursive delete is enough).
+> 
+> Locks when inspecting and add/removal called from the struct device release
+> function. So no need of an extra refcounting.
+> 
+> Does it make sense?
+> 
+
+Indeed it looks much cleaner/simpler.
+
+I will try to address this idea and get rid of refcounting.
+
+This should be doable in this patch (4/10). In the v7 I will keep your
+ACKs for other patches that you have already commented.
+
+Thank you for your suggestions and review.
+
+Regards,
+Lukasz
 
 
 _______________________________________________
