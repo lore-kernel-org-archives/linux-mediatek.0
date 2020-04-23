@@ -2,99 +2,70 @@ Return-Path: <SRS0=CwkH=6H=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 131BCC2BA19
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 09:55:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B4F65C2BA19
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 10:41:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D9A7020776
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 09:55:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 81F4720776
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Apr 2020 10:41:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MD6xOjcx";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="DsyXxkNH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D9A7020776
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QmFOGPGO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 81F4720776
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fEthZ4TE6Wp9Pp9No/GAGc9nTIWSpiZ61drN4FnAnx0=; b=MD6xOjcx++c33q
-	VgFq1CSQ1D9daZ/5faOXqX06saxgjxbdLYI/VB6NSaOJ4TRwcLx0llTccE5Qre6PxmbyUfnhCkXNZ
-	N+t+UjG+mOXAJRn2Z35WU+JTqT7uIlTjfA6YZ/9KkHYcnyeQ6C0E9ySQN2WAVj5Mr2BdzhtcCqDiB
-	a9kiMDD7vWIE1+ObwrgEmBdK9aaDW3DaKiAw4MTqFnp+NeMRIciuW8GL8PwcxG8XBnVclT1+ht6z2
-	nXmzV1zsthoEfJcIEOH3rHyVbhAbjCL5QP7g4NW6ocfH30xEFsBt/MLrMU+uH3AVORSsJGs260d8W
-	bf4YOjktA4TzXd7YzvHQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=95wc6C5vxEc+l48TJ4bs6kA9KWsR5UOzIQB0qMyDQB0=; b=QmFOGPGOMpU+UG
+	MjntS28XSOvX3FHIi36rggXHph4uzQyENWW21BiaJ0g+cvsdaa3bIVZXJyc0tmRCw/25oy4Qmg0Lq
+	bFANZoVHdXRtZCdedRhf4eTwr7spvj1D9/ewaQbB2nlldGyOf/uBXvOLVszMJl+JXhVrfjqnE8taB
+	93/Mwl+P6Z9WoDbweb4DBWNLUDb6jZxhgosZ7JRUofBEy844N14j2b5+cF/Sw023xEh44pmwLn65O
+	9Uusy/oLP3+TQ6l+bJK8pyV+ah2UUvMZ+/8I5QusxE0m6oCoCBXqiw0yVuloqH52s3m5uqtLWJPyP
+	CHHtgJzGTqk0ZK0Q4d4Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jRYZw-0006VY-3i; Thu, 23 Apr 2020 09:55:32 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1jRZI6-0005l2-Ed; Thu, 23 Apr 2020 10:41:10 +0000
+Received: from mga14.intel.com ([192.55.52.115])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jRYZk-0006Lm-9e
- for linux-mediatek@lists.infradead.org; Thu, 23 Apr 2020 09:55:21 +0000
-Received: by mail-wm1-x343.google.com with SMTP id u16so5853347wmc.5
- for <linux-mediatek@lists.infradead.org>; Thu, 23 Apr 2020 02:55:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=CNZHIzr/sBiOQMg4o7SLifEDxLKhTFFCAk3xHKq/Wkk=;
- b=DsyXxkNH0btzVamhIFYzv5e350yw7X/w1LKFwogh0iIwGOZ96kVPXuXkDX32LZlwAC
- 94fwg0MWeHie4nOwR95Jrn7cRtHYa60rXz9VOiMSFM/iKMyymQip57NZrPEQTg9A9yrb
- sU1IjCQpH+9HLWLKs738y4q6R63guG/pQy4hAMFfXU/FaxMDYHU6DOWGVn+x2CbWEpkx
- Vo5zrIPAcwf72RxKvq889DHMx7Sv/eAARH47GGoJKHa8+8uB7M208Vnt1tgwYaqBlp/v
- 5UkeF6iEQSn2bZD9AtRien1PivU6B7DVufUotKDoDbqTxnfNsCAXWKrMdChEeIIErbT7
- 0RBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=CNZHIzr/sBiOQMg4o7SLifEDxLKhTFFCAk3xHKq/Wkk=;
- b=cX+ZNZxqoexWSd+cI9w6nZz9w//UtmL/HDzdCrUyXHfQKlepi2WpvXNUR9lkdkAMBF
- JVy/wgSJkkoEyulRpP0mHwUp6YJKlnIM1VexePbM2il80dY3V3lvPrxCQ3425AX//MMp
- /G4BBxOuH4+uC3X6d1fcTQq2ruiydRA4nS/OWvO8Siz6RAJoj+eHARTdt9hWUT2tkO65
- bgRpLzG3hAcpWIiSZZdvPkZkJO3oKbXY3QkHMJm+kYcW29fKl9ljKRqSwP+YDLcRuKaZ
- HEvw0IosEOoD6Pid/DOxX9ySxUFkF+AZYHPN8f4EOZCqDuHqy0ecJwOR70ROLHt3WWSV
- OmLw==
-X-Gm-Message-State: AGi0PuZzYynL9Ohp7xTT5/F3Mg1+Cycl7rIb+Q2kgK3FRLE8fJC4RwMn
- j+6b34nschBAYfcUf+S0NDTDNg==
-X-Google-Smtp-Source: APiQypL6ZyvDfFcOWCfVXnw6SXTOR2+Oss71maaUGGL6LrnXJ7de4PKprtb6zu5/4UALDKzAFGgGXw==
-X-Received: by 2002:a05:600c:2112:: with SMTP id
- u18mr3386058wml.112.1587635717910; 
- Thu, 23 Apr 2020 02:55:17 -0700 (PDT)
-Received: from ?IPv6:2a01:e34:ed2f:f020:75d8:694c:3b71:4e43?
- ([2a01:e34:ed2f:f020:75d8:694c:3b71:4e43])
- by smtp.googlemail.com with ESMTPSA id i17sm2997016wml.23.2020.04.23.02.55.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Apr 2020 02:55:17 -0700 (PDT)
-Subject: Re: [PATCH v6 01/10] PM / EM: change naming convention from
- 'capacity' to 'performance'
-To: Lukasz Luba <lukasz.luba@arm.com>, linux-kernel@vger.kernel.org,
- linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- dri-devel@lists.freedesktop.org, linux-omap@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-imx@nxp.com
-References: <20200410084210.24932-1-lukasz.luba@arm.com>
- <20200410084210.24932-2-lukasz.luba@arm.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Message-ID: <3f764593-99fa-bce3-3630-ce16101df536@linaro.org>
-Date: Thu, 23 Apr 2020 11:55:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ id 1jRZI4-0005k4-6V; Thu, 23 Apr 2020 10:41:09 +0000
+IronPort-SDR: glUBD+y0pC9yYtyAuCVXGZQGVP7nWk+Wse4AEyyuUaIrDGp1PcttXp95AWqfrS1S7eb4a10SGv
+ M1ySXDjjrwQg==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Apr 2020 03:41:06 -0700
+IronPort-SDR: Kx7K6p4/N5TZr/15qVHfz7t/YfWa8qfU8ew8siy/+r4y7JvNcT3POh2yqW11AOx+oW2pMXXyru
+ ohidmBdCH2uA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,307,1583222400"; d="scan'208";a="291141993"
+Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
+ by fmsmga002.fm.intel.com with ESMTP; 23 Apr 2020 03:41:04 -0700
+Received: from andy by smile with local (Exim 4.93)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1jRZI3-002cOT-JJ; Thu, 23 Apr 2020 13:41:07 +0300
+Date: Thu, 23 Apr 2020 13:41:07 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Fengping yu <fengping.yu@mediatek.com>
+Subject: Re: [PATCH v5 3/3] drivers: input: keyboard: add mtk keypad driver
+Message-ID: <20200423104107.GO185537@smile.fi.intel.com>
+References: <20200423011958.30521-1-fengping.yu@mediatek.com>
+ <20200423011958.30521-4-fengping.yu@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <20200410084210.24932-2-lukasz.luba@arm.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20200423011958.30521-4-fengping.yu@mediatek.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200423_025520_340812_0C3625B5 
-X-CRM114-Status: UNSURE (   8.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200423_034108_247229_DA898092 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,36 +77,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: nm@ti.com, juri.lelli@redhat.com, peterz@infradead.org,
- viresh.kumar@linaro.org, liviu.dudau@arm.com, bjorn.andersson@linaro.org,
- bsegall@google.com, festevam@gmail.com, mka@chromium.org, robh@kernel.org,
- amit.kucheria@verdurent.com, lorenzo.pieralisi@arm.com,
- vincent.guittot@linaro.org, khilman@kernel.org, steven.price@arm.com,
- cw00.choi@samsung.com, mingo@redhat.com, mgorman@suse.de, rui.zhang@intel.com,
- alyssa.rosenzweig@collabora.com, orjan.eide@arm.com, daniel@ffwll.ch,
- b.zolnierkie@samsung.com, s.hauer@pengutronix.de, rostedt@goodmis.org,
- matthias.bgg@gmail.com, Dietmar.Eggemann@arm.com, airlied@linux.ie,
- tomeu.vizoso@collabora.com, qperret@google.com, sboyd@kernel.org,
- rdunlap@infradead.org, rjw@rjwysocki.net, agross@kernel.org,
- kernel@pengutronix.de, sudeep.holla@arm.com, patrick.bellasi@matbug.net,
- shawnguo@kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: wsd_upstream@mediatek.com, Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Marco Felsch <m.felsch@pengutronix.de>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org,
+ Yingjoe Chen <yingjoe.chen@mediatek.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMTAvMDQvMjAyMCAxMDo0MiwgTHVrYXN6IEx1YmEgd3JvdGU6Cj4gVGhlIEVuZXJneSBNb2Rl
-bCB1c2VzIGNvbmNlcHQgb2YgcGVyZm9ybWFuY2UgZG9tYWluIGFuZCBjYXBhY2l0eSBzdGF0ZXMg
-aW4KPiBvcmRlciB0byBjYWxjdWxhdGUgcG93ZXIgdXNlZCBieSBDUFVzLiBDaGFuZ2UgbmFtaW5n
-IGNvbnZlbnRpb24gZnJvbQo+IGNhcGFjaXR5IHRvIHBlcmZvcm1hbmNlIHN0YXRlIHdvdWxkIGVu
-YWJsZSB3aWRlciB1c2FnZSBpbiBmdXR1cmUsIGUuZy4KPiB1cGNvbWluZyBzdXBwb3J0IGZvciBv
-dGhlciBkZXZpY2VzIG90aGVyIHRoYW4gQ1BVcy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBMdWthc3og
-THViYSA8bHVrYXN6Lmx1YmFAYXJtLmNvbT4KPiAtLS0KCkFja2VkLWJ5OiBEYW5pZWwgTGV6Y2Fu
-byA8ZGFuaWVsLmxlemNhbm9AbGluYXJvLm9yZz4KCgotLSAKPGh0dHA6Ly93d3cubGluYXJvLm9y
-Zy8+IExpbmFyby5vcmcg4pSCIE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29DcwoKRm9s
-bG93IExpbmFybzogIDxodHRwOi8vd3d3LmZhY2Vib29rLmNvbS9wYWdlcy9MaW5hcm8+IEZhY2Vi
-b29rIHwKPGh0dHA6Ly90d2l0dGVyLmNvbS8jIS9saW5hcm9vcmc+IFR3aXR0ZXIgfAo8aHR0cDov
-L3d3dy5saW5hcm8ub3JnL2xpbmFyby1ibG9nLz4gQmxvZwoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Ckxp
-bnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On Thu, Apr 23, 2020 at 09:20:02AM +0800, Fengping yu wrote:
+> From: "fengping.yu" <fengping.yu@mediatek.com>
+> 
+
+This misses the commit message. It's a show stopper for such patches.
+Read this [1].
+
+[1]: https://chris.beams.io/posts/git-commit/
+
+...
+
+> +#define KPD_DEBOUNCE_MASK	GENMASK(13, 0)
+> +#define KPD_DEBOUNCE_MAX	256000
+
+Is there any unit in which debounce time is being measured? Add it as a suffix
+to the definition, if it's possible.
+
+...
+
+> +#define BITS_TO_U32(nr)	DIV_ROUND_UP(nr, BITS_PER_BYTE * sizeof(u32))
+
+This already defined in bits.h.
+
+...
+
+> +	keypad->base = devm_platform_ioremap_resource(pdev, 0);
+> +	if (IS_ERR(keypad->base)) {
+
+> +		dev_err(&pdev->dev, "Failed to get resource and iomap keypad\n");
+
+This is duplicate noisy message, please remove.
+
+> +		return PTR_ERR(keypad->base);
+> +	}
+
+...
+
+> +	writew(keypad->key_debounce * 32 / 1000 & KPD_DEBOUNCE_MASK,
+
+Perhaps one pair of parentheses is needed to make logic clear.
+
+(Yes, I remember I commented on this in earlier versions where it was many
+ parentheses around above calculations, but you have to use common sense as well)
+
+> +		keypad->base + KP_DEBOUNCE);
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
