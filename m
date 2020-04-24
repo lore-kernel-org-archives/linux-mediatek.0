@@ -2,22 +2,22 @@ Return-Path: <SRS0=cCBG=6I=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 25058C55186
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Apr 2020 19:33:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9DA40C54FCB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Apr 2020 19:33:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E999D2075A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Apr 2020 19:33:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6D7712075A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Apr 2020 19:33:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TmPA9COf";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="rSZieFD4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E999D2075A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rwyr+J9v";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Ohk+d/gL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D7712075A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eoVGK+hQcTqprV5fu26O0LCUp8hbR+P75oMvLgVZPgg=; b=TmPA9COfBub1B5
-	yDzI0g2rm7sM9f4c3XEBwlBjuWlRzKOdlCBI6laHgvzXdBYV8LIowm3640x0HnNsLZo9Opn4oEDy7
-	zhZh3TeN7l3RIXM7A9DkYPa+gK79sLK1LMhB5Iwld/hqGWtcsqF2EPvqvWsDouchvlQUuRpa9f252
-	qxyCm+iZYcQyvZWnqNLLSCNcQv0opT/UJsyiRJUd9Xv4vGaJoyf6hmM2y+AroloDbbJSVOuMV5kz7
-	RrnvlV4SHNYPrN3z1Ko6wmaVgDbgnQmRvxw27rdaP3qCLZ2OdXn/9p+DsUp3jcOmNkwlbue6BnYHU
-	QckefGPuhNfUjRyX7RIA==;
+	List-Owner; bh=3APgifMB888iMUxNPEFwgETzNV1ZOfkgse4vtYAKsIM=; b=rwyr+J9vPM+tPC
+	YiERkAm4FbnglqbwZ3wv3B0l7dRAFS+7oO9cfJ7POTYwF2E+CgIs1Y4t+uTcYmU67JLeemwT+OoFO
+	A626NMKQrgj+l39Xl/SBTFcmm6PxqjtwMrKSBtdsC2FIq5cblQdqv616gwLhMRuwaAHGZ2UgfEJZ5
+	I16r37hRzK6TfzRtQVc0txXbYDH1VdSx83j2Jb0H5sUR6nDIIMCROt7whEYUbiwISwFnHmgWVVupz
+	brA79dY+JHZ1ncxpD4dKxIMV5B9FWdpBsW0/YmTOQU1YWPOk6muNPGOaqzuzZ5dUHGtzlEy9RLphh
+	RXkD96NAeMH8uolO4gMQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jS44U-0007my-2N; Fri, 24 Apr 2020 19:33:10 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jS44X-0007qG-9L; Fri, 24 Apr 2020 19:33:13 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jS44O-0007iz-Oq
- for linux-mediatek@lists.infradead.org; Fri, 24 Apr 2020 19:33:05 +0000
-X-UUID: 78074ef2ab1c4969bc433c415a7622b4-20200424
+ id 1jS44Q-0007k2-1c
+ for linux-mediatek@lists.infradead.org; Fri, 24 Apr 2020 19:33:07 +0000
+X-UUID: f494c41b834d482cb6cf29dc5a836600-20200424
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=333UAHMqqUfl/oqO1oNmHQeRS6Hf48FRzVK5RbsxFDg=; 
- b=rSZieFD4rmu6Nvnhips9wGHPy6kKX+BeDzQqpf+EBU0RydesTJ6v6w3nDhfHSA48bGLPFPuEkSpn5JlSH0gT9Z5Rn3ijDkD9TFbS400hto6sOL0KD3KxYapSQBRnfw7ZG6Zcv34GN+pEEntSOjavhpLDIPRvV6yIqlLYPBEik7I=;
-X-UUID: 78074ef2ab1c4969bc433c415a7622b4-20200424
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=XDktOf2vniFyQDGqyF7ynyGfsNnKETf+PHxTBonDFBg=; 
+ b=Ohk+d/gL0eT1O4vtwQy1hnZaKOl+CotOV6Sm2SuQr8ckm/cRdZW0rftFHdufmwzBjdbLdtoteEQFPUshpKCGdgYjvk9vBcRKVLDQn2Yz0/6rrjuQL22/svSkZ2bwbHIxq4z37AWIGItO7g5+wyI4uMsqe4iLNXoKKQCSggJrMak=;
+X-UUID: f494c41b834d482cb6cf29dc5a836600-20200424
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 105296040; Fri, 24 Apr 2020 11:32:54 -0800
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ with ESMTP id 1240431480; Fri, 24 Apr 2020 11:33:04 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 24 Apr 2020 12:32:49 -0700
+ 15.0.1497.2; Fri, 24 Apr 2020 12:33:00 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 25 Apr 2020 03:32:51 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 25 Apr 2020 03:32:46 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Sat, 25 Apr 2020 03:32:50 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>
-Subject: [PATCH v3 05/18] mt76: add HE phy modes and hardware queue
-Date: Sat, 25 Apr 2020 03:32:26 +0800
-Message-ID: <a46fac373d73eceeb8c60010eac596762208f045.1587756404.git.ryder.lee@mediatek.com>
+Subject: [PATCH v3 04/18] mt76: adjust wcid size to support new 802.11ax
+ generation
+Date: Sat, 25 Apr 2020 03:32:25 +0800
+Message-ID: <352573a70a544487e82aff10c20859bc6b44d6a0.1587756404.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <cover.1587756404.git.ryder.lee@mediatek.com>
 References: <cover.1587756404.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200424_123304_806380_651FCF91 
-X-CRM114-Status: UNSURE (   6.60  )
+X-CRM114-CacheID: sfid-20200424_123306_089176_35512276 
+X-CRM114-Status: UNSURE (   8.50  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -95,44 +96,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is a preliminary patch to support 11ax deivces.
+The newer 802.11ax devices (i.e. MT7915E) can connect to much more
+peers than previous generations.
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt76.h | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt76.h | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 2d0fb57f050b..254fbf5d094a 100644
+index b2e619bab0e9..2d0fb57f050b 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt76.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -60,6 +60,7 @@ enum mt76_txq_id {
- 	MT_TXQ_BK = IEEE80211_AC_BK,
- 	MT_TXQ_PSD,
- 	MT_TXQ_MCU,
-+	MT_TXQ_MCU_WA,
- 	MT_TXQ_BEACON,
- 	MT_TXQ_CAB,
- 	MT_TXQ_FWDL,
-@@ -69,6 +70,7 @@ enum mt76_txq_id {
- enum mt76_rxq_id {
- 	MT_RXQ_MAIN,
- 	MT_RXQ_MCU,
-+	MT_RXQ_MCU_WA,
- 	__MT_RXQ_MAX
+@@ -181,7 +181,7 @@ enum mt76_wcid_flags {
+ 	MT_WCID_FLAG_PS,
  };
  
-@@ -579,6 +581,10 @@ enum mt76_phy_type {
- 	MT_PHY_TYPE_HT,
- 	MT_PHY_TYPE_HT_GF,
- 	MT_PHY_TYPE_VHT,
-+	MT_PHY_TYPE_HE_SU = 8,
-+	MT_PHY_TYPE_HE_EXT_SU,
-+	MT_PHY_TYPE_HE_TB,
-+	MT_PHY_TYPE_HE_MU,
- };
+-#define MT76_N_WCIDS 128
++#define MT76_N_WCIDS 288
  
- #define __mt76_rr(dev, ...)	(dev)->bus->rr((dev), __VA_ARGS__)
+ /* stored in ieee80211_tx_info::hw_queue */
+ #define MT_TX_HW_QUEUE_EXT_PHY		BIT(3)
+@@ -201,7 +201,7 @@ struct mt76_wcid {
+ 	struct ewma_signal rssi;
+ 	int inactive_count;
+ 
+-	u8 idx;
++	u16 idx;
+ 	u8 hw_key_idx;
+ 
+ 	u8 sta:1;
+@@ -268,7 +268,7 @@ struct mt76_rx_tid {
+ 
+ struct mt76_tx_cb {
+ 	unsigned long jiffies;
+-	u8 wcid;
++	u16 wcid;
+ 	u8 pktid;
+ 	u8 flags;
+ };
+@@ -443,7 +443,7 @@ struct mt76_mmio {
+ struct mt76_rx_status {
+ 	union {
+ 		struct mt76_wcid *wcid;
+-		u8 wcid_idx;
++		u16 wcid_idx;
+ 	};
+ 
+ 	unsigned long reorder_time;
+@@ -620,7 +620,7 @@ enum mt76_phy_type {
+ #define mt76_hw(dev) (dev)->mphy.hw
+ 
+ static inline struct ieee80211_hw *
+-mt76_wcid_hw(struct mt76_dev *dev, u8 wcid)
++mt76_wcid_hw(struct mt76_dev *dev, u16 wcid)
+ {
+ 	if (wcid <= MT76_N_WCIDS &&
+ 	    mt76_wcid_mask_test(dev->wcid_phy_mask, wcid))
 -- 
 2.18.0
 _______________________________________________
