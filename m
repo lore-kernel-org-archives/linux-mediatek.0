@@ -2,65 +2,68 @@ Return-Path: <SRS0=gkfg=6L=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7146BC54FD0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2020 07:53:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A7EFC54FD0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2020 09:32:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 44DF2206B6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2020 07:53:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1DA35206D4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2020 09:32:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mPmeMcCO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 44DF2206B6
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vivo.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YD/5RCtn"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1DA35206D4
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ite.com.tw
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4DZN2W1qU7MGzHAHNrUYXvedrnBoLJiQoJRLCoHchIY=; b=mPmeMcCOAXIWkt
-	cIR0JzyKx15W61M5AioelOrSVqHbNpuoKLp8SSNow/uuJRCR6Ob6Eb/2skTFrjZyjf8YxQ1nyx8lY
-	2oOlzsC5X3wvyAQe6BoxKaTcn6k0s+gXU7NpS2UKrOKpHLNVMCOS1mz/I0naDpWDM/b2mOFr3ZfLl
-	diKf38tztIlBU8q3G6rd606n0xY/m6Uc2t+v2oelgkrVqWiown2LmcaTUFq/rAdOwaPqcebhPBdHE
-	HwkDpABIjaspqq19AWYs3/Gp3lYUAuDEL9YVxojEm5LxJS2pQbcye3W0sJirYzEY7/rK2AsqCSyuZ
-	St/qr/JPz4RuOGwm35gw==;
+	List-Owner; bh=5xMDeJYB0AyLTRRwHv1sVFdxkuU9/MF7qamBgUpd0bo=; b=YD/5RCtniWT/Ku
+	1JhBLen1kVp1hFr7h6fa5JC/OO650gxNjP9J2rwS+uBn6OY01fstZ84NMWyDZxYi/rgReolef8DsL
+	9Jayesy+F1HrihrC7DrK8YYPbJ9j1OpRJz+udWiBgtXGcaz5pTT3Tus6B1qqYnrqUgIIjlxQy5rD4
+	GoNkSIRu3MdAG+gVvjXVgJG8aK+sGH+aLp1cX3TwOPust+MQHZYtrItotquhFMOjwMQevggZDPTxd
+	uTym4LUkZuJ1v9RkSNh1Z5yYtF6V32GprIqxS09KXvB0439IPQ2IaEOUiP1OPz8JNjCamfuvUjV6/
+	eXBoeGjEVE5aswIx+Iog==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jSyZg-0007iR-AM; Mon, 27 Apr 2020 07:53:08 +0000
-Received: from mail-m17613.qiye.163.com ([59.111.176.13])
+	id 1jT07i-0000po-N9; Mon, 27 Apr 2020 09:32:22 +0000
+Received: from 60-251-196-230.hinet-ip.hinet.net ([60.251.196.230]
+ helo=ironport.ite.com.tw)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jSyZW-0007Yt-Hq
- for linux-mediatek@lists.infradead.org; Mon, 27 Apr 2020 07:52:59 +0000
-Received: from ubuntu.localdomain (unknown [157.0.31.122])
- by mail-m17613.qiye.163.com (Hmail) with ESMTPA id 58894482675;
- Mon, 27 Apr 2020 15:52:45 +0800 (CST)
-From: Bernard Zhao <bernard@vivo.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] drm/mediatek: cleanup coding style in mediatek a bit
-Date: Mon, 27 Apr 2020 00:52:38 -0700
-Message-Id: <20200427075238.2828-1-bernard@vivo.com>
-X-Mailer: git-send-email 2.26.2
+ id 1jT07X-0000dl-Ap; Mon, 27 Apr 2020 09:32:13 +0000
+IronPort-SDR: 03tNGgORm4fYJDbu4RNLVwBLIPVqQqd9fHfvk56lkvOModc0w26hJvlRnmRqBNxqFJ+g0Mmyrj
+ 12/d/rTrCqgg==
+Received: from unknown (HELO mse.ite.com.tw) ([192.168.35.30])
+ by ironport.ite.com.tw with ESMTP; 27 Apr 2020 17:32:05 +0800
+Received: from CSBMAIL1.internal.ite.com.tw (csbmail1.internal.ite.com.tw
+ [192.168.65.58]) by mse.ite.com.tw with ESMTP id 03R9W1f1045929;
+ Mon, 27 Apr 2020 17:32:01 +0800 (GMT-8)
+ (envelope-from allen.chen@ite.com.tw)
+Received: from allen-VirtualBox.internal.ite.com.tw (192.168.70.14) by
+ CSBMAIL1.internal.ite.com.tw (192.168.65.58) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1713.5; Mon, 27 Apr 2020 17:32:00 +0800
+From: allen <allen.chen@ite.com.tw>
+To: 
+Subject: [PATCH v9 0/3] IT6505 cover letter
+Date: Mon, 27 Apr 2020 17:16:51 +0800
+Message-ID: <1587979103-5630-1-git-send-email-allen.chen@ite.com.tw>
+X-Mailer: git-send-email 1.9.1
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgYFAkeWUFZT1VPTkhCQkJCQk1KQ05IWVdZKFlBSE
- 83V1ktWUFJV1kJDhceCFlBWTU0KTY6NyQpLjc#WQY+
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MzI6Lyo4LzgzPEg8MwIrUUw5
- MBRPCg5VSlVKTkNMQkxIQk1OTU9NVTMWGhIXVRkeCRUaCR87DRINFFUYFBZFWVdZEgtZQVlKTkxV
- S1VISlVKSUlZV1kIAVlBSE9NSDcG
-X-HM-Tid: 0a71ba9fc6f493bakuws58894482675
+X-Originating-IP: [192.168.70.14]
+X-ClientProxiedBy: CSBMAIL1.internal.ite.com.tw (192.168.65.58) To
+ CSBMAIL1.internal.ite.com.tw (192.168.65.58)
+X-TM-SNTS-SMTP: FF59412277EA3E11F0A6463377A2F20CD0C999F653F3C73A7397EFBC782DDE7E2000:8
+X-MAIL: mse.ite.com.tw 03R9W1f1045929
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200427_005258_758423_8FC03D32 
-X-CRM114-Status: UNSURE (   7.32  )
+X-CRM114-CacheID: sfid-20200427_023211_624519_4842D41C 
+X-CRM114-Status: UNSURE (   6.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -73,78 +76,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: opensource.kernel@vivo.com, Bernard Zhao <bernard@vivo.com>
+Cc: Maxime Ripard <mripard@kernel.org>, "open list:OPEN FIRMWARE AND
+ FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Stephan Gerhold <stephan@gerhold.net>,
+ Jau-Chih Tseng <Jau-Chih.Tseng@ite.com.tw>,
+ Heiko Stuebner <heiko.stuebner@theobroma-systems.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Jonas Karlman <jonas@kwiboo.se>,
+ open list <linux-kernel@vger.kernel.org>, "open list:DRM
+ DRIVERS" <dri-devel@lists.freedesktop.org>, Mark Brown <broonie@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Pi-Hsun Shih <pihsun@chromium.org>, Allen Chen <allen.chen@ite.com.tw>,
+ Sam Ravnborg <sam@ravnborg.org>, Rob Herring <robh@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This code change is to make code bit more readable.
-Optimise array size align to HDMI macro define.
-Add check if len is overange.
+The IT6505 is a high-performance DisplayPort 1.1a transmitter, fully compliant with DisplayPort 1.1a, HDCP 1.3 specifications. The IT6505 supports color depth of up to 36 bits (12 bits/color) and ensures robust transmission of high-quality uncompressed video content, along with uncompressed and compressed digital audio content.
 
-Signed-off-by: Bernard Zhao <bernard@vivo.com>
----
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+This series contains document bindings, revert commit, add vendor prefix, Kconfig to control the function enable or not.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index ff43a3d80410..40fb5154ed5d 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -311,15 +311,15 @@ static void mtk_hdmi_hw_send_info_frame(struct mtk_hdmi *hdmi, u8 *buffer,
- 	u8 checksum;
- 	int ctrl_frame_en = 0;
- 
--	frame_type = *buffer;
--	buffer += 1;
--	frame_ver = *buffer;
--	buffer += 1;
--	frame_len = *buffer;
--	buffer += 1;
--	checksum = *buffer;
--	buffer += 1;
-+	frame_type = *buffer++;
-+	frame_ver = *buffer++;
-+	frame_len = *buffer++;
-+	checksum = *buffer++;
- 	frame_data = buffer;
-+	if ((frame_len + HDMI_INFOFRAME_HEADER_SIZE) > len) {
-+		dev_err(hdmi->dev, "Wrong frame len: %d\n", frame_len;
-+		return;
-+	}
- 
- 	dev_dbg(hdmi->dev,
- 		"frame_type:0x%x,frame_ver:0x%x,frame_len:0x%x,checksum:0x%x\n",
-@@ -982,7 +982,7 @@ static int mtk_hdmi_setup_avi_infoframe(struct mtk_hdmi *hdmi,
- 					struct drm_display_mode *mode)
- {
- 	struct hdmi_avi_infoframe frame;
--	u8 buffer[17];
-+	u8 buffer[HDMI_INFOFRAME_HEADER_SIZE + HDMI_AVI_INFOFRAME_SIZE];
- 	ssize_t err;
- 
- 	err = drm_hdmi_avi_infoframe_from_display_mode(&frame,
-@@ -1008,7 +1008,7 @@ static int mtk_hdmi_setup_spd_infoframe(struct mtk_hdmi *hdmi,
- 					const char *product)
- {
- 	struct hdmi_spd_infoframe frame;
--	u8 buffer[29];
-+	u8 buffer[HDMI_INFOFRAME_HEADER_SIZE + HDMI_SPD_INFOFRAME_SIZE];
- 	ssize_t err;
- 
- 	err = hdmi_spd_infoframe_init(&frame, vendor, product);
-@@ -1031,7 +1031,7 @@ static int mtk_hdmi_setup_spd_infoframe(struct mtk_hdmi *hdmi,
- static int mtk_hdmi_setup_audio_infoframe(struct mtk_hdmi *hdmi)
- {
- 	struct hdmi_audio_infoframe frame;
--	u8 buffer[14];
-+	u8 buffer[HDMI_INFOFRAME_HEADER_SIZE + HDMI_AUDIO_INFOFRAME_SIZE];
- 	ssize_t err;
- 
- 	err = hdmi_audio_infoframe_init(&frame);
+Allen Chen (1):
+  WIP: drm/bridge: add it6505 driver
+
+allen (2):
+  dt-bindings: Add vendor prefix for ITE Tech. Inc.
+  WIP: dt-bindings: Add binding for IT6505.
+
+ .../bindings/display/bridge/ite,it6505.yaml        |   91 +
+ .../devicetree/bindings/vendor-prefixes.yaml       |    2 +-
+ drivers/gpu/drm/bridge/Kconfig                     |    7 +
+ drivers/gpu/drm/bridge/Makefile                    |    1 +
+ drivers/gpu/drm/bridge/ite-it6505.c                | 3136 ++++++++++++++++++++
+ 5 files changed, 3236 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/ite,it6505.yaml
+ create mode 100644 drivers/gpu/drm/bridge/ite-it6505.c
+
 -- 
-2.26.2
+1.9.1
 
 
 _______________________________________________
