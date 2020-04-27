@@ -2,82 +2,91 @@ Return-Path: <SRS0=gkfg=6L=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4CF1FC4CECD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2020 21:33:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 440F4C83001
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2020 23:58:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 21A922070B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2020 21:33:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0CFD62078C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Apr 2020 23:58:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Mqp8LgDz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 21A922070B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CQHCv0sE";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="HyUOe4hG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0CFD62078C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iFPXMzly5Ko9lKLWDK3ERDD82FgQZzUnNUTL6GCxdjg=; b=Mqp8LgDzHlyaEQ
-	Nbd7my8RLRVEX8PBhR7M/ECjWBIDg2zbW7mGTLena0j52OPRyrXejaconZd0U7kC4rc4Nf4m3z+Xj
-	WGcnevnTiqEgpx3ziXhCn5APBDdsh7+C5hk3Ix2OZHXsHZ89rRxKR8sIi4szZS55Bf5cd+1XVNQV0
-	RHAaT0Rxhw/ajqlXRp8PQmlCITfhtMUF1QKTeBtML+TeGCsDYIdheL1m6cTAy45twKf9hLzDWKc5w
-	SWW5x4JQfSrIo8vdqjmbIobBuYGpPNByDDgj2ObuDYp2t4umS2Z7tZe6VOHDjLiIO6UKftRhnvFBS
-	xFUFakJ1e1dJepnJlSjw==;
+	List-Owner; bh=WUC397ei2vvHn5obv2IKWyY1qh72kksaALNbGQMfmTE=; b=CQHCv0sEHo9YG/
+	kAFqvaqNKTgk8s396Atgp5kII/C9TMYj9jtU35ohEZsxy9qQx1TXhf3NkbiWx8T3V70yBNlgBOajV
+	94249xIVDsb8vkOzul13/h5Wjk7R5yjOKoPJuIGsAt7G4nBilQId2+C1lI2CXyuODsgkhdjaMx8xJ
+	CAJtC4lP5M7OUBOU7O96KizE2HJAz1dX7vqgSo88CIs0uuvrU+iScfg7DN1qYi0JxftAyUi0IVZMR
+	lEzepnHtAnotvi5hVzHC0veRzXCL3mpSoCMs9fRwi0bdCzBZSiPCZWEjBgim5SsL5lmWIi84nXeS2
+	RY9tTGsFZymwiI8IDS+A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTBN7-00006Y-Gx; Mon, 27 Apr 2020 21:33:01 +0000
-Received: from mail-ot1-f67.google.com ([209.85.210.67])
+	id 1jTDeB-0001WW-Tc; Mon, 27 Apr 2020 23:58:47 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTBMs-0008Ko-HJ; Mon, 27 Apr 2020 21:32:47 +0000
-Received: by mail-ot1-f67.google.com with SMTP id j4so29013298otr.11;
- Mon, 27 Apr 2020 14:32:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=VhX0m7XiVUavIDrF8Px+dNHE5Y+gy8GzoSAbvu2Xn34=;
- b=iBnP0ebLIeKHLx8q06MM0FJOLR1bsWI8GlZa+zfcfFouLDeJHC5vx1srZMazcOSYHf
- jfSPnUJ8fboF7L5bKPJpdo7toS2tUIDfI/V7rVeGlYiWDJRIheqi+kmYuBLuf1w4wCJx
- ArI5HapWQE0axt6DfGqQ0f629NK2L4dXxSVSsBnqMjUhf4FvwxPqwSCixcTqmGliShse
- S5zQDBPb1JaHFf+UYW3OpaB2/OMW678pmhhNrDi4NqevqyfEcVGqUTrOxPzNArR3Lr66
- xf+mUOfHPH1+wyJHTGAtGUVcne4NgZHZ/gGbCZFyNBk0/nSFrdoIEoALMFVNYix0Ou6F
- 8nNg==
-X-Gm-Message-State: AGi0PuZVVrlDEWKHbzyoPzJ2N9fRxYMXGzXqCKPdCqesNhFmQ/ZoG+3s
- zM/ghZDC7lag1zMcC/EQ+eZHo44=
-X-Google-Smtp-Source: APiQypKaNxXTFDM9s/8lHp/0DfHRTlPNydLnDnh9/hUQgcEGUw3vp0iDQdHVuaMxyOuo5fm7o/BuuA==
-X-Received: by 2002:aca:4f09:: with SMTP id d9mr631326oib.172.1588023164944;
- Mon, 27 Apr 2020 14:32:44 -0700 (PDT)
-Received: from rob-hp-laptop (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id j70sm90813oib.53.2020.04.27.14.32.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Apr 2020 14:32:44 -0700 (PDT)
-Received: (nullmailer pid 32460 invoked by uid 1000);
- Mon, 27 Apr 2020 21:32:42 -0000
-Date: Mon, 27 Apr 2020 16:32:42 -0500
-From: Rob Herring <robh@kernel.org>
-To: EastL <EastL.Lee@mediatek.com>
-Subject: Re: [PATCH v3 1/2] dt-bindings: dmaengine: Add MediaTek
- Command-Queue DMA controller bindings
-Message-ID: <20200427213242.GA32009@bogus>
-References: <1587955977-17207-1-git-send-email-EastL.Lee@mediatek.com>
- <1587955977-17207-2-git-send-email-EastL.Lee@mediatek.com>
+ id 1jTDcn-0000Br-Cu; Mon, 27 Apr 2020 23:57:23 +0000
+X-UUID: 1a13534ece9c44c3bdbe59583bceb5d3-20200427
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=+sx88la9jukwwPydWrvJ7BtN1WCn5H7eGpl+1G7y/Z8=; 
+ b=HyUOe4hGxSFsPaTl2pmChHo2fF3kYB8vV5ikPfxj1/K/lr4GhNFs49uwMhgIeBcjDpDPMwSUUprVqsJF9pDwfKqBLfH0oD7x66ImByQto5yR4xoGKPmZmWHlHefse6gkbY1hiSyZUIK0dA0KYO17JLNhkwvMV4TuwEVb0wyfOHU=;
+X-UUID: 1a13534ece9c44c3bdbe59583bceb5d3-20200427
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <chun-hung.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 236835507; Mon, 27 Apr 2020 15:57:16 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 27 Apr 2020 16:57:14 -0700
+Received: from mtkcas08.mediatek.inc (172.21.101.126) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 28 Apr 2020 07:57:08 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas08.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 28 Apr 2020 07:57:12 +0800
+From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+To: <mirq-linux@rere.qmqm.pl>, Jonathan Hunter <jonathanh@nvidia.com>, "Al
+ Cooper" <alcooperx@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ <bcm-kernel-feedback-list@broadcom.com>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, Michal Simek
+ <michal.simek@xilinx.com>, Thierry Reding <thierry.reding@gmail.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>, Ulf Hansson
+ <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland
+ <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Linus
+ Walleij" <linus.walleij@linaro.org>, Pavel Machek <pavel@ucw.cz>, Kate
+ Stewart <kstewart@linuxfoundation.org>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Martin Blumenstingl
+ <martin.blumenstingl@googlemail.com>, Pan Bian <bianpan2016@163.com>, "Thomas
+ Gleixner" <tglx@linutronix.de>, Allison Randal <allison@lohutok.net>,
+ "Mathieu Malaterre" <malat@debian.org>, Stanley Chu
+ <stanley.chu@mediatek.com>, "Kuohong Wang" <kuohong.wang@mediatek.com>, Yong
+ Mao <yong.mao@mediatek.com>
+Subject: [PATCH v5 2/5] mmc: host: Remove redundant CQE bindings
+Date: Tue, 28 Apr 2020 07:56:05 +0800
+Message-ID: <1588031768-23677-3-git-send-email-chun-hung.wu@mediatek.com>
+X-Mailer: git-send-email 1.9.1
+In-Reply-To: <1588031768-23677-1-git-send-email-chun-hung.wu@mediatek.com>
+References: <1588031768-23677-1-git-send-email-chun-hung.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1587955977-17207-2-git-send-email-EastL.Lee@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200427_143246_576028_0E2D6C77 
-X-CRM114-Status: UNSURE (   8.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200427_165721_445702_9494F40E 
+X-CRM114-Status: GOOD (  14.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,41 +98,115 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
- Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
- EastL <EastL.Lee@mediatek.com>, dmaengine@vger.kernel.org, vkoul@kernel.org,
- robh+dt@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ linux-arm-msm@vger.kernel.org, Chun-Hung Wu <chun-hung.wu@mediatek.com>,
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
+ kernel-team@android.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 27 Apr 2020 10:52:56 +0800, EastL wrote:
-> Document the devicetree bindings for MediaTek Command-Queue DMA controller
-> which could be found on MT6779 SoC or other similar Mediatek SoCs.
-> 
-> Signed-off-by: EastL <EastL.Lee@mediatek.com>
-> ---
->  .../devicetree/bindings/dma/mtk-cqdma.yaml         | 98 ++++++++++++++++++++++
->  1 file changed, 98 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/dma/mtk-cqdma.yaml
-> 
+CQE bindings "supports-cqe" and "disable-cqe-dcmd" is parsed
+in mmc_of_parse(). Remove vendor code which parses CQE bindings,
+and use mmc_host->caps2 to decide support CQE or not.
 
-My bot found errors running 'make dt_binding_check' on your patch:
+Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+Acked-by: Al Cooper <alcooperx@gmail.com>
+---
+ drivers/mmc/host/sdhci-brcmstb.c   | 11 ++++++-----
+ drivers/mmc/host/sdhci-msm.c       |  3 +--
+ drivers/mmc/host/sdhci-of-arasan.c |  3 ---
+ drivers/mmc/host/sdhci-tegra.c     |  2 +-
+ 4 files changed, 8 insertions(+), 11 deletions(-)
 
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/dma/mtk-cqdma.example.dt.yaml: dma-controller@10212000: interrupts: [[0, 139, 8], [0, 140, 8], [0, 141, 8]] is too short
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/dma/mtk-cqdma.example.dt.yaml: dma-controller@10212000: reg: [[0, 270606336, 0, 128], [0, 270606464, 0, 128], [0, 270606592, 0, 128]] is too short
-
-See https://patchwork.ozlabs.org/patch/1277292
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure dt-schema is up to date:
-
-pip3 install git+https://github.com/devicetree-org/dt-schema.git@master --upgrade
-
-Please check and re-submit.
-
+diff --git a/drivers/mmc/host/sdhci-brcmstb.c b/drivers/mmc/host/sdhci-brcmstb.c
+index ad01f64..07c90c6 100644
+--- a/drivers/mmc/host/sdhci-brcmstb.c
++++ b/drivers/mmc/host/sdhci-brcmstb.c
+@@ -247,10 +247,6 @@ static int sdhci_brcmstb_probe(struct platform_device *pdev)
+ 		return res;
+ 
+ 	memset(&brcmstb_pdata, 0, sizeof(brcmstb_pdata));
+-	if (device_property_read_bool(&pdev->dev, "supports-cqe")) {
+-		has_cqe = true;
+-		match_priv->ops->irq = sdhci_brcmstb_cqhci_irq;
+-	}
+ 	brcmstb_pdata.ops = match_priv->ops;
+ 	host = sdhci_pltfm_init(pdev, &brcmstb_pdata,
+ 				sizeof(struct sdhci_brcmstb_priv));
+@@ -261,7 +257,6 @@ static int sdhci_brcmstb_probe(struct platform_device *pdev)
+ 
+ 	pltfm_host = sdhci_priv(host);
+ 	priv = sdhci_pltfm_priv(pltfm_host);
+-	priv->has_cqe = has_cqe;
+ 
+ 	/* Map in the non-standard CFG registers */
+ 	iomem = platform_get_resource(pdev, IORESOURCE_MEM, 1);
+@@ -276,6 +271,12 @@ static int sdhci_brcmstb_probe(struct platform_device *pdev)
+ 	if (res)
+ 		goto err;
+ 
++	if (host->mmc->caps2 & MMC_CAP2_CQE) {
++		has_cqe = true;
++		match_priv->ops->irq = sdhci_brcmstb_cqhci_irq;
++	}
++	priv->has_cqe = has_cqe;
++
+ 	/*
+ 	 * If the chip has enhanced strobe and it's enabled, add
+ 	 * callback
+diff --git a/drivers/mmc/host/sdhci-msm.c b/drivers/mmc/host/sdhci-msm.c
+index c3a160c..fbb2f57 100644
+--- a/drivers/mmc/host/sdhci-msm.c
++++ b/drivers/mmc/host/sdhci-msm.c
+@@ -1880,7 +1880,6 @@ static int sdhci_msm_probe(struct platform_device *pdev)
+ 	u8 core_major;
+ 	const struct sdhci_msm_offset *msm_offset;
+ 	const struct sdhci_msm_variant_info *var_info;
+-	struct device_node *node = pdev->dev.of_node;
+ 
+ 	host = sdhci_pltfm_init(pdev, &sdhci_msm_pdata, sizeof(*msm_host));
+ 	if (IS_ERR(host))
+@@ -2076,7 +2075,7 @@ static int sdhci_msm_probe(struct platform_device *pdev)
+ 	pm_runtime_use_autosuspend(&pdev->dev);
+ 
+ 	host->mmc_host_ops.execute_tuning = sdhci_msm_execute_tuning;
+-	if (of_property_read_bool(node, "supports-cqe"))
++	if (host->mmc->caps2 & MMC_CAP2_CQE)
+ 		ret = sdhci_msm_cqe_add_host(host, pdev);
+ 	else
+ 		ret = sdhci_add_host(host);
+diff --git a/drivers/mmc/host/sdhci-of-arasan.c b/drivers/mmc/host/sdhci-of-arasan.c
+index e49b44b..359eff6 100644
+--- a/drivers/mmc/host/sdhci-of-arasan.c
++++ b/drivers/mmc/host/sdhci-of-arasan.c
+@@ -1281,9 +1281,6 @@ static int sdhci_arasan_probe(struct platform_device *pdev)
+ 					sdhci_arasan_voltage_switch;
+ 		sdhci_arasan->has_cqe = true;
+ 		host->mmc->caps2 |= MMC_CAP2_CQE;
+-
+-		if (!of_property_read_bool(np, "disable-cqe-dcmd"))
+-			host->mmc->caps2 |= MMC_CAP2_CQE_DCMD;
+ 	}
+ 
+ 	ret = sdhci_arasan_add_host(sdhci_arasan);
+diff --git a/drivers/mmc/host/sdhci-tegra.c b/drivers/mmc/host/sdhci-tegra.c
+index 403ac44..d09abdd 100644
+--- a/drivers/mmc/host/sdhci-tegra.c
++++ b/drivers/mmc/host/sdhci-tegra.c
+@@ -715,7 +715,7 @@ static void tegra_sdhci_parse_dt(struct sdhci_host *host)
+ 	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
+ 	struct sdhci_tegra *tegra_host = sdhci_pltfm_priv(pltfm_host);
+ 
+-	if (device_property_read_bool(host->mmc->parent, "supports-cqe"))
++	if (host->mmc->caps2 & MMC_CAP2_CQE)
+ 		tegra_host->enable_hwcq = true;
+ 	else
+ 		tegra_host->enable_hwcq = false;
+-- 
+2.6.4
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
