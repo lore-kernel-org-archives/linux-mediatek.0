@@ -2,78 +2,94 @@ Return-Path: <SRS0=8Gmr=6M=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 969A5C83000
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2020 11:16:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A8296C83000
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2020 11:17:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6971520663
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2020 11:16:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7B73B206E2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2020 11:17:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pJ/j5P6X";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bFpS/CSy"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6971520663
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YJHusFK7";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=nbd.name header.i=@nbd.name header.b="h+vklNke"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B73B206E2
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=nbd.name
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6mLCkINhKqOzMSmAz/I7JvFwGltG/cBN21+fhVIO7v0=; b=pJ/j5P6Xrosy1Y
-	7a0TfXC8gCzWAZZweMIPC7IoLg4aU3wR0XXeruRuuWZndnPN6aHAhNBhy/ptRmYhstXZwQXS+Ikru
-	Wr6TS0phEsdtiHxEQpy6AtEYBLYw9IqFE1Y6rrV76GRW/zTexFm3FEXCsUllpTDKWOxDw5i1Frtv9
-	38WlNSGPxdePjez/h95oVGd4Ei2+1x8W6sTbRYqP3fQQ+DGmPjMQXpz51R/VrY920FxyCTGMTs3jY
-	/O+cKg4/Z/7UScF+HmHXbOZEje9TRr5L+J+7E5FhrDibJAZgSJBrdvkIFPgVcyh4M6e4A0tidCCCV
-	PGDR4cYRozH4kEbsJbnA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UwOPwJBR/kOGGLox1odnECdTX2F7hCT0QFtAfrr7qMA=; b=YJHusFK7md2m2X
+	X0nIk9n39EWPUApdvgpb151PJNgFCPDE5ALesyIEDy2rtgGymAJt4GI9/DCnFutyh//d2AfGPTXiW
+	nKfTNFd6ZnYSBYoYdMh/ae4dddqCiF0EJAeYH09prOT5u+edJQTWvhOHzAN7G4F1EZo1ZX6eXbPCa
+	QY0gkyvcJlVEKTB8dGPye8LstwZxmmRSLwnuHgdBEN/ggW5gct20m23PTDGfUXlUfLB2SABBe2kp4
+	14LGUbdcohswVa2tBrivVZbkfqK192avOfhaeWmz7/329OjbsgnKsQCDf6R0nIiDXCldntNU23cGa
+	BsEWO8xXFlNFvgzKrEog==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTODn-0002px-3V; Tue, 28 Apr 2020 11:16:15 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jTOEc-00036i-10; Tue, 28 Apr 2020 11:17:06 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTOCX-0007np-J5; Tue, 28 Apr 2020 11:15:00 +0000
-X-UUID: 7f8652466a6c4b15a88ff49b8e1855c0-20200428
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=VNQAMi60E+ntVEA/XaL054Zfx9hWSG5xRZvMVQJkYKE=; 
- b=bFpS/CSyJp6Xq0lSBrsNqoLEKrZxOSWbv8XiV8Us5pTyG++DeuYAS0f+nTNU1rwKJd7kGpVUM4hI8vOhLD9x4YIEsGaD4ZNiGAQcFk9Zm7MBHooqxyDFhskmlnLBufhyQC3wM879IlN7OG50Qr+haZXIj5vedkKz1kFbR81qn7k=;
-X-UUID: 7f8652466a6c4b15a88ff49b8e1855c0-20200428
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 305614468; Tue, 28 Apr 2020 03:14:48 -0800
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 28 Apr 2020 04:13:55 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 28 Apr 2020 19:13:56 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 28 Apr 2020 19:13:54 +0800
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
- <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
- <asutoshd@codeaurora.org>
-Subject: [PATCH v1 3/4] scsi: ufs: add LU Dedicated buffer type support for
- WriteBooster
-Date: Tue, 28 Apr 2020 19:13:54 +0800
-Message-ID: <20200428111355.1776-4-stanley.chu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200428111355.1776-1-stanley.chu@mediatek.com>
-References: <20200428111355.1776-1-stanley.chu@mediatek.com>
+ id 1jTOEZ-00034d-5M
+ for linux-mediatek@lists.infradead.org; Tue, 28 Apr 2020 11:17:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=XOhDfptpwh2eyxeLvzb+d+hOxPoOaH2iB/kxQVxTMjU=; b=h+vklNke7tDARomiV32fLLXcqE
+ c0ikX46g+ToZh/daC5uxCo39tXdxw1Fl330bhsYG3eIpPh0xDE0V8OGsqd0LSrDYIGaognX3uJ+VN
+ DZhCEt0KL7nZTigZr0lqIRObH10ZuGkluowmTkMkc6NYF8dlsOckmVfJ4PbukrMZSrDA=;
+Received: from [80.255.7.108] (helo=nf.local)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1jTOET-0000qa-RX; Tue, 28 Apr 2020 13:16:57 +0200
+Subject: Re: [PATCH] mt76: mt7663: add the possibility to load firmware v2
+To: Kalle Valo <kvalo@codeaurora.org>, Lorenzo Bianconi <lorenzo@kernel.org>
+References: <db72b648024aba3243ee3b7deceb548c9bc2bdf1.1587911939.git.lorenzo@kernel.org>
+ <87ftcnj2be.fsf@tynnyri.adurom.net>
+From: Felix Fietkau <nbd@nbd.name>
+Autocrypt: addr=nbd@nbd.name; prefer-encrypt=mutual; keydata=
+ xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
+ ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
+ Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
+ AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
+ vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
+ wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
+ TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
+ l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
+ dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
+ HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
+ VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
+ CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
+ VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
+ Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
+ DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
+ wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
+ f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
+ aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
+ FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
+ TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
+ GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCfTKx80VvCR/PvsUlrvdOLsIgeRGAAn1ee
+ RjMaxwtSdaCKMw3j33ZbsWS4
+Message-ID: <fd49291e-173e-20b0-ee67-c4f519ce8419@nbd.name>
+Date: Tue, 28 Apr 2020 13:16:56 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:68.0)
+ Gecko/20100101 Thunderbird/68.7.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <87ftcnj2be.fsf@tynnyri.adurom.net>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200428_041457_723596_E0F3307F 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20200428_041703_397942_D927F176 
+X-CRM114-Status: GOOD (  15.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,205 +101,75 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: bvanassche@acm.org, andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Cc: linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
+ sean.wang@mediatek.com, linux-wireless@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-According to UFS specification, there are two WriteBooster mode of
-operations: "LU dedicated buffer" mode and "shared buffer" mode.
-In the "LU dedicated buffer" mode, the WriteBooster Buffer is
-dedicated to a logical unit.
+On 2020-04-28 13:07, Kalle Valo wrote:
+> Lorenzo Bianconi <lorenzo@kernel.org> writes:
+> 
+>> mt7663 firmware v2 is used for embedded devices since it has more completed
+>> features in AP mode.
+>> Add the capability to specify in mt7615 Kconfig which firmware load first
+>> (v3 or v2) and fallback to the other one if the selected firmware fails
+>> to load
+>>
+>> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+>> ---
+>>  .../net/wireless/mediatek/mt76/mt7615/Kconfig | 13 +++++
+>>  .../net/wireless/mediatek/mt76/mt7615/mcu.c   | 50 ++++++++++++++++---
+>>  .../wireless/mediatek/mt76/mt7615/mt7615.h    |  6 ++-
+>>  .../net/wireless/mediatek/mt76/mt7615/pci.c   |  2 +
+>>  .../net/wireless/mediatek/mt76/mt7615/usb.c   |  2 +
+>>  5 files changed, 65 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/Kconfig b/drivers/net/wireless/mediatek/mt76/mt7615/Kconfig
+>> index e25db1135eda..c04d6a182bf0 100644
+>> --- a/drivers/net/wireless/mediatek/mt76/mt7615/Kconfig
+>> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/Kconfig
+>> @@ -38,3 +38,16 @@ config MT7663U
+>>  	  This adds support for MT7663U 802.11ax 2x2:2 wireless devices.
+>>  
+>>  	  To compile this driver as a module, choose M here.
+>> +
+>> +config MT7615_OFFLOAD_FIRMWARE
+>> +	bool "Prefer client mode offload firmware (MT7663)"
+>> +	depends on MT7615E || MT7663U
+>> +	default y
+>> +	help
+>> +	  Load MT7663 client mode offload firmware (v3) as primary option
+>> +	  and fallback to MT7663 firmware v2 in case of failure.
+>> +	  If MT7615_OFFLOAD_FIRMWARE is not selected MT7663 firmware v2
+>> +	  will be used as primary option.
+>> +	  MT7663 client mode offload firmware supports low power features
+>> +	  (hw frequency scanning, scheduled frequency scanning, WoW,
+>> +	  802.11 power save) but is more limited in AP mode
+> 
+> Why does this need a compile time config? Wouldn't some kind of runtime
+> configuration be better?
+I don't think supporting runtime configuration is worth the extra
+complexity of adding an API for shutting down and restarting the
+firmware and dealing with potential errors along the way.
 
-If the device supports the "LU dedicated buffer" mode, this mode is
-configured by setting bWriteBoosterBufferType to 00h. The logical
-unit WriteBooster Buffer size is configured by setting the
-dLUNumWriteBoosterBufferAllocUnits field of the related Unit
-Descriptor. Only a value greater than zero enables the WriteBooster
-feature in the logical unit.
+Both firmware types support AP and client mode. Which one you use
+depends on the kind of system you're building for.
 
-Modify ufshcd_wb_probe() as above description to support LU Dedicated
-buffer type.
+If you're building an embedded AP, you don't need any low power offloads
+and may want to support more than 32 clients, so you'd disable this
+configuration option.
 
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/scsi/ufs/ufs.h    |  7 +++++
- drivers/scsi/ufs/ufshcd.c | 63 ++++++++++++++++++++++++++++++++-------
- 2 files changed, 59 insertions(+), 11 deletions(-)
+If you run the driver on a laptop or desktop machine, you will most
+likely stick to the default.
 
-diff --git a/drivers/scsi/ufs/ufs.h b/drivers/scsi/ufs/ufs.h
-index daac5053b850..0dcb22bd46b9 100644
---- a/drivers/scsi/ufs/ufs.h
-+++ b/drivers/scsi/ufs/ufs.h
-@@ -330,6 +330,12 @@ enum health_desc_param {
- 	HEALTH_DESC_PARAM_LIFE_TIME_EST_B	= 0x4,
- };
- 
-+/* WriteBooster buffer type */
-+enum {
-+	WB_TYPE_LU_DEDICATED	= 0x0,
-+	WB_TYPE_SINGLE_SHARED	= 0x1
-+};
-+
- /*
-  * Logical Unit Write Protect
-  * 00h: LU not write protected
-@@ -559,6 +565,7 @@ struct ufs_dev_info {
- 	bool is_lu_power_on_wp;
- 	/* Maximum number of general LU supported by the UFS device */
- 	u8 max_lu_supported;
-+	u8 wb_dedicated_lu;
- 	u16 wmanufacturerid;
- 	/*UFS device Product Name */
- 	u8 *model;
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 465ee023ea4b..a665586e047b 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -5202,9 +5202,18 @@ static bool ufshcd_wb_sup(struct ufs_hba *hba)
- 	return ufshcd_is_wb_allowed(hba);
- }
- 
-+static int ufshcd_wb_get_index(struct ufs_hba *hba)
-+{
-+	if (hba->dev_info.b_wb_buffer_type == WB_TYPE_LU_DEDICATED)
-+		return hba->dev_info.wb_dedicated_lu;
-+	else
-+		return 0;
-+}
-+
- static int ufshcd_wb_ctrl(struct ufs_hba *hba, bool enable)
- {
- 	int ret;
-+	u8 index;
- 	enum query_opcode opcode;
- 
- 	if (!ufshcd_wb_sup(hba))
-@@ -5217,8 +5226,9 @@ static int ufshcd_wb_ctrl(struct ufs_hba *hba, bool enable)
- 	else
- 		opcode = UPIU_QUERY_OPCODE_CLEAR_FLAG;
- 
-+	index = ufshcd_wb_get_index(hba);
- 	ret = ufshcd_query_flag_retry(hba, opcode,
--				      QUERY_FLAG_IDN_WB_EN, 0, NULL);
-+				      QUERY_FLAG_IDN_WB_EN, index, NULL);
- 	if (ret) {
- 		dev_err(hba->dev, "%s write booster %s failed %d\n",
- 			__func__, enable ? "enable" : "disable", ret);
-@@ -5235,15 +5245,17 @@ static int ufshcd_wb_ctrl(struct ufs_hba *hba, bool enable)
- static int ufshcd_wb_toggle_flush_during_h8(struct ufs_hba *hba, bool set)
- {
- 	int val;
-+	u8 index;
- 
- 	if (set)
- 		val =  UPIU_QUERY_OPCODE_SET_FLAG;
- 	else
- 		val = UPIU_QUERY_OPCODE_CLEAR_FLAG;
- 
-+	index = ufshcd_wb_get_index(hba);
- 	return ufshcd_query_flag_retry(hba, val,
--			       QUERY_FLAG_IDN_WB_BUFF_FLUSH_DURING_HIBERN8, 0,
--				       NULL);
-+				QUERY_FLAG_IDN_WB_BUFF_FLUSH_DURING_HIBERN8,
-+				index, NULL);
- }
- 
- static inline void ufshcd_wb_toggle_flush(struct ufs_hba *hba, bool enable)
-@@ -5258,13 +5270,15 @@ static inline void ufshcd_wb_toggle_flush(struct ufs_hba *hba, bool enable)
- static int ufshcd_wb_buf_flush_enable(struct ufs_hba *hba)
- {
- 	int ret;
-+	u8 index;
- 
- 	if (!ufshcd_wb_sup(hba) || hba->wb_buf_flush_enabled)
- 		return 0;
- 
-+	index = ufshcd_wb_get_index(hba);
- 	ret = ufshcd_query_flag_retry(hba, UPIU_QUERY_OPCODE_SET_FLAG,
- 				      QUERY_FLAG_IDN_WB_BUFF_FLUSH_EN,
--				      0, NULL);
-+				      index, NULL);
- 	if (ret)
- 		dev_err(hba->dev, "%s WB - buf flush enable failed %d\n",
- 			__func__, ret);
-@@ -5278,12 +5292,15 @@ static int ufshcd_wb_buf_flush_enable(struct ufs_hba *hba)
- static int ufshcd_wb_buf_flush_disable(struct ufs_hba *hba)
- {
- 	int ret;
-+	u8 index;
- 
- 	if (!ufshcd_wb_sup(hba) || !hba->wb_buf_flush_enabled)
- 		return 0;
- 
-+	index = ufshcd_wb_get_index(hba);
- 	ret = ufshcd_query_flag_retry(hba, UPIU_QUERY_OPCODE_CLEAR_FLAG,
--				      QUERY_FLAG_IDN_WB_BUFF_FLUSH_EN, 0, NULL);
-+				      QUERY_FLAG_IDN_WB_BUFF_FLUSH_EN,
-+				      index, NULL);
- 	if (ret) {
- 		dev_warn(hba->dev, "%s: WB - buf flush disable failed %d\n",
- 			 __func__, ret);
-@@ -6802,6 +6819,10 @@ static int ufshcd_scsi_add_wlus(struct ufs_hba *hba)
- 
- static void ufshcd_wb_probe(struct ufs_hba *hba, u8 *desc_buf)
- {
-+	int ret;
-+	u8 lun;
-+	u32 d_lu_wb_buf_alloc = 0;
-+
- 	if (hba->desc_size.dev_desc <= DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP)
- 		goto wb_disabled;
- 
-@@ -6821,15 +6842,35 @@ static void ufshcd_wb_probe(struct ufs_hba *hba, u8 *desc_buf)
- 	hba->dev_info.b_wb_buffer_type =
- 		desc_buf[DEVICE_DESC_PARAM_WB_TYPE];
- 
--	hba->dev_info.d_wb_alloc_units =
--		get_unaligned_be32(desc_buf +
--				   DEVICE_DESC_PARAM_WB_SHARED_ALLOC_UNITS);
- 	hba->dev_info.b_presrv_uspc_en =
- 		desc_buf[DEVICE_DESC_PARAM_WB_PRESRV_USRSPC_EN];
- 
--	if (!(hba->dev_info.b_wb_buffer_type &&
--	      hba->dev_info.d_wb_alloc_units))
--		goto wb_disabled;
-+	if (hba->dev_info.b_wb_buffer_type == WB_TYPE_SINGLE_SHARED) {
-+		hba->dev_info.d_wb_alloc_units =
-+		get_unaligned_be32(desc_buf +
-+				   DEVICE_DESC_PARAM_WB_SHARED_ALLOC_UNITS);
-+		if (!hba->dev_info.d_wb_alloc_units)
-+			goto wb_disabled;
-+	} else {
-+		for (lun = 0; lun < hba->dev_info.max_lu_supported; lun++) {
-+			ret = ufshcd_read_unit_desc_param(hba,
-+					lun,
-+					UNIT_DESC_PARAM_WB_BUF_ALLOC_UNITS,
-+					(u8 *)&d_lu_wb_buf_alloc,
-+					sizeof(d_lu_wb_buf_alloc));
-+			if (ret)
-+				goto wb_disabled;
-+			if (d_lu_wb_buf_alloc) {
-+				hba->dev_info.wb_dedicated_lu = lun;
-+				break;
-+			}
-+		}
-+
-+		if (!d_lu_wb_buf_alloc)
-+			goto wb_disabled;
-+	}
-+
-+	return;
- 
- wb_disabled:
- 	hba->caps &= ~UFSHCD_CAP_WB_EN;
--- 
-2.18.0
+If you want to switch without recompiling, you can always just delete
+the set of firmware files you don't want to use. The driver will fall
+back to the other type.
+
+- Felix
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
