@@ -2,90 +2,79 @@ Return-Path: <SRS0=8Gmr=6M=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ED3B4C83004
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2020 04:43:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 64021C83000
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2020 09:28:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BE062206A5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2020 04:43:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 364E320663
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2020 09:28:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lW5hqCva";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="WD0Vdo9P"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE062206A5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HC2v7KR1";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="B20eOiTh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 364E320663
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s/7oW+4Ma6sTE9Rrzb6skq8BFNy9c3T8dO2ADkZ7vbY=; b=lW5hqCvaBwFmSE
-	SzIzwdnPxRrXmpmz5dzzURIuTQj6CvshL93WxyUhbfJG9l69iughpyy59ylIyh0IxJ9SUcybuzRgG
-	ZDUIJLSm8l1IgpRgoE4mPk6IfsS6ve3OeBvz047oYRAHEddWLSFOv+Q5RFi1mkCxs+sJuCwlqysb2
-	YkDuQmPsnWEeGZuopjJ9mE1OYWy/CCmNaLxpbbZDKbfJlyF0m7m85O9jbdUHvKQ8CjnKwrVwFdJML
-	Srw2KW5LOyFirw4C6WMaxMt/DN5+cNZki8vTXBHAoJDbBzby6mK9YvH7bu0f2DFuHaXm4DOg6HR6F
-	8qFmUpo1fmI6/7F2LwMw==;
+	List-Owner; bh=no9CmkyP/5t3EzkBk9qw4JOhn3VER3MjXt3iPcnrdfA=; b=HC2v7KR1tFNJWj
+	qaRqzBQoTLCCSE6JvE/H8GYF7ktuXbNdHcrhzFH0z7Gg5/km4fKdrbFXz30uaim5JSVIesJMtL7Ut
+	HdRFMkYuGaqBEdl9VnE994qRP2HTFjF0KFUsEU0ALNm9KG0NbQdduH4wLLj628SOoJABS26GqhY5y
+	tnbVVBqVuWOQEfj98out7nJPHAyW3n2KLitu2Wx2q8lmLHu8A7gJB904GD/3ZWnPWI66t/CSARdn4
+	UAxwrFmjzEjKzUbn9eXhUeU7+Hw5c4RKpWav2u54+sLPwcZ6r7mvlxf5YkojOkSdqFBx73ufDwtEk
+	9rOdje3eMwbAN5utEktg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTI5d-000764-Cc; Tue, 28 Apr 2020 04:43:25 +0000
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
+	id 1jTMXW-0005D0-4D; Tue, 28 Apr 2020 09:28:30 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTI5a-00075A-Op
- for linux-mediatek@lists.infradead.org; Tue, 28 Apr 2020 04:43:24 +0000
-Received: by mail-pg1-x543.google.com with SMTP id o185so9732187pgo.3
- for <linux-mediatek@lists.infradead.org>; Mon, 27 Apr 2020 21:43:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6MzIVWZpSVCHDb5pf6WQNcJ/ckZ7Y5e/ESVb+fFzIZA=;
- b=WD0Vdo9P4/N4GSEpKAhopNTQVyTrPiPKK3hWvrtsiHMzebOMrruO2aJX9wZe95BGHj
- XGk8c62wFBqDPwNbo61yYZGaWDExozBcGqaTvzvhgue/6PH25ZdF3jIcE9D0iv7XULGu
- hc0qeug7S/R/21XHC27bLSFzxUVEnjHArDV38=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=6MzIVWZpSVCHDb5pf6WQNcJ/ckZ7Y5e/ESVb+fFzIZA=;
- b=XZr33xn6HwTmjAlm6z99YcoySRRnGg+vxwBzq3MggMr+Lk4OmQ7Ce5CoDYoBI1vrf2
- ent5xX+8AB+H4LVoIDyVBxeyTc8Unj4wKeg5PZyDHSM/kNz27h9lC0jkktfC+ALRSrI0
- 7OO0F5PaJb6EdN1tEuCRtwkViWT2qgs9fzF766Lh2MSve39m0Papg3+TYQhYFHBjtsb3
- SIx6GJtBwSSKketRlDA72smEGmGxg0KCp7HwKpen+hgYl8mrhY2836T/VBEbzfGpT4NJ
- vp5f7snYgnFvIGXunJLcEb3LjkGYBdVV9ofgC/hcuCT6CzdlvXbobRqMxOlm4wZoBWox
- boZw==
-X-Gm-Message-State: AGi0PuaoiP9pDXcyNVdoyev+M+4NYOk5e62ZJMiOC9zNLMwZ8JSJzWPs
- 3mOib3JZGcXI+9OworBDPN9SYJTa27A=
-X-Google-Smtp-Source: APiQypL4EkM44dlZrn20/UJPGNwqG/txDipbUq+m/3SlZoPmGk8wmsNBJP8QagorXnVhoVAWpw2dhw==
-X-Received: by 2002:a63:7c1b:: with SMTP id x27mr26545146pgc.76.1588049000089; 
- Mon, 27 Apr 2020 21:43:20 -0700 (PDT)
-Received: from mail-pf1-f175.google.com (mail-pf1-f175.google.com.
- [209.85.210.175])
- by smtp.gmail.com with ESMTPSA id d74sm13882052pfd.70.2020.04.27.21.43.18
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Apr 2020 21:43:19 -0700 (PDT)
-Received: by mail-pf1-f175.google.com with SMTP id y25so10090384pfn.5
- for <linux-mediatek@lists.infradead.org>; Mon, 27 Apr 2020 21:43:18 -0700 (PDT)
-X-Received: by 2002:a67:f9d0:: with SMTP id c16mr19912596vsq.53.1588048997072; 
- Mon, 27 Apr 2020 21:43:17 -0700 (PDT)
+ id 1jTMXK-00051R-5b; Tue, 28 Apr 2020 09:28:19 +0000
+X-UUID: 9a29e7e72cbe4ae6893718ca6ee2c864-20200428
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=m3Ksv+ksgjGvXF0pXLMlpIAwkf0dzAHmcRs39NPBbsk=; 
+ b=B20eOiTh7l/29srMJjLhvV6XU6dgavF3w0G5qapIRMzTQERJSWLXte/kGX19TPu/goL6PaCf7AHznx0QVxyIeSgqbT45LX3rChPq6vEVyB9bS9Rd/VaAToJ3TVslxM5LKvd+tiBhtlPazL2156Yd0Q/+9usO3eRk207zoAz0/XM=;
+X-UUID: 9a29e7e72cbe4ae6893718ca6ee2c864-20200428
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yong.mao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 890450091; Tue, 28 Apr 2020 01:28:13 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 28 Apr 2020 02:28:09 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 28 Apr 2020 17:28:04 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 28 Apr 2020 17:28:04 +0800
+Message-ID: <1588066038.30914.28.camel@mhfsdcap03>
+Subject: Re: [PATCH 1/3] mmc: core: need do mmc_power_cycle in
+ mmc_sdio_resend_if_cond
+From: "yong.mao@mediatek.com" <yong.mao@mediatek.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 28 Apr 2020 17:27:18 +0800
+In-Reply-To: <CAPDyKFo40tBpowmWN3gxH8b=jMmCK8O5ALNQ7y6XZ5AosX=GUA@mail.gmail.com>
+References: <1586835611-13857-1-git-send-email-yong.mao@mediatek.com>
+ <1586835611-13857-2-git-send-email-yong.mao@mediatek.com>
+ <CAPDyKFo40tBpowmWN3gxH8b=jMmCK8O5ALNQ7y6XZ5AosX=GUA@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-References: <20200423044036.234578-1-evanbenn@chromium.org>
- <20200423143945.v5.2.Ia92bb4d4ce84bcefeba1d00aaa1c1e919b6164ef@changeid>
- <CAODwPW9-c8EcZh_zB6SwohzvHtCQasaNLQM0fj2bj5O5KuVPfg@mail.gmail.com>
-In-Reply-To: <CAODwPW9-c8EcZh_zB6SwohzvHtCQasaNLQM0fj2bj5O5KuVPfg@mail.gmail.com>
-From: Evan Benn <evanbenn@chromium.org>
-Date: Tue, 28 Apr 2020 14:42:50 +1000
-X-Gmail-Original-Message-ID: <CAKz_xw0nQL2t1a-ofosLVb72JwSAGXCea5wOuddstOMrULNygg@mail.gmail.com>
-Message-ID: <CAKz_xw0nQL2t1a-ofosLVb72JwSAGXCea5wOuddstOMrULNygg@mail.gmail.com>
-Subject: Re: [PATCH v5 2/2] watchdog: Add new arm_smc_wdt watchdog driver
-To: Julius Werner <jwerner@chromium.org>
+X-TM-SNTS-SMTP: BAFC90E4F4919F58F4A0398CAB2A7E72863110198F1657AD58274E69C3418E782000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200427_214322_821991_1C487DA2 
-X-CRM114-Status: GOOD (  13.70  )
+X-CRM114-CacheID: sfid-20200428_022818_235806_2A87A4C3 
+X-CRM114-Status: GOOD (  24.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,47 +86,97 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Geert Uytterhoeven <geert+renesas@glider.be>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Leonard Crestez <leonard.crestez@nxp.com>, Will Deacon <will@kernel.org>,
- Xingyu Chen <xingyu.chen@amlogic.com>, Rob Herring <robh@kernel.org>,
- Anson Huang <Anson.Huang@nxp.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Valentin Schneider <valentin.schneider@arm.com>,
- Guenter Roeck <linux@roeck-us.net>,
- LINUX-WATCHDOG <linux-watchdog@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>, Li Yang <leoyang.li@nxp.com>,
- Olof Johansson <olof@lixom.net>, Shawn Guo <shawnguo@kernel.org>,
- "David S. Miller" <davem@davemloft.net>
+Cc: srv_heupstream <srv_heupstream@mediatek.com>,
+ "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, mka@chromium.org,
+ "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>,
+ Chaotian Jing <chaotian.jing@mediatek.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 24, 2020 at 8:17 AM Julius Werner <jwerner@chromium.org> wrote:
->
-> > +       err = of_property_read_u32(pdev->dev.of_node, "arm,smc-id",
-> > +                                  &smc_func_id);
-> > +       if (err < 0)
-> > +               return err;
-> > +       watchdog_set_drvdata(wdd, (void *)(uintptr_t)smc_func_id);
->
-> Your device tree binding says there's a default and this is optional.
-> I think you need to change the code so that that's actually true.
 
-I think I have misunderstood the device tree json-schema spec.
-My intention was for the device tree to fill in a default value in the dtb for
-arm,smc-id if it was omitted in the dts. But now I see that does not seem to
-happen, I cannot really find any documentation of `default`, so I will just put
-a documentation string in instead and force the default in the driver.
+On Fri, 2020-04-24 at 12:09 +0200, Ulf Hansson wrote:
+> On Tue, 14 Apr 2020 at 05:40, Yong Mao <yong.mao@mediatek.com> wrote:
+> >
+> > From: yong mao <yong.mao@mediatek.com>
+> >
+> > When mmc_sdio_resned_if_cond is invoked, it indicates the SDIO
+> > device is not in the right state. In this condition, the previous
+> > implementation of mmc_sdio_resend_if_cond can't make sure SDIO
+> > device be back to idle state. mmc_power_cycle can reset the SDIO
+> > device by HW and also make sure SDIO device enter to idle state
+> > correctly.
+> >
+> > Signed-off-by: Yong Mao <yong.mao@mediatek.com>
+> > ---
+> >  drivers/mmc/core/sdio.c | 1 +
+> >  1 file changed, 1 insertion(+)
+> >
+> > diff --git a/drivers/mmc/core/sdio.c b/drivers/mmc/core/sdio.c
+> > index ebb387a..ada0a80 100644
+> > --- a/drivers/mmc/core/sdio.c
+> > +++ b/drivers/mmc/core/sdio.c
+> > @@ -546,6 +546,7 @@ static int mmc_sdio_init_uhs_card(struct mmc_card *card)
+> >  static void mmc_sdio_resend_if_cond(struct mmc_host *host,
+> >                                     struct mmc_card *card)
+> >  {
+> > +       mmc_power_cycle(host, host->card->ocr);
+> 
+> This looks wrong to me. mmc_sdio_resend_if_cond() is called from two places.
+> 
+> 1. In the case when mmc_set_uhs_voltage() fails in
+> mmc_sdio_init_card(), which means a call to mmc_power_cycle() has
+> already been done.
+> 
+  Thanks for your comment.
+  Yes. It is right that mmc_power_cycle() has already been done when
+  mmc_sdio_resend_if_cond() is called. In normal re-initialization case, 
+  this mmc_power_cycle() (currently in 1.8v voltage and 208Mhz clock) 
+  can make SDIO device really back to idle state. Unfortunately, in some
+  special SDIO device, it will enter to unstable state.
+
+  At this unstable state, device may keep data0 always low after receiving CMD11.
+  And then every other SDIO CMD can't be sent to device any more due to card 
+  is busy(data0 is low). Therefore, previous implementation can't save the 
+  device. At this time, mmc_power_cycle() may be the final solution to make 
+  sure SDIO device can back to idle state correctly.
+
+> 2. Wen sdio_read_cccr() fails and when we decide to retry the UHS-I
+> voltage switch. Then perhaps it could make sense to run a power cycle.
+> But if so, we better do it only for that path.
+> 
+> I will continue to look a bit, as I think there are really more issues
+> that we may want to look into while looking at this piece of code.
+> However, allow me some more time before I can provide some more ideas
+> of how to move forward.
+  In the actual project, we do encounter many relative issues about re-initialized card.
+  The following two categories are the most common issue we met before.
+  A. the SDIO card is initialized by UHS-I mode at the first time, but will be 
+     re-initialized by High Speed mode at the second time.
+     ==> All this type of issues is relative with S18A in response of CMD5.
+	 And most of the issues are related to the interval between powering off and 
+         powering on card.
+  B. If there is something wrong in the flow of voltage switch(after CMD11), card will
+     always keep all data pins to low. And then it hangs up because data0 is always low.
+  Hope this information will be helpful for you.
+  
+  Anyway, we will wait for your advises. 
+> 
+> >         sdio_reset(host);
+> >         mmc_go_idle(host);
+> >         mmc_send_if_cond(host, host->ocr_avail);
+> > --
+> > 1.9.1
+> 
+> Kind regards
+> Uffe
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
