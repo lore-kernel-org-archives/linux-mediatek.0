@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4CA19C83000
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2020 11:15:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 34E5EC83000
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2020 11:16:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1E4EC20663
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2020 11:15:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0880C20663
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Apr 2020 11:16:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KehfZlDF";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="N1doBf06"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1E4EC20663
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nax0FheH";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="XvUpf2Wm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0880C20663
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,55 +26,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rsyf9ZKTG8vz3R2xLju0aD0D9eUxZIersA2qIUvOJ2Q=; b=KehfZlDF+lzxwa
-	vyRfe9JxZmXKhF997MiS54xo1yFpE48HJ36v6qWA3uHSAt9kXX/FRcVw8d30hHyw17B52BCWm3hrf
-	XgH9v4dtwHBGGQ0/jT0q49vbcg+B/oxV/dPv4lU9+yYm2aTRtzS0HQftKQBkhEiCl2b6u4GCEK0xD
-	8WYYWHlQtBr+caD48/eOby3YJP1G1icq+VMZLymaIxNgzzdLzcrif7hDXJ39nbm5fYOlj2b1T8BCz
-	Sz9X/NVWd5tEdLhOcKiMhhyYqi6ltO7WKGyD1FhehKyJeDa/P3N6mfMar6DoTakL6oq2KIqFusOnC
-	szn4BtnbP8rR2anmhBpw==;
+	List-Owner; bh=YN3TNuWvYomODww7L67dD36yz5Sn/tPIvLqwlcRi8dc=; b=nax0FheH4zxPkB
+	0xeI15eOl9qJJ/kudOupk2ciWsj5Z88izaDm/qW1VE4f/cXhfUi2752wQhZCFMR6ljAYv7y2v06nD
+	8L5Nzq8nQ921VZjAi+35SsgUasK7wsiww+fDypHSrL6Yh9lVn9WnqrG3ZRHcsobvtisXxRRZoYI4R
+	VH9RAk62cf2wXC4myeSHjv5JADM3MlP5KSRvXmWlEPK1QsLV0sHktclbk850/yilkllPWmp7H9wG+
+	1yTXnQt3KpWjGolKac7BuG41apvGn/ltlyMUsn1iLKDdnsUMFr3RmJXmJBGY+QUHVL7XcflhOCERb
+	n7r6zk1IzjMR7LvXbTuQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTOCv-0001vV-QZ; Tue, 28 Apr 2020 11:15:21 +0000
+	id 1jTODj-0002mh-PS; Tue, 28 Apr 2020 11:16:11 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTOBs-00072e-28; Tue, 28 Apr 2020 11:14:17 +0000
-X-UUID: d4d370c6497444ef98986e38f3713a13-20200428
+ id 1jTOCW-0007mf-7R; Tue, 28 Apr 2020 11:14:57 +0000
+X-UUID: 7e200f76f5924abcb60f58acf7273fe1-20200428
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=nKbWdvgE69UgAIWRhz8Xhz29+ME91EZp8ag1O4EUF1I=; 
- b=N1doBf06WgcrGgUbjWtPf4QqDR5h1IRl8xOMnDGyAqqrCWSx6Q9sd4slmfU63ejNhfL5dtxz+Cm+z7k6shYBZDGo5fs9UJrqsfkkdN1NNuARGMI7YQ7KNIXuKOPkQs4lNozz+QMECMB97K4ioj0GYVTbEvHOcKdKwEBzMtBnWK4=;
-X-UUID: d4d370c6497444ef98986e38f3713a13-20200428
+ bh=gOI57n0NCChF2mdMfypGPNHt6U2F7UjicizaaWMiXU8=; 
+ b=XvUpf2WmYG5L8b/CX0IBLmFky2Yb92ymAhYSSV2AVf+QN7iD5KC0ugzRB1Fgf8vyHGpasw56eIHwB31HVrdS/IydKe9zqftEYj7i3IlA7Gyy+P4AzdJWyXDbpEUnCW9naBEOBHWAOeo2E1D7EkxVVXmh+sAw7gcjia8YYOb8k20=;
+X-UUID: 7e200f76f5924abcb60f58acf7273fe1-20200428
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1467435753; Tue, 28 Apr 2020 03:14:07 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 28 Apr 2020 04:14:09 -0700
+ with ESMTP id 1359582461; Tue, 28 Apr 2020 03:14:48 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 28 Apr 2020 04:14:02 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 28 Apr 2020 19:13:56 +0800
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 28 Apr 2020 19:13:55 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 28 Apr 2020 19:13:54 +0800
+ Frontend Transport; Tue, 28 Apr 2020 19:13:53 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
  <asutoshd@codeaurora.org>
-Subject: [PATCH v1 4/4] scsi: ufs-mediatek: enable WriteBooster capability
-Date: Tue, 28 Apr 2020 19:13:55 +0800
-Message-ID: <20200428111355.1776-5-stanley.chu@mediatek.com>
+Subject: [PATCH v1 1/4] scsi: ufs: allow legacy UFS devices to enable
+ WriteBooster
+Date: Tue, 28 Apr 2020 19:13:52 +0800
+Message-ID: <20200428111355.1776-2-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200428111355.1776-1-stanley.chu@mediatek.com>
 References: <20200428111355.1776-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: DA7935DAFEBA11123D058F63C971BD710252B278E9CA6897AC8AC4BD89FB46B02000:8
+X-TM-SNTS-SMTP: AC2CEAEB40CCCB9E644C7A17A45E30E1A5213F587BCD3BC5704A675A73F2016B2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200428_041416_135847_8F607E01 
-X-CRM114-Status: UNSURE (   7.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200428_041456_306992_1F4BAEF8 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,27 +96,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable WriteBooster capability on MediaTek UFS platforms.
+WriteBooster feature may be supported by some legacy UFS devices
+(i.e., < 3.1) by upgrading firmware.
+
+To enable WriteBooster feature in such devices, relax the entrance
+condition of ufshcd_wb_probe() to allow host driver to check those
+devices' WriteBooster capability.
+
+WriteBooster feature can be available if below both conditions are
+satisfied,
+
+1. Device descriptor has dExtendedUFSFeaturesSupport field.
+2. WriteBooster support is specified in above field.
 
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
- drivers/scsi/ufs/ufs-mediatek.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/scsi/ufs/ufshcd.c | 19 +++++++++++++------
+ 1 file changed, 13 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-index 673c16596fb2..15b9c420a3a5 100644
---- a/drivers/scsi/ufs/ufs-mediatek.c
-+++ b/drivers/scsi/ufs/ufs-mediatek.c
-@@ -263,6 +263,9 @@ static int ufs_mtk_init(struct ufs_hba *hba)
- 	/* Enable clock-gating */
- 	hba->caps |= UFSHCD_CAP_CLK_GATING;
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 915e963398c4..111812c5304a 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -6800,9 +6800,16 @@ static int ufshcd_scsi_add_wlus(struct ufs_hba *hba)
  
-+	/* Enable WriteBooster */
-+	hba->caps |= UFSHCD_CAP_WB_EN;
+ static void ufshcd_wb_probe(struct ufs_hba *hba, u8 *desc_buf)
+ {
++	if (hba->desc_size.dev_desc <= DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP)
++		goto wb_disabled;
++
+ 	hba->dev_info.d_ext_ufs_feature_sup =
+ 		get_unaligned_be32(desc_buf +
+ 				   DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP);
++
++	if (!(hba->dev_info.d_ext_ufs_feature_sup & UFS_DEV_WRITE_BOOSTER_SUP))
++		goto wb_disabled;
 +
  	/*
- 	 * ufshcd_vops_init() is invoked after
- 	 * ufshcd_setup_clock(true) in ufshcd_hba_init() thus
+ 	 * WB may be supported but not configured while provisioning.
+ 	 * The spec says, in dedicated wb buffer mode,
+@@ -6818,11 +6825,12 @@ static void ufshcd_wb_probe(struct ufs_hba *hba, u8 *desc_buf)
+ 	hba->dev_info.b_presrv_uspc_en =
+ 		desc_buf[DEVICE_DESC_PARAM_WB_PRESRV_USRSPC_EN];
+ 
+-	if (!((hba->dev_info.d_ext_ufs_feature_sup &
+-		 UFS_DEV_WRITE_BOOSTER_SUP) &&
+-		hba->dev_info.b_wb_buffer_type &&
++	if (!(hba->dev_info.b_wb_buffer_type &&
+ 	      hba->dev_info.d_wb_alloc_units))
+-		hba->caps &= ~UFSHCD_CAP_WB_EN;
++		goto wb_disabled;
++
++wb_disabled:
++	hba->caps &= ~UFSHCD_CAP_WB_EN;
+ }
+ 
+ static int ufs_get_device_desc(struct ufs_hba *hba)
+@@ -6862,8 +6870,7 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
+ 
+ 	model_index = desc_buf[DEVICE_DESC_PARAM_PRDCT_NAME];
+ 
+-	/* Enable WB only for UFS-3.1 */
+-	if (dev_info->wspecversion >= 0x310)
++	if (ufshcd_is_wb_allowed(hba))
+ 		ufshcd_wb_probe(hba, desc_buf);
+ 
+ 	err = ufshcd_read_string_desc(hba, model_index,
 -- 
 2.18.0
 _______________________________________________
