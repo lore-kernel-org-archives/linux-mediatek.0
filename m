@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B7A83C8300A
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CE206C8300B
 	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:38:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8D1CC2087E
+	by mail.kernel.org (Postfix) with ESMTPS id 9F42421927
 	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:38:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JvNzsBYs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8D1CC2087E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="B5T67Dip"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F42421927
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,21 +26,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=30PO0ccsp2yHnWoweG/JVMZ5zj2Bbz2gPi3vDU9PqzE=; b=JvNzsBYsjFx054STc/UF21NMM0
-	2WnxsJ+/5soRwRbr3s8zLF0nfc1RZCNzXOeYaEW9ByD+ytmvnzYd6LGYhTe9ePMQSuEg8OT9JENg4
-	UWrBgsJMBs54GphkgIEeI1DJiyZmR/udzc04dCj2NOW39X9fcHBtuyqmmVv/LCDIBi9LiB2SzeYav
-	ky0GVRCVWY3R1F/RDM3y0w65kPe8SjavZsuEpHD4yYLQTWGpVlmTjKUCEzm5vkmOyMBKOKyZzPNLo
-	iWYQs3CQMQzD82jOlnoBLCreIuqg6y+k3JaJ53trhnHoN5UGA8wbtOIWzK/wtkwg/kiuuAlHGsJIc
-	lMpfZrrQ==;
+	bh=pknPsRXaZxGfaAWh96vMlGJk26c2Xx9/ZoH8G7Q18IY=; b=B5T67DipcXlsSvGdv2vx1TcY5t
+	x51E0QCLXzVR8fG7MvEVLpjFuUBUJvE/bPPr32ydKhAPdQgSydgykEeqXkK26AKXm3LmU7BbGRLrQ
+	TiJxUsYO9TXwVMxYcWaJv4dwkCgIfZ61JEqJe1IEtvvIznQUdI0eOPhT8MECt/hE8VDOZo5Q6iB4u
+	ZtWMMP5YnI13m/d6NS7J8TvXUKWitYEaRnTMtRqWNWBhDoZC+uw9877RSMAH4ypXWxt5eWsiYBpRl
+	mnbQ1J5wWcTs3yU/l8BojTvmcacTQlpmd2cPSZA/WLyw0uK42JH1LkQ4vjSVqnEJid2alvPwCRsCV
+	sa77WKZw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTmvJ-0007jz-0N; Wed, 29 Apr 2020 13:38:49 +0000
+	id 1jTmvH-0007gp-44; Wed, 29 Apr 2020 13:38:47 +0000
 Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
  helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTmuJ-0006GP-Ma; Wed, 29 Apr 2020 13:37:52 +0000
+ id 1jTmuM-0006Kc-9U; Wed, 29 Apr 2020 13:37:54 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 6C8A480A; Wed, 29 Apr 2020 15:37:36 +0200 (CEST)
+ id A7E6EEC0; Wed, 29 Apr 2020 15:37:38 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -55,16 +55,16 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v3 06/34] iommu/amd: Return -ENODEV in add_device when device
- is not handled by IOMMU
-Date: Wed, 29 Apr 2020 15:36:44 +0200
-Message-Id: <20200429133712.31431-7-joro@8bytes.org>
+Subject: [PATCH v3 18/34] iommu/pamu: Convert to probe/release_device()
+ call-backs
+Date: Wed, 29 Apr 2020 15:36:56 +0200
+Message-Id: <20200429133712.31431-19-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200429133712.31431-1-joro@8bytes.org>
 References: <20200429133712.31431-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200429_063747_915368_40F547FE 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20200429_063750_516572_743AFEDC 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,32 +90,59 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-When check_device() fails on the device, it is not handled by the
-IOMMU and amd_iommu_add_device() needs to return -ENODEV.
+Convert the PAMU IOMMU driver to use the probe_device() and
+release_device() call-backs of iommu_ops, so that the iommu core code
+does the group and sysfs setup.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/amd_iommu.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/iommu/fsl_pamu_domain.c | 22 +++++-----------------
+ 1 file changed, 5 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/iommu/amd_iommu.c b/drivers/iommu/amd_iommu.c
-index 504f2db75eda..3e0d27f7622e 100644
---- a/drivers/iommu/amd_iommu.c
-+++ b/drivers/iommu/amd_iommu.c
-@@ -2157,9 +2157,12 @@ static int amd_iommu_add_device(struct device *dev)
- 	struct amd_iommu *iommu;
- 	int ret, devid;
+diff --git a/drivers/iommu/fsl_pamu_domain.c b/drivers/iommu/fsl_pamu_domain.c
+index 06828e2698d5..928d37771ece 100644
+--- a/drivers/iommu/fsl_pamu_domain.c
++++ b/drivers/iommu/fsl_pamu_domain.c
+@@ -1016,25 +1016,13 @@ static struct iommu_group *fsl_pamu_device_group(struct device *dev)
+ 	return group;
+ }
  
--	if (!check_device(dev) || get_dev_data(dev))
-+	if (get_dev_data(dev))
- 		return 0;
+-static int fsl_pamu_add_device(struct device *dev)
++static struct iommu_device *fsl_pamu_probe_device(struct device *dev)
+ {
+-	struct iommu_group *group;
+-
+-	group = iommu_group_get_for_dev(dev);
+-	if (IS_ERR(group))
+-		return PTR_ERR(group);
+-
+-	iommu_group_put(group);
+-
+-	iommu_device_link(&pamu_iommu, dev);
+-
+-	return 0;
++	return &pamu_iommu;
+ }
  
-+	if (!check_device(dev))
-+		return -ENODEV;
-+
- 	devid = get_device_id(dev);
- 	if (devid < 0)
- 		return devid;
+-static void fsl_pamu_remove_device(struct device *dev)
++static void fsl_pamu_release_device(struct device *dev)
+ {
+-	iommu_device_unlink(&pamu_iommu, dev);
+-	iommu_group_remove_device(dev);
+ }
+ 
+ static const struct iommu_ops fsl_pamu_ops = {
+@@ -1048,8 +1036,8 @@ static const struct iommu_ops fsl_pamu_ops = {
+ 	.iova_to_phys	= fsl_pamu_iova_to_phys,
+ 	.domain_set_attr = fsl_pamu_set_domain_attr,
+ 	.domain_get_attr = fsl_pamu_get_domain_attr,
+-	.add_device	= fsl_pamu_add_device,
+-	.remove_device	= fsl_pamu_remove_device,
++	.probe_device	= fsl_pamu_probe_device,
++	.release_device	= fsl_pamu_release_device,
+ 	.device_group   = fsl_pamu_device_group,
+ };
+ 
 -- 
 2.17.1
 
