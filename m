@@ -4,19 +4,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 422CBC83003
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:39:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7CEB4C83003
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:39:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 15240206D6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:39:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 52790206D6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:39:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XOgx+7a4"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 15240206D6
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NqvNMaG+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 52790206D6
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,20 +26,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=3X0SGjmEMVXZIyHVYfiuKkBDCzdpE3Xmjlb+JLewgh4=; b=XOgx+7a4xIzX02HHzzQ1Px7Mjf
-	Tvs8lUmByor8F4njAN97/yhV5+Tlaabq/TTSdMPREgkjkD390J9ZnunVbOuOsPYr487Nmsad92kjy
-	tNBvdWxlfzEP0VzTdktQw0dOXErh9szelI0iZbZkVJMJCag4dm4habP997Ma+dqbL8oxD2KqnzncH
-	XdJsDscBsbPf84vqSoma4yNQSftRzzLyQG9lqPzdwreYO34R/OKju1/5v67JoTyqsKiWjZzJCl4cg
-	HZnuwif3UuRc1XpwkbRtWMV/l1YaYpqS42cDvSBrW/L6aLgSfo8xF7rvSQp1sA3ULni2xxgks6OBP
-	PLOYs0Fg==;
+	bh=OCZXrEJwnPo/EEMN0KvMVd9CAlyGHswq1GUMMp7f0Dk=; b=NqvNMaG+SlOBvNbl0Bv1kTc1cC
+	3R4piiUynQvoSAeyuePRM6KvUlR24ykJgWsu4NAYksBNAHe7fw4Arwp7lJ1Q5hUCcnmL+ITO8cMlm
+	R36NSclXmTtUvdJunzGTzdzULHR49xTwXpl+BRjqcvunrSEupcboD8H5q4ZLMqnWHHitBjs1PJWNF
+	1EzF+TS0HZWj+pflUmN/JENhRRQscOCFvcwN0nYp7FTVRD1a858HrkmZFgI8Tbt4Xs4Ppqu1mNPr+
+	yn07P6YHsK2CC2uZ5NSn4A9AxZRLDLsbDAphujhT/QF+s02dVsoNZvC32jwzq2o5jDFV2e6sR/l30
+	5M9WIMcQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTmvg-0008Hh-Em; Wed, 29 Apr 2020 13:39:12 +0000
-Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
+	id 1jTmvo-0008Sz-QZ; Wed, 29 Apr 2020 13:39:20 +0000
+Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
+ helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTmuS-0006Rt-DK; Wed, 29 Apr 2020 13:38:01 +0000
+ id 1jTmuQ-0006OJ-5F; Wed, 29 Apr 2020 13:37:59 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id A52A0F14; Wed, 29 Apr 2020 15:37:41 +0200 (CEST)
+ id A6F54F08; Wed, 29 Apr 2020 15:37:40 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -54,16 +55,15 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v3 33/34] iommu: Move more initialization to
- __iommu_probe_device()
-Date: Wed, 29 Apr 2020 15:37:11 +0200
-Message-Id: <20200429133712.31431-34-joro@8bytes.org>
+Subject: [PATCH v3 28/34] iommu/omap: Remove orphan_dev tracking
+Date: Wed, 29 Apr 2020 15:37:06 +0200
+Message-Id: <20200429133712.31431-29-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200429133712.31431-1-joro@8bytes.org>
 References: <20200429133712.31431-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200429_063756_674222_0FD657FD 
-X-CRM114-Status: GOOD (  15.56  )
+X-CRM114-CacheID: sfid-20200429_063754_591754_760CC069 
+X-CRM114-Status: GOOD (  14.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,109 +89,129 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Move the calls to dev_iommu_get() and try_module_get() into
-__iommu_probe_device(), so that the callers don't have to do it on
-their own.
+Remove the tracking of device which could not be probed because
+their IOMMU is not probed yet. Replace it with a call to
+bus_iommu_probe() when a new IOMMU is probed.
 
-Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
-Acked-by: Marek Szyprowski <m.szyprowski@samsung.com>
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/iommu.c | 47 +++++++++++++++++--------------------------
- 1 file changed, 18 insertions(+), 29 deletions(-)
+ drivers/iommu/omap-iommu.c | 54 +++-----------------------------------
+ 1 file changed, 4 insertions(+), 50 deletions(-)
 
-diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-index 7f99e5ae432c..48a95f7d7999 100644
---- a/drivers/iommu/iommu.c
-+++ b/drivers/iommu/iommu.c
-@@ -194,9 +194,19 @@ static int __iommu_probe_device(struct device *dev, struct list_head *group_list
- 	struct iommu_group *group;
- 	int ret;
+diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
+index 887fefcb03b4..ecc9d0829a91 100644
+--- a/drivers/iommu/omap-iommu.c
++++ b/drivers/iommu/omap-iommu.c
+@@ -35,15 +35,6 @@
  
-+	if (!dev_iommu_get(dev))
-+		return -ENOMEM;
-+
-+	if (!try_module_get(ops->owner)) {
-+		ret = -EINVAL;
-+		goto err_free;
-+	}
-+
- 	iommu_dev = ops->probe_device(dev);
--	if (IS_ERR(iommu_dev))
--		return PTR_ERR(iommu_dev);
-+	if (IS_ERR(iommu_dev)) {
-+		ret = PTR_ERR(iommu_dev);
-+		goto out_module_put;
-+	}
+ static const struct iommu_ops omap_iommu_ops;
  
- 	dev->iommu->iommu_dev = iommu_dev;
+-struct orphan_dev {
+-	struct device *dev;
+-	struct list_head node;
+-};
+-
+-static LIST_HEAD(orphan_dev_list);
+-
+-static DEFINE_SPINLOCK(orphan_lock);
+-
+ #define to_iommu(dev)	((struct omap_iommu *)dev_get_drvdata(dev))
  
-@@ -217,6 +227,12 @@ static int __iommu_probe_device(struct device *dev, struct list_head *group_list
- out_release:
- 	ops->release_device(dev);
+ /* bitmap of the page sizes currently supported */
+@@ -62,8 +53,6 @@ static DEFINE_SPINLOCK(orphan_lock);
+ static struct platform_driver omap_iommu_driver;
+ static struct kmem_cache *iopte_cachep;
  
-+out_module_put:
-+	module_put(ops->owner);
-+
-+err_free:
-+	dev_iommu_free(dev);
-+
+-static int _omap_iommu_add_device(struct device *dev);
+-
+ /**
+  * to_omap_domain - Get struct omap_iommu_domain from generic iommu_domain
+  * @dom:	generic iommu domain handle
+@@ -1177,7 +1166,6 @@ static int omap_iommu_probe(struct platform_device *pdev)
+ 	struct omap_iommu *obj;
+ 	struct resource *res;
+ 	struct device_node *of = pdev->dev.of_node;
+-	struct orphan_dev *orphan_dev, *tmp;
+ 
+ 	if (!of) {
+ 		pr_err("%s: only DT-based devices are supported\n", __func__);
+@@ -1260,13 +1248,8 @@ static int omap_iommu_probe(struct platform_device *pdev)
+ 
+ 	dev_info(&pdev->dev, "%s registered\n", obj->name);
+ 
+-	list_for_each_entry_safe(orphan_dev, tmp, &orphan_dev_list, node) {
+-		err = _omap_iommu_add_device(orphan_dev->dev);
+-		if (!err) {
+-			list_del(&orphan_dev->node);
+-			kfree(orphan_dev);
+-		}
+-	}
++	/* Re-probe bus to probe device attached to this IOMMU */
++	bus_iommu_probe(&platform_bus_type);
+ 
+ 	return 0;
+ 
+@@ -1657,7 +1640,7 @@ static phys_addr_t omap_iommu_iova_to_phys(struct iommu_domain *domain,
  	return ret;
  }
  
-@@ -226,14 +242,6 @@ int iommu_probe_device(struct device *dev)
- 	struct iommu_group *group;
- 	int ret;
- 
--	if (!dev_iommu_get(dev))
--		return -ENOMEM;
--
--	if (!try_module_get(ops->owner)) {
--		ret = -EINVAL;
--		goto err_out;
--	}
--
- 	ret = __iommu_probe_device(dev, NULL);
- 	if (ret)
- 		goto err_out;
-@@ -1532,14 +1540,10 @@ struct iommu_domain *iommu_group_default_domain(struct iommu_group *group)
- 
- static int probe_iommu_group(struct device *dev, void *data)
+-static int _omap_iommu_add_device(struct device *dev)
++static int omap_iommu_add_device(struct device *dev)
  {
--	const struct iommu_ops *ops = dev->bus->iommu_ops;
- 	struct list_head *group_list = data;
- 	struct iommu_group *group;
+ 	struct omap_iommu_arch_data *arch_data, *tmp;
+ 	struct omap_iommu *oiommu;
+@@ -1666,8 +1649,6 @@ static int _omap_iommu_add_device(struct device *dev)
+ 	struct platform_device *pdev;
+ 	int num_iommus, i;
  	int ret;
+-	struct orphan_dev *orphan_dev;
+-	unsigned long flags;
  
--	if (!dev_iommu_get(dev))
--		return -ENOMEM;
+ 	/*
+ 	 * Allocate the archdata iommu structure for DT-based devices.
+@@ -1702,23 +1683,7 @@ static int _omap_iommu_add_device(struct device *dev)
+ 		if (!pdev) {
+ 			of_node_put(np);
+ 			kfree(arch_data);
+-			spin_lock_irqsave(&orphan_lock, flags);
+-			list_for_each_entry(orphan_dev, &orphan_dev_list,
+-					    node) {
+-				if (orphan_dev->dev == dev)
+-					break;
+-			}
+-			spin_unlock_irqrestore(&orphan_lock, flags);
 -
- 	/* Device is probed already if in a group */
- 	group = iommu_group_get(dev);
- 	if (group) {
-@@ -1547,22 +1551,7 @@ static int probe_iommu_group(struct device *dev, void *data)
- 		return 0;
- 	}
+-			if (orphan_dev && orphan_dev->dev == dev)
+-				return -EPROBE_DEFER;
+-
+-			orphan_dev = kzalloc(sizeof(*orphan_dev), GFP_KERNEL);
+-			orphan_dev->dev = dev;
+-			spin_lock_irqsave(&orphan_lock, flags);
+-			list_add(&orphan_dev->node, &orphan_dev_list);
+-			spin_unlock_irqrestore(&orphan_lock, flags);
+-			return -EPROBE_DEFER;
++			return -ENODEV;
+ 		}
  
--	if (!try_module_get(ops->owner)) {
--		ret = -EINVAL;
--		goto err_free_dev_iommu;
--	}
--
- 	ret = __iommu_probe_device(dev, group_list);
--	if (ret)
--		goto err_module_put;
--
--	return 0;
--
--err_module_put:
--	module_put(ops->owner);
--err_free_dev_iommu:
--	dev_iommu_free(dev);
--
- 	if (ret == -ENODEV)
- 		ret = 0;
+ 		oiommu = platform_get_drvdata(pdev);
+@@ -1764,17 +1729,6 @@ static int _omap_iommu_add_device(struct device *dev)
+ 	return 0;
+ }
  
+-static int omap_iommu_add_device(struct device *dev)
+-{
+-	int ret;
+-
+-	ret = _omap_iommu_add_device(dev);
+-	if (ret == -EPROBE_DEFER)
+-		return 0;
+-
+-	return ret;
+-}
+-
+ static void omap_iommu_remove_device(struct device *dev)
+ {
+ 	struct omap_iommu_arch_data *arch_data = dev->archdata.iommu;
 -- 
 2.17.1
 
