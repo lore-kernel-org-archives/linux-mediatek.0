@@ -2,60 +2,74 @@ Return-Path: <SRS0=pTuV=6N=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E175C83000
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 14:02:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 205B3C83000
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 14:16:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2EDF520731
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 14:02:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E802220B80
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 14:16:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OR9Zsl1n"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2EDF520731
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FbJw3j1U";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="k2JQJ8fp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E802220B80
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SH3wR1WHSpZ4TY0ExTiTrCur0EGGsyIjLVSxBxaWbRs=; b=OR9Zsl1nyl4Lvv
-	7XVG0ctTurqitQBroppL45VctkjMJAKPWoRhOS66xe5VWUYCFyqW9Uh6yk+q7rGN29NJ0mGOOXAOi
-	cu5h1QKULgYzIw6tBxjZ/g5k6w5haysV6oHjOYl7IAdJwhGbnVqQNTmqqy2GITrLdWPukB4FO7PDz
-	mosnEcyOn4vEjP72iixGsfF6Tqy4b7S1IdUfb698AQal3p0IwGNVGzpy1tnVZ9o34lWCgdQwY40tJ
-	v1z4mu5zVvL5Mex5AjlTa0LtPiWKKfPPeMQMzIrN+A5s01JeCkrE2+yIG1iN28QHJtyBYMGZtWOTB
-	/apCSDjJOgV461bPqgHg==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VpEJmFPYAlNw3L78YtE8OiLCZ9LzRvChl6VHeSCwtSs=; b=FbJw3j1UdhG/I0
+	oeO5OFunlSWH/f6qzc5KgkADvLH90iBXXuRBi5l6qrPJjcRV+Oq25dZ2G7NxMBINV2uL1sDuLPlPP
+	3wnJGSCrBE5911Dp261RWNv25+2JyXS9hpR/dhn53WWfAPmZimWNRroM9OmVEt0U3+LT90Cs6vTiY
+	TiMWyRpMCXwfVYbpa8pVBzyABSuyCf7W0s1af1UEyMjSuDrLxGWLnBBLW6cZfvBLWiUmpHunCMdPW
+	DV+QSIup8WqkXCcG2kO0Msa49ryWuUif2t/YK9Y+0mYQyKutQfMpAcO5da2+2LrtcYdYAYIFApI+8
+	5jxAM57Kta9IH4xB91dA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTnII-0007pl-Qs; Wed, 29 Apr 2020 14:02:34 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1jTnVo-0001LZ-Nn; Wed, 29 Apr 2020 14:16:32 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTnI7-0007gB-71; Wed, 29 Apr 2020 14:02:24 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id CB2E32A05D5
-Subject: Re: [PATCH v3 -next] drm/mediatek: Fix Kconfig warning
-To: YueHaibing <yuehaibing@huawei.com>, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
- matthias.bgg@gmail.com, ck.hu@mediatek.com
+ id 1jTnVW-00017z-Sx; Wed, 29 Apr 2020 14:16:16 +0000
+Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com
+ [209.85.208.46])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 74B332186A;
+ Wed, 29 Apr 2020 14:16:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1588169772;
+ bh=RTEeKjUF1paJxifL2yr5+8cCDLpxaByH64rNDTnk/74=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=k2JQJ8fpMdmxLGcpMg47+0e4J+hktbo4FqU0UFKJ4IbHu6TLTZ9vHZMac3cIZyjBS
+ bqTFMJrMFH/92PkZFdiLNCU5Ck/JVhKH2Bls7kkThGiWwWTG18q1neQ95aatEkGcVZ
+ ETk250WB2U1zIwmtoNRomh7rVskItnXAz4fJCy+8=
+Received: by mail-ed1-f46.google.com with SMTP id d16so1645517edv.8;
+ Wed, 29 Apr 2020 07:16:12 -0700 (PDT)
+X-Gm-Message-State: AGi0PubkKiZE36Mt4gidmXi1tV7KIg3VZDjgyyBnIwfWCjhyD5RFhzcv
+ xZP0sQIjNaGO1Z4e1ESxkI2zri6qJwyFW4XPkQ==
+X-Google-Smtp-Source: APiQypItwtCq5f4ckv/WzvZKMkryr9MF+5+w+xUswDZzzQpddnaUOnlv7PJd7bxb8Txbi68jXzKqiS8LDs7q6NzaYYQ=
+X-Received: by 2002:aa7:dd95:: with SMTP id g21mr2635984edv.148.1588169770819; 
+ Wed, 29 Apr 2020 07:16:10 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200420135045.27984-1-yuehaibing@huawei.com>
  <20200429071337.49528-1-yuehaibing@huawei.com>
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <178db061-7068-e688-dd5a-0d767e57c22c@collabora.com>
-Date: Wed, 29 Apr 2020 16:02:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
-MIME-Version: 1.0
 In-Reply-To: <20200429071337.49528-1-yuehaibing@huawei.com>
-Content-Language: en-US
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Wed, 29 Apr 2020 22:15:58 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__5rwRQhuy4vT8OiAKMM2bQtCb7w5AW9B5rqL+UVdVpsg@mail.gmail.com>
+Message-ID: <CAAOTY__5rwRQhuy4vT8OiAKMM2bQtCb7w5AW9B5rqL+UVdVpsg@mail.gmail.com>
+Subject: Re: [PATCH v3 -next] drm/mediatek: Fix Kconfig warning
+To: YueHaibing <yuehaibing@huawei.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200429_070223_384698_CE2C43D8 
-X-CRM114-Status: GOOD (  14.74  )
+X-CRM114-CacheID: sfid-20200429_071614_963328_75A4F944 
+X-CRM114-Status: GOOD (  14.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,62 +81,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.orc,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.orc, linux-kernel <linux-kernel@vger.kernel.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi YueHaibing,
-
-Thank you for your patch.
-
-On 29/4/20 9:13, YueHaibing wrote:
-> WARNING: unmet direct dependencies detected for MTK_MMSYS
->   Depends on [n]: (ARCH_MEDIATEK [=y] || COMPILE_TEST [=n]) && COMMON_CLK_MT8173_MMSYS [=n]
->   Selected by [y]:
->   - DRM_MEDIATEK [=y] && HAS_IOMEM [=y] && DRM [=y] && (ARCH_MEDIATEK [=y] || ARM && COMPILE_TEST [=n]) && COMMON_CLK [=y] && HAVE_ARM_SMCCC [=y] && OF [=y]
-> 
-> Make DRM_MEDIATEK depend on MTK_MMSYS to fix this.
-> 
-> Fixes: 2c758e301ed9 ("soc / drm: mediatek: Move routing control to mmsys device")
-> Signed-off-by: YueHaibing <yuehaibing@huawei.com>
-
-Definitively we shouldn't select the MTK_MMSYS and we should depend on MTK_MMSYS
-instead, so
-
-Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-
-> ---
-> v3: make DRM_MEDIATEK depends on MTK_MMSYS
-> v2: select COMMON_CLK_MT8173_MMSYS instead of adding DRM_MEDIATEK dependency  
-> ---
->  drivers/gpu/drm/mediatek/Kconfig | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/Kconfig b/drivers/gpu/drm/mediatek/Kconfig
-> index c420f5a3d33b..aa74aac3cbcc 100644
-> --- a/drivers/gpu/drm/mediatek/Kconfig
-> +++ b/drivers/gpu/drm/mediatek/Kconfig
-> @@ -6,12 +6,12 @@ config DRM_MEDIATEK
->  	depends on COMMON_CLK
->  	depends on HAVE_ARM_SMCCC
->  	depends on OF
-> +	depends on MTK_MMSYS
->  	select DRM_GEM_CMA_HELPER
->  	select DRM_KMS_HELPER
->  	select DRM_MIPI_DSI
->  	select DRM_PANEL
->  	select MEMORY
-> -	select MTK_MMSYS
->  	select MTK_SMI
->  	select VIDEOMODE_HELPERS
->  	help
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIFl1ZUhhaWJpbmc6CgpZdWVIYWliaW5nIDx5dWVoYWliaW5nQGh1YXdlaS5jb20+IOaWvCAy
+MDIw5bm0NOaciDI55pelIOmAseS4iSDkuIvljYgzOjE05a+r6YGT77yaCj4KPiBXQVJOSU5HOiB1
+bm1ldCBkaXJlY3QgZGVwZW5kZW5jaWVzIGRldGVjdGVkIGZvciBNVEtfTU1TWVMKPiAgIERlcGVu
+ZHMgb24gW25dOiAoQVJDSF9NRURJQVRFSyBbPXldIHx8IENPTVBJTEVfVEVTVCBbPW5dKSAmJiBD
+T01NT05fQ0xLX01UODE3M19NTVNZUyBbPW5dCj4gICBTZWxlY3RlZCBieSBbeV06Cj4gICAtIERS
+TV9NRURJQVRFSyBbPXldICYmIEhBU19JT01FTSBbPXldICYmIERSTSBbPXldICYmIChBUkNIX01F
+RElBVEVLIFs9eV0gfHwgQVJNICYmIENPTVBJTEVfVEVTVCBbPW5dKSAmJiBDT01NT05fQ0xLIFs9
+eV0gJiYgSEFWRV9BUk1fU01DQ0MgWz15XSAmJiBPRiBbPXldCj4KPiBNYWtlIERSTV9NRURJQVRF
+SyBkZXBlbmQgb24gTVRLX01NU1lTIHRvIGZpeCB0aGlzLgoKUmV2aWV3ZWQtYnk6IENodW4tS3Vh
+bmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgoKPgo+IEZpeGVzOiAyYzc1OGUzMDFlZDkg
+KCJzb2MgLyBkcm06IG1lZGlhdGVrOiBNb3ZlIHJvdXRpbmcgY29udHJvbCB0byBtbXN5cyBkZXZp
+Y2UiKQo+IFNpZ25lZC1vZmYtYnk6IFl1ZUhhaWJpbmcgPHl1ZWhhaWJpbmdAaHVhd2VpLmNvbT4K
+PiAtLS0KPiB2MzogbWFrZSBEUk1fTUVESUFURUsgZGVwZW5kcyBvbiBNVEtfTU1TWVMKPiB2Mjog
+c2VsZWN0IENPTU1PTl9DTEtfTVQ4MTczX01NU1lTIGluc3RlYWQgb2YgYWRkaW5nIERSTV9NRURJ
+QVRFSyBkZXBlbmRlbmN5Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9LY29uZmln
+IHwgMiArLQo+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkK
+Pgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvS2NvbmZpZyBiL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9LY29uZmlnCj4gaW5kZXggYzQyMGY1YTNkMzNiLi5hYTc0YWFj
+M2NiY2MgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tjb25maWcKPiAr
+KysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvS2NvbmZpZwo+IEBAIC02LDEyICs2LDEyIEBA
+IGNvbmZpZyBEUk1fTUVESUFURUsKPiAgICAgICAgIGRlcGVuZHMgb24gQ09NTU9OX0NMSwo+ICAg
+ICAgICAgZGVwZW5kcyBvbiBIQVZFX0FSTV9TTUNDQwo+ICAgICAgICAgZGVwZW5kcyBvbiBPRgo+
+ICsgICAgICAgZGVwZW5kcyBvbiBNVEtfTU1TWVMKPiAgICAgICAgIHNlbGVjdCBEUk1fR0VNX0NN
+QV9IRUxQRVIKPiAgICAgICAgIHNlbGVjdCBEUk1fS01TX0hFTFBFUgo+ICAgICAgICAgc2VsZWN0
+IERSTV9NSVBJX0RTSQo+ICAgICAgICAgc2VsZWN0IERSTV9QQU5FTAo+ICAgICAgICAgc2VsZWN0
+IE1FTU9SWQo+IC0gICAgICAgc2VsZWN0IE1US19NTVNZUwo+ICAgICAgICAgc2VsZWN0IE1US19T
+TUkKPiAgICAgICAgIHNlbGVjdCBWSURFT01PREVfSEVMUEVSUwo+ICAgICAgICAgaGVscAo+IC0t
+Cj4gMi4xNy4xCj4KPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1tZWRpYXRlawo=
