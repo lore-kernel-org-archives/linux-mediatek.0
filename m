@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6BE14C83006
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 97F9BC83003
 	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:39:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 41AB7206D6
+	by mail.kernel.org (Postfix) with ESMTPS id 6A40D2085B
 	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:39:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dbqLbr3b"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 41AB7206D6
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OrC6NMWl"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6A40D2085B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,20 +26,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=IR1132cTu1CyzUq6lOdciJbI6KsSV1kCIm7RelS5nv8=; b=dbqLbr3bbz7ShLvjnVRJGgixdf
-	cmtFR1aBOm7isMn31Z/Ubp8JyAn6Y025aKBixNbivrvui1CC0prmw+gb7FJd55rwkWi/b261ePLsE
-	6khS7aVBjr4BS3ZZCw0/+Ch/CJNzzLhMSTIl/f16rNR4JpnCkf7ABf51jqBu0IDGlbg2Uot0ijc/n
-	qFP0FiafyEwUgb5V1yRDaxjBg3dtwGM/+LpW/CjTLWn6mRTLt0yfoO2rHZo1GDNQiM5i2Nd6h6D7V
-	vEIBRt8bLZCwODiYl12dJ3FttPGmmqhWr9gMEGUHoo80Jz0APm9qIVuGwJbDbT5xEqpIi/GHqGozE
-	afiA8KtQ==;
+	bh=4ekgPUb4us0D6UE2nXb6O5G8BaPHKF3fxNLA2jeE7WY=; b=OrC6NMWlVOLYaDYvrAIUhpZzLU
+	GxW0SoocSYHhyVRBeNuVjuC+zEm9w33uInLSTbt8Z0aka99vcHhDYTFfgoyyI7RCpyndAynUVzV/7
+	hC6g95aH4jUfiIuLCni1wJJ6o/Cl+AulzNfaw2jhFOpYfgETFBecCdRuFZav2ICjlNShSQt4fIpjW
+	D5lGNrBGZfb9Q+5zCO+RxXwDkHy+gii90a3rYF00uzZkk3i3berWvO5QwHrKqYkyahsjRsDFnJ3c8
+	gNvdPGwKh6FvWTtI9bBhM1JjXUvN991v+MVeQY5dZD1yjNEcHg4PtwfoKGCE8+T58MSdm65AQd69Z
+	7xmisYbQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTmvL-0007pP-Tf; Wed, 29 Apr 2020 13:38:51 +0000
-Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
+	id 1jTmvR-0007yV-GL; Wed, 29 Apr 2020 13:38:57 +0000
+Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
+ helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTmuK-0006H3-4h; Wed, 29 Apr 2020 13:37:53 +0000
+ id 1jTmuM-0006Kr-Be; Wed, 29 Apr 2020 13:37:54 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 180F1E92; Wed, 29 Apr 2020 15:37:38 +0200 (CEST)
+ id 1F089ED8; Wed, 29 Apr 2020 15:37:39 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -54,16 +55,16 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v3 15/34] iommu/amd: Convert to probe/release_device()
+Subject: [PATCH v3 20/34] iommu/virtio: Convert to probe/release_device()
  call-backs
-Date: Wed, 29 Apr 2020 15:36:53 +0200
-Message-Id: <20200429133712.31431-16-joro@8bytes.org>
+Date: Wed, 29 Apr 2020 15:36:58 +0200
+Message-Id: <20200429133712.31431-21-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200429133712.31431-1-joro@8bytes.org>
 References: <20200429133712.31431-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200429_063748_343321_11479E9F 
-X-CRM114-Status: GOOD (  17.35  )
+X-CRM114-CacheID: sfid-20200429_063750_768382_DD858DB5 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,176 +90,109 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Convert the AMD IOMMU Driver to use the probe_device() and
+Convert the VirtIO IOMMU driver to use the probe_device() and
 release_device() call-backs of iommu_ops, so that the iommu core code
 does the group and sysfs setup.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/amd_iommu.c | 71 ++++++++++++---------------------------
- 1 file changed, 22 insertions(+), 49 deletions(-)
+ drivers/iommu/virtio-iommu.c | 41 +++++++++---------------------------
+ 1 file changed, 10 insertions(+), 31 deletions(-)
 
-diff --git a/drivers/iommu/amd_iommu.c b/drivers/iommu/amd_iommu.c
-index 0b4b4faa876d..c30367413683 100644
---- a/drivers/iommu/amd_iommu.c
-+++ b/drivers/iommu/amd_iommu.c
-@@ -343,21 +343,9 @@ static bool check_device(struct device *dev)
- 	return true;
+diff --git a/drivers/iommu/virtio-iommu.c b/drivers/iommu/virtio-iommu.c
+index d5cac4f46ca5..bda300c2a438 100644
+--- a/drivers/iommu/virtio-iommu.c
++++ b/drivers/iommu/virtio-iommu.c
+@@ -865,24 +865,23 @@ static struct viommu_dev *viommu_get_by_fwnode(struct fwnode_handle *fwnode)
+ 	return dev ? dev_to_virtio(dev)->priv : NULL;
  }
  
--static void init_iommu_group(struct device *dev)
--{
+-static int viommu_add_device(struct device *dev)
++static struct iommu_device *viommu_probe_device(struct device *dev)
+ {
+ 	int ret;
 -	struct iommu_group *group;
--
--	group = iommu_group_get_for_dev(dev);
--	if (IS_ERR(group))
--		return;
--
--	iommu_group_put(group);
--}
--
- static int iommu_init_device(struct device *dev)
- {
- 	struct iommu_dev_data *dev_data;
--	struct amd_iommu *iommu;
- 	int devid;
+ 	struct viommu_endpoint *vdev;
+ 	struct viommu_dev *viommu = NULL;
+ 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
  
- 	if (dev->archdata.iommu)
-@@ -367,8 +355,6 @@ static int iommu_init_device(struct device *dev)
- 	if (devid < 0)
- 		return devid;
- 
--	iommu = amd_iommu_rlookup_table[devid];
--
- 	dev_data = find_dev_data(devid);
- 	if (!dev_data)
- 		return -ENOMEM;
-@@ -391,8 +377,6 @@ static int iommu_init_device(struct device *dev)
- 
- 	dev->archdata.iommu = dev_data;
- 
--	iommu_device_link(&iommu->iommu, dev);
--
- 	return 0;
- }
- 
-@@ -410,7 +394,7 @@ static void iommu_ignore_device(struct device *dev)
- 	setup_aliases(dev);
- }
- 
--static void iommu_uninit_device(struct device *dev)
-+static void amd_iommu_uninit_device(struct device *dev)
- {
- 	struct iommu_dev_data *dev_data;
- 	struct amd_iommu *iommu;
-@@ -429,13 +413,6 @@ static void iommu_uninit_device(struct device *dev)
- 	if (dev_data->domain)
- 		detach_device(dev);
- 
--	iommu_device_unlink(&iommu->iommu, dev);
--
--	iommu_group_remove_device(dev);
--
--	/* Remove dma-ops */
--	dev->dma_ops = NULL;
--
- 	/*
- 	 * We keep dev_data around for unplugged devices and reuse it when the
- 	 * device is re-plugged - not doing so would introduce a ton of races.
-@@ -2152,55 +2129,50 @@ static void detach_device(struct device *dev)
- 	spin_unlock_irqrestore(&domain->lock, flags);
- }
- 
--static int amd_iommu_add_device(struct device *dev)
-+static struct iommu_device *amd_iommu_probe_device(struct device *dev)
- {
--	struct iommu_dev_data *dev_data;
--	struct iommu_domain *domain;
-+	struct iommu_device *iommu_dev;
- 	struct amd_iommu *iommu;
- 	int ret, devid;
- 
--	if (get_dev_data(dev))
--		return 0;
--
- 	if (!check_device(dev))
+ 	if (!fwspec || fwspec->ops != &viommu_ops)
 -		return -ENODEV;
 +		return ERR_PTR(-ENODEV);
  
- 	devid = get_device_id(dev);
- 	if (devid < 0)
--		return devid;
-+		return ERR_PTR(devid);
+ 	viommu = viommu_get_by_fwnode(fwspec->iommu_fwnode);
+ 	if (!viommu)
+-		return -ENODEV;
++		return ERR_PTR(-ENODEV);
  
- 	iommu = amd_iommu_rlookup_table[devid];
+ 	vdev = kzalloc(sizeof(*vdev), GFP_KERNEL);
+ 	if (!vdev)
+-		return -ENOMEM;
++		return ERR_PTR(-ENOMEM);
  
-+	if (get_dev_data(dev))
-+		return &iommu->iommu;
-+
- 	ret = iommu_init_device(dev);
- 	if (ret) {
- 		if (ret != -ENOTSUPP)
- 			dev_err(dev, "Failed to initialize - trying to proceed anyway\n");
--
-+		iommu_dev = ERR_PTR(ret);
- 		iommu_ignore_device(dev);
--		dev->dma_ops = NULL;
--		goto out;
-+	} else {
-+		iommu_dev = &iommu->iommu;
+ 	vdev->dev = dev;
+ 	vdev->viommu = viommu;
+@@ -896,45 +895,25 @@ static int viommu_add_device(struct device *dev)
+ 			goto err_free_dev;
  	}
--	init_iommu_group(dev);
  
--	dev_data = get_dev_data(dev);
-+	iommu_completion_wait(iommu);
+-	ret = iommu_device_link(&viommu->iommu, dev);
+-	if (ret)
+-		goto err_free_dev;
++	return &viommu->iommu;
  
--	BUG_ON(!dev_data);
-+	return iommu_dev;
-+}
- 
--	if (dev_data->iommu_v2)
--		iommu_request_dm_for_dev(dev);
-+static void amd_iommu_probe_finalize(struct device *dev)
-+{
-+	struct iommu_domain *domain;
- 
- 	/* Domains are initialized for this device - have a look what we ended up with */
- 	domain = iommu_get_domain_for_dev(dev);
- 	if (domain->type == IOMMU_DOMAIN_DMA)
- 		iommu_setup_dma_ops(dev, IOVA_START_PFN << PAGE_SHIFT, 0);
+-	/*
+-	 * Last step creates a default domain and attaches to it. Everything
+-	 * must be ready.
+-	 */
+-	group = iommu_group_get_for_dev(dev);
+-	if (IS_ERR(group)) {
+-		ret = PTR_ERR(group);
+-		goto err_unlink_dev;
+-	}
 -
--out:
--	iommu_completion_wait(iommu);
+-	iommu_group_put(group);
 -
--	return 0;
+-	return PTR_ERR_OR_ZERO(group);
+-
+-err_unlink_dev:
+-	iommu_device_unlink(&viommu->iommu, dev);
+ err_free_dev:
+ 	generic_iommu_put_resv_regions(dev, &vdev->resv_regions);
+ 	kfree(vdev);
+ 
+-	return ret;
++	return ERR_PTR(ret);
  }
  
--static void amd_iommu_remove_device(struct device *dev)
-+static void amd_iommu_release_device(struct device *dev)
+-static void viommu_remove_device(struct device *dev)
++static void viommu_release_device(struct device *dev)
  {
- 	struct amd_iommu *iommu;
- 	int devid;
-@@ -2214,7 +2186,7 @@ static void amd_iommu_remove_device(struct device *dev)
+-	struct viommu_endpoint *vdev;
+ 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
++	struct viommu_endpoint *vdev;
  
- 	iommu = amd_iommu_rlookup_table[devid];
+ 	if (!fwspec || fwspec->ops != &viommu_ops)
+ 		return;
  
--	iommu_uninit_device(dev);
-+	amd_iommu_uninit_device(dev);
- 	iommu_completion_wait(iommu);
+ 	vdev = dev_iommu_priv_get(dev);
+ 
+-	iommu_group_remove_device(dev);
+-	iommu_device_unlink(&vdev->viommu->iommu, dev);
+ 	generic_iommu_put_resv_regions(dev, &vdev->resv_regions);
+ 	kfree(vdev);
  }
- 
-@@ -2687,8 +2659,9 @@ const struct iommu_ops amd_iommu_ops = {
- 	.map = amd_iommu_map,
- 	.unmap = amd_iommu_unmap,
- 	.iova_to_phys = amd_iommu_iova_to_phys,
--	.add_device = amd_iommu_add_device,
--	.remove_device = amd_iommu_remove_device,
-+	.probe_device = amd_iommu_probe_device,
-+	.release_device = amd_iommu_release_device,
-+	.probe_finalize = amd_iommu_probe_finalize,
- 	.device_group = amd_iommu_device_group,
- 	.domain_get_attr = amd_iommu_domain_get_attr,
- 	.get_resv_regions = amd_iommu_get_resv_regions,
+@@ -960,8 +939,8 @@ static struct iommu_ops viommu_ops = {
+ 	.unmap			= viommu_unmap,
+ 	.iova_to_phys		= viommu_iova_to_phys,
+ 	.iotlb_sync		= viommu_iotlb_sync,
+-	.add_device		= viommu_add_device,
+-	.remove_device		= viommu_remove_device,
++	.probe_device		= viommu_probe_device,
++	.release_device		= viommu_release_device,
+ 	.device_group		= viommu_device_group,
+ 	.get_resv_regions	= viommu_get_resv_regions,
+ 	.put_resv_regions	= generic_iommu_put_resv_regions,
 -- 
 2.17.1
 
