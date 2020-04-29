@@ -2,80 +2,120 @@ Return-Path: <SRS0=pTuV=6N=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 94D40C83004
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 08:32:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9F39FC83003
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 09:25:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 66D3A20731
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 08:32:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6C2AF20731
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 09:25:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qPc0+m8f";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Sy8IBUdI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 66D3A20731
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AOSK7Aug";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=micron.com header.i=@micron.com header.b="lYU77n2p"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C2AF20731
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=micron.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZIugr3WDfTOVL4Mo5mYXpzBZigRoQz+mOkcjn39T/4w=; b=qPc0+m8fPrhZRW
-	ZO8H9is9Wtm16cPX5RTDeQke0RR+VhmOKINB7ruDG0f6vg50VymhWYkvmllag4F4WaEv3cCd341my
-	6Z+WF3Pz2JoLERWp+Y0GFs/2j6D8D1SvzmHyGQHbVTyJdnul9In70ZOpMkYmkX0AP6doPdvMEIHn3
-	iAfH2f0IlBjsTWI0mTlruDLCDwbqFLiFWH2IFW9zw6aQvZQKCsMciAjfu+NFEnLBtVhGjISGn36Hs
-	hYcmYCk63jmVF1+rr1VRxSKz0p5xb731dwq1wTs+eSxLxKVLeXJi17JXxYnCPBESNQbEPQRk+Th+n
-	DHxTdCr0pA/PwD+ea4GA==;
+	List-Owner; bh=NY7idsrL6d+2Fk0CMWvxSuEzMakgYQmUGIWv33U/+eA=; b=AOSK7AugyPeBO8
+	aru00YrxRjEpBDYP1R8968Di4JvdZS8lW9xXUceodWfby0AFSRKWB6U3Tei9t43W0W1ms5a/rLNxe
+	Sko9qyNyE60fR9GfHNzQrW8ut7WNa42RbltzW8dLw/Ox1RErKNfTldTKacslHHouDG6wsvPU8v2ck
+	+ZD/812m11q3TAEBueUjMCUdBKnzrN+bnwT1yYIYMhTk8yVMG63irblPggMOp72Ui4InCHrdyAJ+X
+	/zxqod+FV83Ff39OZu1IVGs/BX/I0ZvLBWzYuXAliJrVESD4TG/PwWZFg/B7dRTsploW771zf5uy1
+	sJRGCxBh30rqbADIwnuw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTi8t-00006a-CJ; Wed, 29 Apr 2020 08:32:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jTixY-0003ws-A5; Wed, 29 Apr 2020 09:24:52 +0000
+Received: from mail-mw2nam10on2081.outbound.protection.outlook.com
+ ([40.107.94.81] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTi8o-00004z-H6
- for linux-mediatek@lists.infradead.org; Wed, 29 Apr 2020 08:32:29 +0000
-X-UUID: b4e7bfdf4650424b880fde440a2ebab1-20200429
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=qJ1jy0qwf8Wq7qUy2up8n3de2D1QB6639h3RiG9ughQ=; 
- b=Sy8IBUdI8omBmaONAabU7sghSCSECupNW49LapwlqWbG8yG+QUJGhV5H7/DVh2ndYfJnd3Z1tAP2QUTE8QrPbafYEJBeLkkUIBfNToass6y+dxDlVotTinG/tKQJ3asI9HvvUUCGYgGD7TKeX4TrZ9FFNLOmGD7tx69cNee6XXU=;
-X-UUID: b4e7bfdf4650424b880fde440a2ebab1-20200429
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <frankie.chang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 372206153; Wed, 29 Apr 2020 00:32:47 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 29 Apr 2020 01:32:17 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 29 Apr 2020 16:32:08 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 29 Apr 2020 16:32:08 +0800
-Message-ID: <1588149130.25566.7.camel@mtkswgap22>
-Subject: Re: [PATCH v2 1/1] binder: transaction latency tracking for user build
-From: Frankie Chang <Frankie.Chang@mediatek.com>
-To: Todd Kjos <tkjos@google.com>
-Date: Wed, 29 Apr 2020 16:32:10 +0800
-In-Reply-To: <CAHRSSExdaLPRfJ-2Yuwy78veRRM+k9wcZnOdMhbvhErBQGAk7A@mail.gmail.com>
-References: <1586759071.9539.15.camel@mtkswgap22>
- <1586929044-12708-1-git-send-email-Frankie.Chang@mediatek.com>
- <1586929044-12708-2-git-send-email-Frankie.Chang@mediatek.com>
- <CAHRSSExdaLPRfJ-2Yuwy78veRRM+k9wcZnOdMhbvhErBQGAk7A@mail.gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1jTixU-0003vl-3t; Wed, 29 Apr 2020 09:24:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=D+bMCiDPg/mgAPWHhwRQ5s/4+blwy1UYtC7HGdISFNRfw3KL+ZVO8hl5xGqISNp1wmAG1ZPywe1hFUD70qIeWscfaATX40FboEfX5ydZy3Ufx5noPFL4rajcyG0WfEUhfCUYVEMrBdkpnG4Yc35aSidPDSSHdKQAVi4aeHn0WKRDrfQE/lUXl2YSq3/bVweFK91xI3PGQz0P4gaKNIkRE4iK0PlQwGG5U2CKbI4oAul+oCyf4wo91mL/bdS7Gk2ygUDF29lqgqRMxYTIZEO9ZPpqJ9EOaiLOujSzluTC1dKQSWKC8NLLmBNIsQvpkUtpEjFntCEPapYlnbtQEkZ9Pw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rzoabOaO0TiRBkBbK8hkh8oyy3+5r7+tdxamy7HqhbE=;
+ b=jhqXQ7xMR/eyodFRiAkFIPWZPVUC0z5ASlt6vPB6ad9KWI1ibaJe/aSKOx6t7ZKWkEZUtGASkKNnZt6311QRzNbGZfT4VhLufxbHp5tgU+KNNel/aRB30YsSLJGXe0K2JIKK3k3J2qh9XUo9tYFnNUCqi9Cstw5KtiATvTskF01SuDiiX2l4AE/Tlpj9evhrWtCeWDMsIdsEorQlP6GBbjYYR4g8RkitimPGW3St0XdKF6UfnxhcbFBgrHqXLRi0JR51bFuDeA+N4vKdCkxW87BOja4MO2u4WmWftD/cuNGhVU2rfTPjAcUt01VlM41znNv+wUynH997E6wSAgkLdA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=micron.com; dmarc=pass action=none header.from=micron.com;
+ dkim=pass header.d=micron.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=micron.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rzoabOaO0TiRBkBbK8hkh8oyy3+5r7+tdxamy7HqhbE=;
+ b=lYU77n2pSMLYkSaMzSnD6UVLRDDjU8nettSyO+6yL1HXdDyybEJTV/o6IsYwrk3BJOHWVNhs8TS4DL+3U7jvErxNNc05BJpZbID4x8XN/Ys05Azj7nrDz7inxUTomQ1iWB7oJ5V5mZVXUP5YBdrrVMjcVeuZSCwDwr/rokI5tyg=
+Received: from BN7PR08MB5684.namprd08.prod.outlook.com (2603:10b6:408:35::23)
+ by BN7PR08MB4066.namprd08.prod.outlook.com (2603:10b6:406:87::23)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2937.22; Wed, 29 Apr
+ 2020 09:24:43 +0000
+Received: from BN7PR08MB5684.namprd08.prod.outlook.com
+ ([fe80::9ca2:4625:2b46:e45c]) by BN7PR08MB5684.namprd08.prod.outlook.com
+ ([fe80::9ca2:4625:2b46:e45c%4]) with mapi id 15.20.2958.020; Wed, 29 Apr 2020
+ 09:24:43 +0000
+From: "Bean Huo (beanhuo)" <beanhuo@micron.com>
+To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
+ <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
+ <martin.petersen@oracle.com>, "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "jejb@linux.ibm.com"
+ <jejb@linux.ibm.com>, "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
+Subject: RE: [EXT] [PATCH v1 2/4] scsi: ufs: add "index" in parameter list of
+ ufshcd_query_flag()
+Thread-Topic: [EXT] [PATCH v1 2/4] scsi: ufs: add "index" in parameter list of
+ ufshcd_query_flag()
+Thread-Index: AQHWHU4jH0V/i/BZ5Uef47xPZgg0rKiP1SvA
+Date: Wed, 29 Apr 2020 09:24:43 +0000
+Message-ID: <BN7PR08MB56849D89C8E1610A949F07AADBAD0@BN7PR08MB5684.namprd08.prod.outlook.com>
+References: <20200428111355.1776-1-stanley.chu@mediatek.com>
+ <20200428111355.1776-3-stanley.chu@mediatek.com>
+In-Reply-To: <20200428111355.1776-3-stanley.chu@mediatek.com>
+Accept-Language: en-150, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-dg-ref: PG1ldGE+PGF0IG5tPSJib2R5LnR4dCIgcD0iYzpcdXNlcnNcYmVhbmh1b1xhcHBkYXRhXHJvYW1pbmdcMDlkODQ5YjYtMzJkMy00YTQwLTg1ZWUtNmI4NGJhMjllMzViXG1zZ3NcbXNnLTNmZjgzMjQ4LTg5ZmItMTFlYS04YjkzLWRjNzE5NjFmOWRkM1xhbWUtdGVzdFwzZmY4MzI0YS04OWZiLTExZWEtOGI5My1kYzcxOTYxZjlkZDNib2R5LnR4dCIgc3o9Ijc2NzIiIHQ9IjEzMjMyNjI1ODgwMTU5MjcxMiIgaD0iZG9yQTFKKzlzRVFGcExkaDh5WjJ2ZVpIeUhRPSIgaWQ9IiIgYmw9IjAiIGJvPSIxIiBjaT0iY0FBQUFFUkhVMVJTUlVGTkNnVUFBSEFBQUFDSVNWTUNDQjdXQWNzdUVXTldpQXJ6eXk0UlkxYUlDdk1BQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFCQUFBQkFBQUFmM09FS1FBQUFBQUFBQUFBQUFBQUFBPT0iLz48L21ldGE+
+x-dg-rorf: true
+authentication-results: mediatek.com; dkim=none (message not signed)
+ header.d=none;mediatek.com; dmarc=none action=none header.from=micron.com;
+x-originating-ip: [165.225.81.119]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 28d1bc33-e6af-4990-1bbc-08d7ec1f26db
+x-ms-traffictypediagnostic: BN7PR08MB4066:|BN7PR08MB4066:|BN7PR08MB4066:
+x-microsoft-antispam-prvs: <BN7PR08MB406663056A0342859D16AFB8DBAD0@BN7PR08MB4066.namprd08.prod.outlook.com>
+x-ms-exchange-transport-forked: True
+x-ms-oob-tlc-oobclassifiers: OLM:628;
+x-forefront-prvs: 03883BD916
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BN7PR08MB5684.namprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(39860400002)(366004)(396003)(136003)(376002)(346002)(2906002)(316002)(186003)(55016002)(6506007)(9686003)(55236004)(53546011)(52536014)(110136005)(478600001)(71200400001)(4326008)(7696005)(54906003)(26005)(33656002)(8676002)(66476007)(64756008)(5660300002)(66946007)(76116006)(66556008)(7416002)(66446008)(8936002)(86362001);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: vq4HyfomKTRO2PyxQbJojucr+3+ETjOmFlbtoeRX+fOJfTkTA1crSmb1WCrsS/JjOBL1xoJo8RnP3qVX4/daR5iQyKtgYtJpHcwEd3U3DlJT+A/J5MavwEfkurRBsqIaY6c7S9orsPfalj1R2YkRq+vWlBqZPg43sSM8xFDuvlrBIddhZIT++QVfjvyvI4rKdol93QcRFlkPUjVcm+SI5u8oUIe2qUBCxEVv/pGiHRV4fbln+zIZInuERWQpdARlaf14bbT1UGAtIcQD1KSgN+1VMWPRca2H9cKG4StPzeaXwtenbgL5rniqPHrOL6WkKrPg+TGv96nSdcdKiJiHs/xxxAkC0PieTfHGTLRmp3L+RZnh61DCFeM3Cl3dq7ULyDICGRmzIcmTqyqTrJwaAAuf0NY8HzKhX2MWIKMXSxVxdHPsdiVMlhoAeObk4Ev6
+x-ms-exchange-antispam-messagedata: /je8TbsPgvWr8E0sPYV84bzU+4IqgAaWVLFAC0ci4BR1lPfIjEvF7l6LiLDtNVV+J2JoVPPHDlEZ2xzYpzIsl5ZcDKC3yCPAT8KM5XLt9slHXjGtK3P0qEV9VOPrSaDGz6tsMl1fYX3FQCZAYT/9itEXbax9TkOsHAPWIDidCdV9fbHI4uuBoJobLQ+s3eCiVr1QndHbFLBcoo9HppQH44Ja+c7hPiZ9FhRbLI0eM6hvZZ/k9FcbJwgnnAkauddYKoAqUEhha1fwU0sRBATAV6E/sQn4hsNMmCAobDKU80Ei6ceZEag/fnhXTSKCjvq1nFxTOJ01cvOePp/gps1VI2X13FFWpVijFfE/f/gMEW3q5zN/d8CTlRhCnvhRCHFmcxoGMTtMe2qCwNeun+GjDqJdopuDHUEwZIAL1AHdUJJpcHO9YqgnxVE4diGi28ZvWfL0++yfbYP8k2BVFjXpwBpD+e2pUivqx4CcvpRwep6YWUkS1txCzMjPPUQ+zW2Rnz4elYPU1XYTWNvJC3dbGNgWRR4U87/tX69jiy19E5RwCx/2aPC9LUhHu9llwmhYa911CoxRczosdkHJfBGPnHEf5fv/aESDqhCquNpLSaTHkl1SoTOHEDzBcO32qB/XBxGPUIsVmZZ+jRlnQwBCl/AWlBIhX05dPh9ImqW93LtkCyHDvSWaC0x3NmvZo6TexszUHFjhsOn+PYBMuVvjTw7R3UEJvykwglP+krpeYl+FMbOrcWbW9WorCQRGex8mpeCgN6T3OGLCqSmyiZwwtvmQf0JqFdh/Z04AMo3LVuY=
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 830316AF110234D77DF04E692EDA7246F6C3B3D407834B4A1439CFE005E961772000:8
-X-MTK: N
+X-OriginatorOrg: micron.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 28d1bc33-e6af-4990-1bbc-08d7ec1f26db
+X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Apr 2020 09:24:43.4100 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: f38a5ecd-2813-4862-b11b-ac1d563c806f
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: M0djky35uE7hj7EpNKBAWKb2AyDfgQiJI0MXxIUcRQCCC1Bm/JCTgDq1B3vpNwx5Pq/RTGgx18k15oCdiUzeFg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR08MB4066
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200429_013226_586252_56A58C63 
-X-CRM114-Status: GOOD (  29.93  )
+X-CRM114-CacheID: sfid-20200429_022448_403891_304F1346 
+X-CRM114-Status: GOOD (  18.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,869 +127,220 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Todd Kjos <tkjos@android.com>, wsd_upstream <wsd_upstream@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>,
- Arve =?ISO-8859-1?Q?Hj=F8nnev=E5g?= <arve@android.com>,
- Jian-Min Liu <Jian-Min.Liu@mediatek.com>, linux-mediatek@lists.infradead.org,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>
+Cc: "bvanassche@acm.org" <bvanassche@acm.org>,
+ "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
+ "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
+ "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "cang@codeaurora.org" <cang@codeaurora.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2020-04-15 at 15:25 -0700, Todd Kjos wrote:
-> On Tue, Apr 14, 2020 at 10:38 PM Frankie Chang
-> <Frankie.Chang@mediatek.com> wrote:
-> >
-> > Record start/end timestamp to binder transaction.
+> -----Original Message-----
+> From: Stanley Chu <stanley.chu@mediatek.com>
+> Sent: Tuesday, April 28, 2020 1:14 PM
+> To: linux-scsi@vger.kernel.org; martin.petersen@oracle.com;
+> avri.altman@wdc.com; alim.akhtar@samsung.com; jejb@linux.ibm.com;
+> asutoshd@codeaurora.org
+> Cc: Bean Huo (beanhuo) <beanhuo@micron.com>; cang@codeaurora.org;
+> matthias.bgg@gmail.com; bvanassche@acm.org; linux-
+> mediatek@lists.infradead.org; linux-arm-kernel@lists.infradead.org; linux-
+> kernel@vger.kernel.org; kuohong.wang@mediatek.com;
+> peter.wang@mediatek.com; chun-hung.wu@mediatek.com;
+> andy.teng@mediatek.com; Stanley Chu <stanley.chu@mediatek.com>
+> Subject: [EXT] [PATCH v1 2/4] scsi: ufs: add "index" in parameter list of
+> ufshcd_query_flag()
 > 
-> s/timestamp to/timestamps for/
+> For preparation of Dedicated LU support on WriteBooster feature, "index"
+> parameter shall be added and allowed to be specified by callers.
 > 
-> > When transaction is completed or transaction is free,
-> > it would be checked if transaction latency over threshold (2 sec),
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> ---
+>  drivers/scsi/ufs/ufs-sysfs.c |  2 +-
+>  drivers/scsi/ufs/ufshcd.c    | 28 +++++++++++++++-------------
+>  drivers/scsi/ufs/ufshcd.h    |  2 +-
+>  3 files changed, 17 insertions(+), 15 deletions(-)
 > 
-> Is the 2 sec configurable? Why was 2 sec chosen?
+> diff --git a/drivers/scsi/ufs/ufs-sysfs.c b/drivers/scsi/ufs/ufs-sysfs.c index
+> 93484408bc40..b86b6a40d7e6 100644
+> --- a/drivers/scsi/ufs/ufs-sysfs.c
+> +++ b/drivers/scsi/ufs/ufs-sysfs.c
+> @@ -631,7 +631,7 @@ static ssize_t _name##_show(struct device *dev,
+> 			\
+>  	struct ufs_hba *hba = dev_get_drvdata(dev);			\
+>  	pm_runtime_get_sync(hba->dev);
+> 	\
+>  	ret = ufshcd_query_flag(hba, UPIU_QUERY_OPCODE_READ_FLAG,
+> 	\
+> -		QUERY_FLAG_IDN##_uname, &flag);
+> 	\
+> +		QUERY_FLAG_IDN##_uname, 0, &flag);			\
+>  	pm_runtime_put_sync(hba->dev);
+> 	\
+>  	if (ret)							\
+>  		return -EINVAL;						\
+> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c index
+> 111812c5304a..465ee023ea4b 100644
+> --- a/drivers/scsi/ufs/ufshcd.c
+> +++ b/drivers/scsi/ufs/ufshcd.c
+> @@ -2782,13 +2782,13 @@ static inline void ufshcd_init_query(struct ufs_hba
+> *hba,  }
+> 
+>  static int ufshcd_query_flag_retry(struct ufs_hba *hba,
+> -	enum query_opcode opcode, enum flag_idn idn, bool *flag_res)
+> +	enum query_opcode opcode, enum flag_idn idn, u8 index, bool
+> *flag_res)
+>  {
+>  	int ret;
+>  	int retries;
+> 
+>  	for (retries = 0; retries < QUERY_REQ_RETRIES; retries++) {
+> -		ret = ufshcd_query_flag(hba, opcode, idn, flag_res);
+> +		ret = ufshcd_query_flag(hba, opcode, idn, index, flag_res);
+>  		if (ret)
+>  			dev_dbg(hba->dev,
+>  				"%s: failed with error %d, retries %d\n", @@ -
+> 2809,16 +2809,17 @@ static int ufshcd_query_flag_retry(struct ufs_hba *hba,
+>   * @hba: per-adapter instance
+>   * @opcode: flag query to perform
+>   * @idn: flag idn to access
+> + * @index: flag index to access
+>   * @flag_res: the flag value after the query request completes
+>   *
+>   * Returns 0 for success, non-zero in case of failure
+>   */
+>  int ufshcd_query_flag(struct ufs_hba *hba, enum query_opcode opcode,
+> -			enum flag_idn idn, bool *flag_res)
+> +			enum flag_idn idn, u8 index, bool *flag_res)
+>  {
+>  	struct ufs_query_req *request = NULL;
+>  	struct ufs_query_res *response = NULL;
+> -	int err, index = 0, selector = 0;
+> +	int err, selector = 0;
+>  	int timeout = QUERY_REQ_TIMEOUT;
+> 
+>  	BUG_ON(!hba);
+> @@ -4175,7 +4176,7 @@ static int ufshcd_complete_dev_init(struct ufs_hba
+> *hba)
+>  	bool flag_res = true;
+> 
+>  	err = ufshcd_query_flag_retry(hba, UPIU_QUERY_OPCODE_SET_FLAG,
+> -		QUERY_FLAG_IDN_FDEVICEINIT, NULL);
+> +		QUERY_FLAG_IDN_FDEVICEINIT, 0, NULL);
+>  	if (err) {
+>  		dev_err(hba->dev,
+>  			"%s setting fDeviceInit flag failed with error %d\n", @@
+> -4186,7 +4187,7 @@ static int ufshcd_complete_dev_init(struct ufs_hba *hba)
+>  	/* poll for max. 1000 iterations for fDeviceInit flag to clear */
+>  	for (i = 0; i < 1000 && !err && flag_res; i++)
+>  		err = ufshcd_query_flag_retry(hba,
+> UPIU_QUERY_OPCODE_READ_FLAG,
+> -			QUERY_FLAG_IDN_FDEVICEINIT, &flag_res);
+> +			QUERY_FLAG_IDN_FDEVICEINIT, 0, &flag_res);
+> 
+>  	if (err)
+>  		dev_err(hba->dev,
+> @@ -5001,7 +5002,7 @@ static int ufshcd_enable_auto_bkops(struct ufs_hba
+> *hba)
+>  		goto out;
+> 
+>  	err = ufshcd_query_flag_retry(hba, UPIU_QUERY_OPCODE_SET_FLAG,
+> -			QUERY_FLAG_IDN_BKOPS_EN, NULL);
+> +			QUERY_FLAG_IDN_BKOPS_EN, 0, NULL);
+>  	if (err) {
+>  		dev_err(hba->dev, "%s: failed to enable bkops %d\n",
+>  				__func__, err);
+> @@ -5051,7 +5052,7 @@ static int ufshcd_disable_auto_bkops(struct ufs_hba
+> *hba)
+>  	}
+> 
+>  	err = ufshcd_query_flag_retry(hba,
+> UPIU_QUERY_OPCODE_CLEAR_FLAG,
+> -			QUERY_FLAG_IDN_BKOPS_EN, NULL);
+> +			QUERY_FLAG_IDN_BKOPS_EN, 0, NULL);
+>  	if (err) {
+>  		dev_err(hba->dev, "%s: failed to disable bkops %d\n",
+>  				__func__, err);
+> @@ -5217,7 +5218,7 @@ static int ufshcd_wb_ctrl(struct ufs_hba *hba, bool
+> enable)
+>  		opcode = UPIU_QUERY_OPCODE_CLEAR_FLAG;
+> 
+>  	ret = ufshcd_query_flag_retry(hba, opcode,
+> -				      QUERY_FLAG_IDN_WB_EN, NULL);
+> +				      QUERY_FLAG_IDN_WB_EN, 0, NULL);
+>  	if (ret) {
+>  		dev_err(hba->dev, "%s write booster %s failed %d\n",
+>  			__func__, enable ? "enable" : "disable", ret); @@ -
+> 5241,7 +5242,7 @@ static int ufshcd_wb_toggle_flush_during_h8(struct
+> ufs_hba *hba, bool set)
+>  		val = UPIU_QUERY_OPCODE_CLEAR_FLAG;
+> 
+>  	return ufshcd_query_flag_retry(hba, val,
+> -
+> QUERY_FLAG_IDN_WB_BUFF_FLUSH_DURING_HIBERN8,
+> +
+> QUERY_FLAG_IDN_WB_BUFF_FLUSH_DURING_HIBERN8, 0,
+>  				       NULL);
+>  }
+> 
+> @@ -5262,7 +5263,8 @@ static int ufshcd_wb_buf_flush_enable(struct ufs_hba
+> *hba)
+>  		return 0;
+> 
+>  	ret = ufshcd_query_flag_retry(hba, UPIU_QUERY_OPCODE_SET_FLAG,
+> -				      QUERY_FLAG_IDN_WB_BUFF_FLUSH_EN,
+> NULL);
+> +				      QUERY_FLAG_IDN_WB_BUFF_FLUSH_EN,
+> +				      0, NULL);
+>  	if (ret)
+>  		dev_err(hba->dev, "%s WB - buf flush enable failed %d\n",
+>  			__func__, ret);
+> @@ -5281,7 +5283,7 @@ static int ufshcd_wb_buf_flush_disable(struct ufs_hba
+> *hba)
+>  		return 0;
+> 
+>  	ret = ufshcd_query_flag_retry(hba,
+> UPIU_QUERY_OPCODE_CLEAR_FLAG,
+> -				      QUERY_FLAG_IDN_WB_BUFF_FLUSH_EN,
+> NULL);
+> +				      QUERY_FLAG_IDN_WB_BUFF_FLUSH_EN, 0,
+> NULL);
+>  	if (ret) {
+>  		dev_warn(hba->dev, "%s: WB - buf flush disable failed %d\n",
+>  			 __func__, ret);
+> @@ -7254,7 +7256,7 @@ static int ufshcd_device_params_init(struct ufs_hba
+> *hba)
+>  	ufs_fixup_device_setup(hba);
+> 
+>  	if (!ufshcd_query_flag_retry(hba, UPIU_QUERY_OPCODE_READ_FLAG,
+> -			QUERY_FLAG_IDN_PWR_ON_WPE, &flag))
+> +			QUERY_FLAG_IDN_PWR_ON_WPE, 0, &flag))
+>  		hba->dev_info.f_power_on_wp_en = flag;
+> 
+>  	/* Probe maximum power mode co-supported by both UFS host and
+> device */ diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h index
+> 056537e52c19..e555d794d441 100644
+> --- a/drivers/scsi/ufs/ufshcd.h
+> +++ b/drivers/scsi/ufs/ufshcd.h
+> @@ -946,7 +946,7 @@ int ufshcd_read_desc_param(struct ufs_hba *hba,  int
+> ufshcd_query_attr(struct ufs_hba *hba, enum query_opcode opcode,
+>  		      enum attr_idn idn, u8 index, u8 selector, u32 *attr_val);  int
+> ufshcd_query_flag(struct ufs_hba *hba, enum query_opcode opcode,
+> -	enum flag_idn idn, bool *flag_res);
+> +	enum flag_idn idn, u8 index, bool *flag_res);
+> 
+>  void ufshcd_auto_hibern8_enable(struct ufs_hba *hba);  void
+> ufshcd_auto_hibern8_update(struct ufs_hba *hba, u32 ahit);
+> --
+> 2.18.0
 
-Some of modules would trigger timeout NE if their binder transaction
-don't finish in time, such as audio timeout (5 sec), even BT command
-timeout (2 sec), etc.
-
-Therefore, we want to record these transactions which exceed 2 sec. It
-could be helpful to debug.
-
-> > if yes, printing related information for tracing.
-> >
-> > /* Implement details */
-> > - Add tracepoint/trace at free transaction.
-> >   Since the original trace_binder_transaction_reveived cannot
-> 
-> s/reveived/received/
-> 
-> >   precisely present the real finished time of transaction, adding a
-> >   trace_binder_free_transaction at the point of free transaction
-> >   may be more close to it.
-> 
-> Can we just add that trace instead?
-
-Time limitation of recording is the reason why we don't just use trace
-here.
-
-In some long time stability test, such as MTBF,
-the exception is caused by a series of transactions interaction.
-Some abnormal transactions may be pending for a long time ago, they 
-could not be recorded due to buffer limited. 
-
-> >
-> > - Add latency tracer module to monitor slow transaction.
-> >   The trace_binder_free_transaction would not be enabled
-> >   by default. Monitoring which transaction is too slow to
-> >   cause some of exceptions is important. So we hook the
-> >   tracepoint to call the monitor function.
-> >
-> > - Move some struct from core file to header file.
-> >   Need some struct defined in core file in latency trace module
-> >   In addition, moving structs to header file makes module more
-> >   extendable.
-> >
-> > Signed-off-by: Frankie Chang <Frankie.Chang@mediatek.com>
-> > ---
-> >  drivers/android/Kconfig                 |    8 ++
-> >  drivers/android/Makefile                |    1 +
-> >  drivers/android/binder.c                |  237 ++++---------------------------
-> >  drivers/android/binder_internal.h       |  227 +++++++++++++++++++++++++++++
-> >  drivers/android/binder_latency_tracer.c |  100 +++++++++++++
-> >  drivers/android/binder_trace.h          |   36 +++++
-> >  6 files changed, 400 insertions(+), 209 deletions(-)
-> >  create mode 100644 drivers/android/binder_latency_tracer.c
-> >
-> > diff --git a/drivers/android/Kconfig b/drivers/android/Kconfig
-> > index 6fdf2ab..7ba80eb 100644
-> > --- a/drivers/android/Kconfig
-> > +++ b/drivers/android/Kconfig
-> > @@ -54,6 +54,14 @@ config ANDROID_BINDER_IPC_SELFTEST
-> >           exhaustively with combinations of various buffer sizes and
-> >           alignments.
-> >
-> > +config BINDER_USER_TRACKING
-> > +       bool "Android Binder transaction tracking"
-> > +       help
-> > +         Used for track abnormal binder transaction which is over 2 seconds,
-> > +         when the transaction is done or be free, this transaction would be
-> > +         checked whether it executed overtime.
-> > +         If yes, printing out the detail info about it.
-> > +
-> >  endif # if ANDROID
-> >
-> >  endmenu
-> > diff --git a/drivers/android/Makefile b/drivers/android/Makefile
-> > index c9d3d0c9..552e8ac 100644
-> > --- a/drivers/android/Makefile
-> > +++ b/drivers/android/Makefile
-> > @@ -4,3 +4,4 @@ ccflags-y += -I$(src)                   # needed for trace events
-> >  obj-$(CONFIG_ANDROID_BINDERFS)         += binderfs.o
-> >  obj-$(CONFIG_ANDROID_BINDER_IPC)       += binder.o binder_alloc.o
-> >  obj-$(CONFIG_ANDROID_BINDER_IPC_SELFTEST) += binder_alloc_selftest.o
-> > +obj-$(CONFIG_BINDER_USER_TRACKING)     += binder_latency_tracer.o
-> > diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> > index a6b2082..380a68b 100644
-> > --- a/drivers/android/binder.c
-> > +++ b/drivers/android/binder.c
-> > @@ -160,24 +160,6 @@ static int binder_set_stop_on_user_error(const char *val,
-> >  #define to_binder_fd_array_object(hdr) \
-> >         container_of(hdr, struct binder_fd_array_object, hdr)
-> >
-> > -enum binder_stat_types {
-> > -       BINDER_STAT_PROC,
-> > -       BINDER_STAT_THREAD,
-> > -       BINDER_STAT_NODE,
-> > -       BINDER_STAT_REF,
-> > -       BINDER_STAT_DEATH,
-> > -       BINDER_STAT_TRANSACTION,
-> > -       BINDER_STAT_TRANSACTION_COMPLETE,
-> > -       BINDER_STAT_COUNT
-> > -};
-> > -
-> > -struct binder_stats {
-> > -       atomic_t br[_IOC_NR(BR_FAILED_REPLY) + 1];
-> > -       atomic_t bc[_IOC_NR(BC_REPLY_SG) + 1];
-> > -       atomic_t obj_created[BINDER_STAT_COUNT];
-> > -       atomic_t obj_deleted[BINDER_STAT_COUNT];
-> > -};
-> > -
-> >  static struct binder_stats binder_stats;
-> >
-> >  static inline void binder_stats_deleted(enum binder_stat_types type)
-> > @@ -214,32 +196,6 @@ static struct binder_transaction_log_entry *binder_transaction_log_add(
-> >  }
-> >
-> >  /**
-> > - * struct binder_work - work enqueued on a worklist
-> > - * @entry:             node enqueued on list
-> > - * @type:              type of work to be performed
-> > - *
-> > - * There are separate work lists for proc, thread, and node (async).
-> > - */
-> > -struct binder_work {
-> > -       struct list_head entry;
-> > -
-> > -       enum {
-> > -               BINDER_WORK_TRANSACTION = 1,
-> > -               BINDER_WORK_TRANSACTION_COMPLETE,
-> > -               BINDER_WORK_RETURN_ERROR,
-> > -               BINDER_WORK_NODE,
-> > -               BINDER_WORK_DEAD_BINDER,
-> > -               BINDER_WORK_DEAD_BINDER_AND_CLEAR,
-> > -               BINDER_WORK_CLEAR_DEATH_NOTIFICATION,
-> > -       } type;
-> > -};
-> > -
-> > -struct binder_error {
-> > -       struct binder_work work;
-> > -       uint32_t cmd;
-> > -};
-> > -
-> > -/**
-> >   * struct binder_node - binder node bookkeeping
-> >   * @debug_id:             unique ID for debugging
-> >   *                        (invariant after initialized)
-> 
-> Please, if we must have a binder_internal.h for the key data
-> structures, then move them all.
-> The use of structs by transaction latency stuff shouldn't be the
-> rationale for what moves and
-> what stays. binder_proc, binder_node, binder_thread etc should be defined
-> in the same file.
-
-Okay, we will move all structs to binder_internal.h to make them defined in same file, thanks.
-
-> > @@ -402,89 +358,6 @@ enum binder_deferred_state {
-> >         BINDER_DEFERRED_RELEASE      = 0x02,
-> >  };
-> >
-> > -/**
-> > - * struct binder_proc - binder process bookkeeping
-> > - * @proc_node:            element for binder_procs list
-> > - * @threads:              rbtree of binder_threads in this proc
-> > - *                        (protected by @inner_lock)
-> > - * @nodes:                rbtree of binder nodes associated with
-> > - *                        this proc ordered by node->ptr
-> > - *                        (protected by @inner_lock)
-> > - * @refs_by_desc:         rbtree of refs ordered by ref->desc
-> > - *                        (protected by @outer_lock)
-> > - * @refs_by_node:         rbtree of refs ordered by ref->node
-> > - *                        (protected by @outer_lock)
-> > - * @waiting_threads:      threads currently waiting for proc work
-> > - *                        (protected by @inner_lock)
-> > - * @pid                   PID of group_leader of process
-> > - *                        (invariant after initialized)
-> > - * @tsk                   task_struct for group_leader of process
-> > - *                        (invariant after initialized)
-> > - * @deferred_work_node:   element for binder_deferred_list
-> > - *                        (protected by binder_deferred_lock)
-> > - * @deferred_work:        bitmap of deferred work to perform
-> > - *                        (protected by binder_deferred_lock)
-> > - * @is_dead:              process is dead and awaiting free
-> > - *                        when outstanding transactions are cleaned up
-> > - *                        (protected by @inner_lock)
-> > - * @todo:                 list of work for this process
-> > - *                        (protected by @inner_lock)
-> > - * @stats:                per-process binder statistics
-> > - *                        (atomics, no lock needed)
-> > - * @delivered_death:      list of delivered death notification
-> > - *                        (protected by @inner_lock)
-> > - * @max_threads:          cap on number of binder threads
-> > - *                        (protected by @inner_lock)
-> > - * @requested_threads:    number of binder threads requested but not
-> > - *                        yet started. In current implementation, can
-> > - *                        only be 0 or 1.
-> > - *                        (protected by @inner_lock)
-> > - * @requested_threads_started: number binder threads started
-> > - *                        (protected by @inner_lock)
-> > - * @tmp_ref:              temporary reference to indicate proc is in use
-> > - *                        (protected by @inner_lock)
-> > - * @default_priority:     default scheduler priority
-> > - *                        (invariant after initialized)
-> > - * @debugfs_entry:        debugfs node
-> > - * @alloc:                binder allocator bookkeeping
-> > - * @context:              binder_context for this proc
-> > - *                        (invariant after initialized)
-> > - * @inner_lock:           can nest under outer_lock and/or node lock
-> > - * @outer_lock:           no nesting under innor or node lock
-> > - *                        Lock order: 1) outer, 2) node, 3) inner
-> > - * @binderfs_entry:       process-specific binderfs log file
-> > - *
-> > - * Bookkeeping structure for binder processes
-> > - */
-> > -struct binder_proc {
-> > -       struct hlist_node proc_node;
-> > -       struct rb_root threads;
-> > -       struct rb_root nodes;
-> > -       struct rb_root refs_by_desc;
-> > -       struct rb_root refs_by_node;
-> > -       struct list_head waiting_threads;
-> > -       int pid;
-> > -       struct task_struct *tsk;
-> > -       struct hlist_node deferred_work_node;
-> > -       int deferred_work;
-> > -       bool is_dead;
-> > -
-> > -       struct list_head todo;
-> > -       struct binder_stats stats;
-> > -       struct list_head delivered_death;
-> > -       int max_threads;
-> > -       int requested_threads;
-> > -       int requested_threads_started;
-> > -       int tmp_ref;
-> > -       long default_priority;
-> > -       struct dentry *debugfs_entry;
-> > -       struct binder_alloc alloc;
-> > -       struct binder_context *context;
-> > -       spinlock_t inner_lock;
-> > -       spinlock_t outer_lock;
-> > -       struct dentry *binderfs_entry;
-> > -};
-> > -
-> >  enum {
-> >         BINDER_LOOPER_STATE_REGISTERED  = 0x01,
-> >         BINDER_LOOPER_STATE_ENTERED     = 0x02,
-> > @@ -495,60 +368,6 @@ enum {
-> >  };
-> >
-> >  /**
-> > - * struct binder_thread - binder thread bookkeeping
-> > - * @proc:                 binder process for this thread
-> > - *                        (invariant after initialization)
-> > - * @rb_node:              element for proc->threads rbtree
-> > - *                        (protected by @proc->inner_lock)
-> > - * @waiting_thread_node:  element for @proc->waiting_threads list
-> > - *                        (protected by @proc->inner_lock)
-> > - * @pid:                  PID for this thread
-> > - *                        (invariant after initialization)
-> > - * @looper:               bitmap of looping state
-> > - *                        (only accessed by this thread)
-> > - * @looper_needs_return:  looping thread needs to exit driver
-> > - *                        (no lock needed)
-> > - * @transaction_stack:    stack of in-progress transactions for this thread
-> > - *                        (protected by @proc->inner_lock)
-> > - * @todo:                 list of work to do for this thread
-> > - *                        (protected by @proc->inner_lock)
-> > - * @process_todo:         whether work in @todo should be processed
-> > - *                        (protected by @proc->inner_lock)
-> > - * @return_error:         transaction errors reported by this thread
-> > - *                        (only accessed by this thread)
-> > - * @reply_error:          transaction errors reported by target thread
-> > - *                        (protected by @proc->inner_lock)
-> > - * @wait:                 wait queue for thread work
-> > - * @stats:                per-thread statistics
-> > - *                        (atomics, no lock needed)
-> > - * @tmp_ref:              temporary reference to indicate thread is in use
-> > - *                        (atomic since @proc->inner_lock cannot
-> > - *                        always be acquired)
-> > - * @is_dead:              thread is dead and awaiting free
-> > - *                        when outstanding transactions are cleaned up
-> > - *                        (protected by @proc->inner_lock)
-> > - *
-> > - * Bookkeeping structure for binder threads.
-> > - */
-> > -struct binder_thread {
-> > -       struct binder_proc *proc;
-> > -       struct rb_node rb_node;
-> > -       struct list_head waiting_thread_node;
-> > -       int pid;
-> > -       int looper;              /* only modified by this thread */
-> > -       bool looper_need_return; /* can be written by other thread */
-> > -       struct binder_transaction *transaction_stack;
-> > -       struct list_head todo;
-> > -       bool process_todo;
-> > -       struct binder_error return_error;
-> > -       struct binder_error reply_error;
-> > -       wait_queue_head_t wait;
-> > -       struct binder_stats stats;
-> > -       atomic_t tmp_ref;
-> > -       bool is_dead;
-> > -};
-> > -
-> > -/**
-> >   * struct binder_txn_fd_fixup - transaction fd fixup list element
-> >   * @fixup_entry:          list entry
-> >   * @file:                 struct file to be associated with new fd
-> > @@ -565,34 +384,6 @@ struct binder_txn_fd_fixup {
-> >         size_t offset;
-> >  };
-> >
-> >
-> 
-> extra empty line?
-> 
-> > -struct binder_transaction {
-> > -       int debug_id;
-> > -       struct binder_work work;
-> > -       struct binder_thread *from;
-> > -       struct binder_transaction *from_parent;
-> > -       struct binder_proc *to_proc;
-> > -       struct binder_thread *to_thread;
-> > -       struct binder_transaction *to_parent;
-> > -       unsigned need_reply:1;
-> > -       /* unsigned is_dead:1; */       /* not used at the moment */
-> > -
-> > -       struct binder_buffer *buffer;
-> > -       unsigned int    code;
-> > -       unsigned int    flags;
-> > -       long    priority;
-> > -       long    saved_priority;
-> > -       kuid_t  sender_euid;
-> > -       struct list_head fd_fixups;
-> > -       binder_uintptr_t security_ctx;
-> > -       /**
-> > -        * @lock:  protects @from, @to_proc, and @to_thread
-> > -        *
-> > -        * @from, @to_proc, and @to_thread can be set to NULL
-> > -        * during thread teardown
-> > -        */
-> > -       spinlock_t lock;
-> > -};
-> > -
-> >  /**
-> >   * struct binder_object - union of flat binder object types
-> >   * @hdr:   generic object header
-> > @@ -613,6 +404,26 @@ struct binder_object {
-> >         };
-> >  };
-> >
-> > +static void (*__binder_update_info_cb)(struct binder_transaction *t,
-> > +                                       struct binder_transaction_log_entry *e);
-> > +
-> > +void set_binder_update_info_cb(void (*fn)(struct binder_transaction *t,
-> > +                                       struct binder_transaction_log_entry *e))
-> > +{
-> > +       __binder_update_info_cb = fn;
-> > +}
-> > +EXPORT_SYMBOL_GPL(set_binder_update_info_cb);
-> > +
-> > +static void (*__print_transaction_ext_cb)(struct seq_file *m,
-> > +                                       struct binder_transaction *t);
-> > +
-> > +void set_print_transaction_ext_cb(void (*fn)(struct seq_file *m,
-> > +                                       struct binder_transaction *t))
-> > +{
-> > +       __print_transaction_ext_cb = fn;
-> > +}
-> > +EXPORT_SYMBOL_GPL(set_print_transaction_ext_cb);
-> 
-> Why can't we use tracepoints (not trace events) for this instead of
-> custom registration functions? You can attach to the tracepoint with
-> register_trace_* lets a module register to be called to handle the
-> tracepoint as Joel pointed out.
-
-Yes, we will use tracepoints instead of custom registration functions in
-next version patch, thanks.
-
-> > +
-> >  /**
-> >   * binder_proc_lock() - Acquire outer lock for given binder_proc
-> >   * @proc:         struct binder_proc to acquire
-> > @@ -1927,6 +1738,7 @@ static void binder_free_transaction(struct binder_transaction *t)
-> >          * If the transaction has no target_proc, then
-> >          * t->buffer->transaction has already been cleared.
-> >          */
-> > +       trace_binder_free_transaction(t);
-> >         binder_free_txn_fixups(t);
-> >         kfree(t);
-> >         binder_stats_deleted(BINDER_STAT_TRANSACTION);
-> > @@ -2874,6 +2686,7 @@ static void binder_transaction(struct binder_proc *proc,
-> >         e->offsets_size = tr->offsets_size;
-> >         strscpy(e->context_name, proc->context->name, BINDERFS_MAX_NAME);
-> >
-> > +
-> 
-> why 2 empty lines?
-> 
-> >         if (reply) {
-> >                 binder_inner_proc_lock(proc);
-> >                 in_reply_to = thread->transaction_stack;
-> > @@ -3060,6 +2873,9 @@ static void binder_transaction(struct binder_proc *proc,
-> >                 return_error_line = __LINE__;
-> >                 goto err_alloc_t_failed;
-> >         }
-> > +
-> > +       if (__binder_update_info_cb)
-> > +               __binder_update_info_cb(t, e);
-> 
-> This should be a tracepoint that your module can attach to with
-> register_trace_binder_update_info(...)
-> 
-> >         INIT_LIST_HEAD(&t->fd_fixups);
-> >         binder_stats_created(BINDER_STAT_TRANSACTION);
-> >         spin_lock_init(&t->lock);
-> > @@ -3498,6 +3314,7 @@ static void binder_transaction(struct binder_proc *proc,
-> >         kfree(tcomplete);
-> >         binder_stats_deleted(BINDER_STAT_TRANSACTION_COMPLETE);
-> >  err_alloc_tcomplete_failed:
-> > +       trace_binder_free_transaction(t);
-> >         kfree(t);
-> >         binder_stats_deleted(BINDER_STAT_TRANSACTION);
-> >  err_alloc_t_failed:
-> > @@ -5547,6 +5364,8 @@ static void print_binder_transaction_ilocked(struct seq_file *m,
-> >                    t->to_thread ? t->to_thread->pid : 0,
-> >                    t->code, t->flags, t->priority, t->need_reply);
-> >         spin_unlock(&t->lock);
-> > +       if (__print_transaction_ext_cb)
-> > +               __print_transaction_ext_cb(m, t);
-> 
-> same here.
-> 
-> >
-> >         if (proc != to_proc) {
-> >                 /*
-> > diff --git a/drivers/android/binder_internal.h b/drivers/android/binder_internal.h
-> > index ae99109..86b4960 100644
-> > --- a/drivers/android/binder_internal.h
-> > +++ b/drivers/android/binder_internal.h
-> > @@ -12,6 +12,11 @@
-> >  #include <linux/types.h>
-> >  #include <linux/uidgid.h>
-> >
-> > +#ifdef CONFIG_BINDER_USER_TRACKING
-> > +#include <linux/rtc.h>
-> > +#include <linux/time.h>
-> > +#endif
-> > +
-> >  struct binder_context {
-> >         struct binder_node *binder_context_mgr_node;
-> >         struct mutex context_mgr_node_lock;
-> > @@ -131,6 +136,10 @@ struct binder_transaction_log_entry {
-> >         uint32_t return_error;
-> >         uint32_t return_error_param;
-> >         char context_name[BINDERFS_MAX_NAME + 1];
-> > +#ifdef CONFIG_BINDER_USER_TRACKING
-> > +       struct timespec timestamp;
-> > +       struct timeval tv;
-> > +#endif
-> >  };
-> >
-> >  struct binder_transaction_log {
-> > @@ -139,6 +148,224 @@ struct binder_transaction_log {
-> >         struct binder_transaction_log_entry entry[32];
-> >  };
-> >
-> > +enum binder_stat_types {
-> > +       BINDER_STAT_PROC,
-> > +       BINDER_STAT_THREAD,
-> > +       BINDER_STAT_NODE,
-> > +       BINDER_STAT_REF,
-> > +       BINDER_STAT_DEATH,
-> > +       BINDER_STAT_TRANSACTION,
-> > +       BINDER_STAT_TRANSACTION_COMPLETE,
-> > +       BINDER_STAT_COUNT
-> > +};
-> > +
-> > +struct binder_stats {
-> > +       atomic_t br[_IOC_NR(BR_FAILED_REPLY) + 1];
-> > +       atomic_t bc[_IOC_NR(BC_REPLY_SG) + 1];
-> > +       atomic_t obj_created[BINDER_STAT_COUNT];
-> > +       atomic_t obj_deleted[BINDER_STAT_COUNT];
-> > +};
-> > +
-> > +/**
-> > + * struct binder_work - work enqueued on a worklist
-> > + * @entry:             node enqueued on list
-> > + * @type:              type of work to be performed
-> > + *
-> > + * There are separate work lists for proc, thread, and node (async).
-> > + */
-> > +struct binder_work {
-> > +       struct list_head entry;
-> > +
-> > +       enum {
-> > +               BINDER_WORK_TRANSACTION = 1,
-> > +               BINDER_WORK_TRANSACTION_COMPLETE,
-> > +               BINDER_WORK_RETURN_ERROR,
-> > +               BINDER_WORK_NODE,
-> > +               BINDER_WORK_DEAD_BINDER,
-> > +               BINDER_WORK_DEAD_BINDER_AND_CLEAR,
-> > +               BINDER_WORK_CLEAR_DEATH_NOTIFICATION,
-> > +       } type;
-> > +};
-> > +
-> > +struct binder_error {
-> > +       struct binder_work work;
-> > +       uint32_t cmd;
-> > +};
-> > +
-> > +/**
-> > + * struct binder_proc - binder process bookkeeping
-> > + * @proc_node:            element for binder_procs list
-> > + * @threads:              rbtree of binder_threads in this proc
-> > + *                        (protected by @inner_lock)
-> > + * @nodes:                rbtree of binder nodes associated with
-> > + *                        this proc ordered by node->ptr
-> > + *                        (protected by @inner_lock)
-> > + * @refs_by_desc:         rbtree of refs ordered by ref->desc
-> > + *                        (protected by @outer_lock)
-> > + * @refs_by_node:         rbtree of refs ordered by ref->node
-> > + *                        (protected by @outer_lock)
-> > + * @waiting_threads:      threads currently waiting for proc work
-> > + *                        (protected by @inner_lock)
-> > + * @pid                   PID of group_leader of process
-> > + *                        (invariant after initialized)
-> > + * @tsk                   task_struct for group_leader of process
-> > + *                        (invariant after initialized)
-> > + * @deferred_work_node:   element for binder_deferred_list
-> > + *                        (protected by binder_deferred_lock)
-> > + * @deferred_work:        bitmap of deferred work to perform
-> > + *                        (protected by binder_deferred_lock)
-> > + * @is_dead:              process is dead and awaiting free
-> > + *                        when outstanding transactions are cleaned up
-> > + *                        (protected by @inner_lock)
-> > + * @todo:                 list of work for this process
-> > + *                        (protected by @inner_lock)
-> > + * @stats:                per-process binder statistics
-> > + *                        (atomics, no lock needed)
-> > + * @delivered_death:      list of delivered death notification
-> > + *                        (protected by @inner_lock)
-> > + * @max_threads:          cap on number of binder threads
-> > + *                        (protected by @inner_lock)
-> > + * @requested_threads:    number of binder threads requested but not
-> > + *                        yet started. In current implementation, can
-> > + *                        only be 0 or 1.
-> > + *                        (protected by @inner_lock)
-> > + * @requested_threads_started: number binder threads started
-> > + *                        (protected by @inner_lock)
-> > + * @tmp_ref:              temporary reference to indicate proc is in use
-> > + *                        (protected by @inner_lock)
-> > + * @default_priority:     default scheduler priority
-> > + *                        (invariant after initialized)
-> > + * @debugfs_entry:        debugfs node
-> > + * @alloc:                binder allocator bookkeeping
-> > + * @context:              binder_context for this proc
-> > + *                        (invariant after initialized)
-> > + * @inner_lock:           can nest under outer_lock and/or node lock
-> > + * @outer_lock:           no nesting under innor or node lock
-> > + *                        Lock order: 1) outer, 2) node, 3) inner
-> > + * @binderfs_entry:       process-specific binderfs log file
-> > + *
-> > + * Bookkeeping structure for binder processes
-> > + */
-> > +struct binder_proc {
-> > +       struct hlist_node proc_node;
-> > +       struct rb_root threads;
-> > +       struct rb_root nodes;
-> > +       struct rb_root refs_by_desc;
-> > +       struct rb_root refs_by_node;
-> > +       struct list_head waiting_threads;
-> > +       int pid;
-> > +       struct task_struct *tsk;
-> > +       struct hlist_node deferred_work_node;
-> > +       int deferred_work;
-> > +       bool is_dead;
-> > +
-> > +       struct list_head todo;
-> > +       struct binder_stats stats;
-> > +       struct list_head delivered_death;
-> > +       int max_threads;
-> > +       int requested_threads;
-> > +       int requested_threads_started;
-> > +       int tmp_ref;
-> > +       long default_priority;
-> > +       struct dentry *debugfs_entry;
-> > +       struct binder_alloc alloc;
-> > +       struct binder_context *context;
-> > +       spinlock_t inner_lock;
-> > +       spinlock_t outer_lock;
-> > +       struct dentry *binderfs_entry;
-> > +};
-> > +
-> > +/**
-> > + * struct binder_thread - binder thread bookkeeping
-> > + * @proc:                 binder process for this thread
-> > + *                        (invariant after initialization)
-> > + * @rb_node:              element for proc->threads rbtree
-> > + *                        (protected by @proc->inner_lock)
-> > + * @waiting_thread_node:  element for @proc->waiting_threads list
-> > + *                        (protected by @proc->inner_lock)
-> > + * @pid:                  PID for this thread
-> > + *                        (invariant after initialization)
-> > + * @looper:               bitmap of looping state
-> > + *                        (only accessed by this thread)
-> > + * @looper_needs_return:  looping thread needs to exit driver
-> > + *                        (no lock needed)
-> > + * @transaction_stack:    stack of in-progress transactions for this thread
-> > + *                        (protected by @proc->inner_lock)
-> > + * @todo:                 list of work to do for this thread
-> > + *                        (protected by @proc->inner_lock)
-> > + * @process_todo:         whether work in @todo should be processed
-> > + *                        (protected by @proc->inner_lock)
-> > + * @return_error:         transaction errors reported by this thread
-> > + *                        (only accessed by this thread)
-> > + * @reply_error:          transaction errors reported by target thread
-> > + *                        (protected by @proc->inner_lock)
-> > + * @wait:                 wait queue for thread work
-> > + * @stats:                per-thread statistics
-> > + *                        (atomics, no lock needed)
-> > + * @tmp_ref:              temporary reference to indicate thread is in use
-> > + *                        (atomic since @proc->inner_lock cannot
-> > + *                        always be acquired)
-> > + * @is_dead:              thread is dead and awaiting free
-> > + *                        when outstanding transactions are cleaned up
-> > + *                        (protected by @proc->inner_lock)
-> > + *
-> > + * Bookkeeping structure for binder threads.
-> > + */
-> > +struct binder_thread {
-> > +       struct binder_proc *proc;
-> > +       struct rb_node rb_node;
-> > +       struct list_head waiting_thread_node;
-> > +       int pid;
-> > +       int looper;              /* only modified by this thread */
-> > +       bool looper_need_return; /* can be written by other thread */
-> > +       struct binder_transaction *transaction_stack;
-> > +       struct list_head todo;
-> > +       bool process_todo;
-> > +       struct binder_error return_error;
-> > +       struct binder_error reply_error;
-> > +       wait_queue_head_t wait;
-> > +       struct binder_stats stats;
-> > +       atomic_t tmp_ref;
-> > +       bool is_dead;
-> > +};
-> > +
-> > +struct binder_transaction {
-> > +       int debug_id;
-> > +       struct binder_work work;
-> > +       struct binder_thread *from;
-> > +       struct binder_transaction *from_parent;
-> > +       struct binder_proc *to_proc;
-> > +       struct binder_thread *to_thread;
-> > +       struct binder_transaction *to_parent;
-> > +       unsigned need_reply:1;
-> > +       /* unsigned is_dead:1; */       /* not used at the moment */
-> > +
-> > +       struct binder_buffer *buffer;
-> > +       unsigned int    code;
-> > +       unsigned int    flags;
-> > +       long    priority;
-> > +       long    saved_priority;
-> > +       kuid_t  sender_euid;
-> > +       struct list_head fd_fixups;
-> > +       binder_uintptr_t security_ctx;
-> > +       /**
-> > +        * @lock:  protects @from, @to_proc, and @to_thread
-> > +        *
-> > +        * @from, @to_proc, and @to_thread can be set to NULL
-> > +        * during thread teardown
-> > +        */
-> > +       spinlock_t lock;
-> > +#ifdef CONFIG_BINDER_USER_TRACKING
-> > +       struct timespec timestamp;
-> > +       struct timeval tv;
-> > +#endif
-> > +};
-> > +
-> >  extern struct binder_transaction_log binder_transaction_log;
-> >  extern struct binder_transaction_log binder_transaction_log_failed;
-> > +
-> > +extern void set_binder_update_info_cb(void (*fn)(struct binder_transaction *t,
-> > +                               struct binder_transaction_log_entry *e));
-> > +extern void set_print_transaction_ext_cb(void (*fn)(struct seq_file *m,
-> > +                                       struct binder_transaction *t));
-> >  #endif /* _LINUX_BINDER_INTERNAL_H */
-> > diff --git a/drivers/android/binder_latency_tracer.c b/drivers/android/binder_latency_tracer.c
-> > new file mode 100644
-> > index 0000000..c9626f5
-> > --- /dev/null
-> > +++ b/drivers/android/binder_latency_tracer.c
-> > @@ -0,0 +1,100 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +/*
-> > + * Copyright (C) 2019 MediaTek Inc.
-> > + */
-> > +
-> > +#include <linux/module.h>
-> > +#include <uapi/linux/android/binder.h>
-> > +#include "binder_alloc.h"
-> > +#include "binder_internal.h"
-> > +#include "binder_trace.h"
-> > +
-> > +/*
-> > + * probe_binder_free_transaction - Output info of a delay transaction
-> > + * @t:          pointer to the over-time transaction
-> > + */
-> > +void probe_binder_free_transaction(void *ignore, struct binder_transaction *t)
-> > +{
-> > +       struct rtc_time tm;
-> > +       struct timespec *startime;
-> > +       struct timespec cur, sub_t;
-> > +
-> > +       ktime_get_ts(&cur);
-> > +       startime = &t->timestamp;
-> > +       sub_t = timespec_sub(cur, *startime);
-> > +
-> > +       /* if transaction time is over than 2 sec,
-> > +        * show timeout warning log.
-> > +        */
-> > +       if (sub_t.tv_sec < 2)
-> > +               return;
-> > +
-> > +       rtc_time_to_tm(t->tv.tv_sec, &tm);
-> > +
-> > +       spin_lock(&t->lock);
-> > +       pr_info_ratelimited("%d: from %d:%d to %d:%d",
-> > +                       t->debug_id,
-> > +                       t->from ? t->from->proc->pid : 0,
-> > +                       t->from ? t->from->pid : 0,
-> > +                       t->to_proc ? t->to_proc->pid : 0,
-> > +                       t->to_thread ? t->to_thread->pid : 0);
-> > +       spin_unlock(&t->lock);
-> > +
-> > +       pr_info_ratelimited(" total %u.%03ld s code %u start %lu.%03ld android %d-%02d-%02d %02d:%02d:%02d.%03lu\n",
-> > +                       (unsigned int)sub_t.tv_sec,
-> > +                       (sub_t.tv_nsec / NSEC_PER_MSEC),
-> > +                       t->code,
-> > +                       (unsigned long)startime->tv_sec,
-> > +                       (startime->tv_nsec / NSEC_PER_MSEC),
-> > +                       (tm.tm_year + 1900), (tm.tm_mon + 1), tm.tm_mday,
-> > +                       tm.tm_hour, tm.tm_min, tm.tm_sec,
-> > +                       (unsigned long)(t->tv.tv_usec / USEC_PER_MSEC));
-> > +}
-> > +
-> > +static void binder_update_info_cb(struct binder_transaction *t,
-> > +                          struct binder_transaction_log_entry *e)
-> > +{
-> > +       ktime_get_ts(&e->timestamp);
-> > +       do_gettimeofday(&e->tv);
-> > +       e->tv.tv_sec -= (sys_tz.tz_minuteswest * 60);
-> > +       memcpy(&t->timestamp, &e->timestamp, sizeof(struct timespec));
-> > +       memcpy(&t->tv, &e->tv, sizeof(struct timeval));
-> > +}
-> > +
-> > +static void print_binder_transaction_ext(struct seq_file *m,
-> > +                                        struct binder_transaction *t)
-> > +{
-> > +       struct rtc_time tm;
-> > +
-> > +       rtc_time_to_tm(t->tv.tv_sec, &tm);
-> > +       seq_printf(m,
-> > +                  " start %lu.%06lu android %d-%02d-%02d %02d:%02d:%02d.%03lu",
-> > +                  (unsigned long)t->timestamp.tv_sec,
-> > +                  (t->timestamp.tv_nsec / NSEC_PER_USEC),
-> > +                  (tm.tm_year + 1900), (tm.tm_mon + 1), tm.tm_mday,
-> > +                  tm.tm_hour, tm.tm_min, tm.tm_sec,
-> > +                  (unsigned long)(t->tv.tv_usec / USEC_PER_MSEC));
-> > +
-> > +}
-> > +
-> > +static int __init init_binder_latency_tracer(void)
-> > +{
-> > +       register_trace_binder_free_transaction(
-> > +                       probe_binder_free_transaction, NULL);
-> > +
-> > +       set_binder_update_info_cb(binder_update_info_cb);
-> > +       set_print_transaction_ext_cb(print_binder_transaction_ext);
-> > +       return 0;
-> > +}
-> > +
-> > +static void exit_binder_latency_tracer(void)
-> > +{
-> > +       unregister_trace_binder_free_transaction(
-> > +                       probe_binder_free_transaction, NULL);
-> > +}
-> > +
-> > +module_init(init_binder_latency_tracer);
-> > +module_exit(exit_binder_latency_tracer);
-> > +
-> > +MODULE_LICENSE("GPL v2");
-> > +
-> > diff --git a/drivers/android/binder_trace.h b/drivers/android/binder_trace.h
-> > index 6731c3c..c7c76c1 100644
-> > --- a/drivers/android/binder_trace.h
-> > +++ b/drivers/android/binder_trace.h
-> > @@ -95,6 +95,42 @@
-> >                   __entry->thread_todo)
-> >  );
-> >
-> > +TRACE_EVENT(binder_free_transaction,
-> > +       TP_PROTO(struct binder_transaction *t),
-> > +       TP_ARGS(t),
-> > +       TP_STRUCT__entry(
-> > +               __field(int, debug_id)
-> > +               __field(int, from_proc)
-> > +               __field(int, from_thread)
-> > +               __field(int, to_proc)
-> > +               __field(int, to_thread)
-> > +               __field(unsigned int, code)
-> > +               __field(unsigned int, flags)
-> > +               __field(unsigned long, start_sec)
-> > +               __field(unsigned long, start_nsec)
-> > +       ),
-> > +       TP_fast_assign(
-> > +               __entry->debug_id = t->debug_id;
-> > +               __entry->from_proc = t->from ? t->from->proc->pid : 0;
-> > +               __entry->from_thread = t->from ? t->from->pid : 0;
-> > +               __entry->to_proc = t->to_proc ? t->to_proc->pid : 0;
-> > +               __entry->to_thread = t->to_thread ? t->to_thread->pid : 0;
-> > +               __entry->code = t->code;
-> > +               __entry->flags = t->flags;
-> > +#ifdef CONFIG_BINDER_USER_TRACKING
-> > +               __entry->start_sec = t->timestamp.tv_sec;
-> > +               __entry->start_nsec = t->timestamp.tv_nsec / NSEC_PER_MSEC;
-> > +#else
-> > +               __entry->start_sec = 0;
-> > +               __entry->start_nsec = 0;
-> > +#endif
-> > +       ),
-> > +       TP_printk("transaction=%d from %d:%d to %d:%d flags=0x%x code=0x%x start %lu.%03ld",
-> > +                 __entry->debug_id, __entry->from_proc, __entry->from_thread,
-> > +                 __entry->to_proc, __entry->to_thread, __entry->code,
-> > +                 __entry->flags, __entry->start_sec, __entry->start_nsec)
-> > +);
-> > +
-> >  TRACE_EVENT(binder_transaction,
-> >         TP_PROTO(bool reply, struct binder_transaction *t,
-> >                  struct binder_node *target_node),
-> > --
-> > 1.7.9.5
+Reviewed-by: Bean Huo <beanhuo@micron.com>
 
 _______________________________________________
 Linux-mediatek mailing list
