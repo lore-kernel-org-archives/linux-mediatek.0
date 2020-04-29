@@ -4,80 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 887B0C83003
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:40:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E69FFC83004
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:56:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 57F7C20B80
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:40:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BA3A221775
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:56:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LBpp1gXP";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="kRZli8yK"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 57F7C20B80
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mi42CQPn";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="etqFUgvj"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BA3A221775
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=B/zwMHCA3rzucmDkKf+f0GQC37u4zk3xRJBl8PZynQE=; b=LBpp1gXP/82Jj7Ky/GyEosyyHX
-	EmGRHusdvv2EWY1uZPVaeyIIxTbsqKn5ZHaHXfrmPSE4+LOD2AiAVFp1g9tn4yeB6776Jadn4rjxE
-	BeGreaAf3wS2JmvOT55wios4MDcU7RW78WE94itQsMZhvnosAxI/RulHv1iSjbHccQMeNI+20fcm0
-	4sDLk6kpbQEJNe2ITp7U7HfeWNBLGQz1gf3E8PSb1dkMki4h0/87VPrpnZX9V+cKehAUKN+onoXgt
-	72HBZJVF+NPm25J15cn+f55dzGK9M4861B+KTUayefQr0HO0CRfu3wDsbQbrLqH/Vh0cDkIw+ctPa
-	k/SYpSeg==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3Eloqzg3+U4Ck+XhO+9sFQxBiczr2aixrL5UqzTrvqI=; b=mi42CQPnJyQRTh
+	ordwbtblcleLC4qa8affBSN5SQAO3CoYyko6KeZx8X0t0i8NPNEy3AMNxP4zYWe30e4QsKGK8l5h6
+	evfbU9tRSrLlOmNMFu7HmKzGowKOunm/xccUE3hTJnODX4pFngCXRNr4WdvLItXACM2cWOh9LGoqZ
+	AC+g1YNI6U52PhWlBDCD97TP333TPD/wgAllkDpk1492EJpkLXm+utzOtE5e2AvcKmyyU04pFpXIT
+	ln6RW6UIT6Wd4EBxF5zuMWJvfatANnyzTgp4QagDktI/+Djbdx3AyxiKwATh7+77L1SXzPnGj64y+
+	/xDqoZohhxTcg6RR/gUQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTmwP-0000uw-4U; Wed, 29 Apr 2020 13:39:57 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1jTnCZ-0000Hq-GB; Wed, 29 Apr 2020 13:56:39 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTmuZ-0006aH-53; Wed, 29 Apr 2020 13:38:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=References:In-Reply-To:Message-Id:Date:
- Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=Qfyd6ja2gbCEb9gPUPeTzVgoOIB/wJSpHtio4TB+dp4=; b=kRZli8yKRr39AfbuU+Pl93nKWO
- Chku1PFric4pmex+z1PoGwnpe8C9+qFRmKLsRMobHFuO94x3oBIIzqeM3TBMQPeEVNg7ARNrTrLWF
- lAmUQFLcAPY3d3uXrMPteACPCci23yCB0uR3mMR5xAftsOvwnYQ0paaiF5BWB0qMyq+ad1VhFm4JR
- HTvBLm+nNr+UOzkanSdWcFm03KYWGO3jKFJR1GIKmu3vCZXwXmWH7WCyBKA3PRKt1kaelcuuWOali
- usZvKDi0JPdRoZQ0HLNTYJPyohPSKr3fhxZJEnWb/Dtzgty88UABZCjVnLw13t67MllDHWsJHvTT/
- yWkYQcpg==;
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
- helo=theia.8bytes.org)
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTmuU-00088v-Sh; Wed, 29 Apr 2020 13:38:01 +0000
-Received: by theia.8bytes.org (Postfix, from userid 1000)
- id 77A11F10; Wed, 29 Apr 2020 15:37:41 +0200 (CEST)
-From: Joerg Roedel <joro@8bytes.org>
-To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- David Woodhouse <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>,
- Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v3 32/34] iommu: Remove add_device()/remove_device() code-paths
-Date: Wed, 29 Apr 2020 15:37:10 +0200
-Message-Id: <20200429133712.31431-33-joro@8bytes.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200429133712.31431-1-joro@8bytes.org>
-References: <20200429133712.31431-1-joro@8bytes.org>
+ id 1jTnCD-0008N8-I7; Wed, 29 Apr 2020 13:56:18 +0000
+X-UUID: 0ee5b67c49b9475eb9bb254d6029b1ce-20200429
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=TtiqXGvs1ddJ8sOI7BA0Q8oUmtYb84kP4m655wKXu4U=; 
+ b=etqFUgvjkSUTWyQDdXJG8eWHlZZ3IBUWG+sVmLd2rv3xZvx/VM88+jNk+UX9HtAq9LSXbP6KXMQhfiVErHBxv90jF8MXfYVmmtxpiQmmjowjpBDaWcLfhmvFo6ZGMa/PDN+qloTOCOfiJxg9EBPbFEyflwZhkJ9RRxoWbU1Uc4Q=;
+X-UUID: 0ee5b67c49b9475eb9bb254d6029b1ce-20200429
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 161421106; Wed, 29 Apr 2020 05:57:14 -0800
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 29 Apr 2020 06:56:10 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 29 Apr 2020 21:56:10 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 29 Apr 2020 21:56:09 +0800
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
+ <asutoshd@codeaurora.org>
+Subject: [PATCH v2 1/5] scsi: ufs: allow legacy UFS devices to enable
+ WriteBooster
+Date: Wed, 29 Apr 2020 21:56:06 +0800
+Message-ID: <20200429135610.23750-2-stanley.chu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20200429135610.23750-1-stanley.chu@mediatek.com>
+References: <20200429135610.23750-1-stanley.chu@mediatek.com>
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200429_143759_183764_1D32CF0F 
-X-CRM114-Status: GOOD (  27.50  )
+X-CRM114-CacheID: sfid-20200429_065617_609208_4751EA16 
+X-CRM114-Status: GOOD (  11.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,283 +85,85 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
- Daniel Drake <drake@endlessm.com>, linux-rockchip@lists.infradead.org,
- iommu@lists.linux-foundation.org, Joerg Roedel <jroedel@suse.de>,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
- virtualization@lists.linux-foundation.org, jonathan.derrick@intel.com
-MIME-Version: 1.0
+Cc: bvanassche@acm.org, andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Joerg Roedel <jroedel@suse.de>
+WriteBooster feature may be supported by some legacy UFS devices
+(i.e., < 3.1) by upgrading firmware.
 
-All drivers are converted to use the probe/release_device()
-call-backs, so the add_device/remove_device() pointers are unused and
-the code using them can be removed.
+To enable WriteBooster feature in such devices, relax the entrance
+condition of ufshcd_wb_probe() to allow host driver to check those
+devices' WriteBooster capability.
 
-Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
-Acked-by: Marek Szyprowski <m.szyprowski@samsung.com>
-Signed-off-by: Joerg Roedel <jroedel@suse.de>
+WriteBooster feature can be available if below both conditions are
+satisfied,
+
+1. Device descriptor has dExtendedUFSFeaturesSupport field.
+2. WriteBooster support is specified in above field.
+
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Bean Huo <beanhuo@micron.com>
 ---
- drivers/iommu/iommu.c | 158 ++++++++++--------------------------------
- include/linux/iommu.h |   4 --
- 2 files changed, 38 insertions(+), 124 deletions(-)
+ drivers/scsi/ufs/ufshcd.c | 19 +++++++++++++------
+ 1 file changed, 13 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-index 397fd4fd0c32..7f99e5ae432c 100644
---- a/drivers/iommu/iommu.c
-+++ b/drivers/iommu/iommu.c
-@@ -220,12 +220,20 @@ static int __iommu_probe_device(struct device *dev, struct list_head *group_list
- 	return ret;
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 915e963398c4..111812c5304a 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -6800,9 +6800,16 @@ static int ufshcd_scsi_add_wlus(struct ufs_hba *hba)
+ 
+ static void ufshcd_wb_probe(struct ufs_hba *hba, u8 *desc_buf)
+ {
++	if (hba->desc_size.dev_desc <= DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP)
++		goto wb_disabled;
++
+ 	hba->dev_info.d_ext_ufs_feature_sup =
+ 		get_unaligned_be32(desc_buf +
+ 				   DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP);
++
++	if (!(hba->dev_info.d_ext_ufs_feature_sup & UFS_DEV_WRITE_BOOSTER_SUP))
++		goto wb_disabled;
++
+ 	/*
+ 	 * WB may be supported but not configured while provisioning.
+ 	 * The spec says, in dedicated wb buffer mode,
+@@ -6818,11 +6825,12 @@ static void ufshcd_wb_probe(struct ufs_hba *hba, u8 *desc_buf)
+ 	hba->dev_info.b_presrv_uspc_en =
+ 		desc_buf[DEVICE_DESC_PARAM_WB_PRESRV_USRSPC_EN];
+ 
+-	if (!((hba->dev_info.d_ext_ufs_feature_sup &
+-		 UFS_DEV_WRITE_BOOSTER_SUP) &&
+-		hba->dev_info.b_wb_buffer_type &&
++	if (!(hba->dev_info.b_wb_buffer_type &&
+ 	      hba->dev_info.d_wb_alloc_units))
+-		hba->caps &= ~UFSHCD_CAP_WB_EN;
++		goto wb_disabled;
++
++wb_disabled:
++	hba->caps &= ~UFSHCD_CAP_WB_EN;
  }
  
--static int __iommu_probe_device_helper(struct device *dev)
-+int iommu_probe_device(struct device *dev)
- {
- 	const struct iommu_ops *ops = dev->bus->iommu_ops;
- 	struct iommu_group *group;
- 	int ret;
+ static int ufs_get_device_desc(struct ufs_hba *hba)
+@@ -6862,8 +6870,7 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
  
-+	if (!dev_iommu_get(dev))
-+		return -ENOMEM;
-+
-+	if (!try_module_get(ops->owner)) {
-+		ret = -EINVAL;
-+		goto err_out;
-+	}
-+
- 	ret = __iommu_probe_device(dev, NULL);
- 	if (ret)
- 		goto err_out;
-@@ -259,75 +267,23 @@ static int __iommu_probe_device_helper(struct device *dev)
+ 	model_index = desc_buf[DEVICE_DESC_PARAM_PRDCT_NAME];
  
- err_release:
- 	iommu_release_device(dev);
-+
- err_out:
- 	return ret;
+-	/* Enable WB only for UFS-3.1 */
+-	if (dev_info->wspecversion >= 0x310)
++	if (ufshcd_is_wb_allowed(hba))
+ 		ufshcd_wb_probe(hba, desc_buf);
  
- }
- 
--int iommu_probe_device(struct device *dev)
-+void iommu_release_device(struct device *dev)
- {
- 	const struct iommu_ops *ops = dev->bus->iommu_ops;
--	struct iommu_group *group;
--	int ret;
--
--	WARN_ON(dev->iommu_group);
--
--	if (!ops)
--		return -EINVAL;
--
--	if (!dev_iommu_get(dev))
--		return -ENOMEM;
--
--	if (!try_module_get(ops->owner)) {
--		ret = -EINVAL;
--		goto err_free_dev_param;
--	}
--
--	if (ops->probe_device)
--		return __iommu_probe_device_helper(dev);
--
--	ret = ops->add_device(dev);
--	if (ret)
--		goto err_module_put;
- 
--	group = iommu_group_get(dev);
--	iommu_create_device_direct_mappings(group, dev);
--	iommu_group_put(group);
--
--	if (ops->probe_finalize)
--		ops->probe_finalize(dev);
--
--	return 0;
--
--err_module_put:
--	module_put(ops->owner);
--err_free_dev_param:
--	dev_iommu_free(dev);
--	return ret;
--}
--
--static void __iommu_release_device(struct device *dev)
--{
--	const struct iommu_ops *ops = dev->bus->iommu_ops;
-+	if (!dev->iommu)
-+		return;
- 
- 	iommu_device_unlink(dev->iommu->iommu_dev, dev);
--
- 	iommu_group_remove_device(dev);
- 
- 	ops->release_device(dev);
--}
--
--void iommu_release_device(struct device *dev)
--{
--	const struct iommu_ops *ops = dev->bus->iommu_ops;
--
--	if (!dev->iommu)
--		return;
--
--	if (ops->release_device)
--		__iommu_release_device(dev);
--	else if (dev->iommu_group)
--		ops->remove_device(dev);
- 
- 	module_put(ops->owner);
- 	dev_iommu_free(dev);
-@@ -1560,23 +1516,6 @@ struct iommu_group *iommu_group_get_for_dev(struct device *dev)
- 	if (ret)
- 		goto out_put_group;
- 
--	/*
--	 * Try to allocate a default domain - needs support from the
--	 * IOMMU driver. There are still some drivers which don't support
--	 * default domains, so the return value is not yet checked. Only
--	 * allocate the domain here when the driver still has the
--	 * add_device/remove_device call-backs implemented.
--	 */
--	if (!ops->probe_device) {
--		iommu_alloc_default_domain(dev);
--
--		if (group->default_domain)
--			ret = __iommu_attach_device(group->default_domain, dev);
--
--		if (ret)
--			goto out_put_group;
--	}
--
- 	return group;
- 
- out_put_group:
-@@ -1591,21 +1530,6 @@ struct iommu_domain *iommu_group_default_domain(struct iommu_group *group)
- 	return group->default_domain;
- }
- 
--static int add_iommu_group(struct device *dev, void *data)
--{
--	int ret = iommu_probe_device(dev);
--
--	/*
--	 * We ignore -ENODEV errors for now, as they just mean that the
--	 * device is not translated by an IOMMU. We still care about
--	 * other errors and fail to initialize when they happen.
--	 */
--	if (ret == -ENODEV)
--		ret = 0;
--
--	return ret;
--}
--
- static int probe_iommu_group(struct device *dev, void *data)
- {
- 	const struct iommu_ops *ops = dev->bus->iommu_ops;
-@@ -1793,47 +1717,41 @@ static int iommu_group_create_direct_mappings(struct iommu_group *group)
- 
- int bus_iommu_probe(struct bus_type *bus)
- {
--	const struct iommu_ops *ops = bus->iommu_ops;
-+	struct iommu_group *group, *next;
-+	LIST_HEAD(group_list);
- 	int ret;
- 
--	if (ops->probe_device) {
--		struct iommu_group *group, *next;
--		LIST_HEAD(group_list);
--
--		/*
--		 * This code-path does not allocate the default domain when
--		 * creating the iommu group, so do it after the groups are
--		 * created.
--		 */
--		ret = bus_for_each_dev(bus, NULL, &group_list, probe_iommu_group);
--		if (ret)
--			return ret;
-+	/*
-+	 * This code-path does not allocate the default domain when
-+	 * creating the iommu group, so do it after the groups are
-+	 * created.
-+	 */
-+	ret = bus_for_each_dev(bus, NULL, &group_list, probe_iommu_group);
-+	if (ret)
-+		return ret;
- 
--		list_for_each_entry_safe(group, next, &group_list, entry) {
--			/* Remove item from the list */
--			list_del_init(&group->entry);
-+	list_for_each_entry_safe(group, next, &group_list, entry) {
-+		/* Remove item from the list */
-+		list_del_init(&group->entry);
- 
--			mutex_lock(&group->mutex);
-+		mutex_lock(&group->mutex);
- 
--			/* Try to allocate default domain */
--			probe_alloc_default_domain(bus, group);
-+		/* Try to allocate default domain */
-+		probe_alloc_default_domain(bus, group);
- 
--			if (!group->default_domain) {
--				mutex_unlock(&group->mutex);
--				continue;
--			}
-+		if (!group->default_domain) {
-+			mutex_unlock(&group->mutex);
-+			continue;
-+		}
- 
--			iommu_group_create_direct_mappings(group);
-+		iommu_group_create_direct_mappings(group);
- 
--			ret = __iommu_group_dma_attach(group);
-+		ret = __iommu_group_dma_attach(group);
- 
--			mutex_unlock(&group->mutex);
-+		mutex_unlock(&group->mutex);
- 
--			if (ret)
--				break;
--		}
--	} else {
--		ret = bus_for_each_dev(bus, NULL, NULL, add_iommu_group);
-+		if (ret)
-+			break;
- 	}
- 
- 	return ret;
-diff --git a/include/linux/iommu.h b/include/linux/iommu.h
-index fea1622408ad..dd076366383f 100644
---- a/include/linux/iommu.h
-+++ b/include/linux/iommu.h
-@@ -223,8 +223,6 @@ struct iommu_iotlb_gather {
-  * @iotlb_sync: Flush all queued ranges from the hardware TLBs and empty flush
-  *            queue
-  * @iova_to_phys: translate iova to physical address
-- * @add_device: add device to iommu grouping
-- * @remove_device: remove device from iommu grouping
-  * @probe_device: Add device to iommu driver handling
-  * @release_device: Remove device from iommu driver handling
-  * @probe_finalize: Do final setup work after the device is added to an IOMMU
-@@ -277,8 +275,6 @@ struct iommu_ops {
- 	void (*iotlb_sync)(struct iommu_domain *domain,
- 			   struct iommu_iotlb_gather *iotlb_gather);
- 	phys_addr_t (*iova_to_phys)(struct iommu_domain *domain, dma_addr_t iova);
--	int (*add_device)(struct device *dev);
--	void (*remove_device)(struct device *dev);
- 	struct iommu_device *(*probe_device)(struct device *dev);
- 	void (*release_device)(struct device *dev);
- 	void (*probe_finalize)(struct device *dev);
+ 	err = ufshcd_read_string_desc(hba, model_index,
 -- 
-2.17.1
-
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
