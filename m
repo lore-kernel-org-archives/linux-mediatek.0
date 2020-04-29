@@ -4,19 +4,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 133E5C8300D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:38:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 51527C83004
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:38:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D37E62173E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:38:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 240D320B80
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:38:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="URIeYMIS"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D37E62173E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZaePQYIZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 240D320B80
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,21 +26,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=z908pqieKt4xQ3lhMKnPXxfiGcVtNmF/9wqH7uot7ms=; b=URIeYMISZpD1G4bscncvQFStVW
-	4XXCLaKLJaHJhXgw8cu8qcaX/E7+5mg03kr2lHY9/s1jSVwLQ3h3yGVy6y9WNuN1D5bAnm+XLf17e
-	o0et40qVTNTkZdivp/JqgOn/ukzQ9kOJNvB7FtU6vGv4ORMFptny9E2wsO3WOF8VhR1mZAMGUmp+T
-	FrGFC51kTmJoUYpryC1OeeSCbMouVQPtE0ApS0xBC4LdaLHIH0twoiVxsP+nbkiNQZFco3OfYjXsX
-	wRrcdO5VISriUIRl6867us0o+kHAlCf2c1zVjpMRcyM3EFyqdmUAwLeF/HX+c6MfV3iErxO6NQcG/
-	59pNnBsg==;
+	bh=yhxgycWBlOZzKwUtac+f1k3u0cMgg5ONvEW1HHG17EM=; b=ZaePQYIZF2YD/nPnnrBa1T68Cu
+	q/McVlr6Mccyk651QGY7POhNHodg6HRV3JgMaMONBL+zbT5or+lU6Rdk0zGGpX8+xtbq0aSGxWQfI
+	YpFGqXY79HDF0TtGla4AIy1uSZ9FMf1y/wO7vkD14lC1PIRoE0hMqfaxffjX/qO3SZ9TZlfBk3IT2
+	4WasWeGm159H2m22RLyZQx6isrqOF2CjqlB0wc1VShAXUP0tuRr1ZQtMKTFX6chQMAqrnPf50I3Pn
+	kRFeQHuTTcuF0BqsXuY5IJ09jPL7lCbbrrWTDywQHuDRN2dzegGREGNg29WM/MsIIMhzdduk/IZ67
+	jg0FBzVg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTmv7-0007R8-Rj; Wed, 29 Apr 2020 13:38:37 +0000
-Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
- helo=theia.8bytes.org)
+	id 1jTmv9-0007WF-ST; Wed, 29 Apr 2020 13:38:39 +0000
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTmuK-0006H2-4i; Wed, 29 Apr 2020 13:37:53 +0000
+ id 1jTmuJ-0006GQ-Cj; Wed, 29 Apr 2020 13:37:50 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id DF2F0E06; Wed, 29 Apr 2020 15:37:37 +0200 (CEST)
+ id 34E20791; Wed, 29 Apr 2020 15:37:36 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -55,15 +54,15 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v3 14/34] iommu/amd: Remove dev_data->passthrough
-Date: Wed, 29 Apr 2020 15:36:52 +0200
-Message-Id: <20200429133712.31431-15-joro@8bytes.org>
+Subject: [PATCH v3 05/34] iommu/amd: Remove dma_mask check from check_device()
+Date: Wed, 29 Apr 2020 15:36:43 +0200
+Message-Id: <20200429133712.31431-6-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200429133712.31431-1-joro@8bytes.org>
 References: <20200429133712.31431-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200429_063748_362918_81C6261A 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20200429_063747_601899_7FF2A4B8 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,64 +88,27 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Make use of generic IOMMU infrastructure to gather the same information
-carried in dev_data->passthrough and remove the struct member.
+The check was only needed for the DMA-API implementation in the AMD
+IOMMU driver, which no longer exists.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/amd_iommu.c       | 10 +++++-----
- drivers/iommu/amd_iommu_types.h |  1 -
- 2 files changed, 5 insertions(+), 6 deletions(-)
+ drivers/iommu/amd_iommu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/iommu/amd_iommu.c b/drivers/iommu/amd_iommu.c
-index 3e0d27f7622e..0b4b4faa876d 100644
+index 73b4f84cf449..504f2db75eda 100644
 --- a/drivers/iommu/amd_iommu.c
 +++ b/drivers/iommu/amd_iommu.c
-@@ -2047,8 +2047,8 @@ static int pdev_iommuv2_enable(struct pci_dev *pdev)
- static int attach_device(struct device *dev,
- 			 struct protection_domain *domain)
+@@ -326,7 +326,7 @@ static bool check_device(struct device *dev)
  {
--	struct pci_dev *pdev;
- 	struct iommu_dev_data *dev_data;
-+	struct pci_dev *pdev;
- 	unsigned long flags;
- 	int ret;
+ 	int devid;
  
-@@ -2067,8 +2067,10 @@ static int attach_device(struct device *dev,
+-	if (!dev || !dev->dma_mask)
++	if (!dev)
+ 		return false;
  
- 	pdev = to_pci_dev(dev);
- 	if (domain->flags & PD_IOMMUV2_MASK) {
-+		struct iommu_domain *def_domain = iommu_get_dma_domain(dev);
-+
- 		ret = -EINVAL;
--		if (!dev_data->passthrough)
-+		if (def_domain->type != IOMMU_DOMAIN_IDENTITY)
- 			goto out;
- 
- 		if (dev_data->iommu_v2) {
-@@ -2189,9 +2191,7 @@ static int amd_iommu_add_device(struct device *dev)
- 
- 	/* Domains are initialized for this device - have a look what we ended up with */
- 	domain = iommu_get_domain_for_dev(dev);
--	if (domain->type == IOMMU_DOMAIN_IDENTITY)
--		dev_data->passthrough = true;
--	else if (domain->type == IOMMU_DOMAIN_DMA)
-+	if (domain->type == IOMMU_DOMAIN_DMA)
- 		iommu_setup_dma_ops(dev, IOVA_START_PFN << PAGE_SHIFT, 0);
- 
- out:
-diff --git a/drivers/iommu/amd_iommu_types.h b/drivers/iommu/amd_iommu_types.h
-index ca8c4522045b..d0d7b6a0c3d8 100644
---- a/drivers/iommu/amd_iommu_types.h
-+++ b/drivers/iommu/amd_iommu_types.h
-@@ -640,7 +640,6 @@ struct iommu_dev_data {
- 	struct pci_dev *pdev;
- 	u16 devid;			  /* PCI Device ID */
- 	bool iommu_v2;			  /* Device can make use of IOMMUv2 */
--	bool passthrough;		  /* Device is identity mapped */
- 	struct {
- 		bool enabled;
- 		int qdep;
+ 	devid = get_device_id(dev);
 -- 
 2.17.1
 
