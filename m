@@ -7,16 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A769C83004
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:39:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 58758C83009
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:39:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3B8EE2087E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:39:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2B415206D6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:39:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="btc9nHw5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B8EE2087E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BmyiUaqM";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="M5lQ2Bu9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2B415206D6
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,21 +27,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=MO/w+e9w7nA7zOEo3es39ZE4hglyZ3ZehH2bvAcGAM4=; b=btc9nHw5CJ3lECPHcYXdkzuTgw
-	scNhiVI2tuO7hTPEBq+tOHzwHaSRhZAytYiKNG+6C7ksl/Tf4UXTwxbcaZtmSa++ay1W2eKLpxKc0
-	4ckJNLhHTl7tmC/MIY9md4P8szNvQ9fD6LjLf1NuQNyQtEcfeB+PHBgqKDhOXr//41XAGQGtEi9DG
-	CPpOrtmJO29J1oT0+FupeAGmTtbxO32hw0COSaJ99HfeuLq6SlYarz70AHV+sjLsBMIjICjsZ4yE8
-	UfRR+ZubBfxRJyheFTno7derXlxp6MvOH/Dj032OU3wdTnUZW/xw6DeDjqTDeLUzffhWs+AJ52Vo4
-	BLF9xoJA==;
+	bh=GgRvJakt6doscvL+lccOiejK5G+S+kKbppqt7r0bmu8=; b=BmyiUaqMjsfQLxSSIli0Qaecjt
+	GALlb6Vskm/XSUk2VicvYillN71jeGKvEn0eU4JwIc1GxGW/PDJdZq4XGzRi4EapJx8UmTIBwC1RF
+	foIVDaDy6iqngB/WIk54cErNOQsmu6PVhAzcnX3NVN3LhLjzokzDZSDZVdSX1PH6xmXQKO5CnDAq7
+	HOArfkwailPcAyrU/mgeFF9wtPaSCvaQqHGY8Qs+vK5tDJtIcmfBpqqosN5D09Yoxa6Qz/BL8aJd/
+	rseNgn7M6DDW9nW3tU/luD0FKTqf6CmFj03N4jx9BpIp+F3+29K6c+JSTXoIQkzoWJsnnd5CQONZt
+	FJkwUyUg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTmvU-00083t-NZ; Wed, 29 Apr 2020 13:39:00 +0000
+	id 1jTmvT-00080p-1F; Wed, 29 Apr 2020 13:38:59 +0000
+Received: from merlin.infradead.org ([205.233.59.134])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jTmuU-0006V3-Or; Wed, 29 Apr 2020 13:37:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=merlin.20170209; h=References:In-Reply-To:Message-Id:Date:
+ Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=tBM90ug8dReFUk/0mF17YDyp6x5pBNMkMLHmgIm7lsg=; b=M5lQ2Bu9P6/lx1K+fbh/s+VgY0
+ pfth+v4Uy2MoT08PAWY3EtkSy/gW9D53Yc+XqTqIWebqcBGOjkFFI/zdL+/S/n0gVEBgk4J/BEhYu
+ mje0f4L177F9qg8W36Y3qHfcEveivYPs8YriBkh2WYp6Z2ITOoyEVhSPGqeLTWeRivBZnm4UvQV2T
+ ba+LveOgrwcaHWIZ4E+3ti7uoIOFX9EX0xniCUbAN08lUWy+mTk4alUb1/ihU7gCt/QhqXgltIWGi
+ 6sLX5uM8n2m4ZslM9f/GBQmw82jP1fjWxBgt6Q7nqMTiu5iWlUxiOCKTwrD5a0uL26Kvljz1CEp0h
+ sXmD0Mxw==;
 Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
  helo=theia.8bytes.org)
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTmuM-0006Kb-9C; Wed, 29 Apr 2020 13:37:54 +0000
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jTmuQ-0007D1-MX; Wed, 29 Apr 2020 13:37:57 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id DF0ACECD; Wed, 29 Apr 2020 15:37:38 +0200 (CEST)
+ id 16EEAF04; Wed, 29 Apr 2020 15:37:40 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -55,16 +69,13 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v3 19/34] iommu/s390: Convert to probe/release_device()
+Subject: [PATCH v3 25/34] iommu/rockchip: Convert to probe/release_device()
  call-backs
-Date: Wed, 29 Apr 2020 15:36:57 +0200
-Message-Id: <20200429133712.31431-20-joro@8bytes.org>
+Date: Wed, 29 Apr 2020 15:37:03 +0200
+Message-Id: <20200429133712.31431-26-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200429133712.31431-1-joro@8bytes.org>
 References: <20200429133712.31431-1-joro@8bytes.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200429_063750_683941_29C29AD4 
-X-CRM114-Status: GOOD (  13.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,74 +101,76 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Convert the S390 IOMMU driver to use the probe_device() and
+Convert the Rockchip IOMMU driver to use the probe_device() and
 release_device() call-backs of iommu_ops, so that the iommu core code
 does the group and sysfs setup.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/s390-iommu.c | 22 ++++++----------------
- 1 file changed, 6 insertions(+), 16 deletions(-)
+ drivers/iommu/rockchip-iommu.c | 26 +++++++-------------------
+ 1 file changed, 7 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/iommu/s390-iommu.c b/drivers/iommu/s390-iommu.c
-index 1137f3ddcb85..610f0828f22d 100644
---- a/drivers/iommu/s390-iommu.c
-+++ b/drivers/iommu/s390-iommu.c
-@@ -166,21 +166,14 @@ static void s390_iommu_detach_device(struct iommu_domain *domain,
- 	}
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index b33cdd5aad81..d25c2486ca07 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -1054,40 +1054,28 @@ static void rk_iommu_domain_free(struct iommu_domain *domain)
+ 	kfree(rk_domain);
  }
  
--static int s390_iommu_add_device(struct device *dev)
-+static struct iommu_device *s390_iommu_probe_device(struct device *dev)
+-static int rk_iommu_add_device(struct device *dev)
++static struct iommu_device *rk_iommu_probe_device(struct device *dev)
  {
--	struct iommu_group *group = iommu_group_get_for_dev(dev);
- 	struct zpci_dev *zdev = to_pci_dev(dev)->sysdata;
+-	struct iommu_group *group;
+-	struct rk_iommu *iommu;
+ 	struct rk_iommudata *data;
++	struct rk_iommu *iommu;
  
+ 	data = dev->archdata.iommu;
+ 	if (!data)
+-		return -ENODEV;
++		return ERR_PTR(-ENODEV);
+ 
+ 	iommu = rk_iommu_from_dev(dev);
+ 
+-	group = iommu_group_get_for_dev(dev);
 -	if (IS_ERR(group))
 -		return PTR_ERR(group);
--
 -	iommu_group_put(group);
--	iommu_device_link(&zdev->iommu_dev, dev);
 -
+-	iommu_device_link(&iommu->iommu, dev);
+ 	data->link = device_link_add(dev, iommu->dev,
+ 				     DL_FLAG_STATELESS | DL_FLAG_PM_RUNTIME);
+ 
 -	return 0;
-+	return &zdev->iommu_dev;
++	return &iommu->iommu;
  }
  
--static void s390_iommu_remove_device(struct device *dev)
-+static void s390_iommu_release_device(struct device *dev)
+-static void rk_iommu_remove_device(struct device *dev)
++static void rk_iommu_release_device(struct device *dev)
  {
- 	struct zpci_dev *zdev = to_pci_dev(dev)->sysdata;
- 	struct iommu_domain *domain;
-@@ -191,7 +184,7 @@ static void s390_iommu_remove_device(struct device *dev)
- 	 * to vfio-pci and completing the VFIO_SET_IOMMU ioctl (which triggers
- 	 * the attach_dev), removing the device via
- 	 * "echo 1 > /sys/bus/pci/devices/.../remove" won't trigger detach_dev,
--	 * only remove_device will be called via the BUS_NOTIFY_REMOVED_DEVICE
-+	 * only release_device will be called via the BUS_NOTIFY_REMOVED_DEVICE
- 	 * notifier.
- 	 *
- 	 * So let's call detach_dev from here if it hasn't been called before.
-@@ -201,9 +194,6 @@ static void s390_iommu_remove_device(struct device *dev)
- 		if (domain)
- 			s390_iommu_detach_device(domain, dev);
- 	}
+-	struct rk_iommu *iommu;
+ 	struct rk_iommudata *data = dev->archdata.iommu;
+ 
+-	iommu = rk_iommu_from_dev(dev);
 -
--	iommu_device_unlink(&zdev->iommu_dev, dev);
+ 	device_link_del(data->link);
+-	iommu_device_unlink(&iommu->iommu, dev);
 -	iommu_group_remove_device(dev);
  }
  
- static int s390_iommu_update_trans(struct s390_domain *s390_domain,
-@@ -373,8 +363,8 @@ static const struct iommu_ops s390_iommu_ops = {
- 	.map = s390_iommu_map,
- 	.unmap = s390_iommu_unmap,
- 	.iova_to_phys = s390_iommu_iova_to_phys,
--	.add_device = s390_iommu_add_device,
--	.remove_device = s390_iommu_remove_device,
-+	.probe_device = s390_iommu_probe_device,
-+	.release_device = s390_iommu_release_device,
- 	.device_group = generic_device_group,
- 	.pgsize_bitmap = S390_IOMMU_PGSIZES,
- };
+ static struct iommu_group *rk_iommu_device_group(struct device *dev)
+@@ -1126,8 +1114,8 @@ static const struct iommu_ops rk_iommu_ops = {
+ 	.detach_dev = rk_iommu_detach_device,
+ 	.map = rk_iommu_map,
+ 	.unmap = rk_iommu_unmap,
+-	.add_device = rk_iommu_add_device,
+-	.remove_device = rk_iommu_remove_device,
++	.probe_device = rk_iommu_probe_device,
++	.release_device = rk_iommu_release_device,
+ 	.iova_to_phys = rk_iommu_iova_to_phys,
+ 	.device_group = rk_iommu_device_group,
+ 	.pgsize_bitmap = RK_IOMMU_PGSIZE_BITMAP,
 -- 
 2.17.1
 
