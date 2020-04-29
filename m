@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 48369C83003
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A769C83004
 	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:39:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 18615206D6
+	by mail.kernel.org (Postfix) with ESMTPS id 3B8EE2087E
 	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:39:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F3sioWcj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 18615206D6
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="btc9nHw5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B8EE2087E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,20 +26,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=na+pltCqkavkpIye31s3i+qBujVlIoaCCo3PAJD57FU=; b=F3sioWcjmnf+ahKM79YmuEDcN1
-	EDJvxulgRIQowLEzRn5ByQijom3PP6Q/PNyAKZB5D56ix7q6Zv0Qhkj6Fu6PnaHG4On3ir6fH0p+5
-	xr0GJ87cI3h989jhRJ5qhQ/j4S/lMlU6eBHddRwYJ3t4+sqynue7YPStPbu1kzSf+Fxg3es24vNaS
-	VXQrDA+VtuKc5LROmBEL3rQxuWVviMNxw7X6La/jTYOHDVCS5hCOuKVKHaRrLvLQ9OwKK6wN/BkX1
-	/vqiDI4qVEGNDavJ7SO21Sc46O77xOrs2sj3Hqi6x5l0uGm7tWcT4I84PK3HfvxOu/nKWCBh6LD6x
-	nEFBGOfQ==;
+	bh=MO/w+e9w7nA7zOEo3es39ZE4hglyZ3ZehH2bvAcGAM4=; b=btc9nHw5CJ3lECPHcYXdkzuTgw
+	scNhiVI2tuO7hTPEBq+tOHzwHaSRhZAytYiKNG+6C7ksl/Tf4UXTwxbcaZtmSa++ay1W2eKLpxKc0
+	4ckJNLhHTl7tmC/MIY9md4P8szNvQ9fD6LjLf1NuQNyQtEcfeB+PHBgqKDhOXr//41XAGQGtEi9DG
+	CPpOrtmJO29J1oT0+FupeAGmTtbxO32hw0COSaJ99HfeuLq6SlYarz70AHV+sjLsBMIjICjsZ4yE8
+	UfRR+ZubBfxRJyheFTno7derXlxp6MvOH/Dj032OU3wdTnUZW/xw6DeDjqTDeLUzffhWs+AJ52Vo4
+	BLF9xoJA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTmvN-0007sD-MR; Wed, 29 Apr 2020 13:38:53 +0000
-Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
+	id 1jTmvU-00083t-NZ; Wed, 29 Apr 2020 13:39:00 +0000
+Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
+ helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTmuQ-0006Om-UO; Wed, 29 Apr 2020 13:37:59 +0000
+ id 1jTmuM-0006Kb-9C; Wed, 29 Apr 2020 13:37:54 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id BBE82BFC; Wed, 29 Apr 2020 15:37:37 +0200 (CEST)
+ id DF0ACECD; Wed, 29 Apr 2020 15:37:38 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -54,16 +55,16 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v3 13/34] iommu: Export bus_iommu_probe() and make is safe for
- re-probing
-Date: Wed, 29 Apr 2020 15:36:51 +0200
-Message-Id: <20200429133712.31431-14-joro@8bytes.org>
+Subject: [PATCH v3 19/34] iommu/s390: Convert to probe/release_device()
+ call-backs
+Date: Wed, 29 Apr 2020 15:36:57 +0200
+Message-Id: <20200429133712.31431-20-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200429133712.31431-1-joro@8bytes.org>
 References: <20200429133712.31431-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200429_063755_144141_6BC61499 
-X-CRM114-Status: GOOD (  15.22  )
+X-CRM114-CacheID: sfid-20200429_063750_683941_29C29AD4 
+X-CRM114-Status: GOOD (  13.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,63 +90,74 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Add a check to the bus_iommu_probe() call-path to make sure it ignores
-devices which have already been successfully probed. Then export the
-bus_iommu_probe() function so it can be used by IOMMU drivers.
+Convert the S390 IOMMU driver to use the probe_device() and
+release_device() call-backs of iommu_ops, so that the iommu core code
+does the group and sysfs setup.
 
-Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
-Acked-by: Marek Szyprowski <m.szyprowski@samsung.com>
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/iommu.c | 10 +++++++++-
- include/linux/iommu.h |  1 +
- 2 files changed, 10 insertions(+), 1 deletion(-)
+ drivers/iommu/s390-iommu.c | 22 ++++++----------------
+ 1 file changed, 6 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-index 834a45da0ed0..397fd4fd0c32 100644
---- a/drivers/iommu/iommu.c
-+++ b/drivers/iommu/iommu.c
-@@ -1610,11 +1610,19 @@ static int probe_iommu_group(struct device *dev, void *data)
- {
- 	const struct iommu_ops *ops = dev->bus->iommu_ops;
- 	struct list_head *group_list = data;
-+	struct iommu_group *group;
- 	int ret;
- 
- 	if (!dev_iommu_get(dev))
- 		return -ENOMEM;
- 
-+	/* Device is probed already if in a group */
-+	group = iommu_group_get(dev);
-+	if (group) {
-+		iommu_group_put(group);
-+		return 0;
-+	}
-+
- 	if (!try_module_get(ops->owner)) {
- 		ret = -EINVAL;
- 		goto err_free_dev_iommu;
-@@ -1783,7 +1791,7 @@ static int iommu_group_create_direct_mappings(struct iommu_group *group)
- 					  iommu_do_create_direct_mappings);
+diff --git a/drivers/iommu/s390-iommu.c b/drivers/iommu/s390-iommu.c
+index 1137f3ddcb85..610f0828f22d 100644
+--- a/drivers/iommu/s390-iommu.c
++++ b/drivers/iommu/s390-iommu.c
+@@ -166,21 +166,14 @@ static void s390_iommu_detach_device(struct iommu_domain *domain,
+ 	}
  }
  
--static int bus_iommu_probe(struct bus_type *bus)
-+int bus_iommu_probe(struct bus_type *bus)
+-static int s390_iommu_add_device(struct device *dev)
++static struct iommu_device *s390_iommu_probe_device(struct device *dev)
  {
- 	const struct iommu_ops *ops = bus->iommu_ops;
- 	int ret;
-diff --git a/include/linux/iommu.h b/include/linux/iommu.h
-index 30170d191e5e..fea1622408ad 100644
---- a/include/linux/iommu.h
-+++ b/include/linux/iommu.h
-@@ -445,6 +445,7 @@ static inline void iommu_iotlb_gather_init(struct iommu_iotlb_gather *gather)
- #define IOMMU_GROUP_NOTIFY_UNBOUND_DRIVER	6 /* Post Driver unbind */
+-	struct iommu_group *group = iommu_group_get_for_dev(dev);
+ 	struct zpci_dev *zdev = to_pci_dev(dev)->sysdata;
  
- extern int bus_set_iommu(struct bus_type *bus, const struct iommu_ops *ops);
-+extern int bus_iommu_probe(struct bus_type *bus);
- extern bool iommu_present(struct bus_type *bus);
- extern bool iommu_capable(struct bus_type *bus, enum iommu_cap cap);
- extern struct iommu_domain *iommu_domain_alloc(struct bus_type *bus);
+-	if (IS_ERR(group))
+-		return PTR_ERR(group);
+-
+-	iommu_group_put(group);
+-	iommu_device_link(&zdev->iommu_dev, dev);
+-
+-	return 0;
++	return &zdev->iommu_dev;
+ }
+ 
+-static void s390_iommu_remove_device(struct device *dev)
++static void s390_iommu_release_device(struct device *dev)
+ {
+ 	struct zpci_dev *zdev = to_pci_dev(dev)->sysdata;
+ 	struct iommu_domain *domain;
+@@ -191,7 +184,7 @@ static void s390_iommu_remove_device(struct device *dev)
+ 	 * to vfio-pci and completing the VFIO_SET_IOMMU ioctl (which triggers
+ 	 * the attach_dev), removing the device via
+ 	 * "echo 1 > /sys/bus/pci/devices/.../remove" won't trigger detach_dev,
+-	 * only remove_device will be called via the BUS_NOTIFY_REMOVED_DEVICE
++	 * only release_device will be called via the BUS_NOTIFY_REMOVED_DEVICE
+ 	 * notifier.
+ 	 *
+ 	 * So let's call detach_dev from here if it hasn't been called before.
+@@ -201,9 +194,6 @@ static void s390_iommu_remove_device(struct device *dev)
+ 		if (domain)
+ 			s390_iommu_detach_device(domain, dev);
+ 	}
+-
+-	iommu_device_unlink(&zdev->iommu_dev, dev);
+-	iommu_group_remove_device(dev);
+ }
+ 
+ static int s390_iommu_update_trans(struct s390_domain *s390_domain,
+@@ -373,8 +363,8 @@ static const struct iommu_ops s390_iommu_ops = {
+ 	.map = s390_iommu_map,
+ 	.unmap = s390_iommu_unmap,
+ 	.iova_to_phys = s390_iommu_iova_to_phys,
+-	.add_device = s390_iommu_add_device,
+-	.remove_device = s390_iommu_remove_device,
++	.probe_device = s390_iommu_probe_device,
++	.release_device = s390_iommu_release_device,
+ 	.device_group = generic_device_group,
+ 	.pgsize_bitmap = S390_IOMMU_PGSIZES,
+ };
 -- 
 2.17.1
 
