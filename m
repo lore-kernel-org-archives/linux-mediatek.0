@@ -5,18 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 01D41C83003
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:38:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B7A83C8300A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:38:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C1155206D6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:38:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8D1CC2087E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:38:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tX0W1qQn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C1155206D6
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JvNzsBYs"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8D1CC2087E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,20 +26,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=VU574OgUrpsIA39sRGE89Jp6rgw63WY/y5kYSkwA28o=; b=tX0W1qQnGIXOnua8CfqcGJMgSz
-	+LTWrKMkfcBnvcJMMh1VKaOX4ZCQH/gBrtqCctVKxVB1W2i00Eed16oxLm8Z4c4Y8dfsmkTE8qGJ1
-	BBdem2gx+nEJ+fP0mVA5Jm9c2bpGqPGcTvL+KLTnjTrn3BXFDBEVqRMTuWJjHdB9OFAIau4Uth480
-	T7JesOraLknZ4qE7OdmqBj2RRqQGogLhZl+as4nJAjYsBmzjOWwxZB1TsxBwcjPHc21jNH6iZCaO5
-	IupcKB46TdGOR1syFmfR+0VQO3kqX0qa5M2b4mUP2VKlSKEzMKLToMRKNTFdzsh+0v5BXn8LzOk2m
-	MPqusfGw==;
+	bh=30PO0ccsp2yHnWoweG/JVMZ5zj2Bbz2gPi3vDU9PqzE=; b=JvNzsBYsjFx054STc/UF21NMM0
+	2WnxsJ+/5soRwRbr3s8zLF0nfc1RZCNzXOeYaEW9ByD+ytmvnzYd6LGYhTe9ePMQSuEg8OT9JENg4
+	UWrBgsJMBs54GphkgIEeI1DJiyZmR/udzc04dCj2NOW39X9fcHBtuyqmmVv/LCDIBi9LiB2SzeYav
+	ky0GVRCVWY3R1F/RDM3y0w65kPe8SjavZsuEpHD4yYLQTWGpVlmTjKUCEzm5vkmOyMBKOKyZzPNLo
+	iWYQs3CQMQzD82jOlnoBLCreIuqg6y+k3JaJ53trhnHoN5UGA8wbtOIWzK/wtkwg/kiuuAlHGsJIc
+	lMpfZrrQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTmvK-0007mz-Iu; Wed, 29 Apr 2020 13:38:50 +0000
-Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
+	id 1jTmvJ-0007jz-0N; Wed, 29 Apr 2020 13:38:49 +0000
+Received: from 8bytes.org ([2a01:238:4383:600:38bc:a715:4b6d:a889]
+ helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTmuP-0006Ne-9r; Wed, 29 Apr 2020 13:37:56 +0000
+ id 1jTmuJ-0006GP-Ma; Wed, 29 Apr 2020 13:37:52 +0000
 Received: by theia.8bytes.org (Postfix, from userid 1000)
- id DAA2CF02; Wed, 29 Apr 2020 15:37:39 +0200 (CEST)
+ id 6C8A480A; Wed, 29 Apr 2020 15:37:36 +0200 (CEST)
 From: Joerg Roedel <joro@8bytes.org>
 To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Robin Murphy <robin.murphy@arm.com>,
@@ -54,16 +55,16 @@ To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
  Thierry Reding <thierry.reding@gmail.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v3 24/34] iommu/qcom: Convert to probe/release_device()
- call-backs
-Date: Wed, 29 Apr 2020 15:37:02 +0200
-Message-Id: <20200429133712.31431-25-joro@8bytes.org>
+Subject: [PATCH v3 06/34] iommu/amd: Return -ENODEV in add_device when device
+ is not handled by IOMMU
+Date: Wed, 29 Apr 2020 15:36:44 +0200
+Message-Id: <20200429133712.31431-7-joro@8bytes.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200429133712.31431-1-joro@8bytes.org>
 References: <20200429133712.31431-1-joro@8bytes.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200429_063753_581294_FD064D91 
-X-CRM114-Status: GOOD (  14.25  )
+X-CRM114-CacheID: sfid-20200429_063747_915368_40F547FE 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,79 +90,32 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Joerg Roedel <jroedel@suse.de>
 
-Convert the QCOM IOMMU driver to use the probe_device() and
-release_device() call-backs of iommu_ops, so that the iommu core code
-does the group and sysfs setup.
+When check_device() fails on the device, it is not handled by the
+IOMMU and amd_iommu_add_device() needs to return -ENODEV.
 
 Signed-off-by: Joerg Roedel <jroedel@suse.de>
 ---
- drivers/iommu/qcom_iommu.c | 24 +++++++-----------------
- 1 file changed, 7 insertions(+), 17 deletions(-)
+ drivers/iommu/amd_iommu.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/iommu/qcom_iommu.c b/drivers/iommu/qcom_iommu.c
-index 0e2a96467767..054e476ebd49 100644
---- a/drivers/iommu/qcom_iommu.c
-+++ b/drivers/iommu/qcom_iommu.c
-@@ -524,14 +524,13 @@ static bool qcom_iommu_capable(enum iommu_cap cap)
- 	}
- }
+diff --git a/drivers/iommu/amd_iommu.c b/drivers/iommu/amd_iommu.c
+index 504f2db75eda..3e0d27f7622e 100644
+--- a/drivers/iommu/amd_iommu.c
++++ b/drivers/iommu/amd_iommu.c
+@@ -2157,9 +2157,12 @@ static int amd_iommu_add_device(struct device *dev)
+ 	struct amd_iommu *iommu;
+ 	int ret, devid;
  
--static int qcom_iommu_add_device(struct device *dev)
-+static struct iommu_device *qcom_iommu_probe_device(struct device *dev)
- {
- 	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev);
--	struct iommu_group *group;
- 	struct device_link *link;
+-	if (!check_device(dev) || get_dev_data(dev))
++	if (get_dev_data(dev))
+ 		return 0;
  
- 	if (!qcom_iommu)
--		return -ENODEV;
-+		return ERR_PTR(-ENODEV);
- 
- 	/*
- 	 * Establish the link between iommu and master, so that the
-@@ -542,28 +541,19 @@ static int qcom_iommu_add_device(struct device *dev)
- 	if (!link) {
- 		dev_err(qcom_iommu->dev, "Unable to create device link between %s and %s\n",
- 			dev_name(qcom_iommu->dev), dev_name(dev));
--		return -ENODEV;
-+		return ERR_PTR(-ENODEV);
- 	}
- 
--	group = iommu_group_get_for_dev(dev);
--	if (IS_ERR(group))
--		return PTR_ERR(group);
--
--	iommu_group_put(group);
--	iommu_device_link(&qcom_iommu->iommu, dev);
--
--	return 0;
-+	return &qcom_iommu->iommu;
- }
- 
--static void qcom_iommu_remove_device(struct device *dev)
-+static void qcom_iommu_release_device(struct device *dev)
- {
- 	struct qcom_iommu_dev *qcom_iommu = to_iommu(dev);
- 
- 	if (!qcom_iommu)
- 		return;
- 
--	iommu_device_unlink(&qcom_iommu->iommu, dev);
--	iommu_group_remove_device(dev);
- 	iommu_fwspec_free(dev);
- }
- 
-@@ -619,8 +609,8 @@ static const struct iommu_ops qcom_iommu_ops = {
- 	.flush_iotlb_all = qcom_iommu_flush_iotlb_all,
- 	.iotlb_sync	= qcom_iommu_iotlb_sync,
- 	.iova_to_phys	= qcom_iommu_iova_to_phys,
--	.add_device	= qcom_iommu_add_device,
--	.remove_device	= qcom_iommu_remove_device,
-+	.probe_device	= qcom_iommu_probe_device,
-+	.release_device	= qcom_iommu_release_device,
- 	.device_group	= generic_device_group,
- 	.of_xlate	= qcom_iommu_of_xlate,
- 	.pgsize_bitmap	= SZ_4K | SZ_64K | SZ_1M | SZ_16M,
++	if (!check_device(dev))
++		return -ENODEV;
++
+ 	devid = get_device_id(dev);
+ 	if (devid < 0)
+ 		return devid;
 -- 
 2.17.1
 
