@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E69FFC83004
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:56:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A479C83006
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:57:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BA3A221775
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:56:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6D6C021707
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 13:57:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mi42CQPn";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="etqFUgvj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BA3A221775
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZYpMuiaO";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EebVdqzN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D6C021707
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,32 +26,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3Eloqzg3+U4Ck+XhO+9sFQxBiczr2aixrL5UqzTrvqI=; b=mi42CQPnJyQRTh
-	ordwbtblcleLC4qa8affBSN5SQAO3CoYyko6KeZx8X0t0i8NPNEy3AMNxP4zYWe30e4QsKGK8l5h6
-	evfbU9tRSrLlOmNMFu7HmKzGowKOunm/xccUE3hTJnODX4pFngCXRNr4WdvLItXACM2cWOh9LGoqZ
-	AC+g1YNI6U52PhWlBDCD97TP333TPD/wgAllkDpk1492EJpkLXm+utzOtE5e2AvcKmyyU04pFpXIT
-	ln6RW6UIT6Wd4EBxF5zuMWJvfatANnyzTgp4QagDktI/+Djbdx3AyxiKwATh7+77L1SXzPnGj64y+
-	/xDqoZohhxTcg6RR/gUQ==;
+	List-Owner; bh=rvcROX+/XBKuU3GnBgIJBH7VZc2YJFPCpFxBRyhD0U0=; b=ZYpMuiaOTWOIIV
+	WPc5rt+9hfPr5GPfWSJRgIbyrQt3KZacCSLXq1bqBLvOa21K8iWF3H1n7O87+8g+yi/1fcNSSIa5Q
+	uJERdw3lx0bBl3uCwy8fzY5bQxnCC/xBdR3Gu72uBuPAW2nEBLh9l65cbqG9d9EmO+dGPogL5sZ0T
+	iZHJdUNDf4THMY6RONoNODNP0Gi8XE/y+MsX29zB4HBtYwjC6B9T0v8UQb7tcK1eaDcGExdUVSPGC
+	axphhpZB6e20nKLuf9MK5gYXYq4aNGvLdzoQyOEBun/i5rEkDdA2pPdrF3b8FzgUjlP4pGJwP0Dyt
+	mzp+8DnZmHUjM67nNRTg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTnCZ-0000Hq-GB; Wed, 29 Apr 2020 13:56:39 +0000
+	id 1jTnCw-0000cm-TI; Wed, 29 Apr 2020 13:57:02 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTnCD-0008N8-I7; Wed, 29 Apr 2020 13:56:18 +0000
-X-UUID: 0ee5b67c49b9475eb9bb254d6029b1ce-20200429
+ id 1jTnCD-0008NF-I8; Wed, 29 Apr 2020 13:56:19 +0000
+X-UUID: fff1d9cc6f434f8a86d8c449f1276cf3-20200429
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=TtiqXGvs1ddJ8sOI7BA0Q8oUmtYb84kP4m655wKXu4U=; 
- b=etqFUgvjkSUTWyQDdXJG8eWHlZZ3IBUWG+sVmLd2rv3xZvx/VM88+jNk+UX9HtAq9LSXbP6KXMQhfiVErHBxv90jF8MXfYVmmtxpiQmmjowjpBDaWcLfhmvFo6ZGMa/PDN+qloTOCOfiJxg9EBPbFEyflwZhkJ9RRxoWbU1Uc4Q=;
-X-UUID: 0ee5b67c49b9475eb9bb254d6029b1ce-20200429
+ bh=QaW8XcXetzkfH6jLg3CAPo/VEBtsUIVZ40qmlvMXy5k=; 
+ b=EebVdqzNKzmvdTiPo9JZhMQuqm1I8tY4AQ2AW5MDeIX9JTmC6uUFkebzhskBltN0kE4C8vaaQtfcyGq5AtzxLpYQjts5Af0RSQdA++RYVSlKiDiifKPF/kXh9VSU2eJrys/SsAtnM9oT3srjYRcIgz7UHdDHo5zXdzAjmcE2yuY=;
+X-UUID: fff1d9cc6f434f8a86d8c449f1276cf3-20200429
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 161421106; Wed, 29 Apr 2020 05:57:14 -0800
+ with ESMTP id 1670271659; Wed, 29 Apr 2020 05:57:14 -0800
 Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 29 Apr 2020 06:56:10 -0700
+ 15.0.1497.2; Wed, 29 Apr 2020 06:56:11 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 29 Apr 2020 21:56:10 +0800
@@ -62,18 +62,18 @@ From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
  <asutoshd@codeaurora.org>
-Subject: [PATCH v2 1/5] scsi: ufs: allow legacy UFS devices to enable
+Subject: [PATCH v2 3/5] scsi: ufs: add LU Dedicated buffer mode support for
  WriteBooster
-Date: Wed, 29 Apr 2020 21:56:06 +0800
-Message-ID: <20200429135610.23750-2-stanley.chu@mediatek.com>
+Date: Wed, 29 Apr 2020 21:56:08 +0800
+Message-ID: <20200429135610.23750-4-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200429135610.23750-1-stanley.chu@mediatek.com>
 References: <20200429135610.23750-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200429_065617_609208_4751EA16 
-X-CRM114-Status: GOOD (  11.56  )
+X-CRM114-CacheID: sfid-20200429_065617_611060_A10ECF6A 
+X-CRM114-Status: GOOD (  15.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,73 +95,193 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-WriteBooster feature may be supported by some legacy UFS devices
-(i.e., < 3.1) by upgrading firmware.
+According to UFS specification, there are two WriteBooster mode of
+operations: "LU dedicated buffer" mode and "shared buffer" mode.
+In the "LU dedicated buffer" mode, the WriteBooster Buffer is
+dedicated to a logical unit.
 
-To enable WriteBooster feature in such devices, relax the entrance
-condition of ufshcd_wb_probe() to allow host driver to check those
-devices' WriteBooster capability.
+If the device supports the "LU dedicated buffer" mode, this mode is
+configured by setting bWriteBoosterBufferType to 00h. The logical
+unit WriteBooster Buffer size is configured by setting the
+dLUNumWriteBoosterBufferAllocUnits field of the related Unit
+Descriptor. Only a value greater than zero enables the WriteBooster
+feature in the logical unit.
 
-WriteBooster feature can be available if below both conditions are
-satisfied,
-
-1. Device descriptor has dExtendedUFSFeaturesSupport field.
-2. WriteBooster support is specified in above field.
+Modify ufshcd_wb_probe() as above description to support LU Dedicated
+buffer type.
 
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-Reviewed-by: Bean Huo <beanhuo@micron.com>
 ---
- drivers/scsi/ufs/ufshcd.c | 19 +++++++++++++------
- 1 file changed, 13 insertions(+), 6 deletions(-)
+ drivers/scsi/ufs/ufs.h    |  7 +++++
+ drivers/scsi/ufs/ufshcd.c | 63 ++++++++++++++++++++++++++++++++-------
+ 2 files changed, 59 insertions(+), 11 deletions(-)
 
+diff --git a/drivers/scsi/ufs/ufs.h b/drivers/scsi/ufs/ufs.h
+index daac5053b850..eb3d3cebc87d 100644
+--- a/drivers/scsi/ufs/ufs.h
++++ b/drivers/scsi/ufs/ufs.h
+@@ -330,6 +330,12 @@ enum health_desc_param {
+ 	HEALTH_DESC_PARAM_LIFE_TIME_EST_B	= 0x4,
+ };
+ 
++/* WriteBooster buffer mode */
++enum {
++	WB_BUF_MODE_LU_DEDICATED	= 0x0,
++	WB_BUF_MODE_SHARED		= 0x1,
++};
++
+ /*
+  * Logical Unit Write Protect
+  * 00h: LU not write protected
+@@ -559,6 +565,7 @@ struct ufs_dev_info {
+ 	bool is_lu_power_on_wp;
+ 	/* Maximum number of general LU supported by the UFS device */
+ 	u8 max_lu_supported;
++	u8 wb_dedicated_lu;
+ 	u16 wmanufacturerid;
+ 	/*UFS device Product Name */
+ 	u8 *model;
 diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 915e963398c4..111812c5304a 100644
+index 465ee023ea4b..b970a422a5ea 100644
 --- a/drivers/scsi/ufs/ufshcd.c
 +++ b/drivers/scsi/ufs/ufshcd.c
-@@ -6800,9 +6800,16 @@ static int ufshcd_scsi_add_wlus(struct ufs_hba *hba)
+@@ -5202,9 +5202,18 @@ static bool ufshcd_wb_sup(struct ufs_hba *hba)
+ 	return ufshcd_is_wb_allowed(hba);
+ }
+ 
++static int ufshcd_wb_get_index(struct ufs_hba *hba)
++{
++	if (hba->dev_info.b_wb_buffer_type == WB_BUF_MODE_LU_DEDICATED)
++		return hba->dev_info.wb_dedicated_lu;
++	else
++		return 0;
++}
++
+ static int ufshcd_wb_ctrl(struct ufs_hba *hba, bool enable)
+ {
+ 	int ret;
++	u8 index;
+ 	enum query_opcode opcode;
+ 
+ 	if (!ufshcd_wb_sup(hba))
+@@ -5217,8 +5226,9 @@ static int ufshcd_wb_ctrl(struct ufs_hba *hba, bool enable)
+ 	else
+ 		opcode = UPIU_QUERY_OPCODE_CLEAR_FLAG;
+ 
++	index = ufshcd_wb_get_index(hba);
+ 	ret = ufshcd_query_flag_retry(hba, opcode,
+-				      QUERY_FLAG_IDN_WB_EN, 0, NULL);
++				      QUERY_FLAG_IDN_WB_EN, index, NULL);
+ 	if (ret) {
+ 		dev_err(hba->dev, "%s write booster %s failed %d\n",
+ 			__func__, enable ? "enable" : "disable", ret);
+@@ -5235,15 +5245,17 @@ static int ufshcd_wb_ctrl(struct ufs_hba *hba, bool enable)
+ static int ufshcd_wb_toggle_flush_during_h8(struct ufs_hba *hba, bool set)
+ {
+ 	int val;
++	u8 index;
+ 
+ 	if (set)
+ 		val =  UPIU_QUERY_OPCODE_SET_FLAG;
+ 	else
+ 		val = UPIU_QUERY_OPCODE_CLEAR_FLAG;
+ 
++	index = ufshcd_wb_get_index(hba);
+ 	return ufshcd_query_flag_retry(hba, val,
+-			       QUERY_FLAG_IDN_WB_BUFF_FLUSH_DURING_HIBERN8, 0,
+-				       NULL);
++				QUERY_FLAG_IDN_WB_BUFF_FLUSH_DURING_HIBERN8,
++				index, NULL);
+ }
+ 
+ static inline void ufshcd_wb_toggle_flush(struct ufs_hba *hba, bool enable)
+@@ -5258,13 +5270,15 @@ static inline void ufshcd_wb_toggle_flush(struct ufs_hba *hba, bool enable)
+ static int ufshcd_wb_buf_flush_enable(struct ufs_hba *hba)
+ {
+ 	int ret;
++	u8 index;
+ 
+ 	if (!ufshcd_wb_sup(hba) || hba->wb_buf_flush_enabled)
+ 		return 0;
+ 
++	index = ufshcd_wb_get_index(hba);
+ 	ret = ufshcd_query_flag_retry(hba, UPIU_QUERY_OPCODE_SET_FLAG,
+ 				      QUERY_FLAG_IDN_WB_BUFF_FLUSH_EN,
+-				      0, NULL);
++				      index, NULL);
+ 	if (ret)
+ 		dev_err(hba->dev, "%s WB - buf flush enable failed %d\n",
+ 			__func__, ret);
+@@ -5278,12 +5292,15 @@ static int ufshcd_wb_buf_flush_enable(struct ufs_hba *hba)
+ static int ufshcd_wb_buf_flush_disable(struct ufs_hba *hba)
+ {
+ 	int ret;
++	u8 index;
+ 
+ 	if (!ufshcd_wb_sup(hba) || !hba->wb_buf_flush_enabled)
+ 		return 0;
+ 
++	index = ufshcd_wb_get_index(hba);
+ 	ret = ufshcd_query_flag_retry(hba, UPIU_QUERY_OPCODE_CLEAR_FLAG,
+-				      QUERY_FLAG_IDN_WB_BUFF_FLUSH_EN, 0, NULL);
++				      QUERY_FLAG_IDN_WB_BUFF_FLUSH_EN,
++				      index, NULL);
+ 	if (ret) {
+ 		dev_warn(hba->dev, "%s: WB - buf flush disable failed %d\n",
+ 			 __func__, ret);
+@@ -6802,6 +6819,10 @@ static int ufshcd_scsi_add_wlus(struct ufs_hba *hba)
  
  static void ufshcd_wb_probe(struct ufs_hba *hba, u8 *desc_buf)
  {
-+	if (hba->desc_size.dev_desc <= DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP)
-+		goto wb_disabled;
++	int ret;
++	u8 lun;
++	u32 d_lu_wb_buf_alloc = 0;
 +
- 	hba->dev_info.d_ext_ufs_feature_sup =
- 		get_unaligned_be32(desc_buf +
- 				   DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP);
-+
-+	if (!(hba->dev_info.d_ext_ufs_feature_sup & UFS_DEV_WRITE_BOOSTER_SUP))
-+		goto wb_disabled;
-+
- 	/*
- 	 * WB may be supported but not configured while provisioning.
- 	 * The spec says, in dedicated wb buffer mode,
-@@ -6818,11 +6825,12 @@ static void ufshcd_wb_probe(struct ufs_hba *hba, u8 *desc_buf)
+ 	if (hba->desc_size.dev_desc <= DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP)
+ 		goto wb_disabled;
+ 
+@@ -6821,15 +6842,35 @@ static void ufshcd_wb_probe(struct ufs_hba *hba, u8 *desc_buf)
+ 	hba->dev_info.b_wb_buffer_type =
+ 		desc_buf[DEVICE_DESC_PARAM_WB_TYPE];
+ 
+-	hba->dev_info.d_wb_alloc_units =
+-		get_unaligned_be32(desc_buf +
+-				   DEVICE_DESC_PARAM_WB_SHARED_ALLOC_UNITS);
  	hba->dev_info.b_presrv_uspc_en =
  		desc_buf[DEVICE_DESC_PARAM_WB_PRESRV_USRSPC_EN];
  
--	if (!((hba->dev_info.d_ext_ufs_feature_sup &
--		 UFS_DEV_WRITE_BOOSTER_SUP) &&
--		hba->dev_info.b_wb_buffer_type &&
-+	if (!(hba->dev_info.b_wb_buffer_type &&
- 	      hba->dev_info.d_wb_alloc_units))
--		hba->caps &= ~UFSHCD_CAP_WB_EN;
-+		goto wb_disabled;
+-	if (!(hba->dev_info.b_wb_buffer_type &&
+-	      hba->dev_info.d_wb_alloc_units))
+-		goto wb_disabled;
++	if (hba->dev_info.b_wb_buffer_type == WB_BUF_MODE_SHARED) {
++		hba->dev_info.d_wb_alloc_units =
++		get_unaligned_be32(desc_buf +
++				   DEVICE_DESC_PARAM_WB_SHARED_ALLOC_UNITS);
++		if (!hba->dev_info.d_wb_alloc_units)
++			goto wb_disabled;
++	} else {
++		for (lun = 0; lun < hba->dev_info.max_lu_supported; lun++) {
++			ret = ufshcd_read_unit_desc_param(hba,
++					lun,
++					UNIT_DESC_PARAM_WB_BUF_ALLOC_UNITS,
++					(u8 *)&d_lu_wb_buf_alloc,
++					sizeof(d_lu_wb_buf_alloc));
++			if (ret)
++				goto wb_disabled;
++			if (d_lu_wb_buf_alloc) {
++				hba->dev_info.wb_dedicated_lu = lun;
++				break;
++			}
++		}
 +
-+wb_disabled:
-+	hba->caps &= ~UFSHCD_CAP_WB_EN;
- }
++		if (!d_lu_wb_buf_alloc)
++			goto wb_disabled;
++	}
++
++	return;
  
- static int ufs_get_device_desc(struct ufs_hba *hba)
-@@ -6862,8 +6870,7 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
- 
- 	model_index = desc_buf[DEVICE_DESC_PARAM_PRDCT_NAME];
- 
--	/* Enable WB only for UFS-3.1 */
--	if (dev_info->wspecversion >= 0x310)
-+	if (ufshcd_is_wb_allowed(hba))
- 		ufshcd_wb_probe(hba, desc_buf);
- 
- 	err = ufshcd_read_string_desc(hba, model_index,
+ wb_disabled:
+ 	hba->caps &= ~UFSHCD_CAP_WB_EN;
 -- 
 2.18.0
 _______________________________________________
