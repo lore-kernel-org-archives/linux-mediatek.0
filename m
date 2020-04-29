@@ -1,81 +1,82 @@
-Return-Path: <SRS0=pTuV=6N=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=G+af=6O=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DEFD7C83000
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 21:30:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EFDF7C83000
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 00:00:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B014C20787
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Apr 2020 21:30:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C36DC20838
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 00:00:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MzAJAfKG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B014C20787
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="csGgJPog"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C36DC20838
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C1IX5fkphNFS1fRDaoFoIFnIBm/+QltzpuP8ubSInEQ=; b=MzAJAfKGPsZjii
-	/p27K5cCZXlZ5czwz5FA8fgBUzCzyzoTGHQfBZH8ziT/O0NwTYRtEo9CAxj7iLYTK4jHPzZgowbYa
-	DSsX/2/JGEvrXw5uZfrpyucnbeRMbUQNmciicJer8r7q5deD30D+BAdcQCsqKdfJfkZgYcD/ECVUY
-	xI+WWS356jt0pB7DV+lMOn1dCSdYq525GuCsCV4Iz8PiTb2KKRqX4Q8vlX/vpff33Y459ipwRD1C4
-	TATc+YAZw7CqhIvOixziXIkEacmmyecdfXmmRZYoWzFUWX/Am9Olx7Hd75NG9QgFDZylg/KR5PK7f
-	EVwUr6dmOLICVh6/FL/w==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=SnOvqp3we7Em/QPoAtbXOg+nmyV/4JbJifmPQqtttEg=; b=csGgJPog0cOujwOugyBBg2hY3
+	tv/I57L/svT4qSgogvHy/jM22mL/DBfQrlq6X9W/BdvpqBSc7dCIpWL18WO98LM8qRyqeBPfym9OE
+	9ddxdI+C/9zBi3SktdRL1ayQ0y5vVLFETm4t9jDwsMks7ga05ThCXR/KyYY2B692wJyKDf1l5HKuv
+	zmIaNhdLS2cewx332kOUCkZs2J0WxUmAH7j0KWK5GhkZSoPiuu5As0DGqlgWVtqrz4QiVP/1SJRS8
+	pV29KiviZljNP/znxBq1MeToX8JhmVz7JEtKZzjRJY7nnoeJlqofVQUNPnllez/lucpZTB+oAbOYk
+	K5vvPep8A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTuI5-0002K6-JG; Wed, 29 Apr 2020 21:30:49 +0000
-Received: from mail-oo1-f67.google.com ([209.85.161.67])
+	id 1jTwcu-0000dc-Jg; Thu, 30 Apr 2020 00:00:28 +0000
+Received: from mga14.intel.com ([192.55.52.115])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTuHt-00029V-4E; Wed, 29 Apr 2020 21:30:38 +0000
-Received: by mail-oo1-f67.google.com with SMTP id h23so772070oos.10;
- Wed, 29 Apr 2020 14:30:37 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=sNKlT+9/zIdQsL5FmjDdatJ2sdOrBvQb7gIEQfxHgsc=;
- b=o4UuyZ5jtDI8QIyGsoAOPV3MITuXsoJjEE49bIOhctRz8hr15AE/JFJs9g2xHjPFxm
- e97pXaqrOrQ0SIumbvr1dOtMuhfOCRfUualdUj9mKV3z2oiiytM0mxhC8cu3URyeeRot
- 9kHcYwcyChQ315uikAOgfQJLsKeulO2Ryx6FecQFyZQ708l+j/4lc0mXOOAHHXKK/aXz
- Cpa5x7UpasF8vfXyS3vkkgxX5fmCMYQHA0ke7Wq9PC8v6pLncSnhauyLJpocmrlwFLqX
- uyBuH/RzEJetJUf0M5basCPnFz3X4KTwI4PMlFKlSfE1p9BLZqzWBnkr6jh0LV1I+6b0
- wnzg==
-X-Gm-Message-State: AGi0PuZvkCKMrh0EpOR0OMjuzEwgGfRZI0j2MOYjvjtRI5PNe4Hh2MFX
- 4HXTNdguSsifcnc4Urws7Q==
-X-Google-Smtp-Source: APiQypK+APtg89af1Xjg8bKvZAVWBN2auKSMy5LvFjCDfw9Xw+dgMjfH9LB7Dui73Y7zFNedvbVvyA==
-X-Received: by 2002:a4a:e5c5:: with SMTP id r5mr88626oov.56.1588195836410;
- Wed, 29 Apr 2020 14:30:36 -0700 (PDT)
-Received: from rob-hp-laptop (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id t13sm684710otr.43.2020.04.29.14.30.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Apr 2020 14:30:35 -0700 (PDT)
-Received: (nullmailer pid 31939 invoked by uid 1000);
- Wed, 29 Apr 2020 21:30:34 -0000
-Date: Wed, 29 Apr 2020 16:30:34 -0500
-From: Rob Herring <robh@kernel.org>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Subject: Re: [PATCH 1/2] dt-bindings: phy-mtk-tphy: add the property about
- force_vbus
-Message-ID: <20200429213034.GA29572@bogus>
-References: <1587100986-3104-1-git-send-email-macpaul.lin@mediatek.com>
+ id 1jTwcs-0006G7-4D; Thu, 30 Apr 2020 00:00:27 +0000
+IronPort-SDR: P34F8ffkXSXz++5uMV+63I3KO7HP5z7Pl99BQwdJy2R79QntKs44oZRiNMqzJm+XJCS8yFkC0U
+ cZBCpdVSmwgw==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Apr 2020 16:58:25 -0700
+IronPort-SDR: jB3X6OfrFEd5jL85tzJQ7Kivv2gZUnM+5dHl+h4S2HlmkJN7B4gQQLNvquQI6pSZuDssxpDugH
+ dzAsxaFwPNPA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.73,333,1583222400"; d="scan'208";a="293374327"
+Received: from chenw5-mobl1.ccr.corp.intel.com (HELO [10.254.209.112])
+ ([10.254.209.112])
+ by fmsmga002.fm.intel.com with ESMTP; 29 Apr 2020 16:58:19 -0700
+Subject: Re: [PATCH v3 04/34] iommu/vt-d: Wire up iommu_ops->def_domain_type
+To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse
+ <dwmw2@infradead.org>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>
+References: <20200429133712.31431-1-joro@8bytes.org>
+ <20200429133712.31431-5-joro@8bytes.org>
+From: Lu Baolu <baolu.lu@linux.intel.com>
+Message-ID: <b091a9e0-4bbb-2cd9-861e-e958bc691f73@linux.intel.com>
+Date: Thu, 30 Apr 2020 07:58:18 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1587100986-3104-1-git-send-email-macpaul.lin@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20200429133712.31431-5-joro@8bytes.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200429_143037_165756_1F39125E 
-X-CRM114-Status: GOOD (  15.88  )
+X-CRM114-CacheID: sfid-20200429_170026_177096_8B018002 
+X-CRM114-Status: GOOD (  17.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,50 +88,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- Min Guo <min.Guo@mediatek.com>, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Macpaul Lin <macpaul.lin@gmail.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Daniel Drake <drake@endlessm.com>, linux-rockchip@lists.infradead.org,
+ iommu@lists.linux-foundation.org, Joerg Roedel <jroedel@suse.de>,
+ linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
+ virtualization@lists.linux-foundation.org, jonathan.derrick@intel.com,
+ baolu.lu@linux.intel.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 17, 2020 at 01:23:05PM +0800, Macpaul Lin wrote:
-> For some platforms, they don't have vbus pin connection between usb's phy
-> and mac. Hence we need to control force_vbus related registers to keep
-> hardware works normal.
-> This patch add the required bool property force_vbus.
+On 2020/4/29 21:36, Joerg Roedel wrote:
+> From: Joerg Roedel <jroedel@suse.de>
 > 
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> The Intel VT-d driver already has a matching function to determine the
+> default domain type for a device. Wire it up in intel_iommu_ops.
+> 
+> Signed-off-by: Joerg Roedel <jroedel@suse.de>
+
+Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+
+Best regards,
+baolu
+
 > ---
->  Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt | 3 +++
->  1 file changed, 3 insertions(+)
+>   drivers/iommu/intel-iommu.c | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-> index dd75b676b71d..6b49b651becc 100644
-> --- a/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-> +++ b/Documentation/devicetree/bindings/phy/phy-mtk-tphy.txt
-> @@ -37,6 +37,9 @@ Optional properties (controller (parent) node):
->  		  calibrate
->   - mediatek,src-coef	: coefficient for slew rate calibrate, depends on
->  		  SoC process
-> + - force_vbus	: if the platform has no vbus connection between phy and mac,
-
-mediatek,force-vbus
-
-This is board specific? If SoC specific, you should drop and imply this 
-from the compatible string.
-
-> +		  (force_vbus mode), then this property should be exist.
-> +		  Otherwise not to add this property.
->  
->  Required properties (port (child) node):
->  - reg		: address and length of the register set for the port.
-> -- 
-> 2.18.0
+> diff --git a/drivers/iommu/intel-iommu.c b/drivers/iommu/intel-iommu.c
+> index ef0a5246700e..b9f905a55dda 100644
+> --- a/drivers/iommu/intel-iommu.c
+> +++ b/drivers/iommu/intel-iommu.c
+> @@ -6209,6 +6209,7 @@ const struct iommu_ops intel_iommu_ops = {
+>   	.dev_enable_feat	= intel_iommu_dev_enable_feat,
+>   	.dev_disable_feat	= intel_iommu_dev_disable_feat,
+>   	.is_attach_deferred	= intel_iommu_is_attach_deferred,
+> +	.def_domain_type	= device_def_domain_type,
+>   	.pgsize_bitmap		= INTEL_IOMMU_PGSIZES,
+>   };
+>   
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
