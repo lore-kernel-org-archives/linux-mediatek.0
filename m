@@ -2,75 +2,66 @@ Return-Path: <SRS0=G+af=6O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 20DF8C4724C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 15:51:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 884A9C47247
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 20:31:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C4A1620775
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 15:51:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4A91620836
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 20:31:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TdUqN27U";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="blFWQQqD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C4A1620775
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YeCtgXoc";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="GUvL0Jcy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4A91620836
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DdlgShC9Lwmh9FQlHVsZ6Ki4K+bf7unV9xJbd4Z/KvQ=; b=TdUqN27UKJSblf
-	XKW2Cwk2aHUaJQInDEtNLZxge/ZWUUsB9O/PIHdK6DylY2GH6toWGu33IXaU2ZGdKDawzcqb8vS2Z
-	x0M64pyQV6vKTEAoATR34L8+OO8lN/lwTGOrfhIbt3EUKfCisWisNftdNDrQrzR/ZWw41aCCIXPO5
-	8+ARa3S4mKmNmKTYg5zzYNa0rViVSjJ7VNIzTd04NKe3Rk3kW9FhTnJJrkWRI2eNHNGPEhS2AQ+cC
-	/XMsgW+xr43khDPUitDVs0omZhdpI1Nk9yrPRfeCxlfcEYQgdcLMsbO+Voor+7/xxYOdQhSLLjATt
-	m1V2y3O0BfnZlNWImBvg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=XLoi63HuA3EFudOrTUao6i7JEcckyzFrCMs/z7NJiX0=; b=YeCtgXocfYELcm
+	0DixKwJDK2uMD6GReAPI56iHd8PUUemMu/dmSki+1gz/R8phlFbbQrbHjy5k0JsF9lahq3SCCjwCS
+	4eA3ZxUM5TvaZwEGjOjSu780hIkkOHL5kDYYPoQGguU+knNyqF3w2faJoavZZbR9FqqV/JXv5svoG
+	mKsP15wHd7NMj9N5p4jGFzr+Nd2Mvm6YShLZU3fE+iupluHMcUYAbFLnmWcpMjSDimvgybYcKATpp
+	I6gOgXZAF8Q9QzQ0xhEX2+NuR5WuiNdX9hOZduAklimESeVzVtnJ9/s9kLWOVuF3FQDhNWSQ0wyIx
+	zUGTI0SlYciha0SCrY2g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jUBT7-0007p3-68; Thu, 30 Apr 2020 15:51:21 +0000
+	id 1jUFpx-0004t4-Ul; Thu, 30 Apr 2020 20:31:13 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jUBSf-0007Pi-Ml; Thu, 30 Apr 2020 15:50:57 +0000
-Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com
- [209.85.208.46])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ id 1jUFpv-0004sa-Nj
+ for linux-mediatek@lists.infradead.org; Thu, 30 Apr 2020 20:31:12 +0000
+Received: from localhost.localdomain.com (unknown [151.48.155.206])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 27EDC208DB;
- Thu, 30 Apr 2020 15:50:51 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 71ABE20731;
+ Thu, 30 Apr 2020 20:31:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588261851;
- bh=AWlUUUEQmtBP6tJdyVBdRVvYUBKUIGdA1MEl0dfcZ1c=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=blFWQQqDR5s9d3ZEJt7rWSG47Ui51YmWTKkh3itQ/Sp3SU0kVuXu63FPnOk2WS56J
- zW77QmZcKSZJszbq/CKFhEiS+PSGTxjHBYA2jEAYMkYU/coTMAB0qLBIOeZbeo9tlb
- 28HbThPQWnva6dMg986HdyvMzNJmd6p02ghaf77g=
-Received: by mail-ed1-f46.google.com with SMTP id w2so4934479edx.4;
- Thu, 30 Apr 2020 08:50:51 -0700 (PDT)
-X-Gm-Message-State: AGi0Puboyrn9zf8Nt5NSAWbyXmh06vO2jppo47oA+AySrTTwt4iOr+XU
- K5WQk5mxSxAT2Ug8pHpPMmycfD7RUiRL0+qu1g==
-X-Google-Smtp-Source: APiQypLNtAe4WGt202vWspF3DK8VQGAkLi64NfyhwMTDL4r2HZtxav6S7QTWNUTBLfZims+Y6t3pKABbZl+n/V80byk=
-X-Received: by 2002:a05:6402:48b:: with SMTP id
- k11mr3417709edv.47.1588261849430; 
- Thu, 30 Apr 2020 08:50:49 -0700 (PDT)
+ s=default; t=1588278670;
+ bh=dodLZODMKGnV6dizLxKLvCaa2y0mojKga6d+qKIU/EU=;
+ h=From:To:Cc:Subject:Date:From;
+ b=GUvL0JcyRrqBEAyyQRUhuiGTBER6lt1uhJ0diovIg1MMijcv6rnPKikZUvB/0Ua2u
+ krOdL+SO+sO4BVBBltmKhr9VbIPKu/Qp3j94sHRFByorotKjlrkuPbS5r4H61oU6hO
+ dBiLs7vWShNxk6LRTR5D9XiPZP2ULXPPrd0cF4Kk=
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: nbd@nbd.name
+Subject: [PATCH] mt76: mt7615: free pci_vector if mt7615_pci_probe fails
+Date: Thu, 30 Apr 2020 22:31:03 +0200
+Message-Id: <c82cae35e7f0a27644fec166049484edf73209a0.1588278305.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.25.4
 MIME-Version: 1.0
-References: <CAAOTY_86d-UryKQrLy8-zjTbrTRrHL4k3x=bx1KqvWxPL5jj2Q@mail.gmail.com>
- <AOsApgASCAa7imxfuvZwXqq0.3.1588228291133.Hmail.bernard@vivo.com>
-In-Reply-To: <AOsApgASCAa7imxfuvZwXqq0.3.1588228291133.Hmail.bernard@vivo.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Thu, 30 Apr 2020 23:50:38 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8o239n_y4LJiyU5978e87knZmNRJwSHZbEDxLLasiJjw@mail.gmail.com>
-Message-ID: <CAAOTY_8o239n_y4LJiyU5978e87knZmNRJwSHZbEDxLLasiJjw@mail.gmail.com>
-Subject: Re: Re: [PATCH] drm/mediatek: cleanup coding style in mediatek a bit
-To: Bernard <bernard@vivo.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200430_085054_713533_5E4DE19D 
-X-CRM114-Status: GOOD (  19.59  )
+X-CRM114-CacheID: sfid-20200430_133111_797524_8E1F4E5E 
+X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,101 +73,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
- opensource.kernel@vivo.com, David Airlie <airlied@linux.ie>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
+ sean.wang@mediatek.com, linux-wireless@vger.kernel.org,
+ soul.huang@mediatek.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEJlcm5hcmQ6CgpCZXJuYXJkIDxiZXJuYXJkQHZpdm8uY29tPiDmlrwgMjAyMOW5tDTmnIgz
-MOaXpSDpgLHlm5sg5LiL5Y2IMjozMuWvq+mBk++8mgo+Cj4KPgo+IOWPkeS7tuS6uu+8mkNodW4t
-S3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgo+IOWPkemAgeaXpeacn++8mjIwMjAt
-MDQtMjkgMjI6MjI6NTAKPiDmlLbku7bkurrvvJpCZXJuYXJkIFpoYW8gPGJlcm5hcmRAdml2by5j
-b20+Cj4g5oqE6YCB5Lq677yaQ2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5vcmc+
-LFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+LERhdmlkIEFpcmxpZSA8YWly
-bGllZEBsaW51eC5pZT4sRGFuaWVsIFZldHRlciA8ZGFuaWVsQGZmd2xsLmNoPixNYXR0aGlhcyBC
-cnVnZ2VyIDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPixEUkkgRGV2ZWxvcG1lbnQgPGRyaS1kZXZl
-bEBsaXN0cy5mcmVlZGVza3RvcC5vcmc+LExpbnV4IEFSTSA8bGludXgtYXJtLWtlcm5lbEBsaXN0
-cy5pbmZyYWRlYWQub3JnPiwibW9kZXJhdGVkIGxpc3Q6QVJNL01lZGlhdGVrIFNvQyBzdXBwb3J0
-IiA8bGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZz4sbGludXgta2VybmVsIDxsaW51
-eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnPixvcGVuc291cmNlLmtlcm5lbEB2aXZvLmNvbQo+IOS4
-u+mimO+8mlJlOiBbUEFUQ0hdIGRybS9tZWRpYXRlazogY2xlYW51cCBjb2Rpbmcgc3R5bGUgaW4g
-bWVkaWF0ZWsgYSBiaXQ+SGksIEJlcm5hcmQ6Cj4gPgo+ID5CZXJuYXJkIFpoYW8gPGJlcm5hcmRA
-dml2by5jb20+IOaWvCAyMDIw5bm0NOaciDI35pelIOmAseS4gCDkuIvljYgzOjUz5a+r6YGT77ya
-Cj4gPj4KPiA+PiBUaGlzIGNvZGUgY2hhbmdlIGlzIHRvIG1ha2UgY29kZSBiaXQgbW9yZSByZWFk
-YWJsZS4KPiA+PiBPcHRpbWlzZSBhcnJheSBzaXplIGFsaWduIHRvIEhETUkgbWFjcm8gZGVmaW5l
-Lgo+ID4+IEFkZCBjaGVjayBpZiBsZW4gaXMgb3ZlcmFuZ2UuCj4gPgo+ID5PbmUgcGF0Y2ggc2hv
-dWxkIGp1c3QgZG8gb25lIHRoaW5nLCBidXQgdGhpcyBkbyB0aHJlZSB0aGluZ3MuCj4gPlNvIGJy
-ZWFrIHRoaXMgaW50byB0aHJlZSBwYXRjaGVzLgo+ID4KPiA+UmVnYXJkcywKPiA+Q2h1bi1LdWFu
-Zy4KPgo+IEhpCj4gVGhpcyBvcHRpbWl6YXRpb24gaXMgbWFpbmx5IHRvIG1ha2UgdGhlIGNvZGUg
-YSBiaXQgcmVhZGFibGUuCj4gVGhlc2UgbW9kaWZpY2F0aW9ucyBhcmUgcmVsYXRlZCwgbWFpbiBp
-biBzZXZlcmFsIHJlbGF0ZWQgZnVuY3Rpb24gY2FsbHMgaW4gdGhlIHNhbWUgZmlsZS4KPiBJIHdh
-cyBhIGJpdCBjb25mdXNlZCB0aGF0IGlmIGl0IGlzIHJlYWxseSBuZWNlc3NhcnkgdG8gY2hhbmdl
-IHRvIHRocmVlIHNlcGFyYXRlIHBhdGNoIHN1Ym1pc3Npb25zPwo+Cj4gUmVnYXJkcwo+IEJlcm5h
-cmQKPgo+ID4+Cj4gPj4gU2lnbmVkLW9mZi1ieTogQmVybmFyZCBaaGFvIDxiZXJuYXJkQHZpdm8u
-Y29tPgo+ID4+IC0tLQo+ID4+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYyB8
-IDIyICsrKysrKysrKysrLS0tLS0tLS0tLS0KPiA+PiAgMSBmaWxlIGNoYW5nZWQsIDExIGluc2Vy
-dGlvbnMoKyksIDExIGRlbGV0aW9ucygtKQo+ID4+Cj4gPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19oZG1pLmMKPiA+PiBpbmRleCBmZjQzYTNkODA0MTAuLjQwZmI1MTU0ZWQ1ZCAxMDA2NDQKPiA+
-PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwo+ID4+ICsrKyBiL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCj4gPj4gQEAgLTMxMSwxNSArMzExLDE1
-IEBAIHN0YXRpYyB2b2lkIG10a19oZG1pX2h3X3NlbmRfaW5mb19mcmFtZShzdHJ1Y3QgbXRrX2hk
-bWkgKmhkbWksIHU4ICpidWZmZXIsCj4gPj4gICAgICAgICB1OCBjaGVja3N1bTsKPiA+PiAgICAg
-ICAgIGludCBjdHJsX2ZyYW1lX2VuID0gMDsKPiA+Pgo+ID4+IC0gICAgICAgZnJhbWVfdHlwZSA9
-ICpidWZmZXI7Cj4gPj4gLSAgICAgICBidWZmZXIgKz0gMTsKPiA+PiAtICAgICAgIGZyYW1lX3Zl
-ciA9ICpidWZmZXI7Cj4gPj4gLSAgICAgICBidWZmZXIgKz0gMTsKPiA+PiAtICAgICAgIGZyYW1l
-X2xlbiA9ICpidWZmZXI7Cj4gPj4gLSAgICAgICBidWZmZXIgKz0gMTsKPiA+PiAtICAgICAgIGNo
-ZWNrc3VtID0gKmJ1ZmZlcjsKPiA+PiAtICAgICAgIGJ1ZmZlciArPSAxOwo+ID4+ICsgICAgICAg
-ZnJhbWVfdHlwZSA9ICpidWZmZXIrKzsKPiA+PiArICAgICAgIGZyYW1lX3ZlciA9ICpidWZmZXIr
-KzsKPiA+PiArICAgICAgIGZyYW1lX2xlbiA9ICpidWZmZXIrKzsKPiA+PiArICAgICAgIGNoZWNr
-c3VtID0gKmJ1ZmZlcisrOwoKVGhpcyBwYXJ0IGxvb2tzIGxpa2UgY2xlYW51cCwgc28ga2VlcCBp
-biB0aGlzIHBhdGNoLgoKPiA+PiAgICAgICAgIGZyYW1lX2RhdGEgPSBidWZmZXI7Cj4gPj4gKyAg
-ICAgICBpZiAoKGZyYW1lX2xlbiArIEhETUlfSU5GT0ZSQU1FX0hFQURFUl9TSVpFKSA+IGxlbikg
-ewo+ID4+ICsgICAgICAgICAgICAgICBkZXZfZXJyKGhkbWktPmRldiwgIldyb25nIGZyYW1lIGxl
-bjogJWRcbiIsIGZyYW1lX2xlbjsKPiA+PiArICAgICAgICAgICAgICAgcmV0dXJuOwoKVGhpcyBp
-cyBlcnJvciBjaGVja2luZywgbm90IGNsZWFudXAgdGhlIGNvZGluZyBzdHlsZSwgc28gbW92ZSB0
-aGlzIHRvCmFub3RoZXIgcGF0Y2guCgo+ID4+ICsgICAgICAgfQo+ID4+Cj4gPj4gICAgICAgICBk
-ZXZfZGJnKGhkbWktPmRldiwKPiA+PiAgICAgICAgICAgICAgICAgImZyYW1lX3R5cGU6MHgleCxm
-cmFtZV92ZXI6MHgleCxmcmFtZV9sZW46MHgleCxjaGVja3N1bToweCV4XG4iLAo+ID4+IEBAIC05
-ODIsNyArOTgyLDcgQEAgc3RhdGljIGludCBtdGtfaGRtaV9zZXR1cF9hdmlfaW5mb2ZyYW1lKHN0
-cnVjdCBtdGtfaGRtaSAqaGRtaSwKPiA+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4gPj4gIHsKPiA+PiAgICAg
-ICAgIHN0cnVjdCBoZG1pX2F2aV9pbmZvZnJhbWUgZnJhbWU7Cj4gPj4gLSAgICAgICB1OCBidWZm
-ZXJbMTddOwo+ID4+ICsgICAgICAgdTggYnVmZmVyW0hETUlfSU5GT0ZSQU1FX0hFQURFUl9TSVpF
-ICsgSERNSV9BVklfSU5GT0ZSQU1FX1NJWkVdOwoKVGhpcyBpcyB0byBzeW1ib2xpemUgdGhlIG51
-bWJlciwgc3ltYm9saXphdGlvbiBpcyBtb3JlIHRoYW4gY2xlYW51cC4KClJlZ2FyZHMsCkNodW4t
-S3VhbmcuCgo+ID4+ICAgICAgICAgc3NpemVfdCBlcnI7Cj4gPj4KPiA+PiAgICAgICAgIGVyciA9
-IGRybV9oZG1pX2F2aV9pbmZvZnJhbWVfZnJvbV9kaXNwbGF5X21vZGUoJmZyYW1lLAo+ID4+IEBA
-IC0xMDA4LDcgKzEwMDgsNyBAQCBzdGF0aWMgaW50IG10a19oZG1pX3NldHVwX3NwZF9pbmZvZnJh
-bWUoc3RydWN0IG10a19oZG1pICpoZG1pLAo+ID4+ICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICBjb25zdCBjaGFyICpwcm9kdWN0KQo+ID4+ICB7Cj4gPj4gICAgICAgICBz
-dHJ1Y3QgaGRtaV9zcGRfaW5mb2ZyYW1lIGZyYW1lOwo+ID4+IC0gICAgICAgdTggYnVmZmVyWzI5
-XTsKPiA+PiArICAgICAgIHU4IGJ1ZmZlcltIRE1JX0lORk9GUkFNRV9IRUFERVJfU0laRSArIEhE
-TUlfU1BEX0lORk9GUkFNRV9TSVpFXTsKPiA+PiAgICAgICAgIHNzaXplX3QgZXJyOwo+ID4+Cj4g
-Pj4gICAgICAgICBlcnIgPSBoZG1pX3NwZF9pbmZvZnJhbWVfaW5pdCgmZnJhbWUsIHZlbmRvciwg
-cHJvZHVjdCk7Cj4gPj4gQEAgLTEwMzEsNyArMTAzMSw3IEBAIHN0YXRpYyBpbnQgbXRrX2hkbWlf
-c2V0dXBfc3BkX2luZm9mcmFtZShzdHJ1Y3QgbXRrX2hkbWkgKmhkbWksCj4gPj4gIHN0YXRpYyBp
-bnQgbXRrX2hkbWlfc2V0dXBfYXVkaW9faW5mb2ZyYW1lKHN0cnVjdCBtdGtfaGRtaSAqaGRtaSkK
-PiA+PiAgewo+ID4+ICAgICAgICAgc3RydWN0IGhkbWlfYXVkaW9faW5mb2ZyYW1lIGZyYW1lOwo+
-ID4+IC0gICAgICAgdTggYnVmZmVyWzE0XTsKPiA+PiArICAgICAgIHU4IGJ1ZmZlcltIRE1JX0lO
-Rk9GUkFNRV9IRUFERVJfU0laRSArIEhETUlfQVVESU9fSU5GT0ZSQU1FX1NJWkVdOwo+ID4+ICAg
-ICAgICAgc3NpemVfdCBlcnI7Cj4gPj4KPiA+PiAgICAgICAgIGVyciA9IGhkbWlfYXVkaW9faW5m
-b2ZyYW1lX2luaXQoJmZyYW1lKTsKPiA+PiAtLQo+ID4+IDIuMjYuMgo+ID4+Cj4gPj4KPiA+PiBf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+ID4+IExpbnV4
-LW1lZGlhdGVrIG1haWxpbmcgbGlzdAo+ID4+IExpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKPiA+PiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LW1lZGlhdGVrCj4KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCj4gTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Cj4gTGludXgtbWVkaWF0ZWtA
-bGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtbWVkaWF0ZWsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRl
-a0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+Always free pci irq vector if mt7615_pci_probe routine fails
+Moreover free irq in mt7615_pci_remove routine
+
+Co-developed-by: Soul Huang <sean.wang@mediatek.com>
+Signed-off-by: Soul Huang <sean.wang@mediatek.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/pci.c | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
+index c53760a40cbb..05011b481885 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
+@@ -39,13 +39,21 @@ static int mt7615_pci_probe(struct pci_dev *pdev,
+ 
+ 	ret = pci_set_dma_mask(pdev, DMA_BIT_MASK(32));
+ 	if (ret)
+-		return ret;
++		goto error;
+ 
+ 	mt76_pci_disable_aspm(pdev);
+ 
+ 	map = id->device == 0x7663 ? mt7663e_reg_map : mt7615e_reg_map;
+-	return mt7615_mmio_probe(&pdev->dev, pcim_iomap_table(pdev)[0],
+-				 pdev->irq, map);
++	ret = mt7615_mmio_probe(&pdev->dev, pcim_iomap_table(pdev)[0],
++				pdev->irq, map);
++	if (ret)
++		goto error;
++
++	return 0;
++error:
++	pci_free_irq_vectors(pdev);
++
++	return ret;
+ }
+ 
+ static void mt7615_pci_remove(struct pci_dev *pdev)
+@@ -54,6 +62,7 @@ static void mt7615_pci_remove(struct pci_dev *pdev)
+ 	struct mt7615_dev *dev = container_of(mdev, struct mt7615_dev, mt76);
+ 
+ 	mt7615_unregister_device(dev);
++	devm_free_irq(&pdev->dev, pdev->irq, dev);
+ 	pci_free_irq_vectors(pdev);
+ }
+ 
+-- 
+2.25.4
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
