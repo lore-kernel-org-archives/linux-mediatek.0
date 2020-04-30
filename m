@@ -2,82 +2,68 @@ Return-Path: <SRS0=G+af=6O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	MSGID_FROM_MTA_HEADER,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 92AFBC83007
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 00:08:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0DC43C83001
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 06:32:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 684FA2082E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 00:08:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D4F0820784
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 06:32:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PC+wO/wX"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 684FA2082E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UGfmvKQD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D4F0820784
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vivo.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=38e+MXYA+ERQSEKaz4TX3B8ruZvFu7ds7kaE6BBqdrY=; b=PC+wO/wXD2qn52+iY/rMlisOd
-	zWWUnwLAIkuXZKqqzfp+oEDXvxOJYWhcuSEgmaFLsEVhehu8XV2NaKcsUJmjQQJLj3G7StXsBVyXJ
-	GKcCFph+GfviJ+Zkh95LN6xsNSou6H6lVUHmEv8fxm0jaxeAjcUiRqWqC/2sGSJub10IeVvX7Iwr4
-	nC7kAZtxBEGRnbT+EYME7ykENJrwaqjCMZZK5GlxG2vljC4vyLKL1XD+TeavtLSj53myN0e9fEaqk
-	xzoinP2Zq8Xsj2X0BeXeYPLJbMDDtmNF2tFOXlDrUoWf+ynsY+mxuZEmjdKiIZtw3XUkraGG1xpM0
-	5pNr498TQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Date:From:MIME-Version:In-Reply-To:
+	Subject:To:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=+aTP/hMhclKmg0oIbc+IolGXb74so72lc39net54fpg=; b=UGfmvKQDwLLZI7
+	54ML5MC1nrYTDjjvKhRT/lFxPZNikVYnJZYdLFgQ0o3yOCb2is9IHd6+LAsV59jk8XorCtpQhNx1Z
+	6spVKoz2Rkyf6gU5z4oO2SKYq/NjuHo5PKbqbZ3+2vKTAL0FyZ6jR/sthQ0HFaJm5/2wlZPQjCUYa
+	NHzbQuaUjMmVT2Q7p/60P3/aBSW7Ew49kZZNdpySiws7IWTwuRvuq5kdSlrej3Wx+hdQlAqDI40bt
+	6Hi8U2ljSmWUUhjwvYGggZhtNihipsyHG9drjYcO5EcQZoOjO/IGCwvcGGdjte5FFO/VyvWj0Z5Rx
+	9/eOHjgcfht00K7MTxaQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jTwkJ-0004mM-Dw; Thu, 30 Apr 2020 00:08:07 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1jU2k0-0001sT-Bt; Thu, 30 Apr 2020 06:32:12 +0000
+Received: from m176148.mail.qiye.163.com ([59.111.176.148])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jTwkG-0004kr-I3; Thu, 30 Apr 2020 00:08:05 +0000
-IronPort-SDR: eQ3iH6yGLJzIQf09CDm1fnd7BXeiYXIEIFhz+8O0d67so05IO3RiZ/RzrvlX3u6/SSQizTqTag
- c5ViY6nsKaew==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Apr 2020 17:08:04 -0700
-IronPort-SDR: 8lZrsl0wLt7oFUoHi7W//Bntkm29bKrQORzcH1MPPrhb7F9mbLEACH08RrTi8X5hI+ByAQQnM5
- BwXN4hf/V26g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,333,1583222400"; d="scan'208";a="293378354"
-Received: from chenw5-mobl1.ccr.corp.intel.com (HELO [10.254.209.112])
- ([10.254.209.112])
- by fmsmga002.fm.intel.com with ESMTP; 29 Apr 2020 17:07:58 -0700
-Subject: Re: [PATCH v3 16/34] iommu/vt-d: Convert to probe/release_device()
- call-backs
-To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse
- <dwmw2@infradead.org>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>,
- Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>
-References: <20200429133712.31431-1-joro@8bytes.org>
- <20200429133712.31431-17-joro@8bytes.org>
-From: Lu Baolu <baolu.lu@linux.intel.com>
-Message-ID: <7ceca31f-cf24-d4f8-04fd-74691dd3c11a@linux.intel.com>
-Date: Thu, 30 Apr 2020 08:07:57 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ id 1jU2jw-0001r0-JV
+ for linux-mediatek@lists.infradead.org; Thu, 30 Apr 2020 06:32:10 +0000
+Received: from vivo.com (wm-8.qy.internal [127.0.0.1])
+ by m176148.mail.qiye.163.com (Hmail) with ESMTP id 25F291A4030;
+ Thu, 30 Apr 2020 14:31:31 +0800 (CST)
+Message-ID: <AOsApgASCAa7imxfuvZwXqq0.3.1588228291133.Hmail.bernard@vivo.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: =?UTF-8?B?UmU6UmU6IFtQQVRDSF0gZHJtL21lZGlhdGVrOiBjbGVhbnVwIGNvZGluZyBzdHlsZSBpbiBtZWRpYXRlayBhIGJpdA==?=
+X-Priority: 3
+X-Mailer: HMail Webmail Server V2.0 Copyright (c) 2016-163.com
+X-Originating-IP: 157.0.31.122
+In-Reply-To: <CAAOTY_86d-UryKQrLy8-zjTbrTRrHL4k3x=bx1KqvWxPL5jj2Q@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20200429133712.31431-17-joro@8bytes.org>
-Content-Language: en-US
+Received: from bernard@vivo.com( [157.0.31.122) ] by ajax-webmail (
+ [127.0.0.1] ) ; Thu, 30 Apr 2020 14:31:31 +0800 (GMT+08:00)
+From: Bernard <bernard@vivo.com>
+Date: Thu, 30 Apr 2020 14:31:31 +0800 (GMT+08:00)
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgYFAkeWUFZSFVDTUlCQkJCSk1LTE1NTVlXWShZQU
+ hPN1dZLVlBSVdZCQ4XHghZQVk1NCk2OjckKS43PlkG
+X-HM-Sender-Digest: e1kJHlYWEh9ZQUhMTklOQ0JJTUJIN1dZDB4ZWUEPCQ4eV1kSHx4VD1lB
+ WUc6NAg6Cxw6KDg6GkwSFgMdDg0hDCMKCktVSFVKTkNDSUlDSUJNSUhPVTMWGhIXVRkeCRUaCR87
+ DRINFFUYFBZFWVdZEgtZQVlKTkxVS1VISlVKSUlZV1kIAVlBTEJKSDcG
+X-HM-Tid: 0a71c9c87a5b9394kuws25f291a4030
+X-Bad-Reply: In-Reply-To but no 'Re:' in Subject.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200429_170804_621264_A31C1B6F 
-X-CRM114-Status: GOOD (  22.19  )
+X-CRM114-CacheID: sfid-20200429_233208_943790_5CE43FD4 
+X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,148 +75,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-s390@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org,
- Daniel Drake <drake@endlessm.com>, linux-rockchip@lists.infradead.org,
- iommu@lists.linux-foundation.org, Joerg Roedel <jroedel@suse.de>,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
- virtualization@lists.linux-foundation.org, jonathan.derrick@intel.com,
- baolu.lu@linux.intel.com
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, opensource.kernel@vivo.com,
+ David Airlie <airlied@linux.ie>, linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2020/4/29 21:36, Joerg Roedel wrote:
-> From: Joerg Roedel <jroedel@suse.de>
-> 
-> Convert the Intel IOMMU driver to use the probe_device() and
-> release_device() call-backs of iommu_ops, so that the iommu core code
-> does the group and sysfs setup.
-> 
-> Signed-off-by: Joerg Roedel <jroedel@suse.de>
-
-Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
-
-Best regards,
-baolu
-
-> ---
->   drivers/iommu/intel-iommu.c | 67 ++++---------------------------------
->   1 file changed, 6 insertions(+), 61 deletions(-)
-> 
-> diff --git a/drivers/iommu/intel-iommu.c b/drivers/iommu/intel-iommu.c
-> index b9f905a55dda..b906727f5b85 100644
-> --- a/drivers/iommu/intel-iommu.c
-> +++ b/drivers/iommu/intel-iommu.c
-> @@ -5781,78 +5781,27 @@ static bool intel_iommu_capable(enum iommu_cap cap)
->   	return false;
->   }
->   
-> -static int intel_iommu_add_device(struct device *dev)
-> +static struct iommu_device *intel_iommu_probe_device(struct device *dev)
->   {
-> -	struct dmar_domain *dmar_domain;
-> -	struct iommu_domain *domain;
->   	struct intel_iommu *iommu;
-> -	struct iommu_group *group;
->   	u8 bus, devfn;
-> -	int ret;
->   
->   	iommu = device_to_iommu(dev, &bus, &devfn);
->   	if (!iommu)
-> -		return -ENODEV;
-> -
-> -	iommu_device_link(&iommu->iommu, dev);
-> +		return ERR_PTR(-ENODEV);
->   
->   	if (translation_pre_enabled(iommu))
->   		dev->archdata.iommu = DEFER_DEVICE_DOMAIN_INFO;
->   
-> -	group = iommu_group_get_for_dev(dev);
-> -
-> -	if (IS_ERR(group)) {
-> -		ret = PTR_ERR(group);
-> -		goto unlink;
-> -	}
-> -
-> -	iommu_group_put(group);
-> -
-> -	domain = iommu_get_domain_for_dev(dev);
-> -	dmar_domain = to_dmar_domain(domain);
-> -	if (domain->type == IOMMU_DOMAIN_DMA) {
-> -		if (device_def_domain_type(dev) == IOMMU_DOMAIN_IDENTITY) {
-> -			ret = iommu_request_dm_for_dev(dev);
-> -			if (ret) {
-> -				dmar_remove_one_dev_info(dev);
-> -				dmar_domain->flags |= DOMAIN_FLAG_LOSE_CHILDREN;
-> -				domain_add_dev_info(si_domain, dev);
-> -				dev_info(dev,
-> -					 "Device uses a private identity domain.\n");
-> -			}
-> -		}
-> -	} else {
-> -		if (device_def_domain_type(dev) == IOMMU_DOMAIN_DMA) {
-> -			ret = iommu_request_dma_domain_for_dev(dev);
-> -			if (ret) {
-> -				dmar_remove_one_dev_info(dev);
-> -				dmar_domain->flags |= DOMAIN_FLAG_LOSE_CHILDREN;
-> -				if (!get_private_domain_for_dev(dev)) {
-> -					dev_warn(dev,
-> -						 "Failed to get a private domain.\n");
-> -					ret = -ENOMEM;
-> -					goto unlink;
-> -				}
-> -
-> -				dev_info(dev,
-> -					 "Device uses a private dma domain.\n");
-> -			}
-> -		}
-> -	}
-> -
->   	if (device_needs_bounce(dev)) {
->   		dev_info(dev, "Use Intel IOMMU bounce page dma_ops\n");
->   		set_dma_ops(dev, &bounce_dma_ops);
->   	}
->   
-> -	return 0;
-> -
-> -unlink:
-> -	iommu_device_unlink(&iommu->iommu, dev);
-> -	return ret;
-> +	return &iommu->iommu;
->   }
->   
-> -static void intel_iommu_remove_device(struct device *dev)
-> +static void intel_iommu_release_device(struct device *dev)
->   {
->   	struct intel_iommu *iommu;
->   	u8 bus, devfn;
-> @@ -5863,10 +5812,6 @@ static void intel_iommu_remove_device(struct device *dev)
->   
->   	dmar_remove_one_dev_info(dev);
->   
-> -	iommu_group_remove_device(dev);
-> -
-> -	iommu_device_unlink(&iommu->iommu, dev);
-> -
->   	if (device_needs_bounce(dev))
->   		set_dma_ops(dev, NULL);
->   }
-> @@ -6198,8 +6143,8 @@ const struct iommu_ops intel_iommu_ops = {
->   	.map			= intel_iommu_map,
->   	.unmap			= intel_iommu_unmap,
->   	.iova_to_phys		= intel_iommu_iova_to_phys,
-> -	.add_device		= intel_iommu_add_device,
-> -	.remove_device		= intel_iommu_remove_device,
-> +	.probe_device		= intel_iommu_probe_device,
-> +	.release_device		= intel_iommu_release_device,
->   	.get_resv_regions	= intel_iommu_get_resv_regions,
->   	.put_resv_regions	= generic_iommu_put_resv_regions,
->   	.apply_resv_region	= intel_iommu_apply_resv_region,
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Cgrlj5Hku7bkurrvvJpDaHVuLUt1YW5nIEh1IDxjaHVua3VhbmcuaHVAa2VybmVsLm9yZz4K5Y+R
+6YCB5pel5pyf77yaMjAyMC0wNC0yOSAyMjoyMjo1MArmlLbku7bkurrvvJpCZXJuYXJkIFpoYW8g
+PGJlcm5hcmRAdml2by5jb20+CuaKhOmAgeS6uu+8mkNodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5o
+dUBrZXJuZWwub3JnPixQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRlPixEYXZp
+ZCBBaXJsaWUgPGFpcmxpZWRAbGludXguaWU+LERhbmllbCBWZXR0ZXIgPGRhbmllbEBmZndsbC5j
+aD4sTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4sRFJJIERldmVsb3Bt
+ZW50IDxkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnPixMaW51eCBBUk0gPGxpbnV4LWFy
+bS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZz4sIm1vZGVyYXRlZCBsaXN0OkFSTS9NZWRpYXRl
+ayBTb0Mgc3VwcG9ydCIgPGxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmc+LGxpbnV4
+LWtlcm5lbCA8bGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZz4sb3BlbnNvdXJjZS5rZXJuZWxA
+dml2by5jb20K5Li76aKY77yaUmU6IFtQQVRDSF0gZHJtL21lZGlhdGVrOiBjbGVhbnVwIGNvZGlu
+ZyBzdHlsZSBpbiBtZWRpYXRlayBhIGJpdD5IaSwgQmVybmFyZDoKPgo+QmVybmFyZCBaaGFvIDxi
+ZXJuYXJkQHZpdm8uY29tPiDmlrwgMjAyMOW5tDTmnIgyN+aXpSDpgLHkuIAg5LiL5Y2IMzo1M+Wv
+q+mBk++8mgo+Pgo+PiBUaGlzIGNvZGUgY2hhbmdlIGlzIHRvIG1ha2UgY29kZSBiaXQgbW9yZSBy
+ZWFkYWJsZS4KPj4gT3B0aW1pc2UgYXJyYXkgc2l6ZSBhbGlnbiB0byBIRE1JIG1hY3JvIGRlZmlu
+ZS4KPj4gQWRkIGNoZWNrIGlmIGxlbiBpcyBvdmVyYW5nZS4KPgo+T25lIHBhdGNoIHNob3VsZCBq
+dXN0IGRvIG9uZSB0aGluZywgYnV0IHRoaXMgZG8gdGhyZWUgdGhpbmdzLgo+U28gYnJlYWsgdGhp
+cyBpbnRvIHRocmVlIHBhdGNoZXMuCj4KPlJlZ2FyZHMsCj5DaHVuLUt1YW5nLgoKSGkKVGhpcyBv
+cHRpbWl6YXRpb24gaXMgbWFpbmx5IHRvIG1ha2UgdGhlIGNvZGUgYSBiaXQgcmVhZGFibGUuClRo
+ZXNlIG1vZGlmaWNhdGlvbnMgYXJlIHJlbGF0ZWQsIG1haW4gaW4gc2V2ZXJhbCByZWxhdGVkIGZ1
+bmN0aW9uIGNhbGxzIGluIHRoZSBzYW1lIGZpbGUuCkkgd2FzIGEgYml0IGNvbmZ1c2VkIHRoYXQg
+aWYgaXQgaXMgcmVhbGx5IG5lY2Vzc2FyeSB0byBjaGFuZ2UgdG8gdGhyZWUgc2VwYXJhdGUgcGF0
+Y2ggc3VibWlzc2lvbnM/CgpSZWdhcmRzCkJlcm5hcmQKCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IEJl
+cm5hcmQgWmhhbyA8YmVybmFyZEB2aXZvLmNvbT4KPj4gLS0tCj4+ICBkcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2hkbWkuYyB8IDIyICsrKysrKysrKysrLS0tLS0tLS0tLS0KPj4gIDEgZmls
+ZSBjaGFuZ2VkLCAxMSBpbnNlcnRpb25zKCspLCAxMSBkZWxldGlvbnMoLSkKPj4KPj4gZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIGIvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19oZG1pLmMKPj4gaW5kZXggZmY0M2EzZDgwNDEwLi40MGZiNTE1NGVk
+NWQgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCj4+
+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCj4+IEBAIC0zMTEsMTUg
+KzMxMSwxNSBAQCBzdGF0aWMgdm9pZCBtdGtfaGRtaV9od19zZW5kX2luZm9fZnJhbWUoc3RydWN0
+IG10a19oZG1pICpoZG1pLCB1OCAqYnVmZmVyLAo+PiAgICAgICAgIHU4IGNoZWNrc3VtOwo+PiAg
+ICAgICAgIGludCBjdHJsX2ZyYW1lX2VuID0gMDsKPj4KPj4gLSAgICAgICBmcmFtZV90eXBlID0g
+KmJ1ZmZlcjsKPj4gLSAgICAgICBidWZmZXIgKz0gMTsKPj4gLSAgICAgICBmcmFtZV92ZXIgPSAq
+YnVmZmVyOwo+PiAtICAgICAgIGJ1ZmZlciArPSAxOwo+PiAtICAgICAgIGZyYW1lX2xlbiA9ICpi
+dWZmZXI7Cj4+IC0gICAgICAgYnVmZmVyICs9IDE7Cj4+IC0gICAgICAgY2hlY2tzdW0gPSAqYnVm
+ZmVyOwo+PiAtICAgICAgIGJ1ZmZlciArPSAxOwo+PiArICAgICAgIGZyYW1lX3R5cGUgPSAqYnVm
+ZmVyKys7Cj4+ICsgICAgICAgZnJhbWVfdmVyID0gKmJ1ZmZlcisrOwo+PiArICAgICAgIGZyYW1l
+X2xlbiA9ICpidWZmZXIrKzsKPj4gKyAgICAgICBjaGVja3N1bSA9ICpidWZmZXIrKzsKPj4gICAg
+ICAgICBmcmFtZV9kYXRhID0gYnVmZmVyOwo+PiArICAgICAgIGlmICgoZnJhbWVfbGVuICsgSERN
+SV9JTkZPRlJBTUVfSEVBREVSX1NJWkUpID4gbGVuKSB7Cj4+ICsgICAgICAgICAgICAgICBkZXZf
+ZXJyKGhkbWktPmRldiwgIldyb25nIGZyYW1lIGxlbjogJWRcbiIsIGZyYW1lX2xlbjsKPj4gKyAg
+ICAgICAgICAgICAgIHJldHVybjsKPj4gKyAgICAgICB9Cj4+Cj4+ICAgICAgICAgZGV2X2RiZyho
+ZG1pLT5kZXYsCj4+ICAgICAgICAgICAgICAgICAiZnJhbWVfdHlwZToweCV4LGZyYW1lX3Zlcjow
+eCV4LGZyYW1lX2xlbjoweCV4LGNoZWNrc3VtOjB4JXhcbiIsCj4+IEBAIC05ODIsNyArOTgyLDcg
+QEAgc3RhdGljIGludCBtdGtfaGRtaV9zZXR1cF9hdmlfaW5mb2ZyYW1lKHN0cnVjdCBtdGtfaGRt
+aSAqaGRtaSwKPj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVj
+dCBkcm1fZGlzcGxheV9tb2RlICptb2RlKQo+PiAgewo+PiAgICAgICAgIHN0cnVjdCBoZG1pX2F2
+aV9pbmZvZnJhbWUgZnJhbWU7Cj4+IC0gICAgICAgdTggYnVmZmVyWzE3XTsKPj4gKyAgICAgICB1
+OCBidWZmZXJbSERNSV9JTkZPRlJBTUVfSEVBREVSX1NJWkUgKyBIRE1JX0FWSV9JTkZPRlJBTUVf
+U0laRV07Cj4+ICAgICAgICAgc3NpemVfdCBlcnI7Cj4+Cj4+ICAgICAgICAgZXJyID0gZHJtX2hk
+bWlfYXZpX2luZm9mcmFtZV9mcm9tX2Rpc3BsYXlfbW9kZSgmZnJhbWUsCj4+IEBAIC0xMDA4LDcg
+KzEwMDgsNyBAQCBzdGF0aWMgaW50IG10a19oZG1pX3NldHVwX3NwZF9pbmZvZnJhbWUoc3RydWN0
+IG10a19oZG1pICpoZG1pLAo+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgY29uc3QgY2hhciAqcHJvZHVjdCkKPj4gIHsKPj4gICAgICAgICBzdHJ1Y3QgaGRtaV9zcGRf
+aW5mb2ZyYW1lIGZyYW1lOwo+PiAtICAgICAgIHU4IGJ1ZmZlclsyOV07Cj4+ICsgICAgICAgdTgg
+YnVmZmVyW0hETUlfSU5GT0ZSQU1FX0hFQURFUl9TSVpFICsgSERNSV9TUERfSU5GT0ZSQU1FX1NJ
+WkVdOwo+PiAgICAgICAgIHNzaXplX3QgZXJyOwo+Pgo+PiAgICAgICAgIGVyciA9IGhkbWlfc3Bk
+X2luZm9mcmFtZV9pbml0KCZmcmFtZSwgdmVuZG9yLCBwcm9kdWN0KTsKPj4gQEAgLTEwMzEsNyAr
+MTAzMSw3IEBAIHN0YXRpYyBpbnQgbXRrX2hkbWlfc2V0dXBfc3BkX2luZm9mcmFtZShzdHJ1Y3Qg
+bXRrX2hkbWkgKmhkbWksCj4+ICBzdGF0aWMgaW50IG10a19oZG1pX3NldHVwX2F1ZGlvX2luZm9m
+cmFtZShzdHJ1Y3QgbXRrX2hkbWkgKmhkbWkpCj4+ICB7Cj4+ICAgICAgICAgc3RydWN0IGhkbWlf
+YXVkaW9faW5mb2ZyYW1lIGZyYW1lOwo+PiAtICAgICAgIHU4IGJ1ZmZlclsxNF07Cj4+ICsgICAg
+ICAgdTggYnVmZmVyW0hETUlfSU5GT0ZSQU1FX0hFQURFUl9TSVpFICsgSERNSV9BVURJT19JTkZP
+RlJBTUVfU0laRV07Cj4+ICAgICAgICAgc3NpemVfdCBlcnI7Cj4+Cj4+ICAgICAgICAgZXJyID0g
+aGRtaV9hdWRpb19pbmZvZnJhbWVfaW5pdCgmZnJhbWUpOwo+PiAtLQo+PiAyLjI2LjIKPj4KPj4K
+Pj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPj4gTGlu
+dXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Cj4+IExpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKPj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1tZWRpYXRlawoNCg0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1tZWRpYXRlawo=
