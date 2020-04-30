@@ -2,65 +2,76 @@ Return-Path: <SRS0=G+af=6O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-3.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B27D5C8300A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 09:11:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6E158C8300A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 09:25:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 838182082E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 09:11:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 36C462186A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 09:25:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kFZGqUFL";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Y/ol0t36"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 838182082E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SXGfE2k9";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="AxN0iCza"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 36C462186A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=J3pTPMM/j+V+9oEath4B/8v8Ql6yDFwV38KX4qsg+WQ=; b=kFZGqUFL762vfR
-	Y0G7gpEGwUhChyFxlBH+YqhxdmYw+S33WlOqHwfCACEHI2a3XWvh01gu+oUXKnCEejvQ0uWCv5bcX
-	rHItBTOGG9Sl89rt4b9ePtvbXgTdMG7RIKS6AE2t0++bbz8nqro3dTJSmQqpQ66deiZG70FfmybJd
-	L2xYQxaCV+bCVMX4ibbUeJ9bys6Rha9hhGOuk+4E7YYNc8fZpKQFktuhXiXTKJoZemwzZ9N2ZxzXU
-	6N+KkPLqfNkKJb1g6PbvXjyaUH4cqKWETkYumVTTpDnQx6brE2/BTF9DPX8yaa23zeEXWDMqm3Dxk
-	ic17x3qZDb0hUTe0zhpg==;
+	List-Owner; bh=jqrEBthXUDV1C0IZlGXJSDty4Dlpwv7aFcxbRLUdF30=; b=SXGfE2k9wAoY9r
+	+BkO3pthBa03/Xh63YBOIo31h6TJi9wGnC9059G24RHQT8aJNbywg0ZZSC0ls/nABxhXFSB3wwyVu
+	AZJ4ZLkAP/aen18qvcxelFB0P1qKEzb6lpHhqEld419ZhPH/OaG1KwdxIJx7Dia8x6Xaq7YIklyDW
+	O/1KFW1qTa34ipOgxv/bmoUlIlx6O4R0G8JZWNsgnmOHr5XLHk7mOt2/YkZTDFHZFH3rDB0nEtRgv
+	Ts+UJBsGvCoJBDkHGStzAvnh2jmCYnoHuXJ7tsIgOCkJWmol6sNRz2I63JMNKwTuVnocy+BMRAJDe
+	0IfPgjVln3PvyIdJsSMw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jU5ES-00010C-Ik; Thu, 30 Apr 2020 09:11:48 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jU5RD-00007S-Ol; Thu, 30 Apr 2020 09:24:59 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jU5EP-0000zO-LI
- for linux-mediatek@lists.infradead.org; Thu, 30 Apr 2020 09:11:46 +0000
-Received: from localhost.localdomain.com (unknown [151.48.130.170])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 2824D2082E;
- Thu, 30 Apr 2020 09:11:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588237905;
- bh=qYKXVG525kcJYMIpXLoKjSYurQvdHvTSRuEfaeMk4yY=;
- h=From:To:Cc:Subject:Date:From;
- b=Y/ol0t36QSC6XGcwK/CbFwNLDMtMkN4wSRFp7MnS8h4QDE8y0bKxV+emA1jANVzBd
- DkKP/giRlPvc4oo66n1/Jk3Ckkaq4unbfUwk65x9j38YoWtoNICST0IgyYWNGlVJdq
- ofC4LX2hMBjuMqT5E23uwZhMHc0ROLfp8PBHIL1w=
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: nbd@nbd.name
-Subject: [PATCH] mt76: mt7615: add passive mode for hw scan
-Date: Thu, 30 Apr 2020 11:11:34 +0200
-Message-Id: <db966b257f8e19d243bde38a0694a86375a6c9b2.1588237791.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.25.4
+ id 1jU5R2-0008Ns-V3; Thu, 30 Apr 2020 09:24:50 +0000
+X-UUID: b7e6786c90ad4316aa499689621340ba-20200430
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=ZyWHANL6IrB0l51Zfc83GdOFYp8wjYfrW0mYPD40bfY=; 
+ b=AxN0iCza3K8zIbbx4JQpmtqPtpbqrlAHclTp91xQwNzi2Xve6tZ4RsklUhwbfzP2z4OTkigkxzi2X40moUcXib1yqeif6h3V+xLiBA/5E7n255c8YkTJwNipDbitckNaMhF3Anm/Oc9HVpWJj5h4+w1/GQHMDC6x0rNv+PbmqWo=;
+X-UUID: b7e6786c90ad4316aa499689621340ba-20200430
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <henry.yen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1452036851; Thu, 30 Apr 2020 01:24:37 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 30 Apr 2020 02:14:39 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 30 Apr 2020 17:14:36 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 30 Apr 2020 17:14:39 +0800
+From: Henry Yen <henry.yen@mediatek.com>
+To: Zhang Rui <rui.zhang@intel.com>, Daniel Lezcano
+ <daniel.lezcano@linaro.org>, Amit Kucheria <amit.kucheria@verdurent.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [PATCH v2 0/2] Mediatek thermal driver update
+Date: Thu, 30 Apr 2020 17:14:32 +0800
+Message-ID: <1588238074-19338-1-git-send-email-henry.yen@mediatek.com>
+X-Mailer: git-send-email 1.9.1
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 7F58CE61F64B44D235ACC83466F1B3E82A319B4F514B5C42ADCF5FDE31662D0F2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200430_021145_715939_1C2CEBD1 
-X-CRM114-Status: UNSURE (   8.12  )
+X-CRM114-CacheID: sfid-20200430_022449_008543_C23883D0 
+X-CRM114-Status: UNSURE (   6.45  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -73,40 +84,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
- sean.wang@mediatek.com, linux-wireless@vger.kernel.org
+Cc: Steven Liu <steven.liu@mediatek.com>, Henry Yen <henry.yen@mediatek.com>,
+ linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, Michael
+ Kao <michael.kao@mediatek.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce support for passive frequency scanning to mt7615_mcu_hw_scan
+Mediatek owns two thermal systems, which are almost the same except for
+the way of reading calibration data and converting temperature.
+MT8173, MT8183, MT2701 and MT2712 belongs to version 1 thermal system,
+and MT7622 belongs to version 2. The current code has already supported
+version 1 system. Then this patchset will add the support for another
+platform (e.g., MT7622 SoC).
 
-Tested-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Changelog:
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 727a55abda69..6d536088f6c8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -2737,8 +2737,8 @@ int mt7615_mcu_hw_scan(struct mt7615_phy *phy, struct ieee80211_vif *vif,
- 
- 	req->seq_num = mvif->scan_seq_num | ext_phy << 7;
- 	req->bss_idx = mvif->idx;
--	req->scan_type = 1;
--	req->probe_req_num = 2;
-+	req->scan_type = sreq->n_ssids ? 1 : 0;
-+	req->probe_req_num = sreq->n_ssids ? 2 : 0;
- 	req->version = 1;
- 	req->channel_type = 4;
- 
+v2:
+* reorganize the order of the two patches
+* remove unnecessary .extract and .convert callbacks
+* add fixes tag
+
+v1:
+* initial post
+
+Henry Yen (2):
+  thermal: mediatek: prepare to add support for other platforms
+  thermal: mediatek: add tsensor support for V2 thermal system
+
+ drivers/thermal/mtk_thermal.c | 234 ++++++++++++++++++++++++++--------
+ 1 file changed, 181 insertions(+), 53 deletions(-)
+
 -- 
-2.25.4
-
-
+2.17.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
