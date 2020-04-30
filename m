@@ -2,79 +2,75 @@ Return-Path: <SRS0=G+af=6O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 326B6C8300E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 10:17:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 20DF8C4724C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 15:51:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 00BBF2186A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 10:17:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C4A1620775
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 15:51:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hI/b+eSO";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EGr+XO0q"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 00BBF2186A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TdUqN27U";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="blFWQQqD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C4A1620775
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CeRm+vnWC/3jFsfAktzBLvKBP1J4t3vQsA40h+tyHFQ=; b=hI/b+eSOMWxPZz
-	F21v6LJs6FnNZGroU5QiRlPdzGPFREjoqTebP8DNxlwU9w00J5zQHvSAb/F9x1a+AvyaNXzU+Lm/z
-	ZqfXUDNkKvGfoUfgL3dGZSkqrb5W2QqbyyvHDsXRyvXXWrJA2LYvdO1wBvYKZNoA+lkPNUEprrmCW
-	gyOU/ehFeGEhET6PUN/wgRb8Yg9cT7PMwR7oR+4ZjE4flf5BuYEOmH37D4B2Ca0TlILjG+X/nU6BV
-	CJ5bl+Anqv6Va6CsoQ1NQPzD+Uknm70Gr9ViunfnqfeB544myI8wko4HHTVyWmpZEhlMB85x236vU
-	Krc1IHJqofsgwXVEw0eA==;
+	List-Owner; bh=DdlgShC9Lwmh9FQlHVsZ6Ki4K+bf7unV9xJbd4Z/KvQ=; b=TdUqN27UKJSblf
+	XKW2Cwk2aHUaJQInDEtNLZxge/ZWUUsB9O/PIHdK6DylY2GH6toWGu33IXaU2ZGdKDawzcqb8vS2Z
+	x0M64pyQV6vKTEAoATR34L8+OO8lN/lwTGOrfhIbt3EUKfCisWisNftdNDrQrzR/ZWw41aCCIXPO5
+	8+ARa3S4mKmNmKTYg5zzYNa0rViVSjJ7VNIzTd04NKe3Rk3kW9FhTnJJrkWRI2eNHNGPEhS2AQ+cC
+	/XMsgW+xr43khDPUitDVs0omZhdpI1Nk9yrPRfeCxlfcEYQgdcLMsbO+Voor+7/xxYOdQhSLLjATt
+	m1V2y3O0BfnZlNWImBvg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jU6FX-00086l-3A; Thu, 30 Apr 2020 10:16:59 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jUBT7-0007p3-68; Thu, 30 Apr 2020 15:51:21 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jU6FT-00085h-DS; Thu, 30 Apr 2020 10:16:57 +0000
-X-UUID: 2d5294a83482491d8c6ca8c452b2c8bb-20200430
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=dRI9ChXKuMqabw/Te/cPQ+2PCrlGqt8wQrXGse9Am54=; 
- b=EGr+XO0qReMFErflrv371vcvEDNSs4jLeXT0a9sL3hyJ6u7XrEzjAJ7YPsMBaRm8FuwgyammSfGmLwjhLU7rds1lkGVDTtN6ij3COeBmi7Rupv73pj8C/qMDFYbzllFrekpikbkdc7ocCXpL8Lq4dxKf4oW2GGKknlUAZdabWtM=;
-X-UUID: 2d5294a83482491d8c6ca8c452b2c8bb-20200430
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 807161886; Thu, 30 Apr 2020 02:16:44 -0800
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 30 Apr 2020 03:16:47 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 30 Apr 2020 18:16:43 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 30 Apr 2020 18:16:43 +0800
-Message-ID: <1588241753.8804.111.camel@mhfsdcap03>
-Subject: Re: [V4, 2/2] media: i2c: Add DW9768 VCM driver
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
-Date: Thu, 30 Apr 2020 18:15:53 +0800
-In-Reply-To: <20200402123217.GD1522@kekkonen.localdomain>
-References: <20200330123634.363-1-dongchun.zhu@mediatek.com>
- <20200330123634.363-3-dongchun.zhu@mediatek.com>
- <20200402123217.GD1522@kekkonen.localdomain>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jUBSf-0007Pi-Ml; Thu, 30 Apr 2020 15:50:57 +0000
+Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com
+ [209.85.208.46])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 27EDC208DB;
+ Thu, 30 Apr 2020 15:50:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1588261851;
+ bh=AWlUUUEQmtBP6tJdyVBdRVvYUBKUIGdA1MEl0dfcZ1c=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=blFWQQqDR5s9d3ZEJt7rWSG47Ui51YmWTKkh3itQ/Sp3SU0kVuXu63FPnOk2WS56J
+ zW77QmZcKSZJszbq/CKFhEiS+PSGTxjHBYA2jEAYMkYU/coTMAB0qLBIOeZbeo9tlb
+ 28HbThPQWnva6dMg986HdyvMzNJmd6p02ghaf77g=
+Received: by mail-ed1-f46.google.com with SMTP id w2so4934479edx.4;
+ Thu, 30 Apr 2020 08:50:51 -0700 (PDT)
+X-Gm-Message-State: AGi0Puboyrn9zf8Nt5NSAWbyXmh06vO2jppo47oA+AySrTTwt4iOr+XU
+ K5WQk5mxSxAT2Ug8pHpPMmycfD7RUiRL0+qu1g==
+X-Google-Smtp-Source: APiQypLNtAe4WGt202vWspF3DK8VQGAkLi64NfyhwMTDL4r2HZtxav6S7QTWNUTBLfZims+Y6t3pKABbZl+n/V80byk=
+X-Received: by 2002:a05:6402:48b:: with SMTP id
+ k11mr3417709edv.47.1588261849430; 
+ Thu, 30 Apr 2020 08:50:49 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: FE32C874FE2F4E7100536658B951B76480D18269800CC85DA929D5E4D6B2B6202000:8
-X-MTK: N
+References: <CAAOTY_86d-UryKQrLy8-zjTbrTRrHL4k3x=bx1KqvWxPL5jj2Q@mail.gmail.com>
+ <AOsApgASCAa7imxfuvZwXqq0.3.1588228291133.Hmail.bernard@vivo.com>
+In-Reply-To: <AOsApgASCAa7imxfuvZwXqq0.3.1588228291133.Hmail.bernard@vivo.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 30 Apr 2020 23:50:38 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8o239n_y4LJiyU5978e87knZmNRJwSHZbEDxLLasiJjw@mail.gmail.com>
+Message-ID: <CAAOTY_8o239n_y4LJiyU5978e87knZmNRJwSHZbEDxLLasiJjw@mail.gmail.com>
+Subject: Re: Re: [PATCH] drm/mediatek: cleanup coding style in mediatek a bit
+To: Bernard <bernard@vivo.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200430_031655_467900_F69B3C4F 
-X-CRM114-Status: GOOD (  27.90  )
+X-CRM114-CacheID: sfid-20200430_085054_713533_5E4DE19D 
+X-CRM114-Status: GOOD (  19.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,580 +82,101 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, drinkcat@chromium.org,
- andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org, shengnan.wang@mediatek.com, tfiga@chromium.org,
- louis.kuo@mediatek.com, sj.huang@mediatek.com, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, dongchun.zhu@mediatek.com,
- matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ opensource.kernel@vivo.com, David Airlie <airlied@linux.ie>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sakari,
-
-Thanks for the review.
-
-On Thu, 2020-04-02 at 15:32 +0300, Sakari Ailus wrote:
-> Hi Dongchun,
-> 
-> On Mon, Mar 30, 2020 at 08:36:34PM +0800, Dongchun Zhu wrote:
-> > This patch adds a V4L2 sub-device driver for DW9768 voice coil moter,
-> > providing control to set the desired focus via I2C serial interface.
-> > 
-> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > ---
-> >  MAINTAINERS                |   1 +
-> >  drivers/media/i2c/Kconfig  |  11 ++
-> >  drivers/media/i2c/Makefile |   1 +
-> >  drivers/media/i2c/dw9768.c | 432 +++++++++++++++++++++++++++++++++++++++++++++
-> >  4 files changed, 445 insertions(+)
-> >  create mode 100644 drivers/media/i2c/dw9768.c
-> > 
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index 5e124d2..e007a1b 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -5140,6 +5140,7 @@ L:	linux-media@vger.kernel.org
-> >  S:	Maintained
-> >  T:	git git://linuxtv.org/media_tree.git
-> >  F:	Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
-> > +F:	drivers/media/i2c/dw9768.c
-> >  
-> >  DONGWOON DW9807 LENS VOICE COIL DRIVER
-> >  M:	Sakari Ailus <sakari.ailus@linux.intel.com>
-> > diff --git a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig
-> > index c68e002..b759d3d 100644
-> > --- a/drivers/media/i2c/Kconfig
-> > +++ b/drivers/media/i2c/Kconfig
-> > @@ -1024,6 +1024,17 @@ config VIDEO_DW9714
-> >  	  capability. This is designed for linear control of
-> >  	  voice coil motors, controlled via I2C serial interface.
-> >  
-> > +config VIDEO_DW9768
-> > +	tristate "DW9768 lens voice coil support"
-> > +	depends on I2C && VIDEO_V4L2 && MEDIA_CONTROLLER
-> > +	depends on VIDEO_V4L2_SUBDEV_API
-> > +	depends on PM
-> > +	help
-> > +	  This is a driver for the DW9768 camera lens voice coil.
-> > +	  DW9768 is a 10 bit DAC with 100mA output current sink
-> > +	  capability. This is designed for linear control of
-> > +	  voice coil motors, controlled via I2C serial interface.
-> > +
-> >  config VIDEO_DW9807_VCM
-> >  	tristate "DW9807 lens voice coil support"
-> >  	depends on I2C && VIDEO_V4L2 && MEDIA_CONTROLLER
-> > diff --git a/drivers/media/i2c/Makefile b/drivers/media/i2c/Makefile
-> > index c147bb9..ec94434 100644
-> > --- a/drivers/media/i2c/Makefile
-> > +++ b/drivers/media/i2c/Makefile
-> > @@ -24,6 +24,7 @@ obj-$(CONFIG_VIDEO_SAA6752HS) += saa6752hs.o
-> >  obj-$(CONFIG_VIDEO_AD5820)  += ad5820.o
-> >  obj-$(CONFIG_VIDEO_AK7375)  += ak7375.o
-> >  obj-$(CONFIG_VIDEO_DW9714)  += dw9714.o
-> > +obj-$(CONFIG_VIDEO_DW9768)  += dw9768.o
-> >  obj-$(CONFIG_VIDEO_DW9807_VCM)  += dw9807-vcm.o
-> >  obj-$(CONFIG_VIDEO_ADV7170) += adv7170.o
-> >  obj-$(CONFIG_VIDEO_ADV7175) += adv7175.o
-> > diff --git a/drivers/media/i2c/dw9768.c b/drivers/media/i2c/dw9768.c
-> > new file mode 100644
-> > index 0000000..f63afa1
-> > --- /dev/null
-> > +++ b/drivers/media/i2c/dw9768.c
-> > @@ -0,0 +1,432 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +// Copyright (c) 2020 MediaTek Inc.
-> > +
-> > +#include <linux/delay.h>
-> > +#include <linux/i2c.h>
-> > +#include <linux/module.h>
-> > +#include <linux/pm_runtime.h>
-> > +#include <linux/regulator/consumer.h>
-> > +#include <media/v4l2-async.h>
-> > +#include <media/v4l2-ctrls.h>
-> > +#include <media/v4l2-device.h>
-> > +#include <media/v4l2-subdev.h>
-> > +
-> > +#define DW9768_NAME				"dw9768"
-> > +#define DW9768_MAX_FOCUS_POS			(1024 - 1)
-> > +/*
-> > + * This sets the minimum granularity for the focus positions.
-> > + * A value of 1 gives maximum accuracy for a desired focus position
-> > + */
-> > +#define DW9768_FOCUS_STEPS			1
-> > +
-> > +/*
-> > + * Ring control and Power control register
-> > + * Bit[1] RING_EN
-> > + * 0: Direct mode
-> > + * 1: AAC mode (ringing control mode)
-> > + * Bit[0] PD
-> > + * 0: Normal operation mode
-> > + * 1: Power down mode
-> > + * DW9768 requires waiting time of Topr after PD reset takes place.
-> > + */
-> > +#define DW9768_RING_PD_CONTROL_REG		0x02
-> > +#define DW9768_PD_MODE_OFF			0x00
-> > +#define DW9768_PD_MODE_EN			BIT(0)
-> > +#define DW9768_AAC_MODE_EN			BIT(1)
-> > +
-> > +/*
-> > + * DW9768 separates two registers to control the VCM position.
-> > + * One for MSB value, another is LSB value.
-> > + * DAC_MSB: D[9:8] (ADD: 0x03)
-> > + * DAC_LSB: D[7:0] (ADD: 0x04)
-> > + * D[9:0] DAC data input: positive output current = D[9:0] / 1023 * 100[mA]
-> > + */
-> > +#define DW9768_MSB_ADDR				0x03
-> > +#define DW9768_LSB_ADDR				0x04
-> > +#define DW9768_STATUS_ADDR			0x05
-> > +
-> > +/*
-> > + * AAC mode control & prescale register
-> > + * Bit[7:5] Namely AC[2:0], decide the VCM mode and operation time.
-> > + * 000 Direct(default)
-> > + * 001 AAC2 0.48xTvib
-> > + * 010 AAC3 0.70xTvib
-> > + * 011 AAC4 0.75xTvib
-> > + * 100 Reserved
-> > + * 101 AAC8 1.13xTvib
-> > + * 110 Reserved
-> > + * 111 Reserved
-> > + * Bit[2:0] Namely PRESC[2:0], set the internal clock dividing rate as follow.
-> > + * 000 2
-> > + * 001 1(default)
-> > + * 010 1/2
-> > + * 011 1/4
-> > + * 100 8
-> > + * 101 4
-> > + * 110 Reserved
-> > + * 111 Reserved
-> > + */
-> > +#define DW9768_AAC_PRESC_REG			0x06
-> > +#define DW9768_AAC3_SELECT_DIVIDING_RATE_1	0x41
-> > +
-> > +/*
-> > + * VCM period of vibration register
-> > + * Bit[5:0] Defined as VCM rising periodic time (Tvib) together with PRESC[2:0]
-> > + * Tvib = (6.3ms + AACT[5:0] * 0.1ms) * Dividing Rate
-> > + * Dividing Rate is the internal clock dividing rate that is defined at
-> > + * PRESCALE register (ADD: 0x06)
-> > + */
-> > +#define DW9768_AAC_TIME_REG			0x07
-> > +#define DW9768_AACT_CNT				0x39
-> > +
-> > +/*
-> > + * DW9768 requires waiting time (delay time) of t_OPR after power-up,
-> > + * or in the case of PD reset taking place.
-> > + */
-> > +#define DW9768_T_OPR_US				1000
-> > +
-> > +/*
-> > + * This acts as the minimum granularity of lens movement.
-> > + * Keep this value power of 2, so the control steps can be
-> > + * uniformly adjusted for gradual lens movement, with desired
-> > + * number of control steps.
-> > + */
-> > +#define DW9768_MOVE_STEPS			16
-> > +
-> > +/*
-> > + * DW9768_AAC_PRESC_REG & DW9768_AAC_TIME_REG determine VCM operation time.
-> > + * If DW9768_AAC_PRESC_REG is 0x41, and DW9768_AAC_TIME_REG is 0x39, VCM mode
-> > + * would be AAC3, Operation Time would be 0.70xTvib, that is 8.40ms.
-> > + */
-> > +#define DW9768_MOVE_DELAY_US			8400
-> > +#define DW9768_STABLE_TIME_US			20000
-> > +
-> > +static const char * const dw9768_supply_names[] = {
-> > +	"vin",	/* I2C I/O interface power */
-> > +	"vdd",	/* VCM power */
-> > +};
-> > +
-> > +/* dw9768 device structure */
-> > +struct dw9768 {
-> > +	struct regulator_bulk_data supplies[ARRAY_SIZE(dw9768_supply_names)];
-> > +	struct v4l2_ctrl_handler ctrls;
-> > +	struct v4l2_ctrl *focus;
-> > +	struct v4l2_subdev sd;
-> > +};
-> > +
-> > +static inline struct dw9768 *to_dw9768(struct v4l2_ctrl *ctrl)
-> > +{
-> > +	return container_of(ctrl->handler, struct dw9768, ctrls);
-> > +}
-> > +
-> > +static inline struct dw9768 *sd_to_dw9768(struct v4l2_subdev *subdev)
-> > +{
-> > +	return container_of(subdev, struct dw9768, sd);
-> > +}
-> > +
-> > +struct regval_list {
-> > +	u8 reg_num;
-> > +	u8 value;
-> > +};
-> > +
-> > +static const struct regval_list dw9768_init_regs[] = {
-> > +	{DW9768_RING_PD_CONTROL_REG, DW9768_AAC_MODE_EN},
-> > +	{DW9768_AAC_PRESC_REG, DW9768_AAC3_SELECT_DIVIDING_RATE_1},
-> > +	{DW9768_AAC_TIME_REG, DW9768_AACT_CNT},
-> 
-> Apologies for missing to follow the earlier discussion related to this.
-> 
-> I wonder if these values are specific to a given lens or a module.
-> Presumably so, as they're changed from the defaults.
-> 
-> In that case I'd put them to DT.
-> 
-
-The earlier discussion related to this could be found here:
-https://lore.kernel.org/linux-media/1584526824.5781.56.camel@mhfsdcap03/
-
-For one specific driver, the register settings are supposed to be
-adjusted according to hardware specification or vendor's suggestion.
-
-Like OV8856, we also need to set series of registers by changing the
-default values.
-
-Personally DT properties may need to be created once a new board
-requires different values.
-
-What do you think?
-
-> > +};
-> > +
-> > +static int dw9768_write_array(struct dw9768 *dw9768,
-> > +			      const struct regval_list *vals, size_t len)
-> > +{
-> > +	struct i2c_client *client = v4l2_get_subdevdata(&dw9768->sd);
-> > +	unsigned int i;
-> > +	int ret;
-> > +
-> > +	for (i = 0; i < len; i++) {
-> > +		ret = i2c_smbus_write_byte_data(client, vals[i].reg_num,
-> > +						vals[i].value);
-> > +		if (ret < 0)
-> > +			return ret;
-> > +	}
-> > +	return 0;
-> > +}
-> > +
-> > +static int dw9768_set_dac(struct dw9768 *dw9768, u16 val)
-> > +{
-> > +	struct i2c_client *client = v4l2_get_subdevdata(&dw9768->sd);
-> > +
-> > +	/* Write VCM position to registers */
-> > +	return i2c_smbus_write_word_swapped(client, DW9768_MSB_ADDR, val);
-> > +}
-> > +
-> > +static int dw9768_init(struct dw9768 *dw9768)
-> > +{
-> > +	struct i2c_client *client = v4l2_get_subdevdata(&dw9768->sd);
-> > +	int ret, val;
-> > +
-> > +	/* Reset DW9768_RING_PD_CONTROL_REG to default status 0x00 */
-> > +	ret = i2c_smbus_write_byte_data(client, DW9768_RING_PD_CONTROL_REG,
-> > +					DW9768_PD_MODE_OFF);
-> > +	if (ret < 0)
-> > +		return ret;
-> > +
-> > +	/*
-> > +	 * DW9769 requires waiting delay time of t_OPR
-> > +	 * after PD reset takes place.
-> > +	 */
-> > +	usleep_range(DW9768_T_OPR_US, DW9768_T_OPR_US + 100);
-> > +
-> > +	ret = dw9768_write_array(dw9768, dw9768_init_regs,
-> > +				 ARRAY_SIZE(dw9768_init_regs));
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	for (val = dw9768->focus->val % DW9768_MOVE_STEPS;
-> > +	     val <= dw9768->focus->val;
-> > +	     val += DW9768_MOVE_STEPS) {
-> > +		ret = dw9768_set_dac(dw9768, val);
-> > +		if (ret) {
-> > +			dev_err(&client->dev, "I2C write fail: %d", ret);
-> > +			return ret;
-> > +		}
-> > +		usleep_range(DW9768_MOVE_DELAY_US, DW9768_MOVE_DELAY_US + 1000);
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int dw9768_release(struct dw9768 *dw9768)
-> > +{
-> > +	struct i2c_client *client = v4l2_get_subdevdata(&dw9768->sd);
-> > +	int ret, val;
-> > +
-> > +	val = round_down(dw9768->focus->val, DW9768_MOVE_STEPS);
-> > +	for ( ; val >= 0; val -= DW9768_MOVE_STEPS) {
-> > +		ret = dw9768_set_dac(dw9768, val);
-> > +		if (ret) {
-> > +			dev_err(&client->dev, "I2C write fail: %d", ret);
-> > +			return ret;
-> > +		}
-> > +		usleep_range(DW9768_MOVE_DELAY_US, DW9768_MOVE_DELAY_US + 1000);
-> > +	}
-> > +
-> > +	/*
-> > +	 * Wait for the motor to stabilize after the last movement
-> > +	 * to prevent the motor from shaking.
-> > +	 */
-> > +	usleep_range(DW9768_STABLE_TIME_US - DW9768_MOVE_DELAY_US,
-> > +		     DW9768_STABLE_TIME_US - DW9768_MOVE_DELAY_US + 1000);
-> > +
-> > +	ret = i2c_smbus_write_byte_data(client, DW9768_RING_PD_CONTROL_REG,
-> > +					DW9768_PD_MODE_EN);
-> > +	if (ret < 0)
-> > +		return ret;
-> > +
-> > +	/*
-> > +	 * DW9769 requires waiting delay time of t_OPR
-> > +	 * after PD reset takes place.
-> > +	 */
-> > +	usleep_range(DW9768_T_OPR_US, DW9768_T_OPR_US + 100);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int __maybe_unused dw9768_runtime_suspend(struct device *dev)
-> > +{
-> > +	struct i2c_client *client = to_i2c_client(dev);
-> > +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
-> > +	struct dw9768 *dw9768 = sd_to_dw9768(sd);
-> > +
-> > +	dw9768_release(dw9768);
-> > +	regulator_bulk_disable(ARRAY_SIZE(dw9768_supply_names),
-> > +			       dw9768->supplies);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int __maybe_unused dw9768_runtime_resume(struct device *dev)
-> > +{
-> > +	struct i2c_client *client = to_i2c_client(dev);
-> > +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
-> > +	struct dw9768 *dw9768 = sd_to_dw9768(sd);
-> > +	int ret;
-> > +
-> > +	ret = regulator_bulk_enable(ARRAY_SIZE(dw9768_supply_names),
-> > +				    dw9768->supplies);
-> > +	if (ret < 0) {
-> > +		dev_err(dev, "failed to enable regulators\n");
-> > +		return ret;
-> > +	}
-> > +
-> > +	/*
-> > +	 * The datasheet refers to t_OPR that needs to be waited before sending
-> > +	 * I2C commands after power-up.
-> > +	 */
-> > +	usleep_range(DW9768_T_OPR_US, DW9768_T_OPR_US + 100);
-> > +
-> > +	ret = dw9768_init(dw9768);
-> > +	if (ret < 0)
-> > +		goto disable_regulator;
-> > +
-> > +	return 0;
-> > +
-> > +disable_regulator:
-> > +	regulator_bulk_disable(ARRAY_SIZE(dw9768_supply_names),
-> > +			       dw9768->supplies);
-> > +
-> > +	return ret;
-> > +}
-> > +
-> > +static int dw9768_set_ctrl(struct v4l2_ctrl *ctrl)
-> > +{
-> > +	struct dw9768 *dw9768 = to_dw9768(ctrl);
-> > +
-> > +	if (ctrl->id == V4L2_CID_FOCUS_ABSOLUTE)
-> > +		return dw9768_set_dac(dw9768, ctrl->val);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static const struct v4l2_ctrl_ops dw9768_ctrl_ops = {
-> > +	.s_ctrl = dw9768_set_ctrl,
-> > +};
-> > +
-> > +static int dw9768_open(struct v4l2_subdev *sd, struct v4l2_subdev_fh *fh)
-> > +{
-> > +	int ret;
-> > +
-> > +	ret = pm_runtime_get_sync(sd->dev);
-> > +	if (ret < 0) {
-> > +		pm_runtime_put_noidle(sd->dev);
-> > +		return ret;
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int dw9768_close(struct v4l2_subdev *sd, struct v4l2_subdev_fh *fh)
-> > +{
-> > +	pm_runtime_put(sd->dev);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static const struct v4l2_subdev_internal_ops dw9768_int_ops = {
-> > +	.open = dw9768_open,
-> > +	.close = dw9768_close,
-> > +};
-> > +
-> > +static const struct v4l2_subdev_ops dw9768_ops = { };
-> > +
-> > +static int dw9768_init_controls(struct dw9768 *dw9768)
-> > +{
-> > +	struct v4l2_ctrl_handler *hdl = &dw9768->ctrls;
-> > +	const struct v4l2_ctrl_ops *ops = &dw9768_ctrl_ops;
-> > +
-> > +	v4l2_ctrl_handler_init(hdl, 1);
-> > +
-> > +	dw9768->focus = v4l2_ctrl_new_std(hdl, ops, V4L2_CID_FOCUS_ABSOLUTE, 0,
-> > +					  DW9768_MAX_FOCUS_POS,
-> > +					  DW9768_FOCUS_STEPS, 0);
-> > +
-> > +	if (hdl->error)
-> > +		return hdl->error;
-> > +
-> > +	dw9768->sd.ctrl_handler = hdl;
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int dw9768_probe(struct i2c_client *client)
-> > +{
-> > +	struct device *dev = &client->dev;
-> > +	struct dw9768 *dw9768;
-> > +	unsigned int i;
-> > +	int ret;
-> > +
-> > +	dw9768 = devm_kzalloc(dev, sizeof(*dw9768), GFP_KERNEL);
-> > +	if (!dw9768)
-> > +		return -ENOMEM;
-> > +
-> > +	v4l2_i2c_subdev_init(&dw9768->sd, client, &dw9768_ops);
-> > +
-> > +	for (i = 0; i < ARRAY_SIZE(dw9768_supply_names); i++)
-> > +		dw9768->supplies[i].supply = dw9768_supply_names[i];
-> > +
-> > +	ret = devm_regulator_bulk_get(dev, ARRAY_SIZE(dw9768_supply_names),
-> > +				      dw9768->supplies);
-> > +	if (ret) {
-> > +		dev_err(dev, "failed to get regulators\n");
-> > +		return ret;
-> > +	}
-> > +
-> > +	ret = dw9768_init_controls(dw9768);
-> > +	if (ret)
-> > +		goto entity_cleanup;
-> > +
-> > +	dw9768->sd.flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
-> > +	dw9768->sd.internal_ops = &dw9768_int_ops;
-> > +
-> > +	ret = media_entity_pads_init(&dw9768->sd.entity, 0, NULL);
-> > +	if (ret < 0)
-> > +		goto entity_cleanup;
-> > +
-> > +	dw9768->sd.entity.function = MEDIA_ENT_F_LENS;
-> > +
-> > +	ret = v4l2_async_register_subdev(&dw9768->sd);
-> > +	if (ret < 0)
-> > +		goto entity_cleanup;
-> > +
-> > +	pm_runtime_enable(dev);
-> 
-> Note that here, the device node may be already created before runtime PM is
-> enabled.
-> 
-> Could you reverse order of enabling runtime PM and registering the async
-> subdev to fix that?
-> 
-
-Got it.
-We would also add PM enabled status check by using
-pm_runtime_enabled(dev) in next release.
-Such as:
-pm_runtime_enable(dev);
-if (!pm_runtime_enabled(dev)) {
-	ret = dw9768_runtime_resume(dev);
-	if (ret < 0 ) {
-		dev_err(dev, "failed to power on: %d\n", ret);
-		goto entity_cleanup;
-	}
-}
-
-ret = v4l2_async_register_subdev(&dw9768->sd);
-if (ret < 0)
-	goto entity_cleanup;
-
-> > +
-> > +	return 0;
-> > +
-> > +entity_cleanup:
-> > +	v4l2_ctrl_handler_free(&dw9768->ctrls);
-> > +	media_entity_cleanup(&dw9768->sd.entity);
-> > +	return ret;
-> > +}
-> > +
-> > +static int dw9768_remove(struct i2c_client *client)
-> > +{
-> > +	struct v4l2_subdev *sd = i2c_get_clientdata(client);
-> > +	struct dw9768 *dw9768 = sd_to_dw9768(sd);
-> > +
-> > +	pm_runtime_disable(&client->dev);
-> > +	v4l2_async_unregister_subdev(&dw9768->sd);
-> > +	v4l2_ctrl_handler_free(&dw9768->ctrls);
-> > +	media_entity_cleanup(&dw9768->sd.entity);
-> > +	if (!pm_runtime_status_suspended(&client->dev))
-> > +		dw9768_runtime_suspend(&client->dev);
-> > +	pm_runtime_set_suspended(&client->dev);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static const struct of_device_id dw9768_of_table[] = {
-> > +	{ .compatible = "dongwoon,dw9768" },
-> > +	{}
-> > +};
-> > +MODULE_DEVICE_TABLE(of, dw9768_of_table);
-> > +
-> > +static const struct dev_pm_ops dw9768_pm_ops = {
-> > +	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
-> > +				pm_runtime_force_resume)
-> > +	SET_RUNTIME_PM_OPS(dw9768_runtime_suspend, dw9768_runtime_resume, NULL)
-> > +};
-> > +
-> > +static struct i2c_driver dw9768_i2c_driver = {
-> > +	.driver = {
-> > +		.name = DW9768_NAME,
-> > +		.pm = IS_ENABLED(CONFIG_PM) ? &dw9768_pm_ops : NULL,
-> 
-> You can drop the condition as the driver depends on CONFIG_PM.
-> 
-
-Thanks for the reminder.
-We'd remove that in next release.
-
-> > +		.of_match_table = dw9768_of_table,
-> > +	},
-> > +	.probe_new  = dw9768_probe,
-> > +	.remove = dw9768_remove,
-> > +};
-> > +
-> > +module_i2c_driver(dw9768_i2c_driver);
-> > +
-> > +MODULE_AUTHOR("Dongchun Zhu <dongchun.zhu@mediatek.com>");
-> > +MODULE_DESCRIPTION("DW9768 VCM driver");
-> > +MODULE_LICENSE("GPL v2");
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEJlcm5hcmQ6CgpCZXJuYXJkIDxiZXJuYXJkQHZpdm8uY29tPiDmlrwgMjAyMOW5tDTmnIgz
+MOaXpSDpgLHlm5sg5LiL5Y2IMjozMuWvq+mBk++8mgo+Cj4KPgo+IOWPkeS7tuS6uu+8mkNodW4t
+S3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgo+IOWPkemAgeaXpeacn++8mjIwMjAt
+MDQtMjkgMjI6MjI6NTAKPiDmlLbku7bkurrvvJpCZXJuYXJkIFpoYW8gPGJlcm5hcmRAdml2by5j
+b20+Cj4g5oqE6YCB5Lq677yaQ2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5vcmc+
+LFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+LERhdmlkIEFpcmxpZSA8YWly
+bGllZEBsaW51eC5pZT4sRGFuaWVsIFZldHRlciA8ZGFuaWVsQGZmd2xsLmNoPixNYXR0aGlhcyBC
+cnVnZ2VyIDxtYXR0aGlhcy5iZ2dAZ21haWwuY29tPixEUkkgRGV2ZWxvcG1lbnQgPGRyaS1kZXZl
+bEBsaXN0cy5mcmVlZGVza3RvcC5vcmc+LExpbnV4IEFSTSA8bGludXgtYXJtLWtlcm5lbEBsaXN0
+cy5pbmZyYWRlYWQub3JnPiwibW9kZXJhdGVkIGxpc3Q6QVJNL01lZGlhdGVrIFNvQyBzdXBwb3J0
+IiA8bGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZz4sbGludXgta2VybmVsIDxsaW51
+eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnPixvcGVuc291cmNlLmtlcm5lbEB2aXZvLmNvbQo+IOS4
+u+mimO+8mlJlOiBbUEFUQ0hdIGRybS9tZWRpYXRlazogY2xlYW51cCBjb2Rpbmcgc3R5bGUgaW4g
+bWVkaWF0ZWsgYSBiaXQ+SGksIEJlcm5hcmQ6Cj4gPgo+ID5CZXJuYXJkIFpoYW8gPGJlcm5hcmRA
+dml2by5jb20+IOaWvCAyMDIw5bm0NOaciDI35pelIOmAseS4gCDkuIvljYgzOjUz5a+r6YGT77ya
+Cj4gPj4KPiA+PiBUaGlzIGNvZGUgY2hhbmdlIGlzIHRvIG1ha2UgY29kZSBiaXQgbW9yZSByZWFk
+YWJsZS4KPiA+PiBPcHRpbWlzZSBhcnJheSBzaXplIGFsaWduIHRvIEhETUkgbWFjcm8gZGVmaW5l
+Lgo+ID4+IEFkZCBjaGVjayBpZiBsZW4gaXMgb3ZlcmFuZ2UuCj4gPgo+ID5PbmUgcGF0Y2ggc2hv
+dWxkIGp1c3QgZG8gb25lIHRoaW5nLCBidXQgdGhpcyBkbyB0aHJlZSB0aGluZ3MuCj4gPlNvIGJy
+ZWFrIHRoaXMgaW50byB0aHJlZSBwYXRjaGVzLgo+ID4KPiA+UmVnYXJkcywKPiA+Q2h1bi1LdWFu
+Zy4KPgo+IEhpCj4gVGhpcyBvcHRpbWl6YXRpb24gaXMgbWFpbmx5IHRvIG1ha2UgdGhlIGNvZGUg
+YSBiaXQgcmVhZGFibGUuCj4gVGhlc2UgbW9kaWZpY2F0aW9ucyBhcmUgcmVsYXRlZCwgbWFpbiBp
+biBzZXZlcmFsIHJlbGF0ZWQgZnVuY3Rpb24gY2FsbHMgaW4gdGhlIHNhbWUgZmlsZS4KPiBJIHdh
+cyBhIGJpdCBjb25mdXNlZCB0aGF0IGlmIGl0IGlzIHJlYWxseSBuZWNlc3NhcnkgdG8gY2hhbmdl
+IHRvIHRocmVlIHNlcGFyYXRlIHBhdGNoIHN1Ym1pc3Npb25zPwo+Cj4gUmVnYXJkcwo+IEJlcm5h
+cmQKPgo+ID4+Cj4gPj4gU2lnbmVkLW9mZi1ieTogQmVybmFyZCBaaGFvIDxiZXJuYXJkQHZpdm8u
+Y29tPgo+ID4+IC0tLQo+ID4+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYyB8
+IDIyICsrKysrKysrKysrLS0tLS0tLS0tLS0KPiA+PiAgMSBmaWxlIGNoYW5nZWQsIDExIGluc2Vy
+dGlvbnMoKyksIDExIGRlbGV0aW9ucygtKQo+ID4+Cj4gPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19oZG1pLmMKPiA+PiBpbmRleCBmZjQzYTNkODA0MTAuLjQwZmI1MTU0ZWQ1ZCAxMDA2NDQKPiA+
+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWkuYwo+ID4+ICsrKyBiL2Ry
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCj4gPj4gQEAgLTMxMSwxNSArMzExLDE1
+IEBAIHN0YXRpYyB2b2lkIG10a19oZG1pX2h3X3NlbmRfaW5mb19mcmFtZShzdHJ1Y3QgbXRrX2hk
+bWkgKmhkbWksIHU4ICpidWZmZXIsCj4gPj4gICAgICAgICB1OCBjaGVja3N1bTsKPiA+PiAgICAg
+ICAgIGludCBjdHJsX2ZyYW1lX2VuID0gMDsKPiA+Pgo+ID4+IC0gICAgICAgZnJhbWVfdHlwZSA9
+ICpidWZmZXI7Cj4gPj4gLSAgICAgICBidWZmZXIgKz0gMTsKPiA+PiAtICAgICAgIGZyYW1lX3Zl
+ciA9ICpidWZmZXI7Cj4gPj4gLSAgICAgICBidWZmZXIgKz0gMTsKPiA+PiAtICAgICAgIGZyYW1l
+X2xlbiA9ICpidWZmZXI7Cj4gPj4gLSAgICAgICBidWZmZXIgKz0gMTsKPiA+PiAtICAgICAgIGNo
+ZWNrc3VtID0gKmJ1ZmZlcjsKPiA+PiAtICAgICAgIGJ1ZmZlciArPSAxOwo+ID4+ICsgICAgICAg
+ZnJhbWVfdHlwZSA9ICpidWZmZXIrKzsKPiA+PiArICAgICAgIGZyYW1lX3ZlciA9ICpidWZmZXIr
+KzsKPiA+PiArICAgICAgIGZyYW1lX2xlbiA9ICpidWZmZXIrKzsKPiA+PiArICAgICAgIGNoZWNr
+c3VtID0gKmJ1ZmZlcisrOwoKVGhpcyBwYXJ0IGxvb2tzIGxpa2UgY2xlYW51cCwgc28ga2VlcCBp
+biB0aGlzIHBhdGNoLgoKPiA+PiAgICAgICAgIGZyYW1lX2RhdGEgPSBidWZmZXI7Cj4gPj4gKyAg
+ICAgICBpZiAoKGZyYW1lX2xlbiArIEhETUlfSU5GT0ZSQU1FX0hFQURFUl9TSVpFKSA+IGxlbikg
+ewo+ID4+ICsgICAgICAgICAgICAgICBkZXZfZXJyKGhkbWktPmRldiwgIldyb25nIGZyYW1lIGxl
+bjogJWRcbiIsIGZyYW1lX2xlbjsKPiA+PiArICAgICAgICAgICAgICAgcmV0dXJuOwoKVGhpcyBp
+cyBlcnJvciBjaGVja2luZywgbm90IGNsZWFudXAgdGhlIGNvZGluZyBzdHlsZSwgc28gbW92ZSB0
+aGlzIHRvCmFub3RoZXIgcGF0Y2guCgo+ID4+ICsgICAgICAgfQo+ID4+Cj4gPj4gICAgICAgICBk
+ZXZfZGJnKGhkbWktPmRldiwKPiA+PiAgICAgICAgICAgICAgICAgImZyYW1lX3R5cGU6MHgleCxm
+cmFtZV92ZXI6MHgleCxmcmFtZV9sZW46MHgleCxjaGVja3N1bToweCV4XG4iLAo+ID4+IEBAIC05
+ODIsNyArOTgyLDcgQEAgc3RhdGljIGludCBtdGtfaGRtaV9zZXR1cF9hdmlfaW5mb2ZyYW1lKHN0
+cnVjdCBtdGtfaGRtaSAqaGRtaSwKPiA+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4gPj4gIHsKPiA+PiAgICAg
+ICAgIHN0cnVjdCBoZG1pX2F2aV9pbmZvZnJhbWUgZnJhbWU7Cj4gPj4gLSAgICAgICB1OCBidWZm
+ZXJbMTddOwo+ID4+ICsgICAgICAgdTggYnVmZmVyW0hETUlfSU5GT0ZSQU1FX0hFQURFUl9TSVpF
+ICsgSERNSV9BVklfSU5GT0ZSQU1FX1NJWkVdOwoKVGhpcyBpcyB0byBzeW1ib2xpemUgdGhlIG51
+bWJlciwgc3ltYm9saXphdGlvbiBpcyBtb3JlIHRoYW4gY2xlYW51cC4KClJlZ2FyZHMsCkNodW4t
+S3VhbmcuCgo+ID4+ICAgICAgICAgc3NpemVfdCBlcnI7Cj4gPj4KPiA+PiAgICAgICAgIGVyciA9
+IGRybV9oZG1pX2F2aV9pbmZvZnJhbWVfZnJvbV9kaXNwbGF5X21vZGUoJmZyYW1lLAo+ID4+IEBA
+IC0xMDA4LDcgKzEwMDgsNyBAQCBzdGF0aWMgaW50IG10a19oZG1pX3NldHVwX3NwZF9pbmZvZnJh
+bWUoc3RydWN0IG10a19oZG1pICpoZG1pLAo+ID4+ICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICBjb25zdCBjaGFyICpwcm9kdWN0KQo+ID4+ICB7Cj4gPj4gICAgICAgICBz
+dHJ1Y3QgaGRtaV9zcGRfaW5mb2ZyYW1lIGZyYW1lOwo+ID4+IC0gICAgICAgdTggYnVmZmVyWzI5
+XTsKPiA+PiArICAgICAgIHU4IGJ1ZmZlcltIRE1JX0lORk9GUkFNRV9IRUFERVJfU0laRSArIEhE
+TUlfU1BEX0lORk9GUkFNRV9TSVpFXTsKPiA+PiAgICAgICAgIHNzaXplX3QgZXJyOwo+ID4+Cj4g
+Pj4gICAgICAgICBlcnIgPSBoZG1pX3NwZF9pbmZvZnJhbWVfaW5pdCgmZnJhbWUsIHZlbmRvciwg
+cHJvZHVjdCk7Cj4gPj4gQEAgLTEwMzEsNyArMTAzMSw3IEBAIHN0YXRpYyBpbnQgbXRrX2hkbWlf
+c2V0dXBfc3BkX2luZm9mcmFtZShzdHJ1Y3QgbXRrX2hkbWkgKmhkbWksCj4gPj4gIHN0YXRpYyBp
+bnQgbXRrX2hkbWlfc2V0dXBfYXVkaW9faW5mb2ZyYW1lKHN0cnVjdCBtdGtfaGRtaSAqaGRtaSkK
+PiA+PiAgewo+ID4+ICAgICAgICAgc3RydWN0IGhkbWlfYXVkaW9faW5mb2ZyYW1lIGZyYW1lOwo+
+ID4+IC0gICAgICAgdTggYnVmZmVyWzE0XTsKPiA+PiArICAgICAgIHU4IGJ1ZmZlcltIRE1JX0lO
+Rk9GUkFNRV9IRUFERVJfU0laRSArIEhETUlfQVVESU9fSU5GT0ZSQU1FX1NJWkVdOwo+ID4+ICAg
+ICAgICAgc3NpemVfdCBlcnI7Cj4gPj4KPiA+PiAgICAgICAgIGVyciA9IGhkbWlfYXVkaW9faW5m
+b2ZyYW1lX2luaXQoJmZyYW1lKTsKPiA+PiAtLQo+ID4+IDIuMjYuMgo+ID4+Cj4gPj4KPiA+PiBf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+ID4+IExpbnV4
+LW1lZGlhdGVrIG1haWxpbmcgbGlzdAo+ID4+IExpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKPiA+PiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LW1lZGlhdGVrCj4KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCj4gTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Cj4gTGludXgtbWVkaWF0ZWtA
+bGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtbWVkaWF0ZWsKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRl
+a0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
