@@ -2,70 +2,78 @@ Return-Path: <SRS0=G+af=6O=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 63480C8300C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 08:51:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 31850C8300A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 08:53:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 37B0F20838
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 08:51:59 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 00AE620838
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Apr 2020 08:53:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="htUbSySP";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="KaqhsY86"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 37B0F20838
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linuxfoundation.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tq9mgMGK";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="i/1K6zjN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 00AE620838
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DJvME1zWITiaqggkzCdx0uIl4PRUI42Xl1fEBps3I18=; b=htUbSySPwCqacJ
-	My3k9RWU0d61veUgc3Z4qpJTnNEk1ZvddQc1aLg0GKPrZMu+ufo3yh6PNVtAw+cn4fXkB37GJyhXw
-	omeAhWO2QHxeywwQimlSXAwLZt+gYnThyJibkZJQPzn4yQHt5e9QN6Eco4HyVHPJFOx5dwg31UyX+
-	ppXWWmjClL0ETG9r8/Dp7oORxcwrJURmbRav550tMKXXpwBIngoZFP7oYkdNF+YaWHaZLqMvJPPvd
-	6l6czWUvD4YnBoRVTiKXsvULvBFqm6NOOhKsTDdi84Spar0k8o83mJjy29ZfbO+WhYliVzoGsp4fN
-	GfBsHp6KHFUla/G9Ozlg==;
+	List-Owner; bh=iyTQlvpYq1PSds/+iyvmfy5+kIAJlcv1xKVBT0yoqFQ=; b=tq9mgMGKm4b2Cm
+	lQQtFNHx3TjzR5mJaVT7LGaRRrinrh5//jwtTAPUROyzbx2TvPAZL6QsljZ1o3+sPPqrZN62itvGJ
+	ElCYRfeq1syKlY4m3FqbCCiM0lgH1kLL/SGWTm7wqzn2aCBcdcaSo6Gad08RJ0thSny3+SHtsZvYY
+	21InLLeSILXHA3CDX1Z1j3rp7HF6Nk52HbZGHYUPkclKdcN1DX0DIEEdsgCzQ1z+gQZILpYh99lyb
+	uXYo/9V1a3pwrNEvyYCxTctN2l0Nc3TXndChMYG5PEynsFMcg3oO2FjV4B0E6JBOYXkVi8CDMUnpy
+	+sKZbo9e2Wag4olJwEXA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jU4v6-0003Od-It; Thu, 30 Apr 2020 08:51:48 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jU4wF-0003dI-HW; Thu, 30 Apr 2020 08:52:59 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jU4tZ-00017E-SK
- for linux-mediatek@lists.infradead.org; Thu, 30 Apr 2020 08:50:15 +0000
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C9D6E20787;
- Thu, 30 Apr 2020 08:50:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588236612;
- bh=ghrQEmeIlI+g1P6iSZ6DPBPbRnUsSttZWP+GFYy29mo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=KaqhsY86LNEksszvxHtMCCMJEREzCEgFGgqb0u5DpNO5Dv36tLHp1jXriMGXRhM6g
- 0IQfo4XYD7e8ikcmo5LrxJpxAG57PPiEbMIZrBHCTsBbTMMLAlK3QtxxjXDdsIS1PV
- 0We4M0prTxcdZvZteHR81YOQBz0OW3xRfgcS5GXM=
-Date: Thu, 30 Apr 2020 10:50:10 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Frankie Chang <Frankie.Chang@mediatek.com>
-Subject: Re: [PATCH v3 1/1] binder: transaction latency tracking for user build
-Message-ID: <20200430085010.GE2496467@kroah.com>
-References: <1586929044-12708-2-git-send-email-Frankie.Chang@mediatek.com>
- <1588234439-7959-1-git-send-email-Frankie.Chang@mediatek.com>
- <1588234439-7959-2-git-send-email-Frankie.Chang@mediatek.com>
+ id 1jU4wC-0003ck-Qz; Thu, 30 Apr 2020 08:52:58 +0000
+X-UUID: 50d981712e534e598780660e3cadc618-20200430
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=wmJJNzcR3k9GVE2jLM5Fa1SIp2IO4dqVkL3WED3AOeo=; 
+ b=i/1K6zjNXZJi+oSRhdM8EvkjycK5IKRIg1T7ZY0DwPOjR4tamk41h6GExHbLrMGrBRzc2SrENvbF69goI6zafnOaWdiztrzBewaA7pg8kSC8aQfN7nDXF633Hkjc959YfOKr8KYTHBkOg9Pzd9GM0lS9pv5rr+6ya4DOV60YH6w=;
+X-UUID: 50d981712e534e598780660e3cadc618-20200430
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <dongchun.zhu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1469614275; Thu, 30 Apr 2020 00:52:46 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 30 Apr 2020 01:43:26 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 30 Apr 2020 16:43:22 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 30 Apr 2020 16:43:21 +0800
+Message-ID: <1588236152.8804.88.camel@mhfsdcap03>
+Subject: Re: [V4, 1/2] media: i2c: dw9768: Add DT support and MAINTAINERS entry
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+Date: Thu, 30 Apr 2020 16:42:32 +0800
+In-Reply-To: <20200410172527.GA24529@bogus>
+References: <20200330123634.363-1-dongchun.zhu@mediatek.com>
+ <20200330123634.363-2-dongchun.zhu@mediatek.com>
+ <20200410172527.GA24529@bogus>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1588234439-7959-2-git-send-email-Frankie.Chang@mediatek.com>
+X-TM-SNTS-SMTP: ECC204BF1CE98C25F6F81482310D100CC86CD6865F2FBC31D2991D5DB77265862000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200430_015014_282968_86871712 
-X-CRM114-Status: GOOD (  16.04  )
+X-CRM114-CacheID: sfid-20200430_015256_874075_C64F90BA 
+X-CRM114-Status: GOOD (  17.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,61 +85,140 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Todd Kjos <tkjos@android.com>, wsd_upstream <wsd_upstream@mediatek.com>,
- LKML <linux-kernel@vger.kernel.org>,
- Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
- Jian-Min Liu <Jian-Min.Liu@mediatek.com>, linux-mediatek@lists.infradead.org,
- Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
- Christian Brauner <christian@brauner.io>, Todd Kjos <tkjos@google.com>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org,
+ srv_heupstream@mediatek.com, shengnan.wang@mediatek.com,
+ andriy.shevchenko@linux.intel.com, tfiga@chromium.org, louis.kuo@mediatek.com,
+ sj.huang@mediatek.com, linux-mediatek@lists.infradead.org,
+ sakari.ailus@linux.intel.com, matthias.bgg@gmail.com, bingbu.cao@intel.com,
+ mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 30, 2020 at 04:13:59PM +0800, Frankie Chang wrote:
-> Record start/end timestamp for binder transaction.
-> When transaction is completed or transaction is free,
-> it would be checked if transaction latency over threshold (2 sec),
-> if yes, printing related information for tracing.
-> 
-> /* Implement details */
-> - Add tracepoint/trace at free transaction.
->   Since the original trace_binder_transaction_received cannot
->   precisely present the real finished time of transaction, adding a
->   trace_binder_free_transaction at the point of free transaction
->   may be more close to it.
-> 
-> - Add latency tracer module to monitor slow transaction.
->   The trace_binder_free_transaction would not be enabled
->   by default. Monitoring which transaction is too slow to
->   cause some of exceptions is important. So we hook the
->   tracepoint to call the monitor function.
-> 
-> - Move some struct from core file to header file.
->   Need some struct defined in core file in latency trace module
->   In addition, moving all structs to header file makes module
->   more extendable, and make all these strcuts to be defined
->   in the same file.
-> 
-> Signed-off-by: Frankie Chang <Frankie.Chang@mediatek.com>
-> ---
->  drivers/android/Kconfig                 |    8 +
->  drivers/android/Makefile                |    1 +
->  drivers/android/binder.c                |  408 +-----------------------------
->  drivers/android/binder_internal.h       |  416 +++++++++++++++++++++++++++++++
->  drivers/android/binder_latency_tracer.c |  105 ++++++++
->  drivers/android/binder_trace.h          |   49 ++++
->  6 files changed, 583 insertions(+), 404 deletions(-)
->  create mode 100644 drivers/android/binder_latency_tracer.c
+Hello Rob,
 
-What changed from previous versions?  That always needs to go below the
---- line, as is documented in the kernel documentation.
+Thanks for the review.
 
-Please fix that up and resend a v4.
+On Fri, 2020-04-10 at 12:25 -0500, Rob Herring wrote:
+> On Mon, Mar 30, 2020 at 08:36:33PM +0800, Dongchun Zhu wrote:
+> > This patch is to add the Devicetreee binding documentation and
+> > MAINTAINERS entry for dw9768 actuator.
+> > 
+> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > ---
+> >  .../bindings/media/i2c/dongwoon,dw9768.yaml        | 62 ++++++++++++++++++++++
+> >  MAINTAINERS                                        |  7 +++
+> >  2 files changed, 69 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml b/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
+> > new file mode 100644
+> > index 0000000..8a353dc
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
+> > @@ -0,0 +1,62 @@
+> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > +# Copyright (c) 2020 MediaTek Inc.
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/media/i2c/dongwoon,dw9768.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Dongwoon Anatech DW9768 Voice Coil Motor (VCM) Device Tree Bindings
+> > +
+> > +maintainers:
+> > +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > +
+> > +description: |-
+> > +  The Dongwoon DW9768 is a single 10-bit digital-to-analog (DAC) converter
+> > +  with 100 mA output current sink capability. VCM current is controlled with
+> > +  a linear mode driver. The DAC is controlled via a 2-wire (I2C-compatible)
+> > +  serial interface that operates at clock rates up to 1MHz. This chip
+> > +  integrates Advanced Actuator Control (AAC) technology and is intended for
+> > +  driving voice coil lenses in camera modules.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: dongwoon,dw9768
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  vin-supply:
+> > +    description:
+> > +      Definition of the regulator used as I2C I/O interface power supply.
+> > +    maxItems: 1
+> 
+> You can drop this. *-supply is always a single entry.
+> 
 
-thanks,
+Fixed in next release.
 
-greg k-h
+> > +
+> > +  vdd-supply:
+> > +    description:
+> > +      Definition of the regulator used as VCM chip power supply.
+> > +    maxItems: 1
+> 
+> Same here.
+> 
+
+Fixed in next release.
+
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - vin-supply
+> > +  - vdd-supply
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    i2c2: i2c@11009000 {
+> 
+> i2c {
+> 
+
+Fixed in next release.
+
+> > +        clock-frequency = <400000>;
+> > +        #address-cells = <1>;
+> > +        #size-cells = <0>;
+> > +
+> > +        dw9768: camera-lens@c {
+> > +            compatible = "dongwoon,dw9768";
+> > +            reg = <0x0c>;
+> > +
+> > +            vin-supply = <&mt6358_vcamio_reg>;
+> > +            vdd-supply = <&mt6358_vcama2_reg>;
+> > +        };
+> > +    };
+> > +
+> > +...
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index 38fe2f3..5e124d2 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -5134,6 +5134,13 @@ S:	Maintained
+> >  F:	drivers/media/i2c/dw9714.c
+> >  F:	Documentation/devicetree/bindings/media/i2c/dongwoon,dw9714.txt
+> >  
+> > +DONGWOON DW9768 LENS VOICE COIL DRIVER
+> > +M:	Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > +L:	linux-media@vger.kernel.org
+> > +S:	Maintained
+> > +T:	git git://linuxtv.org/media_tree.git
+> > +F:	Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
+> > +
+> >  DONGWOON DW9807 LENS VOICE COIL DRIVER
+> >  M:	Sakari Ailus <sakari.ailus@linux.intel.com>
+> >  L:	linux-media@vger.kernel.org
+> > -- 
+> > 2.9.2
 
 _______________________________________________
 Linux-mediatek mailing list
