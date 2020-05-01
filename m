@@ -6,17 +6,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DB6FDC47253
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 May 2020 10:36:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D243C4724C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 May 2020 10:36:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AF8D621973
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 May 2020 10:36:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2ECEB206B8
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 May 2020 10:36:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UG0kicpE";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="YiivNjhF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF8D621973
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AEZZmwNg";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="mdVHZ0mk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2ECEB206B8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,43 +25,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6GFYKVBeqfaJkI38zjbFUkablQ/X7fEzEyJx7AJ352s=; b=UG0kicpEMQOs+k
-	wTaEgSng5mhMlwVo+gVgijgZSg6zmta5sx8aYVD7YiDBSHZtbqgDnpxkATvdqyIqjX5QR5jzY4/5m
-	IYR4C4MBX6V3KJ0gZNZvjuYhdCplq2EfIv43C3iljkDp3kfcuKXm+utBJY5i427ZKQTue6SAdVabm
-	NL3t8Oq9WgSFa0GnlWisNUMvpcji2BKCBaESLms7VMiMvIgCpHKiHGkRMUJ2cNTkr4uaDL2CNsb0v
-	fVOAiSwknqurC1BLQaLk7csutd3CQeZmUymoDknrGvhBkFyl0clN0ASWITLCbnZfgVrBpyHuyX0JE
-	DYdYepqDkD983FR4oyHg==;
+	List-Owner; bh=+HqnYzgLDQC4fvkcuXSpbcG0o0sS0NWcSOaU3RDT7OI=; b=AEZZmwNgHO4EJC
+	uSCsDYUFe3dQvyh+3HZ/OVDXQDxDf7ZfTNBlqjmvpltk4V3gfDGpHKJloXGO8sWiNu8+lRXkP7Dpj
+	qnPpTrWJjjQEtiFyKJeZt4re4eAcmAae1vaHqkGHoZOjQOy4eDhfBNiqpgW88aJghD+8nvoQE/bpE
+	NN1PUSey+r8fX4sbl6T37Tvr/zUoNO+KMpk6De7bB9rNGa4ck79Xexw9tKrEO27bJbQURY9RKGzHS
+	wZfcb/AP3jxYvzdO1oHP695OXc+W9ivJogjwE+CDt8HQJOWulkU3MntCu/NUWtJo5S4VxYeyz5ZRm
+	Eac/2NEsFl1wTcr5os6g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jUT2C-0004QB-CO; Fri, 01 May 2020 10:36:44 +0000
+	id 1jUT2I-0004WY-34; Fri, 01 May 2020 10:36:50 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jUT29-0004NP-8W
- for linux-mediatek@lists.infradead.org; Fri, 01 May 2020 10:36:43 +0000
+ id 1jUT2C-0004Qg-SE
+ for linux-mediatek@lists.infradead.org; Fri, 01 May 2020 10:36:47 +0000
 Received: from lore-desk.lan (unknown [151.48.155.206])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9485B2166E;
- Fri,  1 May 2020 10:36:39 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1507521973;
+ Fri,  1 May 2020 10:36:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588329401;
- bh=rUDzcXAodGW2DBoi78CjRlY3cg2fYy8osYYCux9/Miw=;
+ s=default; t=1588329404;
+ bh=MaKQ3XXwEhsK2wRzmwPj6owv7UxL36M2eAST5DwoCYM=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=YiivNjhFwXpJAFtHinjvjTPhFr+myq9BUzSCP5vxgGnQomELcFa6f8kuuIwAydx0W
- jxjk62zBTwAFGLjE5V3yEItOw3ruDTVqVQBTm7W34KvW5NwmbjTFnozem872QUFJkg
- 2/LbKJYMkfPESh6H84Cf5Z4rIPGF0iNGhBTGmnzk=
+ b=mdVHZ0mkXsxbQOOm/A0MgtszjKQtAW7QRezKCtcWKDhEunfFcLHe8jRWNEkIgM4Jx
+ jhCwzWAj7zHVyWUjnQIRIwUe/loctXA+/cAsFNDTaGIi2NmpBVFBjHWUdD2b8kywym
+ uyPpN7VeFU1nSltlt4TlvyQ+F3lGolUMaG6RfFaY=
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: nbd@nbd.name
-Subject: [PATCH 3/7] mt76: mt7615: add WoW support
-Date: Fri,  1 May 2020 12:36:13 +0200
-Message-Id: <ca5b2dba585ac0a3bb841f3196abf49be60a9b0d.1588329170.git.lorenzo@kernel.org>
+Subject: [PATCH 5/7] mt76: mt7615: introduce PM support
+Date: Fri,  1 May 2020 12:36:15 +0200
+Message-Id: <fa7af0636560df42930a8faa536456802e311999.1588329170.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.25.4
 In-Reply-To: <cover.1588329170.git.lorenzo@kernel.org>
 References: <cover.1588329170.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200501_033641_340049_04F54E63 
-X-CRM114-Status: GOOD (  16.29  )
+X-CRM114-CacheID: sfid-20200501_033645_006669_A7FA137B 
+X-CRM114-Status: GOOD (  13.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,11 +81,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce WoW support to mt7615 driver.
-Current supported trigger are:
-- magic-packet
-- disconnect
-- user-pattern
+Introduce suspend/resume to mt7615e driver
 
 Co-developed-by: Wan-Feng Jiang <Wan-Feng.Jiang@mediatek.com>
 Signed-off-by: Wan-Feng Jiang <Wan-Feng.Jiang@mediatek.com>
@@ -95,404 +91,359 @@ Co-developed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76.h     |   1 +
- .../net/wireless/mediatek/mt76/mt7615/main.c  |  78 ++++++++++
- .../net/wireless/mediatek/mt76/mt7615/mcu.c   | 138 +++++++++++++++++-
- .../net/wireless/mediatek/mt76/mt7615/mcu.h   |  62 ++++++++
- .../wireless/mediatek/mt76/mt7615/mt7615.h    |   4 +-
- 5 files changed, 278 insertions(+), 5 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7615/dma.c   |  37 ++++++
+ .../net/wireless/mediatek/mt76/mt7615/mac.c   |   4 +-
+ .../net/wireless/mediatek/mt76/mt7615/mcu.c   |   6 +-
+ .../net/wireless/mediatek/mt76/mt7615/mmio.c  |   4 +
+ .../wireless/mediatek/mt76/mt7615/mt7615.h    |   5 +
+ .../net/wireless/mediatek/mt76/mt7615/pci.c   | 107 ++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7615/regs.h  |  28 ++++-
+ 7 files changed, 185 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 6106dc4fea44..f1c9116b6ab4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -287,6 +287,7 @@ enum {
- 	MT76_READING_STATS,
- 	MT76_STATE_POWER_OFF,
- 	MT76_STATE_PS,
-+	MT76_STATE_SUSPEND,
- };
- 
- struct mt76_hw_cap {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index 5e54c7ffae0b..1346d5124a2a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -864,6 +864,79 @@ mt7615_stop_sched_scan(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
- 	return mt7615_mcu_sched_scan_enable(mphy->priv, vif, false);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/dma.c b/drivers/net/wireless/mediatek/mt76/mt7615/dma.c
+index 0b1fbddd1c3f..5a124610d4af 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/dma.c
+@@ -130,6 +130,43 @@ static int mt7615_poll_tx(struct napi_struct *napi, int budget)
+ 	return 0;
  }
  
-+static int __maybe_unused
-+mt7615_suspend(struct ieee80211_hw *hw, struct cfg80211_wowlan *wowlan)
++int mt7615_wait_pdma_busy(struct mt7615_dev *dev)
 +{
-+	struct mt7615_dev *dev = mt7615_hw_dev(hw);
-+	struct mt7615_phy *phy = mt7615_hw_phy(hw);
-+	bool ext_phy = phy != &dev->phy;
-+	int err = 0;
++	struct mt76_dev *mdev = &dev->mt76;
 +
-+	mutex_lock(&dev->mt76.mutex);
++	if (!is_mt7663(mdev)) {
++		u32 mask = MT_PDMA_TX_BUSY | MT_PDMA_RX_BUSY;
++		u32 reg = mt7615_reg_map(dev, MT_PDMA_BUSY);
 +
-+	clear_bit(MT76_STATE_RUNNING, &phy->mt76->state);
-+	cancel_delayed_work_sync(&phy->scan_work);
-+	cancel_delayed_work_sync(&phy->mac_work);
-+
-+	mt76_set(dev, MT_WF_RFCR(ext_phy), MT_WF_RFCR_DROP_OTHER_BEACON);
-+
-+	set_bit(MT76_STATE_SUSPEND, &phy->mt76->state);
-+	ieee80211_iterate_active_interfaces(hw,
-+					    IEEE80211_IFACE_ITER_RESUME_ALL,
-+					    mt7615_mcu_set_suspend_iter, phy);
-+
-+	if (!mt7615_dev_running(dev))
-+		err = mt7615_mcu_set_hif_suspend(dev, true);
-+
-+	mutex_unlock(&dev->mt76.mutex);
-+
-+	return err;
-+}
-+
-+static int __maybe_unused mt7615_resume(struct ieee80211_hw *hw)
-+{
-+	struct mt7615_dev *dev = mt7615_hw_dev(hw);
-+	struct mt7615_phy *phy = mt7615_hw_phy(hw);
-+	bool running, ext_phy = phy != &dev->phy;
-+
-+	mutex_lock(&dev->mt76.mutex);
-+
-+	running = mt7615_dev_running(dev);
-+	set_bit(MT76_STATE_RUNNING, &phy->mt76->state);
-+
-+	if (!running) {
-+		int err;
-+
-+		err = mt7615_mcu_set_hif_suspend(dev, false);
-+		if (err < 0) {
-+			mutex_unlock(&dev->mt76.mutex);
-+			return err;
++		if (!mt76_poll_msec(dev, reg, mask, 0, 1000)) {
++			dev_err(mdev->dev, "PDMA engine busy\n");
++			return -EIO;
 +		}
++
++		return 0;
 +	}
 +
-+	clear_bit(MT76_STATE_SUSPEND, &phy->mt76->state);
-+	ieee80211_iterate_active_interfaces(hw,
-+					    IEEE80211_IFACE_ITER_RESUME_ALL,
-+					    mt7615_mcu_set_suspend_iter, phy);
++	if (!mt76_poll_msec(dev, MT_PDMA_BUSY_STATUS,
++			    MT_PDMA_TX_IDX_BUSY, 0, 1000)) {
++		dev_err(mdev->dev, "PDMA engine tx busy\n");
++		return -EIO;
++	}
 +
-+	ieee80211_queue_delayed_work(hw, &phy->mac_work,
-+				     MT7615_WATCHDOG_TIME);
-+	mt76_clear(dev, MT_WF_RFCR(ext_phy), MT_WF_RFCR_DROP_OTHER_BEACON);
++	if (!mt76_poll_msec(dev, MT_PSE_PG_INFO,
++			    MT_PSE_SRC_CNT, 0, 1000)) {
++		dev_err(mdev->dev, "PSE engine busy\n");
++		return -EIO;
++	}
 +
-+	mutex_unlock(&dev->mt76.mutex);
++	if (!mt76_poll_msec(dev, MT_PDMA_BUSY_STATUS,
++			    MT_PDMA_BUSY_IDX, 0, 1000)) {
++		dev_err(mdev->dev, "PDMA engine busy\n");
++		return -EIO;
++	}
 +
 +	return 0;
 +}
 +
-+static void __maybe_unused
-+mt7615_set_wakeup(struct ieee80211_hw *hw, bool enabled)
-+{
-+	struct mt7615_dev *dev = mt7615_hw_dev(hw);
-+	struct mt76_dev *mdev = &dev->mt76;
-+
-+	device_set_wakeup_enable(mdev->dev, enabled);
-+}
-+
- const struct ieee80211_ops mt7615_ops = {
- 	.tx = mt7615_tx,
- 	.start = mt7615_start,
-@@ -897,6 +970,11 @@ const struct ieee80211_ops mt7615_ops = {
- 	.cancel_hw_scan = mt7615_cancel_hw_scan,
- 	.sched_scan_start = mt7615_start_sched_scan,
- 	.sched_scan_stop = mt7615_stop_sched_scan,
-+#ifdef CONFIG_PM
-+	.suspend = mt7615_suspend,
-+	.resume = mt7615_resume,
-+	.set_wakeup = mt7615_set_wakeup,
-+#endif /* CONFIG_PM */
- };
- EXPORT_SYMBOL_GPL(mt7615_ops);
+ static void mt7622_dma_sched_init(struct mt7615_dev *dev)
+ {
+ 	u32 reg = mt7615_reg_map(dev, MT_DMASHDL_BASE);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index e7a76032caff..b8f86d8fab93 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -1806,8 +1806,7 @@ mt7615_update_beacons(struct mt7615_dev *dev)
+ 		mt7615_update_vif_beacon, dev->mt76.phy2->hw);
+ }
  
+-static void
+-mt7615_dma_reset(struct mt7615_dev *dev)
++void mt7615_dma_reset(struct mt7615_dev *dev)
+ {
+ 	int i;
+ 
+@@ -1826,6 +1825,7 @@ mt7615_dma_reset(struct mt7615_dev *dev)
+ 		 MT_WPDMA_GLO_CFG_RX_DMA_EN | MT_WPDMA_GLO_CFG_TX_DMA_EN |
+ 		 MT_WPDMA_GLO_CFG_TX_WRITEBACK_DONE);
+ }
++EXPORT_SYMBOL_GPL(mt7615_dma_reset);
+ 
+ void mt7615_mac_reset_work(struct work_struct *work)
+ {
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 95cb239b03e5..2d077c18a4b6 100644
+index 2d077c18a4b6..22e532aeb3cf 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -195,7 +195,8 @@ mt7615_mcu_parse_response(struct mt7615_dev *dev, int cmd,
- 	case MCU_UNI_CMD_DEV_INFO_UPDATE:
- 	case MCU_UNI_CMD_BSS_INFO_UPDATE:
- 	case MCU_UNI_CMD_STA_REC_UPDATE:
--	case MCU_UNI_CMD_HIF_CTRL: {
-+	case MCU_UNI_CMD_HIF_CTRL:
-+	case MCU_UNI_CMD_SUSPEND: {
- 		struct mt7615_mcu_uni_event *event;
+@@ -1677,7 +1677,7 @@ static void mt7622_trigger_hif_int(struct mt7615_dev *dev, bool en)
+ 			   !en * MT_INFRACFG_MISC_AP2CONN_WAKE);
+ }
  
- 		skb_pull(skb, sizeof(*rxd));
-@@ -1829,6 +1830,13 @@ mt7615_mcu_send_ram_firmware(struct mt7615_dev *dev,
+-static int mt7615_driver_own(struct mt7615_dev *dev)
++int mt7615_driver_own(struct mt7615_dev *dev)
+ {
+ 	struct mt76_dev *mdev = &dev->mt76;
+ 	u32 addr;
+@@ -1697,8 +1697,9 @@ static int mt7615_driver_own(struct mt7615_dev *dev)
+ 
  	return 0;
  }
++EXPORT_SYMBOL_GPL(mt7615_driver_own);
  
-+static const struct wiphy_wowlan_support mt7615_wowlan_support = {
-+	.flags = WIPHY_WOWLAN_MAGIC_PKT | WIPHY_WOWLAN_DISCONNECT,
-+	.n_patterns = 1,
-+	.pattern_min_len = 1,
-+	.pattern_max_len = MT7615_WOW_PATTEN_MAX_LEN,
-+};
-+
- static int mt7615_load_n9(struct mt7615_dev *dev, const char *name)
+-static int mt7615_firmware_own(struct mt7615_dev *dev)
++int mt7615_firmware_own(struct mt7615_dev *dev)
  {
- 	const struct mt7615_fw_trailer *hdr;
-@@ -2151,6 +2159,9 @@ int __mt7663_load_firmware(struct mt7615_dev *dev)
- 		return -EIO;
- 	}
+ 	u32 addr;
  
-+	if (IS_ENABLED(CONFIG_PM) && mt7615_firmware_offload(dev))
-+		dev->mt76.hw->wiphy->wowlan = &mt7615_wowlan_support;
-+
- 	dev_dbg(dev->mt76.dev, "Firmware init done\n");
+@@ -1717,6 +1718,7 @@ static int mt7615_firmware_own(struct mt7615_dev *dev)
  
  	return 0;
-@@ -2647,8 +2658,9 @@ void m7615_mcu_set_ps_iter(void *priv, u8 *mac, struct ieee80211_vif *vif)
- 				    &req, sizeof(req), false);
  }
++EXPORT_SYMBOL_GPL(mt7615_firmware_own);
  
--int mt7615_mcu_set_bss_pm(struct mt7615_dev *dev, struct ieee80211_vif *vif,
--			  bool enable)
-+static int
-+mt7615_mcu_set_bss_pm(struct mt7615_dev *dev, struct ieee80211_vif *vif,
-+		      bool enable)
+ static int mt7615_load_patch(struct mt7615_dev *dev, u32 addr, const char *name)
  {
- 	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
- 	struct {
-@@ -3246,3 +3258,123 @@ int mt7615_mcu_set_hif_suspend(struct mt7615_dev *dev, bool suspend)
- 				   &req, sizeof(req), true);
- }
- EXPORT_SYMBOL_GPL(mt7615_mcu_set_hif_suspend);
-+
-+static int
-+mt7615_mcu_set_wow_ctrl(struct mt7615_dev *dev, struct ieee80211_vif *vif,
-+			bool suspend, struct cfg80211_wowlan *wowlan)
-+{
-+	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
-+	struct {
-+		struct {
-+			u8 bss_idx;
-+			u8 pad[3];
-+		} __packed hdr;
-+		struct mt7615_wow_ctrl_tlv wow_ctrl_tlv;
-+	} req = {
-+		.hdr = {
-+			.bss_idx = mvif->idx,
-+		},
-+		.wow_ctrl_tlv = {
-+			.tag = cpu_to_le16(UNI_SUSPEND_WOW_CTRL),
-+			.len = cpu_to_le16(sizeof(struct mt7615_wow_ctrl_tlv)),
-+			.cmd = suspend ? 1 : 2,
-+		},
-+	};
-+
-+	if (wowlan->magic_pkt)
-+		req.wow_ctrl_tlv.trigger |= BIT(0);
-+	if (wowlan->disconnect)
-+		req.wow_ctrl_tlv.trigger |= BIT(2);
-+
-+	if (mt76_is_mmio(&dev->mt76))
-+		req.wow_ctrl_tlv.wakeup_hif = 2;
-+	else if (mt76_is_usb(&dev->mt76))
-+		req.wow_ctrl_tlv.wakeup_hif = 1;
-+
-+	return __mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD_SUSPEND,
-+				   &req, sizeof(req), true);
-+}
-+
-+static int
-+mt7615_mcu_set_wow_pattern(struct mt7615_dev *dev,
-+			   struct ieee80211_vif *vif,
-+			   u8 index, bool enable,
-+			   struct cfg80211_pkt_pattern *pattern)
-+{
-+	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
-+	struct mt7615_wow_pattern_tlv *ptlv;
-+	struct sk_buff *skb;
-+	struct req_hdr {
-+		u8 bss_idx;
-+		u8 pad[3];
-+	} __packed hdr = {
-+		.bss_idx = mvif->idx,
-+	};
-+
-+	skb = mt76_mcu_msg_alloc(&dev->mt76, NULL,
-+				 sizeof(hdr) + sizeof(*ptlv));
-+	if (!skb)
-+		return -ENOMEM;
-+
-+	skb_put_data(skb, &hdr, sizeof(hdr));
-+	ptlv = (struct mt7615_wow_pattern_tlv *)skb_put(skb, sizeof(*ptlv));
-+	ptlv->tag = cpu_to_le16(UNI_SUSPEND_WOW_PATTERN);
-+	ptlv->len = cpu_to_le16(sizeof(*ptlv));
-+	ptlv->data_len = pattern->pattern_len;
-+	ptlv->enable = enable;
-+	ptlv->index = index;
-+
-+	memcpy(ptlv->pattern, pattern->pattern, pattern->pattern_len);
-+	memcpy(ptlv->mask, pattern->mask, pattern->pattern_len / 8);
-+
-+	return __mt76_mcu_skb_send_msg(&dev->mt76, skb,
-+				       MCU_UNI_CMD_SUSPEND, true);
-+}
-+
-+static int
-+mt7615_mcu_set_suspend_mode(struct mt7615_dev *dev,
-+			    struct ieee80211_vif *vif,
-+			    bool enable, u8 mdtim, bool wow_suspend)
-+{
-+	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
-+	struct {
-+		struct {
-+			u8 bss_idx;
-+			u8 pad[3];
-+		} __packed hdr;
-+		struct mt7615_suspend_tlv suspend_tlv;
-+	} req = {
-+		.hdr = {
-+			.bss_idx = mvif->idx,
-+		},
-+		.suspend_tlv = {
-+			.tag = cpu_to_le16(UNI_SUSPEND_MODE_SETTING),
-+			.len = cpu_to_le16(sizeof(struct mt7615_suspend_tlv)),
-+			.enable = enable,
-+			.mdtim = mdtim,
-+			.wow_suspend = wow_suspend,
-+		},
-+	};
-+
-+	return __mt76_mcu_send_msg(&dev->mt76, MCU_UNI_CMD_SUSPEND,
-+				   &req, sizeof(req), true);
-+}
-+
-+void mt7615_mcu_set_suspend_iter(void *priv, u8 *mac,
-+				 struct ieee80211_vif *vif)
-+{
-+	struct mt7615_phy *phy = priv;
-+	bool suspend = test_bit(MT76_STATE_SUSPEND, &phy->mt76->state);
-+	struct ieee80211_hw *hw = phy->mt76->hw;
-+	struct cfg80211_wowlan *wowlan = hw->wiphy->wowlan_config;
-+	int i;
-+
-+	mt7615_mcu_set_bss_pm(phy->dev, vif, suspend);
-+
-+	mt7615_mcu_set_suspend_mode(phy->dev, vif, suspend, 1, true);
-+
-+	for (i = 0; i < wowlan->n_patterns; i++)
-+		mt7615_mcu_set_wow_pattern(phy->dev, vif, i, suspend,
-+					   &wowlan->patterns[i]);
-+	mt7615_mcu_set_wow_ctrl(phy->dev, vif, suspend, wowlan);
-+}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
-index 1579ad944479..960ff234c72d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.h
-@@ -280,6 +280,7 @@ enum {
- 	MCU_UNI_CMD_DEV_INFO_UPDATE = MCU_UNI_PREFIX | 0x01,
- 	MCU_UNI_CMD_BSS_INFO_UPDATE = MCU_UNI_PREFIX | 0x02,
- 	MCU_UNI_CMD_STA_REC_UPDATE = MCU_UNI_PREFIX | 0x03,
-+	MCU_UNI_CMD_SUSPEND = MCU_UNI_PREFIX | 0x05,
- 	MCU_UNI_CMD_HIF_CTRL = MCU_UNI_PREFIX | 0x07,
- };
- 
-@@ -415,6 +416,59 @@ struct mt7615_mcu_bss_event {
- 	u8 pad;
- } __packed;
- 
-+struct mt7615_wow_ctrl_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	u8 cmd; /* 0x1: PM_WOWLAN_REQ_START
-+		 * 0x2: PM_WOWLAN_REQ_STOP
-+		 * 0x3: PM_WOWLAN_PARAM_CLEAR
-+		 */
-+	u8 trigger; /* 0: NONE
-+		     * BIT(0): NL80211_WOWLAN_TRIG_MAGIC_PKT
-+		     * BIT(1): NL80211_WOWLAN_TRIG_ANY
-+		     * BIT(2): NL80211_WOWLAN_TRIG_DISCONNECT
-+		     * BIT(3): NL80211_WOWLAN_TRIG_GTK_REKEY_FAILURE
-+		     * BIT(4): BEACON_LOST
-+		     * BIT(5): NL80211_WOWLAN_TRIG_NET_DETECT
-+		     */
-+	u8 wakeup_hif; /* 0x0: HIF_SDIO
-+			* 0x1: HIF_USB
-+			* 0x2: HIF_PCIE
-+			* 0x3: HIF_GPIO
-+			*/
-+	u8 pad;
-+	u8 rsv[4];
-+} __packed;
-+
-+#define MT7615_WOW_MASK_MAX_LEN		16
-+#define MT7615_WOW_PATTEN_MAX_LEN	128
-+struct mt7615_wow_pattern_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	u8 index; /* pattern index */
-+	u8 enable; /* 0: disable
-+		    * 1: enable
-+		    */
-+	u8 data_len; /* pattern length */
-+	u8 pad;
-+	u8 mask[MT7615_WOW_MASK_MAX_LEN];
-+	u8 pattern[MT7615_WOW_PATTEN_MAX_LEN];
-+	u8 rsv[4];
-+} __packed;
-+
-+struct mt7615_suspend_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	u8 enable; /* 0: suspend mode disabled
-+		    * 1: suspend mode enabled
-+		    */
-+	u8 mdtim; /* LP parameter */
-+	u8 wow_suspend; /* 0: update by origin policy
-+			 * 1: update by wow dtim
-+			 */
-+	u8 pad[5];
-+} __packed;
-+
- /* offload mcu commands */
- enum {
- 	MCU_CMD_START_HW_SCAN = MCU_CE_PREFIX | 0x03,
-@@ -439,6 +493,14 @@ enum {
- 	UNI_BSS_INFO_BCN_CONTENT = 7,
- };
- 
-+enum {
-+	UNI_SUSPEND_MODE_SETTING,
-+	UNI_SUSPEND_WOW_CTRL,
-+	UNI_SUSPEND_WOW_GPIO_PARAM,
-+	UNI_SUSPEND_WOW_WAKEUP_PORT,
-+	UNI_SUSPEND_WOW_PATTERN,
-+};
-+
- enum {
- 	PATCH_SEM_RELEASE = 0x0,
- 	PATCH_SEM_GET	  = 0x1
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c
+index c9f5b1ce70ae..e670393506f0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mmio.c
+@@ -15,6 +15,8 @@ const u32 mt7615e_reg_map[] = {
+ 	[MT_ARB_BASE]		= 0x20c00,
+ 	[MT_HIF_BASE]		= 0x04000,
+ 	[MT_CSR_BASE]		= 0x07000,
++	[MT_PLE_BASE]		= 0x08000,
++	[MT_PSE_BASE]		= 0x0c000,
+ 	[MT_PHY_BASE]		= 0x10000,
+ 	[MT_CFG_BASE]		= 0x20200,
+ 	[MT_AGG_BASE]		= 0x20a00,
+@@ -40,6 +42,8 @@ const u32 mt7663e_reg_map[] = {
+ 	[MT_ARB_BASE]		= 0x20c00,
+ 	[MT_HIF_BASE]		= 0x04000,
+ 	[MT_CSR_BASE]		= 0x07000,
++	[MT_PLE_BASE]		= 0x08000,
++	[MT_PSE_BASE]		= 0x0c000,
+ 	[MT_PHY_BASE]		= 0x10000,
+ 	[MT_CFG_BASE]		= 0x20000,
+ 	[MT_AGG_BASE]		= 0x22000,
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-index 6a26555dcce6..3e6bc3ce914a 100644
+index 3e6bc3ce914a..be9188e40259 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-@@ -474,8 +474,6 @@ int mt7615_mac_wtbl_update_key(struct mt7615_dev *dev,
- 			       enum set_key_cmd cmd);
- void mt7615_mac_reset_work(struct work_struct *work);
+@@ -380,6 +380,7 @@ int mt7615_eeprom_init(struct mt7615_dev *dev, u32 addr);
+ int mt7615_eeprom_get_power_index(struct mt7615_dev *dev,
+ 				  struct ieee80211_channel *chan,
+ 				  u8 chain_idx);
++int mt7615_wait_pdma_busy(struct mt7615_dev *dev);
+ int mt7615_dma_init(struct mt7615_dev *dev);
+ void mt7615_dma_cleanup(struct mt7615_dev *dev);
+ int mt7615_mcu_init(struct mt7615_dev *dev);
+@@ -436,6 +437,7 @@ static inline u16 mt7615_wtbl_size(struct mt7615_dev *dev)
+ 		return MT7615_WTBL_SIZE;
+ }
  
--int mt7615_mcu_set_bss_pm(struct mt7615_dev *dev, struct ieee80211_vif *vif,
--			  bool enable);
++void mt7615_dma_reset(struct mt7615_dev *dev);
+ void mt7615_scan_work(struct work_struct *work);
+ void mt7615_ps_work(struct work_struct *work);
+ void mt7615_init_txpower(struct mt7615_dev *dev,
+@@ -526,6 +528,9 @@ int mt7615_mcu_apply_tx_dpd(struct mt7615_phy *phy);
+ void m7615_mcu_set_ps_iter(void *priv, u8 *mac, struct ieee80211_vif *vif);
+ int mt7615_dfs_init_radar_detector(struct mt7615_phy *phy);
+ 
++int mt7615_firmware_own(struct mt7615_dev *dev);
++int mt7615_driver_own(struct mt7615_dev *dev);
++
+ int mt7615_init_debugfs(struct mt7615_dev *dev);
  int mt7615_mcu_wait_response(struct mt7615_dev *dev, int cmd, int seq);
- int mt7615_mcu_msg_send(struct mt76_dev *mdev, int cmd, const void *data,
- 			int len, bool wait_resp);
-@@ -532,6 +530,8 @@ int mt7615_init_debugfs(struct mt7615_dev *dev);
- int mt7615_mcu_wait_response(struct mt7615_dev *dev, int cmd, int seq);
  
- int mt7615_mcu_set_hif_suspend(struct mt7615_dev *dev, bool suspend);
-+void mt7615_mcu_set_suspend_iter(void *priv, u8 *mac,
-+				 struct ieee80211_vif *vif);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
+index 0605c908059e..b84eb208c23e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
+@@ -66,11 +66,118 @@ static void mt7615_pci_remove(struct pci_dev *pdev)
+ 	pci_free_irq_vectors(pdev);
+ }
  
- int __mt7663_load_firmware(struct mt7615_dev *dev);
++static int __maybe_unused mt7615_pci_suspend(struct pci_dev *pdev,
++					     pm_message_t state)
++{
++	struct mt76_dev *mdev = pci_get_drvdata(pdev);
++	struct mt7615_dev *dev = container_of(mdev, struct mt7615_dev, mt76);
++	bool hif_suspend;
++	int i, err;
++
++	hif_suspend = !test_bit(MT76_STATE_SUSPEND, &dev->mphy.state) &&
++		      mt7615_firmware_offload(dev);
++	if (hif_suspend) {
++		err = mt7615_mcu_set_hif_suspend(dev, true);
++		if (err)
++			return err;
++	}
++
++	napi_disable(&mdev->tx_napi);
++	tasklet_kill(&mdev->tx_tasklet);
++
++	for (i = 0; i < ARRAY_SIZE(mdev->q_rx); i++)
++		napi_disable(&mdev->napi[i]);
++	tasklet_kill(&dev->irq_tasklet);
++
++	mt7615_dma_reset(dev);
++
++	err = mt7615_wait_pdma_busy(dev);
++	if (err)
++		goto restore;
++
++	if (is_mt7663(mdev)) {
++		mt76_set(dev, MT_PDMA_SLP_PROT, MT_PDMA_AXI_SLPPROT_ENABLE);
++		if (!mt76_poll_msec(dev, MT_PDMA_SLP_PROT,
++				    MT_PDMA_AXI_SLPPROT_RDY,
++				    MT_PDMA_AXI_SLPPROT_RDY, 1000)) {
++			dev_err(mdev->dev, "PDMA sleep protection failed\n");
++			err = -EIO;
++			goto restore;
++		}
++	}
++
++	pci_enable_wake(pdev, pci_choose_state(pdev, state), true);
++	pci_save_state(pdev);
++	err = pci_set_power_state(pdev, pci_choose_state(pdev, state));
++	if (err)
++		goto restore;
++
++	err = mt7615_firmware_own(dev);
++	if (err)
++		goto restore;
++
++	return 0;
++
++restore:
++	for (i = 0; i < ARRAY_SIZE(mdev->q_rx); i++)
++		napi_enable(&mdev->napi[i]);
++	napi_enable(&mdev->tx_napi);
++	if (hif_suspend)
++		mt7615_mcu_set_hif_suspend(dev, false);
++
++	return err;
++}
++
++static int __maybe_unused mt7615_pci_resume(struct pci_dev *pdev)
++{
++	struct mt76_dev *mdev = pci_get_drvdata(pdev);
++	struct mt7615_dev *dev = container_of(mdev, struct mt7615_dev, mt76);
++	bool pdma_reset;
++	int i, err;
++
++	err = mt7615_driver_own(dev);
++	if (err < 0)
++		return err;
++
++	err = pci_set_power_state(pdev, PCI_D0);
++	if (err)
++		return err;
++
++	pci_restore_state(pdev);
++
++	if (is_mt7663(&dev->mt76)) {
++		mt76_clear(dev, MT_PDMA_SLP_PROT, MT_PDMA_AXI_SLPPROT_ENABLE);
++		mt76_wr(dev, MT_PCIE_IRQ_ENABLE, 1);
++	}
++
++	pdma_reset = !mt76_rr(dev, MT_WPDMA_TX_RING0_CTRL0) &&
++		     !mt76_rr(dev, MT_WPDMA_TX_RING0_CTRL1);
++	if (pdma_reset)
++		dev_err(mdev->dev, "PDMA engine must be reinitialized\n");
++
++	for (i = 0; i < ARRAY_SIZE(mdev->q_rx); i++) {
++		napi_enable(&mdev->napi[i]);
++		napi_schedule(&mdev->napi[i]);
++	}
++	napi_enable(&mdev->tx_napi);
++	napi_schedule(&mdev->tx_napi);
++
++	if (!test_bit(MT76_STATE_SUSPEND, &dev->mphy.state) &&
++	    mt7615_firmware_offload(dev))
++		err = mt7615_mcu_set_hif_suspend(dev, false);
++
++	return err;
++}
++
+ struct pci_driver mt7615_pci_driver = {
+ 	.name		= KBUILD_MODNAME,
+ 	.id_table	= mt7615_pci_device_table,
+ 	.probe		= mt7615_pci_probe,
+ 	.remove		= mt7615_pci_remove,
++#ifdef CONFIG_PM
++	.suspend	= mt7615_pci_suspend,
++	.resume		= mt7615_pci_resume,
++#endif /* CONFIG_PM */
+ };
  
+ MODULE_DEVICE_TABLE(pci, mt7615_pci_device_table);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
+index 68d30bcc087a..aee433a9eff6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
+@@ -12,6 +12,8 @@ enum mt7615_reg_base {
+ 	MT_ARB_BASE,
+ 	MT_HIF_BASE,
+ 	MT_CSR_BASE,
++	MT_PLE_BASE,
++	MT_PSE_BASE,
+ 	MT_PHY_BASE,
+ 	MT_CFG_BASE,
+ 	MT_AGG_BASE,
+@@ -63,6 +65,17 @@ enum mt7615_reg_base {
+ #define MT_HIF_RST			MT_HIF(0x100)
+ #define MT_HIF_LOGIC_RST_N		BIT(4)
+ 
++#define MT_PDMA_SLP_PROT		MT_HIF(0x154)
++#define MT_PDMA_AXI_SLPPROT_ENABLE	BIT(0)
++#define MT_PDMA_AXI_SLPPROT_RDY		BIT(16)
++
++#define MT_PDMA_BUSY_STATUS		MT_HIF(0x168)
++#define MT_PDMA_TX_IDX_BUSY		BIT(2)
++#define MT_PDMA_BUSY_IDX		BIT(31)
++
++#define MT_WPDMA_TX_RING0_CTRL0		MT_HIF(0x300)
++#define MT_WPDMA_TX_RING0_CTRL1		MT_HIF(0x304)
++
+ #define MT7663_MCU_PCIE_REMAP_2_OFFSET	GENMASK(15, 0)
+ #define MT7663_MCU_PCIE_REMAP_2_BASE	GENMASK(31, 16)
+ 
+@@ -138,8 +151,7 @@ enum mt7615_reg_base {
+ #define MT_CSR(ofs)			((dev)->reg_map[MT_CSR_BASE] + (ofs))
+ #define MT_CONN_HIF_ON_LPCTL		MT_CSR(0x000)
+ 
+-#define MT_PLE_BASE			0x8000
+-#define MT_PLE(ofs)			(MT_PLE_BASE + (ofs))
++#define MT_PLE(ofs)			((dev)->reg_map[MT_PLE_BASE] + (ofs))
+ 
+ #define MT_PLE_FL_Q0_CTRL		MT_PLE(0x1b0)
+ #define MT_PLE_FL_Q1_CTRL		MT_PLE(0x1b4)
+@@ -149,6 +161,14 @@ enum mt7615_reg_base {
+ #define MT_PLE_AC_QEMPTY(ac, n)		MT_PLE(0x300 + 0x10 * (ac) + \
+ 					       ((n) << 2))
+ 
++#define MT_PSE(ofs)			((dev)->reg_map[MT_PSE_BASE] + (ofs))
++#define MT_PSE_QUEUE_EMPTY		MT_PSE(0x0b4)
++#define MT_HIF_0_EMPTY_MASK		BIT(16)
++#define MT_HIF_1_EMPTY_MASK		BIT(17)
++#define MT_HIF_ALL_EMPTY_MASK		GENMASK(17, 16)
++#define MT_PSE_PG_INFO			MT_PSE(0x194)
++#define MT_PSE_SRC_CNT			GENMASK(27, 16)
++
+ #define MT_WF_PHY_BASE			((dev)->reg_map[MT_PHY_BASE])
+ #define MT_WF_PHY(ofs)			(MT_WF_PHY_BASE + (ofs))
+ 
+@@ -482,6 +502,10 @@ enum mt7615_reg_base {
+ #define MT_LED_STATUS_ON		GENMASK(23, 16)
+ #define MT_LED_STATUS_DURATION		GENMASK(15, 0)
+ 
++#define MT_PDMA_BUSY			0x82000504
++#define MT_PDMA_TX_BUSY			BIT(0)
++#define MT_PDMA_RX_BUSY			BIT(1)
++
+ #define MT_EFUSE_BASE			((dev)->reg_map[MT_EFUSE_ADDR_BASE])
+ #define MT_EFUSE_BASE_CTRL		0x000
+ #define MT_EFUSE_BASE_CTRL_EMPTY	BIT(30)
 -- 
 2.25.4
 
