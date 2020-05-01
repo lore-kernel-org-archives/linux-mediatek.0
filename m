@@ -2,56 +2,87 @@ Return-Path: <SRS0=tJCI=6P=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5ED2CC47253
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 May 2020 15:25:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E692DC4724C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 May 2020 17:37:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 31400206D9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 May 2020 15:25:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BB0FE2166E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 May 2020 17:37:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="T+J/nnjv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 31400206D9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BCu+NbqS";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="ImQZRdwO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BB0FE2166E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UuFdH7SFgT8tgx3iNbCORd53LYmlrqLXaC6gqz8MNEI=; b=T+J/nnjvpoa1gs
-	3w/rKknLrfSEQVBOGxqw4xE6epYRxTHf7cboz5lPRgC3xkdoAs/D/YUol+2oI7Vpe27+RsLDq/A9v
-	hTNgLHcLmLAiSrfpj080CnBNZMKn4vRn7Tk9iYxMwfBdQSx+LJYPIwU1CEYCiBIrPvS0o0K+b2KMb
-	5PMN78ZBVveMNCmLxW5y6S2wwVCj616mMcCUM/vSVfkKz7EgYMSQZ9BGdMXz1hj5qzUWZEyf1lSBm
-	nSWyfJRJaDsoFjvT46Pg+s8F45Z8xZ84bCXkj889ROs9/fwYcT1dMJ6gFhfStURadcx+y1/8mRRx3
-	MF9Qg0f2FAfzuc2hKekQ==;
+	List-Owner; bh=O1OMQkVv9a7aZO56qU0KRDfuUandkm8GaHOYTi637uQ=; b=BCu+NbqS2XWZ+S
+	g5XpuCYEqIon35bVMWzT88CPMrd5cNukuXkmJI8140i7dFpOkxNPufCEGyfTBMnuuEmM/Ms8ntEL4
+	1cJdo7bx0QIZeorF+V+HrG0oljeet1buN15GeW+pdVzaLxcDaHljDGhrbPxhbJ612xAv92j8QDlwx
+	5LsiQfNfAlNayNBs0yteqHuUWI5Xn51wCRkVNGbom23nWd8z0cSfy5MRUCdA4H2W0bytE56bMHhat
+	SULwyUPOW6ycrnY49+VU2JQ8/3BPmBSTjjRKWjldDgFM44BmXHIruVJSzevGlqgxMw3gCbSCgf8qF
+	snq760er4bF3S7oRCcvg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jUXXi-0006Nb-Br; Fri, 01 May 2020 15:25:34 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1jUZbV-0006o9-8e; Fri, 01 May 2020 17:37:37 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jUXWD-0002QW-3B; Fri, 01 May 2020 15:24:02 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 15E772A3116
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-To: linux-kernel@vger.kernel.org,
-	Collabora Kernel ML <kernel@collabora.com>
-Subject: [PATCH v4 7/7] drm/mediatek: mtk_dsi: Create connector for bridges
-Date: Fri,  1 May 2020 17:23:35 +0200
-Message-Id: <20200501152335.1805790-8-enric.balletbo@collabora.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200501152335.1805790-1-enric.balletbo@collabora.com>
-References: <20200501152335.1805790-1-enric.balletbo@collabora.com>
+ id 1jUZbA-0006Ro-Jn
+ for linux-mediatek@lists.infradead.org; Fri, 01 May 2020 17:37:19 +0000
+Received: by mail-wm1-x344.google.com with SMTP id x25so435179wmc.0
+ for <linux-mediatek@lists.infradead.org>; Fri, 01 May 2020 10:37:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=ufxfpcTyMlazNounw3wNzyToYB3UJEzHIn7ulrOGXXU=;
+ b=ImQZRdwOETOF5qY/+pyGGb3LTEQ9xFaAZ+Oh5wq1sxFysc+UZ2KddbKYoqax8Vjr7z
+ sgvIxkJ+RJgkAZAdTUleV59iJQCJJZSUkKcIN4hgrw7bXJWPsZUfnyvu9Bq4xvrlqXV0
+ Wf+83lgasQstrjoJbaTCr0HQGjf3+NCZof2RQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=ufxfpcTyMlazNounw3wNzyToYB3UJEzHIn7ulrOGXXU=;
+ b=CQa+LJkpjAB520jyvW72d0s7QTHpNo7gVeI9IiGuMM+cyDyB6S3TjH7/bYf3iY0S8H
+ 0U8XWUScEpEr1xEwsb6mILjP9IHQaejqLyGgT88c/yzjl+QLEwA2U6WKLJNllsPvbuGa
+ HMdes6t1b0NblZuuIGJW5Eb9oFaU2FBsX+JsfjWRMS7c+bYvEqCs4O0zirrRGUsHz11Y
+ jL4NWQMWwPintk+esxSgj4sKrwVePkpmIjWrCRfuTvjMj5uLFNV7h3kohhm2CpBSeAYx
+ Zpc21jrfPjC/oZlE5hKs2eqVzCtgd49hp0B9uKvTNX6sdpOrsE0p7qD9W6KTbGlOFaFy
+ 5y9Q==
+X-Gm-Message-State: AGi0PubGWFmM+ZNQsbmsQ9CJD+P3v7n/f5OmbrxExjCuSCxPWj7pESja
+ i2P7o39lTL9Lcdo5GXoLLGCMEQ==
+X-Google-Smtp-Source: APiQypJyniRJmeRLwjfWdIyj8PkcBx1aKguknLdjRpeiffgQiJ+m2FGrMs2k7mIaQ49bHNdCnwosXA==
+X-Received: by 2002:a7b:cdfa:: with SMTP id p26mr569906wmj.186.1588354634845; 
+ Fri, 01 May 2020 10:37:14 -0700 (PDT)
+Received: from chromium.org (205.215.190.35.bc.googleusercontent.com.
+ [35.190.215.205])
+ by smtp.gmail.com with ESMTPSA id d5sm5373095wrp.44.2020.05.01.10.37.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 01 May 2020 10:37:14 -0700 (PDT)
+Date: Fri, 1 May 2020 17:37:12 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Xia Jiang <xia.jiang@mediatek.com>
+Subject: Re: [PATCH v7 11/11] media: platform: Add jpeg dec/enc feature
+Message-ID: <20200501173712.GB218308@chromium.org>
+References: <20200303123446.20095-1-xia.jiang@mediatek.com>
+ <20200303123446.20095-12-xia.jiang@mediatek.com>
+ <20200306112337.GA163286@chromium.org>
+ <1587009795.24163.87.camel@mhfsdcap03>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1587009795.24163.87.camel@mhfsdcap03>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200501_082401_280555_63E009DF 
-X-CRM114-Status: GOOD (  11.44  )
+X-CRM114-CacheID: sfid-20200501_103716_678443_25B53789 
+X-CRM114-Status: GOOD (  35.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,80 +94,262 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, drinkcat@chromium.org,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- laurent.pinchart@ideasonboard.com, Daniel Vetter <daniel@ffwll.ch>,
- hsinyi@chromium.org, matthias.bgg@gmail.com, Sam Ravnborg <sam@ravnborg.org>,
- linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ Rick Chang <rick.chang@mediatek.com>, linux-kernel@vger.kernel.org,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-mediatek@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the drm_bridge_connector helper to create a connector for pipelines
-that use drm_bridge. This allows splitting connector operations across
-multiple bridges when necessary, instead of having the last bridge in
-the chain creating the connector and handling all connector operations
-internally.
+Hi Xia,
 
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Acked-by: Sam Ravnborg <sam@ravnborg.org>
----
+On Thu, Apr 16, 2020 at 12:03:15PM +0800, Xia Jiang wrote:
+> On Fri, 2020-03-06 at 20:23 +0900, Tomasz Figa wrote:
+> > Hi Xia,
+> > 
+> > On Tue, Mar 03, 2020 at 08:34:46PM +0800, Xia Jiang wrote:
+> > > Add mtk jpeg encode v4l2 driver based on jpeg decode, because that jpeg
+> > > decode and encode have great similarities with function operation.
+> > 
+> > Thank you for the patch. Please see my comments inline.
+> 
+> Dear Tomasz,
+> 
+> Thank you for your reply. I have followed your advice and submited v8
+> version patch.
+> 
+> Please check my reply below.
+[snip]
+> > 
+> > >  
+> > > -	switch (s->target) {
+> > > -	case V4L2_SEL_TGT_COMPOSE:
+> > > -		s->r.left = 0;
+> > > -		s->r.top = 0;
+> > > -		ctx->out_q.w = s->r.width;
+> > > -		ctx->out_q.h = s->r.height;
+> > > -		break;
+> > > -	default:
+> > > -		return -EINVAL;
+> > > +		switch (s->target) {
+> > > +		case V4L2_SEL_TGT_CROP:
+> > > +			s->r.left = 0;
+> > > +			s->r.top = 0;
+> > > +			ctx->out_q.w = s->r.width;
+> > > +			ctx->out_q.h = s->r.height;
+> > 
+> > What happens if the userspace provides a value bigger than current format?
+> we need get the min value of userspace value and current value,changed
+> it like this:
+> ctx->out_q.w = min(s->r.width, ctx->out_q.w);
+> ctx->out_q.h = min(s->r.height,ctx->out_q.h);
 
-Changes in v4: None
-Changes in v3:
-- Move the bridge.type line to the patch that adds drm_bridge support. (Laurent Pinchart)
+Since ctx->out_q is modified by this function, wouldn't that cause
+problems if S_SELECTION was called two times, first with a smaller
+rectangle and then with a bigger one? We should store the active crop
+and format separately and use the latter for min().
 
-Changes in v2: None
+[snip]
+> > >  
+> > >  	while ((vb = mtk_jpeg_buf_remove(ctx, q->type)))
+> > >  		v4l2_m2m_buf_done(vb, VB2_BUF_STATE_ERROR);
+> > > @@ -772,6 +1011,45 @@ static int mtk_jpeg_set_dec_dst(struct mtk_jpeg_ctx *ctx,
+> > >  	return 0;
+> > >  }
+> > >  
+> > > +static void mtk_jpeg_set_enc_dst(struct mtk_jpeg_ctx *ctx, void __iomem *base,
+> > > +				 struct vb2_buffer *dst_buf,
+> > > +				 struct mtk_jpeg_enc_bs *bs)
+> > > +{
+> > > +	bs->dma_addr = vb2_dma_contig_plane_dma_addr(dst_buf, 0);
+> > > +	bs->dma_addr_offset = ctx->enable_exif ? MTK_JPEG_DEFAULT_EXIF_SIZE : 0;
+> > 
+> > Could you explain what is the meaning of the dma_addr_offset and where the
+> > default EXIF size comes from? Also, how is the encoder output affected by
+> > the enable_exif flag?
+> If enabled the exif mode, the real output will be filled at the locaiton
+> of dst_addr+ dma_addr_offset(exif size).The dma_addr_offset will be
+> filled by the application.
+> The default exif size is setted as constant value 64k according to the
+> spec.(Exif metadata are restricted in size to 64kB in JPEG images
+> because according to the specification this information must be
+> contained within a signed JPEG APP1 segment)
 
- drivers/gpu/drm/mediatek/mtk_dsi.c | 13 ++++++++++++-
- 1 file changed, 12 insertions(+), 1 deletion(-)
+Okay, thanks. Then it sounds like MTK_JPEG_MAX_EXIF_SIZE could be a more
+appropriate name.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 4f3bd095c1ee..471fcafdf348 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -17,6 +17,7 @@
- 
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_bridge.h>
-+#include <drm/drm_bridge_connector.h>
- #include <drm/drm_mipi_dsi.h>
- #include <drm/drm_of.h>
- #include <drm/drm_panel.h>
-@@ -183,6 +184,7 @@ struct mtk_dsi {
- 	struct drm_encoder encoder;
- 	struct drm_bridge bridge;
- 	struct drm_bridge *next_bridge;
-+	struct drm_connector *connector;
- 	struct phy *phy;
- 
- 	void __iomem *regs;
-@@ -977,10 +979,19 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
- 	 */
- 	dsi->encoder.possible_crtcs = 1;
- 
--	ret = drm_bridge_attach(&dsi->encoder, &dsi->bridge, NULL, 0);
-+	ret = drm_bridge_attach(&dsi->encoder, &dsi->bridge, NULL,
-+				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
- 	if (ret)
- 		goto err_cleanup_encoder;
- 
-+	dsi->connector = drm_bridge_connector_init(drm, &dsi->encoder);
-+	if (IS_ERR(dsi->connector)) {
-+		DRM_ERROR("Unable to create bridge connector\n");
-+		ret = PTR_ERR(dsi->connector);
-+		goto err_cleanup_encoder;
-+	}
-+	drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
-+
- 	return 0;
- 
- err_cleanup_encoder:
--- 
-2.26.2
+[snip]
+> > > +}
+> > > +
+> > >  static void mtk_jpeg_device_run(void *priv)
+> > >  {
+> > >  	struct mtk_jpeg_ctx *ctx = priv;
+> > > @@ -782,6 +1060,8 @@ static void mtk_jpeg_device_run(void *priv)
+> > >  	struct mtk_jpeg_src_buf *jpeg_src_buf;
+> > >  	struct mtk_jpeg_bs bs;
+> > >  	struct mtk_jpeg_fb fb;
+> > > +	struct mtk_jpeg_enc_bs enc_bs;
+> > > +	struct mtk_jpeg_enc_fb enc_fb;
+> > >  	int i;
+> > >  
+> > >  	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> > > @@ -792,30 +1072,47 @@ static void mtk_jpeg_device_run(void *priv)
+> > >  		for (i = 0; i < dst_buf->vb2_buf.num_planes; i++)
+> > >  			vb2_set_plane_payload(&dst_buf->vb2_buf, i, 0);
+> > >  		buf_state = VB2_BUF_STATE_DONE;
+> > 
+> > About existing code, but we may want to explain this.
+> > What is this last frame handling above for?
+> if the user gives us a empty buffer(means it is the last frame),the
+> driver will not encode and done the buffer to the user.
+>
 
+An empty buffer is not a valid way of signaling a last frame in V4L2. In
+general, I'm not sure there is such a thing in JPEG, because all frames
+are separate from each other and we always expect 1 input buffer and 1
+output buffer for one frame. We might want to remove the special
+handling in a follow up patch.
+
+> > > -		goto dec_end;
+> > > +		goto device_run_end;
+> > >  	}
+> > >  
+> > > -	if (mtk_jpeg_check_resolution_change(ctx, &jpeg_src_buf->dec_param)) {
+> > > -		mtk_jpeg_queue_src_chg_event(ctx);
+> > > -		ctx->state = MTK_JPEG_SOURCE_CHANGE;
+> > > -		v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+> > > -		return;
+> > > -	}
+> > > +	if (jpeg->mode == MTK_JPEG_ENC) {
+> > > +		spin_lock_irqsave(&jpeg->hw_lock, flags);
+> > > +		mtk_jpeg_enc_reset(jpeg->reg_base);
+> > 
+> > Why do we need to reset every frame?
+> We do this operation is to ensure that all registers are cleared.
+> It's safer from the hardware point of view.
+
+Wouldn't this only waste power? If we reset the hardware after powering
+up, the only registers that could change would be changed by the driver
+itself. The driver should program all registers properly when starting
+next frame anyway, so such a reset shouldn't be necessary.
+
+> > 
+> > > +
+> > > +		mtk_jpeg_set_enc_dst(ctx, jpeg->reg_base, &dst_buf->vb2_buf,
+> > > +				     &enc_bs);
+> > > +		mtk_jpeg_set_enc_src(ctx, jpeg->reg_base, &src_buf->vb2_buf,
+> > > +				     &enc_fb);
+> > > +		mtk_jpeg_enc_set_ctrl_cfg(jpeg->reg_base, ctx->enable_exif,
+> > > +					  ctx->enc_quality,
+> > > +					  ctx->restart_interval);
+> > > +
+> > > +		mtk_jpeg_enc_start(jpeg->reg_base);
+> > > +	} else {
+> > > +		if (mtk_jpeg_check_resolution_change
+> > > +			(ctx, &jpeg_src_buf->dec_param)) {
+> > > +			mtk_jpeg_queue_src_chg_event(ctx);
+> > > +			ctx->state = MTK_JPEG_SOURCE_CHANGE;
+> > > +			v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+> > 
+> > This is a bit strange. Resolution change should be signaled when the
+> > hardware attempted to decode a frame and detected a different resolution
+> > than current. It shouldn't be necessary for the userspace to queue a pair
+> > of buffers to signal it, as with the current code.
+> If the the resolution is bigger than current, the current buffer will
+> not be enough for the changed resolution.Shouldn't it tell the userspace
+> to queue new buffer and stream on again?
+
+The V4L2 decode flow is as follows:
+ - application configures and starts only the OUTPUT queue,
+ - application queues an OUTPUT buffer with a frame worth of bitstream,
+ - decoder parses the bitstream headers, detects CAPTURE format and
+   signals the source change event,
+ - application reads CAPTURE format and configures and starts the
+   CAPTURE queue,
+ - application queues a CAPTURE buffer,
+ - decoder decodes the image to the queued buffer.
+
+In case of subsequent (dynamic) resolution change:
+ - application queues an OUTPUT buffer and a CAPTURE buffer,
+ - decoder parses the bitstream, notices resolution change, updates
+   CAPTURE format and signals the source change event, refusing to
+   continue the decoding until the application acknowledges it,
+ - application either reallocates its CAPTURE buffers or confirms that
+   the existing buffers are fine and acknowledges resolution change,
+ - decoding continues.
+
+For more details, please check the interface specification:
+https://www.kernel.org/doc/html/latest/media/uapi/v4l/dev-decoder.html
+
+[snip]
+> > > -	ret = video_register_device(jpeg->dec_vdev, VFL_TYPE_GRABBER, 3);
+> > > +	ret = video_register_device(jpeg->vfd_jpeg, VFL_TYPE_GRABBER, -1);
+> > 
+> > FYI the type changed to VFL_TYPE_VIDEO recently.
+> I changed VFL_TYPE_GRABBER to VFL_TYPE_VIDEO,but builded fail.
+
+What kernel version are you building with?
+
+> > >  	if (ret) {
+> > >  		v4l2_err(&jpeg->v4l2_dev, "Failed to register video device\n");
+> > > -		goto err_dec_vdev_register;
+> > > +		goto err_vfd_jpeg_register;
+> > >  	}
+> > >  
+> > > -	video_set_drvdata(jpeg->dec_vdev, jpeg);
+> > > +	video_set_drvdata(jpeg->vfd_jpeg, jpeg);
+> > >  	v4l2_info(&jpeg->v4l2_dev,
+> > > -		  "decoder device registered as /dev/video%d (%d,%d)\n",
+> > > -		  jpeg->dec_vdev->num, VIDEO_MAJOR, jpeg->dec_vdev->minor);
+> > > +		  "jpeg device %d registered as /dev/video%d (%d,%d)\n",
+> > 
+> > Here it would be actually useful to special case the encoder and decoder,
+> > because it would be easier for the user to know which device is which.
+> > 
+
+Just making sure this wasn't overlooked.
+
+[snip]
+> > > +
+> > > +void mtk_jpeg_enc_reset(void __iomem *base)
+> > > +{
+> > > +	writel(0x00, base + JPEG_ENC_RSTB);
+> > > +	writel(JPEG_ENC_RESET_BIT, base + JPEG_ENC_RSTB);
+> > > +	writel(0x00, base + JPEG_ENC_CODEC_SEL);
+> > > +}
+> > > +
+> > > +u32 mtk_jpeg_enc_get_int_status(void __iomem *base)
+> > > +{
+> > > +	u32 ret;
+> > > +
+> > > +	ret = readl(base + JPEG_ENC_INT_STS) &
+> > > +		    JPEG_ENC_INT_STATUS_MASK_ALLIRQ;
+> > > +	if (ret)
+> > > +		writel(0, base + JPEG_ENC_INT_STS);
+> > > +
+> > > +	return ret;
+> > > +}
+> > 
+> > Does it make sense to have a function for what is essentially just 2 lines?
+> > Also, the name is misleading, as the function not only gets but also
+> > clears.
+> Make all hw register setting in mtk_jpeg_enc_hw.c is one part of current
+> architecture.
+> I have changed the function name to
+> mtk_jpeg_enc_get_and_clear_int_status.
+
+As I mentioned before, this driver needs a big clean up and that's why I
+suggested starting over with a new one for the JPEG encoder part. Since
+we decided to extend this one in the end, would you be able to improve
+this aspect as well? Thanks.
+
+Best regards,
+Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
