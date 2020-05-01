@@ -2,59 +2,79 @@ Return-Path: <SRS0=tJCI=6P=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_1
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EA881C4724C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 May 2020 14:43:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 09678C47253
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 May 2020 14:43:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B0BA9208DB
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 May 2020 14:43:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CBE7A2063A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 May 2020 14:43:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BceJ4ELN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B0BA9208DB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EoFuKSJA";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="QaDf2fZF"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CBE7A2063A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ML1XQbVmdbIIt88T2TpV8x2WjqDneIjSclMRCbpTMpQ=; b=BceJ4ELN8MDD8a
-	YD1J4pj0YYmWZIla8StM+hJukpnkWUHbIj7tEZpixA+D5ugj09YVW1dwvFMziCJ9m1leMWHfl4XSe
-	OvoQ1+VdZt6QW9TVMJbsaRIo/Psmro+Ruv8JKn9gyL3dxMPHL8RB0m5aZb+ILb/fqyC6syeQAMzxF
-	aZIsvh8bz21pgeEeilgUl7ikhLi3Q4OyetIX2fpCvElmnfoQpK51pF3y7HQHIFWLMtFC+tEipZrCi
-	Py7JPp+h2BNtFA/tuABy9vw55ICR3Y+LfezTLDZ5YG8YrbvuphZjRZIrwgFGodh0IEw6sJj28wGwA
-	kV1vUMGQWpYFHMfXZPMg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=OhLBzaXLVhYhddxsz8863C10THOK/VpH3lDzJbomC90=; b=EoFuKSJAwTZl0I
+	diOdhmNx9YKOgyRXZHFEAjBPhzIOMuFcBFrZlCOFwOak5f5fKOwof7bac+uAp6JZAQ6padBoosEh1
+	3ScAMhub0h97gq/81X2nuxHoqd+Sx7g+vtSf/SxFfFR1CpZ//IwtOolI/lGH4f+eQoynzp6SRWh9P
+	9AF5Kr4I2Y6K6vzasHh5XbVTjboE9ioe47zUjEJrjZzsbDoPo0lvTGGMJ9MeJFIaR1+vVzSszZ3Qc
+	TtKmH60NZBMGToFG5MnnxAtRjWIiXOs5oYulUr9Nq7ZwIZzcdVXQ5abQt918KqJ1wGDxAp5JGwmL5
+	CVpVASLXJib3shJRkASw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jUWsV-0006Ur-LB; Fri, 01 May 2020 14:42:59 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1jUWsw-0006wx-S1; Fri, 01 May 2020 14:43:26 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jUWqc-0004eO-RY; Fri, 01 May 2020 14:41:04 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id E17FF2A0BDB
-Subject: Re: [PATCH v3 4/7] drm/mediatek: mtk_dsi: Convert to bridge driver
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-References: <20200417150614.2631786-1-enric.balletbo@collabora.com>
- <20200417150614.2631786-5-enric.balletbo@collabora.com>
- <CAAOTY_-nzdS-jg2pgpM1ksrsQVewB2AEB8TihHcCB-MJd+qFfw@mail.gmail.com>
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <72511ddc-c94d-3c20-14cb-e971b000fc48@collabora.com>
-Date: Fri, 1 May 2020 16:40:54 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ id 1jUWqj-0004pl-AD; Fri, 01 May 2020 14:41:13 +0000
+X-UUID: d138477e976240beb9ae518b638a3773-20200501
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=2KS2W15q1KcA0fIK+eZdns1IHQFBuB1Q4qOfGRiUs9w=; 
+ b=QaDf2fZFxIC3EVyv9KDzYm2W9/8jAh6QZjitx8AClEsK1cXttemq3CUK6xaue4s2YtMLzyfumFq4KoJpOasBgqlbU+MTv3+gOgDWhmCn5U9UPVdbRymgPK0Flcoe3G8yvHA1s91xTQ+rGvqri9Hn9Hcs6371zrZGKbwLZJybxh4=;
+X-UUID: d138477e976240beb9ae518b638a3773-20200501
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <stanley.chu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 2020162506; Fri, 01 May 2020 06:40:59 -0800
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 1 May 2020 07:38:49 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 1 May 2020 22:38:34 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 1 May 2020 22:38:34 +0800
+From: Stanley Chu <stanley.chu@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+ <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
+ <asutoshd@codeaurora.org>
+Subject: [PATCH v3 3/5] scsi: ufs: add LU Dedicated buffer mode support for
+ WriteBooster
+Date: Fri, 1 May 2020 22:38:33 +0800
+Message-ID: <20200501143835.26032-4-stanley.chu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20200501143835.26032-1-stanley.chu@mediatek.com>
+References: <20200501143835.26032-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <CAAOTY_-nzdS-jg2pgpM1ksrsQVewB2AEB8TihHcCB-MJd+qFfw@mail.gmail.com>
-Content-Language: en-US
+X-TM-SNTS-SMTP: 67AE781BAFCEA561CC9DA36B4EBC95F298FCDB424E3AB883F57A46E06B6424BF2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200501_074103_160466_42609E0C 
-X-CRM114-Status: GOOD (  21.71  )
+X-CRM114-CacheID: sfid-20200501_074109_411280_45475341 
+X-CRM114-Status: GOOD (  16.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,161 +86,260 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nicolas Boichat <drinkcat@chromium.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Collabora Kernel ML <kernel@collabora.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: bvanassche@acm.org, andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQ2h1bi1LdWFuZywKClRoYW5rIHlvdSBmb3IgdGhlIHJldmlldy4KCk9uIDEvNS8yMCAxNToy
-MSwgQ2h1bi1LdWFuZyBIdSB3cm90ZToKPiBIaSwgRW5yaWM6Cj4gCj4gRW5yaWMgQmFsbGV0Ym8g
-aSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4g5pa8IDIwMjDlubQ05pyIMTfm
-l6Ug6YCx5LqUIOS4i+WNiDExOjA25a+r6YGT77yaCj4+Cj4+IENvbnZlcnQgbXRrX2RzaSB0byBh
-IGJyaWRnZSBkcml2ZXIgd2l0aCBidWlsdC1pbiBlbmNvZGVyIHN1cHBvcnQgZm9yCj4+IGNvbXBh
-dGliaWxpdHkgd2l0aCBleGlzdGluZyBjb21wb25lbnQgZHJpdmVycy4KPj4KPj4gU2lnbmVkLW9m
-Zi1ieTogRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNv
-bT4KPj4gLS0tCj4+Cj4+IENoYW5nZXMgaW4gdjM6Cj4+IC0gQWRkIHRoZSBicmlkZ2UudHlwZS4g
-KExhdXJlbnQgUGluY2hhcnQpCj4+Cj4+IENoYW5nZXMgaW4gdjI6IE5vbmUKPj4KPj4gIGRyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCA5MyArKysrKysrKysrKysrKysrKysrKysr
-LS0tLS0tLS0KPj4gIDEgZmlsZSBjaGFuZ2VkLCA2OSBpbnNlcnRpb25zKCspLCAyNCBkZWxldGlv
-bnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNp
-LmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4+IGluZGV4IDM3YjhkN2Zm
-ZDgzNS4uODY5YWUwYTJlOWY4IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
-ZWsvbXRrX2RzaS5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMK
-Pj4gQEAgLTE4MCw2ICsxODAsNyBAQCBzdHJ1Y3QgbXRrX2RzaSB7Cj4+ICAgICAgICAgc3RydWN0
-IGRldmljZSAqZGV2Owo+PiAgICAgICAgIHN0cnVjdCBtaXBpX2RzaV9ob3N0IGhvc3Q7Cj4+ICAg
-ICAgICAgc3RydWN0IGRybV9lbmNvZGVyIGVuY29kZXI7Cj4+ICsgICAgICAgc3RydWN0IGRybV9i
-cmlkZ2UgYnJpZGdlOwo+PiAgICAgICAgIHN0cnVjdCBkcm1fY29ubmVjdG9yIGNvbm47Cj4+ICAg
-ICAgICAgc3RydWN0IGRybV9wYW5lbCAqcGFuZWw7Cj4+ICAgICAgICAgc3RydWN0IGRybV9icmlk
-Z2UgKm5leHRfYnJpZGdlOwo+PiBAQCAtMjA1LDkgKzIwNiw5IEBAIHN0cnVjdCBtdGtfZHNpIHsK
-Pj4gICAgICAgICBjb25zdCBzdHJ1Y3QgbXRrX2RzaV9kcml2ZXJfZGF0YSAqZHJpdmVyX2RhdGE7
-Cj4+ICB9Owo+Pgo+PiAtc3RhdGljIGlubGluZSBzdHJ1Y3QgbXRrX2RzaSAqZW5jb2Rlcl90b19k
-c2koc3RydWN0IGRybV9lbmNvZGVyICplKQo+PiArc3RhdGljIGlubGluZSBzdHJ1Y3QgbXRrX2Rz
-aSAqYnJpZGdlX3RvX2RzaShzdHJ1Y3QgZHJtX2JyaWRnZSAqYikKPj4gIHsKPj4gLSAgICAgICBy
-ZXR1cm4gY29udGFpbmVyX29mKGUsIHN0cnVjdCBtdGtfZHNpLCBlbmNvZGVyKTsKPj4gKyAgICAg
-ICByZXR1cm4gY29udGFpbmVyX29mKGIsIHN0cnVjdCBtdGtfZHNpLCBicmlkZ2UpOwo+PiAgfQo+
-Pgo+PiAgc3RhdGljIGlubGluZSBzdHJ1Y3QgbXRrX2RzaSAqY29ubmVjdG9yX3RvX2RzaShzdHJ1
-Y3QgZHJtX2Nvbm5lY3RvciAqYykKPj4gQEAgLTc5NiwzMiArNzk3LDQzIEBAIHN0YXRpYyBjb25z
-dCBzdHJ1Y3QgZHJtX2VuY29kZXJfZnVuY3MgbXRrX2RzaV9lbmNvZGVyX2Z1bmNzID0gewo+PiAg
-ICAgICAgIC5kZXN0cm95ID0gbXRrX2RzaV9lbmNvZGVyX2Rlc3Ryb3ksCj4+ICB9Owo+Pgo+PiAt
-c3RhdGljIGJvb2wgbXRrX2RzaV9lbmNvZGVyX21vZGVfZml4dXAoc3RydWN0IGRybV9lbmNvZGVy
-ICplbmNvZGVyLAo+PiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb25z
-dCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSwKPj4gLSAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKmFkanVzdGVkX21vZGUp
-Cj4+ICtzdGF0aWMgaW50IG10a19kc2lfY3JlYXRlX2Nvbm5fZW5jKHN0cnVjdCBkcm1fZGV2aWNl
-ICpkcm0sIHN0cnVjdCBtdGtfZHNpICpkc2kpOwo+PiArc3RhdGljIHZvaWQgbXRrX2RzaV9kZXN0
-cm95X2Nvbm5fZW5jKHN0cnVjdCBtdGtfZHNpICpkc2kpOwo+PiArCj4+ICtzdGF0aWMgaW50IG10
-a19kc2lfYnJpZGdlX2F0dGFjaChzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlLAo+PiArICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICBlbnVtIGRybV9icmlkZ2VfYXR0YWNoX2ZsYWdzIGZs
-YWdzKQo+PiArewo+PiArICAgICAgIHN0cnVjdCBtdGtfZHNpICpkc2kgPSBicmlkZ2VfdG9fZHNp
-KGJyaWRnZSk7Cj4+ICsKPj4gKyAgICAgICByZXR1cm4gbXRrX2RzaV9jcmVhdGVfY29ubl9lbmMo
-YnJpZGdlLT5kZXYsIGRzaSk7Cj4+ICt9Cj4+ICsKPj4gK3N0YXRpYyB2b2lkIG10a19kc2lfYnJp
-ZGdlX2RldGFjaChzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlKQo+PiAgewo+PiAtICAgICAgIHJl
-dHVybiB0cnVlOwo+PiArICAgICAgIHN0cnVjdCBtdGtfZHNpICpkc2kgPSBicmlkZ2VfdG9fZHNp
-KGJyaWRnZSk7Cj4+ICsKPj4gKyAgICAgICBtdGtfZHNpX2Rlc3Ryb3lfY29ubl9lbmMoZHNpKTsK
-Pj4gIH0KPj4KPj4gLXN0YXRpYyB2b2lkIG10a19kc2lfZW5jb2Rlcl9tb2RlX3NldChzdHJ1Y3Qg
-ZHJtX2VuY29kZXIgKmVuY29kZXIsCj4+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSwKPj4gLSAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICphZGp1c3RlZCkKPj4g
-K3N0YXRpYyB2b2lkIG10a19kc2lfYnJpZGdlX21vZGVfc2V0KHN0cnVjdCBkcm1fYnJpZGdlICpi
-cmlkZ2UsCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnN0IHN0cnVj
-dCBkcm1fZGlzcGxheV9tb2RlICptb2RlLAo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICBjb25zdCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqYWRqdXN0ZWQpCj4+ICB7Cj4+
-IC0gICAgICAgc3RydWN0IG10a19kc2kgKmRzaSA9IGVuY29kZXJfdG9fZHNpKGVuY29kZXIpOwo+
-PiArICAgICAgIHN0cnVjdCBtdGtfZHNpICpkc2kgPSBicmlkZ2VfdG9fZHNpKGJyaWRnZSk7Cj4+
-Cj4+ICAgICAgICAgZHJtX2Rpc3BsYXlfbW9kZV90b192aWRlb21vZGUoYWRqdXN0ZWQsICZkc2kt
-PnZtKTsKPj4gIH0KPj4KPj4gLXN0YXRpYyB2b2lkIG10a19kc2lfZW5jb2Rlcl9kaXNhYmxlKHN0
-cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKPj4gK3N0YXRpYyB2b2lkIG10a19kc2lfYnJpZGdl
-X2Rpc2FibGUoc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSkKPj4gIHsKPj4gLSAgICAgICBzdHJ1
-Y3QgbXRrX2RzaSAqZHNpID0gZW5jb2Rlcl90b19kc2koZW5jb2Rlcik7Cj4+ICsgICAgICAgc3Ry
-dWN0IG10a19kc2kgKmRzaSA9IGJyaWRnZV90b19kc2koYnJpZGdlKTsKPj4KPj4gICAgICAgICBt
-dGtfb3V0cHV0X2RzaV9kaXNhYmxlKGRzaSk7Cj4+ICB9Cj4+Cj4+IC1zdGF0aWMgdm9pZCBtdGtf
-ZHNpX2VuY29kZXJfZW5hYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAqZW5jb2RlcikKPj4gK3N0YXRp
-YyB2b2lkIG10a19kc2lfYnJpZGdlX2VuYWJsZShzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlKQo+
-PiAgewo+PiAtICAgICAgIHN0cnVjdCBtdGtfZHNpICpkc2kgPSBlbmNvZGVyX3RvX2RzaShlbmNv
-ZGVyKTsKPj4gKyAgICAgICBzdHJ1Y3QgbXRrX2RzaSAqZHNpID0gYnJpZGdlX3RvX2RzaShicmlk
-Z2UpOwo+Pgo+PiAgICAgICAgIG10a19vdXRwdXRfZHNpX2VuYWJsZShkc2kpOwo+PiAgfQo+PiBA
-QCAtODMzLDExICs4NDUsMTIgQEAgc3RhdGljIGludCBtdGtfZHNpX2Nvbm5lY3Rvcl9nZXRfbW9k
-ZXMoc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvcikKPj4gICAgICAgICByZXR1cm4gZHJt
-X3BhbmVsX2dldF9tb2Rlcyhkc2ktPnBhbmVsLCBjb25uZWN0b3IpOwo+PiAgfQo+Pgo+PiAtc3Rh
-dGljIGNvbnN0IHN0cnVjdCBkcm1fZW5jb2Rlcl9oZWxwZXJfZnVuY3MgbXRrX2RzaV9lbmNvZGVy
-X2hlbHBlcl9mdW5jcyA9IHsKPj4gLSAgICAgICAubW9kZV9maXh1cCA9IG10a19kc2lfZW5jb2Rl
-cl9tb2RlX2ZpeHVwLAo+PiAtICAgICAgIC5tb2RlX3NldCA9IG10a19kc2lfZW5jb2Rlcl9tb2Rl
-X3NldCwKPj4gLSAgICAgICAuZGlzYWJsZSA9IG10a19kc2lfZW5jb2Rlcl9kaXNhYmxlLAo+PiAt
-ICAgICAgIC5lbmFibGUgPSBtdGtfZHNpX2VuY29kZXJfZW5hYmxlLAo+PiArc3RhdGljIGNvbnN0
-IHN0cnVjdCBkcm1fYnJpZGdlX2Z1bmNzIG10a19kc2lfYnJpZGdlX2Z1bmNzID0gewo+PiArICAg
-ICAgIC5hdHRhY2ggPSBtdGtfZHNpX2JyaWRnZV9hdHRhY2gsCj4+ICsgICAgICAgLmRldGFjaCA9
-IG10a19kc2lfYnJpZGdlX2RldGFjaCwKPj4gKyAgICAgICAuZGlzYWJsZSA9IG10a19kc2lfYnJp
-ZGdlX2Rpc2FibGUsCj4+ICsgICAgICAgLmVuYWJsZSA9IG10a19kc2lfYnJpZGdlX2VuYWJsZSwK
-Pj4gKyAgICAgICAubW9kZV9zZXQgPSBtdGtfZHNpX2JyaWRnZV9tb2RlX3NldCwKPj4gIH07Cj4+
-Cj4+ICBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9jb25uZWN0b3JfZnVuY3MgbXRrX2RzaV9jb25u
-ZWN0b3JfZnVuY3MgPSB7Cj4+IEBAIC0xMTIzLDYgKzExMzYsMzQgQEAgc3RhdGljIGNvbnN0IHN0
-cnVjdCBtaXBpX2RzaV9ob3N0X29wcyBtdGtfZHNpX29wcyA9IHsKPj4gICAgICAgICAudHJhbnNm
-ZXIgPSBtdGtfZHNpX2hvc3RfdHJhbnNmZXIsCj4+ICB9Owo+Pgo+PiArc3RhdGljIGludCBtdGtf
-ZHNpX2VuY29kZXJfaW5pdChzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCBzdHJ1Y3QgbXRrX2RzaSAq
-ZHNpKQo+PiArewo+PiArICAgICAgIGludCByZXQ7Cj4+ICsKPj4gKyAgICAgICByZXQgPSBkcm1f
-ZW5jb2Rlcl9pbml0KGRybSwgJmRzaS0+ZW5jb2RlciwgJm10a19kc2lfZW5jb2Rlcl9mdW5jcywK
-Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIERSTV9NT0RFX0VOQ09ERVJfRFNJLCBO
-VUxMKTsKPiAKPiBJJ20gYSBiaXQgY29uZnVzZWQgaGVyZS4gZHJtX2VuY29kZXJfaW5pdCgpIGV4
-aXN0IGhlcmUgYW5kIGluCj4gbXRrX2RzaV9jcmVhdGVfY29ubl9lbmMoKS4gRG8geW91IHBsYW4g
-dG8gaW5pdCBlbmNvZHIgdHdpY2U/Cj4gCgpSaWdodCwgaXQgc2hvdWxkIGJlIHJlbW92ZWQgZnJv
-bSBtdGtfZHNpX2NyZWF0ZV9jb25uX2VuYygpLiBJIHdpbGwgZG8gaW4gbmV4dAp2ZXJzaW9uLgoK
-Pj4gKyAgICAgICBpZiAocmV0KSB7Cj4+ICsgICAgICAgICAgICAgICBEUk1fRVJST1IoIkZhaWxl
-ZCB0byBlbmNvZGVyIGluaXQgdG8gZHJtXG4iKTsKPj4gKyAgICAgICAgICAgICAgIHJldHVybiBy
-ZXQ7Cj4+ICsgICAgICAgfQo+PiArCj4+ICsgICAgICAgLyoKPj4gKyAgICAgICAgKiBDdXJyZW50
-bHkgZGlzcGxheSBkYXRhIHBhdGhzIGFyZSBzdGF0aWNhbGx5IGFzc2lnbmVkIHRvIGEgY3J0YyBl
-YWNoLgo+PiArICAgICAgICAqIGNydGMgMCBpcyBPVkwwIC0+IENPTE9SMCAtPiBBQUwgLT4gT0Qg
-LT4gUkRNQTAgLT4gVUZPRSAtPiBEU0kwCj4+ICsgICAgICAgICovCj4+ICsgICAgICAgZHNpLT5l
-bmNvZGVyLnBvc3NpYmxlX2NydGNzID0gMTsKPj4gKwo+PiArICAgICAgIHJldCA9IGRybV9icmlk
-Z2VfYXR0YWNoKCZkc2ktPmVuY29kZXIsICZkc2ktPmJyaWRnZSwgTlVMTCwgMCk7Cj4+ICsgICAg
-ICAgaWYgKHJldCkKPj4gKyAgICAgICAgICAgICAgIGdvdG8gZXJyX2NsZWFudXBfZW5jb2RlcjsK
-Pj4gKwo+PiArICAgICAgIHJldHVybiAwOwo+PiArCj4+ICtlcnJfY2xlYW51cF9lbmNvZGVyOgo+
-PiArICAgICAgIGRybV9lbmNvZGVyX2NsZWFudXAoJmRzaS0+ZW5jb2Rlcik7Cj4+ICsgICAgICAg
-cmV0dXJuIHJldDsKPj4gK30KPj4gKwo+PiAgc3RhdGljIGludCBtdGtfZHNpX2JpbmQoc3RydWN0
-IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsIHZvaWQgKmRhdGEpCj4+ICB7Cj4+
-ICAgICAgICAgaW50IHJldDsKPj4gQEAgLTExMzYsMTEgKzExNzcsOSBAQCBzdGF0aWMgaW50IG10
-a19kc2lfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3Rlciwgdm9p
-ZCAqZGF0YSkKPj4gICAgICAgICAgICAgICAgIHJldHVybiByZXQ7Cj4+ICAgICAgICAgfQo+Pgo+
-PiAtICAgICAgIHJldCA9IG10a19kc2lfY3JlYXRlX2Nvbm5fZW5jKGRybSwgZHNpKTsKPj4gLSAg
-ICAgICBpZiAocmV0KSB7Cj4+IC0gICAgICAgICAgICAgICBEUk1fRVJST1IoIkVuY29kZXIgY3Jl
-YXRlIGZhaWxlZCB3aXRoICVkXG4iLCByZXQpOwo+PiArICAgICAgIHJldCA9IG10a19kc2lfZW5j
-b2Rlcl9pbml0KGRybSwgZHNpKTsKPj4gKyAgICAgICBpZiAocmV0KQo+PiAgICAgICAgICAgICAg
-ICAgZ290byBlcnJfdW5yZWdpc3RlcjsKPj4gLSAgICAgICB9Cj4+Cj4+ICAgICAgICAgcmV0dXJu
-IDA7Cj4+Cj4+IEBAIC0xMTU1LDcgKzExOTQsNiBAQCBzdGF0aWMgdm9pZCBtdGtfZHNpX3VuYmlu
-ZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKPj4gICAgICAgICBz
-dHJ1Y3QgZHJtX2RldmljZSAqZHJtID0gZGF0YTsKPj4gICAgICAgICBzdHJ1Y3QgbXRrX2RzaSAq
-ZHNpID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4+Cj4+IC0gICAgICAgbXRrX2RzaV9kZXN0cm95
-X2Nvbm5fZW5jKGRzaSk7Cj4gCj4gVGhlcmUgaXMgbXRrX2RzaV9lbmNvZGVyX2luaXQoKSBpbiBi
-aW5kKCksIHdoeSBubyBtdGtfZHNpX2VuY29kZXJfdW5pbml0KCkgaGVyZT8KPiAKClJpZ2h0LCBJ
-IG5lZWQgdW5pbml0IHRoZSBlbmNvZGVyIGJ1dCBhIHNpbXBsZSBjYWxsIHRvIGRybV9lbmNvZGVy
-X2NsZWFudXAgc2hvdWxkCmJlIGVub3VnaC4gSSBkb24ndCB0aGluayBpcyBuZWVkZWQgY3JlYXRl
-IGEgbmV3IGZ1bmN0aW9uIGZvciB0aGF0LiBJJ2xsIGRvIGluCm5leHQgdmVyc2lvbi4KCj4gUmVn
-YXJkcywKPiBDaHVuLUt1YW5nLgo+IAo+PiAgICAgICAgIG10a19kZHBfY29tcF91bnJlZ2lzdGVy
-KGRybSwgJmRzaS0+ZGRwX2NvbXApOwo+PiAgfQo+Pgo+PiBAQCAtMTI2NSw2ICsxMzAzLDEyIEBA
-IHN0YXRpYyBpbnQgbXRrX2RzaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+
-Pgo+PiAgICAgICAgIHBsYXRmb3JtX3NldF9kcnZkYXRhKHBkZXYsIGRzaSk7Cj4+Cj4+ICsgICAg
-ICAgZHNpLT5icmlkZ2UuZnVuY3MgPSAmbXRrX2RzaV9icmlkZ2VfZnVuY3M7Cj4+ICsgICAgICAg
-ZHNpLT5icmlkZ2Uub2Zfbm9kZSA9IGRldi0+b2Zfbm9kZTsKPj4gKyAgICAgICBkc2ktPmJyaWRn
-ZS50eXBlID0gRFJNX01PREVfQ09OTkVDVE9SX0RTSTsKPj4gKwo+PiArICAgICAgIGRybV9icmlk
-Z2VfYWRkKCZkc2ktPmJyaWRnZSk7Cj4+ICsKPj4gICAgICAgICByZXQgPSBjb21wb25lbnRfYWRk
-KCZwZGV2LT5kZXYsICZtdGtfZHNpX2NvbXBvbmVudF9vcHMpOwo+PiAgICAgICAgIGlmIChyZXQp
-IHsKPj4gICAgICAgICAgICAgICAgIGRldl9lcnIoJnBkZXYtPmRldiwgImZhaWxlZCB0byBhZGQg
-Y29tcG9uZW50OiAlZFxuIiwgcmV0KTsKPj4gQEAgLTEyODMsNiArMTMyNyw3IEBAIHN0YXRpYyBp
-bnQgbXRrX2RzaV9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4gICAgICAg
-ICBzdHJ1Y3QgbXRrX2RzaSAqZHNpID0gcGxhdGZvcm1fZ2V0X2RydmRhdGEocGRldik7Cj4+Cj4+
-ICAgICAgICAgbXRrX291dHB1dF9kc2lfZGlzYWJsZShkc2kpOwo+PiArICAgICAgIGRybV9icmlk
-Z2VfcmVtb3ZlKCZkc2ktPmJyaWRnZSk7Cj4+ICAgICAgICAgY29tcG9uZW50X2RlbCgmcGRldi0+
-ZGV2LCAmbXRrX2RzaV9jb21wb25lbnRfb3BzKTsKPj4gICAgICAgICBtaXBpX2RzaV9ob3N0X3Vu
-cmVnaXN0ZXIoJmRzaS0+aG9zdCk7Cj4+Cj4+IC0tCj4+IDIuMjUuMQo+PgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
-ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+According to UFS specification, there are two WriteBooster mode of
+operations: "LU dedicated buffer" mode and "shared buffer" mode.
+In the "LU dedicated buffer" mode, the WriteBooster Buffer is
+dedicated to a logical unit.
+
+If the device supports the "LU dedicated buffer" mode, this mode is
+configured by setting bWriteBoosterBufferType to 00h. The logical
+unit WriteBooster Buffer size is configured by setting the
+dLUNumWriteBoosterBufferAllocUnits field of the related Unit
+Descriptor. Only a value greater than zero enables the WriteBooster
+feature in the logical unit.
+
+Modify ufshcd_wb_probe() as above description to support LU Dedicated
+buffer mode.
+
+Note that according to UFS 3.1 specification, the valid value of
+bDeviceMaxWriteBoosterLUs parameter in Geometry Descriptor is 1,
+which means at most one LUN can have WriteBooster buffer in "LU
+dedicated buffer mode". Therefore this patch supports only one
+LUN with WriteBooster enabled. All WriteBooster related sysfs nodes
+are specifically mapped to the LUN with WriteBooster enabled in
+LU Dedicated buffer mode.
+
+Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+---
+ drivers/scsi/ufs/ufs-sysfs.c | 14 ++++++++-
+ drivers/scsi/ufs/ufs.h       |  7 +++++
+ drivers/scsi/ufs/ufshcd.c    | 60 +++++++++++++++++++++++++++++-------
+ drivers/scsi/ufs/ufshcd.h    |  1 +
+ 4 files changed, 70 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/scsi/ufs/ufs-sysfs.c b/drivers/scsi/ufs/ufs-sysfs.c
+index b86b6a40d7e6..a162f63098e5 100644
+--- a/drivers/scsi/ufs/ufs-sysfs.c
++++ b/drivers/scsi/ufs/ufs-sysfs.c
+@@ -622,16 +622,28 @@ static const struct attribute_group ufs_sysfs_string_descriptors_group = {
+ 	.attrs = ufs_sysfs_string_descriptors,
+ };
+ 
++static bool ufshcd_is_wb_flags(enum flag_idn idn)
++{
++	if (idn >= QUERY_FLAG_IDN_WB_EN &&
++	    idn <= QUERY_FLAG_IDN_WB_BUFF_FLUSH_DURING_HIBERN8)
++		return true;
++	else
++		return false;
++}
++
+ #define UFS_FLAG(_name, _uname)						\
+ static ssize_t _name##_show(struct device *dev,				\
+ 	struct device_attribute *attr, char *buf)			\
+ {									\
+ 	bool flag;							\
++	u8 index = 0;							\
+ 	int ret;							\
+ 	struct ufs_hba *hba = dev_get_drvdata(dev);			\
++	if (ufshcd_is_wb_flags(QUERY_FLAG_IDN##_uname))			\
++		index = ufshcd_wb_get_flag_index(hba);			\
+ 	pm_runtime_get_sync(hba->dev);					\
+ 	ret = ufshcd_query_flag(hba, UPIU_QUERY_OPCODE_READ_FLAG,	\
+-		QUERY_FLAG_IDN##_uname, 0, &flag);			\
++		QUERY_FLAG_IDN##_uname, index, &flag);			\
+ 	pm_runtime_put_sync(hba->dev);					\
+ 	if (ret)							\
+ 		return -EINVAL;						\
+diff --git a/drivers/scsi/ufs/ufs.h b/drivers/scsi/ufs/ufs.h
+index daac5053b850..eb3d3cebc87d 100644
+--- a/drivers/scsi/ufs/ufs.h
++++ b/drivers/scsi/ufs/ufs.h
+@@ -330,6 +330,12 @@ enum health_desc_param {
+ 	HEALTH_DESC_PARAM_LIFE_TIME_EST_B	= 0x4,
+ };
+ 
++/* WriteBooster buffer mode */
++enum {
++	WB_BUF_MODE_LU_DEDICATED	= 0x0,
++	WB_BUF_MODE_SHARED		= 0x1,
++};
++
+ /*
+  * Logical Unit Write Protect
+  * 00h: LU not write protected
+@@ -559,6 +565,7 @@ struct ufs_dev_info {
+ 	bool is_lu_power_on_wp;
+ 	/* Maximum number of general LU supported by the UFS device */
+ 	u8 max_lu_supported;
++	u8 wb_dedicated_lu;
+ 	u16 wmanufacturerid;
+ 	/*UFS device Product Name */
+ 	u8 *model;
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index f23705379b7d..8c256f6f4a65 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -5204,9 +5204,18 @@ static bool ufshcd_wb_sup(struct ufs_hba *hba)
+ 	return ufshcd_is_wb_allowed(hba);
+ }
+ 
++int ufshcd_wb_get_flag_index(struct ufs_hba *hba)
++{
++	if (hba->dev_info.b_wb_buffer_type == WB_BUF_MODE_LU_DEDICATED)
++		return hba->dev_info.wb_dedicated_lu;
++	else
++		return 0;
++}
++
+ static int ufshcd_wb_ctrl(struct ufs_hba *hba, bool enable)
+ {
+ 	int ret;
++	u8 index;
+ 	enum query_opcode opcode;
+ 
+ 	if (!ufshcd_wb_sup(hba))
+@@ -5219,8 +5228,9 @@ static int ufshcd_wb_ctrl(struct ufs_hba *hba, bool enable)
+ 	else
+ 		opcode = UPIU_QUERY_OPCODE_CLEAR_FLAG;
+ 
++	index = ufshcd_wb_get_flag_index(hba);
+ 	ret = ufshcd_query_flag_retry(hba, opcode,
+-				      QUERY_FLAG_IDN_WB_EN, 0, NULL);
++				      QUERY_FLAG_IDN_WB_EN, index, NULL);
+ 	if (ret) {
+ 		dev_err(hba->dev, "%s write booster %s failed %d\n",
+ 			__func__, enable ? "enable" : "disable", ret);
+@@ -5237,15 +5247,17 @@ static int ufshcd_wb_ctrl(struct ufs_hba *hba, bool enable)
+ static int ufshcd_wb_toggle_flush_during_h8(struct ufs_hba *hba, bool set)
+ {
+ 	int val;
++	u8 index;
+ 
+ 	if (set)
+ 		val =  UPIU_QUERY_OPCODE_SET_FLAG;
+ 	else
+ 		val = UPIU_QUERY_OPCODE_CLEAR_FLAG;
+ 
++	index = ufshcd_wb_get_flag_index(hba);
+ 	return ufshcd_query_flag_retry(hba, val,
+-			       QUERY_FLAG_IDN_WB_BUFF_FLUSH_DURING_HIBERN8, 0,
+-				       NULL);
++				QUERY_FLAG_IDN_WB_BUFF_FLUSH_DURING_HIBERN8,
++				index, NULL);
+ }
+ 
+ static inline void ufshcd_wb_toggle_flush(struct ufs_hba *hba, bool enable)
+@@ -5260,13 +5272,15 @@ static inline void ufshcd_wb_toggle_flush(struct ufs_hba *hba, bool enable)
+ static int ufshcd_wb_buf_flush_enable(struct ufs_hba *hba)
+ {
+ 	int ret;
++	u8 index;
+ 
+ 	if (!ufshcd_wb_sup(hba) || hba->wb_buf_flush_enabled)
+ 		return 0;
+ 
++	index = ufshcd_wb_get_flag_index(hba);
+ 	ret = ufshcd_query_flag_retry(hba, UPIU_QUERY_OPCODE_SET_FLAG,
+ 				      QUERY_FLAG_IDN_WB_BUFF_FLUSH_EN,
+-				      0, NULL);
++				      index, NULL);
+ 	if (ret)
+ 		dev_err(hba->dev, "%s WB - buf flush enable failed %d\n",
+ 			__func__, ret);
+@@ -5280,12 +5294,15 @@ static int ufshcd_wb_buf_flush_enable(struct ufs_hba *hba)
+ static int ufshcd_wb_buf_flush_disable(struct ufs_hba *hba)
+ {
+ 	int ret;
++	u8 index;
+ 
+ 	if (!ufshcd_wb_sup(hba) || !hba->wb_buf_flush_enabled)
+ 		return 0;
+ 
++	index = ufshcd_wb_get_flag_index(hba);
+ 	ret = ufshcd_query_flag_retry(hba, UPIU_QUERY_OPCODE_CLEAR_FLAG,
+-				      QUERY_FLAG_IDN_WB_BUFF_FLUSH_EN, 0, NULL);
++				      QUERY_FLAG_IDN_WB_BUFF_FLUSH_EN,
++				      index, NULL);
+ 	if (ret) {
+ 		dev_warn(hba->dev, "%s: WB - buf flush disable failed %d\n",
+ 			 __func__, ret);
+@@ -6804,6 +6821,10 @@ static int ufshcd_scsi_add_wlus(struct ufs_hba *hba)
+ 
+ static void ufshcd_wb_probe(struct ufs_hba *hba, u8 *desc_buf)
+ {
++	int ret;
++	u8 lun;
++	u32 d_lu_wb_buf_alloc = 0;
++
+ 	if (!ufshcd_is_wb_allowed(hba))
+ 		return;
+ 
+@@ -6826,16 +6847,33 @@ static void ufshcd_wb_probe(struct ufs_hba *hba, u8 *desc_buf)
+ 	hba->dev_info.b_wb_buffer_type =
+ 		desc_buf[DEVICE_DESC_PARAM_WB_TYPE];
+ 
+-	hba->dev_info.d_wb_alloc_units =
+-		get_unaligned_be32(desc_buf +
+-				   DEVICE_DESC_PARAM_WB_SHARED_ALLOC_UNITS);
+ 	hba->dev_info.b_presrv_uspc_en =
+ 		desc_buf[DEVICE_DESC_PARAM_WB_PRESRV_USRSPC_EN];
+ 
+-	if (!(hba->dev_info.b_wb_buffer_type &&
+-	      hba->dev_info.d_wb_alloc_units))
+-		goto wb_disabled;
++	if (hba->dev_info.b_wb_buffer_type == WB_BUF_MODE_SHARED) {
++		hba->dev_info.d_wb_alloc_units =
++		get_unaligned_be32(desc_buf +
++				   DEVICE_DESC_PARAM_WB_SHARED_ALLOC_UNITS);
++		if (!hba->dev_info.d_wb_alloc_units)
++			goto wb_disabled;
++	} else {
++		for (lun = 0; lun < hba->dev_info.max_lu_supported; lun++) {
++			ret = ufshcd_read_unit_desc_param(hba,
++					lun,
++					UNIT_DESC_PARAM_WB_BUF_ALLOC_UNITS,
++					(u8 *)&d_lu_wb_buf_alloc,
++					sizeof(d_lu_wb_buf_alloc));
++			if (ret)
++				goto wb_disabled;
++			if (d_lu_wb_buf_alloc) {
++				hba->dev_info.wb_dedicated_lu = lun;
++				break;
++			}
++		}
+ 
++		if (!d_lu_wb_buf_alloc)
++			goto wb_disabled;
++	}
+ 	return;
+ 
+ wb_disabled:
+diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+index e555d794d441..570961ada57c 100644
+--- a/drivers/scsi/ufs/ufshcd.h
++++ b/drivers/scsi/ufs/ufshcd.h
+@@ -823,6 +823,7 @@ void ufshcd_delay_us(unsigned long us, unsigned long tolerance);
+ int ufshcd_wait_for_register(struct ufs_hba *hba, u32 reg, u32 mask,
+ 				u32 val, unsigned long interval_us,
+ 				unsigned long timeout_ms, bool can_sleep);
++int ufshcd_wb_get_flag_index(struct ufs_hba *hba);
+ void ufshcd_parse_dev_ref_clk_freq(struct ufs_hba *hba, struct clk *refclk);
+ void ufshcd_update_reg_hist(struct ufs_err_reg_hist *reg_hist,
+ 			    u32 reg);
+-- 
+2.18.0
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
