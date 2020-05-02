@@ -4,21 +4,21 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 90800C3A5A9
-	for <linux-mediatek@archiver.kernel.org>; Sat,  2 May 2020 15:23:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B805C3A5A9
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 May 2020 15:32:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6245A216FD
-	for <linux-mediatek@archiver.kernel.org>; Sat,  2 May 2020 15:23:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 43A6F21835
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 May 2020 15:32:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z3VVe7Ru";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="WgbX/43+";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="ZstvIr/H"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6245A216FD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oGj+ARJ+";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="GcmDYNnM";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="O4QUbBDR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43A6F21835
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,79 +27,79 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8mEbDsMOylSct1rh/smqWBLLTbZrSUE29oIpiKfWnTw=; b=Z3VVe7Rud8LQ1P
-	mibNK8wWJ38pGoevNOWjirfBIQh6FYDdf9RnyYfJmjTu7YhOX85hWRtjLUcFZlq3bQDwONP7Krfjp
-	breycPUcjYdKtkEnfwObJK9lbChI26jTG+6gltXXFhiBIGpMz6PM0QlrfAG3ZXR5jpE7x23AKSQy7
-	xfASZq+MAcQjUxwuJmHAt+AHJN+4/HY2zHCKTu143jj/kSw8CRs5ATP1k/COn785zFJHkfanHAaPT
-	+jENcW24P2hV8IyD5ej7dx/eogPr3eGeQzmpg8VjL310XqunmlPJ3A6rgHou8+cFPi0/GUitULyem
-	uLam0Fh9UnM75edv2q6w==;
+	List-Owner; bh=Mg12d/4lL/bY8EcbMbBnBzMORKoPJXzBGPAZ1WRhOUg=; b=oGj+ARJ+O+MzCA
+	ogPVGol4tM74yIZZZ/lnqhkb0HrzIBpnWlsB8/WNY86kO84WGjia59qbnW8K6uECiQNMHvT+/nn2i
+	OuxnfVCQhhdHXnbvnCqKyT3VCiqNOAPoZvbSZhxK8p9KIlfuTn4uXO4pcHeUsHRYmnujkAvGx/etC
+	VPWYMTj+8+wuF61ggt5c8muGbL4JTTRqjvVELAfie+JV4LWVhH9+ool4VXCkXdZaSxKGSQsi7T5VY
+	ZaMrdG7vARmprUzdqsacTOHGSJ3s82ejJ4XbCPffUVu5A1EOAPt46HDmbQqG1YPyOILJRiH3DLM11
+	9PtGytg8EwgK9a2JRAug==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jUtz8-00044K-Jr; Sat, 02 May 2020 15:23:22 +0000
+	id 1jUu82-0002EO-JR; Sat, 02 May 2020 15:32:34 +0000
 Received: from esa4.hgst.iphmx.com ([216.71.154.42])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jUtz6-00042j-1I; Sat, 02 May 2020 15:23:21 +0000
+ id 1jUu7z-0002Cf-Ak; Sat, 02 May 2020 15:32:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1588433000; x=1619969000;
+ t=1588433551; x=1619969551;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=wU6Hn1QoFqxgocchw3TXAxm8RfIqCWu7dsHmcejUx0s=;
- b=WgbX/43+sK1CAFfkIW3K+INjmX2e2+QjFv6nt7z+s/3FMZx0GU6SPlPK
- i09gRFskDioOp+cL/UqVjlM+qBiUdOSrNYSCOBBKWpJ7gwIAxTvm5b7uU
- ZpjudtyqD/2qts4m3fymlHzNh2k4yCSkGs3rlCQfLMTH6ykGGV+NIYJBP
- D7T3107LB3M9ZeTlZUq2btAKJTqHt5RDU1hV0d9tiI8w2xpJGHYaJVAZq
- iUurdZSYrfHHQR9SXiPdE+A4+bzXtkiqwZoWRklH5OhUF1y6DuiAWUJ/X
- eOkqFz1/q2wkYal6oSnllibLQgHrUQ3MpV3GIGkQj6q0ysGTMICrK7qxd A==;
-IronPort-SDR: hWd2HlsXFCzxszpy1PxyEVnKMhdsIc1BJwnZNW1ByD2j6ALevmQHmS6ONEGzV+hbPsdjDNatVa
- XngdzQMt93UYAVGnr9DjuozZo8TJpUYc/1NegPBrXmU/qbbJQrt2YQ1vTLb4dsLjglVs3pkg+4
- gsFHDRjVKe1YmTL/7jh03htwpJeisMq42NMNlYbgb9HtxxtHuVslzrG0/fnhV/GGblxSWfkvTy
- WWH6i1TAfUizwTNI6h/YyPbXdo5QJawtfWPWHsggRRZPpmu8Eu+1pDEk5OrXVOXXORjhqIN4Eo
- SY4=
-X-IronPort-AV: E=Sophos;i="5.73,343,1583164800"; d="scan'208";a="136747771"
-Received: from mail-bn7nam10lp2105.outbound.protection.outlook.com (HELO
- NAM10-BN7-obe.outbound.protection.outlook.com) ([104.47.70.105])
- by ob1.hgst.iphmx.com with ESMTP; 02 May 2020 23:23:10 +0800
+ bh=04E+l5kWK4GkVHwVhbdQBMiNlor+7v66LC6zWJWB2dk=;
+ b=GcmDYNnMTO69LUCVaIbZfBD61vKRGsX+NRVFr2m6P3Qf7+6P1JKMKP5T
+ W3YZRDKDJWTh4Dm80SQvlhCyQCGEKDZC4eIxtrCq6GZIKeXGxxSDT0gNT
+ UhQAVEs4EeURyx7q5RmZbcgWZKKVTphfVLKOl7ehTpvyhapJBDmd/mUcs
+ sVAriOZkgW+59IX6ffRiClJtaWWumTSb39Bb+n+LujvRDkAGi+ecRFfCW
+ hHjnYe5cXJQ67LUjPjdqj9XEcMfQF0DU6A5+clvOMiXNB0IqUnbwAgd2D
+ 9Y7GMtDU4NOkIGyuqTFVpAJMFgo5ApVe6Dp9+zUjUHwKClhhtdJ11bhoF A==;
+IronPort-SDR: kEkk8QVHflhMfH30NyjoKOD9CrnaLt5hCSUEgbOZnJUuQof68IaSXF0Yi33fIFVahcKuX+s92h
+ UmbaOrvdRRimGMLyExYI35OAZrRU4ZENmE6NdOp1HUKPm13tpxkTeva/usPH8g/O/97Zl20P5z
+ uPuTDlU7Z/iBvq8/jTl8qJ4labsbQPURLWFaNXBQEMKv+VPemsfOnj1yX7BQaW7SWae9x1CikO
+ wwtYR8aTZf1Bv90vQ3SWHOYOyJKg48apb3tl9sx6Ps2bZVArF+2aXhQUChd3uTnE3mPtzftxqZ
+ 4cU=
+X-IronPort-AV: E=Sophos;i="5.73,343,1583164800"; d="scan'208";a="136748102"
+Received: from mail-dm6nam11lp2176.outbound.protection.outlook.com (HELO
+ NAM11-DM6-obe.outbound.protection.outlook.com) ([104.47.57.176])
+ by ob1.hgst.iphmx.com with ESMTP; 02 May 2020 23:32:29 +0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LbAbIqgTE+41KaZr1EQqDl15qoQxn6UhrozuEVcweJP2lqU9sfcCRrXcXqqKDzxAQJnAzn+Z4FQ6xJdyrx52Ng7/3CmVDMHVMJH3s0tTBRrmYL/ga5ekeYRzkbpDfDNLX9ryZDPWYbj7j+754T+Bu0+lqKqZK147LgUJaMfAaZUQFmYcRjtAwd3TT7KlI42xJpsvhyPPQPvnn0KD3tcZAOvoeVYvzKo/4htTBA3f6bKAq5cHEUBQyJ59Ugxspdxa5hxcPkQpAZ/wlD6ocsNnSUgG/OOlIiO5BoKnpgpOJvh5TM0KsZoGaZIB+vLj+tQpkG6Ami4nOnwjQvb4CZbwRw==
+ b=X3bum2u8aosVERSZioXwB3PzsGx8TZ6oEG6qwRFUzHYkbcLvosRwzBdExgbPcYFbUYHjZfKonIglXYPq35vBG+ZadLTA0S0ELTo/kmP5yulBDpLsDZidu7OlbYh4KjOIzQXh3AxqVWBbjnsxcmOZIwbBvGMm6Nf8De3rkewq1o1LB4sB4lJwHF+61o1Faa4IDf7PhUM0gUcLlXs8u5d52JP3aPqhIQ1/vk8HKyaBGQdW/sBOThOlFObz+TBIMvZg6MFZ27w4SW/l5C2PUvABLbf1kibR3HxtNimhpA6a4eLSm42147KuuCmyi6jYY2fBImbhQkPATfd7qdLhozP5sQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=eAarNdY0LRF1NAAYIxwK0+9OV6ZHf4MkhZuZv1qDILw=;
- b=LMZr8o8JURkp9B74MqOaUv6M7sc+Y0W9YefY0ONW3bxXUdzts7VGefCvDMDCXw9g93XOZeafjKUInA5cLlUiDiwaI5MD1KZhn+CrqZNTSbJUR0oQu3w3i0NGP64AMXBqMQsOlV804rbwXtiOjeIDaucMDZUntLaB0EDsjX0dWO+ClR9voHmVXa/S+zyZagP/guDYV2tGrOh6dqJVRpOyzWhqrgjud59pIwwhlvCp1KQTnm0DSjN1gehRztHHYDvT/4FwF6LtK3C8jeqzxwOEDfeC6+A8KcZp9/qwYawoCnUbN1KrSXDFhoNa54HwSbTL1NlR71k8B4zv4jVur5KL+A==
+ bh=OwStFu/X5ULPg/f/dpLqjNW2z539iJpOz7g5RJbT6PE=;
+ b=ePXalTKbWmxECxO3v/EUheIXF5UCFVW627Ee1tBuA45SxGw7cJIpfdG2PQIdPam+LFni7GtXzO7hKsIp916lI/mW9Fm6yfiL+TrDCP21k/BskBQgMp+8SwgFvf2w409W1dfMBAnBCjxszaVoxOMbf+zn41aAnOHadwo4hXwMdc714mz+ay3v2tRiXhTTI0hxvTk7dxNzoBF4hjCzo5HJyS10iC9nN5WRwC+SGLmxGNru+MuCRFK3kgQjesZS0J9z+MZj8+w/HjrAd0DmUR29h6tWDU962OTjOw8UX81u10YvFeNEs++/qwPTG/dWCVSdPVyvrsgM1DDYes9Cw+i57Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
  header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=eAarNdY0LRF1NAAYIxwK0+9OV6ZHf4MkhZuZv1qDILw=;
- b=ZstvIr/HBSwheHYneY4i6oDDMwHC2NVgWiFQ/clfS0ZYs1hnH0bAzoXA/9gb5VowbotDrs8OQpShPeJEeVJbTMckVhsx3t+O1rFtR6RNQ5bEduels2gkx9wPNaox4AnFZNhdTbllV2Ck6pXNljuCggx+SvYsutnrW28CzCSpIq0=
+ bh=OwStFu/X5ULPg/f/dpLqjNW2z539iJpOz7g5RJbT6PE=;
+ b=O4QUbBDR55bpVomdTHrs1r6rGpfY2h9dtdFC96ne2CjebkhBum6zHAopCEFt05XgvW82+Z7bTZ3UEzghB1secBmPJqnd+H5X7aNFD8I/+XPxYg1vLkFeDJNDU/wwj6bPUW7sttGeKTdsjlo1IUBAwovzrRG6eHOuKqzuT2Dj6cc=
 Received: from SN6PR04MB4640.namprd04.prod.outlook.com (2603:10b6:805:a4::19)
- by SN6PR04MB4591.namprd04.prod.outlook.com (2603:10b6:805:ae::14)
+ by SN6PR04MB4991.namprd04.prod.outlook.com (2603:10b6:805:97::16)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2937.22; Sat, 2 May
- 2020 15:23:08 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.19; Sat, 2 May
+ 2020 15:32:28 +0000
 Received: from SN6PR04MB4640.namprd04.prod.outlook.com
  ([fe80::9cbe:995f:c25f:d288]) by SN6PR04MB4640.namprd04.prod.outlook.com
  ([fe80::9cbe:995f:c25f:d288%6]) with mapi id 15.20.2958.027; Sat, 2 May 2020
- 15:23:08 +0000
+ 15:32:28 +0000
 From: Avri Altman <Avri.Altman@wdc.com>
 To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
  <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
  <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
  <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
  "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
-Subject: RE: [PATCH v3 2/5] scsi: ufs: add "index" in parameter list of
- ufshcd_query_flag()
-Thread-Topic: [PATCH v3 2/5] scsi: ufs: add "index" in parameter list of
- ufshcd_query_flag()
-Thread-Index: AQHWH8Y7hGL68hem0US2UiZWqmAQY6iU6yiA
-Date: Sat, 2 May 2020 15:23:07 +0000
-Message-ID: <SN6PR04MB4640D032215F66ED46B4D069FCA80@SN6PR04MB4640.namprd04.prod.outlook.com>
+Subject: RE: [PATCH v3 3/5] scsi: ufs: add LU Dedicated buffer mode support
+ for WriteBooster
+Thread-Topic: [PATCH v3 3/5] scsi: ufs: add LU Dedicated buffer mode support
+ for WriteBooster
+Thread-Index: AQHWH8ZIhJa0kw+eXUm7uWPkstnlKaiU68jw
+Date: Sat, 2 May 2020 15:32:27 +0000
+Message-ID: <SN6PR04MB4640A20146AFE35717580149FCA80@SN6PR04MB4640.namprd04.prod.outlook.com>
 References: <20200501143835.26032-1-stanley.chu@mediatek.com>
- <20200501143835.26032-3-stanley.chu@mediatek.com>
-In-Reply-To: <20200501143835.26032-3-stanley.chu@mediatek.com>
+ <20200501143835.26032-4-stanley.chu@mediatek.com>
+In-Reply-To: <20200501143835.26032-4-stanley.chu@mediatek.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -109,34 +109,34 @@ authentication-results: mediatek.com; dkim=none (message not signed)
 x-originating-ip: [77.138.4.172]
 x-ms-publictraffictype: Email
 x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 85aceabc-e0ba-4b62-98fe-08d7eeacb7b9
-x-ms-traffictypediagnostic: SN6PR04MB4591:
-x-microsoft-antispam-prvs: <SN6PR04MB4591BB3F3423DD3D2741AAD4FCA80@SN6PR04MB4591.namprd04.prod.outlook.com>
+x-ms-office365-filtering-correlation-id: 934e1fa2-609c-4ebb-a80d-08d7eeae0596
+x-ms-traffictypediagnostic: SN6PR04MB4991:
+x-microsoft-antispam-prvs: <SN6PR04MB4991F84DC71D463B8ADEE385FCA80@SN6PR04MB4991.namprd04.prod.outlook.com>
 wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:1728;
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
 x-forefront-prvs: 039178EF4A
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: J+hO5pWi9ABZoPVaFNbVMdWByy9PLkXGnUKe5gG8NXiecP98sDdZEsxJjVDks3+m0kzp8S8kTpeWSory1ubw6oxNJdvqfAbqKvJH152l3hY6fMxNmT2KCvZtcXW6228nlpxDvhxJteVHCXoQ96PU2puDb8VLEBRXHmm/EQXnnRjPEA4BXpPIu8D0OG6io2LD3iD+1PuZPcyOVX1nLNyJygQCDH/OcGy750U2FXvIAribmNIAn5CBNX/B7NallqCKPnEXUwxsFmBPtoX4IDTJeHU5qzaJIySdUK3m5dL5Q4B4MFrwu8vT/brFOAYNjh6C+mbJhONjzBPxfVZI96n4k38T5hASEYGhbUiHS4EMuYC3SnwfJKd+uXQYmuABhrmLa3AGJ64T+wWNMx7F6aQLEQuEUNWlZhZlJKOooZXnt20td6d+xXhHoMpAZ6VykKNe
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SN6PR04MB4640.namprd04.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(4636009)(39860400002)(136003)(366004)(396003)(376002)(346002)(478600001)(7696005)(54906003)(110136005)(8676002)(8936002)(26005)(6506007)(33656002)(64756008)(66556008)(66476007)(76116006)(66446008)(66946007)(86362001)(52536014)(186003)(4326008)(71200400001)(9686003)(316002)(55016002)(4744005)(5660300002)(7416002)(2906002);
+ SFS:(4636009)(396003)(376002)(136003)(39860400002)(366004)(346002)(54906003)(110136005)(6506007)(316002)(4326008)(2906002)(186003)(71200400001)(26005)(66556008)(66946007)(76116006)(64756008)(66476007)(86362001)(66446008)(52536014)(55016002)(478600001)(8936002)(9686003)(7696005)(5660300002)(33656002)(7416002)(8676002);
  DIR:OUT; SFP:1102; 
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: ty+uPANuoFZwLewJ8H5POl3AW0QU2KKb/HT/3OS8tH6ae5fAT0seYhiyUjOD87gVKoEYzJLkUR0a81/V08Ht4FA+5IunCGMm/1akN6O/sHpAZ01TXtdu5G+TQu1reE0EFP8n72lVua5Mrv05xV87LRKL5Oc7dh6xLYmfhp66Ei+LpUS25W7LRSaycWg/gx2Nf/oTWL7uansI2Lsx7mt/mP1YRmeYf7w2yZTXEkVnN94YYWyi9goCMZWsZIp943FzxAntxd+N2EuaYzpiXes5tb0Kp2LwWh0BKgzuYWk02YwQCm+tu16BvR68rywf6WMYfIj1Ts3SGiJPd8SzlN5Dgk4VL3z8bxs/Ul0eA/jMj0uatY2SnsGp8cSlWEOL5zIOBkNPdpM7h7YgHKk9Me6iVytYq7fHhJHvMkWS97UOEn3HkZXXCxjOVbg9YiTBKDph
-x-ms-exchange-antispam-messagedata: cyFnXUQQ3eeU7DTCVHmnb0zdNIhO03zLmsRYbzttbiz/hFr7bDh9VWTlrQBk2BCOCptaDkHiGRLigQlcFQLZG94N5DFA6OLrfBV43o7hVSFeckuWWcS1id7+hmdb0mdW4eA3YUC3R1lkgbO4cvWSV3zw6/xcwaplJ++lB+oDQ2giQ4wXyY3z/a56Y6CmoQ++CB9nkyfUO5vIrMERSubfapqYE03qGGU53GugVM2g6jzLNKFum4AMwJww0FDkm927k/i/grYryGAbpPglKdfkXwdRnpBe6aItUyJ0YhWbaN8rc0a3E8gq2YxX7w0szKQoczEr3Ts3f6XutkJtNXQswwQ2dw4v5R7dg7IpaWzRNbtajIZlwSrw0UyJMIAU13khwcJoMgJEQYDScQHBb2B5ouNmvudM7+xXmml2LwxAAKed0QBKmvGQAgzZ2eqeCXF3fcA++gIy0ic7yWn7fIeq4sjHuKRAOyNjkUSccC4Qc16+D1b2sSFNOY22surmQjG4AswAiwc2HUIhXAbFBOAm20Mo+6AG2rQ2u7yzwv5zPY8NBv9Mn1nm+cgITLGNUYHLzKeUJhtyGoB6JuawN5YjuyyjnGlH1q9YBuhWaE8lB4aF/h0Xag4Lpw07/0NVoJzFBR3FglyaA7LXFwjBcyY9LBXgZbXZWsRs2ZwGhihYFA8QBrFWQeLQxlCmBokFrtj1hjAPt7kMUByp7sNrBkgSH03hlS4GpyWywOHg/Gs30Kyab635Xz6kutD4ZGKzCGotC/w8G2559v8d9I95FAzzYiqxBZxGdCFxnGjhb1+XREo=
+x-ms-exchange-antispam-messagedata: MFtsjXgm8o7qi2FGlcTkbw+1Fq7a2Nf1YF9Tfq9lJbg/8FHpz7lUwFZC7fCUu6GeJzhN6AGbLqSbnNxeOzIXU1Gz3qLaiXaDxBtd9LiKKLLeBtQ9wzukLcHJ00gdDsssEHs1hpVR2gJ+2TtB2oXrK47WG2dPZZI07Ze73g63U0PdbYiIVl/Lt4R/uG9g35WPWnJEqG2d+Ut3zAJre8zXFQG1p3RNSF4b0x517VacmC8YVBxsJsfjWjPoJ4G2gFec9lt9l1vM3iOxW16XAOX9Eu1PCOxsSQPeAADk1Bul0xoU17pOaXtX7v2tEYLtnqTAQBq2ndD1dgDsqzMSUnwtuVSkqdxvrw0v+aA5Z4KZZbTKzQ23+CEPuPMPEab4Ybt9GI/uWr6Be+EGFfFMmU6VUih9kQv4/38QtOfLif1Z8keTO1OegfZX9vbBQnrewYCfNk2ydITzm+YcsYToNJL5m3gMp7RFqUCQTdQgUlDe3qEJ+TQm3EPSbDAF/FgPl1PVaI2tBXAVGkeDQ9jHKgQ1TXPCnu7WbvKiuh1S0U8e4Xdr8PbJ7+aSXSsQZjGyssxN6jVIcoq7TM378IbLIT/sU/HQBSRcXj/g63Z9IxW59bsfF6cTOM/1RDhcibAo5sglkbURkVjrcutt6Rv3MpqoullGqJunYbvXVzw9JU3GyKqOBxgs0Q/w9eitu5gSWL8xInwJ1E/fQ/Tg6tIlQIW/tp7d4EktATYzMvVcmJkTw1NdDRhb9oyTRJGuMPWQMiCHfzw/Cp6CTCSZfJdR4qmEvWm+90jSOvAbjwXVW52jNlc=
 x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 85aceabc-e0ba-4b62-98fe-08d7eeacb7b9
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 May 2020 15:23:07.8545 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 934e1fa2-609c-4ebb-a80d-08d7eeae0596
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 May 2020 15:32:28.0145 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: JY+WJWnFDrK2bZFiYKgcyL+Mq2DPTytrQZg/AvGaVtsYb1l8C/A6b5/4b8z+i/d9BchyCbsgn0nlqyNRADjfBw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB4591
+X-MS-Exchange-CrossTenant-userprincipalname: 8i+BFtxoCKBros1RhpY6pTct2X611QYv2hhJ3Ag5v511rGcsUf2HN2eYADI+vMzRuo3UyRsno9HW77+AAU98NA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB4991
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200502_082320_131960_CB84F5B2 
-X-CRM114-Status: GOOD (  14.02  )
+X-CRM114-CacheID: sfid-20200502_083231_468002_A0430DE6 
+X-CRM114-Status: GOOD (  19.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -164,34 +164,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
- 
+ Hi Stanley,
+Few more nits.
+Thanks,
+Avri
+
 > 
-> For preparation of LU Dedicated buffer mode support on WriteBooster
-> feature, "index" parameter shall be added and allowed to be specified
-> by callers.
+> According to UFS specification, there are two WriteBooster mode of
+> operations: "LU dedicated buffer" mode and "shared buffer" mode.
+> In the "LU dedicated buffer" mode, the WriteBooster Buffer is
+> dedicated to a logical unit.
+> 
+> If the device supports the "LU dedicated buffer" mode, this mode is
+> configured by setting bWriteBoosterBufferType to 00h. The logical
+> unit WriteBooster Buffer size is configured by setting the
+> dLUNumWriteBoosterBufferAllocUnits field of the related Unit
+> Descriptor. Only a value greater than zero enables the WriteBooster
+> feature in the logical unit.
+> 
+> Modify ufshcd_wb_probe() as above description to support LU Dedicated
+> buffer mode.
+> 
+> Note that according to UFS 3.1 specification, the valid value of
+> bDeviceMaxWriteBoosterLUs parameter in Geometry Descriptor is 1,
+> which means at most one LUN can have WriteBooster buffer in "LU
+> dedicated buffer mode". Therefore this patch supports only one
+> LUN with WriteBooster enabled. All WriteBooster related sysfs nodes
+> are specifically mapped to the LUN with WriteBooster enabled in
+> LU Dedicated buffer mode.
 > 
 > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> Reviewed-by: Bean Huo <beanhuo@micron.com>
-Reviewed-by: Avri Altman <avri.altman@wdc.com>
-
 > ---
->  drivers/scsi/ufs/ufs-sysfs.c |  2 +-
->  drivers/scsi/ufs/ufshcd.c    | 28 +++++++++++++++-------------
->  drivers/scsi/ufs/ufshcd.h    |  2 +-
->  3 files changed, 17 insertions(+), 15 deletions(-)
+>  drivers/scsi/ufs/ufs-sysfs.c | 14 ++++++++-
+>  drivers/scsi/ufs/ufs.h       |  7 +++++
+>  drivers/scsi/ufs/ufshcd.c    | 60 +++++++++++++++++++++++++++++-------
+>  drivers/scsi/ufs/ufshcd.h    |  1 +
+>  4 files changed, 70 insertions(+), 12 deletions(-)
 > 
 > diff --git a/drivers/scsi/ufs/ufs-sysfs.c b/drivers/scsi/ufs/ufs-sysfs.c
-> index 93484408bc40..b86b6a40d7e6 100644
+> index b86b6a40d7e6..a162f63098e5 100644
 > --- a/drivers/scsi/ufs/ufs-sysfs.c
 > +++ b/drivers/scsi/ufs/ufs-sysfs.c
-> @@ -631,7 +631,7 @@ static ssize_t _name##_show(struct device *dev,
-> \
->         struct ufs_hba *hba = dev_get_drvdata(dev);                     \
->         pm_runtime_get_sync(hba->dev);                                  \
->         ret = ufshcd_query_flag(hba, UPIU_QUERY_OPCODE_READ_FLAG,       \
-> -               QUERY_FLAG_IDN##_uname, &flag);                         \
-> +               QUERY_FLAG_IDN##_uname, 0, &flag);                      \
-Noticed that you are handling this in patch #3 - that's fine!
+> @@ -622,16 +622,28 @@ static const struct attribute_group
+> ufs_sysfs_string_descriptors_group = {
+>         .attrs = ufs_sysfs_string_descriptors,
+>  };
+> 
+> +static bool ufshcd_is_wb_flags(enum flag_idn idn)
+Inline?
+And just return (idn >= QUERY_FLAG_IDN_WB_EN &&  idn <= QUERY_FLAG_IDN_WB_BUFF_FLUSH_DURING_HIBERN8)
+
+> +{
+> +       if (idn >= QUERY_FLAG_IDN_WB_EN &&
+> +           idn <= QUERY_FLAG_IDN_WB_BUFF_FLUSH_DURING_HIBERN8)
+> +               return true;
+> +       else
+> +               return false;
+> +}
+> +
+
+
+> 
+> +int ufshcd_wb_get_flag_index(struct ufs_hba *hba)
+> +{
+> +       if (hba->dev_info.b_wb_buffer_type ==
+> WB_BUF_MODE_LU_DEDICATED)
+> +               return hba->dev_info.wb_dedicated_lu;
+> +       else
+No need for else.
+Maybe make this static inline in ufshcd.h?
+
+> +               return 0;
+> +}
+> +
 
 _______________________________________________
 Linux-mediatek mailing list
