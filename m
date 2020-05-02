@@ -2,66 +2,139 @@ Return-Path: <SRS0=m7qp=6Q=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C6734C3A5A9
-	for <linux-mediatek@archiver.kernel.org>; Sat,  2 May 2020 16:00:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 24929C3A5A9
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 May 2020 16:06:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9483924954
-	for <linux-mediatek@archiver.kernel.org>; Sat,  2 May 2020 16:00:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E7120206C0
+	for <linux-mediatek@archiver.kernel.org>; Sat,  2 May 2020 16:06:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BXbYCNxc";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="J8CEKnx8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9483924954
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MwLOBCcA";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="EL8q6TSI";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="ibDlQrYv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E7120206C0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wdAqO5Cgql+COSaptXZQs5UnpOgvaAXNllmZWI6LucM=; b=BXbYCNxcQk7Q9h
-	QGs5JinKYm8shjzbFyav/ui8nen1v8H1sGtrzKx9KWyalzxZuc4Y2hvVwbSDnTxSlDcqMDczdtU99
-	FpNkGDwnF+qp6bQjeX9/jYdjFthyNmF40isBjUAHPSNmtvqjJuRI2kmiA/Qj5lDi/ZijJ5ccASMWR
-	1mKQhPqstnG1NPgCfC0+znK4rxuVDgVoCHvrG2QMDTqjAnMqAn2oKdoIE1mj2rVPzsMz61yqYBCH9
-	zbUmgHTQ7V5lTecTaLRgG9HC+j3w7gbdNllwtSUteqXxekvJVyUZ+P6T3AJ5hm9Bmk3L4XwocJPeY
-	vsrh/83lbUCVnwzUXlVA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=36P/l7DB7yvJ4v2Z/uDwFgZQnNo+aSKNJu03Y53ealA=; b=MwLOBCcAzrTP+N
+	A2wD/B6cQlruLvyi3B+SVdOmziMoSxJ3PK9KrHE+PQWyjQVnt3Teo0e1XDhAa6ZTq71SimYylfw8E
+	bMwtSByINQSGUZB8ifGxZwnZOCATLce0ZRg48a4plCaCMljgya3rVAXB2twW85hytbkeoSEjWynsJ
+	4hFRYKe//xGcAejxSE+83ubXUNw5y1+2D/EvVBQisBJWISteAJQJeqLJp43SK317+G31WW8S6tcb4
+	Lz4VXhjwCvX5uBOFPa1g+aHkLrAtPl6h7p05IGcNXxiOY7fyTxMytT5W5oTb21sG4eeI307BVsjNd
+	dsdsJZpFA2Avk+/WgiWQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jUuZO-0005ck-OL; Sat, 02 May 2020 16:00:50 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jUueP-0000AK-IQ; Sat, 02 May 2020 16:06:01 +0000
+Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jUuZM-0005cA-8b
- for linux-mediatek@lists.infradead.org; Sat, 02 May 2020 16:00:49 +0000
-Received: from localhost.localdomain (unknown [151.48.155.206])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4377D24954;
- Sat,  2 May 2020 16:00:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588435247;
- bh=qKygv4X/XmIZL+CFHgEY9V+g3eCmGKSdkVjI0VZtll8=;
- h=From:To:Cc:Subject:Date:From;
- b=J8CEKnx8GfhJUGWZmVzS6duIZ7fx+DIa/cQ0Sk5xL4ivQ/K30qpVLzmWAA6+kT7Dp
- 6MmEdHHV0VPNrKNlPiuoe875MwU4mi5p9F0GShZ3NjMfZpk4+ivKfO/vQE/AK6wl60
- 0R61lBeTHDqwpxnioYgdGjNVd8I1anO4ohetIARY=
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: nbd@nbd.name
-Subject: [PATCH] mt76: mt7615: fix ibss mode for mt7663
-Date: Sat,  2 May 2020 18:00:41 +0200
-Message-Id: <3401e41202ef64fca89c090a227da632cd93190c.1588435127.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.26.2
+ id 1jUueM-00008z-NA; Sat, 02 May 2020 16:06:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1588435558; x=1619971558;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=xNBcR2//G22j27sRwbubyERAith4zF/J0pnVDuKecDU=;
+ b=EL8q6TSIpW/Us+ekyc99jxlpD4ZBHVdNgpp3XudVnGLZS5zOPjzuSViY
+ bueoMKmZyj+fgwI5Klg9A9izejE/lwP6PyA5Lhn++BjDGtpyPRQvQTf0z
+ RrZ5JwhpbO4C/vPf/hcPrXePgNF2A+3wtDijg56Nu43GSaQBfekH70BkM
+ wPtcTiypfmQWepl5Z+s5ag3HJAZcXitfVqvwcb5NwuznPPOYm0F1UNFah
+ +f2SDApcVr0QzshgxtaHxfzUT7KkdymcMms613WAvicZxgdbqeWnAm9Vo
+ 8MIFUFJbhQXIAKGedwPIt71MZkyCBMFI7cwa/oUAdxUC0eiAVRZTz+opQ Q==;
+IronPort-SDR: Il1spfjlUzFQRv3PvbJvlFyFAek2yhTbtdKwsw35YYQ2R65Le6Ds8Cx7KZbbUD4Z57BLWj62/x
+ K1bkhKFx1VO19dAe5TtWK8Quk+Ajgz0RpWSLCFyK/3BKTW/B/6z2+sGSC3QwiA0hlkQemxgcmb
+ KvcfXKuV8BT9Oetx3EmJBwauusI8gkl1NCQjMpUN8t1z2Ds5HB622pSKEeaZDWg768yMsh0his
+ Cyd6zVLlEkqdSBD377uKYibFHhASnS008XJQBa/OaqRZoVZsZ+L6hPZ/eH3+MgzyW+UTiq84Hx
+ CGI=
+X-IronPort-AV: E=Sophos;i="5.73,343,1583164800"; d="scan'208";a="141084371"
+Received: from mail-bn8nam12lp2173.outbound.protection.outlook.com (HELO
+ NAM12-BN8-obe.outbound.protection.outlook.com) ([104.47.55.173])
+ by ob1.hgst.iphmx.com with ESMTP; 03 May 2020 00:05:52 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=DfMuTCXGAmfOnyIhSM0uHB/CaZ354f0lxHBXwVhvUjzrOzOeSAjyiK7qW9c6Az8p5cPKHQ/wRZ4NEBRj+A3G9zsyZhef0yFhbRNmZ9/oDD2C9ypXihXxE9aK+g6oZXNq0Qtrd85hb1dua7WaqzdrG7aq1m/s6rzP+Y5sXcWWudxHE2B7CZI0d2cClhIQEHNW3kdOnz0Bb5rtBcF41+0IN3q1FgZO5oX63spFtUM0TnXlCZE1a/PKOCz3vJAQXL2qKgwCeMSie1hG8kaJ5WhbE3x0UxvyofPnMOE07R7V8XgPxIfl71j+RV++yiVGE/aNh9iGb0btxRXFDZUNruE3bw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=4zXmMO5Zpy02Ngq/eYIfJrkGb1pQt3gpzUPnWy/MHSA=;
+ b=UnUz6nPKtFaPKHuXva/sLNLJzxjuT122JbKwGLydoqRx/kovzJWGL5BxABtqk+1Wui2r9pNPcVBxC41wHy6Lq3DIfRdSwdJFn72hLzppep3QrVNRjy+N1wzqCyZbuCzKeQG9ooyZjjzM0dOnF0LqG4Ygejrqo3gCGCc2KDaKqLY4JLj/itLcXVlFw6KUfceLMPDGLodHGsJv7UxLbWFH7Vy221RhX4H8Z6BjVc/joUZpcOXGHXumTtRu1UjY7AhFXrOqiMZJsQSAjLZKpiOXA2Xik52x1LQPNbEN4dZNXAVeWr/TAYas0iHcjHgDkVssM05HVwX4nAbydDIzqiAU+g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=4zXmMO5Zpy02Ngq/eYIfJrkGb1pQt3gpzUPnWy/MHSA=;
+ b=ibDlQrYvU4/PN2Khj//dro7uKdvOQGXU8UvyE9f0UEx6yfyFdTjQdISR9/q4XK9BfRaK22KpOWXoNRkMRXJcxgPlcHatrD5OHDydqLc9VGJov/lmsRuIdNaK8pAChFLNb+epj9fllRimx1sxfCDzPt1YrEo32ma5OgM9pd+RrPM=
+Received: from SN6PR04MB4640.namprd04.prod.outlook.com (2603:10b6:805:a4::19)
+ by SN6PR04MB5293.namprd04.prod.outlook.com (2603:10b6:805:f9::23)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.20; Sat, 2 May
+ 2020 16:05:49 +0000
+Received: from SN6PR04MB4640.namprd04.prod.outlook.com
+ ([fe80::9cbe:995f:c25f:d288]) by SN6PR04MB4640.namprd04.prod.outlook.com
+ ([fe80::9cbe:995f:c25f:d288%6]) with mapi id 15.20.2958.027; Sat, 2 May 2020
+ 16:05:49 +0000
+From: Avri Altman <Avri.Altman@wdc.com>
+To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
+ <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
+ <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
+ <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
+Subject: RE: [PATCH v3 5/5] scsi: ufs: cleanup WriteBooster feature
+Thread-Topic: [PATCH v3 5/5] scsi: ufs: cleanup WriteBooster feature
+Thread-Index: AQHWH8Y8HwH/XjgDN0+LaZXQUAIptKiU9sHw
+Date: Sat, 2 May 2020 16:05:49 +0000
+Message-ID: <SN6PR04MB4640099431C815833394022FFCA80@SN6PR04MB4640.namprd04.prod.outlook.com>
+References: <20200501143835.26032-1-stanley.chu@mediatek.com>
+ <20200501143835.26032-6-stanley.chu@mediatek.com>
+In-Reply-To: <20200501143835.26032-6-stanley.chu@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mediatek.com; dkim=none (message not signed)
+ header.d=none;mediatek.com; dmarc=none action=none header.from=wdc.com;
+x-originating-ip: [2a00:a040:188:8f6c:c15d:86e6:9e1d:ec73]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: ebccf45d-1abc-4e64-43db-08d7eeb2ae6e
+x-ms-traffictypediagnostic: SN6PR04MB5293:
+x-microsoft-antispam-prvs: <SN6PR04MB529374AA43FADC02B6B01F42FCA80@SN6PR04MB5293.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:4125;
+x-forefront-prvs: 039178EF4A
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 01LXZStgbLGol2C6TkPSCIzNVJS/mVzWxsguvTwbept5BShp88hCYLKBMM0L/zP1wnh2CCVu7DgKxiqQwvZdIZ/O4b/heaMjqY5+tM5roo8889IgrhNUf9Xvv6ONOZErU9Vf+TdYBhmEDrOi7hv1ei4tL7MFseylBp5dlJBa0R4QjMw4of6wGzeRlfsv/yXV0JGqgwvHluwoabVfQbBHDu/WI23Hm5gx+f9FUkXKGG8nDUDFeQI0hYYh2SyfrDm9aIH6mlcLVMTeK2lQ0q82baPvqZFtDQUFIIuQN+oYLfD61OERvSlY5hxmQJoAM47utwQqSr4rzvqz/FjLJ0DDBTgDaK/dJBu584GXGZfdaD+7pHEYNABSnqQdXby77KT7i1NQO2wK33BlCF4KxnP4NoKOTjGVdl+Ww3qrhVoCsO2nOwPvIlHyavqYSrG4q+o+
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN6PR04MB4640.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(346002)(136003)(376002)(396003)(366004)(39860400002)(4326008)(86362001)(478600001)(7416002)(5660300002)(6506007)(2906002)(186003)(7696005)(9686003)(55016002)(52536014)(4744005)(64756008)(66556008)(66476007)(66946007)(66446008)(76116006)(8676002)(54906003)(33656002)(110136005)(71200400001)(316002)(8936002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: f8KZye80L3A+i3CYpc/WhHWDfQadBo32Ofuc0KAqjhT9HzFwK3mze8txrKT8w/FCtNpkl02F1EglHIvqpsJ4vFU6LC7zj6JLMZIRgzgWFM0EYiWLBcDJX8KPQMeo/uSafhuuCVZkf2HriizNdxbiTx1LgpVYSn2xJOGjUJK9TqJoTjSHfmDksNeXd1VEn+1/2bhoxm1mY9v60T0T0MYhAL7gbnTH3MXtT/i2uUFLTshtzeTdXZDdT0voTCIpIulhnuPM+SYAUWt1EXF4ki68c3JqKMvUouxkIA12UahJr74ZebK50fpVjJoefNZ562wmdb6yB7oyxOz9WwdBwSsKK4ZUTLO4Yr50DJUewd6bBejL+VUUDpf7UhrejsvNOTraJ1gPPnlmbXW1PQ1FQ0TQCyksbDFiDKk1DHs9JwDKsfCdCJLyVv7Pcxob9OFPZHx7YYsZHFhWfyA6wpsrlKRoo57TWb/0gmPDli7Dg3G7l9siiUA6pqHmhJl2qMzovVfePlE815UBsMV0OMNTs73jvPb3I9vTakXFynmRVM8i0dazXd0LHP5IDdswo6EBuCPkPSblB6ZVjP5R2cqPSbC6dV0doTxHS3ynKd3nFOJ6UVJSxVbPIk/Ek6TB+PLYACg8Y4xrQT9dGKy/5RCfLreNbhteHfBEOcFXbXTR/RIPylHRlasUculnAyCv3KaxYc44W1t1+hZpPj4FGcA/HEGbppbX/uus18HYFsWx/hklJ6FTWw9t8KaOjxEtfTCdld+uFD7moLSt5CSQpvzB1jRYMlEwuQ6BszrQenR3c769Hhz5HGG4g+w4u2U8J/54JlOx8rPdQXd5lR8VS5OrW3YCRLnjIv6ldMdRkv/dF6Q0rXM=
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ebccf45d-1abc-4e64-43db-08d7eeb2ae6e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 May 2020 16:05:49.2416 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: CHPQ3hpYm5SlKD7DAyzk4pdJoQFW42JkCCJzUkYFrGyR8AIbVp7hDDiH/mEhIBhZUIbO/PmNxHVCr+yaxzMgRw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB5293
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200502_090048_352763_6ABE2BA5 
-X-CRM114-Status: UNSURE (   8.02  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200502_090558_796190_41BC1C97 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,92 +146,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
- sean.wang@mediatek.com, linux-wireless@vger.kernel.org
+Cc: "bvanassche@acm.org" <bvanassche@acm.org>,
+ "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
+ "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
+ "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "cang@codeaurora.org" <cang@codeaurora.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "beanhuo@micron.com" <beanhuo@micron.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the following kernel warning adding an adhoc interface to a
-mt7663e device
-
-[  233.363394] WARNING: CPU: 0 PID: 2345 at drivers/net/wireless/mt76/mt7615/mcu.c:1449 mt7615_mcu_uni_add_bss+0x15f/0x24e [mt7615_common]
-[  233.363432] CPU: 0 PID: 2345 Comm: iw Tainted: G        W       4.14.171 #12
-[  233.363434] Hardware name: HP Meep/Meep, BIOS Google_Meep.11297.75.0 06/17/2019
-[  233.363436] task: ffff9a1a4020e3c0 task.stack: ffffb9124113c000
-[  233.363441] RIP: 0010:mt7615_mcu_uni_add_bss+0x15f/0x24e [mt7615_common]
-[  233.363443] RSP: 0018:ffffb9124113f730 EFLAGS: 00010246
-[  233.363446] RAX: 0000000000000024 RBX: ffff9a1a788c74e8 RCX: 41826d413aea9200
-[  233.363448] RDX: 0000000000000007 RSI: 0000000000000006 RDI: ffff9a1a7fc15418
-[  233.363450] RBP: ffffb9124113f7c0 R08: 0000000000000356 R09: 00000000ffff0a10
-[  233.363452] R10: 0000001000000000 R11: ffffffff93f2a4be R12: 0000000000000000
-[  233.363454] R13: ffff9a1a7383bd48 R14: ffffb9124113f77a R15: 0000000000000000
-[  233.363456] FS:  00007f203314ab80(0000) GS:ffff9a1a7fc00000(0000) knlGS:0000000000000000
-[  233.363458] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[  233.363460] CR2: 00005a13d647c950 CR3: 0000000171238000 CR4: 00000000003406f0
-[  233.363462] Call Trace:
-[  233.363470]  mt7615_bss_info_changed+0x98/0xf4 [mt7615_common]
-[  233.363484]  ieee80211_bss_info_change_notify+0x139/0x1d4 [mt76_mac80211]
-[  233.363496]  ieee80211_ibss_disconnect+0x183/0x1bb [mt76_mac80211]
-[  233.363507]  ieee80211_ibss_leave+0x14/0xa0 [mt76_mac80211]
-[  233.363519]  __cfg80211_leave_ibss+0xa6/0x13a [cfg80211]
-[  233.363528]  cfg80211_netdev_notifier_call+0x8b/0x631 [cfg80211]
-[  233.363535]  ? packet_notifier+0x196/0x1a3
-[  233.363540]  raw_notifier_call_chain+0x39/0x58
-[  233.363544]  __dev_close_many+0x6b/0xf0
-[  233.363548]  dev_close_many+0x62/0xe8
-[  233.363552]  ? _raw_spin_unlock_irq+0xe/0x21
-[  233.363555]  rollback_registered_many+0xf6/0x35c
-[  233.363560]  ? __rcu_read_unlock+0x4a/0x4a
-[  233.363563]  unregister_netdevice_queue+0x7f/0x105
-[  233.363573]  ieee80211_del_iface+0x12/0x16 [mt76_mac80211]
-[  233.363582]  nl80211_del_interface+0xa8/0x124 [cfg80211]
-[  233.363588]  genl_rcv_msg+0x40b/0x481
-[  233.363592]  ? genl_unbind+0xb8/0xb8
-[  233.363595]  netlink_rcv_skb+0x85/0xf8
-[  233.363598]  genl_rcv+0x28/0x36
-[  233.363601]  netlink_unicast+0x165/0x1f8
-[  233.363604]  netlink_sendmsg+0x35f/0x3a6
-[  233.363608]  sock_sendmsg+0x38/0x48
-[  233.363611]  ___sys_sendmsg+0x1bf/0x267
-[  233.363615]  ? __inode_wait_for_writeback+0x72/0xd7
-[  233.363619]  ? dentry_kill+0x69/0x76
-[  233.363622]  ? dput+0xd1/0x170
-[  233.363624]  __sys_sendmsg+0x52/0x8f
-[  233.363628]  do_syscall_64+0x6b/0xf7
-[  233.363632]  entry_SYSCALL_64_after_hwframe+0x3d/0xa2
-[  233.363635] RIP: 0033:0x7f2032ca1264
-[  233.363637] RSP: 002b:00007ffec3668e38 EFLAGS: 00000246 ORIG_RAX: 000000000000002e
-[  233.363639] RAX: ffffffffffffffda RBX: 000058f7175e7880 RCX: 00007f2032ca1264
-[  233.363641] RDX: 0000000000000000 RSI: 00007ffec3668e98 RDI: 0000000000000003
-[  233.363643] RBP: 00007ffec3668e70 R08: 0000000000000001 R09: 00007f2032ce1fd0
-[  233.363645] R10: 000058f7175e2010 R11: 0000000000000246 R12: 000058f7175e7740
-[  233.363646] R13: 00007ffec3668ff0 R14: 000058f7175e2350 R15: 00007ffec3668e98
-
-Fixes: f40ac0f3d3c0 ("mt76: mt7615: introduce mt7663e support")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index d479df6a7f40..a4d90a8b347a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -1417,6 +1417,9 @@ mt7615_mcu_uni_add_bss(struct mt7615_phy *phy, struct ieee80211_vif *vif,
- 	case NL80211_IFTYPE_STATION:
- 		basic_req.basic.conn_type = cpu_to_le32(CONNECTION_INFRA_STA);
- 		break;
-+	case NL80211_IFTYPE_ADHOC:
-+		basic_req.basic.conn_type = cpu_to_le32(CONNECTION_IBSS_ADHOC);
-+		break;
- 	default:
- 		WARN_ON(1);
- 		break;
--- 
-2.26.2
-
+ 
+> 
+> Small cleanup as below items,
+> 
+> 1. Use ufshcd_is_wb_allowed() directly instead of ufshcd_wb_sup()
+>    since ufshcd_wb_sup() just returns the result of
+>    ufshcd_is_wb_allowed().
+> 
+> 2. In ufshcd_suspend(), "else if (!ufshcd_is_runtime_pm(pm_op))
+>    can be simplified to "else" since both have the same meaning.
+> 
+> This patch does not change any functionality.
+> 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+Reviewed-by: Avri Altman <avri.altman@wdc.com>
 
 _______________________________________________
 Linux-mediatek mailing list
