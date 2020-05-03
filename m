@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BFE9AC28CBC
-	for <linux-mediatek@archiver.kernel.org>; Sun,  3 May 2020 06:07:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B039AC47256
+	for <linux-mediatek@archiver.kernel.org>; Sun,  3 May 2020 06:07:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8B29D2075B
-	for <linux-mediatek@archiver.kernel.org>; Sun,  3 May 2020 06:07:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7E20A2073E
+	for <linux-mediatek@archiver.kernel.org>; Sun,  3 May 2020 06:07:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="S0QvAxd5";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="QUWQr+4Z"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8B29D2075B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="k9R6EhVF";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="OkA6td7V"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7E20A2073E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VjB+agzavUBxfcIz90yZVpCNRkiJiVkC/J+vJ4N2B8c=; b=S0QvAxd5ZndXP8
-	7Nx3zSKN19pDirLaQYC4nzdW3TjFtzE64YA+3/gEkjXCDf0MyTgEpgCWvBzMc9/rE4ujwu0vklOqS
-	MgOAeYOqdfirP8OeDrXByHuq/cTIsK52Pjhy3wCFd05ONky7Z13bx//ea6VAO/w2JVU0S8ofljT5y
-	qJcfsAMOqDSZFoFcQQLg9tvtCagEoiKnL9hzGuo4L2Y51xdyvvdiFY2j8zrYkLt1P6wu9QkKC6vL6
-	HxLxoo6S15L3uzPGTNBg1UineafZ2SsvdJmPVIG1HiPhHkvYfrEBZaABXfyA60AoRnqLy83yWDnVu
-	XJazJnjpb0PTv8p8UqVg==;
+	List-Owner; bh=1purh/J5R0FRGrbFDgIsFQEGFZh5UHCJU5IhagoWjnE=; b=k9R6EhVF2b9vws
+	Md7Aeg4Su7ENI8GzSjTPnxoJilX/i4WHjwx90vHhIvZ6aIcNpaunJJVvIdHZYTEGMosa7xU4lH+R5
+	qFMox4Ly3oW/c+7pDclZnuILfI8AXjhG/Uv5PSTQQql8GSkZsTVNYjzlohoKrgE/7gL2HJ26NBdTn
+	QLDSTGddSopQ5U7M1WqjTT6ndyHx1mVPlqFwDOsM2mtusgzJf9J1jUUqkqSvmT277PzFX2hcn7wTL
+	hEPEgNEpSz4CAWAblxbBeuhWbnGOtn+PzzeaUXVegyGCFHnwUg44ga7tSBdPPUHX249fXe1uYYU/R
+	3J/EbDILZxo80q41RH+g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jV7mK-00077S-UZ; Sun, 03 May 2020 06:07:04 +0000
+	id 1jV7mM-000796-Cn; Sun, 03 May 2020 06:07:06 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jV7jZ-00027b-S7; Sun, 03 May 2020 06:04:16 +0000
-X-UUID: 5dc4ea458d7a4dd0b1c88555f181bbf1-20200502
+ id 1jV7jc-00027b-C9; Sun, 03 May 2020 06:04:18 +0000
+X-UUID: d1217e06b50a4684a07af5808d49821c-20200502
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=axYdivepqlgkjKZMDc+q6wcYI5dYnIuDFbudgz9mHU4=; 
- b=QUWQr+4ZUEdFHI0yt4kIZbvR6XHYwLTMEcrscEqFnk4Ig1dEtzaA+ZKeDWK8e3UNjaPkMD2DnkjBr/h+PvzUMqisp/Hg33MkuxPMHRO1WpBMcMJoQtU4k630Vs6E98wn3ALmzURQDbsqAU4DQOzXfwBsxe3hhBHUmyaFt3mpLtk=;
-X-UUID: 5dc4ea458d7a4dd0b1c88555f181bbf1-20200502
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=lvTox59cW7leiqB4qAxOe8+RTfYQVWs09Dx8wQB1BQk=; 
+ b=OkA6td7VcRog0oaLwxLii552tbuHDrk7Xr8wmXbxeo20KTVmXNEonHXNFyK+VBr3b88kNGs7kHP9GEtl21lYEQ0/QYg0TxtcILW2eMAmQ29VEdB/iDPbeMgGreiRD4KPp+odj9/bMSfDSCnqVyf36dvTvUkTpUVWIEryp7tmfa0=;
+X-UUID: d1217e06b50a4684a07af5808d49821c-20200502
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <stanley.chu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 54188663; Sat, 02 May 2020 22:04:11 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ with ESMTP id 1460049672; Sat, 02 May 2020 22:04:13 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 2 May 2020 23:04:09 -0700
+ 15.0.1497.2; Sat, 2 May 2020 23:04:11 -0700
 Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 3 May 2020 14:03:54 +0800
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 3 May 2020 14:03:55 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas08.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sun, 3 May 2020 14:03:54 +0800
+ Frontend Transport; Sun, 3 May 2020 14:03:55 +0800
 From: Stanley Chu <stanley.chu@mediatek.com>
 To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
  <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
  <asutoshd@codeaurora.org>
-Subject: [PATCH v4 2/8] scsi: ufs: introduce fixup_dev_quirks vops
-Date: Sun, 3 May 2020 14:03:45 +0800
-Message-ID: <20200503060351.10572-3-stanley.chu@mediatek.com>
+Subject: [PATCH v4 4/8] scsi: ufs-mediatek: add fixup_dev_quirks vops
+Date: Sun, 3 May 2020 14:03:47 +0800
+Message-ID: <20200503060351.10572-5-stanley.chu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20200503060351.10572-1-stanley.chu@mediatek.com>
 References: <20200503060351.10572-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: E0035863AB47457224CD7CB1922709E8B7DC8A3D362EDA397C102489C0B91FE72000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200502_230413_948288_5F24084B 
-X-CRM114-Status: UNSURE (   7.66  )
+X-CRM114-CacheID: sfid-20200502_230416_460431_B8566D3B 
+X-CRM114-Status: UNSURE (   9.21  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -95,57 +96,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some UFS deivces may have required device quirks or have non-standard
-features which are enabled only on specified UFS hosts or for special
-customers.
-
-To not "pollute" common device quirk list, i.e., ufs_fixups table for
-those devices mentioned above, introduce "fixup_dev_quirks" vops to
-allow vendors to fix or modify device quirks accordingly.
+Add fixup_dev_quirk vops in MediaTek UFS platforms and provide
+an initial vendor-specific device quirk table.
 
 Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
 ---
- drivers/scsi/ufs/ufshcd.c | 1 +
- drivers/scsi/ufs/ufshcd.h | 7 +++++++
- 2 files changed, 8 insertions(+)
+ drivers/scsi/ufs/ufs-mediatek.c | 22 +++++++++++++++++++---
+ 1 file changed, 19 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 04ddfb15e858..da7b375709b6 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -6899,6 +6899,7 @@ static int ufs_get_device_desc(struct ufs_hba *hba)
- 	}
+diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+index 673c16596fb2..ce7ba529e613 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.c
++++ b/drivers/scsi/ufs/ufs-mediatek.c
+@@ -30,6 +30,12 @@
+ #define ufs_mtk_device_reset_ctrl(high, res) \
+ 	ufs_mtk_smc(UFS_MTK_SIP_DEVICE_RESET, high, res)
  
- 	ufs_fixup_device_setup(hba);
-+	ufshcd_vops_fixup_dev_quirks(hba);
++static struct ufs_dev_fix ufs_mtk_dev_fixups[] = {
++	UFS_FIX(UFS_VENDOR_SKHYNIX, "H9HQ21AFAMZDAR",
++		UFS_DEVICE_QUIRK_SUPPORT_EXTENDED_FEATURES),
++	END_FIX
++};
++
+ static void ufs_mtk_cfg_unipro_cg(struct ufs_hba *hba, bool enable)
+ {
+ 	u32 tmp;
+@@ -555,10 +561,8 @@ static int ufs_mtk_apply_dev_quirks(struct ufs_hba *hba)
+ 	struct ufs_dev_info *dev_info = &hba->dev_info;
+ 	u16 mid = dev_info->wmanufacturerid;
+ 
+-	if (mid == UFS_VENDOR_SAMSUNG) {
+-		hba->dev_quirks &= ~UFS_DEVICE_QUIRK_HOST_PA_TACTIVATE;
++	if (mid == UFS_VENDOR_SAMSUNG)
+ 		ufshcd_dme_set(hba, UIC_ARG_MIB(PA_TACTIVATE), 6);
+-	}
  
  	/*
- 	 * Probe WB only for UFS-3.1 devices or UFS devices with quirk
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index 056537e52c19..5fa03e0f3bd1 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -336,6 +336,7 @@ struct ufs_hba_variant_ops {
- 	void    (*hibern8_notify)(struct ufs_hba *, enum uic_cmd_dme,
- 					enum ufs_notify_change_status);
- 	int	(*apply_dev_quirks)(struct ufs_hba *hba);
-+	void	(*fixup_dev_quirks)(struct ufs_hba *hba);
- 	int     (*suspend)(struct ufs_hba *, enum ufs_pm_op);
- 	int     (*resume)(struct ufs_hba *, enum ufs_pm_op);
- 	void	(*dbg_register_dump)(struct ufs_hba *hba);
-@@ -1085,6 +1086,12 @@ static inline int ufshcd_vops_apply_dev_quirks(struct ufs_hba *hba)
+ 	 * Decide waiting time before gating reference clock and
+@@ -575,6 +579,17 @@ static int ufs_mtk_apply_dev_quirks(struct ufs_hba *hba)
  	return 0;
  }
  
-+static inline void ufshcd_vops_fixup_dev_quirks(struct ufs_hba *hba)
++void ufs_mtk_fixup_dev_quirks(struct ufs_hba *hba)
 +{
-+	if (hba->vops && hba->vops->fixup_dev_quirks)
-+		hba->vops->fixup_dev_quirks(hba);
++	struct ufs_dev_info *dev_info = &hba->dev_info;
++	u16 mid = dev_info->wmanufacturerid;
++
++	ufshcd_fixup_device_setup(hba, ufs_mtk_dev_fixups);
++
++	if (mid == UFS_VENDOR_SAMSUNG)
++		hba->dev_quirks &= ~UFS_DEVICE_QUIRK_HOST_PA_TACTIVATE;
 +}
 +
- static inline int ufshcd_vops_suspend(struct ufs_hba *hba, enum ufs_pm_op op)
- {
- 	if (hba->vops && hba->vops->suspend)
+ /**
+  * struct ufs_hba_mtk_vops - UFS MTK specific variant operations
+  *
+@@ -589,6 +604,7 @@ static struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
+ 	.link_startup_notify = ufs_mtk_link_startup_notify,
+ 	.pwr_change_notify   = ufs_mtk_pwr_change_notify,
+ 	.apply_dev_quirks    = ufs_mtk_apply_dev_quirks,
++	.fixup_dev_quirks    = ufs_mtk_fixup_dev_quirks,
+ 	.suspend             = ufs_mtk_suspend,
+ 	.resume              = ufs_mtk_resume,
+ 	.dbg_register_dump   = ufs_mtk_dbg_register_dump,
 -- 
 2.18.0
 _______________________________________________
