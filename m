@@ -2,140 +2,65 @@ Return-Path: <SRS0=D1Kh=6R=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3211DC28CBC
-	for <linux-mediatek@archiver.kernel.org>; Sun,  3 May 2020 14:27:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 82A33C28CBC
+	for <linux-mediatek@archiver.kernel.org>; Sun,  3 May 2020 15:20:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8AAAA2073E
-	for <linux-mediatek@archiver.kernel.org>; Sun,  3 May 2020 14:27:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4C2322071C
+	for <linux-mediatek@archiver.kernel.org>; Sun,  3 May 2020 15:20:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s4P/JlkP";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="hRPqslhA";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="EXn6w5+P"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8AAAA2073E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PEK9wqCm";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="FNgwMhCN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4C2322071C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GCzECDfax4zpR4VmaxRhhDa9uRd4TQm94K8vj6dPgY8=; b=s4P/JlkPJYxAZW
-	tDtAy73prpKdb95U+/Obovh4W+jCHqrwntxurkffuW9q1ICUDuzSUbDOnTy07CPd2rBaHwogJ/1tY
-	2bKGscEDfRwT+vmUFxeZZ2qNwOFor+Yq7hBE5usPydlAbZJ+yJD5QM2V2ZLs3ILK9Oh67OBNUm6I1
-	FTtrOFqYnUvBR3DNKMC5Qf0pboLezZK9ff+lhrkbU0eqKSx+TuPksCzQBIKbBIMKfFYgDAlPBaZtP
-	T02Q1OKkoSp0wIrCN0D3d6Mwefm+ncBEWF1JFLquCGOJ3bv7G4nP9/1kw6DUEh5y8eI3pE2A9dQ6x
-	ctmy+H5dMZQEY8Hwv8JA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=HX4h5pTbNAMpvyETpRnaVUFYD4b0oAHaXUU53G23U1k=; b=PEK9wqCm0e3dyL
+	MmEsQdvQ5udIpAZQE0sslmYKDDrgkfqYv4O9I4Xu62xt0ow/uuk1nsn7kkPj0MF8NzhOOoiKKvLO2
+	/VCrvG2yznrLpgk1tDaqImxLZMrW/FXTbT08omigMpICC2y/TOPZ03udDwX9uUHafu45daUlUM7mu
+	2jahFmAfvgKLTA3LSi8btr5rGOpAK4cl0qZaqSLGQaux5gdCnREG81MIyC/jbyNGpB1sp1XjlcqEh
+	XzttIb6Vv46Vcd2s0/LDAPRQ5za9LTe5JQAG8AmDtBgeUIgUJ5t1+ZZrPT0vFLMRf+sX1/n84k21t
+	3eu0ATuYzXVHP6L/2B7Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jVFa6-0003NW-2o; Sun, 03 May 2020 14:26:58 +0000
-Received: from esa1.hgst.iphmx.com ([68.232.141.245])
+	id 1jVGPl-0006eN-0L; Sun, 03 May 2020 15:20:21 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jVFa3-0003Mz-Gi; Sun, 03 May 2020 14:26:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1588516015; x=1620052015;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=E/3RoVZD9KTAdv84eNBZ4aqJUgMuNvOuxybo4+pRvtE=;
- b=hRPqslhAModifC5J3bF7sUCVaz2IR6esacycsRGd19XdlKTMhluKHtGH
- 2xqRYFzdvfk9WqOYJOHotTuz5ZgLdMp5mmu4Cp5WqgtqA/JsQIlkLJSB0
- PYRrzbIT0EyoOaRaLz5jc5nvEY5IlYj1RocsjITgEaPz5jKIqVyqefRlo
- jKOYuDeHNIr5KYd76RqAY/oHdtkJxIn4dtIzscBsuUzFh0X00FLQRLpQX
- sHgUCfWCCYTD4gpXJezCM2qwdSXla5PZvej5NLzdQXP+m1WAyeLzbXm0D
- cnr3zOn0dASutWBj55Fafrk4gfQLwPPCbz9apFIC0Qvjs3olw5/GkH74n A==;
-IronPort-SDR: lOOHwGR8Q9cyiKAGjbmEgLI43qzjwsHYVo4khlYyBpm+FR3g7I6N+19c/B60imFcBVKmRgnLSy
- X6lRyoD+Z27Hi2guO+Q/QJxsh2A2qAufKOmFqDvU9Ze2gHMXyDTr8NeGMLMrsTlprvp6HcQJrH
- OMxQXvOp1psdypoWwMsExLTcXqee2TYlsW59ccOuWQZcNaYcWf2Q8hASt8JtXhPhcqDX1+Qjfd
- 8Qp9/yGB0R+13q8f5cFM8SyR3CXeD5BtvPIudTdD2g4IR5daBeHLoMIpsFvOxy0asE+TF5g5J1
- uC8=
-X-IronPort-AV: E=Sophos;i="5.73,347,1583164800"; d="scan'208";a="245626174"
-Received: from mail-sn1nam02lp2053.outbound.protection.outlook.com (HELO
- NAM02-SN1-obe.outbound.protection.outlook.com) ([104.47.36.53])
- by ob1.hgst.iphmx.com with ESMTP; 03 May 2020 22:26:54 +0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=VptBTa8VDydqUhtukyK1xYSBmz+DQvt4EEJd6YRRyg0y6Nu9B7Y0hhcqHTDfwnkir9n0i0WqCYAl4mAr1CNJJmFQtAmkznE5vvXWcStwZfdFB1yilSrHLGZJIh8NKpyNEmNwvDjQNnsxtlYyMDMUrFA3vFt9js55VVCHdYA8W96ADd/q4cWs2wchMpVu1DxfzHJAUpAWAw1+fMXQdY68zIKag2MkroHUxqeR9LCpkhBamNJ9rKb6/geaOZKTsIWtVY0aDAXRQuWpO5wLY2KFJhT8r2IYIBX4dkfIq56bMvHX+N1uUVFORvOn61LhIJ5Q5cYHkk+TOMahJE/jUbsF/Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=E/3RoVZD9KTAdv84eNBZ4aqJUgMuNvOuxybo4+pRvtE=;
- b=fvkQK5h5ykuPWREFRpfcZJMlX3vOi6apRlzIcdbQ5gGSPh+qOk2S9Kn9Aa4A34H0kwrtGo5JAdjONr85YUYE3qtFTay/uhfYr5UJUUlw8TX+EoYi3rukTRn5/YdhebZs8mALXyN3ZGJ/a7P6B8Z2iHoZUaUbeugd5GftX7EG5vUdrFoTt45h6zj5KaABTa6ECJTkkxXDrUhtif8E2I1p7RMK825xPEAcesMMVGJ0QxQerTG2nq2G6fcg6gYHYO2iOquS7ha0fU4m/9rJD8tU6SrseUGCR/2CejuF4C4kJnHF5ufxuKdN2ODlKoLrzkXkISJMKRoySYQ+GDndmU/lkw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
- header.d=wdc.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=E/3RoVZD9KTAdv84eNBZ4aqJUgMuNvOuxybo4+pRvtE=;
- b=EXn6w5+PLaUyYtqYORTfg0MVKC3wOOS2tjPns6rGVYMzY4xg4KR4UQT7ATmklviY1O6j+M3WLV4+Lys7e28gbY4nzRKGxDrvs90h9dzfzLsxRpmbsSlLJxgDiLvbp+kNSwPeOEJdI0HumvoX7d7kfUClZuZJjWE91E72J/FqRNk=
-Received: from SN6PR04MB4640.namprd04.prod.outlook.com (2603:10b6:805:a4::19)
- by SN6PR04MB4078.namprd04.prod.outlook.com (2603:10b6:805:49::27)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.27; Sun, 3 May
- 2020 14:26:52 +0000
-Received: from SN6PR04MB4640.namprd04.prod.outlook.com
- ([fe80::9cbe:995f:c25f:d288]) by SN6PR04MB4640.namprd04.prod.outlook.com
- ([fe80::9cbe:995f:c25f:d288%6]) with mapi id 15.20.2958.029; Sun, 3 May 2020
- 14:26:52 +0000
-From: Avri Altman <Avri.Altman@wdc.com>
-To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
- <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
- <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
- <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
-Subject: RE: [PATCH v5 6/8] scsi: ufs: add LU Dedicated buffer mode support
- for WriteBooster
-Thread-Topic: [PATCH v5 6/8] scsi: ufs: add LU Dedicated buffer mode support
- for WriteBooster
-Thread-Index: AQHWIT7QsudkATr/C06W3kVb0y94nqiWaxLg
-Date: Sun, 3 May 2020 14:26:51 +0000
-Message-ID: <SN6PR04MB4640EFE86AE1B59795249A2DFCA90@SN6PR04MB4640.namprd04.prod.outlook.com>
-References: <20200503113415.21034-1-stanley.chu@mediatek.com>
- <20200503113415.21034-7-stanley.chu@mediatek.com>
-In-Reply-To: <20200503113415.21034-7-stanley.chu@mediatek.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=wdc.com;
-x-originating-ip: [212.25.79.133]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 02a68f00-fec3-4342-1dd5-08d7ef6e05e5
-x-ms-traffictypediagnostic: SN6PR04MB4078:
-x-microsoft-antispam-prvs: <SN6PR04MB4078F3D973181882A1FF5D07FCA90@SN6PR04MB4078.namprd04.prod.outlook.com>
-wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:8273;
-x-forefront-prvs: 0392679D18
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: I/Uxi7ZKBsXNaauCqsYqjcuExZDc6Z5AlXAIbuI23UeSfnJ5gM1tMQuaaHzAv5CiM8am7h2tQI0aQLr2K+Cjqur/DDmIFJBYxxKg1RD6ZUopyL45Ah0FwtIkZXPcror16N73jyMkLg0lnNeTrgv1RqwfZRdFbXG+VujE/DBWHZJjXs/f7GO0kqc82X3glzFkuWABp1/qF4UHiF+H1eP2b3mBuM4cegid/VmDb9bo7gP/nNR2/IFTBKlC081PTBTcpmIpxI5cPMfNVYSy4n42jeytRbu78EVVLg/ST4j76HjHSB45znQGQfnRdXoLTzD8gkpm/E17CRpMdS/dR6cb9W4n5/UopwM3dl0N+IjesJSNEZXubL/1frcl+PgT1+9oj+P/G9NdAtOUmIgA3hCMd7TdrUbvU6GDrDqtnSph8IVwDM0GOmqHXBH018JWWP/9
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN6PR04MB4640.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(396003)(39850400004)(136003)(346002)(366004)(376002)(66946007)(9686003)(55016002)(7696005)(2906002)(76116006)(186003)(6506007)(26005)(52536014)(71200400001)(33656002)(4326008)(66446008)(66476007)(66556008)(64756008)(7416002)(316002)(5660300002)(54906003)(110136005)(8936002)(86362001)(478600001)(8676002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: NVhb1H4RUWY+sEMikxYTZe9iBPQ7WjnMjGaaJJakZFOH27/H+LXpt4rI9opaCU9JYgKmKQkHD2U0LQhJB/bAiCt9+fcw8Kdm1Rgi3xRDghaUpuCozxHuSy6VUq27tXu58LJe2IOsSdPm5JaiuMA5XrS9MW+FNWoHNUN8gqZR115khrxHxXyQtDuypL4XDl24/1kghDPEsrLJ3HNcgYaACyTVzL9kEEOaQEyFUTHJwOR3V7dNddH1kJZalykE6e2Vp6Aa6oMAV/V1qz29vjy99YZUEqYRlREf+/IbZZzUI9hBFnTVxD7p1Z3XenjqazNqJKZiaVD5sghqfNk1donj1SqJgA0kGZrE8pbKoNgTxqVWf6S6pzbel9NSwiqVDE8FR4/s8wCdZoZa0qqYg7BLOO0foLbPkorSRJNpFkvou2cf5DPy11phsolF10nEsjoaW4ayIr6FHWQ0/i+6qz11PQdR5Sgb80YWYOI2sogHvdTBu8aWdmCgLZEgp9ySKdEyAcIm6xD904/VxYdh6YFfWnan1XttTSyI0GoT7LlbAM51Nq9zowRGiAg+AM8WKh2iSdGsVTROxEzCIu9/72iCppS3Xqmlf0jw1iRkSW/sp2l8WlXzWIEeVqzBK0s6iozTWC7tgVoI1j1bHXPj5z2YmZ2lLc2A5+BCrYOeGOHc8pCDFvQb6RQRoKemo4z3RF+QrPe1ePZbjj+Vz4Vd/LQi9mePlNvHEb31w9K5OsnOFj83TKeA44nEXTOHrqNrB3R8eMAc8lYrHyGFYhP/4yeW1a7l+0aa3Q95THEjL/3//qg=
-x-ms-exchange-transport-forked: True
+ id 1jVGPh-0006db-NC
+ for linux-mediatek@lists.infradead.org; Sun, 03 May 2020 15:20:19 +0000
+Received: from localhost.localdomain (unknown [151.48.155.206])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 9A3F02071C;
+ Sun,  3 May 2020 15:20:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1588519216;
+ bh=14a1Vhpl+yncgVywcXjwc4UmbVXy4zH54tsajo0fQ64=;
+ h=From:To:Cc:Subject:Date:From;
+ b=FNgwMhCN8FuTKN976yRYoJBHDvkRsiZLlLvinEr7shAlRMP0ScX7dIK3v/RD1l6Hk
+ 859a5d0bJqovd1d1MBwuYFLa6AFzW2V92ryTCHhhOEsR6bYB5Ccz3bshlwv2pjbQBN
+ N2/6FRhIBYRJZ6GF2RQbCHaL/SKXM4A/pCQ0lAT4=
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: nbd@nbd.name
+Subject: [PATCH] mt76: mt7615: fix compilation error when CONFIG_PM is not
+ defined
+Date: Sun,  3 May 2020 17:20:11 +0200
+Message-Id: <d2ef4af35397e20ed90570f1fb9a9e346bdbd846.1588519179.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 02a68f00-fec3-4342-1dd5-08d7ef6e05e5
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 May 2020 14:26:51.8118 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ULwqFqKvMX1KzK/hZ1qcJn0tXZlv8msqcMSp3nKxCLPeV3VsTMv/KB4QcwBb/uGiIlfmBG5Ixg4LuhwwteItAw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB4078
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200503_072655_614883_37E5AACE 
-X-CRM114-Status: GOOD (  12.94  )
+X-CRM114-CacheID: sfid-20200503_082017_799071_D2BE1F7D 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -147,48 +72,292 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "bvanassche@acm.org" <bvanassche@acm.org>,
- "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
- "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
- "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "cang@codeaurora.org" <cang@codeaurora.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "beanhuo@micron.com" <beanhuo@micron.com>
+Cc: linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
+ sean.wang@mediatek.com, linux-wireless@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Fix compilation error reported by kbuild robot when CONFIG_PM is not
+defined
+
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ .../net/wireless/mediatek/mt76/mt7615/main.c  | 18 ++--
+ .../net/wireless/mediatek/mt76/mt7615/mcu.c   | 91 ++++++++++---------
+ .../wireless/mediatek/mt76/mt7615/mt7615.h    |  2 +
+ .../net/wireless/mediatek/mt76/mt7615/pci.c   |  7 +-
+ .../net/wireless/mediatek/mt76/mt7615/usb.c   |  7 +-
+ 5 files changed, 67 insertions(+), 58 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+index 61b2afb3fdb8..cfe024b71677 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
+@@ -864,8 +864,9 @@ mt7615_stop_sched_scan(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
+ 	return mt7615_mcu_sched_scan_enable(mphy->priv, vif, false);
+ }
  
-> According to UFS specification, there are two WriteBooster mode of
-> operations: "LU dedicated buffer" mode and "shared buffer" mode.
-> In the "LU dedicated buffer" mode, the WriteBooster Buffer is
-> dedicated to a logical unit.
-> 
-> If the device supports the "LU dedicated buffer" mode, this mode is
-> configured by setting bWriteBoosterBufferType to 00h. The logical
-> unit WriteBooster Buffer size is configured by setting the
-> dLUNumWriteBoosterBufferAllocUnits field of the related Unit
-> Descriptor. Only a value greater than zero enables the WriteBooster
-> feature in the logical unit.
-> 
-> Modify ufshcd_wb_probe() as above description to support LU Dedicated
-> buffer mode.
-> 
-> Note that according to UFS 3.1 specification, the valid value of
-> bDeviceMaxWriteBoosterLUs parameter in Geometry Descriptor is 1,
-> which means at most one LUN can have WriteBooster buffer in "LU
-> dedicated buffer mode". Therefore this patch supports only one
-> LUN with WriteBooster enabled. All WriteBooster related sysfs nodes
-> are specifically mapped to the LUN with WriteBooster enabled in
-> LU Dedicated buffer mode.
-> 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-Reviewed-by: Avri Altman <avri.altman@wdc.com>
+-static int __maybe_unused
+-mt7615_suspend(struct ieee80211_hw *hw, struct cfg80211_wowlan *wowlan)
++#ifdef CONFIG_PM
++static int mt7615_suspend(struct ieee80211_hw *hw,
++			  struct cfg80211_wowlan *wowlan)
+ {
+ 	struct mt7615_dev *dev = mt7615_hw_dev(hw);
+ 	struct mt7615_phy *phy = mt7615_hw_phy(hw);
+@@ -893,7 +894,7 @@ mt7615_suspend(struct ieee80211_hw *hw, struct cfg80211_wowlan *wowlan)
+ 	return err;
+ }
+ 
+-static int __maybe_unused mt7615_resume(struct ieee80211_hw *hw)
++static int mt7615_resume(struct ieee80211_hw *hw)
+ {
+ 	struct mt7615_dev *dev = mt7615_hw_dev(hw);
+ 	struct mt7615_phy *phy = mt7615_hw_phy(hw);
+@@ -928,8 +929,7 @@ static int __maybe_unused mt7615_resume(struct ieee80211_hw *hw)
+ 	return 0;
+ }
+ 
+-static void __maybe_unused
+-mt7615_set_wakeup(struct ieee80211_hw *hw, bool enabled)
++static void mt7615_set_wakeup(struct ieee80211_hw *hw, bool enabled)
+ {
+ 	struct mt7615_dev *dev = mt7615_hw_dev(hw);
+ 	struct mt76_dev *mdev = &dev->mt76;
+@@ -937,13 +937,13 @@ mt7615_set_wakeup(struct ieee80211_hw *hw, bool enabled)
+ 	device_set_wakeup_enable(mdev->dev, enabled);
+ }
+ 
+-static void __maybe_unused
+-mt7615_set_rekey_data(struct ieee80211_hw *hw,
+-		      struct ieee80211_vif *vif,
+-		      struct cfg80211_gtk_rekey_data *data)
++static void mt7615_set_rekey_data(struct ieee80211_hw *hw,
++				  struct ieee80211_vif *vif,
++				  struct cfg80211_gtk_rekey_data *data)
+ {
+ 	mt7615_mcu_update_gtk_rekey(hw, vif, data);
+ }
++#endif /* CONFIG_PM */
+ 
+ const struct ieee80211_ops mt7615_ops = {
+ 	.tx = mt7615_tx,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+index a4d90a8b347a..a62f15863fb4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+@@ -2210,8 +2210,10 @@ int __mt7663_load_firmware(struct mt7615_dev *dev)
+ 		return -EIO;
+ 	}
+ 
+-	if (IS_ENABLED(CONFIG_PM) && mt7615_firmware_offload(dev))
++#ifdef CONFIG_PM
++	if (mt7615_firmware_offload(dev))
+ 		dev->mt76.hw->wiphy->wowlan = &mt7615_wowlan_support;
++#endif /* CONFIG_PM */
+ 
+ 	dev_dbg(dev->mt76.dev, "Firmware init done\n");
+ 
+@@ -2709,48 +2711,6 @@ void m7615_mcu_set_ps_iter(void *priv, u8 *mac, struct ieee80211_vif *vif)
+ 				    &req, sizeof(req), false);
+ }
+ 
+-static int
+-mt7615_mcu_set_bss_pm(struct mt7615_dev *dev, struct ieee80211_vif *vif,
+-		      bool enable)
+-{
+-	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
+-	struct {
+-		u8 bss_idx;
+-		u8 dtim_period;
+-		__le16 aid;
+-		__le16 bcn_interval;
+-		__le16 atim_window;
+-		u8 uapsd;
+-		u8 bmc_delivered_ac;
+-		u8 bmc_triggered_ac;
+-		u8 pad;
+-	} req = {
+-		.bss_idx = mvif->idx,
+-		.aid = cpu_to_le16(vif->bss_conf.aid),
+-		.dtim_period = vif->bss_conf.dtim_period,
+-		.bcn_interval = cpu_to_le16(vif->bss_conf.beacon_int),
+-	};
+-	struct {
+-		u8 bss_idx;
+-		u8 pad[3];
+-	} req_hdr = {
+-		.bss_idx = mvif->idx,
+-	};
+-	int err;
+-
+-	if (vif->type != NL80211_IFTYPE_STATION ||
+-	    !mt7615_firmware_offload(dev))
+-		return -ENOTSUPP;
+-
+-	err = __mt76_mcu_send_msg(&dev->mt76, MCU_CMD_SET_BSS_ABORT,
+-				  &req_hdr, sizeof(req_hdr), false);
+-	if (err < 0 || !enable)
+-		return err;
+-
+-	return __mt76_mcu_send_msg(&dev->mt76, MCU_CMD_SET_BSS_CONNECTED,
+-				   &req, sizeof(req), false);
+-}
+-
+ int mt7615_mcu_set_channel_domain(struct mt7615_phy *phy)
+ {
+ 	struct mt76_phy *mphy = phy->mt76;
+@@ -3279,6 +3239,7 @@ int mt7615_mcu_apply_tx_dpd(struct mt7615_phy *phy)
+ 	return ret;
+ }
+ 
++#ifdef CONFIG_PM
+ int mt7615_mcu_set_hif_suspend(struct mt7615_dev *dev, bool suspend)
+ {
+ 	struct {
+@@ -3312,6 +3273,48 @@ int mt7615_mcu_set_hif_suspend(struct mt7615_dev *dev, bool suspend)
+ }
+ EXPORT_SYMBOL_GPL(mt7615_mcu_set_hif_suspend);
+ 
++static int
++mt7615_mcu_set_bss_pm(struct mt7615_dev *dev, struct ieee80211_vif *vif,
++		      bool enable)
++{
++	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
++	struct {
++		u8 bss_idx;
++		u8 dtim_period;
++		__le16 aid;
++		__le16 bcn_interval;
++		__le16 atim_window;
++		u8 uapsd;
++		u8 bmc_delivered_ac;
++		u8 bmc_triggered_ac;
++		u8 pad;
++	} req = {
++		.bss_idx = mvif->idx,
++		.aid = cpu_to_le16(vif->bss_conf.aid),
++		.dtim_period = vif->bss_conf.dtim_period,
++		.bcn_interval = cpu_to_le16(vif->bss_conf.beacon_int),
++	};
++	struct {
++		u8 bss_idx;
++		u8 pad[3];
++	} req_hdr = {
++		.bss_idx = mvif->idx,
++	};
++	int err;
++
++	if (vif->type != NL80211_IFTYPE_STATION ||
++	    !mt7615_firmware_offload(dev))
++		return -ENOTSUPP;
++
++	err = __mt76_mcu_send_msg(&dev->mt76, MCU_CMD_SET_BSS_ABORT,
++				  &req_hdr, sizeof(req_hdr), false);
++	if (err < 0 || !enable)
++		return err;
++
++	return __mt76_mcu_send_msg(&dev->mt76, MCU_CMD_SET_BSS_CONNECTED,
++				   &req, sizeof(req), false);
++}
++
+ static int
+ mt7615_mcu_set_wow_ctrl(struct mt7615_dev *dev, struct ieee80211_vif *vif,
+ 			bool suspend, struct cfg80211_wowlan *wowlan)
+@@ -3529,3 +3532,5 @@ int mt7615_mcu_update_gtk_rekey(struct ieee80211_hw *hw,
+ 	return __mt76_mcu_skb_send_msg(&dev->mt76, skb,
+ 				       MCU_UNI_CMD_OFFLOAD, true);
+ }
++#endif /* CONFIG_PM */
++
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+index d3a83f3ed54e..af897fe5c508 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+@@ -534,12 +534,14 @@ int mt7615_driver_own(struct mt7615_dev *dev);
+ int mt7615_init_debugfs(struct mt7615_dev *dev);
+ int mt7615_mcu_wait_response(struct mt7615_dev *dev, int cmd, int seq);
+ 
++#ifdef CONFIG_PM
+ int mt7615_mcu_set_hif_suspend(struct mt7615_dev *dev, bool suspend);
+ void mt7615_mcu_set_suspend_iter(void *priv, u8 *mac,
+ 				 struct ieee80211_vif *vif);
+ int mt7615_mcu_update_gtk_rekey(struct ieee80211_hw *hw,
+ 				struct ieee80211_vif *vif,
+ 				struct cfg80211_gtk_rekey_data *key);
++#endif /* CONFIG_PM */
+ 
+ int __mt7663_load_firmware(struct mt7615_dev *dev);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
+index b84eb208c23e..88ff14564521 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
+@@ -66,8 +66,8 @@ static void mt7615_pci_remove(struct pci_dev *pdev)
+ 	pci_free_irq_vectors(pdev);
+ }
+ 
+-static int __maybe_unused mt7615_pci_suspend(struct pci_dev *pdev,
+-					     pm_message_t state)
++#ifdef CONFIG_PM
++static int mt7615_pci_suspend(struct pci_dev *pdev, pm_message_t state)
+ {
+ 	struct mt76_dev *mdev = pci_get_drvdata(pdev);
+ 	struct mt7615_dev *dev = container_of(mdev, struct mt7615_dev, mt76);
+@@ -128,7 +128,7 @@ static int __maybe_unused mt7615_pci_suspend(struct pci_dev *pdev,
+ 	return err;
+ }
+ 
+-static int __maybe_unused mt7615_pci_resume(struct pci_dev *pdev)
++static int mt7615_pci_resume(struct pci_dev *pdev)
+ {
+ 	struct mt76_dev *mdev = pci_get_drvdata(pdev);
+ 	struct mt7615_dev *dev = container_of(mdev, struct mt7615_dev, mt76);
+@@ -168,6 +168,7 @@ static int __maybe_unused mt7615_pci_resume(struct pci_dev *pdev)
+ 
+ 	return err;
+ }
++#endif /* CONFIG_PM */
+ 
+ struct pci_driver mt7615_pci_driver = {
+ 	.name		= KBUILD_MODNAME,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/usb.c b/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
+index 5ed83500541c..f2825b8f4539 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
+@@ -372,8 +372,8 @@ static void mt7663u_disconnect(struct usb_interface *usb_intf)
+ 	ieee80211_free_hw(dev->mt76.hw);
+ }
+ 
+-static int __maybe_unused mt7663u_suspend(struct usb_interface *intf,
+-					  pm_message_t state)
++#ifdef CONFIG_PM
++static int mt7663u_suspend(struct usb_interface *intf, pm_message_t state)
+ {
+ 	struct mt7615_dev *dev = usb_get_intfdata(intf);
+ 
+@@ -394,7 +394,7 @@ static int __maybe_unused mt7663u_suspend(struct usb_interface *intf,
+ 	return 0;
+ }
+ 
+-static int __maybe_unused mt7663u_resume(struct usb_interface *intf)
++static int mt7663u_resume(struct usb_interface *intf)
+ {
+ 	struct mt7615_dev *dev = usb_get_intfdata(intf);
+ 	int err;
+@@ -415,6 +415,7 @@ static int __maybe_unused mt7663u_resume(struct usb_interface *intf)
+ 
+ 	return err;
+ }
++#endif /* CONFIG_PM */
+ 
+ MODULE_DEVICE_TABLE(usb, mt7615_device_table);
+ MODULE_FIRMWARE(MT7663_OFFLOAD_FIRMWARE_N9);
+-- 
+2.26.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
