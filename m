@@ -2,83 +2,140 @@ Return-Path: <SRS0=oHVa=6S=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E339C3A5A9
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2020 10:23:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E156FC3A5A9
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2020 10:38:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2FB62206E6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2020 10:23:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B345720721
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2020 10:38:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NR3k9e8A";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="qr8TqGXl"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2FB62206E6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iziYDM3g";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="HXTBcEEL";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="EaFmLF4d"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B345720721
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k4KHzG9sq58s8czlew2jNMyOwuIpJ3BdJQE9wxkPz3c=; b=NR3k9e8AN/LAWV
-	jZlg+Ak96Mv1doBIzE6m5e98IAPqpsYtEiQ5qi5SXZfkoubJXfNQg00LaFq0KnbhUZT+oCck40485
-	HJGyuFwrlrkpVTrJ533hkFUiJfsOifErNilbeAMtB/BUpdZykn3lBeMRoR7tPhGL9q6vIXQYnC0Mw
-	hIx23RsdYJEZ7wTbAe4MVWq6Pyyr8PZZ6MgJD/8sdQrVvMOaAQLJaNaifL1mYn8m2vPnTpGZ1+KXN
-	m0JQgXsNsJI0iKIcYklT6KcstKLo8A8QJrKlmIm0FnZ/b20vpeifC75bISyOTug9E/0O++sofvsdV
-	nxdFO2IQkttyXdZXlKQw==;
+	List-Owner; bh=S3juwN6sKpRbm9AXWIMN9/qIkeDgjJLfMBn5y45vNIk=; b=iziYDM3gvmSTAu
+	+37qsMOH5WlHvUzn57OzPzLAavT7az7S4LeM2HNvPE+u2BxpO6z0zICgSb0bg3Nloj8Za6Oy0Ma6y
+	Rv1r1GGLlFS19paz4SEMT0BBiShf9aXLeTb9UV0V9l8LB2rU62GWT1qYkb5Lh/g4qmtPg1Fd1y+Jv
+	5jx5ST8y+p4b9Jnk++BePzvxvYsIgQIFj/nJT2KFBFYNgTXbfQe8r5qIXQW1W7Z+4LHpXLR+TPxfZ
+	r4VALBL6OKdjYnbG3nXb6/JvnFVy+VGgHGIr/ulPlico0LA5Dav2xFcQ6fb8kTDqTXcz9hMIWsEUL
+	+jxu9BZ4sVPDOKmfHyIw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jVYGM-0001R1-Qn; Mon, 04 May 2020 10:23:50 +0000
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643])
+	id 1jVYU5-0003f9-NY; Mon, 04 May 2020 10:38:01 +0000
+Received: from esa3.hgst.iphmx.com ([216.71.153.141])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jVYGJ-0001OW-JO
- for linux-mediatek@lists.infradead.org; Mon, 04 May 2020 10:23:49 +0000
-Received: by mail-ej1-x643.google.com with SMTP id s9so13437354eju.1
- for <linux-mediatek@lists.infradead.org>; Mon, 04 May 2020 03:23:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QKIehFHWwvSGI5j1A6FtkuGdpgXvVnZnjyFdcNCcJF8=;
- b=qr8TqGXlb4D2tb0+ne2Da+ZeWmUcoSEUNp75Arx2DUbi1MCd3GWLF4rCWrPThPEsDx
- uATvXfH+QXaCMXKePq4rSWqmBojLlTX07fGXIGiZfDLnP+/l+caHSZMW5gj6wtgBrIO8
- XQvIVysTazIOE/YszOyPGzsa+8HelrXAZw7fHyNfECF1h0pKIOcc8fvpw43AYCAbGMAL
- iILxiWDnpqjfRGXdfeC+nYildxd34pOnkSUxWUypydxTzuDcIiN88MxhTepk4r0YwNkA
- Syo0uLe4P2Pj2ERM6A1tZ2KXpRdsoSpaSti9bwur4qNQYPE3/jhp0fCmXG4zQ0wYyGQq
- Nssg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QKIehFHWwvSGI5j1A6FtkuGdpgXvVnZnjyFdcNCcJF8=;
- b=BQ5teP7Ri3b9C4WEdI9nCMA2Y69kC0DN/lsd7ELYoGpTepkbMvdR6rBbzWFm8JwGuc
- yFMFih9X3EVdQxJ1MYFkTkRHzGCDQ3O/iroIb65MI6V9BNQTDnvoKl9gs3O9BMjlOzKr
- c1FUyUcviovi8OnwMPwm7jVp/E47QvfVn73mEGzQzpoUXfJUkQF22k0gjzyfFWsoD2AR
- yAI47V8fDkQBV6nbO89cCShmJEDeGu5UOhjy+PEaeMp9Pkkpag5iOoeLn+8PsPgRm7cl
- wiS5dkLEW89eCvm04SOYvOJzVy0v/wZaO5R72QbTcR4sHhu0FPAOktN7hAEPuKcdiSdO
- /bZg==
-X-Gm-Message-State: AGi0Pua92WNYTOWjjnhmeNPgGAW3wPcrV5/+D8Il3afzuqrXTV0T7TKL
- BIHr/5FNRbE0G/0YkNT8HirYJTstSkbMqU8Au9E=
-X-Google-Smtp-Source: APiQypLfV/REVA1t9wWKlXZlCIVJ3T/UyzTw6ZnIBS3pGt4uSR3Rf8vhSbrXmFSJEnGjx1c944pfHibLBSi85R8MpYM=
-X-Received: by 2002:a17:906:2503:: with SMTP id
- i3mr13454264ejb.293.1588587825234; 
- Mon, 04 May 2020 03:23:45 -0700 (PDT)
+ id 1jVYU2-0003Yn-CQ; Mon, 04 May 2020 10:37:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1588588679; x=1620124679;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=YtcvFyIT0huslY20lGsT4TivCHLd2S4XYfuuCCT+mqI=;
+ b=HXTBcEELi+LLnAwJw9Qb0tAAiWrTTnO468CZENS126odrHXF1EsM/tK+
+ Zjsz8rE4upk4LiBi0pe+bxLeTmETP4Ttej4VI4S9KdqWqYE6qB9+3wwqV
+ 9BsSi+qLCRNFT/CSqFBQut/dxQlkNJMjg7/qJQ0lC2Jdlnc+D5TlwHIBb
+ /wohBri6kKFVpdMPH81cDXf1SUlZ3olcBl54N1m10r24cjZ+6cA2rRUun
+ DOb3DrEB10TjsWjdT3v24zuO7zbSuOpelyJrXY8B7fmNObCaT099Ixr8s
+ hFK16VPH3ANaSTLU6iuRCgwpAff2a6iKubvQidBVd/fOoSsENYormURss g==;
+IronPort-SDR: bEwr/AM4EbxKbCf4E537pWyhn5pegHvYCqSYYHRaYcCMIQOt990L9Hca+wQ/i2AnvJpUlUBvdU
+ y/neGob+Q+EF1jPAJCGBRic+YetAoBUIUA3gc5Yeh2MRsbI1Ngfcl/4AaSsuk4jGzmfOr5yvVI
+ nsQDP1AtPT1VYt14XidS/7rkmVo7fMZI10OEckwwq7xRfAF+3FMKgNO1RqmsYxnbiIa1xyvxYo
+ mHz1gKbAcsPkAt+i1ePgwYYBecnuymiKSsnIKi8cKU7CpvDRtcHKlmFuw0xM6TCp+/iKlyk2NE
+ aqM=
+X-IronPort-AV: E=Sophos;i="5.73,351,1583164800"; d="scan'208";a="141207765"
+Received: from mail-co1nam11lp2174.outbound.protection.outlook.com (HELO
+ NAM11-CO1-obe.outbound.protection.outlook.com) ([104.47.56.174])
+ by ob1.hgst.iphmx.com with ESMTP; 04 May 2020 18:37:55 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jm8QkHeBkMgpGQTOM+MolKuBZYl0sWERNh4RBEJWbVwd18TXokkxauTaxYszWaBVRD7FyrWZXPV3q4JUHFhYRDL4qt3g1kskJR0eBeWXZV6nWcPlaQXUOjtRTqojvcJiVd93Ki4nfdwU/H4jx7SfQQYRL5cNOwx3lb+4GtIbVE7QGQQhzZC8nBLcP7ihKE83t8q2UzHO/xN/qCyAIWuBXAaDZG7PadyIOpPq2/5CaxXsySXGNu4nDAWOXBwZaFPfN9zDoUWVoPDBQjxIWM/nFlqtP53N9dkqm+D+se4vwk0OYhSav5UqQmz7vovv4AFSRcshGSXAEH1G3KZmasL7rg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hkycn9leYbJdoMtVOEJrpHFImJC1uBicN9TjNATUKfw=;
+ b=P1JqGLQkFnsVt7sdpLiZkvdu+2oYXqFEz1cVbJXKqgHMnxVN8FbB1ueBvtnVe4dBwRBqnRoOF0CdyQf/UbMIRdDI9Kwttn6gdzS39rO4acbshWAfDRGZABYhpqZsLIy/+yxmiYxKF4hejmXnUS165R0+eofJ6E3KwYV8Y+1xUkt8aA4k8f6/jBFszCGvpyLf8bM/kMvQY1/v1nVg/7AS6Zyx/yCgg3ijtRZH49Oi9zetUXLldQAKnVVE46TrfD+lfPA4CKO1VhFt29ZcS50spvAIeZgTAqNGMDBtH7zs9cNl/o4idefH1livsMAgsscs+OX7wCnVZPZZYyr0X5LJIg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=hkycn9leYbJdoMtVOEJrpHFImJC1uBicN9TjNATUKfw=;
+ b=EaFmLF4dXkpDxmBdq4EkRhb9Coi5273PujgS6MCtZzV6NrDhNXTyTnugo36gJNRq1lqRqcD2dHKTDYE7R4iRy1V8mKplG4Sh+GIHh/nHBQSOKmmKsx859E1wHtCDL9kpG0z4q8NraQDKPsVd8SiR3MWFhjqTAvmul2HugX2zfWI=
+Received: from BYAPR04MB4629.namprd04.prod.outlook.com (2603:10b6:a03:14::14)
+ by BYAPR04MB5815.namprd04.prod.outlook.com (2603:10b6:a03:105::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.20; Mon, 4 May
+ 2020 10:37:52 +0000
+Received: from BYAPR04MB4629.namprd04.prod.outlook.com
+ ([fe80::75ba:5d7d:364c:5ae1]) by BYAPR04MB4629.namprd04.prod.outlook.com
+ ([fe80::75ba:5d7d:364c:5ae1%6]) with mapi id 15.20.2958.029; Mon, 4 May 2020
+ 10:37:52 +0000
+From: Avri Altman <Avri.Altman@wdc.com>
+To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
+ <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
+ <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
+ <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
+Subject: RE: [PATCH v5 1/8] scsi: ufs: enable WriteBooster on some pre-3.1 UFS
+ devices
+Thread-Topic: [PATCH v5 1/8] scsi: ufs: enable WriteBooster on some pre-3.1
+ UFS devices
+Thread-Index: AQHWIT7Rzk4bO01K2UKDHMRnVyvfCKiXtsRw
+Date: Mon, 4 May 2020 10:37:52 +0000
+Message-ID: <BYAPR04MB4629F2C00ABAB512DB833232FCA60@BYAPR04MB4629.namprd04.prod.outlook.com>
+References: <20200503113415.21034-1-stanley.chu@mediatek.com>
+ <20200503113415.21034-2-stanley.chu@mediatek.com>
+In-Reply-To: <20200503113415.21034-2-stanley.chu@mediatek.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mediatek.com; dkim=none (message not signed)
+ header.d=none;mediatek.com; dmarc=none action=none header.from=wdc.com;
+x-originating-ip: [212.25.79.133]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-ht: Tenant
+x-ms-office365-filtering-correlation-id: ee7ea914-50f8-428a-c6a3-08d7f0173303
+x-ms-traffictypediagnostic: BYAPR04MB5815:
+x-microsoft-antispam-prvs: <BYAPR04MB581506B1E998CB38F1B9268BFCA60@BYAPR04MB5815.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:3826;
+x-forefront-prvs: 03932714EB
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: xSye2/D+b21x9goO8VXasZUT0l8HvasbcLSBPHMlTge0FrH/CFERqZl852QweiNsOkSG8ONA0gUC3+xrP8bIft+S+Yp6Tv/S8VhwVJFwb43sSS1R1xhBbcTRRIopavBsAOUwPfWHwUZohdunq2upU7GWTiFLYwpe6a5t+0lgskVpc2ZEiFiLdZvrGX5mWSBcoZApNO1n+03L3atKGr4qfbi3KzVpMjRjpOTJl5nANVj0khCncigSlj2c+x3hZSLVVP8f2fSdXXqkrjpDkRbSX5pg+ccFjkA4m9tWiGGsDbchpbh0RbbksrTGH5mS9fvNs+kdsewa6NghMlzJmTRdUzFWuxWYjNKPBMX12LoOGJQgpJmBbSIgkAtmjE/scVT6y/spjJugrt1Etk5wjKEkBTJzKvJR7ovaq5CayxUN+lresUUg7QkZ7UpXPxHNI/kd
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BYAPR04MB4629.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFTY:;
+ SFS:(4636009)(376002)(39860400002)(136003)(366004)(396003)(346002)(64756008)(71200400001)(186003)(66946007)(9686003)(76116006)(26005)(52536014)(55016002)(8936002)(54906003)(110136005)(4326008)(316002)(478600001)(33656002)(6506007)(7696005)(66556008)(66446008)(66476007)(2906002)(5660300002)(8676002)(7416002)(86362001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: //paPGaqyNUB8uO3eDL4MW8SmTw510WMt11D0YFdn+Er1s1fcw2yPjB5s8vQZLXY67LKjg+pP4sBl9xxsyC4j5W7lh8ov6hx8iKOc3mFWtMOLtpe8BcHVTkODiG3hq25BsunjIG/2OxSJasYw5iGtoZBwNlwTvbvUs/Sk+ukIq+PCgFbZTUT6MlG1CrDh3i6hf+Y/ls45M1c/YQa3dNleL9dWnVWje+AG8zUv+U/oJu0KO7/kHzts5kp5u79AcbYYUWgIz6sULKmqUGSrpXWKjjIeQavFx8AWVHxLpsN+V2Vi8r78gWYsoRd42Tev2bCd01iPl+Gmv9Gs76B2xcWokeZdn8AHnGHVWdBy0m7P9cNIWmx+rk86ukQX27T+prX505tQcTXeqsIE7XjhHFA0DaQ8ELRJNLa9I5sJrW9IdixsPyhfS+R10TfYQcqr1WXoNGAYQGFjxx7lTVG7XGp59bblunPZAMqMlMAHejxFkXzQZWUVtkwV5QsKIgUJ6t1Wxb1q4jEg5UyAz5pprwSKBRUumGcH/Ma7kAi7ZTtWYpSaw+K7MAzPLTLDMSM8tr8eSTDGns7ymrO3jVYp3JLgEhpB5EbTNdXT0BlYU0N9JC3aTq+CbNb5f2DjjxUNwJ8bMbDjuAJHdpTmFt/PAQWTOXZWcc2H2m9Axw6u9K2pxlDWRC36XhupnYGLnQ270S7zse1kQep8NLcZBGNVzXyydU9TCUpCnA82UYWI3hbw3qAz+OZIlTcomRx9nDlAKqsEHIbPtJZBy7J5BJv8JfFnqcLk3cKQwXYvCGyQyxJTu0=
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
-References: <20200425120207.5400-1-dqfext@gmail.com>
-In-Reply-To: <20200425120207.5400-1-dqfext@gmail.com>
-From: Vladimir Oltean <olteanv@gmail.com>
-Date: Mon, 4 May 2020 13:23:34 +0300
-Message-ID: <CA+h21hpeJK8mHduKoWn5rbmz=BEz_6HQdz3Xf63NsXpZxsky0A@mail.gmail.com>
-Subject: Re: [RFC PATCH net-next] net: dsa: mt7530: fix roaming from DSA user
- ports
-To: DENG Qingfang <dqfext@gmail.com>
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ee7ea914-50f8-428a-c6a3-08d7f0173303
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 May 2020 10:37:52.5554 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 0azwE3QTOIOHDw9GsFQ5SYRtlRFQqTuZtUtMCpJhNR02QmTZdrzBSvWL0eFX0Q9zUC0/fRqf0lwaY9BoP61NXA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5815
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200504_032347_639174_93BD7AD4 
-X-CRM114-Status: GOOD (  28.74  )
+X-CRM114-CacheID: sfid-20200504_033758_451815_C0B8632B 
+X-CRM114-Status: GOOD (  11.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,180 +147,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
- riddlariddla@hotmail.com, Paul Fertser <fercerpav@gmail.com>,
- netdev <netdev@vger.kernel.org>, Sean Wang <sean.wang@mediatek.com>,
- Russell King <linux@armlinux.org.uk>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Stijn Segers <foss@volatilesystems.org>, Szabolcs Hubai <szab.hu@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "David S . Miller" <davem@davemloft.net>, Tom James <tj17@me.com>
+Cc: "bvanassche@acm.org" <bvanassche@acm.org>,
+ "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
+ "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
+ "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "cang@codeaurora.org" <cang@codeaurora.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ "beanhuo@micron.com" <beanhuo@micron.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Qingfang,
-
-On Sat, 25 Apr 2020 at 15:03, DENG Qingfang <dqfext@gmail.com> wrote:
->
-> When a client moves from a DSA user port to a software port in a bridge,
-> it cannot reach any other clients that connected to the DSA user ports.
-> That is because SA learning on the CPU port is disabled, so the switch
-> ignores the client's frames from the CPU port and still thinks it is at
-> the user port.
->
-> Fix it by enabling SA learning on the CPU port.
->
-> To prevent the switch from learning from flooding frames from the CPU
-> port, set skb->offload_fwd_mark to 1 for unicast and broadcast frames,
-> and let the switch flood them instead of trapping to the CPU port.
-> Multicast frames still need to be trapped to the CPU port for snooping,
-> so set the SA_DIS bit of the MTK tag to 1 when transmitting those frames
-> to disable SA learning.
->
-> Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
-> Signed-off-by: DENG Qingfang <dqfext@gmail.com>
-> ---
-
-I think enabling learning on the CPU port would fix the problem
-sometimes, but not always. (actually nothing can solve it always, see
-below)
-The switch learns the new route only if it receives any packets from
-the CPU port, with a SA equal to the station you're trying to reach.
-But what if the station is not sending any traffic at the moment,
-because it is simply waiting for connections to it first (just an
-example)?
-Unless there is any traffic already coming from the destination
-station too, your patch won't work.
-I am currently facing a similar situation with the ocelot/felix
-switches, but in that case, enabling SA learning on the CPU port is
-not possible.
-The way I dealt with it is by forcing a flush of the FDB entries on
-the port, in the following scenarios:
-- link goes down
-- port leaves its bridge
-So traffic towards a destination that has migrated away will
-temporarily be flooded again (towards the CPU port as well).
-There is still one case which isn't treated using this approach: when
-the station migrates away from a switch port that is not directly
-connected to this one. So no "link down" events would get generated in
-that case. We would still have to wait until the address expires in
-that case. I don't think that particular situation can be solved.
-My point is: if we agree that this is a larger problem, then DSA
-should have a .port_fdb_flush method and schedule a workqueue whenever
-necessary. Yes, it is a costly operation, but it will still probably
-take a lot less than the 300 seconds that the bridge configures for
-address ageing.
-
-Thoughts?
-
->  drivers/net/dsa/mt7530.c |  9 ++-------
->  drivers/net/dsa/mt7530.h |  1 +
->  net/dsa/tag_mtk.c        | 15 +++++++++++++++
->  3 files changed, 18 insertions(+), 7 deletions(-)
->
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 5c444cd722bd..34e4aadfa705 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -628,11 +628,8 @@ mt7530_cpu_port_enable(struct mt7530_priv *priv,
->         mt7530_write(priv, MT7530_PVC_P(port),
->                      PORT_SPEC_TAG);
->
-> -       /* Disable auto learning on the cpu port */
-> -       mt7530_set(priv, MT7530_PSC_P(port), SA_DIS);
-> -
-> -       /* Unknown unicast frame fordwarding to the cpu port */
-> -       mt7530_set(priv, MT7530_MFC, UNU_FFP(BIT(port)));
-> +       /* Unknown multicast frame forwarding to the cpu port */
-> +       mt7530_rmw(priv, MT7530_MFC, UNM_FFP_MASK, UNM_FFP(BIT(port)));
->
->         /* Set CPU port number */
->         if (priv->id == ID_MT7621)
-> @@ -1294,8 +1291,6 @@ mt7530_setup(struct dsa_switch *ds)
->         /* Enable and reset MIB counters */
->         mt7530_mib_reset(ds);
->
-> -       mt7530_clear(priv, MT7530_MFC, UNU_FFP_MASK);
-> -
->         for (i = 0; i < MT7530_NUM_PORTS; i++) {
->                 /* Disable forwarding by default on all ports */
->                 mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
-> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-> index 979bb6374678..82af4d2d406e 100644
-> --- a/drivers/net/dsa/mt7530.h
-> +++ b/drivers/net/dsa/mt7530.h
-> @@ -31,6 +31,7 @@ enum {
->  #define MT7530_MFC                     0x10
->  #define  BC_FFP(x)                     (((x) & 0xff) << 24)
->  #define  UNM_FFP(x)                    (((x) & 0xff) << 16)
-> +#define  UNM_FFP_MASK                  UNM_FFP(~0)
->  #define  UNU_FFP(x)                    (((x) & 0xff) << 8)
->  #define  UNU_FFP_MASK                  UNU_FFP(~0)
->  #define  CPU_EN                                BIT(7)
-> diff --git a/net/dsa/tag_mtk.c b/net/dsa/tag_mtk.c
-> index b5705cba8318..d6619edd53e5 100644
-> --- a/net/dsa/tag_mtk.c
-> +++ b/net/dsa/tag_mtk.c
-> @@ -15,6 +15,7 @@
->  #define MTK_HDR_XMIT_TAGGED_TPID_8100  1
->  #define MTK_HDR_RECV_SOURCE_PORT_MASK  GENMASK(2, 0)
->  #define MTK_HDR_XMIT_DP_BIT_MASK       GENMASK(5, 0)
-> +#define MTK_HDR_XMIT_SA_DIS            BIT(6)
->
->  static struct sk_buff *mtk_tag_xmit(struct sk_buff *skb,
->                                     struct net_device *dev)
-> @@ -22,6 +23,9 @@ static struct sk_buff *mtk_tag_xmit(struct sk_buff *skb,
->         struct dsa_port *dp = dsa_slave_to_port(dev);
->         u8 *mtk_tag;
->         bool is_vlan_skb = true;
-> +       unsigned char *dest = eth_hdr(skb)->h_dest;
-> +       bool is_multicast_skb = is_multicast_ether_addr(dest) &&
-> +                               !is_broadcast_ether_addr(dest);
->
->         /* Build the special tag after the MAC Source Address. If VLAN header
->          * is present, it's required that VLAN header and special tag is
-> @@ -47,6 +51,10 @@ static struct sk_buff *mtk_tag_xmit(struct sk_buff *skb,
->                      MTK_HDR_XMIT_UNTAGGED;
->         mtk_tag[1] = (1 << dp->index) & MTK_HDR_XMIT_DP_BIT_MASK;
->
-> +       /* Disable SA learning for multicast frames */
-> +       if (unlikely(is_multicast_skb))
-> +               mtk_tag[1] |= MTK_HDR_XMIT_SA_DIS;
-> +
->         /* Tag control information is kept for 802.1Q */
->         if (!is_vlan_skb) {
->                 mtk_tag[2] = 0;
-> @@ -61,6 +69,9 @@ static struct sk_buff *mtk_tag_rcv(struct sk_buff *skb, struct net_device *dev,
+> 
+>  static void ufshcd_wb_probe(struct ufs_hba *hba, u8 *desc_buf)
 >  {
->         int port;
->         __be16 *phdr, hdr;
-> +       unsigned char *dest = eth_hdr(skb)->h_dest;
-> +       bool is_multicast_skb = is_multicast_ether_addr(dest) &&
-> +                               !is_broadcast_ether_addr(dest);
->
->         if (unlikely(!pskb_may_pull(skb, MTK_HDR_LEN)))
->                 return NULL;
-> @@ -86,6 +97,10 @@ static struct sk_buff *mtk_tag_rcv(struct sk_buff *skb, struct net_device *dev,
->         if (!skb->dev)
->                 return NULL;
->
-> +       /* Only unicast or broadcast frames are offloaded */
-> +       if (likely(!is_multicast_skb))
-> +               skb->offload_fwd_mark = 1;
+> +       if (!ufshcd_is_wb_allowed(hba))
+> +               return;
 > +
->         return skb;
->  }
->
-> --
-> 2.26.1
->
+> +       if (hba->desc_size.dev_desc <=
+> DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP)
+Should be 
+DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP + 4 
+
+> +               goto wb_disabled;
+> +
+>         hba->dev_info.d_ext_ufs_feature_sup =
+>                 get_unaligned_be32(desc_buf +
+>                                    DEVICE_DESC_PARAM_EXT_UFS_FEATURE_SUP);
+
+
+> 
+>  static int ufs_get_device_desc(struct ufs_hba *hba)
+> @@ -6862,10 +6890,6 @@ static int ufs_get_device_desc(struct ufs_hba
+> *hba)
+> 
+>         model_index = desc_buf[DEVICE_DESC_PARAM_PRDCT_NAME];
+> 
+> -       /* Enable WB only for UFS-3.1 */
+> -       if (dev_info->wspecversion >= 0x310)
+> -               ufshcd_wb_probe(hba, desc_buf);
+> -
+>         err = ufshcd_read_string_desc(hba, model_index,
+>                                       &dev_info->model, SD_ASCII_STD);
+>         if (err < 0) {
+> @@ -6874,6 +6898,16 @@ static int ufs_get_device_desc(struct ufs_hba
+> *hba)
+>                 goto out;
+>         }
+> 
+> +       ufs_fixup_device_setup(hba);
+I don't think you should "hide" ufs_fixup_device_setup inside ufs_get_device_desc.
 
 Thanks,
--Vladimir
+Avri
 
 _______________________________________________
 Linux-mediatek mailing list
