@@ -6,18 +6,18 @@ X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 87957C3A5A9
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2020 10:39:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E90D2C3A5A9
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2020 10:56:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5842C20721
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2020 10:39:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A979120757
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2020 10:56:09 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SWZlCyH5";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="K+d/jKw0";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="SFOqvkZv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5842C20721
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PnRjMZnh";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=wdc.com header.i=@wdc.com header.b="BTrVySsc";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sharedspace.onmicrosoft.com header.i=@sharedspace.onmicrosoft.com header.b="hcomA+Z5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A979120757
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,77 +26,77 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D1Xlgmy7b1WcGZK0xsiy/xeuD8BrT0VAz3E7oUAghpk=; b=SWZlCyH5KDiUMb
-	JyM2ZifbT+IfXBh+yd4TWcdUj58JmWNeCeMVnmXD3VcgAYPp6NL615fOD3LNd5bhxyDxxH5OGLDc8
-	kywojSOHkoQb5CX+tJB0HPZrsKPO6pBIib5zCqV8canPfrZI3PZYFEm+jNcM9CP+cYuVkkrulLQ5D
-	Vd3cKpSzSR/nol3mD+O3vDKxxovKcB9uHV0aI0UjboexAK468bhy6ga/X1D5LPkZcKob72fV/ZL8y
-	HI+Yjyg8ABU/Egs7o7PiTch1ydGMwX7m/6tRqUyNCHBG0mpsqNuhusCS2noVVL5xTAQpFBk0bloKX
-	dF65+3NQqLr5ijhmw95Q==;
+	List-Owner; bh=XuVVPnyuZhfGRuDlyov+H4yVdPKd3HTl9T3vYZKtu8U=; b=PnRjMZnhLCTAo1
+	2184q3kOnZf5HFnDdFvZoaCzfFvU2GEllVp3B9M3fKDUZx3gwSZT2O9jdZvQud2XISuLQLtBaHQC8
+	h77JZVxqcUx06qNgDEbxIgLnhnY90Q3tpTlIDP6v24BUIo6gbc8dFC68FJkIOHukr0nL0SFQc80M8
+	0udWkm3IHeUT4dr4S9PEzfJ2wgwD4ditKf1w+7dfh6J3+d2tD8gn6vM7rHrp/LiqoqUc+heFYniZZ
+	Js44RIILZRNqieMLtjBnjVMNW1IH4ICWxgy9hmf0OWIzemT1c+sUlEGmVwROZlaYibV7i7JJC+ulJ
+	hTHPqCqcfVWxbj9J9VbQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jVYV6-00048s-3K; Mon, 04 May 2020 10:39:04 +0000
-Received: from esa1.hgst.iphmx.com ([68.232.141.245])
+	id 1jVYlS-0000GO-Sp; Mon, 04 May 2020 10:55:58 +0000
+Received: from esa6.hgst.iphmx.com ([216.71.154.45])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jVYV3-00048Q-Gl; Mon, 04 May 2020 10:39:02 +0000
+ id 1jVYlM-00005o-5N; Mon, 04 May 2020 10:55:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
  d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
- t=1588588741; x=1620124741;
+ t=1588589752; x=1620125752;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=FwXG+TMXpunyUVasdokpmJi7frTG6neYxSD/E/O+P/c=;
- b=K+d/jKw07462IHYmthDiNevrvx9Vv9yLD0td0ivrJXFLEmhmgpj0WNpY
- AtFB9/Y6CZcdm3n0SQh/oaKfmRpxLnQ+jmYsrucMu4HFVkplKtVNtxgBi
- RPCjJ6bQX51xnk8YsBSswupWrMSIETljo5gu2Cj2tL8j86AM+C/z3HEXF
- 09W7Xon83tLrmruP7XxLjKxIWOyGNRaAlaG0gblhmjDP5M7PjRlyeVBKQ
- 0KM+g2aRhvA0rDXf5mUsLCVXURuke1+2GjmrH+ei8R6l7kOFQMEDLpdUh
- KNC0H36qHo1sm6qTqKXuZZ+Pj3x56FON54ee5b7CFurWub2k21ivO53RU A==;
-IronPort-SDR: mAo7J/fFckCqxXpG4f9exYON51t2J6LaW/P/4K+hBGwsQPELkrffUOMUcBcI7gDdM+iUetOkSQ
- yRZ1wr7XJ2F+VsceKK925BHkBtGxYSqxjBVUY+Ovcvl3tMMqMsNvjLy3tt2Nnz6mKTexIx2Anp
- LN3Oyf+uzJWFCrPxpVfcjlbhfP0v7NQEg26b/wxUtmA4fJAG7dEZGk93oHzMwNuL94vvUf2gfq
- UnIX2+pybq+a+Uf/eHRLA9eZHCyQV5F9Zcmi85CdQeG+N6fX5X1me/EGcZTBo3FHowGn54Luyb
- 0NM=
-X-IronPort-AV: E=Sophos;i="5.73,351,1583164800"; d="scan'208";a="245702817"
-Received: from mail-dm6nam12lp2177.outbound.protection.outlook.com (HELO
- NAM12-DM6-obe.outbound.protection.outlook.com) ([104.47.59.177])
- by ob1.hgst.iphmx.com with ESMTP; 04 May 2020 18:38:57 +0800
+ bh=Oh4h2+4WZfPbgFoCzN2W2S5zx5A2o0hiWxokVRUC5Q4=;
+ b=BTrVySscfblW9cXI8QVmM3y30QhI5fun5eWaejwbPuXCh3du5AG2CGhN
+ aiNwkdIMF4ltGf91ldpU+uRsj+c70iKcC3SLu7Vt/3W7YIzSAUUSQGfmB
+ Xg+ErluUyxC52r1PWOv8A9F8FUH99TazedNSnKIfnQ0OWwLrqOlAOdCUT
+ 5pEUTE6uDKhpAqp6c2T9lkgZ8xW94YIiMNrFMQEOv16dNdyfk+I+zh3B2
+ af4X+RW/GJM2jE3QwLWztXz2NUQ0thGN+qyb1uVTeK/jkEbeASnnfzzUq
+ rah5njpSz98mbFxjyBIeTqWM9F/R+kyWMVgu3LSzio4ftZvb2K4AaEMHM Q==;
+IronPort-SDR: Ln/eydCr9O3sDbfek55OFSjYHtspaSrNBCJZQD3ttPDoxTfh7PdeGhaucQFz3Kym1ulu8j1Gkv
+ Kni3t9JI1swq4oac9SYFcjMfd3v8/h4TivPbnxSzt3FDJ42Nf8vTFl5TyyHPYyptI6Tm0Hy3Zr
+ VdpNfHmQrdbChZnN37YQxodXcYbHyJo2lfSD4P4KkkLVm881+0DJgW9kBIFarviTEFe5qvhwbd
+ zyPI/dGD4nPZEg1KMc57whwVq1t7HqlczaAGUKV5yS0pzVu1cNoQrlI1ICIXqoSkbSoirWXgXO
+ 7oM=
+X-IronPort-AV: E=Sophos;i="5.73,351,1583164800"; d="scan'208";a="138292890"
+Received: from mail-co1nam04lp2051.outbound.protection.outlook.com (HELO
+ NAM04-CO1-obe.outbound.protection.outlook.com) ([104.47.45.51])
+ by ob1.hgst.iphmx.com with ESMTP; 04 May 2020 18:55:47 +0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=loUPuMA8Y7W1e93H41wwCXI8SqCEes4Hv4kIcvVSdvFXbTzhy0lrKUFrCrwgHo+0mtnFqGE2SgC2sB37wDtVKJscshuVpz7WCcYtp7rZqSpqdqlcVGY4OGoAmei4UHhRrSXWPsMQMCZ1vI+25YOGEhpdnd8MgoAHW6P3b9nwtH2wRSpw6D9fl5c6m5Gi1RDTPTH1rC8zNqkgFeG68nEMS5YEqq4GHZe6n9qsttAGSzSXQaDRZZLwno6FAx9udiATqFzg3HBziXxQ9Sl0Bt8gomeCtgCvYVji8hizJ2sD7PSJtDJ8KWZ2HxG2dWlQSTterHVfqOxwCwcvZ0wJuL3KgQ==
+ b=n0mZpg5CVrBCxtpsGhiqBSrDs6U2zO5k+xY9y2v2Au5LFMn1LEMUqKaUB2e7srUQMlWz9VKiNJFiGmJHdWVtMZPT8DS9OSNOBDvmM9xY4uUzr+xBSEFpnoZRuDVWM6a1rP+xgQ7xN6i3iwJyxmqUbuwFJtAJUePEq1GoElhsFp8VbSrC9/kzBL+HzS5eRHmisj5qi0qPj1BgKUGqKzoxz4/r8jf3/W9svOenK+AYAb0/5gs4KK/REZjZQBP7ATvIlvAjmqJ3hj9TRLF1uH9IgvyN3g9JXcHzdmMbVkHKhQyTkWY0cvC6qq49PTgUZyoIjz9+VnELgtKhkbJcERhYCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TTMP2XBQGRYyLVgiFyEHb2BSzLlGfqhcihiAh4a3UKk=;
- b=lJZOk/pEeKFP9L7GWZkI8V8RP71dnnHngiCXPFJMwRqafYLqSEAqBi5ZBouoWMxfaZbb5RlGOH+UBWpaaw/nh2tuR14l690juEdgkcKcvrIHwlfU+dUNXQ/S7q1hoHO7bWLowdPq6k5ZL9B5lJKR+5tJA0JIRoUp7rifDhLQxDYAF8lk0attNtYk7J5egzEEJ2N/TDcQ9JXxEAHtPXjGTkotcoT8mLMQgh7jiO6YqoDs77rbWD0K/NNNCNolnByXUzKoJrXY937RIX940xbTCYuylh8oOvaaO59OKhn/vuyHNETxnkCyd4I75Gb/RwybH9CwHqsi71dSc9M0YA7AoQ==
+ bh=R1IHuRbl5+OWrYQQMS7uZLA68oV+zHatijsoxTF/oz8=;
+ b=WDbP2q+SZSXVnyJ59gKzyvQyGRT0KNiZs6xbbD0O+1371UZJqKHLzhAnqOuhiOGTGK+BdNESlUDzjhaLx5bczR4KSy5/47ZB/80Dm2qSabJn3NahEikTg8sMpqsXuNQEiAIsfrZtEeV6RHKhLY1N1HttIfcU2PIxahHOddGJb2PJwynO9bLYApAm+MBBWZY9rsux2lx+JC9MTY7OLTpOEuPfqhipg0p5dZIONm24+2b8rWeAxyojjRRTGifGlfxN6kxS0Chw1iJZctlGFriC1NNUQ/KRIDebhSgbEghXuXV2zv6SW2azokcG3jxzzfTjzgq7ttV9LIsQzkw+DWAcug==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
  header.d=wdc.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TTMP2XBQGRYyLVgiFyEHb2BSzLlGfqhcihiAh4a3UKk=;
- b=SFOqvkZvEUZ3f8mbQyDUyCAfZVjYm/3ePPeGbS9VRzFNvy/9WP2as3WVoZCqNE4xd8FIZp1fEMHg1Rhez2roAs3RlT8Hj1LqRBPMgE6TL3MGR7WlfMUyLNsMdCN7xtji8P1f/xys9cTdf5p/SL7ZBjHRqw9hwZV858VP9KXVGdE=
-Received: from BYAPR04MB4629.namprd04.prod.outlook.com (2603:10b6:a03:14::14)
- by BYAPR04MB5815.namprd04.prod.outlook.com (2603:10b6:a03:105::21)
+ bh=R1IHuRbl5+OWrYQQMS7uZLA68oV+zHatijsoxTF/oz8=;
+ b=hcomA+Z5JrNQ0d3N/n/ceo8YVXPxOop6acjK0aarsg7JgW5vptGlY/xs6GjMfA8DEXp1AQBjTlM5850IypI3ZFy+GlNIGGsa/wFMOzG+OlUQJSKWII6BSXeAIzAwplfN81YzcEArqrmXBp/xK3XV8mYqCJKTLoiuyIOj0wrbR04=
+Received: from SN6PR04MB4640.namprd04.prod.outlook.com (2603:10b6:805:a4::19)
+ by SN6PR04MB4464.namprd04.prod.outlook.com (2603:10b6:805:b2::11)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.20; Mon, 4 May
- 2020 10:38:56 +0000
-Received: from BYAPR04MB4629.namprd04.prod.outlook.com
- ([fe80::75ba:5d7d:364c:5ae1]) by BYAPR04MB4629.namprd04.prod.outlook.com
- ([fe80::75ba:5d7d:364c:5ae1%6]) with mapi id 15.20.2958.029; Mon, 4 May 2020
- 10:38:56 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.27; Mon, 4 May
+ 2020 10:55:45 +0000
+Received: from SN6PR04MB4640.namprd04.prod.outlook.com
+ ([fe80::9cbe:995f:c25f:d288]) by SN6PR04MB4640.namprd04.prod.outlook.com
+ ([fe80::9cbe:995f:c25f:d288%6]) with mapi id 15.20.2958.030; Mon, 4 May 2020
+ 10:55:45 +0000
 From: Avri Altman <Avri.Altman@wdc.com>
 To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
  <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
  <martin.petersen@oracle.com>, "alim.akhtar@samsung.com"
  <alim.akhtar@samsung.com>, "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
  "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
-Subject: RE: [PATCH v5 2/8] scsi: ufs: introduce fixup_dev_quirks vops
-Thread-Topic: [PATCH v5 2/8] scsi: ufs: introduce fixup_dev_quirks vops
-Thread-Index: AQHWIT7PzG7CXHcWEEulPGYE2+Uu5aiXvauA
-Date: Mon, 4 May 2020 10:38:56 +0000
-Message-ID: <BYAPR04MB46294C86DB9BD1A91256F39BFCA60@BYAPR04MB4629.namprd04.prod.outlook.com>
+Subject: RE: [PATCH v5 4/8] scsi: ufs-mediatek: add fixup_dev_quirks vops
+Thread-Topic: [PATCH v5 4/8] scsi: ufs-mediatek: add fixup_dev_quirks vops
+Thread-Index: AQHWIT7UcNDlRrxlf0S0WlJUL1qmaqiXwh9Q
+Date: Mon, 4 May 2020 10:55:44 +0000
+Message-ID: <SN6PR04MB46408BF365ADE7F226275BC0FCA60@SN6PR04MB4640.namprd04.prod.outlook.com>
 References: <20200503113415.21034-1-stanley.chu@mediatek.com>
- <20200503113415.21034-3-stanley.chu@mediatek.com>
-In-Reply-To: <20200503113415.21034-3-stanley.chu@mediatek.com>
+ <20200503113415.21034-5-stanley.chu@mediatek.com>
+In-Reply-To: <20200503113415.21034-5-stanley.chu@mediatek.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -106,35 +106,34 @@ authentication-results: mediatek.com; dkim=none (message not signed)
 x-originating-ip: [212.25.79.133]
 x-ms-publictraffictype: Email
 x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 791adb35-f763-4f3b-d22f-08d7f0175945
-x-ms-traffictypediagnostic: BYAPR04MB5815:
-x-microsoft-antispam-prvs: <BYAPR04MB581511CE2BFADDCBCB92D3B4FCA60@BYAPR04MB5815.namprd04.prod.outlook.com>
+x-ms-office365-filtering-correlation-id: 0bb70594-c25b-46a9-ef8a-08d7f019b23a
+x-ms-traffictypediagnostic: SN6PR04MB4464:
+x-microsoft-antispam-prvs: <SN6PR04MB446415C053937DE91B2ADDE7FCA60@SN6PR04MB4464.namprd04.prod.outlook.com>
 wdcipoutbound: EOP-TRUE
-x-ms-oob-tlc-oobclassifiers: OLM:1728;
+x-ms-oob-tlc-oobclassifiers: OLM:2399;
 x-forefront-prvs: 03932714EB
 x-ms-exchange-senderadcheck: 1
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: o4pChki1X8iMKkpLsr1BzPW50MAko4+Tzc5tYqQpR0h332x7SGEY/WsUGGX9+wIr5HT6KQNnzVMAQexmVZVhcdBnSfwNXogenkSnQF1sDyTEN3Lp4xJuxpLM1aCAIa1svL7wjgeJgHyRJzV9vlvXORFnfRuCpgWWL05u7U1WViBV/aAEy5m+pAWbGHI/mJLTlt5e3QaVIjWLHySlrwhZx5tbmg37zL7ki8lrm9RUfCqDFJTuuXL2JzwnpGJ9ZkLaZjXm+wQ742W7Q8NHcr4LkF9V723iSIkEl6ngCKHHUC8X346eD/K2YwBac9MRmlO/0YsOZrDTlZNbmApdzSd1zkJnD5HtHgls6C8Qu6+sGDDwe2CgE7LtK5Q/PutXRYfyN3PI1vMGSho7/TGhHLx631vpFRIP/58heG54iciy7/hIEmDUaoL7H93Zr7HRFyMs
+x-microsoft-antispam-message-info: sVYxk6HOTY93j7bP2XvIhFvJyuiiEW6zb8SfCIRgsHwNbctaOK6bVwUrAUvkASId4+2cRSmf8w8Mz/NmT4yIaueS5exwKDNQJlN+TJMz7/pHWum5lpbdM74QylDOKGdXc9/oU9RJHHBhGlnXczHf0Wxf2s5f3Ghd5RtnebZT/pdUHTR4Kb1orCwSdPDHD10zzOdAegbHERW/7u7yp1sMIGvYKSzJuK4RF29EIbtVT01oaUhikLd2fD7032ZtmuQguJ3tMIk/PgptZINqFLEj8Ja7slp8CpovLQsegvXmJYFP+/kPmeXBskyaK43h5Z6aM0BQoNn3E2NpIm2I+nwunILEeiMLyaUP/pbJDVQIwo9UqjFX5R5vVnqeJGW/KsDVL/ltfy7AcQseSfD5WiWDwKO9QPhlsNvEIOJuylPeB69ZA1GCaQR7tr/YQGS5qwcl
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR04MB4629.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ IPV:NLI; SFV:NSPM; H:SN6PR04MB4640.namprd04.prod.outlook.com; PTR:; CAT:NONE;
  SFTY:;
- SFS:(4636009)(376002)(39860400002)(136003)(366004)(396003)(346002)(64756008)(71200400001)(186003)(66946007)(9686003)(76116006)(26005)(52536014)(55016002)(8936002)(54906003)(110136005)(4326008)(558084003)(316002)(478600001)(33656002)(6506007)(7696005)(66556008)(66446008)(66476007)(2906002)(5660300002)(8676002)(7416002)(86362001);
+ SFS:(4636009)(366004)(376002)(39860400002)(346002)(396003)(136003)(66476007)(8676002)(26005)(2906002)(52536014)(6506007)(71200400001)(478600001)(33656002)(5660300002)(86362001)(64756008)(4744005)(55016002)(9686003)(7696005)(66946007)(54906003)(66446008)(76116006)(4326008)(66556008)(186003)(8936002)(316002)(7416002)(110136005);
  DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata: xw7W/MPdOBlH+5/d/4sdd+ULjm18HsHJhMhEQ0tnPiDbnKS28llL8SrM9t63tgNYwvjQDK1XTNLLb6mHgP1aMqFTMEp+pieJ9zJDxtGK9TI4StdwvEddoaXWVA7Vrtffx2vHRI11TyWQEGRUAx/Qusqq+gfYuM/fqdFkC/6TT0oBpn0WuQSw5JPrRRKl/qyGi1NVCHTf02rhHlc+GNoPrrcx+fs8KLh8F/ss5GYLTos2qSUgynbvjkYD9sEBlHKngZ9iCfijBtPxhzIbbrlesHcncT1S86LM9oCyrxOwY6s1L/ZXN+Jx/oilu/agZbBNAhYv9/xuECITRuQDfm/Fmw+REZR9BAj4wVAm0e7d4CU9eLql4Rg0riEbEFZruzCbBlXaTg0SgzmV6Qw3TV9vE3ICv4nyOxcEDm0h0LVinvzl1JnlwonL30j5DFXXYO43o6eDifTTpui3DAeFnK6i5VUpM65nhc1nmb9EtcWVxQTSqNX6W7lVAtMk2y/Gr5tgb+sqbG57ZpnzqN142BPYs56Ag76GeQDqzMAloWH2cRx2T5H44tS6RnoggQgcxeQFCIkXumXnsLCgG63+/4WJMxYDoNgC8QKOf85M4+p8G/K/9sqyvIpMlZh8yi4EKZ4i0ZXdP08xYONkMOWJf2IDnmrhNt38wu+xJd3e48KVmjIX6deqKih6/K49hDN6ZLSHL7b/0nrJutrBGoBp+bHmyAf9pltXlWbAVeAYm3FdxEV//aFRrw9tY08eCBtR9+riYCK8FFBtgQ//dd1sX1uS7MUm2iRCtDv2t9H1b3fwlBA=
+x-ms-exchange-antispam-messagedata: 2CsDIQPmF5JMeflgoh85wQDoymLbvdkNNtDd+oxAXWdFACswnFcRhbTCWS1GBjZGcsjSmLZ2NJWmg40Ls5MuHExkVR6rR1PvSbyrHm52BNYBUSFWxg3jRWu1yZWgbikykOz/pN3JW3sk00XBeVLl26t6TSLc94DWl3zf8w0UW1Uy6bZbEyVx2iR4aZaWph7hQt+hqF+PzpyBUwxXalSfku5+lNObAdMzdF8rtx1fIg1RJ3tth9dO9KuOF1O0mxZ5O6G4rqIU1LgLFmpUQSmxa5w3N12jnLZBI0cMWSsLgnTdKAoYhnN8gwPyXrovSsHDRUxBywuwa5o6Ykx0ATfjnYMHL+U/MMvfCzvdfuXUXejjZKv4zJ3MNlRYrO6TeJrR7lx7ZXeUfDeZonFoM+mN1HJqrPsnmNEE3ocl7ogube9RuJ3BuRqsAp/5njggbJHvEDa8I3UuSECQJD/qma1LdGdpx9oZQSptviS1skdQ5Yti1Ds3Q6YetQ50bPqfzsKwMfAl93SbkcVKoBIAA6Po5dNkR6A9YhaFHEgHkjGRgM4Oqw4x4oaDs+cyQDZssL5NPWbBdhoAnZ8aNaIggQtBb7NngQVo6gBOdf4AMRWymVs4w3XUpkn0Z9J4sP6eNv7kDXwQOB+F3k4jR8xMdgvEKcFxdfINka2gUYvOQnaEklRIZNMfptMRjjs+zIugYqtKsXPGAiirZ/BiZV67HYtsJwO44SzbzI68YUrTPsGIdgWyopMhW84KAHgD1brVTecMR4V8M9TSyM4zPiXM/2Ej2Wzzk2UXApA/aWKooCpcC70=
 x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
 X-OriginatorOrg: wdc.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 791adb35-f763-4f3b-d22f-08d7f0175945
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 May 2020 10:38:56.7357 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0bb70594-c25b-46a9-ef8a-08d7f019b23a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 May 2020 10:55:44.8071 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: lKieLbBUq2Z9wIt92T5B30cBIPOak7cxI9rpD1YfSnoNk11cZPBzVGNA3+9UYgN2dodPp66LXsijAWYulwlcHw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5815
+X-MS-Exchange-CrossTenant-userprincipalname: tJmRo7UenTzlfHlb4Y+70c2Wr2cHIyCbnVYAhRXmm3C9+mgFoi2VAbyyCW5gcU0oMzRyMLIQQNsjteoqac5HRA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR04MB4464
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200504_033901_572560_C5F80318 
-X-CRM114-Status: UNSURE (   8.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200504_035552_319269_4C89885D 
+X-CRM114-Status: GOOD (  12.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -162,13 +161,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+> @@ -555,10 +561,8 @@ static int ufs_mtk_apply_dev_quirks(struct ufs_hba
+> *hba)
+>         struct ufs_dev_info *dev_info = &hba->dev_info;
+>         u16 mid = dev_info->wmanufacturerid;
 > 
->         ufs_fixup_device_setup(hba);
-> +       ufshcd_vops_fixup_dev_quirks(hba);
-Maybe call your new ufshcd_vops_fixup_dev_quirks as part of ufs_fixup_device_setup.
+> -       if (mid == UFS_VENDOR_SAMSUNG) {
+> -               hba->dev_quirks &= ~UFS_DEVICE_QUIRK_HOST_PA_TACTIVATE;
+> +       if (mid == UFS_VENDOR_SAMSUNG)
+>                 ufshcd_dme_set(hba, UIC_ARG_MIB(PA_TACTIVATE), 6);
+> -       }
+> 
+>         /*
+>          * Decide waiting time before gating reference clock and
+> @@ -575,6 +579,17 @@ static int ufs_mtk_apply_dev_quirks(struct ufs_hba
+> *hba)
+>         return 0;
+>  }
+> 
+> +void ufs_mtk_fixup_dev_quirks(struct ufs_hba *hba)
+> +{
+> +       struct ufs_dev_info *dev_info = &hba->dev_info;
+> +       u16 mid = dev_info->wmanufacturerid;
+> +
+> +       ufshcd_fixup_device_setup(hba, ufs_mtk_dev_fixups);
+> +
+> +       if (mid == UFS_VENDOR_SAMSUNG)
+> +               hba->dev_quirks &= ~UFS_DEVICE_QUIRK_HOST_PA_TACTIVATE;
+Why move it? It is a unipro/hci param.
 
-Thanks,
-Avri
 
 _______________________________________________
 Linux-mediatek mailing list
