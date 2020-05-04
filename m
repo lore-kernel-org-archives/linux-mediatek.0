@@ -1,4 +1,4 @@
-Return-Path: <SRS0=D1Kh=6R=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=oHVa=6S=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
@@ -6,17 +6,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
 	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 963ADC28CBC
-	for <linux-mediatek@archiver.kernel.org>; Sun,  3 May 2020 15:31:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA5E5C3A5A9
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2020 09:31:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6900020757
-	for <linux-mediatek@archiver.kernel.org>; Sun,  3 May 2020 15:31:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 74E14206D9
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2020 09:31:53 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZlhplsGj";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="UnDu6cFP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6900020757
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Kz79dzDo";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="uPyrpH8/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 74E14206D9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,41 +25,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=RgFiAK/J/NsFeyVbvUMEUX+Winb9osFVKpaFN9gxQbc=; b=ZlhplsGj1GUhl5
-	2snGsw4EaLwN+azRN2l+HuSksqOUpIWwlJKc/QVqYYZk6Ik4FSAfK/0jbxxnisTCfGwv0y7tgfgsT
-	O9Ioq7U8+vqCbo+gOMbKKl8WoG5SMKU0gM4KRX4QlzKBnFTWWvzeNccxm4+pt1zzxDdRZExNuFbsB
-	xEdZ/5WL3r5Zv6l7SdRcuHzO5c5B0aavQieHzzz2EmxeZGY8Tf964ehIc/IyX2+89YUluJ+nGa7C3
-	T+JWBYM6swmseIkQhyH9sfOu6fxsNV+uZEtCkETJeGdT/t1muhA+m2hGK+eu1/qmP6Nmaxp7Hozi9
-	z8+WLJv77Q28Jv4pQW4Q==;
+	List-Owner; bh=daWFD0HY2xFSDKzjz0AhpnCPmDKOwbnmJZbv3ngC6Vk=; b=Kz79dzDoWec9cI
+	VbvUAdKPRLuri5z4IUZVWmGIy0mj6Z3urswlcg1emwzHpgg7Qhyr7mQ8JAtdQ/V2FrkCAlzZ83cAR
+	tVW6b88LLeGJn/OHx0yaDljPNxOPNTubdnb2y69tbB6bUngh5uNzzkZLbNcz57ofM6YQllmKie/wA
+	D57lOMqKsX3QGw3rawx6+ZisnU3oVmJaXiNteFaLfSgTl8/hjPIs+6NwlEvifCHaJpkoBAE8xBRp4
+	2wgkegFYQJugWIEP+kl/Lz2kwq7P5hAazaZQi4TpIFlo/z44zg4pcVPLkHtffEjNVv8qw/ibvXTtq
+	5Vr4SaRMcgBhCABXnGGA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jVGaC-0004TH-Dp; Sun, 03 May 2020 15:31:08 +0000
+	id 1jVXRr-0006Mw-Dm; Mon, 04 May 2020 09:31:39 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jVGaA-0004Sw-4u
- for linux-mediatek@lists.infradead.org; Sun, 03 May 2020 15:31:07 +0000
-Received: from localhost.localdomain (unknown [151.48.155.206])
+ id 1jVXQj-0005Ee-5D; Mon, 04 May 2020 09:30:36 +0000
+Received: from mail.kernel.org (ip5f5ad5c5.dynamic.kabel-deutschland.de
+ [95.90.213.197])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 9147E20757;
- Sun,  3 May 2020 15:31:04 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 97460206D9;
+ Mon,  4 May 2020 09:30:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588519865;
- bh=Y30zyGha8lAC7EiljQQ4NMoD45Xbrqbt2tMA+T/Ezm8=;
+ s=default; t=1588584627;
+ bh=+BYu54UZb1Hn39wdF2PjZDNEdRe0NffuWafcZDhnJco=;
  h=From:To:Cc:Subject:Date:From;
- b=UnDu6cFP71gT8rvEUyhDyYMicmaQsWr546W8hapQTAw04q8+6jm9JZ9cuRluBIGGH
- xIoKbnyB/glEZ1Ygi5S+2HT8G/CY0FePk6Tpkuu5EpjoRgg4+rWgV2ewtuk9ObS53A
- l33xIBP6/BsWAxBCrbuzmVrwWaxVq1AO/wouoZQU=
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: nbd@nbd.name
-Subject: [PATCH] mt76: mt7615: fix delta tx power for mt7663
-Date: Sun,  3 May 2020 17:30:53 +0200
-Message-Id: <0cf455450efd28fbd97df81af8a591428ba7b8cc.1588519828.git.lorenzo@kernel.org>
-X-Mailer: git-send-email 2.26.2
+ b=uPyrpH8/aA7GlqYfmtmKUC8nrR1WumCxFk2ou/QWK9N2hkKoSg0yEQpbVqpwcwurd
+ ECe3PSkwSzkdtBsbJy91NWmjMJse+5jSs6v70glXNnurUP3J1NZI2APJkZSNxFDGMZ
+ ILP+atlr2SJ4Rqo/DCPWbsePjXXw2B9aIjLHm0zI=
+Received: from mchehab by mail.kernel.org with local (Exim 4.92.3)
+ (envelope-from <mchehab@kernel.org>)
+ id 1jVXQf-000K77-18; Mon, 04 May 2020 11:30:25 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Linux Doc Mailing List <linux-doc@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>
+Subject: [PATCH] docs: dt: fix broken links due to txt->yaml renames
+Date: Mon,  4 May 2020 11:30:20 +0200
+Message-Id: <967df5c3303b478b76199d4379fe40f5094f3f9b.1588584538.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.25.4
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200503_083106_226369_3BD5DE0A 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20200504_023031_232602_47FAFB2A 
+X-CRM114-Status: GOOD (  14.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,103 +75,162 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org, lorenzo.bianconi@redhat.com,
- sean.wang@mediatek.com, linux-wireless@vger.kernel.org
+Cc: alsa-devel@alsa-project.org, Olivier Moysan <olivier.moysan@st.com>,
+ =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+ David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org,
+ Sandy Huang <hjc@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>,
+ Benjamin Gaignard <benjamin.gaignard@linaro.org>,
+ Jonathan Corbet <corbet@lwn.net>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ linux-rockchip@lists.infradead.org, linux-mips@vger.kernel.org,
+ devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
+ Jyri Sarha <jsarha@ti.com>, Mark Brown <broonie@kernel.org>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Arnaud Pouliquen <arnaud.pouliquen@st.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-bluetooth@vger.kernel.org, Daniel Vetter <daniel@ffwll.ch>,
+ netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix mt7663 eeprom definitions for delta tx power parsing
+There are some new broken doc links due to yaml renames
+at DT. Developers should really run:
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+	./scripts/documentation-file-ref-check
+
+in order to solve those issues while submitting patches.
+This tool can even fix most of the issues with:
+
+	./scripts/documentation-file-ref-check --fix
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- .../net/wireless/mediatek/mt76/mt7615/eeprom.c  | 17 +++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7615/eeprom.h  |  1 +
- .../net/wireless/mediatek/mt76/mt7615/init.c    | 10 +++-------
- .../net/wireless/mediatek/mt76/mt7615/mt7615.h  |  2 ++
- 4 files changed, 23 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
-index 4fb9658b1083..2d4932f97e9e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.c
-@@ -156,6 +156,23 @@ static void mt7615_eeprom_parse_hw_cap(struct mt7615_dev *dev)
- 	dev->phy.chainmask = dev->chainmask;
- }
+PS.: This patch is against today's linux-next.
+
+
+ .../devicetree/bindings/display/bridge/sii902x.txt          | 2 +-
+ .../devicetree/bindings/display/rockchip/rockchip-drm.yaml  | 2 +-
+ .../devicetree/bindings/net/mediatek-bluetooth.txt          | 2 +-
+ .../devicetree/bindings/sound/audio-graph-card.txt          | 2 +-
+ .../devicetree/bindings/sound/st,sti-asoc-card.txt          | 2 +-
+ Documentation/mips/ingenic-tcu.rst                          | 2 +-
+ MAINTAINERS                                                 | 6 +++---
+ 7 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/display/bridge/sii902x.txt b/Documentation/devicetree/bindings/display/bridge/sii902x.txt
+index 6e14e087c0d0..0d1db3f9da84 100644
+--- a/Documentation/devicetree/bindings/display/bridge/sii902x.txt
++++ b/Documentation/devicetree/bindings/display/bridge/sii902x.txt
+@@ -37,7 +37,7 @@ Optional properties:
+ 	simple-card or audio-graph-card binding. See their binding
+ 	documents on how to describe the way the sii902x device is
+ 	connected to the rest of the audio system:
+-	Documentation/devicetree/bindings/sound/simple-card.txt
++	Documentation/devicetree/bindings/sound/simple-card.yaml
+ 	Documentation/devicetree/bindings/sound/audio-graph-card.txt
+ 	Note: In case of the audio-graph-card binding the used port
+ 	index should be 3.
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
+index ec8ae742d4da..7204da5eb4c5 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
+@@ -24,7 +24,7 @@ properties:
+     description: |
+       Should contain a list of phandles pointing to display interface port
+       of vop devices. vop definitions as defined in
+-      Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
++      Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
  
-+int mt7615_eeprom_get_power_delta_index(struct mt7615_dev *dev,
-+					enum nl80211_band band)
-+{
-+	/* assume the first rate has the highest power offset */
-+	if (is_mt7663(&dev->mt76)) {
-+		if (band == NL80211_BAND_2GHZ)
-+			return MT_EE_TX0_5G_G0_TARGET_POWER;
-+		else
-+			return MT7663_EE_5G_RATE_POWER;
-+	}
-+
-+	if (band == NL80211_BAND_2GHZ)
-+		return MT_EE_2G_RATE_POWER;
-+	else
-+		return MT_EE_5G_RATE_POWER;
-+}
-+
- int mt7663_eeprom_get_target_power_index(struct mt7615_dev *dev,
- 					 struct ieee80211_channel *chan,
- 					 u8 chain_idx)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.h
-index 2390b7137360..03a23c2bf776 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/eeprom.h
-@@ -31,6 +31,7 @@ enum mt7615_eeprom_field {
- 	MT_EE_CALDATA_FLASH =			0x052,
- 	MT_EE_TX0_2G_TARGET_POWER =		0x058,
- 	MT_EE_TX0_5G_G0_TARGET_POWER =		0x070,
-+	MT7663_EE_5G_RATE_POWER =		0x089,
- 	MT_EE_TX1_5G_G0_TARGET_POWER =		0x098,
- 	MT_EE_2G_RATE_POWER =			0x0be,
- 	MT_EE_5G_RATE_POWER =			0x0d5,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-index 498022782d22..1262ced3727a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-@@ -222,17 +222,13 @@ void mt7615_init_txpower(struct mt7615_dev *dev,
- 			 struct ieee80211_supported_band *sband)
- {
- 	int i, n_chains = hweight8(dev->mphy.antenna_mask), target_chains;
-+	int delta_idx, delta = mt76_tx_power_nss_delta(n_chains);
- 	u8 *eep = (u8 *)dev->mt76.eeprom.data;
- 	enum nl80211_band band = sband->band;
--	int delta = mt76_tx_power_nss_delta(n_chains);
- 	u8 rate_val;
+ required:
+   - compatible
+diff --git a/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt b/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
+index 219bcbd0d344..9ef5bacda8c1 100644
+--- a/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
++++ b/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
+@@ -3,7 +3,7 @@ MediaTek SoC built-in Bluetooth Devices
  
--	/* assume the first rate has the highest power offset */
--	if (band == NL80211_BAND_2GHZ)
--		rate_val = eep[MT_EE_2G_RATE_POWER];
--	else
--		rate_val = eep[MT_EE_5G_RATE_POWER];
--
-+	delta_idx = mt7615_eeprom_get_power_delta_index(dev, band);
-+	rate_val = eep[delta_idx];
- 	if ((rate_val & ~MT_EE_RATE_POWER_MASK) ==
- 	    (MT_EE_RATE_POWER_EN | MT_EE_RATE_POWER_SIGN))
- 		delta += rate_val & MT_EE_RATE_POWER_MASK;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-index b113eaa1a70e..36abfcf529d0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-@@ -383,6 +383,8 @@ int mt7663_eeprom_get_target_power_index(struct mt7615_dev *dev,
- int mt7615_eeprom_get_target_power_index(struct mt7615_dev *dev,
- 					 struct ieee80211_channel *chan,
- 					 u8 chain_idx);
-+int mt7615_eeprom_get_power_delta_index(struct mt7615_dev *dev,
-+					enum nl80211_band band);
- int mt7615_wait_pdma_busy(struct mt7615_dev *dev);
- int mt7615_dma_init(struct mt7615_dev *dev);
- void mt7615_dma_cleanup(struct mt7615_dev *dev);
+ This device is a serial attached device to BTIF device and thus it must be a
+ child node of the serial node with BTIF. The dt-bindings details for BTIF
+-device can be known via Documentation/devicetree/bindings/serial/8250.txt.
++device can be known via Documentation/devicetree/bindings/serial/8250.yaml.
+ 
+ Required properties:
+ 
+diff --git a/Documentation/devicetree/bindings/sound/audio-graph-card.txt b/Documentation/devicetree/bindings/sound/audio-graph-card.txt
+index 269682619a70..d5f6919a2d69 100644
+--- a/Documentation/devicetree/bindings/sound/audio-graph-card.txt
++++ b/Documentation/devicetree/bindings/sound/audio-graph-card.txt
+@@ -5,7 +5,7 @@ It is based on common bindings for device graphs.
+ see ${LINUX}/Documentation/devicetree/bindings/graph.txt
+ 
+ Basically, Audio Graph Card property is same as Simple Card.
+-see ${LINUX}/Documentation/devicetree/bindings/sound/simple-card.txt
++see ${LINUX}/Documentation/devicetree/bindings/sound/simple-card.yaml
+ 
+ Below are same as Simple-Card.
+ 
+diff --git a/Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt b/Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt
+index 4d51f3f5ea98..a6ffcdec6f6a 100644
+--- a/Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt
++++ b/Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt
+@@ -5,7 +5,7 @@ codec or external codecs.
+ 
+ sti sound drivers allows to expose sti SoC audio interface through the
+ generic ASoC simple card. For details about sound card declaration please refer to
+-Documentation/devicetree/bindings/sound/simple-card.txt.
++Documentation/devicetree/bindings/sound/simple-card.yaml.
+ 
+ 1) sti-uniperiph-dai: audio dai device.
+ ---------------------------------------
+diff --git a/Documentation/mips/ingenic-tcu.rst b/Documentation/mips/ingenic-tcu.rst
+index c5a646b14450..2b75760619b4 100644
+--- a/Documentation/mips/ingenic-tcu.rst
++++ b/Documentation/mips/ingenic-tcu.rst
+@@ -68,4 +68,4 @@ and frameworks can be controlled from the same registers, all of these
+ drivers access their registers through the same regmap.
+ 
+ For more information regarding the devicetree bindings of the TCU drivers,
+-have a look at Documentation/devicetree/bindings/timer/ingenic,tcu.txt.
++have a look at Documentation/devicetree/bindings/timer/ingenic,tcu.yaml.
+diff --git a/MAINTAINERS b/MAINTAINERS
+index b6ec0b3c3125..b70842425302 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3911,7 +3911,7 @@ L:	linux-crypto@vger.kernel.org
+ S:	Supported
+ F:	drivers/char/hw_random/cctrng.c
+ F:	drivers/char/hw_random/cctrng.h
+-F:	Documentation/devicetree/bindings/rng/arm-cctrng.txt
++F:	Documentation/devicetree/bindings/rng/arm-cctrng.yaml
+ W:	https://developer.arm.com/products/system-ip/trustzone-cryptocell/cryptocell-700-family
+ 
+ CEC FRAMEWORK
+@@ -5446,7 +5446,7 @@ F:	include/uapi/drm/r128_drm.h
+ DRM DRIVER FOR RAYDIUM RM67191 PANELS
+ M:	Robert Chiras <robert.chiras@nxp.com>
+ S:	Maintained
+-F:	Documentation/devicetree/bindings/display/panel/raydium,rm67191.txt
++F:	Documentation/devicetree/bindings/display/panel/raydium,rm67191.yaml
+ F:	drivers/gpu/drm/panel/panel-raydium-rm67191.c
+ 
+ DRM DRIVER FOR ROCKTECH JH057N00900 PANELS
+@@ -16294,7 +16294,7 @@ M:	Hoan Tran <hoan@os.amperecomputing.com>
+ M:	Serge Semin <fancer.lancer@gmail.com>
+ L:	linux-gpio@vger.kernel.org
+ S:	Maintained
+-F:	Documentation/devicetree/bindings/gpio/snps-dwapb-gpio.txt
++F:	Documentation/devicetree/bindings/gpio/snps,dw-apb-gpio.yaml
+ F:	drivers/gpio/gpio-dwapb.c
+ 
+ SYNOPSYS DESIGNWARE AXI DMAC DRIVER
 -- 
-2.26.2
+2.25.4
 
 
 _______________________________________________
