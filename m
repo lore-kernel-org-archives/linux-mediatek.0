@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C55FDC47259
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 14:05:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DB69EC47254
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 14:06:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7CC5A20661
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 14:05:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A77FF20661
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 14:06:05 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="InBGo/qI";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="hNfGjv2/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7CC5A20661
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ScpX21Le";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="LQwCci65"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A77FF20661
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bgdev.pl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,69 +26,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8sngaemU/3Se52h6KXqzr83WluU8zngbXFcsvHfUmVk=; b=InBGo/qIgQujJN
-	K36hnWqVxJpDfLw31pKJKr4jzZPyDdnwu+pVcN5YN7jdZpYM7oLM5uRGpveTPQLnAALby36doBluh
-	v2n144UNS8e41QsplkoODIKG3BXohJN+N/BjSyQhOfWklu+yapLPIAlnQe+hx8g7vuaT+/0gjhRwp
-	qOCHwKiW3rj9YE/NdSzWxyzEFVf70b1yNSh9Gd+VQaLSlaIvht0PWudgAAPIY6uOuKzaeAiVjjlQo
-	nGNhJqqsXmWbyjoK/nMmJ1frHQ2WYT13DWk8CCh1GJkrmXtrs77SzEy77fk8GuHK/eTsKFT4yGI9v
-	HpNX6Wz99ublX+2Z6EAw==;
+	List-Owner; bh=rB/QYMKvJuLMt1uKsrnMb1Wd6aOdfEMqRzSZl1Cgrjo=; b=ScpX21LeyCzwyx
+	uEaOvQgHHHWMVPqJD7ISM7D+QHDY8U1R1zN1stAKb/yTKu1M4Xd4NVbSLjeKMGgE/ZTr/1uw98wiG
+	Vy/Eu6wa2V/v4raxNgxA+WSGLJHj8r/GaXVw8+AQZT5h9YI2E2H9j2FCLtxcYAKE5aPLhxlYJapeb
+	GQYFHCRTFf8TSoJxPajIJL+WYe7OgJVMyc7xMbkK0JHVETtSLAVjiRVKo/P2LVa/RrkrVQpdd4A3U
+	zH7ZoiTbg8scF9JOHOWyO2fgrHV3VZGk6koLF57/8dFqwMtlZ1Uq4kXtROupanMNRawC0a3evSv0B
+	MKz+CLdN42lSkSZMRHnA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jVyCM-0006r6-WB; Tue, 05 May 2020 14:05:27 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1jVyCt-0007Q1-EF; Tue, 05 May 2020 14:05:59 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jVyAF-0002La-9A
- for linux-mediatek@lists.infradead.org; Tue, 05 May 2020 14:03:18 +0000
-Received: by mail-wr1-x441.google.com with SMTP id f13so2856264wrm.13
- for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2020 07:03:15 -0700 (PDT)
+ id 1jVyAI-0002PP-IB
+ for linux-mediatek@lists.infradead.org; Tue, 05 May 2020 14:03:20 +0000
+Received: by mail-wr1-x444.google.com with SMTP id e16so2893799wra.7
+ for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2020 07:03:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=A3BhZ5w2nZuK3+ZudhXc+00fKQMrXVNQ6trbR5U2M5Y=;
- b=hNfGjv2/etgG+8tAzkJNYt+mnC4ApvZHNSMUbk3vWQMdUyC5rAhLLs4oNMtdc8pWO/
- +cznGtdZyPWshkwy7QjHeTbd4wCTnOtTYZdvbIev5g5UseKkBk0fUo4iLnnZ75GyQs4U
- H8D34z7J3KjSeKQEdFbBCdRt9FGeNoc4MfPDf83NbPBBgB9RjME50vZ2MAWLkAP+y9y0
- 7VdS+zOU/SET80n0dWqurzUFhJ5AXRUU7jpf/PNzchSdBW0yV0XHGCxGC7kOCvLp1lH8
- nMeRYEISvEOshTVVoJXnHBySh1CLyGHxNnSGV5R8sK3bF2l12XSQrqsZuVLdRaF32KT0
- P8zQ==
+ bh=1qePp19LiRiOBXtccpgQ+eI6GUOhz0auoBWQ11adkXY=;
+ b=LQwCci65NzZKH7S/k3KLNL9uDqCmT0NhL3+vr0FbsT08zlA7KCjEKKJA3sZtnf2+C9
+ MgO3OOfj1iU8OOWJHAIFg37vsHsbgcG/ty8jsHreNlysA9n/Au6JLGB7Xxv750eTBgT+
+ Sl+iLzCZd3APUglRO82tTPfZvQVLMJ3uavNHAqLe/avFh/YZADgXqEMvzVqRopDktCy2
+ JBbLkT1YWVum/i0H4xsIcA/O3SnOtyCQ72Fc/9gVx/ow94+06PK5wjuMsmA86t5vb78a
+ f1BNH1aOQZ6Kmm6CjzEh853K5kHs/8DpEoorye+0Q8Vxs8MX0SzFaarHH6cmphLUotuV
+ jc4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=A3BhZ5w2nZuK3+ZudhXc+00fKQMrXVNQ6trbR5U2M5Y=;
- b=uAsid6+gZkh3w9HSxIF+6o6oUb1Yh8jlZ8noi6rp65hZt4hkPMpbmwfHCl9gncLLVm
- c6LEPz5gVEdz4VsKEjsdhMPvENpAYMFdY6Gqlh1+ES2HwjQW1PKQfzLMwkDy8QfFmqyM
- XjbmxNZy1altR7lQ6re3nMm+AbwHEjZmKvnJt2MUlZgSQ1HFQLhecElrq/WyjU4N/R7C
- 2sYmg07szct0YCFtp9aYnCO/veCvEu9FWIJpr6fEf459kpkdd2BUJdNjxIuZC22EahsF
- dMIDVmSSsISNRrOQhRn0HhyI9WXG41vnfPEPTL5whDaXT7KZHR9HoVt1ZW7RJ+hI+LjU
- 0uAg==
-X-Gm-Message-State: AGi0PuZ2Gu4ZwqpPzV6+F2/riUD3zYzZZu462PrvoZp02PU90gUGepJ+
- AD2Wn/TMSrp+NnzvToIV7aIgUg==
-X-Google-Smtp-Source: APiQypIJAcz7+8YuVqS0Fb+BpugSz7czS+kkRMyzeeVjVlyOtSkG709fxRrSUgqXs+QH46mCuYaAyg==
-X-Received: by 2002:a5d:5228:: with SMTP id i8mr3913687wra.359.1588687393914; 
- Tue, 05 May 2020 07:03:13 -0700 (PDT)
+ bh=1qePp19LiRiOBXtccpgQ+eI6GUOhz0auoBWQ11adkXY=;
+ b=twAVUHFn85Iqb2y7lgCyhaIBJXu/m5DpDkLSv2bMrycxkjmmuZld+pMl6uLb07mlfv
+ aWOj5z36dtDC5SBu9Ou52E3AHGv8QGQiN9XGRGMWaKuRhkSGWLuxOTXIAJPv4FTYLYCZ
+ wCDZ8XkKNm1a9A3uLx4vtHLQuuiFCJaqznAhSc7rdqWliwMcfy0LxuCXJCezdOYdpF8K
+ w4jdJeRPPauJzkD14B5dwxTU4lIHtEe0ksw5eBY/d4SnuwXuEnHrr5eGlunydmolrwy7
+ OJA1tNixn4V4fAyBIrqzqcMyBglhTa64eUQp/FnSfvUw4tVnJbqL5v0L+ubBIuiWrUe7
+ y3hg==
+X-Gm-Message-State: AGi0PuYtLeDB4fBXP0Q9bTM5MImbY7yaUFA5aKWevZRUokaeJt/QKhz5
+ pOmidavL8X/37w+MkKMpzRM0og==
+X-Google-Smtp-Source: APiQypKqTKjLTaeehBmyF8ZBLt7Ztsq7bEei0OsGAye1X2D3s2hQaZgytBvFg7WpUlAYtX37tEZNHw==
+X-Received: by 2002:adf:ab5c:: with SMTP id r28mr3827494wrc.384.1588687396984; 
+ Tue, 05 May 2020 07:03:16 -0700 (PDT)
 Received: from localhost.localdomain (lfbn-nic-1-65-232.w2-15.abo.wanadoo.fr.
  [2.15.156.232])
- by smtp.gmail.com with ESMTPSA id c190sm4075755wme.4.2020.05.05.07.03.12
+ by smtp.gmail.com with ESMTPSA id c190sm4075755wme.4.2020.05.05.07.03.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 May 2020 07:03:13 -0700 (PDT)
+ Tue, 05 May 2020 07:03:16 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
 To: Rob Herring <robh+dt@kernel.org>, "David S . Miller" <davem@davemloft.net>,
  Matthias Brugger <matthias.bgg@gmail.com>, Felix Fietkau <nbd@openwrt.org>,
  John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>,
  Mark Lee <Mark-MC.Lee@mediatek.com>, Jakub Kicinski <kuba@kernel.org>,
  Arnd Bergmann <arnd@arndb.de>, Fabien Parent <fparent@baylibre.com>
-Subject: [PATCH 07/11] ARM64: dts: mediatek: add pericfg syscon to mt8516.dtsi
-Date: Tue,  5 May 2020 16:02:27 +0200
-Message-Id: <20200505140231.16600-8-brgl@bgdev.pl>
+Subject: [PATCH 09/11] ARM64: dts: mediatek: add an alias for ethernet0 for
+ pumpkin boards
+Date: Tue,  5 May 2020 16:02:29 +0200
+Message-Id: <20200505140231.16600-10-brgl@bgdev.pl>
 X-Mailer: git-send-email 2.25.0
 In-Reply-To: <20200505140231.16600-1-brgl@bgdev.pl>
 References: <20200505140231.16600-1-brgl@bgdev.pl>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200505_070315_457813_A3907AE2 
-X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-CacheID: sfid-20200505_070318_767026_54E6565D 
+X-CRM114-Status: UNSURE (   9.24  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -111,30 +112,26 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 
-This adds support for the PERICFG register range as a syscon. This will
-soon be used by the MediaTek Ethernet MAC driver for NIC configuration.
+Add the ethernet0 alias for ethernet so that u-boot can find this node
+and fill in the MAC address.
 
 Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8516.dtsi | 5 +++++
- 1 file changed, 5 insertions(+)
+ arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8516.dtsi b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-index 2f8adf042195..8cedaf74ae86 100644
---- a/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-@@ -191,6 +191,11 @@ infracfg: infracfg@10001000 {
- 			#clock-cells = <1>;
- 		};
+diff --git a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
+index a31093d7142b..97d9b000c37e 100644
+--- a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
++++ b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
+@@ -9,6 +9,7 @@
+ / {
+ 	aliases {
+ 		serial0 = &uart0;
++		ethernet0 = &ethernet;
+ 	};
  
-+		pericfg: pericfg@10003050 {
-+			compatible = "mediatek,mt8516-pericfg", "syscon";
-+			reg = <0 0x10003050 0 0x1000>;
-+		};
-+
- 		apmixedsys: apmixedsys@10018000 {
- 			compatible = "mediatek,mt8516-apmixedsys", "syscon";
- 			reg = <0 0x10018000 0 0x710>;
+ 	chosen {
 -- 
 2.25.0
 
