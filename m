@@ -2,23 +2,22 @@ Return-Path: <SRS0=+Wu7=6T=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 744E5C47254
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 13:14:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0DBFFC47254
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 13:25:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 40C2E20746
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 13:14:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 95E6A2078D
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 13:25:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZW3C8WPh";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="Q6M4ixDU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 40C2E20746
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fEcHyNYS";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="i5xHfyBi"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 95E6A2078D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -26,63 +25,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PzFq6K/TFgBv3x5ChWwNPeeCaB2GIiUI7bi+kXmiSLw=; b=ZW3C8WPh4XpjcJ
-	F4XHsd3y0qWaDkBEdodppSxdQpAqjteFrwgUMxbiMZCTbtAwWW/kZ+8iVcbRJfK4ZeAtHIEIylAOX
-	+Ovo6onOrGfwTtN45TVFugyP3r/k6YNev4z+k68ayjL2H9YB5gWobyLizpgZZF79urUHfX6276X7w
-	1AUPkLjy6rCoSwo2IfFaHmYiPQM1fECXwwFBYh/6+qoJbHZeJLUcjJtijZsohRleyiRqtP96YgIeZ
-	/j8Bj2q/kiM+DImUNWUdXclhXNppGEFyG1y9lVrIISXtf/wvIQ5WOThvC8ohPt1lK42kBEC8lBjAX
-	57vkkFIxJgtKm58ia+vg==;
+	List-Owner; bh=wctRxLsLHpV3ANhzsdeeXnKAMUweKBS0M8XQ/SxbIhA=; b=fEcHyNYSmrCgvI
+	0NK+knMBlw2nRe+RdQ1wFjVJ11LJC1xLdMaGZTpkYRplvZrbqWe0QyVxm1I0a4QEqV4XZbYzBgipk
+	+/duypV8PxXrfP9gZx406pl1D7vqMdV+0Z9l41wnwu5eeKDxh4P3Ps7hvcFPkEOtUD2uIqq6Jqr1h
+	B0smtHfC7LuukkCnWupGpWYiWTFy18bsZr2wD3sFpYDOE0GLJYhZ2ixibpMc1v7uK1YP6dJeMkZfk
+	dHgAwu6eUiZt+g/1qHVJ4fFcKk5L8TwSQERsXvemA78lAS1dhVefoq6ArUlqGQks7wLYnv5V7hSi3
+	N5Agwt1SONvfP3ONLvaQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jVxP2-0005w6-5Y; Tue, 05 May 2020 13:14:28 +0000
-Received: from mail-vk1-xa43.google.com ([2607:f8b0:4864:20::a43])
+	id 1jVxZY-0007Qx-L8; Tue, 05 May 2020 13:25:20 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jVxOv-0005ok-DB
- for linux-mediatek@lists.infradead.org; Tue, 05 May 2020 13:14:23 +0000
-Received: by mail-vk1-xa43.google.com with SMTP id i185so454062vki.12
- for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2020 06:14:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=KsKPjiGD3v4nUxVeceFtJMoKp1s3SQbqenpM+1b5fpE=;
- b=Q6M4ixDU2PotV5YdJgoaS65scBDD6EAK+e/FJ2k1P714fM2+ma/nd5sp+bpfD27UVO
- 2kOF/9ZAJFgzAKFeADd0tl29NS0TvsAh3YeCxegL5YSiVjF7ksh76GSUbvaUDqTX8uXh
- o9S/F0lMuVNGeszZH3z6ZofBBG1wX7LqQR6Scd2p98dIUlxRKKpJx0Yf8mIwC28JTX4r
- 38nGUJEoUmUkwtPmtVrgDrX3SI3ZoEFcf5KoUF9GQUAlwZ/Oc3/7RgT/gHspux4FJccO
- 4s/pqW1rIJtiHAEZiptpqSbPzaE3wp0fhO8/2DpcnjTSSlZLAs1b3k3HVHHlhAMSXD2H
- bVnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=KsKPjiGD3v4nUxVeceFtJMoKp1s3SQbqenpM+1b5fpE=;
- b=p7dAtq5UsR3Nvg/rz4JHaT+mkw0ZTZZQfn52bj0/QM3T3i7vn8EwiRm4FI2z0IsJJD
- DEunN0YdRyG4m/k+00dckEFR8lxRJtf207AMQ92oHIewCBuNS1FfyhJVSy1eOr5nTH50
- ELxppBz0f8/tBmYwSBd+FkmeQ2iIkRAKE0451kQ90HCm5aLFcEos6kRwyY0ptLM54/sz
- Gw3Grb+9cW1CyZRsKk7dZ0Wub9rW93zsbujI8ctXSRNSyx8ADsM7lTIOsuwTcG5CEUk6
- kgQcRkpe/va6n+7qOJklOlunSGVv9MlxgjpGzjMEci+b7z9KRb6RuA/ZRvlgtLPYb8bX
- tBIQ==
-X-Gm-Message-State: AGi0PubLGp04Vl3QWbgTr67zUPbqBQ0vKNrcj3AtSgqMuL3JzJsAqyDm
- nlaGrgPpuPkfiHA1fB6jQ6xg5Ftghd7VGSmpcSPV4w==
-X-Google-Smtp-Source: APiQypL23qkTilWzBqjmhYQagYrDFEGN5QpB7ggXhJdp6TA6imXwX7wzy+FyjvuNooK6Ym4XpnfNvG/wJBlCpSZu2PQ=
-X-Received: by 2002:a1f:ff11:: with SMTP id p17mr2234355vki.25.1588684458767; 
- Tue, 05 May 2020 06:14:18 -0700 (PDT)
+ id 1jVxZF-0004qp-HI; Tue, 05 May 2020 13:25:03 +0000
+Received: from mail-ej1-f49.google.com (mail-ej1-f49.google.com
+ [209.85.218.49])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 78EFF215A4;
+ Tue,  5 May 2020 13:25:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1588685100;
+ bh=Rac7y5rYSK/2G4X72RSjogk7F2/1A77BkfY4aonMNHE=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=i5xHfyBiuY7p3DIDikoONdvivQLQ4kFoUccnvcJjFvhJv1HKqhIO1mf1meaLdx+2n
+ 1i52/G4OxRdFuW6VaiyUE7nR7/tQPKjvGlAde5qF2T8Af5nG/vVWTQ8pOq44RNLASN
+ r9288oja66bgZ4akeUN8C1WjZHZMIBknn7sB+hGY=
+Received: by mail-ej1-f49.google.com with SMTP id n17so1634294ejh.7;
+ Tue, 05 May 2020 06:25:00 -0700 (PDT)
+X-Gm-Message-State: AGi0PuZguNDWM24HtakJW+VGqlTfChUPdjES52AmANGT/cOMUAcID+Hm
+ bz0HLkMSW+C1HMinJelJ8Wsr+YV5eczcVJB8TQ==
+X-Google-Smtp-Source: APiQypLJ2xfzocGLFFYqsJeJ4aQuzD3rk0l4tQD4X9JUcGCFrXJoKm4Ml5gb0eu1ufwRXvYazmB6synEUoz0VY1lpns=
+X-Received: by 2002:a17:906:7717:: with SMTP id
+ q23mr2732910ejm.38.1588685098796; 
+ Tue, 05 May 2020 06:24:58 -0700 (PDT)
 MIME-Version: 1.0
-References: <1586835611-13857-1-git-send-email-yong.mao@mediatek.com>
- <1586835611-13857-2-git-send-email-yong.mao@mediatek.com>
- <CAPDyKFo40tBpowmWN3gxH8b=jMmCK8O5ALNQ7y6XZ5AosX=GUA@mail.gmail.com>
- <1588066038.30914.28.camel@mhfsdcap03>
- <CAPDyKFrBd0E2Qy89JgTE3YH0iiXB7due0JmnSVAhYL5aubSczA@mail.gmail.com>
- <1588148417.10768.18.camel@mhfsdcap03>
-In-Reply-To: <1588148417.10768.18.camel@mhfsdcap03>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Tue, 5 May 2020 15:13:42 +0200
-Message-ID: <CAPDyKFrtaCcFK+nRMH4wysA2ALguea8E+gdnr-CfQhQtpr5jdA@mail.gmail.com>
-Subject: Re: [PATCH 1/3] mmc: core: need do mmc_power_cycle in
- mmc_sdio_resend_if_cond
-To: "yong.mao@mediatek.com" <yong.mao@mediatek.com>
+References: <20200504141408.60877-1-enric.balletbo@collabora.com>
+ <20200504141408.60877-3-enric.balletbo@collabora.com>
+In-Reply-To: <20200504141408.60877-3-enric.balletbo@collabora.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Tue, 5 May 2020 21:24:45 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8ZV3UDanHDnVmUESPfaNBjwFBKi9-i7ctSFVWGOHAR2g@mail.gmail.com>
+Message-ID: <CAAOTY_8ZV3UDanHDnVmUESPfaNBjwFBKi9-i7ctSFVWGOHAR2g@mail.gmail.com>
+Subject: Re: [PATCH 2/3] drm/mediatek: mtk_dpi: Convert to bridge driver
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200505_061421_445846_D57FE819 
-X-CRM114-Status: GOOD (  45.40  )
+X-CRM114-CacheID: sfid-20200505_062501_628496_539550DE 
+X-CRM114-Status: GOOD (  18.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,202 +82,128 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: srv_heupstream <srv_heupstream@mediatek.com>,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Matthias Kaehlcke <mka@chromium.org>,
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
+ Collabora Kernel ML <kernel@collabora.com>,
  Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 29 Apr 2020 at 10:21, yong.mao@mediatek.com
-<yong.mao@mediatek.com> wrote:
->
-> On Tue, 2020-04-28 at 14:13 +0200, Ulf Hansson wrote:
-> > On Tue, 28 Apr 2020 at 11:28, yong.mao@mediatek.com
-> > <yong.mao@mediatek.com> wrote:
-> > >
-> > >
-> > > On Fri, 2020-04-24 at 12:09 +0200, Ulf Hansson wrote:
-> > > > On Tue, 14 Apr 2020 at 05:40, Yong Mao <yong.mao@mediatek.com> wrote:
-> > > > >
-> > > > > From: yong mao <yong.mao@mediatek.com>
-> > > > >
-> > > > > When mmc_sdio_resned_if_cond is invoked, it indicates the SDIO
-> > > > > device is not in the right state. In this condition, the previous
-> > > > > implementation of mmc_sdio_resend_if_cond can't make sure SDIO
-> > > > > device be back to idle state. mmc_power_cycle can reset the SDIO
-> > > > > device by HW and also make sure SDIO device enter to idle state
-> > > > > correctly.
-> > > > >
-> > > > > Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-> > > > > ---
-> > > > >  drivers/mmc/core/sdio.c | 1 +
-> > > > >  1 file changed, 1 insertion(+)
-> > > > >
-> > > > > diff --git a/drivers/mmc/core/sdio.c b/drivers/mmc/core/sdio.c
-> > > > > index ebb387a..ada0a80 100644
-> > > > > --- a/drivers/mmc/core/sdio.c
-> > > > > +++ b/drivers/mmc/core/sdio.c
-> > > > > @@ -546,6 +546,7 @@ static int mmc_sdio_init_uhs_card(struct mmc_card *card)
-> > > > >  static void mmc_sdio_resend_if_cond(struct mmc_host *host,
-> > > > >                                     struct mmc_card *card)
-> > > > >  {
-> > > > > +       mmc_power_cycle(host, host->card->ocr);
-> > > >
-> > > > This looks wrong to me. mmc_sdio_resend_if_cond() is called from two places.
-> > > >
-> > > > 1. In the case when mmc_set_uhs_voltage() fails in
-> > > > mmc_sdio_init_card(), which means a call to mmc_power_cycle() has
-> > > > already been done.
-> > > >
-> > >   Thanks for your comment.
-> > >   Yes. It is right that mmc_power_cycle() has already been done when
-> > >   mmc_sdio_resend_if_cond() is called. In normal re-initialization case,
-> > >   this mmc_power_cycle() (currently in 1.8v voltage and 208Mhz clock)
-> > >   can make SDIO device really back to idle state. Unfortunately, in some
-> > >   special SDIO device, it will enter to unstable state.
-> > >
-> > >   At this unstable state, device may keep data0 always low after receiving CMD11.
-> > >   And then every other SDIO CMD can't be sent to device any more due to card
-> > >   is busy(data0 is low). Therefore, previous implementation can't save the
-> > >   device. At this time, mmc_power_cycle() may be the final solution to make
-> > >   sure SDIO device can back to idle state correctly.
-> >
-> > Well, this still sounds a bit vague to me. I need to understand more
-> > exactly under what circumstances the problem occurs.
-> >
-> > What platform are you testing with and what SDIO card is being used?
->  The platform information is mt8173 + Marvell sdio device + kernel-3.18
-
-I see, thanks for sharing this information. Forward/backporting
-against 3.18 is hard, perhaps impossible when it comes to this, sorry.
-
-A lot of SDIO core parts, especially related to re-initialization and
-power management have been changed since v3.18.
-
-"git log --oneline v3.18..v5.7-rc4 drivers/mmc/core/sdio*" will tell you.
-
-Would it be possible to move to a later kernel and test instead? I
-mean, the problem may already have been solved!? mt8173 should be
-rather well supported upstream, but perhaps lots are missing for the
-SDIO parts?
-
->
-> >
-> > Is the problem happening during the system resume phase?
->   The problem happen when mmc_sdio_runtime_resume is invoked.
-> >
-> > Are the SDIO func driver using runtime PM and then is the host capable
-> > of MMC_CAP_POWER_OFF_CARD?
-> >
->   Yes. SDIO func driver uses runtime PM and MMC_CAP_POWER_OFF_CARD is
-> enabled.
-
-Alright, that explains the use case, thanks!
-
->
-> > Is it easy to reproduce the problem for you?
-> >
->  There are only two units out of many produced units that can always
-> reproduce this issue.
-
-An idea to possibly help to narrow down the problem, could be to
-implement an "test SDIO func driver" and use that rather than the
-mwifiex driver (which I assume is the one you are using?). Then we
-could run various tests from it, like calling pm_runtime_get|put() for
-example.
-
-We already have a similar thing to replace the mmc/sd block device
-driver, so this could be useful for testing SDIO cards/funcs I think.
-
->
-> > >
-> > > > 2. Wen sdio_read_cccr() fails and when we decide to retry the UHS-I
-> > > > voltage switch. Then perhaps it could make sense to run a power cycle.
-> > > > But if so, we better do it only for that path.
-> > > >
-> > > > I will continue to look a bit, as I think there are really more issues
-> > > > that we may want to look into while looking at this piece of code.
-> > > > However, allow me some more time before I can provide some more ideas
-> > > > of how to move forward.
-> > >   In the actual project, we do encounter many relative issues about re-initialized card.
-> > >   The following two categories are the most common issue we met before.
-> > >   A. the SDIO card is initialized by UHS-I mode at the first time, but will be
-> > >      re-initialized by High Speed mode at the second time.
-> > >      ==> All this type of issues is relative with S18A in response of CMD5.
-> > >          And most of the issues are related to the interval between powering off and
-> > >          powering on card.
-
-This sounds a bit like the card gets re-initialized without it first
-being properly power cycled.
-
-Perhaps you call mmc_sw_reset() for a "test SDIO func driver", which
-re-initializes the card, but without doing a power cycle. Then that
-should give you the similar problem?
-
-> > >   B. If there is something wrong in the flow of voltage switch(after CMD11), card will
-> > >      always keep all data pins to low. And then it hangs up because data0 is always low.
-> > >   Hope this information will be helpful for you.
-
-I keep repeating myself, but there seems to be a problem with the
-power cycling of the SDIO card.
-
-> >
-> > Thanks for sharing these details! I think we need to continue to debug
-> > this issue, to fully understand.
-> >
-> > In principle, it sounds to me that maybe mmc_power_cycle(), isn't
-> > really successfully power-cycling the SDIO card. Perhaps insert a few
-> > delays or so in that code to see how that would affect things?
-> >
-> > Anyway, how is the power to the SDIO card controlled in this case? Are
-> > you using a mmc-pwrseq?
-> >
->   vmmc is controlled through GPIO to supply 3.3v power.
->   And the vqmmc is supplied from PMIC which is always 1.8v.
->   (There is no 3.3v here. Perhaps this is one of the reasons to happen
-> this issues)
-
-If it's the Marvell 8787/8897/8997 SDIO module you are using, you most
-likely need a mmc-pwrseq to properly control the power to the SDIO
-module. Perhaps that is what is missing?
-
-See Documentation/devicetree/bindings/net/wireless/marvell-8xxx.txt
-and arch/arm/boot/dts/rk3288-veyron.dtsi for an example.
-
->
-> > >
-> > >   Anyway, we will wait for your advises.
-> > > >
-> > > > >         sdio_reset(host);
-> > > > >         mmc_go_idle(host);
-> > > > >         mmc_send_if_cond(host, host->ocr_avail);
-> > > > > --
-> > > > > 1.9.1
-> > > >
-> > > > Kind regards
-> > > > Uffe
-> >
-> > I have a few patches in the pipe, which fixes some other problems in
-> > mmc_sdio_init_card(). Possibly those can be related, but I need a day
-> > or so to post them, let's see.
-> The codebase of this project is kernel-3.18. Maybe it is hard to apply
-> these new patches. Anyway, We will try it when we get the patches.
-> Thanks.
-
-As you are on a 3.18 kernel, the tests seem quite irrelevant, so I
-wouldn't bother with the backports.
-
-Kind regards
-Uffe
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEVucmljOgoKRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFi
+b3JhLmNvbT4g5pa8IDIwMjDlubQ15pyINOaXpSDpgLHkuIAg5LiL5Y2IMTA6MTTlr6vpgZPvvJoK
+Pgo+IENvbnZlcnQgbXRrX2RwaSB0byBhIGJyaWRnZSBkcml2ZXIgd2l0aCBidWlsdC1pbiBlbmNv
+ZGVyIHN1cHBvcnQgZm9yCj4gY29tcGF0aWJpbGl0eSB3aXRoIGV4aXN0aW5nIGNvbXBvbmVudCBk
+cml2ZXJzLgoKUmV2aWV3ZWQtYnk6IENodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwu
+b3JnPgoKPgo+IFNpZ25lZC1vZmYtYnk6IEVucmljIEJhbGxldGJvIGkgU2VycmEgPGVucmljLmJh
+bGxldGJvQGNvbGxhYm9yYS5jb20+Cj4gLS0tCj4KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kcGkuYyB8IDY2ICsrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLQo+ICAxIGZpbGUg
+Y2hhbmdlZCwgMzQgaW5zZXJ0aW9ucygrKSwgMzIgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYyBiL2RyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHBpLmMKPiBpbmRleCA3MTEyMTI1ZGMzZDEuLmJhYWQxOThjNjllYiAxMDA2
+NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCj4gKysrIGIvZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcGkuYwo+IEBAIC02MSw2ICs2MSw3IEBAIGVudW0g
+bXRrX2RwaV9vdXRfY29sb3JfZm9ybWF0IHsKPiAgc3RydWN0IG10a19kcGkgewo+ICAgICAgICAg
+c3RydWN0IG10a19kZHBfY29tcCBkZHBfY29tcDsKPiAgICAgICAgIHN0cnVjdCBkcm1fZW5jb2Rl
+ciBlbmNvZGVyOwo+ICsgICAgICAgc3RydWN0IGRybV9icmlkZ2UgYnJpZGdlOwo+ICAgICAgICAg
+c3RydWN0IGRybV9icmlkZ2UgKm5leHRfYnJpZGdlOwo+ICAgICAgICAgdm9pZCBfX2lvbWVtICpy
+ZWdzOwo+ICAgICAgICAgc3RydWN0IGRldmljZSAqZGV2Owo+IEBAIC03Nyw5ICs3OCw5IEBAIHN0
+cnVjdCBtdGtfZHBpIHsKPiAgICAgICAgIGludCByZWZjb3VudDsKPiAgfTsKPgo+IC1zdGF0aWMg
+aW5saW5lIHN0cnVjdCBtdGtfZHBpICptdGtfZHBpX2Zyb21fZW5jb2RlcihzdHJ1Y3QgZHJtX2Vu
+Y29kZXIgKmUpCj4gK3N0YXRpYyBpbmxpbmUgc3RydWN0IG10a19kcGkgKmJyaWRnZV90b19kcGko
+c3RydWN0IGRybV9icmlkZ2UgKmIpCj4gIHsKPiAtICAgICAgIHJldHVybiBjb250YWluZXJfb2Yo
+ZSwgc3RydWN0IG10a19kcGksIGVuY29kZXIpOwo+ICsgICAgICAgcmV0dXJuIGNvbnRhaW5lcl9v
+ZihiLCBzdHJ1Y3QgbXRrX2RwaSwgYnJpZGdlKTsKPiAgfQo+Cj4gIGVudW0gbXRrX2RwaV9wb2xh
+cml0eSB7Cj4gQEAgLTUxOCw1MCArNTE5LDQ0IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2Vu
+Y29kZXJfZnVuY3MgbXRrX2RwaV9lbmNvZGVyX2Z1bmNzID0gewo+ICAgICAgICAgLmRlc3Ryb3kg
+PSBtdGtfZHBpX2VuY29kZXJfZGVzdHJveSwKPiAgfTsKPgo+IC1zdGF0aWMgYm9vbCBtdGtfZHBp
+X2VuY29kZXJfbW9kZV9maXh1cChzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIsCj4gLSAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY29uc3Qgc3RydWN0IGRybV9kaXNwbGF5
+X21vZGUgKm1vZGUsCj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc3Ry
+dWN0IGRybV9kaXNwbGF5X21vZGUgKmFkanVzdGVkX21vZGUpCj4gK3N0YXRpYyBpbnQgbXRrX2Rw
+aV9icmlkZ2VfYXR0YWNoKHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UsCj4gKyAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgZW51bSBkcm1fYnJpZGdlX2F0dGFjaF9mbGFncyBmbGFncykK
+PiAgewo+IC0gICAgICAgcmV0dXJuIHRydWU7Cj4gKyAgICAgICBzdHJ1Y3QgbXRrX2RwaSAqZHBp
+ID0gYnJpZGdlX3RvX2RwaShicmlkZ2UpOwo+ICsKPiArICAgICAgIHJldHVybiBkcm1fYnJpZGdl
+X2F0dGFjaChicmlkZ2UtPmVuY29kZXIsIGRwaS0+bmV4dF9icmlkZ2UsCj4gKyAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgJmRwaS0+YnJpZGdlLCBmbGFncyk7Cj4gIH0KPgo+IC1zdGF0
+aWMgdm9pZCBtdGtfZHBpX2VuY29kZXJfbW9kZV9zZXQoc3RydWN0IGRybV9lbmNvZGVyICplbmNv
+ZGVyLAo+IC0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgZHJtX2Rp
+c3BsYXlfbW9kZSAqbW9kZSwKPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+c3RydWN0IGRybV9kaXNwbGF5X21vZGUgKmFkanVzdGVkX21vZGUpCj4gK3N0YXRpYyB2b2lkIG10
+a19kcGlfYnJpZGdlX21vZGVfc2V0KHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UsCj4gKyAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICBjb25zdCBzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAq
+bW9kZSwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnN0IHN0cnVjdCBkcm1f
+ZGlzcGxheV9tb2RlICphZGp1c3RlZF9tb2RlKQo+ICB7Cj4gLSAgICAgICBzdHJ1Y3QgbXRrX2Rw
+aSAqZHBpID0gbXRrX2RwaV9mcm9tX2VuY29kZXIoZW5jb2Rlcik7Cj4gKyAgICAgICBzdHJ1Y3Qg
+bXRrX2RwaSAqZHBpID0gYnJpZGdlX3RvX2RwaShicmlkZ2UpOwo+Cj4gICAgICAgICBkcm1fbW9k
+ZV9jb3B5KCZkcGktPm1vZGUsIGFkanVzdGVkX21vZGUpOwo+ICB9Cj4KPiAtc3RhdGljIHZvaWQg
+bXRrX2RwaV9lbmNvZGVyX2Rpc2FibGUoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQo+ICtz
+dGF0aWMgdm9pZCBtdGtfZHBpX2JyaWRnZV9kaXNhYmxlKHN0cnVjdCBkcm1fYnJpZGdlICpicmlk
+Z2UpCj4gIHsKPiAtICAgICAgIHN0cnVjdCBtdGtfZHBpICpkcGkgPSBtdGtfZHBpX2Zyb21fZW5j
+b2RlcihlbmNvZGVyKTsKPiArICAgICAgIHN0cnVjdCBtdGtfZHBpICpkcGkgPSBicmlkZ2VfdG9f
+ZHBpKGJyaWRnZSk7Cj4KPiAgICAgICAgIG10a19kcGlfcG93ZXJfb2ZmKGRwaSk7Cj4gIH0KPgo+
+IC1zdGF0aWMgdm9pZCBtdGtfZHBpX2VuY29kZXJfZW5hYmxlKHN0cnVjdCBkcm1fZW5jb2RlciAq
+ZW5jb2RlcikKPiArc3RhdGljIHZvaWQgbXRrX2RwaV9icmlkZ2VfZW5hYmxlKHN0cnVjdCBkcm1f
+YnJpZGdlICpicmlkZ2UpCj4gIHsKPiAtICAgICAgIHN0cnVjdCBtdGtfZHBpICpkcGkgPSBtdGtf
+ZHBpX2Zyb21fZW5jb2RlcihlbmNvZGVyKTsKPiArICAgICAgIHN0cnVjdCBtdGtfZHBpICpkcGkg
+PSBicmlkZ2VfdG9fZHBpKGJyaWRnZSk7Cj4KPiAgICAgICAgIG10a19kcGlfcG93ZXJfb24oZHBp
+KTsKPiAgICAgICAgIG10a19kcGlfc2V0X2Rpc3BsYXlfbW9kZShkcGksICZkcGktPm1vZGUpOwo+
+ICB9Cj4KPiAtc3RhdGljIGludCBtdGtfZHBpX2F0b21pY19jaGVjayhzdHJ1Y3QgZHJtX2VuY29k
+ZXIgKmVuY29kZXIsCj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgZHJt
+X2NydGNfc3RhdGUgKmNydGNfc3RhdGUsCj4gLSAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBzdHJ1Y3QgZHJtX2Nvbm5lY3Rvcl9zdGF0ZSAqY29ubl9zdGF0ZSkKPiAtewo+IC0gICAgICAg
+cmV0dXJuIDA7Cj4gLX0KPiAtCj4gLXN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2VuY29kZXJfaGVs
+cGVyX2Z1bmNzIG10a19kcGlfZW5jb2Rlcl9oZWxwZXJfZnVuY3MgPSB7Cj4gLSAgICAgICAubW9k
+ZV9maXh1cCA9IG10a19kcGlfZW5jb2Rlcl9tb2RlX2ZpeHVwLAo+IC0gICAgICAgLm1vZGVfc2V0
+ID0gbXRrX2RwaV9lbmNvZGVyX21vZGVfc2V0LAo+IC0gICAgICAgLmRpc2FibGUgPSBtdGtfZHBp
+X2VuY29kZXJfZGlzYWJsZSwKPiAtICAgICAgIC5lbmFibGUgPSBtdGtfZHBpX2VuY29kZXJfZW5h
+YmxlLAo+IC0gICAgICAgLmF0b21pY19jaGVjayA9IG10a19kcGlfYXRvbWljX2NoZWNrLAo+ICtz
+dGF0aWMgY29uc3Qgc3RydWN0IGRybV9icmlkZ2VfZnVuY3MgbXRrX2RwaV9icmlkZ2VfZnVuY3Mg
+PSB7Cj4gKyAgICAgICAuYXR0YWNoID0gbXRrX2RwaV9icmlkZ2VfYXR0YWNoLAo+ICsgICAgICAg
+Lm1vZGVfc2V0ID0gbXRrX2RwaV9icmlkZ2VfbW9kZV9zZXQsCj4gKyAgICAgICAuZGlzYWJsZSA9
+IG10a19kcGlfYnJpZGdlX2Rpc2FibGUsCj4gKyAgICAgICAuZW5hYmxlID0gbXRrX2RwaV9icmlk
+Z2VfZW5hYmxlLAo+ICB9Owo+Cj4gIHN0YXRpYyB2b2lkIG10a19kcGlfc3RhcnQoc3RydWN0IG10
+a19kZHBfY29tcCAqY29tcCkKPiBAQCAtNjAyLDE2ICs1OTcsMTMgQEAgc3RhdGljIGludCBtdGtf
+ZHBpX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsIHZvaWQg
+KmRhdGEpCj4gICAgICAgICAgICAgICAgIGRldl9lcnIoZGV2LCAiRmFpbGVkIHRvIGluaXRpYWxp
+emUgZGVjb2RlcjogJWRcbiIsIHJldCk7Cj4gICAgICAgICAgICAgICAgIGdvdG8gZXJyX3VucmVn
+aXN0ZXI7Cj4gICAgICAgICB9Cj4gLSAgICAgICBkcm1fZW5jb2Rlcl9oZWxwZXJfYWRkKCZkcGkt
+PmVuY29kZXIsICZtdGtfZHBpX2VuY29kZXJfaGVscGVyX2Z1bmNzKTsKPgo+ICAgICAgICAgLyog
+Q3VycmVudGx5IERQSTAgaXMgZml4ZWQgdG8gYmUgZHJpdmVuIGJ5IE9WTDEgKi8KPiAgICAgICAg
+IGRwaS0+ZW5jb2Rlci5wb3NzaWJsZV9jcnRjcyA9IEJJVCgxKTsKPgo+IC0gICAgICAgcmV0ID0g
+ZHJtX2JyaWRnZV9hdHRhY2goJmRwaS0+ZW5jb2RlciwgZHBpLT5uZXh0X2JyaWRnZSwgTlVMTCwg
+MCk7Cj4gLSAgICAgICBpZiAocmV0KSB7Cj4gLSAgICAgICAgICAgICAgIGRldl9lcnIoZGV2LCAi
+RmFpbGVkIHRvIGF0dGFjaCBicmlkZ2U6ICVkXG4iLCByZXQpOwo+ICsgICAgICAgcmV0ID0gZHJt
+X2JyaWRnZV9hdHRhY2goJmRwaS0+ZW5jb2RlciwgJmRwaS0+YnJpZGdlLCBOVUxMLCAwKTsKPiAr
+ICAgICAgIGlmIChyZXQpCj4gICAgICAgICAgICAgICAgIGdvdG8gZXJyX2NsZWFudXA7Cj4gLSAg
+ICAgICB9Cj4KPiAgICAgICAgIGRwaS0+Yml0X251bSA9IE1US19EUElfT1VUX0JJVF9OVU1fOEJJ
+VFM7Cj4gICAgICAgICBkcGktPmNoYW5uZWxfc3dhcCA9IE1US19EUElfT1VUX0NIQU5ORUxfU1dB
+UF9SR0I7Cj4gQEAgLTc2OCw4ICs3NjAsMTUgQEAgc3RhdGljIGludCBtdGtfZHBpX3Byb2JlKHN0
+cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4KPiAgICAgICAgIHBsYXRmb3JtX3NldF9kcnZk
+YXRhKHBkZXYsIGRwaSk7Cj4KPiArICAgICAgIGRwaS0+YnJpZGdlLmZ1bmNzID0gJm10a19kcGlf
+YnJpZGdlX2Z1bmNzOwo+ICsgICAgICAgZHBpLT5icmlkZ2Uub2Zfbm9kZSA9IGRldi0+b2Zfbm9k
+ZTsKPiArICAgICAgIGRwaS0+YnJpZGdlLnR5cGUgPSBEUk1fTU9ERV9DT05ORUNUT1JfRFBJOwo+
+ICsKPiArICAgICAgIGRybV9icmlkZ2VfYWRkKCZkcGktPmJyaWRnZSk7Cj4gKwo+ICAgICAgICAg
+cmV0ID0gY29tcG9uZW50X2FkZChkZXYsICZtdGtfZHBpX2NvbXBvbmVudF9vcHMpOwo+ICAgICAg
+ICAgaWYgKHJldCkgewo+ICsgICAgICAgICAgICAgICBkcm1fYnJpZGdlX3JlbW92ZSgmZHBpLT5i
+cmlkZ2UpOwo+ICAgICAgICAgICAgICAgICBkZXZfZXJyKGRldiwgIkZhaWxlZCB0byBhZGQgY29t
+cG9uZW50OiAlZFxuIiwgcmV0KTsKPiAgICAgICAgICAgICAgICAgcmV0dXJuIHJldDsKPiAgICAg
+ICAgIH0KPiBAQCAtNzc5LDcgKzc3OCwxMCBAQCBzdGF0aWMgaW50IG10a19kcGlfcHJvYmUoc3Ry
+dWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPgo+ICBzdGF0aWMgaW50IG10a19kcGlfcmVtb3Zl
+KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIHsKPiArICAgICAgIHN0cnVjdCBtdGtf
+ZHBpICpkcGkgPSBwbGF0Zm9ybV9nZXRfZHJ2ZGF0YShwZGV2KTsKPiArCj4gICAgICAgICBjb21w
+b25lbnRfZGVsKCZwZGV2LT5kZXYsICZtdGtfZHBpX2NvbXBvbmVudF9vcHMpOwo+ICsgICAgICAg
+ZHJtX2JyaWRnZV9yZW1vdmUoJmRwaS0+YnJpZGdlKTsKPgo+ICAgICAgICAgcmV0dXJuIDA7Cj4g
+IH0KPiAtLQo+IDIuMjYuMgo+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LW1lZGlhdGVrCg==
