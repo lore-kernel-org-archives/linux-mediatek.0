@@ -2,74 +2,79 @@ Return-Path: <SRS0=+Wu7=6T=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-13.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D6CBDC47254
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 14:09:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C5700C47247
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 14:18:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A324820675
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 14:09:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8EAFD20675
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 14:18:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="G8QTjCZw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A324820675
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arndb.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="G6rNGoUu";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="qn+orp4I"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8EAFD20675
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=cjBlOkijR5Fcw0q9aDk89xciKL2Sdf3202UeL3Ap4Es=; b=G8QTjCZwn1tO9B
-	9MrDRZGvh5JKNof4/qrUd9Uctqd+J/JmKa0u4S9r4IbOdtoy3EHQq56TNJBVuEgtdluwGfd6B6jRF
-	CRqvxMi6SdfuY+JODWRx4Yt/UXpBpRgZLMhxwAssGjMQ/LfP+XWjURN7dEjvvtxQaC3fcTSlzXYpX
-	6UXEUmgS1KGvKghyqog1oH7TcgZc+3GP3NkOhlguTCXAu4BZxK7yADeBy5PgM8t5kJXBgURoRbBRc
-	XEu/6von/5mQ1bCI84RISqYHAL1zFzyGEQnAGq4mPKs1F08ZSYb/oL1oYNllJ5717DGKjSAfRU5s7
-	qPEYBi+aDiLPIdwsGFlQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=viIjX/kE44NHTsB79+3vA0e7TX14VfwctG1/cPuwV2U=; b=G6rNGoUuRkHJiE
+	cu5Ccx/urNV+19R7aC2J5F1HO2I2WhQP41znpw9ZPrSc5ZLqKKb4MnESqMHIRm79MPA/tyjX6zjb+
+	lp8/toGCa6PLG30GwV1YHaI0xHCHw59gz3kApLXPFg6UXRwy9BMPkEnaD/fTOUsqkDlWW1tW1gOdB
+	x1ABN+e9XeoXSTVj75NtIhBBZIatHRYG1WoyO5ilxIetCZjx/F3FqFRf2h/Mg7R671V8yLUVayKo4
+	T/ZR+FmHNuWRAnniq445FjJGWqzKVVb5G/ZNMB3fIdsazmK8IFEKjdE7I86siJ77rCbbp52DVU6KR
+	2A3cAi05cdElQFyZtMvA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jVyGC-0000tZ-62; Tue, 05 May 2020 14:09:24 +0000
-Received: from mout.kundenserver.de ([212.227.126.134])
+	id 1jVyP5-0000Xf-8x; Tue, 05 May 2020 14:18:35 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jVyG4-0000lH-CJ; Tue, 05 May 2020 14:09:17 +0000
-Received: from localhost.localdomain ([149.172.19.189]) by
- mrelayeu.kundenserver.de (mreue010 [212.227.15.129]) with ESMTPA (Nemesis) id
- 1MOAJt-1jl13t3uIr-00OWri; Tue, 05 May 2020 16:08:53 +0200
-From: Arnd Bergmann <arnd@arndb.de>
-To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Light Hsieh <light.hsieh@mediatek.com>
-Subject: [PATCH] pinctrl: mediatek: add pinctrl-mtk-common-v2 module license
-Date: Tue,  5 May 2020 16:08:40 +0200
-Message-Id: <20200505140848.554957-1-arnd@arndb.de>
-X-Mailer: git-send-email 2.26.0
+ id 1jVyP2-0000WG-8j; Tue, 05 May 2020 14:18:34 +0000
+X-UUID: d08b1254a5394a719b5f3e3f741a6489-20200505
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Ln7segckAaiZAgl5KaodMOtBPiq7uyrqeiRYfTd7390=; 
+ b=qn+orp4IE+WGgZ3zaTvwWzfltDoVjEASb2YDxUFQJyMpBrFhMvHWyFLF2KlspoGxrZFpBC6x2ySJVBWVdnZbNeovMfO8k0Yn5Eufdny3Aj0GQpzevI2MbFQDqOpnvtIcUJhwXnQBhkFgSIvVrVsDK8zv1TIPIyhsKTFVzzy924A=;
+X-UUID: d08b1254a5394a719b5f3e3f741a6489-20200505
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <dongchun.zhu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 1042931872; Tue, 05 May 2020 06:18:27 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 5 May 2020 07:18:23 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 5 May 2020 22:18:18 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 5 May 2020 22:18:18 +0800
+Message-ID: <1588688238.8804.150.camel@mhfsdcap03>
+Subject: Re: [V7, 1/2] media: dt-bindings: media: i2c: Document OV02A10
+ bindings
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Date: Tue, 5 May 2020 22:17:18 +0800
+In-Reply-To: <20200505070451.GS9190@paasikivi.fi.intel.com>
+References: <20200430080924.1140-1-dongchun.zhu@mediatek.com>
+ <20200430080924.1140-2-dongchun.zhu@mediatek.com>
+ <20200505070451.GS9190@paasikivi.fi.intel.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-Provags-ID: V03:K1:8x+ElLntw4n38VdOKQUn1jKkUwp0cPhTkte/vCk9MXw5FBuRYzO
- aZCQhDaNInbB9duIFcVfR+IrIflB0RYYyOkVYS+7peR9ZqSuhIWA6dAu6Kmf7ot1i92NWvY
- g4FHlV3Nxs5+999B1PWHrMh56vUvgHX/CSR4cbVxkw/sSiBqgJtnIGYO7lq9SLmnrmL6//Z
- vY9Ixf3Ex6196kbCI/h3g==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:zcGuDdea3AI=:9gaJ956+e/S10zq8UOB7AR
- ZbUbesdyNXz+lmJ0cSTddlrcznHhOKalZ1lW/bayZKFtHepB5SJgtExFff1e8kaB+fmQTgOrV
- QYvRc1Wm0rfQgZBSGJZX2YOK9lXDjtny/xA8L153JTjJm/QvEStKSRCsXMUpMQGKmDbggABSJ
- 6neIeahH7BGIuHJs0Fir45FWoGg6/anKlb31ekSjm4pOStevMTmVC+lDMV0bP95Pd1mul7j59
- y/YryQKIyKKfsKuOTXQ6h+zaXUsgKXDofLkn6egv6vDfz+0RQZKGx/rAYHElCIXKpZMLmYL1S
- M/bObKTqpNgi19LZokBLdy1BveelcokBT0uTNFPaTMq1Mtk2D4A2uN1EkoYb2G4EaFLQj+TBI
- w2lbaF4Ihl80niu4bAyHI5gx6a+Wo+5mpV7GyxvT1XGLGBlZGSjwSVu451HDlRO4d+jHxSxfg
- B75g+s2zKXfUSuZ/1dAJGPd/IZZr2N+AbTI8qj+eBKv7bdOG0XB50FNFH0e8aNxzk8aNZf4dr
- zElEykIHEdaZba0MaFXH9ZTXmlFFcJjNLV7dlhUUiqieOOnfMZNMH8sPSoXTf+w9wMmgOw/W7
- c7+NQZqZgb3jIwNSsebo3NQ7GqujbDEQv1wHCFxWVzASUlFy6xAuf/vpb7z7MrflX32NZv4Qg
- GkpStsiq59TeUo3TyBesfD6QAsc4leX6g9tV83XTBOd7Quuk/Fe4e6GgJv0C9cqWZPNyjBaTf
- LLoqUYqdn6JVmbYkchP6+hbypYs0N858++nrLcQHQ40j1e1BPPjvvNSHtc1MiYm6mLy/7zVR0
- VakUMnxloNVNdH0eJnsGjvF/dgyYo2igsrU85G/lFPCccAnP4Q=
+X-TM-SNTS-SMTP: 4EB007B2B39823776E591625AE24E153515C61B35CE8B89132CA6EE5D2B255FE2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200505_070916_710123_906B6AA0 
-X-CRM114-Status: UNSURE (   7.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200505_071832_319852_8F30E7A4 
+X-CRM114-Status: GOOD (  20.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,43 +86,229 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Arnd Bergmann <arnd@arndb.de>, Sean Wang <sean.wang@mediatek.com>,
- YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: mark.rutland@arm.com, drinkcat@chromium.org,
+ andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
+ devicetree@vger.kernel.org, linus.walleij@linaro.org,
+ shengnan.wang@mediatek.com, tfiga@chromium.org, bgolaszewski@baylibre.com,
+ sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
+ louis.kuo@mediatek.com, matthias.bgg@gmail.com, bingbu.cao@intel.com,
+ matrix.zhu@aliyun.com, mchehab@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Kbuild warns when this file is built as a loadable module:
+Hi Sakari,
 
-WARNING: modpost: missing MODULE_LICENSE() in drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.o
-see include/linux/module.h for more information
+Thanks for the review.
 
-Add the missing license/author/description tags.
+On Tue, 2020-05-05 at 10:04 +0300, Sakari Ailus wrote:
+> Hi Dongchun,
+> 
+> On Thu, Apr 30, 2020 at 04:09:23PM +0800, Dongchun Zhu wrote:
+> > Add DT bindings documentation for Omnivision OV02A10 image sensor.
+> > 
+> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > ---
+> >  .../bindings/media/i2c/ovti,ov02a10.yaml           | 148 +++++++++++++++++++++
+> >  MAINTAINERS                                        |   7 +
+> >  2 files changed, 155 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> > 
+> > diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> > new file mode 100644
+> > index 0000000..2be4bd2
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> > @@ -0,0 +1,148 @@
+> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > +# Copyright (c) 2020 MediaTek Inc.
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/media/i2c/ovti,ov02a10.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Omnivision OV02A10 CMOS Sensor Device Tree Bindings
+> > +
+> > +maintainers:
+> > +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > +
+> > +description: |-
+> > +  The Omnivision OV02A10 is a low-cost, high performance, 1/5-inch, 2 megapixel
+> > +  image sensor, which is the latest production derived from Omnivision's CMOS
+> > +  image sensor technology. Ihis chip supports high frame rate speeds up to 30fps
+> > +  @ 1600x1200 (UXGA) resolution transferred over a 1-lane MIPI interface. The
+> > +  sensor output is available via CSI-2 serial data output.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: ovti,ov02a10
+> > +
+> > +  reg:
+> > +    maxItems: 1
+> > +
+> > +  clocks:
+> > +    items:
+> > +      - description: top mux camtg clock
+> > +      - description: devider clock
+> > +
+> > +  clock-names:
+> > +    items:
+> > +      - const: eclk
+> > +      - const: freq_mux
+> > +
+> > +  clock-frequency:
+> > +    description:
+> > +      Frequency of the eclk clock in Hertz.
+> > +
+> > +  dovdd-supply:
+> > +    description:
+> > +      Definition of the regulator used as interface power supply.
+> > +
+> > +  avdd-supply:
+> > +    description:
+> > +      Definition of the regulator used as analog power supply.
+> > +
+> > +  dvdd-supply:
+> > +    description:
+> > +      Definition of the regulator used as digital power supply.
+> > +
+> > +  powerdown-gpios:
+> > +    description:
+> > +      The phandle and specifier for the GPIO that controls sensor powerdown.
+> > +
+> > +  reset-gpios:
+> > +    description:
+> > +      The phandle and specifier for the GPIO that controls sensor reset.
+> > +
+> > +  rotation:
+> > +    description:
+> > +      Definition of the sensor's placement, valid values are 0 and 180.
+> > +    allOf:
+> > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
+> > +      - enum:
+> > +          - 0    # Sensor Mounted Upright
+> > +          - 180  # Sensor Mounted Upside Down
+> > +
+> > +  ovti,mipi-tx-speed:
+> > +    description:
+> > +      Indication of MIPI transmission speed select.
+> 
+> What exactly does this signify? And how do you come up with the number?
+> 
 
-Fixes: 8174a8512e3e ("pinctrl: mediatek: make MediaTek pinctrl v2 driver ready for buidling loadable module")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 4 ++++
- 1 file changed, 4 insertions(+)
+Apologies for not addressing this number clear.
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-index 6ea40b501328..b77b18fe5adc 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-@@ -993,3 +993,7 @@ int mtk_pinconf_adv_drive_get(struct mtk_pinctrl *hw,
- 	return 0;
- }
- EXPORT_SYMBOL_GPL(mtk_pinconf_adv_drive_get);
-+
-+MODULE_LICENSE("GPL v2");
-+MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
-+MODULE_DESCRIPTION("Pin configuration library module for mediatek SoCs");
--- 
-2.26.0
+From the datasheet, P1:0xA1 register represents TX_SPEED_AREA_SEL with
+the default val: 0x03.
+The description of this RW register is as below:
+Bit[2:0]: MIPI transmission speed select.
 
+Thus the enum should be definited as [ 0, 1, 2, 3, 4, 5, 6, 7 ].
+This would be fixed in next release.
+
+In the meantime, as the default val of P1:0xA1 is 0x03, we hope to keep
+that value if there is no setting for this private property in DT.
+The caller in driver would be updated like this in next release.
+if (ov02a10->mipi_clock_tx_speed)
+	ret = i2c_smbus_write_byte_data(...,...);
+
+> > +    allOf:
+> > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
+> > +      - enum: [ 3, 4 ]
+> > +
+> > +  # See ../video-interfaces.txt for details
+> > +  port:
+> > +    type: object
+> > +    additionalProperties: false
+> > +
+> > +    properties:
+> > +      endpoint:
+> > +        type: object
+> > +        additionalProperties: false
+> > +
+> > +        properties:
+> > +          remote-endpoint: true
+> > +          link-frequencies: true
+> > +
+> > +    required:
+> > +      - endpoint
+> > +
+> > +required:
+> > +  - compatible
+> > +  - reg
+> > +  - clocks
+> > +  - clock-names
+> > +  - clock-frequency
+> > +  - dovdd-supply
+> > +  - avdd-supply
+> > +  - dvdd-supply
+> > +  - powerdown-gpios
+> > +  - reset-gpios
+> > +  - port
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/clock/mt8183-clk.h>
+> > +    #include <dt-bindings/gpio/gpio.h>
+> > +
+> > +    i2c {
+> > +        clock-frequency = <400000>;
+> > +        #address-cells = <1>;
+> > +        #size-cells = <0>;
+> > +
+> > +        ov02a10: camera-sensor@3d {
+> > +            compatible = "ovti,ov02a10";
+> > +            reg = <0x3d>;
+> > +            pinctrl-names = "default";
+> > +            pinctrl-0 = <&clk_24m_cam>;
+> > +
+> > +            clocks = <&topckgen CLK_TOP_MUX_CAMTG>,
+> > +                     <&topckgen CLK_TOP_UNIVP_192M_D8>;
+> > +            clock-names = "eclk", "freq_mux";
+> > +            clock-frequency = <24000000>;
+> > +
+> > +            rotation = <180>;
+> > +            ovti,mipi-tx-speed = <3>;
+> > +
+> > +            dovdd-supply = <&mt6358_vcamio_reg>;
+> > +            avdd-supply = <&mt6358_vcama1_reg>;
+> > +            dvdd-supply = <&mt6358_vcn18_reg>;
+> > +            powerdown-gpios = <&pio 107 GPIO_ACTIVE_LOW>;
+> > +            reset-gpios = <&pio 109 GPIO_ACTIVE_HIGH>;
+> > +
+> > +            port {
+> > +                wcam_out: endpoint {
+> > +                    remote-endpoint = <&mipi_in_wcam>;
+> > +                    link-frequencies = /bits/ 64 <390000000>;
+> > +                };
+> > +            };
+> > +        };
+> > +    };
+> > +
+> > +...
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index e64e5db..63a2335 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -12389,6 +12389,13 @@ M:	Harald Welte <laforge@gnumonks.org>
+> >  S:	Maintained
+> >  F:	drivers/char/pcmcia/cm4040_cs.*
+> >  
+> > +OMNIVISION OV02A10 SENSOR DRIVER
+> > +M:	Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > +L:	linux-media@vger.kernel.org
+> > +S:	Maintained
+> > +T:	git git://linuxtv.org/media_tree.git
+> > +F:	Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> > +
+> >  OMNIVISION OV13858 SENSOR DRIVER
+> >  M:	Sakari Ailus <sakari.ailus@linux.intel.com>
+> >  L:	linux-media@vger.kernel.org
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
