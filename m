@@ -2,76 +2,71 @@ Return-Path: <SRS0=+Wu7=6T=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-1.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2D43CC47247
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 04:08:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E6CEEC47256
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 07:05:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F16EE20737
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 04:08:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B281720658
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 07:05:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NjS4tgyj";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="BN6Cy/3H"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F16EE20737
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lZDVfRDl"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B281720658
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KCE3TRGZaDWsV94B1bBFgea8q5HsMxCGfK7qXYv9NYY=; b=NjS4tgyjmJtqVP
-	MIiX/VYjUYv7uxNjKOsHZzT4dS4sFBUy8fEaAUUwBZVuzXYPJ0eHWnf8b/rGi3yyniBISvhXGY8Pk
-	bTtsy5yPfI0MZAcRzqCdqR4XH+Ks2eFHMmj84LflatA66WeugNoRoGq24L00IoUhPigi84PHWMeSV
-	F22B+LIF4PQPW9vEy511Ngx0UT+KY/UlPtPGbVxpMVLQfm4SPMkwyAFpI+oP23n41pOlkq6SP4G/m
-	aMdh+Wsu55ZzPGajw+twWY5P/w9wjYkyKknKyuCfn4eyXPAOl8gzBh1e+AK9G0VthVjabKEnBvNdb
-	YVX+DeLhh7jVccNfnpPQ==;
+	List-Owner; bh=uQ7dj2x46uipSl1EpoR2u9xh2rq8Or/YfuQgIxRy16U=; b=lZDVfRDlkemI02
+	4wwZ0yDSWqZA3yue3frzSBCoxMCB/WXmUDJY8MZX/KX7yItqIHRMoyX0jz7rk19F/MtcJ6ArzuPAe
+	sVPGsp+bqdfwK8uLxP/IGYQHLgucWoVSryWWceeKzOSlk3tL5nUBGKGHxhOLUHyI0mDA+Zx3vnhJa
+	JqAu34KnYB+jWjkorX8cUV+x7LYdTHBToft8U9UTlnboEBF0299fvqtVEM9J5dWGgld2CESRpG0Rw
+	y00wHVOuk9XmIiVP/dp8tKbcWsRhbuheScJvOn4IVGsr7NYipQkDOnP92YBb2kgWG8VRKu0fV/FMT
+	OkpwctHun0V8c4Q1Ga5A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jVosd-0000UP-0C; Tue, 05 May 2020 04:08:27 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jVrdn-0001SO-Ap; Tue, 05 May 2020 07:05:19 +0000
+Received: from mga06.intel.com ([134.134.136.31])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jVosO-0000JY-Lt; Tue, 05 May 2020 04:08:13 +0000
-Received: from mail-ot1-f53.google.com (mail-ot1-f53.google.com
- [209.85.210.53])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 2E8CE2075E;
- Tue,  5 May 2020 04:08:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588651690;
- bh=uzzMCgqE/O5IIYjUlJGPkxkNrxePxpFGbx62v87B1yk=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=BN6Cy/3HpCwbAGqGdvC+qqnnmWcpBeTMOV+avy7c5MqADF8o2RkgcRkJzIQXdsCsk
- 1Afk3jIt/KQM3TnQcStiKfqzuLsewX65wxQohWJds/+9oXyCCJshgXhqgUpXBb3dvp
- Pj9E/11iNOGPIQykmHB/KEKg0M4b5I2GMOZkNt/o=
-Received: by mail-ot1-f53.google.com with SMTP id g19so573527otk.5;
- Mon, 04 May 2020 21:08:10 -0700 (PDT)
-X-Gm-Message-State: AGi0PubU+SP5SF8IO2yFaAdilkn5SRvXTWArqDfvJIGY+ELZxAch16C/
- G+3Fd5z/9KfSmcVFkTYCDP9wZ3GnlNQ04AIhaA==
-X-Google-Smtp-Source: APiQypKr0Hhrl0+e44U31hazXs0o4bScaIuGYf4nCgkUWwDdJ4zYt2nRLPemlwjIE7S1TGeNHXWRAj+I7RpOjlh+8dk=
-X-Received: by 2002:a9d:7d85:: with SMTP id j5mr690540otn.107.1588651689440;
- Mon, 04 May 2020 21:08:09 -0700 (PDT)
+ id 1jVrdV-0007G2-LV; Tue, 05 May 2020 07:05:04 +0000
+IronPort-SDR: 4x6lBPIY2WNuAxr1HYAkklRKUdeycYazA3A1NsU9622rjj5+ZJzS6RzKx8cdznwtuhnxdnU7nM
+ CaKPsoZfJNKw==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 May 2020 00:04:57 -0700
+IronPort-SDR: g0lTiDLjerpC+aeL3NNgChf6tU+zFHtkYay4QAa0CV2X6WLkoRkX86t2Lv/urXwg7apXXGUovU
+ G6q2tKeVlRWA==
+X-IronPort-AV: E=Sophos;i="5.73,354,1583222400"; d="scan'208";a="304397388"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+ by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 May 2020 00:04:53 -0700
+Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
+ id 7D2EF20885; Tue,  5 May 2020 10:04:51 +0300 (EEST)
+Date: Tue, 5 May 2020 10:04:51 +0300
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Dongchun Zhu <dongchun.zhu@mediatek.com>
+Subject: Re: [V7, 1/2] media: dt-bindings: media: i2c: Document OV02A10
+ bindings
+Message-ID: <20200505070451.GS9190@paasikivi.fi.intel.com>
+References: <20200430080924.1140-1-dongchun.zhu@mediatek.com>
+ <20200430080924.1140-2-dongchun.zhu@mediatek.com>
 MIME-Version: 1.0
-References: <967df5c3303b478b76199d4379fe40f5094f3f9b.1588584538.git.mchehab+huawei@kernel.org>
- <20200504174522.GA3383@ravnborg.org>
- <20200504175553.jdm7a7aabloevxba@pengutronix.de>
-In-Reply-To: <20200504175553.jdm7a7aabloevxba@pengutronix.de>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Mon, 4 May 2020 23:07:57 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqJuRrhEtt5uxaQ=7WvDKiF_2v025GiYUvrrFE5jxBr-Xg@mail.gmail.com>
-Message-ID: <CAL_JsqJuRrhEtt5uxaQ=7WvDKiF_2v025GiYUvrrFE5jxBr-Xg@mail.gmail.com>
-Subject: Re: [PATCH] docs: dt: fix broken links due to txt->yaml renames
-To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
- Sam Ravnborg <sam@ravnborg.org>
+Content-Disposition: inline
+In-Reply-To: <20200430080924.1140-2-dongchun.zhu@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200504_210812_759554_D5688D5A 
-X-CRM114-Status: GOOD (  14.27  )
+X-CRM114-CacheID: sfid-20200505_000501_770290_A5905709 
+X-CRM114-Status: GOOD (  18.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,51 +78,213 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Linux-ALSA <alsa-devel@alsa-project.org>,
- Olivier Moysan <olivier.moysan@st.com>,
- Linux Doc Mailing List <linux-doc@vger.kernel.org>,
- David Airlie <airlied@linux.ie>, dri-devel <dri-devel@lists.freedesktop.org>,
- Liam Girdwood <lgirdwood@gmail.com>, Andrzej Hajda <a.hajda@samsung.com>,
- Jonathan Corbet <corbet@lwn.net>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Sandy Huang <hjc@rock-chips.com>, devicetree@vger.kernel.org,
- Sean Wang <sean.wang@mediatek.com>, Jyri Sarha <jsarha@ti.com>,
- Mark Brown <broonie@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Arnaud Pouliquen <arnaud.pouliquen@st.com>,
- "open list:MIPS" <linux-mips@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "open list:BLUETOOTH DRIVERS" <linux-bluetooth@vger.kernel.org>,
- netdev <netdev@vger.kernel.org>, "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: mark.rutland@arm.com, drinkcat@chromium.org,
+ andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
+ devicetree@vger.kernel.org, linus.walleij@linaro.org,
+ shengnan.wang@mediatek.com, tfiga@chromium.org, bgolaszewski@baylibre.com,
+ sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
+ louis.kuo@mediatek.com, matthias.bgg@gmail.com, bingbu.cao@intel.com,
+ mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBNYXkgNCwgMjAyMCBhdCAxMjo1NiBQTSBVd2UgS2xlaW5lLUvDtm5pZwo8dS5rbGVp
-bmUta29lbmlnQHBlbmd1dHJvbml4LmRlPiB3cm90ZToKPgo+IEhpIFNhbSwKPgo+IE9uIE1vbiwg
-TWF5IDA0LCAyMDIwIGF0IDA3OjQ1OjIyUE0gKzAyMDAsIFNhbSBSYXZuYm9yZyB3cm90ZToKPiA+
-IE9uIE1vbiwgTWF5IDA0LCAyMDIwIGF0IDExOjMwOjIwQU0gKzAyMDAsIE1hdXJvIENhcnZhbGhv
-IENoZWhhYiB3cm90ZToKPiA+ID4gVGhlcmUgYXJlIHNvbWUgbmV3IGJyb2tlbiBkb2MgbGlua3Mg
-ZHVlIHRvIHlhbWwgcmVuYW1lcwo+ID4gPiBhdCBEVC4gRGV2ZWxvcGVycyBzaG91bGQgcmVhbGx5
-IHJ1bjoKPiA+ID4KPiA+ID4gICAgIC4vc2NyaXB0cy9kb2N1bWVudGF0aW9uLWZpbGUtcmVmLWNo
-ZWNrCj4gPiA+Cj4gPiA+IGluIG9yZGVyIHRvIHNvbHZlIHRob3NlIGlzc3VlcyB3aGlsZSBzdWJt
-aXR0aW5nIHBhdGNoZXMuCj4gPiBXb3VsZCBsb3ZlIGlmIHNvbWUgYm90IGNvdWxkIGRvIHRoaXMg
-Zm9yIG1lIG9uIGFueSBwYXRjaGVzIHRoYXQgY3JlYXRlcwo+ID4gLnlhbWwgZmlsZXMgb3Igc28u
-Cj4gPiBJIGtub3cgSSB3aWxsIGZvcmdldCB0aGlzIGFuZCBpdCBjYW4gYmUgYXV0b21hdGVkLgo+
-ID4gSWYgSSBnZXQgYSBib3QgbWFpbCB0aGF0IG15IHBhdGNoIHdvdWxkIGJyb2tlIGEgbGluayBJ
-IHdvdWxkCj4gPiBoYXZlIGl0IGZpeGVkIGJlZm9yZSBpdCBoaXRzIGFueSB0cmVlLgoKSSBjYW4g
-cHJvYmFibHkgYWRkIHRoaXMgdG8gd2hhdCBJJ20gYWxyZWFkeSBjaGVja2luZy4gTm90IGNvbXBs
-ZXRlbHkKYXV0b21hdGVkIHRob3VnaCBhcyBpdCBkZXBlbmRzIG9uIG1lIHRvIHJldmlldyBiZWZv
-cmUgc2VuZGluZy4KCj4gV2hhdCBhYm91dCBhZGRpbmcgYSBjaGVjayB0byBjaGVja19wYXRjaD8K
-ClRoYXQgd291bGQgYmUgdGhlIGJlc3Qgd2F5IHRvIGdldCBzdWJtaXR0ZXJzIHRvIGRvIHRoaXMu
-CgpSb2IKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVk
-aWF0ZWsK
+Hi Dongchun,
+
+On Thu, Apr 30, 2020 at 04:09:23PM +0800, Dongchun Zhu wrote:
+> Add DT bindings documentation for Omnivision OV02A10 image sensor.
+> 
+> Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> ---
+>  .../bindings/media/i2c/ovti,ov02a10.yaml           | 148 +++++++++++++++++++++
+>  MAINTAINERS                                        |   7 +
+>  2 files changed, 155 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> new file mode 100644
+> index 0000000..2be4bd2
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> @@ -0,0 +1,148 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +# Copyright (c) 2020 MediaTek Inc.
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/i2c/ovti,ov02a10.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Omnivision OV02A10 CMOS Sensor Device Tree Bindings
+> +
+> +maintainers:
+> +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
+> +
+> +description: |-
+> +  The Omnivision OV02A10 is a low-cost, high performance, 1/5-inch, 2 megapixel
+> +  image sensor, which is the latest production derived from Omnivision's CMOS
+> +  image sensor technology. Ihis chip supports high frame rate speeds up to 30fps
+> +  @ 1600x1200 (UXGA) resolution transferred over a 1-lane MIPI interface. The
+> +  sensor output is available via CSI-2 serial data output.
+> +
+> +properties:
+> +  compatible:
+> +    const: ovti,ov02a10
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: top mux camtg clock
+> +      - description: devider clock
+> +
+> +  clock-names:
+> +    items:
+> +      - const: eclk
+> +      - const: freq_mux
+> +
+> +  clock-frequency:
+> +    description:
+> +      Frequency of the eclk clock in Hertz.
+> +
+> +  dovdd-supply:
+> +    description:
+> +      Definition of the regulator used as interface power supply.
+> +
+> +  avdd-supply:
+> +    description:
+> +      Definition of the regulator used as analog power supply.
+> +
+> +  dvdd-supply:
+> +    description:
+> +      Definition of the regulator used as digital power supply.
+> +
+> +  powerdown-gpios:
+> +    description:
+> +      The phandle and specifier for the GPIO that controls sensor powerdown.
+> +
+> +  reset-gpios:
+> +    description:
+> +      The phandle and specifier for the GPIO that controls sensor reset.
+> +
+> +  rotation:
+> +    description:
+> +      Definition of the sensor's placement, valid values are 0 and 180.
+> +    allOf:
+> +      - $ref: "/schemas/types.yaml#/definitions/uint32"
+> +      - enum:
+> +          - 0    # Sensor Mounted Upright
+> +          - 180  # Sensor Mounted Upside Down
+> +
+> +  ovti,mipi-tx-speed:
+> +    description:
+> +      Indication of MIPI transmission speed select.
+
+What exactly does this signify? And how do you come up with the number?
+
+> +    allOf:
+> +      - $ref: "/schemas/types.yaml#/definitions/uint32"
+> +      - enum: [ 3, 4 ]
+> +
+> +  # See ../video-interfaces.txt for details
+> +  port:
+> +    type: object
+> +    additionalProperties: false
+> +
+> +    properties:
+> +      endpoint:
+> +        type: object
+> +        additionalProperties: false
+> +
+> +        properties:
+> +          remote-endpoint: true
+> +          link-frequencies: true
+> +
+> +    required:
+> +      - endpoint
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +  - clock-names
+> +  - clock-frequency
+> +  - dovdd-supply
+> +  - avdd-supply
+> +  - dvdd-supply
+> +  - powerdown-gpios
+> +  - reset-gpios
+> +  - port
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mt8183-clk.h>
+> +    #include <dt-bindings/gpio/gpio.h>
+> +
+> +    i2c {
+> +        clock-frequency = <400000>;
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        ov02a10: camera-sensor@3d {
+> +            compatible = "ovti,ov02a10";
+> +            reg = <0x3d>;
+> +            pinctrl-names = "default";
+> +            pinctrl-0 = <&clk_24m_cam>;
+> +
+> +            clocks = <&topckgen CLK_TOP_MUX_CAMTG>,
+> +                     <&topckgen CLK_TOP_UNIVP_192M_D8>;
+> +            clock-names = "eclk", "freq_mux";
+> +            clock-frequency = <24000000>;
+> +
+> +            rotation = <180>;
+> +            ovti,mipi-tx-speed = <3>;
+> +
+> +            dovdd-supply = <&mt6358_vcamio_reg>;
+> +            avdd-supply = <&mt6358_vcama1_reg>;
+> +            dvdd-supply = <&mt6358_vcn18_reg>;
+> +            powerdown-gpios = <&pio 107 GPIO_ACTIVE_LOW>;
+> +            reset-gpios = <&pio 109 GPIO_ACTIVE_HIGH>;
+> +
+> +            port {
+> +                wcam_out: endpoint {
+> +                    remote-endpoint = <&mipi_in_wcam>;
+> +                    link-frequencies = /bits/ 64 <390000000>;
+> +                };
+> +            };
+> +        };
+> +    };
+> +
+> +...
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index e64e5db..63a2335 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -12389,6 +12389,13 @@ M:	Harald Welte <laforge@gnumonks.org>
+>  S:	Maintained
+>  F:	drivers/char/pcmcia/cm4040_cs.*
+>  
+> +OMNIVISION OV02A10 SENSOR DRIVER
+> +M:	Dongchun Zhu <dongchun.zhu@mediatek.com>
+> +L:	linux-media@vger.kernel.org
+> +S:	Maintained
+> +T:	git git://linuxtv.org/media_tree.git
+> +F:	Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> +
+>  OMNIVISION OV13858 SENSOR DRIVER
+>  M:	Sakari Ailus <sakari.ailus@linux.intel.com>
+>  L:	linux-media@vger.kernel.org
+
+-- 
+Regards,
+
+Sakari Ailus
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
