@@ -2,66 +2,66 @@ Return-Path: <SRS0=+Wu7=6T=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D1EE4C47254
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 17:31:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F6CAC47256
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 17:47:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A299720721
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 17:31:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EA1B7206B9
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 17:47:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u8o6UDP/";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="tS/u1wcR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A299720721
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aqPczjjJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=lunn.ch header.i=@lunn.ch header.b="qQ2MvF5u"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EA1B7206B9
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lunn.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lxOIoRTozDR/r7Y26Iw8MqmLpgCTO6X+rZiHCIH5n64=; b=u8o6UDP/jmJ9Bl
-	nzVXRd1VU4QfMye7iA41PHORc8RfqFJR5PN/xFDnJufemWIUz3soC2kUA4ddqtZ1/eTnZwEdoCl/l
-	nedqAesgUemlptGnXBn7BeXKBdouoAD5jZPtrgxHwJgr4MgSFAkYh2aOKOTu9tk1wka2du8GThQSO
-	FMMvZEFmZ/rOG5eD6Bg6DQMCFoaVzTeCMHBlt6/PbtNGpqzJZ8ZN+x3E3L1Gb9N8Bw+9dv1n/BZ0s
-	Xq7jd7hMhBy42PpH66L9TnWiC+5XIaMXRMZuekcpBc4waiqkvbTGX7/MbI+ETy36SdITmFDmxACtY
-	gW8onXiFlo8/J2R25Bvw==;
+	List-Owner; bh=Y5sYFloMKYTeJm31kG8Uf25r2MUFsffZLCu+Ra74H6A=; b=aqPczjjJKREq2d
+	swQjJoML2je2iE9KaBHSlmKVlulPJcxdfJo2QGBd/FR9VZvjzjlXHoWom5mERZPcpN7wjXRQTqxWA
+	qpxWDbRdPNTC5dSKHDsKA5wNL2GdVquGA/43/FjazsNtBUAtAFvRmisnMpb18r1kF6NsktNQ6UyAZ
+	aREA2mp1H0PFskJDB/BzRIN1yqyHVJopxndQSZK/2hgizYenyRF5qtWUGwWC7X74MYnGKJKIYryEL
+	UdvZ2mx+gWh0XBlSkxkCqSvKMtMt3qOeSb/kqURo7lb9/2CJ7TlaR+OqWenDkshQpn91lHzv94E9V
+	bX4qNIKt070Z3GNQynzw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jW1Pb-0003ah-5R; Tue, 05 May 2020 17:31:19 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jW1fC-0007Vk-51; Tue, 05 May 2020 17:47:26 +0000
+Received: from vps0.lunn.ch ([185.16.172.187])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jW1PR-0003Ox-Cq; Tue, 05 May 2020 17:31:11 +0000
-Received: from kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com (unknown
- [163.114.132.1])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id B9FE720721;
- Tue,  5 May 2020 17:31:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588699868;
- bh=RzTvVkH2WVsAJ6Ltt5T27ZrW2749b4NieHGvxtLnG9U=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=tS/u1wcR0Q37TVJw/uE8YgnBhtgDScfuck9IX7Q0iLQGTfwFyd8odJaD2kcrM82p6
- HjikTR5ZOMjXfxiIlj5H/zEWp1Gzef+QoT68Q1tJlotQrUUW0jX83S4VT/HyNN8eNj
- i+2HZEa5Zj1G4Fze1Kx4NNapdEWOsffuC7brNBus=
-Date: Tue, 5 May 2020 10:31:05 -0700
-From: Jakub Kicinski <kuba@kernel.org>
+ id 1jW1f9-0007UK-3P; Tue, 05 May 2020 17:47:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+ s=20171124; h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:
+ Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=+R73Z4jVWXCfBPkWr/ITaVNISegdk9AM0hchGPNJ8Sc=; b=qQ2MvF5uTgTfl+Fohrz1RdJXhA
+ jbKJkUtbz4bOmvpVN6BZvX4xrqBf8368xqyVXN9pj3mu5y6CHTKEBzV8hYeZQXFyuM0lhfILWQiWn
+ 7tQckNZ3aDVY5LOkHKjulgNx5/2306VdzhHpCgzN29KlMn4zb+v52g8MZafJrHKY0UOw=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.93)
+ (envelope-from <andrew@lunn.ch>)
+ id 1jW1ev-000y9n-Ug; Tue, 05 May 2020 19:47:09 +0200
+Date: Tue, 5 May 2020 19:47:09 +0200
+From: Andrew Lunn <andrew@lunn.ch>
 To: Bartosz Golaszewski <brgl@bgdev.pl>
-Subject: Re: [PATCH 05/11] net: core: provide devm_register_netdev()
-Message-ID: <20200505103105.1c8b0ce3@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <20200505140231.16600-6-brgl@bgdev.pl>
+Subject: Re: [PATCH 06/11] net: ethernet: mtk-eth-mac: new driver
+Message-ID: <20200505174709.GD224913@lunn.ch>
 References: <20200505140231.16600-1-brgl@bgdev.pl>
- <20200505140231.16600-6-brgl@bgdev.pl>
+ <20200505140231.16600-7-brgl@bgdev.pl>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200505140231.16600-7-brgl@bgdev.pl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200505_103109_451617_2FECB17C 
-X-CRM114-Status: GOOD (  16.81  )
+X-CRM114-CacheID: sfid-20200505_104723_150632_857414D5 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,82 +79,171 @@ Cc: devicetree@vger.kernel.org, Felix Fietkau <nbd@openwrt.org>,
  linux-kernel@vger.kernel.org, Mark Lee <Mark-MC.Lee@mediatek.com>,
  Fabien Parent <fparent@baylibre.com>, Rob Herring <robh+dt@kernel.org>,
  linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
  "David S . Miller" <davem@davemloft.net>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue,  5 May 2020 16:02:25 +0200 Bartosz Golaszewski wrote:
-> From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-> 
-> Provide devm_register_netdev() - a device resource managed variant
-> of register_netdev(). This new helper will only work for net_device
-> structs that have a parent device assigned and are devres managed too.
-> 
-> Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
-
-> diff --git a/net/core/dev.c b/net/core/dev.c
-> index 522288177bbd..99db537c9468 100644
-> --- a/net/core/dev.c
-> +++ b/net/core/dev.c
-> @@ -9519,6 +9519,54 @@ int register_netdev(struct net_device *dev)
->  }
->  EXPORT_SYMBOL(register_netdev);
->  
-> +struct netdevice_devres {
-> +	struct net_device *ndev;
-> +};
-
-Is there really a need to define a structure if we only need a pointer?
-
-> +static void devm_netdev_release(struct device *dev, void *this)
+> +static struct net_device *mtk_mac_get_netdev(struct mtk_mac_priv *priv)
 > +{
-> +	struct netdevice_devres *res = this;
+> +	char *ptr = (char *)priv;
 > +
-> +	unregister_netdev(res->ndev);
+> +	return (struct net_device *)(ptr - ALIGN(sizeof(struct net_device),
+> +						 NETDEV_ALIGN));
 > +}
-> +
-> +/**
-> + *	devm_register_netdev - resource managed variant of register_netdev()
-> + *	@ndev: device to register
-> + *
-> + *	This is a devres variant of register_netdev() for which the unregister
-> + *	function will be call automatically when the parent device of ndev
-> + *	is detached.
-> + */
-> +int devm_register_netdev(struct net_device *ndev)
+
+Bit of an odd way to do it. It is much more normal to just have
+
+    return priv->netdev;
+
+> +static struct sk_buff *mtk_mac_alloc_skb(struct net_device *ndev)
 > +{
-> +	struct netdevice_devres *dr;
-> +	int ret;
+> +	uintptr_t tail, offset;
+> +	struct sk_buff *skb;
 > +
-> +	/* struct net_device itself must be devres managed. */
-> +	BUG_ON(!(ndev->priv_flags & IFF_IS_DEVRES));
-> +	/* struct net_device must have a parent device - it will be the device
-> +	 * managing this resource.
-> +	 */
-> +	BUG_ON(!ndev->dev.parent);
-
-Please convert those to WARN_ON, and return an error. No need to crash
-the kernel.
-
-> +	dr = devres_alloc(devm_netdev_release, sizeof(*dr), GFP_KERNEL);
-> +	if (!dr)
-> +		return -ENOMEM;
+> +	skb = dev_alloc_skb(MTK_MAC_MAX_FRAME_SIZE);
+> +	if (!skb)
+> +		return NULL;
 > +
-> +	ret = register_netdev(ndev);
-> +	if (ret) {
-> +		devres_free(dr);
-> +		return ret;
+> +	/* Align to 16 bytes. */
+> +	tail = (uintptr_t)skb_tail_pointer(skb);
+> +	if (tail & (MTK_MAC_SKB_ALIGNMENT - 1)) {
+> +		offset = tail & (MTK_MAC_SKB_ALIGNMENT - 1);
+> +		skb_reserve(skb, MTK_MAC_SKB_ALIGNMENT - offset);
 > +	}
 > +
-> +	dr->ndev = ndev;
-> +	devres_add(ndev->dev.parent, dr);
+> +	/* Ensure 16-byte alignment of the skb pointer: eth_type_trans() will
+> +	 * extract the Ethernet header (14 bytes) so we need two more bytes.
+> +	 */
+> +	skb_reserve(skb, 2);
+
+NET_IP_ALIGN
+
+There might also be something in skbuf.h which will do your 16 byte
+alignment for you.
+
+> +static int mtk_mac_enable(struct net_device *ndev)
+> +{
+> +	struct mtk_mac_priv *priv = netdev_priv(ndev);
+> +	unsigned int val;
+> +	int ret;
 > +
-> +	return 0;
+> +	mtk_mac_nic_disable_pd(priv);
+> +	mtk_mac_intr_mask_all(priv);
+> +	mtk_mac_dma_stop(priv);
+> +	netif_carrier_off(ndev);
+
+Attaching the PHY will turn the carrier off.  If you are using phylib
+correctly, you should not have to touch the carrier status, phylib
+will do it for you.
+
+> +	/* Configure flow control */
+> +	val = MTK_MAC_VAL_FC_CFG_SEND_PAUSE_TH_2K;
+> +	val <<= MTK_MAC_OFF_FC_CFG_SEND_PAUSE_TH;
+> +	val |= MTK_MAC_BIT_FC_CFG_BP_EN;
+> +	val |= MTK_MAC_BIT_FC_CFG_UC_PAUSE_DIR;
+> +	regmap_write(priv->regs, MTK_MAC_REG_FC_CFG, val);
+> +
+> +	/* Set SEND_PAUSE_RLS to 1K */
+> +	val = MTK_MAC_VAL_EXT_CFG_SND_PAUSE_RLS_1K;
+> +	val <<= MTK_MAC_OFF_EXT_CFG_SND_PAUSE_RLS;
+> +	regmap_write(priv->regs, MTK_MAC_REG_EXT_CFG, val);
+
+Pause is something this is auto-negotiated. You should be setting this
+in your link change notifier which phylib will call when the link goes
+up.
+
+> +static int mtk_mac_mdio_rwok_wait(struct mtk_mac_priv *priv)
+> +{
+> +	unsigned long start = jiffies;
+> +	unsigned int val;
+> +
+> +	for (;;) {
+> +		regmap_read(priv->regs, MTK_MAC_REG_PHY_CTRL0, &val);
+> +		if (val & MTK_MAC_BIT_PHY_CTRL0_RWOK)
+> +			break;
+> +
+> +		udelay(10);
+> +		if (time_after(jiffies, start + MTK_MAC_WAIT_TIMEOUT))
+> +			return -ETIMEDOUT;
+> +	}
+
+regmap_read_poll_timeout() ?
+
+> +static int mtk_mac_mdio_read(struct mii_bus *mii, int phy_id, int regnum)
+> +{
+> +	struct mtk_mac_priv *priv = mii->priv;
+> +	unsigned int val, data;
+> +	int ret;
+
+It would be good if here and in _write() you check for C45 addresses
+and return -EOPNOTSUP.
+
+> +
+> +	mtk_mac_mdio_rwok_clear(priv);
+> +
+> +	val = (regnum << MTK_MAC_OFF_PHY_CTRL0_PREG);
+> +	val &= MTK_MAC_MSK_PHY_CTRL0_PREG;
+> +	val |= MTK_MAC_BIT_PHY_CTRL0_RDCMD;
+> +
+> +	regmap_write(priv->regs, MTK_MAC_REG_PHY_CTRL0, val);
+> +
+> +	ret = mtk_mac_mdio_rwok_wait(priv);
+> +	if (ret)
+> +		return ret;
+> +
+> +	regmap_read(priv->regs, MTK_MAC_REG_PHY_CTRL0, &data);
+> +
+> +	data &= MTK_MAC_MSK_PHY_CTRL0_RWDATA;
+> +	data >>= MTK_MAC_OFF_PHY_CTRL0_RWDATA;
+> +
+> +	return data;
 > +}
-> +EXPORT_SYMBOL(devm_register_netdev);
+
+> +static int mtk_mac_mdio_init(struct net_device *ndev)
+> +{
+> +	struct mtk_mac_priv *priv = netdev_priv(ndev);
+> +	struct device *dev = mtk_mac_get_dev(priv);
+> +	struct device_node *of_node, *mdio_node;
+> +	int ret;
+> +
+> +	of_node = dev->of_node;
+> +
+> +	mdio_node = of_get_child_by_name(of_node, "mdio");
+> +	if (!mdio_node)
+> +		return -ENODEV;
+> +
+> +	if (!of_device_is_available(mdio_node)) {
+> +		ret = -ENODEV;
+> +		goto out_put_node;
+> +	}
+> +
+> +	priv->mii = devm_mdiobus_alloc(dev);
+> +	if (!priv->mii) {
+> +		ret = -ENOMEM;
+> +		goto out_put_node;
+> +	}
+> +
+> +	snprintf(priv->mii->id, MII_BUS_ID_SIZE, "%s", dev_name(dev));
+> +	priv->mii->name = "mdio";
+
+It is normal to include something like 'MTK' in the name.
+
+> +	priv->mii->parent = dev;
+> +	priv->mii->read = mtk_mac_mdio_read;
+> +	priv->mii->write = mtk_mac_mdio_write;
+> +	priv->mii->priv = priv;
+> +
+> +	ret = of_mdiobus_register(priv->mii, mdio_node);
+> +
+> +out_put_node:
+> +	of_node_put(mdio_node);
+> +	return ret;
+> +}
+
+  Andrew
 
 _______________________________________________
 Linux-mediatek mailing list
