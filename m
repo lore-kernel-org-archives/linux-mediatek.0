@@ -1,121 +1,84 @@
-Return-Path: <SRS0=oHVa=6S=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=+Wu7=6T=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0184C3A5A9
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2020 19:11:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 75A8CC3A5A9
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 02:07:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C702C206C0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 May 2020 19:11:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 476BE206EB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 02:07:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rpvhJLVD";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=micron.com header.i=@micron.com header.b="HwqaS8XE"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C702C206C0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=micron.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EYS0R52H";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="c/TWMLnq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 476BE206EB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ERHfid8GVgDM6+7Clv+nOWGTQdWaWyfnJcJMlNQ7oVQ=; b=rpvhJLVD04NV2s
-	gpRk3vKes8HlcpHxTKLTZjH9PB/6zJyaIv08qAsl4qPcyg5ewXkdci9AXhfAufDOqV0c5y+ghZMV5
-	cs4Nne4iab8bF1KwOQftHP15iHVAICZTFhSoyDwRM7IZ9XRqT76jtsv8i2VF4KIE4XPDi0TJMxFiY
-	kT/UNOHK2RxBkAeSLMAq6v61VkSAKyuJVGIXpBOSker8IbW3ujpZaSvAQP9ZaawWSRKPqV0fn5zPY
-	9ykBiCOrhwetEgiEh+QHjoio0t5qExQkfK07wWd0nh6QJvw1uPX977J5dJe5U3ONZoZLEDirUiZta
-	svrH42bB8+bEBLuxErkA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vYDcLnrBAUkJ1wS2SRdqX+iBvdnLICXvR+u00medYZI=; b=EYS0R52HUHoaYX
+	XVgRjlJDrlFncA1HhDiJLm6SBsP6wUux21yeLRHpUsjRFmxuQEB1ayiIWmpj5pXHyJ3jip+D0u88m
+	M8pa5rqIb3tRac37EoIZ1TAhd5adKHXRa92BeXf1+HJy/5nXnEv4du5ZvkB99k9R0WS/mYB8juJUV
+	5X9lFfDyDTMqMMP48IcH43zbs1DHzT+4PxUW7XSEz2/ryhTwm+TOC/WsTGQOE2VDr0gdo+NdETycf
+	QgJdKyp+8/eSGHZMuQcb6rvKPdaxsvdW9Q/1hqG52F4ObZgBAXCKnmLd9wfxNbjXcgoXFhtwQ+HhL
+	jArCBhMJBe7bXh2144YA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jVgUh-0007h0-UQ; Mon, 04 May 2020 19:11:11 +0000
-Received: from mail-eopbgr760084.outbound.protection.outlook.com
- ([40.107.76.84] helo=NAM02-CY1-obe.outbound.protection.outlook.com)
+	id 1jVmzZ-0001bg-26; Tue, 05 May 2020 02:07:29 +0000
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jVgUf-0007fD-9Q; Mon, 04 May 2020 19:11:11 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=QbntnqEZTK+etZ222zgoaWlSNbEQg5Hv2GK5GGMUQNNI5HKzIn9Eid6yMCI9hfaFZHLEb3/jECmcN86js3cnso8nmorPgR15royRvq2bNCXVD8t1pjuP2K1QzXD6H/pB/fZRFaLJu3/agHzzz7KZCPn+caYhxUBLquxgyJiA1CuSWOU/3EqPOu1OPBAL1WoZ9A0DFI4flEEPTGj78bQVVLjGwht+yYQRlbaolcU9L4EhHdnmbKpGRnLEdRCXk3twdoAzeHIczvmqXRnf5lmxQXbDOoJdvX5FREZxErpadlI7a0sUwcnAALI/nKfqUjN+dmp6ZQRBtJUSAkSnIRsBUQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=RyCCpK0TKLhVlFlvXBli3J6WOoqQBWv5aPsuuT8Bb9c=;
- b=Nl8ip+HWFIOSr4fgqLps1k7VK5aJEifxvXSYFyHPRinMls0CMQDb3tQ1P5eQ9eQGe7osT9DO5gUiaYDINluZyRdS+Mtq7S+zwDXo4j1gK40YnV5SSN4cAMfCN3lQVacGsPj4mLNgbPi/41gN3IdZPhKxM8N3BI49wTk0dmcodwtcCJq4/TN7d1T72DJKvXoY7Z7v01CCpZIqV2byUV/p38JNK7s9ScO6PwDD/g5hf7rNSazcIqU6TzjtPdCrJKOqne6LjBkT98Tsm0JrdodpvdDeMgsGj1qyKUtFMBy/HOtDIqv8Ss5jL3ksQAgvE6NomI2RDbmy2S2sZgcwuFLryA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=micron.com; dmarc=pass action=none header.from=micron.com;
- dkim=pass header.d=micron.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=micron.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=RyCCpK0TKLhVlFlvXBli3J6WOoqQBWv5aPsuuT8Bb9c=;
- b=HwqaS8XESxneOcbUslDJI60U7xc8P1Pgd6SpdC1OlgTxP6rDIxEqSPH7CiaLEh7f7iOp80W/SQbLPNMDMLXZZZZvZSFwhz+XoXXl8WJyO3Innu4CwBp1g//+4YRAlXAE651+D4sVJ2julpdxmq0icVFB2SKbyHWddh9yw/7mmuc=
-Received: from BN7PR08MB5684.namprd08.prod.outlook.com (2603:10b6:408:35::23)
- by BN7PR08MB4307.namprd08.prod.outlook.com (2603:10b6:406:fb::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2958.19; Mon, 4 May
- 2020 19:11:05 +0000
-Received: from BN7PR08MB5684.namprd08.prod.outlook.com
- ([fe80::9ca2:4625:2b46:e45c]) by BN7PR08MB5684.namprd08.prod.outlook.com
- ([fe80::9ca2:4625:2b46:e45c%4]) with mapi id 15.20.2958.030; Mon, 4 May 2020
- 19:11:05 +0000
-From: "Bean Huo (beanhuo)" <beanhuo@micron.com>
-To: Stanley Chu <stanley.chu@mediatek.com>, "linux-scsi@vger.kernel.org"
- <linux-scsi@vger.kernel.org>, "martin.petersen@oracle.com"
- <martin.petersen@oracle.com>, "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>, "jejb@linux.ibm.com"
- <jejb@linux.ibm.com>, "asutoshd@codeaurora.org" <asutoshd@codeaurora.org>
-Subject: RE: [EXT] [PATCH v6 6/8] scsi: ufs: add LU Dedicated buffer mode
- support for WriteBooster
-Thread-Topic: [EXT] [PATCH v6 6/8] scsi: ufs: add LU Dedicated buffer mode
- support for WriteBooster
-Thread-Index: AQHWIiQ2yyElrXc68UCqlrbjQUtXkKiYSvrw
-Date: Mon, 4 May 2020 19:11:04 +0000
-Message-ID: <BN7PR08MB56843594B62E0852386869EADBA60@BN7PR08MB5684.namprd08.prod.outlook.com>
-References: <20200504145622.13895-1-stanley.chu@mediatek.com>
- <20200504145622.13895-7-stanley.chu@mediatek.com>
-In-Reply-To: <20200504145622.13895-7-stanley.chu@mediatek.com>
-Accept-Language: en-150, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-dg-ref: PG1ldGE+PGF0IG5tPSJib2R5LnR4dCIgcD0iYzpcdXNlcnNcYmVhbmh1b1xhcHBkYXRhXHJvYW1pbmdcMDlkODQ5YjYtMzJkMy00YTQwLTg1ZWUtNmI4NGJhMjllMzViXG1zZ3NcbXNnLWZjZTZhYTAzLThlM2EtMTFlYS04Yjk1LWRjNzE5NjFmOWRkM1xhbWUtdGVzdFxmY2U2YWEwNS04ZTNhLTExZWEtOGI5NS1kYzcxOTYxZjlkZDNib2R5LnR4dCIgc3o9IjIxMzQiIHQ9IjEzMjMzMDkzMDYwMDczNzM4NCIgaD0ibkJ5UnNJSzZnYUJMR0xiQzVUNE9qQVBpVll3PSIgaWQ9IiIgYmw9IjAiIGJvPSIxIiBjaT0iY0FBQUFFUkhVMVJTUlVGTkNnVUFBSEFBQUFCbytrQy9SeUxXQVd4eHBqT3NuZHNLYkhHbU02eWQyd29BQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFCQUFBQkFBQUFmM09FS1FBQUFBQUFBQUFBQUFBQUFBPT0iLz48L21ldGE+
-x-dg-rorf: true
-authentication-results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=micron.com;
-x-originating-ip: [165.225.81.109]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: a2775ddc-97c5-4425-7e06-08d7f05ee4b8
-x-ms-traffictypediagnostic: BN7PR08MB4307:|BN7PR08MB4307:|BN7PR08MB4307:
-x-microsoft-antispam-prvs: <BN7PR08MB4307394B969988BB0FFE4BD3DBA60@BN7PR08MB4307.namprd08.prod.outlook.com>
-x-ms-exchange-transport-forked: True
-x-ms-oob-tlc-oobclassifiers: OLM:8273;
-x-forefront-prvs: 03932714EB
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 2bqdeiltOp9YzHpd+ZihbOsyU/P0RR3loM2gDhGZeujA65nirMvOYozK8qxCv+fr9m0Vj8cNmIk/zUPPw/Lf7fF7vT9eVnceyX9iFiIaX3mngfLDfcvY6jmJ0RfEU1B1KLCtQ0rohbkfaRcMN5MB58rGRjtocY0jg6QummEMfRPIrd2VUrfgc1x9idYBN3DOrbQbkpSH7A2ImHDUzRRzQxpFMrbIegJ4YRuuqsX4TYTRvf+tQpkWpMG3MW4nYdkriWsPxzASlGWr4MCjWuLHkqJeJSKBvGqO18QP0tb9c0ET7KP8dECq3xSsnFpXbZgLISTN0H6ul1dxcnbctOxSpdKsVpMiyGtf6Rl6PkrWvBZ2qhTOALSysKvsVN5DQ4bdDEt2hfpMza5bwlEyQQ1KrxX/pqMFiFFLE2eFYYdIdYnb3kxp76GvwG6lDRRJ8cTJ
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BN7PR08MB5684.namprd08.prod.outlook.com; PTR:; CAT:NONE;
- SFTY:;
- SFS:(4636009)(39860400002)(346002)(136003)(366004)(376002)(396003)(86362001)(8936002)(110136005)(54906003)(4326008)(8676002)(316002)(55016002)(9686003)(26005)(53546011)(7696005)(186003)(71200400001)(478600001)(55236004)(6506007)(64756008)(66556008)(66476007)(66446008)(66946007)(76116006)(52536014)(33656002)(5660300002)(7416002)(2906002);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: w1xqykftrqsAMlQbl2/QkVCfLrgzH7IB/X9TXKHTEwWYVN88FPr4Ur3lYk2sWsnvCgtB9QxI63QmLndQmYVE+naLDn01TtIFCBvknNfSxE6EvGxPWE2QjLcgVQrrfBNg5P/pUHDl5gV4Sogm15Y+GBNNavjCK7OoMwLKJ6h2JU/5ZA0Y2lpSRH5gXiUDti2bW/00L/Uj79jHsUnadW2RvDi3/DWVawMKup4E14K3xYlpIyQq84WA11h/N2rVBa9R+l9PACfv4FrhWpJZTqIyzywLe+2+Gbx7qLLGAo8A4PGp3hmkJ4hJHSG0Z4KyBC/U2JYa9isGdoHn/E0gtbm+ii9OjWUDKnZhAxYbexKVTpKNNeEKXghh77R/ksMCtc1pBeIgx6alE2y3KB6tJgaFmlpRuB9koLgJS5xidyOC3XHCnlz9kirykyAp5GbsB4O8t2uRFKrjgI0k0WUZ9GogB+Jhf7MHQbmtvRpTTF5BIg5AzprOMvDHNzjk21KTRPC3rKevYmpldEett0BQWD7ZLJgxI2VLYMqEdAsfEWGq7GI0jxBVXVvD68uV+y7F+3DiUMUgCKQqIDH+lFDVDfYTyDnC8hyrzVLNiUoZMEL6FnRWvVKSZq+weAh1IFV4MenNdEYx0+wuSibuS5cWfnO3A/85gV3ninaVrw01m9WuiVTgQuLYymKErc4HcqFhjB3WrjUgE9ly4iduE8a6R5Lp8ZVJ0BCDQlQr1WcM30zpsoRnRfI2d1PTuQKTd6iHpLQ0UJbHyaWM0vrQecKbWqnjv33aNLz7u1rXhR12wIO4Ro0=
+ id 1jVmzW-0001ZT-9q
+ for linux-mediatek@lists.infradead.org; Tue, 05 May 2020 02:07:28 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id t9so333640pjw.0
+ for <linux-mediatek@lists.infradead.org>; Mon, 04 May 2020 19:07:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZPosvbquSRPM2qokONJTC41jB9sKVgsjvzmGgfAPG8U=;
+ b=c/TWMLnqo5Dm80uDR9KPOfCKWZ+dggeudxOuSXVusW70ZtxQ9rjhGVoOvgX4pr+Q/G
+ Ew71YhnoA5+0KPMoV5orhzarX7mr1IVyjgEmVcC8zS8KEJ5E9zaVo9w4BV/AZq34VCjq
+ CstdcVYSIb68dcB2YZc351VfilFeOB/TceziM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZPosvbquSRPM2qokONJTC41jB9sKVgsjvzmGgfAPG8U=;
+ b=CYm8INwLnyi390q3NyGg+5CnHatsbaK8cMDEEY4vb9GItrsiN9TDsuwrUwobJJZ/Vt
+ 2y17C+yo1lkzKomqJPh9C8+WW5Jk8BDlbfPXNGRgFhLJxKrLY3C5+C6/x0f2ZcXkz3RZ
+ 1mhl1kYWDLdgwBcF/pjX4qvVzH8WW+GbQORAjMRUhkzGHwDnL3k2z7R1L6sTasw08dUi
+ 58QJLOAa3HqS5D7VXFOI+Tqhc6YUtRtrvVVu39OVbcLm1mzVH2G06QsJLIPuEDl8Litv
+ msgG+0OUFo8NuddwFJ53fwTA69VuwLIMxPSEldWV2BrrQYnZVSyhMNva1boipFrd01VR
+ GbFA==
+X-Gm-Message-State: AGi0Puai1o8u+ivDB/MHaIE6ARA8DdI1tN8pppMdMO9qxSVYJn1KjBi3
+ rChYzc+bnOPbB17NqLYPkVdSLA==
+X-Google-Smtp-Source: APiQypLiH1c6WnP3fPEUMjWHIWyHNFaHdWtb/Dsnac1aifbf7291ALSCyDTGRaolWA1kGk1whE8TEw==
+X-Received: by 2002:a17:90a:d0c3:: with SMTP id y3mr45161pjw.133.1588644444435; 
+ Mon, 04 May 2020 19:07:24 -0700 (PDT)
+Received: from localhost ([2401:fa00:9:14:a92f:c47d:76a8:b09e])
+ by smtp.gmail.com with ESMTPSA id s4sm287692pgv.78.2020.05.04.19.07.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 04 May 2020 19:07:23 -0700 (PDT)
+From: Eizan Miyamoto <eizan@chromium.org>
+X-Google-Original-From: Eizan Miyamoto <eizan@google.com>
+To: LKML <linux-kernel@vger.kernel.org>
+Subject: [PATCH v1] [media] mtk-mdp: Remove states for format checks
+Date: Tue,  5 May 2020 12:06:58 +1000
+Message-Id: <20200505113410.v1.1.I30f6c1f7d6001931439d5950f31b1b0f8ca9b6e8@changeid>
+X-Mailer: git-send-email 2.26.2.526.g744177e7f7-goog
 MIME-Version: 1.0
-X-OriginatorOrg: micron.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a2775ddc-97c5-4425-7e06-08d7f05ee4b8
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 May 2020 19:11:05.0433 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: f38a5ecd-2813-4862-b11b-ac1d563c806f
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 54vkRV4a88z2ge19tV+Hwj4NtZRTCCHEwHFX6EWK22jLUZJ0ZM4mLfdsZGcO7tuHc1ee8e4+UJYBcLnNv372Cg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR08MB4307
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200504_121109_561639_C9C442BE 
-X-CRM114-Status: UNSURE (   9.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200504_190726_369950_211E9D82 
+X-CRM114-Status: GOOD (  15.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -127,59 +90,217 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "bvanassche@acm.org" <bvanassche@acm.org>,
- "andy.teng@mediatek.com" <andy.teng@mediatek.com>,
- "chun-hung.wu@mediatek.com" <chun-hung.wu@mediatek.com>,
- "kuohong.wang@mediatek.com" <kuohong.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "cang@codeaurora.org" <cang@codeaurora.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "peter.wang@mediatek.com" <peter.wang@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Francois Buergisser <fbuergisser@chromium.org>,
+ Houlong Wei <houlong.wei@mediatek.com>, Tomasz Figa <tfiga@chromium.org>,
+ Eizan Miyamoto <eizan@chromium.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> From: Stanley Chu <stanley.chu@mediatek.com>
-> Sent: Monday, May 4, 2020 4:56 PM
-> To: linux-scsi@vger.kernel.org; martin.petersen@oracle.com;
-> avri.altman@wdc.com; alim.akhtar@samsung.com; jejb@linux.ibm.com;
-> asutoshd@codeaurora.org
-> Cc: Bean Huo (beanhuo) <beanhuo@micron.com>; cang@codeaurora.org;
-> matthias.bgg@gmail.com; bvanassche@acm.org; linux-
-> mediatek@lists.infradead.org; linux-arm-kernel@lists.infradead.org; linux-
-> kernel@vger.kernel.org; kuohong.wang@mediatek.com;
-> peter.wang@mediatek.com; chun-hung.wu@mediatek.com;
-> andy.teng@mediatek.com; Stanley Chu <stanley.chu@mediatek.com>
-> Subject: [EXT] [PATCH v6 6/8] scsi: ufs: add LU Dedicated buffer mode support
-> for WriteBooster
-> 
-> According to UFS specification, there are two WriteBooster mode of
-> operations: "LU dedicated buffer" mode and "shared buffer" mode.
-> In the "LU dedicated buffer" mode, the WriteBooster Buffer is dedicated to a
-> logical unit.
-> 
-> If the device supports the "LU dedicated buffer" mode, this mode is configured
-> by setting bWriteBoosterBufferType to 00h. The logical unit WriteBooster Buffer
-> size is configured by setting the dLUNumWriteBoosterBufferAllocUnits field of
-> the related Unit Descriptor. Only a value greater than zero enables the
-> WriteBooster feature in the logical unit.
-> 
-> Modify ufshcd_wb_probe() as above description to support LU Dedicated buffer
-> mode.
-> 
-> Note that according to UFS 3.1 specification, the valid value of
-> bDeviceMaxWriteBoosterLUs parameter in Geometry Descriptor is 1, which
-> means at most one LUN can have WriteBooster buffer in "LU dedicated buffer
-> mode". Therefore this patch supports only one LUN with WriteBooster enabled.
-> All WriteBooster related sysfs nodes are specifically mapped to the LUN with
-> WriteBooster enabled in LU Dedicated buffer mode.
-> 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> Reviewed-by: Avri Altman <avri.altman@wdc.com>
-Reviewed-by: Bean Huo <beanhuo@micron.com>
+From: Francois Buergisser <fbuergisser@chromium.org>
+
+The mtk-mdp driver uses states to check if the formats have been set
+on the capture and output when turning the streaming on, setting
+controls or setting the selection rectangles.
+Those states are reset when 0 buffers are requested like when checking
+capabilities.
+This patch removes all format checks and set one by default as queues in
+V4L2 are expected to always have a format set.
+
+https://linuxtv.org/downloads/v4l-dvb-apis/uapi/v4l/vidioc-streamon.html
+https://linuxtv.org/downloads/v4l-dvb-apis/uapi/v4l/vidioc-g-ctrl.html
+https://linuxtv.org/downloads/v4l-dvb-apis/uapi/v4l/vidioc-g-selection.html
+
+Signed-off-by: Francois Buergisser <fbuergisser@chromium.org>
+Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+(cherry picked from commit 1887bb3924d030352df179347c8962248cdb903e)
+Signed-off-by: Eizan Miyamoto <eizan@chromium.org>
+---
+
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.h |  2 -
+ drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c  | 90 +++++++------------
+ 2 files changed, 34 insertions(+), 58 deletions(-)
+
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+index bafcccd71f31..dd130cc218c9 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+@@ -28,8 +28,6 @@
+ #define MTK_MDP_FMT_FLAG_CAPTURE	BIT(1)
+ 
+ #define MTK_MDP_VPU_INIT		BIT(0)
+-#define MTK_MDP_SRC_FMT			BIT(1)
+-#define MTK_MDP_DST_FMT			BIT(2)
+ #define MTK_MDP_CTX_ERROR		BIT(5)
+ 
+ /**
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+index 821f2cf325f0..bb9caaf513bc 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+@@ -369,13 +369,6 @@ void mtk_mdp_ctx_state_lock_set(struct mtk_mdp_ctx *ctx, u32 state)
+ 	mutex_unlock(&ctx->slock);
+ }
+ 
+-static void mtk_mdp_ctx_state_lock_clear(struct mtk_mdp_ctx *ctx, u32 state)
+-{
+-	mutex_lock(&ctx->slock);
+-	ctx->state &= ~state;
+-	mutex_unlock(&ctx->slock);
+-}
+-
+ static bool mtk_mdp_ctx_state_is_set(struct mtk_mdp_ctx *ctx, u32 mask)
+ {
+ 	bool ret;
+@@ -726,11 +719,6 @@ static int mtk_mdp_m2m_s_fmt_mplane(struct file *file, void *fh,
+ 		ctx->quant = pix_mp->quantization;
+ 	}
+ 
+-	if (V4L2_TYPE_IS_OUTPUT(f->type))
+-		mtk_mdp_ctx_state_lock_set(ctx, MTK_MDP_SRC_FMT);
+-	else
+-		mtk_mdp_ctx_state_lock_set(ctx, MTK_MDP_DST_FMT);
+-
+ 	mtk_mdp_dbg(2, "[%d] type:%d, frame:%dx%d", ctx->id, f->type,
+ 		    frame->width, frame->height);
+ 
+@@ -742,13 +730,6 @@ static int mtk_mdp_m2m_reqbufs(struct file *file, void *fh,
+ {
+ 	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
+ 
+-	if (reqbufs->count == 0) {
+-		if (reqbufs->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
+-			mtk_mdp_ctx_state_lock_clear(ctx, MTK_MDP_SRC_FMT);
+-		else
+-			mtk_mdp_ctx_state_lock_clear(ctx, MTK_MDP_DST_FMT);
+-	}
+-
+ 	return v4l2_m2m_reqbufs(file, ctx->m2m_ctx, reqbufs);
+ }
+ 
+@@ -758,14 +739,6 @@ static int mtk_mdp_m2m_streamon(struct file *file, void *fh,
+ 	struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
+ 	int ret;
+ 
+-	/* The source and target color format need to be set */
+-	if (V4L2_TYPE_IS_OUTPUT(type)) {
+-		if (!mtk_mdp_ctx_state_is_set(ctx, MTK_MDP_SRC_FMT))
+-			return -EINVAL;
+-	} else if (!mtk_mdp_ctx_state_is_set(ctx, MTK_MDP_DST_FMT)) {
+-		return -EINVAL;
+-	}
+-
+ 	if (!mtk_mdp_ctx_state_is_set(ctx, MTK_MDP_VPU_INIT)) {
+ 		ret = mtk_mdp_vpu_init(&ctx->vpu);
+ 		if (ret < 0) {
+@@ -899,24 +872,21 @@ static int mtk_mdp_m2m_s_selection(struct file *file, void *fh,
+ 		frame = &ctx->d_frame;
+ 
+ 	/* Check to see if scaling ratio is within supported range */
+-	if (mtk_mdp_ctx_state_is_set(ctx, MTK_MDP_DST_FMT | MTK_MDP_SRC_FMT)) {
+-		if (V4L2_TYPE_IS_OUTPUT(s->type)) {
+-			ret = mtk_mdp_check_scaler_ratio(variant, new_r.width,
+-				new_r.height, ctx->d_frame.crop.width,
+-				ctx->d_frame.crop.height,
+-				ctx->ctrls.rotate->val);
+-		} else {
+-			ret = mtk_mdp_check_scaler_ratio(variant,
+-				ctx->s_frame.crop.width,
+-				ctx->s_frame.crop.height, new_r.width,
+-				new_r.height, ctx->ctrls.rotate->val);
+-		}
++	if (V4L2_TYPE_IS_OUTPUT(s->type))
++		ret = mtk_mdp_check_scaler_ratio(variant, new_r.width,
++			new_r.height, ctx->d_frame.crop.width,
++			ctx->d_frame.crop.height,
++			ctx->ctrls.rotate->val);
++	else
++		ret = mtk_mdp_check_scaler_ratio(variant,
++			ctx->s_frame.crop.width,
++			ctx->s_frame.crop.height, new_r.width,
++			new_r.height, ctx->ctrls.rotate->val);
+ 
+-		if (ret) {
+-			dev_info(&ctx->mdp_dev->pdev->dev,
+-				"Out of scaler range");
+-			return -EINVAL;
+-		}
++	if (ret) {
++		dev_info(&ctx->mdp_dev->pdev->dev,
++			"Out of scaler range");
++		return -EINVAL;
+ 	}
+ 
+ 	s->r = new_r;
+@@ -989,7 +959,6 @@ static int mtk_mdp_s_ctrl(struct v4l2_ctrl *ctrl)
+ 	struct mtk_mdp_ctx *ctx = ctrl_to_ctx(ctrl);
+ 	struct mtk_mdp_dev *mdp = ctx->mdp_dev;
+ 	struct mtk_mdp_variant *variant = mdp->variant;
+-	u32 state = MTK_MDP_DST_FMT | MTK_MDP_SRC_FMT;
+ 	int ret = 0;
+ 
+ 	if (ctrl->flags & V4L2_CTRL_FLAG_INACTIVE)
+@@ -1003,17 +972,15 @@ static int mtk_mdp_s_ctrl(struct v4l2_ctrl *ctrl)
+ 		ctx->vflip = ctrl->val;
+ 		break;
+ 	case V4L2_CID_ROTATE:
+-		if (mtk_mdp_ctx_state_is_set(ctx, state)) {
+-			ret = mtk_mdp_check_scaler_ratio(variant,
+-					ctx->s_frame.crop.width,
+-					ctx->s_frame.crop.height,
+-					ctx->d_frame.crop.width,
+-					ctx->d_frame.crop.height,
+-					ctx->ctrls.rotate->val);
+-
+-			if (ret)
+-				return -EINVAL;
+-		}
++		ret = mtk_mdp_check_scaler_ratio(variant,
++				ctx->s_frame.crop.width,
++				ctx->s_frame.crop.height,
++				ctx->d_frame.crop.width,
++				ctx->d_frame.crop.height,
++				ctx->ctrls.rotate->val);
++
++		if (ret)
++			return -EINVAL;
+ 
+ 		ctx->rotation = ctrl->val;
+ 		break;
+@@ -1090,6 +1057,7 @@ static int mtk_mdp_m2m_open(struct file *file)
+ 	struct video_device *vfd = video_devdata(file);
+ 	struct mtk_mdp_ctx *ctx = NULL;
+ 	int ret;
++	struct v4l2_format default_format;
+ 
+ 	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
+ 	if (!ctx)
+@@ -1144,6 +1112,16 @@ static int mtk_mdp_m2m_open(struct file *file)
+ 	list_add(&ctx->list, &mdp->ctx_list);
+ 	mutex_unlock(&mdp->lock);
+ 
++	/* Default format */
++	memset(&default_format, 0, sizeof(default_format));
++	default_format.type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
++	default_format.fmt.pix_mp.width = 32;
++	default_format.fmt.pix_mp.height = 32;
++	default_format.fmt.pix_mp.pixelformat = V4L2_PIX_FMT_YUV420M;
++	mtk_mdp_m2m_s_fmt_mplane(file, &ctx->fh, &default_format);
++	default_format.type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
++	mtk_mdp_m2m_s_fmt_mplane(file, &ctx->fh, &default_format);
++
+ 	mtk_mdp_dbg(0, "%s [%d]", dev_name(&mdp->pdev->dev), ctx->id);
+ 
+ 	return 0;
+-- 
+2.26.2.526.g744177e7f7-goog
+
 
 _______________________________________________
 Linux-mediatek mailing list
