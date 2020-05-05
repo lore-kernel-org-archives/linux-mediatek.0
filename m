@@ -2,22 +2,24 @@ Return-Path: <SRS0=+Wu7=6T=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 40E48C47247
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 20:09:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 22990C47258
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 21:46:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 14E0120721
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 20:09:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CF6BA20735
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 May 2020 21:46:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZO6eQzHi";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="JZfLiVbO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 14E0120721
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GI0jQ1yY";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="kVMitITx"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CF6BA20735
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
@@ -25,56 +27,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hUBE0ht6VrC/bSjSFDkUH0Qs5R+brTDvEKIrHYGxwQo=; b=ZO6eQzHi1lC5lB
-	zCsCGXwzkmqa5zR9zDbV+XrstlPrPn72TYf2qw6DHm/x0apGCA4nVCBiI+J0cz4LZrNOw4zKSc1iz
-	s7enRLWl0MaVhDUYU/rmJnKW9xdpyZIMa1AuBGcee2ItoUOgJd45pQak5mohRdIbHl2EwKyTBXkE0
-	PXZ1RHHyLy+tYLLodDPwmZmqaKGpYZ5mF6Dw8MRvTVpYUj5eHmn0ZpHOZc5ErmPLLO/ZnkVdodPx1
-	5QkJxyZ3jJ1nMHYv8ftTm3v0wOq0lRtpZqUzMNGdp5yd+emgqcbs+GQVg1K7LnQJvGf7bYWqiUu+r
-	RV8KFpnAPrF5TMAoo2NQ==;
+	List-Owner; bh=2MAPuabrRL5/cgUBdhC7Qgh1XcVOaCX8AZgarGyRqCE=; b=GI0jQ1yYJv0G4K
+	FSonWfQtuATMZvcl/KzfARz9vwztIMGXJChKzsup5ltbKjbjnhfVr6F4ADIcHFRh9cQXxXa51OkR7
+	pccht41Ftkbm6LgO94pmYFITJtkEWSLR+rsmEdhQrKlsVsDWvV8HOgtQl1oPkTkshCZ2SjqT7rVEy
+	KRXSkmKSfjvOk5P7fFax0RFWm93TKDspzmH201fuevo23muYPjw9s/OtX6MraPqjZ5hwn4oiapx4M
+	h0OQrpli769wPuwj1XiZVEJAg8FRt8WTQsuslDg5E9X4huic50gQAzfLb73ErpBcsNYnKGWTlBVCs
+	mJBmAF1NbPFrPqyvHMdQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jW3st-0000KR-NS; Tue, 05 May 2020 20:09:43 +0000
-Received: from mail-vs1-xe2b.google.com ([2607:f8b0:4864:20::e2b])
+	id 1jW5Ns-0000kC-Uu; Tue, 05 May 2020 21:45:48 +0000
+Received: from mail-qv1-xf43.google.com ([2607:f8b0:4864:20::f43])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jW3sr-0000If-9x
- for linux-mediatek@lists.infradead.org; Tue, 05 May 2020 20:09:42 +0000
-Received: by mail-vs1-xe2b.google.com with SMTP id b10so56880vsh.1
- for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2020 13:09:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ id 1jW5Np-0000jF-L0; Tue, 05 May 2020 21:45:47 +0000
+Received: by mail-qv1-xf43.google.com with SMTP id v10so63966qvr.2;
+ Tue, 05 May 2020 14:45:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=eb3sWwf5IKoZQzOvkPaaI1IVQ2HjKkCnRKRFnGOH6+c=;
- b=JZfLiVbOazuTfcm+4u4Ye0gOFndtkBrreUkn1ry7gNBs4ECkgFDKdo/rHdu1AQBEAh
- nKFyCywESZj5Me5GBCATHxdJitFyX+6tAYa9RDi6KDchtEehsdOVIu9TApHb7HSPxGFb
- baKBP7c/tyVCnB2NH8zq6rKRHXhb/2wTgvjIY=
+ :cc; bh=s66XPkgMwGFSFmHdN4XrXjad6dUlsV4ovrv9xRFYc8U=;
+ b=kVMitITx0hzfbz/PVolq7QDRCcCPFBsT3hxiGclz/IUyW6it4xuWFiSfiK4zDEHln4
+ HrLkQ4yq6L7xaIZclHnqhS4pQuJs8IbV3lFRVFOK7dv8Gdgk3AU3DiwN1VKt6yi+u1kH
+ KuD+4TLIWVojzJixQk96HMbBUc1z5UOsDd7ik2y//0NYRle7NY/83Z3xCibxeHrpcVs9
+ ngR21sNPfyKgAIwPjpEsOHCQLvK4pnBnxNyJui4jEHyVwlnHILauPoV1l7VfxYoaaDgJ
+ EpMaVY/hFrnyEXK//cCvBaTtNpGQuoglfsLW12WsNEytnwft7eMinWJbbraGbS17jxx/
+ hK2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=eb3sWwf5IKoZQzOvkPaaI1IVQ2HjKkCnRKRFnGOH6+c=;
- b=tTfdB1i4TRFM4w9Zi7hZhib+rqD1MPsvLcuMPAsVD7HT4qbPvcX/B41S5sajqLtRj6
- EfYnWE5GM2OBxvJe9GBGm2NmAZlKJSNo1ZowjfsGXVsr5PSKtC5UEAQwNcrkqwTa4jWn
- 2pu945xI37NLXnl6eGDwYoJj+z2ZyOq+RyLFRRyIltgRNsqnPqxZy/anee1/iOqlWDxZ
- l6BPJktfvoquBTPilLbZnwaOlBpO57LkTJpNd8mxiVlrH62Dkhrxbr2o59KQ0+bu/hSH
- k7OjpMRdCnG+U9xrFFWhmNTf9dWP6v3utZu55UN/La1cIV9M2Oydi2QVzmjlgOEkijTB
- BOqQ==
-X-Gm-Message-State: AGi0PuZ1lHgmBkDykyMuxXDW1lD1xPheBWTgUCXeoFz+h4+y9JfiW0qY
- OtPaVFGXofSGCAC+ugbIlpF0jNXqX13VXBMmPl/7qQ==
-X-Google-Smtp-Source: APiQypJowiNqq0i+QKhqmj//hMMvq70bO2RQ9UV0gMFrlpNrwuxFoMcSnTC6aIq3Ry7VS3vRYjcYHV/I6y+hbezoCRQ=
-X-Received: by 2002:a67:de0a:: with SMTP id q10mr5173302vsk.138.1588709377331; 
- Tue, 05 May 2020 13:09:37 -0700 (PDT)
+ bh=s66XPkgMwGFSFmHdN4XrXjad6dUlsV4ovrv9xRFYc8U=;
+ b=oJ7XcwwS63wiOO4G2nFlUyISD+GJ2D1LrbQC+rmbP7ZclkDf16T83dJ4PY4jxLq5kL
+ XqZZ5J8WH4T5nWz0mFUl0INDOsZgYgo0zbmy/py8cApJhzP5yuRI/kdv8WqAg/Yl1MWe
+ pYv4RQcnyhXDw9EsY362s8s+CaVLqicgr3xJDlpnU3nkEZTG4XVkR9aK/ArFjOLwhYE1
+ yT4KVuN5NhPRdLfmb0kXCAZ9R4pGAvxK/ot463AzsAa4so58EW/ea1T6PpWec/G1QAjY
+ 4Y4mIJvqIb3IO4q3F3a9q2488FJjJN/8QF9A4gPJaS2hxkHEOnObjuPK+Kjrnf56vC1U
+ M8zQ==
+X-Gm-Message-State: AGi0PuYZR1Q3pP2x+FaQmThdMjZeq3dC0mzwSZZn7+5rYujdDIX/JMcg
+ sJLRtIHSI+05WZReX7aMqIP0kf2qKkeZy2SYhPI=
+X-Google-Smtp-Source: APiQypJFCA7bIBQcIPXGf65hMMzl5Ubgd/CRnfOw5kselIiTWTYUO4nuMhm6aC6/ObAD90bzhq4CH0CGhSFXW807ufs=
+X-Received: by 2002:a0c:ed42:: with SMTP id v2mr4945783qvq.94.1588715143885;
+ Tue, 05 May 2020 14:45:43 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200505031331.122781-1-evanbenn@chromium.org>
- <20200505131242.v6.2.Ia92bb4d4ce84bcefeba1d00aaa1c1e919b6164ef@changeid>
-In-Reply-To: <20200505131242.v6.2.Ia92bb4d4ce84bcefeba1d00aaa1c1e919b6164ef@changeid>
-From: Julius Werner <jwerner@chromium.org>
-Date: Tue, 5 May 2020 13:09:25 -0700
-Message-ID: <CAODwPW-9Yz5zBpSTGOuXzZnhkze+CX5hDAegMQiXs-d=cPgNWw@mail.gmail.com>
-Subject: Re: [PATCH v6 2/2] watchdog: Add new arm_smc_wdt watchdog driver
-To: Evan Benn <evanbenn@chromium.org>
+References: <20200505113410.v1.1.I30f6c1f7d6001931439d5950f31b1b0f8ca9b6e8@changeid>
+In-Reply-To: <20200505113410.v1.1.I30f6c1f7d6001931439d5950f31b1b0f8ca9b6e8@changeid>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Date: Tue, 5 May 2020 23:45:32 +0200
+Message-ID: <CAFqH_50grfy_Bd_R7tPvKu=kmuUU96+G74iZXzmP0F_LaJJa2Q@mail.gmail.com>
+Subject: Re: [PATCH v1] [media] mtk-mdp: Remove states for format checks
+To: Eizan Miyamoto <eizan@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200505_130941_345294_17472293 
-X-CRM114-Status: UNSURE (   5.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200505_144545_718351_C32B1B44 
+X-CRM114-Status: GOOD (  23.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,31 +88,246 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Geert Uytterhoeven <geert+renesas@glider.be>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Leonard Crestez <leonard.crestez@nxp.com>, Will Deacon <will@kernel.org>,
- Xingyu Chen <xingyu.chen@amlogic.com>, Rob Herring <robh@kernel.org>,
- Anson Huang <Anson.Huang@nxp.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Guenter Roeck <linux@roeck-us.net>,
- LINUX-WATCHDOG <linux-watchdog@vger.kernel.org>,
+Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Francois Buergisser <fbuergisser@chromium.org>,
+ LKML <linux-kernel@vger.kernel.org>, Houlong Wei <houlong.wei@mediatek.com>,
+ Tomasz Figa <tfiga@chromium.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- LKML <linux-kernel@vger.kernel.org>, Li Yang <leoyang.li@nxp.com>,
- Olof Johansson <olof@lixom.net>, Julius Werner <jwerner@chromium.org>,
- Shawn Guo <shawnguo@kernel.org>, "David S. Miller" <davem@davemloft.net>
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reviewed-by: Julius Werner <jwerner@chromium.org>
+Hi Eizan,
+
+Thank you for your patch. Two trivial comments, see below ...
+
+Missatge de Eizan Miyamoto <eizan@chromium.org> del dia dt., 5 de maig
+2020 a les 4:07:
+>
+> From: Francois Buergisser <fbuergisser@chromium.org>
+>
+> The mtk-mdp driver uses states to check if the formats have been set
+> on the capture and output when turning the streaming on, setting
+> controls or setting the selection rectangles.
+> Those states are reset when 0 buffers are requested like when checking
+> capabilities.
+> This patch removes all format checks and set one by default as queues in
+> V4L2 are expected to always have a format set.
+>
+> https://linuxtv.org/downloads/v4l-dvb-apis/uapi/v4l/vidioc-streamon.html
+> https://linuxtv.org/downloads/v4l-dvb-apis/uapi/v4l/vidioc-g-ctrl.html
+> https://linuxtv.org/downloads/v4l-dvb-apis/uapi/v4l/vidioc-g-selection.html
+>
+> Signed-off-by: Francois Buergisser <fbuergisser@chromium.org>
+> Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+
+I guess that this Reviewed-by comes from a previous Gerrit workflow.
+Usually, when you submit a patch to upstream you should remove the
+Reviewed-by internally done, so I'd remove it, and ask Tomasz to give
+you the Reviewed-by on the upstream patch.
+
+> (cherry picked from commit 1887bb3924d030352df179347c8962248cdb903e)
+
+Also, drop this, only has sense in the context of ChromeOS tree.
+
+> Signed-off-by: Eizan Miyamoto <eizan@chromium.org>
+> ---
+
+Apart from that, the patch looks good to me, so:
+
+Reviewed-by: Enric Balletbo I Serra <enric.balletbo@collabora.com>
+
+
+
+>
+>  drivers/media/platform/mtk-mdp/mtk_mdp_core.h |  2 -
+>  drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c  | 90 +++++++------------
+>  2 files changed, 34 insertions(+), 58 deletions(-)
+>
+> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+> index bafcccd71f31..dd130cc218c9 100644
+> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+> @@ -28,8 +28,6 @@
+>  #define MTK_MDP_FMT_FLAG_CAPTURE       BIT(1)
+>
+>  #define MTK_MDP_VPU_INIT               BIT(0)
+> -#define MTK_MDP_SRC_FMT                        BIT(1)
+> -#define MTK_MDP_DST_FMT                        BIT(2)
+>  #define MTK_MDP_CTX_ERROR              BIT(5)
+>
+>  /**
+> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+> index 821f2cf325f0..bb9caaf513bc 100644
+> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+> @@ -369,13 +369,6 @@ void mtk_mdp_ctx_state_lock_set(struct mtk_mdp_ctx *ctx, u32 state)
+>         mutex_unlock(&ctx->slock);
+>  }
+>
+> -static void mtk_mdp_ctx_state_lock_clear(struct mtk_mdp_ctx *ctx, u32 state)
+> -{
+> -       mutex_lock(&ctx->slock);
+> -       ctx->state &= ~state;
+> -       mutex_unlock(&ctx->slock);
+> -}
+> -
+>  static bool mtk_mdp_ctx_state_is_set(struct mtk_mdp_ctx *ctx, u32 mask)
+>  {
+>         bool ret;
+> @@ -726,11 +719,6 @@ static int mtk_mdp_m2m_s_fmt_mplane(struct file *file, void *fh,
+>                 ctx->quant = pix_mp->quantization;
+>         }
+>
+> -       if (V4L2_TYPE_IS_OUTPUT(f->type))
+> -               mtk_mdp_ctx_state_lock_set(ctx, MTK_MDP_SRC_FMT);
+> -       else
+> -               mtk_mdp_ctx_state_lock_set(ctx, MTK_MDP_DST_FMT);
+> -
+>         mtk_mdp_dbg(2, "[%d] type:%d, frame:%dx%d", ctx->id, f->type,
+>                     frame->width, frame->height);
+>
+> @@ -742,13 +730,6 @@ static int mtk_mdp_m2m_reqbufs(struct file *file, void *fh,
+>  {
+>         struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
+>
+> -       if (reqbufs->count == 0) {
+> -               if (reqbufs->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE)
+> -                       mtk_mdp_ctx_state_lock_clear(ctx, MTK_MDP_SRC_FMT);
+> -               else
+> -                       mtk_mdp_ctx_state_lock_clear(ctx, MTK_MDP_DST_FMT);
+> -       }
+> -
+>         return v4l2_m2m_reqbufs(file, ctx->m2m_ctx, reqbufs);
+>  }
+>
+> @@ -758,14 +739,6 @@ static int mtk_mdp_m2m_streamon(struct file *file, void *fh,
+>         struct mtk_mdp_ctx *ctx = fh_to_ctx(fh);
+>         int ret;
+>
+> -       /* The source and target color format need to be set */
+> -       if (V4L2_TYPE_IS_OUTPUT(type)) {
+> -               if (!mtk_mdp_ctx_state_is_set(ctx, MTK_MDP_SRC_FMT))
+> -                       return -EINVAL;
+> -       } else if (!mtk_mdp_ctx_state_is_set(ctx, MTK_MDP_DST_FMT)) {
+> -               return -EINVAL;
+> -       }
+> -
+>         if (!mtk_mdp_ctx_state_is_set(ctx, MTK_MDP_VPU_INIT)) {
+>                 ret = mtk_mdp_vpu_init(&ctx->vpu);
+>                 if (ret < 0) {
+> @@ -899,24 +872,21 @@ static int mtk_mdp_m2m_s_selection(struct file *file, void *fh,
+>                 frame = &ctx->d_frame;
+>
+>         /* Check to see if scaling ratio is within supported range */
+> -       if (mtk_mdp_ctx_state_is_set(ctx, MTK_MDP_DST_FMT | MTK_MDP_SRC_FMT)) {
+> -               if (V4L2_TYPE_IS_OUTPUT(s->type)) {
+> -                       ret = mtk_mdp_check_scaler_ratio(variant, new_r.width,
+> -                               new_r.height, ctx->d_frame.crop.width,
+> -                               ctx->d_frame.crop.height,
+> -                               ctx->ctrls.rotate->val);
+> -               } else {
+> -                       ret = mtk_mdp_check_scaler_ratio(variant,
+> -                               ctx->s_frame.crop.width,
+> -                               ctx->s_frame.crop.height, new_r.width,
+> -                               new_r.height, ctx->ctrls.rotate->val);
+> -               }
+> +       if (V4L2_TYPE_IS_OUTPUT(s->type))
+> +               ret = mtk_mdp_check_scaler_ratio(variant, new_r.width,
+> +                       new_r.height, ctx->d_frame.crop.width,
+> +                       ctx->d_frame.crop.height,
+> +                       ctx->ctrls.rotate->val);
+> +       else
+> +               ret = mtk_mdp_check_scaler_ratio(variant,
+> +                       ctx->s_frame.crop.width,
+> +                       ctx->s_frame.crop.height, new_r.width,
+> +                       new_r.height, ctx->ctrls.rotate->val);
+>
+> -               if (ret) {
+> -                       dev_info(&ctx->mdp_dev->pdev->dev,
+> -                               "Out of scaler range");
+> -                       return -EINVAL;
+> -               }
+> +       if (ret) {
+> +               dev_info(&ctx->mdp_dev->pdev->dev,
+> +                       "Out of scaler range");
+> +               return -EINVAL;
+>         }
+>
+>         s->r = new_r;
+> @@ -989,7 +959,6 @@ static int mtk_mdp_s_ctrl(struct v4l2_ctrl *ctrl)
+>         struct mtk_mdp_ctx *ctx = ctrl_to_ctx(ctrl);
+>         struct mtk_mdp_dev *mdp = ctx->mdp_dev;
+>         struct mtk_mdp_variant *variant = mdp->variant;
+> -       u32 state = MTK_MDP_DST_FMT | MTK_MDP_SRC_FMT;
+>         int ret = 0;
+>
+>         if (ctrl->flags & V4L2_CTRL_FLAG_INACTIVE)
+> @@ -1003,17 +972,15 @@ static int mtk_mdp_s_ctrl(struct v4l2_ctrl *ctrl)
+>                 ctx->vflip = ctrl->val;
+>                 break;
+>         case V4L2_CID_ROTATE:
+> -               if (mtk_mdp_ctx_state_is_set(ctx, state)) {
+> -                       ret = mtk_mdp_check_scaler_ratio(variant,
+> -                                       ctx->s_frame.crop.width,
+> -                                       ctx->s_frame.crop.height,
+> -                                       ctx->d_frame.crop.width,
+> -                                       ctx->d_frame.crop.height,
+> -                                       ctx->ctrls.rotate->val);
+> -
+> -                       if (ret)
+> -                               return -EINVAL;
+> -               }
+> +               ret = mtk_mdp_check_scaler_ratio(variant,
+> +                               ctx->s_frame.crop.width,
+> +                               ctx->s_frame.crop.height,
+> +                               ctx->d_frame.crop.width,
+> +                               ctx->d_frame.crop.height,
+> +                               ctx->ctrls.rotate->val);
+> +
+> +               if (ret)
+> +                       return -EINVAL;
+>
+>                 ctx->rotation = ctrl->val;
+>                 break;
+> @@ -1090,6 +1057,7 @@ static int mtk_mdp_m2m_open(struct file *file)
+>         struct video_device *vfd = video_devdata(file);
+>         struct mtk_mdp_ctx *ctx = NULL;
+>         int ret;
+> +       struct v4l2_format default_format;
+>
+>         ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
+>         if (!ctx)
+> @@ -1144,6 +1112,16 @@ static int mtk_mdp_m2m_open(struct file *file)
+>         list_add(&ctx->list, &mdp->ctx_list);
+>         mutex_unlock(&mdp->lock);
+>
+> +       /* Default format */
+> +       memset(&default_format, 0, sizeof(default_format));
+> +       default_format.type = V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
+> +       default_format.fmt.pix_mp.width = 32;
+> +       default_format.fmt.pix_mp.height = 32;
+> +       default_format.fmt.pix_mp.pixelformat = V4L2_PIX_FMT_YUV420M;
+> +       mtk_mdp_m2m_s_fmt_mplane(file, &ctx->fh, &default_format);
+> +       default_format.type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+> +       mtk_mdp_m2m_s_fmt_mplane(file, &ctx->fh, &default_format);
+> +
+>         mtk_mdp_dbg(0, "%s [%d]", dev_name(&mdp->pdev->dev), ctx->id);
+>
+>         return 0;
+> --
+> 2.26.2.526.g744177e7f7-goog
+>
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
