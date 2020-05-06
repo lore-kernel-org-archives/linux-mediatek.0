@@ -2,84 +2,73 @@ Return-Path: <SRS0=yMRY=6U=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-13.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1A2BC28CBC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2020 11:04:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7CE8CC28CBC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2020 11:22:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6A3AA2068E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2020 11:04:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4D14F20663
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2020 11:22:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Q3yi1j/j";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="bWfkT4qj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6A3AA2068E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RNvCh20q"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4D14F20663
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jKy+iUkF3NV3NoQrCrtXSPCOm6Zn4JAXJJURZYikj58=; b=Q3yi1j/j13aTUJ
-	LA4tFsLgbEDK/ToNmAh4ljk3mCrMag8ATeHftrVjUblIi8AZ4g/TtxcItL7p3fH/FNyesKfQugLp1
-	dJCkXVvn3stnuz3pQHno1BO7y5JofKgBLRWpn0/nU0fLSXHpSmTBFEImBfc1x7wdgkN7X/iNdSaav
-	jzr1cQaWePgI+HH7a8K7+k4BAOVxN7MoJOZf7vQUeF1zXzz4OXkjbyqw2DelciCT/9CNzvrAcHN+w
-	pXSZ4m4fESmuya2JuW+uruLV268OdXDtHiHNCBHONxtUY7bqJ5fTSmgu13r2fPj5YAu7QG2BakXrQ
-	lDgwEC8mjHmNZxtGTjSw==;
+	List-Owner; bh=8wCdQPp1ZfOlJfb5Nx/KtjC2Ef+nzVXJtqibwLRrRc0=; b=RNvCh20qi67Rj7
+	cSfiHGq87IcnBCRshBbS4M68d0ZqW5HkDPA1Av2BIc67456f8mRpkYpY3wRIWYNrWP98vVuV9/miv
+	ZPsxb6b0wSq9LRGn8qGrdq1yg7OMAZizG9OAd5Tq3EDFDbTovQnWu3sA270bVXndP1nPnkYBD4brX
+	q+1nmzIZX30k+wZGRY4iZGqJxmkxpGvbHE5jRTgkoPFQ1QHe0m2uzkmf9yd49Xi8WQh+xCMf8mqVf
+	KZ5uy27rjBI+qia4NwoLJj6Pobc/p7CeyuIqRgYednMM7lfRfLKuxsGGSBJefdCeRkStcLZ35luVk
+	8nUZJ8E7xeeurPJJgj4w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWHqL-0002PL-41; Wed, 06 May 2020 11:04:01 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1jWI7f-0007LK-NO; Wed, 06 May 2020 11:21:55 +0000
+Received: from mga07.intel.com ([134.134.136.100])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWHqA-0002GH-G5
- for linux-mediatek@lists.infradead.org; Wed, 06 May 2020 11:03:56 +0000
-Received: by mail-wr1-x442.google.com with SMTP id y4so1651262wrm.11
- for <linux-mediatek@lists.infradead.org>; Wed, 06 May 2020 04:03:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=rtEuo5nw1S4kpIcS9rhXRJzeE3BjOFfaGFCUT/CfmF4=;
- b=bWfkT4qj3YVYiyTtnBDKzxtH9al8EGIDGEVKQrpkztLlbkCNThDFEuVDTozdfgIzLY
- N4yivpD0Oc9GWBeufPce8cOQgY2lkiqdBkgWTYq4TICJSiiEqMDBnABEBibaWujH6AxN
- v+CfVF7IFDnhjFiERJNR4nbL0mGShNasZXkJk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=rtEuo5nw1S4kpIcS9rhXRJzeE3BjOFfaGFCUT/CfmF4=;
- b=R6jW+hRIr+092BZQddLW8j52dQtZcmvxrCyuGt8GUOWVudTyq/t3zVdspvma2+5Awd
- KRlShD06K2p5StgxdNWiY5kmaAGyYcYv/0GfErLe7IbkOgN3n4h42oH5+ay6VWTbahqp
- 8cJwdLPeAEy+VjSUyApUxCG99mSWnhslXo32kCRpt5RReS4+gMq9K10PLjM5Bis3M5aD
- ZE2HAGYaSpPRGeQUz0XdXLEps+wmbShwKwptWF7kVNX6uE+YXyjrl8rAFURbPyriOx+E
- dE890nz316Dulx7xLgsmJbmc2on6ZPR6etdpdUUXW7SeN5X3IRVfWKtcN4oEx3ckNZaD
- h9/A==
-X-Gm-Message-State: AGi0PuYar0A/Ut6CZfJdaZ38Bdu47Tmr+ahHamIE808iggpGXkAStQsz
- 7u8Yvv6OeHOYL6BwNamR3jr0PLxpeaNPPUmBohGhaw==
-X-Google-Smtp-Source: APiQypIGj98l9hllH+9ph6fwT8VKRh/Pv4h2UW1ktSL1V2RKXFelTBD7bNCFAlCYli6PKV2AO+prMw92x7qUiOe3LRk=
-X-Received: by 2002:adf:f3cc:: with SMTP id g12mr8407525wrp.427.1588763027630; 
- Wed, 06 May 2020 04:03:47 -0700 (PDT)
+ id 1jWI7X-0007EH-Nj; Wed, 06 May 2020 11:21:49 +0000
+IronPort-SDR: T8XABdx+lFQsMYfWUKBSQbQvUvK6kJ0zDl9W3VFG0jUPWH6NrdB/j3aeR/P0VswG8E+1arhDyB
+ uOKgabtX8WGA==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 May 2020 04:21:43 -0700
+IronPort-SDR: t6fBvg1qD9timBapcEHbs/9FlgJYCTMxVzSSsZrrxSppL5QxxscvZ9SAIBneDJ6A073f7Ni0gz
+ slXsh7Mvorxg==
+X-IronPort-AV: E=Sophos;i="5.73,358,1583222400"; d="scan'208";a="407210944"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 May 2020 04:21:38 -0700
+Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
+ id 89C1F20885; Wed,  6 May 2020 14:21:36 +0300 (EEST)
+Date: Wed, 6 May 2020 14:21:36 +0300
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Dongchun Zhu <dongchun.zhu@mediatek.com>
+Subject: Re: [V7, 1/2] media: dt-bindings: media: i2c: Document OV02A10
+ bindings
+Message-ID: <20200506112136.GV9190@paasikivi.fi.intel.com>
+References: <20200430080924.1140-1-dongchun.zhu@mediatek.com>
+ <20200430080924.1140-2-dongchun.zhu@mediatek.com>
+ <20200505070451.GS9190@paasikivi.fi.intel.com>
+ <1588688238.8804.150.camel@mhfsdcap03>
 MIME-Version: 1.0
-References: <20200420060834.44461-1-amistry@google.com>
- <CAAOTY_81qB+WJN_2-ZNqM63NOp+Es1qEmsp2qje2bfePg1O5Vw@mail.gmail.com>
- <CAATStaNwCyveF-fmrT=1m-BJh=8WOyaffFzVsC_Lo_rFkm6Z=Q@mail.gmail.com>
- <CAAOTY_9HQTiywgzGrefDHromhXtLPyWeYUyxFU8+h8sN_fo9xw@mail.gmail.com>
- <CAAOTY_9+s8EknSFLyYHNDfJuxERTuubBXaQ41Y3J+DeuDMFGqA@mail.gmail.com>
-In-Reply-To: <CAAOTY_9+s8EknSFLyYHNDfJuxERTuubBXaQ41Y3J+DeuDMFGqA@mail.gmail.com>
-From: Anand Mistry <amistry@chromium.org>
-Date: Wed, 6 May 2020 21:03:36 +1000
-Message-ID: <CAECpkiM5ez8=iEe=fYKiDf5Pb6AHrTyt5uXqJQtQpQJHotupWA@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: stop iterating dma addresses when
- sg_dma_len() == 0
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1588688238.8804.150.camel@mhfsdcap03>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200506_040352_881975_40DF4C51 
-X-CRM114-Status: GOOD (  22.46  )
+X-CRM114-CacheID: sfid-20200506_042147_816601_B6EE021D 
+X-CRM114-Status: GOOD (  26.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,69 +80,244 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Anand K Mistry <amistry@google.com>,
- DRI Development <dri-devel@lists.freedesktop.org>, CK Hu <ck.hu@mediatek.com>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: mark.rutland@arm.com, drinkcat@chromium.org,
+ andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
+ devicetree@vger.kernel.org, linus.walleij@linaro.org,
+ shengnan.wang@mediatek.com, tfiga@chromium.org, bgolaszewski@baylibre.com,
+ sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
+ louis.kuo@mediatek.com, matthias.bgg@gmail.com, bingbu.cao@intel.com,
+ matrix.zhu@aliyun.com, mchehab@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBNYXkgNiwgMjAyMCBhdCAxMDoyNSBBTSBDaHVuLUt1YW5nIEh1IDxjaHVua3Vhbmcu
-aHVAa2VybmVsLm9yZz4gd3JvdGU6Cj4KPiBIaSwgQW5hbmQsCj4KPiBDaHVuLUt1YW5nIEh1IDxj
-aHVua3VhbmcuaHVAa2VybmVsLm9yZz4g5pa8IDIwMjDlubQ05pyIMjnml6Ug6YCx5LiJIOS4iuWN
-iDEyOjM35a+r6YGT77yaCj4gPgo+ID4gSGksIEFuYW5kLAo+ID4KPiA+IEFuYW5kIEsuIE1pc3Ry
-eSA8YW1pc3RyeUBjaHJvbWl1bS5vcmc+IOaWvCAyMDIw5bm0NOaciDI45pelIOmAseS6jCDkuIrl
-jYg5OjU05a+r6YGT77yaCj4gPiA+Cj4gPiA+IE9uIFN1biwgMjYgQXByIDIwMjAgYXQgMTg6MDQs
-IENodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPiB3cm90ZToKPiA+ID4gPgo+
-ID4gPiA+IEhpLCBBbmFuZDoKPiA+ID4gPgo+ID4gPiA+IEFuYW5kIEsgTWlzdHJ5IDxhbWlzdHJ5
-QGNocm9taXVtLm9yZz4g5pa8IDIwMjDlubQ05pyIMjDml6Ug6YCx5LiAIOS4i+WNiDI6MDnlr6vp
-gZPvvJoKPiA+ID4gPiA+Cj4gPiA+ID4gPiBJZiBkbWFfbWFwX3NnKCkgbWVyZ2VzIHBhZ2VzIHdo
-ZW4gY3JlYXRpbmcgdGhlIG1hcHBpbmcsIG9ubHkgdGhlIGZpcnN0Cj4gPiA+ID4gPiBlbnRyaWVz
-IHdpbGwgaGF2ZSBhIHZhbGlkIHNnX2RtYV9hZGRyZXNzKCkgYW5kIHNnX2RtYV9sZW4oKSwgZm9s
-bG93ZWQgYnkKPiA+ID4gPiA+IGVudHJpZXMgd2l0aCBzZ19kbWFfbGVuKCkgPT0gMC4KPiA+ID4g
-PiA+Cj4gPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBBbmFuZCBLIE1pc3RyeSA8YW1pc3RyeUBnb29n
-bGUuY29tPgo+Cj4gQXV0aG9yIHNob3VsZCBzaWduIG9mZiB0aGlzIHBhdGNoLCBwbGVhc2UgZ2l2
-ZSBhIHNpZ24gb2ZmIHRhZyBieSBhdXRob3IuCgpTb3JyeSwgZW1haWwgaXNzdWVzIG1lYW50IGkg
-c2VudCB0aGUgcGF0Y2ggZnJvbSBhIGRpZmZlcmVudCBhY2NvdW50LgpTaG91bGQgSSByZS1zZW5k
-IHRoZQpwYXRjaCBmcm9tIHRoZSBzYW1lIGFjY291bnQgYXMgdGhlIHNpZ24tb2ZmIGxpbmU/IEkn
-bSBzdGlsbCB3b3JraW5nIG15CndheSB0aHJvdWdoIHRoZSBrZXJuZWwgcGF0Y2ggcHJvY2Vzcy4K
-Cj4KPiBSZWdhcmRzLAo+IENodW4tS3VhbmcuCj4KPiA+ID4gPiA+IC0tLQo+ID4gPiA+ID4gIGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jIHwgMyArKysKPiA+ID4gPiA+ICAx
-IGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspCj4gPiA+ID4gPgo+ID4gPiA+ID4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jIGIvZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmMKPiA+ID4gPiA+IGluZGV4IGIwNGEzYzJiMTEx
-ZTA5Li5mOGZkOGI5OGMzMGUzZCAxMDA2NDQKPiA+ID4gPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jCj4gPiA+ID4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0v
-bWVkaWF0ZWsvbXRrX2RybV9nZW0uYwo+ID4gPiA+ID4gQEAgLTIyNCw2ICsyMjQsOSBAQCBzdHJ1
-Y3QgZHJtX2dlbV9vYmplY3QgKm10a19nZW1fcHJpbWVfaW1wb3J0X3NnX3RhYmxlKHN0cnVjdCBk
-cm1fZGV2aWNlICpkZXYsCj4gPiA+ID4gPgo+ID4gPiA+ID4gICAgICAgICBleHBlY3RlZCA9IHNn
-X2RtYV9hZGRyZXNzKHNnLT5zZ2wpOwo+ID4gPiA+ID4gICAgICAgICBmb3JfZWFjaF9zZyhzZy0+
-c2dsLCBzLCBzZy0+bmVudHMsIGkpIHsKPiA+ID4gPiA+ICsgICAgICAgICAgICAgICBpZiAoIXNn
-X2RtYV9sZW4ocykpCj4gPiA+ID4gPiArICAgICAgICAgICAgICAgICAgICAgICBicmVhazsKPiA+
-ID4gPgo+ID4gPiA+IEkgdGhpbmsgdGhpcyBzaG91bGQgYmUgJ2NvbnRpbnVlJwo+ID4gPgo+ID4g
-PiBzY2F0dGVybGlzdC5oIGhhcyB0aGUgY29tbWVudDoKPiA+ID4gLyoKPiA+ID4gICogVGhlc2Ug
-bWFjcm9zIHNob3VsZCBiZSB1c2VkIGFmdGVyIGEgZG1hX21hcF9zZyBjYWxsIGhhcyBiZWVuIGRv
-bmUKPiA+ID4gICogdG8gZ2V0IGJ1cyBhZGRyZXNzZXMgb2YgZWFjaCBvZiB0aGUgU0cgZW50cmll
-cyBhbmQgdGhlaXIgbGVuZ3Rocy4KPiA+ID4gICogWW91IHNob3VsZCBvbmx5IHdvcmsgd2l0aCB0
-aGUgbnVtYmVyIG9mIHNnIGVudHJpZXMgZG1hX21hcF9zZwo+ID4gPiAgKiByZXR1cm5zLCBvciBh
-bHRlcm5hdGl2ZWx5IHN0b3Agb24gdGhlIGZpcnN0IHNnX2RtYV9sZW4oc2cpIHdoaWNoCj4gPiA+
-ICAqIGlzIDAuCj4gPiA+ICAqLwo+ID4gPgo+ID4gPiBTbyBicmVha2luZyBvbiB0aGUgZmlyc3Qg
-c2dfZG1hX2xlbihzZykgPT0gMCBhcHBlYXJzIHRvIGJlIChvbmUgb2YpCj4gPiA+IHRoZSBkb2N1
-bWVudGVkIGFwcHJvYWNoLgo+ID4gPgo+ID4KPiA+IE9rYXksIHlvdSdyZSByaWdodC4gU28KPiA+
-Cj4gPiBSZXZpZXdlZC1ieTogQ2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5vcmc+
-Cj4gPgo+ID4gPiA+Cj4gPiA+ID4gUmVnYXJkcywKPiA+ID4gPiBDaHVuLUt1YW5nLgo+ID4gPiA+
-Cj4gPiA+ID4gPiArCj4gPiA+ID4gPiAgICAgICAgICAgICAgICAgaWYgKHNnX2RtYV9hZGRyZXNz
-KHMpICE9IGV4cGVjdGVkKSB7Cj4gPiA+ID4gPiAgICAgICAgICAgICAgICAgICAgICAgICBEUk1f
-RVJST1IoInNnX3RhYmxlIGlzIG5vdCBjb250aWd1b3VzIik7Cj4gPiA+ID4gPiAgICAgICAgICAg
-ICAgICAgICAgICAgICByZXQgPSAtRUlOVkFMOwo+ID4gPiA+ID4gLS0KPiA+ID4gPiA+IDIuMjYu
-MS4zMDEuZzU1YmMzZWI3Y2I5LWdvb2cKPiA+ID4gPiA+Cj4gPiA+ID4gPgo+ID4gPiA+ID4gX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiA+ID4gPiA+IExp
-bnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdAo+ID4gPiA+ID4gTGludXgtbWVkaWF0ZWtAbGlzdHMu
-aW5mcmFkZWFkLm9yZwo+ID4gPiA+ID4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1tZWRpYXRlawoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlh
-dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Hi Dongchun,
+
+On Tue, May 05, 2020 at 10:17:18PM +0800, Dongchun Zhu wrote:
+> Hi Sakari,
+> 
+> Thanks for the review.
+> 
+> On Tue, 2020-05-05 at 10:04 +0300, Sakari Ailus wrote:
+> > Hi Dongchun,
+> > 
+> > On Thu, Apr 30, 2020 at 04:09:23PM +0800, Dongchun Zhu wrote:
+> > > Add DT bindings documentation for Omnivision OV02A10 image sensor.
+> > > 
+> > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > > ---
+> > >  .../bindings/media/i2c/ovti,ov02a10.yaml           | 148 +++++++++++++++++++++
+> > >  MAINTAINERS                                        |   7 +
+> > >  2 files changed, 155 insertions(+)
+> > >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> > > 
+> > > diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> > > new file mode 100644
+> > > index 0000000..2be4bd2
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> > > @@ -0,0 +1,148 @@
+> > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> > > +# Copyright (c) 2020 MediaTek Inc.
+> > > +%YAML 1.2
+> > > +---
+> > > +$id: http://devicetree.org/schemas/media/i2c/ovti,ov02a10.yaml#
+> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > +
+> > > +title: Omnivision OV02A10 CMOS Sensor Device Tree Bindings
+> > > +
+> > > +maintainers:
+> > > +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > > +
+> > > +description: |-
+> > > +  The Omnivision OV02A10 is a low-cost, high performance, 1/5-inch, 2 megapixel
+> > > +  image sensor, which is the latest production derived from Omnivision's CMOS
+> > > +  image sensor technology. Ihis chip supports high frame rate speeds up to 30fps
+> > > +  @ 1600x1200 (UXGA) resolution transferred over a 1-lane MIPI interface. The
+> > > +  sensor output is available via CSI-2 serial data output.
+> > > +
+> > > +properties:
+> > > +  compatible:
+> > > +    const: ovti,ov02a10
+> > > +
+> > > +  reg:
+> > > +    maxItems: 1
+> > > +
+> > > +  clocks:
+> > > +    items:
+> > > +      - description: top mux camtg clock
+> > > +      - description: devider clock
+> > > +
+> > > +  clock-names:
+> > > +    items:
+> > > +      - const: eclk
+> > > +      - const: freq_mux
+> > > +
+> > > +  clock-frequency:
+> > > +    description:
+> > > +      Frequency of the eclk clock in Hertz.
+> > > +
+> > > +  dovdd-supply:
+> > > +    description:
+> > > +      Definition of the regulator used as interface power supply.
+> > > +
+> > > +  avdd-supply:
+> > > +    description:
+> > > +      Definition of the regulator used as analog power supply.
+> > > +
+> > > +  dvdd-supply:
+> > > +    description:
+> > > +      Definition of the regulator used as digital power supply.
+> > > +
+> > > +  powerdown-gpios:
+> > > +    description:
+> > > +      The phandle and specifier for the GPIO that controls sensor powerdown.
+> > > +
+> > > +  reset-gpios:
+> > > +    description:
+> > > +      The phandle and specifier for the GPIO that controls sensor reset.
+> > > +
+> > > +  rotation:
+> > > +    description:
+> > > +      Definition of the sensor's placement, valid values are 0 and 180.
+> > > +    allOf:
+> > > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
+> > > +      - enum:
+> > > +          - 0    # Sensor Mounted Upright
+> > > +          - 180  # Sensor Mounted Upside Down
+> > > +
+> > > +  ovti,mipi-tx-speed:
+> > > +    description:
+> > > +      Indication of MIPI transmission speed select.
+> > 
+> > What exactly does this signify? And how do you come up with the number?
+> > 
+> 
+> Apologies for not addressing this number clear.
+> 
+> From the datasheet, P1:0xA1 register represents TX_SPEED_AREA_SEL with
+> the default val: 0x03.
+> The description of this RW register is as below:
+> Bit[2:0]: MIPI transmission speed select.
+> 
+> Thus the enum should be definited as [ 0, 1, 2, 3, 4, 5, 6, 7 ].
+> This would be fixed in next release.
+> 
+> In the meantime, as the default val of P1:0xA1 is 0x03, we hope to keep
+> that value if there is no setting for this private property in DT.
+> The caller in driver would be updated like this in next release.
+> if (ov02a10->mipi_clock_tx_speed)
+> 	ret = i2c_smbus_write_byte_data(...,...);
+
+How did you pick the value in the example? And why do you believe it is
+specific to a platform, and not e.g. a sensor mode?
+
+> 
+> > > +    allOf:
+> > > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
+> > > +      - enum: [ 3, 4 ]
+> > > +
+> > > +  # See ../video-interfaces.txt for details
+> > > +  port:
+> > > +    type: object
+> > > +    additionalProperties: false
+> > > +
+> > > +    properties:
+> > > +      endpoint:
+> > > +        type: object
+> > > +        additionalProperties: false
+> > > +
+> > > +        properties:
+> > > +          remote-endpoint: true
+> > > +          link-frequencies: true
+> > > +
+> > > +    required:
+> > > +      - endpoint
+> > > +
+> > > +required:
+> > > +  - compatible
+> > > +  - reg
+> > > +  - clocks
+> > > +  - clock-names
+> > > +  - clock-frequency
+> > > +  - dovdd-supply
+> > > +  - avdd-supply
+> > > +  - dvdd-supply
+> > > +  - powerdown-gpios
+> > > +  - reset-gpios
+> > > +  - port
+> > > +
+> > > +additionalProperties: false
+> > > +
+> > > +examples:
+> > > +  - |
+> > > +    #include <dt-bindings/clock/mt8183-clk.h>
+> > > +    #include <dt-bindings/gpio/gpio.h>
+> > > +
+> > > +    i2c {
+> > > +        clock-frequency = <400000>;
+> > > +        #address-cells = <1>;
+> > > +        #size-cells = <0>;
+> > > +
+> > > +        ov02a10: camera-sensor@3d {
+> > > +            compatible = "ovti,ov02a10";
+> > > +            reg = <0x3d>;
+> > > +            pinctrl-names = "default";
+> > > +            pinctrl-0 = <&clk_24m_cam>;
+> > > +
+> > > +            clocks = <&topckgen CLK_TOP_MUX_CAMTG>,
+> > > +                     <&topckgen CLK_TOP_UNIVP_192M_D8>;
+> > > +            clock-names = "eclk", "freq_mux";
+> > > +            clock-frequency = <24000000>;
+> > > +
+> > > +            rotation = <180>;
+> > > +            ovti,mipi-tx-speed = <3>;
+> > > +
+> > > +            dovdd-supply = <&mt6358_vcamio_reg>;
+> > > +            avdd-supply = <&mt6358_vcama1_reg>;
+> > > +            dvdd-supply = <&mt6358_vcn18_reg>;
+> > > +            powerdown-gpios = <&pio 107 GPIO_ACTIVE_LOW>;
+> > > +            reset-gpios = <&pio 109 GPIO_ACTIVE_HIGH>;
+> > > +
+> > > +            port {
+> > > +                wcam_out: endpoint {
+> > > +                    remote-endpoint = <&mipi_in_wcam>;
+> > > +                    link-frequencies = /bits/ 64 <390000000>;
+> > > +                };
+> > > +            };
+> > > +        };
+> > > +    };
+> > > +
+> > > +...
+> > > diff --git a/MAINTAINERS b/MAINTAINERS
+> > > index e64e5db..63a2335 100644
+> > > --- a/MAINTAINERS
+> > > +++ b/MAINTAINERS
+> > > @@ -12389,6 +12389,13 @@ M:	Harald Welte <laforge@gnumonks.org>
+> > >  S:	Maintained
+> > >  F:	drivers/char/pcmcia/cm4040_cs.*
+> > >  
+> > > +OMNIVISION OV02A10 SENSOR DRIVER
+> > > +M:	Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > > +L:	linux-media@vger.kernel.org
+> > > +S:	Maintained
+> > > +T:	git git://linuxtv.org/media_tree.git
+> > > +F:	Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> > > +
+> > >  OMNIVISION OV13858 SENSOR DRIVER
+> > >  M:	Sakari Ailus <sakari.ailus@linux.intel.com>
+> > >  L:	linux-media@vger.kernel.org
+> > 
+> 
+
+-- 
+Regards,
+
+Sakari Ailus
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
