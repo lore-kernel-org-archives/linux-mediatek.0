@@ -2,79 +2,67 @@ Return-Path: <SRS0=yMRY=6U=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	MSGID_FROM_MTA_HEADER,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 44809C28CBC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2020 12:07:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C7E8C28CBC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2020 12:15:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 11005206DD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2020 12:07:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 628F120746
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2020 12:15:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jP1F0TJ2";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="e2XxZSMn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 11005206DD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uSCetez9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 628F120746
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vivo.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/qtAMu+jtw6MmLFqmNTTGB0Z25XFEhCSEGEOTlZGuzM=; b=jP1F0TJ254eKvq
-	OLB76VHafHzQF/vFvJjRWB28psxRRr6TPZ9sy4CVwCmkiyvQv2+Z7PfzIQuoIhRn4iCKZl4/T1ACF
-	s63zsWkqlNcdR60Om4LlnqX89gfHuJSsvu/Jxd2ydGkUPYghXqEYgpSNGObV+ROuAdIGac9Zs2HTl
-	mMhugQZ+xAGd79D/CcAU7AhM3DNgXxGwmn4oG4qCZFKYC2If7suMe+3y64zN4CKzj4/RvllyoKokm
-	DTYgMe/87kXEFphHG/YCyoV2EPNlWNUMsM/TgVaUrUrtmN1zSOYYEHEpuB1KBglyJ5hyz55g6ZSnF
-	7pNDyozmh/qlLJJGifyA==;
+	List-Archive:List-Unsubscribe:List-Id:Date:From:MIME-Version:In-Reply-To:
+	Subject:To:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=XpY+kYSaWdMNT2MUeuKoTVg1xh1wHrvpJpAY5NU1y+A=; b=uSCetez9cU/8J4
+	r/7VvdaECxXjvLANQocGA7/qOQRBsjjIqGDBHMJCG5zLEDx7Q+xAwPjvuTLP8nIc3SqNnaoyCt/mq
+	1P7YKPOQ6pH3oyc9dM47p6bTiXH4866+3auwTS/00NXMrCyEz3sgW5D0fJ/0vhhulDFP673lBNfyL
+	XHnXkTM3/UmtzKYqct+O1ppvQeOuGB/yS+F2ldwCHKsVjVNYiYLe5U06LWowAtInB3Wm6rjLQUqnk
+	bu3vLEVUgK+ndn4juBjMjv4QfZ8mvsipHTFyQIhxpmdbXit/axlhz7Eh3T1uSl/Ri6tH4aoBNbZ12
+	8O/f9THbSV/ZHxyC6P6g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWIpe-0008K1-Hn; Wed, 06 May 2020 12:07:22 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jWIxL-0006IR-0y; Wed, 06 May 2020 12:15:19 +0000
+Received: from m176150.mail.qiye.163.com ([59.111.176.150])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWIpT-0008AU-RY; Wed, 06 May 2020 12:07:13 +0000
-X-UUID: 14e4cb0d204544f28b7ab95cfcf411c0-20200506
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=xiv1xlLmws1dThuPdvPP+yLmXez/7eZ0aRvlqDySsPo=; 
- b=e2XxZSMnri4PGs4d0tHZpMtLFBkjSeJ8b8tNp8Tt/6WF+d1cU95isafgH0lF8TcBQSGkOjC12VR5tR6sLUYGHGvdDAZfLyTdfGeEFoHBsIUX7SU9OVV/ZVbGvbXSDBBtOQjHGn/L+tIu/9scTTd9wE7eLhs9GxecVs7j8xu8tK0=;
-X-UUID: 14e4cb0d204544f28b7ab95cfcf411c0-20200506
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <walter-zh.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 713611829; Wed, 06 May 2020 04:07:10 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 6 May 2020 05:07:07 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 6 May 2020 20:06:58 +0800
-Received: from [172.21.84.99] (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 6 May 2020 20:06:58 +0800
-Message-ID: <1588766821.7534.3.camel@mtksdccf07>
-Subject: Re: [PATCH 2/3] kasan: record and print the free track
-From: Walter Wu <walter-zh.wu@mediatek.com>
-To: Dmitry Vyukov <dvyukov@google.com>
-Date: Wed, 6 May 2020 20:07:01 +0800
-In-Reply-To: <CACT4Y+bOxe+Y8BuzC=0k6rmkDiJ7PBnVcsY=jzZe1trVj476fg@mail.gmail.com>
-References: <20200506052155.14515-1-walter-zh.wu@mediatek.com>
- <CACT4Y+ajKJpwNXd1V17bOT_ZShXm8h2eepxx_g4hAqk78SxCDA@mail.gmail.com>
- <1588766193.23664.28.camel@mtksdccf07>
- <CACT4Y+bOxe+Y8BuzC=0k6rmkDiJ7PBnVcsY=jzZe1trVj476fg@mail.gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1jWIx0-0003jp-ND
+ for linux-mediatek@lists.infradead.org; Wed, 06 May 2020 12:15:00 +0000
+Received: from vivo.com (wm-10.qy.internal [127.0.0.1])
+ by m176150.mail.qiye.163.com (Hmail) with ESMTP id 621B01A1680;
+ Wed,  6 May 2020 20:14:18 +0800 (CST)
+Message-ID: <AJcAtgBECILBSP4ZwkKFT4o9.3.1588767258295.Hmail.bernard@vivo.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: =?UTF-8?B?UmU6UmU6IFJlOiBbUEFUQ0hdIGRybS9tZWRpYXRlazogY2xlYW51cCBjb2Rpbmcgc3R5bGUgaW4gbWVkaWF0ZWsgYSBiaXQ=?=
+X-Priority: 3
+X-Mailer: HMail Webmail Server V2.0 Copyright (c) 2016-163.com
+X-Originating-IP: 157.0.31.122
+In-Reply-To: <CAAOTY_8o239n_y4LJiyU5978e87knZmNRJwSHZbEDxLLasiJjw@mail.gmail.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: C775F1E3319AFBF59C1D207AB67E55811CC5F8909591D57E3E5AFA2BB1C54DE42000:8
-X-MTK: N
+Received: from bernard@vivo.com( [157.0.31.122) ] by ajax-webmail (
+ [127.0.0.1] ) ; Wed, 6 May 2020 20:14:18 +0800 (GMT+08:00)
+From: Bernard <bernard@vivo.com>
+Date: Wed, 6 May 2020 20:14:18 +0800 (GMT+08:00)
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgYFAkeWUFZSVVDTUhCQkJDT0hOQkxPSllXWShZQU
+ hPN1dZLVlBSVdZCQ4XHghZQVk1NCk2OjckKS43PlkG
+X-HM-Sender-Digest: e1kJHlYWEh9ZQUhMTk9MSUJLQk5JN1dZDB4ZWUEPCQ4eV1kSHx4VD1lB
+ WUc6MRg6Dxw5PjgyNzkoK08hDBAwPS9PFEJVSFVKTkNDTE1MSU1IT0NPVTMWGhIXVRkeCRUaCR87
+ DRINFFUYFBZFWVdZEgtZQVlKTkxVS1VISlVKSUlZV1kIAVlBSktLSEo3Bg++
+X-HM-Tid: 0a71e9e8772b93b4kuws621b01a1680
+X-Bad-Reply: In-Reply-To but no 'Re:' in Subject.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200506_050711_894799_9B7652DA 
-X-CRM114-Status: GOOD (  27.71  )
+X-CRM114-CacheID: sfid-20200506_051459_048852_A0C44F55 
+X-CRM114-Status: GOOD (  12.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,160 +74,116 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: wsd_upstream <wsd_upstream@mediatek.com>,
- linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>,
- kasan-dev <kasan-dev@googlegroups.com>, Linux-MM <linux-mm@kvack.org>,
- Alexander Potapenko <glider@google.com>,
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ opensource.kernel@vivo.com, David Airlie <airlied@linux.ie>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>,
  Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2020-05-06 at 13:59 +0200, Dmitry Vyukov wrote:
-> On Wed, May 6, 2020 at 1:56 PM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> >
-> > On Wed, 2020-05-06 at 11:50 +0200, Dmitry Vyukov wrote:
-> > > On Wed, May 6, 2020 at 7:22 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
-> > > >
-> > > > We add new KASAN_RCU_STACK_RECORD configuration option. It will move
-> > > > free track from slub meta-data (struct kasan_alloc_meta) into freed object.
-> > > > Because we hope this options doesn't enlarge slub meta-data size.
-> > > >
-> > > > This option doesn't enlarge struct kasan_alloc_meta size.
-> > > > - add two call_rcu() call stack into kasan_alloc_meta, size is 8 bytes.
-> > > > - remove free track from kasan_alloc_meta, size is 8 bytes.
-> > > >
-> > > > This option is only suitable for generic KASAN, because we move free track
-> > > > into the freed object, so free track is valid information only when it
-> > > > exists in quarantine. If the object is in-use state, then the KASAN report
-> > > > doesn't print call_rcu() free track information.
-> > > >
-> > > > [1]https://bugzilla.kernel.org/show_bug.cgi?id=198437
-> > > >
-> > > > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> > > > Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
-> > > > Cc: Dmitry Vyukov <dvyukov@google.com>
-> > > > Cc: Alexander Potapenko <glider@google.com>
-> > > > ---
-> > > >  mm/kasan/common.c | 10 +++++++++-
-> > > >  mm/kasan/report.c | 24 +++++++++++++++++++++---
-> > > >  2 files changed, 30 insertions(+), 4 deletions(-)
-> > > >
-> > > > diff --git a/mm/kasan/common.c b/mm/kasan/common.c
-> > > > index 32d422bdf127..13ec03e225a7 100644
-> > > > --- a/mm/kasan/common.c
-> > > > +++ b/mm/kasan/common.c
-> > > > @@ -321,8 +321,15 @@ void kasan_record_callrcu(void *addr)
-> > > >                 /* record last call_rcu() call stack */
-> > > >                 alloc_info->rcu_free_stack[1] = save_stack(GFP_NOWAIT);
-> > > >  }
-> > > > -#endif
-> > > >
-> > > > +static void kasan_set_free_info(struct kmem_cache *cache,
-> > > > +               void *object, u8 tag)
-> > > > +{
-> > > > +       /* store free track into freed object */
-> > > > +       set_track((struct kasan_track *)(object + BYTES_PER_WORD), GFP_NOWAIT);
-> > > > +}
-> > > > +
-> > > > +#else
-> > > >  static void kasan_set_free_info(struct kmem_cache *cache,
-> > > >                 void *object, u8 tag)
-> > > >  {
-> > > > @@ -339,6 +346,7 @@ static void kasan_set_free_info(struct kmem_cache *cache,
-> > > >
-> > > >         set_track(&alloc_meta->free_track[idx], GFP_NOWAIT);
-> > > >  }
-> > > > +#endif
-> > > >
-> > > >  void kasan_poison_slab(struct page *page)
-> > > >  {
-> > > > diff --git a/mm/kasan/report.c b/mm/kasan/report.c
-> > > > index 7aaccc70b65b..f2b0c6b9dffa 100644
-> > > > --- a/mm/kasan/report.c
-> > > > +++ b/mm/kasan/report.c
-> > > > @@ -175,8 +175,23 @@ static void kasan_print_rcu_free_stack(struct kasan_alloc_meta *alloc_info)
-> > > >         print_track(&free_track, "Last call_rcu() call stack", true);
-> > > >         pr_err("\n");
-> > > >  }
-> > > > -#endif
-> > > >
-> > > > +static struct kasan_track *kasan_get_free_track(struct kmem_cache *cache,
-> > > > +               void *object, u8 tag, const void *addr)
-> > > > +{
-> > > > +       u8 *shadow_addr = (u8 *)kasan_mem_to_shadow(addr);
-> > > > +
-> > > > +       /*
-> > > > +        * Only the freed object can get free track,
-> > > > +        * because free track information is stored to freed object.
-> > > > +        */
-> > > > +       if (*shadow_addr == KASAN_KMALLOC_FREE)
-> > > > +               return (struct kasan_track *)(object + BYTES_PER_WORD);
-> > >
-> > > Humm... the other patch defines BYTES_PER_WORD as 4... I would assume
-> > > seeing 8 (or sizeof(long)) here. Why 4?
-> > It should be a pointer size, maybe sizeof(long) makes more sense.
-> >
-> > > Have you tested all 4 modes (RCU/no-RCU x SLAB/SLUB)? As far as I
-> > > remember one of the allocators stored something in the object.
-> > Good question, I only tested in RCU x SLUB, would you tell mew how do
-> > no-RCU? I will test them in v2 pathset.
-> 
-> I meant with CONFIG_KASAN_RCU_STACK_RECORD=y and with
-> CONFIG_KASAN_RCU_STACK_RECORD not set.
-> But if we drop CONFIG_KASAN_RCU_STACK_RECORD config, then it halves
-> the number of configurations to test ;)
-> 
-Ok, I have be tested by RCU xSLUB and no_RCUxSLUB, It is workable. So I
-only miss this SLAB combination. 
-
-> 
-> > >
-> > > Also, does this work with objects with ctors and slabs destroyed by
-> > > rcu? kasan_track may smash other things in these cases.
-> > > Have you looked at the KASAN implementation when free_track was
-> > > removed? That may have useful details :)
-> > Set free_track before put into quarantine, free_track should not have to
-> > be removed, it only have to overwirte itself.
-> >
-> > >
-> > >
-> > > > +       else
-> > > > +               return NULL;
-> > > > +}
-> > > > +
-> > > > +#else
-> > > >  static struct kasan_track *kasan_get_free_track(struct kmem_cache *cache,
-> > > >                 void *object, u8 tag, const void *addr)
-> > > >  {
-> > > > @@ -196,6 +211,7 @@ static struct kasan_track *kasan_get_free_track(struct kmem_cache *cache,
-> > > >
-> > > >         return &alloc_meta->free_track[i];
-> > > >  }
-> > > > +#endif
-> > > >
-> > > >  static void describe_object(struct kmem_cache *cache, void *object,
-> > > >                                 const void *addr, u8 tag)
-> > > > @@ -208,8 +224,10 @@ static void describe_object(struct kmem_cache *cache, void *object,
-> > > >                 print_track(&alloc_info->alloc_track, "Allocated", false);
-> > > >                 pr_err("\n");
-> > > >                 free_track = kasan_get_free_track(cache, object, tag, addr);
-> > > > -               print_track(free_track, "Freed", false);
-> > > > -               pr_err("\n");
-> > > > +               if (free_track) {
-> > > > +                       print_track(free_track, "Freed", false);
-> > > > +                       pr_err("\n");
-> > > > +               }
-> > > >  #ifdef CONFIG_KASAN_RCU_STACK_RECORD
-> > > >                 kasan_print_rcu_free_stack(alloc_info);
-> > > >  #endif
-> > > > --
-> > > > 2.18.0
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Cgrlj5Hku7bkurrvvJpDaHVuLUt1YW5nIEh1IDxjaHVua3VhbmcuaHVAa2VybmVsLm9yZz4K5Y+R
+6YCB5pel5pyf77yaMjAyMC0wNC0zMCAyMzo1MDozOArmlLbku7bkurrvvJpCZXJuYXJkIDxiZXJu
+YXJkQHZpdm8uY29tPgrmioTpgIHkurrvvJpDaHVuLUt1YW5nIEh1IDxjaHVua3VhbmcuaHVAa2Vy
+bmVsLm9yZz4sUGhpbGlwcCBaYWJlbCA8cC56YWJlbEBwZW5ndXRyb25peC5kZT4sb3BlbnNvdXJj
+ZS5rZXJuZWxAdml2by5jb20sRGF2aWQgQWlybGllIDxhaXJsaWVkQGxpbnV4LmllPixsaW51eC1r
+ZXJuZWwgPGxpbnV4LWtlcm5lbEB2Z2VyLmtlcm5lbC5vcmc+LERSSSBEZXZlbG9wbWVudCA8ZHJp
+LWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZz4sIm1vZGVyYXRlZCBsaXN0OkFSTS9NZWRpYXRl
+ayBTb0Mgc3VwcG9ydCIgPGxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmc+LERhbmll
+bCBWZXR0ZXIgPGRhbmllbEBmZndsbC5jaD4sTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdn
+QGdtYWlsLmNvbT4sTGludXggQVJNIDxsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5v
+cmc+CuS4u+mimO+8mlJlOiBSZTogW1BBVENIXSBkcm0vbWVkaWF0ZWs6IGNsZWFudXAgY29kaW5n
+IHN0eWxlIGluIG1lZGlhdGVrIGEgYml0PkhpLCBCZXJuYXJkOgo+Cj5CZXJuYXJkIDxiZXJuYXJk
+QHZpdm8uY29tPiDmlrwgMjAyMOW5tDTmnIgzMOaXpSDpgLHlm5sg5LiL5Y2IMjozMuWvq+mBk++8
+mgo+Pgo+Pgo+Pgo+PiDlj5Hku7bkurrvvJpDaHVuLUt1YW5nIEh1IDxjaHVua3VhbmcuaHVAa2Vy
+bmVsLm9yZz4KPj4g5Y+R6YCB5pel5pyf77yaMjAyMC0wNC0yOSAyMjoyMjo1MAo+PiDmlLbku7bk
+urrvvJpCZXJuYXJkIFpoYW8gPGJlcm5hcmRAdml2by5jb20+Cj4+IOaKhOmAgeS6uu+8mkNodW4t
+S3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPixQaGlsaXBwIFphYmVsIDxwLnphYmVs
+QHBlbmd1dHJvbml4LmRlPixEYXZpZCBBaXJsaWUgPGFpcmxpZWRAbGludXguaWU+LERhbmllbCBW
+ZXR0ZXIgPGRhbmllbEBmZndsbC5jaD4sTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdt
+YWlsLmNvbT4sRFJJIERldmVsb3BtZW50IDxkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
+PixMaW51eCBBUk0gPGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZz4sIm1vZGVy
+YXRlZCBsaXN0OkFSTS9NZWRpYXRlayBTb0Mgc3VwcG9ydCIgPGxpbnV4LW1lZGlhdGVrQGxpc3Rz
+LmluZnJhZGVhZC5vcmc+LGxpbnV4LWtlcm5lbCA8bGludXgta2VybmVsQHZnZXIua2VybmVsLm9y
+Zz4sb3BlbnNvdXJjZS5rZXJuZWxAdml2by5jb20KPj4g5Li76aKY77yaUmU6IFtQQVRDSF0gZHJt
+L21lZGlhdGVrOiBjbGVhbnVwIGNvZGluZyBzdHlsZSBpbiBtZWRpYXRlayBhIGJpdD5IaSwgQmVy
+bmFyZDoKPj4gPgo+PiA+QmVybmFyZCBaaGFvIDxiZXJuYXJkQHZpdm8uY29tPiDmlrwgMjAyMOW5
+tDTmnIgyN+aXpSDpgLHkuIAg5LiL5Y2IMzo1M+Wvq+mBk++8mgo+PiA+Pgo+PiA+PiBUaGlzIGNv
+ZGUgY2hhbmdlIGlzIHRvIG1ha2UgY29kZSBiaXQgbW9yZSByZWFkYWJsZS4KPj4gPj4gT3B0aW1p
+c2UgYXJyYXkgc2l6ZSBhbGlnbiB0byBIRE1JIG1hY3JvIGRlZmluZS4KPj4gPj4gQWRkIGNoZWNr
+IGlmIGxlbiBpcyBvdmVyYW5nZS4KPj4gPgo+PiA+T25lIHBhdGNoIHNob3VsZCBqdXN0IGRvIG9u
+ZSB0aGluZywgYnV0IHRoaXMgZG8gdGhyZWUgdGhpbmdzLgo+PiA+U28gYnJlYWsgdGhpcyBpbnRv
+IHRocmVlIHBhdGNoZXMuCj4+ID4KPj4gPlJlZ2FyZHMsCj4+ID5DaHVuLUt1YW5nLgo+Pgo+PiBI
+aQo+PiBUaGlzIG9wdGltaXphdGlvbiBpcyBtYWlubHkgdG8gbWFrZSB0aGUgY29kZSBhIGJpdCBy
+ZWFkYWJsZS4KPj4gVGhlc2UgbW9kaWZpY2F0aW9ucyBhcmUgcmVsYXRlZCwgbWFpbiBpbiBzZXZl
+cmFsIHJlbGF0ZWQgZnVuY3Rpb24gY2FsbHMgaW4gdGhlIHNhbWUgZmlsZS4KPj4gSSB3YXMgYSBi
+aXQgY29uZnVzZWQgdGhhdCBpZiBpdCBpcyByZWFsbHkgbmVjZXNzYXJ5IHRvIGNoYW5nZSB0byB0
+aHJlZSBzZXBhcmF0ZSBwYXRjaCBzdWJtaXNzaW9ucz8KPj4KPj4gUmVnYXJkcwo+PiBCZXJuYXJk
+Cj4+Cj4+ID4+Cj4+ID4+IFNpZ25lZC1vZmYtYnk6IEJlcm5hcmQgWmhhbyA8YmVybmFyZEB2aXZv
+LmNvbT4KPj4gPj4gLS0tCj4+ID4+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2hkbWku
+YyB8IDIyICsrKysrKysrKysrLS0tLS0tLS0tLS0KPj4gPj4gIDEgZmlsZSBjaGFuZ2VkLCAxMSBp
+bnNlcnRpb25zKCspLCAxMSBkZWxldGlvbnMoLSkKPj4gPj4KPj4gPj4gZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19oZG1pLmMKPj4gPj4gaW5kZXggZmY0M2EzZDgwNDEwLi40MGZiNTE1NGVkNWQgMTAw
+NjQ0Cj4+ID4+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCj4+ID4+
+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jCj4+ID4+IEBAIC0zMTEs
+MTUgKzMxMSwxNSBAQCBzdGF0aWMgdm9pZCBtdGtfaGRtaV9od19zZW5kX2luZm9fZnJhbWUoc3Ry
+dWN0IG10a19oZG1pICpoZG1pLCB1OCAqYnVmZmVyLAo+PiA+PiAgICAgICAgIHU4IGNoZWNrc3Vt
+Owo+PiA+PiAgICAgICAgIGludCBjdHJsX2ZyYW1lX2VuID0gMDsKPj4gPj4KPj4gPj4gLSAgICAg
+ICBmcmFtZV90eXBlID0gKmJ1ZmZlcjsKPj4gPj4gLSAgICAgICBidWZmZXIgKz0gMTsKPj4gPj4g
+LSAgICAgICBmcmFtZV92ZXIgPSAqYnVmZmVyOwo+PiA+PiAtICAgICAgIGJ1ZmZlciArPSAxOwo+
+PiA+PiAtICAgICAgIGZyYW1lX2xlbiA9ICpidWZmZXI7Cj4+ID4+IC0gICAgICAgYnVmZmVyICs9
+IDE7Cj4+ID4+IC0gICAgICAgY2hlY2tzdW0gPSAqYnVmZmVyOwo+PiA+PiAtICAgICAgIGJ1ZmZl
+ciArPSAxOwo+PiA+PiArICAgICAgIGZyYW1lX3R5cGUgPSAqYnVmZmVyKys7Cj4+ID4+ICsgICAg
+ICAgZnJhbWVfdmVyID0gKmJ1ZmZlcisrOwo+PiA+PiArICAgICAgIGZyYW1lX2xlbiA9ICpidWZm
+ZXIrKzsKPj4gPj4gKyAgICAgICBjaGVja3N1bSA9ICpidWZmZXIrKzsKPgo+VGhpcyBwYXJ0IGxv
+b2tzIGxpa2UgY2xlYW51cCwgc28ga2VlcCBpbiB0aGlzIHBhdGNoLgo+Cj4+ID4+ICAgICAgICAg
+ZnJhbWVfZGF0YSA9IGJ1ZmZlcjsKPj4gPj4gKyAgICAgICBpZiAoKGZyYW1lX2xlbiArIEhETUlf
+SU5GT0ZSQU1FX0hFQURFUl9TSVpFKSA+IGxlbikgewo+PiA+PiArICAgICAgICAgICAgICAgZGV2
+X2VycihoZG1pLT5kZXYsICJXcm9uZyBmcmFtZSBsZW46ICVkXG4iLCBmcmFtZV9sZW47Cj4+ID4+
+ICsgICAgICAgICAgICAgICByZXR1cm47Cj4KPlRoaXMgaXMgZXJyb3IgY2hlY2tpbmcsIG5vdCBj
+bGVhbnVwIHRoZSBjb2Rpbmcgc3R5bGUsIHNvIG1vdmUgdGhpcyB0bwo+YW5vdGhlciBwYXRjaC4K
+Pgo+PiA+PiArICAgICAgIH0KPj4gPj4KPj4gPj4gICAgICAgICBkZXZfZGJnKGhkbWktPmRldiwK
+Pj4gPj4gICAgICAgICAgICAgICAgICJmcmFtZV90eXBlOjB4JXgsZnJhbWVfdmVyOjB4JXgsZnJh
+bWVfbGVuOjB4JXgsY2hlY2tzdW06MHgleFxuIiwKPj4gPj4gQEAgLTk4Miw3ICs5ODIsNyBAQCBz
+dGF0aWMgaW50IG10a19oZG1pX3NldHVwX2F2aV9pbmZvZnJhbWUoc3RydWN0IG10a19oZG1pICpo
+ZG1pLAo+PiA+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc3RydWN0
+IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4+ID4+ICB7Cj4+ID4+ICAgICAgICAgc3RydWN0IGhk
+bWlfYXZpX2luZm9mcmFtZSBmcmFtZTsKPj4gPj4gLSAgICAgICB1OCBidWZmZXJbMTddOwo+PiA+
+PiArICAgICAgIHU4IGJ1ZmZlcltIRE1JX0lORk9GUkFNRV9IRUFERVJfU0laRSArIEhETUlfQVZJ
+X0lORk9GUkFNRV9TSVpFXTsKPgo+VGhpcyBpcyB0byBzeW1ib2xpemUgdGhlIG51bWJlciwgc3lt
+Ym9saXphdGlvbiBpcyBtb3JlIHRoYW4gY2xlYW51cC4KPgo+UmVnYXJkcywKPkNodW4tS3Vhbmcu
+Cj4KCkhpClN1cmUsIEkgZ2V0IHRoZSBwaWN0dXJlLCBpIHdpbGwgcmVzdWJtaXQsIHRoYW5rIHlv
+dSEKClJlZ2FyZHMsCkJlcm5hcmQKCj4+ID4+ICAgICAgICAgc3NpemVfdCBlcnI7Cj4+ID4+Cj4+
+ID4+ICAgICAgICAgZXJyID0gZHJtX2hkbWlfYXZpX2luZm9mcmFtZV9mcm9tX2Rpc3BsYXlfbW9k
+ZSgmZnJhbWUsCj4+ID4+IEBAIC0xMDA4LDcgKzEwMDgsNyBAQCBzdGF0aWMgaW50IG10a19oZG1p
+X3NldHVwX3NwZF9pbmZvZnJhbWUoc3RydWN0IG10a19oZG1pICpoZG1pLAo+PiA+PiAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY29uc3QgY2hhciAqcHJvZHVjdCkKPj4g
+Pj4gIHsKPj4gPj4gICAgICAgICBzdHJ1Y3QgaGRtaV9zcGRfaW5mb2ZyYW1lIGZyYW1lOwo+PiA+
+PiAtICAgICAgIHU4IGJ1ZmZlclsyOV07Cj4+ID4+ICsgICAgICAgdTggYnVmZmVyW0hETUlfSU5G
+T0ZSQU1FX0hFQURFUl9TSVpFICsgSERNSV9TUERfSU5GT0ZSQU1FX1NJWkVdOwo+PiA+PiAgICAg
+ICAgIHNzaXplX3QgZXJyOwo+PiA+Pgo+PiA+PiAgICAgICAgIGVyciA9IGhkbWlfc3BkX2luZm9m
+cmFtZV9pbml0KCZmcmFtZSwgdmVuZG9yLCBwcm9kdWN0KTsKPj4gPj4gQEAgLTEwMzEsNyArMTAz
+MSw3IEBAIHN0YXRpYyBpbnQgbXRrX2hkbWlfc2V0dXBfc3BkX2luZm9mcmFtZShzdHJ1Y3QgbXRr
+X2hkbWkgKmhkbWksCj4+ID4+ICBzdGF0aWMgaW50IG10a19oZG1pX3NldHVwX2F1ZGlvX2luZm9m
+cmFtZShzdHJ1Y3QgbXRrX2hkbWkgKmhkbWkpCj4+ID4+ICB7Cj4+ID4+ICAgICAgICAgc3RydWN0
+IGhkbWlfYXVkaW9faW5mb2ZyYW1lIGZyYW1lOwo+PiA+PiAtICAgICAgIHU4IGJ1ZmZlclsxNF07
+Cj4+ID4+ICsgICAgICAgdTggYnVmZmVyW0hETUlfSU5GT0ZSQU1FX0hFQURFUl9TSVpFICsgSERN
+SV9BVURJT19JTkZPRlJBTUVfU0laRV07Cj4+ID4+ICAgICAgICAgc3NpemVfdCBlcnI7Cj4+ID4+
+Cj4+ID4+ICAgICAgICAgZXJyID0gaGRtaV9hdWRpb19pbmZvZnJhbWVfaW5pdCgmZnJhbWUpOwo+
+PiA+PiAtLQo+PiA+PiAyLjI2LjIKPj4gPj4KPj4gPj4KPj4gPj4gX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPj4gPj4gTGludXgtbWVkaWF0ZWsgbWFpbGlu
+ZyBsaXN0Cj4+ID4+IExpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKPj4gPj4gaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo+
+Pgo+Pgo+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+
+PiBMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKPj4gTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5m
+cmFkZWFkLm9yZwo+PiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LW1lZGlhdGVrCg0KDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LW1lZGlhdGVrCg==
