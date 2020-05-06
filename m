@@ -2,82 +2,85 @@ Return-Path: <SRS0=yMRY=6U=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 407B9C28CBC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2020 05:50:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BA4FC47256
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2020 05:50:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 03036206F9
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2020 05:50:30 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 68076206F9
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2020 05:50:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jD9CsCLM";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="kAUBHaIn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 03036206F9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QRN28xJY";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="kRWBWqQa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 68076206F9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gBlnONFR+W08IiyZPMS8IAINiS6g3vI3iWmgQ2KSU9k=; b=jD9CsCLMedXU42
-	WGkw+5Pq/eFd4PDHZAU/T6YdtJvzWXZhO10zaYw1wL1qvgovgjUVKSU+E4w+2vR7fIxYthwl3291D
-	WtgeT9B5CTgKNcOaNQUHo0PAQiiwrBQTd1kO1ixot9Ursib1SZ7Pbz6VCo+q/0SX0aJnBJ89qlvCt
-	P8Ds9tqy0GbXQGg0s3+r17Dy9nqjS1G9QbuCIHMEvh6CHF1p+pw6rwKEJ3ntZ+hiprDNFmuiAyAAz
-	h+dk6gpzN6hfoHUakyRjsobZ/HqoccpFqT7/SKDVEm5yco9pwcWelcP21rMzmLA/zcSM+IMkKgWjO
-	bc/0n94jYqvjYBGfDzGQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fQ8igfBmHgTSDvIy9d/69Cg2hVBNbjmH3gZAF/TWoDc=; b=QRN28xJYB4e3Go
+	o0G4Pt6gB1+FiAbcPnzoQiIkDbnETxHC5gEc6nE7lQ+vHcUS3vGi4QuGNk8a8fk5CYdbA4jdPuJwz
+	H0iuDAKSlnZdvLxmIAWdnD1IV23ANCiuNIBWSvzMu2eeHfBNUMNeF1I6/co3s+f8ZYLuxOHrv2ll4
+	/Z9krTFNLwwHkr7YDaJMSG1cGvrF9wnp+UdkD/3yMVDMxsLW1ijy8iiZ8+TOP3lPsVd4bf6aFZz24
+	wyV6GPzHecvWawtZpKCj/mHjbcTL8+xOSzDP3pg5f4lQi8LvxXAdA1uFPqopBtagmNxWLzrusdz4k
+	zMfLmyfsAvIoYyPQLKgg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWCwl-00076B-5f; Wed, 06 May 2020 05:50:19 +0000
+	id 1jWCwp-0007CY-Vd; Wed, 06 May 2020 05:50:24 +0000
 Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWCwS-0004XU-ON
- for linux-mediatek@lists.infradead.org; Wed, 06 May 2020 05:50:02 +0000
-Received: by mail-pg1-x542.google.com with SMTP id q124so292269pgq.13
- for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2020 22:50:00 -0700 (PDT)
+ id 1jWCwg-0006fd-9y
+ for linux-mediatek@lists.infradead.org; Wed, 06 May 2020 05:50:16 +0000
+Received: by mail-pg1-x542.google.com with SMTP id r4so622641pgg.4
+ for <linux-mediatek@lists.infradead.org>; Tue, 05 May 2020 22:50:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=yzL6cUEC8Sb9M0V1vJgMsz/nqVpMVfxLp+rf/lwsZKU=;
- b=kAUBHaIn2XglY81EN0TH5ycwufqdQH9VevoTUibsMR40E5b2pIhc6cR9QKtdpRt36a
- Tbc7Iftyur5i+FyD7I2vkmk3ZmM0uWNr41YIGEsZ70mj/JHi7UC1LnPWsJL8DGq9kez4
- vswVXvyYNPJBwPManb3stNUHuwpIIufgTSweQ=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=ldWprC6/gJRy30f4qI0sd87+jEX+5JVD2qRmLKUKSuY=;
+ b=kRWBWqQa6ecU6mj/tDkQ5CyX0eu1M74l2wFd/sa8roAbVsA16hSvJ0poORwNmLvTWq
+ uUnZcYIowQQ867FiKUZFFwcagHQ8pwFgab6F8bfGIY0UHVI/XB5+RtdjqE+5r7ujhQYu
+ t/DgPgoT6wGvpRRdCG/kerbjz/d5Ojyd45T24=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=yzL6cUEC8Sb9M0V1vJgMsz/nqVpMVfxLp+rf/lwsZKU=;
- b=dPt/5RmZe8CbXa/A1+BXyPBncEX4TLPm7Ag6l/6KyCD26w6vV8gNoZ5Wqced+eZT7d
- CsYVB8RQZPv0gjSwTzTTKOg2FC3OaJVjUolxSP0kmWZYZh0vatd2ZHvvyxm2hyxW/9PI
- 7ghNaAre0iEc1oe8E1m/dd/Am6TX2NWWzwnAaIMKS6xwMw9Y7GrkX1sQHdSrtTDYcwDq
- exYa/FvOoXvLE86/Qe4dTThPNz6DRLQlX/pi94uEpcWDy6tpWare7uWpbVxrpag5osqx
- 4BlFxzhBO0AxXdP1Z6hKHDB+YEyFjzoQ5BJJ0L7YMf8hw6U4kvcSfzzCC7LCzIWbFUzz
- 6rVA==
-X-Gm-Message-State: AGi0PuaFaZuPZT4zbCmXog5ZclcX/cOpwmuFNAHHr1XqVcB72GnVOPi/
- kOY/jBJhe890RJgnTC47ADBm6Q==
-X-Google-Smtp-Source: APiQypL44xNcKeY9JS5dfmN3iPs0MNug++UkszcoF+ZJvAg0ou5lbnqsDADn1qqg9HVVdPkFsqBSJA==
-X-Received: by 2002:aa7:9589:: with SMTP id z9mr6512255pfj.247.1588744199913; 
- Tue, 05 May 2020 22:49:59 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=ldWprC6/gJRy30f4qI0sd87+jEX+5JVD2qRmLKUKSuY=;
+ b=LNncY/LWGTavDxmvKaRo+xwy5hoXpFZR/boNG6lcA6DnbPa/mmiFVe7VUGAz3WZbOy
+ 2MDkrlM9A/pn9Rwe0mRH1TvG67Ecv3OS8NelTo3Jwh/20LkOd9To/D1kgrTQTVZz83WD
+ E8cGdyKZXdX52qoF/n9jNiem0WiF/kFHzo7I0ZBQOHlxihEo/A68YQJYolg2VcM/ICYv
+ 4VbvFma/jxqh36XX70/pPfdboDFHU2pz7QALBX1FG+IpcTI7uIYKGfAcLiKz5wCiAaMe
+ jwXGK/p+DXwJpFAnHhIVbOYx1lmZmAbj1gffFg1sb/tAM0SyNbYmulTeaHyymY6S5TpF
+ p9uQ==
+X-Gm-Message-State: AGi0PuYLs8QftjiVQzqc5UHdYRkb3iu5HIYCE6L6+/9fNr6Wp1NEYq0/
+ 4IOyfUZEQUZ5ynPZs1u33NQOtg==
+X-Google-Smtp-Source: APiQypLBf6Z7OsDBx417Ig2iNo0B8it48czxeprZK9XxePTpiPqDkOB4YpcOD4sdhh224rDHgW0Hsg==
+X-Received: by 2002:aa7:9a43:: with SMTP id x3mr6662861pfj.266.1588744213491; 
+ Tue, 05 May 2020 22:50:13 -0700 (PDT)
 Received: from localhost ([2401:fa00:9:14:a92f:c47d:76a8:b09e])
- by smtp.gmail.com with ESMTPSA id t5sm729738pgp.80.2020.05.05.22.49.55
+ by smtp.gmail.com with ESMTPSA id z13sm3734853pjz.42.2020.05.05.22.50.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 05 May 2020 22:49:59 -0700 (PDT)
+ Tue, 05 May 2020 22:50:13 -0700 (PDT)
 From: Eizan Miyamoto <eizan@chromium.org>
 To: LKML <linux-kernel@vger.kernel.org>
-Subject: [PATCH v2 0/5] MTK MDP driver cleanups to prep for futher work
-Date: Wed,  6 May 2020 15:49:15 +1000
-Message-Id: <20200506054920.109738-1-eizan@chromium.org>
+Subject: [PATCH v2 1/5] [media] mtk-mdp: remove mtk_mdp_comp.regs from
+ mtk_mdp_comp.h
+Date: Wed,  6 May 2020 15:49:16 +1000
+Message-Id: <20200506154832.v2.1.I0d52fd84fe481e254a10960b060f32c47ce0d202@changeid>
 X-Mailer: git-send-email 2.26.2.526.g744177e7f7-goog
+In-Reply-To: <20200506054920.109738-1-eizan@chromium.org>
+References: <20200506054920.109738-1-eizan@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200505_225000_812896_AE0C15B4 
-X-CRM114-Status: UNSURE (   8.24  )
+X-CRM114-CacheID: sfid-20200505_225014_389230_02D45B7F 
+X-CRM114-Status: UNSURE (   8.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -93,43 +96,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
  Houlong Wei <houlong.wei@mediatek.com>, Eizan Miyamoto <eizan@chromium.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Enric Balletbo I Serra <enric.balletbo@collabora.com>,
+ linux-mediatek@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+These fields are not used and can be removed.
 
-It most notably converts an array of MDP components to a list instead,
-but also removes some unused fields.
+Signed-off-by: eizan@chromium.org
+Reviewed-by: Enric Balletbo I Serra <enric.balletbo@collabora.com>
+Signed-off-by: Eizan Miyamoto <eizan@chromium.org>
+---
 
-This series of patches does some cleanup in preparation for futher work
-so that hardware video decode works on 4.19 and later kernels. We are
-planning on adding a dummy driver for the relevant MDP components that
-will be bound together using the component framework, which will enable
-calls to set up IOMMUs and LARBs, and make calls into pm_runtime.
+Changes in v1: None
 
-Changes in v2:
-- remove unnecessary error handling labels in favor of err_m2m_register
-- rebase onto linux-next/master to pick up
-  757570f11fa4b0ce5472a6583de6f06e996a8527
+ drivers/media/platform/mtk-mdp/mtk_mdp_comp.c | 1 -
+ drivers/media/platform/mtk-mdp/mtk_mdp_comp.h | 2 --
+ 2 files changed, 3 deletions(-)
 
-Eizan Miyamoto (5):
-  [media] mtk-mdp: remove mtk_mdp_comp.regs from mtk_mdp_comp.h
-  [media] mtk-mdp: handle vb2_dma_contig_set_max_seg_size errors during
-    probe
-  [media] mtk-mdp: handle vpu_wdt_reg_handler() errors during probe
-  [media] mtk-mdp: convert mtk_mdp_dev.comp array to list
-  [media] mtk-mdp: Remove mtk_mdp_comp.id and supporting functionality
-
- drivers/media/platform/mtk-mdp/mtk_mdp_comp.c | 60 ++--------------
- drivers/media/platform/mtk-mdp/mtk_mdp_comp.h | 23 ++----
- drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 70 ++++++++++++-------
- drivers/media/platform/mtk-mdp/mtk_mdp_core.h | 10 ++-
- 4 files changed, 64 insertions(+), 99 deletions(-)
-
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
+index 58abfbdfb82d..c76cd61fb178 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
+@@ -106,7 +106,6 @@ int mtk_mdp_comp_init(struct device *dev, struct device_node *node,
+ 	comp->dev_node = of_node_get(node);
+ 	comp->id = comp_id;
+ 	comp->type = mtk_mdp_matches[comp_id].type;
+-	comp->regs = of_iomap(node, 0);
+ 
+ 	for (i = 0; i < ARRAY_SIZE(comp->clk); i++) {
+ 		comp->clk[i] = of_clk_get(node, i);
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
+index 998a4b953025..3b83bd6e0d8b 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
+@@ -38,7 +38,6 @@ enum mtk_mdp_comp_id {
+  * struct mtk_mdp_comp - the MDP's function component data
+  * @dev_node:	component device node
+  * @clk:	clocks required for component
+- * @regs:	Mapped address of component registers.
+  * @larb_dev:	SMI device required for component
+  * @type:	component type
+  * @id:		component ID
+@@ -46,7 +45,6 @@ enum mtk_mdp_comp_id {
+ struct mtk_mdp_comp {
+ 	struct device_node	*dev_node;
+ 	struct clk		*clk[2];
+-	void __iomem		*regs;
+ 	struct device		*larb_dev;
+ 	enum mtk_mdp_comp_type	type;
+ 	enum mtk_mdp_comp_id	id;
 -- 
 2.26.2.526.g744177e7f7-goog
 
