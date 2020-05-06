@@ -2,63 +2,63 @@ Return-Path: <SRS0=yMRY=6U=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 29439C28CBC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2020 21:04:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B7029C47257
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2020 23:32:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EF10F206B8
-	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2020 21:04:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 84775207DD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  6 May 2020 23:32:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NOQpcDeE"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF10F206B8
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=davemloft.net
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dz/Vgf2B"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 84775207DD
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baikalelectronics.ru
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
-	From:Subject:To:Message-Id:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R14d0e/HQpc8OHvvB7hpKq0b4ryXMo3diyRQLcbAJUs=; b=NOQpcDeEIzJKb5
-	81sbNocNHcFBcGKq7m2A0+1Q2HGKNFsb62vuHund9p+lgSr6JyS6DgsHslBdl92pNrqXvyeSGJarT
-	NcUtexUCpW1brkEoamr9WpWtmhXwkOMQaOcbEeVwh/9vFgaNLMDlQgrhrwO0kqbOaESvtorqGXXsm
-	aLQGSMGLz3LpU2Dul+HBbH17VsipChlgJf6svbpgLaJt1WItigWCsI8fU4MzazGfpSRjLbGM62FFH
-	HxBqKUpu7/YbmyrT6yTE1VjaRyojOmKCdv5OsIi/pMqolvri8WA6kY35kN9zzF1RNKZDFNJC27tOi
-	dZFXA4zE1qWYrLKo6ZEA==;
+	List-Owner; bh=z9Tm6t4nG9Fkmbpxfxv6BaFZ7GZ/TOb5kTzr1FZ92OI=; b=dz/Vgf2B1k5v3/
+	1SWkPSGjEb6jjr+sPkW5pVYQ6m5IH1AI8EJJ+jDW6KDhbVMZwMAAF425COQRyaV7LMTxlpXsJYi78
+	U74vjyAFz/DSfCTUrua3TtGtHVV+uhPjaNntsMRPAsOHApQZi8i5Iowgk0g5akpCozrDUmnDnCZ47
+	au/5EdAaTpBrXfXMOG7gjGQEMInwrGGP2TUpJdOo2TzzvLoo/DWKdY7PO2eTUk6xFiQthRYubkIO3
+	zynXFRixo3WU+6WL6TEZ+vA6uewXGUmpDJBay6jJfAY15AtrWLf79eCl3VK3P7tbmImv1ZjpiatBB
+	ZibuxL7Yx1aShLFJcclw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWRCs-0005f9-Df; Wed, 06 May 2020 21:03:54 +0000
-Received: from shards.monkeyblade.net ([2620:137:e000::1:9])
- by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWRCi-0005Ws-MN; Wed, 06 May 2020 21:03:45 +0000
-Received: from localhost (unknown [IPv6:2601:601:9f00:477::d71])
- (using TLSv1 with cipher AES256-SHA (256/256 bits))
- (Client did not present a certificate)
- (Authenticated sender: davem-davemloft)
- by shards.monkeyblade.net (Postfix) with ESMTPSA id 1EFDD121135B6;
- Wed,  6 May 2020 14:03:36 -0700 (PDT)
-Date: Wed, 06 May 2020 14:03:35 -0700 (PDT)
-Message-Id: <20200506.140335.840764188389232904.davem@davemloft.net>
-To: zou_wei@huawei.com
-Subject: Re: [PATCH -next] net: ethernet: mediatek: Make mtk_m32 static
-From: David Miller <davem@davemloft.net>
-In-Reply-To: <1588746450-35911-1-git-send-email-zou_wei@huawei.com>
-References: <1588746450-35911-1-git-send-email-zou_wei@huawei.com>
-X-Mailer: Mew version 6.8 on Emacs 26.3
-Mime-Version: 1.0
-X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.5.12
- (shards.monkeyblade.net [149.20.54.216]);
- Wed, 06 May 2020 14:03:36 -0700 (PDT)
+	id 1jWTWY-0002Zo-Ig; Wed, 06 May 2020 23:32:22 +0000
+Received: from ns2.baikalelectronics.com ([94.125.187.42]
+ helo=mail.baikalelectronics.ru)
+ by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jWTW7-00025B-CB; Wed, 06 May 2020 23:31:57 +0000
+Received: from localhost (unknown [127.0.0.1])
+ by mail.baikalelectronics.ru (Postfix) with ESMTP id 2DBD4803087B;
+ Wed,  6 May 2020 23:31:53 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at baikalelectronics.ru
+Received: from mail.baikalelectronics.ru ([127.0.0.1])
+ by localhost (mail.baikalelectronics.ru [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wQ_eRoPPIA7H; Thu,  7 May 2020 02:31:52 +0300 (MSK)
+From: Serge Semin <Sergey.Semin@baikalelectronics.ru>
+To: Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Jiri Slaby <jslaby@suse.com>
+Subject: [PATCH v3 2/4] serial: 8250: Add 8250 port clock update method
+Date: Thu, 7 May 2020 02:31:33 +0300
+Message-ID: <20200506233136.11842-3-Sergey.Semin@baikalelectronics.ru>
+In-Reply-To: <20200506233136.11842-1-Sergey.Semin@baikalelectronics.ru>
+References: <20200323024611.16039-1-Sergey.Semin@baikalelectronics.ru>
+ <20200506233136.11842-1-Sergey.Semin@baikalelectronics.ru>
+MIME-Version: 1.0
+X-ClientProxiedBy: MAIL.baikal.int (192.168.51.25) To mail (192.168.51.25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200506_140344_732053_0BA93CFB 
-X-CRM114-Status: UNSURE (   5.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200506_163155_767469_1724E887 
+X-CRM114-Status: GOOD (  13.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,27 +70,127 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: nbd@openwrt.org, netdev@vger.kernel.org, sean.wang@mediatek.com,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- john@phrozen.org, matthias.bgg@gmail.com, Mark-MC.Lee@mediatek.com,
- linux-arm-kernel@lists.infradead.org
+Cc: Vignesh Raghavendra <vigneshr@ti.com>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Dmitry Safonov <0x7f454c46@gmail.com>,
+ Yegor Yefremov <yegorslists@googlemail.com>,
+ Serge Semin <fancer.lancer@gmail.com>, Stefan Roese <sr@denx.de>,
+ Will Deacon <will@kernel.org>, Paul Burton <paulburton@kernel.org>,
+ Russell King <linux@armlinux.org.uk>, Long Cheng <long.cheng@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-serial@vger.kernel.org,
+ Arnd Bergmann <arnd@arndb.de>, Maxime Ripard <mripard@kernel.org>,
+ Alexey Malahov <Alexey.Malahov@baikalelectronics.ru>,
+ linux-mediatek@lists.infradead.org, Thomas Gleixner <tglx@linutronix.de>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Mika Westerberg <mika.westerberg@linux.intel.com>,
+ Allison Randal <allison@lohutok.net>, linux-mips@vger.kernel.org,
+ Ralf Baechle <ralf@linux-mips.org>, linux-kernel@vger.kernel.org,
+ Serge Semin <Sergey.Semin@baikalelectronics.ru>,
+ Lukas Wunner <lukas@wunner.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Samuel Zou <zou_wei@huawei.com>
-Date: Wed, 6 May 2020 14:27:30 +0800
+Some platforms can be designed in a way so the UART port reference clock
+might be asynchronously changed at some point. In Baikal-T1 SoC this may
+happen due to the reference clock being shared between two UART ports, on
+the Allwinner SoC the reference clock is derived from the CPU clock, so
+any CPU frequency change should get to be known/reflected by/in the UART
+controller as well. But it's not enough to just update the
+uart_port->uartclk field of the corresponding UART port, the 8250
+controller reference clock divisor should be altered so to preserve
+current baud rate setting. All of these things is done in a coherent
+way by calling the serial8250_update_uartclk() method provided in this
+patch. Though note that it isn't supposed to be called from within the
+UART port callbacks because the locks using to the protect the UART port
+data are already taken in there.
 
-> Fix the following sparse warning:
-> 
-> drivers/net/ethernet/mediatek/mtk_eth_soc.c:68:5: warning:
-> symbol 'mtk_m32' was not declared. Should it be static?
-> 
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: Samuel Zou <zou_wei@huawei.com>
+Signed-off-by: Serge Semin <Sergey.Semin@baikalelectronics.ru>
+Cc: Alexey Malahov <Alexey.Malahov@baikalelectronics.ru>
+Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
+Cc: Paul Burton <paulburton@kernel.org>
+Cc: Ralf Baechle <ralf@linux-mips.org>
+Cc: Arnd Bergmann <arnd@arndb.de>
+Cc: Long Cheng <long.cheng@mediatek.com>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Maxime Ripard <mripard@kernel.org>
+Cc: Catalin Marinas <catalin.marinas@arm.com>
+Cc: Will Deacon <will@kernel.org>
+Cc: Russell King <linux@armlinux.org.uk>
+Cc: linux-mips@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+---
+ drivers/tty/serial/8250/8250_port.c | 38 +++++++++++++++++++++++++++++
+ include/linux/serial_8250.h         |  2 ++
+ 2 files changed, 40 insertions(+)
 
-Applied, thanks.
+diff --git a/drivers/tty/serial/8250/8250_port.c b/drivers/tty/serial/8250/8250_port.c
+index 4d83c85a7389..484ff9df1432 100644
+--- a/drivers/tty/serial/8250/8250_port.c
++++ b/drivers/tty/serial/8250/8250_port.c
+@@ -2628,6 +2628,44 @@ static unsigned int serial8250_get_baud_rate(struct uart_port *port,
+ 				  (port->uartclk + tolerance) / 16);
+ }
+ 
++/*
++ * Note in order to avoid the tty port mutex deadlock don't use the next method
++ * within the uart port callbacks. Primarily it's supposed to be utilized to
++ * handle a sudden reference clock rate change.
++ */
++void serial8250_update_uartclk(struct uart_port *port, unsigned int uartclk)
++{
++	struct uart_8250_port *up = up_to_u8250p(port);
++	unsigned int baud, quot, frac = 0;
++	struct ktermios *termios;
++	unsigned long flags;
++
++	mutex_lock(&port->state->port.mutex);
++
++	if (port->uartclk == uartclk)
++		goto out_lock;
++
++	port->uartclk = uartclk;
++	termios = &port->state->port.tty->termios;
++
++	baud = serial8250_get_baud_rate(port, termios, NULL);
++	quot = serial8250_get_divisor(port, baud, &frac);
++
++	spin_lock_irqsave(&port->lock, flags);
++
++	uart_update_timeout(port, termios->c_cflag, baud);
++
++	serial8250_set_divisor(port, baud, quot, frac);
++	serial_port_out(port, UART_LCR, up->lcr);
++	serial8250_out_MCR(up, UART_MCR_DTR | UART_MCR_RTS);
++
++	spin_unlock_irqrestore(&port->lock, flags);
++
++out_lock:
++	mutex_unlock(&port->state->port.mutex);
++}
++EXPORT_SYMBOL(serial8250_update_uartclk);
++
+ void
+ serial8250_do_set_termios(struct uart_port *port, struct ktermios *termios,
+ 			  struct ktermios *old)
+diff --git a/include/linux/serial_8250.h b/include/linux/serial_8250.h
+index 6545f8cfc8fa..2b70f736b091 100644
+--- a/include/linux/serial_8250.h
++++ b/include/linux/serial_8250.h
+@@ -155,6 +155,8 @@ extern int early_serial_setup(struct uart_port *port);
+ 
+ extern int early_serial8250_setup(struct earlycon_device *device,
+ 					 const char *options);
++extern void serial8250_update_uartclk(struct uart_port *port,
++				      unsigned int uartclk);
+ extern void serial8250_do_set_termios(struct uart_port *port,
+ 		struct ktermios *termios, struct ktermios *old);
+ extern void serial8250_do_set_ldisc(struct uart_port *port,
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
