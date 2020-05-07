@@ -2,97 +2,74 @@ Return-Path: <SRS0=F/ID=6V=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-13.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2F4ABC38A2A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 13:51:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EA7EBC4724C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 14:00:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E9C612073A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 13:51:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A3942205C9
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 14:00:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kRsfCdEe";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="fFeXVj6T"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9C612073A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="scUc/w1b"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A3942205C9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MM0eVmeEFkhqqS6JY9GLKZK1seRCzcNXAdaVtU4q8Pw=; b=kRsfCdEeQjhlIH
-	jJyCnHzSpzGejRH+OpbGZxRG4aeuDR6ryj7UJ9bzcL7NpqQW8A22+UDfjD8bq8T4jPRP2I8u+daRd
-	GHdeHnIvKlW4b72nP5AOLMTs6g3zSwU6vRWeshfd0/awhVJJVtr6KijHRo3D26ZCUNcgBa8/z0tvl
-	R1W38YTzSIXEfuLpqDspL+6OS6Pv3EE06kigGr72b9O/Zy38jAKIm7nEFVXMXddalUzXFOiysPJj8
-	t4bNeuHje9pp3blYnNYK7hATEFLClzGYvl6+AmrPwZD/mib/MjAZBVySpXDfkxjOusTqF1VRrG2sM
-	ye/w2mOiGOTw9ezfWXSA==;
+	List-Owner; bh=wWMrpvpAjxH3G6pjRBVUPUdo72UAF6OBPwBhnpLBwWs=; b=scUc/w1bHTZyVs
+	DKLZzItLAFhm+Prz42MMS0J1ZHotSp0lZQjGORXZB20PROs21dWwqSBJW9dDybRWh7Fjr4SihS+Wo
+	AW1tv1nkt17/n/X6286TNeG+x1XKds2OIJi24kyKtn0nTOLQ5HM7rOj8DlkP60pMsHk7XzdaafKGC
+	MWjY1cZSVVKnz14kjad1M6QUD63N0gDNHAx2sTY8OSpqwJR0O9cBrhIYW2e+Pxk0SJ1I0ZSCKwzYz
+	BAI9OGj7YE+XPCEaAxm+bPqZxnLBY8kIZFZR6VQh3ialMtTcn+eY/NDKr2hRWG+ndXK9xY8rt6B9M
+	aO9MI9QVAZ+xi7yGyHZg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWgvY-0006rH-Ur; Thu, 07 May 2020 13:51:04 +0000
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641])
+	id 1jWh4X-00058Z-Du; Thu, 07 May 2020 14:00:21 +0000
+Received: from mga09.intel.com ([134.134.136.24])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWgvP-0006iV-MA
- for linux-mediatek@lists.infradead.org; Thu, 07 May 2020 13:50:57 +0000
-Received: by mail-ej1-x641.google.com with SMTP id s3so4611490eji.6
- for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2020 06:50:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=TW9WsBOdli761TaDE56+H/z6K3hRAe6UVln2voBA/lw=;
- b=fFeXVj6TfW2eQOHbOgnx+s4LDQqoGobFKi0n8Oo8wV6qnlnJRftFwmiIlkEX+TD9oa
- HAa46eHh6vzXk+dPq6Q99XwTrlHvHYMtmRBQZlSAwNxPiFLVMB2r/UX07DsCVGE+LpfV
- ZDwGApTc4eyCzayupDH150mXfW1NWA2OCSKOA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=TW9WsBOdli761TaDE56+H/z6K3hRAe6UVln2voBA/lw=;
- b=LflB7PDC4ZgvkegkAEL5+jaW2zkicJVEu5Ng7HQEYLRd189MJoT5fi4xGT/fyHdX8d
- WMcoZEkB4NYctmhnCZna1Jzq9PKUzwu1GQrrlJBfs1bFdDOs24r9f4FmVjTaUyPpB34c
- JvL4hTQj/BHMrZSMrFTJRSy4NaabyqkbjwDgECG2xLo3SZWhyynrq/oiUGMONB1Wgo9U
- K/nV539VPCTXniIgcvouvb11VRrq+/Bo8tD9G1EmAtPO3TSspRcDIPYhp7hvvN3vozym
- k+IeGwfENnIiDVTkwUEt333k+8dSjtbU8t6z8pvV07pPHTbuZJIxF/syagb6ED6bLU8o
- 1zjg==
-X-Gm-Message-State: AGi0PuZ6piRVIOgjjumtJ5JXTopUcIo/LIlBOGT+WqPXSJGvV73JusYr
- UZ5y+76nwjVowmldBrYqvDJUG5DsML40TQ==
-X-Google-Smtp-Source: APiQypJahFDcwM1w8B0dsM12gWegynWM/dYWOTkRmGaezS6FqIavR7NynLYswfNom4pYADbVlgvAfQ==
-X-Received: by 2002:a17:906:3e52:: with SMTP id
- t18mr11784617eji.204.1588859453128; 
- Thu, 07 May 2020 06:50:53 -0700 (PDT)
-Received: from mail-wr1-f45.google.com (mail-wr1-f45.google.com.
- [209.85.221.45])
- by smtp.gmail.com with ESMTPSA id r9sm584748edq.87.2020.05.07.06.50.51
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 May 2020 06:50:52 -0700 (PDT)
-Received: by mail-wr1-f45.google.com with SMTP id e16so6491465wra.7
- for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2020 06:50:51 -0700 (PDT)
-X-Received: by 2002:a5d:4ccd:: with SMTP id c13mr7348965wrt.415.1588859451032; 
- Thu, 07 May 2020 06:50:51 -0700 (PDT)
+ id 1jWh4K-0003di-ID; Thu, 07 May 2020 14:00:10 +0000
+IronPort-SDR: 8JKQLFB6bG2j4oF/q6s6wFlXq2eN0pbkxgXA/hdK7VtMTHIF7XPKdY/TakiURWml9DhOMQAAuG
+ QcZJtWlhIWWQ==
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 May 2020 07:00:06 -0700
+IronPort-SDR: nHg03Jtzxqxpk53+oPQicTxzPUA5TyRzpGZkoZRsE6KoOchQu219sne80JrX9id5bvkMNu5N7k
+ jD6REUlx7y3Q==
+X-IronPort-AV: E=Sophos;i="5.73,363,1583222400"; d="scan'208";a="251520648"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+ by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 May 2020 07:00:02 -0700
+Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
+ id 2A3C820752; Thu,  7 May 2020 17:00:00 +0300 (EEST)
+Date: Thu, 7 May 2020 17:00:00 +0300
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [V5, 2/2] media: i2c: dw9768: Add DW9768 VCM driver
+Message-ID: <20200507135959.GD9190@paasikivi.fi.intel.com>
+References: <20200502161727.30463-1-dongchun.zhu@mediatek.com>
+ <20200502161727.30463-3-dongchun.zhu@mediatek.com>
+ <20200506151352.GZ9190@paasikivi.fi.intel.com>
+ <1588855524.8804.168.camel@mhfsdcap03>
+ <20200507131220.GC9190@paasikivi.fi.intel.com>
+ <CAAFQd5DO9FGx9OF2RpcSprg0oLiVuS90w2qLAHCOSc3w6tKUWw@mail.gmail.com>
 MIME-Version: 1.0
-References: <20200430080924.1140-1-dongchun.zhu@mediatek.com>
- <20200430080924.1140-2-dongchun.zhu@mediatek.com>
- <20200505070451.GS9190@paasikivi.fi.intel.com>
- <1588688238.8804.150.camel@mhfsdcap03>
- <20200506112136.GV9190@paasikivi.fi.intel.com>
- <1588856325.8804.179.camel@mhfsdcap03>
-In-Reply-To: <1588856325.8804.179.camel@mhfsdcap03>
-From: Tomasz Figa <tfiga@chromium.org>
-Date: Thu, 7 May 2020 15:50:40 +0200
-X-Gmail-Original-Message-ID: <CAAFQd5CXRD_j7Xkxb4=9kkd+pDy4W5pirAPSG8RsMVH6L-MU2w@mail.gmail.com>
-Message-ID: <CAAFQd5CXRD_j7Xkxb4=9kkd+pDy4W5pirAPSG8RsMVH6L-MU2w@mail.gmail.com>
-Subject: Re: [V7,
- 1/2] media: dt-bindings: media: i2c: Document OV02A10 bindings
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>
+Content-Disposition: inline
+In-Reply-To: <CAAFQd5DO9FGx9OF2RpcSprg0oLiVuS90w2qLAHCOSc3w6tKUWw@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200507_065055_727637_CD39044B 
-X-CRM114-Status: GOOD (  32.12  )
+X-CRM114-CacheID: sfid-20200507_070008_681882_11AC8D4D 
+X-CRM114-Status: GOOD (  36.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,12 +87,12 @@ Cc: Mark Rutland <mark.rutland@arm.com>,
  srv_heupstream <srv_heupstream@mediatek.com>,
  linux-devicetree <devicetree@vger.kernel.org>,
  Linus Walleij <linus.walleij@linaro.org>,
- =?UTF-8?B?U2hlbmduYW4gV2FuZyAo546L5Zyj55S3KQ==?= <shengnan.wang@mediatek.com>,
+ Shengnan Wang =?utf-8?B?KOeOi+Wco+eUtyk=?= <shengnan.wang@mediatek.com>,
  Bartosz Golaszewski <bgolaszewski@baylibre.com>,
  Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Louis Kuo <louis.kuo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Cao Bing Bu <bingbu.cao@intel.com>, matrix.zhu@aliyun.com,
+ Dongchun Zhu <dongchun.zhu@mediatek.com>, Louis Kuo <louis.kuo@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
  Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
@@ -125,257 +102,219 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sakari and Dongchun,
+Hi Tomasz,
 
-On Thu, May 7, 2020 at 3:00 PM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
->
-> Hi Sakari,
->
-> Thanks for the review.
->
-> On Wed, 2020-05-06 at 14:21 +0300, Sakari Ailus wrote:
-> > Hi Dongchun,
+On Thu, May 07, 2020 at 03:46:31PM +0200, Tomasz Figa wrote:
+> Hi Sakari, Dongchun,
+> 
+> On Thu, May 7, 2020 at 3:12 PM Sakari Ailus
+> <sakari.ailus@linux.intel.com> wrote:
 > >
-> > On Tue, May 05, 2020 at 10:17:18PM +0800, Dongchun Zhu wrote:
+> > HI Dongchun,
+> >
+> > On Thu, May 07, 2020 at 08:45:24PM +0800, Dongchun Zhu wrote:
 > > > Hi Sakari,
 > > >
 > > > Thanks for the review.
 > > >
-> > > On Tue, 2020-05-05 at 10:04 +0300, Sakari Ailus wrote:
+> > > On Wed, 2020-05-06 at 18:13 +0300, Sakari Ailus wrote:
 > > > > Hi Dongchun,
 > > > >
-> > > > On Thu, Apr 30, 2020 at 04:09:23PM +0800, Dongchun Zhu wrote:
-> > > > > Add DT bindings documentation for Omnivision OV02A10 image sensor.
+> > > > On Sun, May 03, 2020 at 12:17:27AM +0800, Dongchun Zhu wrote:
+> > > > > Add a V4L2 sub-device driver for DW9768 voice coil motor, providing
+> > > > > control to set the desired focus via IIC serial interface.
 > > > > >
 > > > > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
 > > > > > ---
-> > > > >  .../bindings/media/i2c/ovti,ov02a10.yaml           | 148 +++++++++++++++++++++
-> > > > >  MAINTAINERS                                        |   7 +
-> > > > >  2 files changed, 155 insertions(+)
-> > > > >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
+> > > > >  MAINTAINERS                |   1 +
+> > > > >  drivers/media/i2c/Kconfig  |  11 ++
+> > > > >  drivers/media/i2c/Makefile |   1 +
+> > > > >  drivers/media/i2c/dw9768.c | 440 +++++++++++++++++++++++++++++++++++++++++++++
+> > > > >  4 files changed, 453 insertions(+)
+> > > > >  create mode 100644 drivers/media/i2c/dw9768.c
 > > > > >
-> > > > > diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > > > new file mode 100644
-> > > > > index 0000000..2be4bd2
-> > > > > --- /dev/null
-> > > > > +++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > > > @@ -0,0 +1,148 @@
-> > > > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > > > > +# Copyright (c) 2020 MediaTek Inc.
-> > > > > +%YAML 1.2
-> > > > > +---
-> > > > > +$id: http://devicetree.org/schemas/media/i2c/ovti,ov02a10.yaml#
-> > > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > > > +
-> > > > > +title: Omnivision OV02A10 CMOS Sensor Device Tree Bindings
-> > > > > +
-> > > > > +maintainers:
-> > > > > +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > > > +
-> > > > > +description: |-
-> > > > > +  The Omnivision OV02A10 is a low-cost, high performance, 1/5-inch, 2 megapixel
-> > > > > +  image sensor, which is the latest production derived from Omnivision's CMOS
-> > > > > +  image sensor technology. Ihis chip supports high frame rate speeds up to 30fps
-> > > > > +  @ 1600x1200 (UXGA) resolution transferred over a 1-lane MIPI interface. The
-> > > > > +  sensor output is available via CSI-2 serial data output.
-> > > > > +
-> > > > > +properties:
-> > > > > +  compatible:
-> > > > > +    const: ovti,ov02a10
-> > > > > +
-> > > > > +  reg:
-> > > > > +    maxItems: 1
-> > > > > +
-> > > > > +  clocks:
-> > > > > +    items:
-> > > > > +      - description: top mux camtg clock
-> > > > > +      - description: devider clock
-> > > > > +
-> > > > > +  clock-names:
-> > > > > +    items:
-> > > > > +      - const: eclk
-> > > > > +      - const: freq_mux
-> > > > > +
-> > > > > +  clock-frequency:
-> > > > > +    description:
-> > > > > +      Frequency of the eclk clock in Hertz.
-> > > > > +
-> > > > > +  dovdd-supply:
-> > > > > +    description:
-> > > > > +      Definition of the regulator used as interface power supply.
-> > > > > +
-> > > > > +  avdd-supply:
-> > > > > +    description:
-> > > > > +      Definition of the regulator used as analog power supply.
-> > > > > +
-> > > > > +  dvdd-supply:
-> > > > > +    description:
-> > > > > +      Definition of the regulator used as digital power supply.
-> > > > > +
-> > > > > +  powerdown-gpios:
-> > > > > +    description:
-> > > > > +      The phandle and specifier for the GPIO that controls sensor powerdown.
-> > > > > +
-> > > > > +  reset-gpios:
-> > > > > +    description:
-> > > > > +      The phandle and specifier for the GPIO that controls sensor reset.
-> > > > > +
-> > > > > +  rotation:
-> > > > > +    description:
-> > > > > +      Definition of the sensor's placement, valid values are 0 and 180.
-> > > > > +    allOf:
-> > > > > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> > > > > +      - enum:
-> > > > > +          - 0    # Sensor Mounted Upright
-> > > > > +          - 180  # Sensor Mounted Upside Down
-> > > > > +
-> > > > > +  ovti,mipi-tx-speed:
-> > > > > +    description:
-> > > > > +      Indication of MIPI transmission speed select.
-> > > >
-> > > > What exactly does this signify? And how do you come up with the number?
-> > > >
-> > >
-> > > Apologies for not addressing this number clear.
-> > >
-> > > From the datasheet, P1:0xA1 register represents TX_SPEED_AREA_SEL with
-> > > the default val: 0x03.
-> > > The description of this RW register is as below:
-> > > Bit[2:0]: MIPI transmission speed select.
-> > >
-> > > Thus the enum should be definited as [ 0, 1, 2, 3, 4, 5, 6, 7 ].
-> > > This would be fixed in next release.
-> > >
-> > > In the meantime, as the default val of P1:0xA1 is 0x03, we hope to keep
-> > > that value if there is no setting for this private property in DT.
-> > > The caller in driver would be updated like this in next release.
-> > > if (ov02a10->mipi_clock_tx_speed)
-> > >     ret = i2c_smbus_write_byte_data(...,...);
-> >
-> > How did you pick the value in the example? And why do you believe it is
-> > specific to a platform, and not e.g. a sensor mode?
-> >
->
-> We look into P1:0XA1, one register that defines MIPI transmission speed
-> select.
-> From the datasheet, we can get the possible values that could be set to
-> P1:0xA1.
->
-> Actually this register is an independent of sensor mode, it is just
-> included in sensor mode's register setting table.
->
-> In addition, this private DT Property is created to fix the MIPI test
-> failure. The register values are adjusted and verified from vendor to
-> make sensor signal meet MIPI specification.
->
-
-In theory the value could depend on the mode, because different link
-rate could impose different requirements for the physical interface.
-In practice, we haven't seen any hardware that would require different
-values for different modes.
-
-Best regards,
-Tomasz
-
-> > >
-> > > > > +    allOf:
-> > > > > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> > > > > +      - enum: [ 3, 4 ]
-> > > > > +
-> > > > > +  # See ../video-interfaces.txt for details
-> > > > > +  port:
-> > > > > +    type: object
-> > > > > +    additionalProperties: false
-> > > > > +
-> > > > > +    properties:
-> > > > > +      endpoint:
-> > > > > +        type: object
-> > > > > +        additionalProperties: false
-> > > > > +
-> > > > > +        properties:
-> > > > > +          remote-endpoint: true
-> > > > > +          link-frequencies: true
-> > > > > +
-> > > > > +    required:
-> > > > > +      - endpoint
-> > > > > +
-> > > > > +required:
-> > > > > +  - compatible
-> > > > > +  - reg
-> > > > > +  - clocks
-> > > > > +  - clock-names
-> > > > > +  - clock-frequency
-> > > > > +  - dovdd-supply
-> > > > > +  - avdd-supply
-> > > > > +  - dvdd-supply
-> > > > > +  - powerdown-gpios
-> > > > > +  - reset-gpios
-> > > > > +  - port
-> > > > > +
-> > > > > +additionalProperties: false
-> > > > > +
-> > > > > +examples:
-> > > > > +  - |
-> > > > > +    #include <dt-bindings/clock/mt8183-clk.h>
-> > > > > +    #include <dt-bindings/gpio/gpio.h>
-> > > > > +
-> > > > > +    i2c {
-> > > > > +        clock-frequency = <400000>;
-> > > > > +        #address-cells = <1>;
-> > > > > +        #size-cells = <0>;
-> > > > > +
-> > > > > +        ov02a10: camera-sensor@3d {
-> > > > > +            compatible = "ovti,ov02a10";
-> > > > > +            reg = <0x3d>;
-> > > > > +            pinctrl-names = "default";
-> > > > > +            pinctrl-0 = <&clk_24m_cam>;
-> > > > > +
-> > > > > +            clocks = <&topckgen CLK_TOP_MUX_CAMTG>,
-> > > > > +                     <&topckgen CLK_TOP_UNIVP_192M_D8>;
-> > > > > +            clock-names = "eclk", "freq_mux";
-> > > > > +            clock-frequency = <24000000>;
-> > > > > +
-> > > > > +            rotation = <180>;
-> > > > > +            ovti,mipi-tx-speed = <3>;
-> > > > > +
-> > > > > +            dovdd-supply = <&mt6358_vcamio_reg>;
-> > > > > +            avdd-supply = <&mt6358_vcama1_reg>;
-> > > > > +            dvdd-supply = <&mt6358_vcn18_reg>;
-> > > > > +            powerdown-gpios = <&pio 107 GPIO_ACTIVE_LOW>;
-> > > > > +            reset-gpios = <&pio 109 GPIO_ACTIVE_HIGH>;
-> > > > > +
-> > > > > +            port {
-> > > > > +                wcam_out: endpoint {
-> > > > > +                    remote-endpoint = <&mipi_in_wcam>;
-> > > > > +                    link-frequencies = /bits/ 64 <390000000>;
-> > > > > +                };
-> > > > > +            };
-> > > > > +        };
-> > > > > +    };
-> > > > > +
-> > > > > +...
 > > > > > diff --git a/MAINTAINERS b/MAINTAINERS
-> > > > > index e64e5db..63a2335 100644
+> > > > > index 8d72c41..c92dc99 100644
 > > > > > --- a/MAINTAINERS
 > > > > > +++ b/MAINTAINERS
-> > > > > @@ -12389,6 +12389,13 @@ M:     Harald Welte <laforge@gnumonks.org>
-> > > > >  S:     Maintained
-> > > > >  F:     drivers/char/pcmcia/cm4040_cs.*
+> > > > > @@ -5157,6 +5157,7 @@ L:  linux-media@vger.kernel.org
+> > > > >  S:       Maintained
+> > > > >  T:       git git://linuxtv.org/media_tree.git
+> > > > >  F:       Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
+> > > > > +F:       drivers/media/i2c/dw9768.c
 > > > > >
-> > > > > +OMNIVISION OV02A10 SENSOR DRIVER
-> > > > > +M:     Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > > > +L:     linux-media@vger.kernel.org
-> > > > > +S:     Maintained
-> > > > > +T:     git git://linuxtv.org/media_tree.git
-> > > > > +F:     Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > > > > +
-> > > > >  OMNIVISION OV13858 SENSOR DRIVER
-> > > > >  M:     Sakari Ailus <sakari.ailus@linux.intel.com>
-> > > > >  L:     linux-media@vger.kernel.org
+> > > > >  DONGWOON DW9807 LENS VOICE COIL DRIVER
+> > > > >  M:       Sakari Ailus <sakari.ailus@linux.intel.com>
+> > > > > diff --git a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig
+> > > > > index 125d596..6a3f9da 100644
+> > > > > --- a/drivers/media/i2c/Kconfig
+> > > > > +++ b/drivers/media/i2c/Kconfig
+> > > > > @@ -1040,6 +1040,17 @@ config VIDEO_DW9714
+> > > > >     capability. This is designed for linear control of
+> > > > >     voice coil motors, controlled via I2C serial interface.
+> > > > >
+> > > > > +config VIDEO_DW9768
+> > > > > + tristate "DW9768 lens voice coil support"
+> > > > > + depends on I2C && VIDEO_V4L2 && MEDIA_CONTROLLER
+> > > > > + depends on VIDEO_V4L2_SUBDEV_API
+> > > >
+> > > > Please check how this works in the media tree master branch now --- it's
+> > > > largely select based.
 > > > >
 > > >
+> > > The actuator driver uses some structures that require the
+> > > VIDEO_V4L2_SUBDEV_API code, so here we add VIDEO_V4L2_SUBDEV_API
+> > > dependency to avoid possible build error when it's not enabled.
 > >
->
+> > Please make sure this works with current media tree master. Right now it
+> > does not.
+> >
+> 
+> Dongchun, as Sakari said, please make sure to base the patches on the
+> master branch of the media tree.
+> (https://git.linuxtv.org/media_tree.git/). The approach for Kconfig
+> dependency selection there seems to have changed recently.
+> 
+> > >
+> > > > In general the patch seems fine to me, but please see the other comments
+> > > > below, too.
+> > > >
+> > > > > + depends on PM
+> > > > > + help
+> > > > > +   This is a driver for the DW9768 camera lens voice coil.
+> > > > > +   DW9768 is a 10 bit DAC with 100mA output current sink
+> > > > > +   capability. This is designed for linear control of
+> > > > > +   voice coil motors, controlled via I2C serial interface.
+> > > > > +
+> > > > >  config VIDEO_DW9807_VCM
+> > > > >   tristate "DW9807 lens voice coil support"
+> > > > >   depends on I2C && VIDEO_V4L2 && MEDIA_CONTROLLER
+> > > > > diff --git a/drivers/media/i2c/Makefile b/drivers/media/i2c/Makefile
+> > > > > index 77bf7d0..4057476 100644
+> > > > > --- a/drivers/media/i2c/Makefile
+> > > > > +++ b/drivers/media/i2c/Makefile
+> > > > > @@ -24,6 +24,7 @@ obj-$(CONFIG_VIDEO_SAA6752HS) += saa6752hs.o
+> > > > >  obj-$(CONFIG_VIDEO_AD5820)  += ad5820.o
+> > > > >  obj-$(CONFIG_VIDEO_AK7375)  += ak7375.o
+> > > > >  obj-$(CONFIG_VIDEO_DW9714)  += dw9714.o
+> > > > > +obj-$(CONFIG_VIDEO_DW9768)  += dw9768.o
+> > > > >  obj-$(CONFIG_VIDEO_DW9807_VCM)  += dw9807-vcm.o
+> > > > >  obj-$(CONFIG_VIDEO_ADV7170) += adv7170.o
+> > > > >  obj-$(CONFIG_VIDEO_ADV7175) += adv7175.o
+> > > > > diff --git a/drivers/media/i2c/dw9768.c b/drivers/media/i2c/dw9768.c
+> > > > > new file mode 100644
+> > > > > index 0000000..dd68534
+> > > > > --- /dev/null
+> > > > > +++ b/drivers/media/i2c/dw9768.c
+> > > > > @@ -0,0 +1,440 @@
+> > > > > +// SPDX-License-Identifier: GPL-2.0
+> > > > > +// Copyright (c) 2020 MediaTek Inc.
+> > > > > +
+> > > > > +#include <linux/delay.h>
+> > > > > +#include <linux/i2c.h>
+> > > > > +#include <linux/module.h>
+> > > > > +#include <linux/pm_runtime.h>
+> > > > > +#include <linux/regulator/consumer.h>
+> > > > > +#include <media/v4l2-async.h>
+> > > > > +#include <media/v4l2-ctrls.h>
+> > > > > +#include <media/v4l2-device.h>
+> > > > > +#include <media/v4l2-subdev.h>
+> > > > > +
+> > > > > +#define DW9768_NAME                              "dw9768"
+> > > > > +#define DW9768_MAX_FOCUS_POS                     (1024 - 1)
+> > > > > +/*
+> > > > > + * This sets the minimum granularity for the focus positions.
+> > > > > + * A value of 1 gives maximum accuracy for a desired focus position
+> > > > > + */
+> > > > > +#define DW9768_FOCUS_STEPS                       1
+> > > > > +
+> > > > > +/*
+> > > > > + * Ring control and Power control register
+> > > > > + * Bit[1] RING_EN
+> > > > > + * 0: Direct mode
+> > > > > + * 1: AAC mode (ringing control mode)
+> > > > > + * Bit[0] PD
+> > > > > + * 0: Normal operation mode
+> > > > > + * 1: Power down mode
+> > > > > + * DW9768 requires waiting time of Topr after PD reset takes place.
+> > > > > + */
+> > > > > +#define DW9768_RING_PD_CONTROL_REG               0x02
+> > > > > +#define DW9768_PD_MODE_OFF                       0x00
+> > > > > +#define DW9768_PD_MODE_EN                        BIT(0)
+> > > > > +#define DW9768_AAC_MODE_EN                       BIT(1)
+> > > > > +
+> > > > > +/*
+> > > > > + * DW9768 separates two registers to control the VCM position.
+> > > > > + * One for MSB value, another is LSB value.
+> > > > > + * DAC_MSB: D[9:8] (ADD: 0x03)
+> > > > > + * DAC_LSB: D[7:0] (ADD: 0x04)
+> > > > > + * D[9:0] DAC data input: positive output current = D[9:0] / 1023 * 100[mA]
+> > > > > + */
+> > > > > +#define DW9768_MSB_ADDR                          0x03
+> > > > > +#define DW9768_LSB_ADDR                          0x04
+> > > > > +#define DW9768_STATUS_ADDR                       0x05
+> > > > > +
+> > > > > +/*
+> > > > > + * AAC mode control & prescale register
+> > > > > + * Bit[7:5] Namely AC[2:0], decide the VCM mode and operation time.
+> > > > > + * 000 Direct(default)
+> > > > > + * 001 AAC2 0.48xTvib
+> > > > > + * 010 AAC3 0.70xTvib
+> > > > > + * 011 AAC4 0.75xTvib
+> > > > > + * 100 Reserved
+> > > > > + * 101 AAC8 1.13xTvib
+> > > > > + * 110 Reserved
+> > > > > + * 111 Reserved
+> > > > > + * Bit[2:0] Namely PRESC[2:0], set the internal clock dividing rate as follow.
+> > > > > + * 000 2
+> > > > > + * 001 1(default)
+> > > > > + * 010 1/2
+> > > > > + * 011 1/4
+> > > > > + * 100 8
+> > > > > + * 101 4
+> > > > > + * 110 Reserved
+> > > > > + * 111 Reserved
+> > > > > + */
+> > > > > +#define DW9768_AAC_PRESC_REG                     0x06
+> > > > > +#define DW9768_AAC3_SELECT_DIVIDING_RATE_1       0x41
+> > > >
+> > > > I guess we can start with these values. But I can't think of another option
+> > > > than putting them into DT if there are differences between what hardware
+> > > > platforms require.
+> > > >
+> > >
+> > > Let's have a discussion about this.
+> > > Now these non-default register settings represent one AAC operation
+> > > mode, this is one option and works for a given lens or a module.
+> > > If sometime in the future hardware platforms require another different
+> > > settings, then DT properties may need to be created.
+> >
+> > If these values indeed are specific to a given lens (and presumably also a
+> > spring), then I'd put them to DT right now --- we don't have drivers for
+> > these components the drivers of which could hold this information, nor it
+> > makes sense to add them just for that.
+> >
+> 
+> I tend to stay on the conservative side and only add DT properties
+> once there is really a need to do so. Right now we haven't seen any
+> system which would use different values of these parameters.
+
+I think it's also conservative to put things that are system specific to
+DT. :-)
+
+In practice we haven't put lens specific parameters to DT before, but
+that's because 1) devices that need them are old, and so are the drivers
+and the matter was not recognised at the time they were merged and 2) a lot
+of devices these days don't have such configuration registers.
+
+That said, I don't have a strong opinion on this one, but I think putting
+this to DT would be a safer bet in the long run as this is specific to the
+board, not the device itself.
+
+-- 
+Regards,
+
+Sakari Ailus
 
 _______________________________________________
 Linux-mediatek mailing list
