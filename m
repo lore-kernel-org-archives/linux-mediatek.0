@@ -2,85 +2,86 @@ Return-Path: <SRS0=F/ID=6V=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 814AAC38A2A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 10:26:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8A1AC38A2A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 10:50:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2826B2075E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 10:26:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9F50B20870
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 10:50:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="q+LfOEqn";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="HwjlF1N6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2826B2075E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="K84M5omc";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="1lm1uYG4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F50B20870
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+Tl+dclb0cGrPfimfaI2iemrzuZ/z3mHJimjqwm/zHk=; b=q+LfOEqnschKoO
-	Dd4lNLHQUKoMLM9l6hyxIQC8J7OmfwKORj7WY27FnG6y6qNuar2bOod1ak3eFPq84dH6TRzm5Mt2J
-	ToLV9qqTGqJp57ry+IO10u5sN5h58M4Nq6cMecnL98H+q5qlnFT+vz3+J3NdcfkdB8hzNEOYrVrXL
-	GOXlO/I/Xu2PJO7GJAqeNzMa17KehXyVWHtmOixaQKZ4ES3H+41Z4SDO5JnaO9nZpm32gd9PnabaX
-	EGRmXNLS47luikrZtqpkKtCkdRW6KnliOQv439x3oXKpByQrSBMzql7hkwohDE2Pj6kDr7F3vCUjC
-	MwXyAd/tRlUGn9avcvEA==;
+	List-Owner; bh=by9q8RlFvKzAGrr2eL3LAbOqciXAnMWPtBaiOd/o2KQ=; b=K84M5omc5yB3MD
+	0VzVNs13uXb4qX40H4Q3AdlE7Q6IYAs8jcn/9/MlggYaDmwN3CKRm5shES9pe2RhHJkPqs7GsxlWA
+	iX3/dCvqv13jJ6/WJjOA54hfNhyidt5Hb1QfCnAfUCxERzG829oi4dP2l1hDNTmvyUDIatwiVgfoo
+	NOpzPUv/2J4dpx8Mypax2hJyUzEwnGo/nI5wvkD9qTz0tSuu+NkQAN1NwzDSlE1JAJLe84dqfKbmr
+	v0GA668Fv7saUiCcpwPRG0jS8LRN+qQX7QVMWdLe0gOvJ0a8D0G9IzSk/T3eU42WG23bESWevfBDL
+	BCGNXetD+YfVuooqGxmQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWdjP-0003F2-JW; Thu, 07 May 2020 10:26:19 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1jWe6n-0003dg-LO; Thu, 07 May 2020 10:50:29 +0000
+Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWdiY-0002UZ-DR
- for linux-mediatek@lists.infradead.org; Thu, 07 May 2020 10:25:28 +0000
-Received: by mail-pg1-x542.google.com with SMTP id l12so2322073pgr.10
- for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2020 03:25:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=m1M6EdnOTsv5mYtPnihqd4eZRs9V55SUnoYnhKRTw60=;
- b=HwjlF1N670a6UIxoX4jc+7S21D3dNMoGa25afnNqJh6KjJGj+57eSKRmfw2/EMUzvf
- cPy/MmPNeNicYqplputtipeNWtBNJlddEQclmvyl/DJg9t3PK0GJv7ZuM8fbWt+l0Kao
- y0PuJrbYPFPRqDaJ+nlA3QoNGve6jD7+SVXsU=
+ id 1jWe6l-0003cy-HM
+ for linux-mediatek@lists.infradead.org; Thu, 07 May 2020 10:50:29 +0000
+Received: by mail-qk1-x743.google.com with SMTP id i14so5422241qka.10
+ for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2020 03:50:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=1TQDLXk4eka+0Oxp2Bn8b1wcydmS2119xNQQ8v9Of3A=;
+ b=1lm1uYG4FqWg47V6Y+gYDIshBO9zX4KSYru04NwBJPv6kFFVFfM5JuAxDs6tZvphbJ
+ oTJilxGIAeSQOYU0i6u9kVh9LY2c67xWbyrpnSBiPqECpZSiW2moygN7fZbQTfav8QK2
+ PVhyXc4CtEJIGCrd0bzJhiTefp0mzyZ+EbOyJMUDZqyQufbiHgLItmYN1hQD9wMB44pb
+ +U7sR5l34T2+ELpQdAtOqjowgdxN4GWWNkcVU6+j6hZhi4t6FdtitjmBcfH4EYiq0eXp
+ 4P1xej1eG3C2yyeUwdIE9QTRIDhAZrZ/5hXNsRThBODI7DVg3bGoIKHJESig7V88bGr5
+ VM8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=m1M6EdnOTsv5mYtPnihqd4eZRs9V55SUnoYnhKRTw60=;
- b=UPHPdnsgiaavBaY1CV/amB/YZXeNkqB3kAMHrXcW8hIQEBPPk3cYci/tsIiF68qayR
- 1dDtuIbeAmXR0EMIvpyklSuBUChQnb0XV/L6wxjRYYJ1o5UFNSsvEPNq0sZaSs1JlM6N
- 1LPJeHkjNm9mk+1+yvtFUFadQDsvNbYyddbPgSlPR7ypNS/rb9hhKZn+RxykMJEZ53j/
- E2RVfwzFn/AuWWxo/hKPIQRDyRKf301PZEkfTHrj9mUC9XT8Jlpp40f3r02lx6Wf7vPe
- lBzUZbgzS6GHJJEOHLNeIdJJ1lDfmUr8JujZlm4q7PrHkMBKbEnbg/eC6j+TI1puyT05
- 404Q==
-X-Gm-Message-State: AGi0Pubykft0Y+BA8GWH1nElGs+gnK5qEFsk6M3XzHOYgN/fskylwYix
- mBt9AxQvevCoO5PrzhfNJXLBew==
-X-Google-Smtp-Source: APiQypIFdxY72dNnDd+L8I5eCKKhglDYkZTVnaPRNiYzoyqLwW0BwDrjFVs7rHZGjweW5a4tNMMIPw==
-X-Received: by 2002:a62:4ec8:: with SMTP id c191mr13321613pfb.30.1588847125369; 
- Thu, 07 May 2020 03:25:25 -0700 (PDT)
-Received: from localhost ([2401:fa00:9:14:a92f:c47d:76a8:b09e])
- by smtp.gmail.com with ESMTPSA id m6sm7058940pjo.5.2020.05.07.03.25.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 May 2020 03:25:24 -0700 (PDT)
-From: Eizan Miyamoto <eizan@chromium.org>
-To: LKML <linux-kernel@vger.kernel.org>
-Subject: [PATCH v3 5/5] [media] mtk-mdp: Remove mtk_mdp_comp.id and supporting
- functionality
-Date: Thu,  7 May 2020 20:23:50 +1000
-Message-Id: <20200507202337.v3.5.I1c85bddc262913b8572d892dd6bf9bc03fbe0ec7@changeid>
-X-Mailer: git-send-email 2.26.2.526.g744177e7f7-goog
-In-Reply-To: <20200507102345.81849-1-eizan@chromium.org>
-References: <20200507102345.81849-1-eizan@chromium.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=1TQDLXk4eka+0Oxp2Bn8b1wcydmS2119xNQQ8v9Of3A=;
+ b=A8bzU8se7XyadYtCmmiJPA2JWr+hglNTFkp4nAtFtGtaIgfiJJojC2EAVnVyLCsGs9
+ sYgaohZARwgLnxwvU3v3bZZcJ64QGK0tL7G+gJ/TV0dy9IpVrkgUVEaiookOgNNOogQ5
+ 1ivdm9Hwe9PyFFVQFYHRT3owIZMcIxdh6Zx7lXnQ5LV1b9vB1PtlUsybI8z4fd2A2Up0
+ SG+BE56Fm/P+E3I1u16vgVME5XnB9oDxzzSRPj1wZ7M+WNlYZ6HfW9lohIRDvopbr1s3
+ qXH7sSskyvWWChv2M2Amz/cHgWD5SsWJ/a7oZ1uC4zHlaJ5WQxI7vqA39Y5oBezgnwfk
+ BhOg==
+X-Gm-Message-State: AGi0PuZ8H6zZwPNj6WF3aN4coH6D3h92bYaiQ+jvP9y/nNOEbQhc4/Zx
+ T28lggu1/fkrqr+fOr47wq+1A7sanj0x3N2KYeo8F79m
+X-Google-Smtp-Source: APiQypJYXCCd2c3pYbt+kfphPDDGvjl+YT7aIrmnou1JUBqsathcHJRlRjCQ8fMwJjvYV4gCZxU1KJCPXjpaGZcnQi0=
+X-Received: by 2002:a05:620a:1f1:: with SMTP id
+ x17mr13989074qkn.330.1588848626441; 
+ Thu, 07 May 2020 03:50:26 -0700 (PDT)
 MIME-Version: 1.0
+References: <20200505140231.16600-1-brgl@bgdev.pl>
+ <20200505140231.16600-7-brgl@bgdev.pl>
+ <1588844771.5921.27.camel@mtksdccf07>
+In-Reply-To: <1588844771.5921.27.camel@mtksdccf07>
+From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+Date: Thu, 7 May 2020 12:50:15 +0200
+Message-ID: <CAMpxmJW4qZ_Wnp_oRa=j=YnvTzVa3HZ13Hgwy71jS6L3Bd3oMQ@mail.gmail.com>
+Subject: Re: [PATCH 06/11] net: ethernet: mtk-eth-mac: new driver
+To: "Mark-MC.Lee" <Mark-MC.Lee@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200507_032526_498892_C59B792D 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20200507_035027_619217_A81292AE 
+X-CRM114-Status: UNSURE (   7.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,222 +93,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
- Houlong Wei <houlong.wei@mediatek.com>, Eizan Miyamoto <eizan@chromium.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-devicetree <devicetree@vger.kernel.org>,
+ Felix Fietkau <nbd@openwrt.org>, Arnd Bergmann <arnd@arndb.de>,
+ netdev <netdev@vger.kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ Sean Wang <sean.wang@mediatek.com>, LKML <linux-kernel@vger.kernel.org>,
+ Fabien Parent <fparent@baylibre.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ "David S . Miller" <davem@davemloft.net>,
+ arm-soc <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since components are registered in a list, the numeric component id that
-specified a location in an array is not necessary.
-
-Signed-off-by: Eizan Miyamoto <eizan@chromium.org>
----
-
-Changes in v3:
-- Removed extra Signed-off-by: tag from commit messages.
-- Removed extra line break in mtk_mdp_core.c
-- Update cover letter with dependent commit
-
-Changes in v2:
-- rebase onto linux-next/master to pick up
-  757570f11fa4b0ce5472a6583de6f06e996a8527
-
- drivers/media/platform/mtk-mdp/mtk_mdp_comp.c | 60 +++----------------
- drivers/media/platform/mtk-mdp/mtk_mdp_comp.h | 19 +-----
- drivers/media/platform/mtk-mdp/mtk_mdp_core.c |  9 +--
- 3 files changed, 10 insertions(+), 78 deletions(-)
-
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
-index da2bdad7a8d1..362fff924aef 100644
---- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
-+++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
-@@ -14,46 +14,6 @@
- #include "mtk_mdp_comp.h"
- 
- 
--static const char * const mtk_mdp_comp_stem[MTK_MDP_COMP_TYPE_MAX] = {
--	"mdp-rdma",
--	"mdp-rsz",
--	"mdp-wdma",
--	"mdp-wrot",
--};
--
--struct mtk_mdp_comp_match {
--	enum mtk_mdp_comp_type type;
--	int alias_id;
--};
--
--static const struct mtk_mdp_comp_match mtk_mdp_matches[MTK_MDP_COMP_ID_MAX] = {
--	{ MTK_MDP_RDMA,	0 },
--	{ MTK_MDP_RDMA,	1 },
--	{ MTK_MDP_RSZ,	0 },
--	{ MTK_MDP_RSZ,	1 },
--	{ MTK_MDP_RSZ,	2 },
--	{ MTK_MDP_WDMA,	0 },
--	{ MTK_MDP_WROT,	0 },
--	{ MTK_MDP_WROT,	1 },
--};
--
--int mtk_mdp_comp_get_id(struct device *dev, struct device_node *node,
--			enum mtk_mdp_comp_type comp_type)
--{
--	int id = of_alias_get_id(node, mtk_mdp_comp_stem[comp_type]);
--	int i;
--
--	for (i = 0; i < ARRAY_SIZE(mtk_mdp_matches); i++) {
--		if (comp_type == mtk_mdp_matches[i].type &&
--		    id == mtk_mdp_matches[i].alias_id)
--			return i;
--	}
--
--	dev_err(dev, "Failed to get id. type: %d, id: %d\n", comp_type, id);
--
--	return -EINVAL;
--}
--
- void mtk_mdp_comp_clock_on(struct device *dev, struct mtk_mdp_comp *comp)
- {
- 	int i, err;
-@@ -62,8 +22,8 @@ void mtk_mdp_comp_clock_on(struct device *dev, struct mtk_mdp_comp *comp)
- 		err = mtk_smi_larb_get(comp->larb_dev);
- 		if (err)
- 			dev_err(dev,
--				"failed to get larb, err %d. type:%d id:%d\n",
--				err, comp->type, comp->id);
-+				"failed to get larb, err %d. type:%d\n",
-+				err, comp->type);
- 	}
- 
- 	for (i = 0; i < ARRAY_SIZE(comp->clk); i++) {
-@@ -72,8 +32,8 @@ void mtk_mdp_comp_clock_on(struct device *dev, struct mtk_mdp_comp *comp)
- 		err = clk_prepare_enable(comp->clk[i]);
- 		if (err)
- 			dev_err(dev,
--			"failed to enable clock, err %d. type:%d id:%d i:%d\n",
--				err, comp->type, comp->id, i);
-+			"failed to enable clock, err %d. type:%d i:%d\n",
-+				err, comp->type, i);
- 	}
- }
- 
-@@ -92,21 +52,15 @@ void mtk_mdp_comp_clock_off(struct device *dev, struct mtk_mdp_comp *comp)
- }
- 
- int mtk_mdp_comp_init(struct device *dev, struct device_node *node,
--		      struct mtk_mdp_comp *comp, enum mtk_mdp_comp_id comp_id)
-+		      struct mtk_mdp_comp *comp,
-+		      enum mtk_mdp_comp_type comp_type)
- {
- 	struct device_node *larb_node;
- 	struct platform_device *larb_pdev;
- 	int i;
- 
--	if (comp_id < 0 || comp_id >= MTK_MDP_COMP_ID_MAX) {
--		dev_err(dev, "Invalid comp_id %d\n", comp_id);
--		return -EINVAL;
--	}
--
--	INIT_LIST_HEAD(&comp->node);
- 	comp->dev_node = of_node_get(node);
--	comp->id = comp_id;
--	comp->type = mtk_mdp_matches[comp_id].type;
-+	comp->type = comp_type;
- 
- 	for (i = 0; i < ARRAY_SIZE(comp->clk); i++) {
- 		comp->clk[i] = of_clk_get(node, i);
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
-index 1f745891c6c3..1bf0242cce46 100644
---- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
-+++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
-@@ -22,18 +22,6 @@ enum mtk_mdp_comp_type {
- 	MTK_MDP_COMP_TYPE_MAX,
- };
- 
--enum mtk_mdp_comp_id {
--	MTK_MDP_COMP_RDMA0,
--	MTK_MDP_COMP_RDMA1,
--	MTK_MDP_COMP_RSZ0,
--	MTK_MDP_COMP_RSZ1,
--	MTK_MDP_COMP_RSZ2,
--	MTK_MDP_COMP_WDMA,
--	MTK_MDP_COMP_WROT0,
--	MTK_MDP_COMP_WROT1,
--	MTK_MDP_COMP_ID_MAX,
--};
--
- /**
-  * struct mtk_mdp_comp - the MDP's function component data
-  * @node:	list node to track sibing MDP components
-@@ -41,7 +29,6 @@ enum mtk_mdp_comp_id {
-  * @clk:	clocks required for component
-  * @larb_dev:	SMI device required for component
-  * @type:	component type
-- * @id:		component ID
-  */
- struct mtk_mdp_comp {
- 	struct list_head	node;
-@@ -49,14 +36,12 @@ struct mtk_mdp_comp {
- 	struct clk		*clk[2];
- 	struct device		*larb_dev;
- 	enum mtk_mdp_comp_type	type;
--	enum mtk_mdp_comp_id	id;
- };
- 
- int mtk_mdp_comp_init(struct device *dev, struct device_node *node,
--		      struct mtk_mdp_comp *comp, enum mtk_mdp_comp_id comp_id);
-+		      struct mtk_mdp_comp *comp,
-+		      enum mtk_mdp_comp_type comp_type);
- void mtk_mdp_comp_deinit(struct device *dev, struct mtk_mdp_comp *comp);
--int mtk_mdp_comp_get_id(struct device *dev, struct device_node *node,
--			enum mtk_mdp_comp_type comp_type);
- void mtk_mdp_comp_clock_on(struct device *dev, struct mtk_mdp_comp *comp);
- void mtk_mdp_comp_clock_off(struct device *dev, struct mtk_mdp_comp *comp);
- 
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-index 40b9fda8b03b..f96c8b3bf861 100644
---- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-+++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-@@ -137,7 +137,6 @@ static int mtk_mdp_probe(struct platform_device *pdev)
- 	for_each_child_of_node(parent, node) {
- 		const struct of_device_id *of_id;
- 		enum mtk_mdp_comp_type comp_type;
--		int comp_id;
- 
- 		of_id = of_match_node(mtk_mdp_comp_dt_ids, node);
- 		if (!of_id)
-@@ -150,12 +149,6 @@ static int mtk_mdp_probe(struct platform_device *pdev)
- 		}
- 
- 		comp_type = (enum mtk_mdp_comp_type)of_id->data;
--		comp_id = mtk_mdp_comp_get_id(dev, node, comp_type);
--		if (comp_id < 0) {
--			dev_warn(dev, "Skipping unknown component %pOF\n",
--				 node);
--			continue;
--		}
- 
- 		comp = devm_kzalloc(dev, sizeof(*comp), GFP_KERNEL);
- 		if (!comp) {
-@@ -164,7 +157,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
- 			goto err_comp;
- 		}
- 
--		ret = mtk_mdp_comp_init(dev, node, comp, comp_id);
-+		ret = mtk_mdp_comp_init(dev, node, comp, comp_type);
- 		if (ret) {
- 			of_node_put(node);
- 			goto err_comp;
--- 
-2.26.2.526.g744177e7f7-goog
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Y3p3LiwgNyBtYWogMjAyMCBvIDExOjQ2IE1hcmstTUMuTGVlIDxNYXJrLU1DLkxlZUBtZWRpYXRl
+ay5jb20+IG5hcGlzYcWCKGEpOgo+Cj4gSGkgQmFydG9zejoKPiAgSSB0aGluayB0aGUgbmFtaW5n
+IG9mIHRoaXMgZHJpdmVyIGFuZCBpdHMgS2NvbmZpZyBvcHRpb24gaXMgdG9vIGdlbmVyaWMKPiB0
+aGF0IHdpbGwgY29uZnVzZSB3aXRoIGN1cnJlbnQgbWVkaWF0ZWsgU29DcyBldGggZHJpdmVyIGFy
+Y2hpdGVjdHVyZShmb3IKPiBhbGwgbXQ3eHh4IFNvQ3MpLgo+ICAgU2luY2UgbXRrX2V0aF9tYWMu
+YyBpcyBub3QgYSBjb21tb24gTUFDIHBhcnQgZm9yIGFsbCBtZWRpYXRlayBTb0MgYnV0Cj4gb25s
+eSBhIHNwZWNpZmljIGV0aCBkcml2ZXIgZm9yIG10ODV4eCwgaXQgd2lsbCBiZSBtb3JlIHJlYXNv
+bmFibGUgdG8KPiBuYW1lIGl0IGFzIG10ODV4eF9ldGguYyBhbmQgY2hhbmdlIE5FVF9NRURJQVRF
+S19NQUMgdG8KPiBORVRfTUVESUFURUtfTVQ4NVhYLiBIb3cgZG8geW91IHRoaW5rPwo+CgpIaSBN
+YXJrLAoKSSBhY3R1YWxseSBjb25zdWx0ZWQgdGhpcyB3aXRoIE1lZGlhVGVrIGFuZCB0aGUgbmFt
+ZSBpcyB0aGVpciBpZGVhLgpNYW55IGRyaXZlcnMgaW4gZHJpdmVycy9uZXQvZXRoZXJuZXQgaGF2
+ZSB2ZXJ5IHZhZ3VlIG5hbWVzLiBJIGd1ZXNzCnRoaXMgaXNuJ3QgYSBwcm9ibGVtLgoKQmFydAoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
+aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
