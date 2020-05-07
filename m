@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 26E2AC38A24
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 10:25:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C0F95C38A2A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 10:26:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B2EB9208E4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 10:25:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 87DA0208E4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 10:26:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jCRfwF/D";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Uw9tkn4t"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B2EB9208E4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kh1stidB";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="H7j39yb2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 87DA0208E4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,62 +26,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Iy4eq1Xg3ESLPuhB0X4iEAwyQaOgfPXs2XKOBDE2Mzo=; b=jCRfwF/D/FTKEf
-	aM962Lx8Sc8ZbDevsPmOc2NtXwkY+9j4RDx/ZP1P0yWfEUPYLFD0fBPzQKRqeO0zxxIXD8+tEY7kc
-	WIFkSAKOsh1CRkGzbFUFqYviA1qKAV7+rsJ0OrWD4KKMO5HsUBkyEuzBrN7wh+PUhSyRVuAhJfNay
-	Xeq4u0hKH2cT0PeH9DyqzUUF1WOWgpKn1g7CtgLDg1dthAlec3osZdpy8R+At68XNnYoZOP3eKM3t
-	AnwRQ+fbnBJPywRP4pQJLSuS8UW25GGi9ZM4DDh+AfzArZ8nim+kuT8ydtP5Aussx5WaINkH5XWPZ
-	T1U8KcEYb7nNjNY2Y3jA==;
+	List-Owner; bh=voQC2E6kPOJZ9THxVuAVQ+u9VMTSdeUiQGJoF1COedc=; b=kh1stidBf9AchG
+	0hBOGIleEAWDp1lWcylopyFJN7f2ad9kUYuzj6t8QjdFSqxvBzX394VUmBJ+duPN3awxABw+wp0tJ
+	NRr8p0ITDWbD9dUe41EPgfVYgSML7zcC6WWAb2YemruPHRjVd/usrec47Nm+iQCX0gE4M2JrcctMG
+	RWp4XfmerzqzztZtSEBuqRPcQlJCKqXgMx7EYa7BBLnYNWzGWJNhwg7Zb3kjNtem7/68GpTJ5NUNr
+	ibAeIG2mPUaRE0h3j6ShaecUNSkQzMmwzIO5pr5RKonPImqx54fmUT89AWQb0RLxyatTgBujQewqS
+	mUJs5UG70fwUB0WWt1rw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWdiV-0002RH-1h; Thu, 07 May 2020 10:25:23 +0000
+	id 1jWdjN-0003D5-OE; Thu, 07 May 2020 10:26:17 +0000
 Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWdhw-00084V-Mf
- for linux-mediatek@lists.infradead.org; Thu, 07 May 2020 10:24:51 +0000
-Received: by mail-pl1-x642.google.com with SMTP id f8so1902139plt.2
- for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2020 03:24:48 -0700 (PDT)
+ id 1jWdiI-0001Bi-Lc
+ for linux-mediatek@lists.infradead.org; Thu, 07 May 2020 10:25:15 +0000
+Received: by mail-pl1-x642.google.com with SMTP id f15so1902265plr.3
+ for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2020 03:25:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=B/Mk9PnpQZ4xKWEBXlLMDvhktcZ9bgwGO85pTWBmd1Q=;
- b=Uw9tkn4tmqYAbTMf70CLe39oO9q1CC6aVjLT1Rme6khxLYX4hxUID3ZnvBSZGakv5P
- cGKuKJqk2HPHbQ4P1iQd69NwgL2xHQejKzAHF3MGaRFbXyURliEk1oHrAxQepDxSyXed
- VFbE4tH2UIH74TV9w+cRWY5I37BG/H1vO1EhM=
+ bh=8cJsBp+EOXNRCmgk1ug3bfc2/ttTB2kMHJOkU+Y+o8w=;
+ b=H7j39yb2k+XzcTJ6ncmva9Oe4ssQ47Z5wYyQS0/DnmAGms7PhCqbCH6niF7jW/W274
+ tU4PHWbVunVxDfKxT2ms9w9sL8Nc0qzCujiLi2rYkgAlCOLOZSUxglIh3lsPvmWLbeeQ
+ zKMgALmUvPZWJw1CuKp75LwMIA/DRKBK52Jxc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=B/Mk9PnpQZ4xKWEBXlLMDvhktcZ9bgwGO85pTWBmd1Q=;
- b=IqsDLtDNjHVwKKJirs2pe4hWC8V++CAqnEn3wUdcx40XjQuxbFEluGHewT8mszhweF
- LSyCWdtmdzEyQLbGXjV67PQsMUqUvqoxsBbIttsO09Xr2796PTI4RnF8+gBwreNijS62
- iUttWF6Bjt8IygxZAo32ETt8ioK+FnJ7PVQ1SYTJAQWMoT2nl6aY1LiV2HvtmCtzHDR6
- DKUyKYlQwS7WA6BbU9ozAcRAbYcsZKlL160DuXPm0AZYl0SoahWQixy6Nwd4ZLtc6Pai
- NQy4t7oj1ikR4cqw/NR1XGYEqwQzvzZYY0dVSsZEUp2K4zzo39y6ANutQyDwSJWTC2L0
- xSig==
-X-Gm-Message-State: AGi0Pub8BlTO+wHI0Yhi4HSMU0Sy9yNVUKw+QFr222UtFttGYnHoQLmS
- st9AbDG81UMBSNheBhCECYMfaQ==
-X-Google-Smtp-Source: APiQypIfdyYf1DVe2NADcLWJNyPuVcmkF60Nyz26uFMfQ6Htik4/hMklktg3MMP3+ePUbdo+ebw1vA==
-X-Received: by 2002:a17:90a:b78e:: with SMTP id
- m14mr2742862pjr.114.1588847088130; 
- Thu, 07 May 2020 03:24:48 -0700 (PDT)
+ bh=8cJsBp+EOXNRCmgk1ug3bfc2/ttTB2kMHJOkU+Y+o8w=;
+ b=umaMn9LXdrzQoZEqfN7A6LIQ1NEsRe8zpG0Ld6CKUUziicbowPtUf+CY65u8g+oyB1
+ O77ez3g/29SG+6dUkKBWyxjAr2/5HsOuWj73pPCttZm+fC+u8o8bjWkYJOETlCIP4oCE
+ lD99+EFEVEImqiQNS+x54JBpY7htlLkHKNf/6Lim99T+N5pQSZuSJuPDY6BSlnegS4hp
+ OVzcjtd+INS37plggzM8a9nLj6cCwBJQa1Se+xdQtPMShBkIak6mOM29BgCT2Q9gOoGr
+ IPji4HTdkAXXJQEq2bwE6Zpsa88jDOovu7eYT4me9muZQRlCtGYKqHTFr6tiLIPx66oX
+ Amzw==
+X-Gm-Message-State: AGi0PuYSG8rqArFM2AdAI87DLWGqYkKjSyz73cA4A+p4lBIa4YVclE30
+ oubzh+K0sQZ5SSkulmkx+y3VaTb7U24=
+X-Google-Smtp-Source: APiQypKVroCJHaGCjBiL6U8KsbIvrlrx4Udr2zwOYfB1N8nXUOGsewudXLu4qjQ/SI19VwYVg9KMdQ==
+X-Received: by 2002:a17:902:40a:: with SMTP id
+ 10mr12231101ple.183.1588847109077; 
+ Thu, 07 May 2020 03:25:09 -0700 (PDT)
 Received: from localhost ([2401:fa00:9:14:a92f:c47d:76a8:b09e])
- by smtp.gmail.com with ESMTPSA id a138sm4514903pfd.32.2020.05.07.03.24.44
+ by smtp.gmail.com with ESMTPSA id g14sm4458765pfh.49.2020.05.07.03.25.05
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 May 2020 03:24:47 -0700 (PDT)
+ Thu, 07 May 2020 03:25:08 -0700 (PDT)
 From: Eizan Miyamoto <eizan@chromium.org>
 To: LKML <linux-kernel@vger.kernel.org>
-Subject: [PATCH v3 3/5] [media] mtk-mdp: handle vpu_wdt_reg_handler() errors
- during probe
-Date: Thu,  7 May 2020 20:23:46 +1000
-Message-Id: <20200507202337.v3.3.Ia8efd7905e2fcfc81f547e27a51f06373624b3da@changeid>
+Subject: [PATCH v3 4/5] [media] mtk-mdp: convert mtk_mdp_dev.comp array to list
+Date: Thu,  7 May 2020 20:23:48 +1000
+Message-Id: <20200507202337.v3.4.I22b7dfc5e6977f5c149f82594832b5bd1d978af9@changeid>
 X-Mailer: git-send-email 2.26.2.526.g744177e7f7-goog
 In-Reply-To: <20200507102345.81849-1-eizan@chromium.org>
 References: <20200507102345.81849-1-eizan@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200507_032448_749167_0B9D0154 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20200507_032511_747200_80D7B825 
+X-CRM114-Status: GOOD (  15.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,7 +96,7 @@ Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
  Houlong Wei <houlong.wei@mediatek.com>, Eizan Miyamoto <eizan@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Enric Balletbo I Serra <enric.balletbo@collabora.com>,
  linux-mediatek@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
@@ -105,38 +104,220 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is a cleanup to better handle errors during MDP probe.
+The functions mtk_mdp_register/unregister_component have been created to
+add / remove items from the list of components.
+
+This will eventually enable us to specify a list of components in the
+device tree instead of hardcoding them into this driver.
+
+The list is modified by a single thread at driver probe time, and will
+not be traversed by another thread until the call to pm_runtime_enable
+at the end of probing.
 
 Signed-off-by: Eizan Miyamoto <eizan@chromium.org>
-Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Reviewed-by: Enric Balletbo I Serra <enric.balletbo@collabora.com>
 ---
 
 Changes in v3: None
-Changes in v2:
-- remove unnecessary error handling labels in favor of err_m2m_register
+Changes in v2: None
 
- drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ drivers/media/platform/mtk-mdp/mtk_mdp_comp.c |  1 +
+ drivers/media/platform/mtk-mdp/mtk_mdp_comp.h |  2 +
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 46 +++++++++++++------
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.h | 10 +++-
+ 4 files changed, 43 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-index 9b24b8d46eb7..17d155219ba2 100644
---- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-+++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-@@ -188,8 +188,12 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
+index c76cd61fb178..da2bdad7a8d1 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
+@@ -103,6 +103,7 @@ int mtk_mdp_comp_init(struct device *dev, struct device_node *node,
+ 		return -EINVAL;
  	}
  
- 	mdp->vpu_dev = vpu_get_plat_device(pdev);
--	vpu_wdt_reg_handler(mdp->vpu_dev, mtk_mdp_reset_handler, mdp,
--			    VPU_RST_MDP);
-+	ret = vpu_wdt_reg_handler(mdp->vpu_dev, mtk_mdp_reset_handler, mdp,
-+				  VPU_RST_MDP);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to register reset handler\n");
-+		goto err_m2m_register;
++	INIT_LIST_HEAD(&comp->node);
+ 	comp->dev_node = of_node_get(node);
+ 	comp->id = comp_id;
+ 	comp->type = mtk_mdp_matches[comp_id].type;
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
+index 3b83bd6e0d8b..1f745891c6c3 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
+@@ -36,6 +36,7 @@ enum mtk_mdp_comp_id {
+ 
+ /**
+  * struct mtk_mdp_comp - the MDP's function component data
++ * @node:	list node to track sibing MDP components
+  * @dev_node:	component device node
+  * @clk:	clocks required for component
+  * @larb_dev:	SMI device required for component
+@@ -43,6 +44,7 @@ enum mtk_mdp_comp_id {
+  * @id:		component ID
+  */
+ struct mtk_mdp_comp {
++	struct list_head	node;
+ 	struct device_node	*dev_node;
+ 	struct clk		*clk[2];
+ 	struct device		*larb_dev;
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+index 17d155219ba2..40b9fda8b03b 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+@@ -55,19 +55,19 @@ MODULE_DEVICE_TABLE(of, mtk_mdp_of_ids);
+ static void mtk_mdp_clock_on(struct mtk_mdp_dev *mdp)
+ {
+ 	struct device *dev = &mdp->pdev->dev;
+-	int i;
++	struct mtk_mdp_comp *comp_node;
+ 
+-	for (i = 0; i < ARRAY_SIZE(mdp->comp); i++)
+-		mtk_mdp_comp_clock_on(dev, mdp->comp[i]);
++	list_for_each_entry(comp_node, &mdp->comp_list, node)
++		mtk_mdp_comp_clock_on(dev, comp_node);
+ }
+ 
+ static void mtk_mdp_clock_off(struct mtk_mdp_dev *mdp)
+ {
+ 	struct device *dev = &mdp->pdev->dev;
+-	int i;
++	struct mtk_mdp_comp *comp_node;
+ 
+-	for (i = 0; i < ARRAY_SIZE(mdp->comp); i++)
+-		mtk_mdp_comp_clock_off(dev, mdp->comp[i]);
++	list_for_each_entry(comp_node, &mdp->comp_list, node)
++		mtk_mdp_comp_clock_off(dev, comp_node);
+ }
+ 
+ static void mtk_mdp_wdt_worker(struct work_struct *work)
+@@ -91,12 +91,25 @@ static void mtk_mdp_reset_handler(void *priv)
+ 	queue_work(mdp->wdt_wq, &mdp->wdt_work);
+ }
+ 
++void mtk_mdp_register_component(struct mtk_mdp_dev *mdp,
++				struct mtk_mdp_comp *comp)
++{
++	list_add(&mdp->comp_list, &comp->node);
++}
++
++void mtk_mdp_unregister_component(struct mtk_mdp_dev *mdp,
++				  struct mtk_mdp_comp *comp)
++{
++	list_del(&comp->node);
++}
++
+ static int mtk_mdp_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_mdp_dev *mdp;
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *node, *parent;
+-	int i, ret = 0;
++	struct mtk_mdp_comp *comp, *comp_temp;
++	int ret = 0;
+ 
+ 	mdp = devm_kzalloc(dev, sizeof(*mdp), GFP_KERNEL);
+ 	if (!mdp)
+@@ -104,6 +117,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+ 
+ 	mdp->id = pdev->id;
+ 	mdp->pdev = pdev;
++	INIT_LIST_HEAD(&mdp->comp_list);
+ 	INIT_LIST_HEAD(&mdp->ctx_list);
+ 
+ 	mutex_init(&mdp->lock);
+@@ -124,7 +138,6 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+ 		const struct of_device_id *of_id;
+ 		enum mtk_mdp_comp_type comp_type;
+ 		int comp_id;
+-		struct mtk_mdp_comp *comp;
+ 
+ 		of_id = of_match_node(mtk_mdp_comp_dt_ids, node);
+ 		if (!of_id)
+@@ -150,13 +163,14 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+ 			of_node_put(node);
+ 			goto err_comp;
+ 		}
+-		mdp->comp[comp_id] = comp;
+ 
+ 		ret = mtk_mdp_comp_init(dev, node, comp, comp_id);
+ 		if (ret) {
+ 			of_node_put(node);
+ 			goto err_comp;
+ 		}
++
++		mtk_mdp_register_component(mdp, comp);
+ 	}
+ 
+ 	mdp->job_wq = create_singlethread_workqueue(MTK_MDP_MODULE_NAME);
+@@ -220,8 +234,10 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+ err_alloc_job_wq:
+ 
+ err_comp:
+-	for (i = 0; i < ARRAY_SIZE(mdp->comp); i++)
+-		mtk_mdp_comp_deinit(dev, mdp->comp[i]);
++	list_for_each_entry_safe(comp, comp_temp, &mdp->comp_list, node) {
++		mtk_mdp_unregister_component(mdp, comp);
++		mtk_mdp_comp_deinit(dev, comp);
 +	}
  
- 	platform_set_drvdata(pdev, mdp);
+ 	dev_dbg(dev, "err %d\n", ret);
+ 	return ret;
+@@ -230,7 +246,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+ static int mtk_mdp_remove(struct platform_device *pdev)
+ {
+ 	struct mtk_mdp_dev *mdp = platform_get_drvdata(pdev);
+-	int i;
++	struct mtk_mdp_comp *comp, *comp_temp;
  
+ 	pm_runtime_disable(&pdev->dev);
+ 	vb2_dma_contig_clear_max_seg_size(&pdev->dev);
+@@ -243,8 +259,10 @@ static int mtk_mdp_remove(struct platform_device *pdev)
+ 	flush_workqueue(mdp->job_wq);
+ 	destroy_workqueue(mdp->job_wq);
+ 
+-	for (i = 0; i < ARRAY_SIZE(mdp->comp); i++)
+-		mtk_mdp_comp_deinit(&pdev->dev, mdp->comp[i]);
++	list_for_each_entry_safe(comp, comp_temp, &mdp->comp_list, node) {
++		mtk_mdp_unregister_component(mdp, comp);
++		mtk_mdp_comp_deinit(&pdev->dev, comp);
++	}
+ 
+ 	dev_dbg(&pdev->dev, "%s driver unloaded\n", pdev->name);
+ 	return 0;
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+index bafcccd71f31..1de825386da7 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+@@ -138,7 +138,7 @@ struct mtk_mdp_variant {
+  * @pdev:	pointer to the image processor platform device
+  * @variant:	the IP variant information
+  * @id:		image processor device index (0..MTK_MDP_MAX_DEVS)
+- * @comp:	MDP function components
++ * @comp_list:	list of MDP function components
+  * @m2m_dev:	v4l2 memory-to-memory device data
+  * @ctx_list:	list of struct mtk_mdp_ctx
+  * @vdev:	video device for image processor driver
+@@ -156,7 +156,7 @@ struct mtk_mdp_dev {
+ 	struct platform_device		*pdev;
+ 	struct mtk_mdp_variant		*variant;
+ 	u16				id;
+-	struct mtk_mdp_comp		*comp[MTK_MDP_COMP_ID_MAX];
++	struct list_head		comp_list;
+ 	struct v4l2_m2m_dev		*m2m_dev;
+ 	struct list_head		ctx_list;
+ 	struct video_device		*vdev;
+@@ -223,6 +223,12 @@ struct mtk_mdp_ctx {
+ 
+ extern int mtk_mdp_dbg_level;
+ 
++void mtk_mdp_register_component(struct mtk_mdp_dev *mdp,
++				struct mtk_mdp_comp *comp);
++
++void mtk_mdp_unregister_component(struct mtk_mdp_dev *mdp,
++				  struct mtk_mdp_comp *comp);
++
+ #if defined(DEBUG)
+ 
+ #define mtk_mdp_dbg(level, fmt, args...)				 \
 -- 
 2.26.2.526.g744177e7f7-goog
 
