@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F24CC4724C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 10:25:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BEB49C38A24
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 10:25:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 152A22075E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 10:25:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8AC57208E4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 10:25:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Nev3DFrP";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="bFZX//5u"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 152A22075E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rm5KPoK7";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="GNMgHUHa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8AC57208E4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,63 +26,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NeL/i2HR0/tWsIa0O/f1KuTshfaNYNWaigYZh9rbdF0=; b=Nev3DFrP1QpnA9
-	cAP2baZq20FeJbPCZytNTpw8gSlXz8V42bHin/VVlR+M7Lc9BHHi+cv5TNI4xC9WNT7e++wJmRFAw
-	Eb1nbSuW9eRR4oLyS3WYLNIp+z80QpRqH8gGXZPb/On0Du+wn5ZbH1gmp7IcMzIpqU12xHVrrM9nz
-	y090cCcl9fE9JFMar394R6ROjEtZ2obuZWwK7Ffet+Hh49m1TWStWzpOEnbepJg/KHmS4MtYdYokp
-	2457L5vYctk3Sd1C9MqpSO/X+ad2XXE1+4yPhyrX2gwcSGCpSTmTokDZK9qKdXZ9mXJyJptKMRYBM
-	KNXPiQ+DkYZBO7e2PiEg==;
+	List-Owner; bh=x7kQXlYzh3iRsjNHX9ATiofTPjoelePcpDOx3slkDUQ=; b=rm5KPoK7GGb1ro
+	aVDDuBH4xwyC6TTR5r77DnnNL0g4Br38LR0xmoBy2qt6VKStIrERkLePjksBfzuq4r+ztvmS+73b/
+	SlYXqfjTkUj5D48+H3RdCbRnbv7/xX9Is8Z5qK4Zk0UrWh/OBfBtMDxY1tWMM8Q+JB2PTC1ZfPGcY
+	TaGR701aAqkvX9t5T5vA/jtku28A1qX754Re6q4BNtcTPSXNMZd4IvvGovi5TLbkYFplKy5CeZK0s
+	6lrsf4Uf602mJa/6s4cMGcBQ44Gqzg0x2Y6KQP8IC32c4rDuTTjZzqmNsHY4jo6NYKNjtAJR1i9MO
+	GWgsefrCy9YbtyrT1I3Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWdhw-00084y-TP; Thu, 07 May 2020 10:24:48 +0000
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
+	id 1jWdiS-0002O3-Kx; Thu, 07 May 2020 10:25:20 +0000
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWdhQ-0007c5-9v
- for linux-mediatek@lists.infradead.org; Thu, 07 May 2020 10:24:17 +0000
-Received: by mail-pj1-x1043.google.com with SMTP id e6so2428102pjt.4
- for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2020 03:24:15 -0700 (PDT)
+ id 1jWdhh-0007rh-8s
+ for linux-mediatek@lists.infradead.org; Thu, 07 May 2020 10:24:34 +0000
+Received: by mail-pg1-x544.google.com with SMTP id s18so2323945pgl.12
+ for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2020 03:24:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=oo1xnFJoKnJRPCb1k/kpUqpuervQpCi0IylZD35uCtU=;
- b=bFZX//5u1biNAhAdVXKnxlQhgXZg0E2/qIYtejPF3hTyPzdudv+Hhol6yhMhe+pLXR
- qi4+lJDJD7wqFhb1fbU2HQ7nJpMx8oxCrZRVXU3DeP/7FtrWOGlSHLeIoomLn/ZIuZt1
- UiMxHSLmOE2/9gbS6u8Dw1em28VAE3YDr4jx0=
+ bh=uayLP2IQIIMajpdlHbzdkBKHnRVFxtyMOMcfphNpLD0=;
+ b=GNMgHUHacwUvRBlDY0qArxRb4Pu+eWtZHMaGVHLWsilTyL8VGV+tTJxWb2nMRZdoEr
+ xamhmauOh8CrNbLvXypYcr9cM5xkCl36Xi5ODaECqcmO8/fbNNAhFJBSKsPF8+d+2rW6
+ t52imrK2WKyuJMQ4xYUNExzjoG8mXm/7OAnQE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=oo1xnFJoKnJRPCb1k/kpUqpuervQpCi0IylZD35uCtU=;
- b=t+ghJ9XVZ6N9CRCcddpScJ8RWm8YrOTHIJMDFz4n2w8detxI+MsArErLcxiqkCMp6V
- lZ6bNDsErxzt46y5rgTeAVOiRb+MzRE+zbi+SIPoeoClMb/SZ1AiUrQHNUzx2XS2gbgk
- TSZa5OZdteg0GZczx9IVmDPREbKoOonwmUk9cA4uUW6/n3O3myNFNGHTO5+UlBo1w0Lb
- lffbo5jJgh2/Kl4Zf3m17nwBw2l6Q+6NRRutyAvl1GI1xk/8zvPJDf46GuB6aQ/J/6oe
- KETjWf+eIvm5/a32l8onEmhYPV3Hhyw5egEC70oOmLn1lZRZOgHiMnkXAso5iOsiYFQi
- 28AA==
-X-Gm-Message-State: AGi0PuYL+zFvTWKeg6J4AJTQ9W7a/707d7giTvUmZaFY890dUydNlyEe
- S5uT19BgsqW5Tp1t2waKUjS53Q==
-X-Google-Smtp-Source: APiQypK0Yj463Sz55i7hlJ8Wfduxc6jBmzjwL3+Xbpt0RRZaW6Bed1aBCs2s4nzl9RneQvMrKQc2Lw==
-X-Received: by 2002:a17:90a:24e6:: with SMTP id
- i93mr14512370pje.13.1588847055212; 
- Thu, 07 May 2020 03:24:15 -0700 (PDT)
+ bh=uayLP2IQIIMajpdlHbzdkBKHnRVFxtyMOMcfphNpLD0=;
+ b=ZO7VGBeb2M+V7r7RoGbZ+B9rBaemloYKMq8XWrRLzar1LUZYkg9iyTpstUgLAKJwyu
+ al/B8JOS6/zgmcmPbJIWuiQg4W8jUKT3hNufXMYOdv5hG8ygsvXyIvczoepCfTqgAFBM
+ HZoElzcCOwhuk++lmu7mxTu6XDqeXmMViM6g/rN2vh3BSPuB4YuqLJ7O1F1K50sq3fkK
+ 3IqvTSc02f5HkEtdPjswRqi+L1bTwHPqfUtlkSAw216862pmNPhn2kkEp039/7Fvw95I
+ 2HifnHkMLQhLk/D9GO9k2+ksLzQu6FYGc+zVVU9TDzHw+3+yoJm/wHTqGCak/p6PYBwW
+ Z+4w==
+X-Gm-Message-State: AGi0PubvZX9L5pbXloOreA0pvUjYfqOKnLfBXZWHTWkvdkubM1cq72qA
+ nvHsh2vSztBgim1L2iIPY/0abQ==
+X-Google-Smtp-Source: APiQypLYecQMcanYHXpWS67HlqoWpLrEJDzi2gez5ZNWrCDgTREBk/pph4o5wU3OqaQZOryRyKhRBw==
+X-Received: by 2002:a63:a61:: with SMTP id z33mr10826593pgk.440.1588847071729; 
+ Thu, 07 May 2020 03:24:31 -0700 (PDT)
 Received: from localhost ([2401:fa00:9:14:a92f:c47d:76a8:b09e])
- by smtp.gmail.com with ESMTPSA id i185sm4408872pfg.14.2020.05.07.03.24.11
+ by smtp.gmail.com with ESMTPSA id 6sm4503318pfj.123.2020.05.07.03.24.27
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 May 2020 03:24:14 -0700 (PDT)
+ Thu, 07 May 2020 03:24:31 -0700 (PDT)
 From: Eizan Miyamoto <eizan@chromium.org>
 To: LKML <linux-kernel@vger.kernel.org>
-Subject: [PATCH v3 1/5] [media] mtk-mdp: remove mtk_mdp_comp.regs from
- mtk_mdp_comp.h
-Date: Thu,  7 May 2020 20:23:42 +1000
-Message-Id: <20200507202337.v3.1.I0d52fd84fe481e254a10960b060f32c47ce0d202@changeid>
+Subject: [PATCH v3 2/5] [media] mtk-mdp: handle
+ vb2_dma_contig_set_max_seg_size errors during probe
+Date: Thu,  7 May 2020 20:23:44 +1000
+Message-Id: <20200507202337.v3.2.If340fa06d86053aaea25841b36741fe69c3126dd@changeid>
 X-Mailer: git-send-email 2.26.2.526.g744177e7f7-goog
 In-Reply-To: <20200507102345.81849-1-eizan@chromium.org>
 References: <20200507102345.81849-1-eizan@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200507_032416_369682_C8CECEFE 
-X-CRM114-Status: UNSURE (   8.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200507_032433_323959_D20A038D 
+X-CRM114-Status: GOOD (  10.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,7 +96,7 @@ Cc: Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
  Houlong Wei <houlong.wei@mediatek.com>, Eizan Miyamoto <eizan@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Enric Balletbo I Serra <enric.balletbo@collabora.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
  linux-mediatek@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
@@ -106,51 +104,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-These fields are not used and can be removed.
+This is a cleanup to better handle errors during MDP probe.
 
 Signed-off-by: Eizan Miyamoto <eizan@chromium.org>
-Reviewed-by: Enric Balletbo I Serra <enric.balletbo@collabora.com>
+Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
 
 Changes in v3: None
-Changes in v2: None
+Changes in v2:
+- remove unnecessary error handling labels in favor of err_m2m_register
 
- drivers/media/platform/mtk-mdp/mtk_mdp_comp.c | 1 -
- drivers/media/platform/mtk-mdp/mtk_mdp_comp.h | 2 --
- 2 files changed, 3 deletions(-)
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
-index 58abfbdfb82d..c76cd61fb178 100644
---- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
-+++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
-@@ -106,7 +106,6 @@ int mtk_mdp_comp_init(struct device *dev, struct device_node *node,
- 	comp->dev_node = of_node_get(node);
- 	comp->id = comp_id;
- 	comp->type = mtk_mdp_matches[comp_id].type;
--	comp->regs = of_iomap(node, 0);
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+index aeaed2cf4458..9b24b8d46eb7 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+@@ -193,7 +193,11 @@ static int mtk_mdp_probe(struct platform_device *pdev)
  
- 	for (i = 0; i < ARRAY_SIZE(comp->clk); i++) {
- 		comp->clk[i] = of_clk_get(node, i);
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
-index 998a4b953025..3b83bd6e0d8b 100644
---- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
-+++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
-@@ -38,7 +38,6 @@ enum mtk_mdp_comp_id {
-  * struct mtk_mdp_comp - the MDP's function component data
-  * @dev_node:	component device node
-  * @clk:	clocks required for component
-- * @regs:	Mapped address of component registers.
-  * @larb_dev:	SMI device required for component
-  * @type:	component type
-  * @id:		component ID
-@@ -46,7 +45,6 @@ enum mtk_mdp_comp_id {
- struct mtk_mdp_comp {
- 	struct device_node	*dev_node;
- 	struct clk		*clk[2];
--	void __iomem		*regs;
- 	struct device		*larb_dev;
- 	enum mtk_mdp_comp_type	type;
- 	enum mtk_mdp_comp_id	id;
+ 	platform_set_drvdata(pdev, mdp);
+ 
+-	vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
++	ret = vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
++	if (ret) {
++		dev_err(&pdev->dev, "Failed to set vb2 dma mag seg size\n");
++		goto err_m2m_register;
++	}
+ 
+ 	pm_runtime_enable(dev);
+ 	dev_dbg(dev, "mdp-%d registered successfully\n", mdp->id);
 -- 
 2.26.2.526.g744177e7f7-goog
 
