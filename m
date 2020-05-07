@@ -2,57 +2,88 @@ Return-Path: <SRS0=F/ID=6V=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C9F61C38A2A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 21:10:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0F9ACC38A2A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 22:05:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 98F8C20731
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 21:10:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D45F620735
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 May 2020 22:05:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="D5iqUzrR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 98F8C20731
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ucw.cz
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fErQBSdB";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="kOcLODoK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D45F620735
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/8eIj4WoG1swtWqtTLrRwR5AuiEpYdwEvylD48KvmsE=; b=D5iqUzrRy7dg3sngP+pzj6UY0
-	Y04JV0yQp+KoZ69yCh6SC/iIzLMQ8Hc4Em2I5O5HeGBOxCBLH1CczDo/eVfq/tWCx+pyly8ZlTouF
-	bRB9KOfqyeHf53ircyNXqwbjYH/DSHPEZnd5uQgafKJhKqP5f+eeH/RPA0YTgCr8SvoC3CakvrrEi
-	hluhlW7QVEi68AEfRNaAJ47MS9Keb7J8Ja254BhXZwJzUwmZ4KoDUxUiuwyJgjBBsT9clqXG73H9N
-	s5mtBVJWhuwRI4xrpB+OqE0NS4nMAsEaFnSjiiGxLwUxeznqfg2UZFHgQTjYAMS/Ozls5bafwm3sW
-	I5oV2ZaBw==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=IvmzIM0G5c8C65pUgrYDS+1ssQA7/kNh0ftmVCWDs9E=; b=fErQBSdBMtZXfm
+	1Qh1bpmiUWfPlAP1Jiw9JzJDnayeIZ98Img3DQBjPaiNUTZtUN+p+QhiL0MLHHsdNNWqJusMuZOVR
+	ODpw9j0ZlEVjtX8VSbyDg2pBStq6u3yEZYyp1TyEhaEgW/LcwoCsOVEUZ7PXxs6hrcwZ7XVz6F0Yc
+	v2aEl+sh6qXDKYIkwupjWZkb3Vg5msPMyfrV5u7WQllT1kMYXGzI4+kp0/xLD282TewQtJFmzq79l
+	xRQk03ncySve4FGcemMgrySbK5KDWbdLC049IyP6mDvRcbf+CSyDfQiD2Z7jUe6/8RbPtPeaUUGfx
+	Vs6ztJebKhPBHsgVGy3w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWnmb-0004x5-Vx; Thu, 07 May 2020 21:10:18 +0000
-Received: from jabberwock.ucw.cz ([46.255.230.98])
+	id 1jWodr-0001Et-K9; Thu, 07 May 2020 22:05:19 +0000
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWnmM-0002Pj-9H; Thu, 07 May 2020 21:10:04 +0000
-Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
- id 38AD11C0257; Thu,  7 May 2020 23:09:55 +0200 (CEST)
-Date: Thu, 7 May 2020 23:09:54 +0200
-From: Pavel Machek <pavel@ucw.cz>
-To: Jacek Anaszewski <jacek.anaszewski@gmail.com>
-Subject: Re: [PATCH v1] Add support for MediaTek regulator vibrator driver
-Message-ID: <20200507210954.GB19557@duo.ucw.cz>
-References: <20200429081759.26964-1-Xing.Zhang@mediatek.com>
- <20200507174519.GD1216@bug>
- <49089bf3-d64b-2a50-269c-623a6ea9c14c@gmail.com>
+ id 1jWodp-0001EK-70
+ for linux-mediatek@lists.infradead.org; Thu, 07 May 2020 22:05:18 +0000
+Received: by mail-lj1-x243.google.com with SMTP id f18so8006712lja.13
+ for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2020 15:05:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=nPPvWhYSDBZH/W9ZzOHKWz2UFG4yFEnZgxOOVnctufk=;
+ b=kOcLODoKztByz0UBmzjXeqlmhusevIjl+c2HbLw3k5rPnNKk0UOKclN/cgZBe7f2BE
+ KEqsud4Rf5RdhjLb6rTlhUM5ds3Xzk7FnKfAsKFuTOitseFo/B4W7DCsQHn6MIDZOtdM
+ XpjV+SB82Z1h1ka5YTJZ7+6LcnBoSsPmQiuy7w3g1RSKnALtjhnggH/JTqnX8Bs27TGN
+ ood1tyTML/spLGCWlwrocHp6j+kCbFQp1TxUGnP/5eZHSKTDWrjMVOJMV0mMmz5OWK8f
+ xD7VPnGMNREiVpMw0n8DDrvcOIkqDBd0J/2WjILG0vEpGGnV+iSSQP4JFsm6KT8nJ2Q/
+ xEMQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=nPPvWhYSDBZH/W9ZzOHKWz2UFG4yFEnZgxOOVnctufk=;
+ b=c6mD0aSoL9+qc6i17u1eU+GNb8IpbFTVVxTsolidWLyd0e38KGoQoEZZ3/NOsMVYPn
+ eQ1GgAQphEgwqKEFTlzRdi/mh1Y/JSSjFSNkUsfLAH7FCoPGeyIIFBvoYTzevSPA35kf
+ xtK+ZRmjnwywHooUdweoylv/rlz2z7ev3vr3eMyBICillrT4Nf2kyKytCKdfACQQe4aR
+ kUyiJujU9CiYDVTu/fOZUpmCNT3+aWpoHNby5qRCfhmTylrBentvXOa+JNtid/SVaEXV
+ N3vubpNosyAh4Srw5aGU5X5d0bNrQVx26H492a8AA4JuSAUZoLQHOoBpuZPi5/bNpsFa
+ DeOw==
+X-Gm-Message-State: AGi0PuZ5FJsenjVwbf8sWehDKNoVLn3CWIdsnoCCoHArRhvOSZ9FakKH
+ ezs87PBpZqxL0W+XijXZWP8jjzoj0/7POPhzoUxNTw==
+X-Google-Smtp-Source: APiQypKNdCY3OtiIkeJWX0PcE2nxNIMwzLCH+DsayspwmtDmIkVB8t6LffEY5ZO8WubCZPRo18ZG04Dd+peMVypsg08=
+X-Received: by 2002:a2e:2e16:: with SMTP id u22mr10215821lju.243.1588889114309; 
+ Thu, 07 May 2020 15:05:14 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <49089bf3-d64b-2a50-269c-623a6ea9c14c@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <1480357509-28074-1-git-send-email-johan@kernel.org>
+ <1480357509-28074-12-git-send-email-johan@kernel.org>
+ <CA+G9fYvBjUVkVhtRHVm6xXcKe2+tZN4rGdB9FzmpcfpaLhY1+g@mail.gmail.com>
+ <20200507064412.GL2042@localhost> <20200507064734.GA798308@kroah.com>
+ <20200507111312.GA1497799@kroah.com>
+In-Reply-To: <20200507111312.GA1497799@kroah.com>
+From: Naresh Kamboju <naresh.kamboju@linaro.org>
+Date: Fri, 8 May 2020 03:35:02 +0530
+Message-ID: <CA+G9fYu2SrkEHyAzF57xJz5WjgHv361qdL2wPqON_pGS4Vtxmw@mail.gmail.com>
+Subject: Re: [PATCH net 11/16] net: ethernet: marvell: mvneta: fix fixed-link
+ phydev leaks
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Johan Hovold <johan@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200507_141002_492977_3E1A48C2 
-X-CRM114-Status: GOOD (  13.14  )
+X-CRM114-CacheID: sfid-20200507_150517_288272_ED470D63 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,91 +95,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, Xing Zhang <Xing.Zhang@mediatek.com>,
- linux-mediatek@lists.infradead.org, Dan Murphy <dmurphy@ti.com>,
- linux-leds@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============0856332800019361240=="
+Cc: Andrew Lunn <andrew@lunn.ch>, lkft-triage@lists.linaro.org,
+ Pantelis Antoniou <pantelis.antoniou@gmail.com>,
+ Frank Rowand <frowand.list@gmail.com>, Sasha Levin <sashal@kernel.org>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Grygorii Strashko <grygorii.strashko@ti.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Lars Persson <lars.persson@axis.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-omap@vger.kernel.org,
+ Thomas Petazzoni <thomas.petazzoni@free-electrons.com>,
+ Fugang Duan <fugang.duan@nxp.com>,
+ Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>,
+ Netdev <netdev@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>,
+ linux- stable <stable@vger.kernel.org>, linux-renesas-soc@vger.kernel.org,
+ nios2-dev@lists.rocketboards.org, linuxppc-dev@lists.ozlabs.org,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---===============0856332800019361240==
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="cvVnyQ+4j833TQvp"
-Content-Disposition: inline
-
-
---cvVnyQ+4j833TQvp
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu 2020-05-07 22:45:35, Jacek Anaszewski wrote:
-> Hi Pavel,
->=20
-> On 5/7/20 7:45 PM, Pavel Machek wrote:
-> > Hi!
-> >=20
-> > > This patchset add regulator vibrator driver for MTK Soc. The driver
-> > > controls vibrator through regulator's enable and disable.
-> >=20
-> > We'd prefer not to have vibrators in led subsystem.
-> >=20
-> > >=20
-> > > Xing Zhang (3):
-> > >    dt-bindings: add regulator vibrator documentation
-> > >    arm64: mediatek: Add regulator vibrator support
-> > >    Vibrator: Add regulator vibrator driver
-> > >=20
-> > >   .../bindings/leds/regulator-vibrator.txt      |  39 ++
-> > >   arch/arm64/configs/defconfig                  |   1 +
-> > >   drivers/leds/Kconfig                          |  10 +
-> > >   drivers/leds/Makefile                         |   1 +
-> > >   drivers/leds/regulator-vibrator.c             | 450 +++++++++++++++=
-+++
-> >=20
-> > OTOH, connecting LED to regulator might make some sense. I can take the=
- driver with
-> > vibrator functionality stripped, provided it is named the usual way...
->=20
-> We already had an attempt of solving this in more generic way [0],
-> but you opposed then [1]. Just for the record.
-
-That's something different. led-regulator.c might be
-acceptable. Special code to support vibrator quirks... not so much.
-
-Best regards,
-
-									Pavel
---=20
-(english) http://www.livejournal.com/~pavelmachek
-(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
-g.html
-
---cvVnyQ+4j833TQvp
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCXrR5IgAKCRAw5/Bqldv6
-8rhUAJwNZ8AJbpTJwM0okF7XO54EiI6dkQCfdJRagMkst3LRHughjgIVPDh4RiA=
-=07yZ
------END PGP SIGNATURE-----
-
---cvVnyQ+4j833TQvp--
-
-
---===============0856332800019361240==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============0856332800019361240==--
-
+T24gVGh1LCA3IE1heSAyMDIwIGF0IDE2OjQzLCBHcmVnIEtyb2FoLUhhcnRtYW4KPGdyZWdraEBs
+aW51eGZvdW5kYXRpb24ub3JnPiB3cm90ZToKPgo8dHJpbT4KPiA+ID4KPiA+ID4gR3JlZywgM2Y2
+NTA0N2M4NTNhICgib2ZfbWRpbzogYWRkIGhlbHBlciB0byBkZXJlZ2lzdGVyIGZpeGVkLWxpbmsK
+PiA+ID4gUEhZcyIpIG5lZWRzIHRvIGJlIGJhY2twb3J0ZWQgYXMgd2VsbCBmb3IgdGhlc2UuCj4g
+PiA+Cj4gPiA+IE9yaWdpbmFsIHNlcmllcyBjYW4gYmUgZm91bmQgaGVyZToKPiA+ID4KPiA+ID4g
+ICAgIGh0dHBzOi8vbGttbC5rZXJuZWwub3JnL3IvMTQ4MDM1NzUwOS0yODA3NC0xLWdpdC1zZW5k
+LWVtYWlsLWpvaGFuQGtlcm5lbC5vcmcKPiA+Cj4gPiBBaCwgdGhhbmtzIGZvciB0aGF0LCBJIHRo
+b3VnaHQgSSBkcm9wcGVkIGFsbCBvZiB0aGUgb25lcyB0aGF0IGNhdXNlZAo+ID4gYnVpbGQgZXJy
+b3JzLCBidXQgbWlzc2VkIHRoZSBhYm92ZSBvbmUuICBJJ2xsIGdvIHRha2UgdGhlIHdob2xlIHNl
+cmllcwo+ID4gaW5zdGVhZC4KPgo+IFRoaXMgc2hvdWxkIG5vdyBhbGwgYmUgZml4ZWQgdXAsIHRo
+YW5rcy4KCldoaWxlIGJ1aWxkaW5nIGtlcm5lbCBJbWFnZSBmb3IgYXJtIGFyY2hpdGVjdHVyZSBv
+biBzdGFibGUtcmMgNC40IGJyYW5jaAp0aGUgZm9sbG93aW5nIGJ1aWxkIGVycm9yIGZvdW5kLgoK
+b2ZfbWRpbzogYWRkIGhlbHBlciB0byBkZXJlZ2lzdGVyIGZpeGVkLWxpbmsgUEhZcwpjb21taXQg
+M2Y2NTA0N2M4NTNhMmE1YWJjZDhhYzE5ODRhZjM0NTJiNWRmNGFkYSB1cHN0cmVhbS4KCkFkZCBo
+ZWxwZXIgdG8gZGVyZWdpc3RlciBmaXhlZC1saW5rIFBIWXMgcmVnaXN0ZXJlZCB1c2luZwpvZl9w
+aHlfcmVnaXN0ZXJfZml4ZWRfbGluaygpLgoKQ29udmVydCB0aGUgdHdvIGRyaXZlcnMgdGhhdCBj
+YXJlIHRvIGRlcmVnaXN0ZXIgdGhlaXIgZml4ZWQtbGluayBQSFlzIHRvCnVzZSB0aGUgbmV3IGhl
+bHBlciwgYnV0IG5vdGUgdGhhdCBtb3N0IGRyaXZlcnMgY3VycmVudGx5IGZhaWwgdG8gZG8gc28u
+CgpTaWduZWQtb2ZmLWJ5OiBKb2hhbiBIb3ZvbGQgPGpvaGFuQGtlcm5lbC5vcmc+ClNpZ25lZC1v
+ZmYtYnk6IERhdmlkIFMuIE1pbGxlciA8ZGF2ZW1AZGF2ZW1sb2Z0Lm5ldD4KW29ubHkgdGFrZSBo
+ZWxwZXIgZnVuY3Rpb24gZm9yIDQuNC55IC0gZ3JlZ2toXQoKICMgbWFrZSAtc2sgS0JVSUxEX0JV
+SUxEX1VTRVI9VHV4QnVpbGQgLUMvbGludXggLWoxNiBBUkNIPWFybQpDUk9TU19DT01QSUxFPWFy
+bS1saW51eC1nbnVlYWJpaGYtIEhPU1RDQz1nY2MgQ0M9InNjY2FjaGUKYXJtLWxpbnV4LWdudWVh
+YmloZi1nY2MiIE89YnVpbGQgekltYWdlCjcwICMKNzEgLi4vZHJpdmVycy9vZi9vZl9tZGlvLmM6
+IEluIGZ1bmN0aW9uIOKAmG9mX3BoeV9kZXJlZ2lzdGVyX2ZpeGVkX2xpbmvigJk6CjcyIC4uL2Ry
+aXZlcnMvb2Yvb2ZfbWRpby5jOjM3OToyOiBlcnJvcjogaW1wbGljaXQgZGVjbGFyYXRpb24gb2YK
+ZnVuY3Rpb24g4oCYZml4ZWRfcGh5X3VucmVnaXN0ZXLigJk7IGRpZCB5b3UgbWVhbiDigJhmaXhl
+ZF9waHlfcmVnaXN0ZXLigJk/ClstV2Vycm9yPWltcGxpY2l0LWZ1bmN0aW9uLWRlY2xhcmF0aW9u
+XQo3MyAgMzc5IHwgZml4ZWRfcGh5X3VucmVnaXN0ZXIocGh5ZGV2KTsKNzQgIHwgXn5+fn5+fn5+
+fn5+fn5+fn5+fn4KNzUgIHwgZml4ZWRfcGh5X3JlZ2lzdGVyCjc2IC4uL2RyaXZlcnMvb2Yvb2Zf
+bWRpby5jOjM4MToyMjogZXJyb3I6IOKAmHN0cnVjdCBwaHlfZGV2aWNl4oCZIGhhcyBubwptZW1i
+ZXIgbmFtZWQg4oCYbWRpb+KAmTsgZGlkIHlvdSBtZWFuIOKAmG1kaXjigJk/Cjc3ICAzODEgfCBw
+dXRfZGV2aWNlKCZwaHlkZXYtPm1kaW8uZGV2KTsgLyogb2ZfcGh5X2ZpbmRfZGV2aWNlKCkgKi8K
+NzggIHwgXn5+fgo3OSAgfCBtZGl4Cgo+Cj4gZ3JlZyBrLWgKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApM
+aW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
