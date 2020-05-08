@@ -2,100 +2,88 @@ Return-Path: <SRS0=AGTb=6W=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A83BC38A2A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 05:54:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 52765C38A2A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 06:21:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1C00220870
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 05:54:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2822C20708
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 06:21:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="brccmjKN";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="K1VwBxCB"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1C00220870
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RUOGk8zW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2822C20708
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yRvFUPOm4iu8hbm9X4dkfCeEcYlu3Xo18LHl+UqNukw=; b=brccmjKNBg+fn3
-	oC/ubnI//VIb7TrE67+lbJgsYIdmVl4smX16vcbuyKxg5IYDjk0DEwVBMINl02eOaxD6jspMkG08L
-	/Fkd1A4nBvw2Vn0beyHnpdXbaklVHmGqH9+89MTDaWLuzYwChkte90kXClqSU9P+ibGiblB8LXvqw
-	54PSBs570bRylEY2IbrTnaSe0Ba+KPmV0dhDzQouYsBqSr+pgOnKtiDdlsSGyW2Gq5S/G4O59lsk9
-	QCyECwpSE6WW1EeL9yL9gW1FOwq4A3UGkgRwqZqKYSXCNCQW2k4/FsrEaG0y1JXkjCMQ3D8VWMQHK
-	/u2cFdpp2vwpl/skdskQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZpnsYOHN93Ke5cveyqtT7kmYkBsdezteFc6smgpAV5E=; b=RUOGk8zWB/JARx
+	duUSNxNzt1X0WpJ+W5+PogCGFB5B4M0B0wKjp86zHHZ9NdW+LS3lss08ZdNGC2oanEOEmhn0rOVDq
+	sVUhQF3s0AhoXPFi56SgxEge3Tvar6ptj0v9JJefLLkzsUbJTXmj2fv8fXx9qmoqHhexWKFLqZu7j
+	hSM3veyX+fy2hanv4uHk71zwvCiV2y3vpffvZuLIAFUrdC/4bpa4r0K2fs9DnZ5eh/goCHTKlN9Yi
+	z4/OsjP1ekmOVmJIviyovAV1SWU9Wkvqy37E54MtXYncc1NzSlIDFWIU/OWGgbad8hqccL01IHe94
+	n9qjSTG41hSGFXNUODwA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWvy5-0002jO-Om; Fri, 08 May 2020 05:54:41 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1jWwO1-0004yM-ME; Fri, 08 May 2020 06:21:29 +0000
+Received: from mail-lj1-f193.google.com ([209.85.208.193])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWvy2-0002iX-Ge; Fri, 08 May 2020 05:54:39 +0000
-Received: by mail-wm1-x341.google.com with SMTP id e26so8959616wmk.5;
- Thu, 07 May 2020 22:54:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=cBuXlY0lPbTzvqFi3J9oIqLP+OF/m7YpRIj6GR1Gj+U=;
- b=K1VwBxCBXCfE4HZYWiqihZRJtx8ctP1mVKfq1o6aCJtu/K2DwQN6yjel0+96+k0mcG
- 0uuiGrKz4zsQBMXrSSEoq364xNTJ0XfUyV8v85i/bpTYtVg9HOLeugf599IF0IqQbtQ0
- HFuvcYQomO1LBbkbc814Hmv+6PqZ8vuzbej4nEQDUqXoysFOc58ddm3QesuV+2jOOEki
- fJy7J3YgVTkYXJsIaZHg+NAtJmVDKvdUCxK1SIi+tER4fIclIQXInU9RVQAgG+SaECXp
- 2NEaDBLaPWFmApTkZQjPaOAgRMoh6nbkR85XVuxIcheeDeBQLR48s6gZdmQ+i1xfKWoY
- EByg==
+ id 1jWwNz-0004wq-Bo
+ for linux-mediatek@lists.infradead.org; Fri, 08 May 2020 06:21:28 +0000
+Received: by mail-lj1-f193.google.com with SMTP id a21so439647ljb.9
+ for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2020 23:21:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=cBuXlY0lPbTzvqFi3J9oIqLP+OF/m7YpRIj6GR1Gj+U=;
- b=IhHpSSNwfNCh6rXiaMipv/UBeJrwG+S9ucJgw/I7YLd2sCkj6tbu4/8WKYScMdl6QE
- KGWwE2aoJ6kUtNdsF2iK93asB4nIJhT/1Qrm43kyqkV9Xwx4EmiXFJEDCql2jTu1uxh9
- f/osiqOQRWBuMz05WlT5/JehcLpeGMzLapPhjineDsvZ1QJa2cDEanizRKBcTLAHdCwG
- 60a+Ip6UHHLQ++DRdMA7fvZajHZR3YxlTyPofQJOeAqYlZIPyCjxmUOMPKUOn2RRlD4C
- 0/pXro0bLBBXATPA875SY55Dfn375ISjD3CnLNUGiyxPyzBjHDAvy5OIPGdfw63NStHL
- oJuA==
-X-Gm-Message-State: AGi0PuaDFqPWuLfun8fZbbUytLizXjt8cAma9HaRKRlOPSDqZIViaDrk
- VC9ikd2cB8X/NMwcRVfeTXwFcAJ0
-X-Google-Smtp-Source: APiQypJN3BPfHFPyK3WDkQRQQXzBNgHR1dVgfWeEuUZhd4lAzK8YcVD4LeyB6dzQUvulSYABR4hCgg==
-X-Received: by 2002:a1c:5f46:: with SMTP id t67mr15219360wmb.156.1588917274753; 
- Thu, 07 May 2020 22:54:34 -0700 (PDT)
-Received: from ?IPv6:2003:ea:8f28:5200:e838:acb:794:1ab9?
- (p200300EA8F285200E8380ACB07941AB9.dip0.t-ipconnect.de.
- [2003:ea:8f28:5200:e838:acb:794:1ab9])
- by smtp.googlemail.com with ESMTPSA id o6sm1177075wrw.63.2020.05.07.22.54.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 May 2020 22:54:34 -0700 (PDT)
-Subject: Re: [PATCH 05/11] net: core: provide devm_register_netdev()
-To: Jakub Kicinski <kuba@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>
-References: <20200505140231.16600-1-brgl@bgdev.pl>
- <20200505140231.16600-6-brgl@bgdev.pl>
- <20200505103105.1c8b0ce3@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <CAMRc=Mf0ipaeLKhHCZaq2YeZKzi=QBAse7bEz2hHxXN5OL=ptg@mail.gmail.com>
- <20200506101236.25a13609@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <CAMpxmJWckQdKvUGFDAJ1WMtD9WoGWmGe3kyKYhcfRT2nOB93xw@mail.gmail.com>
- <20200507095315.1154a1a6@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
- <CAMpxmJUEk3itZs4HujJOXUiL80kmEvGBvLF0NFc2UQoVDVTWRg@mail.gmail.com>
- <20200507155650.0c19229e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-From: Heiner Kallweit <hkallweit1@gmail.com>
-Message-ID: <c6e12eb6-d6ea-9ba9-4559-b2eda326601f@gmail.com>
-Date: Fri, 8 May 2020 07:54:28 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=l07sjg7wad11JybQiwBPplAsmA/VCV2GQr8sTEyBm88=;
+ b=ZBH9h5suxzsf7Jjknt4rc3McIK+qjp09GRdENDjGo9xL6dtLxBBOZs4m19sRqQnuGb
+ +65cT1CzfSCdpeBwgqV7EK2rNT+fJ4DQJjyamc+MFEcJ96vZ0qhX9TBJfvTNqK2gM461
+ kLb/Wh4Bb24ubvrN4eOEqrBpzR0lrG2UdD8g8me7z8Vju5GnaUWbmoEX6IZZeZbOdaI0
+ zlNNIV7cNgZj1vcjfqPBQHUzdfUBoB10R/HWj/TQti87dyYj83w9bNWp5NoUeq8GngW3
+ t5UWitK/PqWlNjq4nX1zBnOS52DHPFXn3/jsgRjRQHwqjeFAZ30fM+VFJqmvp47GuKLw
+ z8HQ==
+X-Gm-Message-State: AOAM532gCfR/ptc/WKOdmh19NHjyW1HlLvEwXwXMfGrBBcFkhLH+WHIF
+ t+/dGGj3Q5Y9LaQoC5kj2f8=
+X-Google-Smtp-Source: ABdhPJzQwccjomPZVXTofZDq7QNMtMm+acyePCPBUNykc5Wt6G9pf/ArU7L/ehrFMv9M6FmHt7FVvw==
+X-Received: by 2002:a05:651c:549:: with SMTP id
+ q9mr624525ljp.236.1588918884533; 
+ Thu, 07 May 2020 23:21:24 -0700 (PDT)
+Received: from xi.terra (c-beaee455.07-184-6d6c6d4.bbcust.telenor.se.
+ [85.228.174.190])
+ by smtp.gmail.com with ESMTPSA id z64sm428692lfa.50.2020.05.07.23.21.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 May 2020 23:21:23 -0700 (PDT)
+Received: from johan by xi.terra with local (Exim 4.92.3)
+ (envelope-from <johan@kernel.org>)
+ id 1jWwNr-0001TQ-0H; Fri, 08 May 2020 08:21:19 +0200
+Date: Fri, 8 May 2020 08:21:19 +0200
+From: Johan Hovold <johan@kernel.org>
+To: Naresh Kamboju <naresh.kamboju@linaro.org>
+Subject: Re: [PATCH net 11/16] net: ethernet: marvell: mvneta: fix fixed-link
+ phydev leaks
+Message-ID: <20200508062119.GE25962@localhost>
+References: <1480357509-28074-1-git-send-email-johan@kernel.org>
+ <1480357509-28074-12-git-send-email-johan@kernel.org>
+ <CA+G9fYvBjUVkVhtRHVm6xXcKe2+tZN4rGdB9FzmpcfpaLhY1+g@mail.gmail.com>
+ <20200507064412.GL2042@localhost>
+ <20200507064734.GA798308@kroah.com>
+ <20200507111312.GA1497799@kroah.com>
+ <CA+G9fYu2SrkEHyAzF57xJz5WjgHv361qdL2wPqON_pGS4Vtxmw@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20200507155650.0c19229e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <CA+G9fYu2SrkEHyAzF57xJz5WjgHv361qdL2wPqON_pGS4Vtxmw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200507_225438_582527_72B79DDF 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20200507_232127_399518_1670D51D 
+X-CRM114-Status: GOOD (  15.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,43 +95,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree <devicetree@vger.kernel.org>, Arnd Bergmann <arnd@arndb.de>,
- netdev <netdev@vger.kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
- Sean Wang <sean.wang@mediatek.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, Fabien Parent <fparent@baylibre.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- "David S . Miller" <davem@davemloft.net>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Andrew Lunn <andrew@lunn.ch>, lkft-triage@lists.linaro.org,
+ Pantelis Antoniou <pantelis.antoniou@gmail.com>,
+ Frank Rowand <frowand.list@gmail.com>, Sasha Levin <sashal@kernel.org>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Grygorii Strashko <grygorii.strashko@ti.com>,
+ Johan Hovold <johan@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Lars Persson <lars.persson@axis.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-omap@vger.kernel.org,
+ Thomas Petazzoni <thomas.petazzoni@free-electrons.com>,
+ Fugang Duan <fugang.duan@nxp.com>,
+ Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ linux- stable <stable@vger.kernel.org>, linux-renesas-soc@vger.kernel.org,
+ Netdev <netdev@vger.kernel.org>, nios2-dev@lists.rocketboards.org,
+ linuxppc-dev@lists.ozlabs.org, "David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 08.05.2020 00:56, Jakub Kicinski wrote:
-> On Thu, 7 May 2020 19:03:44 +0200 Bartosz Golaszewski wrote:
->>> To implement Edwin's suggestion? Makes sense, but I'm no expert, let's
->>> also CC Heiner since he was asking about it last time.  
->>
->> Yes, because taking the last bit of priv_flags from net_device seems
->> to be more controversial but if net maintainers are fine with that I
->> can simply go with the current approach.
-> 
-> From my perspective what Edwin suggests makes sense. Apart from
-> little use for the bit after probe, it also seems cleaner for devres 
-> to be able to recognize managed objects based on its own state.
-> 
-What I was saying is that we should catch the case that a driver
-author uses a device-managed register() w/o doing the same for the
-alloc(). A core function should not assume that driver authors do
-sane things only.
-I don't have a strong preference how it should be done.
-Considering what is being discussed, have a look at get_pci_dr() and
-find_pci_dr(), they deal with managing which parts of the PCI
-subsystem are device-managed.
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gRnJpLCBNYXkgMDgsIDIwMjAgYXQgMDM6MzU6MDJBTSArMDUzMCwgTmFyZXNoIEthbWJvanUg
+d3JvdGU6Cj4gT24gVGh1LCA3IE1heSAyMDIwIGF0IDE2OjQzLCBHcmVnIEtyb2FoLUhhcnRtYW4K
+PiA8Z3JlZ2toQGxpbnV4Zm91bmRhdGlvbi5vcmc+IHdyb3RlOgo+ID4KPiA8dHJpbT4KPiA+ID4g
+Pgo+ID4gPiA+IEdyZWcsIDNmNjUwNDdjODUzYSAoIm9mX21kaW86IGFkZCBoZWxwZXIgdG8gZGVy
+ZWdpc3RlciBmaXhlZC1saW5rCj4gPiA+ID4gUEhZcyIpIG5lZWRzIHRvIGJlIGJhY2twb3J0ZWQg
+YXMgd2VsbCBmb3IgdGhlc2UuCj4gPiA+ID4KPiA+ID4gPiBPcmlnaW5hbCBzZXJpZXMgY2FuIGJl
+IGZvdW5kIGhlcmU6Cj4gPiA+ID4KPiA+ID4gPiAgICAgaHR0cHM6Ly9sa21sLmtlcm5lbC5vcmcv
+ci8xNDgwMzU3NTA5LTI4MDc0LTEtZ2l0LXNlbmQtZW1haWwtam9oYW5Aa2VybmVsLm9yZwo+ID4g
+Pgo+ID4gPiBBaCwgdGhhbmtzIGZvciB0aGF0LCBJIHRob3VnaHQgSSBkcm9wcGVkIGFsbCBvZiB0
+aGUgb25lcyB0aGF0IGNhdXNlZAo+ID4gPiBidWlsZCBlcnJvcnMsIGJ1dCBtaXNzZWQgdGhlIGFi
+b3ZlIG9uZS4gIEknbGwgZ28gdGFrZSB0aGUgd2hvbGUgc2VyaWVzCj4gPiA+IGluc3RlYWQuCj4g
+Pgo+ID4gVGhpcyBzaG91bGQgbm93IGFsbCBiZSBmaXhlZCB1cCwgdGhhbmtzLgo+IAo+IFdoaWxl
+IGJ1aWxkaW5nIGtlcm5lbCBJbWFnZSBmb3IgYXJtIGFyY2hpdGVjdHVyZSBvbiBzdGFibGUtcmMg
+NC40IGJyYW5jaAo+IHRoZSBmb2xsb3dpbmcgYnVpbGQgZXJyb3IgZm91bmQuCj4gCj4gb2ZfbWRp
+bzogYWRkIGhlbHBlciB0byBkZXJlZ2lzdGVyIGZpeGVkLWxpbmsgUEhZcwo+IGNvbW1pdCAzZjY1
+MDQ3Yzg1M2EyYTVhYmNkOGFjMTk4NGFmMzQ1MmI1ZGY0YWRhIHVwc3RyZWFtLgo+IAo+IEFkZCBo
+ZWxwZXIgdG8gZGVyZWdpc3RlciBmaXhlZC1saW5rIFBIWXMgcmVnaXN0ZXJlZCB1c2luZwo+IG9m
+X3BoeV9yZWdpc3Rlcl9maXhlZF9saW5rKCkuCj4gCj4gQ29udmVydCB0aGUgdHdvIGRyaXZlcnMg
+dGhhdCBjYXJlIHRvIGRlcmVnaXN0ZXIgdGhlaXIgZml4ZWQtbGluayBQSFlzIHRvCj4gdXNlIHRo
+ZSBuZXcgaGVscGVyLCBidXQgbm90ZSB0aGF0IG1vc3QgZHJpdmVycyBjdXJyZW50bHkgZmFpbCB0
+byBkbyBzby4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBKb2hhbiBIb3ZvbGQgPGpvaGFuQGtlcm5lbC5v
+cmc+Cj4gU2lnbmVkLW9mZi1ieTogRGF2aWQgUy4gTWlsbGVyIDxkYXZlbUBkYXZlbWxvZnQubmV0
+Pgo+IFtvbmx5IHRha2UgaGVscGVyIGZ1bmN0aW9uIGZvciA0LjQueSAtIGdyZWdraF0KPiAKPiAg
+IyBtYWtlIC1zayBLQlVJTERfQlVJTERfVVNFUj1UdXhCdWlsZCAtQy9saW51eCAtajE2IEFSQ0g9
+YXJtCj4gQ1JPU1NfQ09NUElMRT1hcm0tbGludXgtZ251ZWFiaWhmLSBIT1NUQ0M9Z2NjIENDPSJz
+Y2NhY2hlCj4gYXJtLWxpbnV4LWdudWVhYmloZi1nY2MiIE89YnVpbGQgekltYWdlCj4gNzAgIwo+
+IDcxIC4uL2RyaXZlcnMvb2Yvb2ZfbWRpby5jOiBJbiBmdW5jdGlvbiDigJhvZl9waHlfZGVyZWdp
+c3Rlcl9maXhlZF9saW5r4oCZOgo+IDcyIC4uL2RyaXZlcnMvb2Yvb2ZfbWRpby5jOjM3OToyOiBl
+cnJvcjogaW1wbGljaXQgZGVjbGFyYXRpb24gb2YKPiBmdW5jdGlvbiDigJhmaXhlZF9waHlfdW5y
+ZWdpc3RlcuKAmTsgZGlkIHlvdSBtZWFuIOKAmGZpeGVkX3BoeV9yZWdpc3RlcuKAmT8KPiBbLVdl
+cnJvcj1pbXBsaWNpdC1mdW5jdGlvbi1kZWNsYXJhdGlvbl0KPiA3MyAgMzc5IHwgZml4ZWRfcGh5
+X3VucmVnaXN0ZXIocGh5ZGV2KTsKPiA3NCAgfCBefn5+fn5+fn5+fn5+fn5+fn5+fgo+IDc1ICB8
+IGZpeGVkX3BoeV9yZWdpc3Rlcgo+IDc2IC4uL2RyaXZlcnMvb2Yvb2ZfbWRpby5jOjM4MToyMjog
+ZXJyb3I6IOKAmHN0cnVjdCBwaHlfZGV2aWNl4oCZIGhhcyBubwo+IG1lbWJlciBuYW1lZCDigJht
+ZGlv4oCZOyBkaWQgeW91IG1lYW4g4oCYbWRpeOKAmT8KPiA3NyAgMzgxIHwgcHV0X2RldmljZSgm
+cGh5ZGV2LT5tZGlvLmRldik7IC8qIG9mX3BoeV9maW5kX2RldmljZSgpICovCj4gNzggIHwgXn5+
+fgo+IDc5ICB8IG1kaXgKCkFub3RoZXIgZGVwZW5kZW5jeTogNWJjYmUwZjM1ZmIxICgicGh5OiBm
+aXhlZDogRml4IHJlbW92YWwgb2YgcGh5cy4iKQoKR3JlZywgdGhlc2UgcGF0Y2hlcyBhcmUgZnJv
+bSBmb3VyIHllYXJzIGFnbyBzbyBjYW4ndCByZWFsbHkgcmVtZW1iZXIgaWYKdGhlcmUgYXJlIG90
+aGVyIGRlcGVuZGVuY2llcyBvciByZWFzb25zIGFnYWluc3QgYmFja3BvcnRpbmcgdGhlbSAodGhl
+Cm1pc3Npbmcgc3RhYmxlIHRhZ3MgYXJlIHBlciBEYXZlJ3MgcHJlZmVyZW5jZSksIHNvcnJ5LgoK
+VGhlIGNvdmVyIGxldHRlciBhbHNvIG1lbnRpb25zIGFub3RoZXIgZGVwZW5kZW5jeSwgYnV0IHRo
+YXQgbWF5IGp1c3QKaGF2ZSBiZWVuIHNvbWUgY29udGV4dCBjb25mbGljdC4KClBlcmhhcHMgeW91
+IGJldHRlciBkcm9wIHRoZXNlIHVubGVzcyB5b3Ugd2FudCB0byByZXZpZXcgdGhlbSBjbG9zZXIu
+CgpKb2hhbgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1t
+ZWRpYXRlawo=
