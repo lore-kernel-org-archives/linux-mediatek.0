@@ -2,87 +2,100 @@ Return-Path: <SRS0=AGTb=6W=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-2.0 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D7A51C38A2A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 05:06:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A83BC38A2A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 05:54:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AC43F21582
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 05:06:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1C00220870
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 05:54:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WMWoysSi";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="yOR+kZsO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC43F21582
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="brccmjKN";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="K1VwBxCB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1C00220870
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QbuLqD9tC5P4Df0j5qPJlIYuI3/uQ1e1P49ZJLPEz30=; b=WMWoysSiQWWV6j
-	wJF2F+vC84gNdlNubE2IJRvoN0vbEQWfSs5ufHC4pjiXxuit80X3kDK5ZhS4B5Z8kJ6/NW/eGuumQ
-	tYYMq8+SeCzdv1pYC1VmWV9NTeqkR68gSRvZ5CY/OeXMUzfkzwezj+tVaxO8JnkLXs/P4BS8YnIZo
-	RyyWMy9vOiijoE4mG1o3DJRHoWM7vHLaJxLmdoIHik1PFk+BquXveDIl5lVjFFLc6peNgoU5qtmFl
-	RFLidIALCp0aI41cspRtHkWJQjq5sGR9dqHbJVYgoO9fJLLThmZN+1M1dE8S9vuPmMWn/iPqjSUdi
-	EXAUv9LGrHonrw8+xmUw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yRvFUPOm4iu8hbm9X4dkfCeEcYlu3Xo18LHl+UqNukw=; b=brccmjKNBg+fn3
+	oC/ubnI//VIb7TrE67+lbJgsYIdmVl4smX16vcbuyKxg5IYDjk0DEwVBMINl02eOaxD6jspMkG08L
+	/Fkd1A4nBvw2Vn0beyHnpdXbaklVHmGqH9+89MTDaWLuzYwChkte90kXClqSU9P+ibGiblB8LXvqw
+	54PSBs570bRylEY2IbrTnaSe0Ba+KPmV0dhDzQouYsBqSr+pgOnKtiDdlsSGyW2Gq5S/G4O59lsk9
+	QCyECwpSE6WW1EeL9yL9gW1FOwq4A3UGkgRwqZqKYSXCNCQW2k4/FsrEaG0y1JXkjCMQ3D8VWMQHK
+	/u2cFdpp2vwpl/skdskQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWvDD-00084W-RL; Fri, 08 May 2020 05:06:15 +0000
-Received: from mail-ua1-x941.google.com ([2607:f8b0:4864:20::941])
+	id 1jWvy5-0002jO-Om; Fri, 08 May 2020 05:54:41 +0000
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWvD5-0007so-AK
- for linux-mediatek@lists.infradead.org; Fri, 08 May 2020 05:06:08 +0000
-Received: by mail-ua1-x941.google.com with SMTP id 47so206879uaj.12
- for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2020 22:06:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GOyJCplE0htCyKO+7S6/vnX0Dv0M9OHzxvwXwcOQOP4=;
- b=yOR+kZsOgcu3/Opchfd0y0C8bGMkBMGR0doFFK9FPvDPc7z8ErZvL7sKHTdw/qa/dz
- vwQb7uq+1bBHAJitd7DHu33y1u5/2XWL6XeR7xIfarln2m0W5tyjJxIQtragP/eGPxSZ
- QICFM4RGditudJKQTQrhmZJqvAMtj+Yli1q6nJY0g3+7l/ikFJYY48TWu6Mx7KHEHC/4
- Ir622C0eVbJVEXEqtkrkjMVfd/sijw36iAinDFuIlOYVM2FNShq5zd9P1r0ydAMOBLn9
- 4G1Ez4KEljvtrT13T1s5DY74tCI1M7t50tW71tit6nh8LhN7AeyBuWfJIeLwQXONv5aQ
- yQig==
+ id 1jWvy2-0002iX-Ge; Fri, 08 May 2020 05:54:39 +0000
+Received: by mail-wm1-x341.google.com with SMTP id e26so8959616wmk.5;
+ Thu, 07 May 2020 22:54:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=cBuXlY0lPbTzvqFi3J9oIqLP+OF/m7YpRIj6GR1Gj+U=;
+ b=K1VwBxCBXCfE4HZYWiqihZRJtx8ctP1mVKfq1o6aCJtu/K2DwQN6yjel0+96+k0mcG
+ 0uuiGrKz4zsQBMXrSSEoq364xNTJ0XfUyV8v85i/bpTYtVg9HOLeugf599IF0IqQbtQ0
+ HFuvcYQomO1LBbkbc814Hmv+6PqZ8vuzbej4nEQDUqXoysFOc58ddm3QesuV+2jOOEki
+ fJy7J3YgVTkYXJsIaZHg+NAtJmVDKvdUCxK1SIi+tER4fIclIQXInU9RVQAgG+SaECXp
+ 2NEaDBLaPWFmApTkZQjPaOAgRMoh6nbkR85XVuxIcheeDeBQLR48s6gZdmQ+i1xfKWoY
+ EByg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=GOyJCplE0htCyKO+7S6/vnX0Dv0M9OHzxvwXwcOQOP4=;
- b=YLiqhh+tcsRfL173KaAmUiAN/5qbMxtOzX+R6Qss7JD6+jhJIV7Gog9MfsAWdor/Fi
- Fnu6N0IUWsWjtAsatxneISg2aFNiDUMVTfve6H7dIcHXVDfkpShPttD4Lt3NVb3biFEO
- 7YzKv4uS429ppR6d0mkkZ6nyEPyBsUL0z7KAh/fRpWEKt6jYpKAfuwGNHpamzDM7Ybch
- vRaVPFCBmQZqWBp1Xc/yVkaiKRXXF/5oiLWVjjyEr4/veMxob0G+h/EmpPBtJITCUsRN
- UlcVSyvrt+ihLGK947pKFg4LenmyHhJnLDh8Dl5o0VxB5cXTmgdE/9x2ncWhRbekuc69
- Nrtg==
-X-Gm-Message-State: AGi0PuaIzIKPeWfTrsR+xVuc/nC+gqZjAFLbh3kBCJD7lkIki5pi6XIV
- wxU08oTtKiG79wNB5jEA3ZG/ROFbWXd59aPVBJsIBg==
-X-Google-Smtp-Source: APiQypIV3sbG4ZSLW2R9RC7kszUeNGv4pTkPCpr++SJIgTpFreELrbQMO3vTo+toXhRCi6FYQeprQHSzN9Qws1pY5HQ=
-X-Received: by 2002:ab0:5ca:: with SMTP id e68mr505205uae.19.1588914365738;
- Thu, 07 May 2020 22:06:05 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=cBuXlY0lPbTzvqFi3J9oIqLP+OF/m7YpRIj6GR1Gj+U=;
+ b=IhHpSSNwfNCh6rXiaMipv/UBeJrwG+S9ucJgw/I7YLd2sCkj6tbu4/8WKYScMdl6QE
+ KGWwE2aoJ6kUtNdsF2iK93asB4nIJhT/1Qrm43kyqkV9Xwx4EmiXFJEDCql2jTu1uxh9
+ f/osiqOQRWBuMz05WlT5/JehcLpeGMzLapPhjineDsvZ1QJa2cDEanizRKBcTLAHdCwG
+ 60a+Ip6UHHLQ++DRdMA7fvZajHZR3YxlTyPofQJOeAqYlZIPyCjxmUOMPKUOn2RRlD4C
+ 0/pXro0bLBBXATPA875SY55Dfn375ISjD3CnLNUGiyxPyzBjHDAvy5OIPGdfw63NStHL
+ oJuA==
+X-Gm-Message-State: AGi0PuaDFqPWuLfun8fZbbUytLizXjt8cAma9HaRKRlOPSDqZIViaDrk
+ VC9ikd2cB8X/NMwcRVfeTXwFcAJ0
+X-Google-Smtp-Source: APiQypJN3BPfHFPyK3WDkQRQQXzBNgHR1dVgfWeEuUZhd4lAzK8YcVD4LeyB6dzQUvulSYABR4hCgg==
+X-Received: by 2002:a1c:5f46:: with SMTP id t67mr15219360wmb.156.1588917274753; 
+ Thu, 07 May 2020 22:54:34 -0700 (PDT)
+Received: from ?IPv6:2003:ea:8f28:5200:e838:acb:794:1ab9?
+ (p200300EA8F285200E8380ACB07941AB9.dip0.t-ipconnect.de.
+ [2003:ea:8f28:5200:e838:acb:794:1ab9])
+ by smtp.googlemail.com with ESMTPSA id o6sm1177075wrw.63.2020.05.07.22.54.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 07 May 2020 22:54:34 -0700 (PDT)
+Subject: Re: [PATCH 05/11] net: core: provide devm_register_netdev()
+To: Jakub Kicinski <kuba@kernel.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>
+References: <20200505140231.16600-1-brgl@bgdev.pl>
+ <20200505140231.16600-6-brgl@bgdev.pl>
+ <20200505103105.1c8b0ce3@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <CAMRc=Mf0ipaeLKhHCZaq2YeZKzi=QBAse7bEz2hHxXN5OL=ptg@mail.gmail.com>
+ <20200506101236.25a13609@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <CAMpxmJWckQdKvUGFDAJ1WMtD9WoGWmGe3kyKYhcfRT2nOB93xw@mail.gmail.com>
+ <20200507095315.1154a1a6@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <CAMpxmJUEk3itZs4HujJOXUiL80kmEvGBvLF0NFc2UQoVDVTWRg@mail.gmail.com>
+ <20200507155650.0c19229e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+From: Heiner Kallweit <hkallweit1@gmail.com>
+Message-ID: <c6e12eb6-d6ea-9ba9-4559-b2eda326601f@gmail.com>
+Date: Fri, 8 May 2020 07:54:28 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-References: <1588031768-23677-1-git-send-email-chun-hung.wu@mediatek.com>
- <1588031768-23677-2-git-send-email-chun-hung.wu@mediatek.com>
- <9bc2454f-0b42-e256-7927-2564b56f369f@codeaurora.org>
- <CAPDyKFq7ffHeWg-S41tLvScg_BXCUULig=G=EzD_to1TG0NhVg@mail.gmail.com>
- <f9fa0232-3945-4e47-9238-0b51f6531199@codeaurora.org>
-In-Reply-To: <f9fa0232-3945-4e47-9238-0b51f6531199@codeaurora.org>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Fri, 8 May 2020 07:05:29 +0200
-Message-ID: <CAPDyKFoAa3=Rg77Af7nNQOZN13m9NQYERosrqiK_kuL3s-YECA@mail.gmail.com>
-Subject: Re: [PATCH v5 1/5] mmc: core: Extend mmc_of_parse() to parse CQE
- bindings
-To: Veerabhadrarao Badiganti <vbadigan@codeaurora.org>,
- Chun-Hung Wu <chun-hung.wu@mediatek.com>
+In-Reply-To: <20200507155650.0c19229e@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200507_220607_368795_5E50FBEB 
-X-CRM114-Status: GOOD (  23.66  )
+X-CRM114-CacheID: sfid-20200507_225438_582527_72B79DDF 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,114 +107,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Kate Stewart <kstewart@linuxfoundation.org>, wsd_upstream@mediatek.com,
- "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>, Al Cooper <alcooperx@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- linux-tegra <linux-tegra@vger.kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>, Pavel Machek <pavel@ucw.cz>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Michal Simek <michal.simek@xilinx.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Andy Gross <agross@kernel.org>,
- BCM Kernel Feedback <bcm-kernel-feedback-list@broadcom.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Android Kernel Team <kernel-team@android.com>, Pan Bian <bianpan2016@163.com>,
- DTML <devicetree@vger.kernel.org>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- =?UTF-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>,
- Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Stanley Chu <stanley.chu@mediatek.com>,
- Allison Randal <allison@lohutok.net>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Mathieu Malaterre <malat@debian.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Kuohong Wang <kuohong.wang@mediatek.com>,
- Adrian Hunter <adrian.hunter@intel.com>, Yong Mao <yong.mao@mediatek.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Cc: devicetree <devicetree@vger.kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+ netdev <netdev@vger.kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ Sean Wang <sean.wang@mediatek.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Fabien Parent <fparent@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "David S . Miller" <davem@davemloft.net>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 7 May 2020 at 18:33, Veerabhadrarao Badiganti
-<vbadigan@codeaurora.org> wrote:
->
->
-> On 5/6/2020 10:06 PM, Ulf Hansson wrote:
-> > On Wed, 6 May 2020 at 15:01, Veerabhadrarao Badiganti
-> > <vbadigan@codeaurora.org> wrote:
-> >>
-> >> On 4/28/2020 5:26 AM, Chun-Hung Wu wrote:
-> >>> Parse CQE bindings "supports-cqe" and "disable-cqe-dcmd"
-> >>> in mmc_of_parse().
-> >>>
-> >>> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
-> >>> ---
-> >>>    drivers/mmc/core/host.c | 5 +++++
-> >>>    1 file changed, 5 insertions(+)
-> >>>
-> >>> diff --git a/drivers/mmc/core/host.c b/drivers/mmc/core/host.c
-> >>> index c876872..47521c6 100644
-> >>> --- a/drivers/mmc/core/host.c
-> >>> +++ b/drivers/mmc/core/host.c
-> >>> @@ -302,6 +302,11 @@ int mmc_of_parse(struct mmc_host *host)
-> >>>                host->caps2 |= MMC_CAP2_NO_SD;
-> >>>        if (device_property_read_bool(dev, "no-mmc"))
-> >>>                host->caps2 |= MMC_CAP2_NO_MMC;
-> >>> +     if (device_property_read_bool(dev, "supports-cqe"))
-> >>> +             host->caps2 |= MMC_CAP2_CQE;
-> >> This change is breaking emmc driver on qcom platforms where this dt
-> >> property is defined.
-> >>
-> >> [    1.543453]  cqhci_deactivate+0xc/0x38
-> >> [    1.545627]  sdhci_msm_reset+0x40/0x58
-> >> [    1.549447]  sdhci_do_reset+0x48/0x7c
-> >> [    1.553180]  __sdhci_read_caps+0x7c/0x214
-> >> [    1.556913]  sdhci_setup_host+0x58/0xce8
-> >> [    1.560905]  sdhci_msm_probe+0x588/0x8a4
-> >> [    1.564900]  platform_drv_probe+0x4c/0xb0
-> >>
-> >> So, we cant have this flag defined before sdhci_setup_host().
-> >>
-> >> I will have to clear this cap and re-enable it in our initialization.
-> > Thanks for reporting! I have dropped all the four patches from
-> > Chun-Hung, so we can figure out how to fix this.
-> >
-> > Please help to review the next version of the series.
->
-> Thanks Ulf.
->
-> Hi Chun-Hung,
->
-> On qcom controller CQE also gets reset when SDHC is reset. So we have to
-> explicitly disable CQE
-> by invoking  cqhci_deactivate() during sdhc reset
->
-> SDHC gets reset in sdhci_setup_host() even before cqe is initialized.
-> With MMC_CAP2_CQE_DCMD cap set even before sdhci_set_host(), we are
-> getting null pointer access with cqhci_deactivate().
->
-> If CQE getting reset with SDHC reset is generic (applicable to other
-> controllers) then you have revisit your logic.
-> If its not the case then only qcom driver would get affected.
-
-Thanks for clarifying the problem, much appreciated.
-
-To me, it looks like the DT parsing of the CQE properties are better
-suited to be managed by each sdhci variant, to continue to leave some
-room for flexibility.
-
-Chun-Hung, can you please drop patch 1 and patch2 from the series and
-adapt to this change in the mediatek variant?
-
-[...]
-
-Kind regards
-Uffe
+On 08.05.2020 00:56, Jakub Kicinski wrote:
+> On Thu, 7 May 2020 19:03:44 +0200 Bartosz Golaszewski wrote:
+>>> To implement Edwin's suggestion? Makes sense, but I'm no expert, let's
+>>> also CC Heiner since he was asking about it last time.  
+>>
+>> Yes, because taking the last bit of priv_flags from net_device seems
+>> to be more controversial but if net maintainers are fine with that I
+>> can simply go with the current approach.
+> 
+> From my perspective what Edwin suggests makes sense. Apart from
+> little use for the bit after probe, it also seems cleaner for devres 
+> to be able to recognize managed objects based on its own state.
+> 
+What I was saying is that we should catch the case that a driver
+author uses a device-managed register() w/o doing the same for the
+alloc(). A core function should not assume that driver authors do
+sane things only.
+I don't have a strong preference how it should be done.
+Considering what is being discussed, have a look at get_pci_dr() and
+find_pci_dr(), they deal with managing which parts of the PCI
+subsystem are device-managed.
 
 _______________________________________________
 Linux-mediatek mailing list
