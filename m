@@ -2,82 +2,87 @@ Return-Path: <SRS0=AGTb=6W=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 83EF9C35280
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 03:29:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D7A51C38A2A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 05:06:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 48D3A2085B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 03:29:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AC43F21582
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 05:06:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ph0NcHAm";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="Fy3GJHb6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 48D3A2085B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WMWoysSi";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="yOR+kZsO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC43F21582
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WgIs4nJqXYLQ5Agd1U5Z/eUq+FVc5pGJOWFzrQ6EGwk=; b=Ph0NcHAmann9Ha
-	lercDtM3HH6qaesEEwb2TbOF4nDhz8PYzixcCbrMvghhzI30fsb8/wxeWoQ0TsPlOQ1YP5yKg+Vd3
-	hmBm4RYKyTV2d/5HMMN90l8EPr+lxhnDuvNClijofPV4/r53qFp89rDX8H2bzVEqBFO+fWrF7xDjr
-	X3vUtCTIp1EagQMIUprNgRQ9bHipUaAlkvwfpFwZfFWByY0TzKgCcyg01ascWPTnqDxlcJRLNy9vH
-	bQ4g9/dkvz7GG7dtw10oBJf29GNtop2FLBYtpRFFJMGuMzjGO/UEe1gnlqBGLGk1nciYtM/wNsUzx
-	a/HKwjHGRl2TvR7mrLOg==;
+	List-Owner; bh=QbuLqD9tC5P4Df0j5qPJlIYuI3/uQ1e1P49ZJLPEz30=; b=WMWoysSiQWWV6j
+	wJF2F+vC84gNdlNubE2IJRvoN0vbEQWfSs5ufHC4pjiXxuit80X3kDK5ZhS4B5Z8kJ6/NW/eGuumQ
+	tYYMq8+SeCzdv1pYC1VmWV9NTeqkR68gSRvZ5CY/OeXMUzfkzwezj+tVaxO8JnkLXs/P4BS8YnIZo
+	RyyWMy9vOiijoE4mG1o3DJRHoWM7vHLaJxLmdoIHik1PFk+BquXveDIl5lVjFFLc6peNgoU5qtmFl
+	RFLidIALCp0aI41cspRtHkWJQjq5sGR9dqHbJVYgoO9fJLLThmZN+1M1dE8S9vuPmMWn/iPqjSUdi
+	EXAUv9LGrHonrw8+xmUw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jWthP-00069o-B1; Fri, 08 May 2020 03:29:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jWvDD-00084W-RL; Fri, 08 May 2020 05:06:15 +0000
+Received: from mail-ua1-x941.google.com ([2607:f8b0:4864:20::941])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jWthL-00069O-UH; Fri, 08 May 2020 03:29:17 +0000
-X-UUID: a9c32ce2699e42d2801649969ea19698-20200507
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=icQs5PDsZ+HS7pah9d3Y69qQhITqVAyFXAMdCV9xDH0=; 
- b=Fy3GJHb69C4fIfgtV1teujNTRbSQ6qDkS6dj2f6310683k2lNzOCvKKpTeKG1SLje2X3a+N8Kme8dk72x0RocNh7n8W8brdlOYqIgo9X8ylSechJC6huEH1NjEYSIdLUMCIijKlh48Ym5dnyD6ePA3XY/LSDJdNpnm7yd9b/Xko=;
-X-UUID: a9c32ce2699e42d2801649969ea19698-20200507
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1222480207; Thu, 07 May 2020 19:29:08 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 7 May 2020 20:29:08 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 8 May 2020 11:29:07 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 8 May 2020 11:29:04 +0800
-Message-ID: <1588908477.8804.201.camel@mhfsdcap03>
-Subject: Re: [V5, 2/2] media: i2c: dw9768: Add DW9768 VCM driver
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
-Date: Fri, 8 May 2020 11:27:57 +0800
-In-Reply-To: <20200507135959.GD9190@paasikivi.fi.intel.com>
-References: <20200502161727.30463-1-dongchun.zhu@mediatek.com>
- <20200502161727.30463-3-dongchun.zhu@mediatek.com>
- <20200506151352.GZ9190@paasikivi.fi.intel.com>
- <1588855524.8804.168.camel@mhfsdcap03>
- <20200507131220.GC9190@paasikivi.fi.intel.com>
- <CAAFQd5DO9FGx9OF2RpcSprg0oLiVuS90w2qLAHCOSc3w6tKUWw@mail.gmail.com>
- <20200507135959.GD9190@paasikivi.fi.intel.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jWvD5-0007so-AK
+ for linux-mediatek@lists.infradead.org; Fri, 08 May 2020 05:06:08 +0000
+Received: by mail-ua1-x941.google.com with SMTP id 47so206879uaj.12
+ for <linux-mediatek@lists.infradead.org>; Thu, 07 May 2020 22:06:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=GOyJCplE0htCyKO+7S6/vnX0Dv0M9OHzxvwXwcOQOP4=;
+ b=yOR+kZsOgcu3/Opchfd0y0C8bGMkBMGR0doFFK9FPvDPc7z8ErZvL7sKHTdw/qa/dz
+ vwQb7uq+1bBHAJitd7DHu33y1u5/2XWL6XeR7xIfarln2m0W5tyjJxIQtragP/eGPxSZ
+ QICFM4RGditudJKQTQrhmZJqvAMtj+Yli1q6nJY0g3+7l/ikFJYY48TWu6Mx7KHEHC/4
+ Ir622C0eVbJVEXEqtkrkjMVfd/sijw36iAinDFuIlOYVM2FNShq5zd9P1r0ydAMOBLn9
+ 4G1Ez4KEljvtrT13T1s5DY74tCI1M7t50tW71tit6nh8LhN7AeyBuWfJIeLwQXONv5aQ
+ yQig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=GOyJCplE0htCyKO+7S6/vnX0Dv0M9OHzxvwXwcOQOP4=;
+ b=YLiqhh+tcsRfL173KaAmUiAN/5qbMxtOzX+R6Qss7JD6+jhJIV7Gog9MfsAWdor/Fi
+ Fnu6N0IUWsWjtAsatxneISg2aFNiDUMVTfve6H7dIcHXVDfkpShPttD4Lt3NVb3biFEO
+ 7YzKv4uS429ppR6d0mkkZ6nyEPyBsUL0z7KAh/fRpWEKt6jYpKAfuwGNHpamzDM7Ybch
+ vRaVPFCBmQZqWBp1Xc/yVkaiKRXXF/5oiLWVjjyEr4/veMxob0G+h/EmpPBtJITCUsRN
+ UlcVSyvrt+ihLGK947pKFg4LenmyHhJnLDh8Dl5o0VxB5cXTmgdE/9x2ncWhRbekuc69
+ Nrtg==
+X-Gm-Message-State: AGi0PuaIzIKPeWfTrsR+xVuc/nC+gqZjAFLbh3kBCJD7lkIki5pi6XIV
+ wxU08oTtKiG79wNB5jEA3ZG/ROFbWXd59aPVBJsIBg==
+X-Google-Smtp-Source: APiQypIV3sbG4ZSLW2R9RC7kszUeNGv4pTkPCpr++SJIgTpFreELrbQMO3vTo+toXhRCi6FYQeprQHSzN9Qws1pY5HQ=
+X-Received: by 2002:ab0:5ca:: with SMTP id e68mr505205uae.19.1588914365738;
+ Thu, 07 May 2020 22:06:05 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: B9B8DF3FDB241D7AE7B00BB849706813FFC5DFCAF7C46C704BD9235CB8F51AE52000:8
-X-MTK: N
+References: <1588031768-23677-1-git-send-email-chun-hung.wu@mediatek.com>
+ <1588031768-23677-2-git-send-email-chun-hung.wu@mediatek.com>
+ <9bc2454f-0b42-e256-7927-2564b56f369f@codeaurora.org>
+ <CAPDyKFq7ffHeWg-S41tLvScg_BXCUULig=G=EzD_to1TG0NhVg@mail.gmail.com>
+ <f9fa0232-3945-4e47-9238-0b51f6531199@codeaurora.org>
+In-Reply-To: <f9fa0232-3945-4e47-9238-0b51f6531199@codeaurora.org>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Fri, 8 May 2020 07:05:29 +0200
+Message-ID: <CAPDyKFoAa3=Rg77Af7nNQOZN13m9NQYERosrqiK_kuL3s-YECA@mail.gmail.com>
+Subject: Re: [PATCH v5 1/5] mmc: core: Extend mmc_of_parse() to parse CQE
+ bindings
+To: Veerabhadrarao Badiganti <vbadigan@codeaurora.org>,
+ Chun-Hung Wu <chun-hung.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200507_202915_992964_278AB406 
-X-CRM114-Status: GOOD (  34.10  )
+X-CRM114-CacheID: sfid-20200507_220607_368795_5E50FBEB 
+X-CRM114-Status: GOOD (  23.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,250 +95,113 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: Mark Rutland <mark.rutland@arm.com>,
- Nicolas Boichat <drinkcat@chromium.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- linux-devicetree <devicetree@vger.kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>, Shengnan
- Wang =?UTF-8?Q?=28=E7=8E=8B=E5=9C=A3=E7=94=B7=29?=
- <shengnan.wang@mediatek.com>, Tomasz Figa <tfiga@chromium.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Kate Stewart <kstewart@linuxfoundation.org>, wsd_upstream@mediatek.com,
+ "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Al Cooper <alcooperx@gmail.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ linux-tegra <linux-tegra@vger.kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>, Pavel Machek <pavel@ucw.cz>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Michal Simek <michal.simek@xilinx.com>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Andy Gross <agross@kernel.org>,
+ BCM Kernel Feedback <bcm-kernel-feedback-list@broadcom.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Android Kernel Team <kernel-team@android.com>, Pan Bian <bianpan2016@163.com>,
+ DTML <devicetree@vger.kernel.org>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ =?UTF-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>,
+ Rob Herring <robh+dt@kernel.org>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- dongchun.zhu@mediatek.com, Louis Kuo <louis.kuo@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing
- Bu <bingbu.cao@intel.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- "list@263.net:IOMMU DRIVERS
- <iommu@lists.linux-foundation.org>, Joerg  Roedel <joro@8bytes.org>,
- " <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Stanley Chu <stanley.chu@mediatek.com>,
+ Allison Randal <allison@lohutok.net>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Mathieu Malaterre <malat@debian.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Kuohong Wang <kuohong.wang@mediatek.com>,
+ Adrian Hunter <adrian.hunter@intel.com>, Yong Mao <yong.mao@mediatek.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sakari,
+On Thu, 7 May 2020 at 18:33, Veerabhadrarao Badiganti
+<vbadigan@codeaurora.org> wrote:
+>
+>
+> On 5/6/2020 10:06 PM, Ulf Hansson wrote:
+> > On Wed, 6 May 2020 at 15:01, Veerabhadrarao Badiganti
+> > <vbadigan@codeaurora.org> wrote:
+> >>
+> >> On 4/28/2020 5:26 AM, Chun-Hung Wu wrote:
+> >>> Parse CQE bindings "supports-cqe" and "disable-cqe-dcmd"
+> >>> in mmc_of_parse().
+> >>>
+> >>> Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+> >>> ---
+> >>>    drivers/mmc/core/host.c | 5 +++++
+> >>>    1 file changed, 5 insertions(+)
+> >>>
+> >>> diff --git a/drivers/mmc/core/host.c b/drivers/mmc/core/host.c
+> >>> index c876872..47521c6 100644
+> >>> --- a/drivers/mmc/core/host.c
+> >>> +++ b/drivers/mmc/core/host.c
+> >>> @@ -302,6 +302,11 @@ int mmc_of_parse(struct mmc_host *host)
+> >>>                host->caps2 |= MMC_CAP2_NO_SD;
+> >>>        if (device_property_read_bool(dev, "no-mmc"))
+> >>>                host->caps2 |= MMC_CAP2_NO_MMC;
+> >>> +     if (device_property_read_bool(dev, "supports-cqe"))
+> >>> +             host->caps2 |= MMC_CAP2_CQE;
+> >> This change is breaking emmc driver on qcom platforms where this dt
+> >> property is defined.
+> >>
+> >> [    1.543453]  cqhci_deactivate+0xc/0x38
+> >> [    1.545627]  sdhci_msm_reset+0x40/0x58
+> >> [    1.549447]  sdhci_do_reset+0x48/0x7c
+> >> [    1.553180]  __sdhci_read_caps+0x7c/0x214
+> >> [    1.556913]  sdhci_setup_host+0x58/0xce8
+> >> [    1.560905]  sdhci_msm_probe+0x588/0x8a4
+> >> [    1.564900]  platform_drv_probe+0x4c/0xb0
+> >>
+> >> So, we cant have this flag defined before sdhci_setup_host().
+> >>
+> >> I will have to clear this cap and re-enable it in our initialization.
+> > Thanks for reporting! I have dropped all the four patches from
+> > Chun-Hung, so we can figure out how to fix this.
+> >
+> > Please help to review the next version of the series.
+>
+> Thanks Ulf.
+>
+> Hi Chun-Hung,
+>
+> On qcom controller CQE also gets reset when SDHC is reset. So we have to
+> explicitly disable CQE
+> by invoking  cqhci_deactivate() during sdhc reset
+>
+> SDHC gets reset in sdhci_setup_host() even before cqe is initialized.
+> With MMC_CAP2_CQE_DCMD cap set even before sdhci_set_host(), we are
+> getting null pointer access with cqhci_deactivate().
+>
+> If CQE getting reset with SDHC reset is generic (applicable to other
+> controllers) then you have revisit your logic.
+> If its not the case then only qcom driver would get affected.
 
-Thanks for the review.
+Thanks for clarifying the problem, much appreciated.
 
-On Thu, 2020-05-07 at 17:00 +0300, Sakari Ailus wrote:
-> Hi Tomasz,
-> 
-> On Thu, May 07, 2020 at 03:46:31PM +0200, Tomasz Figa wrote:
-> > Hi Sakari, Dongchun,
-> > 
-> > On Thu, May 7, 2020 at 3:12 PM Sakari Ailus
-> > <sakari.ailus@linux.intel.com> wrote:
-> > >
-> > > HI Dongchun,
-> > >
-> > > On Thu, May 07, 2020 at 08:45:24PM +0800, Dongchun Zhu wrote:
-> > > > Hi Sakari,
-> > > >
-> > > > Thanks for the review.
-> > > >
-> > > > On Wed, 2020-05-06 at 18:13 +0300, Sakari Ailus wrote:
-> > > > > Hi Dongchun,
-> > > > >
-> > > > > On Sun, May 03, 2020 at 12:17:27AM +0800, Dongchun Zhu wrote:
-> > > > > > Add a V4L2 sub-device driver for DW9768 voice coil motor, providing
-> > > > > > control to set the desired focus via IIC serial interface.
-> > > > > >
-> > > > > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > > > > ---
-> > > > > >  MAINTAINERS                |   1 +
-> > > > > >  drivers/media/i2c/Kconfig  |  11 ++
-> > > > > >  drivers/media/i2c/Makefile |   1 +
-> > > > > >  drivers/media/i2c/dw9768.c | 440 +++++++++++++++++++++++++++++++++++++++++++++
-> > > > > >  4 files changed, 453 insertions(+)
-> > > > > >  create mode 100644 drivers/media/i2c/dw9768.c
-> > > > > >
-> > > > > > diff --git a/MAINTAINERS b/MAINTAINERS
-> > > > > > index 8d72c41..c92dc99 100644
-> > > > > > --- a/MAINTAINERS
-> > > > > > +++ b/MAINTAINERS
-> > > > > > @@ -5157,6 +5157,7 @@ L:  linux-media@vger.kernel.org
-> > > > > >  S:       Maintained
-> > > > > >  T:       git git://linuxtv.org/media_tree.git
-> > > > > >  F:       Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
-> > > > > > +F:       drivers/media/i2c/dw9768.c
-> > > > > >
-> > > > > >  DONGWOON DW9807 LENS VOICE COIL DRIVER
-> > > > > >  M:       Sakari Ailus <sakari.ailus@linux.intel.com>
-> > > > > > diff --git a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig
-> > > > > > index 125d596..6a3f9da 100644
-> > > > > > --- a/drivers/media/i2c/Kconfig
-> > > > > > +++ b/drivers/media/i2c/Kconfig
-> > > > > > @@ -1040,6 +1040,17 @@ config VIDEO_DW9714
-> > > > > >     capability. This is designed for linear control of
-> > > > > >     voice coil motors, controlled via I2C serial interface.
-> > > > > >
-> > > > > > +config VIDEO_DW9768
-> > > > > > + tristate "DW9768 lens voice coil support"
-> > > > > > + depends on I2C && VIDEO_V4L2 && MEDIA_CONTROLLER
-> > > > > > + depends on VIDEO_V4L2_SUBDEV_API
-> > > > >
-> > > > > Please check how this works in the media tree master branch now --- it's
-> > > > > largely select based.
-> > > > >
-> > > >
-> > > > The actuator driver uses some structures that require the
-> > > > VIDEO_V4L2_SUBDEV_API code, so here we add VIDEO_V4L2_SUBDEV_API
-> > > > dependency to avoid possible build error when it's not enabled.
-> > >
-> > > Please make sure this works with current media tree master. Right now it
-> > > does not.
-> > >
-> > 
-> > Dongchun, as Sakari said, please make sure to base the patches on the
-> > master branch of the media tree.
-> > (https://git.linuxtv.org/media_tree.git/). The approach for Kconfig
-> > dependency selection there seems to have changed recently.
-> > 
-> > > >
-> > > > > In general the patch seems fine to me, but please see the other comments
-> > > > > below, too.
-> > > > >
-> > > > > > + depends on PM
-> > > > > > + help
-> > > > > > +   This is a driver for the DW9768 camera lens voice coil.
-> > > > > > +   DW9768 is a 10 bit DAC with 100mA output current sink
-> > > > > > +   capability. This is designed for linear control of
-> > > > > > +   voice coil motors, controlled via I2C serial interface.
-> > > > > > +
-> > > > > >  config VIDEO_DW9807_VCM
-> > > > > >   tristate "DW9807 lens voice coil support"
-> > > > > >   depends on I2C && VIDEO_V4L2 && MEDIA_CONTROLLER
-> > > > > > diff --git a/drivers/media/i2c/Makefile b/drivers/media/i2c/Makefile
-> > > > > > index 77bf7d0..4057476 100644
-> > > > > > --- a/drivers/media/i2c/Makefile
-> > > > > > +++ b/drivers/media/i2c/Makefile
-> > > > > > @@ -24,6 +24,7 @@ obj-$(CONFIG_VIDEO_SAA6752HS) += saa6752hs.o
-> > > > > >  obj-$(CONFIG_VIDEO_AD5820)  += ad5820.o
-> > > > > >  obj-$(CONFIG_VIDEO_AK7375)  += ak7375.o
-> > > > > >  obj-$(CONFIG_VIDEO_DW9714)  += dw9714.o
-> > > > > > +obj-$(CONFIG_VIDEO_DW9768)  += dw9768.o
-> > > > > >  obj-$(CONFIG_VIDEO_DW9807_VCM)  += dw9807-vcm.o
-> > > > > >  obj-$(CONFIG_VIDEO_ADV7170) += adv7170.o
-> > > > > >  obj-$(CONFIG_VIDEO_ADV7175) += adv7175.o
-> > > > > > diff --git a/drivers/media/i2c/dw9768.c b/drivers/media/i2c/dw9768.c
-> > > > > > new file mode 100644
-> > > > > > index 0000000..dd68534
-> > > > > > --- /dev/null
-> > > > > > +++ b/drivers/media/i2c/dw9768.c
-> > > > > > @@ -0,0 +1,440 @@
-> > > > > > +// SPDX-License-Identifier: GPL-2.0
-> > > > > > +// Copyright (c) 2020 MediaTek Inc.
-> > > > > > +
-> > > > > > +#include <linux/delay.h>
-> > > > > > +#include <linux/i2c.h>
-> > > > > > +#include <linux/module.h>
-> > > > > > +#include <linux/pm_runtime.h>
-> > > > > > +#include <linux/regulator/consumer.h>
-> > > > > > +#include <media/v4l2-async.h>
-> > > > > > +#include <media/v4l2-ctrls.h>
-> > > > > > +#include <media/v4l2-device.h>
-> > > > > > +#include <media/v4l2-subdev.h>
-> > > > > > +
-> > > > > > +#define DW9768_NAME                              "dw9768"
-> > > > > > +#define DW9768_MAX_FOCUS_POS                     (1024 - 1)
-> > > > > > +/*
-> > > > > > + * This sets the minimum granularity for the focus positions.
-> > > > > > + * A value of 1 gives maximum accuracy for a desired focus position
-> > > > > > + */
-> > > > > > +#define DW9768_FOCUS_STEPS                       1
-> > > > > > +
-> > > > > > +/*
-> > > > > > + * Ring control and Power control register
-> > > > > > + * Bit[1] RING_EN
-> > > > > > + * 0: Direct mode
-> > > > > > + * 1: AAC mode (ringing control mode)
-> > > > > > + * Bit[0] PD
-> > > > > > + * 0: Normal operation mode
-> > > > > > + * 1: Power down mode
-> > > > > > + * DW9768 requires waiting time of Topr after PD reset takes place.
-> > > > > > + */
-> > > > > > +#define DW9768_RING_PD_CONTROL_REG               0x02
-> > > > > > +#define DW9768_PD_MODE_OFF                       0x00
-> > > > > > +#define DW9768_PD_MODE_EN                        BIT(0)
-> > > > > > +#define DW9768_AAC_MODE_EN                       BIT(1)
-> > > > > > +
-> > > > > > +/*
-> > > > > > + * DW9768 separates two registers to control the VCM position.
-> > > > > > + * One for MSB value, another is LSB value.
-> > > > > > + * DAC_MSB: D[9:8] (ADD: 0x03)
-> > > > > > + * DAC_LSB: D[7:0] (ADD: 0x04)
-> > > > > > + * D[9:0] DAC data input: positive output current = D[9:0] / 1023 * 100[mA]
-> > > > > > + */
-> > > > > > +#define DW9768_MSB_ADDR                          0x03
-> > > > > > +#define DW9768_LSB_ADDR                          0x04
-> > > > > > +#define DW9768_STATUS_ADDR                       0x05
-> > > > > > +
-> > > > > > +/*
-> > > > > > + * AAC mode control & prescale register
-> > > > > > + * Bit[7:5] Namely AC[2:0], decide the VCM mode and operation time.
-> > > > > > + * 000 Direct(default)
-> > > > > > + * 001 AAC2 0.48xTvib
-> > > > > > + * 010 AAC3 0.70xTvib
-> > > > > > + * 011 AAC4 0.75xTvib
-> > > > > > + * 100 Reserved
-> > > > > > + * 101 AAC8 1.13xTvib
-> > > > > > + * 110 Reserved
-> > > > > > + * 111 Reserved
-> > > > > > + * Bit[2:0] Namely PRESC[2:0], set the internal clock dividing rate as follow.
-> > > > > > + * 000 2
-> > > > > > + * 001 1(default)
-> > > > > > + * 010 1/2
-> > > > > > + * 011 1/4
-> > > > > > + * 100 8
-> > > > > > + * 101 4
-> > > > > > + * 110 Reserved
-> > > > > > + * 111 Reserved
-> > > > > > + */
-> > > > > > +#define DW9768_AAC_PRESC_REG                     0x06
-> > > > > > +#define DW9768_AAC3_SELECT_DIVIDING_RATE_1       0x41
-> > > > >
-> > > > > I guess we can start with these values. But I can't think of another option
-> > > > > than putting them into DT if there are differences between what hardware
-> > > > > platforms require.
-> > > > >
-> > > >
-> > > > Let's have a discussion about this.
-> > > > Now these non-default register settings represent one AAC operation
-> > > > mode, this is one option and works for a given lens or a module.
-> > > > If sometime in the future hardware platforms require another different
-> > > > settings, then DT properties may need to be created.
-> > >
-> > > If these values indeed are specific to a given lens (and presumably also a
-> > > spring), then I'd put them to DT right now --- we don't have drivers for
-> > > these components the drivers of which could hold this information, nor it
-> > > makes sense to add them just for that.
-> > >
-> > 
-> > I tend to stay on the conservative side and only add DT properties
-> > once there is really a need to do so. Right now we haven't seen any
-> > system which would use different values of these parameters.
-> 
-> I think it's also conservative to put things that are system specific to
-> DT. :-)
-> 
-> In practice we haven't put lens specific parameters to DT before, but
-> that's because 1) devices that need them are old, and so are the drivers
-> and the matter was not recognised at the time they were merged and 2) a lot
-> of devices these days don't have such configuration registers.
-> 
-> That said, I don't have a strong opinion on this one, but I think putting
-> this to DT would be a safer bet in the long run as this is specific to the
-> board, not the device itself.
-> 
+To me, it looks like the DT parsing of the CQE properties are better
+suited to be managed by each sdhci variant, to continue to leave some
+room for flexibility.
 
-In theory, lens parameter settings tend to be similar as sensor mode.
-Current settings should be common and it is not board specific,
-at least for our 2 projects/boards in hand.
+Chun-Hung, can you please drop patch 1 and patch2 from the series and
+adapt to this change in the mediatek variant?
 
-In practice, for one set of lens parameters, it would be some
-complicated to create DT properties as the driver indeed doesn't use
-various values of these parameters.
+[...]
+
+Kind regards
+Uffe
 
 _______________________________________________
 Linux-mediatek mailing list
