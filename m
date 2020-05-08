@@ -2,76 +2,86 @@ Return-Path: <SRS0=AGTb=6W=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 217FFC38A2A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 12:02:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AD2C3C38A2A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 16:19:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E728E208DB
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 12:02:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6C9AE21473
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 16:19:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FXpkgrU1";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Twetzls2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E728E208DB
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linuxfoundation.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CQ2TsoZq";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="pc+tlIHm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C9AE21473
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=svA3WmG1I9gKE9f5K6/B1jJ8HlEDXgUGSqrN2g40Ztw=; b=FXpkgrU10b6JWI
-	+8J1iJDeCiVse4fsXOFtOL4mx0oqm8SziGEHXNteLU5bKiQBZ5sHDekeJ1vgYw+0ie1gipX6/jH4/
-	a8MIjZheRZHbjr0ApyBp2H84RVKdXg032wc3QVbAl3Q1jWPjJz9rHSpBLia4MrK+EN/D0m91COqpR
-	4sYuE+8rTriCpFaa9KZjtT7YYPI4nnZjoLaHQsI8smhTJ0lZkXW7dw3gNLwCEaym2KmuwNvSinZSp
-	aM06npuuCo560dEG9DkHGClBKDN/Tq5G6OoZGSxkSYcbfpMS+D/9cqsLHQRnQB6qFCkErTK9lAh9y
-	GIAwwL4Td7OWcUjY/2TQ==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=4Oh/bkxku1LtXYUdp7S9qU+o8M/3UCQMSzhtFsYHtsU=; b=CQ2TsoZqQpBpwrun81g5VN+IV
+	MAeDVz8p01L1pn7uD/jSmw2h+xSt89V5inMcB+sXkM2kuLXFZGCqqgIQCr1S7GeWLhrCjxSZdQuR/
+	WsdvAQ0oOjilu34/qI1n0n8hTWnmdjxSQGWdYwmzNlXpfdZ+S0+l4O2iSTtRs8Jx2lvwoPqSvpqXV
+	5w5aHaxQX8vi4BlROISTdgpKFF0UGqDLYw1rh0/zqVikX0Oc1Ei2GgtpiB7go9QbB+LyHOXu0u4CJ
+	cLyGPn5pD+oHn9YRK7QtcAwQLo2Va/n1xw/eVP+1siZEhhIWSvoW/6rPrDXSlFyT9i/NI18pWnZ+j
+	mx6pIWd6A==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jX1hj-00060u-QY; Fri, 08 May 2020 12:02:11 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jX5j2-0005Wl-0I; Fri, 08 May 2020 16:19:48 +0000
+Received: from mail26.static.mailgun.info ([104.130.122.26])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jX1hg-00060M-Rb
- for linux-mediatek@lists.infradead.org; Fri, 08 May 2020 12:02:10 +0000
-Received: from localhost (83-86-89-107.cable.dynamic.v4.ziggo.nl
- [83.86.89.107])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 44B0B208DB;
- Fri,  8 May 2020 12:02:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1588939327;
- bh=MVgAInBlHbFucqqOMS2zpzCl41mt8McPbpWInuTvt7A=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Twetzls2F3Jeu+KmG5FUOutvjCz/WoqfrsBaX8GvAALNLGFDnKHPy8LdLPUulm0yK
- tBOfN6D3JwamP0kQgp3199ol6mSEtcR3ZeMDY8UHhllndREBSrWk/ouW1UclYwkLr1
- L125iRZ6ei661Ah3Bz5HYH2pfNhM462Cs2rBmyg0=
-Date: Fri, 8 May 2020 14:02:05 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Johan Hovold <johan@kernel.org>
-Subject: Re: [PATCH net 11/16] net: ethernet: marvell: mvneta: fix fixed-link
- phydev leaks
-Message-ID: <20200508120205.GA4089177@kroah.com>
-References: <1480357509-28074-1-git-send-email-johan@kernel.org>
- <1480357509-28074-12-git-send-email-johan@kernel.org>
- <CA+G9fYvBjUVkVhtRHVm6xXcKe2+tZN4rGdB9FzmpcfpaLhY1+g@mail.gmail.com>
- <20200507064412.GL2042@localhost>
- <20200507064734.GA798308@kroah.com>
- <20200507111312.GA1497799@kroah.com>
- <CA+G9fYu2SrkEHyAzF57xJz5WjgHv361qdL2wPqON_pGS4Vtxmw@mail.gmail.com>
- <20200508062119.GE25962@localhost>
+ id 1jX5iu-0005Pm-2j
+ for linux-mediatek@lists.infradead.org; Fri, 08 May 2020 16:19:42 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1588954781; h=Content-Transfer-Encoding: Content-Type:
+ In-Reply-To: MIME-Version: Date: Message-ID: From: References: Cc: To:
+ Subject: Sender; bh=Sehda5KYpri+SgmjTuPUNWxcMIV/yX17URV1EJd8KjM=;
+ b=pc+tlIHmWL/2QxxJN2OeZhMjGI44jkIkRN5hF2QahzEtCzCXPp/hxNkfw9diGjdB5DVLJVQQ
+ i5zDo0dG5J5MLNRPvfjaCbYHDgiy9tHpr1cYVMtY/CIj+OKD9qqcvwZCVUrkYg2uAXvZEEpe
+ m5smKv35FDqJWKB5igv32pDojS8=
+X-Mailgun-Sending-Ip: 104.130.122.26
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
+ by mxa.mailgun.org with ESMTP id 5eb5868d.7f9bac6812d0-smtp-out-n01;
+ Fri, 08 May 2020 16:19:25 -0000 (UTC)
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 07043C43636; Fri,  8 May 2020 16:19:24 +0000 (UTC)
+Received: from [192.168.8.176] (cpe-70-95-149-85.san.res.rr.com [70.95.149.85])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: asutoshd)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id CCDF0C433D2;
+ Fri,  8 May 2020 16:19:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org CCDF0C433D2
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=none smtp.mailfrom=asutoshd@codeaurora.org
+Subject: Re: [PATCH v8 8/8] scsi: ufs: cleanup WriteBooster feature
+To: Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+References: <20200508080115.24233-1-stanley.chu@mediatek.com>
+ <20200508080115.24233-9-stanley.chu@mediatek.com>
+From: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
+Message-ID: <ca589cd1-bf28-7227-02d7-1c7789f6f6e9@codeaurora.org>
+Date: Fri, 8 May 2020 09:19:22 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200508062119.GE25962@localhost>
+In-Reply-To: <20200508080115.24233-9-stanley.chu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200508_050208_931945_21B8A8FD 
-X-CRM114-Status: GOOD (  17.24  )
+X-CRM114-CacheID: sfid-20200508_091941_450173_DAB3D979 
+X-CRM114-Status: GOOD (  21.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,77 +93,130 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, lkft-triage@lists.linaro.org,
- Pantelis Antoniou <pantelis.antoniou@gmail.com>,
- Frank Rowand <frowand.list@gmail.com>, Sasha Levin <sashal@kernel.org>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Naresh Kamboju <naresh.kamboju@linaro.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Grygorii Strashko <grygorii.strashko@ti.com>,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Lars Persson <lars.persson@axis.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-omap@vger.kernel.org,
- Thomas Petazzoni <thomas.petazzoni@free-electrons.com>,
- Fugang Duan <fugang.duan@nxp.com>,
- Sergei Shtylyov <sergei.shtylyov@cogentembedded.com>,
- Netdev <netdev@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>,
- linux- stable <stable@vger.kernel.org>, linux-renesas-soc@vger.kernel.org,
- nios2-dev@lists.rocketboards.org, linuxppc-dev@lists.ozlabs.org,
- "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: bvanassche@acm.org, andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
+ beanhuo@micron.com
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBNYXkgMDgsIDIwMjAgYXQgMDg6MjE6MTlBTSArMDIwMCwgSm9oYW4gSG92b2xkIHdy
-b3RlOgo+IE9uIEZyaSwgTWF5IDA4LCAyMDIwIGF0IDAzOjM1OjAyQU0gKzA1MzAsIE5hcmVzaCBL
-YW1ib2p1IHdyb3RlOgo+ID4gT24gVGh1LCA3IE1heSAyMDIwIGF0IDE2OjQzLCBHcmVnIEtyb2Fo
-LUhhcnRtYW4KPiA+IDxncmVna2hAbGludXhmb3VuZGF0aW9uLm9yZz4gd3JvdGU6Cj4gPiA+Cj4g
-PiA8dHJpbT4KPiA+ID4gPiA+Cj4gPiA+ID4gPiBHcmVnLCAzZjY1MDQ3Yzg1M2EgKCJvZl9tZGlv
-OiBhZGQgaGVscGVyIHRvIGRlcmVnaXN0ZXIgZml4ZWQtbGluawo+ID4gPiA+ID4gUEhZcyIpIG5l
-ZWRzIHRvIGJlIGJhY2twb3J0ZWQgYXMgd2VsbCBmb3IgdGhlc2UuCj4gPiA+ID4gPgo+ID4gPiA+
-ID4gT3JpZ2luYWwgc2VyaWVzIGNhbiBiZSBmb3VuZCBoZXJlOgo+ID4gPiA+ID4KPiA+ID4gPiA+
-ICAgICBodHRwczovL2xrbWwua2VybmVsLm9yZy9yLzE0ODAzNTc1MDktMjgwNzQtMS1naXQtc2Vu
-ZC1lbWFpbC1qb2hhbkBrZXJuZWwub3JnCj4gPiA+ID4KPiA+ID4gPiBBaCwgdGhhbmtzIGZvciB0
-aGF0LCBJIHRob3VnaHQgSSBkcm9wcGVkIGFsbCBvZiB0aGUgb25lcyB0aGF0IGNhdXNlZAo+ID4g
-PiA+IGJ1aWxkIGVycm9ycywgYnV0IG1pc3NlZCB0aGUgYWJvdmUgb25lLiAgSSdsbCBnbyB0YWtl
-IHRoZSB3aG9sZSBzZXJpZXMKPiA+ID4gPiBpbnN0ZWFkLgo+ID4gPgo+ID4gPiBUaGlzIHNob3Vs
-ZCBub3cgYWxsIGJlIGZpeGVkIHVwLCB0aGFua3MuCj4gPiAKPiA+IFdoaWxlIGJ1aWxkaW5nIGtl
-cm5lbCBJbWFnZSBmb3IgYXJtIGFyY2hpdGVjdHVyZSBvbiBzdGFibGUtcmMgNC40IGJyYW5jaAo+
-ID4gdGhlIGZvbGxvd2luZyBidWlsZCBlcnJvciBmb3VuZC4KPiA+IAo+ID4gb2ZfbWRpbzogYWRk
-IGhlbHBlciB0byBkZXJlZ2lzdGVyIGZpeGVkLWxpbmsgUEhZcwo+ID4gY29tbWl0IDNmNjUwNDdj
-ODUzYTJhNWFiY2Q4YWMxOTg0YWYzNDUyYjVkZjRhZGEgdXBzdHJlYW0uCj4gPiAKPiA+IEFkZCBo
-ZWxwZXIgdG8gZGVyZWdpc3RlciBmaXhlZC1saW5rIFBIWXMgcmVnaXN0ZXJlZCB1c2luZwo+ID4g
-b2ZfcGh5X3JlZ2lzdGVyX2ZpeGVkX2xpbmsoKS4KPiA+IAo+ID4gQ29udmVydCB0aGUgdHdvIGRy
-aXZlcnMgdGhhdCBjYXJlIHRvIGRlcmVnaXN0ZXIgdGhlaXIgZml4ZWQtbGluayBQSFlzIHRvCj4g
-PiB1c2UgdGhlIG5ldyBoZWxwZXIsIGJ1dCBub3RlIHRoYXQgbW9zdCBkcml2ZXJzIGN1cnJlbnRs
-eSBmYWlsIHRvIGRvIHNvLgo+ID4gCj4gPiBTaWduZWQtb2ZmLWJ5OiBKb2hhbiBIb3ZvbGQgPGpv
-aGFuQGtlcm5lbC5vcmc+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBEYXZpZCBTLiBNaWxsZXIgPGRhdmVt
-QGRhdmVtbG9mdC5uZXQ+Cj4gPiBbb25seSB0YWtlIGhlbHBlciBmdW5jdGlvbiBmb3IgNC40Lnkg
-LSBncmVna2hdCj4gPiAKPiA+ICAjIG1ha2UgLXNrIEtCVUlMRF9CVUlMRF9VU0VSPVR1eEJ1aWxk
-IC1DL2xpbnV4IC1qMTYgQVJDSD1hcm0KPiA+IENST1NTX0NPTVBJTEU9YXJtLWxpbnV4LWdudWVh
-YmloZi0gSE9TVENDPWdjYyBDQz0ic2NjYWNoZQo+ID4gYXJtLWxpbnV4LWdudWVhYmloZi1nY2Mi
-IE89YnVpbGQgekltYWdlCj4gPiA3MCAjCj4gPiA3MSAuLi9kcml2ZXJzL29mL29mX21kaW8uYzog
-SW4gZnVuY3Rpb24g4oCYb2ZfcGh5X2RlcmVnaXN0ZXJfZml4ZWRfbGlua+KAmToKPiA+IDcyIC4u
-L2RyaXZlcnMvb2Yvb2ZfbWRpby5jOjM3OToyOiBlcnJvcjogaW1wbGljaXQgZGVjbGFyYXRpb24g
-b2YKPiA+IGZ1bmN0aW9uIOKAmGZpeGVkX3BoeV91bnJlZ2lzdGVy4oCZOyBkaWQgeW91IG1lYW4g
-4oCYZml4ZWRfcGh5X3JlZ2lzdGVy4oCZPwo+ID4gWy1XZXJyb3I9aW1wbGljaXQtZnVuY3Rpb24t
-ZGVjbGFyYXRpb25dCj4gPiA3MyAgMzc5IHwgZml4ZWRfcGh5X3VucmVnaXN0ZXIocGh5ZGV2KTsK
-PiA+IDc0ICB8IF5+fn5+fn5+fn5+fn5+fn5+fn5+Cj4gPiA3NSAgfCBmaXhlZF9waHlfcmVnaXN0
-ZXIKPiA+IDc2IC4uL2RyaXZlcnMvb2Yvb2ZfbWRpby5jOjM4MToyMjogZXJyb3I6IOKAmHN0cnVj
-dCBwaHlfZGV2aWNl4oCZIGhhcyBubwo+ID4gbWVtYmVyIG5hbWVkIOKAmG1kaW/igJk7IGRpZCB5
-b3UgbWVhbiDigJhtZGl44oCZPwo+ID4gNzcgIDM4MSB8IHB1dF9kZXZpY2UoJnBoeWRldi0+bWRp
-by5kZXYpOyAvKiBvZl9waHlfZmluZF9kZXZpY2UoKSAqLwo+ID4gNzggIHwgXn5+fgo+ID4gNzkg
-IHwgbWRpeAo+IAo+IEFub3RoZXIgZGVwZW5kZW5jeTogNWJjYmUwZjM1ZmIxICgicGh5OiBmaXhl
-ZDogRml4IHJlbW92YWwgb2YgcGh5cy4iKQo+IAo+IEdyZWcsIHRoZXNlIHBhdGNoZXMgYXJlIGZy
-b20gZm91ciB5ZWFycyBhZ28gc28gY2FuJ3QgcmVhbGx5IHJlbWVtYmVyIGlmCj4gdGhlcmUgYXJl
-IG90aGVyIGRlcGVuZGVuY2llcyBvciByZWFzb25zIGFnYWluc3QgYmFja3BvcnRpbmcgdGhlbSAo
-dGhlCj4gbWlzc2luZyBzdGFibGUgdGFncyBhcmUgcGVyIERhdmUncyBwcmVmZXJlbmNlKSwgc29y
-cnkuCj4gCj4gVGhlIGNvdmVyIGxldHRlciBhbHNvIG1lbnRpb25zIGFub3RoZXIgZGVwZW5kZW5j
-eSwgYnV0IHRoYXQgbWF5IGp1c3QKPiBoYXZlIGJlZW4gc29tZSBjb250ZXh0IGNvbmZsaWN0Lgo+
-IAo+IFBlcmhhcHMgeW91IGJldHRlciBkcm9wIHRoZXNlIHVubGVzcyB5b3Ugd2FudCB0byByZXZp
-ZXcgdGhlbSBjbG9zZXIuCgpHb29kIGlkZWEsIEkndmUgZHJvcHBlZCB0aGVtIGFsbCBmb3Igbm93
-LCBzb3JyeSBmb3IgdGhlIG5vaXNlLgoKZ3JlZyBrLWgKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51
-eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On 5/8/2020 1:01 AM, Stanley Chu wrote:
+> Small cleanup as below items,
+> 
+> 1. Use ufshcd_is_wb_allowed() directly instead of ufshcd_wb_sup()
+>     since ufshcd_wb_sup() just returns the result of
+>     ufshcd_is_wb_allowed().
+> 
+> 2. In ufshcd_suspend(), "else if (!ufshcd_is_runtime_pm(pm_op))
+>     can be simplified to "else" since both have the same meaning.
+> 
+> This patch does not change any functionality.
+> 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> Reviewed-by: Avri Altman <avri.altman@wdc.com>
+> ---
+
+The whole series looks good to me.
+
+Reviewed-by: Asutosh Das <asutoshd@codeaurora.org>
+
+>   drivers/scsi/ufs/ufshcd.c | 20 +++++++-------------
+>   1 file changed, 7 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+> index b6a0d77d47ac..426073a518ef 100644
+> --- a/drivers/scsi/ufs/ufshcd.c
+> +++ b/drivers/scsi/ufs/ufshcd.c
+> @@ -253,7 +253,6 @@ static int ufshcd_scale_clks(struct ufs_hba *hba, bool scale_up);
+>   static irqreturn_t ufshcd_intr(int irq, void *__hba);
+>   static int ufshcd_change_power_mode(struct ufs_hba *hba,
+>   			     struct ufs_pa_layer_attr *pwr_mode);
+> -static bool ufshcd_wb_sup(struct ufs_hba *hba);
+>   static int ufshcd_wb_buf_flush_enable(struct ufs_hba *hba);
+>   static int ufshcd_wb_buf_flush_disable(struct ufs_hba *hba);
+>   static int ufshcd_wb_ctrl(struct ufs_hba *hba, bool enable);
+> @@ -285,7 +284,7 @@ static inline void ufshcd_wb_config(struct ufs_hba *hba)
+>   {
+>   	int ret;
+>   
+> -	if (!ufshcd_wb_sup(hba))
+> +	if (!ufshcd_is_wb_allowed(hba))
+>   		return;
+>   
+>   	ret = ufshcd_wb_ctrl(hba, true);
+> @@ -5197,18 +5196,13 @@ static void ufshcd_bkops_exception_event_handler(struct ufs_hba *hba)
+>   				__func__, err);
+>   }
+>   
+> -static bool ufshcd_wb_sup(struct ufs_hba *hba)
+> -{
+> -	return ufshcd_is_wb_allowed(hba);
+> -}
+> -
+>   static int ufshcd_wb_ctrl(struct ufs_hba *hba, bool enable)
+>   {
+>   	int ret;
+>   	u8 index;
+>   	enum query_opcode opcode;
+>   
+> -	if (!ufshcd_wb_sup(hba))
+> +	if (!ufshcd_is_wb_allowed(hba))
+>   		return 0;
+>   
+>   	if (!(enable ^ hba->wb_enabled))
+> @@ -5264,7 +5258,7 @@ static int ufshcd_wb_buf_flush_enable(struct ufs_hba *hba)
+>   	int ret;
+>   	u8 index;
+>   
+> -	if (!ufshcd_wb_sup(hba) || hba->wb_buf_flush_enabled)
+> +	if (!ufshcd_is_wb_allowed(hba) || hba->wb_buf_flush_enabled)
+>   		return 0;
+>   
+>   	index = ufshcd_wb_get_flag_index(hba);
+> @@ -5286,7 +5280,7 @@ static int ufshcd_wb_buf_flush_disable(struct ufs_hba *hba)
+>   	int ret;
+>   	u8 index;
+>   
+> -	if (!ufshcd_wb_sup(hba) || !hba->wb_buf_flush_enabled)
+> +	if (!ufshcd_is_wb_allowed(hba) || !hba->wb_buf_flush_enabled)
+>   		return 0;
+>   
+>   	index = ufshcd_wb_get_flag_index(hba);
+> @@ -5336,7 +5330,7 @@ static bool ufshcd_wb_keep_vcc_on(struct ufs_hba *hba)
+>   	int ret;
+>   	u32 avail_buf;
+>   
+> -	if (!ufshcd_wb_sup(hba))
+> +	if (!ufshcd_is_wb_allowed(hba))
+>   		return false;
+>   	/*
+>   	 * The ufs device needs the vcc to be ON to flush.
+> @@ -8235,12 +8229,12 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>   		 * configured WB type is 70% full, keep vcc ON
+>   		 * for the device to flush the wb buffer
+>   		 */
+> -		if ((hba->auto_bkops_enabled && ufshcd_wb_sup(hba)) ||
+> +		if ((hba->auto_bkops_enabled && ufshcd_is_wb_allowed(hba)) ||
+>   		    ufshcd_wb_keep_vcc_on(hba))
+>   			hba->dev_info.keep_vcc_on = true;
+>   		else
+>   			hba->dev_info.keep_vcc_on = false;
+> -	} else if (!ufshcd_is_runtime_pm(pm_op)) {
+> +	} else {
+>   		hba->dev_info.keep_vcc_on = false;
+>   	}
+>   
+> 
+
+
+-- 
+The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
+Linux Foundation Collaborative Project
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
