@@ -2,87 +2,57 @@ Return-Path: <SRS0=AGTb=6W=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 42C3FC38A2A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 21:44:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BB4FC38A2A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 21:57:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 12DEE21655
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 21:44:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 66BD821655
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 May 2020 21:57:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Dj50294M";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="kJLIbnrg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 12DEE21655
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kFuZ+SSG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 66BD821655
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=inria.fr
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Ap46WdC0MP1tNACFg5+8SmZZYxIsr/Sqtao+l2ULiGo=; b=Dj50294MzeL7eI
-	b8CLLHcIsJyLNqRD9woT7dR859eLrR+SmOBa/vWU1VQeO77ZN/zrqM/b1RMYwCkGMwOyZi4dA9ks0
-	TvphSjuGtJiXQe84Q94hvI+nSM9via/mgxBchfleeV7UTaAoe9BVtjApa8SC9MdvmcWrZZqNFtj1D
-	cRkCE6twSNcaiem8Rt/Wid37az55NzkftAUcg7gX1EDdFaPQobLAnSi82tk1M905/99/rG9mVXV+S
-	bok5rbIkHTSV70Ysz4PwAjwrnwGGGdDNE0qrohPHNtu3NgAfwR4B0Y7lH8yikAdo4lWVW8/uI2PYU
-	VGw3DubJuaMkQG4smBLg==;
+	List-Owner; bh=fLrbaspoKeImtO4mZBUhZdiGGXcIt/cQBZEAjzp3srE=; b=kFuZ+SSGksVRj0
+	V+ibJVxi4sSpkKoJAn3qGjb0H9WZx3FWTTbNPdM52PFiEsnIL5uB3cHUC47Bvx6tKx4bcIVcHZzJ3
+	66sEUTMIW22kuIWW0kvCYyMmAtkBMEi7467yAbAkW62dZqy6XyMAZV+urYXp7bXkpzkGcXa5ZyEOk
+	PtsnUvi0PlmcSQ+bTJLkbfoQun9l4YPFwhNIMDAb9q3VbQOzSACiNxdUU66j5KiqWMxdmAzvSuMwk
+	tnSLTXfaiQCXsuce5HGpwEt1kbc0ldS71kVlEZsQRY4a8PHfw3RUTrKkbL53b0ax6qgfPtlNPnsMM
+	hmDQXWhLfa5jyt4joRNA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jXAnT-00021h-GX; Fri, 08 May 2020 21:44:43 +0000
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
+	id 1jXB09-0002Vo-VC; Fri, 08 May 2020 21:57:49 +0000
+Received: from mail2-relais-roc.national.inria.fr ([192.134.164.83])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jXAnK-0001ly-88; Fri, 08 May 2020 21:44:35 +0000
-Received: by mail-lj1-x243.google.com with SMTP id h4so3213771ljg.12;
- Fri, 08 May 2020 14:44:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=9STgKXxF3MEqSS/+ei2u4BjGAAZhqufG8MU2LAh7EQg=;
- b=kJLIbnrg6MmybxYNLRvCXzrBwTiRUK/PQBatG+wYug1rf68UKki38ZcZuT1lRoWbsD
- k9BuCcn9eiq3d1lG1nH/FtUe/+B243ZvqiwmLqz3MqCB+5QF7CC76BXfqsPHZ/7mJpse
- Uv+Qx520d+eGS18fNhIiuKscNeFnLrY5tFZWC4gUtEf5w5tK6rvv/AH4FaFLKJucWrM4
- qYNsq2Q1dWx8oDvBsErx9COd8mUy31p2DxMkHm9/YOHwnoE/A4pzksst7ekzgtMt439C
- VTGT14vcFyK+nzFOxG96bwVxG0EUMorq1Xbu33eseUwCzBAdOZckzKQy2nu0cGPKXy2x
- A61g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=9STgKXxF3MEqSS/+ei2u4BjGAAZhqufG8MU2LAh7EQg=;
- b=WRZqwUk6W0gCw2S/KRL7ZX/2No8TjwJ2GF8WGJdc7hW4uPdoTkLMf2+aeGFsK06bBm
- EIcU+H79xZhoqpMkeEz9Fbb77BMgFlVkS8qXFmXto37cBZXuh5ejrt+M0FEL5F2jaTQM
- Kn2Kiv4QvhtvevMQSgCE/6ujKasSkhyj5sjeheZ7Vy90/h2yTTzwlwG5MdSJ0iNwGmk9
- /7aDJ8K9m6xxrjpzcHCAMRzQztSnsVZwDLenxvz19r6UhRAVdLht+mtFLEz8G1aHSjej
- Sq7MWQ0G7Co02w9Gt1mFcOZvHztE/4KXrWgfGu+9+syY982W23tSDKh05qHLghLnn+Sn
- O62Q==
-X-Gm-Message-State: AOAM530isR3ycA5N3B2Gy+D4Rt7wlHp4fbN1ac9Yba1oRO5i5XdCOckH
- 5JltWtXoEamkZ92UzYAIbb0=
-X-Google-Smtp-Source: ABdhPJwOERlMcC9Nci0ag57cuaBOQkLsyrFQOZWAIlonkVNH0qg8oU10/kTQbLoBvsCGYzJamq/Sng==
-X-Received: by 2002:a05:651c:32e:: with SMTP id
- b14mr2993745ljp.277.1588974272109; 
- Fri, 08 May 2020 14:44:32 -0700 (PDT)
-Received: from localhost.localdomain (h-158-174-22-22.NA.cust.bahnhof.se.
- [158.174.22.22])
- by smtp.gmail.com with ESMTPSA id v17sm2174863lfi.49.2020.05.08.14.44.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 May 2020 14:44:31 -0700 (PDT)
-From: Rikard Falkeborn <rikard.falkeborn@gmail.com>
-To: chunfeng.yun@mediatek.com
-Subject: [PATCH] usb: mtu3: constify struct debugfs_reg32
-Date: Fri,  8 May 2020 23:44:21 +0200
-Message-Id: <20200508214421.3943-1-rikard.falkeborn@gmail.com>
-X-Mailer: git-send-email 2.26.2
+ id 1jXB07-0002Ug-GS
+ for linux-mediatek@lists.infradead.org; Fri, 08 May 2020 21:57:49 +0000
+X-IronPort-AV: E=Sophos;i="5.73,369,1583190000"; d="scan'208";a="448862514"
+Received: from abo-173-121-68.mrs.modulonet.fr (HELO hadrien) ([85.68.121.173])
+ by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 08 May 2020 23:57:17 +0200
+Date: Fri, 8 May 2020 23:57:17 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: sean.wang@mediatek.com, vkoul@kernel.org, matthias.bgg@gmail.com
+Subject: question about drivers/dma/mediatek/mtk-cqdma.c
+Message-ID: <alpine.DEB.2.21.2005082352340.6525@hadrien>
+User-Agent: Alpine 2.21 (DEB 202 2017-01-01)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200508_144434_328987_B8D0E83B 
-X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-CacheID: sfid-20200508_145747_821460_51626020 
+X-CRM114-Status: UNSURE (   5.02  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -95,57 +65,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: gregkh@linuxfoundation.org, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, Rikard Falkeborn <rikard.falkeborn@gmail.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: dmaengine@vger.kernel.org, Nic Volanschi <eugene.volanschi@inria.fr>,
+ linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtu3_prb_regs is never changed and can therefore be made const.
+Hello,
 
-This allows the compiler to put it in the text section instead of the
-data section.
+The function mtk_cqdma_find_active_desc contains the following code:
 
-Before:
-   text    data     bss     dec     hex filename
-  19966    7120       0   27086    69ce drivers/usb/mtu3/mtu3_debugfs.o
+        struct virt_dma_desc *vd;
+        unsigned long flags;
 
-After:
-   text    data     bss     dec     hex filename
-  20142    6992       0   27134    69fe drivers/usb/mtu3/mtu3_debugfs.o
+        spin_lock_irqsave(&cvc->pc->lock, flags);
+        list_for_each_entry(vd, &cvc->pc->queue, node)
+                if (vd->tx.cookie == cookie) {
+                        spin_unlock_irqrestore(&cvc->pc->lock, flags);
+                        return vd;
+                }
 
-Signed-off-by: Rikard Falkeborn <rikard.falkeborn@gmail.com>
----
- drivers/usb/mtu3/mtu3_debugfs.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+That is, from a &cvc->pc->queue there is an iteration over elements of
+type virt_dma_desc.  But other uses of &cvc->pc->queue, such as in
+mtk_cqdma_is_vchan_active, seem to indicate that the elements of this list
+have type mtk_cqdma_vdesc.  It is not clear to me how the body of the loop
+should be updated to account for this.
 
-diff --git a/drivers/usb/mtu3/mtu3_debugfs.c b/drivers/usb/mtu3/mtu3_debugfs.c
-index c96e5dab0a48..fdeade6254ae 100644
---- a/drivers/usb/mtu3/mtu3_debugfs.c
-+++ b/drivers/usb/mtu3/mtu3_debugfs.c
-@@ -276,7 +276,7 @@ static const struct file_operations mtu3_ep_fops = {
- 	.release = single_release,
- };
- 
--static struct debugfs_reg32 mtu3_prb_regs[] = {
-+static const struct debugfs_reg32 mtu3_prb_regs[] = {
- 	dump_prb_reg("enable", U3D_SSUSB_PRB_CTRL0),
- 	dump_prb_reg("byte-sell", U3D_SSUSB_PRB_CTRL1),
- 	dump_prb_reg("byte-selh", U3D_SSUSB_PRB_CTRL2),
-@@ -349,7 +349,7 @@ static const struct file_operations mtu3_probe_fops = {
- static void mtu3_debugfs_create_prb_files(struct mtu3 *mtu)
- {
- 	struct ssusb_mtk *ssusb = mtu->ssusb;
--	struct debugfs_reg32 *regs;
-+	const struct debugfs_reg32 *regs;
- 	struct dentry *dir_prb;
- 	int i;
- 
--- 
-2.26.2
-
+thanks,
+julia
 
 _______________________________________________
 Linux-mediatek mailing list
