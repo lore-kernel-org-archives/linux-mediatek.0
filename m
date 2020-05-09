@@ -2,79 +2,75 @@ Return-Path: <SRS0=UIhI=6X=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B17DFC28CBC
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2020 09:38:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 68CA1C28CBC
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2020 09:39:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7E2B9208DB
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2020 09:38:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 39DD1217BA
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2020 09:39:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WUxl1LNY";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="XWDBzPGF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7E2B9208DB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nFbI2m5D"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39DD1217BA
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ADzrVVq0HZpKgXzP3C5QWbXYVIuub7lVjbyo1ZUnF4w=; b=WUxl1LNYmWAMkY
-	blYUY/BuKQNEwcKSJ6JnaitJt9GbV81G6I+/Dcv4KL2RE21SM/pIYVl77HorpJzwCKISawZV25GPb
-	PJbfBwHDZgzoHJO8UhzoW3mAV1amVfNGI5uWpWpLd+8rbZpPsINHSnMR/aRAl1hyrq5kVzaBSxM6+
-	/0DlIGxNntddAeE+2E5FCm6BnDBSnHeHOai7kyZtKgjsjHzzf54mhY5rvxzchkEjElZ0MJlu9Cfh5
-	+5U/a+SAND6sSIoeKFcFqX7rfF2ikWQpUyT1omaN5KUoDijHAkF00ixYNXtdk2EhWxwiVRxteZvQq
-	oI6meGnZFGSXubesOdoQ==;
+	List-Owner; bh=LnO+QUgCr/ZKkl6eman0xx6G1j3qcOaGy2lJnIlBn5M=; b=nFbI2m5D7KXuV/
+	KeyGJovk9dZcvPdef+h96/pD5NVATiN+3SlKJB4icPDHIyKstHFKKe9lsuRQuAEaYTxTGL//VagDY
+	oOpQg2u4LQHC1+0ckNhuzD2f9G8E618wcYYeGOB4fFZgzg13lyA63kad+9xx+4rkloQvF73dD7FbH
+	zMTjbZfyOyNPXLH0wqqWWbv+gdjYmliCon8Us7lyjwiGHQop/uu2chIC1dNVWhKr45qdtpZnhbj7U
+	cej8Z16RINdtR3hP668QaEY/PZwUMnFv4l6Ug5K92SxfhBBTYqWO9HoTx4m6iIJDz6cA6XzREQdrs
+	Z1QV9fl2Xn6soQJoKQWQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jXLwW-00075o-IK; Sat, 09 May 2020 09:38:48 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jXLxG-0007P6-Ec; Sat, 09 May 2020 09:39:34 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jXLvR-0005wF-Q1; Sat, 09 May 2020 09:37:44 +0000
-X-UUID: 6343168447dd4d4cacef8b91b627b6ca-20200509
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=QgdzxC6jifc5v5xz33NQoqMjvZUvNoNRAMd7vcGrEFo=; 
- b=XWDBzPGF/cKZ2yU9Y9utKXuI7W3qTO3YXhqdsFQXEvKFl94RkqU5wzfcsKeQAhrm3RhJ9fck7DaoKrH/Kr2y4R3TYgYSH93IQlqhhZEIyWy2RPObaI4XwPBb99xcX1WOtgSwtqbhfRtVVezrgXTI+Tj1hTsy3G5bokqB5HCAkSY=;
-X-UUID: 6343168447dd4d4cacef8b91b627b6ca-20200509
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1813192826; Sat, 09 May 2020 01:37:25 -0800
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 9 May 2020 02:37:29 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 9 May 2020 17:37:15 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 9 May 2020 17:37:16 +0800
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
- <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
- <asutoshd@codeaurora.org>
-Subject: [PATCH v2 1/4] scsi: ufs: introduce ufs_hba_variant_params to collect
- customizable parameters
-Date: Sat, 9 May 2020 17:37:13 +0800
-Message-ID: <20200509093716.21010-2-stanley.chu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200509093716.21010-1-stanley.chu@mediatek.com>
-References: <20200509093716.21010-1-stanley.chu@mediatek.com>
+ id 1jXLx8-0007HF-JI
+ for linux-mediatek@lists.infradead.org; Sat, 09 May 2020 09:39:27 +0000
+Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <mfe@pengutronix.de>)
+ id 1jXLwx-0002uz-Fz; Sat, 09 May 2020 11:39:15 +0200
+Received: from mfe by pty.hi.pengutronix.de with local (Exim 4.89)
+ (envelope-from <mfe@pengutronix.de>)
+ id 1jXLww-0005mD-2O; Sat, 09 May 2020 11:39:14 +0200
+Date: Sat, 9 May 2020 11:39:14 +0200
+From: Marco Felsch <m.felsch@pengutronix.de>
+To: Fengping Yu <fengping.yu@mediatek.com>
+Subject: Re: [PATCH v6] Add mtk matrix keypad driver for keypad on MTK SoC
+Message-ID: <20200509093914.qidkjwkp32gn6td6@pengutronix.de>
+References: <20200509020458.8359-1-fengping.yu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 3B04A6CD840250C5C51DB8CDC63535667407E28B0E3B84D1DDE349A5BF36E3642000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20200509020458.8359-1-fengping.yu@mediatek.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 11:36:19 up 176 days, 54 min, 170 users, load average: 0.06, 0.07, 
+ 0.01
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
+X-SA-Exim-Mail-From: mfe@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200509_023741_868821_04EE3501 
-X-CRM114-Status: GOOD (  11.84  )
+X-CRM114-CacheID: sfid-20200509_023926_630044_D8529F48 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,140 +82,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: bvanassche@acm.org, andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org,
+ Yingjoe Chen <yingjoe.chen@mediatek.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are more and more customizable parameters showed up
-in UFS driver. Let's collect them into a unified place to make
-the driver more clean.
+Hi Yu,
 
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/scsi/ufs/ufshcd.c | 38 +++++++++++++++-----------------------
- drivers/scsi/ufs/ufshcd.h |  8 +++++++-
- 2 files changed, 22 insertions(+), 24 deletions(-)
+sorry if this is not your first name..
+Something went wrong with you v6 since you are sending diffs to files
+that are not present in input-master/next.
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 426073a518ef..cdacbe6378a1 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -1353,23 +1353,6 @@ static int ufshcd_devfreq_get_dev_status(struct device *dev,
- 	return 0;
- }
- 
--static struct devfreq_dev_profile ufs_devfreq_profile = {
--	.polling_ms	= 100,
--	.target		= ufshcd_devfreq_target,
--	.get_dev_status	= ufshcd_devfreq_get_dev_status,
--};
--
--#if IS_ENABLED(CONFIG_DEVFREQ_GOV_SIMPLE_ONDEMAND)
--static struct devfreq_simple_ondemand_data ufs_ondemand_data = {
--	.upthreshold = 70,
--	.downdifferential = 5,
--};
--
--static void *gov_data = &ufs_ondemand_data;
--#else
--static void *gov_data; /* NULL */
--#endif
--
- static int ufshcd_devfreq_init(struct ufs_hba *hba)
- {
- 	struct list_head *clk_list = &hba->clk_list_head;
-@@ -1385,12 +1368,12 @@ static int ufshcd_devfreq_init(struct ufs_hba *hba)
- 	dev_pm_opp_add(hba->dev, clki->min_freq, 0);
- 	dev_pm_opp_add(hba->dev, clki->max_freq, 0);
- 
--	ufshcd_vops_config_scaling_param(hba, &ufs_devfreq_profile,
--					 gov_data);
-+	ufshcd_vops_config_scaling_param(hba, &hba->vps->devfreq_profile,
-+					 &hba->vps->ondemand_data);
- 	devfreq = devfreq_add_device(hba->dev,
--			&ufs_devfreq_profile,
-+			&hba->vps->devfreq_profile,
- 			DEVFREQ_GOV_SIMPLE_ONDEMAND,
--			gov_data);
-+			&hba->vps->ondemand_data);
- 	if (IS_ERR(devfreq)) {
- 		ret = PTR_ERR(devfreq);
- 		dev_err(hba->dev, "Unable to register with devfreq %d\n", ret);
-@@ -4314,7 +4297,7 @@ int ufshcd_hba_enable(struct ufs_hba *hba)
- 	 * instruction might be read back.
- 	 * This delay can be changed based on the controller.
- 	 */
--	ufshcd_delay_us(hba->hba_enable_delay_us, 100);
-+	ufshcd_delay_us(hba->vps->hba_enable_delay_us, 100);
- 
- 	/* wait for the host controller to complete initialization */
- 	retry = 50;
-@@ -7477,6 +7460,15 @@ static const struct attribute_group *ufshcd_driver_groups[] = {
- 	NULL,
- };
- 
-+static struct ufs_hba_variant_params ufs_hba_vps = {
-+	.hba_enable_delay_us		= 1000,
-+	.devfreq_profile.polling_ms	= 100,
-+	.devfreq_profile.target		= ufshcd_devfreq_target,
-+	.devfreq_profile.get_dev_status	= ufshcd_devfreq_get_dev_status,
-+	.ondemand_data.upthreshold	= 70,
-+	.ondemand_data.downdifferential	= 5,
-+};
-+
- static struct scsi_host_template ufshcd_driver_template = {
- 	.module			= THIS_MODULE,
- 	.name			= UFSHCD,
-@@ -8724,7 +8716,7 @@ int ufshcd_init(struct ufs_hba *hba, void __iomem *mmio_base, unsigned int irq)
- 
- 	hba->mmio_base = mmio_base;
- 	hba->irq = irq;
--	hba->hba_enable_delay_us = 1000;
-+	hba->vps = &ufs_hba_vps;
- 
- 	err = ufshcd_hba_init(hba);
- 	if (err)
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index 23a434c03c2a..f7bdf52ba8b0 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -566,6 +566,12 @@ enum ufshcd_caps {
- 	UFSHCD_CAP_WB_EN				= 1 << 7,
- };
- 
-+struct ufs_hba_variant_params {
-+	struct devfreq_dev_profile devfreq_profile;
-+	struct devfreq_simple_ondemand_data ondemand_data;
-+	u16 hba_enable_delay_us;
-+};
-+
- /**
-  * struct ufs_hba - per adapter private structure
-  * @mmio_base: UFSHCI base register address
-@@ -663,6 +669,7 @@ struct ufs_hba {
- 	int nutmrs;
- 	u32 ufs_version;
- 	const struct ufs_hba_variant_ops *vops;
-+	struct ufs_hba_variant_params *vps;
- 	void *priv;
- 	unsigned int irq;
- 	bool is_irq_enabled;
-@@ -684,7 +691,6 @@ struct ufs_hba {
- 	u32 eh_flags;
- 	u32 intr_mask;
- 	u16 ee_ctrl_mask;
--	u16 hba_enable_delay_us;
- 	bool is_powered;
- 
- 	/* Work Queues */
+Regards,
+  Marco
+
+On 20-05-09 10:04, Fengping Yu wrote:
+> Change since v5:
+> - remove unnecessary include files
+> - remove redundant comments and newlines
+> - use local irqnr variable instead of member variable of mtk_keypad struct
+> - use regmap to read and write registers
+> - drop kpd_get_dts_info directly into probe function
+> - use devm_add_action_or_reset to avoid goto error handling when do clk setting
+> - use devm_request_threaded_irq api to request irq
+> - remove platform_set_drvdata
+> 
+> fengping.yu (3):
+>   dt-bindings: Change keypad documentation schema
+>   drivers: input: keyboard: Add mtk keypad driver
+>   configs: defconfig: Add CONFIG_KEYBOARD_MTK_KPD=y
+> 
+>  .../devicetree/bindings/input/mtk-kpd.txt     |  61 -------
+>  .../devicetree/bindings/input/mtk-kpd.yaml    |  93 +++++++++++
+>  arch/arm64/configs/defconfig                  |   1 +
+>  drivers/input/keyboard/Kconfig                |   5 +-
+>  drivers/input/keyboard/mtk-kpd.c              | 151 ++++++++----------
+>  5 files changed, 163 insertions(+), 148 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/input/mtk-kpd.txt
+>  create mode 100644 Documentation/devicetree/bindings/input/mtk-kpd.yaml
+> 
+> --
+> 2.18.0
+> 
+> 
+
 -- 
-2.18.0
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
