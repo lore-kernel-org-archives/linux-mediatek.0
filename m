@@ -2,79 +2,82 @@ Return-Path: <SRS0=UIhI=6X=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-12.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 50888C54E49
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2020 10:29:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8461EC28CBC
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2020 13:39:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1478A214D8
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2020 10:29:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 538D320736
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2020 13:39:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qumhoUAR";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EH6bU/iv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1478A214D8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mNW2Odda";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="LCp8NEoA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 538D320736
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l+/CnSTVOI1tXSCNo9cf8xegyU48dBrPtYdyIPifqb4=; b=qumhoUAR4lYkJY
-	3Ykwe3usZZvs4bHgAzIY5tDCQF5AjVoWXHK4cFoxa4sftFdKnacORXCviGg4Pp2904ZuoZYeKWYTl
-	QClEKu48FAydkxahtnjVf4IMT3WEJRokq3VqF5M+2F2sRBsh/xtWNy6CE1Vq00X+TTDhkWWxAdqiV
-	xnG0lYURDw6oLXxmYhvYLCNGpYdbbKT2pgXqrpjDx92r1QpKaX1SW0a5oIfkcpkPlf4UPFzgBu7ni
-	ztSrkcZw1+XCMKiSuGFcT9fe1t29hjsyyl9CekPMuON7V0bFj53kP/P+MkQaHgR2bJKTW2va9S4LL
-	FzQ1RHnaz+fM7LmUTcRw==;
+	List-Owner; bh=kqmvk8dCAmZ8vj/nIfAlg0a0DMB8QBvd/Peh8cgIrIg=; b=mNW2Odda9NKIBe
+	nx8pAjDuzVaVBUMdNTr8XlfnYjqKGFX8B9pbcfRUw/eUKoiAoFeatzkqFRwxHEXqZXP5vi3+I8Ruq
+	t3YjC3Lgt7O5dPEiWqccAdzmhIEDwUKNol/KdlJNfXq5Bauee8Z6iMo0vg5fGoGSlm56KYOEReZnx
+	pTt5IPbL6Ke9Tk6Xba8q2RlAuXfqwc3pi7T/pu0kIW04o1pwJq6Q8y2H1irA9YIL0bHmUsD47cQxx
+	4AldpBdOFEENeHBfMB+5TRIc0qhz8rhE3RxTkMOWcS8p0Rt8wnVbi4oiMJLIG4IbdKdqacOxO/OBp
+	9eyawqFCsIAQJHdq3jjg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jXMjg-0003Cx-Jm; Sat, 09 May 2020 10:29:36 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jXPhM-0001Cs-EI; Sat, 09 May 2020 13:39:24 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jXMjd-0003C7-JU; Sat, 09 May 2020 10:29:35 +0000
-X-UUID: 6b7c0b6dd98e4998a2cf0f8dca7e42ab-20200509
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=epJDxfn56pm1KYyJJsHHZHZ67ESMx3iBBECMEcHoO2Q=; 
- b=EH6bU/ivwKNlZGtx3QmkhDPM1Ncw2sUxTOIC6t26jrHHE46HsNwumNC5aVmLPeLp8WX0TNQiGMOJTgU7aIGy4upzWOLIbefjAEw2rmbtDcIAkUeVllVLTV+yqGoLy+QaKwDN1EA8tspEhwgakDJbGlIoohnSn9DV2BfnEaLv630=;
-X-UUID: 6b7c0b6dd98e4998a2cf0f8dca7e42ab-20200509
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <xia.jiang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 2064341429; Sat, 09 May 2020 02:29:21 -0800
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 9 May 2020 03:29:25 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs07n1.mediatek.inc
- (172.21.101.16) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 9 May 2020 18:29:25 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 9 May 2020 18:29:24 +0800
-Message-ID: <1589020095.24163.150.camel@mhfsdcap03>
-Subject: Re: [PATCH v7 11/11] media: platform: Add jpeg dec/enc feature
-From: Xia Jiang <xia.jiang@mediatek.com>
-To: Tomasz Figa <tfiga@chromium.org>
-Date: Sat, 9 May 2020 18:28:15 +0800
-In-Reply-To: <20200501173712.GB218308@chromium.org>
-References: <20200303123446.20095-1-xia.jiang@mediatek.com>
- <20200303123446.20095-12-xia.jiang@mediatek.com>
- <20200306112337.GA163286@chromium.org>
- <1587009795.24163.87.camel@mhfsdcap03>
- <20200501173712.GB218308@chromium.org>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jXPhB-00015g-KE; Sat, 09 May 2020 13:39:16 +0000
+Received: from mail-ed1-f44.google.com (mail-ed1-f44.google.com
+ [209.85.208.44])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8833A21473;
+ Sat,  9 May 2020 13:39:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1589031551;
+ bh=NfAWv5xLC3OLtEXGg4DLKE4Rs4dQe/gWzY1FYPLzrnU=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=LCp8NEoAaA+uu2MTfGB+K2tTdJQ1+xO4TqmYY3DOj1bHNZsR1GorBtpcmWwPD8aDA
+ XWh2rxHWreY7Oxwpq29aVsALD+vJrtqqh8Of6v0af/CwgEt2Sv0ogkQpTzsbzK9eAX
+ Kh61/GwaV7fJmbjJVw8VsjPHca7P0PzV4e0HftWM=
+Received: by mail-ed1-f44.google.com with SMTP id k22so3737810eds.6;
+ Sat, 09 May 2020 06:39:11 -0700 (PDT)
+X-Gm-Message-State: AGi0Pub4S3Mrs8yCut0hRs8mDgrP/P0fxBIBbAqz3fSy5JK0pHxEWXdI
+ smwWUVe4fqRnlqH6hOsYycQDeXLUljgHn5WKsw==
+X-Google-Smtp-Source: APiQypLDSD424Rd1jJ06F9Cw+H9XU2K8fwhUCsuNh2gmkAlo465fOvtpAh9yMMEaBJNHQ4DkLUOTOTMCQS83wK57D+c=
+X-Received: by 2002:aa7:dd95:: with SMTP id g21mr6153861edv.148.1589031549904; 
+ Sat, 09 May 2020 06:39:09 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20200420060834.44461-1-amistry@google.com>
+ <CAAOTY_81qB+WJN_2-ZNqM63NOp+Es1qEmsp2qje2bfePg1O5Vw@mail.gmail.com>
+ <CAATStaNwCyveF-fmrT=1m-BJh=8WOyaffFzVsC_Lo_rFkm6Z=Q@mail.gmail.com>
+ <CAAOTY_9HQTiywgzGrefDHromhXtLPyWeYUyxFU8+h8sN_fo9xw@mail.gmail.com>
+ <CAAOTY_9+s8EknSFLyYHNDfJuxERTuubBXaQ41Y3J+DeuDMFGqA@mail.gmail.com>
+ <CAECpkiM5ez8=iEe=fYKiDf5Pb6AHrTyt5uXqJQtQpQJHotupWA@mail.gmail.com>
+ <CAAOTY__B+8XY=5n5C2AYBGskRhvOs2PmHVhjKJk7NmXDVM_-Nw@mail.gmail.com>
+ <CAECpkiO9P1+GpQi+aH_B2B8d5Bsba5XJnUKJDfL-kZk455Edcg@mail.gmail.com>
+In-Reply-To: <CAECpkiO9P1+GpQi+aH_B2B8d5Bsba5XJnUKJDfL-kZk455Edcg@mail.gmail.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Sat, 9 May 2020 21:38:59 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_82rA6cQoN-3CWtLAHje56k8TnLfaBkBz_BN_sWnt9r2A@mail.gmail.com>
+Message-ID: <CAAOTY_82rA6cQoN-3CWtLAHje56k8TnLfaBkBz_BN_sWnt9r2A@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: stop iterating dma addresses when
+ sg_dma_len() == 0
+To: Anand Mistry <amistry@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200509_032933_665058_6760A873 
-X-CRM114-Status: GOOD (  35.64  )
+X-CRM114-CacheID: sfid-20200509_063914_810472_CBB86CAD 
+X-CRM114-Status: GOOD (  24.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,287 +89,91 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- Rick Chang <rick.chang@mediatek.com>, linux-kernel@vger.kernel.org,
- Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- linux-mediatek@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Anand K Mistry <amistry@google.com>,
+ DRI Development <dri-devel@lists.freedesktop.org>, CK Hu <ck.hu@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2020-05-01 at 17:37 +0000, Tomasz Figa wrote:
-> Hi Xia,
-> 
-> On Thu, Apr 16, 2020 at 12:03:15PM +0800, Xia Jiang wrote:
-> > On Fri, 2020-03-06 at 20:23 +0900, Tomasz Figa wrote:
-> > > Hi Xia,
-> > > 
-> > > On Tue, Mar 03, 2020 at 08:34:46PM +0800, Xia Jiang wrote:
-> > > > Add mtk jpeg encode v4l2 driver based on jpeg decode, because that jpeg
-> > > > decode and encode have great similarities with function operation.
-> > > 
-> > > Thank you for the patch. Please see my comments inline.
-> > 
-> > Dear Tomasz,
-> > 
-> > Thank you for your reply. I have followed your advice and submited v8
-> > version patch.
-> > 
-> > Please check my reply below.
-Dear Tomasz,
-I have some confuse about your advice, please check my reply below.
-> [snip]
-> > > 
-> > > >  
-> > > > -	switch (s->target) {
-> > > > -	case V4L2_SEL_TGT_COMPOSE:
-> > > > -		s->r.left = 0;
-> > > > -		s->r.top = 0;
-> > > > -		ctx->out_q.w = s->r.width;
-> > > > -		ctx->out_q.h = s->r.height;
-> > > > -		break;
-> > > > -	default:
-> > > > -		return -EINVAL;
-> > > > +		switch (s->target) {
-> > > > +		case V4L2_SEL_TGT_CROP:
-> > > > +			s->r.left = 0;
-> > > > +			s->r.top = 0;
-> > > > +			ctx->out_q.w = s->r.width;
-> > > > +			ctx->out_q.h = s->r.height;
-> > > 
-> > > What happens if the userspace provides a value bigger than current format?
-> > we need get the min value of userspace value and current value,changed
-> > it like this:
-> > ctx->out_q.w = min(s->r.width, ctx->out_q.w);
-> > ctx->out_q.h = min(s->r.height,ctx->out_q.h);
-> 
-> Since ctx->out_q is modified by this function, wouldn't that cause
-> problems if S_SELECTION was called two times, first with a smaller
-> rectangle and then with a bigger one? We should store the active crop
-> and format separately and use the latter for min().
-Add a member variable(struct v4l2_rect) in out_q structure for storing
-the active crop, like this:
-s->r.width =  min(s->r.width, ctx->out_q.w);
-s->r.height = min(s->r.height,ctx->out_q.h);
-ctx->out_q.rect.width = s->r.width;
-ctx->out_q.rect.height =  s->r.height;
-Is that ok?
-> 
-> [snip]
-> > > >  
-> > > >  	while ((vb = mtk_jpeg_buf_remove(ctx, q->type)))
-> > > >  		v4l2_m2m_buf_done(vb, VB2_BUF_STATE_ERROR);
-> > > > @@ -772,6 +1011,45 @@ static int mtk_jpeg_set_dec_dst(struct mtk_jpeg_ctx *ctx,
-> > > >  	return 0;
-> > > >  }
-> > > >  
-> > > > +static void mtk_jpeg_set_enc_dst(struct mtk_jpeg_ctx *ctx, void __iomem *base,
-> > > > +				 struct vb2_buffer *dst_buf,
-> > > > +				 struct mtk_jpeg_enc_bs *bs)
-> > > > +{
-> > > > +	bs->dma_addr = vb2_dma_contig_plane_dma_addr(dst_buf, 0);
-> > > > +	bs->dma_addr_offset = ctx->enable_exif ? MTK_JPEG_DEFAULT_EXIF_SIZE : 0;
-> > > 
-> > > Could you explain what is the meaning of the dma_addr_offset and where the
-> > > default EXIF size comes from? Also, how is the encoder output affected by
-> > > the enable_exif flag?
-> > If enabled the exif mode, the real output will be filled at the locaiton
-> > of dst_addr+ dma_addr_offset(exif size).The dma_addr_offset will be
-> > filled by the application.
-> > The default exif size is setted as constant value 64k according to the
-> > spec.(Exif metadata are restricted in size to 64kB in JPEG images
-> > because according to the specification this information must be
-> > contained within a signed JPEG APP1 segment)
-> 
-> Okay, thanks. Then it sounds like MTK_JPEG_MAX_EXIF_SIZE could be a more
-> appropriate name.
-> 
-> [snip]
-> > > > +}
-> > > > +
-> > > >  static void mtk_jpeg_device_run(void *priv)
-> > > >  {
-> > > >  	struct mtk_jpeg_ctx *ctx = priv;
-> > > > @@ -782,6 +1060,8 @@ static void mtk_jpeg_device_run(void *priv)
-> > > >  	struct mtk_jpeg_src_buf *jpeg_src_buf;
-> > > >  	struct mtk_jpeg_bs bs;
-> > > >  	struct mtk_jpeg_fb fb;
-> > > > +	struct mtk_jpeg_enc_bs enc_bs;
-> > > > +	struct mtk_jpeg_enc_fb enc_fb;
-> > > >  	int i;
-> > > >  
-> > > >  	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
-> > > > @@ -792,30 +1072,47 @@ static void mtk_jpeg_device_run(void *priv)
-> > > >  		for (i = 0; i < dst_buf->vb2_buf.num_planes; i++)
-> > > >  			vb2_set_plane_payload(&dst_buf->vb2_buf, i, 0);
-> > > >  		buf_state = VB2_BUF_STATE_DONE;
-> > > 
-> > > About existing code, but we may want to explain this.
-> > > What is this last frame handling above for?
-> > if the user gives us a empty buffer(means it is the last frame),the
-> > driver will not encode and done the buffer to the user.
-> >
-> 
-> An empty buffer is not a valid way of signaling a last frame in V4L2. In
-> general, I'm not sure there is such a thing in JPEG, because all frames
-> are separate from each other and we always expect 1 input buffer and 1
-> output buffer for one frame. We might want to remove the special
-> handling in a follow up patch.
-How does application to end jpeg operation in motion jpeg if we remove
-this? I tryed to end with the condition that the input number equals
-output number in UT, and is ok.
-> 
-> > > > -		goto dec_end;
-> > > > +		goto device_run_end;
-> > > >  	}
-> > > >  
-> > > > -	if (mtk_jpeg_check_resolution_change(ctx, &jpeg_src_buf->dec_param)) {
-> > > > -		mtk_jpeg_queue_src_chg_event(ctx);
-> > > > -		ctx->state = MTK_JPEG_SOURCE_CHANGE;
-> > > > -		v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
-> > > > -		return;
-> > > > -	}
-> > > > +	if (jpeg->mode == MTK_JPEG_ENC) {
-> > > > +		spin_lock_irqsave(&jpeg->hw_lock, flags);
-> > > > +		mtk_jpeg_enc_reset(jpeg->reg_base);
-> > > 
-> > > Why do we need to reset every frame?
-> > We do this operation is to ensure that all registers are cleared.
-> > It's safer from the hardware point of view.
-> 
-> Wouldn't this only waste power? If we reset the hardware after powering
-> up, the only registers that could change would be changed by the driver
-> itself. The driver should program all registers properly when starting
-> next frame anyway, so such a reset shouldn't be necessary.
-I confirmed with hardware designer again that we need to reset every
-frame. If we do not do like this, unexpected mistakes may occur.
-> 
-> > > 
-> > > > +
-> > > > +		mtk_jpeg_set_enc_dst(ctx, jpeg->reg_base, &dst_buf->vb2_buf,
-> > > > +				     &enc_bs);
-> > > > +		mtk_jpeg_set_enc_src(ctx, jpeg->reg_base, &src_buf->vb2_buf,
-> > > > +				     &enc_fb);
-> > > > +		mtk_jpeg_enc_set_ctrl_cfg(jpeg->reg_base, ctx->enable_exif,
-> > > > +					  ctx->enc_quality,
-> > > > +					  ctx->restart_interval);
-> > > > +
-> > > > +		mtk_jpeg_enc_start(jpeg->reg_base);
-> > > > +	} else {
-> > > > +		if (mtk_jpeg_check_resolution_change
-> > > > +			(ctx, &jpeg_src_buf->dec_param)) {
-> > > > +			mtk_jpeg_queue_src_chg_event(ctx);
-> > > > +			ctx->state = MTK_JPEG_SOURCE_CHANGE;
-> > > > +			v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
-> > > 
-> > > This is a bit strange. Resolution change should be signaled when the
-> > > hardware attempted to decode a frame and detected a different resolution
-> > > than current. It shouldn't be necessary for the userspace to queue a pair
-> > > of buffers to signal it, as with the current code.
-> > If the the resolution is bigger than current, the current buffer will
-> > not be enough for the changed resolution.Shouldn't it tell the userspace
-> > to queue new buffer and stream on again?
-> 
-> The V4L2 decode flow is as follows:
->  - application configures and starts only the OUTPUT queue,
->  - application queues an OUTPUT buffer with a frame worth of bitstream,
->  - decoder parses the bitstream headers, detects CAPTURE format and
->    signals the source change event,
->  - application reads CAPTURE format and configures and starts the
->    CAPTURE queue,
->  - application queues a CAPTURE buffer,
->  - decoder decodes the image to the queued buffer.
-> 
-> In case of subsequent (dynamic) resolution change:
->  - application queues an OUTPUT buffer and a CAPTURE buffer,
->  - decoder parses the bitstream, notices resolution change, updates
->    CAPTURE format and signals the source change event, refusing to
->    continue the decoding until the application acknowledges it,
->  - application either reallocates its CAPTURE buffers or confirms that
->    the existing buffers are fine and acknowledges resolution change,
->  - decoding continues.
-> 
-> For more details, please check the interface specification:
-> https://www.kernel.org/doc/html/latest/media/uapi/v4l/dev-decoder.html
-> 
-I tryed to move this operation from device_run() to
-mtk_jpeg_dec_buf_queue(),but have a problem in motion jpeg.For example,I
-queued three buffers continuously,the third buffer has resolution
-change(bigger than the second buffer),but the capture buffer used in
-device run didn't changed.
-How do we handle this case?
-> [snip]
-> > > > -	ret = video_register_device(jpeg->dec_vdev, VFL_TYPE_GRABBER, 3);
-> > > > +	ret = video_register_device(jpeg->vfd_jpeg, VFL_TYPE_GRABBER, -1);
-> > > 
-> > > FYI the type changed to VFL_TYPE_VIDEO recently.
-> > I changed VFL_TYPE_GRABBER to VFL_TYPE_VIDEO,but builded fail.
-> 
-> What kernel version are you building with?
-I build it with the latest kernel 5.7,but builed fail again.
-> 
-> > > >  	if (ret) {
-> > > >  		v4l2_err(&jpeg->v4l2_dev, "Failed to register video device\n");
-> > > > -		goto err_dec_vdev_register;
-> > > > +		goto err_vfd_jpeg_register;
-> > > >  	}
-> > > >  
-> > > > -	video_set_drvdata(jpeg->dec_vdev, jpeg);
-> > > > +	video_set_drvdata(jpeg->vfd_jpeg, jpeg);
-> > > >  	v4l2_info(&jpeg->v4l2_dev,
-> > > > -		  "decoder device registered as /dev/video%d (%d,%d)\n",
-> > > > -		  jpeg->dec_vdev->num, VIDEO_MAJOR, jpeg->dec_vdev->minor);
-> > > > +		  "jpeg device %d registered as /dev/video%d (%d,%d)\n",
-> > > 
-> > > Here it would be actually useful to special case the encoder and decoder,
-> > > because it would be easier for the user to know which device is which.
-> > > 
-> 
-> Just making sure this wasn't overlooked.
-> 
-> [snip]
-> > > > +
-> > > > +void mtk_jpeg_enc_reset(void __iomem *base)
-> > > > +{
-> > > > +	writel(0x00, base + JPEG_ENC_RSTB);
-> > > > +	writel(JPEG_ENC_RESET_BIT, base + JPEG_ENC_RSTB);
-> > > > +	writel(0x00, base + JPEG_ENC_CODEC_SEL);
-> > > > +}
-> > > > +
-> > > > +u32 mtk_jpeg_enc_get_int_status(void __iomem *base)
-> > > > +{
-> > > > +	u32 ret;
-> > > > +
-> > > > +	ret = readl(base + JPEG_ENC_INT_STS) &
-> > > > +		    JPEG_ENC_INT_STATUS_MASK_ALLIRQ;
-> > > > +	if (ret)
-> > > > +		writel(0, base + JPEG_ENC_INT_STS);
-> > > > +
-> > > > +	return ret;
-> > > > +}
-> > > 
-> > > Does it make sense to have a function for what is essentially just 2 lines?
-> > > Also, the name is misleading, as the function not only gets but also
-> > > clears.
-> > Make all hw register setting in mtk_jpeg_enc_hw.c is one part of current
-> > architecture.
-> > I have changed the function name to
-> > mtk_jpeg_enc_get_and_clear_int_status.
-> 
-> As I mentioned before, this driver needs a big clean up and that's why I
-> suggested starting over with a new one for the JPEG encoder part. Since
-> we decided to extend this one in the end, would you be able to improve
-> this aspect as well? Thanks.
-> 
-> Best regards,
-> Tomasz
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEFuYW5kOgoKQW5hbmQgTWlzdHJ5IDxhbWlzdHJ5QGNocm9taXVtLm9yZz4g5pa8IDIwMjDl
+ubQ15pyIN+aXpSDpgLHlm5sg5LiL5Y2INzo1NuWvq+mBk++8mgo+Cj4gT24gV2VkLCBNYXkgNiwg
+MjAyMCBhdCAxMDo1OSBQTSBDaHVuLUt1YW5nIEh1IDxjaHVua3VhbmcuaHVAa2VybmVsLm9yZz4g
+d3JvdGU6Cj4gPgo+ID4gSGksIEFuYW5kOgo+ID4KPiA+IEFuYW5kIE1pc3RyeSA8YW1pc3RyeUBj
+aHJvbWl1bS5vcmc+IOaWvCAyMDIw5bm0NeaciDbml6Ug6YCx5LiJIOS4i+WNiDc6MDPlr6vpgZPv
+vJoKPiA+ID4KPiA+ID4gT24gV2VkLCBNYXkgNiwgMjAyMCBhdCAxMDoyNSBBTSBDaHVuLUt1YW5n
+IEh1IDxjaHVua3VhbmcuaHVAa2VybmVsLm9yZz4gd3JvdGU6Cj4gPiA+ID4KPiA+ID4gPiBIaSwg
+QW5hbmQsCj4gPiA+ID4KPiA+ID4gPiBDaHVuLUt1YW5nIEh1IDxjaHVua3VhbmcuaHVAa2VybmVs
+Lm9yZz4g5pa8IDIwMjDlubQ05pyIMjnml6Ug6YCx5LiJIOS4iuWNiDEyOjM35a+r6YGT77yaCj4g
+PiA+ID4gPgo+ID4gPiA+ID4gSGksIEFuYW5kLAo+ID4gPiA+ID4KPiA+ID4gPiA+IEFuYW5kIEsu
+IE1pc3RyeSA8YW1pc3RyeUBjaHJvbWl1bS5vcmc+IOaWvCAyMDIw5bm0NOaciDI45pelIOmAseS6
+jCDkuIrljYg5OjU05a+r6YGT77yaCj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+IE9uIFN1biwgMjYg
+QXByIDIwMjAgYXQgMTg6MDQsIENodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3Jn
+PiB3cm90ZToKPiA+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiA+IEhpLCBBbmFuZDoKPiA+ID4gPiA+
+ID4gPgo+ID4gPiA+ID4gPiA+IEFuYW5kIEsgTWlzdHJ5IDxhbWlzdHJ5QGNocm9taXVtLm9yZz4g
+5pa8IDIwMjDlubQ05pyIMjDml6Ug6YCx5LiAIOS4i+WNiDI6MDnlr6vpgZPvvJoKPiA+ID4gPiA+
+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPiBJZiBkbWFfbWFwX3NnKCkgbWVyZ2VzIHBhZ2VzIHdoZW4g
+Y3JlYXRpbmcgdGhlIG1hcHBpbmcsIG9ubHkgdGhlIGZpcnN0Cj4gPiA+ID4gPiA+ID4gPiBlbnRy
+aWVzIHdpbGwgaGF2ZSBhIHZhbGlkIHNnX2RtYV9hZGRyZXNzKCkgYW5kIHNnX2RtYV9sZW4oKSwg
+Zm9sbG93ZWQgYnkKPiA+ID4gPiA+ID4gPiA+IGVudHJpZXMgd2l0aCBzZ19kbWFfbGVuKCkgPT0g
+MC4KPiA+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBBbmFuZCBL
+IE1pc3RyeSA8YW1pc3RyeUBnb29nbGUuY29tPgo+ID4gPiA+Cj4gPiA+ID4gQXV0aG9yIHNob3Vs
+ZCBzaWduIG9mZiB0aGlzIHBhdGNoLCBwbGVhc2UgZ2l2ZSBhIHNpZ24gb2ZmIHRhZyBieSBhdXRo
+b3IuCj4gPiA+Cj4gPiA+IFNvcnJ5LCBlbWFpbCBpc3N1ZXMgbWVhbnQgaSBzZW50IHRoZSBwYXRj
+aCBmcm9tIGEgZGlmZmVyZW50IGFjY291bnQuCj4gPiA+IFNob3VsZCBJIHJlLXNlbmQgdGhlCj4g
+PiA+IHBhdGNoIGZyb20gdGhlIHNhbWUgYWNjb3VudCBhcyB0aGUgc2lnbi1vZmYgbGluZT8gSSdt
+IHN0aWxsIHdvcmtpbmcgbXkKPiA+ID4gd2F5IHRocm91Z2ggdGhlIGtlcm5lbCBwYXRjaCBwcm9j
+ZXNzLgo+ID4gPgo+ID4KPiA+IElmIHlvdSB3YW50IHRvIHVzZSBjaHJvbWl1bSBhY2NvdW50LCB5
+b3UgY291bGQgc2ltcGx5IHJlcGx5IHRoaXMgZW1haWwKPiA+IHdpdGggYSBzaWduLW9mZi1ieSB0
+YWcgb2YgY2hyb21pdW0gYWNjb3VudC4KPgo+IEFjay4gQXMgcGF0aCBvZiBsZWFzdCByZXNpc3Rh
+bmNlLCBoZXJlOgo+Cj4gU2lnbmVkLW9mZi1ieTogQW5hbmQgSyBNaXN0cnkgPGFtaXN0cnlAY2hy
+b21pdW0ub3JnPgo+CgpBcHBsaWVkIHRvIG1lZGlhdGVrLWRybS1uZXh0IFsxXSwgdGhhbmtzLgoK
+WzFdIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L2NodW5r
+dWFuZy5odS9saW51eC5naXQvbG9nLz9oPW1lZGlhdGVrLWRybS1uZXh0CgpSZWdhcmRzLApDaHVu
+LUt1YW5nLgoKPgo+ID4KPiA+IFJlZ2FyZHMsCj4gPiBDaHVuLUt1YW5nLgo+ID4KPiA+ID4gPgo+
+ID4gPiA+IFJlZ2FyZHMsCj4gPiA+ID4gQ2h1bi1LdWFuZy4KPiA+ID4gPgo+ID4gPiA+ID4gPiA+
+ID4gLS0tCj4gPiA+ID4gPiA+ID4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
+Z2VtLmMgfCAzICsrKwo+ID4gPiA+ID4gPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlv
+bnMoKykKPiA+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZ2VtLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9nZW0uYwo+ID4gPiA+ID4gPiA+ID4gaW5kZXggYjA0YTNjMmIxMTFlMDkuLmY4
+ZmQ4Yjk4YzMwZTNkIDEwMDY0NAo+ID4gPiA+ID4gPiA+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcm1fZ2VtLmMKPiA+ID4gPiA+ID4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1
+L2RybS9tZWRpYXRlay9tdGtfZHJtX2dlbS5jCj4gPiA+ID4gPiA+ID4gPiBAQCAtMjI0LDYgKzIy
+NCw5IEBAIHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqbXRrX2dlbV9wcmltZV9pbXBvcnRfc2dfdGFi
+bGUoc3RydWN0IGRybV9kZXZpY2UgKmRldiwKPiA+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4g
+PiAgICAgICAgIGV4cGVjdGVkID0gc2dfZG1hX2FkZHJlc3Moc2ctPnNnbCk7Cj4gPiA+ID4gPiA+
+ID4gPiAgICAgICAgIGZvcl9lYWNoX3NnKHNnLT5zZ2wsIHMsIHNnLT5uZW50cywgaSkgewo+ID4g
+PiA+ID4gPiA+ID4gKyAgICAgICAgICAgICAgIGlmICghc2dfZG1hX2xlbihzKSkKPiA+ID4gPiA+
+ID4gPiA+ICsgICAgICAgICAgICAgICAgICAgICAgIGJyZWFrOwo+ID4gPiA+ID4gPiA+Cj4gPiA+
+ID4gPiA+ID4gSSB0aGluayB0aGlzIHNob3VsZCBiZSAnY29udGludWUnCj4gPiA+ID4gPiA+Cj4g
+PiA+ID4gPiA+IHNjYXR0ZXJsaXN0LmggaGFzIHRoZSBjb21tZW50Ogo+ID4gPiA+ID4gPiAvKgo+
+ID4gPiA+ID4gPiAgKiBUaGVzZSBtYWNyb3Mgc2hvdWxkIGJlIHVzZWQgYWZ0ZXIgYSBkbWFfbWFw
+X3NnIGNhbGwgaGFzIGJlZW4gZG9uZQo+ID4gPiA+ID4gPiAgKiB0byBnZXQgYnVzIGFkZHJlc3Nl
+cyBvZiBlYWNoIG9mIHRoZSBTRyBlbnRyaWVzIGFuZCB0aGVpciBsZW5ndGhzLgo+ID4gPiA+ID4g
+PiAgKiBZb3Ugc2hvdWxkIG9ubHkgd29yayB3aXRoIHRoZSBudW1iZXIgb2Ygc2cgZW50cmllcyBk
+bWFfbWFwX3NnCj4gPiA+ID4gPiA+ICAqIHJldHVybnMsIG9yIGFsdGVybmF0aXZlbHkgc3RvcCBv
+biB0aGUgZmlyc3Qgc2dfZG1hX2xlbihzZykgd2hpY2gKPiA+ID4gPiA+ID4gICogaXMgMC4KPiA+
+ID4gPiA+ID4gICovCj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+IFNvIGJyZWFraW5nIG9uIHRoZSBm
+aXJzdCBzZ19kbWFfbGVuKHNnKSA9PSAwIGFwcGVhcnMgdG8gYmUgKG9uZSBvZikKPiA+ID4gPiA+
+ID4gdGhlIGRvY3VtZW50ZWQgYXBwcm9hY2guCj4gPiA+ID4gPiA+Cj4gPiA+ID4gPgo+ID4gPiA+
+ID4gT2theSwgeW91J3JlIHJpZ2h0LiBTbwo+ID4gPiA+ID4KPiA+ID4gPiA+IFJldmlld2VkLWJ5
+OiBDaHVuLUt1YW5nIEh1IDxjaHVua3VhbmcuaHVAa2VybmVsLm9yZz4KPiA+ID4gPiA+Cj4gPiA+
+ID4gPiA+ID4KPiA+ID4gPiA+ID4gPiBSZWdhcmRzLAo+ID4gPiA+ID4gPiA+IENodW4tS3Vhbmcu
+Cj4gPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gPiA+ICsKPiA+ID4gPiA+ID4gPiA+ICAgICAgICAg
+ICAgICAgICBpZiAoc2dfZG1hX2FkZHJlc3MocykgIT0gZXhwZWN0ZWQpIHsKPiA+ID4gPiA+ID4g
+PiA+ICAgICAgICAgICAgICAgICAgICAgICAgIERSTV9FUlJPUigic2dfdGFibGUgaXMgbm90IGNv
+bnRpZ3VvdXMiKTsKPiA+ID4gPiA+ID4gPiA+ICAgICAgICAgICAgICAgICAgICAgICAgIHJldCA9
+IC1FSU5WQUw7Cj4gPiA+ID4gPiA+ID4gPiAtLQo+ID4gPiA+ID4gPiA+ID4gMi4yNi4xLjMwMS5n
+NTViYzNlYjdjYjktZ29vZwo+ID4gPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gPiA+Cj4gPiA+ID4g
+PiA+ID4gPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+
+ID4gPiA+ID4gPiA+ID4gTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0Cj4gPiA+ID4gPiA+ID4g
+PiBMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCj4gPiA+ID4gPiA+ID4gPiBodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRp
+YXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
