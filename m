@@ -4,73 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-2.3 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 68CA1C28CBC
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2020 09:39:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 50888C54E49
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2020 10:29:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 39DD1217BA
-	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2020 09:39:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1478A214D8
+	for <linux-mediatek@archiver.kernel.org>; Sat,  9 May 2020 10:29:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nFbI2m5D"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39DD1217BA
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qumhoUAR";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="EH6bU/iv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1478A214D8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LnO+QUgCr/ZKkl6eman0xx6G1j3qcOaGy2lJnIlBn5M=; b=nFbI2m5D7KXuV/
-	KeyGJovk9dZcvPdef+h96/pD5NVATiN+3SlKJB4icPDHIyKstHFKKe9lsuRQuAEaYTxTGL//VagDY
-	oOpQg2u4LQHC1+0ckNhuzD2f9G8E618wcYYeGOB4fFZgzg13lyA63kad+9xx+4rkloQvF73dD7FbH
-	zMTjbZfyOyNPXLH0wqqWWbv+gdjYmliCon8Us7lyjwiGHQop/uu2chIC1dNVWhKr45qdtpZnhbj7U
-	cej8Z16RINdtR3hP668QaEY/PZwUMnFv4l6Ug5K92SxfhBBTYqWO9HoTx4m6iIJDz6cA6XzREQdrs
-	Z1QV9fl2Xn6soQJoKQWQ==;
+	List-Owner; bh=l+/CnSTVOI1tXSCNo9cf8xegyU48dBrPtYdyIPifqb4=; b=qumhoUAR4lYkJY
+	3Ykwe3usZZvs4bHgAzIY5tDCQF5AjVoWXHK4cFoxa4sftFdKnacORXCviGg4Pp2904ZuoZYeKWYTl
+	QClEKu48FAydkxahtnjVf4IMT3WEJRokq3VqF5M+2F2sRBsh/xtWNy6CE1Vq00X+TTDhkWWxAdqiV
+	xnG0lYURDw6oLXxmYhvYLCNGpYdbbKT2pgXqrpjDx92r1QpKaX1SW0a5oIfkcpkPlf4UPFzgBu7ni
+	ztSrkcZw1+XCMKiSuGFcT9fe1t29hjsyyl9CekPMuON7V0bFj53kP/P+MkQaHgR2bJKTW2va9S4LL
+	FzQ1RHnaz+fM7LmUTcRw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jXLxG-0007P6-Ec; Sat, 09 May 2020 09:39:34 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1jXMjg-0003Cx-Jm; Sat, 09 May 2020 10:29:36 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jXLx8-0007HF-JI
- for linux-mediatek@lists.infradead.org; Sat, 09 May 2020 09:39:27 +0000
-Received: from pty.hi.pengutronix.de ([2001:67c:670:100:1d::c5])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <mfe@pengutronix.de>)
- id 1jXLwx-0002uz-Fz; Sat, 09 May 2020 11:39:15 +0200
-Received: from mfe by pty.hi.pengutronix.de with local (Exim 4.89)
- (envelope-from <mfe@pengutronix.de>)
- id 1jXLww-0005mD-2O; Sat, 09 May 2020 11:39:14 +0200
-Date: Sat, 9 May 2020 11:39:14 +0200
-From: Marco Felsch <m.felsch@pengutronix.de>
-To: Fengping Yu <fengping.yu@mediatek.com>
-Subject: Re: [PATCH v6] Add mtk matrix keypad driver for keypad on MTK SoC
-Message-ID: <20200509093914.qidkjwkp32gn6td6@pengutronix.de>
-References: <20200509020458.8359-1-fengping.yu@mediatek.com>
+ id 1jXMjd-0003C7-JU; Sat, 09 May 2020 10:29:35 +0000
+X-UUID: 6b7c0b6dd98e4998a2cf0f8dca7e42ab-20200509
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=epJDxfn56pm1KYyJJsHHZHZ67ESMx3iBBECMEcHoO2Q=; 
+ b=EH6bU/ivwKNlZGtx3QmkhDPM1Ncw2sUxTOIC6t26jrHHE46HsNwumNC5aVmLPeLp8WX0TNQiGMOJTgU7aIGy4upzWOLIbefjAEw2rmbtDcIAkUeVllVLTV+yqGoLy+QaKwDN1EA8tspEhwgakDJbGlIoohnSn9DV2BfnEaLv630=;
+X-UUID: 6b7c0b6dd98e4998a2cf0f8dca7e42ab-20200509
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <xia.jiang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 2064341429; Sat, 09 May 2020 02:29:21 -0800
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 9 May 2020 03:29:25 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs07n1.mediatek.inc
+ (172.21.101.16) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sat, 9 May 2020 18:29:25 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 9 May 2020 18:29:24 +0800
+Message-ID: <1589020095.24163.150.camel@mhfsdcap03>
+Subject: Re: [PATCH v7 11/11] media: platform: Add jpeg dec/enc feature
+From: Xia Jiang <xia.jiang@mediatek.com>
+To: Tomasz Figa <tfiga@chromium.org>
+Date: Sat, 9 May 2020 18:28:15 +0800
+In-Reply-To: <20200501173712.GB218308@chromium.org>
+References: <20200303123446.20095-1-xia.jiang@mediatek.com>
+ <20200303123446.20095-12-xia.jiang@mediatek.com>
+ <20200306112337.GA163286@chromium.org>
+ <1587009795.24163.87.camel@mhfsdcap03>
+ <20200501173712.GB218308@chromium.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200509020458.8359-1-fengping.yu@mediatek.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 11:36:19 up 176 days, 54 min, 170 users, load average: 0.06, 0.07, 
- 0.01
-User-Agent: NeoMutt/20170113 (1.7.2)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c5
-X-SA-Exim-Mail-From: mfe@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200509_023926_630044_D8529F48 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20200509_032933_665058_6760A873 
+X-CRM114-Status: GOOD (  35.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,60 +86,285 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org,
- Yingjoe Chen <yingjoe.chen@mediatek.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ Rick Chang <rick.chang@mediatek.com>, linux-kernel@vger.kernel.org,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ linux-mediatek@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yu,
-
-sorry if this is not your first name..
-Something went wrong with you v6 since you are sending diffs to files
-that are not present in input-master/next.
-
-Regards,
-  Marco
-
-On 20-05-09 10:04, Fengping Yu wrote:
-> Change since v5:
-> - remove unnecessary include files
-> - remove redundant comments and newlines
-> - use local irqnr variable instead of member variable of mtk_keypad struct
-> - use regmap to read and write registers
-> - drop kpd_get_dts_info directly into probe function
-> - use devm_add_action_or_reset to avoid goto error handling when do clk setting
-> - use devm_request_threaded_irq api to request irq
-> - remove platform_set_drvdata
+On Fri, 2020-05-01 at 17:37 +0000, Tomasz Figa wrote:
+> Hi Xia,
 > 
-> fengping.yu (3):
->   dt-bindings: Change keypad documentation schema
->   drivers: input: keyboard: Add mtk keypad driver
->   configs: defconfig: Add CONFIG_KEYBOARD_MTK_KPD=y
+> On Thu, Apr 16, 2020 at 12:03:15PM +0800, Xia Jiang wrote:
+> > On Fri, 2020-03-06 at 20:23 +0900, Tomasz Figa wrote:
+> > > Hi Xia,
+> > > 
+> > > On Tue, Mar 03, 2020 at 08:34:46PM +0800, Xia Jiang wrote:
+> > > > Add mtk jpeg encode v4l2 driver based on jpeg decode, because that jpeg
+> > > > decode and encode have great similarities with function operation.
+> > > 
+> > > Thank you for the patch. Please see my comments inline.
+> > 
+> > Dear Tomasz,
+> > 
+> > Thank you for your reply. I have followed your advice and submited v8
+> > version patch.
+> > 
+> > Please check my reply below.
+Dear Tomasz,
+I have some confuse about your advice, please check my reply below.
+> [snip]
+> > > 
+> > > >  
+> > > > -	switch (s->target) {
+> > > > -	case V4L2_SEL_TGT_COMPOSE:
+> > > > -		s->r.left = 0;
+> > > > -		s->r.top = 0;
+> > > > -		ctx->out_q.w = s->r.width;
+> > > > -		ctx->out_q.h = s->r.height;
+> > > > -		break;
+> > > > -	default:
+> > > > -		return -EINVAL;
+> > > > +		switch (s->target) {
+> > > > +		case V4L2_SEL_TGT_CROP:
+> > > > +			s->r.left = 0;
+> > > > +			s->r.top = 0;
+> > > > +			ctx->out_q.w = s->r.width;
+> > > > +			ctx->out_q.h = s->r.height;
+> > > 
+> > > What happens if the userspace provides a value bigger than current format?
+> > we need get the min value of userspace value and current value,changed
+> > it like this:
+> > ctx->out_q.w = min(s->r.width, ctx->out_q.w);
+> > ctx->out_q.h = min(s->r.height,ctx->out_q.h);
 > 
->  .../devicetree/bindings/input/mtk-kpd.txt     |  61 -------
->  .../devicetree/bindings/input/mtk-kpd.yaml    |  93 +++++++++++
->  arch/arm64/configs/defconfig                  |   1 +
->  drivers/input/keyboard/Kconfig                |   5 +-
->  drivers/input/keyboard/mtk-kpd.c              | 151 ++++++++----------
->  5 files changed, 163 insertions(+), 148 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/input/mtk-kpd.txt
->  create mode 100644 Documentation/devicetree/bindings/input/mtk-kpd.yaml
+> Since ctx->out_q is modified by this function, wouldn't that cause
+> problems if S_SELECTION was called two times, first with a smaller
+> rectangle and then with a bigger one? We should store the active crop
+> and format separately and use the latter for min().
+Add a member variable(struct v4l2_rect) in out_q structure for storing
+the active crop, like this:
+s->r.width =  min(s->r.width, ctx->out_q.w);
+s->r.height = min(s->r.height,ctx->out_q.h);
+ctx->out_q.rect.width = s->r.width;
+ctx->out_q.rect.height =  s->r.height;
+Is that ok?
 > 
-> --
-> 2.18.0
+> [snip]
+> > > >  
+> > > >  	while ((vb = mtk_jpeg_buf_remove(ctx, q->type)))
+> > > >  		v4l2_m2m_buf_done(vb, VB2_BUF_STATE_ERROR);
+> > > > @@ -772,6 +1011,45 @@ static int mtk_jpeg_set_dec_dst(struct mtk_jpeg_ctx *ctx,
+> > > >  	return 0;
+> > > >  }
+> > > >  
+> > > > +static void mtk_jpeg_set_enc_dst(struct mtk_jpeg_ctx *ctx, void __iomem *base,
+> > > > +				 struct vb2_buffer *dst_buf,
+> > > > +				 struct mtk_jpeg_enc_bs *bs)
+> > > > +{
+> > > > +	bs->dma_addr = vb2_dma_contig_plane_dma_addr(dst_buf, 0);
+> > > > +	bs->dma_addr_offset = ctx->enable_exif ? MTK_JPEG_DEFAULT_EXIF_SIZE : 0;
+> > > 
+> > > Could you explain what is the meaning of the dma_addr_offset and where the
+> > > default EXIF size comes from? Also, how is the encoder output affected by
+> > > the enable_exif flag?
+> > If enabled the exif mode, the real output will be filled at the locaiton
+> > of dst_addr+ dma_addr_offset(exif size).The dma_addr_offset will be
+> > filled by the application.
+> > The default exif size is setted as constant value 64k according to the
+> > spec.(Exif metadata are restricted in size to 64kB in JPEG images
+> > because according to the specification this information must be
+> > contained within a signed JPEG APP1 segment)
 > 
+> Okay, thanks. Then it sounds like MTK_JPEG_MAX_EXIF_SIZE could be a more
+> appropriate name.
 > 
-
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+> [snip]
+> > > > +}
+> > > > +
+> > > >  static void mtk_jpeg_device_run(void *priv)
+> > > >  {
+> > > >  	struct mtk_jpeg_ctx *ctx = priv;
+> > > > @@ -782,6 +1060,8 @@ static void mtk_jpeg_device_run(void *priv)
+> > > >  	struct mtk_jpeg_src_buf *jpeg_src_buf;
+> > > >  	struct mtk_jpeg_bs bs;
+> > > >  	struct mtk_jpeg_fb fb;
+> > > > +	struct mtk_jpeg_enc_bs enc_bs;
+> > > > +	struct mtk_jpeg_enc_fb enc_fb;
+> > > >  	int i;
+> > > >  
+> > > >  	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+> > > > @@ -792,30 +1072,47 @@ static void mtk_jpeg_device_run(void *priv)
+> > > >  		for (i = 0; i < dst_buf->vb2_buf.num_planes; i++)
+> > > >  			vb2_set_plane_payload(&dst_buf->vb2_buf, i, 0);
+> > > >  		buf_state = VB2_BUF_STATE_DONE;
+> > > 
+> > > About existing code, but we may want to explain this.
+> > > What is this last frame handling above for?
+> > if the user gives us a empty buffer(means it is the last frame),the
+> > driver will not encode and done the buffer to the user.
+> >
+> 
+> An empty buffer is not a valid way of signaling a last frame in V4L2. In
+> general, I'm not sure there is such a thing in JPEG, because all frames
+> are separate from each other and we always expect 1 input buffer and 1
+> output buffer for one frame. We might want to remove the special
+> handling in a follow up patch.
+How does application to end jpeg operation in motion jpeg if we remove
+this? I tryed to end with the condition that the input number equals
+output number in UT, and is ok.
+> 
+> > > > -		goto dec_end;
+> > > > +		goto device_run_end;
+> > > >  	}
+> > > >  
+> > > > -	if (mtk_jpeg_check_resolution_change(ctx, &jpeg_src_buf->dec_param)) {
+> > > > -		mtk_jpeg_queue_src_chg_event(ctx);
+> > > > -		ctx->state = MTK_JPEG_SOURCE_CHANGE;
+> > > > -		v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+> > > > -		return;
+> > > > -	}
+> > > > +	if (jpeg->mode == MTK_JPEG_ENC) {
+> > > > +		spin_lock_irqsave(&jpeg->hw_lock, flags);
+> > > > +		mtk_jpeg_enc_reset(jpeg->reg_base);
+> > > 
+> > > Why do we need to reset every frame?
+> > We do this operation is to ensure that all registers are cleared.
+> > It's safer from the hardware point of view.
+> 
+> Wouldn't this only waste power? If we reset the hardware after powering
+> up, the only registers that could change would be changed by the driver
+> itself. The driver should program all registers properly when starting
+> next frame anyway, so such a reset shouldn't be necessary.
+I confirmed with hardware designer again that we need to reset every
+frame. If we do not do like this, unexpected mistakes may occur.
+> 
+> > > 
+> > > > +
+> > > > +		mtk_jpeg_set_enc_dst(ctx, jpeg->reg_base, &dst_buf->vb2_buf,
+> > > > +				     &enc_bs);
+> > > > +		mtk_jpeg_set_enc_src(ctx, jpeg->reg_base, &src_buf->vb2_buf,
+> > > > +				     &enc_fb);
+> > > > +		mtk_jpeg_enc_set_ctrl_cfg(jpeg->reg_base, ctx->enable_exif,
+> > > > +					  ctx->enc_quality,
+> > > > +					  ctx->restart_interval);
+> > > > +
+> > > > +		mtk_jpeg_enc_start(jpeg->reg_base);
+> > > > +	} else {
+> > > > +		if (mtk_jpeg_check_resolution_change
+> > > > +			(ctx, &jpeg_src_buf->dec_param)) {
+> > > > +			mtk_jpeg_queue_src_chg_event(ctx);
+> > > > +			ctx->state = MTK_JPEG_SOURCE_CHANGE;
+> > > > +			v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+> > > 
+> > > This is a bit strange. Resolution change should be signaled when the
+> > > hardware attempted to decode a frame and detected a different resolution
+> > > than current. It shouldn't be necessary for the userspace to queue a pair
+> > > of buffers to signal it, as with the current code.
+> > If the the resolution is bigger than current, the current buffer will
+> > not be enough for the changed resolution.Shouldn't it tell the userspace
+> > to queue new buffer and stream on again?
+> 
+> The V4L2 decode flow is as follows:
+>  - application configures and starts only the OUTPUT queue,
+>  - application queues an OUTPUT buffer with a frame worth of bitstream,
+>  - decoder parses the bitstream headers, detects CAPTURE format and
+>    signals the source change event,
+>  - application reads CAPTURE format and configures and starts the
+>    CAPTURE queue,
+>  - application queues a CAPTURE buffer,
+>  - decoder decodes the image to the queued buffer.
+> 
+> In case of subsequent (dynamic) resolution change:
+>  - application queues an OUTPUT buffer and a CAPTURE buffer,
+>  - decoder parses the bitstream, notices resolution change, updates
+>    CAPTURE format and signals the source change event, refusing to
+>    continue the decoding until the application acknowledges it,
+>  - application either reallocates its CAPTURE buffers or confirms that
+>    the existing buffers are fine and acknowledges resolution change,
+>  - decoding continues.
+> 
+> For more details, please check the interface specification:
+> https://www.kernel.org/doc/html/latest/media/uapi/v4l/dev-decoder.html
+> 
+I tryed to move this operation from device_run() to
+mtk_jpeg_dec_buf_queue(),but have a problem in motion jpeg.For example,I
+queued three buffers continuously,the third buffer has resolution
+change(bigger than the second buffer),but the capture buffer used in
+device run didn't changed.
+How do we handle this case?
+> [snip]
+> > > > -	ret = video_register_device(jpeg->dec_vdev, VFL_TYPE_GRABBER, 3);
+> > > > +	ret = video_register_device(jpeg->vfd_jpeg, VFL_TYPE_GRABBER, -1);
+> > > 
+> > > FYI the type changed to VFL_TYPE_VIDEO recently.
+> > I changed VFL_TYPE_GRABBER to VFL_TYPE_VIDEO,but builded fail.
+> 
+> What kernel version are you building with?
+I build it with the latest kernel 5.7,but builed fail again.
+> 
+> > > >  	if (ret) {
+> > > >  		v4l2_err(&jpeg->v4l2_dev, "Failed to register video device\n");
+> > > > -		goto err_dec_vdev_register;
+> > > > +		goto err_vfd_jpeg_register;
+> > > >  	}
+> > > >  
+> > > > -	video_set_drvdata(jpeg->dec_vdev, jpeg);
+> > > > +	video_set_drvdata(jpeg->vfd_jpeg, jpeg);
+> > > >  	v4l2_info(&jpeg->v4l2_dev,
+> > > > -		  "decoder device registered as /dev/video%d (%d,%d)\n",
+> > > > -		  jpeg->dec_vdev->num, VIDEO_MAJOR, jpeg->dec_vdev->minor);
+> > > > +		  "jpeg device %d registered as /dev/video%d (%d,%d)\n",
+> > > 
+> > > Here it would be actually useful to special case the encoder and decoder,
+> > > because it would be easier for the user to know which device is which.
+> > > 
+> 
+> Just making sure this wasn't overlooked.
+> 
+> [snip]
+> > > > +
+> > > > +void mtk_jpeg_enc_reset(void __iomem *base)
+> > > > +{
+> > > > +	writel(0x00, base + JPEG_ENC_RSTB);
+> > > > +	writel(JPEG_ENC_RESET_BIT, base + JPEG_ENC_RSTB);
+> > > > +	writel(0x00, base + JPEG_ENC_CODEC_SEL);
+> > > > +}
+> > > > +
+> > > > +u32 mtk_jpeg_enc_get_int_status(void __iomem *base)
+> > > > +{
+> > > > +	u32 ret;
+> > > > +
+> > > > +	ret = readl(base + JPEG_ENC_INT_STS) &
+> > > > +		    JPEG_ENC_INT_STATUS_MASK_ALLIRQ;
+> > > > +	if (ret)
+> > > > +		writel(0, base + JPEG_ENC_INT_STS);
+> > > > +
+> > > > +	return ret;
+> > > > +}
+> > > 
+> > > Does it make sense to have a function for what is essentially just 2 lines?
+> > > Also, the name is misleading, as the function not only gets but also
+> > > clears.
+> > Make all hw register setting in mtk_jpeg_enc_hw.c is one part of current
+> > architecture.
+> > I have changed the function name to
+> > mtk_jpeg_enc_get_and_clear_int_status.
+> 
+> As I mentioned before, this driver needs a big clean up and that's why I
+> suggested starting over with a new one for the JPEG encoder part. Since
+> we decided to extend this one in the end, would you be able to improve
+> this aspect as well? Thanks.
+> 
+> Best regards,
+> Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
