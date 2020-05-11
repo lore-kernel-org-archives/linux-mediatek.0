@@ -2,71 +2,63 @@ Return-Path: <SRS0=Nu0C=6Z=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EACF3C47255
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 19:55:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D17D2C47255
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 20:41:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BCD3B206DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 19:55:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A4FA920661
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 20:41:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lLNtUHQE"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BCD3B206DB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rIH2fPF2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A4FA920661
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=davemloft.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
+	From:Subject:To:Message-Id:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TGFWWwTULbpJpBt1XoSGZfn5VEOUeTFUhTvu1r1aZh8=; b=lLNtUHQEBMmZJf
-	SpKoKeXn/3palnt6ciJZ+y4StPcuziN0Wrvlednx55j4DKVtuYKYqJD7GuXwM5EPpw/mxQxalCVP1
-	8DTs//16UPgHM4D0f3frJhMoytViJMPTlcitdylYR0IrzkDrlxxZ25Rq5eGptyYuGB8S++iA2wVbG
-	pqE13CBlKjs8isi8u+GDErUocZ5DRT02dsh0fM5nlv+Ftn9pPHQkwjy9RXAhNFRAMwQ8ICj6JIV43
-	5z3Z67m/93ARZsfMozt14b/3SLlsjGMTH/KnnwUAMUfT8eDe18K7IleMpLT8sMOHJClGRXG54xHyu
-	ZeHwdlUmtPHUFttlLo+w==;
+	List-Owner; bh=grLc0cIqDXa3jajDBa8SJzKTpPXoaOhN8yUddAq4Sn4=; b=rIH2fPF28kiQ/M
+	whNEsurfJHenvNdO8r5uu1T1uZ/p7sxCqfb2HbCUa+o+js1QFnfOywBayVcVlZT+VZFli2mHpR1Uo
+	iRerFnL9tdu3uMnJIW9elT5ukQRVqsfecBlxKQiO4gzrcl7gXgEIHMT/ql9038i+yRlxwf0bNL5yv
+	9SMThqdshO8d1QFpr7I1oqlrPMYEaec3PajV3++xgjQbcTX8g5uijh1fxIDfrIiuK1Sst9jQI+9Ct
+	gXxGyndbZCTB8aQ2YJBjnn6j5ut9joGh+C0qJhAFNPboLgoot0EApaOptZSi++sZ3jOE820mHaQ5/
+	hviB9rZw/VFjZtchjbzQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYEVx-0003RD-7d; Mon, 11 May 2020 19:55:01 +0000
-Received: from mga12.intel.com ([192.55.52.136])
+	id 1jYFEt-0001wn-33; Mon, 11 May 2020 20:41:27 +0000
+Received: from shards.monkeyblade.net ([2620:137:e000::1:9])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYEVf-00034N-RP; Mon, 11 May 2020 19:54:45 +0000
-IronPort-SDR: UElmRGwKI8itmawec1haeatDuepvJ3umdpywgKM0SMSVJgiAS6fUml0YkzQ2rQK1wSNOjbD+R1
- YSxdIylU3LvA==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 May 2020 12:54:40 -0700
-IronPort-SDR: nrkVhs2KY64uvbGWb8TbDdcpt1XqGWxWNDd41wC2FKPz9dUaJM9u6VAMspAPx6nHD6QH2LMvZ+
- w72qZcPRYfEQ==
-X-IronPort-AV: E=Sophos;i="5.73,381,1583222400"; d="scan'208";a="297792634"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 May 2020 12:54:36 -0700
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id 379F6204C7; Mon, 11 May 2020 22:54:34 +0300 (EEST)
-Date: Mon, 11 May 2020 22:54:34 +0300
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Rob Herring <robh@kernel.org>
-Subject: Re: [V8, 1/2] media: dt-bindings: media: i2c: Document OV02A10
- bindings
-Message-ID: <20200511195434.GG11272@paasikivi.fi.intel.com>
-References: <20200509080627.23222-1-dongchun.zhu@mediatek.com>
- <20200509080627.23222-2-dongchun.zhu@mediatek.com>
- <20200511160207.GA32476@bogus>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200511160207.GA32476@bogus>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+ id 1jYFEl-0001pU-Lh; Mon, 11 May 2020 20:41:20 +0000
+Received: from localhost (unknown [IPv6:2601:601:9f00:477::d71])
+ (using TLSv1 with cipher AES256-SHA (256/256 bits))
+ (Client did not present a certificate)
+ (Authenticated sender: davem-davemloft)
+ by shards.monkeyblade.net (Postfix) with ESMTPSA id 0599311F5F667;
+ Mon, 11 May 2020 13:41:17 -0700 (PDT)
+Date: Mon, 11 May 2020 13:41:17 -0700 (PDT)
+Message-Id: <20200511.134117.1336222619714836904.davem@davemloft.net>
+To: brgl@bgdev.pl
+Subject: Re: [PATCH v2 05/14] net: core: provide priv_to_netdev()
+From: David Miller <davem@davemloft.net>
+In-Reply-To: <20200511150759.18766-6-brgl@bgdev.pl>
+References: <20200511150759.18766-1-brgl@bgdev.pl>
+ <20200511150759.18766-6-brgl@bgdev.pl>
+X-Mailer: Mew version 6.8 on Emacs 26.3
+Mime-Version: 1.0
+X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.5.12
+ (shards.monkeyblade.net [149.20.54.216]);
+ Mon, 11 May 2020 13:41:18 -0700 (PDT)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200511_125443_920433_166209FD 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20200511_134119_710187_85F350EA 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,66 +70,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org,
- andriy.shevchenko@linux.intel.com, srv_heupstream@mediatek.com,
- linus.walleij@linaro.org, shengnan.wang@mediatek.com, tfiga@chromium.org,
- bgolaszewski@baylibre.com, sj.huang@mediatek.com, drinkcat@chromium.org,
- linux-mediatek@lists.infradead.org, Dongchun Zhu <dongchun.zhu@mediatek.com>,
- louis.kuo@mediatek.com, matthias.bgg@gmail.com, bingbu.cao@intel.com,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: edwin.peer@broadcom.com, devicetree@vger.kernel.org,
+ stephane.leprovost@mediatek.com, arnd@arndb.de, bgolaszewski@baylibre.com,
+ netdev@vger.kernel.org, sean.wang@mediatek.com, linux-kernel@vger.kernel.org,
+ pedro.tsai@mediatek.com, fparent@baylibre.com, robh+dt@kernel.org,
+ linux-mediatek@lists.infradead.org, andrew.perepech@mediatek.com,
+ john@phrozen.org, matthias.bgg@gmail.com, kuba@kernel.org,
+ Mark-MC.Lee@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ hkallweit1@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Mon, 11 May 2020 17:07:50 +0200
 
-On Mon, May 11, 2020 at 11:02:07AM -0500, Rob Herring wrote:
-> On Sat, May 09, 2020 at 04:06:26PM +0800, Dongchun Zhu wrote:
-...
-
-> > +    properties:
-> > +      endpoint:
-> > +        type: object
-> > +
-> > +        properties:
-> > +          data-lanes:
-> > +            description: |-
-> > +              The driver only supports 1-lane operation.
+> From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 > 
-> What the driver supports is not relevant.
+> Appropriate amount of extra memory for private data is allocated at
+> the end of struct net_device. We have a helper - netdev_priv() - that
+> returns its address but we don't have the reverse: a function which
+> given the address of the private data, returns the address of struct
+> net_device.
 > 
-> > +            items:
-> > +              - const: 1
-> > +              - const: 2
-> > +              - const: 3
-> > +              - const: 4
-> > +
-> > +          clock-noncontinuous:
-> > +            type: boolean
-> > +            description: |-
-> > +              MIPI CSI-2 clock is non-continuous if this property is present,
-> > +              otherwise it's continuous.
+> This has caused many drivers to store the pointer to net_device in
+> the private data structure, which basically means storing the pointer
+> to a structure in this very structure.
 > 
-> Assume this has a common definition, so just need:
+> This patch proposes to add priv_to_netdev() - a helper which converts
+> the address of the private data to the address of the associated
+> net_device.
 > 
-> clock-noncontinuous: true
-> 
+> Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 
-...
+Sorry, please don't do this.  We had this almost two decades ago and
+explicitly removed it intentionally.
 
-> > +                    data-lanes = <1>;
-> 
-> This doesn't match the schema which says this should be 4 entries.
-
-I believe the intent has been to say there would be 1, 2, 3 or 4 entries
---- i.e. the number of lanes.
-
--- 
-Kind regards,
-
-Sakari Ailus
+Store the back pointer in your software state just like everyone else
+does.
 
 _______________________________________________
 Linux-mediatek mailing list
