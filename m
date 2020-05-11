@@ -2,70 +2,97 @@ Return-Path: <SRS0=Nu0C=6Z=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F2B33C47255
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 18:05:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA817C47255
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 18:21:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C6936206B9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 18:05:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B354820752
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 18:21:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JvyogOHe";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Z/n5ZySK"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C6936206B9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e9FElvaV";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="hIfm5XW0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B354820752
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:
-	References:Message-ID:Subject:To:From:Date:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V2GssdFiBmBwsvu2o8Pamw3N5p3Oj+/cEFWqfRICqgM=; b=JvyogOHe1LYO6c
-	p4bxB3jBxvjJ0rQPl9IAwAjP7ey3TDV2YKbo54VQkIYvqEBLPLHJc5FtQ8BOMDgKFkOAeBjgckz5y
-	dJksxNOvj/OMT+WPm7tWaI6d5x6sTr6f/ddqk3pal41DllDi9Fr9pp3mt/GkDhF85gR4VyS+/tQC9
-	n8cKkXu/5orcSp0ZJyH88mwGxGsJNBkUtZAysP5oijfFD8mRpfHDofKh8dwSl4GstBY9c0d1TB57I
-	0RI+KIX3Qgew8mtuctHIuTm4KYgWB8fekbbM3nDTVWnNlAfW+drcfutdBMqw8fSin0DKKljbtnEi+
-	AWLWcLjyb/dToN41uHuA==;
+	List-Owner; bh=cEHJ0ZVw6PNUvYmqYJh3Q8o8fQP4warozOLX5C67vFk=; b=e9FElvaVkizMoX
+	OaRh03VQC3sf59OpzAbrrw7yQWAqUWR6BFVU7iOyljKf4D1g4z5RzOpLc5wJb2yQuFrqqZ3mGHa0D
+	Xscfu8ZxWHiXKD2U9fs6C/jHHWK3BNnA7lVLvdmCqPUX6JjI4L48krzNUeRmDBiv17XBm8YSJWsQK
+	F4Fw3DxsmxisJGJY13jg9zuYtqrRxu6VEZXw0bO1Ee5Ys86AWcg3MUxFk+DUT59ebT01OQHuSylZa
+	BOk/+COTlS6+JNrPoEWMl4gDIqmqDT8UpWdiMllPVLrRuWhyHf+FFgzJ+fFGZFn819QHElcH7x/vh
+	y/yUyLbYv8+qH5jLnBKA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYCo8-0002vm-1m; Mon, 11 May 2020 18:05:40 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1jYD3J-0003Nr-Om; Mon, 11 May 2020 18:21:21 +0000
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYCnw-0002je-Dx; Mon, 11 May 2020 18:05:30 +0000
-Received: from paulmck-ThinkPad-P72.home (50-39-105-78.bvtn.or.frontiernet.net
- [50.39.105.78])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id BC0E1206B9;
- Mon, 11 May 2020 18:05:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1589220327;
- bh=k9ngRnaXaDmOle/SacnZDdUB4VqFd/4Sfk2KUqW8Gnk=;
- h=Date:From:To:Cc:Subject:Reply-To:References:In-Reply-To:From;
- b=Z/n5ZySKSA0ktCt+4WJhn+O2u59cMcsb1ugHe7cnu4u9PiTRJCi/x3Kct1vyxf3vX
- 62k6f4rhxDy29mVDDiDhAk/ruVr/XjcF+Bms9bzOapz9ltJoikEARYB2PM+glaxAYG
- RGNsD6ObvmiI60KoGL8OZ8B2R4vM7SEg3vO681yE=
-Received: by paulmck-ThinkPad-P72.home (Postfix, from userid 1000)
- id A3CBB352271C; Mon, 11 May 2020 11:05:27 -0700 (PDT)
-Date: Mon, 11 May 2020 11:05:27 -0700
-From: "Paul E. McKenney" <paulmck@kernel.org>
-To: Walter Wu <walter-zh.wu@mediatek.com>
-Subject: Re: [PATCH v2 1/3] rcu/kasan: record and print call_rcu() call stack
-Message-ID: <20200511180527.GZ2869@paulmck-ThinkPad-P72>
-References: <20200511023111.15310-1-walter-zh.wu@mediatek.com>
+ id 1jYD3G-0003N3-0w
+ for linux-mediatek@lists.infradead.org; Mon, 11 May 2020 18:21:19 +0000
+Received: by mail-ed1-x542.google.com with SMTP id s10so8823140edy.9
+ for <linux-mediatek@lists.infradead.org>; Mon, 11 May 2020 11:21:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=OlqMdCMv0t/jRFbvfx2oiVLxVGugmb8g6QsmrVI+x40=;
+ b=hIfm5XW0NJEV60vNfF8m9alVsS2fZRz6bIMQxJc9+l0ft7pd3yuzq7Ggag4EvcoDjF
+ uivi1BEPMuakJuVa1qTd6SM7jnMbr/A1mNEALhgep3z68K+eiXFsIbgL+g1SubhgV8LU
+ jm7+kTa2GUdeE/H112fn0XfelirZ8uoNHW36A=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=OlqMdCMv0t/jRFbvfx2oiVLxVGugmb8g6QsmrVI+x40=;
+ b=q1cJVNCGvKWYnRuNn1zrZk5xvZQ6e4uWZLC/1xXSyr3GKysmdhXNN+Gmku98xPKPQ5
+ 1WWBG9Pf4sjsADwy+2bBBfBR1p8rdcxy0JePiHMP1kXctVoMSskl+jEFnawsijDv5cq6
+ rt5nydG82HCrl/8ArS+Hb/FVdaD7OgUAy9/Qw+ONfCqcSPHMB+p0l1MkILebK4qcAcOh
+ US/8MdccEbXgm0jCzn59mZKXkstZQZzyeN3rVe8ZOT03MN/OyToq4Xu28y4A+07mVZlz
+ xg6xcEKLjG2Z0aXdnVRhYRl2XdXKVc0KP6P5GlHRcXrdIarT+1cP8oOdWh+KYADFT6QQ
+ iXaw==
+X-Gm-Message-State: AGi0PuakLdAAA2FzbuBxKjGXM1F3donOX7V+dllskkwPDOKUwz9+rW86
+ vdLvPIAU2WFTci0LzKJYXMbwXacsYl6oIw==
+X-Google-Smtp-Source: APiQypLHD0FQkG4SGQ6+xQlZC00m1/Ve7BqL7ZFyABQWk2Baev4ConY2ICJxf64SuG41mc2Z5grHew==
+X-Received: by 2002:aa7:d2d0:: with SMTP id k16mr15136762edr.354.1589221274742; 
+ Mon, 11 May 2020 11:21:14 -0700 (PDT)
+Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com.
+ [209.85.221.52])
+ by smtp.gmail.com with ESMTPSA id cf6sm1311781edb.18.2020.05.11.11.21.13
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 11 May 2020 11:21:13 -0700 (PDT)
+Received: by mail-wr1-f52.google.com with SMTP id l18so12182370wrn.6
+ for <linux-mediatek@lists.infradead.org>; Mon, 11 May 2020 11:21:13 -0700 (PDT)
+X-Received: by 2002:adf:e543:: with SMTP id z3mr18352165wrm.385.1589221272587; 
+ Mon, 11 May 2020 11:21:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200511023111.15310-1-walter-zh.wu@mediatek.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+References: <20200502161727.30463-1-dongchun.zhu@mediatek.com>
+ <20200502161727.30463-3-dongchun.zhu@mediatek.com>
+ <20200506151352.GZ9190@paasikivi.fi.intel.com>
+ <1588855524.8804.168.camel@mhfsdcap03>
+ <20200507131220.GC9190@paasikivi.fi.intel.com>
+ <CAAFQd5DO9FGx9OF2RpcSprg0oLiVuS90w2qLAHCOSc3w6tKUWw@mail.gmail.com>
+ <1588907288.8804.188.camel@mhfsdcap03>
+ <20200508211319.GJ9190@paasikivi.fi.intel.com>
+ <1588991026.8804.235.camel@mhfsdcap03>
+In-Reply-To: <1588991026.8804.235.camel@mhfsdcap03>
+From: Tomasz Figa <tfiga@chromium.org>
+Date: Mon, 11 May 2020 20:20:59 +0200
+X-Gmail-Original-Message-ID: <CAAFQd5DZBEUJUq65WT7i_QjAtgxjhxmfdsjQoyG2UZy8zBih+A@mail.gmail.com>
+Message-ID: <CAAFQd5DZBEUJUq65WT7i_QjAtgxjhxmfdsjQoyG2UZy8zBih+A@mail.gmail.com>
+Subject: Re: [V5, 2/2] media: i2c: dw9768: Add DW9768 VCM driver
+To: Dongchun Zhu <dongchun.zhu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200511_110528_510104_488FEE8F 
-X-CRM114-Status: GOOD (  27.43  )
+X-CRM114-CacheID: sfid-20200511_112118_089534_F853CA7C 
+X-CRM114-Status: GOOD (  34.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,303 +104,153 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: paulmck@kernel.org
-Cc: wsd_upstream <wsd_upstream@mediatek.com>, linux-mm@kvack.org,
- Lai Jiangshan <jiangshanlai@gmail.com>, Josh Triplett <josh@joshtriplett.org>,
- kasan-dev@googlegroups.com, linux-kernel@vger.kernel.org,
- Joel Fernandes <joel@joelfernandes.org>, linux-mediatek@lists.infradead.org,
- Alexander Potapenko <glider@google.com>, linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>,
- Andrew Morton <akpm@linux-foundation.org>, Dmitry Vyukov <dvyukov@google.com>,
- Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Nicolas Boichat <drinkcat@chromium.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ linux-devicetree <devicetree@vger.kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ =?UTF-8?B?U2hlbmduYW4gV2FuZyAo546L5Zyj55S3KQ==?= <shengnan.wang@mediatek.com>,
+ Louis Kuo <louis.kuo@mediatek.com>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Cao Bing Bu <bingbu.cao@intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
+ Joerg Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 11, 2020 at 10:31:11AM +0800, Walter Wu wrote:
-> This feature will record first and last call_rcu() call stack and
-> print two call_rcu() call stack in KASAN report.
+Hi Dongchun,
 
-Suppose that a given rcu_head structure is passed to call_rcu(), then
-the grace period elapses, the callback is invoked, and the enclosing
-data structure is freed.  But then that same region of memory is
-immediately reallocated as the same type of structure and again
-passed to call_rcu(), and that this cycle repeats several times.
+On Sat, May 9, 2020 at 4:25 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
+>
+> Hi Sakari,
+>
+> On Sat, 2020-05-09 at 00:13 +0300, Sakari Ailus wrote:
+> > Hi Dongchun,
+> >
+> > On Fri, May 08, 2020 at 11:08:08AM +0800, Dongchun Zhu wrote:
+> > > Hi Sakari, Tomasz,
+> > >
+> > > Thanks for the review.
+> > >
+> > > On Thu, 2020-05-07 at 15:46 +0200, Tomasz Figa wrote:
+> > > > Hi Sakari, Dongchun,
+> > > >
+> > > > On Thu, May 7, 2020 at 3:12 PM Sakari Ailus
+> > > > <sakari.ailus@linux.intel.com> wrote:
+> > > > >
+> > > > > HI Dongchun,
+> > > > >
+> > > > > On Thu, May 07, 2020 at 08:45:24PM +0800, Dongchun Zhu wrote:
+> > > > > > Hi Sakari,
+> > > > > >
+> > > > > > Thanks for the review.
+> > > > > >
+> > > > > > On Wed, 2020-05-06 at 18:13 +0300, Sakari Ailus wrote:
+> > > > > > > Hi Dongchun,
+> > > > > > >
+> > > > > > > On Sun, May 03, 2020 at 12:17:27AM +0800, Dongchun Zhu wrote:
+> > > > > > > > Add a V4L2 sub-device driver for DW9768 voice coil motor, providing
+> > > > > > > > control to set the desired focus via IIC serial interface.
+> > > > > > > >
+> > > > > > > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
+> > > > > > > > ---
+> > > > > > > >  MAINTAINERS                |   1 +
+> > > > > > > >  drivers/media/i2c/Kconfig  |  11 ++
+> > > > > > > >  drivers/media/i2c/Makefile |   1 +
+> > > > > > > >  drivers/media/i2c/dw9768.c | 440 +++++++++++++++++++++++++++++++++++++++++++++
+> > > > > > > >  4 files changed, 453 insertions(+)
+> > > > > > > >  create mode 100644 drivers/media/i2c/dw9768.c
+> > > > > > > >
+> > > > > > > > diff --git a/MAINTAINERS b/MAINTAINERS
+> > > > > > > > index 8d72c41..c92dc99 100644
+> > > > > > > > --- a/MAINTAINERS
+> > > > > > > > +++ b/MAINTAINERS
+> > > > > > > > @@ -5157,6 +5157,7 @@ L:  linux-media@vger.kernel.org
+> > > > > > > >  S:       Maintained
+> > > > > > > >  T:       git git://linuxtv.org/media_tree.git
+> > > > > > > >  F:       Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
+> > > > > > > > +F:       drivers/media/i2c/dw9768.c
+> > > > > > > >
+> > > > > > > >  DONGWOON DW9807 LENS VOICE COIL DRIVER
+> > > > > > > >  M:       Sakari Ailus <sakari.ailus@linux.intel.com>
+> > > > > > > > diff --git a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig
+> > > > > > > > index 125d596..6a3f9da 100644
+> > > > > > > > --- a/drivers/media/i2c/Kconfig
+> > > > > > > > +++ b/drivers/media/i2c/Kconfig
+> > > > > > > > @@ -1040,6 +1040,17 @@ config VIDEO_DW9714
+> > > > > > > >     capability. This is designed for linear control of
+> > > > > > > >     voice coil motors, controlled via I2C serial interface.
+> > > > > > > >
+> > > > > > > > +config VIDEO_DW9768
+> > > > > > > > + tristate "DW9768 lens voice coil support"
+> > > > > > > > + depends on I2C && VIDEO_V4L2 && MEDIA_CONTROLLER
+> > > > > > > > + depends on VIDEO_V4L2_SUBDEV_API
+> > > > > > >
+> > > > > > > Please check how this works in the media tree master branch now --- it's
+> > > > > > > largely select based.
+> > > > > > >
+> > > > > >
+> > > > > > The actuator driver uses some structures that require the
+> > > > > > VIDEO_V4L2_SUBDEV_API code, so here we add VIDEO_V4L2_SUBDEV_API
+> > > > > > dependency to avoid possible build error when it's not enabled.
+> > > > >
+> > > > > Please make sure this works with current media tree master. Right now it
+> > > > > does not.
+> > > > >
+> > > >
+> > > > Dongchun, as Sakari said, please make sure to base the patches on the
+> > > > master branch of the media tree.
+> > > > (https://git.linuxtv.org/media_tree.git/). The approach for Kconfig
+> > > > dependency selection there seems to have changed recently.
+> > > >
+> > >
+> > > I searched the patches on the media tree master branch.
+> > > It seems that we need to remove the VIDEO_V4L2_SUBDEV_API dependency in
+> > > Kconfig, and add #ifdef CONFIG_VIDEO_V4L2_SUBDEV_API to include
+> > > v4l2-subdev code.
+> > > The change mainly is to make build pass, and don't return ENOTTY if
+> > > SUBDEV_API is not set.
+> > > Am I right?
+> >
+> > Please see Kconfig entries for other similar drivers from Dongwoon.
+> >
+>
+> Sorry for the mistake :-)
+> Just found the current media tree master branch code...
+> I would update Kconfig entries in next release by referring to:
+> https://git.linuxtv.org/media_tree.git/tree/drivers/media/i2c/Kconfig
 
-Would the first call stack forever be associated with the first
-call_rcu() in this series?  If so, wouldn't the last two usually
-be the most useful?  Or am I unclear on the use case?
+Sorry for last minute comments again. We had a short discussion
+offline with Sakari and we think there are some changes needed to this
+driver, namely:
 
-> When call_rcu() is called, we store the call_rcu() call stack into
-> slub alloc meta-data, so that KASAN report can print rcu stack.
-> 
-> It doesn't increase the cost of memory consumption. Because we don't
-> enlarge struct kasan_alloc_meta size.
-> - add two call_rcu() call stack into kasan_alloc_meta, size is 8 bytes.
-> - remove free track from kasan_alloc_meta, size is 8 bytes.
-> 
-> [1]https://bugzilla.kernel.org/show_bug.cgi?id=198437
-> [2]https://groups.google.com/forum/#!searchin/kasan-dev/better$20stack$20traces$20for$20rcu%7Csort:date/kasan-dev/KQsjT_88hDE/7rNUZprRBgAJ
-> 
-> Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> Suggested-by: Dmitry Vyukov <dvyukov@google.com>
-> Cc: Andrey Ryabinin <aryabinin@virtuozzo.com>
-> Cc: Dmitry Vyukov <dvyukov@google.com>
-> Cc: Alexander Potapenko <glider@google.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> Cc: Paul E. McKenney <paulmck@kernel.org>
-> Cc: Josh Triplett <josh@joshtriplett.org>
-> Cc: Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
-> Cc: Lai Jiangshan <jiangshanlai@gmail.com>
-> Cc: Joel Fernandes <joel@joelfernandes.org>
-> ---
->  include/linux/kasan.h |  2 ++
->  kernel/rcu/tree.c     |  3 +++
->  lib/Kconfig.kasan     |  2 ++
->  mm/kasan/common.c     |  4 ++--
->  mm/kasan/generic.c    | 29 +++++++++++++++++++++++++++++
->  mm/kasan/kasan.h      | 19 +++++++++++++++++++
->  mm/kasan/report.c     | 21 +++++++++++++++++----
->  7 files changed, 74 insertions(+), 6 deletions(-)
-> 
-> diff --git a/include/linux/kasan.h b/include/linux/kasan.h
-> index 31314ca7c635..23b7ee00572d 100644
-> --- a/include/linux/kasan.h
-> +++ b/include/linux/kasan.h
-> @@ -174,11 +174,13 @@ static inline size_t kasan_metadata_size(struct kmem_cache *cache) { return 0; }
->  
->  void kasan_cache_shrink(struct kmem_cache *cache);
->  void kasan_cache_shutdown(struct kmem_cache *cache);
-> +void kasan_record_aux_stack(void *ptr);
->  
->  #else /* CONFIG_KASAN_GENERIC */
->  
->  static inline void kasan_cache_shrink(struct kmem_cache *cache) {}
->  static inline void kasan_cache_shutdown(struct kmem_cache *cache) {}
-> +static inline void kasan_record_aux_stack(void *ptr) {}
->  
->  #endif /* CONFIG_KASAN_GENERIC */
->  
-> diff --git a/kernel/rcu/tree.c b/kernel/rcu/tree.c
-> index 06548e2ebb72..de872b6cc261 100644
-> --- a/kernel/rcu/tree.c
-> +++ b/kernel/rcu/tree.c
-> @@ -57,6 +57,7 @@
->  #include <linux/slab.h>
->  #include <linux/sched/isolation.h>
->  #include <linux/sched/clock.h>
-> +#include <linux/kasan.h>
->  #include "../time/tick-internal.h"
->  
->  #include "tree.h"
-> @@ -2694,6 +2695,8 @@ __call_rcu(struct rcu_head *head, rcu_callback_t func)
->  		trace_rcu_callback(rcu_state.name, head,
->  				   rcu_segcblist_n_cbs(&rdp->cblist));
->  
-> +	kasan_record_aux_stack(head);
+1) The hardware being driven in our case is a gt9769, which could be
+compatible with dw9768, but it's still a different implementation and
+could have slightly different characteristics. Thus we think the
+driver name and compatible strings should be renamed from
+dongwoon,dw9768 to giantec,gt9769. In the future, if there is a device
+with exactly a dw9768 chip, the same driver could be reused by adding
+a dongwoon,dw9768 compatible string.
 
-Just for the record, at this point we have not yet queued the callback.
-We have also not yet disabled interrupts.  Which might be OK, but I
-figured I should call out the possibility of moving this down a few
-lines to follow the local_irq_save().
+2) The chip has some default configuration, which is lost because the
+driver overrides it with its own values. For use cases where one would
+want to keep the default values, we should make it possible to prevent
+the driver from overriding them. We could achieve this by adding
+optional DT properties for the custom parameters and if they are not
+present, defaults would be used.
 
-If someone incorrectly invokes concurrently invokes call_rcu() on this
-same region of memory, possibly from an interrupt handler, we are OK
-corrupting the stack traces, right?
+Do you think that is doable? Thanks!
 
-But what happens if a given structure has more than one rcu_head
-structure?  In that case, RCU would be just fine with it being
-concurrently passed to different call_rcu() invocations as long as the
-two invocations didn't both use the same rcu_head structure.  (In that
-case, they had best not be both freeing the object, and if even one of
-them is freeing the object, coordination is necessary.)
-
-If this is a problem, one approach would be to move the
-kasan_record_aux_stack(head) call to kfree_rcu().  After all, it is
-definitely illegal to pass the same memory to a pair of kfree_rcu()
-invocations!  ;-)
-
-							Thanx, Paul
-
-> +
->  	/* Go handle any RCU core processing required. */
->  	if (IS_ENABLED(CONFIG_RCU_NOCB_CPU) &&
->  	    unlikely(rcu_segcblist_is_offloaded(&rdp->cblist))) {
-> diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
-> index 81f5464ea9e1..56a89291f1cc 100644
-> --- a/lib/Kconfig.kasan
-> +++ b/lib/Kconfig.kasan
-> @@ -58,6 +58,8 @@ config KASAN_GENERIC
->  	  For better error detection enable CONFIG_STACKTRACE.
->  	  Currently CONFIG_KASAN_GENERIC doesn't work with CONFIG_DEBUG_SLAB
->  	  (the resulting kernel does not boot).
-> +	  Currently CONFIG_KASAN_GENERIC will print first and last call_rcu()
-> +	  call stack. It doesn't increase the cost of memory consumption.
->  
->  config KASAN_SW_TAGS
->  	bool "Software tag-based mode"
-> diff --git a/mm/kasan/common.c b/mm/kasan/common.c
-> index 2906358e42f0..8bc618289bb1 100644
-> --- a/mm/kasan/common.c
-> +++ b/mm/kasan/common.c
-> @@ -41,7 +41,7 @@
->  #include "kasan.h"
->  #include "../slab.h"
->  
-> -static inline depot_stack_handle_t save_stack(gfp_t flags)
-> +depot_stack_handle_t kasan_save_stack(gfp_t flags)
->  {
->  	unsigned long entries[KASAN_STACK_DEPTH];
->  	unsigned int nr_entries;
-> @@ -54,7 +54,7 @@ static inline depot_stack_handle_t save_stack(gfp_t flags)
->  static inline void set_track(struct kasan_track *track, gfp_t flags)
->  {
->  	track->pid = current->pid;
-> -	track->stack = save_stack(flags);
-> +	track->stack = kasan_save_stack(flags);
->  }
->  
->  void kasan_enable_current(void)
-> diff --git a/mm/kasan/generic.c b/mm/kasan/generic.c
-> index 56ff8885fe2e..b86880c338e2 100644
-> --- a/mm/kasan/generic.c
-> +++ b/mm/kasan/generic.c
-> @@ -325,3 +325,32 @@ DEFINE_ASAN_SET_SHADOW(f2);
->  DEFINE_ASAN_SET_SHADOW(f3);
->  DEFINE_ASAN_SET_SHADOW(f5);
->  DEFINE_ASAN_SET_SHADOW(f8);
-> +
-> +void kasan_record_aux_stack(void *addr)
-> +{
-> +	struct page *page = kasan_addr_to_page(addr);
-> +	struct kmem_cache *cache;
-> +	struct kasan_alloc_meta *alloc_info;
-> +	void *object;
-> +
-> +	if (!(page && PageSlab(page)))
-> +		return;
-> +
-> +	cache = page->slab_cache;
-> +	object = nearest_obj(cache, page, addr);
-> +	alloc_info = get_alloc_info(cache, object);
-> +
-> +	if (!alloc_info->rcu_stack[0])
-> +		/* record first call_rcu() call stack */
-> +		alloc_info->rcu_stack[0] = kasan_save_stack(GFP_NOWAIT);
-> +	else
-> +		/* record last call_rcu() call stack */
-> +		alloc_info->rcu_stack[1] = kasan_save_stack(GFP_NOWAIT);
-> +}
-> +
-> +struct kasan_track *kasan_get_aux_stack(struct kasan_alloc_meta *alloc_info,
-> +						u8 idx)
-> +{
-> +	return container_of(&alloc_info->rcu_stack[idx],
-> +						struct kasan_track, stack);
-> +}
-> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-> index e8f37199d885..1cc1fb7b0de3 100644
-> --- a/mm/kasan/kasan.h
-> +++ b/mm/kasan/kasan.h
-> @@ -96,15 +96,28 @@ struct kasan_track {
->  	depot_stack_handle_t stack;
->  };
->  
-> +#ifdef CONFIG_KASAN_GENERIC
-> +#define SIZEOF_PTR sizeof(void *)
-> +#define KASAN_NR_RCU_CALL_STACKS 2
-> +#else /* CONFIG_KASAN_GENERIC */
->  #ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
->  #define KASAN_NR_FREE_STACKS 5
->  #else
->  #define KASAN_NR_FREE_STACKS 1
->  #endif
-> +#endif /* CONFIG_KASAN_GENERIC */
->  
->  struct kasan_alloc_meta {
->  	struct kasan_track alloc_track;
-> +#ifdef CONFIG_KASAN_GENERIC
-> +	/*
-> +	 * call_rcu() call stack is stored into struct kasan_alloc_meta.
-> +	 * The free stack is stored into freed object.
-> +	 */
-> +	depot_stack_handle_t rcu_stack[KASAN_NR_RCU_CALL_STACKS];
-> +#else
->  	struct kasan_track free_track[KASAN_NR_FREE_STACKS];
-> +#endif
->  #ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
->  	u8 free_pointer_tag[KASAN_NR_FREE_STACKS];
->  	u8 free_track_idx;
-> @@ -159,16 +172,22 @@ void kasan_report_invalid_free(void *object, unsigned long ip);
->  
->  struct page *kasan_addr_to_page(const void *addr);
->  
-> +depot_stack_handle_t kasan_save_stack(gfp_t flags);
-> +
->  #if defined(CONFIG_KASAN_GENERIC) && \
->  	(defined(CONFIG_SLAB) || defined(CONFIG_SLUB))
->  void quarantine_put(struct kasan_free_meta *info, struct kmem_cache *cache);
->  void quarantine_reduce(void);
->  void quarantine_remove_cache(struct kmem_cache *cache);
-> +struct kasan_track *kasan_get_aux_stack(struct kasan_alloc_meta *alloc_info,
-> +			u8 idx);
->  #else
->  static inline void quarantine_put(struct kasan_free_meta *info,
->  				struct kmem_cache *cache) { }
->  static inline void quarantine_reduce(void) { }
->  static inline void quarantine_remove_cache(struct kmem_cache *cache) { }
-> +static inline struct kasan_track *kasan_get_aux_stack(
-> +			struct kasan_alloc_meta *alloc_info, u8 idx) { return NULL; }
->  #endif
->  
->  #ifdef CONFIG_KASAN_SW_TAGS
-> diff --git a/mm/kasan/report.c b/mm/kasan/report.c
-> index 80f23c9da6b0..f16a1a210815 100644
-> --- a/mm/kasan/report.c
-> +++ b/mm/kasan/report.c
-> @@ -105,9 +105,13 @@ static void end_report(unsigned long *flags)
->  	kasan_enable_current();
->  }
->  
-> -static void print_track(struct kasan_track *track, const char *prefix)
-> +static void print_track(struct kasan_track *track, const char *prefix,
-> +						bool is_callrcu)
->  {
-> -	pr_err("%s by task %u:\n", prefix, track->pid);
-> +	if (is_callrcu)
-> +		pr_err("%s:\n", prefix);
-> +	else
-> +		pr_err("%s by task %u:\n", prefix, track->pid);
->  	if (track->stack) {
->  		unsigned long *entries;
->  		unsigned int nr_entries;
-> @@ -187,11 +191,20 @@ static void describe_object(struct kmem_cache *cache, void *object,
->  	if (cache->flags & SLAB_KASAN) {
->  		struct kasan_track *free_track;
->  
-> -		print_track(&alloc_info->alloc_track, "Allocated");
-> +		print_track(&alloc_info->alloc_track, "Allocated", false);
->  		pr_err("\n");
->  		free_track = kasan_get_free_track(cache, object, tag);
-> -		print_track(free_track, "Freed");
-> +		print_track(free_track, "Freed", false);
->  		pr_err("\n");
-> +
-> +		if (IS_ENABLED(CONFIG_KASAN_GENERIC)) {
-> +			free_track = kasan_get_aux_stack(alloc_info, 0);
-> +			print_track(free_track, "First call_rcu() call stack", true);
-> +			pr_err("\n");
-> +			free_track = kasan_get_aux_stack(alloc_info, 1);
-> +			print_track(free_track, "Last call_rcu() call stack", true);
-> +			pr_err("\n");
-> +		}
->  	}
->  
->  	describe_object_addr(cache, object, addr);
-> -- 
-I> 2.18.0
+Best regards,
+Tomasz
 
 _______________________________________________
 Linux-mediatek mailing list
