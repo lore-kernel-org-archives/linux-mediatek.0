@@ -2,22 +2,22 @@ Return-Path: <SRS0=Nu0C=6Z=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.9 required=3.0 tests=DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-4.1 required=3.0 tests=DKIMWL_WL_HIGH,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	UNWANTED_LANGUAGE_BODY autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C18CC47255
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 11:08:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 26FF1C54E8D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 11:14:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DCF20206B9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 11:08:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EB3F720722
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 11:14:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oluqab6W";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="bPhme0DY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DCF20206B9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LrC9V9Hf";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="mXiDmvSv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EB3F720722
 Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,57 +26,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NIz8gdIGMYqMN1un1zKELD2mCTihq4AyAVtHfxO1vww=; b=oluqab6WXTDIMa
-	N9uXj9wbnl5Osd1ECm22LETJ3KKPFFims1xdTfdPNlOEg/LoMmMRrCPKQGZzvaP0NYRBvl21gzWm7
-	3Q9FkoJtVd1MEULUM0jPsxGXkrxj4pVhujQemxhQqn9y6OnzanZwwqxQWkJQNu0KANb81OS5k1Q11
-	UCyPMvgu56TSfuSMhU/vcEBlaVDeGrQFB8D1pL3qo8njGM7mhpSCZ/cZc4ONJ0tHr9ZM6QdvCSUD+
-	4sX6yJn7dwhvg/gaJ3rrsBk0noEi9/O/kerG+tdX3NMop1GB1WMpuVfr7BMTjoJb2slXIfUgCT27e
-	SmhIki2sQXDrJtJBglPg==;
+	List-Owner; bh=FAuVT8LKDLAhnivN+TXGCTxQ4JU5x6R9QQGxtcBwUsk=; b=LrC9V9Hf6JdRan
+	+KzBVauqCAXAI6CrNqr0ijzjOLRhgTjU4z7VOB6ewQL7lJYVNG0Iq63LkrRoWwCB8D50dJY1Q2Xp7
+	3/YDpaVOYbxH6fZNbH+2r2OoczHa1DIaxcExFQICssgrH11ARgCVZ7Bg4tojjKAsRGC+EI9pgZtwA
+	VatReGFNOTvtW4KBCg3a2rvG7k6IDvpKXv5z4KvdwQR8syqq9quRWGFrvC6A0qA7nP0Vh/t4DEOf5
+	XYSPukSOtl4q5bZRpisIGDjX7rddi+Mv9WkgxOP/EcE9esQQ9VStj6nnceIe7kuizK03TzxW+u9d/
+	Na598oCPQr9/VxZ7v1ig==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jY6If-0004w7-9S; Mon, 11 May 2020 11:08:45 +0000
-Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743])
+	id 1jY6OW-0000a1-Fo; Mon, 11 May 2020 11:14:48 +0000
+Received: from mail-qv1-xf42.google.com ([2607:f8b0:4864:20::f42])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jY6IZ-0004uG-VB
- for linux-mediatek@lists.infradead.org; Mon, 11 May 2020 11:08:43 +0000
-Received: by mail-qk1-x743.google.com with SMTP id 190so3675788qki.1
- for <linux-mediatek@lists.infradead.org>; Mon, 11 May 2020 04:08:39 -0700 (PDT)
+ id 1jY6OT-0000XN-8b
+ for linux-mediatek@lists.infradead.org; Mon, 11 May 2020 11:14:47 +0000
+Received: by mail-qv1-xf42.google.com with SMTP id r3so4359019qvm.1
+ for <linux-mediatek@lists.infradead.org>; Mon, 11 May 2020 04:14:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=UNMUTX3IVOdWGAHdZTtQUCk6o1GLMdtGOMtI+KbtqjM=;
- b=bPhme0DYSxuNJS0xabwnhk/nbCwYIC2ZwIYET/ovP/uw4N700fQn6kSCUX+zY10Fq3
- bBwiCfRbi7GZfNX6QOem92EItjO0Bpygo420AcjxrBbQpnjZjiHgP1QlPvtR38tkMiQY
- hA5OuWa/atTXj7EAS8B6ZFtX05xhjDJ0lyHb3S8xghRANvqWPoHLzDl8hHF2kK9DazMm
- UPxvFyHnjA5w4Vn5Cl6FAq23BpnIQpbt54+84/FbiTEyPYdKTbbkiWE/Qc8lAeAAC4LW
- mWK1k4i99QbW35UsT/Eb6Jbu9P94zG7I+ekoV+1wSU43GbrzJTsMjmu/vb9YT6uEb4Nl
- Uf7A==
+ :cc; bh=0Yiq17KeeoPAL2ALedPiCre2LYd91TsHJmWVoUnhISo=;
+ b=mXiDmvSvTFmjTNGHJW5HppQE/j79m3K1ScMXBDhJDly96MT5S03eU40+S3/A3euASl
+ iUwCx5a83xlJZIJgIUhV2mvAHSkzYre2HwzxM0mg8uwK9WEQvmCtoIa9tOi6EDAxMb9o
+ QbyRE2xHy+xtV6+QjkeW8Xz8Eou2O0qIKxe7UGxNTjJgwk5IaihN1cRpr8pFebgAcn3E
+ 5EYDFlGGnXiKKz96JuYb+cNzxEbgly2ShCZQo0WS13CeIRLWD4CFlrVuOMAKIy0mEE/Q
+ znzuLMzo+UKM7HMfTYr7W2Dg6UEZDranxbv0LL/nkxmuhnjAlelj/evOxXPqTaFw9SBJ
+ 9W0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=UNMUTX3IVOdWGAHdZTtQUCk6o1GLMdtGOMtI+KbtqjM=;
- b=PY5gxWk7ZzKJFOHAZzDrQ0GR6JpTeneUkL2xS7tX775HoApEhc5lPs4IJVxC1KQvwg
- 5oUBkBJeCU7nI+3ENWsOJwPH4lnAsMn+5NX06V+j8wSdJfpReet971bpFEc3AFQj9jsq
- ZIDgkOHt0Xw5EnBTyqQyfFYZM8kicmAWKToCUJN1xxIn9Wx16mgdfO530CRAgHG2Hk9w
- mbSyOQL6BWZ+jRHlVedeLpevu+LPUznSi0AQbA8K+mZ9b6DUnT47tRTIJcqXYY6NT9vN
- 6DGf+59/0Omo0fJMkkk34Ytkj6XmGr++qcdnw40mST5fYO7XLDbjtVTU2fiCLguROXKg
- A0Gg==
-X-Gm-Message-State: AGi0PuZ/LMNAMk56dEUNaAmd2NzyV5APX3h5zxgOzLj2vTTqilQTYqFz
- TbS6EF3nfFkEZrr4HQdddMo5DcgsaUbPwgRbbovntg==
-X-Google-Smtp-Source: APiQypLzSdKj50fxdYIg/0tOrZBAi+Iph6ydmFtO78v6WTjKy8v87iz0Vh0gdYkOSr/3PRRmZ92AcER3oyNFqP3q4+g=
-X-Received: by 2002:ae9:ed05:: with SMTP id c5mr15323301qkg.250.1589195318085; 
- Mon, 11 May 2020 04:08:38 -0700 (PDT)
+ bh=0Yiq17KeeoPAL2ALedPiCre2LYd91TsHJmWVoUnhISo=;
+ b=aAbW8IcD5WHg25uxwM3zbBUQCCSb3heHht2rgCWjjOljZSadufTP/HMU01/ukOcHRh
+ HG/8jdyqqmjE8a4PxJIQD10dzG60j+0EXoyKjIYGhgu13Tf3hcxnkEb3bRS4MltKlT6x
+ h3+Bb24AQKqE/LqG+Vn0bk8I3QzxlmZ+i9AdmS1hXJw7eueBF4B2NMFlcyb8z7deP2qo
+ CYPwlROzXRiNHUd//DARzuycO83uKBjCgn6pZTUQ1uRYhd8xRRBfIwaWiOrT9QanRJTr
+ lANtvDZEOQsX18sa0lLHVCf2u/2G1aczsNzKWaBuSDW0OuLe0tOIMJHKqCyaLsPm3v8R
+ hDlw==
+X-Gm-Message-State: AGi0Pub2z+4WpklXDBJhKGbxhxd6qI5jnYI8ZQrSTVgD0GamrZJIAHR9
+ +DRu08r6iodlfvP0lGeQrXSCoaw/+u4PGYHHClj30Q==
+X-Google-Smtp-Source: APiQypIYqtmt1bPrIhz3JB1mSMaP5a44LvgTZA7lTJtmjS4bFaIxSks43ptcJPXAdQeIq9m7aJHKbwDNu7IJb+RstTo=
+X-Received: by 2002:a0c:db03:: with SMTP id d3mr5012984qvk.80.1589195683252;
+ Mon, 11 May 2020 04:14:43 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200511023111.15310-1-walter-zh.wu@mediatek.com>
 In-Reply-To: <20200511023111.15310-1-walter-zh.wu@mediatek.com>
 From: Dmitry Vyukov <dvyukov@google.com>
-Date: Mon, 11 May 2020 13:08:26 +0200
-Message-ID: <CACT4Y+ZDaONL63_GdGQpgs+7dxG3GHRMGcNOVgfn9P88Kx7fig@mail.gmail.com>
+Date: Mon, 11 May 2020 13:14:32 +0200
+Message-ID: <CACT4Y+YN7cmx71UKiREV7UhMdTfuxQEOGUrtDVXDvK9PW7qNPw@mail.gmail.com>
 Subject: Re: [PATCH v2 1/3] rcu/kasan: record and print call_rcu() call stack
 To: Walter Wu <walter-zh.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200511_040840_025968_32DE2F93 
-X-CRM114-Status: GOOD (  28.36  )
+X-CRM114-CacheID: sfid-20200511_041445_323482_4607F9CA 
+X-CRM114-Status: GOOD (  27.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -176,15 +176,7 @@ On Mon, May 11, 2020 at 4:31 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
 >                                    rcu_segcblist_n_cbs(&rdp->cblist));
 >
 > +       kasan_record_aux_stack(head);
-
-This happens after we queued the object onto some queue and after some
-return statements. I think this is wrong.
-We need to do this somewhere at the very beginning of the function.
-
-This is what I meant by "hard to review". This is completely invisible
-in the diff.
-
-
+> +
 >         /* Go handle any RCU core processing required. */
 >         if (IS_ENABLED(CONFIG_RCU_NOCB_CPU) &&
 >             unlikely(rcu_segcblist_is_offloaded(&rdp->cblist))) {
@@ -198,7 +190,22 @@ in the diff.
 >           (the resulting kernel does not boot).
 > +         Currently CONFIG_KASAN_GENERIC will print first and last call_rcu()
 > +         call stack. It doesn't increase the cost of memory consumption.
->
+
+We don't plan to change this and this is not a bug, right? So I think
+using "Currently" is confusing. What's changing in future?
+
+s/will print/prints/
+Simple present tense is the default for documentation, we are just
+stating facts.
+
+The remark about not increasing memory consumption is both false and
+not useful (we don't give an option to change this).
+
+I would just say:
+
+"In generic mode KASAN prints first and last call_rcu() call stacks in reports."
+
+
 >  config KASAN_SW_TAGS
 >         bool "Software tag-based mode"
 > diff --git a/mm/kasan/common.c b/mm/kasan/common.c
