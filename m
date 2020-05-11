@@ -2,89 +2,78 @@ Return-Path: <SRS0=Nu0C=6Z=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.9 required=3.0 tests=DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E057DC47255
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 11:57:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9C128C54E4A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 12:08:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B32752075E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 11:57:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 40667206F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 12:08:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DMmwS+mA";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="TYCFULo2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B32752075E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BeHxRmR7";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="nijYdYWK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 40667206F5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4CRBDkQ2VmnIJr+/ljm0ORYp0io9SPzMiL1kbReIdFg=; b=DMmwS+mAuU4dIQ
-	GoCYOlsUjOGxln+Kw8YTxNPyVv3b17ueuXck/e83lqBCdfCEKWUFvdmEnWZot2WcHBPGHzJVztdO3
-	wdsNevGJhAFrY4FA2C11tql2DySuguXlnG/iDFsdCRiADE+ZMeWtgUuWsUlsNFX6dBfNi202E0GtJ
-	4WN5MgtOTkgtkN7rIW/L+HkieiDZeeNctZ8ScMVfKncWIvo9Y+ZNaw4lLuQOFzExbx4YsjhdLtZ5X
-	LfhgNHJ7l/iHdDEiiA3ReOrveqGFW+gRS7ETbUq6H9K4j9dLyaJ5utTiZQ7g3gUf9qMjXqYE6ePfI
-	oUbPzxMaP3SiULWAW+pg==;
+	List-Owner; bh=RRB3TKa/D4/Cwr06/CzBjR1ABu74ZTyF+3OB5JPwctU=; b=BeHxRmR7YCdrju
+	me1uLOC8d+WoK48afGC411+2pKEjZvUR2mLka+0OSDJECDaiKEMdoL5sz2W/8TwYpK/EkMHNrYHlu
+	72ZqLN0dGsqTV8KGtEQ0zFJ9JluIpZ02QFiJnigkaJ/NwfFPltOuFhokqDdqMC7N7u+uzUVDK6MHF
+	dsR6VRmL17+knyjAKmHun0CzC6hd1QXr0+u0VQrYO9cPJ+zKVgX8B+fjC/FrOKCd994ijgLNBOd8d
+	sm22WMVwI++b/YLjHHVEGAYNzAr8d5dedHRWYryJy2hNJ6K3ycyKudQ7vxJrjP920YYJnSk2ttdwk
+	DfpCxSKHgApmW8F4jzEw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jY73x-00070j-9C; Mon, 11 May 2020 11:57:37 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1jY7Dz-0006Uo-3V; Mon, 11 May 2020 12:07:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jY73o-0006om-Kv
- for linux-mediatek@lists.infradead.org; Mon, 11 May 2020 11:57:29 +0000
-Received: by mail-wm1-x341.google.com with SMTP id e26so17749105wmk.5
- for <linux-mediatek@lists.infradead.org>; Mon, 11 May 2020 04:57:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=ETEJzrILDWcEXSuqI8CJBLVfITRJvsWlV8DeIS56yUg=;
- b=TYCFULo2Suie8IQQbYjij0fXBQIVOUeI8xv90SKGhM5ONz2C0tOD+JZgJvXZWV8rj1
- hVyNLva1zf1dfngbRmXj5nWT2LYLmXJYm7Vc5N0WBGJoZUG4D4sPk5K0DqdkpXUKs68N
- yNDAJiHCn8A02TXqcQ9lyTuTFNdWzUQNC3me3u/1RYQdyg8ABZSWn/yXuzOWlOc3IBmW
- kL+9ZFtfe+DRrR5ZQYEZqeLUyuRzdG+R/pYtfjhI/9bYEanyw2jau41e8wJJxf9efG+h
- 7MEwuIBDRDzZqwEk16N8f4DzETeYRYp8/8fZ1m1afV8wanrkOItDXwjd39jiUMqFuWRK
- U3+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ETEJzrILDWcEXSuqI8CJBLVfITRJvsWlV8DeIS56yUg=;
- b=hiX38ewlSvwK+HHl+5snzIVAAPDejLiyOcQukGVbe1rtHgOvfeYvEZh2CTkhJKHvD5
- kcVCb2jL7lMl8CHOMkbqOK3LVtMdk3/WAX1V/qzAIeX1Awl0Yv7pxw7ILHRu00B5LOcZ
- Sw8B7j9h+dwIijWYO2VVBWzNyXEmekBZwaNofeTX31HClp5hPY9fjIvWkSryX8Kz9V+G
- VlI5qVTGZleYqk28PzGvkYEh3oZF2gX+kfhkdG5ztqC5Wll1KkjYIlok9g4Xq1lwSuDi
- gHYyVwFyE9k7uSBj1dOgvL6eTqIhWrqUJdCc5BMxZms5/aHczr3ilER4A8GycytjUznv
- Cv+A==
-X-Gm-Message-State: AGi0PuYiF/kKmPx80oXe7WpWeRgio8shV2V/1BZocTyjJPhZTP/zouuV
- 5sU7mNt5v+6D9AGA9qjuvSKXYg==
-X-Google-Smtp-Source: APiQypIA/BhPOSlxxVRft/M3ndyAAD/wbrIqEL1T+jhl+AK/cIZYzzYwO39nyIGbtRrwMvdTRb8hHw==
-X-Received: by 2002:a7b:c755:: with SMTP id w21mr30469520wmk.120.1589198246663; 
- Mon, 11 May 2020 04:57:26 -0700 (PDT)
-Received: from google.com ([2a00:79e0:d:110:d6cc:2030:37c1:9964])
- by smtp.gmail.com with ESMTPSA id y70sm27811096wmc.36.2020.05.11.04.57.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 May 2020 04:57:25 -0700 (PDT)
-Date: Mon, 11 May 2020 12:57:22 +0100
-From: Quentin Perret <qperret@google.com>
-To: Lukasz Luba <lukasz.luba@arm.com>
-Subject: Re: [PATCH v7 03/15] PM / EM: update callback structure and add
- device pointer
-Message-ID: <20200511115722.GA13741@google.com>
-References: <20200511111912.3001-1-lukasz.luba@arm.com>
- <20200511111912.3001-4-lukasz.luba@arm.com>
+ id 1jY7Dx-0006UA-3q; Mon, 11 May 2020 12:07:58 +0000
+X-UUID: 5f75d4f11dcc41e5a94868badf489859-20200511
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=vMipxxyx4vvbm6f5PGT2B9rTKQUVPBjJU6zHZu06PhY=; 
+ b=nijYdYWKJk1lzibIVt030yqGOvFax/1AxuCU4dnlCz1eTIQp9rhRPGj1G390+fSzgtzOZRF0CuVjULyhUffyV3kbsL6BSV7UdjVL6TBQTZ6WOJMb3/hy65sJWYUIDMmyKrA+0U0DooE3Kpyd1ac9uBkFsdaMoATLZkTNX33QycU=;
+X-UUID: 5f75d4f11dcc41e5a94868badf489859-20200511
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <dongchun.zhu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 545490689; Mon, 11 May 2020 04:07:50 -0800
+Received: from MTKMBS31DR.mediatek.inc (172.27.6.102) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 11 May 2020 05:07:51 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31DR.mediatek.inc
+ (172.27.6.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 11 May 2020 20:07:49 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 11 May 2020 20:07:47 +0800
+Message-ID: <1589198795.8804.276.camel@mhfsdcap03>
+Subject: Re: [V8, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
+From: Dongchun Zhu <dongchun.zhu@mediatek.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Date: Mon, 11 May 2020 20:06:35 +0800
+In-Reply-To: <20200511093308.GF185537@smile.fi.intel.com>
+References: <20200509080627.23222-1-dongchun.zhu@mediatek.com>
+ <20200509080627.23222-3-dongchun.zhu@mediatek.com>
+ <20200511093308.GF185537@smile.fi.intel.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200511111912.3001-4-lukasz.luba@arm.com>
+X-TM-SNTS-SMTP: 1C8EC2EFA9EA89E9356A83C33519571046D31C38383666B09EF4913B1E4D0A3F2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200511_045728_713148_E97C4CBB 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20200511_050757_164799_DF586DE1 
+X-CRM114-Status: GOOD (  15.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,67 +85,119 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: nm@ti.com, juri.lelli@redhat.com, peterz@infradead.org,
- viresh.kumar@linaro.org, liviu.dudau@arm.com, dri-devel@lists.freedesktop.org,
- bjorn.andersson@linaro.org, bsegall@google.com,
- alyssa.rosenzweig@collabora.com, festevam@gmail.com, mka@chromium.org,
- robh@kernel.org, amit.kucheria@verdurent.com, lorenzo.pieralisi@arm.com,
- vincent.guittot@linaro.org, khilman@kernel.org, agross@kernel.org,
- daniel.lezcano@linaro.org, steven.price@arm.com, cw00.choi@samsung.com,
- mingo@redhat.com, linux-imx@nxp.com, rui.zhang@intel.com, mgorman@suse.de,
- orjan.eide@arm.com, daniel@ffwll.ch, linux-pm@vger.kernel.org,
- linux-arm-msm@vger.kernel.org, s.hauer@pengutronix.de, rostedt@goodmis.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- linux-omap@vger.kernel.org, Dietmar.Eggemann@arm.com,
- linux-arm-kernel@lists.infradead.org, airlied@linux.ie,
- tomeu.vizoso@collabora.com, sboyd@kernel.org, rdunlap@infradead.org,
- rjw@rjwysocki.net, linux-kernel@vger.kernel.org, b.zolnierkie@samsung.com,
- kernel@pengutronix.de, sudeep.holla@arm.com, patrick.bellasi@matbug.net,
- shawnguo@kernel.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org,
+ louis.kuo@mediatek.com, srv_heupstream@mediatek.com, linus.walleij@linaro.org,
+ shengnan.wang@mediatek.com, tfiga@chromium.org, bgolaszewski@baylibre.com,
+ sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
+ sakari.ailus@linux.intel.com, matthias.bgg@gmail.com, bingbu.cao@intel.com,
+ mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Monday 11 May 2020 at 12:19:00 (+0100), Lukasz Luba wrote:
-> diff --git a/drivers/cpufreq/scmi-cpufreq.c b/drivers/cpufreq/scmi-cpufreq.c
-> index 61623e2ff149..11ee24e06d12 100644
-> --- a/drivers/cpufreq/scmi-cpufreq.c
-> +++ b/drivers/cpufreq/scmi-cpufreq.c
-> @@ -103,17 +103,12 @@ scmi_get_sharing_cpus(struct device *cpu_dev, struct cpumask *cpumask)
->  }
->  
->  static int __maybe_unused
-> -scmi_get_cpu_power(unsigned long *power, unsigned long *KHz, int cpu)
-> +scmi_get_cpu_power(unsigned long *power, unsigned long *KHz,
-> +		   struct device *cpu_dev)
->  {
-> -	struct device *cpu_dev = get_cpu_device(cpu);
->  	unsigned long Hz;
->  	int ret, domain;
->  
-> -	if (!cpu_dev) {
-> -		pr_err("failed to get cpu%d device\n", cpu);
-> -		return -ENODEV;
-> -	}
-> -
->  	domain = handle->perf_ops->device_domain_id(cpu_dev);
->  	if (domain < 0)
->  		return domain;
-> @@ -200,7 +195,7 @@ static int scmi_cpufreq_init(struct cpufreq_policy *policy)
->  
->  	policy->fast_switch_possible = true;
->  
-> -	em_register_perf_domain(policy->cpus, nr_opp, &em_cb);
+Hi Andy,
 
-So this one has no users after this patch right? I suppose you could
-squash patch 05 in this one. But no big deal.
+Thanks for the kindly review.
 
-Acked-by: Quentin Perret <qperret@google.com>
+On Mon, 2020-05-11 at 12:33 +0300, Andy Shevchenko wrote:
+> On Sat, May 09, 2020 at 04:06:27PM +0800, Dongchun Zhu wrote:
+> > Add a V4L2 sub-device driver for OV02A10 image sensor.
+> 
+> ...
+> 
+> > +#define OV02A10_ID(_msb, _lsb)				((_msb) << 8 | (_lsb))
+> 
+> How often do you use this macro?
+> 
 
-> +	em_dev_register_perf_domain(cpu_dev, nr_opp, &em_cb, policy->cpus);
->  
->  	return 0;
+Just once.
+I would try to use the macro function directly in next release.
+
+> ...
+> 
+> > +static int ov02a10_read_smbus(struct ov02a10 *ov02a10, unsigned char reg,
+> > +			      unsigned char *val)
+> > +{
+> > +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
+> > +	int ret;
+> > +
+> > +	ret = i2c_smbus_read_byte_data(client, reg);
+> 
+> > +
+> 
+> Extra blank line.
+> 
+
+Thanks for the carefully reminder.
+This error can easily be neglected.
+I would remove it in next release.
+
+> > +	if (ret < 0)
+> > +		return ret;
+> > +
+> > +	*val = (unsigned char)ret;
+> > +
+> > +	return 0;
+> > +}
+> 
+> ...
+> 
+> > +static int ov02a10_entity_init_cfg(struct v4l2_subdev *sd,
+> > +				   struct v4l2_subdev_pad_config *cfg)
+> > +{
+> > +	struct v4l2_subdev_format fmt = {
+> 
+> > +		.which = cfg ? V4L2_SUBDEV_FORMAT_TRY
+> > +			     : V4L2_SUBDEV_FORMAT_ACTIVE,
+> 
+> I think it would be fine to have it on one line.
+> 
+
+Got it.
+Fixed in next release.
+
+> > +		.format = {
+> > +			.width = 1600,
+> > +			.height = 1200,
+> > +		}
+> > +	};
+> > +
+> > +	ov02a10_set_fmt(sd, cfg, &fmt);
+> > +
+> > +	return 0;
+> > +}
+> 
+> ...
+> 
+> > +	if (!ret) {
+> > +		if (rotation == 180) {
+> 
+> if (a) {
+> 	if (b) {
+> 		...
+> 	}
+> }
+> 
+> ==
+> 
+> if (a && b) {
+> 	...
+> }
+> 
+
+Thanks for the reminder :-)
+Next release would use:
+if (!ret && rotation == 180) {
+	...
+}
+
+> > +			ov02a10->upside_down = true;
+> > +			ov02a10->fmt.code = MEDIA_BUS_FMT_SRGGB10_1X10;
+> > +		}
+> > +	}
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
