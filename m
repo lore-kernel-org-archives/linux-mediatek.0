@@ -2,70 +2,81 @@ Return-Path: <SRS0=Nu0C=6Z=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.9 required=3.0 tests=DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F21FDC54E4B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 09:35:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B78E4C47255
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 10:01:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A3BDD207DD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 09:35:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8DEA120720
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 10:01:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SImZaknN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A3BDD207DD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Xpsm/7ir";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="Fc1FlTQb"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8DEA120720
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yr+3n7UiC73SxiW2naV5tgL1h6NHOQGPkpZfPtQXQbU=; b=SImZaknNN3vTDI
-	92ib6w2uoeOiyHaM3AAWuGn4J/SgggiI0aDLBrXx2hw5F1+e3H2VXGoCziusbjn6a07MoYA22unbk
-	6lA2MQB2duvY0+pQLiqYrBiit8TSBIXsEd8iBz1EcffvLEZivDF7f0AYst5pwrqxGt7/tpqwQ1jF9
-	xSEIAq85NyfswV6KWOMo6fB1Jr0EPQIxM6Ii9aRWpM6tMwLxk8PNeYecB+mV1JIRMwmjsrN4GllNP
-	j9mchDY+YYgWXZ4tWusEyIgvEG5NZVRWJx/PUu3x1wj/p2PQWXSqLNGweygdxHsxT100yHqs2rcyY
-	Wdwgk6Hhf+0VhTLnnzfw==;
+	List-Owner; bh=CwVXpM7RFhLYxm7dZAeZFfo3vQIRTsRKGGk8PjpyOrM=; b=Xpsm/7iryrhiaQ
+	yhce/lTU4JmQeao0EmuzJCEcWC9aJnv7HsnIWsMLJ28i12Ag+/x/CdNxDU3F0Q/9ZaeLa6arIemAR
+	EnP2tKM+zkg5yKY9/g1/SV3jvrqxZz6PrQSAfBFwIdM64AaOsG9p5C4EwQVG9iP1MQ25wL6fYnCAS
+	0UKI0/qHAZLk0mJVOF8AbXFQIecIYrjjUtVUCUCwdLEuZA3uLi8/nLMfRJiSOl3dYk3BrEPnaWSAx
+	kLJ2l6J00A9m0e7lZIopE4lCxPHkDxj7rpRohBD95HQ9XkJfzVy8AcjypWmK/LJmz3tNga6lm/VVv
+	8pZ0NG+9AomkJW9H/yaw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jY4qf-0007oO-R5; Mon, 11 May 2020 09:35:45 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1jY5Fc-0008EC-RC; Mon, 11 May 2020 10:01:32 +0000
+Received: from mail-qv1-xf41.google.com ([2607:f8b0:4864:20::f41])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jY4oB-00036d-RT; Mon, 11 May 2020 09:33:13 +0000
-IronPort-SDR: jdVOlFjP40SMSG91Mhe8vOIQcSPgpYnwCzSyXB2VVFLjaF44cpZ5A3uO2oPI1As7J0fcpXc/kT
- w+5ycurg8k/w==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 May 2020 02:33:10 -0700
-IronPort-SDR: ONYW+QqYbjMLn1MDFmvWENe6egF5WQnYr3Nj7Te1ktN7xBvPMhyHdGCfc/X9xjhrYEJUEWRnwl
- KL4sexatOzeQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,379,1583222400"; d="scan'208";a="371171194"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by fmsmga001.fm.intel.com with ESMTP; 11 May 2020 02:33:06 -0700
-Received: from andy by smile with local (Exim 4.93)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1jY4o8-005vQO-I5; Mon, 11 May 2020 12:33:08 +0300
-Date: Mon, 11 May 2020 12:33:08 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: Re: [V8, 2/2] media: i2c: ov02a10: Add OV02A10 image sensor driver
-Message-ID: <20200511093308.GF185537@smile.fi.intel.com>
-References: <20200509080627.23222-1-dongchun.zhu@mediatek.com>
- <20200509080627.23222-3-dongchun.zhu@mediatek.com>
+ id 1jY5Fa-0008DO-EL
+ for linux-mediatek@lists.infradead.org; Mon, 11 May 2020 10:01:32 +0000
+Received: by mail-qv1-xf41.google.com with SMTP id z5so2295354qvw.4
+ for <linux-mediatek@lists.infradead.org>; Mon, 11 May 2020 03:01:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=dEBQw3076mBvIY7CBwoK5uqpgbduOcTYtDKSbai7h/o=;
+ b=Fc1FlTQbTssxu2TxqBIzl+6Xlu+t3hasOFsdn49nv21GLo9Z8aBGG/ltllQ5Mqv3vs
+ /cS1DoIzzoA0etpn9Wb1dNWhoo4a7PnSU9gFA/dVQZkuny77X/CNk7hdQFyQxT8H3DVE
+ EoV6Ku67L0CdgauG4BIN5MwiXPgC4FyhVfqLLtuUmawjRwNgqWpzTu0V3aeonSzSRMtL
+ 8R9P8SURGv9c8w0VL0TDSiPfiUAE1V/xB68UPSMA7ViHFp2ND2ft3yukF1C5a44SZ8PL
+ nkAwzrc+hrrENogaw8HqC+e+2No138vdOykTEcUxjE1xBWU0GiZOAnz+kfac1whzdwd7
+ J8OQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=dEBQw3076mBvIY7CBwoK5uqpgbduOcTYtDKSbai7h/o=;
+ b=uSE3UEswV7hKi8xevCbY/JL2isH2aaYuxOlYuBNc2pme176GOr+WxC44h92yTq0SVK
+ uY4u9fdjSoGaXGipgMASksrTFkmlwaAHTsX+oGkW5rck6zbpqt3XGzdDQBz3mOV/1Sfk
+ BuMDl56ayXINlLEm5+Gs95MjeIi6fxb/GRa3CO3NGyw7DWpQPZRVKSkfR+Qh1/Vg+aTi
+ huVWBWFmc1RYuOssPzL8zf6cyjXfwgefJkucEdi3MGlUIB+pK1nH/Ou/0EFBxuz/Dt8n
+ MZ4R0yfunJ3kwQcrdC0Nc//raCaY3xc6Nhr35VhJCqP225kBdlgItsN33SSkmwiNModt
+ pjOA==
+X-Gm-Message-State: AGi0PuZ3qTWDVKaI5xGU1THFBfqQ4UvRhzt1/4R2DpMvE5kCEx2fj0H4
+ l3Chjj33z2UN4D44LeMkmGX3icO7pDb5jXwNYJywjQ==
+X-Google-Smtp-Source: APiQypK3J4Uss9hZs4ShXGbm1QYq+YrrdMGKWDeQyyrRLVZFWF+P7Ohh0VDwlQa19CWjtVyUyFUBSpLqPPKQVLzi6XA=
+X-Received: by 2002:ad4:5a48:: with SMTP id ej8mr15299087qvb.122.1589191286510; 
+ Mon, 11 May 2020 03:01:26 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200509080627.23222-3-dongchun.zhu@mediatek.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20200511022359.15063-1-walter-zh.wu@mediatek.com>
+In-Reply-To: <20200511022359.15063-1-walter-zh.wu@mediatek.com>
+From: Dmitry Vyukov <dvyukov@google.com>
+Date: Mon, 11 May 2020 12:01:14 +0200
+Message-ID: <CACT4Y+aC4i8cAVFu2-s82RczWCjYMpPVJLwS0OBLELR9qF8SYg@mail.gmail.com>
+Subject: Re: [PATCH v2 0/3] kasan: memorize and print call_rcu stack
+To: Walter Wu <walter-zh.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200511_023311_960479_35423B89 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20200511_030130_506077_B2EDB982 
+X-CRM114-Status: GOOD (  19.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,99 +88,98 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, drinkcat@chromium.org,
- louis.kuo@mediatek.com, srv_heupstream@mediatek.com, linus.walleij@linaro.org,
- shengnan.wang@mediatek.com, tfiga@chromium.org, bgolaszewski@baylibre.com,
- sj.huang@mediatek.com, robh+dt@kernel.org, linux-mediatek@lists.infradead.org,
- sakari.ailus@linux.intel.com, matthias.bgg@gmail.com, bingbu.cao@intel.com,
- mchehab@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+Cc: wsd_upstream <wsd_upstream@mediatek.com>,
+ "Paul E . McKenney" <paulmck@kernel.org>, Linux-MM <linux-mm@kvack.org>,
+ Lai Jiangshan <jiangshanlai@gmail.com>, Josh Triplett <josh@joshtriplett.org>,
+ kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>,
+ Joel Fernandes <joel@joelfernandes.org>, linux-mediatek@lists.infradead.org,
+ Alexander Potapenko <glider@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Andrey Ryabinin <aryabinin@virtuozzo.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, May 09, 2020 at 04:06:27PM +0800, Dongchun Zhu wrote:
-> Add a V4L2 sub-device driver for OV02A10 image sensor.
+On Mon, May 11, 2020 at 4:24 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+>
+> This patchset improves KASAN reports by making them to have
+> call_rcu() call stack information. It is useful for programmers
+> to solve use-after-free or double-free memory issue.
 
-...
+Hi Walter,
 
-> +#define OV02A10_ID(_msb, _lsb)				((_msb) << 8 | (_lsb))
+I am looking at this now.
 
-How often do you use this macro?
+I've upload the change to gerrit [1]
+https://linux-review.googlesource.com/c/linux/kernel/git/torvalds/linux/+/2458
 
-...
+I am not capable enough to meaningfully review such changes in this format...
 
-> +static int ov02a10_read_smbus(struct ov02a10 *ov02a10, unsigned char reg,
-> +			      unsigned char *val)
-> +{
-> +	struct i2c_client *client = v4l2_get_subdevdata(&ov02a10->subdev);
-> +	int ret;
-> +
-> +	ret = i2c_smbus_read_byte_data(client, reg);
-
-> +
-
-Extra blank line.
-
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	*val = (unsigned char)ret;
-> +
-> +	return 0;
-> +}
-
-...
-
-> +static int ov02a10_entity_init_cfg(struct v4l2_subdev *sd,
-> +				   struct v4l2_subdev_pad_config *cfg)
-> +{
-> +	struct v4l2_subdev_format fmt = {
-
-> +		.which = cfg ? V4L2_SUBDEV_FORMAT_TRY
-> +			     : V4L2_SUBDEV_FORMAT_ACTIVE,
-
-I think it would be fine to have it on one line.
-
-> +		.format = {
-> +			.width = 1600,
-> +			.height = 1200,
-> +		}
-> +	};
-> +
-> +	ov02a10_set_fmt(sd, cfg, &fmt);
-> +
-> +	return 0;
-> +}
-
-...
-
-> +	if (!ret) {
-> +		if (rotation == 180) {
-
-if (a) {
-	if (b) {
-		...
-	}
-}
-
-==
-
-if (a && b) {
-	...
-}
-
-> +			ov02a10->upside_down = true;
-> +			ov02a10->fmt.code = MEDIA_BUS_FMT_SRGGB10_1X10;
-> +		}
-> +	}
-
--- 
-With Best Regards,
-Andy Shevchenko
+[1] https://linux.googlesource.com/Documentation
 
 
+> The KASAN report was as follows(cleaned up slightly):
+>
+> BUG: KASAN: use-after-free in kasan_rcu_reclaim+0x58/0x60
+>
+> Freed by task 0:
+>  save_stack+0x24/0x50
+>  __kasan_slab_free+0x110/0x178
+>  kasan_slab_free+0x10/0x18
+>  kfree+0x98/0x270
+>  kasan_rcu_reclaim+0x1c/0x60
+>  rcu_core+0x8b4/0x10f8
+>  rcu_core_si+0xc/0x18
+>  efi_header_end+0x238/0xa6c
+>
+> First call_rcu() call stack:
+>  save_stack+0x24/0x50
+>  kasan_record_callrcu+0xc8/0xd8
+>  call_rcu+0x190/0x580
+>  kasan_rcu_uaf+0x1d8/0x278
+>
+> Last call_rcu() call stack:
+> (stack is not available)
+>
+> Generic KASAN will record first and last call_rcu() call stack
+> and print two call_rcu() call stack in KASAN report.
+>
+> This feature doesn't increase the cost of memory consumption. It is
+> only suitable for generic KASAN.
+>
+> [1]https://bugzilla.kernel.org/show_bug.cgi?id=198437
+> [2]https://groups.google.com/forum/#!searchin/kasan-dev/better$20stack$20traces$20for$20rcu%7Csort:date/kasan-dev/KQsjT_88hDE/7rNUZprRBgAJ
+>
+> Changes since v2:
+> - remove new config option, default enable it in generic KASAN
+> - test this feature in SLAB/SLUB, it is pass.
+> - modify macro to be more clearly
+> - modify documentation
+>
+> Walter Wu (3):
+> rcu/kasan: record and print call_rcu() call stack
+> kasan: record and print the free track
+> kasan: update documentation for generic kasan
+>
+> Documentation/dev-tools/kasan.rst |  6 ++++++
+> include/linux/kasan.h             |  2 ++
+> kernel/rcu/tree.c                 |  4 ++++
+> lib/Kconfig.kasan                 |  2 ++
+> mm/kasan/common.c                 | 26 ++++----------------------
+> mm/kasan/generic.c                | 50 ++++++++++++++++++++++++++++++++++++++++++++++++++
+> mm/kasan/kasan.h                  | 23 +++++++++++++++++++++++
+> mm/kasan/report.c                 | 47 +++++++++++++++++++++--------------------------
+> mm/kasan/tags.c                   | 37 +++++++++++++++++++++++++++++++++++++
+> 9 files changed, 149 insertions(+), 48 deletions(-)
+>
+> --
+> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20200511022359.15063-1-walter-zh.wu%40mediatek.com.
 
 _______________________________________________
 Linux-mediatek mailing list
