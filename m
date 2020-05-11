@@ -2,63 +2,90 @@ Return-Path: <SRS0=Nu0C=6Z=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+X-Spam-Status: No, score=-3.9 required=3.0 tests=DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 60EA5C54E8D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 11:26:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 74D76C47255
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 11:46:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 254F120722
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 11:26:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 40C5F20735
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 May 2020 11:46:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NOtujPWD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 254F120722
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="V+OWNpk/";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="KTJtUy+x"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 40C5F20735
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=zXAG/Hd3E4wSdanxjNVxtHlaHcwDWE+u8vL5I9hreCw=; b=NOtujPWDtl0LNIwhCZ4ShkNR3n
-	ZTkkyxbHaFb43kqwbPavamzOvn616AernIix7hjpLODlB/JZrrZyfDTh6OX7mF9mG+9ufqIyIkvip
-	cF8EWm/oeHDC+yrEPHr0rFvDgbrU0nRp8di/j2pxeWcFf2PDOsOCdfLXM8rn2b2pM/ejorzPhO6br
-	Ubi20cOoPfjUkwpXoCcSpbocUM3Si1H4TgoalR39WSao21ts9+RCxA9eUL4FY7q1peyr7Lln4hzll
-	wdOVzw7lwdv27G2eeavPfF71ko3/jaBeUd+Hg9DXlVR004HI0nSyP6JO68XxzCvYfgKwqS5B6ikAa
-	z+skA/dA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=j0ZCgv/le5rS0gJ+djFQtB344gh5vFc4/is8p/H/Q1I=; b=V+OWNpk/wMZqfA
+	HOaF+wn/++pIYf1lqXmkO8ceyyYkgbZ1MwrRGqm+auvRNHu4UySsiH4eOC7dCX95OUSKeUydwbslm
+	utQ/WnVTtVzOYQncUVlw5qUwGRE3FX3nzddm1c9KvghsZEEoJ2KUHS1O4LOWJfCoT5159Cr3PxC7e
+	WziMkGiy0VZBeP6oNC3e5AFqGV0S+zuDUoZlnAhM1XJPRAX5pVHgI0Y7xtld70n8fKgfRm2fsbgy8
+	Nw02JzOFbys0PNP2qzq+iqOKHdQe6fGSrp4L2r4qdrRapgZWCgcqrUwNk7l9YdeXZCXsD0HGFzrJw
+	8Vzb6ededJZvkLWeZ3/w==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jY6Zc-0006hU-OV; Mon, 11 May 2020 11:26:16 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jY6Vk-0000WO-9E; Mon, 11 May 2020 11:22:21 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8F28F101E;
- Mon, 11 May 2020 04:22:15 -0700 (PDT)
-Received: from e123648.arm.com (unknown [10.37.12.83])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 506FB3F305;
- Mon, 11 May 2020 04:22:05 -0700 (PDT)
-From: Lukasz Luba <lukasz.luba@arm.com>
-To: linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org,
- linux-omap@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-imx@nxp.com
-Subject: [PATCH v7 15/15] drm/panfrost: Register devfreq cooling and attempt
- to add Energy Model
-Date: Mon, 11 May 2020 12:19:12 +0100
-Message-Id: <20200511111912.3001-16-lukasz.luba@arm.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200511111912.3001-1-lukasz.luba@arm.com>
+	id 1jY6tN-00054E-R3; Mon, 11 May 2020 11:46:41 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jY6tF-0004vV-DX
+ for linux-mediatek@lists.infradead.org; Mon, 11 May 2020 11:46:34 +0000
+Received: by mail-wm1-x342.google.com with SMTP id d207so3724095wmd.0
+ for <linux-mediatek@lists.infradead.org>; Mon, 11 May 2020 04:46:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=8HihaMjBho7yHhoZ4dXDWrBXozE3xr0NvWok/3IgXso=;
+ b=KTJtUy+xvCilgtfASvMVkrHFxJGWQd6oQfRtMj53UFUDKm0GLZdcKmysVquVdcGnNQ
+ GnLnowb53q2mnDekrftfm5idSn2La4Hwi3EQlRIr2/x9kLZEGljvyDzDJ/tH/iPMhCm1
+ Br1Mj0mQ+w2yON0HQ2T8K1qFr/JqndsQWJkbeeocTf/p+tdDaBtBm97H2lzKg+T6eaZa
+ e1c0Mmv7ay3WSrdGzzxq+HftjVHi1YFqLO/rTY4o27q48B7uXHJnRU8plAj3pMPpDMjc
+ 48oZp2j9ep2hx9TCcvQ4njLDs5w+TaPPZM4SJGoDmaM0Jh1BZ2wDTD7I2hrixnS3uVeE
+ pxUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=8HihaMjBho7yHhoZ4dXDWrBXozE3xr0NvWok/3IgXso=;
+ b=mm673mbWFSZ9NdbgdeZ9X+c+FO0Bdjo0uSEuZGroxDN5kmbZOoCI87X8GFy5IwugRe
+ l3BMdQmEHBGTTfc+RN3XldXplFxw3HMwzNWHKxW1LLvU1CTylYOZWg7haXlM7xAVcZfS
+ mlMZoXVNCO0kllzrS4/5kTNCtjwlYvtON2/cja6uNGDkbWQh1Q0CcMdpXXjnk+RdnWNF
+ ljo63p65wfUUCb7bc6RRN66+EfqNvzLq5YXUOua4944S6vRxcgMPplb8KKoNoo9vNnkw
+ SeHZ0ntpN8dy8RKOSn2IowVxJZ0sEBJs9T5bvDX1F2l5JidTKfpveHzcoS/6mQfNzMpU
+ JN6w==
+X-Gm-Message-State: AGi0PuZ1/V2/wDkui7W54fG4PW1DM/lWxjpj11lQLPXiybGy0cOTpR1J
+ /R5JGPBxto+GSs/Uhbluyui31Q==
+X-Google-Smtp-Source: APiQypK+52M5jh5tMkIap1YctDwL5nM0Q2YdPkE9mtpXjfSY9F6Whlp3f9IAQU+9uwYyfn1ELFgsiA==
+X-Received: by 2002:a7b:ce89:: with SMTP id q9mr33216701wmj.185.1589197588860; 
+ Mon, 11 May 2020 04:46:28 -0700 (PDT)
+Received: from google.com ([2a00:79e0:d:110:d6cc:2030:37c1:9964])
+ by smtp.gmail.com with ESMTPSA id w18sm17682226wro.33.2020.05.11.04.46.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 May 2020 04:46:28 -0700 (PDT)
+Date: Mon, 11 May 2020 12:46:24 +0100
+From: Quentin Perret <qperret@google.com>
+To: Lukasz Luba <lukasz.luba@arm.com>
+Subject: Re: [PATCH v7 01/15] PM / EM: change naming convention from
+ 'capacity' to 'performance'
+Message-ID: <20200511114624.GA11091@google.com>
 References: <20200511111912.3001-1-lukasz.luba@arm.com>
+ <20200511111912.3001-2-lukasz.luba@arm.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200511111912.3001-2-lukasz.luba@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200511_042216_404504_9CD15E3F 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20200511_044633_470550_9F6AB4FC 
+X-CRM114-Status: UNSURE (   6.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,53 +98,37 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Cc: nm@ti.com, juri.lelli@redhat.com, peterz@infradead.org,
- viresh.kumar@linaro.org, liviu.dudau@arm.com, bjorn.andersson@linaro.org,
- bsegall@google.com, festevam@gmail.com, mka@chromium.org, robh@kernel.org,
- amit.kucheria@verdurent.com, lorenzo.pieralisi@arm.com,
- vincent.guittot@linaro.org, khilman@kernel.org, daniel.lezcano@linaro.org,
- steven.price@arm.com, cw00.choi@samsung.com, mingo@redhat.com, mgorman@suse.de,
- rui.zhang@intel.com, alyssa.rosenzweig@collabora.com, orjan.eide@arm.com,
- daniel@ffwll.ch, b.zolnierkie@samsung.com, s.hauer@pengutronix.de,
- rostedt@goodmis.org, matthias.bgg@gmail.com, Dietmar.Eggemann@arm.com,
- airlied@linux.ie, tomeu.vizoso@collabora.com, qperret@google.com,
- sboyd@kernel.org, rdunlap@infradead.org, rjw@rjwysocki.net, agross@kernel.org,
+ viresh.kumar@linaro.org, liviu.dudau@arm.com, dri-devel@lists.freedesktop.org,
+ bjorn.andersson@linaro.org, bsegall@google.com,
+ alyssa.rosenzweig@collabora.com, festevam@gmail.com, mka@chromium.org,
+ robh@kernel.org, amit.kucheria@verdurent.com, lorenzo.pieralisi@arm.com,
+ vincent.guittot@linaro.org, khilman@kernel.org, agross@kernel.org,
+ daniel.lezcano@linaro.org, steven.price@arm.com, cw00.choi@samsung.com,
+ mingo@redhat.com, linux-imx@nxp.com, rui.zhang@intel.com, mgorman@suse.de,
+ orjan.eide@arm.com, daniel@ffwll.ch, linux-pm@vger.kernel.org,
+ linux-arm-msm@vger.kernel.org, s.hauer@pengutronix.de, rostedt@goodmis.org,
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
+ linux-omap@vger.kernel.org, Dietmar.Eggemann@arm.com,
+ linux-arm-kernel@lists.infradead.org, airlied@linux.ie,
+ tomeu.vizoso@collabora.com, sboyd@kernel.org, rdunlap@infradead.org,
+ rjw@rjwysocki.net, linux-kernel@vger.kernel.org, b.zolnierkie@samsung.com,
  kernel@pengutronix.de, sudeep.holla@arm.com, patrick.bellasi@matbug.net,
- shawnguo@kernel.org, lukasz.luba@arm.com
-MIME-Version: 1.0
+ shawnguo@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Register devfreq cooling device and attempt to register Energy Model. This
-will add the devfreq device to the Energy Model framework. It will create
-a dedicated and unified data structures used i.e. in thermal framework.
-The last NULL parameter indicates that the power model is simplified and
-created based on DT 'dynamic-power-coefficient', voltage and frequency.
+On Monday 11 May 2020 at 12:18:58 (+0100), Lukasz Luba wrote:
+> The Energy Model uses concept of performance domain and capacity states in
+> order to calculate power used by CPUs. Change naming convention from
+> capacity to performance state would enable wider usage in future, e.g.
+> upcoming support for other devices other than CPUs.
+> 
+> Acked-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+> Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
 
-Reviewed-by: Steven Price <steven.price@arm.com>
-Reviewed-by: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
-Signed-off-by: Lukasz Luba <lukasz.luba@arm.com>
----
- drivers/gpu/drm/panfrost/panfrost_devfreq.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/panfrost/panfrost_devfreq.c b/drivers/gpu/drm/panfrost/panfrost_devfreq.c
-index 413987038fbf..8759a73db153 100644
---- a/drivers/gpu/drm/panfrost/panfrost_devfreq.c
-+++ b/drivers/gpu/drm/panfrost/panfrost_devfreq.c
-@@ -105,7 +105,7 @@ int panfrost_devfreq_init(struct panfrost_device *pfdev)
- 	}
- 	pfdev->devfreq.devfreq = devfreq;
- 
--	cooling = of_devfreq_cooling_register(dev->of_node, devfreq);
-+	cooling = devfreq_cooling_em_register(devfreq, NULL);
- 	if (IS_ERR(cooling))
- 		DRM_DEV_INFO(dev, "Failed to register cooling device\n");
- 	else
--- 
-2.17.1
-
+Acked-by: Quentin Perret <qperret@google.com>
 
 _______________________________________________
 Linux-mediatek mailing list
