@@ -2,87 +2,87 @@ Return-Path: <SRS0=Mjju=62=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.9 required=3.0 tests=DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 97C56CA90AF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2020 16:22:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7052CCA90AF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2020 17:04:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 64467206B8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2020 16:22:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 431B0206D3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2020 17:04:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="smU0X0nH";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="qpJ2/f9j"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 64467206B8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ImYDIC4O";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="meVbenxm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 431B0206D3
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LyD7AyjRNL+VKdr2iFYpG8FKbtaX/qiG6n7MxNIyI8c=; b=smU0X0nHSBYXkZ
-	KiAAxX0yQaO76m0ZS3ieZMpaQ7PITUbnrEVE3gITZY/0VveOBdNlMhoFdkIYghh6Qby2KbSc/OWkq
-	zBK25N9s6jMb3UlOvR6THUG/Ly0Zx/1aeCbR/hxGiVfvIYWGUdDrJ7vJwSEGT5F3+wWBz0BPKtdJa
-	pYMwa9XOPMSci7E7/jdfkF5u31RNMEuhDyQQSFo+ZCUCY/aW91vZvauKzceEycdZ3tZf85w6YyyLk
-	cwUkRugfeEHOi79u8A7ka1nFU9roqxUk+ovZMVDIeOLRawIKTzoXyMdYnR3riYKZWriv7LydeCWBV
-	EJwihcsW1WPv35GT15Ow==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=/ZbsTzsYPHv+jIMcBX9NR6E14ZBuYFfp0oumJW7VW+0=; b=ImYDIC4O6coyA9DsWCEJfMWOs
+	SNk1+oH9YK0WOSr1vYUFBjGKbHJJ+ymkL/lubTusP+TcyeTvIoaLT13mBIk0DrVBkxeL9MQk20v2d
+	I2CxpvfXQuTRHIqJ+B2Va6/s1RUl8M5mGrRLlToZkKERHMDLXQvMBVFSQO40c72iPGV9Bq4+0W3wW
+	9bp74RZBA6K9fQoDxr+IHAvDqORRR628ckqMz0glvGEnnIthPKD0r0lrlT4LyaaGHxyK+EiiS//Hm
+	Je29MwZZcEg9vViAoaApt0pYu1gsWmbNj/VLHAWDAQWFqgOgtphci2mq4wuurlQI92aGYaYuQlyl9
+	250tqE+ug==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYXfi-00061Q-3h; Tue, 12 May 2020 16:22:22 +0000
-Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
+	id 1jYYKM-0002Jt-Od; Tue, 12 May 2020 17:04:22 +0000
+Received: from mail27.static.mailgun.info ([104.130.122.27])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYXfd-0005vo-2r
- for linux-mediatek@lists.infradead.org; Tue, 12 May 2020 16:22:20 +0000
-Received: by mail-qk1-x742.google.com with SMTP id z80so8671921qka.0
- for <linux-mediatek@lists.infradead.org>; Tue, 12 May 2020 09:22:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=UEnxThmKo9eCKn9Sp5S//SCIqt2NuliFRLICXjN1F8w=;
- b=qpJ2/f9jFEw2XCnsQfklOx5O1EFTzceVHfXu1J5e7cHafuTXCDfUb5YnDchiAFVf3s
- jX+crR2gfyQv5H41/px3hC3d8mYCDhouCowZVS8ZR2Dj7msbcJs+/OAa7zYP3Z3P2tZO
- au5612/l0fzYXDXwkAO7TOJKK0LaFe81pNNxI1qiP5qaeHGELr1uXlTgF66qkpZQDsHP
- iFNxirnEGsp23l/WTFAlAkszfOh7yopgd1UpMaNaY9Owii6rSyCyYgYt1WgCqEkwmVxK
- 6478KCl4hBT/j869nxatLWU+X7EJihyrXYrU+t9IAOe+24XJuiL7iK5VxObMn0tyheZZ
- k8Iw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=UEnxThmKo9eCKn9Sp5S//SCIqt2NuliFRLICXjN1F8w=;
- b=kEBosqfr/SoH4sS4UB6FkCVS1Pzs0RCMLrRS6yTopexUJquwhd3Jhc40I93S2W2u0l
- G47C1hXMwYSClyA7ZgnRSI45UvXup23lY2C6otQiR/wSody6/83AbjkgyO/H+JTPP9IY
- A9Ft7AAFa0QnBvWg7O13GmRKjoAhqPrGgpdQ9/AvXSvyggK0H1gLWHqdzujk92tHsZCV
- XagLlxMzslEMFMIPOUx/kl+dNV6MmtyvHJD2QAqkceHFlC++Ck1NQ5XwQLHQVF8bmttR
- nMMh5DBCEFLL0FxiHhhJr1u37bwZMpnyIxyDOFCAApwwYvK+QExFx2mMJmMacB1wKhBr
- tJjg==
-X-Gm-Message-State: AGi0PuayJIbQMmqpRErGWiGwdwwi7xAKA9z/TiBnreHPsibaqdG2H/We
- 0nms19TO9UV2EMIob/I5p/LZT17dLLlV9i5SksTBHg==
-X-Google-Smtp-Source: APiQypKKckVKHehHC9iDuSvbV8NCQd5IuVhMLPefx6OQwHvGRV3/irI6drHoBEN1CdZ/5EKC+/bJI5vBQ8VqJXPyZZQ=
-X-Received: by 2002:a37:9d55:: with SMTP id g82mr18935803qke.407.1589300535553; 
- Tue, 12 May 2020 09:22:15 -0700 (PDT)
+ id 1jYYKH-0002J1-3P
+ for linux-mediatek@lists.infradead.org; Tue, 12 May 2020 17:04:21 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1589303059; h=Content-Transfer-Encoding: Content-Type:
+ In-Reply-To: MIME-Version: Date: Message-ID: From: References: Cc: To:
+ Subject: Sender; bh=MvIowFXMVRWW92MBumCeSgKBVatOORx4VcJ2L/BKTSQ=;
+ b=meVbenxmCeCJNWfYpYkRX9bnQtBmGD1/6rtrsZnarUV1XT3PiXqj6GHft3uTqKJadHYM8xOJ
+ eHhwK1FdEzjDIiv4jTTv+o6ev8kdc4qntZfxKlwnYdBAtuoNB/XBavAX4rkAsW7rWPzGXeYv
+ bPA5X5P42vOK0ochGWzxl0/+TWc=
+X-Mailgun-Sending-Ip: 104.130.122.27
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
+ by mxa.mailgun.org with ESMTP id 5ebad707.7f47cf429810-smtp-out-n01;
+ Tue, 12 May 2020 17:04:07 -0000 (UTC)
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 821E5C44788; Tue, 12 May 2020 17:04:06 +0000 (UTC)
+Received: from [192.168.8.150] (cpe-70-95-149-85.san.res.rr.com [70.95.149.85])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: asutoshd)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 83576C433CB;
+ Tue, 12 May 2020 17:04:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 83576C433CB
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=none smtp.mailfrom=asutoshd@codeaurora.org
+Subject: Re: [PATCH v1 4/4] scsi: ufs: Fix WriteBooster flush during runtime
+ suspend
+To: Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
+ jejb@linux.ibm.com
+References: <20200512104750.8711-1-stanley.chu@mediatek.com>
+ <20200512104750.8711-5-stanley.chu@mediatek.com>
+From: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
+Message-ID: <3740c6fa-77f1-53eb-ec8e-8f9d09f2646f@codeaurora.org>
+Date: Tue, 12 May 2020 10:04:03 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-References: <20200511023111.15310-1-walter-zh.wu@mediatek.com>
- <20200511180527.GZ2869@paulmck-ThinkPad-P72>
- <1589250993.19238.22.camel@mtksdccf07>
- <CACT4Y+b6ZfmZG3YYC_TkoeGaAQjSEKvF4dZ9vHzTx5iokD4zTQ@mail.gmail.com>
- <20200512142541.GD2869@paulmck-ThinkPad-P72>
- <CACT4Y+ZfzLhcG2Wy_iEMB=hJ5k=ib+X-m29jDG2Jcs7S-TPX=w@mail.gmail.com>
- <20200512161422.GG2869@paulmck-ThinkPad-P72>
-In-Reply-To: <20200512161422.GG2869@paulmck-ThinkPad-P72>
-From: Dmitry Vyukov <dvyukov@google.com>
-Date: Tue, 12 May 2020 18:22:04 +0200
-Message-ID: <CACT4Y+aWNDntO6+Rhn0a-4N1gLOTe5UzYB9m5TnkFxG_L15cXA@mail.gmail.com>
-Subject: Re: [PATCH v2 1/3] rcu/kasan: record and print call_rcu() call stack
-To: "Paul E. McKenney" <paulmck@kernel.org>
+In-Reply-To: <20200512104750.8711-5-stanley.chu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200512_092217_980951_4C94FFA2 
-X-CRM114-Status: GOOD (  23.65  )
+X-CRM114-CacheID: sfid-20200512_100420_020671_B0CF3BD3 
+X-CRM114-Status: GOOD (  27.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,97 +94,137 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Walter Wu <walter-zh.wu@mediatek.com>,
- wsd_upstream <wsd_upstream@mediatek.com>, Linux-MM <linux-mm@kvack.org>,
- Lai Jiangshan <jiangshanlai@gmail.com>, Josh Triplett <josh@joshtriplett.org>,
- kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>,
- Joel Fernandes <joel@joelfernandes.org>, linux-mediatek@lists.infradead.org,
- Alexander Potapenko <glider@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Andrey Ryabinin <aryabinin@virtuozzo.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: bvanassche@acm.org, andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
+ kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
+ beanhuo@micron.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 12, 2020 at 6:14 PM Paul E. McKenney <paulmck@kernel.org> wrote:
-> > > > > > > This feature will record first and last call_rcu() call stack and
-> > > > > > > print two call_rcu() call stack in KASAN report.
-> > > > > >
-> > > > > > Suppose that a given rcu_head structure is passed to call_rcu(), then
-> > > > > > the grace period elapses, the callback is invoked, and the enclosing
-> > > > > > data structure is freed.  But then that same region of memory is
-> > > > > > immediately reallocated as the same type of structure and again
-> > > > > > passed to call_rcu(), and that this cycle repeats several times.
-> > > > > >
-> > > > > > Would the first call stack forever be associated with the first
-> > > > > > call_rcu() in this series?  If so, wouldn't the last two usually
-> > > > > > be the most useful?  Or am I unclear on the use case?
-> > > >
-> > > > 2 points here:
-> > > >
-> > > > 1. With KASAN the object won't be immediately reallocated. KASAN has
-> > > > 'quarantine' to delay reuse of heap objects. It is assumed that the
-> > > > object is still in quarantine when we detect a use-after-free. In such
-> > > > a case we will have proper call_rcu stacks as well.
-> > > > It is possible that the object is not in quarantine already and was
-> > > > reused several times (quarantine is not infinite), but then KASAN will
-> > > > report non-sense stacks for allocation/free as well. So wrong call_rcu
-> > > > stacks are less of a problem in such cases.
-> > > >
-> > > > 2. We would like to memorize 2 last call_rcu stacks regardless, but we
-> > > > just don't have a good place for the index (bit which of the 2 is the
-> > > > one to overwrite). Probably could shove it into some existing field,
-> > > > but then will require atomic operations, etc.
-> > > >
-> > > > Nobody knows how well/bad it will work. I think we need to get the
-> > > > first version in, deploy on syzbot, accumulate some base of example
-> > > > reports and iterate from there.
-> > >
-> > > If I understood the stack-index point below, why not just move the
-> > > previous stackm index to clobber the previous-to-previous stack index,
-> > > then put the current stack index into the spot thus opened up?
-> >
-> > We don't have any index in this change (don't have memory for such index).
-> > The pseudo code is"
-> >
-> > u32 aux_stacks[2]; // = {0,0}
-> >
-> > if (aux_stacks[0] != 0)
-> >     aux_stacks[0] = stack;
-> > else
-> >    aux_stacks[1] = stack;
->
-> I was thinking in terms of something like this:
->
-> u32 aux_stacks[2]; // = {0,0}
->
-> if (aux_stacks[0] != 0) {
->     aux_stacks[0] = stack;
-> } else {
->    if (aux_stacks[1])
->         aux_stacks[0] = aux_stacks[1];
->    aux_stacks[1] = stack;
-> }
->
-> Whether this actually makes sense in real life, I have no idea.
-> The theory is that you want the last two stacks.  However, if these
-> elements get cleared at kfree() time, then I could easily believe that
-> the approach you already have (first and last) is the way to go.
->
-> Just asking the question, not arguing for a change!
+Hi Stanley,
 
-Oh, this is so obvious... in hindsight! :)
+On 5/12/2020 3:47 AM, Stanley Chu wrote:
+> Currently UFS host driver promises VCC supply if UFS device
+> needs to do WriteBooster flush during runtime suspend.
+> 
+> However the UFS specification mentions,
+> 
+> "While the flushing operation is in progress, the device is
+> in Active power mode."
+> 
+> Therefore UFS host driver needs to promise more: Keep UFS
+> device as "Active power mode", otherwise UFS device shall not
+> do any flush if device enters Sleep or PowerDown power mode.
+> 
+> Fix this by not changing device power mode if WriteBooster
+> flush is required in ufshcd_suspend().
+> 
+> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
+> ---
+>   drivers/scsi/ufs/ufs.h    |  1 -
+>   drivers/scsi/ufs/ufshcd.c | 39 +++++++++++++++++++--------------------
+>   2 files changed, 19 insertions(+), 21 deletions(-)
+> 
+> diff --git a/drivers/scsi/ufs/ufs.h b/drivers/scsi/ufs/ufs.h
+> index b3135344ab3f..9e4bc2e97ada 100644
+> --- a/drivers/scsi/ufs/ufs.h
+> +++ b/drivers/scsi/ufs/ufs.h
+> @@ -577,7 +577,6 @@ struct ufs_dev_info {
+>   	u32 d_ext_ufs_feature_sup;
+>   	u8 b_wb_buffer_type;
+>   	u32 d_wb_alloc_units;
+> -	bool keep_vcc_on;
+>   	u8 b_presrv_uspc_en;
+>   };
+>   
+> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+> index 169a3379e468..2d0aff8ac260 100644
+> --- a/drivers/scsi/ufs/ufshcd.c
+> +++ b/drivers/scsi/ufs/ufshcd.c
+> @@ -8101,8 +8101,7 @@ static void ufshcd_vreg_set_lpm(struct ufs_hba *hba)
+>   	    !hba->dev_info.is_lu_power_on_wp) {
+>   		ufshcd_setup_vreg(hba, false);
+>   	} else if (!ufshcd_is_ufs_dev_active(hba)) {
+> -		if (!hba->dev_info.keep_vcc_on)
+> -			ufshcd_toggle_vreg(hba->dev, hba->vreg_info.vcc, false);
+> +		ufshcd_toggle_vreg(hba->dev, hba->vreg_info.vcc, false);
+>   		if (!ufshcd_is_link_active(hba)) {
+>   			ufshcd_config_vreg_lpm(hba, hba->vreg_info.vccq);
+>   			ufshcd_config_vreg_lpm(hba, hba->vreg_info.vccq2);
+> @@ -8172,6 +8171,7 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>   	enum ufs_pm_level pm_lvl;
+>   	enum ufs_dev_pwr_mode req_dev_pwr_mode;
+>   	enum uic_link_state req_link_state;
+> +	bool keep_curr_dev_pwr_mode = false;
+>   
+>   	hba->pm_op_in_progress = 1;
+>   	if (!ufshcd_is_shutdown_pm(pm_op)) {
+> @@ -8226,28 +8226,27 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>   			/* make sure that auto bkops is disabled */
+>   			ufshcd_disable_auto_bkops(hba);
+>   		}
+> +
+>   		/*
+> -		 * With wb enabled, if the bkops is enabled or if the
+> -		 * configured WB type is 70% full, keep vcc ON
+> -		 * for the device to flush the wb buffer
+> +		 * If device needs to do BKOP or WB buffer flush, keep device
+> +		 * power mode as "active power mode" and its VCC supply.
+>   		 */
+> -		if ((hba->auto_bkops_enabled && ufshcd_is_wb_allowed(hba)) ||
+> -		    ufshcd_wb_keep_vcc_on(hba))
+> -			hba->dev_info.keep_vcc_on = true;
+> -		else
+> -			hba->dev_info.keep_vcc_on = false;
+> -	} else {
+> -		hba->dev_info.keep_vcc_on = false;
+> +		keep_curr_dev_pwr_mode = hba->auto_bkops_enabled ||
+> +			ufshcd_wb_keep_vcc_on(hba);
+>   	}
+>   
+> -	if ((req_dev_pwr_mode != hba->curr_dev_pwr_mode) &&
+> -	    ((ufshcd_is_runtime_pm(pm_op) && !hba->auto_bkops_enabled) ||
+> -	    !ufshcd_is_runtime_pm(pm_op))) {
+> -		/* ensure that bkops is disabled */
+> -		ufshcd_disable_auto_bkops(hba);
+> -		ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
+> -		if (ret)
+> -			goto enable_gating;
+> +	if (req_dev_pwr_mode != hba->curr_dev_pwr_mode) {
+> +		if ((ufshcd_is_runtime_pm(pm_op) && !hba->auto_bkops_enabled) ||
+> +		    !ufshcd_is_runtime_pm(pm_op)) {
+> +			/* ensure that bkops is disabled */
+> +			ufshcd_disable_auto_bkops(hba);
+> +		}
+> +
+> +		if (!keep_curr_dev_pwr_mode) {
+> +			ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
+> +			if (ret)
+> +				goto enable_gating;
+> +		}
+>   	}
+>   
+>   	flush_work(&hba->eeh_work);
+> 
 
-Walter, what do you think?
+Can you please confirm that you've tested and found that with the 
+previous code, the flush operation in the device was not happening.
 
-I would do this. I think latter stacks are generally more interesting
-wrt shedding light on a bug. The first stack may even be "statically
-known" (e.g. if object is always queued into a workqueue for some lazy
-initialization during construction).
+If so, please can you let me know the test-case that you ran to figure 
+this out.
+
+I'd like to verify this at my end.
+
+--
+Thanks,
+-asd
+
+-- 
+The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
+Linux Foundation Collaborative Project
 
 _______________________________________________
 Linux-mediatek mailing list
