@@ -2,80 +2,102 @@ Return-Path: <SRS0=Mjju=62=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4C7FDC47255
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2020 02:52:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 935BDC54E4B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2020 03:31:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0FB752070B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2020 02:52:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 597E1206B9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2020 03:31:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OZMusspL";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="oRZcxIK6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0FB752070B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CDklALUQ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="G4jxhVjR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 597E1206B9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ifNPYNeJcjFW2SARLdL9XhyARYP6/p6jW44j2QxYpfA=; b=OZMusspLq56mlQ
-	1iCkJSn2t8gEpwMo1PNe4X/l/286JjhdV3x0GwWFXj7D9fbNGdvC1EfnuNfJgkxGTRv22oiK518pR
-	V67K8kmDVy4+LejQClywLrgQYblZkogMgiPwhzdHzI+2G2Axa3vbo5w5ojDPU6/axfgNq2nJ9Hkr1
-	wjEXE5nmmdXNap7dQlxNFpiCiBqrvf/f8cKWkKSpATWK41xQFNh93bcfF0au16dhzUDYSiIcSefta
-	EaaaXs0W+MNT3LFpP4maBGJ8ZZCmxP9k1Zm3tuP/2hVfZ7PNQQtHfnnlgs5UR1zkx18PaOaFZuzmh
-	d29qOoDz1nCbrdP+uKKg==;
+	List-Owner; bh=PCldER5V/aH4i+74iEwSys90cx+zeuWtJ4nBAviI6r4=; b=CDklALUQR4OFCu
+	PNrdBk5KdBTxs6DxpreIz8R0Nksyn+rfsMQVEEZToetSFI/cSW06Q9lblndHk063fGDvUnKzXMDLk
+	wz8FX6nMWkFm+Ds4SSnX0LTufjHy8WGILatHWyLE6Mn/NSSUiN8p88jL0zkfcPGvI95KHx0TaJVUv
+	1F7aeJwpY12/TtYA1n/PWOLLTHT9U0zzlP3ZLFeyOvAZdGhcU9H3utpshw2akfjHHvzLsr3J4So3Y
+	inFiCHvrV5t75RTlXzdqrZJ0kO+A1T80lV3Xw7tYati1yBBO4XVY1JZudy/sUugZHkf0Q/X/xmRQU
+	3vB6a8xS/wBU+0XaOFqg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYL1K-0008VQ-Bt; Tue, 12 May 2020 02:51:50 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1jYLdL-0007wC-Sg; Tue, 12 May 2020 03:31:07 +0000
+Received: from userp2120.oracle.com ([156.151.31.85])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYL1H-0008Uo-B3; Tue, 12 May 2020 02:51:49 +0000
-X-UUID: 256701ed69bb4effb39eb5a3b7aef428-20200511
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=XtwYNnPHZrvWCATHRZT86/j1KPh/6I7n/iBA6k2oB6Y=; 
- b=oRZcxIK6zlu4QmPMYmobH8IcWI1VkInaDpGXkeRjNpqGPVqNKiGnA14k2r79lAX9E90MPmDC1+W1Pl4u8UUn7dZFxZVap+HSeylZCEalVyaevXAugJw6Gt1BXvWqVVj8ymYMt1Du/JtwETFyII6+qqSZhRZMHUn4ieEwBQxY4i8=;
-X-UUID: 256701ed69bb4effb39eb5a3b7aef428-20200511
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <dongchun.zhu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 1762051565; Mon, 11 May 2020 18:51:41 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 May 2020 19:41:39 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 12 May 2020 10:41:36 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 12 May 2020 10:41:32 +0800
-Message-ID: <1589251221.8804.289.camel@mhfsdcap03>
-Subject: Re: [V8, 1/2] media: dt-bindings: media: i2c: Document OV02A10
- bindings
-From: Dongchun Zhu <dongchun.zhu@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-Date: Tue, 12 May 2020 10:40:21 +0800
-In-Reply-To: <20200511160207.GA32476@bogus>
-References: <20200509080627.23222-1-dongchun.zhu@mediatek.com>
- <20200509080627.23222-2-dongchun.zhu@mediatek.com>
- <20200511160207.GA32476@bogus>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1jYLdI-0007vg-Sa; Tue, 12 May 2020 03:31:06 +0000
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04C3N2vI072886;
+ Tue, 12 May 2020 03:30:51 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding; s=corp-2020-01-29;
+ bh=MUBSiWVQtghSeYGKdUfODIsM/8mICmZoZz5eTdHLjdY=;
+ b=G4jxhVjRE8F3SYvnsq5Z66JVXSD2YZ80qMzCvufL/wZ/IrGa06NcMCZ4RIRh0WBJGF/F
+ ihPe3rHKgljBGso8c1SHumqPoQ+glcm9vjUh608fisY7FK5+dHq+XSMuNjfa4XnEYFoN
+ pYvFzuJAQbavg/xPCqqAg6S/miQfiWGwGZQaPXJdjSdsFys5hEkxHB/uyT/bB9+xTqvV
+ tM6kAXQ1MyZGDYjvNT1Krp9rrvaK5HkEhDJZ+LScv16Xs4+wG0zYZbvHCdrk26JMjQcf
+ 6gMXL0LBq9dX4317rUhkZKdblbGGDylQVy6Br6J6G21//4mBMVGfCKZXLq2zHh6cFN1w Ug== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by userp2120.oracle.com with ESMTP id 30x3mbrgj8-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 12 May 2020 03:30:51 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 04C3MU8Q016039;
+ Tue, 12 May 2020 03:28:50 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+ by aserp3020.oracle.com with ESMTP id 30xbggtm6r-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 12 May 2020 03:28:50 +0000
+Received: from abhmp0015.oracle.com (abhmp0015.oracle.com [141.146.116.21])
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 04C3Skk4004003;
+ Tue, 12 May 2020 03:28:47 GMT
+Received: from ca-mkp.ca.oracle.com (/10.156.108.201)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 11 May 2020 20:28:46 -0700
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: linux-scsi@vger.kernel.org, Stanley Chu <stanley.chu@mediatek.com>,
+ jejb@linux.ibm.com, alim.akhtar@samsung.com, asutoshd@codeaurora.org,
+ avri.altman@wdc.com
+Subject: Re: [PATCH v8 0/8] scsi: ufs: support LU Dedicated buffer mode for
+ WriteBooster
+Date: Mon, 11 May 2020 23:28:32 -0400
+Message-Id: <158925392374.17325.4875533206353375605.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200508080115.24233-1-stanley.chu@mediatek.com>
+References: <20200508080115.24233-1-stanley.chu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 072CEAB2F5552A6274C169AB204A0F3C0C897A171D7C16C09698E43AFCEFF0562000:8
-X-MTK: N
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9618
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ mlxlogscore=889
+ spamscore=0 suspectscore=0 phishscore=0 bulkscore=0 mlxscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2005120029
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9618
+ signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ priorityscore=1501 impostorscore=0
+ mlxscore=0 suspectscore=0 bulkscore=0 mlxlogscore=918 phishscore=0
+ malwarescore=0 lowpriorityscore=0 spamscore=0 adultscore=0 clxscore=1011
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2005120029
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200511_195147_390831_61397E06 
-X-CRM114-Status: GOOD (  25.35  )
+X-CRM114-CacheID: sfid-20200511_203105_008071_4F513D4E 
+X-CRM114-Status: GOOD (  12.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,300 +109,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org,
- andriy.shevchenko@linux.intel.com, louis.kuo@mediatek.com,
- srv_heupstream@mediatek.com, linus.walleij@linaro.org,
- shengnan.wang@mediatek.com, tfiga@chromium.org, bgolaszewski@baylibre.com,
- sj.huang@mediatek.com, drinkcat@chromium.org,
- linux-mediatek@lists.infradead.org, sakari.ailus@linux.intel.com,
- matthias.bgg@gmail.com, bingbu.cao@intel.com, mchehab@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Cc: bvanassche@acm.org, "Martin K . Petersen" <martin.petersen@oracle.com>,
+ andy.teng@mediatek.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, cang@codeaurora.org,
+ linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
+ beanhuo@micron.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+On Fri, 8 May 2020 16:01:07 +0800, Stanley Chu wrote:
 
-Thanks for the review.
+> This patchset adds LU dedicated buffer mode support for WriteBooster.
+> In the meanwhile, enable WriteBooster capability on MediaTek UFS platforms.
+> 
+> v7 -> v8:
+>   - In exported funtion ufshcd_fixup_dev_quirks(), add null checking for parameter "fixups" (Avri Altman)
+> 
+> v6 -> v7:
+>   - Add device descriptor length check in ufshcd_wb_probe() back to prevent out-of-boundary access in ufshcd_wb_probe()
+>   - Fix the check of device descriptor length (Avri Altman)
+>   - Provide a new ufs_fixup_device_setup() function to pack both device fixup methods by general quirk table and vendor-specific way (Avri Altman)
+> 
+> [...]
 
-On Mon, 2020-05-11 at 11:02 -0500, Rob Herring wrote:
-> On Sat, May 09, 2020 at 04:06:26PM +0800, Dongchun Zhu wrote:
-> > Add DT bindings documentation for Omnivision OV02A10 image sensor.
-> > 
-> > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > ---
-> >  .../bindings/media/i2c/ovti,ov02a10.yaml           | 184 +++++++++++++++++++++
-> >  MAINTAINERS                                        |   7 +
-> >  2 files changed, 191 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > new file mode 100644
-> > index 0000000..5468d1b
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > @@ -0,0 +1,184 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +# Copyright (c) 2020 MediaTek Inc.
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/media/i2c/ovti,ov02a10.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Omnivision OV02A10 CMOS Sensor Device Tree Bindings
-> > +
-> > +maintainers:
-> > +  - Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > +
-> > +description: |-
-> > +  The Omnivision OV02A10 is a low-cost, high performance, 1/5-inch, 2 megapixel
-> > +  image sensor, which is the latest production derived from Omnivision's CMOS
-> > +  image sensor technology. Ihis chip supports high frame rate speeds up to 30fps
-> > +  @ 1600x1200 (UXGA) resolution transferred over a 1-lane MIPI interface. The
-> > +  sensor output is available via CSI-2 serial data output.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: ovti,ov02a10
-> > +
-> > +  reg:
-> > +    description: I2C device address
-> 
-> Drop this. Nothing specific to this device.
-> 
+Applied to 5.8/scsi-queue, thanks!
 
-Okay. I would release this description in next release.
+[1/8] scsi: ufs: Enable WriteBooster on some pre-3.1 UFS devices
+      https://git.kernel.org/mkp/scsi/c/817d7e140283
+[2/8] scsi: ufs: Introduce fixup_dev_quirks vops
+      https://git.kernel.org/mkp/scsi/c/c28c00ba4f06
+[3/8] scsi: ufs: Export ufs_fixup_device_setup() function
+      https://git.kernel.org/mkp/scsi/c/8db269a5102e
+[4/8] scsi: ufs-mediatek: Add fixup_dev_quirks vops
+      https://git.kernel.org/mkp/scsi/c/62c2f503b54c
+[5/8] scsi: ufs: Add "index" in parameter list of ufshcd_query_flag()
+      https://git.kernel.org/mkp/scsi/c/1f34eedf9bc1
+[6/8] scsi: ufs: Add LU Dedicated buffer mode support for WriteBooster
+      https://git.kernel.org/mkp/scsi/c/6f8d5a6a78cf
+[7/8] scsi: ufs-mediatek: Enable WriteBooster capability
+      https://git.kernel.org/mkp/scsi/c/29060a629135
+[8/8] scsi: ufs: Cleanup WriteBooster feature
+      https://git.kernel.org/mkp/scsi/c/79e3520f82cb
 
-> > +    maxItems: 1
-> > +
-> > +  clocks:
-> > +    items:
-> > +      - description: top mux camtg clock
-> > +      - description: devider clock
-> 
-> typo
-> 
-
-Sorry for the mistake.
-devider would be replaced of divider in next release.
-
-> > +
-> > +  clock-names:
-> > +    items:
-> > +      - const: eclk
-> > +      - const: freq_mux
-> > +
-> > +  clock-frequency:
-> > +    description:
-> > +      Frequency of the eclk clock in Hertz.
-> > +
-> > +  dovdd-supply:
-> > +    description:
-> > +      Definition of the regulator used as interface power supply.
-> > +
-> > +  avdd-supply:
-> > +    description:
-> > +      Definition of the regulator used as analog power supply.
-> > +
-> > +  dvdd-supply:
-> > +    description:
-> > +      Definition of the regulator used as digital power supply.
-> > +
-> > +  powerdown-gpios:
-> > +    maxItems: 1
-> > +
-> > +  reset-gpios:
-> > +    maxItems: 1
-> > +
-> > +  rotation:
-> > +    description:
-> > +      Definition of the sensor's placement, valid values are 0 and 180.
-> > +    allOf:
-> > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> > +      - enum:
-> > +          - 0    # Sensor Mounted Upright (default)
-> > +          - 180  # Sensor Mounted Upside Down
-> > +
-> > +  ovti,mipi-tx-speed:
-> > +    description:
-> > +      Indication of MIPI transmission speed select, which is to control D-PHY
-> > +      timing setting by adjusting MIPI clock voltage to improve the clock
-> > +      driver capability.
-> > +    allOf:
-> > +      - $ref: "/schemas/types.yaml#/definitions/uint32"
-> > +      - enum:
-> > +          - 0    #  20MHz -  30MHz
-> > +          - 1    #  30MHz -  50MHz
-> > +          - 2    #  50MHz -  75MHz
-> > +          - 3    #  75MHz - 100MHz
-> > +          - 4    # 100MHz - 130MHz (suggested)
-> > +          - 5    # Manual
-> > +
-> > +  # See ../video-interfaces.txt for details
-> > +  port:
-> > +    type: object
-> > +    additionalProperties: false
-> > +    description:
-> > +      A node containing an output port node with an endpoint definition
-> > +      as documented in
-> > +      Documentation/devicetree/bindings/media/video-interfaces.txt
-> 
-> No need for repeating a generic description of a common property.
-> 
-
-Got it.
-Description of common property "port" would be removed in next release.
-
-> > +
-> > +    properties:
-> > +      endpoint:
-> > +        type: object
-> > +
-> > +        properties:
-> > +          data-lanes:
-> > +            description: |-
-> > +              The driver only supports 1-lane operation.
-> 
-> What the driver supports is not relevant.
-> 
-
-Got it.
-Remove description in next release by using like this:
-data-lanes:
-  maxItems: 1
-
-> > +            items:
-> > +              - const: 1
-> > +              - const: 2
-> > +              - const: 3
-> > +              - const: 4
-> > +
-> > +          clock-noncontinuous:
-> > +            type: boolean
-> > +            description: |-
-> > +              MIPI CSI-2 clock is non-continuous if this property is present,
-> > +              otherwise it's continuous.
-> 
-> Assume this has a common definition, so just need:
-> 
-> clock-noncontinuous: true
-> 
-
-Fixed in next release.
-
-> > +
-> > +          link-frequencies:
-> > +            allOf:
-> > +              - $ref: /schemas/types.yaml#/definitions/uint64-array
-> > +            description:
-> > +              Allowed data bus frequencies. 39000000 Hz is supported by
-> > +              the driver.
-> 
-> This too is a common property.
-> 
-> Though 39000000 looks like a constraint. However, what the driver 
-> supports is not relevant.
-> 
-
-Fixed in next release by using:
-link-frequencies: true
-
-> > +
-> > +        required:
-> > +          - link-frequencies
-> > +
-> > +    required:
-> > +      - endpoint
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - clocks
-> > +  - clock-names
-> > +  - clock-frequency
-> > +  - dovdd-supply
-> > +  - avdd-supply
-> > +  - dvdd-supply
-> > +  - powerdown-gpios
-> > +  - reset-gpios
-> > +  - port
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +
-> > +    #include <dt-bindings/clock/mt8183-clk.h>
-> > +    #include <dt-bindings/gpio/gpio.h>
-> > +
-> > +    i2c {
-> > +        clock-frequency = <400000>;
-> > +        #address-cells = <1>;
-> > +        #size-cells = <0>;
-> > +
-> > +        ov02a10: camera-sensor@3d {
-> > +            compatible = "ovti,ov02a10";
-> > +            reg = <0x3d>;
-> > +            pinctrl-names = "default";
-> > +            pinctrl-0 = <&clk_24m_cam>;
-> > +
-> > +            clocks = <&topckgen CLK_TOP_MUX_CAMTG>,
-> > +                     <&topckgen CLK_TOP_UNIVP_192M_D8>;
-> > +            clock-names = "eclk", "freq_mux";
-> > +            clock-frequency = <24000000>;
-> > +
-> > +            rotation = <180>;
-> > +            ovti,mipi-tx-speed = <3>;
-> > +
-> > +            dovdd-supply = <&mt6358_vcamio_reg>;
-> > +            avdd-supply = <&mt6358_vcama1_reg>;
-> > +            dvdd-supply = <&mt6358_vcn18_reg>;
-> > +
-> > +            powerdown-gpios = <&pio 107 GPIO_ACTIVE_LOW>;
-> > +            reset-gpios = <&pio 109 GPIO_ACTIVE_HIGH>;
-> > +
-> > +            port {
-> > +                wcam_out: endpoint {
-> > +                    remote-endpoint = <&mipi_in_wcam>;
-> > +                    data-lanes = <1>;
-> 
-> This doesn't match the schema which says this should be 4 entries.
-> 
-
-Property "data-lanes" shows the number of lanes that sensor supports.
-If this property is omitted, four-lane operation is assumed.
-For OV02A10, it is one-lane operation, so the property is supposed to be
-set to <1>.
-
-> > +                    clock-noncontinuous;
-> > +                    link-frequencies = /bits/ 64 <390000000>;
-> > +                };
-> > +            };
-> > +        };
-> > +    };
-> > +
-> > +...
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index e64e5db..63a2335 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -12389,6 +12389,13 @@ M:	Harald Welte <laforge@gnumonks.org>
-> >  S:	Maintained
-> >  F:	drivers/char/pcmcia/cm4040_cs.*
-> >  
-> > +OMNIVISION OV02A10 SENSOR DRIVER
-> > +M:	Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > +L:	linux-media@vger.kernel.org
-> > +S:	Maintained
-> > +T:	git git://linuxtv.org/media_tree.git
-> > +F:	Documentation/devicetree/bindings/media/i2c/ovti,ov02a10.yaml
-> > +
-> >  OMNIVISION OV13858 SENSOR DRIVER
-> >  M:	Sakari Ailus <sakari.ailus@linux.intel.com>
-> >  L:	linux-media@vger.kernel.org
-> > -- 
-> > 2.9.2
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
 _______________________________________________
 Linux-mediatek mailing list
