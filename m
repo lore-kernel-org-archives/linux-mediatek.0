@@ -2,78 +2,129 @@ Return-Path: <SRS0=Mjju=62=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 459C0C54E4A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2020 08:59:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D756C54E4A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2020 09:06:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0C87020714
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2020 08:59:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 15D2020575
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2020 09:06:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MLieJmOp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0C87020714
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hmxdksZs";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="Y2btqlMv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 15D2020575
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=neJE2ZlLpqQP40ETkqp7V+1X/KOEJ+NTsvqYxV3nLJ4=; b=MLieJmOpgJw2up
-	aiGgSuE+tHvpSnlss8TCDkj/bk4/CJrnZUgsDwTjdrGOn4aLrZkr6EAATJOGr1PaFrxyko3gTtOBb
-	dx+4tm8khjFlKVAYu1jOayX29QT6i2lQmkMoXsm5EsdWM3d1PXtGs74l7eVrGVSBDXxb2UfL+8kLI
-	Ai9yA683I1yIXCTN1cPV6OBTTBRKBluYQVEqX50j1/qS4lO4Cc5yLNFkq6ZXfZv5IUmz+TeXhOY3D
-	POgrnlBUatuFyE4GpeaypS0uMNbDRp4DWiDbx+uoAQlwNV9kZbfM2+gfd5cXARM/9TVHaNJV5msIb
-	6r0KoXsx/lWSr7MUm9Tw==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=la/LQcZUaiIYtLcEX4IIqX8CA7Rp2fa6umxPxuQ9Tts=; b=hmxdksZsyR9jYXlyONx1cV6HjU
+	UZBGrnKDsAH/EBfQUdlDD7ZLzPN9R0QYuYOaMC46EkRqCyPt2x8bi1gwJZULulyIbNy6whHj0nbG4
+	5jL1Lc1JlPAcyCpgklD7V7rEzeT/chDJ9dSpfgGsXqpFndXwEUALeL5B/dXOdJsVi6e6Zjs019YD1
+	jUfD60FGgC/PdK9Q8h26tyoPpIz1yjQh36iAiCL4b4djbhvzQp5o0MhmJsPy1J5IsaL4SBI55CevX
+	Cq7Eihoq0lmjHjJYdRTJJv64tiJmfdnGop4nBzayQP26hw7xSvHYB0Q8XpzdA/DZDPkNEXUAkWdjt
+	dVFL7k4Q==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYQkc-0007GU-FZ; Tue, 12 May 2020 08:58:58 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1jYQs1-0007qh-DO; Tue, 12 May 2020 09:06:37 +0000
+Received: from mailout1.w1.samsung.com ([210.118.77.11])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYQkI-000755-Nk; Tue, 12 May 2020 08:58:40 +0000
-IronPort-SDR: LQ4sHSm8FKFYIrjdoZVfJaZxnLO49Edq8N3MBAjb3A+LMswU4OoNvxeVb3DfX1PUaFc+96jLGc
- vXv9JCEXDk5w==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 May 2020 01:58:38 -0700
-IronPort-SDR: mbALTggVDa0a39QMG47umt49d2JUpyQD+6z3TyGCkjFdzl22VLsup2cGbdp5ICq/recQnaKmNS
- JN5exQ5tdubw==
-X-IronPort-AV: E=Sophos;i="5.73,383,1583222400"; d="scan'208";a="286578828"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 May 2020 01:58:34 -0700
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id 44834205FC; Tue, 12 May 2020 11:58:32 +0300 (EEST)
-Date: Tue, 12 May 2020 11:58:32 +0300
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Dongchun Zhu <dongchun.zhu@mediatek.com>
-Subject: Re: [V5, 2/2] media: i2c: dw9768: Add DW9768 VCM driver
-Message-ID: <20200512085832.GI11272@paasikivi.fi.intel.com>
-References: <20200502161727.30463-3-dongchun.zhu@mediatek.com>
- <20200506151352.GZ9190@paasikivi.fi.intel.com>
- <1588855524.8804.168.camel@mhfsdcap03>
- <20200507131220.GC9190@paasikivi.fi.intel.com>
- <CAAFQd5DO9FGx9OF2RpcSprg0oLiVuS90w2qLAHCOSc3w6tKUWw@mail.gmail.com>
- <1588907288.8804.188.camel@mhfsdcap03>
- <20200508211319.GJ9190@paasikivi.fi.intel.com>
- <1588991026.8804.235.camel@mhfsdcap03>
- <CAAFQd5DZBEUJUq65WT7i_QjAtgxjhxmfdsjQoyG2UZy8zBih+A@mail.gmail.com>
- <1589254403.8804.306.camel@mhfsdcap03>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1589254403.8804.306.camel@mhfsdcap03>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+ id 1jYQmt-0002DY-6N
+ for linux-mediatek@lists.infradead.org; Tue, 12 May 2020 09:01:24 +0000
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+ by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id
+ 20200512090116euoutp018f3dca565031bd9fa336a3c2954feb6e~OPFoQxO2g2545625456euoutp01-
+ for <linux-mediatek@lists.infradead.org>; Tue, 12 May 2020 09:01:16 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com
+ 20200512090116euoutp018f3dca565031bd9fa336a3c2954feb6e~OPFoQxO2g2545625456euoutp01-
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1589274076;
+ bh=tZ2wXW4noUBlPoorQ0MFGiULFC/VpBEDue4E592LuQY=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=Y2btqlMv5PDgBe1orEmZG4+yhHHbTOv9OtWx6Zj4Cam6Ty7xqKIb4dk3tPm6cFs8B
+ UTHbkm6P+ezQtR/9RR51YVlU0jHwZ71wEdEzSV4hNA9lbsAbD5v4l1/FkJi79IJCQE
+ uJuVQDLElG6ighkN4SfcpGNeZBzmzsvRVUD4aFfs=
+Received: from eusmges3new.samsung.com (unknown [203.254.199.245]) by
+ eucas1p2.samsung.com (KnoxPortal) with ESMTP id
+ 20200512090115eucas1p2ad34cb9a159d957144d163c6dad1627f~OPFoDm9AG2563025630eucas1p2v;
+ Tue, 12 May 2020 09:01:15 +0000 (GMT)
+Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
+ eusmges3new.samsung.com (EUCPMTA) with SMTP id 1A.6B.60698.BD56ABE5; Tue, 12
+ May 2020 10:01:15 +0100 (BST)
+Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
+ eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
+ 20200512090115eucas1p25e71b29fa935e53e4c04f9b3789a09fc~OPFnyxIz-2091220912eucas1p2x;
+ Tue, 12 May 2020 09:01:15 +0000 (GMT)
+Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
+ eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
+ 20200512090115eusmtrp19bf0e4ed1b9272d4e4901565e5c778cf~OPFnsn47k0183401834eusmtrp1g;
+ Tue, 12 May 2020 09:01:15 +0000 (GMT)
+X-AuditID: cbfec7f5-a29ff7000001ed1a-1c-5eba65dbcf05
+Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
+ eusmgms2.samsung.com (EUCPMTA) with SMTP id D5.F2.07950.BD56ABE5; Tue, 12
+ May 2020 10:01:15 +0100 (BST)
+Received: from AMDC2765.digital.local (unknown [106.120.51.73]) by
+ eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
+ 20200512090114eusmtip177f89ade3cd54facdf63e61cc13a1d3a~OPFnCxWt-1352813528eusmtip1H;
+ Tue, 12 May 2020 09:01:14 +0000 (GMT)
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+To: dri-devel@lists.freedesktop.org, iommu@lists.linux-foundation.org,
+ linaro-mm-sig@lists.linaro.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v4 14/38] drm: mediatek: use common helper for a scatterlist
+ contiguity check
+Date: Tue, 12 May 2020 11:00:34 +0200
+Message-Id: <20200512090058.14910-14-m.szyprowski@samsung.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200512090058.14910-1-m.szyprowski@samsung.com>
+X-Brightmail-Tracker: H4sIAAAAAAAAA0WSa0hTYRjHec9tR9lZpyn4siRjUWCRd+yAFyoKDvTF+hAYpE09mOWmbM40
+ 0Gxe0uWsFDVW1FChmrdcMnNdNCmniFY61LKZYoiN1GRe8FpbR+vb7/k//+f5P7y8JCruwSVk
+ iiKDUypkqVLCEzN3r344MsZZ4oJGjEGMbqAXYVruNeNMjU6HMb/Nd1HGtjRPME/r3yOMoSOC
+ WbRNIoxpahhnhiwPCGYo/xNgGt/ZBYymIJSxj/dgzNtf3/Fju9iGhw2Afb1swNh2vV3Amowl
+ BNu2PIGz325ZEfZ53XV2bGsKZStGHwP25ec8gr29GcSWtRoB6zTtjaHOe0YmcakpmZwyMPqi
+ 56VXdQt4etWuLEeHFckD40It8CAhHQZLNqYILfAkxfQTAO0lfQK+WASwdrUf5wsngN0rc9jO
+ SLnj6XbjMYBPqvuRfyOmeQfqdhF0MNTOagk3e9OFAPbohG4TSr9CYY1l7e8qLzoeDtQU4m7G
+ 6APQ2daLuJmio6Ghwrkd5wfrn3X+Xerh0r892tjWvwhgpf4yzyehvbQK5dkLOqytAp59YV9F
+ KeYOhnQ+gJMDjQK+KAVwSHMP8K4I+HVgzXUq6TrPHzZbAnn5OKx/tCVwy5AWwdHZ3W4ZdWG5
+ uRrlZQoWF4l590Gotzb9i337cXDbwsL79nD+fd4DOKz5TdwBfvr/WQYAjMCHU6vkyZwqVMFd
+ DVDJ5Cq1IjkgMU1uAq7/1bdlXXoB3mwkdAGaBFIhVRzSHifGZZmqbHkXgCQq9aYKUlwSlSTL
+ vsYp0+KV6lRO1QX2kJjUhwqt+XFBTCfLMrgrHJfOKXe6COkhyQODh0WMR8uwqHLF17oQdHpv
+ 1npEwqlim7e3o3Zf1FLwdG0nVracuF60dqLlJ2VD2tqbc9Dqs/tmjqotZE7XtIRgY70mbbFR
+ Ew9nRFFnNLlDwtCDzjSH2ny3N1ihvTnSE1YkiZEH3pivCJmcWwg45zv8QLIpbIrM9N9fmTs9
+ GC7FVJdkwYdQpUr2B708My5bAwAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrFIsWRmVeSWpSXmKPExsVy+t/xu7q3U3fFGfzsEbPoPXeSyWLjjPWs
+ Fot6e1ks/m+byGxx5et7NouVq48yWSzYb23x5cpDJotNj6+xWlzeNYfN4nLzRUaLtUfusls0
+ tRhb3L13gsXi4IcnrA78HmvmrWH02PttAYvHzll32T02repk89j+7QGrx/3u40wem5fUe9z+
+ 95jZY/KN5Yweu282sHn0/zXw6NuyitHj8ya5AN4oPZui/NKSVIWM/OISW6VoQwsjPUNLCz0j
+ E0s9Q2PzWCsjUyV9O5uU1JzMstQifbsEvYw9Sz6yFkzjr3i1/zhTA+M9ni5GTg4JAROJSa9W
+ soLYQgJLGSXunXaFiMtInJzWwAphC0v8udbF1sXIBVTziVFi7ffbYAk2AUOJrrcQCRGBTkaJ
+ ad0f2UEcZoFjzBIbH79nBqkSFoiVWPZgEpjNIqAq8Xn7SSYQm1fATmLB5M8sECvkJVZvOABW
+ wwkUvz//DwvESYUSj66+ZZnAyLeAkWEVo0hqaXFuem6xkV5xYm5xaV66XnJ+7iZGYDxtO/Zz
+ yw7GrnfBhxgFOBiVeHg7jHbGCbEmlhVX5h5ilOBgVhLhbckECvGmJFZWpRblxxeV5qQWH2I0
+ BTpqIrOUaHI+MNbzSuINTQ3NLSwNzY3Njc0slMR5OwQOxggJpCeWpGanphakFsH0MXFwSjUw
+ Hl+zoUu9xamrfmvzeSOlR/F7xWIOBCk36MeEB+/eeuPyn//OqaIzDPJYzI672nyzOPlwdpPe
+ MunLl/yafC9scj64b7P/oYxJbklRt88e2txXIHzUJrqO7UJRlP7dnZKJxUd0p79m1dsafPqt
+ 2hVOvc8Z1x5GTjpSfjtqu+dcA5Z7P6/67tb+o8RSnJFoqMVcVJwIAB3xKbi9AgAA
+X-CMS-MailID: 20200512090115eucas1p25e71b29fa935e53e4c04f9b3789a09fc
+X-Msg-Generator: CA
+X-RootMTR: 20200512090115eucas1p25e71b29fa935e53e4c04f9b3789a09fc
+X-EPHeader: CA
+CMS-TYPE: 201P
+X-CMS-RootMailID: 20200512090115eucas1p25e71b29fa935e53e4c04f9b3789a09fc
+References: <20200512085710.14688-1-m.szyprowski@samsung.com>
+ <20200512090058.14910-1-m.szyprowski@samsung.com>
+ <CGME20200512090115eucas1p25e71b29fa935e53e4c04f9b3789a09fc@eucas1p2.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200512_015838_787482_9CF05304 
-X-CRM114-Status: GOOD (  35.91  )
+X-CRM114-CacheID: sfid-20200512_020119_539933_01FF868D 
+X-CRM114-Status: GOOD (  13.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,155 +136,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- Nicolas Boichat <drinkcat@chromium.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- srv_heupstream <srv_heupstream@mediatek.com>,
- linux-devicetree <devicetree@vger.kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Shengnan Wang =?utf-8?B?KOeOi+Wco+eUtyk=?= <shengnan.wang@mediatek.com>,
- Tomasz Figa <tfiga@chromium.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sj Huang <sj.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Louis Kuo <louis.kuo@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Cao Bing Bu <bingbu.cao@intel.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- "list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
- Joerg  Roedel <joro@8bytes.org>, " <linux-arm-kernel@lists.infradead.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Robin Murphy <robin.murphy@arm.com>, Christoph Hellwig <hch@lst.de>,
+ linux-arm-kernel@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dongchun,
+Use common helper for checking the contiguity of the imported dma-buf and
+do this check before allocating resources, so the error path is simpler.
 
-On Tue, May 12, 2020 at 11:33:23AM +0800, Dongchun Zhu wrote:
-> Hi Tomasz,
-> 
-> On Mon, 2020-05-11 at 20:20 +0200, Tomasz Figa wrote:
-> > Hi Dongchun,
-> > 
-> > On Sat, May 9, 2020 at 4:25 AM Dongchun Zhu <dongchun.zhu@mediatek.com> wrote:
-> > >
-> > > Hi Sakari,
-> > >
-> > > On Sat, 2020-05-09 at 00:13 +0300, Sakari Ailus wrote:
-> > > > Hi Dongchun,
-> > > >
-> > > > On Fri, May 08, 2020 at 11:08:08AM +0800, Dongchun Zhu wrote:
-> > > > > Hi Sakari, Tomasz,
-> > > > >
-> > > > > Thanks for the review.
-> > > > >
-> > > > > On Thu, 2020-05-07 at 15:46 +0200, Tomasz Figa wrote:
-> > > > > > Hi Sakari, Dongchun,
-> > > > > >
-> > > > > > On Thu, May 7, 2020 at 3:12 PM Sakari Ailus
-> > > > > > <sakari.ailus@linux.intel.com> wrote:
-> > > > > > >
-> > > > > > > HI Dongchun,
-> > > > > > >
-> > > > > > > On Thu, May 07, 2020 at 08:45:24PM +0800, Dongchun Zhu wrote:
-> > > > > > > > Hi Sakari,
-> > > > > > > >
-> > > > > > > > Thanks for the review.
-> > > > > > > >
-> > > > > > > > On Wed, 2020-05-06 at 18:13 +0300, Sakari Ailus wrote:
-> > > > > > > > > Hi Dongchun,
-> > > > > > > > >
-> > > > > > > > > On Sun, May 03, 2020 at 12:17:27AM +0800, Dongchun Zhu wrote:
-> > > > > > > > > > Add a V4L2 sub-device driver for DW9768 voice coil motor, providing
-> > > > > > > > > > control to set the desired focus via IIC serial interface.
-> > > > > > > > > >
-> > > > > > > > > > Signed-off-by: Dongchun Zhu <dongchun.zhu@mediatek.com>
-> > > > > > > > > > ---
-> > > > > > > > > >  MAINTAINERS                |   1 +
-> > > > > > > > > >  drivers/media/i2c/Kconfig  |  11 ++
-> > > > > > > > > >  drivers/media/i2c/Makefile |   1 +
-> > > > > > > > > >  drivers/media/i2c/dw9768.c | 440 +++++++++++++++++++++++++++++++++++++++++++++
-> > > > > > > > > >  4 files changed, 453 insertions(+)
-> > > > > > > > > >  create mode 100644 drivers/media/i2c/dw9768.c
-> > > > > > > > > >
-> > > > > > > > > > diff --git a/MAINTAINERS b/MAINTAINERS
-> > > > > > > > > > index 8d72c41..c92dc99 100644
-> > > > > > > > > > --- a/MAINTAINERS
-> > > > > > > > > > +++ b/MAINTAINERS
-> > > > > > > > > > @@ -5157,6 +5157,7 @@ L:  linux-media@vger.kernel.org
-> > > > > > > > > >  S:       Maintained
-> > > > > > > > > >  T:       git git://linuxtv.org/media_tree.git
-> > > > > > > > > >  F:       Documentation/devicetree/bindings/media/i2c/dongwoon,dw9768.yaml
-> > > > > > > > > > +F:       drivers/media/i2c/dw9768.c
-> > > > > > > > > >
-> > > > > > > > > >  DONGWOON DW9807 LENS VOICE COIL DRIVER
-> > > > > > > > > >  M:       Sakari Ailus <sakari.ailus@linux.intel.com>
-> > > > > > > > > > diff --git a/drivers/media/i2c/Kconfig b/drivers/media/i2c/Kconfig
-> > > > > > > > > > index 125d596..6a3f9da 100644
-> > > > > > > > > > --- a/drivers/media/i2c/Kconfig
-> > > > > > > > > > +++ b/drivers/media/i2c/Kconfig
-> > > > > > > > > > @@ -1040,6 +1040,17 @@ config VIDEO_DW9714
-> > > > > > > > > >     capability. This is designed for linear control of
-> > > > > > > > > >     voice coil motors, controlled via I2C serial interface.
-> > > > > > > > > >
-> > > > > > > > > > +config VIDEO_DW9768
-> > > > > > > > > > + tristate "DW9768 lens voice coil support"
-> > > > > > > > > > + depends on I2C && VIDEO_V4L2 && MEDIA_CONTROLLER
-> > > > > > > > > > + depends on VIDEO_V4L2_SUBDEV_API
-> > > > > > > > >
-> > > > > > > > > Please check how this works in the media tree master branch now --- it's
-> > > > > > > > > largely select based.
-> > > > > > > > >
-> > > > > > > >
-> > > > > > > > The actuator driver uses some structures that require the
-> > > > > > > > VIDEO_V4L2_SUBDEV_API code, so here we add VIDEO_V4L2_SUBDEV_API
-> > > > > > > > dependency to avoid possible build error when it's not enabled.
-> > > > > > >
-> > > > > > > Please make sure this works with current media tree master. Right now it
-> > > > > > > does not.
-> > > > > > >
-> > > > > >
-> > > > > > Dongchun, as Sakari said, please make sure to base the patches on the
-> > > > > > master branch of the media tree.
-> > > > > > (https://git.linuxtv.org/media_tree.git/). The approach for Kconfig
-> > > > > > dependency selection there seems to have changed recently.
-> > > > > >
-> > > > >
-> > > > > I searched the patches on the media tree master branch.
-> > > > > It seems that we need to remove the VIDEO_V4L2_SUBDEV_API dependency in
-> > > > > Kconfig, and add #ifdef CONFIG_VIDEO_V4L2_SUBDEV_API to include
-> > > > > v4l2-subdev code.
-> > > > > The change mainly is to make build pass, and don't return ENOTTY if
-> > > > > SUBDEV_API is not set.
-> > > > > Am I right?
-> > > >
-> > > > Please see Kconfig entries for other similar drivers from Dongwoon.
-> > > >
-> > >
-> > > Sorry for the mistake :-)
-> > > Just found the current media tree master branch code...
-> > > I would update Kconfig entries in next release by referring to:
-> > > https://git.linuxtv.org/media_tree.git/tree/drivers/media/i2c/Kconfig
-> > 
-> > Sorry for last minute comments again. We had a short discussion
-> > offline with Sakari and we think there are some changes needed to this
-> > driver, namely:
-> > 
-> > 1) The hardware being driven in our case is a gt9769, which could be
-> > compatible with dw9768, but it's still a different implementation and
-> > could have slightly different characteristics. Thus we think the
-> > driver name and compatible strings should be renamed from
-> > dongwoon,dw9768 to giantec,gt9769. In the future, if there is a device
+Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+---
+For more information, see '[PATCH v4 00/38] DRM: fix struct sg_table nents
+vs. orig_nents misuse' thread:
+https://lore.kernel.org/dri-devel/20200512085710.14688-1-m.szyprowski@samsung.com/T/
+---
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c | 25 ++++++-------------------
+ 1 file changed, 6 insertions(+), 19 deletions(-)
 
-Sorry, I actually meant just the compatible string --- Dongwoon is likely
-the original manufacturer. Therefore I'd name the driver according to that,
-and just add a second compatible string for the Giantec device.
-
-Either works for me though.
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index b04a3c2..6c34c06 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -212,34 +212,21 @@ struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_device *dev,
+ 			struct dma_buf_attachment *attach, struct sg_table *sg)
+ {
+ 	struct mtk_drm_gem_obj *mtk_gem;
+-	int ret;
+-	struct scatterlist *s;
+-	unsigned int i;
+-	dma_addr_t expected;
+ 
+-	mtk_gem = mtk_drm_gem_init(dev, attach->dmabuf->size);
++	/* check if the entries in the sg_table are contiguous */
++	if (drm_prime_get_contiguous_size(sg) < attach->dmabuf->size) {
++		DRM_ERROR("sg_table is not contiguous");
++		return ERR_PTR(-EINVAL);
++	}
+ 
++	mtk_gem = mtk_drm_gem_init(dev, attach->dmabuf->size);
+ 	if (IS_ERR(mtk_gem))
+ 		return ERR_CAST(mtk_gem);
+ 
+-	expected = sg_dma_address(sg->sgl);
+-	for_each_sg(sg->sgl, s, sg->nents, i) {
+-		if (sg_dma_address(s) != expected) {
+-			DRM_ERROR("sg_table is not contiguous");
+-			ret = -EINVAL;
+-			goto err_gem_free;
+-		}
+-		expected = sg_dma_address(s) + sg_dma_len(s);
+-	}
+-
+ 	mtk_gem->dma_addr = sg_dma_address(sg->sgl);
+ 	mtk_gem->sg = sg;
+ 
+ 	return &mtk_gem->base;
+-
+-err_gem_free:
+-	kfree(mtk_gem);
+-	return ERR_PTR(ret);
+ }
+ 
+ void *mtk_drm_gem_prime_vmap(struct drm_gem_object *obj)
 -- 
-Regards,
+1.9.1
 
-Sakari Ailus
 
 _______________________________________________
 Linux-mediatek mailing list
