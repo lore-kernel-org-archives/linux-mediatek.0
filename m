@@ -2,22 +2,22 @@ Return-Path: <SRS0=Mjju=62=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7052CCA90AF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2020 17:04:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E2212CA90AF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2020 18:11:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 431B0206D3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2020 17:04:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B054520714
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 May 2020 18:11:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ImYDIC4O";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="meVbenxm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 431B0206D3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lte9h7zH";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="tzPwkY/X"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B054520714
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,63 +26,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/ZbsTzsYPHv+jIMcBX9NR6E14ZBuYFfp0oumJW7VW+0=; b=ImYDIC4O6coyA9DsWCEJfMWOs
-	SNk1+oH9YK0WOSr1vYUFBjGKbHJJ+ymkL/lubTusP+TcyeTvIoaLT13mBIk0DrVBkxeL9MQk20v2d
-	I2CxpvfXQuTRHIqJ+B2Va6/s1RUl8M5mGrRLlToZkKERHMDLXQvMBVFSQO40c72iPGV9Bq4+0W3wW
-	9bp74RZBA6K9fQoDxr+IHAvDqORRR628ckqMz0glvGEnnIthPKD0r0lrlT4LyaaGHxyK+EiiS//Hm
-	Je29MwZZcEg9vViAoaApt0pYu1gsWmbNj/VLHAWDAQWFqgOgtphci2mq4wuurlQI92aGYaYuQlyl9
-	250tqE+ug==;
+	 bh=jaNv6/7uGxNK3l8Eo6Nd4XKEbyC0DBDSoApVNdc23LQ=; b=lte9h7zHZROEjdUrqkTfRFq54
+	D9RwPnHIV+dSM4XbLvVzQc38t2zIqPxADYNtujl6Iq/zlPaTsLPiynRjMvMr/lnCueQdKnFm9VqJT
+	Y0QF5SbRukpI7jGNrlWwrEMDASflgLYHo3MPtsGM7yh2kykDZSt+Zj9PVILzpYXAXkD/IBWKrC2Du
+	wK6rg8KV8rX2wIr+HtzikU/Kr1nZRlj0TYlYhuBxOurVY3rbhGj3eo0fYL7su2xpaI9QVi/KQBxwc
+	Q47UEm5zHRlgOxWmA58nzOATB3Hp66q2/q3S4LFsVpkensigPM9tIyA73CvhemtSdsR70AuaXgP3a
+	afBUpm93g==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYYKM-0002Jt-Od; Tue, 12 May 2020 17:04:22 +0000
+	id 1jYZN1-00081p-RJ; Tue, 12 May 2020 18:11:11 +0000
 Received: from mail27.static.mailgun.info ([104.130.122.27])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYYKH-0002J1-3P
- for linux-mediatek@lists.infradead.org; Tue, 12 May 2020 17:04:21 +0000
+ id 1jYZMr-0007up-IS
+ for linux-mediatek@lists.infradead.org; Tue, 12 May 2020 18:11:04 +0000
 DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
  q=dns/txt; 
- s=smtp; t=1589303059; h=Content-Transfer-Encoding: Content-Type:
+ s=smtp; t=1589307060; h=Content-Transfer-Encoding: Content-Type:
  In-Reply-To: MIME-Version: Date: Message-ID: From: References: Cc: To:
- Subject: Sender; bh=MvIowFXMVRWW92MBumCeSgKBVatOORx4VcJ2L/BKTSQ=;
- b=meVbenxmCeCJNWfYpYkRX9bnQtBmGD1/6rtrsZnarUV1XT3PiXqj6GHft3uTqKJadHYM8xOJ
- eHhwK1FdEzjDIiv4jTTv+o6ev8kdc4qntZfxKlwnYdBAtuoNB/XBavAX4rkAsW7rWPzGXeYv
- bPA5X5P42vOK0ochGWzxl0/+TWc=
+ Subject: Sender; bh=OO3R9jYg4r1wAHoA8hhGY1+VCtV/dK//JXy3OK5Qw9E=;
+ b=tzPwkY/XPLzqyg7YJGLwFv46i0MD3+1lZgFVTbJQZhJ5OfgS0ts52puYTqVDkM2G5Dx2E/WP
+ WtyhJZ7ceRcLwOYU1ZSl944SUtxA0rNoNwJOA8lZejsWiw7brx0YERkpf54qvlK2aVcPNdVQ
+ Jbf7jdCTPBVK1dz+pxAIg33cbME=
 X-Mailgun-Sending-Ip: 104.130.122.27
 X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
 Received: from smtp.codeaurora.org
  (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
- by mxa.mailgun.org with ESMTP id 5ebad707.7f47cf429810-smtp-out-n01;
- Tue, 12 May 2020 17:04:07 -0000 (UTC)
+ by mxa.mailgun.org with ESMTP id 5ebae6b3.7f2f9c63a4c8-smtp-out-n02;
+ Tue, 12 May 2020 18:10:59 -0000 (UTC)
 Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 821E5C44788; Tue, 12 May 2020 17:04:06 +0000 (UTC)
+ id 4119CC433BA; Tue, 12 May 2020 18:10:58 +0000 (UTC)
 Received: from [192.168.8.150] (cpe-70-95-149-85.san.res.rr.com [70.95.149.85])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: asutoshd)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 83576C433CB;
- Tue, 12 May 2020 17:04:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 83576C433CB
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 1684BC433F2;
+ Tue, 12 May 2020 18:10:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 1684BC433F2
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
  spf=none smtp.mailfrom=asutoshd@codeaurora.org
-Subject: Re: [PATCH v1 4/4] scsi: ufs: Fix WriteBooster flush during runtime
- suspend
-To: Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-References: <20200512104750.8711-1-stanley.chu@mediatek.com>
- <20200512104750.8711-5-stanley.chu@mediatek.com>
+Subject: Re: [PATCH v2 4/4] scsi: ufs-mediatek: customize WriteBooster flush
+ policy
+To: "Martin K. Petersen" <martin.petersen@oracle.com>
+References: <20200509093716.21010-1-stanley.chu@mediatek.com>
+ <20200509093716.21010-5-stanley.chu@mediatek.com>
+ <635f91f6-3a27-ffdd-4021-67705d4063fc@codeaurora.org>
+ <yq1v9l115us.fsf@oracle.com>
 From: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
-Message-ID: <3740c6fa-77f1-53eb-ec8e-8f9d09f2646f@codeaurora.org>
-Date: Tue, 12 May 2020 10:04:03 -0700
+Message-ID: <7d5f53eb-f642-3c8b-edf6-d4693ecb49a4@codeaurora.org>
+Date: Tue, 12 May 2020 11:10:56 -0700
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <20200512104750.8711-5-stanley.chu@mediatek.com>
+In-Reply-To: <yq1v9l115us.fsf@oracle.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200512_100420_020671_B0CF3BD3 
-X-CRM114-Status: GOOD (  27.55  )
+X-CRM114-CacheID: sfid-20200512_111101_673176_9E206B5B 
+X-CRM114-Status: GOOD (  13.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,133 +94,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: bvanassche@acm.org, andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
+Cc: bvanassche@acm.org, linux-scsi@vger.kernel.org, andy.teng@mediatek.com,
+ jejb@linux.ibm.com, chun-hung.wu@mediatek.com, kuohong.wang@mediatek.com,
+ linux-kernel@vger.kernel.org, avri.altman@wdc.com, cang@codeaurora.org,
  linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
+ alim.akhtar@samsung.com, matthias.bgg@gmail.com,
+ Stanley Chu <stanley.chu@mediatek.com>, linux-arm-kernel@lists.infradead.org,
  beanhuo@micron.com
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Stanley,
-
-On 5/12/2020 3:47 AM, Stanley Chu wrote:
-> Currently UFS host driver promises VCC supply if UFS device
-> needs to do WriteBooster flush during runtime suspend.
+On 5/12/2020 9:21 AM, Martin K. Petersen wrote:
 > 
-> However the UFS specification mentions,
+> Hi Asutosh!
 > 
-> "While the flushing operation is in progress, the device is
-> in Active power mode."
+>> Patchset looks good to me.
+>>
+>> Reviewed-by: Asutosh Das <asutoshd@codeaurora.org>
 > 
-> Therefore UFS host driver needs to promise more: Keep UFS
-> device as "Active power mode", otherwise UFS device shall not
-> do any flush if device enters Sleep or PowerDown power mode.
-> 
-> Fix this by not changing device power mode if WriteBooster
-> flush is required in ufshcd_suspend().
-> 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> ---
->   drivers/scsi/ufs/ufs.h    |  1 -
->   drivers/scsi/ufs/ufshcd.c | 39 +++++++++++++++++++--------------------
->   2 files changed, 19 insertions(+), 21 deletions(-)
-> 
-> diff --git a/drivers/scsi/ufs/ufs.h b/drivers/scsi/ufs/ufs.h
-> index b3135344ab3f..9e4bc2e97ada 100644
-> --- a/drivers/scsi/ufs/ufs.h
-> +++ b/drivers/scsi/ufs/ufs.h
-> @@ -577,7 +577,6 @@ struct ufs_dev_info {
->   	u32 d_ext_ufs_feature_sup;
->   	u8 b_wb_buffer_type;
->   	u32 d_wb_alloc_units;
-> -	bool keep_vcc_on;
->   	u8 b_presrv_uspc_en;
->   };
->   
-> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> index 169a3379e468..2d0aff8ac260 100644
-> --- a/drivers/scsi/ufs/ufshcd.c
-> +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -8101,8 +8101,7 @@ static void ufshcd_vreg_set_lpm(struct ufs_hba *hba)
->   	    !hba->dev_info.is_lu_power_on_wp) {
->   		ufshcd_setup_vreg(hba, false);
->   	} else if (!ufshcd_is_ufs_dev_active(hba)) {
-> -		if (!hba->dev_info.keep_vcc_on)
-> -			ufshcd_toggle_vreg(hba->dev, hba->vreg_info.vcc, false);
-> +		ufshcd_toggle_vreg(hba->dev, hba->vreg_info.vcc, false);
->   		if (!ufshcd_is_link_active(hba)) {
->   			ufshcd_config_vreg_lpm(hba, hba->vreg_info.vccq);
->   			ufshcd_config_vreg_lpm(hba, hba->vreg_info.vccq2);
-> @@ -8172,6 +8171,7 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->   	enum ufs_pm_level pm_lvl;
->   	enum ufs_dev_pwr_mode req_dev_pwr_mode;
->   	enum uic_link_state req_link_state;
-> +	bool keep_curr_dev_pwr_mode = false;
->   
->   	hba->pm_op_in_progress = 1;
->   	if (!ufshcd_is_shutdown_pm(pm_op)) {
-> @@ -8226,28 +8226,27 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->   			/* make sure that auto bkops is disabled */
->   			ufshcd_disable_auto_bkops(hba);
->   		}
-> +
->   		/*
-> -		 * With wb enabled, if the bkops is enabled or if the
-> -		 * configured WB type is 70% full, keep vcc ON
-> -		 * for the device to flush the wb buffer
-> +		 * If device needs to do BKOP or WB buffer flush, keep device
-> +		 * power mode as "active power mode" and its VCC supply.
->   		 */
-> -		if ((hba->auto_bkops_enabled && ufshcd_is_wb_allowed(hba)) ||
-> -		    ufshcd_wb_keep_vcc_on(hba))
-> -			hba->dev_info.keep_vcc_on = true;
-> -		else
-> -			hba->dev_info.keep_vcc_on = false;
-> -	} else {
-> -		hba->dev_info.keep_vcc_on = false;
-> +		keep_curr_dev_pwr_mode = hba->auto_bkops_enabled ||
-> +			ufshcd_wb_keep_vcc_on(hba);
->   	}
->   
-> -	if ((req_dev_pwr_mode != hba->curr_dev_pwr_mode) &&
-> -	    ((ufshcd_is_runtime_pm(pm_op) && !hba->auto_bkops_enabled) ||
-> -	    !ufshcd_is_runtime_pm(pm_op))) {
-> -		/* ensure that bkops is disabled */
-> -		ufshcd_disable_auto_bkops(hba);
-> -		ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
-> -		if (ret)
-> -			goto enable_gating;
-> +	if (req_dev_pwr_mode != hba->curr_dev_pwr_mode) {
-> +		if ((ufshcd_is_runtime_pm(pm_op) && !hba->auto_bkops_enabled) ||
-> +		    !ufshcd_is_runtime_pm(pm_op)) {
-> +			/* ensure that bkops is disabled */
-> +			ufshcd_disable_auto_bkops(hba);
-> +		}
-> +
-> +		if (!keep_curr_dev_pwr_mode) {
-> +			ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
-> +			if (ret)
-> +				goto enable_gating;
-> +		}
->   	}
->   
->   	flush_work(&hba->eeh_work);
+> When you want to approve an entire series, please respond to the cover
+> letter email. Otherwise the kernel.org tooling will only record the tag
+> for the individual patch you are responding to. In this case only patch
+> 4 got tagged as reviewed in patchwork.
 > 
 
-Can you please confirm that you've tested and found that with the 
-previous code, the flush operation in the device was not happening.
+Hi Martin
+Sure - I'll keep this in mind.
 
-If so, please can you let me know the test-case that you ran to figure 
-this out.
-
-I'd like to verify this at my end.
-
---
 Thanks,
--asd
+Asutosh
 
 -- 
 The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
