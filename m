@@ -2,129 +2,86 @@ Return-Path: <SRS0=mrrP=63=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+X-Spam-Status: No, score=-9.5 required=3.0 tests=DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CEA6EC2D0FA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2020 13:38:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 227F8C433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2020 15:11:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AA889223C7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2020 13:38:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1A4CA205ED
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2020 15:10:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hsSr1WMj";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="oEHGq0mf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AA889223C7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bQLGM9bd";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="I4cIJIiq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1A4CA205ED
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
-	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=5pB14jvDu9jHHnIpL0tt2sOXAzhJj7fr2IqhhmjZIpM=; b=hsSr1WMjN7KL5kYLQqWzu5ocxP
-	lLJDdXntR14MADOxmd89bSC4NEHsPxFWo8U00HCZXOmPQG6V1RE1fyMS7xZhu6+Vxjyh+t8CUzqnm
-	7sBaYdj1sMs0QJOUUZ4XVqZsA1iDkyEBuHOl8LfWojfQ49Zzw1IZF/Zux+8mxBTaURYFonvhZ+ZwL
-	MXjnGIh0hEM1iN99t9bBDL13kYyR3xoe0N7Pz5YNEvPBX/YAvo1MKP7nYcJEd99eWqk1yKWn2Yn43
-	WbpL5fwWD80dNiIV9Nz0hXBM+XxFzDvyANauoLcrxJ8tA0laxzIdPUzUgknNwvcg+syZpPa5HCggq
-	quuFZxRg==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=u3nlPq2sal/ufVHM4oSHSZwL6iX0qAd+/EIiNDzNjDQ=; b=bQLGM9bdYV4ayS
+	ldspQkO7O0Mp+CfC37EIH2+41aRy+W1KDUx5AsIbxhZL4azeC4PGh9A31A/MQ6UXc7uyYGjfhLJ7b
+	K7aG+yLTivBYePCL+Niwo20U+YGjz2PvXt9LAfIK0Mau7ovDNjSTqDk+vc9EgA9mXQQRt904Dcy99
+	EoJQScPAVirSi/mXj9iSZAZtzbWPWFoVhCyRTOs5IHuZSlgbE3tSv4mVpxr4dJs9m8fEtIL6W7CDN
+	j9No4bDHna6cr+dDUYK98SBK6u0N1iC1dupQ54aoyrDfCjSoSTKclbW35rlUgthEn+Xk7UsjjTEzT
+	1cQ43w/9rHspFiNEezBg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYrao-000098-JU; Wed, 13 May 2020 13:38:38 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	id 1jYt1j-0001K4-SE; Wed, 13 May 2020 15:10:31 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYrVV-0001Td-Lo
- for linux-mediatek@lists.infradead.org; Wed, 13 May 2020 13:33:18 +0000
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
- by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id
- 20200513133308euoutp02cca9a750f1c958d7e6e2eb86caab03f8~OmcSPrnvA3110131101euoutp02g
- for <linux-mediatek@lists.infradead.org>; Wed, 13 May 2020 13:33:08 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com
- 20200513133308euoutp02cca9a750f1c958d7e6e2eb86caab03f8~OmcSPrnvA3110131101euoutp02g
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1589376788;
- bh=8EZIcd9uOIKS70E4LE4yaht4Uu6+JPLIomKkdRO0ILA=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=oEHGq0mft05gVvJchVPaM8BpWiQ25cl5ozj/VQfNJTtU2jACbTTUiVxzfjZB2CtC1
- kntdEbyxWLX/VhGfftgHmYUNyoloykEU2Oaejj6MW7oosdHug1Lp+JuzoRa2HFKVoK
- jn4uFTCkxSaTtjKpv05y2kadV1a5QHdy7Kma5BAY=
-Received: from eusmges1new.samsung.com (unknown [203.254.199.242]) by
- eucas1p1.samsung.com (KnoxPortal) with ESMTP id
- 20200513133307eucas1p104b4da5b5f18f98423f9c0a468132794~OmcR5XWO02350723507eucas1p12;
- Wed, 13 May 2020 13:33:07 +0000 (GMT)
-Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
- eusmges1new.samsung.com (EUCPMTA) with SMTP id D8.C5.61286.317FBBE5; Wed, 13
- May 2020 14:33:07 +0100 (BST)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
- eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
- 20200513133307eucas1p1da70ed30775467792f4898ccce829d02~OmcRiFtgT0876608766eucas1p12;
- Wed, 13 May 2020 13:33:07 +0000 (GMT)
-Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
- eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
- 20200513133307eusmtrp19f5dcafe20553ece9c41755c6d7ad7f9~OmcRhUAn11049110491eusmtrp1N;
- Wed, 13 May 2020 13:33:07 +0000 (GMT)
-X-AuditID: cbfec7f2-f0bff7000001ef66-4b-5ebbf71310ff
-Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
- eusmgms1.samsung.com (EUCPMTA) with SMTP id B3.1A.08375.317FBBE5; Wed, 13
- May 2020 14:33:07 +0100 (BST)
-Received: from AMDC2765.digital.local (unknown [106.120.51.73]) by
- eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20200513133306eusmtip108436382068676e558ded1ef25b74614~OmcQwsTUP0698906989eusmtip1q;
- Wed, 13 May 2020 13:33:06 +0000 (GMT)
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-To: dri-devel@lists.freedesktop.org, iommu@lists.linux-foundation.org,
- linaro-mm-sig@lists.linaro.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v5 15/38] drm: mediatek: use common helper for extracting
- pages array
-Date: Wed, 13 May 2020 15:32:22 +0200
-Message-Id: <20200513133245.6408-15-m.szyprowski@samsung.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200513133245.6408-1-m.szyprowski@samsung.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA0VSe0hTcRTut3u33ZnL2zT8YZExKkzKB1ZeMCUj6oYQ/tEQsrSlFxV1yuYj
- g8j3Y2mlUopkLh/5TlPT2sxX6czJSKf52iw1wwQtdJoJaV7vsv++853vO9/hcDBEoGbbYCGS
- KEoqEYcJOWZoc89v7QnLXyo/p97BQ0SW9gOLeJlfxyaKs7JQYrM5GyGGVn5wiMrqbhahaHcj
- jENTLKJh5hOb0CmfcAhd0gAgat8buERisgthmOxFic6fX9lnLciapzWAfLuqQMk3BQYu2VCV
- wSFbVr+wyc/31CyysfQuObExg5C5o+WAVI3Fc8gHf5zI+01VgFxuOOjNv2p2JpAKC4mhpI4e
- N8yCp4YG0cjC3beSx5eReKDiyQGGQfwkXDP6yYEZJsArAOzo3uAyhRHAkZ48wBTLAFYrVSw5
- 4G07Vtqec2kswMsB7C/x2HFU9BWx6QYHd4byBTmHxlZ4CoC9Wea0CMFbEVisXEfpbEvcB6YN
- naY1KH4EtmzGbw/l4+5QMVOOMGG2sLq+Yxvztvh5fTtKz4H4JBfOligAIzoP5xNWTQZLOK9u
- 4jL4ANTkZpoMSQBOaWu5TJEJoC4x3+R2g3rtOofeCMGPwTqlI0N7QuPkAMocaQ8cXdhL08gW
- zGnOQxiaD9NTBYz6KCxQv9iJ7fw4aFqHhJq0RdNJ3wE4Nm5kPwS2Bf/DFABUAWsqWhYeRMmc
- JVSsg0wcLouWBDkERIQ3gK330myol16DlcGbXQDHgNCcT4yr/ARscYwsLrwLQAwRWvEv121R
- /EBx3G1KGuEvjQ6jZF1gP4YKrfkuxd+vC/AgcRQVSlGRlPRfl4XxbOJBkcela4r0pSBK7xDw
- LHSuZrSvzEk0XNhVPy2dy/AO9G19xddMtBxGgpdih/sfiewsmy6KEtwbd5WeEz+24+lmw+x1
- x129dsUUbhRFF1Tvs3DVrGX7jvnd0U/HLGpXDZU5IeTcQuA3r0q5p6gt1T/d/YohRXtKohy5
- UMZL1vsIhagsWOxsj0hl4r+hIHpGWgMAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrNIsWRmVeSWpSXmKPExsVy+t/xu7rC33fHGZzt5rToPXeSyWLjjPWs
- Fot6e1ks/m+byGxx5et7NouVq48yWSzYb23x5cpDJotNj6+xWlzeNYfN4nLzRUaLtUfusls0
- tRhb3L13gsXi4IcnrA78HmvmrWH02PttAYvHzll32T02repk89j+7QGrx/3u40wem5fUe9z+
- 95jZY/KN5Yweu282sHn0/zXw6NuyitHj8ya5AN4oPZui/NKSVIWM/OISW6VoQwsjPUNLCz0j
- E0s9Q2PzWCsjUyV9O5uU1JzMstQifbsEvYyHVy6xFMzlrmi59Zm5gXE3ZxcjJ4eEgInE133L
- 2LsYuTiEBJYyShzf8Z4RIiEjcXJaAyuELSzx51oXG0TRJ0aJgzMPsIMk2AQMJbreQiREBDoZ
- JaZ1fwQbxSxwjFli4+P3zCBVwgKhEo/O/wDrYBFQldj+vwHM5hWwlVjweDkzxAp5idUbDoDZ
- nEDxV3f2s4DYQgL5EnsX72ObwMi3gJFhFaNIamlxbnpusaFecWJucWleul5yfu4mRmBEbTv2
- c/MOxksbgw8xCnAwKvHwWtzaHSfEmlhWXJl7iFGCg1lJhNdvPVCINyWxsiq1KD++qDQntfgQ
- oynQUROZpUST84HRnlcSb2hqaG5haWhubG5sZqEkztshcDBGSCA9sSQ1OzW1ILUIpo+Jg1Oq
- gdFqk46vx6KDCntX1y14c0vXapqt5aGeGd4d6j7OLtaPprDy71NYKSFauWXq5FW/VjO5zY5Q
- mvRu57/M/Ue4jxzY2pcSwfTVIUBGWo6l8elWZdYzE7ZezuiZzrclZRbrrYlp/y/YzPjXvrjW
- 8+an4Ac8P4omtleu9N3+mY1VoTZDr26B3e/dvoeUWIozEg21mIuKEwGWZXHbvgIAAA==
-X-CMS-MailID: 20200513133307eucas1p1da70ed30775467792f4898ccce829d02
-X-Msg-Generator: CA
-X-RootMTR: 20200513133307eucas1p1da70ed30775467792f4898ccce829d02
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20200513133307eucas1p1da70ed30775467792f4898ccce829d02
-References: <20200513132114.6046-1-m.szyprowski@samsung.com>
- <20200513133245.6408-1-m.szyprowski@samsung.com>
- <CGME20200513133307eucas1p1da70ed30775467792f4898ccce829d02@eucas1p1.samsung.com>
+ id 1jYt1e-0001Dd-QV
+ for linux-mediatek@lists.infradead.org; Wed, 13 May 2020 15:10:28 +0000
+Received: by mail-pg1-x542.google.com with SMTP id u5so5299359pgn.5
+ for <linux-mediatek@lists.infradead.org>; Wed, 13 May 2020 08:10:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=/7y6hmshkKKSxjyTdVHPwU97L1AeKQYF3Z/95TQkF6E=;
+ b=I4cIJIiqP11iNmQOWCGXBg1RMnKnIA0aR9YIDFQ0IprLyoBboMt1zn8/Y3Q26eCk6L
+ nMbetA5UQ5Yf8eAbhubx9oQcqnMYzT5vDndVkfb/PXCh+0CiBwKTIUvTTOctEe2AdgZs
+ mzMkLySNhCRMROBTpab9Gwum1nwrqbY21KohvMuHQLb0H1tQqTeK0HtHiF5Leu9/xFaI
+ VG31UdZqq7RSmj9SL9ac3zFTdLNL9mcQKYbTDcRIM6OndE18waWIruxQ3rNAUiivFQ/m
+ zspW88bmGIScP2zdWnSTqbniZtNz4m6PzOdzE3X8+nCljjEl8aFpx9aUZ1DQrZmDmHjd
+ NXiA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=/7y6hmshkKKSxjyTdVHPwU97L1AeKQYF3Z/95TQkF6E=;
+ b=sLweyXrgjSrNUO8UV/CSB1RDKiHBm0rKTMe5uLzAd6UPh8ipGw/GQuQbt4wVmQ0wxG
+ OpT7mphc6mqB36yDvNn2b6AZZIi5frVoSpiaZsSwuzs5d8dpb+IBtt7p1sE9L5JxpL34
+ rH1r0kpdALdOA3wUPfjY8acOlGiH52IuzPVzDvB9ZRuhA9IQvpR09L2GA3WIq2IDv+VE
+ Qbmwsv5zwKRC7/Ve45rKhoZHmI3stgIq62X4WaxQEZ2EHoLqXy7pGdMK8Bf016z9OCyL
+ SP2kj65M/Ux7aWGPlirjqyN/c9OHgdfO8hq6p8dC+/VOrdVCJa5oS2pwmdqLDAV652si
+ Lwxg==
+X-Gm-Message-State: AGi0PuYem4LSGsJ6zuFOY018Llr6Ne5HvIyo0drg762LGmyPJWPfGFED
+ rYvr3JkAQpoSxS9tbSxHNoQ=
+X-Google-Smtp-Source: APiQypKEowcdBOXq7xLrN0JxB381N9q9dLQualzp3aF9uW4/Ra26tVujPXdesm1UT6wgcsu4mVq0NQ==
+X-Received: by 2002:a63:130c:: with SMTP id i12mr23686286pgl.122.1589382624957; 
+ Wed, 13 May 2020 08:10:24 -0700 (PDT)
+Received: from P65xSA.lan ([2402:f000:1:1501::3b2a:1e89])
+ by smtp.gmail.com with ESMTPSA id t188sm14909829pfb.185.2020.05.13.08.10.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 13 May 2020 08:10:23 -0700 (PDT)
+From: DENG Qingfang <dqfext@gmail.com>
+To: netdev@vger.kernel.org
+Subject: [PATCH REPOST] net: dsa: mt7530: fix roaming from DSA user ports
+Date: Wed, 13 May 2020 23:10:16 +0800
+Message-Id: <20200513151016.14376-1-dqfext@gmail.com>
+X-Mailer: git-send-email 2.26.2
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200513_063309_916795_A69D5778 
-X-CRM114-Status: GOOD (  12.13  )
+X-CRM114-CacheID: sfid-20200513_081027_061049_F3BB00D7 
+X-CRM114-Status: GOOD (  15.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -136,62 +93,139 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- Robin Murphy <robin.murphy@arm.com>, Christoph Hellwig <hch@lst.de>,
- linux-arm-kernel@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>
-MIME-Version: 1.0
+Cc: Andrew Lunn <andrew@lunn.ch>, Florian Fainelli <f.fainelli@gmail.com>,
+ riddlariddla@hotmail.com, Paul Fertser <fercerpav@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>,
+ "David S . Miller" <davem@davemloft.net>,
+ =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
+ linux-mediatek@lists.infradead.org, Stijn Segers <foss@volatilesystems.org>,
+ Szabolcs Hubai <szab.hu@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>, Tom James <tj17@me.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use common helper for converting a sg_table object into struct
-page pointer array.
+When a client moves from a DSA user port to a software port in a bridge,
+it cannot reach any other clients that connected to the DSA user ports.
+That is because SA learning on the CPU port is disabled, so the switch
+ignores the client's frames from the CPU port and still thinks it is at
+the user port.
 
-Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
----
-For more information, see '[PATCH v5 00/38] DRM: fix struct sg_table nents
-vs. orig_nents misuse' thread:
-https://lore.kernel.org/linux-iommu/20200513132114.6046-1-m.szyprowski@samsung.com/T/
----
- drivers/gpu/drm/mediatek/mtk_drm_gem.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+Fix it by enabling SA learning on the CPU port.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-index 6c34c06..14fcd48 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-@@ -233,9 +233,7 @@ void *mtk_drm_gem_prime_vmap(struct drm_gem_object *obj)
- {
- 	struct mtk_drm_gem_obj *mtk_gem = to_mtk_gem_obj(obj);
- 	struct sg_table *sgt;
--	struct sg_page_iter iter;
- 	unsigned int npages;
--	unsigned int i = 0;
+To prevent the switch from learning from flooding frames from the CPU
+port, set skb->offload_fwd_mark to 1 for unicast and broadcast frames,
+and let the switch flood them instead of trapping to the CPU port.
+Multicast frames still need to be trapped to the CPU port for snooping,
+so set the SA_DIS bit of the MTK tag to 1 when transmitting those frames
+to disable SA learning.
+
+Fixes: b8f126a8d543 ("net-next: dsa: add dsa support for Mediatek MT7530 switch")
+Signed-off-by: DENG Qingfang <dqfext@gmail.com>
+---
+Reposting as non-RFC
+
+ drivers/net/dsa/mt7530.c |  9 ++-------
+ drivers/net/dsa/mt7530.h |  1 +
+ net/dsa/tag_mtk.c        | 15 +++++++++++++++
+ 3 files changed, 18 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 5c444cd722bd..34e4aadfa705 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -628,11 +628,8 @@ mt7530_cpu_port_enable(struct mt7530_priv *priv,
+ 	mt7530_write(priv, MT7530_PVC_P(port),
+ 		     PORT_SPEC_TAG);
  
- 	if (mtk_gem->kvaddr)
- 		return mtk_gem->kvaddr;
-@@ -249,11 +247,8 @@ void *mtk_drm_gem_prime_vmap(struct drm_gem_object *obj)
- 	if (!mtk_gem->pages)
- 		goto out;
+-	/* Disable auto learning on the cpu port */
+-	mt7530_set(priv, MT7530_PSC_P(port), SA_DIS);
+-
+-	/* Unknown unicast frame fordwarding to the cpu port */
+-	mt7530_set(priv, MT7530_MFC, UNU_FFP(BIT(port)));
++	/* Unknown multicast frame forwarding to the cpu port */
++	mt7530_rmw(priv, MT7530_MFC, UNM_FFP_MASK, UNM_FFP(BIT(port)));
  
--	for_each_sg_page(sgt->sgl, &iter, sgt->orig_nents, 0) {
--		mtk_gem->pages[i++] = sg_page_iter_page(&iter);
--		if (i > npages)
--			break;
--	}
-+	drm_prime_sg_to_page_addr_arrays(sgt, mtk_gem->pages, NULL, npages);
+ 	/* Set CPU port number */
+ 	if (priv->id == ID_MT7621)
+@@ -1294,8 +1291,6 @@ mt7530_setup(struct dsa_switch *ds)
+ 	/* Enable and reset MIB counters */
+ 	mt7530_mib_reset(ds);
+ 
+-	mt7530_clear(priv, MT7530_MFC, UNU_FFP_MASK);
+-
+ 	for (i = 0; i < MT7530_NUM_PORTS; i++) {
+ 		/* Disable forwarding by default on all ports */
+ 		mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 979bb6374678..82af4d2d406e 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -31,6 +31,7 @@ enum {
+ #define MT7530_MFC			0x10
+ #define  BC_FFP(x)			(((x) & 0xff) << 24)
+ #define  UNM_FFP(x)			(((x) & 0xff) << 16)
++#define  UNM_FFP_MASK			UNM_FFP(~0)
+ #define  UNU_FFP(x)			(((x) & 0xff) << 8)
+ #define  UNU_FFP_MASK			UNU_FFP(~0)
+ #define  CPU_EN				BIT(7)
+diff --git a/net/dsa/tag_mtk.c b/net/dsa/tag_mtk.c
+index b5705cba8318..d6619edd53e5 100644
+--- a/net/dsa/tag_mtk.c
++++ b/net/dsa/tag_mtk.c
+@@ -15,6 +15,7 @@
+ #define MTK_HDR_XMIT_TAGGED_TPID_8100	1
+ #define MTK_HDR_RECV_SOURCE_PORT_MASK	GENMASK(2, 0)
+ #define MTK_HDR_XMIT_DP_BIT_MASK	GENMASK(5, 0)
++#define MTK_HDR_XMIT_SA_DIS		BIT(6)
+ 
+ static struct sk_buff *mtk_tag_xmit(struct sk_buff *skb,
+ 				    struct net_device *dev)
+@@ -22,6 +23,9 @@ static struct sk_buff *mtk_tag_xmit(struct sk_buff *skb,
+ 	struct dsa_port *dp = dsa_slave_to_port(dev);
+ 	u8 *mtk_tag;
+ 	bool is_vlan_skb = true;
++	unsigned char *dest = eth_hdr(skb)->h_dest;
++	bool is_multicast_skb = is_multicast_ether_addr(dest) &&
++				!is_broadcast_ether_addr(dest);
+ 
+ 	/* Build the special tag after the MAC Source Address. If VLAN header
+ 	 * is present, it's required that VLAN header and special tag is
+@@ -47,6 +51,10 @@ static struct sk_buff *mtk_tag_xmit(struct sk_buff *skb,
+ 		     MTK_HDR_XMIT_UNTAGGED;
+ 	mtk_tag[1] = (1 << dp->index) & MTK_HDR_XMIT_DP_BIT_MASK;
+ 
++	/* Disable SA learning for multicast frames */
++	if (unlikely(is_multicast_skb))
++		mtk_tag[1] |= MTK_HDR_XMIT_SA_DIS;
 +
- 	mtk_gem->kvaddr = vmap(mtk_gem->pages, npages, VM_MAP,
- 			       pgprot_writecombine(PAGE_KERNEL));
+ 	/* Tag control information is kept for 802.1Q */
+ 	if (!is_vlan_skb) {
+ 		mtk_tag[2] = 0;
+@@ -61,6 +69,9 @@ static struct sk_buff *mtk_tag_rcv(struct sk_buff *skb, struct net_device *dev,
+ {
+ 	int port;
+ 	__be16 *phdr, hdr;
++	unsigned char *dest = eth_hdr(skb)->h_dest;
++	bool is_multicast_skb = is_multicast_ether_addr(dest) &&
++				!is_broadcast_ether_addr(dest);
+ 
+ 	if (unlikely(!pskb_may_pull(skb, MTK_HDR_LEN)))
+ 		return NULL;
+@@ -86,6 +97,10 @@ static struct sk_buff *mtk_tag_rcv(struct sk_buff *skb, struct net_device *dev,
+ 	if (!skb->dev)
+ 		return NULL;
+ 
++	/* Only unicast or broadcast frames are offloaded */
++	if (likely(!is_multicast_skb))
++		skb->offload_fwd_mark = 1;
++
+ 	return skb;
+ }
  
 -- 
-1.9.1
+2.26.2
 
 
 _______________________________________________
