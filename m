@@ -2,78 +2,82 @@ Return-Path: <SRS0=mrrP=63=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D33AC2D0F6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2020 02:31:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 57995C2D0F6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2020 02:39:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2E072206F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2020 02:31:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 22BFE206F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2020 02:39:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mXmsrcmt";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="MofD5KKp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2E072206F5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ln6f64qQ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 22BFE206F5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o3zVRixJhE/RBLc2Nj0F+IyPne+tNP+EiE3+MgJzshs=; b=mXmsrcmt3LKYcF
-	FNdWdnMzJwE9QgpMOVxq7lhyYVvx036JGXogKUIgHtpmso/N5PYqb6Zl5kQE4ePr5nip7sFN5t5ay
-	f5gTPDA9NKUfKhQ9PyJLxlIU9LYqzI0JcLgJBk1YwvMSBAbOjSedV4GVFehGVughzCENn1l81UKyY
-	cYdrxZOc3JEIzjVy2NORyNknVaGraBNO7Qoxp+OtX5BGP4x3HhBJMAMAqxSFJL6RXwnXVSoz2gXQ0
-	PA/NUrwkhBDKyerI9VKX5QdKvc+EDWn9hAkNyq6A9NCkJ233CJ6/aWGCJHwz1B2BH5EKFUePX7GjS
-	s1wLWdr0S6smSfzraSEA==;
+	List-Owner; bh=ijtZ7io2uTg9uV0/fTtg8xJP9Pi32Jah7TrvRI+ETbA=; b=Ln6f64qQj8kZlr
+	kUMSkhHVF7CT91xWp+FzeQZtIiFtTIYgcjUxCU88L2g7dFrvqR90UI9EeEI0KEqiwqJALkDiNXcxq
+	nbLuFBQCOKjsiA4CiomNIJpaq3JV+mPdX5F1IYQg0/DMb7DlCj1mwkjQhi13b/4EzAYMdbyn7eI0q
+	JyUCh0ZIpddbU0NY9j6w4g3MHJqapeGnI5HTfbIOd0esmJ7M26aSa5n4qHD4OcTHbQiqni+trzQov
+	I3fYJ0zjvCwvCkmEI+C+TFHNKYkCbJUiGJ5LQYDq1N4TrJbs71lszYUVdvWkfNQY6SuxpWtgO4+DO
+	2OK3ifACF90i7FoTLRsA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYhB3-0007mf-FW; Wed, 13 May 2020 02:31:21 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jYhIb-0003Ge-M2; Wed, 13 May 2020 02:39:09 +0000
+Received: from mail-oi1-f194.google.com ([209.85.167.194])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYhAu-0007f4-GA; Wed, 13 May 2020 02:31:14 +0000
-X-UUID: 88141e78cbf8460eab5af47c368b7656-20200512
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=FEa8S57yUP1uBt7sF+Iuhy7qLD+6bZVqAcdAPC8F9JE=; 
- b=MofD5KKpO/m36BxdJRtjBzFkVHXb10wjpOslr9htC/NJWkvKVnPxstr/NMHx1QQyZstkHJ6vrNnLLJbsI9xXEwU81tlcEMmeGf8AlA4Tm+Rq7ynThQR/0wtp2gtWsshF2uOdPC3ZvSK8sOknIW9FGMpNifr1QpbN1tSpMcgPaig=;
-X-UUID: 88141e78cbf8460eab5af47c368b7656-20200512
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 336705563; Tue, 12 May 2020 18:31:03 -0800
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 12 May 2020 19:21:01 -0700
-Received: from mtkcas08.mediatek.inc (172.21.101.126) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 13 May 2020 10:21:03 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas08.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 13 May 2020 10:21:03 +0800
-Message-ID: <1589336464.3197.68.camel@mtkswgap22>
-Subject: Re: [PATCH v1 4/4] scsi: ufs: Fix WriteBooster flush during runtime
- suspend
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
-Date: Wed, 13 May 2020 10:21:04 +0800
-In-Reply-To: <3740c6fa-77f1-53eb-ec8e-8f9d09f2646f@codeaurora.org>
-References: <20200512104750.8711-1-stanley.chu@mediatek.com>
- <20200512104750.8711-5-stanley.chu@mediatek.com>
- <3740c6fa-77f1-53eb-ec8e-8f9d09f2646f@codeaurora.org>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1jYhIQ-00038G-UM; Wed, 13 May 2020 02:39:00 +0000
+Received: by mail-oi1-f194.google.com with SMTP id o7so20181178oif.2;
+ Tue, 12 May 2020 19:38:58 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=mB48QmwP9BiyH2LbdU0ZoxXeDi5pgn5seQ5bqpzznwg=;
+ b=LdOrlbDgi90yMVXaDPEZJiJQew5lBb4yRD4NxY1hIk3qEbfRMSd9ksDBQeG5O11fLP
+ KkahbCFKvNc9Qg7R7M/k6H+IFnfyVYRAnRDg6jfDLhIJg5F1QBFaM8xwjzP7YBaYWkE0
+ eAErnd//eQ5BTraVwibP3dO94a3xImT+nFEO+ShrfQN8RMlUwVauNmIfJcRnJCQkY15b
+ jyuFZa5ITknlgDP5e95rUlHwRM+qFqvMnpYuPMe8/Vah4KPPJyEnaEyKB6Gyrop3Ag7j
+ RsDe/h1919Gf4hfQPBUeKvubn6SIn8O/bChf4pE03rkpmk/V1J9GvUksy70DbQffx8RE
+ rSqQ==
+X-Gm-Message-State: AGi0PuYAYNoluY+TJXM0x7xN1RNJoyiFmE4dEHWU/tOegEyaSu0n8JXD
+ +xRuBvVutCKWEzZ55NV9qg==
+X-Google-Smtp-Source: APiQypI/fAJkeunIrrooBsca9jm5OufxdvNcX6Hy9olT8g0z8O/+ezwT5ubQzkvo5BteCx+UsEg1kA==
+X-Received: by 2002:a05:6808:a93:: with SMTP id
+ q19mr26255041oij.6.1589337537668; 
+ Tue, 12 May 2020 19:38:57 -0700 (PDT)
+Received: from rob-hp-laptop (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id y22sm5733356oih.57.2020.05.12.19.38.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 12 May 2020 19:38:56 -0700 (PDT)
+Received: (nullmailer pid 29317 invoked by uid 1000);
+ Wed, 13 May 2020 02:38:55 -0000
+Date: Tue, 12 May 2020 21:38:55 -0500
+From: Rob Herring <robh@kernel.org>
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Subject: Re: [PATCH 01/11] dt-bindings: add a binding document for MediaTek
+ PERICFG controller
+Message-ID: <20200513023855.GA23714@bogus>
+References: <20200505140231.16600-1-brgl@bgdev.pl>
+ <20200505140231.16600-2-brgl@bgdev.pl>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20200505140231.16600-2-brgl@bgdev.pl>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200512_193112_547519_3E9AC80C 
-X-CRM114-Status: GOOD (  25.68  )
+X-CRM114-CacheID: sfid-20200512_193858_977302_FEF75A65 
+X-CRM114-Status: GOOD (  15.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,178 +89,83 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-scsi@vger.kernel.org, martin.petersen@oracle.com,
- andy.teng@mediatek.com, jejb@linux.ibm.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, avri.altman@wdc.com,
- cang@codeaurora.org, linux-mediatek@lists.infradead.org,
- peter.wang@mediatek.com, alim.akhtar@samsung.com, matthias.bgg@gmail.com,
- bvanassche@acm.org, linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
+Cc: devicetree@vger.kernel.org, Felix Fietkau <nbd@openwrt.org>,
+ Arnd Bergmann <arnd@arndb.de>, Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
+ linux-kernel@vger.kernel.org, "David S . Miller" <davem@davemloft.net>,
+ Fabien Parent <fparent@baylibre.com>, linux-mediatek@lists.infradead.org,
+ John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Asutosh,
-
-On Tue, 2020-05-12 at 10:04 -0700, Asutosh Das (asd) wrote:
-> Hi Stanley,
+On Tue, May 05, 2020 at 04:02:21PM +0200, Bartosz Golaszewski wrote:
+> From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 > 
-> On 5/12/2020 3:47 AM, Stanley Chu wrote:
-> > Currently UFS host driver promises VCC supply if UFS device
-> > needs to do WriteBooster flush during runtime suspend.
-> > 
-> > However the UFS specification mentions,
-> > 
-> > "While the flushing operation is in progress, the device is
-> > in Active power mode."
-> > 
-> > Therefore UFS host driver needs to promise more: Keep UFS
-> > device as "Active power mode", otherwise UFS device shall not
-> > do any flush if device enters Sleep or PowerDown power mode.
-> > 
-> > Fix this by not changing device power mode if WriteBooster
-> > flush is required in ufshcd_suspend().
-> > 
-> > Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> > ---
-> >   drivers/scsi/ufs/ufs.h    |  1 -
-> >   drivers/scsi/ufs/ufshcd.c | 39 +++++++++++++++++++--------------------
-> >   2 files changed, 19 insertions(+), 21 deletions(-)
-> > 
-> > diff --git a/drivers/scsi/ufs/ufs.h b/drivers/scsi/ufs/ufs.h
-> > index b3135344ab3f..9e4bc2e97ada 100644
-> > --- a/drivers/scsi/ufs/ufs.h
-> > +++ b/drivers/scsi/ufs/ufs.h
-> > @@ -577,7 +577,6 @@ struct ufs_dev_info {
-> >   	u32 d_ext_ufs_feature_sup;
-> >   	u8 b_wb_buffer_type;
-> >   	u32 d_wb_alloc_units;
-> > -	bool keep_vcc_on;
-> >   	u8 b_presrv_uspc_en;
-> >   };
-> >   
-> > diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> > index 169a3379e468..2d0aff8ac260 100644
-> > --- a/drivers/scsi/ufs/ufshcd.c
-> > +++ b/drivers/scsi/ufs/ufshcd.c
-> > @@ -8101,8 +8101,7 @@ static void ufshcd_vreg_set_lpm(struct ufs_hba *hba)
-> >   	    !hba->dev_info.is_lu_power_on_wp) {
-> >   		ufshcd_setup_vreg(hba, false);
-> >   	} else if (!ufshcd_is_ufs_dev_active(hba)) {
-> > -		if (!hba->dev_info.keep_vcc_on)
-> > -			ufshcd_toggle_vreg(hba->dev, hba->vreg_info.vcc, false);
-> > +		ufshcd_toggle_vreg(hba->dev, hba->vreg_info.vcc, false);
-> >   		if (!ufshcd_is_link_active(hba)) {
-> >   			ufshcd_config_vreg_lpm(hba, hba->vreg_info.vccq);
-> >   			ufshcd_config_vreg_lpm(hba, hba->vreg_info.vccq2);
-> > @@ -8172,6 +8171,7 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
-> >   	enum ufs_pm_level pm_lvl;
-> >   	enum ufs_dev_pwr_mode req_dev_pwr_mode;
-> >   	enum uic_link_state req_link_state;
-> > +	bool keep_curr_dev_pwr_mode = false;
-> >   
-> >   	hba->pm_op_in_progress = 1;
-> >   	if (!ufshcd_is_shutdown_pm(pm_op)) {
-> > @@ -8226,28 +8226,27 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
-> >   			/* make sure that auto bkops is disabled */
-> >   			ufshcd_disable_auto_bkops(hba);
-> >   		}
-> > +
-> >   		/*
-> > -		 * With wb enabled, if the bkops is enabled or if the
-> > -		 * configured WB type is 70% full, keep vcc ON
-> > -		 * for the device to flush the wb buffer
-> > +		 * If device needs to do BKOP or WB buffer flush, keep device
-> > +		 * power mode as "active power mode" and its VCC supply.
-> >   		 */
-> > -		if ((hba->auto_bkops_enabled && ufshcd_is_wb_allowed(hba)) ||
-> > -		    ufshcd_wb_keep_vcc_on(hba))
-> > -			hba->dev_info.keep_vcc_on = true;
-> > -		else
-> > -			hba->dev_info.keep_vcc_on = false;
-> > -	} else {
-> > -		hba->dev_info.keep_vcc_on = false;
-> > +		keep_curr_dev_pwr_mode = hba->auto_bkops_enabled ||
-> > +			ufshcd_wb_keep_vcc_on(hba);
-> >   	}
-> >   
-> > -	if ((req_dev_pwr_mode != hba->curr_dev_pwr_mode) &&
-> > -	    ((ufshcd_is_runtime_pm(pm_op) && !hba->auto_bkops_enabled) ||
-> > -	    !ufshcd_is_runtime_pm(pm_op))) {
-> > -		/* ensure that bkops is disabled */
-> > -		ufshcd_disable_auto_bkops(hba);
-> > -		ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
-> > -		if (ret)
-> > -			goto enable_gating;
-> > +	if (req_dev_pwr_mode != hba->curr_dev_pwr_mode) {
-> > +		if ((ufshcd_is_runtime_pm(pm_op) && !hba->auto_bkops_enabled) ||
-> > +		    !ufshcd_is_runtime_pm(pm_op)) {
-> > +			/* ensure that bkops is disabled */
-> > +			ufshcd_disable_auto_bkops(hba);
-> > +		}
-> > +
-> > +		if (!keep_curr_dev_pwr_mode) {
-> > +			ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
-> > +			if (ret)
-> > +				goto enable_gating;
-> > +		}
-> >   	}
-> >   
-> >   	flush_work(&hba->eeh_work);
-> > 
+> This adds a binding document for the PERICFG controller present on
+> MediaTek SoCs. For now the only variant supported is 'mt8516-pericfg'.
 > 
-> Can you please confirm that you've tested and found that with the 
-> previous code, the flush operation in the device was not happening.
+> Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+> ---
+>  .../arm/mediatek/mediatek,pericfg.yaml        | 34 +++++++++++++++++++
+>  1 file changed, 34 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
 > 
-> If so, please can you let me know the test-case that you ran to figure 
-> this out.
-> 
-> I'd like to verify this at my end.
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
+> new file mode 100644
+> index 000000000000..74b2a6173ffb
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.yaml
+> @@ -0,0 +1,34 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: "http://devicetree.org/schemas/arm/mediatek/mediatek,pericfg.yaml#"
+> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
+> +
+> +title: MediaTek Peripheral Configuration Controller
+> +
+> +maintainers:
+> +  - Bartosz Golaszewski <bgolaszewski@baylibre.com>
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
 
-Sorry currently I have no easy test cases or scripts available.
+Don't need oneOf.
 
-To precisely confirm the flush behavior by logs, I added some codes to
-query "available WriteBooster buffer" before entering runtime suspend
-and after leaving runtime resume, and observe the trend of available
-WriteBooster buffer.
+> +      - items:
+> +        - enum:
+> +          - mediatek,pericfg
 
-My test steps are as below,
+PERICFG is exactly the same register set and functions on all Mediatek 
+SoCs? Needs to be more specific.
 
-1. Create a writer to write large data in a short time to fill-in
-WriteBooster buffer.
+> +        - const: syscon
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    pericfg: pericfg@10003050 {
+> +        compatible = "mediatek,mt8516-pericfg", "syscon";
+> +        reg = <0 0x10003050 0 0x1000>;
 
-2. Do something to prevent system suspend
+Default for examples is 1 cell for addr and size.
 
-3. Do something to prevent link entering Hibern8, for example, disable
-Auto-Hibern8 and disable Hibern8 during clock gating. Because the
-Hibern8 period before runtime-suspend is known that VCC is provided and
-device can flush WriteBooster buffer if "Flush During H8" is enabled as
-upstream kernel currently.
-
-4. Shrink the runtime suspend delay (maybe 100ms ~ 200ms) to make
-runtime suspend happen earlier.
-
-5. After "available WriteBosoter buffer" reaches lower-level, for
-example, 10%, stop the writer.
-
-6. Observe the trend of WriteBooster available buffer.
-
-
-In the previous code, the available WriteBooster buffer is increased
-very very slowly. Especially no increasing is observed during
-runtime-suspend.
-
-After applying this fix, the available WriteBooster buffer is increased
-much faster and the increasing can be easily observed during
-runtime-suspend.
-
-Thanks,
-Stanley Chu
-
-> 
-> --
-> Thanks,
-> -asd
+> +    };
+> -- 
+> 2.25.0
 > 
 
 _______________________________________________
