@@ -2,87 +2,85 @@ Return-Path: <SRS0=mrrP=63=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.4 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PULL_REQUEST,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 48A82C433E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2020 19:31:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 044EDC433DF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2020 19:45:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CFB61206CC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2020 19:31:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9EF5F20659
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2020 19:45:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rFU2QZeO";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mg.codeaurora.org header.i=@mg.codeaurora.org header.b="HUd2TlOx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CFB61206CC
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LmJ4Z7t1";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ffwll.ch header.i=@ffwll.ch header.b="XU7gRL4v"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9EF5F20659
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dCkGvYeH//DcfpxwWwMlMe1+WcUlGbhZQnFC1QcFXV4=; b=rFU2QZeOM7P60POTrVlg75c9w
-	g2a6bqqAmX9rTfCzQnxofqwYUiNHeXwFjomDscWtIln/eWBiXrRYqXOzJepPgK9bXfAeggvSmh5RV
-	DMhEXaqlI+dMUeVH3/MRk49yVa6HOIf8uYWkZy7rra7QRDeOlkcnNiaFfvJKOpc8Q9CPupsci959V
-	EKIKedYO0vEIggpuLHRZ/7ivPMvHFIajOkR/hdR562dMSkh1CmAJb6uXj3sAmVw23G4NvDHBmHlSk
-	WHnJh/fskkxFQS+YWKpzXgO7dZ5DofiVD0ut3ZbEyS0mp+07xi1+XXgl7ZUh0Mok5hmhSnCf131Uo
-	BuEVdR1Ww==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bLDSzmL5GdvOdb+XwHOqaXS9pyemty2n/IwPV8DcfYU=; b=LmJ4Z7t1LNQVq8
+	snHgFT5vC27rthlNfAvfUOG861zAzvCz5oB4GTGq1osu6BLL2Qxy30ppeYa8eG7MOJ6ZeVCJsXMty
+	ksBPIiyxNxWJjY5FVD2yRpLXMMs3XAIBVzo4FPGz4FU9s8AAOs6a1DP1Qp3yEU6tD207pSTuYdcUA
+	ACVf+8YJGhWjnExqvhCBWNJ/0f+GDVMCTqhnC07kXv5qJaE+QBiO7tgFp+3U8/Dc/Bxp+jfEop40f
+	QtE79zCei0r9WBzm3kxhjNqsuwOPE30Wmd/Sf1+FSPtNDf8OQwjyADb0ogbT5T5s/mYpLgLA7rX15
+	YwVNY8coVjtlwYP1UyKg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYx6T-0007l5-IW; Wed, 13 May 2020 19:31:41 +0000
-Received: from mail26.static.mailgun.info ([104.130.122.26])
+	id 1jYxJl-0000Ix-Cf; Wed, 13 May 2020 19:45:25 +0000
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYx6H-0007dF-RL
- for linux-mediatek@lists.infradead.org; Wed, 13 May 2020 19:31:34 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1589398293; h=Content-Transfer-Encoding: Content-Type:
- In-Reply-To: MIME-Version: Date: Message-ID: From: References: Cc: To:
- Subject: Sender; bh=Jp3WpGvzO6LMDEA2O3IfZQY0ziN9PbNzYX5Naj3D+N0=;
- b=HUd2TlOx/hOPovTu7oea1EAB8mMjrAk/lvkBczs4Vwz0IhcU3bBeX2pnN0K0vp/fkHtEQb3E
- /ZGX7Ojx0JWQZLPHRs6ZUQcctARtTv1pxJ1hKTh7+lcpuwpKvfcc2+cd4Fs6OIhajG1145Rg
- xDclt1rWRTJ8/LHtbY7kZttP4Jc=
-X-Mailgun-Sending-Ip: 104.130.122.26
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
- by mxa.mailgun.org with ESMTP id 5ebc4b06.7f9c848ea810-smtp-out-n04;
- Wed, 13 May 2020 19:31:18 -0000 (UTC)
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id B53DCC43636; Wed, 13 May 2020 19:31:17 +0000 (UTC)
-Received: from [192.168.8.150] (cpe-70-95-149-85.san.res.rr.com [70.95.149.85])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: asutoshd)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 7383BC433F2;
- Wed, 13 May 2020 19:31:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 7383BC433F2
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=none smtp.mailfrom=asutoshd@codeaurora.org
-Subject: Re: [PATCH v1 4/4] scsi: ufs: Fix WriteBooster flush during runtime
- suspend
-To: Stanley Chu <stanley.chu@mediatek.com>, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@wdc.com, alim.akhtar@samsung.com,
- jejb@linux.ibm.com
-References: <20200512104750.8711-1-stanley.chu@mediatek.com>
- <20200512104750.8711-5-stanley.chu@mediatek.com>
-From: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
-Message-ID: <725d057c-2379-710e-287f-ac11a59c08bc@codeaurora.org>
-Date: Wed, 13 May 2020 12:31:14 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ id 1jYxJi-0000IS-KR
+ for linux-mediatek@lists.infradead.org; Wed, 13 May 2020 19:45:24 +0000
+Received: by mail-wm1-x344.google.com with SMTP id m24so18264835wml.2
+ for <linux-mediatek@lists.infradead.org>; Wed, 13 May 2020 12:45:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=fktKk3VPkbByxMnUb2lfcrz6WyYgwRfNuZOH8M/MI6s=;
+ b=XU7gRL4veiPTn8LeZV5Zw4H2p6P7rlb5zDm8t+QfU+x+JYQaZEDpZ/Vfkz/Nc2gZ6E
+ SE43C+CrySsjUtl1JrIdNDCnpevmncgZ00eLbEO5I83zIFEyGRssaE50HHfzjROVzofl
+ S2YmeuRpI2bGvYTCKG9NKJIU5dmuFeOzpUWS8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=fktKk3VPkbByxMnUb2lfcrz6WyYgwRfNuZOH8M/MI6s=;
+ b=hEOOHV2Y+Fq9KyqtV1gRaAebWnX+puMrOWwHQQtqofMGpQe8mgj7R2ZMuqC0UQtDD2
+ kxEVERYHRC1mqiBrnrjKA2m+71MAs3jFp6sau1waiO6b57PWZj2TL/tCnZzFPHmPvXVL
+ ibSpqP2an6YQ1Uf1gDTcasrETLp4fcfvahfJ9LwAxnA/SM1ovOuFh+1kYfdS+65rCrtY
+ 8ZFNU53MThOFoEZd7H+ortj9YNJus9/OFooVV4BvF1mX+c9CCZre6J4zUUhNofRNfE2i
+ 7k16qEJ1V5w4EYKS80G0teLmIZiyYH1+FmkjYLfKpQ5WRKeSe9nNf5ZKrKcEYGw6YHZS
+ J/cQ==
+X-Gm-Message-State: AGi0PuZfpST/OcFElhX3v5gnqPLIlRe7W67qhqVIjqPDTsvFZ6pwnKJM
+ 2TzvrnKkMUYtGGM//vzswCHmTw==
+X-Google-Smtp-Source: APiQypLjLvOuunRYTd+SxcqMzVtW21yRmTzyCEgDimY0GhpGnBTQLazCjnaLb8wyQ2nIQMGEY2kHXA==
+X-Received: by 2002:a1c:f207:: with SMTP id s7mr17333901wmc.14.1589399120838; 
+ Wed, 13 May 2020 12:45:20 -0700 (PDT)
+Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
+ by smtp.gmail.com with ESMTPSA id r2sm657575wrg.84.2020.05.13.12.45.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 13 May 2020 12:45:20 -0700 (PDT)
+Date: Wed, 13 May 2020 21:45:18 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Subject: Re: [GIT PULL] mediatek drm next for 5.8
+Message-ID: <20200513194518.GN206103@phenom.ffwll.local>
+References: <CAAOTY_8gJNpWXcMnHiZzg_sgyiJ6BDsBYRxaLX0OXWRuLF1NCg@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20200512104750.8711-5-stanley.chu@mediatek.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <CAAOTY_8gJNpWXcMnHiZzg_sgyiJ6BDsBYRxaLX0OXWRuLF1NCg@mail.gmail.com>
+X-Operating-System: Linux phenom 5.6.0-1-amd64 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200513_123133_124918_D94DEEC2 
-X-CRM114-Status: GOOD (  27.78  )
+X-CRM114-CacheID: sfid-20200513_124522_673336_F42E1062 
+X-CRM114-Status: GOOD (  17.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,143 +92,126 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: bvanassche@acm.org, andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
- beanhuo@micron.com
+Cc: Jitao Shi <jitao.shi@mediatek.com>, David Airlie <airlied@linux.ie>,
+ Bernard Zhao <bernard@vivo.com>, YueHaibing <yuehaibing@huawei.com>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Anand K Mistry <amistry@chromium.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/12/2020 3:47 AM, Stanley Chu wrote:
-> Currently UFS host driver promises VCC supply if UFS device
-> needs to do WriteBooster flush during runtime suspend.
+On Thu, May 14, 2020 at 12:16:59AM +0800, Chun-Kuang Hu wrote:
+> Hi, Dave & Daniel:
 > 
-> However the UFS specification mentions,
+> This include dpi pin mode swap, config mipi_tx current and impedance,
+> convert mtk-dpi to drm_bridge API, and some fixup.
 > 
-> "While the flushing operation is in progress, the device is
-> in Active power mode."
-> 
-> Therefore UFS host driver needs to promise more: Keep UFS
-> device as "Active power mode", otherwise UFS device shall not
-> do any flush if device enters Sleep or PowerDown power mode.
-> 
-> Fix this by not changing device power mode if WriteBooster
-> flush is required in ufshcd_suspend().
-> 
-> Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
-> ---
->   drivers/scsi/ufs/ufs.h    |  1 -
->   drivers/scsi/ufs/ufshcd.c | 39 +++++++++++++++++++--------------------
->   2 files changed, 19 insertions(+), 21 deletions(-)
-> 
-> diff --git a/drivers/scsi/ufs/ufs.h b/drivers/scsi/ufs/ufs.h
-> index b3135344ab3f..9e4bc2e97ada 100644
-> --- a/drivers/scsi/ufs/ufs.h
-> +++ b/drivers/scsi/ufs/ufs.h
-> @@ -577,7 +577,6 @@ struct ufs_dev_info {
->   	u32 d_ext_ufs_feature_sup;
->   	u8 b_wb_buffer_type;
->   	u32 d_wb_alloc_units;
-> -	bool keep_vcc_on;
->   	u8 b_presrv_uspc_en;
->   };
->   
-> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-> index 169a3379e468..2d0aff8ac260 100644
-> --- a/drivers/scsi/ufs/ufshcd.c
-> +++ b/drivers/scsi/ufs/ufshcd.c
-> @@ -8101,8 +8101,7 @@ static void ufshcd_vreg_set_lpm(struct ufs_hba *hba)
->   	    !hba->dev_info.is_lu_power_on_wp) {
->   		ufshcd_setup_vreg(hba, false);
->   	} else if (!ufshcd_is_ufs_dev_active(hba)) {
-> -		if (!hba->dev_info.keep_vcc_on)
-> -			ufshcd_toggle_vreg(hba->dev, hba->vreg_info.vcc, false);
-> +		ufshcd_toggle_vreg(hba->dev, hba->vreg_info.vcc, false);
->   		if (!ufshcd_is_link_active(hba)) {
->   			ufshcd_config_vreg_lpm(hba, hba->vreg_info.vccq);
->   			ufshcd_config_vreg_lpm(hba, hba->vreg_info.vccq2);
-> @@ -8172,6 +8171,7 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->   	enum ufs_pm_level pm_lvl;
->   	enum ufs_dev_pwr_mode req_dev_pwr_mode;
->   	enum uic_link_state req_link_state;
-> +	bool keep_curr_dev_pwr_mode = false;
->   
->   	hba->pm_op_in_progress = 1;
->   	if (!ufshcd_is_shutdown_pm(pm_op)) {
-> @@ -8226,28 +8226,27 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->   			/* make sure that auto bkops is disabled */
->   			ufshcd_disable_auto_bkops(hba);
->   		}
-> +
-Unnecessary newline, perhaps?
->   		/*
-> -		 * With wb enabled, if the bkops is enabled or if the
-> -		 * configured WB type is 70% full, keep vcc ON
-> -		 * for the device to flush the wb buffer
-> +		 * If device needs to do BKOP or WB buffer flush, keep device
-> +		 * power mode as "active power mode" and its VCC supply.
->   		 */
-> -		if ((hba->auto_bkops_enabled && ufshcd_is_wb_allowed(hba)) ||
-> -		    ufshcd_wb_keep_vcc_on(hba))
-> -			hba->dev_info.keep_vcc_on = true;
-> -		else
-> -			hba->dev_info.keep_vcc_on = false;
-> -	} else {
-> -		hba->dev_info.keep_vcc_on = false;
-> +		keep_curr_dev_pwr_mode = hba->auto_bkops_enabled ||
-> +			ufshcd_wb_keep_vcc_on(hba);
-Should the device be in UFS_ACTIVE_PWR_MODE to perform auto-bkops?
+> The following changes since commit 8f3d9f354286745c751374f5f1fcafee6b3f3136:
+>   Linux 5.7-rc1 (2020-04-12 12:35:55 -0700)
+> are available in the Git repository at:
+>   ssh://git@gitolite.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git
+> tags/mediatek-drm-next-5.8
 
-Also, is it needed to keep the device in UFS_ACTIVE_PWR_MODE , if flush 
-on hibern8 is enabled and the link is being put to hibern8 mode during 
-runtime-suspend? Perhaps that should also be factored in here?
->   	}
->   
-> -	if ((req_dev_pwr_mode != hba->curr_dev_pwr_mode) &&
-> -	    ((ufshcd_is_runtime_pm(pm_op) && !hba->auto_bkops_enabled) ||
-> -	    !ufshcd_is_runtime_pm(pm_op))) {
-> -		/* ensure that bkops is disabled */
-> -		ufshcd_disable_auto_bkops(hba);
-> -		ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
-> -		if (ret)
-> -			goto enable_gating;
-> +	if (req_dev_pwr_mode != hba->curr_dev_pwr_mode) {
-> +		if ((ufshcd_is_runtime_pm(pm_op) && !hba->auto_bkops_enabled) ||
-> +		    !ufshcd_is_runtime_pm(pm_op)) {
-> +			/* ensure that bkops is disabled */
-> +			ufshcd_disable_auto_bkops(hba);
-> +		}
-> +
-> +		if (!keep_curr_dev_pwr_mode) {
-> +			ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
+Your pull request is badly line wrapped, and I don't have an ssh account
+on that machine ... Maybe airlied has, not sure. http:// or git:// would
+be a bunch easier, and then signed that. Plus if your pull isn't
+linewrapped we can stuff it directly into scripts.
 
-Now, when the WB buffer is completely flushed out, the device should be 
-put back into UFS_SLEEP_PWR_MODE or UFS_POWERDOWN_PWR_MODE. Say, the 
-device buffer has to be flushed and during runtime-suspend, the device 
-is put to UFS_ACTIVE_PWR_MODE and Vcc is kept ON; the device doesn't 
-resume nor does the system enters suspend for a very long time, and with 
-AH8 and hibern8 disabled, there will be an unnecessary power drain for 
-that much time.
+All I quickly wanted to quickly check is your new bridge driver.
+- was that reviewed/acked by bridge maintainers? There's a lot of rework
+  going on right now, need to make sure we're not adding new bridge
+  drivers that use old style
 
-How about a periodic interval checking of flush status if 
-keep_curr_dev_pwr_mode evaluates to be true?
+- why is this bridge driver not in drm/bridge/ directory?
 
-> +			if (ret)
-> +				goto enable_gating;
-> +		}
->   	}
->   
->   	flush_work(&hba->eeh_work);
-> 
+Cheers, Daniel
 
-
+> for you to fetch changes up to 23b29ff9f13a8fb5a12be9fedb8b614b9dede46a:
+>   drm/mediatek: Eliminate the magic number in array size (2020-05-10
+> 09:08:30 +0800)
+> ----------------------------------------------------------------
+> Mediatek DRM Next for Linux 5.8
+> ----------------------------------------------------------------
+> Anand K Mistry (1):
+>       drm/mediatek: Stop iterating dma addresses when sg_dma_len() == 0
+> Bernard Zhao (2):
+>       drm/mediatek: Cleanup coding style in mediatek a bit
+>       drm/mediatek: Eliminate the magic number in array size
+> Chun-Kuang Hu (1):
+>       Merge tag 'v5.7-next-drm-stable' of
+> ssh://gitolite.kernel.org/.../matthias.bgg/linux into
+> mediatek-drm-next
+> Enric Balletbo i Serra (7):
+>       dt-bindings: mediatek: Update mmsys binding to reflect it is a
+> system controller
+>       soc / drm: mediatek: Move routing control to mmsys device
+>       soc / drm: mediatek: Fix mediatek-drm device probing
+>       drm/mediatek: Remove debug messages for function calls
+>       drm/mediatek: mtk_dpi: Rename bridge to next_bridge
+>       drm/mediatek: mtk_dpi: Convert to bridge driver
+>       drm/mediatek: mtk_dpi: Use simple encoder
+> Hsin-Yi Wang (1):
+>       drm/mediatek: Fix device passed to cmdq
+> Jitao Shi (6):
+>       dt-bindings: display: mediatek: control dpi pins mode to avoid leakage
+>       drm/mediatek: set dpi pin mode to gpio low to avoid leakage current
+>       dt-bindings: display: mediatek: add property to control mipi tx
+> drive current
+>       dt-bindings: display: mediatek: get mipitx calibration data from nvmem
+>       drm/mediatek: add the mipitx driving control
+>       drm/mediatek: config mipitx impedance with calibration data
+> Matthias Brugger (2):
+>       drm/mediatek: Omit warning on probe defers
+>       clk / soc: mediatek: Move mt8173 MMSYS to platform driver
+> YueHaibing (1):
+>       drm/mediatek: Fix Kconfig warning
+>  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt   |   7 +-
+>  Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.txt |   6 +
+>  Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt |  10 ++
+>  drivers/clk/mediatek/Kconfig                                        |   7 +
+>  drivers/clk/mediatek/Makefile                                       |   1 +
+>  drivers/clk/mediatek/clk-mt8173-mm.c                                |
+> 146 +++++++++++++++++++
+>  drivers/clk/mediatek/clk-mt8173.c                                   |
+> 104 --------------
+>  drivers/gpu/drm/mediatek/Kconfig                                    |   1 +
+>  drivers/gpu/drm/mediatek/mtk_disp_color.c                           |   5 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c                             |   5 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_rdma.c                            |   5 +-
+>  drivers/gpu/drm/mediatek/mtk_dpi.c                                  |
+> 127 ++++++++++-------
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c                             |  27 ++--
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp.c                              |
+> 259 +---------------------------------
+>  drivers/gpu/drm/mediatek/mtk_drm_ddp.h                              |   7 -
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c                              |
+>  50 +++----
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.h                              |   2 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_gem.c                              |   3 +
+>  drivers/gpu/drm/mediatek/mtk_dsi.c                                  |   8 +-
+>  drivers/gpu/drm/mediatek/mtk_hdmi.c                                 |  22 ++-
+>  drivers/gpu/drm/mediatek/mtk_mipi_tx.c                              |
+>  54 +++++++
+>  drivers/gpu/drm/mediatek/mtk_mipi_tx.h                              |   4 +
+>  drivers/gpu/drm/mediatek/mtk_mt8183_mipi_tx.c                       |  28 ++++
+>  drivers/soc/mediatek/Kconfig                                        |   8 ++
+>  drivers/soc/mediatek/Makefile                                       |   1 +
+>  drivers/soc/mediatek/mtk-mmsys.c                                    |
+> 337 ++++++++++++++++++++++++++++++++++++++++++++
+>  include/linux/soc/mediatek/mtk-mmsys.h                              |  20 +++
+>  27 files changed, 778 insertions(+), 476 deletions(-)
+>  create mode 100644 drivers/clk/mediatek/clk-mt8173-mm.c
+>  create mode 100644 drivers/soc/mediatek/mtk-mmsys.c
+>  create mode 100644 include/linux/soc/mediatek/mtk-mmsys.h
 
 -- 
-The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
-Linux Foundation Collaborative Project
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
 _______________________________________________
 Linux-mediatek mailing list
