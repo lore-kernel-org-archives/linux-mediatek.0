@@ -2,87 +2,129 @@ Return-Path: <SRS0=mrrP=63=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-9.9 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B8041CA90AF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2020 08:10:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 18F6FCA90AF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2020 13:38:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 89B2F206F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2020 08:10:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EF7EB223C6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 May 2020 13:38:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZYMsRFxZ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="I333cevq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 89B2F206F5
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bgdev.pl
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sxNYluR8";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="czTVDgpm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF7EB223C6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hVrTVp1N5hAORWgvZOlFy8IVjid2F4sP0IojqpyyB8Y=; b=ZYMsRFxZyq14zk
-	2eo3xS/gOKSOe+FeBUUSMwQ6g+TQNrqQi8ahvOGVeYjY5cgXJMaXCJ2kTAtn7ymArWjWanjvNsVT1
-	jO7Q66vhWbjty4t+UHvsi0wlp+pp6b/Go8t16ONYSEnB+TdAW+fjZ6z4sPU62AFTAylamCb9TvEcj
-	AaYhmWQsZXfMbjErb/QzXhGpFXCjPkPPSl13+pNFbPzivgAOzNtUUUVnOtC9ACyTnsXc1f1sEh5aR
-	31teJAQQkjs1JcmrSnqcdxzBB2mY9VcCaIZkjgBwSOGSdm8eKun37uinMbv6bktQXkAX/4XYw/rXj
-	lLgz3LCvU1d9LANUKXHA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=n23npSElcCUS4IXUNc0XmVBrSj/cRlep9D2FUR+2obk=; b=sxNYluR8MkVNxqVpPj3nMHelPT
+	EHqqsdTu8nPnlBsTGo0OqSYbo2DXtFDNk0kcfXr41wI/GE6zigeqELU7WmA4029A4JBz0nOuUZiHE
+	eS/mnqFKjB3RFKJHi3B9o3vFVurChAaAE2gMgI/HHeRef+bbgLchxSn4bMHJ/iNiQEKa0Ehsi2Gfw
+	LJcUI5WTgo20BdtGTSh8VdTLZdAPPOUFZJfdMxmLof+hwTiRmNfuysc2IxOynMKlABUzFeJIegPsc
+	Je3+5H3sWVIotA68nzRzbl43ux7bcPzKQYUt9XovZ58PJmzCmjXQNde0c8hKajlWyhR42kfdkXADx
+	/IscODLg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jYmSx-0002Kz-VO; Wed, 13 May 2020 08:10:11 +0000
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41])
+	id 1jYraS-0008Ca-NE; Wed, 13 May 2020 13:38:16 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jYmSc-0000hh-Ch
- for linux-mediatek@lists.infradead.org; Wed, 13 May 2020 08:09:52 +0000
-Received: by mail-io1-xd41.google.com with SMTP id 79so7893238iou.2
- for <linux-mediatek@lists.infradead.org>; Wed, 13 May 2020 01:09:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=9UilNQk9S4BvXv27MvSXEo2VXDVsyD3FnEfjySXek3Q=;
- b=I333cevq/ZiYLBB2UEqQvcKtAGvuyLJZxdyLz+dw9rtzdUG3Rn5bsG6b+cpl7WJ7be
- gTKIH/JsA1vPwstSt1K87Da84h3nS6SdQlUWK+QTnSAYwi+CjJ/aL+J8zawKW++FhJMQ
- aAWwxITol5cIJWKXZHPmGp5Bv26XE5m8HS8GVMXZPkz9eAufEiFF137yzG71eVK31Y0h
- GRCKTv29IzTe96QDVL3EExYOvg7/+4BsAH4/rwxaCg0aboPZ4fdHNA+ZSezFo4H59XIF
- 6YgL3Ztsxu7NdaF62XFuH+8rQKy6pIHash3BieKanuFtjzs07HWpQii/lNhRuYgekHNs
- jZ6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=9UilNQk9S4BvXv27MvSXEo2VXDVsyD3FnEfjySXek3Q=;
- b=Hb8dTYa7y2JmPPvqhaDzqcQsV66yroBy/1bENxxnZ3fStASZxwzUh83ax2gLQPi69I
- LXdu33XeffAZXFzA4Q4NFTksfWNqXvE+dIQM/WNAVJyKOl5pAXT+thqS6vswDUODQZ+O
- k/BzArowMWOuo0rnV+G93G20JWZtRY1/3udPbna8tUiKdlxy65lAq2U+1Ycm89DrgAov
- gkpIezt+cKaH2nYlM0tLEdqLb5/JUL5W2Nd9DZrthcu0C4aLWE0Ahw+R6Mq/aN5Z2MG0
- vqxW9DBF6SBOZtLxJLGScYSAFx6+B6NLvDEs7+lXLFwPKT3C9amedbYVjsg4ud31HODA
- Kd3g==
-X-Gm-Message-State: AGi0PuYBMADlr/EE9l0QraRIeOuL8rZABSmHpImuT64SojkePheFP3Zr
- uw8xTeIUfCiVOWO462Ll69YiY1H8ZYS9lCmQWY1seQ==
-X-Google-Smtp-Source: APiQypLSKZpPbpZGWbIa6OCLB4vXnavWGW3O9jfduY7qGPjrWI211lZ+fRr7Evkrpn1Sok32KOFfgRA0O4qxfjO7Hmw=
-X-Received: by 2002:a05:6602:2dd4:: with SMTP id
- l20mr1335649iow.13.1589357388989; 
- Wed, 13 May 2020 01:09:48 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200505140231.16600-1-brgl@bgdev.pl>
- <20200505140231.16600-2-brgl@bgdev.pl>
- <20200513023855.GA23714@bogus>
-In-Reply-To: <20200513023855.GA23714@bogus>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Wed, 13 May 2020 10:09:38 +0200
-Message-ID: <CAMRc=MfScMKPMNeFAMA=6ObhFkU8T=8a+dVyiUyvGOXyBG8H=g@mail.gmail.com>
-Subject: Re: [PATCH 01/11] dt-bindings: add a binding document for MediaTek
- PERICFG controller
-To: Rob Herring <robh@kernel.org>
+ id 1jYrVU-0001St-RL
+ for linux-mediatek@lists.infradead.org; Wed, 13 May 2020 13:33:18 +0000
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+ by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id
+ 20200513133307euoutp025849f16e32a53266b9a0fae48b96e561~OmcRk9CGE3223232232euoutp02u
+ for <linux-mediatek@lists.infradead.org>; Wed, 13 May 2020 13:33:07 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com
+ 20200513133307euoutp025849f16e32a53266b9a0fae48b96e561~OmcRk9CGE3223232232euoutp02u
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1589376787;
+ bh=63lQGohYor0znA7PtoKsyn+5okdRMMenYZY4rphErk0=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=czTVDgpmbB1fqHhgM9zf8z0cj85Tbi++HyhhGzMCzYtolUN3XSicX8UjIS7awfHxD
+ JZ/R8EBf00NDWkBmaouLn/k5Hfcji1B4tgGrZBMcq5aOgxi13oaENTGHKlzCM9trhW
+ sCZazNgkR/jFCTAGt4ALs/PKlpMTTNVIM5M0kio0=
+Received: from eusmges3new.samsung.com (unknown [203.254.199.245]) by
+ eucas1p1.samsung.com (KnoxPortal) with ESMTP id
+ 20200513133306eucas1p1b51a94bf57046cb6c3f3a4997bc97aa9~OmcRRmbjw2164721647eucas1p1u;
+ Wed, 13 May 2020 13:33:06 +0000 (GMT)
+Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
+ eusmges3new.samsung.com (EUCPMTA) with SMTP id D5.D8.60698.217FBBE5; Wed, 13
+ May 2020 14:33:06 +0100 (BST)
+Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
+ eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+ 20200513133306eucas1p1ab15386cc4bbcf09052a8175d3660997~OmcQ0RUho0874908749eucas1p1h;
+ Wed, 13 May 2020 13:33:06 +0000 (GMT)
+Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
+ eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
+ 20200513133306eusmtrp17acb0e826bf8839bed666e654ab020ee~OmcQzRtpK1050610506eusmtrp1C;
+ Wed, 13 May 2020 13:33:06 +0000 (GMT)
+X-AuditID: cbfec7f5-a29ff7000001ed1a-ca-5ebbf712814b
+Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
+ eusmgms2.samsung.com (EUCPMTA) with SMTP id 8A.37.07950.217FBBE5; Wed, 13
+ May 2020 14:33:06 +0100 (BST)
+Received: from AMDC2765.digital.local (unknown [106.120.51.73]) by
+ eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
+ 20200513133305eusmtip1eeaac7d44d1f5279193afb39c353dc35~OmcQBSTh80741507415eusmtip1i;
+ Wed, 13 May 2020 13:33:05 +0000 (GMT)
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+To: dri-devel@lists.freedesktop.org, iommu@lists.linux-foundation.org,
+ linaro-mm-sig@lists.linaro.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v5 14/38] drm: mediatek: use common helper for a scatterlist
+ contiguity check
+Date: Wed, 13 May 2020 15:32:21 +0200
+Message-Id: <20200513133245.6408-14-m.szyprowski@samsung.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200513133245.6408-1-m.szyprowski@samsung.com>
+X-Brightmail-Tracker: H4sIAAAAAAAAA0VSaUhUURjlzlvmOTn5GiVvKhkjRQm5oNALM1KkXhYZ1K/AZdSXSm7MqKkF
+ iZbZuGepDSHjZJl7TuI2lbvjgpIpLriN6A8zLXNcUkybx1P7d875zvnOx+USiKgTsyBCwqMY
+ abgkVIwL0NrOzf6zog2Nj0N25Xkqvb+bR1XnV2GUKj0dpXZrsxFqaO0XTpWUdfAoZZMLtTo0
+ w6PUs8MYNdj4GqcGkwYAVdE+yacSHztRk1NdKNWyPIddMqHLC8oB/XldidINikk+rS59htN1
+ 6zqMnk7V8uiPRY/o8Z1ZhM4ZLQa0ZiwBpzP/OtAZNaWA1quP3xTeEVwIZEJDYhip/UU/QfCy
+ IjoyzyS2MFWDJYBpYzkwIiDpDMdzhzE5EBAi8j2AWX90gCOrAL5b6cM5ogewp/4tuh8pVFTz
+ uUExgGPzSv5B5GVTDsa6cNIRypfkOIvNyCcAdqUbsyaE/IRAVeOWYRVBmJK+cHzlIQtR8iTs
+ aXNm7ULSFVaO1PK4MmtY9qEZYbGRQV+YaELZNZCc4sPkIT3gTB6wO2V+L2AKF7Q1fA5bwd6c
+ tL1AEoAz/RV8jqQBOJiYv5d2gRP9Wzh7BUKegVWN9pzsBnX6bj4rQ/IwHF06wsqIAT6vzUM4
+ WQhTkkWc+xRUaCsPalu+ftuz0HDnzWXuedoA3OzcBVnAWvG/SwlAKTBnomVhQYzMKZy5byeT
+ hMmiw4PsAiLC1MDwu3p3tGv14Mu2fysgCSA2FupGND4iTBIjiwtrBZBAxGbCG1UGSRgoiYtn
+ pBG+0uhQRtYKLAlUbC50Un33FpFBkijmHsNEMtL9KY8wskgAvMWSnIxRZXuP2nPDW2XFq4gH
+ KdqUztgr4piOoJ91s81Fi6/yT/wutTnN2NuiMx4ttwcCfNwRLeZv4zG7PbfUUvdDz5RrJG7n
+ nrYf82qfHxvcKHtguXvVXXc3bifTy3M8zjj00GKuZ17A0S3XxhcW0sqihrHIvlvXlNcF8jK/
+ AjEqC5Y42iJSmeQf1keEsVkDAAA=
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrJIsWRmVeSWpSXmKPExsVy+t/xu7pC33fHGcy+L2bRe+4kk8XGGetZ
+ LRb19rJY/N82kdniytf3bBYrVx9lsliw39riy5WHTBabHl9jtbi8aw6bxeXmi4wWa4/cZbdo
+ ajG2uHvvBIvFwQ9PWB34PdbMW8PosffbAhaPnbPusntsWtXJ5rH92wNWj/vdx5k8Ni+p97j9
+ 7zGzx+Qbyxk9dt9sYPPo/2vg0bdlFaPH501yAbxRejZF+aUlqQoZ+cUltkrRhhZGeoaWFnpG
+ JpZ6hsbmsVZGpkr6djYpqTmZZalF+nYJehkfZpUWTOevWNi9m7WB8T5PFyMnh4SAicTCWRvZ
+ uxi5OIQEljJKbL58iR0iISNxcloDK4QtLPHnWhcbRNEnRoknfceYQBJsAoYSXW8hEiICnYwS
+ 07o/go1iFjjGLLHx8XtmkCphgViJPzd6gKo4OFgEVCVOHTYBCfMK2Eqsu76NCWKDvMTqDQfA
+ yjmB4q/u7GcBsYUE8iX2Lt7HNoGRbwEjwypGkdTS4tz03GIjveLE3OLSvHS95PzcTYzAaNp2
+ 7OeWHYxd74IPMQpwMCrx8Frc2h0nxJpYVlyZe4hRgoNZSYTXbz1QiDclsbIqtSg/vqg0J7X4
+ EKMp0E0TmaVEk/OBkZ5XEm9oamhuYWlobmxubGahJM7bIXAwRkggPbEkNTs1tSC1CKaPiYNT
+ qoFxyUSTjBO8S79PKvCevEr5lMybdduMYlhSU49uD389+c7n8kdt0x3Nbu9wXiag/GBfosed
+ Lxd5mj48/pS1/vjFZ+pr1F5mqJx+8OcLd8OWyOu/eeb08k+SWLN/hdwt++5IVQNjQ+7Ky21n
+ y15KvJ1/I/9GUrm7AtOiJ1rFxvuUX33tZ875peHYq8RSnJFoqMVcVJwIAI8m24y8AgAA
+X-CMS-MailID: 20200513133306eucas1p1ab15386cc4bbcf09052a8175d3660997
+X-Msg-Generator: CA
+X-RootMTR: 20200513133306eucas1p1ab15386cc4bbcf09052a8175d3660997
+X-EPHeader: CA
+CMS-TYPE: 201P
+X-CMS-RootMailID: 20200513133306eucas1p1ab15386cc4bbcf09052a8175d3660997
+References: <20200513132114.6046-1-m.szyprowski@samsung.com>
+ <20200513133245.6408-1-m.szyprowski@samsung.com>
+ <CGME20200513133306eucas1p1ab15386cc4bbcf09052a8175d3660997@eucas1p1.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200513_010950_461532_E2B54FF8 
-X-CRM114-Status: GOOD (  17.46  )
+X-CRM114-CacheID: sfid-20200513_063309_218506_EF42EAA0 
+X-CRM114-Status: GOOD (  14.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,59 +136,82 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree <devicetree@vger.kernel.org>, Felix Fietkau <nbd@openwrt.org>,
- Arnd Bergmann <arnd@arndb.de>, Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- netdev <netdev@vger.kernel.org>, Sean Wang <sean.wang@mediatek.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "David S . Miller" <davem@davemloft.net>, Fabien Parent <fparent@baylibre.com>,
- linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Mark Lee <Mark-MC.Lee@mediatek.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ David Airlie <airlied@linux.ie>, linux-mediatek@lists.infradead.org,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Robin Murphy <robin.murphy@arm.com>, Christoph Hellwig <hch@lst.de>,
+ linux-arm-kernel@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-xZtyLiwgMTMgbWFqIDIwMjAgbyAwNDozOCBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPiBu
-YXBpc2HFgihhKToKPgo+IE9uIFR1ZSwgTWF5IDA1LCAyMDIwIGF0IDA0OjAyOjIxUE0gKzAyMDAs
-IEJhcnRvc3ogR29sYXN6ZXdza2kgd3JvdGU6Cj4gPiBGcm9tOiBCYXJ0b3N6IEdvbGFzemV3c2tp
-IDxiZ29sYXN6ZXdza2lAYmF5bGlicmUuY29tPgo+ID4KPiA+IFRoaXMgYWRkcyBhIGJpbmRpbmcg
-ZG9jdW1lbnQgZm9yIHRoZSBQRVJJQ0ZHIGNvbnRyb2xsZXIgcHJlc2VudCBvbgo+ID4gTWVkaWFU
-ZWsgU29Dcy4gRm9yIG5vdyB0aGUgb25seSB2YXJpYW50IHN1cHBvcnRlZCBpcyAnbXQ4NTE2LXBl
-cmljZmcnLgo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6IEJhcnRvc3ogR29sYXN6ZXdza2kgPGJnb2xh
-c3pld3NraUBiYXlsaWJyZS5jb20+Cj4gPiAtLS0KPiA+ICAuLi4vYXJtL21lZGlhdGVrL21lZGlh
-dGVrLHBlcmljZmcueWFtbCAgICAgICAgfCAzNCArKysrKysrKysrKysrKysrKysrCj4gPiAgMSBm
-aWxlIGNoYW5nZWQsIDM0IGluc2VydGlvbnMoKykKPiA+ICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9j
-dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9tZWRpYXRlay9tZWRpYXRlayxwZXJp
-Y2ZnLnlhbWwKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
-bmRpbmdzL2FybS9tZWRpYXRlay9tZWRpYXRlayxwZXJpY2ZnLnlhbWwgYi9Eb2N1bWVudGF0aW9u
-L2RldmljZXRyZWUvYmluZGluZ3MvYXJtL21lZGlhdGVrL21lZGlhdGVrLHBlcmljZmcueWFtbAo+
-ID4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiA+IGluZGV4IDAwMDAwMDAwMDAwMC4uNzRiMmE2MTcz
-ZmZiCj4gPiAtLS0gL2Rldi9udWxsCj4gPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvYXJtL21lZGlhdGVrL21lZGlhdGVrLHBlcmljZmcueWFtbAo+ID4gQEAgLTAsMCAr
-MSwzNCBAQAo+ID4gKyMgU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IChHUEwtMi4wIE9SIEJTRC0y
-LUNsYXVzZSkKPiA+ICslWUFNTCAxLjIKPiA+ICstLS0KPiA+ICskaWQ6ICJodHRwOi8vZGV2aWNl
-dHJlZS5vcmcvc2NoZW1hcy9hcm0vbWVkaWF0ZWsvbWVkaWF0ZWsscGVyaWNmZy55YW1sIyIKPiA+
-ICskc2NoZW1hOiAiaHR0cDovL2RldmljZXRyZWUub3JnL21ldGEtc2NoZW1hcy9jb3JlLnlhbWwj
-Igo+ID4gKwo+ID4gK3RpdGxlOiBNZWRpYVRlayBQZXJpcGhlcmFsIENvbmZpZ3VyYXRpb24gQ29u
-dHJvbGxlcgo+ID4gKwo+ID4gK21haW50YWluZXJzOgo+ID4gKyAgLSBCYXJ0b3N6IEdvbGFzemV3
-c2tpIDxiZ29sYXN6ZXdza2lAYmF5bGlicmUuY29tPgo+ID4gKwo+ID4gK3Byb3BlcnRpZXM6Cj4g
-PiArICBjb21wYXRpYmxlOgo+ID4gKyAgICBvbmVPZjoKPgo+IERvbid0IG5lZWQgb25lT2YuCj4K
-PiA+ICsgICAgICAtIGl0ZW1zOgo+ID4gKyAgICAgICAgLSBlbnVtOgo+ID4gKyAgICAgICAgICAt
-IG1lZGlhdGVrLHBlcmljZmcKPgo+IFBFUklDRkcgaXMgZXhhY3RseSB0aGUgc2FtZSByZWdpc3Rl
-ciBzZXQgYW5kIGZ1bmN0aW9ucyBvbiBhbGwgTWVkaWF0ZWsKPiBTb0NzPyBOZWVkcyB0byBiZSBt
-b3JlIHNwZWNpZmljLgo+Cj4gPiArICAgICAgICAtIGNvbnN0OiBzeXNjb24KPiA+ICsKPiA+ICsg
-IHJlZzoKPiA+ICsgICAgbWF4SXRlbXM6IDEKPiA+ICsKPiA+ICtyZXF1aXJlZDoKPiA+ICsgIC0g
-Y29tcGF0aWJsZQo+ID4gKyAgLSByZWcKPiA+ICsKPiA+ICthZGRpdGlvbmFsUHJvcGVydGllczog
-ZmFsc2UKPiA+ICsKPiA+ICtleGFtcGxlczoKPiA+ICsgIC0gfAo+ID4gKyAgICBwZXJpY2ZnOiBw
-ZXJpY2ZnQDEwMDAzMDUwIHsKPiA+ICsgICAgICAgIGNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4
-NTE2LXBlcmljZmciLCAic3lzY29uIjsKPiA+ICsgICAgICAgIHJlZyA9IDwwIDB4MTAwMDMwNTAg
-MCAweDEwMDA+Owo+Cj4gRGVmYXVsdCBmb3IgZXhhbXBsZXMgaXMgMSBjZWxsIGZvciBhZGRyIGFu
-ZCBzaXplLgo+Cj4gPiArICAgIH07Cj4gPiAtLQo+ID4gMi4yNS4wCj4gPgoKSGkgUm9iLAoKSSBz
-b21laG93IG1pc3NlZCB0aGUgZmFjdCB0aGF0IHRoZXJlIGFscmVhZHkgaXMgYW4gb2xkLXN0eWxl
-IHR4dApiaW5kaW5nIGRvY3VtZW50IGZvciBwZXJpY2ZnLiBJJ2xsIGZpcnN0IGNvbnZlcnQgaXQg
-YW5kIHRoZW4gYWRkIHRoZQpuZXcgY29tcGF0aWJsZS4KCkJhcnQKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlz
-dApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+Use common helper for checking the contiguity of the imported dma-buf and
+do this check before allocating resources, so the error path is simpler.
+
+Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+---
+For more information, see '[PATCH v5 00/38] DRM: fix struct sg_table nents
+vs. orig_nents misuse' thread:
+https://lore.kernel.org/linux-iommu/20200513132114.6046-1-m.szyprowski@samsung.com/T/
+---
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c | 25 ++++++-------------------
+ 1 file changed, 6 insertions(+), 19 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index b04a3c2..6c34c06 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -212,34 +212,21 @@ struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_device *dev,
+ 			struct dma_buf_attachment *attach, struct sg_table *sg)
+ {
+ 	struct mtk_drm_gem_obj *mtk_gem;
+-	int ret;
+-	struct scatterlist *s;
+-	unsigned int i;
+-	dma_addr_t expected;
+ 
+-	mtk_gem = mtk_drm_gem_init(dev, attach->dmabuf->size);
++	/* check if the entries in the sg_table are contiguous */
++	if (drm_prime_get_contiguous_size(sg) < attach->dmabuf->size) {
++		DRM_ERROR("sg_table is not contiguous");
++		return ERR_PTR(-EINVAL);
++	}
+ 
++	mtk_gem = mtk_drm_gem_init(dev, attach->dmabuf->size);
+ 	if (IS_ERR(mtk_gem))
+ 		return ERR_CAST(mtk_gem);
+ 
+-	expected = sg_dma_address(sg->sgl);
+-	for_each_sg(sg->sgl, s, sg->nents, i) {
+-		if (sg_dma_address(s) != expected) {
+-			DRM_ERROR("sg_table is not contiguous");
+-			ret = -EINVAL;
+-			goto err_gem_free;
+-		}
+-		expected = sg_dma_address(s) + sg_dma_len(s);
+-	}
+-
+ 	mtk_gem->dma_addr = sg_dma_address(sg->sgl);
+ 	mtk_gem->sg = sg;
+ 
+ 	return &mtk_gem->base;
+-
+-err_gem_free:
+-	kfree(mtk_gem);
+-	return ERR_PTR(ret);
+ }
+ 
+ void *mtk_drm_gem_prime_vmap(struct drm_gem_object *obj)
+-- 
+1.9.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
