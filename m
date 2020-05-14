@@ -2,78 +2,61 @@ Return-Path: <SRS0=tiIh=64=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E1E3C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 15:11:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3210FC433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 15:43:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 73BD9205CB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 15:11:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E9FF820657
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 15:43:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MeeFx5RQ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="c31NXb2f"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 73BD9205CB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AWkJ304j"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9FF820657
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=myvmztylGPj7qQ5MCyt3aex0mbhHNJrfZJtRF1SFi5o=; b=MeeFx5RQ+xJswp
-	SuODwU86VFejEmAGcGPgkWBstf4Y+plt0gN+w+/tLEl6LjxeCSYue1kISaQCZlyE9Jvq4dB9XAb1l
-	jbqr+3O+urqk+Tg0/juThRrf/LzpJtJLQLw9jgzMHiHHTbFIXjxhZ28hwFMc0KFCO5fi/ajJtjkAY
-	9XAwz+RkL83AmUDzS60E5VW6vYgngAlpng/nr9rnO0B3KC9P2XC+63llwp2sA5Vbm1zj575UUkdMw
-	lEnDgD/uLwDSXq2f0dO9pKPEL7xjAOTph2r9QcTLiiNYCIxqq4dvJ27hA/aXfMDd3tTjSGBV89msV
-	1ZnFnApD75p/dV4VQAVg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hOXNE5O+b5KPV7vEJJmRUpsxXuZn+tEWwd/5C1JHi8s=; b=AWkJ304jDZ1JO7
+	tVonTNeLrUcAiTKO+7NpFlJabQ3S/VPwRG6bEBGKLR0udk7qpP3YOyx5JUlPmgKZ6UepMW45DeiYo
+	ulMEgWq+Jko/GPslV4f8iiMmfPHMpFBYyV6EONJrsik4kDh41L/pq9hrz833viNrYeywBlcWP5TFr
+	sAJ11Vs2uozHfCVQJ5gEUoONGlC7MWAWhxYrCNAaYcVwXNhNEjwjzOCVrD2gXDedKTQMlcXX5D/fc
+	Z93vQOnKhsJUA5WKEW2eZq+AJCF+wQdJtlvNDb1sU+DS4sz6picQ7Em0DGdllXWc1RNiQmvQezIPb
+	A8eNOVc6oCSUE3pAGcRg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZFWS-0007iN-Nv; Thu, 14 May 2020 15:11:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jZG0Y-0006Ay-TH; Thu, 14 May 2020 15:42:50 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZFWE-0007a7-V3; Thu, 14 May 2020 15:11:37 +0000
-X-UUID: 0daa59a8d66145c78efbd4e6139d6186-20200514
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=bo0m4IuwC/3AaIjNIjRmx35SXEKkw+0nqdXJxel0Jmo=; 
- b=c31NXb2f/PPtqpSXR00lY03bttsAoNXWidgf+gq1tpejAmuGociOJhwngPfG4w8aFZ9nACraDQpLc0TJjEyrtVaeR9mxngqmAl/P1FGKt7LOqgCUGWeQoNfB65ugrykp6xM+XN2K/XDfZNsBcU6HgVNRFYe3FUA4uMq6gRhpCac=;
-X-UUID: 0daa59a8d66145c78efbd4e6139d6186-20200514
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <stanley.chu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 569562355; Thu, 14 May 2020 07:11:29 -0800
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 May 2020 08:01:23 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 May 2020 23:01:21 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 14 May 2020 23:01:21 +0800
-From: Stanley Chu <stanley.chu@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
- <avri.altman@wdc.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
- <asutoshd@codeaurora.org>
-Subject: [PATCH v2 4/4] scsi: ufs: Fix WriteBooster flush during runtime
- suspend
-Date: Thu, 14 May 2020 23:01:22 +0800
-Message-ID: <20200514150122.32110-5-stanley.chu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20200514150122.32110-1-stanley.chu@mediatek.com>
-References: <20200514150122.32110-1-stanley.chu@mediatek.com>
+ id 1jZG05-0005jZ-F7; Thu, 14 May 2020 15:42:25 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id E7DE12A2F7B
+Subject: Re: [PATCH v4 7/7] drm/mediatek: mtk_dsi: Create connector for bridges
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Enric Balletbo Serra <eballetbo@gmail.com>
+References: <20200501152335.1805790-1-enric.balletbo@collabora.com>
+ <20200501152335.1805790-8-enric.balletbo@collabora.com>
+ <CAFqH_53h=3OXzwLnw1XT3rHYkMPOPNFBdQdPeFmNubN9qq_Twg@mail.gmail.com>
+ <CAAOTY_-pOUuM7LQ1jm6gqpg8acMqDWOHxGucY5XOjq0ctGUkzA@mail.gmail.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Message-ID: <53683f2d-23c7-57ab-2056-520c50795ffe@collabora.com>
+Date: Thu, 14 May 2020 17:42:15 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <CAAOTY_-pOUuM7LQ1jm6gqpg8acMqDWOHxGucY5XOjq0ctGUkzA@mail.gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200514_081131_004971_C20D2B02 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20200514_084221_768073_4EE06D69 
+X-CRM114-Status: GOOD (  26.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,122 +68,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: bvanassche@acm.org, andy.teng@mediatek.com, chun-hung.wu@mediatek.com,
- kuohong.wang@mediatek.com, linux-kernel@vger.kernel.org, cang@codeaurora.org,
- linux-mediatek@lists.infradead.org, peter.wang@mediatek.com,
- matthias.bgg@gmail.com, Stanley Chu <stanley.chu@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, beanhuo@micron.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Nicolas Boichat <drinkcat@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, linux-kernel <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Collabora Kernel ML <kernel@collabora.com>, Sam Ravnborg <sam@ravnborg.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently UFS host driver promises VCC supply if UFS device
-needs to do WriteBooster flush during runtime suspend.
-
-However the UFS specification mentions,
-
-"While the flushing operation is in progress, the device is
-in Active power mode."
-
-Therefore UFS host driver needs to promise more: Keep UFS
-device as "Active power mode", otherwise UFS device shall not
-do any flush if device enters Sleep or PowerDown power mode.
-
-Fix this by not changing device power mode if WriteBooster
-flush is required in ufshcd_suspend().
-
-Signed-off-by: Stanley Chu <stanley.chu@mediatek.com>
----
- drivers/scsi/ufs/ufs.h    |  1 -
- drivers/scsi/ufs/ufshcd.c | 42 ++++++++++++++++++++-------------------
- 2 files changed, 22 insertions(+), 21 deletions(-)
-
-diff --git a/drivers/scsi/ufs/ufs.h b/drivers/scsi/ufs/ufs.h
-index b3135344ab3f..9e4bc2e97ada 100644
---- a/drivers/scsi/ufs/ufs.h
-+++ b/drivers/scsi/ufs/ufs.h
-@@ -577,7 +577,6 @@ struct ufs_dev_info {
- 	u32 d_ext_ufs_feature_sup;
- 	u8 b_wb_buffer_type;
- 	u32 d_wb_alloc_units;
--	bool keep_vcc_on;
- 	u8 b_presrv_uspc_en;
- };
- 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 169a3379e468..b9f7744ca2b4 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -8101,8 +8101,7 @@ static void ufshcd_vreg_set_lpm(struct ufs_hba *hba)
- 	    !hba->dev_info.is_lu_power_on_wp) {
- 		ufshcd_setup_vreg(hba, false);
- 	} else if (!ufshcd_is_ufs_dev_active(hba)) {
--		if (!hba->dev_info.keep_vcc_on)
--			ufshcd_toggle_vreg(hba->dev, hba->vreg_info.vcc, false);
-+		ufshcd_toggle_vreg(hba->dev, hba->vreg_info.vcc, false);
- 		if (!ufshcd_is_link_active(hba)) {
- 			ufshcd_config_vreg_lpm(hba, hba->vreg_info.vccq);
- 			ufshcd_config_vreg_lpm(hba, hba->vreg_info.vccq2);
-@@ -8172,6 +8171,7 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 	enum ufs_pm_level pm_lvl;
- 	enum ufs_dev_pwr_mode req_dev_pwr_mode;
- 	enum uic_link_state req_link_state;
-+	bool keep_curr_dev_pwr_mode = false;
- 
- 	hba->pm_op_in_progress = 1;
- 	if (!ufshcd_is_shutdown_pm(pm_op)) {
-@@ -8227,27 +8227,29 @@ static int ufshcd_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 			ufshcd_disable_auto_bkops(hba);
- 		}
- 		/*
--		 * With wb enabled, if the bkops is enabled or if the
--		 * configured WB type is 70% full, keep vcc ON
--		 * for the device to flush the wb buffer
-+		 * If device needs to do BKOP or WB buffer flush during
-+		 * Hibern8, keep device power mode as "active power mode"
-+		 * and VCC supply.
- 		 */
--		if ((hba->auto_bkops_enabled && ufshcd_is_wb_allowed(hba)) ||
--		    ufshcd_wb_keep_vcc_on(hba))
--			hba->dev_info.keep_vcc_on = true;
--		else
--			hba->dev_info.keep_vcc_on = false;
--	} else {
--		hba->dev_info.keep_vcc_on = false;
-+		keep_curr_dev_pwr_mode = hba->auto_bkops_enabled ||
-+			(((req_link_state == UIC_LINK_HIBERN8_STATE) ||
-+			((req_link_state == UIC_LINK_ACTIVE_STATE) &&
-+			ufshcd_is_auto_hibern8_enabled(hba))) &&
-+			ufshcd_wb_keep_vcc_on(hba));
- 	}
- 
--	if ((req_dev_pwr_mode != hba->curr_dev_pwr_mode) &&
--	    ((ufshcd_is_runtime_pm(pm_op) && !hba->auto_bkops_enabled) ||
--	    !ufshcd_is_runtime_pm(pm_op))) {
--		/* ensure that bkops is disabled */
--		ufshcd_disable_auto_bkops(hba);
--		ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
--		if (ret)
--			goto enable_gating;
-+	if (req_dev_pwr_mode != hba->curr_dev_pwr_mode) {
-+		if ((ufshcd_is_runtime_pm(pm_op) && !hba->auto_bkops_enabled) ||
-+		    !ufshcd_is_runtime_pm(pm_op)) {
-+			/* ensure that bkops is disabled */
-+			ufshcd_disable_auto_bkops(hba);
-+		}
-+
-+		if (!keep_curr_dev_pwr_mode) {
-+			ret = ufshcd_set_dev_pwr_mode(hba, req_dev_pwr_mode);
-+			if (ret)
-+				goto enable_gating;
-+		}
- 	}
- 
- 	flush_work(&hba->eeh_work);
--- 
-2.18.0
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgQ2h1bi1LdWFuZywKCk9uIDE0LzUvMjAgMTY6MjgsIENodW4tS3VhbmcgSHUgd3JvdGU6Cj4g
+SGksIEVucmljOgo+IAo+IEVucmljIEJhbGxldGJvIFNlcnJhIDxlYmFsbGV0Ym9AZ21haWwuY29t
+PiDmlrwgMjAyMOW5tDXmnIgxNOaXpSDpgLHlm5sg5LiK5Y2IMTI6NDHlr6vpgZPvvJoKPj4KPj4g
+SGkgQ2h1bi1LdWFuZywKPj4KPj4gTWlzc2F0Z2UgZGUgRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8
+ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4gZGVsCj4+IGRpYSBkdi4sIDEgZGUgbWFpZyAy
+MDIwIGEgbGVzIDE3OjI1Ogo+Pj4KPj4+IFVzZSB0aGUgZHJtX2JyaWRnZV9jb25uZWN0b3IgaGVs
+cGVyIHRvIGNyZWF0ZSBhIGNvbm5lY3RvciBmb3IgcGlwZWxpbmVzCj4+PiB0aGF0IHVzZSBkcm1f
+YnJpZGdlLiBUaGlzIGFsbG93cyBzcGxpdHRpbmcgY29ubmVjdG9yIG9wZXJhdGlvbnMgYWNyb3Nz
+Cj4+PiBtdWx0aXBsZSBicmlkZ2VzIHdoZW4gbmVjZXNzYXJ5LCBpbnN0ZWFkIG9mIGhhdmluZyB0
+aGUgbGFzdCBicmlkZ2UgaW4KPj4+IHRoZSBjaGFpbiBjcmVhdGluZyB0aGUgY29ubmVjdG9yIGFu
+ZCBoYW5kbGluZyBhbGwgY29ubmVjdG9yIG9wZXJhdGlvbnMKPj4+IGludGVybmFsbHkuCj4+Pgo+
+Pj4gU2lnbmVkLW9mZi1ieTogRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9A
+Y29sbGFib3JhLmNvbT4KPj4+IEFja2VkLWJ5OiBTYW0gUmF2bmJvcmcgPHNhbUByYXZuYm9yZy5v
+cmc+Cj4+Cj4+IEEgZ2VudGxlIHBpbmcgb24gdGhpcywgSSB0aGluayB0aGF0IHRoaXMgb25lIGlz
+IHRoZSBvbmx5IG9uZSB0aGF0Cj4+IHN0aWxsIG5lZWRzIGEgcmV2aWV3IGluIHRoZSBzZXJpZXMu
+Cj4gCj4gVGhpcyBpcyB3aGF0IEkgcmVwbHkgaW4gcGF0Y2ggdjM6Cj4gCgpTb3JyeSBmb3IgbWlz
+c2luZyB0aGlzLgoKPiBJIHRoaW5rIHRoZSBwYW5lbCBpcyB3cmFwcGVkIGludG8gbmV4dF9icmlk
+Z2UgaGVyZSwKPiAKClllcywgeW91IGNhbiBoYXZlIGZvciBleGFtcGxlOgoKMS4gZHJtX2JyaWRn
+ZSAobXRrX2RzaSkgLT4gZHJtX2JyaWRnZSAocHM4NjQwIC0gZHNpLXRvLWVkcCkgLT4gZHJtX3Bh
+bmVsX2JyaWRnZQooZWRwIHBhbmVsKQoKb3IgYQoKMi4gZHJtX2JyaWRnZSAobXRrX2RzaSktPiBk
+cm1fcGFuZWxfYnJpZGdlIChkc2kgcGFuZWwpCgpUaGUgX2ZpcnN0XyBvbmUgaXMgbXkgdXNlIGNh
+c2UKCj4gaWYgKHBhbmVsKSB7CgpUaGlzIGhhbmRsZXMgdGhlIHNlY29uZCBjYXNlLCB3aGVyZSB5
+b3UgYXR0YWNoIGEgZHNpIHBhbmVsLgoKPiAgICAgZHNpLT5uZXh0X2JyaWRnZSA9IGRldm1fZHJt
+X3BhbmVsX2JyaWRnZV9hZGQoZGV2LCBwYW5lbCk7Cj4gCj4gc28gdGhlIG5leHRfYnJpZGdlIGlz
+IGEgcGFuZWxfYnJpZGdlLCBpbiBpdHMgYXR0YWNoIGZ1bmN0aW9uCj4gcGFuZWxfYnJpZGdlX2F0
+dGFjaCgpLAo+IGFjY29yZGluZyB0byB0aGUgZmxhZyBEUk1fQlJJREdFX0FUVEFDSF9OT19DT05O
+RUNUT1IsIGlmIG5vdCBleGlzdCwKPiBpdCB3b3VsZCBjcmVhdGUgY29ubmVjdG9yIGFuZCBhdHRh
+Y2ggY29ubmVjdG9yIHRvIHBhbmVsLgo+IAo+IEknbSBub3Qgc3VyZSB0aGlzIGZsYWcgd291bGQg
+ZXhpc3Qgb3Igbm90LCBidXQgZm9yIGJvdGggY2FzZSwgaXQncyBzdHJhbmdlLgo+IElmIGV4aXN0
+LCB5b3UgY3JlYXRlIGNvbm5lY3RvciBpbiB0aGlzIHBhdGNoIGJ1dCBubyB3aGVyZSB0byBhdHRh
+Y2gKPiBjb25uZWN0b3IgdG8gcGFuZWwuCgpZZXMsIGluIGZhY3QsIHRoaXMgaXMgdHJhbnNpdGlv
+bmFsIHBhdGNoIG5lZWRlZCwgYXMgb25jZSBJIGNvbnZlcnRlZCBtdGtfZHBpLAptdGtfZHNpIGFu
+ZCBtdGtfaGRtaSB0byB0aGUgbmV3IGRybV9icmlkZ2UgQVBJIHRoZSBkcm1fYnJpZGdlX2Nvbm5l
+Y3Rvcl9pbml0KCkKd2lsbCBiZSBkb25lIGluIG10a19kcm1fZHJ2LiBXZSB3aWxsIG5lZWQgdG8g
+Y2FsbCBkcm1fYnJpZGdlX2Nvbm5lY3Rvcl9pbml0IGZvcgpkcGkgYW5kIGRzaSBwaXBlcyBhbmQg
+cmVtb3ZlIHRoYXQgY2FsbCBmcm9tIG10a19kc2kgYW5kIG10a19kcGkgZHJpdmVycy4gVGhlCmdy
+YXBoaWMgY29udHJvbGxlciBkcml2ZXIgc2hvdWxkIGNyZWF0ZSBjb25uZWN0b3JzIGFuZCBDUlRD
+cywgYXMgZXhhbXBsZSB5b3UgY2FuCnRha2UgYSBsb29rIGF0IGRyaXZlcnMvZ3B1L2RybS9vbWFw
+ZHJtL29tYXBfZHJ2LmMKCj4gSWYgbm90IGV4aXN0LCB0aGUgbmV4dF9icmlnZSB3b3VsZCBjcmVh
+dGUgb25lIGNvbm5lY3RvciBhbmQgdGhpcyBicmlnZQo+IHdvdWxkIGNyZWF0ZSBhbm90aGVyIGNv
+bm5lY3Rvci4KPiAKPiBJIHRoaW5rIGluIHlvdXIgY2FzZSwgbXRrX2RzaSBkb2VzIG5vdCBkaXJl
+Y3RseSBjb25uZWN0IHRvIGEgcGFuZWwsIHNvCgpFeGFjdGx5Cgo+IEkgbmVlZCBhIGV4YWN0IGV4
+cGxhaW4uIE9yIHNvbWVvbmUgY291bGQgdGVzdCB0aGlzIG9uIGEKPiBkaXJlY3RseS1jb25uZWN0
+LXBhbmVsIHBsYXRmb3JtLgoKSSBkb24ndCB0aGluayBJIGFtIGJyZWFraW5nIHRoaXMgdXNlIGNh
+c2UgYnV0IEFGQUlDUyB0aGVyZSBpcyBubyB1c2VycyBpbgptYWlubGluZSB0aGF0IGRpcmVjdGx5
+IGNvbm5lY3QgYSBwYW5lbCB1c2luZyB0aGUgbWVkaWF0ZWsgZHJpdmVyLiBBcyBJIHNhaWQgbXkK
+dXNlIGNhc2UgaXMgdGhlIG90aGVyIHNvIEkgY2FuJ3QgcmVhbGx5IHRlc3QuIERvIHlvdSBrbm93
+IGFueW9uZSB0aGF0IGNhbiB0ZXN0IHRoaXM/CgpUaGFua3MsCiBFbnJpYwoKPiAKPiBSZWdhcmRz
+LAo+IENodW4tS3VhbmcuCj4gCj4+Cj4+IFRoYW5rcywKPj4gIEVucmljCj4+Cj4+PiAtLS0KPj4+
+Cj4+PiBDaGFuZ2VzIGluIHY0OiBOb25lCj4+PiBDaGFuZ2VzIGluIHYzOgo+Pj4gLSBNb3ZlIHRo
+ZSBicmlkZ2UudHlwZSBsaW5lIHRvIHRoZSBwYXRjaCB0aGF0IGFkZHMgZHJtX2JyaWRnZSBzdXBw
+b3J0LiAoTGF1cmVudCBQaW5jaGFydCkKPj4+Cj4+PiBDaGFuZ2VzIGluIHYyOiBOb25lCj4+Pgo+
+Pj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCAxMyArKysrKysrKysrKyst
+Cj4+PiAgMSBmaWxlIGNoYW5nZWQsIDEyIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPj4+
+Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyBiL2Ry
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPj4+IGluZGV4IDRmM2JkMDk1YzFlZS4u
+NDcxZmNhZmRmMzQ4IDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kc2kuYwo+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+Pj4g
+QEAgLTE3LDYgKzE3LDcgQEAKPj4+Cj4+PiAgI2luY2x1ZGUgPGRybS9kcm1fYXRvbWljX2hlbHBl
+ci5oPgo+Pj4gICNpbmNsdWRlIDxkcm0vZHJtX2JyaWRnZS5oPgo+Pj4gKyNpbmNsdWRlIDxkcm0v
+ZHJtX2JyaWRnZV9jb25uZWN0b3IuaD4KPj4+ICAjaW5jbHVkZSA8ZHJtL2RybV9taXBpX2RzaS5o
+Pgo+Pj4gICNpbmNsdWRlIDxkcm0vZHJtX29mLmg+Cj4+PiAgI2luY2x1ZGUgPGRybS9kcm1fcGFu
+ZWwuaD4KPj4+IEBAIC0xODMsNiArMTg0LDcgQEAgc3RydWN0IG10a19kc2kgewo+Pj4gICAgICAg
+ICBzdHJ1Y3QgZHJtX2VuY29kZXIgZW5jb2RlcjsKPj4+ICAgICAgICAgc3RydWN0IGRybV9icmlk
+Z2UgYnJpZGdlOwo+Pj4gICAgICAgICBzdHJ1Y3QgZHJtX2JyaWRnZSAqbmV4dF9icmlkZ2U7Cj4+
+PiArICAgICAgIHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3I7Cj4+PiAgICAgICAgIHN0
+cnVjdCBwaHkgKnBoeTsKPj4+Cj4+PiAgICAgICAgIHZvaWQgX19pb21lbSAqcmVnczsKPj4+IEBA
+IC05NzcsMTAgKzk3OSwxOSBAQCBzdGF0aWMgaW50IG10a19kc2lfZW5jb2Rlcl9pbml0KHN0cnVj
+dCBkcm1fZGV2aWNlICpkcm0sIHN0cnVjdCBtdGtfZHNpICpkc2kpCj4+PiAgICAgICAgICAqLwo+
+Pj4gICAgICAgICBkc2ktPmVuY29kZXIucG9zc2libGVfY3J0Y3MgPSAxOwo+Pj4KPj4+IC0gICAg
+ICAgcmV0ID0gZHJtX2JyaWRnZV9hdHRhY2goJmRzaS0+ZW5jb2RlciwgJmRzaS0+YnJpZGdlLCBO
+VUxMLCAwKTsKPj4+ICsgICAgICAgcmV0ID0gZHJtX2JyaWRnZV9hdHRhY2goJmRzaS0+ZW5jb2Rl
+ciwgJmRzaS0+YnJpZGdlLCBOVUxMLAo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBEUk1fQlJJREdFX0FUVEFDSF9OT19DT05ORUNUT1IpOwo+Pj4gICAgICAgICBpZiAocmV0KQo+
+Pj4gICAgICAgICAgICAgICAgIGdvdG8gZXJyX2NsZWFudXBfZW5jb2RlcjsKPj4+Cj4+PiArICAg
+ICAgIGRzaS0+Y29ubmVjdG9yID0gZHJtX2JyaWRnZV9jb25uZWN0b3JfaW5pdChkcm0sICZkc2kt
+PmVuY29kZXIpOwo+Pj4gKyAgICAgICBpZiAoSVNfRVJSKGRzaS0+Y29ubmVjdG9yKSkgewo+Pj4g
+KyAgICAgICAgICAgICAgIERSTV9FUlJPUigiVW5hYmxlIHRvIGNyZWF0ZSBicmlkZ2UgY29ubmVj
+dG9yXG4iKTsKPj4+ICsgICAgICAgICAgICAgICByZXQgPSBQVFJfRVJSKGRzaS0+Y29ubmVjdG9y
+KTsKPj4+ICsgICAgICAgICAgICAgICBnb3RvIGVycl9jbGVhbnVwX2VuY29kZXI7Cj4+PiArICAg
+ICAgIH0KPj4+ICsgICAgICAgZHJtX2Nvbm5lY3Rvcl9hdHRhY2hfZW5jb2Rlcihkc2ktPmNvbm5l
+Y3RvciwgJmRzaS0+ZW5jb2Rlcik7Cj4+PiArCj4+PiAgICAgICAgIHJldHVybiAwOwo+Pj4KPj4+
+ICBlcnJfY2xlYW51cF9lbmNvZGVyOgo+Pj4gLS0KPj4+IDIuMjYuMgo+Pj4KPj4+Cj4+PiBfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+Pj4gTGludXgtbWVk
+aWF0ZWsgbWFpbGluZyBsaXN0Cj4+PiBMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3Jn
+Cj4+PiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1l
+ZGlhdGVrCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1l
+ZGlhdGVrCg==
