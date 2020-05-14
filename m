@@ -2,75 +2,135 @@ Return-Path: <SRS0=tiIh=64=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PULL_REQUEST,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E01C7C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 13:13:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 992E9C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 13:47:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 901A2206DA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 13:13:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6B7AD20728
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 13:47:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oJzZx+56";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="FdU4dTND"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 901A2206DA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="n65ZR/LD";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="YByCs44I"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6B7AD20728
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
+	Date:Message-ID:From:To:Subject:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6erzoa+vfLaQwSeWkZwElsEcDgXyQZun+ZF2onxWmFU=; b=oJzZx+56CenRId
-	kUUdJxNuFlBmPMlONi+l72T++6CNAyE8ql/ZnPPXOuazdUe+ZwHazlMnZWY/PFqL9CV0E6WoDEX29
-	edR77DWyiYQ4CAYdnAZ19CNWwcqMi4+C9aOjVr6FgrLqpVQmbnevvaNXu0OQYHLHlOHdjYYKexv3N
-	PlngYd3gQ5/EaKgjV2kTgjFAiFZo39YZJ9LQVnV/XZ1go+ckUbxqof9fiZ+GIlqrujTH9bzI7QDue
-	SmFue827Jo6IrzplN7WThLIE1+uXtpSzNUSE4c6sI6JazOcLEwPph8qGEv6Osg6s7GI/Sx6Jv2nWu
-	zY9dRjf7HKuQWv3pUVpw==;
+	List-Owner; bh=qRHSeGNubryY7/r5NEdeUexhuUCJewLMLp/MsC0zA7k=; b=n65ZR/LDTvTX44
+	8vveKRJH8he+HPBrdkbjKWQPC4n0XTwU6nMhPcqDQJHVvYdbzzGZtVMxds+zWbDnmZ+d2FdpHRXyV
+	LXO5dQ7YqmH1z44mkhgok4N6YGkVzw3w3udeCbI+QBxwf8An9ovxYfHZY6Kebibczov2Au/n5I/ns
+	n9NiMA2bXtvuPxFllPw3UeyjPY6j6+WgmYigwyUKmPCIEacVK60jAzghyK/yn46xuoln+ALDv/dXU
+	7zUh7L/vI6yjypipGE7ZdI8WhJHfkuhXdByIN35/1S26pxAEPRfO/ymuCBuoDSP3GH4oXlLolQTyy
+	bURcCl60VYkWZRUb75Zg==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZDgA-0005oI-P4; Thu, 14 May 2020 13:13:38 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1jZED3-0006tL-41; Thu, 14 May 2020 13:47:37 +0000
+Received: from mailout1.w1.samsung.com ([210.118.77.11])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZDfR-00055K-MH; Thu, 14 May 2020 13:12:55 +0000
-X-UUID: 8bad5fe373734484bf3511a69ef86e35-20200514
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=fSwwfj6GBPrtajz76pr50V6AgK3lhKnlqqR4rVRO1iE=; 
- b=FdU4dTNDuxS8yuqQRMY1oDCRiJ3vv12cECzXiWrmQ6BUA6uxRV8KKujZ9HS1C91C6t1P5mQfwFH8oFSwTIWi17nD8waEHsy2CzYI8cpbXuWj9SBVnDrBNbDsC+UByByNvV2t3nUsxFchBCzy7uBr2UHBbBM8IsSBDCaMIE6fzSY=;
-X-UUID: 8bad5fe373734484bf3511a69ef86e35-20200514
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <qii.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLS)
- with ESMTP id 421477445; Thu, 14 May 2020 05:12:37 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 May 2020 06:12:33 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 May 2020 21:12:32 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 14 May 2020 21:12:31 +0800
-From: Qii Wang <qii.wang@mediatek.com>
-To: <wsa@the-dreams.de>
-Subject: [PATCH v2 2/2] i2c: mediatek: Add i2c ac-timing adjust support
-Date: Thu, 14 May 2020 21:09:05 +0800
-Message-ID: <1589461844-15614-3-git-send-email-qii.wang@mediatek.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1589461844-15614-1-git-send-email-qii.wang@mediatek.com>
-References: <1589461844-15614-1-git-send-email-qii.wang@mediatek.com>
+ id 1jZECx-0006rp-G3
+ for linux-mediatek@lists.infradead.org; Thu, 14 May 2020 13:47:35 +0000
+Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
+ by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id
+ 20200514134728euoutp01fb7d7d4d4ffd62c15a1dc625e2a247df~O6SGJxAy92977129771euoutp01B
+ for <linux-mediatek@lists.infradead.org>; Thu, 14 May 2020 13:47:28 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com
+ 20200514134728euoutp01fb7d7d4d4ffd62c15a1dc625e2a247df~O6SGJxAy92977129771euoutp01B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1589464048;
+ bh=kFo4YmJ95lBc3IqfS/RGPSyuKA+qhA+R/7/c5I3GdSc=;
+ h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
+ b=YByCs44IqL+e9bIOfEbrQi2g6xlPzPNuR87Rt1x30KBRWl4XNTL7vOsa5PB24nnoV
+ E8pEBoqi4aLV8vDqIsPPn56kRrcxDh+3Z31luxTI+zh8zaKw5ZgPolSjabmpn8NrZW
+ iI2lyCrk3VacudWDa7Tg5OGrqqzLl6YuYi+T4QJU=
+Received: from eusmges3new.samsung.com (unknown [203.254.199.245]) by
+ eucas1p1.samsung.com (KnoxPortal) with ESMTP id
+ 20200514134728eucas1p1a8fba306530ff2fa95aed3a78a097f94~O6SF0qhcz1217512175eucas1p1S;
+ Thu, 14 May 2020 13:47:28 +0000 (GMT)
+Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
+ eusmges3new.samsung.com (EUCPMTA) with SMTP id 15.EC.60698.0FB4DBE5; Thu, 14
+ May 2020 14:47:28 +0100 (BST)
+Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
+ eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
+ 20200514134727eucas1p216a49cfa50a2e978e9619f1a1259110f~O6SFcLBzv2107921079eucas1p2b;
+ Thu, 14 May 2020 13:47:27 +0000 (GMT)
+Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
+ eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
+ 20200514134727eusmtrp1d21bebb92a3d812ea44452e9b2558845~O6SFbVSvC0791107911eusmtrp11;
+ Thu, 14 May 2020 13:47:27 +0000 (GMT)
+X-AuditID: cbfec7f5-a0fff7000001ed1a-43-5ebd4bf00ecf
+Received: from eusmtip2.samsung.com ( [203.254.199.222]) by
+ eusmgms2.samsung.com (EUCPMTA) with SMTP id B9.D3.07950.FEB4DBE5; Thu, 14
+ May 2020 14:47:27 +0100 (BST)
+Received: from [106.210.85.205] (unknown [106.210.85.205]) by
+ eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
+ 20200514134726eusmtip2818261053cb4457c1a810432d45e4601~O6SEeHbiw0440104401eusmtip2Q;
+ Thu, 14 May 2020 13:47:26 +0000 (GMT)
+Subject: Re: [GIT PULL] mediatek drm next for 5.8
+To: Daniel Vetter <daniel@ffwll.ch>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Laurent Pinchart
+ <laurent.pinchart@ideasonboard.com>, Neil Armstrong
+ <narmstrong@baylibre.com>, Sam Ravnborg <sam@ravnborg.org>
+From: Andrzej Hajda <a.hajda@samsung.com>
+Message-ID: <778afe30-d7e4-cb94-e01c-df5b5141900c@samsung.com>
+Date: Thu, 14 May 2020 15:47:26 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <CAKMK7uHOPGBDs0EGn=rvafwRN9xyD6CDJAMFpO5AjiUJZ+X8_w@mail.gmail.com>
+Content-Language: en-GB
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFvrCKsWRmVeSWpSXmKPExsWy7djPc7ofvPfGGVx8xm/Re+4kk8XW/g52
+ i/lH7jFbLOrtZbH4v20is8WVr+/ZLNbcPsRoMaF1O7NF87mrrBadE5ewW1xuvshocagv2mLF
+ z62MFne+Pmdx4PN4f6OV3WN2w0UWjx13lzB67P22gMWj5chbVo/ZHTNZPTat6mTz2P7tAavH
+ /e7jTB6bl9R7tJzcz+KxZNpVNo8NnzqYA3ijuGxSUnMyy1KL9O0SuDI+3P3LUtBoXdFwdB5z
+ A+M07S5GDg4JAROJqdeDuhi5OIQEVjBKvPjczArhfGGUeHixjRHC+cwocWLiM6AMJ1hHw4Hv
+ UInljBKti19COe8ZJTbsvcAGMldYwFBizTxPkLiIwGVGiZVt31hAHGaB2cwSH+/uZAMZxSag
+ KfF3800wm1fATqLp2iIWkGYWAVWJL/dyQMKiArESpxdvZoQoEZQ4OfMJC4jNKRAosW5FA1gr
+ s4C8RPPW2cwQtrhE05eVYD9ICCzkkPg1czULxNkuEo+Ob4SyhSVeHd/CDmHLSJye3AMVr5e4
+ v6KFGaK5g1Fi64adzBAJa4k7536BfcYMdPT6XfoQYUeJ+zOfM0ICkk/ixltBiBv4JCZtm84M
+ EeaV6GgTgqhWlLh/divUQHGJpRe+sk1gVJqF5LNZSL6ZheSbWQh7FzCyrGIUTy0tzk1PLTbO
+ Sy3XK07MLS7NS9dLzs/dxAhMi6f/Hf+6g3Hfn6RDjAIcjEo8vA+u744TYk0sK67MPcQowcGs
+ JMLrtx4oxJuSWFmVWpQfX1Sak1p8iFGag0VJnNd40ctYIYH0xJLU7NTUgtQimCwTB6dUA2O/
+ yZqouTfsNdccCvl+mV1OQaoo6XelXFWm0uvJPOuYDOZPjk4J4XNWu/WlpG/mdGaHD2fkWhX0
+ IjeY6yo+8DRq/50vLWoblf4s+ubDSd5BrcbxuWw1Z+wVNrX+9n0VsOeDSvH5tRqPXv2qv/zl
+ cUSIuIr8YU8NPtefqfHWjcqW7x6vZRAqUGIpzkg01GIuKk4EAFbtX96HAwAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFmpnleLIzCtJLcpLzFFi42I5/e/4Pd333nvjDF78N7HoPXeSyWJrfwe7
+ xfwj95gtFvX2slj83zaR2eLK1/dsFmtuH2K0mNC6ndmi+dxVVovOiUvYLS43X2S0ONQXbbHi
+ 51ZGiztfn7M48Hm8v9HK7jG74SKLx467Sxg99n5bwOLRcuQtq8fsjpmsHptWdbJ5bP/2gNXj
+ fvdxJo/NS+o9Wk7uZ/FYMu0qm8eGTx3MAbxRejZF+aUlqQoZ+cUltkrRhhZGeoaWFnpGJpZ6
+ hsbmsVZGpkr6djYpqTmZZalF+nYJehkf7v5lKWi0rmg4Oo+5gXGadhcjJ4eEgIlEw4HvjF2M
+ XBxCAksZJTaensIGkRCX2D3/LTOELSzx51oXG0TRW0aJtnlrmboYOTiEBQwl1szzBImLCFxk
+ lHi2uZ8RpIFZYC6zxIXXxRAND5kkzk59ATaJTUBT4u/mm2AbeAXsJJquLWIBGcQioCrx5V4O
+ SFhUIFZi9bVWRogSQYmTM5+wgNicAoES61Y0sEHMN5OYt/khM4QtL9G8dTaULS7R9GUl6wRG
+ oVlI2mchaZmFpGUWkpYFjCyrGEVSS4tz03OLjfSKE3OLS/PS9ZLzczcxAhPBtmM/t+xg7HoX
+ fIhRgINRiYfX4tbuOCHWxLLiytxDjBIczEoivH7rgUK8KYmVValF+fFFpTmpxYcYTYF+m8gs
+ JZqcD0xSeSXxhqaG5haWhubG5sZmFkrivB0CB2OEBNITS1KzU1MLUotg+pg4OKUaGM2bCvKP
+ qpzZfvaUyte/M8/LLBCQm6yj/6pP/FrjPdVVYqxzz01dmOLM5MYsL2+56pePwbRf+uzLb7T+
+ P3XaJnpyOvPcG+eUXEVYgypCWtuSKx/05ZQyBzx/o3TM1WTd3ccX+K6xHH9R/vHA7WOK/897
+ HI2TWhB/3Ge/nt6NS85sm2obCrVO5SmxFGckGmoxFxUnAgDI+dsyGgMAAA==
+X-CMS-MailID: 20200514134727eucas1p216a49cfa50a2e978e9619f1a1259110f
+X-Msg-Generator: CA
+X-RootMTR: 20200514052534eucas1p14df3f06836fa87e13185e975357149f4
+X-EPHeader: CA
+CMS-TYPE: 201P
+X-CMS-RootMailID: 20200514052534eucas1p14df3f06836fa87e13185e975357149f4
+References: <CAAOTY_8gJNpWXcMnHiZzg_sgyiJ6BDsBYRxaLX0OXWRuLF1NCg@mail.gmail.com>
+ <20200513194518.GN206103@phenom.ffwll.local>
+ <CAAOTY_-77au87rXwULY4Ki4rShO8Pz9FUaoVHZh0DCjRfGroBA@mail.gmail.com>
+ <CGME20200514052534eucas1p14df3f06836fa87e13185e975357149f4@eucas1p1.samsung.com>
+ <CAKMK7uHOPGBDs0EGn=rvafwRN9xyD6CDJAMFpO5AjiUJZ+X8_w@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200514_061253_744867_F60D8AA0 
-X-CRM114-Status: GOOD (  16.02  )
+X-CRM114-CacheID: sfid-20200514_064731_673553_2EBD1D3E 
+X-CRM114-Status: GOOD (  19.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,495 +142,149 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, qii.wang@mediatek.com,
- srv_heupstream@mediatek.com, leilk.liu@mediatek.com,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Jitao Shi <jitao.shi@mediatek.com>, David Airlie <airlied@linux.ie>,
+ Bernard Zhao <bernard@vivo.com>, YueHaibing <yuehaibing@huawei.com>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ "moderated list:ARM/Mediatek
+ SoC support" <linux-mediatek@lists.infradead.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Anand K Mistry <amistry@chromium.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds a algorithm to calculate some ac-timing parameters
-which can fully meet I2C Spec.
-
-Signed-off-by: Qii Wang <qii.wang@mediatek.com>
----
- drivers/i2c/busses/i2c-mt65xx.c | 328 +++++++++++++++++++++++++++++++++-------
- 1 file changed, 277 insertions(+), 51 deletions(-)
-
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 0ca6c38a..7020618 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -40,12 +40,11 @@
- #define I2C_SOFT_RST			0x0001
- #define I2C_FIFO_ADDR_CLR		0x0001
- #define I2C_DELAY_LEN			0x0002
--#define I2C_ST_START_CON		0x8001
--#define I2C_FS_START_CON		0x1800
- #define I2C_TIME_CLR_VALUE		0x0000
- #define I2C_TIME_DEFAULT_VALUE		0x0003
- #define I2C_WRRD_TRANAC_VALUE		0x0002
- #define I2C_RD_TRANAC_VALUE		0x0001
-+#define I2C_SCL_MIS_COMP_VALUE		0x0000
- 
- #define I2C_DMA_CON_TX			0x0000
- #define I2C_DMA_CON_RX			0x0001
-@@ -55,10 +54,13 @@
- #define I2C_DMA_HARD_RST		0x0002
- #define I2C_DMA_4G_MODE			0x0001
- 
--#define I2C_DEFAULT_CLK_DIV		5
- #define MAX_SAMPLE_CNT_DIV		8
- #define MAX_STEP_CNT_DIV		64
-+#define MAX_CLOCK_DIV			256
- #define MAX_HS_STEP_CNT_DIV		8
-+#define I2C_STANDARD_MODE_BUFFER	(1000 / 2)
-+#define I2C_FAST_MODE_BUFFER		(300 / 2)
-+#define I2C_FAST_MODE_PLUS_BUFFER	(20 / 2)
- 
- #define I2C_CONTROL_RS                  (0x1 << 1)
- #define I2C_CONTROL_DMA_EN              (0x1 << 2)
-@@ -123,6 +125,12 @@ enum I2C_REGS_OFFSET {
- 	OFFSET_TRANSFER_LEN_AUX,
- 	OFFSET_CLOCK_DIV,
- 	OFFSET_LTIMING,
-+	OFFSET_SCL_HIGH_LOW_RATIO,
-+	OFFSET_HS_SCL_HIGH_LOW_RATIO,
-+	OFFSET_SCL_MIS_COMP_POINT,
-+	OFFSET_STA_STO_AC_TIMING,
-+	OFFSET_HS_STA_STO_AC_TIMING,
-+	OFFSET_SDA_TIMING,
- };
- 
- static const u16 mt_i2c_regs_v1[] = {
-@@ -150,6 +158,12 @@ enum I2C_REGS_OFFSET {
- 	[OFFSET_DEBUGCTRL] = 0x68,
- 	[OFFSET_TRANSFER_LEN_AUX] = 0x6c,
- 	[OFFSET_CLOCK_DIV] = 0x70,
-+	[OFFSET_SCL_HIGH_LOW_RATIO] = 0x74,
-+	[OFFSET_HS_SCL_HIGH_LOW_RATIO] = 0x78,
-+	[OFFSET_SCL_MIS_COMP_POINT] = 0x7C,
-+	[OFFSET_STA_STO_AC_TIMING] = 0x80,
-+	[OFFSET_HS_STA_STO_AC_TIMING] = 0x84,
-+	[OFFSET_SDA_TIMING] = 0x88,
- };
- 
- static const u16 mt_i2c_regs_v2[] = {
-@@ -168,9 +182,11 @@ enum I2C_REGS_OFFSET {
- 	[OFFSET_HS] = 0x30,
- 	[OFFSET_IO_CONFIG] = 0x34,
- 	[OFFSET_FIFO_ADDR_CLR] = 0x38,
-+	[OFFSET_SDA_TIMING] = 0x3c,
- 	[OFFSET_TRANSFER_LEN_AUX] = 0x44,
- 	[OFFSET_CLOCK_DIV] = 0x48,
- 	[OFFSET_SOFTRESET] = 0x50,
-+	[OFFSET_SCL_MIS_COMP_POINT] = 0x90,
- 	[OFFSET_DEBUGSTAT] = 0xe0,
- 	[OFFSET_DEBUGCTRL] = 0xe8,
- 	[OFFSET_FIFO_STAT] = 0xf4,
-@@ -191,6 +207,19 @@ struct mtk_i2c_compatible {
- 	unsigned char ltiming_adjust: 1;
- };
- 
-+struct mtk_i2c_ac_timing {
-+	u16 htiming;
-+	u16 ltiming;
-+	u16 hs;
-+	u16 ext;
-+	u16 inter_clk_div;
-+	u16 scl_hl_ratio;
-+	u16 hs_scl_hl_ratio;
-+	u16 sta_stop;
-+	u16 hs_sta_stop;
-+	u16 sda_timing;
-+};
-+
- struct mtk_i2c {
- 	struct i2c_adapter adap;	/* i2c host adapter */
- 	struct device *dev;
-@@ -215,9 +244,46 @@ struct mtk_i2c {
- 	u16 ltiming_reg;
- 	unsigned char auto_restart;
- 	bool ignore_restart_irq;
-+	struct mtk_i2c_ac_timing ac_timing;
- 	const struct mtk_i2c_compatible *dev_comp;
- };
- 
-+/**
-+ * struct i2c_spec_values:
-+ * min_low_ns: min LOW period of the SCL clock
-+ * min_su_sta_ns: min set-up time for a repeated START condition
-+ * max_hd_dat_ns: max data hold time
-+ * min_su_dat_ns: min data set-up time
-+ */
-+struct i2c_spec_values {
-+	unsigned int min_low_ns;
-+	unsigned int min_high_ns;
-+	unsigned int min_su_sta_ns;
-+	unsigned int max_hd_dat_ns;
-+	unsigned int min_su_dat_ns;
-+};
-+
-+static const struct i2c_spec_values standard_mode_spec = {
-+	.min_low_ns = 4700 + I2C_STANDARD_MODE_BUFFER,
-+	.min_su_sta_ns = 4700 + I2C_STANDARD_MODE_BUFFER,
-+	.max_hd_dat_ns = 3450 - I2C_STANDARD_MODE_BUFFER,
-+	.min_su_dat_ns = 250 + I2C_STANDARD_MODE_BUFFER,
-+};
-+
-+static const struct i2c_spec_values fast_mode_spec = {
-+	.min_low_ns = 1300 + I2C_FAST_MODE_BUFFER,
-+	.min_su_sta_ns = 600 + I2C_FAST_MODE_BUFFER,
-+	.max_hd_dat_ns = 900 - I2C_FAST_MODE_BUFFER,
-+	.min_su_dat_ns = 100 + I2C_FAST_MODE_BUFFER,
-+};
-+
-+static const struct i2c_spec_values fast_mode_plus_spec = {
-+	.min_low_ns = 500 + I2C_FAST_MODE_PLUS_BUFFER,
-+	.min_su_sta_ns = 260 + I2C_FAST_MODE_PLUS_BUFFER,
-+	.max_hd_dat_ns = 400 - I2C_FAST_MODE_PLUS_BUFFER,
-+	.min_su_dat_ns = 50 + I2C_FAST_MODE_PLUS_BUFFER,
-+};
-+
- static const struct i2c_adapter_quirks mt6577_i2c_quirks = {
- 	.flags = I2C_AQ_COMB_WRITE_THEN_READ,
- 	.max_num_msgs = 1,
-@@ -397,14 +463,38 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
- 	if (i2c->dev_comp->dcm)
- 		mtk_i2c_writew(i2c, I2C_DCM_DISABLE, OFFSET_DCM_EN);
- 
--	if (i2c->dev_comp->timing_adjust)
--		mtk_i2c_writew(i2c, I2C_DEFAULT_CLK_DIV - 1, OFFSET_CLOCK_DIV);
--
- 	mtk_i2c_writew(i2c, i2c->timing_reg, OFFSET_TIMING);
- 	mtk_i2c_writew(i2c, i2c->high_speed_reg, OFFSET_HS);
- 	if (i2c->dev_comp->ltiming_adjust)
- 		mtk_i2c_writew(i2c, i2c->ltiming_reg, OFFSET_LTIMING);
- 
-+	if (i2c->dev_comp->timing_adjust) {
-+		mtk_i2c_writew(i2c, i2c->ac_timing.ext, OFFSET_EXT_CONF);
-+		mtk_i2c_writew(i2c, i2c->ac_timing.inter_clk_div,
-+			       OFFSET_CLOCK_DIV);
-+		mtk_i2c_writew(i2c, I2C_SCL_MIS_COMP_VALUE,
-+			       OFFSET_SCL_MIS_COMP_POINT);
-+		mtk_i2c_writew(i2c, i2c->ac_timing.sda_timing,
-+			       OFFSET_SDA_TIMING);
-+
-+		if (i2c->dev_comp->ltiming_adjust) {
-+			mtk_i2c_writew(i2c, i2c->ac_timing.htiming,
-+				       OFFSET_TIMING);
-+			mtk_i2c_writew(i2c, i2c->ac_timing.hs, OFFSET_HS);
-+			mtk_i2c_writew(i2c, i2c->ac_timing.ltiming,
-+				       OFFSET_LTIMING);
-+		} else {
-+			mtk_i2c_writew(i2c, i2c->ac_timing.scl_hl_ratio,
-+				       OFFSET_SCL_HIGH_LOW_RATIO);
-+			mtk_i2c_writew(i2c, i2c->ac_timing.hs_scl_hl_ratio,
-+				       OFFSET_HS_SCL_HIGH_LOW_RATIO);
-+			mtk_i2c_writew(i2c, i2c->ac_timing.sta_stop,
-+				       OFFSET_STA_STO_AC_TIMING);
-+			mtk_i2c_writew(i2c, i2c->ac_timing.hs_sta_stop,
-+				       OFFSET_HS_STA_STO_AC_TIMING);
-+		}
-+	}
-+
- 	/* If use i2c pin from PMIC mt6397 side, need set PATH_DIR first */
- 	if (i2c->have_pmic)
- 		mtk_i2c_writew(i2c, I2C_CONTROL_WRAPPER, OFFSET_PATH_DIR);
-@@ -422,6 +512,125 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
- 	writel(I2C_DMA_CLR_FLAG, i2c->pdmabase + OFFSET_RST);
- }
- 
-+static const struct i2c_spec_values *mtk_i2c_get_spec(unsigned int speed)
-+{
-+	if (speed <= I2C_MAX_STANDARD_MODE_FREQ)
-+		return &standard_mode_spec;
-+	else if (speed <= I2C_MAX_FAST_MODE_FREQ)
-+		return &fast_mode_spec;
-+	else
-+		return &fast_mode_plus_spec;
-+}
-+
-+static int mtk_i2c_max_step_cnt(unsigned int target_speed)
-+{
-+	if (target_speed > I2C_MAX_FAST_MODE_FREQ)
-+		return MAX_HS_STEP_CNT_DIV;
-+	else
-+		return MAX_STEP_CNT_DIV;
-+}
-+
-+/*
-+ * Check and Calculate i2c ac-timing
-+ *
-+ * Hardware design:
-+ * sample_ns = (1000000000 * (sample_cnt + 1)) / clk_src
-+ * xxx_cnt_div =  spec->min_xxx_ns / sample_ns
-+ *
-+ * Sample_ns is rounded down for xxx_cnt_div would be greater
-+ * than the smallest spec.
-+ * The sda_timing is chosen as the middle value between
-+ * the largest and smallest.
-+ */
-+static int mtk_i2c_check_ac_timing(struct mtk_i2c *i2c,
-+				   unsigned int clk_src,
-+				   unsigned int check_speed,
-+				   unsigned int step_cnt,
-+				   unsigned int sample_cnt)
-+{
-+	const struct i2c_spec_values *spec;
-+	unsigned int su_sta_cnt, low_cnt, high_cnt, max_step_cnt;
-+	unsigned int sda_max, sda_min, clk_ns, max_sta_cnt = 0x3f;
-+	long long sample_ns = (1000000000 * (sample_cnt + 1)) / clk_src;
-+
-+	if (!i2c->dev_comp->timing_adjust)
-+		return 0;
-+
-+	if (i2c->dev_comp->ltiming_adjust)
-+		max_sta_cnt = 0x100;
-+
-+	spec = mtk_i2c_get_spec(check_speed);
-+
-+	if (i2c->dev_comp->ltiming_adjust)
-+		clk_ns = 1000000000 / clk_src;
-+	else
-+		clk_ns = sample_ns / 2;
-+
-+	su_sta_cnt = DIV_ROUND_UP(spec->min_su_sta_ns, clk_ns);
-+	if (su_sta_cnt > max_sta_cnt)
-+		return -1;
-+
-+	low_cnt = DIV_ROUND_UP(spec->min_low_ns, sample_ns);
-+	max_step_cnt = mtk_i2c_max_step_cnt(check_speed);
-+	if ((2 * step_cnt) > low_cnt && low_cnt < max_step_cnt) {
-+		if (low_cnt > step_cnt) {
-+			high_cnt = 2 * step_cnt - low_cnt;
-+		} else {
-+			high_cnt = step_cnt;
-+			low_cnt = step_cnt;
-+		}
-+	} else {
-+		return -2;
-+	}
-+
-+	sda_max = spec->max_hd_dat_ns / sample_ns;
-+	if (sda_max > low_cnt)
-+		sda_max = 0;
-+
-+	sda_min = DIV_ROUND_UP(spec->min_su_dat_ns, sample_ns);
-+	if (sda_min < low_cnt)
-+		sda_min = 0;
-+
-+	if (sda_min > sda_max)
-+		return -3;
-+
-+	if (check_speed > I2C_MAX_FAST_MODE_FREQ) {
-+		if (i2c->dev_comp->ltiming_adjust) {
-+			i2c->ac_timing.hs = I2C_TIME_DEFAULT_VALUE |
-+				(sample_cnt << 12) | (high_cnt << 8);
-+			i2c->ac_timing.ltiming &= ~GENMASK(15, 9);
-+			i2c->ac_timing.ltiming |= (sample_cnt << 12) |
-+				(low_cnt << 9);
-+			i2c->ac_timing.ext &= ~GENMASK(7, 1);
-+			i2c->ac_timing.ext |= (su_sta_cnt << 1) | (1 << 0);
-+		} else {
-+			i2c->ac_timing.hs_scl_hl_ratio = (1 << 12) |
-+				(high_cnt << 6) | low_cnt;
-+			i2c->ac_timing.hs_sta_stop = (su_sta_cnt << 8) |
-+				su_sta_cnt;
-+		}
-+		i2c->ac_timing.sda_timing &= ~GENMASK(11, 6);
-+		i2c->ac_timing.sda_timing |= (1 << 12) |
-+			((sda_max + sda_min) / 2) << 6;
-+	} else {
-+		if (i2c->dev_comp->ltiming_adjust) {
-+			i2c->ac_timing.htiming = (sample_cnt << 8) | (high_cnt);
-+			i2c->ac_timing.ltiming = (sample_cnt << 6) | (low_cnt);
-+			i2c->ac_timing.ext = (su_sta_cnt << 8) | (1 << 0);
-+		} else {
-+			i2c->ac_timing.scl_hl_ratio = (1 << 12) |
-+				(high_cnt << 6) | low_cnt;
-+			i2c->ac_timing.sta_stop = (su_sta_cnt << 8) |
-+				su_sta_cnt;
-+		}
-+
-+		i2c->ac_timing.sda_timing = (1 << 12) |
-+			(sda_max + sda_min) / 2;
-+	}
-+
-+	return 0;
-+}
-+
- /*
-  * Calculate i2c port speed
-  *
-@@ -446,15 +655,12 @@ static int mtk_i2c_calculate_speed(struct mtk_i2c *i2c, unsigned int clk_src,
- 	unsigned int opt_div;
- 	unsigned int best_mul;
- 	unsigned int cnt_mul;
-+	int ret = -EINVAL;
- 
- 	if (target_speed > I2C_MAX_FAST_MODE_PLUS_FREQ)
- 		target_speed = I2C_MAX_FAST_MODE_PLUS_FREQ;
- 
--	if (target_speed > I2C_MAX_FAST_MODE_FREQ)
--		max_step_cnt = MAX_HS_STEP_CNT_DIV;
--	else
--		max_step_cnt = MAX_STEP_CNT_DIV;
--
-+	max_step_cnt = mtk_i2c_max_step_cnt(target_speed);
- 	base_step_cnt = max_step_cnt;
- 	/* Find the best combination */
- 	opt_div = DIV_ROUND_UP(clk_src >> 1, target_speed);
-@@ -473,6 +679,11 @@ static int mtk_i2c_calculate_speed(struct mtk_i2c *i2c, unsigned int clk_src,
- 			continue;
- 
- 		if (cnt_mul < best_mul) {
-+			ret = mtk_i2c_check_ac_timing(i2c, clk_src,
-+				target_speed, step_cnt - 1, sample_cnt - 1);
-+			if (ret)
-+				continue;
-+
- 			best_mul = cnt_mul;
- 			base_sample_cnt = sample_cnt;
- 			base_step_cnt = step_cnt;
-@@ -481,6 +692,9 @@ static int mtk_i2c_calculate_speed(struct mtk_i2c *i2c, unsigned int clk_src,
- 		}
- 	}
- 
-+	if (ret)
-+		return -EINVAL;
-+
- 	sample_cnt = base_sample_cnt;
- 	step_cnt = base_step_cnt;
- 
-@@ -506,47 +720,68 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
- 	unsigned int l_step_cnt;
- 	unsigned int l_sample_cnt;
- 	unsigned int target_speed;
-+	unsigned int clk_div;
-+	unsigned int max_clk_div;
- 	int ret;
- 
--	clk_src = parent_clk / i2c->clk_src_div;
- 	target_speed = i2c->speed_hz;
-+	parent_clk /= i2c->clk_src_div;
- 
--	if (target_speed > I2C_MAX_FAST_MODE_FREQ) {
--		/* Set master code speed register */
--		ret = mtk_i2c_calculate_speed(i2c, clk_src, I2C_MAX_FAST_MODE_FREQ,
--					      &l_step_cnt, &l_sample_cnt);
--		if (ret < 0)
--			return ret;
--
--		i2c->timing_reg = (l_sample_cnt << 8) | l_step_cnt;
--
--		/* Set the high speed mode register */
--		ret = mtk_i2c_calculate_speed(i2c, clk_src, target_speed,
--					      &step_cnt, &sample_cnt);
--		if (ret < 0)
--			return ret;
--
--		i2c->high_speed_reg = I2C_TIME_DEFAULT_VALUE |
--			(sample_cnt << 12) | (step_cnt << 8);
-+	if (i2c->dev_comp->timing_adjust)
-+		max_clk_div = MAX_CLOCK_DIV;
-+	else
-+		max_clk_div = 1;
-+
-+	for (clk_div = 1; clk_div <= max_clk_div; clk_div++) {
-+		clk_src = parent_clk / clk_div;
-+
-+		if (target_speed > I2C_MAX_FAST_MODE_FREQ) {
-+			/* Set master code speed register */
-+			ret = mtk_i2c_calculate_speed(i2c, clk_src,
-+						      I2C_MAX_FAST_MODE_FREQ,
-+						      &l_step_cnt,
-+						      &l_sample_cnt);
-+			if (ret < 0)
-+				continue;
-+
-+			i2c->timing_reg = (l_sample_cnt << 8) | l_step_cnt;
-+
-+			/* Set the high speed mode register */
-+			ret = mtk_i2c_calculate_speed(i2c, clk_src,
-+						      target_speed, &step_cnt,
-+						      &sample_cnt);
-+			if (ret < 0)
-+				continue;
-+
-+			i2c->high_speed_reg = I2C_TIME_DEFAULT_VALUE |
-+					(sample_cnt << 12) | (step_cnt << 8);
-+
-+			if (i2c->dev_comp->ltiming_adjust)
-+				i2c->ltiming_reg =
-+					(l_sample_cnt << 6) | l_step_cnt |
-+					(sample_cnt << 12) | (step_cnt << 9);
-+		} else {
-+			ret = mtk_i2c_calculate_speed(i2c, clk_src,
-+						      target_speed, &l_step_cnt,
-+						      &l_sample_cnt);
-+			if (ret < 0)
-+				continue;
- 
--		if (i2c->dev_comp->ltiming_adjust)
--			i2c->ltiming_reg = (l_sample_cnt << 6) | l_step_cnt |
--					   (sample_cnt << 12) | (step_cnt << 9);
--	} else {
--		ret = mtk_i2c_calculate_speed(i2c, clk_src, target_speed,
--					      &step_cnt, &sample_cnt);
--		if (ret < 0)
--			return ret;
-+			i2c->timing_reg = (l_sample_cnt << 8) | l_step_cnt;
- 
--		i2c->timing_reg = (sample_cnt << 8) | step_cnt;
-+			/* Disable the high speed transaction */
-+			i2c->high_speed_reg = I2C_TIME_CLR_VALUE;
- 
--		/* Disable the high speed transaction */
--		i2c->high_speed_reg = I2C_TIME_CLR_VALUE;
-+			if (i2c->dev_comp->ltiming_adjust)
-+				i2c->ltiming_reg =
-+					(l_sample_cnt << 6) | l_step_cnt;
-+		}
- 
--		if (i2c->dev_comp->ltiming_adjust)
--			i2c->ltiming_reg = (sample_cnt << 6) | step_cnt;
-+		break;
- 	}
- 
-+	i2c->ac_timing.inter_clk_div = clk_div - 1;
-+
- 	return 0;
- }
- 
-@@ -586,12 +821,6 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
- 
- 	mtk_i2c_writew(i2c, control_reg, OFFSET_CONTROL);
- 
--	/* set start condition */
--	if (i2c->speed_hz <= I2C_MAX_STANDARD_MODE_FREQ)
--		mtk_i2c_writew(i2c, I2C_ST_START_CON, OFFSET_EXT_CONF);
--	else
--		mtk_i2c_writew(i2c, I2C_FS_START_CON, OFFSET_EXT_CONF);
--
- 	addr_reg = i2c_8bit_addr_from_msg(msgs);
- 	mtk_i2c_writew(i2c, addr_reg, OFFSET_SLAVE_ADDR);
- 
-@@ -948,9 +1177,6 @@ static int mtk_i2c_probe(struct platform_device *pdev)
- 	if (ret)
- 		return -EINVAL;
- 
--	if (i2c->dev_comp->timing_adjust)
--		i2c->clk_src_div *= I2C_DEFAULT_CLK_DIV;
--
- 	if (i2c->have_pmic && !i2c->dev_comp->pmic_i2c)
- 		return -EINVAL;
- 
--- 
-1.9.1
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgQWxsLAoKCk9uIDE0LjA1LjIwMjAgMDc6MjUsIERhbmllbCBWZXR0ZXIgd3JvdGU6Cj4gT24g
+VGh1LCBNYXkgMTQsIDIwMjAgYXQgMTozMyBBTSBDaHVuLUt1YW5nIEh1IDxjaHVua3VhbmcuaHVA
+a2VybmVsLm9yZz4gd3JvdGU6Cj4+IEhpLCBEYW5pZWw6Cj4+Cj4+IERhbmllbCBWZXR0ZXIgPGRh
+bmllbEBmZndsbC5jaD4g5pa8IDIwMjDlubQ15pyIMTTml6Ug6YCx5ZubIOS4iuWNiDM6NDXlr6vp
+gZPvvJoKPj4+IE9uIFRodSwgTWF5IDE0LCAyMDIwIGF0IDEyOjE2OjU5QU0gKzA4MDAsIENodW4t
+S3VhbmcgSHUgd3JvdGU6Cj4+Pj4gSGksIERhdmUgJiBEYW5pZWw6Cj4+Pj4KPj4+PiBUaGlzIGlu
+Y2x1ZGUgZHBpIHBpbiBtb2RlIHN3YXAsIGNvbmZpZyBtaXBpX3R4IGN1cnJlbnQgYW5kIGltcGVk
+YW5jZSwKPj4+PiBjb252ZXJ0IG10ay1kcGkgdG8gZHJtX2JyaWRnZSBBUEksIGFuZCBzb21lIGZp
+eHVwLgo+Pj4+Cj4+Pj4gVGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNpbmNlIGNvbW1pdCA4ZjNkOWYz
+NTQyODY3NDVjNzUxMzc0ZjVmMWZjYWZlZTZiM2YzMTM2Ogo+Pj4+ICAgIExpbnV4IDUuNy1yYzEg
+KDIwMjAtMDQtMTIgMTI6MzU6NTUgLTA3MDApCj4+Pj4gYXJlIGF2YWlsYWJsZSBpbiB0aGUgR2l0
+IHJlcG9zaXRvcnkgYXQ6Cj4+Pj4gICAgc3NoOi8vZ2l0QGdpdG9saXRlLmtlcm5lbC5vcmcvcHVi
+L3NjbS9saW51eC9rZXJuZWwvZ2l0L2NodW5rdWFuZy5odS9saW51eC5naXQKPj4+PiB0YWdzL21l
+ZGlhdGVrLWRybS1uZXh0LTUuOAo+Pj4gWW91ciBwdWxsIHJlcXVlc3QgaXMgYmFkbHkgbGluZSB3
+cmFwcGVkLCBhbmQgSSBkb24ndCBoYXZlIGFuIHNzaCBhY2NvdW50Cj4+PiBvbiB0aGF0IG1hY2hp
+bmUgLi4uIE1heWJlIGFpcmxpZWQgaGFzLCBub3Qgc3VyZS4gaHR0cDovLyBvciBnaXQ6Ly8gd291
+bGQKPj4+IGJlIGEgYnVuY2ggZWFzaWVyLCBhbmQgdGhlbiBzaWduZWQgdGhhdC4gUGx1cyBpZiB5
+b3VyIHB1bGwgaXNuJ3QKPj4+IGxpbmV3cmFwcGVkIHdlIGNhbiBzdHVmZiBpdCBkaXJlY3RseSBp
+bnRvIHNjcmlwdHMuCj4+IFRoaXMgaXMgbXkgZmlyc3QgdGltZSB0byByZXF1ZXN0LXB1bGwgb24g
+dGhhdCBzZXJ2ZXIsIEkgd291bGQgdHJ5IHRvCj4+IG1ha2UgdGhpbmdzIGVhc2llciBhbmQgcmVz
+ZW5kIHJlcXVlc3QuCj4+Cj4+PiBBbGwgSSBxdWlja2x5IHdhbnRlZCB0byBxdWlja2x5IGNoZWNr
+IGlzIHlvdXIgbmV3IGJyaWRnZSBkcml2ZXIuCj4+PiAtIHdhcyB0aGF0IHJldmlld2VkL2Fja2Vk
+IGJ5IGJyaWRnZSBtYWludGFpbmVycz8gVGhlcmUncyBhIGxvdCBvZiByZXdvcmsKPj4+ICAgIGdv
+aW5nIG9uIHJpZ2h0IG5vdywgbmVlZCB0byBtYWtlIHN1cmUgd2UncmUgbm90IGFkZGluZyBuZXcg
+YnJpZGdlCj4+PiAgICBkcml2ZXJzIHRoYXQgdXNlIG9sZCBzdHlsZQo+Pj4KPj4+IC0gd2h5IGlz
+IHRoaXMgYnJpZGdlIGRyaXZlciBub3QgaW4gZHJtL2JyaWRnZS8gZGlyZWN0b3J5Pwo+PiBJIGRv
+ZXMgbm90IG5vdGljZSB0aGF0IGRybSBicmlkZ2UgaGFzIG1haW50YWluZXIsIEkgd291bGQgZHJv
+cCBicmlkZ2UKPj4gc2VyaWVzIGZpcnN0LCBhbmQgd2FpdCBmb3IgYWNrIG9mIGJyaWRnZSBtYWlu
+dGFpbmVyLgo+PiBtdGstZHBpIGlzIGFsc28gYSBkcm0gZW5jb2RlciwgYW5kIEkgZ3JlcCAnZHJt
+X2JyaWRnZV9hZGQnIGFuZCBmaW5kCj4+IG1hbnkgb3V0IHNpZGUgb2YgYnJpZGdlIGZvbGRlciwg
+c28gbWF5YmUgd2UgbmVlZCB0byBkaXNjdXNzIG1vcmUgYWJvdXQKPj4gdGhpcy4KPiBIbSBpbmRl
+ZWQuIE1heWJlIHdlIG5lZWQgdG8gZXh0ZW5kIHRoZSBNQUlOVEFJTkVSUyBlbnRyeSBmb3IgYnJp
+ZGdlcwo+IHNvIHRoYXQgaXQgbWF0Y2hlcyBicmlkZ2UgZHJpdmVycyBvdXRzaWRlIG9mIGRybS9i
+cmlkZ2UuIFNvdW5kcyBsaWtlCj4gd2UgaGF2ZSB0b25zIG9mIHRob3NlIGFscmVhZHkuCj4KPiBB
+bmRyemVqLCBOZWlsLCBMYXVyZW50LCBTYW0sIGFueSB0aG91Z2h0cz8KPgo+IEkgZ3Vlc3MgbWVh
+bndoaWxlIHRoaXMgc2hvdWxkIGJlIG9rLgo+IC1EYW5pZWwKCgpBcyBJIGxvb2tlZCBhdMKgIG1h
+dGNoaW5nIHJ1bGVzIGluIE1BSU5UQUlORVJTIGZpbGUgdGhlcmUgaXMgbm8gaWRlYWwgb25lIAp0
+byBmdWxmaWwgdGhpcyB0YXNrLgoKTWF5YmUgdGhlIGNsb3Nlc3Qgb25lIGlzOiBLOiBkcm1fYnJp
+ZGdlLgoKV291bGQgYmUgaWRlYWxseSB0byBleHRlbmQgRiBydWxlIHRvIG1hdGNoIGNvbnRlbnQg
+b2YgZmlsZSwgZm9yIGV4YW1wbGU6CgpGOiBkcml2ZXJzL2dwdS9kcm0vI2RybV9icmlkZ2VfYWRk
+IC0gbWF0Y2ggYWxsIGZpbGVzIGluIGRyaXZlcnMvZ3B1L2RybS8gCndpdGggY29udGVudCBtYXRj
+aGluZyByZWdleCBkcm1fYnJpZGdlX2FkZC4KCgpBbnkgb3RoZXIgaWRlYXM/CgoKUmVnYXJkcwoK
+QW5kcnplagoKCj4KPj4gUmVnYXJkcywKPj4gQ2h1bi1LdWFuZy4KPj4KPj4+IENoZWVycywgRGFu
+aWVsCj4+Pgo+Pj4+IGZvciB5b3UgdG8gZmV0Y2ggY2hhbmdlcyB1cCB0byAyM2IyOWZmOWYxM2E4
+ZmI1YTEyYmU5ZmVkYjhiNjE0YjlkZWRlNDZhOgo+Pj4+ICAgIGRybS9tZWRpYXRlazogRWxpbWlu
+YXRlIHRoZSBtYWdpYyBudW1iZXIgaW4gYXJyYXkgc2l6ZSAoMjAyMC0wNS0xMAo+Pj4+IDA5OjA4
+OjMwICswODAwKQo+Pj4+IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPj4+PiBNZWRpYXRlayBEUk0gTmV4dCBmb3IgTGludXgg
+NS44Cj4+Pj4gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLQo+Pj4+IEFuYW5kIEsgTWlzdHJ5ICgxKToKPj4+PiAgICAgICAgZHJt
+L21lZGlhdGVrOiBTdG9wIGl0ZXJhdGluZyBkbWEgYWRkcmVzc2VzIHdoZW4gc2dfZG1hX2xlbigp
+ID09IDAKPj4+PiBCZXJuYXJkIFpoYW8gKDIpOgo+Pj4+ICAgICAgICBkcm0vbWVkaWF0ZWs6IENs
+ZWFudXAgY29kaW5nIHN0eWxlIGluIG1lZGlhdGVrIGEgYml0Cj4+Pj4gICAgICAgIGRybS9tZWRp
+YXRlazogRWxpbWluYXRlIHRoZSBtYWdpYyBudW1iZXIgaW4gYXJyYXkgc2l6ZQo+Pj4+IENodW4t
+S3VhbmcgSHUgKDEpOgo+Pj4+ICAgICAgICBNZXJnZSB0YWcgJ3Y1LjctbmV4dC1kcm0tc3RhYmxl
+JyBvZgo+Pj4+IHNzaDovL2dpdG9saXRlLmtlcm5lbC5vcmcvLi4uL21hdHRoaWFzLmJnZy9saW51
+eCBpbnRvCj4+Pj4gbWVkaWF0ZWstZHJtLW5leHQKPj4+PiBFbnJpYyBCYWxsZXRibyBpIFNlcnJh
+ICg3KToKPj4+PiAgICAgICAgZHQtYmluZGluZ3M6IG1lZGlhdGVrOiBVcGRhdGUgbW1zeXMgYmlu
+ZGluZyB0byByZWZsZWN0IGl0IGlzIGEKPj4+PiBzeXN0ZW0gY29udHJvbGxlcgo+Pj4+ICAgICAg
+ICBzb2MgLyBkcm06IG1lZGlhdGVrOiBNb3ZlIHJvdXRpbmcgY29udHJvbCB0byBtbXN5cyBkZXZp
+Y2UKPj4+PiAgICAgICAgc29jIC8gZHJtOiBtZWRpYXRlazogRml4IG1lZGlhdGVrLWRybSBkZXZp
+Y2UgcHJvYmluZwo+Pj4+ICAgICAgICBkcm0vbWVkaWF0ZWs6IFJlbW92ZSBkZWJ1ZyBtZXNzYWdl
+cyBmb3IgZnVuY3Rpb24gY2FsbHMKPj4+PiAgICAgICAgZHJtL21lZGlhdGVrOiBtdGtfZHBpOiBS
+ZW5hbWUgYnJpZGdlIHRvIG5leHRfYnJpZGdlCj4+Pj4gICAgICAgIGRybS9tZWRpYXRlazogbXRr
+X2RwaTogQ29udmVydCB0byBicmlkZ2UgZHJpdmVyCj4+Pj4gICAgICAgIGRybS9tZWRpYXRlazog
+bXRrX2RwaTogVXNlIHNpbXBsZSBlbmNvZGVyCj4+Pj4gSHNpbi1ZaSBXYW5nICgxKToKPj4+PiAg
+ICAgICAgZHJtL21lZGlhdGVrOiBGaXggZGV2aWNlIHBhc3NlZCB0byBjbWRxCj4+Pj4gSml0YW8g
+U2hpICg2KToKPj4+PiAgICAgICAgZHQtYmluZGluZ3M6IGRpc3BsYXk6IG1lZGlhdGVrOiBjb250
+cm9sIGRwaSBwaW5zIG1vZGUgdG8gYXZvaWQgbGVha2FnZQo+Pj4+ICAgICAgICBkcm0vbWVkaWF0
+ZWs6IHNldCBkcGkgcGluIG1vZGUgdG8gZ3BpbyBsb3cgdG8gYXZvaWQgbGVha2FnZSBjdXJyZW50
+Cj4+Pj4gICAgICAgIGR0LWJpbmRpbmdzOiBkaXNwbGF5OiBtZWRpYXRlazogYWRkIHByb3BlcnR5
+IHRvIGNvbnRyb2wgbWlwaSB0eAo+Pj4+IGRyaXZlIGN1cnJlbnQKPj4+PiAgICAgICAgZHQtYmlu
+ZGluZ3M6IGRpc3BsYXk6IG1lZGlhdGVrOiBnZXQgbWlwaXR4IGNhbGlicmF0aW9uIGRhdGEgZnJv
+bSBudm1lbQo+Pj4+ICAgICAgICBkcm0vbWVkaWF0ZWs6IGFkZCB0aGUgbWlwaXR4IGRyaXZpbmcg
+Y29udHJvbAo+Pj4+ICAgICAgICBkcm0vbWVkaWF0ZWs6IGNvbmZpZyBtaXBpdHggaW1wZWRhbmNl
+IHdpdGggY2FsaWJyYXRpb24gZGF0YQo+Pj4+IE1hdHRoaWFzIEJydWdnZXIgKDIpOgo+Pj4+ICAg
+ICAgICBkcm0vbWVkaWF0ZWs6IE9taXQgd2FybmluZyBvbiBwcm9iZSBkZWZlcnMKPj4+PiAgICAg
+ICAgY2xrIC8gc29jOiBtZWRpYXRlazogTW92ZSBtdDgxNzMgTU1TWVMgdG8gcGxhdGZvcm0gZHJp
+dmVyCj4+Pj4gWXVlSGFpYmluZyAoMSk6Cj4+Pj4gICAgICAgIGRybS9tZWRpYXRlazogRml4IEtj
+b25maWcgd2FybmluZwo+Pj4+ICAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Fy
+bS9tZWRpYXRlay9tZWRpYXRlayxtbXN5cy50eHQgICB8ICAgNyArLQo+Pj4+ICAgRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZHBpLnR4
+dCB8ICAgNiArCj4+Pj4gICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxh
+eS9tZWRpYXRlay9tZWRpYXRlayxkc2kudHh0IHwgIDEwICsrCj4+Pj4gICBkcml2ZXJzL2Nsay9t
+ZWRpYXRlay9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwg
+ICA3ICsKPj4+PiAgIGRyaXZlcnMvY2xrL21lZGlhdGVrL01ha2VmaWxlICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDEgKwo+Pj4+ICAgZHJpdmVycy9jbGsvbWVkaWF0
+ZWsvY2xrLW10ODE3My1tbS5jICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8Cj4+Pj4g
+MTQ2ICsrKysrKysrKysrKysrKysrKysKPj4+PiAgIGRyaXZlcnMvY2xrL21lZGlhdGVrL2Nsay1t
+dDgxNzMuYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfAo+Pj4+IDEwNCAtLS0t
+LS0tLS0tLS0tLQo+Pj4+ICAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL0tjb25maWcgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgMSArCj4+Pj4gICBkcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2Rpc3BfY29sb3IuYyAgICAgICAgICAgICAgICAgICAgICAgICAgIHwg
+ICA1ICstCj4+Pj4gICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmMgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA1ICstCj4+Pj4gICBkcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYS5jICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA1
+ICstCj4+Pj4gICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIHwKPj4+PiAxMjcgKysrKysrKysrKy0tLS0tLS0KPj4+PiAg
+IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgfCAgMjcgKystLQo+Pj4+ICAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
+a19kcm1fZGRwLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8Cj4+Pj4gMjU5ICstLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPj4+PiAgIGRyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHJtX2RkcC5oICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDcgLQo+
+Pj4+ICAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICB8Cj4+Pj4gICA1MCArKystLS0tCj4+Pj4gICBkcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwg
+ICAyICstCj4+Pj4gICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9nZW0uYyAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAzICsKPj4+PiAgIGRyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHNpLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDgg
+Ky0KPj4+PiAgIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfaGRtaS5jICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgfCAgMjIgKystCj4+Pj4gICBkcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX21pcGlfdHguYyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKPj4+PiAg
+IDU0ICsrKysrKysKPj4+PiAgIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfbWlwaV90eC5o
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDQgKwo+Pj4+ICAgZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19tdDgxODNfbWlwaV90eC5jICAgICAgICAgICAgICAgICAgICAgICB8
+ICAyOCArKysrCj4+Pj4gICBkcml2ZXJzL3NvYy9tZWRpYXRlay9LY29uZmlnICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA4ICsrCj4+Pj4gICBkcml2ZXJzL3NvYy9t
+ZWRpYXRlay9NYWtlZmlsZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwg
+ICAxICsKPj4+PiAgIGRyaXZlcnMvc29jL21lZGlhdGVrL210ay1tbXN5cy5jICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgfAo+Pj4+IDMzNyArKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKwo+Pj4+ICAgaW5jbHVkZS9saW51eC9zb2MvbWVkaWF0ZWsv
+bXRrLW1tc3lzLmggICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAyMCArKysKPj4+PiAg
+IDI3IGZpbGVzIGNoYW5nZWQsIDc3OCBpbnNlcnRpb25zKCspLCA0NzYgZGVsZXRpb25zKC0pCj4+
+Pj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9jbGsvbWVkaWF0ZWsvY2xrLW10ODE3My1t
+bS5jCj4+Pj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXRrLW1t
+c3lzLmMKPj4+PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBpbmNsdWRlL2xpbnV4L3NvYy9tZWRpYXRl
+ay9tdGstbW1zeXMuaAo+Pj4gLS0KPj4+IERhbmllbCBWZXR0ZXIKPj4+IFNvZnR3YXJlIEVuZ2lu
+ZWVyLCBJbnRlbCBDb3Jwb3JhdGlvbgo+Pj4gaHR0cHM6Ly9wcm90ZWN0Mi5maXJlZXllLmNvbS91
+cmw/az02YjNjZDk1MC0zNmY3NWU2ZS02YjNkNTIxZi0wY2M0N2EzMTMwOWEtNzhjMjdiNDM0MTJj
+ZDkyNyZxPTEmdT1odHRwJTNBJTJGJTJGYmxvZy5mZndsbC5jaCUyRgo+Cj4KCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxp
+bmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
