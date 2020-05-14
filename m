@@ -2,80 +2,72 @@ Return-Path: <SRS0=tiIh=64=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.5 required=3.0 tests=DKIM_SIGNED,DKIM_VALID,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 80250C433DF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 16:20:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DF823C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 16:33:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4CD0620671
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 16:20:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A405D2065D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 16:33:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UhKncK2e"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CD0620671
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arndb.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cIqdIKop";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=wp.pl header.i=@wp.pl header.b="FSEGSII2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A405D2065D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wp.pl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KGyB9JFpTfFh9wEkmke7k+ZZgxZR9lZCF31LNZ2PViU=; b=UhKncK2euAlB+k
-	nU/tFJMAQxrbtuV5SFFM/Ch6ww3lpCTEoPwNtjsbIGxrfxUSyE+806N0w+yTTcOhtoGkPcZXMkUg6
-	3EB57iSbIQmgQrGaH0dY3Q1ChKInOxXADiTKXz5NyzrwG6spOs/oV4Hn7EyaeFdN0YvTHLu49dlCW
-	N3pgqIScFmuIZ/w/In4m6YHd9EZTuWwBo5eeCjzbdYOYjXLhDDLgm7FlFaC2kKkWzp6M8Ig10VYzI
-	b0RE/O1way0u0C4x+Hzb3BGX86e2xknUufAcvD26A7t3p8osOkMWbF40tuKdC3cMIMtVUBaj75we2
-	Kd24M3OC9UnAUh0jqkmQ==;
+	List-Owner; bh=fUSR93++m0c/N2w8lUw08ZkblLh89o3rvXMKTBFLifU=; b=cIqdIKopqkjJJJ
+	/8b6nogeXqDPoayYcoiVCLtR+r46BuSAKCUsld110+j3avIT7F1/27PtD/iJFBo1NjSkbBmijwhDr
+	N2KLYtYvYGx7DG2LCbHLh9qzQLIcMEiZr9MpCXERH+6bVQFtdwnYeOHzXSI58ue1zEpOciaf/nGFT
+	mFaYeGyd6u4DdK0oXRJSViCqaEY4fesMeK+WHQenuv8LS4tBLEnKkxCmpD3z8t0tXtcrP5V2YlqTY
+	ri3MnOZyt7ODLr6s+9UhLvh3WcS88moPSAnPB4b+mlw5YseEezdYAnazRTLggP0YqadzeZvMABuco
+	gsaowE+orQdzfiXTwGlw==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZGar-0005Is-Qo; Thu, 14 May 2020 16:20:21 +0000
-Received: from mout.kundenserver.de ([212.227.126.131])
+	id 1jZGnr-0005Fn-0y; Thu, 14 May 2020 16:33:47 +0000
+Received: from mx3.wp.pl ([212.77.101.10])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZGaT-0002jf-Qa; Thu, 14 May 2020 16:19:59 +0000
-Received: from mail-qv1-f45.google.com ([209.85.219.45]) by
- mrelayeu.kundenserver.de (mreue011 [212.227.15.129]) with ESMTPSA (Nemesis)
- id 1MFbFW-1jJHkL1e6o-00H5j2; Thu, 14 May 2020 18:19:55 +0200
-Received: by mail-qv1-f45.google.com with SMTP id r3so1798231qve.1;
- Thu, 14 May 2020 09:19:55 -0700 (PDT)
-X-Gm-Message-State: AOAM532bibWAuVm4gbb8wOsWCgsbqAya3CPaKZkzp+BAjsQ1EPEx1q2D
- oet3jYE2pIy0uL3Mv3tm4dyfAhVgsZI/0GbI20Q=
-X-Google-Smtp-Source: ABdhPJxCBrrGbxf18hL0yNxLoGEF8lWC0aBA5Q8WEtaHoSpSU8DBa8Zy7ECG2BoQv6ItHE4yhgTm89xpWpnDDwuH11g=
-X-Received: by 2002:a0c:eb11:: with SMTP id j17mr5595135qvp.197.1589473194138; 
- Thu, 14 May 2020 09:19:54 -0700 (PDT)
+ id 1jZGnm-0005Dl-6k
+ for linux-mediatek@lists.infradead.org; Thu, 14 May 2020 16:33:46 +0000
+Received: (wp-smtpd smtp.wp.pl 3044 invoked from network);
+ 14 May 2020 18:33:34 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=1024a;
+ t=1589474015; bh=bmVlvxRJfbuLi0qWPTmVd+J6tpfP5mcBYa4T+w6Y+8U=;
+ h=From:To:Cc:Subject;
+ b=FSEGSII21NTu3LcDu5gOBnyldd9XcVfZzPYtGBHnLq4KGH4ETLjb4h9etIzCH9PPQ
+ Fp2HGfy9VPZZkCbQOv/Sxp6v1PvuLdA4LoliUer6Sc4N4S8Izwcy3/fRunHjjLVmwI
+ M1A75FlFZ1yEYyN8OAlyA/jwva961MITdjVMX+MY=
+Received: from unknown (HELO kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com)
+ (kubakici@wp.pl@[163.114.132.4]) (envelope-sender <kubakici@wp.pl>)
+ by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
+ for <kvalo@codeaurora.org>; 14 May 2020 18:33:34 +0200
+Date: Thu, 14 May 2020 09:33:26 -0700
+From: Jakub Kicinski <kubakici@wp.pl>
+To: Kalle Valo <kvalo@codeaurora.org>
+Subject: Re: [PATCH] mt76: fix different licenses in same driver
+Message-ID: <20200514093326.49b995ed@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <87pnb7go2m.fsf@tynnyri.adurom.net>
+References: <3a5cb822eb4cd81d32b5480f1235c992ea4fbe06.1587193872.git.ryder.lee@mediatek.com>
+ <d32134a6-9673-521f-22ee-871aa2284af0@nbd.name>
+ <20200507100246.1e902bc8@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <87pnb7go2m.fsf@tynnyri.adurom.net>
 MIME-Version: 1.0
-References: <20200514075942.10136-1-brgl@bgdev.pl>
- <20200514075942.10136-11-brgl@bgdev.pl>
-In-Reply-To: <20200514075942.10136-11-brgl@bgdev.pl>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Thu, 14 May 2020 18:19:37 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a3=xgbvqrSpCK5h96eRH32AA7xnoK2ossvT0-cLFLzmXA@mail.gmail.com>
-Message-ID: <CAK8P3a3=xgbvqrSpCK5h96eRH32AA7xnoK2ossvT0-cLFLzmXA@mail.gmail.com>
-Subject: Re: [PATCH v3 10/15] net: ethernet: mtk-eth-mac: new driver
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-X-Provags-ID: V03:K1:/qv+kAopY+TX+z1JBE/zsJSZOZuVL4KS0oIKC1hkLO/cXzma90j
- zH9BMTf1Zqr9MZk3vvFm3P/2/r0+f1OVxhyv31IQ+pOzEwWRgFlFJWy7Nu6ODHH3RI7jvJs
- mYT00BgOvL/Bz3EYaZtnPNWtIOo0H2Og+TY5k3k0HERpDwKP5BeDbJ00bnypzS8RUYdW9jd
- jfG8zLLgtWOSBdyRMU2PA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:JTDoQpP0Uh8=:ZZ5a2SO5ao9ohprk32LYU9
- ga7worDmJEzLwXfktJkbk7L3acBPu4R/24EL0LHO7HKo4ju4JPHlnSaFlfvSRbwRFRJJbmVAO
- L+y4bEL6R1HOLuMK+cgx4kYSyvp01LEFiAyA4WrFKx8guhg5hf1mx8MeXIfoUJ+4v+Q7yDzdm
- HZnSLvNy8UN2Hsv0s9TUvNh4+jYia/Gs7jP6GfNbQW6Xq2k/vIqh3l/A8zxCjdFmZEhOu/+4O
- Na32uj+seYMCQM2wq7s/QD+d5p+AsgTmacXrqoMEtntcywZ5ljtmG+Ycsa43KzRPa8fV1yjCW
- OJglDHkW0wGufMjhCrLPtDLlSSnAD1ty20j2TPg4o4GivHohN5gzFPuOUNRN2OPZeNRC8eWqi
- uYqVyUhMZSIs50wEt3Ndo908Q7iSSgctf9hpcWuptqNBoygddxmtpDJe6UZKLvCOkW/zZdVeD
- 5VyuwqWa19/tFhaJ0eZEONkKus8bABwgAA9zgTBIQe2GqLng9nYZoIkzyxzP1FhsjJzzfmd0b
- moI+GcbBO7zyPgyYZ6njuWR3hdJaTJ/MadTMO80X2JS8CSY/86L1zmEyXkLtESGS+Asn437fj
- XYN8P9v35Hvr3R2trzCorLe0qgrQndxvvt3q2nQ48PVrmGmjnm679Jp2VGi0N+tp8ZLsVFYIv
- NeQC7d9FiXNHP3xqILvMik/jKgRK2bxH/Kuprr1tMPXxeM9mOrTLvBM/d3zmAbY59ruYtN5L/
- ltuG0xutSdNpmiJpQwsP2bwSXBlPClPtCw33DnJj0Gd+A6oMtTgdhtyBg8LwQHTzbpENja6Xd
- QI2LwZPpCcCigGR1NT7yXByiSROftlKcwZdjd9HKeR6YaQNt6g=
+X-WP-MailID: 87b73c8c2619fcfba521105177ea5514
+X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
+X-WP-SPAM: NO 0000001 [ESLT]                               
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200514_091958_154564_92204251 
-X-CRM114-Status: GOOD (  24.42  )
+X-CRM114-CacheID: sfid-20200514_093342_586294_D998329C 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,229 +79,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Edwin Peer <edwin.peer@broadcom.com>, DTML <devicetree@vger.kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Stephane Le Provost <stephane.leprovost@mediatek.com>,
- Jonathan Corbet <corbet@lwn.net>, Networking <netdev@vger.kernel.org>,
- Sean Wang <sean.wang@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Pedro Tsai <pedro.tsai@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- Fabien Parent <fparent@baylibre.com>, Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- Andrew Perepech <andrew.perepech@mediatek.com>,
- John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Jakub Kicinski <kuba@kernel.org>, "David S . Miller" <davem@davemloft.net>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Stanislaw Gruszka <sgruszka@redhat.com>,
+ Sean Wang <sean.wang@mediatek.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Felix Fietkau <nbd@nbd.name>,
+ Shayne Chen <shayne.chen@mediatek.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 14, 2020 at 10:00 AM Bartosz Golaszewski <brgl@bgdev.pl> wrote:
->
-> From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
->
-> This adds the driver for the MediaTek Ethernet MAC used on the MT8* SoC
-> family. For now we only support full-duplex.
->
-> Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+On Thu, 14 May 2020 07:03:45 +0300 Kalle Valo wrote:
+> Jakub Kicinski <kubakici@wp.pl> writes:
+> > On Thu, 7 May 2020 15:30:24 +0200 Felix Fietkau wrote:  
+> >> Hi Ryder,
+> >> 
+> >> I think for this patch we need an explicit ACK from Stanislaw Gruszka
+> >> and Jakub Kicinski (both Cc'd), because mt76x0 was licensed under GPL.  
+> >
+> > Thanks, yes, you definitely need an ack, especially from folks who have
+> > their copyright on the files :/
+> >
+> > My personal preference for the license was expressed clearly when the
+> > code was written and it is GPL-only. Felix, if you prefer the clean up
+> > I'm happy to ack, but I see no reason to downgrade the license at
+> > vendor's request.  
+> 
+> I think it would be unfortunate to have different licenses in the same
+> driver. For example think of copying a function from one file to
+> another, how would we handle that? So my strong recommendation is to use
+> the same license throughout the driver. And in this case I consider mt76
+> directory and it's subdirectories as being one driver, please correct me
+> if that's not the case.
 
-Looks very nice overall. Just a few things I noticed, and some ideas
-that may or may not make sense:
-
-> +/* This is defined to 0 on arm64 in arch/arm64/include/asm/processor.h but
-> + * this IP doesn't work without this alignment being equal to 2.
-> + */
-> +#ifdef NET_IP_ALIGN
-> +#undef NET_IP_ALIGN
-> +#endif
-> +#define NET_IP_ALIGN                           2
-
-Maybe you should just define your own macro instead of replacing
-the normal one then?
-
-> +static void mtk_mac_lock(struct mtk_mac_priv *priv)
-> +{
-> +       spin_lock_irqsave(&priv->lock, priv->lock_flags);
-> +}
-> +
-> +static void mtk_mac_unlock(struct mtk_mac_priv *priv)
-> +{
-> +       spin_unlock_irqrestore(&priv->lock, priv->lock_flags);
-> +}
-
-This looks wrong: you should not have shared 'flags' passed into
-spin_lock_irqsave(), and I don't even see a need to use the
-irqsave variant of the lock in the first place.
-
-Maybe start by open-coding the lock and remove the wrappers
-above.
-
-Then see if you can use a cheaper spin_lock_bh() or plain spin_lock()
-instead of irqsave.
-
-Finally, see if this can be done in a lockless way by relying on
-appropriate barriers and separating the writers into separate
-cache lines. From a brief look at the driver I think it can be done
-without too much trouble.
-
-> +static unsigned int mtk_mac_intr_read_and_clear(struct mtk_mac_priv *priv)
-> +{
-> +       unsigned int val;
-> +
-> +       regmap_read(priv->regs, MTK_MAC_REG_INT_STS, &val);
-> +       regmap_write(priv->regs, MTK_MAC_REG_INT_STS, val);
-> +
-> +       return val;
-> +}
-
-Do you actually need to read the register? That is usually a relatively
-expensive operation, so if possible try to use clear the bits when
-you don't care which bits were set.
-
-> +/* All processing for TX and RX happens in the napi poll callback. */
-> +static irqreturn_t mtk_mac_handle_irq(int irq, void *data)
-> +{
-> +       struct mtk_mac_priv *priv;
-> +       struct net_device *ndev;
-> +
-> +       ndev = data;
-> +       priv = netdev_priv(ndev);
-> +
-> +       if (netif_running(ndev)) {
-> +               mtk_mac_intr_mask_all(priv);
-> +               napi_schedule(&priv->napi);
-> +       }
-> +
-> +       return IRQ_HANDLED;
-
-
-> +static int mtk_mac_netdev_start_xmit(struct sk_buff *skb,
-> +                                    struct net_device *ndev)
-> +{
-> +       struct mtk_mac_priv *priv = netdev_priv(ndev);
-> +       struct mtk_mac_ring *ring = &priv->tx_ring;
-> +       struct device *dev = mtk_mac_get_dev(priv);
-> +       struct mtk_mac_ring_desc_data desc_data;
-> +
-> +       desc_data.dma_addr = mtk_mac_dma_map_tx(priv, skb);
-> +       if (dma_mapping_error(dev, desc_data.dma_addr))
-> +               goto err_drop_packet;
-> +
-> +       desc_data.skb = skb;
-> +       desc_data.len = skb->len;
-> +
-> +       mtk_mac_lock(priv);
-> +       mtk_mac_ring_push_head_tx(ring, &desc_data);
-> +
-> +       if (mtk_mac_ring_full(ring))
-> +               netif_stop_queue(ndev);
-> +       mtk_mac_unlock(priv);
-> +
-> +       mtk_mac_dma_resume_tx(priv);
-> +
-> +       return NETDEV_TX_OK;
-> +
-> +err_drop_packet:
-> +       dev_kfree_skb(skb);
-> +       ndev->stats.tx_dropped++;
-> +       return NETDEV_TX_BUSY;
-> +}
-
-I would always add BQL flow control in new drivers, using
-netdev_sent_queue here...
-
-> +static int mtk_mac_tx_complete_one(struct mtk_mac_priv *priv)
-> +{
-> +       struct mtk_mac_ring *ring = &priv->tx_ring;
-> +       struct mtk_mac_ring_desc_data desc_data;
-> +       int ret;
-> +
-> +       ret = mtk_mac_ring_pop_tail(ring, &desc_data);
-> +       if (ret)
-> +               return ret;
-> +
-> +       mtk_mac_dma_unmap_tx(priv, &desc_data);
-> +       dev_kfree_skb_irq(desc_data.skb);
-> +
-> +       return 0;
-> +}
-
-... and netdev_completed_queue()  here.
-
-> +static void mtk_mac_tx_complete_all(struct mtk_mac_priv *priv)
-> +{
-> +       struct mtk_mac_ring *ring = &priv->tx_ring;
-> +       struct net_device *ndev = priv->ndev;
-> +       int ret;
-> +
-> +       for (;;) {
-> +               mtk_mac_lock(priv);
-> +
-> +               if (!mtk_mac_ring_descs_available(ring)) {
-> +                       mtk_mac_unlock(priv);
-> +                       break;
-> +               }
-> +
-> +               ret = mtk_mac_tx_complete_one(priv);
-> +               if (ret) {
-> +                       mtk_mac_unlock(priv);
-> +                       break;
-> +               }
-> +
-> +               if (netif_queue_stopped(ndev))
-> +                       netif_wake_queue(ndev);
-> +
-> +               mtk_mac_unlock(priv);
-> +       }
-> +}
-
-It looks like most of the stuff inside of the loop can be pulled out
-and only done once here.
-
-> +static int mtk_mac_poll(struct napi_struct *napi, int budget)
-> +{
-> +       struct mtk_mac_priv *priv;
-> +       unsigned int status;
-> +       int received = 0;
-> +
-> +       priv = container_of(napi, struct mtk_mac_priv, napi);
-> +
-> +       status = mtk_mac_intr_read_and_clear(priv);
-> +
-> +       /* Clean up TX */
-> +       if (status & MTK_MAC_BIT_INT_STS_TNTC)
-> +               mtk_mac_tx_complete_all(priv);
-> +
-> +       /* Receive up to $budget packets */
-> +       if (status & MTK_MAC_BIT_INT_STS_FNRC)
-> +               received = mtk_mac_process_rx(priv, budget);
-> +
-> +       /* One of the counter reached 0x8000000 - update stats and reset all
-> +        * counters.
-> +        */
-> +       if (status & MTK_MAC_REG_INT_STS_MIB_CNT_TH) {
-> +               mtk_mac_update_stats(priv);
-> +               mtk_mac_reset_counters(priv);
-> +       }
-> +
-> +       if (received < budget)
-> +               napi_complete_done(napi, received);
-> +
-> +       mtk_mac_intr_unmask_all(priv);
-> +
-> +       return received;
-> +}
-
-I think you want to leave (at least some of) the interrupts masked
-if your budget is exhausted, to avoid generating unnecessary
-irqs.
-
-It may also be faster to not mask/unmask at all but just
-clear the interrupts that you have finished processing
-
-      Arnd
+AFAIU some parts of the code were brought in from mt7601u which has 
+a different license. As I said I'm happy with it if Felix feels like
+it's needed. Just not a fan of vendors who barely contribute making
+license changes.
 
 _______________________________________________
 Linux-mediatek mailing list
