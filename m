@@ -2,56 +2,75 @@ Return-Path: <SRS0=tiIh=64=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 353BEC433E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 14:23:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CD4FBC433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 14:29:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0ADD52065D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 14:23:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 87770206A5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 14:29:06 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hsmhPBpN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0ADD52065D
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rowland.harvard.edu
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gmrJ9YSc";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="JxDecQBn"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 87770206A5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+w/nid8rOch0SQbfCZLFaDfLuLZQJwJICSfy2F2lJL0=; b=hsmhPBpND/nVia
-	FNLajA2I/rPGRecPFU5ZA/ty9XyDK5PcD+c8EulbCDmT2fqrP5AlrG/G34dxx7uLqUckgUhOVFUeH
-	fM3eSoYhKy0t6tMVRxlJ3kBfpjmtH2X8izGlNf+KZvc11QkwuJubV2s3h0VV4Zx64Kcpe1TBtGCPE
-	OEXOGF12OaSK7kV2vqHvzBiZjLZgD9FLlZbkdy9v3aj5QlPI+34IvPNRRT3+fmX9UzUxxgGtwcL8Y
-	Po28MTeWAQIV8AcFb5LUdNmbw2HRgs/zMuHaIAwK2WYU71tShtErgvGs3YIwcFuBtJgV1jxg5sOq6
-	MBpDNLBnxUZDhE2tIyuA==;
+	List-Owner; bh=DldADGMdBL85gyV4OoZdlP3kx7inlSF3F+I3dW8geUk=; b=gmrJ9YSc4B8Yd1
+	250Qy5QM0kzUncWah5eiiaBwBV0ksy6YIzDgsk2b/OuDOPGmp1i+1L9Ap97qd1GDS/3JAczJXdl/E
+	o0tgAzuhmcSsXZ24Ey8QiGGT5vL6fBBw4zBOhnwrrz4Asrx053KYiWAFo4ch+F0B5ASNG0wNthSZt
+	n3GCEcT7sogMPH0eyGrNzGPECgsKbc4d9fA1jtQJWFydyFtvqFw1+ClYXKRJoaVIQM0UGiY8COfDk
+	io+6j7K3Tz3mG3N5wrHtOAWL9nBMEya3hMn4Xrp0U3eOiYqm2BEcszKVcKhw19ju3An03KuWXliME
+	lxvkw4ttEaB6Zb+7GolA==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZElB-0007b0-LV; Thu, 14 May 2020 14:22:53 +0000
-Received: from netrider.rowland.org ([192.131.102.5])
- by bombadil.infradead.org with smtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZEl2-0007Rg-1D
- for linux-mediatek@lists.infradead.org; Thu, 14 May 2020 14:22:45 +0000
-Received: (qmail 14203 invoked by uid 500); 14 May 2020 10:22:37 -0400
-Date: Thu, 14 May 2020 10:22:37 -0400
-From: Alan Stern <stern@rowland.harvard.edu>
-To: Macpaul Lin <macpaul.lin@mediatek.com>
-Subject: Re: [PATCH] usb: gadget: u_serial: fix coverity warning: negative
- index at array
-Message-ID: <20200514142237.GB12181@rowland.harvard.edu>
-References: <1589443500-3990-1-git-send-email-macpaul.lin@mediatek.com>
+	id 1jZEr5-0003ao-HA; Thu, 14 May 2020 14:28:59 +0000
+Received: from mail.kernel.org ([198.145.29.99])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jZEqt-0003RE-60; Thu, 14 May 2020 14:28:48 +0000
+Received: from mail-ed1-f52.google.com (mail-ed1-f52.google.com
+ [209.85.208.52])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 729732070A;
+ Thu, 14 May 2020 14:28:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1589466526;
+ bh=c9L1O1InlStlIGidxd6wkgttvIpBEDDoT/skiDV3RvQ=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=JxDecQBn7l1dJvcoAMtJKzjbkyoPCFe3jN6GE9bIN4vNpmS0jZ4BL8QmgWPYGhjdx
+ 98XZLTISx3rmSGgsqNb9oJHtZnynI6zR0DVGcAvfrbFtKT3rANG5o1pYzdwIFJnaVV
+ 3fYXikXicKhyaywo187A9P+UdGinb8CG40vHH6cI=
+Received: by mail-ed1-f52.google.com with SMTP id r7so2523195edo.11;
+ Thu, 14 May 2020 07:28:46 -0700 (PDT)
+X-Gm-Message-State: AOAM533C4OGi4r0rp1aNEF9pC77KW/0CQP9UunBB6v9V0GqGqP+Mg5pQ
+ SalI6TE5iHkL/NUAsQ2XKnWHlaPdjiVwm7rc/w==
+X-Google-Smtp-Source: ABdhPJwIyb+lTea2pZcVEwHLHdT4AKiwC3a2Q/WIWGftFZnpe494JxoCIClrf22bFDtgFzG2+qSq9oUl8aupkmV1SZA=
+X-Received: by 2002:a50:ea87:: with SMTP id d7mr4038661edo.48.1589466524869;
+ Thu, 14 May 2020 07:28:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1589443500-3990-1-git-send-email-macpaul.lin@mediatek.com>
+References: <20200501152335.1805790-1-enric.balletbo@collabora.com>
+ <20200501152335.1805790-8-enric.balletbo@collabora.com>
+ <CAFqH_53h=3OXzwLnw1XT3rHYkMPOPNFBdQdPeFmNubN9qq_Twg@mail.gmail.com>
+In-Reply-To: <CAFqH_53h=3OXzwLnw1XT3rHYkMPOPNFBdQdPeFmNubN9qq_Twg@mail.gmail.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 14 May 2020 22:28:33 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-pOUuM7LQ1jm6gqpg8acMqDWOHxGucY5XOjq0ctGUkzA@mail.gmail.com>
+Message-ID: <CAAOTY_-pOUuM7LQ1jm6gqpg8acMqDWOHxGucY5XOjq0ctGUkzA@mail.gmail.com>
+Subject: Re: [PATCH v4 7/7] drm/mediatek: mtk_dsi: Create connector for bridges
+To: Enric Balletbo Serra <eballetbo@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200514_072244_225982_8F35D361 
-X-CRM114-Status: GOOD (  13.19  )
+X-CRM114-CacheID: sfid-20200514_072847_263669_D0100E73 
+X-CRM114-Status: GOOD (  22.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,67 +82,89 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Stan Lu <stan.lu@mediatek.com>, Felipe Balbi <balbi@kernel.org>,
- Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org,
- =?utf-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>,
- Sergey Organov <sorganov@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, Macpaul Lin <macpaul.lin@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, linux-kernel <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Collabora Kernel ML <kernel@collabora.com>, Sam Ravnborg <sam@ravnborg.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 14, 2020 at 04:05:00PM +0800, Macpaul Lin wrote:
-> This issue has been reported by coverity scanner.
-> Replace "int portnum" by "unsigned int", this void negative index at
-> array.
-
-Can you please explain this more fully?  Why does coverity think the 
-code might use a negative array index?  Is there some possibility that 
-the portnum value might actually be negative?
-
-It's noticeable that your patch doesn't actually change any values, only 
-the type.  This means that if the code was buggy before, it's still 
-buggy.  Alternatively, if the code wasn't buggy before then coverity got 
-a false positive, so no change should be needed.
-
-Alan Stern
-
-> Signed-off-by: Stan Lu <stan.lu@mediatek.com>
-> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
-> ---
->  drivers/usb/gadget/function/u_serial.c |    4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/usb/gadget/function/u_serial.c b/drivers/usb/gadget/function/u_serial.c
-> index 8167d37..53951f2 100644
-> --- a/drivers/usb/gadget/function/u_serial.c
-> +++ b/drivers/usb/gadget/function/u_serial.c
-> @@ -587,7 +587,7 @@ static int gs_start_io(struct gs_port *port)
->   */
->  static int gs_open(struct tty_struct *tty, struct file *file)
->  {
-> -	int		port_num = tty->index;
-> +	unsigned int	port_num = tty->index;
->  	struct gs_port	*port;
->  	int		status = 0;
->  
-> @@ -1211,7 +1211,7 @@ int gserial_alloc_line_no_console(unsigned char *line_num)
->  	struct gs_port			*port;
->  	struct device			*tty_dev;
->  	int				ret;
-> -	int				port_num;
-> +	unsigned int			port_num;
->  
->  	coding.dwDTERate = cpu_to_le32(9600);
->  	coding.bCharFormat = 8;
-> -- 
-> 1.7.9.5
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEVucmljOgoKRW5yaWMgQmFsbGV0Ym8gU2VycmEgPGViYWxsZXRib0BnbWFpbC5jb20+IOaW
+vCAyMDIw5bm0NeaciDE05pelIOmAseWbmyDkuIrljYgxMjo0MeWvq+mBk++8mgo+Cj4gSGkgQ2h1
+bi1LdWFuZywKPgo+IE1pc3NhdGdlIGRlIEVucmljIEJhbGxldGJvIGkgU2VycmEgPGVucmljLmJh
+bGxldGJvQGNvbGxhYm9yYS5jb20+IGRlbAo+IGRpYSBkdi4sIDEgZGUgbWFpZyAyMDIwIGEgbGVz
+IDE3OjI1Ogo+ID4KPiA+IFVzZSB0aGUgZHJtX2JyaWRnZV9jb25uZWN0b3IgaGVscGVyIHRvIGNy
+ZWF0ZSBhIGNvbm5lY3RvciBmb3IgcGlwZWxpbmVzCj4gPiB0aGF0IHVzZSBkcm1fYnJpZGdlLiBU
+aGlzIGFsbG93cyBzcGxpdHRpbmcgY29ubmVjdG9yIG9wZXJhdGlvbnMgYWNyb3NzCj4gPiBtdWx0
+aXBsZSBicmlkZ2VzIHdoZW4gbmVjZXNzYXJ5LCBpbnN0ZWFkIG9mIGhhdmluZyB0aGUgbGFzdCBi
+cmlkZ2UgaW4KPiA+IHRoZSBjaGFpbiBjcmVhdGluZyB0aGUgY29ubmVjdG9yIGFuZCBoYW5kbGlu
+ZyBhbGwgY29ubmVjdG9yIG9wZXJhdGlvbnMKPiA+IGludGVybmFsbHkuCj4gPgo+ID4gU2lnbmVk
+LW9mZi1ieTogRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3Jh
+LmNvbT4KPiA+IEFja2VkLWJ5OiBTYW0gUmF2bmJvcmcgPHNhbUByYXZuYm9yZy5vcmc+Cj4KPiBB
+IGdlbnRsZSBwaW5nIG9uIHRoaXMsIEkgdGhpbmsgdGhhdCB0aGlzIG9uZSBpcyB0aGUgb25seSBv
+bmUgdGhhdAo+IHN0aWxsIG5lZWRzIGEgcmV2aWV3IGluIHRoZSBzZXJpZXMuCgpUaGlzIGlzIHdo
+YXQgSSByZXBseSBpbiBwYXRjaCB2MzoKCkkgdGhpbmsgdGhlIHBhbmVsIGlzIHdyYXBwZWQgaW50
+byBuZXh0X2JyaWRnZSBoZXJlLAoKaWYgKHBhbmVsKSB7CiAgICBkc2ktPm5leHRfYnJpZGdlID0g
+ZGV2bV9kcm1fcGFuZWxfYnJpZGdlX2FkZChkZXYsIHBhbmVsKTsKCnNvIHRoZSBuZXh0X2JyaWRn
+ZSBpcyBhIHBhbmVsX2JyaWRnZSwgaW4gaXRzIGF0dGFjaCBmdW5jdGlvbgpwYW5lbF9icmlkZ2Vf
+YXR0YWNoKCksCmFjY29yZGluZyB0byB0aGUgZmxhZyBEUk1fQlJJREdFX0FUVEFDSF9OT19DT05O
+RUNUT1IsIGlmIG5vdCBleGlzdCwKaXQgd291bGQgY3JlYXRlIGNvbm5lY3RvciBhbmQgYXR0YWNo
+IGNvbm5lY3RvciB0byBwYW5lbC4KCkknbSBub3Qgc3VyZSB0aGlzIGZsYWcgd291bGQgZXhpc3Qg
+b3Igbm90LCBidXQgZm9yIGJvdGggY2FzZSwgaXQncyBzdHJhbmdlLgpJZiBleGlzdCwgeW91IGNy
+ZWF0ZSBjb25uZWN0b3IgaW4gdGhpcyBwYXRjaCBidXQgbm8gd2hlcmUgdG8gYXR0YWNoCmNvbm5l
+Y3RvciB0byBwYW5lbC4KSWYgbm90IGV4aXN0LCB0aGUgbmV4dF9icmlnZSB3b3VsZCBjcmVhdGUg
+b25lIGNvbm5lY3RvciBhbmQgdGhpcyBicmlnZQp3b3VsZCBjcmVhdGUgYW5vdGhlciBjb25uZWN0
+b3IuCgpJIHRoaW5rIGluIHlvdXIgY2FzZSwgbXRrX2RzaSBkb2VzIG5vdCBkaXJlY3RseSBjb25u
+ZWN0IHRvIGEgcGFuZWwsIHNvCkkgbmVlZCBhIGV4YWN0IGV4cGxhaW4uIE9yIHNvbWVvbmUgY291
+bGQgdGVzdCB0aGlzIG9uIGEKZGlyZWN0bHktY29ubmVjdC1wYW5lbCBwbGF0Zm9ybS4KClJlZ2Fy
+ZHMsCkNodW4tS3VhbmcuCgo+Cj4gVGhhbmtzLAo+ICBFbnJpYwo+Cj4gPiAtLS0KPiA+Cj4gPiBD
+aGFuZ2VzIGluIHY0OiBOb25lCj4gPiBDaGFuZ2VzIGluIHYzOgo+ID4gLSBNb3ZlIHRoZSBicmlk
+Z2UudHlwZSBsaW5lIHRvIHRoZSBwYXRjaCB0aGF0IGFkZHMgZHJtX2JyaWRnZSBzdXBwb3J0LiAo
+TGF1cmVudCBQaW5jaGFydCkKPiA+Cj4gPiBDaGFuZ2VzIGluIHYyOiBOb25lCj4gPgo+ID4gIGRy
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCAxMyArKysrKysrKysrKystCj4gPiAg
+MSBmaWxlIGNoYW5nZWQsIDEyIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiA+Cj4gPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyBiL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiA+IGluZGV4IDRmM2JkMDk1YzFlZS4uNDcxZmNh
+ZmRmMzQ4IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2ku
+Ywo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+ID4gQEAgLTE3
+LDYgKzE3LDcgQEAKPiA+Cj4gPiAgI2luY2x1ZGUgPGRybS9kcm1fYXRvbWljX2hlbHBlci5oPgo+
+ID4gICNpbmNsdWRlIDxkcm0vZHJtX2JyaWRnZS5oPgo+ID4gKyNpbmNsdWRlIDxkcm0vZHJtX2Jy
+aWRnZV9jb25uZWN0b3IuaD4KPiA+ICAjaW5jbHVkZSA8ZHJtL2RybV9taXBpX2RzaS5oPgo+ID4g
+ICNpbmNsdWRlIDxkcm0vZHJtX29mLmg+Cj4gPiAgI2luY2x1ZGUgPGRybS9kcm1fcGFuZWwuaD4K
+PiA+IEBAIC0xODMsNiArMTg0LDcgQEAgc3RydWN0IG10a19kc2kgewo+ID4gICAgICAgICBzdHJ1
+Y3QgZHJtX2VuY29kZXIgZW5jb2RlcjsKPiA+ICAgICAgICAgc3RydWN0IGRybV9icmlkZ2UgYnJp
+ZGdlOwo+ID4gICAgICAgICBzdHJ1Y3QgZHJtX2JyaWRnZSAqbmV4dF9icmlkZ2U7Cj4gPiArICAg
+ICAgIHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3I7Cj4gPiAgICAgICAgIHN0cnVjdCBw
+aHkgKnBoeTsKPiA+Cj4gPiAgICAgICAgIHZvaWQgX19pb21lbSAqcmVnczsKPiA+IEBAIC05Nzcs
+MTAgKzk3OSwxOSBAQCBzdGF0aWMgaW50IG10a19kc2lfZW5jb2Rlcl9pbml0KHN0cnVjdCBkcm1f
+ZGV2aWNlICpkcm0sIHN0cnVjdCBtdGtfZHNpICpkc2kpCj4gPiAgICAgICAgICAqLwo+ID4gICAg
+ICAgICBkc2ktPmVuY29kZXIucG9zc2libGVfY3J0Y3MgPSAxOwo+ID4KPiA+IC0gICAgICAgcmV0
+ID0gZHJtX2JyaWRnZV9hdHRhY2goJmRzaS0+ZW5jb2RlciwgJmRzaS0+YnJpZGdlLCBOVUxMLCAw
+KTsKPiA+ICsgICAgICAgcmV0ID0gZHJtX2JyaWRnZV9hdHRhY2goJmRzaS0+ZW5jb2RlciwgJmRz
+aS0+YnJpZGdlLCBOVUxMLAo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBEUk1f
+QlJJREdFX0FUVEFDSF9OT19DT05ORUNUT1IpOwo+ID4gICAgICAgICBpZiAocmV0KQo+ID4gICAg
+ICAgICAgICAgICAgIGdvdG8gZXJyX2NsZWFudXBfZW5jb2RlcjsKPiA+Cj4gPiArICAgICAgIGRz
+aS0+Y29ubmVjdG9yID0gZHJtX2JyaWRnZV9jb25uZWN0b3JfaW5pdChkcm0sICZkc2ktPmVuY29k
+ZXIpOwo+ID4gKyAgICAgICBpZiAoSVNfRVJSKGRzaS0+Y29ubmVjdG9yKSkgewo+ID4gKyAgICAg
+ICAgICAgICAgIERSTV9FUlJPUigiVW5hYmxlIHRvIGNyZWF0ZSBicmlkZ2UgY29ubmVjdG9yXG4i
+KTsKPiA+ICsgICAgICAgICAgICAgICByZXQgPSBQVFJfRVJSKGRzaS0+Y29ubmVjdG9yKTsKPiA+
+ICsgICAgICAgICAgICAgICBnb3RvIGVycl9jbGVhbnVwX2VuY29kZXI7Cj4gPiArICAgICAgIH0K
+PiA+ICsgICAgICAgZHJtX2Nvbm5lY3Rvcl9hdHRhY2hfZW5jb2Rlcihkc2ktPmNvbm5lY3Rvciwg
+JmRzaS0+ZW5jb2Rlcik7Cj4gPiArCj4gPiAgICAgICAgIHJldHVybiAwOwo+ID4KPiA+ICBlcnJf
+Y2xlYW51cF9lbmNvZGVyOgo+ID4gLS0KPiA+IDIuMjYuMgo+ID4KPiA+Cj4gPiBfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+ID4gTGludXgtbWVkaWF0ZWsg
+bWFpbGluZyBsaXN0Cj4gPiBMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCj4gPiBo
+dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVr
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1t
+ZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
+dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVr
+Cg==
