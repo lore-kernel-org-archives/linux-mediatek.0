@@ -2,61 +2,80 @@ Return-Path: <SRS0=tiIh=64=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3210FC433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 15:43:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 80250C433DF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 16:20:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E9FF820657
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 15:43:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4CD0620671
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 16:20:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AWkJ304j"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9FF820657
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UhKncK2e"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CD0620671
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arndb.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hOXNE5O+b5KPV7vEJJmRUpsxXuZn+tEWwd/5C1JHi8s=; b=AWkJ304jDZ1JO7
-	tVonTNeLrUcAiTKO+7NpFlJabQ3S/VPwRG6bEBGKLR0udk7qpP3YOyx5JUlPmgKZ6UepMW45DeiYo
-	ulMEgWq+Jko/GPslV4f8iiMmfPHMpFBYyV6EONJrsik4kDh41L/pq9hrz833viNrYeywBlcWP5TFr
-	sAJ11Vs2uozHfCVQJ5gEUoONGlC7MWAWhxYrCNAaYcVwXNhNEjwjzOCVrD2gXDedKTQMlcXX5D/fc
-	Z93vQOnKhsJUA5WKEW2eZq+AJCF+wQdJtlvNDb1sU+DS4sz6picQ7Em0DGdllXWc1RNiQmvQezIPb
-	A8eNOVc6oCSUE3pAGcRg==;
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KGyB9JFpTfFh9wEkmke7k+ZZgxZR9lZCF31LNZ2PViU=; b=UhKncK2euAlB+k
+	nU/tFJMAQxrbtuV5SFFM/Ch6ww3lpCTEoPwNtjsbIGxrfxUSyE+806N0w+yTTcOhtoGkPcZXMkUg6
+	3EB57iSbIQmgQrGaH0dY3Q1ChKInOxXADiTKXz5NyzrwG6spOs/oV4Hn7EyaeFdN0YvTHLu49dlCW
+	N3pgqIScFmuIZ/w/In4m6YHd9EZTuWwBo5eeCjzbdYOYjXLhDDLgm7FlFaC2kKkWzp6M8Ig10VYzI
+	b0RE/O1way0u0C4x+Hzb3BGX86e2xknUufAcvD26A7t3p8osOkMWbF40tuKdC3cMIMtVUBaj75we2
+	Kd24M3OC9UnAUh0jqkmQ==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZG0Y-0006Ay-TH; Thu, 14 May 2020 15:42:50 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1jZGar-0005Is-Qo; Thu, 14 May 2020 16:20:21 +0000
+Received: from mout.kundenserver.de ([212.227.126.131])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZG05-0005jZ-F7; Thu, 14 May 2020 15:42:25 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id E7DE12A2F7B
-Subject: Re: [PATCH v4 7/7] drm/mediatek: mtk_dsi: Create connector for bridges
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Enric Balletbo Serra <eballetbo@gmail.com>
-References: <20200501152335.1805790-1-enric.balletbo@collabora.com>
- <20200501152335.1805790-8-enric.balletbo@collabora.com>
- <CAFqH_53h=3OXzwLnw1XT3rHYkMPOPNFBdQdPeFmNubN9qq_Twg@mail.gmail.com>
- <CAAOTY_-pOUuM7LQ1jm6gqpg8acMqDWOHxGucY5XOjq0ctGUkzA@mail.gmail.com>
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <53683f2d-23c7-57ab-2056-520c50795ffe@collabora.com>
-Date: Thu, 14 May 2020 17:42:15 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ id 1jZGaT-0002jf-Qa; Thu, 14 May 2020 16:19:59 +0000
+Received: from mail-qv1-f45.google.com ([209.85.219.45]) by
+ mrelayeu.kundenserver.de (mreue011 [212.227.15.129]) with ESMTPSA (Nemesis)
+ id 1MFbFW-1jJHkL1e6o-00H5j2; Thu, 14 May 2020 18:19:55 +0200
+Received: by mail-qv1-f45.google.com with SMTP id r3so1798231qve.1;
+ Thu, 14 May 2020 09:19:55 -0700 (PDT)
+X-Gm-Message-State: AOAM532bibWAuVm4gbb8wOsWCgsbqAya3CPaKZkzp+BAjsQ1EPEx1q2D
+ oet3jYE2pIy0uL3Mv3tm4dyfAhVgsZI/0GbI20Q=
+X-Google-Smtp-Source: ABdhPJxCBrrGbxf18hL0yNxLoGEF8lWC0aBA5Q8WEtaHoSpSU8DBa8Zy7ECG2BoQv6ItHE4yhgTm89xpWpnDDwuH11g=
+X-Received: by 2002:a0c:eb11:: with SMTP id j17mr5595135qvp.197.1589473194138; 
+ Thu, 14 May 2020 09:19:54 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAAOTY_-pOUuM7LQ1jm6gqpg8acMqDWOHxGucY5XOjq0ctGUkzA@mail.gmail.com>
-Content-Language: en-US
+References: <20200514075942.10136-1-brgl@bgdev.pl>
+ <20200514075942.10136-11-brgl@bgdev.pl>
+In-Reply-To: <20200514075942.10136-11-brgl@bgdev.pl>
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Thu, 14 May 2020 18:19:37 +0200
+X-Gmail-Original-Message-ID: <CAK8P3a3=xgbvqrSpCK5h96eRH32AA7xnoK2ossvT0-cLFLzmXA@mail.gmail.com>
+Message-ID: <CAK8P3a3=xgbvqrSpCK5h96eRH32AA7xnoK2ossvT0-cLFLzmXA@mail.gmail.com>
+Subject: Re: [PATCH v3 10/15] net: ethernet: mtk-eth-mac: new driver
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+X-Provags-ID: V03:K1:/qv+kAopY+TX+z1JBE/zsJSZOZuVL4KS0oIKC1hkLO/cXzma90j
+ zH9BMTf1Zqr9MZk3vvFm3P/2/r0+f1OVxhyv31IQ+pOzEwWRgFlFJWy7Nu6ODHH3RI7jvJs
+ mYT00BgOvL/Bz3EYaZtnPNWtIOo0H2Og+TY5k3k0HERpDwKP5BeDbJ00bnypzS8RUYdW9jd
+ jfG8zLLgtWOSBdyRMU2PA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:JTDoQpP0Uh8=:ZZ5a2SO5ao9ohprk32LYU9
+ ga7worDmJEzLwXfktJkbk7L3acBPu4R/24EL0LHO7HKo4ju4JPHlnSaFlfvSRbwRFRJJbmVAO
+ L+y4bEL6R1HOLuMK+cgx4kYSyvp01LEFiAyA4WrFKx8guhg5hf1mx8MeXIfoUJ+4v+Q7yDzdm
+ HZnSLvNy8UN2Hsv0s9TUvNh4+jYia/Gs7jP6GfNbQW6Xq2k/vIqh3l/A8zxCjdFmZEhOu/+4O
+ Na32uj+seYMCQM2wq7s/QD+d5p+AsgTmacXrqoMEtntcywZ5ljtmG+Ycsa43KzRPa8fV1yjCW
+ OJglDHkW0wGufMjhCrLPtDLlSSnAD1ty20j2TPg4o4GivHohN5gzFPuOUNRN2OPZeNRC8eWqi
+ uYqVyUhMZSIs50wEt3Ndo908Q7iSSgctf9hpcWuptqNBoygddxmtpDJe6UZKLvCOkW/zZdVeD
+ 5VyuwqWa19/tFhaJ0eZEONkKus8bABwgAA9zgTBIQe2GqLng9nYZoIkzyxzP1FhsjJzzfmd0b
+ moI+GcbBO7zyPgyYZ6njuWR3hdJaTJ/MadTMO80X2JS8CSY/86L1zmEyXkLtESGS+Asn437fj
+ XYN8P9v35Hvr3R2trzCorLe0qgrQndxvvt3q2nQ48PVrmGmjnm679Jp2VGi0N+tp8ZLsVFYIv
+ NeQC7d9FiXNHP3xqILvMik/jKgRK2bxH/Kuprr1tMPXxeM9mOrTLvBM/d3zmAbY59ruYtN5L/
+ ltuG0xutSdNpmiJpQwsP2bwSXBlPClPtCw33DnJj0Gd+A6oMtTgdhtyBg8LwQHTzbpENja6Xd
+ QI2LwZPpCcCigGR1NT7yXByiSROftlKcwZdjd9HKeR6YaQNt6g=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200514_084221_768073_4EE06D69 
-X-CRM114-Status: GOOD (  26.18  )
+X-CRM114-CacheID: sfid-20200514_091958_154564_92204251 
+X-CRM114-Status: GOOD (  24.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,107 +87,231 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Nicolas Boichat <drinkcat@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, linux-kernel <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Collabora Kernel ML <kernel@collabora.com>, Sam Ravnborg <sam@ravnborg.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Edwin Peer <edwin.peer@broadcom.com>, DTML <devicetree@vger.kernel.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Stephane Le Provost <stephane.leprovost@mediatek.com>,
+ Jonathan Corbet <corbet@lwn.net>, Networking <netdev@vger.kernel.org>,
+ Sean Wang <sean.wang@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Pedro Tsai <pedro.tsai@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Andrew Perepech <andrew.perepech@mediatek.com>,
+ John Crispin <john@phrozen.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, "David S . Miller" <davem@davemloft.net>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Heiner Kallweit <hkallweit1@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQ2h1bi1LdWFuZywKCk9uIDE0LzUvMjAgMTY6MjgsIENodW4tS3VhbmcgSHUgd3JvdGU6Cj4g
-SGksIEVucmljOgo+IAo+IEVucmljIEJhbGxldGJvIFNlcnJhIDxlYmFsbGV0Ym9AZ21haWwuY29t
-PiDmlrwgMjAyMOW5tDXmnIgxNOaXpSDpgLHlm5sg5LiK5Y2IMTI6NDHlr6vpgZPvvJoKPj4KPj4g
-SGkgQ2h1bi1LdWFuZywKPj4KPj4gTWlzc2F0Z2UgZGUgRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8
-ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4gZGVsCj4+IGRpYSBkdi4sIDEgZGUgbWFpZyAy
-MDIwIGEgbGVzIDE3OjI1Ogo+Pj4KPj4+IFVzZSB0aGUgZHJtX2JyaWRnZV9jb25uZWN0b3IgaGVs
-cGVyIHRvIGNyZWF0ZSBhIGNvbm5lY3RvciBmb3IgcGlwZWxpbmVzCj4+PiB0aGF0IHVzZSBkcm1f
-YnJpZGdlLiBUaGlzIGFsbG93cyBzcGxpdHRpbmcgY29ubmVjdG9yIG9wZXJhdGlvbnMgYWNyb3Nz
-Cj4+PiBtdWx0aXBsZSBicmlkZ2VzIHdoZW4gbmVjZXNzYXJ5LCBpbnN0ZWFkIG9mIGhhdmluZyB0
-aGUgbGFzdCBicmlkZ2UgaW4KPj4+IHRoZSBjaGFpbiBjcmVhdGluZyB0aGUgY29ubmVjdG9yIGFu
-ZCBoYW5kbGluZyBhbGwgY29ubmVjdG9yIG9wZXJhdGlvbnMKPj4+IGludGVybmFsbHkuCj4+Pgo+
-Pj4gU2lnbmVkLW9mZi1ieTogRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9A
-Y29sbGFib3JhLmNvbT4KPj4+IEFja2VkLWJ5OiBTYW0gUmF2bmJvcmcgPHNhbUByYXZuYm9yZy5v
-cmc+Cj4+Cj4+IEEgZ2VudGxlIHBpbmcgb24gdGhpcywgSSB0aGluayB0aGF0IHRoaXMgb25lIGlz
-IHRoZSBvbmx5IG9uZSB0aGF0Cj4+IHN0aWxsIG5lZWRzIGEgcmV2aWV3IGluIHRoZSBzZXJpZXMu
-Cj4gCj4gVGhpcyBpcyB3aGF0IEkgcmVwbHkgaW4gcGF0Y2ggdjM6Cj4gCgpTb3JyeSBmb3IgbWlz
-c2luZyB0aGlzLgoKPiBJIHRoaW5rIHRoZSBwYW5lbCBpcyB3cmFwcGVkIGludG8gbmV4dF9icmlk
-Z2UgaGVyZSwKPiAKClllcywgeW91IGNhbiBoYXZlIGZvciBleGFtcGxlOgoKMS4gZHJtX2JyaWRn
-ZSAobXRrX2RzaSkgLT4gZHJtX2JyaWRnZSAocHM4NjQwIC0gZHNpLXRvLWVkcCkgLT4gZHJtX3Bh
-bmVsX2JyaWRnZQooZWRwIHBhbmVsKQoKb3IgYQoKMi4gZHJtX2JyaWRnZSAobXRrX2RzaSktPiBk
-cm1fcGFuZWxfYnJpZGdlIChkc2kgcGFuZWwpCgpUaGUgX2ZpcnN0XyBvbmUgaXMgbXkgdXNlIGNh
-c2UKCj4gaWYgKHBhbmVsKSB7CgpUaGlzIGhhbmRsZXMgdGhlIHNlY29uZCBjYXNlLCB3aGVyZSB5
-b3UgYXR0YWNoIGEgZHNpIHBhbmVsLgoKPiAgICAgZHNpLT5uZXh0X2JyaWRnZSA9IGRldm1fZHJt
-X3BhbmVsX2JyaWRnZV9hZGQoZGV2LCBwYW5lbCk7Cj4gCj4gc28gdGhlIG5leHRfYnJpZGdlIGlz
-IGEgcGFuZWxfYnJpZGdlLCBpbiBpdHMgYXR0YWNoIGZ1bmN0aW9uCj4gcGFuZWxfYnJpZGdlX2F0
-dGFjaCgpLAo+IGFjY29yZGluZyB0byB0aGUgZmxhZyBEUk1fQlJJREdFX0FUVEFDSF9OT19DT05O
-RUNUT1IsIGlmIG5vdCBleGlzdCwKPiBpdCB3b3VsZCBjcmVhdGUgY29ubmVjdG9yIGFuZCBhdHRh
-Y2ggY29ubmVjdG9yIHRvIHBhbmVsLgo+IAo+IEknbSBub3Qgc3VyZSB0aGlzIGZsYWcgd291bGQg
-ZXhpc3Qgb3Igbm90LCBidXQgZm9yIGJvdGggY2FzZSwgaXQncyBzdHJhbmdlLgo+IElmIGV4aXN0
-LCB5b3UgY3JlYXRlIGNvbm5lY3RvciBpbiB0aGlzIHBhdGNoIGJ1dCBubyB3aGVyZSB0byBhdHRh
-Y2gKPiBjb25uZWN0b3IgdG8gcGFuZWwuCgpZZXMsIGluIGZhY3QsIHRoaXMgaXMgdHJhbnNpdGlv
-bmFsIHBhdGNoIG5lZWRlZCwgYXMgb25jZSBJIGNvbnZlcnRlZCBtdGtfZHBpLAptdGtfZHNpIGFu
-ZCBtdGtfaGRtaSB0byB0aGUgbmV3IGRybV9icmlkZ2UgQVBJIHRoZSBkcm1fYnJpZGdlX2Nvbm5l
-Y3Rvcl9pbml0KCkKd2lsbCBiZSBkb25lIGluIG10a19kcm1fZHJ2LiBXZSB3aWxsIG5lZWQgdG8g
-Y2FsbCBkcm1fYnJpZGdlX2Nvbm5lY3Rvcl9pbml0IGZvcgpkcGkgYW5kIGRzaSBwaXBlcyBhbmQg
-cmVtb3ZlIHRoYXQgY2FsbCBmcm9tIG10a19kc2kgYW5kIG10a19kcGkgZHJpdmVycy4gVGhlCmdy
-YXBoaWMgY29udHJvbGxlciBkcml2ZXIgc2hvdWxkIGNyZWF0ZSBjb25uZWN0b3JzIGFuZCBDUlRD
-cywgYXMgZXhhbXBsZSB5b3UgY2FuCnRha2UgYSBsb29rIGF0IGRyaXZlcnMvZ3B1L2RybS9vbWFw
-ZHJtL29tYXBfZHJ2LmMKCj4gSWYgbm90IGV4aXN0LCB0aGUgbmV4dF9icmlnZSB3b3VsZCBjcmVh
-dGUgb25lIGNvbm5lY3RvciBhbmQgdGhpcyBicmlnZQo+IHdvdWxkIGNyZWF0ZSBhbm90aGVyIGNv
-bm5lY3Rvci4KPiAKPiBJIHRoaW5rIGluIHlvdXIgY2FzZSwgbXRrX2RzaSBkb2VzIG5vdCBkaXJl
-Y3RseSBjb25uZWN0IHRvIGEgcGFuZWwsIHNvCgpFeGFjdGx5Cgo+IEkgbmVlZCBhIGV4YWN0IGV4
-cGxhaW4uIE9yIHNvbWVvbmUgY291bGQgdGVzdCB0aGlzIG9uIGEKPiBkaXJlY3RseS1jb25uZWN0
-LXBhbmVsIHBsYXRmb3JtLgoKSSBkb24ndCB0aGluayBJIGFtIGJyZWFraW5nIHRoaXMgdXNlIGNh
-c2UgYnV0IEFGQUlDUyB0aGVyZSBpcyBubyB1c2VycyBpbgptYWlubGluZSB0aGF0IGRpcmVjdGx5
-IGNvbm5lY3QgYSBwYW5lbCB1c2luZyB0aGUgbWVkaWF0ZWsgZHJpdmVyLiBBcyBJIHNhaWQgbXkK
-dXNlIGNhc2UgaXMgdGhlIG90aGVyIHNvIEkgY2FuJ3QgcmVhbGx5IHRlc3QuIERvIHlvdSBrbm93
-IGFueW9uZSB0aGF0IGNhbiB0ZXN0IHRoaXM/CgpUaGFua3MsCiBFbnJpYwoKPiAKPiBSZWdhcmRz
-LAo+IENodW4tS3VhbmcuCj4gCj4+Cj4+IFRoYW5rcywKPj4gIEVucmljCj4+Cj4+PiAtLS0KPj4+
-Cj4+PiBDaGFuZ2VzIGluIHY0OiBOb25lCj4+PiBDaGFuZ2VzIGluIHYzOgo+Pj4gLSBNb3ZlIHRo
-ZSBicmlkZ2UudHlwZSBsaW5lIHRvIHRoZSBwYXRjaCB0aGF0IGFkZHMgZHJtX2JyaWRnZSBzdXBw
-b3J0LiAoTGF1cmVudCBQaW5jaGFydCkKPj4+Cj4+PiBDaGFuZ2VzIGluIHYyOiBOb25lCj4+Pgo+
-Pj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCAxMyArKysrKysrKysrKyst
-Cj4+PiAgMSBmaWxlIGNoYW5nZWQsIDEyIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPj4+
-Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyBiL2Ry
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPj4+IGluZGV4IDRmM2JkMDk1YzFlZS4u
-NDcxZmNhZmRmMzQ4IDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210
-a19kc2kuYwo+Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+Pj4g
-QEAgLTE3LDYgKzE3LDcgQEAKPj4+Cj4+PiAgI2luY2x1ZGUgPGRybS9kcm1fYXRvbWljX2hlbHBl
-ci5oPgo+Pj4gICNpbmNsdWRlIDxkcm0vZHJtX2JyaWRnZS5oPgo+Pj4gKyNpbmNsdWRlIDxkcm0v
-ZHJtX2JyaWRnZV9jb25uZWN0b3IuaD4KPj4+ICAjaW5jbHVkZSA8ZHJtL2RybV9taXBpX2RzaS5o
-Pgo+Pj4gICNpbmNsdWRlIDxkcm0vZHJtX29mLmg+Cj4+PiAgI2luY2x1ZGUgPGRybS9kcm1fcGFu
-ZWwuaD4KPj4+IEBAIC0xODMsNiArMTg0LDcgQEAgc3RydWN0IG10a19kc2kgewo+Pj4gICAgICAg
-ICBzdHJ1Y3QgZHJtX2VuY29kZXIgZW5jb2RlcjsKPj4+ICAgICAgICAgc3RydWN0IGRybV9icmlk
-Z2UgYnJpZGdlOwo+Pj4gICAgICAgICBzdHJ1Y3QgZHJtX2JyaWRnZSAqbmV4dF9icmlkZ2U7Cj4+
-PiArICAgICAgIHN0cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3I7Cj4+PiAgICAgICAgIHN0
-cnVjdCBwaHkgKnBoeTsKPj4+Cj4+PiAgICAgICAgIHZvaWQgX19pb21lbSAqcmVnczsKPj4+IEBA
-IC05NzcsMTAgKzk3OSwxOSBAQCBzdGF0aWMgaW50IG10a19kc2lfZW5jb2Rlcl9pbml0KHN0cnVj
-dCBkcm1fZGV2aWNlICpkcm0sIHN0cnVjdCBtdGtfZHNpICpkc2kpCj4+PiAgICAgICAgICAqLwo+
-Pj4gICAgICAgICBkc2ktPmVuY29kZXIucG9zc2libGVfY3J0Y3MgPSAxOwo+Pj4KPj4+IC0gICAg
-ICAgcmV0ID0gZHJtX2JyaWRnZV9hdHRhY2goJmRzaS0+ZW5jb2RlciwgJmRzaS0+YnJpZGdlLCBO
-VUxMLCAwKTsKPj4+ICsgICAgICAgcmV0ID0gZHJtX2JyaWRnZV9hdHRhY2goJmRzaS0+ZW5jb2Rl
-ciwgJmRzaS0+YnJpZGdlLCBOVUxMLAo+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBEUk1fQlJJREdFX0FUVEFDSF9OT19DT05ORUNUT1IpOwo+Pj4gICAgICAgICBpZiAocmV0KQo+
-Pj4gICAgICAgICAgICAgICAgIGdvdG8gZXJyX2NsZWFudXBfZW5jb2RlcjsKPj4+Cj4+PiArICAg
-ICAgIGRzaS0+Y29ubmVjdG9yID0gZHJtX2JyaWRnZV9jb25uZWN0b3JfaW5pdChkcm0sICZkc2kt
-PmVuY29kZXIpOwo+Pj4gKyAgICAgICBpZiAoSVNfRVJSKGRzaS0+Y29ubmVjdG9yKSkgewo+Pj4g
-KyAgICAgICAgICAgICAgIERSTV9FUlJPUigiVW5hYmxlIHRvIGNyZWF0ZSBicmlkZ2UgY29ubmVj
-dG9yXG4iKTsKPj4+ICsgICAgICAgICAgICAgICByZXQgPSBQVFJfRVJSKGRzaS0+Y29ubmVjdG9y
-KTsKPj4+ICsgICAgICAgICAgICAgICBnb3RvIGVycl9jbGVhbnVwX2VuY29kZXI7Cj4+PiArICAg
-ICAgIH0KPj4+ICsgICAgICAgZHJtX2Nvbm5lY3Rvcl9hdHRhY2hfZW5jb2Rlcihkc2ktPmNvbm5l
-Y3RvciwgJmRzaS0+ZW5jb2Rlcik7Cj4+PiArCj4+PiAgICAgICAgIHJldHVybiAwOwo+Pj4KPj4+
-ICBlcnJfY2xlYW51cF9lbmNvZGVyOgo+Pj4gLS0KPj4+IDIuMjYuMgo+Pj4KPj4+Cj4+PiBfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+Pj4gTGludXgtbWVk
-aWF0ZWsgbWFpbGluZyBsaXN0Cj4+PiBMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3Jn
-Cj4+PiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1l
-ZGlhdGVrCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1l
-ZGlhdGVrCg==
+On Thu, May 14, 2020 at 10:00 AM Bartosz Golaszewski <brgl@bgdev.pl> wrote:
+>
+> From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+>
+> This adds the driver for the MediaTek Ethernet MAC used on the MT8* SoC
+> family. For now we only support full-duplex.
+>
+> Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
+
+Looks very nice overall. Just a few things I noticed, and some ideas
+that may or may not make sense:
+
+> +/* This is defined to 0 on arm64 in arch/arm64/include/asm/processor.h but
+> + * this IP doesn't work without this alignment being equal to 2.
+> + */
+> +#ifdef NET_IP_ALIGN
+> +#undef NET_IP_ALIGN
+> +#endif
+> +#define NET_IP_ALIGN                           2
+
+Maybe you should just define your own macro instead of replacing
+the normal one then?
+
+> +static void mtk_mac_lock(struct mtk_mac_priv *priv)
+> +{
+> +       spin_lock_irqsave(&priv->lock, priv->lock_flags);
+> +}
+> +
+> +static void mtk_mac_unlock(struct mtk_mac_priv *priv)
+> +{
+> +       spin_unlock_irqrestore(&priv->lock, priv->lock_flags);
+> +}
+
+This looks wrong: you should not have shared 'flags' passed into
+spin_lock_irqsave(), and I don't even see a need to use the
+irqsave variant of the lock in the first place.
+
+Maybe start by open-coding the lock and remove the wrappers
+above.
+
+Then see if you can use a cheaper spin_lock_bh() or plain spin_lock()
+instead of irqsave.
+
+Finally, see if this can be done in a lockless way by relying on
+appropriate barriers and separating the writers into separate
+cache lines. From a brief look at the driver I think it can be done
+without too much trouble.
+
+> +static unsigned int mtk_mac_intr_read_and_clear(struct mtk_mac_priv *priv)
+> +{
+> +       unsigned int val;
+> +
+> +       regmap_read(priv->regs, MTK_MAC_REG_INT_STS, &val);
+> +       regmap_write(priv->regs, MTK_MAC_REG_INT_STS, val);
+> +
+> +       return val;
+> +}
+
+Do you actually need to read the register? That is usually a relatively
+expensive operation, so if possible try to use clear the bits when
+you don't care which bits were set.
+
+> +/* All processing for TX and RX happens in the napi poll callback. */
+> +static irqreturn_t mtk_mac_handle_irq(int irq, void *data)
+> +{
+> +       struct mtk_mac_priv *priv;
+> +       struct net_device *ndev;
+> +
+> +       ndev = data;
+> +       priv = netdev_priv(ndev);
+> +
+> +       if (netif_running(ndev)) {
+> +               mtk_mac_intr_mask_all(priv);
+> +               napi_schedule(&priv->napi);
+> +       }
+> +
+> +       return IRQ_HANDLED;
+
+
+> +static int mtk_mac_netdev_start_xmit(struct sk_buff *skb,
+> +                                    struct net_device *ndev)
+> +{
+> +       struct mtk_mac_priv *priv = netdev_priv(ndev);
+> +       struct mtk_mac_ring *ring = &priv->tx_ring;
+> +       struct device *dev = mtk_mac_get_dev(priv);
+> +       struct mtk_mac_ring_desc_data desc_data;
+> +
+> +       desc_data.dma_addr = mtk_mac_dma_map_tx(priv, skb);
+> +       if (dma_mapping_error(dev, desc_data.dma_addr))
+> +               goto err_drop_packet;
+> +
+> +       desc_data.skb = skb;
+> +       desc_data.len = skb->len;
+> +
+> +       mtk_mac_lock(priv);
+> +       mtk_mac_ring_push_head_tx(ring, &desc_data);
+> +
+> +       if (mtk_mac_ring_full(ring))
+> +               netif_stop_queue(ndev);
+> +       mtk_mac_unlock(priv);
+> +
+> +       mtk_mac_dma_resume_tx(priv);
+> +
+> +       return NETDEV_TX_OK;
+> +
+> +err_drop_packet:
+> +       dev_kfree_skb(skb);
+> +       ndev->stats.tx_dropped++;
+> +       return NETDEV_TX_BUSY;
+> +}
+
+I would always add BQL flow control in new drivers, using
+netdev_sent_queue here...
+
+> +static int mtk_mac_tx_complete_one(struct mtk_mac_priv *priv)
+> +{
+> +       struct mtk_mac_ring *ring = &priv->tx_ring;
+> +       struct mtk_mac_ring_desc_data desc_data;
+> +       int ret;
+> +
+> +       ret = mtk_mac_ring_pop_tail(ring, &desc_data);
+> +       if (ret)
+> +               return ret;
+> +
+> +       mtk_mac_dma_unmap_tx(priv, &desc_data);
+> +       dev_kfree_skb_irq(desc_data.skb);
+> +
+> +       return 0;
+> +}
+
+... and netdev_completed_queue()  here.
+
+> +static void mtk_mac_tx_complete_all(struct mtk_mac_priv *priv)
+> +{
+> +       struct mtk_mac_ring *ring = &priv->tx_ring;
+> +       struct net_device *ndev = priv->ndev;
+> +       int ret;
+> +
+> +       for (;;) {
+> +               mtk_mac_lock(priv);
+> +
+> +               if (!mtk_mac_ring_descs_available(ring)) {
+> +                       mtk_mac_unlock(priv);
+> +                       break;
+> +               }
+> +
+> +               ret = mtk_mac_tx_complete_one(priv);
+> +               if (ret) {
+> +                       mtk_mac_unlock(priv);
+> +                       break;
+> +               }
+> +
+> +               if (netif_queue_stopped(ndev))
+> +                       netif_wake_queue(ndev);
+> +
+> +               mtk_mac_unlock(priv);
+> +       }
+> +}
+
+It looks like most of the stuff inside of the loop can be pulled out
+and only done once here.
+
+> +static int mtk_mac_poll(struct napi_struct *napi, int budget)
+> +{
+> +       struct mtk_mac_priv *priv;
+> +       unsigned int status;
+> +       int received = 0;
+> +
+> +       priv = container_of(napi, struct mtk_mac_priv, napi);
+> +
+> +       status = mtk_mac_intr_read_and_clear(priv);
+> +
+> +       /* Clean up TX */
+> +       if (status & MTK_MAC_BIT_INT_STS_TNTC)
+> +               mtk_mac_tx_complete_all(priv);
+> +
+> +       /* Receive up to $budget packets */
+> +       if (status & MTK_MAC_BIT_INT_STS_FNRC)
+> +               received = mtk_mac_process_rx(priv, budget);
+> +
+> +       /* One of the counter reached 0x8000000 - update stats and reset all
+> +        * counters.
+> +        */
+> +       if (status & MTK_MAC_REG_INT_STS_MIB_CNT_TH) {
+> +               mtk_mac_update_stats(priv);
+> +               mtk_mac_reset_counters(priv);
+> +       }
+> +
+> +       if (received < budget)
+> +               napi_complete_done(napi, received);
+> +
+> +       mtk_mac_intr_unmask_all(priv);
+> +
+> +       return received;
+> +}
+
+I think you want to leave (at least some of) the interrupts masked
+if your budget is exhausted, to avoid generating unnecessary
+irqs.
+
+It may also be faster to not mask/unmask at all but just
+clear the interrupts that you have finished processing
+
+      Arnd
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
