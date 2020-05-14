@@ -2,56 +2,78 @@ Return-Path: <SRS0=tiIh=64=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 58BD6C433E0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 06:30:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E7140C433E0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 06:32:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2C945206D8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 06:30:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BBCB9206B6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 06:32:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KK2uye7a"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C945206D8
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=the-dreams.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RIVpy43Y";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.b="bH5oriWl"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BBCB9206B6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FTL4nr53IMGOuFiaJsmMmb8xu+IkkTx1BVYt0YKTVRY=; b=KK2uye7a6L/L0rwgpTMRcbNhM
-	Y4otfqGT/8bvMLT0r9QDBjHG1XHlpjZWuZf56OddHdkiNbsWHQuCcsF5C5MSRvbpU3FTQexWUT27u
-	EUjFbzvk41aUyQgbcBiEqW+MdI9rHiTyP4AlzOLLPRLFdso869FwFBQ3JozRHPd2yJmVXaPBmi+ts
-	vt+/YSpVx7H6xYwjkcVI36KxoQ/8c4Tpcyr+bt1n1q6cTlugOqQNJ4i4muCS7WuJbJxPU+EiYF8jo
-	8Bgjjm2w2NJ/kaQu2BYQyOLg1gXT45cibFuaJNQlswGz9PVlDXbfsq1J1u9JSU2nJnh/wliZOVWXH
-	upGQVvOmg==;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hxxcCW8thbAlKx4oEutuY6dzrPcbo/kPm4gAQudXwXE=; b=RIVpy43YM/YdKw
+	NO8TGXIyilKDsDGtB8/R0znZTj3p6FebV1e35CmQ67HS05dja1nCDz9Z38pTVb9NaIrVPsgXnDrhr
+	TKN7WPNzXGDF96qwSnxTR71sXUn17GmRLijBwtlVQm+lfnqosV/ZdlK1C0WveIdYjVLL2uwdClrrr
+	0YYGYCDjmwlffhxgnLBurao09BBdUWeN4Wxa0LJjV39GMnVT4iyfl0kns6TmkhQ0aCmJ8BZksOk0t
+	AAXk+4l4s0U81+f4sCc+66dwpOtwmemXljYxlVeug+Lx0YnwFRtGa+LLx3uUUsDs6Vhh1hoa5N4Dv
+	7fFk12IipaE2Qr4CVcug==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZ7Nq-0005sW-Bd; Thu, 14 May 2020 06:30:18 +0000
-Received: from sauhun.de ([88.99.104.3] helo=pokefinder.org)
- by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZ7NT-0003Ap-Ea; Thu, 14 May 2020 06:29:57 +0000
-Received: from localhost (p5486CC88.dip0.t-ipconnect.de [84.134.204.136])
- by pokefinder.org (Postfix) with ESMTPSA id EC9C92C01E6;
- Thu, 14 May 2020 08:29:51 +0200 (CEST)
-Date: Thu, 14 May 2020 08:29:51 +0200
-From: Wolfram Sang <wsa@the-dreams.de>
-To: Qii Wang <qii.wang@mediatek.com>
-Subject: Re: [PATCH] i2c: mediatek: Add i2c ac-timing adjust support
-Message-ID: <20200514062951.GA1145@kunai>
-References: <1585223676-30809-1-git-send-email-qii.wang@mediatek.com>
- <20200512133852.GE13516@ninjato>
- <1589418905.25512.10.camel@mhfsdcap03>
+	id 1jZ7Pc-0006EB-Ki; Thu, 14 May 2020 06:32:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+ by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1jZ7PU-000668-Cw; Thu, 14 May 2020 06:32:01 +0000
+X-UUID: 471af07107ba4815916d023deff39d4a-20200513
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=aUONHRWvQ9qQ9VngdjXQr022FIiqjPTEVZv05L0cZj0=; 
+ b=bH5oriWlfXp+v3XPPsCv11sFnKZTFqf5rd5C+xXCBY5D/b8+VmdIQEjIeG+x+BMz0wx8T6yk2ns6ZaRG7AR9PeSy3aKKMwoagaPKQm1LE/+w9ko7mNeUFkE3IZ36iQN9j27cRtCz4wWtDByC9rF2sBRUIkwxpziofgW5XxOrI9s=;
+X-UUID: 471af07107ba4815916d023deff39d4a-20200513
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <fengping.yu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLS)
+ with ESMTP id 183107604; Wed, 13 May 2020 22:31:56 -0800
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 13 May 2020 23:21:53 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 14 May 2020 14:21:50 +0800
+Received: from localhost.localdomain (10.15.20.246) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 14 May 2020 14:21:49 +0800
+From: Fengping Yu <fengping.yu@mediatek.com>
+To: Yingjoe Chen <yingjoe.chen@mediatek.com>, Dmitry Torokhov
+ <dmitry.torokhov@gmail.com>, Andy Shevchenko
+ <andriy.shevchenko@linux.intel.com>, Marco Felsch <m.felsch@pengutronix.de>
+Subject: [PATCH v7 3/3] configs: defconfig: Add CONFIG_KEYBOARD_MTK_KPD=y
+Date: Thu, 14 May 2020 14:17:50 +0800
+Message-ID: <20200514061747.25466-4-fengping.yu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20200514061747.25466-1-fengping.yu@mediatek.com>
+References: <20200514061747.25466-1-fengping.yu@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <1589418905.25512.10.camel@mhfsdcap03>
+X-TM-SNTS-SMTP: 4440FF4C24C0DC519606FD646B298B1177C2FC3F641EC8FF193919416CC755A32000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200513_232955_634082_6ADB034D 
-X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-CacheID: sfid-20200513_233200_450766_78C697E6 
+X-CRM114-Status: UNSURE (   6.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -64,69 +86,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
- linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============2455968678535030206=="
+Cc: "fengping.yu" <fengping.yu@mediatek.com>,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: "fengping.yu" <fengping.yu@mediatek.com>
 
---===============2455968678535030206==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="azLHFNyN32YCQGCU"
-Content-Disposition: inline
+Add Mediatek matrix keypad support in defconfig.
 
+Signed-off-by: fengping.yu <fengping.yu@mediatek.com>
+---
+ arch/arm64/configs/defconfig | 2 ++
+ 1 file changed, 2 insertions(+)
 
---azLHFNyN32YCQGCU
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-
-> > Last question: You seem to be the one doing major updates to this
-> > driver. Thanks for that! Are you maybe interested in becoming the
-> > maintainer for this driver? I think there won't be much patches to
-> > review and reports to handle but it will speed up processing for me.
->=20
-> Yes, It is my honor to be the maintainer for this driver.
-
-Awesome! :) Can you prepare a patch for MAINTAINERS or shall I?
-
-
---azLHFNyN32YCQGCU
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl685VsACgkQFA3kzBSg
-KbbA8w/+Iih/AnYzyX4NP+kuKMiaDnC4Lof2gegnqKBPDlccUf5qMFAxlvdj5VLg
-7fpHoLnxDUaE2VSLT94/l7djAnAiUrDK42F1rXHXfJKmfb4k9dMWI7n+yF29/95a
-87gV3x2goe1XucCmobocv2RFwJw7b4rkDkvCb5mN6bvyDBUUS4Q3mW0MGxISVdTE
-Z48dW7oyv54Y7kJoEVv3NRcrOfO/2zlrsi1zxamoU8+E5NidGwqySY21PZpq/FZm
-4un1Dt98r7nrsm+l75SAahK5AJ/6qYakeJOtwD2NyzOF6dmwOgKLDpMI82Fl5e3p
-vO37ZWYXoOeX9u7HFzEmz6CiLQ7Fomg5S6P7pWOV4JWNGbgMvkfnhzhyhZQN/y3z
-+n6BX//CKk/Vo2DV7yHc/fO5ueXSP0FpAd4MErTgwUvkbeWj4kM09Q5rug3nwXcb
-6+panhqePUGmOpqdT8JvqL+bFc3NpK7eDTmbAW3r6vp06/rttRBNnyKV5R4QMTfq
-9qB1gtrcqHz1YJLI+UKW/QXIu04mGdW20TwlnQe06pV8l9/6JoPMMhgz5OnRAMd9
-z/j+zHrrH2JMV/2gO+DW7T2Eweo2ZHEJjT1OfJT5pmxfrNVpFmkMsiwFbirC0mDH
-l5EQ+idPkrsxFbHMsV/FRdladtoW5CHlB8ujb8StzFIkszZOKUI=
-=ZyXd
------END PGP SIGNATURE-----
-
---azLHFNyN32YCQGCU--
-
-
---===============2455968678535030206==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 24e534d85045..f9f0fb489182 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -349,6 +349,8 @@ CONFIG_KEYBOARD_GPIO=y
+ CONFIG_KEYBOARD_SNVS_PWRKEY=m
+ CONFIG_KEYBOARD_IMX_SC_KEY=m
+ CONFIG_KEYBOARD_CROS_EC=y
++CONFIG_KEYBOARD_MTK_KPD=y
++# CONFIG_KEYBOARD_MTK_PMIC is not set
+ CONFIG_INPUT_TOUCHSCREEN=y
+ CONFIG_TOUCHSCREEN_ATMEL_MXT=m
+ CONFIG_INPUT_MISC=y
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============2455968678535030206==--
-
