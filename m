@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=DKIMWL_WL_HIGH,DKIM_SIGNED,
 	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A51BFC433E1
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B5B6FC433E0
 	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 08:03:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6299720675
+	by mail.kernel.org (Postfix) with ESMTPS id 7013E20575
 	for <linux-mediatek@archiver.kernel.org>; Thu, 14 May 2020 08:03:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nC/MM8Jf";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="IQRdwUqx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6299720675
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FavaSRq3";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=bgdev-pl.20150623.gappssmtp.com header.i=@bgdev-pl.20150623.gappssmtp.com header.b="r+BJUHQI"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7013E20575
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bgdev.pl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,53 +26,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xeKardh/GTb6NTkIcPcEUFgnUQPVfYITjVFtAN/Rhf8=; b=nC/MM8JfQo6W68
-	l1ShDUFPZgszkZmti7Z+0stMtjPnTG7WCZqLIiiLX9Zg1asdPgUMXOxJ7fok6yQU+QjGhKroD+LUX
-	bIw+8/pRuPqaj9vqr5RI2EQLnfbSb4XusJORuf8jq+xnQVMxRFonuxoEcJnADMrGWpBpHb/ohKfDC
-	641A5DogiCn0ojHPscR83Fe2wogWMNLTOA92yjYbb7FGpPYSyMyT5NYv1VSe63xfu4zxxk/TgOHVW
-	C5zPZXKN1/5J3g7cWV7yan8rwaLL3AK5hLXggqaD8RNRrTNijkq2AC++/n8v6f0Ya3lVqAK14Z16P
-	6X2Osr0mIJqCIJ5if4+Q==;
+	List-Owner; bh=fn9d7urC4ln+sby1jK4/mkf6iaJ4XQTyeXwJiWOZGjA=; b=FavaSRq3KYCI6B
+	Micg5Q74HKJYZGvqoVvUyTLmcqi2+TmLJeQAIxOLvdBbJIvFyTJQDooFLsQtmKUBT1jDTMcAwLC0r
+	NDBUnr/VI+c3aO1t2rDODmoOE+Ooh3HeiV2zV9DBnm0B+0Ha0Q63TfULaTsdIyuq69vPCtzUmWd4f
+	iv7Lxc2yed9Oh5IIeNvIKOJIsTrUcbYhHWR1pJEgIZ0+t0AlIFZIP6Q6Mr8bVjImGi4o7vHCFMPlR
+	mrNHd3it3HpcDtS9iAqeY/gDC4SfscH2+RJL4pPIHl2IpM+Utd8QXtXSbs0SQOwoG1PtcEgWhHblC
+	lEdW08YZcY6Vc6MJ4nag==;
 Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jZ8pk-0006gY-SU; Thu, 14 May 2020 08:03:12 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1jZ8pl-0006i7-SZ; Thu, 14 May 2020 08:03:13 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by bombadil.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1jZ8mv-0003s1-Qg
- for linux-mediatek@lists.infradead.org; Thu, 14 May 2020 08:00:20 +0000
-Received: by mail-wm1-x341.google.com with SMTP id g12so31303422wmh.3
- for <linux-mediatek@lists.infradead.org>; Thu, 14 May 2020 01:00:17 -0700 (PDT)
+ id 1jZ8mx-0003tl-AL
+ for linux-mediatek@lists.infradead.org; Thu, 14 May 2020 08:00:21 +0000
+Received: by mail-wr1-x444.google.com with SMTP id l17so2627519wrr.4
+ for <linux-mediatek@lists.infradead.org>; Thu, 14 May 2020 01:00:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=bgdev-pl.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=85LArQ1FkfasqQwvTGBUsmFOdZ74xT3FAzPREvSXT3E=;
- b=IQRdwUqxDe1qZmT8TGQLkrpl0kAdWhdhH11prXOwPTmEcd2xi6nmcFvKSdcBT3IQZY
- yRnKMO5FeNSeCf+SCHtG/N/4bKqB7p81H8ghcz05gj2Pwf2vXgntZAeQYV3l/jTSdocQ
- dPvmZEAfuzM8MzlXRUqGd/E7rGt2F1n4TM7+DJ6RnqP3U6YcLUe8aja3Yta4IW17s6Yy
- 75hKtwdXvy9YC8snlGNetXjHz8nQEW6rafZF9NDCUU81TSHgCWq6rR7UDqYLVqUB6G9Z
- NxP5Y6Yp69XPoqS88noAVJoG/kGfFrZT6SAC3hTLsFU30y07APR+K/lBdiKhePIkHvpT
- 9Kfg==
+ bh=fUZXOnych6qxhX4bjLeYEoW62tw45yoi4lvLz/fDZMU=;
+ b=r+BJUHQIIa1axFh6WUc2DdvLc0SNaDkJzsiGYipq89vB/+fXNjYGdskx0PK6KLYu9Q
+ fKqyJyLI0YmBJ0jHwnP7dK5acWOLOi3UNd/CPOVaw7M+6SLsx9FY7GKR+qTRSd+R2aB8
+ FuCV9RfTAXq3uBTv2q4twSBcPYt3wgFVT3r6AQ6s6XQgoIEtpwHr8cohlti6kXbzhfHB
+ kd48GeCqei40W0Fm+MvOL9jeeworbOzZdyEvqlQxglT7yd7TTjAGnpMoQPXWVR8/Yp4X
+ aMUyp/vslroyFy0rg7y9UkmOjFbiD96xRByaMmYhOux1egWzjwBlEup1K1INXm1e7CnM
+ oxrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=85LArQ1FkfasqQwvTGBUsmFOdZ74xT3FAzPREvSXT3E=;
- b=Fboqji7q7Ueg8znKk8eZju38qZ1D9jV7MItiI25pYGVLjyay3fx8LCSMtucduLH60R
- nTh5FeEWzPwMfzhOvcxrTSEafanYVq+P+0TOg9FgSgN8UEz0YXwWm/KKfCRE+1zEq/HF
- aFa9Q2u5L+uHEEAZ3DjFsqp3SqM30ADJ0pc/PXu0yWM5N3gCgGhfgN4uNg74J6AAXnZW
- 4NIoDjcxu6s8m1EY2CQZ7X2YyrpoPfInNBngs8fGYxvKLwUCK2S8yx+p8Z0NG4M0Dxza
- ugECaKy2GdKwN+aCSISeXabzdAEgWWdBFwCX0QL1N8sU47927m28ZAnD4gL0H0OGCDF9
- aGiA==
-X-Gm-Message-State: AGi0PuY3s8pZZFEeY8lXy79xxsVc7eylY1us4aYpgNMEitdO7vPGGrTY
- zgk0MXYl8oKY8nHH7I9SI++9gg==
-X-Google-Smtp-Source: APiQypIY9tAfCpn2AmTAwgro/2JmYcI8xIK57P9eBIyeDsZ7PCcAdgUe8VkM1x3xFdmKrxvg6IG6Gg==
-X-Received: by 2002:a7b:c5d4:: with SMTP id n20mr49059541wmk.92.1589443216067; 
- Thu, 14 May 2020 01:00:16 -0700 (PDT)
+ bh=fUZXOnych6qxhX4bjLeYEoW62tw45yoi4lvLz/fDZMU=;
+ b=kBCjQ9eHObTE4DTeTUcoHAUUrF5e3y5dLMvzmqfo2LvdgSiH+vFJAs/J+/ohdE1eHC
+ 265xR7zzsxz+ZnHAZJejewfI1yibRmyKTtaLDQSJZqwadUofB4og/CNtZ4Ds+PRDkri8
+ 1W1zm89aAgS4caLLidHECi+rNXMhSOBtNvHwhebELx02gfiy4FHTfIN1svOU4RPv2SQn
+ 6sW55eubaigOsE7LDQBOLKucqrbJlVoTCDifWUMdutYFxFQOEoJP3OuItQD7OMKAhQTt
+ L3Y/BdDcnUJVDxEfRGUVyflF7jyh85JnUmSmdiCfYXKDjcXXyaWPDRZazF7kdGLT/z/d
+ Ymng==
+X-Gm-Message-State: AOAM5315ItJAs93LQX3I4bTJMqB0vt3P35I3WIafQKsBkPxDQoUXP6kD
+ g2rYef/gQeevgVFxZTKdBYMw3Q==
+X-Google-Smtp-Source: ABdhPJzAzG6VyddDmgoHYvTU5SDSbk+AJ5I9Gy3n+7jEXEiPlpK/0wzyJd6PPnc4HGuK5CdsX1NyKA==
+X-Received: by 2002:adf:b1c1:: with SMTP id r1mr3867472wra.76.1589443217531;
+ Thu, 14 May 2020 01:00:17 -0700 (PDT)
 Received: from localhost.localdomain (lfbn-nic-1-65-232.w2-15.abo.wanadoo.fr.
  [2.15.156.232])
- by smtp.gmail.com with ESMTPSA id 81sm23337446wme.16.2020.05.14.01.00.14
+ by smtp.gmail.com with ESMTPSA id 81sm23337446wme.16.2020.05.14.01.00.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 May 2020 01:00:15 -0700 (PDT)
+ Thu, 14 May 2020 01:00:16 -0700 (PDT)
 From: Bartosz Golaszewski <brgl@bgdev.pl>
 To: Jonathan Corbet <corbet@lwn.net>, Rob Herring <robh+dt@kernel.org>,
  "David S . Miller" <davem@davemloft.net>,
@@ -82,17 +82,16 @@ To: Jonathan Corbet <corbet@lwn.net>, Rob Herring <robh+dt@kernel.org>,
  Fabien Parent <fparent@baylibre.com>,
  Heiner Kallweit <hkallweit1@gmail.com>,
  Edwin Peer <edwin.peer@broadcom.com>
-Subject: [PATCH v3 08/15] net: devres: define a separate devres structure for
- devm_alloc_etherdev()
-Date: Thu, 14 May 2020 09:59:35 +0200
-Message-Id: <20200514075942.10136-9-brgl@bgdev.pl>
+Subject: [PATCH v3 09/15] net: devres: provide devm_register_netdev()
+Date: Thu, 14 May 2020 09:59:36 +0200
+Message-Id: <20200514075942.10136-10-brgl@bgdev.pl>
 X-Mailer: git-send-email 2.25.0
 In-Reply-To: <20200514075942.10136-1-brgl@bgdev.pl>
 References: <20200514075942.10136-1-brgl@bgdev.pl>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200514_010017_984170_4EA6EE93 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20200514_010019_766479_152E9225 
+X-CRM114-Status: GOOD (  13.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,64 +116,105 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 
-Not using a proxy structure to store struct net_device doesn't save
-anything in terms of compiled code size or memory usage but significantly
-decreases the readability of the code with all the pointer casting.
-
-Define struct net_device_devres and use it in devm_alloc_etherdev_mqs().
+Provide devm_register_netdev() - a device resource managed variant
+of register_netdev(). This new helper will only work for net_device
+structs that are also already managed by devres.
 
 Signed-off-by: Bartosz Golaszewski <bgolaszewski@baylibre.com>
 ---
- net/devres.c | 20 ++++++++++++--------
- 1 file changed, 12 insertions(+), 8 deletions(-)
+ .../driver-api/driver-model/devres.rst        |  1 +
+ include/linux/netdevice.h                     |  2 +
+ net/devres.c                                  | 55 +++++++++++++++++++
+ 3 files changed, 58 insertions(+)
 
+diff --git a/Documentation/driver-api/driver-model/devres.rst b/Documentation/driver-api/driver-model/devres.rst
+index 50df28d20fa7..fc242ed4bde5 100644
+--- a/Documentation/driver-api/driver-model/devres.rst
++++ b/Documentation/driver-api/driver-model/devres.rst
+@@ -375,6 +375,7 @@ MUX
+ NET
+   devm_alloc_etherdev()
+   devm_alloc_etherdev_mqs()
++  devm_register_netdev()
+ 
+ PER-CPU MEM
+   devm_alloc_percpu()
+diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
+index 130a668049ab..c4ad728993dd 100644
+--- a/include/linux/netdevice.h
++++ b/include/linux/netdevice.h
+@@ -4208,6 +4208,8 @@ struct net_device *alloc_netdev_mqs(int sizeof_priv, const char *name,
+ int register_netdev(struct net_device *dev);
+ void unregister_netdev(struct net_device *dev);
+ 
++int devm_register_netdev(struct device *dev, struct net_device *ndev);
++
+ /* General hardware address lists handling functions */
+ int __hw_addr_sync(struct netdev_hw_addr_list *to_list,
+ 		   struct netdev_hw_addr_list *from_list, int addr_len);
 diff --git a/net/devres.c b/net/devres.c
-index c1465d9f9019..b97b0c5a8216 100644
+index b97b0c5a8216..57a6a88d11f6 100644
 --- a/net/devres.c
 +++ b/net/devres.c
-@@ -7,30 +7,34 @@
- #include <linux/etherdevice.h>
- #include <linux/netdevice.h>
- 
--static void devm_free_netdev(struct device *dev, void *res)
-+struct net_device_devres {
-+	struct net_device *ndev;
-+};
-+
-+static void devm_free_netdev(struct device *dev, void *this)
- {
--	free_netdev(*(struct net_device **)res);
-+	struct net_device_devres *res = this;
-+
-+	free_netdev(res->ndev);
- }
- 
- struct net_device *devm_alloc_etherdev_mqs(struct device *dev, int sizeof_priv,
- 					   unsigned int txqs, unsigned int rxqs)
- {
--	struct net_device **dr;
--	struct net_device *netdev;
-+	struct net_device_devres *dr;
- 
- 	dr = devres_alloc(devm_free_netdev, sizeof(*dr), GFP_KERNEL);
- 	if (!dr)
- 		return NULL;
- 
--	netdev = alloc_etherdev_mqs(sizeof_priv, txqs, rxqs);
--	if (!netdev) {
-+	dr->ndev = alloc_etherdev_mqs(sizeof_priv, txqs, rxqs);
-+	if (!dr->ndev) {
- 		devres_free(dr);
- 		return NULL;
- 	}
- 
--	*dr = netdev;
- 	devres_add(dev, dr);
- 
--	return netdev;
-+	return dr->ndev;
+@@ -38,3 +38,58 @@ struct net_device *devm_alloc_etherdev_mqs(struct device *dev, int sizeof_priv,
+ 	return dr->ndev;
  }
  EXPORT_SYMBOL(devm_alloc_etherdev_mqs);
++
++static void devm_netdev_release(struct device *dev, void *this)
++{
++	struct net_device_devres *res = this;
++
++	unregister_netdev(res->ndev);
++}
++
++static int netdev_devres_match(struct device *dev, void *this, void *match_data)
++{
++	struct net_device_devres *res = this;
++	struct net_device *ndev = match_data;
++
++	return ndev == res->ndev;
++}
++
++/**
++ *	devm_register_netdev - resource managed variant of register_netdev()
++ *	@dev: managing device for this netdev - usually the parent device
++ *	@ndev: device to register
++ *
++ *	This is a devres variant of register_netdev() for which the unregister
++ *	function will be call automatically when the managing device is
++ *	detached. Note: the net_device used must also be resource managed by
++ *	the same struct device.
++ */
++int devm_register_netdev(struct device *dev, struct net_device *ndev)
++{
++	struct net_device_devres *dr;
++	int ret;
++
++	/* struct net_device must itself be managed. For now a managed netdev
++	 * can only be allocated by devm_alloc_etherdev_mqs() so the check is
++	 * straightforward.
++	 */
++	if (WARN_ON(!devres_find(dev, devm_free_netdev,
++				 netdev_devres_match, ndev)))
++		return -EINVAL;
++
++	dr = devres_alloc(devm_netdev_release, sizeof(*dr), GFP_KERNEL);
++	if (!dr)
++		return -ENOMEM;
++
++	ret = register_netdev(ndev);
++	if (ret) {
++		devres_free(dr);
++		return ret;
++	}
++
++	dr->ndev = ndev;
++	devres_add(ndev->dev.parent, dr);
++
++	return 0;
++}
++EXPORT_SYMBOL(devm_register_netdev);
 -- 
 2.25.0
 
